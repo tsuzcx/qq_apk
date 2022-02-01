@@ -9,15 +9,15 @@ import com.tencent.mm.ui.widget.a.d.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/WxaAuthorizeUIHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/WxaAuthorizeUIHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a mGS;
+  public static final a mLW;
   
   static
   {
     AppMethodBeat.i(180690);
-    mGS = new a((byte)0);
+    mLW = new a((byte)0);
     AppMethodBeat.o(180690);
   }
   
@@ -28,7 +28,7 @@ public final class a
     AppMethodBeat.o(180691);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/WxaAuthorizeUIHelper$Companion;", "", "()V", "showCloseAuthorizeAlert", "", "cxt", "Landroid/content/Context;", "onPositiveClick", "Landroid/content/DialogInterface$OnClickListener;", "onNegativeCLick", "onCancelCLick", "Landroid/content/DialogInterface$OnCancelListener;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/WxaAuthorizeUIHelper$Companion;", "", "()V", "showCloseAuthorizeAlert", "", "cxt", "Landroid/content/Context;", "onPositiveClick", "Landroid/content/DialogInterface$OnClickListener;", "onNegativeCLick", "onCancelCLick", "Landroid/content/DialogInterface$OnCancelListener;", "plugin-appbrand-integration_release"})
   public static final class a
   {
     public static void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
@@ -39,13 +39,13 @@ public final class a
       p.h(paramOnClickListener2, "onNegativeCLick");
       p.h(paramOnCancelListener, "onCancelCLick");
       d.a locala = new d.a(paramContext);
-      locala.aXG(paramContext.getString(2131755321));
-      locala.aXM(paramContext.getString(2131755320));
+      locala.aZi(paramContext.getString(2131755321));
+      locala.aZo(paramContext.getString(2131755320));
       locala.c(paramOnClickListener1);
-      locala.aXN(paramContext.getString(2131755691));
+      locala.aZp(paramContext.getString(2131755691));
       locala.d(paramOnClickListener2);
       locala.e(paramOnCancelListener);
-      paramContext = locala.fMb();
+      paramContext = locala.fQv();
       paramContext.setCanceledOnTouchOutside(false);
       paramContext.show();
       AppMethodBeat.o(180689);

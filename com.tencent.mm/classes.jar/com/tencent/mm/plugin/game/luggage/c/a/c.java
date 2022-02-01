@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.lite.jsapi.a;
 import com.tencent.mm.plugin.lite.jsapi.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class c
   extends a
 {
-  public final int cXg()
+  public final int cZP()
   {
     return 1;
   }
   
   public final void j(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(211634);
+    AppMethodBeat.i(193023);
     long l = paramJSONObject.optLong("download_id");
     if (l <= 0L)
     {
-      ad.e("LiteAppJsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-      this.uYz.YL("invalid_downloadid");
-      AppMethodBeat.o(211634);
+      ae.e("LiteAppJsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+      this.vko.ZC("invalid_downloadid");
+      AppMethodBeat.o(193023);
       return;
     }
-    if (f.ccl().tR(l) > 0)
+    if (f.cdA().ui(l) > 0)
     {
-      this.uYz.cXe();
-      AppMethodBeat.o(211634);
+      this.vko.cZN();
+      AppMethodBeat.o(193023);
       return;
     }
-    this.uYz.YL("fail");
-    AppMethodBeat.o(211634);
+    this.vko.ZC("fail");
+    AppMethodBeat.o(193023);
   }
 }
 

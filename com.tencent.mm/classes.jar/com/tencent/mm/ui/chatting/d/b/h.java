@@ -5,11 +5,11 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface h
   extends ad
 {
-  public abstract boolean aSU(String paramString);
+  public abstract boolean aUu(String paramString);
   
-  public abstract boolean aWc(String paramString);
+  public abstract boolean aXD(String paramString);
   
-  public abstract boolean fDl();
+  public abstract boolean fHo();
 }
 
 

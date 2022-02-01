@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import d.o;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/vlog/ui/plugin/VLogThumbViewPlugin$1", "Landroid/support/v7/widget/LinearLayoutManager;", "scrollHorizontallyBy", "", "dx", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/ui/plugin/VLogThumbViewPlugin$1", "Landroid/support/v7/widget/LinearLayoutManager;", "scrollHorizontallyBy", "", "dx", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-vlog_release"})
 public final class VLogThumbViewPlugin$1
   extends LinearLayoutManager
 {
@@ -19,23 +19,23 @@ public final class VLogThumbViewPlugin$1
   
   public final int a(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
   {
-    AppMethodBeat.i(196396);
-    int i = ad.p(this.BPh) + paramInt;
-    if ((ad.t(this.BPh) >= 0) && (ad.u(this.BPh)))
+    AppMethodBeat.i(191855);
+    int i = ad.p(this.CgG) + paramInt;
+    if ((ad.t(this.CgG) >= 0) && (ad.u(this.CgG)))
     {
-      o localo = ad.v(this.BPh);
+      o localo = ad.v(this.CgG);
       if ((i <= ((Number)localo.second).floatValue()) && (i >= ((Number)localo.first).floatValue())) {}
       for (i = 1; i != 0; i = 0)
       {
         paramInt = super.a(paramInt, paramo, paramt);
-        AppMethodBeat.o(196396);
+        AppMethodBeat.o(191855);
         return paramInt;
       }
-      AppMethodBeat.o(196396);
+      AppMethodBeat.o(191855);
       return 0;
     }
     paramInt = super.a(paramInt, paramo, paramt);
-    AppMethodBeat.o(196396);
+    AppMethodBeat.o(191855);
     return paramInt;
   }
 }

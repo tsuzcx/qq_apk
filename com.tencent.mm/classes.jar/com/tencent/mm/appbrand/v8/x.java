@@ -2,25 +2,25 @@ package com.tencent.mm.appbrand.v8;
 
 import com.eclipsesource.v8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class x
 {
-  private static int cZH = -1;
-  private static int cZI = -1;
-  private static a cZJ;
+  private static int daG = -1;
+  private static int daH = -1;
+  private static a daI;
   
-  private static void NF()
+  private static void ND()
   {
     int i = 0;
     AppMethodBeat.i(144123);
     Object localObject = V8.getFlags();
-    ad.i("MicroMsg.V8GCReporter", "initV8GCSpaceSizeFromFlags : %s", new Object[] { localObject });
-    if (bt.isNullOrNil((String)localObject))
+    ae.i("MicroMsg.V8GCReporter", "initV8GCSpaceSizeFromFlags : %s", new Object[] { localObject });
+    if (bu.isNullOrNil((String)localObject))
     {
-      cZH = 1;
-      cZI = 8;
+      daG = 1;
+      daH = 8;
       AppMethodBeat.o(144123);
       return;
     }
@@ -29,7 +29,7 @@ public final class x
     {
       int j = f(localObject[i], "--min_semi_space_size", 1);
       if (j != -2147483648) {
-        cZH = j;
+        daG = j;
       }
       for (;;)
       {
@@ -37,7 +37,7 @@ public final class x
         break;
         j = f(localObject[i], "--max_semi_space_size", 8);
         if (j != -2147483648) {
-          cZI = j;
+          daH = j;
         }
       }
     }
@@ -48,35 +48,35 @@ public final class x
   {
     AppMethodBeat.i(144122);
     int i;
-    if (cZJ != null)
+    if (daI != null)
     {
-      if (cZH <= 0) {
+      if (daG <= 0) {
         break label146;
       }
-      i = cZH;
-      if (cZI <= 0) {
+      i = daG;
+      if (daH <= 0) {
         break label157;
       }
     }
-    for (int j = cZI;; j = cZI)
+    for (int j = daH;; j = daH)
     {
       paramString = String.format("%d,%d,%d,%d,%d,%s,%d,%d,%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-      ad.v("MicroMsg.V8GCReporter", "report str:%s", new Object[] { paramString });
-      cZJ.fH(paramString);
+      ae.v("MicroMsg.V8GCReporter", "report str:%s", new Object[] { paramString });
+      daI.fN(paramString);
       AppMethodBeat.o(144122);
       return;
       label146:
-      NF();
-      i = cZH;
+      ND();
+      i = daG;
       break;
       label157:
-      NF();
+      ND();
     }
   }
   
   public static void a(a parama)
   {
-    cZJ = parama;
+    daI = parama;
   }
   
   private static int f(String paramString1, String paramString2, int paramInt)
@@ -85,7 +85,7 @@ public final class x
     paramString2 = paramString2 + "=";
     if (paramString1.indexOf(paramString2) >= 0)
     {
-      paramInt = bt.getInt(paramString1.replaceFirst(paramString2, ""), paramInt);
+      paramInt = bu.getInt(paramString1.replaceFirst(paramString2, ""), paramInt);
       AppMethodBeat.o(144124);
       return paramInt;
     }
@@ -95,12 +95,12 @@ public final class x
   
   public static abstract interface a
   {
-    public abstract void fH(String paramString);
+    public abstract void fN(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.x
  * JD-Core Version:    0.7.0.1
  */

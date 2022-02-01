@@ -2,15 +2,15 @@ package com.tencent.mm.loader.g.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "", "num", "", "(I)V", "priority", "(II)V", "getNum", "()I", "getPriority", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "", "num", "", "(I)V", "priority", "(II)V", "getNum", "()I", "getPriority", "libimageloader_release"})
 public final class g
 {
-  final int hgh;
+  final int hiV;
   private final int priority;
   
   public g(int paramInt)
   {
-    this.hgh = paramInt;
+    this.hiV = paramInt;
     this.priority = 5;
   }
   
@@ -21,7 +21,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.g.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class md
   extends b
 {
-  public a dzA;
+  public a dAD;
+  public b dAE;
   
   public md()
   {
@@ -15,16 +16,22 @@ public final class md
   
   private md(byte paramByte)
   {
-    AppMethodBeat.i(116032);
-    this.dzA = new a();
-    this.IbR = false;
+    AppMethodBeat.i(149873);
+    this.dAD = new a();
+    this.dAE = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116032);
+    AppMethodBeat.o(149873);
   }
   
   public static final class a
   {
-    public boolean dzB;
+    public int action;
+  }
+  
+  public static final class b
+  {
+    public boolean isStart;
   }
 }
 

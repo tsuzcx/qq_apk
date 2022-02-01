@@ -7,53 +7,59 @@ import android.media.AudioManager;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.forcenotify.ui.ForceNotifyListUI;
 import com.tencent.mm.plugin.forcenotify.ui.ForceNotifyShowUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.adc;
-import com.tencent.mm.protocal.protobuf.cgk;
+import com.tencent.mm.protocal.protobuf.adl;
+import com.tencent.mm.protocal.protobuf.che;
 import com.tencent.mm.protocal.protobuf.cu;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import d.g.b.p;
+import d.n.n;
 import d.v;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/forcenotify/core/ForceNotifyService;", "Lcom/tencent/mm/plugin/forcenotify/core/BaseForceNotifyService;", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/ILoadingOpLogService$IOplogResult;", "()V", "ForceNotifyMiniAppTag", "", "ForceNotifyTag", "isSound", "", "()Z", "setSound", "(Z)V", "isTestError", "isVibrate", "setVibrate", "delete", "", "forcePushId", "scene", "", "getCount", "getExpireTime", "", "username", "getForceNotifyInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "getForceNotifyStorage", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "hasError", "isNeedNotify", "userName", "isNeedShowBanner", "isSilentMode", "context", "Landroid/content/Context;", "isVibrateMode", "modifyForceNotify", "info", "isAdd", "notifyShow", "onOpLogResult", "ret", "oplogErrMsg", "Lcom/tencent/mm/protocal/protobuf/OplogErrMsg;", "option", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IOpLogStorage$Operation;", "onReceive", "isNeedShow", "release", "setCanSoundAndVibrate", "setForTest", "isTest", "setting", "start", "startForceNotifyShowUI", "intent", "Landroid/content/Intent;", "plugin-force-notify_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/forcenotify/core/ForceNotifyService;", "Lcom/tencent/mm/plugin/forcenotify/core/BaseForceNotifyService;", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/ILoadingOpLogService$IOplogResult;", "()V", "ForceNotifyMiniAppTag", "", "ForceNotifyTag", "isSound", "", "()Z", "setSound", "(Z)V", "isTestError", "isVibrate", "setVibrate", "delete", "", "forcePushId", "scene", "", "getCount", "getExpireTime", "", "username", "getForceNotifyInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "getForceNotifyStorage", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "hasError", "isNeedNotify", "userName", "isNeedShowBanner", "isSilentMode", "context", "Landroid/content/Context;", "isVibrateMode", "modifyForceNotify", "info", "isAdd", "notifyShow", "onOpLogResult", "ret", "oplogErrMsg", "Lcom/tencent/mm/protocal/protobuf/OplogErrMsg;", "option", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IOpLogStorage$Operation;", "onReceive", "isNeedShow", "release", "setCanSoundAndVibrate", "setForTest", "isTest", "setting", "start", "startForceNotifyShowUI", "intent", "Landroid/content/Intent;", "plugin-force-notify_release"})
 public final class c
   extends a
   implements h.a
 {
-  private static boolean tjQ;
-  private static boolean tjR;
-  private static boolean tjS;
-  public static final c tjT;
+  private static boolean tuI;
+  private static boolean tuJ;
+  private static boolean tuK;
+  public static final c tuL;
   
   static
   {
     AppMethodBeat.i(149175);
-    tjT = new c();
-    tjR = true;
-    tjS = true;
+    tuL = new c();
+    tuJ = true;
+    tuK = true;
     AppMethodBeat.o(149175);
   }
   
-  public static ArrayList<com.tencent.mm.plugin.forcenotify.c.d> cQA()
+  public static ArrayList<com.tencent.mm.plugin.forcenotify.c.d> cTf()
   {
     AppMethodBeat.i(149163);
-    Object localObject = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-    localObject = com.tencent.mm.plugin.forcenotify.d.a.cQC();
+    Object localObject = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+    localObject = com.tencent.mm.plugin.forcenotify.d.a.cTh();
     AppMethodBeat.o(149163);
     return localObject;
   }
   
-  public static boolean fh(Context paramContext)
+  public static boolean fl(Context paramContext)
   {
     AppMethodBeat.i(149159);
     p.h(paramContext, "context");
@@ -73,7 +79,7 @@ public final class c
     return false;
   }
   
-  public static boolean fi(Context paramContext)
+  public static boolean fm(Context paramContext)
   {
     AppMethodBeat.i(149160);
     p.h(paramContext, "context");
@@ -93,64 +99,64 @@ public final class c
     return false;
   }
   
-  public final void a(int paramInt, cgk paramcgk, k.b paramb)
+  public final void a(int paramInt, che paramche, k.b paramb)
   {
-    AppMethodBeat.i(216652);
+    AppMethodBeat.i(209907);
     p.h(paramb, "option");
-    ad.i(this.TAG, "[onOpLogResult] ret:%s %s", new Object[] { Integer.valueOf(paramInt), paramb });
+    ae.i(this.TAG, "[onOpLogResult] ret:%s %s", new Object[] { Integer.valueOf(paramInt), paramb });
     String str;
     if (paramb.getCmdId() == 213)
     {
-      paramcgk = paramb.dmd();
-      if (paramcgk == null)
+      paramche = paramb.dpc();
+      if (paramche == null)
       {
-        paramcgk = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.AddForcePush");
-        AppMethodBeat.o(216652);
-        throw paramcgk;
+        paramche = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.AddForcePush");
+        AppMethodBeat.o(209907);
+        throw paramche;
       }
-      paramcgk = (cu)paramcgk;
-      ad.i(this.TAG, "[onOpLogResult] AddForcePush ForcePushId:%s", new Object[] { paramcgk.Fvf });
-      if ((paramInt == 0) && (!tjQ))
+      paramche = (cu)paramche;
+      ae.i(this.TAG, "[onOpLogResult] AddForcePush ForcePushId:%s", new Object[] { paramche.FND });
+      if ((paramInt == 0) && (!tuI))
       {
-        paramb = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-        str = paramcgk.Fvf;
+        paramb = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+        str = paramche.FND;
         p.g(str, "oplog.ForcePushId");
-        paramb.cS(str, 1);
-        ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).E(paramcgk.Fvf, 1, cf.aCL() / 1000L);
-        AppMethodBeat.o(216652);
+        paramb.cW(str, 1);
+        ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).D(paramche.FND, 1, ch.aDb() / 1000L);
+        AppMethodBeat.o(209907);
         return;
       }
-      paramb = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-      str = paramcgk.Fvf;
+      paramb = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+      str = paramche.FND;
       p.g(str, "oplog.ForcePushId");
-      paramb.cS(str, -1);
-      ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).E(paramcgk.Fvf, 6, cf.aCL() / 1000L);
-      AppMethodBeat.o(216652);
+      paramb.cW(str, -1);
+      ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).D(paramche.FND, 6, ch.aDb() / 1000L);
+      AppMethodBeat.o(209907);
       return;
     }
     if (paramb.getCmdId() == 214)
     {
-      paramcgk = paramb.dmd();
-      if (paramcgk == null)
+      paramche = paramb.dpc();
+      if (paramche == null)
       {
-        paramcgk = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.DelForcePush");
-        AppMethodBeat.o(216652);
-        throw paramcgk;
+        paramche = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.DelForcePush");
+        AppMethodBeat.o(209907);
+        throw paramche;
       }
-      paramcgk = (adc)paramcgk;
-      int i = paramcgk.scene;
+      paramche = (adl)paramche;
+      int i = paramche.scene;
       boolean bool = false;
       if (paramInt == 0)
       {
-        ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).E(paramcgk.Fvf, i, cf.aCL() / 1000L);
-        paramb = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-        str = paramcgk.Fvf;
+        ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).D(paramche.FND, i, ch.aDb() / 1000L);
+        paramb = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+        str = paramche.FND;
         p.g(str, "oplog.ForcePushId");
-        bool = paramb.CA(str);
+        bool = paramb.Dc(str);
       }
-      ad.i(this.TAG, "[onOpLogResult] DelForcePush id:%s ret:%s isDeleteLocal:%s", new Object[] { paramcgk.Fvf, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+      ae.i(this.TAG, "[onOpLogResult] DelForcePush id:%s ret:%s isDeleteLocal:%s", new Object[] { paramche.FND, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
     }
-    AppMethodBeat.o(216652);
+    AppMethodBeat.o(209907);
   }
   
   public final void a(com.tencent.mm.plugin.forcenotify.c.d paramd, boolean paramBoolean)
@@ -162,11 +168,11 @@ public final class c
     boolean bool;
     if (paramBoolean)
     {
-      locala = com.tencent.mm.plugin.forcenotify.d.a.tjV;
+      locala = com.tencent.mm.plugin.forcenotify.d.a.tuN;
       p.h(paramd, "info");
-      if (com.tencent.mm.plugin.forcenotify.d.a.hHS.replace("ForceNotifyData", "UserName", paramd.convertTo()) >= 0L)
+      if (com.tencent.mm.plugin.forcenotify.d.a.hKK.replace("ForceNotifyData", "UserName", paramd.convertTo()) >= 0L)
       {
-        localObject = (Map)com.tencent.mm.plugin.forcenotify.d.a.tjU;
+        localObject = (Map)com.tencent.mm.plugin.forcenotify.d.a.tuM;
         String str = paramd.field_ForcePushId;
         p.g(str, "info.field_ForcePushId");
         ((Map)localObject).put(str, paramd);
@@ -176,19 +182,19 @@ public final class c
     }
     for (;;)
     {
-      ad.i(this.TAG, "[onNewXmlReceived] ret:%s isAdd:%s info:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), paramd });
+      ae.i(this.TAG, "[onNewXmlReceived] ret:%s isAdd:%s info:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), paramd });
       AppMethodBeat.o(149169);
       return;
       bool = false;
       continue;
-      locala = com.tencent.mm.plugin.forcenotify.d.a.tjV;
+      locala = com.tencent.mm.plugin.forcenotify.d.a.tuN;
       localObject = paramd.field_ForcePushId;
       p.g(localObject, "info.field_ForcePushId");
-      bool = locala.CA((String)localObject);
+      bool = locala.Dc((String)localObject);
     }
   }
   
-  public final void aJ(String paramString, int paramInt)
+  public final void aM(String paramString, int paramInt)
   {
     AppMethodBeat.i(149166);
     if (paramString == null)
@@ -196,56 +202,23 @@ public final class c
       AppMethodBeat.o(149166);
       return;
     }
-    if (!ay.isNetworkConnected(aj.getContext()))
+    if (!az.isNetworkConnected(ak.getContext()))
     {
-      com.tencent.mm.plugin.forcenotify.d.a.tjV.doNotify();
+      com.tencent.mm.plugin.forcenotify.d.a.tuN.doNotify();
       AppMethodBeat.o(149166);
       return;
     }
-    adc localadc = new adc();
-    localadc.Fvf = paramString;
-    localadc.scene = paramInt;
+    adl localadl = new adl();
+    localadl.FND = paramString;
+    localadl.scene = paramInt;
     com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(locala, "MMKernel.service<IMessen…engerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).dlE().a((k.b)new k.a(214, (com.tencent.mm.bx.a)localadc));
-    ad.i(this.TAG, "[delete] ".concat(String.valueOf(paramString)));
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).doD().b((k.b)new k.a(214, (com.tencent.mm.bw.a)localadl));
+    ae.i(this.TAG, "[delete] ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(149166);
   }
   
-  public final void ajB(String paramString)
-  {
-    AppMethodBeat.i(149171);
-    p.h(paramString, "userName");
-    Object localObject1 = new Intent(aj.getContext(), ForceNotifyShowUI.class);
-    ((Intent)localObject1).addFlags(268435456);
-    ((Intent)localObject1).putExtra("userName", paramString);
-    if ((com.tencent.mm.compatible.util.d.lA(28)) || (p.i(Build.VERSION.CODENAME, "Q")))
-    {
-      ad.i(this.TAG, "[notifyShow] Q!");
-      paramString = aj.getContext();
-      p.g(paramString, "MMApplicationContext.getContext()");
-      Object localObject2 = aj.getContext();
-      p.g(localObject2, "MMApplicationContext.getContext()");
-      localObject2 = ((Context)localObject2).getResources().getString(2131759602);
-      p.g(localObject2, "MMApplicationContext.get…R.string.force_notify_wx)");
-      String str1 = ForceNotifyShowUI.class.getCanonicalName();
-      p.g(str1, "ForceNotifyShowUI::class.java.canonicalName");
-      String str2 = com.tencent.mm.br.a.abB();
-      p.g(str2, "NotificationHelper.getMessageChannelIdUse()");
-      com.tencent.mm.util.a.a(paramString, (Intent)localObject1, (String)localObject2, str1, str2);
-      AppMethodBeat.o(149171);
-      return;
-    }
-    ad.i(this.TAG, "[notifyShow]");
-    paramString = aj.getContext();
-    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "notifyShow", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "notifyShow", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(149171);
-  }
-  
-  public final void ajx(String paramString)
+  public final void akv(String paramString)
   {
     AppMethodBeat.i(149165);
     if (paramString == null)
@@ -253,32 +226,32 @@ public final class c
       AppMethodBeat.o(149165);
       return;
     }
-    if (!ay.isNetworkConnected(aj.getContext()))
+    if (!az.isNetworkConnected(ak.getContext()))
     {
-      com.tencent.mm.plugin.forcenotify.d.a.tjV.doNotify();
+      com.tencent.mm.plugin.forcenotify.d.a.tuN.doNotify();
       AppMethodBeat.o(149165);
       return;
     }
     Object localObject2 = new cu();
-    ((cu)localObject2).Fvf = (paramString + "@wxcontact");
-    ((cu)localObject2).Fvg = 10800;
+    ((cu)localObject2).FND = (paramString + "@wxcontact");
+    ((cu)localObject2).FNE = 10800;
     Object localObject1 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(localObject1, "MMKernel.service<IMessen…engerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).dlE().a((k.b)new k.a(213, (com.tencent.mm.bx.a)localObject2));
-    localObject1 = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-    Object localObject3 = ((cu)localObject2).Fvf;
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).doD().b((k.b)new k.a(213, (com.tencent.mm.bw.a)localObject2));
+    localObject1 = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+    Object localObject3 = ((cu)localObject2).FND;
     p.g(localObject3, "opLog.ForcePushId");
     p.h(paramString, "userName");
     p.h(localObject3, "forcePushId");
     localObject2 = new com.tencent.mm.plugin.forcenotify.c.d();
     ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_UserName = paramString;
     ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_ForcePushId = ((String)localObject3);
-    ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_CreateTime = cf.aCL();
+    ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_CreateTime = ch.aDb();
     ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_ExpiredTime = (((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_CreateTime + 10800000L);
     ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_Status = 1;
-    if (com.tencent.mm.plugin.forcenotify.d.a.hHS.replace("ForceNotifyData", "UserName", ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).convertTo()) >= 0L)
+    if (com.tencent.mm.plugin.forcenotify.d.a.hKK.replace("ForceNotifyData", "UserName", ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).convertTo()) >= 0L)
     {
-      localObject3 = (Map)com.tencent.mm.plugin.forcenotify.d.a.tjU;
+      localObject3 = (Map)com.tencent.mm.plugin.forcenotify.d.a.tuM;
       String str = ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).field_ForcePushId;
       p.g(str, "info.field_ForcePushId");
       ((Map)localObject3).put(str, localObject2);
@@ -286,17 +259,17 @@ public final class c
     }
     for (boolean bool = true;; bool = false)
     {
-      ad.i(this.TAG, "[setting] " + paramString + " ret:%s", new Object[] { Boolean.valueOf(bool) });
+      ae.i(this.TAG, "[setting] " + paramString + " ret:%s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(149165);
       return;
     }
   }
   
-  public final long ajy(String paramString)
+  public final long akw(String paramString)
   {
     AppMethodBeat.i(149164);
     p.h(paramString, "username");
-    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tjV;
+    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tuN;
     paramString = paramString + "@wxcontact";
     p.h(paramString, "forcePushId");
     com.tencent.mm.plugin.forcenotify.c.d locald = new com.tencent.mm.plugin.forcenotify.c.d();
@@ -311,31 +284,64 @@ public final class c
     return 0L;
   }
   
-  public final boolean ajz(String paramString)
+  public final boolean akx(String paramString)
   {
     AppMethodBeat.i(149174);
     p.h(paramString, "userName");
-    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-    boolean bool = com.tencent.mm.plugin.forcenotify.d.a.ajz(paramString + "@wxcontact");
+    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+    boolean bool = com.tencent.mm.plugin.forcenotify.d.a.akx(paramString + "@wxcontact");
     AppMethodBeat.o(149174);
     return bool;
   }
   
-  public final void bi(String paramString, boolean paramBoolean)
+  public final void akz(String paramString)
+  {
+    AppMethodBeat.i(149171);
+    p.h(paramString, "userName");
+    Object localObject1 = new Intent(ak.getContext(), ForceNotifyShowUI.class);
+    ((Intent)localObject1).addFlags(268435456);
+    ((Intent)localObject1).putExtra("userName", paramString);
+    if ((com.tencent.mm.compatible.util.d.lC(28)) || (p.i(Build.VERSION.CODENAME, "Q")))
+    {
+      ae.i(this.TAG, "[notifyShow] Q!");
+      paramString = ak.getContext();
+      p.g(paramString, "MMApplicationContext.getContext()");
+      Object localObject2 = ak.getContext();
+      p.g(localObject2, "MMApplicationContext.getContext()");
+      localObject2 = ((Context)localObject2).getResources().getString(2131759602);
+      p.g(localObject2, "MMApplicationContext.get…R.string.force_notify_wx)");
+      String str1 = ForceNotifyShowUI.class.getCanonicalName();
+      p.g(str1, "ForceNotifyShowUI::class.java.canonicalName");
+      String str2 = com.tencent.mm.bq.a.abK();
+      p.g(str2, "NotificationHelper.getMessageChannelIdUse()");
+      com.tencent.mm.util.a.a(paramString, (Intent)localObject1, (String)localObject2, str1, str2);
+      AppMethodBeat.o(149171);
+      return;
+    }
+    ae.i(this.TAG, "[notifyShow]");
+    paramString = ak.getContext();
+    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "notifyShow", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "notifyShow", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(149171);
+  }
+  
+  public final void bl(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(149168);
     p.h(paramString, "userName");
     if (paramBoolean) {
-      ajB(paramString);
+      akz(paramString);
     }
     AppMethodBeat.o(149168);
   }
   
-  public final boolean cQx()
+  public final boolean cTc()
   {
     AppMethodBeat.i(149172);
-    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tjV;
-    if (com.tencent.mm.plugin.forcenotify.d.a.cQE() > 0)
+    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+    if (com.tencent.mm.plugin.forcenotify.d.a.cTj() > 0)
     {
       AppMethodBeat.o(149172);
       return true;
@@ -344,20 +350,20 @@ public final class c
     return false;
   }
   
-  public final j<?> cQy()
+  public final j<?> cTd()
   {
-    return (j)com.tencent.mm.plugin.forcenotify.d.a.tjV;
+    return (j)com.tencent.mm.plugin.forcenotify.d.a.tuN;
   }
   
-  public final void fg(Context paramContext)
+  public final void fk(Context paramContext)
   {
     AppMethodBeat.i(149170);
     p.h(paramContext, "context");
-    ad.i(this.TAG, "[startForceNotifyShowUI]");
+    ae.i(this.TAG, "[startForceNotifyShowUI]");
     Object localObject = new Intent(paramContext, ForceNotifyListUI.class);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "startForceNotifyShowUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "startForceNotifyShowUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/forcenotify/core/ForceNotifyService", "startForceNotifyShowUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(149170);
   }
@@ -365,7 +371,7 @@ public final class c
   public final boolean hasError()
   {
     AppMethodBeat.i(149173);
-    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tjV;
+    com.tencent.mm.plugin.forcenotify.d.a locala = com.tencent.mm.plugin.forcenotify.d.a.tuN;
     if (com.tencent.mm.plugin.forcenotify.d.a.getErrorCount() > 0)
     {
       AppMethodBeat.o(149173);
@@ -375,9 +381,9 @@ public final class c
     return false;
   }
   
-  public final void mH(boolean paramBoolean)
+  public final void mL(boolean paramBoolean)
   {
-    tjQ = paramBoolean;
+    tuI = paramBoolean;
   }
   
   public final void release()
@@ -386,10 +392,10 @@ public final class c
     super.release();
     com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(locala, "MMKernel.service<IMessen…engerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).dlE().b(213, (h.a)this);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).doD().b(213, (h.a)this);
     locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(locala, "MMKernel.service<IMessen…engerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).dlE().b(214, (h.a)this);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).doD().b(214, (h.a)this);
     AppMethodBeat.o(149162);
   }
   
@@ -397,18 +403,41 @@ public final class c
   {
     AppMethodBeat.i(149161);
     super.start();
-    com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(locala, "MMKernel.service<IMessen…engerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).dlE().a(213, (h.a)this);
-    locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(locala, "MMKernel.service<IMessen…engerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).dlE().a(214, (h.a)this);
+    Object localObject1 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(localObject1, "MMKernel.service<IMessen…engerStorage::class.java)");
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).doD().a(213, (h.a)this);
+    localObject1 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(localObject1, "MMKernel.service<IMessen…engerStorage::class.java)");
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).doD().a(214, (h.a)this);
+    localObject1 = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+    if (com.tencent.mm.plugin.forcenotify.d.a.hKK.delete("ForceNotifyData", "UserName like ? ", new String[] { "%@gamelifesess" }) >= 0)
+    {
+      Object localObject3 = (Map)com.tencent.mm.plugin.forcenotify.d.a.tuM;
+      Object localObject2 = (Map)new LinkedHashMap();
+      localObject3 = ((Map)localObject3).entrySet().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+        String str = ((com.tencent.mm.plugin.forcenotify.c.d)localEntry.getValue()).field_UserName;
+        p.g(str, "it.value.field_UserName");
+        if (n.nG(str, "@gamelifesess")) {
+          ((Map)localObject2).put(localEntry.getKey(), localEntry.getValue());
+        }
+      }
+      localObject2 = ((Map)localObject2).entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (Map.Entry)((Iterator)localObject2).next();
+        com.tencent.mm.plugin.forcenotify.d.a.tuM.remove(((com.tencent.mm.plugin.forcenotify.c.d)((Map.Entry)localObject3).getValue()).field_ForcePushId);
+      }
+      ((com.tencent.mm.plugin.forcenotify.d.a)localObject1).doNotify();
+    }
     AppMethodBeat.o(149161);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.b.c
  * JD-Core Version:    0.7.0.1
  */

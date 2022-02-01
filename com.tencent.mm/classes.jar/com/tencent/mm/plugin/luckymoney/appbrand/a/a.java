@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.protocal.protobuf.cvc;
-import com.tencent.mm.protocal.protobuf.cvp;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.protocal.protobuf.cvw;
+import com.tencent.mm.protocal.protobuf.cwj;
 
-public abstract class a<Req extends cvc, Resp extends cvp>
+public abstract class a<Req extends cvw, Resp extends cwj>
 {
-  private com.tencent.mm.al.a viX;
-  Req viY;
-  private Resp viZ;
+  private com.tencent.mm.ak.a vvc;
+  Req vvd;
+  private Resp vve;
   
   public final <T> f<T> b(com.tencent.mm.vending.c.a<T, a.a<Resp>> parama)
   {
     boolean bool2 = true;
-    dhM();
-    this.viZ = dhL();
-    this.viX = new com.tencent.mm.al.a();
-    com.tencent.mm.al.a locala = this.viX;
-    cvc localcvc = this.viY;
-    cvp localcvp = this.viZ;
-    if ((localcvc == null) || (localcvp == null))
+    dkL();
+    this.vve = dkK();
+    this.vvc = new com.tencent.mm.ak.a();
+    com.tencent.mm.ak.a locala = this.vvc;
+    cvw localcvw = this.vvd;
+    cwj localcwj = this.vve;
+    if ((localcvw == null) || (localcwj == null))
     {
       parama = new StringBuilder("CgiBase called withoud req or resp req?[");
-      if (localcvc == null)
+      if (localcvw == null)
       {
         bool1 = true;
         parama = parama.append(bool1).append("] resp?[");
-        if (localcvp != null) {
+        if (localcwj != null) {
           break label114;
         }
       }
@@ -43,17 +43,17 @@ public abstract class a<Req extends cvc, Resp extends cvp>
     b.a locala1 = new b.a();
     locala1.funcId = getFuncId();
     locala1.uri = getUri();
-    locala1.hNM = localcvc;
-    locala1.hNN = localcvp;
-    locala.c(locala1.aDC());
-    this.viX.aED().g(new com.tencent.mm.vending.c.a() {}).b(parama);
+    locala1.hQF = localcvw;
+    locala1.hQG = localcwj;
+    locala.c(locala1.aDS());
+    this.vvc.aET().g(new com.tencent.mm.vending.c.a() {}).b(parama);
   }
   
-  protected abstract Resp dhL();
+  protected abstract Resp dkK();
   
-  protected void dhM() {}
+  protected void dkL() {}
   
-  protected void dhN() {}
+  protected void dkM() {}
   
   protected abstract int getFuncId();
   

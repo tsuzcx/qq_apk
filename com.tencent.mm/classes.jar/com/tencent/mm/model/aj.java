@@ -2,9 +2,13 @@ package com.tencent.mm.model;
 
 public abstract interface aj
 {
-  public abstract void aBx();
+  public abstract void WC();
   
-  public abstract void aBy();
+  public abstract void WD();
+  
+  public abstract void a(ak paramak);
+  
+  public abstract void b(ak paramak);
 }
 
 

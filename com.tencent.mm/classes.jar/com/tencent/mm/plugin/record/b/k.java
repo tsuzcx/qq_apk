@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.record.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,13 +16,13 @@ public final class k
   implements com.tencent.mm.plugin.record.a.e
 {
   private com.tencent.mm.sdk.e.e db;
-  private Vector<d> xqY;
+  private Vector<d> xGV;
   
   public k(com.tencent.mm.sdk.e.e parame)
   {
     super(parame, com.tencent.mm.plugin.record.a.j.info, "RecordCDNInfo", null);
     AppMethodBeat.i(9500);
-    this.xqY = new Vector();
+    this.xGV = new Vector();
     this.db = parame;
     AppMethodBeat.o(9500);
   }
@@ -30,7 +30,7 @@ public final class k
   private void b(final int paramInt, final com.tencent.mm.plugin.record.a.j paramj)
   {
     AppMethodBeat.i(9503);
-    g.ajF().ay(new Runnable()
+    g.ajU().aw(new Runnable()
     {
       public final void run()
       {
@@ -45,7 +45,7 @@ public final class k
     AppMethodBeat.o(9503);
   }
   
-  public final List<com.tencent.mm.plugin.record.a.j> Ny(int paramInt)
+  public final List<com.tencent.mm.plugin.record.a.j> Oe(int paramInt)
   {
     AppMethodBeat.i(9505);
     LinkedList localLinkedList = new LinkedList();
@@ -61,7 +61,7 @@ public final class k
       }
       ((Cursor)localObject).close();
     }
-    ad.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    ae.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
     AppMethodBeat.o(9505);
     return localLinkedList;
   }
@@ -69,7 +69,7 @@ public final class k
   public final void a(final d paramd)
   {
     AppMethodBeat.i(9501);
-    g.ajF().ay(new Runnable()
+    g.ajU().aw(new Runnable()
     {
       public final void run()
       {
@@ -109,7 +109,7 @@ public final class k
     return false;
   }
   
-  public final com.tencent.mm.plugin.record.a.j avq(String paramString)
+  public final com.tencent.mm.plugin.record.a.j awF(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(9506);
@@ -135,7 +135,7 @@ public final class k
   public final void b(final d paramd)
   {
     AppMethodBeat.i(9502);
-    g.ajF().ay(new Runnable()
+    g.ajU().aw(new Runnable()
     {
       public final void run()
       {
@@ -152,7 +152,7 @@ public final class k
     AppMethodBeat.i(9510);
     if (paramj != null)
     {
-      ad.v("MicroMsg.RecordMsgCDNStorage", "insert record cdn info %s", new Object[] { paramj });
+      ae.v("MicroMsg.RecordMsgCDNStorage", "insert record cdn info %s", new Object[] { paramj });
       if (super.insert(paramj))
       {
         b(2, paramj);
@@ -162,7 +162,7 @@ public final class k
     }
     else
     {
-      ad.e("MicroMsg.RecordMsgCDNStorage", "insert null record cdn info");
+      ae.e("MicroMsg.RecordMsgCDNStorage", "insert null record cdn info");
       AppMethodBeat.o(9510);
       return false;
     }
@@ -183,7 +183,7 @@ public final class k
     return false;
   }
   
-  public final List<com.tencent.mm.plugin.record.a.j> dEg()
+  public final List<com.tencent.mm.plugin.record.a.j> dHx()
   {
     AppMethodBeat.i(9504);
     LinkedList localLinkedList = new LinkedList();
@@ -198,7 +198,7 @@ public final class k
       }
       localCursor.close();
     }
-    ad.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    ae.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
     AppMethodBeat.o(9504);
     return localLinkedList;
   }

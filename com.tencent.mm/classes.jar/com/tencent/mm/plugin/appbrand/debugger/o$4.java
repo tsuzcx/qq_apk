@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.debugger;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.m;
 import com.tencent.mm.g.a.m.a;
-import com.tencent.mm.protocal.protobuf.dzq;
+import com.tencent.mm.protocal.protobuf.ebh;
 import com.tencent.mm.sdk.b.c;
 import org.json.JSONObject;
 
@@ -20,18 +20,18 @@ final class o$4
   private boolean a(m paramm)
   {
     AppMethodBeat.i(147023);
-    if ((paramm == null) || (paramm.djZ == null) || (paramm.djZ.dkc == null))
+    if ((paramm == null) || (paramm.dlb == null) || (paramm.dlb.dle == null))
     {
       AppMethodBeat.o(147023);
       return true;
     }
-    dzq localdzq = new dzq();
-    localdzq.dka = paramm.djZ.dka;
-    localdzq.dkb = paramm.djZ.dkb;
-    localdzq.HML = paramm.djZ.dkc.toString();
-    localdzq.timestamp = System.currentTimeMillis();
-    paramm = v.a(localdzq, this.kbz.coY, "networkDebugAPI");
-    this.kbz.a(paramm);
+    ebh localebh = new ebh();
+    localebh.dlc = paramm.dlb.dlc;
+    localebh.dld = paramm.dlb.dld;
+    localebh.IgS = paramm.dlb.dle.toString();
+    localebh.timestamp = System.currentTimeMillis();
+    paramm = v.a(localebh, this.keQ.cpc, "networkDebugAPI");
+    this.keQ.a(paramm);
     AppMethodBeat.o(147023);
     return true;
   }

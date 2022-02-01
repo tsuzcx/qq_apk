@@ -8,12 +8,12 @@ import com.tencent.mm.ui.MMActivity;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinishing", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinishing", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "libmmui_release"})
 public abstract class UIComponent
   extends SimpleUIComponent
 {
-  private boolean KiF;
-  public View kBS;
+  private boolean KEZ;
+  public View kFh;
   
   public UIComponent(Fragment paramFragment)
   {
@@ -25,31 +25,31 @@ public abstract class UIComponent
     super(paramMMActivity);
   }
   
-  public void ac(Bundle paramBundle) {}
-  
   public void ad(Bundle paramBundle) {}
   
-  public void cBA()
+  public void ae(Bundle paramBundle) {}
+  
+  public void cDm()
   {
-    this.KiF = true;
+    this.KEZ = true;
   }
   
-  public void cKA()
+  public void cNe()
   {
-    this.KiF = false;
+    this.KEZ = false;
   }
   
-  public void cOA() {}
+  public void cRf() {}
   
-  public final boolean fHy()
+  public final boolean fLQ()
   {
     return this.fragment != null;
   }
   
-  public final void gQ(View paramView)
+  public final void gV(View paramView)
   {
     p.h(paramView, "<set-?>");
-    this.kBS = paramView;
+    this.kFh = paramView;
   }
   
   public int getLayoutId()
@@ -59,9 +59,9 @@ public abstract class UIComponent
   
   public final View getRootView()
   {
-    View localView = this.kBS;
+    View localView = this.kFh;
     if (localView == null) {
-      p.bcb("rootView");
+      p.bdF("rootView");
     }
     return localView;
   }
@@ -93,7 +93,7 @@ public abstract class UIComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponent
  * JD-Core Version:    0.7.0.1
  */

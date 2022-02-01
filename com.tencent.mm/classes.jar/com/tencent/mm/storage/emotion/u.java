@@ -11,7 +11,7 @@ public final class u
   extends j<SmileyPanelConfigInfo>
   implements g.a
 {
-  private static final String[] IOr;
+  private static final String[] JiX;
   public static final String[] SQL_CREATE;
   public e db;
   
@@ -19,7 +19,7 @@ public final class u
   {
     AppMethodBeat.i(105152);
     SQL_CREATE = new String[] { j.getCreateSQLs(SmileyPanelConfigInfo.info, "SmileyPanelConfigInfo") };
-    IOr = new String[] { "position", "key" };
+    JiX = new String[] { "position", "key" };
     AppMethodBeat.o(105152);
   }
   
@@ -41,7 +41,7 @@ public final class u
   }
   
   /* Error */
-  public final java.util.ArrayList<SmileyPanelConfigInfo> cgw()
+  public final java.util.ArrayList<SmileyPanelConfigInfo> chM()
   {
     // Byte code:
     //   0: ldc 64
@@ -53,7 +53,7 @@ public final class u
     //   14: aload_0
     //   15: getfield 57	com/tencent/mm/storage/emotion/u:db	Lcom/tencent/mm/sdk/e/e;
     //   18: ldc 31
-    //   20: getstatic 43	com/tencent/mm/storage/emotion/u:IOr	[Ljava/lang/String;
+    //   20: getstatic 43	com/tencent/mm/storage/emotion/u:JiX	[Ljava/lang/String;
     //   23: aconst_null
     //   24: aconst_null
     //   25: aconst_null
@@ -107,7 +107,7 @@ public final class u
     //   114: invokevirtual 104	java/util/ArrayList:size	()I
     //   117: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   120: aastore
-    //   121: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   121: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   124: ldc 64
     //   126: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   129: aload 5
@@ -119,8 +119,8 @@ public final class u
     //   137: astore_2
     //   138: ldc 96
     //   140: aload 4
-    //   142: invokestatic 121	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   145: invokestatic 125	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: invokestatic 120	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   145: invokestatic 124	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   148: aload_3
     //   149: ifnull -47 -> 102
     //   152: aload_3
@@ -172,7 +172,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.u
  * JD-Core Version:    0.7.0.1
  */

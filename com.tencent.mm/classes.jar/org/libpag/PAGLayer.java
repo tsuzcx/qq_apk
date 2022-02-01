@@ -18,10 +18,10 @@ public class PAGLayer
   
   static
   {
-    AppMethodBeat.i(220175);
+    AppMethodBeat.i(216929);
     b.loadLibrary("libpag");
     nativeInit();
-    AppMethodBeat.o(220175);
+    AppMethodBeat.o(216929);
   }
   
   public PAGLayer(long paramLong)
@@ -49,23 +49,23 @@ public class PAGLayer
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(220174);
+    AppMethodBeat.i(216928);
     if (this == paramObject)
     {
-      AppMethodBeat.o(220174);
+      AppMethodBeat.o(216928);
       return true;
     }
     if ((paramObject instanceof PAGLayer))
     {
       if (hashCode() == paramObject.hashCode())
       {
-        AppMethodBeat.o(220174);
+        AppMethodBeat.o(216928);
         return true;
       }
-      AppMethodBeat.o(220174);
+      AppMethodBeat.o(216928);
       return false;
     }
-    AppMethodBeat.o(220174);
+    AppMethodBeat.o(216928);
     return false;
   }
   
@@ -73,9 +73,9 @@ public class PAGLayer
   
   protected void finalize()
   {
-    AppMethodBeat.i(220173);
+    AppMethodBeat.i(216927);
     nativeRelease();
-    AppMethodBeat.o(220173);
+    AppMethodBeat.o(216927);
   }
   
   public native float frameRate();
@@ -86,12 +86,12 @@ public class PAGLayer
   
   public Matrix getTotalMatrix()
   {
-    AppMethodBeat.i(220172);
+    AppMethodBeat.i(216926);
     float[] arrayOfFloat = new float[9];
     getTotalMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(220172);
+    AppMethodBeat.o(216926);
     return localMatrix;
   }
   
@@ -112,12 +112,12 @@ public class PAGLayer
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(220170);
+    AppMethodBeat.i(216924);
     float[] arrayOfFloat = new float[9];
     matrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(220170);
+    AppMethodBeat.o(216924);
     return localMatrix;
   }
   
@@ -135,16 +135,16 @@ public class PAGLayer
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(220171);
+    AppMethodBeat.i(216925);
     if (paramMatrix == null)
     {
-      AppMethodBeat.o(220171);
+      AppMethodBeat.o(216925);
       return;
     }
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     setMatrix(arrayOfFloat);
-    AppMethodBeat.o(220171);
+    AppMethodBeat.o(216925);
   }
   
   public native void setProgress(double paramDouble);

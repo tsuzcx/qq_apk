@@ -5,11 +5,11 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ac.a.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ad.a.a.a;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class SameLayerCameraView
   extends AppBrandCameraView
@@ -32,12 +32,12 @@ public class SameLayerCameraView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static void bjE()
+  public static void bkn()
   {
     AppMethodBeat.i(46224);
-    com.tencent.mm.plugin.appbrand.jsapi.ac.a.a.lxa = new a.a()
+    com.tencent.mm.plugin.appbrand.jsapi.ad.a.a.lBy = new a.a()
     {
-      public final f dq(Context paramAnonymousContext)
+      public final f ds(Context paramAnonymousContext)
       {
         AppMethodBeat.i(46222);
         paramAnonymousContext = new SameLayerCameraView(paramAnonymousContext);
@@ -48,16 +48,16 @@ public class SameLayerCameraView
     AppMethodBeat.o(46224);
   }
   
-  protected final AppBrandCameraView.a Pz(String paramString)
+  protected final AppBrandCameraView.a Qh(String paramString)
   {
     AppMethodBeat.i(46228);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.equals("scanCode")))
+    if ((!bu.isNullOrNil(paramString)) && (paramString.equals("scanCode")))
     {
-      paramString = new a();
+      paramString = new SameLayerCameraView.a(this);
       AppMethodBeat.o(46228);
       return paramString;
     }
-    paramString = super.Pz(paramString);
+    paramString = super.Qh(paramString);
     AppMethodBeat.o(46228);
     return paramString;
   }
@@ -78,38 +78,21 @@ public class SameLayerCameraView
       AppMethodBeat.o(46227);
       return;
     }
-    getRecordView().vMS.l(paramMotionEvent);
+    getRecordView().vYV.l(paramMotionEvent);
     AppMethodBeat.o(46227);
   }
   
   public void setCustomSurfaceTexture(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(46225);
-    ad.i("MicroMsg.SameLayerCameraView", "setCustomSurfaceTexture:%s", new Object[] { paramSurfaceTexture });
+    ae.i("MicroMsg.SameLayerCameraView", "setCustomSurfaceTexture:%s", new Object[] { paramSurfaceTexture });
     this.mSurfaceTexture = paramSurfaceTexture;
     AppMethodBeat.o(46225);
-  }
-  
-  protected final class a
-    extends AppBrandCameraView.c
-  {
-    protected a()
-    {
-      super();
-    }
-    
-    public final void init()
-    {
-      AppMethodBeat.i(46223);
-      this.kHU = 1;
-      super.init();
-      AppMethodBeat.o(46223);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.SameLayerCameraView
  * JD-Core Version:    0.7.0.1
  */

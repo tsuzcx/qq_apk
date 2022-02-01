@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.crashfix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Field;
 
 public final class a
@@ -19,7 +19,7 @@ public final class a
     }
     catch (Exception paramField)
     {
-      ad.e("MicroMsg.HookUtils", paramField.getMessage());
+      ae.e("MicroMsg.HookUtils", paramField.getMessage());
       AppMethodBeat.o(145624);
     }
   }

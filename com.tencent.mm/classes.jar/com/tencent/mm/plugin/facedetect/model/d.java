@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.facedetect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
   public static final Object mLock;
-  private static volatile d rha;
-  public List<a> rhb = null;
+  private static volatile d rpe;
+  public List<a> rpf = null;
   
   static
   {
     AppMethodBeat.i(103701);
-    rha = null;
+    rpe = null;
     mLock = new Object();
     AppMethodBeat.o(103701);
   }
   
-  public static final d csO()
+  public static final d cup()
   {
     AppMethodBeat.i(103697);
-    if (rha == null) {
+    if (rpe == null) {
       synchronized (mLock)
       {
-        if (rha == null) {
-          rha = new d();
+        if (rpe == null) {
+          rpe = new d();
         }
-        d locald = rha;
+        d locald = rpe;
         AppMethodBeat.o(103697);
         return locald;
       }
     }
-    ??? = rha;
+    ??? = rpe;
     AppMethodBeat.o(103697);
     return ???;
   }
@@ -51,7 +51,7 @@ public final class d
     //   8: ifnonnull +18 -> 26
     //   11: ldc 47
     //   13: ldc 49
-    //   15: invokestatic 55	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   15: invokestatic 55	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   18: ldc 45
     //   20: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
@@ -62,7 +62,7 @@ public final class d
     //   30: aload_2
     //   31: monitorenter
     //   32: aload_0
-    //   33: getfield 39	com/tencent/mm/plugin/facedetect/model/d:rhb	Ljava/util/List;
+    //   33: getfield 39	com/tencent/mm/plugin/facedetect/model/d:rpf	Ljava/util/List;
     //   36: ifnonnull +18 -> 54
     //   39: aload_0
     //   40: new 57	java/util/ArrayList
@@ -70,9 +70,9 @@ public final class d
     //   44: iconst_5
     //   45: invokespecial 59	java/util/ArrayList:<init>	(I)V
     //   48: invokestatic 65	java/util/Collections:synchronizedList	(Ljava/util/List;)Ljava/util/List;
-    //   51: putfield 39	com/tencent/mm/plugin/facedetect/model/d:rhb	Ljava/util/List;
+    //   51: putfield 39	com/tencent/mm/plugin/facedetect/model/d:rpf	Ljava/util/List;
     //   54: aload_0
-    //   55: getfield 39	com/tencent/mm/plugin/facedetect/model/d:rhb	Ljava/util/List;
+    //   55: getfield 39	com/tencent/mm/plugin/facedetect/model/d:rpf	Ljava/util/List;
     //   58: new 6	com/tencent/mm/plugin/facedetect/model/d$a
     //   61: dup
     //   62: aload_0
@@ -118,40 +118,40 @@ public final class d
     AppMethodBeat.i(103700);
     synchronized (mLock)
     {
-      if (this.rhb != null) {
-        this.rhb.remove(paramb);
+      if (this.rpf != null) {
+        this.rpf.remove(paramb);
       }
       AppMethodBeat.o(103700);
       return;
     }
   }
   
-  public final void bl(byte[] paramArrayOfByte)
+  public final void bk(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103699);
     synchronized (mLock)
     {
-      ad.v("MicroMsg.FaceCameraDataCallbackHolder", "hy: publish data:".concat(String.valueOf(paramArrayOfByte)));
-      if ((this.rhb == null) || (this.rhb.size() == 0))
+      ae.v("MicroMsg.FaceCameraDataCallbackHolder", "hy: publish data:".concat(String.valueOf(paramArrayOfByte)));
+      if ((this.rpf == null) || (this.rpf.size() == 0))
       {
-        ad.w("MicroMsg.FaceCameraDataCallbackHolder", "hy: nothing's listening to preview data");
+        ae.w("MicroMsg.FaceCameraDataCallbackHolder", "hy: nothing's listening to preview data");
         AppMethodBeat.o(103699);
         return;
       }
       if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
       {
-        ad.w("MicroMsg.FaceCameraDataCallbackHolder", "hy: null camera data got");
+        ae.w("MicroMsg.FaceCameraDataCallbackHolder", "hy: null camera data got");
         AppMethodBeat.o(103699);
         return;
       }
-      Iterator localIterator = this.rhb.iterator();
+      Iterator localIterator = this.rpf.iterator();
       if (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         int i = paramArrayOfByte.length;
-        locala.data = ((byte[])locala.rhc.csP().d(Integer.valueOf(i)));
+        locala.data = ((byte[])locala.rpg.cuq().e(Integer.valueOf(i)));
         System.arraycopy(paramArrayOfByte, 0, locala.data, 0, i);
-        locala.rhc.bm(locala.data);
+        locala.rpg.bl(locala.data);
       }
     }
     AppMethodBeat.o(103699);
@@ -160,19 +160,19 @@ public final class d
   final class a
   {
     byte[] data;
-    d.b rhc;
+    d.b rpg;
     
     a(d.b paramb)
     {
-      this.rhc = paramb;
+      this.rpg = paramb;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void bm(byte[] paramArrayOfByte);
+    public abstract void bl(byte[] paramArrayOfByte);
     
-    public abstract a<byte[]> csP();
+    public abstract a<byte[]> cuq();
   }
 }
 

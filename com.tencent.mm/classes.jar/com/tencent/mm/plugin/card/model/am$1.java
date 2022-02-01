@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.is;
-import com.tencent.mm.g.a.is.a;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.it;
+import com.tencent.mm.g.a.it.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.sharecard.a.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class am$1
-  extends c<is>
+  extends c<it>
 {
   am$1(am paramam)
   {
     AppMethodBeat.i(161195);
-    this.__eventId = is.class.getName().hashCode();
+    this.__eventId = it.class.getName().hashCode();
     AppMethodBeat.o(161195);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Map;
 
 public final class bb
@@ -11,8 +11,8 @@ public final class bb
   {
     AppMethodBeat.i(45493);
     paramd = super.d(paramd);
-    paramd.put("clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.Fnj));
-    paramd.put("x5Version", Integer.valueOf(com.tencent.xweb.x5.sdk.d.getTbsVersion(aj.getContext())));
+    paramd.put("clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.FFH));
+    paramd.put("x5Version", Integer.valueOf(com.tencent.xweb.x5.sdk.d.getTbsVersion(ak.getContext())));
     AppMethodBeat.o(45493);
     return paramd;
   }

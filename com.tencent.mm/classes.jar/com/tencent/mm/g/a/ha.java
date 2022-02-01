@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.g;
 import com.tencent.mm.sdk.b.b;
 
 public final class ha
   extends b
 {
-  public a dtt;
+  public a duv;
   
   public ha()
   {
@@ -16,22 +15,22 @@ public final class ha
   
   private ha(byte paramByte)
   {
-    AppMethodBeat.i(168628);
-    this.dtt = new a();
-    this.IbR = false;
+    AppMethodBeat.i(201313);
+    this.duv = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(168628);
+    AppMethodBeat.o(201313);
   }
   
   public static final class a
   {
-    public g contact;
-    public String username;
+    public long duw;
+    public boolean dux;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ha
  * JD-Core Version:    0.7.0.1
  */

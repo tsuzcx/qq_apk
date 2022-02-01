@@ -5,18 +5,18 @@ import d.g.a.b;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<no name provided>", "", "t", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "", "t", "", "invoke"})
 public final class j$a$a
   extends q
   implements b<Long, String>
 {
-  public static final a oru;
+  public static final a oxQ;
   
   static
   {
-    AppMethodBeat.i(210117);
-    oru = new a();
-    AppMethodBeat.o(210117);
+    AppMethodBeat.i(209151);
+    oxQ = new a();
+    AppMethodBeat.o(209151);
   }
   
   j$a$a()

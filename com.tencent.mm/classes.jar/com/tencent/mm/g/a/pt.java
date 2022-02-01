@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pt
   extends b
 {
-  public a dEe;
-  public b dEf;
+  public a dFi;
   
   public pt()
   {
@@ -16,31 +15,21 @@ public final class pt
   
   private pt(byte paramByte)
   {
-    AppMethodBeat.i(123933);
-    this.dEe = new a();
-    this.dEf = new b();
-    this.IbR = false;
+    AppMethodBeat.i(104420);
+    this.dFi = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(123933);
+    AppMethodBeat.o(104420);
   }
   
   public static final class a
   {
-    public cv dEg;
-    public int dEh = -1;
-    public String dEi;
-    public int dEj = 0;
-    public int opType = 1;
-  }
-  
-  public static final class b
-  {
-    public boolean dno;
+    public String dpp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.pt
  * JD-Core Version:    0.7.0.1
  */

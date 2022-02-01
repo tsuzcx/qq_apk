@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class lu
-  extends cvc
+  extends cvw
 {
-  public long FEA;
-  public String FEy;
-  public String FEz;
+  public String FWT;
+  public String FWU;
+  public long FWV;
   public String mac;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -19,19 +19,19 @@ public final class lu
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.FEy != null) {
-        paramVarArgs.d(2, this.FEy);
+      if (this.FWT != null) {
+        paramVarArgs.d(2, this.FWT);
       }
-      if (this.FEz != null) {
-        paramVarArgs.d(3, this.FEz);
+      if (this.FWU != null) {
+        paramVarArgs.d(3, this.FWU);
       }
       if (this.mac != null) {
         paramVarArgs.d(4, this.mac);
       }
-      paramVarArgs.aY(5, this.FEA);
+      paramVarArgs.aZ(5, this.FWV);
       AppMethodBeat.o(82394);
       return 0;
     }
@@ -41,29 +41,29 @@ public final class lu
       }
     }
     label534:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.FEy != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FEy);
+      if (this.FWT != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FWT);
       }
       i = paramInt;
-      if (this.FEz != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FEz);
+      if (this.FWU != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FWU);
       }
       paramInt = i;
       if (this.mac != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.mac);
       }
-      i = f.a.a.b.b.a.p(5, this.FEA);
+      i = f.a.a.b.b.a.p(5, this.FWV);
       AppMethodBeat.o(82394);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(82394);
@@ -80,7 +80,7 @@ public final class lu
           AppMethodBeat.o(82394);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -88,26 +88,26 @@ public final class lu
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             locallu.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(82394);
           return 0;
         case 2: 
-          locallu.FEy = ((f.a.a.a.a)localObject1).NPN.readString();
+          locallu.FWT = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(82394);
           return 0;
         case 3: 
-          locallu.FEz = ((f.a.a.a.a)localObject1).NPN.readString();
+          locallu.FWU = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(82394);
           return 0;
         case 4: 
-          locallu.mac = ((f.a.a.a.a)localObject1).NPN.readString();
+          locallu.mac = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(82394);
           return 0;
         }
-        locallu.FEA = ((f.a.a.a.a)localObject1).NPN.zd();
+        locallu.FWV = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(82394);
         return 0;
       }

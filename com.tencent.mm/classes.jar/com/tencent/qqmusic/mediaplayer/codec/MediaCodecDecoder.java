@@ -157,12 +157,12 @@ public class MediaCodecDecoder
                   if (j != 500) {
                     break label494;
                   }
-                  paramArrayOfByte = new BufferTimeoutException();
+                  paramArrayOfByte = new MediaCodecDecoder.BufferTimeoutException();
                   AppMethodBeat.o(114364);
                   throw paramArrayOfByte;
                 }
               }
-              catch (NullInputBufferException localNullInputBufferException) {}
+              catch (MediaCodecDecoder.NullInputBufferException localNullInputBufferException) {}
               break;
             }
           }
@@ -320,26 +320,26 @@ public class MediaCodecDecoder
   private boolean initAudioInformation(String paramString, int paramInt, MediaFormat paramMediaFormat, IDataSource paramIDataSource, AudioFormat.AudioType paramAudioType)
   {
     // Byte code:
-    //   0: ldc_w 344
-    //   3: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 342
+    //   3: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 76	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaExtractor	Landroid/media/MediaExtractor;
+    //   7: getfield 74	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaExtractor	Landroid/media/MediaExtractor;
     //   10: iload_2
-    //   11: invokevirtual 347	android/media/MediaExtractor:selectTrack	(I)V
+    //   11: invokevirtual 345	android/media/MediaExtractor:selectTrack	(I)V
     //   14: aload_0
     //   15: aload_1
-    //   16: invokestatic 351	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   19: putfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
+    //   16: invokestatic 349	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   19: putfield 76	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
     //   22: aload_0
-    //   23: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
+    //   23: getfield 76	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
     //   26: aload_3
     //   27: aconst_null
     //   28: aconst_null
     //   29: iconst_0
-    //   30: invokevirtual 355	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   30: invokevirtual 353	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
     //   33: aload_0
-    //   34: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
-    //   37: invokevirtual 358	android/media/MediaCodec:start	()V
+    //   34: getfield 76	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
+    //   37: invokevirtual 356	android/media/MediaCodec:start	()V
     //   40: iconst_m1
     //   41: istore 6
     //   43: iconst_0
@@ -354,10 +354,10 @@ public class MediaCodecDecoder
     //   60: bipush 253
     //   62: if_icmpne +326 -> 388
     //   65: aload_0
-    //   66: new 111	android/media/MediaCodec$BufferInfo
+    //   66: new 109	android/media/MediaCodec$BufferInfo
     //   69: dup
-    //   70: invokespecial 112	android/media/MediaCodec$BufferInfo:<init>	()V
-    //   73: invokespecial 116	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:processInputOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;)I
+    //   70: invokespecial 110	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   73: invokespecial 114	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:processInputOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;)I
     //   76: istore 7
     //   78: iload 7
     //   80: istore 6
@@ -365,94 +365,94 @@ public class MediaCodecDecoder
     //   84: bipush 254
     //   86: if_icmpne +212 -> 298
     //   89: aload_0
-    //   90: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
-    //   93: invokevirtual 194	android/media/MediaCodec:getOutputFormat	()Landroid/media/MediaFormat;
+    //   90: getfield 76	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
+    //   93: invokevirtual 192	android/media/MediaCodec:getOutputFormat	()Landroid/media/MediaFormat;
     //   96: astore_1
     //   97: aload_1
     //   98: ifnull +277 -> 375
-    //   101: ldc 26
-    //   103: new 360	java/lang/StringBuilder
+    //   101: ldc 24
+    //   103: new 358	java/lang/StringBuilder
     //   106: dup
-    //   107: ldc_w 362
-    //   110: invokespecial 363	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   107: ldc_w 360
+    //   110: invokespecial 361	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   113: aload_3
-    //   114: invokevirtual 367	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   117: ldc_w 369
-    //   120: invokevirtual 372	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   117: ldc_w 367
+    //   120: invokevirtual 370	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   123: aload_1
-    //   124: invokevirtual 367	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 376	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 188	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 374	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 186	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: aload_1
-    //   134: getstatic 60	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:KEY_PCM_ENCODING	Ljava/lang/String;
-    //   137: invokevirtual 379	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   134: getstatic 58	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:KEY_PCM_ENCODING	Ljava/lang/String;
+    //   137: invokevirtual 377	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   140: ifeq +17 -> 157
     //   143: aload_3
-    //   144: getstatic 60	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:KEY_PCM_ENCODING	Ljava/lang/String;
+    //   144: getstatic 58	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:KEY_PCM_ENCODING	Ljava/lang/String;
     //   147: aload_1
-    //   148: getstatic 60	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:KEY_PCM_ENCODING	Ljava/lang/String;
-    //   151: invokevirtual 207	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   154: invokevirtual 383	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   148: getstatic 58	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:KEY_PCM_ENCODING	Ljava/lang/String;
+    //   151: invokevirtual 205	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   154: invokevirtual 381	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
     //   157: aload_1
-    //   158: ldc 201
-    //   160: invokevirtual 379	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   158: ldc 199
+    //   160: invokevirtual 377	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   163: ifeq +15 -> 178
     //   166: aload_3
-    //   167: ldc 201
+    //   167: ldc 199
     //   169: aload_1
-    //   170: ldc 201
-    //   172: invokevirtual 207	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   175: invokevirtual 383	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   170: ldc 199
+    //   172: invokevirtual 205	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   175: invokevirtual 381	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
     //   178: aload_1
-    //   179: ldc_w 385
-    //   182: invokevirtual 379	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   179: ldc_w 383
+    //   182: invokevirtual 377	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   185: ifeq +17 -> 202
     //   188: aload_3
-    //   189: ldc_w 385
+    //   189: ldc_w 383
     //   192: aload_1
-    //   193: ldc_w 385
-    //   196: invokevirtual 207	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   199: invokevirtual 383	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   193: ldc_w 383
+    //   196: invokevirtual 205	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   199: invokevirtual 381	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
     //   202: aload_0
-    //   203: getfield 80	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   203: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
     //   206: aload_3
     //   207: aload 4
-    //   209: invokeinterface 390 1 0
-    //   214: invokestatic 394	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:setAudioInformationByMediaFormat	(Lcom/tencent/qqmusic/mediaplayer/AudioInformation;Landroid/media/MediaFormat;J)V
+    //   209: invokeinterface 388 1 0
+    //   214: invokestatic 392	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:setAudioInformationByMediaFormat	(Lcom/tencent/qqmusic/mediaplayer/AudioInformation;Landroid/media/MediaFormat;J)V
     //   217: aload 5
-    //   219: getstatic 280	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:FLAC	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
+    //   219: getstatic 278	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:FLAC	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
     //   222: if_acmpne +83 -> 305
     //   225: aload_0
-    //   226: new 396	com/tencent/qqmusic/mediaplayer/seektable/flac/FlacSeekTable
+    //   226: new 394	com/tencent/qqmusic/mediaplayer/seektable/flac/FlacSeekTable
     //   229: dup
     //   230: aload_0
-    //   231: getfield 80	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   234: invokevirtual 166	com/tencent/qqmusic/mediaplayer/AudioInformation:getSampleRate	()J
+    //   231: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   234: invokevirtual 164	com/tencent/qqmusic/mediaplayer/AudioInformation:getSampleRate	()J
     //   237: l2i
-    //   238: invokespecial 398	com/tencent/qqmusic/mediaplayer/seektable/flac/FlacSeekTable:<init>	(I)V
-    //   241: putfield 88	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
+    //   238: invokespecial 396	com/tencent/qqmusic/mediaplayer/seektable/flac/FlacSeekTable:<init>	(I)V
+    //   241: putfield 86	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
     //   244: aload_0
-    //   245: getfield 88	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
+    //   245: getfield 86	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
     //   248: ifnull +14 -> 262
     //   251: aload_0
-    //   252: getfield 88	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
+    //   252: getfield 86	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
     //   255: aload 4
-    //   257: invokeinterface 404 2 0
+    //   257: invokeinterface 402 2 0
     //   262: aload_0
-    //   263: getfield 80	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   266: invokevirtual 405	com/tencent/qqmusic/mediaplayer/AudioInformation:getDuration	()J
+    //   263: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   266: invokevirtual 403	com/tencent/qqmusic/mediaplayer/AudioInformation:getDuration	()J
     //   269: lconst_0
     //   270: lcmp
     //   271: ifle +111 -> 382
     //   274: aload_0
-    //   275: getfield 80	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   278: invokevirtual 162	com/tencent/qqmusic/mediaplayer/AudioInformation:getChannels	()I
+    //   275: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mInfo	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   278: invokevirtual 160	com/tencent/qqmusic/mediaplayer/AudioInformation:getChannels	()I
     //   281: iconst_2
     //   282: if_icmplt +100 -> 382
     //   285: iconst_1
     //   286: istore 8
-    //   288: ldc_w 344
-    //   291: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   288: ldc_w 342
+    //   291: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   294: iload 8
     //   296: ireturn
     //   297: astore_1
@@ -462,38 +462,38 @@ public class MediaCodecDecoder
     //   301: istore_2
     //   302: goto -257 -> 45
     //   305: aload 5
-    //   307: getstatic 302	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:M4A	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
+    //   307: getstatic 300	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:M4A	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
     //   310: if_acmpeq +11 -> 321
     //   313: aload 5
-    //   315: getstatic 408	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:MP4	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
+    //   315: getstatic 406	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:MP4	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
     //   318: if_acmpne +17 -> 335
     //   321: aload_0
-    //   322: new 410	com/tencent/qqmusic/mediaplayer/seektable/mpeg4/Mp4SeekTable
+    //   322: new 408	com/tencent/qqmusic/mediaplayer/seektable/mpeg4/Mp4SeekTable
     //   325: dup
-    //   326: invokespecial 411	com/tencent/qqmusic/mediaplayer/seektable/mpeg4/Mp4SeekTable:<init>	()V
-    //   329: putfield 88	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
+    //   326: invokespecial 409	com/tencent/qqmusic/mediaplayer/seektable/mpeg4/Mp4SeekTable:<init>	()V
+    //   329: putfield 86	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
     //   332: goto -88 -> 244
     //   335: aload 5
-    //   337: getstatic 305	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:MP3	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
+    //   337: getstatic 303	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:MP3	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
     //   340: if_acmpne -96 -> 244
     //   343: aload_0
-    //   344: new 413	com/tencent/qqmusic/mediaplayer/seektable/mp3/Mp3SeekTable
+    //   344: new 411	com/tencent/qqmusic/mediaplayer/seektable/mp3/Mp3SeekTable
     //   347: dup
-    //   348: invokespecial 414	com/tencent/qqmusic/mediaplayer/seektable/mp3/Mp3SeekTable:<init>	()V
-    //   351: putfield 88	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
+    //   348: invokespecial 412	com/tencent/qqmusic/mediaplayer/seektable/mp3/Mp3SeekTable:<init>	()V
+    //   351: putfield 86	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
     //   354: goto -110 -> 244
     //   357: astore_1
     //   358: aload_0
     //   359: aconst_null
-    //   360: putfield 88	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
-    //   363: ldc 26
-    //   365: ldc_w 416
+    //   360: putfield 86	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mSeekTable	Lcom/tencent/qqmusic/mediaplayer/seektable/SeekTable;
+    //   363: ldc 24
+    //   365: ldc_w 414
     //   368: aload_1
-    //   369: invokestatic 331	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   369: invokestatic 329	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   372: goto -110 -> 262
     //   375: aload_0
-    //   376: getfield 78	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
-    //   379: invokevirtual 419	android/media/MediaCodec:release	()V
+    //   376: getfield 76	com/tencent/qqmusic/mediaplayer/codec/MediaCodecDecoder:mMediaCodec	Landroid/media/MediaCodec;
+    //   379: invokevirtual 417	android/media/MediaCodec:release	()V
     //   382: iconst_0
     //   383: istore 8
     //   385: goto -97 -> 288
@@ -557,7 +557,7 @@ public class MediaCodecDecoder
       ByteBuffer localByteBuffer = this.mMediaCodec.getInputBuffer(i);
       if (localByteBuffer == null)
       {
-        paramBufferInfo = new NullInputBufferException();
+        paramBufferInfo = new MediaCodecDecoder.NullInputBufferException();
         AppMethodBeat.o(114363);
         throw paramBufferInfo;
       }
@@ -680,7 +680,7 @@ public class MediaCodecDecoder
       AppMethodBeat.o(114362);
       return i;
     }
-    catch (BufferTimeoutException localBufferTimeoutException1)
+    catch (MediaCodecDecoder.BufferTimeoutException localBufferTimeoutException1)
     {
       long l;
       do
@@ -695,7 +695,7 @@ public class MediaCodecDecoder
           AppMethodBeat.o(114362);
           return i;
         }
-        catch (BufferTimeoutException localBufferTimeoutException2) {}
+        catch (MediaCodecDecoder.BufferTimeoutException localBufferTimeoutException2) {}
       } while (l < getDuration());
       AppMethodBeat.o(114362);
     }
@@ -875,24 +875,6 @@ public class MediaCodecDecoder
     AppMethodBeat.i(114376);
     this.mAudioTrackRef = new WeakReference(paramAudioTrack);
     AppMethodBeat.o(114376);
-  }
-  
-  static class BufferTimeoutException
-    extends Exception
-  {
-    BufferTimeoutException()
-    {
-      super();
-    }
-  }
-  
-  static class NullInputBufferException
-    extends Exception
-  {
-    NullInputBufferException()
-    {
-      super();
-    }
   }
 }
 

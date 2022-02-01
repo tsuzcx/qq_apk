@@ -1,24 +1,18 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
-
-@Deprecated
 public abstract interface ax
 {
-  public abstract void clearPluginData(int paramInt);
+  public abstract void aBT();
   
-  public abstract HashMap<Integer, h.b> getBaseDBFactories();
+  public abstract void aBU();
   
-  public abstract void onAccountPostReset(boolean paramBoolean);
+  public abstract void aBV();
   
-  public abstract void onAccountRelease();
-  
-  public abstract void onSdcardMount(boolean paramBoolean);
+  public abstract void aBW();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.ax
  * JD-Core Version:    0.7.0.1
  */

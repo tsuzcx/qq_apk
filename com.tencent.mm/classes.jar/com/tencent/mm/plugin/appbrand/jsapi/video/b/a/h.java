@@ -13,43 +13,43 @@ public final class h
   
   public h(long paramLong)
   {
-    AppMethodBeat.i(205993);
+    AppMethodBeat.i(211020);
     this.bGl = paramLong;
     this.bGm = new TreeSet(this);
-    AppMethodBeat.o(205993);
+    AppMethodBeat.o(211020);
   }
   
   private void b(a parama, long paramLong)
   {
-    AppMethodBeat.i(205997);
+    AppMethodBeat.i(211024);
     while ((this.aIK + paramLong > this.bGl) && (!this.bGm.isEmpty())) {
       parama.b((f)this.bGm.first());
     }
-    AppMethodBeat.o(205997);
+    AppMethodBeat.o(211024);
   }
   
   public final void a(a parama, long paramLong)
   {
-    AppMethodBeat.i(205994);
+    AppMethodBeat.i(211021);
     b(parama, paramLong);
-    AppMethodBeat.o(205994);
+    AppMethodBeat.o(211021);
   }
   
   public final void a(a parama, f paramf)
   {
-    AppMethodBeat.i(205995);
+    AppMethodBeat.i(211022);
     this.bGm.add(paramf);
     this.aIK += paramf.length;
     b(parama, 0L);
-    AppMethodBeat.o(205995);
+    AppMethodBeat.o(211022);
   }
   
   public final void c(f paramf)
   {
-    AppMethodBeat.i(205996);
+    AppMethodBeat.i(211023);
     this.bGm.remove(paramf);
     this.aIK -= paramf.length;
-    AppMethodBeat.o(205996);
+    AppMethodBeat.o(211023);
   }
 }
 

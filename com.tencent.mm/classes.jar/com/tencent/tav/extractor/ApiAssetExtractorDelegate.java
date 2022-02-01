@@ -18,21 +18,21 @@ public class ApiAssetExtractorDelegate
   
   public ApiAssetExtractorDelegate()
   {
-    AppMethodBeat.i(218477);
+    AppMethodBeat.i(215117);
     this.released = false;
     this.mediaExtractor = new MediaExtractor();
-    AppMethodBeat.o(218477);
+    AppMethodBeat.o(215117);
   }
   
   public boolean advance()
   {
     try
     {
-      AppMethodBeat.i(218487);
+      AppMethodBeat.i(215127);
       if (!this.released) {
         this.mediaExtractor.advance();
       }
-      AppMethodBeat.o(218487);
+      AppMethodBeat.o(215127);
       return false;
     }
     finally {}
@@ -168,9 +168,9 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218483);
+      AppMethodBeat.i(215123);
       MediaFormat localMediaFormat = this.mediaExtractor.getTrackFormat(paramInt);
-      AppMethodBeat.o(218483);
+      AppMethodBeat.o(215123);
       return localMediaFormat;
     }
     finally
@@ -228,9 +228,9 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218481);
+      AppMethodBeat.i(215121);
       this.mediaExtractor.release();
-      AppMethodBeat.o(218481);
+      AppMethodBeat.o(215121);
       return;
     }
     finally
@@ -244,11 +244,11 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218486);
+      AppMethodBeat.i(215126);
       if (!this.released) {
         this.mediaExtractor.seekTo(paramLong, paramInt);
       }
-      AppMethodBeat.o(218486);
+      AppMethodBeat.o(215126);
       return;
     }
     finally {}
@@ -258,11 +258,11 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218484);
+      AppMethodBeat.i(215124);
       if (!this.released) {
         this.mediaExtractor.selectTrack(paramInt);
       }
-      AppMethodBeat.o(218484);
+      AppMethodBeat.o(215124);
       return;
     }
     finally {}
@@ -273,18 +273,18 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218479);
+      AppMethodBeat.i(215119);
       try
       {
         this.mediaExtractor.setDataSource(paramAssetFileDescriptor);
-        AppMethodBeat.o(218479);
+        AppMethodBeat.o(215119);
       }
       catch (IOException paramAssetFileDescriptor)
       {
         for (;;)
         {
           Logger.e("ApiAssetExtractorDelegate", "setDataSource", paramAssetFileDescriptor);
-          AppMethodBeat.o(218479);
+          AppMethodBeat.o(215119);
         }
       }
       return;
@@ -296,18 +296,18 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218480);
+      AppMethodBeat.i(215120);
       try
       {
         this.mediaExtractor.setDataSource(paramFileDescriptor, 0L, 576460752303423487L);
-        AppMethodBeat.o(218480);
+        AppMethodBeat.o(215120);
       }
       catch (IOException paramFileDescriptor)
       {
         for (;;)
         {
           Logger.e("ApiAssetExtractorDelegate", "setDataSource", paramFileDescriptor);
-          AppMethodBeat.o(218480);
+          AppMethodBeat.o(215120);
         }
       }
       return;
@@ -319,18 +319,18 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218478);
+      AppMethodBeat.i(215118);
       try
       {
         this.mediaExtractor.setDataSource(paramString);
-        AppMethodBeat.o(218478);
+        AppMethodBeat.o(215118);
       }
       catch (IOException paramString)
       {
         for (;;)
         {
           Logger.e("ApiAssetExtractorDelegate", "setDataSource", paramString);
-          AppMethodBeat.o(218478);
+          AppMethodBeat.o(215118);
         }
       }
       return;
@@ -342,11 +342,11 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(218485);
+      AppMethodBeat.i(215125);
       if (!this.released) {
         this.mediaExtractor.unselectTrack(paramInt);
       }
-      AppMethodBeat.o(218485);
+      AppMethodBeat.o(215125);
       return;
     }
     finally {}

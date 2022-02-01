@@ -14,8 +14,8 @@ public abstract class TbsBaseConfig
   
   private static File a(Context paramContext, String paramString)
   {
-    o.a();
-    paramContext = o.s(paramContext);
+    q.a();
+    paramContext = q.t(paramContext);
     if (paramContext == null) {
       return null;
     }

@@ -8,13 +8,13 @@ public abstract class cm
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eHb = "modifyTime".hashCode();
+  private static final int eIK = "modifyTime".hashCode();
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int value_HASHCODE = "value".hashCode();
   private boolean __hadSetkey = true;
   private boolean __hadSetvalue = true;
-  private boolean eGF = true;
+  private boolean eIo = true;
   public String field_key;
   public long field_modifyTime;
   public String field_value;
@@ -46,7 +46,7 @@ public abstract class cm
       label65:
       if (value_HASHCODE == k) {
         this.field_value = paramCursor.getString(i);
-      } else if (eHb == k) {
+      } else if (eIK == k) {
         this.field_modifyTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -63,7 +63,7 @@ public abstract class cm
     if (this.__hadSetvalue) {
       localContentValues.put("value", this.field_value);
     }
-    if (this.eGF) {
+    if (this.eIo) {
       localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
     if (this.systemRowid > 0L) {

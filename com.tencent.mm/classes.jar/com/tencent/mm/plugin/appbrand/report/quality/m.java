@@ -2,75 +2,75 @@ package com.tencent.mm.plugin.appbrand.report.quality;
 
 public final class m
 {
-  public int cjE;
-  public int cjF;
   public int cjG;
+  public int cjH;
+  public int cjI;
   public int fps;
-  public int kll;
-  public l.a mvH;
-  public float mvN;
-  public int mvO;
-  public int mvP;
-  public int mvQ;
-  public int mvR;
-  public int mvS;
-  public int mvT;
-  public int mvU;
-  public int mvV;
-  public int mvW;
-  public int mvX;
-  public int mvY;
-  public int mvZ;
+  public int koB;
+  public l.a mAE;
+  public float mAK;
+  public int mAL;
+  public int mAM;
+  public int mAN;
+  public int mAO;
+  public int mAP;
+  public int mAQ;
+  public int mAR;
+  public int mAS;
+  public int mAT;
+  public int mAU;
+  public int mAV;
+  public int mAW;
   
   private m(a parama)
   {
     this.fps = parama.fps;
-    this.mvN = parama.mvN;
-    this.mvH = parama.mvH;
-    this.mvO = parama.mvO;
-    this.mvP = parama.mvP;
-    this.mvQ = parama.mvQ;
-    this.cjF = parama.cjF;
+    this.mAK = parama.mAK;
+    this.mAE = parama.mAE;
+    this.mAL = parama.mAL;
+    this.mAM = parama.mAM;
+    this.mAN = parama.mAN;
+    this.cjH = parama.cjH;
+    this.cjI = parama.cjI;
     this.cjG = parama.cjG;
-    this.cjE = parama.cjE;
-    this.mvR = parama.mvR;
-    this.mvS = parama.mvS;
-    this.kll = parama.kll;
-    this.mvT = parama.mvT;
-    this.mvU = parama.mvU;
-    this.mvV = parama.mvV;
-    this.mvW = parama.mvW;
-    this.mvX = parama.mvX;
-    this.mvY = parama.mvY;
-    this.mvZ = parama.mvZ;
+    this.mAO = parama.mAO;
+    this.mAP = parama.mAP;
+    this.koB = parama.koB;
+    this.mAQ = parama.mAQ;
+    this.mAR = parama.mAR;
+    this.mAS = parama.mAS;
+    this.mAT = parama.mAT;
+    this.mAU = parama.mAU;
+    this.mAV = parama.mAV;
+    this.mAW = parama.mAW;
   }
   
   public static final class a
   {
-    int cjE;
-    int cjF;
     int cjG;
+    int cjH;
+    int cjI;
     int fps;
-    int kll;
-    l.a mvH;
-    float mvN;
-    int mvO;
-    int mvP;
-    int mvQ;
-    int mvR;
-    int mvS;
-    int mvT;
-    int mvU;
-    int mvV;
-    int mvW;
-    int mvX;
-    int mvY;
-    int mvZ;
+    int koB;
+    l.a mAE;
+    float mAK;
+    int mAL;
+    int mAM;
+    int mAN;
+    int mAO;
+    int mAP;
+    int mAQ;
+    int mAR;
+    int mAS;
+    int mAT;
+    int mAU;
+    int mAV;
+    int mAW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.m
  * JD-Core Version:    0.7.0.1
  */

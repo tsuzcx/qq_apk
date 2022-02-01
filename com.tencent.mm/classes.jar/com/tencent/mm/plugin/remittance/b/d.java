@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +13,16 @@ public final class d
   extends j<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iTS;
-  private static Map<String, c> iTT;
+  private static final String[] iWL;
+  private static Map<String, c> iWM;
   private e db;
   
   static
   {
     AppMethodBeat.i(67625);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "RemittanceRecord") };
-    iTS = new String[] { "*", "rowid" };
-    iTT = new HashMap();
+    iWL = new String[] { "*", "rowid" };
+    iWM = new HashMap();
     AppMethodBeat.o(67625);
   }
   
@@ -35,23 +35,23 @@ public final class d
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(67621);
-    if ((paramc != null) && (iTT.containsKey(paramc.field_transferId))) {
-      iTT.put(paramc.field_transferId, paramc);
+    if ((paramc != null) && (iWM.containsKey(paramc.field_transferId))) {
+      iWM.put(paramc.field_transferId, paramc);
     }
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(67621);
     return bool;
   }
   
-  public final c awh(String paramString)
+  public final c axw(String paramString)
   {
     AppMethodBeat.i(67620);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(67620);
       return null;
     }
-    paramString = this.db.a("RemittanceRecord", iTS, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("RemittanceRecord", iWL, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -66,7 +66,7 @@ public final class d
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
+        ae.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
         paramString.close();
       }
     }
@@ -79,34 +79,34 @@ public final class d
     return null;
   }
   
-  public final c awi(String paramString)
+  public final c axx(String paramString)
   {
-    AppMethodBeat.i(199124);
-    if ((!bt.isNullOrNil(paramString)) && (iTT.containsKey(paramString)))
+    AppMethodBeat.i(189959);
+    if ((!bu.isNullOrNil(paramString)) && (iWM.containsKey(paramString)))
     {
-      paramString = (c)iTT.get(paramString);
-      AppMethodBeat.o(199124);
+      paramString = (c)iWM.get(paramString);
+      AppMethodBeat.o(189959);
       return paramString;
     }
-    c localc = awh(paramString);
+    c localc = axw(paramString);
     if (localc != null)
     {
-      iTT.put(paramString, localc);
-      AppMethodBeat.o(199124);
+      iWM.put(paramString, localc);
+      AppMethodBeat.o(189959);
       return localc;
     }
-    AppMethodBeat.o(199124);
+    AppMethodBeat.o(189959);
     return null;
   }
   
   /* Error */
-  public final java.util.List<c> awj(String paramString)
+  public final java.util.List<c> axy(String paramString)
   {
     // Byte code:
     //   0: ldc 143
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 93	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 93	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +10 -> 19
     //   12: ldc 143
     //   14: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -115,7 +115,7 @@ public final class d
     //   19: aload_0
     //   20: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/e/e;
     //   23: ldc 32
-    //   25: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iTS	[Ljava/lang/String;
+    //   25: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iWL	[Ljava/lang/String;
     //   28: ldc 145
     //   30: iconst_1
     //   31: anewarray 24	java/lang/String
@@ -195,7 +195,7 @@ public final class d
     //   181: aload_1
     //   182: invokevirtual 124	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   185: aastore
-    //   186: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   186: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   189: goto -59 -> 130
     //   192: astore 4
     //   194: aload_3
@@ -237,7 +237,7 @@ public final class d
   }
   
   /* Error */
-  public final java.util.List<c> dIU()
+  public final java.util.List<c> dMl()
   {
     // Byte code:
     //   0: ldc 163
@@ -273,7 +273,7 @@ public final class d
     //   57: aload_0
     //   58: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/e/e;
     //   61: ldc 32
-    //   63: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iTS	[Ljava/lang/String;
+    //   63: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iWL	[Ljava/lang/String;
     //   66: aload_2
     //   67: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: iconst_2
@@ -354,7 +354,7 @@ public final class d
     //   224: aload_2
     //   225: invokevirtual 124	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   228: aastore
-    //   229: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: goto -60 -> 172
     //   235: astore 5
     //   237: aload_3
@@ -400,7 +400,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.d
  * JD-Core Version:    0.7.0.1
  */

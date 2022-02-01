@@ -12,8 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -23,83 +23,83 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/SliderTrackView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;)V", "pointCount", "pointSize", "selectIndex", "startOffset", "thumbDrawable", "Landroid/graphics/drawable/Drawable;", "thumbHeight", "thumbRect", "Landroid/graphics/Rect;", "thumbWidth", "thumbX", "", "thumbY", "touchDownX", "touchDownY", "touchDrag", "", "touchMoved", "touchSlop", "touchX", "touchY", "trackPaint", "Landroid/graphics/Paint;", "trackPoint", "Ljava/util/LinkedList;", "Landroid/graphics/PointF;", "clampThumbPoint", "x", "findThumbPoint", "", "getTrackPoint", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setPointCount", "setSelection", "index", "setStartOffset", "offset", "setThumbDrawable", "drawable", "setTrackColor", "color", "setTrackLineWidth", "lineWidth", "updateThumb", "updateTrackPoint", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/SliderTrackView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/LabelSlider$SliderCallback;)V", "pointCount", "pointSize", "selectIndex", "startOffset", "thumbDrawable", "Landroid/graphics/drawable/Drawable;", "thumbHeight", "thumbRect", "Landroid/graphics/Rect;", "thumbWidth", "thumbX", "", "thumbY", "touchDownX", "touchDownY", "touchDrag", "", "touchMoved", "touchSlop", "touchX", "touchY", "trackPaint", "Landroid/graphics/Paint;", "trackPoint", "Ljava/util/LinkedList;", "Landroid/graphics/PointF;", "clampThumbPoint", "x", "findThumbPoint", "", "getTrackPoint", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setPointCount", "setSelection", "index", "setStartOffset", "offset", "setThumbDrawable", "drawable", "setTrackColor", "color", "setTrackLineWidth", "lineWidth", "updateThumb", "updateTrackPoint", "plugin-vlog_release"})
 public final class SliderTrackView
   extends View
 {
-  private LabelSlider.a BKe;
-  private boolean BLN;
-  private final Paint BLO;
-  private int BLP;
-  private final LinkedList<PointF> BLQ;
-  private float BLR;
-  private float BLS;
+  private LabelSlider.a CbD;
+  private boolean Cdm;
+  private final Paint Cdn;
+  private int Cdo;
+  private final LinkedList<PointF> Cdp;
+  private float Cdq;
+  private float Cdr;
   private final String TAG;
-  private boolean gmF;
-  private float gmI;
-  private float gmJ;
-  private float gmK;
-  private float gmL;
-  private Drawable nke;
+  private boolean gpb;
+  private float gpe;
+  private float gpf;
+  private float gpg;
+  private float gph;
+  private Drawable npm;
   private int pointCount;
   private final int rW;
-  private int sQX;
   private int startOffset;
+  private int tci;
   private int thumbHeight;
   private int thumbWidth;
-  private final Rect yuZ;
+  private final Rect yKZ;
   
   public SliderTrackView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(196093);
-    AppMethodBeat.o(196093);
+    AppMethodBeat.i(191552);
+    AppMethodBeat.o(191552);
   }
   
   public SliderTrackView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(196092);
-    AppMethodBeat.o(196092);
+    AppMethodBeat.i(191551);
+    AppMethodBeat.o(191551);
   }
   
   public SliderTrackView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(196091);
+    AppMethodBeat.i(191550);
     this.TAG = "MicroMsg.LabelSlider";
-    this.BLO = new Paint();
+    this.Cdn = new Paint();
     this.pointCount = 5;
     this.startOffset = a.ax(paramContext, 2131165296);
-    this.BLP = a.ax(paramContext, 2131165303);
-    this.BLQ = new LinkedList();
-    this.yuZ = new Rect();
+    this.Cdo = a.ax(paramContext, 2131165303);
+    this.Cdp = new LinkedList();
+    this.yKZ = new Rect();
     this.thumbWidth = 48;
     this.thumbHeight = 48;
-    this.BLO.setStyle(Paint.Style.STROKE);
-    this.BLO.setColor(-855638017);
-    this.BLO.setStrokeWidth(a.getDensity(paramContext));
+    this.Cdn.setStyle(Paint.Style.STROKE);
+    this.Cdn.setColor(-855638017);
+    this.Cdn.setStrokeWidth(a.getDensity(paramContext));
     paramContext = ViewConfiguration.get(paramContext);
     p.g(paramContext, "ViewConfiguration.get(context)");
     this.rW = paramContext.getScaledTouchSlop();
-    AppMethodBeat.o(196091);
+    AppMethodBeat.o(191550);
   }
   
-  private final void bL(float paramFloat)
+  private final void bJ(float paramFloat)
   {
-    AppMethodBeat.i(196089);
-    if (this.BLQ.size() < 2)
+    AppMethodBeat.i(191548);
+    if (this.Cdp.size() < 2)
     {
-      AppMethodBeat.o(196089);
+      AppMethodBeat.o(191548);
       return;
     }
     float f1 = getWidth();
     int j = -1;
     int i = 0;
-    int k = ((Collection)this.BLQ).size();
+    int k = ((Collection)this.Cdp).size();
     if (i < k)
     {
-      float f2 = Math.abs(paramFloat - ((PointF)this.BLQ.get(i)).x);
+      float f2 = Math.abs(paramFloat - ((PointF)this.Cdp.get(i)).x);
       if (f2 >= f1) {
         break label146;
       }
@@ -113,144 +113,144 @@ public final class SliderTrackView
       break;
       if (j >= 0)
       {
-        this.sQX = j;
-        esY();
-        LabelSlider.a locala = this.BKe;
+        this.tci = j;
+        ewF();
+        LabelSlider.a locala = this.CbD;
         if (locala != null)
         {
-          locala.HI(this.sQX);
-          AppMethodBeat.o(196089);
+          locala.If(this.tci);
+          AppMethodBeat.o(191548);
           return;
         }
       }
-      AppMethodBeat.o(196089);
+      AppMethodBeat.o(191548);
       return;
     }
   }
   
-  private final void esX()
+  private final void ewE()
   {
-    AppMethodBeat.i(196088);
+    AppMethodBeat.i(191547);
     int j = (getWidth() - this.startOffset * 2) / (this.pointCount - 1);
     float f1 = this.startOffset;
     float f2 = getHeight() / 2.0F;
-    this.BLQ.clear();
-    this.BLQ.add(new PointF(f1, f2));
+    this.Cdp.clear();
+    this.Cdp.add(new PointF(f1, f2));
     int i = 0;
     int k = this.pointCount;
     while (i < k - 1)
     {
       float f3 = j * i;
       float f4 = j;
-      this.BLQ.add(new PointF(f3 + f1 + f4, f2));
+      this.Cdp.add(new PointF(f3 + f1 + f4, f2));
       i += 1;
     }
-    this.BLS = f2;
-    esY();
+    this.Cdr = f2;
+    ewF();
     postInvalidate();
-    AppMethodBeat.o(196088);
+    AppMethodBeat.o(191547);
   }
   
-  private final void esY()
+  private final void ewF()
   {
-    AppMethodBeat.i(196090);
-    this.yuZ.top = ((int)(this.BLS - this.thumbHeight / 2));
-    this.yuZ.bottom = ((int)(this.BLS + this.thumbHeight / 2));
-    this.BLR = ((PointF)this.BLQ.get(this.sQX)).x;
-    this.yuZ.left = ((int)(this.BLR - this.thumbWidth / 2));
-    this.yuZ.right = ((int)(this.BLR + this.thumbWidth / 2));
-    AppMethodBeat.o(196090);
+    AppMethodBeat.i(191549);
+    this.yKZ.top = ((int)(this.Cdr - this.thumbHeight / 2));
+    this.yKZ.bottom = ((int)(this.Cdr + this.thumbHeight / 2));
+    this.Cdq = ((PointF)this.Cdp.get(this.tci)).x;
+    this.yKZ.left = ((int)(this.Cdq - this.thumbWidth / 2));
+    this.yKZ.right = ((int)(this.Cdq + this.thumbWidth / 2));
+    AppMethodBeat.o(191549);
   }
   
   public final LabelSlider.a getCallback()
   {
-    return this.BKe;
+    return this.CbD;
   }
   
   public final List<Float> getTrackPoint()
   {
-    AppMethodBeat.i(196084);
-    Object localObject2 = (Iterable)this.BLQ;
+    AppMethodBeat.i(191543);
+    Object localObject2 = (Iterable)this.Cdp;
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((Collection)localObject1).add(Float.valueOf(((PointF)((Iterator)localObject2).next()).x));
     }
     localObject1 = (List)localObject1;
-    AppMethodBeat.o(196084);
+    AppMethodBeat.o(191543);
     return localObject1;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(196086);
+    AppMethodBeat.i(191545);
     p.h(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    if (this.BLQ.size() < 2)
+    if (this.Cdp.size() < 2)
     {
-      AppMethodBeat.o(196086);
+      AppMethodBeat.o(191545);
       return;
     }
     float f1 = getHeight() / 2.0F;
-    float f2 = f1 - this.BLP / 2;
-    float f3 = f1 + this.BLP / 2;
-    paramCanvas.drawLine(((PointF)this.BLQ.get(0)).x, f2, ((PointF)this.BLQ.get(0)).x, f3, this.BLO);
+    float f2 = f1 - this.Cdo / 2;
+    float f3 = f1 + this.Cdo / 2;
+    paramCanvas.drawLine(((PointF)this.Cdp.get(0)).x, f2, ((PointF)this.Cdp.get(0)).x, f3, this.Cdn);
     int j = this.pointCount;
     int i = 0;
     while (i < j - 1)
     {
-      paramCanvas.drawLine(((PointF)this.BLQ.get(i)).x, f1, ((PointF)this.BLQ.get(i + 1)).x, f1, this.BLO);
-      paramCanvas.drawLine(((PointF)this.BLQ.get(i + 1)).x, f2, ((PointF)this.BLQ.get(i + 1)).x, f3, this.BLO);
+      paramCanvas.drawLine(((PointF)this.Cdp.get(i)).x, f1, ((PointF)this.Cdp.get(i + 1)).x, f1, this.Cdn);
+      paramCanvas.drawLine(((PointF)this.Cdp.get(i + 1)).x, f2, ((PointF)this.Cdp.get(i + 1)).x, f3, this.Cdn);
       i += 1;
     }
-    Drawable localDrawable = this.nke;
+    Drawable localDrawable = this.npm;
     if (localDrawable != null) {
-      localDrawable.setBounds(this.yuZ);
+      localDrawable.setBounds(this.yKZ);
     }
-    localDrawable = this.nke;
+    localDrawable = this.npm;
     if (localDrawable != null)
     {
       localDrawable.draw(paramCanvas);
-      AppMethodBeat.o(196086);
+      AppMethodBeat.o(191545);
       return;
     }
-    AppMethodBeat.o(196086);
+    AppMethodBeat.o(191545);
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(196087);
+    AppMethodBeat.i(191546);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    esX();
-    AppMethodBeat.o(196087);
+    ewE();
+    AppMethodBeat.o(191546);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(196085);
+    AppMethodBeat.i(191544);
     p.h(paramMotionEvent, "event");
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(196085);
+      AppMethodBeat.o(191544);
       return true;
-      this.gmI = paramMotionEvent.getX();
-      this.gmJ = paramMotionEvent.getY();
-      this.gmK = paramMotionEvent.getX();
-      this.gmL = paramMotionEvent.getY();
-      this.BLN = this.yuZ.contains((int)this.gmI, (int)this.gmJ);
+      this.gpe = paramMotionEvent.getX();
+      this.gpf = paramMotionEvent.getY();
+      this.gpg = paramMotionEvent.getX();
+      this.gph = paramMotionEvent.getY();
+      this.Cdm = this.yKZ.contains((int)this.gpe, (int)this.gpf);
       continue;
-      this.gmK = paramMotionEvent.getX();
-      this.gmL = paramMotionEvent.getY();
-      if ((!this.gmF) && ((Math.abs(this.gmK - this.gmI) > this.rW) || (Math.abs(this.gmL - this.gmJ) > this.rW))) {
-        this.gmF = true;
+      this.gpg = paramMotionEvent.getX();
+      this.gph = paramMotionEvent.getY();
+      if ((!this.gpb) && ((Math.abs(this.gpg - this.gpe) > this.rW) || (Math.abs(this.gph - this.gpf) > this.rW))) {
+        this.gpb = true;
       }
-      if (this.BLN)
+      if (this.Cdm)
       {
-        float f = this.gmK;
-        Object localObject = (Iterable)this.BLQ;
+        float f = this.gpg;
+        Object localObject = (Iterable)this.Cdp;
         paramMotionEvent = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
@@ -262,108 +262,108 @@ public final class SliderTrackView
         if ((paramMotionEvent == null) || (localObject == null)) {}
         for (;;)
         {
-          this.BLR = f;
-          this.yuZ.left = ((int)(this.BLR - this.thumbWidth / 2));
-          this.yuZ.right = ((int)(this.BLR + this.thumbWidth / 2));
+          this.Cdq = f;
+          this.yKZ.left = ((int)(this.Cdq - this.thumbWidth / 2));
+          this.yKZ.right = ((int)(this.Cdq + this.thumbWidth / 2));
           postInvalidate();
           break;
           f = Math.max(paramMotionEvent.floatValue(), Math.min(((Float)localObject).floatValue(), f));
         }
-        this.gmK = paramMotionEvent.getX();
-        this.gmL = paramMotionEvent.getY();
-        if ((!this.gmF) || (this.BLN))
+        this.gpg = paramMotionEvent.getX();
+        this.gph = paramMotionEvent.getY();
+        if ((!this.gpb) || (this.Cdm))
         {
-          bL(this.gmK);
+          bJ(this.gpg);
           postInvalidate();
         }
-        this.BLN = false;
-        this.gmF = false;
+        this.Cdm = false;
+        this.gpb = false;
       }
     }
   }
   
   public final void setCallback(LabelSlider.a parama)
   {
-    this.BKe = parama;
+    this.CbD = parama;
   }
   
   public final void setPointCount(int paramInt)
   {
-    AppMethodBeat.i(196078);
+    AppMethodBeat.i(191537);
     if (paramInt < 2)
     {
-      ad.e(this.TAG, "invalid pointCount ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(196078);
+      ae.e(this.TAG, "invalid pointCount ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(191537);
       return;
     }
     this.pointCount = paramInt;
-    esX();
-    if (this.sQX >= paramInt)
+    ewE();
+    if (this.tci >= paramInt)
     {
-      this.sQX = (paramInt - 1);
-      LabelSlider.a locala = this.BKe;
+      this.tci = (paramInt - 1);
+      LabelSlider.a locala = this.CbD;
       if (locala != null)
       {
-        locala.HI(this.sQX);
-        AppMethodBeat.o(196078);
+        locala.If(this.tci);
+        AppMethodBeat.o(191537);
         return;
       }
     }
-    AppMethodBeat.o(196078);
+    AppMethodBeat.o(191537);
   }
   
   public final void setSelection(int paramInt)
   {
-    AppMethodBeat.i(196079);
-    this.sQX = paramInt;
-    esY();
+    AppMethodBeat.i(191538);
+    this.tci = paramInt;
+    ewF();
     invalidate();
-    AppMethodBeat.o(196079);
+    AppMethodBeat.o(191538);
   }
   
   public final void setStartOffset(int paramInt)
   {
-    AppMethodBeat.i(196082);
+    AppMethodBeat.i(191541);
     this.startOffset = paramInt;
-    esX();
-    AppMethodBeat.o(196082);
+    ewE();
+    AppMethodBeat.o(191541);
   }
   
   public final void setThumbDrawable(Drawable paramDrawable)
   {
     int j = 0;
-    AppMethodBeat.i(196083);
-    this.nke = paramDrawable;
-    paramDrawable = this.nke;
+    AppMethodBeat.i(191542);
+    this.npm = paramDrawable;
+    paramDrawable = this.npm;
     if (paramDrawable != null) {}
     for (int i = paramDrawable.getIntrinsicWidth();; i = 0)
     {
       this.thumbWidth = i;
-      paramDrawable = this.nke;
+      paramDrawable = this.npm;
       i = j;
       if (paramDrawable != null) {
         i = paramDrawable.getIntrinsicHeight();
       }
       this.thumbHeight = i;
-      AppMethodBeat.o(196083);
+      AppMethodBeat.o(191542);
       return;
     }
   }
   
   public final void setTrackColor(int paramInt)
   {
-    AppMethodBeat.i(196080);
-    this.BLO.setColor(paramInt);
+    AppMethodBeat.i(191539);
+    this.Cdn.setColor(paramInt);
     postInvalidate();
-    AppMethodBeat.o(196080);
+    AppMethodBeat.o(191539);
   }
   
   public final void setTrackLineWidth(float paramFloat)
   {
-    AppMethodBeat.i(196081);
-    this.BLO.setStrokeWidth(paramFloat);
+    AppMethodBeat.i(191540);
+    this.Cdn.setStrokeWidth(paramFloat);
     postInvalidate();
-    AppMethodBeat.o(196081);
+    AppMethodBeat.o(191540);
   }
 }
 

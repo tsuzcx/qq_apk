@@ -12,33 +12,33 @@ import d.g.b.p;
 import d.l;
 
 @a(19)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendVideoUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "videoUrl", "", "getVideoUrl", "()Ljava/lang/String;", "setVideoUrl", "(Ljava/lang/String;)V", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendVideoUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "videoUrl", "", "getVideoUrl", "()Ljava/lang/String;", "setVideoUrl", "(Ljava/lang/String;)V", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandRecommendVideoUI
   extends MMActivity
 {
-  public static final AppBrandRecommendVideoUI.a mNQ;
-  private CommonVideoView mNP;
+  public static final AppBrandRecommendVideoUI.a mSU;
+  private CommonVideoView mST;
   public String videoUrl;
   
   static
   {
     AppMethodBeat.i(51387);
-    mNQ = new AppBrandRecommendVideoUI.a((byte)0);
+    mSU = new AppBrandRecommendVideoUI.a((byte)0);
     AppMethodBeat.o(51387);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(51385);
-    CommonVideoView localCommonVideoView = this.mNP;
+    CommonVideoView localCommonVideoView = this.mST;
     if (localCommonVideoView == null) {
-      p.bcb("videoView");
+      p.bdF("videoView");
     }
     if (localCommonVideoView.isPlaying())
     {
-      localCommonVideoView = this.mNP;
+      localCommonVideoView = this.mST;
       if (localCommonVideoView == null) {
-        p.bcb("videoView");
+        p.bdF("videoView");
       }
       localCommonVideoView.pause();
     }
@@ -59,22 +59,22 @@ public final class AppBrandRecommendVideoUI
     getWindow().setFlags(1024, 1024);
     paramBundle = findViewById(2131296817);
     p.g(paramBundle, "findViewById(R.id.app_brand_recommend_player)");
-    this.mNP = ((CommonVideoView)paramBundle);
+    this.mST = ((CommonVideoView)paramBundle);
     paramBundle = getIntent().getStringExtra("1");
     p.g(paramBundle, "intent.getStringExtra(KEY_VIDEO_URL)");
     this.videoUrl = paramBundle;
-    paramBundle = this.mNP;
+    paramBundle = this.mST;
     if (paramBundle == null) {
-      p.bcb("videoView");
+      p.bdF("videoView");
     }
     String str = this.videoUrl;
     if (str == null) {
-      p.bcb("videoUrl");
+      p.bdF("videoUrl");
     }
     paramBundle.c(true, str, 1000);
-    paramBundle = this.mNP;
+    paramBundle = this.mST;
     if (paramBundle == null) {
-      p.bcb("videoView");
+      p.bdF("videoView");
     }
     paramBundle.start();
     AppMethodBeat.o(51384);

@@ -3,35 +3,35 @@ package com.tencent.mm.plugin.appbrand.media.record.record_imp;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c;
 import com.tencent.mm.audio.b.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
 {
   public int channelCount;
-  public int dgV;
-  public c dgu;
-  public RecordParam lSl;
-  public long lSm;
-  public a lSn;
-  public c.a lSo;
+  public int dhX;
+  public c dhw;
+  public RecordParam lWM;
+  public long lWN;
+  public a lWO;
+  public c.a lWP;
   public int sampleRate;
   
   public a(RecordParam paramRecordParam)
   {
     AppMethodBeat.i(146187);
-    this.dgu = null;
+    this.dhw = null;
     this.sampleRate = 0;
     this.channelCount = 0;
-    this.lSm = 0L;
-    this.dgV = -1;
-    this.lSo = new c.a()
+    this.lWN = 0L;
+    this.dhX = -1;
+    this.lWP = new c.a()
     {
       public final void ch(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(146186);
-        ad.e("MicroMsg.Record.AppBrandRecorder", "state:%d, detailState:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        if (a.this.lSn != null) {
-          a.this.lSn.ch(paramAnonymousInt1, paramAnonymousInt2);
+        ae.e("MicroMsg.Record.AppBrandRecorder", "state:%d, detailState:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        if (a.this.lWO != null) {
+          a.this.lWO.ch(paramAnonymousInt1, paramAnonymousInt2);
         }
         AppMethodBeat.o(146186);
       }
@@ -39,9 +39,9 @@ public final class a
       public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         AppMethodBeat.i(146185);
-        ad.i("MicroMsg.Record.AppBrandRecorder", "onRecPcmDataReady()");
-        if (a.this.lSn != null) {
-          a.this.lSn.u(paramAnonymousArrayOfByte, paramAnonymousInt);
+        ae.i("MicroMsg.Record.AppBrandRecorder", "onRecPcmDataReady()");
+        if (a.this.lWO != null) {
+          a.this.lWO.u(paramAnonymousArrayOfByte, paramAnonymousInt);
         }
         AppMethodBeat.o(146185);
       }
@@ -51,22 +51,22 @@ public final class a
       localRecordParam = new RecordParam();
     }
     this.sampleRate = localRecordParam.sampleRate;
-    this.channelCount = localRecordParam.lup;
-    this.dgV = localRecordParam.scene;
-    this.lSl = localRecordParam;
+    this.channelCount = localRecordParam.lyO;
+    this.dhX = localRecordParam.scene;
+    this.lWM = localRecordParam;
     AppMethodBeat.o(146187);
   }
   
-  public final boolean PG()
+  public final boolean PF()
   {
     AppMethodBeat.i(146188);
-    ad.i("MicroMsg.Record.AppBrandRecorder", "stopRecord");
-    if (this.dgu != null) {}
-    for (boolean bool = this.dgu.PG();; bool = false)
+    ae.i("MicroMsg.Record.AppBrandRecorder", "stopRecord");
+    if (this.dhw != null) {}
+    for (boolean bool = this.dhw.PF();; bool = false)
     {
       long l = System.currentTimeMillis();
-      this.lSm -= l;
-      ad.i("MicroMsg.Record.AppBrandRecorder", "stop time ticket:%d, costTimeInMs:%d", new Object[] { Long.valueOf(l), Long.valueOf(this.lSm) });
+      this.lWN -= l;
+      ae.i("MicroMsg.Record.AppBrandRecorder", "stop time ticket:%d, costTimeInMs:%d", new Object[] { Long.valueOf(l), Long.valueOf(this.lWN) });
       AppMethodBeat.o(146188);
       return bool;
     }

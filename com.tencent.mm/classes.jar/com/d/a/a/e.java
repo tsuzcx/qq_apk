@@ -20,7 +20,7 @@ abstract class e
     }
   }
   
-  abstract void Af();
+  abstract void Ag();
   
   final void n(long paramLong1, long paramLong2)
   {
@@ -53,7 +53,7 @@ abstract class e
         AppMethodBeat.o(87957);
         return;
       }
-      e.this.Af();
+      e.this.Ag();
       e.this.handler.postDelayed(this, e.this.bWR);
       AppMethodBeat.o(87957);
     }
@@ -61,7 +61,7 @@ abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.d.a.a.e
  * JD-Core Version:    0.7.0.1
  */

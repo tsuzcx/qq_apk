@@ -50,7 +50,7 @@ public abstract class PostHttpRequest
     //   64: ldc 62
     //   66: iconst_0
     //   67: anewarray 4	java/lang/Object
-    //   70: invokestatic 68	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: invokestatic 68	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   73: aload_0
     //   74: aconst_null
     //   75: putfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
@@ -96,7 +96,7 @@ public abstract class PostHttpRequest
         if (this.mHttpPost != null) {
           continue;
         }
-        h.LTJ.aU(new Runnable()
+        h.MqF.aR(new Runnable()
         {
           /* Error */
           public void run()
@@ -206,7 +206,7 @@ public abstract class PostHttpRequest
             //   212: ldc 139
             //   214: iconst_0
             //   215: anewarray 4	java/lang/Object
-            //   218: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   218: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
             //   221: aload_3
             //   222: astore_2
             //   223: aload_0
@@ -307,7 +307,7 @@ public abstract class PostHttpRequest
             //   424: ldc 139
             //   426: iconst_0
             //   427: anewarray 4	java/lang/Object
-            //   430: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   430: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
             //   433: aload_3
             //   434: astore_2
             //   435: aload_0
@@ -338,7 +338,7 @@ public abstract class PostHttpRequest
             //   485: ldc 139
             //   487: iconst_0
             //   488: anewarray 4	java/lang/Object
-            //   491: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   491: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
             //   494: aload_3
             //   495: astore_2
             //   496: aload_0
@@ -369,7 +369,7 @@ public abstract class PostHttpRequest
             //   548: ldc 139
             //   550: iconst_0
             //   551: anewarray 4	java/lang/Object
-            //   554: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   554: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
             //   557: aload_3
             //   558: astore_2
             //   559: aload_0

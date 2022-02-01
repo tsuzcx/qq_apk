@@ -7,16 +7,16 @@ import d.z;
 public abstract class k
   extends g<z>
 {
-  public static final a Nwx = new a((byte)0);
+  public static final a NTD = new a((byte)0);
   
   public k()
   {
-    super(z.MKo);
+    super(z.Nhr);
   }
   
   public static final class a
   {
-    public static k bcP(String paramString)
+    public static k bet(String paramString)
     {
       AppMethodBeat.i(60066);
       p.h(paramString, "message");
@@ -46,7 +46,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.k
  * JD-Core Version:    0.7.0.1
  */

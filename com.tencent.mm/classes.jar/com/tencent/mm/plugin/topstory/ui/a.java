@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.topstory.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
 {
-  public static final int BrF;
+  public static final int BJe;
   
   static
   {
     AppMethodBeat.i(125853);
-    BrF = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 56);
+    BJe = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 56);
     AppMethodBeat.o(125853);
   }
 }

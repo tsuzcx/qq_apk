@@ -7,10 +7,10 @@ public final class a$v
   extends e
 {
   public int EN = 0;
-  public int Fpp = 0;
-  public int LGa = 0;
-  public int LHj = 0;
-  public int LHk = 0;
+  public int FHN = 0;
+  public int Mde = 0;
+  public int Men = 0;
+  public int Meo = 0;
   public int ret = 0;
   public String userName = "";
   
@@ -27,20 +27,20 @@ public final class a$v
     if (this.EN != 0) {
       paramb.bx(3, this.EN);
     }
-    if (this.LHj != 0) {
-      paramb.by(4, this.LHj);
+    if (this.Men != 0) {
+      paramb.by(4, this.Men);
     }
     if (this.ret != 0) {
       paramb.bx(5, this.ret);
     }
-    if (this.LHk != 0) {
-      paramb.bx(6, this.LHk);
+    if (this.Meo != 0) {
+      paramb.bx(6, this.Meo);
     }
-    if (this.LGa != 0) {
-      paramb.by(7, this.LGa);
+    if (this.Mde != 0) {
+      paramb.by(7, this.Mde);
     }
-    if (this.Fpp != 0) {
-      paramb.by(8, this.Fpp);
+    if (this.FHN != 0) {
+      paramb.by(8, this.FHN);
     }
     super.a(paramb);
   }
@@ -57,24 +57,24 @@ public final class a$v
       j = i + b.bz(3, this.EN);
     }
     i = j;
-    if (this.LHj != 0) {
-      i = j + b.bA(4, this.LHj);
+    if (this.Men != 0) {
+      i = j + b.bA(4, this.Men);
     }
     j = i;
     if (this.ret != 0) {
       j = i + b.bz(5, this.ret);
     }
     i = j;
-    if (this.LHk != 0) {
-      i = j + b.bz(6, this.LHk);
+    if (this.Meo != 0) {
+      i = j + b.bz(6, this.Meo);
     }
     j = i;
-    if (this.LGa != 0) {
-      j = i + b.bA(7, this.LGa);
+    if (this.Mde != 0) {
+      j = i + b.bA(7, this.Mde);
     }
     i = j;
-    if (this.Fpp != 0) {
-      i = j + b.bA(8, this.Fpp);
+    if (this.FHN != 0) {
+      i = j + b.bA(8, this.FHN);
     }
     return i;
   }

@@ -16,30 +16,30 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Stack;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/RenderViewManager;", "", "wxaChannelService", "Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/event/WxaChannelService;", "(Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/event/WxaChannelService;)V", "engineProvider", "Lcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;", "lastForegroundView", "Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/IWxaRenderView;", "mContext", "Landroid/content/Context;", "mRenderViews", "", "", "viewStack", "Ljava/util/Stack;", "attachRenderView", "", "view", "parent", "Landroid/view/ViewGroup;", "forceAttachFlutterView", "", "ensureInList", "enterFullScreen", "viewId", "exitFullScreen", "obtainRenderView", "context", "onBackground", "onDestroy", "onForeground", "onInitialized", "params", "Ljava/util/HashMap;", "", "onShow", "newId", "", "oldId", "pickerSelectCallback", "id", "ok", "data", "scrollToTop", "setFlutterEngineProvider", "provider", "Companion", "luggage-native-view_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/RenderViewManager;", "", "wxaChannelService", "Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/event/WxaChannelService;", "(Lcom/tencent/mm/plugin/luggage/natives/flutter/channel/event/WxaChannelService;)V", "engineProvider", "Lcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;", "lastForegroundView", "Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/IWxaRenderView;", "mContext", "Landroid/content/Context;", "mRenderViews", "", "", "viewStack", "Ljava/util/Stack;", "attachRenderView", "", "view", "parent", "Landroid/view/ViewGroup;", "forceAttachFlutterView", "", "ensureInList", "enterFullScreen", "viewId", "exitFullScreen", "obtainRenderView", "context", "onBackground", "onDestroy", "onForeground", "onInitialized", "params", "Ljava/util/HashMap;", "", "onShow", "newId", "", "oldId", "pickerSelectCallback", "id", "ok", "data", "scrollToTop", "setFlutterEngineProvider", "provider", "Companion", "luggage-native-view_release"})
 public final class b
 {
-  public static final b.a vCB;
+  public static final a vOF;
   public Context mContext;
-  public final d vBU;
-  public com.tencent.mm.plugin.m.a.a.b vCA;
-  public final Map<Long, a> vCx;
-  public a vCy;
-  public Stack<a> vCz;
+  public final d vNY;
+  public final Map<Long, a> vOB;
+  public a vOC;
+  public Stack<a> vOD;
+  public com.tencent.mm.plugin.m.a.a.b vOE;
   
   static
   {
     AppMethodBeat.i(123851);
-    vCB = new b.a((byte)0);
+    vOF = new a((byte)0);
     AppMethodBeat.o(123851);
   }
   
   public b(d paramd)
   {
     AppMethodBeat.i(123850);
-    this.vBU = paramd;
-    this.vCx = ((Map)new LinkedHashMap());
-    this.vCz = new Stack();
+    this.vNY = paramd;
+    this.vOB = ((Map)new LinkedHashMap());
+    this.vOD = new Stack();
     AppMethodBeat.o(123850);
   }
   
@@ -49,8 +49,8 @@ public final class b
     p.h(parama, "view");
     p.h(paramViewGroup, "parent");
     View localView = parama.getView();
-    if ((paramBoolean) || (this.vCy == null)) {
-      parama.b(this.vCy);
+    if ((paramBoolean) || (this.vOC == null)) {
+      parama.b(this.vOC);
     }
     if ((p.i(localView.getParent(), paramViewGroup) ^ true))
     {
@@ -74,22 +74,22 @@ public final class b
   {
     AppMethodBeat.i(123847);
     p.h(parama, "view");
-    if (((a)this.vCz.peek()).getViewId() != parama.getViewId())
+    if (((a)this.vOD.peek()).getViewId() != parama.getViewId())
     {
       AppMethodBeat.o(123847);
       return;
     }
     d(parama);
     parama.onBackground();
-    parama = ae.c(u.S("viewId", Long.valueOf(parama.getViewId())));
-    this.vBU.dp(parama);
+    parama = ae.c(u.R("viewId", Long.valueOf(parama.getViewId())));
+    this.vNY.dq(parama);
     AppMethodBeat.o(123847);
   }
   
   public final void d(a parama)
   {
     AppMethodBeat.i(123849);
-    if (!this.vCx.values().contains(parama))
+    if (!this.vOB.values().contains(parama))
     {
       parama = (Throwable)new IllegalArgumentException((parama + " does not exist in RenderView's list").toString());
       AppMethodBeat.o(123849);
@@ -97,10 +97,13 @@ public final class b
     }
     AppMethodBeat.o(123849);
   }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/RenderViewManager$Companion;", "", "()V", "TAG", "", "luggage-native-view_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.m.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

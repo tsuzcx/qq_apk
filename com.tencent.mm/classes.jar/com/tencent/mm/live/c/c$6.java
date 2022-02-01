@@ -10,11 +10,11 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.d.d;
 import com.tencent.mm.live.ui.LiveUID;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class c$6
   implements View.OnClickListener
 {
@@ -22,23 +22,23 @@ final class c$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(212299);
+    AppMethodBeat.i(215919);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveAfterPlugin$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    localObject = new Intent(this.gSN.getContext(), LiveUID.class);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveAfterPlugin$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    localObject = new Intent(this.gVw.getContext(), LiveUID.class);
     ((Intent)localObject).putExtra("FROM_SENCE", 2);
-    paramView = this.gSN.getContext();
+    paramView = this.gVw.getContext();
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/live/plugin/LiveAfterPlugin$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/live/plugin/LiveAfterPlugin$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/live/plugin/LiveAfterPlugin$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView = g.gOr;
-    if (p.i(g.anu(), u.aAm())) {
-      d.apQ();
+    paramView = g.gQZ;
+    if (p.i(g.anJ(), v.aAC())) {
+      d.aqe();
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveAfterPlugin$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(212299);
+    AppMethodBeat.o(215919);
   }
 }
 

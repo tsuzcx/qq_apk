@@ -16,47 +16,47 @@ public abstract interface i
   
   public abstract void b(Context paramContext, f paramf, b paramb);
   
-  public abstract boolean cPN();
+  public abstract boolean cRV();
   
-  public abstract boolean cPO();
+  public abstract com.tencent.mm.plugin.fingerprint.d.d cSA();
   
-  public abstract boolean cPP();
+  public abstract boolean cSB();
   
-  public abstract boolean cPQ();
+  public abstract Map<String, String> cSd();
   
-  public abstract boolean cPR();
+  public abstract boolean cSs();
   
-  public abstract boolean cPS();
+  public abstract boolean cSt();
   
-  public abstract boolean cPT();
+  public abstract boolean cSu();
   
-  public abstract int cPU();
+  public abstract boolean cSv();
   
-  public abstract com.tencent.mm.plugin.fingerprint.d.d cPV();
+  public abstract boolean cSw();
   
-  public abstract boolean cPW();
+  public abstract boolean cSx();
   
-  public abstract boolean cPq();
+  public abstract boolean cSy();
   
-  public abstract Map<String, String> cPy();
+  public abstract int cSz();
   
   public abstract void cancel();
   
-  public abstract boolean fe(Context paramContext);
+  public abstract boolean fi(Context paramContext);
   
-  public abstract boolean ff(Context paramContext);
+  public abstract boolean fj(Context paramContext);
   
-  public abstract void mE(boolean paramBoolean);
+  public abstract void mI(boolean paramBoolean);
   
-  public abstract void mF(boolean paramBoolean);
+  public abstract void mJ(boolean paramBoolean);
   
   public abstract void prepare();
   
-  public abstract void r(Object... paramVarArgs);
+  public abstract void q(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.a.i
  * JD-Core Version:    0.7.0.1
  */

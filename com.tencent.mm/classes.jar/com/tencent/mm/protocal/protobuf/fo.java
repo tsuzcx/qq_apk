@@ -3,12 +3,12 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long FxL;
-  public int FxM;
-  public String FxN;
-  public int FxO;
+  public long FQj;
+  public int FQk;
+  public String FQl;
+  public int FQm;
   public int Scene;
   public String Url;
   
@@ -21,13 +21,13 @@ public final class fo
       if (this.Url != null) {
         paramVarArgs.d(1, this.Url);
       }
-      paramVarArgs.aY(2, this.FxL);
-      paramVarArgs.aS(3, this.FxM);
-      if (this.FxN != null) {
-        paramVarArgs.d(4, this.FxN);
+      paramVarArgs.aZ(2, this.FQj);
+      paramVarArgs.aS(3, this.FQk);
+      if (this.FQl != null) {
+        paramVarArgs.d(4, this.FQl);
       }
       paramVarArgs.aS(5, this.Scene);
-      paramVarArgs.aS(6, this.FxO);
+      paramVarArgs.aS(6, this.FQm);
       AppMethodBeat.o(6390);
       return 0;
     }
@@ -39,21 +39,21 @@ public final class fo
     label466:
     for (paramInt = f.a.a.b.b.a.e(1, this.Url) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.FxL) + f.a.a.b.b.a.bz(3, this.FxM);
+      int i = paramInt + f.a.a.b.b.a.p(2, this.FQj) + f.a.a.b.b.a.bz(3, this.FQk);
       paramInt = i;
-      if (this.FxN != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FxN);
+      if (this.FQl != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FQl);
       }
       i = f.a.a.b.b.a.bz(5, this.Scene);
-      int j = f.a.a.b.b.a.bz(6, this.FxO);
+      int j = f.a.a.b.b.a.bz(6, this.FQm);
       AppMethodBeat.o(6390);
       return paramInt + i + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(6390);
@@ -69,27 +69,27 @@ public final class fo
           AppMethodBeat.o(6390);
           return -1;
         case 1: 
-          localfo.Url = locala.NPN.readString();
+          localfo.Url = locala.OmT.readString();
           AppMethodBeat.o(6390);
           return 0;
         case 2: 
-          localfo.FxL = locala.NPN.zd();
+          localfo.FQj = locala.OmT.zd();
           AppMethodBeat.o(6390);
           return 0;
         case 3: 
-          localfo.FxM = locala.NPN.zc();
+          localfo.FQk = locala.OmT.zc();
           AppMethodBeat.o(6390);
           return 0;
         case 4: 
-          localfo.FxN = locala.NPN.readString();
+          localfo.FQl = locala.OmT.readString();
           AppMethodBeat.o(6390);
           return 0;
         case 5: 
-          localfo.Scene = locala.NPN.zc();
+          localfo.Scene = locala.OmT.zc();
           AppMethodBeat.o(6390);
           return 0;
         }
-        localfo.FxO = locala.NPN.zc();
+        localfo.FQm = locala.OmT.zc();
         AppMethodBeat.o(6390);
         return 0;
       }

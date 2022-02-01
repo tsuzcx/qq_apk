@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 public final class c
 {
-  public static boolean fmw()
+  public static boolean fqr()
   {
     AppMethodBeat.i(153481);
     try

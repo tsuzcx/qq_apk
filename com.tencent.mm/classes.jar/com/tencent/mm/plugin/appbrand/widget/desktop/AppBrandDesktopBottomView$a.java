@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView$Companion;", "", "()V", "DEFAULT_RADIUS_IN_DP", "", "TAG", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView$Companion;", "", "()V", "DEFAULT_RADIUS_IN_DP", "", "TAG", "", "plugin-appbrand-integration_release"})
 public final class AppBrandDesktopBottomView$a {}
 
 

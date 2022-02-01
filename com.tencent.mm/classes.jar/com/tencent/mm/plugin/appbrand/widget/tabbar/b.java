@@ -14,12 +14,12 @@ public final class b
     super(paramString, paramc);
   }
   
-  public final void bFL()
+  public final void bGG()
   {
     AppMethodBeat.i(135541);
-    if (this.npQ != null)
+    if (this.nva != null)
     {
-      com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
+      com.tencent.e.h.MqF.aO(new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -32,18 +32,18 @@ public final class b
           try
           {
             b localb = b.this;
-            Object localObject = Base64.decode(b.this.npQ, 0);
+            Object localObject = Base64.decode(b.this.nva, 0);
             localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
             if (localObject == null) {
-              localb.npR.a("Failed to load icon via base64 icon", localb);
+              localb.nvb.a("Failed to load icon via base64 icon", localb);
             }
-            b.this.R((Bitmap)localObject);
+            b.this.S((Bitmap)localObject);
             AppMethodBeat.o(135540);
             return;
           }
           catch (Exception localException)
           {
-            b.this.npR.a("Failed to load icon via base64 icon", b.this);
+            b.this.nvb.a("Failed to load icon via base64 icon", b.this);
             AppMethodBeat.o(135540);
           }
         }
@@ -51,7 +51,7 @@ public final class b
       AppMethodBeat.o(135541);
       return;
     }
-    this.npR.a("Failed to load icon via base64 icon", this);
+    this.nvb.a("Failed to load icon via base64 icon", this);
     AppMethodBeat.o(135541);
   }
 }

@@ -14,8 +14,8 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.s.b;
@@ -23,11 +23,11 @@ import com.tencent.mm.ui.s.b;
 public class MMTextInputUI
   extends MMActivity
 {
-  private TextView KJM;
-  private int KJN;
-  private boolean KJO;
+  private TextView Lgg;
+  private int Lgh;
+  private boolean Lgi;
   private int maxCount;
-  private int rXr;
+  private int sgc;
   private EditText vr;
   
   private void goBack()
@@ -55,7 +55,7 @@ public class MMTextInputUI
     AppMethodBeat.o(143185);
   }
   
-  protected void L(CharSequence paramCharSequence) {}
+  protected void K(CharSequence paramCharSequence) {}
   
   public int getLayoutId()
   {
@@ -67,13 +67,13 @@ public class MMTextInputUI
     AppMethodBeat.i(143187);
     super.onCreate(paramBundle);
     this.vr = ((EditText)findViewById(2131305727));
-    this.KJM = ((TextView)findViewById(2131305192));
-    this.vr.setHint(bt.bI(getIntent().getStringExtra("key_hint"), ""));
-    this.vr.append(bt.bI(getIntent().getStringExtra("key_value"), ""));
+    this.Lgg = ((TextView)findViewById(2131305192));
+    this.vr.setHint(bu.bI(getIntent().getStringExtra("key_hint"), ""));
+    this.vr.append(bu.bI(getIntent().getStringExtra("key_value"), ""));
     this.maxCount = (getIntent().getIntExtra("key_max_count", -1) << 1);
-    this.rXr = 0;
-    this.KJN = Math.max(this.maxCount - 120, this.maxCount * 9 / 10);
-    this.KJO = getIntent().getBooleanExtra("key_nullable", false);
+    this.sgc = 0;
+    this.Lgh = Math.max(this.maxCount - 120, this.maxCount * 9 / 10);
+    this.Lgi = getIntent().getBooleanExtra("key_nullable", false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -89,7 +89,7 @@ public class MMTextInputUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(143183);
-        MMTextInputUI.this.L(MMTextInputUI.b(MMTextInputUI.this).getText());
+        MMTextInputUI.this.K(MMTextInputUI.b(MMTextInputUI.this).getText());
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("key_result", MMTextInputUI.b(MMTextInputUI.this).getText());
         MMTextInputUI.this.setResult(-1, paramAnonymousMenuItem);
@@ -97,9 +97,9 @@ public class MMTextInputUI
         AppMethodBeat.o(143183);
         return true;
       }
-    }, null, s.b.JbS);
-    enableOptionMenu(this.KJO);
-    if ((!this.KJO) || (this.maxCount > 0)) {
+    }, null, s.b.JwA);
+    enableOptionMenu(this.Lgi);
+    if ((!this.Lgi) || (this.maxCount > 0)) {
       this.vr.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
@@ -125,7 +125,7 @@ public class MMTextInputUI
             if (i >= paramAnonymousEditable.length()) {
               break label135;
             }
-            if (!bt.E(paramAnonymousEditable.charAt(i))) {
+            if (!bu.E(paramAnonymousEditable.charAt(i))) {
               break label115;
             }
             MMTextInputUI.a(MMTextInputUI.this, MMTextInputUI.e(MMTextInputUI.this) + 2);
@@ -195,7 +195,7 @@ public class MMTextInputUI
     AppMethodBeat.i(143186);
     if (4 == paramInt)
     {
-      ad.i("MicroMsg.MMTextInputUI", "on back key down");
+      ae.i("MicroMsg.MMTextInputUI", "on back key down");
       goBack();
       AppMethodBeat.o(143186);
       return true;
@@ -227,7 +227,7 @@ public class MMTextInputUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MMTextInputUI
  * JD-Core Version:    0.7.0.1
  */

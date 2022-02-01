@@ -6,29 +6,29 @@ import oicq.wlogin_sdk.tools.util;
 public final class ao
   extends a
 {
-  int NRR = 0;
-  int NRS = 0;
+  int OoX = 0;
+  int OoY = 0;
   
   public ao()
   {
-    this.NQs = 2;
+    this.Ony = 2;
   }
   
-  public final byte[] r(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public final byte[] s(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88109);
-    this.NRR = (paramArrayOfByte1.length + 6 + paramArrayOfByte2.length);
-    byte[] arrayOfByte = new byte[this.NRR];
-    util.W(arrayOfByte, 0, this.NRS);
-    util.W(arrayOfByte, 2, paramArrayOfByte1.length);
+    this.OoX = (paramArrayOfByte1.length + 6 + paramArrayOfByte2.length);
+    byte[] arrayOfByte = new byte[this.OoX];
+    util.X(arrayOfByte, 0, this.OoY);
+    util.X(arrayOfByte, 2, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
     int i = paramArrayOfByte1.length + 4;
-    util.W(arrayOfByte, i, paramArrayOfByte2.length);
+    util.X(arrayOfByte, i, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i + 2, paramArrayOfByte2.length);
-    super.alW(this.NQs);
-    super.af(arrayOfByte, this.NRR);
-    super.gxV();
-    paramArrayOfByte1 = super.gxR();
+    super.amG(this.Ony);
+    super.aj(arrayOfByte, this.OoX);
+    super.gCx();
+    paramArrayOfByte1 = super.gCt();
     AppMethodBeat.o(88109);
     return paramArrayOfByte1;
   }

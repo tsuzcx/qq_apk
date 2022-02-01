@@ -2,10 +2,10 @@ package com.tencent.mm.pluginsdk;
 
 public final class e$b
 {
-  public static int EJn = 15;
-  public static int EJo = 5;
-  public static int EJp = 5;
-  public static int EJq = 3;
+  public static int FbL = 15;
+  public static int FbM = 5;
+  public static int FbN = 5;
+  public static int FbO = 3;
 }
 
 

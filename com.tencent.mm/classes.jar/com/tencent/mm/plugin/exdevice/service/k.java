@@ -20,7 +20,7 @@ public abstract interface k
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnStateChange_AIDL");
     }
     
-    public static k y(IBinder paramIBinder)
+    public static k z(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;

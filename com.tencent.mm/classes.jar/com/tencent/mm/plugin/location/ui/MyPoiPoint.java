@@ -8,25 +8,25 @@ import com.tencent.mapsdk.raster.model.Circle;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MyPoiPoint
   extends FrameLayout
 {
   private final String TAG;
-  public b.a fFl;
-  private com.tencent.mm.plugin.k.d vbI;
-  public com.tencent.mm.modelgeo.d vbJ;
-  private boolean vbK;
-  Circle vbL;
+  public b.a fHp;
+  private com.tencent.mm.plugin.k.d vnT;
+  public com.tencent.mm.modelgeo.d vnU;
+  private boolean vnV;
+  Circle vnW;
   
   private MyPoiPoint(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(55836);
     this.TAG = "MicroMsg.MyPoiPoint";
-    this.vbK = false;
-    this.fFl = new b.a()
+    this.vnV = false;
+    this.fHp = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -36,14 +36,14 @@ public class MyPoiPoint
           AppMethodBeat.o(55835);
           return false;
         }
-        ad.d("MicroMsg.MyPoiPoint", "new location comes! lat : %f, lng: %f, accuracy: %f.", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
+        ae.d("MicroMsg.MyPoiPoint", "new location comes! lat : %f, lng: %f, accuracy: %f.", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
         if (MyPoiPoint.a(MyPoiPoint.this) != null)
         {
-          if (MyPoiPoint.this.vbL == null) {
+          if (MyPoiPoint.this.vnW == null) {
             break label151;
           }
-          MyPoiPoint.this.vbL.setCenter(new LatLng(paramAnonymousFloat2, paramAnonymousFloat1));
-          MyPoiPoint.this.vbL.setRadius(paramAnonymousDouble2);
+          MyPoiPoint.this.vnW.setCenter(new LatLng(paramAnonymousFloat2, paramAnonymousFloat1));
+          MyPoiPoint.this.vnW.setRadius(paramAnonymousDouble2);
           if (MyPoiPoint.b(MyPoiPoint.this)) {
             break label179;
           }
@@ -55,7 +55,7 @@ public class MyPoiPoint
           AppMethodBeat.o(55835);
           return true;
           label151:
-          MyPoiPoint.this.vbL = MyPoiPoint.a(MyPoiPoint.this).drawAccuracyCircle(paramAnonymousFloat2, paramAnonymousFloat1, paramAnonymousDouble2);
+          MyPoiPoint.this.vnW = MyPoiPoint.a(MyPoiPoint.this).drawAccuracyCircle(paramAnonymousFloat2, paramAnonymousFloat1, paramAnonymousDouble2);
           break;
           label179:
           MyPoiPoint.a(MyPoiPoint.this).updateLocaitonPinLayout(MyPoiPoint.this, paramAnonymousFloat2, paramAnonymousFloat1);
@@ -71,8 +71,8 @@ public class MyPoiPoint
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55837);
     this.TAG = "MicroMsg.MyPoiPoint";
-    this.vbK = false;
-    this.fFl = new b.a()
+    this.vnV = false;
+    this.fHp = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -82,14 +82,14 @@ public class MyPoiPoint
           AppMethodBeat.o(55835);
           return false;
         }
-        ad.d("MicroMsg.MyPoiPoint", "new location comes! lat : %f, lng: %f, accuracy: %f.", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
+        ae.d("MicroMsg.MyPoiPoint", "new location comes! lat : %f, lng: %f, accuracy: %f.", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
         if (MyPoiPoint.a(MyPoiPoint.this) != null)
         {
-          if (MyPoiPoint.this.vbL == null) {
+          if (MyPoiPoint.this.vnW == null) {
             break label151;
           }
-          MyPoiPoint.this.vbL.setCenter(new LatLng(paramAnonymousFloat2, paramAnonymousFloat1));
-          MyPoiPoint.this.vbL.setRadius(paramAnonymousDouble2);
+          MyPoiPoint.this.vnW.setCenter(new LatLng(paramAnonymousFloat2, paramAnonymousFloat1));
+          MyPoiPoint.this.vnW.setRadius(paramAnonymousDouble2);
           if (MyPoiPoint.b(MyPoiPoint.this)) {
             break label179;
           }
@@ -101,7 +101,7 @@ public class MyPoiPoint
           AppMethodBeat.o(55835);
           return true;
           label151:
-          MyPoiPoint.this.vbL = MyPoiPoint.a(MyPoiPoint.this).drawAccuracyCircle(paramAnonymousFloat2, paramAnonymousFloat1, paramAnonymousDouble2);
+          MyPoiPoint.this.vnW = MyPoiPoint.a(MyPoiPoint.this).drawAccuracyCircle(paramAnonymousFloat2, paramAnonymousFloat1, paramAnonymousDouble2);
           break;
           label179:
           MyPoiPoint.a(MyPoiPoint.this).updateLocaitonPinLayout(MyPoiPoint.this, paramAnonymousFloat2, paramAnonymousFloat1);
@@ -117,8 +117,8 @@ public class MyPoiPoint
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55838);
     this.TAG = "MicroMsg.MyPoiPoint";
-    this.vbK = false;
-    this.fFl = new b.a()
+    this.vnV = false;
+    this.fHp = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -128,14 +128,14 @@ public class MyPoiPoint
           AppMethodBeat.o(55835);
           return false;
         }
-        ad.d("MicroMsg.MyPoiPoint", "new location comes! lat : %f, lng: %f, accuracy: %f.", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
+        ae.d("MicroMsg.MyPoiPoint", "new location comes! lat : %f, lng: %f, accuracy: %f.", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
         if (MyPoiPoint.a(MyPoiPoint.this) != null)
         {
-          if (MyPoiPoint.this.vbL == null) {
+          if (MyPoiPoint.this.vnW == null) {
             break label151;
           }
-          MyPoiPoint.this.vbL.setCenter(new LatLng(paramAnonymousFloat2, paramAnonymousFloat1));
-          MyPoiPoint.this.vbL.setRadius(paramAnonymousDouble2);
+          MyPoiPoint.this.vnW.setCenter(new LatLng(paramAnonymousFloat2, paramAnonymousFloat1));
+          MyPoiPoint.this.vnW.setRadius(paramAnonymousDouble2);
           if (MyPoiPoint.b(MyPoiPoint.this)) {
             break label179;
           }
@@ -147,7 +147,7 @@ public class MyPoiPoint
           AppMethodBeat.o(55835);
           return true;
           label151:
-          MyPoiPoint.this.vbL = MyPoiPoint.a(MyPoiPoint.this).drawAccuracyCircle(paramAnonymousFloat2, paramAnonymousFloat1, paramAnonymousDouble2);
+          MyPoiPoint.this.vnW = MyPoiPoint.a(MyPoiPoint.this).drawAccuracyCircle(paramAnonymousFloat2, paramAnonymousFloat1, paramAnonymousDouble2);
           break;
           label179:
           MyPoiPoint.a(MyPoiPoint.this).updateLocaitonPinLayout(MyPoiPoint.this, paramAnonymousFloat2, paramAnonymousFloat1);
@@ -161,29 +161,29 @@ public class MyPoiPoint
   public MyPoiPoint(Context paramContext, com.tencent.mm.plugin.k.d paramd)
   {
     this(paramContext);
-    this.vbI = paramd;
+    this.vnT = paramd;
   }
   
   private void init(Context paramContext)
   {
     AppMethodBeat.i(55839);
     LayoutInflater.from(paramContext).inflate(2131495100, this, true);
-    this.vbJ = com.tencent.mm.modelgeo.d.aHQ();
-    dgx();
+    this.vnU = com.tencent.mm.modelgeo.d.aIh();
+    djw();
     AppMethodBeat.o(55839);
   }
   
-  public final void dgx()
+  public final void djw()
   {
     AppMethodBeat.i(55840);
-    ad.d("MicroMsg.MyPoiPoint", "enableLocation");
-    this.vbJ.b(this.fFl, true);
+    ae.d("MicroMsg.MyPoiPoint", "enableLocation");
+    this.vnU.b(this.fHp, true);
     AppMethodBeat.o(55840);
   }
   
   public void setIMapView(com.tencent.mm.plugin.k.d paramd)
   {
-    this.vbI = paramd;
+    this.vnT = paramd;
   }
 }
 

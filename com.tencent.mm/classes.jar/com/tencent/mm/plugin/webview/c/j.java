@@ -4,39 +4,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/jsapi/JsLoaderSetting;", "", "()V", "value", "", "isVConsoleOpen", "()Z", "setVConsoleOpen", "(Z)V", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/jsapi/JsLoaderSetting;", "", "()V", "value", "", "isVConsoleOpen", "()Z", "setVConsoleOpen", "(Z)V", "webview-sdk_release"})
 public final class j
 {
-  public static final j DNy;
+  public static final j Efx;
   
   static
   {
-    AppMethodBeat.i(214321);
-    DNy = new j();
-    AppMethodBeat.o(214321);
+    AppMethodBeat.i(214162);
+    Efx = new j();
+    AppMethodBeat.o(214162);
   }
   
-  public static final boolean eOR()
+  public static final boolean eSC()
   {
-    AppMethodBeat.i(214319);
-    if (((i.IS_FLAVOR_RED) || (i.DEBUG) || (((b)g.ab(b.class)).a(b.a.qEO, 0) == 1)) && (k.eOS().getBoolean("vconsole", false)))
+    AppMethodBeat.i(214160);
+    if (((com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.j.DEBUG) || (((b)g.ab(b.class)).a(b.a.qMu, 0) == 1)) && (k.eSD().getBoolean("vconsole", false)))
     {
-      AppMethodBeat.o(214319);
+      AppMethodBeat.o(214160);
       return true;
     }
-    AppMethodBeat.o(214319);
+    AppMethodBeat.o(214160);
     return false;
   }
   
-  public static final void va(boolean paramBoolean)
+  public static final void vi(boolean paramBoolean)
   {
-    AppMethodBeat.i(214320);
-    k.eOS().putBoolean("vconsole", paramBoolean);
-    AppMethodBeat.o(214320);
+    AppMethodBeat.i(214161);
+    k.eSD().putBoolean("vconsole", paramBoolean);
+    AppMethodBeat.o(214161);
   }
 }
 

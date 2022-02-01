@@ -14,13 +14,13 @@ final class e$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198533);
+    AppMethodBeat.i(220075);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/ui/detail/item/TurnCardAdDetailItem$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/detail/item/TurnCardAdDetailItem$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     a.a(false, this, "com/tencent/mm/plugin/sns/ui/detail/item/TurnCardAdDetailItem$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(198533);
+    AppMethodBeat.o(220075);
     return false;
   }
 }

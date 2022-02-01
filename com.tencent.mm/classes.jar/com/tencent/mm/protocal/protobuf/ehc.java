@@ -1,93 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ehc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FKN;
-  public String GVP;
-  public String path;
-  public String username;
+  public LinkedList<String> IkP;
+  public int version;
+  
+  public ehc()
+  {
+    AppMethodBeat.i(208305);
+    this.IkP = new LinkedList();
+    AppMethodBeat.o(208305);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123705);
+    AppMethodBeat.i(208306);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.d(1, this.username);
-      }
-      if (this.GVP != null) {
-        paramVarArgs.d(2, this.GVP);
-      }
-      paramVarArgs.aS(3, this.FKN);
-      if (this.path != null) {
-        paramVarArgs.d(4, this.path);
-      }
-      AppMethodBeat.o(123705);
+      paramVarArgs.aS(1, this.version);
+      paramVarArgs.e(2, 1, this.IkP);
+      AppMethodBeat.o(208306);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.username == null) {
-        break label378;
-      }
-    }
-    label378:
-    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.GVP != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.GVP);
-      }
-      i += f.a.a.b.b.a.bz(3, this.FKN);
-      paramInt = i;
-      if (this.path != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.path);
-      }
-      AppMethodBeat.o(123705);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(123705);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        ehc localehc = (ehc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(123705);
-          return -1;
-        case 1: 
-          localehc.username = locala.NPN.readString();
-          AppMethodBeat.o(123705);
-          return 0;
-        case 2: 
-          localehc.GVP = locala.NPN.readString();
-          AppMethodBeat.o(123705);
-          return 0;
-        case 3: 
-          localehc.FKN = locala.NPN.zc();
-          AppMethodBeat.o(123705);
-          return 0;
-        }
-        localehc.path = locala.NPN.readString();
-        AppMethodBeat.o(123705);
-        return 0;
-      }
-      AppMethodBeat.o(123705);
-      return -1;
+      paramInt = f.a.a.b.b.a.bz(1, this.version);
+      int i = f.a.a.a.c(2, 1, this.IkP);
+      AppMethodBeat.o(208306);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.IkP.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(208306);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ehc localehc = (ehc)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(208306);
+        return -1;
+      case 1: 
+        localehc.version = locala.OmT.zc();
+        AppMethodBeat.o(208306);
+        return 0;
+      }
+      localehc.IkP.add(locala.OmT.readString());
+      AppMethodBeat.o(208306);
+      return 0;
+    }
+    AppMethodBeat.o(208306);
+    return -1;
   }
 }
 

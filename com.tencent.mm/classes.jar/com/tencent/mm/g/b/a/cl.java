@@ -6,56 +6,56 @@ import com.tencent.mm.plugin.report.a;
 public final class cl
   extends a
 {
-  public long ecF;
-  public long ecG = 0L;
-  public long ecH = 0L;
-  public long ecI = 0L;
-  public long ecJ;
-  private String ecK = "";
-  public long ecL;
+  public long eea;
+  public long eeb = 0L;
+  public long eec = 0L;
+  public long eed = 0L;
+  public long eee;
+  private String eef = "";
+  public long eeg;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(219241);
+    AppMethodBeat.i(209881);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecF);
+    ((StringBuffer)localObject).append(this.eea);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecG);
+    ((StringBuffer)localObject).append(this.eeb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecH);
+    ((StringBuffer)localObject).append(this.eec);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecI);
+    ((StringBuffer)localObject).append(this.eed);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecJ);
+    ((StringBuffer)localObject).append(this.eee);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecK);
+    ((StringBuffer)localObject).append(this.eef);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecL);
+    ((StringBuffer)localObject).append(this.eeg);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(219241);
+    axO((String)localObject);
+    AppMethodBeat.o(209881);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(219242);
+    AppMethodBeat.i(209882);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("RecomdCount:").append(this.ecF);
+    ((StringBuffer)localObject).append("RecomdCount:").append(this.eea);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickMore:").append(this.ecG);
+    ((StringBuffer)localObject).append("ClickMore:").append(this.eeb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RecomdSelect:").append(this.ecH);
+    ((StringBuffer)localObject).append("RecomdSelect:").append(this.eec);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OtherSelect:").append(this.ecI);
+    ((StringBuffer)localObject).append("OtherSelect:").append(this.eed);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExitType:").append(this.ecJ);
+    ((StringBuffer)localObject).append("ExitType:").append(this.eee);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TicketId:").append(this.ecK);
+    ((StringBuffer)localObject).append("TicketId:").append(this.eef);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OtherCount:").append(this.ecL);
+    ((StringBuffer)localObject).append("OtherCount:").append(this.eeg);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(219242);
+    AppMethodBeat.o(209882);
     return localObject;
   }
   
@@ -64,17 +64,17 @@ public final class cl
     return 19450;
   }
   
-  public final cl lL(String paramString)
+  public final cl mc(String paramString)
   {
-    AppMethodBeat.i(219240);
-    this.ecK = t("TicketId", paramString, true);
-    AppMethodBeat.o(219240);
+    AppMethodBeat.i(209880);
+    this.eef = t("TicketId", paramString, true);
+    AppMethodBeat.o(209880);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.cl
  * JD-Core Version:    0.7.0.1
  */

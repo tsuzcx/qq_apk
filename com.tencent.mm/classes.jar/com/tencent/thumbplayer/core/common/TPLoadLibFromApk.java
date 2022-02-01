@@ -28,18 +28,18 @@ public final class TPLoadLibFromApk
   
   static
   {
-    AppMethodBeat.i(220449);
+    AppMethodBeat.i(197388);
     mLoadedLibs = new HashMap();
     mContext = null;
-    AppMethodBeat.o(220449);
+    AppMethodBeat.o(197388);
   }
   
   private static void extractAllLibraries(Context paramContext)
   {
-    AppMethodBeat.i(220446);
+    AppMethodBeat.i(197385);
     if (paramContext == null)
     {
-      AppMethodBeat.o(220446);
+      AppMethodBeat.o(197385);
       return;
     }
     Object localObject1 = generateAbiList();
@@ -62,14 +62,14 @@ public final class TPLoadLibFromApk
         if ((!TextUtils.isEmpty(str)) && (str.contains("../")))
         {
           localObject1 = new Exception("contain ../, throw err");
-          AppMethodBeat.o(220446);
+          AppMethodBeat.o(197385);
           throw ((Throwable)localObject1);
         }
       }
       finally
       {
         paramContext.close();
-        AppMethodBeat.o(220446);
+        AppMethodBeat.o(197385);
       }
       Object localObject2 = localPattern.matcher(((ZipEntry)localObject2).getName());
       if (((Matcher)localObject2).matches())
@@ -83,15 +83,15 @@ public final class TPLoadLibFromApk
       }
     }
     paramContext.close();
-    AppMethodBeat.o(220446);
+    AppMethodBeat.o(197385);
   }
   
   private static boolean extractLibrary(ZipFile paramZipFile, String paramString, List<String> paramList, File paramFile)
   {
-    AppMethodBeat.i(220445);
+    AppMethodBeat.i(197384);
     if (paramFile.isFile())
     {
-      AppMethodBeat.o(220445);
+      AppMethodBeat.o(197384);
       return true;
     }
     paramList = paramList.iterator();
@@ -101,13 +101,13 @@ public final class TPLoadLibFromApk
       paramString = paramZipFile.getEntry("lib/" + paramList + "/lib" + paramString + ".so");
       if (paramString == null)
       {
-        AppMethodBeat.o(220445);
+        AppMethodBeat.o(197384);
         return false;
       }
       paramList = paramString.getName();
       if ((!TextUtils.isEmpty(paramList)) && (paramList.contains("../")))
       {
-        AppMethodBeat.o(220445);
+        AppMethodBeat.o(197384);
         return false;
       }
       paramZipFile = paramZipFile.getInputStream(paramString);
@@ -129,31 +129,31 @@ public final class TPLoadLibFromApk
       {
         paramZipFile.close();
         paramString.close();
-        AppMethodBeat.o(220445);
+        AppMethodBeat.o(197384);
       }
       paramString.close();
       try
       {
         paramFile.setReadOnly();
-        AppMethodBeat.o(220445);
+        AppMethodBeat.o(197384);
         return true;
       }
       catch (Throwable paramZipFile)
       {
-        AppMethodBeat.o(220445);
+        AppMethodBeat.o(197384);
         return false;
       }
     }
-    AppMethodBeat.o(220445);
+    AppMethodBeat.o(197384);
     return false;
   }
   
   public static String find(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(220441);
+    AppMethodBeat.i(197380);
     if (paramContext == null)
     {
-      AppMethodBeat.o(220441);
+      AppMethodBeat.o(197380);
       return null;
     }
     try
@@ -171,7 +171,7 @@ public final class TPLoadLibFromApk
           localObject3 = paramString.getAbsolutePath();
         }
       }
-      AppMethodBeat.o(220441);
+      AppMethodBeat.o(197380);
       return localObject3;
     }
     catch (Exception localException)
@@ -185,7 +185,7 @@ public final class TPLoadLibFromApk
   
   private static List<String> generateAbiList()
   {
-    AppMethodBeat.i(220444);
+    AppMethodBeat.i(197383);
     ArrayList localArrayList = new ArrayList(3);
     Object localObject = Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class });
     String str = (String)((Method)localObject).invoke(null, new Object[] { "ro.product.cpu.abi" });
@@ -197,16 +197,16 @@ public final class TPLoadLibFromApk
       localArrayList.add(localObject);
     }
     localArrayList.add("armeabi");
-    AppMethodBeat.o(220444);
+    AppMethodBeat.o(197383);
     return localArrayList;
   }
   
   public static boolean load(String paramString, ClassLoader paramClassLoader, Context arg2)
   {
-    AppMethodBeat.i(220438);
+    AppMethodBeat.i(197377);
     if ((paramString == null) || (paramString.length() == 0) || (paramClassLoader == null))
     {
-      AppMethodBeat.o(220438);
+      AppMethodBeat.o(197377);
       return false;
     }
     mContext = ???;
@@ -224,11 +224,11 @@ public final class TPLoadLibFromApk
           if (localObject1 == paramClassLoader)
           {
             TPNativeLog.printLog(2, "callerClassLoader has already load ! name=".concat(String.valueOf(paramString)));
-            AppMethodBeat.o(220438);
+            AppMethodBeat.o(197377);
             return true;
           }
           paramString = new UnsatisfiedLinkError("Library '" + paramString + "' was loaded by a different ClassLoader.");
-          AppMethodBeat.o(220438);
+          AppMethodBeat.o(197377);
           throw paramString;
         }
       }
@@ -240,7 +240,7 @@ public final class TPLoadLibFromApk
           synchronized (mLoadedLibs)
           {
             mLoadedLibs.put(paramString, new WeakReference(paramClassLoader));
-            AppMethodBeat.o(220438);
+            AppMethodBeat.o(197377);
             return true;
           }
           localObject1 = new File(???.getDir("recover_lib", 0), "lib" + paramString + ".so");
@@ -248,13 +248,13 @@ public final class TPLoadLibFromApk
         catch (InvocationTargetException paramClassLoader)
         {
           paramString = (UnsatisfiedLinkError)new UnsatisfiedLinkError("Failed loading library: ".concat(String.valueOf(paramString))).initCause(paramClassLoader.getCause());
-          AppMethodBeat.o(220438);
+          AppMethodBeat.o(197377);
           throw paramString;
         }
         catch (Exception paramClassLoader)
         {
           paramString = (UnsatisfiedLinkError)new UnsatisfiedLinkError("Failed loading library: ".concat(String.valueOf(paramString))).initCause(paramClassLoader);
-          AppMethodBeat.o(220438);
+          AppMethodBeat.o(197377);
           throw paramString;
         }
       }
@@ -263,24 +263,24 @@ public final class TPLoadLibFromApk
         ??? = loadFromRecovery(paramString, paramClassLoader, ???, (File)localObject1);
         if (??? == null)
         {
-          AppMethodBeat.o(220438);
+          AppMethodBeat.o(197377);
           return true;
         }
       }
       catch (Throwable paramString)
       {
-        AppMethodBeat.o(220438);
+        AppMethodBeat.o(197377);
         throw paramString;
       }
       try
       {
         boolean bool = loadFromApk(paramString, paramClassLoader, ???, (File)localObject1, (UnsatisfiedLinkError)???);
-        AppMethodBeat.o(220438);
+        AppMethodBeat.o(197377);
         return bool;
       }
       catch (Throwable paramString)
       {
-        AppMethodBeat.o(220438);
+        AppMethodBeat.o(197377);
         throw paramString;
       }
       label392:
@@ -730,29 +730,29 @@ public final class TPLoadLibFromApk
   
   private static void reflectSystemLoad(String paramString, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(220442);
+    AppMethodBeat.i(197381);
     Runtime localRuntime = Runtime.getRuntime();
     Method localMethod = localRuntime.getClass().getDeclaredMethod("load", new Class[] { String.class, ClassLoader.class });
     localMethod.setAccessible(true);
     localMethod.invoke(localRuntime, new Object[] { paramString, paramClassLoader });
-    AppMethodBeat.o(220442);
+    AppMethodBeat.o(197381);
   }
   
   private static void reflectSystemLoadLibrary(String paramString, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(220443);
+    AppMethodBeat.i(197382);
     Runtime localRuntime = Runtime.getRuntime();
     Method localMethod = localRuntime.getClass().getDeclaredMethod("loadLibrary", new Class[] { String.class, ClassLoader.class });
     localMethod.setAccessible(true);
     localMethod.invoke(localRuntime, new Object[] { paramString, paramClassLoader });
-    AppMethodBeat.o(220443);
+    AppMethodBeat.o(197382);
   }
   
   public static void setupBrokenLibraryHandler()
   {
-    AppMethodBeat.i(220447);
+    AppMethodBeat.i(197386);
     Thread.setDefaultUncaughtExceptionHandler(new LibraryBrokenHandler(Thread.getDefaultUncaughtExceptionHandler()));
-    AppMethodBeat.o(220447);
+    AppMethodBeat.o(197386);
   }
   
   static class LibraryBrokenHandler
@@ -768,7 +768,7 @@ public final class TPLoadLibFromApk
     public void uncaughtException(Thread paramThread, Throwable paramThrowable)
     {
       int j = 1;
-      AppMethodBeat.i(220437);
+      AppMethodBeat.i(197376);
       int i;
       if (((paramThrowable instanceof UnsatisfiedLinkError)) || (((paramThrowable instanceof NoSuchMethodError)) && (paramThrowable.getMessage().matches(".*sig(nature)?[=:].*"))))
       {
@@ -795,7 +795,7 @@ public final class TPLoadLibFromApk
           localThrowable = new UnsatisfiedLinkError("Invalid so detected and recovered.").initCause(paramThrowable);
         }
         this.mParent.uncaughtException(paramThread, localThrowable);
-        AppMethodBeat.o(220437);
+        AppMethodBeat.o(197376);
         return;
         i = 0;
         break;

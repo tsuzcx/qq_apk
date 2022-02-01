@@ -11,12 +11,12 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void aCO(String paramString);
+    public abstract void aEh(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.b
  * JD-Core Version:    0.7.0.1
  */

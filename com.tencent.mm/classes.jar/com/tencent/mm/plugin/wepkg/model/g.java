@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.wepkg.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import com.tencent.xweb.WebResourceResponse;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,9 +15,9 @@ import java.util.Map;
 public final class g
   extends b
 {
-  public WepkgVersion EET;
-  public f EFd;
-  private Map<String, WepkgPreloadFile> EFe;
+  private Map<String, WepkgPreloadFile> EXA;
+  public WepkgVersion EXp;
+  public f EXz;
   private String charset;
   
   public g(int paramInt, boolean paramBoolean, String paramString)
@@ -31,34 +31,34 @@ public final class g
     super(0, true, paramWepkgVersion.version);
     AppMethodBeat.i(110705);
     this.charset = "UTF-8";
-    this.EET = paramWepkgVersion;
-    this.EFd = paramf;
-    this.EFe = paramMap;
-    if ((paramWepkgVersion != null) && (!bt.isNullOrNil(paramWepkgVersion.charset))) {
+    this.EXp = paramWepkgVersion;
+    this.EXz = paramf;
+    this.EXA = paramMap;
+    if ((paramWepkgVersion != null) && (!bu.isNullOrNil(paramWepkgVersion.charset))) {
       this.charset = paramWepkgVersion.charset;
     }
     AppMethodBeat.o(110705);
   }
   
-  public final WebResourceResponse aKM(String paramString)
+  public final WebResourceResponse aMi(String paramString)
   {
     AppMethodBeat.i(110707);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110707);
       return null;
     }
-    if ((this.EFe != null) && (this.EFe.get(paramString) != null))
+    if ((this.EXA != null) && (this.EXA.get(paramString) != null))
     {
-      Object localObject1 = (WepkgPreloadFile)this.EFe.get(paramString);
-      if (!bt.isNullOrNil(((WepkgPreloadFile)localObject1).filePath))
+      Object localObject1 = (WepkgPreloadFile)this.EXA.get(paramString);
+      if (!bu.isNullOrNil(((WepkgPreloadFile)localObject1).filePath))
       {
-        Object localObject2 = new e(((WepkgPreloadFile)localObject1).filePath);
-        if ((((e)localObject2).exists()) && (((e)localObject2).isFile()) && (((e)localObject2).length() == ((WepkgPreloadFile)localObject1).size)) {
+        Object localObject2 = new k(((WepkgPreloadFile)localObject1).filePath);
+        if ((((k)localObject2).exists()) && (((k)localObject2).isFile()) && (((k)localObject2).length() == ((WepkgPreloadFile)localObject1).size)) {
           try
           {
-            ad.i("MicroMsg.Wepkg.WepkgInterceptor", "rid hit preload file. rid:%s, localPath:%s", new Object[] { paramString, ((WepkgPreloadFile)localObject1).filePath });
-            localObject2 = i.ai((e)localObject2);
+            ae.i("MicroMsg.Wepkg.WepkgInterceptor", "rid hit preload file. rid:%s, localPath:%s", new Object[] { paramString, ((WepkgPreloadFile)localObject1).filePath });
+            localObject2 = o.ai((k)localObject2);
             localObject1 = new WebResourceResponse(((WepkgPreloadFile)localObject1).mimeType, this.charset, (InputStream)localObject2);
             AppMethodBeat.o(110707);
             return localObject1;
@@ -67,9 +67,9 @@ public final class g
         }
       }
     }
-    if (this.EFd != null)
+    if (this.EXz != null)
     {
-      paramString = this.EFd.ln(paramString, this.charset);
+      paramString = this.EXz.lu(paramString, this.charset);
       AppMethodBeat.o(110707);
       return paramString;
     }
@@ -77,10 +77,10 @@ public final class g
     return null;
   }
   
-  public final boolean aKO(String paramString)
+  public final boolean aMk(String paramString)
   {
     AppMethodBeat.i(110706);
-    paramString = aKM(d.aLa(paramString));
+    paramString = aMi(d.aMw(paramString));
     if (paramString != null)
     {
       paramString = paramString.mInputStream;
@@ -101,21 +101,21 @@ public final class g
     }
   }
   
-  public final String acz(String paramString)
+  public final String adq(String paramString)
   {
     AppMethodBeat.i(110708);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110708);
       return null;
     }
-    if ((this.EFe != null) && (this.EFe.get(paramString) != null))
+    if ((this.EXA != null) && (this.EXA.get(paramString) != null))
     {
-      paramString = (WepkgPreloadFile)this.EFe.get(paramString);
-      if (!bt.isNullOrNil(paramString.filePath))
+      paramString = (WepkgPreloadFile)this.EXA.get(paramString);
+      if (!bu.isNullOrNil(paramString.filePath))
       {
-        e locale = new e(paramString.filePath);
-        if ((locale.exists()) && (locale.isFile()) && (locale.length() == paramString.size))
+        k localk = new k(paramString.filePath);
+        if ((localk.exists()) && (localk.isFile()) && (localk.length() == paramString.size))
         {
           paramString = paramString.filePath;
           AppMethodBeat.o(110708);

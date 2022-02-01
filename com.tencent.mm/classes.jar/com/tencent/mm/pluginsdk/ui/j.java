@@ -10,56 +10,56 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class j
   extends BitmapDrawable
   implements e.a
 {
-  protected static final ap hxM;
-  protected boolean ESR;
-  private int ESS;
-  private int EST;
-  protected boolean ESU;
-  protected float ESV;
-  private PaintFlagsDrawFilter ESW;
-  public c ESX;
-  protected final Paint hxL;
-  private Runnable hxO;
+  protected static final aq hAA;
+  protected boolean Flm;
+  private int Fln;
+  private int Flo;
+  protected boolean Flp;
+  protected float Flq;
+  private PaintFlagsDrawFilter Flr;
+  public c Fls;
+  private Runnable hAC;
+  protected final Paint hAz;
   private Path lP;
   private Paint paint;
   private Rect rect;
   protected String tag;
-  protected boolean vRh;
-  protected final a wYb;
-  protected boolean xPa;
+  protected boolean wdl;
+  protected final a xnS;
+  protected boolean yeT;
   
   static
   {
     AppMethodBeat.i(152146);
-    hxM = new ap(Looper.getMainLooper());
+    hAA = new aq(Looper.getMainLooper());
     AppMethodBeat.o(152146);
   }
   
   public j(a parama, String paramString)
   {
-    super(parama.LL());
+    super(parama.LT());
     AppMethodBeat.i(152139);
-    this.hxL = new Paint();
-    this.vRh = false;
-    this.ESR = false;
-    this.ESS = 0;
-    this.EST = 0;
-    this.ESV = 1.0F;
+    this.hAz = new Paint();
+    this.wdl = false;
+    this.Flm = false;
+    this.Fln = 0;
+    this.Flo = 0;
+    this.Flq = 1.0F;
     this.rect = new Rect();
-    this.ESW = new PaintFlagsDrawFilter(0, 3);
+    this.Flr = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
     this.lP = new Path();
-    this.hxO = new Runnable()
+    this.hAC = new Runnable()
     {
       public final void run()
       {
@@ -68,32 +68,32 @@ public class j
         AppMethodBeat.o(152138);
       }
     };
-    this.hxL.setAntiAlias(true);
-    this.hxL.setFilterBitmap(true);
-    this.wYb = parama;
+    this.hAz.setAntiAlias(true);
+    this.hAz.setFilterBitmap(true);
+    this.xnS = parama;
     this.tag = paramString;
-    this.wYb.a(this);
+    this.xnS.a(this);
     AppMethodBeat.o(152139);
   }
   
   public j(a parama, String paramString, byte paramByte)
   {
-    super(parama.LL());
+    super(parama.LT());
     AppMethodBeat.i(152140);
-    this.hxL = new Paint();
-    this.vRh = false;
-    this.ESR = false;
-    this.ESS = 0;
-    this.EST = 0;
-    this.ESV = 1.0F;
+    this.hAz = new Paint();
+    this.wdl = false;
+    this.Flm = false;
+    this.Fln = 0;
+    this.Flo = 0;
+    this.Flq = 1.0F;
     this.rect = new Rect();
-    this.ESW = new PaintFlagsDrawFilter(0, 3);
+    this.Flr = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
     this.lP = new Path();
-    this.hxO = new Runnable()
+    this.hAC = new Runnable()
     {
       public final void run()
       {
@@ -102,21 +102,21 @@ public class j
         AppMethodBeat.o(152138);
       }
     };
-    this.hxL.setAntiAlias(true);
-    this.hxL.setFilterBitmap(true);
-    this.vRh = false;
-    this.wYb = parama;
+    this.hAz.setAntiAlias(true);
+    this.hAz.setFilterBitmap(true);
+    this.wdl = false;
+    this.xnS = parama;
     this.tag = paramString;
-    this.wYb.a(this);
+    this.xnS.a(this);
     AppMethodBeat.o(152140);
   }
   
-  public void De(String paramString)
+  public void DG(String paramString)
   {
     AppMethodBeat.i(152143);
-    if (this.ESX != null)
+    if (this.Fls != null)
     {
-      this.ESX.ahw(paramString);
+      this.Fls.ait(paramString);
       AppMethodBeat.o(152143);
       return;
     }
@@ -125,8 +125,8 @@ public class j
       AppMethodBeat.o(152143);
       return;
     }
-    ad.v("MicroMsg.SDK.LazyBitmapDrawable", "notifyChanged :%s", new Object[] { paramString });
-    hxM.post(this.hxO);
+    ae.v("MicroMsg.SDK.LazyBitmapDrawable", "notifyChanged :%s", new Object[] { paramString });
+    hAA.post(this.hAC);
     AppMethodBeat.o(152143);
   }
   
@@ -134,73 +134,73 @@ public class j
   {
     AppMethodBeat.i(152142);
     Bitmap localBitmap;
-    if (this.ESR)
+    if (this.Flm)
     {
-      localBitmap = this.wYb.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localBitmap = this.xnS.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         break label215;
       }
-      localBitmap = this.wYb.LL();
-      if (!this.ESU) {
+      localBitmap = this.xnS.LT();
+      if (!this.Flp) {
         break label207;
       }
-      this.xPa = true;
+      this.yeT = true;
     }
     for (;;)
     {
       Rect localRect2 = getBounds();
       Rect localRect1 = null;
-      if ((this.ESV > 1.0F) || (this.vRh))
+      if ((this.Flq > 1.0F) || (this.wdl))
       {
         int i = localBitmap.getHeight() / 15 / 2;
         int j = localBitmap.getWidth() / 15 / 2;
         localRect1 = new Rect(j, i, localBitmap.getWidth() - j, localBitmap.getHeight() - i);
       }
-      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.hxL);
+      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.hAz);
       AppMethodBeat.o(152142);
       return;
-      if (this.ESU)
+      if (this.Flp)
       {
-        localBitmap = this.wYb.fh(this.tag);
+        localBitmap = this.xnS.fm(this.tag);
         break;
       }
-      localBitmap = this.wYb.fg(this.tag);
+      localBitmap = this.xnS.fl(this.tag);
       break;
       label207:
-      this.xPa = false;
+      this.yeT = false;
       continue;
       label215:
-      this.xPa = false;
+      this.yeT = false;
     }
   }
   
-  public final void fbK()
-  {
-    AppMethodBeat.i(195448);
-    hxM.post(this.hxO);
-    AppMethodBeat.o(195448);
-  }
-  
-  public final void fbL()
-  {
-    this.ESU = true;
-  }
-  
-  public final void fbM()
+  public final void ffA()
   {
     AppMethodBeat.i(152144);
-    if (!this.ESU)
+    if (!this.Flp)
     {
       AppMethodBeat.o(152144);
       return;
     }
-    this.ESU = false;
-    if (this.xPa)
+    this.Flp = false;
+    if (this.yeT)
     {
-      this.xPa = false;
+      this.yeT = false;
       invalidateSelf();
     }
     AppMethodBeat.o(152144);
+  }
+  
+  public final void ffy()
+  {
+    AppMethodBeat.i(218901);
+    hAA.post(this.hAC);
+    AppMethodBeat.o(218901);
+  }
+  
+  public final void ffz()
+  {
+    this.Flp = true;
   }
   
   public final String getTag()
@@ -213,11 +213,11 @@ public class j
     AppMethodBeat.i(152145);
     if (paramBoolean)
     {
-      this.ESU = true;
+      this.Flp = true;
       AppMethodBeat.o(152145);
       return;
     }
-    fbM();
+    ffA();
     AppMethodBeat.o(152145);
   }
   
@@ -232,37 +232,37 @@ public class j
     if (!paramString.equals(this.tag))
     {
       this.tag = paramString;
-      hxM.post(this.hxO);
+      hAA.post(this.hAC);
     }
     AppMethodBeat.o(152141);
   }
   
-  public final void vI(boolean paramBoolean)
+  public final void vQ(boolean paramBoolean)
   {
-    this.ESR = paramBoolean;
+    this.Flm = paramBoolean;
   }
   
   public static abstract interface a
   {
-    public abstract Bitmap LL();
+    public abstract Bitmap LT();
     
     public abstract Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3);
     
     public abstract void a(j paramj);
     
-    public abstract Bitmap fg(String paramString);
+    public abstract Bitmap fl(String paramString);
     
-    public abstract Bitmap fh(String paramString);
+    public abstract Bitmap fm(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract boolean ahv(String paramString);
+    public abstract boolean ais(String paramString);
   }
   
   public static abstract interface c
   {
-    public abstract boolean ahw(String paramString);
+    public abstract boolean ait(String paramString);
   }
 }
 

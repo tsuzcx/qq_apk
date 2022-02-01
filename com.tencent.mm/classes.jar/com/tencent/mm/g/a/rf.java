@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
 
 public final class rf
   extends b
 {
-  public a dFO;
+  public a dGR;
   
   public rf()
   {
@@ -15,16 +16,18 @@ public final class rf
   
   private rf(byte paramByte)
   {
-    AppMethodBeat.i(153417);
-    this.dFO = new a();
-    this.IbR = true;
+    AppMethodBeat.i(125628);
+    this.dGR = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(153417);
+    AppMethodBeat.o(125628);
   }
   
   public static final class a
   {
-    public String dFP;
+    public SnsAdClick dGA;
+    public String dGD;
+    public int dGS;
   }
 }
 

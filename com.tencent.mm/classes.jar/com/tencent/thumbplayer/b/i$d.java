@@ -2,8 +2,8 @@ package com.tencent.thumbplayer.b;
 
 public final class i$d
 {
-  public String LZf;
-  public String LZg;
+  public String Mwa;
+  public String Mwb;
 }
 
 

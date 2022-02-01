@@ -1,7 +1,7 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
@@ -37,7 +37,7 @@ public final class o
     AppMethodBeat.i(140340);
     if ((j)this.cgR.get(parami.cgC) == null)
     {
-      ad.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.cgC });
+      ae.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.cgC });
       AppMethodBeat.o(140340);
       return;
     }
@@ -45,7 +45,7 @@ public final class o
   }
   
   /* Error */
-  public final void BL()
+  public final void BM()
   {
     // Byte code:
     //   0: ldc 114
@@ -95,7 +95,7 @@ public final class o
     //   87: iconst_0
     //   88: aload 4
     //   90: aastore
-    //   91: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 110	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_3
     //   95: ifnull +7 -> 102
     //   98: aload_3
@@ -123,7 +123,7 @@ public final class o
     //   143: iconst_0
     //   144: aload_2
     //   145: aastore
-    //   146: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   146: invokestatic 110	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   149: goto -37 -> 112
     //   152: astore_2
     //   153: ldc 102
@@ -134,7 +134,7 @@ public final class o
     //   162: iconst_0
     //   163: aload_2
     //   164: aastore
-    //   165: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   165: invokestatic 110	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   168: ldc 114
     //   170: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   173: return
@@ -158,7 +158,7 @@ public final class o
     //   202: iconst_0
     //   203: aload_2
     //   204: aastore
-    //   205: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   205: invokestatic 110	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   208: goto -23 -> 185
     //   211: astore_3
     //   212: goto -35 -> 177
@@ -212,18 +212,18 @@ public final class o
           if (!paramm.cgF) {
             break;
           }
-          paramm = paramm.BK();
+          paramm = paramm.BL();
           AppMethodBeat.o(140338);
           return paramm;
         }
       }
       catch (JSONException paramm)
       {
-        ad.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
+        ae.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
         AppMethodBeat.o(140338);
         return null;
       }
-      ad.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.cgz });
+      ae.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.cgz });
       paramm.a("system:function_not_exist", null);
     }
     AppMethodBeat.o(140338);
@@ -236,14 +236,14 @@ public final class o
     try
     {
       paramm = new i(paramm);
-      ad.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.cgC });
+      ae.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.cgC });
       a(paramm);
       AppMethodBeat.o(140339);
       return;
     }
     catch (JSONException paramm)
     {
-      ad.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      ae.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
       AppMethodBeat.o(140339);
     }
   }
@@ -256,14 +256,14 @@ public final class o
       paramm = new g(paramm);
       if ((h)this.cgS.get(Integer.valueOf(paramm.cgA)) == null)
       {
-        ad.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.cgA) });
+        ae.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.cgA) });
         AppMethodBeat.o(140341);
         return;
       }
     }
     catch (JSONException paramm)
     {
-      ad.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      ae.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
       AppMethodBeat.o(140341);
       return;
     }
@@ -273,7 +273,7 @@ public final class o
     AppMethodBeat.o(140341);
   }
   
-  public final void cv(String paramString)
+  public final void cw(String paramString)
   {
     AppMethodBeat.i(140337);
     this.cgM.evaluateJavascript(paramString, null);

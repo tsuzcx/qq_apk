@@ -6,23 +6,23 @@ import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"elementDescriptors", "", "Lkotlinx/serialization/SerialDescriptor;", "elementNames", "", "getElementIndexOrThrow", "", "name", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"elementDescriptors", "", "Lkotlinx/serialization/SerialDescriptor;", "elementNames", "", "getElementIndexOrThrow", "", "name", "kotlinx-serialization-runtime"})
 public final class r
 {
   public static final List<n> d(n paramn)
   {
-    AppMethodBeat.i(191485);
+    AppMethodBeat.i(200073);
     p.h(paramn, "$this$elementDescriptors");
-    int j = paramn.gwT();
+    int j = paramn.gBv();
     ArrayList localArrayList = new ArrayList(j);
     int i = 0;
     while (i < j)
     {
-      localArrayList.add(paramn.alK(i));
+      localArrayList.add(paramn.amu(i));
       i += 1;
     }
     paramn = (List)localArrayList;
-    AppMethodBeat.o(191485);
+    AppMethodBeat.o(200073);
     return paramn;
   }
 }

@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.sns.lucky.a.m;
-import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI;
 import com.tencent.mm.plugin.sns.ui.TouchImageView;
@@ -24,26 +24,26 @@ import com.tencent.mm.plugin.sns.ui.d.c;
 import com.tencent.mm.plugin.sns.ui.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.dfw;
-import com.tencent.mm.protocal.protobuf.dgo;
+import com.tencent.mm.protocal.protobuf.dgq;
+import com.tencent.mm.protocal.protobuf.dhi;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class SnsDetailLuckyHeader
   extends LinearLayout
 {
-  private View kBS;
-  private TextView zfg;
-  private LinearLayout zfh;
-  private LinearLayout zfi;
+  private View kFh;
+  private TextView zvV;
+  private LinearLayout zvW;
+  private LinearLayout zvX;
   
   public SnsDetailLuckyHeader(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(95202);
-    this.kBS = null;
+    this.kFh = null;
     init();
     AppMethodBeat.o(95202);
   }
@@ -52,7 +52,7 @@ public class SnsDetailLuckyHeader
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(95203);
-    this.kBS = null;
+    this.kFh = null;
     init();
     AppMethodBeat.o(95203);
   }
@@ -61,7 +61,7 @@ public class SnsDetailLuckyHeader
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(95201);
-    this.kBS = null;
+    this.kFh = null;
     init();
     AppMethodBeat.o(95201);
   }
@@ -70,19 +70,19 @@ public class SnsDetailLuckyHeader
   {
     AppMethodBeat.i(95204);
     View localView = View.inflate(getContext(), 2131494668, this);
-    this.kBS = localView.findViewById(2131296591);
-    this.zfg = ((TextView)localView.findViewById(2131296573));
-    this.zfh = ((LinearLayout)localView.findViewById(2131296574));
-    this.zfi = getLinearSeparator();
+    this.kFh = localView.findViewById(2131296591);
+    this.zvV = ((TextView)localView.findViewById(2131296573));
+    this.zvW = ((LinearLayout)localView.findViewById(2131296574));
+    this.zvX = getLinearSeparator();
     AppMethodBeat.o(95204);
   }
   
   public final void a(p paramp, c paramc)
   {
     AppMethodBeat.i(95207);
-    Object localObject2 = ak.v(paramp);
+    Object localObject2 = al.v(paramp);
     Object localObject1 = ((SnsObject)localObject2).SnsRedEnvelops;
-    if ((localObject1 == null) || (((dgo)localObject1).HuR.size() == 0))
+    if ((localObject1 == null) || (((dhi)localObject1).HOu.size() == 0))
     {
       setVisibility(8);
       AppMethodBeat.o(95207);
@@ -90,33 +90,33 @@ public class SnsDetailLuckyHeader
     }
     setVisibility(0);
     double d = m.b(paramp, (SnsObject)localObject2);
-    localObject2 = getContext().getString(2131763903, new Object[] { Integer.valueOf(((SnsObject)localObject2).SnsRedEnvelops.HuQ), bt.C(d * 1.0D / 100.0D) });
-    this.zfg.setText((CharSequence)localObject2);
-    this.kBS.setTag(paramp);
-    this.kBS.setOnClickListener(paramc.AyC);
-    paramp = ((dgo)localObject1).HuR;
-    boolean bool = ((dgo)localObject1).HuR.isEmpty();
-    int k = BackwardSupportUtil.b.g(getContext(), 32.0F);
-    int m = BackwardSupportUtil.b.g(getContext(), 6.0F);
-    int i = BackwardSupportUtil.b.g(getContext(), 10.0F);
-    int j = BackwardSupportUtil.b.g(getContext(), 17.0F);
+    localObject2 = getContext().getString(2131763903, new Object[] { Integer.valueOf(((SnsObject)localObject2).SnsRedEnvelops.HOt), bu.C(d * 1.0D / 100.0D) });
+    this.zvV.setText((CharSequence)localObject2);
+    this.kFh.setTag(paramp);
+    this.kFh.setOnClickListener(paramc.APY);
+    paramp = ((dhi)localObject1).HOu;
+    boolean bool = ((dhi)localObject1).HOu.isEmpty();
+    int k = BackwardSupportUtil.b.h(getContext(), 32.0F);
+    int m = BackwardSupportUtil.b.h(getContext(), 6.0F);
+    int i = BackwardSupportUtil.b.h(getContext(), 10.0F);
+    int j = BackwardSupportUtil.b.h(getContext(), 17.0F);
     int n;
     float f;
-    if (this.zfh != null)
+    if (this.zvW != null)
     {
       n = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
       f = getResources().getDimension(2131165516);
-      ad.d("MicroMsg.SnsDetailLuckyHeader", "guess size %d %f", new Object[] { Integer.valueOf(n), Float.valueOf(f) });
+      ae.d("MicroMsg.SnsDetailLuckyHeader", "guess size %d %f", new Object[] { Integer.valueOf(n), Float.valueOf(f) });
       f = n - f * 2.0F;
       if (paramp.size() > 0) {
         break label329;
       }
-      if (this.zfh.getParent() != null) {
-        this.zfh.setVisibility(8);
+      if (this.zvW.getParent() != null) {
+        this.zvW.setVisibility(8);
       }
-      this.zfh.removeAllViews();
-      this.zfh.setVisibility(8);
-      paramp = this.zfh;
+      this.zvW.removeAllViews();
+      this.zvW.setVisibility(8);
+      paramp = this.zvW;
       i = 8;
     }
     for (;;)
@@ -125,10 +125,10 @@ public class SnsDetailLuckyHeader
       AppMethodBeat.o(95207);
       return;
       label329:
-      this.zfh.getParent();
-      this.zfh.removeAllViews();
-      this.zfh.setVisibility(0);
-      this.zfh.setPadding(0, m, 0, m);
+      this.zvW.getParent();
+      this.zvW.removeAllViews();
+      this.zvW.setVisibility(0);
+      this.zvW.setPadding(0, m, 0, m);
       localObject1 = new ImageView(getContext());
       ((ImageView)localObject1).setImageResource(2131690249);
       ((ImageView)localObject1).setPadding(i, j, i, 0);
@@ -137,35 +137,35 @@ public class SnsDetailLuckyHeader
       ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((ImageView)localObject1).setClickable(false);
       ((ImageView)localObject1).setFocusable(false);
-      this.zfh.addView((View)localObject1);
-      n = a.fromDPToPix(getContext(), SnsCommentDetailUI.Aba);
+      this.zvW.addView((View)localObject1);
+      n = a.fromDPToPix(getContext(), SnsCommentDetailUI.Asn);
       j = (int)(f - n) / (m + k);
       i = j;
       if ((int)(f - n) % (m + k) > k) {
         i = j + 1;
       }
-      ad.d("MicroMsg.SnsDetailLuckyHeader", "guess size %d", new Object[] { Integer.valueOf(i) });
+      ae.d("MicroMsg.SnsDetailLuckyHeader", "guess size %d", new Object[] { Integer.valueOf(i) });
       localObject1 = new h(getContext());
       ((h)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
       ((h)localObject1).setLineMaxCounte(i);
       i = 0;
       while (i < paramp.size())
       {
-        localObject2 = (dfw)paramp.get(i);
+        localObject2 = (dgq)paramp.get(i);
         TouchImageView localTouchImageView = new TouchImageView(getContext());
         localTouchImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         localTouchImageView.setImageResource(2131232455);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(k, k);
         localLayoutParams.setMargins(0, m, m, 0);
         localTouchImageView.setLayoutParams(localLayoutParams);
-        localTouchImageView.setTag(((dfw)localObject2).Username);
-        a.b.w(localTouchImageView, ((dfw)localObject2).Username);
-        localTouchImageView.setOnClickListener(paramc.Ayr);
+        localTouchImageView.setTag(((dgq)localObject2).Username);
+        a.b.w(localTouchImageView, ((dgq)localObject2).Username);
+        localTouchImageView.setOnClickListener(paramc.APM);
         ((h)localObject1).addView(localTouchImageView);
         i += 1;
       }
-      this.zfh.addView((View)localObject1);
-      paramp = this.zfi;
+      this.zvW.addView((View)localObject1);
+      paramp = this.zvX;
       if (bool) {
         i = 8;
       } else {
@@ -177,7 +177,7 @@ public class SnsDetailLuckyHeader
   public LinearLayout getLinearSeparator()
   {
     AppMethodBeat.i(95205);
-    BackwardSupportUtil.b.g(getContext(), 2.0F);
+    BackwardSupportUtil.b.h(getContext(), 2.0F);
     AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, 1);
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setBackgroundResource(2131234115);
@@ -190,8 +190,8 @@ public class SnsDetailLuckyHeader
   {
     AppMethodBeat.i(95206);
     super.setVisibility(paramInt);
-    if (this.kBS != null) {
-      this.kBS.setVisibility(paramInt);
+    if (this.kFh != null) {
+      this.kFh.setVisibility(paramInt);
     }
     AppMethodBeat.o(95206);
   }

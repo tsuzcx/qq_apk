@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 
 public final class b
 {
-  private static boolean IQH = false;
-  private static boolean IQI = false;
+  private static boolean Jlp = false;
+  private static boolean Jlq = false;
   private static boolean mInitialized;
   private static String mPackageName = "";
   
@@ -15,7 +15,7 @@ public final class b
     mInitialized = false;
   }
   
-  public static long DK(long paramLong)
+  public static long Ej(long paramLong)
   {
     AppMethodBeat.i(148761);
     paramLong = (System.nanoTime() - paramLong) / 1000L;
@@ -23,7 +23,7 @@ public final class b
     return paramLong;
   }
   
-  private static final Object aVc(String paramString)
+  private static final Object aWD(String paramString)
   {
     AppMethodBeat.i(148757);
     try
@@ -64,33 +64,28 @@ public final class b
     }
   }
   
-  public static void ft(String paramString)
+  public static final boolean fyi()
   {
-    mPackageName = paramString;
+    return Jlq;
   }
   
-  public static final boolean fuh()
-  {
-    return IQI;
-  }
-  
-  public static final boolean fui()
+  public static final boolean fyj()
   {
     AppMethodBeat.i(148758);
     Object localObject;
     if (!mInitialized)
     {
-      localObject = aVc("WxSVGCode");
+      localObject = aWD("WxSVGCode");
       if (localObject != null) {
         break label62;
       }
     }
     label62:
-    for (IQH = false;; IQH = ((Boolean)localObject).booleanValue())
+    for (Jlp = false;; Jlp = ((Boolean)localObject).booleanValue())
     {
-      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(IQH) });
+      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(Jlp) });
       mInitialized = true;
-      if (IQH) {
+      if (Jlp) {
         break;
       }
       AppMethodBeat.o(148758);
@@ -100,10 +95,10 @@ public final class b
     return false;
   }
   
-  public static final Class<?> fuj()
+  public static final Class<?> fyk()
   {
     AppMethodBeat.i(148759);
-    Object localObject = aVc("WxSVGRawClass");
+    Object localObject = aWD("WxSVGRawClass");
     if (localObject != null)
     {
       localObject = (Class)localObject;
@@ -114,7 +109,7 @@ public final class b
     return null;
   }
   
-  public static long fuk()
+  public static long fyl()
   {
     AppMethodBeat.i(148760);
     long l = System.nanoTime();
@@ -122,9 +117,14 @@ public final class b
     return l;
   }
   
-  public static final void wT(boolean paramBoolean)
+  public static void fz(String paramString)
   {
-    IQI = paramBoolean;
+    mPackageName = paramString;
+  }
+  
+  public static final void xb(boolean paramBoolean)
+  {
+    Jlq = paramBoolean;
   }
 }
 

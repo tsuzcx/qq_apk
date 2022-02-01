@@ -5,20 +5,21 @@ import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class q
-  extends a<com.tencent.mm.plugin.appbrand.q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 285;
   public static final String NAME = "requestVirtualPayment";
-  boolean ldp = false;
+  boolean lha = false;
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

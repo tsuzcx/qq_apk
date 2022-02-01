@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.api.g;
 import com.tencent.mm.sdk.b.b;
 
 public final class hb
   extends b
 {
-  public a dtu;
+  public a duy;
   
   public hb()
   {
@@ -15,17 +16,17 @@ public final class hb
   
   private hb(byte paramByte)
   {
-    AppMethodBeat.i(168878);
-    this.dtu = new a();
-    this.IbR = false;
+    AppMethodBeat.i(168628);
+    this.duy = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(168878);
+    AppMethodBeat.o(168628);
   }
   
   public static final class a
   {
-    public long dnz;
-    public long id;
+    public g contact;
+    public String username;
   }
 }
 

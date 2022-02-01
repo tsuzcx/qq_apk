@@ -1,52 +1,52 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bie;
-import com.tencent.mm.protocal.protobuf.bif;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.biu;
+import com.tencent.mm.protocal.protobuf.biv;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class r
   extends n
   implements k
 {
-  private f gzH;
-  public final b hKw;
+  private f gCo;
+  public final b hNp;
   
   public r(int paramInt)
   {
     AppMethodBeat.i(121056);
     b.a locala = new b.a();
-    locala.hNM = new bie();
-    locala.hNN = new bif();
+    locala.hQF = new biu();
+    locala.hQG = new biv();
     locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getservicenotifyoptions";
     locala.funcId = getType();
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.hKw = locala.aDC();
-    ((bie)this.hKw.hNK.hNQ).GDf = paramInt;
+    this.hNp = locala.aDS();
+    ((biu)this.hNp.hQD.hQJ).GWF = paramInt;
     AppMethodBeat.o(121056);
   }
   
-  public final bif aDN()
+  public final biv aEd()
   {
-    return (bif)this.hKw.hNL.hNQ;
+    return (biv)this.hNp.hQE.hQJ;
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(121058);
-    ad.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
-    this.gzH = paramf;
-    int i = dispatch(parame, this.hKw, this);
+    ae.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
+    this.gCo = paramf;
+    int i = dispatch(parame, this.hNp, this);
     AppMethodBeat.o(121058);
     return i;
   }
@@ -59,9 +59,9 @@ public final class r
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121057);
-    ad.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gzH != null) {
-      this.gzH.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ae.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gCo != null) {
+      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(121057);
   }

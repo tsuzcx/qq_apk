@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class BasePanelKeybordLayout
   extends KeyboardLinearLayout
 {
-  private int Fdw = -1;
-  private a ITQ = null;
+  private int FvU = -1;
+  private a Joy = null;
   
   public BasePanelKeybordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public abstract class BasePanelKeybordLayout
   {
     int i = View.MeasureSpec.getSize(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt2);
-    ad.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
+    ae.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
     if (m >= 0)
     {
-      if (this.Fdw >= 0) {
+      if (this.FvU >= 0) {
         break label62;
       }
-      this.Fdw = m;
+      this.FvU = m;
     }
     label62:
     int n;
@@ -54,8 +54,8 @@ public abstract class BasePanelKeybordLayout
         {
           super.onMeasure(paramInt1, paramInt2);
           return;
-          n = this.Fdw - m;
-          this.Fdw = m;
+          n = this.FvU - m;
+          this.FvU = m;
         } while (n == 0);
         localObject = getPanelView();
       } while (localObject == null);
@@ -73,13 +73,13 @@ public abstract class BasePanelKeybordLayout
       if (i < 0) {
         j = 0;
       }
-      int i1 = i.iG(aj.getContext());
-      i = i.iI(getContext());
+      int i1 = i.iL(ak.getContext());
+      i = i.iN(getContext());
       int k = j;
-      if (i.abn() > 0)
+      if (i.abw() > 0)
       {
         k = j;
-        if (m >= i.abn()) {
+        if (m >= i.abw()) {
           k = i;
         }
       }
@@ -107,7 +107,7 @@ public abstract class BasePanelKeybordLayout
           j = i;
         }
       }
-      ad.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
+      ae.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
       localLayoutParams.height = j;
       localView.setLayoutParams(localLayoutParams);
       break label102;
@@ -117,7 +117,7 @@ public abstract class BasePanelKeybordLayout
   
   public void setOnMeasureListener(a parama)
   {
-    this.ITQ = parama;
+    this.Joy = parama;
   }
   
   public static abstract interface a {}

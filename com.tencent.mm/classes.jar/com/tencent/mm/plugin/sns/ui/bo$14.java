@@ -8,10 +8,10 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.i.a.t;
-import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.data.r;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.ary;
 
 final class bo$14
   implements View.OnClickListener
@@ -23,24 +23,24 @@ final class bo$14
     AppMethodBeat.i(99735);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/TimeLineClickEvent$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/TimeLineClickEvent$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof TimeLineObject)))
     {
       paramView = (TimeLineObject)paramView.getTag();
-      if ((paramView.HAT != null) && (paramView.HAT.GaU != null))
+      if ((paramView.HUG != null) && (paramView.HUG.GtB != null))
       {
-        long l = q.ayi(paramView.HAT.GaU.objectId);
+        long l = r.azz(paramView.HUG.GtB.objectId);
         if (l != 0L)
         {
           localObject = new Intent();
           ((Intent)localObject).putExtra("report_scene", 3);
-          ((Intent)localObject).putExtra("from_user", paramView.nDo);
+          ((Intent)localObject).putExtra("from_user", paramView.nIJ);
           ((Intent)localObject).putExtra("feed_object_id", l);
-          ((Intent)localObject).putExtra("feed_object_nonceId", paramView.HAT.GaU.objectNonceId);
-          ((Intent)localObject).putExtra("key_from_user_name", paramView.nDo);
+          ((Intent)localObject).putExtra("feed_object_nonceId", paramView.HUG.GtB.objectNonceId);
+          ((Intent)localObject).putExtra("key_from_user_name", paramView.nIJ);
           ((Intent)localObject).putExtra("tab_type", 5);
           ((t)g.ad(t.class)).fillContextIdToIntent(4, 2, 38, (Intent)localObject);
-          ((t)g.ad(t.class)).enterFinderShareFeedUI(this.Aqp.context, (Intent)localObject);
+          ((t)g.ad(t.class)).enterFinderShareFeedUI(this.AHD.context, (Intent)localObject);
         }
       }
     }

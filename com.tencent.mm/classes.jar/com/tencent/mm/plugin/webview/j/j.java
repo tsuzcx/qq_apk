@@ -11,8 +11,8 @@ import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.a;
@@ -22,23 +22,23 @@ import java.util.regex.Pattern;
 
 public final class j
 {
-  private static Pattern EtH = null;
-  private static String EtI = null;
-  private static Boolean EtJ = null;
+  private static Pattern EMb = null;
+  private static String EMc = null;
+  private static Boolean EMd = null;
   
-  public static boolean aJD(String paramString)
+  public static boolean aKZ(String paramString)
   {
-    AppMethodBeat.i(214007);
-    if ((WebView.isX5()) && (aJE(paramString)) && (!"true".equals(a.mV("disable_apk_hook", "tools"))))
+    AppMethodBeat.i(213838);
+    if ((WebView.isX5()) && (aLa(paramString)) && (!"true".equals(a.nb("disable_apk_hook", "tools"))))
     {
-      AppMethodBeat.o(214007);
+      AppMethodBeat.o(213838);
       return true;
     }
-    AppMethodBeat.o(214007);
+    AppMethodBeat.o(213838);
     return false;
   }
   
-  private static boolean aJE(String paramString)
+  private static boolean aLa(String paramString)
   {
     AppMethodBeat.i(82385);
     if (TextUtils.isEmpty(paramString))
@@ -77,24 +77,24 @@ public final class j
     return false;
   }
   
-  public static boolean aJF(String paramString)
+  public static boolean aLb(String paramString)
   {
     AppMethodBeat.i(82386);
     boolean bool;
-    if ((EtJ != null) && (bt.lQ(paramString, EtI)))
+    if ((EMd != null) && (bu.lX(paramString, EMc)))
     {
-      bool = EtJ.booleanValue();
+      bool = EMd.booleanValue();
       AppMethodBeat.o(82386);
       return bool;
     }
-    EtI = paramString;
+    EMc = paramString;
     if (Pattern.compile("^(http|https)://mp.weixin.qq.com/(s|mp/author|mp/appmsg/show)", 2).matcher(paramString).find()) {
       bool = true;
     }
     for (;;)
     {
       paramString = Boolean.valueOf(bool);
-      EtJ = paramString;
+      EMd = paramString;
       bool = paramString.booleanValue();
       AppMethodBeat.o(82386);
       return bool;
@@ -104,13 +104,13 @@ public final class j
       }
       else
       {
-        if (EtH == null)
+        if (EMb == null)
         {
-          String str = ((b)g.ab(b.class)).a(b.a.qtN, "^(http|https)://mp.weixin.qq.com/mp/(readtemplate\\?t=scanlogin/index_tmpl|scanlogin\\?action=index|relatedarticle\\?action=page|aboutbiz|infringement|qa)");
-          ad.i("MicroMsg.WebViewUIUtil", "mpHosts=:%s", new Object[] { str });
-          EtH = Pattern.compile(str);
+          String str = ((b)g.ab(b.class)).a(b.a.qAB, "^(http|https)://mp.weixin.qq.com/mp/(readtemplate\\?t=scanlogin/index_tmpl|scanlogin\\?action=index|relatedarticle\\?action=page|aboutbiz|infringement|qa)");
+          ae.i("MicroMsg.WebViewUIUtil", "mpHosts=:%s", new Object[] { str });
+          EMb = Pattern.compile(str);
         }
-        if ((EtH != null) && (EtH.matcher(paramString).find())) {
+        if ((EMb != null) && (EMb.matcher(paramString).find())) {
           bool = true;
         } else {
           bool = false;
@@ -121,51 +121,51 @@ public final class j
   
   public static void g(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(214006);
+    AppMethodBeat.i(213837);
     if (paramMMWebView == null)
     {
-      AppMethodBeat.o(214006);
+      AppMethodBeat.o(213837);
       return;
     }
     if (paramMMWebView.getIsX5Kernel())
     {
-      AppMethodBeat.o(214006);
+      AppMethodBeat.o(213837);
       return;
     }
-    if (d.ly(19))
+    if (d.lA(19))
     {
-      AppMethodBeat.o(214006);
+      AppMethodBeat.o(213837);
       return;
     }
     try
     {
       paramMMWebView = new c(paramMMWebView, "mSysWebView", null).get();
-      ad.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { paramMMWebView });
+      ae.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { paramMMWebView });
       paramMMWebView = new c(paramMMWebView, "mProvider", null).get();
-      ad.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { paramMMWebView });
+      ae.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { paramMMWebView });
       paramMMWebView = new c(paramMMWebView, "mWebViewCore", null).get();
-      ad.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { paramMMWebView });
+      ae.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { paramMMWebView });
       paramMMWebView = new c(paramMMWebView, "sWebCoreHandler", null).get();
-      ad.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { paramMMWebView });
+      ae.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { paramMMWebView });
       paramMMWebView = new c(paramMMWebView, "mLooper", null).get();
-      ad.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { paramMMWebView });
+      ae.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { paramMMWebView });
       paramMMWebView = new c(paramMMWebView, "mThread", null).get();
-      ad.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { paramMMWebView });
+      ae.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { paramMMWebView });
       if ((paramMMWebView instanceof Thread))
       {
         paramMMWebView = (Thread)paramMMWebView;
-        ad.i("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { paramMMWebView.getState() });
+        ae.i("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { paramMMWebView.getState() });
         if (paramMMWebView.getState() == Thread.State.WAITING) {
           paramMMWebView.interrupt();
         }
       }
-      AppMethodBeat.o(214006);
+      AppMethodBeat.o(213837);
       return;
     }
     catch (Exception paramMMWebView)
     {
-      ad.e("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { paramMMWebView });
-      AppMethodBeat.o(214006);
+      ae.e("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { paramMMWebView });
+      AppMethodBeat.o(213837);
     }
   }
   
@@ -178,21 +178,21 @@ public final class j
     AppMethodBeat.o(82384);
   }
   
-  public static String he(Context paramContext)
+  public static String hk(Context paramContext)
   {
-    AppMethodBeat.i(214004);
+    AppMethodBeat.i(213835);
     paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).getString("url", null);
-    AppMethodBeat.o(214004);
+    AppMethodBeat.o(213835);
     return paramContext;
   }
   
-  public static void hf(Context paramContext)
+  public static void hl(Context paramContext)
   {
-    AppMethodBeat.i(214005);
+    AppMethodBeat.i(213836);
     paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).edit();
     paramContext.remove("url");
     paramContext.apply();
-    AppMethodBeat.o(214005);
+    AppMethodBeat.o(213836);
   }
 }
 

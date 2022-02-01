@@ -7,31 +7,31 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStats;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "checkReportOnLocalPkgFound", "", "appLaunchInstanceId", "", "appId", "version", "", "packageType", "packageKey", "checkReportOnLocalPkgFoundInternal", "delete", "", "pruneOutdatedRecords", "setSource", "source", "reportId", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStats;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "checkReportOnLocalPkgFound", "", "appLaunchInstanceId", "", "appId", "version", "", "packageType", "packageKey", "checkReportOnLocalPkgFoundInternal", "delete", "", "pruneOutdatedRecords", "setSource", "source", "reportId", "Companion", "plugin-appbrand-integration_release"})
 public final class a
-  extends com.tencent.mm.plugin.appbrand.y.c<b>
+  extends com.tencent.mm.plugin.appbrand.x.c<b>
 {
-  public static final String[] hEf;
-  public static final a jKG;
+  public static final String[] hGX;
+  public static final a jNS;
   private final e db;
   
   static
   {
     AppMethodBeat.i(50208);
-    jKG = new a((byte)0);
-    hEf = new String[] { j.getCreateSQLs(b.hEe, "AppBrandWxaPkgPreDownloadStatistics2"), "DROP TABLE IF EXISTS AppBrandWxaPkgPreDownloadStatistics" };
+    jNS = new a((byte)0);
+    hGX = new String[] { j.getCreateSQLs(b.hGW, "AppBrandWxaPkgPreDownloadStatistics2"), "DROP TABLE IF EXISTS AppBrandWxaPkgPreDownloadStatistics" };
     AppMethodBeat.o(50208);
   }
   
   public a(e parame)
   {
-    super(parame, b.hEe, "AppBrandWxaPkgPreDownloadStatistics2", b.INDEX_CREATE);
+    super(parame, b.hGW, "AppBrandWxaPkgPreDownloadStatistics2", b.INDEX_CREATE);
     AppMethodBeat.i(50207);
     this.db = parame;
     AppMethodBeat.o(50207);
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(50203);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -53,12 +53,12 @@ public final class a
   public final void a(final String paramString1, final String paramString2, final int paramInt1, final int paramInt2, final String paramString3)
   {
     AppMethodBeat.i(162171);
-    com.tencent.mm.ad.c.b("MicroMsg.AppBrand.PredownloadGetCodeStatStorage__report", (d.g.a.a)new b(this, paramString1, paramString2, paramInt1, paramInt2, paramString3));
+    com.tencent.mm.ac.c.b("MicroMsg.AppBrand.PredownloadGetCodeStatStorage__report", (d.g.a.a)new b(this, paramString1, paramString2, paramInt1, paramInt2, paramString3));
     AppMethodBeat.o(162171);
   }
   
   /* Error */
-  public final void bbd()
+  public final void bbF()
   {
     // Byte code:
     //   0: aconst_null
@@ -77,7 +77,7 @@ public final class a
     //   26: aload_2
     //   27: invokeinterface 238 1 0
     //   32: ifne +19 -> 51
-    //   35: getstatic 244	d/z:MKo	Ld/z;
+    //   35: getstatic 244	d/z:Nhr	Ld/z;
     //   38: astore_2
     //   39: aload 4
     //   41: aconst_null
@@ -114,7 +114,7 @@ public final class a
     //   116: invokeinterface 278 1 0
     //   121: checkcast 64	com/tencent/mm/plugin/appbrand/appcache/b/d/b
     //   124: astore 6
-    //   126: new 280	com/tencent/mm/plugin/appbrand/appcache/ac
+    //   126: new 280	com/tencent/mm/plugin/appbrand/appcache/ad
     //   129: dup
     //   130: aload 6
     //   132: getfield 115	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_appId	Ljava/lang/String;
@@ -122,15 +122,15 @@ public final class a
     //   137: getfield 125	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_packageKey	Ljava/lang/String;
     //   140: aload 6
     //   142: getfield 122	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_packageType	I
-    //   145: invokespecial 283	com/tencent/mm/plugin/appbrand/appcache/ac:<init>	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   145: invokespecial 283	com/tencent/mm/plugin/appbrand/appcache/ad:<init>	(Ljava/lang/String;Ljava/lang/String;I)V
     //   148: astore_2
-    //   149: invokestatic 287	com/tencent/mm/plugin/appbrand/app/j:aYX	()Lcom/tencent/mm/plugin/appbrand/appcache/bg;
+    //   149: invokestatic 287	com/tencent/mm/plugin/appbrand/app/j:aZu	()Lcom/tencent/mm/plugin/appbrand/appcache/bh;
     //   152: astore 7
     //   154: aload 7
     //   156: ifnull +96 -> 252
     //   159: aload 7
     //   161: aload_2
-    //   162: invokevirtual 291	com/tencent/mm/plugin/appbrand/appcache/ac:toString	()Ljava/lang/String;
+    //   162: invokevirtual 291	com/tencent/mm/plugin/appbrand/appcache/ad:toString	()Ljava/lang/String;
     //   165: aload 6
     //   167: getfield 119	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_version	I
     //   170: iconst_0
@@ -140,12 +140,12 @@ public final class a
     //   176: iconst_0
     //   177: ldc_w 293
     //   180: aastore
-    //   181: invokevirtual 298	com/tencent/mm/plugin/appbrand/appcache/bg:a	(Ljava/lang/String;II[Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/appcache/bc;
+    //   181: invokevirtual 298	com/tencent/mm/plugin/appbrand/appcache/bh:a	(Ljava/lang/String;II[Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/appcache/bd;
     //   184: astore_2
     //   185: aload_2
     //   186: ifnull +27 -> 213
     //   189: aload_2
-    //   190: getfield 303	com/tencent/mm/plugin/appbrand/appcache/bc:field_pkgPath	Ljava/lang/String;
+    //   190: getfield 303	com/tencent/mm/plugin/appbrand/appcache/bd:field_pkgPath	Ljava/lang/String;
     //   193: checkcast 105	java/lang/CharSequence
     //   196: astore_2
     //   197: aload_2
@@ -159,7 +159,7 @@ public final class a
     //   216: checkcast 136	com/tencent/mm/sdk/e/c
     //   219: iconst_0
     //   220: anewarray 62	java/lang/String
-    //   223: invokespecial 305	com/tencent/mm/plugin/appbrand/y/c:delete	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
+    //   223: invokespecial 305	com/tencent/mm/plugin/appbrand/x/c:delete	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
     //   226: pop
     //   227: goto -123 -> 104
     //   230: astore_3
@@ -201,7 +201,7 @@ public final class a
     //   14	226	4	localCloseable	java.io.Closeable
     //   58	57	5	localObject6	Object
     //   67	148	6	localb	b
-    //   152	8	7	localbg	com.tencent.mm.plugin.appbrand.appcache.bg
+    //   152	8	7	localbh	com.tencent.mm.plugin.appbrand.appcache.bh
     // Exception table:
     //   from	to	target	type
     //   16	22	230	java/lang/Throwable
@@ -234,10 +234,10 @@ public final class a
     AppMethodBeat.o(50206);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage$Companion;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage$Companion;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements d.g.a.a<z>

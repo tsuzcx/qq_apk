@@ -4,24 +4,24 @@ import com.tencent.mars.smc.IDKey;
 import com.tencent.mars.smc.SmcLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class d
 {
-  private static a yhA;
-  private static int yhB;
-  private static boolean yhC;
-  private static Map<Long, Long> yhz;
+  private static Map<Long, Long> yxq;
+  private static a yxr;
+  private static int yxs;
+  private static boolean yxt;
   
   static
   {
     AppMethodBeat.i(143841);
-    yhA = new a();
-    yhB = -1;
-    yhC = false;
+    yxr = new a();
+    yxs = -1;
+    yxt = false;
     AppMethodBeat.o(143841);
   }
   
@@ -34,14 +34,14 @@ public class d
       try
       {
         SmcLogic.writeImportKvDataWithType(paramLong1, paramLong2, paramString, paramBoolean1, paramBoolean3);
-        j.dKs();
-        j.z(paramLong1, paramString);
+        j.dNK();
+        j.A(paramLong1, paramString);
         AppMethodBeat.o(143835);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { bt.n(localException) });
+        ae.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { bu.o(localException) });
         continue;
       }
       try
@@ -50,8 +50,8 @@ public class d
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
-        if (com.tencent.mm.compatible.util.d.lz(20))
+        ae.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+        if (com.tencent.mm.compatible.util.d.lB(20))
         {
           SmcLogic.writeKvDataWithType(paramLong1, paramLong2, paramString, paramBoolean1, paramBoolean3);
           continue;
@@ -71,14 +71,14 @@ public class d
       try
       {
         SmcLogic.writeImportKvData(paramLong, paramString, paramBoolean1, paramBoolean3);
-        j.dKs();
-        j.z(paramLong, paramString);
+        j.dNK();
+        j.A(paramLong, paramString);
         AppMethodBeat.o(143834);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { bt.n(localException) });
+        ae.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { bu.o(localException) });
         continue;
       }
       try
@@ -87,8 +87,8 @@ public class d
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
-        if (com.tencent.mm.compatible.util.d.lz(20))
+        ae.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+        if (com.tencent.mm.compatible.util.d.lB(20))
         {
           SmcLogic.writeKvData(paramLong, paramString, paramBoolean1, paramBoolean3);
           continue;
@@ -111,7 +111,7 @@ public class d
       }
       catch (Exception paramArrayOfByte)
       {
-        ad.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { bt.n(paramArrayOfByte) });
+        ae.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { bu.o(paramArrayOfByte) });
         AppMethodBeat.o(143836);
         return;
       }
@@ -135,17 +135,17 @@ public class d
           break label129;
         }
         j = -1;
-        ad.i("MicroMsg.KVEasyReport", "SmcLogic.reportIDKey class loader %s, %s ", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+        ae.i("MicroMsg.KVEasyReport", "SmcLogic.reportIDKey class loader %s, %s ", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       }
       try
       {
         SmcLogic.reportIDKey(paramLong1, paramLong2, paramLong3, paramBoolean);
-        if (yhC)
+        if (yxt)
         {
-          if (yhz == null) {
-            dKm();
+          if (yxq == null) {
+            dNE();
           }
-          long l = bt.a((Long)yhz.get(Long.valueOf(paramLong1)), 0L);
+          long l = bu.a((Long)yxq.get(Long.valueOf(paramLong1)), 0L);
           paramLong1 = l;
           if (l > 0L) {
             continue;
@@ -162,8 +162,8 @@ public class d
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
-          if (!com.tencent.mm.compatible.util.d.lz(20)) {
+          ae.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+          if (!com.tencent.mm.compatible.util.d.lB(20)) {
             break;
           }
           SmcLogic.reportIDKey(paramLong1, paramLong2, paramLong3, paramBoolean);
@@ -186,8 +186,8 @@ public class d
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
-        if (com.tencent.mm.compatible.util.d.lz(20))
+        ae.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+        if (com.tencent.mm.compatible.util.d.lB(20))
         {
           SmcLogic.reportListIDKey((IDKey[])paramArrayList.toArray(new IDKey[paramArrayList.size()]), paramBoolean);
           AppMethodBeat.o(143838);
@@ -201,62 +201,62 @@ public class d
   }
   
   /* Error */
-  public static void dKm()
+  public static void dNE()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 187
+    //   3: ldc 186
     //   5: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 143	com/tencent/mm/plugin/report/service/d:yhz	Ljava/util/Map;
+    //   8: getstatic 142	com/tencent/mm/plugin/report/service/d:yxq	Ljava/util/Map;
     //   11: ifnonnull +15 -> 26
-    //   14: new 189	java/util/HashMap
+    //   14: new 188	java/util/HashMap
     //   17: dup
     //   18: bipush 20
-    //   20: invokespecial 191	java/util/HashMap:<init>	(I)V
-    //   23: putstatic 143	com/tencent/mm/plugin/report/service/d:yhz	Ljava/util/Map;
-    //   26: invokestatic 195	com/tencent/mm/plugin/report/b/a:dKg	()Lcom/tencent/mm/protocal/protobuf/bny;
+    //   20: invokespecial 190	java/util/HashMap:<init>	(I)V
+    //   23: putstatic 142	com/tencent/mm/plugin/report/service/d:yxq	Ljava/util/Map;
+    //   26: invokestatic 194	com/tencent/mm/plugin/report/b/a:dNy	()Lcom/tencent/mm/protocal/protobuf/boq;
     //   29: astore_0
     //   30: aload_0
     //   31: ifnull +103 -> 134
     //   34: aload_0
-    //   35: getfield 200	com/tencent/mm/protocal/protobuf/bny:GIv	I
-    //   38: getstatic 31	com/tencent/mm/plugin/report/service/d:yhB	I
+    //   35: getfield 199	com/tencent/mm/protocal/protobuf/boq:HbX	I
+    //   38: getstatic 31	com/tencent/mm/plugin/report/service/d:yxs	I
     //   41: if_icmpeq +93 -> 134
     //   44: aload_0
-    //   45: getfield 200	com/tencent/mm/protocal/protobuf/bny:GIv	I
-    //   48: putstatic 31	com/tencent/mm/plugin/report/service/d:yhB	I
-    //   51: getstatic 143	com/tencent/mm/plugin/report/service/d:yhz	Ljava/util/Map;
-    //   54: invokeinterface 203 1 0
+    //   45: getfield 199	com/tencent/mm/protocal/protobuf/boq:HbX	I
+    //   48: putstatic 31	com/tencent/mm/plugin/report/service/d:yxs	I
+    //   51: getstatic 142	com/tencent/mm/plugin/report/service/d:yxq	Ljava/util/Map;
+    //   54: invokeinterface 202 1 0
     //   59: aload_0
-    //   60: getfield 207	com/tencent/mm/protocal/protobuf/bny:GIw	Ljava/util/LinkedList;
+    //   60: getfield 206	com/tencent/mm/protocal/protobuf/boq:HbY	Ljava/util/LinkedList;
     //   63: astore_0
     //   64: aload_0
     //   65: ifnull +69 -> 134
     //   68: aload_0
-    //   69: invokevirtual 213	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   69: invokevirtual 212	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   72: astore_0
     //   73: aload_0
-    //   74: invokeinterface 219 1 0
+    //   74: invokeinterface 218 1 0
     //   79: ifeq +55 -> 134
     //   82: aload_0
-    //   83: invokeinterface 223 1 0
-    //   88: checkcast 225	com/tencent/mm/protocal/protobuf/cbh
+    //   83: invokeinterface 222 1 0
+    //   88: checkcast 224	com/tencent/mm/protocal/protobuf/ccb
     //   91: astore_1
-    //   92: getstatic 143	com/tencent/mm/plugin/report/service/d:yhz	Ljava/util/Map;
-    //   95: new 148	java/lang/Long
+    //   92: getstatic 142	com/tencent/mm/plugin/report/service/d:yxq	Ljava/util/Map;
+    //   95: new 147	java/lang/Long
     //   98: dup
     //   99: aload_1
-    //   100: getfield 228	com/tencent/mm/protocal/protobuf/cbh:GVy	I
+    //   100: getfield 227	com/tencent/mm/protocal/protobuf/ccb:HoZ	I
     //   103: i2l
-    //   104: invokespecial 231	java/lang/Long:<init>	(J)V
-    //   107: new 148	java/lang/Long
+    //   104: invokespecial 230	java/lang/Long:<init>	(J)V
+    //   107: new 147	java/lang/Long
     //   110: dup
     //   111: aload_1
-    //   112: getfield 234	com/tencent/mm/protocal/protobuf/cbh:GVz	I
+    //   112: getfield 233	com/tencent/mm/protocal/protobuf/ccb:Hpa	I
     //   115: i2l
-    //   116: invokespecial 231	java/lang/Long:<init>	(J)V
-    //   119: invokeinterface 238 3 0
+    //   116: invokespecial 230	java/lang/Long:<init>	(J)V
+    //   119: invokeinterface 237 3 0
     //   124: pop
     //   125: goto -52 -> 73
     //   128: astore_0
@@ -265,30 +265,30 @@ public class d
     //   132: aload_0
     //   133: athrow
     //   134: ldc 63
-    //   136: ldc 240
+    //   136: ldc 239
     //   138: iconst_4
     //   139: anewarray 4	java/lang/Object
     //   142: dup
     //   143: iconst_0
-    //   144: getstatic 31	com/tencent/mm/plugin/report/service/d:yhB	I
-    //   147: invokestatic 136	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   144: getstatic 31	com/tencent/mm/plugin/report/service/d:yxs	I
+    //   147: invokestatic 135	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   150: aastore
     //   151: dup
     //   152: iconst_1
-    //   153: getstatic 143	com/tencent/mm/plugin/report/service/d:yhz	Ljava/util/Map;
-    //   156: invokeinterface 241 1 0
-    //   161: invokestatic 136	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   153: getstatic 142	com/tencent/mm/plugin/report/service/d:yxq	Ljava/util/Map;
+    //   156: invokeinterface 240 1 0
+    //   161: invokestatic 135	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   164: aastore
     //   165: dup
     //   166: iconst_2
-    //   167: getstatic 143	com/tencent/mm/plugin/report/service/d:yhz	Ljava/util/Map;
+    //   167: getstatic 142	com/tencent/mm/plugin/report/service/d:yxq	Ljava/util/Map;
     //   170: aastore
     //   171: dup
     //   172: iconst_3
-    //   173: invokestatic 245	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   173: invokestatic 244	com/tencent/mm/sdk/platformtools/bu:fpN	()Lcom/tencent/mm/sdk/platformtools/au;
     //   176: aastore
-    //   177: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   180: ldc 187
+    //   177: invokestatic 137	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   180: ldc 186
     //   182: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: ldc 2
     //   187: monitorexit
@@ -297,7 +297,7 @@ public class d
     //   start	length	slot	name	signature
     //   29	54	0	localObject1	Object
     //   128	5	0	localObject2	Object
-    //   91	21	1	localcbh	com.tencent.mm.protocal.protobuf.cbh
+    //   91	21	1	localccb	com.tencent.mm.protocal.protobuf.ccb
     // Exception table:
     //   from	to	target	type
     //   3	26	128	finally
@@ -308,11 +308,11 @@ public class d
     //   134	185	128	finally
   }
   
-  public static void qo(boolean paramBoolean)
+  public static void qv(boolean paramBoolean)
   {
     AppMethodBeat.i(143839);
-    ad.i("MicroMsg.KVEasyReport", "summerhv setHeavyUser [%b %b], stack[%s]", new Object[] { Boolean.valueOf(yhC), Boolean.valueOf(paramBoolean), bt.flS() });
-    yhC = paramBoolean;
+    ae.i("MicroMsg.KVEasyReport", "summerhv setHeavyUser [%b %b], stack[%s]", new Object[] { Boolean.valueOf(yxt), Boolean.valueOf(paramBoolean), bu.fpN() });
+    yxt = paramBoolean;
     AppMethodBeat.o(143839);
   }
 }

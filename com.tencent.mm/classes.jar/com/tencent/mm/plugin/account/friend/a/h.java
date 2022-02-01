@@ -4,21 +4,21 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import junit.framework.Assert;
 
 public final class h
   extends k
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS facebookfriend ( fbid long  PRIMARY KEY , fbname text  , fbimgkey int  , status int  , username text  , nickname text  , nicknamepyinitial text  , nicknamequanpin text  , sex int  , personalcard int  , province text  , city text  , signature text  , alias text  , type int  , email text  ) " };
-  public com.tencent.mm.storagebase.h hHS;
+  public com.tencent.mm.storagebase.h hKK;
   
   public h(com.tencent.mm.storagebase.h paramh)
   {
-    this.hHS = paramh;
+    this.hKK = paramh;
   }
   
-  public final Cursor JB(String paramString)
+  public final Cursor Ka(String paramString)
   {
     AppMethodBeat.i(130996);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -29,7 +29,7 @@ public final class h
       localStringBuilder.append("facebookfriend.nickname like '%" + paramString + "%' or ");
       localStringBuilder.append("facebookfriend.username like '%" + paramString + "%' ) ");
     }
-    paramString = this.hHS.a("select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend  " + localStringBuilder.toString() + " order by  case when status = 100 then 0  when status = 102 then 3  when status = 101 then 1 else 2 end  , nicknamepyinitial", null, 0);
+    paramString = this.hKK.a("select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend  " + localStringBuilder.toString() + " order by  case when status = 100 then 0  when status = 102 then 3  when status = 101 then 1 else 2 end  , nicknamepyinitial", null, 0);
     AppMethodBeat.o(130996);
     return paramString;
   }
@@ -37,21 +37,21 @@ public final class h
   public final boolean a(g paramg)
   {
     AppMethodBeat.i(130997);
-    if (paramg.dDp == -1) {}
+    if (paramg.dEu == -1) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("Func Set always conv_flag == flag_all", bool);
-      long l = paramg.ePm;
-      localObject = "select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend   where facebookfriend.fbid = \"" + bt.aQN(String.valueOf(l)) + "\"";
-      localObject = this.hHS.a((String)localObject, null, 2);
+      long l = paramg.eQX;
+      localObject = "select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend   where facebookfriend.fbid = \"" + bu.aSk(String.valueOf(l)) + "\"";
+      localObject = this.hKK.a((String)localObject, null, 2);
       bool = ((Cursor)localObject).moveToFirst();
       ((Cursor)localObject).close();
       if (bool) {
         break label135;
       }
-      paramg.dDp = -1;
+      paramg.dEu = -1;
       paramg = paramg.convertTo();
-      if ((int)this.hHS.a("facebookfriend", "fbid", paramg) == -1) {
+      if ((int)this.hKK.a("facebookfriend", "fbid", paramg) == -1) {
         break;
       }
       AppMethodBeat.o(130997);
@@ -61,7 +61,7 @@ public final class h
     return false;
     label135:
     Object localObject = paramg.convertTo();
-    int i = this.hHS.update("facebookfriend", (ContentValues)localObject, "fbid=?", new String[] { paramg.ePm });
+    int i = this.hKK.update("facebookfriend", (ContentValues)localObject, "fbid=?", new String[] { paramg.eQX });
     if (i > 0) {
       doNotify();
     }
@@ -74,10 +74,10 @@ public final class h
     return false;
   }
   
-  public final boolean aSJ()
+  public final boolean aTi()
   {
     AppMethodBeat.i(130998);
-    boolean bool = this.hHS.execSQL("facebookfriend", "delete from facebookfriend");
+    boolean bool = this.hKK.execSQL("facebookfriend", "delete from facebookfriend");
     AppMethodBeat.o(130998);
     return bool;
   }

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dlc;
-import com.tencent.mm.protocal.protobuf.dld;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dlz;
+import com.tencent.mm.protocal.protobuf.dma;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends n
@@ -25,31 +25,31 @@ public final class d
   {
     AppMethodBeat.i(6384);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dlc();
-    ((b.a)localObject).hNN = new dld();
+    ((b.a)localObject).hQF = new dlz();
+    ((b.a)localObject).hQG = new dma();
     ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/switchbrand";
     ((b.a)localObject).funcId = 1394;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dlc)this.rr.hNK.hNQ;
-    ((dlc)localObject).FHb = paramString;
-    ((dlc)localObject).lSG = paramBoolean;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dlz)this.rr.hQD.hQJ;
+    ((dlz)localObject).FZx = paramString;
+    ((dlz)localObject).lXh = paramBoolean;
     AppMethodBeat.o(6384);
   }
   
-  public final dld dAq()
+  public final dma dDH()
   {
-    if ((this.rr != null) && (this.rr.hNL.hNQ != null)) {
-      return (dld)this.rr.hNL.hNQ;
+    if ((this.rr != null) && (this.rr.hQE.hQJ != null)) {
+      return (dma)this.rr.hQE.hQJ;
     }
     return null;
   }
   
-  public final dlc dAr()
+  public final dlz dDI()
   {
-    if ((this.rr != null) && (this.rr.hNK.hNQ != null)) {
-      return (dlc)this.rr.hNK.hNQ;
+    if ((this.rr != null) && (this.rr.hQD.hQJ != null)) {
+      return (dlz)this.rr.hQD.hQJ;
     }
     return null;
   }
@@ -58,7 +58,7 @@ public final class d
   {
     AppMethodBeat.i(6386);
     this.callback = paramf;
-    ad.i("MicroMsg.brandservice.NetSceneSwitchBrand", "do scene");
+    ae.i("MicroMsg.brandservice.NetSceneSwitchBrand", "do scene");
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(6386);
     return i;
@@ -72,7 +72,7 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(6385);
-    ad.d("MicroMsg.brandservice.NetSceneSwitchBrand", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.d("MicroMsg.brandservice.NetSceneSwitchBrand", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

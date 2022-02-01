@@ -10,18 +10,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "tipsTv", "Landroid/widget/TextView;", "getSizeMB", "bytes", "", "cRound", "", "setTipsText", "", "fileSize", "wordingType", "", "Companion", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "tipsTv", "Landroid/widget/TextView;", "getSizeMB", "bytes", "", "cRound", "", "setTipsText", "", "fileSize", "wordingType", "", "Companion", "plugin-brandservice_release"})
 public final class MPVideoWifiTipsView
   extends RelativeLayout
 {
-  public static final a opW;
+  public static final a ows;
   private final String TAG;
-  private TextView opV;
+  private TextView owr;
   
   static
   {
     AppMethodBeat.i(175527);
-    opW = new a((byte)0);
+    ows = new a((byte)0);
     AppMethodBeat.o(175527);
   }
   
@@ -33,11 +33,11 @@ public final class MPVideoWifiTipsView
     View.inflate(paramContext, 2131494958, (ViewGroup)this);
     paramContext = findViewById(2131297406);
     p.g(paramContext, "findViewById(R.id.biz_video_wifi_tips_tv)");
-    this.opV = ((TextView)paramContext);
+    this.owr = ((TextView)paramContext);
     AppMethodBeat.o(7273);
   }
   
-  private static String tu(long paramLong)
+  private static String tI(long paramLong)
   {
     AppMethodBeat.i(7272);
     double d = Math.round(paramLong * 10.0D / 1048576.0D) / 10.0D;
@@ -49,28 +49,28 @@ public final class MPVideoWifiTipsView
   {
     AppMethodBeat.i(175526);
     if (paramInt == 2) {}
-    for (String str = getContext().getString(2131756664, new Object[] { tu(paramLong) });; str = getContext().getString(2131756663))
+    for (String str = getContext().getString(2131756664, new Object[] { tI(paramLong) });; str = getContext().getString(2131756663))
     {
-      this.opV.setText((CharSequence)str);
+      this.owr.setText((CharSequence)str);
       AppMethodBeat.o(175526);
       return;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView$Companion;", "", "()V", "canShowWording1OnFirstPlay", "", "showWifiTipsFlag", "", "canShowWording2OnFirstPlay", "canShowWording2OnNetChange", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView$Companion;", "", "()V", "canShowWording1OnFirstPlay", "", "showWifiTipsFlag", "", "canShowWording2OnFirstPlay", "canShowWording2OnNetChange", "plugin-brandservice_release"})
   public static final class a
   {
-    public static boolean zV(int paramInt)
+    public static boolean Af(int paramInt)
     {
       return (paramInt & 0x1) != 0;
     }
     
-    public static boolean zW(int paramInt)
+    public static boolean Ag(int paramInt)
     {
       return (paramInt & 0x2) != 0;
     }
     
-    public static boolean zX(int paramInt)
+    public static boolean Ah(int paramInt)
     {
       return (paramInt & 0x4) != 0;
     }

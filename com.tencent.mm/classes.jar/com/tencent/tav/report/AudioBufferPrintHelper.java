@@ -27,49 +27,49 @@ public class AudioBufferPrintHelper
   
   public AudioBufferPrintHelper()
   {
-    AppMethodBeat.i(218711);
+    AppMethodBeat.i(215351);
     this.startTimeMs = 0L;
     this.startName = "";
     this.enable = false;
     this.maxPrintCount = 0;
     this.startIndex = 0L;
     this.list = new ArrayList();
-    AppMethodBeat.o(218711);
+    AppMethodBeat.o(215351);
   }
   
   public static void clearFiles() {}
   
   public static ByteBuffer clone(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(218714);
+    AppMethodBeat.i(215354);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramByteBuffer.capacity());
     paramByteBuffer.rewind();
     localByteBuffer.put(paramByteBuffer);
     paramByteBuffer.rewind();
     localByteBuffer.flip();
-    AppMethodBeat.o(218714);
+    AppMethodBeat.o(215354);
     return localByteBuffer;
   }
   
   public static ShortBuffer clone(ShortBuffer paramShortBuffer)
   {
-    AppMethodBeat.i(218715);
+    AppMethodBeat.i(215355);
     ShortBuffer localShortBuffer = ShortBuffer.allocate(paramShortBuffer.capacity());
     paramShortBuffer.rewind();
     localShortBuffer.put(paramShortBuffer);
     paramShortBuffer.rewind();
     localShortBuffer.flip();
-    AppMethodBeat.o(218715);
+    AppMethodBeat.o(215355);
     return localShortBuffer;
   }
   
   public static File createNewFile(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218722);
+    AppMethodBeat.i(215362);
     paramString1 = new File(paramString1);
     if ((!paramString1.exists()) && (!paramString1.mkdirs()))
     {
-      AppMethodBeat.o(218722);
+      AppMethodBeat.o(215362);
       return null;
     }
     paramString1 = new File(paramString1, paramString2);
@@ -79,26 +79,26 @@ public class AudioBufferPrintHelper
       if (!paramString1.createNewFile())
       {
         new StringBuilder("export: 创建输出文件失败:").append(paramString1.getAbsolutePath());
-        AppMethodBeat.o(218722);
+        AppMethodBeat.o(215362);
         return null;
       }
     }
     catch (IOException paramString1)
     {
-      AppMethodBeat.o(218722);
+      AppMethodBeat.o(215362);
       return null;
     }
-    AppMethodBeat.o(218722);
+    AppMethodBeat.o(215362);
     return paramString1;
   }
   
   private static void deleteAllFiles(File paramFile)
   {
-    AppMethodBeat.i(218716);
+    AppMethodBeat.i(215356);
     paramFile = paramFile.listFiles();
     if (paramFile == null)
     {
-      AppMethodBeat.o(218716);
+      AppMethodBeat.o(215356);
       return;
     }
     int j = paramFile.length;
@@ -122,21 +122,21 @@ public class AudioBufferPrintHelper
         }
       }
     }
-    AppMethodBeat.o(218716);
+    AppMethodBeat.o(215356);
   }
   
   public static AudioBufferPrintHelper getInstance()
   {
-    AppMethodBeat.i(218712);
+    AppMethodBeat.i(215352);
     AudioBufferPrintHelper localAudioBufferPrintHelper = Instance.INSTANCE;
-    AppMethodBeat.o(218712);
+    AppMethodBeat.o(215352);
     return localAudioBufferPrintHelper;
   }
   
   @SuppressLint({"SimpleDateFormat"})
   private void initFlag(int paramInt)
   {
-    AppMethodBeat.i(218721);
+    AppMethodBeat.i(215361);
     if (this.startTimeMs == 0L)
     {
       this.startTimeMs = System.currentTimeMillis();
@@ -145,14 +145,14 @@ public class AudioBufferPrintHelper
     if (this.maxPrintCount == 0) {
       this.maxPrintCount = paramInt;
     }
-    AppMethodBeat.o(218721);
+    AppMethodBeat.o(215361);
   }
   
   public static void reset()
   {
-    AppMethodBeat.i(218713);
+    AppMethodBeat.i(215353);
     Instance.access$002(new AudioBufferPrintHelper());
-    AppMethodBeat.o(218713);
+    AppMethodBeat.o(215353);
   }
   
   public void printByteBuffer(String paramString, ByteBuffer paramByteBuffer) {}
@@ -163,14 +163,14 @@ public class AudioBufferPrintHelper
   
   public void startDelay(long paramLong)
   {
-    AppMethodBeat.i(218719);
+    AppMethodBeat.i(215359);
     startDelay(paramLong, 100);
-    AppMethodBeat.o(218719);
+    AppMethodBeat.o(215359);
   }
   
   public void startDelay(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(218720);
+    AppMethodBeat.i(215360);
     initFlag(paramInt);
     if (System.currentTimeMillis() >= this.startTimeMs + paramLong) {}
     for (boolean bool = true;; bool = false)
@@ -184,21 +184,21 @@ public class AudioBufferPrintHelper
           this.enable = false;
         }
       }
-      AppMethodBeat.o(218720);
+      AppMethodBeat.o(215360);
       return;
     }
   }
   
   public void startIgnoreBegin(int paramInt)
   {
-    AppMethodBeat.i(218717);
+    AppMethodBeat.i(215357);
     startIgnoreBegin(paramInt, 100);
-    AppMethodBeat.o(218717);
+    AppMethodBeat.o(215357);
   }
   
   public void startIgnoreBegin(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(218718);
+    AppMethodBeat.i(215358);
     initFlag(paramInt2);
     long l = this.startIndex;
     this.startIndex = (1L + l);
@@ -213,7 +213,7 @@ public class AudioBufferPrintHelper
         this.enable = false;
       }
     }
-    AppMethodBeat.o(218718);
+    AppMethodBeat.o(215358);
   }
   
   static class Instance
@@ -222,9 +222,9 @@ public class AudioBufferPrintHelper
     
     static
     {
-      AppMethodBeat.i(218710);
+      AppMethodBeat.i(215350);
       INSTANCE = new AudioBufferPrintHelper();
-      AppMethodBeat.o(218710);
+      AppMethodBeat.o(215350);
     }
   }
 }

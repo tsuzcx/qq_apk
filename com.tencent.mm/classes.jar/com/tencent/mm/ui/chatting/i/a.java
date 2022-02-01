@@ -1,39 +1,39 @@
 package com.tencent.mm.ui.chatting.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.chatting.d.ae;
+import com.tencent.mm.ui.chatting.d.ad;
 import java.util.HashMap;
 
 public final class a
 {
-  public HashMap<Class<? extends com.tencent.mm.ui.chatting.d.ad>, com.tencent.mm.ui.chatting.d.ad> JVu;
-  private com.tencent.mm.ui.chatting.e.a cWM;
+  public HashMap<Class<? extends ad>, ad> KrM;
+  private com.tencent.mm.ui.chatting.e.a cXJ;
   
   public a(com.tencent.mm.ui.chatting.e.a parama)
   {
     AppMethodBeat.i(36433);
-    this.JVu = new HashMap();
-    this.cWM = parama;
+    this.KrM = new HashMap();
+    this.cXJ = parama;
     AppMethodBeat.o(36433);
   }
   
-  public final void a(Class<? extends com.tencent.mm.ui.chatting.d.ad> paramClass, com.tencent.mm.ui.chatting.d.ad paramad)
+  public final void a(Class<? extends ad> paramClass, ad paramad)
   {
     AppMethodBeat.i(36435);
-    if (this.JVu.put(paramClass, paramad) != null) {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
+    if (this.KrM.put(paramClass, paramad) != null) {
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
     }
-    if ((paramad instanceof ae))
+    if ((paramad instanceof com.tencent.mm.ui.chatting.d.ae))
     {
       long l1 = System.currentTimeMillis();
-      ((ae)paramad).a(this.cWM);
+      ((com.tencent.mm.ui.chatting.d.ae)paramad).a(this.cXJ);
       long l2 = System.currentTimeMillis();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramad.getClass().getName(), Long.valueOf(l2 - l1) });
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramad.getClass().getName(), Long.valueOf(l2 - l1) });
     }
     AppMethodBeat.o(36435);
   }
   
-  public final <T extends com.tencent.mm.ui.chatting.d.ad, V extends Class<T>> T bh(V paramV)
+  public final <T extends ad, V extends Class<T>> T bh(V paramV)
   {
     AppMethodBeat.i(36434);
     if (!paramV.isInterface())
@@ -42,9 +42,9 @@ public final class a
       AppMethodBeat.o(36434);
       throw paramV;
     }
-    if (this.JVu.containsKey(paramV))
+    if (this.KrM.containsKey(paramV))
     {
-      paramV = (com.tencent.mm.ui.chatting.d.ad)this.JVu.get(paramV);
+      paramV = (ad)this.KrM.get(paramV);
       AppMethodBeat.o(36434);
       return paramV;
     }

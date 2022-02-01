@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory.Options;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -13,39 +14,43 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.app.j;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.app.j.b;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.a.au;
 import com.tencent.mm.g.a.av;
 import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.eb;
-import com.tencent.mm.g.a.eb.b;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.qc;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.qq;
-import com.tencent.mm.g.a.uh;
-import com.tencent.mm.g.a.vf;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.ec;
+import com.tencent.mm.g.a.ec.b;
+import com.tencent.mm.g.a.my;
+import com.tencent.mm.g.a.qd;
+import com.tencent.mm.g.a.qf;
+import com.tencent.mm.g.a.qr;
+import com.tencent.mm.g.a.ul;
+import com.tencent.mm.g.a.vj;
 import com.tencent.mm.g.b.a.ce;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.jumper.VideoCaptureReportInfo;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.a;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ak;
-import com.tencent.mm.plugin.sns.model.ao;
-import com.tencent.mm.plugin.sns.model.b.b;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.mm.plugin.sns.model.c.b;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.base.MMViewPager;
 import com.tencent.mm.ui.base.f;
 import com.tencent.mm.ui.base.l;
@@ -53,48 +58,48 @@ import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class FlipView
   extends LinearLayout
-  implements b.b
+  implements c.b
 {
+  private double AhA = 0.0D;
+  protected x AhB;
+  protected v.a AhC;
+  protected int AhD;
+  protected int AhE;
+  private boolean AhF = false;
+  private long AhG = 0L;
+  private boolean AhH = false;
+  boolean AhI = false;
+  private String AhJ;
+  private String AhK;
+  private String AhL;
+  private String AhM;
+  private String AhN;
+  private String AhO;
+  private String AhP;
+  private String AhQ;
+  private long AhR;
+  private int AhS = 0;
+  private boolean AhT = false;
+  private a AhU = new a();
+  private com.tencent.mm.sdk.b.c AhV = new com.tencent.mm.sdk.b.c() {};
+  private double Ahz = 0.0D;
   private Context context;
-  private int dnt;
-  private int dnu;
-  protected ap handler;
-  private long hfU = 0L;
+  private int dov;
+  private int dow;
+  protected aq handler;
+  private long hiI = 0L;
   protected int infoType = -1;
-  private ScanCodeSheetItemLogic lvI;
-  private e nHu;
-  private com.tencent.mm.sdk.b.c rwO = new com.tencent.mm.sdk.b.c() {};
-  private boolean zQA = false;
-  boolean zQB = false;
-  private String zQC;
-  private String zQD;
-  private String zQE;
-  private String zQF;
-  private String zQG;
-  private String zQH;
-  private String zQI;
-  private String zQJ;
-  private long zQK;
-  private int zQL = 0;
-  private boolean zQM = false;
-  private a zQN = new a();
-  private com.tencent.mm.sdk.b.c zQO = new com.tencent.mm.sdk.b.c() {};
-  private double zQs = 0.0D;
-  private double zQt = 0.0D;
-  protected x zQu;
-  protected v.a zQv;
-  protected int zQw;
-  protected int zQx;
-  private boolean zQy = false;
-  private long zQz = 0L;
-  protected bj zdv = bj.ILV;
+  private ScanCodeSheetItemLogic lAg;
+  private e nMW;
+  private com.tencent.mm.sdk.b.c rFa = new com.tencent.mm.sdk.b.c() {};
+  protected bk zul = bk.JgC;
   
   public FlipView(Context paramContext)
   {
@@ -108,12 +113,12 @@ public abstract class FlipView
     init(paramContext);
   }
   
-  private void dZJ()
+  private void edp()
   {
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((Activity)this.context).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    this.zQw = localDisplayMetrics.widthPixels;
-    this.zQx = localDisplayMetrics.heightPixels;
+    this.AhD = localDisplayMetrics.widthPixels;
+    this.AhE = localDisplayMetrics.heightPixels;
   }
   
   /* Error */
@@ -125,96 +130,96 @@ public abstract class FlipView
     //   2: aload_0
     //   3: ifnull +117 -> 120
     //   6: aload_0
-    //   7: ldc_w 288
-    //   10: invokevirtual 294	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7: ldc_w 291
+    //   10: invokevirtual 297	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   13: ifne +107 -> 120
-    //   16: new 296	java/lang/StringBuilder
+    //   16: new 299	java/lang/StringBuilder
     //   19: dup
-    //   20: invokespecial 297	java/lang/StringBuilder:<init>	()V
-    //   23: invokestatic 303	com/tencent/mm/loader/j/b:asg	()Ljava/lang/String;
-    //   26: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc_w 309
+    //   20: invokespecial 300	java/lang/StringBuilder:<init>	()V
+    //   23: invokestatic 306	com/tencent/mm/loader/j/b:asv	()Ljava/lang/String;
+    //   26: invokevirtual 310	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc_w 312
     //   32: iconst_3
-    //   33: anewarray 311	java/lang/Object
+    //   33: anewarray 314	java/lang/Object
     //   36: dup
     //   37: iconst_0
-    //   38: ldc_w 313
+    //   38: ldc_w 316
     //   41: aastore
     //   42: dup
     //   43: iconst_1
     //   44: aload_0
-    //   45: invokevirtual 317	java/lang/String:hashCode	()I
-    //   48: invokestatic 323	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   45: invokevirtual 320	java/lang/String:hashCode	()I
+    //   48: invokestatic 326	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   51: aastore
     //   52: dup
     //   53: iconst_2
-    //   54: ldc_w 325
+    //   54: ldc_w 328
     //   57: aastore
-    //   58: invokestatic 329	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   61: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokestatic 332	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   61: invokevirtual 310	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   67: astore 7
-    //   69: new 334	com/tencent/mm/vfs/e
+    //   69: new 337	com/tencent/mm/vfs/k
     //   72: dup
-    //   73: invokestatic 340	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   76: invokevirtual 346	android/content/Context:getCacheDir	()Ljava/io/File;
-    //   79: new 296	java/lang/StringBuilder
+    //   73: invokestatic 343	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   76: invokevirtual 349	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   79: new 299	java/lang/StringBuilder
     //   82: dup
-    //   83: ldc_w 348
-    //   86: invokespecial 350	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   89: invokestatic 356	java/lang/System:currentTimeMillis	()J
-    //   92: invokevirtual 359	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   95: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: invokespecial 362	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   101: invokevirtual 366	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
-    //   104: invokestatic 372	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   83: ldc_w 351
+    //   86: invokespecial 353	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   89: invokestatic 359	java/lang/System:currentTimeMillis	()J
+    //   92: invokevirtual 362	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokespecial 365	com/tencent/mm/vfs/k:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   101: invokevirtual 369	com/tencent/mm/vfs/k:fTh	()Landroid/net/Uri;
+    //   104: invokestatic 375	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   107: astore 6
     //   109: aload_0
     //   110: aload 6
-    //   112: invokestatic 378	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
+    //   112: invokestatic 381	com/tencent/mm/vfs/o:mF	(Ljava/lang/String;Ljava/lang/String;)J
     //   115: lconst_0
     //   116: lcmp
     //   117: ifge +5 -> 122
     //   120: aconst_null
     //   121: areturn
     //   122: aload 6
-    //   124: invokestatic 383	com/tencent/mm/sdk/platformtools/MMNativeJpeg:isProgressive	(Ljava/lang/String;)Z
+    //   124: invokestatic 386	com/tencent/mm/sdk/platformtools/MMNativeJpeg:isProgressive	(Ljava/lang/String;)Z
     //   127: ifeq +216 -> 343
     //   130: aload 6
-    //   132: invokestatic 387	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   132: invokestatic 390	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   135: astore 5
     //   137: aload 5
     //   139: ifnull +197 -> 336
     //   142: aload 7
     //   144: iconst_0
-    //   145: invokestatic 391	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   145: invokestatic 394	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   148: astore_3
     //   149: aload_3
     //   150: astore 4
     //   152: aload 5
-    //   154: getstatic 397	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   154: getstatic 400	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   157: bipush 80
     //   159: aload_3
-    //   160: invokevirtual 403	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   160: invokevirtual 406	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   163: pop
     //   164: aload_3
     //   165: ifnull +7 -> 172
     //   168: aload_3
-    //   169: invokevirtual 408	java/io/OutputStream:close	()V
+    //   169: invokevirtual 411	java/io/OutputStream:close	()V
     //   172: aload 6
-    //   174: invokestatic 411	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   174: invokestatic 414	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   177: pop
     //   178: iload_2
     //   179: ifne +14 -> 193
     //   182: aload_0
     //   183: aload 7
-    //   185: invokestatic 378	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
+    //   185: invokestatic 381	com/tencent/mm/vfs/o:mF	(Ljava/lang/String;Ljava/lang/String;)J
     //   188: lconst_0
     //   189: lcmp
     //   190: iflt -70 -> 120
     //   193: aload 7
     //   195: aload_1
-    //   196: invokestatic 417	com/tencent/mm/sdk/f/b:k	(Ljava/lang/String;Landroid/content/Context;)V
+    //   196: invokestatic 420	com/tencent/mm/sdk/f/b:k	(Ljava/lang/String;Landroid/content/Context;)V
     //   199: aload 7
     //   201: areturn
     //   202: astore 5
@@ -222,18 +227,18 @@ public abstract class FlipView
     //   205: astore_3
     //   206: aload_3
     //   207: astore 4
-    //   209: ldc_w 419
+    //   209: ldc_w 422
     //   212: aload 5
-    //   214: ldc_w 288
+    //   214: ldc_w 291
     //   217: iconst_0
-    //   218: anewarray 311	java/lang/Object
-    //   221: invokestatic 425	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   218: anewarray 314	java/lang/Object
+    //   221: invokestatic 428	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   224: aload_3
     //   225: ifnull +7 -> 232
     //   228: aload_3
-    //   229: invokevirtual 408	java/io/OutputStream:close	()V
+    //   229: invokevirtual 411	java/io/OutputStream:close	()V
     //   232: aload 6
-    //   234: invokestatic 411	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   234: invokestatic 414	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   237: pop
     //   238: iconst_0
     //   239: istore_2
@@ -243,18 +248,18 @@ public abstract class FlipView
     //   246: astore_3
     //   247: aload_3
     //   248: astore 4
-    //   250: ldc_w 419
+    //   250: ldc_w 422
     //   253: aload 5
-    //   255: ldc_w 288
+    //   255: ldc_w 291
     //   258: iconst_0
-    //   259: anewarray 311	java/lang/Object
-    //   262: invokestatic 425	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   259: anewarray 314	java/lang/Object
+    //   262: invokestatic 428	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   265: aload_3
     //   266: ifnull +7 -> 273
     //   269: aload_3
-    //   270: invokevirtual 408	java/io/OutputStream:close	()V
+    //   270: invokevirtual 411	java/io/OutputStream:close	()V
     //   273: aload 6
-    //   275: invokestatic 411	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   275: invokestatic 414	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   278: pop
     //   279: iconst_0
     //   280: istore_2
@@ -265,9 +270,9 @@ public abstract class FlipView
     //   288: aload 4
     //   290: ifnull +8 -> 298
     //   293: aload 4
-    //   295: invokevirtual 408	java/io/OutputStream:close	()V
+    //   295: invokevirtual 411	java/io/OutputStream:close	()V
     //   298: aload 6
-    //   300: invokestatic 411	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   300: invokestatic 414	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
     //   303: pop
     //   304: aload_0
     //   305: athrow
@@ -333,75 +338,73 @@ public abstract class FlipView
   private void init(Context paramContext)
   {
     this.context = paramContext;
-    this.handler = new ap();
-    dZJ();
-    com.tencent.mm.sdk.b.a.IbL.c(this.rwO);
-    com.tencent.mm.sdk.b.a.IbL.c(this.zQO);
-    this.lvI = new ScanCodeSheetItemLogic(paramContext);
+    this.handler = new aq();
+    edp();
+    com.tencent.mm.sdk.b.a.IvT.c(this.rFa);
+    com.tencent.mm.sdk.b.a.IvT.c(this.AhV);
+    this.lAg = new ScanCodeSheetItemLogic(paramContext);
   }
   
-  public final void E(byn parambyn)
+  public final void E(bzh parambzh)
   {
-    if (parambyn == null) {}
+    if (parambzh == null) {}
     String str;
     do
     {
       return;
-      str = ao.jo(ag.getAccSnsPath(), parambyn.Id);
-      parambyn = com.tencent.mm.plugin.sns.data.q.k(parambyn);
-    } while (!i.fv(str + parambyn));
-    aAB(str + parambyn);
+      str = ap.jv(ah.getAccSnsPath(), parambzh.Id);
+      parambzh = r.k(parambzh);
+    } while (!o.fB(str + parambzh));
+    aBS(str + parambzh);
   }
   
-  public final void aAB(String paramString)
+  public final void aBS(String paramString)
   {
-    if (i.fv(paramString))
+    if (o.fB(paramString))
     {
-      paramString = RecordConfigProvider.iI(paramString, "");
-      if (this.zdv != null)
+      paramString = RecordConfigProvider.iO(paramString, "");
+      if (this.zul != null)
       {
         localObject = new VideoCaptureReportInfo();
-        ((VideoCaptureReportInfo)localObject).rgD = -1;
-        paramString.xyB = ((VideoCaptureReportInfo)localObject);
+        ((VideoCaptureReportInfo)localObject).roH = -1;
+        paramString.xOx = ((VideoCaptureReportInfo)localObject);
       }
-      Object localObject = com.tencent.mm.plugin.recordvideo.jumper.a.xyI;
+      Object localObject = com.tencent.mm.plugin.recordvideo.jumper.a.xOE;
       com.tencent.mm.plugin.recordvideo.jumper.a.a(getContext(), 0, 2130772137, -1, paramString, 1, 2);
     }
   }
   
-  public final void ays(String paramString) {}
+  public final void azJ(String paramString) {}
   
-  public void bM(String paramString, boolean paramBoolean) {}
+  public void bQ(String paramString, boolean paramBoolean) {}
   
-  public void bN(String paramString, boolean paramBoolean) {}
+  public void bR(String paramString, boolean paramBoolean) {}
   
-  public final void dTb() {}
-  
-  public abstract boolean dZK();
+  public final void dWB() {}
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      ad.d("MicroMsg.FlipView", "onTouchEvent down");
-      this.zQs = paramMotionEvent.getX();
-      this.zQt = paramMotionEvent.getY();
-      this.hfU = System.currentTimeMillis();
-      if (f.ad(paramMotionEvent) == 1) {
-        this.zQy = false;
+      ae.d("MicroMsg.FlipView", "onTouchEvent down");
+      this.Ahz = paramMotionEvent.getX();
+      this.AhA = paramMotionEvent.getY();
+      this.hiI = System.currentTimeMillis();
+      if (f.ab(paramMotionEvent) == 1) {
+        this.AhF = false;
       }
     }
-    if (f.ad(paramMotionEvent) > 1) {
-      this.zQy = true;
+    if (f.ab(paramMotionEvent) > 1) {
+      this.AhF = true;
     }
-    if ((paramMotionEvent.getAction() == 1) && (!this.zQy))
+    if ((paramMotionEvent.getAction() == 1) && (!this.AhF))
     {
-      ad.d("MicroMsg.FlipView", "onTouchEvent up " + (System.currentTimeMillis() - this.hfU));
-      long l = bt.HI();
-      ad.d("MicroMsg.FlipView", "deltTime: " + (l - this.zQz));
-      if (l - this.zQz < 300L)
+      ae.d("MicroMsg.FlipView", "onTouchEvent up " + (System.currentTimeMillis() - this.hiI));
+      long l = bu.HQ();
+      ae.d("MicroMsg.FlipView", "deltTime: " + (l - this.AhG));
+      if (l - this.AhG < 300L)
       {
-        this.handler.removeCallbacks(this.zQN);
+        this.handler.removeCallbacks(this.AhU);
         this.handler.post(new Runnable()
         {
           public final void run()
@@ -412,15 +415,15 @@ public abstract class FlipView
         });
         return super.dispatchTouchEvent(paramMotionEvent);
       }
-      this.zQz = l;
-      if ((System.currentTimeMillis() - this.hfU < 500L) && (Math.abs(paramMotionEvent.getX() - this.zQs) <= 10.0D) && (Math.abs(paramMotionEvent.getY() - this.zQt) <= 10.0D) && (paramMotionEvent.getY() > 110.0F) && (paramMotionEvent.getY() < this.zQx - 100))
+      this.AhG = l;
+      if ((System.currentTimeMillis() - this.hiI < 500L) && (Math.abs(paramMotionEvent.getX() - this.Ahz) <= 10.0D) && (Math.abs(paramMotionEvent.getY() - this.AhA) <= 10.0D) && (paramMotionEvent.getY() > 110.0F) && (paramMotionEvent.getY() < this.AhE - 100))
       {
-        a locala = this.zQN;
+        a locala = this.AhU;
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
         locala.x = f1;
         locala.y = f2;
-        this.handler.postDelayed(this.zQN, 10L);
+        this.handler.postDelayed(this.AhU, 10L);
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -430,27 +433,27 @@ public abstract class FlipView
   {
     final ArrayList localArrayList1 = new ArrayList();
     final ArrayList localArrayList2 = new ArrayList();
-    p localp = ag.dUe().aAa(paramString2);
+    p localp = ah.dXE().aBr(paramString2);
     if (localp == null)
     {
-      ad.e("MicroMsg.FlipView", "error!!show long click Alert snsInfo is null!!");
+      ae.e("MicroMsg.FlipView", "error!!show long click Alert snsInfo is null!!");
       return;
     }
     if (localp.field_type == 21)
     {
-      if (!localp.field_userName.equals(u.aAm()))
+      if (!localp.field_userName.equals(v.aAC()))
       {
         localArrayList1.add(this.context.getString(2131763823));
         localArrayList2.add(Integer.valueOf(3));
       }
-      if ((this.nHu == null) || (!this.zQM)) {
+      if ((this.nMW == null) || (!this.AhT)) {
         break label691;
       }
-      this.zQM = false;
+      this.AhT = false;
     }
     for (;;)
     {
-      this.nHu.KJy = new n.d()
+      this.nMW.LfS = new n.d()
       {
         public final void onCreateMMMenu(l paramAnonymousl)
         {
@@ -467,21 +470,21 @@ public abstract class FlipView
             {
               i += 1;
               break;
-              paramAnonymousl.c(((Integer)localArrayList2.get(i)).intValue(), (CharSequence)localArrayList1.get(i));
+              paramAnonymousl.d(((Integer)localArrayList2.get(i)).intValue(), (CharSequence)localArrayList1.get(i));
             }
           }
           AppMethodBeat.o(97872);
         }
       };
-      this.nHu.JXC = new e.b()
+      this.nMW.KtV = new e.b()
       {
         public final void onDismiss()
         {
           AppMethodBeat.i(97873);
           av localav = new av();
-          localav.dlH.dlI = FlipView.b(FlipView.this);
-          localav.dlH.filePath = FlipView.c(FlipView.this);
-          com.tencent.mm.sdk.b.a.IbL.l(localav);
+          localav.dmJ.dmK = FlipView.b(FlipView.this);
+          localav.dmJ.filePath = FlipView.c(FlipView.this);
+          com.tencent.mm.sdk.b.a.IvT.l(localav);
           FlipView.d(FlipView.this);
           FlipView.e(FlipView.this);
           FlipView.f(FlipView.this);
@@ -497,15 +500,15 @@ public abstract class FlipView
           AppMethodBeat.o(97873);
         }
       };
-      this.nHu.KJz = new n.e()
+      this.nMW.LfT = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(97874);
-          Object localObject1 = ag.dUe().aAa(paramString2);
+          Object localObject1 = ah.dXE().aBr(paramString2);
           if (localObject1 == null)
           {
-            ad.i("MicroMsg.FlipView", "error beacause info null");
+            ae.i("MicroMsg.FlipView", "error beacause info null");
             AppMethodBeat.o(97874);
             return;
           }
@@ -518,20 +521,22 @@ public abstract class FlipView
           case 0: 
             if (((p)localObject1).field_type != 15)
             {
-              if (com.tencent.mm.plugin.sns.data.q.ans(paramString1) == 4)
+              if (r.aou(paramString1) == 4)
               {
-                paramAnonymousMenuItem = i.k(paramString1, false) + "_tmp";
-                i.aYg(i.aYr(paramAnonymousMenuItem));
-                ((com.tencent.mm.plugin.emoji.b.c)g.ab(com.tencent.mm.plugin.emoji.b.c.class)).nativeWxam2Pic(i.k(paramString1, false), paramAnonymousMenuItem);
+                paramAnonymousMenuItem = o.k(paramString1, false) + "_tmp";
+                o.aZI(o.aZU(paramAnonymousMenuItem));
+                ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).nativeWxam2Pic(o.k(paramString1, false), paramAnonymousMenuItem);
                 com.tencent.mm.pluginsdk.ui.tools.q.j(paramAnonymousMenuItem, FlipView.m(FlipView.this));
+              }
+              for (;;)
+              {
+                FlipView.n(FlipView.this);
                 AppMethodBeat.o(97874);
                 return;
+                com.tencent.mm.pluginsdk.ui.tools.q.j(paramString1, FlipView.m(FlipView.this));
               }
-              com.tencent.mm.pluginsdk.ui.tools.q.j(paramString1, FlipView.m(FlipView.this));
-              AppMethodBeat.o(97874);
-              return;
             }
-            FlipView.aAC(paramString2);
+            FlipView.aBT(paramString2);
             AppMethodBeat.o(97874);
             return;
           case 1: 
@@ -543,54 +548,54 @@ public abstract class FlipView
               paramAnonymousMenuItem.putExtra("Retr_Msg_Type", 0);
               if (localObject1 != null)
               {
-                paramAnonymousMenuItem.putExtra("Retr_FromMainTimeline", FlipView.this.dZK());
-                paramAnonymousMenuItem.putExtra("Retr_KSnsId", com.tencent.mm.plugin.sns.data.q.n((p)localObject1));
+                paramAnonymousMenuItem.putExtra("Retr_FromMainTimeline", FlipView.this.edq());
+                paramAnonymousMenuItem.putExtra("Retr_KSnsId", r.o((p)localObject1));
               }
-              com.tencent.mm.plugin.sns.c.a.iRG.k(paramAnonymousMenuItem, FlipView.m(FlipView.this));
+              com.tencent.mm.plugin.sns.c.a.iUz.k(paramAnonymousMenuItem, FlipView.m(FlipView.this));
               AppMethodBeat.o(97874);
               return;
             }
-            new StringBuilder().append(ao.jo(ag.getAccSnsPath(), paramString3)).append(com.tencent.mm.plugin.sns.data.q.d((byn)((p)localObject1).dYl().HAT.GaQ.get(0)));
-            FlipView.aAD(paramString2);
+            new StringBuilder().append(ap.jv(ah.getAccSnsPath(), paramString3)).append(r.d((bzh)((p)localObject1).ebP().HUG.Gtx.get(0)));
+            FlipView.aBU(paramString2);
             AppMethodBeat.o(97874);
             return;
           case 2: 
             if (((p)localObject1).field_type != 15)
             {
-              paramAnonymousMenuItem = new cv();
+              paramAnonymousMenuItem = new cw();
               Object localObject2 = paramString2;
               String str = paramString3;
-              if ((str == null) || (bt.isNullOrNil((String)localObject2)))
+              if ((str == null) || (bu.isNullOrNil((String)localObject2)))
               {
-                ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or position errro");
-                paramAnonymousMenuItem.dnG.dnL = 2131758885;
+                ae.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or position errro");
+                paramAnonymousMenuItem.doL.doQ = 2131758885;
               }
               for (;;)
               {
-                paramAnonymousMenuItem.dnG.dnM = 13;
-                paramAnonymousMenuItem.dnG.activity = ((Activity)FlipView.m(FlipView.this));
-                com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
-                if (FlipView.this.dZK())
+                paramAnonymousMenuItem.doL.doR = 13;
+                paramAnonymousMenuItem.doL.activity = ((Activity)FlipView.m(FlipView.this));
+                com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
+                if (FlipView.this.edq())
                 {
-                  paramAnonymousMenuItem = new uh();
-                  paramAnonymousMenuItem.dIF.dzb = com.tencent.mm.plugin.sns.data.q.n((p)localObject1);
-                  paramAnonymousMenuItem.dIF.doX = ((p)localObject1).dYK();
-                  com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
+                  paramAnonymousMenuItem = new ul();
+                  paramAnonymousMenuItem.dJT.dAg = r.o((p)localObject1);
+                  paramAnonymousMenuItem.dJT.dqc = ((p)localObject1).eco();
+                  com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
                 }
                 AppMethodBeat.o(97874);
                 return;
-                if (ag.dTN())
+                if (ah.dXn())
                 {
-                  ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
-                  paramAnonymousMenuItem.dnG.dnL = 2131758903;
+                  ae.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
+                  paramAnonymousMenuItem.doL.doQ = 2131758903;
                 }
                 else
                 {
-                  localObject2 = ag.dUe().aAa((String)localObject2);
+                  localObject2 = ah.dXE().aBr((String)localObject2);
                   if (localObject2 == null)
                   {
-                    ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
-                    paramAnonymousMenuItem.dnG.dnL = 2131758886;
+                    ae.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
+                    paramAnonymousMenuItem.doL.doQ = 2131758886;
                   }
                   else
                   {
@@ -604,30 +609,30 @@ public abstract class FlipView
               AppMethodBeat.o(97874);
               return;
             }
-            if (!((p)localObject1).QM(32)) {
-              FlipView.D(FlipView.this.dZK(), ((p)localObject1).dYK());
+            if (!((p)localObject1).Rt(32)) {
+              FlipView.F(FlipView.this.edq(), ((p)localObject1).eco());
             }
             for (;;)
             {
-              if (FlipView.this.dZK())
+              if (FlipView.this.edq())
               {
-                paramAnonymousMenuItem = new uh();
-                paramAnonymousMenuItem.dIF.dzb = com.tencent.mm.plugin.sns.data.q.n((p)localObject1);
-                paramAnonymousMenuItem.dIF.doX = ((p)localObject1).dYK();
-                com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
+                paramAnonymousMenuItem = new ul();
+                paramAnonymousMenuItem.dJT.dAg = r.o((p)localObject1);
+                paramAnonymousMenuItem.dJT.dqc = ((p)localObject1).eco();
+                com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
               }
               AppMethodBeat.o(97874);
               return;
-              paramAnonymousMenuItem = new cv();
+              paramAnonymousMenuItem = new cw();
               com.tencent.mm.plugin.sns.k.a.a(paramAnonymousMenuItem, (p)localObject1);
-              paramAnonymousMenuItem.dnG.dnM = 14;
-              paramAnonymousMenuItem.dnG.activity = ((Activity)FlipView.m(FlipView.this));
-              com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
+              paramAnonymousMenuItem.doL.doR = 14;
+              paramAnonymousMenuItem.doL.activity = ((Activity)FlipView.m(FlipView.this));
+              com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
             }
           case 3: 
             localObject1 = new Intent();
             ((Intent)localObject1).putExtra("k_expose_msg_id", FlipView.this.getSnsId());
-            paramAnonymousMenuItem = ag.dUe().Ai(FlipView.this.getSnsId());
+            paramAnonymousMenuItem = ah.dXE().AG(FlipView.this.getSnsId());
             if (paramAnonymousMenuItem == null) {}
             for (paramAnonymousMenuItem = "";; paramAnonymousMenuItem = paramAnonymousMenuItem.field_userName)
             {
@@ -640,7 +645,7 @@ public abstract class FlipView
               return;
             }
           case 5: 
-            if (((p)localObject1).dYl().HAT.GaQ.size() == 0)
+            if (((p)localObject1).ebP().HUG.Gtx.size() == 0)
             {
               AppMethodBeat.o(97874);
               return;
@@ -663,43 +668,43 @@ public abstract class FlipView
             AppMethodBeat.o(97874);
             return;
           case 6: 
-            FlipView.this.aAB(paramString1);
+            FlipView.this.aBS(paramString1);
             AppMethodBeat.o(97874);
             return;
           }
-          paramAnonymousMenuItem = new vf();
-          paramAnonymousMenuItem.dJs.mediaId = paramString3;
-          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
+          paramAnonymousMenuItem = new vj();
+          paramAnonymousMenuItem.dKG.mediaId = paramString3;
+          com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousMenuItem);
           paramAnonymousMenuItem = new ce();
-          paramAnonymousMenuItem.dPl = 3L;
-          if (FlipView.this.dZK()) {}
-          for (paramAnonymousMenuItem.eca = 6L;; paramAnonymousMenuItem.eca = 7L)
+          paramAnonymousMenuItem.dQB = 3L;
+          if (FlipView.this.edq()) {}
+          for (paramAnonymousMenuItem.edv = 6L;; paramAnonymousMenuItem.edv = 7L)
           {
-            paramAnonymousMenuItem.aLk();
+            paramAnonymousMenuItem.aLH();
             break;
           }
         }
       };
-      this.nHu.cMW();
-      if ((!this.zQA) || (true != paramBoolean)) {
+      this.nMW.cPF();
+      if ((!this.AhH) || (true != paramBoolean)) {
         break;
       }
-      g.ajD();
-      if (g.ajB().gAO.aEN() == 0) {
+      com.tencent.mm.kernel.g.ajS();
+      if (com.tencent.mm.kernel.g.ajQ().gDv.aFd() == 0) {
         break;
       }
-      this.zQC = paramString1;
-      this.zQD = paramString2;
-      this.zQE = paramString3;
-      paramString2 = new qc();
-      this.zQK = System.currentTimeMillis();
-      paramString2.dEC.dlI = this.zQK;
-      paramString2.dEC.filePath = paramString1;
-      com.tencent.mm.sdk.b.a.IbL.l(paramString2);
+      this.AhJ = paramString1;
+      this.AhK = paramString2;
+      this.AhL = paramString3;
+      paramString2 = new qd();
+      this.AhR = System.currentTimeMillis();
+      paramString2.dFH.dmK = this.AhR;
+      paramString2.dFH.filePath = paramString1;
+      com.tencent.mm.sdk.b.a.IvT.l(paramString2);
       return;
       localArrayList1.add(this.context.getString(2131763948));
       localArrayList2.add(Integer.valueOf(1));
-      if (d.aIu("favorite"))
+      if (d.aJN("favorite"))
       {
         localArrayList1.add(this.context.getString(2131761941));
         localArrayList2.add(Integer.valueOf(2));
@@ -711,20 +716,20 @@ public abstract class FlipView
       }
       for (;;)
       {
-        Object localObject = new eb();
-        ((eb)localObject).dpg.doX = paramString2;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-        if (((eb)localObject).dph.doF)
+        Object localObject = new ec();
+        ((ec)localObject).dql.dqc = paramString2;
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+        if (((ec)localObject).dqm.dpK)
         {
           localArrayList1.add(this.context.getString(2131755836));
           localArrayList2.add(Integer.valueOf(5));
         }
-        if ((!com.tencent.mm.plugin.sns.storage.x.aAv(paramString2)) && (localp.field_type == 1))
+        if ((!com.tencent.mm.plugin.sns.storage.x.aBM(paramString2)) && (localp.field_type == 1))
         {
           localArrayList1.add(this.context.getString(2131757183));
           localArrayList2.add(Integer.valueOf(6));
         }
-        if (this.zQF == null) {
+        if (this.AhM == null) {
           break;
         }
         localArrayList1.add("");
@@ -734,16 +739,16 @@ public abstract class FlipView
         {
           localArrayList1.add(this.context.getString(2131762781));
           localArrayList2.add(Integer.valueOf(0));
-          if (this.zQB)
+          if (this.AhI)
           {
             localArrayList1.add(this.context.getString(2131757184));
             localArrayList2.add(Integer.valueOf(7));
             localObject = new ce();
-            ((ce)localObject).dPl = 2L;
-            if (dZK()) {}
-            for (((ce)localObject).eca = 6L;; ((ce)localObject).eca = 7L)
+            ((ce)localObject).dQB = 2L;
+            if (edq()) {}
+            for (((ce)localObject).edv = 6L;; ((ce)localObject).edv = 7L)
             {
-              ((ce)localObject).aLk();
+              ((ce)localObject).aLH();
               break;
             }
           }
@@ -755,11 +760,13 @@ public abstract class FlipView
         }
       }
       label691:
-      this.nHu = new e(this.context, 1, false);
+      this.nMW = new e(this.context, 1, false);
     }
   }
   
-  public byn getCntMedia()
+  public abstract boolean edq();
+  
+  public bzh getCntMedia()
   {
     return null;
   }
@@ -774,27 +781,27 @@ public abstract class FlipView
   
   protected void onDestroy()
   {
-    com.tencent.mm.sdk.b.a.IbL.d(this.rwO);
-    com.tencent.mm.sdk.b.a.IbL.d(this.zQO);
-    qq localqq = new qq();
-    localqq.dFm.activity = ((Activity)this.context);
-    com.tencent.mm.sdk.b.a.IbL.l(localqq);
+    com.tencent.mm.sdk.b.a.IvT.d(this.rFa);
+    com.tencent.mm.sdk.b.a.IvT.d(this.AhV);
+    qr localqr = new qr();
+    localqr.dGr.activity = ((Activity)this.context);
+    com.tencent.mm.sdk.b.a.IvT.l(localqr);
   }
   
   protected void onPause()
   {
-    this.zQC = null;
-    this.zQD = "";
-    this.zQE = null;
-    if (this.zQF != null)
+    this.AhJ = null;
+    this.AhK = "";
+    this.AhL = null;
+    if (this.AhM != null)
     {
       au localau = new au();
-      localau.dlF.activity = ((Activity)this.context);
-      localau.dlF.dlG = this.zQF;
-      com.tencent.mm.sdk.b.a.IbL.l(localau);
-      this.zQF = null;
-      this.dnu = 0;
-      this.dnt = 0;
+      localau.dmH.activity = ((Activity)this.context);
+      localau.dmH.dmI = this.AhM;
+      com.tencent.mm.sdk.b.a.IvT.l(localau);
+      this.AhM = null;
+      this.dow = 0;
+      this.dov = 0;
     }
   }
   
@@ -805,12 +812,12 @@ public abstract class FlipView
   
   public void setNeedScanImage(boolean paramBoolean)
   {
-    this.zQA = paramBoolean;
+    this.AhH = paramBoolean;
   }
   
   public void setNeedTranslationImg(boolean paramBoolean)
   {
-    this.zQB = paramBoolean;
+    this.AhI = paramBoolean;
   }
   
   final class a

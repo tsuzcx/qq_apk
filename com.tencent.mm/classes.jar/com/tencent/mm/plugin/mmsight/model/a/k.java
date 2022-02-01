@@ -4,29 +4,29 @@ import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class k
   extends a<byte[]>
 {
-  private static int iuX;
-  public static final k vQc;
+  private static int ixR;
+  public static final k wcg;
   
   static
   {
     AppMethodBeat.i(148835);
-    vQc = new k();
-    iuX = 0;
+    wcg = new k();
+    ixR = 0;
     AppMethodBeat.o(148835);
   }
   
-  public final long ayu()
+  public final long ayJ()
   {
     AppMethodBeat.i(148828);
-    if (iuX <= 0) {
-      iuX = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (ixR <= 0) {
+      ixR = ((ActivityManager)ak.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (iuX >= 512)
+    if (ixR >= 512)
     {
       AppMethodBeat.o(148828);
       return 41943040L;
@@ -35,24 +35,24 @@ public final class k
     return 20971520L;
   }
   
-  public final long ayv()
+  public final long ayK()
   {
     return 10485760L;
   }
   
-  public final void ayw()
+  public final void ayL()
   {
     AppMethodBeat.i(148829);
-    super.ayw();
+    super.ayL();
     AppMethodBeat.o(148829);
   }
   
-  public final byte[] g(Integer paramInteger)
+  public final byte[] h(Integer paramInteger)
   {
     try
     {
       AppMethodBeat.i(148827);
-      byte[] arrayOfByte2 = (byte[])super.d(paramInteger);
+      byte[] arrayOfByte2 = (byte[])super.e(paramInteger);
       byte[] arrayOfByte1 = arrayOfByte2;
       if (arrayOfByte2 == null) {
         arrayOfByte1 = new byte[paramInteger.intValue()];

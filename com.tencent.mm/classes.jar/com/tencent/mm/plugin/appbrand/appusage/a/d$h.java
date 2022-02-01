@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
 final class d$h
   extends q
   implements a<LinkedList<Integer>>
 {
-  public static final h jQY;
+  public static final h jUq;
   
   static
   {
     AppMethodBeat.i(50316);
-    jQY = new h();
+    jUq = new h();
     AppMethodBeat.o(50316);
   }
   

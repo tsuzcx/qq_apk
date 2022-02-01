@@ -2,38 +2,38 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.btg;
+import com.tencent.mm.protocal.protobuf.bua;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 
 public class az
   extends j<ay>
 {
-  public static final String[] hEf;
+  public static final String[] hGX;
   
   static
   {
     AppMethodBeat.i(146072);
-    hEf = new String[] { j.getCreateSQLs(ay.jGU, "LaunchWxaAppPBTable") };
+    hGX = new String[] { j.getCreateSQLs(ay.jJU, "LaunchWxaAppPBTable") };
     AppMethodBeat.o(146072);
   }
   
   public az(e parame)
   {
-    super(parame, ay.jGU, "LaunchWxaAppPBTable", ay.INDEX_CREATE);
+    super(parame, ay.jJU, "LaunchWxaAppPBTable", ay.INDEX_CREATE);
   }
   
-  public final boolean b(String paramString, btg parambtg)
+  public final boolean b(String paramString, bua parambua)
   {
     AppMethodBeat.i(146071);
-    if ((TextUtils.isEmpty(paramString)) || (parambtg == null))
+    if ((TextUtils.isEmpty(paramString)) || (parambua == null))
     {
       AppMethodBeat.o(146071);
       return false;
     }
     ay localay = new ay();
     localay.field_appId = paramString;
-    localay.field_launchPB = parambtg;
+    localay.field_launchPB = parambua;
     boolean bool = super.replace(localay);
     AppMethodBeat.o(146071);
     return bool;

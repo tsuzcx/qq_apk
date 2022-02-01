@@ -38,7 +38,7 @@ public final class g
     return bool;
   }
   
-  public final boolean lz(Context paramContext)
+  public final boolean lF(Context paramContext)
   {
     AppMethodBeat.i(154140);
     boolean bool = TbsDownloader.needSendRequest(paramContext, false);
@@ -63,18 +63,18 @@ public final class g
   static final class a
     implements TbsDownloader.TbsDownloaderCallback
   {
-    f.a MvA;
+    f.a MSE;
     
     public a(f.a parama)
     {
-      this.MvA = parama;
+      this.MSE = parama;
     }
     
     public final void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(154139);
-      if (this.MvA != null) {
-        this.MvA.onNeedDownloadFinish(paramBoolean, paramInt);
+      if (this.MSE != null) {
+        this.MSE.onNeedDownloadFinish(paramBoolean, paramInt);
       }
       AppMethodBeat.o(154139);
     }

@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.plugin.wenote.ui.nativenote.a.a;
 import com.tencent.mm.plugin.wenote.ui.nativenote.a.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends RecyclerView.a<a>
 {
-  private k EBf;
-  private h ECv;
-  public boolean ECw;
+  private k ETB;
+  private h EUR;
+  public boolean EUS;
   private final String TAG;
   
   public b(k paramk)
   {
     AppMethodBeat.i(30841);
     this.TAG = "MicroMsg.Note.NoteRecyclerViewAdapter";
-    this.ECw = false;
-    this.EBf = paramk;
-    this.ECv = new h();
+    this.EUS = false;
+    this.ETB = paramk;
+    this.EUR = new h();
     AppMethodBeat.o(30841);
   }
   
@@ -33,8 +33,8 @@ public final class b
       try
       {
         AppMethodBeat.i(30842);
-        com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(paramInt);
-        if ((localc != null) && (localc.getType() == parama.cdT()))
+        com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().YE(paramInt);
+        if ((localc != null) && (localc.getType() == parama.cfi()))
         {
           parama.a(localc, paramInt, localc.getType());
           AppMethodBeat.o(30842);
@@ -42,7 +42,7 @@ public final class b
         }
         if (localc == null)
         {
-          ad.e("MicroMsg.Note.NoteRecyclerViewAdapter", "onBindViewHolder, item is null %b, position is %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+          ae.e("MicroMsg.Note.NoteRecyclerViewAdapter", "onBindViewHolder, item is null %b, position is %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) });
           AppMethodBeat.o(30842);
         }
         else
@@ -57,13 +57,13 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(30844);
-    if (this.ECw)
+    if (this.EUS)
     {
-      i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().size();
+      i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size();
       AppMethodBeat.o(30844);
       return i + 1;
     }
-    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().size();
+    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size();
     AppMethodBeat.o(30844);
     return i;
   }
@@ -71,19 +71,19 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(30843);
-    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(paramInt);
+    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().YE(paramInt);
     if (localc != null)
     {
       paramInt = localc.getType();
       AppMethodBeat.o(30843);
       return paramInt;
     }
-    if ((this.ECw) && (paramInt == com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().size()))
+    if ((this.EUS) && (paramInt == com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size()))
     {
       AppMethodBeat.o(30843);
       return 30;
     }
-    ad.e("MicroMsg.Note.NoteRecyclerViewAdapter", "getItemViewType, item is null, position is %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.e("MicroMsg.Note.NoteRecyclerViewAdapter", "getItemViewType, item is null, position is %d", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(30843);
     return 0;
   }

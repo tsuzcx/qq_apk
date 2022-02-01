@@ -3,17 +3,24 @@ package kotlinx.coroutines;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
 public final class cb
   implements ba, q
 {
-  public static final cb NJe;
+  public static final cb Ogk;
   
   static
   {
     AppMethodBeat.i(118190);
-    NJe = new cb();
+    Ogk = new cb();
     AppMethodBeat.o(118190);
+  }
+  
+  public final boolean A(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118189);
+    AppMethodBeat.o(118189);
+    return false;
   }
   
   public final void dispose() {}
@@ -21,13 +28,6 @@ public final class cb
   public final String toString()
   {
     return "NonDisposableHandle";
-  }
-  
-  public final boolean z(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118189);
-    AppMethodBeat.o(118189);
-    return false;
   }
 }
 

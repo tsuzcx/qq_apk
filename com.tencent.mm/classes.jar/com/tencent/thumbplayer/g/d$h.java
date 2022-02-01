@@ -5,9 +5,9 @@ import com.tencent.thumbplayer.b.p;
 
 final class d$h
 {
-  a MbV;
-  long Mcg;
-  p Mch;
+  a MyQ;
+  long Mzb;
+  p Mzc;
   int mode;
   String url;
 }

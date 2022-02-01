@@ -6,10 +6,10 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 
 public class WalletWXCreditChangeAmountResultUI
   extends WalletBaseUI
@@ -22,7 +22,7 @@ public class WalletWXCreditChangeAmountResultUI
   public void initView()
   {
     AppMethodBeat.i(72331);
-    ((TextView)findViewById(2131306845)).setText(e.D(getInput().getDouble("key_credit_amount")));
+    ((TextView)findViewById(2131306845)).setText(f.D(getInput().getDouble("key_credit_amount")));
     showHomeBtn(false);
     enableBackMenu(false);
     addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
@@ -59,7 +59,7 @@ public class WalletWXCreditChangeAmountResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountResultUI
  * JD-Core Version:    0.7.0.1
  */

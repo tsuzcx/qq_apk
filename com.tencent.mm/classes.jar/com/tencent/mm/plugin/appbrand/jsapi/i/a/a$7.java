@@ -19,15 +19,15 @@ final class a$7
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/map/mapsdk/DefaultTencentMapView$18", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/map/mapsdk/DefaultTencentMapView$18", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     int i;
-    if (this.kQR)
+    if (this.kUz)
     {
       i = paramMotionEvent.getAction();
       if (i != 0) {
         break label91;
       }
-      this.kQS.setColorFilter(Color.parseColor("#88888888"));
+      this.kUA.setColorFilter(Color.parseColor("#88888888"));
     }
     for (;;)
     {
@@ -36,14 +36,14 @@ final class a$7
       return false;
       label91:
       if ((i == 3) || (i == 1)) {
-        this.kQS.clearColorFilter();
+        this.kUA.clearColorFilter();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.a.a.7
  * JD-Core Version:    0.7.0.1
  */

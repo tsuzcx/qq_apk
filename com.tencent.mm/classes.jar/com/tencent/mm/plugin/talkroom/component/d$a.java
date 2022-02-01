@@ -15,7 +15,7 @@ public abstract class d$a
     attachInterface(this, "com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
   }
   
-  public static d D(IBinder paramIBinder)
+  public static d E(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -43,12 +43,12 @@ public abstract class d$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      enA();
+      erh();
       paramParcel2.writeNoException();
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      aLV();
+      aMs();
       paramParcel2.writeNoException();
       return true;
     case 3: 
@@ -58,7 +58,7 @@ public abstract class d$a
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      paramInt1 = enB();
+      paramInt1 = eri();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -79,7 +79,7 @@ public abstract class d$a
       this.mRemote = paramIBinder;
     }
     
-    public final void aLV()
+    public final void aMs()
     {
       AppMethodBeat.i(29385);
       Parcel localParcel1 = Parcel.obtain();
@@ -104,7 +104,7 @@ public abstract class d$a
       return this.mRemote;
     }
     
-    public final void enA()
+    public final void erh()
     {
       AppMethodBeat.i(29384);
       Parcel localParcel1 = Parcel.obtain();
@@ -124,7 +124,7 @@ public abstract class d$a
       }
     }
     
-    public final int enB()
+    public final int eri()
     {
       AppMethodBeat.i(29387);
       Parcel localParcel1 = Parcel.obtain();

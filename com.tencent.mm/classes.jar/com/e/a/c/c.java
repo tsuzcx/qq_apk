@@ -19,7 +19,7 @@ abstract class c<V>
   
   public V next()
   {
-    BD();
+    BE();
     return go(this.cfW);
   }
   

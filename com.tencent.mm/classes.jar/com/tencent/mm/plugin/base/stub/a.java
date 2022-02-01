@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.game.api.b;
 import com.tencent.mm.plugin.game.api.b.a;
 import com.tencent.mm.ui.base.h;
@@ -17,7 +17,7 @@ public final class a
     super(paramContext, paramString1, paramString2, parama);
   }
   
-  protected final void bLZ()
+  protected final void bMX()
   {
     AppMethodBeat.i(22165);
     h.a(this.context, 2131759960, 2131755906, false, new DialogInterface.OnClickListener()
@@ -25,11 +25,11 @@ public final class a
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(22164);
-        paramAnonymousDialogInterface = b.a.cWM();
+        paramAnonymousDialogInterface = b.a.cZq();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.k(a.this.openId, u.aAp(), a.this.appId);
+          paramAnonymousDialogInterface.k(a.this.openId, v.aAF(), a.this.appId);
         }
-        a.this.nMX.jc(false);
+        a.this.nSC.jb(false);
         AppMethodBeat.o(22164);
       }
     });

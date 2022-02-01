@@ -4,40 +4,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/res/VideoEditTransitionResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_NAME", "", "RES_FILE_PAG", "RES_FILE_SVG", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResType", "", "getTag", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/res/VideoEditTransitionResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_NAME", "", "RES_FILE_PAG", "RES_FILE_SVG", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResType", "", "getTag", "plugin-recordvideo_release"})
 public final class f
   extends a
 {
-  public static final f xHC;
-  private static final g xHy;
+  private static final g xXt;
+  public static final f xXx;
   
   static
   {
-    AppMethodBeat.i(200423);
-    xHC = new f();
-    xHy = new g(20);
-    AppMethodBeat.o(200423);
+    AppMethodBeat.i(206684);
+    xXx = new f();
+    xXt = new g(20);
+    AppMethodBeat.o(206684);
   }
   
-  public final int dGT()
+  public final int dKk()
   {
     return 76;
   }
   
-  public final String[] dGU()
+  public final String[] dKl()
   {
     return new String[] { "pag" };
   }
   
-  public final String dGV()
+  public final String dKm()
   {
-    AppMethodBeat.i(200422);
-    String str = b.arN() + "transition/";
-    AppMethodBeat.o(200422);
+    AppMethodBeat.i(206683);
+    String str = b.asc() + "transition/";
+    AppMethodBeat.o(206683);
     return str;
   }
   
-  public final String dGW()
+  public final String dKn()
   {
     return "WeChatVideoTransitionResource/";
   }
@@ -49,7 +49,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.f
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 public abstract interface AppBrandLivePlayerView$c
 {
-  public abstract void o(boolean paramBoolean, int paramInt);
+  public abstract void p(boolean paramBoolean, int paramInt);
 }
 
 

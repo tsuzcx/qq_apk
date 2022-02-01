@@ -5,8 +5,8 @@ import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.aa.model.d.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.ArrayList;
 
 final class LaunchAAUI$20
@@ -14,45 +14,45 @@ final class LaunchAAUI$20
 {
   LaunchAAUI$20(LaunchAAUI paramLaunchAAUI, boolean paramBoolean, Context paramContext, String paramString1, int paramInt, String paramString2, double paramDouble, ArrayList paramArrayList) {}
   
-  public final void aRb()
+  public final void aRA()
   {
-    AppMethodBeat.i(198930);
-    ad.i("MicroMsg.Aa.LaunchAAUI", "IImgUploadCallback onError");
-    aq.f(new Runnable()
+    AppMethodBeat.i(189764);
+    ae.i("MicroMsg.Aa.LaunchAAUI", "IImgUploadCallback onError");
+    ar.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(198928);
-        if (LaunchAAUI.v(LaunchAAUI.20.this.iXi) != null) {
-          LaunchAAUI.v(LaunchAAUI.20.this.iXi).dismiss();
+        AppMethodBeat.i(189762);
+        if (LaunchAAUI.v(LaunchAAUI.20.this.jab) != null) {
+          LaunchAAUI.v(LaunchAAUI.20.this.jab).dismiss();
         }
         Toast.makeText(LaunchAAUI.20.this.val$context, 2131760656, 1).show();
-        AppMethodBeat.o(198928);
+        AppMethodBeat.o(189762);
       }
     });
-    AppMethodBeat.o(198930);
+    AppMethodBeat.o(189764);
   }
   
   public final void bL(final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(198929);
-    ad.i("MicroMsg.Aa.LaunchAAUI", "IImgUploadCallback onSuccess");
-    aq.f(new Runnable()
+    AppMethodBeat.i(189763);
+    ae.i("MicroMsg.Aa.LaunchAAUI", "IImgUploadCallback onSuccess");
+    ar.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(198927);
-        if (LaunchAAUI.20.this.iXo)
+        AppMethodBeat.i(189761);
+        if (LaunchAAUI.20.this.jah)
         {
-          LaunchAAUI.a(LaunchAAUI.20.this.iXi, LaunchAAUI.20.this.val$context, LaunchAAUI.20.this.fNr, LaunchAAUI.20.this.iXp, LaunchAAUI.20.this.iXq, LaunchAAUI.20.this.iXr, LaunchAAUI.20.this.iXk, paramString1, paramString2);
-          AppMethodBeat.o(198927);
+          LaunchAAUI.a(LaunchAAUI.20.this.jab, LaunchAAUI.20.this.val$context, LaunchAAUI.20.this.fOj, LaunchAAUI.20.this.jai, LaunchAAUI.20.this.jaj, LaunchAAUI.20.this.jak, LaunchAAUI.20.this.jad, paramString1, paramString2);
+          AppMethodBeat.o(189761);
           return;
         }
-        LaunchAAUI.a(LaunchAAUI.20.this.iXi, LaunchAAUI.20.this.val$context, LaunchAAUI.20.this.fNr, LaunchAAUI.20.this.iXp, LaunchAAUI.20.this.iXq, LaunchAAUI.20.this.iXr, LaunchAAUI.s(LaunchAAUI.20.this.iXi), paramString1, paramString2);
-        AppMethodBeat.o(198927);
+        LaunchAAUI.a(LaunchAAUI.20.this.jab, LaunchAAUI.20.this.val$context, LaunchAAUI.20.this.fOj, LaunchAAUI.20.this.jai, LaunchAAUI.20.this.jaj, LaunchAAUI.20.this.jak, LaunchAAUI.s(LaunchAAUI.20.this.jab), paramString1, paramString2);
+        AppMethodBeat.o(189761);
       }
     });
-    AppMethodBeat.o(198929);
+    AppMethodBeat.o(189763);
   }
 }
 

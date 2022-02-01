@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class af
 {
-  public static List<Bankcard> eFJ()
+  public static List<Bankcard> eJq()
   {
-    AppMethodBeat.i(221334);
-    ArrayList localArrayList = um(false);
-    AppMethodBeat.o(221334);
+    AppMethodBeat.i(224236);
+    ArrayList localArrayList = uu(false);
+    AppMethodBeat.o(224236);
     return localArrayList;
   }
   
-  public static ArrayList<Bankcard> um(boolean paramBoolean)
+  public static ArrayList<Bankcard> uu(boolean paramBoolean)
   {
     AppMethodBeat.i(70433);
-    ad.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {}
-    for (ArrayList localArrayList1 = t.eFy().eGx();; localArrayList1 = t.eFy().un(true))
+    for (ArrayList localArrayList1 = t.eJf().eKe();; localArrayList1 = t.eJf().uv(true))
     {
-      localObject = t.eFy().eGv();
+      localObject = t.eJf().eKc();
       if (localObject != null) {
         break;
       }
-      ad.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
+      ae.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
       AppMethodBeat.o(70433);
       return localArrayList1;
     }
@@ -43,7 +43,7 @@ public final class af
       if (localIterator.hasNext())
       {
         Bankcard localBankcard = (Bankcard)localIterator.next();
-        if (!localBankcard.field_bindSerial.equals(localc.wBI)) {
+        if (!localBankcard.field_bindSerial.equals(localc.wRt)) {
           break;
         }
         localArrayList1.remove(localBankcard);
@@ -53,7 +53,7 @@ public final class af
     label166:
     if (!localArrayList1.isEmpty())
     {
-      ad.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
+      ae.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
       localArrayList2.addAll(localArrayList1);
     }
     AppMethodBeat.o(70433);
@@ -62,7 +62,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.af
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ import org.xwalk.core.Log;
 public final class h
   implements IJsRuntime
 {
-  private JsContext MuZ;
-  private h.a Mva;
-  private n Mvb;
+  private JsContext MSd;
+  private h.a MSe;
+  private n MSf;
   private Context mContext;
   
   public h(Context paramContext)
@@ -29,11 +29,11 @@ public final class h
   public final void init(int paramInt)
   {
     AppMethodBeat.i(153867);
-    this.MuZ = new JsContext(this.mContext);
-    this.Mva = new h.a();
-    this.MuZ.addJavascriptInterface(this.Mva, "nativeBufferCompat");
-    this.MuZ.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new ValueCallback() {}));
-    this.MuZ.setExceptionHandler(new JsContext.ExceptionHandler()
+    this.MSd = new JsContext(this.mContext);
+    this.MSe = new h.a();
+    this.MSd.addJavascriptInterface(this.MSe, "nativeBufferCompat");
+    this.MSd.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new ValueCallback() {}));
+    this.MSd.setExceptionHandler(new JsContext.ExceptionHandler()
     {
       public final void handleException(JsContext paramAnonymousJsContext, JsError paramAnonymousJsError)
       {

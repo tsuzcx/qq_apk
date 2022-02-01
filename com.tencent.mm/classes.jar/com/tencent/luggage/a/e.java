@@ -1,7 +1,7 @@
 package com.tencent.luggage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -21,7 +21,7 @@ public final class e
     AppMethodBeat.i(140311);
     cgk = new LinkedHashMap();
     a locala = new a();
-    ad.i("Luggage.Luggage", "plugin:[%s] installed", new Object[] { locala.getName() });
+    ae.i("Luggage.Luggage", "plugin:[%s] installed", new Object[] { locala.getName() });
     cgk.put(locala.getName(), locala);
     cgl = new HashMap();
     AppMethodBeat.o(140311);
@@ -39,14 +39,14 @@ public final class e
     while (localListIterator.hasPrevious())
     {
       c localc = (c)localListIterator.previous();
-      if ((localc != null) && (localc.BE() != null) && (localc.BE().get(paramClass) != null))
+      if ((localc != null) && (localc.BF() != null) && (localc.BF().get(paramClass) != null))
       {
-        paramClass = (b)localc.BE().get(paramClass);
+        paramClass = (b)localc.BF().get(paramClass);
         AppMethodBeat.o(140305);
         return paramClass;
       }
     }
-    ad.w("Luggage.Luggage", "no customize found for [%s]", new Object[] { paramClass.getCanonicalName() });
+    ae.w("Luggage.Luggage", "no customize found for [%s]", new Object[] { paramClass.getCanonicalName() });
     AppMethodBeat.o(140305);
     return null;
   }
@@ -72,14 +72,14 @@ public final class e
     while (localListIterator.hasPrevious())
     {
       c localc = (c)localListIterator.previous();
-      if ((localc != null) && (localc.BF() != null) && (localc.BF().get(paramClass) != null))
+      if ((localc != null) && (localc.BG() != null) && (localc.BG().get(paramClass) != null))
       {
-        paramClass = (d)localc.BF().get(paramClass);
+        paramClass = (d)localc.BG().get(paramClass);
         AppMethodBeat.o(140309);
         return paramClass;
       }
     }
-    ad.w("Luggage.Luggage", "no profiler found for [%s], genDummy[%b]", new Object[] { paramClass.getCanonicalName(), Boolean.TRUE });
+    ae.w("Luggage.Luggage", "no profiler found for [%s], genDummy[%b]", new Object[] { paramClass.getCanonicalName(), Boolean.TRUE });
     paramClass = N(paramClass);
     AppMethodBeat.o(140309);
     return paramClass;
@@ -115,7 +115,7 @@ public final class e
       AppMethodBeat.o(140306);
       return;
     }
-    ((c)cgk.get("luggage-core")).BE().put(paramClass, paramT);
+    ((c)cgk.get("luggage-core")).BF().put(paramClass, paramT);
     AppMethodBeat.o(140306);
   }
   
@@ -127,7 +127,7 @@ public final class e
       AppMethodBeat.o(140307);
       return;
     }
-    ((c)cgk.get("luggage-core")).BF().put(paramClass, paramT);
+    ((c)cgk.get("luggage-core")).BG().put(paramClass, paramT);
     AppMethodBeat.o(140307);
   }
 }

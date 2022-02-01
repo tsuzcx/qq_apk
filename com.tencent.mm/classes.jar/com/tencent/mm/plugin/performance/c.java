@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.performance;
 
 import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,17 +13,17 @@ import java.util.Locale;
 
 public final class c
 {
-  public static void N(e parame)
+  public static void N(k paramk)
   {
-    AppMethodBeat.i(211739);
-    e locale1 = new e(Environment.getExternalStorageDirectory().getAbsolutePath(), "tencent/MicroMsg/Diagnostic");
-    e locale2 = new e(locale1, parame.getName());
-    ad.i("MicroMsg.performance.Utils", "DevEnv: copy [%s] to sdcard [%s]", new Object[] { q.B(parame.fOK()), q.B(locale2.fOK()) });
-    if (!locale1.exists()) {
-      locale1.mkdirs();
+    AppMethodBeat.i(215410);
+    k localk1 = new k(Environment.getExternalStorageDirectory().getAbsolutePath(), "tencent/MicroMsg/Diagnostic");
+    k localk2 = new k(localk1, paramk.getName());
+    ae.i("MicroMsg.performance.Utils", "DevEnv: copy [%s] to sdcard [%s]", new Object[] { w.B(paramk.fTh()), w.B(localk2.fTh()) });
+    if (!localk1.exists()) {
+      localk1.mkdirs();
     }
-    i.mA(q.B(parame.fOK()), q.B(locale2.fOK()));
-    AppMethodBeat.o(211739);
+    o.mG(w.B(paramk.fTh()), w.B(localk2.fTh()));
+    AppMethodBeat.o(215410);
   }
   
   /* Error */
@@ -104,7 +104,7 @@ public final class c
     //   117: ldc 111
     //   119: iconst_0
     //   120: anewarray 4	java/lang/Object
-    //   123: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   123: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   126: goto -47 -> 79
     //   129: astore 4
     //   131: aload_1
@@ -147,7 +147,7 @@ public final class c
   }
   
   /* Error */
-  public static java.util.Set<String> dyx()
+  public static java.util.Set<String> dBN()
   {
     // Byte code:
     //   0: ldc 122
@@ -216,7 +216,7 @@ public final class c
     //   117: ldc 111
     //   119: iconst_0
     //   120: anewarray 4	java/lang/Object
-    //   123: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   123: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   126: ldc 122
     //   128: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   131: aload_2
@@ -261,17 +261,17 @@ public final class c
     //   48	86	156	finally
   }
   
-  public static String yt(long paramLong)
+  public static String yN(long paramLong)
   {
-    AppMethodBeat.i(211737);
+    AppMethodBeat.i(215408);
     String str = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date(paramLong));
-    AppMethodBeat.o(211737);
+    AppMethodBeat.o(215408);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.c
  * JD-Core Version:    0.7.0.1
  */

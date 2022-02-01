@@ -22,28 +22,28 @@ import org.json.JSONObject;
 
 public final class s
 {
-  static void JK()
+  static void JS()
   {
-    if (i.cOG != null) {
-      h localh = i.cOG;
+    if (i.cPq != null) {
+      h localh = i.cPq;
     }
   }
   
-  static void JL()
+  static void JT()
   {
-    if (i.cOG != null) {
-      h localh = i.cOG;
+    if (i.cPq != null) {
+      h localh = i.cPq;
     }
   }
   
-  public static void JM()
+  public static void JU()
   {
-    if (i.cOG != null) {
-      h localh = i.cOG;
+    if (i.cPq != null) {
+      h localh = i.cPq;
     }
   }
   
-  static String JN()
+  static String JV()
   {
     AppMethodBeat.i(87650);
     try
@@ -57,7 +57,7 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      JL();
+      JT();
       AppMethodBeat.o(87650);
     }
     return "";
@@ -93,13 +93,13 @@ public final class s
   static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
     AppMethodBeat.i(87640);
-    if (ek(paramString2)) {
+    if (ep(paramString2)) {
       paramJSONObject.put(paramString1, paramString2);
     }
     AppMethodBeat.o(87640);
   }
   
-  static boolean aY(Context paramContext)
+  static boolean aZ(Context paramContext)
   {
     AppMethodBeat.i(87639);
     try
@@ -120,36 +120,6 @@ public final class s
       AppMethodBeat.o(87639);
     }
     return false;
-  }
-  
-  static String aZ(Context paramContext)
-  {
-    AppMethodBeat.i(87643);
-    try
-    {
-      if (checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
-      {
-        paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
-        if (paramContext != null)
-        {
-          AppMethodBeat.o(87643);
-          return paramContext;
-        }
-      }
-      else
-      {
-        JK();
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        JL();
-      }
-    }
-    AppMethodBeat.o(87643);
-    return "";
   }
   
   static boolean b(g paramg1, g paramg2)
@@ -176,6 +146,36 @@ public final class s
   
   static String ba(Context paramContext)
   {
+    AppMethodBeat.i(87643);
+    try
+    {
+      if (checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
+      {
+        paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+        if (paramContext != null)
+        {
+          AppMethodBeat.o(87643);
+          return paramContext;
+        }
+      }
+      else
+      {
+        JS();
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        JT();
+      }
+    }
+    AppMethodBeat.o(87643);
+    return "";
+  }
+  
+  static String bb(Context paramContext)
+  {
     AppMethodBeat.i(87644);
     if (checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE")) {
       try
@@ -193,17 +193,17 @@ public final class s
       catch (Exception paramContext)
       {
         "get wifi address error".concat(String.valueOf(paramContext));
-        JK();
+        JS();
         AppMethodBeat.o(87644);
         return "";
       }
     }
-    JK();
+    JS();
     AppMethodBeat.o(87644);
     return "";
   }
   
-  static String bb(Context paramContext)
+  static String bc(Context paramContext)
   {
     AppMethodBeat.i(87646);
     try
@@ -218,13 +218,13 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      JL();
+      JT();
       AppMethodBeat.o(87646);
     }
     return null;
   }
   
-  static String bc(Context paramContext)
+  static String bd(Context paramContext)
   {
     AppMethodBeat.i(87647);
     try
@@ -239,13 +239,13 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      JL();
+      JT();
       AppMethodBeat.o(87647);
     }
     return null;
   }
   
-  static JSONArray bd(Context paramContext)
+  static JSONArray be(Context paramContext)
   {
     AppMethodBeat.i(87648);
     try
@@ -282,21 +282,21 @@ public final class s
       }
       else
       {
-        JK();
+        JS();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        JL();
+        JT();
       }
     }
     AppMethodBeat.o(87648);
     return null;
   }
   
-  static String be(Context paramContext)
+  static String bf(Context paramContext)
   {
     AppMethodBeat.i(87649);
     try
@@ -320,20 +320,20 @@ public final class s
       }
       else
       {
-        JK();
+        JS();
         AppMethodBeat.o(87649);
         return null;
       }
     }
     catch (Throwable paramContext)
     {
-      JM();
+      JU();
       AppMethodBeat.o(87649);
     }
     return null;
   }
   
-  static String bf(Context paramContext)
+  static String bg(Context paramContext)
   {
     AppMethodBeat.i(87651);
     for (;;)
@@ -362,7 +362,7 @@ public final class s
         String str1;
         String str2;
         paramContext = null;
-        JL();
+        JT();
         continue;
         paramContext = null;
         continue;
@@ -383,7 +383,7 @@ public final class s
       {
         paramContext = "MOBILE";
         continue;
-        JK();
+        JS();
         paramContext = null;
       }
     }
@@ -404,7 +404,7 @@ public final class s
     {
       for (;;)
       {
-        JM();
+        JU();
       }
     }
     AppMethodBeat.o(87638);
@@ -432,34 +432,10 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      JM();
+      JU();
       AppMethodBeat.o(87641);
     }
     return paramString;
-  }
-  
-  static boolean ek(String paramString)
-  {
-    AppMethodBeat.i(87634);
-    if ((paramString == null) || (paramString.trim().length() == 0))
-    {
-      AppMethodBeat.o(87634);
-      return false;
-    }
-    AppMethodBeat.o(87634);
-    return true;
-  }
-  
-  static boolean el(String paramString)
-  {
-    AppMethodBeat.i(87635);
-    if ((paramString != null) && (paramString.trim().length() >= 40))
-    {
-      AppMethodBeat.o(87635);
-      return true;
-    }
-    AppMethodBeat.o(87635);
-    return false;
   }
   
   static String encode(String paramString)
@@ -483,10 +459,34 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      JM();
+      JU();
       AppMethodBeat.o(87642);
     }
     return paramString;
+  }
+  
+  static boolean ep(String paramString)
+  {
+    AppMethodBeat.i(87634);
+    if ((paramString == null) || (paramString.trim().length() == 0))
+    {
+      AppMethodBeat.o(87634);
+      return false;
+    }
+    AppMethodBeat.o(87634);
+    return true;
+  }
+  
+  static boolean eq(String paramString)
+  {
+    AppMethodBeat.i(87635);
+    if ((paramString != null) && (paramString.trim().length() >= 40))
+    {
+      AppMethodBeat.o(87635);
+      return true;
+    }
+    AppMethodBeat.o(87635);
+    return false;
   }
   
   private static WifiInfo getWifiInfo(Context paramContext)

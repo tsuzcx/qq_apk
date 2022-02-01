@@ -14,7 +14,7 @@ public final class j
   extends com.google.android.exoplayer2.a
   implements Handler.Callback
 {
-  private final j.a bAj;
+  private final a bAj;
   private final g bAk;
   private int bAl;
   private Format bAm;
@@ -28,16 +28,16 @@ public final class j
   private final k btk;
   private final Handler buh;
   
-  public j(j.a parama, Looper paramLooper)
+  public j(a parama, Looper paramLooper)
   {
     this(parama, paramLooper, g.bAh);
   }
   
-  private j(j.a parama, Looper paramLooper, g paramg)
+  private j(a parama, Looper paramLooper, g paramg)
   {
     super(3);
     AppMethodBeat.i(92825);
-    this.bAj = ((j.a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bAj = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
@@ -338,10 +338,15 @@ public final class j
   {
     return this.btL;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void s(List<a> paramList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.j
  * JD-Core Version:    0.7.0.1
  */

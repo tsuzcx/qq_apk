@@ -13,55 +13,55 @@ public final class a
   protected static c.a info;
   public String header;
   public String separator;
-  public String tUK;
-  public boolean uBA;
-  public HashMap<Integer, b> uBB;
-  public boolean uBC;
-  public int uBD;
-  public String uBy;
-  public int uBz;
+  public String uNd;
+  public int uNe;
+  public boolean uNf;
+  public HashMap<Integer, b> uNg;
+  public boolean uNh;
+  public int uNi;
+  public String ufC;
   
   static
   {
     AppMethodBeat.i(110397);
     c.a locala = new c.a();
-    locala.IhA = new Field[9];
+    locala.IBL = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.IhC.put("username", "TEXT");
+    locala.IBN.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "key";
-    locala.IhC.put("key", "TEXT");
+    locala.IBN.put("key", "TEXT");
     localStringBuilder.append(" key TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "content";
-    locala.IhC.put("content", "TEXT");
+    locala.IBN.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "creator";
-    locala.IhC.put("creator", "TEXT");
+    locala.IBN.put("creator", "TEXT");
     localStringBuilder.append(" creator TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "num";
-    locala.IhC.put("num", "INTEGER");
+    locala.IBN.put("num", "INTEGER");
     localStringBuilder.append(" num INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "firstMsgId";
-    locala.IhC.put("firstMsgId", "LONG");
+    locala.IBN.put("firstMsgId", "LONG");
     localStringBuilder.append(" firstMsgId LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "msgSvrId";
-    locala.IhC.put("msgSvrId", "LONG");
+    locala.IBN.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "active";
-    locala.IhC.put("active", "INTEGER default '-1' ");
+    locala.IBN.put("active", "INTEGER default '-1' ");
     localStringBuilder.append(" active INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "lastActiveTime";
-    locala.IhC.put("lastActiveTime", "LONG");
+    locala.IBN.put("lastActiveTime", "LONG");
     localStringBuilder.append(" lastActiveTime LONG");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -73,28 +73,28 @@ public final class a
   {
     AppMethodBeat.i(110393);
     this.header = "";
-    this.uBy = "";
-    this.tUK = "";
+    this.uNd = "";
+    this.ufC = "";
     this.separator = " ";
-    this.uBz = 1;
-    this.uBA = false;
-    this.uBB = new HashMap();
-    this.uBC = false;
-    this.uBD = 0;
+    this.uNe = 1;
+    this.uNf = false;
+    this.uNg = new HashMap();
+    this.uNh = false;
+    this.uNi = 0;
     AppMethodBeat.o(110393);
   }
   
-  public final void dbt()
+  public final void dek()
   {
-    if (this.uBz == 0)
+    if (this.uNe == 0)
     {
-      this.uBz = 1;
+      this.uNe = 1;
       this.header = "";
     }
   }
   
   /* Error */
-  public final a dbu()
+  public final a del()
   {
     // Byte code:
     //   0: ldc 162
@@ -151,53 +151,53 @@ public final class a
     //   101: putfield 130	com/tencent/mm/plugin/groupsolitaire/c/a:header	Ljava/lang/String;
     //   104: aload_2
     //   105: aload_0
-    //   106: getfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:uBy	Ljava/lang/String;
-    //   109: putfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:uBy	Ljava/lang/String;
+    //   106: getfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:uNd	Ljava/lang/String;
+    //   109: putfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:uNd	Ljava/lang/String;
     //   112: aload_2
     //   113: aload_0
-    //   114: getfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:tUK	Ljava/lang/String;
-    //   117: putfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:tUK	Ljava/lang/String;
+    //   114: getfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:ufC	Ljava/lang/String;
+    //   117: putfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:ufC	Ljava/lang/String;
     //   120: aload_2
     //   121: aload_0
     //   122: getfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:separator	Ljava/lang/String;
     //   125: putfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:separator	Ljava/lang/String;
     //   128: aload_2
     //   129: aload_0
-    //   130: getfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:uBz	I
-    //   133: putfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:uBz	I
+    //   130: getfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:uNe	I
+    //   133: putfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:uNe	I
     //   136: aload_2
     //   137: aload_0
-    //   138: getfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:uBD	I
-    //   141: putfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:uBD	I
+    //   138: getfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:uNi	I
+    //   141: putfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:uNi	I
     //   144: aload_2
     //   145: aload_0
-    //   146: getfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:uBC	Z
-    //   149: putfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:uBC	Z
+    //   146: getfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:uNh	Z
+    //   149: putfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:uNh	Z
     //   152: aload_2
     //   153: new 144	java/util/HashMap
     //   156: dup
     //   157: invokespecial 145	java/util/HashMap:<init>	()V
-    //   160: putfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uBB	Ljava/util/HashMap;
+    //   160: putfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uNg	Ljava/util/HashMap;
     //   163: iconst_1
     //   164: istore_1
     //   165: iload_1
     //   166: aload_0
-    //   167: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uBB	Ljava/util/HashMap;
+    //   167: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uNg	Ljava/util/HashMap;
     //   170: invokevirtual 198	java/util/HashMap:size	()I
     //   173: if_icmpgt +41 -> 214
     //   176: aload_0
-    //   177: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uBB	Ljava/util/HashMap;
+    //   177: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uNg	Ljava/util/HashMap;
     //   180: iload_1
     //   181: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   184: invokevirtual 208	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   187: checkcast 210	com/tencent/mm/plugin/groupsolitaire/c/b
     //   190: astore_3
     //   191: aload_2
-    //   192: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uBB	Ljava/util/HashMap;
+    //   192: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:uNg	Ljava/util/HashMap;
     //   195: iload_1
     //   196: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   199: aload_3
-    //   200: invokevirtual 214	com/tencent/mm/plugin/groupsolitaire/c/b:dbv	()Lcom/tencent/mm/plugin/groupsolitaire/c/b;
+    //   200: invokevirtual 214	com/tencent/mm/plugin/groupsolitaire/c/b:dem	()Lcom/tencent/mm/plugin/groupsolitaire/c/b;
     //   203: invokevirtual 215	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   206: pop
     //   207: iload_1
@@ -226,7 +226,7 @@ public final class a
     //   242: aload_3
     //   243: invokevirtual 228	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   246: aastore
-    //   247: invokestatic 233	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   247: invokestatic 233	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   250: goto -36 -> 214
     //   253: astore_3
     //   254: goto -29 -> 225
@@ -254,7 +254,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(110394);
-    String str = "GroupSolitatire{header='" + this.header + '\'' + ", example='" + this.uBy + '\'' + ", tail='" + this.tUK + '\'' + ", separator='" + this.separator + '\'' + ", hasRealTitle=" + this.uBz + ", content=" + this.uBB + ", includeRepeatedContent=" + this.uBC + ", includeWhiteContentNum=" + this.uBD + ", field_username='" + this.field_username + '\'' + ", field_key='" + this.field_key + '\'' + ", field_content='" + this.field_content + '\'' + ", field_creator='" + this.field_creator + '\'' + ", field_num=" + this.field_num + ", field_firstMsgId=" + this.field_firstMsgId + ", field_msgSvrId=" + this.field_msgSvrId + ", field_active=" + this.field_active + ", field_lastActiveTime=" + this.field_lastActiveTime + ", systemRowid=" + this.systemRowid + '}';
+    String str = "GroupSolitatire{header='" + this.header + '\'' + ", example='" + this.uNd + '\'' + ", tail='" + this.ufC + '\'' + ", separator='" + this.separator + '\'' + ", hasRealTitle=" + this.uNe + ", content=" + this.uNg + ", includeRepeatedContent=" + this.uNh + ", includeWhiteContentNum=" + this.uNi + ", field_username='" + this.field_username + '\'' + ", field_key='" + this.field_key + '\'' + ", field_content='" + this.field_content + '\'' + ", field_creator='" + this.field_creator + '\'' + ", field_num=" + this.field_num + ", field_firstMsgId=" + this.field_firstMsgId + ", field_msgSvrId=" + this.field_msgSvrId + ", field_active=" + this.field_active + ", field_lastActiveTime=" + this.field_lastActiveTime + ", systemRowid=" + this.systemRowid + '}';
     AppMethodBeat.o(110394);
     return str;
   }

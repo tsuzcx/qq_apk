@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 
 public final class a
 {
-  public boolean kHa;
-  public boolean kHb;
-  SparseArray<WeakReference<f>> kHc;
+  public boolean kKp;
+  public boolean kKq;
+  SparseArray<WeakReference<f>> kKr;
   
   private a()
   {
     AppMethodBeat.i(137464);
-    this.kHa = true;
-    this.kHb = true;
-    this.kHc = new SparseArray();
+    this.kKp = true;
+    this.kKq = true;
+    this.kKr = new SparseArray();
     AppMethodBeat.o(137464);
   }
   
   public final boolean I(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(137466);
-    if (this.kHc.indexOfKey(paramInt) >= 0)
+    if (this.kKr.indexOfKey(paramInt) >= 0)
     {
-      Object localObject = (WeakReference)this.kHc.get(paramInt);
+      Object localObject = (WeakReference)this.kKr.get(paramInt);
       if (localObject != null)
       {
         localObject = (f)((WeakReference)localObject).get();
@@ -36,13 +36,13 @@ public final class a
       for (;;)
       {
         if (paramBoolean) {
-          this.kHc.remove(paramInt);
+          this.kKr.remove(paramInt);
         }
         AppMethodBeat.o(137466);
         return true;
-        ad.i("MicroMsg.AppBrandCameraMrg", "release a recycled camera instance");
+        ae.i("MicroMsg.AppBrandCameraMrg", "release a recycled camera instance");
         continue;
-        ad.i("MicroMsg.AppBrandCameraMrg", "release client fail, weak reference not exist");
+        ae.i("MicroMsg.AppBrandCameraMrg", "release client fail, weak reference not exist");
       }
     }
     AppMethodBeat.o(137466);
@@ -52,55 +52,55 @@ public final class a
   public final void a(int paramInt, f paramf)
   {
     AppMethodBeat.i(137465);
-    this.kHc.put(paramInt, new WeakReference(paramf));
+    this.kKr.put(paramInt, new WeakReference(paramf));
     AppMethodBeat.o(137465);
   }
   
-  public final int[] bjB()
+  public final int[] bkk()
   {
     int i = 0;
     AppMethodBeat.i(137467);
-    if ((this.kHc == null) || (this.kHc.size() == 0))
+    if ((this.kKr == null) || (this.kKr.size() == 0))
     {
       AppMethodBeat.o(137467);
       return new int[0];
     }
-    int[] arrayOfInt = new int[this.kHc.size()];
-    while (i < this.kHc.size())
+    int[] arrayOfInt = new int[this.kKr.size()];
+    while (i < this.kKr.size())
     {
-      arrayOfInt[i] = this.kHc.keyAt(i);
+      arrayOfInt[i] = this.kKr.keyAt(i);
       i += 1;
     }
     AppMethodBeat.o(137467);
     return arrayOfInt;
   }
   
-  public final boolean bjC()
+  public final boolean bkl()
   {
     AppMethodBeat.i(137468);
-    if (!this.kHa) {
-      ad.i("MicroMsg.AppBrandCameraMrg", "no camera permission");
+    if (!this.kKp) {
+      ae.i("MicroMsg.AppBrandCameraMrg", "no camera permission");
     }
-    boolean bool = this.kHa;
+    boolean bool = this.kKp;
     AppMethodBeat.o(137468);
     return bool;
   }
   
   public static final class a
   {
-    private static a kHd;
+    private static a kKs;
     
     static
     {
       AppMethodBeat.i(137463);
-      kHd = new a((byte)0);
+      kKs = new a((byte)0);
       AppMethodBeat.o(137463);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a
  * JD-Core Version:    0.7.0.1
  */

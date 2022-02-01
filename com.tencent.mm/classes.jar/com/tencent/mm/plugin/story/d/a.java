@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.d;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/contract/AlbumContract;", "", "IFavAlbumPresenter", "IFavAlbumView", "IFavSelectPresenter", "IFavSelectView", "IPresenter", "IView", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/contract/AlbumContract;", "", "IFavAlbumPresenter", "IFavAlbumView", "IFavSelectPresenter", "IFavSelectView", "IPresenter", "IView", "plugin-story_release"})
 public abstract interface a {}
 
 

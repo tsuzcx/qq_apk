@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.protocal.protobuf.cdv;
-import com.tencent.mm.protocal.protobuf.cdw;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.protocal.protobuf.cep;
+import com.tencent.mm.protocal.protobuf.ceq;
 
 public final class j
-  extends a<cdw>
+  extends a<ceq>
 {
   public j(int paramInt)
   {
     AppMethodBeat.i(68407);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cdv();
-    ((b.a)localObject).hNN = new cdw();
+    ((b.a)localObject).hQF = new cep();
+    ((b.a)localObject).hQG = new ceq();
     ((b.a)localObject).funcId = 1830;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickredeem";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDC();
-    cdv localcdv = (cdv)((b)localObject).hNK.hNQ;
-    localcdv.uxm = paramInt;
-    localcdv.Cyu = ae.eCl();
+    localObject = ((b.a)localObject).aDS();
+    cep localcep = (cep)((b)localObject).hQD.hQJ;
+    localcep.uIM = paramInt;
+    localcep.CPZ = ae.eFT();
     c((b)localObject);
     AppMethodBeat.o(68407);
   }

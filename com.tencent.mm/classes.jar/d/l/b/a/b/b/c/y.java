@@ -13,12 +13,12 @@ public abstract class y
   extends k
   implements ab
 {
-  public final b MVU;
+  public final b Nta;
   
   public y(d.l.b.a.b.b.y paramy, b paramb)
   {
-    super(paramy, g.a.gjL(), paramb.gri(), an.MUX);
-    this.MVU = paramb;
+    super(paramy, g.a.gon(), paramb.gvK(), an.Nsc);
+    this.Nta = paramb;
   }
   
   public final <R, D> R a(n<R, D> paramn, D paramD)
@@ -27,35 +27,35 @@ public abstract class y
     return paramn.a((ab)this, paramD);
   }
   
-  public an ghI()
+  public an gmk()
   {
-    an localan = an.MUX;
+    an localan = an.Nsc;
     p.g(localan, "SourceElement.NO_SOURCE");
     return localan;
   }
   
-  public final d.l.b.a.b.b.y gjf()
+  public final d.l.b.a.b.b.y gnH()
   {
-    l locall = super.ghs();
+    l locall = super.glU();
     if (locall == null) {
       throw new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ModuleDescriptor");
     }
     return (d.l.b.a.b.b.y)locall;
   }
   
-  public final b gjg()
+  public final b gnI()
   {
-    return this.MVU;
+    return this.Nta;
   }
   
   public String toString()
   {
-    return "package " + this.MVU;
+    return "package " + this.Nta;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.y
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ public abstract class bg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eRa = "designerUin".hashCode();
-  private static final int eRb = "productId".hashCode();
-  private static final int eRc = "syncTime".hashCode();
+  private static final int eSL = "designerUin".hashCode();
+  private static final int eSM = "productId".hashCode();
+  private static final int eSN = "syncTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eQX = true;
-  private boolean eQY = true;
-  private boolean eQZ = true;
+  private boolean eSI = true;
+  private boolean eSJ = true;
+  private boolean eSK = true;
   public int field_designerUin;
   public String field_productId;
   public int field_syncTime;
@@ -32,7 +32,7 @@ public abstract class bg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eRa != k) {
+      if (eSL != k) {
         break label60;
       }
       this.field_designerUin = paramCursor.getInt(i);
@@ -43,9 +43,9 @@ public abstract class bg
       break label20;
       break;
       label60:
-      if (eRb == k) {
+      if (eSM == k) {
         this.field_productId = paramCursor.getString(i);
-      } else if (eRc == k) {
+      } else if (eSN == k) {
         this.field_syncTime = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class bg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eQX) {
+    if (this.eSI) {
       localContentValues.put("designerUin", Integer.valueOf(this.field_designerUin));
     }
-    if (this.eQY) {
+    if (this.eSJ) {
       localContentValues.put("productId", this.field_productId);
     }
-    if (this.eQZ) {
+    if (this.eSK) {
       localContentValues.put("syncTime", Integer.valueOf(this.field_syncTime));
     }
     if (this.systemRowid > 0L) {

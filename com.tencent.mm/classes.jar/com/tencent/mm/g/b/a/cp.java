@@ -6,67 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class cp
   extends a
 {
-  private String dSb;
-  private long ecU = 0L;
-  private long ecV = 0L;
-  private long ecW = 0L;
-  private long ecX = 0L;
-  private long ecY = 0L;
+  private String dTr = "";
+  private long eep = 0L;
+  private long eeq = 0L;
+  private long eer = 0L;
+  private long ees = 0L;
+  private long eet = 0L;
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(186325);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.eep);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eer);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ees);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eet);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(186325);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(193091);
+    AppMethodBeat.i(186326);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecY);
+    ((StringBuffer)localObject).append("OpenPictureTime:").append(this.eep);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("OpenPictureType:").append(this.eeq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExposeIconTime:").append(this.eer);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PictureConcluding:").append(this.ees);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IconType:").append(this.eet);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(193091);
+    AppMethodBeat.o(186326);
     return localObject;
   }
   
-  public final String RE()
+  public final long SR()
   {
-    AppMethodBeat.i(193092);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("OpenPictureTime:").append(this.ecU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OpenPictureType:").append(this.ecV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeIconTime:").append(this.ecW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PictureConcluding:").append(this.ecX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IconType:").append(this.ecY);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(193092);
-    return localObject;
+    return this.eep;
   }
   
-  public final long SN()
+  public final long SS()
   {
-    return this.ecU;
+    return this.eer;
   }
   
-  public final long SO()
+  public final long ST()
   {
-    return this.ecW;
-  }
-  
-  public final long SP()
-  {
-    return this.ecY;
+    return this.eet;
   }
   
   public final int getId()
@@ -76,44 +76,44 @@ public final class cp
   
   public final String getSessionId()
   {
-    return this.dSb;
+    return this.dTr;
   }
   
-  public final cp hZ(long paramLong)
+  public final cp ie(long paramLong)
   {
-    this.ecU = paramLong;
+    this.eep = paramLong;
     return this;
   }
   
-  public final cp ia(long paramLong)
+  public final cp jdMethod_if(long paramLong)
   {
-    this.ecV = paramLong;
+    this.eeq = paramLong;
     return this;
   }
   
-  public final cp ib(long paramLong)
+  public final cp ig(long paramLong)
   {
-    this.ecW = paramLong;
+    this.eer = paramLong;
     return this;
   }
   
-  public final cp ic(long paramLong)
+  public final cp ih(long paramLong)
   {
-    this.ecX = paramLong;
+    this.ees = paramLong;
     return this;
   }
   
-  public final cp id(long paramLong)
+  public final cp ii(long paramLong)
   {
-    this.ecY = paramLong;
+    this.eet = paramLong;
     return this;
   }
   
-  public final cp lP(String paramString)
+  public final cp mg(String paramString)
   {
-    AppMethodBeat.i(193090);
-    this.dSb = t("SessionId", paramString, true);
-    AppMethodBeat.o(193090);
+    AppMethodBeat.i(186324);
+    this.dTr = t("SessionId", paramString, true);
+    AppMethodBeat.o(186324);
     return this;
   }
 }

@@ -13,7 +13,7 @@ public abstract class q<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.e.a.a.b.q
  * JD-Core Version:    0.7.0.1
  */

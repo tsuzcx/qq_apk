@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.image;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.u;
 
 public class PluginImageBase
   extends f
@@ -12,11 +12,11 @@ public class PluginImageBase
   public void configure(g paramg)
   {
     AppMethodBeat.i(177298);
-    if (paramg.akw())
+    if (paramg.akL())
     {
-      o.an("image", "image", 19);
-      o.an("image2", "image2", 1424);
-      o.an("oldimage2", "image2", 531);
+      u.ap("image", "image", 19);
+      u.ap("image2", "image2", 1424);
+      u.ap("oldimage2", "image2", 531);
     }
     AppMethodBeat.o(177298);
   }
@@ -24,15 +24,15 @@ public class PluginImageBase
   public void execute(g paramg)
   {
     AppMethodBeat.i(177299);
-    if (paramg.akw()) {
-      pin(d.dcS());
+    if (paramg.akL()) {
+      pin(d.dfK());
     }
     AppMethodBeat.o(177299);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.image.PluginImageBase
  * JD-Core Version:    0.7.0.1
  */

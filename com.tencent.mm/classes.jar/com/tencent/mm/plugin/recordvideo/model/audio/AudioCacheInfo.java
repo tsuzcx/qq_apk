@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.recordvideo.e.b;
-import com.tencent.mm.protocal.protobuf.bxd;
-import com.tencent.mm.protocal.protobuf.bxe;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.bxx;
+import com.tencent.mm.protocal.protobuf.bxy;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
@@ -20,52 +20,52 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "cachePath", "", "getCachePath", "()Ljava/lang/String;", "setCachePath", "(Ljava/lang/String;)V", "cached", "", "getCached", "()Z", "setCached", "(Z)V", "duration", "", "getDuration", "()I", "setDuration", "(I)V", "failed", "getFailed", "setFailed", "lyricsList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$MusicLrcBean;", "Lkotlin/collections/ArrayList;", "getLyricsList", "()Ljava/util/ArrayList;", "setLyricsList", "(Ljava/util/ArrayList;)V", "musicId", "getMusicId", "setMusicId", "musicUrl", "getMusicUrl", "setMusicUrl", "position", "getPosition", "setPosition", "request_id", "", "getRequest_id", "()J", "setRequest_id", "(J)V", "showLyrics", "getShowLyrics", "setShowLyrics", "singers", "getSingers", "setSingers", "songName", "getSongName", "setSongName", "source", "getSource", "setSource", "type", "getType", "setType", "describeContents", "()Ljava/lang/Integer;", "toString", "writeToParcel", "", "flags", "Companion", "MusicLrcBean", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "cachePath", "", "getCachePath", "()Ljava/lang/String;", "setCachePath", "(Ljava/lang/String;)V", "cached", "", "getCached", "()Z", "setCached", "(Z)V", "duration", "", "getDuration", "()I", "setDuration", "(I)V", "failed", "getFailed", "setFailed", "lyricsList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$MusicLrcBean;", "Lkotlin/collections/ArrayList;", "getLyricsList", "()Ljava/util/ArrayList;", "setLyricsList", "(Ljava/util/ArrayList;)V", "musicId", "getMusicId", "setMusicId", "musicUrl", "getMusicUrl", "setMusicUrl", "position", "getPosition", "setPosition", "request_id", "", "getRequest_id", "()J", "setRequest_id", "(J)V", "showLyrics", "getShowLyrics", "setShowLyrics", "singers", "getSingers", "setSingers", "songName", "getSongName", "setSongName", "source", "getSource", "setSource", "type", "getType", "setType", "describeContents", "()Ljava/lang/Integer;", "toString", "writeToParcel", "", "flags", "Companion", "MusicLrcBean", "plugin-recordvideo_release"})
 public final class AudioCacheInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<AudioCacheInfo> CREATOR;
   private static final String TAG = "MicroMsg.AudioCacheInfo";
-  private static final String xzf = "AUDIO_CACHE_INFO_INDEX_KEY";
-  private static final String xzg = "AUDIO_CACHE_INFO_LIST_KEY";
-  private static final String xzh = "SELECT_MUTE_ORIGIN_KEY";
-  private static final int xzi = 1;
-  private static final int xzj = 2;
-  private static final int xzk = 3;
-  private static final int xzl = 4;
-  private static final int xzm = 5;
-  private static final int xzn = 0;
-  private static final int xzo = 1;
-  public static final a xzp;
+  private static final String xPb = "AUDIO_CACHE_INFO_INDEX_KEY";
+  private static final String xPc = "AUDIO_CACHE_INFO_LIST_KEY";
+  private static final String xPd = "SELECT_MUTE_ORIGIN_KEY";
+  private static final int xPe = 1;
+  private static final int xPf = 2;
+  private static final int xPg = 3;
+  private static final int xPh = 4;
+  private static final int xPi = 5;
+  private static final int xPj = 0;
+  private static final int xPk = 1;
+  public static final a xPl;
   public boolean aXj;
   public String cachePath;
-  public int dnh;
+  public int doj;
   int duration;
   public String musicUrl;
   public int position;
   public int type;
-  public boolean xwY;
-  public int xyZ;
-  public ArrayList<c> xza;
-  public ArrayList<String> xzb;
-  public boolean xzc;
-  public String xzd;
-  public long xze;
+  public boolean xMV;
+  public int xOV;
+  public ArrayList<c> xOW;
+  public ArrayList<String> xOX;
+  public boolean xOY;
+  public String xOZ;
+  public long xPa;
   
   static
   {
     AppMethodBeat.i(75405);
-    xzp = new a((byte)0);
+    xPl = new a((byte)0);
     TAG = "MicroMsg.AudioCacheInfo";
-    xzf = "AUDIO_CACHE_INFO_INDEX_KEY";
-    xzg = "AUDIO_CACHE_INFO_LIST_KEY";
-    xzh = "SELECT_MUTE_ORIGIN_KEY";
-    xzi = 1;
-    xzj = 2;
-    xzk = 3;
-    xzl = 4;
-    xzm = 5;
-    xzo = 1;
+    xPb = "AUDIO_CACHE_INFO_INDEX_KEY";
+    xPc = "AUDIO_CACHE_INFO_LIST_KEY";
+    xPd = "SELECT_MUTE_ORIGIN_KEY";
+    xPe = 1;
+    xPf = 2;
+    xPg = 3;
+    xPh = 4;
+    xPi = 5;
+    xPk = 1;
     CREATOR = (Parcelable.Creator)new AudioCacheInfo.b();
     AppMethodBeat.o(75405);
   }
@@ -73,11 +73,11 @@ public final class AudioCacheInfo
   public AudioCacheInfo()
   {
     AppMethodBeat.i(75403);
-    this.xzb = new ArrayList();
-    this.xwY = true;
-    this.xzd = "";
+    this.xOX = new ArrayList();
+    this.xMV = true;
+    this.xOZ = "";
     this.position = -1;
-    this.xze = -1L;
+    this.xPa = -1L;
     AppMethodBeat.o(75403);
   }
   
@@ -85,7 +85,7 @@ public final class AudioCacheInfo
   {
     this();
     AppMethodBeat.i(75404);
-    this.xyZ = paramParcel.readInt();
+    this.xOV = paramParcel.readInt();
     this.musicUrl = paramParcel.readString();
     this.cachePath = paramParcel.readString();
     if (paramParcel.readByte() != 0)
@@ -99,13 +99,13 @@ public final class AudioCacheInfo
     label120:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.xzc = bool1;
+      this.xOY = bool1;
       this.position = paramParcel.readInt();
-      this.xze = paramParcel.readLong();
+      this.xPa = paramParcel.readLong();
       this.type = paramParcel.readInt();
       paramParcel = paramParcel.readString();
       p.g(paramParcel, "parcel.readString()");
-      this.xzd = paramParcel;
+      this.xOZ = paramParcel;
       AppMethodBeat.o(75404);
       return;
       bool1 = false;
@@ -121,7 +121,7 @@ public final class AudioCacheInfo
   public final String toString()
   {
     AppMethodBeat.i(75402);
-    String str = "AudioCacheInfo(musicId=" + this.xyZ + ", musicUrl=" + this.musicUrl + ", lyricsList=" + this.xza + ", cachePath=" + this.cachePath + ", cached=" + this.aXj + ", failed=" + this.xzc + ", type=" + this.type + ", songName='" + this.xzd + "', position=" + this.position + ", request_id=" + this.xze + ')';
+    String str = "AudioCacheInfo(musicId=" + this.xOV + ", musicUrl=" + this.musicUrl + ", lyricsList=" + this.xOW + ", cachePath=" + this.cachePath + ", cached=" + this.aXj + ", failed=" + this.xOY + ", type=" + this.type + ", songName='" + this.xOZ + "', position=" + this.position + ", request_id=" + this.xPa + ')';
     AppMethodBeat.o(75402);
     return str;
   }
@@ -131,14 +131,14 @@ public final class AudioCacheInfo
     byte b2 = 1;
     AppMethodBeat.i(75401);
     p.h(paramParcel, "parcel");
-    paramParcel.writeInt(this.xyZ);
+    paramParcel.writeInt(this.xOV);
     paramParcel.writeString(this.musicUrl);
     paramParcel.writeString(this.cachePath);
     if (this.aXj)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.xzc) {
+      if (!this.xOY) {
         break label112;
       }
     }
@@ -147,9 +147,9 @@ public final class AudioCacheInfo
     {
       paramParcel.writeByte(b1);
       paramParcel.writeInt(this.position);
-      paramParcel.writeLong(this.xze);
+      paramParcel.writeLong(this.xPa);
       paramParcel.writeInt(this.type);
-      paramParcel.writeString(this.xzd);
+      paramParcel.writeString(this.xOZ);
       AppMethodBeat.o(75401);
       return;
       b1 = 0;
@@ -157,63 +157,63 @@ public final class AudioCacheInfo
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$Companion;", "", "()V", "AUDIO_CACHE_INFO_INDEX_KEY", "", "getAUDIO_CACHE_INFO_INDEX_KEY", "()Ljava/lang/String;", "AUDIO_CACHE_INFO_LIST_KEY", "getAUDIO_CACHE_INFO_LIST_KEY", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "SELECT_MUTE_ORIGIN_KEY", "getSELECT_MUTE_ORIGIN_KEY", "SOURCE_TYPE_NORMAL", "", "getSOURCE_TYPE_NORMAL", "()I", "SOURCE_TYPE_SEARCH", "getSOURCE_TYPE_SEARCH", "TAG", "getTAG", "VIEW_TYPE_LOADING", "getVIEW_TYPE_LOADING", "VIEW_TYPE_NORMAL", "getVIEW_TYPE_NORMAL", "VIEW_TYPE_SEARCH_ENTRANCE", "getVIEW_TYPE_SEARCH_ENTRANCE", "VIEW_TYPE_SEARCH_LOADING", "getVIEW_TYPE_SEARCH_LOADING", "VIEW_TYPE_SEARCH_RESULT", "getVIEW_TYPE_SEARCH_RESULT", "createFromMusicInfo", "info", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "type", "createLoadingInfo", "createSearchEntranceInfo", "createSearchLoadingInfo", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$Companion;", "", "()V", "AUDIO_CACHE_INFO_INDEX_KEY", "", "getAUDIO_CACHE_INFO_INDEX_KEY", "()Ljava/lang/String;", "AUDIO_CACHE_INFO_LIST_KEY", "getAUDIO_CACHE_INFO_LIST_KEY", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "SELECT_MUTE_ORIGIN_KEY", "getSELECT_MUTE_ORIGIN_KEY", "SOURCE_TYPE_NORMAL", "", "getSOURCE_TYPE_NORMAL", "()I", "SOURCE_TYPE_SEARCH", "getSOURCE_TYPE_SEARCH", "TAG", "getTAG", "VIEW_TYPE_LOADING", "getVIEW_TYPE_LOADING", "VIEW_TYPE_NORMAL", "getVIEW_TYPE_NORMAL", "VIEW_TYPE_SEARCH_ENTRANCE", "getVIEW_TYPE_SEARCH_ENTRANCE", "VIEW_TYPE_SEARCH_LOADING", "getVIEW_TYPE_SEARCH_LOADING", "VIEW_TYPE_SEARCH_RESULT", "getVIEW_TYPE_SEARCH_RESULT", "createFromMusicInfo", "info", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "type", "createLoadingInfo", "createSearchEntranceInfo", "createSearchLoadingInfo", "plugin-recordvideo_release"})
   public static final class a
   {
-    public static AudioCacheInfo a(bxd parambxd, int paramInt)
+    public static AudioCacheInfo a(bxx parambxx, int paramInt)
     {
       boolean bool2 = true;
       AppMethodBeat.i(169930);
-      p.h(parambxd, "info");
+      p.h(parambxx, "info");
       AudioCacheInfo localAudioCacheInfo = new AudioCacheInfo();
-      localAudioCacheInfo.xyZ = parambxd.GQZ;
-      localAudioCacheInfo.musicUrl = parambxd.GRf;
+      localAudioCacheInfo.xOV = parambxx.HkA;
+      localAudioCacheInfo.musicUrl = parambxx.HkG;
       Object localObject1 = new ArrayList();
-      Object localObject2 = parambxd.GRj;
+      Object localObject2 = parambxx.HkK;
       p.g(localObject2, "info.lyrics");
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        bxe localbxe = (bxe)((Iterator)localObject2).next();
-        if (!bt.isNullOrNil(localbxe.GRn))
+        bxy localbxy = (bxy)((Iterator)localObject2).next();
+        if (!bu.isNullOrNil(localbxy.HkO))
         {
-          Object localObject3 = localbxe.GRn;
+          Object localObject3 = localbxy.HkO;
           p.g(localObject3, "it.lyrics_content");
-          localObject3 = new AudioCacheInfo.c((String)localObject3, localbxe.GRm, localbxe.GRm);
-          if (!bt.hj((List)localObject1)) {
-            ((AudioCacheInfo.c)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1)).xzr = localbxe.GRm;
+          localObject3 = new AudioCacheInfo.c((String)localObject3, localbxy.HkN, localbxy.HkN);
+          if (!bu.ht((List)localObject1)) {
+            ((AudioCacheInfo.c)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1)).xPn = localbxy.HkN;
           }
           ((ArrayList)localObject1).add(localObject3);
         }
       }
-      if (bt.hj((List)localObject1))
+      if (bu.ht((List)localObject1))
       {
-        localObject2 = aj.getResources().getString(2131761471);
+        localObject2 = ak.getResources().getString(2131761471);
         p.g(localObject2, "MMApplicationContext.get…ring.music_no_lyrics_tip)");
         ((ArrayList)localObject1).add(new AudioCacheInfo.c((String)localObject2, 0, 0));
       }
-      localAudioCacheInfo.xzb.addAll((Collection)parambxd.GRi);
-      localAudioCacheInfo.xza = ((ArrayList)localObject1);
-      localObject1 = b.xRl;
-      localObject1 = parambxd.GQZ + '_' + cf.aCL();
+      localAudioCacheInfo.xOX.addAll((Collection)parambxx.HkJ);
+      localAudioCacheInfo.xOW = ((ArrayList)localObject1);
+      localObject1 = b.yhe;
+      localObject1 = parambxx.HkA + '_' + ch.aDb();
       if (localObject1 == null)
       {
         localObject1 = "";
         localAudioCacheInfo.cachePath = ((String)localObject1);
-        if (i.aYo((String)localObject1) <= 0L) {
+        if (o.aZR((String)localObject1) <= 0L) {
           break label468;
         }
         bool1 = true;
         label318:
         localAudioCacheInfo.aXj = bool1;
-        localAudioCacheInfo.xzc = false;
-        localObject1 = parambxd.GRh;
+        localAudioCacheInfo.xOY = false;
+        localObject1 = parambxx.HkI;
         p.g(localObject1, "info.song_name");
         p.h(localObject1, "<set-?>");
-        localAudioCacheInfo.xzd = ((String)localObject1);
+        localAudioCacheInfo.xOZ = ((String)localObject1);
         localAudioCacheInfo.type = paramInt;
-        localAudioCacheInfo.duration = parambxd.duration;
-        if (parambxd.GRl != 1) {
+        localAudioCacheInfo.duration = parambxx.duration;
+        if (parambxx.HkM != 1) {
           break label473;
         }
       }
@@ -221,40 +221,40 @@ public final class AudioCacheInfo
       label473:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        localAudioCacheInfo.xwY = bool1;
-        ad.i(AudioCacheInfo.access$getTAG$cp(), "LogStory: " + localAudioCacheInfo.xyZ + ' ' + localAudioCacheInfo.xza);
+        localAudioCacheInfo.xMV = bool1;
+        ae.i(AudioCacheInfo.access$getTAG$cp(), "LogStory: " + localAudioCacheInfo.xOV + ' ' + localAudioCacheInfo.xOW);
         AppMethodBeat.o(169930);
         return localAudioCacheInfo;
-        localObject1 = b.iO(b.xRk, (String)localObject1) + ".mixa";
+        localObject1 = b.iU(b.yhd, (String)localObject1) + ".mixa";
         break;
         bool1 = false;
         break label318;
       }
     }
     
-    public static AudioCacheInfo dFZ()
+    public static AudioCacheInfo dJq()
     {
-      AppMethodBeat.i(200292);
+      AppMethodBeat.i(206553);
       AudioCacheInfo localAudioCacheInfo = new AudioCacheInfo();
-      localAudioCacheInfo.type = AudioCacheInfo.dFV();
-      AppMethodBeat.o(200292);
+      localAudioCacheInfo.type = AudioCacheInfo.dJm();
+      AppMethodBeat.o(206553);
       return localAudioCacheInfo;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$MusicLrcBean;", "", "lrc", "", "startTime", "", "stopTime", "(Ljava/lang/String;II)V", "getLrc", "()Ljava/lang/String;", "setLrc", "(Ljava/lang/String;)V", "getStartTime", "()I", "setStartTime", "(I)V", "getStopTime", "setStopTime", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$MusicLrcBean;", "", "lrc", "", "startTime", "", "stopTime", "(Ljava/lang/String;II)V", "getLrc", "()Ljava/lang/String;", "setLrc", "(Ljava/lang/String;)V", "getStartTime", "()I", "setStartTime", "(I)V", "getStopTime", "setStopTime", "plugin-recordvideo_release"})
   public static final class c
   {
-    public int ddx;
-    public String xzq;
-    public int xzr;
+    public int dez;
+    public String xPm;
+    public int xPn;
     
     public c(String paramString, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(75400);
-      this.xzq = paramString;
-      this.ddx = paramInt1;
-      this.xzr = paramInt2;
+      this.xPm = paramString;
+      this.dez = paramInt1;
+      this.xPn = paramInt2;
       AppMethodBeat.o(75400);
     }
   }

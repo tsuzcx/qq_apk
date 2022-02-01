@@ -52,22 +52,22 @@ public abstract interface a
   
   public static abstract interface c
   {
-    public abstract void eU(boolean paramBoolean);
+    public abstract void eX(boolean paramBoolean);
   }
   
   public static abstract interface d
   {
-    public abstract void aMx();
+    public abstract void aMV();
   }
   
   public static abstract interface e
   {
-    public abstract void boT();
+    public abstract void bpD();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a
  * JD-Core Version:    0.7.0.1
  */

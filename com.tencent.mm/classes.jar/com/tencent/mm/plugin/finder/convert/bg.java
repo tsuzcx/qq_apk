@@ -1,79 +1,85 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.widget.ImageView;
+import android.graphics.Paint;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.loader.i;
-import com.tencent.mm.plugin.finder.loader.i.a;
-import com.tencent.mm.plugin.finder.loader.n;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.r;
-import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.finder.feed.ab;
+import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.view.recyclerview.e;
-import d.a.j;
 import d.g.b.p;
 import d.l;
-import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderVideoFoldedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderStreamCardConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "tabType", "", "(I)V", "getTabType", "()I", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
 public final class bg
-  extends y
+  extends com.tencent.mm.view.recyclerview.b<ab>
 {
-  public bg(FinderFoldedScrollLayout.b paramb)
+  public static final bg.a rYp;
+  private final int dvm;
+  
+  static
   {
-    super(paramb);
-    AppMethodBeat.i(201504);
-    AppMethodBeat.o(201504);
+    AppMethodBeat.i(201930);
+    rYp = new bg.a((byte)0);
+    AppMethodBeat.o(201930);
   }
   
-  public final void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public bg(int paramInt)
   {
-    AppMethodBeat.i(201502);
+    this.dvm = paramInt;
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
+  {
+    AppMethodBeat.i(201928);
+    p.h(paramRecyclerView, "recyclerView");
     p.h(parame, "holder");
-    p.h(paramBaseFinderFeed, "item");
-    super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-    paramList = (bvf)j.jc((List)paramBaseFinderFeed.feedObject.getMediaList());
-    paramBaseFinderFeed = (ImageView)parame.Gd(2131305798);
-    if (bt.isNullOrNil(paramList.coverUrl))
+    paramRecyclerView = parame.auu;
+    p.g(paramRecyclerView, "holder.itemView");
+    paramRecyclerView = (TextView)paramRecyclerView.findViewById(2131305902);
+    p.g(paramRecyclerView, "holder.itemView.title");
+    al.a((Paint)paramRecyclerView.getPaint(), 0.8F);
+    paramRecyclerView = parame.auu;
+    p.g(paramRecyclerView, "holder.itemView");
+    paramRecyclerView = (TextView)paramRecyclerView.findViewById(2131308343);
+    p.g(paramRecyclerView, "holder.itemView.linkTitle");
+    al.a((Paint)paramRecyclerView.getPaint(), 0.8F);
+    paramRecyclerView = com.tencent.mm.plugin.finder.storage.b.sHP;
+    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKE().value()).intValue() == 1)
     {
-      parame = new com.tencent.mm.plugin.finder.loader.g(paramList, r.syE);
-      paramList = i.sja;
-      paramList = i.cCB();
-      locali = i.sja;
-      paramList = paramList.a(parame, i.a(i.a.sjb));
-      parame = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cHX().value()).intValue() > 0) {}
-      for (parame = new com.tencent.mm.loader.e.d(null, new com.tencent.mm.loader.e.b.g(paramBaseFinderFeed), 1);; parame = null)
-      {
-        parame = paramList.a((com.tencent.mm.loader.f.d)parame);
-        p.g(paramBaseFinderFeed, "thumbIv");
-        parame.c(paramBaseFinderFeed);
-        AppMethodBeat.o(201502);
-        return;
-      }
-    }
-    parame = new n(paramList, r.syD);
-    paramList = i.sja;
-    paramList = i.cCB();
-    i locali = i.sja;
-    paramList = paramList.a(parame, i.a(i.a.sjb));
-    parame = com.tencent.mm.plugin.finder.storage.b.sxa;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cHX().value()).intValue() > 0) {}
-    for (parame = new com.tencent.mm.loader.e.d(null, new com.tencent.mm.loader.e.b.g(paramBaseFinderFeed), 1);; parame = null)
-    {
-      parame = paramList.a((com.tencent.mm.loader.f.d)parame);
-      p.g(paramBaseFinderFeed, "thumbIv");
-      parame.c(paramBaseFinderFeed);
-      AppMethodBeat.o(201502);
+      paramRecyclerView = parame.auu;
+      p.g(paramRecyclerView, "holder.itemView");
+      paramRecyclerView = (FinderFoldedScrollLayout)paramRecyclerView.findViewById(2131308490);
+      p.g(paramRecyclerView, "holder.itemView.foldedScrollLayout");
+      paramRecyclerView = paramRecyclerView.getLayoutParams();
+      parame = parame.auu;
+      p.g(parame, "holder.itemView");
+      paramRecyclerView.height = a.fromDPToPix(parame.getContext(), 416);
+      AppMethodBeat.o(201928);
       return;
     }
+    paramRecyclerView = parame.auu;
+    p.g(paramRecyclerView, "holder.itemView");
+    paramRecyclerView = (FinderFoldedScrollLayout)paramRecyclerView.findViewById(2131308490);
+    p.g(paramRecyclerView, "holder.itemView.foldedScrollLayout");
+    paramRecyclerView = paramRecyclerView.getLayoutParams();
+    parame = parame.auu;
+    p.g(parame, "holder.itemView");
+    paramRecyclerView.height = a.fromDPToPix(parame.getContext(), 240);
+    AppMethodBeat.o(201928);
+  }
+  
+  public final int getLayoutId()
+  {
+    return 2131496427;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.bg
  * JD-Core Version:    0.7.0.1
  */

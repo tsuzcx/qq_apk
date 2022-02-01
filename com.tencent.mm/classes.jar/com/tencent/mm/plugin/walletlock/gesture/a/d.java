@@ -2,187 +2,197 @@ package com.tencent.mm.plugin.walletlock.gesture.a;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cii;
-import com.tencent.mm.protocal.protobuf.cij;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.protocal.protobuf.cjc;
+import com.tencent.mm.protocal.protobuf.cjd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import java.io.IOException;
 
 public final class d
 {
-  private static long Dug = -1L;
+  private static long DLL = -1L;
   
-  public static void Ci(long paramLong)
+  public static void CG(long paramLong)
   {
-    Dug = paramLong;
+    DLL = paramLong;
   }
   
-  public static void VO(int paramInt)
+  public static void Wv(int paramInt)
   {
     AppMethodBeat.i(129776);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
-      localai.set(339972, Integer.valueOf(paramInt));
-      localai.fqc();
+      localaj.set(339972, Integer.valueOf(paramInt));
+      localaj.fuc();
     }
     AppMethodBeat.o(129776);
   }
   
-  public static void a(cii paramcii)
+  public static void a(cjc paramcjc)
   {
     AppMethodBeat.i(129772);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null) {
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null) {
       try
       {
-        localai.set(339989, Base64.encodeToString(paramcii.toByteArray(), 2));
-        localai.fqc();
-        ad.v("MicroMsg.GestureGuardInfoManager", "alvinluo savePatternBuffer isUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(e.eJE()) });
+        localaj.set(339989, Base64.encodeToString(paramcjc.toByteArray(), 2));
+        localaj.fuc();
+        ae.v("MicroMsg.GestureGuardInfoManager", "alvinluo savePatternBuffer isUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(e.eNm()) });
         AppMethodBeat.o(129772);
         return;
       }
-      catch (IOException paramcii)
+      catch (IOException paramcjc)
       {
-        ad.printErrStackTrace("MicroMsg.GestureGuardInfoManager", paramcii, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.GestureGuardInfoManager", paramcjc, "", new Object[0]);
       }
     }
     AppMethodBeat.o(129772);
   }
   
-  public static void a(cij paramcij)
+  public static void a(cjd paramcjd)
   {
     AppMethodBeat.i(129774);
-    if (paramcij != null) {
-      ad.i("MicroMsg.GestureGuardInfoManager", "alvinluo saveSyncedPatternInfo version: %d, status: %d", new Object[] { Integer.valueOf(paramcij.Hck), Integer.valueOf(paramcij.Hcm) });
+    if (paramcjd != null) {
+      ae.i("MicroMsg.GestureGuardInfoManager", "alvinluo saveSyncedPatternInfo version: %d, status: %d", new Object[] { Integer.valueOf(paramcjd.HvK), Integer.valueOf(paramcjd.HvM) });
     }
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null) {
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null) {
       try
       {
-        localai.set(339990, Base64.encodeToString(paramcij.toByteArray(), 2));
-        localai.fqc();
+        localaj.set(339990, Base64.encodeToString(paramcjd.toByteArray(), 2));
+        localaj.fuc();
         AppMethodBeat.o(129774);
         return;
       }
-      catch (IOException paramcij)
+      catch (IOException paramcjd)
       {
-        ad.printErrStackTrace("MicroMsg.GestureGuardInfoManager", paramcij, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.GestureGuardInfoManager", paramcjd, "", new Object[0]);
       }
     }
     AppMethodBeat.o(129774);
   }
   
-  public static void av(long paramLong1, long paramLong2)
+  public static void au(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(129766);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
       g localg = new g();
-      localg.DuH = paramLong1;
-      localg.DuI = paramLong2;
-      localai.set(339969, e.bZ(localg.toByteArray()));
-      localai.fqc();
+      localg.DMm = paramLong1;
+      localg.DMn = paramLong2;
+      localaj.set(339969, e.cc(localg.toByteArray()));
+      localaj.fuc();
     }
     AppMethodBeat.o(129766);
   }
   
-  public static void aw(long paramLong1, long paramLong2)
+  public static void av(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(129769);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
       g localg = new g();
-      localg.DuH = paramLong1;
-      localg.DuI = paramLong2;
-      localai.set(339971, e.bZ(localg.toByteArray()));
-      localai.fqc();
+      localg.DMm = paramLong1;
+      localg.DMn = paramLong2;
+      localaj.set(339971, e.cc(localg.toByteArray()));
+      localaj.fuc();
     }
     AppMethodBeat.o(129769);
   }
   
-  public static g eJG()
+  public static void eNd()
+  {
+    DLL = -1L;
+  }
+  
+  public static long eNe()
+  {
+    return DLL;
+  }
+  
+  public static g eNo()
   {
     AppMethodBeat.i(129765);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA();
     if (localObject == null)
     {
       localObject = new g();
       AppMethodBeat.o(129765);
       return localObject;
     }
-    localObject = ((ai)localObject).get(339969, null);
+    localObject = ((aj)localObject).get(339969, null);
     if (localObject == null)
     {
       localObject = new g();
       AppMethodBeat.o(129765);
       return localObject;
     }
-    localObject = new g().ca(e.stringToBytes((String)localObject));
+    localObject = new g().cd(e.stringToBytes((String)localObject));
     AppMethodBeat.o(129765);
     return localObject;
   }
   
-  public static void eJH()
+  public static void eNp()
   {
     AppMethodBeat.i(129767);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
-      localai.set(339969, null);
-      localai.fqc();
+      localaj.set(339969, null);
+      localaj.fuc();
     }
     AppMethodBeat.o(129767);
   }
   
-  public static g eJI()
+  public static g eNq()
   {
     AppMethodBeat.i(129768);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA();
     if (localObject == null)
     {
       localObject = new g();
       AppMethodBeat.o(129768);
       return localObject;
     }
-    localObject = ((ai)localObject).get(339971, null);
+    localObject = ((aj)localObject).get(339971, null);
     if (localObject == null)
     {
       localObject = new g();
       AppMethodBeat.o(129768);
       return localObject;
     }
-    localObject = new g().ca(e.stringToBytes((String)localObject));
+    localObject = new g().cd(e.stringToBytes((String)localObject));
     AppMethodBeat.o(129768);
     return localObject;
   }
   
-  public static void eJJ()
+  public static void eNr()
   {
     AppMethodBeat.i(129770);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
-      localai.set(339971, null);
-      localai.fqc();
+      localaj.set(339971, null);
+      localaj.fuc();
     }
     AppMethodBeat.o(129770);
   }
   
-  public static cii eJK()
+  public static cjc eNs()
   {
     AppMethodBeat.i(129771);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA();
     if (localObject == null)
     {
       AppMethodBeat.o(129771);
       return null;
     }
-    localObject = (String)((ai)localObject).get(339989, null);
-    if (bt.isNullOrNil((String)localObject))
+    localObject = (String)((aj)localObject).get(339989, null);
+    if (bu.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(129771);
       return null;
@@ -190,36 +200,36 @@ public final class d
     try
     {
       localObject = Base64.decode((String)localObject, 2);
-      localObject = (cii)new cii().parseFrom((byte[])localObject);
+      localObject = (cjc)new cjc().parseFrom((byte[])localObject);
       AppMethodBeat.o(129771);
       return localObject;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      ad.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIllegalArgumentException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIllegalArgumentException, "", new Object[0]);
       AppMethodBeat.o(129771);
       return null;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIOException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIOException, "", new Object[0]);
       AppMethodBeat.o(129771);
     }
     return null;
   }
   
-  public static cij eJL()
+  public static cjd eNt()
   {
     AppMethodBeat.i(129773);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA();
     if (localObject == null)
     {
-      ad.e("MicroMsg.GestureGuardInfoManager", "alvinluo configstg is null");
+      ae.e("MicroMsg.GestureGuardInfoManager", "alvinluo configstg is null");
       AppMethodBeat.o(129773);
       return null;
     }
-    localObject = (String)((ai)localObject).get(339990, null);
-    if (bt.isNullOrNil((String)localObject))
+    localObject = (String)((aj)localObject).get(339990, null);
+    if (bu.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(129773);
       return null;
@@ -227,34 +237,34 @@ public final class d
     try
     {
       localObject = Base64.decode((String)localObject, 2);
-      localObject = (cij)new cij().parseFrom((byte[])localObject);
+      localObject = (cjd)new cjd().parseFrom((byte[])localObject);
       AppMethodBeat.o(129773);
       return localObject;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      ad.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIllegalArgumentException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIllegalArgumentException, "", new Object[0]);
       AppMethodBeat.o(129773);
       return null;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIOException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GestureGuardInfoManager", localIOException, "", new Object[0]);
       AppMethodBeat.o(129773);
     }
     return null;
   }
   
-  public static int eJM()
+  public static int eNu()
   {
     AppMethodBeat.i(129775);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA();
     if (localObject == null)
     {
       AppMethodBeat.o(129775);
       return -1;
     }
-    localObject = ((ai)localObject).get(339972, null);
+    localObject = ((aj)localObject).get(339972, null);
     if (localObject == null)
     {
       AppMethodBeat.o(129775);
@@ -265,31 +275,21 @@ public final class d
     return i;
   }
   
-  public static void eJN()
+  public static void eNv()
   {
     AppMethodBeat.i(129777);
-    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
-    if (localai != null)
+    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
+    if (localaj != null)
     {
-      localai.set(339972, null);
-      localai.fqc();
+      localaj.set(339972, null);
+      localaj.fuc();
     }
     AppMethodBeat.o(129777);
-  }
-  
-  public static void eJv()
-  {
-    Dug = -1L;
-  }
-  
-  public static long eJw()
-  {
-    return Dug;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.d
  * JD-Core Version:    0.7.0.1
  */

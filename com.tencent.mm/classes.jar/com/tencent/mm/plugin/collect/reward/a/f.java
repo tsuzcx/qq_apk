@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.vg;
-import com.tencent.mm.protocal.protobuf.vh;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.protocal.protobuf.vj;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
   extends a
 {
   private final String TAG;
-  private com.tencent.mm.al.f callback;
-  public vh pbO;
+  private com.tencent.mm.ak.f callback;
+  public vj piu;
   private b rr;
   
   public f(String paramString1, int paramInt, String paramString2)
@@ -24,28 +24,28 @@ public final class f
     AppMethodBeat.i(63905);
     this.TAG = "MicroMsg.NetSceneQrRewardScanCode";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new vg();
-    ((b.a)localObject).hNN = new vh();
+    ((b.a)localObject).hQF = new vi();
+    ((b.a)localObject).hQG = new vj();
     ((b.a)localObject).funcId = 1516;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/scanrewardqrcode";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (vg)this.rr.hNK.hNQ;
-    ((vg)localObject).paB = paramString1;
-    ((vg)localObject).channel = paramInt;
-    ((vg)localObject).FUG = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (vi)this.rr.hQD.hQJ;
+    ((vi)localObject).phf = paramString1;
+    ((vi)localObject).channel = paramInt;
+    ((vi)localObject).Gnf = paramString2;
     AppMethodBeat.o(63905);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63907);
-    ad.i("MicroMsg.NetSceneQrRewardScanCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.pbO = ((vh)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneQrRewardScanCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.pbO.dlw), this.pbO.paA });
-    if ((!this.pbG) && (this.pbO.dlw != 0)) {
-      this.pbH = true;
+    ae.i("MicroMsg.NetSceneQrRewardScanCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.piu = ((vj)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneQrRewardScanCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.piu.dmy), this.piu.phe });
+    if ((!this.pil) && (this.piu.dmy != 0)) {
+      this.pim = true;
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
@@ -53,12 +53,12 @@ public final class f
     AppMethodBeat.o(63907);
   }
   
-  protected final boolean caG()
+  protected final boolean cbV()
   {
     return false;
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(63906);
     this.callback = paramf;

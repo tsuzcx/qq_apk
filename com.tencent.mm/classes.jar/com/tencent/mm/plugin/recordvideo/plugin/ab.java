@@ -13,10 +13,9 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.x;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.recordvideo.b.f.b;
@@ -26,13 +25,15 @@ import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
+import com.tencent.mm.plugin.recordvideo.model.audio.i;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aip;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.o;
 import d.g.a.m;
 import d.g.a.r;
 import d.g.b.p;
@@ -47,25 +48,25 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "abaParams", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getContext", "()Landroid/content/Context;", "setContext", "editConfig", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig;", "enable", "", "encode", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "getEncode", "()Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "setEncode", "(Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;)V", "loading", "Lcom/tencent/mm/plugin/recordvideo/ui/MediaProgressDialog;", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "x264RetryTime", "", "checkAudioCache", "", "audio", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "callback", "Lkotlin/Function0;", "checkBackgroundRemux", "error", "checkDaemonVideo", "checkForegroundRemux", "checkNoNeedRemuxVideo", "checkNullProvider", "checkSaveThumb", "videoPath", "", "thumbPath", "createMixer", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer;", "encodeConfig", "doFinish", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "forceRemux", "getMixer", "getTransformInfo", "Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "runForeGround", "mixer", "runMixInBackground", "editorConfig", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "expiredTime", "", "scene", "setCaptureInfo", "info", "setMoovHead", "path", "snsCheck", "videoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "fileLength", "startReMux", "updateABABrWithQP", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "abaParams", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getContext", "()Landroid/content/Context;", "setContext", "editConfig", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig;", "enable", "", "encode", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "getEncode", "()Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "setEncode", "(Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;)V", "loading", "Lcom/tencent/mm/plugin/recordvideo/ui/MediaProgressDialog;", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "x264RetryTime", "", "checkAudioCache", "", "audio", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "callback", "Lkotlin/Function0;", "checkBackgroundRemux", "error", "checkDaemonVideo", "checkForegroundRemux", "checkNoNeedRemuxVideo", "checkNullProvider", "checkSaveThumb", "videoPath", "", "thumbPath", "createMixer", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer;", "encodeConfig", "doFinish", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "forceRemux", "getMixer", "getTransformInfo", "Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "runForeGround", "mixer", "runMixInBackground", "editorConfig", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "expiredTime", "", "scene", "setCaptureInfo", "info", "setMoovHead", "path", "snsCheck", "videoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "fileLength", "startReMux", "updateABABrWithQP", "Companion", "plugin-recordvideo_release"})
 public final class ab
   implements t
 {
-  public static final ab.a xBV;
+  public static final ab.a xRQ;
   Context context;
   private boolean enable;
-  private int[] sIH;
-  private RecordConfigProvider sNI;
-  private com.tencent.mm.plugin.recordvideo.ui.a xBQ;
-  private com.tencent.mm.media.widget.camerarecordview.b.b xBR;
-  private com.tencent.mm.plugin.recordvideo.b.f xBS;
-  f.b xBT;
-  private int xBU;
+  private int[] sTT;
+  private RecordConfigProvider sYT;
+  private com.tencent.mm.plugin.recordvideo.ui.a xRL;
+  private com.tencent.mm.media.widget.camerarecordview.b.b xRM;
+  private com.tencent.mm.plugin.recordvideo.b.f xRN;
+  f.b xRO;
+  private int xRP;
   
   static
   {
     AppMethodBeat.i(75676);
-    xBV = new ab.a((byte)0);
+    xRQ = new ab.a((byte)0);
     AppMethodBeat.o(75676);
   }
   
@@ -73,16 +74,16 @@ public final class ab
   {
     AppMethodBeat.i(75675);
     this.context = paramContext;
-    this.sIH = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    this.sTT = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     this.enable = true;
-    this.xBT = new f.b((byte)0);
+    this.xRO = new f.b((byte)0);
     AppMethodBeat.o(75675);
   }
   
   private final ab D(d.g.a.a<z> parama)
   {
     AppMethodBeat.i(163435);
-    if ((this.sNI == null) || (!this.enable))
+    if ((this.sYT == null) || (!this.enable))
     {
       parama.invoke();
       AppMethodBeat.o(163435);
@@ -96,65 +97,65 @@ public final class ab
   private final ab E(d.g.a.a<z> parama)
   {
     AppMethodBeat.i(163436);
-    if (!this.xBT.xxr)
+    if (!this.xRO.xNo)
     {
-      Object localObject1 = this.xBR;
-      if ((localObject1 != null) && (((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).axB() == true))
+      Object localObject1 = this.xRM;
+      if ((localObject1 != null) && (((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).axQ() == true))
       {
-        localObject1 = this.sNI;
+        localObject1 = this.sYT;
         if (localObject1 != null)
         {
-          localObject1 = ((RecordConfigProvider)localObject1).xyj;
-          if ((localObject1 != null) && (((VideoTransPara)localObject1).hVq == 1)) {}
+          localObject1 = ((RecordConfigProvider)localObject1).xOg;
+          if ((localObject1 != null) && (((VideoTransPara)localObject1).hYi == 1)) {}
         }
         else
         {
-          localObject1 = this.sNI;
+          localObject1 = this.sYT;
           if (localObject1 == null) {
             break label440;
           }
-          localObject1 = ((RecordConfigProvider)localObject1).xyj;
-          if ((localObject1 == null) || (((VideoTransPara)localObject1).hVq != 2)) {
+          localObject1 = ((RecordConfigProvider)localObject1).xOg;
+          if ((localObject1 == null) || (((VideoTransPara)localObject1).hYi != 2)) {
             break label440;
           }
         }
-        localObject1 = this.sNI;
+        localObject1 = this.sYT;
         if (localObject1 != null)
         {
-          localObject1 = ((RecordConfigProvider)localObject1).xyj;
-          if ((localObject1 != null) && (((VideoTransPara)localObject1).hVA == 1)) {}
+          localObject1 = ((RecordConfigProvider)localObject1).xOg;
+          if ((localObject1 != null) && (((VideoTransPara)localObject1).hYs == 1)) {}
         }
         else
         {
-          localObject1 = this.sNI;
+          localObject1 = this.sYT;
           if (localObject1 != null)
           {
-            localObject1 = ((RecordConfigProvider)localObject1).xyj;
-            if ((localObject1 != null) && (((VideoTransPara)localObject1).hVA == 2)) {}
+            localObject1 = ((RecordConfigProvider)localObject1).xOg;
+            if ((localObject1 != null) && (((VideoTransPara)localObject1).hYs == 2)) {}
           }
           else
           {
-            localObject1 = this.sNI;
+            localObject1 = this.sYT;
             if (localObject1 == null) {
               break label440;
             }
-            localObject1 = ((RecordConfigProvider)localObject1).xyj;
-            if ((localObject1 == null) || (((VideoTransPara)localObject1).hVA != 4)) {
+            localObject1 = ((RecordConfigProvider)localObject1).xOg;
+            if ((localObject1 == null) || (((VideoTransPara)localObject1).hYs != 4)) {
               break label440;
             }
           }
         }
-        localObject1 = this.xBS;
+        localObject1 = this.xRN;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localObject1 = a((com.tencent.mm.plugin.recordvideo.b.f)localObject1, this.xBT);
-        Object localObject2 = ((VideoMixer)localObject1).xuI;
+        localObject1 = a((com.tencent.mm.plugin.recordvideo.b.f)localObject1, this.xRO);
+        Object localObject2 = ((VideoMixer)localObject1).xKF;
         if (localObject2 != null) {
-          ((AdaptiveAdjustBitrate)localObject2).xxn = 3000;
+          ((AdaptiveAdjustBitrate)localObject2).xNk = 3000;
         }
-        int i = ((VideoMixer)localObject1).dFa();
-        ad.i("MicroMsg.RemuxPlugin", "ABA: useDarmonVideo: ".concat(String.valueOf(i)));
+        int i = ((VideoMixer)localObject1).dIr();
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "ABA: useDarmonVideo: ".concat(String.valueOf(i)));
         if (i == 1)
         {
           parama.invoke();
@@ -162,101 +163,101 @@ public final class ab
           return this;
         }
         localObject1 = new StringBuilder("ABA::check DarmonVideo, add the metadate for video of low bitrate path: ");
-        localObject2 = this.xBR;
+        localObject2 = this.xRM;
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        ad.i("MicroMsg.RemuxPlugin", ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htR);
-        localObject1 = this.xBR;
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwF);
+        localObject1 = this.xRM;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        SightVideoJNI.addReportMetadata(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).htR, new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 1, 0);
+        SightVideoJNI.addReportMetadata(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).hwF, new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 1, 0);
         label440:
-        localObject1 = this.sNI;
+        localObject1 = this.sYT;
         if (localObject1 != null)
         {
           parama = new StringBuilder("daemonMediaCaptureInfo into: \ndaemonVideoPath = ");
-          localObject2 = this.xBR;
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htR).append(", daemonVideoSize = ");
-          localObject2 = this.xBR;
+          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwF).append(", daemonVideoSize = ");
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          parama = parama.append(com.tencent.mm.vfs.i.aYo(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htR)).append(", \nsourceVideoPath = ");
-          localObject2 = this.xBR;
+          parama = parama.append(o.aZR(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwF)).append(", \nsourceVideoPath = ");
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htN).append(", captureSize = ");
-          localObject2 = this.xBR;
+          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwB).append(", captureSize = ");
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          ad.i("MicroMsg.RemuxPlugin", com.tencent.mm.vfs.i.aYo(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htN) + ", \noutputSize = " + ((RecordConfigProvider)localObject1).xyx + ", outputSize = " + com.tencent.mm.vfs.i.aYo(((RecordConfigProvider)localObject1).xyx));
-          parama = this.xBR;
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", o.aZR(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwB) + ", \noutputSize = " + ((RecordConfigProvider)localObject1).xOt + ", outputSize = " + o.aZR(((RecordConfigProvider)localObject1).xOt));
+          parama = this.xRM;
           if (parama == null) {
-            p.gfZ();
+            p.gkB();
           }
-          com.tencent.mm.vfs.i.mz(parama.htR, ((RecordConfigProvider)localObject1).xyx);
-          parama = this.xBR;
+          o.mF(parama.hwF, ((RecordConfigProvider)localObject1).xOt);
+          parama = this.xRM;
           if (parama == null) {
-            p.gfZ();
+            p.gkB();
           }
-          com.tencent.mm.vfs.i.mz(parama.htS, ((RecordConfigProvider)localObject1).thumbPath);
-          parama = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-          com.tencent.mm.plugin.recordvideo.e.b.c(this.xBR);
-          parama = com.tencent.mm.plugin.recordvideo.e.b.xRl;
+          o.mF(parama.hwG, ((RecordConfigProvider)localObject1).thumbPath);
+          parama = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+          com.tencent.mm.plugin.recordvideo.e.b.c(this.xRM);
+          parama = com.tencent.mm.plugin.recordvideo.e.b.yhe;
           com.tencent.mm.plugin.recordvideo.e.b.f((RecordConfigProvider)localObject1);
-          ad.i("MicroMsg.RemuxPlugin", "daemonMediaCaptureInfo 1: " + this.xBR);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "daemonMediaCaptureInfo 1: " + this.xRM);
           parama = new StringBuilder("daemonMediaCaptureInfo 2: \ndaemonVideoPath = ");
-          localObject2 = this.xBR;
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htR).append(", daemonVideoSize = ");
-          localObject2 = this.xBR;
+          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwF).append(", daemonVideoSize = ");
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          parama = parama.append(com.tencent.mm.vfs.i.aYo(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htR)).append(", \nsourceVideoPath = ");
-          localObject2 = this.xBR;
+          parama = parama.append(o.aZR(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwF)).append(", \nsourceVideoPath = ");
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htN).append(", captureSize = ");
-          localObject2 = this.xBR;
+          parama = parama.append(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwB).append(", captureSize = ");
+          localObject2 = this.xRM;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          ad.i("MicroMsg.RemuxPlugin", com.tencent.mm.vfs.i.aYo(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htN) + ", \noutputSize = " + ((RecordConfigProvider)localObject1).xyx + ", outputSize = " + com.tencent.mm.vfs.i.aYo(((RecordConfigProvider)localObject1).xyx));
-          parama = ((RecordConfigProvider)localObject1).xyx;
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", o.aZR(((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwB) + ", \noutputSize = " + ((RecordConfigProvider)localObject1).xOt + ", outputSize = " + o.aZR(((RecordConfigProvider)localObject1).xOt));
+          parama = ((RecordConfigProvider)localObject1).xOt;
           p.g(parama, "this.outputVideoPath");
           localObject2 = ((RecordConfigProvider)localObject1).thumbPath;
           p.g(localObject2, "this.thumbPath");
-          iK(parama, (String)localObject2);
-          parama = ((RecordConfigProvider)localObject1).xyx;
+          iQ(parama, (String)localObject2);
+          parama = ((RecordConfigProvider)localObject1).xOt;
           p.g(parama, "this.outputVideoPath");
-          avK(parama);
+          awZ(parama);
           parama = Boolean.TRUE;
-          localObject2 = ((RecordConfigProvider)localObject1).xyx;
+          localObject2 = ((RecordConfigProvider)localObject1).xOt;
           localObject1 = ((RecordConfigProvider)localObject1).thumbPath;
-          Object localObject3 = this.xBR;
+          Object localObject3 = this.xRM;
           if (localObject3 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          i = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject3).htU;
-          localObject3 = this.xBR;
+          i = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject3).hwI;
+          localObject3 = this.xRM;
           if (localObject3 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          long l = i - ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject3).htT;
+          long l = i - ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject3).hwH;
           localObject3 = Boolean.FALSE;
-          com.tencent.mm.plugin.recordvideo.d.c localc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          b(new CaptureDataManager.CaptureVideoNormalModel(parama, (String)localObject2, (String)localObject1, Long.valueOf(l), (Boolean)localObject3, com.tencent.mm.plugin.recordvideo.d.c.dGK()));
+          com.tencent.mm.plugin.recordvideo.d.c localc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          b(new CaptureDataManager.CaptureVideoNormalModel(parama, (String)localObject2, (String)localObject1, Long.valueOf(l), (Boolean)localObject3, com.tencent.mm.plugin.recordvideo.d.c.dKb()));
           AppMethodBeat.o(163436);
           return null;
         }
@@ -271,58 +272,58 @@ public final class ab
   {
     boolean bool = true;
     AppMethodBeat.i(163437);
-    Object localObject2 = this.sNI;
+    Object localObject2 = this.sYT;
     if (localObject2 != null)
     {
       Object localObject1;
-      if (this.xBT.xxq)
+      if (this.xRO.xNn)
       {
-        if (!this.xBT.xxr)
+        if (!this.xRO.xNo)
         {
-          localObject1 = com.tencent.mm.media.b.b.hhO;
-          if (!com.tencent.mm.media.b.b.ata()) {}
+          localObject1 = com.tencent.mm.media.b.b.hkC;
+          if (!com.tencent.mm.media.b.b.atp()) {}
         }
       }
       else
       {
-        localObject1 = this.xBS;
+        localObject1 = this.xRN;
         label106:
         int i;
         if (localObject1 != null)
         {
-          localObject1 = ((com.tencent.mm.plugin.recordvideo.b.f)localObject1).xxj;
+          localObject1 = ((com.tencent.mm.plugin.recordvideo.b.f)localObject1).xNg;
           if (localObject1 != null) {
             break label682;
           }
-          parama = this.xBR;
-          if ((parama == null) || (parama.htP != true)) {
+          parama = this.xRM;
+          if ((parama == null) || (parama.hwD != true)) {
             break label406;
           }
           if (((RecordConfigProvider)localObject2).scene != 2) {
             break label377;
           }
-          parama = com.tencent.mm.media.k.d.hoU;
-          com.tencent.mm.media.k.d.auS();
-          parama = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-          com.tencent.mm.plugin.recordvideo.e.b.g(this.sNI);
-          parama = ((RecordConfigProvider)localObject2).xyx;
+          parama = com.tencent.mm.media.k.d.hrI;
+          com.tencent.mm.media.k.d.avh();
+          parama = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+          com.tencent.mm.plugin.recordvideo.e.b.g(this.sYT);
+          parama = ((RecordConfigProvider)localObject2).xOt;
           p.g(parama, "this.outputVideoPath");
           localObject1 = ((RecordConfigProvider)localObject2).thumbPath;
           p.g(localObject1, "this.thumbPath");
-          iK(parama, (String)localObject1);
-          parama = ((RecordConfigProvider)localObject2).xyx;
+          iQ(parama, (String)localObject1);
+          parama = ((RecordConfigProvider)localObject2).xOt;
           p.g(parama, "this.outputVideoPath");
-          avK(parama);
-          parama = this.xBR;
+          awZ(parama);
+          parama = this.xRM;
           if (parama != null)
           {
-            localObject1 = CaptureDataManager.xxY;
+            localObject1 = CaptureDataManager.xNV;
             p.g(localObject1, "CaptureDataManager.INSTANCE");
-            ((CaptureDataManager)localObject1).getExtData().putBoolean("key_is_capture_video", parama.htP);
-            localObject1 = CaptureDataManager.xxY;
+            ((CaptureDataManager)localObject1).getExtData().putBoolean("key_is_capture_video", parama.hwD);
+            localObject1 = CaptureDataManager.xNV;
             p.g(localObject1, "CaptureDataManager.INSTANCE");
             localObject1 = ((CaptureDataManager)localObject1).getExtData();
-            parama = (Collection)parama.htW;
+            parama = (Collection)parama.hwK;
             if ((parama != null) && (!parama.isEmpty())) {
               break label396;
             }
@@ -342,21 +343,21 @@ public final class ab
         {
           ((Bundle)localObject1).putBoolean("key_is_photo_video", bool);
           parama = Boolean.TRUE;
-          localObject1 = ((RecordConfigProvider)localObject2).xyx;
+          localObject1 = ((RecordConfigProvider)localObject2).xOt;
           localObject2 = ((RecordConfigProvider)localObject2).thumbPath;
-          localObject3 = this.xBS;
+          localObject3 = this.xRN;
           if (localObject3 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          i = ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xxn;
-          localObject3 = this.xBS;
+          i = ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xNk;
+          localObject3 = this.xRN;
           if (localObject3 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          l = i - ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xxm;
+          l = i - ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xNj;
           localObject3 = Boolean.FALSE;
-          localc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          b(new CaptureDataManager.CaptureVideoNormalModel(parama, (String)localObject1, (String)localObject2, Long.valueOf(l), (Boolean)localObject3, com.tencent.mm.plugin.recordvideo.d.c.dGK()));
+          localc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          b(new CaptureDataManager.CaptureVideoNormalModel(parama, (String)localObject1, (String)localObject2, Long.valueOf(l), (Boolean)localObject3, com.tencent.mm.plugin.recordvideo.d.c.dKb()));
           AppMethodBeat.o(163437);
           return null;
           localObject1 = null;
@@ -365,36 +366,36 @@ public final class ab
           if (((RecordConfigProvider)localObject2).scene != 1) {
             break label106;
           }
-          parama = com.tencent.mm.media.k.d.hoU;
-          com.tencent.mm.media.k.d.auT();
+          parama = com.tencent.mm.media.k.d.hrI;
+          com.tencent.mm.media.k.d.avi();
           break label106;
           i = 0;
           break label250;
         }
         label406:
-        parama = this.xBR;
+        parama = this.xRM;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
-        parama = parama.htN;
+        parama = parama.hwB;
         localObject1 = ((RecordConfigProvider)localObject2).thumbPath;
         p.g(localObject1, "this.thumbPath");
-        iK(parama, (String)localObject1);
-        parama = this.xBR;
+        iQ(parama, (String)localObject1);
+        parama = this.xRM;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
-        avK(parama.htN);
-        parama = this.xBR;
+        awZ(parama.hwB);
+        parama = this.xRM;
         if (parama != null)
         {
-          localObject1 = CaptureDataManager.xxY;
+          localObject1 = CaptureDataManager.xNV;
           p.g(localObject1, "CaptureDataManager.INSTANCE");
-          ((CaptureDataManager)localObject1).getExtData().putBoolean("key_is_capture_video", parama.htP);
-          localObject1 = CaptureDataManager.xxY;
+          ((CaptureDataManager)localObject1).getExtData().putBoolean("key_is_capture_video", parama.hwD);
+          localObject1 = CaptureDataManager.xNV;
           p.g(localObject1, "CaptureDataManager.INSTANCE");
           localObject1 = ((CaptureDataManager)localObject1).getExtData();
-          parama = (Collection)parama.htW;
+          parama = (Collection)parama.hwK;
           if ((parama != null) && (!parama.isEmpty())) {
             break label672;
           }
@@ -408,25 +409,25 @@ public final class ab
         {
           ((Bundle)localObject1).putBoolean("key_is_photo_video", bool);
           parama = Boolean.TRUE;
-          localObject1 = this.xBR;
+          localObject1 = this.xRM;
           if (localObject1 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          localObject1 = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).htN;
+          localObject1 = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).hwB;
           localObject2 = ((RecordConfigProvider)localObject2).thumbPath;
-          localObject3 = this.xBS;
+          localObject3 = this.xRN;
           if (localObject3 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          i = ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xxn;
-          localObject3 = this.xBS;
+          i = ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xNk;
+          localObject3 = this.xRN;
           if (localObject3 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          l = i - ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xxm;
+          l = i - ((com.tencent.mm.plugin.recordvideo.b.f)localObject3).xNj;
           localObject3 = Boolean.FALSE;
-          localc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          b(new CaptureDataManager.CaptureVideoNormalModel(parama, (String)localObject1, (String)localObject2, Long.valueOf(l), (Boolean)localObject3, com.tencent.mm.plugin.recordvideo.d.c.dGK()));
+          localc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          b(new CaptureDataManager.CaptureVideoNormalModel(parama, (String)localObject1, (String)localObject2, Long.valueOf(l), (Boolean)localObject3, com.tencent.mm.plugin.recordvideo.d.c.dKb()));
           break;
           label672:
           i = 0;
@@ -445,21 +446,21 @@ public final class ab
   private final ab G(d.g.a.a<z> parama)
   {
     AppMethodBeat.i(163438);
-    Object localObject = this.sNI;
-    if ((localObject != null) && (p.i(((RecordConfigProvider)localObject).xyq, Boolean.TRUE)))
+    Object localObject = this.sYT;
+    if ((localObject != null) && (p.i(((RecordConfigProvider)localObject).xOn, Boolean.TRUE)))
     {
-      parama = this.xBS;
+      parama = this.xRN;
       if (parama == null) {
-        p.gfZ();
+        p.gkB();
       }
-      parama = a(parama, this.xBT);
-      localObject = com.tencent.mm.plugin.recordvideo.d.f.xHm;
-      com.tencent.mm.plugin.recordvideo.d.f.pV(true);
-      localObject = this.xBS;
+      parama = a(parama, this.xRO);
+      localObject = com.tencent.mm.plugin.recordvideo.d.f.xXh;
+      com.tencent.mm.plugin.recordvideo.d.f.qd(true);
+      localObject = this.xRN;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      a(parama, (com.tencent.mm.plugin.recordvideo.b.f)localObject, this.xBT);
+      a(parama, (com.tencent.mm.plugin.recordvideo.b.f)localObject, this.xRO);
       AppMethodBeat.o(163438);
       return null;
     }
@@ -471,62 +472,62 @@ public final class ab
   private final ab H(d.g.a.a<z> parama)
   {
     AppMethodBeat.i(163439);
-    Object localObject1 = com.tencent.mm.plugin.recordvideo.d.f.xHm;
-    com.tencent.mm.plugin.recordvideo.d.f.pV(false);
-    localObject1 = this.xBS;
+    Object localObject1 = com.tencent.mm.plugin.recordvideo.d.f.xXh;
+    com.tencent.mm.plugin.recordvideo.d.f.qd(false);
+    localObject1 = this.xRN;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localObject1 = a((com.tencent.mm.plugin.recordvideo.b.f)localObject1, this.xBT);
-    RecordConfigProvider localRecordConfigProvider = this.sNI;
+    localObject1 = a((com.tencent.mm.plugin.recordvideo.b.f)localObject1, this.xRO);
+    RecordConfigProvider localRecordConfigProvider = this.sYT;
     if (localRecordConfigProvider != null)
     {
       final y.f localf = new y.f();
-      localf.MLV = new aif();
-      parama = (aif)localf.MLV;
-      Object localObject2 = this.xBS;
+      localf.NiY = new aip();
+      parama = (aip)localf.NiY;
+      Object localObject2 = this.xRN;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      int i = ((com.tencent.mm.plugin.recordvideo.b.f)localObject2).xxn;
-      localObject2 = this.xBS;
+      int i = ((com.tencent.mm.plugin.recordvideo.b.f)localObject2).xNk;
+      localObject2 = this.xRN;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      parama.duration = (i - ((com.tencent.mm.plugin.recordvideo.b.f)localObject2).xxm);
-      ((aif)localf.MLV).GfG = new LinkedList((Collection)d.a.e.N(this.sIH));
-      localObject2 = (aif)localf.MLV;
-      parama = localRecordConfigProvider.xyj;
+      parama.duration = (i - ((com.tencent.mm.plugin.recordvideo.b.f)localObject2).xNj);
+      ((aip)localf.NiY).Gyo = new LinkedList((Collection)d.a.e.O(this.sTT));
+      localObject2 = (aip)localf.NiY;
+      parama = localRecordConfigProvider.xOg;
       if (parama != null)
       {
-        parama = Integer.valueOf(parama.hVq);
+        parama = Integer.valueOf(parama.hYi);
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
-        ((aif)localObject2).hVq = parama.intValue();
-        parama = (aif)localf.MLV;
-        localObject2 = this.xBR;
+        ((aip)localObject2).hYi = parama.intValue();
+        parama = (aip)localf.NiY;
+        localObject2 = this.xRM;
         if (localObject2 == null) {
           break label410;
         }
       }
       label410:
-      for (boolean bool = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).htP;; bool = false)
+      for (boolean bool = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject2).hwD;; bool = false)
       {
-        parama.GfH = bool;
-        ((aif)localf.MLV).BDq = this.xBT.xxr;
-        ((aif)localf.MLV).xyu = localRecordConfigProvider.xyu;
-        ((aif)localf.MLV).xyv = localRecordConfigProvider.xyv;
-        ((aif)localf.MLV).xyw = localRecordConfigProvider.xyw;
-        ((aif)localf.MLV).xyx = localRecordConfigProvider.xyx;
-        ((aif)localf.MLV).GfI = localRecordConfigProvider.thumbPath;
-        ((aif)localf.MLV).xvD = ((VideoMixer)localObject1).xuO.hms;
-        ((aif)localf.MLV).GfJ = 0;
-        parama = this.xBS;
+        parama.Gyp = bool;
+        ((aip)localf.NiY).BUO = this.xRO.xNo;
+        ((aip)localf.NiY).xOq = localRecordConfigProvider.xOq;
+        ((aip)localf.NiY).xOr = localRecordConfigProvider.xOr;
+        ((aip)localf.NiY).xOs = localRecordConfigProvider.xOs;
+        ((aip)localf.NiY).xOt = localRecordConfigProvider.xOt;
+        ((aip)localf.NiY).Gyq = localRecordConfigProvider.thumbPath;
+        ((aip)localf.NiY).xLA = ((VideoMixer)localObject1).xKL.hpg;
+        ((aip)localf.NiY).Gyr = 0;
+        parama = this.xRN;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
-        a(parama.xxj, (d.g.a.a)new d(localRecordConfigProvider, localf, this, (VideoMixer)localObject1));
+        a(parama.xNg, (d.g.a.a)new d(localRecordConfigProvider, localf, this, (VideoMixer)localObject1));
         AppMethodBeat.o(163439);
         return null;
         parama = null;
@@ -542,32 +543,32 @@ public final class ab
   {
     AppMethodBeat.i(75668);
     VideoMixer localVideoMixer = b(paramf);
-    RecordConfigProvider localRecordConfigProvider = this.sNI;
+    RecordConfigProvider localRecordConfigProvider = this.sYT;
     float f;
     if ((localRecordConfigProvider != null) && (localRecordConfigProvider.scene == 2)) {
-      f = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyC, 1.0F);
+      f = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFI, 1.0F);
     }
     for (;;)
     {
-      ad.i("MicroMsg.RemuxPlugin", "final kbps: " + f + "  " + paramb.videoBitrate * f);
-      VideoMixer.a(localVideoMixer, paramb.targetWidth, paramb.targetHeight, (int)(f * paramb.videoBitrate), paramb.audioBitrate, paramb.audioSampleRate, paramb.audioChannelCount, paramb.frameRate, paramb.hlJ);
-      paramb = this.sNI;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "final kbps: " + f + "  " + paramb.videoBitrate * f);
+      VideoMixer.a(localVideoMixer, paramb.targetWidth, paramb.targetHeight, (int)(f * paramb.videoBitrate), paramb.audioBitrate, paramb.audioSampleRate, paramb.audioChannelCount, paramb.frameRate, paramb.hoy);
+      paramb = this.sYT;
       if (paramb != null) {}
-      for (paramb = paramb.xyj;; paramb = null)
+      for (paramb = paramb.xOg;; paramb = null)
       {
         if (paramb == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localVideoMixer.a(paramb, paramf.xxn, paramf.xxm);
+        localVideoMixer.a(paramb, paramf.xNk, paramf.xNj);
         AppMethodBeat.o(75668);
         return localVideoMixer;
-        localRecordConfigProvider = this.sNI;
+        localRecordConfigProvider = this.sYT;
         if (localRecordConfigProvider != null)
         {
           if (localRecordConfigProvider.scene != 1) {
             break label227;
           }
-          f = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyB, 1.0F);
+          f = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFH, 1.0F);
           break;
         }
         f = 1.0F;
@@ -581,11 +582,11 @@ public final class ab
   private final void a(f.b paramb)
   {
     AppMethodBeat.i(75674);
-    Object localObject = com.tencent.mm.media.k.d.hoU;
-    com.tencent.mm.media.k.d.avf();
-    long l = bt.HI();
-    ad.i("MicroMsg.RemuxPlugin", "start forceRemux");
-    localObject = this.sNI;
+    Object localObject = com.tencent.mm.media.k.d.hrI;
+    com.tencent.mm.media.k.d.avu();
+    long l = bu.HQ();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "start forceRemux");
+    localObject = this.sYT;
     String str;
     int i;
     int j;
@@ -594,54 +595,54 @@ public final class ab
     int k;
     if (localObject != null)
     {
-      localObject = ((RecordConfigProvider)localObject).xyx;
+      localObject = ((RecordConfigProvider)localObject).xOt;
       str = p.C((String)localObject, "_tmp");
-      localObject = this.sNI;
+      localObject = this.sYT;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      if (((RecordConfigProvider)localObject).xyj.hVr != 2) {
+      if (((RecordConfigProvider)localObject).xOg.hYj != 2) {
         break label421;
       }
-      localObject = this.sNI;
+      localObject = this.sYT;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      i = ((RecordConfigProvider)localObject).xyj.hhV;
-      localObject = this.sNI;
+      i = ((RecordConfigProvider)localObject).xOg.hkJ;
+      localObject = this.sYT;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      ad.i("MicroMsg.RemuxPlugin", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(i), Integer.valueOf(((RecordConfigProvider)localObject).xyj.hhW) });
-      localObject = this.sNI;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(i), Integer.valueOf(((RecordConfigProvider)localObject).xOg.hkK) });
+      localObject = this.sYT;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      i = ((RecordConfigProvider)localObject).xyj.hhV;
-      localObject = this.sNI;
+      i = ((RecordConfigProvider)localObject).xOg.hkJ;
+      localObject = this.sYT;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      j = ((RecordConfigProvider)localObject).xyj.hhW;
-      localObject = this.sNI;
+      j = ((RecordConfigProvider)localObject).xOg.hkK;
+      localObject = this.sYT;
       if (localObject == null) {
         break label429;
       }
-      localObject = ((RecordConfigProvider)localObject).xyx;
+      localObject = ((RecordConfigProvider)localObject).xOt;
       k = paramb.targetWidth;
       int m = paramb.targetHeight;
       int n = paramb.videoBitrate;
-      RecordConfigProvider localRecordConfigProvider = this.sNI;
+      RecordConfigProvider localRecordConfigProvider = this.sYT;
       if (localRecordConfigProvider == null) {
-        p.gfZ();
+        p.gkB();
       }
-      int i1 = localRecordConfigProvider.xyj.hVf;
-      localRecordConfigProvider = this.sNI;
+      int i1 = localRecordConfigProvider.xOg.hXX;
+      localRecordConfigProvider = this.sYT;
       if (localRecordConfigProvider == null) {
-        p.gfZ();
+        p.gkB();
       }
-      k = SightVideoJNI.remuxingVFS((String)localObject, str, k, m, n, i1, 8, localRecordConfigProvider.xyj.hVe, 25.0F, paramb.frameRate, null, 0, false, i, j);
-      paramb = this.sNI;
+      k = SightVideoJNI.remuxingVFS((String)localObject, str, k, m, n, i1, 8, localRecordConfigProvider.xOg.hXW, 25.0F, paramb.frameRate, null, 0, false, i, j);
+      paramb = this.sYT;
       if (paramb == null) {
         break label435;
       }
@@ -649,14 +650,14 @@ public final class ab
     label421:
     label429:
     label435:
-    for (paramb = paramb.xyx;; paramb = null)
+    for (paramb = paramb.xOt;; paramb = null)
     {
-      com.tencent.mm.vfs.i.mz(str, paramb);
-      com.tencent.mm.vfs.i.deleteFile(str);
-      l = bt.aO(l);
-      ad.i("MicroMsg.RemuxPlugin", "minQP :" + i + "  maxQP :" + j + "  duration:" + k + " cost:" + l);
-      paramb = com.tencent.mm.media.k.d.hoU;
-      com.tencent.mm.media.k.d.rt(l);
+      o.mF(str, paramb);
+      o.deleteFile(str);
+      l = bu.aO(l);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "minQP :" + i + "  maxQP :" + j + "  duration:" + k + " cost:" + l);
+      paramb = com.tencent.mm.media.k.d.hrI;
+      com.tencent.mm.media.k.d.rG(l);
       AppMethodBeat.o(75674);
       return;
       localObject = null;
@@ -672,13 +673,13 @@ public final class ab
   private final void a(final VideoMixer paramVideoMixer, final com.tencent.mm.plugin.recordvideo.b.f paramf, final f.b paramb)
   {
     AppMethodBeat.i(75669);
-    if (this.xBQ == null)
+    if (this.xRL == null)
     {
       localObject = new com.tencent.mm.plugin.recordvideo.ui.a();
-      ((com.tencent.mm.plugin.recordvideo.ui.a)localObject).a(this.context, (d.g.a.a)ab.e.xCe);
-      this.xBQ = ((com.tencent.mm.plugin.recordvideo.ui.a)localObject);
+      ((com.tencent.mm.plugin.recordvideo.ui.a)localObject).a(this.context, (d.g.a.a)ab.e.xRZ);
+      this.xRL = ((com.tencent.mm.plugin.recordvideo.ui.a)localObject);
     }
-    Object localObject = com.tencent.mm.plugin.recordvideo.background.f.xuv;
+    Object localObject = com.tencent.mm.plugin.recordvideo.background.f.xKs;
     com.tencent.mm.plugin.recordvideo.background.f.C((d.g.a.a)new f(this, paramb, paramVideoMixer, paramf));
     AppMethodBeat.o(75669);
   }
@@ -696,30 +697,30 @@ public final class ab
       if (paramAudioCacheInfo != null) {
         bool1 = paramAudioCacheInfo.aXj;
       }
-      ad.i("MicroMsg.RemuxPlugin", bool1);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", bool1);
       localObject = new com.tencent.mm.plugin.recordvideo.ui.a();
-      ((com.tencent.mm.plugin.recordvideo.ui.a)localObject).a(this.context, (d.g.a.a)ab.b.xBW);
-      this.xBQ = ((com.tencent.mm.plugin.recordvideo.ui.a)localObject);
+      ((com.tencent.mm.plugin.recordvideo.ui.a)localObject).a(this.context, (d.g.a.a)ab.b.xRR);
+      this.xRL = ((com.tencent.mm.plugin.recordvideo.ui.a)localObject);
       if ((paramAudioCacheInfo == null) || (paramAudioCacheInfo.aXj)) {
         break;
       }
-      ad.i("MicroMsg.RemuxPlugin", "checkAudioCache false");
-      localObject = com.tencent.mm.plugin.recordvideo.model.audio.i.xzM;
-      com.tencent.mm.plugin.recordvideo.model.audio.i.dGi().a(this.context, paramAudioCacheInfo, (m)new c(this, paramAudioCacheInfo, parama));
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "checkAudioCache false");
+      localObject = i.xPI;
+      i.dJz().a(this.context, paramAudioCacheInfo, (m)new c(this, paramAudioCacheInfo, parama));
       AppMethodBeat.o(163440);
       return;
     }
-    ad.i("MicroMsg.RemuxPlugin", "checkAudioCache done");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "checkAudioCache done");
     parama.invoke();
     AppMethodBeat.o(163440);
   }
   
-  private static void avK(String paramString)
+  private static void awZ(String paramString)
   {
     AppMethodBeat.i(75667);
-    long l = bt.HI();
+    long l = bu.HQ();
     SightVideoJNI.optimizeMP4VFS(paramString);
-    ad.d("MicroMsg.RemuxPlugin", "time cost: " + bt.aO(l));
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.RemuxPlugin", "time cost: " + bu.aO(l));
     AppMethodBeat.o(75667);
   }
   
@@ -727,19 +728,19 @@ public final class ab
   {
     AppMethodBeat.i(75670);
     long l = System.currentTimeMillis();
-    Object localObject1 = this.sNI;
+    Object localObject1 = this.sYT;
     if (localObject1 != null)
     {
-      localObject2 = ((RecordConfigProvider)localObject1).xyx;
+      localObject2 = ((RecordConfigProvider)localObject1).xOt;
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
     else
     {
-      localObject1 = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-      localObject1 = com.tencent.mm.plugin.recordvideo.e.b.avY(String.valueOf(l));
+      localObject1 = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+      localObject1 = com.tencent.mm.plugin.recordvideo.e.b.axn(String.valueOf(l));
     }
-    Object localObject2 = this.sNI;
+    Object localObject2 = this.sYT;
     if (localObject2 != null)
     {
       localObject3 = ((RecordConfigProvider)localObject2).thumbPath;
@@ -748,10 +749,10 @@ public final class ab
     }
     else
     {
-      localObject2 = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-      localObject2 = com.tencent.mm.plugin.recordvideo.e.b.avZ(String.valueOf(l));
+      localObject2 = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+      localObject2 = com.tencent.mm.plugin.recordvideo.e.b.axo(String.valueOf(l));
     }
-    Object localObject3 = this.sNI;
+    Object localObject3 = this.sYT;
     int k;
     boolean bool1;
     boolean bool2;
@@ -774,11 +775,11 @@ public final class ab
       if ((k != 2) && (k != 11)) {
         break label713;
       }
-      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyx, 0) != 1) {
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFD, 0) != 1) {
         break label694;
       }
       bool2 = true;
-      i = ae.gcL.gbH;
+      i = com.tencent.mm.compatible.deviceinfo.ae.geT.gdP;
       if (i == -1) {
         break label706;
       }
@@ -786,12 +787,12 @@ public final class ab
         break label700;
       }
       bool1 = true;
-      ad.i("MicroMsg.RemuxPlugin", "sns config use x264 encode: " + bool2 + ", deviceUseX264Encode:" + i);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "sns config use x264 encode: " + bool2 + ", deviceUseX264Encode:" + i);
       bool4 = bool1;
-      if (ax.flg().getBoolean("mediacodec_create_error", false)) {
+      if (ay.fpb().getBoolean("mediacodec_create_error", false)) {
         bool4 = true;
       }
-      ad.i("MicroMsg.RemuxPlugin", "final useX264Encode: ".concat(String.valueOf(bool4)));
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "final useX264Encode: ".concat(String.valueOf(bool4)));
       bool1 = false;
       if ((k != 2) && (k != 1)) {
         break label1079;
@@ -812,7 +813,7 @@ public final class ab
             {
             default: 
               bool2 = false;
-              ad.i("MicroMsg.RemuxPlugin", "checkEnableHevc, deviceSwEnableHevc:" + i + ", deviceHwEnableHevc:" + j + ", exptSwEnableHevc:" + bool1 + ", exptHwEnableHevc:" + bool2);
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "checkEnableHevc, deviceSwEnableHevc:" + i + ", deviceHwEnableHevc:" + j + ", exptSwEnableHevc:" + bool1 + ", exptHwEnableHevc:" + bool2);
               bool3 = false;
               bool5 = false;
               if ((bool1) || (i != -1))
@@ -839,7 +840,7 @@ public final class ab
                 bool1 = bool3;
                 bool2 = bool4;
                 label483:
-                ad.i("MicroMsg.RemuxPlugin", "checkEnableHevc, hwEnableHevc:" + bool5 + ", swEnableHevc:" + bool3 + ", enableHevc:" + bool1 + ", useSoftEncode:" + bool2);
+                com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "checkEnableHevc, hwEnableHevc:" + bool5 + ", swEnableHevc:" + bool3 + ", enableHevc:" + bool1 + ", useSoftEncode:" + bool2);
               }
               break;
             }
@@ -853,23 +854,23 @@ public final class ab
     for (;;)
     {
       com.tencent.mm.plugin.recordvideo.b.c localc = c(paramf);
-      if ((k == 3) && (!com.tencent.mm.vfs.i.fv(localc.xwP)))
+      if ((k == 3) && (!o.fB(localc.xMM)))
       {
-        localObject3 = com.tencent.mm.plugin.recordvideo.d.e.xHl;
-        com.tencent.mm.plugin.recordvideo.d.e.pU(localc.htP);
+        localObject3 = com.tencent.mm.plugin.recordvideo.d.e.xXg;
+        com.tencent.mm.plugin.recordvideo.d.e.qc(localc.hwD);
       }
-      List localList = (List)paramf.xxk;
-      float[] arrayOfFloat1 = paramf.xuU;
-      float[] arrayOfFloat2 = paramf.xuV;
-      localObject3 = this.sNI;
+      List localList = (List)paramf.xNh;
+      float[] arrayOfFloat1 = paramf.xKR;
+      float[] arrayOfFloat2 = paramf.xKS;
+      localObject3 = this.sYT;
       if (localObject3 != null)
       {
-        localObject3 = ((RecordConfigProvider)localObject3).xyj;
+        localObject3 = ((RecordConfigProvider)localObject3).xOg;
         if (localObject3 == null) {}
       }
-      for (i = ((VideoTransPara)localObject3).hVp;; i = 0)
+      for (i = ((VideoTransPara)localObject3).hYh;; i = 0)
       {
-        localObject3 = paramf.xuZ;
+        localObject3 = paramf.xKW;
         paramf = (com.tencent.mm.plugin.recordvideo.b.f)localObject3;
         if (localObject3 == null) {
           paramf = "";
@@ -892,11 +893,11 @@ public final class ab
         if (k != 1) {
           break label207;
         }
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyy, 0) == 1)
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFE, 0) == 1)
         {
           bool2 = true;
           label744:
-          i = ae.gcL.gbG;
+          i = com.tencent.mm.compatible.deviceinfo.ae.geT.gdO;
           if (i == -1) {
             break label812;
           }
@@ -907,7 +908,7 @@ public final class ab
         }
         for (;;)
         {
-          ad.i("MicroMsg.RemuxPlugin", "c2c config use x264 encode: " + bool2 + ", deviceUseX264Encode:" + i);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "c2c config use x264 encode: " + bool2 + ", deviceUseX264Encode:" + i);
           break;
           bool2 = false;
           break label744;
@@ -917,36 +918,36 @@ public final class ab
           label812:
           bool1 = bool2;
         }
-        i = ae.gcL.gbR;
+        i = com.tencent.mm.compatible.deviceinfo.ae.geT.gdZ;
         break label286;
-        i = ae.gcL.gbS;
+        i = com.tencent.mm.compatible.deviceinfo.ae.geT.gea;
         break label286;
-        j = ae.gcL.gbP;
+        j = com.tencent.mm.compatible.deviceinfo.ae.geT.gdX;
         break label314;
-        j = ae.gcL.gbQ;
+        j = com.tencent.mm.compatible.deviceinfo.ae.geT.gdY;
         break label314;
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFy, 0) == 1)
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNe, 0) == 1)
         {
           bool1 = true;
           break label343;
         }
         bool1 = false;
         break label343;
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFx, 0) == 1)
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNd, 0) == 1)
         {
           bool1 = true;
           break label343;
         }
         bool1 = false;
         break label343;
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFv, 0) == 1)
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNb, 0) == 1)
         {
           bool2 = true;
           break label371;
         }
         bool2 = false;
         break label371;
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFw, 0) == 1)
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNc, 0) == 1)
         {
           bool2 = true;
           break label371;
@@ -991,8 +992,8 @@ public final class ab
   private final void b(CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(75672);
-    ax.flg().putBoolean("mediacodec_create_error", false);
-    CaptureDataManager.xxY.a(this.context, paramCaptureVideoNormalModel);
+    ay.fpb().putBoolean("mediacodec_create_error", false);
+    CaptureDataManager.xNV.a(this.context, paramCaptureVideoNormalModel);
     AppMethodBeat.o(75672);
   }
   
@@ -1001,11 +1002,11 @@ public final class ab
     boolean bool = true;
     AppMethodBeat.i(75671);
     com.tencent.mm.plugin.recordvideo.b.c localc = new com.tencent.mm.plugin.recordvideo.b.c();
-    Object localObject = this.xBR;
+    Object localObject = this.xRM;
     String str;
     if (localObject != null)
     {
-      str = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).htN;
+      str = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hwB;
       localObject = str;
       if (str != null) {}
     }
@@ -1013,11 +1014,11 @@ public final class ab
     {
       localObject = "";
     }
-    localc.avH((String)localObject);
-    localObject = this.xBR;
+    localc.awW((String)localObject);
+    localObject = this.xRM;
     if (localObject != null)
     {
-      str = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).htO;
+      str = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hwC;
       localObject = str;
       if (str != null) {}
     }
@@ -1025,32 +1026,32 @@ public final class ab
     {
       localObject = "";
     }
-    localc.avI((String)localObject);
-    localc.xwV = paramf.xxj;
+    localc.awX((String)localObject);
+    localc.xMS = paramf.xNg;
     int i;
-    if (paramf.xwZ) {
-      if (localc.xwV == null) {
+    if (paramf.xMW) {
+      if (localc.xMS == null) {
         i = 0;
       }
     }
     for (;;)
     {
-      localc.xwU = i;
-      localObject = this.xBR;
+      localc.xMR = i;
+      localObject = this.xRM;
       if (localObject != null) {
-        bool = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).htP;
+        bool = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hwD;
       }
-      localc.htP = bool;
-      localc.hlJ = SightVideoJNI.getMp4RotateVFS(localc.xwP);
-      localc.xwR = paramf.xxm;
-      localc.xwS = paramf.xxn;
-      localc.aq(paramf.xxo);
-      ad.i("MicroMsg.RemuxPlugin", "getTransformInfo :".concat(String.valueOf(localc)));
+      localc.hwD = bool;
+      localc.hoy = SightVideoJNI.getMp4RotateVFS(localc.xMM);
+      localc.xMO = paramf.xNj;
+      localc.xMP = paramf.xNk;
+      localc.ar(paramf.xNl);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "getTransformInfo :".concat(String.valueOf(localc)));
       AppMethodBeat.o(75671);
       return localc;
       i = 2;
       continue;
-      if (localc.xwV == null) {
+      if (localc.xMS == null) {
         i = 1;
       } else {
         i = 3;
@@ -1058,30 +1059,30 @@ public final class ab
     }
   }
   
-  private final void iK(String paramString1, String paramString2)
+  private final void iQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(75673);
-    if (com.tencent.mm.vfs.i.fv(paramString2)) {
-      com.tencent.mm.vfs.i.deleteFile(paramString2);
+    if (o.fB(paramString2)) {
+      o.deleteFile(paramString2);
     }
-    paramString1 = com.tencent.mm.plugin.mmsight.d.Gq(paramString1);
+    paramString1 = com.tencent.mm.plugin.mmsight.d.GS(paramString1);
     Object localObject;
     if (paramString1 != null)
     {
-      localObject = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-      localObject = this.sNI;
+      localObject = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+      localObject = this.sYT;
       if (localObject == null) {
         break label84;
       }
-      localObject = ((RecordConfigProvider)localObject).xyj;
+      localObject = ((RecordConfigProvider)localObject).xOg;
       if (localObject == null) {
         break label84;
       }
     }
     label84:
-    for (int i = ((VideoTransPara)localObject).hVp;; i = 0)
+    for (int i = ((VideoTransPara)localObject).hYh;; i = 0)
     {
-      com.tencent.mm.sdk.platformtools.g.a(com.tencent.mm.plugin.recordvideo.e.b.h(paramString1, i), 60, Bitmap.CompressFormat.JPEG, paramString2, true);
+      h.a(com.tencent.mm.plugin.recordvideo.e.b.h(paramString1, i), 60, Bitmap.CompressFormat.JPEG, paramString2, true);
       AppMethodBeat.o(75673);
       return;
     }
@@ -1092,21 +1093,21 @@ public final class ab
     AppMethodBeat.i(75665);
     p.h(paramb, "info");
     p.h(paramRecordConfigProvider, "configProvider");
-    this.xBR = paramb;
-    this.sNI = paramRecordConfigProvider;
-    paramRecordConfigProvider = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-    com.tencent.mm.plugin.recordvideo.d.c.u("KEY_IS_CAPUTRE_BOOLEAN", Boolean.valueOf(paramb.htP));
-    if (paramb.htP)
+    this.xRM = paramb;
+    this.sYT = paramRecordConfigProvider;
+    paramRecordConfigProvider = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+    com.tencent.mm.plugin.recordvideo.d.c.u("KEY_IS_CAPUTRE_BOOLEAN", Boolean.valueOf(paramb.hwD));
+    if (paramb.hwD)
     {
-      paramRecordConfigProvider = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      com.tencent.mm.plugin.recordvideo.d.c.u("KEY_CAPUTRE_VIDEO_PATH_STRING", paramb.axD());
-      paramRecordConfigProvider = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      if (!paramb.axC()) {
+      paramRecordConfigProvider = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      com.tencent.mm.plugin.recordvideo.d.c.u("KEY_CAPUTRE_VIDEO_PATH_STRING", paramb.axS());
+      paramRecordConfigProvider = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      if (!paramb.axR()) {
         break label98;
       }
     }
     label98:
-    for (paramb = paramb.htO;; paramb = paramb.htS)
+    for (paramb = paramb.hwC;; paramb = paramb.hwG)
     {
       com.tencent.mm.plugin.recordvideo.d.c.u("KEY_CAPUTRE_THUMB_PATH_STRING", paramb);
       AppMethodBeat.o(75665);
@@ -1118,41 +1119,41 @@ public final class ab
   {
     AppMethodBeat.i(75666);
     p.h(paramf, "editConfig");
-    ad.i("MicroMsg.RemuxPlugin", "startReMux !!!!");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "startReMux !!!!");
     Object localObject = D((d.g.a.a)new ab.h(this));
     if (localObject != null)
     {
-      ((ab)localObject).xBS = paramf;
-      ((ab)localObject).xBT = paramf.a(((ab)localObject).sNI, ((ab)localObject).xBR);
-      ad.i("MicroMsg.RemuxPlugin", "configProvider : " + ((ab)localObject).sNI);
-      ad.i("MicroMsg.RemuxPlugin", "RemuxMediaEditConfig : ".concat(String.valueOf(paramf)));
-      ad.i("MicroMsg.RemuxPlugin", "mediaCaptureInfo : " + ((ab)localObject).xBR);
-      ad.i("MicroMsg.RemuxPlugin", "generateTargetConfig info: " + ((ab)localObject).xBT + ' ');
-      paramf = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      com.tencent.mm.plugin.recordvideo.d.c.u("KEY_VIDEO_IS_EDITED_BOOLEAN", Boolean.valueOf(((ab)localObject).xBT.xxr));
-      paramf = com.tencent.mm.media.k.d.hoU;
-      com.tencent.mm.media.k.d.auV();
-      if (((ab)localObject).xBT.xxr)
+      ((ab)localObject).xRN = paramf;
+      ((ab)localObject).xRO = paramf.a(((ab)localObject).sYT, ((ab)localObject).xRM);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "configProvider : " + ((ab)localObject).sYT);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "RemuxMediaEditConfig : ".concat(String.valueOf(paramf)));
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "mediaCaptureInfo : " + ((ab)localObject).xRM);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.RemuxPlugin", "generateTargetConfig info: " + ((ab)localObject).xRO + ' ');
+      paramf = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      com.tencent.mm.plugin.recordvideo.d.c.u("KEY_VIDEO_IS_EDITED_BOOLEAN", Boolean.valueOf(((ab)localObject).xRO.xNo));
+      paramf = com.tencent.mm.media.k.d.hrI;
+      com.tencent.mm.media.k.d.avk();
+      if (((ab)localObject).xRO.xNo)
       {
-        paramf = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.auU();
+        paramf = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.avj();
       }
       if (localObject != null)
       {
-        paramf = ((ab)localObject).E((d.g.a.a)ab.i.xCn);
+        paramf = ((ab)localObject).E((d.g.a.a)ab.i.xSi);
         if (paramf != null)
         {
-          localObject = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-          com.tencent.mm.plugin.recordvideo.e.b.c(paramf.xBR);
+          localObject = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+          com.tencent.mm.plugin.recordvideo.e.b.c(paramf.xRM);
           if (paramf != null)
           {
-            paramf = paramf.F((d.g.a.a)ab.j.xCo);
+            paramf = paramf.F((d.g.a.a)ab.j.xSj);
             if (paramf != null)
             {
-              paramf = paramf.G((d.g.a.a)ab.k.xCp);
+              paramf = paramf.G((d.g.a.a)ab.k.xSk);
               if (paramf != null)
               {
-                paramf.H((d.g.a.a)ab.l.xCq);
+                paramf.H((d.g.a.a)ab.l.xSl);
                 AppMethodBeat.o(75666);
                 return;
               }
@@ -1164,12 +1165,12 @@ public final class ab
     AppMethodBeat.o(75666);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -1184,11 +1185,11 @@ public final class ab
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200363);
+    AppMethodBeat.i(206624);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200363);
+    AppMethodBeat.o(206624);
   }
   
   public final void onResume() {}
@@ -1199,7 +1200,7 @@ public final class ab
   
   public final void setVisibility(int paramInt) {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "<anonymous parameter 1>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "<anonymous parameter 1>", "", "invoke"})
   static final class c
     extends q
     implements m<Boolean, String, z>
@@ -1210,7 +1211,7 @@ public final class ab
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin$checkBackgroundRemux$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin$checkBackgroundRemux$1$1"})
   static final class d
     extends q
     implements d.g.a.a<z>
@@ -1221,7 +1222,7 @@ public final class ab
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class f
     extends q
     implements d.g.a.a<z>
@@ -1232,16 +1233,16 @@ public final class ab
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class g
     implements Runnable
   {
-    g(ab paramab, VideoMixer paramVideoMixer, f.b paramb, com.tencent.mm.plugin.recordvideo.b.f paramf, aif paramaif, long paramLong, int paramInt) {}
+    g(ab paramab, VideoMixer paramVideoMixer, f.b paramb, com.tencent.mm.plugin.recordvideo.b.f paramf, aip paramaip, long paramLong, int paramInt) {}
     
     public final void run()
     {
       AppMethodBeat.i(75655);
-      Object localObject1 = ab.g(this.xBX);
+      Object localObject1 = ab.g(this.xRS);
       Object localObject3;
       boolean bool;
       label101:
@@ -1250,13 +1251,13 @@ public final class ab
       f.b localb;
       if (localObject1 != null)
       {
-        localObject3 = CaptureDataManager.xxY;
+        localObject3 = CaptureDataManager.xNV;
         p.g(localObject3, "CaptureDataManager.INSTANCE");
-        ((CaptureDataManager)localObject3).getExtData().putBoolean("key_is_capture_video", ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).htP);
-        localObject3 = CaptureDataManager.xxY;
+        ((CaptureDataManager)localObject3).getExtData().putBoolean("key_is_capture_video", ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).hwD);
+        localObject3 = CaptureDataManager.xNV;
         p.g(localObject3, "CaptureDataManager.INSTANCE");
         localObject3 = ((CaptureDataManager)localObject3).getExtData();
-        localObject1 = (Collection)((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).htW;
+        localObject1 = (Collection)((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).hwK;
         if ((localObject1 == null) || (((Collection)localObject1).isEmpty()))
         {
           i = 1;
@@ -1269,9 +1270,9 @@ public final class ab
       }
       else
       {
-        localVideoMixer = this.xCg;
-        localObject6 = this.xCg.xuO.xuH;
-        localb = this.xCf;
+        localVideoMixer = this.xSb;
+        localObject6 = this.xSb.xKL.xKE;
+        localb = this.xSa;
         p.h(localObject6, "captureInfo");
         p.h(localb, "config");
       }
@@ -1284,21 +1285,21 @@ public final class ab
       float f2;
       try
       {
-        localObject3 = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwQ;
-        if (((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwR < 0L) {
+        localObject3 = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMN;
+        if (((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMO < 0L) {
           break label687;
         }
-        l = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwR;
-        k = localVideoMixer.hlJ;
-        if (com.tencent.mm.vfs.i.fv((String)localObject3)) {
+        l = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMO;
+        k = localVideoMixer.hoy;
+        if (o.fB((String)localObject3)) {
           break label1719;
         }
-        ad.i("MicroMsg.Media.VideoMixer", "create thumb bitmap : ".concat(String.valueOf(l)));
-        if ((((com.tencent.mm.plugin.recordvideo.b.c)localObject6).htP) || (bt.isNullOrNil(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwP))) {
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Media.VideoMixer", "create thumb bitmap : ".concat(String.valueOf(l)));
+        if ((((com.tencent.mm.plugin.recordvideo.b.c)localObject6).hwD) || (bu.isNullOrNil(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMM))) {
           break label780;
         }
-        localObject1 = com.tencent.mm.plugin.mmsight.d.aY(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwP, l * 1000L);
-        localObject4 = (CharSequence)localVideoMixer.xuO.xuZ;
+        localObject1 = com.tencent.mm.plugin.mmsight.d.aZ(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMM, l * 1000L);
+        localObject4 = (CharSequence)localVideoMixer.xKL.xKW;
         if (localObject4 == null) {
           break label2320;
         }
@@ -1322,9 +1323,9 @@ public final class ab
             if (localObject4 == null) {
               break;
             }
-            localObject5 = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwW.get(0);
+            localObject5 = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMT.get(0);
             p.g(localObject5, "captureInfo.fakeVideoImageList[0]");
-            i = VideoMixer.avF((String)localObject5);
+            i = VideoMixer.awU((String)localObject5);
             if (i == 0) {
               break;
             }
@@ -1333,9 +1334,9 @@ public final class ab
             localObject4 = Bitmap.createBitmap((Bitmap)localObject4, 0, 0, ((Bitmap)localObject4).getWidth(), ((Bitmap)localObject4).getHeight(), (Matrix)localObject5, true);
             localObject5 = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject5, true);
             p.g(localObject5, "Bitmap.createBitmap(bmBg…mBg.height, matrix, true)");
-            localPoint = com.tencent.mm.plugin.recordvideo.b.e.xxi.dFr();
+            localPoint = com.tencent.mm.plugin.recordvideo.b.e.xNf.dII();
             if (localObject4 == null) {
-              p.gfZ();
+              p.gkB();
             }
             if (((Bitmap)localObject4).getConfig() != null)
             {
@@ -1375,9 +1376,9 @@ public final class ab
               localCanvas.drawBitmap((Bitmap)localObject4, (Matrix)localObject5, null);
               continue;
               localException1 = localException1;
-              ad.printErrStackTrace("MicroMsg.Media.VideoMixer", (Throwable)localException1, "createGraffitiThumb error", new Object[0]);
-              com.tencent.mm.plugin.recordvideo.d.f localf = com.tencent.mm.plugin.recordvideo.d.f.xHm;
-              com.tencent.mm.plugin.recordvideo.d.f.dGR();
+              com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.Media.VideoMixer", (Throwable)localException1, "createGraffitiThumb error", new Object[0]);
+              com.tencent.mm.plugin.recordvideo.d.f localf = com.tencent.mm.plugin.recordvideo.d.f.xXh;
+              com.tencent.mm.plugin.recordvideo.d.f.dKi();
               continue;
               if (i <= m) {
                 continue;
@@ -1391,13 +1392,13 @@ public final class ab
           {
             Point localPoint;
             Canvas localCanvas;
-            ad.printErrStackTrace("MicroMsg.Media.VideoMixer", (Throwable)localException2, "rsblur exception", new Object[0]);
-            ad.i("MicroMsg.Media.VideoMixer", "rsblur exception, path:%s", new Object[] { ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwW.get(0) });
-            localObject2 = com.tencent.mm.plugin.recordvideo.b.e.xxi.dFr();
-            localObject2 = com.tencent.mm.sdk.platformtools.g.aJ(Color.parseColor("#ff000000"), ((Point)localObject2).x, ((Point)localObject2).y);
+            com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.Media.VideoMixer", (Throwable)localException2, "rsblur exception", new Object[0]);
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Media.VideoMixer", "rsblur exception, path:%s", new Object[] { ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMT.get(0) });
+            localObject2 = com.tencent.mm.plugin.recordvideo.b.e.xNf.dII();
+            localObject2 = h.aK(Color.parseColor("#ff000000"), ((Point)localObject2).x, ((Point)localObject2).y);
             p.g(localObject2, "BitmapUtil.createColorBi…0000\"), point.x, point.y)");
             continue;
-            localObject2 = com.tencent.mm.sdk.platformtools.g.aJ(Color.parseColor("#ff000000"), localPoint.x, localPoint.y);
+            localObject2 = h.aK(Color.parseColor("#ff000000"), localPoint.x, localPoint.y);
             continue;
             float f1 = localPoint.x / i;
             f2 = (localPoint.y - j * f1) * 0.5F;
@@ -1411,23 +1412,23 @@ public final class ab
           }
           continue;
           localObject2 = new BitmapFactory.Options();
-          ad.i("MicroMsg.Media.VideoMixer", "exist thumb bitmap ");
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Media.VideoMixer", "exist thumb bitmap ");
           ((BitmapFactory.Options)localObject2).inMutable = true;
-          localObject4 = com.tencent.mm.sdk.platformtools.g.decodeFile((String)localObject3, (BitmapFactory.Options)localObject2);
+          localObject4 = h.decodeFile((String)localObject3, (BitmapFactory.Options)localObject2);
         }
-        localObject2 = VideoMixer.hg(localb.targetWidth, localb.targetHeight);
-        localObject5 = com.tencent.mm.plugin.recordvideo.e.c.xRv;
-        localObject5 = com.tencent.mm.plugin.recordvideo.e.c.awc(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwP);
-        if (((com.tencent.mm.plugin.recordvideo.b.c)localObject6).htP) {
+        localObject2 = VideoMixer.hi(localb.targetWidth, localb.targetHeight);
+        localObject5 = com.tencent.mm.plugin.recordvideo.e.c.yho;
+        localObject5 = com.tencent.mm.plugin.recordvideo.e.c.axr(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMM);
+        if (((com.tencent.mm.plugin.recordvideo.b.c)localObject6).hwD) {
           break label2153;
         }
       }
-      if ((i != 0) || (!com.tencent.mm.vfs.i.fv(localVideoMixer.xuO.xuZ)))
+      if ((i != 0) || (!o.fB(localVideoMixer.xKL.xKW)))
       {
-        if (localb.hlJ == 270) {
+        if (localb.hoy == 270) {
           break label2326;
         }
-        if (localb.hlJ == 90)
+        if (localb.hoy == 90)
         {
           break label2326;
           if (j == 0) {
@@ -1445,11 +1446,11 @@ public final class ab
             break label2338;
           }
           j = (int)(i / f2);
-          ad.i("MicroMsg.Media.VideoMixer", "thumbHeight:" + j + " thumbWidth:" + i);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Media.VideoMixer", "thumbHeight:" + j + " thumbWidth:" + i);
           localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, j, true);
           localObject4 = new StringBuilder("createGraffitiThumb not capture, thumb size:[");
           p.g(localObject1, "thumb");
-          ad.i("MicroMsg.Media.VideoMixer", ((Bitmap)localObject1).getWidth() + ", " + ((Bitmap)localObject1).getHeight() + "], thumbRotate:" + k + ", drawingRect:" + Arrays.toString(localVideoMixer.xuO.xuU));
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Media.VideoMixer", ((Bitmap)localObject1).getWidth() + ", " + ((Bitmap)localObject1).getHeight() + "], thumbRotate:" + k + ", drawingRect:" + Arrays.toString(localVideoMixer.xKL.xKR));
         }
       }
       for (;;)
@@ -1466,27 +1467,27 @@ public final class ab
         if (i == 0) {
           break label2306;
         }
-        localObject3 = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-        ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).avI(com.tencent.mm.plugin.recordvideo.e.b.yR(cf.aCL()));
-        localObject3 = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwQ;
+        localObject3 = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+        ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).awX(com.tencent.mm.plugin.recordvideo.e.b.zp(ch.aDb()));
+        localObject3 = ((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMN;
         localObject4 = localObject1;
         label557:
         if (localObject4 != null) {
           break label1754;
         }
-        ad.e("MicroMsg.Media.VideoMixer", "createGraffitiThumb thumb is null");
-        localObject1 = com.tencent.mm.plugin.recordvideo.d.f.xHm;
-        com.tencent.mm.plugin.recordvideo.d.f.dGR();
-        localObject1 = com.tencent.mm.plugin.recordvideo.background.e.xuo;
-        localObject1 = com.tencent.mm.plugin.recordvideo.background.e.a(this.xCg, (List)this.xCk.xxl, this.xuA, this.xCl, this.xCk.xuZ, this.hST);
-        localObject3 = com.tencent.mm.plugin.recordvideo.background.f.xuv;
-        com.tencent.mm.plugin.recordvideo.background.f.dET();
-        if (this.hST == 3)
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Media.VideoMixer", "createGraffitiThumb thumb is null");
+        localObject1 = com.tencent.mm.plugin.recordvideo.d.f.xXh;
+        com.tencent.mm.plugin.recordvideo.d.f.dKi();
+        localObject1 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
+        localObject1 = com.tencent.mm.plugin.recordvideo.background.e.a(this.xSb, (List)this.xSf.xNi, this.xKx, this.xSg, this.xSf.xKW, this.hVL);
+        localObject3 = com.tencent.mm.plugin.recordvideo.background.f.xKs;
+        com.tencent.mm.plugin.recordvideo.background.f.dIk();
+        if (this.hVL == 3)
         {
-          localObject3 = com.tencent.mm.plugin.recordvideo.d.e.xHl;
-          com.tencent.mm.plugin.recordvideo.d.e.pQ(this.xuA.GfH);
+          localObject3 = com.tencent.mm.plugin.recordvideo.d.e.xXg;
+          com.tencent.mm.plugin.recordvideo.d.e.pY(this.xKx.Gyp);
         }
-        com.tencent.mm.ad.c.g((d.g.a.a)new q((String)localObject1) {});
+        com.tencent.mm.ac.c.h((d.g.a.a)new q((String)localObject1) {});
         AppMethodBeat.o(75655);
         return;
         i = 0;
@@ -1514,18 +1515,18 @@ public final class ab
         localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, (int)(((Bitmap)localObject1).getHeight() / f1), true);
         break label422;
         label780:
-        if (((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwW.size() != 0) {
+        if (((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMT.size() != 0) {
           break label806;
         }
-        localObject1 = com.tencent.mm.plugin.mmsight.d.aY(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwP, l);
+        localObject1 = com.tencent.mm.plugin.mmsight.d.aZ(((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMM, l);
       }
       label806:
       localObject1 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
-      BitmapFactory.decodeFile((String)((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwW.get(0), (BitmapFactory.Options)localObject1);
+      BitmapFactory.decodeFile((String)((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMT.get(0), (BitmapFactory.Options)localObject1);
       int i = ((BitmapFactory.Options)localObject1).outWidth;
       int j = ((BitmapFactory.Options)localObject1).outHeight;
-      m = com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize();
+      m = com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize();
       Object localObject4 = new Point(i, j);
       Object localObject5;
       if (i > j)
@@ -1536,32 +1537,32 @@ public final class ab
           f1 = i;
           ((Point)localObject4).x = ((int)(m / j * f1));
         }
-        ((BitmapFactory.Options)localObject1).inSampleSize = com.tencent.mm.sdk.platformtools.g.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize(), com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize());
+        ((BitmapFactory.Options)localObject1).inSampleSize = h.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize(), com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize());
         ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
         ((BitmapFactory.Options)localObject1).inMutable = true;
-        localObject4 = MMBitmapFactory.decodeFile((String)((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwW.get(0), (BitmapFactory.Options)localObject1);
-        ((BitmapFactory.Options)localObject1).inSampleSize = com.tencent.mm.sdk.platformtools.g.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize() / 2, com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize() / 2);
-        localObject5 = new com.tencent.mm.ui.blur.e(aj.getContext());
-        localObject1 = MMBitmapFactory.decodeFile((String)((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xwW.get(0), (BitmapFactory.Options)localObject1);
+        localObject4 = MMBitmapFactory.decodeFile((String)((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMT.get(0), (BitmapFactory.Options)localObject1);
+        ((BitmapFactory.Options)localObject1).inSampleSize = h.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize() / 2, com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize() / 2);
+        localObject5 = new com.tencent.mm.ui.blur.e(ak.getContext());
+        localObject1 = MMBitmapFactory.decodeFile((String)((com.tencent.mm.plugin.recordvideo.b.c)localObject6).xMT.get(0), (BitmapFactory.Options)localObject1);
       }
       label1162:
       Object localObject2;
       label1719:
       label1754:
-      if ((localObject5 != null) && (!((c.a)localObject5).xRw))
+      if ((localObject5 != null) && (!((c.a)localObject5).yhp))
       {
-        localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.b.g(new com.tencent.mm.plugin.recordvideo.ui.editor.b.d(localVideoMixer.xuO.xuU, localVideoMixer.xuO.xuV, localVideoMixer.xuO.pRU, ((Point)localObject2).x, ((Point)localObject2).y, ((c.a)localObject5).width, ((c.a)localObject5).height, k, false, localVideoMixer.xuO.xuZ, 256));
-        localVideoMixer.xuG = ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject2);
-        localObject2 = localVideoMixer.xuG;
+        localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.b.g(new com.tencent.mm.plugin.recordvideo.ui.editor.b.d(localVideoMixer.xKL.xKR, localVideoMixer.xKL.xKS, localVideoMixer.xKL.pYz, ((Point)localObject2).x, ((Point)localObject2).y, ((c.a)localObject5).width, ((c.a)localObject5).height, k, false, localVideoMixer.xKL.xKW, 256));
+        localVideoMixer.xKD = ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject2);
+        localObject2 = localVideoMixer.xKD;
         if (localObject2 == null) {
-          p.bcb("frameRetriever");
+          p.bdF("frameRetriever");
         }
         ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject2).start();
-        localObject6 = (Bitmap)localVideoMixer.hkY.invoke(Long.valueOf(1L));
-        localObject2 = (Bitmap)localVideoMixer.hlX.invoke(Long.valueOf(1L));
-        localObject5 = localVideoMixer.xuG;
+        localObject6 = (Bitmap)localVideoMixer.hnM.invoke(Long.valueOf(1L));
+        localObject2 = (Bitmap)localVideoMixer.hoL.invoke(Long.valueOf(1L));
+        localObject5 = localVideoMixer.xKD;
         if (localObject5 == null) {
-          p.bcb("frameRetriever");
+          p.bdF("frameRetriever");
         }
         ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject5).destroy();
         if (localObject2 == null) {
@@ -1571,10 +1572,10 @@ public final class ab
         localObject2 = localObject5;
         if (localObject6 != null)
         {
-          if (localb.hlJ == 270) {
+          if (localb.hoy == 270) {
             break label2355;
           }
-          if (localb.hlJ != 90) {
+          if (localb.hoy != 90) {
             break label2361;
           }
           break label2355;
@@ -1595,7 +1596,7 @@ public final class ab
             break label2242;
           }
           localObject2 = VideoMixer.a((Bitmap)localObject6, (Bitmap)localObject5, (((Bitmap)localObject4).getWidth() - i) / 2.0F, 0.0F, 8);
-          com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject2, 70, Bitmap.CompressFormat.JPEG, (String)localObject3, true);
+          h.a((Bitmap)localObject2, 70, Bitmap.CompressFormat.JPEG, (String)localObject3, true);
           localObject2 = new StringBuilder("createGraffitiThumb : ").append((String)localObject3).append("   graffiti : ");
           if (localObject6 != null) {
             break label2293;
@@ -1606,9 +1607,9 @@ public final class ab
         label2293:
         for (bool = true;; bool = false)
         {
-          ad.i("MicroMsg.Media.VideoMixer", bool);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Media.VideoMixer", bool);
           break;
-          localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.b.g(new com.tencent.mm.plugin.recordvideo.ui.editor.b.d(localVideoMixer.xuO.xuU, localVideoMixer.xuO.xuV, localVideoMixer.xuO.pRU, ((Point)localObject2).x, ((Point)localObject2).y, 0, 0, k, false, localVideoMixer.xuO.xuZ, 256));
+          localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.b.g(new com.tencent.mm.plugin.recordvideo.ui.editor.b.d(localVideoMixer.xKL.xKR, localVideoMixer.xKL.xKS, localVideoMixer.xKL.pYz, ((Point)localObject2).x, ((Point)localObject2).y, 0, 0, k, false, localVideoMixer.xKL.xKW, 256));
           break label1879;
           i = localb.targetWidth;
           break label2045;
@@ -1660,7 +1661,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.ab
  * JD-Core Version:    0.7.0.1
  */

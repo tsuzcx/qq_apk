@@ -16,7 +16,7 @@ public final class b
       while (paramList.hasNext())
       {
         WifiConfiguration localWifiConfiguration = (WifiConfiguration)paramList.next();
-        if ((d.Rv(localWifiConfiguration.SSID).compareTo(paramString) == 0) && (d.d(localWifiConfiguration) == paramInt))
+        if ((d.Se(localWifiConfiguration.SSID).compareTo(paramString) == 0) && (d.d(localWifiConfiguration) == paramInt))
         {
           AppMethodBeat.o(144716);
           return localWifiConfiguration;
@@ -27,7 +27,7 @@ public final class b
     return null;
   }
   
-  public static boolean bJ(String paramString, int paramInt)
+  public static boolean bM(String paramString, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(144715);
@@ -44,7 +44,7 @@ public final class b
       if (((Iterator)localObject).hasNext())
       {
         WifiConfiguration localWifiConfiguration = (WifiConfiguration)((Iterator)localObject).next();
-        if ((d.Rv(localWifiConfiguration.SSID).compareTo(paramString) != 0) || (d.d(localWifiConfiguration) != paramInt)) {
+        if ((d.Se(localWifiConfiguration.SSID).compareTo(paramString) != 0) || (d.d(localWifiConfiguration) != paramInt)) {
           break label115;
         }
         bool |= c.removeNetwork(localWifiConfiguration.networkId);
@@ -76,7 +76,7 @@ public final class b
     return -1;
   }
   
-  public static boolean tM(int paramInt)
+  public static boolean tR(int paramInt)
   {
     AppMethodBeat.i(144717);
     boolean bool = false;
@@ -91,7 +91,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b
  * JD-Core Version:    0.7.0.1
  */

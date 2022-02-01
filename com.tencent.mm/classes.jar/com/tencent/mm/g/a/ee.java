@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ee
   extends b
 {
-  public a dpo;
+  public a dqp;
+  public b dqq;
   
   public ee()
   {
@@ -15,22 +16,23 @@ public final class ee
   
   private ee(byte paramByte)
   {
-    AppMethodBeat.i(115992);
-    this.dpo = new a();
-    this.IbR = false;
+    AppMethodBeat.i(115991);
+    this.dqp = new a();
+    this.dqq = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115992);
+    AppMethodBeat.o(115991);
   }
   
   public static final class a
   {
-    public String dpm;
-    public int dpp = 0;
-    public int dpq = 0;
-    public double dpr = 0.0D;
-    public double dps = 0.0D;
-    public String dpt;
-    public int dpu = 0;
+    public boolean dqo = false;
+    public String dqr;
+  }
+  
+  public static final class b
+  {
+    public boolean dqs = false;
   }
 }
 

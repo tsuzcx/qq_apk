@@ -14,29 +14,25 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.v;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ba;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ay;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.plugin.i.a.o;
 import com.tencent.mm.plugin.i.a.t;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.aty;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.auo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -51,18 +47,18 @@ import java.util.Set;
 public class SettingsNotificationUI
   extends MMPreference
 {
-  private HashMap<Integer, Integer> jax;
+  private HashMap<Integer, Integer> jdq;
   private com.tencent.mm.ui.base.preference.f screen;
   private int status;
-  private boolean yIl;
-  private boolean yIm;
+  private boolean yYv;
+  private boolean yYw;
   
   public SettingsNotificationUI()
   {
     AppMethodBeat.i(74293);
-    this.yIl = true;
-    this.yIm = true;
-    this.jax = new HashMap();
+    this.yYv = true;
+    this.yYw = true;
+    this.jdq = new HashMap();
     AppMethodBeat.o(74293);
   }
   
@@ -70,21 +66,21 @@ public class SettingsNotificationUI
   {
     AppMethodBeat.i(74301);
     Intent localIntent = new Intent();
-    if (com.tencent.mm.compatible.util.d.ly(26))
+    if (com.tencent.mm.compatible.util.d.lA(26))
     {
-      if ((com.tencent.mm.sdk.h.b.fmu()) && ((!com.tencent.mm.sdk.h.b.fmt()) || ((com.tencent.mm.sdk.h.b.fmt()) && (!com.tencent.mm.sdk.h.b.fmv()))))
+      if ((com.tencent.mm.sdk.h.b.fqp()) && ((!com.tencent.mm.sdk.h.b.fqo()) || ((com.tencent.mm.sdk.h.b.fqo()) && (!com.tencent.mm.sdk.h.b.fqq()))))
       {
-        ad.i("MicroMsg.SettingsNotificationUI", "openSysSetting() ifNotificationChannelSupportNativeActionJump = false");
+        ae.i("MicroMsg.SettingsNotificationUI", "openSysSetting() ifNotificationChannelSupportNativeActionJump = false");
         paramString = new Intent("android.intent.action.MAIN");
         paramString.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
-        paramString.putExtra("appName", aj.getContext().getResources().getString(2131755822));
+        paramString.putExtra("appName", ak.getContext().getResources().getString(2131755822));
         paramString.putExtra("packageName", getPackageName());
         com.tencent.mm.pluginsdk.permission.b.a(paramString, paramd);
         AppMethodBeat.o(74301);
         return;
       }
-      ad.i("MicroMsg.SettingsNotificationUI", "openSysSetting() native notificationchannel jump");
-      if (v.N(getContext()).areNotificationsEnabled())
+      ae.i("MicroMsg.SettingsNotificationUI", "openSysSetting() native notificationchannel jump");
+      if (android.support.v4.app.v.O(getContext()).areNotificationsEnabled())
       {
         localIntent.setAction("android.settings.CHANNEL_NOTIFICATION_SETTINGS");
         localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramString);
@@ -98,7 +94,7 @@ public class SettingsNotificationUI
         localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
       }
     }
-    if (com.tencent.mm.compatible.util.d.ly(21))
+    if (com.tencent.mm.compatible.util.d.lA(21))
     {
       localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
       localIntent.putExtra("app_package", getPackageName());
@@ -108,8 +104,8 @@ public class SettingsNotificationUI
     for (;;)
     {
       paramd = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramd.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "openSysSetting", "(Lcom/tencent/mm/pluginsdk/permission/SettingsListener;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramd.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramd.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "openSysSetting", "(Lcom/tencent/mm/pluginsdk/permission/SettingsListener;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramd.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "openSysSetting", "(Lcom/tencent/mm/pluginsdk/permission/SettingsListener;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74301);
       return;
@@ -120,79 +116,79 @@ public class SettingsNotificationUI
     }
   }
   
-  private void axd(String paramString)
+  private void ayt(String paramString)
   {
     AppMethodBeat.i(74300);
     a(new com.tencent.mm.pluginsdk.permission.d()
     {
-      public final void Pg(int paramAnonymousInt) {}
+      public final void PN(int paramAnonymousInt) {}
     }, paramString);
     AppMethodBeat.o(74300);
   }
   
-  private void dNQ()
+  private void dRn()
   {
-    AppMethodBeat.i(221036);
-    Object localObject = new StringBuilder("isSnsOpenEntrance ").append(this.yIl).append(", install ").append(com.tencent.mm.bs.d.aIu("sns")).append(", flag ");
+    AppMethodBeat.i(190408);
+    Object localObject = new StringBuilder("isSnsOpenEntrance ").append(this.yYv).append(", install ").append(com.tencent.mm.br.d.aJN("sns")).append(", flag ");
     boolean bool;
-    if ((u.aAy() & 0x8000) == 0)
+    if ((com.tencent.mm.model.v.aAO() & 0x8000) == 0)
     {
       bool = true;
-      ad.i("MicroMsg.SettingsNotificationUI", bool);
-      if (!this.yIl) {
+      ae.i("MicroMsg.SettingsNotificationUI", bool);
+      if (!this.yYv) {
         break label161;
       }
-      this.screen.cP("settings_sns_notify", false);
+      this.screen.cT("settings_sns_notify", false);
     }
     for (;;)
     {
-      localObject = (CheckBoxPreference)this.screen.aVD("settings_sns_notify");
+      localObject = (CheckBoxPreference)this.screen.aXe("settings_sns_notify");
       if (localObject == null) {
         break label183;
       }
-      ((Preference)localObject).JtB = false;
-      this.yIm = bt.a((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(68384, null), true);
-      if (!this.yIm) {
+      ((Preference)localObject).JOq = false;
+      this.yYw = bu.a((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(68384, null), true);
+      if (!this.yYw) {
         break label178;
       }
-      ((CheckBoxPreference)localObject).oB = true;
-      AppMethodBeat.o(221036);
+      ((CheckBoxPreference)localObject).setChecked(true);
+      AppMethodBeat.o(190408);
       return;
       bool = false;
       break;
       label161:
-      this.screen.cP("settings_sns_notify", true);
+      this.screen.cT("settings_sns_notify", true);
     }
     label178:
-    ((CheckBoxPreference)localObject).oB = false;
+    ((CheckBoxPreference)localObject).setChecked(false);
     label183:
-    AppMethodBeat.o(221036);
+    AppMethodBeat.o(190408);
   }
   
-  private boolean dNR()
+  private boolean dRo()
   {
-    AppMethodBeat.i(221037);
+    AppMethodBeat.i(190409);
     getDefaultSharedPreferences();
     boolean bool;
-    if (!this.yIm)
+    if (!this.yYw)
     {
       bool = true;
-      this.yIm = bool;
-      if (!this.yIm) {
+      this.yYw = bool;
+      if (!this.yYw) {
         break label88;
       }
-      com.tencent.mm.plugin.report.service.g.yhR.f(14098, new Object[] { Integer.valueOf(3) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(14098, new Object[] { Integer.valueOf(3) });
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.ajC().ajl().set(68384, Boolean.valueOf(this.yIm));
-      dNQ();
-      AppMethodBeat.o(221037);
+      com.tencent.mm.kernel.g.ajR().ajA().set(68384, Boolean.valueOf(this.yYw));
+      dRn();
+      AppMethodBeat.o(190409);
       return true;
       bool = false;
       break;
       label88:
-      com.tencent.mm.plugin.report.service.g.yhR.f(14098, new Object[] { Integer.valueOf(4) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(14098, new Object[] { Integer.valueOf(4) });
     }
   }
   
@@ -213,13 +209,13 @@ public class SettingsNotificationUI
     label122:
     Object localObject;
     boolean bool1;
-    if (com.tencent.mm.compatible.util.d.ly(26))
+    if (com.tencent.mm.compatible.util.d.lA(26))
     {
-      this.screen.cP("settings_notification_top", true);
-      this.screen.cP("settings_notification_title", false);
-      this.screen.cP("settings_notification_sound_shake", false);
-      this.screen.cP("settings_voip_sound_and_shake", false);
-      if ((u.aAr() & 0x0) == 0L) {
+      this.screen.cT("settings_notification_top", true);
+      this.screen.cT("settings_notification_title", false);
+      this.screen.cT("settings_notification_sound_shake", false);
+      this.screen.cT("settings_voip_sound_and_shake", false);
+      if ((com.tencent.mm.model.v.aAH() & 0x0) == 0L) {
         break label519;
       }
       i = 1;
@@ -233,44 +229,44 @@ public class SettingsNotificationUI
       }
       bool1 = true;
       label151:
-      ((com.tencent.mm.ui.base.preference.f)localObject).cP("settings_notification_finder", bool1);
-      localObject = (CheckBoxPreference)this.screen.aVD("settings_notification_finder");
-      ((Preference)localObject).JtB = false;
-      bool1 = ((t)com.tencent.mm.kernel.g.ad(t.class)).getRedDotManager().czR();
-      ad.i("MicroMsg.SettingsNotificationUI", "settings_notification_finder : initState".concat(String.valueOf(bool1)));
-      ((CheckBoxPreference)localObject).oB = bool1;
-      localObject = (CheckBoxPreference)this.screen.aVD("settings_new_msg_notification");
-      if (!com.tencent.mm.compatible.util.d.ly(26)) {
+      ((com.tencent.mm.ui.base.preference.f)localObject).cT("settings_notification_finder", bool1);
+      localObject = (CheckBoxPreference)this.screen.aXe("settings_notification_finder");
+      ((Preference)localObject).JOq = false;
+      bool1 = ((t)com.tencent.mm.kernel.g.ad(t.class)).getRedDotManager().cBv();
+      ae.i("MicroMsg.SettingsNotificationUI", "settings_notification_finder : initState".concat(String.valueOf(bool1)));
+      ((CheckBoxPreference)localObject).setChecked(bool1);
+      localObject = (CheckBoxPreference)this.screen.aXe("settings_new_msg_notification");
+      if (!com.tencent.mm.compatible.util.d.lA(26)) {
         break label539;
       }
-      if ((!com.tencent.mm.n.f.abF()) || (!com.tencent.mm.n.f.abG())) {
+      if ((!com.tencent.mm.n.f.abO()) || (!com.tencent.mm.n.f.abP())) {
         break label534;
       }
       bool1 = true;
       label266:
-      ((CheckBoxPreference)localObject).oB = bool1;
+      ((CheckBoxPreference)localObject).setChecked(bool1);
       label272:
-      ((CheckBoxPreference)this.screen.aVD("settings_new_voip_msg_notification")).oB = com.tencent.mm.n.f.abH();
+      ((CheckBoxPreference)this.screen.aXe("settings_new_voip_msg_notification")).setChecked(com.tencent.mm.n.f.abQ());
       if (!((CheckBoxPreference)localObject).isChecked()) {
         break label798;
       }
-      if (!com.tencent.mm.compatible.util.d.ly(26)) {
+      if (!com.tencent.mm.compatible.util.d.lA(26)) {
         break label555;
       }
-      this.screen.cP("settings_notification_sound_and_shake", false);
-      this.screen.cP("settings_sound", true);
-      this.screen.cP("settings_shake", true);
-      this.screen.cP("settings_notification_ringtone", true);
-      com.tencent.mm.n.a.abV();
-      ad.i("MicroMsg.SettingsNotificationUI", "initView() mSpecialSceneSwitchEnable:%s", new Object[] { Integer.valueOf(com.tencent.mm.n.a.abU()) });
+      this.screen.cT("settings_notification_sound_and_shake", false);
+      this.screen.cT("settings_sound", true);
+      this.screen.cT("settings_shake", true);
+      this.screen.cT("settings_notification_ringtone", true);
+      com.tencent.mm.n.a.ace();
+      ae.i("MicroMsg.SettingsNotificationUI", "initView() mSpecialSceneSwitchEnable:%s", new Object[] { Integer.valueOf(com.tencent.mm.n.a.acd()) });
       localObject = this.screen;
-      if (com.tencent.mm.n.a.abU() != 1) {
+      if (com.tencent.mm.n.a.acd() != 1) {
         break label550;
       }
       bool1 = bool2;
       label404:
-      ((com.tencent.mm.ui.base.preference.f)localObject).cP("settings_special_scene_notification_sound_and_shake", bool1);
-      ((CheckBoxPreference)this.screen.aVD("settings_show_detail")).oB = com.tencent.mm.n.f.abI();
+      ((com.tencent.mm.ui.base.preference.f)localObject).cT("settings_special_scene_notification_sound_and_shake", bool1);
+      ((CheckBoxPreference)this.screen.aXe("settings_show_detail")).setChecked(com.tencent.mm.n.f.abR());
     }
     for (;;)
     {
@@ -285,13 +281,13 @@ public class SettingsNotificationUI
           return true;
         }
       });
-      dNQ();
+      dRn();
       AppMethodBeat.o(74295);
       return;
-      this.screen.cP("settings_notification_top", false);
-      this.screen.cP("settings_notification_title", true);
-      this.screen.cP("settings_notification_sound_shake", true);
-      this.screen.cP("settings_voip_sound_and_shake", true);
+      this.screen.cT("settings_notification_top", false);
+      this.screen.cT("settings_notification_title", true);
+      this.screen.cT("settings_notification_sound_shake", true);
+      this.screen.cT("settings_voip_sound_and_shake", true);
       break;
       label519:
       i = 0;
@@ -306,33 +302,33 @@ public class SettingsNotificationUI
       bool1 = false;
       break label266;
       label539:
-      ((CheckBoxPreference)localObject).oB = com.tencent.mm.n.f.abF();
+      ((CheckBoxPreference)localObject).setChecked(com.tencent.mm.n.f.abO());
       break label272;
       label550:
       bool1 = true;
       break label404;
       label555:
-      localObject = (CheckBoxPreference)this.screen.aVD("settings_sound");
-      ((CheckBoxPreference)localObject).oB = com.tencent.mm.n.f.abJ();
+      localObject = (CheckBoxPreference)this.screen.aXe("settings_sound");
+      ((CheckBoxPreference)localObject).setChecked(com.tencent.mm.n.f.abS());
       if (((CheckBoxPreference)localObject).isChecked())
       {
-        localObject = this.screen.aVD("settings_notification_ringtone");
-        if (com.tencent.mm.compatible.util.d.ly(26))
+        localObject = this.screen.aXe("settings_notification_ringtone");
+        if (com.tencent.mm.compatible.util.d.lA(26))
         {
-          String str = com.tencent.mm.n.f.abP();
-          if (str != com.tencent.mm.n.f.gek) {
+          String str = com.tencent.mm.n.f.abY();
+          if (str != com.tencent.mm.n.f.ggs) {
             ((Preference)localObject).setSummary(RingtoneManager.getRingtone(this, Uri.parse(str)).getTitle(this));
           }
         }
       }
       for (;;)
       {
-        ((CheckBoxPreference)this.screen.aVD("settings_shake")).oB = com.tencent.mm.n.f.abN();
-        this.screen.cP("settings_notification_sound_and_shake", true);
-        this.screen.cP("settings_special_scene_notification_title", true);
-        this.screen.cP("settings_specail_scene_sound", true);
-        this.screen.cP("settings_specail_scene_shake", true);
-        this.screen.cP("settings_special_scene_notification_sound_and_shake", true);
+        ((CheckBoxPreference)this.screen.aXe("settings_shake")).setChecked(com.tencent.mm.n.f.abW());
+        this.screen.cT("settings_notification_sound_and_shake", true);
+        this.screen.cT("settings_special_scene_notification_title", true);
+        this.screen.cT("settings_specail_scene_sound", true);
+        this.screen.cT("settings_specail_scene_shake", true);
+        this.screen.cT("settings_special_scene_notification_sound_and_shake", true);
         break;
         ((Preference)localObject).setSummary(getString(2131763334));
         continue;
@@ -340,17 +336,17 @@ public class SettingsNotificationUI
         {
           ((Preference)localObject).setSummary(getDefaultSharedPreferences().getString("settings.ringtone.name", getString(2131763334)));
           continue;
-          this.screen.aVE("settings_notification_ringtone");
+          this.screen.aXf("settings_notification_ringtone");
         }
       }
       label798:
-      this.screen.aVE("settings_show_detail");
-      this.screen.aVE("settings_sound");
-      this.screen.aVE("settings_notification_ringtone");
-      this.screen.aVE("settings_shake");
-      this.screen.aVE("settings_active_time");
-      this.screen.aVE("settings_notification_sound_and_shake");
-      this.screen.aVE("settings_special_scene_notification_sound_and_shake");
+      this.screen.aXf("settings_show_detail");
+      this.screen.aXf("settings_sound");
+      this.screen.aXf("settings_notification_ringtone");
+      this.screen.aXf("settings_shake");
+      this.screen.aXf("settings_active_time");
+      this.screen.aXf("settings_notification_sound_and_shake");
+      this.screen.aXf("settings_special_scene_notification_sound_and_shake");
     }
   }
   
@@ -358,11 +354,11 @@ public class SettingsNotificationUI
   {
     AppMethodBeat.i(74294);
     super.onCreate(paramBundle);
-    this.status = u.aAq();
-    if ((com.tencent.mm.bs.d.aIu("sns")) && ((u.aAy() & 0x8000) == 0)) {}
+    this.status = com.tencent.mm.model.v.aAG();
+    if ((com.tencent.mm.br.d.aJN("sns")) && ((com.tencent.mm.model.v.aAO() & 0x8000) == 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.yIl = bool;
+      this.yYv = bool;
       setMMTitle(2131763332);
       AppMethodBeat.o(74294);
       return;
@@ -373,7 +369,7 @@ public class SettingsNotificationUI
   {
     AppMethodBeat.i(74299);
     super.onDestroy();
-    ay.ou(3);
+    com.tencent.mm.model.ba.ox(3);
     AppMethodBeat.o(74299);
   }
   
@@ -381,20 +377,20 @@ public class SettingsNotificationUI
   {
     AppMethodBeat.i(74296);
     super.onPause();
-    com.tencent.mm.kernel.g.ajC().ajl().set(7, Integer.valueOf(this.status));
-    Iterator localIterator = this.jax.entrySet().iterator();
+    com.tencent.mm.kernel.g.ajR().ajA().set(7, Integer.valueOf(this.status));
+    Iterator localIterator = this.jdq.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
       int j = ((Integer)((Map.Entry)localObject).getValue()).intValue();
-      localObject = new aty();
-      ((aty)localObject).GrZ = i;
-      ((aty)localObject).xcI = j;
-      ((l)com.tencent.mm.kernel.g.ab(l.class)).azo().c(new k.a(23, (com.tencent.mm.bx.a)localObject));
-      ad.d("MicroMsg.SettingsNotificationUI", "switch  " + i + " " + j);
+      localObject = new auo();
+      ((auo)localObject).GLx = i;
+      ((auo)localObject).xsz = j;
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).azE().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
+      ae.d("MicroMsg.SettingsNotificationUI", "switch  " + i + " " + j);
     }
-    this.jax.clear();
+    this.jdq.clear();
     AppMethodBeat.o(74296);
   }
   
@@ -404,10 +400,10 @@ public class SettingsNotificationUI
     paramf = paramPreference.mKey;
     boolean bool;
     if (paramf.equals("settings_new_msg_notification")) {
-      if ((com.tencent.mm.compatible.util.d.ly(26)) && (!com.tencent.mm.n.f.abG()))
+      if ((com.tencent.mm.compatible.util.d.lA(26)) && (!com.tencent.mm.n.f.abP()))
       {
         f.a locala = new f.a(getContext());
-        locala.aXO(getString(2131763111)).yU(false);
+        locala.aZq(getString(2131763111)).zi(false);
         locala.c(new f.c()
         {
           public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
@@ -417,10 +413,10 @@ public class SettingsNotificationUI
             {
               SettingsNotificationUI.a(SettingsNotificationUI.this, new com.tencent.mm.pluginsdk.permission.d()
               {
-                public final void Pg(int paramAnonymous2Int)
+                public final void PN(int paramAnonymous2Int)
                 {
                   AppMethodBeat.i(74289);
-                  if (!com.tencent.mm.n.f.abG())
+                  if (!com.tencent.mm.n.f.abP())
                   {
                     SettingsNotificationUI.this.initView();
                     AppMethodBeat.o(74289);
@@ -428,11 +424,11 @@ public class SettingsNotificationUI
                   }
                   com.tencent.mm.n.f.cQ(true);
                   SettingsNotificationUI.this.initView();
-                  com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 0L, 1L, false);
-                  ay.m(true, false);
+                  com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 0L, 1L, false);
+                  com.tencent.mm.model.ba.m(true, false);
                   AppMethodBeat.o(74289);
                 }
-              }, com.tencent.mm.br.a.abB());
+              }, com.tencent.mm.bq.a.abK());
               AppMethodBeat.o(74290);
               return;
             }
@@ -444,9 +440,9 @@ public class SettingsNotificationUI
           break label467;
         }
         bool = ((CheckBoxPreference)paramPreference).isChecked();
-        com.tencent.mm.kernel.g.ajC().ajl().set(73217, Boolean.valueOf(bool));
-        com.tencent.mm.kernel.g.ajC().ajl().set(73218, Boolean.valueOf(bool));
-        paramf = com.tencent.mm.plugin.report.service.g.yhR;
+        com.tencent.mm.kernel.g.ajR().ajA().set(73217, Boolean.valueOf(bool));
+        com.tencent.mm.kernel.g.ajR().ajA().set(73218, Boolean.valueOf(bool));
+        paramf = com.tencent.mm.plugin.report.service.g.yxI;
         if (!bool) {
           break label459;
         }
@@ -456,31 +452,31 @@ public class SettingsNotificationUI
     for (long l = 8L;; l = 9L)
     {
       paramf.idkeyStat(500L, l, 1L, false);
-      ad.i("MicroMsg.SettingsNotificationUI", "void sound checkbox %b", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.SettingsNotificationUI", "void sound checkbox %b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(74298);
       return true;
       com.tencent.mm.n.f.cQ(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       if (((CheckBoxPreference)paramPreference).isChecked()) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 0L, 1L, false);
       }
       for (;;)
       {
-        ay.m(true, false);
+        com.tencent.mm.model.ba.m(true, false);
         AppMethodBeat.o(74298);
         return true;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 1L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 1L, 1L, false);
       }
       if (paramf.equals("settings_sns_notify"))
       {
-        bool = dNR();
+        bool = dRo();
         AppMethodBeat.o(74298);
         return bool;
       }
       if (paramf.equals("settings_notification_finder"))
       {
         bool = ((CheckBoxPreference)paramPreference).isChecked();
-        ad.i("MicroMsg.SettingsNotificationUI", "settings_notification_finder isEnable=%s", new Object[] { Boolean.valueOf(bool) });
+        ae.i("MicroMsg.SettingsNotificationUI", "settings_notification_finder isEnable=%s", new Object[] { Boolean.valueOf(bool) });
         ((t)com.tencent.mm.kernel.g.ad(t.class)).getRedDotManager().lN(bool);
         break;
       }
@@ -494,32 +490,32 @@ public class SettingsNotificationUI
           {
             AppMethodBeat.i(74291);
             com.tencent.mm.n.f.cR(false);
-            paramAnonymousDialogInterface = new bu();
-            paramAnonymousDialogInterface.kr(2);
-            paramAnonymousDialogInterface.qA(System.currentTimeMillis());
+            paramAnonymousDialogInterface = new bv();
+            paramAnonymousDialogInterface.kt(2);
+            paramAnonymousDialogInterface.qN(System.currentTimeMillis());
             paramAnonymousDialogInterface.setType(1);
-            paramAnonymousDialogInterface.tN("weixin");
+            paramAnonymousDialogInterface.ui("weixin");
             paramAnonymousDialogInterface.setContent(SettingsNotificationUI.this.getContext().getString(2131763330, new Object[] { Build.MODEL }));
-            bj.v(paramAnonymousDialogInterface);
-            paramAnonymousDialogInterface = ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().aTz("weixin");
+            bl.v(paramAnonymousDialogInterface);
+            paramAnonymousDialogInterface = ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aVa("weixin");
             if (paramAnonymousDialogInterface != null)
             {
               paramAnonymousDialogInterface.setContent(SettingsNotificationUI.this.getContext().getString(2131763330, new Object[] { Build.MODEL }));
-              paramAnonymousDialogInterface.kp(paramAnonymousDialogInterface.field_unReadCount + 1);
-              ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().a(paramAnonymousDialogInterface, "weixin");
+              paramAnonymousDialogInterface.kr(paramAnonymousDialogInterface.field_unReadCount + 1);
+              ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().a(paramAnonymousDialogInterface, "weixin");
             }
             for (;;)
             {
               SettingsNotificationUI.this.initView();
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 3L, 1L, false);
-              ay.m(false, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 3L, 1L, false);
+              com.tencent.mm.model.ba.m(false, true);
               AppMethodBeat.o(74291);
               return;
-              paramAnonymousDialogInterface = new at();
+              paramAnonymousDialogInterface = new au();
               paramAnonymousDialogInterface.setContent(SettingsNotificationUI.this.getContext().getString(2131763330, new Object[] { Build.MODEL }));
               paramAnonymousDialogInterface.setUsername("weixin");
-              paramAnonymousDialogInterface.kp(1);
-              ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().e(paramAnonymousDialogInterface);
+              paramAnonymousDialogInterface.kr(1);
+              ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().e(paramAnonymousDialogInterface);
             }
           }
         }, new DialogInterface.OnClickListener()
@@ -528,9 +524,9 @@ public class SettingsNotificationUI
           {
             AppMethodBeat.i(74292);
             com.tencent.mm.n.f.cR(true);
-            ((CheckBoxPreference)SettingsNotificationUI.a(SettingsNotificationUI.this).aVD("settings_new_voip_msg_notification")).oB = true;
+            ((CheckBoxPreference)SettingsNotificationUI.a(SettingsNotificationUI.this).aXe("settings_new_voip_msg_notification")).setChecked(true);
             SettingsNotificationUI.this.initView();
-            ay.m(false, true);
+            com.tencent.mm.model.ba.m(false, true);
             AppMethodBeat.o(74292);
           }
         }, 2131099904, 0);
@@ -540,8 +536,8 @@ public class SettingsNotificationUI
         AppMethodBeat.o(74298);
         return true;
         com.tencent.mm.n.f.cR(true);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 2L, 1L, false);
-        ay.m(false, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 2L, 1L, false);
+        com.tencent.mm.model.ba.m(false, true);
         initView();
       }
     }
@@ -551,13 +547,13 @@ public class SettingsNotificationUI
       com.tencent.mm.n.f.cT(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       if (((CheckBoxPreference)paramPreference).isChecked()) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 10L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 10L, 1L, false);
       }
       for (;;)
       {
         AppMethodBeat.o(74298);
         return true;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 11L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 11L, 1L, false);
       }
     }
     if (paramf.equals("settings_shake"))
@@ -565,14 +561,14 @@ public class SettingsNotificationUI
       com.tencent.mm.n.f.cU(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       if (((CheckBoxPreference)paramPreference).isChecked()) {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 16L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 16L, 1L, false);
       }
       for (;;)
       {
-        bt.F(this, ((CheckBoxPreference)paramPreference).isChecked());
+        bu.F(this, ((CheckBoxPreference)paramPreference).isChecked());
         AppMethodBeat.o(74298);
         return true;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(500L, 17L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 17L, 1L, false);
       }
     }
     label702:
@@ -584,7 +580,7 @@ public class SettingsNotificationUI
       if (!bool)
       {
         bool = true;
-        ad.d("MicroMsg.SettingsNotificationUI", "switch change : open = " + bool + " item value = 2048 functionId = 10");
+        ae.d("MicroMsg.SettingsNotificationUI", "switch change : open = " + bool + " item value = 2048 functionId = 10");
         if (!bool) {
           break label740;
         }
@@ -597,7 +593,7 @@ public class SettingsNotificationUI
       label755:
       for (i = 1;; i = 2)
       {
-        this.jax.put(Integer.valueOf(10), Integer.valueOf(i));
+        this.jdq.put(Integer.valueOf(10), Integer.valueOf(i));
         AppMethodBeat.o(74298);
         return true;
         bool = false;
@@ -610,15 +606,15 @@ public class SettingsNotificationUI
     {
       paramf = new Intent(getContext(), SettingsRingtoneUI.class);
       paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "setRingtone", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "setRingtone", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "setRingtone", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74298);
       return true;
     }
     if (paramf.equals("settings_notification_sound_and_shake"))
     {
-      axd(com.tencent.mm.br.a.abB());
+      ayt(com.tencent.mm.bq.a.abK());
       AppMethodBeat.o(74298);
       return true;
     }
@@ -627,21 +623,21 @@ public class SettingsNotificationUI
       paramf = new Intent();
       paramf.setClass(this, SettingsSpecialSceneNotificationUI.class);
       paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "goSettingsSpecialSceneNotificationUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "goSettingsSpecialSceneNotificationUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "goSettingsSpecialSceneNotificationUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74298);
       return true;
     }
     if (paramf.equals("settings_voip_sound_and_shake"))
     {
-      if ((com.tencent.mm.compatible.util.d.lA(28)) || (Build.VERSION.CODENAME.equals("Q")))
+      if ((com.tencent.mm.compatible.util.d.lC(28)) || (Build.VERSION.CODENAME.equals("Q")))
       {
         i = 1;
         if (i == 0) {
           break label1037;
         }
-        axd(com.tencent.mm.br.a.eYE());
+        ayt(com.tencent.mm.bq.a.fcs());
       }
       for (;;)
       {
@@ -653,8 +649,8 @@ public class SettingsNotificationUI
         paramf = new Intent();
         paramf.setClass(this, SettingsVoipSoundVibrateUI.class);
         paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "goSettingsVoipSoundVibrateUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "goSettingsVoipSoundVibrateUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsNotificationUI", "goSettingsVoipSoundVibrateUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }

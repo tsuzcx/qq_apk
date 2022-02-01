@@ -7,7 +7,7 @@ import com.tencent.toybrick.c.f;
 public class a
   extends RecyclerView.w
 {
-  public f MjI;
+  public f MGF;
   
   public a(View paramView)
   {

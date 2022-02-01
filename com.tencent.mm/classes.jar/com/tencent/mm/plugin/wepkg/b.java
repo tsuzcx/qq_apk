@@ -8,37 +8,37 @@ import com.tencent.mm.plugin.wepkg.model.g;
 
 public final class b
 {
-  static d EDd;
+  static d EVz;
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(214439);
+    AppMethodBeat.i(209367);
     if (parama != null) {
-      parama.alE(getCode());
+      parama.amE(getCode());
     }
-    AppMethodBeat.o(214439);
+    AppMethodBeat.o(209367);
   }
   
   private static String getCode()
   {
-    AppMethodBeat.i(214438);
+    AppMethodBeat.i(209366);
     Object localObject = new d();
-    EDd = (d)localObject;
+    EVz = (d)localObject;
     ((d)localObject).k("http://game.weixin.qq.com/jsserver.js?wechat_pkgid=jscore_lib", true, false);
-    localObject = EDd;
-    if ((((d)localObject).EDn == null) || (((d)localObject).EDn.EFd == null))
+    localObject = EVz;
+    if ((((d)localObject).EVJ == null) || (((d)localObject).EVJ.EXz == null))
     {
-      AppMethodBeat.o(214438);
+      AppMethodBeat.o(209366);
       return null;
     }
-    localObject = ((d)localObject).EDn.EFd.eYa();
-    AppMethodBeat.o(214438);
+    localObject = ((d)localObject).EVJ.EXz.fbM();
+    AppMethodBeat.o(209366);
     return localObject;
   }
   
   public static abstract interface a
   {
-    public abstract void alE(String paramString);
+    public abstract void amE(String paramString);
   }
 }
 

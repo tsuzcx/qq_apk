@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 public final class e {}
 
 

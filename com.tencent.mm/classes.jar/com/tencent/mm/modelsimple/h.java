@@ -1,62 +1,58 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.adq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.acx;
+import com.tencent.mm.protocal.protobuf.acy;
 
 public final class h
   extends n
   implements k
 {
-  private f callback;
-  private final com.tencent.mm.al.b rr;
+  private f gCo;
+  private final b rr;
   
-  public h(String paramString)
+  public h(int paramInt)
   {
-    AppMethodBeat.i(20609);
-    ad.i("MicroMsg.NetSceneDelTempSession", "NetSceneDelTempSession %s", new Object[] { paramString });
-    Object localObject = new b.a();
-    ((b.a)localObject).hNM = new adp();
-    ((b.a)localObject).hNN = new adq();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/deltempsession";
-    ((b.a)localObject).funcId = 1067;
-    ((b.a)localObject).hNO = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (adp)this.rr.hNK.hNQ;
-    ((adp)localObject).FGE = paramString;
-    ((adp)localObject).Gcf = com.tencent.mm.bx.b.cj(new byte[0]);
-    AppMethodBeat.o(20609);
+    AppMethodBeat.i(150913);
+    b.a locala = new b.a();
+    locala.hQF = new acx();
+    locala.hQG = new acy();
+    locala.uri = "/cgi-bin/mmbiz-bin/oauth_delavatar";
+    locala.funcId = 2700;
+    locala.hQH = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.aDS();
+    ((acx)this.rr.hQD.hQJ).GuE = paramInt;
+    AppMethodBeat.o(150913);
   }
   
   public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(20610);
-    this.callback = paramf;
+    AppMethodBeat.i(150915);
+    this.gCo = paramf;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(20610);
+    AppMethodBeat.o(150915);
     return i;
   }
   
   public final int getType()
   {
-    return 1067;
+    return 2700;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(20611);
-    ad.i("MicroMsg.NetSceneDelTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(20611);
+    AppMethodBeat.i(150914);
+    this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(150914);
   }
 }
 

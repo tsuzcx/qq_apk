@@ -9,12 +9,12 @@ final class a
 {
   private static final int CTRL_INDEX = 246;
   private static final String NAME = "onStartReportPageData";
-  private static final a laG;
+  private static final a lep;
   
   static
   {
     AppMethodBeat.i(147208);
-    laG = new a();
+    lep = new a();
     AppMethodBeat.o(147208);
   }
   
@@ -23,7 +23,7 @@ final class a
     try
     {
       AppMethodBeat.i(147207);
-      laG.g(paramc).bir();
+      lep.g(paramc).bja();
       AppMethodBeat.o(147207);
       return;
     }

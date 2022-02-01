@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "", "scanTabId", "", "scanTabTitle", "", "(ILjava/lang/String;)V", "getScanTabId", "()I", "getScanTabTitle", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "", "scanTabId", "", "scanTabTitle", "", "(ILjava/lang/String;)V", "getScanTabId", "()I", "getScanTabTitle", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-scan_release"})
 public final class b$b
 {
-  public final int yyD;
-  final String yyE;
+  public final int yOD;
+  final String yOE;
   
   public b$b(int paramInt, String paramString)
   {
     AppMethodBeat.i(52428);
-    this.yyD = paramInt;
-    this.yyE = paramString;
+    this.yOD = paramInt;
+    this.yOE = paramString;
     AppMethodBeat.o(52428);
   }
   
@@ -26,7 +26,7 @@ public final class b$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.yyD != paramObject.yyD) || (!p.i(this.yyE, paramObject.yyE))) {}
+        if ((this.yOD != paramObject.yOD) || (!p.i(this.yOE, paramObject.yOE))) {}
       }
     }
     else
@@ -41,8 +41,8 @@ public final class b$b
   public final int hashCode()
   {
     AppMethodBeat.i(52430);
-    int j = this.yyD;
-    String str = this.yyE;
+    int j = this.yOD;
+    String str = this.yOE;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
@@ -54,7 +54,7 @@ public final class b$b
   public final String toString()
   {
     AppMethodBeat.i(52429);
-    String str = "ScanTabInfo(scanTabId=" + this.yyD + ", scanTabTitle=" + this.yyE + ")";
+    String str = "ScanTabInfo(scanTabId=" + this.yOD + ", scanTabTitle=" + this.yOE + ")";
     AppMethodBeat.o(52429);
     return str;
   }

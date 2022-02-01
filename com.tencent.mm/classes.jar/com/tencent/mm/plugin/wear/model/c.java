@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.wear.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.i;
 import com.tencent.mm.pluginsdk.o.c.a;
-import com.tencent.mm.protocal.protobuf.ect;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class c
   implements o.c.a
 {
-  public final String eKC()
+  public final String eOk()
   {
     AppMethodBeat.i(29977);
-    Object localObject = a.eKv().DwN.Dxz;
+    Object localObject = a.eOd().DOs.DPe;
     if (localObject != null)
     {
-      localObject = ((ect)localObject).HOH + "\n" + ((ect)localObject).HOI + "\n" + ((ect)localObject).HOJ;
+      localObject = ((eek)localObject).IiO + "\n" + ((eek)localObject).IiP + "\n" + ((eek)localObject).IiQ;
       AppMethodBeat.o(29977);
       return localObject;
     }
@@ -23,18 +23,18 @@ public final class c
     return "Not Connect";
   }
   
-  public final void eKD()
+  public final void eOl()
   {
     AppMethodBeat.i(29978);
-    a.eKw().a(new com.tencent.mm.plugin.wear.model.f.a());
+    a.eOe().a(new com.tencent.mm.plugin.wear.model.f.a());
     AppMethodBeat.o(29978);
   }
   
-  public final boolean eKE()
+  public final boolean eOm()
   {
     AppMethodBeat.i(29979);
-    Object localObject = a.eKv().DwN.Dxz;
-    if ((bt.isNullOrNil(null)) && (bt.isNullOrNil(null)))
+    Object localObject = a.eOd().DOs.DPe;
+    if ((bu.isNullOrNil(null)) && (bu.isNullOrNil(null)))
     {
       if (localObject != null)
       {
@@ -44,7 +44,7 @@ public final class c
       AppMethodBeat.o(29979);
       return false;
     }
-    if (bt.isNullOrNil(null))
+    if (bu.isNullOrNil(null))
     {
       if (localObject != null) {
         throw new NullPointerException();
@@ -52,11 +52,11 @@ public final class c
       AppMethodBeat.o(29979);
       return false;
     }
-    if (bt.isNullOrNil(null))
+    if (bu.isNullOrNil(null))
     {
       if (localObject != null)
       {
-        localObject = ((ect)localObject).HOE;
+        localObject = ((eek)localObject).IiL;
         throw new NullPointerException();
       }
       AppMethodBeat.o(29979);

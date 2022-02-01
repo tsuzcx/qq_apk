@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.protocal.protobuf.x;
 import com.tencent.mm.protocal.protobuf.y;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends a<y>
@@ -18,14 +18,14 @@ public final class c
     localx.limit = paramInt1;
     localx.offset = paramInt2;
     localx.type = paramInt3;
-    locala.hNM = localx;
-    locala.hNN = new y();
+    locala.hQF = localx;
+    locala.hQG = new y();
     locala.uri = "/cgi-bin/mmpay-bin/newaaquerylist";
     locala.funcId = 1676;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    ad.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    c(locala.aDS());
+    ae.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(63373);
   }
   
@@ -37,18 +37,18 @@ public final class c
     localx.limit = paramInt1;
     localx.offset = paramInt2;
     localx.type = paramInt3;
-    localx.Fqr = paramString1;
-    localx.Fqs = paramInt4;
-    localx.Fqt = paramInt5;
-    localx.Fqu = paramString2;
-    locala.hNM = localx;
-    locala.hNN = new y();
+    localx.FIP = paramString1;
+    localx.FIQ = paramInt4;
+    localx.FIR = paramInt5;
+    localx.FIS = paramString2;
+    locala.hQF = localx;
+    locala.hQG = new y();
     locala.uri = "/cgi-bin/mmpay-bin/newaaquerylist";
     locala.funcId = 1676;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    c(locala.aDC());
-    ad.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s, bill_id: %s, trans_id: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString1, paramString2 });
+    c(locala.aDS());
+    ae.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s, bill_id: %s, trans_id: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString1, paramString2 });
     AppMethodBeat.o(63372);
   }
 }

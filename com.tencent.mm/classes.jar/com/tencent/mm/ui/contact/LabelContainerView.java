@@ -10,14 +10,14 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  boolean KmF;
-  boolean KmG;
-  boolean KmH;
-  float KmI;
-  float KmJ;
-  float KmK;
-  float KmL;
-  private a KmM;
+  boolean KIZ;
+  boolean KJa;
+  boolean KJb;
+  float KJc;
+  float KJd;
+  float KJe;
+  float KJf;
+  private a KJg;
   private int Pf;
   boolean Pr;
   float Pw;
@@ -30,10 +30,10 @@ public class LabelContainerView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(102845);
     this.Pr = true;
-    this.KmF = false;
-    this.KmG = true;
-    this.KmH = false;
-    cnk();
+    this.KIZ = false;
+    this.KJa = true;
+    this.KJb = false;
+    coH();
     AppMethodBeat.o(102845);
   }
   
@@ -42,14 +42,14 @@ public class LabelContainerView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(102844);
     this.Pr = true;
-    this.KmF = false;
-    this.KmG = true;
-    this.KmH = false;
-    cnk();
+    this.KIZ = false;
+    this.KJa = true;
+    this.KJb = false;
+    coH();
     AppMethodBeat.o(102844);
   }
   
-  private void cnk()
+  private void coH()
   {
     AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
@@ -57,10 +57,10 @@ public class LabelContainerView
     AppMethodBeat.o(102847);
   }
   
-  public final void ciQ()
+  public final void ckg()
   {
     AppMethodBeat.i(102850);
-    this.KmM.ciQ();
+    this.KJg.ckg();
     AppMethodBeat.o(102850);
   }
   
@@ -125,22 +125,22 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.KmG = true;
-      this.KmJ = f2;
-      this.KmI = f2;
-      this.KmL = f1;
-      this.KmK = f1;
-      this.KmH = true;
+      this.KJa = true;
+      this.KJd = f2;
+      this.KJc = f2;
+      this.KJf = f1;
+      this.KJe = f1;
+      this.KJb = true;
       continue;
-      i = (int)(f2 - this.KmI);
-      j = (int)(f1 - this.KmK);
+      i = (int)(f2 - this.KJc);
+      j = (int)(f1 - this.KJe);
       if (j * j + i * i > this.Pf)
       {
-        this.KmG = false;
+        this.KJa = false;
         AppMethodBeat.o(102846);
         return true;
-        this.KmG = true;
-        this.KmH = false;
+        this.KJa = true;
+        this.KJb = false;
       }
     }
   }
@@ -203,19 +203,19 @@ public class LabelContainerView
       this.Py = f2;
       this.Px = f1;
       this.Pz = f1;
-      this.KmF = true;
+      this.KIZ = true;
       continue;
-      if (!this.KmF)
+      if (!this.KIZ)
       {
         this.Pr = true;
         this.Pw = f2;
         this.Py = f2;
         this.Px = f1;
         this.Pz = f1;
-        this.KmF = true;
+        this.KIZ = true;
       }
-      if (this.KmM != null) {
-        this.KmM.ciR();
+      if (this.KJg != null) {
+        this.KJg.ckh();
       }
       i = (int)(f2 - this.Py);
       j = (int)(f1 - this.Pz);
@@ -223,30 +223,30 @@ public class LabelContainerView
       {
         this.Pr = false;
         continue;
-        if (((this.Pr) || (!this.KmF)) && (this.KmM != null)) {
-          this.KmM.ciQ();
+        if (((this.Pr) || (!this.KIZ)) && (this.KJg != null)) {
+          this.KJg.ckg();
         }
         this.Pr = true;
-        this.KmF = false;
+        this.KIZ = false;
       }
     }
   }
   
   public void setOnLabelContainerListener(a parama)
   {
-    this.KmM = parama;
+    this.KJg = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void ciQ();
+    public abstract void ckg();
     
-    public abstract void ciR();
+    public abstract void ckh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.contact.LabelContainerView
  * JD-Core Version:    0.7.0.1
  */

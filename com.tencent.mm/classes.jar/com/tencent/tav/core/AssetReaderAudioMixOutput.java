@@ -23,12 +23,12 @@ public class AssetReaderAudioMixOutput
   
   public AssetReaderAudioMixOutput(ArrayList<AssetTrack> paramArrayList, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(217807);
+    AppMethodBeat.i(214445);
     this.decoderStarted = false;
     this.audioTracks = paramArrayList;
     this.audioSettings = paramMap;
     this.audioCompositionDecoderTrack = new AudioCompositionDecoderTrack(paramArrayList, 2);
-    AppMethodBeat.o(217807);
+    AppMethodBeat.o(214445);
   }
   
   public Map<String, Object> getAudioSettings()
@@ -45,54 +45,54 @@ public class AssetReaderAudioMixOutput
   
   public CMSampleBuffer nextSampleBuffer()
   {
-    AppMethodBeat.i(217808);
+    AppMethodBeat.i(214446);
     CMSampleBuffer localCMSampleBuffer = this.audioCompositionDecoderTrack.readSample();
     if (localCMSampleBuffer.getTime().smallThan(this.assetReader.getTimeRange().getStart()))
     {
-      AppMethodBeat.o(217808);
+      AppMethodBeat.o(214446);
       return localCMSampleBuffer;
     }
     if (localCMSampleBuffer.getTime().smallThan(this.assetReader.getTimeRange().getEnd()))
     {
       localCMSampleBuffer = new CMSampleBuffer(localCMSampleBuffer.getTime().sub(this.assetReader.getTimeRange().getStart()), localCMSampleBuffer.getSampleByteBuffer(), localCMSampleBuffer.isNewFrame());
-      AppMethodBeat.o(217808);
+      AppMethodBeat.o(214446);
       return localCMSampleBuffer;
     }
     localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-1L));
-    AppMethodBeat.o(217808);
+    AppMethodBeat.o(214446);
     return localCMSampleBuffer;
   }
   
   void release()
   {
-    AppMethodBeat.i(217811);
+    AppMethodBeat.i(214449);
     if (this.audioCompositionDecoderTrack != null) {
       this.audioCompositionDecoderTrack.release();
     }
-    AppMethodBeat.o(217811);
+    AppMethodBeat.o(214449);
   }
   
   public void resetForReadingTimeRanges(List<CMTimeRange> paramList) {}
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217809);
+    AppMethodBeat.i(214447);
     this.audioCompositionDecoderTrack.setAudioInfo(paramAudioInfo);
-    AppMethodBeat.o(217809);
+    AppMethodBeat.o(214447);
   }
   
   public void setAudioMix(AudioMix paramAudioMix)
   {
-    AppMethodBeat.i(217812);
+    AppMethodBeat.i(214450);
     if (this.audioCompositionDecoderTrack != null) {
       this.audioCompositionDecoderTrack.setAudioMix(paramAudioMix);
     }
-    AppMethodBeat.o(217812);
+    AppMethodBeat.o(214450);
   }
   
   void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader)
   {
-    AppMethodBeat.i(217810);
+    AppMethodBeat.i(214448);
     this.assetReader = paramAssetReader;
     if ((this.audioCompositionDecoderTrack != null) && (!this.decoderStarted))
     {
@@ -100,7 +100,7 @@ public class AssetReaderAudioMixOutput
       this.audioCompositionDecoderTrack.seekTo(paramAssetReader.getTimeRange().getStart(), false, true);
       this.decoderStarted = true;
     }
-    AppMethodBeat.o(217810);
+    AppMethodBeat.o(214448);
   }
 }
 

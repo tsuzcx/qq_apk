@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.finder.feed;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract;", "", "()V", "IProfileTimelinePresenter", "ProfileTimelinePresenter", "ProfileTimelineViewCallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract;", "", "()V", "IProfileTimelinePresenter", "ProfileTimelinePresenter", "ProfileTimelineViewCallback", "plugin-finder_release"})
 public final class x
 {
-  public static final x rWz;
+  public static final x sfk;
   
   static
   {
     AppMethodBeat.i(165796);
-    rWz = new x();
+    sfk = new x();
     AppMethodBeat.o(165796);
   }
 }

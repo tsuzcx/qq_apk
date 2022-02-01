@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.j;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -16,8 +16,8 @@ public final class b
   private Context context = null;
   private String stackTrace = "";
   private String threadName = "";
-  private int yiA = 0;
-  private long yiB = 0L;
+  private int yyr = 0;
+  private long yys = 0L;
   
   public b(Context paramContext)
   {
@@ -39,7 +39,7 @@ public final class b
       if ((i + 1) * 512 < this.stackTrace.length()) {}
       for (paramThread = this.stackTrace.substring(i * 512, (i + 1) * 512);; paramThread = this.stackTrace.substring(i * 512))
       {
-        g.yhR.f(17910, new Object[] { a.hgG, i.hgG, this.threadName, Integer.valueOf(0), paramThread, Integer.valueOf(1), Integer.valueOf(i + 1), Integer.valueOf(j), Long.valueOf(l) });
+        g.yxI.f(17910, new Object[] { a.hju, j.hju, this.threadName, Integer.valueOf(0), paramThread, Integer.valueOf(1), Integer.valueOf(i + 1), Integer.valueOf(j), Long.valueOf(l) });
         i += 1;
         break;
       }

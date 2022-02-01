@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.mall.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zi;
+import com.tencent.mm.g.a.zo;
 import com.tencent.mm.sdk.b.c;
 
 final class MallIndexOSUI$2
-  extends c<zi>
+  extends c<zo>
 {
   MallIndexOSUI$2(MallIndexOSUI paramMallIndexOSUI)
   {
     AppMethodBeat.i(160810);
-    this.__eventId = zi.class.getName().hashCode();
+    this.__eventId = zo.class.getName().hashCode();
     AppMethodBeat.o(160810);
   }
 }

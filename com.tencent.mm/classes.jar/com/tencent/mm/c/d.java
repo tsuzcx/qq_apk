@@ -13,17 +13,17 @@ import com.tencent.mm.view.b.a;
 public final class d
   extends b
 {
-  public ValueAnimator cPJ;
-  public a cQc;
-  public float cQd = 1.0F;
-  public float cQe;
-  public float cQf;
-  public boolean cQg = true;
-  public boolean cQh = false;
+  public a cQM;
+  public float cQN = 1.0F;
+  public float cQO;
+  public float cQP;
+  public boolean cQQ = true;
+  public boolean cQR = false;
+  public ValueAnimator cQt;
   
   public d(a parama)
   {
-    this.cQc = parama;
+    this.cQM = parama;
   }
 }
 

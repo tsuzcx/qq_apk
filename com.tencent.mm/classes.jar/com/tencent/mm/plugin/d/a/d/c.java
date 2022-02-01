@@ -12,9 +12,9 @@ public abstract interface c
   
   public abstract void m(long paramLong, boolean paramBoolean);
   
-  public abstract void th(long paramLong);
+  public abstract void tv(long paramLong);
   
-  public abstract void yV(int paramInt);
+  public abstract void ze(int paramInt);
 }
 
 

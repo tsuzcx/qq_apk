@@ -5,33 +5,33 @@ import java.nio.ByteBuffer;
 
 public final class b<T>
 {
-  final i<T> MFI;
+  final i<T> NcO;
   public final String name;
-  public final c vCh;
+  public final c vOl;
   
   public b(c paramc, String paramString, i<T> parami)
   {
-    this.vCh = paramc;
+    this.vOl = paramc;
     this.name = paramString;
-    this.MFI = parami;
+    this.NcO = parami;
   }
   
-  public final void eF(T paramT)
+  public final void eI(T paramT)
   {
     AppMethodBeat.i(9842);
-    this.vCh.a(this.name, this.MFI.eG(paramT), null);
+    this.vOl.a(this.name, this.NcO.eJ(paramT), null);
     AppMethodBeat.o(9842);
   }
   
   public final class a
     implements c.a
   {
-    private final b.b<T> MFJ;
+    private final b.b<T> NcP;
     
     private a()
     {
       Object localObject;
-      this.MFJ = localObject;
+      this.NcP = localObject;
     }
     
     public final void a(ByteBuffer paramByteBuffer, final c.b paramb)
@@ -39,10 +39,10 @@ public final class b<T>
       AppMethodBeat.i(9830);
       try
       {
-        b.b localb = this.MFJ;
-        paramByteBuffer = b.this.MFI.J(paramByteBuffer);
+        b.b localb = this.NcP;
+        paramByteBuffer = b.this.NcO.J(paramByteBuffer);
         new Object() {};
-        localb.eE(paramByteBuffer);
+        localb.eH(paramByteBuffer);
         AppMethodBeat.o(9830);
         return;
       }
@@ -57,12 +57,12 @@ public final class b<T>
   
   public static abstract interface b<T>
   {
-    public abstract void eE(T paramT);
+    public abstract void eH(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.b
  * JD-Core Version:    0.7.0.1
  */

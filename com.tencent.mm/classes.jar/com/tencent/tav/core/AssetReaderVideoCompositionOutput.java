@@ -33,7 +33,7 @@ public class AssetReaderVideoCompositionOutput
   
   public AssetReaderVideoCompositionOutput(List<AssetTrack> paramList, Map<String, Object> paramMap, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(217813);
+    AppMethodBeat.i(214451);
     this.customVideoCompositor = new VideoCompositor();
     this.frameRate = -1;
     this.decoderStarted = false;
@@ -45,12 +45,12 @@ public class AssetReaderVideoCompositionOutput
     if ((paramMap != null) && (paramMap.containsKey("frame-rate"))) {
       this.frameRate = ((Integer)paramMap.get("frame-rate")).intValue();
     }
-    AppMethodBeat.o(217813);
+    AppMethodBeat.o(214451);
   }
   
   private void tryStartDecoder()
   {
-    AppMethodBeat.i(217814);
+    AppMethodBeat.i(214452);
     IDecoderTrack localIDecoderTrack;
     if (!this.decoderStarted)
     {
@@ -66,7 +66,7 @@ public class AssetReaderVideoCompositionOutput
     {
       localIDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject);
       this.videoDecoderTrack.seekTo(this.assetReader.getTimeRange().getStart(), false, true);
-      AppMethodBeat.o(217814);
+      AppMethodBeat.o(214452);
       return;
     }
   }
@@ -94,7 +94,7 @@ public class AssetReaderVideoCompositionOutput
     {
       try
       {
-        AppMethodBeat.i(217815);
+        AppMethodBeat.i(214453);
         if (this.videoDecoderTrack != null)
         {
           tryStartDecoder();
@@ -103,7 +103,7 @@ public class AssetReaderVideoCompositionOutput
             localCMSampleBuffer1 = new CMSampleBuffer(CMSampleState.fromError(-100L));
             if (localCMSampleBuffer1.getTime().smallThan(this.assetReader.getTimeRange().getStart()))
             {
-              AppMethodBeat.o(217815);
+              AppMethodBeat.o(214453);
               return localCMSampleBuffer1;
             }
           }
@@ -116,17 +116,17 @@ public class AssetReaderVideoCompositionOutput
           {
             this.videoDecoderTrack.asyncReadNextSample(localCMSampleBuffer1.getTime());
             localCMSampleBuffer1 = new CMSampleBuffer(localCMSampleBuffer1.getTime().sub(this.assetReader.getTimeRange().getStart()), localCMSampleBuffer1.getTextureInfo(), localCMSampleBuffer1.isNewFrame());
-            AppMethodBeat.o(217815);
+            AppMethodBeat.o(214453);
             continue;
           }
           CMSampleBuffer localCMSampleBuffer1 = new CMSampleBuffer(CMSampleState.fromError(-1L));
-          AppMethodBeat.o(217815);
+          AppMethodBeat.o(214453);
           continue;
         }
         CMSampleBuffer localCMSampleBuffer2 = new CMSampleBuffer(CMSampleState.fromError(-100L));
       }
       finally {}
-      AppMethodBeat.o(217815);
+      AppMethodBeat.o(214453);
     }
   }
   
@@ -134,11 +134,11 @@ public class AssetReaderVideoCompositionOutput
   {
     try
     {
-      AppMethodBeat.i(217817);
+      AppMethodBeat.i(214455);
       if (this.videoDecoderTrack != null) {
         this.videoDecoderTrack.release();
       }
-      AppMethodBeat.o(217817);
+      AppMethodBeat.o(214455);
       return;
     }
     finally {}
@@ -163,7 +163,7 @@ public class AssetReaderVideoCompositionOutput
   
   void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader)
   {
-    AppMethodBeat.i(217816);
+    AppMethodBeat.i(214454);
     this.assetReader = paramAssetReader;
     paramAssetReader = new VideoCompositionDecoderTrack(paramAssetReader.getAsset(), this.assetExtension, 1);
     int i = this.frameRate;
@@ -196,12 +196,12 @@ public class AssetReaderVideoCompositionOutput
           break;
         }
         this.videoDecoderTrack = new CachedVideoDecoderTrack(paramAssetReader, true);
-        AppMethodBeat.o(217816);
+        AppMethodBeat.o(214454);
         return;
         i = 30;
       }
       this.videoDecoderTrack = paramAssetReader;
-      AppMethodBeat.o(217816);
+      AppMethodBeat.o(214454);
       return;
     }
   }

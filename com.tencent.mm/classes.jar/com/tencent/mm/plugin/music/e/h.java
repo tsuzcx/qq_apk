@@ -2,162 +2,162 @@ package com.tencent.mm.plugin.music.e;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
-import com.tencent.mm.g.a.mf;
+import com.tencent.mm.ay.f;
+import com.tencent.mm.g.a.mg;
 import com.tencent.mm.plugin.music.f.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public abstract class h
   implements c
 {
-  private com.tencent.mm.plugin.music.f.d wkk = new com.tencent.mm.plugin.music.f.d();
-  private e wkl = new e();
-  private com.tencent.mm.plugin.music.d.a wkm = new com.tencent.mm.plugin.music.d.a();
-  private Runnable wkn = new Runnable()
+  private com.tencent.mm.plugin.music.f.d wzP = new com.tencent.mm.plugin.music.f.d();
+  private e wzQ = new e();
+  private com.tencent.mm.plugin.music.d.a wzR = new com.tencent.mm.plugin.music.d.a();
+  private Runnable wzS = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(137281);
-      boolean bool1 = h.this.dsN().aJI();
-      boolean bool2 = h.this.dsN().aJG();
-      ad.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayRunnable, isStartPlayMusic:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      boolean bool1 = h.this.dwc().aKb();
+      boolean bool2 = h.this.dwc().aJZ();
+      ae.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayRunnable, isStartPlayMusic:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if ((bool1) && (!bool2)) {
-        h.this.dsN().stopPlay();
+        h.this.dwc().stopPlay();
       }
       AppMethodBeat.o(137281);
     }
   };
   
-  private void dsY()
+  private void dwn()
   {
-    if (this.wkk.aJG()) {
-      this.wkk.stopPlay();
+    if (this.wzP.aJZ()) {
+      this.wzP.stopPlay();
     }
-    if (this.wkl.aJG()) {
-      this.wkl.stopPlay();
+    if (this.wzQ.aJZ()) {
+      this.wzQ.stopPlay();
     }
-    if (this.wkm.aJG()) {
-      this.wkm.stopPlay();
+    if (this.wzR.aJZ()) {
+      this.wzR.stopPlay();
     }
   }
   
-  public static void dsZ()
+  public static void dwo()
   {
-    ad.i("MicroMsg.Music.MusicBasePlayEngine", "sendPreemptedEvent");
-    mf localmf = new mf();
-    localmf.dzK.action = 10;
-    localmf.dzK.state = "preempted";
-    localmf.dzK.appId = "not from app brand appid";
-    localmf.dzK.dzM = true;
-    com.tencent.mm.sdk.b.a.IbL.a(localmf, Looper.getMainLooper());
+    ae.i("MicroMsg.Music.MusicBasePlayEngine", "sendPreemptedEvent");
+    mg localmg = new mg();
+    localmg.dAP.action = 10;
+    localmg.dAP.state = "preempted";
+    localmg.dAP.appId = "not from app brand appid";
+    localmg.dAP.dAR = true;
+    com.tencent.mm.sdk.b.a.IvT.a(localmg, Looper.getMainLooper());
   }
   
-  public void Ln(int paramInt)
+  public void LS(int paramInt)
   {
-    ad.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(paramInt) });
-    aq.aA(this.wkn);
-    aq.o(this.wkn, paramInt);
+    ae.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(paramInt) });
+    ar.ay(this.wzS);
+    ar.o(this.wzS, paramInt);
   }
   
-  public void aJE()
+  public void aJX()
   {
-    this.wkk.stopPlay();
-    if (this.wkl != null) {
-      this.wkl.stopPlay();
+    this.wzP.stopPlay();
+    if (this.wzQ != null) {
+      this.wzQ.stopPlay();
     }
-    if (this.wkm != null) {
-      this.wkm.stopPlay();
+    if (this.wzR != null) {
+      this.wzR.stopPlay();
     }
-    aq.aA(this.wkn);
+    ar.ay(this.wzS);
   }
   
-  public f dsL()
+  public f dwa()
   {
     return null;
   }
   
-  public com.tencent.mm.plugin.music.f.a.d dsN()
+  public com.tencent.mm.plugin.music.f.a.d dwc()
   {
-    f localf = dsL();
+    f localf = dwa();
     if (com.tencent.mm.plugin.music.h.c.Q(localf)) {
-      return this.wkm;
+      return this.wzR;
     }
-    if ((localf != null) && (com.tencent.mm.plugin.music.h.c.LD(localf.ihe))) {
-      return this.wkl;
+    if ((localf != null) && (com.tencent.mm.plugin.music.h.c.Mi(localf.ijX))) {
+      return this.wzQ;
     }
-    return this.wkk;
+    return this.wzP;
   }
   
   public void finish()
   {
-    aJE();
+    aJX();
     release();
   }
   
   public void m(f paramf)
   {
-    if (this.wkk.aJG()) {
-      this.wkk.m(paramf);
+    if (this.wzP.aJZ()) {
+      this.wzP.m(paramf);
     }
-    if (this.wkl.aJG()) {
-      this.wkl.m(paramf);
+    if (this.wzQ.aJZ()) {
+      this.wzQ.m(paramf);
     }
-    if (this.wkm.aJG()) {
-      this.wkm.m(paramf);
+    if (this.wzR.aJZ()) {
+      this.wzR.m(paramf);
     }
   }
   
-  public void pc(boolean paramBoolean)
+  public void pk(boolean paramBoolean)
   {
-    if (this.wkk.aJG()) {
-      this.wkk.dzN = paramBoolean;
+    if (this.wzP.aJZ()) {
+      this.wzP.dAS = paramBoolean;
     }
-    if (this.wkl.aJG()) {
-      this.wkl.dzN = paramBoolean;
+    if (this.wzQ.aJZ()) {
+      this.wzQ.dAS = paramBoolean;
     }
-    if (this.wkm.aJG()) {
-      this.wkm.dzN = paramBoolean;
+    if (this.wzR.aJZ()) {
+      this.wzR.dAS = paramBoolean;
     }
   }
   
   public void release()
   {
-    ad.i("MicroMsg.Music.MusicBasePlayEngine", "release");
-    if (this.wkl != null) {
-      this.wkl.release();
+    ae.i("MicroMsg.Music.MusicBasePlayEngine", "release");
+    if (this.wzQ != null) {
+      this.wzQ.release();
     }
-    if (this.wkm != null) {
-      this.wkm.release();
+    if (this.wzR != null) {
+      this.wzR.release();
     }
-    aq.aA(this.wkn);
+    ar.ay(this.wzS);
   }
   
   public final void t(f paramf)
   {
     if (com.tencent.mm.plugin.music.h.c.Q(paramf))
     {
-      ad.i("MicroMsg.Music.MusicBasePlayEngine", "use exoMusicPlayer");
-      dsY();
-      this.wkm.h(paramf);
+      ae.i("MicroMsg.Music.MusicBasePlayEngine", "use exoMusicPlayer");
+      dwn();
+      this.wzR.h(paramf);
     }
     for (;;)
     {
-      if (paramf.ihe != 11) {
-        dsZ();
+      if (paramf.ijX != 11) {
+        dwo();
       }
       return;
-      if (com.tencent.mm.plugin.music.h.c.LD(paramf.ihe))
+      if (com.tencent.mm.plugin.music.h.c.Mi(paramf.ijX))
       {
-        ad.i("MicroMsg.Music.MusicBasePlayEngine", "use qqMusicPlayer");
-        dsY();
-        this.wkl.h(paramf);
+        ae.i("MicroMsg.Music.MusicBasePlayEngine", "use qqMusicPlayer");
+        dwn();
+        this.wzQ.h(paramf);
       }
       else
       {
-        ad.i("MicroMsg.Music.MusicBasePlayEngine", "use musicPlayer");
-        dsY();
-        this.wkk.h(paramf);
+        ae.i("MicroMsg.Music.MusicBasePlayEngine", "use musicPlayer");
+        dwn();
+        this.wzP.h(paramf);
       }
     }
   }
@@ -166,15 +166,15 @@ public abstract class h
   {
     if (com.tencent.mm.plugin.music.h.c.Q(paramf))
     {
-      this.wkm.L(paramf);
+      this.wzR.L(paramf);
       return;
     }
-    if ((paramf != null) && (com.tencent.mm.plugin.music.h.c.LD(paramf.ihe)))
+    if ((paramf != null) && (com.tencent.mm.plugin.music.h.c.Mi(paramf.ijX)))
     {
-      this.wkl.L(paramf);
+      this.wzQ.L(paramf);
       return;
     }
-    this.wkk.L(paramf);
+    this.wzP.L(paramf);
   }
 }
 

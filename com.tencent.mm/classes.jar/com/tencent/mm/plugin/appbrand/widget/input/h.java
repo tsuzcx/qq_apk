@@ -4,125 +4,125 @@ import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.page.ax;
 
 public final class h
 {
-  private static final h ndl;
-  private final a ndk;
+  private static final h niu;
+  private final a nit;
   
   static
   {
     AppMethodBeat.i(136358);
-    ndl = new h();
+    niu = new h();
     AppMethodBeat.o(136358);
   }
   
   public h()
   {
     AppMethodBeat.i(136354);
-    this.ndk = new a((byte)0);
+    this.nit = new a((byte)0);
     AppMethodBeat.o(136354);
   }
   
-  public static h bDY()
+  public static h bEQ()
   {
-    return ndl;
+    return niu;
   }
   
-  final void c(ay paramay)
+  final void c(ax paramax)
   {
     AppMethodBeat.i(136355);
-    if (paramay == null)
+    if (paramax == null)
     {
       AppMethodBeat.o(136355);
       return;
     }
-    this.ndk.ndm.delete(paramay.hashCode());
+    this.nit.niv.delete(paramax.hashCode());
     try
     {
-      paramay.getWrapperView().setFocusable(true);
-      paramay.getWrapperView().setFocusableInTouchMode(true);
-      paramay.getContentView().setFocusable(true);
-      paramay.getContentView().setFocusableInTouchMode(true);
+      paramax.getWrapperView().setFocusable(true);
+      paramax.getWrapperView().setFocusableInTouchMode(true);
+      paramax.getContentView().setFocusable(true);
+      paramax.getContentView().setFocusableInTouchMode(true);
       AppMethodBeat.o(136355);
       return;
     }
-    catch (NullPointerException paramay)
+    catch (NullPointerException paramax)
     {
       AppMethodBeat.o(136355);
     }
   }
   
-  public final void d(ay paramay)
+  public final void d(ax paramax)
   {
     AppMethodBeat.i(136356);
-    if (paramay == null)
+    if (paramax == null)
     {
       AppMethodBeat.o(136356);
       return;
     }
-    int i = this.ndk.f(paramay);
-    this.ndk.a(paramay, i + 1);
+    int i = this.nit.f(paramax);
+    this.nit.a(paramax, i + 1);
     try
     {
-      paramay.getWrapperView().setFocusable(false);
-      paramay.getWrapperView().setFocusableInTouchMode(false);
-      paramay.getContentView().setFocusable(false);
-      paramay.getContentView().setFocusableInTouchMode(false);
-      if ((paramay.getWrapperView() instanceof ViewGroup)) {
-        ((ViewGroup)paramay.getWrapperView()).setDescendantFocusability(393216);
+      paramax.getWrapperView().setFocusable(false);
+      paramax.getWrapperView().setFocusableInTouchMode(false);
+      paramax.getContentView().setFocusable(false);
+      paramax.getContentView().setFocusableInTouchMode(false);
+      if ((paramax.getWrapperView() instanceof ViewGroup)) {
+        ((ViewGroup)paramax.getWrapperView()).setDescendantFocusability(393216);
       }
       AppMethodBeat.o(136356);
       return;
     }
-    catch (NullPointerException paramay)
+    catch (NullPointerException paramax)
     {
       AppMethodBeat.o(136356);
     }
   }
   
-  public final void e(ay paramay)
+  public final void e(ax paramax)
   {
     AppMethodBeat.i(136357);
-    if (paramay == null)
+    if (paramax == null)
     {
       AppMethodBeat.o(136357);
       return;
     }
-    int i = this.ndk.f(paramay) - 1;
+    int i = this.nit.f(paramax) - 1;
     if (i <= 0)
     {
-      c(paramay);
+      c(paramax);
       AppMethodBeat.o(136357);
       return;
     }
-    this.ndk.a(paramay, i);
+    this.nit.a(paramax, i);
     AppMethodBeat.o(136357);
   }
   
   static final class a
   {
-    final SparseIntArray ndm;
+    final SparseIntArray niv;
     
     private a()
     {
       AppMethodBeat.i(136351);
-      this.ndm = new SparseIntArray();
+      this.niv = new SparseIntArray();
       AppMethodBeat.o(136351);
     }
     
-    final void a(ay paramay, int paramInt)
+    final void a(ax paramax, int paramInt)
     {
       AppMethodBeat.i(136353);
-      this.ndm.put(paramay.hashCode(), paramInt);
+      this.niv.put(paramax.hashCode(), paramInt);
       AppMethodBeat.o(136353);
     }
     
-    final int f(ay paramay)
+    final int f(ax paramax)
     {
       AppMethodBeat.i(136352);
-      int i = this.ndm.get(paramay.hashCode(), 0);
+      int i = this.niv.get(paramax.hashCode(), 0);
       AppMethodBeat.o(136352);
       return i;
     }
@@ -130,7 +130,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.h
  * JD-Core Version:    0.7.0.1
  */

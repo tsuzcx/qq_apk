@@ -19,7 +19,7 @@ public final class g
     AppMethodBeat.o(47485);
   }
   
-  public final k au(Context paramContext)
+  public final k av(Context paramContext)
   {
     AppMethodBeat.i(47484);
     paramContext = new d(paramContext);

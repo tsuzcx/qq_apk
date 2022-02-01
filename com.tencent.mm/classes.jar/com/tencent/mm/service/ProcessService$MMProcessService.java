@@ -2,12 +2,12 @@ package com.tencent.mm.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.CoreService.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ProcessService$MMProcessService
   extends CommonProcessService
 {
-  private CoreService.a fDR = null;
+  private CoreService.a fFV = null;
   
   public final String getTag()
   {
@@ -19,9 +19,9 @@ public class ProcessService$MMProcessService
     AppMethodBeat.i(133210);
     try
     {
-      this.fDR = ((CoreService.a)Class.forName("com.tencent.mm.platformtools.BroadcastHelper").newInstance());
-      ad.d("MicroMsg.MMProcessService", "broadcastRegisterHelper = %s", new Object[] { this.fDR });
-      this.fDR.registerBroadcasts();
+      this.fFV = ((CoreService.a)Class.forName("com.tencent.mm.platformtools.BroadcastHelper").newInstance());
+      ae.d("MicroMsg.MMProcessService", "broadcastRegisterHelper = %s", new Object[] { this.fFV });
+      this.fFV.registerBroadcasts();
       super.onCreate();
       AppMethodBeat.o(133210);
       return;
@@ -30,7 +30,7 @@ public class ProcessService$MMProcessService
     {
       for (;;)
       {
-        ad.e("MicroMsg.MMProcessService", "onCreate Class.forName(com.tencent.mm.platformtools.BroadcastHelper) Exception = %s ", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.MMProcessService", "onCreate Class.forName(com.tencent.mm.platformtools.BroadcastHelper) Exception = %s ", new Object[] { localException.getMessage() });
       }
     }
   }
@@ -38,10 +38,10 @@ public class ProcessService$MMProcessService
   public void onDestroy()
   {
     AppMethodBeat.i(133211);
-    if (this.fDR != null) {}
+    if (this.fFV != null) {}
     try
     {
-      this.fDR.unRegisterBroadcasts();
+      this.fFV.unRegisterBroadcasts();
       super.onDestroy();
       AppMethodBeat.o(133211);
       return;
@@ -50,7 +50,7 @@ public class ProcessService$MMProcessService
     {
       for (;;)
       {
-        ad.e("MicroMsg.MMProcessService", "onDestroy unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.MMProcessService", "onDestroy unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
       }
     }
   }

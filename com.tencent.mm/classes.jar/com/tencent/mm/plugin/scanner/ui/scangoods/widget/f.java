@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
-import com.tencent.mm.plugin.scanner.model.ab;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.scanner.model.ac;
+import com.tencent.mm.sdk.platformtools.ar;
 import d.l;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "animationTimer", "Ljava/util/Timer;", "scanPointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "generateRandomPoints", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "animationTimer", "Ljava/util/Timer;", "scanPointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "generateRandomPoints", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
 public final class f
   extends a
 {
-  public static final f.a yvC;
-  private Timer yvA;
-  private ab yvB;
+  public static final f.a yLC;
+  private Timer yLA;
+  private ac yLB;
   
   static
   {
     AppMethodBeat.i(52260);
-    yvC = new f.a((byte)0);
+    yLC = new f.a((byte)0);
     AppMethodBeat.o(52260);
   }
   
@@ -28,8 +28,8 @@ public final class f
   {
     super(paramContext, paramd);
     AppMethodBeat.i(52259);
-    this.yvB = new ab();
-    paramContext = this.yvB;
+    this.yLB = new ac();
+    paramContext = this.yLB;
     paramd = new ScanPoint[10];
     int i = 0;
     while (i < 10)
@@ -44,8 +44,8 @@ public final class f
   public final void startAnimation()
   {
     AppMethodBeat.i(52257);
-    this.yvA = new Timer();
-    Timer localTimer = this.yvA;
+    this.yLA = new Timer();
+    Timer localTimer = this.yLA;
     if (localTimer != null)
     {
       localTimer.scheduleAtFixedRate((TimerTask)new b(this), 0L, 350L);
@@ -58,7 +58,7 @@ public final class f
   public final void stopAnimation()
   {
     AppMethodBeat.i(52258);
-    Timer localTimer = this.yvA;
+    Timer localTimer = this.yLA;
     if (localTimer != null) {
       localTimer.cancel();
     }
@@ -66,18 +66,18 @@ public final class f
     AppMethodBeat.o(52258);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController$startAnimation$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController$startAnimation$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
   public static final class b
     extends TimerTask
   {
     public final void run()
     {
       AppMethodBeat.i(52256);
-      aq.f((Runnable)new a(this));
+      ar.f((Runnable)new a(this));
       AppMethodBeat.o(52256);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -86,7 +86,7 @@ public final class f
       public final void run()
       {
         AppMethodBeat.i(52255);
-        this.yvE.yvD.b(f.a(this.yvE.yvD));
+        this.yLE.yLD.b(f.a(this.yLE.yLD));
         AppMethodBeat.o(52255);
       }
     }
@@ -94,7 +94,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.f
  * JD-Core Version:    0.7.0.1
  */

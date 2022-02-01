@@ -14,29 +14,31 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.ae.a.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public class MMFormVerifyCodeInputView
   extends LinearLayout
 {
-  private TextView iVq;
-  private Button jkA;
+  private TextView iYj;
+  private Button jnu;
   private int layout;
   private Context mContext;
-  private EditText mlU;
-  private TextView mlV;
-  private int mlW;
-  private int mlX;
-  private int mlY;
-  private int mlZ;
-  private int mma;
-  private int[] mmb;
-  private View.OnFocusChangeListener mmc;
-  private View.OnClickListener mmd;
-  private av timerHandler;
+  private EditText mqR;
+  private TextView mqS;
+  private int mqT;
+  private int mqU;
+  private int mqV;
+  private int mqW;
+  private int mqX;
+  private int[] mqY;
+  private View.OnFocusChangeListener mqZ;
+  private View.OnClickListener mra;
+  private aw timerHandler;
   
   public MMFormVerifyCodeInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,18 +51,18 @@ public class MMFormVerifyCodeInputView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141938);
     this.mContext = null;
-    this.mlW = -1;
-    this.mlX = -1;
-    this.mlY = -1;
+    this.mqT = -1;
+    this.mqU = -1;
+    this.mqV = -1;
     this.layout = -1;
-    this.mlZ = 60;
-    this.mma = this.mlZ;
-    this.mmc = null;
-    this.mmd = null;
+    this.mqW = 60;
+    this.mqX = this.mqW;
+    this.mqZ = null;
+    this.mra = null;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FormItemView, paramInt, 0);
-    this.mlX = paramAttributeSet.getResourceId(1, -1);
-    this.mlW = paramAttributeSet.getResourceId(3, -1);
-    this.mlY = paramAttributeSet.getResourceId(0, -1);
+    this.mqU = paramAttributeSet.getResourceId(1, -1);
+    this.mqT = paramAttributeSet.getResourceId(3, -1);
+    this.mqV = paramAttributeSet.getResourceId(0, -1);
     this.layout = paramAttributeSet.getResourceId(2, this.layout);
     paramAttributeSet.recycle();
     inflate(paramContext, this.layout, this);
@@ -71,32 +73,32 @@ public class MMFormVerifyCodeInputView
   public final void addTextChangedListener(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(141951);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.addTextChangedListener(paramTextWatcher);
+      this.mqR.addTextChangedListener(paramTextWatcher);
       AppMethodBeat.o(141951);
       return;
     }
-    ad.w("MicroMsg.MMFormVerifyCodeInputView", "watcher : %s, contentET : %s", new Object[] { paramTextWatcher, this.mlU });
+    ae.w("MicroMsg.MMFormVerifyCodeInputView", "watcher : %s, contentET : %s", new Object[] { paramTextWatcher, this.mqR });
     AppMethodBeat.o(141951);
   }
   
-  public final void bwt()
+  public final void bxk()
   {
     AppMethodBeat.i(141948);
-    this.jkA.setVisibility(8);
-    this.mlV.setVisibility(0);
-    this.mlV.setText(getContext().getString(2131761267, new Object[] { Integer.valueOf(this.mlZ) }));
+    this.jnu.setVisibility(8);
+    this.mqS.setVisibility(0);
+    this.mqS.setText(getContext().getString(2131761267, new Object[] { Integer.valueOf(this.mqW) }));
     if (this.timerHandler != null)
     {
       this.timerHandler.stopTimer();
-      this.timerHandler.az(1000L, 1000L);
+      this.timerHandler.ay(1000L, 1000L);
       AppMethodBeat.o(141948);
       return;
     }
     if (getContext() != null)
     {
-      this.timerHandler = new av(getContext().getMainLooper(), new av.a()
+      this.timerHandler = new aw(getContext().getMainLooper(), new aw.a()
       {
         public final boolean onTimerExpired()
         {
@@ -114,7 +116,7 @@ public class MMFormVerifyCodeInputView
           return true;
         }
       }, true);
-      this.timerHandler.az(1000L, 1000L);
+      this.timerHandler.ay(1000L, 1000L);
       AppMethodBeat.o(141948);
       return;
     }
@@ -126,42 +128,42 @@ public class MMFormVerifyCodeInputView
   
   public EditText getContentEditText()
   {
-    return this.mlU;
+    return this.mqR;
   }
   
   public Editable getText()
   {
     AppMethodBeat.i(141952);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      Editable localEditable = this.mlU.getText();
+      Editable localEditable = this.mqR.getText();
       AppMethodBeat.o(141952);
       return localEditable;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
     AppMethodBeat.o(141952);
     return null;
   }
   
   public TextView getTitleTextView()
   {
-    return this.iVq;
+    return this.iYj;
   }
   
   public void onFinishInflate()
   {
     AppMethodBeat.i(141939);
     super.onFinishInflate();
-    this.iVq = ((TextView)findViewById(2131305902));
-    this.mlU = ((EditText)findViewById(2131299306));
-    this.mlV = ((TextView)findViewById(2131305845));
-    this.jkA = ((Button)findViewById(2131304586));
-    if ((this.iVq == null) || (this.mlU == null) || (this.mlV == null) || (this.jkA == null)) {
-      ad.w("MicroMsg.MMFormVerifyCodeInputView", "titleTV : %s, contentET : %s, timerTv: %s, sendSmsBtn: %s", new Object[] { this.iVq, this.mlU, this.mlV, this.jkA });
+    this.iYj = ((TextView)findViewById(2131305902));
+    this.mqR = ((EditText)findViewById(2131299306));
+    this.mqS = ((TextView)findViewById(2131305845));
+    this.jnu = ((Button)findViewById(2131304586));
+    if ((this.iYj == null) || (this.mqR == null) || (this.mqS == null) || (this.jnu == null)) {
+      ae.w("MicroMsg.MMFormVerifyCodeInputView", "titleTV : %s, contentET : %s, timerTv: %s, sendSmsBtn: %s", new Object[] { this.iYj, this.mqR, this.mqS, this.jnu });
     }
     for (;;)
     {
-      if (this.mlU != null)
+      if (this.mqR != null)
       {
         View.OnFocusChangeListener local1 = new View.OnFocusChangeListener()
         {
@@ -189,21 +191,35 @@ public class MMFormVerifyCodeInputView
             }
           }
         };
-        this.mlU.setOnFocusChangeListener(local1);
+        this.mqR.setOnFocusChangeListener(local1);
       }
-      if (this.jkA != null) {
-        this.jkA.setOnClickListener(new MMFormVerifyCodeInputView.2(this));
+      if (this.jnu != null) {
+        this.jnu.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(141936);
+            b localb = new b();
+            localb.bd(paramAnonymousView);
+            a.b("com/tencent/mm/ui/base/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            if (MMFormVerifyCodeInputView.e(MMFormVerifyCodeInputView.this) != null) {
+              MMFormVerifyCodeInputView.e(MMFormVerifyCodeInputView.this).onClick(paramAnonymousView);
+            }
+            a.a(this, "com/tencent/mm/ui/base/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(141936);
+          }
+        });
       }
       AppMethodBeat.o(141939);
       return;
-      if (this.mlW != -1) {
-        this.iVq.setText(this.mlW);
+      if (this.mqT != -1) {
+        this.iYj.setText(this.mqT);
       }
-      if (this.mlX != -1) {
-        this.mlU.setHint(this.mlX);
+      if (this.mqU != -1) {
+        this.mqR.setHint(this.mqU);
       }
-      if (this.mlY != -1) {
-        this.jkA.setText(this.mlY);
+      if (this.mqV != -1) {
+        this.jnu.setText(this.mqV);
       }
     }
   }
@@ -214,143 +230,143 @@ public class MMFormVerifyCodeInputView
     if (this.timerHandler != null) {
       this.timerHandler.stopTimer();
     }
-    this.mlU.setText("");
-    this.mlV.setVisibility(8);
-    this.mma = this.mlZ;
-    this.jkA.setVisibility(0);
+    this.mqR.setText("");
+    this.mqS.setVisibility(8);
+    this.mqX = this.mqW;
+    this.jnu.setVisibility(0);
     AppMethodBeat.o(141949);
   }
   
   public void setFocusListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.mmc = paramOnFocusChangeListener;
+    this.mqZ = paramOnFocusChangeListener;
   }
   
   public void setHint(int paramInt)
   {
     AppMethodBeat.i(141943);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setHint(paramInt);
+      this.mqR.setHint(paramInt);
       AppMethodBeat.o(141943);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
     AppMethodBeat.o(141943);
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(141941);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setHint(paramString);
+      this.mqR.setHint(paramString);
       AppMethodBeat.o(141941);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
     AppMethodBeat.o(141941);
   }
   
   public void setImeOption(int paramInt)
   {
     AppMethodBeat.i(141945);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setImeOptions(paramInt);
+      this.mqR.setImeOptions(paramInt);
       AppMethodBeat.o(141945);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
     AppMethodBeat.o(141945);
   }
   
   public void setInputType(int paramInt)
   {
     AppMethodBeat.i(141950);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setInputType(paramInt);
+      this.mqR.setInputType(paramInt);
       AppMethodBeat.o(141950);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
     AppMethodBeat.o(141950);
   }
   
   public void setSendSmsBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.mmd = paramOnClickListener;
+    this.mra = paramOnClickListener;
   }
   
   public void setSmsBtnText(int paramInt)
   {
     AppMethodBeat.i(141946);
-    if (this.jkA != null)
+    if (this.jnu != null)
     {
-      this.jkA.setText(paramInt);
+      this.jnu.setText(paramInt);
       AppMethodBeat.o(141946);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "sendSmsBtn is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "sendSmsBtn is null!");
     AppMethodBeat.o(141946);
   }
   
   public void setSmsBtnText(String paramString)
   {
     AppMethodBeat.i(141947);
-    if (this.jkA != null)
+    if (this.jnu != null)
     {
-      this.jkA.setText(paramString);
+      this.jnu.setText(paramString);
       AppMethodBeat.o(141947);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "sendSmsBtn is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "sendSmsBtn is null!");
     AppMethodBeat.o(141947);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(141944);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setText(paramString);
+      this.mqR.setText(paramString);
       AppMethodBeat.o(141944);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "contentET is null!");
     AppMethodBeat.o(141944);
   }
   
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(141942);
-    if (this.iVq != null)
+    if (this.iYj != null)
     {
-      this.iVq.setText(paramInt);
+      this.iYj.setText(paramInt);
       AppMethodBeat.o(141942);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "titleTV is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "titleTV is null!");
     AppMethodBeat.o(141942);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(141940);
-    if (this.iVq != null)
+    if (this.iYj != null)
     {
-      this.iVq.setText(paramString);
+      this.iYj.setText(paramString);
       AppMethodBeat.o(141940);
       return;
     }
-    ad.e("MicroMsg.MMFormVerifyCodeInputView", "titleTV is null!");
+    ae.e("MicroMsg.MMFormVerifyCodeInputView", "titleTV is null!");
     AppMethodBeat.o(141940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormVerifyCodeInputView
  * JD-Core Version:    0.7.0.1
  */

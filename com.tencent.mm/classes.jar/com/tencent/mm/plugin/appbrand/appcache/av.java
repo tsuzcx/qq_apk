@@ -1,44 +1,27 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
+import com.tencent.mm.sdk.platformtools.bu;
 
-public final class av
+@SuppressLint({"DefaultLocale"})
+class av
   extends a
 {
-  final int jHt;
-  final int jHu;
-  final bi.a jHv;
-  
-  av(String paramString1, int paramInt1, int paramInt2, String paramString2, bi.a parama)
+  av(String paramString1, String paramString2, int paramInt)
   {
-    super(B(paramString1, paramInt1, paramInt2), ay.baz() + String.format(Locale.US, "_%s_%d_%d.wxapkg.diff", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, 0, paramInt2);
-    AppMethodBeat.i(90591);
-    this.jHt = paramInt1;
-    this.jHu = paramInt2;
-    this.jHv = parama;
-    if (!"@LibraryAppId".equals(paramString1)) {
-      bool = true;
-    }
-    this.jJv = bool;
-    AppMethodBeat.o(90591);
+    super(str1, str2 + String.format("debug_%d_%d_%d.wxapkg", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(paramString2.hashCode()) }), paramString2, paramString1, String.format("%d-%s", new Object[] { Integer.valueOf(paramInt), paramString2 }).hashCode(), paramInt);
+    AppMethodBeat.i(90588);
+    AppMethodBeat.o(90588);
   }
   
-  static String B(String paramString, int paramInt1, int paramInt2)
+  av(String paramString1, String paramString2, int paramInt, a.a parama)
   {
-    AppMethodBeat.i(90590);
-    paramString = String.format(Locale.US, "WxaPkgDiff_%s_%d_%d", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(90590);
-    return paramString;
-  }
-  
-  public final String bao()
-  {
-    AppMethodBeat.i(90592);
-    String str = az.aL(this.appId, this.jHu);
-    AppMethodBeat.o(90592);
-    return str;
+    super(str1, str2 + String.format("debug_%d_%d_%d", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(bu.nullAsNil(parama.bav()).hashCode()) }), paramString2, paramString1, String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), bu.nullAsNil(parama.bav()) }).hashCode(), paramInt);
+    AppMethodBeat.i(90589);
+    AppMethodBeat.o(90589);
   }
 }
 

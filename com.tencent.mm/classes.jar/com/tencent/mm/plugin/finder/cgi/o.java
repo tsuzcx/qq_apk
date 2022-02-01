@@ -1,50 +1,49 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ass;
-import com.tencent.mm.protocal.protobuf.ast;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ati;
+import com.tencent.mm.protocal.protobuf.atj;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderUtils;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsResp;", "type", "", "url", "", "(ILjava/lang/String;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsReq;", "getType", "()I", "getUrl", "()Ljava/lang/String;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderUtils;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsResp;", "type", "", "url", "", "(ILjava/lang/String;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsReq;", "getType", "()I", "getUrl", "()Ljava/lang/String;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class o
-  extends w<ast>
+  extends w<atj>
 {
   private final String TAG;
-  private ass rIB;
+  private ati rQL;
   private final int type;
   private final String url;
   
   public o(String paramString)
   {
     super(null);
-    AppMethodBeat.i(201072);
+    AppMethodBeat.i(201490);
     this.type = 1;
     this.url = paramString;
     this.TAG = "Finder.CgiFinderUtils";
-    this.rIB = new ass();
-    paramString = this.rIB;
-    Object localObject = v.rIR;
-    paramString.Gle = v.a(this.rIl);
-    this.rIB.username = u.aAu();
-    this.rIB.type = this.type;
-    this.rIB.url = this.url;
+    this.rQL = new ati();
+    paramString = this.rQL;
+    Object localObject = v.rRb;
+    paramString.GEg = v.a(this.rQw);
+    this.rQL.username = com.tencent.mm.model.v.aAK();
+    this.rQL.type = this.type;
+    this.rQL.url = this.url;
     paramString = new b.a();
-    paramString.c((a)this.rIB);
-    localObject = new ast();
-    ((ast)localObject).setBaseResponse(new BaseResponse());
-    ((ast)localObject).getBaseResponse().ErrMsg = new cwt();
+    paramString.c((a)this.rQL);
+    localObject = new atj();
+    ((atj)localObject).setBaseResponse(new BaseResponse());
+    ((atj)localObject).getBaseResponse().ErrMsg = new cxn();
     paramString.d((a)localObject);
-    paramString.Dl("/cgi-bin/micromsg-bin/finderutils");
-    paramString.oP(4046);
-    c(paramString.aDC());
-    ad.i(this.TAG, "init type:" + this.type + ", url:" + this.url);
-    AppMethodBeat.o(201072);
+    paramString.DN("/cgi-bin/micromsg-bin/finderutils");
+    paramString.oS(4046);
+    c(paramString.aDS());
+    ae.i(this.TAG, "init type:" + this.type + ", url:" + this.url);
+    AppMethodBeat.o(201490);
   }
 }
 

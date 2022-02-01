@@ -5,16 +5,16 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public final class JsApiCancelDownloadTaskForNative
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   public static final int CTRL_INDEX = 657;
   public static final String NAME = "cancelDownloadTaskForNative";
@@ -23,10 +23,10 @@ public final class JsApiCancelDownloadTaskForNative
     extends MainProcessTask
   {
     public static Parcelable.Creator<CancelDownloadTask> CREATOR;
-    private q jCl;
-    private int kje;
-    private JSONArray kvv;
-    private com.tencent.mm.plugin.appbrand.jsapi.a kvw;
+    private r jFj;
+    private int kmu;
+    private JSONArray kyK;
+    private com.tencent.mm.plugin.appbrand.jsapi.a kyL;
     
     static
     {
@@ -42,50 +42,50 @@ public final class JsApiCancelDownloadTaskForNative
       AppMethodBeat.o(45784);
     }
     
-    public CancelDownloadTask(JSONArray paramJSONArray, com.tencent.mm.plugin.appbrand.jsapi.a parama, q paramq, int paramInt)
+    public CancelDownloadTask(JSONArray paramJSONArray, com.tencent.mm.plugin.appbrand.jsapi.a parama, r paramr, int paramInt)
     {
       AppMethodBeat.i(45783);
-      bhN();
-      this.kvv = paramJSONArray;
-      this.kvw = parama;
-      this.jCl = paramq;
-      this.kje = paramInt;
+      biw();
+      this.kyK = paramJSONArray;
+      this.kyL = parama;
+      this.jFj = paramr;
+      this.kmu = paramInt;
       AppMethodBeat.o(45783);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45781);
-      if ((this.kvv != null) && (this.kvv.length() > 0))
+      if ((this.kyK != null) && (this.kyK.length() > 0))
       {
         int i = 0;
-        if (i < this.kvv.length())
+        if (i < this.kyK.length())
         {
-          long l = this.kvv.optLong(i);
-          com.tencent.mm.plugin.downloader.g.a locala = d.ua(l);
+          long l = this.kyK.optLong(i);
+          com.tencent.mm.plugin.downloader.g.a locala = d.ur(l);
           if ((locala != null) && (locala.field_status == 3))
           {
-            ad.i("MicroMsg.JsApiCancelDownloadTaskForNative", "canceldownloadtask, path: %s", new Object[] { locala.field_filePath });
-            i.deleteFile(locala.field_filePath);
-            d.aae(locala.field_downloadUrl);
+            ae.i("MicroMsg.JsApiCancelDownloadTaskForNative", "canceldownloadtask, path: %s", new Object[] { locala.field_filePath });
+            o.deleteFile(locala.field_filePath);
+            d.aaV(locala.field_downloadUrl);
           }
           for (;;)
           {
             i += 1;
             break;
-            f.ccl().tR(l);
+            f.cdA().ui(l);
           }
         }
       }
-      bhX();
+      biG();
       AppMethodBeat.o(45781);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(45782);
-      bhO();
-      this.jCl.h(this.kje, this.kvw.e("ok", null));
+      bix();
+      this.jFj.h(this.kmu, this.kyL.e("ok", null));
       AppMethodBeat.o(45782);
     }
     
@@ -96,13 +96,13 @@ public final class JsApiCancelDownloadTaskForNative
       if (paramParcel != null) {
         try
         {
-          this.kvv = new JSONArray(paramParcel);
+          this.kyK = new JSONArray(paramParcel);
           AppMethodBeat.o(45785);
           return;
         }
         catch (JSONException paramParcel)
         {
-          ad.e("MicroMsg.JsApiCancelDownloadTaskForNative", "parseFromParcel: " + paramParcel.getMessage());
+          ae.e("MicroMsg.JsApiCancelDownloadTaskForNative", "parseFromParcel: " + paramParcel.getMessage());
         }
       }
       AppMethodBeat.o(45785);
@@ -111,8 +111,8 @@ public final class JsApiCancelDownloadTaskForNative
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45786);
-      if (this.kvv != null) {}
-      for (String str = this.kvv.toString();; str = null)
+      if (this.kyK != null) {}
+      for (String str = this.kyK.toString();; str = null)
       {
         paramParcel.writeString(str);
         AppMethodBeat.o(45786);

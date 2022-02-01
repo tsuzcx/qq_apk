@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelstat.i;
@@ -13,8 +13,8 @@ public final class a
   {
     AppMethodBeat.i(94884);
     paramString = new i(paramInt1, paramString, paramInt2);
-    g.ajD();
-    g.ajB().gAO.a(paramString, 0);
+    g.ajS();
+    g.ajQ().gDv.a(paramString, 0);
     AppMethodBeat.o(94884);
   }
 }

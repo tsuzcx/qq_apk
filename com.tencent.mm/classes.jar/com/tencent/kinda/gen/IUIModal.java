@@ -203,15 +203,15 @@ public abstract class IUIModal
     
     public final DynamicColor statusbarColor()
     {
-      AppMethodBeat.i(190323);
+      AppMethodBeat.i(221797);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         localObject = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(190323);
+        AppMethodBeat.o(221797);
         throw ((Throwable)localObject);
       }
       Object localObject = native_statusbarColor(this.nativeRef);
-      AppMethodBeat.o(190323);
+      AppMethodBeat.o(221797);
       return localObject;
     }
     
@@ -231,7 +231,7 @@ public abstract class IUIModal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIModal
  * JD-Core Version:    0.7.0.1
  */

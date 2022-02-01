@@ -5,36 +5,36 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.a;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import d.a.j;
 import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "", "sourceVideoPath", "", "sourceThumb", "isCaptureVideo", "", "startTime", "", "endTime", "daemonVideoPath", "daemonSourceThumb", "daemonStartTime", "daemonEndTime", "photoPath", "photoList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "videoList", "isLandscape", "extInfo", "Landroid/os/Bundle;", "(Ljava/lang/String;Ljava/lang/String;ZIILjava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;ZLandroid/os/Bundle;)V", "getDaemonEndTime", "()I", "setDaemonEndTime", "(I)V", "getDaemonSourceThumb", "()Ljava/lang/String;", "setDaemonSourceThumb", "(Ljava/lang/String;)V", "getDaemonStartTime", "setDaemonStartTime", "getDaemonVideoPath", "setDaemonVideoPath", "getEndTime", "setEndTime", "getExtInfo", "()Landroid/os/Bundle;", "setExtInfo", "(Landroid/os/Bundle;)V", "()Z", "setCaptureVideo", "(Z)V", "setLandscape", "getPhotoList", "()Ljava/util/ArrayList;", "setPhotoList", "(Ljava/util/ArrayList;)V", "getPhotoPath", "setPhotoPath", "getSourceThumb", "setSourceThumb", "getSourceVideoPath", "setSourceVideoPath", "getStartTime", "setStartTime", "getVideoList", "setVideoList", "component1", "component10", "component11", "component12", "component13", "component14", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "enableBaseVideo", "enableDaemonVideo", "equals", "other", "getPreviewThumbUrl", "getPreviewUrl", "hashCode", "setImages", "", "imageList", "setVideos", "toString", "videoCheck", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "", "sourceVideoPath", "", "sourceThumb", "isCaptureVideo", "", "startTime", "", "endTime", "daemonVideoPath", "daemonSourceThumb", "daemonStartTime", "daemonEndTime", "photoPath", "photoList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "videoList", "isLandscape", "extInfo", "Landroid/os/Bundle;", "(Ljava/lang/String;Ljava/lang/String;ZIILjava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;ZLandroid/os/Bundle;)V", "getDaemonEndTime", "()I", "setDaemonEndTime", "(I)V", "getDaemonSourceThumb", "()Ljava/lang/String;", "setDaemonSourceThumb", "(Ljava/lang/String;)V", "getDaemonStartTime", "setDaemonStartTime", "getDaemonVideoPath", "setDaemonVideoPath", "getEndTime", "setEndTime", "getExtInfo", "()Landroid/os/Bundle;", "setExtInfo", "(Landroid/os/Bundle;)V", "()Z", "setCaptureVideo", "(Z)V", "setLandscape", "getPhotoList", "()Ljava/util/ArrayList;", "setPhotoList", "(Ljava/util/ArrayList;)V", "getPhotoPath", "setPhotoPath", "getSourceThumb", "setSourceThumb", "getSourceVideoPath", "setSourceVideoPath", "getStartTime", "setStartTime", "getVideoList", "setVideoList", "component1", "component10", "component11", "component12", "component13", "component14", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "enableBaseVideo", "enableDaemonVideo", "equals", "other", "getPreviewThumbUrl", "getPreviewUrl", "hashCode", "setImages", "", "imageList", "setVideos", "toString", "videoCheck", "Companion", "plugin-mediaeditor_release"})
 public final class b
 {
-  public static final a hua;
-  public int ddx;
-  public String htN;
-  public String htO;
-  public boolean htP;
-  public int htQ;
-  public String htR;
-  public String htS;
-  public int htT;
-  public int htU;
-  public String htV;
-  public ArrayList<String> htW;
-  public ArrayList<String> htX;
-  public boolean htY;
-  public Bundle htZ;
+  public static final a hwO;
+  public int dez;
+  public String hwB;
+  public String hwC;
+  public boolean hwD;
+  public int hwE;
+  public String hwF;
+  public String hwG;
+  public int hwH;
+  public int hwI;
+  public String hwJ;
+  public ArrayList<String> hwK;
+  public ArrayList<String> hwL;
+  public boolean hwM;
+  public Bundle hwN;
   
   static
   {
     AppMethodBeat.i(94282);
-    hua = new a((byte)0);
+    hwO = new a((byte)0);
     AppMethodBeat.o(94282);
   }
   
@@ -46,27 +46,27 @@ public final class b
   private b(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, String paramString5, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
     AppMethodBeat.i(94280);
-    this.htN = paramString1;
-    this.htO = paramString2;
-    this.htP = paramBoolean;
-    this.ddx = 0;
-    this.htQ = 0;
-    this.htR = paramString3;
-    this.htS = paramString4;
-    this.htT = 0;
-    this.htU = 0;
-    this.htV = paramString5;
-    this.htW = paramArrayList1;
-    this.htX = paramArrayList2;
-    this.htY = false;
-    this.htZ = null;
+    this.hwB = paramString1;
+    this.hwC = paramString2;
+    this.hwD = paramBoolean;
+    this.dez = 0;
+    this.hwE = 0;
+    this.hwF = paramString3;
+    this.hwG = paramString4;
+    this.hwH = 0;
+    this.hwI = 0;
+    this.hwJ = paramString5;
+    this.hwK = paramArrayList1;
+    this.hwL = paramArrayList2;
+    this.hwM = false;
+    this.hwN = null;
     AppMethodBeat.o(94280);
   }
   
-  public final boolean axB()
+  public final boolean axQ()
   {
     AppMethodBeat.i(94274);
-    if ((!TextUtils.isEmpty((CharSequence)this.htR)) && (i.fv(this.htR)))
+    if ((!TextUtils.isEmpty((CharSequence)this.hwF)) && (o.fB(this.hwF)))
     {
       AppMethodBeat.o(94274);
       return true;
@@ -75,10 +75,10 @@ public final class b
     return false;
   }
   
-  public final boolean axC()
+  public final boolean axR()
   {
     AppMethodBeat.i(94275);
-    if ((!TextUtils.isEmpty((CharSequence)this.htN)) && (i.fv(this.htN)))
+    if ((!TextUtils.isEmpty((CharSequence)this.hwB)) && (o.fB(this.hwB)))
     {
       AppMethodBeat.o(94275);
       return true;
@@ -87,32 +87,32 @@ public final class b
     return false;
   }
   
-  public final String axD()
+  public final String axS()
   {
     AppMethodBeat.i(94276);
-    if (axC())
+    if (axR())
     {
-      str = this.htN;
+      str = this.hwB;
       AppMethodBeat.o(94276);
       return str;
     }
-    String str = this.htR;
+    String str = this.hwF;
     AppMethodBeat.o(94276);
     return str;
   }
   
-  public final void axE()
+  public final void axT()
   {
-    AppMethodBeat.i(219319);
-    if ((this.htW.size() == 0) && (this.htX.size() == 1))
+    AppMethodBeat.i(217545);
+    if ((this.hwK.size() == 0) && (this.hwL.size() == 1))
     {
-      this.htN = ((String)j.jc((List)this.htX));
-      a locala = e.axx(this.htN);
+      this.hwB = ((String)j.jl((List)this.hwL));
+      a locala = e.ayN(this.hwB);
       if (locala != null) {
-        this.htQ = locala.videoDuration;
+        this.hwE = locala.videoDuration;
       }
     }
-    AppMethodBeat.o(219319);
+    AppMethodBeat.o(217545);
   }
   
   public final boolean equals(Object paramObject)
@@ -123,7 +123,7 @@ public final class b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.i(this.htN, paramObject.htN)) || (!p.i(this.htO, paramObject.htO)) || (this.htP != paramObject.htP) || (this.ddx != paramObject.ddx) || (this.htQ != paramObject.htQ) || (!p.i(this.htR, paramObject.htR)) || (!p.i(this.htS, paramObject.htS)) || (this.htT != paramObject.htT) || (this.htU != paramObject.htU) || (!p.i(this.htV, paramObject.htV)) || (!p.i(this.htW, paramObject.htW)) || (!p.i(this.htX, paramObject.htX)) || (this.htY != paramObject.htY) || (!p.i(this.htZ, paramObject.htZ))) {}
+        if ((!p.i(this.hwB, paramObject.hwB)) || (!p.i(this.hwC, paramObject.hwC)) || (this.hwD != paramObject.hwD) || (this.dez != paramObject.dez) || (this.hwE != paramObject.hwE) || (!p.i(this.hwF, paramObject.hwF)) || (!p.i(this.hwG, paramObject.hwG)) || (this.hwH != paramObject.hwH) || (this.hwI != paramObject.hwI) || (!p.i(this.hwJ, paramObject.hwJ)) || (!p.i(this.hwK, paramObject.hwK)) || (!p.i(this.hwL, paramObject.hwL)) || (this.hwM != paramObject.hwM) || (!p.i(this.hwN, paramObject.hwN))) {}
       }
     }
     else
@@ -142,61 +142,61 @@ public final class b
   
   public final void o(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(219320);
+    AppMethodBeat.i(217546);
     p.h(paramArrayList, "<set-?>");
-    this.htW = paramArrayList;
-    AppMethodBeat.o(219320);
+    this.hwK = paramArrayList;
+    AppMethodBeat.o(217546);
   }
   
   public final void p(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(219321);
+    AppMethodBeat.i(217547);
     p.h(paramArrayList, "<set-?>");
-    this.htX = paramArrayList;
-    AppMethodBeat.o(219321);
+    this.hwL = paramArrayList;
+    AppMethodBeat.o(217547);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(94283);
-    String str = "MediaCaptureInfo(sourceVideoPath=" + this.htN + ", sourceThumb=" + this.htO + ", isCaptureVideo=" + this.htP + ", startTime=" + this.ddx + ", endTime=" + this.htQ + ", daemonVideoPath=" + this.htR + ", daemonSourceThumb=" + this.htS + ", daemonStartTime=" + this.htT + ", daemonEndTime=" + this.htU + ", photoPath=" + this.htV + ", photoList=" + this.htW + ", videoList=" + this.htX + ", isLandscape=" + this.htY + ", extInfo=" + this.htZ + ")";
+    String str = "MediaCaptureInfo(sourceVideoPath=" + this.hwB + ", sourceThumb=" + this.hwC + ", isCaptureVideo=" + this.hwD + ", startTime=" + this.dez + ", endTime=" + this.hwE + ", daemonVideoPath=" + this.hwF + ", daemonSourceThumb=" + this.hwG + ", daemonStartTime=" + this.hwH + ", daemonEndTime=" + this.hwI + ", photoPath=" + this.hwJ + ", photoList=" + this.hwK + ", videoList=" + this.hwL + ", isLandscape=" + this.hwM + ", extInfo=" + this.hwN + ")";
     AppMethodBeat.o(94283);
     return str;
   }
   
-  public final void yk(String paramString)
+  public final void yU(String paramString)
   {
     AppMethodBeat.i(94277);
     p.h(paramString, "<set-?>");
-    this.htN = paramString;
+    this.hwB = paramString;
     AppMethodBeat.o(94277);
   }
   
-  public final void yl(String paramString)
+  public final void yV(String paramString)
   {
     AppMethodBeat.i(94278);
     p.h(paramString, "<set-?>");
-    this.htO = paramString;
+    this.hwC = paramString;
     AppMethodBeat.o(94278);
   }
   
-  public final void ym(String paramString)
+  public final void yW(String paramString)
   {
     AppMethodBeat.i(94279);
     p.h(paramString, "<set-?>");
-    this.htV = paramString;
+    this.hwJ = paramString;
     AppMethodBeat.o(94279);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo$Companion;", "", "()V", "getCapturePhotoInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "input", "", "getExternalPhotoInfo", "getExternalPhotosInfo", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getExternalVideoInfo", "startTime", "", "endTime", "plugin-mediaeditor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo$Companion;", "", "()V", "getCapturePhotoInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "input", "", "getExternalPhotoInfo", "getExternalPhotosInfo", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getExternalVideoInfo", "startTime", "", "endTime", "plugin-mediaeditor_release"})
   public static final class a
   {
-    public static b yn(String paramString)
+    public static b yX(String paramString)
     {
-      AppMethodBeat.i(219318);
+      AppMethodBeat.i(217544);
       p.h(paramString, "input");
       paramString = new b(null, null, true, null, null, paramString, null, null, 15867);
-      AppMethodBeat.o(219318);
+      AppMethodBeat.o(217544);
       return paramString;
     }
   }

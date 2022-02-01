@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.widget.input.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,7 +34,7 @@ public final class c
         paramJSONObject = localObject;
       }
     }
-    com.tencent.mm.plugin.appbrand.z.m.runOnUiThread(new Runnable()
+    com.tencent.mm.plugin.appbrand.y.m.runOnUiThread(new Runnable()
     {
       public final void run()
       {
@@ -45,10 +45,10 @@ public final class c
           return;
         }
         Object localObject = paramc;
-        if ((localObject instanceof aa))
+        if ((localObject instanceof z))
         {
-          localObject = (aa)localObject;
-          if (!o.a((aa)localObject, paramJSONObject)) {
+          localObject = (z)localObject;
+          if (!o.a((z)localObject, paramJSONObject)) {
             break label121;
           }
         }
@@ -58,12 +58,12 @@ public final class c
           paramc.h(paramInt, c.this.e((String)localObject, null));
           AppMethodBeat.o(136256);
           return;
-          if ((localObject instanceof q))
+          if ((localObject instanceof r))
           {
-            localObject = ((q)localObject).getRuntime().aVN().getCurrentPage().getCurrentPageView();
+            localObject = ((r)localObject).getRuntime().aWm().getCurrentPage().getCurrentPageView();
             break;
           }
-          ad.e("MicroMsg.JsApiHideKeyboard", "invalid component type while calling hide keyboard");
+          ae.e("MicroMsg.JsApiHideKeyboard", "invalid component type while calling hide keyboard");
           localObject = null;
           break;
         }
@@ -74,7 +74,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.f.c
  * JD-Core Version:    0.7.0.1
  */

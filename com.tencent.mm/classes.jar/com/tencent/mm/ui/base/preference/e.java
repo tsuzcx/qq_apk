@@ -3,7 +3,7 @@ package com.tencent.mm.ui.base.preference;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public final class e
 {

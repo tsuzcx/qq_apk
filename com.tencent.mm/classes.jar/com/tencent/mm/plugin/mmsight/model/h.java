@@ -6,9 +6,9 @@ import android.hardware.Camera.Size;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -43,7 +43,7 @@ public final class h
         paramPoint = (Camera.Size)paramArrayList.next();
         if ((paramPoint.width == i) && (paramPoint.height == j))
         {
-          ad.i("MicroMsg.MMSightCameraInfo", "findEqualsPrewViewSize FindBestSize %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          ae.i("MicroMsg.MMSightCameraInfo", "findEqualsPrewViewSize FindBestSize %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           paramArrayList = new Point(i, j);
           AppMethodBeat.o(89415);
           return paramArrayList;
@@ -72,10 +72,10 @@ public final class h
   {
     AppMethodBeat.i(89413);
     Arrays.sort(paramArrayOfSize, new a((byte)0));
-    ad.i("MicroMsg.MMSightCameraInfo", "tryFindPreviewSizeAnyWay supportedPreviewSizes: %s", new Object[] { d.a(paramArrayOfSize) });
+    ae.i("MicroMsg.MMSightCameraInfo", "tryFindPreviewSizeAnyWay supportedPreviewSizes: %s", new Object[] { d.a(paramArrayOfSize) });
     float f = paramPoint.x / paramPoint.y;
-    ad.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
-    ad.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bt.je(aj.getContext())) });
+    ae.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bu.jk(ak.getContext())) });
     c localc = new c();
     int i = paramPoint.x;
     int j = paramPoint.y;
@@ -99,21 +99,21 @@ public final class h
         localObject = paramArrayOfSize[k];
         if ((((Size)localObject).getWidth() == i) && (((Size)localObject).getHeight() == j))
         {
-          ad.i("MicroMsg.MMSightCameraInfo", "findEqualsPrewViewSize FindBestSize %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          ae.i("MicroMsg.MMSightCameraInfo", "findEqualsPrewViewSize FindBestSize %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           localObject = new Point(i, j);
           label261:
-          localc.vOe = ((Point)localObject);
-          if (localc.vOe == null) {
+          localc.wah = ((Point)localObject);
+          if (localc.wah == null) {
             break label381;
           }
-          localc.vOf = d.b(paramPoint, localc.vOe, paramBoolean);
-          localc.vOg = d.b(paramPoint, localc.vOe, paramBoolean, true);
+          localc.wai = d.b(paramPoint, localc.wah, paramBoolean);
+          localc.waj = d.b(paramPoint, localc.wah, paramBoolean, true);
         }
       }
       label529:
       for (;;)
       {
-        ad.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d with any way", new Object[] { localc.vOe, localc.vOf, Integer.valueOf(0) });
+        ae.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d with any way", new Object[] { localc.wah, localc.wai, Integer.valueOf(0) });
         AppMethodBeat.o(89413);
         return localc;
         if (Math.min(((Size)localObject).getWidth(), ((Size)localObject).getHeight()) >= paramInt)
@@ -139,7 +139,7 @@ public final class h
           ((Point)localObject).y = localSize.getHeight();
           if ((((Point)localObject).x != ((Point)localObject).y) && (Math.min(((Point)localObject).x, ((Point)localObject).y) <= paramInt) && (Math.max(((Point)localObject).x, ((Point)localObject).y) <= 2000) && (d.b(paramPoint, (Point)localObject, paramBoolean) != null))
           {
-            localc.vOe = null;
+            localc.wah = null;
             break;
           }
           i += 1;
@@ -156,21 +156,21 @@ public final class h
     Object localObject1 = new ArrayList(paramParameters.getSupportedPreviewSizes());
     Collections.sort((List)localObject1, new h.b((byte)0));
     new ArrayList(paramParameters.getSupportedPictureSizes());
-    ad.i("MicroMsg.MMSightCameraInfo", "supportedPreviewSizes: %s", new Object[] { d.ey((List)localObject1) });
+    ae.i("MicroMsg.MMSightCameraInfo", "supportedPreviewSizes: %s", new Object[] { d.eD((List)localObject1) });
     float f = paramPoint.x / paramPoint.y;
-    ad.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s lowerBoundPreView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt), Integer.valueOf(0) });
-    ad.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bt.je(aj.getContext())) });
+    ae.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s lowerBoundPreView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt), Integer.valueOf(0) });
+    ae.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bu.jk(ak.getContext())) });
     paramParameters = new c();
-    paramParameters.vOe = a((ArrayList)localObject1, paramPoint, paramBoolean, paramInt);
-    if (paramParameters.vOe != null)
+    paramParameters.wah = a((ArrayList)localObject1, paramPoint, paramBoolean, paramInt);
+    if (paramParameters.wah != null)
     {
-      paramParameters.vOf = d.a(paramPoint, paramParameters.vOe, paramBoolean);
-      paramParameters.vOg = d.a(paramPoint, paramParameters.vOe, paramBoolean, true);
+      paramParameters.wai = d.a(paramPoint, paramParameters.wah, paramBoolean);
+      paramParameters.waj = d.a(paramPoint, paramParameters.wah, paramBoolean, true);
       paramInt = 0;
     }
     for (;;)
     {
-      ad.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d", new Object[] { paramParameters.vOe, paramParameters.vOf, Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d", new Object[] { paramParameters.wah, paramParameters.wai, Integer.valueOf(paramInt) });
       AppMethodBeat.o(185470);
       return paramParameters;
       Point localPoint = new Point();
@@ -184,33 +184,33 @@ public final class h
           localPoint.y = ((Camera.Size)localObject2).height;
           if (localPoint.x == localPoint.y)
           {
-            ad.i("MicroMsg.MMSightCameraInfo", "exclude square curSize: %s", new Object[] { localPoint });
+            ae.i("MicroMsg.MMSightCameraInfo", "exclude square curSize: %s", new Object[] { localPoint });
           }
           else
           {
-            ad.i("MicroMsg.MMSightCameraInfo", "cursize is %s * %s , and isRotate %s, screenRes.x %s, screenRes.y %s", new Object[] { Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y), Boolean.valueOf(paramBoolean), Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
+            ae.i("MicroMsg.MMSightCameraInfo", "cursize is %s * %s , and isRotate %s, screenRes.x %s, screenRes.y %s", new Object[] { Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y), Boolean.valueOf(paramBoolean), Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
             if (paramPoint.y > paramPoint.x)
             {
               if (localPoint.y >= localPoint.x) {
-                ad.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio  1 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
+                ae.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio  1 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
               }
             }
             else if (localPoint.x >= localPoint.y)
             {
-              ad.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio 2 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
+              ae.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio 2 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
               continue;
             }
             localObject2 = d.a(paramPoint, localPoint, paramBoolean);
             if (localObject2 == null)
             {
-              ad.i("MicroMsg.MMSightCameraInfo", "curSize: %s, can not find crop size", new Object[] { localPoint });
+              ae.i("MicroMsg.MMSightCameraInfo", "curSize: %s, can not find crop size", new Object[] { localPoint });
             }
             else
             {
-              ad.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s --> bestSize %s ", new Object[] { localPoint, localObject2 });
-              paramParameters.vOi = new Point(((Point)localObject2).x, ((Point)localObject2).y);
-              paramParameters.vOh = new Point(localPoint.x, localPoint.y);
-              paramParameters.vOj = d.a(paramPoint, localPoint, paramBoolean, true);
+              ae.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s --> bestSize %s ", new Object[] { localPoint, localObject2 });
+              paramParameters.wal = new Point(((Point)localObject2).x, ((Point)localObject2).y);
+              paramParameters.wak = new Point(localPoint.x, localPoint.y);
+              paramParameters.wam = d.a(paramPoint, localPoint, paramBoolean, true);
               if (Math.min(((Point)localObject2).x, ((Point)localObject2).y) <= paramInt)
               {
                 if (Math.min(((Point)localObject2).x, ((Point)localObject2).y) < 0)
@@ -219,11 +219,11 @@ public final class h
                   return null;
                 }
                 localPoint = new Point(localPoint.x, localPoint.y);
-                paramParameters.vOe = localPoint;
-                paramParameters.vOf = ((Point)localObject2);
-                paramParameters.vOg = d.a(paramPoint, paramParameters.vOe, paramBoolean, true);
+                paramParameters.wah = localPoint;
+                paramParameters.wai = ((Point)localObject2);
+                paramParameters.waj = d.a(paramPoint, paramParameters.wah, paramBoolean, true);
                 paramInt = 1;
-                ad.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s findcount %d", new Object[] { localPoint, localObject2, Integer.valueOf(1) });
+                ae.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s findcount %d", new Object[] { localPoint, localObject2, Integer.valueOf(1) });
                 break;
               }
             }
@@ -238,10 +238,10 @@ public final class h
   {
     AppMethodBeat.i(89417);
     Arrays.sort(paramArrayOfSize, new a((byte)0));
-    ad.i("MicroMsg.MMSightCameraInfo", "findPreviewSizeWithoutCrop supportedPreviewSizes: %s", new Object[] { d.a(paramArrayOfSize) });
+    ae.i("MicroMsg.MMSightCameraInfo", "findPreviewSizeWithoutCrop supportedPreviewSizes: %s", new Object[] { d.a(paramArrayOfSize) });
     float f = paramPoint.x / paramPoint.y;
-    ad.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s ", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
-    ad.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bt.je(aj.getContext())) });
+    ae.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s ", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bu.jk(ak.getContext())) });
     c localc = new c();
     Object localObject2 = null;
     int i = (int)(paramInt * 1.05F);
@@ -262,15 +262,15 @@ public final class h
       }
       else
       {
-        ad.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s ", new Object[] { localObject1 });
-        localc.vOi = new Point(((Point)localObject1).x, ((Point)localObject1).y);
-        localc.vOh = new Point(((Point)localObject1).x, ((Point)localObject1).y);
-        localc.vOj = d.a(paramPoint, (Point)localObject1, paramBoolean, true);
+        ae.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s ", new Object[] { localObject1 });
+        localc.wal = new Point(((Point)localObject1).x, ((Point)localObject1).y);
+        localc.wak = new Point(((Point)localObject1).x, ((Point)localObject1).y);
+        localc.wam = d.a(paramPoint, (Point)localObject1, paramBoolean, true);
         paramArrayOfSize = new Point(((Point)localObject1).x, ((Point)localObject1).y);
-        localc.vOe = paramArrayOfSize;
-        localc.vOf = ((Point)localObject1);
-        localc.vOg = d.a(paramPoint, localc.vOe, paramBoolean, true);
-        ad.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s ", new Object[] { paramArrayOfSize, localObject1 });
+        localc.wah = paramArrayOfSize;
+        localc.wai = ((Point)localObject1);
+        localc.waj = d.a(paramPoint, localc.wah, paramBoolean, true);
+        ae.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s ", new Object[] { paramArrayOfSize, localObject1 });
         AppMethodBeat.o(89417);
         return localc;
       }
@@ -283,10 +283,10 @@ public final class h
     AppMethodBeat.i(186114);
     Object localObject1 = new ArrayList(paramParameters.getSupportedPreviewSizes());
     Collections.sort((List)localObject1, new h.b((byte)0));
-    ad.i("MicroMsg.MMSightCameraInfo", "supportedPreviewSizes: %s", new Object[] { d.ey((List)localObject1) });
+    ae.i("MicroMsg.MMSightCameraInfo", "supportedPreviewSizes: %s", new Object[] { d.eD((List)localObject1) });
     float f = paramPoint.x / paramPoint.y;
-    ad.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s lowerBoundPreView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt), Integer.valueOf(0) });
-    ad.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bt.je(aj.getContext())) });
+    ae.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s lowerBoundPreView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt), Integer.valueOf(0) });
+    ae.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bu.jk(ak.getContext())) });
     paramParameters = new c();
     Point localPoint = new Point();
     paramInt = (int)(paramInt * 1.05F);
@@ -298,36 +298,36 @@ public final class h
       {
         localPoint.x = ((Camera.Size)localObject2).width;
         localPoint.y = ((Camera.Size)localObject2).height;
-        ad.i("MicroMsg.MMSightCameraInfo", "cursize is %s * %s , and isRotate %s, screenRes.x %s, screenRes.y %s", new Object[] { Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y), Boolean.valueOf(paramBoolean), Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
+        ae.i("MicroMsg.MMSightCameraInfo", "cursize is %s * %s , and isRotate %s, screenRes.x %s, screenRes.y %s", new Object[] { Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y), Boolean.valueOf(paramBoolean), Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
         if (paramPoint.y > paramPoint.x)
         {
           if (localPoint.y >= localPoint.x) {
-            ad.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio  1 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
+            ae.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio  1 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
           }
         }
         else if (localPoint.x >= localPoint.y)
         {
-          ad.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio 2 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
+          ae.i("MicroMsg.MMSightCameraInfo", "screen ratio is differ from preview ratio 2 and unSupport preview is %s * %s", new Object[] { Integer.valueOf(((Camera.Size)localObject2).height), Integer.valueOf(((Camera.Size)localObject2).width) });
           continue;
         }
         localObject2 = d.a(paramPoint, localPoint, paramBoolean, false);
         if (localObject2 != null)
         {
-          ad.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s --> bestSize %s ", new Object[] { localPoint, localObject2 });
-          paramParameters.vOi = new Point(((Point)localObject2).x, ((Point)localObject2).y);
-          paramParameters.vOh = new Point(localPoint.x, localPoint.y);
-          paramParameters.vOj = d.a(paramPoint, localPoint, paramBoolean, true);
+          ae.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s --> bestSize %s ", new Object[] { localPoint, localObject2 });
+          paramParameters.wal = new Point(((Point)localObject2).x, ((Point)localObject2).y);
+          paramParameters.wak = new Point(localPoint.x, localPoint.y);
+          paramParameters.wam = d.a(paramPoint, localPoint, paramBoolean, true);
           localPoint = new Point(localPoint.x, localPoint.y);
-          paramParameters.vOe = localPoint;
-          paramParameters.vOf = ((Point)localObject2);
-          paramParameters.vOg = d.a(paramPoint, paramParameters.vOe, paramBoolean, true);
-          ad.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s findcount %d", new Object[] { localPoint, localObject2, Integer.valueOf(1) });
+          paramParameters.wah = localPoint;
+          paramParameters.wai = ((Point)localObject2);
+          paramParameters.waj = d.a(paramPoint, paramParameters.wah, paramBoolean, true);
+          ae.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s findcount %d", new Object[] { localPoint, localObject2, Integer.valueOf(1) });
           AppMethodBeat.o(186114);
           return paramParameters;
         }
       }
     }
-    ad.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d with crop width", new Object[] { paramParameters.vOe, paramParameters.vOf, Integer.valueOf(0) });
+    ae.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d with crop width", new Object[] { paramParameters.wah, paramParameters.wai, Integer.valueOf(0) });
     AppMethodBeat.o(186114);
     return paramParameters;
   }
@@ -338,20 +338,20 @@ public final class h
     Object localObject = new ArrayList(paramParameters.getSupportedPreviewSizes());
     Collections.sort((List)localObject, new h.b((byte)0));
     new ArrayList(paramParameters.getSupportedPictureSizes());
-    ad.i("MicroMsg.MMSightCameraInfo", "tryFindPreviewSizeAnyWay supportedPreviewSizes: %s", new Object[] { d.ey((List)localObject) });
+    ae.i("MicroMsg.MMSightCameraInfo", "tryFindPreviewSizeAnyWay supportedPreviewSizes: %s", new Object[] { d.eD((List)localObject) });
     float f = paramPoint.x / paramPoint.y;
-    ad.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
-    ad.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bt.je(aj.getContext())) });
+    ae.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bu.jk(ak.getContext())) });
     paramParameters = new c();
-    paramParameters.vOe = a((ArrayList)localObject, paramPoint, paramBoolean, paramInt);
-    if (paramParameters.vOe != null)
+    paramParameters.wah = a((ArrayList)localObject, paramPoint, paramBoolean, paramInt);
+    if (paramParameters.wah != null)
     {
-      paramParameters.vOf = d.b(paramPoint, paramParameters.vOe, paramBoolean);
-      paramParameters.vOg = d.b(paramPoint, paramParameters.vOe, paramBoolean, true);
+      paramParameters.wai = d.b(paramPoint, paramParameters.wah, paramBoolean);
+      paramParameters.waj = d.b(paramPoint, paramParameters.wah, paramBoolean, true);
     }
     for (;;)
     {
-      ad.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d with any way", new Object[] { paramParameters.vOe, paramParameters.vOf, Integer.valueOf(0) });
+      ae.i("MicroMsg.MMSightCameraInfo", "final tryFindBestSize prewViewSize %s cropSize %s findcount %d with any way", new Object[] { paramParameters.wah, paramParameters.wai, Integer.valueOf(0) });
       AppMethodBeat.o(89414);
       return paramParameters;
       Point localPoint = new Point();
@@ -366,7 +366,7 @@ public final class h
         if ((localPoint.x == localPoint.y) || (Math.min(localPoint.x, localPoint.y) > paramInt) || (Math.max(localPoint.x, localPoint.y) > 2000) || (d.b(paramPoint, localPoint, paramBoolean) == null)) {
           break;
         }
-        paramParameters.vOe = null;
+        paramParameters.wah = null;
       }
     }
   }
@@ -376,10 +376,10 @@ public final class h
     AppMethodBeat.i(89416);
     paramParameters = new ArrayList(paramParameters.getSupportedPreviewSizes());
     Collections.sort(paramParameters, new h.b((byte)0));
-    ad.i("MicroMsg.MMSightCameraInfo", "findPreviewSizeWithoutCrop supportedPreviewSizes: %s", new Object[] { d.ey(paramParameters) });
+    ae.i("MicroMsg.MMSightCameraInfo", "findPreviewSizeWithoutCrop supportedPreviewSizes: %s", new Object[] { d.eD(paramParameters) });
     float f = paramPoint.x / paramPoint.y;
-    ad.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s ", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
-    ad.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bt.je(aj.getContext())) });
+    ae.i("MicroMsg.MMSightCameraInfo", "screen.x: %d, screen.y: %d, ratio: %f, upperBoundPrewView: %s ", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f), Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.MMSightCameraInfo", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(bu.jk(ak.getContext())) });
     c localc = new c();
     paramInt = (int)(paramInt * 1.05F);
     paramParameters = paramParameters.iterator();
@@ -396,15 +396,15 @@ public final class h
     }
     for (;;)
     {
-      ad.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s ", new Object[] { paramParameters });
-      localc.vOi = new Point(paramParameters.x, paramParameters.y);
-      localc.vOh = new Point(paramParameters.x, paramParameters.y);
-      localc.vOj = d.a(paramPoint, paramParameters, paramBoolean, true);
+      ae.i("MicroMsg.MMSightCameraInfo", "preViewPoint: %s ", new Object[] { paramParameters });
+      localc.wal = new Point(paramParameters.x, paramParameters.y);
+      localc.wak = new Point(paramParameters.x, paramParameters.y);
+      localc.wam = d.a(paramPoint, paramParameters, paramBoolean, true);
       localObject = new Point(paramParameters.x, paramParameters.y);
-      localc.vOe = ((Point)localObject);
-      localc.vOf = paramParameters;
-      localc.vOg = d.a(paramPoint, localc.vOe, paramBoolean, true);
-      ad.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s ", new Object[] { localObject, paramParameters });
+      localc.wah = ((Point)localObject);
+      localc.wai = paramParameters;
+      localc.waj = d.a(paramPoint, localc.wah, paramBoolean, true);
+      ae.i("MicroMsg.MMSightCameraInfo", "find bestPreviewSize  %s -> %s ", new Object[] { localObject, paramParameters });
       AppMethodBeat.o(89416);
       return localc;
       paramParameters = null;
@@ -417,34 +417,34 @@ public final class h
   
   public static final class c
   {
-    public Point vOe;
-    public Point vOf;
-    public Point vOg;
-    public Point vOh;
-    public Point vOi;
-    public Point vOj;
+    public Point wah;
+    public Point wai;
+    public Point waj;
+    public Point wak;
+    public Point wal;
+    public Point wam;
     
     public final String toString()
     {
       AppMethodBeat.i(89409);
       Object localObject = new StringBuffer();
-      if (this.vOe != null) {
-        ((StringBuffer)localObject).append(this.vOe.toString() + ",");
+      if (this.wah != null) {
+        ((StringBuffer)localObject).append(this.wah.toString() + ",");
       }
-      if (this.vOf != null) {
-        ((StringBuffer)localObject).append(this.vOf.toString() + ",");
+      if (this.wai != null) {
+        ((StringBuffer)localObject).append(this.wai.toString() + ",");
       }
-      if (this.vOg != null) {
-        ((StringBuffer)localObject).append(this.vOg.toString() + ",");
+      if (this.waj != null) {
+        ((StringBuffer)localObject).append(this.waj.toString() + ",");
       }
-      if (this.vOh != null) {
-        ((StringBuffer)localObject).append(this.vOh.toString() + ",");
+      if (this.wak != null) {
+        ((StringBuffer)localObject).append(this.wak.toString() + ",");
       }
-      if (this.vOi != null) {
-        ((StringBuffer)localObject).append(this.vOi.toString() + ",");
+      if (this.wal != null) {
+        ((StringBuffer)localObject).append(this.wal.toString() + ",");
       }
-      if (this.vOj != null) {
-        ((StringBuffer)localObject).append(this.vOj.toString() + ",");
+      if (this.wam != null) {
+        ((StringBuffer)localObject).append(this.wam.toString() + ",");
       }
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(89409);

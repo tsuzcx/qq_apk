@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class kn
   extends b
 {
-  public a dxx;
+  public a dyz;
   
   public kn()
   {
@@ -16,23 +16,24 @@ public final class kn
   
   private kn(byte paramByte)
   {
-    AppMethodBeat.i(91208);
-    this.dxx = new a();
-    this.IbR = false;
+    AppMethodBeat.i(63289);
+    this.dyz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91208);
+    AppMethodBeat.o(63289);
   }
   
   public static final class a
   {
-    public int bZU;
-    public Intent dxy;
-    public int requestCode;
+    public Context context;
+    public String dyA;
+    public Long dyB;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.kn
  * JD-Core Version:    0.7.0.1
  */

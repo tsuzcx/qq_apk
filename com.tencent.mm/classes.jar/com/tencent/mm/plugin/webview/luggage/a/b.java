@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.plugin.downloader.b.a.b;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
 {
-  public static a.b DRW;
+  public static a.b EjW;
 }
 
 

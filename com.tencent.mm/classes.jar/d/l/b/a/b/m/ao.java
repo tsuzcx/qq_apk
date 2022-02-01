@@ -13,33 +13,33 @@ import d.l.b.a.b.m.a.i;
 public final class ao
   extends aw
 {
-  private final f NCu;
-  final as NCv;
+  private final f NZB;
+  final as NZC;
   
   public ao(as paramas)
   {
     AppMethodBeat.i(60814);
-    this.NCv = paramas;
-    this.NCu = g.a(k.MKb, (a)new a(this));
+    this.NZC = paramas;
+    this.NZB = g.a(k.Nhe, (a)new a(this));
     AppMethodBeat.o(60814);
   }
   
-  public final ab gju()
+  public final ab gnW()
   {
     AppMethodBeat.i(60812);
-    ab localab = (ab)this.NCu.getValue();
+    ab localab = (ab)this.NZB.getValue();
     AppMethodBeat.o(60812);
     return localab;
   }
   
-  public final boolean guc()
+  public final boolean gyE()
   {
     return true;
   }
   
-  public final bh gud()
+  public final bh gyF()
   {
-    return bh.NCR;
+    return bh.NZY;
   }
   
   public final av m(i parami)
@@ -63,7 +63,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ao
  * JD-Core Version:    0.7.0.1
  */

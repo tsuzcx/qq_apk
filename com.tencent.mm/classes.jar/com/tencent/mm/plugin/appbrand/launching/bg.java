@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
 import com.tencent.mm.plugin.appbrand.launching.a.e;
 import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.xf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.xi;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,48 +20,48 @@ public class bg
   extends be<Pair<HashMap<String, AppRuntimeApiPermissionBundle>, Boolean>>
 {
   final String appId;
-  final boolean ciC;
-  final WxaAttributes.WxaVersionInfo cmy;
+  final boolean ciE;
+  final WxaAttributes.WxaVersionInfo cmA;
   final int enterScene;
-  final int hQh;
-  final QualitySession jXD;
-  final String lFL;
-  List<e> lLb;
+  final int hSZ;
+  final QualitySession kaS;
+  final String lKk;
+  List<e> lPB;
   
   bg(String paramString1, int paramInt1, boolean paramBoolean, WxaAttributes.WxaVersionInfo paramWxaVersionInfo, int paramInt2, String paramString2, QualitySession paramQualitySession)
   {
-    AppMethodBeat.i(188625);
-    this.lLb = new LinkedList();
+    AppMethodBeat.i(222784);
+    this.lPB = new LinkedList();
     this.appId = paramString1;
-    this.hQh = paramInt1;
-    this.ciC = paramBoolean;
+    this.hSZ = paramInt1;
+    this.ciE = paramBoolean;
     this.enterScene = paramInt2;
-    this.cmy = paramWxaVersionInfo;
-    this.lFL = paramString2;
-    this.jXD = paramQualitySession;
-    ad.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "appId:%s,versionType:%d,isGame:%b,enterScene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(188625);
+    this.cmA = paramWxaVersionInfo;
+    this.lKk = paramString2;
+    this.kaS = paramQualitySession;
+    ae.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "appId:%s,versionType:%d,isGame:%b,enterScene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(222784);
   }
   
   private static LinkedList<e> a(WxaAttributes.WxaVersionInfo paramWxaVersionInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(188626);
+    AppMethodBeat.i(222785);
     LinkedList localLinkedList = new LinkedList();
     if (paramBoolean)
     {
-      paramWxaVersionInfo = paramWxaVersionInfo.ioH;
+      paramWxaVersionInfo = paramWxaVersionInfo.irC;
       if ((paramWxaVersionInfo == null) || (paramWxaVersionInfo.size() <= 0))
       {
-        AppMethodBeat.o(188626);
+        AppMethodBeat.o(222785);
         return null;
       }
       paramWxaVersionInfo = paramWxaVersionInfo.iterator();
       while (paramWxaVersionInfo.hasNext())
       {
         Object localObject = (WxaAttributes.WxaWidgetInfo)paramWxaVersionInfo.next();
-        if (((WxaAttributes.WxaWidgetInfo)localObject).dnF == 22)
+        if (((WxaAttributes.WxaWidgetInfo)localObject).doK == 22)
         {
-          localObject = ((WxaAttributes.WxaWidgetInfo)localObject).kao;
+          localObject = ((WxaAttributes.WxaWidgetInfo)localObject).kdF;
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
             localObject = ((List)localObject).iterator();
@@ -82,27 +82,27 @@ public class bg
           }
         }
       }
-      AppMethodBeat.o(188626);
+      AppMethodBeat.o(222785);
       return localLinkedList;
     }
-    AppMethodBeat.o(188626);
+    AppMethodBeat.o(222785);
     return localLinkedList;
   }
   
   private boolean e(HashMap<String, AppRuntimeApiPermissionBundle> paramHashMap)
   {
-    AppMethodBeat.i(188627);
-    aw localaw = j.aYQ();
-    bb localbb = j.aYS();
+    AppMethodBeat.i(222786);
+    aw localaw = j.aZm();
+    bb localbb = j.aZo();
     if ((localaw == null) || (localbb == null))
     {
-      ad.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "needSyncCheckAppJsApiPermission storage null!");
-      AppMethodBeat.o(188627);
+      ae.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "needSyncCheckAppJsApiPermission storage null!");
+      AppMethodBeat.o(222786);
       return false;
     }
-    if ((this.lLb != null) && (this.lLb.size() > 0))
+    if ((this.lPB != null) && (this.lPB.size() > 0))
     {
-      Iterator localIterator = this.lLb.iterator();
+      Iterator localIterator = this.lPB.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (e)localIterator.next();
@@ -110,20 +110,20 @@ public class bg
         int i = ((e)localObject).appType;
         if (i == 2)
         {
-          localObject = localbb.RU(str);
+          localObject = localbb.SD(str);
           if (localObject == null)
           {
-            ad.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "needSyncCheckAppJsApiPermission pluginInfoStorage not include appId:%s!", new Object[] { str });
-            AppMethodBeat.o(188627);
+            ae.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "needSyncCheckAppJsApiPermission pluginInfoStorage not include appId:%s!", new Object[] { str });
+            AppMethodBeat.o(222786);
             return true;
           }
-          if (((xf)localObject).FWI == null)
+          if (((xi)localObject).Gph == null)
           {
-            ad.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "needSyncCheckAppJsApiPermission pluginInfoStorage appId:%s jsapi_control_bytes null!", new Object[] { str });
-            AppMethodBeat.o(188627);
+            ae.i("MicroMsg.AppBrand.PrepareStepCheckAppWxaJsApiPermissionInfo", "needSyncCheckAppJsApiPermission pluginInfoStorage appId:%s jsapi_control_bytes null!", new Object[] { str });
+            AppMethodBeat.o(222786);
             return true;
           }
-          paramHashMap.put(str, new AppRuntimeApiPermissionBundle((xf)localObject));
+          paramHashMap.put(str, new AppRuntimeApiPermissionBundle((xi)localObject));
         }
         else if (i == 1)
         {
@@ -131,22 +131,22 @@ public class bg
           ((ax)localObject).field_appId = str;
           if (!localaw.a((ax)localObject, new String[] { "appId" }))
           {
-            AppMethodBeat.o(188627);
+            AppMethodBeat.o(222786);
             return true;
           }
           if (((ax)localObject).field_jsapiInfo == null)
           {
-            AppMethodBeat.o(188627);
+            AppMethodBeat.o(222786);
             return true;
           }
         }
       }
     }
-    AppMethodBeat.o(188627);
+    AppMethodBeat.o(222786);
     return false;
   }
   
-  void aXp() {}
+  void aXK() {}
   
   final String getTag()
   {

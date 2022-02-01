@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.webview.luggage;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class p
 {
   public static void ae(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(78414);
-    if (bt.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
+    if (bu.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
     {
       AppMethodBeat.o(78414);
       return;

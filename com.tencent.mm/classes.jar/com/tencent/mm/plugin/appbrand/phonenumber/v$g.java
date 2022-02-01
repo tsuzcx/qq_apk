@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "invoke"})
 final class v$g
   extends q
   implements b<PhoneItem, z>
 {
-  public static final g mkD;
+  public static final g mpA;
   
   static
   {
-    AppMethodBeat.i(192396);
-    mkD = new g();
-    AppMethodBeat.o(192396);
+    AppMethodBeat.i(221009);
+    mpA = new g();
+    AppMethodBeat.o(221009);
   }
   
   v$g()

@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.d;
-import com.tencent.mm.aw.q;
-import com.tencent.mm.aw.r;
-import com.tencent.mm.aw.r.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.av.d;
+import com.tencent.mm.av.q;
+import com.tencent.mm.av.r;
+import com.tencent.mm.av.r.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,16 +20,16 @@ import java.util.Map;
 public class BankMobileRemitChooseMMHeaderPreference
   extends Preference
 {
-  private String dDH;
-  private int lZt;
+  private String dEM;
+  private int mdM;
   private String title;
-  private Map<String, r.a> xVn;
+  private Map<String, r.a> ylg;
   
   public BankMobileRemitChooseMMHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67662);
-    this.xVn = new HashMap();
+    this.ylg = new HashMap();
     AppMethodBeat.o(67662);
   }
   
@@ -37,13 +37,13 @@ public class BankMobileRemitChooseMMHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(67661);
-    this.xVn = new HashMap();
+    this.ylg = new HashMap();
     AppMethodBeat.o(67661);
   }
   
   public final void gk()
   {
-    this.lZt = 2131689519;
+    this.mdM = 2131689519;
   }
   
   public final void onBindView(View paramView)
@@ -52,38 +52,38 @@ public class BankMobileRemitChooseMMHeaderPreference
     super.onBindView(paramView);
     Object localObject = (ImageView)paramView.findViewById(2131297104);
     paramView = (TextView)paramView.findViewById(2131297105);
-    if (bt.isNullOrNil(this.dDH)) {
-      if (!bt.jx(this.lZt, 0)) {
-        ((ImageView)localObject).setImageResource(this.lZt);
+    if (bu.isNullOrNil(this.dEM)) {
+      if (!bu.jB(this.mdM, 0)) {
+        ((ImageView)localObject).setImageResource(this.mdM);
       }
     }
     for (;;)
     {
-      if (!bt.isNullOrNil(this.title)) {
+      if (!bu.isNullOrNil(this.title)) {
         paramView.setText(this.title);
       }
       AppMethodBeat.o(67663);
       return;
-      q.aIE();
-      Bitmap localBitmap = d.vT(this.dDH);
+      q.aIW();
+      Bitmap localBitmap = d.wA(this.dEM);
       if (localBitmap != null)
       {
         ((ImageView)localObject).setImageBitmap(localBitmap);
       }
-      else if (!bt.isNullOrNil(this.dDH))
+      else if (!bu.isNullOrNil(this.dEM))
       {
         localObject = new r.a()
         {
           public final void a(String paramAnonymousString1, Bitmap paramAnonymousBitmap, String paramAnonymousString2)
           {
             AppMethodBeat.i(67660);
-            ad.i("MicroMsg.mobileRemit.BankMobileRemitChooseMMHeaderPreference", "icon url: %s", new Object[] { paramAnonymousString1 });
-            this.xVo.setImageBitmap(paramAnonymousBitmap);
+            ae.i("MicroMsg.mobileRemit.BankMobileRemitChooseMMHeaderPreference", "icon url: %s", new Object[] { paramAnonymousString1 });
+            this.ylh.setImageBitmap(paramAnonymousBitmap);
             AppMethodBeat.o(67660);
           }
         };
-        this.xVn.put(this.dDH, localObject);
-        q.aII().a(this.dDH, (r.a)localObject);
+        this.ylg.put(this.dEM, localObject);
+        q.aJa().a(this.dEM, (r.a)localObject);
       }
     }
   }

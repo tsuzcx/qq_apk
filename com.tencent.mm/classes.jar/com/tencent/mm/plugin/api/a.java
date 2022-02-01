@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.x;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.mmsight.api.a.b;
 import com.tencent.mm.plugin.mmsight.model.b.b;
 import com.tencent.mm.plugin.mmsight.model.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
   implements a.b
@@ -53,8 +51,8 @@ public final class a
   public final com.tencent.mm.plugin.mmsight.api.a a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     AppMethodBeat.i(89182);
-    int i = ae.gcL.gbs;
-    ad.i("MicroMsg.MMSightPresendRemuxerImpl", "get, configRemuxerType: %s", new Object[] { Integer.valueOf(i) });
+    int i = com.tencent.mm.compatible.deviceinfo.ae.geT.gdA;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightPresendRemuxerImpl", "get, configRemuxerType: %s", new Object[] { Integer.valueOf(i) });
     if (i != -1)
     {
       if (i == 1)
@@ -70,7 +68,7 @@ public final class a
         return paramString1;
       }
     }
-    if (d.ly(19))
+    if (d.lA(19))
     {
       paramString1 = new b(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4);
       AppMethodBeat.o(89182);
@@ -84,8 +82,8 @@ public final class a
   public final com.tencent.mm.plugin.mmsight.api.a a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, int paramInt5, int paramInt6)
   {
     AppMethodBeat.i(89183);
-    int i = ae.gcL.gbs;
-    ad.i("MicroMsg.MMSightPresendRemuxerImpl", "get, configRemuxerType: %s", new Object[] { Integer.valueOf(i) });
+    int i = com.tencent.mm.compatible.deviceinfo.ae.geT.gdA;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightPresendRemuxerImpl", "get, configRemuxerType: %s", new Object[] { Integer.valueOf(i) });
     if (i != -1)
     {
       if (i == 1)
@@ -101,7 +99,7 @@ public final class a
         return paramString1;
       }
     }
-    if (d.ly(19))
+    if (d.lA(19))
     {
       paramString1 = new b(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2);
       AppMethodBeat.o(89183);

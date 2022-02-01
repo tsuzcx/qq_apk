@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.story.f.a;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/cgi/StoryObjDelOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "(JI)V", "plugin-story_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/cgi/StoryObjDelOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "(JI)V", "plugin-story_release"})
 public final class l
   extends a
 {

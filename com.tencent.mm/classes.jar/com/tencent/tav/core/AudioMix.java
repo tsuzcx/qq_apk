@@ -20,24 +20,24 @@ public class AudioMix<InputParameters extends AudioMixInputParameters>
   
   public InputParameters getInputParametersWithTrackID(int paramInt)
   {
-    AppMethodBeat.i(217880);
+    AppMethodBeat.i(214518);
     Iterator localIterator = this.inputParameters.iterator();
     while (localIterator.hasNext())
     {
       AudioMixInputParameters localAudioMixInputParameters = (AudioMixInputParameters)localIterator.next();
       if (localAudioMixInputParameters.getTrackID() == paramInt)
       {
-        AppMethodBeat.o(217880);
+        AppMethodBeat.o(214518);
         return localAudioMixInputParameters;
       }
     }
-    AppMethodBeat.o(217880);
+    AppMethodBeat.o(214518);
     return null;
   }
   
   public void release()
   {
-    AppMethodBeat.i(217881);
+    AppMethodBeat.i(214519);
     Iterator localIterator = this.inputParameters.iterator();
     while (localIterator.hasNext())
     {
@@ -46,14 +46,14 @@ public class AudioMix<InputParameters extends AudioMixInputParameters>
         localAudioMixInputParameters.getAudioTapProcessor().release();
       }
     }
-    AppMethodBeat.o(217881);
+    AppMethodBeat.o(214519);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(217882);
+    AppMethodBeat.i(214520);
     String str = "AudioMix{inputParameters=" + this.inputParameters + '}';
-    AppMethodBeat.o(217882);
+    AppMethodBeat.o(214520);
     return str;
   }
 }

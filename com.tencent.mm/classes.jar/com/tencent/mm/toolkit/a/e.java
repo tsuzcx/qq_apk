@@ -5,11 +5,11 @@ final class e
   static boolean DEBUG = false;
   static String TAG = "downloader";
   
-  public static void fuo() {}
+  public static void fyp() {}
   
-  public static void fup() {}
+  public static void fyq() {}
   
-  public static void fuq() {}
+  public static void fyr() {}
 }
 
 

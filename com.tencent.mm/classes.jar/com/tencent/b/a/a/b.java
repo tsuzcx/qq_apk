@@ -16,42 +16,42 @@ import java.util.TimeZone;
 
 final class b
 {
-  static a cOm;
-  Integer cOn;
-  String cOo;
+  static a cOW;
+  Integer cOX;
+  String cOY;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(87628);
-    this.cOn = null;
-    this.cOo = null;
+    this.cOX = null;
+    this.cOY = null;
     try
     {
-      aU(paramContext);
+      aV(paramContext);
       TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
       if (localTelephonyManager != null) {
-        this.cOn = Integer.valueOf(localTelephonyManager.getNetworkType());
+        this.cOX = Integer.valueOf(localTelephonyManager.getNetworkType());
       }
-      this.cOo = s.bf(paramContext);
+      this.cOY = s.bg(paramContext);
       AppMethodBeat.o(87628);
       return;
     }
     catch (Throwable paramContext)
     {
-      s.JL();
+      s.JT();
       AppMethodBeat.o(87628);
     }
   }
   
-  private static a aU(Context paramContext)
+  private static a aV(Context paramContext)
   {
     try
     {
       AppMethodBeat.i(87627);
-      if (cOm == null) {
-        cOm = new a(paramContext.getApplicationContext(), (byte)0);
+      if (cOW == null) {
+        cOW = new a(paramContext.getApplicationContext(), (byte)0);
       }
-      paramContext = cOm;
+      paramContext = cOW;
       AppMethodBeat.o(87627);
       return paramContext;
     }
@@ -61,16 +61,16 @@ final class b
   static final class a
   {
     String appVersion;
-    String cOp;
-    DisplayMetrics cOq;
-    int cOr;
-    String cOs;
-    String cOt;
-    String cOu;
-    String cOv;
-    int cOw;
-    String cOx;
-    String cOy;
+    String cOZ;
+    DisplayMetrics cPa;
+    int cPb;
+    String cPc;
+    String cPd;
+    String cPe;
+    String cPf;
+    int cPg;
+    String cPh;
+    String cPi;
     Context ctx;
     String imsi;
     String language;
@@ -81,36 +81,36 @@ final class b
     private a(Context paramContext)
     {
       AppMethodBeat.i(87626);
-      this.cOp = "2.21";
-      this.cOr = Build.VERSION.SDK_INT;
+      this.cOZ = "2.21";
+      this.cPb = Build.VERSION.SDK_INT;
       this.model = Build.MODEL;
-      this.cOs = Build.MANUFACTURER;
+      this.cPc = Build.MANUFACTURER;
       this.language = Locale.getDefault().getLanguage();
-      this.cOt = "WX";
-      this.cOw = 0;
+      this.cPd = "WX";
+      this.cPg = 0;
       this.packageName = null;
       this.ctx = null;
-      this.cOx = null;
-      this.cOy = null;
+      this.cPh = null;
+      this.cPi = null;
       this.ctx = paramContext.getApplicationContext();
       try
       {
         this.appVersion = this.ctx.getPackageManager().getPackageInfo(this.ctx.getPackageName(), 0).versionName;
-        this.cOq = new DisplayMetrics();
-        ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.cOq);
+        this.cPa = new DisplayMetrics();
+        ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.cPa);
         if (s.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
         {
           paramContext = (TelephonyManager)paramContext.getSystemService("phone");
           if (paramContext != null)
           {
-            this.cOu = paramContext.getSimOperator();
+            this.cPe = paramContext.getSimOperator();
             this.imsi = paramContext.getSubscriberId();
           }
         }
         this.timezone = TimeZone.getDefault().getID();
-        this.cOv = s.be(this.ctx);
+        this.cPf = s.bf(this.ctx);
         this.packageName = this.ctx.getPackageName();
-        this.cOy = s.JN();
+        this.cPi = s.JV();
         AppMethodBeat.o(87626);
         return;
       }
@@ -118,7 +118,7 @@ final class b
       {
         for (;;)
         {
-          s.JL();
+          s.JT();
         }
       }
     }

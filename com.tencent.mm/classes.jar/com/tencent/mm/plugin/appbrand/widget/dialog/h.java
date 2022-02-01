@@ -8,21 +8,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends g
 {
-  private TextView oey;
+  private TextView nhk;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(49894);
     setContentView(2131494896);
-    this.oey = ((TextView)getContentView().findViewById(2131302339));
+    this.nhk = ((TextView)getContentView().findViewById(2131302339));
     AppMethodBeat.o(49894);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(49895);
-    this.oey.setText(paramCharSequence);
+    this.nhk.setText(paramCharSequence);
     AppMethodBeat.o(49895);
   }
 }

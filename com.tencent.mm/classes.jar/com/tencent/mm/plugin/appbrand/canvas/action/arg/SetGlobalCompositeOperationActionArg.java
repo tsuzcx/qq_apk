@@ -16,7 +16,7 @@ public class SetGlobalCompositeOperationActionArg
   static
   {
     AppMethodBeat.i(145188);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new SetGlobalCompositeOperationActionArg.1();
     AppMethodBeat.o(145188);
   }
   

@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,24 +27,24 @@ public final class l
     this.db = parame;
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(112789);
     k localk = new k();
     localk.field_card_id = paramString;
     boolean bool = delete(localk, new String[] { "card_id" });
     if (!bool) {
-      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  failure! card_id = %s", new Object[] { paramString });
+      ae.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  failure! card_id = %s", new Object[] { paramString });
     }
     for (;;)
     {
       AppMethodBeat.o(112789);
       return bool;
-      ad.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  success! card_id = %s", new Object[] { paramString });
+      ae.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  success! card_id = %s", new Object[] { paramString });
     }
   }
   
-  public final List<k> Yq(String paramString)
+  public final List<k> Zh(String paramString)
   {
     AppMethodBeat.i(112785);
     ArrayList localArrayList = new ArrayList();
@@ -64,7 +64,7 @@ public final class l
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeByCardId error!", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeByCardId error!", new Object[] { localException.getMessage() });
         for (;;)
         {
           return localArrayList;
@@ -83,7 +83,7 @@ public final class l
     }
   }
   
-  public final k Yr(String paramString)
+  public final k Zi(String paramString)
   {
     AppMethodBeat.i(112786);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=0  limit 1", new String[] { paramString });
@@ -102,7 +102,7 @@ public final class l
       {
         Object localObject1;
         paramString = null;
-        ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId error!", new Object[] { localException1.getMessage() });
+        ae.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId error!", new Object[] { localException1.getMessage() });
         localObject2 = paramString;
         if (localCursor == null) {
           continue;
@@ -121,7 +121,7 @@ public final class l
       try
       {
         ((k)localObject1).convertFrom(localCursor);
-        ad.i("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
+        ae.i("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
         paramString = (String)localObject1;
         localObject1 = paramString;
         if (localCursor != null)
@@ -138,12 +138,12 @@ public final class l
         localObject2 = localException2;
         continue;
       }
-      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  is empty! card_id = %s", new Object[] { paramString });
+      ae.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  is empty! card_id = %s", new Object[] { paramString });
       paramString = null;
     }
   }
   
-  public final k Ys(String paramString)
+  public final k Zj(String paramString)
   {
     AppMethodBeat.i(112787);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=1  limit 1", new String[] { paramString });
@@ -162,7 +162,7 @@ public final class l
       {
         Object localObject1;
         paramString = null;
-        ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId error!", new Object[] { localException1.getMessage() });
+        ae.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId error!", new Object[] { localException1.getMessage() });
         localObject2 = paramString;
         if (localCursor == null) {
           continue;
@@ -181,7 +181,7 @@ public final class l
       try
       {
         ((k)localObject1).convertFrom(localCursor);
-        ad.i("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
+        ae.i("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
         paramString = (String)localObject1;
         localObject1 = paramString;
         if (localCursor != null)
@@ -198,12 +198,12 @@ public final class l
         localObject2 = localException2;
         continue;
       }
-      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  is empty! card_id = %s", new Object[] { paramString });
+      ae.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  is empty! card_id = %s", new Object[] { paramString });
       paramString = null;
     }
   }
   
-  public final boolean eW(String paramString1, String paramString2)
+  public final boolean fa(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112788);
     k localk = new k();
@@ -211,13 +211,13 @@ public final class l
     localk.field_code_id = paramString2;
     boolean bool = delete(localk, new String[] { "card_id", "code_id" });
     if (!bool) {
-      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  failure! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
+      ae.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  failure! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
     }
     for (;;)
     {
       AppMethodBeat.o(112788);
       return bool;
-      ad.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  success! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
+      ae.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  success! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
     }
   }
 }

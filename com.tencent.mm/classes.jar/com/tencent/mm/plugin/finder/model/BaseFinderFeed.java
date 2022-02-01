@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.finder.model;
 
-import com.tencent.mm.ad.c;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.finder.api.g;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.finder.storage.FinderItem.b;
 import com.tencent.mm.plugin.finder.storage.h;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.protocal.protobuf.bvz;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -19,12 +19,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "attachFavInfo", "Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "getAttachFavInfo", "()Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "setAttachFavInfo", "(Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;)V", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "getCommentList", "()Ljava/util/LinkedList;", "setCommentList", "(Ljava/util/LinkedList;)V", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "doingRelReq", "", "getDoingRelReq", "()Z", "setDoingRelReq", "(Z)V", "getFeedObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedObject", "footerWording", "", "getFooterWording", "()Ljava/lang/String;", "setFooterWording", "(Ljava/lang/String;)V", "headerWording", "getHeaderWording", "setHeaderWording", "isContentCollapsed", "setContentCollapsed", "isNeedShowUnFollow", "setNeedShowUnFollow", "likeBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "getLikeBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLikeBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "msgEventFriendLikeCount", "", "getMsgEventFriendLikeCount", "()I", "setMsgEventFriendLikeCount", "(I)V", "msgEventIncCount", "getMsgEventIncCount", "setMsgEventIncCount", "msgEventLikeList", "", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getMsgEventLikeList", "()Ljava/util/List;", "setMsgEventLikeList", "(Ljava/util/List;)V", "showCommentEdu", "getShowCommentEdu", "setShowCommentEdu", "showLikeTips", "getShowLikeTips", "setShowLikeTips", "showShareSns", "getShowShareSns", "setShowShareSns", "triggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "equals", "other", "", "getItemId", "", "getItemType", "hashCode", "onStore", "", "printSimpleId", "toString", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "attachFavInfo", "Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "getAttachFavInfo", "()Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "setAttachFavInfo", "(Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;)V", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "getCommentList", "()Ljava/util/LinkedList;", "setCommentList", "(Ljava/util/LinkedList;)V", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "doingRelReq", "", "getDoingRelReq", "()Z", "setDoingRelReq", "(Z)V", "getFeedObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedObject", "footerWording", "", "getFooterWording", "()Ljava/lang/String;", "setFooterWording", "(Ljava/lang/String;)V", "headerWording", "getHeaderWording", "setHeaderWording", "isContentCollapsed", "setContentCollapsed", "isNeedShowUnFollow", "setNeedShowUnFollow", "likeBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLikeBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLikeBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "msgEventFriendLikeCount", "", "getMsgEventFriendLikeCount", "()I", "setMsgEventFriendLikeCount", "(I)V", "msgEventIncCount", "getMsgEventIncCount", "setMsgEventIncCount", "msgEventLikeList", "", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getMsgEventLikeList", "()Ljava/util/List;", "setMsgEventLikeList", "(Ljava/util/List;)V", "showCommentEdu", "getShowCommentEdu", "setShowCommentEdu", "showLikeTips", "getShowLikeTips", "setShowLikeTips", "showShareSns", "getShowShareSns", "setShowShareSns", "triggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "equals", "other", "", "getItemId", "", "getItemType", "hashCode", "onStore", "", "printSimpleId", "toString", "plugin-finder_release"})
 public abstract class BaseFinderFeed
-  implements al
+  implements am
 {
   public h attachFavInfo;
-  private LinkedList<m> commentList;
+  private LinkedList<n> commentList;
   public g contact;
   public boolean doingRelReq;
   public FinderItem feedObject;
@@ -98,12 +98,12 @@ public abstract class BaseFinderFeed
     }
   }
   
-  public final int bYk()
+  public final int bZz()
   {
     return this.feedObject.getMediaType();
   }
   
-  public final String cCG()
+  public final String cEt()
   {
     String str = String.valueOf(lP());
     int i = Math.min(str.length(), 8);
@@ -115,7 +115,7 @@ public abstract class BaseFinderFeed
     return str;
   }
   
-  public final void cCH()
+  public final void cEu()
   {
     this.showLikeTips = false;
     this.showShareSns = false;
@@ -154,8 +154,8 @@ public abstract class BaseFinderFeed
     {
       int i = this.feedObject.getCreateTime();
       if (this.feedObject.getMediaList().size() > 0) {}
-      for (String str2 = ((bvf)this.feedObject.getMediaList().get(0)).url;; str2 = "") {
-        return "id=[" + this.feedObject.field_id + ',' + c.rc(this.feedObject.field_id) + "] type=" + this.feedObject.getMediaType() + " localId=" + this.feedObject.getLocalId() + " time:" + Integer.valueOf(i) + " url:" + str2 + ' ' + str1;
+      for (String str2 = ((bvz)this.feedObject.getMediaList().get(0)).url;; str2 = "") {
+        return "id=[" + this.feedObject.field_id + ',' + c.rp(this.feedObject.field_id) + "] type=" + this.feedObject.getMediaType() + " localId=" + this.feedObject.getLocalId() + " time:" + Integer.valueOf(i) + " url:" + str2 + ' ' + str1;
       }
       str1 = "";
     }
@@ -163,7 +163,7 @@ public abstract class BaseFinderFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.BaseFinderFeed
  * JD-Core Version:    0.7.0.1
  */

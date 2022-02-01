@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bt
   extends b
 {
-  public a dmJ;
+  public a dnL;
   
   public bt()
   {
@@ -16,8 +16,8 @@ public final class bt
   private bt(byte paramByte)
   {
     AppMethodBeat.i(19792);
-    this.dmJ = new a();
-    this.IbR = false;
+    this.dnL = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(19792);
   }
@@ -25,17 +25,17 @@ public final class bt
   public static final class a
   {
     public String bssid;
-    public String dmK;
-    public String dmL;
-    public String dmM;
-    public String dmN;
-    public String dmO;
+    public String dnM;
+    public String dnN;
+    public String dnO;
+    public String dnP;
+    public String dnQ;
     public String ssid;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.bt
  * JD-Core Version:    0.7.0.1
  */

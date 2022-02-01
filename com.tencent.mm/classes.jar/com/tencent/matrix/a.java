@@ -22,17 +22,17 @@ import java.util.Set;
 
 public enum a
 {
-  private final Set<b> cAT = new HashSet();
-  public boolean cAU = false;
-  public String cAV = "default";
-  a cAW = new a((byte)0);
-  boolean cAX = false;
-  public String cAY;
+  private final Set<b> cBA = new HashSet();
+  public boolean cBB = false;
+  public String cBC = "default";
+  a cBD = new a((byte)0);
+  boolean cBE = false;
+  public String cBF;
   Handler handler;
   
   private a() {}
   
-  public static String HJ()
+  public static String HR()
   {
     l = System.currentTimeMillis();
     try
@@ -82,33 +82,33 @@ public enum a
   
   public final void a(b paramb)
   {
-    synchronized (this.cAT)
+    synchronized (this.cBA)
     {
-      this.cAT.add(paramb);
+      this.cBA.add(paramb);
       return;
     }
   }
   
   public final void b(b paramb)
   {
-    synchronized (this.cAT)
+    synchronized (this.cBA)
     {
-      this.cAT.remove(paramb);
+      this.cBA.remove(paramb);
       return;
     }
   }
   
-  public final void dI(String paramString)
+  public final void dL(String paramString)
   {
     c.i("Matrix.AppActiveDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
-    this.cAY = paramString;
+    this.cBF = paramString;
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "?";
     }
     localStringBuilder.append(str);
-    this.cAV = localStringBuilder.toString();
+    this.cBC = localStringBuilder.toString();
   }
   
   final class a
@@ -129,13 +129,13 @@ public enum a
     public final void onActivityStarted(Activity paramActivity)
     {
       a.a(a.this, paramActivity);
-      a.a(a.this, a.this.cAV);
+      a.a(a.this, a.this.cBC);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
-      if (a.HJ() == null) {
-        a.b(a.this, a.this.cAV);
+      if (a.HR() == null) {
+        a.b(a.this, a.this.cBC);
       }
     }
     

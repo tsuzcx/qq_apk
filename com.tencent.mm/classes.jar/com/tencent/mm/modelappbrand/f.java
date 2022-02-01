@@ -2,9 +2,9 @@ package com.tencent.mm.modelappbrand;
 
 public abstract interface f
 {
-  public abstract void Ca(String paramString);
+  public abstract void CC(String paramString);
   
-  public abstract void Cb(String paramString);
+  public abstract void CD(String paramString);
   
   public abstract void exit();
   

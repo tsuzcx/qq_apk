@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.vfs.o;
 
 public class b
   implements f
 {
-  private static b tSK;
-  private boolean glB = false;
-  private boolean tSJ = false;
+  private static b udB;
+  private boolean gnW = false;
+  private boolean udA = false;
   
-  public static b cWV()
+  public static b cZC()
   {
     AppMethodBeat.i(89930);
-    if (tSK == null) {}
+    if (udB == null) {}
     try
     {
-      if (tSK == null) {
-        tSK = new b();
+      if (udB == null) {
+        udB = new b();
       }
-      b localb = tSK;
+      b localb = udB;
       AppMethodBeat.o(89930);
       return localb;
     }
@@ -41,12 +41,12 @@ public class b
   private void release()
   {
     AppMethodBeat.i(89932);
-    this.glB = false;
-    g.aiU().b(1311, this);
+    this.gnW = false;
+    g.ajj().b(1311, this);
     AppMethodBeat.o(89932);
   }
   
-  public final void mW(boolean paramBoolean)
+  public final void na(boolean paramBoolean)
   {
     for (;;)
     {
@@ -59,7 +59,7 @@ public class b
           i = 1;
           if (i == 0)
           {
-            if (!i.fv(a.cWN()))
+            if (!o.fB(a.cZr()))
             {
               i = 1;
               break label182;
@@ -67,23 +67,23 @@ public class b
           }
           else
           {
-            if (!this.glB)
+            if (!this.gnW)
             {
-              ad.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
+              ae.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
               release();
-              this.glB = true;
-              this.tSJ = paramBoolean;
-              g.ajC().ajl().set(al.a.IAm, Long.valueOf(0L));
-              g.aiU().a(1311, this);
+              this.gnW = true;
+              this.udA = paramBoolean;
+              g.ajR().ajA().set(am.a.IUL, Long.valueOf(0L));
+              g.ajj().a(1311, this);
               c localc = new c();
-              g.aiU().a(localc, 0);
+              g.ajj().a(localc, 0);
             }
             AppMethodBeat.o(89931);
           }
         }
         else
         {
-          long l = Math.abs(bt.rM(bt.g((Long)g.ajC().ajl().get(al.a.Iql, Long.valueOf(0L)))));
+          long l = Math.abs(bu.rZ(bu.i((Long)g.ajR().ajA().get(am.a.IKF, Long.valueOf(0L)))));
           if (l > 86400L)
           {
             i = 1;
@@ -105,11 +105,11 @@ public class b
     AppMethodBeat.i(89933);
     if (paramn.getType() == 1311)
     {
-      ad.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (g.ajA().aiK()) {
+      ae.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (g.ajP().aiZ()) {
         break label67;
       }
-      ad.w("MicroMsg.GameConfigUpdater", "account not init.");
+      ae.w("MicroMsg.GameConfigUpdater", "account not init.");
     }
     for (;;)
     {
@@ -117,9 +117,9 @@ public class b
       AppMethodBeat.o(89933);
       return;
       label67:
-      ad.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.tSJ) });
-      if (!this.tSJ) {
-        g.ajC().ajl().set(al.a.Iql, Long.valueOf(bt.aQJ()));
+      ae.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.udA) });
+      if (!this.udA) {
+        g.ajR().ajA().set(am.a.IKF, Long.valueOf(bu.aRi()));
       }
     }
   }

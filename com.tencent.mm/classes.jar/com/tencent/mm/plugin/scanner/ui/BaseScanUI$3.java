@@ -11,11 +11,11 @@ final class BaseScanUI$3
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(186166);
-    if (paraml.fyP()) {
-      paraml.jI(102, 2131755150);
+    AppMethodBeat.i(189448);
+    if (paraml.fCR()) {
+      paraml.jM(102, 2131755150);
     }
-    AppMethodBeat.o(186166);
+    AppMethodBeat.o(189448);
   }
 }
 

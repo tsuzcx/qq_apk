@@ -15,7 +15,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ContactListCustomPreference
   extends Preference
 {
-  private final View.OnTouchListener EWJ;
+  private final View.OnTouchListener Fpe;
   int background;
   View.OnClickListener km;
   private View vd;
@@ -25,17 +25,17 @@ public class ContactListCustomPreference
     super(paramContext);
     AppMethodBeat.i(152207);
     this.background = -1;
-    this.EWJ = new View.OnTouchListener()
+    this.Fpe = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(214481);
+        AppMethodBeat.i(217892);
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         a.a(true, this, "com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(214481);
+        AppMethodBeat.o(217892);
         return true;
       }
     };
@@ -48,17 +48,17 @@ public class ContactListCustomPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(152208);
     this.background = -1;
-    this.EWJ = new View.OnTouchListener()
+    this.Fpe = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(214481);
+        AppMethodBeat.i(217892);
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         a.a(true, this, "com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(214481);
+        AppMethodBeat.o(217892);
         return true;
       }
     };
@@ -71,17 +71,17 @@ public class ContactListCustomPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(152209);
     this.background = -1;
-    this.EWJ = new View.OnTouchListener()
+    this.Fpe = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(214481);
+        AppMethodBeat.i(217892);
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         a.a(true, this, "com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(214481);
+        AppMethodBeat.o(217892);
         return true;
       }
     };
@@ -113,7 +113,7 @@ public class ContactListCustomPreference
       AppMethodBeat.o(152210);
       return;
       label95:
-      localViewGroup.setOnTouchListener(this.EWJ);
+      localViewGroup.setOnTouchListener(this.Fpe);
     }
   }
   

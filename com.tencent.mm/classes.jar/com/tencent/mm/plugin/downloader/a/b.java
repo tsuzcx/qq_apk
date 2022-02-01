@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.downloader.a;
 
 public final class b
 {
-  public static int pjo = 0;
-  public static int pjp = 1;
-  public static int pjq = 2;
+  public static int ppT = 0;
+  public static int ppU = 1;
+  public static int ppV = 2;
 }
 
 

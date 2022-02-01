@@ -1,52 +1,59 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.alu;
-import com.tencent.mm.protocal.protobuf.alv;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.amg;
+import com.tencent.mm.protocal.protobuf.amh;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderConsumePrefetchReport;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderConsumePrefetchReportResponse;", "tabType", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "(ILcom/tencent/mm/protobuf/ByteString;)V", "getLastBuf", "()Lcom/tencent/mm/protobuf/ByteString;", "getTabType", "()I", "onCgiBack", "", "errType", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderConsumePrefetchReport;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderConsumePrefetchReportResponse;", "tabType", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "(ILcom/tencent/mm/protobuf/ByteString;)V", "getLastBuf", "()Lcom/tencent/mm/protobuf/ByteString;", "getTabType", "()I", "onCgiBack", "", "errType", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class c
-  extends com.tencent.mm.al.a<alv>
+  extends com.tencent.mm.ak.a<amh>
 {
-  public static final a rHG;
-  private final int duh;
-  private final b rHF;
+  public static final a rPR;
+  private final int dvm;
+  private final b rPQ;
   
   static
   {
-    AppMethodBeat.i(201018);
-    rHG = new a((byte)0);
-    AppMethodBeat.o(201018);
+    AppMethodBeat.i(201440);
+    rPR = new a((byte)0);
+    AppMethodBeat.o(201440);
   }
   
   public c(int paramInt, b paramb)
   {
-    AppMethodBeat.i(201017);
-    this.duh = paramInt;
-    this.rHF = paramb;
+    AppMethodBeat.i(201439);
+    this.dvm = paramInt;
+    this.rPQ = paramb;
     paramb = new b.a();
-    Object localObject = new alu();
-    ((alu)localObject).Glz = this.duh;
-    ((alu)localObject).GlA = this.rHF;
-    paramb.c((com.tencent.mm.bx.a)localObject);
-    localObject = new alv();
-    ((alv)localObject).setBaseResponse(new BaseResponse());
-    ((alv)localObject).getBaseResponse().ErrMsg = new cwt();
-    paramb.d((com.tencent.mm.bx.a)localObject);
-    paramb.Dl("/cgi-bin/micromsg-bin/finderconsumeprefetchreport");
-    paramb.oP(3839);
-    c(paramb.aDC());
-    ad.i("Cgi.FinderConsumePrefetchReport", "[init] tabType=" + this.duh + " lastBuff=" + this.rHF.size());
-    AppMethodBeat.o(201017);
+    Object localObject = new amg();
+    ((amg)localObject).GEB = this.dvm;
+    ((amg)localObject).GEC = this.rPQ;
+    paramb.c((com.tencent.mm.bw.a)localObject);
+    localObject = new amh();
+    ((amh)localObject).setBaseResponse(new BaseResponse());
+    ((amh)localObject).getBaseResponse().ErrMsg = new cxn();
+    paramb.d((com.tencent.mm.bw.a)localObject);
+    paramb.DN("/cgi-bin/micromsg-bin/finderconsumeprefetchreport");
+    paramb.oS(3839);
+    c(paramb.aDS());
+    localObject = new StringBuilder("[init] tabType=").append(this.dvm).append(" lastBuff=");
+    paramb = this.rPQ;
+    if (paramb != null) {}
+    for (paramb = Integer.valueOf(paramb.size());; paramb = null)
+    {
+      ae.i("Cgi.FinderConsumePrefetchReport", paramb);
+      AppMethodBeat.o(201439);
+      return;
+    }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderConsumePrefetchReport$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderConsumePrefetchReport$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

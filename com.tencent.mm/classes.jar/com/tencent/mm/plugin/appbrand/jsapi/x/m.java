@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
-import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
+import com.tencent.mm.plugin.appbrand.h.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class m
@@ -17,11 +17,12 @@ public final class m
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "setKeepScreenOn";
-  private static boolean ljG = false;
-  private c ktc;
+  private static boolean lnt = false;
+  private h.c kHs;
+  private c kws;
   PowerManager.WakeLock wakeLock;
   
-  private boolean bmH()
+  private boolean bnq()
   {
     for (;;)
     {
@@ -29,28 +30,28 @@ public final class m
       {
         AppMethodBeat.i(137678);
         boolean bool;
-        if (this.ktc.getContext() == null)
+        if (this.kws.getContext() == null)
         {
-          ad.e("MicroMsg.JsApiSetKeepScreenOn", "acquire fail, server context is nul");
+          ae.e("MicroMsg.JsApiSetKeepScreenOn", "acquire fail, server context is nul");
           bool = false;
           AppMethodBeat.o(137678);
           return bool;
         }
-        ad.e("MicroMsg.JsApiSetKeepScreenOn", "acquire ok");
-        Activity localActivity = (Activity)this.ktc.getContext();
+        ae.e("MicroMsg.JsApiSetKeepScreenOn", "acquire ok");
+        Activity localActivity = (Activity)this.kws.getContext();
         if (this.wakeLock == null) {
           this.wakeLock = ((PowerManager)localActivity.getSystemService("power")).newWakeLock(536870922, "MicroMsg.JsApiSetKeepScreenOn");
         }
         if (!this.wakeLock.isHeld())
         {
           this.wakeLock.acquire();
-          ad.i("MicroMsg.JsApiSetKeepScreenOn", "wakeLock acquire");
+          ae.i("MicroMsg.JsApiSetKeepScreenOn", "wakeLock acquire");
           bool = true;
           AppMethodBeat.o(137678);
         }
         else
         {
-          ad.i("MicroMsg.JsApiSetKeepScreenOn", "wakeLock has held ");
+          ae.i("MicroMsg.JsApiSetKeepScreenOn", "wakeLock has held ");
         }
       }
       finally {}
@@ -63,27 +64,27 @@ public final class m
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 105
-    //   4: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 107
+    //   4: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 75	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
+    //   8: getfield 77	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
     //   11: ifnull +24 -> 35
     //   14: aload_0
-    //   15: getfield 75	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
-    //   18: invokevirtual 91	android/os/PowerManager$WakeLock:isHeld	()Z
+    //   15: getfield 77	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
+    //   18: invokevirtual 93	android/os/PowerManager$WakeLock:isHeld	()Z
     //   21: ifeq +14 -> 35
     //   24: iconst_1
     //   25: istore_1
-    //   26: ldc 105
-    //   28: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: ldc 107
+    //   28: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
     //   33: iload_1
     //   34: ireturn
     //   35: iconst_0
     //   36: istore_1
-    //   37: ldc 105
-    //   39: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: ldc 107
+    //   39: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: goto -11 -> 31
     //   45: astore_2
     //   46: aload_0
@@ -108,39 +109,39 @@ public final class m
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 106
-    //   4: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 61
-    //   9: ldc 107
-    //   11: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2: ldc 108
+    //   4: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 63
+    //   9: ldc 109
+    //   11: invokestatic 71	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 75	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
+    //   15: getfield 77	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
     //   18: ifnull +36 -> 54
     //   21: aload_0
-    //   22: getfield 75	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
-    //   25: invokevirtual 91	android/os/PowerManager$WakeLock:isHeld	()Z
+    //   22: getfield 77	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
+    //   25: invokevirtual 93	android/os/PowerManager$WakeLock:isHeld	()Z
     //   28: ifeq +26 -> 54
     //   31: aload_0
-    //   32: getfield 75	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
-    //   35: invokevirtual 109	android/os/PowerManager$WakeLock:release	()V
+    //   32: getfield 77	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
+    //   35: invokevirtual 111	android/os/PowerManager$WakeLock:release	()V
     //   38: aload_0
     //   39: aconst_null
-    //   40: putfield 75	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
+    //   40: putfield 77	com/tencent/mm/plugin/appbrand/jsapi/x/m:wakeLock	Landroid/os/PowerManager$WakeLock;
     //   43: iconst_1
     //   44: istore_1
-    //   45: ldc 106
-    //   47: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc 108
+    //   47: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_0
     //   51: monitorexit
     //   52: iload_1
     //   53: ireturn
-    //   54: ldc 61
-    //   56: ldc 111
-    //   58: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: ldc 63
+    //   56: ldc 113
+    //   58: invokestatic 71	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   61: iconst_0
     //   62: istore_1
-    //   63: ldc 106
-    //   65: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: ldc 108
+    //   65: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: goto -18 -> 50
     //   71: astore_2
     //   72: aload_0
@@ -165,74 +166,76 @@ public final class m
     AppMethodBeat.i(137677);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn data is null");
+      ae.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn data is null");
       paramc.h(paramInt, e("fail:data is null", null));
       AppMethodBeat.o(137677);
       return;
     }
     if (paramc.getContext() == null)
     {
-      ad.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn, server context is nul");
+      ae.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn, server context is nul");
       paramc.h(paramInt, e("fail:context is null", null));
       AppMethodBeat.o(137677);
       return;
     }
     if (!(paramc.getContext() instanceof Activity))
     {
-      ad.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn, server context is not activity, don't do invoke");
+      ae.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn, server context is not activity, don't do invoke");
       paramc.h(paramInt, e("fail:context is null", null));
       AppMethodBeat.o(137677);
       return;
     }
     boolean bool = paramJSONObject.optBoolean("keepScreenOn", false);
-    ljG = bool;
-    ad.i("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn, keepScreenOn:%b, appId:%s", new Object[] { Boolean.valueOf(bool), paramc.getAppId() });
+    lnt = bool;
+    ae.i("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn, keepScreenOn:%b, appId:%s", new Object[] { Boolean.valueOf(bool), paramc.getAppId() });
     for (;;)
     {
       try
       {
-        this.ktc = paramc;
+        this.kws = paramc;
         if (bool)
         {
-          paramJSONObject = new g.c()
-          {
-            public final void a(g.d paramAnonymousd)
+          if (this.kHs == null) {
+            this.kHs = new h.c()
             {
-              AppMethodBeat.i(137675);
-              ad.i("MicroMsg.JsApiSetKeepScreenOn", "onPause");
-              if (m.a(m.this)) {
-                m.b(m.this);
+              public final void a(h.d paramAnonymousd)
+              {
+                AppMethodBeat.i(137675);
+                ae.i("MicroMsg.JsApiSetKeepScreenOn", "onPause");
+                if (m.a(m.this)) {
+                  m.b(m.this);
+                }
+                AppMethodBeat.o(137675);
               }
-              AppMethodBeat.o(137675);
-            }
-            
-            public final void onDestroy()
-            {
-              AppMethodBeat.i(137674);
-              ad.i("MicroMsg.JsApiSetKeepScreenOn", "onDestroy");
-              if (m.a(m.this)) {
-                m.b(m.this);
+              
+              public final void onDestroy()
+              {
+                AppMethodBeat.i(137674);
+                ae.i("MicroMsg.JsApiSetKeepScreenOn", "onDestroy");
+                if (m.a(m.this)) {
+                  m.b(m.this);
+                }
+                h.b(paramc.getAppId(), this);
+                AppMethodBeat.o(137674);
               }
-              g.b(paramc.getAppId(), this);
-              AppMethodBeat.o(137674);
-            }
-            
-            public final void onResume()
-            {
-              AppMethodBeat.i(137676);
-              ad.i("MicroMsg.JsApiSetKeepScreenOn", "onResume");
-              if (m.ljG) {
-                m.c(m.this);
+              
+              public final void onResume()
+              {
+                AppMethodBeat.i(137676);
+                ae.i("MicroMsg.JsApiSetKeepScreenOn", "onResume");
+                if (m.lnt) {
+                  m.c(m.this);
+                }
+                AppMethodBeat.o(137676);
               }
-              AppMethodBeat.o(137676);
-            }
-          };
-          g.a(paramc.getAppId(), paramJSONObject);
-          bool = bmH();
+            };
+          }
+          h.a(paramc.getAppId(), this.kHs);
+          bool = bnq();
           if (!bool) {
             break;
           }
-          ad.i("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn ok");
+          ae.i("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn ok");
           paramc.h(paramInt, e("ok", null));
           AppMethodBeat.o(137677);
           return;
@@ -244,18 +247,18 @@ public final class m
       }
       if (isHeld())
       {
-        ad.i("MicroMsg.JsApiSetKeepScreenOn", "reset screen off");
+        ae.i("MicroMsg.JsApiSetKeepScreenOn", "reset screen off");
         bool = release();
       }
       else
       {
-        ad.e("MicroMsg.JsApiSetKeepScreenOn", "fail, has not set screen");
+        ae.e("MicroMsg.JsApiSetKeepScreenOn", "fail, has not set screen");
         paramc.h(paramInt, e("fail:has not set screen", null));
         AppMethodBeat.o(137677);
         return;
       }
     }
-    ad.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn fail");
+    ae.e("MicroMsg.JsApiSetKeepScreenOn", "setKeepScreenOn fail");
     paramc.h(paramInt, e("fail", null));
     AppMethodBeat.o(137677);
   }

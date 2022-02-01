@@ -6,43 +6,43 @@ import d.n.n;
 
 public final class i<T>
 {
-  private int NiQ;
-  private T NiR;
-  private final l<T> NiS;
+  private int NFW;
+  private T NFX;
+  private final l<T> NFY;
   
-  public final void fk(T paramT)
+  public final void fn(T paramT)
   {
     AppMethodBeat.i(58197);
     p.h(paramT, "objectType");
-    fl(paramT);
+    fo(paramT);
     AppMethodBeat.o(58197);
   }
   
-  final void fl(T paramT)
+  final void fo(T paramT)
   {
     AppMethodBeat.i(58198);
     p.h(paramT, "type");
-    if (this.NiR == null)
+    if (this.NFX == null)
     {
       Object localObject = paramT;
-      if (this.NiQ > 0) {
-        localObject = this.NiS.bcs(n.r((CharSequence)"[", this.NiQ) + this.NiS.toString(paramT));
+      if (this.NFW > 0) {
+        localObject = this.NFY.bdW(n.r((CharSequence)"[", this.NFW) + this.NFY.toString(paramT));
       }
-      this.NiR = localObject;
+      this.NFX = localObject;
     }
     AppMethodBeat.o(58198);
   }
   
-  public final void gmg()
+  public final void gqI()
   {
-    if (this.NiR == null) {
-      this.NiQ += 1;
+    if (this.NFX == null) {
+      this.NFW += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.i
  * JD-Core Version:    0.7.0.1
  */

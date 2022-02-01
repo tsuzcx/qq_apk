@@ -8,21 +8,21 @@ import org.json.JSONObject;
 public final class a
   extends b
 {
-  public final boolean cFM;
-  public final boolean cFN;
-  public final h cFO;
-  public final Throwable cFP;
-  public final long cFQ;
+  public final boolean cGv;
+  public final boolean cGw;
+  public final h cGx;
+  public final Throwable cGy;
+  public final long cGz;
   public final String mClassName;
   
   private a(boolean paramBoolean, String paramString, h paramh, Throwable paramThrowable, long paramLong)
   {
-    this.cFM = paramBoolean;
-    this.cFN = false;
+    this.cGv = paramBoolean;
+    this.cGw = false;
     this.mClassName = paramString;
-    this.cFO = paramh;
-    this.cFP = paramThrowable;
-    this.cFQ = paramLong;
+    this.cGx = paramh;
+    this.cGy = paramThrowable;
+    this.cGz = paramLong;
   }
   
   public static a a(String paramString, h paramh, long paramLong)
@@ -43,22 +43,22 @@ public final class a
   public final void m(JSONObject paramJSONObject)
   {
     JSONArray localJSONArray = new JSONArray();
-    if (this.cFO != null)
+    if (this.cGx != null)
     {
-      Iterator localIterator = this.cFO.elements.iterator();
+      Iterator localIterator = this.cGx.elements.iterator();
       while (localIterator.hasNext()) {
         localJSONArray.put(((j)localIterator.next()).toString());
       }
     }
-    paramJSONObject.put("leakFound", this.cFM).put("excludedLeak", this.cFN).put("className", this.mClassName).put("failure", String.valueOf(this.cFP)).put("analysisDurationMs", this.cFQ).put("referenceChain", localJSONArray);
+    paramJSONObject.put("leakFound", this.cGv).put("excludedLeak", this.cGw).put("className", this.mClassName).put("failure", String.valueOf(this.cGy)).put("analysisDurationMs", this.cGz).put("referenceChain", localJSONArray);
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Leak Reference:");
-    if (this.cFO != null)
+    if (this.cGx != null)
     {
-      Iterator localIterator = this.cFO.elements.iterator();
+      Iterator localIterator = this.cGx.elements.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((j)localIterator.next()).toString()).append(";");
       }

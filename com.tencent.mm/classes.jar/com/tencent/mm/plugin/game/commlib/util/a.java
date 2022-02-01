@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.game.commlib.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.vending.h.g;
 
 public final class a
 {
-  private static final Object mOt;
-  private static volatile ap tSX;
+  private static final Object mTx;
+  private static volatile aq udO;
   
   static
   {
     AppMethodBeat.i(89962);
-    mOt = new Object();
+    mTx = new Object();
     AppMethodBeat.o(89962);
   }
   
-  public static void bBo()
+  public static void bCi()
   {
     AppMethodBeat.i(89960);
-    if (tSX == null)
+    if (udO == null)
     {
       AppMethodBeat.o(89960);
       return;
     }
-    synchronized (mOt)
+    synchronized (mTx)
     {
-      if (tSX != null)
+      if (udO != null)
       {
-        g.aXZ("GameCommLib#WorkThread");
-        tSX.quit();
-        tSX = null;
+        g.aZB("GameCommLib#WorkThread");
+        udO.quit();
+        udO = null;
       }
       AppMethodBeat.o(89960);
       return;
     }
   }
   
-  public static ap cWY()
+  public static aq cZF()
   {
     AppMethodBeat.i(184541);
-    if (tSX == null) {}
-    synchronized (mOt)
+    if (udO == null) {}
+    synchronized (mTx)
     {
-      if (tSX == null)
+      if (udO == null)
       {
-        tSX = new ap("GameCommLib#WorkThread");
-        g.a("GameCommLib#WorkThread", new com.tencent.mm.ce.a("GameCommLib#WorkThread"));
+        udO = new aq("GameCommLib#WorkThread");
+        g.a("GameCommLib#WorkThread", new com.tencent.mm.cd.a("GameCommLib#WorkThread"));
       }
-      ??? = tSX;
+      ??? = udO;
       AppMethodBeat.o(184541);
       return ???;
     }
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.util.a
  * JD-Core Version:    0.7.0.1
  */

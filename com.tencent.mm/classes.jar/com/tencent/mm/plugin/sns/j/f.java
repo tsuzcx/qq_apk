@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
 {
@@ -10,8 +10,8 @@ public final class f
   {
     AppMethodBeat.i(125685);
     paramString = String.format("%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
-    ad.i("MicroMsg.SNS.SnsReportLogic", "snsRedDotAction 16172 report %s", new Object[] { paramString });
-    e.ygI.kvStat(16172, paramString);
+    ae.i("MicroMsg.SNS.SnsReportLogic", "snsRedDotAction 16172 report %s", new Object[] { paramString });
+    e.ywz.kvStat(16172, paramString);
     AppMethodBeat.o(125685);
   }
 }

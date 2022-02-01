@@ -6,31 +6,31 @@ import com.tencent.mm.sdk.e.c.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/byp/BypMsgInfo;", "Lcom/tencent/mm/autogen/table/BaseBypMsgInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-byp_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/byp/BypMsgInfo;", "Lcom/tencent/mm/autogen/table/BaseBypMsgInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-byp_release"})
 public final class b
   extends an
 {
   private static final c.a info;
-  public static final a ouL;
+  public static final a oBl;
   
   static
   {
-    AppMethodBeat.i(219196);
-    ouL = new a((byte)0);
-    info = an.Vv();
-    AppMethodBeat.o(219196);
+    AppMethodBeat.i(218311);
+    oBl = new a((byte)0);
+    info = an.VD();
+    AppMethodBeat.o(218311);
   }
   
   public final c.a getDBInfo()
   {
-    AppMethodBeat.i(219195);
+    AppMethodBeat.i(218310);
     c.a locala = info;
     p.g(locala, "info");
-    AppMethodBeat.o(219195);
+    AppMethodBeat.o(218310);
     return locala;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/byp/BypMsgInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-byp_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/byp/BypMsgInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-byp_release"})
   public static final class a {}
 }
 

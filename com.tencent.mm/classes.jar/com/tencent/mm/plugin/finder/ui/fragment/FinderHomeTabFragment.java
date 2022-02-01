@@ -5,19 +5,19 @@ import com.tencent.mm.ui.component.UIComponentFragment;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "Lcom/tencent/mm/ui/component/UIComponentFragment;", "title", "", "tabType", "(II)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "getTabType", "()I", "getTitle", "onActionbarClick", "", "onActionbarDoubleClick", "onUserVisibleUnFocused", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "Lcom/tencent/mm/ui/component/UIComponentFragment;", "title", "", "tabType", "(II)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "getTabType", "()I", "getTitle", "onActionbarClick", "", "onActionbarDoubleClick", "onUserVisibleUnFocused", "plugin-finder_release"})
 public abstract class FinderHomeTabFragment
   extends UIComponentFragment
 {
   public Bundle En;
   private HashMap _$_findViewCache;
-  public final int duh;
+  public final int dvm;
   public final int title;
   
   public FinderHomeTabFragment(int paramInt1, int paramInt2)
   {
     this.title = paramInt1;
-    this.duh = paramInt2;
+    this.dvm = paramInt2;
   }
   
   public void _$_clearFindViewByIdCache()
@@ -27,17 +27,17 @@ public abstract class FinderHomeTabFragment
     }
   }
   
-  public final void cKA()
+  public void cNd() {}
+  
+  public final void cNe()
   {
-    super.cKA();
+    super.cNe();
     this.En = null;
   }
-  
-  public void cKz() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment
  * JD-Core Version:    0.7.0.1
  */

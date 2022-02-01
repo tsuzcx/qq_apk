@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class j
   extends f
 {
-  private float deH = 1.0F;
-  private boolean deI = true;
+  private float dfJ = 1.0F;
+  private boolean dfK = true;
   
   protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136877);
-    this.deI = true;
+    this.dfK = true;
     int j = 0;
     if (j < paramInt2)
     {
@@ -19,18 +19,18 @@ public final class j
       int k = 0;
       while (k < paramInt1)
       {
-        i += this.dez[k][j];
+        i += this.dfB[k][j];
         k += 1;
       }
-      boolean bool = this.deI;
+      boolean bool = this.dfK;
       for (;;)
       {
-        k = (int)(this.deH * i);
+        k = (int)(this.dfJ * i);
         if (k > this.MAX_VALUE)
         {
-          this.deH = (this.MAX_VALUE / i);
-          if (this.deH < 1.0F) {
-            this.deH -= (1.0F - this.deH) / 16.0F;
+          this.dfJ = (this.MAX_VALUE / i);
+          if (this.dfJ < 1.0F) {
+            this.dfJ -= (1.0F - this.dfJ) / 16.0F;
           }
           bool = false;
           i = k;
@@ -40,27 +40,27 @@ public final class j
           if (k >= this.MIN_VALUE) {
             break;
           }
-          this.deH = (this.MIN_VALUE / i);
-          if (this.deH < 1.0F) {
-            this.deH -= (1.0F - this.deH) / 16.0F;
+          this.dfJ = (this.MIN_VALUE / i);
+          if (this.dfJ < 1.0F) {
+            this.dfJ -= (1.0F - this.dfJ) / 16.0F;
           }
           bool = false;
           i = k;
         }
       }
       if ((bool) && (i < this.MAX_VALUE) && (i > this.MIN_VALUE)) {
-        if (this.deH >= 1.0F) {
+        if (this.dfJ >= 1.0F) {
           break label280;
         }
       }
       label280:
-      for (this.deH += (1.0F - this.deH) / 16.0F;; this.deH = 1.0F)
+      for (this.dfJ += (1.0F - this.dfJ) / 16.0F;; this.dfJ = 1.0F)
       {
-        this.deI = false;
+        this.dfK = false;
         if (j == paramInt2 / 2) {
-          this.deI = true;
+          this.dfK = true;
         }
-        this.deC[j] = hJ(k);
+        this.dfE[j] = hL(k);
         j += 1;
         break;
       }
@@ -72,7 +72,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.j
  * JD-Core Version:    0.7.0.1
  */

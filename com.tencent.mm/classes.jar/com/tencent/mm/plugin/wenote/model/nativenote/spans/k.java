@@ -14,29 +14,29 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.ref.WeakReference;
 
 public class k
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  public boolean pxJ;
-  public boolean pxK;
-  private WeakReference<Drawable> pxL;
-  private int pxh;
-  public boolean pxi;
-  public boolean pxo;
-  public boolean pxp;
+  private int pDL;
+  public boolean pDM;
+  public boolean pDS;
+  public boolean pDT;
+  public boolean pEn;
+  public boolean pEo;
+  private WeakReference<Drawable> pEp;
   
   public k(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(30641);
-    this.pxo = false;
-    this.pxp = false;
-    this.pxJ = false;
-    this.pxK = false;
-    this.pxh = paramInt;
+    this.pDS = false;
+    this.pDT = false;
+    this.pEn = false;
+    this.pEo = false;
+    this.pDL = paramInt;
     boolean bool1 = bool2;
     if (paramBoolean2)
     {
@@ -49,18 +49,18 @@ public class k
         }
       }
     }
-    this.pxi = bool1;
-    this.pxK = paramBoolean1;
-    this.pxo = paramBoolean3;
-    this.pxp = paramBoolean4;
-    this.pxJ = paramBoolean2;
+    this.pDM = bool1;
+    this.pEo = paramBoolean1;
+    this.pDS = paramBoolean3;
+    this.pDT = paramBoolean4;
+    this.pEn = paramBoolean2;
     AppMethodBeat.o(30641);
   }
   
-  private k eXk()
+  private k faW()
   {
     AppMethodBeat.i(30643);
-    k localk = new k(this.pxK, this.pxh, this.pxJ, this.pxo, this.pxp);
+    k localk = new k(this.pEo, this.pDL, this.pEn, this.pDS, this.pDT);
     AppMethodBeat.o(30643);
     return localk;
   }
@@ -68,32 +68,32 @@ public class k
   public final void a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent, k paramk)
   {
     AppMethodBeat.i(30644);
-    if (paramMotionEvent.getX() > this.pxh)
+    if (paramMotionEvent.getX() > this.pDL)
     {
-      ad.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
+      ae.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
       AppMethodBeat.o(30644);
       return;
     }
     int i = paramSpannable.getSpanStart(paramk);
     int j = paramSpannable.getSpanEnd(paramk);
-    if (this.pxK)
+    if (this.pEo)
     {
       paramMotionEvent = "true";
-      ad.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
+      ae.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
       paramSpannable.removeSpan(this);
-      if (this.pxK) {
+      if (this.pEo) {
         break label176;
       }
     }
     label176:
     for (boolean bool = true;; bool = false)
     {
-      this.pxK = bool;
-      paramSpannable.setSpan(eXk(), i, j, 33);
+      this.pEo = bool;
+      paramSpannable.setSpan(faW(), i, j, 33);
       paramTextView = (WXRTEditText)paramTextView;
       if (paramTextView.getEditTextType() == 0)
       {
-        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(paramTextView.getRecyclerItemPosition());
+        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().YE(paramTextView.getRecyclerItemPosition());
         if ((paramTextView != null) && (paramTextView.getType() == 1)) {
           ((i)paramTextView).content = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a(paramSpannable);
         }
@@ -109,23 +109,23 @@ public class k
   {
     AppMethodBeat.i(30642);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.pxi) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.pDM) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
-      paramLayout = this.pxL;
+      paramLayout = this.pEp;
       paramCharSequence = null;
       if (paramLayout != null) {
         paramCharSequence = (Drawable)paramLayout.get();
       }
       paramLayout = paramCharSequence;
       if (paramCharSequence == null) {
-        if (!this.pxK) {
+        if (!this.pEo) {
           break label112;
         }
       }
       label112:
-      for (paramCharSequence = android.support.v4.content.b.l(aj.getContext(), 2131233488);; paramCharSequence = android.support.v4.content.b.l(aj.getContext(), 2131233489))
+      for (paramCharSequence = android.support.v4.content.b.l(ak.getContext(), 2131233488);; paramCharSequence = android.support.v4.content.b.l(ak.getContext(), 2131233489))
       {
-        this.pxL = new WeakReference(paramCharSequence);
+        this.pEp = new WeakReference(paramCharSequence);
         paramLayout = paramCharSequence;
         if (paramLayout != null) {
           break;
@@ -146,10 +146,10 @@ public class k
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.pxi) {
+    if (this.pDM) {
       return 0;
     }
-    return this.pxh;
+    return this.pDL;
   }
 }
 

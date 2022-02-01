@@ -7,40 +7,40 @@ import com.tencent.mm.compatible.deviceinfo.p;
 @Deprecated
 public final class a
 {
-  private static String cDP;
-  private static a cSA;
-  private static b cSB;
-  private static int cSC;
-  private static int cSD;
-  private static String cSE;
-  private static boolean cSF;
-  private static boolean cSG;
-  private static int cSv;
-  private static int cSw;
-  private static p cSx;
-  private static final a cSy;
-  private static final b cSz;
+  private static String cEw;
+  private static int cTf;
+  private static int cTg;
+  private static p cTh;
+  private static final a cTi;
+  private static final b cTj;
+  private static a cTk;
+  private static b cTl;
+  private static int cTm;
+  private static int cTn;
+  private static String cTo;
+  private static boolean cTp;
+  private static boolean cTq;
   
   static
   {
     AppMethodBeat.i(19427);
-    cSv = 0;
-    cSw = 0;
-    cSx = new p(Process.myPid());
-    cSy = new a() {};
-    cSz = new b() {};
-    cSA = cSy;
-    cSB = cSz;
-    cSC = 4500;
-    cSD = 500;
-    cSE = "";
-    cSF = true;
-    cSG = false;
-    cDP = "";
+    cTf = 0;
+    cTg = 0;
+    cTh = new p(Process.myPid());
+    cTi = new a() {};
+    cTj = new b() {};
+    cTk = cTi;
+    cTl = cTj;
+    cTm = 4500;
+    cTn = 500;
+    cTo = "";
+    cTp = true;
+    cTq = false;
+    cEw = "";
     AppMethodBeat.o(19427);
   }
   
-  public static void Lu() {}
+  public static void LC() {}
   
   public static abstract interface a {}
   
@@ -48,7 +48,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.a
  * JD-Core Version:    0.7.0.1
  */

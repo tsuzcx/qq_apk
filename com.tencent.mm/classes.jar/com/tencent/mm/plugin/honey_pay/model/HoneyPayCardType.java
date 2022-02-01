@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bnb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bnt;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public class HoneyPayCardType
@@ -29,18 +29,18 @@ public class HoneyPayCardType
     AppMethodBeat.o(64642);
   }
   
-  public HoneyPayCardType(bnb parambnb)
+  public HoneyPayCardType(bnt parambnt)
   {
     AppMethodBeat.i(64641);
     try
     {
-      this.zr = parambnb.toByteArray();
+      this.zr = parambnt.toByteArray();
       AppMethodBeat.o(64641);
       return;
     }
-    catch (IOException parambnb)
+    catch (IOException parambnt)
     {
-      ad.printErrStackTrace("MicroMsg.HoneyPayCardType", parambnb, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.HoneyPayCardType", parambnt, "", new Object[0]);
       AppMethodBeat.o(64641);
     }
   }
@@ -60,7 +60,7 @@ public class HoneyPayCardType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.HoneyPayCardType
  * JD-Core Version:    0.7.0.1
  */

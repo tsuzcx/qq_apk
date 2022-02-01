@@ -11,23 +11,23 @@ import java.util.List;
 final class ak
   extends aj
 {
-  private final List<av> MUP;
-  private final h MYK;
-  private final at NBJ;
-  private final b<d.l.b.a.b.m.a.i, aj> NCs;
-  private final boolean Nwk;
+  private final boolean NTq;
+  private final at NYQ;
+  private final b<d.l.b.a.b.m.a.i, aj> NZz;
+  private final List<av> NrU;
+  private final h NvQ;
   
   public ak(at paramat, List<? extends av> paramList, boolean paramBoolean, h paramh, b<? super d.l.b.a.b.m.a.i, ? extends aj> paramb)
   {
     AppMethodBeat.i(60791);
-    this.NBJ = paramat;
-    this.MUP = paramList;
-    this.Nwk = paramBoolean;
-    this.MYK = paramh;
-    this.NCs = paramb;
-    if ((this.MYK instanceof u.b))
+    this.NYQ = paramat;
+    this.NrU = paramList;
+    this.NTq = paramBoolean;
+    this.NvQ = paramh;
+    this.NZz = paramb;
+    if ((this.NvQ instanceof u.b))
     {
-      paramat = (Throwable)new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.MYK + '\n' + this.NBJ);
+      paramat = (Throwable)new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.NvQ + '\n' + this.NYQ);
       AppMethodBeat.o(60791);
       throw paramat;
     }
@@ -38,7 +38,7 @@ final class ak
   {
     AppMethodBeat.i(60788);
     p.h(parami, "kotlinTypeRefiner");
-    parami = (aj)this.NCs.invoke(parami);
+    parami = (aj)this.NZz.invoke(parami);
     if (parami == null) {
       parami = (aj)this;
     }
@@ -49,10 +49,10 @@ final class ak
     }
   }
   
-  public final aj Ac(boolean paramBoolean)
+  public final aj Ap(boolean paramBoolean)
   {
     AppMethodBeat.i(60786);
-    if (paramBoolean == this.Nwk)
+    if (paramBoolean == this.NTq)
     {
       localaj = (aj)this;
       AppMethodBeat.o(60786);
@@ -84,38 +84,38 @@ final class ak
     return paramg;
   }
   
-  public final g ghH()
+  public final h gmN()
+  {
+    return this.NvQ;
+  }
+  
+  public final g gmj()
   {
     AppMethodBeat.i(60783);
-    Object localObject = g.MVP;
-    localObject = g.a.gjL();
+    Object localObject = g.NsU;
+    localObject = g.a.gon();
     AppMethodBeat.o(60783);
     return localObject;
   }
   
-  public final h gil()
+  public final boolean gqy()
   {
-    return this.MYK;
+    return this.NTq;
   }
   
-  public final boolean glW()
+  public final at gxB()
   {
-    return this.Nwk;
+    return this.NYQ;
   }
   
-  public final List<av> gsW()
+  public final List<av> gxy()
   {
-    return this.MUP;
-  }
-  
-  public final at gsZ()
-  {
-    return this.NBJ;
+    return this.NrU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ak
  * JD-Core Version:    0.7.0.1
  */

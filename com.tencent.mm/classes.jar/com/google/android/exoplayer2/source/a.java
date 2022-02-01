@@ -33,14 +33,14 @@ public abstract interface a
     
     private a(Handler paramHandler, a parama, byte paramByte)
     {
-      AppMethodBeat.i(217117);
+      AppMethodBeat.i(211644);
       if (parama != null) {}
       for (paramHandler = (Handler)com.google.android.exoplayer2.i.a.checkNotNull(paramHandler);; paramHandler = null)
       {
         this.handler = paramHandler;
         this.bvg = parama;
         this.bvh = 0L;
-        AppMethodBeat.o(217117);
+        AppMethodBeat.o(211644);
         return;
       }
     }
@@ -98,16 +98,16 @@ public abstract interface a
     
     public final void a(j paramj, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(217118);
+      AppMethodBeat.i(211645);
       a(paramj, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, paramLong1, paramLong2, paramLong3);
-      AppMethodBeat.o(217118);
+      AppMethodBeat.o(211645);
     }
     
     public final void a(j paramj, long paramLong1, long paramLong2, long paramLong3, IOException paramIOException, boolean paramBoolean)
     {
-      AppMethodBeat.i(217120);
+      AppMethodBeat.i(211647);
       a(paramj, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, paramLong1, paramLong2, paramLong3, paramIOException, paramBoolean);
-      AppMethodBeat.o(217120);
+      AppMethodBeat.o(211647);
     }
     
     public final void b(final j paramj, final int paramInt1, final int paramInt2, final Format paramFormat, final int paramInt3, final Object paramObject, final long paramLong1, long paramLong2, final long paramLong3, long paramLong4, final long paramLong5)
@@ -129,9 +129,9 @@ public abstract interface a
     
     public final void b(j paramj, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(217119);
+      AppMethodBeat.i(211646);
       b(paramj, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, paramLong1, paramLong2, paramLong3);
-      AppMethodBeat.o(217119);
+      AppMethodBeat.o(211646);
     }
     
     public final void vg()
@@ -152,7 +152,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a
  * JD-Core Version:    0.7.0.1
  */

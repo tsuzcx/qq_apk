@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting.d;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d.a;
+import com.tencent.mm.br.d.a;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
@@ -12,18 +12,18 @@ public class an
   extends a
   implements ad
 {
-  public final void fws()
+  public final void fAs()
   {
     AppMethodBeat.i(35525);
-    final Intent localIntent = this.cWM.JOR.getContext().getIntent();
+    final Intent localIntent = this.cXJ.Kkd.getContext().getIntent();
     if (localIntent.getIntExtra("SendAppMessageWrapper_Scene", 0) != 3)
     {
       AppMethodBeat.o(35525);
       return;
     }
-    localIntent.setClass(this.cWM.JOR.getContext(), SendAppMessageWrapperUI.class);
-    localIntent.putExtra("Select_Conv_User", this.cWM.getTalkerUserName());
-    this.cWM.a(localIntent, 228, new d.a()
+    localIntent.setClass(this.cXJ.Kkd.getContext(), SendAppMessageWrapperUI.class);
+    localIntent.putExtra("Select_Conv_User", this.cXJ.getTalkerUserName());
+    this.cXJ.a(localIntent, 228, new d.a()
     {
       public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
@@ -34,22 +34,22 @@ public class an
           {
             if ((paramAnonymousIntent != null) && (paramAnonymousIntent.getBooleanExtra("Select_stay_in_wx", false)))
             {
-              ReportUtil.V(false, 0);
+              ReportUtil.Z(false, 0);
               AppMethodBeat.o(35523);
               return;
             }
-            if (!an.this.cWM.JOR.getContext().isFinishing())
+            if (!an.this.cXJ.Kkd.getContext().isFinishing())
             {
-              an.this.cWM.JOR.getContext().finish();
+              an.this.cXJ.Kkd.getContext().finish();
               AppMethodBeat.o(35523);
             }
           }
           else
           {
             paramAnonymousIntent = ReportUtil.d(localIntent.getExtras(), 0);
-            ReportUtil.a(an.this.cWM.JOR.getContext(), paramAnonymousIntent, true);
-            if (!an.this.cWM.JOR.getContext().isFinishing()) {
-              an.this.cWM.JOR.getContext().finish();
+            ReportUtil.a(an.this.cXJ.Kkd.getContext(), paramAnonymousIntent, true);
+            if (!an.this.cXJ.Kkd.getContext().isFinishing()) {
+              an.this.cXJ.Kkd.getContext().finish();
             }
           }
         }

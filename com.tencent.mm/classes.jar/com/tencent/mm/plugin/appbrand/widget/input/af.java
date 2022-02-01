@@ -11,10 +11,10 @@ public abstract interface af
     static
     {
       AppMethodBeat.i(131516);
-      ngh = new a("COMPLETE", 0);
-      ngi = new a("CONFIRM", 1);
-      ngj = new a("CHANGED", 2);
-      ngk = new a[] { ngh, ngi, ngj };
+      nlp = new a("COMPLETE", 0);
+      nlq = new a("CONFIRM", 1);
+      nlr = new a("CHANGED", 2);
+      nls = new a[] { nlp, nlq, nlr };
       AppMethodBeat.o(131516);
     }
     

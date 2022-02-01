@@ -11,19 +11,19 @@ import java.util.regex.Pattern;
 public final class a
 {
   private static String TAG;
-  private static f<String, Spanned> pue;
-  public static Spanned puf;
+  private static f<String, Spanned> pAI;
+  public static Spanned pAJ;
   
   static
   {
     AppMethodBeat.i(181693);
     TAG = "MicroMsg.ConvertHtmlToSpanned";
-    pue = new com.tencent.mm.memory.a.c(30);
-    puf = null;
+    pAI = new com.tencent.mm.memory.a.c(30);
+    pAJ = null;
     AppMethodBeat.o(181693);
   }
   
-  public static Spanned aaV(String paramString)
+  public static Spanned abM(String paramString)
   {
     AppMethodBeat.i(181691);
     Object localObject = paramString;
@@ -32,7 +32,7 @@ public final class a
     }
     paramString = Pattern.compile("\n", 2).matcher((CharSequence)localObject).replaceAll("<br/>");
     localObject = fromHtml(paramString);
-    pue.put(paramString, localObject);
+    pAI.put(paramString, localObject);
     AppMethodBeat.o(181691);
     return localObject;
   }
@@ -50,7 +50,7 @@ public final class a
     }
     try
     {
-      puf = null;
+      pAJ = null;
       paramString = Html.fromHtml(paramString, null, new c());
       if (paramString == null)
       {
@@ -62,9 +62,9 @@ public final class a
     {
       for (;;)
       {
-        if (puf != null)
+        if (pAJ != null)
         {
-          paramString = puf;
+          paramString = pAJ;
           continue;
           int i = paramString.toString().length();
           if ((i > 1) && (paramString.toString().endsWith("\n")))

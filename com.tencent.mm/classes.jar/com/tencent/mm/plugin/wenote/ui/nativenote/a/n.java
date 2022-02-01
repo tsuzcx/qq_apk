@@ -15,25 +15,25 @@ public final class n
   {
     super(paramView, paramk);
     AppMethodBeat.i(30881);
-    this.psv.setVisibility(0);
-    this.dsD.setVisibility(8);
-    this.jld.setVisibility(8);
-    this.psv.setTag(this);
-    this.psv.setOnClickListener(this.psK);
+    this.pzb.setVisibility(0);
+    this.dtJ.setVisibility(8);
+    this.jnX.setVisibility(8);
+    this.pzb.setTag(this);
+    this.pzb.setOnClickListener(this.pzq);
     AppMethodBeat.o(30881);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30882);
-    this.psy.setImageResource(2131690875);
-    this.psw.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).title);
-    this.psx.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).content);
+    this.pze.setImageResource(2131690875);
+    this.pzc.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).title);
+    this.pzd.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).content);
     super.a(paramc, paramInt1, paramInt2);
     AppMethodBeat.o(30882);
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return 0;
   }

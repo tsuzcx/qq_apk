@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.HashMap;
 
 public final class va
   extends b
 {
+  public a dKp;
+  
   public va()
   {
     this((byte)0);
@@ -12,8 +16,18 @@ public final class va
   
   private va(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(94815);
+    this.dKp = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(94815);
+  }
+  
+  public static final class a
+  {
+    public long dKq;
+    public int dKr;
+    public HashMap dKs;
   }
 }
 

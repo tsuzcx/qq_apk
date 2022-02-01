@@ -12,93 +12,93 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/StickerInfo;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "elements", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/sticker/StickerElement;", "Lkotlin/collections/HashMap;", "getElements", "()Ljava/util/HashMap;", "setElements", "(Ljava/util/HashMap;)V", "lensId", "getLensId", "()Ljava/lang/String;", "setLensId", "(Ljava/lang/String;)V", "resPath", "getResPath", "setResPath", "transform", "Lcom/tencent/mm/sticker/StickerTransform;", "getTransform", "()Lcom/tencent/mm/sticker/StickerTransform;", "setTransform", "(Lcom/tencent/mm/sticker/StickerTransform;)V", "type", "getType", "setType", "version", "", "getVersion", "()D", "setVersion", "(D)V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "needFaceAction", "", "needGesture", "toJson", "Companion", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/StickerInfo;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "elements", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/sticker/StickerElement;", "Lkotlin/collections/HashMap;", "getElements", "()Ljava/util/HashMap;", "setElements", "(Ljava/util/HashMap;)V", "lensId", "getLensId", "()Ljava/lang/String;", "setLensId", "(Ljava/lang/String;)V", "resPath", "getResPath", "setResPath", "transform", "Lcom/tencent/mm/sticker/StickerTransform;", "getTransform", "()Lcom/tencent/mm/sticker/StickerTransform;", "setTransform", "(Lcom/tencent/mm/sticker/StickerTransform;)V", "type", "getType", "setType", "version", "", "getVersion", "()D", "setVersion", "(D)V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "needFaceAction", "", "needGesture", "toJson", "Companion", "plugin-sticker_release"})
 public final class e
   extends a
 {
-  private static final int IlT = 10;
-  private static final int IlU = 11;
-  private static final int IlV = 12;
-  private static final int IlW = 13;
-  private static final int IlX = 14;
-  private static final int IlY = 15;
-  private static final int IlZ = 16;
-  private static final int Ima = 17;
-  private static final int Imb = 100;
-  private static final int Imc = 101;
-  private static final int Imd = 102;
-  private static final int Ime = 103;
-  private static final int Imf = 104;
-  private static final int Img = 105;
-  private static final int Imh = 106;
-  private static final int Imi = 107;
-  private static final int Imj = 108;
-  private static final int Imk = 109;
-  private static final int Iml = 110;
-  private static final int Imm = 111;
-  private static final int Imn = 112;
-  private static final int Imo = 199;
-  public static final e.a Imp;
-  public String IlQ;
-  g IlR;
-  public HashMap<String, d> IlS;
+  public static final e.a IGA;
+  private static final int IGe = 10;
+  private static final int IGf = 11;
+  private static final int IGg = 12;
+  private static final int IGh = 13;
+  private static final int IGi = 14;
+  private static final int IGj = 15;
+  private static final int IGk = 16;
+  private static final int IGl = 17;
+  private static final int IGm = 100;
+  private static final int IGn = 101;
+  private static final int IGo = 102;
+  private static final int IGp = 103;
+  private static final int IGq = 104;
+  private static final int IGr = 105;
+  private static final int IGs = 106;
+  private static final int IGt = 107;
+  private static final int IGu = 108;
+  private static final int IGv = 109;
+  private static final int IGw = 110;
+  private static final int IGx = 111;
+  private static final int IGy = 112;
+  private static final int IGz = 199;
+  public String IGb;
+  g IGc;
+  public HashMap<String, d> IGd;
   double bNT;
-  private String pQo;
+  private String pWT;
   public String type;
   
   static
   {
     AppMethodBeat.i(105902);
-    Imp = new e.a((byte)0);
-    IlT = 10;
-    IlU = 11;
-    IlV = 12;
-    IlW = 13;
-    IlX = 14;
-    IlY = 15;
-    IlZ = 16;
-    Ima = 17;
-    Imb = 100;
-    Imc = 101;
-    Imd = 102;
-    Ime = 103;
-    Imf = 104;
-    Img = 105;
-    Imh = 106;
-    Imi = 107;
-    Imj = 108;
-    Imk = 109;
-    Iml = 110;
-    Imm = 111;
-    Imn = 112;
-    Imo = 199;
+    IGA = new e.a((byte)0);
+    IGe = 10;
+    IGf = 11;
+    IGg = 12;
+    IGh = 13;
+    IGi = 14;
+    IGj = 15;
+    IGk = 16;
+    IGl = 17;
+    IGm = 100;
+    IGn = 101;
+    IGo = 102;
+    IGp = 103;
+    IGq = 104;
+    IGr = 105;
+    IGs = 106;
+    IGt = 107;
+    IGu = 108;
+    IGv = 109;
+    IGw = 110;
+    IGx = 111;
+    IGy = 112;
+    IGz = 199;
     AppMethodBeat.o(105902);
   }
   
   public e()
   {
     AppMethodBeat.i(105901);
-    this.pQo = "";
+    this.pWT = "";
     this.type = "Sticker2D";
-    this.IlQ = "";
-    this.IlR = new g();
-    this.IlS = new HashMap();
+    this.IGb = "";
+    this.IGc = new g();
+    this.IGd = new HashMap();
     AppMethodBeat.o(105901);
   }
   
-  public final void aRY(String paramString)
+  public final void aTv(String paramString)
   {
     AppMethodBeat.i(105893);
     p.h(paramString, "<set-?>");
-    this.pQo = paramString;
+    this.pWT = paramString;
     AppMethodBeat.o(105893);
   }
   
-  public final void aRZ(String paramString)
+  public final void aTw(String paramString)
   {
     AppMethodBeat.i(105895);
     p.h(paramString, "<set-?>");
-    this.IlQ = paramString;
+    this.IGb = paramString;
     AppMethodBeat.o(105895);
   }
   
@@ -108,7 +108,7 @@ public final class e
     p.h(paramJSONObject, "jsonObj");
     Object localObject = paramJSONObject.getString("id");
     p.g(localObject, "jsonObj.getString(\"id\")");
-    this.pQo = ((String)localObject);
+    this.pWT = ((String)localObject);
     this.bNT = paramJSONObject.optDouble("version", this.bNT);
     localObject = paramJSONObject.optString("type", this.type);
     p.g(localObject, "jsonObj.optString(\"type\", type)");
@@ -126,7 +126,7 @@ public final class e
       locald.setName(str);
       p.g(localJSONObject, "elementObj");
       locald.bH(localJSONObject);
-      ((Map)this.IlS).put(str, locald);
+      ((Map)this.IGd).put(str, locald);
       i += 1;
     }
     paramJSONObject = super.bH(paramJSONObject);
@@ -134,10 +134,10 @@ public final class e
     return paramJSONObject;
   }
   
-  public final boolean fnH()
+  public final boolean frA()
   {
     AppMethodBeat.i(105897);
-    Object localObject = this.IlS.values();
+    Object localObject = this.IGd.values();
     p.g(localObject, "elements.values");
     localObject = (Iterable)localObject;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
@@ -146,7 +146,7 @@ public final class e
       label104:
       while (((Iterator)localObject).hasNext())
       {
-        int i = ((d)((Iterator)localObject).next()).IlL;
+        int i = ((d)((Iterator)localObject).next()).IFW;
         if (100 > i) {}
         for (i = 0;; i = 1)
         {
@@ -165,10 +165,10 @@ public final class e
     return false;
   }
   
-  public final boolean fnI()
+  public final boolean frB()
   {
     AppMethodBeat.i(105898);
-    Object localObject = this.IlS.values();
+    Object localObject = this.IGd.values();
     p.g(localObject, "elements.values");
     localObject = (Iterable)localObject;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
@@ -177,7 +177,7 @@ public final class e
       label103:
       while (((Iterator)localObject).hasNext())
       {
-        int i = ((d)((Iterator)localObject).next()).IlL;
+        int i = ((d)((Iterator)localObject).next()).IFW;
         if (10 > i) {}
         for (i = 0;; i = 1)
         {
@@ -196,11 +196,11 @@ public final class e
     return false;
   }
   
-  public final void o(HashMap<String, d> paramHashMap)
+  public final void p(HashMap<String, d> paramHashMap)
   {
     AppMethodBeat.i(105896);
     p.h(paramHashMap, "<set-?>");
-    this.IlS = paramHashMap;
+    this.IGd = paramHashMap;
     AppMethodBeat.o(105896);
   }
   
@@ -216,12 +216,12 @@ public final class e
   {
     AppMethodBeat.i(105900);
     JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("id", this.pQo);
+    localJSONObject1.put("id", this.pWT);
     localJSONObject1.put("version", this.bNT);
     localJSONObject1.put("type", this.type);
     JSONObject localJSONObject2 = new JSONObject();
     Object localObject = new JSONArray();
-    Iterator localIterator = ((Map)this.IlS).entrySet().iterator();
+    Iterator localIterator = ((Map)this.IGd).entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -230,14 +230,14 @@ public final class e
       localJSONObject2.put((String)localEntry.getKey(), localJSONObject3);
     }
     localJSONObject2.put("elements", localObject);
-    localObject = this.IlR;
-    if (((g)localObject).Imv.length == 0)
+    localObject = this.IGc;
+    if (((g)localObject).IGG.length == 0)
     {
       i = 1;
       if (i == 0) {
         break label287;
       }
-      if (((g)localObject).Imw.length != 0) {
+      if (((g)localObject).IGH.length != 0) {
         break label272;
       }
       i = 1;
@@ -245,7 +245,7 @@ public final class e
       if (i == 0) {
         break label287;
       }
-      if (((g)localObject).Imx.length != 0) {
+      if (((g)localObject).IGI.length != 0) {
         break label277;
       }
       i = 1;
@@ -253,7 +253,7 @@ public final class e
       if (i == 0) {
         break label287;
       }
-      if (((g)localObject).Imy.length != 0) {
+      if (((g)localObject).IGJ.length != 0) {
         break label282;
       }
       i = 1;
@@ -269,7 +269,7 @@ public final class e
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        localJSONObject2.put("template_trans_set", this.IlR.toJson());
+        localJSONObject2.put("template_trans_set", this.IGc.toJson());
       }
       localJSONObject1.put("params", localJSONObject2);
       AppMethodBeat.o(105900);
@@ -287,7 +287,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sticker.e
  * JD-Core Version:    0.7.0.1
  */

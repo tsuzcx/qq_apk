@@ -6277,7 +6277,7 @@
     </style>
     <style name="a4o">
         <item name="android:textSize">12.0dip</item>
-        <item name="android:textColor">@color/a_u</item>
+        <item name="android:textColor">@color/km</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:background">@drawable/l4</item>
         <item name="android:paddingLeft">@dimen/jn</item>

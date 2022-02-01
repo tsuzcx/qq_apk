@@ -12,7 +12,7 @@ import com.tencent.mm.ui.z;
 public class AAQueryListH5UrlFooterView
   extends LinearLayout
 {
-  private TextView iUZ;
+  private TextView iXS;
   
   public AAQueryListH5UrlFooterView(Context paramContext)
   {
@@ -41,13 +41,13 @@ public class AAQueryListH5UrlFooterView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63502);
-    this.iUZ = ((TextView)z.jO(paramContext).inflate(2131492887, this, true).findViewById(2131296299));
+    this.iXS = ((TextView)z.jV(paramContext).inflate(2131492887, this, true).findViewById(2131296299));
     AppMethodBeat.o(63502);
   }
   
   public TextView getBottomLinkTv()
   {
-    return this.iUZ;
+    return this.iXS;
   }
 }
 

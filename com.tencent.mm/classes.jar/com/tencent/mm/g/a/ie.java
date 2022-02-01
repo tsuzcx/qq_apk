@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ie
   extends b
 {
-  public a duI;
+  public a dvL;
+  public b dvM;
   
   public ie()
   {
@@ -15,18 +17,24 @@ public final class ie
   
   private ie(byte paramByte)
   {
-    AppMethodBeat.i(89641);
-    this.duI = new a();
-    this.IbR = false;
+    AppMethodBeat.i(89640);
+    this.dvL = new a();
+    this.dvM = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(89641);
+    AppMethodBeat.o(89640);
   }
   
   public static final class a
   {
-    public String countryCode;
-    public int duJ;
-    public int duK;
+    public int EN = 0;
+    public Context context;
+    public String param;
+  }
+  
+  public static final class b
+  {
+    public String result;
   }
 }
 

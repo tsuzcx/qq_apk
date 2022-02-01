@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.story.f.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/cgi/StoryFavoriteOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "favorite", "(JII)V", "getFavorite", "()I", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/cgi/StoryFavoriteOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "favorite", "(JII)V", "getFavorite", "()I", "plugin-story_release"})
 public final class k
   extends a
 {
-  public final int ALz;
+  public final int Bdc;
   
   public k(long paramLong, int paramInt1, int paramInt2)
   {
     super(paramLong, paramInt1);
-    this.ALz = paramInt2;
+    this.Bdc = paramInt2;
   }
 }
 

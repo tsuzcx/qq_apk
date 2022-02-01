@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class ab
   implements a, d.l.b.a.b.m.c.h
 {
-  private int NCg;
+  private int NZn;
   
   public abstract ab d(i parami);
   
@@ -20,41 +20,41 @@ public abstract class ab
     if (!(paramObject instanceof ab)) {
       return false;
     }
-    if (glW() == ((ab)paramObject).glW())
+    if (gqy() == ((ab)paramObject).gqy())
     {
-      t localt = t.NDv;
-      if (t.a(gua(), ((ab)paramObject).gua())) {
+      t localt = t.OaC;
+      if (t.a(gyC(), ((ab)paramObject).gyC())) {
         return true;
       }
     }
     return false;
   }
   
-  public abstract d.l.b.a.b.j.f.h gil();
+  public abstract d.l.b.a.b.j.f.h gmN();
   
-  public abstract boolean glW();
+  public abstract boolean gqy();
   
-  public abstract List<av> gsW();
+  public abstract at gxB();
   
-  public abstract at gsZ();
+  public abstract List<av> gxy();
   
-  public abstract bg gua();
+  public abstract bg gyC();
   
   public final int hashCode()
   {
-    int i = this.NCg;
+    int i = this.NZn;
     if (i != 0) {
       return i;
     }
     if (ad.aq(this))
     {
       i = super.hashCode();
-      this.NCg = i;
+      this.NZn = i;
       return i;
     }
-    int j = gsZ().hashCode();
-    int k = gsW().hashCode();
-    if (glW()) {}
+    int j = gxB().hashCode();
+    int k = gxy().hashCode();
+    if (gqy()) {}
     for (i = 1;; i = 0)
     {
       i += (j * 31 + k) * 31;
@@ -64,7 +64,7 @@ public abstract class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.ball.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.a;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.compatible.d.b;
 import com.tencent.mm.plugin.ball.service.e;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class c
 {
@@ -55,9 +55,9 @@ public final class c
   public static void a(Context paramContext, int paramInt, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(106333);
-    if (b.ca(paramContext))
+    if (b.cc(paramContext))
     {
-      ad.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
+      ae.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
       a(parama, true);
       AppMethodBeat.o(106333);
       return;
@@ -68,9 +68,9 @@ public final class c
     }
     while (str != null)
     {
-      e.bKX();
-      int i = e.Wo(str);
-      ad.i("MicroMsg.FloatBallPermissionUtil", "checkPermission from type:%d reqCnt: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      e.bLU();
+      int i = e.Xa(str);
+      ae.i("MicroMsg.FloatBallPermissionUtil", "checkPermission from type:%d reqCnt: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       if (i >= 3)
       {
         a(parama, false);
@@ -82,8 +82,8 @@ public final class c
       }
       else
       {
-        e.bKX();
-        e.co(str, i + 1);
+        e.bLU();
+        e.cs(str, i + 1);
       }
     }
     a(paramContext, L(paramContext, paramInt), paramBoolean, parama);
@@ -93,9 +93,9 @@ public final class c
   private static void a(Context paramContext, String paramString, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(106334);
-    if (b.ca(paramContext))
+    if (b.cc(paramContext))
     {
-      ad.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
+      ae.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
       a(parama, true);
       AppMethodBeat.o(106334);
       return;
@@ -105,31 +105,31 @@ public final class c
       public final void a(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
         AppMethodBeat.i(106330);
-        ad.w("MicroMsg.FloatBallPermissionUtil", "float window permission granted");
+        ae.w("MicroMsg.FloatBallPermissionUtil", "float window permission granted");
         paramAnonymousRequestFloatWindowPermissionDialog.finish();
-        c.a(this.kjI, true);
+        c.a(this.kmY, true);
         AppMethodBeat.o(106330);
       }
       
       public final void b(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
         AppMethodBeat.i(106331);
-        ad.w("MicroMsg.FloatBallPermissionUtil", "float window permission refused");
+        ae.w("MicroMsg.FloatBallPermissionUtil", "float window permission refused");
         paramAnonymousRequestFloatWindowPermissionDialog.finish();
-        c.a(this.kjI, false);
+        c.a(this.kmY, false);
         AppMethodBeat.o(106331);
       }
       
       public final void c(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
         AppMethodBeat.i(186121);
-        boolean bool = b.ca(aj.getContext());
-        ad.w("MicroMsg.FloatBallPermissionUtil", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = b.cc(ak.getContext());
+        ae.w("MicroMsg.FloatBallPermissionUtil", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(bool) });
         paramAnonymousRequestFloatWindowPermissionDialog.finish();
-        c.a(this.kjI, bool);
+        c.a(this.kmY, bool);
         AppMethodBeat.o(186121);
       }
-    }, paramBoolean, a.abB());
+    }, paramBoolean, a.abK());
     AppMethodBeat.o(106334);
   }
   
@@ -137,19 +137,19 @@ public final class c
   {
     AppMethodBeat.i(106336);
     if (parama != null) {
-      parama.ge(paramBoolean);
+      parama.gd(paramBoolean);
     }
     AppMethodBeat.o(106336);
   }
   
   public static abstract interface a
   {
-    public abstract void ge(boolean paramBoolean);
+    public abstract void gd(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,21 @@ import d.g.b.p;
 import d.l;
 import io.flutter.embedding.engine.a;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/luggage/natives/flutter/WxaFlutterEngineProvider;", "Lcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;", "()V", "flutterEngine", "Lio/flutter/embedding/engine/FlutterEngine;", "ensureCallOnMain", "", "context", "Landroid/content/Context;", "luggage-native-view_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/luggage/natives/flutter/WxaFlutterEngineProvider;", "Lcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;", "()V", "flutterEngine", "Lio/flutter/embedding/engine/FlutterEngine;", "ensureCallOnMain", "", "context", "Landroid/content/Context;", "luggage-native-view_release"})
 public final class c
   implements b
 {
-  private static a tiq;
-  public static final c vCc;
+  private static a tti;
+  public static final c vOg;
   
   static
   {
     AppMethodBeat.i(123808);
-    vCc = new c();
+    vOg = new c();
     AppMethodBeat.o(123808);
   }
   
-  private static void djP()
+  private static void dmO()
   {
     AppMethodBeat.i(123807);
     Object localObject = Looper.getMainLooper();
@@ -35,20 +35,20 @@ public final class c
     AppMethodBeat.o(123807);
   }
   
-  public final a fJ(Context paramContext)
+  public final a fP(Context paramContext)
   {
     AppMethodBeat.i(123806);
-    if (tiq == null)
+    if (tti == null)
     {
-      djP();
+      dmO();
       if (paramContext == null) {
-        p.gfZ();
+        p.gkB();
       }
-      tiq = new a(paramContext);
+      tti = new a(paramContext);
     }
-    paramContext = tiq;
+    paramContext = tti;
     if (paramContext == null) {
-      p.gfZ();
+      p.gkB();
     }
     AppMethodBeat.o(123806);
     return paramContext;
@@ -56,7 +56,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.m.a.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.exdevice.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.protocal.protobuf.blf;
-import com.tencent.mm.protocal.protobuf.blg;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.protocal.protobuf.blx;
+import com.tencent.mm.protocal.protobuf.bly;
 
 public final class a
   implements b
@@ -14,16 +14,16 @@ public final class a
   public final void a(final b.a parama)
   {
     AppMethodBeat.i(169753);
-    com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
-    locala.hNM = new blf();
-    locala.hNN = new blg();
+    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
+    locala.hQF = new blx();
+    locala.hQG = new bly();
     locala.uri = "/cgi-bin/mmoc-bin/hardware/getwerunuserstate";
     locala.funcId = 1926;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    x.a(locala.aDC(), new x.a()
+    x.a(locala.aDS(), new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
       {
         boolean bool2 = true;
         AppMethodBeat.i(169752);
@@ -35,8 +35,8 @@ public final class a
         boolean bool1;
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          paramAnonymousString = (blg)paramAnonymousb.hNL.hNQ;
-          if ((paramAnonymousString != null) && (paramAnonymousString.GFz)) {
+          paramAnonymousString = (bly)paramAnonymousb.hQE.hQJ;
+          if ((paramAnonymousString != null) && (paramAnonymousString.GZb)) {
             bool1 = true;
           }
         }

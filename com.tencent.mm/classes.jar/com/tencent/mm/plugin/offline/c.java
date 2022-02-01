@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.offline;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.nl;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.nm;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.offline.a.k;
 import com.tencent.mm.plugin.offline.ui.WalletOfflineEntranceUI;
@@ -32,7 +32,7 @@ public class c
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
             if ((paramAnonymousn instanceof ad))
             {
-              if ((((WalletBaseUI)this.activity).getInput() != null) && (((WalletBaseUI)this.activity).getInput().getInt("key_bind_scene", -1) == 5) && (!com.tencent.mm.plugin.offline.c.a.dxi()))
+              if ((((WalletBaseUI)this.activity).getInput() != null) && (((WalletBaseUI)this.activity).getInput().getInt("key_bind_scene", -1) == 5) && (!com.tencent.mm.plugin.offline.c.a.dAy()))
               {
                 c.l(this.activity);
                 AppMethodBeat.o(66187);
@@ -42,7 +42,7 @@ public class c
             else if ((paramAnonymousn instanceof k))
             {
               com.tencent.mm.wallet_core.a.k(this.activity, ((WalletBaseUI)this.activity).getInput());
-              com.tencent.mm.plugin.offline.c.a.ay(this.activity);
+              com.tencent.mm.plugin.offline.c.a.az(this.activity);
               AppMethodBeat.o(66187);
               return true;
             }
@@ -51,12 +51,12 @@ public class c
           return false;
         }
         
-        public final boolean s(Object... paramAnonymousVarArgs)
+        public final boolean r(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(66186);
           paramAnonymousVarArgs = (com.tencent.mm.plugin.wallet_core.model.v)paramAnonymousVarArgs[1];
           paramAnonymousVarArgs.flag = "2";
-          this.LyU.a(new com.tencent.mm.plugin.wallet_core.c.v(paramAnonymousVarArgs), true, 1);
+          this.LVJ.a(new com.tencent.mm.plugin.wallet_core.c.v(paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(66186);
           return true;
         }
@@ -74,7 +74,7 @@ public class c
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
             if ((paramAnonymousn instanceof ad))
             {
-              if ((((WalletBaseUI)this.activity).getInput() != null) && (((WalletBaseUI)this.activity).getInput().getInt("key_bind_scene", -1) == 5) && (!com.tencent.mm.plugin.offline.c.a.dxi()))
+              if ((((WalletBaseUI)this.activity).getInput() != null) && (((WalletBaseUI)this.activity).getInput().getInt("key_bind_scene", -1) == 5) && (!com.tencent.mm.plugin.offline.c.a.dAy()))
               {
                 c.l(this.activity);
                 AppMethodBeat.o(66189);
@@ -86,7 +86,7 @@ public class c
               paramAnonymousString = ((WalletBaseUI)this.activity).getInput();
               paramAnonymousString.putBoolean("intent_bind_end", true);
               com.tencent.mm.wallet_core.a.k(this.activity, paramAnonymousString);
-              com.tencent.mm.plugin.offline.c.a.ay(this.activity);
+              com.tencent.mm.plugin.offline.c.a.az(this.activity);
               AppMethodBeat.o(66189);
               return true;
             }
@@ -95,11 +95,11 @@ public class c
           return false;
         }
         
-        public final boolean s(Object... paramAnonymousVarArgs)
+        public final boolean r(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(66188);
           paramAnonymousVarArgs = (com.tencent.mm.plugin.wallet_core.model.v)paramAnonymousVarArgs[0];
-          this.LyU.a(new com.tencent.mm.plugin.wallet_core.b.a.b(paramAnonymousVarArgs), true, 1);
+          this.LVJ.a(new com.tencent.mm.plugin.wallet_core.b.a.b(paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(66188);
           return true;
         }
@@ -130,8 +130,8 @@ public class c
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66192);
-    com.tencent.mm.sdk.b.a.IbL.l(new nl());
-    if (com.tencent.mm.plugin.offline.c.a.dxi()) {
+    com.tencent.mm.sdk.b.a.IvT.l(new nm());
+    if (com.tencent.mm.plugin.offline.c.a.dAy()) {
       c(paramActivity, WalletOfflineEntranceUI.class);
     }
     for (;;)
@@ -143,7 +143,7 @@ public class c
       return;
       if (paramBundle.getInt("key_entry_scene", -1) == 2) {
         e(paramActivity, "offline", "ui.WalletOfflineEntranceUI");
-      } else if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzF, false)) {
+      } else if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGM, false)) {
         e(paramActivity, "mall", ".ui.MallIndexUIv2");
       } else {
         e(paramActivity, "mall", ".ui.MallIndexUI");
@@ -159,14 +159,14 @@ public class c
     return bool;
   }
   
-  public final String cQc()
+  public final String cSH()
   {
     return "OfflineBindCardProcess";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.c
  * JD-Core Version:    0.7.0.1
  */

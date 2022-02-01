@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ei
   extends b
 {
-  public a dpA;
+  public a dqD;
   
   public ei()
   {
@@ -15,21 +15,23 @@ public final class ei
   
   private ei(byte paramByte)
   {
-    AppMethodBeat.i(115996);
-    this.dpA = new a();
-    this.IbR = false;
+    AppMethodBeat.i(115995);
+    this.dqD = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115996);
+    AppMethodBeat.o(115995);
   }
   
   public static final class a
   {
-    public boolean dpB;
+    public boolean bsb;
+    public String cVh;
+    public byte[] dqE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ei
  * JD-Core Version:    0.7.0.1
  */

@@ -5,51 +5,51 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.plugin.account.friend.a.as;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.account.friend.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bu.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bv.a;
 
 public final class e
 {
-  public static void a(Context paramContext, am paramam, bu.a parama)
+  public static void a(Context paramContext, an paraman, bv.a parama)
   {
     AppMethodBeat.i(37733);
-    a(paramContext, paramam, parama, false, false, null, parama.jbt);
+    a(paramContext, paraman, parama, false, false, null, parama.jem);
     AppMethodBeat.o(37733);
   }
   
-  public static void a(Context paramContext, am paramam, bu.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle, String paramString)
+  public static void a(Context paramContext, an paraman, bv.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(37734);
-    if ((paramam == null) || (parama == null))
+    if ((paraman == null) || (parama == null))
     {
       AppMethodBeat.o(37734);
       return;
     }
-    if ((paramam.field_username == null) || (paramam.field_username.length() <= 0))
+    if ((paraman.field_username == null) || (paraman.field_username.length() <= 0))
     {
       AppMethodBeat.o(37734);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("Contact_User", paramam.field_username);
-    localIntent.putExtra("Contact_Alias", paramam.VA());
-    localIntent.putExtra("Contact_Nick", paramam.adu());
-    localIntent.putExtra("Contact_QuanPin", paramam.VE());
-    localIntent.putExtra("Contact_PyInitial", paramam.VD());
-    localIntent.putExtra("Contact_Sex", parama.ePk);
+    localIntent.putExtra("Contact_User", paraman.field_username);
+    localIntent.putExtra("Contact_Alias", paraman.VI());
+    localIntent.putExtra("Contact_Nick", paraman.adF());
+    localIntent.putExtra("Contact_QuanPin", paraman.VM());
+    localIntent.putExtra("Contact_PyInitial", paraman.VL());
+    localIntent.putExtra("Contact_Sex", parama.eQV);
     localIntent.putExtra("Contact_Province", parama.getProvince());
     localIntent.putExtra("Contact_City", parama.getCity());
     localIntent.putExtra("Contact_Signature", parama.signature);
-    localIntent.putExtra("Contact_Uin", parama.wSt);
-    localIntent.putExtra("Contact_Mobile_MD5", parama.IMm);
-    localIntent.putExtra("Contact_full_Mobile_MD5", parama.IMn);
-    localIntent.putExtra("Contact_QQNick", parama.fss());
+    localIntent.putExtra("Contact_Uin", parama.xik);
+    localIntent.putExtra("Contact_Mobile_MD5", parama.JgT);
+    localIntent.putExtra("Contact_full_Mobile_MD5", parama.JgU);
+    localIntent.putExtra("Contact_QQNick", parama.fwt());
     localIntent.putExtra("User_From_Fmessage", true);
     localIntent.putExtra("Contact_Scene", parama.scene);
     localIntent.putExtra("Contact_from_msgType", 40);
@@ -69,14 +69,14 @@ public final class e
     AppMethodBeat.o(37734);
   }
   
-  public static void a(Context paramContext, bu.a parama)
+  public static void a(Context paramContext, bv.a parama)
   {
     AppMethodBeat.i(37731);
     a(paramContext, parama, false, false, null);
     AppMethodBeat.o(37731);
   }
   
-  public static void a(Context paramContext, bu.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
+  public static void a(Context paramContext, bv.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
   {
     AppMethodBeat.i(37732);
     if ((paramContext == null) || (parama == null))
@@ -84,12 +84,12 @@ public final class e
       AppMethodBeat.o(37732);
       return;
     }
-    am localam = new am();
-    localam.setUsername(parama.dHm);
-    localam.sT(parama.getDisplayName());
-    localam.sU(parama.jeU);
-    localam.sV(parama.jeV);
-    a(paramContext, localam, parama, paramBoolean1, paramBoolean2, paramBundle, parama.jbt);
+    an localan = new an();
+    localan.setUsername(parama.cUA);
+    localan.to(parama.getDisplayName());
+    localan.tp(parama.jhN);
+    localan.tq(parama.jhO);
+    a(paramContext, localan, parama, paramBoolean1, paramBoolean2, paramBundle, parama.jem);
     AppMethodBeat.o(37732);
   }
   
@@ -98,19 +98,19 @@ public final class e
     AppMethodBeat.i(37730);
     if ((paramIntent == null) || (paramString == null) || (paramString.length() == 0))
     {
-      ad.e("MicroMsg.ContactInfoUtil", "setLocalQQMobile fail, intent = " + paramIntent + ", username = " + paramString);
+      ae.e("MicroMsg.ContactInfoUtil", "setLocalQQMobile fail, intent = " + paramIntent + ", username = " + paramString);
       AppMethodBeat.o(37730);
       return;
     }
-    as localas = com.tencent.mm.plugin.account.a.getQQListStg().JJ(paramString);
+    as localas = com.tencent.mm.plugin.account.a.getQQListStg().Ki(paramString);
     if (localas != null)
     {
-      paramIntent.putExtra("Contact_Uin", localas.jeR);
+      paramIntent.putExtra("Contact_Uin", localas.jhK);
       paramIntent.putExtra("Contact_QQNick", localas.getDisplayName());
     }
-    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().Ju(paramString);
+    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().JT(paramString);
     if (paramString != null) {
-      paramIntent.putExtra("Contact_Mobile_MD5", paramString.Lb());
+      paramIntent.putExtra("Contact_Mobile_MD5", paramString.Lj());
     }
     AppMethodBeat.o(37730);
   }

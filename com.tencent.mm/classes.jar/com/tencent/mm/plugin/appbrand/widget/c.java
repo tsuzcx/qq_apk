@@ -7,7 +7,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView;
-import com.tencent.mm.g.a.kc;
+import com.tencent.mm.g.a.kd;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainer;
@@ -18,7 +18,7 @@ import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRece
 import com.tencent.mm.plugin.appbrand.widget.recentview.MenuAppBrandRecentView;
 import com.tencent.mm.plugin.appbrand.widget.recentview.d.a;
 import com.tencent.mm.plugin.appbrand.widget.recentview.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   implements com.tencent.mm.plugin.appbrand.widget.recentview.d
@@ -34,7 +34,7 @@ public final class c
   public final AppBrandRecentView a(Context paramContext, d.b paramb, d.a parama)
   {
     AppMethodBeat.i(49362);
-    if (paramb == d.b.nov)
+    if (paramb == d.b.ntF)
     {
       paramb = new ConversationAppBrandRecentView(paramContext);
       paramb.setSceneFactory(parama);
@@ -44,7 +44,7 @@ public final class c
       AppMethodBeat.o(49362);
       return paramb;
     }
-    if (paramb == d.b.nou)
+    if (paramb == d.b.ntE)
     {
       paramb = new MenuAppBrandRecentView(paramContext);
       paramb.setSceneFactory(parama);
@@ -58,21 +58,21 @@ public final class c
     return null;
   }
   
-  public final void bCb()
+  public final void bCV()
   {
     AppMethodBeat.i(49363);
-    ad.i("MicroMsg.AppBrandRecentViewService", "[hideAppBrandRecentView] delay:%s type:%s", new Object[] { Integer.valueOf(300), Integer.valueOf(8) });
-    if (((h)g.ajz().ajb()).akw())
+    ae.i("MicroMsg.AppBrandRecentViewService", "[hideAppBrandRecentView] delay:%s type:%s", new Object[] { Integer.valueOf(300), Integer.valueOf(8) });
+    if (((h)g.ajO().ajq()).akL())
     {
-      kc localkc = new kc();
-      localkc.dxb.delay = 300;
-      localkc.dxb.type = 8;
-      com.tencent.mm.sdk.b.a.IbL.l(localkc);
+      kd localkd = new kd();
+      localkd.dyg.delay = 300;
+      localkd.dyg.type = 8;
+      com.tencent.mm.sdk.b.a.IvT.l(localkd);
     }
     AppMethodBeat.o(49363);
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.recentview.b bCc()
+  public final com.tencent.mm.plugin.appbrand.widget.recentview.b bCW()
   {
     AppMethodBeat.i(49364);
     com.tencent.mm.plugin.appbrand.widget.recentview.b localb = new com.tencent.mm.plugin.appbrand.widget.recentview.b();
@@ -80,22 +80,22 @@ public final class c
     return localb;
   }
   
-  public final void bCd()
+  public final void bCX()
   {
     AppMethodBeat.i(49367);
-    com.tencent.mm.plugin.appbrand.widget.desktop.b.bCJ();
+    com.tencent.mm.plugin.appbrand.widget.desktop.b.bDB();
     AppMethodBeat.o(49367);
   }
   
-  public final boolean bCe()
+  public final boolean bCY()
   {
     AppMethodBeat.i(49368);
-    boolean bool = com.tencent.mm.plugin.appbrand.widget.desktop.b.adI();
+    boolean bool = com.tencent.mm.plugin.appbrand.widget.desktop.b.adU();
     AppMethodBeat.o(49368);
     return bool;
   }
   
-  public final HeaderContainer dU(Context paramContext)
+  public final HeaderContainer dY(Context paramContext)
   {
     AppMethodBeat.i(49365);
     paramContext = new AppBrandDesktopContainer(paramContext);
@@ -103,12 +103,12 @@ public final class c
     return paramContext;
   }
   
-  public final View dV(Context paramContext)
+  public final View dZ(Context paramContext)
   {
     AppMethodBeat.i(49369);
-    com.tencent.mm.dynamicbackground.model.d locald = com.tencent.mm.dynamicbackground.model.d.gfz;
+    com.tencent.mm.dynamicbackground.model.d locald = com.tencent.mm.dynamicbackground.model.d.ghR;
     com.tencent.mm.dynamicbackground.model.d.a(new e());
-    com.tencent.mm.dynamicbackground.a.c.a(com.tencent.mm.plugin.appbrand.widget.desktop.a.d.mZl);
+    com.tencent.mm.dynamicbackground.a.c.a(com.tencent.mm.plugin.appbrand.widget.desktop.a.d.nes);
     paramContext = new DynamicBackgroundGLSurfaceView(paramContext, (byte)0);
     AppMethodBeat.o(49369);
     return paramContext;

@@ -54,10 +54,10 @@ public class c
   
   private static EGLContext a(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(187354);
+    AppMethodBeat.i(221483);
     paramEGLDisplay = EGL14.eglCreateContext(paramEGLDisplay, paramEGLConfig, paramEGLContext, new int[] { 12440, paramInt, 12344 }, 0);
     f();
-    AppMethodBeat.o(187354);
+    AppMethodBeat.o(221483);
     return paramEGLDisplay;
   }
   
@@ -156,15 +156,15 @@ public class c
   
   private static void f()
   {
-    AppMethodBeat.i(187355);
+    AppMethodBeat.i(221484);
     int m = EGL14.eglGetError();
     if (m != 12288)
     {
       d locald = new d(m);
-      AppMethodBeat.o(187355);
+      AppMethodBeat.o(221484);
       throw locald;
     }
-    AppMethodBeat.o(187355);
+    AppMethodBeat.o(221484);
   }
   
   public void a()

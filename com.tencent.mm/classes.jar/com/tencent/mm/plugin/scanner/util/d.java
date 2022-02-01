@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.scanner.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.j;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/util/ScanDebugUtil;", "", "()V", "TAG", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "showDebugView", "", "init", "", "scan-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/util/ScanDebugUtil;", "", "()V", "TAG", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "showDebugView", "", "init", "", "scan-sdk_release"})
 public final class d
 {
-  private static ax cBy;
-  private static boolean yzE;
-  public static final d yzF;
+  private static ay cCf;
+  private static boolean yPE;
+  public static final d yPF;
   
   static
   {
-    AppMethodBeat.i(218768);
-    yzF = new d();
-    AppMethodBeat.o(218768);
+    AppMethodBeat.i(196704);
+    yPF = new d();
+    AppMethodBeat.o(196704);
   }
   
-  public static final boolean dMN()
+  public static final boolean dQg()
   {
-    return yzE;
+    return yPE;
   }
   
   public static final void init()
   {
-    AppMethodBeat.i(218767);
-    if ((i.DEBUG) || (i.IS_FLAVOR_RED)) {}
+    AppMethodBeat.i(196703);
+    if ((j.DEBUG) || (j.IS_FLAVOR_RED)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(218767);
+      AppMethodBeat.o(196703);
       return;
     }
-    ax localax = ax.aQz("ScanDebug");
-    cBy = localax;
-    if (localax != null)
+    ay localay = ay.aRW("ScanDebug");
+    cCf = localay;
+    if (localay != null)
     {
-      bool = localax.getBoolean("scan_debug_show_debug_view", false);
+      bool = localay.getBoolean("scan_debug_show_debug_view", false);
       if (!bool) {
         break label97;
       }
@@ -46,9 +46,9 @@ public final class d
     label97:
     for (boolean bool = true;; bool = false)
     {
-      yzE = bool;
-      ad.i("MicroMsg.ScanDebugUtil", "alvinluo ScanDebugUtil init showDebugView %b", new Object[] { Boolean.valueOf(yzE) });
-      AppMethodBeat.o(218767);
+      yPE = bool;
+      ae.i("MicroMsg.ScanDebugUtil", "alvinluo ScanDebugUtil init showDebugView %b", new Object[] { Boolean.valueOf(yPE) });
+      AppMethodBeat.o(196703);
       return;
       bool = false;
       break;
@@ -57,7 +57,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.d
  * JD-Core Version:    0.7.0.1
  */

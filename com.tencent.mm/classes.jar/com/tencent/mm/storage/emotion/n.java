@@ -15,16 +15,16 @@ public final class n
   {
     AppMethodBeat.i(105118);
     c.a locala = new c.a();
-    locala.IhA = new Field[2];
+    locala.IBL = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "productID";
-    locala.IhC.put("productID", "TEXT PRIMARY KEY ");
+    locala.IBN.put("productID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" productID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "productID";
+    locala.IBM = "productID";
     locala.columns[1] = "content";
-    locala.IhC.put("content", "BLOB default '' ");
+    locala.IBN.put("content", "BLOB default '' ");
     localStringBuilder.append(" content BLOB default '' ");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

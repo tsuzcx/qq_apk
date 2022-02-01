@@ -2,42 +2,42 @@ package com.tencent.mm.plugin.webview.fts.b.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  public static final a DLi;
-  private Map<String, com.tencent.mm.plugin.webview.fts.b.a.a.a> DLh;
+  public static final a Edg;
+  private Map<String, com.tencent.mm.plugin.webview.fts.b.a.a.a> Edf;
   
   static
   {
     AppMethodBeat.i(77987);
-    DLi = new a();
+    Edg = new a();
     AppMethodBeat.o(77987);
   }
   
   public a()
   {
     AppMethodBeat.i(77985);
-    this.DLh = new HashMap();
+    this.Edf = new HashMap();
     AppMethodBeat.o(77985);
   }
   
-  public static com.tencent.mm.plugin.webview.fts.b.a.a.a aGC(String paramString)
+  public static com.tencent.mm.plugin.webview.fts.b.a.a.a aHW(String paramString)
   {
     AppMethodBeat.i(77986);
     if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("//test-widget-ui")))
     {
-      ad.w("SearchWidgetTestUiMgr", "not test-widget-ui formate");
+      ae.w("SearchWidgetTestUiMgr", "not test-widget-ui formate");
       AppMethodBeat.o(77986);
       return null;
     }
     paramString = paramString.split("\\s+");
     if (paramString.length != 2)
     {
-      ad.w("SearchWidgetTestUiMgr", "test-widget-ui arg length illegal");
+      ae.w("SearchWidgetTestUiMgr", "test-widget-ui arg length illegal");
       AppMethodBeat.o(77986);
       return null;
     }
@@ -55,24 +55,24 @@ public final class a
     {
       for (;;)
       {
-        ad.printErrStackTrace("SearchWidgetTestUiMgr", paramString, "", new Object[0]);
+        ae.printErrStackTrace("SearchWidgetTestUiMgr", paramString, "", new Object[0]);
         paramString = null;
       }
-      DLi.DLh.put(paramString.duW, paramString);
-      ad.i("SearchWidgetTestUiMgr", "test-widget-ui args %s, %s, %s, %s", new Object[] { paramString.DLl, paramString.duW, paramString.DLj, paramString.DLk });
+      Edg.Edf.put(paramString.dwb, paramString);
+      ae.i("SearchWidgetTestUiMgr", "test-widget-ui args %s, %s, %s, %s", new Object[] { paramString.Edj, paramString.dwb, paramString.Edh, paramString.Edi });
       AppMethodBeat.o(77986);
     }
     return paramString;
   }
   
-  public static a eOj()
+  public static a eRU()
   {
-    return DLi;
+    return Edg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.b.a.a
  * JD-Core Version:    0.7.0.1
  */

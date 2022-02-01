@@ -20,7 +20,7 @@ public final class g
     if (i < j)
     {
       localAnnotation = paramArrayOfAnnotation[i];
-      if (!p.i(b.bB(d.g.a.a(d.g.a.a(localAnnotation))).gre(), paramb)) {}
+      if (!p.i(b.bB(d.g.a.a(d.g.a.a(localAnnotation))).gvG(), paramb)) {}
     }
     for (paramArrayOfAnnotation = localAnnotation;; paramArrayOfAnnotation = null)
     {
@@ -57,7 +57,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.g
  * JD-Core Version:    0.7.0.1
  */

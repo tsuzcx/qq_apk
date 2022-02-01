@@ -5,18 +5,18 @@ import d.g.b.p;
 import d.l;
 import java.util.concurrent.CancellationException;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/JobCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "cause", "", "job", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Ljava/lang/Throwable;Lkotlinx/coroutines/Job;)V", "createCopy", "equals", "", "other", "", "fillInStackTrace", "hashCode", "", "toString", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/JobCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "cause", "", "job", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Ljava/lang/Throwable;Lkotlinx/coroutines/Job;)V", "createCopy", "equals", "", "other", "", "fillInStackTrace", "hashCode", "", "toString", "kotlinx-coroutines-core"})
 public final class bs
   extends CancellationException
   implements aa<bs>
 {
-  public final br NIO;
+  public final br OfU;
   
   public bs(String paramString, Throwable paramThrowable, br parambr)
   {
     super(paramString);
     AppMethodBeat.i(118151);
-    this.NIO = parambr;
+    this.OfU = parambr;
     if (paramThrowable != null) {
       initCause(paramThrowable);
     }
@@ -26,7 +26,7 @@ public final class bs
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(118149);
-    if ((paramObject == (bs)this) || (((paramObject instanceof bs)) && (p.i(((bs)paramObject).getMessage(), getMessage())) && (p.i(((bs)paramObject).NIO, this.NIO)) && (p.i(((bs)paramObject).getCause(), getCause()))))
+    if ((paramObject == (bs)this) || (((paramObject instanceof bs)) && (p.i(((bs)paramObject).getMessage(), getMessage())) && (p.i(((bs)paramObject).OfU, this.OfU)) && (p.i(((bs)paramObject).getCause(), getCause()))))
     {
       AppMethodBeat.o(118149);
       return true;
@@ -54,10 +54,10 @@ public final class bs
     AppMethodBeat.i(118150);
     Object localObject = getMessage();
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     int j = ((String)localObject).hashCode();
-    int k = this.NIO.hashCode();
+    int k = this.OfU.hashCode();
     localObject = getCause();
     if (localObject != null) {}
     for (int i = ((Throwable)localObject).hashCode();; i = 0)
@@ -70,7 +70,7 @@ public final class bs
   public final String toString()
   {
     AppMethodBeat.i(118148);
-    String str = super.toString() + "; job=" + this.NIO;
+    String str = super.toString() + "; job=" + this.OfU;
     AppMethodBeat.o(118148);
     return str;
   }

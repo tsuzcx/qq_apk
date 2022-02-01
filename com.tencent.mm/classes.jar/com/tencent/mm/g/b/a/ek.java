@@ -6,134 +6,66 @@ import com.tencent.mm.plugin.report.a;
 public final class ek
   extends a
 {
-  public int dSg;
-  private String dSm;
-  private String dWK;
-  private String ehA;
-  public int ehC;
-  public int ehE;
-  public int ehW;
-  public long ehX;
-  public int ehY;
-  public int ehZ;
-  public long ehx;
-  private String ehz;
-  public int eia;
-  public int eib;
+  public String dWq = "";
+  private long dXG;
+  public long ebq;
+  public String ebr = "";
+  public long ebu;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(215653);
+    AppMethodBeat.i(201319);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSg);
+    ((StringBuffer)localObject).append(this.dWq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehx);
+    ((StringBuffer)localObject).append(this.dXG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWK);
+    ((StringBuffer)localObject).append(this.ebq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehz);
+    ((StringBuffer)localObject).append(this.ebu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSm);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eia);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eib);
+    ((StringBuffer)localObject).append(this.ebr);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(215653);
+    axO((String)localObject);
+    AppMethodBeat.o(201319);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(215654);
+    AppMethodBeat.i(201320);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dSg);
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dWq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PatTime:").append(this.ehx);
+    ((StringBuffer)localObject).append("EnterTimeStampMs:").append(this.dXG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Username:").append(this.dWK);
+    ((StringBuffer)localObject).append("RedDotCtrlType:").append(this.ebq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PattedUserName:").append(this.ehz);
+    ((StringBuffer)localObject).append("RedDotShowInfoType:").append(this.ebu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatroomName:").append(this.dSm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ErrorCode:").append(this.ehW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TimeInterval:").append(this.ehX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsHitLocalFrequency:").append(this.ehY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsCreateNewChat:").append(this.ehZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PatSequence:").append(this.eia);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PatSuffix:").append(this.ehA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RevokeAction:").append(this.ehE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RevokeMethod:").append(this.ehC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsEducationGuidance:").append(this.eib);
+    ((StringBuffer)localObject).append("RedDotTipsID:").append(this.ebr);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(215654);
+    AppMethodBeat.o(201320);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19878;
+    return 20491;
   }
   
-  public final ek nI(String paramString)
+  public final ek ki(long paramLong)
   {
-    AppMethodBeat.i(215649);
-    this.dWK = t("Username", paramString, true);
-    AppMethodBeat.o(215649);
-    return this;
-  }
-  
-  public final ek nJ(String paramString)
-  {
-    AppMethodBeat.i(215650);
-    this.ehz = t("PattedUserName", paramString, true);
-    AppMethodBeat.o(215650);
-    return this;
-  }
-  
-  public final ek nK(String paramString)
-  {
-    AppMethodBeat.i(215651);
-    this.dSm = t("ChatroomName", paramString, true);
-    AppMethodBeat.o(215651);
-    return this;
-  }
-  
-  public final ek nL(String paramString)
-  {
-    AppMethodBeat.i(215652);
-    this.ehA = t("PatSuffix", paramString, true);
-    AppMethodBeat.o(215652);
+    AppMethodBeat.i(201318);
+    this.dXG = paramLong;
+    super.bh("EnterTimeStampMs", this.dXG);
+    AppMethodBeat.o(201318);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ek
  * JD-Core Version:    0.7.0.1
  */

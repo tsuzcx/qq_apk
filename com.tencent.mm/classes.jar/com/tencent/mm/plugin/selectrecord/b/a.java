@@ -1,104 +1,104 @@
 package com.tencent.mm.plugin.selectrecord.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.et;
+import com.tencent.mm.g.b.a.ev;
 
 public final class a
 {
-  public static a yBW = null;
-  public et yBX;
-  public int yBY;
-  public int yBZ;
-  public int yCa;
-  public int yCb;
-  public int yCc;
-  public int yCd;
-  public int yCe;
-  public long yCf;
-  public int yCg;
-  public int yCh;
-  public int yCi;
-  public int yCj;
-  public int yCk;
-  public long yCl;
-  public long yCm;
+  public static a yRX = null;
+  public ev yRY;
+  public int yRZ;
+  public int ySa;
+  public int ySb;
+  public int ySc;
+  public int ySd;
+  public int ySe;
+  public int ySf;
+  public long ySg;
+  public int ySh;
+  public int ySi;
+  public int ySj;
+  public int ySk;
+  public int ySl;
+  public long ySm;
+  public long ySn;
   
   public a()
   {
-    AppMethodBeat.i(207395);
-    this.yBX = null;
-    this.yBY = 0;
-    this.yBZ = 0;
-    this.yCa = 0;
-    this.yCb = 0;
-    this.yCc = 0;
-    this.yCd = 0;
-    this.yCe = 0;
-    this.yCf = 0L;
-    this.yCg = 0;
-    this.yCh = 0;
-    this.yCi = 0;
-    this.yCj = 0;
-    this.yCk = 0;
-    this.yCl = 0L;
-    this.yCm = 0L;
-    this.yBX = new et();
-    AppMethodBeat.o(207395);
+    AppMethodBeat.i(193991);
+    this.yRY = null;
+    this.yRZ = 0;
+    this.ySa = 0;
+    this.ySb = 0;
+    this.ySc = 0;
+    this.ySd = 0;
+    this.ySe = 0;
+    this.ySf = 0;
+    this.ySg = 0L;
+    this.ySh = 0;
+    this.ySi = 0;
+    this.ySj = 0;
+    this.ySk = 0;
+    this.ySl = 0;
+    this.ySm = 0L;
+    this.ySn = 0L;
+    this.yRY = new ev();
+    AppMethodBeat.o(193991);
   }
   
-  public static a dNa()
+  public static a dQt()
   {
-    AppMethodBeat.i(207393);
-    if (yBW == null) {
-      dNb();
+    AppMethodBeat.i(193989);
+    if (yRX == null) {
+      dQu();
     }
-    a locala = yBW;
-    AppMethodBeat.o(207393);
+    a locala = yRX;
+    AppMethodBeat.o(193989);
     return locala;
   }
   
-  public static void dNb()
+  public static void dQu()
   {
-    AppMethodBeat.i(207394);
-    yBW = new a();
-    AppMethodBeat.o(207394);
+    AppMethodBeat.i(193990);
+    yRX = new a();
+    AppMethodBeat.o(193990);
   }
   
-  public final void dNc()
+  public final void dQv()
   {
-    this.yCb += 1;
+    this.ySc += 1;
   }
   
-  public final void dNd()
+  public final void dQw()
   {
-    this.yCc += 1;
+    this.ySd += 1;
   }
   
-  public final void dNe()
+  public final void dQx()
   {
-    this.yCi += 1;
+    this.ySj += 1;
   }
   
-  public final void qL(boolean paramBoolean)
+  public final void qS(boolean paramBoolean)
   {
-    et localet = this.yBX;
+    ev localev = this.yRY;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localet.eiA = i;
+      localev.ekk = i;
       return;
     }
   }
   
-  public final void ze(long paramLong)
+  public final void zB(long paramLong)
   {
-    this.yBX.eiD = paramLong;
+    this.yRY.ekn = paramLong;
   }
   
-  public final void zf(long paramLong)
+  public final void zC(long paramLong)
   {
-    if (paramLong > this.yCf) {
-      this.yBX.eiO = (paramLong - this.yCf);
+    if (paramLong > this.ySg) {
+      this.yRY.ekw = (paramLong - this.ySg);
     }
   }
 }

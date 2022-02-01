@@ -27,25 +27,25 @@ public final class h
   
   h()
   {
-    AppMethodBeat.i(214811);
+    AppMethodBeat.i(213042);
     this.aQn = null;
     this.title = "";
     this.desc = "";
     this.aQo = 96.0F;
     this.aQp = new b.q();
     this.aQq = new HashMap();
-    AppMethodBeat.o(214811);
+    AppMethodBeat.o(213042);
   }
   
   private b R(float paramFloat)
   {
-    AppMethodBeat.i(214818);
+    AppMethodBeat.i(213049);
     Object localObject = this.aQn.aQR;
     p localp = this.aQn.aQS;
     if ((localObject == null) || (((p)localObject).isZero()) || (((p)localObject).aQT == bd.aTo) || (((p)localObject).aQT == bd.aTh) || (((p)localObject).aQT == bd.aTi))
     {
       localObject = new b(-1.0F, -1.0F, -1.0F, -1.0F);
-      AppMethodBeat.o(214818);
+      AppMethodBeat.o(213049);
       return localObject;
     }
     float f = ((p)localObject).S(paramFloat);
@@ -54,7 +54,7 @@ public final class h
       if ((localp.isZero()) || (localp.aQT == bd.aTo) || (localp.aQT == bd.aTh) || (localp.aQT == bd.aTi))
       {
         localObject = new b(-1.0F, -1.0F, -1.0F, -1.0F);
-        AppMethodBeat.o(214818);
+        AppMethodBeat.o(213049);
         return localObject;
       }
       paramFloat = localp.S(paramFloat);
@@ -62,7 +62,7 @@ public final class h
     for (;;)
     {
       localObject = new b(0.0F, 0.0F, f, paramFloat);
-      AppMethodBeat.o(214818);
+      AppMethodBeat.o(213049);
       return localObject;
       if (this.aQn.aQi != null) {
         paramFloat = this.aQn.aQi.height * f / this.aQn.aQi.width;
@@ -74,11 +74,11 @@ public final class h
   
   private al a(aj paramaj, String paramString)
   {
-    AppMethodBeat.i(214823);
+    AppMethodBeat.i(213054);
     Object localObject = (al)paramaj;
     if (paramString.equals(((al)localObject).id))
     {
-      AppMethodBeat.o(214823);
+      AppMethodBeat.o(213054);
       return localObject;
     }
     paramaj = paramaj.getChildren().iterator();
@@ -90,7 +90,7 @@ public final class h
         al localal = (al)localObject;
         if (paramString.equals(localal.id))
         {
-          AppMethodBeat.o(214823);
+          AppMethodBeat.o(213054);
           return localal;
         }
         if ((localObject instanceof aj))
@@ -98,34 +98,34 @@ public final class h
           localObject = a((aj)localObject, paramString);
           if (localObject != null)
           {
-            AppMethodBeat.o(214823);
+            AppMethodBeat.o(213054);
             return localObject;
           }
         }
       }
     }
-    AppMethodBeat.o(214823);
+    AppMethodBeat.o(213054);
     return null;
   }
   
   private Picture ba(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214814);
+    AppMethodBeat.i(213045);
     Picture localPicture = new Picture();
     Canvas localCanvas = localPicture.beginRecording(paramInt1, paramInt2);
     g localg = new g();
     localg.p(paramInt1, paramInt2);
     new i(localCanvas, this.aQo).a(this, localg);
     localPicture.endRecording();
-    AppMethodBeat.o(214814);
+    AppMethodBeat.o(213045);
     return localPicture;
   }
   
   public static h f(InputStream paramInputStream)
   {
-    AppMethodBeat.i(214812);
+    AppMethodBeat.i(213043);
     paramInputStream = new l().a(paramInputStream, aQm);
-    AppMethodBeat.o(214812);
+    AppMethodBeat.o(213043);
     return paramInputStream;
   }
   
@@ -136,10 +136,10 @@ public final class h
   
   final an Y(String paramString)
   {
-    AppMethodBeat.i(214817);
+    AppMethodBeat.i(213048);
     if (paramString == null)
     {
-      AppMethodBeat.o(214817);
+      AppMethodBeat.o(213048);
       return null;
     }
     String str;
@@ -153,7 +153,7 @@ public final class h
         break;
       }
       paramString = Z(paramString.substring(1));
-      AppMethodBeat.o(214817);
+      AppMethodBeat.o(213048);
       return paramString;
       str = paramString;
       if (paramString.startsWith("'"))
@@ -164,46 +164,46 @@ public final class h
         }
       }
     }
-    AppMethodBeat.o(214817);
+    AppMethodBeat.o(213048);
     return null;
   }
   
   final al Z(String paramString)
   {
-    AppMethodBeat.i(214822);
+    AppMethodBeat.i(213053);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(214822);
+      AppMethodBeat.o(213053);
       return null;
     }
     if (paramString.equals(this.aQn.id))
     {
       paramString = this.aQn;
-      AppMethodBeat.o(214822);
+      AppMethodBeat.o(213053);
       return paramString;
     }
     if (this.aQq.containsKey(paramString))
     {
       paramString = (al)this.aQq.get(paramString);
-      AppMethodBeat.o(214822);
+      AppMethodBeat.o(213053);
       return paramString;
     }
     al localal = a(this.aQn, paramString);
     this.aQq.put(paramString, localal);
-    AppMethodBeat.o(214822);
+    AppMethodBeat.o(213053);
     return localal;
   }
   
   final void b(b.q paramq)
   {
-    AppMethodBeat.i(214819);
+    AppMethodBeat.i(213050);
     this.aQp.a(paramq);
-    AppMethodBeat.o(214819);
+    AppMethodBeat.o(213050);
   }
   
   public final Picture qI()
   {
-    AppMethodBeat.i(214813);
+    AppMethodBeat.i(213044);
     Object localObject = this.aQn.aQi;
     float f1;
     float f2;
@@ -212,7 +212,7 @@ public final class h
       f1 = this.aQn.aQR.S(this.aQo);
       f2 = this.aQn.aQS.S(this.aQo);
       localObject = ba((int)Math.ceil(f1), (int)Math.ceil(f2));
-      AppMethodBeat.o(214813);
+      AppMethodBeat.o(213044);
       return localObject;
     }
     if ((this.aQn.aQR != null) && (localObject != null))
@@ -220,66 +220,66 @@ public final class h
       f1 = this.aQn.aQR.S(this.aQo);
       f2 = ((b)localObject).height * f1 / ((b)localObject).width;
       localObject = ba((int)Math.ceil(f1), (int)Math.ceil(f2));
-      AppMethodBeat.o(214813);
+      AppMethodBeat.o(213044);
       return localObject;
     }
     if ((this.aQn.aQS != null) && (localObject != null))
     {
       f1 = this.aQn.aQS.S(this.aQo);
       localObject = ba((int)Math.ceil(((b)localObject).width * f1 / ((b)localObject).height), (int)Math.ceil(f1));
-      AppMethodBeat.o(214813);
+      AppMethodBeat.o(213044);
       return localObject;
     }
     localObject = ba(512, 512);
-    AppMethodBeat.o(214813);
+    AppMethodBeat.o(213044);
     return localObject;
   }
   
   public final float qJ()
   {
-    AppMethodBeat.i(214815);
+    AppMethodBeat.i(213046);
     if (this.aQn == null)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("SVG document is empty");
-      AppMethodBeat.o(214815);
+      AppMethodBeat.o(213046);
       throw localIllegalArgumentException;
     }
     float f = R(this.aQo).width;
-    AppMethodBeat.o(214815);
+    AppMethodBeat.o(213046);
     return f;
   }
   
   public final float qK()
   {
-    AppMethodBeat.i(214816);
+    AppMethodBeat.i(213047);
     if (this.aQn == null)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("SVG document is empty");
-      AppMethodBeat.o(214816);
+      AppMethodBeat.o(213047);
       throw localIllegalArgumentException;
     }
     float f = R(this.aQo).height;
-    AppMethodBeat.o(214816);
+    AppMethodBeat.o(213047);
     return f;
   }
   
   final boolean qL()
   {
-    AppMethodBeat.i(214820);
+    AppMethodBeat.i(213051);
     b.q localq = this.aQp;
     if ((localq.aPt == null) || (localq.aPt.isEmpty())) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(214820);
+      AppMethodBeat.o(213051);
       return true;
     }
-    AppMethodBeat.o(214820);
+    AppMethodBeat.o(213051);
     return false;
   }
   
   final void qM()
   {
-    AppMethodBeat.i(214821);
+    AppMethodBeat.i(213052);
     Object localObject = this.aQp;
     b.t localt = b.t.aPA;
     if (((b.q)localObject).aPt != null)
@@ -291,7 +291,7 @@ public final class h
         }
       }
     }
-    AppMethodBeat.o(214821);
+    AppMethodBeat.o(213052);
   }
   
   static final class a
@@ -338,9 +338,9 @@ public final class h
     
     public final List<h.an> getChildren()
     {
-      AppMethodBeat.i(214775);
+      AppMethodBeat.i(213006);
       List localList = Collections.emptyList();
-      AppMethodBeat.o(214775);
+      AppMethodBeat.o(213006);
       return localList;
     }
     
@@ -360,9 +360,9 @@ public final class h
     
     public final List<h.an> getChildren()
     {
-      AppMethodBeat.i(214776);
+      AppMethodBeat.i(213007);
       List localList = Collections.emptyList();
-      AppMethodBeat.o(214776);
+      AppMethodBeat.o(213007);
       return localList;
     }
     
@@ -383,10 +383,10 @@ public final class h
     List<String> aRF;
     h.p aRG;
     Integer aRH;
-    b aRI;
+    h.ae.b aRI;
     g aRJ;
     h.ae.h aRK;
-    f aRL;
+    h.ae.f aRL;
     Boolean aRM;
     h.c aRN;
     String aRO;
@@ -417,7 +417,7 @@ public final class h
     
     static ae qR()
     {
-      AppMethodBeat.i(214804);
+      AppMethodBeat.i(213035);
       ae localae = new ae();
       localae.aRr = -1L;
       localae.aRs = h.f.aQC;
@@ -436,10 +436,10 @@ public final class h
       localae.aRF = null;
       localae.aRG = new h.p(12.0F, h.bd.aTm);
       localae.aRH = Integer.valueOf(400);
-      localae.aRI = b.aSh;
+      localae.aRI = h.ae.b.aSh;
       localae.aRJ = g.aSB;
       localae.aRK = h.ae.h.aSH;
-      localae.aRL = f.aSx;
+      localae.aRL = h.ae.f.aSx;
       localae.aRM = Boolean.TRUE;
       localae.aRN = null;
       localae.aRO = null;
@@ -458,13 +458,13 @@ public final class h
       localae.aSb = Float.valueOf(1.0F);
       localae.aSc = h.ae.i.aSK;
       localae.aSd = e.aSt;
-      AppMethodBeat.o(214804);
+      AppMethodBeat.o(213035);
       return localae;
     }
     
     final void aJ(boolean paramBoolean)
     {
-      AppMethodBeat.i(214805);
+      AppMethodBeat.i(213036);
       this.aRR = Boolean.TRUE;
       if (paramBoolean) {}
       for (Boolean localBoolean = Boolean.TRUE;; localBoolean = Boolean.FALSE)
@@ -481,47 +481,32 @@ public final class h
         this.aSa = null;
         this.aSb = Float.valueOf(1.0F);
         this.aSc = h.ae.i.aSK;
-        AppMethodBeat.o(214805);
+        AppMethodBeat.o(213036);
         return;
       }
     }
     
     protected final Object clone()
     {
-      AppMethodBeat.i(214806);
+      AppMethodBeat.i(213037);
       ae localae = (ae)super.clone();
       if (this.aRB != null) {
         localae.aRB = ((h.p[])this.aRB.clone());
       }
-      AppMethodBeat.o(214806);
+      AppMethodBeat.o(213037);
       return localae;
-    }
-    
-    public static enum b
-    {
-      static
-      {
-        AppMethodBeat.i(214782);
-        aSh = new b("Normal", 0);
-        aSi = new b("Italic", 1);
-        aSj = new b("Oblique", 2);
-        aSk = new b[] { aSh, aSi, aSj };
-        AppMethodBeat.o(214782);
-      }
-      
-      private b() {}
     }
     
     public static enum c
     {
       static
       {
-        AppMethodBeat.i(214785);
+        AppMethodBeat.i(213016);
         aSl = new c("Butt", 0);
         aSm = new c("Round", 1);
         aSn = new c("Square", 2);
         aSo = new c[] { aSl, aSm, aSn };
-        AppMethodBeat.o(214785);
+        AppMethodBeat.o(213016);
       }
       
       private c() {}
@@ -531,12 +516,12 @@ public final class h
     {
       static
       {
-        AppMethodBeat.i(214788);
+        AppMethodBeat.i(213019);
         aSp = new d("Miter", 0);
         aSq = new d("Round", 1);
         aSr = new d("Bevel", 2);
         aSs = new d[] { aSp, aSq, aSr };
-        AppMethodBeat.o(214788);
+        AppMethodBeat.o(213019);
       }
       
       private d() {}
@@ -546,44 +531,29 @@ public final class h
     {
       static
       {
-        AppMethodBeat.i(214791);
+        AppMethodBeat.i(213022);
         aSt = new e("auto", 0);
         aSu = new e("optimizeQuality", 1);
         aSv = new e("optimizeSpeed", 2);
         aSw = new e[] { aSt, aSu, aSv };
-        AppMethodBeat.o(214791);
+        AppMethodBeat.o(213022);
       }
       
       private e() {}
-    }
-    
-    public static enum f
-    {
-      static
-      {
-        AppMethodBeat.i(214794);
-        aSx = new f("Start", 0);
-        aSy = new f("Middle", 1);
-        aSz = new f("End", 2);
-        aSA = new f[] { aSx, aSy, aSz };
-        AppMethodBeat.o(214794);
-      }
-      
-      private f() {}
     }
     
     public static enum g
     {
       static
       {
-        AppMethodBeat.i(214797);
+        AppMethodBeat.i(213028);
         aSB = new g("None", 0);
         aSC = new g("Underline", 1);
         aSD = new g("Overline", 2);
         aSE = new g("LineThrough", 3);
         aSF = new g("Blink", 4);
         aSG = new g[] { aSB, aSC, aSD, aSE, aSF };
-        AppMethodBeat.o(214797);
+        AppMethodBeat.o(213028);
       }
       
       private g() {}
@@ -979,15 +949,15 @@ public final class h
     
     static b i(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      AppMethodBeat.i(214749);
+      AppMethodBeat.i(212980);
       b localb = new b(paramFloat1, paramFloat2, paramFloat3 - paramFloat1, paramFloat4 - paramFloat2);
-      AppMethodBeat.o(214749);
+      AppMethodBeat.o(212980);
       return localb;
     }
     
     final void a(b paramb)
     {
-      AppMethodBeat.i(214750);
+      AppMethodBeat.i(212981);
       if (paramb.minX < this.minX) {
         this.minX = paramb.minX;
       }
@@ -1000,7 +970,7 @@ public final class h
       if (paramb.qP() > qP()) {
         this.height = (paramb.qP() - this.minY);
       }
-      AppMethodBeat.o(214750);
+      AppMethodBeat.o(212981);
     }
     
     final float qO()
@@ -1015,9 +985,9 @@ public final class h
     
     public final String toString()
     {
-      AppMethodBeat.i(214751);
+      AppMethodBeat.i(212982);
       String str = "[" + this.minX + " " + this.minY + " " + this.width + " " + this.height + "]";
-      AppMethodBeat.o(214751);
+      AppMethodBeat.o(212982);
       return str;
     }
   }
@@ -1052,9 +1022,9 @@ public final class h
     
     public final String toString()
     {
-      AppMethodBeat.i(214807);
+      AppMethodBeat.i(213038);
       String str = "TextChild: '" + this.text + "'";
-      AppMethodBeat.o(214807);
+      AppMethodBeat.o(213038);
       return str;
     }
   }
@@ -1063,7 +1033,7 @@ public final class h
   {
     static
     {
-      AppMethodBeat.i(214810);
+      AppMethodBeat.i(213041);
       aTg = new bd("px", 0);
       aTh = new bd("em", 1);
       aTi = new bd("ex", 2);
@@ -1074,7 +1044,7 @@ public final class h
       aTn = new bd("pc", 7);
       aTo = new bd("percent", 8);
       aTp = new bd[] { aTg, aTh, aTi, aTj, aTk, aTl, aTm, aTn, aTo };
-      AppMethodBeat.o(214810);
+      AppMethodBeat.o(213041);
     }
     
     private bd() {}
@@ -1155,10 +1125,10 @@ public final class h
     
     static
     {
-      AppMethodBeat.i(214753);
+      AppMethodBeat.i(212984);
       aQC = new f(-16777216);
       aQD = new f(0);
-      AppMethodBeat.o(214753);
+      AppMethodBeat.o(212984);
     }
     
     f(int paramInt)
@@ -1168,9 +1138,9 @@ public final class h
     
     public final String toString()
     {
-      AppMethodBeat.i(214752);
+      AppMethodBeat.i(212983);
       String str = String.format("#%08x", new Object[] { Integer.valueOf(this.aQB) });
-      AppMethodBeat.o(214752);
+      AppMethodBeat.o(212983);
       return str;
     }
   }
@@ -1182,9 +1152,9 @@ public final class h
     
     static
     {
-      AppMethodBeat.i(214754);
+      AppMethodBeat.i(212985);
       aQE = new g();
-      AppMethodBeat.o(214754);
+      AppMethodBeat.o(212985);
     }
     
     static g qQ()
@@ -1241,21 +1211,6 @@ public final class h
     {
       return this.aQH;
     }
-  }
-  
-  static enum k
-  {
-    static
-    {
-      AppMethodBeat.i(214757);
-      aQL = new k("pad", 0);
-      aQM = new k("reflect", 1);
-      aQN = new k("repeat", 2);
-      aQO = new k[] { aQL, aQM, aQN };
-      AppMethodBeat.o(214757);
-    }
-    
-    private k() {}
   }
   
   static abstract class l
@@ -1334,146 +1289,146 @@ public final class h
     
     final float S(float paramFloat)
     {
-      AppMethodBeat.i(214762);
+      AppMethodBeat.i(212993);
       switch (h.1.aQr[this.aQT.ordinal()])
       {
       case 2: 
       case 3: 
       default: 
         paramFloat = this.value;
-        AppMethodBeat.o(214762);
+        AppMethodBeat.o(212993);
         return paramFloat;
       case 1: 
         paramFloat = this.value;
-        AppMethodBeat.o(214762);
+        AppMethodBeat.o(212993);
         return paramFloat;
       case 4: 
         float f = this.value;
-        AppMethodBeat.o(214762);
+        AppMethodBeat.o(212993);
         return f * paramFloat;
       case 5: 
         paramFloat = this.value * paramFloat / 2.54F;
-        AppMethodBeat.o(214762);
+        AppMethodBeat.o(212993);
         return paramFloat;
       case 6: 
         paramFloat = this.value * paramFloat / 25.4F;
-        AppMethodBeat.o(214762);
+        AppMethodBeat.o(212993);
         return paramFloat;
       case 7: 
         paramFloat = this.value * paramFloat / 72.0F;
-        AppMethodBeat.o(214762);
+        AppMethodBeat.o(212993);
         return paramFloat;
       }
       paramFloat = this.value * paramFloat / 6.0F;
-      AppMethodBeat.o(214762);
+      AppMethodBeat.o(212993);
       return paramFloat;
     }
     
     final float a(i parami)
     {
-      AppMethodBeat.i(214758);
+      AppMethodBeat.i(212989);
       float f2;
       switch (h.1.aQr[this.aQT.ordinal()])
       {
       default: 
         f1 = this.value;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       case 1: 
         f1 = this.value;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       case 2: 
         f1 = this.value;
         f2 = parami.qZ();
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1 * f2;
       case 3: 
         f1 = this.value;
         f2 = parami.aTs.aTQ.getTextSize() / 2.0F;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1 * f2;
       case 4: 
         f1 = this.value;
         f2 = parami.aTr;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1 * f2;
       case 5: 
         f1 = this.value * parami.aTr / 2.54F;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       case 6: 
         f1 = this.value * parami.aTr / 25.4F;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       case 7: 
         f1 = this.value * parami.aTr / 72.0F;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       case 8: 
         f1 = this.value * parami.aTr / 6.0F;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       }
       parami = parami.ra();
       if (parami == null)
       {
         f1 = this.value;
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(212989);
         return f1;
       }
       float f1 = this.value;
       f1 = parami.width * f1 / 100.0F;
-      AppMethodBeat.o(214758);
+      AppMethodBeat.o(212989);
       return f1;
     }
     
     final float a(i parami, float paramFloat)
     {
-      AppMethodBeat.i(214761);
+      AppMethodBeat.i(212992);
       if (this.aQT == h.bd.aTo)
       {
         paramFloat = this.value * paramFloat / 100.0F;
-        AppMethodBeat.o(214761);
+        AppMethodBeat.o(212992);
         return paramFloat;
       }
       paramFloat = a(parami);
-      AppMethodBeat.o(214761);
+      AppMethodBeat.o(212992);
       return paramFloat;
     }
     
     final float b(i parami)
     {
-      AppMethodBeat.i(214759);
+      AppMethodBeat.i(212990);
       if (this.aQT == h.bd.aTo)
       {
         parami = parami.ra();
         if (parami == null)
         {
           f = this.value;
-          AppMethodBeat.o(214759);
+          AppMethodBeat.o(212990);
           return f;
         }
         f = this.value;
         f = parami.height * f / 100.0F;
-        AppMethodBeat.o(214759);
+        AppMethodBeat.o(212990);
         return f;
       }
       float f = a(parami);
-      AppMethodBeat.o(214759);
+      AppMethodBeat.o(212990);
       return f;
     }
     
     final float c(i parami)
     {
-      AppMethodBeat.i(214760);
+      AppMethodBeat.i(212991);
       if (this.aQT == h.bd.aTo)
       {
         parami = parami.ra();
         if (parami == null)
         {
           f1 = this.value;
-          AppMethodBeat.o(214760);
+          AppMethodBeat.o(212991);
           return f1;
         }
         f1 = parami.width;
@@ -1481,15 +1436,15 @@ public final class h
         if (f1 == f2)
         {
           f1 = this.value * f1 / 100.0F;
-          AppMethodBeat.o(214760);
+          AppMethodBeat.o(212991);
           return f1;
         }
         f1 = (float)(Math.sqrt(f2 * f2 + f1 * f1) / 1.414213562373095D) * this.value / 100.0F;
-        AppMethodBeat.o(214760);
+        AppMethodBeat.o(212991);
         return f1;
       }
       float f1 = a(parami);
-      AppMethodBeat.o(214760);
+      AppMethodBeat.o(212991);
       return f1;
     }
     
@@ -1505,9 +1460,9 @@ public final class h
     
     public final String toString()
     {
-      AppMethodBeat.i(214763);
+      AppMethodBeat.i(212994);
       String str = String.valueOf(this.value) + this.aQT;
-      AppMethodBeat.o(214763);
+      AppMethodBeat.o(212994);
       return str;
     }
   }
@@ -1576,9 +1531,9 @@ public final class h
     
     public final String toString()
     {
-      AppMethodBeat.i(214764);
+      AppMethodBeat.i(212995);
       String str = this.aQs + " " + this.aRg;
-      AppMethodBeat.o(214764);
+      AppMethodBeat.o(212995);
       return str;
     }
   }
@@ -1605,29 +1560,29 @@ public final class h
     
     w()
     {
-      AppMethodBeat.i(214765);
+      AppMethodBeat.i(212996);
       this.aRk = 0;
       this.aRm = 0;
       this.aRj = new byte[8];
       this.aRl = new float[16];
-      AppMethodBeat.o(214765);
+      AppMethodBeat.o(212996);
     }
     
     private void dA(int paramInt)
     {
-      AppMethodBeat.i(214767);
+      AppMethodBeat.i(212998);
       if (this.aRl.length < this.aRm + paramInt)
       {
         float[] arrayOfFloat = new float[this.aRl.length * 2];
         System.arraycopy(this.aRl, 0, arrayOfFloat, 0, this.aRl.length);
         this.aRl = arrayOfFloat;
       }
-      AppMethodBeat.o(214767);
+      AppMethodBeat.o(212998);
     }
     
     final void a(byte paramByte)
     {
-      AppMethodBeat.i(214766);
+      AppMethodBeat.i(212997);
       if (this.aRk == this.aRj.length)
       {
         arrayOfByte = new byte[this.aRj.length * 2];
@@ -1638,13 +1593,13 @@ public final class h
       int i = this.aRk;
       this.aRk = (i + 1);
       arrayOfByte[i] = paramByte;
-      AppMethodBeat.o(214766);
+      AppMethodBeat.o(212997);
     }
     
     public final void a(float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean1, boolean paramBoolean2, float paramFloat4, float paramFloat5)
     {
       int j = 0;
-      AppMethodBeat.i(214772);
+      AppMethodBeat.i(213003);
       if (paramBoolean1) {}
       for (int i = 2;; i = 0)
       {
@@ -1673,14 +1628,14 @@ public final class h
         i = this.aRm;
         this.aRm = (i + 1);
         arrayOfFloat[i] = paramFloat5;
-        AppMethodBeat.o(214772);
+        AppMethodBeat.o(213003);
         return;
       }
     }
     
     final void a(h.x paramx)
     {
-      AppMethodBeat.i(214774);
+      AppMethodBeat.i(213005);
       int j = 0;
       int i = 0;
       if (j < this.aRk)
@@ -1774,19 +1729,19 @@ public final class h
           break label90;
         }
       }
-      AppMethodBeat.o(214774);
+      AppMethodBeat.o(213005);
     }
     
     public final void close()
     {
-      AppMethodBeat.i(214773);
+      AppMethodBeat.i(213004);
       a((byte)8);
-      AppMethodBeat.o(214773);
+      AppMethodBeat.o(213004);
     }
     
     public final void cubicTo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
     {
-      AppMethodBeat.i(214770);
+      AppMethodBeat.i(213001);
       a((byte)2);
       dA(6);
       float[] arrayOfFloat = this.aRl;
@@ -1813,7 +1768,7 @@ public final class h
       i = this.aRm;
       this.aRm = (i + 1);
       arrayOfFloat[i] = paramFloat6;
-      AppMethodBeat.o(214770);
+      AppMethodBeat.o(213001);
     }
     
     final boolean isEmpty()
@@ -1823,7 +1778,7 @@ public final class h
     
     public final void lineTo(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214769);
+      AppMethodBeat.i(213000);
       a((byte)1);
       dA(2);
       float[] arrayOfFloat = this.aRl;
@@ -1834,12 +1789,12 @@ public final class h
       i = this.aRm;
       this.aRm = (i + 1);
       arrayOfFloat[i] = paramFloat2;
-      AppMethodBeat.o(214769);
+      AppMethodBeat.o(213000);
     }
     
     public final void moveTo(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(214768);
+      AppMethodBeat.i(212999);
       a((byte)0);
       dA(2);
       float[] arrayOfFloat = this.aRl;
@@ -1850,12 +1805,12 @@ public final class h
       i = this.aRm;
       this.aRm = (i + 1);
       arrayOfFloat[i] = paramFloat2;
-      AppMethodBeat.o(214768);
+      AppMethodBeat.o(212999);
     }
     
     public final void quadTo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      AppMethodBeat.i(214771);
+      AppMethodBeat.i(213002);
       a((byte)3);
       dA(4);
       float[] arrayOfFloat = this.aRl;
@@ -1874,7 +1829,7 @@ public final class h
       i = this.aRm;
       this.aRm = (i + 1);
       arrayOfFloat[i] = paramFloat4;
-      AppMethodBeat.o(214771);
+      AppMethodBeat.o(213002);
     }
   }
   
@@ -1925,7 +1880,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.h
  * JD-Core Version:    0.7.0.1
  */

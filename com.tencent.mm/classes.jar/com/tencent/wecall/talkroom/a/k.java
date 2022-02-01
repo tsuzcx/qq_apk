@@ -13,9 +13,9 @@ import java.util.List;
 public final class k
   extends d
 {
-  public long Clq;
-  public int uRy;
-  public String ukT;
+  public long CCU;
+  public String uwq;
+  public int vdk;
   
   public k(String paramString, int paramInt, long paramLong, List<a.ao> paramList)
   {
@@ -25,11 +25,11 @@ public final class k
     try
     {
       locali.groupId = paramString;
-      this.ukT = paramString;
+      this.uwq = paramString;
       locali.roomId = paramInt;
-      this.uRy = paramInt;
-      locali.uLt = paramLong;
-      this.Clq = paramLong;
+      this.vdk = paramInt;
+      locali.uXg = paramLong;
+      this.CCU = paramLong;
       i = paramList.size();
       arrayOfao = null;
       if (i > 0)
@@ -52,16 +52,16 @@ public final class k
         b.w(this.TAG2, new Object[] { "NetSceneSubscribeGeneralVideo constructor", paramString });
       }
     }
-    locali.LGk = arrayOfao;
+    locali.Mdo = arrayOfao;
     locali.timestamp = System.currentTimeMillis();
-    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.uLt), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
+    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.uXg), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
     this.mNetType = 3;
-    this.LFq = c.fZv().bac(paramString);
+    this.Mcu = c.gdW().bbF(paramString);
     c(257, locali);
     AppMethodBeat.o(183709);
   }
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(183710);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -84,7 +84,7 @@ public final class k
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSSubscribeGeneralVideoReq";
   }

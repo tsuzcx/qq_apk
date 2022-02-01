@@ -1,7 +1,6 @@
 package com.tencent.map.tools.internal;
 
 import android.content.Context;
-import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.map.tools.sheet.SheetManager.Options;
 import com.tencent.map.tools.sheet.SheetManager.UncaughtListener;
@@ -13,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public final class e
   implements c
 {
-  Thread.UncaughtExceptionHandler a;
+  private Thread.UncaughtExceptionHandler a;
   private b b;
   private f c;
   private boolean d;
@@ -24,10 +23,11 @@ public final class e
     a.a = paramOptions.getPluginName();
     a.b = paramOptions.getSdkVersion();
     a.c = paramOptions.getSdkVersionCode();
-    a.d = paramOptions.getSdkFlavor();
-    a.e = paramOptions.getSdkMapKey();
-    a.f = paramOptions.getSoLibName();
-    a.h = paramOptions.isCoreLogOn();
+    a.d = paramOptions.getSdkRepo();
+    a.e = paramOptions.getSdkFlavor();
+    a.f = paramOptions.getSdkMapKey();
+    a.g = paramOptions.getSoLibName();
+    a.i = paramOptions.isCoreLogOn();
     this.d = paramOptions.isSheetEnable();
     if (!this.d)
     {
@@ -39,17 +39,17 @@ public final class e
         {
           public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
           {
-            AppMethodBeat.i(195076);
+            AppMethodBeat.i(209787);
             CountDownLatch localCountDownLatch = new CountDownLatch(1);
             paramContext.onModuleSDKCrashed(paramAnonymousThrowable);
             try
             {
               localCountDownLatch.await(400L, TimeUnit.MILLISECONDS);
               label34:
-              if (e.this.a != null) {
-                e.this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+              if (e.a(e.this) != null) {
+                e.a(e.this).uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
               }
-              AppMethodBeat.o(195076);
+              AppMethodBeat.o(209787);
               return;
             }
             catch (InterruptedException localInterruptedException)
@@ -62,29 +62,16 @@ public final class e
       AppMethodBeat.o(180779);
       return;
     }
-    if (a.h)
+    if (a.i)
     {
-      Object localObject = paramOptions.getCoreLogReportUrl();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        a.j = (String)localObject;
+      String str = paramOptions.getCoreLogReportUrl();
+      if (!TextUtils.isEmpty(str)) {
+        a.k = str;
       }
       this.b = b.a(paramContext);
       paramContext = paramOptions.getUncaughtListener();
-      if (paramContext != null)
-      {
-        localObject = this.b.a;
-        if (paramContext != null)
-        {
-          ((m)localObject).b = paramContext;
-          ((m)localObject).d = new n(((m)localObject).a);
-          localObject = ((m)localObject).d;
-          if (!((n)localObject).a)
-          {
-            ((n)localObject).b = paramContext;
-            Thread.setDefaultUncaughtExceptionHandler((Thread.UncaughtExceptionHandler)localObject);
-            ((n)localObject).a = true;
-          }
-        }
+      if (paramContext != null) {
+        this.b.a(paramContext);
       }
       paramContext = paramOptions.getCoreLogDir();
       if (paramContext != null)
@@ -92,21 +79,10 @@ public final class e
         if (!paramContext.exists()) {
           paramContext.mkdirs();
         }
-        paramOptions = this.b.a;
-        paramOptions.c = paramContext;
-        if (a.h) {
-          g.a(paramOptions.a).g = paramOptions.c;
-        }
+        this.b.a(paramContext);
       }
     }
-    paramContext = g.a(this.b.a.a);
-    if (!paramContext.c)
-    {
-      if (a.h) {
-        paramContext.e = new k(paramContext.d, paramContext.a.getLooper(), paramContext.g, paramContext.f);
-      }
-      paramContext.c = true;
-    }
+    this.b.a();
     AppMethodBeat.o(180779);
   }
   
@@ -120,15 +96,9 @@ public final class e
     AppMethodBeat.i(180780);
     if (this.b != null)
     {
-      Object localObject = g.a(this.b.a.a);
-      if (((g)localObject).e != null)
-      {
-        localObject = ((g)localObject).e.c;
-        AppMethodBeat.o(180780);
-        return localObject;
-      }
+      File localFile = this.b.d();
       AppMethodBeat.o(180780);
-      return null;
+      return localFile;
     }
     AppMethodBeat.o(180780);
     return null;

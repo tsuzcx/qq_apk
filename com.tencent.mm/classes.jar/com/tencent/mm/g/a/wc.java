@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wc
   extends b
 {
-  public a dKw;
+  public a dLJ;
   
   public wc()
   {
@@ -15,16 +15,16 @@ public final class wc
   
   private wc(byte paramByte)
   {
-    AppMethodBeat.i(91220);
-    this.dKw = new a();
-    this.IbR = false;
+    AppMethodBeat.i(118480);
+    this.dLJ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91220);
+    AppMethodBeat.o(118480);
   }
   
   public static final class a
   {
-    public boolean dKx = false;
+    public int state = -1;
   }
 }
 

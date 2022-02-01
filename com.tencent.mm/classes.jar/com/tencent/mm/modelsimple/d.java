@@ -1,44 +1,45 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.protocal.j.c;
+import com.tencent.mm.protocal.j.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.z.a;
-import com.tencent.mm.protocal.z.b;
 
-final class d
+public final class d
   extends l
 {
-  private final z.a ikX;
-  private final z.b ikY;
+  private static int inP = 3941;
+  private final l.e hSb;
+  private final l.d req;
   
-  d()
+  public d()
   {
-    AppMethodBeat.i(150912);
-    this.ikX = new z.a();
-    this.ikY = new z.b();
-    AppMethodBeat.o(150912);
+    AppMethodBeat.i(134153);
+    this.req = new j.c();
+    this.hSb = new j.d();
+    AppMethodBeat.o(134153);
   }
   
   public final l.d getReqObjImp()
   {
-    return this.ikX;
+    return this.req;
   }
   
   public final l.e getRespObj()
   {
-    return this.ikY;
+    return this.hSb;
   }
   
   public final int getType()
   {
-    return 26;
+    return inP;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/micromsg-bin/sendcard";
+    return "/cgi-bin/micromsg-bin/disasterauth";
   }
 }
 

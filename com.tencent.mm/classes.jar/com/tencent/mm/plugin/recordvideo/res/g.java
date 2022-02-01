@@ -3,91 +3,91 @@ package com.tencent.mm.plugin.recordvideo.res;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"})
 public final class g
   implements b
 {
-  public static final g.a xHD;
-  private final int xHw;
+  public static final g.a xXy;
+  private final int xXr;
   
   static
   {
-    AppMethodBeat.i(200433);
-    xHD = new g.a((byte)0);
-    AppMethodBeat.o(200433);
+    AppMethodBeat.i(206694);
+    xXy = new g.a((byte)0);
+    AppMethodBeat.o(206694);
   }
   
   public g(int paramInt)
   {
-    this.xHw = paramInt;
+    this.xXr = paramInt;
   }
   
-  private static void ma(int paramInt)
+  private static void md(int paramInt)
   {
-    AppMethodBeat.i(200432);
-    com.tencent.mm.plugin.report.service.g.yhR.dD(1388, paramInt);
-    AppMethodBeat.o(200432);
+    AppMethodBeat.i(206693);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(1388, paramInt);
+    AppMethodBeat.o(206693);
   }
   
-  public final void aHq()
+  public final void aHH()
   {
-    AppMethodBeat.i(200428);
-    ma(this.xHw + 4);
-    AppMethodBeat.o(200428);
+    AppMethodBeat.i(206689);
+    md(this.xXr + 4);
+    AppMethodBeat.o(206689);
   }
   
-  public final void dHa()
+  public final void dKr()
   {
-    AppMethodBeat.i(200424);
-    ma(this.xHw);
-    AppMethodBeat.o(200424);
+    AppMethodBeat.i(206685);
+    md(this.xXr);
+    AppMethodBeat.o(206685);
   }
   
-  public final void dHb()
+  public final void dKs()
   {
-    AppMethodBeat.i(200425);
-    ma(this.xHw + 1);
-    AppMethodBeat.o(200425);
+    AppMethodBeat.i(206686);
+    md(this.xXr + 1);
+    AppMethodBeat.o(206686);
   }
   
-  public final void dHc()
+  public final void dKt()
   {
-    AppMethodBeat.i(200426);
-    ma(this.xHw + 2);
-    AppMethodBeat.o(200426);
+    AppMethodBeat.i(206687);
+    md(this.xXr + 2);
+    AppMethodBeat.o(206687);
   }
   
-  public final void dHd()
+  public final void dKu()
   {
-    AppMethodBeat.i(200427);
-    ma(this.xHw + 3);
-    AppMethodBeat.o(200427);
+    AppMethodBeat.i(206688);
+    md(this.xXr + 3);
+    AppMethodBeat.o(206688);
   }
   
-  public final void dHe()
+  public final void dKv()
   {
-    AppMethodBeat.i(200429);
-    ma(this.xHw + 5);
-    AppMethodBeat.o(200429);
+    AppMethodBeat.i(206690);
+    md(this.xXr + 5);
+    AppMethodBeat.o(206690);
   }
   
-  public final void dHf()
+  public final void dKw()
   {
-    AppMethodBeat.i(200430);
-    ma(this.xHw + 6);
-    AppMethodBeat.o(200430);
+    AppMethodBeat.i(206691);
+    md(this.xXr + 6);
+    AppMethodBeat.o(206691);
   }
   
-  public final void dHg()
+  public final void dKx()
   {
-    AppMethodBeat.i(200431);
-    ma(this.xHw + 7);
-    AppMethodBeat.o(200431);
+    AppMethodBeat.i(206692);
+    md(this.xXr + 7);
+    AppMethodBeat.o(206692);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.g
  * JD-Core Version:    0.7.0.1
  */

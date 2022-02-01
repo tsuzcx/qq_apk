@@ -10,9 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.modelappbrand.ab;
 import com.tencent.mm.modelappbrand.ac;
+import com.tencent.mm.modelappbrand.ad;
 import com.tencent.mm.modelappbrand.af;
 import com.tencent.mm.modelappbrand.ag;
 import com.tencent.mm.modelappbrand.ah;
@@ -36,8 +37,9 @@ import com.tencent.mm.plugin.appbrand.dynamic.e;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
 import com.tencent.mm.plugin.appbrand.dynamic.j;
 import com.tencent.mm.plugin.appbrand.widget.f;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import org.json.JSONArray;
@@ -46,26 +48,26 @@ public class IPCDynamicPageView
   extends LinearLayout
   implements p, com.tencent.mm.plugin.appbrand.canvas.widget.a, com.tencent.mm.plugin.appbrand.dynamic.h
 {
-  public static ap keH;
-  private static LinearLayout.LayoutParams kiT;
-  public String gaR;
-  private long jSO;
-  private f keM;
-  private Bundle kiL;
-  private com.tencent.mm.plugin.appbrand.dynamic.a kiM;
-  public ab kiN;
-  public volatile boolean kiO;
-  public long kiP;
-  private com.tencent.mm.plugin.appbrand.canvas.widget.a kiQ;
-  private Runnable kiR;
-  private Runnable kiS;
+  public static aq khX;
+  private static LinearLayout.LayoutParams kmj;
+  public String gcZ;
+  private long jWf;
+  private f kic;
+  private Bundle kmb;
+  private com.tencent.mm.plugin.appbrand.dynamic.a kmc;
+  public ab kmd;
+  public volatile boolean kme;
+  public long kmf;
+  private com.tencent.mm.plugin.appbrand.canvas.widget.a kmg;
+  private Runnable kmh;
+  private Runnable kmi;
   private volatile boolean mDetached;
   
   static
   {
     AppMethodBeat.i(121566);
-    keH = new ap("WxaWidget#UIActionThread");
-    kiT = new LinearLayout.LayoutParams(-1, -1);
+    khX = new aq("WxaWidget#UIActionThread");
+    kmj = new LinearLayout.LayoutParams(-1, -1);
     AppMethodBeat.o(121566);
   }
   
@@ -73,7 +75,7 @@ public class IPCDynamicPageView
   {
     super(paramContext);
     AppMethodBeat.i(121526);
-    this.kiR = new Runnable()
+    this.kmh = new Runnable()
     {
       public final void run()
       {
@@ -92,11 +94,11 @@ public class IPCDynamicPageView
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(645L, i, 1L, false);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(645L, 11L, 1L, false);
-          IPCDynamicPageView.this.st(2107);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(645L, i, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(645L, 11L, 1L, false);
+          IPCDynamicPageView.this.sw(2107);
           IPCDynamicPageView.a(IPCDynamicPageView.this, System.currentTimeMillis());
-          IPCDynamicPageView.d(IPCDynamicPageView.this).bdk();
+          IPCDynamicPageView.d(IPCDynamicPageView.this).bdP();
           AppMethodBeat.o(121519);
           return;
           label121:
@@ -124,15 +126,15 @@ public class IPCDynamicPageView
         }
       }
     };
-    this.kiS = new Runnable()
+    this.kmi = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121520);
         Object localObject1 = IPCDynamicPageView.e(IPCDynamicPageView.this);
-        if (bt.isNullOrNil((String)localObject1))
+        if (bu.isNullOrNil((String)localObject1))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "detach failed, id is null or nil.");
+          ae.i("MicroMsg.IPCDynamicPageView", "detach failed, id is null or nil.");
           AppMethodBeat.o(121520);
           return;
         }
@@ -140,12 +142,12 @@ public class IPCDynamicPageView
         Object localObject2 = IPCDynamicPageView.f(IPCDynamicPageView.this);
         if ((localObject1 == null) || (((String)localObject1).length() == 0))
         {
-          com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.DynamicIPCJsBridge", "detach(%s) failed, id is null or nil.", new Object[] { Integer.valueOf(localObject2.hashCode()) });
-          localObject2 = e.bfH();
-          if (!bt.isNullOrNil((String)localObject1)) {
+          ae.v("MicroMsg.DynamicIPCJsBridge", "detach(%s) failed, id is null or nil.", new Object[] { Integer.valueOf(localObject2.hashCode()) });
+          localObject2 = e.bgp();
+          if (!bu.isNullOrNil((String)localObject1)) {
             break label286;
           }
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.DynamicPageViewMgr", "remove view from manager failed, key is null or nil.");
+          ae.w("MicroMsg.DynamicPageViewMgr", "remove view from manager failed, key is null or nil.");
         }
         for (;;)
         {
@@ -154,21 +156,21 @@ public class IPCDynamicPageView
           IPCDynamicPageView.a(IPCDynamicPageView.this, null);
           IPCDynamicPageView.a(IPCDynamicPageView.this, null);
           IPCDynamicPageView.a(IPCDynamicPageView.this, false);
-          IPCDynamicPageView.d(IPCDynamicPageView.this).bdm();
+          IPCDynamicPageView.d(IPCDynamicPageView.this).bdR();
           IPCDynamicPageView.d(IPCDynamicPageView.this).setTraceId(null);
           AppMethodBeat.o(121520);
           return;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DynamicIPCJsBridge", "detach(%s, id : %s)", new Object[] { Integer.valueOf(localObject2.hashCode()), localObject1 });
+          ae.i("MicroMsg.DynamicIPCJsBridge", "detach(%s, id : %s)", new Object[] { Integer.valueOf(localObject2.hashCode()), localObject1 });
           Bundle localBundle = new Bundle();
           localBundle.putString("id", (String)localObject1);
-          com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou((String)localObject1), localBundle, a.b.class, new a.2((com.tencent.mm.plugin.appbrand.dynamic.a)localObject2, (String)localObject1));
-          localObject2 = j.bfM();
-          if (!((j)localObject2).kfb.containsKey(localObject1))
+          com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc((String)localObject1), localBundle, a.b.class, new a.2((com.tencent.mm.plugin.appbrand.dynamic.a)localObject2, (String)localObject1));
+          localObject2 = j.bgu();
+          if (!((j)localObject2).kir.containsKey(localObject1))
           {
             com.tencent.mm.ipcinvoker.h.b.w("WidgetReporter_14443", "OnDettach but no keylist found, widgetId[%s]", new Object[] { localObject1 });
             break;
           }
-          ((j)localObject2).kfb.remove(localObject1);
+          ((j)localObject2).kir.remove(localObject1);
           break;
           label286:
           localObject1 = (WeakReference)((e)localObject2).mViewMap.remove(localObject1);
@@ -186,7 +188,7 @@ public class IPCDynamicPageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(121527);
-    this.kiR = new Runnable()
+    this.kmh = new Runnable()
     {
       public final void run()
       {
@@ -205,11 +207,11 @@ public class IPCDynamicPageView
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(645L, i, 1L, false);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(645L, 11L, 1L, false);
-          IPCDynamicPageView.this.st(2107);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(645L, i, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(645L, 11L, 1L, false);
+          IPCDynamicPageView.this.sw(2107);
           IPCDynamicPageView.a(IPCDynamicPageView.this, System.currentTimeMillis());
-          IPCDynamicPageView.d(IPCDynamicPageView.this).bdk();
+          IPCDynamicPageView.d(IPCDynamicPageView.this).bdP();
           AppMethodBeat.o(121519);
           return;
           label121:
@@ -237,15 +239,15 @@ public class IPCDynamicPageView
         }
       }
     };
-    this.kiS = new Runnable()
+    this.kmi = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121520);
         Object localObject1 = IPCDynamicPageView.e(IPCDynamicPageView.this);
-        if (bt.isNullOrNil((String)localObject1))
+        if (bu.isNullOrNil((String)localObject1))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "detach failed, id is null or nil.");
+          ae.i("MicroMsg.IPCDynamicPageView", "detach failed, id is null or nil.");
           AppMethodBeat.o(121520);
           return;
         }
@@ -253,12 +255,12 @@ public class IPCDynamicPageView
         Object localObject2 = IPCDynamicPageView.f(IPCDynamicPageView.this);
         if ((localObject1 == null) || (((String)localObject1).length() == 0))
         {
-          com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.DynamicIPCJsBridge", "detach(%s) failed, id is null or nil.", new Object[] { Integer.valueOf(localObject2.hashCode()) });
-          localObject2 = e.bfH();
-          if (!bt.isNullOrNil((String)localObject1)) {
+          ae.v("MicroMsg.DynamicIPCJsBridge", "detach(%s) failed, id is null or nil.", new Object[] { Integer.valueOf(localObject2.hashCode()) });
+          localObject2 = e.bgp();
+          if (!bu.isNullOrNil((String)localObject1)) {
             break label286;
           }
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.DynamicPageViewMgr", "remove view from manager failed, key is null or nil.");
+          ae.w("MicroMsg.DynamicPageViewMgr", "remove view from manager failed, key is null or nil.");
         }
         for (;;)
         {
@@ -267,21 +269,21 @@ public class IPCDynamicPageView
           IPCDynamicPageView.a(IPCDynamicPageView.this, null);
           IPCDynamicPageView.a(IPCDynamicPageView.this, null);
           IPCDynamicPageView.a(IPCDynamicPageView.this, false);
-          IPCDynamicPageView.d(IPCDynamicPageView.this).bdm();
+          IPCDynamicPageView.d(IPCDynamicPageView.this).bdR();
           IPCDynamicPageView.d(IPCDynamicPageView.this).setTraceId(null);
           AppMethodBeat.o(121520);
           return;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DynamicIPCJsBridge", "detach(%s, id : %s)", new Object[] { Integer.valueOf(localObject2.hashCode()), localObject1 });
+          ae.i("MicroMsg.DynamicIPCJsBridge", "detach(%s, id : %s)", new Object[] { Integer.valueOf(localObject2.hashCode()), localObject1 });
           Bundle localBundle = new Bundle();
           localBundle.putString("id", (String)localObject1);
-          com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou((String)localObject1), localBundle, a.b.class, new a.2((com.tencent.mm.plugin.appbrand.dynamic.a)localObject2, (String)localObject1));
-          localObject2 = j.bfM();
-          if (!((j)localObject2).kfb.containsKey(localObject1))
+          com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc((String)localObject1), localBundle, a.b.class, new a.2((com.tencent.mm.plugin.appbrand.dynamic.a)localObject2, (String)localObject1));
+          localObject2 = j.bgu();
+          if (!((j)localObject2).kir.containsKey(localObject1))
           {
             com.tencent.mm.ipcinvoker.h.b.w("WidgetReporter_14443", "OnDettach but no keylist found, widgetId[%s]", new Object[] { localObject1 });
             break;
           }
-          ((j)localObject2).kfb.remove(localObject1);
+          ((j)localObject2).kir.remove(localObject1);
           break;
           label286:
           localObject1 = (WeakReference)((e)localObject2).mViewMap.remove(localObject1);
@@ -299,7 +301,7 @@ public class IPCDynamicPageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(121528);
-    this.kiR = new Runnable()
+    this.kmh = new Runnable()
     {
       public final void run()
       {
@@ -318,11 +320,11 @@ public class IPCDynamicPageView
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(645L, i, 1L, false);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(645L, 11L, 1L, false);
-          IPCDynamicPageView.this.st(2107);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(645L, i, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(645L, 11L, 1L, false);
+          IPCDynamicPageView.this.sw(2107);
           IPCDynamicPageView.a(IPCDynamicPageView.this, System.currentTimeMillis());
-          IPCDynamicPageView.d(IPCDynamicPageView.this).bdk();
+          IPCDynamicPageView.d(IPCDynamicPageView.this).bdP();
           AppMethodBeat.o(121519);
           return;
           label121:
@@ -350,15 +352,15 @@ public class IPCDynamicPageView
         }
       }
     };
-    this.kiS = new Runnable()
+    this.kmi = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121520);
         Object localObject1 = IPCDynamicPageView.e(IPCDynamicPageView.this);
-        if (bt.isNullOrNil((String)localObject1))
+        if (bu.isNullOrNil((String)localObject1))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "detach failed, id is null or nil.");
+          ae.i("MicroMsg.IPCDynamicPageView", "detach failed, id is null or nil.");
           AppMethodBeat.o(121520);
           return;
         }
@@ -366,12 +368,12 @@ public class IPCDynamicPageView
         Object localObject2 = IPCDynamicPageView.f(IPCDynamicPageView.this);
         if ((localObject1 == null) || (((String)localObject1).length() == 0))
         {
-          com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.DynamicIPCJsBridge", "detach(%s) failed, id is null or nil.", new Object[] { Integer.valueOf(localObject2.hashCode()) });
-          localObject2 = e.bfH();
-          if (!bt.isNullOrNil((String)localObject1)) {
+          ae.v("MicroMsg.DynamicIPCJsBridge", "detach(%s) failed, id is null or nil.", new Object[] { Integer.valueOf(localObject2.hashCode()) });
+          localObject2 = e.bgp();
+          if (!bu.isNullOrNil((String)localObject1)) {
             break label286;
           }
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.DynamicPageViewMgr", "remove view from manager failed, key is null or nil.");
+          ae.w("MicroMsg.DynamicPageViewMgr", "remove view from manager failed, key is null or nil.");
         }
         for (;;)
         {
@@ -380,21 +382,21 @@ public class IPCDynamicPageView
           IPCDynamicPageView.a(IPCDynamicPageView.this, null);
           IPCDynamicPageView.a(IPCDynamicPageView.this, null);
           IPCDynamicPageView.a(IPCDynamicPageView.this, false);
-          IPCDynamicPageView.d(IPCDynamicPageView.this).bdm();
+          IPCDynamicPageView.d(IPCDynamicPageView.this).bdR();
           IPCDynamicPageView.d(IPCDynamicPageView.this).setTraceId(null);
           AppMethodBeat.o(121520);
           return;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DynamicIPCJsBridge", "detach(%s, id : %s)", new Object[] { Integer.valueOf(localObject2.hashCode()), localObject1 });
+          ae.i("MicroMsg.DynamicIPCJsBridge", "detach(%s, id : %s)", new Object[] { Integer.valueOf(localObject2.hashCode()), localObject1 });
           Bundle localBundle = new Bundle();
           localBundle.putString("id", (String)localObject1);
-          com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou((String)localObject1), localBundle, a.b.class, new a.2((com.tencent.mm.plugin.appbrand.dynamic.a)localObject2, (String)localObject1));
-          localObject2 = j.bfM();
-          if (!((j)localObject2).kfb.containsKey(localObject1))
+          com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc((String)localObject1), localBundle, a.b.class, new a.2((com.tencent.mm.plugin.appbrand.dynamic.a)localObject2, (String)localObject1));
+          localObject2 = j.bgu();
+          if (!((j)localObject2).kir.containsKey(localObject1))
           {
             com.tencent.mm.ipcinvoker.h.b.w("WidgetReporter_14443", "OnDettach but no keylist found, widgetId[%s]", new Object[] { localObject1 });
             break;
           }
-          ((j)localObject2).kfb.remove(localObject1);
+          ((j)localObject2).kir.remove(localObject1);
           break;
           label286:
           localObject1 = (WeakReference)((e)localObject2).mViewMap.remove(localObject1);
@@ -411,27 +413,27 @@ public class IPCDynamicPageView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(121529);
-    this.kiM = new com.tencent.mm.plugin.appbrand.dynamic.a(this);
-    paramContext = b.cw(paramContext);
-    addView(paramContext, kiT);
-    this.kiQ = ((com.tencent.mm.plugin.appbrand.canvas.widget.a)paramContext);
-    this.kiQ.setTraceId(this.gaR);
+    this.kmc = new com.tencent.mm.plugin.appbrand.dynamic.a(this);
+    paramContext = b.cy(paramContext);
+    addView(paramContext, kmj);
+    this.kmg = ((com.tencent.mm.plugin.appbrand.canvas.widget.a)paramContext);
+    this.kmg.setTraceId(this.gcZ);
     AppMethodBeat.o(121529);
   }
   
-  private void ss(final int paramInt)
+  private void sv(final int paramInt)
   {
     AppMethodBeat.i(121561);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener wrapper is null.", new Object[] { this.gaR, Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener wrapper is null.", new Object[] { this.gcZ, Integer.valueOf(paramInt) });
       AppMethodBeat.o(121561);
       return;
     }
-    final com.tencent.mm.modelappbrand.h localh = this.kiN.aDR();
+    final com.tencent.mm.modelappbrand.h localh = this.kmd.aEh();
     if (localh == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener is null.", new Object[] { this.gaR, Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener is null.", new Object[] { this.gcZ, Integer.valueOf(paramInt) });
       AppMethodBeat.o(121561);
       return;
     }
@@ -441,7 +443,7 @@ public class IPCDynamicPageView
       AppMethodBeat.o(121561);
       return;
     }
-    com.tencent.mm.plugin.appbrand.dynamic.b.S(new Runnable()
+    com.tencent.mm.plugin.appbrand.dynamic.b.Q(new Runnable()
     {
       public final void run()
       {
@@ -453,50 +455,50 @@ public class IPCDynamicPageView
     AppMethodBeat.o(121561);
   }
   
-  public final void R(Runnable paramRunnable)
+  public final void P(Runnable paramRunnable)
   {
     AppMethodBeat.i(121548);
-    this.kiQ.R(paramRunnable);
+    this.kmg.P(paramRunnable);
     AppMethodBeat.o(121548);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, com.tencent.mm.plugin.appbrand.canvas.widget.a.a parama)
   {
     AppMethodBeat.i(121545);
-    this.kiQ.a(paramDrawCanvasArg, parama);
+    this.kmg.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(121545);
   }
   
   public final void a(String paramString, t paramt)
   {
     AppMethodBeat.i(121537);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121537);
       return;
     }
-    ah localah = (ah)this.kiN.Cn("openApp");
+    ah localah = (ah)this.kmd.CP("openApp");
     if (localah == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121537);
       return;
     }
-    localah.Cp(paramString);
+    localah.CR(paramString);
     AppMethodBeat.o(121537);
   }
   
   public final void a(String paramString1, String paramString2, t paramt)
   {
     AppMethodBeat.i(121539);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121539);
       return;
     }
-    y localy = (y)this.kiN.Cn("showPicker");
+    y localy = (y)this.kmd.CP("showPicker");
     if (localy == null)
     {
       paramt.b(false, "listener is null", null);
@@ -510,20 +512,20 @@ public class IPCDynamicPageView
   public final void a(JSONArray paramJSONArray, com.tencent.mm.plugin.appbrand.canvas.widget.a.a parama)
   {
     AppMethodBeat.i(121543);
-    this.kiQ.a(paramJSONArray, parama);
+    this.kmg.a(paramJSONArray, parama);
     AppMethodBeat.o(121543);
   }
   
   public final void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, t paramt)
   {
     AppMethodBeat.i(121538);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121538);
       return;
     }
-    af localaf = (af)this.kiN.Cn("OnTapCallback");
+    af localaf = (af)this.kmd.CP("OnTapCallback");
     if (localaf == null)
     {
       paramt.b(false, "listener is null", null);
@@ -537,9 +539,9 @@ public class IPCDynamicPageView
   public final boolean aS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121562);
-    Object localObject = this.kiM;
-    String str = this.gaR;
-    if ((((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).gaR == null) || (((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).gaR.length() == 0) || (paramString1 == null) || (paramString1.length() == 0))
+    Object localObject = this.kmc;
+    String str = this.gcZ;
+    if ((((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).gcZ == null) || (((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).gcZ.length() == 0) || (paramString1 == null) || (paramString1.length() == 0))
     {
       AppMethodBeat.o(121562);
       return false;
@@ -548,7 +550,7 @@ public class IPCDynamicPageView
     ((Bundle)localObject).putString("id", str);
     ((Bundle)localObject).putString("event", paramString1);
     ((Bundle)localObject).putString("data", paramString2);
-    paramString1 = (IPCBoolean)com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou(str), (Parcelable)localObject, a.f.class);
+    paramString1 = (IPCBoolean)com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(str), (Parcelable)localObject, a.f.class);
     if (paramString1 != null)
     {
       boolean bool = paramString1.value;
@@ -562,13 +564,13 @@ public class IPCDynamicPageView
   public final void b(int paramInt, t paramt)
   {
     AppMethodBeat.i(121540);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121540);
       return;
     }
-    aj localaj = (aj)this.kiN.Cn("setWidgetSize");
+    aj localaj = (aj)this.kmd.CP("setWidgetSize");
     if (localaj == null)
     {
       paramt.b(false, "listener is null", null);
@@ -582,123 +584,123 @@ public class IPCDynamicPageView
   public final void b(DrawCanvasArg paramDrawCanvasArg, com.tencent.mm.plugin.appbrand.canvas.widget.a.a parama)
   {
     AppMethodBeat.i(121546);
-    this.kiQ.b(paramDrawCanvasArg, parama);
+    this.kmg.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(121546);
   }
   
   public final void b(String paramString, t paramt)
   {
     AppMethodBeat.i(121535);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121535);
       return;
     }
-    com.tencent.mm.modelappbrand.ad localad = (com.tencent.mm.modelappbrand.ad)this.kiN.Cn("makePhoneCall");
+    ad localad = (ad)this.kmd.CP("makePhoneCall");
     if (localad == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121535);
       return;
     }
-    localad.Co(paramString);
+    localad.CQ(paramString);
     AppMethodBeat.o(121535);
   }
   
   public final void b(JSONArray paramJSONArray, com.tencent.mm.plugin.appbrand.canvas.widget.a.a parama)
   {
     AppMethodBeat.i(121544);
-    this.kiQ.b(paramJSONArray, parama);
+    this.kmg.b(paramJSONArray, parama);
     AppMethodBeat.o(121544);
   }
   
-  public final void bdk()
+  public final void bdP()
   {
     AppMethodBeat.i(121542);
-    long l = System.currentTimeMillis() - this.jSO;
-    keH.removeCallbacks(this.kiR);
+    long l = System.currentTimeMillis() - this.jWf;
+    khX.removeCallbacks(this.kmh);
     if (l < 12L)
     {
-      keH.postDelayed(this.kiR, l);
+      khX.postDelayed(this.kmh, l);
       AppMethodBeat.o(121542);
       return;
     }
-    this.kiR.run();
+    this.kmh.run();
     AppMethodBeat.o(121542);
   }
   
-  public final void bdl()
+  public final void bdQ()
   {
     AppMethodBeat.i(121547);
-    this.kiQ.bdl();
+    this.kmg.bdQ();
     AppMethodBeat.o(121547);
   }
   
-  public final void bdm()
+  public final void bdR()
   {
     AppMethodBeat.i(121559);
-    this.kiQ.bdm();
+    this.kmg.bdR();
     AppMethodBeat.o(121559);
   }
   
-  public final void bfJ()
+  public final void bgr()
   {
     AppMethodBeat.i(121534);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       AppMethodBeat.o(121534);
       return;
     }
-    ag localag = (ag)this.kiN.Cn("onUiUpdate");
+    ag localag = (ag)this.kmd.CP("onUiUpdate");
     if (localag == null)
     {
       AppMethodBeat.o(121534);
       return;
     }
-    localag.aDT();
+    localag.aEj();
     AppMethodBeat.o(121534);
   }
   
   public final void c(String paramString, t paramt)
   {
     AppMethodBeat.i(121536);
-    if (this.kiN == null)
+    if (this.kmd == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121536);
       return;
     }
-    ai localai = (ai)this.kiN.Cn("onSearchWAWidgetReloadData");
+    ai localai = (ai)this.kmd.CP("onSearchWAWidgetReloadData");
     if (localai == null)
     {
       paramt.b(false, "listener is null", null);
       AppMethodBeat.o(121536);
       return;
     }
-    localai.Cq(paramString);
+    localai.CS(paramString);
     AppMethodBeat.o(121536);
   }
   
   public final void cleanup()
   {
     AppMethodBeat.i(121532);
-    if (this.keM != null) {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s, %s, %s, %s)", new Object[] { this.gaR, this.keM.field_id, this.keM.field_appId, this.keM.field_cacheKey });
+    if (this.kic != null) {
+      ae.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s, %s, %s, %s)", new Object[] { this.gcZ, this.kic.field_id, this.kic.field_appId, this.kic.field_cacheKey });
     }
     for (;;)
     {
-      bdl();
+      bdQ();
       AppMethodBeat.o(121532);
       return;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s)", new Object[] { this.gaR });
+      ae.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s)", new Object[] { this.gcZ });
     }
   }
   
   public final void d(final String paramString1, final String paramString2, final Bundle paramBundle)
   {
     AppMethodBeat.i(121530);
-    keH.post(new Runnable()
+    khX.post(new Runnable()
     {
       public final void run()
       {
@@ -708,15 +710,15 @@ public class IPCDynamicPageView
           str1 = paramBundle.getString("cache_key", "");
         }
         u.i("MicroMsg.IPCDynamicPageView", "prepare(%s, %s)", new Object[] { paramString1, paramString2 });
-        IPCDynamicPageView.a(IPCDynamicPageView.this, com.tencent.mm.plugin.appbrand.dynamic.j.b.OL(paramString1));
+        IPCDynamicPageView.a(IPCDynamicPageView.this, com.tencent.mm.plugin.appbrand.dynamic.j.b.Pt(paramString1));
         if (IPCDynamicPageView.g(IPCDynamicPageView.this) == null) {
           IPCDynamicPageView.a(IPCDynamicPageView.this, new f());
         }
         IPCDynamicPageView.g(IPCDynamicPageView.this).field_id = paramString1;
         IPCDynamicPageView.g(IPCDynamicPageView.this).field_cacheKey = str1;
-        IPCDynamicPageView.g(IPCDynamicPageView.this).field_appId = u.Ci(IPCDynamicPageView.e(IPCDynamicPageView.this));
-        IPCDynamicPageView.this.getDrawContext().gzS.k("id", paramString1);
-        e.bfH().c(paramString1, IPCDynamicPageView.this);
+        IPCDynamicPageView.g(IPCDynamicPageView.this).field_appId = u.CK(IPCDynamicPageView.e(IPCDynamicPageView.this));
+        IPCDynamicPageView.this.getDrawContext().gCz.k("id", paramString1);
+        e.bgp().c(paramString1, IPCDynamicPageView.this);
         if (paramBundle != null) {
           paramBundle.putBundle("__env_args", IPCDynamicPageView.b(IPCDynamicPageView.this, paramBundle));
         }
@@ -729,7 +731,7 @@ public class IPCDynamicPageView
         localBundle2.putString("appId", str2);
         localBundle2.putBundle("extData", localBundle1);
         u.i("MicroMsg.DynamicIPCJsBridge", "before IPCInvoke_AttachTo invoke", new Object[0]);
-        com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou(str1), localBundle2, com.tencent.mm.plugin.appbrand.dynamic.a.a.class, null);
+        com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(str1), localBundle2, com.tencent.mm.plugin.appbrand.dynamic.a.a.class, null);
         AppMethodBeat.o(121522);
       }
     });
@@ -739,38 +741,38 @@ public class IPCDynamicPageView
   public final void detach()
   {
     AppMethodBeat.i(121531);
-    if (com.tencent.e.j.a.fVU() == keH.getSerial())
+    if (com.tencent.e.j.a.gat() == khX.getSerial())
     {
-      this.kiS.run();
+      this.kmi.run();
       AppMethodBeat.o(121531);
       return;
     }
-    keH.post(this.kiS);
+    khX.post(this.kmi);
     AppMethodBeat.o(121531);
   }
   
   public d getDrawContext()
   {
     AppMethodBeat.i(121549);
-    d locald = this.kiQ.getDrawContext();
+    d locald = this.kmg.getDrawContext();
     AppMethodBeat.o(121549);
     return locald;
   }
   
   public Bundle getExtData()
   {
-    return this.kiL;
+    return this.kmb;
   }
   
   public String getExtId()
   {
-    return this.gaR;
+    return this.gcZ;
   }
   
   public String getSessionId()
   {
     AppMethodBeat.i(121556);
-    String str = this.kiQ.getSessionId();
+    String str = this.kmg.getSessionId();
     AppMethodBeat.o(121556);
     return str;
   }
@@ -778,7 +780,7 @@ public class IPCDynamicPageView
   public String getTraceId()
   {
     AppMethodBeat.i(121552);
-    String str = this.kiQ.getTraceId();
+    String str = this.kmg.getTraceId();
     AppMethodBeat.o(121552);
     return str;
   }
@@ -786,7 +788,7 @@ public class IPCDynamicPageView
   public final boolean h(Canvas paramCanvas)
   {
     AppMethodBeat.i(121541);
-    boolean bool = this.kiQ.h(paramCanvas);
+    boolean bool = this.kmg.h(paramCanvas);
     AppMethodBeat.o(121541);
     return bool;
   }
@@ -794,7 +796,7 @@ public class IPCDynamicPageView
   public final boolean isPaused()
   {
     AppMethodBeat.i(121555);
-    boolean bool = this.kiQ.isPaused();
+    boolean bool = this.kmg.isPaused();
     AppMethodBeat.o(121555);
     return bool;
   }
@@ -802,8 +804,8 @@ public class IPCDynamicPageView
   public final void onPause()
   {
     AppMethodBeat.i(121553);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "onPause(%s)", new Object[] { this.gaR });
-    keH.post(new Runnable()
+    ae.i("MicroMsg.IPCDynamicPageView", "onPause(%s)", new Object[] { this.gcZ });
+    khX.post(new Runnable()
     {
       public final void run()
       {
@@ -812,7 +814,7 @@ public class IPCDynamicPageView
         String str = IPCDynamicPageView.e(IPCDynamicPageView.this);
         Bundle localBundle = new Bundle();
         localBundle.putString("id", str);
-        com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou(str), localBundle, a.d.class, null);
+        com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(str), localBundle, a.d.class, null);
         AppMethodBeat.o(121523);
       }
     });
@@ -822,9 +824,9 @@ public class IPCDynamicPageView
   public final void onResume()
   {
     AppMethodBeat.i(121554);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "onResume(%s)", new Object[] { this.gaR });
-    this.kiQ.onResume();
-    keH.post(new Runnable()
+    ae.i("MicroMsg.IPCDynamicPageView", "onResume(%s)", new Object[] { this.gcZ });
+    this.kmg.onResume();
+    khX.post(new Runnable()
     {
       public final void run()
       {
@@ -833,7 +835,7 @@ public class IPCDynamicPageView
         String str = IPCDynamicPageView.e(IPCDynamicPageView.this);
         Bundle localBundle = new Bundle();
         localBundle.putString("id", str);
-        com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou(str), localBundle, a.e.class, null);
+        com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(str), localBundle, a.e.class, null);
         AppMethodBeat.o(121524);
       }
     });
@@ -844,58 +846,58 @@ public class IPCDynamicPageView
   {
     AppMethodBeat.i(121560);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.IPCDynamicPageView", "onSizeChanged(w : %d, h : %d, oldw : %d, oldh : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ae.i("MicroMsg.IPCDynamicPageView", "onSizeChanged(w : %d, h : %d, oldw : %d, oldh : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     Bundle localBundle1 = new Bundle();
     localBundle1.putInt("__page_view_width", paramInt1);
     localBundle1.putInt("__page_view_height", paramInt2);
-    String str = this.gaR;
+    String str = this.gcZ;
     Bundle localBundle2 = new Bundle();
     localBundle2.putString("id", str);
     localBundle2.putBundle("__env_args", localBundle1);
-    com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou(str), localBundle2, a.g.class, null);
+    com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(str), localBundle2, a.g.class, null);
     AppMethodBeat.o(121560);
   }
   
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(121550);
-    this.kiQ.setDrawActionReportable(parama);
+    this.kmg.setDrawActionReportable(parama);
     AppMethodBeat.o(121550);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(121557);
-    this.kiQ.setSessionId(paramString);
+    this.kmg.setSessionId(paramString);
     AppMethodBeat.o(121557);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(121558);
-    this.kiQ.setStartTime(paramLong);
+    this.kmg.setStartTime(paramLong);
     AppMethodBeat.o(121558);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(121551);
-    this.kiQ.setTraceId(paramString);
+    this.kmg.setTraceId(paramString);
     AppMethodBeat.o(121551);
   }
   
-  public final void sn(int paramInt)
+  public final void sq(int paramInt)
   {
     AppMethodBeat.i(121533);
-    ss(paramInt);
+    sv(paramInt);
     detach();
     AppMethodBeat.o(121533);
   }
   
-  public final void st(int paramInt)
+  public final void sw(int paramInt)
   {
     AppMethodBeat.i(121563);
-    this.kiM.bw(this.gaR, paramInt);
+    this.kmc.bz(this.gcZ, paramInt);
     AppMethodBeat.o(121563);
   }
 }

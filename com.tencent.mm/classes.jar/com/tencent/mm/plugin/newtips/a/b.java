@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.newtips.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cnm;
-import com.tencent.mm.protocal.protobuf.cnn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cog;
+import com.tencent.mm.protocal.protobuf.coh;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends n
   implements k
 {
   private f callback;
-  private com.tencent.mm.al.b rr;
-  boolean wse;
-  int wsf;
+  private com.tencent.mm.ak.b rr;
+  boolean wHN;
+  int wHO;
   
   @Deprecated
   public b(int paramInt, String paramString)
   {
     AppMethodBeat.i(127209);
-    this.wse = false;
-    this.wsf = 0;
+    this.wHN = false;
+    this.wHO = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cnm();
-    ((b.a)localObject).hNN = new cnn();
+    ((b.a)localObject).hQF = new cog();
+    ((b.a)localObject).hQG = new coh();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/pushnewtips";
     ((b.a)localObject).funcId = 597;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (cnm)this.rr.hNK.hNQ;
-    ((cnm)localObject).HgF = paramInt;
-    ((cnm)localObject).HgG = 1;
-    ((cnm)localObject).ujy = paramString;
-    this.wsf = paramInt;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cog)this.rr.hQD.hQJ;
+    ((cog)localObject).HAf = paramInt;
+    ((cog)localObject).HAg = 1;
+    ((cog)localObject).uuW = paramString;
+    this.wHO = paramInt;
     AppMethodBeat.o(127209);
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(127211);
-    ad.d("MicroMsg.NetScenePushCompatNewTips", "doScene");
+    ae.d("MicroMsg.NetScenePushCompatNewTips", "doScene");
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(127211);
@@ -62,12 +62,12 @@ public final class b
     AppMethodBeat.i(127210);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetScenePushCompatNewTips", "errType:" + paramInt2 + " errCode:" + paramInt3);
+      ae.e("MicroMsg.NetScenePushCompatNewTips", "errType:" + paramInt2 + " errCode:" + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(127210);
       return;
     }
-    this.wse = ((cnn)((com.tencent.mm.al.b)paramq).hNL.hNQ).HgI;
+    this.wHN = ((coh)((com.tencent.mm.ak.b)paramq).hQE.hQJ).HAi;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(127210);
   }

@@ -1,123 +1,138 @@
 package com.tencent.mm.ap;
 
-import android.database.Cursor;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.am;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storagebase.h;
-
 public final class b
-  extends am
 {
-  public final String getTag()
+  /* Error */
+  public static Object z(java.io.InputStream paramInputStream)
   {
-    return "MicroMsg.App.BizPlaceTopDataTransfer";
-  }
-  
-  public final boolean op(int paramInt)
-  {
-    return (paramInt != 0) && (paramInt < 637735215);
-  }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(20476);
-    ad.d("MicroMsg.App.BizPlaceTopDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
-    long l1;
-    long l2;
-    if (op(paramInt))
-    {
-      ad.i("MicroMsg.App.BizPlaceTopDataTransfer", "begin biz place to top data transfer.");
-      l1 = System.currentTimeMillis();
-      g.yhR.idkeyStat(336L, 0L, 1L, true);
-      ba.aBQ();
-      h localh = c.getDataDB();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("select conv.username");
-      ((StringBuilder)localObject).append(" from ");
-      ((StringBuilder)localObject).append("rconversation");
-      ((StringBuilder)localObject).append(" as conv, ");
-      ((StringBuilder)localObject).append("rcontact");
-      ((StringBuilder)localObject).append(" as ct ");
-      ((StringBuilder)localObject).append(" where conv.");
-      ((StringBuilder)localObject).append("parentRef");
-      ((StringBuilder)localObject).append("='");
-      ((StringBuilder)localObject).append("officialaccounts");
-      ((StringBuilder)localObject).append("' and conv.");
-      ((StringBuilder)localObject).append("username");
-      ((StringBuilder)localObject).append(" = ct.");
-      ((StringBuilder)localObject).append("username");
-      ((StringBuilder)localObject).append(" and ct.");
-      ((StringBuilder)localObject).append("verifyFlag");
-      ((StringBuilder)localObject).append(" & ");
-      ((StringBuilder)localObject).append(8);
-      ((StringBuilder)localObject).append(" = 0");
-      localObject = ((StringBuilder)localObject).toString();
-      ad.v("MicroMsg.App.BizPlaceTopDataTransfer", "transfer query sql(%s)", new Object[] { localObject });
-      localObject = localh.a((String)localObject, null, 2);
-      if (localObject == null)
-      {
-        ad.i("MicroMsg.App.BizPlaceTopDataTransfer", "cursor is null.");
-        AppMethodBeat.o(20476);
-        return;
-      }
-      l2 = System.currentTimeMillis();
-      ad.i("MicroMsg.App.BizPlaceTopDataTransfer", "do biz place to top data transfer, query cost : %s msec.", new Object[] { Long.valueOf(l2 - l1) });
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("update ");
-      localStringBuilder.append("rconversation");
-      localStringBuilder.append(" set ");
-      localStringBuilder.append("parentRef");
-      localStringBuilder.append("='' where ");
-      localStringBuilder.append("username");
-      localStringBuilder.append(" in (");
-      if (((Cursor)localObject).moveToFirst())
-      {
-        g.yhR.idkeyStat(336L, 1L, 1L, true);
-        localStringBuilder.append("'");
-        localStringBuilder.append(((Cursor)localObject).getString(0));
-        localStringBuilder.append("'");
-        paramInt = 1;
-        while (((Cursor)localObject).moveToNext())
-        {
-          localStringBuilder.append(",");
-          localStringBuilder.append("'");
-          localStringBuilder.append(((Cursor)localObject).getString(0));
-          localStringBuilder.append("'");
-          paramInt += 1;
-        }
-      }
-      ((Cursor)localObject).close();
-      ad.i("MicroMsg.App.BizPlaceTopDataTransfer", "cursor count is 0.");
-      AppMethodBeat.o(20476);
-      return;
-      localStringBuilder.append(")");
-      String str = localStringBuilder.toString();
-      ad.i("MicroMsg.App.BizPlaceTopDataTransfer", "transfer update count(%d)", new Object[] { Integer.valueOf(paramInt) });
-      ad.v("MicroMsg.App.BizPlaceTopDataTransfer", "transfer update sql(%s)", new Object[] { str });
-      ((Cursor)localObject).close();
-      if (!localh.execSQL("rconversation", localStringBuilder.toString())) {
-        break label628;
-      }
-      g.yhR.idkeyStat(336L, 2L, 1L, true);
-    }
-    for (;;)
-    {
-      long l3 = System.currentTimeMillis();
-      ad.i("MicroMsg.App.BizPlaceTopDataTransfer", "do biz place to top data transfer, update cost : %s msec,  total cost : %s msec.", new Object[] { Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
-      AppMethodBeat.o(20476);
-      return;
-      label628:
-      g.yhR.idkeyStat(336L, 3L, 1L, true);
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: ldc 9
+    //   4: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_3
+    //   8: astore_2
+    //   9: aload_0
+    //   10: ifnull +23 -> 33
+    //   13: new 17	java/io/ObjectInputStream
+    //   16: dup
+    //   17: aload_0
+    //   18: invokespecial 21	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   21: astore_1
+    //   22: aload_1
+    //   23: astore_0
+    //   24: aload_1
+    //   25: invokevirtual 25	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   28: astore_2
+    //   29: aload_1
+    //   30: invokevirtual 29	java/io/ObjectInputStream:close	()V
+    //   33: ldc 9
+    //   35: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: aload_2
+    //   39: areturn
+    //   40: astore_0
+    //   41: ldc 34
+    //   43: new 36	java/lang/StringBuilder
+    //   46: dup
+    //   47: ldc 38
+    //   49: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   52: aload_0
+    //   53: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   56: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   65: goto -32 -> 33
+    //   68: astore_2
+    //   69: aconst_null
+    //   70: astore_1
+    //   71: aload_1
+    //   72: astore_0
+    //   73: ldc 34
+    //   75: new 36	java/lang/StringBuilder
+    //   78: dup
+    //   79: ldc 60
+    //   81: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   84: aload_2
+    //   85: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   88: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   94: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   97: aload_3
+    //   98: astore_2
+    //   99: aload_1
+    //   100: ifnull -67 -> 33
+    //   103: aload_1
+    //   104: invokevirtual 29	java/io/ObjectInputStream:close	()V
+    //   107: aload_3
+    //   108: astore_2
+    //   109: goto -76 -> 33
+    //   112: astore_0
+    //   113: ldc 34
+    //   115: new 36	java/lang/StringBuilder
+    //   118: dup
+    //   119: ldc 38
+    //   121: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   124: aload_0
+    //   125: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: aload_3
+    //   138: astore_2
+    //   139: goto -106 -> 33
+    //   142: astore_1
+    //   143: aconst_null
+    //   144: astore_0
+    //   145: aload_0
+    //   146: ifnull +7 -> 153
+    //   149: aload_0
+    //   150: invokevirtual 29	java/io/ObjectInputStream:close	()V
+    //   153: ldc 9
+    //   155: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   158: aload_1
+    //   159: athrow
+    //   160: astore_0
+    //   161: ldc 34
+    //   163: new 36	java/lang/StringBuilder
+    //   166: dup
+    //   167: ldc 38
+    //   169: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   172: aload_0
+    //   173: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   176: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   182: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: goto -32 -> 153
+    //   188: astore_1
+    //   189: goto -44 -> 145
+    //   192: astore_2
+    //   193: goto -122 -> 71
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	196	0	paramInputStream	java.io.InputStream
+    //   21	83	1	localObjectInputStream	java.io.ObjectInputStream
+    //   142	17	1	localObject1	Object
+    //   188	1	1	localObject2	Object
+    //   8	31	2	localObject3	Object
+    //   68	17	2	localException1	java.lang.Exception
+    //   98	41	2	localObject4	Object
+    //   192	1	2	localException2	java.lang.Exception
+    //   1	137	3	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   29	33	40	java/lang/Exception
+    //   13	22	68	java/lang/Exception
+    //   103	107	112	java/lang/Exception
+    //   13	22	142	finally
+    //   149	153	160	java/lang/Exception
+    //   24	29	188	finally
+    //   73	97	188	finally
+    //   24	29	192	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ap.b
  * JD-Core Version:    0.7.0.1
  */

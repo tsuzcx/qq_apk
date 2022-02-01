@@ -1,60 +1,45 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mm.plugin.appbrand.page.a.c;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import java.util.Map;
 
-public final class ab
+public abstract interface ab
+  extends c
 {
-  public static String Tp(String paramString)
-  {
-    AppMethodBeat.i(135207);
-    int i = paramString.indexOf("<page>");
-    int j = paramString.indexOf("</page>");
-    if ((i == -1) || (j == -i))
-    {
-      AppMethodBeat.o(135207);
-      return "";
-    }
-    paramString = paramString.substring(i + 6, j);
-    AppMethodBeat.o(135207);
-    return paramString;
-  }
+  public abstract bb DF();
   
-  public static String Tq(String paramString)
-  {
-    AppMethodBeat.i(135208);
-    int i = paramString.indexOf("<style>");
-    int j = paramString.indexOf("</style>");
-    if ((i == -1) || (j == -i))
-    {
-      AppMethodBeat.o(135208);
-      return "";
-    }
-    paramString = paramString.substring(i + 7, j);
-    AppMethodBeat.o(135208);
-    return paramString;
-  }
+  public abstract al DG();
   
-  public static String Tr(String paramString)
-  {
-    AppMethodBeat.i(135209);
-    String str = "";
-    int i = 0;
-    int j = paramString.indexOf("<script>", i);
-    int k = paramString.indexOf("</script>", i);
-    if ((j != -1) && (k != -1) && (k > j))
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append(str);
-      if (i > 0) {}
-      for (str = ";";; str = "")
-      {
-        str = str + paramString.substring(j + 8, k);
-        i = k + 9;
-        break;
-      }
-    }
-    AppMethodBeat.o(135209);
-    return str;
-  }
+  public abstract void DH();
+  
+  public abstract void DI();
+  
+  public abstract void DK();
+  
+  public abstract <T> T Q(Class<T> paramClass);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater);
+  
+  public abstract void a(Map<String, Object> paramMap, br parambr);
+  
+  public abstract void b(b paramb);
+  
+  public abstract boolean cZ(String paramString);
+  
+  public abstract void cm(View paramView);
+  
+  public abstract RelativeLayout.LayoutParams cn(View paramView);
+  
+  public abstract void dispatchConfigurationChanged(Configuration paramConfiguration);
+  
+  public abstract void dispatchDestroy();
+  
+  public abstract void dispatchStart();
 }
 
 

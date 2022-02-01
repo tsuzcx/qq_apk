@@ -13,9 +13,9 @@ public class a
   
   public a()
   {
-    AppMethodBeat.i(190421);
+    AppMethodBeat.i(210686);
     this.f = "";
-    AppMethodBeat.o(190421);
+    AppMethodBeat.o(210686);
   }
 }
 

@@ -2,15 +2,15 @@ package com.tencent.xweb.xwalk;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.xwalk.updater.c;
-import com.tencent.xweb.xwalk.updater.h;
+import com.tencent.xweb.xwalk.updater.Scheduler;
+import com.tencent.xweb.xwalk.updater.XWebCoreScheduler;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
 import org.xwalk.core.XWalkUpdater;
 
 public final class a
 {
-  public static com.tencent.xweb.a.a eD(Object paramObject)
+  public static com.tencent.xweb.a.a eG(Object paramObject)
   {
     int j = 1;
     com.tencent.xweb.a.a locala;
@@ -26,12 +26,12 @@ public final class a
       {
         return locala;
         com.tencent.xweb.internal.a.a locala1 = (com.tencent.xweb.internal.a.a)paramObject;
-        str1 = locala1.MsD;
-        paramObject = locala1.MsE;
-        if (!locala1.MsD.equals("executeCommand")) {
-          break label388;
+        str1 = locala1.MPH;
+        paramObject = locala1.MPI;
+        if (!locala1.MPH.equals("executeCommand")) {
+          break label396;
         }
-        paramObject = com.tencent.xweb.a.baD(locala1.MsE);
+        paramObject = com.tencent.xweb.a.bcg(locala1.MPI);
         if ((paramObject != null) && (paramObject.length >= 2)) {
           break;
         }
@@ -53,26 +53,26 @@ public final class a
         AppMethodBeat.o(154150);
         break;
         if (!str1.equals("revertToVersion")) {
-          break label391;
+          break label399;
         }
         i = 0;
-        break label391;
+        break label399;
         if (!str1.equals("fix_dex")) {
-          break label391;
+          break label399;
         }
         i = 1;
-        break label391;
+        break label399;
         if (!str1.equals("cStrClearInstallEmbedVersionRecord")) {
-          break label391;
+          break label399;
         }
         i = 2;
-        break label391;
+        break label399;
         if (!str1.equals("clearSchedule")) {
-          break label391;
+          break label399;
         }
         i = 3;
-        break label391;
-        locala.MoY = true;
+        break label399;
+        locala.MLU = true;
         try
         {
           i = Integer.parseInt(paramObject);
@@ -86,26 +86,27 @@ public final class a
         }
       }
       break;
-      locala.MoY = true;
-      if (p.gdb())
+      locala.MLU = true;
+      if (p.ghD())
       {
         continue;
-        locala.MoY = true;
+        locala.MLU = true;
         XWalkUpdater.clearLastTryEmebedVersion();
         continue;
         Log.i("ConfigCmdProc", "got command : ".concat(String.valueOf(localException)));
-        String str2 = com.tencent.xweb.a.mV("clearSchedule", "tools");
+        String str2 = com.tencent.xweb.a.nb("clearSchedule", "tools");
         if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(str2))) {
           Log.i("ConfigCmdProc", "this command value changed from " + str2 + " to " + paramObject);
         }
         for (i = j; i != 0; i = 0)
         {
-          c.gdu().gdv();
+          Scheduler.Af(false).ghW();
+          Scheduler.Af(true).ghW();
           break;
         }
-        label388:
+        label396:
         break label113;
-        label391:
+        label399:
         switch (i)
         {
         }

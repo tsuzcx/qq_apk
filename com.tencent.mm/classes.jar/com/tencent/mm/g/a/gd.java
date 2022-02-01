@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gd
   extends b
 {
-  public a drM;
-  public b drN;
+  public a dsQ;
+  public b dsR;
   
   public gd()
   {
@@ -16,22 +16,22 @@ public final class gd
   
   private gd(byte paramByte)
   {
-    AppMethodBeat.i(116025);
-    this.drM = new a();
-    this.drN = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116024);
+    this.dsQ = new a();
+    this.dsR = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116025);
+    AppMethodBeat.o(116024);
   }
   
   public static final class a
   {
-    public long msgId;
+    public String fileName;
   }
   
   public static final class b
   {
-    public String fileName;
+    public long msgId = 0L;
   }
 }
 

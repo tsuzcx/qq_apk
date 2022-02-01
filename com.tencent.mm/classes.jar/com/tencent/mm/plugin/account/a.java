@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.account;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.d;
+import com.tencent.mm.ak.e.d;
 import com.tencent.mm.g.a.bf;
-import com.tencent.mm.g.a.iv;
-import com.tencent.mm.g.a.jh;
-import com.tencent.mm.g.a.tk;
+import com.tencent.mm.g.a.iw;
+import com.tencent.mm.g.a.ji;
+import com.tencent.mm.g.a.tl;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.friend.a.ap;
 import com.tencent.mm.plugin.account.friend.a.ar;
 import com.tencent.mm.plugin.account.friend.a.at;
@@ -21,32 +21,32 @@ import com.tencent.mm.plugin.account.friend.a.o;
 import com.tencent.mm.plugin.account.friend.a.q;
 import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.protocal.protobuf.buj;
+import com.tencent.mm.protocal.protobuf.bvd;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class a
-  implements ax
+  implements az
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.sdk.b.c iYA;
-  private com.tencent.mm.sdk.b.c iYB;
-  private b iYl;
-  private h iYm;
-  private k iYn;
-  private ar iYo;
-  private at iYp;
-  private q iYq;
-  private o iYr;
-  private ap iYs;
-  private d iYt;
-  private LinkedList<buj> iYu;
-  private com.tencent.mm.plugin.account.friend.a.c iYv;
-  private com.tencent.mm.plugin.account.friend.a.e iYw;
-  private f iYx;
-  private com.tencent.mm.sdk.b.c iYy;
-  private com.tencent.mm.sdk.b.c iYz;
+  private b jbe;
+  private h jbf;
+  private k jbg;
+  private ar jbh;
+  private at jbi;
+  private q jbj;
+  private o jbk;
+  private ap jbl;
+  private d jbm;
+  private LinkedList<bvd> jbn;
+  private com.tencent.mm.plugin.account.friend.a.c jbo;
+  private com.tencent.mm.plugin.account.friend.a.e jbp;
+  private f jbq;
+  private com.tencent.mm.sdk.b.c jbr;
+  private com.tencent.mm.sdk.b.c jbs;
+  private com.tencent.mm.sdk.b.c jbt;
+  private com.tencent.mm.sdk.b.c jbu;
   
   static
   {
@@ -88,7 +88,13 @@ public class a
         return at.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("INVITEFRIENDOPEN_TABLE".hashCode()), new a.13());
+    baseDBFactories.put(Integer.valueOf("INVITEFRIENDOPEN_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return q.SQL_CREATE;
+      }
+    });
     baseDBFactories.put(Integer.valueOf("GOOGLE_FRIEND_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -96,31 +102,37 @@ public class a
         return o.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("OLD_ACCOUNT_FRIEND_TABLE".hashCode()), new a.3());
+    baseDBFactories.put(Integer.valueOf("OLD_ACCOUNT_FRIEND_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return ap.SQL_CREATE;
+      }
+    });
     AppMethodBeat.o(127798);
   }
   
   public a()
   {
     AppMethodBeat.i(127784);
-    this.iYt = new d();
-    this.iYu = null;
-    this.iYv = new com.tencent.mm.plugin.account.friend.a.c();
-    this.iYw = new com.tencent.mm.plugin.account.friend.a.e();
-    this.iYx = new f();
-    this.iYy = new com.tencent.mm.sdk.b.c() {};
-    this.iYz = new com.tencent.mm.sdk.b.c() {};
-    this.iYA = new com.tencent.mm.sdk.b.c() {};
-    this.iYB = new com.tencent.mm.sdk.b.c() {};
+    this.jbm = new d();
+    this.jbn = null;
+    this.jbo = new com.tencent.mm.plugin.account.friend.a.c();
+    this.jbp = new com.tencent.mm.plugin.account.friend.a.e();
+    this.jbq = new f();
+    this.jbr = new com.tencent.mm.sdk.b.c() {};
+    this.jbs = new com.tencent.mm.sdk.b.c() {};
+    this.jbt = new com.tencent.mm.sdk.b.c() {};
+    this.jbu = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(127784);
   }
   
-  private static a aRP()
+  private static a aSo()
   {
     try
     {
       AppMethodBeat.i(127785);
-      a locala = (a)t.ap(a.class);
+      a locala = (a)u.ap(a.class);
       AppMethodBeat.o(127785);
       return locala;
     }
@@ -134,19 +146,19 @@ public class a
   public static void clearFriendData()
   {
     AppMethodBeat.i(127794);
-    g.ajA().aiF();
-    aRP().iYu = null;
+    g.ajP().aiU();
+    aSo().jbn = null;
     AppMethodBeat.o(127794);
   }
   
   public static b getAddrUploadStg()
   {
     AppMethodBeat.i(127786);
-    g.ajA().aiF();
-    if (aRP().iYl == null) {
-      aRP().iYl = new b(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbe == null) {
+      aSo().jbe = new b(g.ajR().gDX);
     }
-    b localb = aRP().iYl;
+    b localb = aSo().jbe;
     AppMethodBeat.o(127786);
     return localb;
   }
@@ -154,11 +166,11 @@ public class a
   public static h getFacebookFrdStg()
   {
     AppMethodBeat.i(127787);
-    g.ajA().aiF();
-    if (aRP().iYm == null) {
-      aRP().iYm = new h(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbf == null) {
+      aSo().jbf = new h(g.ajR().gDX);
     }
-    h localh = aRP().iYm;
+    h localh = aSo().jbf;
     AppMethodBeat.o(127787);
     return localh;
   }
@@ -166,20 +178,20 @@ public class a
   public static k getFrdExtStg()
   {
     AppMethodBeat.i(127788);
-    g.ajA().aiF();
-    if (aRP().iYn == null) {
-      aRP().iYn = new k(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbg == null) {
+      aSo().jbg = new k(g.ajR().gDX);
     }
-    k localk = aRP().iYn;
+    k localk = aSo().jbg;
     AppMethodBeat.o(127788);
     return localk;
   }
   
-  public static LinkedList<buj> getFriendData()
+  public static LinkedList<bvd> getFriendData()
   {
     AppMethodBeat.i(127793);
-    g.ajA().aiF();
-    LinkedList localLinkedList = aRP().iYu;
+    g.ajP().aiU();
+    LinkedList localLinkedList = aSo().jbn;
     AppMethodBeat.o(127793);
     return localLinkedList;
   }
@@ -187,11 +199,11 @@ public class a
   public static o getGoogleFriendStorage()
   {
     AppMethodBeat.i(127797);
-    g.ajA().aiF();
-    if (aRP().iYr == null) {
-      aRP().iYr = new o(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbk == null) {
+      aSo().jbk = new o(g.ajR().gDX);
     }
-    o localo = aRP().iYr;
+    o localo = aSo().jbk;
     AppMethodBeat.o(127797);
     return localo;
   }
@@ -199,11 +211,11 @@ public class a
   public static q getInviteFriendOpenStg()
   {
     AppMethodBeat.i(127790);
-    g.ajA().aiF();
-    if (aRP().iYq == null) {
-      aRP().iYq = new q(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbj == null) {
+      aSo().jbj = new q(g.ajR().gDX);
     }
-    q localq = aRP().iYq;
+    q localq = aSo().jbj;
     AppMethodBeat.o(127790);
     return localq;
   }
@@ -211,11 +223,11 @@ public class a
   public static ap getOldAccountFriendStorage()
   {
     AppMethodBeat.i(184137);
-    g.ajA().aiF();
-    if (aRP().iYs == null) {
-      aRP().iYs = new ap(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbl == null) {
+      aSo().jbl = new ap(g.ajR().gDX);
     }
-    ap localap = aRP().iYs;
+    ap localap = aSo().jbl;
     AppMethodBeat.o(184137);
     return localap;
   }
@@ -223,11 +235,11 @@ public class a
   public static ar getQQGroupStg()
   {
     AppMethodBeat.i(127789);
-    g.ajA().aiF();
-    if (aRP().iYo == null) {
-      aRP().iYo = new ar(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbh == null) {
+      aSo().jbh = new ar(g.ajR().gDX);
     }
-    ar localar = aRP().iYo;
+    ar localar = aSo().jbh;
     AppMethodBeat.o(127789);
     return localar;
   }
@@ -235,20 +247,20 @@ public class a
   public static at getQQListStg()
   {
     AppMethodBeat.i(127791);
-    g.ajA().aiF();
-    if (aRP().iYp == null) {
-      aRP().iYp = new at(g.ajC().gBq);
+    g.ajP().aiU();
+    if (aSo().jbi == null) {
+      aSo().jbi = new at(g.ajR().gDX);
     }
-    at localat = aRP().iYp;
+    at localat = aSo().jbi;
     AppMethodBeat.o(127791);
     return localat;
   }
   
-  public static void setFriendData(LinkedList<buj> paramLinkedList)
+  public static void setFriendData(LinkedList<bvd> paramLinkedList)
   {
     AppMethodBeat.i(127792);
-    g.ajA().aiF();
-    aRP().iYu = paramLinkedList;
+    g.ajP().aiU();
+    aSo().jbn = paramLinkedList;
     AppMethodBeat.o(127792);
   }
   
@@ -262,15 +274,15 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(127796);
-    e.d.a(Integer.valueOf(42), this.iYt);
-    e.d.a(Integer.valueOf(66), this.iYt);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYB);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYA);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYv);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYw);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYx);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYy);
-    com.tencent.mm.sdk.b.a.IbL.c(this.iYz);
+    e.d.a(Integer.valueOf(42), this.jbm);
+    e.d.a(Integer.valueOf(66), this.jbm);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbu);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbt);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbo);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbp);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbq);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbr);
+    com.tencent.mm.sdk.b.a.IvT.c(this.jbs);
     ((n)g.ad(n.class)).getFTSTaskDaemon().a(-86016, new a.5(this));
     AppMethodBeat.o(127796);
   }
@@ -278,16 +290,16 @@ public class a
   public void onAccountRelease()
   {
     AppMethodBeat.i(127795);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYB);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYA);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYv);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYw);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYx);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYy);
-    com.tencent.mm.sdk.b.a.IbL.d(this.iYz);
-    e.d.b(Integer.valueOf(42), this.iYt);
-    e.d.b(Integer.valueOf(66), this.iYt);
-    this.iYu = null;
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbu);
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbt);
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbo);
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbp);
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbq);
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbr);
+    com.tencent.mm.sdk.b.a.IvT.d(this.jbs);
+    e.d.b(Integer.valueOf(42), this.jbm);
+    e.d.b(Integer.valueOf(66), this.jbm);
+    this.jbn = null;
     AppMethodBeat.o(127795);
   }
   

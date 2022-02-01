@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.story.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fy;
+import com.tencent.mm.g.b.a.ga;
 import com.tencent.mm.plugin.story.api.n.a;
 import com.tencent.mm.plugin.story.f.d.a;
 import com.tencent.mm.plugin.story.f.j.b;
@@ -13,22 +13,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/presenter/GalleryPresenterFactory;", "", "()V", "QUERY_CONDITION_ALL_UNREAD", "", "getQUERY_CONDITION_ALL_UNREAD", "()I", "QUERY_CONDITION_BIG_MOUTH", "getQUERY_CONDITION_BIG_MOUTH", "QUERY_CONDITION_DEFAULT", "getQUERY_CONDITION_DEFAULT", "QUERY_CONDITION_WITH_FILTER", "getQUERY_CONDITION_WITH_FILTER", "getPresenter", "Lcom/tencent/mm/plugin/story/presenter/IGalleryPresenter;", "dataSeed", "groupCallback", "Lcom/tencent/mm/plugin/story/presenter/GalleryGroupUpdateCallback;", "galleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "chatRoom", "", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/presenter/GalleryPresenterFactory;", "", "()V", "QUERY_CONDITION_ALL_UNREAD", "", "getQUERY_CONDITION_ALL_UNREAD", "()I", "QUERY_CONDITION_BIG_MOUTH", "getQUERY_CONDITION_BIG_MOUTH", "QUERY_CONDITION_DEFAULT", "getQUERY_CONDITION_DEFAULT", "QUERY_CONDITION_WITH_FILTER", "getQUERY_CONDITION_WITH_FILTER", "getPresenter", "Lcom/tencent/mm/plugin/story/presenter/IGalleryPresenter;", "dataSeed", "groupCallback", "Lcom/tencent/mm/plugin/story/presenter/GalleryGroupUpdateCallback;", "galleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "chatRoom", "", "plugin-story_release"})
 public final class d
 {
-  private static final int APk = 0;
-  private static final int APl = 1;
-  private static final int APm = 2;
-  private static final int APn = 4;
-  public static final d APo;
+  private static final int BgL = 0;
+  private static final int BgM = 1;
+  private static final int BgN = 2;
+  private static final int BgO = 4;
+  public static final d BgP;
   
   static
   {
     AppMethodBeat.i(119194);
-    APo = new d();
-    APl = 1;
-    APm = 2;
-    APn = 4;
+    BgP = new d();
+    BgM = 1;
+    BgN = 2;
+    BgO = 4;
     AppMethodBeat.o(119194);
   }
   
@@ -44,25 +44,25 @@ public final class d
       parama = (com.tencent.mm.plugin.story.api.p)paramObject;
       d.g.b.p.h(parama, "dataSeed");
       if ((parama instanceof a)) {
-        parama = ((a)parama).AMp;
+        parama = ((a)parama).BdR;
       }
       int i;
       for (;;)
       {
-        i = ((com.tencent.mm.plugin.story.api.p)paramObject).AIh;
-        localObject = com.tencent.mm.plugin.story.h.h.ASt;
-        com.tencent.mm.plugin.story.h.h.ejZ().lj(paramString.size());
+        i = ((com.tencent.mm.plugin.story.api.p)paramObject).AZK;
+        localObject = com.tencent.mm.plugin.story.h.h.BjR;
+        com.tencent.mm.plugin.story.h.h.enI().lu(paramString.size());
         if (!(paramObject instanceof com.tencent.mm.plugin.story.f.d.c)) {
           break label192;
         }
-        if (!((com.tencent.mm.plugin.story.f.d.c)paramObject).yKd) {
+        if (!((com.tencent.mm.plugin.story.f.d.c)paramObject).zan) {
           break;
         }
         paramObject = (f)new i(((com.tencent.mm.plugin.story.f.d.c)paramObject).username, paramString, paramc, parama, i);
         AppMethodBeat.o(119193);
         return paramObject;
         if ((parama instanceof com.tencent.mm.plugin.story.f.d.c)) {
-          parama = ((com.tencent.mm.plugin.story.f.d.c)parama).AMp;
+          parama = ((com.tencent.mm.plugin.story.f.d.c)parama).BdR;
         } else {
           parama = (Map)new HashMap();
         }
@@ -81,31 +81,31 @@ public final class d
       AppMethodBeat.o(119193);
       return paramObject;
     }
-    if (d.a.j.listOf(new n.a[] { n.a.AHX, n.a.AHW }).contains(parama))
+    if (d.a.j.listOf(new n.a[] { n.a.AZA, n.a.AZz }).contains(parama))
     {
       if ((paramObject instanceof String))
       {
-        parama = com.tencent.mm.plugin.story.h.h.ASt;
-        com.tencent.mm.plugin.story.h.h.ejZ().lj(1L);
+        parama = com.tencent.mm.plugin.story.h.h.BjR;
+        com.tencent.mm.plugin.story.h.h.enI().lu(1L);
         paramObject = (f)new h((String)paramObject, paramc, (byte)0);
         AppMethodBeat.o(119193);
         return paramObject;
       }
     }
-    else if ((parama == n.a.AHZ) || (parama == n.a.AHY))
+    else if ((parama == n.a.AZC) || (parama == n.a.AZB))
     {
       if ((paramObject instanceof String))
       {
         parama = new ArrayList();
         parama.add(paramObject);
-        paramObject = com.tencent.mm.plugin.story.h.h.ASt;
-        com.tencent.mm.plugin.story.h.h.ejZ().lj(parama.size());
+        paramObject = com.tencent.mm.plugin.story.h.h.BjR;
+        com.tencent.mm.plugin.story.h.h.enI().lu(parama.size());
         paramObject = (f)new g((List)parama, paramString, paramc);
         AppMethodBeat.o(119193);
         return paramObject;
       }
     }
-    else if (parama == n.a.AIa)
+    else if (parama == n.a.AZD)
     {
       parama = new ArrayList();
       if ((paramObject instanceof Collection))
@@ -118,14 +118,14 @@ public final class d
             parama.add(localObject);
           }
         }
-        paramObject = com.tencent.mm.plugin.story.h.h.ASt;
-        com.tencent.mm.plugin.story.h.h.ejZ().lj(parama.size());
+        paramObject = com.tencent.mm.plugin.story.h.h.BjR;
+        com.tencent.mm.plugin.story.h.h.enI().lu(parama.size());
         paramObject = (f)new g((List)parama, paramString, paramc);
         AppMethodBeat.o(119193);
         return paramObject;
       }
     }
-    else if (parama == n.a.AIb)
+    else if (parama == n.a.AZE)
     {
       parama = new ArrayList();
       if ((paramObject instanceof Collection))
@@ -138,8 +138,8 @@ public final class d
             parama.add(paramString);
           }
         }
-        paramObject = com.tencent.mm.plugin.story.f.j.AKb;
-        paramObject = (f)new i(j.b.dTJ(), (List)parama, paramc);
+        paramObject = com.tencent.mm.plugin.story.f.j.BbE;
+        paramObject = (f)new i(j.b.dXj(), (List)parama, paramc);
         AppMethodBeat.o(119193);
         return paramObject;
       }
@@ -149,29 +149,29 @@ public final class d
     throw paramObject;
   }
   
-  public static int ejs()
+  public static int ena()
   {
-    return APk;
+    return BgL;
   }
   
-  public static int ejt()
+  public static int enb()
   {
-    return APl;
+    return BgM;
   }
   
-  public static int eju()
+  public static int enc()
   {
-    return APm;
+    return BgN;
   }
   
-  public static int ejv()
+  public static int ene()
   {
-    return APn;
+    return BgO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.g.d
  * JD-Core Version:    0.7.0.1
  */

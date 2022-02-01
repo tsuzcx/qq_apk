@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bti;
+import com.tencent.mm.protocal.protobuf.buc;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class j
   extends com.tencent.mm.sdk.e.j<k>
 {
-  public static final String lKt;
+  public static final String lOU;
   
   static
   {
     AppMethodBeat.i(76409);
-    lKt = com.tencent.mm.sdk.e.j.getCreateSQLs(k.jGU, "LaunchWxaWidgetRespData");
+    lOU = com.tencent.mm.sdk.e.j.getCreateSQLs(k.jJU, "LaunchWxaWidgetRespData");
     AppMethodBeat.o(76409);
   }
   
   public j(e parame)
   {
-    super(parame, k.jGU, "LaunchWxaWidgetRespData", k.INDEX_CREATE);
+    super(parame, k.jJU, "LaunchWxaWidgetRespData", k.INDEX_CREATE);
   }
   
   private boolean a(k paramk, boolean paramBoolean)
@@ -36,7 +36,7 @@ public final class j
   {
     AppMethodBeat.i(76404);
     int i;
-    if (!bt.V(paramVarArgs)) {
+    if (!bu.V(paramVarArgs)) {
       i = 0;
     }
     for (;;)
@@ -62,7 +62,7 @@ public final class j
   public final k T(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(76401);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(76401);
       return null;
@@ -81,10 +81,10 @@ public final class j
     return null;
   }
   
-  public final k a(String paramString, int paramInt1, int paramInt2, bti parambti)
+  public final k a(String paramString, int paramInt1, int paramInt2, buc parambuc)
   {
     AppMethodBeat.i(76400);
-    if ((bt.isNullOrNil(paramString)) || (parambti == null))
+    if ((bu.isNullOrNil(paramString)) || (parambuc == null))
     {
       AppMethodBeat.o(76400);
       return null;
@@ -97,28 +97,28 @@ public final class j
     if (!a(localk, new String[] { "appId", "pkgType", "widgetType" }))
     {
       paramInt2 = 1;
-      if (com.tencent.mm.plugin.appbrand.z.j.a(localk.field_launchAction, parambti.GNQ)) {
+      if (com.tencent.mm.plugin.appbrand.y.j.a(localk.field_launchAction, parambuc.Hhq)) {
         break label291;
       }
-      localk.field_launchAction = parambti.GNQ;
+      localk.field_launchAction = parambuc.Hhq;
     }
     label261:
     label291:
     for (paramInt1 = 1;; paramInt1 = 0)
     {
-      if (!com.tencent.mm.plugin.appbrand.z.j.a(localk.field_jsApiInfo, parambti.GNK))
+      if (!com.tencent.mm.plugin.appbrand.y.j.a(localk.field_jsApiInfo, parambuc.Hhk))
       {
-        localk.field_jsApiInfo = parambti.GNK;
+        localk.field_jsApiInfo = parambuc.Hhk;
         paramInt1 = 1;
       }
-      if (!com.tencent.mm.plugin.appbrand.z.j.a(localk.field_versionInfo, parambti.GNR))
+      if (!com.tencent.mm.plugin.appbrand.y.j.a(localk.field_versionInfo, parambuc.Hhr))
       {
-        localk.field_versionInfo = parambti.GNR;
+        localk.field_versionInfo = parambuc.Hhr;
         paramInt1 = 1;
       }
-      if (!com.tencent.mm.plugin.appbrand.z.j.a(localk.field_widgetSetting, parambti.GNS))
+      if (!com.tencent.mm.plugin.appbrand.y.j.a(localk.field_widgetSetting, parambuc.Hhs))
       {
-        localk.field_widgetSetting = parambti.GNS;
+        localk.field_widgetSetting = parambuc.Hhs;
         paramInt1 = 1;
       }
       if (paramInt1 != 0)
@@ -146,7 +146,7 @@ public final class j
   {
     AppMethodBeat.i(76402);
     int i;
-    if (!bt.V(paramVarArgs)) {
+    if (!bu.V(paramVarArgs)) {
       i = 0;
     }
     for (;;)

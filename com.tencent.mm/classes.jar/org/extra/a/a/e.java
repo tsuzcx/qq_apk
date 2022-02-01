@@ -7,52 +7,52 @@ import java.nio.ByteOrder;
 public final class e
   extends c.b
 {
-  private final f NVR;
+  private final f OsW;
   
   public e(boolean paramBoolean, f paramf)
   {
-    AppMethodBeat.i(220077);
-    this.NVG = paramBoolean;
-    this.NVR = paramf;
+    AppMethodBeat.i(216831);
+    this.OsL = paramBoolean;
+    this.OsW = paramf;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
     if (paramBoolean) {}
     for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
     {
       localByteBuffer.order(localByteOrder);
       this.type = paramf.f(localByteBuffer, 16L);
-      this.NVH = paramf.d(localByteBuffer, 32L);
-      this.NVI = paramf.d(localByteBuffer, 40L);
-      this.NVJ = paramf.f(localByteBuffer, 54L);
-      this.NVK = paramf.f(localByteBuffer, 56L);
-      this.NVL = paramf.f(localByteBuffer, 58L);
-      this.NVM = paramf.f(localByteBuffer, 60L);
-      this.NVN = paramf.f(localByteBuffer, 62L);
-      AppMethodBeat.o(220077);
+      this.OsM = paramf.d(localByteBuffer, 32L);
+      this.OsN = paramf.d(localByteBuffer, 40L);
+      this.OsO = paramf.f(localByteBuffer, 54L);
+      this.OsP = paramf.f(localByteBuffer, 56L);
+      this.OsQ = paramf.f(localByteBuffer, 58L);
+      this.OsR = paramf.f(localByteBuffer, 60L);
+      this.OsS = paramf.f(localByteBuffer, 62L);
+      AppMethodBeat.o(216831);
       return;
     }
   }
   
-  public final c.c FN(long paramLong)
+  public final c.c Gp(long paramLong)
   {
-    AppMethodBeat.i(220079);
-    h localh = new h(this.NVR, this, paramLong);
-    AppMethodBeat.o(220079);
+    AppMethodBeat.i(216833);
+    h localh = new h(this.OsW, this, paramLong);
+    AppMethodBeat.o(216833);
     return localh;
   }
   
-  public final c.a as(long paramLong, int paramInt)
+  public final c.a at(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(220080);
-    b localb = new b(this.NVR, this, paramLong, paramInt);
-    AppMethodBeat.o(220080);
+    AppMethodBeat.i(216834);
+    b localb = new b(this.OsW, this, paramLong, paramInt);
+    AppMethodBeat.o(216834);
     return localb;
   }
   
-  public final c.d gym()
+  public final c.d gCO()
   {
-    AppMethodBeat.i(220078);
-    j localj = new j(this.NVR, this);
-    AppMethodBeat.o(220078);
+    AppMethodBeat.i(216832);
+    j localj = new j(this.OsW, this);
+    AppMethodBeat.o(216832);
     return localj;
   }
 }

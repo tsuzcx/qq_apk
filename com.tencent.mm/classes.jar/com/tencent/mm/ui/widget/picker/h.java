@@ -27,31 +27,31 @@ public final class h
   extends a
   implements View.OnClickListener
 {
-  j Lbi;
-  boolean Lbj;
+  j LxJ;
+  boolean LxK;
   private String TAG;
   private Context context;
   
   public h(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(192712);
+    AppMethodBeat.i(200485);
     this.TAG = "TimePickerView";
-    this.Lbj = false;
-    this.Lbi = new j(paramContext);
+    this.LxK = false;
+    this.LxJ = new j(paramContext);
     this.context = paramContext;
-    AppMethodBeat.o(192712);
+    AppMethodBeat.o(200485);
   }
   
   public final void a(com.tencent.mm.ui.widget.picker.c.a parama)
   {
-    AppMethodBeat.i(192713);
-    this.Lax = parama;
+    AppMethodBeat.i(200486);
+    this.LwV = parama;
     Object localObject5 = parama.context;
-    aQa();
-    aPX();
-    aPY();
-    LayoutInflater.from((Context)localObject5).inflate(2131496156, this.iLP);
+    aQz();
+    aQw();
+    aQx();
+    LayoutInflater.from((Context)localObject5).inflate(2131496156, this.iOI);
     Object localObject1 = (TextView)findViewById(2131306103);
     Object localObject2 = (RelativeLayout)findViewById(2131304274);
     Object localObject3 = (Button)findViewById(2131297582);
@@ -71,72 +71,72 @@ public final class h
     int i1;
     int n;
     int m;
-    if (TextUtils.isEmpty(this.Lax.iLB))
+    if (TextUtils.isEmpty(this.LwV.iOu))
     {
       parama = ((Context)localObject5).getResources().getString(2131761930);
       ((Button)localObject3).setText(parama);
-      if (!TextUtils.isEmpty(this.Lax.iLC)) {
+      if (!TextUtils.isEmpty(this.LwV.iOv)) {
         break label1327;
       }
       parama = ((Context)localObject5).getResources().getString(2131761924);
       ((Button)localObject4).setText(parama);
-      if (!TextUtils.isEmpty(this.Lax.iLD)) {
+      if (!TextUtils.isEmpty(this.LwV.iOw)) {
         break label1338;
       }
       parama = "";
       ((TextView)localObject1).setText(parama);
-      ((Button)localObject3).setTextColor(this.Lax.iLE);
-      ((Button)localObject4).setTextColor(this.Lax.iLF);
-      ((TextView)localObject1).setTextColor(this.Lax.iLG);
-      ((RelativeLayout)localObject2).setBackgroundColor(this.Lax.iLI);
-      ((Button)localObject3).setTextSize(this.Lax.iLJ);
-      ((Button)localObject4).setTextSize(this.Lax.iLJ);
-      ((TextView)localObject1).setTextSize(this.Lax.iLK);
-      parama = this.Lbi;
-      localObject1 = this.Lax.iLp;
-      i = this.Lax.iLA;
+      ((Button)localObject3).setTextColor(this.LwV.iOx);
+      ((Button)localObject4).setTextColor(this.LwV.iOy);
+      ((TextView)localObject1).setTextColor(this.LwV.iOz);
+      ((RelativeLayout)localObject2).setBackgroundColor(this.LwV.iOB);
+      ((Button)localObject3).setTextSize(this.LwV.iOC);
+      ((Button)localObject4).setTextSize(this.LwV.iOC);
+      ((TextView)localObject1).setTextSize(this.LwV.iOD);
+      parama = this.LxJ;
+      localObject1 = this.LwV.iOi;
+      i = this.LwV.iOt;
       if (parama.view == null) {
         parama.view = null;
       }
-      parama.iLp = ((boolean[])localObject1);
+      parama.iOi = ((boolean[])localObject1);
       parama.gravity = i;
-      if (this.Lax.Lck != null) {
-        this.Lbi.Lbx = new com.tencent.mm.ui.widget.picker.d.a()
+      if (this.LwV.LyL != null) {
+        this.LxJ.LxY = new com.tencent.mm.ui.widget.picker.d.a()
         {
-          public final void aPW()
+          public final void aQv()
           {
-            AppMethodBeat.i(192711);
+            AppMethodBeat.i(200484);
             try
             {
-              j.iMi.parse(h.a(h.this).aQi());
-              h.this.Lax.Lck.fMK();
-              AppMethodBeat.o(192711);
+              j.iPb.parse(h.a(h.this).aQH());
+              h.this.LwV.LyL.fRe();
+              AppMethodBeat.o(200484);
               return;
             }
             catch (ParseException localParseException)
             {
               ap.printErrStackTrace(h.b(h.this), localParseException, "", new Object[0]);
-              AppMethodBeat.o(192711);
+              AppMethodBeat.o(200484);
             }
           }
         };
       }
-      if ((this.Lax.startYear != 0) && (this.Lax.endYear != 0) && (this.Lax.startYear <= this.Lax.endYear))
+      if ((this.LwV.startYear != 0) && (this.LwV.endYear != 0) && (this.LwV.startYear <= this.LwV.endYear))
       {
-        this.Lbi.startYear = this.Lax.startYear;
-        this.Lbi.endYear = this.Lax.endYear;
+        this.LxJ.startYear = this.LwV.startYear;
+        this.LxJ.endYear = this.LwV.endYear;
       }
-      if ((this.Lax.iLr == null) || (this.Lax.iLs == null)) {
+      if ((this.LwV.iOk == null) || (this.LwV.iOl == null)) {
         break label1349;
       }
-      if (this.Lax.iLr.getTimeInMillis() > this.Lax.iLs.getTimeInMillis())
+      if (this.LwV.iOk.getTimeInMillis() > this.LwV.iOl.getTimeInMillis())
       {
         ap.e(this.TAG, "initWheelTime: startDate can't be later than endDate, set startDate to null", new Object[0]);
-        this.Lax.iLr = null;
+        this.LwV.iOk = null;
       }
-      parama = this.Lbi;
-      localObject1 = this.Lax.iLr;
-      localObject2 = this.Lax.iLs;
+      parama = this.LxJ;
+      localObject1 = this.LwV.iOk;
+      localObject2 = this.LwV.iOl;
       if ((localObject1 != null) || (localObject2 == null)) {
         break label1524;
       }
@@ -147,19 +147,19 @@ public final class h
         break label1453;
       }
       parama.endYear = i;
-      parama.iMq = j;
-      parama.iMs = k;
-      if (!this.Lbj)
+      parama.iPj = j;
+      parama.iPl = k;
+      if (!this.LxK)
       {
-        if ((this.Lax.iLr == null) || (this.Lax.iLs == null)) {
+        if ((this.LwV.iOk == null) || (this.LwV.iOl == null)) {
           break label1818;
         }
-        if ((this.Lax.iLq != null) && (this.Lax.iLq.getTimeInMillis() >= this.Lax.iLr.getTimeInMillis())) {
+        if ((this.LwV.iOj != null) && (this.LwV.iOj.getTimeInMillis() >= this.LwV.iOk.getTimeInMillis())) {
           break label1777;
         }
-        this.Lax.iLq = this.Lax.iLr;
+        this.LwV.iOj = this.LwV.iOk;
       }
-      if (this.Lax.iLq != null) {
+      if (this.LwV.iOj != null) {
         break label1872;
       }
       parama = Calendar.getInstance();
@@ -171,23 +171,23 @@ public final class h
       k = parama.get(12);
       j = parama.get(13);
       label702:
-      parama = this.Lbi;
-      parama.iMx = i;
-      parama.Lbo = ((WheelView)parama.view.findViewById(2131307138));
-      parama.Lbp = ((WheelView)parama.view.findViewById(2131302450));
-      parama.Lbq = ((WheelView)parama.view.findViewById(2131298935));
-      parama.Lbu = new com.tencent.mm.ui.widget.picker.a.f(parama.startYear, parama.endYear, parama.ctx);
-      parama.Lbo.setAdapter(parama.Lbu);
-      parama.Lbo.setCurrentItem(i - parama.startYear);
-      parama.Lbo.setGravity(parama.gravity);
+      parama = this.LxJ;
+      parama.iPq = i;
+      parama.LxP = ((WheelView)parama.view.findViewById(2131307138));
+      parama.LxQ = ((WheelView)parama.view.findViewById(2131302450));
+      parama.LxR = ((WheelView)parama.view.findViewById(2131298935));
+      parama.LxV = new com.tencent.mm.ui.widget.picker.a.f(parama.startYear, parama.endYear, parama.ctx);
+      parama.LxP.setAdapter(parama.LxV);
+      parama.LxP.setCurrentItem(i - parama.startYear);
+      parama.LxP.setGravity(parama.gravity);
       if (parama.startYear != parama.endYear) {
         break label1954;
       }
-      parama.Lbp.setAdapter(new d(parama.iMp, parama.iMq, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
-      parama.Lbp.setCurrentItem(i1 + 1 - parama.iMp);
+      parama.LxQ.setAdapter(new d(parama.iPi, parama.iPj, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
+      parama.LxQ.setCurrentItem(i1 + 1 - parama.iPi);
       label881:
-      parama.Lbp.setGravity(parama.gravity);
-      if (!parama.Lbv) {
+      parama.LxQ.setGravity(parama.gravity);
+      if (!parama.LxW) {
         break label3660;
       }
     }
@@ -198,88 +198,88 @@ public final class h
     label3660:
     for (int i2 = i - 1;; i2 = i)
     {
-      if ((parama.startYear == parama.endYear) && (parama.iMp == parama.iMq)) {
-        if (parama.iMB.contains(String.valueOf(i1 + 1)))
+      if ((parama.startYear == parama.endYear) && (parama.iPi == parama.iPj)) {
+        if (parama.iPu.contains(String.valueOf(i1 + 1)))
         {
-          if (parama.iMs > 31) {
-            parama.iMs = 31;
+          if (parama.iPl > 31) {
+            parama.iPl = 31;
           }
-          parama.Lbq.setAdapter(new d(parama.iMr, parama.iMs));
+          parama.LxR.setAdapter(new d(parama.iPk, parama.iPl));
           label982:
-          parama.Lbq.setCurrentItem(n - parama.iMr);
-          parama.Lbq.setGravity(parama.gravity);
-          parama.Lbr = ((WheelView)parama.view.findViewById(2131300765));
-          parama.Lbr.setAdapter(new d(parama.iMt, parama.iMv));
-          parama.Lbr.setCurrentItem(m - parama.iMt);
-          parama.Lbr.setGravity(parama.gravity);
-          parama.Lbs = ((WheelView)parama.view.findViewById(2131302275));
-          if ((m != parama.iMt) || (parama.iMt != parama.iMv)) {
+          parama.LxR.setCurrentItem(n - parama.iPk);
+          parama.LxR.setGravity(parama.gravity);
+          parama.LxS = ((WheelView)parama.view.findViewById(2131300765));
+          parama.LxS.setAdapter(new d(parama.iPm, parama.iPo));
+          parama.LxS.setCurrentItem(m - parama.iPm);
+          parama.LxS.setGravity(parama.gravity);
+          parama.LxT = ((WheelView)parama.view.findViewById(2131302275));
+          if ((m != parama.iPm) || (parama.iPm != parama.iPo)) {
             break label2949;
           }
-          parama.Lbs.setAdapter(new d(parama.iMu, parama.iMw));
-          if (k >= parama.iMu) {
+          parama.LxT.setAdapter(new d(parama.iPn, parama.iPp));
+          if (k >= parama.iPn) {
             break label2914;
           }
-          parama.Lbs.setCurrentItem(0);
+          parama.LxT.setCurrentItem(0);
         }
       }
       for (;;)
       {
-        parama.Lbs.setGravity(parama.gravity);
-        parama.Lbt = ((WheelView)parama.view.findViewById(2131304457));
-        parama.Lbt.setAdapter(new d(0, 59));
-        parama.Lbt.setCurrentItem(j);
-        parama.Lbt.setGravity(parama.gravity);
-        parama.Lbr.setOnItemSelectedListener(new j.3(parama));
-        parama.Lbo.setOnItemSelectedListener(new j.2(parama));
-        parama.Lbp.setOnItemSelectedListener(new j.1(parama));
-        parama.a(parama.Lbq);
-        parama.a(parama.Lbr);
-        parama.a(parama.Lbs);
-        parama.a(parama.Lbt);
-        if (parama.iLp.length == 6) {
+        parama.LxT.setGravity(parama.gravity);
+        parama.LxU = ((WheelView)parama.view.findViewById(2131304457));
+        parama.LxU.setAdapter(new d(0, 59));
+        parama.LxU.setCurrentItem(j);
+        parama.LxU.setGravity(parama.gravity);
+        parama.LxS.setOnItemSelectedListener(new j.3(parama));
+        parama.LxP.setOnItemSelectedListener(new j.2(parama));
+        parama.LxQ.setOnItemSelectedListener(new j.1(parama));
+        parama.a(parama.LxR);
+        parama.a(parama.LxS);
+        parama.a(parama.LxT);
+        parama.a(parama.LxU);
+        if (parama.iOi.length == 6) {
           break label3107;
         }
         parama = new IllegalArgumentException("type[] length is not 6");
-        AppMethodBeat.o(192713);
+        AppMethodBeat.o(200486);
         throw parama;
-        parama = this.Lax.iLB;
+        parama = this.LwV.iOu;
         break;
-        parama = this.Lax.iLC;
+        parama = this.LwV.iOv;
         break label167;
-        parama = this.Lax.iLD;
+        parama = this.LwV.iOw;
         break label189;
-        if (this.Lax.iLr != null)
+        if (this.LwV.iOk != null)
         {
-          if (this.Lax.iLr.get(1) >= 1900) {
+          if (this.LwV.iOk.get(1) >= 1900) {
             break label482;
           }
           ap.e(this.TAG, "initWheelTime: The startDate can not as early as 1900, set startDate to null", new Object[0]);
-          this.Lax.iLr = null;
+          this.LwV.iOk = null;
           break label482;
         }
-        if ((this.Lax.iLs == null) || (this.Lax.iLs.get(1) <= 2100)) {
+        if ((this.LwV.iOl == null) || (this.LwV.iOl.get(1) <= 2100)) {
           break label482;
         }
         ap.e(this.TAG, "initWheelTime: The endDate should not be later than 2100, set endDate to null", new Object[0]);
-        this.Lax.iLr = null;
+        this.LwV.iOk = null;
         break label482;
         if (i != parama.startYear) {
           break label563;
         }
-        if (j > parama.iMp)
+        if (j > parama.iPi)
         {
           parama.endYear = i;
-          parama.iMq = j;
-          parama.iMs = k;
+          parama.iPj = j;
+          parama.iPl = k;
           break label563;
         }
-        if ((j != parama.iMp) || (k <= parama.iMr)) {
+        if ((j != parama.iPi) || (k <= parama.iPk)) {
           break label563;
         }
         parama.endYear = i;
-        parama.iMq = j;
-        parama.iMs = k;
+        parama.iPj = j;
+        parama.iPl = k;
         break label563;
         label1524:
         if ((localObject1 != null) && (localObject2 == null))
@@ -289,26 +289,26 @@ public final class h
           k = ((Calendar)localObject1).get(5);
           if (i < parama.endYear)
           {
-            parama.iMp = j;
-            parama.iMr = k;
+            parama.iPi = j;
+            parama.iPk = k;
             parama.startYear = i;
             break label563;
           }
           if (i != parama.endYear) {
             break label563;
           }
-          if (j < parama.iMq)
+          if (j < parama.iPj)
           {
-            parama.iMp = j;
-            parama.iMr = k;
+            parama.iPi = j;
+            parama.iPk = k;
             parama.startYear = i;
             break label563;
           }
-          if ((j != parama.iMq) || (k >= parama.iMs)) {
+          if ((j != parama.iPj) || (k >= parama.iPl)) {
             break label563;
           }
-          parama.iMp = j;
-          parama.iMr = k;
+          parama.iPi = j;
+          parama.iPk = k;
           parama.startYear = i;
           break label563;
         }
@@ -317,284 +317,284 @@ public final class h
         }
         parama.startYear = ((Calendar)localObject1).get(1);
         parama.endYear = ((Calendar)localObject2).get(1);
-        parama.iMp = (((Calendar)localObject1).get(2) + 1);
-        parama.iMq = (((Calendar)localObject2).get(2) + 1);
-        parama.iMr = ((Calendar)localObject1).get(5);
-        parama.iMs = ((Calendar)localObject2).get(5);
-        parama.iMt = ((Calendar)localObject1).get(11);
-        parama.iMu = ((Calendar)localObject1).get(12);
-        parama.iMv = ((Calendar)localObject2).get(11);
-        parama.iMw = ((Calendar)localObject2).get(12);
+        parama.iPi = (((Calendar)localObject1).get(2) + 1);
+        parama.iPj = (((Calendar)localObject2).get(2) + 1);
+        parama.iPk = ((Calendar)localObject1).get(5);
+        parama.iPl = ((Calendar)localObject2).get(5);
+        parama.iPm = ((Calendar)localObject1).get(11);
+        parama.iPn = ((Calendar)localObject1).get(12);
+        parama.iPo = ((Calendar)localObject2).get(11);
+        parama.iPp = ((Calendar)localObject2).get(12);
         break label563;
         label1777:
-        if (this.Lax.iLq.getTimeInMillis() <= this.Lax.iLs.getTimeInMillis()) {
+        if (this.LwV.iOj.getTimeInMillis() <= this.LwV.iOl.getTimeInMillis()) {
           break label638;
         }
-        this.Lax.iLq = this.Lax.iLs;
+        this.LwV.iOj = this.LwV.iOl;
         break label638;
-        if (this.Lax.iLr != null)
+        if (this.LwV.iOk != null)
         {
-          this.Lax.iLq = this.Lax.iLr;
+          this.LwV.iOj = this.LwV.iOk;
           break label638;
         }
-        if (this.Lax.iLs == null) {
+        if (this.LwV.iOl == null) {
           break label638;
         }
-        this.Lax.iLq = this.Lax.iLs;
+        this.LwV.iOj = this.LwV.iOl;
         break label638;
         label1872:
-        i = this.Lax.iLq.get(1);
-        i1 = this.Lax.iLq.get(2);
-        n = this.Lax.iLq.get(5);
-        m = this.Lax.iLq.get(11);
-        k = this.Lax.iLq.get(12);
-        j = this.Lax.iLq.get(13);
+        i = this.LwV.iOj.get(1);
+        i1 = this.LwV.iOj.get(2);
+        n = this.LwV.iOj.get(5);
+        m = this.LwV.iOj.get(11);
+        k = this.LwV.iOj.get(12);
+        j = this.LwV.iOj.get(13);
         break label702;
         if (i == parama.startYear)
         {
-          parama.Lbp.setAdapter(new d(parama.iMp, 12, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
-          parama.Lbp.setCurrentItem(i1 + 1 - parama.iMp);
+          parama.LxQ.setAdapter(new d(parama.iPi, 12, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
+          parama.LxQ.setCurrentItem(i1 + 1 - parama.iPi);
           break label881;
         }
         if (i == parama.endYear)
         {
-          parama.Lbp.setAdapter(new d(1, parama.iMq, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
-          parama.Lbp.setCurrentItem(i1);
+          parama.LxQ.setAdapter(new d(1, parama.iPj, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
+          parama.LxQ.setCurrentItem(i1);
           break label881;
         }
-        if ((parama.Lbv) && (i - 1 == parama.startYear))
+        if ((parama.LxW) && (i - 1 == parama.startYear))
         {
-          parama.Lbp.setAdapter(new d(parama.iMp, 12, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
-          parama.Lbp.setCurrentItem(i1 + 1 - parama.iMp);
+          parama.LxQ.setAdapter(new d(parama.iPi, 12, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
+          parama.LxQ.setCurrentItem(i1 + 1 - parama.iPi);
           break label881;
         }
-        parama.Lbp.setAdapter(new d(1, 12, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
-        parama.Lbp.setCurrentItem(i1);
+        parama.LxQ.setAdapter(new d(1, 12, new com.tencent.mm.ui.widget.picker.a.b(parama.ctx)));
+        parama.LxQ.setCurrentItem(i1);
         break label881;
-        if (parama.iMC.contains(String.valueOf(i1 + 1)))
+        if (parama.iPw.contains(String.valueOf(i1 + 1)))
         {
-          if (parama.iMs > 30) {
-            parama.iMs = 30;
+          if (parama.iPl > 30) {
+            parama.iPl = 30;
           }
-          parama.Lbq.setAdapter(new d(parama.iMr, parama.iMs));
+          parama.LxR.setAdapter(new d(parama.iPk, parama.iPl));
           break label982;
         }
         if (((i2 % 4 == 0) && (i2 % 100 != 0)) || (i2 % 400 == 0))
         {
-          if (parama.iMs > 29) {
-            parama.iMs = 29;
+          if (parama.iPl > 29) {
+            parama.iPl = 29;
           }
-          parama.Lbq.setAdapter(new d(parama.iMr, parama.iMs));
+          parama.LxR.setAdapter(new d(parama.iPk, parama.iPl));
           break label982;
         }
-        if (parama.iMs > 28) {
-          parama.iMs = 28;
+        if (parama.iPl > 28) {
+          parama.iPl = 28;
         }
-        parama.Lbq.setAdapter(new d(parama.iMr, parama.iMs));
+        parama.LxR.setAdapter(new d(parama.iPk, parama.iPl));
         break label982;
-        if ((i2 == parama.startYear) && (i1 + 1 == parama.iMp))
+        if ((i2 == parama.startYear) && (i1 + 1 == parama.iPi))
         {
-          if (parama.iMB.contains(String.valueOf(i1 + 1))) {
-            parama.Lbq.setAdapter(new d(parama.iMr, 31));
+          if (parama.iPu.contains(String.valueOf(i1 + 1))) {
+            parama.LxR.setAdapter(new d(parama.iPk, 31));
           }
           for (;;)
           {
-            parama.Lbq.setCurrentItem(n - parama.iMr);
+            parama.LxR.setCurrentItem(n - parama.iPk);
             break;
-            if (parama.iMC.contains(String.valueOf(i1 + 1))) {
-              parama.Lbq.setAdapter(new d(parama.iMr, 30));
+            if (parama.iPw.contains(String.valueOf(i1 + 1))) {
+              parama.LxR.setAdapter(new d(parama.iPk, 30));
             } else if (((i2 % 4 == 0) && (i2 % 100 != 0)) || (i2 % 400 == 0)) {
-              parama.Lbq.setAdapter(new d(parama.iMr, 29));
+              parama.LxR.setAdapter(new d(parama.iPk, 29));
             } else {
-              parama.Lbq.setAdapter(new d(parama.iMr, 28));
+              parama.LxR.setAdapter(new d(parama.iPk, 28));
             }
           }
         }
-        if ((i2 == parama.endYear) && (i1 + 1 == parama.iMq))
+        if ((i2 == parama.endYear) && (i1 + 1 == parama.iPj))
         {
-          if (parama.iMB.contains(String.valueOf(i1 + 1)))
+          if (parama.iPu.contains(String.valueOf(i1 + 1)))
           {
-            if (parama.iMs > 31) {
-              parama.iMs = 31;
+            if (parama.iPl > 31) {
+              parama.iPl = 31;
             }
-            parama.Lbq.setAdapter(new d(1, parama.iMs));
+            parama.LxR.setAdapter(new d(1, parama.iPl));
           }
           for (;;)
           {
-            parama.Lbq.setCurrentItem(n - 1);
+            parama.LxR.setCurrentItem(n - 1);
             break;
-            if (parama.iMC.contains(String.valueOf(i1 + 1)))
+            if (parama.iPw.contains(String.valueOf(i1 + 1)))
             {
-              if (parama.iMs > 30) {
-                parama.iMs = 30;
+              if (parama.iPl > 30) {
+                parama.iPl = 30;
               }
-              parama.Lbq.setAdapter(new d(1, parama.iMs));
+              parama.LxR.setAdapter(new d(1, parama.iPl));
             }
             else if (((i2 % 4 == 0) && (i2 % 100 != 0)) || (i2 % 400 == 0))
             {
-              if (parama.iMs > 29) {
-                parama.iMs = 29;
+              if (parama.iPl > 29) {
+                parama.iPl = 29;
               }
-              parama.Lbq.setAdapter(new d(1, parama.iMs));
+              parama.LxR.setAdapter(new d(1, parama.iPl));
             }
             else
             {
-              if (parama.iMs > 28) {
-                parama.iMs = 28;
+              if (parama.iPl > 28) {
+                parama.iPl = 28;
               }
-              parama.Lbq.setAdapter(new d(1, parama.iMs));
+              parama.LxR.setAdapter(new d(1, parama.iPl));
             }
           }
         }
-        if (parama.iMB.contains(String.valueOf(i1 + 1))) {
-          parama.Lbq.setAdapter(new d(1, 31));
+        if (parama.iPu.contains(String.valueOf(i1 + 1))) {
+          parama.LxR.setAdapter(new d(1, 31));
         }
         for (;;)
         {
-          parama.Lbq.setCurrentItem(n - 1);
+          parama.LxR.setCurrentItem(n - 1);
           break;
-          if (parama.iMC.contains(String.valueOf(i1 + 1))) {
-            parama.Lbq.setAdapter(new d(1, 30));
+          if (parama.iPw.contains(String.valueOf(i1 + 1))) {
+            parama.LxR.setAdapter(new d(1, 30));
           } else if (((i2 % 4 == 0) && (i2 % 100 != 0)) || (i2 % 400 == 0)) {
-            parama.Lbq.setAdapter(new d(1, 29));
+            parama.LxR.setAdapter(new d(1, 29));
           } else {
-            parama.Lbq.setAdapter(new d(1, 28));
+            parama.LxR.setAdapter(new d(1, 28));
           }
         }
         label2914:
-        if (k > parama.iMw)
+        if (k > parama.iPp)
         {
-          parama.Lbs.setCurrentItem(parama.iMw);
+          parama.LxT.setCurrentItem(parama.iPp);
         }
         else
         {
-          parama.Lbs.setCurrentItem(k);
+          parama.LxT.setCurrentItem(k);
           continue;
-          if (m == parama.iMt)
+          if (m == parama.iPm)
           {
-            parama.Lbs.setAdapter(new d(parama.iMu, 59));
-            if (k < parama.iMu) {
-              parama.Lbs.setCurrentItem(0);
+            parama.LxT.setAdapter(new d(parama.iPn, 59));
+            if (k < parama.iPn) {
+              parama.LxT.setCurrentItem(0);
             } else {
-              parama.Lbs.setCurrentItem(k - parama.iMu);
+              parama.LxT.setCurrentItem(k - parama.iPn);
             }
           }
-          else if (m == parama.iMv)
+          else if (m == parama.iPo)
           {
-            parama.Lbs.setAdapter(new d(0, parama.iMw));
-            if (k >= parama.iMw) {
-              parama.Lbs.setCurrentItem(parama.iMw);
+            parama.LxT.setAdapter(new d(0, parama.iPp));
+            if (k >= parama.iPp) {
+              parama.LxT.setCurrentItem(parama.iPp);
             } else {
-              parama.Lbs.setCurrentItem(k);
+              parama.LxT.setCurrentItem(k);
             }
           }
           else
           {
-            parama.Lbs.setAdapter(new d(0, 59));
-            parama.Lbs.setCurrentItem(k);
+            parama.LxT.setAdapter(new d(0, 59));
+            parama.LxT.setCurrentItem(k);
           }
         }
       }
-      j.aH(parama.aQh());
-      if ((parama.Lbv) && (i == 2))
+      j.aH(parama.aQG());
+      if ((parama.LxW) && (i == 2))
       {
-        parama.Lbp.afG(0);
-        parama.Lbq.afG(0);
-        parama.Lbp.invalidate();
-        parama.Lbq.invalidate();
+        parama.LxQ.agp(0);
+        parama.LxR.agp(0);
+        parama.LxQ.invalidate();
+        parama.LxR.invalidate();
       }
       if (this.context.getResources().getConfiguration().locale.getLanguage().endsWith("zh"))
       {
-        parama = this.Lbi;
-        localObject1 = this.Lax.iLt;
-        localObject2 = this.Lax.iLu;
-        localObject3 = this.Lax.iLv;
-        localObject4 = this.Lax.iLw;
-        localObject5 = this.Lax.iLx;
-        String str = this.Lax.iLy;
+        parama = this.LxJ;
+        localObject1 = this.LwV.iOm;
+        localObject2 = this.LwV.iOn;
+        localObject3 = this.LwV.iOo;
+        localObject4 = this.LwV.iOp;
+        localObject5 = this.LwV.iOq;
+        String str = this.LwV.iOr;
         if (localObject1 == null) {
           break label3522;
         }
-        parama.Lbo.setLabel((String)localObject1);
+        parama.LxP.setLabel((String)localObject1);
         if (localObject2 == null) {
           break label3545;
         }
-        parama.Lbp.setLabel((String)localObject2);
+        parama.LxQ.setLabel((String)localObject2);
         if (localObject3 == null) {
           break label3568;
         }
-        parama.Lbq.setLabel((String)localObject3);
+        parama.LxR.setLabel((String)localObject3);
         label3284:
         if (localObject4 == null) {
           break label3591;
         }
-        parama.Lbr.setLabel((String)localObject4);
+        parama.LxS.setLabel((String)localObject4);
         label3298:
         if (localObject5 == null) {
           break label3614;
         }
-        parama.Lbs.setLabel((String)localObject5);
+        parama.LxT.setLabel((String)localObject5);
         label3312:
         if (str == null) {
           break label3637;
         }
-        parama.Lbt.setLabel(str);
+        parama.LxU.setLabel(str);
       }
       for (;;)
       {
-        yV(this.Lax.ov);
-        this.Lbi.setDividerColor(this.Lax.iKN);
-        this.Lbi.Lbw = this.Lax.Lbw;
-        parama = this.Lbi;
-        boolean bool = this.Lax.iLn;
-        parama.Lbo.setCyclic(bool);
-        parama.Lbp.setCyclic(bool);
-        parama.Lbq.setCyclic(bool);
-        parama.Lbr.setCyclic(bool);
-        parama.Lbs.setCyclic(bool);
-        parama.Lbt.setCyclic(bool);
-        this.Lbi.iLM = this.Lax.iLM;
-        parama = this.Lbi;
-        bool = this.Lax.iKG;
-        parama.Lbq.iKG = bool;
-        parama.Lbp.iKG = bool;
-        parama.Lbo.iKG = bool;
-        parama.Lbr.iKG = bool;
-        parama.Lbs.iKG = bool;
-        parama.Lbt.iKG = bool;
-        AppMethodBeat.o(192713);
+        zj(this.LwV.ov);
+        this.LxJ.setDividerColor(this.LwV.iNG);
+        this.LxJ.LxX = this.LwV.LxX;
+        parama = this.LxJ;
+        boolean bool = this.LwV.iOg;
+        parama.LxP.setCyclic(bool);
+        parama.LxQ.setCyclic(bool);
+        parama.LxR.setCyclic(bool);
+        parama.LxS.setCyclic(bool);
+        parama.LxT.setCyclic(bool);
+        parama.LxU.setCyclic(bool);
+        this.LxJ.iOF = this.LwV.iOF;
+        parama = this.LxJ;
+        bool = this.LwV.iNz;
+        parama.LxR.iNz = bool;
+        parama.LxQ.iNz = bool;
+        parama.LxP.iNz = bool;
+        parama.LxS.iNz = bool;
+        parama.LxT.iNz = bool;
+        parama.LxU.iNz = bool;
+        AppMethodBeat.o(200486);
         return;
-        parama.Lbo.setLabel(parama.view.getContext().getString(2131761931));
+        parama.LxP.setLabel(parama.view.getContext().getString(2131761931));
         break;
         label3545:
-        parama.Lbp.setLabel(parama.view.getContext().getString(2131761928));
+        parama.LxQ.setLabel(parama.view.getContext().getString(2131761928));
         break label3270;
         label3568:
-        parama.Lbq.setLabel(parama.view.getContext().getString(2131761925));
+        parama.LxR.setLabel(parama.view.getContext().getString(2131761925));
         break label3284;
-        parama.Lbr.setLabel(parama.view.getContext().getString(2131761926));
+        parama.LxS.setLabel(parama.view.getContext().getString(2131761926));
         break label3298;
-        parama.Lbs.setLabel(parama.view.getContext().getString(2131761927));
+        parama.LxT.setLabel(parama.view.getContext().getString(2131761927));
         break label3312;
-        parama.Lbt.setLabel(parama.view.getContext().getString(2131761929));
+        parama.LxU.setLabel(parama.view.getContext().getString(2131761929));
       }
     }
   }
   
-  public final boolean aQb()
+  public final boolean aQA()
   {
-    return this.Lax.iLN;
+    return this.LwV.iOG;
   }
   
-  public final void aQc()
+  public final void aQB()
   {
-    AppMethodBeat.i(192715);
-    if (this.Lax.Lcj != null) {
+    AppMethodBeat.i(200488);
+    if (this.LwV.LyK != null) {
       try
       {
-        Date localDate = j.iMi.parse(this.Lbi.aQi());
-        this.Lax.Lcj.a(localDate);
-        AppMethodBeat.o(192715);
+        Date localDate = j.iPb.parse(this.LxJ.aQH());
+        this.LwV.LyK.a(localDate);
+        AppMethodBeat.o(200488);
         return;
       }
       catch (ParseException localParseException)
@@ -602,66 +602,66 @@ public final class h
         ap.printErrStackTrace(this.TAG, localParseException, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(192715);
+    AppMethodBeat.o(200488);
   }
   
-  public final View aQe()
+  public final View aQD()
   {
-    AppMethodBeat.i(192716);
-    if (this.Lbi.view == null)
+    AppMethodBeat.i(200489);
+    if (this.LxJ.view == null)
     {
       localView = LayoutInflater.from(this.context).inflate(2131496156, null);
       LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131305844);
       ((ViewGroup)localView).removeView(localLinearLayout);
       localLinearLayout.setBackgroundColor(-1);
-      this.Lbi.view = localLinearLayout;
+      this.LxJ.view = localLinearLayout;
     }
-    View localView = this.Lbi.view;
-    AppMethodBeat.o(192716);
+    View localView = this.LxJ.view;
+    AppMethodBeat.o(200489);
     return localView;
   }
   
   public final void du(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192718);
-    this.Lbi.du(paramInt1, paramInt2);
-    AppMethodBeat.o(192718);
+    AppMethodBeat.i(200491);
+    this.LxJ.du(paramInt1, paramInt2);
+    AppMethodBeat.o(200491);
   }
   
-  public final List<WheelView> fMP()
+  public final List<WheelView> fRk()
   {
-    AppMethodBeat.i(221680);
-    List localList = this.Lbi.aQh();
-    AppMethodBeat.o(221680);
+    AppMethodBeat.i(224522);
+    List localList = this.LxJ.aQG();
+    AppMethodBeat.o(224522);
     return localList;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(192714);
+    AppMethodBeat.i(200487);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/TimePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/TimePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (((String)paramView.getTag()).equals("submit")) {
-      aQc();
+      aQB();
     }
     dismiss();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/TimePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(192714);
+    AppMethodBeat.o(200487);
   }
   
   public final void setDividerHeight(float paramFloat)
   {
-    AppMethodBeat.i(192717);
-    if (this.Lbi != null) {
-      this.Lbi.setDividerHeight(paramFloat);
+    AppMethodBeat.i(200490);
+    if (this.LxJ != null) {
+      this.LxJ.setDividerHeight(paramFloat);
     }
-    AppMethodBeat.o(192717);
+    AppMethodBeat.o(200490);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.h
  * JD-Core Version:    0.7.0.1
  */

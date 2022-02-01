@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.expt.b.b.b;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -17,51 +17,51 @@ import java.util.Set;
 public final class c
 {
   private static String TAG;
-  private static c rbI;
-  private static HashSet<String> rbJ;
+  private static c rjO;
+  private static HashSet<String> rjP;
   
   static
   {
     AppMethodBeat.i(122460);
     TAG = "MicroMsg.ExptMMKV";
-    long l = bt.HI();
-    rbJ = new HashSet();
+    long l = bu.HQ();
+    rjP = new HashSet();
     b.b[] arrayOfb = b.b.values();
     int j = arrayOfb.length;
     int i = 0;
     while (i < j)
     {
       b.b localb = arrayOfb[i];
-      rbJ.add(localb.name());
+      rjP.add(localb.name());
       i += 1;
     }
-    ad.i(TAG, "get mulit expt enum cost time [%d]", new Object[] { Long.valueOf(bt.aO(l)) });
+    ae.i(TAG, "get mulit expt enum cost time [%d]", new Object[] { Long.valueOf(bu.aO(l)) });
     AppMethodBeat.o(122460);
   }
   
   public static String b(b.a parama, String paramString)
   {
-    AppMethodBeat.i(210541);
-    parama = d.crP().b(parama.name(), paramString, false, true);
-    AppMethodBeat.o(210541);
+    AppMethodBeat.i(196208);
+    parama = d.ctr().b(parama.name(), paramString, false, true);
+    AppMethodBeat.o(196208);
     return parama;
   }
   
-  public static ax bNe()
+  public static ay bOc()
   {
     AppMethodBeat.i(122454);
-    ax localax = d.crP().bNe();
+    ay localay = d.ctr().bOc();
     AppMethodBeat.o(122454);
-    return localax;
+    return localay;
   }
   
-  public static c crR()
+  public static c ctt()
   {
     AppMethodBeat.i(122453);
-    if (rbI == null) {
-      rbI = new c();
+    if (rjO == null) {
+      rjO = new c();
     }
-    c localc = rbI;
+    c localc = rjO;
     AppMethodBeat.o(122453);
     return localc;
   }
@@ -74,38 +74,38 @@ public final class c
     return str;
   }
   
-  public final boolean crS()
+  public final boolean ctu()
   {
     AppMethodBeat.i(122458);
-    if (aj.cnC())
+    if (ak.cpe())
     {
       AppMethodBeat.o(122458);
       return true;
     }
-    ad.m(TAG, "%s only mm process can write expt info", new Object[] { info() });
+    ae.m(TAG, "%s only mm process can write expt info", new Object[] { info() });
     AppMethodBeat.o(122458);
     return false;
   }
   
-  public final boolean di(List<com.tencent.mm.plugin.expt.h.c> paramList)
+  public final boolean dl(List<com.tencent.mm.plugin.expt.h.c> paramList)
   {
     AppMethodBeat.i(184400);
-    if (!crS())
+    if (!ctu())
     {
       AppMethodBeat.o(184400);
       return false;
     }
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      ad.w(TAG, "%s replace expt but item is null!", new Object[] { info() });
+      ae.w(TAG, "%s replace expt but item is null!", new Object[] { info() });
       AppMethodBeat.o(184400);
       return false;
     }
-    long l = bt.HI();
-    ax localax = d.crP().bNe();
-    if (localax == null)
+    long l = bu.HQ();
+    ay localay = d.ctr().bOc();
+    if (localay == null)
     {
-      ad.w(TAG, "%s replace expt but mmkv is null!", new Object[] { info() });
+      ae.w(TAG, "%s replace expt but mmkv is null!", new Object[] { info() });
       AppMethodBeat.o(184400);
       return false;
     }
@@ -117,7 +117,7 @@ public final class c
       com.tencent.mm.plugin.expt.h.c localc = (com.tencent.mm.plugin.expt.h.c)localIterator.next();
       if (localc != null)
       {
-        Object localObject = localc.cry();
+        Object localObject = localc.cta();
         if (localObject == null) {
           break label333;
         }
@@ -125,14 +125,14 @@ public final class c
         int k = 0;
         while (((Iterator)localObject).hasNext())
         {
-          localax.putInt((String)((Iterator)localObject).next(), localc.field_exptId);
+          localay.putInt((String)((Iterator)localObject).next(), localc.field_exptId);
           k = 1;
           j += 1;
         }
         if (k == 0) {
           break label330;
         }
-        localax.putString(localc.field_exptId, localc.field_exptContent);
+        localay.putString(localc.field_exptId, localc.field_exptContent);
         i += 1;
       }
     }
@@ -141,17 +141,17 @@ public final class c
     for (;;)
     {
       break;
-      boolean bool = localax.commit();
-      ad.i(TAG, "%s replace expt param[%d] [%d %d] cost[%d] flag[%b]", new Object[] { info(), Integer.valueOf(paramList.size()), Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(bt.aO(l)), Boolean.valueOf(bool) });
+      boolean bool = localay.commit();
+      ae.i(TAG, "%s replace expt param[%d] [%d %d] cost[%d] flag[%b]", new Object[] { info(), Integer.valueOf(paramList.size()), Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(bu.aO(l)), Boolean.valueOf(bool) });
       AppMethodBeat.o(184400);
       return bool;
     }
   }
   
-  public final void dj(List<Integer> paramList)
+  public final void dm(List<Integer> paramList)
   {
     AppMethodBeat.i(122457);
-    if (!crS())
+    if (!ctu())
     {
       AppMethodBeat.o(122457);
       return;
@@ -161,9 +161,9 @@ public final class c
       AppMethodBeat.o(122457);
       return;
     }
-    long l = bt.HI();
-    ax localax = d.crP().bNe();
-    if (localax == null)
+    long l = bu.HQ();
+    ay localay = d.ctr().bOc();
+    if (localay == null)
     {
       AppMethodBeat.o(122457);
       return;
@@ -175,10 +175,10 @@ public final class c
     if (localIterator.hasNext())
     {
       j = ((Integer)localIterator.next()).intValue();
-      if (!localax.contains(String.valueOf(j))) {
+      if (!localay.contains(String.valueOf(j))) {
         break label299;
       }
-      localax.remove(String.valueOf(j));
+      localay.remove(String.valueOf(j));
       localHashSet.add(Integer.valueOf(j));
       i += 1;
     }
@@ -187,23 +187,23 @@ public final class c
     for (;;)
     {
       break;
-      localIterator = rbJ.iterator();
+      localIterator = rjP.iterator();
       j = 0;
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        int k = localax.getInt(str, 0);
+        int k = localay.getInt(str, 0);
         if ((k <= 0) || (!localHashSet.contains(Integer.valueOf(k)))) {
           break label296;
         }
-        localax.remove(str);
+        localay.remove(str);
         j += 1;
       }
       for (;;)
       {
         break;
-        boolean bool = localax.commit();
-        ad.i(TAG, "%s delete expt params[%d] delete [%d %d] cost[%d] flag [%b]", new Object[] { info(), Integer.valueOf(paramList.size()), Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(bt.aO(l)), Boolean.valueOf(bool) });
+        boolean bool = localay.commit();
+        ae.i(TAG, "%s delete expt params[%d] delete [%d %d] cost[%d] flag [%b]", new Object[] { info(), Integer.valueOf(paramList.size()), Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(bu.aO(l)), Boolean.valueOf(bool) });
         AppMethodBeat.o(122457);
         return;
       }

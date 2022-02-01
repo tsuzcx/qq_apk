@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.t;
 
 public final class n
   extends a<d>
@@ -13,7 +13,7 @@ public final class n
   public static final int CTRL_INDEX = 13;
   public static final String NAME = "redirectTo";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

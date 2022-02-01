@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.dqp;
-import com.tencent.mm.protocal.protobuf.drn;
-import com.tencent.mm.protocal.protobuf.dro;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.drm;
+import com.tencent.mm.protocal.protobuf.dsk;
+import com.tencent.mm.protocal.protobuf.dsl;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class d
-  extends a<dro>
+  extends a<dsl>
 {
-  public d(LinkedList<dqp> paramLinkedList)
+  public d(LinkedList<drm> paramLinkedList)
   {
     AppMethodBeat.i(69525);
-    drn localdrn = new drn();
-    localdrn.Fru = paramLinkedList;
+    dsk localdsk = new dsk();
+    localdsk.FJS = paramLinkedList;
     paramLinkedList = new b.a();
-    paramLinkedList.hNM = localdrn;
-    paramLinkedList.hNN = new dro();
+    paramLinkedList.hQF = localdsk;
+    paramLinkedList.hQG = new dsl();
     paramLinkedList.funcId = 2638;
     paramLinkedList.uri = "/cgi-bin/mmpay-bin/updateunipayorder";
-    paramLinkedList.hNO = 0;
+    paramLinkedList.hQH = 0;
     paramLinkedList.respCmdId = 0;
-    c(paramLinkedList.aDC());
-    ad.i("MicroMsg.CgiUpdateUniPayOrder", "update uni pay order");
+    c(paramLinkedList.aDS());
+    ae.i("MicroMsg.CgiUpdateUniPayOrder", "update uni pay order");
     AppMethodBeat.o(69525);
   }
 }

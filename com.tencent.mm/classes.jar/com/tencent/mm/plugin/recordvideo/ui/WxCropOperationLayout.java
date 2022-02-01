@@ -34,98 +34,98 @@ import d.l;
 import d.v;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/GestureDetector$OnGestureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "BLOCK_WIDTH", "", "getBLOCK_WIDTH", "()F", "BLOCK_WIDTH$delegate", "Lkotlin/Lazy;", "BOX_GIRD_WIDTH", "getBOX_GIRD_WIDTH", "BOX_GIRD_WIDTH$delegate", "BOX_LINE_WIDTH", "getBOX_LINE_WIDTH", "BOX_LINE_WIDTH$delegate", "BOX_PADDING", "getBOX_PADDING", "BOX_PADDING$delegate", "CORNER_LENGTH", "getCORNER_LENGTH", "CORNER_LENGTH$delegate", "CORNER_WIDTH", "getCORNER_WIDTH", "CORNER_WIDTH$delegate", "TOUCH_BLOCK_PADDING", "getTOUCH_BLOCK_PADDING", "TOUCH_BLOCK_PADDING$delegate", "_1A", "get_1A", "()I", "_1A$delegate", "_4A", "get_4A", "_4A$delegate", "bgAnimator", "Landroid/animation/ValueAnimator;", "value", "bgColor", "getBgColor", "setBgColor", "(I)V", "blockBottomPath", "Landroid/graphics/Path;", "blockBottomPath_1", "blockBottomPath_2", "blockDrawable", "Landroid/graphics/drawable/Drawable;", "getBlockDrawable", "()Landroid/graphics/drawable/Drawable;", "blockDrawable$delegate", "blockOutsideTouch", "", "getBlockOutsideTouch", "()Z", "setBlockOutsideTouch", "(Z)V", "blockPaint", "Landroid/graphics/Paint;", "blockTopPath", "blockTopPath_1", "blockTopPath_2", "borderAlpha", "borderAnimator", "borderVisibilityCallback", "Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "getBorderVisibilityCallback", "()Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "setBorderVisibilityCallback", "(Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;)V", "bottomBlockPoint", "Landroid/graphics/PointF;", "bottomBlockRect", "Landroid/graphics/RectF;", "boxPaint", "boxRect", "cornerPaint", "cornerViews", "", "Landroid/view/View;", "[Landroid/view/View;", "girdLinePaint", "girdLinePath", "grepBlockPaint", "isBelongBottomBlock", "isBelongTopBlock", "lastVisibilityRect", "limitMaxHeight", "getLimitMaxHeight", "setLimitMaxHeight", "(F)V", "limitMinHeight", "getLimitMinHeight", "setLimitMinHeight", "onOperationCallback", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "getOnOperationCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "setOnOperationCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;)V", "outsideTouckListener", "Lkotlin/Function0;", "", "getOutsideTouckListener", "()Lkotlin/jvm/functions/Function0;", "setOutsideTouckListener", "(Lkotlin/jvm/functions/Function0;)V", "paint", "showGridLine", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "style", "getStyle", "()Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "setStyle", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;)V", "topBlockPoint", "topBlockRect", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "visibilityRect", "getVisibilityRect", "()Landroid/graphics/RectF;", "widgetRect", "xfermode", "Landroid/graphics/PorterDuffXfermode;", "addCornerView", "view", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$CornerStyle;", "drawBlock", "canvas", "Landroid/graphics/Canvas;", "drawCorner", "drawCutBoxLine", "getCornerView", "hideBorder", "hideCornerView", "hideInvisible", "onDetachedFromWindow", "onDown", "event", "Landroid/view/MotionEvent;", "onDraw", "onFling", "e1", "e2", "velocityX", "velocityY", "onLayout", "changed", "left", "top", "right", "bottom", "onLongPress", "e", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapUp", "onTouchEvent", "removeAllCornerView", "removeCornerView", "rescaleCropFromSize", "Landroid/graphics/Rect;", "size", "Landroid/graphics/Point;", "showBorder", "alpha", "delay", "", "showCornerViews", "show", "showInvisible", "updateBorderRect", "Companion", "CornerStyle", "OnOperationCallback", "Style", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/GestureDetector$OnGestureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "BLOCK_WIDTH", "", "getBLOCK_WIDTH", "()F", "BLOCK_WIDTH$delegate", "Lkotlin/Lazy;", "BOX_GIRD_WIDTH", "getBOX_GIRD_WIDTH", "BOX_GIRD_WIDTH$delegate", "BOX_LINE_WIDTH", "getBOX_LINE_WIDTH", "BOX_LINE_WIDTH$delegate", "BOX_PADDING", "getBOX_PADDING", "BOX_PADDING$delegate", "CORNER_LENGTH", "getCORNER_LENGTH", "CORNER_LENGTH$delegate", "CORNER_WIDTH", "getCORNER_WIDTH", "CORNER_WIDTH$delegate", "TOUCH_BLOCK_PADDING", "getTOUCH_BLOCK_PADDING", "TOUCH_BLOCK_PADDING$delegate", "_1A", "get_1A", "()I", "_1A$delegate", "_4A", "get_4A", "_4A$delegate", "bgAnimator", "Landroid/animation/ValueAnimator;", "value", "bgColor", "getBgColor", "setBgColor", "(I)V", "blockBottomPath", "Landroid/graphics/Path;", "blockBottomPath_1", "blockBottomPath_2", "blockDrawable", "Landroid/graphics/drawable/Drawable;", "getBlockDrawable", "()Landroid/graphics/drawable/Drawable;", "blockDrawable$delegate", "blockOutsideTouch", "", "getBlockOutsideTouch", "()Z", "setBlockOutsideTouch", "(Z)V", "blockPaint", "Landroid/graphics/Paint;", "blockTopPath", "blockTopPath_1", "blockTopPath_2", "borderAlpha", "borderAnimator", "borderVisibilityCallback", "Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "getBorderVisibilityCallback", "()Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "setBorderVisibilityCallback", "(Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;)V", "bottomBlockPoint", "Landroid/graphics/PointF;", "bottomBlockRect", "Landroid/graphics/RectF;", "boxPaint", "boxRect", "cornerPaint", "cornerViews", "", "Landroid/view/View;", "[Landroid/view/View;", "girdLinePaint", "girdLinePath", "grepBlockPaint", "isBelongBottomBlock", "isBelongTopBlock", "lastVisibilityRect", "limitMaxHeight", "getLimitMaxHeight", "setLimitMaxHeight", "(F)V", "limitMinHeight", "getLimitMinHeight", "setLimitMinHeight", "onOperationCallback", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "getOnOperationCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "setOnOperationCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;)V", "outsideTouckListener", "Lkotlin/Function0;", "", "getOutsideTouckListener", "()Lkotlin/jvm/functions/Function0;", "setOutsideTouckListener", "(Lkotlin/jvm/functions/Function0;)V", "paint", "showGridLine", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "style", "getStyle", "()Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "setStyle", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;)V", "topBlockPoint", "topBlockRect", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "visibilityRect", "getVisibilityRect", "()Landroid/graphics/RectF;", "widgetRect", "xfermode", "Landroid/graphics/PorterDuffXfermode;", "addCornerView", "view", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$CornerStyle;", "drawBlock", "canvas", "Landroid/graphics/Canvas;", "drawCorner", "drawCutBoxLine", "getCornerView", "hideBorder", "hideCornerView", "hideInvisible", "onDetachedFromWindow", "onDown", "event", "Landroid/view/MotionEvent;", "onDraw", "onFling", "e1", "e2", "velocityX", "velocityY", "onLayout", "changed", "left", "top", "right", "bottom", "onLongPress", "e", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapUp", "onTouchEvent", "removeAllCornerView", "removeCornerView", "rescaleCropFromSize", "Landroid/graphics/Rect;", "size", "Landroid/graphics/Point;", "showBorder", "alpha", "delay", "", "showCornerViews", "show", "showInvisible", "updateBorderRect", "Companion", "CornerStyle", "OnOperationCallback", "Style", "plugin-recordvideo_release"})
 public final class WxCropOperationLayout
   extends FrameLayout
   implements GestureDetector.OnGestureListener
 {
-  public static final WxCropOperationLayout.g xIJ;
+  public static final WxCropOperationLayout.g xYE;
   private int bgColor;
   private final Paint paint;
-  private final f sPP;
-  private WxCropOperationLayout.j tKV;
-  private final f xHR;
-  private final f xHS;
-  private final f xHT;
-  private final f xHU;
-  private final f xHV;
-  private final f xHW;
-  private final f xHX;
-  private final f xHY;
-  private final f xHZ;
-  private final RectF xIA;
-  private final PorterDuffXfermode xIB;
-  private boolean xIC;
-  private boolean xID;
-  private com.tencent.mm.ui.widget.cropview.b xIE;
-  public ValueAnimator xIF;
-  private final RectF xIG;
-  private final PointF xIH;
-  private final PointF xII;
-  private final Path xIa;
-  private final Path xIb;
-  private final Path xIc;
-  private final Path xId;
-  private final Path xIe;
-  private final Path xIf;
-  private final Path xIg;
-  private final Paint xIh;
-  private final Paint xIi;
-  private final Paint xIj;
-  private final Paint xIk;
-  private final Paint xIl;
-  private final RectF xIm;
-  private final RectF xIn;
-  public int xIo;
-  private i xIp;
-  private d.g.a.a<z> xIq;
-  private boolean xIr;
-  private final f xIs;
-  private final View[] xIt;
-  public boolean xIu;
-  private ValueAnimator xIv;
-  private final RectF xIw;
-  private float xIx;
-  private float xIy;
-  private final RectF xIz;
+  private j tVM;
+  private final f tbc;
+  private final f xXM;
+  private final f xXN;
+  private final f xXO;
+  private final f xXP;
+  private final f xXQ;
+  private final f xXR;
+  private final f xXS;
+  private final f xXT;
+  private final f xXU;
+  private final Path xXV;
+  private final Path xXW;
+  private final Path xXX;
+  private final Path xXY;
+  private final Path xXZ;
+  public ValueAnimator xYA;
+  private final RectF xYB;
+  private final PointF xYC;
+  private final PointF xYD;
+  private final Path xYa;
+  private final Path xYb;
+  private final Paint xYc;
+  private final Paint xYd;
+  private final Paint xYe;
+  private final Paint xYf;
+  private final Paint xYg;
+  private final RectF xYh;
+  private final RectF xYi;
+  public int xYj;
+  private i xYk;
+  private d.g.a.a<z> xYl;
+  private boolean xYm;
+  private final f xYn;
+  private final View[] xYo;
+  public boolean xYp;
+  private ValueAnimator xYq;
+  private final RectF xYr;
+  private float xYs;
+  private float xYt;
+  private final RectF xYu;
+  private final RectF xYv;
+  private final PorterDuffXfermode xYw;
+  private boolean xYx;
+  private boolean xYy;
+  private com.tencent.mm.ui.widget.cropview.b xYz;
   
   static
   {
-    AppMethodBeat.i(200494);
-    xIJ = new WxCropOperationLayout.g((byte)0);
-    AppMethodBeat.o(200494);
+    AppMethodBeat.i(206755);
+    xYE = new WxCropOperationLayout.g((byte)0);
+    AppMethodBeat.o(206755);
   }
   
   public WxCropOperationLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(200491);
-    this.xHR = g.O((d.g.a.a)new c(this));
-    this.xHS = g.O((d.g.a.a)new b(this));
-    this.xHT = g.O((d.g.a.a)new f(this));
-    this.xHU = g.O((d.g.a.a)new a(this));
-    this.xHV = g.O((d.g.a.a)new d(this));
-    this.xHW = g.O((d.g.a.a)new e(this));
-    this.xHX = g.O((d.g.a.a)new k(this));
-    this.xHY = g.O((d.g.a.a)new l(this));
-    this.xHZ = g.O((d.g.a.a)new m(this));
-    this.sPP = g.O((d.g.a.a)new s(this));
-    this.xIa = new Path();
-    this.xIb = new Path();
-    this.xIc = new Path();
-    this.xId = new Path();
-    this.xIe = new Path();
-    this.xIf = new Path();
-    this.xIg = new Path();
-    this.xIh = new Paint();
-    this.xIi = new Paint();
-    this.xIj = new Paint();
-    this.xIk = new Paint();
-    this.xIl = new Paint();
-    this.xIm = new RectF();
-    this.xIn = new RectF();
-    this.tKV = WxCropOperationLayout.j.xIV;
-    this.xIs = g.O((d.g.a.a)new n(this));
+    AppMethodBeat.i(206752);
+    this.xXM = g.O((d.g.a.a)new c(this));
+    this.xXN = g.O((d.g.a.a)new b(this));
+    this.xXO = g.O((d.g.a.a)new f(this));
+    this.xXP = g.O((d.g.a.a)new a(this));
+    this.xXQ = g.O((d.g.a.a)new d(this));
+    this.xXR = g.O((d.g.a.a)new e(this));
+    this.xXS = g.O((d.g.a.a)new k(this));
+    this.xXT = g.O((d.g.a.a)new l(this));
+    this.xXU = g.O((d.g.a.a)new m(this));
+    this.tbc = g.O((d.g.a.a)new s(this));
+    this.xXV = new Path();
+    this.xXW = new Path();
+    this.xXX = new Path();
+    this.xXY = new Path();
+    this.xXZ = new Path();
+    this.xYa = new Path();
+    this.xYb = new Path();
+    this.xYc = new Paint();
+    this.xYd = new Paint();
+    this.xYe = new Paint();
+    this.xYf = new Paint();
+    this.xYg = new Paint();
+    this.xYh = new RectF();
+    this.xYi = new RectF();
+    this.tVM = j.xYQ;
+    this.xYn = g.O((d.g.a.a)new n(this));
     paramContext = new View[8];
     int i = 0;
     while (i < 8)
@@ -133,24 +133,24 @@ public final class WxCropOperationLayout
       paramContext[i] = null;
       i += 1;
     }
-    this.xIt = paramContext;
-    this.xIu = true;
+    this.xYo = paramContext;
+    this.xYp = true;
     setBackgroundColor(0);
-    this.xIh.setColor(-1);
-    this.xIh.setStrokeWidth(getBOX_LINE_WIDTH());
-    this.xIh.setStyle(Paint.Style.STROKE);
-    this.xIh.setAntiAlias(true);
-    this.xIi.set(this.xIh);
-    this.xIi.setStrokeWidth(getBOX_GIRD_WIDTH());
-    this.xIj.set(this.xIh);
-    this.xIj.setStrokeWidth(getCORNER_WIDTH());
-    this.xIk.set(this.xIh);
-    this.xIk.setStrokeCap(Paint.Cap.ROUND);
-    this.xIk.setStrokeWidth(getBLOCK_WIDTH());
-    this.xIl.set(this.xIh);
-    this.xIl.setStrokeCap(Paint.Cap.ROUND);
-    this.xIl.setStrokeWidth(getBOX_GIRD_WIDTH());
-    this.xIl.setColor(-7829368);
+    this.xYc.setColor(-1);
+    this.xYc.setStrokeWidth(getBOX_LINE_WIDTH());
+    this.xYc.setStyle(Paint.Style.STROKE);
+    this.xYc.setAntiAlias(true);
+    this.xYd.set(this.xYc);
+    this.xYd.setStrokeWidth(getBOX_GIRD_WIDTH());
+    this.xYe.set(this.xYc);
+    this.xYe.setStrokeWidth(getCORNER_WIDTH());
+    this.xYf.set(this.xYc);
+    this.xYf.setStrokeCap(Paint.Cap.ROUND);
+    this.xYf.setStrokeWidth(getBLOCK_WIDTH());
+    this.xYg.set(this.xYc);
+    this.xYg.setStrokeCap(Paint.Cap.ROUND);
+    this.xYg.setStrokeWidth(getBOX_GIRD_WIDTH());
+    this.xYg.setColor(-7829368);
     this.bgColor = Color.parseColor("#bf232323");
     paramContext = new Paint();
     paramContext.setDither(false);
@@ -158,46 +158,46 @@ public final class WxCropOperationLayout
     paramContext.setStyle(Paint.Style.FILL);
     paramContext.setFilterBitmap(true);
     this.paint = paramContext;
-    this.xIw = new RectF();
-    this.xIz = new RectF();
-    this.xIA = new RectF();
-    this.xIB = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-    this.xIG = new RectF();
-    this.xIH = new PointF();
-    this.xII = new PointF();
-    AppMethodBeat.o(200491);
+    this.xYr = new RectF();
+    this.xYu = new RectF();
+    this.xYv = new RectF();
+    this.xYw = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+    this.xYB = new RectF();
+    this.xYC = new PointF();
+    this.xYD = new PointF();
+    AppMethodBeat.o(206752);
   }
   
   public WxCropOperationLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200492);
-    this.xHR = g.O((d.g.a.a)new c(this));
-    this.xHS = g.O((d.g.a.a)new b(this));
-    this.xHT = g.O((d.g.a.a)new f(this));
-    this.xHU = g.O((d.g.a.a)new a(this));
-    this.xHV = g.O((d.g.a.a)new d(this));
-    this.xHW = g.O((d.g.a.a)new e(this));
-    this.xHX = g.O((d.g.a.a)new k(this));
-    this.xHY = g.O((d.g.a.a)new l(this));
-    this.xHZ = g.O((d.g.a.a)new m(this));
-    this.sPP = g.O((d.g.a.a)new s(this));
-    this.xIa = new Path();
-    this.xIb = new Path();
-    this.xIc = new Path();
-    this.xId = new Path();
-    this.xIe = new Path();
-    this.xIf = new Path();
-    this.xIg = new Path();
-    this.xIh = new Paint();
-    this.xIi = new Paint();
-    this.xIj = new Paint();
-    this.xIk = new Paint();
-    this.xIl = new Paint();
-    this.xIm = new RectF();
-    this.xIn = new RectF();
-    this.tKV = WxCropOperationLayout.j.xIV;
-    this.xIs = g.O((d.g.a.a)new n(this));
+    AppMethodBeat.i(206753);
+    this.xXM = g.O((d.g.a.a)new c(this));
+    this.xXN = g.O((d.g.a.a)new b(this));
+    this.xXO = g.O((d.g.a.a)new f(this));
+    this.xXP = g.O((d.g.a.a)new a(this));
+    this.xXQ = g.O((d.g.a.a)new d(this));
+    this.xXR = g.O((d.g.a.a)new e(this));
+    this.xXS = g.O((d.g.a.a)new k(this));
+    this.xXT = g.O((d.g.a.a)new l(this));
+    this.xXU = g.O((d.g.a.a)new m(this));
+    this.tbc = g.O((d.g.a.a)new s(this));
+    this.xXV = new Path();
+    this.xXW = new Path();
+    this.xXX = new Path();
+    this.xXY = new Path();
+    this.xXZ = new Path();
+    this.xYa = new Path();
+    this.xYb = new Path();
+    this.xYc = new Paint();
+    this.xYd = new Paint();
+    this.xYe = new Paint();
+    this.xYf = new Paint();
+    this.xYg = new Paint();
+    this.xYh = new RectF();
+    this.xYi = new RectF();
+    this.tVM = j.xYQ;
+    this.xYn = g.O((d.g.a.a)new n(this));
     paramContext = new View[8];
     int i = 0;
     while (i < 8)
@@ -205,24 +205,24 @@ public final class WxCropOperationLayout
       paramContext[i] = null;
       i += 1;
     }
-    this.xIt = paramContext;
-    this.xIu = true;
+    this.xYo = paramContext;
+    this.xYp = true;
     setBackgroundColor(0);
-    this.xIh.setColor(-1);
-    this.xIh.setStrokeWidth(getBOX_LINE_WIDTH());
-    this.xIh.setStyle(Paint.Style.STROKE);
-    this.xIh.setAntiAlias(true);
-    this.xIi.set(this.xIh);
-    this.xIi.setStrokeWidth(getBOX_GIRD_WIDTH());
-    this.xIj.set(this.xIh);
-    this.xIj.setStrokeWidth(getCORNER_WIDTH());
-    this.xIk.set(this.xIh);
-    this.xIk.setStrokeCap(Paint.Cap.ROUND);
-    this.xIk.setStrokeWidth(getBLOCK_WIDTH());
-    this.xIl.set(this.xIh);
-    this.xIl.setStrokeCap(Paint.Cap.ROUND);
-    this.xIl.setStrokeWidth(getBOX_GIRD_WIDTH());
-    this.xIl.setColor(-7829368);
+    this.xYc.setColor(-1);
+    this.xYc.setStrokeWidth(getBOX_LINE_WIDTH());
+    this.xYc.setStyle(Paint.Style.STROKE);
+    this.xYc.setAntiAlias(true);
+    this.xYd.set(this.xYc);
+    this.xYd.setStrokeWidth(getBOX_GIRD_WIDTH());
+    this.xYe.set(this.xYc);
+    this.xYe.setStrokeWidth(getCORNER_WIDTH());
+    this.xYf.set(this.xYc);
+    this.xYf.setStrokeCap(Paint.Cap.ROUND);
+    this.xYf.setStrokeWidth(getBLOCK_WIDTH());
+    this.xYg.set(this.xYc);
+    this.xYg.setStrokeCap(Paint.Cap.ROUND);
+    this.xYg.setStrokeWidth(getBOX_GIRD_WIDTH());
+    this.xYg.setColor(-7829368);
     this.bgColor = Color.parseColor("#bf232323");
     paramContext = new Paint();
     paramContext.setDither(false);
@@ -230,46 +230,46 @@ public final class WxCropOperationLayout
     paramContext.setStyle(Paint.Style.FILL);
     paramContext.setFilterBitmap(true);
     this.paint = paramContext;
-    this.xIw = new RectF();
-    this.xIz = new RectF();
-    this.xIA = new RectF();
-    this.xIB = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-    this.xIG = new RectF();
-    this.xIH = new PointF();
-    this.xII = new PointF();
-    AppMethodBeat.o(200492);
+    this.xYr = new RectF();
+    this.xYu = new RectF();
+    this.xYv = new RectF();
+    this.xYw = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+    this.xYB = new RectF();
+    this.xYC = new PointF();
+    this.xYD = new PointF();
+    AppMethodBeat.o(206753);
   }
   
   public WxCropOperationLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200493);
-    this.xHR = g.O((d.g.a.a)new c(this));
-    this.xHS = g.O((d.g.a.a)new b(this));
-    this.xHT = g.O((d.g.a.a)new f(this));
-    this.xHU = g.O((d.g.a.a)new a(this));
-    this.xHV = g.O((d.g.a.a)new d(this));
-    this.xHW = g.O((d.g.a.a)new e(this));
-    this.xHX = g.O((d.g.a.a)new k(this));
-    this.xHY = g.O((d.g.a.a)new l(this));
-    this.xHZ = g.O((d.g.a.a)new m(this));
-    this.sPP = g.O((d.g.a.a)new s(this));
-    this.xIa = new Path();
-    this.xIb = new Path();
-    this.xIc = new Path();
-    this.xId = new Path();
-    this.xIe = new Path();
-    this.xIf = new Path();
-    this.xIg = new Path();
-    this.xIh = new Paint();
-    this.xIi = new Paint();
-    this.xIj = new Paint();
-    this.xIk = new Paint();
-    this.xIl = new Paint();
-    this.xIm = new RectF();
-    this.xIn = new RectF();
-    this.tKV = WxCropOperationLayout.j.xIV;
-    this.xIs = g.O((d.g.a.a)new n(this));
+    AppMethodBeat.i(206754);
+    this.xXM = g.O((d.g.a.a)new c(this));
+    this.xXN = g.O((d.g.a.a)new b(this));
+    this.xXO = g.O((d.g.a.a)new f(this));
+    this.xXP = g.O((d.g.a.a)new a(this));
+    this.xXQ = g.O((d.g.a.a)new d(this));
+    this.xXR = g.O((d.g.a.a)new e(this));
+    this.xXS = g.O((d.g.a.a)new k(this));
+    this.xXT = g.O((d.g.a.a)new l(this));
+    this.xXU = g.O((d.g.a.a)new m(this));
+    this.tbc = g.O((d.g.a.a)new s(this));
+    this.xXV = new Path();
+    this.xXW = new Path();
+    this.xXX = new Path();
+    this.xXY = new Path();
+    this.xXZ = new Path();
+    this.xYa = new Path();
+    this.xYb = new Path();
+    this.xYc = new Paint();
+    this.xYd = new Paint();
+    this.xYe = new Paint();
+    this.xYf = new Paint();
+    this.xYg = new Paint();
+    this.xYh = new RectF();
+    this.xYi = new RectF();
+    this.tVM = j.xYQ;
+    this.xYn = g.O((d.g.a.a)new n(this));
     paramContext = new View[8];
     paramInt = 0;
     while (paramInt < 8)
@@ -277,24 +277,24 @@ public final class WxCropOperationLayout
       paramContext[paramInt] = null;
       paramInt += 1;
     }
-    this.xIt = paramContext;
-    this.xIu = true;
+    this.xYo = paramContext;
+    this.xYp = true;
     setBackgroundColor(0);
-    this.xIh.setColor(-1);
-    this.xIh.setStrokeWidth(getBOX_LINE_WIDTH());
-    this.xIh.setStyle(Paint.Style.STROKE);
-    this.xIh.setAntiAlias(true);
-    this.xIi.set(this.xIh);
-    this.xIi.setStrokeWidth(getBOX_GIRD_WIDTH());
-    this.xIj.set(this.xIh);
-    this.xIj.setStrokeWidth(getCORNER_WIDTH());
-    this.xIk.set(this.xIh);
-    this.xIk.setStrokeCap(Paint.Cap.ROUND);
-    this.xIk.setStrokeWidth(getBLOCK_WIDTH());
-    this.xIl.set(this.xIh);
-    this.xIl.setStrokeCap(Paint.Cap.ROUND);
-    this.xIl.setStrokeWidth(getBOX_GIRD_WIDTH());
-    this.xIl.setColor(-7829368);
+    this.xYc.setColor(-1);
+    this.xYc.setStrokeWidth(getBOX_LINE_WIDTH());
+    this.xYc.setStyle(Paint.Style.STROKE);
+    this.xYc.setAntiAlias(true);
+    this.xYd.set(this.xYc);
+    this.xYd.setStrokeWidth(getBOX_GIRD_WIDTH());
+    this.xYe.set(this.xYc);
+    this.xYe.setStrokeWidth(getCORNER_WIDTH());
+    this.xYf.set(this.xYc);
+    this.xYf.setStrokeCap(Paint.Cap.ROUND);
+    this.xYf.setStrokeWidth(getBLOCK_WIDTH());
+    this.xYg.set(this.xYc);
+    this.xYg.setStrokeCap(Paint.Cap.ROUND);
+    this.xYg.setStrokeWidth(getBOX_GIRD_WIDTH());
+    this.xYg.setColor(-7829368);
     this.bgColor = Color.parseColor("#bf232323");
     paramContext = new Paint();
     paramContext.setDither(false);
@@ -302,20 +302,20 @@ public final class WxCropOperationLayout
     paramContext.setStyle(Paint.Style.FILL);
     paramContext.setFilterBitmap(true);
     this.paint = paramContext;
-    this.xIw = new RectF();
-    this.xIz = new RectF();
-    this.xIA = new RectF();
-    this.xIB = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-    this.xIG = new RectF();
-    this.xIH = new PointF();
-    this.xII = new PointF();
-    AppMethodBeat.o(200493);
+    this.xYr = new RectF();
+    this.xYu = new RectF();
+    this.xYv = new RectF();
+    this.xYw = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+    this.xYB = new RectF();
+    this.xYC = new PointF();
+    this.xYD = new PointF();
+    AppMethodBeat.o(206754);
   }
   
-  private void dHo()
+  private void dKF()
   {
-    AppMethodBeat.i(200482);
-    Object localObject1 = this.xIt;
+    AppMethodBeat.i(206743);
+    Object localObject1 = this.xYo;
     int j = localObject1.length;
     int i = 0;
     while (i < j)
@@ -326,139 +326,139 @@ public final class WxCropOperationLayout
       }
       i += 1;
     }
-    localObject1 = this.xIE;
+    localObject1 = this.xYz;
     if (localObject1 != null)
     {
-      ((com.tencent.mm.ui.widget.cropview.b)localObject1).yN(false);
-      AppMethodBeat.o(200482);
+      ((com.tencent.mm.ui.widget.cropview.b)localObject1).zb(false);
+      AppMethodBeat.o(206743);
       return;
     }
-    AppMethodBeat.o(200482);
+    AppMethodBeat.o(206743);
   }
   
   private final float getBLOCK_WIDTH()
   {
-    AppMethodBeat.i(200460);
-    float f = ((Number)this.xHU.getValue()).floatValue();
-    AppMethodBeat.o(200460);
+    AppMethodBeat.i(206721);
+    float f = ((Number)this.xXP.getValue()).floatValue();
+    AppMethodBeat.o(206721);
     return f;
   }
   
   private final float getBOX_GIRD_WIDTH()
   {
-    AppMethodBeat.i(200458);
-    float f = ((Number)this.xHS.getValue()).floatValue();
-    AppMethodBeat.o(200458);
+    AppMethodBeat.i(206719);
+    float f = ((Number)this.xXN.getValue()).floatValue();
+    AppMethodBeat.o(206719);
     return f;
   }
   
   private final float getBOX_LINE_WIDTH()
   {
-    AppMethodBeat.i(200457);
-    float f = ((Number)this.xHR.getValue()).floatValue();
-    AppMethodBeat.o(200457);
+    AppMethodBeat.i(206718);
+    float f = ((Number)this.xXM.getValue()).floatValue();
+    AppMethodBeat.o(206718);
     return f;
   }
   
   private final float getBOX_PADDING()
   {
-    AppMethodBeat.i(200461);
-    float f = ((Number)this.xHV.getValue()).floatValue();
-    AppMethodBeat.o(200461);
+    AppMethodBeat.i(206722);
+    float f = ((Number)this.xXQ.getValue()).floatValue();
+    AppMethodBeat.o(206722);
     return f;
   }
   
   private final Drawable getBlockDrawable()
   {
-    AppMethodBeat.i(200468);
-    Drawable localDrawable = (Drawable)this.xIs.getValue();
-    AppMethodBeat.o(200468);
+    AppMethodBeat.i(206729);
+    Drawable localDrawable = (Drawable)this.xYn.getValue();
+    AppMethodBeat.o(206729);
     return localDrawable;
   }
   
   private final float getCORNER_LENGTH()
   {
-    AppMethodBeat.i(200462);
-    float f = ((Number)this.xHW.getValue()).floatValue();
-    AppMethodBeat.o(200462);
+    AppMethodBeat.i(206723);
+    float f = ((Number)this.xXR.getValue()).floatValue();
+    AppMethodBeat.o(206723);
     return f;
   }
   
   private final float getCORNER_WIDTH()
   {
-    AppMethodBeat.i(200459);
-    float f = ((Number)this.xHT.getValue()).floatValue();
-    AppMethodBeat.o(200459);
+    AppMethodBeat.i(206720);
+    float f = ((Number)this.xXO.getValue()).floatValue();
+    AppMethodBeat.o(206720);
     return f;
   }
   
   private final float getTOUCH_BLOCK_PADDING()
   {
-    AppMethodBeat.i(200463);
-    float f = ((Number)this.xHX.getValue()).floatValue();
-    AppMethodBeat.o(200463);
+    AppMethodBeat.i(206724);
+    float f = ((Number)this.xXS.getValue()).floatValue();
+    AppMethodBeat.o(206724);
     return f;
   }
   
   private final GestureDetector getTouchDetector()
   {
-    AppMethodBeat.i(200466);
-    GestureDetector localGestureDetector = (GestureDetector)this.sPP.getValue();
-    AppMethodBeat.o(200466);
+    AppMethodBeat.i(206727);
+    GestureDetector localGestureDetector = (GestureDetector)this.tbc.getValue();
+    AppMethodBeat.o(206727);
     return localGestureDetector;
   }
   
   private final int get_1A()
   {
-    AppMethodBeat.i(200464);
-    int i = ((Number)this.xHY.getValue()).intValue();
-    AppMethodBeat.o(200464);
+    AppMethodBeat.i(206725);
+    int i = ((Number)this.xXT.getValue()).intValue();
+    AppMethodBeat.o(206725);
     return i;
   }
   
   private final int get_4A()
   {
-    AppMethodBeat.i(200465);
-    int i = ((Number)this.xHZ.getValue()).intValue();
-    AppMethodBeat.o(200465);
+    AppMethodBeat.i(206726);
+    int i = ((Number)this.xXU.getValue()).intValue();
+    AppMethodBeat.o(206726);
     return i;
   }
   
   public final void a(View paramView, h paramh)
   {
-    AppMethodBeat.i(200469);
+    AppMethodBeat.i(206730);
     p.h(paramView, "view");
     p.h(paramh, "style");
-    View localView = this.xIt[paramh.value];
+    View localView = this.xYo[paramh.value];
     if (localView != null) {
       removeView(localView);
     }
-    this.xIt[paramh.value] = paramView;
+    this.xYo[paramh.value] = paramView;
     addView(paramView);
-    AppMethodBeat.o(200469);
+    AppMethodBeat.o(206730);
   }
   
   public final void a(h paramh)
   {
-    AppMethodBeat.i(200471);
+    AppMethodBeat.i(206732);
     p.h(paramh, "style");
-    View localView = this.xIt[paramh.value];
+    View localView = this.xYo[paramh.value];
     if (localView != null) {
       removeView(localView);
     }
-    this.xIt[paramh.value] = null;
-    AppMethodBeat.o(200471);
+    this.xYo[paramh.value] = null;
+    AppMethodBeat.o(206732);
   }
   
   public final void ar(int paramInt, final long paramLong)
   {
-    AppMethodBeat.i(200479);
-    ValueAnimator localValueAnimator = this.xIF;
+    AppMethodBeat.i(206740);
+    ValueAnimator localValueAnimator = this.xYA;
     if (localValueAnimator != null) {
       localValueAnimator.end();
     }
     new StringBuilder("[animBorder] alpha=").append(paramInt).append(" delay=").append(paramLong);
-    localValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("alpha", new int[] { this.xIo, paramInt }) });
+    localValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("alpha", new int[] { this.xYj, paramInt }) });
     if (localValueAnimator != null)
     {
       localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new p(this, paramLong));
@@ -468,23 +468,23 @@ public final class WxCropOperationLayout
     }
     for (;;)
     {
-      this.xIF = localValueAnimator;
+      this.xYA = localValueAnimator;
       if (paramInt != 0) {
         break;
       }
-      dHn();
-      AppMethodBeat.o(200479);
+      dKE();
+      AppMethodBeat.o(206740);
       return;
       localValueAnimator = null;
     }
-    dHo();
-    AppMethodBeat.o(200479);
+    dKF();
+    AppMethodBeat.o(206740);
   }
   
-  public final void dHm()
+  public final void dKD()
   {
-    AppMethodBeat.i(200470);
-    View[] arrayOfView = this.xIt;
+    AppMethodBeat.i(206731);
+    View[] arrayOfView = this.xYo;
     int j = arrayOfView.length;
     int i = 0;
     while (i < j)
@@ -495,17 +495,17 @@ public final class WxCropOperationLayout
       }
       i += 1;
     }
-    AppMethodBeat.o(200470);
+    AppMethodBeat.o(206731);
   }
   
-  public final void dHn()
+  public final void dKE()
   {
-    AppMethodBeat.i(200481);
-    this.xIo = 255;
+    AppMethodBeat.i(206742);
+    this.xYj = 255;
     Object localObject = getContext();
     p.g(localObject, "context");
     final float f = ((Context)localObject).getResources().getDimension(2131165289);
-    localObject = this.xIt;
+    localObject = this.xYo;
     final int i = 0;
     int k = localObject.length;
     int j = 0;
@@ -521,42 +521,42 @@ public final class WxCropOperationLayout
       j += 1;
       i += 1;
     }
-    localObject = this.xIE;
+    localObject = this.xYz;
     if (localObject != null)
     {
-      ((com.tencent.mm.ui.widget.cropview.b)localObject).yN(true);
-      AppMethodBeat.o(200481);
+      ((com.tencent.mm.ui.widget.cropview.b)localObject).zb(true);
+      AppMethodBeat.o(206742);
       return;
     }
-    AppMethodBeat.o(200481);
+    AppMethodBeat.o(206742);
   }
   
-  public final void dHp()
+  public final void dKG()
   {
-    AppMethodBeat.i(200489);
-    ValueAnimator localValueAnimator = this.xIv;
+    AppMethodBeat.i(206750);
+    ValueAnimator localValueAnimator = this.xYq;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
     localValueAnimator = ValueAnimator.ofArgb(new int[] { this.bgColor, -14474461 });
     localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new o(this));
     localValueAnimator.start();
-    this.xIv = localValueAnimator;
-    AppMethodBeat.o(200489);
+    this.xYq = localValueAnimator;
+    AppMethodBeat.o(206750);
   }
   
-  public final void dHq()
+  public final void dKH()
   {
-    AppMethodBeat.i(200490);
-    ValueAnimator localValueAnimator = this.xIv;
+    AppMethodBeat.i(206751);
+    ValueAnimator localValueAnimator = this.xYq;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
     localValueAnimator = ValueAnimator.ofArgb(new int[] { this.bgColor, -1088216285 });
     localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new r(this));
     localValueAnimator.start();
-    this.xIv = localValueAnimator;
-    AppMethodBeat.o(200490);
+    this.xYq = localValueAnimator;
+    AppMethodBeat.o(206751);
   }
   
   public final int getBgColor()
@@ -566,142 +566,142 @@ public final class WxCropOperationLayout
   
   public final boolean getBlockOutsideTouch()
   {
-    return this.xIr;
+    return this.xYm;
   }
   
   public final com.tencent.mm.ui.widget.cropview.b getBorderVisibilityCallback()
   {
-    return this.xIE;
+    return this.xYz;
   }
   
   public final float getLimitMaxHeight()
   {
-    return this.xIx;
+    return this.xYs;
   }
   
   public final float getLimitMinHeight()
   {
-    return this.xIy;
+    return this.xYt;
   }
   
   public final i getOnOperationCallback()
   {
-    return this.xIp;
+    return this.xYk;
   }
   
   public final d.g.a.a<z> getOutsideTouckListener()
   {
-    return this.xIq;
+    return this.xYl;
   }
   
-  public final WxCropOperationLayout.j getStyle()
+  public final j getStyle()
   {
-    return this.tKV;
+    return this.tVM;
   }
   
   public final RectF getVisibilityRect()
   {
-    return this.xIw;
+    return this.xYr;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(200483);
+    AppMethodBeat.i(206744);
     super.onDetachedFromWindow();
-    ValueAnimator localValueAnimator = this.xIF;
+    ValueAnimator localValueAnimator = this.xYA;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    localValueAnimator = this.xIv;
+    localValueAnimator = this.xYq;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      AppMethodBeat.o(200483);
+      AppMethodBeat.o(206744);
       return;
     }
-    AppMethodBeat.o(200483);
+    AppMethodBeat.o(206744);
   }
   
   public final boolean onDown(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200486);
+    AppMethodBeat.i(206747);
     p.h(paramMotionEvent, "event");
     Object localObject;
-    if (!this.xIw.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+    if (!this.xYr.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
     {
-      localObject = this.xIq;
+      localObject = this.xYl;
       if (localObject != null) {
         ((d.g.a.a)localObject).invoke();
       }
     }
-    if (this.tKV == WxCropOperationLayout.j.xIV)
+    if (this.tVM == j.xYQ)
     {
-      this.xID = false;
-      this.xIC = false;
-      if (this.xIm.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+      this.xYy = false;
+      this.xYx = false;
+      if (this.xYh.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
       {
-        this.xIC = true;
-        localObject = this.xIp;
+        this.xYx = true;
+        localObject = this.xYk;
         if (localObject != null) {
-          ((i)localObject).mO(true);
+          ((i)localObject).mS(true);
         }
       }
       for (;;)
       {
-        if ((this.xIC) || (this.xID)) {
+        if ((this.xYx) || (this.xYy)) {
           ar(255, 0L);
         }
-        if ((!this.xIC) && (!this.xID) && ((!this.xIr) || (this.xIw.contains(paramMotionEvent.getX(), paramMotionEvent.getY())))) {
+        if ((!this.xYx) && (!this.xYy) && ((!this.xYm) || (this.xYr.contains(paramMotionEvent.getX(), paramMotionEvent.getY())))) {
           break;
         }
-        AppMethodBeat.o(200486);
+        AppMethodBeat.o(206747);
         return true;
-        if (this.xIn.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+        if (this.xYi.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
         {
-          this.xID = true;
-          localObject = this.xIp;
+          this.xYy = true;
+          localObject = this.xYk;
           if (localObject != null) {
-            ((i)localObject).mO(false);
+            ((i)localObject).mS(false);
           }
         }
       }
-      AppMethodBeat.o(200486);
+      AppMethodBeat.o(206747);
       return false;
     }
-    AppMethodBeat.o(200486);
+    AppMethodBeat.o(206747);
     return false;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(200476);
+    AppMethodBeat.i(206737);
     p.h(paramCanvas, "canvas");
-    int i = paramCanvas.saveLayer(this.xIz, null);
-    paramCanvas.drawRect(this.xIz, this.paint);
-    this.paint.setXfermode((Xfermode)this.xIB);
-    if (WxCropOperationLayout.j.xIU == this.tKV)
+    int i = paramCanvas.saveLayer(this.xYu, null);
+    paramCanvas.drawRect(this.xYu, this.paint);
+    this.paint.setXfermode((Xfermode)this.xYw);
+    if (j.xYP == this.tVM)
     {
-      paramCanvas.drawCircle(this.xIw.centerX(), this.xIw.centerY(), Math.min(this.xIw.width(), this.xIw.height()) / 2.0F, this.paint);
+      paramCanvas.drawCircle(this.xYr.centerX(), this.xYr.centerY(), Math.min(this.xYr.width(), this.xYr.height()) / 2.0F, this.paint);
       this.paint.setXfermode(null);
       paramCanvas.restoreToCount(i);
-      if ((this.tKV != WxCropOperationLayout.j.xIU) && (this.tKV != WxCropOperationLayout.j.xIW)) {
+      if ((this.tVM != j.xYP) && (this.tVM != j.xYR)) {
         break label396;
       }
     }
     for (;;)
     {
-      if ((this.tKV == WxCropOperationLayout.j.xIV) || (this.tKV == WxCropOperationLayout.j.xIX))
+      if ((this.tVM == j.xYQ) || (this.tVM == j.xYS))
       {
-        this.xIi.setAlpha(this.xIo);
-        this.xIh.setAlpha(this.xIo);
-        if (this.xIu) {
-          paramCanvas.drawPath(this.xIa, this.xIi);
+        this.xYd.setAlpha(this.xYj);
+        this.xYc.setAlpha(this.xYj);
+        if (this.xYp) {
+          paramCanvas.drawPath(this.xXV, this.xYd);
         }
-        paramCanvas.drawRect(this.xIA, this.xIi);
-        if (this.tKV == WxCropOperationLayout.j.xIV)
+        paramCanvas.drawRect(this.xYv, this.xYd);
+        if (this.tVM == j.xYQ)
         {
           paramCanvas.save();
-          paramCanvas.translate(this.xII.x, this.xII.y);
+          paramCanvas.translate(this.xYD.x, this.xYD.y);
           if ((getBlockDrawable() instanceof BitmapDrawable))
           {
             getBlockDrawable().setBounds(0, 0, get_4A(), get_1A());
@@ -709,7 +709,7 @@ public final class WxCropOperationLayout
           }
           paramCanvas.restore();
           paramCanvas.save();
-          paramCanvas.translate(this.xIH.x, this.xIH.y);
+          paramCanvas.translate(this.xYC.x, this.xYC.y);
           if ((getBlockDrawable() instanceof BitmapDrawable))
           {
             getBlockDrawable().setBounds(0, 0, get_4A(), get_1A());
@@ -718,38 +718,38 @@ public final class WxCropOperationLayout
           paramCanvas.restore();
         }
       }
-      AppMethodBeat.o(200476);
+      AppMethodBeat.o(206737);
       return;
-      if ((WxCropOperationLayout.j.xIV != this.tKV) && (WxCropOperationLayout.j.xIW != this.tKV) && (WxCropOperationLayout.j.xIX != this.tKV)) {
+      if ((j.xYQ != this.tVM) && (j.xYR != this.tVM) && (j.xYS != this.tVM)) {
         break;
       }
-      paramCanvas.drawRect(this.xIw, this.paint);
+      paramCanvas.drawRect(this.xYr, this.paint);
       break;
       label396:
-      if (!p.i(this.xIw, this.xIG))
+      if (!p.i(this.xYr, this.xYB))
       {
-        this.xIG.set(this.xIw);
-        i locali = this.xIp;
+        this.xYB.set(this.xYr);
+        i locali = this.xYk;
         if (locali != null) {
-          locali.e(this.xIw);
+          locali.e(this.xYr);
         }
-        this.xIA.set(this.xIw);
-        this.xIA.set(this.xIw.left + getBOX_PADDING(), this.xIw.top + getBOX_PADDING(), this.xIw.right - getBOX_PADDING(), this.xIw.bottom - getBOX_PADDING());
-        float f1 = this.xIA.left + this.xIA.width() / 2.0F;
-        float f2 = this.xIA.bottom;
-        this.xIn.set(f1 - getTOUCH_BLOCK_PADDING() * 2.0F, f2 - getTOUCH_BLOCK_PADDING() * 1.5F, getTOUCH_BLOCK_PADDING() * 2.0F + f1, f2 + getTOUCH_BLOCK_PADDING() * 1.5F);
-        this.xIH.set(this.xIA.width() / 2.0F - get_4A() / 2 + this.xIw.left, this.xIA.top - get_1A() / 2);
-        this.xII.set(this.xIA.width() / 2.0F - get_4A() / 2 + this.xIw.left, this.xIA.bottom - get_1A() / 2);
-        f2 = this.xIA.top;
-        this.xIm.set(f1 - getTOUCH_BLOCK_PADDING() * 2.0F, f2 - getTOUCH_BLOCK_PADDING() * 1.5F, f1 + getTOUCH_BLOCK_PADDING() * 2.0F, f2 + getTOUCH_BLOCK_PADDING() * 1.5F);
-        this.xIa.reset();
+        this.xYv.set(this.xYr);
+        this.xYv.set(this.xYr.left + getBOX_PADDING(), this.xYr.top + getBOX_PADDING(), this.xYr.right - getBOX_PADDING(), this.xYr.bottom - getBOX_PADDING());
+        float f1 = this.xYv.left + this.xYv.width() / 2.0F;
+        float f2 = this.xYv.bottom;
+        this.xYi.set(f1 - getTOUCH_BLOCK_PADDING() * 2.0F, f2 - getTOUCH_BLOCK_PADDING() * 1.5F, getTOUCH_BLOCK_PADDING() * 2.0F + f1, f2 + getTOUCH_BLOCK_PADDING() * 1.5F);
+        this.xYC.set(this.xYv.width() / 2.0F - get_4A() / 2 + this.xYr.left, this.xYv.top - get_1A() / 2);
+        this.xYD.set(this.xYv.width() / 2.0F - get_4A() / 2 + this.xYr.left, this.xYv.bottom - get_1A() / 2);
+        f2 = this.xYv.top;
+        this.xYh.set(f1 - getTOUCH_BLOCK_PADDING() * 2.0F, f2 - getTOUCH_BLOCK_PADDING() * 1.5F, f1 + getTOUCH_BLOCK_PADDING() * 2.0F, f2 + getTOUCH_BLOCK_PADDING() * 1.5F);
+        this.xXV.reset();
         i = 1;
         while (i <= 2)
         {
-          this.xIa.moveTo(this.xIA.left + this.xIA.width() / 3.0F * i, this.xIA.top);
-          this.xIa.lineTo(this.xIA.left + this.xIA.width() / 3.0F * i, this.xIA.bottom);
-          this.xIa.moveTo(this.xIA.left, this.xIA.top + this.xIA.height() / 3.0F * i);
-          this.xIa.lineTo(this.xIA.right, this.xIA.top + this.xIA.height() / 3.0F * i);
+          this.xXV.moveTo(this.xYv.left + this.xYv.width() / 3.0F * i, this.xYv.top);
+          this.xXV.lineTo(this.xYv.left + this.xYv.width() / 3.0F * i, this.xYv.bottom);
+          this.xXV.moveTo(this.xYv.left, this.xYv.top + this.xYv.height() / 3.0F * i);
+          this.xXV.lineTo(this.xYv.right, this.xYv.top + this.xYv.height() / 3.0F * i);
           i += 1;
         }
       }
@@ -758,192 +758,192 @@ public final class WxCropOperationLayout
   
   public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(200487);
+    AppMethodBeat.i(206748);
     p.h(paramMotionEvent1, "e1");
     p.h(paramMotionEvent2, "e2");
-    AppMethodBeat.o(200487);
+    AppMethodBeat.o(206748);
     return false;
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(200475);
+    AppMethodBeat.i(206736);
     if (!paramBoolean)
     {
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(200475);
+      AppMethodBeat.o(206736);
       return;
     }
     ar(255, 500L);
-    this.xIz.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.xIw.isEmpty()) {
-      this.xIw.set(paramInt1, getHeight() / 4 + paramInt2, paramInt3, paramInt4 - getHeight() / 4);
+    this.xYu.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.xYr.isEmpty()) {
+      this.xYr.set(paramInt1, getHeight() / 4 + paramInt2, paramInt3, paramInt4 - getHeight() / 4);
     }
-    if (this.xIx == 0.0F) {
-      setLimitMaxHeight(this.xIz.height() / 2.0F);
+    if (this.xYs == 0.0F) {
+      setLimitMaxHeight(this.xYu.height() / 2.0F);
     }
-    if (this.xIy == 0.0F) {
-      setLimitMinHeight(this.xIz.height() / 4.0F);
+    if (this.xYt == 0.0F) {
+      setLimitMinHeight(this.xYu.height() / 4.0F);
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(200475);
+    AppMethodBeat.o(206736);
   }
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200488);
+    AppMethodBeat.i(206749);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
     p.h(paramMotionEvent, "e");
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(200488);
+    AppMethodBeat.o(206749);
   }
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(200477);
+    AppMethodBeat.i(206738);
     p.h(paramMotionEvent1, "event");
     p.h(paramMotionEvent2, "e2");
     new StringBuilder("[onScroll] event=").append(paramMotionEvent1);
-    if (this.xIC)
+    if (this.xYx)
     {
-      paramMotionEvent1 = this.xIw;
+      paramMotionEvent1 = this.xYr;
       paramMotionEvent1.top -= paramFloat2;
-      paramMotionEvent1 = this.xIw;
+      paramMotionEvent1 = this.xYr;
       paramMotionEvent1.bottom += paramFloat2;
     }
-    if (this.xID)
+    if (this.xYy)
     {
-      paramMotionEvent1 = this.xIw;
+      paramMotionEvent1 = this.xYr;
       paramMotionEvent1.top += paramFloat2;
-      paramMotionEvent1 = this.xIw;
+      paramMotionEvent1 = this.xYr;
       paramMotionEvent1.bottom -= paramFloat2;
     }
-    if (this.xIw.height() > this.xIx)
+    if (this.xYr.height() > this.xYs)
     {
-      paramFloat1 = this.xIx - this.xIw.height();
-      paramMotionEvent1 = this.xIw;
+      paramFloat1 = this.xYs - this.xYr.height();
+      paramMotionEvent1 = this.xYr;
       paramMotionEvent1.top -= paramFloat1 / 2.0F;
-      paramMotionEvent1 = this.xIw;
+      paramMotionEvent1 = this.xYr;
       paramFloat2 = paramMotionEvent1.bottom;
       paramMotionEvent1.bottom = (paramFloat1 / 2.0F + paramFloat2);
     }
     for (;;)
     {
       postInvalidate();
-      if ((!this.xID) && (!this.xIC)) {
+      if ((!this.xYy) && (!this.xYx)) {
         break;
       }
-      AppMethodBeat.o(200477);
+      AppMethodBeat.o(206738);
       return true;
-      if (this.xIw.height() < this.xIy)
+      if (this.xYr.height() < this.xYt)
       {
-        paramFloat1 = this.xIy - this.xIw.height();
-        paramMotionEvent1 = this.xIw;
+        paramFloat1 = this.xYt - this.xYr.height();
+        paramMotionEvent1 = this.xYr;
         paramMotionEvent1.top -= paramFloat1 / 2.0F;
-        paramMotionEvent1 = this.xIw;
+        paramMotionEvent1 = this.xYr;
         paramFloat2 = paramMotionEvent1.bottom;
         paramMotionEvent1.bottom = (paramFloat1 / 2.0F + paramFloat2);
       }
     }
-    AppMethodBeat.o(200477);
+    AppMethodBeat.o(206738);
     return false;
   }
   
   public final void onShowPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200484);
+    AppMethodBeat.i(206745);
     p.h(paramMotionEvent, "e");
-    AppMethodBeat.o(200484);
+    AppMethodBeat.o(206745);
   }
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200485);
+    AppMethodBeat.i(206746);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
     p.h(paramMotionEvent, "e");
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(200485);
+    AppMethodBeat.o(206746);
     return false;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200478);
+    AppMethodBeat.i(206739);
     p.h(paramMotionEvent, "event");
-    if (((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) && ((this.xIC) || (this.xID)))
+    if (((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) && ((this.xYx) || (this.xYy)))
     {
       ar(0, 1000L);
-      localObject = this.xIp;
+      localObject = this.xYk;
       if (localObject != null) {
-        ((i)localObject).mP(this.xIC);
+        ((i)localObject).mT(this.xYx);
       }
     }
     Object localObject = getTouchDetector();
     paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramMotionEvent.ahp(), "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(200478);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramMotionEvent.ahE(), "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)paramMotionEvent.mt(0)), "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    AppMethodBeat.o(206739);
     return bool;
   }
   
   public final void setBgColor(int paramInt)
   {
-    AppMethodBeat.i(200472);
+    AppMethodBeat.i(206733);
     this.paint.setColor(paramInt);
     this.bgColor = paramInt;
-    AppMethodBeat.o(200472);
+    AppMethodBeat.o(206733);
   }
   
   public final void setBlockOutsideTouch(boolean paramBoolean)
   {
-    this.xIr = paramBoolean;
+    this.xYm = paramBoolean;
   }
   
   public final void setBorderVisibilityCallback(com.tencent.mm.ui.widget.cropview.b paramb)
   {
-    this.xIE = paramb;
+    this.xYz = paramb;
   }
   
   public final void setLimitMaxHeight(float paramFloat)
   {
-    AppMethodBeat.i(200473);
-    this.xIx = paramFloat;
+    AppMethodBeat.i(206734);
+    this.xYs = paramFloat;
     postInvalidate();
-    AppMethodBeat.o(200473);
+    AppMethodBeat.o(206734);
   }
   
   public final void setLimitMinHeight(float paramFloat)
   {
-    AppMethodBeat.i(200474);
-    this.xIy = paramFloat;
+    AppMethodBeat.i(206735);
+    this.xYt = paramFloat;
     postInvalidate();
-    AppMethodBeat.o(200474);
+    AppMethodBeat.o(206735);
   }
   
   public final void setOnOperationCallback(i parami)
   {
-    this.xIp = parami;
+    this.xYk = parami;
   }
   
   public final void setOutsideTouckListener(d.g.a.a<z> parama)
   {
-    this.xIq = parama;
+    this.xYl = parama;
   }
   
-  public final void setStyle(WxCropOperationLayout.j paramj)
+  public final void setStyle(j paramj)
   {
-    AppMethodBeat.i(200467);
+    AppMethodBeat.i(206728);
     p.h(paramj, "value");
-    this.tKV = paramj;
+    this.tVM = paramj;
     postInvalidate();
-    AppMethodBeat.o(200467);
+    AppMethodBeat.o(206728);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements d.g.a.a<Float>
@@ -954,7 +954,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements d.g.a.a<Float>
@@ -965,7 +965,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements d.g.a.a<Float>
@@ -976,7 +976,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements d.g.a.a<Float>
@@ -987,7 +987,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements d.g.a.a<Float>
@@ -998,7 +998,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class f
     extends q
     implements d.g.a.a<Float>
@@ -1009,32 +1009,32 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$CornerStyle;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "TOP_LEFT", "TOP_RIGHT", "BOTTOM_LEFT", "BOTTOM_RIGHT", "TOP_LEFT_OUT", "TOP_RIGHT_OUT", "BOTTOM_LEFT_OUT", "BOTTOM_RIGHT_OUT", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$CornerStyle;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "TOP_LEFT", "TOP_RIGHT", "BOTTOM_LEFT", "BOTTOM_RIGHT", "TOP_LEFT_OUT", "TOP_RIGHT_OUT", "BOTTOM_LEFT_OUT", "BOTTOM_RIGHT_OUT", "plugin-recordvideo_release"})
   public static enum h
   {
     final int value;
     
     static
     {
-      AppMethodBeat.i(200442);
+      AppMethodBeat.i(206703);
       h localh1 = new h("TOP_LEFT", 0, 0);
-      xIL = localh1;
+      xYG = localh1;
       h localh2 = new h("TOP_RIGHT", 1, 1);
-      xIM = localh2;
+      xYH = localh2;
       h localh3 = new h("BOTTOM_LEFT", 2, 2);
-      xIN = localh3;
+      xYI = localh3;
       h localh4 = new h("BOTTOM_RIGHT", 3, 3);
-      xIO = localh4;
+      xYJ = localh4;
       h localh5 = new h("TOP_LEFT_OUT", 4, 4);
-      xIP = localh5;
+      xYK = localh5;
       h localh6 = new h("TOP_RIGHT_OUT", 5, 5);
-      xIQ = localh6;
+      xYL = localh6;
       h localh7 = new h("BOTTOM_LEFT_OUT", 6, 6);
-      xIR = localh7;
+      xYM = localh7;
       h localh8 = new h("BOTTOM_RIGHT_OUT", 7, 7);
-      xIS = localh8;
-      xIT = new h[] { localh1, localh2, localh3, localh4, localh5, localh6, localh7, localh8 };
-      AppMethodBeat.o(200442);
+      xYN = localh8;
+      xYO = new h[] { localh1, localh2, localh3, localh4, localh5, localh6, localh7, localh8 };
+      AppMethodBeat.o(206703);
     }
     
     private h(int paramInt)
@@ -1043,17 +1043,38 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "", "onBlockDownClick", "", "isTopBlock", "", "onBlockTouchUp", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "", "onBlockDownClick", "", "isTopBlock", "", "onBlockTouchUp", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-recordvideo_release"})
   public static abstract interface i
   {
     public abstract void e(RectF paramRectF);
     
-    public abstract void mO(boolean paramBoolean);
+    public abstract void mS(boolean paramBoolean);
     
-    public abstract void mP(boolean paramBoolean);
+    public abstract void mT(boolean paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "", "(Ljava/lang/String;I)V", "CIRCLE", "RECT_ADJUST", "RECT_HARD", "RECT_LINE_HARD", "plugin-recordvideo_release"})
+  public static enum j
+  {
+    static
+    {
+      AppMethodBeat.i(206706);
+      j localj1 = new j("CIRCLE", 0);
+      xYP = localj1;
+      j localj2 = new j("RECT_ADJUST", 1);
+      xYQ = localj2;
+      j localj3 = new j("RECT_HARD", 2);
+      xYR = localj3;
+      j localj4 = new j("RECT_LINE_HARD", 3);
+      xYS = localj4;
+      xYT = new j[] { localj1, localj2, localj3, localj4 };
+      AppMethodBeat.o(206706);
+    }
+    
+    private j() {}
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class k
     extends q
     implements d.g.a.a<Float>
@@ -1064,7 +1085,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class l
     extends q
     implements d.g.a.a<Integer>
@@ -1075,7 +1096,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class m
     extends q
     implements d.g.a.a<Integer>
@@ -1086,7 +1107,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
   static final class n
     extends q
     implements d.g.a.a<Drawable>
@@ -1097,7 +1118,7 @@ public final class WxCropOperationLayout
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$hideInvisible$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$hideInvisible$1$1"})
   static final class o
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -1105,23 +1126,23 @@ public final class WxCropOperationLayout
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(200452);
-      WxCropOperationLayout localWxCropOperationLayout = this.xIK;
+      AppMethodBeat.i(206713);
+      WxCropOperationLayout localWxCropOperationLayout = this.xYF;
       p.g(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(200452);
+        AppMethodBeat.o(206713);
         throw paramValueAnimator;
       }
       localWxCropOperationLayout.setBgColor(((Integer)paramValueAnimator).intValue());
-      this.xIK.invalidate();
-      AppMethodBeat.o(200452);
+      this.xYF.invalidate();
+      AppMethodBeat.o(206713);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$showBorder$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$showBorder$1$1"})
   static final class p
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -1129,23 +1150,23 @@ public final class WxCropOperationLayout
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(200453);
+      AppMethodBeat.i(206714);
       p.g(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(200453);
+        AppMethodBeat.o(206714);
         throw paramValueAnimator;
       }
       int i = ((Integer)paramValueAnimator).intValue();
-      WxCropOperationLayout.a(this.xIK, i);
-      this.xIK.invalidate();
-      AppMethodBeat.o(200453);
+      WxCropOperationLayout.a(this.xYF, i);
+      this.xYF.invalidate();
+      AppMethodBeat.o(206714);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$showCornerViews$1$1$1", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$$special$$inlined$let$lambda$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$showCornerViews$1$1$1", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$$special$$inlined$let$lambda$1"})
   static final class q
     implements Runnable
   {
@@ -1153,67 +1174,67 @@ public final class WxCropOperationLayout
     
     public final void run()
     {
-      AppMethodBeat.i(200454);
+      AppMethodBeat.i(206715);
       int i = i;
-      if (i == WxCropOperationLayout.h.xIL.value)
+      if (i == WxCropOperationLayout.h.xYG.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).top + f);
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).top + f);
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIM.value)
+      if (i == WxCropOperationLayout.h.xYH.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).top + f);
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rMp.getWidth());
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).top + f);
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rUC.getWidth());
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIN.value)
+      if (i == WxCropOperationLayout.h.xYI.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom - f - localView.getHeight());
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom - f - localView.getHeight());
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIO.value)
+      if (i == WxCropOperationLayout.h.xYJ.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom - f - localView.getHeight());
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rMp.getWidth());
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom - f - localView.getHeight());
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rUC.getWidth());
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIP.value)
+      if (i == WxCropOperationLayout.h.xYK.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).top - f - localView.getHeight());
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).top - f - localView.getHeight());
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIQ.value)
+      if (i == WxCropOperationLayout.h.xYL.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).top - f - localView.getHeight());
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rMp.getWidth());
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).top - f - localView.getHeight());
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rUC.getWidth());
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIR.value)
+      if (i == WxCropOperationLayout.h.xYM.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom + f);
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
-        AppMethodBeat.o(200454);
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom + f);
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).left + f);
+        AppMethodBeat.o(206715);
         return;
       }
-      if (i == WxCropOperationLayout.h.xIS.value)
+      if (i == WxCropOperationLayout.h.xYN.value)
       {
-        this.rMp.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom + f);
-        this.rMp.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rMp.getWidth());
+        this.rUC.setTranslationY(WxCropOperationLayout.b(jdField_this).bottom + f);
+        this.rUC.setTranslationX(WxCropOperationLayout.b(jdField_this).right - f - this.rUC.getWidth());
       }
-      AppMethodBeat.o(200454);
+      AppMethodBeat.o(206715);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$showInvisible$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$showInvisible$1$1"})
   static final class r
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -1221,23 +1242,23 @@ public final class WxCropOperationLayout
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(200455);
-      WxCropOperationLayout localWxCropOperationLayout = this.xIK;
+      AppMethodBeat.i(206716);
+      WxCropOperationLayout localWxCropOperationLayout = this.xYF;
       p.g(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(200455);
+        AppMethodBeat.o(206716);
         throw paramValueAnimator;
       }
       localWxCropOperationLayout.setBgColor(((Integer)paramValueAnimator).intValue());
-      this.xIK.invalidate();
-      AppMethodBeat.o(200455);
+      this.xYF.invalidate();
+      AppMethodBeat.o(206716);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
   static final class s
     extends q
     implements d.g.a.a<GestureDetector>

@@ -6,9 +6,9 @@ import android.content.Intent;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void add(String paramString);
+  public abstract void adU(String paramString);
   
-  public abstract void cnb();
+  public abstract void cor();
   
   public abstract void r(Context paramContext, Intent paramIntent);
 }

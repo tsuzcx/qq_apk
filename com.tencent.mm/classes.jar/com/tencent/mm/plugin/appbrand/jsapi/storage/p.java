@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.o.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.plugin.appbrand.appstorage.p.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.vfs.k;
 
 public final class p
 {
   /* Error */
-  private static String A(e parame)
+  private static String A(k paramk)
   {
     // Byte code:
     //   0: ldc 11
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 23	com/tencent/mm/vfs/e:exists	()Z
+    //   6: invokevirtual 23	com/tencent/mm/vfs/k:exists	()Z
     //   9: ifne +11 -> 20
     //   12: ldc 11
     //   14: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -28,10 +28,10 @@ public final class p
     //   27: astore_3
     //   28: new 36	java/io/BufferedReader
     //   31: dup
-    //   32: new 38	com/tencent/mm/vfs/k
+    //   32: new 38	com/tencent/mm/vfs/q
     //   35: dup
     //   36: aload_0
-    //   37: invokespecial 41	com/tencent/mm/vfs/k:<init>	(Lcom/tencent/mm/vfs/e;)V
+    //   37: invokespecial 41	com/tencent/mm/vfs/q:<init>	(Lcom/tencent/mm/vfs/k;)V
     //   40: invokespecial 44	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   43: astore_2
     //   44: aload_2
@@ -109,7 +109,7 @@ public final class p
     //   157: goto -72 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	160	0	parame	e
+    //   0	160	0	paramk	k
     //   61	13	1	i	int
     //   43	114	2	localObject1	Object
     //   27	43	3	localStringBuffer	java.lang.StringBuffer
@@ -133,28 +133,28 @@ public final class p
     //   28	44	154	java/io/IOException
   }
   
-  public static String QA(String paramString)
+  public static String Rj(String paramString)
   {
     AppMethodBeat.i(147300);
-    paramString = A(new e(aj.getContext().getCacheDir(), paramString));
+    paramString = A(new k(ak.getContext().getCacheDir(), paramString));
     AppMethodBeat.o(147300);
     return paramString;
   }
   
-  public static void QB(String paramString)
+  public static void Rk(String paramString)
   {
     AppMethodBeat.i(147301);
-    boolean bool = new e(aj.getContext().getCacheDir(), paramString).delete();
-    ad.i("MicroMsg.JsApiStorageHelper", "deleteTmpFile: " + paramString + ":" + bool);
+    boolean bool = new k(ak.getContext().getCacheDir(), paramString).delete();
+    ae.i("MicroMsg.JsApiStorageHelper", "deleteTmpFile: " + paramString + ":" + bool);
     AppMethodBeat.o(147301);
   }
   
-  static String a(o.a parama)
+  static String a(p.a parama)
   {
-    if (parama == o.a.jMT) {
+    if (parama == p.a.jQg) {
       return "ok";
     }
-    if (parama == o.a.jMX) {
+    if (parama == p.a.jQk) {
       return "fail:quota reached";
     }
     return "fail:internal error set DB data fail";
@@ -166,17 +166,17 @@ public final class p
     // Byte code:
     //   0: ldc 134
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 19	com/tencent/mm/vfs/e
+    //   5: new 19	com/tencent/mm/vfs/k
     //   8: dup
-    //   9: invokestatic 75	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   9: invokestatic 75	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   12: invokevirtual 81	android/content/Context:getCacheDir	()Ljava/io/File;
     //   15: aload_0
-    //   16: invokespecial 84	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   16: invokespecial 84	com/tencent/mm/vfs/k:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   19: astore_0
-    //   20: new 136	com/tencent/mm/vfs/l
+    //   20: new 136	com/tencent/mm/vfs/r
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 137	com/tencent/mm/vfs/l:<init>	(Lcom/tencent/mm/vfs/e;)V
+    //   25: invokespecial 137	com/tencent/mm/vfs/r:<init>	(Lcom/tencent/mm/vfs/k;)V
     //   28: astore 4
     //   30: aload_1
     //   31: arraylength
@@ -190,14 +190,14 @@ public final class p
     //   42: aload_1
     //   43: iload_2
     //   44: aaload
-    //   45: invokevirtual 140	com/tencent/mm/vfs/l:write	(Ljava/lang/String;)V
+    //   45: invokevirtual 140	com/tencent/mm/vfs/r:write	(Ljava/lang/String;)V
     //   48: iload_2
     //   49: iconst_1
     //   50: iadd
     //   51: istore_2
     //   52: goto -17 -> 35
     //   55: aload 4
-    //   57: invokevirtual 141	com/tencent/mm/vfs/l:close	()V
+    //   57: invokevirtual 141	com/tencent/mm/vfs/r:close	()V
     //   60: ldc 134
     //   62: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: return
@@ -211,7 +211,7 @@ public final class p
     //   76: aload_1
     //   77: ifnull +7 -> 84
     //   80: aload_1
-    //   81: invokevirtual 141	com/tencent/mm/vfs/l:close	()V
+    //   81: invokevirtual 141	com/tencent/mm/vfs/r:close	()V
     //   84: ldc 134
     //   86: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_0
@@ -228,7 +228,7 @@ public final class p
     //   0	102	1	paramVarArgs	String[]
     //   34	18	2	i	int
     //   32	6	3	j	int
-    //   28	69	4	locall	com.tencent.mm.vfs.l
+    //   28	69	4	localr	com.tencent.mm.vfs.r
     // Exception table:
     //   from	to	target	type
     //   55	60	66	java/io/IOException
@@ -259,7 +259,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.p
  * JD-Core Version:    0.7.0.1
  */

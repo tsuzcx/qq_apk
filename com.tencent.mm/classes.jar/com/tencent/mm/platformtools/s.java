@@ -8,21 +8,21 @@ public abstract interface s
   
   public abstract void a(s.a parama, String paramString);
   
-  public abstract boolean aQA();
+  public abstract b aQU();
   
-  public abstract Bitmap aQB();
+  public abstract String aQV();
   
-  public abstract void aQC();
+  public abstract String aQW();
   
-  public abstract b aQv();
+  public abstract String aQX();
   
-  public abstract String aQw();
+  public abstract boolean aQY();
   
-  public abstract String aQx();
+  public abstract boolean aQZ();
   
-  public abstract String aQy();
+  public abstract Bitmap aRa();
   
-  public abstract boolean aQz();
+  public abstract void aRb();
   
   public abstract void aa(String paramString, boolean paramBoolean);
   
@@ -30,7 +30,7 @@ public abstract interface s
   
   public static abstract interface b
   {
-    public abstract Bitmap IR(String paramString);
+    public abstract Bitmap Jq(String paramString);
   }
 }
 

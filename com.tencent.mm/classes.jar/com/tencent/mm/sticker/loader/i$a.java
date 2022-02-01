@@ -2,7 +2,7 @@ package com.tencent.mm.sticker.loader;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/loader/StickerUrlTask$Companion;", "", "()V", "RET_EXPIRED", "", "RET_UNI_MISMATCH", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/loader/StickerUrlTask$Companion;", "", "()V", "RET_EXPIRED", "", "RET_UNI_MISMATCH", "plugin-sticker_release"})
 public final class i$a {}
 
 

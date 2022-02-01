@@ -2,44 +2,44 @@ package com.tencent.mm.loader.b.b;
 
 import android.graphics.Bitmap;
 import com.tencent.mm.b.f;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
   extends e<String, Bitmap>
 {
-  public static final int hdd;
-  public static final int hdf;
-  public static final int hdg = d.aqM();
-  private f<String, Bitmap> hdh;
-  private f<String, Bitmap> hdi;
+  public static final int hfR;
+  public static final int hfT;
+  public static final int hfU = d.arb();
+  private f<String, Bitmap> hfV;
+  private f<String, Bitmap> hfW;
   
   static
   {
-    d locald = d.hdm;
-    hdf = d.aqK();
-    locald = d.hdm;
-    hdd = d.aqL();
-    locald = d.hdm;
+    d locald = d.hga;
+    hfT = d.aqZ();
+    locald = d.hga;
+    hfR = d.ara();
+    locald = d.hga;
   }
   
   public b()
   {
-    d locald = d.hdm;
-    this.hdh = d.aqN();
-    locald = d.hdm;
-    this.hdi = d.aqO();
+    d locald = d.hga;
+    this.hfV = d.arc();
+    locald = d.hga;
+    this.hfW = d.ard();
   }
   
   public final com.tencent.mm.loader.h.e<Bitmap> a(com.tencent.mm.loader.h.a.a<String> parama, com.tencent.mm.loader.e.c.a<Bitmap> parama1)
   {
-    if (!bt.isNullOrNil((String)parama.value()))
+    if (!bu.isNullOrNil((String)parama.value()))
     {
       parama1 = b(parama, parama1);
-      parama = (Bitmap)this.hdh.get(parama1);
+      parama = (Bitmap)this.hfV.get(parama1);
       if (parama != null) {
         break label66;
       }
-      parama = (Bitmap)this.hdi.get(parama1);
+      parama = (Bitmap)this.hfW.get(parama1);
     }
     label66:
     for (;;)
@@ -53,7 +53,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.b.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,12 +6,12 @@ import com.tencent.mm.ipcinvoker.d.d;
 public final class c
   extends d
 {
-  public static final c nqj;
+  public static final c nvC;
   
   static
   {
     AppMethodBeat.i(121616);
-    nqj = new c();
+    nvC = new c();
     AppMethodBeat.o(121616);
   }
   

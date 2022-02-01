@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int fYO;
-  public String vnM;
-  public String vnN;
+  public int gaV;
+  public String vzR;
+  public String vzS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class f
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.fYO);
-      if (this.vnM != null) {
-        paramVarArgs.d(2, this.vnM);
+      paramVarArgs.aS(1, this.gaV);
+      if (this.vzR != null) {
+        paramVarArgs.d(2, this.vzR);
       }
-      if (this.vnN != null) {
-        paramVarArgs.d(3, this.vnN);
+      if (this.vzS != null) {
+        paramVarArgs.d(3, this.vzS);
       }
       AppMethodBeat.o(91251);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.fYO) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.gaV) + 0;
       paramInt = i;
-      if (this.vnM != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.vnM);
+      if (this.vzR != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.vzR);
       }
       i = paramInt;
-      if (this.vnN != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.vnN);
+      if (this.vzS != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.vzS);
       }
       AppMethodBeat.o(91251);
       return i;
@@ -42,9 +42,9 @@ public final class f
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(91251);
@@ -60,15 +60,15 @@ public final class f
         AppMethodBeat.o(91251);
         return -1;
       case 1: 
-        localf.fYO = locala.NPN.zc();
+        localf.gaV = locala.OmT.zc();
         AppMethodBeat.o(91251);
         return 0;
       case 2: 
-        localf.vnM = locala.NPN.readString();
+        localf.vzR = locala.OmT.readString();
         AppMethodBeat.o(91251);
         return 0;
       }
-      localf.vnN = locala.NPN.readString();
+      localf.vzS = locala.OmT.readString();
       AppMethodBeat.o(91251);
       return 0;
     }

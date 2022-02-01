@@ -12,13 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.appbrand.report.h;
 
 public final class AppBrandLauncherBlankPage
   extends AppBrandLauncherUI.Fragment
 {
-  public static ViewGroup W(Context paramContext, String paramString)
+  public static ViewGroup Y(Context paramContext, String paramString)
   {
     AppMethodBeat.i(48622);
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
@@ -46,7 +46,7 @@ public final class AppBrandLauncherBlankPage
     return localLinearLayout;
   }
   
-  public static AppBrandLauncherBlankPage eo(String paramString1, String paramString2)
+  public static AppBrandLauncherBlankPage er(String paramString1, String paramString2)
   {
     AppMethodBeat.i(48619);
     AppBrandLauncherBlankPage localAppBrandLauncherBlankPage = new AppBrandLauncherBlankPage();
@@ -70,9 +70,9 @@ public final class AppBrandLauncherBlankPage
     if (getArguments() == null) {}
     for (Object localObject = null;; localObject = getArguments().getString("extra_tip"))
     {
-      localObject = W(localFragmentActivity, (String)localObject);
+      localObject = Y(localFragmentActivity, (String)localObject);
       ((ViewGroup)this.mContentView).addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      h.a(this.mScene, "", "", 0, "", this.mBR);
+      h.a(this.mScene, "", "", 0, "", this.mGW);
       AppMethodBeat.o(48621);
       return;
     }
@@ -101,7 +101,7 @@ public final class AppBrandLauncherBlankPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherBlankPage
  * JD-Core Version:    0.7.0.1
  */

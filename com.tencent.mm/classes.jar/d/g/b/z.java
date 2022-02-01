@@ -7,8 +7,8 @@ import d.l.h;
 
 public final class z
 {
-  private static final aa MLW;
-  private static final b[] MLX;
+  private static final aa NiZ;
+  private static final b[] Nja;
   
   static
   {
@@ -18,8 +18,8 @@ public final class z
       aa localaa1 = (aa)Class.forName("d.l.b.a.z").newInstance();
       if (localaa1 != null)
       {
-        MLW = localaa1;
-        MLX = new b[0];
+        NiZ = localaa1;
+        Nja = new b[0];
         AppMethodBeat.o(128951);
         return;
       }
@@ -59,7 +59,7 @@ public final class z
   public static e a(n paramn)
   {
     AppMethodBeat.i(128947);
-    paramn = MLW.a(paramn);
+    paramn = NiZ.a(paramn);
     AppMethodBeat.o(128947);
     return paramn;
   }
@@ -67,7 +67,7 @@ public final class z
   public static h a(t paramt)
   {
     AppMethodBeat.i(128950);
-    paramt = MLW.a(paramt);
+    paramt = NiZ.a(paramt);
     AppMethodBeat.o(128950);
     return paramt;
   }
@@ -75,7 +75,7 @@ public final class z
   public static d.l.m a(w paramw)
   {
     AppMethodBeat.i(128949);
-    paramw = MLW.a(paramw);
+    paramw = NiZ.a(paramw);
     AppMethodBeat.o(128949);
     return paramw;
   }
@@ -83,7 +83,7 @@ public final class z
   public static String a(m paramm)
   {
     AppMethodBeat.i(128946);
-    paramm = MLW.a(paramm);
+    paramm = NiZ.a(paramm);
     AppMethodBeat.o(128946);
     return paramm;
   }
@@ -91,7 +91,7 @@ public final class z
   public static String a(q paramq)
   {
     AppMethodBeat.i(128945);
-    paramq = MLW.a(paramq);
+    paramq = NiZ.a(paramq);
     AppMethodBeat.o(128945);
     return paramq;
   }
@@ -99,7 +99,7 @@ public final class z
   public static b bp(Class paramClass)
   {
     AppMethodBeat.i(128944);
-    paramClass = MLW.bp(paramClass);
+    paramClass = NiZ.bp(paramClass);
     AppMethodBeat.o(128944);
     return paramClass;
   }

@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.groupsolitaire.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
   public String content = "";
   public long createtime = 9223372036854775807L;
   public String separator = " ";
-  public int uBE = 0;
-  public int uBF = 0;
+  public int uNj = 0;
+  public int uNk = 0;
   public String username = "";
   
-  public static boolean hp(String paramString1, String paramString2)
+  public static boolean hw(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215781);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    AppMethodBeat.i(221114);
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(215781);
+      AppMethodBeat.o(221114);
       return false;
     }
-    boolean bool = bt.lQ(paramString1.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dbr(), "").replace(" ", "").toLowerCase(), paramString2.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dbr(), "").replace(" ", "").toLowerCase());
-    AppMethodBeat.o(215781);
+    boolean bool = bu.lX(paramString1.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dei(), "").replace(" ", "").toLowerCase(), paramString2.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dei(), "").replace(" ", "").toLowerCase());
+    AppMethodBeat.o(221114);
     return bool;
   }
   
   /* Error */
-  public final b dbv()
+  public final b dem()
   {
     // Byte code:
     //   0: ldc 86
@@ -41,8 +41,8 @@ public final class b
     //   18: putfield 21	com/tencent/mm/plugin/groupsolitaire/c/b:username	Ljava/lang/String;
     //   21: aload_1
     //   22: aload_0
-    //   23: getfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:uBE	I
-    //   26: putfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:uBE	I
+    //   23: getfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:uNj	I
+    //   26: putfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:uNj	I
     //   29: aload_1
     //   30: aload_0
     //   31: getfield 27	com/tencent/mm/plugin/groupsolitaire/c/b:separator	Ljava/lang/String;
@@ -57,8 +57,8 @@ public final class b
     //   50: putfield 33	com/tencent/mm/plugin/groupsolitaire/c/b:content	Ljava/lang/String;
     //   53: aload_1
     //   54: aload_0
-    //   55: getfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:uBF	I
-    //   58: putfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:uBF	I
+    //   55: getfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:uNk	I
+    //   58: putfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:uNk	I
     //   61: ldc 86
     //   63: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   66: aload_1
@@ -80,7 +80,7 @@ public final class b
     //   88: aload_2
     //   89: invokevirtual 98	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   92: aastore
-    //   93: invokestatic 103	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   93: invokestatic 103	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   96: goto -35 -> 61
     //   99: astore_2
     //   100: goto -29 -> 71
@@ -100,9 +100,9 @@ public final class b
   {
     AppMethodBeat.i(110401);
     paramObject = (b)paramObject;
-    if (bt.lQ(this.username, paramObject.username))
+    if (bu.lX(this.username, paramObject.username))
     {
-      if (bt.lQ(this.content.trim(), paramObject.content.trim()))
+      if (bu.lX(this.content.trim(), paramObject.content.trim()))
       {
         AppMethodBeat.o(110401);
         return true;
@@ -110,12 +110,12 @@ public final class b
       AppMethodBeat.o(110401);
       return false;
     }
-    if (bt.lQ(this.content.trim(), paramObject.content.trim()))
+    if (bu.lX(this.content.trim(), paramObject.content.trim()))
     {
       AppMethodBeat.o(110401);
       return true;
     }
-    boolean bool = hp(this.content.trim(), paramObject.content.trim());
+    boolean bool = hw(this.content.trim(), paramObject.content.trim());
     AppMethodBeat.o(110401);
     return bool;
   }
@@ -123,12 +123,12 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(110400);
-    if ((bt.isNullOrNil(this.content)) || (bt.isNullOrNil(this.content.trim())))
+    if ((bu.isNullOrNil(this.content)) || (bu.isNullOrNil(this.content.trim())))
     {
       AppMethodBeat.o(110400);
       return 0;
     }
-    int i = this.content.trim().replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dbr(), "").replace(" ", "").toLowerCase().hashCode();
+    int i = this.content.trim().replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dei(), "").replace(" ", "").toLowerCase().hashCode();
     AppMethodBeat.o(110400);
     return i;
   }
@@ -136,14 +136,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(110398);
-    String str = "GroupSolitatireItem{username='" + this.username + '\'' + ", asheader=" + this.uBE + ", separator='" + this.separator + '\'' + ", createtime=" + this.createtime + ", content='" + this.content + '\'' + ", orderNum='" + this.uBF + '\'' + '}';
+    String str = "GroupSolitatireItem{username='" + this.username + '\'' + ", asheader=" + this.uNj + ", separator='" + this.separator + '\'' + ", createtime=" + this.createtime + ", content='" + this.content + '\'' + ", orderNum='" + this.uNk + '\'' + '}';
     AppMethodBeat.o(110398);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.c.b
  * JD-Core Version:    0.7.0.1
  */

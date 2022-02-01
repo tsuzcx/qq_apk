@@ -16,29 +16,29 @@ public final class a
       return;
     }
     new c();
-    c.R(paramCharSequence2);
+    c.Q(paramCharSequence2);
     AppMethodBeat.o(151887);
   }
   
-  public static CharSequence faq()
+  public static CharSequence fee()
   {
     AppMethodBeat.i(151888);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new b();
-      localCharSequence = b.faq();
+      localCharSequence = b.fee();
       AppMethodBeat.o(151888);
       return localCharSequence;
     }
     new c();
-    CharSequence localCharSequence = c.faq();
+    CharSequence localCharSequence = c.fee();
     AppMethodBeat.o(151888);
     return localCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.i.a
  * JD-Core Version:    0.7.0.1
  */

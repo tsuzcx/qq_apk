@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.a;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.a;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.Random;
 
 public final class u
@@ -24,10 +24,10 @@ public final class u
   implements k
 {
   private f callback;
-  private int dfG;
+  private int dgI;
   private String filePath;
-  private int hMP;
-  private g iaZ;
+  private int hPI;
+  private g idS;
   private String msgId;
   b rr;
   
@@ -35,12 +35,12 @@ public final class u
   {
     AppMethodBeat.i(122722);
     this.filePath = null;
-    this.dfG = 0;
-    this.hMP = 0;
+    this.dgI = 0;
+    this.hPI = 0;
     this.filePath = paramString1;
     this.msgId = (paramString2 + "_" + System.nanoTime() + "_" + Math.abs(new Random().nextInt() / 2));
-    this.iaZ = paramg;
-    ad.i("MicroMsg.NetSceneUploadFie", "msgId: %s, filePath: %s", new Object[] { this.msgId, this.filePath });
+    this.idS = paramg;
+    ae.i("MicroMsg.NetSceneUploadFie", "msgId: %s, filePath: %s", new Object[] { this.msgId, this.filePath });
     AppMethodBeat.o(122722);
   }
   
@@ -48,49 +48,49 @@ public final class u
   {
     AppMethodBeat.i(122725);
     this.callback = paramf;
-    if (bt.isNullOrNil(this.filePath))
+    if (bu.isNullOrNil(this.filePath))
     {
-      ad.e("MicroMsg.NetSceneUploadFie", "doScene, filePath is null");
+      ae.e("MicroMsg.NetSceneUploadFie", "doScene, filePath is null");
       AppMethodBeat.o(122725);
       return -1;
     }
-    if (!i.fv(this.filePath))
+    if (!o.fB(this.filePath))
     {
-      ad.e("MicroMsg.NetSceneUploadFie", "doScene, file: %s not exist", new Object[] { this.filePath });
+      ae.e("MicroMsg.NetSceneUploadFie", "doScene, file: %s not exist", new Object[] { this.filePath });
       AppMethodBeat.o(122725);
       return -1;
     }
-    if (this.hMP == 0)
+    if (this.hPI == 0)
     {
-      this.hMP = ((int)i.aYo(this.filePath));
-      ad.i("MicroMsg.NetSceneUploadFie", "doScene, totalLen: %d", new Object[] { Integer.valueOf(this.hMP) });
+      this.hPI = ((int)o.aZR(this.filePath));
+      ae.i("MicroMsg.NetSceneUploadFie", "doScene, totalLen: %d", new Object[] { Integer.valueOf(this.hPI) });
     }
-    int i = Math.min(this.hMP - this.dfG, 32768);
-    ad.i("MicroMsg.NetSceneUploadFie", "doScene, startPos: %d, dataLen: %d", new Object[] { Integer.valueOf(this.dfG), Integer.valueOf(i) });
-    paramf = i.aY(this.filePath, this.dfG, i);
+    int i = Math.min(this.hPI - this.dgI, 32768);
+    ae.i("MicroMsg.NetSceneUploadFie", "doScene, startPos: %d, dataLen: %d", new Object[] { Integer.valueOf(this.dgI), Integer.valueOf(i) });
+    paramf = o.bb(this.filePath, this.dgI, i);
     if (paramf == null)
     {
-      ad.e("MicroMsg.NetSceneUploadFie", "doScene, read file buf is null");
+      ae.e("MicroMsg.NetSceneUploadFie", "doScene, read file buf is null");
       AppMethodBeat.o(122725);
       return -1;
     }
-    ad.i("MicroMsg.NetSceneUploadFie", "doScene, buf.length: %d", new Object[] { Integer.valueOf(paramf.length) });
+    ae.i("MicroMsg.NetSceneUploadFie", "doScene, buf.length: %d", new Object[] { Integer.valueOf(paramf.length) });
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ah();
-    ((b.a)localObject).hNN = new ai();
+    ((b.a)localObject).hQF = new ah();
+    ((b.a)localObject).hQG = new ai();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/uploadfile";
     ((b.a)localObject).funcId = 484;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ah)this.rr.hNK.hNQ;
-    ((ah)localObject).hCW = this.msgId;
-    ((ah)localObject).xcK = this.hMP;
-    ((ah)localObject).xcL = this.dfG;
-    ((ah)localObject).xcM = i;
-    ((ah)localObject).xcN = z.al(paramf);
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ah)this.rr.hQD.hQJ;
+    ((ah)localObject).hFO = this.msgId;
+    ((ah)localObject).xsB = this.hPI;
+    ((ah)localObject).xsC = this.dgI;
+    ((ah)localObject).xsD = i;
+    ((ah)localObject).xsE = z.al(paramf);
     i = dispatch(parame, this.rr, this);
-    ad.i("MicroMsg.NetSceneUploadFie", "doScene, ret: %d", new Object[] { Integer.valueOf(i) });
+    ae.i("MicroMsg.NetSceneUploadFie", "doScene, ret: %d", new Object[] { Integer.valueOf(i) });
     AppMethodBeat.o(122725);
     return i;
   }
@@ -103,7 +103,7 @@ public final class u
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(122723);
-    ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, netId: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, netId: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       if (this.callback != null) {
@@ -112,38 +112,38 @@ public final class u
       AppMethodBeat.o(122723);
       return;
     }
-    paramq = (ai)((b)paramq).hNL.hNQ;
-    paramArrayOfByte = paramq.hCW;
-    ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, clientId: %s, totalLen: %d, attachId: %s", new Object[] { paramq.hCW, Integer.valueOf(paramq.xcK), paramq.xbs });
+    paramq = (ai)((b)paramq).hQE.hQJ;
+    paramArrayOfByte = paramq.hFO;
+    ae.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, clientId: %s, totalLen: %d, attachId: %s", new Object[] { paramq.hFO, Integer.valueOf(paramq.xsB), paramq.xrj });
     if (!paramArrayOfByte.equals(this.msgId))
     {
       AppMethodBeat.o(122723);
       return;
     }
-    this.dfG = paramq.xcL;
-    if (this.dfG < this.hMP)
+    this.dgI = paramq.xsC;
+    if (this.dgI < this.hPI)
     {
-      ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, startPos: %d, totalLen: %d, continue to upload", new Object[] { Integer.valueOf(this.dfG), Integer.valueOf(this.hMP) });
+      ae.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, startPos: %d, totalLen: %d, continue to upload", new Object[] { Integer.valueOf(this.dgI), Integer.valueOf(this.hPI) });
       if (doScene(dispatcher(), this.callback) < 0)
       {
-        ad.e("MicroMsg.NetSceneUploadFie", "continue to upload fail");
+        ae.e("MicroMsg.NetSceneUploadFie", "continue to upload fail");
         if (this.callback != null) {
           this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         }
-        if (this.iaZ != null) {
-          this.iaZ.a(this.dfG, this.hMP, this);
+        if (this.idS != null) {
+          this.idS.a(this.dgI, this.hPI, this);
         }
         AppMethodBeat.o(122723);
         return;
       }
     }
-    paramq = paramq.xbs;
-    ad.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, finish upload, startPos: %d, totalLen: %d, attachId: %s", new Object[] { Integer.valueOf(this.dfG), Integer.valueOf(this.hMP), paramq });
+    paramq = paramq.xrj;
+    ae.i("MicroMsg.NetSceneUploadFie", "onGYNetEnd, finish upload, startPos: %d, totalLen: %d, attachId: %s", new Object[] { Integer.valueOf(this.dgI), Integer.valueOf(this.hPI), paramq });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (this.iaZ != null) {
-      this.iaZ.a(this.dfG, this.hMP, this);
+    if (this.idS != null) {
+      this.idS.a(this.dgI, this.hPI, this);
     }
     AppMethodBeat.o(122723);
   }
@@ -156,14 +156,14 @@ public final class u
   public final n.b securityVerificationChecked(q paramq)
   {
     AppMethodBeat.i(122724);
-    if ((bt.isNullOrNil(this.filePath)) || (!i.fv(this.filePath)))
+    if ((bu.isNullOrNil(this.filePath)) || (!o.fB(this.filePath)))
     {
-      ad.e("MicroMsg.NetSceneUploadFie", "securityVerificationChecked failed, file not exist");
-      paramq = n.b.hOq;
+      ae.e("MicroMsg.NetSceneUploadFie", "securityVerificationChecked failed, file not exist");
+      paramq = n.b.hRj;
       AppMethodBeat.o(122724);
       return paramq;
     }
-    paramq = n.b.hOp;
+    paramq = n.b.hRi;
     AppMethodBeat.o(122724);
     return paramq;
   }

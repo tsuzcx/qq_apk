@@ -1,36 +1,37 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.h;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.y.h;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class e
 {
-  private static final h<com.tencent.mm.plugin.appbrand.page.aa, aa> ndd;
+  private static final h<z, aa> nim;
   
   static
   {
     AppMethodBeat.i(136329);
-    ndd = new h();
+    nim = new h();
     AppMethodBeat.o(136329);
   }
   
-  public static aa a(com.tencent.mm.plugin.appbrand.page.aa paramaa, a parama)
+  public static aa a(z paramz, a parama)
   {
     AppMethodBeat.i(136328);
-    if (paramaa == null)
+    if (paramz == null)
     {
       AppMethodBeat.o(136328);
       return null;
     }
-    paramaa = ndd.cE(paramaa);
-    if (paramaa != null)
+    paramz = nim.cF(paramz);
+    if (paramz != null)
     {
-      paramaa = paramaa.iterator();
-      while (paramaa.hasNext())
+      paramz = paramz.iterator();
+      while (paramz.hasNext())
       {
-        aa localaa = (aa)paramaa.next();
+        aa localaa = (aa)paramz.next();
         if ((localaa != null) && (parama.a(localaa)))
         {
           AppMethodBeat.o(136328);
@@ -42,17 +43,17 @@ public final class e
     return null;
   }
   
-  public static void a(com.tencent.mm.plugin.appbrand.page.aa paramaa, aa paramaa1)
+  public static void a(z paramz, aa paramaa)
   {
     AppMethodBeat.i(136326);
-    ndd.j(paramaa, paramaa1);
+    nim.j(paramz, paramaa);
     AppMethodBeat.o(136326);
   }
   
-  public static void v(com.tencent.mm.plugin.appbrand.page.aa paramaa)
+  public static void w(z paramz)
   {
     AppMethodBeat.i(136327);
-    ndd.cF(paramaa);
+    nim.cG(paramz);
     AppMethodBeat.o(136327);
   }
   
@@ -63,7 +64,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e
  * JD-Core Version:    0.7.0.1
  */

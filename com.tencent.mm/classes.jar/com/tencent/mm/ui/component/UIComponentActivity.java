@@ -21,12 +21,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/component/UIComponentActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "mainUIC", "Lcom/tencent/mm/ui/component/UIComponent;", "store", "Landroid/arch/lifecycle/ViewModelStore;", "uiComponents", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "component", "T", "Landroid/arch/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/arch/lifecycle/ViewModel;", "getLayoutId", "", "getViewModelStore", "importUIComponents", "", "initializeUIC", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "libmmui_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/component/UIComponentActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "mainUIC", "Lcom/tencent/mm/ui/component/UIComponent;", "store", "Landroid/arch/lifecycle/ViewModelStore;", "uiComponents", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "component", "T", "Landroid/arch/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/arch/lifecycle/ViewModel;", "getLayoutId", "", "getViewModelStore", "importUIComponents", "", "initializeUIC", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "libmmui_release"})
 public abstract class UIComponentActivity
   extends MMActivity
 {
-  private UIComponent KiG;
-  private final ViewModelStore KiH = new ViewModelStore();
+  private UIComponent KFa;
+  private final ViewModelStore KFb = new ViewModelStore();
   private HashMap _$_findViewCache;
   private final HashSet<UIComponent> uiComponents = new HashSet();
   
@@ -48,7 +48,7 @@ public abstract class UIComponentActivity
   protected void b(HashSet<UIComponent> paramHashSet)
   {
     p.h(paramHashSet, "uiComponents");
-    Object localObject1 = cCu();
+    Object localObject1 = cEg();
     if (localObject1 != null)
     {
       localObject1 = ((Iterable)localObject1).iterator();
@@ -56,13 +56,13 @@ public abstract class UIComponentActivity
       if (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (Class)((Iterator)localObject1).next();
-        a locala = a.KiD;
+        a locala = a.KEX;
         localObject2 = (UIComponent)a.s((MMActivity)this).get((Class)localObject2);
         paramHashSet.add(localObject2);
         if (((UIComponent)localObject2).getLayoutId() == 0) {
           break label113;
         }
-        this.KiG = ((UIComponent)localObject2);
+        this.KFa = ((UIComponent)localObject2);
         if (i != 0) {
           throw ((Throwable)new RuntimeException("don't has more one daemon uic"));
         }
@@ -80,17 +80,17 @@ public abstract class UIComponentActivity
   public final <T extends ViewModel> T bj(Class<T> paramClass)
   {
     p.h(paramClass, "modelClass");
-    a locala = a.KiD;
+    a locala = a.KEX;
     paramClass = a.s((MMActivity)this).get(paramClass);
     p.g(paramClass, "UICProvider.of(this).get(modelClass)");
     return paramClass;
   }
   
-  public abstract Set<Class<? extends UIComponent>> cCu();
+  public abstract Set<Class<? extends UIComponent>> cEg();
   
   public int getLayoutId()
   {
-    UIComponent localUIComponent = this.KiG;
+    UIComponent localUIComponent = this.KFa;
     if (localUIComponent != null) {
       return localUIComponent.getLayoutId();
     }
@@ -99,7 +99,7 @@ public abstract class UIComponentActivity
   
   public ViewModelStore getViewModelStore()
   {
-    return this.KiH;
+    return this.KFb;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -152,7 +152,7 @@ public abstract class UIComponentActivity
     b(this.uiComponents);
     Iterator localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
-      ((UIComponent)localIterator.next()).ad(paramBundle);
+      ((UIComponent)localIterator.next()).ae(paramBundle);
     }
     super.onCreate(paramBundle);
     localIterator = ((Iterable)this.uiComponents).iterator();
@@ -161,7 +161,7 @@ public abstract class UIComponentActivity
       UIComponent localUIComponent = (UIComponent)localIterator.next();
       View localView = getContentView();
       p.g(localView, "contentView");
-      localUIComponent.gQ(localView);
+      localUIComponent.gV(localView);
     }
     localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
@@ -169,7 +169,7 @@ public abstract class UIComponentActivity
     }
     localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
-      ((UIComponent)localIterator.next()).ac(paramBundle);
+      ((UIComponent)localIterator.next()).ad(paramBundle);
     }
   }
   
@@ -284,7 +284,7 @@ public abstract class UIComponentActivity
     {
       localIterator = ((Iterable)this.uiComponents).iterator();
       while (localIterator.hasNext()) {
-        ((UIComponent)localIterator.next()).cOA();
+        ((UIComponent)localIterator.next()).cRf();
       }
     }
   }
@@ -297,7 +297,7 @@ public abstract class UIComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponentActivity
  * JD-Core Version:    0.7.0.1
  */

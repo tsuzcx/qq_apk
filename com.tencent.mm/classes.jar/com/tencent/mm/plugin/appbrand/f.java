@@ -14,17 +14,17 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
 public final class f
 {
-  private static final String jvX;
-  public static final f jvY;
+  private static final String jyS;
+  public static final f jyT;
   
   static
   {
     AppMethodBeat.i(175098);
-    jvY = new f();
-    jvX = org.apache.commons.b.g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
+    jyT = new f();
+    jyS = org.apache.commons.b.g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
     AppMethodBeat.o(175098);
   }
   
@@ -32,7 +32,7 @@ public final class f
   {
     AppMethodBeat.i(175097);
     p.h(paramAppBrandInitConfigWC, "config");
-    Object localObject1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.quV, jvX);
+    Object localObject1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qBT, jyS);
     p.g(localObject1, "MMKernel.service(IExptSe…required, DEFAULT_CONFIG)");
     Object localObject2 = (Iterable)n.a((CharSequence)localObject1, new String[] { "," });
     localObject1 = (Collection)new ArrayList();

@@ -4,58 +4,58 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.di;
-import com.tencent.mm.protocal.protobuf.bnj;
-import com.tencent.mm.protocal.protobuf.bnk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class f
 {
-  public static void a(com.tencent.mm.plugin.exdevice.i.b paramb, bnj parambnj, bnk parambnk)
+  public static void a(com.tencent.mm.plugin.exdevice.i.b paramb, bob parambob, boc paramboc)
   {
     AppMethodBeat.i(23316);
-    if (parambnk != null)
+    if (paramboc != null)
     {
-      paramb.field_connProto = parambnk.GHw;
-      paramb.field_connStrategy = parambnk.GHx;
-      paramb.field_closeStrategy = parambnk.GHy;
-      paramb.field_mac = com.tencent.mm.plugin.exdevice.k.b.acY(com.tencent.mm.plugin.exdevice.k.b.acZ(parambnk.FCM));
-      paramb.field_authKey = parambnk.Fzb;
-      paramb.field_brandName = parambnk.GHv;
-      paramb.sQ(parambnk.jdh);
-      paramb.qy(parambnk.ffG);
-      paramb.tI(parambnk.GHE);
-      paramb.tH(parambnk.GHD);
-      paramb.tG(parambnk.GHC);
-      paramb.kz(parambnk.GHF);
-      paramb.setIconUrl(parambnk.IconUrl);
-      paramb.kA(parambnk.ffF);
-      paramb.tF(parambnk.ueY);
-      paramb.tJ(parambnk.ffH);
-      paramb.tK(parambnk.ffI);
-      paramb.tL(parambnk.ffJ);
-      paramb.tM(parambnk.ffK);
+      paramb.field_connProto = paramboc.HaY;
+      paramb.field_connStrategy = paramboc.HaZ;
+      paramb.field_closeStrategy = paramboc.Hba;
+      paramb.field_mac = com.tencent.mm.plugin.exdevice.k.b.adP(com.tencent.mm.plugin.exdevice.k.b.adQ(paramboc.FVh));
+      paramb.field_authKey = paramboc.FRz;
+      paramb.field_brandName = paramboc.HaX;
+      paramb.tl(paramboc.jga);
+      paramb.qL(paramboc.fhD);
+      paramb.ud(paramboc.Hbg);
+      paramb.uc(paramboc.Hbf);
+      paramb.ub(paramboc.Hbe);
+      paramb.kB(paramboc.Hbh);
+      paramb.setIconUrl(paramboc.IconUrl);
+      paramb.kC(paramboc.fhC);
+      paramb.ua(paramboc.uqf);
+      paramb.ue(paramboc.fhE);
+      paramb.uf(paramboc.fhF);
+      paramb.ug(paramboc.fhG);
+      paramb.uh(paramboc.fhH);
     }
-    if (parambnj != null)
+    if (parambob != null)
     {
-      paramb.field_deviceID = parambnj.nDr;
-      paramb.field_deviceType = parambnj.FzJ;
-      paramb.field_md5Str = g.getMessageDigest(new String(parambnj.FzJ + parambnj.nDr).getBytes());
-      if (bt.isNullOrNil(paramb.field_brandName)) {
-        paramb.field_brandName = parambnj.FzJ;
+      paramb.field_deviceID = parambob.nIM;
+      paramb.field_deviceType = parambob.FSh;
+      paramb.field_md5Str = g.getMessageDigest(new String(parambob.FSh + parambob.nIM).getBytes());
+      if (bu.isNullOrNil(paramb.field_brandName)) {
+        paramb.field_brandName = parambob.FSh;
       }
     }
     AppMethodBeat.o(23316);
   }
   
-  public static boolean an(Context paramContext, String paramString)
+  public static boolean ap(Context paramContext, String paramString)
   {
     AppMethodBeat.i(23315);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.i("MicroMsg.exdevice.ExdeviceLogic", "Jump to webview failed, url is null or nil.");
+      ae.i("MicroMsg.exdevice.ExdeviceLogic", "Jump to webview failed, url is null or nil.");
       AppMethodBeat.o(23315);
       return false;
     }
@@ -68,12 +68,12 @@ public final class f
   
   public static boolean b(com.tencent.mm.plugin.exdevice.i.b paramb)
   {
-    return (paramb != null) && ((paramb.ffG & 1L) == 1L);
+    return (paramb != null) && ((paramb.fhD & 1L) == 1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.f
  * JD-Core Version:    0.7.0.1
  */

@@ -5,28 +5,28 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Set;
 
 final class b
 {
-  private final String zdR;
-  private final String zdS;
-  private final String zdT;
-  private final String zdU;
+  private final String zuH;
+  private final String zuI;
+  private final String zuJ;
+  private final String zuK;
   
   private b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.zdR = paramString1;
-    this.zdS = paramString2;
-    this.zdT = paramString3;
-    this.zdU = paramString4;
+    this.zuH = paramString1;
+    this.zuI = paramString2;
+    this.zuJ = paramString3;
+    this.zuK = paramString4;
   }
   
-  private static Uri ji(String paramString1, String paramString2)
+  private static Uri jp(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197798);
+    AppMethodBeat.i(219281);
     paramString1 = Uri.parse(paramString1);
     Object localObject;
     if (!TextUtils.isEmpty(paramString2))
@@ -38,7 +38,7 @@ final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(197798);
+      AppMethodBeat.o(219281);
       return paramString1;
       if (!paramString2.equals(paramString1.getQueryParameter("id")))
       {
@@ -66,24 +66,24 @@ final class b
   
   static b x(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(197796);
+    AppMethodBeat.i(219279);
     paramString1 = new b(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(197796);
+    AppMethodBeat.o(219279);
     return paramString1;
   }
   
-  final Intent dST()
+  final Intent dWt()
   {
-    AppMethodBeat.i(197797);
+    AppMethodBeat.i(219280);
     try
     {
-      Object localObject2 = this.zdR;
+      Object localObject2 = this.zuH;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         Intent localIntent = new Intent();
-        Object localObject1 = this.zdT;
+        Object localObject1 = this.zuJ;
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject2 = ji((String)localObject2, (String)localObject1);
+          localObject2 = jp((String)localObject2, (String)localObject1);
         }
         String str;
         do
@@ -91,29 +91,29 @@ final class b
           localIntent.putExtra("target_app_id", (String)localObject1);
           localIntent.setAction("android.intent.action.VIEW");
           localIntent.setData((Uri)localObject2);
-          if (!TextUtils.isEmpty(this.zdS)) {
-            localIntent.setPackage(this.zdS);
+          if (!TextUtils.isEmpty(this.zuI)) {
+            localIntent.setPackage(this.zuI);
           }
-          if (!TextUtils.isEmpty(this.zdU)) {
-            localIntent.putExtra("market_app_name", this.zdU);
+          if (!TextUtils.isEmpty(this.zuK)) {
+            localIntent.putExtra("market_app_name", this.zuK);
           }
-          AppMethodBeat.o(197797);
+          AppMethodBeat.o(219280);
           return localIntent;
           localObject2 = Uri.parse((String)localObject2);
           str = ((Uri)localObject2).getQueryParameter("id");
           localObject1 = str;
         } while (!TextUtils.isEmpty(str));
-        AppMethodBeat.o(197797);
+        AppMethodBeat.o(219280);
         return null;
       }
     }
     catch (Throwable localThrowable)
     {
-      ad.e("MicroMsg.AdAppMarketIntentNode", "there is something wrong in toIntent");
-      AppMethodBeat.o(197797);
+      ae.e("MicroMsg.AdAppMarketIntentNode", "there is something wrong in toIntent");
+      AppMethodBeat.o(219280);
       return null;
     }
-    AppMethodBeat.o(197797);
+    AppMethodBeat.o(219280);
     return null;
   }
 }

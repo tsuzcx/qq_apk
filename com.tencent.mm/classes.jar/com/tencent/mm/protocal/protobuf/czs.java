@@ -5,53 +5,72 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class czs
-  extends cvp
+  extends cvw
 {
+  public bob FVS;
+  public String HJk;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32429);
+    AppMethodBeat.i(32423);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.FVS == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(32429);
+        paramVarArgs = new b("Not all required fields were included: HardDevice");
+        AppMethodBeat.o(32423);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(32429);
+      if (this.FVS != null)
+      {
+        paramVarArgs.lJ(2, this.FVS.computeSize());
+        this.FVS.writeFields(paramVarArgs);
+      }
+      if (this.HJk != null) {
+        paramVarArgs.d(3, this.HJk);
+      }
+      AppMethodBeat.o(32423);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label369;
+      if (this.BaseRequest == null) {
+        break label583;
       }
     }
-    label369:
-    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label583:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      AppMethodBeat.o(32429);
-      return paramInt;
+      paramInt = i;
+      if (this.FVS != null) {
+        paramInt = i + f.a.a.a.lI(2, this.FVS.computeSize());
+      }
+      i = paramInt;
+      if (this.HJk != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.HJk);
+      }
+      AppMethodBeat.o(32423);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.FVS == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(32429);
+          paramVarArgs = new b("Not all required fields were included: HardDevice");
+          AppMethodBeat.o(32423);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(32429);
+        AppMethodBeat.o(32423);
         return 0;
       }
       if (paramInt == 3)
@@ -59,35 +78,56 @@ public final class czs
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         czs localczs = (czs)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32429);
+          AppMethodBeat.o(32423);
           return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localczs.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32423);
+          return 0;
+        case 2: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new bob();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((bob)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localczs.FVS = ((bob)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32423);
+          return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new BaseResponse();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localczs.BaseResponse = ((BaseResponse)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(32429);
+        localczs.HJk = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(32423);
         return 0;
       }
-      AppMethodBeat.o(32429);
+      AppMethodBeat.o(32423);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.czs
  * JD-Core Version:    0.7.0.1
  */

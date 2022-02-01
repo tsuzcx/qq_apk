@@ -9,31 +9,31 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
-import com.tencent.mm.g.a.dl;
+import com.tencent.mm.av.q;
+import com.tencent.mm.g.a.dm;
 import com.tencent.mm.plugin.emoji.a.a.d;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.plugin.emoji.model.j.a;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class c
   extends com.tencent.mm.plugin.emoji.a.a.a
 {
   private final String TAG = "MicroMsg.emoji.EmojiMineAdapter";
-  private ProgressDialog iYL;
+  private ProgressDialog jbE;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void BP(int paramInt) {}
+  public final void Cb(int paramInt) {}
   
-  public final void BQ(int paramInt) {}
+  public final void Cc(int paramInt) {}
   
-  public final void BR(int paramInt) {}
+  public final void Cd(int paramInt) {}
   
   public final com.tencent.mm.plugin.emoji.a.a.c a(com.tencent.mm.plugin.emoji.model.f paramf)
   {
@@ -47,72 +47,72 @@ public final class c
   {
     AppMethodBeat.i(108304);
     paramViewGroup = (a)paramView.getTag();
-    Object localObject = BS(paramInt);
+    Object localObject = Ce(paramInt);
     if ((paramViewGroup != null) && (localObject != null))
     {
-      localObject = ((com.tencent.mm.plugin.emoji.a.a.f)localObject).pBV;
+      localObject = ((com.tencent.mm.plugin.emoji.a.a.f)localObject).pIz;
       if (localObject != null)
       {
         if (!com.tencent.mm.plugin.emoji.h.a.g((EmotionSummary)localObject)) {
           break label83;
         }
-        paramViewGroup.cfU();
-        paramViewGroup.cfW();
+        paramViewGroup.chk();
+        paramViewGroup.chm();
       }
     }
     for (;;)
     {
       if (paramInt + 1 == getCount()) {
-        paramViewGroup.pAv.setBackgroundResource(2131231820);
+        paramViewGroup.pGZ.setBackgroundResource(2131231820);
       }
       AppMethodBeat.o(108304);
       return paramView;
       label83:
-      if (!bt.isNullOrNil(((EmotionSummary)localObject).PackName)) {
+      if (!bu.isNullOrNil(((EmotionSummary)localObject).PackName)) {
         paramViewGroup.setTitle(((EmotionSummary)localObject).PackName);
       }
       for (;;)
       {
-        if (bt.isNullOrNil(((EmotionSummary)localObject).IconUrl)) {
+        if (bu.isNullOrNil(((EmotionSummary)localObject).IconUrl)) {
           break label157;
         }
-        q.aIJ().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.cfV(), e.fu(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
+        q.aJb().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.chl(), e.fy(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
         break;
         paramViewGroup.setTitle(((EmotionSummary)localObject).ProductID);
       }
       label157:
-      ad.i("MicroMsg.emoji.EmojiMineAdapter", "Icon rul is null");
-      paramViewGroup.cfV().setImageDrawable(null);
+      ae.i("MicroMsg.emoji.EmojiMineAdapter", "Icon rul is null");
+      paramViewGroup.chl().setImageDrawable(null);
     }
   }
   
-  public final void cS(String paramString, int paramInt)
+  public final void cW(String paramString, int paramInt)
   {
     AppMethodBeat.i(108307);
     if (paramInt == 7) {
-      super.cS(paramString, paramInt);
+      super.cW(paramString, paramInt);
     }
     AppMethodBeat.o(108307);
   }
   
-  public final void cgh()
+  public final int chA()
+  {
+    return 0;
+  }
+  
+  public final void chx()
   {
     AppMethodBeat.i(108309);
-    super.cgh();
+    super.chx();
     AppMethodBeat.o(108309);
   }
   
-  public final int cgi()
+  public final int chy()
   {
     return 0;
   }
   
-  public final int cgj()
-  {
-    return 0;
-  }
-  
-  public final int cgk()
+  public final int chz()
   {
     return 0;
   }
@@ -120,8 +120,8 @@ public final class c
   public final void clear()
   {
     AppMethodBeat.i(108308);
-    if (this.iYL != null) {
-      this.iYL.cancel();
+    if (this.jbE != null) {
+      this.jbE.cancel();
     }
     super.clear();
     AppMethodBeat.o(108308);
@@ -131,7 +131,7 @@ public final class c
   {
     AppMethodBeat.i(108305);
     paramContext = new a(paramContext, paramView);
-    paramContext.a(this.pBK);
+    paramContext.a(this.pIo);
     AppMethodBeat.o(108305);
     return paramContext;
   }
@@ -139,8 +139,8 @@ public final class c
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(108303);
-    if (this.pBJ == null) {
-      this.pBJ = a(null);
+    if (this.pIn == null) {
+      this.pIn = a(null);
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(108303);
@@ -157,7 +157,7 @@ public final class c
     protected final boolean a(j.a parama, View paramView)
     {
       AppMethodBeat.i(108299);
-      cga();
+      chq();
       boolean bool = super.a(parama, paramView);
       AppMethodBeat.o(108299);
       return bool;
@@ -167,12 +167,12 @@ public final class c
     {
       AppMethodBeat.i(108300);
       super.b(parama, paramView);
-      if (com.tencent.mm.plugin.emoji.h.a.ach(getProductId()))
+      if (com.tencent.mm.plugin.emoji.h.a.acY(getProductId()))
       {
-        parama = new dl();
-        parama.doj.dok = getProductId();
-        paramView = parama.doj;
-        if (!com.tencent.mm.plugin.emoji.h.a.cii()) {
+        parama = new dm();
+        parama.dpo.dpp = getProductId();
+        paramView = parama.dpo;
+        if (!com.tencent.mm.plugin.emoji.h.a.cjy()) {
           break label98;
         }
       }
@@ -180,32 +180,32 @@ public final class c
       for (int i = 7;; i = 3)
       {
         paramView.status = i;
-        parama.doj.progress = getProgress();
-        parama.doj.dol = this.pAu.pBY;
-        com.tencent.mm.sdk.b.a.IbL.l(parama);
+        parama.dpo.progress = getProgress();
+        parama.dpo.dpq = this.pGY.pIC;
+        com.tencent.mm.sdk.b.a.IvT.l(parama);
         AppMethodBeat.o(108300);
         return;
       }
     }
     
-    protected final void cfR()
+    protected final void chh()
     {
       AppMethodBeat.i(108298);
-      this.pAx.setVisibility(8);
-      this.pAy.setVisibility(8);
-      cfZ();
-      this.pAB.setVisibility(8);
-      this.pAF.setVisibility(8);
-      this.pAG.setVisibility(8);
-      this.pAw.setVisibility(0);
-      this.lCL.setVisibility(0);
-      this.pAD.setVisibility(0);
-      this.pAC.setVisibility(0);
-      this.pAE.setVisibility(0);
+      this.pHb.setVisibility(8);
+      this.pHc.setVisibility(8);
+      chp();
+      this.pHf.setVisibility(8);
+      this.pHj.setVisibility(8);
+      this.pHk.setVisibility(8);
+      this.pHa.setVisibility(0);
+      this.lHk.setVisibility(0);
+      this.pHh.setVisibility(0);
+      this.pHg.setVisibility(0);
+      this.pHi.setVisibility(0);
       AppMethodBeat.o(108298);
     }
     
-    protected final int[] cfS()
+    protected final int[] chi()
     {
       AppMethodBeat.i(108301);
       int i = this.mContext.getResources().getDimensionPixelSize(2131165189);
@@ -213,60 +213,60 @@ public final class c
       return new int[] { i, i };
     }
     
-    protected final int cfT()
+    protected final int chj()
     {
       return -1;
     }
     
-    protected final boolean cgc()
+    protected final boolean chs()
     {
       return true;
     }
     
-    public final void cgf()
+    public final void chv()
     {
       AppMethodBeat.i(108302);
-      if (this.pAu == null)
+      if (this.pGY == null)
       {
         AppMethodBeat.o(108302);
         return;
       }
-      switch (cga())
+      switch (chq())
       {
       default: 
-        this.pAB.setVisibility(8);
-        this.pAC.setBackgroundResource(2131231372);
-        this.pAC.setVisibility(0);
-        this.pAE.setVisibility(0);
-        this.pAE.setText(2131758386);
-        this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
-        this.pAF.setVisibility(4);
-        this.pAF.setImageResource(2131232020);
-        this.pAG.setVisibility(4);
+        this.pHf.setVisibility(8);
+        this.pHg.setBackgroundResource(2131231372);
+        this.pHg.setVisibility(0);
+        this.pHi.setVisibility(0);
+        this.pHi.setText(2131758386);
+        this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+        this.pHj.setVisibility(4);
+        this.pHj.setImageResource(2131232020);
+        this.pHk.setVisibility(4);
         AppMethodBeat.o(108302);
         return;
       case 0: 
       case 3: 
-        this.pAB.setVisibility(8);
-        this.pAC.setBackgroundResource(2131231365);
-        this.pAC.setVisibility(0);
-        this.pAE.setVisibility(0);
-        this.pAE.setText(2131758319);
-        this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-        this.pAF.setVisibility(4);
-        this.pAF.setImageResource(2131232020);
-        this.pAG.setVisibility(4);
+        this.pHf.setVisibility(8);
+        this.pHg.setBackgroundResource(2131231365);
+        this.pHg.setVisibility(0);
+        this.pHi.setVisibility(0);
+        this.pHi.setText(2131758319);
+        this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.pHj.setVisibility(4);
+        this.pHj.setImageResource(2131232020);
+        this.pHk.setVisibility(4);
         AppMethodBeat.o(108302);
         return;
       }
-      cgd();
+      cht();
       AppMethodBeat.o(108302);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,11 @@ public class TAVTransition
   
   public TAVTransition(CMTime paramCMTime)
   {
-    AppMethodBeat.i(219867);
+    AppMethodBeat.i(200898);
     this.duration = paramCMTime;
     this.audioTransition = new EmptyAudioTransition(paramCMTime);
     this.videoTransition = new EmptyVideoTransition(paramCMTime);
-    AppMethodBeat.o(219867);
+    AppMethodBeat.o(200898);
   }
   
   public TAVAudioTransition getAudioTransition()
@@ -96,9 +96,9 @@ public class TAVTransition
     
     public String effectId()
     {
-      AppMethodBeat.i(219866);
+      AppMethodBeat.i(200897);
       String str = toString();
-      AppMethodBeat.o(219866);
+      AppMethodBeat.o(200897);
       return str;
     }
     

@@ -8,13 +8,13 @@ import org.xwalk.core.Log;
 
 public final class aa
 {
-  static aa Mqf = null;
-  public IWebStorage Mqe;
+  static aa MNj = null;
+  public IWebStorage MNi;
   
   private aa()
   {
     AppMethodBeat.i(156798);
-    this.Mqe = null;
+    this.MNi = null;
     IWebStorage localIWebStorage = j.g(WebView.getCurWebType()).createWebviewStorage();
     if (localIWebStorage == null)
     {
@@ -22,19 +22,19 @@ public final class aa
       AppMethodBeat.o(156798);
       return;
     }
-    this.Mqe = localIWebStorage;
+    this.MNi = localIWebStorage;
     AppMethodBeat.o(156798);
   }
   
-  public static aa gbe()
+  public static aa gfG()
   {
     try
     {
       AppMethodBeat.i(156797);
-      if (Mqf == null) {
-        Mqf = new aa();
+      if (MNj == null) {
+        MNj = new aa();
       }
-      aa localaa = Mqf;
+      aa localaa = MNj;
       AppMethodBeat.o(156797);
       return localaa;
     }

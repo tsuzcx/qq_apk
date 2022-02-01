@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class ac
 {
-  static final Bundle bt(Context paramContext)
+  static final Bundle bv(Context paramContext)
   {
     AppMethodBeat.i(123475);
     try
@@ -21,7 +21,7 @@ public final class ac
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.SetupBaseBuildInfo", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SetupBaseBuildInfo", paramContext, "", new Object[0]);
       AppMethodBeat.o(123475);
     }
     return null;

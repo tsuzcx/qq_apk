@@ -21,45 +21,45 @@ public class ExtractorWrapper
   
   private boolean exit()
   {
-    AppMethodBeat.i(218527);
+    AppMethodBeat.i(215167);
     if ((!TextUtils.isEmpty(this.videoPath)) && (new File(this.videoPath).exists()))
     {
-      AppMethodBeat.o(218527);
+      AppMethodBeat.o(215167);
       return true;
     }
-    AppMethodBeat.o(218527);
+    AppMethodBeat.o(215167);
     return false;
   }
   
   private void loadWith(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(218526);
+    AppMethodBeat.i(215166);
     this.duration = paramAssetExtractor.getDuration();
     this.videoSize = paramAssetExtractor.getSize();
     this.preferRotation = paramAssetExtractor.getPreferRotation();
     this.lastUpdateTime = new File(this.videoPath).lastModified();
-    AppMethodBeat.o(218526);
+    AppMethodBeat.o(215166);
   }
   
   private boolean needReload()
   {
-    AppMethodBeat.i(218528);
+    AppMethodBeat.i(215168);
     if (this.lastUpdateTime != new File(this.videoPath).lastModified())
     {
-      AppMethodBeat.o(218528);
+      AppMethodBeat.o(215168);
       return true;
     }
-    AppMethodBeat.o(218528);
+    AppMethodBeat.o(215168);
     return false;
   }
   
   void checkAndLoad(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(218525);
+    AppMethodBeat.i(215165);
     if ((exit()) && (needReload())) {
       loadWith(paramAssetExtractor);
     }
-    AppMethodBeat.o(218525);
+    AppMethodBeat.o(215165);
   }
   
   public long getDuration()

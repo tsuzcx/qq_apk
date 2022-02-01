@@ -5,77 +5,77 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.plugin.appbrand.service.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 
 public final class g
-  implements p
+  implements q
 {
-  private static final int[] lMJ = { 1025, 1031, 1032 };
-  private static final int[] lMK = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
-  private final d lML;
-  private final f lMM;
-  private final c lMN;
+  private static final int[] lRj = { 1025, 1031, 1032 };
+  private static final int[] lRk = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
+  private final d lRl;
+  private final f lRm;
+  private final c lRn;
   
   public g()
   {
     AppMethodBeat.i(47416);
-    this.lML = new d();
-    this.lMM = new f();
-    this.lMN = new c();
+    this.lRl = new d();
+    this.lRm = new f();
+    this.lRn = new c();
     AppMethodBeat.o(47416);
   }
   
   public final boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle1, Bundle paramBundle2)
   {
-    AppMethodBeat.i(188648);
-    if (a.contains(lMJ, paramInt))
+    AppMethodBeat.i(222810);
+    if (a.contains(lRj, paramInt))
     {
-      if (a.a.lMA == this.lML.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
+      if (a.a.lRa == this.lRl.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
       {
-        AppMethodBeat.o(188648);
+        AppMethodBeat.o(222810);
         return true;
       }
-      AppMethodBeat.o(188648);
+      AppMethodBeat.o(222810);
       return false;
     }
-    if (a.contains(lMK, paramInt))
+    if (a.contains(lRk, paramInt))
     {
-      if (a.a.lMA == this.lMM.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
+      if (a.a.lRa == this.lRm.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
       {
-        AppMethodBeat.o(188648);
+        AppMethodBeat.o(222810);
         return true;
       }
-      AppMethodBeat.o(188648);
+      AppMethodBeat.o(222810);
       return false;
     }
     if ((1064 == paramInt) || (1078 == paramInt))
     {
-      if (a.a.lMA == this.lMN.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
+      if (a.a.lRa == this.lRn.a(paramContext, paramString, paramInt, paramBundle1, paramBundle2))
       {
-        AppMethodBeat.o(188648);
+        AppMethodBeat.o(222810);
         return true;
       }
-      AppMethodBeat.o(188648);
+      AppMethodBeat.o(222810);
       return false;
     }
-    ad.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(188648);
+    ae.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(222810);
     return false;
   }
   
   public final boolean n(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(188647);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(222809);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(188647);
+      AppMethodBeat.o(222809);
       return false;
     }
-    ad.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
+    ae.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
     Object localObject2 = b.values();
     int k = localObject2.length;
     int i = 0;
@@ -84,7 +84,7 @@ public final class g
     if (i < k)
     {
       localObject1 = localObject2[i];
-      if ((!bt.isNullOrNil(paramString)) && (paramString.startsWith(localObject1.inP)))
+      if ((!bu.isNullOrNil(paramString)) && (paramString.startsWith(localObject1.iqJ)))
       {
         j = 1;
         label80:
@@ -107,37 +107,37 @@ public final class g
           for (;;)
           {
             label116:
-            ad.e("MicroMsg.WeAppLinkOpener", "handle nativeLink = %s, exp = %s", new Object[] { paramString, localException });
+            ae.e("MicroMsg.WeAppLinkOpener", "handle nativeLink = %s, exp = %s", new Object[] { paramString, localException });
             paramString = null;
           }
           String str1 = paramString.getQueryParameter("username");
           String str2 = paramString.getQueryParameter("path");
-          if ((!bt.isNullOrNil(str1)) && (am.yt(str1))) {
+          if ((!bu.isNullOrNil(str1)) && (an.zd(str1))) {
             break label189;
           }
-          AppMethodBeat.o(188647);
+          AppMethodBeat.o(222809);
           return false;
           paramString = new com.tencent.mm.plugin.appbrand.api.f();
           paramString.username = str1;
           paramString.version = -1;
-          paramString.hQh = 0;
-          paramString.jCN = str2;
+          paramString.hSZ = 0;
+          paramString.jFL = str2;
           paramString.scene = localObject1.scene;
-          paramString.dkh = b.brT();
-          paramString.jCQ = 0;
-          paramString.jCR = b.brU();
-          paramBundle = b.K(paramBundle);
+          paramString.dlj = b.bsE();
+          paramString.jFO = 0;
+          paramString.jFP = b.bsF();
+          paramBundle = b.L(paramBundle);
           if (paramBundle == null) {
             break label261;
           }
-          paramString.jDa = paramBundle;
-          ((o)com.tencent.mm.kernel.g.ab(o.class)).a(null, paramString);
-          AppMethodBeat.o(188647);
+          paramString.jFY = paramBundle;
+          ((p)com.tencent.mm.kernel.g.ab(p.class)).a(null, paramString);
+          AppMethodBeat.o(222809);
           return true;
         }
         if (paramString == null)
         {
-          AppMethodBeat.o(188647);
+          AppMethodBeat.o(222809);
           return false;
           j = 0;
           break label80;
@@ -146,7 +146,7 @@ public final class g
         }
       }
       label189:
-      AppMethodBeat.o(188647);
+      AppMethodBeat.o(222809);
       label261:
       return false;
       localObject1 = null;

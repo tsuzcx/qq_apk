@@ -8,46 +8,46 @@ public final class a
 {
   public final void b(int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(192146);
+    AppMethodBeat.i(194824);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "create player adapter");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "start prepare");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on prepared");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "start play");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on paused");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on stoped");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on error:".concat(String.valueOf(paramInt2)));
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "start seek");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "seek complete");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on play complete");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on reset");
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(194824);
       return;
       d.d("TPLogPlugin", "on release");
     }

@@ -7,30 +7,30 @@ import com.google.b.a.e;
 public final class a$ao
   extends e
 {
-  private static volatile ao[] LHN;
-  public int oWb = 0;
+  private static volatile ao[] MeR;
+  public int pcE = 0;
   
   public a$ao()
   {
     this.bQO = -1;
   }
   
-  public static ao[] fTa()
+  public static ao[] fXA()
   {
-    if (LHN == null) {}
+    if (MeR == null) {}
     synchronized (c.bQN)
     {
-      if (LHN == null) {
-        LHN = new ao[0];
+      if (MeR == null) {
+        MeR = new ao[0];
       }
-      return LHN;
+      return MeR;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.oWb != 0) {
-      paramb.by(1, this.oWb);
+    if (this.pcE != 0) {
+      paramb.by(1, this.pcE);
     }
     super.a(paramb);
   }
@@ -39,8 +39,8 @@ public final class a$ao
   {
     int j = super.zq();
     int i = j;
-    if (this.oWb != 0) {
-      i = j + b.bA(1, this.oWb);
+    if (this.pcE != 0) {
+      i = j + b.bA(1, this.pcE);
     }
     return i;
   }

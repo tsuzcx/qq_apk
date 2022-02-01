@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static double njW = 6378137.0D;
-  final double njX;
+  public static double npe = 6378137.0D;
+  final double npf;
   
   public f()
   {
     AppMethodBeat.i(146599);
-    this.njX = (6.283185307179586D * njW);
+    this.npf = (6.283185307179586D * npe);
     AppMethodBeat.o(146599);
   }
   
@@ -21,7 +21,7 @@ public final class f
     double d1 = paramLatLng.getLongitude() / 360.0D;
     double d2 = Math.sin(Math.toRadians(paramLatLng.getLatitude()));
     d2 = Math.log((1.0D + d2) / (1.0D - d2)) * 0.5D / -6.283185307179586D;
-    paramLatLng = new e((d1 + 0.5D) * this.njX, (d2 + 0.5D) * this.njX);
+    paramLatLng = new e((d1 + 0.5D) * this.npf, (d2 + 0.5D) * this.npf);
     AppMethodBeat.o(146600);
     return paramLatLng;
   }

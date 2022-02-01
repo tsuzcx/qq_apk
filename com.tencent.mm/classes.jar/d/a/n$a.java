@@ -6,7 +6,7 @@ import d.l;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/collections/CollectionsKt__IteratorsJVMKt$iterator$1", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"kotlin/collections/CollectionsKt__IteratorsJVMKt$iterator$1", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
 public final class n$a
   implements a, Iterator<T>
 {
@@ -15,7 +15,7 @@ public final class n$a
   public final boolean hasNext()
   {
     AppMethodBeat.i(129229);
-    boolean bool = this.MKA.hasMoreElements();
+    boolean bool = this.NhD.hasMoreElements();
     AppMethodBeat.o(129229);
     return bool;
   }
@@ -23,7 +23,7 @@ public final class n$a
   public final T next()
   {
     AppMethodBeat.i(129230);
-    Object localObject = this.MKA.nextElement();
+    Object localObject = this.NhD.nextElement();
     AppMethodBeat.o(129230);
     return localObject;
   }
@@ -38,7 +38,7 @@ public final class n$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.a.n.a
  * JD-Core Version:    0.7.0.1
  */

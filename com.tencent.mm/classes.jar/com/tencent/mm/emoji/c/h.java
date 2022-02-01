@@ -6,15 +6,15 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/upload/EmojiUploadFactory;", "", "()V", "useCdn", "", "getUpload", "Lcom/tencent/mm/emoji/upload/EmojiUpload;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "callback", "Lcom/tencent/mm/emoji/upload/EmojiUpload$Callback;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/upload/EmojiUploadFactory;", "", "()V", "useCdn", "", "getUpload", "Lcom/tencent/mm/emoji/upload/EmojiUpload;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "callback", "Lcom/tencent/mm/emoji/upload/EmojiUpload$Callback;", "plugin-emojisdk_release"})
 public final class h
 {
-  public static final h gqf;
+  public static final h gsA;
   
   static
   {
     AppMethodBeat.i(105778);
-    gqf = new h();
+    gsA = new h();
     AppMethodBeat.o(105778);
   }
   
@@ -23,7 +23,7 @@ public final class h
     AppMethodBeat.i(105777);
     p.h(paramEmojiInfo, "emojiInfo");
     p.h(parama, "callback");
-    if (m.afj())
+    if (m.afx())
     {
       paramEmojiInfo = (d)new e(paramEmojiInfo, paramBoolean, parama);
       AppMethodBeat.o(105777);
@@ -36,7 +36,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.c.h
  * JD-Core Version:    0.7.0.1
  */

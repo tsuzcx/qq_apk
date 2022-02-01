@@ -1,296 +1,220 @@
 package com.tencent.mm.plugin.sns.e;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.a.c;
-import com.tencent.mm.plugin.sns.a.c.1;
-import com.tencent.mm.plugin.sns.storage.b.b;
-import com.tencent.mm.plugin.sns.storage.y;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.x;
+import com.tencent.mm.plugin.sns.data.k;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
+import com.tencent.mm.plugin.sns.storage.b.c;
 import com.tencent.mm.plugin.sns.ui.as.a;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.plugin.sns.ui.view.HalfScreenAddBrandView;
+import com.tencent.mm.pluginsdk.model.o;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.RoundCornerImageView;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.ui.widget.a.e;
+import org.json.JSONObject;
 
 public final class a
 {
-  com.tencent.mm.ui.base.p mCf;
+  public String dAg;
+  public String dGD;
+  public bq hKP;
   public Context mContext;
-  public com.tencent.mm.ui.widget.a.e nHu;
-  public volatile boolean zcb;
+  private e mIQ;
+  public an pSY;
+  public p tipDialog;
+  public as.a zsE;
+  public b.c zsF;
+  public int zsG;
+  public com.tencent.mm.plugin.sns.data.c zsH;
+  public boolean zsI;
+  public String zsJ;
   
-  public a()
+  private void hA(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(179077);
-    this.zcb = false;
-    this.mCf = null;
-    AppMethodBeat.o(179077);
-  }
-  
-  public static View a(Context paramContext, b.b paramb, com.tencent.mm.plugin.sns.storage.p paramp, bp parambp)
-  {
-    AppMethodBeat.i(197748);
-    View localView = LayoutInflater.from(paramContext).inflate(2131495530, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131306893);
-    RoundCornerImageView localRoundCornerImageView = (RoundCornerImageView)localView.findViewById(2131306892);
-    TextView localTextView2 = (TextView)localView.findViewById(2131305527);
-    if ((paramb == null) || (paramp == null)) {}
-    try
-    {
-      ad.e("HalfScreenSubscribeUtils", "adCardActionBtnInfo == null || snsInfo == null");
-      for (;;)
-      {
-        paramContext = (TextView)localView.findViewById(2131305520);
-        paramp = (Button)localView.findViewById(2131305516);
-        localTextView1.setText(paramb.zwW);
-        localTextView2.setText(paramb.zwP);
-        paramContext.setText(paramb.zwQ);
-        paramp.setText(paramb.zwR);
-        AppMethodBeat.o(197748);
-        return localView;
-        if (bt.isNullOrNil(paramb.zwW))
-        {
-          paramContext = paramp.field_userName;
-          if (!bt.isNullOrNil(paramContext))
-          {
-            parambp = parambp.aTk(paramContext);
-            if (parambp != null) {
-              break;
-            }
-            if (paramp.QM(32))
-            {
-              localb = paramp.dRL();
-              if (!localb.zws) {
-                break label243;
-              }
-              parambp = localb.zwt;
-              paramb.zwW = parambp;
-            }
-          }
-        }
-        if (!bt.isNullOrNil(paramb.zwV)) {
-          break label274;
-        }
-        a.b.c(localRoundCornerImageView, paramp.field_userName);
-      }
+    AppMethodBeat.i(219221);
+    if (paramInt1 == 0) {
+      paramInt1 = 1;
     }
-    catch (Throwable paramContext)
+    for (;;)
     {
-      for (;;)
+      try
       {
-        com.tencent.mm.plugin.sns.storage.b localb;
-        ad.e("HalfScreenSubscribeUtils", paramContext.toString());
-        continue;
-        paramContext = parambp.adv();
-        continue;
-        label243:
-        parambp = paramContext;
-        if (bt.isNullOrNil(paramContext))
-        {
-          parambp = paramContext;
-          if (!bt.isNullOrNil(localb.nickname))
-          {
-            parambp = localb.nickname;
-            continue;
-            label274:
-            paramContext = paramb.zwV;
-            if (!TextUtils.equals((String)localRoundCornerImageView.getTag(2131304927), paramContext))
-            {
-              localRoundCornerImageView.setImageDrawable(null);
-              if (!TextUtils.isEmpty(paramContext))
-              {
-                ad.d("HalfScreenSubscribeUtils", "loadImage, hash=" + localRoundCornerImageView.hashCode() + ", url=" + paramContext);
-                com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramContext, false, new c.1(localRoundCornerImageView, paramContext));
-              }
-            }
-          }
-        }
+        Object localObject = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("enterType", paramInt1);
+        localJSONObject.put("result", paramInt2);
+        ((JSONObject)localObject).put("extInfo", localJSONObject);
+        ((JSONObject)localObject).put("uxinfo", this.dGD);
+        ((JSONObject)localObject).put("snsid", this.dAg);
+        ((JSONObject)localObject).put("scene", 0);
+        ((JSONObject)localObject).put("adExtInfo", this.zsJ);
+        localObject = ((JSONObject)localObject).toString();
+        k.jm("timeline_ad_half_screen_quickly_add_brand_result", (String)localObject);
+        ae.i("HalfScreenAddBrandController", "addBrandReport timeline_ad_half_screen_quickly_add_brand_result, content=".concat(String.valueOf(localObject)));
+        AppMethodBeat.o(219221);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ae.e("HalfScreenAddBrandController", "addBrandReport exp:" + localException.toString());
+        AppMethodBeat.o(219221);
+      }
+      if (paramInt1 == 182) {
+        paramInt1 = 3;
+      } else {
+        paramInt1 = 2;
       }
     }
   }
   
-  public static final class a
+  public final void C(boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(219219);
+    if (this.mContext == null)
+    {
+      ae.i("HalfScreenAddBrandController", "context is null");
+      AppMethodBeat.o(219219);
+      return;
+    }
+    if ((paramBoolean) && (!bu.isNullOrNil(paramString)))
+    {
+      Object localObject = new Intent();
+      ((Intent)localObject).putExtra("Chat_User", paramString);
+      ((Intent)localObject).putExtra("key_has_add_contact", true);
+      ((Intent)localObject).putExtra("finish_direct", true);
+      ((Intent)localObject).setClassName(this.mContext, "com.tencent.mm.ui.chatting.ChattingUI");
+      paramString = this.mContext;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/sns/controller/HalfScreenAddBrandController", "dealRet", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/sns/controller/HalfScreenAddBrandController", "dealRet", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(219219);
+      return;
+    }
+    Toast.makeText(this.mContext, this.mContext.getString(2131755166), 1).show();
+    AppMethodBeat.o(219219);
+  }
+  
+  public final void dWd()
+  {
+    AppMethodBeat.i(219218);
+    this.mIQ = new e(this.mContext, true, 0);
+    HalfScreenAddBrandView localHalfScreenAddBrandView = new HalfScreenAddBrandView(this.mContext);
+    Object localObject = this.zsH;
+    int i = this.zsG;
+    localHalfScreenAddBrandView.zsH = ((com.tencent.mm.plugin.sns.data.c)localObject);
+    localHalfScreenAddBrandView.zsG = i;
+    localHalfScreenAddBrandView.zUG = this;
+    localHalfScreenAddBrandView.ASP.setText(localHalfScreenAddBrandView.zsH.dpI);
+    localHalfScreenAddBrandView.ASQ.setText(localHalfScreenAddBrandView.zsH.ztg);
+    localObject = localHalfScreenAddBrandView.zsH.ztf;
+    if (!TextUtils.equals((String)localHalfScreenAddBrandView.ASO.getTag(2131304927), (CharSequence)localObject))
+    {
+      localHalfScreenAddBrandView.ASO.setImageDrawable(null);
+      com.tencent.mm.plugin.sns.a.c.j((String)localObject, localHalfScreenAddBrandView.ASO);
+    }
+    if ((this.zsG == 182) && (this.zsI)) {
+      localHalfScreenAddBrandView.AST.setText(localHalfScreenAddBrandView.zsH.zth);
+    }
+    this.mIQ.P(localHalfScreenAddBrandView, true);
+    this.mIQ.fQw();
+    this.mIQ.cPF();
+    AppMethodBeat.o(219218);
+  }
+  
+  public final void dWe()
+  {
+    AppMethodBeat.i(219220);
+    if ((this.mIQ != null) && (this.mIQ.isShowing())) {
+      this.mIQ.bqD();
+    }
+    AppMethodBeat.o(219220);
+  }
+  
+  public final class a
     implements f
   {
-    private com.tencent.mm.plugin.sns.storage.p yXF;
-    private WeakReference<a> zck;
-    b.b zcl;
-    private int zcm;
-    as.a zcn;
+    Context context;
+    int doj;
+    p tipDialog;
     
-    public a(a parama, b.b paramb, com.tencent.mm.plugin.sns.storage.p paramp, int paramInt, as.a parama1)
+    private a(Context paramContext, int paramInt, p paramp)
     {
-      AppMethodBeat.i(197746);
-      this.zck = new WeakReference(parama);
-      this.zcl = paramb;
-      this.yXF = paramp;
-      this.zcm = paramInt;
-      this.zcn = parama1;
-      AppMethodBeat.o(197746);
+      this.context = paramContext;
+      this.doj = paramInt;
+      this.tipDialog = paramp;
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
+    public final void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, final n paramn)
     {
-      AppMethodBeat.i(197747);
-      ad.i("HalfSubscribeController", "onSceneEnd errType %d,errCode %d,errMsg %s,scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
-      for (;;)
+      AppMethodBeat.i(219217);
+      if (((paramn instanceof com.tencent.mm.openim.b.b)) || ((paramn instanceof o)))
       {
-        StringBuilder localStringBuilder;
-        try
+        if ((paramn.getType() != 30) && (paramn.getType() != 667))
         {
-          if ((paramn instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.e))
-          {
-            if ((this.zck == null) || (this.zck.get() == null))
-            {
-              g.aiU().b(paramn.getType(), this);
-              AppMethodBeat.o(197747);
-              return;
-            }
-            paramString = (a)this.zck.get();
-            paramString.zcb = true;
-            aq.f(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(197743);
-                if (paramString.mCf != null)
-                {
-                  paramString.mCf.dismiss();
-                  paramString.mCf = null;
-                }
-                if ((paramString.nHu != null) && (paramString.nHu.isShowing()))
-                {
-                  ad.i("HalfSubscribeController", "mmBottomSheet tryHide due to send subscribe");
-                  paramString.nHu.bpT();
-                }
-                AppMethodBeat.o(197743);
-              }
-            });
-            paramString = paramString.mContext;
-            if ((paramInt1 != 0) || (paramInt2 != 0)) {
-              break label417;
-            }
-            ad.i("HalfSubscribeController", "subscribe is success");
-            aq.f(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(197744);
-                try
-                {
-                  a.a.this.zcn.a(a.a.this.zcl);
-                  if (((paramString instanceof Activity)) && (!((Activity)paramString).isFinishing())) {
-                    t.cm(paramString, a.a.this.zcl.zwT);
-                  }
-                  AppMethodBeat.o(197744);
-                  return;
-                }
-                catch (Throwable localThrowable)
-                {
-                  ad.e("HalfSubscribeController", localThrowable.toString());
-                  AppMethodBeat.o(197744);
-                }
-              }
-            });
-            paramString = com.tencent.mm.plugin.sns.data.q.zw(this.yXF.field_snsId);
-          }
-          try
-          {
-            g.ajA();
-            localObject = com.tencent.mm.kernel.a.aiq();
-            if (bt.V(new String[] { paramString, localObject }))
-            {
-              ad.e("StorageHelper", "HalfScreenSubscribe, snsId or uin is empty");
-              paramString = new y(this.zcl.zwN, this.zcl.pLS, 1, 0);
-              c.a(this.yXF, this.zcm, paramString);
-              g.aiU().b(paramn.getType(), this);
-              AppMethodBeat.o(197747);
-              return;
-            }
-            localStringBuilder = new StringBuilder();
-            if (!bt.isNullOrNil(paramString))
-            {
-              localStringBuilder.append(paramString);
-              if (bt.isNullOrNil((String)localObject)) {
-                break label476;
-              }
-              paramString = (String)localObject;
-              localStringBuilder.append(paramString);
-              if (localStringBuilder.length() > 0) {
-                break label342;
-              }
-              ad.e("StorageHelper", "HalfScreenSubscribe, key is empty");
-              continue;
-            }
-          }
-          catch (Throwable paramString)
-          {
-            ad.e("StorageHelper", paramString.toString());
-            continue;
-          }
-          paramString = "";
-        }
-        catch (Throwable paramString)
-        {
-          ad.e("HalfSubscribeController", paramString.toString());
-          AppMethodBeat.o(197747);
+          ae.w("HalfScreenAddBrandController", "not expected scene,  type = " + paramn.getType());
+          AppMethodBeat.o(219217);
           return;
         }
-        continue;
-        label342:
-        paramString = localStringBuilder.toString();
-        Object localObject = aj.getContext().getSharedPreferences("SnsAdVoteSubscribe", 0).edit();
-        ((SharedPreferences.Editor)localObject).putString(paramString, "1");
-        ((SharedPreferences.Editor)localObject).commit();
-        ad.i("StorageHelper", "HalfScreenSubscribe, key = " + paramString + ", isSubscribe=" + "1");
-        continue;
-        label417:
-        ad.e("HalfSubscribeController", "subscribe is failed");
-        aq.f(new Runnable()
+        if (((paramn instanceof o)) && (((o)paramn).dto != 1))
+        {
+          ae.e("HalfScreenAddBrandController", "not opcode addcontact!");
+          AppMethodBeat.o(219217);
+          return;
+        }
+        com.tencent.mm.plugin.sns.model.b.e(this);
+        ae.i("HalfScreenAddBrandController", "catch add Contact errCode: %d && errMsg: %s", new Object[] { Integer.valueOf(paramInt2), paramString });
+        ar.f(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(197745);
-            try
+            AppMethodBeat.i(219216);
+            if (a.a.this.tipDialog != null)
             {
-              if (((paramString instanceof Activity)) && (!((Activity)paramString).isFinishing())) {
-                t.cn(paramString, a.a.this.zcl.zwS);
-              }
-              AppMethodBeat.o(197745);
-              return;
+              a.a.this.tipDialog.dismiss();
+              a.a.this.tipDialog = null;
             }
-            catch (Throwable localThrowable)
+            String str2 = "";
+            String str1 = str2;
+            if (paramInt1 == 0)
             {
-              ad.e("HalfSubscribeController", localThrowable.toString());
-              AppMethodBeat.o(197745);
+              str1 = str2;
+              if (paramInt2 == 0)
+              {
+                if (paramn.getType() != 30) {
+                  break label120;
+                }
+                str1 = ((o)paramn).fdt();
+              }
+            }
+            for (;;)
+            {
+              a.a(a.this, a.a.this.context, paramInt1, paramInt2, paramString, a.a.this.doj, str1);
+              AppMethodBeat.o(219216);
+              return;
+              label120:
+              str1 = str2;
+              if (paramn.getType() == 667) {
+                str1 = ((com.tencent.mm.openim.b.b)paramn).iKt;
+              }
             }
           }
         });
-        paramString = new y(this.zcl.zwN, this.zcl.pLS, 1, -3);
-        c.a(this.yXF, this.zcm, paramString);
-        continue;
-        label476:
-        paramString = "";
       }
+      AppMethodBeat.o(219217);
     }
   }
 }

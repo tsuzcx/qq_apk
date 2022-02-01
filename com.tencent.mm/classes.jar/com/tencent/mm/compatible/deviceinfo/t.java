@@ -2,17 +2,17 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class t
 {
-  public int gaY = 0;
-  public int gaZ = 0;
+  public int gdg = 0;
+  public int gdh = 0;
   
-  public final void lr(int paramInt)
+  public final void lt(int paramInt)
   {
-    this.gaZ = paramInt;
+    this.gdh = paramInt;
   }
   
-  public final void ls(int paramInt)
+  public final void lu(int paramInt)
   {
-    this.gaY = paramInt;
+    this.gdg = paramInt;
   }
 }
 

@@ -53,7 +53,7 @@ public class BridgedAndroidWebView
       public boolean onJsPrompt(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, JsPromptResult paramAnonymousJsPromptResult)
       {
         AppMethodBeat.i(140351);
-        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).cgP.cw(paramAnonymousString2);
+        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).cgP.cx(paramAnonymousString2);
         if (paramAnonymousWebView != null)
         {
           paramAnonymousJsPromptResult.confirm(paramAnonymousWebView);

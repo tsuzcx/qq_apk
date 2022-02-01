@@ -40,44 +40,43 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.ai.z.a;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.cv.a;
-import com.tencent.mm.g.a.cv.b;
-import com.tencent.mm.g.a.ib;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ah.z;
+import com.tencent.mm.ah.z.a;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cw.a;
+import com.tencent.mm.g.a.cw.b;
 import com.tencent.mm.g.a.ic;
-import com.tencent.mm.g.a.oh;
-import com.tencent.mm.g.a.rd;
-import com.tencent.mm.g.a.rd.a;
+import com.tencent.mm.g.a.id;
+import com.tencent.mm.g.a.oi;
+import com.tencent.mm.g.a.re;
+import com.tencent.mm.g.a.re.a;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.g.c.y;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.v;
 import com.tencent.mm.model.x;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.pluginsdk.model.app.ao;
-import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.alb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.chatting.a.b;
 import com.tencent.mm.ui.chatting.a.c;
 import com.tencent.mm.ui.chatting.a.d;
-import com.tencent.mm.ui.chatting.as;
-import com.tencent.mm.ui.chatting.k;
+import com.tencent.mm.ui.chatting.at;
+import com.tencent.mm.ui.chatting.j;
+import com.tencent.mm.ui.chatting.l;
+import com.tencent.mm.vfs.o;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -93,39 +92,39 @@ public class ImageGalleryGridUI
   extends MMActivity
   implements MenuItem.OnMenuItemClickListener, View.OnClickListener, ViewTreeObserver.OnPreDrawListener, AdapterView.OnItemClickListener, z, h.b
 {
-  private GridView Aat;
-  private long JPg;
-  public int JQi;
-  c JQj;
-  private WeakReference<c.a> JQk;
-  private Boolean JQl;
-  private Boolean JQm;
-  private TextView JQn;
-  private TextView JQo;
-  private Runnable JQp;
-  private Runnable JQq;
-  Runnable JQr;
-  public View JQs;
-  private View JQt;
-  private int JQu;
-  private View JQv;
-  private View JQw;
-  private View JQx;
-  private View JQy;
-  protected ap handler;
+  private GridView ArG;
+  private long Kks;
+  private Runnable KlA;
+  private Runnable KlB;
+  Runnable KlC;
+  public View KlD;
+  private View KlE;
+  private int KlF;
+  private View KlG;
+  private View KlH;
+  private View KlI;
+  private View KlJ;
+  public int Klt;
+  c Klu;
+  private WeakReference<c.a> Klv;
+  private Boolean Klw;
+  private Boolean Klx;
+  private TextView Kly;
+  private TextView Klz;
+  protected aq handler;
   private boolean mIsPause;
-  public long nYO;
-  private boolean oSO;
-  private com.tencent.mm.sdk.b.c oTc;
-  private boolean rCk;
-  public boolean ruj;
+  private com.tencent.mm.sdk.b.c oZE;
+  private boolean oZq;
+  public long oex;
+  public boolean rCv;
+  private boolean rKv;
   private String talker;
-  private Animation yTf;
+  private Animation zjp;
   
   public ImageGalleryGridUI()
   {
     AppMethodBeat.i(35964);
-    this.JQp = new Runnable()
+    this.KlA = new Runnable()
     {
       public final void run()
       {
@@ -136,7 +135,7 @@ public class ImageGalleryGridUI
         AppMethodBeat.o(35950);
       }
     };
-    this.JQq = new Runnable()
+    this.KlB = new Runnable()
     {
       public final void run()
       {
@@ -147,46 +146,46 @@ public class ImageGalleryGridUI
         AppMethodBeat.o(35952);
       }
     };
-    this.oTc = new com.tencent.mm.sdk.b.c() {};
-    this.rCk = false;
-    this.oSO = false;
-    this.JPg = 0L;
-    this.JQr = new Runnable()
+    this.oZE = new com.tencent.mm.sdk.b.c() {};
+    this.rKv = false;
+    this.oZq = false;
+    this.Kks = 0L;
+    this.KlC = new Runnable()
     {
       @TargetApi(12)
       public final void run()
       {
         AppMethodBeat.i(35961);
-        if (ImageGalleryGridUI.this.JQs != null)
+        if (ImageGalleryGridUI.this.KlD != null)
         {
-          ImageGalleryGridUI.this.JQs.setVisibility(8);
-          ImageGalleryGridUI.this.JQs = null;
+          ImageGalleryGridUI.this.KlD.setVisibility(8);
+          ImageGalleryGridUI.this.KlD = null;
         }
         AppMethodBeat.o(35961);
       }
     };
-    this.JQs = null;
-    this.JQu = -1;
+    this.KlD = null;
+    this.KlF = -1;
     this.mIsPause = true;
     AppMethodBeat.o(35964);
   }
   
-  private boolean a(bu parambu, com.tencent.mm.pluginsdk.model.app.g paramg)
+  private boolean a(bv parambv, com.tencent.mm.pluginsdk.model.app.g paramg)
   {
     AppMethodBeat.i(35976);
-    if ((!parambu.field_talker.endsWith("@qqim")) || (!paramg.field_packageName.equals("com.tencent.mobileqq")))
+    if ((!parambv.field_talker.endsWith("@qqim")) || (!paramg.field_packageName.equals("com.tencent.mobileqq")))
     {
       AppMethodBeat.o(35976);
       return false;
     }
-    ad.d("MicroMsg.GalleryGridUI", "jacks open QQ");
-    parambu = new Intent("android.intent.action.MAIN", null);
-    parambu.addCategory("android.intent.category.LAUNCHER");
-    parambu.addFlags(268435456);
-    parambu.setClassName("com.tencent.mobileqq", ba(getContext(), "com.tencent.mobileqq"));
-    parambu.putExtra("platformId", "wechat");
-    ba.aBQ();
-    paramg = com.tencent.mm.model.c.ajl().get(9, null);
+    ae.d("MicroMsg.GalleryGridUI", "jacks open QQ");
+    parambv = new Intent("android.intent.action.MAIN", null);
+    parambv.addCategory("android.intent.category.LAUNCHER");
+    parambv.addFlags(268435456);
+    parambv.setClassName("com.tencent.mobileqq", bc(getContext(), "com.tencent.mobileqq"));
+    parambv.putExtra("platformId", "wechat");
+    bc.aCg();
+    paramg = com.tencent.mm.model.c.ajA().get(9, null);
     int i;
     if ((paramg != null) && ((paramg instanceof Integer))) {
       i = ((Integer)paramg).intValue();
@@ -211,7 +210,7 @@ public class ImageGalleryGridUI
           j += 1;
           i += 1;
         }
-        parambu.putExtra("tencent_gif", paramg);
+        parambv.putExtra("tencent_gif", paramg);
         label287:
         i = 0;
       }
@@ -221,17 +220,17 @@ public class ImageGalleryGridUI
         {
           for (;;)
           {
-            parambu = new com.tencent.mm.hellhoundlib.b.a().bc(parambu);
-            com.tencent.mm.hellhoundlib.a.a.a(this, parambu.ahp(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "dealOpenQQ", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/pluginsdk/model/app/AppInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)parambu.mq(0));
+            parambv = new com.tencent.mm.hellhoundlib.b.a().bc(parambv);
+            com.tencent.mm.hellhoundlib.a.a.a(this, parambv.ahE(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "dealOpenQQ", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/pluginsdk/model/app/AppInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)parambv.mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "dealOpenQQ", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/pluginsdk/model/app/AppInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(35976);
             return true;
             paramg = paramg;
-            ad.printErrStackTrace("MicroMsg.GalleryGridUI", paramg, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.GalleryGridUI", paramg, "", new Object[0]);
           }
         }
-        catch (Exception parambu)
+        catch (Exception parambv)
         {
           break label287;
         }
@@ -242,18 +241,18 @@ public class ImageGalleryGridUI
   private void aF(View paramView, int paramInt)
   {
     AppMethodBeat.i(35982);
-    if (this.JQj == null)
+    if (this.Klu == null)
     {
       AppMethodBeat.o(35982);
       return;
     }
-    ad.i("MicroMsg.GalleryGridUI", "[ImageGalleryUI] enter");
+    ae.i("MicroMsg.GalleryGridUI", "[ImageGalleryUI] enter");
     Intent localIntent = new Intent(this, ImageGalleryUI.class);
-    localIntent.putExtra("key_biz_chat_id", this.nYO);
-    localIntent.putExtra("key_is_biz_chat", this.ruj);
+    localIntent.putExtra("key_biz_chat_id", this.oex);
+    localIntent.putExtra("key_is_biz_chat", this.rCv);
     localIntent.putExtra("intent.key.with.footer", true);
-    bu localbu = (bu)this.JQj.getItem(paramInt);
-    if (localbu == null)
+    bv localbv = (bv)this.Klu.getItem(paramInt);
+    if (localbv == null)
     {
       AppMethodBeat.o(35982);
       return;
@@ -269,15 +268,15 @@ public class ImageGalleryGridUI
       paramView.getLocationInWindow(arrayOfInt);
     }
     localIntent.addFlags(536870912);
-    localIntent.putExtra("img_gallery_msg_id", localbu.field_msgId).putExtra("img_gallery_msg_svr_id", localbu.field_msgSvrId).putExtra("img_gallery_talker", localbu.field_talker).putExtra("img_gallery_chatroom_name", localbu.field_talker).putExtra("img_gallery_orientation", j);
+    localIntent.putExtra("img_gallery_msg_id", localbv.field_msgId).putExtra("img_gallery_msg_svr_id", localbv.field_msgSvrId).putExtra("img_gallery_talker", localbv.field_talker).putExtra("img_gallery_chatroom_name", localbv.field_talker).putExtra("img_gallery_orientation", j);
     if (paramView != null) {
       localIntent.putExtra("img_gallery_width", i).putExtra("img_gallery_height", paramInt).putExtra("img_gallery_left", arrayOfInt[0]).putExtra("img_gallery_top", arrayOfInt[1]).putExtra("img_gallery_enter_from_grid", true);
     }
     for (;;)
     {
       paramView = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahp(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "enterGallery", "(Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramView.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahE(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "enterGallery", "(Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramView.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "enterGallery", "(Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       overridePendingTransition(0, 0);
       AppMethodBeat.o(35982);
@@ -287,7 +286,7 @@ public class ImageGalleryGridUI
   }
   
   @TargetApi(11)
-  private void adH(int paramInt)
+  private void aeo(int paramInt)
   {
     AppMethodBeat.i(35972);
     handleIntent(getIntent());
@@ -302,53 +301,53 @@ public class ImageGalleryGridUI
         return true;
       }
     });
-    this.JQt = findViewById(2131302456);
+    this.KlE = findViewById(2131302456);
     Object localObject = findViewById(2131299762);
-    this.JQv = ((View)localObject);
+    this.KlG = ((View)localObject);
     ((View)localObject).setOnClickListener(this);
     localObject = findViewById(2131306059);
-    this.JQw = ((View)localObject);
+    this.KlH = ((View)localObject);
     ((View)localObject).setOnClickListener(this);
     localObject = findViewById(2131304281);
-    this.JQx = ((View)localObject);
+    this.KlI = ((View)localObject);
     ((View)localObject).setOnClickListener(this);
     localObject = findViewById(2131298954);
-    this.JQy = ((View)localObject);
+    this.KlJ = ((View)localObject);
     ((View)localObject).setOnClickListener(this);
-    this.JQn = ((TextView)findViewById(2131296624));
-    this.JQo = ((TextView)findViewById(2131296596));
+    this.Kly = ((TextView)findViewById(2131296624));
+    this.Klz = ((TextView)findViewById(2131296596));
     if (paramInt == 0)
     {
-      this.Aat = ((GridView)findViewById(2131300936));
-      this.Aat.setOnItemClickListener(this);
-      this.Aat.setNumColumns(3);
-      localObject = new bu();
-      if (this.ruj) {
-        ((bu)localObject).qB(this.nYO);
+      this.ArG = ((GridView)findViewById(2131300936));
+      this.ArG.setOnItemClickListener(this);
+      this.ArG.setNumColumns(3);
+      localObject = new bv();
+      if (this.rCv) {
+        ((bv)localObject).qO(this.oex);
       }
-      this.JQj = new c(this, (bu)localObject, this.talker);
-      if (this.JQj.getCount() == 0)
+      this.Klu = new c(this, (bv)localObject, this.talker);
+      if (this.Klu.getCount() == 0)
       {
-        this.JQo.setVisibility(0);
+        this.Klz.setVisibility(0);
         AppMethodBeat.o(35972);
         return;
       }
-      this.JQo.setVisibility(8);
-      this.Aat.setAdapter(this.JQj);
-      fFO();
+      this.Klz.setVisibility(8);
+      this.ArG.setAdapter(this.Klu);
+      fJV();
     }
     for (;;)
     {
-      this.Aat.setOnScrollListener(new AbsListView.OnScrollListener()
+      this.ArG.setOnScrollListener(new AbsListView.OnScrollListener()
       {
-        private Runnable oTO;
+        private Runnable paq;
         
-        private void jG(boolean paramAnonymousBoolean)
+        private void jF(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(35957);
           if (paramAnonymousBoolean)
           {
-            ImageGalleryGridUI.b(ImageGalleryGridUI.this).removeCallbacks(this.oTO);
+            ImageGalleryGridUI.b(ImageGalleryGridUI.this).removeCallbacks(this.paq);
             if (ImageGalleryGridUI.b(ImageGalleryGridUI.this).getVisibility() != 0)
             {
               ImageGalleryGridUI.b(ImageGalleryGridUI.this).clearAnimation();
@@ -360,8 +359,8 @@ public class ImageGalleryGridUI
           }
           else
           {
-            ImageGalleryGridUI.b(ImageGalleryGridUI.this).removeCallbacks(this.oTO);
-            ImageGalleryGridUI.b(ImageGalleryGridUI.this).postDelayed(this.oTO, 256L);
+            ImageGalleryGridUI.b(ImageGalleryGridUI.this).removeCallbacks(this.paq);
+            ImageGalleryGridUI.b(ImageGalleryGridUI.this).postDelayed(this.paq, 256L);
           }
           AppMethodBeat.o(35957);
         }
@@ -370,9 +369,9 @@ public class ImageGalleryGridUI
         {
           AppMethodBeat.i(35959);
           paramAnonymousAbsListView = ImageGalleryGridUI.this;
-          Object localObject = (bu)paramAnonymousAbsListView.JQj.getItem(paramAnonymousInt1);
+          Object localObject = (bv)paramAnonymousAbsListView.Klu.getItem(paramAnonymousInt1);
           if (localObject == null) {}
-          for (paramAnonymousAbsListView = null;; paramAnonymousAbsListView = com.tencent.mm.ui.gridviewheaders.a.fJG().a((Date)localObject, paramAnonymousAbsListView))
+          for (paramAnonymousAbsListView = null;; paramAnonymousAbsListView = com.tencent.mm.ui.gridviewheaders.a.fNX().a((Date)localObject, paramAnonymousAbsListView))
           {
             ImageGalleryGridUI.b(ImageGalleryGridUI.this).setText(paramAnonymousAbsListView);
             AppMethodBeat.o(35959);
@@ -385,30 +384,30 @@ public class ImageGalleryGridUI
         {
           AppMethodBeat.i(35958);
           if (1 == paramAnonymousInt) {
-            jG(true);
+            jF(true);
           }
           for (;;)
           {
-            com.tencent.mm.aw.q.aIJ().cp(paramAnonymousInt);
+            com.tencent.mm.av.q.aJb().cp(paramAnonymousInt);
             AppMethodBeat.o(35958);
             return;
             if (paramAnonymousInt == 0) {
-              jG(false);
+              jF(false);
             }
           }
         }
       });
       AppMethodBeat.o(35972);
       return;
-      if (this.JQj != null)
+      if (this.Klu != null)
       {
-        this.JQj.notifyDataSetChanged();
-        fFO();
+        this.Klu.notifyDataSetChanged();
+        fJV();
       }
     }
   }
   
-  private static String ba(Context paramContext, String paramString)
+  private static String bc(Context paramContext, String paramString)
   {
     AppMethodBeat.i(35977);
     paramContext = paramContext.getPackageManager();
@@ -428,7 +427,7 @@ public class ImageGalleryGridUI
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.GalleryGridUI", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.GalleryGridUI", paramContext, "", new Object[0]);
         paramContext = null;
       }
     }
@@ -436,42 +435,42 @@ public class ImageGalleryGridUI
     return paramContext;
   }
   
-  private void c(cv paramcv)
+  private void c(cw paramcw)
   {
     AppMethodBeat.i(35991);
-    paramcv.dnG.activity = this;
-    paramcv.dnG.dnM = 45;
-    com.tencent.mm.sdk.b.a.IbL.l(paramcv);
-    if ((paramcv.dnH.ret == -2) || (paramcv.dnH.ret > 0))
+    paramcw.doL.activity = this;
+    paramcw.doL.doR = 45;
+    com.tencent.mm.sdk.b.a.IvT.l(paramcw);
+    if ((paramcw.doM.ret == -2) || (paramcw.doM.ret > 0))
     {
       AppMethodBeat.o(35991);
       return;
     }
-    if (paramcv.dnH.ret <= 0)
+    if (paramcw.doM.ret <= 0)
     {
-      cxe();
-      if (14 != paramcv.dnG.type)
+      cyF();
+      if (14 != paramcw.doL.type)
       {
-        ad.d("MicroMsg.GalleryGridUI", "not record type, do not report");
+        ae.d("MicroMsg.GalleryGridUI", "not record type, do not report");
         AppMethodBeat.o(35991);
         return;
       }
-      if (paramcv.dnG.dnJ == null)
+      if (paramcw.doL.doO == null)
       {
-        ad.e("MicroMsg.GalleryGridUI", "want to report record fav, but type count is null");
+        ae.e("MicroMsg.GalleryGridUI", "want to report record fav, but type count is null");
         AppMethodBeat.o(35991);
         return;
       }
-      com.tencent.mm.plugin.report.service.g.yhR.f(11142, new Object[] { Integer.valueOf(paramcv.dnG.dnJ.GjK), Integer.valueOf(paramcv.dnG.dnJ.GjL), Integer.valueOf(paramcv.dnG.dnJ.GjM), Integer.valueOf(paramcv.dnG.dnJ.tGM), Integer.valueOf(paramcv.dnG.dnJ.GjN), Integer.valueOf(paramcv.dnG.dnJ.GjO), Integer.valueOf(paramcv.dnG.dnJ.GjP), Integer.valueOf(paramcv.dnG.dnJ.fileCount), Integer.valueOf(paramcv.dnG.dnJ.GjQ), Integer.valueOf(paramcv.dnG.dnJ.GjR), Integer.valueOf(paramcv.dnG.dnJ.GjS), Integer.valueOf(paramcv.dnG.dnJ.GjT), Integer.valueOf(paramcv.dnG.dnJ.GjU), Integer.valueOf(paramcv.dnG.dnJ.GjV), Integer.valueOf(paramcv.dnG.dnJ.GjW) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11142, new Object[] { Integer.valueOf(paramcw.doL.doO.GCt), Integer.valueOf(paramcw.doL.doO.GCu), Integer.valueOf(paramcw.doL.doO.GCv), Integer.valueOf(paramcw.doL.doO.tRD), Integer.valueOf(paramcw.doL.doO.GCw), Integer.valueOf(paramcw.doL.doO.GCx), Integer.valueOf(paramcw.doL.doO.GCy), Integer.valueOf(paramcw.doL.doO.fileCount), Integer.valueOf(paramcw.doL.doO.GCz), Integer.valueOf(paramcw.doL.doO.GCA), Integer.valueOf(paramcw.doL.doO.GCB), Integer.valueOf(paramcw.doL.doO.GCC), Integer.valueOf(paramcw.doL.doO.GCD), Integer.valueOf(paramcw.doL.doO.GCE), Integer.valueOf(paramcw.doL.doO.GCF) });
     }
     AppMethodBeat.o(35991);
   }
   
-  private String cg(bu parambu)
+  private String cg(bv parambv)
   {
     AppMethodBeat.i(35978);
-    String str = bt.bI(this.talker, "");
-    boolean bool = w.vF(this.talker);
+    String str = bu.bI(this.talker, "");
+    boolean bool = x.wb(this.talker);
     if (!bool)
     {
       AppMethodBeat.o(35978);
@@ -479,21 +478,21 @@ public class ImageGalleryGridUI
     }
     if (bool)
     {
-      parambu = bj.Bk(parambu.field_content);
-      if ((parambu == null) || (parambu.length() <= 0)) {}
+      parambv = bl.BM(parambv.field_content);
+      if ((parambv == null) || (parambv.length() <= 0)) {}
     }
     for (;;)
     {
       AppMethodBeat.o(35978);
-      return parambu;
-      parambu = str;
+      return parambv;
+      parambv = str;
     }
   }
   
-  private void ch(bu parambu)
+  private void ch(bv parambv)
   {
     AppMethodBeat.i(35981);
-    if (!fFP())
+    if (!fJW())
     {
       t.g(getContext(), null);
       AppMethodBeat.o(35981);
@@ -501,90 +500,90 @@ public class ImageGalleryGridUI
     }
     Intent localIntent = new Intent();
     localIntent.setClassName(getContext(), "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
-    localIntent.putExtra("app_msg_id", parambu.field_msgId);
-    parambu = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, parambu.ahp(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "enterAppMsgShow", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)parambu.mq(0));
+    localIntent.putExtra("app_msg_id", parambv.field_msgId);
+    parambv = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, parambv.ahE(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "enterAppMsgShow", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)parambv.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "enterAppMsgShow", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(35981);
   }
   
-  private void cxd()
+  private void cyE()
   {
     AppMethodBeat.i(35985);
-    setMMTitle(getString(2131759814, new Object[] { Integer.valueOf(h.a.fFU().rCx.size()) }));
-    h.a.fFU().rCy = true;
-    if (this.JQj == null)
+    setMMTitle(getString(2131759814, new Object[] { Integer.valueOf(h.a.fKb().rKI.size()) }));
+    h.a.fKb().rKJ = true;
+    if (this.Klu == null)
     {
       AppMethodBeat.o(35985);
       return;
     }
-    if (this.yTf == null) {
-      this.yTf = AnimationUtils.loadAnimation(this, 2130772108);
+    if (this.zjp == null) {
+      this.zjp = AnimationUtils.loadAnimation(this, 2130772108);
     }
-    this.JQj.cxd();
-    this.JQt.setVisibility(0);
-    this.JQt.startAnimation(this.yTf);
-    this.JQv.setEnabled(false);
-    this.JQw.setEnabled(false);
-    this.JQx.setEnabled(false);
-    this.JQy.setEnabled(false);
-    this.JQu = this.Aat.getPaddingBottom();
-    this.Aat.setPadding(this.Aat.getPaddingLeft(), this.Aat.getPaddingTop(), this.Aat.getPaddingRight(), com.tencent.mm.cc.a.ax(getContext(), 2131165567));
-    com.tencent.mm.plugin.report.service.g.yhR.f(11627, new Object[] { Integer.valueOf(2) });
+    this.Klu.cyE();
+    this.KlE.setVisibility(0);
+    this.KlE.startAnimation(this.zjp);
+    this.KlG.setEnabled(false);
+    this.KlH.setEnabled(false);
+    this.KlI.setEnabled(false);
+    this.KlJ.setEnabled(false);
+    this.KlF = this.ArG.getPaddingBottom();
+    this.ArG.setPadding(this.ArG.getPaddingLeft(), this.ArG.getPaddingTop(), this.ArG.getPaddingRight(), com.tencent.mm.cb.a.ax(getContext(), 2131165567));
+    com.tencent.mm.plugin.report.service.g.yxI.f(11627, new Object[] { Integer.valueOf(2) });
     removeOptionMenu(0);
     addTextOptionMenu(0, getString(2131759767), this);
     AppMethodBeat.o(35985);
   }
   
-  private void fFO()
+  private void fJV()
   {
     AppMethodBeat.i(35973);
-    int i = this.Aat.getFirstVisiblePosition();
-    int j = this.Aat.getLastVisiblePosition();
-    int k = this.JQi;
+    int i = this.ArG.getFirstVisiblePosition();
+    int j = this.ArG.getLastVisiblePosition();
+    int k = this.Klt;
     if ((k >= i) && (k <= j))
     {
       AppMethodBeat.o(35973);
       return;
     }
-    this.Aat.setSelection(k);
+    this.ArG.setSelection(k);
     AppMethodBeat.o(35973);
   }
   
-  private boolean fFP()
+  private boolean fJW()
   {
     AppMethodBeat.i(35980);
-    long l1 = this.JPg;
+    long l1 = this.Kks;
     long l2 = System.currentTimeMillis();
-    this.JPg = l2;
+    this.Kks = l2;
     if (l1 + 30000L < l2)
     {
-      ba.aBQ();
-      this.oSO = com.tencent.mm.model.c.isSDCardAvailable();
+      bc.aCg();
+      this.oZq = com.tencent.mm.model.c.isSDCardAvailable();
     }
-    boolean bool = this.oSO;
+    boolean bool = this.oZq;
     AppMethodBeat.o(35980);
     return bool;
   }
   
-  private void fFQ()
+  private void fJX()
   {
     AppMethodBeat.i(35986);
-    if ((!h.a.fFU().rCx.isEmpty()) && (h.a.fFU().rCy)) {}
+    if ((!h.a.fKb().rKI.isEmpty()) && (h.a.fKb().rKJ)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.JQv.setEnabled(true);
-      this.JQw.setEnabled(true);
-      this.JQx.setEnabled(true);
-      this.JQy.setEnabled(true);
+      this.KlG.setEnabled(true);
+      this.KlH.setEnabled(true);
+      this.KlI.setEnabled(true);
+      this.KlJ.setEnabled(true);
       AppMethodBeat.o(35986);
       return;
     }
-    this.JQv.setEnabled(false);
-    this.JQw.setEnabled(false);
-    this.JQx.setEnabled(false);
-    this.JQy.setEnabled(false);
+    this.KlG.setEnabled(false);
+    this.KlH.setEnabled(false);
+    this.KlI.setEnabled(false);
+    this.KlJ.setEnabled(false);
     AppMethodBeat.o(35986);
   }
   
@@ -613,7 +612,7 @@ public class ImageGalleryGridUI
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.GalleryGridUI", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GalleryGridUI", paramContext, "", new Object[0]);
       AppMethodBeat.o(35979);
     }
     return null;
@@ -626,40 +625,40 @@ public class ImageGalleryGridUI
     if (paramIntent.getIntExtra("kintent_intent_source", 0) == 1) {}
     for (;;)
     {
-      this.JQl = Boolean.valueOf(bool);
+      this.Klw = Boolean.valueOf(bool);
       this.talker = paramIntent.getStringExtra("kintent_talker");
-      this.JQi = paramIntent.getIntExtra("kintent_image_index", 0);
-      this.ruj = paramIntent.getBooleanExtra("key_is_biz_chat", false);
-      this.nYO = getIntent().getLongExtra("key_biz_chat_id", -1L);
-      this.JQm = Boolean.TRUE;
+      this.Klt = paramIntent.getIntExtra("kintent_image_index", 0);
+      this.rCv = paramIntent.getBooleanExtra("key_is_biz_chat", false);
+      this.oex = getIntent().getLongExtra("key_biz_chat_id", -1L);
+      this.Klx = Boolean.TRUE;
       AppMethodBeat.o(35969);
       return;
       bool = false;
     }
   }
   
-  private static void ic(List<bu> paramList)
+  private static void im(List<bv> paramList)
   {
     AppMethodBeat.i(35989);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bu localbu = (bu)paramList.next();
-      com.tencent.mm.ui.chatting.a.a(a.c.Jxc, a.d.Jxh, localbu, 0);
+      bv localbv = (bv)paramList.next();
+      com.tencent.mm.ui.chatting.a.a(a.c.JRS, a.d.JRX, localbv, 0);
     }
     AppMethodBeat.o(35989);
   }
   
-  private static List<bu> ig(List<bu> paramList)
+  private static List<bv> iq(List<bv> paramList)
   {
     AppMethodBeat.i(35990);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bu localbu = (bu)paramList.next();
-      if ((!b.bX(localbu)) && (!b.bY(localbu)) && (!b.ca(localbu))) {
-        localArrayList.add(localbu);
+      bv localbv = (bv)paramList.next();
+      if ((!b.bX(localbv)) && (!b.bY(localbv)) && (!b.ca(localbv))) {
+        localArrayList.add(localbv);
       }
     }
     AppMethodBeat.o(35990);
@@ -668,12 +667,17 @@ public class ImageGalleryGridUI
   
   public final void a(z.a parama) {}
   
-  public final boolean azg()
+  public final boolean azv()
   {
     return true;
   }
   
-  public final boolean azh()
+  public final boolean azw()
+  {
+    return false;
+  }
+  
+  public final boolean azx()
   {
     return false;
   }
@@ -683,53 +687,53 @@ public class ImageGalleryGridUI
   public final void c(z.a parama)
   {
     AppMethodBeat.i(35994);
-    if (parama == z.a.hDS)
+    if (parama == z.a.hGK)
     {
-      this.JQj.Zu();
-      this.JQj.notifyDataSetChanged();
+      this.Klu.ZD();
+      this.Klu.notifyDataSetChanged();
     }
-    cxe();
+    cyF();
     AppMethodBeat.o(35994);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(35993);
-    if ((this.JQj != null) && (this.mIsPause)) {
-      this.JQj.JQb = true;
+    if ((this.Klu != null) && (this.mIsPause)) {
+      this.Klu.Klm = true;
     }
-    fFQ();
+    fJX();
     AppMethodBeat.o(35993);
   }
   
-  public final void cxe()
+  public final void cyF()
   {
     AppMethodBeat.i(35987);
-    h.a.fFU().rCy = false;
+    h.a.fKb().rKJ = false;
     setMMTitle(getString(2131755258));
-    if (this.JQj == null)
+    if (this.Klu == null)
     {
       AppMethodBeat.o(35987);
       return;
     }
-    this.JQj.notifyDataSetChanged();
-    if (this.JQu >= 0) {
-      this.Aat.setPadding(this.Aat.getPaddingLeft(), this.Aat.getPaddingTop(), this.Aat.getPaddingRight(), this.JQu);
+    this.Klu.notifyDataSetChanged();
+    if (this.KlF >= 0) {
+      this.ArG.setPadding(this.ArG.getPaddingLeft(), this.ArG.getPaddingTop(), this.ArG.getPaddingRight(), this.KlF);
     }
-    this.JQt.setVisibility(8);
+    this.KlE.setVisibility(8);
     removeOptionMenu(0);
     addTextOptionMenu(0, getString(2131759768), this);
     AppMethodBeat.o(35987);
   }
   
-  public final void fFR()
+  public final void fJY()
   {
     AppMethodBeat.i(35992);
-    if ((this.JQj != null) && (this.mIsPause)) {
-      this.JQj.JQb = true;
+    if ((this.Klu != null) && (this.mIsPause)) {
+      this.Klu.Klm = true;
     }
-    setMMTitle(getString(2131759814, new Object[] { Integer.valueOf(h.a.fFU().rCx.size()) }));
-    fFQ();
+    setMMTitle(getString(2131759814, new Object[] { Integer.valueOf(h.a.fKb().rKI.size()) }));
+    fJX();
     AppMethodBeat.o(35992);
   }
   
@@ -737,7 +741,7 @@ public class ImageGalleryGridUI
   {
     AppMethodBeat.i(35974);
     super.finish();
-    h.a.fFU().detach();
+    h.a.fKb().detach();
     AppMethodBeat.o(35974);
   }
   
@@ -754,20 +758,20 @@ public class ImageGalleryGridUI
   public void onBackPressed()
   {
     AppMethodBeat.i(35971);
-    if (h.a.fFU().rCy)
+    if (h.a.fKb().rKJ)
     {
-      cxe();
+      cyF();
       AppMethodBeat.o(35971);
       return;
     }
-    if (this.JQl.booleanValue())
+    if (this.Klw.booleanValue())
     {
       super.onBackPressed();
       AppMethodBeat.o(35971);
       return;
     }
-    if (this.JQi >= 0) {
-      aF(null, this.JQi);
+    if (this.Klt >= 0) {
+      aF(null, this.Klt);
     }
     finish();
     AppMethodBeat.o(35971);
@@ -778,15 +782,15 @@ public class ImageGalleryGridUI
     AppMethodBeat.i(35988);
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-    if (h.a.fFU().rCx.isEmpty())
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+    if (h.a.fKb().rKI.isEmpty())
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(35988);
       return;
     }
-    boolean bool = w.vF(this.talker);
-    Object localObject2 = h.a.fFU().rCx;
+    boolean bool = x.wb(this.talker);
+    Object localObject2 = h.a.fKb().rKI;
     if ((localObject2 == null) || (((List)localObject2).isEmpty()))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -795,20 +799,20 @@ public class ImageGalleryGridUI
     }
     if (paramView.getId() == 2131298954)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(11627, new Object[] { Integer.valueOf(5) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(11627, new Object[] { Integer.valueOf(5) });
       paramView = new TreeSet();
       localObject1 = ((List)localObject2).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        paramView.add(Long.valueOf(((bu)((Iterator)localObject1).next()).field_msgId));
+        paramView.add(Long.valueOf(((bv)((Iterator)localObject1).next()).field_msgId));
       }
       com.tencent.mm.ui.base.h.e(this, getString(2131757553), "", getString(2131758038), getString(2131755691), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(35962);
-          ad.i("MicroMsg.GalleryGridUI", "delete message");
-          com.tencent.mm.ui.chatting.i.a(ImageGalleryGridUI.this, paramView, ImageGalleryGridUI.this);
-          ImageGalleryGridUI.this.cxe();
+          ae.i("MicroMsg.GalleryGridUI", "delete message");
+          j.a(ImageGalleryGridUI.this, paramView, ImageGalleryGridUI.this);
+          ImageGalleryGridUI.this.cyF();
           AppMethodBeat.o(35962);
         }
       }, null);
@@ -820,23 +824,23 @@ public class ImageGalleryGridUI
       return;
       if (paramView.getId() == 2131299762)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(219L, 18L, 1L, true);
-        final cv localcv = new cv();
-        if (com.tencent.mm.pluginsdk.model.i.a(getContext(), localcv, this.talker, (List)localObject2, false))
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(219L, 18L, 1L, true);
+        final cw localcw = new cw();
+        if (com.tencent.mm.pluginsdk.model.i.a(getContext(), localcw, this.talker, (List)localObject2, false))
         {
-          c(localcv);
-          ic((List)localObject2);
+          c(localcw);
+          im((List)localObject2);
         }
         else
         {
           if (((List)localObject2).size() > 1)
           {
             AppCompatActivity localAppCompatActivity = getContext();
-            if (localcv.dnG.dnL >= 0)
+            if (localcw.doL.doQ >= 0)
             {
               paramView = getContext().getString(2131758899);
               label375:
-              if (localcv.dnG.dnL < 0) {
+              if (localcw.doL.doQ < 0) {
                 break label448;
               }
             }
@@ -848,14 +852,14 @@ public class ImageGalleryGridUI
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(35963);
-                  if ((localcv.dnG.type == 14) && (localcv.dnG.dnI.nZa.size() == 0))
+                  if ((localcw.doL.type == 14) && (localcw.doL.doN.oeJ.size() == 0))
                   {
-                    ImageGalleryGridUI.this.cxe();
+                    ImageGalleryGridUI.this.cyF();
                     AppMethodBeat.o(35963);
                     return;
                   }
-                  ImageGalleryGridUI.a(ImageGalleryGridUI.this, localcv);
-                  ImageGalleryGridUI.ih(this.gtP);
+                  ImageGalleryGridUI.a(ImageGalleryGridUI.this, localcw);
+                  ImageGalleryGridUI.ir(this.gww);
                   AppMethodBeat.o(35963);
                 }
               }, null);
@@ -864,19 +868,19 @@ public class ImageGalleryGridUI
               break label375;
             }
           }
-          com.tencent.mm.ui.base.h.l(getContext(), localcv.dnG.dnL, 0);
+          com.tencent.mm.ui.base.h.l(getContext(), localcw.doL.doQ, 0);
         }
       }
       else if (paramView.getId() == 2131306059)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(219L, 19L, 1L, true);
-        k.a(this, (List)localObject2, bool, this.talker, this);
-        cxe();
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(219L, 19L, 1L, true);
+        l.a(this, (List)localObject2, bool, this.talker, this);
+        cyF();
       }
       else
       {
-        com.tencent.mm.plugin.report.service.g.yhR.f(11627, new Object[] { Integer.valueOf(3) });
-        paramView = ig((List)localObject2);
+        com.tencent.mm.plugin.report.service.g.yxI.f(11627, new Object[] { Integer.valueOf(3) });
+        paramView = iq((List)localObject2);
         if (paramView.size() != ((List)localObject2).size())
         {
           com.tencent.mm.ui.base.h.a(getContext(), 2131759799, 2131755906, new DialogInterface.OnClickListener()
@@ -885,29 +889,29 @@ public class ImageGalleryGridUI
             {
               AppMethodBeat.i(35951);
               b.f(ImageGalleryGridUI.this.getContext(), paramView);
-              ImageGalleryGridUI.this.cxe();
+              ImageGalleryGridUI.this.cyF();
               AppMethodBeat.o(35951);
             }
           }, null);
         }
         else
         {
-          localObject1 = (bu)paramView.get(0);
-          if ((((List)localObject2).size() == 1) && (localObject1 != null) && (((bu)localObject1).cTc()))
+          localObject1 = (bv)paramView.get(0);
+          if ((((List)localObject2).size() == 1) && (localObject1 != null) && (((bv)localObject1).cVH()))
           {
             localObject2 = ((ei)localObject1).field_content;
             paramView = null;
             if (localObject2 != null) {
-              paramView = k.b.aA((String)localObject2, ((ei)localObject1).field_reserved);
+              paramView = k.b.aB((String)localObject2, ((ei)localObject1).field_reserved);
             }
             if ((paramView != null) && (paramView.type == 6)) {
-              ch((bu)localObject1);
+              ch((bv)localObject1);
             }
           }
           else
           {
             b.f(this, (List)localObject2);
-            cxe();
+            cyF();
           }
         }
       }
@@ -918,20 +922,20 @@ public class ImageGalleryGridUI
   {
     AppMethodBeat.i(35965);
     super.onCreate(paramBundle);
-    this.rCk = true;
-    this.handler = new ap();
-    adH(0);
-    com.tencent.mm.sdk.b.a.IbL.c(this.oTc);
+    this.rKv = true;
+    this.handler = new aq();
+    aeo(0);
+    com.tencent.mm.sdk.b.a.IvT.c(this.oZE);
     AppMethodBeat.o(35965);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(35966);
-    this.handler.removeCallbacks(this.JQq);
+    this.handler.removeCallbacks(this.KlB);
     this.handler = null;
-    com.tencent.mm.aw.q.aIJ().cp(0);
-    com.tencent.mm.sdk.b.a.IbL.d(this.oTc);
+    com.tencent.mm.av.q.aJb().cp(0);
+    com.tencent.mm.sdk.b.a.IvT.d(this.oZE);
     super.onDestroy();
     AppMethodBeat.o(35966);
   }
@@ -942,11 +946,11 @@ public class ImageGalleryGridUI
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAdapterView);
     ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).mr(paramInt);
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).qY(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-    bu localbu = (bu)this.JQj.getItem(paramInt);
-    paramAdapterView = localbu.field_content;
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).mu(paramInt);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).rl(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryGridUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+    bv localbv = (bv)this.Klu.getItem(paramInt);
+    paramAdapterView = localbv.field_content;
     if (paramAdapterView != null) {}
     label265:
     label274:
@@ -954,10 +958,10 @@ public class ImageGalleryGridUI
     label1692:
     label2460:
     label3744:
-    for (paramAdapterView = k.b.aA(paramAdapterView, localbu.field_reserved);; paramAdapterView = null)
+    for (paramAdapterView = k.b.aB(paramAdapterView, localbv.field_reserved);; paramAdapterView = null)
     {
       if ((paramAdapterView != null) && (paramAdapterView.type == 6)) {
-        ch(localbu);
+        ch(localbv);
       }
       Object localObject2;
       Object localObject3;
@@ -974,7 +978,7 @@ public class ImageGalleryGridUI
           if ((paramAdapterView != null) && (paramAdapterView.type == 3))
           {
             localObject1 = com.tencent.mm.pluginsdk.model.app.q.Q(paramAdapterView.url, "message");
-            localObject2 = com.tencent.mm.pluginsdk.model.app.q.Q(paramAdapterView.hzN, "message");
+            localObject2 = com.tencent.mm.pluginsdk.model.app.q.Q(paramAdapterView.hCB, "message");
             localObject3 = getPackageInfo(getContext(), paramAdapterView.appId);
             if (localObject3 == null)
             {
@@ -987,17 +991,17 @@ public class ImageGalleryGridUI
             for (paramInt = 0;; paramInt = ((PackageInfo)localObject3).versionCode)
             {
               localObject3 = paramAdapterView.appId;
-              paramLong = localbu.field_msgId;
-              l = localbu.field_msgSvrId;
+              paramLong = localbv.field_msgId;
+              l = localbv.field_msgSvrId;
               if (((localObject1 != null) && (((String)localObject1).length() != 0)) || ((localObject2 != null) && (((String)localObject2).length() != 0))) {
                 break label274;
               }
-              ad.e("MicroMsg.GalleryGridUI", "url, lowUrl both are empty");
+              ae.e("MicroMsg.GalleryGridUI", "url, lowUrl both are empty");
               break;
               paramView = ((PackageInfo)localObject3).versionName;
               break label192;
             }
-            if (ay.isMobile(getContext()))
+            if (az.isMobile(getContext()))
             {
               paramAdapterView = (AdapterView<?>)localObject1;
               if (localObject2 != null)
@@ -1019,16 +1023,16 @@ public class ImageGalleryGridUI
               ((Intent)localObject1).putExtra("geta8key_username", this.talker);
               ((Intent)localObject1).putExtra("KPublisherId", "msg_" + Long.toString(l));
               ((Intent)localObject1).putExtra("KAppId", (String)localObject3);
-              paramAdapterView = cg(localbu);
+              paramAdapterView = cg(localbv);
               ((Intent)localObject1).putExtra("pre_username", paramAdapterView);
               ((Intent)localObject1).putExtra("prePublishId", "msg_" + Long.toString(l));
-              if (localbu != null) {
+              if (localbv != null) {
                 ((Intent)localObject1).putExtra("preUsername", paramAdapterView);
               }
               ((Intent)localObject1).putExtra("preChatName", this.talker);
-              ((Intent)localObject1).putExtra("preChatTYPE", x.aG(paramAdapterView, this.talker));
+              ((Intent)localObject1).putExtra("preChatTYPE", com.tencent.mm.model.y.aH(paramAdapterView, this.talker));
               ((Intent)localObject1).putExtra("preMsgIndex", 0);
-              com.tencent.mm.bs.d.b(getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+              com.tencent.mm.br.d.b(getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
               break;
               if (localObject1 != null)
               {
@@ -1046,7 +1050,7 @@ public class ImageGalleryGridUI
             if ((paramAdapterView.url != null) && (!paramAdapterView.url.equals("")))
             {
               localObject1 = paramAdapterView.url;
-              if (w.vF(this.talker))
+              if (x.wb(this.talker))
               {
                 paramView = "groupmessage";
                 localObject3 = com.tencent.mm.pluginsdk.model.app.q.Q((String)localObject1, paramView);
@@ -1061,7 +1065,7 @@ public class ImageGalleryGridUI
                   ((Bundle)localObject3).putString("jsapi_args_appid", paramAdapterView.appId);
                   ((Intent)localObject1).putExtra("jsapiargs", (Bundle)localObject3);
                 }
-                if (bt.isNullOrNil(paramView)) {
+                if (bu.isNullOrNil(paramView)) {
                   break label1033;
                 }
                 ((Intent)localObject1).putExtra("shortUrl", paramView);
@@ -1077,23 +1081,23 @@ public class ImageGalleryGridUI
               for (paramInt = 0;; paramInt = ((PackageInfo)localObject2).versionCode)
               {
                 ((Intent)localObject1).putExtra("version_code", paramInt);
-                if (!bt.isNullOrNil(paramAdapterView.dHo))
+                if (!bu.isNullOrNil(paramAdapterView.dIt))
                 {
-                  ((Intent)localObject1).putExtra("srcUsername", paramAdapterView.dHo);
-                  ((Intent)localObject1).putExtra("srcDisplayname", paramAdapterView.dHp);
+                  ((Intent)localObject1).putExtra("srcUsername", paramAdapterView.dIt);
+                  ((Intent)localObject1).putExtra("srcDisplayname", paramAdapterView.dIu);
                 }
-                ((Intent)localObject1).putExtra("msg_id", localbu.field_msgId);
-                ((Intent)localObject1).putExtra("KPublisherId", "msg_" + Long.toString(localbu.field_msgSvrId));
+                ((Intent)localObject1).putExtra("msg_id", localbv.field_msgId);
+                ((Intent)localObject1).putExtra("KPublisherId", "msg_" + Long.toString(localbv.field_msgSvrId));
                 ((Intent)localObject1).putExtra("KAppId", paramAdapterView.appId);
                 ((Intent)localObject1).putExtra("geta8key_username", this.talker);
-                paramAdapterView = cg(localbu);
+                paramAdapterView = cg(localbv);
                 ((Intent)localObject1).putExtra("pre_username", paramAdapterView);
-                ((Intent)localObject1).putExtra("prePublishId", "msg_" + Long.toString(localbu.field_msgSvrId));
+                ((Intent)localObject1).putExtra("prePublishId", "msg_" + Long.toString(localbv.field_msgSvrId));
                 ((Intent)localObject1).putExtra("preUsername", paramAdapterView);
                 ((Intent)localObject1).putExtra("preChatName", this.talker);
-                ((Intent)localObject1).putExtra("preChatTYPE", x.aG(paramAdapterView, this.talker));
+                ((Intent)localObject1).putExtra("preChatTYPE", com.tencent.mm.model.y.aH(paramAdapterView, this.talker));
                 ((Intent)localObject1).putExtra("preMsgIndex", 0);
-                com.tencent.mm.bs.d.b(getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+                com.tencent.mm.br.d.b(getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
                 break;
                 paramView = "singlemessage";
                 break label611;
@@ -1107,17 +1111,17 @@ public class ImageGalleryGridUI
           else if ((paramAdapterView != null) && (paramAdapterView.type == 19))
           {
             paramView = new Intent();
-            paramView.putExtra("message_id", localbu.field_msgId);
-            paramView.putExtra("record_xml", paramAdapterView.hAs);
-            com.tencent.mm.bs.d.b(getContext(), "record", ".ui.RecordMsgDetailUI", paramView);
+            paramView.putExtra("message_id", localbv.field_msgId);
+            paramView.putExtra("record_xml", paramAdapterView.hDg);
+            com.tencent.mm.br.d.b(getContext(), "record", ".ui.RecordMsgDetailUI", paramView);
           }
           else if ((paramAdapterView != null) && (paramAdapterView.type == 24))
           {
-            paramView = new oh();
-            paramView.dCh.context = getContext();
-            paramView.dCh.msgId = localbu.field_msgId;
-            paramView.dCh.dCi = paramAdapterView.hAs;
-            com.tencent.mm.sdk.b.a.IbL.l(paramView);
+            paramView = new oi();
+            paramView.dDm.context = getContext();
+            paramView.dDm.msgId = localbv.field_msgId;
+            paramView.dDm.dDn = paramAdapterView.hDg;
+            com.tencent.mm.sdk.b.a.IvT.l(paramView);
           }
           else
           {
@@ -1130,10 +1134,10 @@ public class ImageGalleryGridUI
               {
                 localObject1 = this.talker;
                 paramView = (View)localObject1;
-                if (w.vF((String)localObject1)) {
-                  paramView = bj.Bk(localbu.field_content);
+                if (x.wb((String)localObject1)) {
+                  paramView = bl.BM(localbv.field_content);
                 }
-                paramLong = localbu.field_msgSvrId;
+                paramLong = localbv.field_msgSvrId;
                 if ((localObject2 != null) && (com.tencent.mm.pluginsdk.model.app.q.s(getContext(), ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_packageName)))
                 {
                   paramInt = 3;
@@ -1141,33 +1145,33 @@ public class ImageGalleryGridUI
                     break label1679;
                   }
                   paramInt = 4;
-                  localObject3 = new rd();
-                  ((rd)localObject3).dFI.context = getContext();
-                  ((rd)localObject3).dFI.scene = 1;
-                  ((rd)localObject3).dFI.duW = paramAdapterView.appId;
-                  localObject4 = ((rd)localObject3).dFI;
+                  localObject3 = new re();
+                  ((re)localObject3).dGN.context = getContext();
+                  ((re)localObject3).dGN.scene = 1;
+                  ((re)localObject3).dGN.dwb = paramAdapterView.appId;
+                  localObject4 = ((re)localObject3).dGN;
                   if (localObject2 != null) {
                     break label1692;
                   }
                   localObject1 = null;
-                  ((rd.a)localObject4).packageName = ((String)localObject1);
-                  ((rd)localObject3).dFI.msgType = paramAdapterView.type;
-                  ((rd)localObject3).dFI.dyU = paramView;
-                  ((rd)localObject3).dFI.dFJ = paramInt;
-                  ((rd)localObject3).dFI.mediaTagName = paramAdapterView.mediaTagName;
-                  ((rd)localObject3).dFI.dAY = paramLong;
-                  ((rd)localObject3).dFI.dFK = "";
-                  ((rd)localObject3).dFI.dkh = this.talker;
-                  com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject3);
-                  paramView = com.tencent.mm.plugin.game.api.b.a.cWM();
+                  ((re.a)localObject4).packageName = ((String)localObject1);
+                  ((re)localObject3).dGN.msgType = paramAdapterView.type;
+                  ((re)localObject3).dGN.dzZ = paramView;
+                  ((re)localObject3).dGN.dGO = paramInt;
+                  ((re)localObject3).dGN.mediaTagName = paramAdapterView.mediaTagName;
+                  ((re)localObject3).dGN.dCd = paramLong;
+                  ((re)localObject3).dGN.dGP = "";
+                  ((re)localObject3).dGN.dlj = this.talker;
+                  com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject3);
+                  paramView = com.tencent.mm.plugin.game.api.b.a.cZq();
                   if ((com.tencent.mm.pluginsdk.model.app.h.a(getContext(), (com.tencent.mm.pluginsdk.model.app.g)localObject2)) || (paramView == null)) {
                     break label1794;
                   }
-                  if (bt.isNullOrNil(((y)localObject2).eHz)) {
+                  if (bu.isNullOrNil(((com.tencent.mm.g.c.y)localObject2).eJi)) {
                     break label1702;
                   }
-                  bool = r.bP(getContext(), ((y)localObject2).eHz);
-                  ad.i("MicroMsg.GalleryGridUI", "oversea game info and gpdownload url is not empty, jump to google play directy:[%s], jump result: [%b]", new Object[] { ((y)localObject2).eHz, Boolean.valueOf(bool) });
+                  bool = com.tencent.mm.pluginsdk.model.app.r.bQ(getContext(), ((com.tencent.mm.g.c.y)localObject2).eJi);
+                  ae.i("MicroMsg.GalleryGridUI", "oversea game info and gpdownload url is not empty, jump to google play directy:[%s], jump result: [%b]", new Object[] { ((com.tencent.mm.g.c.y)localObject2).eJi, Boolean.valueOf(bool) });
                   if (!bool) {
                     break label1702;
                   }
@@ -1178,32 +1182,32 @@ public class ImageGalleryGridUI
                   if (paramInt != 0) {
                     break label1797;
                   }
-                  if ((paramAdapterView.dks != null) && (paramAdapterView.dks.length() != 0)) {
+                  if ((paramAdapterView.dlu != null) && (paramAdapterView.dlu.length() != 0)) {
                     break label2098;
                   }
-                  paramView = localbu.field_content;
+                  paramView = localbv.field_content;
                   paramAdapterView = paramView;
-                  if (localbu.field_isSend == 0)
+                  if (localbv.field_isSend == 0)
                   {
-                    paramInt = localbu.field_isSend;
+                    paramInt = localbv.field_isSend;
                     paramAdapterView = paramView;
-                    if (!this.ruj)
+                    if (!this.rCv)
                     {
                       paramAdapterView = paramView;
-                      if (w.vF(this.talker))
+                      if (x.wb(this.talker))
                       {
                         paramAdapterView = paramView;
                         if (paramView != null)
                         {
                           paramAdapterView = paramView;
                           if (paramInt == 0) {
-                            paramAdapterView = bj.Bl(paramView);
+                            paramAdapterView = bl.BN(paramView);
                           }
                         }
                       }
                     }
                   }
-                  paramView = k.b.yr(paramAdapterView);
+                  paramView = k.b.zb(paramAdapterView);
                   localObject1 = com.tencent.mm.pluginsdk.model.app.h.m(paramView.appId, true, false);
                   if ((localObject1 == null) || (!com.tencent.mm.pluginsdk.model.app.q.s(getContext(), ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName))) {
                     break label2049;
@@ -1211,7 +1215,7 @@ public class ImageGalleryGridUI
                   if (((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_status != 3) {
                     break label1799;
                   }
-                  ad.e("MicroMsg.GalleryGridUI", "requestAppShow fail, app is in blacklist, packageName = " + ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName);
+                  ae.e("MicroMsg.GalleryGridUI", "requestAppShow fail, app is in blacklist, packageName = " + ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName);
                   break;
                   paramInt = 6;
                   break label1280;
@@ -1222,12 +1226,12 @@ public class ImageGalleryGridUI
                   break label1290;
                   localObject1 = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_packageName;
                   break label1347;
-                  localObject1 = new ic();
-                  ((ic)localObject1).duF.actionCode = 2;
-                  ((ic)localObject1).duF.scene = 1;
-                  ((ic)localObject1).duF.appId = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appId;
-                  ((ic)localObject1).duF.context = getContext();
-                  com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+                  localObject1 = new id();
+                  ((id)localObject1).dvK.actionCode = 2;
+                  ((id)localObject1).dvK.scene = 1;
+                  ((id)localObject1).dvK.appId = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appId;
+                  ((id)localObject1).dvK.context = getContext();
+                  com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
                   new Intent();
                   getContext();
                   paramView.aj(((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appId, 1, 1);
@@ -1238,16 +1242,16 @@ public class ImageGalleryGridUI
                 continue;
                 if (!com.tencent.mm.pluginsdk.model.app.q.b(getContext(), (com.tencent.mm.pluginsdk.model.app.g)localObject1))
                 {
-                  ad.e("MicroMsg.GalleryGridUI", "The app %s signature is incorrect.", new Object[] { ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appName });
+                  ae.e("MicroMsg.GalleryGridUI", "The app %s signature is incorrect.", new Object[] { ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appName });
                   Toast.makeText(getContext(), getString(2131759894, new Object[] { com.tencent.mm.pluginsdk.model.app.h.a(getContext(), (com.tencent.mm.pluginsdk.model.app.g)localObject1, null) }), 1).show();
                 }
-                else if (!a(localbu, (com.tencent.mm.pluginsdk.model.app.g)localObject1))
+                else if (!a(localbv, (com.tencent.mm.pluginsdk.model.app.g)localObject1))
                 {
                   localObject2 = new WXAppExtendObject();
                   ((WXAppExtendObject)localObject2).extInfo = paramView.extInfo;
-                  if ((paramView.dks != null) && (paramView.dks.length() > 0))
+                  if ((paramView.dlu != null) && (paramView.dlu.length() > 0))
                   {
-                    paramAdapterView = ao.bIX().aLD(paramView.dks);
+                    paramAdapterView = ao.bJV().aMZ(paramView.dlu);
                     if (paramAdapterView != null) {
                       break label2041;
                     }
@@ -1262,16 +1266,16 @@ public class ImageGalleryGridUI
                     paramAdapterView.description = paramView.description;
                     paramAdapterView.messageAction = paramView.messageAction;
                     paramAdapterView.messageExt = paramView.messageExt;
-                    paramAdapterView.thumbData = com.tencent.mm.vfs.i.aY(com.tencent.mm.aw.q.aIF().Fm(localbu.field_imgPath), 0, -1);
-                    new as(this).a(((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName, paramAdapterView, ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appId, ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_openId);
+                    paramAdapterView.thumbData = o.bb(com.tencent.mm.av.q.aIX().FO(localbv.field_imgPath), 0, -1);
+                    new at(this).a(((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName, paramAdapterView, ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appId, ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_openId);
                     break;
                   }
                   paramAdapterView = com.tencent.mm.pluginsdk.model.app.q.M(getContext(), paramView.appId, "message");
                   paramView = new Intent();
                   paramView.putExtra("rawUrl", paramAdapterView);
-                  com.tencent.mm.bs.d.b(getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+                  com.tencent.mm.br.d.b(getContext(), "webview", ".ui.tools.WebViewUI", paramView);
                   continue;
-                  if (!this.oSO)
+                  if (!this.oZq)
                   {
                     t.g(getContext(), null);
                   }
@@ -1279,7 +1283,7 @@ public class ImageGalleryGridUI
                   {
                     paramAdapterView = new Intent();
                     paramAdapterView.setClassName(getContext(), "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
-                    paramAdapterView.putExtra("app_msg_id", localbu.field_msgId);
+                    paramAdapterView.putExtra("app_msg_id", localbv.field_msgId);
                     startActivityForResult(paramAdapterView, 210);
                   }
                 }
@@ -1288,9 +1292,9 @@ public class ImageGalleryGridUI
             else
             {
               int i;
-              if ((localbu.cxf()) || (localbu.fpi()) || (localbu.cxh()) || (localbu.frK()))
+              if ((localbv.cyG()) || (localbv.ftg()) || (localbv.cyI()) || (localbv.fvK()))
               {
-                if ((paramAdapterView == null) || (bt.isNullOrNil(paramAdapterView.hCe)))
+                if ((paramAdapterView == null) || (bu.isNullOrNil(paramAdapterView.hET)))
                 {
                   i = 0;
                   if (i != 0)
@@ -1301,42 +1305,42 @@ public class ImageGalleryGridUI
                 }
                 else
                 {
-                  localObject1 = localbu.field_imgPath;
+                  localObject1 = localbv.field_imgPath;
                   localObject3 = new Intent();
                   ((Intent)localObject3).putExtra("KFromTimeLine", false);
-                  ((Intent)localObject3).putExtra("KStremVideoUrl", paramAdapterView.hCe);
-                  ((Intent)localObject3).putExtra("KThumUrl", paramAdapterView.hCj);
+                  ((Intent)localObject3).putExtra("KStremVideoUrl", paramAdapterView.hET);
+                  ((Intent)localObject3).putExtra("KThumUrl", paramAdapterView.hEY);
                   ((Intent)localObject3).putExtra("KThumbPath", (String)localObject1);
-                  ((Intent)localObject3).putExtra("KMediaId", "fakeid_" + localbu.field_msgId);
-                  ((Intent)localObject3).putExtra("KMediaVideoTime", paramAdapterView.hCf);
-                  ((Intent)localObject3).putExtra("StremWebUrl", paramAdapterView.hCi);
-                  ((Intent)localObject3).putExtra("StreamWording", paramAdapterView.hCh);
+                  ((Intent)localObject3).putExtra("KMediaId", "fakeid_" + localbv.field_msgId);
+                  ((Intent)localObject3).putExtra("KMediaVideoTime", paramAdapterView.hEU);
+                  ((Intent)localObject3).putExtra("StremWebUrl", paramAdapterView.hEX);
+                  ((Intent)localObject3).putExtra("StreamWording", paramAdapterView.hEW);
                   ((Intent)localObject3).putExtra("KMediaTitle", paramAdapterView.title);
-                  localObject2 = localbu.field_talker;
-                  bool = w.vF((String)localObject2);
+                  localObject2 = localbv.field_talker;
+                  bool = x.wb((String)localObject2);
                   if (bool)
                   {
-                    localObject1 = bj.Bk(localbu.field_content);
-                    ((Intent)localObject3).putExtra("KSta_StremVideoAduxInfo", paramAdapterView.hCk);
-                    ((Intent)localObject3).putExtra("KSta_StremVideoPublishId", paramAdapterView.hCl);
+                    localObject1 = bl.BM(localbv.field_content);
+                    ((Intent)localObject3).putExtra("KSta_StremVideoAduxInfo", paramAdapterView.hEZ);
+                    ((Intent)localObject3).putExtra("KSta_StremVideoPublishId", paramAdapterView.hFa);
                     ((Intent)localObject3).putExtra("KSta_SourceType", 1);
                     if (!bool) {
                       break label2596;
                     }
-                    i = a.b.JwZ.value;
+                    i = a.b.JRP.value;
                     ((Intent)localObject3).putExtra("KSta_Scene", i);
                     ((Intent)localObject3).putExtra("KSta_FromUserName", (String)localObject1);
                     ((Intent)localObject3).putExtra("KSta_ChatName", (String)localObject2);
-                    ((Intent)localObject3).putExtra("KSta_MsgId", localbu.field_msgSvrId);
-                    ((Intent)localObject3).putExtra("KSta_SnsStatExtStr", paramAdapterView.dHv);
+                    ((Intent)localObject3).putExtra("KSta_MsgId", localbv.field_msgSvrId);
+                    ((Intent)localObject3).putExtra("KSta_SnsStatExtStr", paramAdapterView.dIA);
                     if (bool) {
-                      ((Intent)localObject3).putExtra("KSta_ChatroomMembercount", com.tencent.mm.model.q.yS((String)localObject2));
+                      ((Intent)localObject3).putExtra("KSta_ChatroomMembercount", com.tencent.mm.model.r.zC((String)localObject2));
                     }
-                    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qqx, 0) <= 0) {
+                    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qxf, 0) <= 0) {
                       break label2607;
                     }
-                    com.tencent.mm.bs.d.b(getContext(), "sns", ".ui.SnsAdStreamVideoPlayUI", (Intent)localObject3);
-                    ad.i("MicroMsg.GalleryGridUI", "use new stream video play UI");
+                    com.tencent.mm.br.d.b(getContext(), "sns", ".ui.SnsAdStreamVideoPlayUI", (Intent)localObject3);
+                    ae.i("MicroMsg.GalleryGridUI", "use new stream video play UI");
                   }
                   for (;;)
                   {
@@ -1344,61 +1348,61 @@ public class ImageGalleryGridUI
                     break;
                     localObject1 = localObject2;
                     break label2411;
-                    i = a.b.JwY.value;
+                    i = a.b.JRO.value;
                     break label2460;
-                    com.tencent.mm.bs.d.b(getContext(), "sns", ".ui.VideoAdPlayerUI", (Intent)localObject3);
+                    com.tencent.mm.br.d.b(getContext(), "sns", ".ui.VideoAdPlayerUI", (Intent)localObject3);
                   }
                 }
                 aF(paramView, paramInt);
               }
               else if ((paramAdapterView != null) && (paramAdapterView.type == 15))
               {
-                localObject1 = paramAdapterView.hAv;
+                localObject1 = paramAdapterView.hDj;
                 paramView = (View)localObject1;
                 if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                  paramView = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aby(paramAdapterView.url);
+                  paramView = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acp(paramAdapterView.url);
                 }
                 if (TextUtils.isEmpty(paramView))
                 {
                   paramView = new Intent();
-                  paramView.putExtra("geta8key_username", u.aAm());
+                  paramView.putExtra("geta8key_username", v.aAC());
                   paramView.putExtra("rawUrl", paramAdapterView.url);
-                  com.tencent.mm.bs.d.b(getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+                  com.tencent.mm.br.d.b(getContext(), "webview", ".ui.tools.WebViewUI", paramView);
                 }
                 else
                 {
-                  ad.d("MicroMsg.GalleryGridUI", "start emoji detail from brandcontact");
+                  ae.d("MicroMsg.GalleryGridUI", "start emoji detail from brandcontact");
                   paramAdapterView = new Intent();
                   paramAdapterView.putExtra("extra_id", paramView);
                   paramAdapterView.putExtra("preceding_scence", 123);
                   paramAdapterView.putExtra("download_entrance_scene", 23);
-                  com.tencent.mm.bs.d.b(getContext(), "emoji", ".ui.EmojiStoreDetailUI", paramAdapterView);
-                  com.tencent.mm.plugin.report.service.g.yhR.f(10993, new Object[] { Integer.valueOf(2), paramView });
+                  com.tencent.mm.br.d.b(getContext(), "emoji", ".ui.EmojiStoreDetailUI", paramAdapterView);
+                  com.tencent.mm.plugin.report.service.g.yxI.f(10993, new Object[] { Integer.valueOf(2), paramView });
                 }
               }
               else if ((paramAdapterView != null) && (paramAdapterView.type == 26))
               {
                 paramInt = paramAdapterView.tid;
-                paramView = paramAdapterView.hCc;
+                paramView = paramAdapterView.hEQ;
                 localObject1 = paramAdapterView.desc;
                 localObject2 = paramAdapterView.iconUrl;
                 localObject3 = paramAdapterView.secondUrl;
                 if (paramInt != 0)
                 {
                   localObject4 = new Intent();
-                  ((Intent)localObject4).putExtra("geta8key_username", cg(localbu));
-                  ((Intent)localObject4).putExtra("rawUrl", paramAdapterView.fkq);
+                  ((Intent)localObject4).putExtra("geta8key_username", cg(localbv));
+                  ((Intent)localObject4).putExtra("rawUrl", paramAdapterView.fmn);
                   ((Intent)localObject4).putExtra("topic_id", paramInt);
                   ((Intent)localObject4).putExtra("topic_name", paramView);
                   ((Intent)localObject4).putExtra("topic_desc", (String)localObject1);
                   ((Intent)localObject4).putExtra("topic_icon_url", (String)localObject2);
                   ((Intent)localObject4).putExtra("topic_ad_url", (String)localObject3);
                   ((Intent)localObject4).putExtra("extra_scence", 23);
-                  com.tencent.mm.bs.d.b(getContext(), "emoji", ".ui.EmojiStoreTopicUI", (Intent)localObject4);
+                  com.tencent.mm.br.d.b(getContext(), "emoji", ".ui.EmojiStoreTopicUI", (Intent)localObject4);
                 }
                 else
                 {
-                  ad.i("MicroMsg.GalleryGridUI", "topic id is zero.");
+                  ae.i("MicroMsg.GalleryGridUI", "topic id is zero.");
                 }
               }
               else
@@ -1407,7 +1411,7 @@ public class ImageGalleryGridUI
                   break;
                 }
                 paramInt = paramAdapterView.tid;
-                paramView = paramAdapterView.hCc;
+                paramView = paramAdapterView.hEQ;
                 localObject1 = paramAdapterView.desc;
                 localObject2 = paramAdapterView.iconUrl;
                 localObject3 = paramAdapterView.secondUrl;
@@ -1415,25 +1419,25 @@ public class ImageGalleryGridUI
                 if (paramInt != 0)
                 {
                   localObject4 = new Intent();
-                  ((Intent)localObject4).putExtra("geta8key_username", cg(localbu));
-                  ((Intent)localObject4).putExtra("rawUrl", paramAdapterView.fkq);
+                  ((Intent)localObject4).putExtra("geta8key_username", cg(localbv));
+                  ((Intent)localObject4).putExtra("rawUrl", paramAdapterView.fmn);
                   ((Intent)localObject4).putExtra("set_id", paramInt);
                   ((Intent)localObject4).putExtra("set_title", paramView);
                   ((Intent)localObject4).putExtra("set_iconURL", (String)localObject2);
                   ((Intent)localObject4).putExtra("set_desc", (String)localObject1);
                   ((Intent)localObject4).putExtra("headurl", (String)localObject3);
                   ((Intent)localObject4).putExtra("pageType", i);
-                  com.tencent.mm.bs.d.b(getContext(), "emoji", ".ui.v2.EmojiStoreV2SingleProductUI", (Intent)localObject4);
+                  com.tencent.mm.br.d.b(getContext(), "emoji", ".ui.v2.EmojiStoreV2SingleProductUI", (Intent)localObject4);
                 }
                 else
                 {
-                  ad.i("MicroMsg.GalleryGridUI", "topic id is zero.");
+                  ae.i("MicroMsg.GalleryGridUI", "topic id is zero.");
                 }
               }
             }
           }
         }
-        ad.i("MicroMsg.GalleryGridUI", "talker:%s, msgId:%s, msgType:%s, msgContent:%s", new Object[] { localbu.field_talker, Long.valueOf(localbu.field_msgId), Integer.valueOf(localbu.getType()), localbu.field_content });
+        ae.i("MicroMsg.GalleryGridUI", "talker:%s, msgId:%s, msgType:%s, msgContent:%s", new Object[] { localbv.field_talker, Long.valueOf(localbv.field_msgId), Integer.valueOf(localbv.getType()), localbv.field_content });
       } while ((paramAdapterView.url == null) || (paramAdapterView.url.equals("")) || (paramAdapterView.url == null) || (paramAdapterView.url.equals("")));
       label553:
       label1347:
@@ -1443,7 +1447,7 @@ public class ImageGalleryGridUI
       label1702:
       label2098:
       label2411:
-      if (w.vF(this.talker))
+      if (x.wb(this.talker))
       {
         paramView = "groupmessage";
         localObject3 = com.tencent.mm.pluginsdk.model.app.q.Q((String)localObject1, paramView);
@@ -1458,7 +1462,7 @@ public class ImageGalleryGridUI
           ((Bundle)localObject3).putString("jsapi_args_appid", paramAdapterView.appId);
           ((Intent)localObject1).putExtra("jsapiargs", (Bundle)localObject3);
         }
-        if (bt.isNullOrNil(paramView)) {
+        if (bu.isNullOrNil(paramView)) {
           break label3719;
         }
         ((Intent)localObject1).putExtra("shortUrl", paramView);
@@ -1478,24 +1482,24 @@ public class ImageGalleryGridUI
       for (paramInt = 0;; paramInt = ((PackageInfo)localObject2).versionCode)
       {
         ((Intent)localObject1).putExtra("version_code", paramInt);
-        if (!bt.isNullOrNil(paramAdapterView.dHo))
+        if (!bu.isNullOrNil(paramAdapterView.dIt))
         {
-          ((Intent)localObject1).putExtra("srcUsername", paramAdapterView.dHo);
-          ((Intent)localObject1).putExtra("srcDisplayname", paramAdapterView.dHp);
+          ((Intent)localObject1).putExtra("srcUsername", paramAdapterView.dIt);
+          ((Intent)localObject1).putExtra("srcDisplayname", paramAdapterView.dIu);
         }
-        ((Intent)localObject1).putExtra("msg_id", localbu.field_msgId);
-        ((Intent)localObject1).putExtra("KPublisherId", "msg_" + Long.toString(localbu.field_msgSvrId));
+        ((Intent)localObject1).putExtra("msg_id", localbv.field_msgId);
+        ((Intent)localObject1).putExtra("KPublisherId", "msg_" + Long.toString(localbv.field_msgSvrId));
         ((Intent)localObject1).putExtra("KAppId", paramAdapterView.appId);
-        ((Intent)localObject1).putExtra("geta8key_username", u.aAm());
-        ((Intent)localObject1).putExtra("pre_username", cg(localbu));
-        ((Intent)localObject1).putExtra("prePublishId", "msg_" + Long.toString(localbu.field_msgSvrId));
-        paramAdapterView = cg(localbu);
-        paramView = u.aAm();
+        ((Intent)localObject1).putExtra("geta8key_username", v.aAC());
+        ((Intent)localObject1).putExtra("pre_username", cg(localbv));
+        ((Intent)localObject1).putExtra("prePublishId", "msg_" + Long.toString(localbv.field_msgSvrId));
+        paramAdapterView = cg(localbv);
+        paramView = v.aAC();
         ((Intent)localObject1).putExtra("preUsername", paramAdapterView);
         ((Intent)localObject1).putExtra("preChatName", paramView);
-        ((Intent)localObject1).putExtra("preChatTYPE", x.aG(paramAdapterView, paramView));
+        ((Intent)localObject1).putExtra("preChatTYPE", com.tencent.mm.model.y.aH(paramAdapterView, paramView));
         ((Intent)localObject1).putExtra("preMsgIndex", 0);
-        com.tencent.mm.bs.d.b(getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+        com.tencent.mm.br.d.b(getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
         break;
         paramView = "singlemessage";
         break label3295;
@@ -1512,14 +1516,14 @@ public class ImageGalleryGridUI
     AppMethodBeat.i(35984);
     if (paramMenuItem.getTitle().equals(getString(2131759768)))
     {
-      h.a.fFU().clear();
-      cxd();
+      h.a.fKb().clear();
+      cyE();
     }
     for (;;)
     {
       AppMethodBeat.o(35984);
       return false;
-      cxe();
+      cyF();
     }
   }
   
@@ -1528,14 +1532,14 @@ public class ImageGalleryGridUI
     AppMethodBeat.i(35970);
     setIntent(paramIntent);
     super.onNewIntent(paramIntent);
-    adH(1);
+    aeo(1);
     AppMethodBeat.o(35970);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(35968);
-    h.a.fFU().rCz.remove(this);
+    h.a.fKb().rKK.remove(this);
     this.mIsPause = true;
     super.onPause();
     AppMethodBeat.o(35968);
@@ -1544,35 +1548,35 @@ public class ImageGalleryGridUI
   public boolean onPreDraw()
   {
     AppMethodBeat.i(35983);
-    Object localObject1 = (c.a)this.JQk.get();
+    Object localObject1 = (c.a)this.Klv.get();
     if (localObject1 == null)
     {
       AppMethodBeat.o(35983);
       return true;
     }
-    Object localObject2 = ((c.a)localObject1).rCL.getViewTreeObserver();
+    Object localObject2 = ((c.a)localObject1).rKW.getViewTreeObserver();
     if (!((ViewTreeObserver)localObject2).isAlive())
     {
       AppMethodBeat.o(35983);
       return true;
     }
     ((ViewTreeObserver)localObject2).removeOnPreDrawListener(this);
-    int i = ((c.a)localObject1).rCL.getMeasuredWidth();
-    int j = ((c.a)localObject1).rCL.getMeasuredHeight();
+    int i = ((c.a)localObject1).rKW.getMeasuredWidth();
+    int j = ((c.a)localObject1).rKW.getMeasuredHeight();
     if ((i <= 0) || (j <= 0))
     {
       AppMethodBeat.o(35983);
       return true;
     }
-    localObject2 = (RelativeLayout.LayoutParams)((c.a)localObject1).rCN.getLayoutParams();
+    localObject2 = (RelativeLayout.LayoutParams)((c.a)localObject1).rKY.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject2).width = i;
     ((ViewGroup.LayoutParams)localObject2).height = j;
-    ((c.a)localObject1).rCN.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject1 = ((c.a)localObject1).rCN;
+    ((c.a)localObject1).rKY.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject1 = ((c.a)localObject1).rKY;
     localObject2 = new DecelerateInterpolator();
     if (Build.VERSION.SDK_INT >= 12)
     {
-      this.JQs = ((View)localObject1);
+      this.KlD = ((View)localObject1);
       this.handler.postDelayed(new Runnable()
       {
         public final void run()
@@ -1580,7 +1584,7 @@ public class ImageGalleryGridUI
           AppMethodBeat.i(35960);
           if (Build.VERSION.SDK_INT >= 16)
           {
-            this.JQC.animate().setDuration(500L).alpha(0.0F).withEndAction(ImageGalleryGridUI.this.JQr).withLayer().setInterpolator(this.JQD);
+            this.KlN.animate().setDuration(500L).alpha(0.0F).withEndAction(ImageGalleryGridUI.this.KlC).withLayer().setInterpolator(this.KlO);
             AppMethodBeat.o(35960);
             return;
           }
@@ -1589,8 +1593,8 @@ public class ImageGalleryGridUI
             AppMethodBeat.o(35960);
             return;
           }
-          this.JQC.animate().setDuration(500L).alpha(0.0F).setInterpolator(this.JQD);
-          ImageGalleryGridUI.this.handler.postDelayed(ImageGalleryGridUI.this.JQr, 500L);
+          this.KlN.animate().setDuration(500L).alpha(0.0F).setInterpolator(this.KlO);
+          ImageGalleryGridUI.this.handler.postDelayed(ImageGalleryGridUI.this.KlC, 500L);
           AppMethodBeat.o(35960);
         }
       }, 700L);
@@ -1602,36 +1606,36 @@ public class ImageGalleryGridUI
   public void onResume()
   {
     AppMethodBeat.i(35967);
-    h.a.fFU().a(this);
+    h.a.fKb().a(this);
     this.mIsPause = false;
-    if (this.rCk)
+    if (this.rKv)
     {
-      if (!h.a.fFU().rCy) {
+      if (!h.a.fKb().rKJ) {
         break label143;
       }
-      cxd();
+      cyE();
     }
     for (;;)
     {
-      this.handler.postDelayed(this.JQq, 300L);
+      this.handler.postDelayed(this.KlB, 300L);
       super.onResume();
-      if (this.JQj != null)
+      if (this.Klu != null)
       {
-        this.JQj.JQb = true;
-        c localc = this.JQj;
-        if (localc.JQb) {
+        this.Klu.Klm = true;
+        c localc = this.Klu;
+        if (localc.Klm) {
           localc.notifyDataSetChanged();
         }
-        if (h.a.fFU().rCy) {
-          setMMTitle(getString(2131759814, new Object[] { Integer.valueOf(h.a.fFU().rCx.size()) }));
+        if (h.a.fKb().rKJ) {
+          setMMTitle(getString(2131759814, new Object[] { Integer.valueOf(h.a.fKb().rKI.size()) }));
         }
       }
-      this.rCk = false;
-      fFQ();
+      this.rKv = false;
+      fJX();
       AppMethodBeat.o(35967);
       return;
       label143:
-      cxe();
+      cyF();
     }
   }
   
@@ -1641,7 +1645,7 @@ public class ImageGalleryGridUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void u(Bundle paramBundle) {}
+  public final void v(Bundle paramBundle) {}
 }
 
 

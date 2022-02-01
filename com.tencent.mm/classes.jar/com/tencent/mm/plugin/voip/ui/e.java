@@ -7,7 +7,7 @@ import android.view.ViewOutlineProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/ui/VoipRectangleViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "mRadius", "", "(F)V", "getMRadius", "()F", "setMRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/ui/VoipRectangleViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "mRadius", "", "(F)V", "getMRadius", "()F", "setMRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-voip_release"})
 public final class e
   extends ViewOutlineProvider
 {
@@ -37,7 +37,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.e
  * JD-Core Version:    0.7.0.1
  */

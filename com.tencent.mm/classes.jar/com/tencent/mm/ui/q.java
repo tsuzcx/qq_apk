@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.compatible.util.n;
 import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Method;
 
 public class q
 {
-  public static int Xp(int paramInt)
+  public static int XV(int paramInt)
   {
     return ((int)((paramInt >> 24 & 0xFF) * 0.78F + 56.100006F) & 0xFF) << 24 | ((int)((paramInt >> 16 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 16 | ((int)((paramInt >> 8 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 8 | ((int)((paramInt & 0xFF) * 0.78F + 0.0F) & 0xFF) << 0;
   }
@@ -30,7 +30,7 @@ public class q
     ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
     if (localRect.top > paramInt)
     {
-      ad.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
+      ae.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
       AppMethodBeat.o(175975);
       return 0;
     }
@@ -62,7 +62,7 @@ public class q
       AppMethodBeat.o(175978);
       return false;
     }
-    if (fwO())
+    if (fAQ())
     {
       paramWindow = paramWindow.getDecorView();
       int i = paramWindow.getSystemUiVisibility();
@@ -81,7 +81,7 @@ public class q
     return false;
   }
   
-  public static Point ci(Context paramContext)
+  public static Point ck(Context paramContext)
   {
     AppMethodBeat.i(175980);
     Point localPoint = new Point();
@@ -112,10 +112,10 @@ public class q
     }
   }
   
-  public static boolean fwO()
+  public static boolean fAQ()
   {
     AppMethodBeat.i(175979);
-    if ((Build.VERSION.SDK_INT >= 23) && (!b.abl()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!b.abu()))
     {
       AppMethodBeat.o(175979);
       return true;
@@ -124,7 +124,7 @@ public class q
     return false;
   }
   
-  public static int jG(Context paramContext)
+  public static int jN(Context paramContext)
   {
     AppMethodBeat.i(175973);
     int i = n.B(paramContext, 25);
@@ -132,7 +132,7 @@ public class q
     return i;
   }
   
-  public static int jH(Context paramContext)
+  public static int jO(Context paramContext)
   {
     AppMethodBeat.i(175974);
     int i = n.B(paramContext, -1);
@@ -164,7 +164,7 @@ public class q
     return i;
   }
   
-  public static int jI(Context paramContext)
+  public static int jP(Context paramContext)
   {
     AppMethodBeat.i(175976);
     int i = n.B(paramContext, 0);

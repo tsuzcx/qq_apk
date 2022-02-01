@@ -1,294 +1,279 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.compatible.util.d;
 
 public class z
 {
-  private static int IcS = -1;
-  public static int IcT = -1;
-  private static boolean IcU = false;
-  private static int IcV = -1;
-  private static int IcW = -1;
-  
-  public static final boolean aF(Context paramContext, int paramInt)
+  public static void b(Intent paramIntent, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(164122);
-    if (IcS == paramInt)
+    AppMethodBeat.i(157573);
+    try
     {
-      AppMethodBeat.o(164122);
-      return true;
+      paramIntent.putExtra(paramString, paramBoolean);
+      AppMethodBeat.o(157573);
+      return;
     }
-    if (!iJ(paramContext))
+    catch (Exception paramIntent)
     {
-      AppMethodBeat.o(164122);
-      return false;
+      ae.printErrStackTrace("MicroMsg.IntentUtil", paramIntent, "", new Object[0]);
+      AppMethodBeat.o(157573);
     }
-    if (paramInt < 0)
-    {
-      AppMethodBeat.o(164122);
-      return false;
-    }
-    IcS = paramInt;
-    ad.d("MicroMsg.KeyBordUtil", "save keybord: %d", new Object[] { Integer.valueOf(paramInt) });
-    boolean bool = aj.fkD().edit().putInt("com.tencent.mm.compatible.util.keybord.height", paramInt).commit();
-    AppMethodBeat.o(164122);
-    return bool;
   }
   
-  public static final int aG(Context paramContext, int paramInt)
+  public static Bundle bl(Intent paramIntent)
   {
-    AppMethodBeat.i(125230);
-    if (paramInt > 0)
+    Object localObject = null;
+    AppMethodBeat.i(157567);
+    if (paramIntent == null)
     {
-      paramInt += 230;
-      if (!iJ(paramContext))
-      {
-        AppMethodBeat.o(125230);
-        return paramInt * 3;
-      }
-      paramInt = a.fromDPToPix(paramContext, paramInt);
-      IcW = paramInt;
-      AppMethodBeat.o(125230);
-      return paramInt;
+      AppMethodBeat.o(157567);
+      return null;
     }
-    if (IcW > 0)
+    try
     {
-      paramInt = IcW;
-      AppMethodBeat.o(125230);
-      return paramInt;
+      paramIntent = paramIntent.getExtras();
+      AppMethodBeat.o(157567);
+      return paramIntent;
     }
-    if (!iJ(paramContext))
+    catch (Exception paramIntent)
     {
-      AppMethodBeat.o(125230);
-      return 690;
-    }
-    paramInt = a.fromDPToPix(paramContext, 230);
-    IcW = paramInt;
-    AppMethodBeat.o(125230);
-    return paramInt;
-  }
-  
-  public static final int aH(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125231);
-    paramInt = j(paramContext, paramInt, 0);
-    AppMethodBeat.o(125231);
-    return paramInt;
-  }
-  
-  public static int aU(Activity paramActivity)
-  {
-    AppMethodBeat.i(125238);
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    AppMethodBeat.o(125238);
-    return i;
-  }
-  
-  public static int[] eB(Context paramContext)
-  {
-    AppMethodBeat.i(125237);
-    if (paramContext == null) {
-      paramContext = aj.getContext();
-    }
-    for (;;)
-    {
-      int[] arrayOfInt = new int[2];
-      if ((paramContext instanceof Activity))
-      {
-        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-        arrayOfInt[0] = localDisplayMetrics.widthPixels;
-        arrayOfInt[1] = localDisplayMetrics.heightPixels;
-      }
       for (;;)
       {
-        AppMethodBeat.o(125237);
-        return arrayOfInt;
-        paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-        arrayOfInt[0] = paramContext.getWidth();
-        arrayOfInt[1] = paramContext.getHeight();
+        ae.e("MicroMsg.IntentUtil", "getExtras exception:%s", new Object[] { paramIntent.getMessage() });
+        paramIntent = localObject;
       }
     }
   }
   
-  public static void fkg()
+  public static boolean getBooleanExtra(Intent paramIntent, String paramString, boolean paramBoolean)
   {
-    IcU = false;
-  }
-  
-  public static final int iF(Context paramContext)
-  {
-    AppMethodBeat.i(125227);
-    if (!IcU)
+    AppMethodBeat.i(157568);
+    if (paramIntent == null)
     {
-      if (!iJ(paramContext))
-      {
-        i = aj.fkD().getInt("com.tencent.mm.compatible.util.keybord.height", 690);
-        AppMethodBeat.o(125227);
-        return i;
-      }
-      i = aj.fkD().getInt("com.tencent.mm.compatible.util.keybord.height", a.fromDPToPix(paramContext, 230));
-      IcS = i;
-      AppMethodBeat.o(125227);
-      return i;
+      AppMethodBeat.o(157568);
+      return paramBoolean;
     }
-    int i = aG(paramContext, 0);
-    AppMethodBeat.o(125227);
+    try
+    {
+      boolean bool = paramIntent.getBooleanExtra(paramString, paramBoolean);
+      paramBoolean = bool;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.IntentUtil", "getBooleanExtra exception:%s", new Object[] { paramIntent.getMessage() });
+      }
+    }
+    AppMethodBeat.o(157568);
+    return paramBoolean;
+  }
+  
+  public static int getIntExtra(Intent paramIntent, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(157564);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(157564);
+      return paramInt;
+    }
+    try
+    {
+      int i = paramIntent.getIntExtra(paramString, paramInt);
+      paramInt = i;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramIntent.getMessage() });
+      }
+    }
+    AppMethodBeat.o(157564);
+    return paramInt;
+  }
+  
+  public static String getStringExtra(Intent paramIntent, String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(157569);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(157569);
+      return null;
+    }
+    try
+    {
+      paramIntent = paramIntent.getStringExtra(paramString);
+      AppMethodBeat.o(157569);
+      return paramIntent;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.IntentUtil", "getStringExtra exception:%s", new Object[] { paramIntent.getMessage() });
+        paramIntent = localObject;
+      }
+    }
+  }
+  
+  public static int k(Bundle paramBundle, String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(157565);
+    if (paramBundle == null)
+    {
+      AppMethodBeat.o(157565);
+      return 0;
+    }
+    try
+    {
+      int j = paramBundle.getInt(paramString, 0);
+      i = j;
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramBundle.getMessage() });
+      }
+    }
+    AppMethodBeat.o(157565);
     return i;
   }
   
-  public static final int iG(Context paramContext)
+  public static boolean l(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(125228);
-    if (!IcU)
+    boolean bool1 = false;
+    AppMethodBeat.i(182935);
+    if (paramBundle == null)
     {
-      if (IcS > 0)
+      AppMethodBeat.o(182935);
+      return false;
+    }
+    try
+    {
+      boolean bool2 = paramBundle.getBoolean(paramString, false);
+      bool1 = bool2;
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
       {
-        i = IcS;
-        AppMethodBeat.o(125228);
-        return i;
+        ae.e("MicroMsg.IntentUtil", "getBooleanExtra exception:%s", new Object[] { paramBundle.getMessage() });
       }
-      i = iF(paramContext);
-      AppMethodBeat.o(125228);
-      return i;
     }
-    int i = aG(paramContext, 0);
-    AppMethodBeat.o(125228);
-    return i;
+    AppMethodBeat.o(182935);
+    return bool1;
   }
   
-  public static final int iH(Context paramContext)
+  public static String m(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(125229);
-    if (!IcU)
+    Object localObject = null;
+    AppMethodBeat.i(157570);
+    if (paramBundle == null)
     {
-      if (IcV > 0)
+      AppMethodBeat.o(157570);
+      return null;
+    }
+    try
+    {
+      paramBundle = paramBundle.getString(paramString);
+      AppMethodBeat.o(157570);
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
       {
-        i = IcV;
-        AppMethodBeat.o(125229);
-        return i;
+        ae.e("MicroMsg.IntentUtil", "getStringExtra exception:%s", new Object[] { paramBundle.getMessage() });
+        paramBundle = localObject;
       }
-      if (!iJ(paramContext))
-      {
-        AppMethodBeat.o(125229);
-        return 1140;
-      }
-      i = a.fromDPToPix(paramContext, 380);
-      IcV = i;
-      AppMethodBeat.o(125229);
-      return i;
-    }
-    int i = aG(paramContext, 0);
-    AppMethodBeat.o(125229);
-    return i;
-  }
-  
-  public static final int iI(Context paramContext)
-  {
-    AppMethodBeat.i(125233);
-    int i = j(paramContext, -1, 0);
-    AppMethodBeat.o(125233);
-    return i;
-  }
-  
-  private static final boolean iJ(Context paramContext)
-  {
-    AppMethodBeat.i(125234);
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = aj.getContext();
-    }
-    if (localContext != null)
-    {
-      AppMethodBeat.o(125234);
-      return true;
-    }
-    AppMethodBeat.o(125234);
-    return false;
-  }
-  
-  public static boolean iK(Context paramContext)
-  {
-    AppMethodBeat.i(125235);
-    if (iL(paramContext) == 1)
-    {
-      AppMethodBeat.o(125235);
-      return true;
-    }
-    AppMethodBeat.o(125235);
-    return false;
-  }
-  
-  public static int iL(Context paramContext)
-  {
-    int i = 1;
-    AppMethodBeat.i(125236);
-    paramContext = eB(paramContext);
-    if (paramContext[0] < paramContext[1]) {}
-    for (;;)
-    {
-      AppMethodBeat.o(125236);
-      return i;
-      i = 2;
     }
   }
   
-  public static final int j(Context paramContext, int paramInt1, int paramInt2)
+  public static long p(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(125232);
-    int i = aG(paramContext, paramInt2);
-    ad.e("MicroMsg.KeyBordUtil", "getValidPanelHeight(): minPanelHeight= %d, isOpenIm=%b", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
-    if ((d.ly(24)) && ((paramContext instanceof Activity))) {}
-    for (boolean bool = ((Activity)paramContext).isInMultiWindowMode();; bool = false)
+    long l1 = 0L;
+    AppMethodBeat.i(157566);
+    if (paramIntent == null)
     {
-      if ((!iK(paramContext)) || (bool))
+      AppMethodBeat.o(157566);
+      return 0L;
+    }
+    try
+    {
+      long l2 = paramIntent.getLongExtra(paramString, 0L);
+      l1 = l2;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
       {
-        paramInt2 = (int)(i / 1.5D);
-        i = eB(paramContext)[0];
-        paramInt1 = paramInt2;
-        if (paramInt2 > i / 2) {
-          paramInt1 = i / 2;
-        }
-        AppMethodBeat.o(125232);
-        return paramInt1;
+        ae.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramIntent.getMessage() });
       }
-      paramInt2 = paramInt1;
-      if (paramInt1 <= 0) {
-        paramInt2 = iG(paramContext);
-      }
-      paramInt1 = iH(paramContext);
-      if (paramInt2 > paramInt1)
+    }
+    AppMethodBeat.o(157566);
+    return l1;
+  }
+  
+  public static byte[] q(Intent paramIntent, String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(157571);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(157571);
+      return null;
+    }
+    try
+    {
+      paramIntent = paramIntent.getByteArrayExtra(paramString);
+      AppMethodBeat.o(157571);
+      return paramIntent;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
       {
-        AppMethodBeat.o(125232);
-        return paramInt1;
+        ae.e("MicroMsg.IntentUtil", "getByteArrayExtra exception:%s", new Object[] { paramIntent.getMessage() });
+        paramIntent = localObject;
       }
-      if (paramInt2 < i)
+    }
+  }
+  
+  public static Parcelable r(Intent paramIntent, String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(157572);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(157572);
+      return null;
+    }
+    try
+    {
+      paramIntent = paramIntent.getParcelableExtra(paramString);
+      AppMethodBeat.o(157572);
+      return paramIntent;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
       {
-        AppMethodBeat.o(125232);
-        return i;
+        ae.e("MicroMsg.IntentUtil", "getParcelableExtra exception:%s", new Object[] { paramIntent.getMessage() });
+        paramIntent = localObject;
       }
-      AppMethodBeat.o(125232);
-      return paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.z
  * JD-Core Version:    0.7.0.1
  */

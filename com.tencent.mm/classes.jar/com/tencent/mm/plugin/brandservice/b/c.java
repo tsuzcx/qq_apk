@@ -1,216 +1,221 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v4.graphics.drawable.d;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.aw.a.c.k;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.av.a.c.k;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.a.ao;
 import com.tencent.mm.plugin.brandservice.a.b.b;
 import com.tencent.mm.pluginsdk.model.r;
-import com.tencent.mm.protocal.protobuf.ben;
-import com.tencent.mm.protocal.protobuf.beo;
-import com.tencent.mm.protocal.protobuf.dvm;
-import com.tencent.mm.protocal.protobuf.dvn;
-import com.tencent.mm.protocal.protobuf.dvq;
-import com.tencent.mm.protocal.protobuf.dvr;
-import com.tencent.mm.protocal.protobuf.pd;
-import com.tencent.mm.protocal.protobuf.pe;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.bfd;
+import com.tencent.mm.protocal.protobuf.bfe;
+import com.tencent.mm.protocal.protobuf.dwj;
+import com.tencent.mm.protocal.protobuf.dwk;
+import com.tencent.mm.protocal.protobuf.dwn;
+import com.tencent.mm.protocal.protobuf.dwo;
+import com.tencent.mm.protocal.protobuf.pf;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.o;
 import d.f;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/model/BizVideoChannelStrategy;", "", "()V", "BIZ_PROFILE_VIDEO_CHANNEL_ENTRY_OPEN", "", "KEY_BIZ_VIDEO_CHANNEL_SHOW_DEFAULT_ICON", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_FETCH_INTERVAL", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_FETCH_LAST_TIME", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_TL_FETCH_INTERVAL", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_TL_FETCH_LAST_TIME", "TAG", "TOP_BAR_INFO", "TOP_BAR_VIDEO_CHANNEL_SWITCH_OPTION", "VIDEO_CHANNEL_FEEDS_DATA", "bizProfileEntryClientConfig", "", "isBizProfileEntryOpen", "", "Ljava/lang/Boolean;", "isTimelineTopBarEntryOpen", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "showingLogoUrl", "getShowingLogoUrl", "()Ljava/lang/String;", "setShowingLogoUrl", "(Ljava/lang/String;)V", "timelineTopBarEntryClientConfig", "timelineTopBarInfo", "Lcom/tencent/mm/protocal/protobuf/VideoChannelTopBarInfo;", "clearTopBarInfo", "", "fetchBizVideoChannelStrategy", "fromScene", "talker", "url", "getLogoUrl", "force", "getNotifyAndChannelFeeds", "updateCallback", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$UpdateChannelFeedsCallback;", "getSyncBuffer", "getTopBarInfo", "init", "isPreloadOpen", "scene", "isShowDefaultIcon", "isShowingDefaultIcon", "isShowingIconCached", "isTimeLineTopBarEntryOpen", "isTopBarInfoChanged", "topBarInfo", "loadChannelIcon", "iconIV", "Landroid/widget/ImageView;", "onLogoClick", "onTopBarVideoChannelEntryChanged", "switchOption", "preloadChannelStrategy", "preloadIcon", "resp", "Lcom/tencent/mm/protocal/protobuf/BizStrategyResp;", "release", "report", "key", "", "saveTopBarInfo", "top_bar_info", "shouldChaneDefaultLogoAfterClick", "update", "updateBizProfileEntryStatus", "isEntryOpen", "needSave", "updateInterval", "updateTimelineTopBarEntryStatus", "VideoChannelSwitchOption", "VideoChannelTopBarControlBit", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/model/BizVideoChannelStrategy;", "", "()V", "BIZ_PROFILE_VIDEO_CHANNEL_ENTRY_OPEN", "", "KEY_BIZ_VIDEO_CHANNEL_SHOW_DEFAULT_ICON", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_FETCH_INTERVAL", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_FETCH_LAST_TIME", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_TL_FETCH_INTERVAL", "KEY_BIZ_VIDEO_CHANNEL_STRATEGY_TL_FETCH_LAST_TIME", "TAG", "TOP_BAR_INFO", "TOP_BAR_VIDEO_CHANNEL_SWITCH_OPTION", "VIDEO_CHANNEL_FEEDS_DATA", "bizProfileEntryClientConfig", "", "isBizProfileEntryOpen", "", "Ljava/lang/Boolean;", "isTimelineTopBarEntryOpen", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "showingLogoUrl", "getShowingLogoUrl", "()Ljava/lang/String;", "setShowingLogoUrl", "(Ljava/lang/String;)V", "timelineTopBarEntryClientConfig", "timelineTopBarInfo", "Lcom/tencent/mm/protocal/protobuf/VideoChannelTopBarInfo;", "clearTopBarInfo", "", "fetchBizVideoChannelStrategy", "fromScene", "talker", "url", "getLogoUrl", "force", "getNotifyAndChannelFeeds", "updateCallback", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService$UpdateChannelFeedsCallback;", "getSyncBuffer", "getTopBarInfo", "init", "isPreloadOpen", "scene", "isShowDefaultIcon", "isShowingDefaultIcon", "isShowingIconCached", "isTimeLineTopBarEntryOpen", "isTopBarInfoChanged", "topBarInfo", "loadChannelIcon", "iconIV", "Landroid/widget/ImageView;", "onLogoClick", "onTopBarVideoChannelEntryChanged", "switchOption", "preloadChannelStrategy", "preloadIcon", "resp", "Lcom/tencent/mm/protocal/protobuf/BizStrategyResp;", "release", "report", "key", "", "saveTopBarInfo", "top_bar_info", "shouldChaneDefaultLogoAfterClick", "update", "updateBizProfileEntryStatus", "isEntryOpen", "needSave", "updateInterval", "updateTimelineTopBarEntryStatus", "VideoChannelSwitchOption", "VideoChannelTopBarControlBit", "plugin-brandservice_release"})
 public final class c
 {
-  private static final f nOP;
-  private static String nWs;
-  private static Boolean nWt;
-  private static int nWu;
-  private static dvq nWv;
-  private static Boolean nWw;
-  private static int nWx;
-  public static final c nWy;
+  private static final f nUv;
+  private static String ocb;
+  private static Boolean occ;
+  private static int ocd;
+  private static dwn oce;
+  private static Boolean ocf;
+  private static int ocg;
+  public static final c och;
   
   static
   {
     AppMethodBeat.i(175467);
-    nWy = new c();
-    nWs = "";
-    nOP = d.g.O((d.g.a.a)c.c.nWC);
+    och = new c();
+    ocb = "";
+    nUv = d.g.O((d.g.a.a)c.c.ocl);
     AppMethodBeat.o(175467);
   }
   
   public static final void F(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(175474);
-    if ((paramBoolean1) && (nWx == 1)) {}
+    if ((paramBoolean1) && (ocg == 1)) {}
     for (boolean bool = true;; bool = false)
     {
-      nWw = Boolean.valueOf(bool);
+      ocf = Boolean.valueOf(bool);
       if (paramBoolean2) {
-        bNe().putInt("biz_profile_video_channel_entry_open", 1);
+        bOc().putInt("biz_profile_video_channel_entry_open", 1);
       }
-      ad.i("MicroMsg.BizVideoChannelStrategy", "alvinluo updateBizProfileEntryStatus bizProfileEntryClientConfig: %d, server isEntryOpen: %b, isBizProfileEntryOpen: %b, needSave: %b", new Object[] { Integer.valueOf(nWx), Boolean.valueOf(paramBoolean1), nWw, Boolean.valueOf(paramBoolean2) });
+      ae.i("MicroMsg.BizVideoChannelStrategy", "alvinluo updateBizProfileEntryStatus bizProfileEntryClientConfig: %d, server isEntryOpen: %b, isBizProfileEntryOpen: %b, needSave: %b", new Object[] { Integer.valueOf(ocg), Boolean.valueOf(paramBoolean1), ocf, Boolean.valueOf(paramBoolean2) });
       AppMethodBeat.o(175474);
       return;
     }
   }
   
-  public static void a(dvq paramdvq)
+  public static void a(dwn paramdwn)
   {
-    AppMethodBeat.i(209659);
+    AppMethodBeat.i(208616);
     try
     {
-      ax localax = bNe();
-      if (paramdvq != null)
+      ay localay = bOc();
+      if (paramdwn != null)
       {
-        byte[] arrayOfByte = paramdvq.toByteArray();
-        paramdvq = arrayOfByte;
+        byte[] arrayOfByte = paramdwn.toByteArray();
+        paramdwn = arrayOfByte;
         if (arrayOfByte != null) {}
       }
       else
       {
-        paramdvq = new byte[0];
+        paramdwn = new byte[0];
       }
-      localax.encode("biz_video_channel_top_bar_info", paramdvq);
-      AppMethodBeat.o(209659);
+      localay.encode("biz_video_channel_top_bar_info", paramdwn);
+      AppMethodBeat.o(208616);
       return;
     }
-    catch (Exception paramdvq)
+    catch (Exception paramdwn)
     {
-      AppMethodBeat.o(209659);
+      AppMethodBeat.o(208616);
     }
   }
   
-  public static final void a(pe parampe)
+  public static final void a(pg parampg)
   {
     Integer localInteger = null;
     AppMethodBeat.i(175470);
-    p.h(parampe, "resp");
-    int i = bNe().getInt("top_bar_video_channel_switch_option", 0);
-    dvm localdvm = parampe.FKv;
+    p.h(parampg, "resp");
+    int i = bOc().getInt("top_bar_video_channel_switch_option", 0);
+    dwj localdwj = parampg.GcU;
     Object localObject2;
     Object localObject1;
-    label101:
+    label111:
     Object localObject3;
-    label142:
-    label163:
-    label184:
+    label152:
+    label173:
+    label194:
     Object localObject4;
-    label208:
+    label218:
     boolean bool;
-    if (localdvm != null)
+    if (localdwj != null)
     {
+      bOc().encode("biz_video_channel_show_default_icon", 0);
       localObject2 = new StringBuilder("alvinluo onUpdateBizVideoChannelStrategy localSwitchOption: %d, switch_option: %d, appId: %s, title: %s, logo: %s, version: %d, funcVersion: %d, default_logo_url: ");
-      localObject1 = localdvm.HHS;
+      localObject1 = localdwj.IbF;
       if (localObject1 != null)
       {
-        localObject1 = ((dvq)localObject1).HHW;
+        localObject1 = ((dwn)localObject1).IbJ;
         localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(", control_bits: ");
-        localObject1 = localdvm.HHS;
+        localObject1 = localdwj.IbF;
         if (localObject1 == null) {
-          break label477;
+          break label487;
         }
-        localObject1 = Integer.valueOf(((dvq)localObject1).HIb);
+        localObject1 = Integer.valueOf(((dwn)localObject1).IbO);
         String str = localObject1;
-        int j = parampe.FKv.HHR;
-        localObject1 = parampe.FKv.HHS;
+        int j = parampg.GcU.IbE;
+        localObject1 = parampg.GcU.IbF;
         if (localObject1 == null) {
-          break label483;
+          break label493;
         }
-        localObject1 = ((dvq)localObject1).duW;
-        localObject2 = parampe.FKv.HHS;
+        localObject1 = ((dwn)localObject1).dwb;
+        localObject2 = parampg.GcU.IbF;
         if (localObject2 == null) {
-          break label489;
+          break label499;
         }
-        localObject2 = ((dvq)localObject2).title;
-        localObject3 = parampe.FKv.HHS;
+        localObject2 = ((dwn)localObject2).title;
+        localObject3 = parampg.GcU.IbF;
         if (localObject3 == null) {
-          break label495;
+          break label505;
         }
-        localObject3 = ((dvq)localObject3).hzB;
-        localObject4 = parampe.FKv.HHS;
+        localObject3 = ((dwn)localObject3).hCp;
+        localObject4 = parampg.GcU.IbF;
         if (localObject4 == null) {
-          break label501;
+          break label511;
         }
-        localObject4 = Integer.valueOf(((dvq)localObject4).version);
-        dvq localdvq = parampe.FKv.HHS;
-        if (localdvq != null) {
-          localInteger = Integer.valueOf(localdvq.HHV);
+        localObject4 = Integer.valueOf(((dwn)localObject4).version);
+        dwn localdwn = parampg.GcU.IbF;
+        if (localdwn != null) {
+          localInteger = Integer.valueOf(localdwn.IbI);
         }
-        ad.i("MicroMsg.BizVideoChannelStrategy", str, new Object[] { Integer.valueOf(i), Integer.valueOf(j), localObject1, localObject2, localObject3, localObject4, localInteger });
-        bNe().putInt("top_bar_video_channel_switch_option", localdvm.HHR);
-        if (localdvm.HHR != 2) {
-          break label512;
+        ae.i("MicroMsg.BizVideoChannelStrategy", str, new Object[] { Integer.valueOf(i), Integer.valueOf(j), localObject1, localObject2, localObject3, localObject4, localInteger });
+        bOc().putInt("top_bar_video_channel_switch_option", localdwj.IbE);
+        if (localdwj.IbE != 2) {
+          break label522;
         }
-        if (com.tencent.mm.plugin.brandservice.ui.b.c.b((com.tencent.mm.bx.a)localdvm.HHS, (com.tencent.mm.bx.a)bNx())) {
-          break label507;
+        if (com.tencent.mm.plugin.brandservice.ui.b.c.b((com.tencent.mm.bw.a)localdwj.IbF, (com.tencent.mm.bw.a)bOv())) {
+          break label517;
         }
         bool = true;
-        label329:
-        a(localdvm.HHS);
-        nWv = parampe.FKv.HHS;
+        label339:
+        a(localdwj.IbF);
+        oce = parampg.GcU.IbF;
       }
     }
     for (;;)
     {
-      parampe = nWt;
-      zg(localdvm.HHR);
-      ad.i("MicroMsg.BizVideoChannelStrategy", "alvinluo onUpdateBizVideoChannelStrategy oldEntry: %b, new: %b, isTopBarInfoChanged: %b", new Object[] { parampe, nWt, Boolean.valueOf(bool) });
-      if (((p.i(parampe, nWt) ^ true)) || (bool))
+      parampg = occ;
+      zp(localdwj.IbE);
+      ae.i("MicroMsg.BizVideoChannelStrategy", "alvinluo onUpdateBizVideoChannelStrategy oldEntry: %b, new: %b, isTopBarInfoChanged: %b", new Object[] { parampg, occ, Boolean.valueOf(bool) });
+      if (((p.i(parampg, occ) ^ true)) || (bool))
       {
-        i = localdvm.HHR;
-        parampe = nWv;
-        ad.i("MicroMsg.BizVideoChannelStrategy", "alvinluo onTopBarVideoChannelEntryChanged");
+        i = localdwj.IbE;
+        parampg = oce;
+        ae.i("MicroMsg.BizVideoChannelStrategy", "alvinluo onTopBarVideoChannelEntryChanged");
         localObject1 = new ao();
-        ((ao)localObject1).dli.dlj = i;
-        if (parampe != null) {
-          ((ao)localObject1).dli.dlk = parampe;
+        ((ao)localObject1).dmk.dml = i;
+        if (parampg != null) {
+          ((ao)localObject1).dmk.dmm = parampg;
         }
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
       }
       AppMethodBeat.o(175470);
       return;
       localObject1 = null;
       break;
-      label477:
+      label487:
       localObject1 = null;
-      break label101;
-      label483:
+      break label111;
+      label493:
       localObject1 = null;
-      break label142;
-      label489:
+      break label152;
+      label499:
       localObject2 = null;
-      break label163;
-      label495:
+      break label173;
+      label505:
       localObject3 = null;
-      break label184;
-      label501:
+      break label194;
+      label511:
       localObject4 = null;
-      break label208;
-      label507:
+      break label218;
+      label517:
       bool = false;
-      break label329;
-      label512:
-      if ((localdvm.HHR == 0) || (localdvm.HHR == 1))
+      break label339;
+      label522:
+      if ((localdwj.IbE == 0) || (localdwj.IbE == 1))
       {
-        bNy();
+        bOw();
         bool = false;
       }
-      else if (localdvm.HHR == 3)
+      else if (localdwj.IbE == 3)
       {
         bool = false;
-        bNy();
+        bOw();
         continue;
         AppMethodBeat.o(175470);
       }
@@ -224,142 +229,106 @@ public final class c
   public static void b(b.b paramb)
   {
     AppMethodBeat.i(175477);
-    com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
-    locala.c((com.tencent.mm.bx.a)new ben());
-    locala.d((com.tencent.mm.bx.a)new beo());
-    locala.Dl("/cgi-bin/mmbiz-bin/videochannel/getnotifyandchannelfeeds");
-    locala.oP(1814);
-    x.a(locala.aDC(), (x.a)new c.b(paramb));
+    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
+    locala.c((com.tencent.mm.bw.a)new bfd());
+    locala.d((com.tencent.mm.bw.a)new bfe());
+    locala.DN("/cgi-bin/mmbiz-bin/videochannel/getnotifyandchannelfeeds");
+    locala.oS(1814);
+    x.a(locala.aDS(), (x.a)new c.b(paramb));
     AppMethodBeat.o(175477);
   }
   
-  public static boolean bNA()
+  public static boolean bOA()
   {
-    AppMethodBeat.i(209661);
-    dvq localdvq = bNx();
-    if (localdvq == null)
+    AppMethodBeat.i(208620);
+    dwn localdwn = bOv();
+    if (localdwn == null)
     {
-      AppMethodBeat.o(209661);
+      AppMethodBeat.o(208620);
       return false;
     }
-    if ((localdvq.HIb & 0x10) != 0)
+    if ((bOz()) || (bu.lX(localdwn.hCp, localdwn.IbJ)))
     {
-      AppMethodBeat.o(209661);
+      AppMethodBeat.o(208620);
       return true;
     }
-    AppMethodBeat.o(209661);
+    AppMethodBeat.o(208620);
     return false;
   }
   
-  public static boolean bNB()
+  public static boolean bOB()
   {
-    AppMethodBeat.i(209662);
-    dvq localdvq = bNx();
-    if (localdvq == null)
-    {
-      AppMethodBeat.o(209662);
-      return false;
-    }
-    if ((!bt.isNullOrNil(localdvq.HHW)) && (bNe().decodeInt("biz_video_channel_show_default_icon", 0) == 1))
-    {
-      AppMethodBeat.o(209662);
-      return true;
-    }
-    AppMethodBeat.o(209662);
-    return false;
-  }
-  
-  public static boolean bNC()
-  {
-    AppMethodBeat.i(209663);
-    dvq localdvq = bNx();
-    if (localdvq == null)
-    {
-      AppMethodBeat.o(209663);
-      return false;
-    }
-    if ((bNB()) || (bt.lQ(localdvq.hzB, localdvq.HHW)))
-    {
-      AppMethodBeat.o(209663);
-      return true;
-    }
-    AppMethodBeat.o(209663);
-    return false;
-  }
-  
-  public static boolean bND()
-  {
-    AppMethodBeat.i(209664);
-    boolean bool = i.fv(r.aLC(jl(false)));
-    AppMethodBeat.o(209664);
+    AppMethodBeat.i(208621);
+    boolean bool = o.fB(r.aMY(jk(false)));
+    AppMethodBeat.o(208621);
     return bool;
   }
   
-  public static String bNE()
+  public static String bOC()
   {
-    AppMethodBeat.i(209666);
-    Object localObject = bNx();
+    AppMethodBeat.i(208623);
+    Object localObject = bOv();
     if (localObject == null)
     {
-      AppMethodBeat.o(209666);
+      AppMethodBeat.o(208623);
       return "";
     }
-    localObject = ((dvq)localObject).HHX;
-    AppMethodBeat.o(209666);
+    localObject = ((dwn)localObject).IbK;
+    AppMethodBeat.o(208623);
     return localObject;
   }
   
-  public static ax bNe()
+  public static ay bOc()
   {
     AppMethodBeat.i(175468);
-    ax localax = (ax)nOP.getValue();
+    ay localay = (ay)nUv.getValue();
     AppMethodBeat.o(175468);
-    return localax;
+    return localay;
   }
   
-  public static final boolean bNv()
+  public static final boolean bOt()
   {
     AppMethodBeat.i(175471);
-    if (com.tencent.mm.plugin.biz.b.b.bMA())
+    if (com.tencent.mm.plugin.biz.b.b.bNy())
     {
       AppMethodBeat.o(175471);
       return false;
     }
-    Boolean localBoolean = nWt;
+    Boolean localBoolean = occ;
     if (localBoolean == null) {
-      p.gfZ();
+      p.gkB();
     }
     boolean bool = localBoolean.booleanValue();
     AppMethodBeat.o(175471);
     return bool;
   }
   
-  public static final boolean bNw()
+  public static final boolean bOu()
   {
     AppMethodBeat.i(175472);
-    Boolean localBoolean = nWw;
+    Boolean localBoolean = ocf;
     if (localBoolean == null) {
-      p.gfZ();
+      p.gkB();
     }
     boolean bool = localBoolean.booleanValue();
     AppMethodBeat.o(175472);
     return bool;
   }
   
-  public static final dvq bNx()
+  public static final dwn bOv()
   {
     int j = 1;
     AppMethodBeat.i(175475);
     Object localObject1;
     int i;
-    if (nWv == null)
+    if (oce == null)
     {
-      localObject1 = bNe();
+      localObject1 = bOc();
       p.g(localObject1, "mmkv");
-      if (!((ax)localObject1).containsKey("biz_video_channel_top_bar_info")) {
+      if (!((ay)localObject1).containsKey("biz_video_channel_top_bar_info")) {
         break label129;
       }
-      localObject1 = ((ax)localObject1).decodeBytes("biz_video_channel_top_bar_info");
+      localObject1 = ((ay)localObject1).decodeBytes("biz_video_channel_top_bar_info");
       if (localObject1 == null) {
         break label129;
       }
@@ -380,11 +349,11 @@ public final class c
     {
       try
       {
-        Object localObject3 = dvq.class.newInstance();
-        ((com.tencent.mm.bx.a)localObject3).parseFrom((byte[])localObject1);
-        localObject1 = (com.tencent.mm.bx.a)localObject3;
-        nWv = (dvq)localObject1;
-        localObject1 = nWv;
+        Object localObject3 = dwn.class.newInstance();
+        ((com.tencent.mm.bw.a)localObject3).parseFrom((byte[])localObject1);
+        localObject1 = (com.tencent.mm.bw.a)localObject3;
+        oce = (dwn)localObject1;
+        localObject1 = oce;
         AppMethodBeat.o(175475);
         return localObject1;
       }
@@ -392,7 +361,7 @@ public final class c
       {
         label101:
         label106:
-        ad.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
+        ae.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
       }
       i = 0;
       break;
@@ -403,13 +372,13 @@ public final class c
     }
   }
   
-  private static void bNy()
+  private static void bOw()
   {
     AppMethodBeat.i(175476);
     try
     {
-      bNe().encode("biz_video_channel_top_bar_info", new byte[0]);
-      nWv = null;
+      bOc().encode("biz_video_channel_top_bar_info", new byte[0]);
+      oce = null;
       AppMethodBeat.o(175476);
       return;
     }
@@ -419,75 +388,160 @@ public final class c
     }
   }
   
-  public static boolean e(ImageView paramImageView)
+  public static boolean bOy()
   {
-    AppMethodBeat.i(209667);
-    p.h(paramImageView, "iconIV");
-    if (bt.isNullOrNil(jl(true)))
+    AppMethodBeat.i(208618);
+    dwn localdwn = bOv();
+    if (localdwn == null)
     {
-      AppMethodBeat.o(209667);
+      AppMethodBeat.o(208618);
       return false;
     }
-    String str = r.aLC(nWs);
-    if (bNB()) {
-      if (!i.fv(str)) {
+    if ((localdwn.IbO & 0x10) != 0)
+    {
+      AppMethodBeat.o(208618);
+      return true;
+    }
+    AppMethodBeat.o(208618);
+    return false;
+  }
+  
+  public static boolean bOz()
+  {
+    AppMethodBeat.i(208619);
+    dwn localdwn = bOv();
+    if (localdwn == null)
+    {
+      AppMethodBeat.o(208619);
+      return false;
+    }
+    if ((!bu.isNullOrNil(localdwn.IbJ)) && (bOc().decodeInt("biz_video_channel_show_default_icon", 0) == 1))
+    {
+      AppMethodBeat.o(208619);
+      return true;
+    }
+    AppMethodBeat.o(208619);
+    return false;
+  }
+  
+  public static boolean e(ImageView paramImageView)
+  {
+    int k = 0;
+    AppMethodBeat.i(208624);
+    p.h(paramImageView, "iconIV");
+    if (bu.isNullOrNil(jk(true)))
+    {
+      AppMethodBeat.o(208624);
+      return false;
+    }
+    String str1 = r.aMY(ocb);
+    int i;
+    com.tencent.mm.av.a.a locala;
+    String str2;
+    com.tencent.mm.av.a.a.c.a locala1;
+    int j;
+    if (bOz()) {
+      if (!o.fB(str1))
+      {
         report(15L);
+        i = 0;
+        locala = q.aJb();
+        str2 = ocb;
+        locala1 = new com.tencent.mm.av.a.a.c.a().aJs();
+        j = k;
+        if (i != 0)
+        {
+          localObject = bOv();
+          if (localObject == null) {
+            break label301;
+          }
+        }
       }
     }
-    for (;;)
+    label301:
+    for (Object localObject = ((dwn)localObject).IbJ;; localObject = null)
     {
-      q.aIJ().a(nWs, paramImageView, new com.tencent.mm.aw.a.a.c.a().aJa().pH(2131231342).aIY().FE(str).aJc());
-      AppMethodBeat.o(209667);
+      j = k;
+      if (!bu.isNullOrNil((String)localObject))
+      {
+        localObject = r.aMY((String)localObject);
+        j = k;
+        if (o.fB((String)localObject))
+        {
+          i = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 48);
+          localObject = h.aP((String)localObject, i, i);
+          j = k;
+          if (localObject != null)
+          {
+            android.support.v4.graphics.drawable.b localb = d.a(ak.getResources(), (Bitmap)localObject);
+            localb.setCornerRadius(Math.max(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight()) / 2.0F);
+            p.g(localb, "RoundedBitmapDrawableFac…                        }");
+            locala1.x((Drawable)localb);
+            report(19L);
+            j = 1;
+          }
+        }
+      }
+      if (j == 0) {
+        locala1.pK(2131231342);
+      }
+      locala.a(str2, paramImageView, locala1.aJq().Gg(str1).aJu());
+      AppMethodBeat.o(208624);
       return true;
       report(16L);
-      continue;
-      if (!i.fv(str)) {
+      i = 0;
+      break;
+      if (!o.fB(str1))
+      {
         report(17L);
-      } else {
-        report(18L);
+        i = 1;
+        break;
       }
+      report(18L);
+      i = 0;
+      break;
     }
   }
   
   public static final void init()
   {
     AppMethodBeat.i(175469);
-    nWu = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qBu, 0);
-    nWx = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qBv, 0);
-    int i = bNe().getInt("top_bar_video_channel_switch_option", 0);
-    if (bNe().getInt("top_bar_video_channel_switch_option", 0) == 1) {}
+    ocd = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qIN, 0);
+    ocg = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qIO, 0);
+    int i = bOc().getInt("top_bar_video_channel_switch_option", 0);
+    if (bOc().getInt("top_bar_video_channel_switch_option", 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      zg(i);
+      zp(i);
       F(bool, false);
       AppMethodBeat.o(175469);
       return;
     }
   }
   
-  public static String jl(boolean paramBoolean)
+  public static String jk(boolean paramBoolean)
   {
-    AppMethodBeat.i(209665);
-    if ((bt.isNullOrNil(nWs)) || (paramBoolean))
+    AppMethodBeat.i(208622);
+    if ((bu.isNullOrNil(ocb)) || (paramBoolean))
     {
-      localObject = bNx();
+      localObject = bOv();
       if (localObject == null)
       {
-        AppMethodBeat.o(209665);
+        AppMethodBeat.o(208622);
         return "";
       }
-      if (!bNB()) {
+      if (!bOz()) {
         break label75;
       }
     }
     label75:
-    for (Object localObject = ((dvq)localObject).HHW;; localObject = ((dvq)localObject).hzB)
+    for (Object localObject = ((dwn)localObject).IbJ;; localObject = ((dwn)localObject).hCp)
     {
-      localObject = bt.nullAsNil((String)localObject);
+      localObject = bu.nullAsNil((String)localObject);
       p.g(localObject, "Util.nullAsNil(if (isSho…else topBarInfo.logo_url)");
-      nWs = (String)localObject;
-      localObject = nWs;
-      AppMethodBeat.o(209665);
+      ocb = (String)localObject;
+      localObject = ocb;
+      AppMethodBeat.o(208622);
       return localObject;
     }
   }
@@ -496,15 +550,15 @@ public final class c
   
   public static void report(long paramLong)
   {
-    AppMethodBeat.i(209668);
-    com.tencent.mm.plugin.report.service.g.yhR.n(1416L, paramLong, 1L);
-    AppMethodBeat.o(209668);
+    AppMethodBeat.i(208625);
+    com.tencent.mm.plugin.report.service.g.yxI.n(1416L, paramLong, 1L);
+    AppMethodBeat.o(208625);
   }
   
   public static void s(final int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(209660);
-    Object localObject = bNx();
+    AppMethodBeat.i(208617);
+    Object localObject = bOv();
     int i;
     if (localObject == null) {
       i = 0;
@@ -512,159 +566,157 @@ public final class c
     for (;;)
     {
       if (i != 0) {
-        break label142;
+        break label141;
       }
-      AppMethodBeat.o(209660);
+      AppMethodBeat.o(208617);
       return;
-      if ((paramInt == 2) && ((((dvq)localObject).HIb & 0x2) != 0))
+      if ((paramInt == 2) && ((((dwn)localObject).IbO & 0x2) != 0))
       {
         i = 1;
       }
       else if (paramInt == 1)
       {
-        if ((((dvq)localObject).HIb & 0x1) != 0) {
+        if ((((dwn)localObject).IbO & 0x1) != 0) {
           i = 1;
-        } else if ((((dvq)localObject).HIb == 0) && (bNe().decodeInt("biz_video_channel_show_default_icon", -1) == -1)) {
+        } else if ((((dwn)localObject).IbO == 0) && (bOc().decodeInt("biz_video_channel_show_default_icon", -1) == -1)) {
           i = 1;
         } else {
           i = 0;
         }
       }
-      else if ((paramInt == 3) && ((((dvq)localObject).HIb & 0x4) != 0))
+      else if ((paramInt == 3) && ((((dwn)localObject).IbO & 0x4) != 0))
       {
         i = 1;
       }
       else
       {
-        if ((paramInt != 4) || ((((dvq)localObject).HIb & 0x8) == 0)) {
+        if ((paramInt != 4) || ((((dwn)localObject).IbO & 0x8) == 0)) {
           break;
         }
         i = 1;
       }
     }
-    label142:
+    label141:
     long l2;
     if ((paramInt == 2) || (paramInt == 1)) {
-      l2 = bNe().getLong("biz_video_channel_strategy_fetch_last_time", 0L);
+      l2 = bOc().getLong("biz_video_channel_strategy_fetch_last_time", 0L);
     }
-    for (long l1 = Math.max(bNe().getLong("biz_video_channel_strategy_fetch_interval", 1800000L), 300000L);; l1 = bNe().getLong("biz_video_channel_strategy_tl_fetch_interval", 1800000L))
+    for (long l1 = Math.max(bOc().getLong("biz_video_channel_strategy_fetch_interval", 1800000L), 300000L);; l1 = bOc().getLong("biz_video_channel_strategy_tl_fetch_interval", 1800000L))
     {
       l2 = Math.abs(System.currentTimeMillis() - l2);
       if (l2 >= l1) {
         break;
       }
-      ad.i("MicroMsg.BizVideoChannelStrategy", "fetchBizStrategy delta < interval, return");
-      AppMethodBeat.o(209660);
+      ae.i("MicroMsg.BizVideoChannelStrategy", "fetchBizStrategy delta < interval, return");
+      AppMethodBeat.o(208617);
       return;
-      l2 = bNe().getLong("biz_video_channel_strategy_tl_fetch_last_time", 0L);
+      l2 = bOc().getLong("biz_video_channel_strategy_tl_fetch_last_time", 0L);
     }
-    localObject = new com.tencent.mm.al.b.a();
-    ((com.tencent.mm.al.b.a)localObject).c((com.tencent.mm.bx.a)new pd());
-    ((com.tencent.mm.al.b.a)localObject).d((com.tencent.mm.bx.a)new pe());
-    ((com.tencent.mm.al.b.a)localObject).Dl("/cgi-bin/mmbiz-bin/timeline/bizstrategy");
-    ((com.tencent.mm.al.b.a)localObject).oP(1806);
-    com.tencent.mm.al.b localb = ((com.tencent.mm.al.b.a)localObject).aDC();
+    localObject = new com.tencent.mm.ak.b.a();
+    ((com.tencent.mm.ak.b.a)localObject).c((com.tencent.mm.bw.a)new pf());
+    ((com.tencent.mm.ak.b.a)localObject).d((com.tencent.mm.bw.a)new pg());
+    ((com.tencent.mm.ak.b.a)localObject).DN("/cgi-bin/mmbiz-bin/timeline/bizstrategy");
+    ((com.tencent.mm.ak.b.a)localObject).oS(1806);
+    com.tencent.mm.ak.b localb = ((com.tencent.mm.ak.b.a)localObject).aDS();
     p.g(localb, "rr");
-    localObject = localb.aEE();
+    localObject = localb.aEU();
     if (localObject == null)
     {
       paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizStrategyReq");
-      AppMethodBeat.o(209660);
+      AppMethodBeat.o(208617);
       throw paramString1;
     }
-    pd localpd = (pd)localObject;
-    localpd.ReqType = 8;
-    dvn localdvn = new dvn();
-    localdvn.HHU = new dvr();
-    dvr localdvr = localdvn.HHU;
-    localObject = bNx();
+    pf localpf = (pf)localObject;
+    localpf.ReqType = 8;
+    dwk localdwk = new dwk();
+    localdwk.IbH = new dwo();
+    dwo localdwo = localdwk.IbH;
+    localObject = bOv();
     if (localObject != null) {}
-    for (localObject = ((dvq)localObject).HHX;; localObject = null)
+    for (localObject = ((dwn)localObject).IbK;; localObject = null)
     {
-      localdvr.HHX = ((String)localObject);
-      localdvn.HHU.FIk = paramString1;
-      localdvn.HHU.HId = paramString2;
-      localdvn.HHU.scene = paramInt;
-      localpd.FKq = localdvn;
+      localdwo.IbK = ((String)localObject);
+      localdwk.IbH.GaH = paramString1;
+      localdwk.IbH.IbQ = paramString2;
+      localdwk.IbH.scene = paramInt;
+      localpf.GcP = localdwk;
       report(0L);
-      x.a(localb, (x.a)new a(localpd, paramInt));
-      ad.i("MicroMsg.BizVideoChannelStrategy", "preloadChannelStrategy %d", new Object[] { Long.valueOf(l2) });
-      AppMethodBeat.o(209660);
+      x.a(localb, (x.a)new a(localpf, paramInt));
+      ae.i("MicroMsg.BizVideoChannelStrategy", "preloadChannelStrategy %d", new Object[] { Long.valueOf(l2) });
+      AppMethodBeat.o(208617);
       return;
     }
   }
   
-  private static void zg(int paramInt)
+  private static void zp(int paramInt)
   {
     AppMethodBeat.i(175473);
-    if ((paramInt == 2) && (nWu == 1)) {}
+    if ((paramInt == 2) && (ocd == 1)) {}
     for (boolean bool = true;; bool = false)
     {
-      nWt = Boolean.valueOf(bool);
-      ad.i("MicroMsg.BizVideoChannelStrategy", "alvinluo updateTimelineTopBarEntryStatus timelineTopBarEntryClientConfig: %d, server switchOption: %d, isTimelineTopBarEntryOpen: %b", new Object[] { Integer.valueOf(nWu), Integer.valueOf(paramInt), nWt });
+      occ = Boolean.valueOf(bool);
+      ae.i("MicroMsg.BizVideoChannelStrategy", "alvinluo updateTimelineTopBarEntryStatus timelineTopBarEntryClientConfig: %d, server switchOption: %d, isTimelineTopBarEntryOpen: %b", new Object[] { Integer.valueOf(ocd), Integer.valueOf(paramInt), occ });
       AppMethodBeat.o(175473);
       return;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "comReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "comReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
   static final class a
     implements x.a
   {
-    a(pd parampd, int paramInt) {}
+    a(pf parampf, int paramInt) {}
     
-    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb, n paramn)
+    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb, n paramn)
     {
-      AppMethodBeat.i(209655);
-      ad.i("MicroMsg.BizVideoChannelStrategy", "fetchBizVideoChannelStrategy callback %d/%d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      AppMethodBeat.i(208612);
+      ae.i("MicroMsg.BizVideoChannelStrategy", "fetchBizVideoChannelStrategy callback %d/%d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        paramString = c.nWy;
+        paramString = c.och;
         c.report(2L);
-        AppMethodBeat.o(209655);
+        AppMethodBeat.o(208612);
         return 0;
       }
       p.g(paramb, "comReqResp");
-      paramb = paramb.aEF();
+      paramb = paramb.aEV();
       paramString = paramb;
-      if (!(paramb instanceof pe)) {
+      if (!(paramb instanceof pg)) {
         paramString = null;
       }
-      paramString = (pe)paramString;
+      paramString = (pg)paramString;
       if (paramString == null)
       {
-        AppMethodBeat.o(209655);
+        AppMethodBeat.o(208612);
         return 0;
       }
-      paramb = paramString.FKv;
+      paramb = paramString.GcU;
       if (paramb != null)
       {
-        paramb = paramb.HHS;
-        if ((paramb != null) && (paramb.HHY == 0))
+        paramb = paramb.IbF;
+        if ((paramb != null) && (paramb.IbL == 0))
         {
-          ad.i("MicroMsg.BizVideoChannelStrategy", "sync_flag is 0, just return!");
-          AppMethodBeat.o(209655);
+          ae.i("MicroMsg.BizVideoChannelStrategy", "sync_flag is 0, just return!");
+          AppMethodBeat.o(208612);
           return 0;
         }
       }
-      paramb = c.nWy;
+      paramb = c.och;
       c.report(1L);
-      if ((this.nWz.ReqType & 0x8) != 0)
+      if ((this.oci.ReqType & 0x8) != 0)
       {
         c.a(paramString);
-        paramb = c.nWy;
+        paramb = c.och;
         c.b(paramInt, paramString);
-        paramb = c.nWy;
+        paramb = c.och;
         c.b(paramString);
-        paramString = c.nWy;
-        c.bNF().encode("biz_video_channel_show_default_icon", 0);
       }
-      AppMethodBeat.o(209655);
+      AppMethodBeat.o(208612);
       return 0;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -672,11 +724,11 @@ public final class c
     
     public final void run()
     {
-      AppMethodBeat.i(209658);
-      ad.i("MicroMsg.BizVideoChannelStrategy", "preloadIcon start = %s", new Object[] { this.lby });
-      com.tencent.mm.aw.a.a.c localc = new com.tencent.mm.aw.a.a.c.a().aJa().pH(2131231342).aIY().FE(this.nWD).aJc();
-      q.aIJ().a(this.lby, null, localc, (k)1.nWE);
-      AppMethodBeat.o(209658);
+      AppMethodBeat.i(208615);
+      ae.i("MicroMsg.BizVideoChannelStrategy", "preloadIcon start = %s", new Object[] { this.lfj });
+      com.tencent.mm.av.a.a.c localc = new com.tencent.mm.av.a.a.c.a().aJs().pK(2131231342).aJq().Gg(this.ocm).aJu();
+      q.aJb().a(this.lfj, null, localc, (k)1.ocn);
+      AppMethodBeat.o(208615);
     }
   }
 }

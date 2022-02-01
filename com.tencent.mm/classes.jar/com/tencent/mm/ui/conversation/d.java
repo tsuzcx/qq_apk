@@ -2,62 +2,62 @@ package com.tencent.mm.ui.conversation;
 
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.model.x;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.t;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/conversation/ConvExposeHelper;", "", "()V", "TAG", "", "isMainTabShow", "", "()Z", "setMainTabShow", "(Z)V", "sFirstVisibleItem", "", "sLastVisibleItem", "checkOfficialAccountShow", "", "conversationLV", "Landroid/widget/ListView;", "adapter", "Lcom/tencent/mm/ui/conversation/ConversationWithCacheAdapter;", "visible", "scroll", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/conversation/ConvExposeHelper;", "", "()V", "TAG", "", "isMainTabShow", "", "()Z", "setMainTabShow", "(Z)V", "sFirstVisibleItem", "", "sLastVisibleItem", "checkOfficialAccountShow", "", "conversationLV", "Landroid/widget/ListView;", "adapter", "Lcom/tencent/mm/ui/conversation/ConversationWithCacheAdapter;", "visible", "scroll", "app_release"})
 public final class d
 {
-  private static int Ksn;
-  private static boolean Kso;
-  public static final d Ksp;
-  private static int obI;
+  private static int KOH;
+  private static boolean KOI;
+  public static final d KOJ;
+  private static int ohw;
   
   static
   {
-    AppMethodBeat.i(194917);
-    Ksp = new d();
-    obI = -1;
-    Ksn = -1;
-    Kso = true;
-    AppMethodBeat.o(194917);
+    AppMethodBeat.i(188371);
+    KOJ = new d();
+    ohw = -1;
+    KOH = -1;
+    KOI = true;
+    AppMethodBeat.o(188371);
   }
   
   public static void a(ListView paramListView, i parami, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(194916);
-    Object localObject = t.Ioj;
-    if (!t.foW())
+    AppMethodBeat.i(188370);
+    Object localObject = t.IIz;
+    if (!t.fsT())
     {
-      AppMethodBeat.o(194916);
+      AppMethodBeat.o(188370);
       return;
     }
     if ((parami == null) || (paramListView == null))
     {
-      AppMethodBeat.o(194916);
+      AppMethodBeat.o(188370);
       return;
     }
     int i = paramListView.getFirstVisiblePosition();
     int j = paramListView.getLastVisiblePosition();
     int k = paramListView.getHeaderViewsCount();
-    if ((paramBoolean2) && (i == obI) && (Ksn == j))
+    if ((paramBoolean2) && (i == ohw) && (KOH == j))
     {
-      AppMethodBeat.o(194916);
+      AppMethodBeat.o(188370);
       return;
     }
-    ad.v("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow headerCount=" + k + ", firstPos=" + i + ", lastPos=" + j + ", visible=" + paramBoolean1 + ", scroll=" + paramBoolean2);
+    ae.v("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow headerCount=" + k + ", firstPos=" + i + ", lastPos=" + j + ", visible=" + paramBoolean1 + ", scroll=" + paramBoolean2);
     if (!paramBoolean1)
     {
-      paramListView = t.Ioj;
-      t.aSB("");
-      AppMethodBeat.o(194916);
+      paramListView = t.IIz;
+      t.aTY("");
+      AppMethodBeat.o(188370);
       return;
     }
-    obI = i;
-    Ksn = j;
+    ohw = i;
+    KOH = j;
     if (i > k)
     {
       i -= k;
@@ -74,34 +74,34 @@ public final class d
       {
         try
         {
-          localObject = (at)parami.abj(i);
-          if ((localObject == null) || (!w.Ad(((at)localObject).getUsername()))) {
+          localObject = (au)parami.abR(i);
+          if ((localObject == null) || (!x.AN(((au)localObject).getUsername()))) {
             break label340;
           }
-          paramListView = ((at)localObject).getDigest();
-          j = ((at)localObject).VK();
+          paramListView = ((au)localObject).getDigest();
+          j = ((au)localObject).VS();
           int m = 1;
           k = i;
           i = m;
           if (i != 0) {
             if (!paramBoolean2)
             {
-              parami = t.Ioj;
-              t.aP(paramListView, k, j);
-              AppMethodBeat.o(194916);
+              parami = t.IIz;
+              t.aS(paramListView, k, j);
+              AppMethodBeat.o(188370);
               return;
             }
           }
         }
         catch (Exception paramListView)
         {
-          ad.e("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow ex %s", new Object[] { paramListView.getMessage() });
-          AppMethodBeat.o(194916);
+          ae.e("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow ex %s", new Object[] { paramListView.getMessage() });
+          AppMethodBeat.o(188370);
           return;
         }
-        paramListView = t.Ioj;
-        t.aSB("");
-        AppMethodBeat.o(194916);
+        paramListView = t.IIz;
+        t.aTY("");
+        AppMethodBeat.o(188370);
         return;
         label340:
         while (i == j)
@@ -120,14 +120,14 @@ public final class d
     }
   }
   
-  public static boolean fIC()
+  public static boolean fMU()
   {
-    return Kso;
+    return KOI;
   }
   
-  public static void yr(boolean paramBoolean)
+  public static void yE(boolean paramBoolean)
   {
-    Kso = paramBoolean;
+    KOI = paramBoolean;
   }
 }
 

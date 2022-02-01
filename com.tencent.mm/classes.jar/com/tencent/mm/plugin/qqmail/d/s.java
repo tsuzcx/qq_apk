@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 
 public final class s
   extends n
   implements k
 {
   private f callback;
-  private final boolean dLH;
+  private final boolean dMW;
   private b rr;
-  private String xbY;
+  private String xrP;
   
   public s(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(122719);
-    this.xbY = "";
-    this.dLH = paramBoolean;
-    this.xbY = bt.nullAsNil(paramString);
+    this.xrP = "";
+    this.dMW = paramBoolean;
+    this.xrP = bu.nullAsNil(paramString);
     AppMethodBeat.o(122719);
   }
   
@@ -35,19 +35,19 @@ public final class s
   {
     AppMethodBeat.i(122720);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ad();
-    ((b.a)localObject).hNN = new ae();
+    ((b.a)localObject).hQF = new ad();
+    ((b.a)localObject).hQG = new ae();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/switchpushmail";
     ((b.a)localObject).funcId = 129;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ad)this.rr.hNK.hNQ;
-    if (this.dLH) {}
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ad)this.rr.hQD.hQJ;
+    if (this.dMW) {}
     for (int i = 1;; i = 2)
     {
-      ((ad)localObject).xcI = i;
-      ((ad)localObject).xcJ = this.xbY;
+      ((ad)localObject).xsz = i;
+      ((ad)localObject).xsA = this.xrP;
       this.callback = paramf;
       i = dispatch(parame, this.rr, this);
       AppMethodBeat.o(122720);
@@ -65,8 +65,8 @@ public final class s
     AppMethodBeat.i(122721);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ae)this.rr.hNL.hNQ;
-      g.ajC().ajl().set(17, Integer.valueOf(paramq.xcI));
+      paramq = (ae)this.rr.hQE.hQJ;
+      g.ajR().ajA().set(17, Integer.valueOf(paramq.xsz));
     }
     updateDispatchId(paramInt1);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -17,10 +17,10 @@ public final class a
   private final AssetManager aFl;
   private long bEH;
   private InputStream inputStream;
-  private final s lmH;
-  private long lmI;
-  private long lmJ;
-  private String lmq;
+  private String lqQ;
+  private final s lrh;
+  private long lri;
+  private long lrj;
   private boolean opened;
   private String path;
   private Uri uri;
@@ -32,18 +32,18 @@ public final class a
   
   private a(Context paramContext, byte paramByte)
   {
-    AppMethodBeat.i(206017);
-    this.lmI = -1L;
-    this.lmJ = -1L;
-    this.lmq = "";
+    AppMethodBeat.i(211044);
+    this.lri = -1L;
+    this.lrj = -1L;
+    this.lqQ = "";
     this.aFl = paramContext.getAssets();
-    this.lmH = null;
-    AppMethodBeat.o(206017);
+    this.lrh = null;
+    AppMethodBeat.o(211044);
   }
   
-  public final void QL(String paramString)
+  public final void Ru(String paramString)
   {
-    this.lmq = paramString;
+    this.lqQ = paramString;
   }
   
   /* Error */
@@ -82,7 +82,7 @@ public final class a
     //   62: putfield 104	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:inputStream	Ljava/io/InputStream;
     //   65: aload_0
     //   66: ldc2_w 43
-    //   69: putfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmI	J
+    //   69: putfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lri	J
     //   72: aconst_null
     //   73: astore 5
     //   75: aconst_null
@@ -100,26 +100,26 @@ public final class a
     //   99: aload_0
     //   100: aload 6
     //   102: invokevirtual 114	android/content/res/AssetFileDescriptor:getLength	()J
-    //   105: putfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmI	J
+    //   105: putfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lri	J
     //   108: aload 6
     //   110: ifnull +8 -> 118
     //   113: aload 6
     //   115: invokevirtual 117	android/content/res/AssetFileDescriptor:close	()V
     //   118: aload_0
-    //   119: getfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmI	J
+    //   119: getfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lri	J
     //   122: ldc2_w 43
     //   125: lcmp
     //   126: ifne +10 -> 136
     //   129: aload_0
     //   130: ldc2_w 43
-    //   133: putfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmI	J
+    //   133: putfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lri	J
     //   136: aload_0
     //   137: aload_0
-    //   138: getfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmI	J
+    //   138: getfield 46	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lri	J
     //   141: aload_1
     //   142: getfield 120	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/g:position	J
     //   145: lsub
-    //   146: putfield 48	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmJ	J
+    //   146: putfield 48	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lrj	J
     //   149: aload_0
     //   150: getfield 104	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:inputStream	Ljava/io/InputStream;
     //   153: aload_1
@@ -189,10 +189,10 @@ public final class a
     //   285: iconst_1
     //   286: putfield 141	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:opened	Z
     //   289: aload_0
-    //   290: getfield 62	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmH	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
+    //   290: getfield 62	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lrh	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
     //   293: ifnull +12 -> 305
     //   296: aload_0
-    //   297: getfield 62	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lmH	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
+    //   297: getfield 62	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:lrh	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/s;
     //   300: invokeinterface 146 1 0
     //   305: aload_0
     //   306: getfield 139	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/a:bEH	J
@@ -253,17 +253,17 @@ public final class a
   
   public final long available()
   {
-    return this.lmJ;
+    return this.lrj;
   }
   
-  public final long baK()
+  public final long bbj()
   {
-    return this.lmI;
+    return this.lri;
   }
   
-  public final c bnC()
+  public final c bom()
   {
-    AppMethodBeat.i(206022);
+    AppMethodBeat.i(211049);
     Object localObject = null;
     String str = MimeTypeMap.getFileExtensionFromUrl(this.path);
     if (str != null) {
@@ -271,18 +271,18 @@ public final class a
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = c.lnq;
-      AppMethodBeat.o(206022);
+      localObject = c.lrP;
+      AppMethodBeat.o(211049);
       return localObject;
     }
-    localObject = c.QO((String)localObject);
-    AppMethodBeat.o(206022);
+    localObject = c.Rx((String)localObject);
+    AppMethodBeat.o(211049);
     return localObject;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(206019);
+    AppMethodBeat.i(211046);
     this.uri = null;
     try
     {
@@ -294,7 +294,7 @@ public final class a
     catch (IOException localIOException)
     {
       a locala = new a(localIOException);
-      AppMethodBeat.o(206019);
+      AppMethodBeat.o(211046);
       throw locala;
     }
     finally
@@ -303,39 +303,39 @@ public final class a
       if (this.opened)
       {
         this.opened = false;
-        if (this.lmH != null) {
-          this.lmH.onTransferEnd();
+        if (this.lrh != null) {
+          this.lrh.onTransferEnd();
         }
       }
-      AppMethodBeat.o(206019);
+      AppMethodBeat.o(211046);
     }
-    AppMethodBeat.o(206019);
+    AppMethodBeat.o(211046);
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(206021);
+    AppMethodBeat.i(211048);
     if (this.uri != null)
     {
       String str = this.uri.toString();
-      AppMethodBeat.o(206021);
+      AppMethodBeat.o(211048);
       return str;
     }
-    AppMethodBeat.o(206021);
+    AppMethodBeat.o(211048);
     return null;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206020);
+    AppMethodBeat.i(211047);
     if (paramInt2 == 0)
     {
-      AppMethodBeat.o(206020);
+      AppMethodBeat.o(211047);
       return 0;
     }
     if (this.bEH == 0L)
     {
-      AppMethodBeat.o(206020);
+      AppMethodBeat.o(211047);
       return -1;
     }
     try
@@ -351,17 +351,17 @@ public final class a
           break;
         }
         paramArrayOfByte = new a(new EOFException());
-        AppMethodBeat.o(206020);
+        AppMethodBeat.o(211047);
         throw paramArrayOfByte;
         long l = Math.min(this.bEH, paramInt2);
         paramInt2 = (int)l;
       }
-      AppMethodBeat.o(206020);
+      AppMethodBeat.o(211047);
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new a(paramArrayOfByte);
-      AppMethodBeat.o(206020);
+      AppMethodBeat.o(211047);
       throw paramArrayOfByte;
     }
     return -1;
@@ -369,10 +369,10 @@ public final class a
     if (this.bEH != -1L) {
       this.bEH -= paramInt1;
     }
-    if (this.lmH != null) {
-      this.lmH.tv(paramInt1);
+    if (this.lrh != null) {
+      this.lrh.tz(paramInt1);
     }
-    AppMethodBeat.o(206020);
+    AppMethodBeat.o(211047);
     return paramInt1;
   }
   

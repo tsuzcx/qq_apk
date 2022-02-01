@@ -10,10 +10,10 @@ import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
   extends b
@@ -31,55 +31,55 @@ public final class d
     {
       paramViewGroup = new a();
       paramView = a(View.inflate((Context)localObject, 2131493956, null), paramViewGroup, paramg);
-      paramViewGroup.lZa = ((ImageView)paramView.findViewById(2131299794));
-      paramViewGroup.iVq = ((TextView)paramView.findViewById(2131299848));
-      paramViewGroup.iCV = ((TextView)paramView.findViewById(2131299781));
+      paramViewGroup.mdt = ((ImageView)paramView.findViewById(2131299794));
+      paramViewGroup.iYj = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.iFO = ((TextView)paramView.findViewById(2131299781));
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
-      ajn localajn = com.tencent.mm.plugin.fav.a.b.c(paramg);
+      ajx localajx = com.tencent.mm.plugin.fav.a.b.c(paramg);
       String str = paramg.field_favProto.title;
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
         localObject = str;
-        if (paramg.rsm)
+        if (paramg.rAz)
         {
           localObject = str;
-          if (localajn == null) {}
+          if (localajx == null) {}
         }
       }
       else
       {
-        localObject = localajn.title;
+        localObject = localajx.title;
       }
-      paramViewGroup.iVq.setText((CharSequence)localObject);
-      paramViewGroup.iCV.setText(com.tencent.mm.plugin.fav.a.b.ba((float)localajn.Ghm));
-      if (localajn.GhZ == 2) {
-        paramViewGroup.iCV.setText(">" + ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimitInMB(true) + "MB");
+      paramViewGroup.iYj.setText((CharSequence)localObject);
+      paramViewGroup.iFO.setText(com.tencent.mm.plugin.fav.a.b.ba((float)localajx.GzV));
+      if (localajx.GAI == 2) {
+        paramViewGroup.iFO.setText(">" + ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimitInMB(true) + "MB");
       }
-      paramViewGroup.lZa.setImageResource(e.agG(localajn.Ghg));
+      paramViewGroup.mdt.setImageResource(e.ahD(localajx.GzP));
       AppMethodBeat.o(107452);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
     }
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
     AppMethodBeat.i(107453);
-    com.tencent.mm.plugin.fav.a.g localg = ((a)paramView.getTag()).rtA;
+    com.tencent.mm.plugin.fav.a.g localg = ((a)paramView.getTag()).rBM;
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, localg, paramakf);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, localg, paramakp);
     AppMethodBeat.o(107453);
   }
   
   public static final class a
     extends b.b
   {
-    TextView iCV;
-    TextView iVq;
-    ImageView lZa;
+    TextView iFO;
+    TextView iYj;
+    ImageView mdt;
   }
 }
 

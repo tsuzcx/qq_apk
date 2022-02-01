@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bpk;
-import com.tencent.mm.protocal.protobuf.bpl;
-import com.tencent.mm.protocal.protobuf.dui;
-import com.tencent.mm.protocal.protobuf.duj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bqc;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.protocal.protobuf.dvf;
+import com.tencent.mm.protocal.protobuf.dvg;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class m
   extends w
 {
   private f callback;
-  public String dok;
+  public String dpp;
   public int errCode;
   private b rr;
   
-  public m(int paramInt1, int paramInt2, String paramString, bpl parambpl, bpk parambpk)
+  public m(int paramInt1, int paramInt2, String paramString, bqd parambqd, bqc parambqc)
   {
     AppMethodBeat.i(71827);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dui();
-    ((b.a)localObject).hNN = new duj();
+    ((b.a)localObject).hQF = new dvf();
+    ((b.a)localObject).hQG = new dvg();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/boss/verifyandroidiappackage";
     ((b.a)localObject).funcId = 1306;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dui)this.rr.hNK.hNQ;
-    ((dui)localObject).GuG = paramInt1;
-    ((dui)localObject).dBZ = paramInt2;
-    this.dok = paramString;
-    ((dui)localObject).GuM = parambpl;
-    ((dui)localObject).GuL = parambpk;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dvf)this.rr.hQD.hQJ;
+    ((dvf)localObject).GOf = paramInt1;
+    ((dvf)localObject).dDe = paramInt2;
+    this.dpp = paramString;
+    ((dvf)localObject).GOl = parambqd;
+    ((dvf)localObject).GOk = parambqc;
     AppMethodBeat.o(71827);
   }
   
@@ -60,16 +60,16 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71828);
-    ad.e("MicroMsg.NetSceneVerifyAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
+    ae.e("MicroMsg.NetSceneVerifyAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(71828);
       return;
     }
-    paramq = (duj)this.rr.hNL.hNQ;
-    ad.e("MicroMsg.NetSceneVerifyAndroidIapPackage", "business: errCode:" + paramq.dvY + ",errMsg:" + paramq.dvZ);
-    paramInt1 = paramq.dvY;
+    paramq = (dvg)this.rr.hQE.hQJ;
+    ae.e("MicroMsg.NetSceneVerifyAndroidIapPackage", "business: errCode:" + paramq.dxd + ",errMsg:" + paramq.dxe);
+    paramInt1 = paramq.dxd;
     this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
     AppMethodBeat.o(71828);
   }

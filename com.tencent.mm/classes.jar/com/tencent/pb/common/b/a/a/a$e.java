@@ -7,20 +7,20 @@ import com.google.b.a.g;
 public final class a$e
   extends e
 {
-  public int CcE = 0;
-  public long CcF = 0L;
-  public int LFT = 0;
-  public a.aw LFX = null;
-  public a.bd LFZ = null;
-  public int LGb = 0;
-  public String[] LGe = g.EMPTY_STRING_ARRAY;
-  public a.n[] LGf = a.n.fSW();
-  public int LGg = 0;
-  public a.t LGh = null;
-  public int LGi = 0;
+  public int Cuf = 0;
+  public long Cug = 0L;
+  public int McX = 0;
+  public a.aw Mdb = null;
+  public a.bd Mdd = null;
+  public int Mdf = 0;
+  public String[] Mdi = g.EMPTY_STRING_ARRAY;
+  public a.n[] Mdj = a.n.fXw();
+  public int Mdk = 0;
+  public a.t Mdl = null;
+  public int Mdm = 0;
   public String groupId = "";
   public int netType = 0;
-  public int vug = 0;
+  public int vGk = 0;
   
   public a$e()
   {
@@ -33,64 +33,64 @@ public final class a$e
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.CcE != 0) {
-      paramb.bx(2, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(2, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(3, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(3, this.Cug);
     }
-    if (this.LFZ != null) {
-      paramb.a(4, this.LFZ);
+    if (this.Mdd != null) {
+      paramb.a(4, this.Mdd);
     }
-    if (this.vug != 0) {
-      paramb.bx(5, this.vug);
+    if (this.vGk != 0) {
+      paramb.bx(5, this.vGk);
     }
-    if (this.LGb != 0) {
-      paramb.by(6, this.LGb);
+    if (this.Mdf != 0) {
+      paramb.by(6, this.Mdf);
     }
-    if (this.LFT != 0) {
-      paramb.bx(7, this.LFT);
+    if (this.McX != 0) {
+      paramb.bx(7, this.McX);
     }
     if (this.netType != 0) {
       paramb.by(8, this.netType);
     }
-    if (this.LFX != null) {
-      paramb.a(200, this.LFX);
+    if (this.Mdb != null) {
+      paramb.a(200, this.Mdb);
     }
     int i;
     Object localObject;
-    if ((this.LGe != null) && (this.LGe.length > 0))
+    if ((this.Mdi != null) && (this.Mdi.length > 0))
     {
       i = 0;
-      while (i < this.LGe.length)
+      while (i < this.Mdi.length)
       {
-        localObject = this.LGe[i];
+        localObject = this.Mdi[i];
         if (localObject != null) {
           paramb.d(201, (String)localObject);
         }
         i += 1;
       }
     }
-    if ((this.LGf != null) && (this.LGf.length > 0))
+    if ((this.Mdj != null) && (this.Mdj.length > 0))
     {
       i = j;
-      while (i < this.LGf.length)
+      while (i < this.Mdj.length)
       {
-        localObject = this.LGf[i];
+        localObject = this.Mdj[i];
         if (localObject != null) {
           paramb.a(202, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.LGh != null) {
-      paramb.a(203, this.LGh);
+    if (this.Mdl != null) {
+      paramb.a(203, this.Mdl);
     }
-    if (this.LGi != 0) {
-      paramb.by(204, this.LGi);
+    if (this.Mdm != 0) {
+      paramb.by(204, this.Mdm);
     }
-    if (this.LGg != 0) {
-      paramb.by(240, this.LGg);
+    if (this.Mdk != 0) {
+      paramb.by(240, this.Mdk);
     }
     super.a(paramb);
   }
@@ -104,50 +104,50 @@ public final class a$e
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.CcE != 0) {
-      j = i + b.bz(2, this.CcE);
+    if (this.Cuf != 0) {
+      j = i + b.bz(2, this.Cuf);
     }
     i = j;
-    if (this.CcF != 0L) {
-      i = j + b.p(3, this.CcF);
+    if (this.Cug != 0L) {
+      i = j + b.p(3, this.Cug);
     }
     j = i;
-    if (this.LFZ != null) {
-      j = i + b.b(4, this.LFZ);
+    if (this.Mdd != null) {
+      j = i + b.b(4, this.Mdd);
     }
     i = j;
-    if (this.vug != 0) {
-      i = j + b.bz(5, this.vug);
+    if (this.vGk != 0) {
+      i = j + b.bz(5, this.vGk);
     }
     j = i;
-    if (this.LGb != 0) {
-      j = i + b.bA(6, this.LGb);
+    if (this.Mdf != 0) {
+      j = i + b.bA(6, this.Mdf);
     }
     i = j;
-    if (this.LFT != 0) {
-      i = j + b.bz(7, this.LFT);
+    if (this.McX != 0) {
+      i = j + b.bz(7, this.McX);
     }
     int k = i;
     if (this.netType != 0) {
       k = i + b.bA(8, this.netType);
     }
     j = k;
-    if (this.LFX != null) {
-      j = k + b.b(200, this.LFX);
+    if (this.Mdb != null) {
+      j = k + b.b(200, this.Mdb);
     }
     i = j;
     Object localObject;
-    if (this.LGe != null)
+    if (this.Mdi != null)
     {
       i = j;
-      if (this.LGe.length > 0)
+      if (this.Mdi.length > 0)
       {
         i = 0;
         k = 0;
         int n;
-        for (int m = 0; i < this.LGe.length; m = n)
+        for (int m = 0; i < this.Mdi.length; m = n)
         {
-          localObject = this.LGe[i];
+          localObject = this.Mdi[i];
           int i1 = k;
           n = m;
           if (localObject != null)
@@ -162,19 +162,19 @@ public final class a$e
       }
     }
     j = i;
-    if (this.LGf != null)
+    if (this.Mdj != null)
     {
       j = i;
-      if (this.LGf.length > 0)
+      if (this.Mdj.length > 0)
       {
         k = i2;
         for (;;)
         {
           j = i;
-          if (k >= this.LGf.length) {
+          if (k >= this.Mdj.length) {
             break;
           }
-          localObject = this.LGf[k];
+          localObject = this.Mdj[k];
           j = i;
           if (localObject != null) {
             j = i + b.b(202, (e)localObject);
@@ -185,16 +185,16 @@ public final class a$e
       }
     }
     i = j;
-    if (this.LGh != null) {
-      i = j + b.b(203, this.LGh);
+    if (this.Mdl != null) {
+      i = j + b.b(203, this.Mdl);
     }
     j = i;
-    if (this.LGi != 0) {
-      j = i + b.bA(204, this.LGi);
+    if (this.Mdm != 0) {
+      j = i + b.bA(204, this.Mdm);
     }
     i = j;
-    if (this.LGg != 0) {
-      i = j + b.bA(240, this.LGg);
+    if (this.Mdk != 0) {
+      i = j + b.bA(240, this.Mdk);
     }
     return i;
   }

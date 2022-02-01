@@ -12,34 +12,34 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class CustomFitTextView
   extends TextView
 {
-  private String KEU;
-  private Rect KEV;
-  private LinkedList<String> KEW;
-  public int KEX;
-  private Drawable KEY;
-  public boolean KEZ;
-  private int KFa;
+  private String Lbo;
+  private Rect Lbp;
+  private LinkedList<String> Lbq;
+  public int Lbr;
+  private Drawable Lbs;
+  public boolean Lbt;
+  private int Lbu;
   private Paint bWm;
-  private boolean juJ;
+  private boolean jxE;
   public int maxLines;
   
   public CustomFitTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143056);
-    this.KEV = new Rect();
-    this.KEW = new LinkedList();
-    this.juJ = true;
-    this.KFa = 0;
+    this.Lbp = new Rect();
+    this.Lbq = new LinkedList();
+    this.jxE = true;
+    this.Lbu = 0;
     AppMethodBeat.o(143056);
   }
   
@@ -47,24 +47,24 @@ public class CustomFitTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143057);
-    this.KEV = new Rect();
-    this.KEW = new LinkedList();
-    this.juJ = true;
-    this.KFa = 0;
+    this.Lbp = new Rect();
+    this.Lbq = new LinkedList();
+    this.jxE = true;
+    this.Lbu = 0;
     AppMethodBeat.o(143057);
   }
   
   private void appendText(String paramString)
   {
     AppMethodBeat.i(143061);
-    if (this.KEW != null)
+    if (this.Lbq != null)
     {
       if ((paramString == null) || ("".equals(paramString)))
       {
         AppMethodBeat.o(143061);
         return;
       }
-      this.KEW.add(paramString);
+      this.Lbq.add(paramString);
     }
     AppMethodBeat.o(143061);
   }
@@ -97,7 +97,7 @@ public class CustomFitTextView
     }
     paramInt2 = Math.min(j, i) - 1;
     paramInt1 = paramInt2;
-    while ((paramInt1 >= 0) && (bt.F(paramString.charAt(paramInt1)))) {
+    while ((paramInt1 >= 0) && (bu.F(paramString.charAt(paramInt1)))) {
       paramInt1 -= 1;
     }
     if ((paramInt1 < 0) || (paramInt1 == paramInt2))
@@ -109,36 +109,36 @@ public class CustomFitTextView
     return paramInt1 + 1;
   }
   
-  private int fKu()
+  private int fOL()
   {
     AppMethodBeat.i(143059);
     Paint.FontMetrics localFontMetrics = getPaint().getFontMetrics();
-    float f1 = this.KEW.size();
+    float f1 = this.Lbq.size();
     float f2 = localFontMetrics.bottom;
     float f3 = localFontMetrics.top;
     int i = (int)((localFontMetrics.leading + (f2 - f3)) * f1 + getPaddingTop() + getPaddingBottom());
-    int j = Math.max(0, this.KEW.size() - 1);
-    int k = this.KFa;
+    int j = Math.max(0, this.Lbq.size() - 1);
+    int k = this.Lbu;
     AppMethodBeat.o(143059);
     return i + j * k;
   }
   
-  private boolean gI(String paramString, int paramInt)
+  private boolean gR(String paramString, int paramInt)
   {
     AppMethodBeat.i(143060);
     int k;
     int n;
     int i1;
     int i;
-    if ((this.juJ) && (paramInt > 0) && (paramString != null) && (!"".equals(paramString)))
+    if ((this.jxE) && (paramInt > 0) && (paramString != null) && (!"".equals(paramString)))
     {
-      this.KEW.clear();
+      this.Lbq.clear();
       k = 0;
       n = paramString.length();
       i1 = paramInt - getPaddingLeft() - getPaddingRight();
-      if (this.KEZ)
+      if (this.Lbt)
       {
-        paramInt = this.KEY.getIntrinsicWidth();
+        paramInt = this.Lbs.getIntrinsicWidth();
         float f = getPaint().measureText(paramString, 0, n);
         f = paramInt + f;
         i = this.maxLines;
@@ -168,7 +168,7 @@ public class CustomFitTextView
         appendText(paramString.substring(k, m).trim());
         if (m >= n)
         {
-          ad.w("MicroMsg.CustomFitTextView", "not match last line, but match text length end");
+          ae.w("MicroMsg.CustomFitTextView", "not match last line, but match text length end");
           AppMethodBeat.o(143060);
           return true;
           AppMethodBeat.o(143060);
@@ -183,41 +183,41 @@ public class CustomFitTextView
   {
     AppMethodBeat.i(143058);
     this.maxLines = paramInt1;
-    this.KEU = paramString;
-    if (this.KEU == null)
+    this.Lbo = paramString;
+    if (this.Lbo == null)
     {
-      ad.w("MicroMsg.CustomFitTextView", "ori text is null");
-      this.KEU = "";
+      ae.w("MicroMsg.CustomFitTextView", "ori text is null");
+      this.Lbo = "";
     }
     if (this.maxLines <= 0)
     {
-      ad.w("MicroMsg.CustomFitTextView", "maxLines is invalid");
+      ae.w("MicroMsg.CustomFitTextView", "maxLines is invalid");
       this.maxLines = 2;
     }
-    this.KFa = getResources().getDimensionPixelSize(2131165187);
-    this.KEZ = paramBoolean;
-    this.KEX = paramInt2;
-    if (this.KEZ) {
-      this.KEY = getResources().getDrawable(this.KEX);
+    this.Lbu = getResources().getDimensionPixelSize(2131165187);
+    this.Lbt = paramBoolean;
+    this.Lbr = paramInt2;
+    if (this.Lbt) {
+      this.Lbs = getResources().getDrawable(this.Lbr);
     }
     this.bWm = new Paint();
     this.bWm.set(getPaint());
     this.bWm.setAntiAlias(true);
     this.bWm.setColor(paramInt3);
-    gI(this.KEU, getWidth());
-    setHeight(Math.max(fKu(), a.fromDPToPix(getContext(), 32)));
+    gR(this.Lbo, getWidth());
+    setHeight(Math.max(fOL(), a.fromDPToPix(getContext(), 32)));
     AppMethodBeat.o(143058);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(143063);
-    if (!this.juJ)
+    if (!this.jxE)
     {
       AppMethodBeat.o(143063);
       return;
     }
-    if ((this.KEU == null) || ("".equals(this.KEU)) || (this.KEW.size() == 0))
+    if ((this.Lbo == null) || ("".equals(this.Lbo)) || (this.Lbq.size() == 0))
     {
       AppMethodBeat.o(143063);
       return;
@@ -226,22 +226,22 @@ public class CustomFitTextView
     float f2 = localFontMetrics.descent - localFontMetrics.ascent;
     float f3 = getPaddingLeft();
     float f1 = getPaddingTop();
-    Iterator localIterator = this.KEW.iterator();
+    Iterator localIterator = this.Lbq.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       f1 = localFontMetrics.leading + f2 + f1;
       paramCanvas.drawText(str, f3, f1, this.bWm);
     }
-    if (this.KEZ)
+    if (this.Lbt)
     {
-      getPaint().getTextBounds((String)this.KEW.getLast(), 0, ((String)this.KEW.getLast()).length(), this.KEV);
-      int i = getPaddingLeft() + this.KEV.right;
-      int j = this.KEY.getIntrinsicWidth();
+      getPaint().getTextBounds((String)this.Lbq.getLast(), 0, ((String)this.Lbq.getLast()).length(), this.Lbp);
+      int i = getPaddingLeft() + this.Lbp.right;
+      int j = this.Lbs.getIntrinsicWidth();
       int k = (int)(f1 - f2 - localFontMetrics.leading);
-      int m = this.KEY.getIntrinsicHeight();
-      this.KEY.setBounds(i, k, j + i, m + k);
-      this.KEY.draw(paramCanvas);
+      int m = this.Lbs.getIntrinsicHeight();
+      this.Lbs.setBounds(i, k, j + i, m + k);
+      this.Lbs.draw(paramCanvas);
     }
     AppMethodBeat.o(143063);
   }
@@ -253,8 +253,8 @@ public class CustomFitTextView
     int i = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = a.fromDPToPix(getContext(), 32);
     paramInt1 = paramInt2;
-    if (gI(this.KEU, i)) {
-      paramInt1 = Math.max(fKu(), paramInt2);
+    if (gR(this.Lbo, i)) {
+      paramInt1 = Math.max(fOL(), paramInt2);
     }
     setMeasuredDimension(i, paramInt1);
     AppMethodBeat.o(143065);
@@ -266,9 +266,9 @@ public class CustomFitTextView
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.juJ = bool;
-      if (this.juJ) {
-        gI(this.KEU, paramInt1);
+      this.jxE = bool;
+      if (this.jxE) {
+        gR(this.Lbo, paramInt1);
       }
       AppMethodBeat.o(143064);
       return;
@@ -277,7 +277,7 @@ public class CustomFitTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CustomFitTextView
  * JD-Core Version:    0.7.0.1
  */

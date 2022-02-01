@@ -8,7 +8,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class bc
@@ -19,7 +19,7 @@ public class bc
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78623);
-    ad.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
+    ae.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
     boolean bool = paramb.chh.cgn.optBoolean("switch");
     String str1 = paramb.chh.cgn.optString("title_cn");
     String str2 = paramb.chh.cgn.optString("title_eng");
@@ -27,7 +27,7 @@ public class bc
     String str4 = paramb.chh.cgn.optString("ok_eng");
     String str5 = paramb.chh.cgn.optString("cancel_cn");
     String str6 = paramb.chh.cgn.optString("cancel_eng");
-    m localm = ((g)paramb.chg).ePe();
+    m localm = ((g)paramb.chg).eSQ();
     if (localm == null)
     {
       AppMethodBeat.o(78623);
@@ -46,7 +46,7 @@ public class bc
     AppMethodBeat.o(78623);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

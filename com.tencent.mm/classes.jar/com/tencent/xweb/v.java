@@ -2,7 +2,7 @@ package com.tencent.xweb;
 
 public abstract interface v
 {
-  public abstract void bph();
+  public abstract void bpR();
   
   public abstract void onVideoEnded();
   
@@ -28,7 +28,7 @@ public abstract interface v
   
   public abstract void onVideoWaiting();
   
-  public abstract boolean tG(int paramInt);
+  public abstract boolean tL(int paramInt);
 }
 
 

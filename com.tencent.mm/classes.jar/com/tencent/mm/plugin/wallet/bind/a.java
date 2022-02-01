@@ -3,13 +3,15 @@ package com.tencent.mm.plugin.wallet.bind;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.nn;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.no;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
+import com.tencent.mm.plugin.wallet_core.c.ad;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -24,7 +26,7 @@ public class a
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        private String dlu = null;
+        private String dmw = null;
         
         public final CharSequence getTips(int paramAnonymousInt)
         {
@@ -48,9 +50,9 @@ public class a
           {
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
-              a.this.dxT.putInt("key_process_result_code", -1);
+              a.this.dyY.putInt("key_process_result_code", -1);
               if (a.this.c(this.activity, null)) {
-                this.LyU.a(new com.tencent.mm.plugin.wallet_core.c.ad(this.dlu, 14), true, 1);
+                this.LVJ.a(new ad(this.dmw, 14), true, 1);
               }
               for (;;)
               {
@@ -63,21 +65,21 @@ public class a
                 this.activity.finish();
               }
             }
-            a.this.dxT.putInt("key_process_result_code", 1);
+            a.this.dyY.putInt("key_process_result_code", 1);
           }
           AppMethodBeat.o(69051);
           return false;
         }
         
-        public final boolean s(Object... paramAnonymousVarArgs)
+        public final boolean r(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69053);
           Object localObject = (Bankcard)a.d(a.this).getParcelable("key_bankcard");
           String str1 = (String)paramAnonymousVarArgs[0];
-          this.dlu = ((String)paramAnonymousVarArgs[1]);
+          this.dmw = ((String)paramAnonymousVarArgs[1]);
           if (localObject != null)
           {
-            paramAnonymousVarArgs = this.LyU;
+            paramAnonymousVarArgs = this.LVJ;
             String str2 = ((Bankcard)localObject).field_bankcardType;
             localObject = ((Bankcard)localObject).field_bindSerial;
             if (a.e(a.this).getInt("scene", -1) == 2) {}
@@ -88,7 +90,7 @@ public class a
               return true;
             }
           }
-          a.this.dxT.putInt("key_process_result_code", 1);
+          a.this.dyY.putInt("key_process_result_code", 1);
           AppMethodBeat.o(69053);
           return false;
         }
@@ -99,7 +101,7 @@ public class a
           Object localObject = (Bankcard)a.a(a.this).getParcelable("key_bankcard");
           if ((localObject != null) && (((Bankcard)localObject).field_bankcardState == 1))
           {
-            paramAnonymousVarArgs = this.LyU;
+            paramAnonymousVarArgs = this.LVJ;
             String str = ((Bankcard)localObject).field_bankcardType;
             localObject = ((Bankcard)localObject).field_bindSerial;
             if (a.b(a.this).getInt("scene", -1) == 2) {}
@@ -111,7 +113,7 @@ public class a
               return true;
             }
           }
-          a.this.dxT.putInt("key_process_result_code", 1);
+          a.this.dyY.putInt("key_process_result_code", 1);
           boolean bool = super.z(paramAnonymousVarArgs);
           AppMethodBeat.o(69052);
           return bool;
@@ -128,7 +130,7 @@ public class a
   public final com.tencent.mm.wallet_core.d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69055);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ProcessManager", "start Process : UnbindProcess");
+    ae.d("MicroMsg.ProcessManager", "start Process : UnbindProcess");
     if (paramBundle.getBoolean("key_is_show_detail", true)) {
       d(paramActivity, paramBundle);
     }
@@ -158,27 +160,27 @@ public class a
   public void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69059);
-    if (this.dxT.getInt("scene", -1) == 1)
+    if (this.dyY.getInt("scene", -1) == 1)
     {
       int i = paramBundle.getInt("key_process_result_code", 0);
       a(paramActivity, "wallet", ".bind.ui.WalletUnbindBankCardProxyUI", i, false);
       if (i == -1)
       {
-        paramActivity = new nn();
-        paramActivity.dBA.scene = 2;
-        com.tencent.mm.sdk.b.a.IbL.l(paramActivity);
+        paramActivity = new no();
+        paramActivity.dCF.scene = 2;
+        com.tencent.mm.sdk.b.a.IvT.l(paramActivity);
       }
       AppMethodBeat.o(69059);
       return;
     }
-    if (this.dxT.getInt("scene", -1) == 2)
+    if (this.dyY.getInt("scene", -1) == 2)
     {
       e(paramActivity, "wallet", ".balance.ui.WalletBalanceManagerUI");
       AppMethodBeat.o(69059);
       return;
     }
-    boolean bool = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qzF, false);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ProcessManager", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qGM, false);
+    ae.i("MicroMsg.ProcessManager", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
       e(paramActivity, "mall", ".ui.MallIndexUIv2");
@@ -194,7 +196,7 @@ public class a
     return (paramActivity instanceof WalletCheckPwdUI);
   }
   
-  public final String cQc()
+  public final String cSH()
   {
     return "UnbindProcess";
   }
@@ -209,13 +211,13 @@ public class a
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69058);
-    Q(paramActivity);
+    R(paramActivity);
     AppMethodBeat.o(69058);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.a.a;
+import com.tencent.mm.cm.a.a;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.ae;
-import com.tencent.mm.model.bb;
-import com.tencent.mm.model.bb.a;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.model.af;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.bd.a;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
 import com.tencent.mm.protocal.x.b;
@@ -16,30 +16,30 @@ public class PluginAuth
   extends f
   implements com.tencent.mm.plugin.auth.a.b
 {
-  private static int tGP = -1;
-  private final a tGO;
+  private static int owp = -1;
+  private final a omU;
   
   public PluginAuth()
   {
     AppMethodBeat.i(134223);
-    this.tGO = new a((byte)0);
+    this.omU = new a((byte)0);
     AppMethodBeat.o(134223);
   }
   
   public static int getUserInfoPluginSwitch()
   {
-    return tGP;
+    return owp;
   }
   
   public static void setUserInfoPluginSwitch(int paramInt)
   {
-    tGP = paramInt;
+    owp = paramInt;
   }
   
   public com.tencent.mm.vending.b.b addHandleAuthResponse(com.tencent.mm.plugin.auth.a.a parama)
   {
     AppMethodBeat.i(134227);
-    parama = this.tGO.bu(parama);
+    parama = this.omU.bu(parama);
     AppMethodBeat.o(134227);
     return parama;
   }
@@ -47,12 +47,12 @@ public class PluginAuth
   public void configure(g paramg)
   {
     AppMethodBeat.i(134226);
-    bb.a(new bb.a()
+    bd.a(new bd.a()
     {
       public final void a(j.h paramAnonymoush, j.i paramAnonymousi)
       {
         AppMethodBeat.i(134218);
-        ae.a(paramAnonymousi.FnN, true);
+        af.a(paramAnonymousi.FGl, true);
         PluginAuth.this.getHandleAuthResponseCallbacks().a(paramAnonymoush, paramAnonymousi, true);
         AppMethodBeat.o(134218);
       }
@@ -63,7 +63,7 @@ public class PluginAuth
   public void dependency()
   {
     AppMethodBeat.i(134225);
-    dependsOn(r.class);
+    dependsOn(s.class);
     AppMethodBeat.o(134225);
   }
   
@@ -71,7 +71,7 @@ public class PluginAuth
   
   public com.tencent.mm.plugin.auth.a.a getHandleAuthResponseCallbacks()
   {
-    return this.tGO;
+    return this.omU;
   }
   
   public void installed()
@@ -87,7 +87,7 @@ public class PluginAuth
   }
   
   static final class a
-    extends com.tencent.mm.cn.a<com.tencent.mm.plugin.auth.a.a>
+    extends com.tencent.mm.cm.a<com.tencent.mm.plugin.auth.a.a>
     implements com.tencent.mm.plugin.auth.a.a
   {
     public final void a(final j.h paramh, final j.i parami, final boolean paramBoolean)
@@ -107,7 +107,7 @@ public class PluginAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.auth.PluginAuth
  * JD-Core Version:    0.7.0.1
  */

@@ -18,11 +18,11 @@ import org.xwalk.core.XWalkInitializer;
 public final class j
   implements w.a
 {
-  private String MxM = "";
-  private i MxN = null;
-  private k MxO = null;
+  private String MUQ = "";
+  private i MUR = null;
+  private k MUS = null;
   
-  public static void Fp(long paramLong)
+  public static void FR(long paramLong)
   {
     AppMethodBeat.i(154509);
     Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -38,7 +38,7 @@ public final class j
     AppMethodBeat.o(154509);
   }
   
-  public static boolean gdp()
+  public static boolean ghR()
   {
     AppMethodBeat.i(154510);
     Object localObject1 = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -90,13 +90,13 @@ public final class j
         Object localObject2 = null;
       }
       XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "plugin update process pid invalid, clear");
-      gdq();
+      ghS();
       AppMethodBeat.o(154510);
     }
     return false;
   }
   
-  public static void gdq()
+  public static void ghS()
   {
     AppMethodBeat.i(154511);
     Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -115,37 +115,37 @@ public final class j
   public final void a(Context paramContext, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(154508);
-    this.MxO = new k();
-    this.MxO.a(paramHashMap, this.MxM, this.MxN);
-    this.MxO.execute(new String[0]);
-    this.MxM = "";
-    this.MxN = null;
+    this.MUS = new k();
+    this.MUS.a(paramHashMap, this.MUQ, this.MUR);
+    this.MUS.execute(new String[0]);
+    this.MUQ = "";
+    this.MUR = null;
     AppMethodBeat.o(154508);
   }
   
   public final void a(String paramString, i parami)
   {
-    this.MxM = paramString;
-    this.MxN = parami;
+    this.MUQ = paramString;
+    this.MUR = parami;
   }
   
-  public final void gaL()
+  public final void gfn()
   {
-    AppMethodBeat.i(195587);
-    if (this.MxO != null) {
-      this.MxO.b(4, -1, null);
+    AppMethodBeat.i(207608);
+    if (this.MUS != null) {
+      this.MUS.b(4, -1, null);
     }
-    AppMethodBeat.o(195587);
+    AppMethodBeat.o(207608);
   }
   
   public final boolean isBusy()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.MxO != null)
+    if (this.MUS != null)
     {
       bool1 = bool2;
-      if (!this.MxO.MxX) {
+      if (!this.MUS.MVb) {
         bool1 = true;
       }
     }

@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cha;
+import com.tencent.mm.protocal.protobuf.cjd;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class xl
   extends b
 {
-  public a dLN;
+  public a dMT;
   
   public xl()
   {
@@ -17,22 +16,21 @@ public final class xl
   
   private xl(byte paramByte)
   {
-    AppMethodBeat.i(149893);
-    this.dLN = new a();
-    this.IbR = false;
+    AppMethodBeat.i(134107);
+    this.dMT = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149893);
+    AppMethodBeat.o(134107);
   }
   
   public static final class a
   {
-    public List<cha> dLO;
-    public int dnF = -1;
+    public cjd dMU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xl
  * JD-Core Version:    0.7.0.1
  */

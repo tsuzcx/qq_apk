@@ -8,13 +8,13 @@ public class Utils
 {
   public static boolean isRectValid(CGRect paramCGRect)
   {
-    AppMethodBeat.i(219990);
+    AppMethodBeat.i(201021);
     if ((paramCGRect != null) && (isSizeValid(paramCGRect.size)))
     {
-      AppMethodBeat.o(219990);
+      AppMethodBeat.o(201021);
       return true;
     }
-    AppMethodBeat.o(219990);
+    AppMethodBeat.o(201021);
     return false;
   }
   

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bhz;
-import com.tencent.mm.protocal.protobuf.bia;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.biq;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends n
   implements k
 {
   private f callback;
-  public bia jhR;
-  private com.tencent.mm.al.b rr;
+  public biq jkK;
+  private com.tencent.mm.ak.b rr;
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(125515);
     b.a locala = new b.a();
-    locala.hNM = new bhz();
-    locala.hNN = new bia();
+    locala.hQF = new bip();
+    locala.hQG = new biq();
     locala.uri = "/cgi-bin/micromsg-bin/getsafetyinfo";
     locala.funcId = 850;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(125515);
@@ -46,9 +46,9 @@ public final class b
   {
     AppMethodBeat.i(125514);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.NetSceneGetSafetyInfo", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ae.e("MicroMsg.NetSceneGetSafetyInfo", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
-    this.jhR = ((bia)((com.tencent.mm.al.b)paramq).hNL.hNQ);
+    this.jkK = ((biq)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125514);
   }

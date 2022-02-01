@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.c.a;
-import com.tencent.mm.protocal.protobuf.buj;
-import com.tencent.mm.protocal.protobuf.buk;
-import com.tencent.mm.protocal.protobuf.bul;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bvd;
+import com.tencent.mm.protocal.protobuf.bve;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ar.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,22 +38,22 @@ public final class aj
     AppMethodBeat.i(131132);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new buk();
-    ((b.a)localObject).hNN = new bul();
+    ((b.a)localObject).hQF = new bve();
+    ((b.a)localObject).hQG = new bvf();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/listmfriend";
     ((b.a)localObject).funcId = 431;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (buk)this.rr.hNK.hNQ;
-    ((buk)localObject).xbo = paramString;
-    ((buk)localObject).GOv = 0;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bve)this.rr.hQD.hQJ;
+    ((bve)localObject).xrf = paramString;
+    ((bve)localObject).HhV = 0;
     if (paramList == null) {}
     for (;;)
     {
-      ((buk)localObject).GOt = i;
-      ((buk)localObject).GOw = new LinkedList();
-      ((buk)localObject).GOu = new LinkedList();
+      ((bve)localObject).HhT = i;
+      ((bve)localObject).HhW = new LinkedList();
+      ((bve)localObject).HhU = new LinkedList();
       if (paramList == null) {
         break;
       }
@@ -61,8 +61,8 @@ public final class aj
       while (paramString.hasNext())
       {
         paramList = (String[])paramString.next();
-        if (!bt.isNullOrNil(paramList[2])) {
-          ((buk)localObject).GOu.add(new cwt().aPy(paramList[2]));
+        if (!bu.isNullOrNil(paramList[2])) {
+          ((bve)localObject).HhU.add(new cxn().aQV(paramList[2]));
         }
       }
       i = paramList.size();
@@ -70,20 +70,20 @@ public final class aj
     AppMethodBeat.o(131132);
   }
   
-  public final LinkedList<buj> aTg()
+  public final LinkedList<bvd> aTF()
   {
     AppMethodBeat.i(131134);
-    Object localObject = ((bul)this.rr.hNL.hNQ).GOx;
+    Object localObject = ((bvf)this.rr.hQE.hQJ).HhX;
     if (localObject != null)
     {
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        buj localbuj = (buj)((Iterator)localObject).next();
-        a.aVi().azR().lU(localbuj.nDo, localbuj.Guj);
+        bvd localbvd = (bvd)((Iterator)localObject).next();
+        a.aVH().aAh().mb(localbvd.nIJ, localbvd.GNI);
       }
     }
-    localObject = ((bul)this.rr.hNL.hNQ).GOx;
+    localObject = ((bvf)this.rr.hQE.hQJ).HhX;
     AppMethodBeat.o(131134);
     return localObject;
   }
@@ -105,29 +105,29 @@ public final class aj
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, final q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131135);
-    paramq = (bul)this.rr.hNL.hNQ;
-    com.tencent.mm.kernel.g.ajF().a(new aq.a()
+    paramq = (bvf)this.rr.hQE.hQJ;
+    com.tencent.mm.kernel.g.ajU().a(new ar.a()
     {
-      public final boolean aEm()
+      public final boolean aEC()
       {
         AppMethodBeat.i(131130);
-        if ((paramq != null) && (paramq.GOx.size() > 0))
+        if ((paramq != null) && (paramq.HhX.size() > 0))
         {
-          Iterator localIterator = paramq.GOx.iterator();
+          Iterator localIterator = paramq.HhX.iterator();
           while (localIterator.hasNext())
           {
-            buj localbuj = (buj)localIterator.next();
-            if (localbuj.nDG == 1)
+            bvd localbvd = (bvd)localIterator.next();
+            if (localbvd.nJb == 1)
             {
               i locali = new i();
-              locali.username = localbuj.nDo;
-              locali.hMX = localbuj.FVo;
-              locali.hMW = localbuj.FVp;
-              locali.dDp = -1;
-              ad.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEq(), locali.aEr() });
-              locali.ePj = 3;
-              locali.eB(true);
-              p.aEx().b(locali);
+              locali.username = localbvd.nIJ;
+              locali.hPQ = localbvd.GnN;
+              locali.hPP = localbvd.GnO;
+              locali.dEu = -1;
+              ae.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEG(), locali.aEH() });
+              locali.eQU = 3;
+              locali.eD(true);
+              p.aEN().b(locali);
             }
           }
         }
@@ -135,7 +135,7 @@ public final class aj
         return true;
       }
       
-      public final boolean aEn()
+      public final boolean aED()
       {
         return false;
       }

@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.a;
-import com.tencent.mm.al.n.b;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bb;
-import com.tencent.mm.model.bf.a;
-import com.tencent.mm.model.bf.b;
-import com.tencent.mm.modelsimple.l;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.a;
+import com.tencent.mm.ak.n.b;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.bh.a;
+import com.tencent.mm.model.bh.b;
+import com.tencent.mm.modelsimple.m;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.bkq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.bli;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public final class e
   extends n
   implements k
 {
   f callback;
-  String fPq;
-  private final q hON;
-  private int hOs;
+  String fRw;
+  private final q hRG;
+  private int hRl;
   
   public e(String paramString)
   {
     AppMethodBeat.i(29764);
-    this.fPq = "";
-    this.hOs = 2;
-    this.hON = new b();
-    bf.a locala = (bf.a)this.hON.getReqObj();
-    locala.hGs.nDo = paramString;
-    locala.hGs.GEW = 1;
-    ad.i("MicroMsg.NetSceneGetVoiceprintTicketRsa", "sceneType %d %s", new Object[] { Integer.valueOf(1), paramString });
+    this.fRw = "";
+    this.hRl = 2;
+    this.hRG = new b();
+    bh.a locala = (bh.a)this.hRG.getReqObj();
+    locala.hJk.nIJ = paramString;
+    locala.hJk.GYy = 1;
+    ae.i("MicroMsg.NetSceneGetVoiceprintTicketRsa", "sceneType %d %s", new Object[] { Integer.valueOf(1), paramString });
     AppMethodBeat.o(29764);
   }
   
@@ -44,7 +44,7 @@ public final class e
   {
     AppMethodBeat.i(29765);
     this.callback = paramf;
-    int i = dispatch(parame, this.hON, this);
+    int i = dispatch(parame, this.hRG, this);
     AppMethodBeat.o(29765);
     return i;
   }
@@ -57,21 +57,21 @@ public final class e
   public final void onGYNetEnd(final int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29766);
-    paramArrayOfByte = (bf.b)paramq.getRespObj();
-    this.fPq = paramArrayOfByte.hGt.GEX;
-    ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " mTicket: " + this.fPq);
+    paramArrayOfByte = (bh.b)paramq.getRespObj();
+    this.fRw = paramArrayOfByte.hJl.GYz;
+    ae.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " mTicket: " + this.fRw);
     if ((paramInt2 == 4) && (paramInt3 == -301))
     {
-      bb.a(true, paramArrayOfByte.hGt.FEd, paramArrayOfByte.hGt.FEe, paramArrayOfByte.hGt.FEc);
-      this.hOs -= 1;
-      if (this.hOs <= 0)
+      bd.a(true, paramArrayOfByte.hJl.FWy, paramArrayOfByte.hJl.FWz, paramArrayOfByte.hJl.FWx);
+      this.hRl -= 1;
+      if (this.hRl <= 0)
       {
-        ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "reach redirect limit, invoke callback");
+        ae.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "reach redirect limit, invoke callback");
         this.callback.onSceneEnd(3, -1, "", this);
         AppMethodBeat.o(29766);
         return;
       }
-      ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "redirect IDC");
+      ae.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "redirect IDC");
       doScene(dispatcher(), this.callback);
       AppMethodBeat.o(29766);
       return;
@@ -79,18 +79,18 @@ public final class e
     if ((paramInt2 == 4) && (paramInt3 == -102))
     {
       paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      ba.ajF().ay(new Runnable()
+      ae.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      bc.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(29763);
-          new l().doScene(e.this.dispatcher(), new f()
+          new m().doScene(e.this.dispatcher(), new f()
           {
             public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
             {
               AppMethodBeat.i(29762);
-              ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              ae.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 e.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", e.this);
@@ -124,7 +124,7 @@ public final class e
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
   
   public final void setSecurityCheckError(n.a parama) {}

@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class i
   implements Comparable<i>, Runnable
 {
-  private static int ddM = 1000;
-  protected long ddN;
+  private static int deO = 1000;
+  protected long deP;
   protected String name;
   protected final int priority;
   
@@ -15,7 +15,7 @@ public class i
     AppMethodBeat.i(136829);
     this.name = "";
     this.name = paramString;
-    this.ddN = System.currentTimeMillis();
+    this.deP = System.currentTimeMillis();
     this.priority = 5;
     AppMethodBeat.o(136829);
   }
@@ -30,7 +30,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.i
  * JD-Core Version:    0.7.0.1
  */

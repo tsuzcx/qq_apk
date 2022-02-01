@@ -5,12 +5,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class a
 {
-  public static int ffZ()
+  public static int fjP()
   {
     if (b.foreground) {
       return 1;
@@ -40,7 +40,7 @@ public class a
       }
       catch (Exception paramContext)
       {
-        ad.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bt.n(paramContext) });
+        ae.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bu.o(paramContext) });
         int i = 1;
         continue;
       }

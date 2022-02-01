@@ -16,8 +16,8 @@ final class c$1
     AppMethodBeat.i(103816);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/facedetect/motion/NormalFaceMotion$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    c.a(this.riL);
+    a.b("com/tencent/mm/plugin/facedetect/motion/NormalFaceMotion$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    c.a(this.rqP);
     a.a(this, "com/tencent/mm/plugin/facedetect/motion/NormalFaceMotion$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(103816);
   }

@@ -11,23 +11,25 @@ public abstract interface y
 {
   public abstract void a(boolean paramBoolean, View.OnClickListener paramOnClickListener);
   
-  public abstract void adj(int paramInt);
+  public abstract void adQ(int paramInt);
   
-  public abstract v fAW();
+  public abstract v fEY();
   
-  public abstract void fDY();
+  public abstract void fHr();
   
-  public abstract void fDo();
+  public abstract void fIb();
   
-  public abstract void fEa();
+  public abstract void fId();
   
-  public abstract void fEc();
+  public abstract void fIf();
   
-  public abstract void fEe();
+  public abstract void fIh();
   
-  public abstract int fEk();
+  public abstract int fIn();
   
-  public abstract void gl(View paramView);
+  public abstract int fIo();
+  
+  public abstract void gk(View paramView);
   
   public abstract void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener);
   
@@ -43,7 +45,7 @@ public abstract interface y
   
   public abstract void setTitlePhoneIconVisibility(int paramInt);
   
-  public abstract void xV(boolean paramBoolean);
+  public abstract void yc(boolean paramBoolean);
 }
 
 

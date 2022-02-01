@@ -15,27 +15,27 @@ import com.tencent.mm.plugin.appbrand.launching.f.a;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public abstract class a
   extends MutableContextWrapper
 {
-  private volatile boolean lNh = false;
-  volatile boolean lNi = false;
-  protected boolean lNj = true;
-  private final Queue<Runnable> lNk = new ConcurrentLinkedQueue();
-  private ap lNl;
+  private volatile boolean lRI = false;
+  volatile boolean lRJ = false;
+  protected boolean lRK = true;
+  private final Queue<Runnable> lRL = new ConcurrentLinkedQueue();
+  private aq lRM;
   
   public a()
   {
-    super(aj.getContext());
+    super(ak.getContext());
   }
   
-  private boolean brW()
+  private boolean bsH()
   {
     Object localObject = getBaseContext();
     if ((localObject instanceof AppBrandLaunchProxyUI))
@@ -46,38 +46,38 @@ public abstract class a
     return false;
   }
   
-  protected final void Y(Runnable paramRunnable)
+  protected final void W(Runnable paramRunnable)
   {
-    if (brW())
+    if (bsH())
     {
       ((Activity)getBaseContext()).runOnUiThread(paramRunnable);
       return;
     }
-    if (this.lNh)
+    if (this.lRI)
     {
-      ad.e("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "runOnUiEnv but destroyed, clear mUiEnvQueue, call stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
-      this.lNk.clear();
+      ae.e("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "runOnUiEnv but destroyed, clear mUiEnvQueue, call stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
+      this.lRL.clear();
       return;
     }
-    this.lNk.offer(paramRunnable);
+    this.lRL.offer(paramRunnable);
   }
   
   protected final void a(final LaunchParcel paramLaunchParcel, final String paramString)
   {
-    ap localap = new ap("AppBrandLaunchProxyUI-PrepareThread");
-    this.lNl = localap;
-    localap.post(new Runnable()
+    aq localaq = new aq("AppBrandLaunchProxyUI-PrepareThread");
+    this.lRM = localaq;
+    localaq.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47428);
         new com.tencent.mm.plugin.appbrand.launching.f(paramLaunchParcel, paramString, new e.a()new f.a {}, new f.a()
         {
-          public final void bqM()
+          public final void brw()
           {
             AppMethodBeat.i(175006);
-            ad.d("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "AppBrandPreLaunchProcessWC showPrompt, username[%s] appId[%s] currentInUiEnv[%b]", new Object[] { a.3.this.lkk.username, a.3.this.lkk.appId, Boolean.valueOf(a.b(a.this)) });
-            a.this.Y(new Runnable()
+            ae.d("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "AppBrandPreLaunchProcessWC showPrompt, username[%s] appId[%s] currentInUiEnv[%b]", new Object[] { a.3.this.loI.username, a.3.this.loI.appId, Boolean.valueOf(a.b(a.this)) });
+            a.this.W(new Runnable()
             {
               public final void run()
               {
@@ -97,9 +97,9 @@ public abstract class a
                 label108:
                 for (boolean bool1 = bool2;; bool1 = false)
                 {
-                  ad.d("MicroMsg.AppBrandLaunchProxyUI", "revealProgressLayoutImmediately destroyed[%b]", new Object[] { Boolean.valueOf(bool1) });
-                  localAppBrandLaunchProxyUI.lEc.removeCallbacks(localAppBrandLaunchProxyUI.lEd);
-                  localAppBrandLaunchProxyUI.lEc.post(localAppBrandLaunchProxyUI.lEd);
+                  ae.d("MicroMsg.AppBrandLaunchProxyUI", "revealProgressLayoutImmediately destroyed[%b]", new Object[] { Boolean.valueOf(bool1) });
+                  localAppBrandLaunchProxyUI.lIB.removeCallbacks(localAppBrandLaunchProxyUI.lIC);
+                  localAppBrandLaunchProxyUI.lIB.post(localAppBrandLaunchProxyUI.lIC);
                   AppMethodBeat.o(175005);
                   return;
                 }
@@ -113,39 +113,39 @@ public abstract class a
     });
   }
   
-  public final void brV()
+  public final void bsG()
   {
-    this.lNh = true;
-    this.lNk.clear();
-    super.setBaseContext(aj.getContext());
+    this.lRI = true;
+    this.lRL.clear();
+    super.setBaseContext(ak.getContext());
   }
   
-  protected final void brX()
+  protected final void bsI()
   {
-    Y(new Runnable()
+    W(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47421);
-        ad.i("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "finishUiEnv InUiEnv");
+        ae.i("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "finishUiEnv InUiEnv");
         if ((a.this.getBaseContext() instanceof AppBrandLaunchProxyUI)) {
           ((AppBrandLaunchProxyUI)a.this.getBaseContext()).finish();
         }
-        a.this.setBaseContext(aj.getContext());
+        a.this.setBaseContext(ak.getContext());
         a.a(a.this);
         AppMethodBeat.o(47421);
       }
     });
   }
   
-  protected Context brY()
+  protected Context bsJ()
   {
     return null;
   }
   
-  protected final boolean brZ()
+  protected final boolean bsK()
   {
-    return (brW()) && (((AppBrandLaunchProxyUI)getBaseContext()).isDestroyed());
+    return (bsH()) && (((AppBrandLaunchProxyUI)getBaseContext()).isDestroyed());
   }
   
   protected void c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
@@ -153,7 +153,7 @@ public abstract class a
     if (paramAppBrandInitConfigWC != null)
     {
       Object localObject2 = getBaseContext();
-      Context localContext = brY();
+      Context localContext = bsJ();
       Object localObject1;
       if (!(localObject2 instanceof Activity))
       {
@@ -164,20 +164,20 @@ public abstract class a
       {
         localObject1 = localObject2;
       }
-      localObject2 = com.tencent.mm.sdk.f.a.jq((Context)localObject1);
+      localObject2 = com.tencent.mm.sdk.f.a.jw((Context)localObject1);
       if ((localObject2 == null) || (((Activity)localObject2).isFinishing())) {
-        localObject1 = aj.getContext();
+        localObject1 = ak.getContext();
       }
       i.b((Context)localObject1, paramAppBrandInitConfigWC, paramAppBrandStatObject);
     }
     for (;;)
     {
-      if (this.lNj) {
-        brX();
+      if (this.lRK) {
+        bsI();
       }
-      this.lNi = true;
-      if ((this.lNl != null) && (this.lNl.getLooper() != Looper.getMainLooper())) {
-        this.lNl.postToWorker(new Runnable()
+      this.lRJ = true;
+      if ((this.lRM != null) && (this.lRM.getLooper() != Looper.getMainLooper())) {
+        this.lRM.postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -188,26 +188,26 @@ public abstract class a
         });
       }
       return;
-      this.lNj = true;
+      this.lRK = true;
     }
   }
   
   protected boolean d(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    if (DebuggerShell.bew())
+    if (DebuggerShell.bfe())
     {
-      ad.i("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "shouldCheckTbsBeforeAppLaunch inMonkeyEnv");
+      ae.i("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "shouldCheckTbsBeforeAppLaunch inMonkeyEnv");
       return true;
     }
-    if ((com.tencent.mm.plugin.appbrand.task.f.UF(paramAppBrandInitConfigWC.appId)) || (paramAppBrandInitConfigWC.Eb())) {}
+    if ((com.tencent.mm.plugin.appbrand.task.f.Vq(paramAppBrandInitConfigWC.appId)) || (paramAppBrandInitConfigWC.Ee())) {}
     for (int i = 1;; i = 0)
     {
-      boolean bool = i | paramAppBrandInitConfigWC.jXr | g.e(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+      boolean bool = i | paramAppBrandInitConfigWC.kaG | g.e(paramAppBrandInitConfigWC, paramAppBrandStatObject);
       i = bool;
-      if (!paramAppBrandInitConfigWC.jXr)
+      if (!paramAppBrandInitConfigWC.kaG)
       {
         i = bool;
-        if (paramAppBrandInitConfigWC.jXu)
+        if (paramAppBrandInitConfigWC.kaJ)
         {
           i = bool;
           if (com.tencent.mm.plugin.appbrand.f.a(paramAppBrandInitConfigWC)) {
@@ -215,8 +215,8 @@ public abstract class a
           }
         }
       }
-      if (paramAppBrandInitConfigWC.Eb()) {
-        com.tencent.mm.plugin.expansions.a.cmP();
+      if (paramAppBrandInitConfigWC.Ee()) {
+        com.tencent.mm.plugin.expansions.a.cof();
       }
       if ((i & 0x1) == 0) {
         break;
@@ -232,16 +232,16 @@ public abstract class a
   
   protected final boolean isFinishing()
   {
-    return (brW()) && (((AppBrandLaunchProxyUI)getBaseContext()).isFinishing());
+    return (bsH()) && (((AppBrandLaunchProxyUI)getBaseContext()).isFinishing());
   }
   
   public final void setBaseContext(Context paramContext)
   {
     super.setBaseContext(paramContext);
-    if (brW())
+    if (bsH())
     {
-      if (this.lNh) {
-        this.lNk.clear();
+      if (this.lRI) {
+        this.lRL.clear();
       }
     }
     else {
@@ -249,13 +249,13 @@ public abstract class a
     }
     do
     {
-      ((Runnable)this.lNk.poll()).run();
-      if (this.lNk.isEmpty()) {
+      ((Runnable)this.lRL.poll()).run();
+      if (this.lRL.isEmpty()) {
         break;
       }
-    } while (brW());
-    ad.e("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "fileAllPendingUiTasks but !currentInUiEnv, return");
-    this.lNk.clear();
+    } while (bsH());
+    ae.e("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "fileAllPendingUiTasks but !currentInUiEnv, return");
+    this.lRL.clear();
   }
 }
 

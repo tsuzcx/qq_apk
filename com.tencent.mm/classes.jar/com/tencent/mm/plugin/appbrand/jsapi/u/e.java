@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -35,14 +35,14 @@ public class e
           int j = localJSONObject.optInt("id");
           int k = localJSONObject.optInt("key");
           int m = localJSONObject.optInt("value");
-          g.yhR.idkeyStat(j, k, m, false);
+          g.yxI.idkeyStat(j, k, m, false);
           i += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiReportIDKey", "parse json failed : %s", new Object[] { localException.getMessage() });
+            ae.e("MicroMsg.JsApiReportIDKey", "parse json failed : %s", new Object[] { localException.getMessage() });
           }
         }
       }

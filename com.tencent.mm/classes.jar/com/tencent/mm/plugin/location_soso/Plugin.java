@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.location_soso;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class Plugin
   implements d
@@ -15,7 +15,7 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(56228);
-    ad.d("MicroMsg.Plugin", "initLoctionInit");
+    ae.d("MicroMsg.Plugin", "initLoctionInit");
     AppMethodBeat.o(56228);
   }
   
@@ -24,7 +24,7 @@ public class Plugin
     return null;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     return null;
   }

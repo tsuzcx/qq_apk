@@ -9,34 +9,34 @@ import java.util.Map;
 public final class m
   extends q
 {
-  public static final String[] jFa;
-  public static final c.a jGU;
+  public static final String[] jHZ;
+  public static final c.a jJU;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44503);
-    jFa = new String[] { "username", "versionType" };
+    jHZ = new String[] { "username", "versionType" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).IhA = new Field[3];
+    ((c.a)localObject1).IBL = new Field[3];
     ((c.a)localObject1).columns = new String[4];
     Object localObject2 = new StringBuilder();
     ((c.a)localObject1).columns[0] = "username";
-    ((c.a)localObject1).IhC.put("username", "TEXT");
+    ((c.a)localObject1).IBN.put("username", "TEXT");
     ((StringBuilder)localObject2).append(" username TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[1] = "versionType";
-    ((c.a)localObject1).IhC.put("versionType", "INTEGER");
+    ((c.a)localObject1).IBN.put("versionType", "INTEGER");
     ((StringBuilder)localObject2).append(" versionType INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[2] = "updateTime";
-    ((c.a)localObject1).IhC.put("updateTime", "LONG");
+    ((c.a)localObject1).IBN.put("updateTime", "LONG");
     ((StringBuilder)localObject2).append(" updateTime LONG");
     ((c.a)localObject1).columns[3] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    jGU = (c.a)localObject1;
+    jJU = (c.a)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = jFa;
+    localObject2 = jHZ;
     int j = localObject2.length;
     while (i < j)
     {
@@ -47,7 +47,7 @@ public final class m
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = jGU;
+    Object localObject3 = jJU;
     ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44503);
   }

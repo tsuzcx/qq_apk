@@ -3,112 +3,112 @@ package com.tencent.mm.plugin.voip.b;
 import android.content.Context;
 import android.os.BatteryManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/BatteryUtils;", "", "()V", "avgAverageBattery", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "isStartCounter", "", "mBatteryManager", "Landroid/os/BatteryManager;", "getBatteryInfo", "", "init", "releaseBatteryCounter", "startBatteryCounter", "stopBatteryCounter", "isNewRenderer", "renderType", "", "Companion", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/BatteryUtils;", "", "()V", "avgAverageBattery", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "isStartCounter", "", "mBatteryManager", "Landroid/os/BatteryManager;", "getBatteryInfo", "", "init", "releaseBatteryCounter", "startBatteryCounter", "stopBatteryCounter", "isNewRenderer", "renderType", "", "Companion", "plugin-voip_release"})
 public final class a
 {
-  public static final a.a CkU;
-  private long CkR;
-  private boolean CkS;
-  private final BatteryManager CkT;
-  private ap handler;
+  public static final a.a CCz;
+  private long CCw;
+  private boolean CCx;
+  private final BatteryManager CCy;
+  private aq handler;
   
   static
   {
-    AppMethodBeat.i(215924);
-    CkU = new a.a((byte)0);
-    AppMethodBeat.o(215924);
+    AppMethodBeat.i(210345);
+    CCz = new a.a((byte)0);
+    AppMethodBeat.o(210345);
   }
   
   public a()
   {
-    AppMethodBeat.i(215923);
-    Object localObject = aj.getContext().getSystemService("batterymanager");
+    AppMethodBeat.i(210344);
+    Object localObject = ak.getContext().getSystemService("batterymanager");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.os.BatteryManager");
-      AppMethodBeat.o(215923);
+      AppMethodBeat.o(210344);
       throw ((Throwable)localObject);
     }
-    this.CkT = ((BatteryManager)localObject);
+    this.CCy = ((BatteryManager)localObject);
     init();
-    AppMethodBeat.o(215923);
+    AppMethodBeat.o(210344);
   }
   
   private void init()
   {
-    AppMethodBeat.i(215919);
-    this.CkR = 0L;
-    this.handler = new ap("batteryCounter");
-    AppMethodBeat.o(215919);
+    AppMethodBeat.i(210340);
+    this.CCw = 0L;
+    this.handler = new aq("batteryCounter");
+    AppMethodBeat.o(210340);
   }
   
-  public final void T(boolean paramBoolean, int paramInt)
+  public final void W(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(215921);
-    this.CkS = false;
-    if (this.CkR > 0L)
+    AppMethodBeat.i(210342);
+    this.CCx = false;
+    if (this.CCw > 0L)
     {
-      ad.i("MicroMsg.BatteryUtils", "sum avgBattery=￥avgAverageBattery} microAmpere and avg avgBattery= " + this.CkR + ' ');
+      ae.i("MicroMsg.BatteryUtils", "sum avgBattery=￥avgAverageBattery} microAmpere and avg avgBattery= " + this.CCw + ' ');
       if (paramBoolean)
       {
-        localObject = i.ClE;
-        i.a.ag(this.CkR / 1000L, paramInt);
-        AppMethodBeat.o(215921);
+        localObject = i.CDi;
+        i.a.ag(this.CCw / 1000L, paramInt);
+        AppMethodBeat.o(210342);
         return;
       }
-      Object localObject = j.ClH;
-      j.a.ag(this.CkR / 1000L, paramInt);
+      Object localObject = j.CDl;
+      j.a.ag(this.CCw / 1000L, paramInt);
     }
-    AppMethodBeat.o(215921);
+    AppMethodBeat.o(210342);
   }
   
-  public final void ezl()
+  public final void eCT()
   {
-    AppMethodBeat.i(215920);
+    AppMethodBeat.i(210341);
     for (;;)
     {
-      this.CkS = true;
-      ap localap = this.handler;
-      if (((localap == null) || (localap.isQuit() != true)) && (this.CkS))
+      this.CCx = true;
+      aq localaq = this.handler;
+      if (((localaq == null) || (localaq.isQuit() != true)) && (this.CCx))
       {
-        localap = this.handler;
-        if (localap != null)
+        localaq = this.handler;
+        if (localaq != null)
         {
-          localap.postDelayed((Runnable)new b(this), 1000L);
-          AppMethodBeat.o(215920);
+          localaq.postDelayed((Runnable)new b(this), 1000L);
+          AppMethodBeat.o(210341);
           return;
         }
-        AppMethodBeat.o(215920);
+        AppMethodBeat.o(210341);
         return;
       }
       init();
     }
   }
   
-  public final void ezm()
+  public final void eCU()
   {
-    AppMethodBeat.i(215922);
-    ap localap = this.handler;
-    if (localap != null) {
-      localap.removeCallbacksAndMessages(null);
+    AppMethodBeat.i(210343);
+    aq localaq = this.handler;
+    if (localaq != null) {
+      localaq.removeCallbacksAndMessages(null);
     }
-    localap = this.handler;
-    if (localap != null)
+    localaq = this.handler;
+    if (localaq != null)
     {
-      localap.quitSafely();
-      AppMethodBeat.o(215922);
+      localaq.quitSafely();
+      AppMethodBeat.o(210343);
       return;
     }
-    AppMethodBeat.o(215922);
+    AppMethodBeat.o(210343);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -116,10 +116,10 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215918);
-      a.a(this.CkV);
-      this.CkV.ezl();
-      AppMethodBeat.o(215918);
+      AppMethodBeat.i(210339);
+      a.a(this.CCA);
+      this.CCA.eCT();
+      AppMethodBeat.o(210339);
     }
   }
 }

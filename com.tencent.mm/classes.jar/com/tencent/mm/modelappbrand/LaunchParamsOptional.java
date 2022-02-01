@@ -10,10 +10,10 @@ public final class LaunchParamsOptional
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParamsOptional> CREATOR;
-  public String cmt;
-  public String cmu;
-  public AppBrandWeishiParams cmw;
-  public String hKu;
+  public String cmv;
+  public String cmw;
+  public AppBrandWeishiParams cmy;
+  public String hNn;
   
   static
   {
@@ -27,9 +27,9 @@ public final class LaunchParamsOptional
   private LaunchParamsOptional(Parcel paramParcel)
   {
     AppMethodBeat.i(146920);
-    this.cmt = paramParcel.readString();
-    this.cmu = paramParcel.readString();
-    this.cmw = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.cmv = paramParcel.readString();
+    this.cmw = paramParcel.readString();
+    this.cmy = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
     AppMethodBeat.o(146920);
   }
   
@@ -41,9 +41,9 @@ public final class LaunchParamsOptional
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146919);
-    paramParcel.writeString(this.cmt);
-    paramParcel.writeString(this.cmu);
-    paramParcel.writeParcelable(this.cmw, paramInt);
+    paramParcel.writeString(this.cmv);
+    paramParcel.writeString(this.cmw);
+    paramParcel.writeParcelable(this.cmy, paramInt);
     AppMethodBeat.o(146919);
   }
 }

@@ -1,46 +1,32 @@
 package com.tencent.mm.plugin.webview.emojistore;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.pa;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.pb;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cyg;
+import com.tencent.mm.protocal.protobuf.cza;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public final class a
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  a DJg;
-  private c DJh;
+  a Ebe;
+  private c Ebf;
   
   public a()
   {
     AppMethodBeat.i(77863);
-    this.DJg = new a((byte)0);
-    this.DJh = new c() {};
-    com.tencent.mm.sdk.b.a.IbL.c(this.DJh);
+    this.Ebe = new a((byte)0);
+    this.Ebf = new c() {};
+    com.tencent.mm.sdk.b.a.IvT.c(this.Ebf);
     AppMethodBeat.o(77863);
   }
   
-  public static int B(Map<String, Object> paramMap, String paramString)
-  {
-    AppMethodBeat.i(77867);
-    paramMap = z(paramMap, paramString);
-    if (bt.isNullOrNil(paramMap))
-    {
-      AppMethodBeat.o(77867);
-      return 0;
-    }
-    int i = bt.getInt(paramMap, 0);
-    AppMethodBeat.o(77867);
-    return i;
-  }
-  
-  public static String z(Map<String, Object> paramMap, String paramString)
+  public static String A(Map<String, Object> paramMap, String paramString)
   {
     AppMethodBeat.i(77866);
     if (paramMap.containsKey(paramString))
@@ -58,19 +44,33 @@ public final class a
     return "";
   }
   
-  public final boolean bc(Map<String, Object> paramMap)
+  public static int C(Map<String, Object> paramMap, String paramString)
+  {
+    AppMethodBeat.i(77867);
+    paramMap = A(paramMap, paramString);
+    if (bu.isNullOrNil(paramMap))
+    {
+      AppMethodBeat.o(77867);
+      return 0;
+    }
+    int i = bu.getInt(paramMap, 0);
+    AppMethodBeat.o(77867);
+    return i;
+  }
+  
+  public final boolean bi(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(77864);
-    ad.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "getSearchEmotionData: %s", new Object[] { paramMap.toString() });
-    String str1 = z(paramMap, "keyword");
-    String str2 = z(paramMap, "nextPageBuffer");
-    int i = B(paramMap, "type");
-    int j = B(paramMap, "webview_instance_id");
-    paramMap = z(paramMap, "searchID");
-    if (bt.isNullOrNil(paramMap)) {}
+    ae.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "getSearchEmotionData: %s", new Object[] { paramMap.toString() });
+    String str1 = A(paramMap, "keyword");
+    String str2 = A(paramMap, "nextPageBuffer");
+    int i = C(paramMap, "type");
+    int j = C(paramMap, "webview_instance_id");
+    paramMap = A(paramMap, "searchID");
+    if (bu.isNullOrNil(paramMap)) {}
     for (long l = 0L;; l = Long.valueOf(paramMap).longValue())
     {
-      this.DJg.a(i, str1, str2, j, l);
+      this.Ebe.a(i, str1, str2, j, l);
       AppMethodBeat.o(77864);
       return false;
     }
@@ -81,39 +81,39 @@ public final class a
     AppMethodBeat.i(77865);
     if ((paramn instanceof b))
     {
-      com.tencent.mm.kernel.g.aiU().b(234, this);
-      this.DJg.isRunning = false;
+      com.tencent.mm.kernel.g.ajj().b(234, this);
+      this.Ebe.isRunning = false;
       paramString = (b)paramn;
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         break label128;
       }
-      this.DJg.dpX = false;
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.XN(paramString.DJm).a("{}", paramString.DJn, "", 0L);
+      this.Ebe.drc = false;
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(paramString.Ebk).a("{}", paramString.Ebl, "", 0L);
     }
     for (;;)
     {
-      paramn = paramString.eNW().Hpx;
-      String str = z.b(paramString.eNW().Gxi);
-      long l = paramString.eNW().Gxl;
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.XN(paramString.DJm).a(paramn, paramString.DJn, str, l);
+      paramn = paramString.eRH().HIZ;
+      String str = z.b(paramString.eRH().GQI);
+      long l = paramString.eRH().GQL;
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(paramString.Ebk).a(paramn, paramString.Ebl, str, l);
       AppMethodBeat.o(77865);
       return;
       label128:
-      this.DJg.dpX = true;
+      this.Ebe.drc = true;
     }
   }
   
   final class a
   {
-    private b DJj;
-    private String DJk;
-    private long DJl;
-    boolean dpX;
+    private b Ebh;
+    private String Ebi;
+    private long Ebj;
+    boolean drc;
     boolean isRunning;
     
     private a() {}
     
-    private static String fy(String paramString, int paramInt)
+    private static String fJ(String paramString, int paramInt)
     {
       AppMethodBeat.i(77861);
       StringBuffer localStringBuffer = new StringBuffer();
@@ -127,48 +127,48 @@ public final class a
     public final void a(int paramInt1, String paramString1, String paramString2, int paramInt2, long paramLong)
     {
       AppMethodBeat.i(77862);
-      if (bt.isNullOrNil(paramString1))
+      if (bu.isNullOrNil(paramString1))
       {
         if (paramString2 == null) {}
         for (paramString2 = "";; paramString2 = paramString2.toString())
         {
-          ad.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "error query:%s type:%d pagebuf:%s ", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2 });
+          ae.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "error query:%s type:%d pagebuf:%s ", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2 });
           AppMethodBeat.o(77862);
           return;
         }
       }
-      String str = fy(paramString1, paramInt1);
-      if ((!bt.isNullOrNil(this.DJk)) && (this.DJk.equals(str)) && (System.currentTimeMillis() - this.DJl <= 8000L) && (bt.isNullOrNil(paramString2)))
+      String str = fJ(paramString1, paramInt1);
+      if ((!bu.isNullOrNil(this.Ebi)) && (this.Ebi.equals(str)) && (System.currentTimeMillis() - this.Ebj <= 8000L) && (bu.isNullOrNil(paramString2)))
       {
-        if (this.dpX)
+        if (this.drc)
         {
-          ad.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "hit the search cache %s", new Object[] { paramString1 });
-          com.tencent.mm.plugin.webview.ui.tools.jsapi.g.XN(paramInt2).a(this.DJj.eNW().Hpx, true, z.b(this.DJj.eNW().Gxi), this.DJj.eNW().Gxl);
+          ae.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "hit the search cache %s", new Object[] { paramString1 });
+          com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(paramInt2).a(this.Ebh.eRH().HIZ, true, z.b(this.Ebh.eRH().GQI), this.Ebh.eRH().GQL);
           AppMethodBeat.o(77862);
           return;
         }
         if (this.isRunning)
         {
-          if (this.DJj != null) {
-            this.DJj.DJm = paramInt2;
+          if (this.Ebh != null) {
+            this.Ebh.Ebk = paramInt2;
           }
-          ad.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "wait the netscene running");
+          ae.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "wait the netscene running");
           AppMethodBeat.o(77862);
           return;
         }
-        ad.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "netscene error try again");
+        ae.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "netscene error try again");
       }
-      ad.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "start New NetScene query:%s newMD5:%s webviewID:%d", new Object[] { paramString1, str, Integer.valueOf(paramInt2) });
-      if (this.DJj != null) {
-        com.tencent.mm.kernel.g.aiU().a(this.DJj);
+      ae.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "start New NetScene query:%s newMD5:%s webviewID:%d", new Object[] { paramString1, str, Integer.valueOf(paramInt2) });
+      if (this.Ebh != null) {
+        com.tencent.mm.kernel.g.ajj().a(this.Ebh);
       }
-      this.DJk = str;
-      this.DJl = System.currentTimeMillis();
+      this.Ebi = str;
+      this.Ebj = System.currentTimeMillis();
       this.isRunning = true;
-      this.dpX = false;
-      com.tencent.mm.kernel.g.aiU().a(234, a.this);
-      this.DJj = new b(paramInt1, paramString1, paramString2.getBytes(), paramInt2, paramLong);
-      com.tencent.mm.kernel.g.aiU().a(this.DJj, 0);
+      this.drc = false;
+      com.tencent.mm.kernel.g.ajj().a(234, a.this);
+      this.Ebh = new b(paramInt1, paramString1, paramString2.getBytes(), paramInt2, paramLong);
+      com.tencent.mm.kernel.g.ajj().a(this.Ebh, 0);
       AppMethodBeat.o(77862);
     }
   }

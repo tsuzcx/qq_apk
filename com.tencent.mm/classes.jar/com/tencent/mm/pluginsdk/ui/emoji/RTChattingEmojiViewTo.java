@@ -27,7 +27,7 @@ public class RTChattingEmojiViewTo
   {
     AppMethodBeat.i(104743);
     super.initView();
-    feC();
+    fis();
     AppMethodBeat.o(104743);
   }
 }

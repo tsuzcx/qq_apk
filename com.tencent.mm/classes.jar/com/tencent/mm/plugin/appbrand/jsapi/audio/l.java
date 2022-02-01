@@ -3,19 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.b;
+import com.tencent.mm.ai.b;
 import com.tencent.mm.g.a.v;
 import com.tencent.mm.g.a.v.b;
-import com.tencent.mm.g.a.w;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.media.a.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import org.json.JSONObject;
 
 public class l
@@ -23,26 +22,26 @@ public class l
 {
   public static final int CTRL_INDEX = 292;
   public static final String NAME = "setAudioState";
-  private a kwo;
+  private a kzD;
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(145749);
-    if (!com.tencent.mm.plugin.appbrand.media.a.a.So(paramc.getAppId()))
+    if (!com.tencent.mm.plugin.appbrand.media.a.a.SX(paramc.getAppId()))
     {
-      ad.e("MicroMsg.Audio.JsApiSetAudioState", "can't do operateAudio, App is paused or background");
+      ae.e("MicroMsg.Audio.JsApiSetAudioState", "can't do operateAudio, App is paused or background");
       paramc.h(paramInt, e("fail:App is paused or background", null));
       AppMethodBeat.o(145749);
       return;
     }
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.Audio.JsApiSetAudioState", "setAudioState data is null");
+      ae.e("MicroMsg.Audio.JsApiSetAudioState", "setAudioState data is null");
       paramc.h(paramInt, e("fail:data is null", null));
       AppMethodBeat.o(145749);
       return;
     }
-    ad.i("MicroMsg.Audio.JsApiSetAudioState", "setAudioState data:%s", new Object[] { paramJSONObject.toString() });
+    ae.i("MicroMsg.Audio.JsApiSetAudioState", "setAudioState data:%s", new Object[] { paramJSONObject.toString() });
     String str = paramJSONObject.optString("audioId");
     int i = paramJSONObject.optInt("startTime", 0);
     Object localObject1 = paramJSONObject.optString("src");
@@ -52,9 +51,9 @@ public class l
     double d1;
     Object localObject2;
     Object localObject3;
-    if (bt.isNullOrNil((String)localObject1))
+    if (bu.isNullOrNil((String)localObject1))
     {
-      ad.e("MicroMsg.WxaAudioUtils", "[getRealSrc]src is empty");
+      ae.e("MicroMsg.WxaAudioUtils", "[getRealSrc]src is empty");
       localObject1 = "";
       bool1 = paramJSONObject.optBoolean("autoplay", false);
       bool2 = paramJSONObject.optBoolean("loop", false);
@@ -73,7 +72,7 @@ public class l
       localObject4 = Long.valueOf(0L);
       localObject5 = Long.valueOf(System.currentTimeMillis());
       if (!bool1) {
-        break label482;
+        break label621;
       }
       localObject2 = localObject5;
       localObject3 = localObject4;
@@ -91,28 +90,28 @@ public class l
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        break label495;
+        break label634;
       }
-      ad.e("MicroMsg.Audio.JsApiSetAudioState", "audioId is empty");
+      ae.e("MicroMsg.Audio.JsApiSetAudioState", "audioId is empty");
       paramc.h(paramInt, e("fail:audioId is empty", null));
       AppMethodBeat.o(145749);
       return;
       if (((String)localObject1).startsWith("wxfile://"))
       {
-        if (paramc.Fg() == null)
+        if (paramc.Fl() == null)
         {
-          ad.e("MicroMsg.WxaAudioUtils", "[getRealSrc]service.getRuntime().getFileSystem() is null");
+          ae.e("MicroMsg.WxaAudioUtils", "[getRealSrc]service.getRuntime().getFileSystem() is null");
           localObject1 = "";
           break;
         }
-        localObject1 = paramc.Fg().Mj((String)localObject1);
-        if ((localObject1 == null) || (!((com.tencent.mm.vfs.e)localObject1).exists()))
+        localObject1 = paramc.Fl().MP((String)localObject1);
+        if ((localObject1 == null) || (!((k)localObject1).exists()))
         {
-          ad.e("MicroMsg.WxaAudioUtils", "[getRealSrc]localFile is null");
+          ae.e("MicroMsg.WxaAudioUtils", "[getRealSrc]localFile is null");
           localObject1 = "";
           break;
         }
-        localObject2 = q.B(((com.tencent.mm.vfs.e)localObject1).fOK());
+        localObject2 = com.tencent.mm.vfs.w.B(((k)localObject1).fTh());
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -121,53 +120,80 @@ public class l
             localObject1 = "file://".concat(String.valueOf(localObject2));
           }
         }
-        ad.i("MicroMsg.WxaAudioUtils", "getRealSrc:src:%s", new Object[] { localObject1 });
+        ae.i("MicroMsg.WxaAudioUtils", "getRealSrc:src:%s", new Object[] { localObject1 });
         break;
       }
-      ad.i("MicroMsg.WxaAudioUtils", "getRealSrc:src:%s", new Object[] { localObject1 });
+      if (((String)localObject1).startsWith("wxblob://"))
+      {
+        if (paramc.Fl() == null)
+        {
+          ae.e("MicroMsg.WxaAudioUtils", "[getRealSrc]service.getRuntime().getFileSystem() is null");
+          localObject1 = "";
+          break;
+        }
+        localObject1 = paramc.Fl().MM((String)localObject1);
+        if ((localObject1 == null) || (!((k)localObject1).exists()))
+        {
+          ae.e("MicroMsg.WxaAudioUtils", "[getRealSrc]localFile is null");
+          localObject1 = "";
+          break;
+        }
+        localObject2 = com.tencent.mm.vfs.w.B(((k)localObject1).fTh());
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+          if (!((String)localObject2).startsWith("file://")) {
+            localObject1 = "file://".concat(String.valueOf(localObject2));
+          }
+        }
+        ae.i("MicroMsg.WxaAudioUtils", "getRealSrc:src:%s", new Object[] { localObject1 });
+        break;
+      }
+      ae.i("MicroMsg.WxaAudioUtils", "getRealSrc:src:%s", new Object[] { localObject1 });
       break;
-      label482:
+      label621:
       localObject2 = Long.valueOf(0L);
       localObject3 = localObject4;
     }
-    label495:
+    label634:
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      ad.e("MicroMsg.Audio.JsApiSetAudioState", "src is empty");
+      ae.e("MicroMsg.Audio.JsApiSetAudioState", "src is empty");
       paramc.h(paramInt, e("fail:src is empty", null));
       AppMethodBeat.o(145749);
       return;
     }
-    if (this.kwo == null) {
-      this.kwo = new a(paramc);
+    if (this.kzD == null) {
+      this.kzD = new a(paramc);
     }
-    this.kwo.appId = paramc.getAppId();
-    this.kwo.aOD();
+    this.kzD.appId = paramc.getAppId();
+    this.kzD.aPa();
     Object localObject4 = new c(this, paramc, paramInt);
     ((c)localObject4).appId = paramc.getAppId();
-    ((c)localObject4).dce = str;
-    ((c)localObject4).dca = ((String)localObject1);
-    ((c)localObject4).ddx = i;
-    ((c)localObject4).hLF = bool1;
+    ((c)localObject4).ddg = str;
+    ((c)localObject4).ddc = ((String)localObject1);
+    ((c)localObject4).dez = i;
+    ((c)localObject4).hOy = bool1;
     ((c)localObject4).loop = bool2;
-    ((c)localObject4).kwr = e(paramc, (String)localObject1);
-    ((c)localObject4).hLH = d3;
-    ((c)localObject4).hLI = d1;
-    ((c)localObject4).processName = aj.getProcessName();
-    ((c)localObject4).hLK = ((Long)localObject3).longValue();
-    ((c)localObject4).hLL = ((Long)localObject2).longValue();
+    ((c)localObject4).kzG = e(paramc, (String)localObject1);
+    ((c)localObject4).hOA = d3;
+    ((c)localObject4).hOB = d1;
+    ((c)localObject4).processName = ak.getProcessName();
+    ((c)localObject4).hOD = ((Long)localObject3).longValue();
+    ((c)localObject4).hOE = ((Long)localObject2).longValue();
     Object localObject6 = (com.tencent.mm.plugin.appbrand.jsapi.s.a)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.s.a.class);
     if (localObject6 == null)
     {
-      ad.w("MicroMsg.Audio.JsApiSetAudioState", "getReferrers, referrerHelper is null");
+      ae.w("MicroMsg.Audio.JsApiSetAudioState", "getReferrers, referrerHelper is null");
       paramc = new Pair(null, "invalidReferrer");
-      ((c)localObject4).hLQ = ((String)paramc.first);
-      ((c)localObject4).hLR = ((String)paramc.second);
-      ((c)localObject4).aOD();
+      ((c)localObject4).hOJ = ((String)paramc.first);
+      ((c)localObject4).hOK = ((String)paramc.second);
+      ((c)localObject4).aPa();
       paramc = new com.tencent.mm.plugin.appbrand.media.a.c();
-      paramc.kwr = ((c)localObject4).kwr;
-      paramc.kwq = paramJSONObject.toString();
-      paramc.dca = ((String)localObject1);
+      paramc.kzG = ((c)localObject4).kzG;
+      paramc.kzF = paramJSONObject.toString();
+      paramc.ddc = ((String)localObject1);
       com.tencent.mm.plugin.appbrand.media.a.a.a(str, paramc);
       AppMethodBeat.o(145749);
       return;
@@ -175,21 +201,21 @@ public class l
     Object localObject5 = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject6).W(paramJSONObject);
     if (localObject5 != null)
     {
-      localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject6).Qu((String)localObject5);
+      localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject6).Rd((String)localObject5);
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject6).x(paramc);
       }
-      if (com.tencent.mm.plugin.appbrand.jsapi.s.c.lfc == localObject2) {
+      if (com.tencent.mm.plugin.appbrand.jsapi.s.c.liO == localObject2) {
         paramc = null;
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.Audio.JsApiSetAudioState", "getReferrers, referrerPolicyStr: %s, referrer: %s", new Object[] { localObject5, paramc });
+      ae.i("MicroMsg.Audio.JsApiSetAudioState", "getReferrers, referrerPolicyStr: %s, referrer: %s", new Object[] { localObject5, paramc });
       paramc = new Pair(localObject5, paramc);
       break;
-      if (com.tencent.mm.plugin.appbrand.jsapi.s.c.lfb == localObject2) {
+      if (com.tencent.mm.plugin.appbrand.jsapi.s.c.liN == localObject2) {
         paramc = ((com.tencent.mm.plugin.appbrand.jsapi.s.a)localObject6).y(paramc);
       } else {
         paramc = "invalidReferrer";
@@ -207,46 +233,46 @@ public class l
   {
     public int action;
     public String appId;
-    public com.tencent.mm.plugin.appbrand.jsapi.c ktc;
-    public String kwC;
-    private String kxa;
-    private com.tencent.mm.sdk.b.c kxb;
+    private String kAp;
+    private com.tencent.mm.sdk.b.c kAq;
+    public com.tencent.mm.plugin.appbrand.jsapi.c kws;
+    public String kzR;
     
     public a(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
     {
-      AppMethodBeat.i(198674);
+      AppMethodBeat.i(210896);
       this.appId = "";
-      this.kxb = new com.tencent.mm.sdk.b.c() {};
-      this.ktc = paramc;
-      AppMethodBeat.o(198674);
+      this.kAq = new com.tencent.mm.sdk.b.c() {};
+      this.kws = paramc;
+      AppMethodBeat.o(210896);
     }
     
-    public final void BJ()
+    public final void BK()
     {
       AppMethodBeat.i(145746);
-      if (this.ktc == null)
+      if (this.kws == null)
       {
-        ad.e("MicroMsg.Audio.JsApiSetAudioState", "server is null");
+        ae.e("MicroMsg.Audio.JsApiSetAudioState", "server is null");
         AppMethodBeat.o(145746);
         return;
       }
-      ad.i("MicroMsg.Audio.JsApiSetAudioState", "AudioListenerTask action:%d, retJson:%s", new Object[] { Integer.valueOf(this.action), this.kwC });
-      if (bt.isNullOrNil(this.kwC))
+      ae.i("MicroMsg.Audio.JsApiSetAudioState", "AudioListenerTask action:%d, retJson:%s", new Object[] { Integer.valueOf(this.action), this.kzR });
+      if (bu.isNullOrNil(this.kzR))
       {
-        ad.e("MicroMsg.Audio.JsApiSetAudioState", "jsonResult is null, err");
+        ae.e("MicroMsg.Audio.JsApiSetAudioState", "jsonResult is null, err");
         AppMethodBeat.o(145746);
         return;
       }
-      new l.b().h(this.ktc).Pi(this.kwC).a(c.kvZ.Pk(this.appId).Pq(this.kxa));
+      new l.b().h(this.kws).PQ(this.kzR).a(c.kzo.PS(this.appId).PY(this.kAp));
       AppMethodBeat.o(145746);
     }
     
-    public final void Ox()
+    public final void Ov()
     {
       AppMethodBeat.i(145745);
-      ad.d("MicroMsg.Audio.JsApiSetAudioState", "AudioListenerTask, runTask");
-      com.tencent.mm.plugin.appbrand.media.a.a.Sn(this.appId);
-      com.tencent.mm.plugin.appbrand.media.a.a.a(this.appId, this.kxb);
+      ae.d("MicroMsg.Audio.JsApiSetAudioState", "AudioListenerTask, runTask");
+      com.tencent.mm.plugin.appbrand.media.a.a.SW(this.appId);
+      com.tencent.mm.plugin.appbrand.media.a.a.a(this.appId, this.kAq);
       AppMethodBeat.o(145745);
     }
   }
@@ -255,155 +281,155 @@ public class l
     extends a
   {
     public String appId = "";
-    public String dca = "";
-    public String dce = "";
-    public int ddx = 0;
+    public String ddc = "";
+    public String ddg = "";
+    public int dez = 0;
     public boolean error = false;
-    public boolean hLF = false;
-    public double hLH;
-    public double hLI;
-    public long hLK;
-    public long hLL;
-    public String hLQ = null;
-    public String hLR = null;
-    public String iFQ;
-    public int kje;
-    private m kry;
-    public com.tencent.mm.plugin.appbrand.jsapi.c ktc;
-    public WxaPkg.Info kwr;
+    public double hOA;
+    public double hOB;
+    public long hOD;
+    public long hOE;
+    public String hOJ = null;
+    public String hOK = null;
+    public boolean hOy = false;
+    public String iIJ;
+    public int kmu;
+    private m kuO;
+    public com.tencent.mm.plugin.appbrand.jsapi.c kws;
+    public WxaPkg.Info kzG;
     public boolean loop = false;
     public String processName = "";
     
     public c(m paramm, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt)
     {
-      this.kry = paramm;
-      this.ktc = paramc;
-      this.kje = paramInt;
+      this.kuO = paramm;
+      this.kws = paramc;
+      this.kmu = paramInt;
     }
     
-    public final void BJ()
+    public final void BK()
     {
       AppMethodBeat.i(145748);
-      super.BJ();
-      if (this.ktc == null)
+      super.BK();
+      if (this.kws == null)
       {
-        ad.e("MicroMsg.Audio.JsApiSetAudioState", "server is null");
+        ae.e("MicroMsg.Audio.JsApiSetAudioState", "server is null");
         AppMethodBeat.o(145748);
         return;
       }
       if (this.error)
       {
-        this.ktc.h(this.kje, this.kry.e("fail:" + this.iFQ, null));
+        this.kws.h(this.kmu, this.kuO.e("fail:" + this.iIJ, null));
         AppMethodBeat.o(145748);
         return;
       }
-      this.ktc.h(this.kje, this.kry.e("ok", null));
+      this.kws.h(this.kmu, this.kuO.e("ok", null));
       AppMethodBeat.o(145748);
     }
     
-    public final void Ox()
+    public final void Ov()
     {
       AppMethodBeat.i(145747);
-      ad.i("MicroMsg.Audio.JsApiSetAudioState", "SetAudioTask runTask");
+      ae.i("MicroMsg.Audio.JsApiSetAudioState", "SetAudioTask runTask");
       this.error = false;
-      this.iFQ = "";
-      Object localObject1 = com.tencent.mm.aj.c.CI(this.dce);
+      this.iIJ = "";
+      Object localObject1 = com.tencent.mm.ai.c.Dk(this.ddg);
       b localb = new b();
-      localb.dce = this.dce;
-      localb.ddp = this.dca;
-      localb.ddx = this.ddx;
-      localb.hLE = this.ddx;
-      localb.hLF = this.hLF;
+      localb.ddg = this.ddg;
+      localb.der = this.ddc;
+      localb.dez = this.dez;
+      localb.hOx = this.dez;
+      localb.hOy = this.hOy;
       localb.loop = this.loop;
       localb.processName = this.processName;
-      localb.hLH = this.hLH;
+      localb.hOA = this.hOA;
       localb.appId = this.appId;
       localb.fromScene = 0;
-      localb.hLI = this.hLI;
-      localb.hLM = this.hLK;
-      localb.hLN = this.hLL;
-      localb.hLQ = this.hLQ;
-      localb.hLR = this.hLR;
-      if ((localObject1 != null) && (this.dca.equalsIgnoreCase(((b)localObject1).ddp)) && (com.tencent.mm.aj.c.CH(this.dce)))
+      localb.hOB = this.hOB;
+      localb.hOF = this.hOD;
+      localb.hOG = this.hOE;
+      localb.hOJ = this.hOJ;
+      localb.hOK = this.hOK;
+      if ((localObject1 != null) && (this.ddc.equalsIgnoreCase(((b)localObject1).der)) && (com.tencent.mm.ai.c.Dj(this.ddg)))
       {
-        ad.i("MicroMsg.Audio.JsApiSetAudioState", "same src is playing audio, not to start again, but setAudioParam to update");
-        ad.i("MicroMsg.AudioPlayerHelper", "setAudioParam, audioId:%s, src:%s", new Object[] { localb.dce, localb.ddp });
+        ae.i("MicroMsg.Audio.JsApiSetAudioState", "same src is playing audio, not to start again, but setAudioParam to update");
+        ae.i("MicroMsg.AudioPlayerHelper", "setAudioParam, audioId:%s, src:%s", new Object[] { localb.ddg, localb.der });
         localObject1 = new v();
-        ((v)localObject1).dky.action = 18;
-        ((v)localObject1).dky.dce = localb.dce;
-        ((v)localObject1).dky.dkB = localb;
+        ((v)localObject1).dlA.action = 18;
+        ((v)localObject1).dlA.ddg = localb.ddg;
+        ((v)localObject1).dlA.dlD = localb;
         com.tencent.mm.plugin.music.b.a.a((v)localObject1);
-        if (!((v)localObject1).dkz.result)
+        if (!((v)localObject1).dlB.result)
         {
           this.error = true;
-          this.iFQ = "not to set audio param, the audioId is err";
-          ad.e("MicroMsg.Audio.JsApiSetAudioState", "not to set audio param, the audioId is err");
+          this.iIJ = "not to set audio param, the audioId is err";
+          ae.e("MicroMsg.Audio.JsApiSetAudioState", "not to set audio param, the audioId is err");
         }
-        BJ();
+        BK();
         AppMethodBeat.o(145747);
         return;
       }
-      ad.i("MicroMsg.Audio.JsApiSetAudioState", "appId:%s, audioId:%s, src:%s, startTime:%d", new Object[] { this.appId, this.dce, this.dca, Integer.valueOf(this.ddx) });
-      if (this.dca.startsWith("file://"))
+      ae.i("MicroMsg.Audio.JsApiSetAudioState", "appId:%s, audioId:%s, src:%s, startTime:%d", new Object[] { this.appId, this.ddg, this.ddc, Integer.valueOf(this.dez) });
+      if (this.ddc.startsWith("file://"))
       {
-        localb.filePath = this.dca.substring(7);
-        ad.i("MicroMsg.Audio.JsApiSetAudioState", "filePath:%s", new Object[] { localb.filePath });
+        localb.filePath = this.ddc.substring(7);
+        ae.i("MicroMsg.Audio.JsApiSetAudioState", "filePath:%s", new Object[] { localb.filePath });
       }
-      while ((this.dca.startsWith("http://")) || (this.dca.startsWith("https://")))
+      while ((this.ddc.startsWith("http://")) || (this.ddc.startsWith("https://")))
       {
         if (!this.error)
         {
-          ad.d("MicroMsg.AudioPlayerHelper", "startAudio, audioId:%s", new Object[] { localb.dce });
+          ae.d("MicroMsg.AudioPlayerHelper", "startAudio, audioId:%s", new Object[] { localb.ddg });
           localObject1 = new v();
-          ((v)localObject1).dky.action = 0;
-          ((v)localObject1).dky.dce = localb.dce;
-          ((v)localObject1).dky.dkB = localb;
+          ((v)localObject1).dlA.action = 0;
+          ((v)localObject1).dlA.ddg = localb.ddg;
+          ((v)localObject1).dlA.dlD = localb;
           com.tencent.mm.plugin.music.b.a.a((v)localObject1);
         }
-        BJ();
+        BK();
         AppMethodBeat.o(145747);
         return;
       }
-      com.tencent.mm.aj.e locale = f.c(this.kwr);
+      com.tencent.mm.ai.e locale = f.c(this.kzG);
       if ((locale == null) || (!locale.isOpen()))
       {
         org.apache.commons.a.e.closeQuietly(locale);
         this.error = true;
-        this.iFQ = "the file not exist for src";
-        ad.e("MicroMsg.Audio.JsApiSetAudioState", "the wxa audioDataSource not found for src %s", new Object[] { this.dca });
-        BJ();
+        this.iIJ = "the file not exist for src";
+        ae.e("MicroMsg.Audio.JsApiSetAudioState", "the wxa audioDataSource not found for src %s", new Object[] { this.ddc });
+        BK();
         AppMethodBeat.o(145747);
         return;
       }
-      if ((localObject1 != null) && (this.dca.equalsIgnoreCase(((b)localObject1).ddp)) && (!TextUtils.isEmpty(((b)localObject1).filePath))) {
+      if ((localObject1 != null) && (this.ddc.equalsIgnoreCase(((b)localObject1).der)) && (!TextUtils.isEmpty(((b)localObject1).filePath))) {
         localObject1 = ((b)localObject1).filePath;
       }
       for (;;)
       {
         localb.filePath = ((String)localObject1);
-        localb.hLS = locale;
+        localb.hOL = locale;
         break;
-        Object localObject2 = this.ktc;
-        localObject1 = this.dca;
-        if (bt.isNullOrNil((String)localObject1))
+        Object localObject2 = this.kws;
+        localObject1 = this.ddc;
+        if (bu.isNullOrNil((String)localObject1))
         {
-          ad.e("MicroMsg.WxaAudioUtils", "getLocalFilePathFromWxaPkg src is empty");
+          ae.e("MicroMsg.WxaAudioUtils", "getLocalFilePathFromWxaPkg src is empty");
         }
-        else if (((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2).Fg() == null)
+        else if (((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2).Fl() == null)
         {
-          ad.e("MicroMsg.WxaAudioUtils", "[getLocalFilePathFromWxaPkg]service.getFileSystem() is null");
+          ae.e("MicroMsg.WxaAudioUtils", "[getLocalFilePathFromWxaPkg]service.getFileSystem() is null");
         }
         else
         {
-          localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2).Fg().Mj((String)localObject1);
-          if ((localObject2 == null) || (!((com.tencent.mm.vfs.e)localObject2).exists()))
+          localObject2 = ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2).Fl().MP((String)localObject1);
+          if ((localObject2 == null) || (!((k)localObject2).exists()))
           {
-            ad.e("MicroMsg.WxaAudioUtils", "[getLocalFilePathFromWxaPkg]localFile is null");
+            ae.e("MicroMsg.WxaAudioUtils", "[getLocalFilePathFromWxaPkg]localFile is null");
           }
           else
           {
-            localObject1 = q.B(((com.tencent.mm.vfs.e)localObject2).fOK());
-            ad.i("MicroMsg.WxaAudioUtils", "getLocalFilePathFromWxaPkg:path:%s", new Object[] { localObject1 });
+            localObject1 = com.tencent.mm.vfs.w.B(((k)localObject2).fTh());
+            ae.i("MicroMsg.WxaAudioUtils", "getLocalFilePathFromWxaPkg:path:%s", new Object[] { localObject1 });
           }
         }
       }
@@ -412,7 +438,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.l
  * JD-Core Version:    0.7.0.1
  */

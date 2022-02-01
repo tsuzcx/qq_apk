@@ -13,32 +13,32 @@ public class AppBrandOptionsPickerV3
   implements com.tencent.mm.plugin.appbrand.jsapi.p.c<String>
 {
   private Context context;
-  private String[] nkL;
-  public com.tencent.mm.picker.f.b<String> nkO;
-  private int nkP;
-  public int nkQ;
+  private String[] npT;
+  public com.tencent.mm.picker.f.b<String> npW;
+  private int npX;
+  public int npY;
   
   @Keep
   public AppBrandOptionsPickerV3(Context paramContext)
   {
     AppMethodBeat.i(138032);
     this.context = paramContext;
-    this.nkO = new com.tencent.mm.picker.f.b(paramContext);
+    this.npW = new com.tencent.mm.picker.f.b(paramContext);
     AppMethodBeat.o(138032);
   }
   
   private void setDividerColor(int paramInt)
   {
     AppMethodBeat.i(138035);
-    this.nkO.iMa.setDividerColor(paramInt);
+    this.npW.iOT.setDividerColor(paramInt);
     AppMethodBeat.o(138035);
   }
   
   public final String currentValue()
   {
     AppMethodBeat.i(138038);
-    this.nkO.aQc();
-    String str = this.nkL[this.nkP];
+    this.npW.aQB();
+    String str = this.npT[this.npX];
     AppMethodBeat.o(138038);
     return str;
   }
@@ -46,8 +46,8 @@ public class AppBrandOptionsPickerV3
   public final int getValue()
   {
     AppMethodBeat.i(138036);
-    this.nkO.aQc();
-    int i = this.nkP;
+    this.npW.aQB();
+    int i = this.npX;
     AppMethodBeat.o(138036);
     return i;
   }
@@ -57,18 +57,18 @@ public class AppBrandOptionsPickerV3
     AppMethodBeat.i(138034);
     new a(this.context, new com.tencent.mm.picker.d.c()
     {
-      public final void qU(int paramAnonymousInt)
+      public final void qX(int paramAnonymousInt)
       {
         AppMethodBeat.i(138031);
         AppBrandOptionsPickerV3.a(AppBrandOptionsPickerV3.this, paramAnonymousInt);
         AppMethodBeat.o(138031);
       }
-    }).qS(this.nkQ).qR(android.support.v4.content.b.n(this.context, 2131099656)).a(this.nkO);
+    }).qV(this.npY).qU(android.support.v4.content.b.n(this.context, 2131099656)).a(this.npW);
     setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
     this.context.getResources().getDimensionPixelSize(2131166681);
     setDividerColor(android.support.v4.content.b.n(this.context, 2131099656));
-    this.nkO.iMa.du(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    this.nkO.iMa.iMe.qQ(android.support.v4.content.b.n(this.context, 2131099664)).qP(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+    this.npW.iOT.du(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
+    this.npW.iOT.iOX.qT(android.support.v4.content.b.n(this.context, 2131099664)).qS(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
     AppMethodBeat.o(138034);
   }
   
@@ -83,15 +83,15 @@ public class AppBrandOptionsPickerV3
   public final void setDividerHeight(float paramFloat)
   {
     AppMethodBeat.i(138037);
-    this.nkO.setDividerHeight(paramFloat);
+    this.npW.setDividerHeight(paramFloat);
     AppMethodBeat.o(138037);
   }
   
   public final void setOptionsArray(String[] paramArrayOfString)
   {
     AppMethodBeat.i(138033);
-    this.nkL = paramArrayOfString;
-    this.nkO.aG(Arrays.asList(paramArrayOfString));
+    this.npT = paramArrayOfString;
+    this.npW.aG(Arrays.asList(paramArrayOfString));
     AppMethodBeat.o(138033);
   }
 }

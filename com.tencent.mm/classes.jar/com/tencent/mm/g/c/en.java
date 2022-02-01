@@ -2,30 +2,30 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.dne;
+import com.tencent.mm.protocal.protobuf.dob;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class en
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eKz = "extInfo".hashCode();
-  private static final int fmD = "tipId".hashCode();
-  private static final int fmE = "tipVersion".hashCode();
-  private static final int fmF = "tipkey".hashCode();
-  private static final int fmG = "tipType".hashCode();
-  private static final int fmH = "isExit".hashCode();
-  private static final int fmI = "hadRead".hashCode();
-  private static final int fmJ = "isReject".hashCode();
-  private static final int fmK = "beginShowTime".hashCode();
-  private static final int fmL = "disappearTime".hashCode();
-  private static final int fmM = "overdueTime".hashCode();
-  private static final int fmN = "tipsShowInfo".hashCode();
-  private static final int fmO = "pagestaytime".hashCode();
+  private static final int eMi = "extInfo".hashCode();
+  private static final int foD = "tipId".hashCode();
+  private static final int foE = "tipVersion".hashCode();
+  private static final int foF = "tipkey".hashCode();
+  private static final int foG = "tipType".hashCode();
+  private static final int foH = "isExit".hashCode();
+  private static final int foI = "hadRead".hashCode();
+  private static final int foJ = "isReject".hashCode();
+  private static final int foK = "beginShowTime".hashCode();
+  private static final int foL = "disappearTime".hashCode();
+  private static final int foM = "overdueTime".hashCode();
+  private static final int foN = "tipsShowInfo".hashCode();
+  private static final int foO = "pagestaytime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eKl = true;
+  private boolean eLU = true;
   public long field_beginShowTime;
   public long field_disappearTime;
   public String field_extInfo;
@@ -38,19 +38,19 @@ public abstract class en
   public int field_tipType;
   public int field_tipVersion;
   public String field_tipkey;
-  public dne field_tipsShowInfo;
-  private boolean fmA = true;
-  private boolean fmB = true;
-  private boolean fmC = true;
-  private boolean fmr = true;
-  private boolean fms = true;
-  private boolean fmt = true;
-  private boolean fmu = true;
-  private boolean fmv = true;
-  private boolean fmw = true;
-  private boolean fmx = true;
-  private boolean fmy = true;
-  private boolean fmz = true;
+  public dob field_tipsShowInfo;
+  private boolean foA = true;
+  private boolean foB = true;
+  private boolean foC = true;
+  private boolean jdField_for = true;
+  private boolean fos = true;
+  private boolean fot = true;
+  private boolean fou = true;
+  private boolean fov = true;
+  private boolean fow = true;
+  private boolean fox = true;
+  private boolean foy = true;
+  private boolean foz = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -65,11 +65,11 @@ public abstract class en
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fmD != k) {
+      if (foD != k) {
         break label65;
       }
       this.field_tipId = paramCursor.getInt(i);
-      this.fmr = true;
+      this.jdField_for = true;
     }
     for (;;)
     {
@@ -77,22 +77,22 @@ public abstract class en
       break label20;
       break;
       label65:
-      if (fmE == k)
+      if (foE == k)
       {
         this.field_tipVersion = paramCursor.getInt(i);
       }
-      else if (fmF == k)
+      else if (foF == k)
       {
         this.field_tipkey = paramCursor.getString(i);
       }
-      else if (fmG == k)
+      else if (foG == k)
       {
         this.field_tipType = paramCursor.getInt(i);
       }
       else
       {
         boolean bool;
-        if (fmH == k)
+        if (foH == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -101,7 +101,7 @@ public abstract class en
             break;
           }
         }
-        if (fmI == k)
+        if (foI == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -110,7 +110,7 @@ public abstract class en
             break;
           }
         }
-        if (fmJ == k)
+        if (foJ == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -119,28 +119,28 @@ public abstract class en
             break;
           }
         }
-        if (fmK == k) {
+        if (foK == k) {
           this.field_beginShowTime = paramCursor.getLong(i);
-        } else if (fmL == k) {
+        } else if (foL == k) {
           this.field_disappearTime = paramCursor.getLong(i);
-        } else if (fmM == k) {
+        } else if (foM == k) {
           this.field_overdueTime = paramCursor.getLong(i);
-        } else if (fmN == k) {
+        } else if (foN == k) {
           try
           {
             byte[] arrayOfByte = paramCursor.getBlob(i);
             if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
               continue;
             }
-            this.field_tipsShowInfo = ((dne)new dne().parseFrom(arrayOfByte));
+            this.field_tipsShowInfo = ((dob)new dob().parseFrom(arrayOfByte));
           }
           catch (IOException localIOException)
           {
-            ad.e("MicroMsg.SDK.BaseNewTipsInfo", localIOException.getMessage());
+            ae.e("MicroMsg.SDK.BaseNewTipsInfo", localIOException.getMessage());
           }
-        } else if (eKz == k) {
+        } else if (eMi == k) {
           this.field_extInfo = paramCursor.getString(i);
-        } else if (fmO == k) {
+        } else if (foO == k) {
           this.field_pagestaytime = paramCursor.getLong(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -152,44 +152,44 @@ public abstract class en
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fmr) {
+    if (this.jdField_for) {
       localContentValues.put("tipId", Integer.valueOf(this.field_tipId));
     }
-    if (this.fms) {
+    if (this.fos) {
       localContentValues.put("tipVersion", Integer.valueOf(this.field_tipVersion));
     }
-    if (this.fmt) {
+    if (this.fot) {
       localContentValues.put("tipkey", this.field_tipkey);
     }
-    if (this.fmu) {
+    if (this.fou) {
       localContentValues.put("tipType", Integer.valueOf(this.field_tipType));
     }
-    if (this.fmv) {
+    if (this.fov) {
       localContentValues.put("isExit", Boolean.valueOf(this.field_isExit));
     }
-    if (this.fmw) {
+    if (this.fow) {
       localContentValues.put("hadRead", Boolean.valueOf(this.field_hadRead));
     }
-    if (this.fmx) {
+    if (this.fox) {
       localContentValues.put("isReject", Boolean.valueOf(this.field_isReject));
     }
-    if (this.fmy) {
+    if (this.foy) {
       localContentValues.put("beginShowTime", Long.valueOf(this.field_beginShowTime));
     }
-    if (this.fmz) {
+    if (this.foz) {
       localContentValues.put("disappearTime", Long.valueOf(this.field_disappearTime));
     }
-    if (this.fmA) {
+    if (this.foA) {
       localContentValues.put("overdueTime", Long.valueOf(this.field_overdueTime));
     }
-    if ((this.fmB) && (this.field_tipsShowInfo != null)) {}
+    if ((this.foB) && (this.field_tipsShowInfo != null)) {}
     try
     {
       localContentValues.put("tipsShowInfo", this.field_tipsShowInfo.toByteArray());
-      if (this.eKl) {
+      if (this.eLU) {
         localContentValues.put("extInfo", this.field_extInfo);
       }
-      if (this.fmC) {
+      if (this.foC) {
         localContentValues.put("pagestaytime", Long.valueOf(this.field_pagestaytime));
       }
       if (this.systemRowid > 0L) {
@@ -201,14 +201,14 @@ public abstract class en
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseNewTipsInfo", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseNewTipsInfo", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.en
  * JD-Core Version:    0.7.0.1
  */

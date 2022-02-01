@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Map;
 
 public final class CacheManager
-  extends x
+  extends z
 {
   @Deprecated
   public static boolean cacheDisabled()

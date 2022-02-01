@@ -21,13 +21,13 @@ public abstract interface d
   
   public abstract void bL(boolean paramBoolean);
   
+  public abstract void dC(String paramString);
+  
   public abstract void destroy();
   
-  public abstract void dz(String paramString);
-  
-  public abstract void gN(int paramInt);
-  
   public abstract void gO(int paramInt);
+  
+  public abstract void gP(int paramInt);
   
   public abstract void h(String paramString, int paramInt1, int paramInt2);
   
@@ -39,7 +39,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b.d
  * JD-Core Version:    0.7.0.1
  */

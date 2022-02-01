@@ -6,7 +6,7 @@ import com.tencent.pb.common.c.b;
 
 public final class j
 {
-  public static boolean ban(String paramString)
+  public static boolean bbQ(String paramString)
   {
     AppMethodBeat.i(62717);
     if (TextUtils.isEmpty(paramString))
@@ -19,12 +19,12 @@ public final class j
     return bool;
   }
   
-  public static int fZY()
+  public static int geA()
   {
     AppMethodBeat.i(62718);
     try
     {
-      int i = a.fZg().uRy;
+      int i = a.gdH().vdk;
       AppMethodBeat.o(62718);
       return i;
     }
@@ -36,12 +36,12 @@ public final class j
     return 0;
   }
   
-  public static long fZZ()
+  public static long geB()
   {
     AppMethodBeat.i(62719);
     try
     {
-      long l = a.fZg().Clq;
+      long l = a.gdH().CCU;
       AppMethodBeat.o(62719);
       return l;
     }

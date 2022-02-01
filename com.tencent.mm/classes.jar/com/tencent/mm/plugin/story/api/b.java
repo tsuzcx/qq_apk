@@ -5,15 +5,15 @@ import java.util.List;
 
 public abstract interface b
 {
-  public abstract void c(WeakReference<c> paramWeakReference);
+  public abstract void ekA();
   
-  public abstract int egR();
+  public abstract List<String> ekB();
   
-  public abstract void egS();
+  public abstract int ekz();
   
-  public abstract List<String> egT();
+  public abstract void g(WeakReference<c> paramWeakReference);
   
-  public abstract void gk(List<String> paramList);
+  public abstract void gt(List<String> paramList);
 }
 
 

@@ -23,27 +23,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.bv;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.chatroom.a.c;
+import com.tencent.mm.model.x;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.bfb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.bfr;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.o;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
 import java.io.File;
 
@@ -53,18 +55,18 @@ public class SelfQRCodeUI
   implements f
 {
   private static final String PATH;
-  private ProgressDialog fMu = null;
-  private Bitmap hMs = null;
-  private ImageView lZa = null;
-  private TextView odU = null;
-  private long pek;
-  private TextView sBm = null;
+  private ProgressDialog fOC = null;
+  private Bitmap hPl = null;
+  private ImageView mdt = null;
+  private TextView ojK = null;
+  private long pkQ;
+  private TextView sMl = null;
   private String userName = "";
-  private ImageView yDR = null;
-  private byte[] yDS = null;
-  private boolean yEG = false;
-  private LinearLayout yEH;
-  private b yEI;
+  private ImageView yTW = null;
+  private byte[] yTX = null;
+  private boolean yUL = false;
+  private LinearLayout yUM;
+  private b yUN;
   
   static
   {
@@ -73,38 +75,38 @@ public class SelfQRCodeUI
     AppMethodBeat.o(73978);
   }
   
-  private void Pb(int paramInt)
+  private void PK(int paramInt)
   {
     AppMethodBeat.i(73970);
-    if (this.yEG) {}
-    for (int i = com.tencent.mm.sdk.platformtools.bt.n((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(66561, null));; i = 0)
+    if (this.yUL) {}
+    for (int i = bu.o((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(66561, null));; i = 0)
     {
       Object localObject;
-      if (w.zl(this.userName))
+      if (x.zV(this.userName))
       {
         localObject = new com.tencent.mm.openim.b.g(this.userName);
-        com.tencent.mm.kernel.g.aiU().a((com.tencent.mm.al.n)localObject, 0);
+        com.tencent.mm.kernel.g.ajj().a((n)localObject, 0);
       }
       for (;;)
       {
         AppCompatActivity localAppCompatActivity = getContext();
         getString(2131755906);
-        this.fMu = h.b(localAppCompatActivity, getString(2131763030), true, new DialogInterface.OnCancelListener()
+        this.fOC = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131763030), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
-            AppMethodBeat.i(220950);
-            com.tencent.mm.kernel.g.aiU().a(this.diy);
-            if ((w.zj(SelfQRCodeUI.d(SelfQRCodeUI.this))) || (com.tencent.mm.am.g.DQ(SelfQRCodeUI.d(SelfQRCodeUI.this)))) {
+            AppMethodBeat.i(190312);
+            com.tencent.mm.kernel.g.ajj().a(this.djA);
+            if ((x.zT(SelfQRCodeUI.d(SelfQRCodeUI.this))) || (com.tencent.mm.al.g.Es(SelfQRCodeUI.d(SelfQRCodeUI.this)))) {
               SelfQRCodeUI.this.finish();
             }
-            AppMethodBeat.o(220950);
+            AppMethodBeat.o(190312);
           }
         });
         AppMethodBeat.o(73970);
         return;
-        localObject = new com.tencent.mm.bd.a(this.userName, i, paramInt);
-        com.tencent.mm.kernel.g.aiU().a((com.tencent.mm.al.n)localObject, 0);
+        localObject = new com.tencent.mm.bc.a(this.userName, i, paramInt);
+        com.tencent.mm.kernel.g.ajj().a((n)localObject, 0);
       }
     }
   }
@@ -112,7 +114,7 @@ public class SelfQRCodeUI
   private void a(int paramInt1, int paramInt2, String paramString, a parama)
   {
     AppMethodBeat.i(73972);
-    if (com.tencent.mm.plugin.setting.b.iRH.b(getContext(), paramInt1, paramInt2, paramString))
+    if (com.tencent.mm.plugin.setting.c.iUA.b(getContext(), paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(73972);
       return;
@@ -123,27 +125,27 @@ public class SelfQRCodeUI
       AppMethodBeat.o(73972);
       return;
     }
-    this.yDS = parama.dNq();
-    this.hMs = com.tencent.mm.sdk.platformtools.g.cr(this.yDS);
-    if ((w.zj(this.userName)) || (com.tencent.mm.am.g.DQ(this.userName)))
+    this.yTX = parama.dQM();
+    this.hPl = com.tencent.mm.sdk.platformtools.h.cu(this.yTX);
+    if ((x.zT(this.userName)) || (com.tencent.mm.al.g.Es(this.userName)))
     {
       enableOptionMenu(true);
-      paramString = parama.dNr();
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString)) {
+      paramString = parama.dQN();
+      if (!bu.isNullOrNil(paramString)) {
         ((TextView)findViewById(2131303626)).setText(paramString);
       }
     }
     for (;;)
     {
-      this.yDR.setImageBitmap(this.hMs);
+      this.yTW.setImageBitmap(this.hPl);
       AppMethodBeat.o(73972);
       return;
-      if (this.yEG)
+      if (this.yUL)
       {
-        paramString = parama.dNs();
+        paramString = parama.dQO();
         parama = (TextView)findViewById(2131305888);
         View localView = (View)parama.getParent();
-        if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+        if (!bu.isNullOrNil(paramString))
         {
           parama.setText(paramString);
           localView.setOnClickListener(new SelfQRCodeUI.6(this));
@@ -157,10 +159,10 @@ public class SelfQRCodeUI
     }
   }
   
-  public static void dNp()
+  public static void dQL()
   {
     AppMethodBeat.i(73973);
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(219L, 14L, 1L, true);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(219L, 14L, 1L, true);
     AppMethodBeat.o(73973);
   }
   
@@ -178,25 +180,25 @@ public class SelfQRCodeUI
   {
     AppMethodBeat.i(73969);
     this.userName = getIntent().getStringExtra("from_userName");
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.userName)) {
-      this.userName = u.aAm();
+    if (bu.isNullOrNil(this.userName)) {
+      this.userName = v.aAC();
     }
-    if (u.aAm().equals(this.userName)) {
-      this.yEG = true;
+    if (v.aAC().equals(this.userName)) {
+      this.yUL = true;
     }
     Object localObject1;
     Object localObject2;
-    if (w.zj(this.userName))
+    if (x.zT(this.userName))
     {
       setMMTitle(2131763386);
       ((TextView)findViewById(2131303626)).setText("");
       enableOptionMenu(false);
-      this.yEH = ((LinearLayout)findViewById(2131303612));
-      this.yDR = ((ImageView)findViewById(2131304554));
-      this.lZa = ((ImageView)findViewById(2131300718));
-      this.odU = ((TextView)findViewById(2131302858));
-      this.sBm = ((TextView)findViewById(2131299151));
-      this.yEH.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+      this.yUM = ((LinearLayout)findViewById(2131303612));
+      this.yTW = ((ImageView)findViewById(2131304554));
+      this.mdt = ((ImageView)findViewById(2131300718));
+      this.ojK = ((TextView)findViewById(2131302858));
+      this.sMl = ((TextView)findViewById(2131299151));
+      this.yUM.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
       {
         public final boolean onPreDraw()
         {
@@ -213,31 +215,31 @@ public class SelfQRCodeUI
           return true;
         }
       });
-      if ((!w.zj(this.userName)) && (!com.tencent.mm.am.g.DQ(this.userName))) {
+      if ((!x.zT(this.userName)) && (!com.tencent.mm.al.g.Es(this.userName))) {
         break label471;
       }
-      Pb(1);
-      a.b.c(this.lZa, this.userName);
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(this.userName);
-      this.odU.setSingleLine(false);
-      this.odU.setMaxLines(3);
-      if (!w.zm(this.userName)) {
+      PK(1);
+      a.b.c(this.mdt, this.userName);
+      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(this.userName);
+      this.ojK.setSingleLine(false);
+      this.ojK.setMaxLines(3);
+      if (!x.zW(this.userName)) {
         break label445;
       }
       localObject2 = getResources().getDrawable(2131691000);
-      this.odU.setCompoundDrawablesWithIntrinsicBounds(null, null, (Drawable)localObject2, null);
+      this.ojK.setCompoundDrawablesWithIntrinsicBounds(null, null, (Drawable)localObject2, null);
       label287:
       if (localObject1 == null) {
         break label459;
       }
       localObject2 = ((aw)localObject1).field_nickname;
       localObject1 = localObject2;
-      if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject2)) {
-        localObject1 = ((c)com.tencent.mm.kernel.g.ab(c.class)).azz().AO(this.userName).field_displayname;
+      if (bu.isNullOrNil((String)localObject2)) {
+        localObject1 = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().By(this.userName).field_displayname;
       }
-      this.odU.setText(k.b(this, (CharSequence)localObject1, this.odU.getTextSize()));
+      this.ojK.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this, (CharSequence)localObject1, this.ojK.getTextSize()));
       label351:
-      this.sBm.setVisibility(8);
+      this.sMl.setVisibility(8);
     }
     for (;;)
     {
@@ -264,7 +266,7 @@ public class SelfQRCodeUI
       });
       AppMethodBeat.o(73969);
       return;
-      if (com.tencent.mm.am.g.DQ(this.userName))
+      if (com.tencent.mm.al.g.Es(this.userName))
       {
         setMMTitle(2131758446);
         ((TextView)findViewById(2131303626)).setText(2131758447);
@@ -274,53 +276,53 @@ public class SelfQRCodeUI
       setMMTitle(2131763374);
       break;
       label445:
-      this.odU.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      this.ojK.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       break label287;
       label459:
-      this.odU.setVisibility(8);
+      this.ojK.setVisibility(8);
       break label351;
       label471:
-      localObject2 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(42, null);
+      localObject2 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(42, null);
       localObject1 = getString(2131755760);
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject2))
+      if (!bu.isNullOrNil((String)localObject2))
       {
         localObject1 = (String)localObject1 + (String)localObject2;
         label521:
-        ad.d("MicroMsg.SelfQRCodeNewUI", "display user name = %s", new Object[] { localObject1 });
-        if (this.hMs != null) {
+        ae.d("MicroMsg.SelfQRCodeNewUI", "display user name = %s", new Object[] { localObject1 });
+        if (this.hPl != null) {
           break label813;
         }
-        ad.d("MicroMsg.SelfQRCodeNewUI", "%s", new Object[] { "bitmap == null" });
-        Pb(1);
+        ae.d("MicroMsg.SelfQRCodeNewUI", "%s", new Object[] { "bitmap == null" });
+        PK(1);
       }
       for (;;)
       {
-        a.b.c(this.lZa, u.aAm());
-        localObject1 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(4, null);
-        ad.d("MicroMsg.SelfQRCodeNewUI", "nick name = %s", new Object[] { localObject1 });
-        this.odU.setText(k.b(this, (CharSequence)localObject1, com.tencent.mm.cc.a.ax(getContext(), 2131165466)));
-        localObject2 = com.tencent.mm.model.bt.aCv();
-        localObject1 = com.tencent.mm.sdk.platformtools.bt.nullAsNil(((com.tencent.mm.model.bt)localObject2).getProvince());
-        localObject2 = com.tencent.mm.sdk.platformtools.bt.nullAsNil(((com.tencent.mm.model.bt)localObject2).getCity());
-        localObject1 = v.zh((String)localObject1) + " " + (String)localObject2;
-        ad.d("MicroMsg.SelfQRCodeNewUI", "display location = %s", new Object[] { localObject1 });
-        this.sBm.setText((CharSequence)localObject1);
-        switch (com.tencent.mm.sdk.platformtools.bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(12290, null), 0))
+        a.b.c(this.mdt, v.aAC());
+        localObject1 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(4, null);
+        ae.d("MicroMsg.SelfQRCodeNewUI", "nick name = %s", new Object[] { localObject1 });
+        this.ojK.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this, (CharSequence)localObject1, com.tencent.mm.cb.a.ax(getContext(), 2131165466)));
+        localObject2 = bv.aCL();
+        localObject1 = bu.nullAsNil(((bv)localObject2).getProvince());
+        localObject2 = bu.nullAsNil(((bv)localObject2).getCity());
+        localObject1 = w.zR((String)localObject1) + " " + (String)localObject2;
+        ae.d("MicroMsg.SelfQRCodeNewUI", "display location = %s", new Object[] { localObject1 });
+        this.sMl.setText((CharSequence)localObject1);
+        switch (bu.a((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(12290, null), 0))
         {
         default: 
           break;
         case 1: 
-          this.odU.setCompoundDrawablesWithIntrinsicBounds(null, null, com.tencent.mm.cc.a.l(this, 2131690323), null);
+          this.ojK.setCompoundDrawablesWithIntrinsicBounds(null, null, com.tencent.mm.cb.a.l(this, 2131690323), null);
           break;
-          localObject2 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(2, null);
+          localObject2 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(2, null);
           localObject1 = (String)localObject1 + (String)localObject2;
-          am.aSX((String)localObject2);
+          an.aUy((String)localObject2);
           break label521;
           label813:
-          this.yDR.setImageBitmap(this.hMs);
+          this.yTW.setImageBitmap(this.hPl);
         }
       }
-      this.odU.setCompoundDrawablesWithIntrinsicBounds(null, null, com.tencent.mm.cc.a.l(this, 2131690322), null);
+      this.ojK.setCompoundDrawablesWithIntrinsicBounds(null, null, com.tencent.mm.cb.a.l(this, 2131690322), null);
     }
   }
   
@@ -329,12 +331,12 @@ public class SelfQRCodeUI
     AppMethodBeat.i(73966);
     super.onCreate(paramBundle);
     hideActionbarLine();
-    this.yEI = new b(this);
-    this.yEI.start();
-    com.tencent.mm.kernel.g.aiU().a(168, this);
-    com.tencent.mm.kernel.g.aiU().a(890, this);
+    this.yUN = new b(this);
+    this.yUN.start();
+    com.tencent.mm.kernel.g.ajj().a(168, this);
+    com.tencent.mm.kernel.g.ajj().a(890, this);
     initView();
-    this.yDR.post(new Runnable()
+    this.yTW.post(new Runnable()
     {
       public final void run()
       {
@@ -353,15 +355,15 @@ public class SelfQRCodeUI
   public void onDestroy()
   {
     AppMethodBeat.i(73967);
-    com.tencent.mm.kernel.g.aiU().b(168, this);
-    com.tencent.mm.kernel.g.aiU().b(890, this);
-    if (this.yEI != null) {
-      this.yEI.stop();
+    com.tencent.mm.kernel.g.ajj().b(168, this);
+    com.tencent.mm.kernel.g.ajj().b(890, this);
+    if (this.yUN != null) {
+      this.yUN.stop();
     }
-    if ((this.hMs != null) && (!this.hMs.isRecycled()))
+    if ((this.hPl != null) && (!this.hPl.isRecycled()))
     {
-      ad.i("MicroMsg.SelfQRCodeNewUI", "bitmap recycle %s", new Object[] { this.hMs.toString() });
-      this.hMs.recycle();
+      ae.i("MicroMsg.SelfQRCodeNewUI", "bitmap recycle %s", new Object[] { this.hPl.toString() });
+      this.hPl.recycle();
     }
     super.onDestroy();
     AppMethodBeat.o(73967);
@@ -371,60 +373,76 @@ public class SelfQRCodeUI
   {
     AppMethodBeat.i(73968);
     super.onResume();
-    if ((w.zj(this.userName)) || (com.tencent.mm.am.g.DQ(this.userName)))
+    if ((x.zT(this.userName)) || (com.tencent.mm.al.g.Es(this.userName)))
     {
       AppMethodBeat.o(73968);
       return;
     }
     View localView = findViewById(2131304557);
-    this.pek = u.aAr();
-    ad.d("MicroMsg.SelfQRCodeNewUI", (this.pek & 0x2) + ",extstatus:" + this.pek);
-    if ((this.pek & 0x2) != 0L)
+    this.pkQ = v.aAH();
+    ae.d("MicroMsg.SelfQRCodeNewUI", (this.pkQ & 0x2) + ",extstatus:" + this.pkQ);
+    if ((this.pkQ & 0x2) != 0L)
     {
       localView.setVisibility(0);
-      this.yDR.setAlpha(0.1F);
+      this.yTW.setAlpha(0.1F);
       findViewById(2131304556).setOnClickListener(new SelfQRCodeUI.10(this));
       AppMethodBeat.o(73968);
       return;
     }
     localView.setVisibility(8);
-    this.yDR.setAlpha(1.0F);
+    this.yTW.setAlpha(1.0F);
     AppMethodBeat.o(73968);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(73971);
-    ad.i("MicroMsg.SelfQRCodeNewUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fMu != null)
+    ae.i("MicroMsg.SelfQRCodeNewUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
-    if ((paramn instanceof com.tencent.mm.bd.a))
+    if ((paramn instanceof com.tencent.mm.bc.a))
     {
-      a(paramInt1, paramInt2, paramString, new SelfQRCodeUI.4(this, (com.tencent.mm.bd.a)paramn));
+      a(paramInt1, paramInt2, paramString, new a()
+      {
+        public final byte[] dQM()
+        {
+          return this.yUP.imz;
+        }
+        
+        public final String dQN()
+        {
+          return this.yUP.imx;
+        }
+        
+        public final String dQO()
+        {
+          return this.yUP.imy;
+        }
+      });
       AppMethodBeat.o(73971);
       return;
     }
     if ((paramn instanceof com.tencent.mm.openim.b.g))
     {
-      paramn = (bfb)((com.tencent.mm.al.b)((com.tencent.mm.openim.b.g)paramn).getReqResp()).hNL.hNQ;
+      paramn = (bfr)((com.tencent.mm.ak.b)((com.tencent.mm.openim.b.g)paramn).getReqResp()).hQE.hQJ;
       a(paramInt1, paramInt2, paramString, new a()
       {
-        public final byte[] dNq()
+        public final byte[] dQM()
         {
-          return this.yEL;
+          return this.yUQ;
         }
         
-        public final String dNr()
+        public final String dQN()
         {
-          return this.kAQ;
+          return this.kEf;
         }
         
-        public final String dNs()
+        public final String dQO()
         {
-          return this.kAQ;
+          return this.kEf;
         }
       });
     }
@@ -439,37 +457,37 @@ public class SelfQRCodeUI
   
   static abstract interface a
   {
-    public abstract byte[] dNq();
+    public abstract byte[] dQM();
     
-    public abstract String dNr();
+    public abstract String dQN();
     
-    public abstract String dNs();
+    public abstract String dQO();
   }
   
   public final class b
     extends FileObserver
   {
-    private MMActivity yEM;
-    private String yEN;
+    private MMActivity yUR;
+    private String yUS;
     
     public b(MMActivity paramMMActivity)
     {
       super(8);
       AppMethodBeat.i(73962);
-      this.yEM = paramMMActivity;
+      this.yUR = paramMMActivity;
       AppMethodBeat.o(73962);
     }
     
     public final void onEvent(int paramInt, String paramString)
     {
       AppMethodBeat.i(73963);
-      if ((paramString != null) && (paramInt == 8) && ((this.yEN == null) || (!paramString.equalsIgnoreCase(this.yEN))))
+      if ((paramString != null) && (paramInt == 8) && ((this.yUS == null) || (!paramString.equalsIgnoreCase(this.yUS))))
       {
-        this.yEN = paramString;
-        paramString = new com.tencent.mm.vfs.e(SelfQRCodeUI.ccN() + paramString);
-        com.tencent.mm.sdk.platformtools.n.a(SelfQRCodeUI.this.getContext(), paramString);
-        SelfQRCodeUI.dNp();
-        ad.i("MicroMsg.SelfQRCodeNewUI$ScreenshotObserver", "Send event to listener.");
+        this.yUS = paramString;
+        paramString = new com.tencent.mm.vfs.k(SelfQRCodeUI.cec() + paramString);
+        o.a(SelfQRCodeUI.this.getContext(), paramString);
+        SelfQRCodeUI.dQL();
+        ae.i("MicroMsg.SelfQRCodeNewUI$ScreenshotObserver", "Send event to listener.");
       }
       AppMethodBeat.o(73963);
     }

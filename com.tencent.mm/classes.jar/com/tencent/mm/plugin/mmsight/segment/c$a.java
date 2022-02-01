@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 public abstract interface c$a
 {
-  public abstract void ou(boolean paramBoolean);
+  public abstract void oz(boolean paramBoolean);
 }
 
 

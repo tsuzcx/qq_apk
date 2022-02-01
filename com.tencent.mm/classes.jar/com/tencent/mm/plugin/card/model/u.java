@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cub;
-import com.tencent.mm.protocal.protobuf.cuc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.protocal.protobuf.cuw;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class u
   extends n
@@ -24,19 +24,19 @@ public final class u
   {
     AppMethodBeat.i(112818);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cub();
-    ((b.a)localObject).hNN = new cuc();
+    ((b.a)localObject).hQF = new cuv();
+    ((b.a)localObject).hQG = new cuw();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/reportlocation";
     ((b.a)localObject).funcId = 1253;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (cub)this.rr.hNK.hNQ;
-    ((cub)localObject).latitude = paramFloat1;
-    ((cub)localObject).longitude = paramFloat2;
-    ((cub)localObject).dHX = paramString1;
-    ((cub)localObject).oxM = paramString2;
-    ((cub)localObject).HlY = paramInt;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cuv)this.rr.hQD.hQJ;
+    ((cuv)localObject).latitude = paramFloat1;
+    ((cuv)localObject).longitude = paramFloat2;
+    ((cuv)localObject).dJb = paramString1;
+    ((cuv)localObject).oEo = paramString2;
+    ((cuv)localObject).HFy = paramInt;
     AppMethodBeat.o(112818);
   }
   
@@ -57,7 +57,7 @@ public final class u
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112820);
-    ad.i("MicroMsg.NetSceneCardReportLocation", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    ae.i("MicroMsg.NetSceneCardReportLocation", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112820);
   }

@@ -5,16 +5,16 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class p
-  extends cvp
+  extends cwj
 {
-  public String FpI;
-  public a FpS;
-  public String FpY;
-  public String dEn;
-  public int dlw = 268513600;
-  public String paA = "请求不成功，请稍候再试";
-  public String thm;
-  public String xYy;
+  public String FIg;
+  public a FIq;
+  public String FIw;
+  public String dFs;
+  public int dmy = 268513600;
+  public String phe = "请求不成功，请稍候再试";
+  public String tsf;
+  public String yoq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -30,32 +30,32 @@ public final class p
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.dlw);
-      if (this.paA != null) {
-        paramVarArgs.d(3, this.paA);
+      paramVarArgs.aS(2, this.dmy);
+      if (this.phe != null) {
+        paramVarArgs.d(3, this.phe);
       }
-      if (this.thm != null) {
-        paramVarArgs.d(4, this.thm);
+      if (this.tsf != null) {
+        paramVarArgs.d(4, this.tsf);
       }
-      if (this.dEn != null) {
-        paramVarArgs.d(5, this.dEn);
+      if (this.dFs != null) {
+        paramVarArgs.d(5, this.dFs);
       }
-      if (this.xYy != null) {
-        paramVarArgs.d(7, this.xYy);
+      if (this.yoq != null) {
+        paramVarArgs.d(7, this.yoq);
       }
-      if (this.FpI != null) {
-        paramVarArgs.d(8, this.FpI);
+      if (this.FIg != null) {
+        paramVarArgs.d(8, this.FIg);
       }
-      if (this.FpS != null)
+      if (this.FIq != null)
       {
-        paramVarArgs.lC(9, this.FpS.computeSize());
-        this.FpS.writeFields(paramVarArgs);
+        paramVarArgs.lJ(9, this.FIq.computeSize());
+        this.FIq.writeFields(paramVarArgs);
       }
-      if (this.FpY != null) {
-        paramVarArgs.d(10, this.FpY);
+      if (this.FIw != null) {
+        paramVarArgs.d(10, this.FIw);
       }
       AppMethodBeat.o(91327);
       return 0;
@@ -66,45 +66,45 @@ public final class p
       }
     }
     label930:
-    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.dlw);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.dmy);
       paramInt = i;
-      if (this.paA != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.paA);
+      if (this.phe != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.phe);
       }
       i = paramInt;
-      if (this.thm != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.thm);
+      if (this.tsf != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.tsf);
       }
       paramInt = i;
-      if (this.dEn != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.dEn);
+      if (this.dFs != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.dFs);
       }
       i = paramInt;
-      if (this.xYy != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.xYy);
+      if (this.yoq != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.yoq);
       }
       paramInt = i;
-      if (this.FpI != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.FpI);
+      if (this.FIg != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.FIg);
       }
       i = paramInt;
-      if (this.FpS != null) {
-        i = paramInt + f.a.a.a.lB(9, this.FpS.computeSize());
+      if (this.FIq != null) {
+        i = paramInt + f.a.a.a.lI(9, this.FIq.computeSize());
       }
       paramInt = i;
-      if (this.FpY != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.FpY);
+      if (this.FIw != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.FIw);
       }
       AppMethodBeat.o(91327);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.BaseResponse == null)
@@ -130,7 +130,7 @@ public final class p
           AppMethodBeat.o(91327);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -138,38 +138,38 @@ public final class p
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localp.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91327);
           return 0;
         case 2: 
-          localp.dlw = ((f.a.a.a.a)localObject1).NPN.zc();
+          localp.dmy = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91327);
           return 0;
         case 3: 
-          localp.paA = ((f.a.a.a.a)localObject1).NPN.readString();
+          localp.phe = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91327);
           return 0;
         case 4: 
-          localp.thm = ((f.a.a.a.a)localObject1).NPN.readString();
+          localp.tsf = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91327);
           return 0;
         case 5: 
-          localp.dEn = ((f.a.a.a.a)localObject1).NPN.readString();
+          localp.dFs = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91327);
           return 0;
         case 7: 
-          localp.xYy = ((f.a.a.a.a)localObject1).NPN.readString();
+          localp.yoq = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91327);
           return 0;
         case 8: 
-          localp.FpI = ((f.a.a.a.a)localObject1).NPN.readString();
+          localp.FIg = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91327);
           return 0;
         case 9: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -177,14 +177,14 @@ public final class p
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new a();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((a)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localp.FpS = ((a)localObject1);
+            for (bool = true; bool; bool = ((a)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localp.FIq = ((a)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91327);
           return 0;
         }
-        localp.FpY = ((f.a.a.a.a)localObject1).NPN.readString();
+        localp.FIw = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(91327);
         return 0;
       }

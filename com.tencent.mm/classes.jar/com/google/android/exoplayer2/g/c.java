@@ -56,7 +56,7 @@ public final class c
     }
   }
   
-  private static int a(o paramo, int[] paramArrayOfInt, a parama)
+  private static int a(o paramo, int[] paramArrayOfInt, c.a parama)
   {
     AppMethodBeat.i(92940);
     int j = 0;
@@ -352,7 +352,7 @@ public final class c
         {
           paramArrayOfInt = null;
           label346:
-          paramArrayOfInt = new a(k, n, paramArrayOfInt);
+          paramArrayOfInt = new c.a(k, n, paramArrayOfInt);
           if (!paramb.add(paramArrayOfInt)) {
             break label533;
           }
@@ -454,7 +454,7 @@ public final class c
     }
   }
   
-  private static boolean a(Format paramFormat, int paramInt, a parama)
+  private static boolean a(Format paramFormat, int paramInt, c.a parama)
   {
     AppMethodBeat.i(92941);
     if ((o(paramInt, false)) && (paramFormat.channelCount == parama.channelCount) && (paramFormat.sampleRate == parama.sampleRate) && ((parama.mimeType == null) || (TextUtils.equals(parama.mimeType, paramFormat.bdt))))
@@ -924,56 +924,6 @@ public final class c
     }
   }
   
-  static final class a
-  {
-    public final int channelCount;
-    public final String mimeType;
-    public final int sampleRate;
-    
-    public a(int paramInt1, int paramInt2, String paramString)
-    {
-      this.channelCount = paramInt1;
-      this.sampleRate = paramInt2;
-      this.mimeType = paramString;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(92929);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(92929);
-        return true;
-      }
-      if ((paramObject == null) || (getClass() != paramObject.getClass()))
-      {
-        AppMethodBeat.o(92929);
-        return false;
-      }
-      paramObject = (a)paramObject;
-      if ((this.channelCount == paramObject.channelCount) && (this.sampleRate == paramObject.sampleRate) && (TextUtils.equals(this.mimeType, paramObject.mimeType)))
-      {
-        AppMethodBeat.o(92929);
-        return true;
-      }
-      AppMethodBeat.o(92929);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(92930);
-      int j = this.channelCount;
-      int k = this.sampleRate;
-      if (this.mimeType != null) {}
-      for (int i = this.mimeType.hashCode();; i = 0)
-      {
-        AppMethodBeat.o(92930);
-        return i + (j * 31 + k) * 31;
-      }
-    }
-  }
-  
   public static final class b
   {
     public final String bEh = null;
@@ -1082,7 +1032,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.g.c
  * JD-Core Version:    0.7.0.1
  */

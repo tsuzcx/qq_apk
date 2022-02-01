@@ -3,20 +3,21 @@ package com.tencent.mm.plugin.finder.upload;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.g.d;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.plugin.finder.cgi.aw;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.plugin.finder.cgi.ax;
 import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.report.n.b;
-import com.tencent.mm.plugin.finder.report.n.c;
+import com.tencent.mm.plugin.finder.report.o.b;
+import com.tencent.mm.plugin.finder.report.o.c;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aan;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.protocal.protobuf.bvg;
-import com.tencent.mm.protocal.protobuf.dom;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.protocal.protobuf.aaq;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.protocal.protobuf.bwa;
+import com.tencent.mm.protocal.protobuf.dpj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -24,308 +25,343 @@ import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderPostTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "finderObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getFinderObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFinderObj", "call", "", "checkIfNeedMarkDelete", "preUrl", "", "clearPostFile", "doPostScene", "feedObject", "isToManyTry", "", "postinfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "moveFileToPost", "moveFileToPostForNormal", "moveFileToPostForVLog", "notifyError", "errType", "", "errCode", "errMsg", "onSceneEnd", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "tryPost", "postInfo", "uniqueId", "updateTryCount", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/FinderPostTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "finderObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getFinderObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFinderObj", "call", "", "checkIfNeedMarkDelete", "preUrl", "", "clearPostFile", "doPostScene", "feedObject", "isToManyTry", "", "postinfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "moveFileToPost", "moveFileToPostForNormal", "moveFileToPostForVLog", "notifyError", "errType", "", "errCode", "errMsg", "onSceneEnd", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "tryPost", "postInfo", "uniqueId", "updateTryCount", "Companion", "plugin-finder_release"})
 public class h
   extends com.tencent.mm.loader.g.c
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private static boolean sJo;
-  public static final a sJp;
-  FinderItem sIF;
+  private static boolean sUB;
+  public static final a sUC;
+  FinderItem sTR;
   
   static
   {
     AppMethodBeat.i(167777);
-    sJp = new a((byte)0);
+    sUC = new a((byte)0);
     AppMethodBeat.o(167777);
   }
   
   public h(FinderItem paramFinderItem)
   {
     AppMethodBeat.i(167776);
-    this.sIF = paramFinderItem;
+    this.sTR = paramFinderItem;
     AppMethodBeat.o(167776);
   }
   
-  private final void aiN(String paramString)
+  private final void ajK(String paramString)
   {
     AppMethodBeat.i(167773);
-    ad.w("Finder.LogPost.FinderPostTask", "post failed, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), paramString });
-    this.sIF.setPostFailed();
-    paramString = this.sIF.field_reportObject;
+    ae.w("Finder.LogPost.FinderPostTask", "post failed, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), paramString });
+    this.sTR.setPostFailed();
+    paramString = this.sTR.field_reportObject;
     if (paramString != null) {
       paramString.cgiErrorType = -1;
     }
-    paramString = this.sIF.field_reportObject;
+    paramString = this.sTR.field_reportObject;
     if (paramString != null) {
       paramString.cgiErrorCode = -1;
     }
-    paramString = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
-    b.a.i(this.sIF);
-    a(com.tencent.mm.loader.g.j.hfL);
-    paramString = g.sJk;
-    g.cKK().xk(this.sIF.getLocalId());
-    paramString = n.c.sqy;
-    n.c.cDN();
+    paramString = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
+    b.a.i(this.sTR);
+    a(com.tencent.mm.loader.g.j.hiz);
+    paramString = g.sUx;
+    g.cNo().xB(this.sTR.getLocalId());
+    paramString = o.c.sAI;
+    o.c.cFJ();
     AppMethodBeat.o(167773);
   }
   
-  private static void aiO(String paramString)
+  private static void ajL(String paramString)
   {
     AppMethodBeat.i(167775);
-    Object localObject = com.tencent.mm.plugin.finder.utils.r.sNc;
-    if (d.n.n.nz(paramString, com.tencent.mm.plugin.finder.utils.r.cLQ()))
+    Object localObject = com.tencent.mm.plugin.finder.utils.r.sYn;
+    if (d.n.n.nF(paramString, com.tencent.mm.plugin.finder.utils.r.cOy()))
     {
-      localObject = f.sJc;
-      f.aiM(paramString);
+      localObject = f.sUp;
+      f.ajJ(paramString);
     }
     AppMethodBeat.o(167775);
   }
   
-  private final void cKM()
+  private final void cNq()
   {
-    AppMethodBeat.i(204337);
-    Object localObject1 = ((bvf)this.sIF.getMediaExtList().get(0)).GPu.FZu;
-    p.g(localObject1, "compositionInfo.tracks");
-    localObject1 = ((Iterable)localObject1).iterator();
+    AppMethodBeat.i(204955);
+    Object localObject1 = ((bvz)this.sTR.getMediaExtList().get(0)).HiW;
     Object localObject2;
     Object localObject3;
-    while (((Iterator)localObject1).hasNext())
+    if (localObject1 != null)
     {
-      localObject2 = (dom)((Iterator)localObject1).next();
-      if (com.tencent.mm.vfs.i.fv(((dom)localObject2).path))
+      localObject1 = ((aaq)localObject1).GrU;
+      if (localObject1 != null)
       {
-        localObject3 = ((dom)localObject2).path;
-        p.g(localObject3, "it.path");
-        Object localObject4 = com.tencent.mm.plugin.finder.utils.r.sNc;
-        if (!d.n.n.nz((String)localObject3, com.tencent.mm.plugin.finder.utils.r.cLQ()))
+        localObject1 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.aje(ai.ee(((dom)localObject2).path) + ((dom)localObject2).hashCode());
-          com.tencent.mm.vfs.i.mz(((dom)localObject2).path, (String)localObject3);
-          ad.i("Finder.LogPost.FinderPostTask", "copy " + ((dom)localObject2).path + " to " + (String)localObject3 + "  real:" + com.tencent.mm.vfs.i.k((String)localObject3, false) + ",result:" + com.tencent.mm.vfs.i.fv((String)localObject3));
-          if (com.tencent.mm.vfs.i.fv((String)localObject3))
+          localObject2 = (dpj)((Iterator)localObject1).next();
+          if (o.fB(((dpj)localObject2).path))
           {
-            if (((dom)localObject2).BGb == 1)
+            localObject3 = ((dpj)localObject2).path;
+            p.g(localObject3, "it.path");
+            Object localObject4 = com.tencent.mm.plugin.finder.utils.r.sYn;
+            if (!d.n.n.nF((String)localObject3, com.tencent.mm.plugin.finder.utils.r.cOy()))
             {
-              localObject4 = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-              com.tencent.mm.plugin.recordvideo.e.b.avP(((dom)localObject2).path);
+              localObject3 = com.tencent.mm.plugin.finder.utils.r.sYn;
+              localObject3 = com.tencent.mm.plugin.finder.utils.r.akb(aj.ej(((dpj)localObject2).path) + ((dpj)localObject2).hashCode());
+              o.mF(((dpj)localObject2).path, (String)localObject3);
+              ae.i("Finder.LogPost.FinderPostTask", "copy " + ((dpj)localObject2).path + " to " + (String)localObject3 + "  real:" + o.k((String)localObject3, false) + ",result:" + o.fB((String)localObject3));
+              if (o.fB((String)localObject3))
+              {
+                if (((dpj)localObject2).BXz == 1)
+                {
+                  localObject4 = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+                  com.tencent.mm.plugin.recordvideo.e.b.axe(((dpj)localObject2).path);
+                }
+                ((dpj)localObject2).path = ((String)localObject3);
+              }
             }
-            ((dom)localObject2).path = ((String)localObject3);
           }
         }
       }
     }
-    localObject1 = ((bvf)this.sIF.getMediaExtList().get(0)).thumbUrl;
-    if (com.tencent.mm.vfs.i.fv((String)localObject1))
+    localObject1 = ((bvz)this.sTR.getMediaExtList().get(0)).thumbUrl;
+    if ((o.fB((String)localObject1)) && (localObject1 != null))
     {
-      p.g(localObject1, "thumbPath");
-      localObject2 = com.tencent.mm.plugin.finder.utils.r.sNc;
-      if (!d.n.n.nz((String)localObject1, com.tencent.mm.plugin.finder.utils.r.cLQ()))
+      localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+      if (!d.n.n.nF((String)localObject1, com.tencent.mm.plugin.finder.utils.r.cOy()))
       {
-        localObject2 = com.tencent.mm.plugin.finder.utils.r.sNc;
-        localObject2 = com.tencent.mm.plugin.finder.utils.r.aje(ai.ee((String)localObject1) + ((String)localObject1).hashCode());
-        com.tencent.mm.vfs.i.mz((String)localObject1, (String)localObject2);
-        ad.i("Finder.LogPost.FinderPostTask", "copy thumb" + (String)localObject1 + " to " + (String)localObject2 + "  real:" + com.tencent.mm.vfs.i.k((String)localObject2, false) + ",result:" + com.tencent.mm.vfs.i.fv((String)localObject2));
-        if (com.tencent.mm.vfs.i.fv((String)localObject2))
+        localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+        localObject2 = com.tencent.mm.plugin.finder.utils.r.akb(aj.ej((String)localObject1) + ((String)localObject1).hashCode());
+        o.mF((String)localObject1, (String)localObject2);
+        ae.i("Finder.LogPost.FinderPostTask", "copy thumb" + (String)localObject1 + " to " + (String)localObject2 + "  real:" + o.k((String)localObject2, false) + ",result:" + o.fB((String)localObject2));
+        if (o.fB((String)localObject2))
         {
-          localObject3 = com.tencent.mm.plugin.recordvideo.e.b.xRl;
-          com.tencent.mm.plugin.recordvideo.e.b.avP((String)localObject1);
-          ((bvf)this.sIF.getMediaExtList().get(0)).thumbUrl = ((String)localObject2);
+          localObject3 = com.tencent.mm.plugin.recordvideo.e.b.yhe;
+          com.tencent.mm.plugin.recordvideo.e.b.axe((String)localObject1);
+          ((bvz)this.sTR.getMediaExtList().get(0)).thumbUrl = ((String)localObject2);
         }
       }
     }
-    AppMethodBeat.o(204337);
+    AppMethodBeat.o(204955);
   }
   
-  private final void cKN()
+  private final void cNr()
   {
-    AppMethodBeat.i(204338);
-    Iterator localIterator = ((Iterable)this.sIF.getMediaList()).iterator();
+    AppMethodBeat.i(204956);
+    Iterator localIterator = ((Iterable)this.sTR.getMediaList()).iterator();
     int i = 0;
-    label683:
-    label703:
-    label1262:
+    label937:
     if (localIterator.hasNext())
     {
       Object localObject1 = localIterator.next();
       if (i < 0) {
-        d.a.j.gfB();
+        d.a.j.gkd();
       }
-      localObject1 = (bvf)localObject1;
-      boolean bool1 = com.tencent.mm.vfs.i.fv(((bvf)localObject1).url);
-      boolean bool2 = com.tencent.mm.vfs.i.fv(((bvf)localObject1).thumbUrl);
-      boolean bool3 = com.tencent.mm.vfs.i.fv(((bvf)localObject1).coverUrl);
-      Object localObject2 = ai.ee(((bvf)localObject1).url);
-      ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost, mediaId: " + (String)localObject2 + ", fileExist:" + bool1 + ", thumbExist:" + bool2 + ", before url: " + ((bvf)localObject1).url + ", " + ((bvf)localObject1).thumbUrl + ", " + ((bvf)localObject1).coverUrl);
+      bvz localbvz = (bvz)localObject1;
+      boolean bool1 = o.fB(localbvz.url);
+      boolean bool2 = o.fB(localbvz.thumbUrl);
+      boolean bool3 = o.fB(localbvz.coverUrl);
+      localObject1 = aj.ej(localbvz.url);
+      ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost, mediaId: " + (String)localObject1 + ", fileExist:" + bool1 + ", thumbExist:" + bool2 + ", before url: " + localbvz.url + ", " + localbvz.thumbUrl + ", " + localbvz.coverUrl);
       if ((bool1) || (bool2)) {
-        switch (((bvf)localObject1).mediaType)
+        switch (localbvz.mediaType)
         {
         }
       }
-      label895:
-      label1279:
+      label691:
+      label1335:
       for (;;)
       {
-        ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost, after mediaId: " + ((bvf)localObject1).mediaId + ", url: " + ((bvf)localObject1).url + ", " + ((bvf)localObject1).thumbUrl + ", " + ((bvf)localObject1).coverUrl);
+        ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost, after mediaId: " + localbvz.mediaId + ", url: " + localbvz.url + ", " + localbvz.thumbUrl + ", " + localbvz.coverUrl);
         i += 1;
         break;
+        Object localObject2;
         Object localObject3;
         Object localObject4;
-        Object localObject5;
         if ((bool1) && (bool2))
         {
-          localObject2 = ((bvf)localObject1).thumbUrl;
-          p.g(localObject2, "it.thumbUrl");
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-          if (!d.n.n.nz((String)localObject2, com.tencent.mm.plugin.finder.utils.r.cLQ()))
+          localObject1 = localbvz.thumbUrl;
+          if (localObject1 != null)
           {
-            ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost Image thumb");
-            localObject2 = f.sJc;
-            localObject2 = ((bvf)localObject1).url;
-            p.g(localObject2, "it.url");
-            localObject3 = ((bvf)localObject1).thumbUrl;
-            p.g(localObject3, "it.thumbUrl");
-            p.h(localObject2, "imagePath");
-            p.h(localObject3, "thumbOriginPath");
-            localObject4 = com.tencent.mm.plugin.finder.utils.r.sNc;
-            p.h(localObject2, "imagePath");
-            localObject4 = com.tencent.mm.plugin.finder.utils.r.cLQ() + "image_" + ai.ee((String)localObject2) + "_" + com.tencent.mm.vfs.i.aYp((String)localObject2) + "_thumb";
-            ad.i(f.TAG, "copyImageThumbFromTmpToPost, imagePath:" + (String)localObject2 + ", thumbOriginPath:" + (String)localObject3 + ", thumbPostPath:" + (String)localObject4);
-            localObject5 = i.sJt;
-            if (!i.aiP((String)localObject3)) {
-              break label683;
+            localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+            if (d.n.n.nF((String)localObject1, com.tencent.mm.plugin.finder.utils.r.cOy()) == true) {}
+          }
+          else
+          {
+            ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost Image thumb");
+            localObject1 = f.sUp;
+            localObject2 = localbvz.url;
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = "";
             }
-            ad.i(f.TAG, "copyImageThumbFromTmpToPost exist, copy");
-            com.tencent.mm.vfs.i.mz((String)localObject3, (String)localObject4);
+            localObject3 = localbvz.thumbUrl;
+            localObject2 = localObject3;
+            if (localObject3 == null) {
+              localObject2 = "";
+            }
+            p.h(localObject1, "imagePath");
+            p.h(localObject2, "thumbOriginPath");
+            localObject3 = com.tencent.mm.plugin.finder.utils.r.sYn;
+            p.h(localObject1, "imagePath");
+            localObject3 = com.tencent.mm.plugin.finder.utils.r.cOy() + "image_" + aj.ej((String)localObject1) + "_" + o.aZS((String)localObject1) + "_thumb";
+            ae.i(f.TAG, "copyImageThumbFromTmpToPost, imagePath:" + (String)localObject1 + ", thumbOriginPath:" + (String)localObject2 + ", thumbPostPath:" + (String)localObject3);
+            localObject4 = i.sUG;
+            if (!i.ajM((String)localObject2)) {
+              break label691;
+            }
+            ae.i(f.TAG, "copyImageThumbFromTmpToPost exist, copy");
+            o.mF((String)localObject2, (String)localObject3);
           }
         }
         long l;
         for (;;)
         {
-          if (com.tencent.mm.vfs.i.fv((String)localObject4)) {
-            ((bvf)localObject1).thumbUrl = ((String)localObject4);
+          if (o.fB((String)localObject3)) {
+            localbvz.thumbUrl = ((String)localObject3);
           }
           if (!bool1) {
             break;
           }
-          localObject2 = ((bvf)localObject1).url;
-          p.g(localObject2, "it.url");
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-          if (d.n.n.nz((String)localObject2, com.tencent.mm.plugin.finder.utils.r.cLQ())) {
-            break;
+          localObject1 = localbvz.url;
+          if (localObject1 != null)
+          {
+            localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+            if (d.n.n.nF((String)localObject1, com.tencent.mm.plugin.finder.utils.r.cOy()) == true) {
+              break;
+            }
           }
-          ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost Image");
-          localObject2 = new com.tencent.mm.plugin.finder.loader.g((bvf)localObject1, com.tencent.mm.plugin.finder.storage.r.syD);
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-          localObject2 = com.tencent.mm.plugin.finder.utils.r.a((com.tencent.mm.plugin.finder.loader.g)localObject2, String.valueOf(this.sIF.getCreateTime()));
-          l = com.tencent.mm.vfs.i.mz(((bvf)localObject1).url, (String)localObject2);
-          if (!com.tencent.mm.vfs.i.fv((String)localObject2)) {
-            break label703;
+          ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost Image");
+          localObject1 = new com.tencent.mm.plugin.finder.loader.g(localbvz, com.tencent.mm.plugin.finder.storage.r.sJu);
+          localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+          localObject1 = com.tencent.mm.plugin.finder.utils.r.a((com.tencent.mm.plugin.finder.loader.g)localObject1, String.valueOf(this.sTR.getCreateTime()));
+          l = o.mF(localbvz.url, (String)localObject1);
+          if (!o.fB((String)localObject1)) {
+            break label711;
           }
-          ((bvf)localObject1).url = ((String)localObject2);
-          ((bvf)localObject1).mediaId = ai.ee(((bvf)localObject1).url);
+          localbvz.url = ((String)localObject1);
+          localbvz.mediaId = aj.ej(localbvz.url);
           break;
-          ad.i(f.TAG, "copyImageThumbFromTmpToPost not exist, generate");
-          f.gs((String)localObject2, (String)localObject4);
+          ae.i(f.TAG, "copyImageThumbFromTmpToPost not exist, generate");
+          f.gx((String)localObject1, (String)localObject3);
         }
-        ad.i("Finder.LogPost.FinderPostTask", "copy Image failed, copyRet:".concat(String.valueOf(l)));
+        label711:
+        ae.i("Finder.LogPost.FinderPostTask", "copy Image failed, copyRet:".concat(String.valueOf(l)));
         continue;
-        if (!this.sIF.isNeedCrop(i))
+        if (!this.sTR.isNeedCrop(i))
         {
           if ((bool1) && (bool2))
           {
-            ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost Video thumb");
-            localObject2 = ((bvf)localObject1).thumbUrl;
-            localObject3 = f.sJc;
-            localObject3 = ((bvf)localObject1).url;
-            p.g(localObject3, "it.url");
-            localObject5 = ((bvf)localObject1).thumbUrl;
-            p.g(localObject5, "it.thumbUrl");
-            p.h(localObject3, "videoFilePath");
-            p.h(localObject5, "thumbOriginPath");
-            localObject4 = com.tencent.mm.plugin.finder.utils.r.sNc;
-            localObject4 = com.tencent.mm.plugin.finder.utils.r.ajf((String)localObject3);
-            ad.i(f.TAG, "copyVideoThumbFileToPost, videoFilePath:" + (String)localObject3 + ", thumbOriginPath:" + (String)localObject5 + ", thumbPostPath:" + (String)localObject4);
-            i locali = i.sJt;
-            if (!i.aiP((String)localObject5)) {
-              break label1166;
+            ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost Video thumb");
+            localObject2 = localbvz.thumbUrl;
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = "";
             }
-            ad.i(f.TAG, "copyImageThumbFromTmpToPost exist, copy");
-            com.tencent.mm.vfs.i.mz((String)localObject5, (String)localObject4);
-            if (com.tencent.mm.vfs.i.fv((String)localObject4))
+            p.g(localObject1, "it.thumbUrl ?: \"\"");
+            localObject2 = f.sUp;
+            localObject3 = localbvz.url;
+            localObject2 = localObject3;
+            if (localObject3 == null) {
+              localObject2 = "";
+            }
+            localObject4 = localbvz.thumbUrl;
+            localObject3 = localObject4;
+            if (localObject4 == null) {
+              localObject3 = "";
+            }
+            p.h(localObject2, "videoFilePath");
+            p.h(localObject3, "thumbOriginPath");
+            localObject4 = com.tencent.mm.plugin.finder.utils.r.sYn;
+            localObject4 = com.tencent.mm.plugin.finder.utils.r.akc((String)localObject2);
+            ae.i(f.TAG, "copyVideoThumbFileToPost, videoFilePath:" + (String)localObject2 + ", thumbOriginPath:" + (String)localObject3 + ", thumbPostPath:" + (String)localObject4);
+            i locali = i.sUG;
+            if (!i.ajM((String)localObject3)) {
+              break label1222;
+            }
+            ae.i(f.TAG, "copyImageThumbFromTmpToPost exist, copy");
+            o.mF((String)localObject3, (String)localObject4);
+            if (o.fB((String)localObject4))
             {
-              ((bvf)localObject1).thumbUrl = ((String)localObject4);
-              if ((p.i(localObject2, ((bvf)localObject1).thumbUrl) ^ true))
-              {
-                p.g(localObject2, "preUrl");
-                aiO((String)localObject2);
+              localbvz.thumbUrl = ((String)localObject4);
+              if ((p.i(localObject1, localbvz.thumbUrl) ^ true)) {
+                ajL((String)localObject1);
               }
             }
           }
           if (bool1)
           {
-            ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost Video");
-            localObject2 = new m((bvf)localObject1, com.tencent.mm.plugin.finder.storage.r.syQ, 0, null, 12);
-            localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-            localObject2 = com.tencent.mm.plugin.finder.utils.r.a((m)localObject2, String.valueOf(this.sIF.getCreateTime()));
-            l = com.tencent.mm.vfs.i.mz(((bvf)localObject1).url, (String)localObject2);
-            if (!com.tencent.mm.vfs.i.fv((String)localObject2)) {
-              break label1262;
+            ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost Video");
+            localObject1 = new m(localbvz, com.tencent.mm.plugin.finder.storage.r.sJH, 0, null, 12);
+            localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+            localObject3 = com.tencent.mm.plugin.finder.utils.r.a((m)localObject1, String.valueOf(this.sTR.getCreateTime()));
+            l = o.mF(localbvz.url, (String)localObject3);
+            if (!o.fB((String)localObject3)) {
+              break label1318;
             }
-            if ((p.i(localObject2, ((bvf)localObject1).url) ^ true))
+            if ((p.i(localObject3, localbvz.url) ^ true))
             {
-              localObject3 = ((bvf)localObject1).url;
-              p.g(localObject3, "it.url");
-              aiO((String)localObject3);
+              localObject2 = localbvz.url;
+              localObject1 = localObject2;
+              if (localObject2 == null) {
+                localObject1 = "";
+              }
+              ajL((String)localObject1);
             }
-            ((bvf)localObject1).url = ((String)localObject2);
-            ((bvf)localObject1).mediaId = ai.ee(((bvf)localObject1).url);
+            localbvz.url = ((String)localObject3);
+            localObject2 = localbvz.url;
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = "";
+            }
+            localbvz.mediaId = aj.ej((String)localObject1);
           }
         }
         for (;;)
         {
           if (!bool3) {
-            break label1279;
+            break label1335;
           }
-          localObject2 = ((bvf)localObject1).coverUrl;
-          p.g(localObject2, "it.coverUrl");
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-          if (!d.n.n.nz((String)localObject2, com.tencent.mm.plugin.finder.utils.r.cLQ())) {
+          localObject1 = localbvz.coverUrl;
+          if (localObject1 == null) {
             break;
           }
-          ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost Cover");
-          localObject2 = new com.tencent.mm.plugin.finder.loader.n((bvf)localObject1, com.tencent.mm.plugin.finder.storage.r.syD);
-          localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
-          localObject2 = com.tencent.mm.plugin.finder.utils.r.a((com.tencent.mm.plugin.finder.loader.n)localObject2, String.valueOf(this.sIF.getCreateTime()));
-          com.tencent.mm.vfs.i.mz(((bvf)localObject1).coverUrl, (String)localObject2);
-          ((bvf)localObject1).coverUrl = ((String)localObject2);
+          localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+          if (d.n.n.nF((String)localObject1, com.tencent.mm.plugin.finder.utils.r.cOy()) != true) {
+            break;
+          }
+          ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost Cover");
+          localObject1 = new com.tencent.mm.plugin.finder.loader.n(localbvz, com.tencent.mm.plugin.finder.storage.r.sJu);
+          localObject2 = com.tencent.mm.plugin.finder.utils.r.sYn;
+          localObject1 = com.tencent.mm.plugin.finder.utils.r.a((com.tencent.mm.plugin.finder.loader.n)localObject1, String.valueOf(this.sTR.getCreateTime()));
+          o.mF(localbvz.coverUrl, (String)localObject1);
+          localbvz.coverUrl = ((String)localObject1);
           break;
-          ad.i(f.TAG, "copyImageThumbFromTmpToPost not exist, generate");
-          localObject5 = i.sJt;
-          localObject5 = i.du((String)localObject3, 4);
-          ad.i(f.TAG, "genVideoThumbFileTmp videoFilePath:" + (String)localObject3 + ", targetWidth:" + ((Point)localObject5).x + ", targetHeight:" + ((Point)localObject5).y);
-          f.a((String)localObject3, ((Point)localObject5).x, ((Point)localObject5).y, null, (String)localObject4);
-          break label895;
-          ad.i("Finder.LogPost.FinderPostTask", "copy Video failed, copyRet:".concat(String.valueOf(l)));
+          label1222:
+          ae.i(f.TAG, "copyImageThumbFromTmpToPost not exist, generate");
+          localObject3 = i.sUG;
+          localObject3 = i.dz((String)localObject2, 4);
+          ae.i(f.TAG, "genVideoThumbFileTmp videoFilePath:" + (String)localObject2 + ", targetWidth:" + ((Point)localObject3).x + ", targetHeight:" + ((Point)localObject3).y);
+          f.a((String)localObject2, ((Point)localObject3).x, ((Point)localObject3).y, null, (String)localObject4);
+          break label937;
+          ae.i("Finder.LogPost.FinderPostTask", "copy Video failed, copyRet:".concat(String.valueOf(l)));
         }
       }
     }
-    label1166:
-    AppMethodBeat.o(204338);
+    label1318:
+    AppMethodBeat.o(204956);
   }
   
   private final void l(final FinderItem paramFinderItem)
   {
     AppMethodBeat.i(167770);
-    com.tencent.mm.ad.c.g((d.g.a.a)new b(this, paramFinderItem));
+    com.tencent.mm.ac.c.h((d.g.a.a)new b(this, paramFinderItem));
     AppMethodBeat.o(167770);
   }
   
-  public String aeK()
+  public String aeW()
   {
     AppMethodBeat.i(167772);
-    String str = "post_" + this.sIF.getLocalId();
+    String str = "post_" + this.sTR.getLocalId();
     AppMethodBeat.o(167772);
     return str;
   }
@@ -333,148 +369,148 @@ public class h
   public void call()
   {
     AppMethodBeat.i(167774);
-    Object localObject1 = this.sIF.getPostInfo();
-    Object localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    if ((((Boolean)com.tencent.mm.plugin.finder.storage.b.cHg().value()).booleanValue()) && (ad.getLogLevel() >= 0))
+    Object localObject1 = this.sTR.getPostInfo();
+    Object localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+    if ((((Boolean)com.tencent.mm.plugin.finder.storage.b.cJf().value()).booleanValue()) && (ae.getLogLevel() >= 0))
     {
-      ad.i("Finder.LogPost.FinderPostTask", "debug failed");
-      aiN("failed for debug");
-      localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-      com.tencent.mm.plugin.finder.storage.b.cHg().reset();
+      ae.i("Finder.LogPost.FinderPostTask", "debug failed");
+      ajK("failed for debug");
+      localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+      com.tencent.mm.plugin.finder.storage.b.cJf().reset();
       AppMethodBeat.o(167774);
       return;
     }
-    if (((bvg)localObject1).hfV > 5) {}
+    if (((bwa)localObject1).hiJ > 5) {}
     for (int i = 1; i != 0; i = 0)
     {
-      aiN("try to post this feed too many times!");
+      ajK("try to post this feed too many times!");
       AppMethodBeat.o(167774);
       return;
     }
-    localObject2 = n.c.sqy;
-    n.c.cDO();
-    localObject2 = this.sIF;
+    localObject2 = o.c.sAI;
+    o.c.cFK();
+    localObject2 = this.sTR;
     Object localObject3 = ((FinderItem)localObject2).getPostInfo();
-    ((bvg)localObject3).hfV += 1;
-    ((FinderItem)localObject2).setPostInfo((bvg)localObject3);
-    localObject3 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+    ((bwa)localObject3).hiJ += 1;
+    ((FinderItem)localObject2).setPostInfo((bwa)localObject3);
+    localObject3 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
     b.a.i((FinderItem)localObject2);
-    if (((bvg)localObject1).GPx == 1)
+    if (((bwa)localObject1).HiZ == 1)
     {
-      localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
-      if (!b.a.xf(this.sIF.getLocalId()))
+      localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
+      if (!b.a.xw(this.sTR.getLocalId()))
       {
-        ad.i("Finder.LogPost.FinderPostTask", "post before doscene2 cancel because feed is deleted");
-        a(com.tencent.mm.loader.g.j.hfM);
+        ae.i("Finder.LogPost.FinderPostTask", "post before doscene2 cancel because feed is deleted");
+        a(com.tencent.mm.loader.g.j.hiA);
         AppMethodBeat.o(167774);
       }
     }
     else
     {
-      ad.i("Finder.LogPost.FinderPostTask", "try post need upload task " + this.sIF.getLocalId());
-      localObject1 = this.sIF.getFinderObject();
+      ae.i("Finder.LogPost.FinderPostTask", "try post need upload task " + this.sTR.getLocalId());
+      localObject1 = this.sTR.getFinderObject();
       if (localObject1 != null)
       {
         localObject1 = ((FinderObject)localObject1).objectDesc;
-        if ((localObject1 == null) || (this.sIF.getRefObjectFlag() != 0L)) {
+        if ((localObject1 == null) || (this.sTR.getRefObjectFlag() != 0L)) {
           break label475;
         }
-        ad.i("Finder.LogPost.FinderPostTask", "moveFileToPost");
-        localObject1 = com.tencent.mm.plugin.finder.utils.r.sNc;
-        localObject1 = com.tencent.mm.plugin.finder.utils.r.cLQ();
-        com.tencent.mm.vfs.i.aYg((String)localObject1);
-        if ((sJo) && (ad.getLogLevel() <= 1))
+        ae.i("Finder.LogPost.FinderPostTask", "moveFileToPost");
+        localObject1 = com.tencent.mm.plugin.finder.utils.r.sYn;
+        localObject1 = com.tencent.mm.plugin.finder.utils.r.cOy();
+        o.aZI((String)localObject1);
+        if ((sUB) && (ae.getLogLevel() <= 1))
         {
-          ad.i("Finder.LogPost.FinderPostTask", "debugDeleteFileWhenMoveFile");
-          com.tencent.mm.vfs.i.cZ((String)localObject1, true);
+          ae.i("Finder.LogPost.FinderPostTask", "debugDeleteFileWhenMoveFile");
+          o.dd((String)localObject1, true);
         }
-        if ((this.sIF.getMediaExtList().size() != 1) || (((bvf)this.sIF.getMediaExtList().get(0)).GPu == null)) {
+        if ((this.sTR.getMediaExtList().size() != 1) || (((bvz)this.sTR.getMediaExtList().get(0)).HiW == null)) {
           break label400;
         }
-        cKM();
+        cNq();
       }
       for (;;)
       {
-        localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
-        b.a.i(this.sIF);
-        localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
-        if (b.a.xf(this.sIF.getLocalId())) {
+        localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
+        b.a.i(this.sTR);
+        localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
+        if (b.a.xw(this.sTR.getLocalId())) {
           break label407;
         }
-        ad.i("Finder.LogPost.FinderPostTask", "post before mediaprocess cancel because feed is deleted");
-        a(com.tencent.mm.loader.g.j.hfM);
+        ae.i("Finder.LogPost.FinderPostTask", "post before mediaprocess cancel because feed is deleted");
+        a(com.tencent.mm.loader.g.j.hiA);
         AppMethodBeat.o(167774);
         return;
         localObject1 = null;
         break;
         label400:
-        cKN();
+        cNr();
       }
       label407:
-      localObject1 = g.sJk;
-      localObject1 = g.cKK();
-      localObject2 = new c(this.sIF);
+      localObject1 = g.sUx;
+      localObject1 = g.cNo();
+      localObject2 = new c(this.sTR);
       localObject3 = (com.tencent.mm.loader.g.f)new c(this);
       p.h(localObject2, "processTask");
       p.h(localObject3, "callback");
-      ((g)localObject1).sJf.a((com.tencent.mm.loader.g.c)localObject2, (com.tencent.mm.loader.g.f)localObject3);
+      ((g)localObject1).sUs.a((com.tencent.mm.loader.g.c)localObject2, (com.tencent.mm.loader.g.f)localObject3);
       AppMethodBeat.o(167774);
       return;
     }
     label475:
-    l(this.sIF);
+    l(this.sTR);
     AppMethodBeat.o(167774);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(167771);
-    Object localObject = com.tencent.mm.kernel.g.ajB();
+    Object localObject = com.tencent.mm.kernel.g.ajQ();
     p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).aiU().b(3585, (com.tencent.mm.al.f)this);
+    ((com.tencent.mm.kernel.b)localObject).ajj().b(3585, (com.tencent.mm.ak.f)this);
     if (paramn == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPost");
       AppMethodBeat.o(167771);
       throw paramString;
     }
-    localObject = ((aw)paramn).clientId;
-    ad.i("Finder.LogPost.FinderPostTask", "errType %d, errCode %d, errMsg %s, clientId %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, localObject });
-    if (!((String)localObject).equals(this.sIF.getPostInfo().clientId))
+    localObject = ((ax)paramn).clientId;
+    ae.i("Finder.LogPost.FinderPostTask", "errType %d, errCode %d, errMsg %s, clientId %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, localObject });
+    if (!((String)localObject).equals(this.sTR.getPostInfo().clientId))
     {
-      ad.w("Finder.LogPost.FinderPostTask", "not my feed!");
+      ae.w("Finder.LogPost.FinderPostTask", "not my feed!");
       AppMethodBeat.o(167771);
       return;
     }
-    this.sIF.trackPost("doPostSceneEnd");
+    this.sTR.trackPost("doPostSceneEnd");
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = g.sJk;
-      com.tencent.mm.ad.c.g((d.g.a.a)new g.e(g.cKK(), this.sIF.getLocalId(), ((aw)paramn).rJO.id));
-      if (this.sIF.getPostInfo().GPA > 0L)
+      paramString = g.sUx;
+      com.tencent.mm.ac.c.h((d.g.a.a)new g.e(g.cNo(), this.sTR.getLocalId(), ((ax)paramn).rSc.id));
+      if (this.sTR.getPostInfo().Hjc > 0L)
       {
-        paramString = n.b.sqe;
-        n.b.wD(cf.aCK() - this.sIF.getPostInfo().GPA);
+        paramString = o.b.sAp;
+        o.b.wU(ch.aDa() - this.sTR.getPostInfo().Hjc);
       }
-      a(com.tencent.mm.loader.g.j.hfK);
+      a(com.tencent.mm.loader.g.j.hiy);
       AppMethodBeat.o(167771);
       return;
     }
-    a(com.tencent.mm.loader.g.j.hfM);
-    if (this.sIF.isPostFailed())
+    a(com.tencent.mm.loader.g.j.hiA);
+    if (this.sTR.isPostFailed())
     {
-      paramString = com.tencent.mm.plugin.finder.report.f.soC;
-      com.tencent.mm.plugin.finder.report.f.k(this.sIF.getLocalId(), paramInt1, paramInt2);
-      paramString = g.sJk;
-      g.cKK().xk(this.sIF.getLocalId());
+      paramString = com.tencent.mm.plugin.finder.report.g.syJ;
+      com.tencent.mm.plugin.finder.report.g.k(this.sTR.getLocalId(), paramInt1, paramInt2);
+      paramString = g.sUx;
+      g.cNo().xB(this.sTR.getLocalId());
     }
     AppMethodBeat.o(167771);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderPostTask$Companion;", "", "()V", "TAG", "", "debugDeleteFileWhenMoveFile", "", "getDebugDeleteFileWhenMoveFile", "()Z", "setDebugDeleteFileWhenMoveFile", "(Z)V", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/FinderPostTask$Companion;", "", "()V", "TAG", "", "debugDeleteFileWhenMoveFile", "", "getDebugDeleteFileWhenMoveFile", "()Z", "setDebugDeleteFileWhenMoveFile", "(Z)V", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -485,11 +521,11 @@ public class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/FinderPostTask$tryPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/upload/FinderPostTask$tryPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
   public static final class c
     implements com.tencent.mm.loader.g.f<c>
   {
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/FinderPostTask$tryPost$1$onLoaderFin$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/FinderUploadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/upload/FinderPostTask$tryPost$1$onLoaderFin$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/FinderUploadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
     public static final class a
       implements com.tencent.mm.loader.g.f<k>
     {}

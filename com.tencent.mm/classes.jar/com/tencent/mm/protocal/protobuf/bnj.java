@@ -3,49 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bnj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FzJ;
-  public String nDr;
+  public String Haw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82424);
+    AppMethodBeat.i(101818);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FzJ != null) {
-        paramVarArgs.d(1, this.FzJ);
+      if (this.Haw != null) {
+        paramVarArgs.d(1, this.Haw);
       }
-      if (this.nDr != null) {
-        paramVarArgs.d(2, this.nDr);
-      }
-      AppMethodBeat.o(82424);
+      AppMethodBeat.o(101818);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FzJ == null) {
-        break label274;
+      if (this.Haw == null) {
+        break label213;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FzJ) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Haw) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.nDr != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.nDr);
-      }
-      AppMethodBeat.o(82424);
-      return i;
+      AppMethodBeat.o(101818);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(82424);
+        AppMethodBeat.o(101818);
         return 0;
       }
       if (paramInt == 3)
@@ -55,25 +47,21 @@ public final class bnj
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82424);
+          AppMethodBeat.o(101818);
           return -1;
-        case 1: 
-          localbnj.FzJ = locala.NPN.readString();
-          AppMethodBeat.o(82424);
-          return 0;
         }
-        localbnj.nDr = locala.NPN.readString();
-        AppMethodBeat.o(82424);
+        localbnj.Haw = locala.OmT.readString();
+        AppMethodBeat.o(101818);
         return 0;
       }
-      AppMethodBeat.o(82424);
+      AppMethodBeat.o(101818);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bnj
  * JD-Core Version:    0.7.0.1
  */

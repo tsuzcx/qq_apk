@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class f
@@ -16,17 +16,17 @@ public final class f
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(46721);
-    ad.i("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "invoke JsApiOpenWCPayOverseaPaymentReceive!");
+    ae.i("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "invoke JsApiOpenWCPayOverseaPaymentReceive!");
     if (paramc == null)
     {
-      ad.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:component is null");
+      ae.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:component is null");
       AppMethodBeat.o(46721);
       return;
     }
     paramJSONObject = paramc.getContext();
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:context is null");
+      ae.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:context is null");
       paramc.h(paramInt, e("fail", null));
       AppMethodBeat.o(46721);
       return;

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.vlog.model.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sticker.a;
 import d.g.b.p;
 import d.l;
@@ -11,30 +11,30 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "editList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditItem;", "Lkotlin/collections/ArrayList;", "getEditList", "()Ljava/util/ArrayList;", "setEditList", "(Ljava/util/ArrayList;)V", "mediaList", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "getMediaList", "setMediaList", "status", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;", "getStatus", "()Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;", "setStatus", "(Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;)V", "toJson", "Lorg/json/JSONObject;", "EditItem", "EditTextItem", "EditorStatus", "ImageItem", "MediaItem", "VideoItem", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "editList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditItem;", "Lkotlin/collections/ArrayList;", "getEditList", "()Ljava/util/ArrayList;", "setEditList", "(Ljava/util/ArrayList;)V", "mediaList", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "getMediaList", "setMediaList", "status", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;", "getStatus", "()Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;", "setStatus", "(Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;)V", "toJson", "Lorg/json/JSONObject;", "EditItem", "EditTextItem", "EditorStatus", "ImageItem", "MediaItem", "VideoItem", "plugin-vlog_release"})
 public final class c
   extends a
 {
-  public c BHQ;
+  public c BZp;
   public ArrayList<a> editList;
-  public ArrayList<e> teB;
+  public ArrayList<e> tpu;
   
   public c()
   {
-    AppMethodBeat.i(195901);
-    this.teB = new ArrayList();
+    AppMethodBeat.i(191361);
+    this.tpu = new ArrayList();
     this.editList = new ArrayList();
-    this.BHQ = new c();
-    AppMethodBeat.o(195901);
+    this.BZp = new c();
+    AppMethodBeat.o(191361);
   }
   
   public final JSONObject toJson()
   {
-    AppMethodBeat.i(195900);
+    AppMethodBeat.i(191360);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("status", this.BHQ.toJson());
+    localJSONObject.put("status", this.BZp.toJson());
     JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = ((Iterable)this.teB).iterator();
+    Iterator localIterator = ((Iterable)this.tpu).iterator();
     while (localIterator.hasNext()) {
       localJSONArray.put(((e)localIterator.next()).toJson());
     }
@@ -59,151 +59,151 @@ public final class c
       }
       localJSONObject.put("editList", localJSONArray);
     }
-    AppMethodBeat.o(195900);
+    AppMethodBeat.o(191360);
     return localJSONObject;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditItem;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "time", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getTime", "()Ljava/util/ArrayList;", "setTime", "(Ljava/util/ArrayList;)V", "type", "", "getType", "()I", "setType", "(I)V", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditItem;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "time", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getTime", "()Ljava/util/ArrayList;", "setTime", "(Ljava/util/ArrayList;)V", "type", "", "getType", "()I", "setType", "(I)V", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
   public static class a
     extends a
   {
-    public ArrayList<Long> BHR;
+    public ArrayList<Long> BZq;
     public int type;
     
     public a()
     {
-      AppMethodBeat.i(195893);
-      this.BHR = new ArrayList();
-      AppMethodBeat.o(195893);
+      AppMethodBeat.i(191353);
+      this.BZq = new ArrayList();
+      AppMethodBeat.o(191353);
     }
     
     public JSONObject toJson()
     {
-      AppMethodBeat.i(195892);
+      AppMethodBeat.i(191352);
       JSONObject localJSONObject = super.toJson();
       localJSONObject.put("type", this.type);
       JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = ((Iterable)this.BHR).iterator();
+      Iterator localIterator = ((Iterable)this.BZq).iterator();
       while (localIterator.hasNext()) {
         localJSONArray.put(((Number)localIterator.next()).longValue());
       }
       localJSONObject.put("time", localJSONArray);
-      AppMethodBeat.o(195892);
+      AppMethodBeat.o(191352);
       return localJSONObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditTextItem;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditItem;", "()V", "font", "", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditTextItem;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditItem;", "()V", "font", "", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
   public static final class b
     extends c.a
   {
-    private String xNN = "";
+    private String ydG = "";
     
     public final void setFont(String paramString)
     {
-      AppMethodBeat.i(195894);
+      AppMethodBeat.i(191354);
       p.h(paramString, "<set-?>");
-      this.xNN = paramString;
-      AppMethodBeat.o(195894);
+      this.ydG = paramString;
+      AppMethodBeat.o(191354);
     }
     
     public final JSONObject toJson()
     {
-      AppMethodBeat.i(195895);
+      AppMethodBeat.i(191355);
       JSONObject localJSONObject = super.toJson();
-      if (!bt.isNullOrNil(this.xNN)) {
-        localJSONObject.put("font", this.xNN);
+      if (!bu.isNullOrNil(this.ydG)) {
+        localJSONObject.put("font", this.ydG);
       }
-      AppMethodBeat.o(195895);
+      AppMethodBeat.o(191355);
       return localJSONObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "pss", "", "getPss", "()I", "setPss", "(I)V", "thumbCount", "getThumbCount", "setThumbCount", "thumbMem", "getThumbMem", "setThumbMem", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$EditorStatus;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "pss", "", "getPss", "()I", "setPss", "(I)V", "thumbCount", "getThumbCount", "setThumbCount", "thumbMem", "getThumbMem", "setThumbMem", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
   public static final class c
     extends a
   {
-    public int BHS;
-    public int BHT;
-    public int BHU;
+    public int BZr;
+    public int BZs;
+    public int BZt;
     
     public final JSONObject toJson()
     {
-      AppMethodBeat.i(195896);
+      AppMethodBeat.i(191356);
       JSONObject localJSONObject = super.toJson();
-      localJSONObject.put("pss", this.BHS + 'K');
-      localJSONObject.put("thumbCount", this.BHT);
-      localJSONObject.put("thumbMem", bt.Dd(this.BHU));
-      AppMethodBeat.o(195896);
+      localJSONObject.put("pss", this.BZr + 'K');
+      localJSONObject.put("thumbCount", this.BZs);
+      localJSONObject.put("thumbMem", bu.DB(this.BZt));
+      AppMethodBeat.o(191356);
       return localJSONObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$ImageItem;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "()V", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$ImageItem;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "()V", "plugin-vlog_release"})
   public static final class d
     extends c.e
   {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "size", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getSize", "()Ljava/util/ArrayList;", "setSize", "(Ljava/util/ArrayList;)V", "time", "", "getTime", "setTime", "type", "getType", "()I", "setType", "(I)V", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "size", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getSize", "()Ljava/util/ArrayList;", "setSize", "(Ljava/util/ArrayList;)V", "time", "", "getTime", "setTime", "type", "getType", "()I", "setType", "(I)V", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
   public static class e
     extends a
   {
-    public ArrayList<Long> BHR;
-    public ArrayList<Integer> BHV;
+    public ArrayList<Long> BZq;
+    public ArrayList<Integer> BZu;
     public int type;
     
     public e()
     {
-      AppMethodBeat.i(195898);
-      this.BHV = new ArrayList();
-      this.BHR = new ArrayList();
-      AppMethodBeat.o(195898);
+      AppMethodBeat.i(191358);
+      this.BZu = new ArrayList();
+      this.BZq = new ArrayList();
+      AppMethodBeat.o(191358);
     }
     
     public JSONObject toJson()
     {
-      AppMethodBeat.i(195897);
+      AppMethodBeat.i(191357);
       JSONObject localJSONObject = super.toJson();
       localJSONObject.put("type", this.type);
       JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = ((Iterable)this.BHV).iterator();
+      Iterator localIterator = ((Iterable)this.BZu).iterator();
       while (localIterator.hasNext()) {
         localJSONArray.put(((Number)localIterator.next()).intValue());
       }
       localJSONObject.put("size", localJSONArray);
       localJSONArray = new JSONArray();
-      localIterator = ((Iterable)this.BHR).iterator();
+      localIterator = ((Iterable)this.BZq).iterator();
       while (localIterator.hasNext()) {
         localJSONArray.put(((Number)localIterator.next()).longValue());
       }
       localJSONObject.put("time", localJSONArray);
-      AppMethodBeat.o(195897);
+      AppMethodBeat.o(191357);
       return localJSONObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$VideoItem;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "()V", "audioBitrate", "", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "audioSampleRate", "getAudioSampleRate", "setAudioSampleRate", "bitrate", "getBitrate", "setBitrate", "fps", "", "getFps", "()F", "setFps", "(F)V", "playRate", "getPlayRate", "setPlayRate", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$VideoItem;", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson$MediaItem;", "()V", "audioBitrate", "", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "audioSampleRate", "getAudioSampleRate", "setAudioSampleRate", "bitrate", "getBitrate", "setBitrate", "fps", "", "getFps", "()F", "setFps", "(F)V", "playRate", "getPlayRate", "setPlayRate", "toJson", "Lorg/json/JSONObject;", "plugin-vlog_release"})
   public static final class f
     extends c.e
   {
     public int audioBitrate;
     public int audioSampleRate;
     public int bitrate = 1;
-    public float cvL = 1.0F;
-    public float llC = 1.0F;
+    public float cwp = 1.0F;
+    public float lqb = 1.0F;
     
     public final JSONObject toJson()
     {
-      AppMethodBeat.i(195899);
+      AppMethodBeat.i(191359);
       JSONObject localJSONObject = super.toJson();
-      if (this.llC != 1.0F) {
-        localJSONObject.put("playRate", Float.valueOf(this.llC));
+      if (this.lqb != 1.0F) {
+        localJSONObject.put("playRate", Float.valueOf(this.lqb));
       }
-      localJSONObject.put("fps", Float.valueOf(this.cvL));
+      localJSONObject.put("fps", Float.valueOf(this.cwp));
       localJSONObject.put("bitrate", this.bitrate);
       localJSONObject.put("audioSampleRate", this.audioSampleRate);
       localJSONObject.put("audioBitrate", this.audioBitrate);
-      AppMethodBeat.o(195899);
+      AppMethodBeat.o(191359);
       return localJSONObject;
     }
   }

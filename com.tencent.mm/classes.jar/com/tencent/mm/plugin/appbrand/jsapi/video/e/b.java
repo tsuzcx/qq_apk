@@ -22,7 +22,7 @@ public abstract interface b
   
   public abstract boolean aF(float paramFloat);
   
-  public abstract void dD(String paramString1, String paramString2);
+  public abstract void dF(String paramString1, String paramString2);
   
   public abstract int getCurrentPosition();
   
@@ -62,27 +62,27 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void gM(int paramInt);
+    public abstract void gN(int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract void GB();
+    public abstract void GH();
   }
   
   public static abstract interface c
   {
-    public abstract void Rg(String paramString);
+    public abstract void RP(String paramString);
   }
   
   public static abstract interface d
   {
-    public abstract boolean cb(int paramInt1, int paramInt2);
+    public abstract boolean cc(int paramInt1, int paramInt2);
   }
   
   public static abstract interface e
   {
-    public abstract boolean ca(int paramInt1, int paramInt2);
+    public abstract boolean cb(int paramInt1, int paramInt2);
   }
   
   public static abstract interface f
@@ -102,7 +102,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b
  * JD-Core Version:    0.7.0.1
  */

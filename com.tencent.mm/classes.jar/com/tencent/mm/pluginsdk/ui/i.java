@@ -7,13 +7,13 @@ public abstract interface i
 {
   public abstract boolean aE(float paramFloat);
   
-  public abstract boolean bhH();
+  public abstract boolean bip();
   
   public abstract void c(boolean paramBoolean, String paramString, int paramInt);
   
   public abstract boolean c(double paramDouble, boolean paramBoolean);
   
-  public abstract void cMk();
+  public abstract void cOS();
   
   public abstract int getCacheTimeSec();
   
@@ -59,19 +59,40 @@ public abstract interface i
   
   public static abstract interface a
   {
-    public abstract void aK(String paramString, boolean paramBoolean);
+    public abstract void aM(String paramString, boolean paramBoolean);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+    
+    public abstract void d(String paramString1, String paramString2, int paramInt1, int paramInt2);
+    
+    public abstract void ds(String paramString1, String paramString2);
+    
+    public abstract void dt(String paramString1, String paramString2);
+    
+    public abstract void du(String paramString1, String paramString2);
+    
+    public abstract void dv(String paramString1, String paramString2);
+    
+    public abstract void dw(String paramString1, String paramString2);
+    
+    public abstract void dx(String paramString1, String paramString2);
+    
+    public abstract void eX(String paramString1, String paramString2);
   }
   
   public static abstract interface c
   {
-    public abstract void qQ(long paramLong);
+    public abstract void rd(long paramLong);
     
-    public abstract void vk(String paramString);
+    public abstract void vG(String paramString);
   }
   
   public static abstract interface d
   {
-    public abstract void dXu();
+    public abstract void eaX();
   }
   
   public static enum e
@@ -79,11 +100,11 @@ public abstract interface i
     static
     {
       AppMethodBeat.i(134008);
-      ESM = new e("DEFAULT", 0);
-      ESN = new e("FILL", 1);
-      ESO = new e("CONTAIN", 2);
-      ESP = new e("COVER", 3);
-      ESQ = new e[] { ESM, ESN, ESO, ESP };
+      Flh = new e("DEFAULT", 0);
+      Fli = new e("FILL", 1);
+      Flj = new e("CONTAIN", 2);
+      Flk = new e("COVER", 3);
+      Fll = new e[] { Flh, Fli, Flj, Flk };
       AppMethodBeat.o(134008);
     }
     
@@ -92,7 +113,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.i
  * JD-Core Version:    0.7.0.1
  */

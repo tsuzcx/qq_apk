@@ -1,10 +1,10 @@
 package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.ab.h;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -17,26 +17,26 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/StickerPack;", "", "()V", "TAG", "", "backgroundSticker", "Lcom/tencent/mm/sticker/StickerInfo;", "getBackgroundSticker", "()Lcom/tencent/mm/sticker/StickerInfo;", "setBackgroundSticker", "(Lcom/tencent/mm/sticker/StickerInfo;)V", "faceTrackSticker", "getFaceTrackSticker", "setFaceTrackSticker", "foregroundSticker", "getForegroundSticker", "setForegroundSticker", "lensId", "getLensId", "()Ljava/lang/String;", "setLensId", "(Ljava/lang/String;)V", "resPath", "getResPath", "setResPath", "strokeColor", "getStrokeColor", "setStrokeColor", "title", "getTitle", "setTitle", "titleColor", "getTitleColor", "setTitleColor", "transform", "Lcom/tencent/mm/sticker/StickerTransform;", "getTransform", "()Lcom/tencent/mm/sticker/StickerTransform;", "setTransform", "(Lcom/tencent/mm/sticker/StickerTransform;)V", "version", "", "getVersion", "()D", "setVersion", "(D)V", "allElement", "", "Lcom/tencent/mm/sticker/StickerElement;", "isValid", "", "parseFromLocal", "", "packDir", "parseFromPack", "Companion", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/StickerPack;", "", "()V", "TAG", "", "backgroundSticker", "Lcom/tencent/mm/sticker/StickerInfo;", "getBackgroundSticker", "()Lcom/tencent/mm/sticker/StickerInfo;", "setBackgroundSticker", "(Lcom/tencent/mm/sticker/StickerInfo;)V", "faceTrackSticker", "getFaceTrackSticker", "setFaceTrackSticker", "foregroundSticker", "getForegroundSticker", "setForegroundSticker", "lensId", "getLensId", "()Ljava/lang/String;", "setLensId", "(Ljava/lang/String;)V", "resPath", "getResPath", "setResPath", "strokeColor", "getStrokeColor", "setStrokeColor", "title", "getTitle", "setTitle", "titleColor", "getTitleColor", "setTitleColor", "transform", "Lcom/tencent/mm/sticker/StickerTransform;", "getTransform", "()Lcom/tencent/mm/sticker/StickerTransform;", "setTransform", "(Lcom/tencent/mm/sticker/StickerTransform;)V", "version", "", "getVersion", "()D", "setVersion", "(D)V", "allElement", "", "Lcom/tencent/mm/sticker/StickerElement;", "isValid", "", "parseFromLocal", "", "packDir", "parseFromPack", "Companion", "plugin-sticker_release"})
 public final class f
 {
-  public static final a Imu;
-  private String IlQ;
-  private g IlR;
-  public String Imq;
-  public e Imr;
-  public e Ims;
-  public e Imt;
+  public static final a IGF;
+  public String IGB;
+  public e IGC;
+  public e IGD;
+  public e IGE;
+  private String IGb;
+  private g IGc;
   private final String TAG;
   private double bNT;
-  public String pQo;
+  public String pWT;
   public String title;
   public String titleColor;
   
   static
   {
     AppMethodBeat.i(105908);
-    Imu = new a((byte)0);
+    IGF = new a((byte)0);
     AppMethodBeat.o(105908);
   }
   
@@ -44,41 +44,41 @@ public final class f
   {
     AppMethodBeat.i(105907);
     this.TAG = "MicroMsg.StickerPack";
-    this.pQo = "";
-    this.IlQ = "";
+    this.pWT = "";
+    this.IGb = "";
     this.title = "";
     this.titleColor = "";
-    this.Imq = "";
-    this.IlR = new g();
+    this.IGB = "";
+    this.IGc = new g();
     AppMethodBeat.o(105907);
   }
   
-  public final void aRY(String paramString)
+  public final void aTv(String paramString)
   {
     AppMethodBeat.i(105903);
     p.h(paramString, "<set-?>");
-    this.pQo = paramString;
+    this.pWT = paramString;
     AppMethodBeat.o(105903);
   }
   
-  public final void aRZ(String paramString)
+  public final void aTw(String paramString)
   {
     AppMethodBeat.i(105904);
     p.h(paramString, "<set-?>");
-    this.IlQ = paramString;
+    this.IGb = paramString;
     AppMethodBeat.o(105904);
   }
   
-  public final void aSa(String paramString)
+  public final void aTx(String paramString)
   {
     AppMethodBeat.i(105905);
     p.h(paramString, "packDir");
     try
     {
-      Object localObject1 = h.wJ(i.aYq(paramString + "config.json"));
+      Object localObject1 = h.xs(o.aZT(paramString + "config.json"));
       Object localObject2 = ((JSONObject)localObject1).getString("id");
       p.g(localObject2, "jsonObj.getString(KEY_ID)");
-      this.pQo = ((String)localObject2);
+      this.pWT = ((String)localObject2);
       this.bNT = ((JSONObject)localObject1).getDouble("version");
       localObject2 = ((JSONObject)localObject1).optString("subtitle");
       p.g(localObject2, "jsonObj.optString(KEY_SUBTITLE)");
@@ -88,7 +88,7 @@ public final class f
       this.titleColor = ((String)localObject2);
       localObject2 = ((JSONObject)localObject1).optString("stroke_color");
       p.g(localObject2, "jsonObj.optString(KEY_SUBTITLE_STROKE_COLOR)");
-      this.Imq = ((String)localObject2);
+      this.IGB = ((String)localObject2);
       Object localObject3 = ((JSONObject)localObject1).optString("face_track");
       localObject2 = ((JSONObject)localObject1).optString("background");
       localObject1 = ((JSONObject)localObject1).optString("foreground");
@@ -99,10 +99,10 @@ public final class f
         if (i != 0)
         {
           localObject3 = new e();
-          ((e)localObject3).aRZ(paramString + "face_track/");
-          a.a locala = a.IlF;
-          a.a.a(((e)localObject3).IlQ + "config.json", (a)localObject3);
-          this.Imr = ((e)localObject3);
+          ((e)localObject3).aTw(paramString + "face_track/");
+          a.a locala = a.IFQ;
+          a.a.a(((e)localObject3).IGb + "config.json", (a)localObject3);
+          this.IGC = ((e)localObject3);
         }
         p.g(localObject2, "backgroundDir");
         if (((CharSequence)localObject2).length() <= 0) {
@@ -113,10 +113,10 @@ public final class f
         if (i != 0)
         {
           localObject2 = new e();
-          ((e)localObject2).aRZ(paramString + "background/");
-          localObject3 = a.IlF;
-          a.a.a(((e)localObject2).IlQ + "config.json", (a)localObject2);
-          this.Ims = ((e)localObject2);
+          ((e)localObject2).aTw(paramString + "background/");
+          localObject3 = a.IFQ;
+          a.a.a(((e)localObject2).IGb + "config.json", (a)localObject2);
+          this.IGD = ((e)localObject2);
         }
         p.g(localObject1, "foregroundDir");
         if (((CharSequence)localObject1).length() <= 0) {
@@ -131,10 +131,10 @@ public final class f
           break label488;
         }
         localObject1 = new e();
-        ((e)localObject1).aRZ(paramString + "foreground/");
-        paramString = a.IlF;
-        a.a.a(((e)localObject1).IlQ + "config.json", (a)localObject1);
-        this.Imt = ((e)localObject1);
+        ((e)localObject1).aTw(paramString + "foreground/");
+        paramString = a.IFQ;
+        a.a.a(((e)localObject1).IGb + "config.json", (a)localObject1);
+        this.IGE = ((e)localObject1);
         AppMethodBeat.o(105905);
         return;
         i = 0;
@@ -147,12 +147,12 @@ public final class f
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)paramString, "", new Object[0]);
+      ae.printErrStackTrace(this.TAG, (Throwable)paramString, "", new Object[0]);
       AppMethodBeat.o(105905);
     }
   }
   
-  public final void aSb(String paramString)
+  public final void aTy(String paramString)
   {
     AppMethodBeat.i(105906);
     p.h(paramString, "packDir");
@@ -167,13 +167,13 @@ public final class f
       d locald;
       try
       {
-        paramString = h.wJ(i.aYq(paramString + "config.json"));
-        ad.i(this.TAG, "parseFromPack: ".concat(String.valueOf(paramString)));
+        paramString = h.xs(o.aZT(paramString + "config.json"));
+        ae.i(this.TAG, "parseFromPack: ".concat(String.valueOf(paramString)));
         localObject1 = paramString.getString("id");
-        if (!bt.isNullOrNil((String)localObject1))
+        if (!bu.isNullOrNil((String)localObject1))
         {
           p.g(localObject1, "it");
-          this.pQo = ((String)localObject1);
+          this.pWT = ((String)localObject1);
         }
         this.bNT = paramString.getDouble("version");
         localObject1 = paramString.optJSONObject("custom");
@@ -187,7 +187,7 @@ public final class f
           this.titleColor = ((String)localObject2);
           localObject1 = ((JSONObject)localObject1).optString("stroke_color");
           p.g(localObject1, "custom.optString(KEY_SUBTITLE_STROKE_COLOR)");
-          this.Imq = ((String)localObject1);
+          this.IGB = ((String)localObject1);
         }
         localObject1 = paramString.getJSONObject("params");
         localObject4 = ((JSONObject)localObject1).getJSONArray("elements");
@@ -206,93 +206,93 @@ public final class f
         locald.setName((String)localObject5);
         p.g(localJSONObject, "elementObj");
         locald.bH(localJSONObject);
-        if (locald.IlN == 0) {
+        if (locald.IFY == 0) {
           ((Map)localObject3).put(localObject5, locald);
-        } else if (locald.IlN == 1) {
+        } else if (locald.IFY == 1) {
           ((Map)paramString).put(localObject5, locald);
         }
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)paramString, "", new Object[0]);
+        ae.printErrStackTrace(this.TAG, (Throwable)paramString, "", new Object[0]);
         AppMethodBeat.o(105906);
         return;
       }
-      if (locald.IlN == 2)
+      if (locald.IFY == 2)
       {
         ((Map)localObject2).put(localObject5, locald);
         break label1336;
         label394:
-        localObject4 = this.IlR;
+        localObject4 = this.IGc;
         localObject1 = ((JSONObject)localObject1).getJSONObject("template_trans_set");
         p.g(localObject1, "params.getJSONObject(\"template_trans_set\")");
         ((g)localObject4).bH((JSONObject)localObject1);
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("id", this.pQo).put("version", this.bNT).put("subtitle", this.title).put("subtitle_color", this.titleColor).put("stroke_color", this.Imq);
+        ((JSONObject)localObject1).put("id", this.pWT).put("version", this.bNT).put("subtitle", this.title).put("subtitle_color", this.titleColor).put("stroke_color", this.IGB);
         if (((HashMap)localObject3).size() > 0)
         {
           localObject4 = new e();
-          ((e)localObject4).aRY(this.pQo);
+          ((e)localObject4).aTv(this.pWT);
           ((e)localObject4).bNT = this.bNT;
           ((e)localObject4).setType("Sticker2D");
-          localObject5 = this.IlR;
+          localObject5 = this.IGc;
           p.h(localObject5, "<set-?>");
-          ((e)localObject4).IlR = ((g)localObject5);
-          ((e)localObject4).aRZ(this.IlQ + "face_track/");
-          i.aYg(((e)localObject4).IlQ);
-          ((e)localObject4).o((HashMap)localObject3);
+          ((e)localObject4).IGc = ((g)localObject5);
+          ((e)localObject4).aTw(this.IGb + "face_track/");
+          o.aZI(((e)localObject4).IGb);
+          ((e)localObject4).p((HashMap)localObject3);
           localObject3 = ((Map)localObject3).entrySet().iterator();
           while (((Iterator)localObject3).hasNext())
           {
             localObject5 = (Map.Entry)((Iterator)localObject3).next();
-            i.cv(this.IlQ + (String)((Map.Entry)localObject5).getKey(), ((e)localObject4).IlQ + (String)((Map.Entry)localObject5).getKey());
+            o.cx(this.IGb + (String)((Map.Entry)localObject5).getKey(), ((e)localObject4).IGb + (String)((Map.Entry)localObject5).getKey());
           }
-          localObject3 = a.IlF;
-          a.a.a((a)localObject4, ((e)localObject4).IlQ + "config.json");
-          ((JSONObject)localObject1).put("face_track", ((e)localObject4).IlQ);
-          this.Imr = ((e)localObject4);
+          localObject3 = a.IFQ;
+          a.a.a((a)localObject4, ((e)localObject4).IGb + "config.json");
+          ((JSONObject)localObject1).put("face_track", ((e)localObject4).IGb);
+          this.IGC = ((e)localObject4);
         }
         if (((HashMap)localObject2).size() > 0)
         {
           localObject3 = new e();
-          ((e)localObject3).aRY(this.pQo);
+          ((e)localObject3).aTv(this.pWT);
           ((e)localObject3).bNT = this.bNT;
           ((e)localObject3).setType("Segment");
-          ((e)localObject3).aRZ(this.IlQ + "background/");
-          i.aYg(((e)localObject3).IlQ);
-          ((e)localObject3).o((HashMap)localObject2);
+          ((e)localObject3).aTw(this.IGb + "background/");
+          o.aZI(((e)localObject3).IGb);
+          ((e)localObject3).p((HashMap)localObject2);
           localObject2 = ((Map)localObject2).entrySet().iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject4 = (Map.Entry)((Iterator)localObject2).next();
-            i.cv(this.IlQ + (String)((Map.Entry)localObject4).getKey(), ((e)localObject3).IlQ + (String)((Map.Entry)localObject4).getKey());
+            o.cx(this.IGb + (String)((Map.Entry)localObject4).getKey(), ((e)localObject3).IGb + (String)((Map.Entry)localObject4).getKey());
           }
-          localObject2 = a.IlF;
-          a.a.a((a)localObject3, ((e)localObject3).IlQ + "config.json");
-          ((JSONObject)localObject1).put("background", ((e)localObject3).IlQ);
-          this.Ims = ((e)localObject3);
+          localObject2 = a.IFQ;
+          a.a.a((a)localObject3, ((e)localObject3).IGb + "config.json");
+          ((JSONObject)localObject1).put("background", ((e)localObject3).IGb);
+          this.IGD = ((e)localObject3);
         }
         if (paramString.size() > 0)
         {
           localObject2 = new e();
-          ((e)localObject2).aRY(this.pQo);
+          ((e)localObject2).aTv(this.pWT);
           ((e)localObject2).bNT = this.bNT;
           ((e)localObject2).setType("StickerFixed");
-          ((e)localObject2).aRZ(this.IlQ + "foreground/");
-          i.aYg(((e)localObject2).IlQ);
-          ((e)localObject2).o(paramString);
+          ((e)localObject2).aTw(this.IGb + "foreground/");
+          o.aZI(((e)localObject2).IGb);
+          ((e)localObject2).p(paramString);
           paramString = ((Map)paramString).entrySet().iterator();
           while (paramString.hasNext())
           {
             localObject3 = (Map.Entry)paramString.next();
-            i.cv(this.IlQ + (String)((Map.Entry)localObject3).getKey(), ((e)localObject2).IlQ + (String)((Map.Entry)localObject3).getKey());
+            o.cx(this.IGb + (String)((Map.Entry)localObject3).getKey(), ((e)localObject2).IGb + (String)((Map.Entry)localObject3).getKey());
           }
-          paramString = a.IlF;
-          a.a.a((a)localObject2, ((e)localObject2).IlQ + "config.json");
-          ((JSONObject)localObject1).put("foreground", ((e)localObject2).IlQ);
-          this.Imt = ((e)localObject2);
+          paramString = a.IFQ;
+          a.a.a((a)localObject2, ((e)localObject2).IGb + "config.json");
+          ((JSONObject)localObject1).put("foreground", ((e)localObject2).IGb);
+          this.IGE = ((e)localObject2);
         }
-        paramString = this.IlQ + "config.json";
+        paramString = this.IGb + "config.json";
         localObject1 = ((JSONObject)localObject1).toString();
         p.g(localObject1, "saveJson.toString()");
         localObject2 = d.n.d.UTF_8;
@@ -304,7 +304,7 @@ public final class f
         }
         localObject1 = ((String)localObject1).getBytes((Charset)localObject2);
         p.g(localObject1, "(this as java.lang.String).getBytes(charset)");
-        i.C(paramString, (byte[])localObject1);
+        o.C(paramString, (byte[])localObject1);
         AppMethodBeat.o(105906);
         return;
       }
@@ -315,27 +315,27 @@ public final class f
   
   public final boolean isValid()
   {
-    return (this.Imr != null) || (this.Ims != null) || (this.Imt != null);
+    return (this.IGC != null) || (this.IGD != null) || (this.IGE != null);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/StickerPack$Companion;", "", "()V", "BACKGROUND_DIR", "", "CONFIG_FILE", "FACE_TRACK_DIR", "FOREGROUND_DIR", "KEY_BACKGROUND", "KEY_CUSTOM", "KEY_ELEMENTS", "KEY_FACE_TRACK", "KEY_FOREGROUND", "KEY_ID", "KEY_PARAMS", "KEY_SUBTITLE", "KEY_SUBTITLE_COLOR", "KEY_SUBTITLE_STROKE_COLOR", "KEY_VERSION", "TYPE_FACE_TRACK", "TYPE_FIXED", "TYPE_SEGMENT", "createByLocal", "Lcom/tencent/mm/sticker/StickerPack;", "packDir", "plugin-sticker_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/StickerPack$Companion;", "", "()V", "BACKGROUND_DIR", "", "CONFIG_FILE", "FACE_TRACK_DIR", "FOREGROUND_DIR", "KEY_BACKGROUND", "KEY_CUSTOM", "KEY_ELEMENTS", "KEY_FACE_TRACK", "KEY_FOREGROUND", "KEY_ID", "KEY_PARAMS", "KEY_SUBTITLE", "KEY_SUBTITLE_COLOR", "KEY_SUBTITLE_STROKE_COLOR", "KEY_VERSION", "TYPE_FACE_TRACK", "TYPE_FIXED", "TYPE_SEGMENT", "createByLocal", "Lcom/tencent/mm/sticker/StickerPack;", "packDir", "plugin-sticker_release"})
   public static final class a
   {
-    public static f aSc(String paramString)
+    public static f aTz(String paramString)
     {
-      AppMethodBeat.i(215377);
+      AppMethodBeat.i(208256);
       p.h(paramString, "packDir");
       f localf = new f();
-      localf.aRZ(paramString);
-      localf.aSa(paramString);
-      AppMethodBeat.o(215377);
+      localf.aTw(paramString);
+      localf.aTx(paramString);
+      AppMethodBeat.o(208256);
       return localf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sticker.f
  * JD-Core Version:    0.7.0.1
  */

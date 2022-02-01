@@ -1,57 +1,77 @@
 package com.tencent.mm.plugin.scanner.model;
 
+import android.graphics.Bitmap;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fp;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
+import d.g.b.p;
+import d.l;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/ScanTranslationDataHelper;", "", "()V", "TAG", "", "translateBitmapMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Landroid/graphics/Bitmap;", "clear", "", "doClear", "getTranslateBitmap", "path", "saveTranslateBitmap", "bitmap", "scan-translation_release"})
 public final class af
-  extends fp
 {
-  public static c.a info;
+  private static ConcurrentHashMap<String, Bitmap> yEs;
+  public static final af yEt;
   
   static
   {
-    AppMethodBeat.i(120859);
-    c.a locala = new c.a();
-    locala.IhA = new Field[5];
-    locala.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "originMD5";
-    locala.IhC.put("originMD5", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" originMD5 TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IhB = "originMD5";
-    locala.columns[1] = "resultFile";
-    locala.IhC.put("resultFile", "TEXT");
-    localStringBuilder.append(" resultFile TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "fromLang";
-    locala.IhC.put("fromLang", "TEXT");
-    localStringBuilder.append(" fromLang TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "toLang";
-    locala.IhC.put("toLang", "TEXT");
-    localStringBuilder.append(" toLang TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "brand";
-    locala.IhC.put("brand", "TEXT");
-    localStringBuilder.append(" brand TEXT");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(120859);
+    AppMethodBeat.i(120966);
+    yEt = new af();
+    yEs = new ConcurrentHashMap();
+    AppMethodBeat.o(120966);
   }
   
-  public final c.a getDBInfo()
+  public static final Bitmap axZ(String paramString)
   {
-    return info;
+    AppMethodBeat.i(120964);
+    p.h(paramString, "path");
+    paramString = (Bitmap)yEs.get(paramString);
+    AppMethodBeat.o(120964);
+    return paramString;
+  }
+  
+  public static final void clear()
+  {
+    AppMethodBeat.i(120965);
+    h.MqF.aO((Runnable)a.yEu);
+    AppMethodBeat.o(120965);
+  }
+  
+  public static final void r(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(120963);
+    p.h(paramString, "path");
+    ((Map)yEs).put(paramString, paramBitmap);
+    AppMethodBeat.o(120963);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    public static final a yEu;
+    
+    static
+    {
+      AppMethodBeat.i(120962);
+      yEu = new a();
+      AppMethodBeat.o(120962);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(120961);
+      af localaf = af.yEt;
+      af.dOI();
+      AppMethodBeat.o(120961);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.af
  * JD-Core Version:    0.7.0.1
  */

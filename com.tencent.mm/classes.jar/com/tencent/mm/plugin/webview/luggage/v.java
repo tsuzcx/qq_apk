@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.webview.luggage;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class v
 {
-  private boolean DQr;
-  private String DQs;
-  private String DQt;
-  private String DQu;
-  private String DQv;
-  private String DQw;
-  private String DQx;
+  private boolean Eir;
+  private String Eis;
+  private String Eit;
+  private String Eiu;
+  private String Eiv;
+  private String Eiw;
+  private String Eix;
   private String lang;
   
   public v(Bundle paramBundle)
   {
     AppMethodBeat.i(78478);
-    this.DQr = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.DQs = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.DQt = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.DQu = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.DQv = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.DQw = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.DQx = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
-    this.lang = ac.iM(aj.getContext());
+    this.Eir = paramBundle.getBoolean("close_window_confirm_dialog_switch");
+    this.Eis = paramBundle.getString("close_window_confirm_dialog_title_cn");
+    this.Eit = paramBundle.getString("close_window_confirm_dialog_title_eng");
+    this.Eiu = paramBundle.getString("close_window_confirm_dialog_ok_cn");
+    this.Eiv = paramBundle.getString("close_window_confirm_dialog_ok_eng");
+    this.Eiw = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
+    this.Eix = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
+    this.lang = ad.iR(ak.getContext());
     AppMethodBeat.o(78478);
   }
   
-  public final boolean ePK()
+  public final boolean eTw()
   {
     AppMethodBeat.i(78479);
-    if ((this.DQr) && (!bt.isNullOrNil(ePL())) && (!bt.isNullOrNil(ePM())) && (!bt.isNullOrNil(ePN())))
+    if ((this.Eir) && (!bu.isNullOrNil(eTx())) && (!bu.isNullOrNil(eTy())) && (!bu.isNullOrNil(eTz())))
     {
       AppMethodBeat.o(78479);
       return true;
@@ -43,44 +43,44 @@ public final class v
     return false;
   }
   
-  public final String ePL()
+  public final String eTx()
   {
     AppMethodBeat.i(78480);
     if ("zh_CN".equals(this.lang))
     {
-      str = this.DQs;
+      str = this.Eis;
       AppMethodBeat.o(78480);
       return str;
     }
-    String str = this.DQt;
+    String str = this.Eit;
     AppMethodBeat.o(78480);
     return str;
   }
   
-  public final String ePM()
+  public final String eTy()
   {
     AppMethodBeat.i(78481);
     if ("zh_CN".equals(this.lang))
     {
-      str = this.DQu;
+      str = this.Eiu;
       AppMethodBeat.o(78481);
       return str;
     }
-    String str = this.DQv;
+    String str = this.Eiv;
     AppMethodBeat.o(78481);
     return str;
   }
   
-  public final String ePN()
+  public final String eTz()
   {
     AppMethodBeat.i(78482);
     if ("zh_CN".equals(this.lang))
     {
-      str = this.DQw;
+      str = this.Eiw;
       AppMethodBeat.o(78482);
       return str;
     }
-    String str = this.DQx;
+    String str = this.Eix;
     AppMethodBeat.o(78482);
     return str;
   }

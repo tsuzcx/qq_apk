@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.21;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,40 +25,42 @@ public class c
   public static final int CTRL_INDEX = 516;
   public static final String NAME = "joinVoIPChat";
   private static String TAG = "MicroMsg.OpenVoice.JsApiCloudVoiceJoinVoIPChat";
-  protected l laM;
-  protected m laN;
-  protected o laO;
-  protected n laP;
-  protected c.a laQ;
-  protected p laR;
-  protected volatile boolean laS;
-  protected long laT;
-  protected int laU;
+  protected p leA;
+  protected volatile boolean leB;
+  protected long leC;
+  protected int leD;
+  protected boolean leE;
+  protected l lev;
+  protected m lew;
+  protected o lex;
+  protected n ley;
+  protected c.a lez;
   protected String mAppId;
   
   public c()
   {
     AppMethodBeat.i(46680);
-    this.laM = new l();
-    this.laN = new m();
-    this.laO = new o();
-    this.laP = new n();
-    this.laQ = null;
-    this.laR = new p();
-    this.laS = false;
+    this.lev = new l();
+    this.lew = new m();
+    this.lex = new o();
+    this.ley = new n();
+    this.lez = null;
+    this.leA = new p();
+    this.leB = false;
     this.mAppId = "";
-    this.laT = -1L;
-    this.laU = 0;
-    com.tencent.mm.plugin.appbrand.permission.c.TP("joinVoIPChat");
+    this.leC = -1L;
+    this.leD = 0;
+    this.leE = false;
+    com.tencent.mm.plugin.appbrand.permission.c.Uy("joinVoIPChat");
     AppMethodBeat.o(46680);
   }
   
   protected static Map<String, Object> A(ArrayList<com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b> paramArrayList)
   {
-    AppMethodBeat.i(188466);
+    AppMethodBeat.i(222616);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
-    if (!bt.hj(paramArrayList))
+    if (!bu.ht(paramArrayList))
     {
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
@@ -66,20 +68,20 @@ public class c
       }
     }
     localHashMap.put("openIdList", localArrayList);
-    AppMethodBeat.o(188466);
+    AppMethodBeat.o(222616);
     return localHashMap;
   }
   
   protected static void b(Map<String, Object> paramMap, int paramInt)
   {
-    AppMethodBeat.i(188468);
+    AppMethodBeat.i(222618);
     paramMap.put("errCode", Integer.valueOf(paramInt));
-    AppMethodBeat.o(188468);
+    AppMethodBeat.o(222618);
   }
   
   protected static Map<String, Object> d(HashMap<String, LinkedList> paramHashMap)
   {
-    AppMethodBeat.i(188467);
+    AppMethodBeat.i(222617);
     HashMap localHashMap = new HashMap();
     paramHashMap = paramHashMap.entrySet().iterator();
     while (paramHashMap.hasNext())
@@ -91,7 +93,7 @@ public class c
         localHashMap.put(str, new ArrayList((Collection)localObject));
       }
     }
-    AppMethodBeat.o(188467);
+    AppMethodBeat.o(222617);
     return localHashMap;
   }
   
@@ -125,13 +127,13 @@ public class c
       AppMethodBeat.o(46681);
       return;
     }
-    Object localObject = (com.tencent.mm.plugin.appbrand.jsapi.ac.c.b.c)paramc.getRuntime().as(com.tencent.mm.plugin.appbrand.jsapi.ac.c.b.c.class);
+    Object localObject = (com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c)paramc.getRuntime().as(com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c.class);
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.appbrand.jsapi.ac.c.b.c)localObject).bpL();
-      if (!bt.isNullOrNil((String)localObject))
+      localObject = ((com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c)localObject).bqv();
+      if (!bu.isNullOrNil((String)localObject))
       {
-        ad.e(TAG, "can not join voip chat now, message:%s", new Object[] { localObject });
+        ae.e(TAG, "can not join voip chat now, message:%s", new Object[] { localObject });
         paramc.h(paramInt, "fail: can not join voip chat now");
         Toast.makeText(paramc.getContext(), (CharSequence)localObject, 0).show();
         AppMethodBeat.o(46681);
@@ -141,7 +143,7 @@ public class c
     this.mAppId = paramc.getAppId();
     b(paramc);
     localObject = paramc.getAppId();
-    ad.i(TAG, "hy: appId:" + (String)localObject + ", params:" + paramJSONObject.toString());
+    ae.i(TAG, "hy: appId:" + (String)localObject + ", params:" + paramJSONObject.toString());
     try
     {
       String str1 = paramJSONObject.getString("signature");
@@ -155,21 +157,21 @@ public class c
       paramJSONObject = paramJSONObject.getJSONObject("muteConfig");
       final boolean bool1 = paramJSONObject.optBoolean("muteMicrophone");
       final boolean bool2 = paramJSONObject.optBoolean("muteEarphone");
-      this.laU = 0;
-      this.laT = bt.HI();
-      if ((paramc.getRuntime() != null) && (paramc.getRuntime().Eb())) {}
+      this.leD = 0;
+      this.leC = bu.HQ();
+      if ((paramc.getRuntime() != null) && (paramc.getRuntime().Ee())) {}
       for (int i = 0;; i = 1)
       {
-        gq(false);
-        paramJSONObject = com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.oXv;
+        go(false);
+        paramJSONObject = com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.pdY;
         com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local1 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
         com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local2 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
         com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local3 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
         com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local4 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
         com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local5 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
-        ad.i("MicroMsg.OpenVoice.OpenVoiceService", "hy: trigger join room. %s, %s, %s, %d, %s", new Object[] { localObject, str1, str3, Integer.valueOf(j), str2 });
-        paramJSONObject.af(new p.21(paramJSONObject, (String)localObject, "wx766655dab8fe851b", str1, str3, j, i, k, m, n, str2, str4, local1, local2, local3, local4, local5));
-        ad.i(TAG, "hy: JsApiCloudVoiceJoinVoIPChat callbackId:".concat(String.valueOf(paramInt)));
+        ae.i("MicroMsg.OpenVoice.OpenVoiceService", "hy: trigger join room. %s, %s, %s, %d, %s", new Object[] { localObject, str1, str3, Integer.valueOf(j), str2 });
+        paramJSONObject.ad(new p.21(paramJSONObject, (String)localObject, "wx766655dab8fe851b", str1, str3, j, i, k, m, n, str2, str4, local1, local2, local3, local4, local5));
+        ae.i(TAG, "hy: JsApiCloudVoiceJoinVoIPChat callbackId:".concat(String.valueOf(paramInt)));
         AppMethodBeat.o(46681);
         return;
       }
@@ -177,44 +179,54 @@ public class c
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace(TAG, paramJSONObject, "handle join voice voip data exception", new Object[0]);
+      ae.printErrStackTrace(TAG, paramJSONObject, "handle join voice voip data exception", new Object[0]);
       paramc.h(paramInt, e("fail: param error!", null));
+      this.leE = false;
       AppMethodBeat.o(46681);
     }
   }
   
   protected final void b(final com.tencent.mm.plugin.appbrand.service.c paramc)
   {
-    AppMethodBeat.i(188465);
-    if (this.laQ == null) {
-      this.laQ = new c.a()
+    AppMethodBeat.i(222615);
+    if (this.lez == null) {
+      this.lez = new c.a()
       {
         public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.a.b paramAnonymousb)
         {
-          AppMethodBeat.i(188464);
-          ad.i(c.TAG, "hy: is1V1:%b, isIsVoIPTalking:%b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.oXv.oXW), Boolean.valueOf(com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.oXv.oXV) });
-          if ((paramAnonymousb == com.tencent.mm.plugin.appbrand.a.b.jKR) && (c.this.mAppId.equals(paramAnonymousString)))
+          AppMethodBeat.i(222614);
+          ae.i(c.TAG, "hy: is1V1:%b, isIsVoIPTalking:%b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.pdY.pez), Boolean.valueOf(com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.pdY.pey) });
+          if ((paramAnonymousb == com.tencent.mm.plugin.appbrand.a.b.jOd) && (c.this.mAppId.equals(paramAnonymousString)))
           {
-            ad.i(c.TAG, "hy: appbrand change to destroy");
-            com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.oXv.a(new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {}, p.a.oZh);
-            if ((paramc.getRuntime() != null) && (paramc.getRuntime().jwS != null)) {
-              paramc.getRuntime().jwS.b(c.this.laQ);
+            ae.i(c.TAG, "hy: appbrand change to destroy");
+            com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.pdY.a(new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {}, p.a.pfL);
+            if ((paramc.getRuntime() != null) && (paramc.getRuntime().jzQ != null)) {
+              paramc.getRuntime().jzQ.b(c.this.lez);
             }
-            q.Qr(paramAnonymousString);
+            q.Ra(paramAnonymousString);
+            AppMethodBeat.o(222614);
+            return;
           }
-          AppMethodBeat.o(188464);
+          if ((paramAnonymousb == com.tencent.mm.plugin.appbrand.a.b.jOb) && (c.this.mAppId.equals(paramAnonymousString)))
+          {
+            if (c.this.leE) {
+              q.QZ(c.this.mAppId);
+            }
+            c.this.leE = false;
+          }
+          AppMethodBeat.o(222614);
         }
       };
     }
-    if ((paramc.getRuntime() != null) && (paramc.getRuntime().jwS != null)) {
-      paramc.getRuntime().jwS.a(this.laQ);
+    if ((paramc.getRuntime() != null) && (paramc.getRuntime().jzQ != null)) {
+      paramc.getRuntime().jzQ.a(this.lez);
     }
-    AppMethodBeat.o(188465);
+    AppMethodBeat.o(222615);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.c
  * JD-Core Version:    0.7.0.1
  */

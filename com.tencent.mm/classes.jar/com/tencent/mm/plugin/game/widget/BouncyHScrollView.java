@@ -11,7 +11,7 @@ public class BouncyHScrollView
   extends HorizontalScrollView
 {
   private Context mContext;
-  private int uvV;
+  private int uHu;
   
   public BouncyHScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,7 +29,7 @@ public class BouncyHScrollView
   {
     AppMethodBeat.i(42590);
     super.onFinishInflate();
-    this.uvV = ((int)(this.mContext.getResources().getDisplayMetrics().density * 300.0F));
+    this.uHu = ((int)(this.mContext.getResources().getDisplayMetrics().density * 300.0F));
     setOverScrollMode(0);
     setSmoothScrollingEnabled(true);
     setHorizontalFadingEdgeEnabled(false);
@@ -39,7 +39,7 @@ public class BouncyHScrollView
   protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     AppMethodBeat.i(42591);
-    paramBoolean = super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, this.uvV, paramInt8, paramBoolean);
+    paramBoolean = super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, this.uHu, paramInt8, paramBoolean);
     AppMethodBeat.o(42591);
     return paramBoolean;
   }

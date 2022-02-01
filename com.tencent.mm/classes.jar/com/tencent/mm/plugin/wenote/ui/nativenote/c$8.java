@@ -22,9 +22,9 @@ final class c$8
     AppMethodBeat.i(30819);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().X(-1, false);
-    if (!e.abf())
+    a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().Z(-1, false);
+    if (!e.abo())
     {
       t.g(this.val$context, null);
       a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

@@ -2,38 +2,31 @@ package com.tencent.mm.plugin.finder.extension.reddot;
 
 import android.arch.lifecycle.ViewModelProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.g.a.fm;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.cgi.n.a;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.al;
-import com.tencent.mm.plugin.finder.preload.tabPreload.FinderStreamTabPreloadCore;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
-import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM.c;
 import com.tencent.mm.plugin.i.a.o;
 import com.tencent.mm.plugin.newtips.a.l.a;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aqt;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.aqz;
-import com.tencent.mm.protocal.protobuf.ara;
-import com.tencent.mm.protocal.protobuf.ary;
-import com.tencent.mm.protocal.protobuf.arz;
-import com.tencent.mm.protocal.protobuf.asd;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.protocal.protobuf.asw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import d.b.b.a;
+import com.tencent.mm.protocal.protobuf.ari;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.aro;
+import com.tencent.mm.protocal.protobuf.arp;
+import com.tencent.mm.protocal.protobuf.asn;
+import com.tencent.mm.protocal.protobuf.aso;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.atm;
+import com.tencent.mm.protocal.protobuf.ekt;
+import com.tencent.mm.protocal.protobuf.eku;
+import com.tencent.mm.protocal.protobuf.ekv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.g.b.q;
+import d.g.b.y.a;
 import d.v;
 import d.z;
 import java.util.ArrayList;
@@ -51,56 +44,57 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderRedDotManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "storage", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;)V", "enterSource", "", "enterTime", "", "hasRedDotWhenEnter", "", "msgRedDotHandler", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler;", "getMsgRedDotHandler", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler;", "newTipsTransform", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "noFoundRevokeIdSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderRevokeTabTipsInfo;", "pathToCtrInfoMap", "", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "preFetchToken", "Ljava/util/concurrent/atomic/AtomicInteger;", "revokeIdToCtrInfoMap", "singleTaskExecutor", "Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "getSingleTaskExecutor", "()Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "singleTaskExecutor$delegate", "Lkotlin/Lazy;", "stateCacheVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "stayDuration", "transform", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "getTransform", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "addNewRedDotCtrlInfo", "info", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "source", "tipsShowEntranceExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "changePathSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "buildPathWithCtrInfo", "local", "checkPreFetchNow", "", "clearCtrlInfo", "type", "filter", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "ctrlInfo", "containsTabTipsExtInfo", "tabType", "ctrlInfoAtPath", "path", "deleteCtrlInfo", "ctrInfo", "disposeRedDotAtPath", "ctrlType", "", "enterFinder", "exitFinder", "exitFinderBefore", "filterNotifyTabTip", "tabTip", "Lcom/tencent/mm/protocal/protobuf/FinderTabTipsInfo;", "findByRevokeId", "revokeId", "findExtInfoAtCtrlInfo", "getAliveTabType", "getDiffExitTimeMs", "getPathByTabType", "getTabTipsExtInfo", "getTipsShowInfoAtPath", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "hasPrefetch", "isEnableShowEntranceRedDot", "isShowInteractionRedDot", "lastPreFetchTime", "needToRefreshForPrefetch", "notifyFinderFansAddCount", "count", "notifyFinderMsgCount", "normalCount", "systemCount", "notifyRedDot", "redDot", "Lcom/tencent/mm/protocal/protobuf/FinderRedDot;", "notifyTabTip", "tabTips", "Lcom/tencent/mm/protocal/protobuf/FinderTabTips;", "notifyWxMentionCount", "wxMention", "Lcom/tencent/mm/protocal/protobuf/FinderWxMentionCount;", "onPreFetchDone", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "needShowRedDot", "isInFinder", "token", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "parseExtInfo", "showInfoList", "", "prepare", "printCtrInfo", "printTipsShowInfo", "index", "reBuildPathWithCtrInfo", "resetPreFetchTime", "revokeRedDot", "revoke", "Lcom/tencent/mm/protocal/protobuf/FinderRevokeTabTips;", "setEnableShowEntranceRedDot", "isEnable", "storeLastPreFetchTime", "updateFindMoreFriendUI", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderRedDotManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "storage", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;)V", "careExptKey", "", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enterSource", "", "enterTime", "", "entryConfigChangeListener", "com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$entryConfigChangeListener$1", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$entryConfigChangeListener$1;", "hasRedDotWhenEnter", "", "msgRedDotHandler", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler;", "getMsgRedDotHandler", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler;", "newTipsTransform", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "noFoundRevokeIdSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderRevokeTabTipsInfo;", "pathToCtrInfoMap", "", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "revokeIdToCtrInfoMap", "singleTaskExecutor", "Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "getSingleTaskExecutor", "()Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "singleTaskExecutor$delegate", "Lkotlin/Lazy;", "stateCacheVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "stayDuration", "transform", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "getTransform", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "addNewRedDotCtrlInfo", "info", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "source", "tipsShowEntranceExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "changePathSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "isClearOldSameType", "buildPathWithCtrInfo", "local", "checkPreFetchNow", "", "clearCtrlInfo", "type", "filter", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "ctrlInfo", "containsTabTipsExtInfo", "tabType", "ctrlInfoAtPath", "path", "deleteCtrlInfo", "ctrInfo", "disposeRedDotAtPath", "call", "ctrlType", "", "enterFinder", "exitFinder", "exitFinderBefore", "filterNotifyTabTip", "tabTip", "Lcom/tencent/mm/protocal/protobuf/FinderTabTipsInfo;", "findByRevokeId", "revokeId", "findExtInfoAtCtrlInfo", "getAliveTabType", "getDiffExitTimeMs", "getPathByTabType", "getTabTipsExtInfo", "getTabTypeByPath", "getTipsShowInfoAtPath", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "hasPrefetch", "isEnableShowEntranceRedDot", "isShowInteractionRedDot", "lastPreFetchTime", "needToRefreshForPrefetch", "notifyFinderFansAddCount", "count", "notifyFinderMsgCount", "normalCount", "systemCount", "notifyRedDot", "redDot", "Lcom/tencent/mm/protocal/protobuf/FinderRedDot;", "notifyTabTip", "tabTips", "Lcom/tencent/mm/protocal/protobuf/FinderTabTips;", "notifyWxMentionCount", "wxMention", "Lcom/tencent/mm/protocal/protobuf/FinderWxMentionCount;", "onExptChange", "key", "onPreFetchDone", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "needShowRedDot", "isInFinder", "token", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "parseEntranceExtInfo", "showInfoList", "prepare", "printCtrInfo", "printTipsShowInfo", "index", "reBuildPathWithCtrInfo", "resetPreFetchTime", "revokePathRedDot", "revoke", "Lcom/tencent/mm/protocal/protobuf/FinderRevokePathRedDot;", "revokeTabTips", "Lcom/tencent/mm/protocal/protobuf/FinderRevokeTabTips;", "setEnableShowEntranceRedDot", "isEnable", "storeLastPreFetchTime", "updateFindMoreFriendUI", "Companion", "FinderTipsShowTabExt", "plugin-finder_release"})
 public final class e
-  implements com.tencent.mm.al.f, o
+  implements com.tencent.mm.ak.f, o
 {
-  private static boolean rSh;
-  public static final a rSi;
+  private static boolean saK;
+  public static final a saL;
   public long enterTime;
-  private final h rRU;
-  public final a rRV;
-  private final b rRW;
-  private final AtomicInteger rRX;
-  private final FinderHomeTabStateVM rRY;
-  private final d.f rRZ;
-  public long rSa;
-  public int rSb;
-  public boolean rSc;
-  private final ConcurrentHashMap<String, List<i>> rSd;
-  private final ConcurrentHashMap<String, i> rSe;
-  private final ConcurrentHashMap<String, ara> rSf;
-  private final c rSg;
+  private final d.f saA;
+  private final List<com.tencent.mm.plugin.expt.b.b.a> saB;
+  private final h saC;
+  public long saD;
+  public int saE;
+  public boolean saF;
+  private final ConcurrentHashMap<String, List<i>> saG;
+  private final ConcurrentHashMap<String, i> saH;
+  private final ConcurrentHashMap<String, arp> saI;
+  private final c saJ;
+  private final h saw;
+  public final a sax;
+  private final b say;
+  private final FinderHomeTabStateVM saz;
   
   static
   {
     AppMethodBeat.i(178166);
-    rSi = new a((byte)0);
+    saL = new a((byte)0);
     AppMethodBeat.o(178166);
   }
   
   public e(c paramc)
   {
     AppMethodBeat.i(178184);
-    this.rSg = paramc;
-    this.rRU = new h(this);
-    this.rRV = new a(this);
-    this.rRW = new b(this);
-    this.rRX = new AtomicInteger();
-    paramc = com.tencent.mm.ui.component.a.KiD;
+    this.saJ = paramc;
+    this.saw = new h(this);
+    this.sax = new a(this);
+    this.say = new b(this);
+    paramc = com.tencent.mm.ui.component.a.KEX;
     paramc = com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderHomeTabStateVM.class);
     p.g(paramc, "UICProvider.of(PluginFin…meTabStateVM::class.java)");
-    this.rRY = ((FinderHomeTabStateVM)paramc);
-    this.rRZ = d.g.O((d.g.a.a)q.rSB);
-    this.rSd = new ConcurrentHashMap();
-    this.rSe = new ConcurrentHashMap();
-    this.rSf = new ConcurrentHashMap();
+    this.saz = ((FinderHomeTabStateVM)paramc);
+    this.saA = d.g.O((d.g.a.a)q.sbc);
+    this.saB = d.a.j.listOf(com.tencent.mm.plugin.expt.b.b.a.qIt);
+    this.saC = new h(this);
+    this.saG = new ConcurrentHashMap();
+    this.saH = new ConcurrentHashMap();
+    this.saI = new ConcurrentHashMap();
     AppMethodBeat.o(178184);
   }
   
-  public static String Er(int paramInt)
+  public static String EE(int paramInt)
   {
     switch (paramInt)
     {
@@ -116,11 +110,16 @@ public final class e
     return "TLLbsTab";
   }
   
-  private static String a(aqu paramaqu)
+  private static String a(arj paramarj)
   {
     AppMethodBeat.i(178180);
+    if (paramarj == null)
+    {
+      AppMethodBeat.o(178180);
+      return "";
+    }
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject1 = paramaqu.GoP;
+    Object localObject1 = paramarj.GIf;
     p.g(localObject1, "info.show_infos");
     localObject1 = (Iterable)localObject1;
     int i = 0;
@@ -129,270 +128,419 @@ public final class e
     {
       Object localObject2 = ((Iterator)localObject1).next();
       if (i < 0) {
-        d.a.j.gfB();
+        d.a.j.gkd();
       }
-      localStringBuilder.append(a((ase)localObject2, i));
+      localStringBuilder.append(a((ast)localObject2, i));
       i += 1;
     }
-    paramaqu = "CtrlInfo{tipsId=" + paramaqu.GoQ + " priority=" + paramaqu.priority + " type=" + paramaqu.type + " tipsShowInfo=" + localStringBuilder + '}';
+    paramarj = "CtrlInfo{tipsId=" + paramarj.GIg + " priority=" + paramarj.priority + " type=" + paramarj.type + " tipsShowInfo=" + localStringBuilder + '}';
     AppMethodBeat.o(178180);
-    return paramaqu;
+    return paramarj;
   }
   
-  private static String a(ase paramase, int paramInt)
+  private static String a(ast paramast, int paramInt)
   {
     AppMethodBeat.i(178181);
-    if (paramase == null)
+    if (paramast == null)
     {
       AppMethodBeat.o(178181);
       return "[empty]";
     }
-    paramase = "#" + paramInt + "{showType=" + paramase.uda + " count=" + paramase.count + " title=" + paramase.title + ' ' + "clearType=" + paramase.Gqr + " iconUrl=" + paramase.pkr + " path=" + paramase.path + " show_ext_info_type=" + paramase.Gqs + " parent=" + paramase.xfl + "} ";
+    paramast = "#" + paramInt + "{showType=" + paramast.uoi + " count=" + paramast.count + " title=" + paramast.title + ' ' + "clearType=" + paramast.GJM + " iconUrl=" + paramast.pqW + " path=" + paramast.path + " show_ext_info_type=" + paramast.GJN + " parent=" + paramast.xvd + "} ";
     AppMethodBeat.o(178181);
-    return paramase;
+    return paramast;
   }
   
   private final HashSet<String> a(final i parami, String paramString)
   {
-    AppMethodBeat.i(201631);
-    paramString = new StringBuilder("[buildPathWithCtrInfo] source=").append(paramString).append(' ');
-    Object localObject1 = parami.field_ctrInfo;
-    p.g(localObject1, "local.field_ctrInfo");
-    ad.i("Finder.RedDotManager", a((aqu)localObject1) + " revokeId=" + parami.field_revokeId);
-    localObject1 = new HashSet();
-    Object localObject2 = ((Map)parami.rTc).entrySet().iterator();
+    AppMethodBeat.i(202079);
+    ae.i("Finder.RedDotManager", "[buildPathWithCtrInfo] source=" + paramString + ' ' + a(parami.field_ctrInfo) + " revokeId=" + parami.field_revokeId);
+    final HashSet localHashSet = new HashSet();
+    Object localObject1 = ((Map)parami.sbE).entrySet().iterator();
     Map.Entry localEntry;
-    Object localObject3;
-    if (((Iterator)localObject2).hasNext())
+    Object localObject2;
+    if (((Iterator)localObject1).hasNext())
     {
-      localEntry = (Map.Entry)((Iterator)localObject2).next();
-      paramString = (List)this.rSd.get(localEntry.getKey());
+      localEntry = (Map.Entry)((Iterator)localObject1).next();
+      paramString = (List)this.saG.get(localEntry.getKey());
       if (paramString != null) {
-        break label378;
+        break label367;
       }
-      localObject3 = (e)this;
+      localObject2 = (e)this;
       paramString = Collections.synchronizedList((List)new LinkedList());
-      localObject3 = (Map)((e)localObject3).rSd;
-      Object localObject4 = localEntry.getKey();
+      localObject2 = (Map)((e)localObject2).saG;
+      Object localObject3 = localEntry.getKey();
       p.g(paramString, "list");
-      ((Map)localObject3).put(localObject4, paramString);
+      ((Map)localObject2).put(localObject3, paramString);
     }
-    label378:
+    label367:
     for (;;)
     {
       p.g(paramString, "crlInfoList");
-      d.a.j.b(paramString, (d.g.a.b)new c(this, parami, (HashSet)localObject1));
+      d.a.j.c(paramString, (d.g.a.b)new c(this, parami, localHashSet));
       paramString.add(parami);
-      localObject3 = new d.g.a.b[2];
-      localObject3[0] = ((d.g.a.b)d.rSn);
-      localObject3[1] = ((d.g.a.b)e.rSo);
-      p.h(localObject3, "selectors");
-      d.a.j.a(paramString, (Comparator)new b.a((d.g.a.b[])localObject3));
-      ((HashSet)localObject1).add(localEntry.getKey());
+      localObject2 = new d.g.a.b[2];
+      localObject2[0] = ((d.g.a.b)d.saQ);
+      localObject2[1] = ((d.g.a.b)e.saR);
+      p.h(localObject2, "selectors");
+      d.a.j.a(paramString, (Comparator)new d.b.b.a((d.g.a.b[])localObject2));
+      localHashSet.add(localEntry.getKey());
       break;
       paramString = parami.field_revokeId;
       if (paramString != null) {
-        ((Map)this.rSe).put(paramString, parami);
+        ((Map)this.saH).put(paramString, parami);
       }
-      parami = ((Iterable)localObject1).iterator();
+      parami = ((Iterable)localHashSet).iterator();
       while (parami.hasNext())
       {
         paramString = (String)parami.next();
-        localObject2 = g.rSU;
-        g.a(true, paramString, ahm(paramString), ahn(paramString));
+        localObject1 = g.sbw;
+        g.a(true, paramString, aii(paramString), aij(paramString));
       }
-      AppMethodBeat.o(201631);
-      return localObject1;
+      AppMethodBeat.o(202079);
+      return localHashSet;
     }
   }
   
-  private boolean a(aqu paramaqu, String paramString, asd paramasd, HashSet<String> paramHashSet)
+  private boolean a(arj paramarj, String paramString, ass paramass, HashSet<String> paramHashSet, boolean paramBoolean)
   {
-    AppMethodBeat.i(201627);
-    p.h(paramaqu, "info");
+    AppMethodBeat.i(224288);
     p.h(paramString, "source");
-    p.h(paramasd, "tipsShowEntranceExtInfo");
+    p.h(paramass, "tipsShowEntranceExtInfo");
     p.h(paramHashSet, "changePathSet");
-    if (!czR())
+    if (paramarj == null)
     {
-      localObject = paramaqu.GoP;
-      p.g(localObject, "info.show_infos");
-      com.tencent.mm.ad.c.a((LinkedList)localObject, (d.g.a.b)b.rSj);
-      ad.i("Finder.RedDotManager", "[addNewRedDotCtrlInfo] remove DISCOVERY_TAB");
-    }
-    Object localObject = new i().b(paramaqu);
-    ((i)localObject).field_tipsShowEntranceExtInfo = paramasd;
-    ConcurrentHashMap localConcurrentHashMap = this.rSf;
-    paramasd = ((i)localObject).field_revokeId;
-    paramaqu = paramasd;
-    if (paramasd == null) {
-      paramaqu = "";
-    }
-    if (localConcurrentHashMap.contains(paramaqu))
-    {
-      paramaqu = new StringBuilder("[addNewRedDotCtrlInfo] has revoke. ").append(((i)localObject).field_revokeId).append(' ');
-      paramString = ((i)localObject).field_ctrInfo;
-      p.g(paramString, "local.field_ctrInfo");
-      ad.e("Finder.RedDotManager", a(paramString));
-      AppMethodBeat.o(201627);
+      AppMethodBeat.o(224288);
       return false;
     }
-    if (i.a((i)localObject, this.rSg))
-    {
-      paramHashSet.addAll((Collection)a((i)localObject, paramString));
-      if (((i)localObject).field_ctrInfo.priority > 350000) {
-        this.rRY.a(-1, FinderHomeTabStateVM.c.sZt);
-      }
-      AppMethodBeat.o(201627);
-      return true;
+    if (paramBoolean) {
+      a(this, paramarj.type);
     }
-    AppMethodBeat.o(201627);
+    if (!cBv())
+    {
+      localObject = paramarj.GIf;
+      p.g(localObject, "info.show_infos");
+      com.tencent.mm.ac.c.a((LinkedList)localObject, (d.g.a.b)b.saM);
+      ae.i("Finder.RedDotManager", "[addNewRedDotCtrlInfo] remove DISCOVERY_TAB");
+    }
+    i locali = new i().b(paramarj);
+    locali.field_tipsShowEntranceExtInfo = paramass;
+    ConcurrentHashMap localConcurrentHashMap = this.saI;
+    Object localObject = locali.field_revokeId;
+    paramass = (ass)localObject;
+    if (localObject == null) {
+      paramass = "";
+    }
+    if (localConcurrentHashMap.contains(paramass))
+    {
+      ae.e("Finder.RedDotManager", "[addNewRedDotCtrlInfo] has revoke. " + locali.field_revokeId + ' ' + a(locali.field_ctrInfo));
+      AppMethodBeat.o(224288);
+      return false;
+    }
+    if (i.a(locali, this.saJ))
+    {
+      paramHashSet.addAll((Collection)a(locali, paramString));
+      paramString = k.sbO;
+      p.h(paramarj, "ctrlInfo");
+      ae.i("Finder.ThreeDayTwoDay", "checkRedDotFilter");
+      if (k.cCi())
+      {
+        paramarj = com.tencent.mm.kernel.g.ajR();
+        p.g(paramarj, "MMKernel.storage()");
+        long l1 = paramarj.ajA().a(am.a.Jdl, 0L);
+        if (l1 != 0L)
+        {
+          long l2 = ch.aDc() - l1;
+          paramarj = com.tencent.mm.plugin.finder.storage.b.sHP;
+          i = ((Number)com.tencent.mm.plugin.finder.storage.b.cKP().value()).intValue();
+          if (i >= l2)
+          {
+            paramBoolean = true;
+            ae.i("Finder.ThreeDayTwoDay", "[checkInLimitTwoDay] isInLimit=" + paramBoolean + " twoDayThreshold=" + i + " diffTime=" + l2 + " hitThreeDayTime=" + l1);
+            if (!paramBoolean) {
+              break label422;
+            }
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0)
+        {
+          paramarj = k.rOC;
+          if (paramarj != null) {
+            paramarj.aih("FinderEntrance");
+          }
+        }
+        AppMethodBeat.o(224288);
+        return true;
+        paramBoolean = false;
+        break;
+        label422:
+        k.reset(ch.aDc());
+      }
+    }
+    AppMethodBeat.o(224288);
     return false;
   }
   
-  private final boolean a(arz paramarz)
+  private final boolean a(aso paramaso)
   {
-    int k = -1;
-    AppMethodBeat.i(201636);
-    if ((paramarz.Gqk.type == 8) || (paramarz.Gqk.type == 7))
+    int i = -1;
+    AppMethodBeat.i(202084);
+    Object localObject1 = paramaso.GJF;
+    int j;
+    if ((localObject1 == null) || (((arj)localObject1).type != 8))
     {
-      if (rSh)
+      localObject1 = paramaso.GJF;
+      if ((localObject1 == null) || (((arj)localObject1).type != 7)) {}
+    }
+    else
+    {
+      if (saK)
       {
-        localObject = paramarz.Gqk.GoP;
-        p.g(localObject, "tabTip.ctrl_info.show_infos");
-        d.a.j.b((List)localObject, (d.g.a.b)i.rSt);
-        rSh = false;
-      }
-      Object localObject = paramarz.Gqk.GoP;
-      p.g(localObject, "tabTip.ctrl_info.show_infos");
-      localObject = ((List)localObject).iterator();
-      int i = 0;
-      if (((Iterator)localObject).hasNext()) {
-        if (!p.i(((ase)((Iterator)localObject).next()).path, "FinderEntrance")) {}
-      }
-      for (;;)
-      {
-        if (i < 0) {
-          break label191;
-        }
-        ad.i("Finder.RedDotManager", "[filterNotifyTabTip] has FINDER_ENTRANCE this tabTip type=" + paramarz.Gqk.type);
-        AppMethodBeat.o(201636);
-        return true;
-        i += 1;
-        break;
-        i = -1;
-      }
-      label191:
-      int j;
-      label273:
-      boolean bool;
-      if (paramarz.Gqk.type == 8)
-      {
-        localObject = (List)this.rSd.get("FinderEntrance");
-        j = k;
-        if (localObject != null)
+        localObject1 = paramaso.GJF;
+        if (localObject1 != null)
         {
-          localObject = ((List)localObject).iterator();
-          i = 0;
-          j = k;
-          if (((Iterator)localObject).hasNext())
-          {
-            if (((i)((Iterator)localObject).next()).field_ctrInfo.type != 8) {
-              break label339;
-            }
-            j = 1;
-            if (j == 0) {
-              break label344;
-            }
-            j = i;
+          localObject1 = ((arj)localObject1).GIf;
+          if (localObject1 != null) {
+            d.a.j.c((List)localObject1, (d.g.a.b)i.saU);
           }
         }
-        if (j >= 0) {}
-        for (bool = true;; bool = false)
+        saK = false;
+      }
+      localObject1 = paramaso.GJF;
+      if (localObject1 != null)
+      {
+        localObject1 = ((arj)localObject1).GIf;
+        if (localObject1 != null)
         {
-          ad.i("Finder.RedDotManager", "[filterNotifyTabTip] ignore[" + bool + "] this tabTip type=" + paramarz.Gqk.type);
-          if (bool) {
-            break label357;
-          }
-          AppMethodBeat.o(201636);
-          return true;
-          label339:
+          localObject1 = ((List)localObject1).iterator();
           j = 0;
-          break label273;
-          label344:
-          i += 1;
-          break;
-        }
-        label357:
-        AppMethodBeat.o(201636);
-        return false;
-      }
-      if (paramarz.Gqk.type == 7)
-      {
-        localObject = (List)this.rSd.get("FinderEntrance");
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          i = 0;
-          if (((Iterator)localObject).hasNext()) {
-            if (((i)((Iterator)localObject).next()).field_ctrInfo.type == 7)
+          if (((Iterator)localObject1).hasNext()) {
+            if (p.i(((ast)((Iterator)localObject1).next()).path, "FinderEntrance"))
             {
-              j = 1;
-              label441:
-              if (j == 0) {
-                break label510;
+              label167:
+              localObject1 = paramaso.GJF;
+              if (localObject1 == null) {
+                break label261;
               }
-              label445:
-              if (i < 0) {
-                break label527;
+              localObject1 = Integer.valueOf(((arj)localObject1).type);
+              label188:
+              if (j < 0) {
+                break label272;
+              }
+              localObject1 = new StringBuilder("[filterNotifyTabTip] has FINDER_ENTRANCE this tabTip type=");
+              paramaso = paramaso.GJF;
+              if (paramaso == null) {
+                break label267;
               }
             }
           }
         }
-        label527:
-        for (bool = true;; bool = false)
-        {
-          ad.i("Finder.RedDotManager", "[filterNotifyTabTip] ignore[" + bool + "] this tabTip type=" + paramarz.Gqk.type);
-          if (bool) {
-            break label533;
-          }
-          AppMethodBeat.o(201636);
-          return true;
-          j = 0;
-          break label441;
-          label510:
-          i += 1;
-          break;
-          i = -1;
-          break label445;
-          i = -1;
-          break label445;
-        }
-        label533:
-        AppMethodBeat.o(201636);
-        return false;
+      }
+      label261:
+      label267:
+      for (paramaso = Integer.valueOf(paramaso.type);; paramaso = null)
+      {
+        ae.i("Finder.RedDotManager", paramaso);
+        AppMethodBeat.o(202084);
+        return true;
+        j += 1;
+        break;
+        j = -1;
+        break label167;
+        j = -1;
+        break label167;
+        localObject1 = null;
+        break label188;
+      }
+      label272:
+      if (localObject1 != null) {
+        break label295;
+      }
+      if (localObject1 != null) {
+        break label462;
+      }
+      if (localObject1 != null) {
+        break label515;
       }
     }
-    AppMethodBeat.o(201636);
-    return true;
+    label295:
+    label305:
+    Iterator localIterator;
+    boolean bool;
+    label462:
+    label501:
+    label507:
+    while (localObject2.intValue() != 7)
+    {
+      AppMethodBeat.o(202084);
+      return true;
+      if (((Integer)localObject1).intValue() != 8) {
+        break;
+      }
+      paramaso = (List)this.saG.get("FinderEntrance");
+      k = i;
+      if (paramaso != null) {}
+      for (;;)
+      {
+        try
+        {
+          localIterator = paramaso.iterator();
+          j = 0;
+          k = i;
+          if (localIterator.hasNext())
+          {
+            i locali = (i)localIterator.next();
+            if (locali.field_ctrInfo.type != 8)
+            {
+              k = locali.field_ctrInfo.type;
+              if (k != 9) {}
+            }
+            else
+            {
+              k = 1;
+              if (k == 0) {
+                continue;
+              }
+              k = j;
+            }
+          }
+          else
+          {
+            if (k < 0) {
+              break label501;
+            }
+            bool = true;
+            ae.i("Finder.RedDotManager", "[filterNotifyTabTip] ignore[" + bool + "] this tabTip type=" + localObject1);
+            if (bool) {
+              break label507;
+            }
+            AppMethodBeat.o(202084);
+            return true;
+            if (((Integer)localObject1).intValue() != 9) {
+              break;
+            }
+            break label305;
+          }
+          k = 0;
+          continue;
+          j += 1;
+          continue;
+          bool = false;
+        }
+        finally
+        {
+          AppMethodBeat.o(202084);
+        }
+      }
+      AppMethodBeat.o(202084);
+      return false;
+    }
+    label515:
+    Object localObject3 = (List)this.saG.get("FinderEntrance");
+    int k = i;
+    if (localObject3 != null) {}
+    for (;;)
+    {
+      try
+      {
+        localIterator = ((List)localObject3).iterator();
+        j = 0;
+        k = i;
+        if (localIterator.hasNext())
+        {
+          k = ((i)localIterator.next()).field_ctrInfo.type;
+          if (k == 7)
+          {
+            k = 1;
+            if (k == 0) {
+              continue;
+            }
+            k = j;
+          }
+        }
+        else
+        {
+          if (k < 0) {
+            break label715;
+          }
+          bool = true;
+          localObject3 = new StringBuilder("[filterNotifyTabTip] ignore[").append(bool).append("] this tabTip type=");
+          paramaso = paramaso.GJF;
+          if (paramaso == null) {
+            break label721;
+          }
+          paramaso = Integer.valueOf(paramaso.type);
+          ae.i("Finder.RedDotManager", paramaso);
+          if (bool) {
+            break;
+          }
+          AppMethodBeat.o(202084);
+          return true;
+        }
+        k = 0;
+        continue;
+        j += 1;
+        continue;
+        bool = false;
+      }
+      finally
+      {
+        AppMethodBeat.o(202084);
+      }
+      label715:
+      continue;
+      label721:
+      paramaso = null;
+    }
+    AppMethodBeat.o(202084);
+    return false;
   }
   
-  static long czO()
+  private static int aJi(String paramString)
   {
-    AppMethodBeat.i(201626);
-    long l1 = cf.aCM();
-    j localj = j.rTk;
-    long l2 = j.cAv();
-    AppMethodBeat.o(201626);
+    AppMethodBeat.i(224291);
+    p.h(paramString, "path");
+    switch (paramString.hashCode())
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          AppMethodBeat.o(224291);
+          return -1;
+        } while (!paramString.equals("TLFollow"));
+        AppMethodBeat.o(224291);
+        return 3;
+      } while (!paramString.equals("TLMachineTab"));
+      AppMethodBeat.o(224291);
+      return 4;
+    } while (!paramString.equals("TLRecommendTab"));
+    AppMethodBeat.o(224291);
+    return 1;
+  }
+  
+  private static long cBs()
+  {
+    AppMethodBeat.i(202074);
+    long l1 = ch.aDc();
+    j localj = j.sbM;
+    long l2 = j.cCc();
+    AppMethodBeat.o(202074);
     return l1 - l2;
   }
   
-  public static long czQ()
+  public static long cBu()
   {
     AppMethodBeat.i(178182);
-    Object localObject = com.tencent.mm.kernel.g.ajC();
+    Object localObject = com.tencent.mm.kernel.g.ajR();
     p.g(localObject, "MMKernel.storage()");
-    localObject = ((com.tencent.mm.kernel.e)localObject).ajl().get(al.a.IHn, Long.valueOf(0L));
+    localObject = ((com.tencent.mm.kernel.e)localObject).ajA().get(am.a.JbQ, Long.valueOf(0L));
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type kotlin.Long");
@@ -404,51 +552,136 @@ public final class e
     return l;
   }
   
-  private static asd dC(List<? extends ase> paramList)
+  private static ass dF(List<? extends ast> paramList)
   {
-    AppMethodBeat.i(201638);
-    asd localasd = new asd();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(224292);
+    ass localass = new ass();
+    if (paramList != null)
     {
-      ase localase = (ase)paramList.next();
-      int i = localase.Gqs;
-      if (i == 1)
+      Iterator localIterator = ((Iterable)paramList).iterator();
+      while (localIterator.hasNext())
       {
-        com.tencent.mm.bx.b localb = localase.Gqt;
-        p.g(localb, "it.show_ext_info");
-        localasd.parseFrom(localb.getBytes());
-        ad.i("Finder.RedDotManager", "[parseExtInfo] path=" + localase.path + " objectId=" + com.tencent.mm.ad.c.rc(localasd.Gqn) + " tabType=" + localasd.Glz + " report_ext_info=" + localasd.Gqq + " showExtInfoType=" + i);
+        ast localast = (ast)localIterator.next();
+        int i = localast.GJN;
+        if (i == 1)
+        {
+          paramList = localast.GJO;
+          if (paramList != null) {}
+          for (paramList = paramList.getBytes();; paramList = null)
+          {
+            localass.parseFrom(paramList);
+            ae.i("Finder.RedDotManager", "[parseExtInfo] path=" + localast.path + " objectId=" + com.tencent.mm.ac.c.rp(localass.GJI) + " tabType=" + localass.GEB + " report_ext_info=" + localass.GJL + " showExtInfoType=" + i);
+            break;
+          }
+        }
       }
     }
-    AppMethodBeat.o(201638);
-    return localasd;
+    AppMethodBeat.o(224292);
+    return localass;
   }
   
-  public final void Ep(int paramInt)
+  private void k(String paramString, d.g.a.b<? super i, Boolean> paramb)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(224290);
+    p.h(paramString, "path");
+    p.h(paramb, "call");
+    Object localObject2 = new HashSet();
+    i locali1 = aij(paramString);
+    if (locali1 != null) {}
+    Object localObject3;
+    for (ast localast = locali1.aim(paramString);; localast = null)
+    {
+      localObject3 = (List)this.saG.get(paramString);
+      if (localObject3 == null) {
+        break;
+      }
+      localObject3 = ((List)localObject3).iterator();
+      if (localObject3 == null) {
+        break;
+      }
+      while (((Iterator)localObject3).hasNext())
+      {
+        i locali2 = (i)((Iterator)localObject3).next();
+        if (((Boolean)paramb.invoke(locali2)).booleanValue())
+        {
+          LinkedList localLinkedList = locali2.ain(paramString);
+          if (i.a(locali2, this.saJ)) {
+            ((HashSet)localObject2).addAll((Collection)localLinkedList);
+          }
+          if (locali2.cBS()) {
+            ((Iterator)localObject3).remove();
+          }
+        }
+      }
+    }
+    paramb = new StringBuilder("[disposeRedDotAtPath] path=").append(paramString).append(" tipsId=");
+    paramString = (String)localObject1;
+    if (locali1 != null) {
+      paramString = locali1.field_tipsId;
+    }
+    ae.i("Finder.RedDotManager", paramString + " removePathSet=" + localObject2 + " maybeRemoveShowInfo=" + a(localast, 0));
+    paramString = ((Iterable)localObject2).iterator();
+    while (paramString.hasNext())
+    {
+      paramb = (String)paramString.next();
+      localObject1 = aij(paramb);
+      if (localObject1 != null)
+      {
+        localObject2 = ((i)localObject1).aim(paramb);
+        if (localObject2 != null) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label350;
+          }
+          localObject3 = g.sbw;
+          g.a(false, paramb, localast, locali1);
+          localObject3 = g.sbw;
+          g.a(true, paramb, (ast)localObject2, (i)localObject1);
+          break;
+        }
+        label350:
+        localObject1 = g.sbw;
+        g.a(false, paramb, localast, locali1);
+      }
+      else
+      {
+        localObject1 = g.sbw;
+        g.a(false, paramb, localast, locali1);
+      }
+    }
+    AppMethodBeat.o(224290);
+  }
+  
+  public final void EC(int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(178170);
-    Object localObject = ahn("FinderEntrance");
+    Object localObject = aij("FinderEntrance");
     int i;
-    if ((localObject != null) && (((i)localObject).ahq("FinderEntrance") != null))
+    if ((localObject != null) && (((i)localObject).aim("FinderEntrance") != null))
     {
       localObject = ((i)localObject).field_ctrInfo;
       if (localObject != null)
       {
-        i = ((aqu)localObject).type;
+        i = ((arj)localObject).type;
         if (i != -1) {
           bool = true;
         }
       }
     }
-    for (this.rSc = bool;; this.rSc = false)
+    for (this.saF = bool;; this.saF = false)
     {
-      this.rSb = paramInt;
-      this.enterTime = cf.aCM();
-      ahl("FinderEntrance");
-      ahl("Discovery");
-      ad.i("Finder.RedDotManager", "[enterFinder] hasRedDotWhenEnter=" + this.rSc);
+      this.saE = paramInt;
+      this.enterTime = ch.aDc();
+      aih("FinderEntrance");
+      aih("Discovery");
+      localObject = k.sbO;
+      ae.i("Finder.ThreeDayTwoDay", "enterFinder");
+      k.cCk();
+      this.saw.cBM();
+      ae.i("Finder.RedDotManager", "[enterFinder] hasRedDotWhenEnter=" + this.saF);
       AppMethodBeat.o(178170);
       return;
       i = 0;
@@ -456,92 +689,92 @@ public final class e
     }
   }
   
-  public final void Eq(int paramInt)
+  public final void ED(int paramInt)
   {
-    AppMethodBeat.i(201625);
+    AppMethodBeat.i(202073);
     if (paramInt <= 0)
     {
-      ad.i("Finder.RedDotManager", "[notifyFinderFansAddCount] server error.");
-      AppMethodBeat.o(201625);
+      ae.i("Finder.RedDotManager", "[notifyFinderFansAddCount] server error.");
+      AppMethodBeat.o(202073);
       return;
     }
-    ad.i("Finder.RedDotManager", "[notifyFinderFansAddCount] count = ".concat(String.valueOf(paramInt)));
-    aqu localaqu = new aqu();
-    localaqu.GoQ = String.valueOf(cf.aCM());
-    localaqu.priority = 100000;
-    localaqu.type = 2;
-    ase localase = new ase();
-    localase.uda = 2;
-    localase.Gqr = 1;
-    localase.path = "AuthorProfileFans";
-    localase.count = paramInt;
-    localaqu.GoP.add(localase);
-    a(this, localaqu, "notifyFinderFansAddCount", null, null, 12);
-    AppMethodBeat.o(201625);
+    ae.i("Finder.RedDotManager", "[notifyFinderFansAddCount] count = ".concat(String.valueOf(paramInt)));
+    arj localarj = new arj();
+    localarj.GIg = String.valueOf(ch.aDc());
+    localarj.priority = 100000;
+    localarj.type = 2;
+    ast localast = new ast();
+    localast.uoi = 2;
+    localast.GJM = 1;
+    localast.path = "AuthorProfileFans";
+    localast.count = paramInt;
+    localarj.GIf.add(localast);
+    a(this, localarj, "notifyFinderFansAddCount", null, null, true, 12);
+    AppMethodBeat.o(202073);
   }
   
-  public final boolean Es(int paramInt)
+  public final boolean EF(int paramInt)
   {
-    AppMethodBeat.i(201640);
-    asd localasd = Et(paramInt);
+    AppMethodBeat.i(202088);
+    ass localass = EG(paramInt);
     StringBuilder localStringBuilder = new StringBuilder("[containsTabTipsExtInfo] tabType=").append(paramInt).append(" isContains=");
-    if (localasd.Glz != 0) {}
+    if (localass.GEB != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("Finder.RedDotManager", bool);
-      if (localasd.Glz == 0) {
+      ae.i("Finder.RedDotManager", bool);
+      if (localass.GEB == 0) {
         break;
       }
-      AppMethodBeat.o(201640);
+      AppMethodBeat.o(202088);
       return true;
     }
-    AppMethodBeat.o(201640);
+    AppMethodBeat.o(202088);
     return false;
   }
   
-  public final asd Et(int paramInt)
+  public final ass EG(int paramInt)
   {
-    AppMethodBeat.i(201641);
-    asd localasd = aho(Er(paramInt));
-    ad.i("Finder.RedDotManager", "[getTabTipsExtInfo] tabType=" + paramInt + " ext=" + f.a(localasd));
-    AppMethodBeat.o(201641);
-    return localasd;
+    AppMethodBeat.i(202089);
+    ass localass = aik(EE(paramInt));
+    ae.i("Finder.RedDotManager", "[getTabTipsExtInfo] tabType=" + paramInt + " ext=" + f.a(localass));
+    AppMethodBeat.o(202089);
+    return localass;
   }
   
-  public final void a(aqt paramaqt)
+  public final void a(ari paramari)
   {
     AppMethodBeat.i(178171);
-    p.h(paramaqt, "redDot");
-    long l = cf.aCM();
-    Object localObject1 = j.rTk;
-    l -= j.cAv();
-    localObject1 = new StringBuilder("[notifyRedDot] diffTime=").append(l).append(" newMsgTipsEnterInterval=");
-    Object localObject2 = j.rTk;
-    localObject1 = ((StringBuilder)localObject1).append(j.cAo()).append(" showRed=").append(paramaqt.GoM).append(' ');
-    localObject2 = paramaqt.GoN;
-    p.g(localObject2, "redDot.ctrlInfo");
-    ad.i("Finder.RedDotManager", a((aqu)localObject2));
-    localObject1 = j.rTk;
-    if (l < j.cAo())
+    p.h(paramari, "redDot");
+    long l = ch.aDc();
+    Object localObject = j.sbM;
+    l -= j.cCc();
+    localObject = new StringBuilder("[notifyRedDot] diffTime=").append(l).append(" newMsgTipsEnterInterval=");
+    j localj = j.sbM;
+    ae.i("Finder.RedDotManager", j.cBW() + " showRed=" + paramari.GIc + ' ' + a(paramari.GId));
+    localObject = j.sbM;
+    if (l < j.cBW())
     {
-      localObject1 = paramaqt.GoN.GoP;
-      p.g(localObject1, "redDot.ctrlInfo.show_infos");
-      com.tencent.mm.ad.c.a((LinkedList)localObject1, (d.g.a.b)j.rSu);
+      localObject = paramari.GId;
+      if (localObject != null)
+      {
+        localObject = ((arj)localObject).GIf;
+        if (localObject != null) {
+          com.tencent.mm.ac.c.a((LinkedList)localObject, (d.g.a.b)j.saV);
+        }
+      }
     }
-    paramaqt = paramaqt.GoN;
-    p.g(paramaqt, "redDot.ctrlInfo");
-    a(this, paramaqt, "notifyRedDot", null, null, 12);
+    a(this, paramari.GId, "notifyRedDot", null, null, true, 12);
     AppMethodBeat.o(178171);
   }
   
-  public final void a(aqu paramaqu, String paramString)
+  public final void a(arj paramarj, String paramString)
   {
-    AppMethodBeat.i(201630);
-    p.h(paramaqu, "local");
+    AppMethodBeat.i(202078);
+    p.h(paramarj, "local");
     p.h(paramString, "source");
-    int j = paramaqu.type;
+    int j = paramarj.type;
     Object localObject3 = new HashMap();
-    Iterator localIterator1 = ((Map)this.rSd).entrySet().iterator();
+    Iterator localIterator1 = ((Map)this.saG).entrySet().iterator();
     Object localObject2;
     while (localIterator1.hasNext())
     {
@@ -570,23 +803,23 @@ public final class e
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ad.i("Finder.RedDotManager", "[reBuildPathWithCtrInfo] type=" + j + " clearMap=" + localObject3 + " source=" + paramString);
+        ae.i("Finder.RedDotManager", "[reBuildPathWithCtrInfo] type=" + j + " clearMap=" + localObject3 + " source=" + paramString);
       }
       localObject1 = ((Map)localObject3).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = ((Iterable)((Map.Entry)((Iterator)localObject1).next()).getValue()).iterator();
         while (((Iterator)localObject2).hasNext()) {
-          i.b((i)((Iterator)localObject2).next(), this.rSg);
+          i.b((i)((Iterator)localObject2).next(), this.saJ);
         }
       }
     }
     Object localObject1 = new HashSet();
-    a(this, paramaqu, paramString, null, (HashSet)localObject1, 4);
+    a(this, paramarj, paramString, null, (HashSet)localObject1, false, 4);
     paramString = (Map)localObject3;
-    paramaqu = (Map)new LinkedHashMap();
+    paramarj = (Map)new LinkedHashMap();
     paramString = paramString.entrySet().iterator();
-    label480:
+    label481:
     while (paramString.hasNext())
     {
       localObject2 = (Map.Entry)paramString.next();
@@ -594,202 +827,449 @@ public final class e
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label480;
+          break label481;
         }
-        paramaqu.put(((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
+        paramarj.put(((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
         break;
       }
     }
-    paramaqu = paramaqu.entrySet().iterator();
-    while (paramaqu.hasNext())
+    paramarj = paramarj.entrySet().iterator();
+    while (paramarj.hasNext())
     {
-      localObject1 = (Map.Entry)paramaqu.next();
+      localObject1 = (Map.Entry)paramarj.next();
       paramString = (String)((Map.Entry)localObject1).getKey();
       localObject1 = ((Iterable)((Map.Entry)localObject1).getValue()).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        i.b((i)((Iterator)localObject1).next(), this.rSg);
+        i.b((i)((Iterator)localObject1).next(), this.saJ);
       }
-      localObject1 = ahn(paramString);
+      localObject1 = aij(paramString);
       if (localObject1 != null)
       {
-        localObject2 = ((i)localObject1).ahq(paramString);
+        localObject2 = ((i)localObject1).aim(paramString);
         if (localObject2 != null) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label638;
+            break label639;
           }
-          localObject3 = g.rSU;
+          localObject3 = g.sbw;
           g.a(false, paramString, null, null);
-          localObject3 = g.rSU;
-          g.a(true, paramString, (ase)localObject2, (i)localObject1);
+          localObject3 = g.sbw;
+          g.a(true, paramString, (ast)localObject2, (i)localObject1);
           break;
         }
-        label638:
-        localObject1 = g.rSU;
+        label639:
+        localObject1 = g.sbw;
         g.a(false, paramString, null, null);
       }
       else
       {
-        localObject1 = g.rSU;
+        localObject1 = g.sbw;
         g.a(false, paramString, null, null);
       }
     }
-    AppMethodBeat.o(201630);
+    AppMethodBeat.o(202078);
   }
   
-  public final void a(final aqz paramaqz)
+  public final void a(final aro paramaro)
   {
-    AppMethodBeat.i(201645);
-    p.h(paramaqz, "revoke");
-    ad.i("Finder.RedDotManager", "[revokeRedDot] " + paramaqz.GoU.size());
-    com.tencent.mm.ad.c.b(null, (d.g.a.a)new p(this, paramaqz));
-    AppMethodBeat.o(201645);
-  }
-  
-  public final void a(ary paramary, String paramString)
-  {
-    AppMethodBeat.i(201637);
-    p.h(paramary, "tabTips");
-    p.h(paramString, "source");
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() != 1)
-    {
-      AppMethodBeat.o(201637);
-      return;
+    AppMethodBeat.i(224293);
+    p.h(paramaro, "revoke");
+    StringBuilder localStringBuilder = new StringBuilder("[revokeTabTips] ");
+    Object localObject1 = paramaro.GIk;
+    p.g(localObject1, "revoke.revoke_tab_tips_info");
+    Object localObject2 = (Iterable)localObject1;
+    localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((Collection)localObject1).add(((arp)((Iterator)localObject2).next()).GIi);
     }
-    long l = czO();
-    paramary = paramary.GoV;
-    p.g(paramary, "tabTips.tab_tips_info");
-    localObject1 = (Iterable)paramary;
-    paramary = (Collection)new ArrayList();
+    ae.i("Finder.RedDotManager", (List)localObject1);
+    com.tencent.mm.ac.c.c("Finder.RedDotManager", (d.g.a.a)new t(this, paramaro));
+    AppMethodBeat.o(224293);
+  }
+  
+  public final void a(asn paramasn, String paramString)
+  {
+    AppMethodBeat.i(202085);
+    p.h(paramasn, "tabTips");
+    p.h(paramString, "source");
+    long l = cBs();
+    paramasn = paramasn.GIl;
+    p.g(paramasn, "tabTips.tab_tips_info");
+    Object localObject1 = (Iterable)paramasn;
+    paramasn = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     Object localObject2;
     Object localObject3;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      localObject3 = (arz)localObject2;
+      localObject3 = (aso)localObject2;
       p.g(localObject3, "it");
-      if (a((arz)localObject3)) {
-        paramary.add(localObject2);
+      if (a((aso)localObject3)) {
+        paramasn.add(localObject2);
       }
     }
-    paramary = ((Iterable)paramary).iterator();
-    if (paramary.hasNext())
+    localObject1 = ((Iterable)paramasn).iterator();
+    if (((Iterator)localObject1).hasNext())
     {
-      localObject1 = (arz)paramary.next();
-      localObject2 = new StringBuilder("[notifyTabTip] ");
-      localObject3 = ((arz)localObject1).Gqk;
-      p.g(localObject3, "tipsInfo.ctrl_info");
-      ad.i("Finder.RedDotManager", a((aqu)localObject3));
-      localObject2 = ((arz)localObject1).Gqk.GoP;
-      p.g(localObject2, "tipsInfo.ctrl_info.show_infos");
-      localObject2 = dC((List)localObject2);
+      localObject2 = (aso)((Iterator)localObject1).next();
+      ae.i("Finder.RedDotManager", "[notifyTabTip] " + a(((aso)localObject2).GJF));
+      paramasn = ((aso)localObject2).GJF;
+      label198:
       j localj;
-      if (((arz)localObject1).Gqk.type == 8)
+      if (paramasn != null)
       {
-        localObject3 = j.rTk;
-        if (l <= j.cAm())
-        {
-          localObject3 = ((arz)localObject1).Gqk.GoP;
-          p.g(localObject3, "tipsInfo.ctrl_info.show_infos");
-          com.tencent.mm.ad.c.a((LinkedList)localObject3, (d.g.a.b)k.rSv);
-          localObject3 = new StringBuilder("[notifyTabTip] diffTime=").append(l).append("ms, moreTabFollowTabTimeMs=");
-          localj = j.rTk;
-          ad.w("Finder.RedDotManager", j.cAm() + "ms, remove this ctrInfo");
+        paramasn = paramasn.GIf;
+        paramasn = dF((List)paramasn);
+        localObject3 = ((aso)localObject2).GJF;
+        if ((localObject3 == null) || (((arj)localObject3).type != 8)) {
+          break label806;
         }
-        localObject3 = j.rTk;
-        if (l <= j.cAk())
+        localObject3 = j.sbM;
+        if (l <= j.cBU())
         {
-          localObject3 = ((arz)localObject1).Gqk.GoP;
-          p.g(localObject3, "tipsInfo.ctrl_info.show_infos");
-          com.tencent.mm.ad.c.a((LinkedList)localObject3, (d.g.a.b)l.rSw);
+          localObject3 = ((aso)localObject2).GJF;
+          if (localObject3 != null)
+          {
+            localObject3 = ((arj)localObject3).GIf;
+            if (localObject3 != null) {
+              com.tencent.mm.ac.c.a((LinkedList)localObject3, (d.g.a.b)k.saW);
+            }
+          }
           localObject3 = new StringBuilder("[notifyTabTip] diffTime=").append(l).append("ms, moreTabFollowTabTimeMs=");
-          localj = j.rTk;
-          ad.w("Finder.RedDotManager", j.cAk() + "ms, remove entrance path red dot");
+          localj = j.sbM;
+          ae.w("Finder.RedDotManager", j.cBU() + "ms, remove this ctrInfo");
         }
-      }
-      for (;;)
-      {
+        localObject3 = j.sbM;
+        if (l <= j.cBT())
+        {
+          localObject3 = ((aso)localObject2).GJF;
+          if (localObject3 != null)
+          {
+            localObject3 = ((arj)localObject3).GIf;
+            if (localObject3 != null) {
+              com.tencent.mm.ac.c.a((LinkedList)localObject3, (d.g.a.b)l.saX);
+            }
+          }
+          localObject3 = new StringBuilder("[notifyTabTip] diffTime=").append(l).append("ms, moreTabFollowTabTimeMs=");
+          localj = j.sbM;
+          ae.w("Finder.RedDotManager", j.cBT() + "ms, remove entrance path red dot");
+        }
+        label426:
         boolean bool = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isInFinder();
         if (bool)
         {
-          if (this.rRY.sZg == ((asd)localObject2).Glz)
+          if (this.saz.tku == paramasn.GEB)
           {
-            ad.w("Finder.RedDotManager", "[notifyTabTip] it is in finder " + ((asd)localObject2).Glz + " now. currentTabType=" + this.rRY.sZg + " extTab_type=" + ((asd)localObject2).Glz);
-            ((arz)localObject1).Gqk.GoR = 1L;
+            ae.w("Finder.RedDotManager", "[notifyTabTip] it is in finder " + paramasn.GEB + " now. currentTabType=" + this.saz.tku + " extTab_type=" + paramasn.GEB);
+            localObject3 = ((aso)localObject2).GJF;
+            if (localObject3 != null) {
+              ((arj)localObject3).GIh = 1L;
+            }
           }
-          localObject3 = ((arz)localObject1).Gqk.GoP;
-          p.g(localObject3, "tipsInfo.ctrl_info.show_infos");
-          com.tencent.mm.ad.c.a((LinkedList)localObject3, (d.g.a.b)n.rSy);
-          ad.w("Finder.RedDotManager", "[notifyTabTip] it is in finder now. just remove path of FINDER_ENTRANCE, currentTabType=" + this.rRY.sZg + " extTab_type=" + ((asd)localObject2).Glz);
-        }
-        a(this, ((arz)localObject1).Gqk.type);
-        ((arz)localObject1).Gqk.dtq = ((asd)localObject2).Gqn;
-        localObject3 = ((arz)localObject1).Gqk;
-        p.g(localObject3, "tipsInfo.ctrl_info");
-        a(this, (aqu)localObject3, "notifyTabTip#".concat(String.valueOf(paramString)), (asd)localObject2, null, 8);
-        int i = aho("FinderEntrance").Glz;
-        if ((i != 0) && ((i == 3) || (i == 1) || (i == 4))) {
-          this.rRY.a(i, FinderHomeTabStateVM.c.sZt);
-        }
-        ad.i("Finder.RedDotManager", "[notifyTabTip] successfully! tabType=" + ((asd)localObject2).Glz + " objectId=" + ((asd)localObject2).Gqn + " diffTime=" + l + "ms isInFinder=" + bool + " currentTabType=" + this.rRY.sZg + " showInfoSize=" + ((arz)localObject1).Gqk.GoP.size());
-        break;
-        if (((arz)localObject1).Gqk.type == 7)
-        {
-          localObject3 = j.rTk;
-          if (l <= j.cAn())
+          localObject3 = ((aso)localObject2).GJF;
+          if (localObject3 != null)
           {
-            localObject3 = ((arz)localObject1).Gqk.GoP;
-            p.g(localObject3, "tipsInfo.ctrl_info.show_infos");
-            com.tencent.mm.ad.c.a((LinkedList)localObject3, (d.g.a.b)m.rSx);
-            localObject3 = new StringBuilder("[notifyTabTip] diffTime=").append(l).append("ms, moreTabFriendEntranceTimeMs=");
-            localj = j.rTk;
-            ad.w("Finder.RedDotManager", j.cAn() + "ms, remove entrance path red dot");
+            localObject3 = ((arj)localObject3).GIf;
+            if (localObject3 != null) {
+              com.tencent.mm.ac.c.a((LinkedList)localObject3, (d.g.a.b)n.saZ);
+            }
           }
+          ae.w("Finder.RedDotManager", "[notifyTabTip] it is in finder now. just remove path of FINDER_ENTRANCE, currentTabType=" + this.saz.tku + " extTab_type=" + paramasn.GEB);
+        }
+        localObject3 = ((aso)localObject2).GJF;
+        if (localObject3 != null) {
+          a(this, ((arj)localObject3).type);
+        }
+        localObject3 = ((aso)localObject2).GJF;
+        if (localObject3 != null) {
+          ((arj)localObject3).duw = paramasn.GJI;
+        }
+        a(this, ((aso)localObject2).GJF, "notifyTabTip#".concat(String.valueOf(paramString)), paramasn, null, true, 8);
+        localObject3 = new StringBuilder("[notifyTabTip] successfully! tabType=").append(paramasn.GEB).append(" objectId=").append(com.tencent.mm.ac.c.rp(paramasn.GJI)).append(" diffTime=").append(l).append("ms isInFinder=").append(bool).append(" currentTabType=").append(this.saz.tku).append(" showInfoSize=");
+        paramasn = ((aso)localObject2).GJF;
+        if (paramasn == null) {
+          break label964;
+        }
+        paramasn = paramasn.GIf;
+        if (paramasn == null) {
+          break label964;
         }
       }
+      label806:
+      label964:
+      for (paramasn = Integer.valueOf(paramasn.size());; paramasn = null)
+      {
+        ae.i("Finder.RedDotManager", paramasn);
+        break;
+        paramasn = null;
+        break label198;
+        localObject3 = ((aso)localObject2).GJF;
+        if ((localObject3 != null) && (((arj)localObject3).type == 7))
+        {
+          localObject3 = j.sbM;
+          if (l > j.cBV()) {
+            break label426;
+          }
+          localObject3 = ((aso)localObject2).GJF;
+          if (localObject3 != null)
+          {
+            localObject3 = ((arj)localObject3).GIf;
+            if (localObject3 != null) {
+              com.tencent.mm.ac.c.a((LinkedList)localObject3, (d.g.a.b)m.saY);
+            }
+          }
+          localObject3 = new StringBuilder("[notifyTabTip] diffTime=").append(l).append("ms, moreTabFriendEntranceTimeMs=");
+          localj = j.sbM;
+          ae.w("Finder.RedDotManager", j.cBV() + "ms, remove entrance path red dot");
+          break label426;
+        }
+        localObject3 = ((aso)localObject2).GJF;
+        if ((localObject3 == null) || (((arj)localObject3).type != 9)) {
+          break label426;
+        }
+        ae.w("Finder.RedDotManager", "[notifyTabTip】");
+        break label426;
+      }
     }
-    AppMethodBeat.o(201637);
+    AppMethodBeat.o(202085);
   }
   
-  public final void a(asw paramasw)
+  public final void a(atm paramatm)
   {
     AppMethodBeat.i(178172);
-    p.h(paramasw, "wxMention");
-    long l = cf.aCM();
-    Object localObject = j.rTk;
-    l -= j.cAv();
-    if ((paramasw.count <= 0) && (paramasw.GqR <= 0) && (paramasw.GqQ <= 0) && (paramasw.GlK <= 0) && (paramasw.GlJ <= 0) && (paramasw.GqP <= 0) && (paramasw.GqS <= 0))
+    p.h(paramatm, "wxMention");
+    long l = ch.aDc();
+    Object localObject = j.sbM;
+    l -= j.cCc();
+    if ((paramatm.count <= 0) && (paramatm.GKp <= 0) && (paramatm.GKo <= 0) && (paramatm.GEM <= 0) && (paramatm.GEL <= 0) && (paramatm.GKn <= 0) && (paramatm.GKq <= 0))
     {
-      ad.e("Finder.RedDotManager", "[notifyWxMentionCount] server error.");
+      ae.e("Finder.RedDotManager", "[notifyWxMentionCount] server error.");
       AppMethodBeat.o(178172);
       return;
     }
-    localObject = new StringBuilder("[notifyWxMentionCount] diffTime=").append(l).append(' ');
-    aqu localaqu = paramasw.Gqk;
-    p.g(localaqu, "wxMention.ctrl_info");
-    ad.i("Finder.RedDotManager", a(localaqu) + " count=" + paramasw.count);
-    localObject = j.rTk;
-    if (l < j.cAo())
+    ae.i("Finder.RedDotManager", "[notifyWxMentionCount] diffTime=" + l + ' ' + a(paramatm.GJF) + " count=" + paramatm.count);
+    localObject = j.sbM;
+    if (l < j.cBW())
     {
-      localObject = paramasw.Gqk.GoP;
-      p.g(localObject, "wxMention.ctrl_info.show_infos");
-      com.tencent.mm.ad.c.a((LinkedList)localObject, (d.g.a.b)o.rSz);
+      localObject = paramatm.GJF;
+      if (localObject != null)
+      {
+        localObject = ((arj)localObject).GIf;
+        if (localObject != null) {
+          com.tencent.mm.ac.c.a((LinkedList)localObject, (d.g.a.b)o.sba);
+        }
+      }
     }
-    paramasw = paramasw.Gqk;
-    p.g(paramasw, "wxMention.ctrl_info");
-    a(this, paramasw, "notifyWxMentionCount", null, null, 12);
+    a(this, paramatm.GJF, "notifyWxMentionCount", null, null, true, 12);
     AppMethodBeat.o(178172);
+  }
+  
+  public final void a(ekt paramekt)
+  {
+    AppMethodBeat.i(224294);
+    p.h(paramekt, "revoke");
+    Object localObject1 = new StringBuilder("[revokePathRedDot] ");
+    Object localObject2 = paramekt.LGq;
+    p.g(localObject2, "revoke.revoke_ctrl_info");
+    Object localObject3 = (Iterable)localObject2;
+    localObject2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = (eku)((Iterator)localObject3).next();
+      ((Collection)localObject2).add(((eku)localObject4).path + '_' + ((eku)localObject4).LGr + '_' + ((eku)localObject4).LGs);
+    }
+    ae.i("Finder.RedDotManager", (List)localObject2);
+    paramekt = paramekt.LGq;
+    p.g(paramekt, "revoke.revoke_ctrl_info");
+    Object localObject4 = ((Iterable)paramekt).iterator();
+    eku localeku;
+    label268:
+    label463:
+    Object localObject5;
+    label393:
+    final y.a locala;
+    while (((Iterator)localObject4).hasNext())
+    {
+      localeku = (eku)((Iterator)localObject4).next();
+      if (localeku != null)
+      {
+        localObject1 = localeku.path;
+        paramekt = (ekt)localObject1;
+        if (localObject1 != null) {}
+      }
+      else
+      {
+        paramekt = "";
+      }
+      localObject3 = aij(paramekt);
+      if (localObject3 != null)
+      {
+        if (localeku != null)
+        {
+          localObject1 = localeku.path;
+          paramekt = (ekt)localObject1;
+          if (localObject1 != null) {}
+        }
+        else
+        {
+          paramekt = "";
+        }
+        localObject1 = ((i)localObject3).aim(paramekt);
+        if (localeku.LGr != 0) {
+          break label463;
+        }
+        if (localObject1 == null) {
+          break label393;
+        }
+        com.tencent.mm.plugin.report.service.g.yxI.f(20951, new Object[] { Integer.valueOf(((i)localObject3).field_ctrInfo.type), Integer.valueOf(((ast)localObject1).uoi), Integer.valueOf(1), ((i)localObject3).field_tipsId, localeku.path, Integer.valueOf(localeku.LGr), "" });
+      }
+      for (;;)
+      {
+        if (localeku != null)
+        {
+          localObject1 = localeku.path;
+          paramekt = (ekt)localObject1;
+          if (localObject1 != null) {}
+        }
+        else
+        {
+          paramekt = "";
+        }
+        aih(paramekt);
+        break;
+        localObject1 = null;
+        break label268;
+        com.tencent.mm.plugin.report.service.g.yxI.f(20951, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3), "", localeku.path, Integer.valueOf(localeku.LGr), "" });
+      }
+      if (localeku.LGr == 1)
+      {
+        paramekt = "";
+        localObject2 = localeku.LGs;
+        p.g(localObject2, "it.tips_id_list");
+        localObject2 = ((Iterable)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject5 = (String)((Iterator)localObject2).next();
+          paramekt = paramekt + (String)localObject5 + ';';
+        }
+        d.n.n.b(paramekt, (CharSequence)";");
+        localObject5 = new y.a();
+        ((y.a)localObject5).NiT = true;
+        locala = new y.a();
+        locala.NiT = false;
+        if (localeku != null)
+        {
+          localObject2 = localeku.path;
+          if (localObject2 != null) {
+            break label1092;
+          }
+        }
+        localObject2 = "";
+      }
+    }
+    label806:
+    label811:
+    label944:
+    label949:
+    label1079:
+    label1092:
+    for (;;)
+    {
+      k((String)localObject2, (d.g.a.b)new s(localeku, (y.a)localObject5, locala));
+      ae.i("Finder.RedDotManager", "[revokePathRedDot] isHasDisposed=" + locala.NiT + " isAllDisposed=" + ((y.a)localObject5).NiT + " tipsList=" + paramekt);
+      if ((locala.NiT) && (((y.a)localObject5).NiT))
+      {
+        localObject5 = com.tencent.mm.plugin.report.service.g.yxI;
+        if (localObject3 != null)
+        {
+          localObject2 = Integer.valueOf(((i)localObject3).field_ctrInfo.type);
+          label717:
+          if (localObject1 == null) {
+            break label806;
+          }
+          localObject1 = Integer.valueOf(((ast)localObject1).uoi);
+          label729:
+          if (localObject3 == null) {
+            break label811;
+          }
+        }
+        for (localObject3 = ((i)localObject3).field_tipsId;; localObject3 = null)
+        {
+          ((com.tencent.mm.plugin.report.service.g)localObject5).f(20951, new Object[] { localObject2, localObject1, Integer.valueOf(1), localObject3, localeku.path, Integer.valueOf(localeku.LGr), paramekt });
+          break;
+          localObject2 = null;
+          break label717;
+          localObject1 = null;
+          break label729;
+        }
+      }
+      if ((locala.NiT) && (!((y.a)localObject5).NiT))
+      {
+        localObject5 = com.tencent.mm.plugin.report.service.g.yxI;
+        if (localObject3 != null)
+        {
+          localObject2 = Integer.valueOf(((i)localObject3).field_ctrInfo.type);
+          label855:
+          if (localObject1 == null) {
+            break label944;
+          }
+          localObject1 = Integer.valueOf(((ast)localObject1).uoi);
+          label867:
+          if (localObject3 == null) {
+            break label949;
+          }
+        }
+        for (localObject3 = ((i)localObject3).field_tipsId;; localObject3 = null)
+        {
+          ((com.tencent.mm.plugin.report.service.g)localObject5).f(20951, new Object[] { localObject2, localObject1, Integer.valueOf(2), localObject3, localeku.path, Integer.valueOf(localeku.LGr), paramekt });
+          break;
+          localObject2 = null;
+          break label855;
+          localObject1 = null;
+          break label867;
+        }
+      }
+      if (locala.NiT) {
+        break;
+      }
+      localObject5 = com.tencent.mm.plugin.report.service.g.yxI;
+      if (localObject3 != null)
+      {
+        localObject2 = Integer.valueOf(((i)localObject3).field_ctrInfo.type);
+        label985:
+        if (localObject1 == null) {
+          break label1074;
+        }
+        localObject1 = Integer.valueOf(((ast)localObject1).uoi);
+        label997:
+        if (localObject3 == null) {
+          break label1079;
+        }
+      }
+      for (localObject3 = ((i)localObject3).field_tipsId;; localObject3 = null)
+      {
+        ((com.tencent.mm.plugin.report.service.g)localObject5).f(20951, new Object[] { localObject2, localObject1, Integer.valueOf(4), localObject3, localeku.path, Integer.valueOf(localeku.LGr), paramekt });
+        break;
+        localObject2 = null;
+        break label985;
+        localObject1 = null;
+        break label997;
+      }
+      AppMethodBeat.o(224294);
+      return;
+    }
   }
   
   public final boolean a(int paramInt, d.g.a.b<? super i, Boolean> paramb)
   {
-    AppMethodBeat.i(201634);
+    AppMethodBeat.i(202082);
     p.h(paramb, "filter");
     HashMap localHashMap = new HashMap();
-    Object localObject3 = ((Map)this.rSd).entrySet().iterator();
+    Object localObject3 = ((Map)this.saG).entrySet().iterator();
     Object localObject1;
     Object localObject4;
     Object localObject2;
@@ -821,7 +1301,7 @@ public final class e
     {
       i = 1;
       if (i != 0) {
-        ad.i("Finder.RedDotManager", "[clearCtrlInfo] type=" + paramInt + " clearMap=" + localHashMap);
+        ae.i("Finder.RedDotManager", "[clearCtrlInfo] type=" + paramInt + " clearMap=" + localHashMap);
       }
       paramb = ((Map)localHashMap).entrySet().iterator();
     }
@@ -837,123 +1317,49 @@ public final class e
       {
         if (((Iterator)localObject2).hasNext())
         {
-          i.b((i)((Iterator)localObject2).next(), this.rSg);
+          i.b((i)((Iterator)localObject2).next(), this.saJ);
           continue;
           i = 0;
           break;
         }
       }
-      localObject2 = ahn((String)localObject1);
+      localObject2 = aij((String)localObject1);
       if (localObject2 != null)
       {
-        localObject3 = ((i)localObject2).ahq((String)localObject1);
+        localObject3 = ((i)localObject2).aim((String)localObject1);
         if (localObject3 != null) {}
         for (paramInt = 1;; paramInt = 0)
         {
           if (paramInt == 0) {
             break label437;
           }
-          localObject4 = g.rSU;
+          localObject4 = g.sbw;
           g.a(false, (String)localObject1, null, null);
-          localObject4 = g.rSU;
-          g.a(true, (String)localObject1, (ase)localObject3, (i)localObject2);
+          localObject4 = g.sbw;
+          g.a(true, (String)localObject1, (ast)localObject3, (i)localObject2);
           break;
         }
         label437:
-        localObject2 = g.rSU;
+        localObject2 = g.sbw;
         g.a(false, (String)localObject1, null, null);
       }
       else
       {
-        localObject2 = g.rSU;
+        localObject2 = g.sbw;
         g.a(false, (String)localObject1, null, null);
       }
     }
     label469:
     if (!((Map)localHashMap).isEmpty())
     {
-      AppMethodBeat.o(201634);
+      AppMethodBeat.o(202082);
       return true;
     }
-    AppMethodBeat.o(201634);
+    AppMethodBeat.o(202082);
     return false;
   }
   
-  public final boolean a(final i parami)
-  {
-    AppMethodBeat.i(201633);
-    p.h(parami, "ctrInfo");
-    Object localObject1 = parami.rTc.keySet();
-    p.g(localObject1, "ctrInfo.showInfoMap.keys");
-    localObject1 = ((Iterable)localObject1).iterator();
-    int i;
-    while (((Iterator)localObject1).hasNext())
-    {
-      String str = (String)((Iterator)localObject1).next();
-      Object localObject2 = (List)this.rSd.get(str);
-      if (localObject2 != null) {
-        d.a.j.b((List)localObject2, (d.g.a.b)new h(this, parami));
-      }
-      p.g(str, "removePath");
-      localObject2 = ahn(str);
-      if (localObject2 != null)
-      {
-        ase localase = ((i)localObject2).ahq(str);
-        if (localase != null) {}
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label172;
-          }
-          g localg = g.rSU;
-          g.a(false, str, null, null);
-          localg = g.rSU;
-          g.a(true, str, localase, (i)localObject2);
-          break;
-        }
-        label172:
-        localObject2 = g.rSU;
-        g.a(false, str, null, null);
-      }
-      else
-      {
-        localObject2 = g.rSU;
-        g.a(false, str, null, null);
-      }
-    }
-    if (i.b(parami, this.rSg))
-    {
-      localObject1 = com.tencent.mm.ui.component.a.KiD;
-      localObject1 = (FinderStreamTabPreloadCore)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderStreamTabPreloadCore.class);
-      p.h(parami, "ctrInfo");
-      switch (parami.field_ctrInfo.type)
-      {
-      default: 
-        i = 0;
-      }
-      for (;;)
-      {
-        parami = ((FinderStreamTabPreloadCore)localObject1).EQ(i);
-        if (parami != null) {
-          parami.AB(true);
-        }
-        ad.i("Finder.StreamTabPreloadCore", "[onRedDotRevoke] tabType=".concat(String.valueOf(i)));
-        AppMethodBeat.o(201633);
-        return true;
-        i = 3;
-        continue;
-        i = 1;
-        continue;
-        i = 4;
-        continue;
-        i = 2;
-      }
-    }
-    AppMethodBeat.o(201633);
-    return false;
-  }
-  
-  public final void ahl(String paramString)
+  public final void aih(String paramString)
   {
     AppMethodBeat.i(178176);
     p.h(paramString, "path");
@@ -961,14 +1367,14 @@ public final class e
     AppMethodBeat.o(178176);
   }
   
-  public final ase ahm(String paramString)
+  public final ast aii(String paramString)
   {
     AppMethodBeat.i(178178);
     p.h(paramString, "path");
-    i locali = ahn(paramString);
+    i locali = aij(paramString);
     if (locali != null)
     {
-      paramString = locali.ahq(paramString);
+      paramString = locali.aim(paramString);
       AppMethodBeat.o(178178);
       return paramString;
     }
@@ -976,398 +1382,365 @@ public final class e
     return null;
   }
   
-  public final i ahn(String paramString)
+  public final i aij(String paramString)
   {
     AppMethodBeat.i(178179);
     p.h(paramString, "path");
-    Object localObject = (List)this.rSd.get(paramString);
-    if (localObject != null)
-    {
-      ListIterator localListIterator = ((List)localObject).listIterator(((List)localObject).size());
-      int i;
-      if (localListIterator.hasPrevious())
+    List localList = (List)this.saG.get(paramString);
+    if (localList != null) {
+      try
       {
-        localObject = localListIterator.previous();
-        if (((i)localObject).ahq(paramString) != null)
+        ListIterator localListIterator = localList.listIterator(localList.size());
+        Object localObject;
+        int i;
+        if (localListIterator.hasPrevious())
         {
-          i = 1;
-          label74:
-          if (i == 0) {
-            break label96;
+          localObject = localListIterator.previous();
+          ast localast = ((i)localObject).aim(paramString);
+          if (localast != null)
+          {
+            i = 1;
+            label85:
+            if (i == 0) {
+              break label110;
+            }
           }
         }
-      }
-      for (paramString = (String)localObject;; paramString = null)
-      {
-        paramString = (i)paramString;
+        for (paramString = localObject;; paramString = null)
+        {
+          paramString = (i)paramString;
+          AppMethodBeat.o(178179);
+          return paramString;
+          i = 0;
+          break label85;
+          label110:
+          break;
+        }
         AppMethodBeat.o(178179);
-        return paramString;
-        i = 0;
-        break label74;
-        label96:
-        break;
+      }
+      finally
+      {
+        AppMethodBeat.o(178179);
       }
     }
-    AppMethodBeat.o(178179);
     return null;
   }
   
-  public final asd aho(String paramString)
+  public final ass aik(String paramString)
   {
-    AppMethodBeat.i(201639);
+    AppMethodBeat.i(202087);
     p.h(paramString, "path");
-    paramString = ahn(paramString);
+    paramString = aij(paramString);
     if (paramString != null)
     {
-      asd localasd = paramString.cAi();
-      paramString = localasd;
-      if (localasd != null) {}
+      ass localass = paramString.cBR();
+      paramString = localass;
+      if (localass != null) {}
     }
     else
     {
-      paramString = new asd();
+      paramString = new ass();
     }
-    AppMethodBeat.o(201639);
+    AppMethodBeat.o(202087);
     return paramString;
   }
   
-  public final void czN()
+  public final void cBr()
   {
     AppMethodBeat.i(178169);
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-    long l2;
-    long l1;
-    boolean bool2;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() != 1)
+    Object localObject = k.sbO;
+    ae.i("Finder.ThreeDayTwoDay", "enterFindMoreFriendTab");
+    if (k.cCi())
     {
-      l2 = czQ();
-      if (l2 <= 0L)
+      localObject = k.rOC;
+      if (localObject != null)
       {
-        ad.i("Finder.RedDotManager", "[checkPreFetchNow] it's not preFetch yet.");
+        localObject = ((e)localObject).aij("FinderEntrance");
+        if (localObject != null)
+        {
+          ast localast = ((i)localObject).aim("FinderEntrance");
+          if (localast != null)
+          {
+            com.tencent.mm.plugin.finder.report.h localh = com.tencent.mm.plugin.finder.report.h.syO;
+            com.tencent.mm.plugin.finder.report.h.a("1", (i)localObject, localast, 4);
+          }
+        }
+      }
+      localObject = k.rOC;
+      if (localObject != null)
+      {
+        ((e)localObject).aih("FinderEntrance");
         AppMethodBeat.o(178169);
         return;
       }
-      localObject = j.rTk;
-      localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class);
-      p.g(localObject, "MMKernel.service(IConfigService::class.java)");
-      l1 = ((com.tencent.mm.plugin.zero.b.a)localObject).acA().getInt("FinderRefreshDiscoveryInterval", 1200) * 1000L / j.cAy();
-      bool2 = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isInFinder();
-      l2 = cf.aCM() - l2;
-      localObject = new StringBuilder("[checkPreFetchNow] isInFinder=").append(bool2).append(" diffTime=").append(l2).append(" expired=").append(l1).append(" ret=");
-      if (l2 < l1) {
-        break label243;
-      }
     }
-    label243:
-    for (boolean bool1 = true;; bool1 = false)
+    AppMethodBeat.o(178169);
+  }
+  
+  public final int cBt()
+  {
+    AppMethodBeat.i(202080);
+    long l = System.currentTimeMillis();
+    Object localObject2 = aij("FinderEntrance");
+    Object localObject1;
+    Object localObject3;
+    Object localObject4;
+    if (localObject2 != null)
     {
-      ad.i("Finder.RedDotManager", bool1);
-      if ((!bool2) && (l2 >= l1)) {
-        ((com.tencent.mm.loader.g.i)this.rRZ.getValue()).a(new com.tencent.mm.loader.g.h((d.g.a.b)new f(this)));
+      localObject1 = ((i)localObject2).aim("FinderEntrance");
+      if (localObject1 != null) {
+        break label420;
       }
-      AppMethodBeat.o(178169);
-      return;
+      localObject1 = p.DqP;
+      localObject1 = e.p.a.a(1, this);
+      localObject2 = p.DqP;
+      localObject2 = e.p.a.a(3, this);
+      localObject3 = p.DqP;
+      localObject3 = d.a.j.listOf(new p[] { localObject1, localObject2, e.p.a.a(4, this) });
+      localObject4 = ((Iterable)localObject3).iterator();
+      if (((Iterator)localObject4).hasNext()) {
+        break label305;
+      }
+      localObject1 = null;
+    }
+    label148:
+    label305:
+    do
+    {
+      if (localObject1 == null) {
+        p.gkB();
+      }
+      localObject1 = (p)localObject1;
+      if (((p)localObject1).DqO.OzL > 0) {
+        break label384;
+      }
+      i = -1;
+      localObject1 = new StringBuilder("[getAliveTabType] cost=").append(System.currentTimeMillis() - l).append("ms aliveType=").append(i).append(" maxPriorityTabType=").append(((p)localObject1).dvm).append(' ');
+      localObject3 = (Iterable)localObject3;
+      localObject2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
+      localObject3 = ((Iterable)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (p)((Iterator)localObject3).next();
+        ((Collection)localObject2).add(((p)localObject4).dvm + '=' + ((p)localObject4).DqO.OzL);
+      }
+      localObject1 = null;
+      break;
+      localObject1 = ((Iterator)localObject4).next();
+    } while (!((Iterator)localObject4).hasNext());
+    int i = ((p)localObject1).DqO.OzL;
+    label339:
+    localObject2 = ((Iterator)localObject4).next();
+    int j = ((p)localObject2).DqO.OzL;
+    if (i < j)
+    {
+      localObject1 = localObject2;
+      i = j;
+    }
+    for (;;)
+    {
+      if (!((Iterator)localObject4).hasNext())
+      {
+        break;
+        label384:
+        i = ((p)localObject1).dvm;
+        break label148;
+        ae.i("Finder.RedDotManager", (List)localObject2);
+        AppMethodBeat.o(202080);
+        return i;
+        label420:
+        if (((i)localObject2).aim("TLFollow") != null)
+        {
+          ae.i("Finder.RedDotManager", "[getAliveTabType] FINDER_TL_TAB_FOLLOW");
+          i = aJi("TLFollow");
+          AppMethodBeat.o(202080);
+          return i;
+        }
+        if (((i)localObject2).aim("TLRecommendTab") != null)
+        {
+          ae.i("Finder.RedDotManager", "[getAliveTabType] FINDER_TL_TAB_FRIEND");
+          i = aJi("TLRecommendTab");
+          AppMethodBeat.o(202080);
+          return i;
+        }
+        if (((i)localObject2).aim("TLMachineTab") != null)
+        {
+          ae.i("Finder.RedDotManager", "[getAliveTabType] FINDER_TL_TAB_MACHINE");
+          i = aJi("TLMachineTab");
+          AppMethodBeat.o(202080);
+          return i;
+        }
+        ae.i("Finder.RedDotManager", "[getAliveTabType] TAB_TYPE_INVALID");
+        AppMethodBeat.o(202080);
+        return -1;
+      }
+      break label339;
     }
   }
   
-  public final int czP()
+  public final boolean cBv()
   {
-    AppMethodBeat.i(201632);
-    String str = Er(1);
-    i locali = ahn(str);
-    if ((locali != null) && (locali.ahp(str) == true))
-    {
-      AppMethodBeat.o(201632);
-      return 1;
-    }
-    str = Er(3);
-    locali = ahn(str);
-    if ((locali != null) && (locali.ahp(str) == true))
-    {
-      AppMethodBeat.o(201632);
-      return 3;
-    }
-    str = Er(4);
-    locali = ahn(str);
-    if ((locali != null) && (locali.ahp(str) == true))
-    {
-      AppMethodBeat.o(201632);
-      return 4;
-    }
-    AppMethodBeat.o(201632);
-    return -1;
-  }
-  
-  public final boolean czR()
-  {
-    AppMethodBeat.i(201642);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajC();
+    AppMethodBeat.i(202090);
+    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajR();
     p.g(locale, "MMKernel.storage()");
-    boolean bool = locale.ajl().getBoolean(al.a.IIH, true);
-    AppMethodBeat.o(201642);
+    boolean bool = locale.ajA().getBoolean(am.a.Jdk, true);
+    AppMethodBeat.o(202090);
     return bool;
   }
   
   public final void e(String paramString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(201629);
+    AppMethodBeat.i(202077);
     p.h(paramString, "path");
-    Object localObject1 = new HashSet();
-    i locali = ahn(paramString);
-    if (locali != null) {}
-    Object localObject2;
-    Object localObject3;
-    for (ase localase = locali.ahq(paramString);; localase = null)
-    {
-      localObject2 = (List)this.rSd.get(paramString);
-      if (localObject2 == null) {
-        break;
-      }
-      localObject2 = ((List)localObject2).iterator();
-      if (localObject2 == null) {
-        break;
-      }
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (i)((Iterator)localObject2).next();
-        if ((paramArrayOfInt == null) || (d.a.e.contains(paramArrayOfInt, ((i)localObject3).field_ctrInfo.type)))
-        {
-          LinkedList localLinkedList = ((i)localObject3).ahr(paramString);
-          if (i.a((i)localObject3, this.rSg)) {
-            ((HashSet)localObject1).addAll((Collection)localLinkedList);
-          }
-          if (((i)localObject3).cAj()) {
-            ((Iterator)localObject2).remove();
-          }
-        }
-      }
-    }
-    ad.i("Finder.RedDotManager", "[disposeRedDotAtPath] path=" + paramString + " ctrlType=" + paramArrayOfInt + " removePathSet=" + localObject1 + " maybeRemoveShowInfo=" + a(localase, 0));
-    paramString = ((Iterable)localObject1).iterator();
-    while (paramString.hasNext())
-    {
-      paramArrayOfInt = (String)paramString.next();
-      localObject1 = ahn(paramArrayOfInt);
-      if (localObject1 != null)
-      {
-        localObject2 = ((i)localObject1).ahq(paramArrayOfInt);
-        if (localObject2 != null) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label326;
-          }
-          localObject3 = g.rSU;
-          g.a(false, paramArrayOfInt, localase, locali);
-          localObject3 = g.rSU;
-          g.a(true, paramArrayOfInt, (ase)localObject2, (i)localObject1);
-          break;
-        }
-        label326:
-        localObject1 = g.rSU;
-        g.a(false, paramArrayOfInt, localase, locali);
-      }
-      else
-      {
-        localObject1 = g.rSU;
-        g.a(false, paramArrayOfInt, localase, locali);
-      }
-    }
-    AppMethodBeat.o(201629);
+    k(paramString, (d.g.a.b)new r(paramArrayOfInt));
+    AppMethodBeat.o(202077);
   }
   
-  public final void fJ(int paramInt1, int paramInt2)
+  public final void fH(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(201624);
+    AppMethodBeat.i(202072);
     if ((paramInt1 <= 0) && (paramInt2 <= 0))
     {
-      ad.i("Finder.RedDotManager", "[notifyFinderMsgCount] server error.");
-      AppMethodBeat.o(201624);
+      ae.i("Finder.RedDotManager", "[notifyFinderMsgCount] server error.");
+      AppMethodBeat.o(202072);
       return;
     }
-    ad.i("Finder.RedDotManager", "[notifyFinderMsgCount] normalCount = " + paramInt1 + ", systemCount = " + paramInt2);
-    aqu localaqu = new aqu();
-    localaqu.GoQ = String.valueOf(cf.aCM());
-    localaqu.priority = 100000;
-    localaqu.type = 2;
-    ase localase = new ase();
-    localase.uda = 2;
-    localase.Gqr = 1;
-    localase.path = "AuthorProfileNotify";
-    localase.count = (paramInt1 + paramInt2);
-    localaqu.GoP.add(localase);
+    ae.i("Finder.RedDotManager", "[notifyFinderMsgCount] normalCount = " + paramInt1 + ", systemCount = " + paramInt2);
+    arj localarj = new arj();
+    localarj.GIg = String.valueOf(ch.aDc());
+    localarj.priority = 100000;
+    localarj.type = 2;
+    ast localast = new ast();
+    localast.uoi = 2;
+    localast.GJM = 1;
+    localast.path = "AuthorProfileNotify";
+    localast.count = (paramInt1 + paramInt2);
+    localarj.GIf.add(localast);
     if (paramInt2 > 0)
     {
-      localase = new ase();
-      localase.uda = 2;
-      localase.Gqr = 1;
-      localase.path = "NotificitionCenterNotify";
-      localase.count = paramInt2;
-      localaqu.GoP.add(localase);
+      localast = new ast();
+      localast.uoi = 2;
+      localast.GJM = 1;
+      localast.path = "NotificitionCenterNotify";
+      localast.count = paramInt2;
+      localarj.GIf.add(localast);
     }
-    a(this, localaqu, "notifyFinderMsgCount", null, null, 12);
-    AppMethodBeat.o(201624);
+    a(this, localarj, "notifyFinderMsgCount", null, null, true, 12);
+    AppMethodBeat.o(202072);
   }
   
   public final void lN(boolean paramBoolean)
   {
-    AppMethodBeat.i(201643);
-    Object localObject = com.tencent.mm.kernel.g.ajC();
+    AppMethodBeat.i(202091);
+    Object localObject = com.tencent.mm.kernel.g.ajR();
     p.g(localObject, "MMKernel.storage()");
-    ((com.tencent.mm.kernel.e)localObject).ajl().set(al.a.IIH, Boolean.valueOf(paramBoolean));
-    localObject = com.tencent.mm.plugin.finder.report.h.soM;
+    ((com.tencent.mm.kernel.e)localObject).ajA().set(am.a.Jdk, Boolean.valueOf(paramBoolean));
+    localObject = com.tencent.mm.plugin.finder.report.i.syT;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      com.tencent.mm.plugin.finder.report.h.fK(1, i);
-      AppMethodBeat.o(201643);
+      com.tencent.mm.plugin.finder.report.i.fK(1, i);
+      AppMethodBeat.o(202091);
       return;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(201644);
-    ad.i("Finder.RedDotManager", "scene = ".concat(String.valueOf(paramn)));
+    AppMethodBeat.i(202092);
+    ae.i("Finder.RedDotManager", "scene = ".concat(String.valueOf(paramn)));
     if (paramn != null) {
       switch (paramn.getType())
       {
       }
     }
-    do
-    {
-      AppMethodBeat.o(201644);
-      return;
-    } while ((paramInt1 != 0) || (paramInt2 != 0));
-    paramString = this.rRU;
-    boolean bool1;
-    if (!bt.isNullOrNil(u.aAu()))
-    {
-      bool1 = true;
-      label88:
-      paramn = com.tencent.mm.kernel.g.ajC();
-      p.g(paramn, "MMKernel.storage()");
-      paramInt2 = paramn.ajl().getInt(al.a.IIb, h.cAh());
-      paramn = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if ((!com.tencent.mm.plugin.finder.storage.b.cFK()) || (!((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).showPostEntry())) {
-        break label325;
-      }
-      paramInt1 = 1;
-      label144:
-      if ((paramInt1 == 0) || (!h.Eu(paramInt2)) || (bool1)) {
-        break label330;
-      }
-    }
     for (;;)
     {
-      ad.i("Finder.RedDotTransform", "[isShowLocalRedDot] ret=" + bool2 + " local=" + paramInt2 + " hasCreatedIdentity=" + bool1);
-      if (!bool2) {
-        break;
+      AppMethodBeat.o(202092);
+      return;
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        this.saw.cBM();
       }
-      paramString.cAg();
-      paramString = com.tencent.mm.kernel.g.ajC();
-      p.g(paramString, "MMKernel.storage()");
-      paramInt1 = paramString.ajl().getInt(al.a.IIb, h.cAh());
-      paramInt2 = paramInt1 & 0xFFFFFFFD;
-      if (paramInt2 != paramInt1)
-      {
-        paramString = com.tencent.mm.kernel.g.ajC();
-        p.g(paramString, "MMKernel.storage()");
-        paramString.ajl().set(al.a.IIb, Integer.valueOf(paramInt2));
-      }
-      ad.i("Finder.RedDotTransform", "[setLocalRedDot] flag=2 unset=true newLocal=" + paramInt2 + " local=" + paramInt1);
-      ad.i("Finder.RedDotTransform", "[transformPostRedDot] done");
-      break;
-      bool1 = false;
-      break label88;
-      label325:
-      paramInt1 = 0;
-      break label144;
-      label330:
-      bool2 = false;
     }
   }
   
   public final void prepare()
   {
     AppMethodBeat.i(178168);
-    if (!aj.cmR())
+    if (!ak.coh())
     {
       AppMethodBeat.o(178168);
       return;
     }
-    com.tencent.mm.ad.b localb = new com.tencent.mm.ad.b("Finder.RedDotManager");
-    Object localObject1 = this.rRW;
-    com.tencent.mm.plugin.newtips.a.dum().a("FinderNewTipsTransform", (l.a)localObject1);
-    localObject1 = ((Iterable)this.rSg.cns()).iterator();
+    com.tencent.mm.ac.b localb = new com.tencent.mm.ac.b("Finder.RedDotManager");
+    Object localObject1 = ((Iterable)this.saJ.coU()).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (i)((Iterator)localObject1).next();
-      if (((i)localObject2).cAj())
+      if (((i)localObject2).cBS())
       {
-        ad.w("Finder.RedDotManager", "[prepare] showInfo is empty! ".concat(String.valueOf(localObject2)));
-        ((i)localObject2).b(this.rSg, false);
+        ae.w("Finder.RedDotManager", "[prepare] showInfo is empty! ".concat(String.valueOf(localObject2)));
+        ((i)localObject2).b(this.saJ, false);
       }
-      aqu localaqu = ((i)localObject2).field_ctrInfo;
-      p.g(localaqu, "it.field_ctrInfo");
-      a(((i)localObject2).b(localaqu), "prepare");
+      arj localarj = ((i)localObject2).field_ctrInfo;
+      p.g(localarj, "it.field_ctrInfo");
+      a(((i)localObject2).b(localarj), "prepare");
     }
-    Object localObject2 = this.rRU;
-    localObject1 = ((h)localObject2).rRG.ahn("FinderEntrance");
+    this.saC.alive();
+    localObject1 = this.say;
+    com.tencent.mm.plugin.newtips.a.dxC().a("FinderNewTipsTransform", (l.a)localObject1);
+    Object localObject2 = this.saw;
+    localObject1 = ((h)localObject2).sai.aij("FinderEntrance");
     if ((localObject1 != null) && (((i)localObject1).field_ctrInfo.type == -1))
     {
-      localObject1 = ((i)localObject1).ahq("FinderEntrance");
+      localObject1 = ((i)localObject1).aim("FinderEntrance");
       if (localObject1 == null) {
-        break label296;
+        break label281;
       }
-      localObject1 = Integer.valueOf(((ase)localObject1).Gqr);
+      localObject1 = Integer.valueOf(((ast)localObject1).GJM);
       if (localObject1 != null) {
-        break label301;
+        break label286;
       }
     }
     for (;;)
     {
-      ad.i("Finder.RedDotTransform", "[checkPostRedDot] has old fav red dot, ret=".concat(String.valueOf(a(((h)localObject2).rRG, 1001))));
-      localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() != 1)
-      {
-        a(this, 7);
-        a(this, 8);
-        a(this, 1004);
-        a(this, 1003);
-      }
+      ae.i("Finder.RedDotTransform", "[checkPostRedDot] has old fav red dot, ret=".concat(String.valueOf(a(((h)localObject2).sai, 1001))));
       a(this, 1005);
-      localb.akO();
+      localObject1 = k.sbO;
+      p.h(this, "redDotManager");
+      k.rOC = this;
+      ae.i("Finder.ThreeDayTwoDay", "INIT");
+      k.cCj();
+      localb.ald();
       AppMethodBeat.o(178168);
       return;
-      label296:
+      label281:
       localObject1 = null;
       break;
-      label301:
+      label286:
       if (((Integer)localObject1).intValue() == 2)
       {
-        ad.i("Finder.RedDotTransform", "[checkPostRedDot] has old post red dot, ret=".concat(String.valueOf(a(((h)localObject2).rRG, -1))));
-        ((h)localObject2).cAg();
+        ae.i("Finder.RedDotTransform", "[checkPostRedDot] has old post red dot, ret=".concat(String.valueOf(a(((h)localObject2).sai, -1))));
+        ((h)localObject2).cBN();
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$Companion;", "", "()V", "TAB_TIPS_TEST", "", "getTAB_TIPS_TEST", "()Z", "setTAB_TIPS_TEST", "(Z)V", "TAG", "", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$Companion;", "", "()V", "TAB_TIPS_TEST", "", "getTAB_TIPS_TEST", "()Z", "setTAB_TIPS_TEST", "(Z)V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final b rSj;
+    public static final b saM;
     
     static
     {
-      AppMethodBeat.i(201608);
-      rSj = new b();
-      AppMethodBeat.o(201608);
+      AppMethodBeat.i(202056);
+      saM = new b();
+      AppMethodBeat.o(202056);
     }
     
     b()
@@ -1376,7 +1749,7 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$buildPathWithCtrInfo$1$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$buildPathWithCtrInfo$1$1"})
   static final class c
     extends q
     implements d.g.a.b<i, Boolean>
@@ -1387,17 +1760,17 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
   static final class d
     extends q
     implements d.g.a.b<i, Integer>
   {
-    public static final d rSn;
+    public static final d saQ;
     
     static
     {
       AppMethodBeat.i(178152);
-      rSn = new d();
+      saQ = new d();
       AppMethodBeat.o(178152);
     }
     
@@ -1407,17 +1780,17 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
   static final class e
     extends q
     implements d.g.a.b<i, Long>
   {
-    public static final e rSo;
+    public static final e saR;
     
     static
     {
       AppMethodBeat.i(178154);
-      rSo = new e();
+      saR = new e();
       AppMethodBeat.o(178154);
     }
     
@@ -1427,60 +1800,54 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "task", "Lcom/tencent/mm/loader/loader/SingleTask;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
   static final class f
     extends q
-    implements d.g.a.b<com.tencent.mm.loader.g.h, z>
+    implements d.g.a.b<i, Boolean>
   {
-    f(e parame)
+    public static final f saS;
+    
+    static
+    {
+      AppMethodBeat.i(202058);
+      saS = new f();
+      AppMethodBeat.o(202058);
+    }
+    
+    f()
     {
       super();
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$deleteCtrlInfo$1$1"})
   static final class g
     extends q
     implements d.g.a.b<i, Boolean>
   {
-    public static final g rSr;
-    
-    static
-    {
-      AppMethodBeat.i(201611);
-      rSr = new g();
-      AppMethodBeat.o(201611);
-    }
-    
-    g()
+    g(e parame, i parami)
     {
       super();
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$deleteCtrlInfo$1$1"})
-  static final class h
-    extends q
-    implements d.g.a.b<i, Boolean>
-  {
-    h(e parame, i parami)
-    {
-      super();
-    }
-  }
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$entryConfigChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ExptChangeEvent;", "callback", "", "event", "plugin-finder_release"})
+  public static final class h
+    extends com.tencent.mm.sdk.b.c<fm>
+  {}
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class i
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final i rSt;
+    public static final i saU;
     
     static
     {
-      AppMethodBeat.i(201614);
-      rSt = new i();
-      AppMethodBeat.o(201614);
+      AppMethodBeat.i(202062);
+      saU = new i();
+      AppMethodBeat.o(202062);
     }
     
     i()
@@ -1489,17 +1856,17 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class j
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final j rSu;
+    public static final j saV;
     
     static
     {
       AppMethodBeat.i(178161);
-      rSu = new j();
+      saV = new j();
       AppMethodBeat.o(178161);
     }
     
@@ -1509,18 +1876,18 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class k
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final k rSv;
+    public static final k saW;
     
     static
     {
-      AppMethodBeat.i(201616);
-      rSv = new k();
-      AppMethodBeat.o(201616);
+      AppMethodBeat.i(202064);
+      saW = new k();
+      AppMethodBeat.o(202064);
     }
     
     k()
@@ -1529,18 +1896,18 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class l
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final l rSw;
+    public static final l saX;
     
     static
     {
-      AppMethodBeat.i(201618);
-      rSw = new l();
-      AppMethodBeat.o(201618);
+      AppMethodBeat.i(202066);
+      saX = new l();
+      AppMethodBeat.o(202066);
     }
     
     l()
@@ -1549,18 +1916,18 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class m
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final m rSx;
+    public static final m saY;
     
     static
     {
-      AppMethodBeat.i(201620);
-      rSx = new m();
-      AppMethodBeat.o(201620);
+      AppMethodBeat.i(202068);
+      saY = new m();
+      AppMethodBeat.o(202068);
     }
     
     m()
@@ -1569,18 +1936,18 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class n
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final n rSy;
+    public static final n saZ;
     
     static
     {
-      AppMethodBeat.i(201622);
-      rSy = new n();
-      AppMethodBeat.o(201622);
+      AppMethodBeat.i(202070);
+      saZ = new n();
+      AppMethodBeat.o(202070);
     }
     
     n()
@@ -1589,17 +1956,17 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke"})
   static final class o
     extends q
-    implements d.g.a.b<ase, Boolean>
+    implements d.g.a.b<ast, Boolean>
   {
-    public static final o rSz;
+    public static final o sba;
     
     static
     {
       AppMethodBeat.i(178163);
-      rSz = new o();
+      sba = new o();
       AppMethodBeat.o(178163);
     }
     
@@ -1609,32 +1976,158 @@ public final class e
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class p
-    extends q
-    implements d.g.a.a<z>
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$FinderTipsShowTabExt;", "", "tabType", "", "ext", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowTabExtInfo;", "(ILcom/tencent/mm/protocal/protobuf/FinderTipsShowTabExtInfo;)V", "getExt", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowTabExtInfo;", "getTabType", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-finder_release"})
+  public static final class p
   {
-    p(e parame, aqz paramaqz)
+    public static final a DqP;
+    final ekv DqO;
+    final int dvm;
+    
+    static
+    {
+      AppMethodBeat.i(224281);
+      DqP = new a((byte)0);
+      AppMethodBeat.o(224281);
+    }
+    
+    public p(int paramInt, ekv paramekv)
+    {
+      AppMethodBeat.i(224280);
+      this.dvm = paramInt;
+      this.DqO = paramekv;
+      AppMethodBeat.o(224280);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(224284);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof p))
+        {
+          paramObject = (p)paramObject;
+          if ((this.dvm != paramObject.dvm) || (!p.i(this.DqO, paramObject.DqO))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(224284);
+        return true;
+      }
+      AppMethodBeat.o(224284);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(224283);
+      int j = this.dvm;
+      ekv localekv = this.DqO;
+      if (localekv != null) {}
+      for (int i = localekv.hashCode();; i = 0)
+      {
+        AppMethodBeat.o(224283);
+        return i + j * 31;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(224282);
+      String str = "FinderTipsShowTabExt(tabType=" + this.dvm + ", ext=" + this.DqO + ")";
+      AppMethodBeat.o(224282);
+      return str;
+    }
+    
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$FinderTipsShowTabExt$Companion;", "", "()V", "transform", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager$FinderTipsShowTabExt;", "tabType", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "plugin-finder_release"})
+    public static final class a
+    {
+      public static e.p a(int paramInt, e parame)
+      {
+        AppMethodBeat.i(224279);
+        p.h(parame, "manager");
+        Object localObject = e.EE(paramInt);
+        parame = parame.aij((String)localObject);
+        int i;
+        if (parame != null)
+        {
+          parame = parame.aim((String)localObject);
+          localObject = new ekv();
+          if (parame != null) {
+            switch (paramInt)
+            {
+            case 2: 
+            default: 
+              i = 0;
+            }
+          }
+        }
+        for (;;)
+        {
+          ((ekv)localObject).OzL = i;
+          parame = new e.p(paramInt, (ekv)localObject);
+          AppMethodBeat.o(224279);
+          return parame;
+          parame = null;
+          break;
+          i = 700000;
+          continue;
+          i = 600000;
+          continue;
+          i = 500000;
+        }
+      }
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "invoke"})
+  static final class q
+    extends q
+    implements d.g.a.a<com.tencent.mm.loader.g.i>
+  {
+    public static final q sbc;
+    
+    static
+    {
+      AppMethodBeat.i(178165);
+      sbc = new q();
+      AppMethodBeat.o(178165);
+    }
+    
+    q()
     {
       super();
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "invoke"})
-  static final class q
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ctrlInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
+  static final class r
     extends q
-    implements d.g.a.a<com.tencent.mm.loader.g.i>
+    implements d.g.a.b<i, Boolean>
   {
-    public static final q rSB;
-    
-    static
+    r(int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(178165);
-      rSB = new q();
-      AppMethodBeat.o(178165);
+      super();
     }
-    
-    q()
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ctrlInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke"})
+  static final class s
+    extends q
+    implements d.g.a.b<i, Boolean>
+  {
+    s(eku parameku, y.a parama1, y.a parama2)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class t
+    extends q
+    implements d.g.a.a<z>
+  {
+    t(e parame, aro paramaro)
     {
       super();
     }

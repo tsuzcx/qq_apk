@@ -21,17 +21,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.pluginsdk.ui.applet.o;
 import com.tencent.mm.pluginsdk.ui.applet.y.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.k.a.a;
@@ -40,64 +40,64 @@ import com.tencent.mm.ui.k.a.c;
 
 public class InviteFriendsBy3rdUI
   extends MMPreference
-  implements com.tencent.mm.al.f, a.a, a.b
+  implements com.tencent.mm.ak.f, a.a, a.b
 {
-  private static int BkU = 1;
-  private static int BkV = 2;
-  private static int BkW = 3;
-  private static int BkX = 4;
-  private static int BkY = 5;
-  private static int BkZ = 0;
-  private static int Bla = 1;
-  private com.tencent.mm.ui.k.a AoC;
-  private int Blb;
-  private Bitmap Blc;
-  private View Bld;
-  private ImageView Ble;
-  private EditText Blf;
-  private boolean Blg;
-  private boolean Blh;
-  private ProgressDialog fMu;
+  private static int BCt = 1;
+  private static int BCu = 2;
+  private static int BCv = 3;
+  private static int BCw = 4;
+  private static int BCx = 5;
+  private static int BCy = 0;
+  private static int BCz = 1;
+  private com.tencent.mm.ui.k.a AFP;
+  private int BCA;
+  private Bitmap BCB;
+  private View BCC;
+  private ImageView BCD;
+  private EditText BCE;
+  private boolean BCF;
+  private boolean BCG;
+  private ProgressDialog fOC;
   private int fromScene;
-  private ProgressBar ltc;
-  private ProgressDialog sBI;
+  private ProgressBar lxB;
+  private ProgressDialog sMH;
   
   public InviteFriendsBy3rdUI()
   {
     AppMethodBeat.i(29235);
-    this.Blb = 0;
-    this.fMu = null;
-    this.sBI = null;
-    this.Blc = null;
-    this.Ble = null;
-    this.ltc = null;
-    this.Blf = null;
-    this.AoC = new com.tencent.mm.ui.k.a();
-    this.Blg = false;
-    this.Blh = false;
+    this.BCA = 0;
+    this.fOC = null;
+    this.sMH = null;
+    this.BCB = null;
+    this.BCD = null;
+    this.lxB = null;
+    this.BCE = null;
+    this.AFP = new com.tencent.mm.ui.k.a();
+    this.BCF = false;
+    this.BCG = false;
     AppMethodBeat.o(29235);
   }
   
   private void B(final int paramInt, final String paramString1, String paramString2)
   {
     AppMethodBeat.i(29244);
-    this.Bld = View.inflate(getContext(), 2131493586, null);
-    this.Blf = ((EditText)this.Bld.findViewById(2131298569));
-    this.Ble = ((ImageView)this.Bld.findViewById(2131298566));
-    this.ltc = ((ProgressBar)this.Bld.findViewById(2131301506));
-    ((View)this.Ble.getParent()).setVisibility(8);
-    this.Blf.setText(paramString1);
-    this.Blc = deH();
-    if (this.Blc == null)
+    this.BCC = View.inflate(getContext(), 2131493586, null);
+    this.BCE = ((EditText)this.BCC.findViewById(2131298569));
+    this.BCD = ((ImageView)this.BCC.findViewById(2131298566));
+    this.lxB = ((ProgressBar)this.BCC.findViewById(2131301506));
+    ((View)this.BCD.getParent()).setVisibility(8);
+    this.BCE.setText(paramString1);
+    this.BCB = dhz();
+    if (this.BCB == null)
     {
-      aCD(u.aAm());
-      ((ProgressBar)this.Bld.findViewById(2131301506)).setVisibility(0);
+      aDW(v.aAC());
+      ((ProgressBar)this.BCC.findViewById(2131301506)).setVisibility(0);
     }
     for (;;)
     {
-      o.a(this.mController, paramString2, this.Bld, getResources().getString(2131755884), new y.b()
+      o.a(this.mController, paramString2, this.BCC, getResources().getString(2131755884), new y.b()
       {
-        public final void nO(boolean paramAnonymousBoolean)
+        public final void nS(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(29229);
           if (paramAnonymousBoolean)
@@ -115,13 +115,13 @@ public class InviteFriendsBy3rdUI
       });
       AppMethodBeat.o(29244);
       return;
-      if (this.Ble != null) {
-        this.Ble.setImageBitmap(this.Blc);
+      if (this.BCD != null) {
+        this.BCD.setImageBitmap(this.BCB);
       }
     }
   }
   
-  private void IN(int paramInt)
+  private void Jl(int paramInt)
   {
     AppMethodBeat.i(29242);
     com.tencent.mm.ui.base.h.a(getContext(), paramInt, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -134,62 +134,62 @@ public class InviteFriendsBy3rdUI
     AppMethodBeat.o(29242);
   }
   
-  private void SL(int paramInt)
+  private void Ts(int paramInt)
   {
     AppMethodBeat.i(29240);
     final com.tencent.mm.modelmulti.e locale = new com.tencent.mm.modelmulti.e(paramInt);
     getString(2131755906);
-    this.fMu = com.tencent.mm.ui.base.h.b(this, getString(2131760709), true, new DialogInterface.OnCancelListener()
+    this.fOC = com.tencent.mm.ui.base.h.b(this, getString(2131760709), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(29233);
-        ba.aiU().a(locale);
+        bc.ajj().a(locale);
         AppMethodBeat.o(29233);
       }
     });
-    ba.aiU().a(locale, 0);
+    bc.ajj().a(locale, 0);
     AppMethodBeat.o(29240);
   }
   
-  private static void aCD(String paramString)
+  private static void aDW(String paramString)
   {
     AppMethodBeat.i(29247);
-    ba.aBQ();
-    paramString = new com.tencent.mm.bd.a(paramString, bt.n((Integer)c.ajl().get(66561, null)));
-    ba.aiU().a(paramString, 0);
+    bc.aCg();
+    paramString = new com.tencent.mm.bc.a(paramString, bu.o((Integer)c.ajA().get(66561, null)));
+    bc.ajj().a(paramString, 0);
     AppMethodBeat.o(29247);
   }
   
   /* Error */
-  private static byte[] anS(String paramString)
+  private static byte[] aoU(String paramString)
   {
     // Byte code:
     //   0: sipush 29246
     //   3: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 246	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
+    //   6: invokestatic 246	com/tencent/mm/model/bc:aCg	()Lcom/tencent/mm/model/c;
     //   9: pop
-    //   10: invokestatic 279	com/tencent/mm/model/c:azA	()Ljava/lang/String;
+    //   10: invokestatic 278	com/tencent/mm/model/c:azQ	()Ljava/lang/String;
     //   13: astore_1
-    //   14: invokestatic 246	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
+    //   14: invokestatic 246	com/tencent/mm/model/bc:aCg	()Lcom/tencent/mm/model/c;
     //   17: pop
     //   18: aload_1
-    //   19: invokestatic 282	com/tencent/mm/model/c:azB	()Ljava/lang/String;
-    //   22: ldc_w 284
+    //   19: invokestatic 281	com/tencent/mm/model/c:azR	()Ljava/lang/String;
+    //   22: ldc_w 283
     //   25: aload_0
-    //   26: invokevirtual 290	java/lang/String:getBytes	()[B
-    //   29: invokestatic 296	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
-    //   32: ldc_w 298
-    //   35: invokestatic 304	com/tencent/mm/sdk/platformtools/m:j	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokevirtual 289	java/lang/String:getBytes	()[B
+    //   29: invokestatic 295	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
+    //   32: ldc_w 297
+    //   35: invokestatic 303	com/tencent/mm/sdk/platformtools/n:j	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   38: astore_0
     //   39: aload_0
     //   40: iconst_0
-    //   41: invokestatic 310	com/tencent/mm/vfs/i:dd	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   41: invokestatic 309	com/tencent/mm/vfs/o:dg	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   44: astore_1
     //   45: aload_1
     //   46: astore_0
     //   47: aload_1
-    //   48: invokevirtual 316	java/io/RandomAccessFile:length	()J
+    //   48: invokevirtual 315	java/io/RandomAccessFile:length	()J
     //   51: l2i
     //   52: newarray byte
     //   54: astore_2
@@ -197,12 +197,12 @@ public class InviteFriendsBy3rdUI
     //   56: astore_0
     //   57: aload_1
     //   58: aload_2
-    //   59: invokevirtual 320	java/io/RandomAccessFile:read	([B)I
+    //   59: invokevirtual 319	java/io/RandomAccessFile:read	([B)I
     //   62: pop
     //   63: aload_1
     //   64: ifnull +7 -> 71
     //   67: aload_1
-    //   68: invokevirtual 323	java/io/RandomAccessFile:close	()V
+    //   68: invokevirtual 322	java/io/RandomAccessFile:close	()V
     //   71: sipush 29246
     //   74: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aload_2
@@ -212,16 +212,16 @@ public class InviteFriendsBy3rdUI
     //   81: astore_1
     //   82: aload_1
     //   83: astore_0
-    //   84: ldc_w 325
+    //   84: ldc_w 324
     //   87: aload_2
-    //   88: ldc_w 327
+    //   88: ldc_w 326
     //   91: iconst_0
-    //   92: anewarray 329	java/lang/Object
-    //   95: invokestatic 335	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   92: anewarray 328	java/lang/Object
+    //   95: invokestatic 334	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   98: aload_1
     //   99: ifnull +7 -> 106
     //   102: aload_1
-    //   103: invokevirtual 323	java/io/RandomAccessFile:close	()V
+    //   103: invokevirtual 322	java/io/RandomAccessFile:close	()V
     //   106: sipush 29246
     //   109: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: aconst_null
@@ -232,7 +232,7 @@ public class InviteFriendsBy3rdUI
     //   117: aload_0
     //   118: ifnull +7 -> 125
     //   121: aload_0
-    //   122: invokevirtual 323	java/io/RandomAccessFile:close	()V
+    //   122: invokevirtual 322	java/io/RandomAccessFile:close	()V
     //   125: sipush 29246
     //   128: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   131: aload_1
@@ -273,7 +273,7 @@ public class InviteFriendsBy3rdUI
   private static boolean checkApkExist(Context paramContext, String paramString)
   {
     AppMethodBeat.i(29241);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(29241);
       return false;
@@ -291,16 +291,16 @@ public class InviteFriendsBy3rdUI
     return false;
   }
   
-  private static Bitmap deH()
+  private static Bitmap dhz()
   {
     AppMethodBeat.i(29245);
-    Object localObject = anS(u.aAm());
+    Object localObject = aoU(v.aAC());
     if (localObject == null)
     {
       AppMethodBeat.o(29245);
       return null;
     }
-    localObject = com.tencent.mm.sdk.platformtools.g.cr((byte[])localObject);
+    localObject = com.tencent.mm.sdk.platformtools.h.cu((byte[])localObject);
     AppMethodBeat.o(29245);
     return localObject;
   }
@@ -308,22 +308,22 @@ public class InviteFriendsBy3rdUI
   public final void a(a.c paramc)
   {
     AppMethodBeat.i(29243);
-    if (this.sBI != null) {
-      this.sBI.cancel();
+    if (this.sMH != null) {
+      this.sMH.cancel();
     }
-    switch (InviteFriendsBy3rdUI.3.uTV[paramc.ordinal()])
+    switch (InviteFriendsBy3rdUI.3.vfI[paramc.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(29243);
       return;
-      IN(2131764543);
+      Jl(2131764543);
       AppMethodBeat.o(29243);
       return;
       AppMethodBeat.o(29243);
       return;
-      IN(2131764542);
+      Jl(2131764542);
     }
   }
   
@@ -340,27 +340,27 @@ public class InviteFriendsBy3rdUI
     super.onCreate(paramBundle);
     setMMTitle(2131759087);
     this.fromScene = getIntent().getIntExtra("Invite_friends", 4);
-    int i = bt.getInt(com.tencent.mm.n.g.acA().getValue("InviteFriendsInviteFlags"), 0);
+    int i = bu.getInt(com.tencent.mm.n.g.acL().getValue("InviteFriendsInviteFlags"), 0);
     paramBundle = getPreferenceScreen();
     if ((i & 0x2) <= 0) {
-      paramBundle.aVE("invite_friends_by_message");
+      paramBundle.aXf("invite_friends_by_message");
     }
     if ((i & 0x1) <= 0) {
-      paramBundle.aVE("invite_friends_by_mail");
+      paramBundle.aXf("invite_friends_by_mail");
     }
     if (((i & 0x4) <= 0) || (!checkApkExist(getContext(), "com.whatsapp"))) {
-      paramBundle.aVE("invite_friends_by_whatsapp");
+      paramBundle.aXf("invite_friends_by_whatsapp");
     }
-    if (((i & 0x8) <= 0) || (!u.aAP())) {
-      paramBundle.aVE("invite_friends_by_facebook");
+    if (((i & 0x8) <= 0) || (!v.aBf())) {
+      paramBundle.aXf("invite_friends_by_facebook");
     }
     if ((i & 0x10) <= 0) {
-      paramBundle.aVE("invite_friends_by_twitter");
+      paramBundle.aXf("invite_friends_by_twitter");
     }
     paramBundle.notifyDataSetChanged();
-    ba.aiU().a(1803, this);
-    ba.aiU().a(1804, this);
-    ba.aiU().a(168, this);
+    bc.ajj().a(1803, this);
+    bc.ajj().a(1804, this);
+    bc.ajj().a(168, this);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -377,11 +377,11 @@ public class InviteFriendsBy3rdUI
   public void onDestroy()
   {
     AppMethodBeat.i(29237);
-    ba.aiU().b(1803, this);
-    ba.aiU().b(1804, this);
-    ba.aiU().b(168, this);
-    if (this.Blb == 0) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(14035, new Object[] { Integer.valueOf(this.Blb), Integer.valueOf(BkZ), Integer.valueOf(this.fromScene) });
+    bc.ajj().b(1803, this);
+    bc.ajj().b(1804, this);
+    bc.ajj().b(168, this);
+    if (this.BCA == 0) {
+      com.tencent.mm.plugin.report.service.g.yxI.f(14035, new Object[] { Integer.valueOf(this.BCA), Integer.valueOf(BCy), Integer.valueOf(this.fromScene) });
     }
     super.onDestroy();
     AppMethodBeat.o(29237);
@@ -392,32 +392,32 @@ public class InviteFriendsBy3rdUI
     AppMethodBeat.i(29238);
     if ("invite_friends_by_message".equals(paramPreference.mKey))
     {
-      this.Blb = BkV;
-      SL(2);
+      this.BCA = BCu;
+      Ts(2);
       AppMethodBeat.o(29238);
       return true;
     }
     if ("invite_friends_by_mail".equals(paramPreference.mKey))
     {
-      this.Blb = BkU;
-      SL(1);
+      this.BCA = BCt;
+      Ts(1);
       AppMethodBeat.o(29238);
       return true;
     }
     if ("invite_friends_by_whatsapp".equals(paramPreference.mKey))
     {
-      this.Blb = BkW;
-      SL(4);
+      this.BCA = BCv;
+      Ts(4);
       AppMethodBeat.o(29238);
       return true;
     }
     if ("invite_friends_by_facebook".equals(paramPreference.mKey))
     {
-      this.Blb = BkX;
-      if (u.aAS())
+      this.BCA = BCw;
+      if (v.aBi())
       {
-        this.Blh = true;
-        SL(8);
+        this.BCG = true;
+        Ts(8);
       }
       for (;;)
       {
@@ -439,11 +439,11 @@ public class InviteFriendsBy3rdUI
     }
     if ("invite_friends_by_twitter".equals(paramPreference.mKey))
     {
-      this.Blb = BkY;
-      if (this.AoC.fLk())
+      this.BCA = BCx;
+      if (this.AFP.fPD())
       {
-        this.Blg = true;
-        SL(16);
+        this.BCF = true;
+        Ts(16);
       }
       for (;;)
       {
@@ -477,14 +477,14 @@ public class InviteFriendsBy3rdUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(29239);
-    ad.i("MicroMsg.InviteFriendsBy3rdUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fMu != null)
+    ae.i("MicroMsg.InviteFriendsBy3rdUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(14035, new Object[] { Integer.valueOf(this.Blb), Integer.valueOf(BkZ), Integer.valueOf(this.fromScene) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(14035, new Object[] { Integer.valueOf(this.BCA), Integer.valueOf(BCy), Integer.valueOf(this.fromScene) });
     }
     Object localObject1;
     label194:
@@ -499,19 +499,19 @@ public class InviteFriendsBy3rdUI
         return;
       }
       paramString = (com.tencent.mm.modelmulti.e)paramn;
-      if (!bt.isNullOrNil(paramString.title)) {
+      if (!bu.isNullOrNil(paramString.title)) {
         break label1072;
       }
       localObject1 = null;
       paramString = (com.tencent.mm.modelmulti.e)paramn;
-      if (!bt.isNullOrNil(paramString.content)) {
+      if (!bu.isNullOrNil(paramString.content)) {
         break label1081;
       }
       paramString = null;
-      localObject2 = u.aAn();
-      ba.aBQ();
-      localObject3 = (String)c.ajl().get(6, null);
-      if (!bt.isNullOrNil((String)localObject2)) {
+      localObject2 = v.aAD();
+      bc.aCg();
+      localObject3 = (String)c.ajA().get(6, null);
+      if (!bu.isNullOrNil((String)localObject2)) {
         break label1290;
       }
       localObject2 = localObject3;
@@ -521,14 +521,14 @@ public class InviteFriendsBy3rdUI
     label1290:
     for (;;)
     {
-      int i = ((com.tencent.mm.modelmulti.e)paramn).ieI;
+      int i = ((com.tencent.mm.modelmulti.e)paramn).ihA;
       if ((i & 0x1) > 0)
       {
         localObject3 = localObject1;
-        if (bt.isNullOrNil((String)localObject1)) {
-          localObject3 = String.format(getString(2131760368), new Object[] { u.aAo() });
+        if (bu.isNullOrNil((String)localObject1)) {
+          localObject3 = String.format(getString(2131760368), new Object[] { v.aAE() });
         }
-        if (bt.isNullOrNil(paramString))
+        if (bu.isNullOrNil(paramString))
         {
           paramString = String.format(getString(2131760367), new Object[] { localObject2 });
           label307:
@@ -538,10 +538,10 @@ public class InviteFriendsBy3rdUI
           ((Intent)localObject1).setType("plain/text");
           localObject1 = Intent.createChooser((Intent)localObject1, getString(2131760361));
           localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          com.tencent.mm.plugin.report.service.g.yhR.f(14035, new Object[] { Integer.valueOf(this.Blb), Integer.valueOf(Bla), Integer.valueOf(this.fromScene) });
+          com.tencent.mm.plugin.report.service.g.yxI.f(14035, new Object[] { Integer.valueOf(this.BCA), Integer.valueOf(BCz), Integer.valueOf(this.fromScene) });
         }
       }
       for (;;)
@@ -549,7 +549,7 @@ public class InviteFriendsBy3rdUI
         localObject1 = paramString;
         if ((i & 0x2) > 0)
         {
-          if (!bt.isNullOrNil(paramString)) {
+          if (!bu.isNullOrNil(paramString)) {
             break label1281;
           }
           paramString = String.format(getString(2131760369), new Object[] { localObject2 });
@@ -563,18 +563,18 @@ public class InviteFriendsBy3rdUI
           localObject1 = new Intent("android.intent.action.VIEW");
           ((Intent)localObject1).putExtra("sms_body", paramString);
           ((Intent)localObject1).setType("vnd.android-dir/mms-sms");
-          if (bt.aj(this, (Intent)localObject1))
+          if (bu.aj(this, (Intent)localObject1))
           {
             localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             label634:
-            com.tencent.mm.plugin.report.service.g.yhR.f(14035, new Object[] { Integer.valueOf(this.Blb), Integer.valueOf(Bla), Integer.valueOf(this.fromScene) });
+            com.tencent.mm.plugin.report.service.g.yxI.f(14035, new Object[] { Integer.valueOf(this.BCA), Integer.valueOf(BCz), Integer.valueOf(this.fromScene) });
             localObject1 = paramString;
             paramString = (String)localObject1;
             if ((i & 0x4) > 0) {
-              if (!bt.isNullOrNil((String)localObject1)) {
+              if (!bu.isNullOrNil((String)localObject1)) {
                 break label1275;
               }
             }
@@ -590,47 +590,47 @@ public class InviteFriendsBy3rdUI
             ((Intent)localObject1).setType("text/plain");
             ((Intent)localObject1).setPackage("com.whatsapp");
             localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/InviteFriendsBy3rdUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            com.tencent.mm.plugin.report.service.g.yhR.f(14035, new Object[] { Integer.valueOf(this.Blb), Integer.valueOf(Bla), Integer.valueOf(this.fromScene) });
+            com.tencent.mm.plugin.report.service.g.yxI.f(14035, new Object[] { Integer.valueOf(this.BCA), Integer.valueOf(BCz), Integer.valueOf(this.fromScene) });
             localObject2 = paramString;
             if ((i & 0x8) > 0)
             {
               localObject1 = paramString;
-              if (bt.isNullOrNil(paramString))
+              if (bu.isNullOrNil(paramString))
               {
-                if (!bt.isNullOrNil(u.aAn())) {
+                if (!bu.isNullOrNil(v.aAD())) {
                   break label1103;
                 }
                 localObject1 = getString(2131760366);
               }
               paramString = getString(2131760358);
               localObject2 = localObject1;
-              if (this.Blh == true)
+              if (this.BCG == true)
               {
                 B(i, (String)localObject1, paramString);
-                this.Blh = false;
+                this.BCG = false;
                 localObject2 = localObject1;
               }
             }
             if ((i & 0x10) > 0)
             {
-              this.AoC.a(this);
+              this.AFP.a(this);
               paramString = (String)localObject2;
-              if (bt.isNullOrNil((String)localObject2)) {
-                if (!bt.isNullOrNil(u.aAn())) {
+              if (bu.isNullOrNil((String)localObject2)) {
+                if (!bu.isNullOrNil(v.aAD())) {
                   break label1128;
                 }
               }
             }
-            for (paramString = getString(2131760366);; paramString = String.format(getString(2131760365), new Object[] { u.aAn() }))
+            for (paramString = getString(2131760366);; paramString = String.format(getString(2131760365), new Object[] { v.aAD() }))
             {
               localObject1 = getString(2131760363);
-              if (this.Blg == true)
+              if (this.BCF == true)
               {
                 B(i, paramString, (String)localObject1);
-                this.Blg = false;
+                this.BCF = false;
               }
               if (paramn.getType() != 1804) {
                 break label1209;
@@ -647,11 +647,11 @@ public class InviteFriendsBy3rdUI
               break label194;
               Toast.makeText(this, 2131763024, 1).show();
               break label634;
-              localObject1 = String.format(getString(2131760365), new Object[] { u.aAn() });
+              localObject1 = String.format(getString(2131760365), new Object[] { v.aAD() });
               break label920;
             }
-            com.tencent.mm.ui.base.h.cl(this, getResources().getString(2131757561));
-            com.tencent.mm.plugin.report.service.g.yhR.f(14035, new Object[] { Integer.valueOf(this.Blb), Integer.valueOf(Bla), Integer.valueOf(this.fromScene) });
+            com.tencent.mm.ui.base.h.cm(this, getResources().getString(2131757561));
+            com.tencent.mm.plugin.report.service.g.yxI.f(14035, new Object[] { Integer.valueOf(this.BCA), Integer.valueOf(BCz), Integer.valueOf(this.fromScene) });
             if (paramn.getType() == 168)
             {
               if ((paramInt1 != 0) || (paramInt2 != 0))
@@ -659,12 +659,12 @@ public class InviteFriendsBy3rdUI
                 AppMethodBeat.o(29239);
                 return;
               }
-              if (this.Ble != null)
+              if (this.BCD != null)
               {
-                if (this.ltc != null) {
-                  this.ltc.setVisibility(8);
+                if (this.lxB != null) {
+                  this.lxB.setVisibility(8);
                 }
-                this.Ble.setImageBitmap(deH());
+                this.BCD.setImageBitmap(dhz());
               }
             }
             AppMethodBeat.o(29239);
@@ -684,7 +684,7 @@ public class InviteFriendsBy3rdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.InviteFriendsBy3rdUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ public final class f
   private static final int[] lq = { 2130968815 };
   private static final int[] lr = { 2130968818 };
   
-  private static void F(Context paramContext)
+  private static void G(Context paramContext)
   {
     a(paramContext, lq, "Theme.AppCompat");
   }
   
-  private static void G(Context paramContext)
+  private static void H(Context paramContext)
   {
     a(paramContext, lr, "Theme.MaterialComponents");
   }
@@ -34,9 +34,9 @@ public final class f
     boolean bool = paramAttributeSet.getBoolean(1, false);
     paramAttributeSet.recycle();
     if (bool) {
-      G(paramContext);
+      H(paramContext);
     }
-    F(paramContext);
+    G(paramContext);
   }
   
   private static void a(Context paramContext, int[] paramArrayOfInt, String paramString)

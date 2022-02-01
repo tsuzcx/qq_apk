@@ -28,7 +28,7 @@ public final class AppBrandOpReportLogic$AppBrandOnOpReportStartEvent
     AppMethodBeat.o(147201);
   }
   
-  public static void Qp(String paramString)
+  public static void QY(String paramString)
   {
     AppMethodBeat.i(147199);
     AppBrandOnOpReportStartEvent localAppBrandOnOpReportStartEvent = new AppBrandOnOpReportStartEvent();

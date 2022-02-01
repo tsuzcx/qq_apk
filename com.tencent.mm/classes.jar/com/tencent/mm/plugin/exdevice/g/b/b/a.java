@@ -4,11 +4,11 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a.c;
 import com.tencent.mm.plugin.exdevice.g.b.b;
-import com.tencent.mm.protocal.protobuf.atc;
+import com.tencent.mm.protocal.protobuf.ats;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,32 +36,32 @@ public final class a
     AppMethodBeat.o(23558);
   }
   
-  private boolean S(String paramString1, String paramString2, String paramString3)
+  private boolean T(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(23561);
     String str = String.format("select * from %s where %s=? and %s=? and %s=? limit 1", new Object[] { "HardDeviceRankFollowInfo", "rankID", "appusername", "username" });
-    paramString1 = this.db.a(str, new String[] { bt.bI(paramString1, ""), bt.bI(paramString2, ""), bt.bI(paramString3, "") }, 2);
+    paramString1 = this.db.a(str, new String[] { bu.bI(paramString1, ""), bu.bI(paramString2, ""), bu.bI(paramString3, "") }, 2);
     if (paramString1 == null)
     {
-      ad.e("MicroMsg.ExdeviceFollowInfoStg", "ap: check follow not in DB");
+      ae.e("MicroMsg.ExdeviceFollowInfoStg", "ap: check follow not in DB");
       AppMethodBeat.o(23561);
       return false;
     }
     boolean bool = paramString1.moveToFirst();
     paramString1.close();
-    ad.d("MicroMsg.ExdeviceFollowInfoStg", "checkUserIsFollow %s", new Object[] { Boolean.valueOf(bool) });
+    ae.d("MicroMsg.ExdeviceFollowInfoStg", "checkUserIsFollow %s", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(23561);
     return bool;
   }
   
-  private boolean T(String paramString1, String paramString2, String paramString3)
+  private boolean U(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(23567);
     paramString1 = a(new b(paramString1, paramString2, paramString3));
     if (paramString1 != null)
     {
       delete(paramString1, new String[] { "rankID", "appusername", "username" });
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "ap: update success");
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "ap: update success");
       AppMethodBeat.o(23567);
       return true;
     }
@@ -95,7 +95,7 @@ public final class a
       }
       localc.field_step = paramc.field_step;
       update(localc, new String[] { "rankID", "appusername", "username" });
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "ap: update success");
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "ap: update success");
       AppMethodBeat.o(23568);
       return true;
     }
@@ -111,7 +111,7 @@ public final class a
     {
       Assert.assertTrue(bool);
       insert(paramc);
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "ap: insert success");
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "ap: insert success");
       AppMethodBeat.o(23569);
       return true;
     }
@@ -121,10 +121,10 @@ public final class a
   {
     AppMethodBeat.i(23559);
     Object localObject = String.format("select *, rowid from %s where %s = ? and %s = ? and %s = ? limit 1", new Object[] { "HardDeviceRankFollowInfo", "rankID", "username", "appusername" });
-    localObject = this.db.a((String)localObject, new String[] { bt.bI(paramb.qfc, ""), bt.bI(paramb.username, ""), bt.bI(paramb.appName, "") }, 2);
+    localObject = this.db.a((String)localObject, new String[] { bu.bI(paramb.qlH, ""), bu.bI(paramb.username, ""), bu.bI(paramb.appName, "") }, 2);
     if (localObject == null)
     {
-      ad.e("MicroMsg.ExdeviceFollowInfoStg", "ap: Get no follow in DB");
+      ae.e("MicroMsg.ExdeviceFollowInfoStg", "ap: Get no follow in DB");
       AppMethodBeat.o(23559);
       return null;
     }
@@ -139,11 +139,11 @@ public final class a
       ((Cursor)localObject).close();
       AppMethodBeat.o(23559);
       return paramb;
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "ap: no record");
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "ap: no record");
     }
   }
   
-  public final void a(ArrayList<atc> paramArrayList, String paramString1, String paramString2)
+  public final void a(ArrayList<ats> paramArrayList, String paramString1, String paramString2)
   {
     AppMethodBeat.i(23563);
     if (paramArrayList != null)
@@ -151,11 +151,11 @@ public final class a
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        atc localatc = (atc)paramArrayList.next();
+        ats localats = (ats)paramArrayList.next();
         c localc = new c();
         localc.field_rankID = paramString1;
-        localc.field_step = localatc.kuN;
-        localc.field_username = localatc.username;
+        localc.field_step = localats.kyd;
+        localc.field_username = localats.username;
         localc.field_appusername = paramString2;
         a(localc);
       }
@@ -163,27 +163,27 @@ public final class a
     AppMethodBeat.o(23563);
   }
   
-  public final boolean acD(String paramString)
+  public final boolean adu(String paramString)
   {
     AppMethodBeat.i(23560);
-    boolean bool = S("hardcode_rank_id", "hardcode_app_name", paramString);
+    boolean bool = T("hardcode_rank_id", "hardcode_app_name", paramString);
     AppMethodBeat.o(23560);
     return bool;
   }
   
-  public final boolean acE(String paramString)
+  public final boolean adv(String paramString)
   {
     AppMethodBeat.i(23566);
-    boolean bool = T("hardcode_rank_id", "hardcode_app_name", paramString);
+    boolean bool = U("hardcode_rank_id", "hardcode_app_name", paramString);
     AppMethodBeat.o(23566);
     return bool;
   }
   
-  public final void cV(List<c> paramList)
+  public final void cY(List<c> paramList)
   {
     AppMethodBeat.i(23564);
-    if ((bt.isNullOrNil("hardcode_rank_id")) || (bt.isNullOrNil("hardcode_app_name"))) {
-      ad.e("MicroMsg.ExdeviceFollowInfoStg", "ap: delete follows,params is null");
+    if ((bu.isNullOrNil("hardcode_rank_id")) || (bu.isNullOrNil("hardcode_app_name"))) {
+      ae.e("MicroMsg.ExdeviceFollowInfoStg", "ap: delete follows,params is null");
     }
     while (paramList != null)
     {
@@ -195,12 +195,12 @@ public final class a
         localc.field_appusername = "hardcode_app_name";
         a(localc);
       }
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "ap: delete rankId: %s %s count %d", new Object[] { "hardcode_rank_id", "hardcode_app_name", Integer.valueOf(this.db.delete("HardDeviceRankFollowInfo", "rankID=? and appusername=?", new String[] { "hardcode_rank_id", "hardcode_app_name" })) });
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "ap: delete rankId: %s %s count %d", new Object[] { "hardcode_rank_id", "hardcode_app_name", Integer.valueOf(this.db.delete("HardDeviceRankFollowInfo", "rankID=? and appusername=?", new String[] { "hardcode_rank_id", "hardcode_app_name" })) });
     }
     AppMethodBeat.o(23564);
   }
   
-  public final ArrayList<c> clH()
+  public final ArrayList<c> cmX()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(23562);
@@ -208,7 +208,7 @@ public final class a
     localObject = this.db.a((String)localObject, new String[] { "hardcode_rank_id", "hardcode_app_name" }, 2);
     if (localObject == null)
     {
-      ad.e("MicroMsg.ExdeviceFollowInfoStg", "ap: Get follows not in DB");
+      ae.e("MicroMsg.ExdeviceFollowInfoStg", "ap: Get follows not in DB");
       AppMethodBeat.o(23562);
       return null;
     }
@@ -219,17 +219,17 @@ public final class a
       {
         c localc = new c();
         localc.convertFrom((Cursor)localObject);
-        ad.d("MicroMsg.ExdeviceFollowInfoStg", "follow info: rowid: %s, info: %s", new Object[] { Integer.valueOf(((Cursor)localObject).getColumnIndex("rowid")), localc.toString() });
+        ae.d("MicroMsg.ExdeviceFollowInfoStg", "follow info: rowid: %s, info: %s", new Object[] { Integer.valueOf(((Cursor)localObject).getColumnIndex("rowid")), localc.toString() });
         localArrayList.add(localc);
       } while (((Cursor)localObject).moveToNext());
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "getAllFollowItem: %d, %s", new Object[] { Integer.valueOf(localArrayList.size()), localArrayList.toString() });
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "getAllFollowItem: %d, %s", new Object[] { Integer.valueOf(localArrayList.size()), localArrayList.toString() });
     }
     for (;;)
     {
       ((Cursor)localObject).close();
       AppMethodBeat.o(23562);
       return localArrayList;
-      ad.d("MicroMsg.ExdeviceFollowInfoStg", "ap: no record");
+      ae.d("MicroMsg.ExdeviceFollowInfoStg", "ap: no record");
     }
   }
 }

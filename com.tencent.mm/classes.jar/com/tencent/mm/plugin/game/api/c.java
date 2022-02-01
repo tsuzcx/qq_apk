@@ -8,32 +8,19 @@ public abstract interface c
 {
   public abstract int A(Context paramContext, String paramString1, String paramString2);
   
-  public abstract int Hy(int paramInt);
+  public abstract int HV(int paramInt);
   
-  public abstract String Hz(int paramInt);
+  public abstract String HW(int paramInt);
   
-  public abstract void a(a parama);
+  public abstract void a(c.a parama);
   
-  public abstract void cWD();
+  public abstract void cZi();
   
-  public abstract boolean cWE();
-  
-  public abstract void fl(Context paramContext);
-  
-  public static abstract interface a
-  {
-    public abstract void a(c.b paramb);
-  }
-  
-  public static final class b
-  {
-    public boolean tRR = false;
-    public int tRS = 0;
-  }
+  public abstract void fp(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.wenote.b;
 import android.os.Bundle;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.g.a.nj.a;
-import com.tencent.mm.g.a.oh.a;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.g.a.nk.a;
+import com.tencent.mm.g.a.oi.a;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.wenote.model.a.q;
 import com.tencent.mm.plugin.wenote.model.d;
 import com.tencent.mm.plugin.wenote.model.j;
 import com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.Set;
 import org.json.JSONException;
@@ -24,13 +24,13 @@ import org.json.JSONObject;
 public final class b
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private static com.tencent.mm.plugin.ball.c.f kjw;
-  private NoteEditorUI Eyt;
+  private static com.tencent.mm.plugin.ball.c.f kmM;
+  private NoteEditorUI EQP;
   
   static
   {
     AppMethodBeat.i(30284);
-    kjw = new com.tencent.mm.plugin.ball.c.g()
+    kmM = new com.tencent.mm.plugin.ball.c.g()
     {
       public final void c(BallInfo paramAnonymousBallInfo)
       {
@@ -49,10 +49,10 @@ public final class b
   public b(NoteEditorUI paramNoteEditorUI, a parama)
   {
     super(parama);
-    this.Eyt = paramNoteEditorUI;
+    this.EQP = paramNoteEditorUI;
   }
   
-  public static String a(nj.a parama)
+  public static String a(nk.a parama)
   {
     AppMethodBeat.i(30277);
     JSONObject localJSONObject = new JSONObject();
@@ -61,42 +61,42 @@ public final class b
       try
       {
         localJSONObject.put("type", parama.type);
-        if (parama.dBl != null) {
+        if (parama.dCq != null) {
           continue;
         }
         str = "";
         localJSONObject.put("editorId", str);
         localJSONObject.put("field_localId", parama.field_localId);
-        if (parama.dBn != null) {
+        if (parama.dCs != null) {
           continue;
         }
         str = "";
         localJSONObject.put("insertJsonData", str);
-        if (parama.dBo != null) {
+        if (parama.dCt != null) {
           continue;
         }
         str = "";
         localJSONObject.put("exportJsonData", str);
-        localJSONObject.put("isInsert", parama.dBp);
-        if (parama.dBq != null) {
+        localJSONObject.put("isInsert", parama.dCu);
+        if (parama.dCv != null) {
           continue;
         }
         str = "";
         localJSONObject.put("bundleData", str);
-        localJSONObject.put("itemType", parama.dBr);
+        localJSONObject.put("itemType", parama.dCw);
         if (parama.path != null) {
           continue;
         }
         str = "";
         localJSONObject.put("path", str);
-        localJSONObject.put("intdata", parama.dBs);
-        localJSONObject.put("showShare", parama.dBt);
+        localJSONObject.put("intdata", parama.dCx);
+        localJSONObject.put("showShare", parama.dCy);
         if (parama.field_favProto != null) {
           continue;
         }
         str = "";
         localJSONObject.put("field_favProto", str);
-        if (parama.dBu != null) {
+        if (parama.dCz != null) {
           continue;
         }
         parama = "";
@@ -105,29 +105,29 @@ public final class b
       catch (Exception parama)
       {
         String str;
-        ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", parama, "eventToJson NotifyWNNoteOperationEvent", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", parama, "eventToJson NotifyWNNoteOperationEvent", new Object[0]);
         continue;
       }
       parama = localJSONObject.toString();
       AppMethodBeat.o(30277);
       return parama;
-      str = parama.dBl;
+      str = parama.dCq;
       continue;
-      str = parama.dBn;
+      str = parama.dCs;
       continue;
-      str = parama.dBo;
+      str = parama.dCt;
       continue;
-      str = ba(parama.dBq);
+      str = bb(parama.dCv);
       continue;
       str = parama.path;
       continue;
       str = Base64.encodeToString(parama.field_favProto.toByteArray(), 0);
       continue;
-      parama = Base64.encodeToString(parama.dBu.toByteArray(), 0);
+      parama = Base64.encodeToString(parama.dCz.toByteArray(), 0);
     }
   }
   
-  public static String a(oh.a parama)
+  public static String a(oi.a parama)
   {
     AppMethodBeat.i(30275);
     JSONObject localJSONObject = new JSONObject();
@@ -136,117 +136,117 @@ public final class b
       try
       {
         localJSONObject.put("msgId", parama.msgId);
-        if (parama.dCi != null) {
+        if (parama.dDn != null) {
           continue;
         }
         str = "";
         localJSONObject.put("noteXmlStr", str);
-        localJSONObject.put("showShare", parama.dBt);
+        localJSONObject.put("showShare", parama.dCy);
         localJSONObject.put("scene", parama.scene);
       }
       catch (Exception parama)
       {
         String str;
-        ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", parama, "eventToJson OpenNoteFromSessionEvent", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", parama, "eventToJson OpenNoteFromSessionEvent", new Object[0]);
         continue;
       }
       parama = localJSONObject.toString();
       AppMethodBeat.o(30275);
       return parama;
-      str = parama.dCi;
+      str = parama.dDn;
     }
   }
   
   public static void a(q paramq)
   {
     AppMethodBeat.i(30272);
-    if (paramq.EzI)
+    if (paramq.ESe)
     {
-      if (paramq.ruk) {
-        com.tencent.mm.plugin.report.service.g.yhR.f(14789, new Object[] { Integer.valueOf(3) });
+      if (paramq.rCw) {
+        com.tencent.mm.plugin.report.service.g.yxI.f(14789, new Object[] { Integer.valueOf(3) });
       }
       for (;;)
       {
-        ad.i("MicroMsg.Fav.NoteFloatBallHelper", "isOpenFromSession: true");
+        ae.i("MicroMsg.Fav.NoteFloatBallHelper", "isOpenFromSession: true");
         localObject = new j();
-        ((j)localObject).EyQ = b(paramq);
-        ((j)localObject).EyR = 3;
-        com.tencent.mm.plugin.wenote.model.c.eWI().EyD = ((d)localObject);
-        localakf = new akf();
-        localakf.scene = 8;
-        ((j)localObject).a(paramq.EzM, Long.valueOf(paramq.EzK), true, aj.getContext(), paramq.EzN, paramq.EzO, localakf);
+        ((j)localObject).ERm = b(paramq);
+        ((j)localObject).ERn = 3;
+        com.tencent.mm.plugin.wenote.model.c.fau().EQZ = ((d)localObject);
+        localakp = new akp();
+        localakp.scene = 8;
+        ((j)localObject).a(paramq.ESi, Long.valueOf(paramq.ESg), true, ak.getContext(), paramq.ESj, paramq.ESk, localakp);
         AppMethodBeat.o(30272);
         return;
-        com.tencent.mm.plugin.report.service.g.yhR.f(14789, new Object[] { Integer.valueOf(2) });
+        com.tencent.mm.plugin.report.service.g.yxI.f(14789, new Object[] { Integer.valueOf(2) });
       }
     }
-    com.tencent.mm.plugin.report.service.g.yhR.f(14789, new Object[] { Integer.valueOf(1) });
-    ad.i("MicroMsg.Fav.NoteFloatBallHelper", "isOpenFromSession: false");
+    com.tencent.mm.plugin.report.service.g.yxI.f(14789, new Object[] { Integer.valueOf(1) });
+    ae.i("MicroMsg.Fav.NoteFloatBallHelper", "isOpenFromSession: false");
     Object localObject = new com.tencent.mm.plugin.wenote.model.g();
-    ((com.tencent.mm.plugin.wenote.model.g)localObject).EyQ = b(paramq);
-    ((com.tencent.mm.plugin.wenote.model.g)localObject).EyR = 3;
-    com.tencent.mm.plugin.wenote.model.c.eWI().EyD = ((d)localObject);
-    akf localakf = new akf();
-    localakf.scene = 8;
-    ((com.tencent.mm.plugin.wenote.model.g)localObject).a(paramq.EzJ, aj.getContext(), Boolean.TRUE, paramq.EzN, paramq.EzO, localakf, null);
+    ((com.tencent.mm.plugin.wenote.model.g)localObject).ERm = b(paramq);
+    ((com.tencent.mm.plugin.wenote.model.g)localObject).ERn = 3;
+    com.tencent.mm.plugin.wenote.model.c.fau().EQZ = ((d)localObject);
+    akp localakp = new akp();
+    localakp.scene = 8;
+    ((com.tencent.mm.plugin.wenote.model.g)localObject).a(paramq.ESf, ak.getContext(), Boolean.TRUE, paramq.ESj, paramq.ESk, localakp, null);
     AppMethodBeat.o(30272);
   }
   
-  private static oh.a aJY(String paramString)
+  private static oi.a aLu(String paramString)
   {
     AppMethodBeat.i(30276);
     try
     {
       paramString = new i(paramString);
-      oh.a locala = new oh.a();
+      oi.a locala = new oi.a();
       locala.msgId = paramString.getLong("msgId");
-      locala.dCi = paramString.getString("noteXmlStr");
-      locala.dBt = paramString.getBoolean("showShare");
+      locala.dDn = paramString.getString("noteXmlStr");
+      locala.dCy = paramString.getBoolean("showShare");
       locala.scene = paramString.getInt("scene");
-      locala.context = aj.getContext();
+      locala.context = ak.getContext();
       AppMethodBeat.o(30276);
       return locala;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "parseOpenNoteFromSessionEventData", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "parseOpenNoteFromSessionEventData", new Object[0]);
       AppMethodBeat.o(30276);
     }
     return null;
   }
   
-  private static nj.a aJZ(String paramString)
+  private static nk.a aLv(String paramString)
   {
     AppMethodBeat.i(30278);
     try
     {
       Object localObject = new JSONObject(paramString);
-      paramString = new nj.a();
+      paramString = new nk.a();
       paramString.type = ((JSONObject)localObject).getInt("type");
-      paramString.dBl = ((JSONObject)localObject).getString("editorId");
+      paramString.dCq = ((JSONObject)localObject).getString("editorId");
       paramString.field_localId = ((JSONObject)localObject).getLong("field_localId");
-      paramString.dBn = ((JSONObject)localObject).getString("insertJsonData");
-      paramString.dBo = ((JSONObject)localObject).getString("exportJsonData");
-      paramString.dBp = ((JSONObject)localObject).getBoolean("isInsert");
+      paramString.dCs = ((JSONObject)localObject).getString("insertJsonData");
+      paramString.dCt = ((JSONObject)localObject).getString("exportJsonData");
+      paramString.dCu = ((JSONObject)localObject).getBoolean("isInsert");
       String str = ((JSONObject)localObject).getString("bundleData");
       if (str.equals("")) {}
-      for (paramString.dBq = null;; paramString.dBq = aKa(str))
+      for (paramString.dCv = null;; paramString.dCv = aLw(str))
       {
-        paramString.dBr = ((JSONObject)localObject).getInt("itemType");
+        paramString.dCw = ((JSONObject)localObject).getInt("itemType");
         paramString.path = ((JSONObject)localObject).getString("path");
-        paramString.dBs = ((JSONObject)localObject).getInt("intdata");
-        paramString.dBt = ((JSONObject)localObject).getBoolean("showShare");
-        paramString.field_favProto = new akd();
+        paramString.dCx = ((JSONObject)localObject).getInt("intdata");
+        paramString.dCy = ((JSONObject)localObject).getBoolean("showShare");
+        paramString.field_favProto = new akn();
         str = ((JSONObject)localObject).getString("field_favProto");
-        if (!bt.isNullOrNil(str)) {
+        if (!bu.isNullOrNil(str)) {
           paramString.field_favProto.parseFrom(Base64.decode(str, 0));
         }
-        paramString.dBu = new akf();
+        paramString.dCz = new akp();
         localObject = ((JSONObject)localObject).getString("reportInfo");
-        if (!bt.isNullOrNil((String)localObject)) {
-          paramString.dBu.parseFrom(Base64.decode((String)localObject, 0));
+        if (!bu.isNullOrNil((String)localObject)) {
+          paramString.dCz.parseFrom(Base64.decode((String)localObject, 0));
         }
-        paramString.context = aj.getContext();
+        paramString.context = ak.getContext();
         AppMethodBeat.o(30278);
         return paramString;
       }
@@ -254,12 +254,12 @@ public final class b
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "parse NotifyWNNoteOperationEvent", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "parse NotifyWNNoteOperationEvent", new Object[0]);
       AppMethodBeat.o(30278);
     }
   }
   
-  private static Bundle aKa(String paramString)
+  private static Bundle aLw(String paramString)
   {
     AppMethodBeat.i(30280);
     Bundle localBundle = new Bundle();
@@ -276,34 +276,34 @@ public final class b
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "jsonToBundle", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "jsonToBundle", new Object[0]);
       AppMethodBeat.o(30280);
       return null;
     }
     return localBundle;
   }
   
-  private static q aKb(String paramString)
+  private static q aLx(String paramString)
   {
     AppMethodBeat.i(30282);
     try
     {
       q localq = new q();
       paramString = new JSONObject(paramString);
-      localq.EzI = paramString.getBoolean("topIsOpenFromSession");
-      localq.EzJ = paramString.getLong("topLocalId");
-      localq.EzK = paramString.getLong("topMsgId");
-      localq.ruk = paramString.getBoolean("isChatRoom");
-      localq.EzL = paramString.getString("topTitle");
-      localq.EzM = paramString.getString("topNoteXml");
-      localq.EzN = paramString.getInt("topLastPosition");
-      localq.EzO = paramString.getInt("topLastOffset");
+      localq.ESe = paramString.getBoolean("topIsOpenFromSession");
+      localq.ESf = paramString.getLong("topLocalId");
+      localq.ESg = paramString.getLong("topMsgId");
+      localq.rCw = paramString.getBoolean("isChatRoom");
+      localq.ESh = paramString.getString("topTitle");
+      localq.ESi = paramString.getString("topNoteXml");
+      localq.ESj = paramString.getInt("topLastPosition");
+      localq.ESk = paramString.getInt("topLastOffset");
       AppMethodBeat.o(30282);
       return localq;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "parseWNNoteKeepTopItem", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramString, "parseWNNoteKeepTopItem", new Object[0]);
       AppMethodBeat.o(30282);
     }
     return null;
@@ -317,39 +317,39 @@ public final class b
     {
       try
       {
-        localJSONObject.put("topIsOpenFromSession", paramq.EzI);
-        localJSONObject.put("topLocalId", paramq.EzJ);
-        localJSONObject.put("topMsgId", paramq.EzK);
-        localJSONObject.put("isChatRoom", paramq.ruk);
-        if (paramq.EzL != null) {
+        localJSONObject.put("topIsOpenFromSession", paramq.ESe);
+        localJSONObject.put("topLocalId", paramq.ESf);
+        localJSONObject.put("topMsgId", paramq.ESg);
+        localJSONObject.put("isChatRoom", paramq.rCw);
+        if (paramq.ESh != null) {
           continue;
         }
         str = "";
         localJSONObject.put("topTitle", str);
-        if (paramq.EzM != null) {
+        if (paramq.ESi != null) {
           continue;
         }
         str = "";
         localJSONObject.put("topNoteXml", str);
-        localJSONObject.put("topLastPosition", paramq.EzN);
-        localJSONObject.put("topLastOffset", paramq.EzO);
+        localJSONObject.put("topLastPosition", paramq.ESj);
+        localJSONObject.put("topLastOffset", paramq.ESk);
       }
       catch (Exception paramq)
       {
         String str;
-        ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramq, "topItemToJson", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramq, "topItemToJson", new Object[0]);
         continue;
       }
       paramq = localJSONObject.toString();
       AppMethodBeat.o(30281);
       return paramq;
-      str = paramq.EzL;
+      str = paramq.ESh;
       continue;
-      str = paramq.EzM;
+      str = paramq.ESi;
     }
   }
   
-  private static String ba(Bundle paramBundle)
+  private static String bb(Bundle paramBundle)
   {
     AppMethodBeat.i(30279);
     JSONObject localJSONObject = new JSONObject();
@@ -366,7 +366,7 @@ public final class b
     }
     catch (JSONException paramBundle)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramBundle, "bundleToJson", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Fav.NoteFloatBallHelper", paramBundle, "bundleToJson", new Object[0]);
       AppMethodBeat.o(30279);
       return null;
     }
@@ -374,20 +374,20 @@ public final class b
     return paramBundle;
   }
   
-  public static void bgJ()
+  public static void bhr()
   {
     AppMethodBeat.i(30273);
     if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(3, kjw);
+      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(3, kmM);
     }
     AppMethodBeat.o(30273);
   }
   
-  public static void bgK()
+  public static void bhs()
   {
     AppMethodBeat.i(30274);
     if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(3, kjw);
+      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(3, kmM);
     }
     AppMethodBeat.o(30274);
   }
@@ -396,39 +396,39 @@ public final class b
   {
     AppMethodBeat.i(30268);
     super.ac(paramInt, paramString);
-    bKG().nGc = 5;
-    bKG().nGb = 6;
-    bKG().hPO = "";
-    bKC();
+    bLD().nLC = 5;
+    bLD().nLB = 6;
+    bLD().hSG = "";
+    bLz();
     AppMethodBeat.o(30268);
   }
   
-  public final void bgD()
+  public final boolean bhh()
+  {
+    AppMethodBeat.i(30267);
+    boolean bool = this.nME.bhh();
+    AppMethodBeat.o(30267);
+    return bool;
+  }
+  
+  public final void bhl()
   {
     AppMethodBeat.i(30271);
-    super.bgD();
-    this.nHb.gg(false);
+    super.bhl();
+    this.nME.ge(false);
     AppMethodBeat.o(30271);
   }
   
-  public final void bgE()
+  public final void bhm()
   {
     AppMethodBeat.i(30270);
-    super.bgE();
+    super.bhm();
     AppMethodBeat.o(30270);
   }
   
-  public final boolean bgI()
+  public final boolean bhq()
   {
     return true;
-  }
-  
-  public final boolean bgz()
-  {
-    AppMethodBeat.i(30267);
-    boolean bool = this.nHb.bgz();
-    AppMethodBeat.o(30267);
-    return bool;
   }
   
   public final void onDestroy()

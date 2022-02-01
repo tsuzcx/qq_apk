@@ -4,66 +4,66 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/EditRenderScript;", "", "path", "", "startMs", "", "endMS", "playRate", "", "(Ljava/lang/String;JJF)V", "getEndMS", "()J", "setEndMS", "(J)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getPlayRate", "()F", "setPlayRate", "(F)V", "getStartMs", "setStartMs", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/EditRenderScript;", "", "path", "", "startMs", "", "endMS", "playRate", "", "(Ljava/lang/String;JJF)V", "getEndMS", "()J", "setEndMS", "(J)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getPlayRate", "()F", "setPlayRate", "(F)V", "getStartMs", "setStartMs", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-recordvideo_release"})
 public final class a
 {
-  public long dOX;
-  public float llC;
+  public long dQn;
+  public float lqb;
   public String path;
-  public long xPC;
+  public long yfv;
   
   public a(String paramString, long paramLong1, long paramLong2, float paramFloat)
   {
-    AppMethodBeat.i(200772);
+    AppMethodBeat.i(207030);
     this.path = paramString;
-    this.dOX = paramLong1;
-    this.xPC = paramLong2;
-    this.llC = paramFloat;
-    AppMethodBeat.o(200772);
+    this.dQn = paramLong1;
+    this.yfv = paramLong2;
+    this.lqb = paramFloat;
+    AppMethodBeat.o(207030);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(200775);
+    AppMethodBeat.i(207033);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.path, paramObject.path)) || (this.dOX != paramObject.dOX) || (this.xPC != paramObject.xPC) || (Float.compare(this.llC, paramObject.llC) != 0)) {}
+        if ((!p.i(this.path, paramObject.path)) || (this.dQn != paramObject.dQn) || (this.yfv != paramObject.yfv) || (Float.compare(this.lqb, paramObject.lqb) != 0)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(200775);
+      AppMethodBeat.o(207033);
       return true;
     }
-    AppMethodBeat.o(200775);
+    AppMethodBeat.o(207033);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(200774);
+    AppMethodBeat.i(207032);
     String str = this.path;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      long l = this.dOX;
+      long l = this.dQn;
       int j = (int)(l ^ l >>> 32);
-      l = this.xPC;
+      l = this.yfv;
       int k = (int)(l ^ l >>> 32);
-      int m = Float.floatToIntBits(this.llC);
-      AppMethodBeat.o(200774);
+      int m = Float.floatToIntBits(this.lqb);
+      AppMethodBeat.o(207032);
       return ((i * 31 + j) * 31 + k) * 31 + m;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(200773);
-    String str = "EditRenderScript(path=" + this.path + ", startMs=" + this.dOX + ", endMS=" + this.xPC + ", playRate=" + this.llC + ")";
-    AppMethodBeat.o(200773);
+    AppMethodBeat.i(207031);
+    String str = "EditRenderScript(path=" + this.path + ", startMs=" + this.dQn + ", endMS=" + this.yfv + ", playRate=" + this.lqb + ")";
+    AppMethodBeat.o(207031);
     return str;
   }
 }

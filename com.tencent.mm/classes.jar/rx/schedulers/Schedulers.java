@@ -8,32 +8,32 @@ import rx.internal.c.m;
 
 public final class Schedulers
 {
-  private static final AtomicReference<Schedulers> Obw;
-  private final rx.g Obt;
-  private final rx.g Obu;
-  private final rx.g Obv;
+  private static final AtomicReference<Schedulers> OyB;
+  private final rx.g OyA;
+  private final rx.g Oyy;
+  private final rx.g Oyz;
   
   static
   {
     AppMethodBeat.i(90101);
-    Obw = new AtomicReference();
+    OyB = new AtomicReference();
     AppMethodBeat.o(90101);
   }
   
   private Schedulers()
   {
     AppMethodBeat.i(90090);
-    rx.d.f.gzm().gzr();
-    this.Obt = rx.d.g.gzs();
-    this.Obu = rx.d.g.gzt();
-    this.Obv = rx.d.g.gzu();
+    rx.d.f.gDO().gDT();
+    this.Oyy = rx.d.g.gDU();
+    this.Oyz = rx.d.g.gDV();
+    this.OyA = rx.d.g.gDW();
     AppMethodBeat.o(90090);
   }
   
   public static rx.g computation()
   {
     AppMethodBeat.i(90092);
-    rx.g localg = rx.d.c.c(gzx().Obt);
+    rx.g localg = rx.d.c.c(gDZ().Oyy);
     AppMethodBeat.o(90092);
     return localg;
   }
@@ -46,40 +46,40 @@ public final class Schedulers
     return paramExecutor;
   }
   
-  private static Schedulers gzx()
+  private static Schedulers gDZ()
   {
     AppMethodBeat.i(90089);
     for (;;)
     {
-      Schedulers localSchedulers = (Schedulers)Obw.get();
+      Schedulers localSchedulers = (Schedulers)OyB.get();
       if (localSchedulers != null)
       {
         AppMethodBeat.o(90089);
         return localSchedulers;
       }
       localSchedulers = new Schedulers();
-      if (Obw.compareAndSet(null, localSchedulers))
+      if (OyB.compareAndSet(null, localSchedulers))
       {
         AppMethodBeat.o(90089);
         return localSchedulers;
       }
-      localSchedulers.gzz();
+      localSchedulers.gEb();
     }
   }
   
-  private void gzy()
+  private void gEa()
   {
     try
     {
       AppMethodBeat.i(90099);
-      if ((this.Obt instanceof j)) {
-        ((j)this.Obt).start();
+      if ((this.Oyy instanceof j)) {
+        ((j)this.Oyy).start();
       }
-      if ((this.Obu instanceof j)) {
-        ((j)this.Obu).start();
+      if ((this.Oyz instanceof j)) {
+        ((j)this.Oyz).start();
       }
-      if ((this.Obv instanceof j)) {
-        ((j)this.Obv).start();
+      if ((this.OyA instanceof j)) {
+        ((j)this.OyA).start();
       }
       AppMethodBeat.o(90099);
       return;
@@ -87,19 +87,19 @@ public final class Schedulers
     finally {}
   }
   
-  private void gzz()
+  private void gEb()
   {
     try
     {
       AppMethodBeat.i(90100);
-      if ((this.Obt instanceof j)) {
-        ((j)this.Obt).shutdown();
+      if ((this.Oyy instanceof j)) {
+        ((j)this.Oyy).shutdown();
       }
-      if ((this.Obu instanceof j)) {
-        ((j)this.Obu).shutdown();
+      if ((this.Oyz instanceof j)) {
+        ((j)this.Oyz).shutdown();
       }
-      if ((this.Obv instanceof j)) {
-        ((j)this.Obv).shutdown();
+      if ((this.OyA instanceof j)) {
+        ((j)this.OyA).shutdown();
       }
       AppMethodBeat.o(90100);
       return;
@@ -109,13 +109,13 @@ public final class Schedulers
   
   public static rx.g immediate()
   {
-    return rx.internal.c.f.NZr;
+    return rx.internal.c.f.Oww;
   }
   
   public static rx.g io()
   {
     AppMethodBeat.i(90093);
-    rx.g localg = rx.d.c.d(gzx().Obu);
+    rx.g localg = rx.d.c.d(gDZ().Oyz);
     AppMethodBeat.o(90093);
     return localg;
   }
@@ -123,7 +123,7 @@ public final class Schedulers
   public static rx.g newThread()
   {
     AppMethodBeat.i(90091);
-    rx.g localg = rx.d.c.e(gzx().Obv);
+    rx.g localg = rx.d.c.e(gDZ().OyA);
     AppMethodBeat.o(90091);
     return localg;
   }
@@ -131,9 +131,9 @@ public final class Schedulers
   public static void reset()
   {
     AppMethodBeat.i(90096);
-    Schedulers localSchedulers = (Schedulers)Obw.getAndSet(null);
+    Schedulers localSchedulers = (Schedulers)OyB.getAndSet(null);
     if (localSchedulers != null) {
-      localSchedulers.gzz();
+      localSchedulers.gEb();
     }
     AppMethodBeat.o(90096);
   }
@@ -141,13 +141,13 @@ public final class Schedulers
   public static void shutdown()
   {
     AppMethodBeat.i(90098);
-    Schedulers localSchedulers = gzx();
-    localSchedulers.gzz();
+    Schedulers localSchedulers = gDZ();
+    localSchedulers.gEb();
     try
     {
-      rx.internal.c.d.NZm.shutdown();
-      rx.internal.util.f.Oav.shutdown();
-      rx.internal.util.f.Oaw.shutdown();
+      rx.internal.c.d.Owr.shutdown();
+      rx.internal.util.f.OxA.shutdown();
+      rx.internal.util.f.OxB.shutdown();
       return;
     }
     finally
@@ -159,13 +159,13 @@ public final class Schedulers
   public static void start()
   {
     AppMethodBeat.i(90097);
-    Schedulers localSchedulers = gzx();
-    localSchedulers.gzy();
+    Schedulers localSchedulers = gDZ();
+    localSchedulers.gEa();
     try
     {
-      rx.internal.c.d.NZm.start();
-      rx.internal.util.f.Oav.start();
-      rx.internal.util.f.Oaw.start();
+      rx.internal.c.d.Owr.start();
+      rx.internal.util.f.OxA.start();
+      rx.internal.util.f.OxB.start();
       return;
     }
     finally
@@ -184,12 +184,12 @@ public final class Schedulers
   
   public static rx.g trampoline()
   {
-    return m.NZW;
+    return m.Oxb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.schedulers.Schedulers
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,19 @@ final class e$5
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(25653);
-    paramView = this.uPW.uPN;
-    if (paramView.uSO == null) {
-      paramView.uSO = m.dep();
+    paramView = this.vbI.vbz;
+    if (paramView.veB == null) {
+      paramView.veB = m.dhh();
     }
-    paramView = this.uPW.uPN.IL(paramInt - ((ListView)paramAdapterView).getHeaderViewsCount());
-    e locale = this.uPW;
+    paramView = this.vbI.vbz.Jj(paramInt - ((ListView)paramAdapterView).getHeaderViewsCount());
+    e locale = this.vbI;
     int i = ((ListView)paramAdapterView).getHeaderViewsCount();
     if (paramView != null)
     {
-      paramAdapterView = new l(locale.uPP);
-      paramAdapterView.KJy = new e.8(locale);
-      paramAdapterView.KJz = new e.9(locale, paramView, paramInt - i);
-      paramAdapterView.fKy();
+      paramAdapterView = new l(locale.vbB);
+      paramAdapterView.LfS = new e.8(locale);
+      paramAdapterView.LfT = new e.9(locale, paramView, paramInt - i);
+      paramAdapterView.fOP();
     }
     AppMethodBeat.o(25653);
     return true;

@@ -10,13 +10,13 @@ public abstract interface c
   
   public abstract void clear();
   
-  public abstract void dni();
+  public abstract void dqg();
   
-  public abstract com.tencent.mm.audio.b.c.a dnj();
+  public abstract com.tencent.mm.audio.b.c.a dqh();
   
-  public abstract void ob(int paramInt);
+  public abstract void oe(int paramInt);
   
-  public abstract void os(boolean paramBoolean);
+  public abstract void ox(boolean paramBoolean);
   
   public abstract void pause();
   
@@ -24,12 +24,12 @@ public abstract interface c
   
   public static abstract interface a
   {
-    public abstract void ayf();
+    public abstract void ayu();
   }
   
   public static abstract interface b
   {
-    public abstract void aye();
+    public abstract void ayt();
   }
 }
 

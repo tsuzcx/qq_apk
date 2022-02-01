@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class h$a$d$1
   implements f.c
 {
-  public static final 1 gOK;
+  public static final 1 gRs;
   
   static
   {
-    AppMethodBeat.i(212085);
-    gOK = new 1();
-    AppMethodBeat.o(212085);
+    AppMethodBeat.i(215704);
+    gRs = new 1();
+    AppMethodBeat.o(215704);
   }
   
   public final void d(boolean paramBoolean, String paramString) {}

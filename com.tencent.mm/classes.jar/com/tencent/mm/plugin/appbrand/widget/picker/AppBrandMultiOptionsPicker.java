@@ -11,25 +11,25 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public final class AppBrandMultiOptionsPicker
   extends FrameLayout
   implements com.tencent.mm.plugin.appbrand.jsapi.p.c<int[]>
 {
   private boolean asc;
-  private final Drawable nkB;
-  public LinearLayout nkC;
-  private boolean nkD;
-  private c nkE;
-  public final YANumberPicker.b nkF;
+  private final Drawable npJ;
+  public LinearLayout npK;
+  private boolean npL;
+  private c npM;
+  public final YANumberPicker.b npN;
   
   @Keep
   public AppBrandMultiOptionsPicker(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(137995);
-    this.nkF = new YANumberPicker.b()
+    this.npN = new YANumberPicker.b()
     {
       public final void a(YANumberPicker paramAnonymousYANumberPicker, int paramAnonymousInt)
       {
@@ -37,30 +37,30 @@ public final class AppBrandMultiOptionsPicker
         if (AppBrandMultiOptionsPicker.a(AppBrandMultiOptionsPicker.this) != null)
         {
           int i = ((Integer)paramAnonymousYANumberPicker.getTag(2131296775)).intValue();
-          AppBrandMultiOptionsPicker.a(AppBrandMultiOptionsPicker.this).cO(new int[] { i, paramAnonymousInt });
+          AppBrandMultiOptionsPicker.a(AppBrandMultiOptionsPicker.this).cP(new int[] { i, paramAnonymousInt });
         }
         AppMethodBeat.o(137993);
       }
     };
-    this.nkB = paramContext.getResources().getDrawable(2131230991);
-    this.nkC = new LinearLayout(paramContext);
-    this.nkC.setPadding(a.fromDPToPix(paramContext, 2), 0, a.fromDPToPix(paramContext, 2), 0);
-    this.nkC.setOrientation(0);
-    addView(this.nkC, new FrameLayout.LayoutParams(-1, -1, 17));
-    this.nkC.setDividerDrawable(this.nkB);
-    this.nkC.setShowDividers(2);
+    this.npJ = paramContext.getResources().getDrawable(2131230991);
+    this.npK = new LinearLayout(paramContext);
+    this.npK.setPadding(a.fromDPToPix(paramContext, 2), 0, a.fromDPToPix(paramContext, 2), 0);
+    this.npK.setOrientation(0);
+    addView(this.npK, new FrameLayout.LayoutParams(-1, -1, 17));
+    this.npK.setDividerDrawable(this.npJ);
+    this.npK.setShowDividers(2);
     AppMethodBeat.o(137995);
   }
   
   public final int getPickersCount()
   {
     AppMethodBeat.i(138001);
-    if (this.nkC == null)
+    if (this.npK == null)
     {
       AppMethodBeat.o(138001);
       return 0;
     }
-    int i = this.nkC.getChildCount();
+    int i = this.npK.getChildCount();
     AppMethodBeat.o(138001);
     return i;
   }
@@ -72,12 +72,12 @@ public final class AppBrandMultiOptionsPicker
   
   public final void onAttach(c paramc)
   {
-    this.nkE = paramc;
+    this.npM = paramc;
   }
   
   public final void onDetach(c paramc)
   {
-    this.nkE = null;
+    this.npM = null;
   }
   
   public final void onHide(c paramc)
@@ -87,9 +87,9 @@ public final class AppBrandMultiOptionsPicker
     int i = 0;
     while (i < j)
     {
-      paramc = wG(i);
+      paramc = wL(i);
       if (paramc != null) {
-        paramc.bFv();
+        paramc.bGq();
       }
       i += 1;
     }
@@ -111,7 +111,7 @@ public final class AppBrandMultiOptionsPicker
   
   public final void onShow(c paramc)
   {
-    this.nkE = paramc;
+    this.npM = paramc;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -132,7 +132,7 @@ public final class AppBrandMultiOptionsPicker
     AppMethodBeat.i(137997);
     if (this.asc)
     {
-      this.nkD = true;
+      this.npL = true;
       AppMethodBeat.o(137997);
       return;
     }
@@ -153,14 +153,14 @@ public final class AppBrandMultiOptionsPicker
         AppMethodBeat.o(137996);
         return;
       }
-      if (this.nkD) {
+      if (this.npL) {
         requestLayout();
       }
     }
     AppMethodBeat.o(137996);
   }
   
-  public final AppBrandOptionsPickerV2 wG(int paramInt)
+  public final AppBrandOptionsPickerV2 wL(int paramInt)
   {
     AppMethodBeat.i(138000);
     if (paramInt < 0)
@@ -168,43 +168,43 @@ public final class AppBrandMultiOptionsPicker
       AppMethodBeat.o(138000);
       return null;
     }
-    if (this.nkC == null)
+    if (this.npK == null)
     {
       AppMethodBeat.o(138000);
       return null;
     }
-    AppBrandOptionsPickerV2 localAppBrandOptionsPickerV2 = (AppBrandOptionsPickerV2)this.nkC.getChildAt(paramInt);
+    AppBrandOptionsPickerV2 localAppBrandOptionsPickerV2 = (AppBrandOptionsPickerV2)this.npK.getChildAt(paramInt);
     AppMethodBeat.o(138000);
     return localAppBrandOptionsPickerV2;
   }
   
-  public final void wH(int paramInt)
+  public final void wM(int paramInt)
   {
-    AppMethodBeat.i(195051);
+    AppMethodBeat.i(197282);
     if (paramInt <= 0)
     {
-      AppMethodBeat.o(195051);
+      AppMethodBeat.o(197282);
       return;
     }
     int i = getPickersCount() - 1;
     while (paramInt > 0)
     {
-      this.nkC.removeViewAt(i);
+      this.npK.removeViewAt(i);
       i -= 1;
       paramInt -= 1;
     }
-    AppMethodBeat.o(195051);
+    AppMethodBeat.o(197282);
   }
   
   public static final class a
   {
-    public final String[] nkH;
+    public final String[] npP;
     public final int selected;
     
     public a(String[] paramArrayOfString, int paramInt)
     {
       AppMethodBeat.i(137994);
-      this.nkH = paramArrayOfString;
+      this.npP = paramArrayOfString;
       this.selected = Math.max(0, Math.min(paramInt, paramArrayOfString.length - 1));
       AppMethodBeat.o(137994);
     }

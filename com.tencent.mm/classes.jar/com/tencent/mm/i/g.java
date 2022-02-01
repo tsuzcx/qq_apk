@@ -9,30 +9,30 @@ public class g
   public int certificateVerifyPolicy = 2;
   public int connectionCount = 1;
   public String customHeader = "";
-  public boolean dNR;
-  public int ePC = -1;
+  public boolean dPh;
+  public int eRn = -1;
   public String emojiExtinfo = "";
   public int expectImageFormat = 1;
-  public int fJA = 1;
-  public g.b fJB;
-  public String fJi = "task_default";
-  public a fJj;
-  public int fJk = -1;
-  public int fJl = -1;
-  public String fJm = "";
-  public int fJn = 0;
-  public int fJo = 0;
-  public String[] fJp = null;
-  public boolean fJq = true;
-  public boolean fJr = false;
-  public boolean fJs = false;
-  public String fJt = "";
-  public Map<String, String> fJu = null;
-  public boolean fJv = false;
-  public boolean fJw = false;
-  public boolean fJx = false;
-  public boolean fJy = false;
-  public int fJz;
+  public boolean fLA = false;
+  public boolean fLB = false;
+  public int fLC;
+  public int fLD = 1;
+  public b fLE;
+  public String fLl = "task_default";
+  public a fLm;
+  public int fLn = -1;
+  public int fLo = -1;
+  public String fLp = "";
+  public int fLq = 0;
+  public int fLr = 0;
+  public String[] fLs = null;
+  public boolean fLt = true;
+  public boolean fLu = false;
+  public boolean fLv = false;
+  public String fLw = "";
+  public Map<String, String> fLx = null;
+  public boolean fLy = false;
+  public boolean fLz = false;
   public int field_advideoflag = 0;
   public String field_aesKey = "";
   public int field_appType = 0;
@@ -85,39 +85,39 @@ public class g
   public int snsVersion = 0;
   public byte[] thumbnailBuffer;
   
-  public final boolean XR()
+  public final boolean Yb()
   {
-    return this.fJA == 2;
+    return this.fLD == 2;
   }
   
-  public final boolean XS()
+  public final boolean Yc()
   {
-    return this.fJA == 3;
+    return this.fLD == 3;
   }
   
-  public final boolean XT()
+  public final boolean Yd()
   {
-    return this.fJA == 1;
+    return this.fLD == 1;
   }
   
-  public final boolean XU()
+  public final boolean Ye()
   {
-    return this.fJA == 4;
+    return this.fLD == 4;
   }
   
-  public final boolean XV()
+  public final boolean Yf()
   {
-    return this.fJA == 6;
+    return this.fLD == 6;
   }
   
-  public final boolean XW()
+  public final boolean Yg()
   {
-    return this.fJA == 8;
+    return this.fLD == 8;
   }
   
-  public final boolean XX()
+  public final boolean Yh()
   {
-    return this.fJA == 7;
+    return this.fLD == 7;
   }
   
   public static abstract interface a
@@ -127,6 +127,11 @@ public class g
     public abstract void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream);
     
     public abstract byte[] f(String paramString, byte[] paramArrayOfByte);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void b(String paramString, d paramd);
   }
 }
 

@@ -15,16 +15,16 @@ import com.tencent.mm.game.report.f;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class GameBlockView
   extends LinearLayout
 {
   LayoutInflater mInflater;
-  LinearLayout rEk;
-  a ulA;
-  LinearLayout.LayoutParams uly;
-  k ulz;
+  LinearLayout rMv;
+  LinearLayout.LayoutParams uwV;
+  k uwW;
+  a uwX;
   
   public GameBlockView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,25 +37,25 @@ public class GameBlockView
     super.onFinishInflate();
     setOrientation(1);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.uly = new LinearLayout.LayoutParams(-1, -2);
-    this.rEk = this;
-    this.ulz = new k();
-    ad.i("MicroMsg.GameBlockView", "initView finished");
+    this.uwV = new LinearLayout.LayoutParams(-1, -2);
+    this.rMv = this;
+    this.uwW = new k();
+    ae.i("MicroMsg.GameBlockView", "initView finished");
     AppMethodBeat.o(41910);
   }
   
   static final class a
   {
-    public ViewGroup ulD;
-    public TextView ulE;
-    public GameDownloadView ulF;
-    public ImageView ulo;
-    public TextView ulp;
+    public ImageView uwL;
+    public TextView uwM;
+    public ViewGroup uxa;
+    public TextView uxb;
+    public GameDownloadView uxc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBlockView
  * JD-Core Version:    0.7.0.1
  */

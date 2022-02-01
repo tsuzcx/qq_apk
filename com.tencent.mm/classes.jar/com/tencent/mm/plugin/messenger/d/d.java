@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.messenger.e.c;
 
 public final class d
 {
-  public a vKH;
-  public c vKI;
-  public b vKJ;
+  public a vWL;
+  public c vWM;
+  public b vWN;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.d.d
  * JD-Core Version:    0.7.0.1
  */

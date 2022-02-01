@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static void jZ(Context paramContext)
+  public static void kg(Context paramContext)
   {
     AppMethodBeat.i(33836);
     new c.a(paramContext, LayoutInflater.from(paramContext).inflate(2131495800, null)).show();

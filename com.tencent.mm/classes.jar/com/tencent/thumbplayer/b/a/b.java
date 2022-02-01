@@ -5,11 +5,11 @@ import java.util.List;
 public abstract interface b
   extends a
 {
-  public abstract List<d> fWA();
+  public abstract List<d> gaY();
   
-  public abstract List<d> fWB();
+  public abstract List<d> gaZ();
   
-  public abstract List<d> fWz();
+  public abstract List<d> gba();
 }
 
 

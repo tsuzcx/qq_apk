@@ -6,30 +6,30 @@ import oicq.wlogin_sdk.tools.util;
 public final class an
   extends a
 {
-  int NRO = 22;
-  int NRP = 1;
-  int NRQ = 1536;
+  int OoU = 22;
+  int OoV = 1;
+  int OoW = 1536;
   
   public an()
   {
-    this.NQs = 24;
+    this.Ony = 24;
   }
   
-  public final byte[] aZ(int paramInt, long paramLong)
+  public final byte[] ba(int paramInt, long paramLong)
   {
     AppMethodBeat.i(88143);
-    byte[] arrayOfByte = new byte[this.NRO];
-    util.W(arrayOfByte, 0, this.NRP);
-    util.X(arrayOfByte, 2, this.NRQ);
-    util.X(arrayOfByte, 6, 522017402);
-    util.X(arrayOfByte, 10, paramInt);
-    util.X(arrayOfByte, 14, (int)paramLong);
-    util.W(arrayOfByte, 18, 0);
-    util.W(arrayOfByte, 20, 0);
-    super.alW(this.NQs);
-    super.af(arrayOfByte, this.NRO);
-    super.gxV();
-    arrayOfByte = super.gxR();
+    byte[] arrayOfByte = new byte[this.OoU];
+    util.X(arrayOfByte, 0, this.OoV);
+    util.Y(arrayOfByte, 2, this.OoW);
+    util.Y(arrayOfByte, 6, 522017402);
+    util.Y(arrayOfByte, 10, paramInt);
+    util.Y(arrayOfByte, 14, (int)paramLong);
+    util.X(arrayOfByte, 18, 0);
+    util.X(arrayOfByte, 20, 0);
+    super.amG(this.Ony);
+    super.aj(arrayOfByte, this.OoU);
+    super.gCx();
+    arrayOfByte = super.gCt();
     AppMethodBeat.o(88143);
     return arrayOfByte;
   }

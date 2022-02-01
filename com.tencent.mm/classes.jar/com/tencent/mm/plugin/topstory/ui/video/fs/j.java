@@ -15,23 +15,23 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void eqg()
+  public final void etN()
   {
     AppMethodBeat.i(126398);
-    if (this.BwT == null)
+    if (this.BOr == null)
     {
-      this.BwT = new k(this.Bun.dhO(), this.Bun, this);
-      this.BwU.removeAllViews();
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.Bun.epC().x, this.Bun.epC().y);
-      this.BwU.addView(this.BwT, localLayoutParams);
+      this.BOr = new k(this.BLL.dkN(), this.BLL, this);
+      this.BOs.removeAllViews();
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.BLL.etj().x, this.BLL.etj().y);
+      this.BOs.addView(this.BOr, localLayoutParams);
     }
-    this.BwT.a(this.Brz, epv());
+    this.BOr.a(this.BIY, etc());
     AppMethodBeat.o(126398);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.j
  * JD-Core Version:    0.7.0.1
  */

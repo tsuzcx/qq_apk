@@ -1,63 +1,113 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.luggage.game.page.e;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.modelappbrand.a.b.d;
+import com.tencent.mm.modelappbrand.a.b.l;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
+import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageContainerWCUtils;", "", "()V", "resetWindowAndroidToNil", "", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageContainerWC;", "plugin-appbrand-integration_release"})
 public final class w
 {
-  public static final w mbF;
+  private static final b.l mfZ;
+  private static final com.tencent.mm.plugin.appbrand.y.h<AppBrandRuntime, String> mga;
   
   static
   {
-    AppMethodBeat.i(189550);
-    mbF = new w();
-    AppMethodBeat.o(189550);
+    AppMethodBeat.i(135112);
+    mfZ = new b.d();
+    mga = new com.tencent.mm.plugin.appbrand.y.h();
+    AppMethodBeat.o(135112);
   }
   
-  public static final void c(v paramv)
+  public static void ae(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(189549);
-    p.h(paramv, "$this$resetWindowAndroidToNil");
-    Iterator localIterator = paramv.buf();
-    p.g(localIterator, "this.stackIterator()");
-    while (localIterator.hasNext())
+    AppMethodBeat.i(207842);
+    paramAppBrandRuntime = mga.cG(paramAppBrandRuntime);
+    if (paramAppBrandRuntime != null)
     {
-      Object localObject = (r)localIterator.next();
-      if (((localObject instanceof e)) || ((localObject instanceof ai)))
+      paramAppBrandRuntime = paramAppBrandRuntime.iterator();
+      while (paramAppBrandRuntime.hasNext())
       {
-        localObject = ((r)localObject).getCurrentPageView();
-        p.g(localObject, "it.currentPageView");
-        ((aa)localObject).a(null);
+        String str = (String)paramAppBrandRuntime.next();
+        mfZ.remove(str);
       }
-      else if ((localObject instanceof k))
+    }
+    AppMethodBeat.o(207842);
+  }
+  
+  public static Bitmap k(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(135111);
+    if (paramAppBrandRuntime == null)
+    {
+      AppMethodBeat.o(135111);
+      return null;
+    }
+    Object localObject = n.MU(paramString);
+    if (bu.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(135111);
+      return null;
+    }
+    paramString = paramAppBrandRuntime.hashCode() + 35 + (String)localObject;
+    mga.j(paramAppBrandRuntime, paramString);
+    Bitmap localBitmap = mfZ.wA(paramString);
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(135111);
+      return localBitmap;
+    }
+    paramAppBrandRuntime = bg.f(paramAppBrandRuntime, (String)localObject);
+    if (paramAppBrandRuntime != null) {}
+    try
+    {
+      int i = paramAppBrandRuntime.available();
+      if (i <= 0) {
+        return null;
+      }
+      localObject = com.tencent.mm.sdk.platformtools.h.decodeStream(paramAppBrandRuntime);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        localObject = ((k)localObject).btY();
-        p.g(localObject, "it.pagesIterator()");
-        while (((Iterator)localObject).hasNext())
-        {
-          aa localaa = (aa)((Iterator)localObject).next();
-          p.g(localaa, "p");
-          localaa.a(null);
+        mfZ.put(paramString, (Bitmap)localObject);
+        return localObject;
+      }
+      if (paramAppBrandRuntime != null) {
+        bu.d(paramAppBrandRuntime);
+      }
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.AppBrandPageIconCache", "try decode icon e = %s", new Object[] { paramString });
+        if (paramAppBrandRuntime != null) {
+          bu.d(paramAppBrandRuntime);
         }
       }
     }
-    paramv = paramv.getPreloadedPageView();
-    if (paramv != null)
+    finally
     {
-      paramv.a(null);
-      AppMethodBeat.o(189549);
-      return;
+      if (paramAppBrandRuntime == null) {
+        break label227;
+      }
+      bu.d(paramAppBrandRuntime);
+      AppMethodBeat.o(135111);
     }
-    AppMethodBeat.o(189549);
+    AppMethodBeat.o(135111);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.w
  * JD-Core Version:    0.7.0.1
  */

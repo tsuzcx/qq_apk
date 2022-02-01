@@ -9,12 +9,12 @@ import java.util.Locale;
 final class WalletBankCardSelectUI$a
   implements Comparator<d>
 {
-  private Collator Dcl;
+  private Collator DtP;
   
   private WalletBankCardSelectUI$a()
   {
     AppMethodBeat.i(70697);
-    this.Dcl = Collator.getInstance(Locale.getDefault());
+    this.DtP = Collator.getInstance(Locale.getDefault());
     AppMethodBeat.o(70697);
   }
 }

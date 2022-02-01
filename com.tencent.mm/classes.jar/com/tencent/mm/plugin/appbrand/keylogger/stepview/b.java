@@ -12,69 +12,69 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends LinearLayout
 {
-  private ViewGroup gEG;
-  private ImageView kAX;
-  private LinearLayout lDt;
-  private TextView lDu;
-  private ViewGroup lDv;
+  private ViewGroup gHn;
+  private ImageView kEm;
+  private LinearLayout lHS;
+  private TextView lHT;
+  private ViewGroup lHU;
   private Context mContext;
   
   public b(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(187718);
+    AppMethodBeat.i(201285);
     LayoutInflater.from(paramContext).inflate(2131496161, this);
     this.mContext = paramContext;
-    this.lDt = ((LinearLayout)findViewById(2131298736));
-    paramContext = this.lDt;
+    this.lHS = ((LinearLayout)findViewById(2131298736));
+    paramContext = this.lHS;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
       paramContext.setOrientation(i);
-      this.lDu = ((TextView)findViewById(2131298996));
-      this.kAX = ((ImageView)findViewById(2131300874));
-      this.gEG = ((ViewGroup)findViewById(2131304239));
-      this.lDv = ((ViewGroup)findViewById(2131307197));
-      AppMethodBeat.o(187718);
+      this.lHT = ((TextView)findViewById(2131298996));
+      this.kEm = ((ImageView)findViewById(2131300874));
+      this.gHn = ((ViewGroup)findViewById(2131304239));
+      this.lHU = ((ViewGroup)findViewById(2131307197));
+      AppMethodBeat.o(201285);
       return;
     }
   }
   
   public final void addView(View paramView)
   {
-    AppMethodBeat.i(187719);
-    this.lDt.addView(paramView);
-    AppMethodBeat.o(187719);
+    AppMethodBeat.i(201286);
+    this.lHS.addView(paramView);
+    AppMethodBeat.o(201286);
   }
   
   public final void setHasBorder(boolean paramBoolean)
   {
-    AppMethodBeat.i(187720);
+    AppMethodBeat.i(201287);
     if (paramBoolean)
     {
-      this.gEG.setBackground(this.mContext.getDrawable(2131234844));
-      AppMethodBeat.o(187720);
+      this.gHn.setBackground(this.mContext.getDrawable(2131234844));
+      AppMethodBeat.o(201287);
       return;
     }
-    this.gEG.setBackground(null);
-    AppMethodBeat.o(187720);
+    this.gHn.setBackground(null);
+    AppMethodBeat.o(201287);
   }
   
   public final void setStep(c paramc)
   {
-    AppMethodBeat.i(187721);
+    AppMethodBeat.i(201288);
     if (paramc == null)
     {
-      this.lDu.setText(null);
-      this.kAX.setImageDrawable(null);
-      this.lDv.setVisibility(8);
-      AppMethodBeat.o(187721);
+      this.lHT.setText(null);
+      this.kEm.setImageDrawable(null);
+      this.lHU.setVisibility(8);
+      AppMethodBeat.o(201288);
       return;
     }
-    this.lDu.setText(paramc.lDw);
-    this.kAX.setImageResource(a.tZ(paramc.mState));
-    this.lDv.setVisibility(0);
-    AppMethodBeat.o(187721);
+    this.lHT.setText(paramc.lHV);
+    this.kEm.setImageResource(a.uf(paramc.mState));
+    this.lHU.setVisibility(0);
+    AppMethodBeat.o(201288);
   }
 }
 

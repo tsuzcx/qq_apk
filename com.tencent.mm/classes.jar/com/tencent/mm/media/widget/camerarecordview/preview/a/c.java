@@ -3,14 +3,14 @@ package com.tencent.mm.media.widget.camerarecordview.preview.a;
 import android.graphics.SurfaceTexture;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.camerarecordview.preview.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.a.b;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/GPUPreviewController;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;)V", "TAG", "", "setRender", "", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/GPUPreviewController;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;)V", "TAG", "", "setRender", "", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "plugin-mediaeditor_release"})
 public final class c
   extends a
 {
@@ -29,12 +29,12 @@ public final class c
     AppMethodBeat.i(94365);
     p.h(parama, "renderer");
     super.b(parama);
-    parama.hnm = ((b)new a(this, parama));
-    ad.i(this.TAG, "setPreviewRenderer: " + parama.hashCode());
+    parama.hqa = ((b)new a(this, parama));
+    ae.i(this.TAG, "setPreviewRenderer: " + parama.hashCode());
     AppMethodBeat.o(94365);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "invoke"})
   static final class a
     extends q
     implements b<SurfaceTexture, z>

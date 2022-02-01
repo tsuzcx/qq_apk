@@ -43,14 +43,15 @@ import com.tencent.mm.plugin.appbrand.ui.AppBrandUI1;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI2;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI3;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI4;
-import com.tencent.mm.plugin.appbrand.ui.aa;
+import com.tencent.mm.plugin.appbrand.ui.ab;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -67,11 +68,11 @@ import junit.framework.Assert;
 
 public class f
 {
-  private static final LinkedList<i> myn;
-  private static final LinkedList<i> myo;
-  public static final i myp;
-  private static final ConcurrentHashMap<String, String> myq;
-  private static final ConcurrentSkipListSet<AppBrandRemoteTaskController> myr;
+  private static final LinkedList<i> mDl;
+  private static final LinkedList<i> mDm;
+  public static final i mDn;
+  private static final ConcurrentHashMap<String, String> mDo;
+  private static final ConcurrentSkipListSet<AppBrandRemoteTaskController> mDp;
   
   static
   {
@@ -80,52 +81,52 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      myq = new ConcurrentHashMap();
-      myr = new ConcurrentSkipListSet(new Comparator() {});
+      mDo = new ConcurrentHashMap();
+      mDp = new ConcurrentSkipListSet(new Comparator() {});
       LinkedList localLinkedList = new LinkedList();
-      myn = localLinkedList;
+      mDl = localLinkedList;
       localLinkedList.add(new i(AppBrandUI.class, AppBrandTaskPreloadReceiver.class, AppBrandKeepAliveService.class, AppBrandForegroundNotificationService.class, AppBrandProcessTriggerService0.class, AppBrandPreLoadingUI.class));
-      myn.add(new i(AppBrandUI1.class, AppBrandTaskPreloadReceiver1.class, AppBrandKeepAliveService1.class, AppBrandForegroundNotificationService1.class, AppBrandProcessTriggerService1.class, AppBrandPreLoadingUI1.class));
-      myn.add(new i(AppBrandUI2.class, AppBrandTaskPreloadReceiver2.class, AppBrandKeepAliveService2.class, AppBrandForegroundNotificationService2.class, AppBrandProcessTriggerService2.class, AppBrandPreLoadingUI2.class));
-      myn.add(new i(AppBrandUI3.class, AppBrandTaskPreloadReceiver3.class, AppBrandKeepAliveService3.class, AppBrandForegroundNotificationService3.class, AppBrandProcessTriggerService3.class, AppBrandPreLoadingUI3.class));
-      myn.add(new i(AppBrandUI4.class, AppBrandTaskPreloadReceiver4.class, AppBrandKeepAliveService4.class, AppBrandForegroundNotificationService4.class, AppBrandProcessTriggerService4.class, AppBrandPreLoadingUI4.class));
-      myp = new b();
+      mDl.add(new i(AppBrandUI1.class, AppBrandTaskPreloadReceiver1.class, AppBrandKeepAliveService1.class, AppBrandForegroundNotificationService1.class, AppBrandProcessTriggerService1.class, AppBrandPreLoadingUI1.class));
+      mDl.add(new i(AppBrandUI2.class, AppBrandTaskPreloadReceiver2.class, AppBrandKeepAliveService2.class, AppBrandForegroundNotificationService2.class, AppBrandProcessTriggerService2.class, AppBrandPreLoadingUI2.class));
+      mDl.add(new i(AppBrandUI3.class, AppBrandTaskPreloadReceiver3.class, AppBrandKeepAliveService3.class, AppBrandForegroundNotificationService3.class, AppBrandProcessTriggerService3.class, AppBrandPreLoadingUI3.class));
+      mDl.add(new i(AppBrandUI4.class, AppBrandTaskPreloadReceiver4.class, AppBrandKeepAliveService4.class, AppBrandForegroundNotificationService4.class, AppBrandProcessTriggerService4.class, AppBrandPreLoadingUI4.class));
+      mDn = new b();
       localLinkedList = new LinkedList();
-      myo = localLinkedList;
-      localLinkedList.addAll(myn);
-      myo.add(myp);
+      mDm = localLinkedList;
+      localLinkedList.addAll(mDl);
+      mDm.add(mDn);
       AppMethodBeat.o(48471);
       return;
     }
   }
   
-  public static void UA(String paramString)
+  public static void Vl(String paramString)
   {
     AppMethodBeat.i(48444);
-    Iterator localIterator = byG().iterator();
+    Iterator localIterator = bzA().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if ((locali != null) && (locali.UK(paramString) != null))
+      if ((locali != null) && (locali.Vv(paramString) != null))
       {
-        ad.i("MicroMsg.AppBrandTaskManager", "clearDuplicatedApp task:%s, appId:%s", new Object[] { locali.myw, paramString });
-        locali.UK(paramString).Ux(paramString);
+        ae.i("MicroMsg.AppBrandTaskManager", "clearDuplicatedApp task:%s, appId:%s", new Object[] { locali.mDu, paramString });
+        locali.Vv(paramString).Vi(paramString);
       }
     }
-    bX(paramString, -1);
+    cb(paramString, -1);
     AppMethodBeat.o(48444);
   }
   
-  public static Class UB(String paramString)
+  public static Class Vm(String paramString)
   {
     AppMethodBeat.i(48452);
-    Iterator localIterator = byG().iterator();
+    Iterator localIterator = bzA().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if (locali.myw.equals(paramString))
+      if (locali.mDu.equals(paramString))
       {
-        paramString = locali.myA;
+        paramString = locali.mDy;
         AppMethodBeat.o(48452);
         return paramString;
       }
@@ -134,16 +135,16 @@ public class f
     return null;
   }
   
-  public static Class UC(String paramString)
+  public static Class Vn(String paramString)
   {
     AppMethodBeat.i(48453);
-    Iterator localIterator = byG().iterator();
+    Iterator localIterator = bzA().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if (locali.myw.equals(paramString))
+      if (locali.mDu.equals(paramString))
       {
-        paramString = locali.myB;
+        paramString = locali.mDz;
         AppMethodBeat.o(48453);
         return paramString;
       }
@@ -152,14 +153,14 @@ public class f
     return null;
   }
   
-  private static i UD(String paramString)
+  private static i Vo(String paramString)
   {
     AppMethodBeat.i(48458);
-    Iterator localIterator = byG().iterator();
+    Iterator localIterator = bzA().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if (locali.myE.keySet().contains(paramString))
+      if (locali.mDD.keySet().contains(paramString))
       {
         AppMethodBeat.o(48458);
         return locali;
@@ -169,14 +170,14 @@ public class f
     return null;
   }
   
-  static i UE(String paramString)
+  static i Vp(String paramString)
   {
     AppMethodBeat.i(48459);
-    Iterator localIterator = byG().iterator();
+    Iterator localIterator = bzA().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if (locali.myw.equals(paramString))
+      if (locali.mDu.equals(paramString))
       {
         AppMethodBeat.o(48459);
         return locali;
@@ -187,18 +188,18 @@ public class f
     return null;
   }
   
-  public static boolean UF(String paramString)
+  public static boolean Vq(String paramString)
   {
-    AppMethodBeat.i(221311);
-    boolean bool = ca(paramString, -1);
-    AppMethodBeat.o(221311);
+    AppMethodBeat.i(224374);
+    boolean bool = ce(paramString, -1);
+    AppMethodBeat.o(224374);
     return bool;
   }
   
-  public static Pair<String, Integer> UG(String paramString)
+  public static Pair<String, Integer> Vr(String paramString)
   {
     AppMethodBeat.i(160619);
-    paramString = bZ(paramString, -1);
+    paramString = cd(paramString, -1);
     if (paramString == null)
     {
       AppMethodBeat.o(160619);
@@ -209,30 +210,30 @@ public class f
     return paramString;
   }
   
-  static void UH(String arg0)
+  static void Vs(String arg0)
   {
     AppMethodBeat.i(48468);
-    i locali = UD(???);
+    i locali = Vo(???);
     if (locali != null)
     {
-      locali.myE.remove(???);
-      locali.myF.remove(???);
-      if (locali.myE.isEmpty()) {
-        locali.myG = e.myi;
+      locali.mDD.remove(???);
+      locali.mDE.remove(???);
+      if (locali.mDD.isEmpty()) {
+        locali.mDF = e.mDg;
       }
-      if (locali.myE.keySet().isEmpty())
+      if (locali.mDD.keySet().isEmpty())
       {
-        synchronized (myo)
+        synchronized (mDm)
         {
-          myo.remove(locali);
-          myo.addFirst(locali);
+          mDm.remove(locali);
+          mDm.addFirst(locali);
         }
-        synchronized (myn)
+        synchronized (mDl)
         {
-          if (myn.contains(locali))
+          if (mDl.contains(locali))
           {
-            myn.remove(locali);
-            myn.addFirst(locali);
+            mDl.remove(locali);
+            mDl.addFirst(locali);
           }
           AppMethodBeat.o(48468);
           return;
@@ -252,7 +253,7 @@ public class f
     while (paramList.hasNext())
     {
       i locali = (i)paramList.next();
-      if (locali.myG == parame)
+      if (locali.mDF == parame)
       {
         AppMethodBeat.o(48454);
         return locali;
@@ -272,19 +273,19 @@ public class f
   static void a(e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(48449);
-    if ((!com.tencent.mm.plugin.appbrand.appusage.i.bbR()) || (com.tencent.mm.plugin.appbrand.task.preload.d.byR()) || (parame == e.myi))
+    if ((!com.tencent.mm.plugin.appbrand.appusage.i.bcv()) || (com.tencent.mm.plugin.appbrand.task.preload.d.bzM()) || (parame == e.mDg))
     {
       AppMethodBeat.o(48449);
       return;
     }
     int i = com.tencent.mm.plugin.appbrand.task.preload.d.a(d.b.m(parame));
-    Object localObject = com.tencent.mm.plugin.appbrand.app.d.jDy;
+    Object localObject = com.tencent.mm.plugin.appbrand.app.d.jGw;
     boolean bool = paramBoolean;
-    if (com.tencent.mm.plugin.appbrand.app.d.Lv().getBoolean("is_pre_load_downgrade_env", false)) {
-      if (!com.tencent.mm.sdk.platformtools.i.DEBUG)
+    if (com.tencent.mm.plugin.appbrand.app.d.LD().getBoolean("is_pre_load_downgrade_env", false)) {
+      if (!com.tencent.mm.sdk.platformtools.j.DEBUG)
       {
         bool = paramBoolean;
-        if (!com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) {}
+        if (!com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) {}
       }
       else
       {
@@ -293,15 +294,15 @@ public class f
     }
     if ((!bool) && (i == -1))
     {
-      ad.w("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess %s, hit interval limit", new Object[] { parame });
-      if (parame == e.myg)
+      ae.w("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess %s, hit interval limit", new Object[] { parame });
+      if (parame == e.mDe)
       {
-        g.yhR.dD(915, 22);
+        g.yxI.dD(915, 22);
         AppMethodBeat.o(48449);
         return;
       }
-      if (parame == e.myh) {
-        g.yhR.dD(915, 23);
+      if (parame == e.mDf) {
+        g.yxI.dD(915, 23);
       }
       AppMethodBeat.o(48449);
       return;
@@ -309,19 +310,19 @@ public class f
     if (bool) {
       i = 2;
     }
-    switch (f.4.myu[parame.ordinal()])
+    switch (4.mDs[parame.ordinal()])
     {
     default: 
-      ad.i("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess serviceType = [%s], preload level = [%d]", new Object[] { parame, Integer.valueOf(i) });
+      ae.i("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess serviceType = [%s], preload level = [%d]", new Object[] { parame, Integer.valueOf(i) });
       localObject = i(parame);
       if (localObject != null)
       {
         ((i)localObject).l(parame);
-        ((i)localObject).vv(i);
+        ((i)localObject).vA(i);
         if (i != 2) {
-          g.yhR.dD(915, 30);
+          g.yxI.dD(915, 30);
         }
-        switch (f.4.myu[parame.ordinal()])
+        switch (4.mDs[parame.ordinal()])
         {
         }
       }
@@ -331,31 +332,31 @@ public class f
     {
       AppMethodBeat.o(48449);
       return;
-      g.yhR.dD(1144, 0);
+      g.yxI.dD(1144, 0);
       break;
-      g.yhR.dD(1144, 1);
+      g.yxI.dD(1144, 1);
       break;
-      g.yhR.dD(1144, 3);
+      g.yxI.dD(1144, 3);
       AppMethodBeat.o(48449);
       return;
-      g.yhR.dD(1144, 4);
+      g.yxI.dD(1144, 4);
     }
   }
   
   static void a(i parami)
   {
     AppMethodBeat.i(48469);
-    synchronized (myo)
+    synchronized (mDm)
     {
-      myo.remove(parami);
-      myo.addLast(parami);
+      mDm.remove(parami);
+      mDm.addLast(parami);
     }
-    synchronized (myn)
+    synchronized (mDl)
     {
-      if (myn.contains(parami))
+      if (mDl.contains(parami))
       {
-        myn.remove(parami);
-        myn.addLast(parami);
+        mDl.remove(parami);
+        mDl.addLast(parami);
       }
       AppMethodBeat.o(48469);
       return;
@@ -368,19 +369,19 @@ public class f
   public static void a(d.a parama)
   {
     AppMethodBeat.i(48448);
-    if (com.tencent.mm.plugin.appbrand.task.preload.d.byR())
+    if (com.tencent.mm.plugin.appbrand.task.preload.d.bzM())
     {
       AppMethodBeat.o(48448);
       return;
     }
-    if ((!d.a.b(parama)) && (com.tencent.mm.plugin.appbrand.task.preload.d.a(d.b.mzj) == -1)) {}
+    if ((!d.a.b(parama)) && (com.tencent.mm.plugin.appbrand.task.preload.d.a(d.b.mEk) == -1)) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.AppBrandTaskManager", "preloadPluginUIProcess, hitLimit[%b], scene[%s]", new Object[] { Boolean.valueOf(bool), parama.name() });
+      ae.i("MicroMsg.AppBrandTaskManager", "preloadPluginUIProcess, hitLimit[%b], scene[%s]", new Object[] { Boolean.valueOf(bool), parama.name() });
       if (!bool)
       {
-        g.yhR.dD(1144, 2);
-        myp.OE();
+        g.yxI.dD(1144, 2);
+        mDn.OC();
       }
       AppMethodBeat.o(48448);
       return;
@@ -395,44 +396,44 @@ public class f
       AppMethodBeat.o(48439);
       return;
     }
-    myq.remove(paramString);
+    mDo.remove(paramString);
     if (paramAppBrandRemoteTaskController != null) {
-      myr.remove(paramAppBrandRemoteTaskController);
+      mDp.remove(paramAppBrandRemoteTaskController);
     }
     AppMethodBeat.o(48439);
   }
   
   public static void a(String paramString, final e parame)
   {
-    AppMethodBeat.i(188783);
+    AppMethodBeat.i(223003);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(188783);
+      AppMethodBeat.o(223003);
       return;
     }
-    i locali = UE(paramString);
+    i locali = Vp(paramString);
     paramString = locali;
-    if (myp == locali) {
-      paramString = UE(AppBrandUI.class.getName());
+    if (mDn == locali) {
+      paramString = Vp(AppBrandUI.class.getName());
     }
     if (paramString == null)
     {
-      AppMethodBeat.o(188783);
+      AppMethodBeat.o(223003);
       return;
     }
-    aq.o(new Runnable()
+    ar.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(48435);
-        if ((this.mys.myG == e.myi) && (parame != e.myi) && (f.k(parame) < parame.myj)) {
-          this.mys.l(parame);
+        if ((this.mDq.mDF == e.mDg) && (parame != e.mDg) && (f.k(parame) < parame.mDh)) {
+          this.mDq.l(parame);
         }
-        this.mys.OE();
+        this.mDq.OC();
         AppMethodBeat.o(48435);
       }
     }, 500L);
-    AppMethodBeat.o(188783);
+    AppMethodBeat.o(223003);
   }
   
   public static void a(String paramString1, String paramString2, AppBrandRemoteTaskController paramAppBrandRemoteTaskController)
@@ -443,14 +444,84 @@ public class f
       AppMethodBeat.o(48438);
       return;
     }
-    myq.put(paramString1, paramString2);
+    mDo.put(paramString1, paramString2);
     if (paramAppBrandRemoteTaskController != null) {
-      myr.add(paramAppBrandRemoteTaskController);
+      mDp.add(paramAppBrandRemoteTaskController);
     }
     AppMethodBeat.o(48438);
   }
   
-  private static void bX(String paramString, int paramInt)
+  private static LinkedList<i> bzA()
+  {
+    AppMethodBeat.i(48466);
+    synchronized (mDm)
+    {
+      LinkedList localLinkedList2 = new LinkedList(mDm);
+      AppMethodBeat.o(48466);
+      return localLinkedList2;
+    }
+  }
+  
+  public static List<String> bzB()
+  {
+    AppMethodBeat.i(223006);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = mDm.iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (i)localIterator.next();
+      if ((localObject != null) && (((i)localObject).mDD.keySet() != null) && (((i)localObject).mDD.keySet().size() > 0)) {
+        localArrayList.addAll(((i)localObject).mDD.keySet());
+      }
+    }
+    localIterator = mDp.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (AppBrandRemoteTaskController)localIterator.next();
+      if ((localObject != null) && (((AppBrandRemoteTaskController)localObject).mAppId != null)) {
+        localArrayList.add(((AppBrandRemoteTaskController)localObject).mAppId);
+      }
+    }
+    AppMethodBeat.o(223006);
+    return localArrayList;
+  }
+  
+  static LinkedList<i> bzC()
+  {
+    AppMethodBeat.i(48467);
+    synchronized (mDm)
+    {
+      LinkedList localLinkedList2 = new LinkedList(mDm);
+      AppMethodBeat.o(48467);
+      return localLinkedList2;
+    }
+  }
+  
+  public static void bzy()
+  {
+    AppMethodBeat.i(48447);
+    a(d.a.mEa);
+    AppMethodBeat.o(48447);
+  }
+  
+  public static int[] bzz()
+  {
+    AppMethodBeat.i(48465);
+    Object localObject = bzA();
+    int[] arrayOfInt = new int[((LinkedList)localObject).size()];
+    localObject = ((LinkedList)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      arrayOfInt[i] = ((i)((Iterator)localObject).next()).mCE;
+      i += 1;
+    }
+    AppMethodBeat.o(48465);
+    return arrayOfInt;
+  }
+  
+  private static void cb(String paramString, int paramInt)
   {
     AppMethodBeat.i(48440);
     if (TextUtils.isEmpty(paramString))
@@ -458,14 +529,14 @@ public class f
       AppMethodBeat.o(48440);
       return;
     }
-    Object localObject = myr.iterator();
+    Object localObject = mDp.iterator();
     LinkedList localLinkedList = new LinkedList();
     while (((Iterator)localObject).hasNext())
     {
       AppBrandRemoteTaskController localAppBrandRemoteTaskController = (AppBrandRemoteTaskController)((Iterator)localObject).next();
       if ((paramString.equals(localAppBrandRemoteTaskController.mAppId)) && ((paramInt == localAppBrandRemoteTaskController.mDebugType) || (paramInt < 0)))
       {
-        localAppBrandRemoteTaskController.Ux(paramString);
+        localAppBrandRemoteTaskController.Vi(paramString);
         localLinkedList.add(localAppBrandRemoteTaskController);
       }
     }
@@ -473,12 +544,12 @@ public class f
     while (paramString.hasNext())
     {
       localObject = (AppBrandRemoteTaskController)paramString.next();
-      myr.remove(localObject);
+      mDp.remove(localObject);
     }
     AppMethodBeat.o(48440);
   }
   
-  public static void bY(String paramString, int paramInt)
+  public static void cc(String paramString, int paramInt)
   {
     AppMethodBeat.i(48442);
     if (TextUtils.isEmpty(paramString))
@@ -486,24 +557,24 @@ public class f
       AppMethodBeat.o(48442);
       return;
     }
-    i locali = UD(paramString);
+    i locali = Vo(paramString);
     if (locali == null)
     {
-      bX(paramString, paramInt);
+      cb(paramString, paramInt);
       AppMethodBeat.o(48442);
       return;
     }
-    if ((locali.UJ(paramString).intValue() == paramInt) && (locali.UK(paramString) != null)) {
-      locali.UK(paramString).Ux(paramString);
+    if ((locali.Vu(paramString).intValue() == paramInt) && (locali.Vv(paramString) != null)) {
+      locali.Vv(paramString).Vi(paramString);
     }
     AppMethodBeat.o(48442);
   }
   
-  private static AppBrandRemoteTaskController bZ(String paramString, final int paramInt)
+  private static AppBrandRemoteTaskController cd(String paramString, final int paramInt)
   {
     AppMethodBeat.i(48461);
     paramString = (AppBrandRemoteTaskController)new android.arch.a.c.a() {}.apply(null);
-    if ((paramString != null) && (paramString.byC()))
+    if ((paramString != null) && (paramString.bzw()))
     {
       AppMethodBeat.o(48461);
       return paramString;
@@ -512,55 +583,10 @@ public class f
     return null;
   }
   
-  public static void byE()
-  {
-    AppMethodBeat.i(48447);
-    a(d.a.myZ);
-    AppMethodBeat.o(48447);
-  }
-  
-  public static int[] byF()
-  {
-    AppMethodBeat.i(48465);
-    Object localObject = byG();
-    int[] arrayOfInt = new int[((LinkedList)localObject).size()];
-    localObject = ((LinkedList)localObject).iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
-    {
-      arrayOfInt[i] = ((i)((Iterator)localObject).next()).mxH;
-      i += 1;
-    }
-    AppMethodBeat.o(48465);
-    return arrayOfInt;
-  }
-  
-  private static LinkedList<i> byG()
-  {
-    AppMethodBeat.i(48466);
-    synchronized (myo)
-    {
-      LinkedList localLinkedList2 = new LinkedList(myo);
-      AppMethodBeat.o(48466);
-      return localLinkedList2;
-    }
-  }
-  
-  static LinkedList<i> byH()
-  {
-    AppMethodBeat.i(48467);
-    synchronized (myo)
-    {
-      LinkedList localLinkedList2 = new LinkedList(myo);
-      AppMethodBeat.o(48467);
-      return localLinkedList2;
-    }
-  }
-  
-  public static boolean ca(String paramString, int paramInt)
+  public static boolean ce(String paramString, int paramInt)
   {
     AppMethodBeat.i(48462);
-    if (bZ(paramString, paramInt) != null)
+    if (cd(paramString, paramInt) != null)
     {
       AppMethodBeat.o(48462);
       return true;
@@ -569,7 +595,7 @@ public class f
     return false;
   }
   
-  public static String cb(String paramString, int paramInt)
+  public static String cf(String paramString, int paramInt)
   {
     AppMethodBeat.i(48464);
     if (TextUtils.isEmpty(paramString))
@@ -579,22 +605,22 @@ public class f
     }
     try
     {
-      paramString = bZ(paramString, paramInt);
+      paramString = cd(paramString, paramInt);
       if (paramString != null)
       {
-        paramString = paramString.mxO;
+        paramString = paramString.mCL;
         AppMethodBeat.o(48464);
         return paramString;
       }
     }
     catch (NullPointerException paramString)
     {
-      if (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED)
+      if (com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED)
       {
         AppMethodBeat.o(48464);
         throw paramString;
       }
-      ad.printErrStackTrace("MicroMsg.AppBrandTaskManager", paramString, "[NOT CRASH]getAliveInstanceId", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandTaskManager", paramString, "[NOT CRASH]getAliveInstanceId", new Object[0]);
       AppMethodBeat.o(48464);
     }
     return null;
@@ -603,197 +629,197 @@ public class f
   public static int d(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48441);
-    if ((!TextUtils.isEmpty(paramAppBrandStatObject.dkh)) && (paramAppBrandStatObject.dkh.length() >= 1024))
+    if ((!TextUtils.isEmpty(paramAppBrandStatObject.dlj)) && (paramAppBrandStatObject.dlj.length() >= 1024))
     {
-      ad.i("MicroMsg.AppBrandTaskManager", "startApp, appId[%s], scene[%d], preScene[%d], sceneNote too long, strip it", new Object[] { paramAppBrandInitConfigWC.appId, Integer.valueOf(paramAppBrandStatObject.scene), Integer.valueOf(paramAppBrandStatObject.dJQ) });
-      paramAppBrandStatObject.dkh = paramAppBrandStatObject.dkh.substring(0, 1024);
+      ae.i("MicroMsg.AppBrandTaskManager", "startApp, appId[%s], scene[%d], preScene[%d], sceneNote too long, strip it", new Object[] { paramAppBrandInitConfigWC.appId, Integer.valueOf(paramAppBrandStatObject.scene), Integer.valueOf(paramAppBrandStatObject.dLf) });
+      paramAppBrandStatObject.dlj = paramAppBrandStatObject.dlj.substring(0, 1024);
     }
-    if ((!TextUtils.isEmpty(paramAppBrandStatObject.dJR)) && (paramAppBrandStatObject.dJR.length() >= 1024))
+    if ((!TextUtils.isEmpty(paramAppBrandStatObject.dLg)) && (paramAppBrandStatObject.dLg.length() >= 1024))
     {
-      ad.i("MicroMsg.AppBrandTaskManager", "startApp, appId[%s], scene[%d], preScene[%d], preSceneNote too long, strip it", new Object[] { paramAppBrandInitConfigWC.appId, Integer.valueOf(paramAppBrandStatObject.scene), Integer.valueOf(paramAppBrandStatObject.dJQ) });
-      paramAppBrandStatObject.dJR = paramAppBrandStatObject.dJR.substring(0, 1024);
+      ae.i("MicroMsg.AppBrandTaskManager", "startApp, appId[%s], scene[%d], preScene[%d], preSceneNote too long, strip it", new Object[] { paramAppBrandInitConfigWC.appId, Integer.valueOf(paramAppBrandStatObject.scene), Integer.valueOf(paramAppBrandStatObject.dLf) });
+      paramAppBrandStatObject.dLg = paramAppBrandStatObject.dLg.substring(0, 1024);
     }
-    Object localObject5 = com.tencent.mm.plugin.appbrand.report.model.e.msA;
-    Object localObject3 = paramAppBrandInitConfigWC.appId;
+    Object localObject4 = com.tencent.mm.plugin.appbrand.report.model.e.mxx;
+    Object localObject2 = paramAppBrandInitConfigWC.appId;
     int j = paramAppBrandInitConfigWC.aDD;
-    boolean bool = ca((String)localObject3, -1);
-    Object localObject1 = (e.a)((com.tencent.mm.plugin.appbrand.report.model.e)localObject5).msB.get(localObject3);
+    boolean bool = ce((String)localObject2, -1);
+    Object localObject1 = (e.a)((com.tencent.mm.plugin.appbrand.report.model.e)localObject4).mxy.get(localObject2);
     long l;
     label259:
     int i;
+    label271:
+    label434:
+    label459:
+    label464:
+    label486:
+    Intent localIntent;
     if (localObject1 == null)
     {
       localObject1 = new e.a((byte)0);
-      ((e.a)localObject1).msE = 1L;
-      ((com.tencent.mm.plugin.appbrand.report.model.e)localObject5).msB.put(localObject3, localObject1);
-      if (((e.a)localObject1).msD <= 0L) {
-        break label1320;
+      ((e.a)localObject1).mxB = 1L;
+      ((com.tencent.mm.plugin.appbrand.report.model.e)localObject4).mxy.put(localObject2, localObject1);
+      if (((e.a)localObject1).mxA <= 0L) {
+        break label1313;
       }
-      l = bt.flT() - ((e.a)localObject1).msD;
-      localObject5 = g.yhR;
+      l = bu.fpO() - ((e.a)localObject1).mxA;
+      localObject4 = g.yxI;
       if (!bool) {
-        break label1326;
+        break label1319;
       }
       i = 1;
-      label271:
-      ((g)localObject5).f(16064, new Object[] { Integer.valueOf(1), localObject3, Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(((e.a)localObject1).msE), Long.valueOf(l) });
+      ((g)localObject4).f(16064, new Object[] { Integer.valueOf(1), localObject2, Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(((e.a)localObject1).mxB), Long.valueOf(l) });
       com.tencent.mm.plugin.appbrand.keylogger.c.a(paramAppBrandInitConfigWC.appId, KSProcessWeAppLaunch.stepContainerUILaunch);
-      if ((!paramAppBrandInitConfigWC.jXu) && (!"wxfe02ecfe70800f46".equalsIgnoreCase(paramAppBrandInitConfigWC.appId)) && (paramAppBrandInitConfigWC.launchMode != 1)) {
-        break label1342;
+      if ((!paramAppBrandInitConfigWC.kaJ) && (!"wxfe02ecfe70800f46".equalsIgnoreCase(paramAppBrandInitConfigWC.appId)) && (paramAppBrandInitConfigWC.launchMode != 1)) {
+        break label1335;
       }
-      localObject1 = myp;
-      ((i)localObject1).l(e.myg);
-      localObject3 = myp.myy;
-      if (!myq.containsKey(paramAppBrandInitConfigWC.appId)) {
-        break label1331;
+      localObject1 = mDn;
+      ((i)localObject1).l(e.mDe);
+      localObject2 = mDn.mDw;
+      if (!mDo.containsKey(paramAppBrandInitConfigWC.appId)) {
+        break label1324;
       }
-      localObject5 = (String)myq.get(paramAppBrandInitConfigWC.appId);
-      if (TextUtils.isEmpty((CharSequence)localObject5)) {
-        break label1331;
+      localObject4 = (String)mDo.get(paramAppBrandInitConfigWC.appId);
+      if (TextUtils.isEmpty((CharSequence)localObject4)) {
+        break label1324;
       }
-      bool = ((String)localObject5).equals(localObject3);
-      label434:
+      bool = ((String)localObject4).equals(localObject2);
       if (!bool) {
-        break label1337;
+        break label1330;
       }
-      a(paramAppBrandInitConfigWC.appId, bZ(paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.dPf));
+      a(paramAppBrandInitConfigWC.appId, cd(paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.dQv));
       i = 2;
-      label459:
       a((i)localObject1);
-      label464:
-      ((i)localObject1).a(paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.dPf, null);
+      ((i)localObject1).a(paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.dQv, null);
       if (paramContext != null) {
-        break label1701;
+        break label1694;
       }
-      paramContext = aj.getContext();
-      label486:
-      localObject5 = new Intent(paramContext, ((i)localObject1).myx);
-      ((Intent)localObject5).putExtra("key_appbrand_init_config", paramAppBrandInitConfigWC);
-      ((Intent)localObject5).putExtra("key_appbrand_stat_object", paramAppBrandStatObject);
-      ((Intent)localObject5).putExtra("key_app_id", paramAppBrandInitConfigWC.appId);
-      if ((!com.tencent.mm.plugin.appbrand.utils.a.aI(((i)localObject1).myx)) && ((paramContext instanceof Activity))) {
-        break label1532;
+      paramContext = ak.getContext();
+      localIntent = new Intent(paramContext, ((i)localObject1).mDv);
+      localIntent.putExtra("key_appbrand_init_config", paramAppBrandInitConfigWC);
+      localIntent.putExtra("key_appbrand_stat_object", paramAppBrandStatObject);
+      localIntent.putExtra("key_app_id", paramAppBrandInitConfigWC.appId);
+      if ((!com.tencent.mm.plugin.appbrand.utils.b.aI(((i)localObject1).mDv)) && ((paramContext instanceof Activity))) {
+        break label1525;
       }
       j = 268435456;
-      ((Intent)localObject5).addFlags(j);
+      localIntent.addFlags(j);
       if (!(paramContext instanceof Activity)) {}
     }
     for (;;)
     {
       try
       {
-        localObject3 = bt.aJ(paramContext, ((Activity)paramContext).getTaskId());
-        if ((localObject3 != null) && (((ActivityManager.RunningTaskInfo)localObject3).baseActivity != null) && (bt.nullAsNil(((ActivityManager.RunningTaskInfo)localObject3).baseActivity.getClassName()).equals(((i)localObject1).myw)))
+        localObject2 = bu.aJ(paramContext, ((Activity)paramContext).getTaskId());
+        if ((localObject2 != null) && (((ActivityManager.RunningTaskInfo)localObject2).baseActivity != null) && (bu.nullAsNil(((ActivityManager.RunningTaskInfo)localObject2).baseActivity.getClassName()).equals(((i)localObject1).mDu)))
         {
-          ((Intent)localObject5).putExtra("key_appbrand_bring_ui_to_front_from_task_Base_by_task_top_ui", true);
-          ((Intent)localObject5).addFlags(603979776);
+          localIntent.putExtra("key_appbrand_bring_ui_to_front_from_task_Base_by_task_top_ui", true);
+          localIntent.addFlags(603979776);
         }
-        ((Intent)localObject5).putExtra("key_from_activity_requested_orientation", ((Activity)paramContext).getRequestedOrientation());
-        paramAppBrandInitConfigWC.jXv = bt.flT();
-        paramAppBrandInitConfigWC.jXB = aj.aQt(((i)localObject1).myy);
-        ((Intent)localObject5).putExtra("key_launch_app_client_version", com.tencent.mm.sdk.platformtools.i.Ics);
-        j.byN();
-        locala = new com.tencent.mm.plugin.appbrand.loading.a(paramContext, (Intent)localObject5, paramAppBrandInitConfigWC, (i)localObject1, paramAppBrandStatObject);
+        paramAppBrandInitConfigWC.kaK = bu.fpO();
+        paramAppBrandInitConfigWC.kaQ = ak.aRQ(((i)localObject1).mDw);
+        localIntent.putExtra("key_launch_app_client_version", com.tencent.mm.sdk.platformtools.j.IwD);
+        j.bzI();
+        locala = new com.tencent.mm.plugin.appbrand.loading.a(paramContext, localIntent, paramAppBrandInitConfigWC, (i)localObject1, paramAppBrandStatObject);
         try
         {
-          if (!locala.bse()) {
-            break label1589;
+          if (!locala.bsP()) {
+            break label1582;
           }
-          ad.i("MicroMsg.AppBrandTaskManager", "startTargetActivity: needPreLoadingUi");
-          locala.lNK = com.tencent.mm.plugin.appbrand.loading.c.lNX.a(new com.tencent.mm.plugin.appbrand.loading.e(locala.ctx, locala.lNM, locala.jDG, locala.jDH));
-          Class localClass = locala.lNN.myC;
-          localObject1 = new StringBuilder("onNeedPreLoadingUI: triggerService = ");
+          ae.i("MicroMsg.AppBrandTaskManager", "startTargetActivity: needPreLoadingUi");
+          locala.lSl = com.tencent.mm.plugin.appbrand.loading.c.lSy.a(new com.tencent.mm.plugin.appbrand.loading.e(locala.ctx, locala.lSn, locala.jGE, locala.jGF));
+          Class localClass = locala.lSo.mDA;
+          localObject2 = new StringBuilder("onNeedPreLoadingUI: triggerService = ");
           p.g(localClass, "processTriggerServiceClass");
-          ad.i("MicroMsg.AppBrand.AppBrandPreLoadingLogic", localClass.getCanonicalName());
+          ae.i("MicroMsg.AppBrand.AppBrandPreLoadingLogic", localClass.getCanonicalName());
           String str = localClass.getCanonicalName();
           if (str == null) {
-            p.gfZ();
+            p.gkB();
           }
-          localObject1 = locala.lNM.getComponent();
-          if (localObject1 == null) {
-            break label1704;
+          localObject2 = locala.lSn.getComponent();
+          if (localObject2 == null) {
+            break label1697;
           }
-          localObject3 = ((ComponentName)localObject1).getClassName();
-          localObject1 = localObject3;
-          if (localObject3 == null) {
-            break label1704;
+          localObject4 = ((ComponentName)localObject2).getClassName();
+          localObject2 = localObject4;
+          if (localObject4 == null) {
+            break label1697;
           }
-          localObject3 = new Intent(locala.ctx, locala.lNN.myD);
-          ad.i("MicroMsg.AppBrand.AppBrandPreLoadingLogic", "startPreLoadingActivity, ctx = " + locala.ctx);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.name", locala.jDG.doD);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.icon", locala.jDG.iconUrl);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.serviceName", str);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.intentKey", locala.lNK);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.targetActivityName", (String)localObject1);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.splashFlavor", locala.bsd());
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.appId", locala.jDG.appId);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.scene", locala.jDH.scene);
-          ((Intent)localObject3).putExtra("MicroMsg.AppBrandPreLoadingLogic.versionInfo", (Parcelable)locala.jDG.cmy);
-          ((Intent)localObject3).addFlags(268435456);
-          localObject1 = locala.ctx;
-          localObject3 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject3);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject3).ahp(), "com/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic", "startPreLoadingActivity", "(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).mq(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic", "startPreLoadingActivity", "(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject4 = new Intent(locala.ctx, locala.lSo.mDC);
+          ae.i("MicroMsg.AppBrand.AppBrandPreLoadingLogic", "startPreLoadingActivity, ctx = " + locala.ctx);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.name", locala.jGE.dpI);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.icon", locala.jGE.iconUrl);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.serviceName", str);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.intentKey", locala.lSl);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.targetActivityName", (String)localObject2);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.splashFlavor", locala.bsO());
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.appId", locala.jGE.appId);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.scene", locala.jGF.scene);
+          ((Intent)localObject4).putExtra("MicroMsg.AppBrandPreLoadingLogic.versionInfo", (Parcelable)locala.jGE.cmA);
+          ((Intent)localObject4).addFlags(268435456);
+          localObject2 = locala.ctx;
+          localObject4 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject4);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject4).ahE(), "com/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic", "startPreLoadingActivity", "(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).mt(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic", "startPreLoadingActivity", "(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           if ((locala.ctx instanceof Activity)) {
-            localObject1 = (Activity)locala.ctx;
+            localObject2 = (Activity)locala.ctx;
           }
-          switch (locala.bsd())
+          switch (locala.bsO())
           {
           case 4: 
-            com.tencent.mm.ad.c.b("MicroMsg.AppBrand.AppBrandPreLoadingLogic:startService:".concat(String.valueOf(str)), (d.g.a.a)new a.c(locala, str));
-            locala.jDG.jXA = localClass.getCanonicalName();
+            com.tencent.mm.ac.c.b("MicroMsg.AppBrand.AppBrandPreLoadingLogic:startService:".concat(String.valueOf(str)), (d.g.a.a)new a.c(locala, str));
+            locala.jGE.kaP = localClass.getCanonicalName();
           }
         }
-        catch (Throwable localThrowable1)
+        catch (Throwable localThrowable2)
         {
-          Object localObject4;
-          ad.printErrStackTrace("MicroMsg.AppBrandTaskManager", localThrowable1, "onNeedPreLoadingUI", new Object[0]);
-          paramAppBrandInitConfigWC.jXA = "";
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject5);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/appbrand/task/AppBrandTaskManager", "startTargetActivity", "(Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic;Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+          Activity localActivity;
+          ae.printErrStackTrace("MicroMsg.AppBrandTaskManager", localThrowable2, "onNeedPreLoadingUI", new Object[0]);
+          paramAppBrandInitConfigWC.kaP = "";
+          localObject3 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).ahE(), "com/tencent/mm/plugin/appbrand/task/AppBrandTaskManager", "startTargetActivity", "(Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic;Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/task/AppBrandTaskManager", "startTargetActivity", "(Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic;Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           if (!(paramContext instanceof Activity)) {
             continue;
           }
-          ((aa)com.tencent.luggage.a.e.K(aa.class)).a((Activity)paramContext, paramAppBrandInitConfigWC);
+          ((ab)com.tencent.luggage.a.e.K(ab.class)).a((Activity)paramContext, paramAppBrandInitConfigWC);
           continue;
         }
         if (i == 1) {
-          UA(paramAppBrandInitConfigWC.appId);
+          Vl(paramAppBrandInitConfigWC.appId);
         }
-        ad.i("MicroMsg.AppBrandTaskManager", "startApp appId[%s] type[%d] scene[%d] strategy[%d] targetProcessExists[%b]", new Object[] { paramAppBrandInitConfigWC.appId, Integer.valueOf(paramAppBrandInitConfigWC.dPf), Integer.valueOf(paramAppBrandStatObject.scene), Integer.valueOf(i), Boolean.valueOf(paramAppBrandInitConfigWC.jXB) });
+        ae.i("MicroMsg.AppBrandTaskManager", "startApp appId[%s] type[%d] scene[%d] strategy[%d] targetProcessExists[%b] targetTask[%s]", new Object[] { paramAppBrandInitConfigWC.appId, Integer.valueOf(paramAppBrandInitConfigWC.dQv), Integer.valueOf(paramAppBrandStatObject.scene), Integer.valueOf(i), Boolean.valueOf(paramAppBrandInitConfigWC.kaQ), ((i)localObject1).mDv });
         AppMethodBeat.o(48441);
         return i;
-        ((e.a)localObject1).msE += 1L;
+        ((e.a)localObject1).mxB += 1L;
         break;
-        label1320:
+        label1313:
         l = 0L;
         break label259;
-        label1326:
+        label1319:
         i = 0;
         break label271;
-        label1331:
+        label1324:
         bool = false;
         break label434;
-        label1337:
+        label1330:
         i = 1;
         break label459;
-        label1342:
-        localObject1 = UD(paramAppBrandInitConfigWC.appId);
-        if ((localObject1 == null) || (localObject1 == myp))
+        label1335:
+        localObject1 = Vo(paramAppBrandInitConfigWC.appId);
+        if ((localObject1 == null) || (localObject1 == mDn))
         {
-          if (myq.containsKey(paramAppBrandInitConfigWC.appId))
+          if (mDo.containsKey(paramAppBrandInitConfigWC.appId))
           {
-            localObject3 = (String)myq.get(paramAppBrandInitConfigWC.appId);
-            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            localObject2 = (String)mDo.get(paramAppBrandInitConfigWC.appId);
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
-              localObject5 = myn.iterator();
-              if (((Iterator)localObject5).hasNext())
+              localObject4 = mDl.iterator();
+              if (((Iterator)localObject4).hasNext())
               {
-                localObject1 = (i)((Iterator)localObject5).next();
-                if (!((String)localObject3).equals(((i)localObject1).myy)) {
+                localObject1 = (i)((Iterator)localObject4).next();
+                if (!((String)localObject2).equals(((i)localObject1).mDw)) {
                   continue;
                 }
                 if (localObject1 == null) {
@@ -807,55 +833,55 @@ public class f
           }
           localObject1 = null;
           continue;
-          if (paramAppBrandInitConfigWC.Eb())
+          if (paramAppBrandInitConfigWC.Ee())
           {
-            localObject1 = e.myh;
-            localObject3 = j((e)localObject1);
-            if (paramAppBrandInitConfigWC.Eb())
+            localObject1 = e.mDf;
+            localObject2 = j((e)localObject1);
+            if (paramAppBrandInitConfigWC.Ee())
             {
-              localObject1 = e.myh;
-              ((i)localObject3).l((e)localObject1);
+              localObject1 = e.mDf;
+              ((i)localObject2).l((e)localObject1);
               i = 1;
-              localObject1 = localObject3;
+              localObject1 = localObject2;
             }
           }
           else
           {
-            localObject1 = e.myg;
+            localObject1 = e.mDe;
             continue;
           }
-          localObject1 = e.myg;
+          localObject1 = e.mDe;
           continue;
         }
         i = 2;
         break label464;
-        label1532:
+        label1525:
         j = 0;
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable1)
       {
         com.tencent.mm.plugin.appbrand.loading.a locala;
-        localObject4 = null;
+        localActivity = null;
         continue;
-        ((aa)com.tencent.luggage.a.e.K(aa.class)).a((Activity)localObject1, (AppBrandInitConfig)locala.jDG);
+        ((ab)com.tencent.luggage.a.e.K(ab.class)).a(localActivity, (AppBrandInitConfig)locala.jGE);
         continue;
       }
-      label1589:
+      label1582:
       break label486;
-      label1701:
-      label1704:
-      Object localObject2 = "";
+      label1694:
+      label1697:
+      Object localObject3 = "";
     }
   }
   
-  static i en(String paramString1, String paramString2)
+  static i eq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(48460);
-    Iterator localIterator = byG().iterator();
+    Iterator localIterator = bzA().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if ((locali.myE.keySet().contains(paramString1)) && (locali.myw.equals(paramString2)))
+      if ((locali.mDD.keySet().contains(paramString1)) && (locali.mDu.equals(paramString2)))
       {
         AppMethodBeat.o(48460);
         return locali;
@@ -868,26 +894,26 @@ public class f
   public static void f(e parame)
   {
     AppMethodBeat.i(48445);
-    a(parame, d.a.myZ);
+    a(parame, d.a.mEa);
     AppMethodBeat.o(48445);
   }
   
   public static int g(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(188782);
+    AppMethodBeat.i(223002);
     int i = d(null, paramAppBrandInitConfigWC, paramAppBrandStatObject);
-    AppMethodBeat.o(188782);
+    AppMethodBeat.o(223002);
     return i;
   }
   
   private static int g(e parame)
   {
-    AppMethodBeat.i(188784);
-    Iterator localIterator = myn.iterator();
+    AppMethodBeat.i(223004);
+    Iterator localIterator = mDl.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
-      if (((i)localIterator.next()).myG != parame) {
+      if (((i)localIterator.next()).mDF != parame) {
         break label55;
       }
       i += 1;
@@ -896,7 +922,7 @@ public class f
     for (;;)
     {
       break;
-      AppMethodBeat.o(188784);
+      AppMethodBeat.o(223004);
       return i;
     }
   }
@@ -905,13 +931,13 @@ public class f
   {
     AppMethodBeat.i(48455);
     int i = g(parame);
-    if (i > parame.myj)
+    if (i > parame.mDh)
     {
-      parame = new IllegalStateException(bt.x("TaskManager count the serviceType [%s] in TASK_LIST, count = [%d], but max limit = [%d]", new Object[] { parame.name(), Integer.valueOf(i), Integer.valueOf(parame.myj) }));
+      parame = new IllegalStateException(bu.x("TaskManager count the serviceType [%s] in TASK_LIST, count = [%d], but max limit = [%d]", new Object[] { parame.name(), Integer.valueOf(i), Integer.valueOf(parame.mDh) }));
       AppMethodBeat.o(48455);
       throw parame;
     }
-    if (i == parame.myj)
+    if (i == parame.mDh)
     {
       AppMethodBeat.o(48455);
       return true;
@@ -923,34 +949,34 @@ public class f
   private static i i(e parame)
   {
     AppMethodBeat.i(48456);
-    synchronized (myn)
+    synchronized (mDl)
     {
       if (h(parame))
       {
-        ad.i("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess serviceType = [%s] reachedMaxLimit", new Object[] { parame });
+        ae.i("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess serviceType = [%s] reachedMaxLimit", new Object[] { parame });
         AppMethodBeat.o(48456);
         return null;
       }
-      Object localObject = myn.iterator();
+      Object localObject = mDl.iterator();
       while (((Iterator)localObject).hasNext())
       {
         locali = (i)((Iterator)localObject).next();
-        if ((locali.myE.isEmpty()) && (locali.myG == parame))
+        if ((locali.mDD.isEmpty()) && (locali.mDF == parame))
         {
-          ad.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup found empty task[%s], which can be used as [%s]", new Object[] { locali.myy, parame });
+          ae.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup found empty task[%s], which can be used as [%s]", new Object[] { locali.mDw, parame });
           AppMethodBeat.o(48456);
           return locali;
         }
       }
-      i locali = a(myn, e.myi);
+      i locali = a(mDl, e.mDg);
       if (locali == null)
       {
         localObject = "null";
-        ad.i("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess serviceType = [%s] not reached max limit , got ui task = [%s]", new Object[] { parame, localObject });
+        ae.i("MicroMsg.AppBrandTaskManager", "tryPreloadNextTaskProcess serviceType = [%s] not reached max limit , got ui task = [%s]", new Object[] { parame, localObject });
         AppMethodBeat.o(48456);
         return locali;
       }
-      localObject = locali.myw;
+      localObject = locali.mDu;
     }
   }
   
@@ -959,24 +985,24 @@ public class f
     AppMethodBeat.i(48457);
     for (;;)
     {
-      synchronized (myn)
+      synchronized (mDl)
       {
-        Iterator localIterator = myn.iterator();
+        Iterator localIterator = mDl.iterator();
         if (localIterator.hasNext())
         {
           locali = (i)localIterator.next();
-          if ((!locali.myE.isEmpty()) || (locali.myG != parame)) {
+          if ((!locali.mDD.isEmpty()) || (locali.mDF != parame)) {
             continue;
           }
-          ad.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup found empty task, which can be used as [%s]", new Object[] { parame });
+          ae.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup found empty task, which can be used as [%s]", new Object[] { parame });
           parame = locali;
           AppMethodBeat.o(48457);
           return parame;
         }
         if (h(parame))
         {
-          ad.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup [%s] task reached maxLimit", new Object[] { parame });
-          locali = a(myn, parame);
+          ae.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup [%s] task reached maxLimit", new Object[] { parame });
+          locali = a(mDl, parame);
           parame = locali;
           if ($assertionsDisabled) {
             continue;
@@ -990,16 +1016,16 @@ public class f
           throw parame;
         }
       }
-      i locali = a(myn, e.myi);
+      i locali = a(mDl, e.mDg);
       if (locali != null)
       {
-        ad.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup found not used task, which can be used as [%s]", new Object[] { parame });
+        ae.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup found not used task, which can be used as [%s]", new Object[] { parame });
         parame = locali;
       }
       else
       {
-        ad.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup all full for [%s]", new Object[] { parame });
-        parame = (i)myn.getFirst();
+        ae.i("MicroMsg.AppBrandTaskManager", "getAvailableTaskToStartup all full for [%s]", new Object[] { parame });
+        parame = (i)mDl.getFirst();
       }
     }
   }
@@ -1007,24 +1033,24 @@ public class f
   public static void onNetworkChange()
   {
     AppMethodBeat.i(48451);
-    Iterator localIterator1 = byG().iterator();
+    Iterator localIterator1 = bzA().iterator();
     while (localIterator1.hasNext())
     {
-      Iterator localIterator2 = ((i)localIterator1.next()).myF.values().iterator();
+      Iterator localIterator2 = ((i)localIterator1.next()).mDE.values().iterator();
       while (localIterator2.hasNext())
       {
         AppBrandRemoteTaskController localAppBrandRemoteTaskController = (AppBrandRemoteTaskController)localIterator2.next();
         if (localAppBrandRemoteTaskController != null)
         {
-          localAppBrandRemoteTaskController.mxJ = AppBrandRemoteTaskController.a.myb;
-          localAppBrandRemoteTaskController.bhX();
+          localAppBrandRemoteTaskController.mCG = AppBrandRemoteTaskController.a.mCY;
+          localAppBrandRemoteTaskController.biG();
         }
       }
     }
     AppMethodBeat.o(48451);
   }
   
-  public static void vu(int paramInt)
+  public static void vz(int paramInt)
   {
     AppMethodBeat.i(48443);
     Object localObject2;
@@ -1032,14 +1058,14 @@ public class f
     if (2 == paramInt)
     {
       localObject1 = new HashMap();
-      localObject2 = byG().iterator();
+      localObject2 = bzA().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (i)((Iterator)localObject2).next();
-        if (!TextUtils.isEmpty(((i)localObject3).myy)) {
-          if (((i)localObject3).myE.isEmpty())
+        if (!TextUtils.isEmpty(((i)localObject3).mDw)) {
+          if (((i)localObject3).mDD.isEmpty())
           {
-            localObject3 = ((i)localObject3).myy;
+            localObject3 = ((i)localObject3).mDw;
             Boolean localBoolean = Boolean.TRUE;
             if (Build.VERSION.SDK_INT >= 24) {
               ((HashMap)localObject1).putIfAbsent(localObject3, localBoolean);
@@ -1049,7 +1075,7 @@ public class f
           }
           else
           {
-            ((HashMap)localObject1).put(((i)localObject3).myy, Boolean.FALSE);
+            ((HashMap)localObject1).put(((i)localObject3).mDw, Boolean.FALSE);
           }
         }
       }
@@ -1065,47 +1091,47 @@ public class f
             break label231;
           }
           localObject2 = (String)((Map.Entry)localObject2).getKey();
-          ad.i("MicroMsg.AppBrandTaskManager", "killAll SILENT_IF_INACTIVE kill process(%s)", new Object[] { localObject2 });
-          com.tencent.mm.modelappbrand.b.BZ((String)localObject2);
-          com.tencent.mm.bw.a.bX(aj.getContext(), (String)localObject2);
+          ae.i("MicroMsg.AppBrandTaskManager", "killAll SILENT_IF_INACTIVE kill process(%s)", new Object[] { localObject2 });
+          com.tencent.mm.modelappbrand.b.CB((String)localObject2);
+          com.tencent.mm.bv.a.bY(ak.getContext(), (String)localObject2);
           break;
         }
       }
-      ad.i("MicroMsg.AppBrandTaskManager", "killAll SILENT_IF_INACTIVE tryPreloadNextTaskProcess(both waservice and wagame)");
-      a(e.myg, true);
-      a(e.myh, true);
+      ae.i("MicroMsg.AppBrandTaskManager", "killAll SILENT_IF_INACTIVE tryPreloadNextTaskProcess(both waservice and wagame)");
+      a(e.mDe, true);
+      a(e.mDf, true);
       AppMethodBeat.o(48443);
       return;
     }
-    Object localObject1 = byG().iterator();
+    Object localObject1 = bzA().iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = ((i)((Iterator)localObject1).next()).myF.values().iterator();
+      localObject2 = ((i)((Iterator)localObject1).next()).mDE.values().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (AppBrandRemoteTaskController)((Iterator)localObject2).next();
         if (localObject3 != null) {
-          ((AppBrandRemoteTaskController)localObject3).vs(paramInt);
+          ((AppBrandRemoteTaskController)localObject3).vx(paramInt);
         }
       }
     }
-    localObject1 = myr.iterator();
+    localObject1 = mDp.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (AppBrandRemoteTaskController)((Iterator)localObject1).next();
       if (localObject2 != null) {
-        ((AppBrandRemoteTaskController)localObject2).vs(paramInt);
+        ((AppBrandRemoteTaskController)localObject2).vx(paramInt);
       }
     }
     if (3 == paramInt) {
-      myr.clear();
+      mDp.clear();
     }
     AppMethodBeat.o(48443);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.f
  * JD-Core Version:    0.7.0.1
  */

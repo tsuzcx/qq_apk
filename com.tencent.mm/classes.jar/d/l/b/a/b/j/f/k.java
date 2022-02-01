@@ -14,35 +14,35 @@ import java.util.List;
 public final class k
   extends i
 {
-  private final e NxP;
-  private final d.l.b.a.b.l.f NxY;
+  private final e NUW;
+  private final d.l.b.a.b.l.f NVf;
   
   static
   {
     AppMethodBeat.i(60219);
-    cwV = new d.l.k[] { (d.l.k)z.a(new x(z.bp(k.class), "functions", "getFunctions()Ljava/util/List;")) };
+    cxA = new d.l.k[] { (d.l.k)z.a(new x(z.bp(k.class), "functions", "getFunctions()Ljava/util/List;")) };
     AppMethodBeat.o(60219);
   }
   
   public k(j paramj, e parame)
   {
     AppMethodBeat.i(60224);
-    this.NxP = parame;
-    if (this.NxP.ghw() == d.l.b.a.b.b.f.MUt) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    this.NUW = parame;
+    if (this.NUW.glY() == d.l.b.a.b.b.f.Nry) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
-      paramj = (Throwable)new AssertionError("Class should be an enum: " + this.NxP);
+      paramj = (Throwable)new AssertionError("Class should be an enum: " + this.NUW);
       AppMethodBeat.o(60224);
       throw paramj;
     }
-    this.NxY = paramj.S((a)new a(this));
+    this.NVf = paramj.S((a)new a(this));
     AppMethodBeat.o(60224);
   }
   
-  private final List<am> gtv()
+  private final List<am> gxX()
   {
     AppMethodBeat.i(60221);
-    List localList = (List)d.l.b.a.b.l.i.a(this.NxY, cwV[0]);
+    List localList = (List)d.l.b.a.b.l.i.a(this.NVf, cxA[0]);
     AppMethodBeat.o(60221);
     return localList;
   }
@@ -59,7 +59,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.k
  * JD-Core Version:    0.7.0.1
  */

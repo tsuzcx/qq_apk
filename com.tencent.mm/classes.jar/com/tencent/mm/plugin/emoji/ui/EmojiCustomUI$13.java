@@ -16,15 +16,15 @@ final class EmojiCustomUI$13
     AppMethodBeat.i(108871);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/EmojiCustomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    EmojiCustomUI.e(this.pIX);
+    a.b("com/tencent/mm/plugin/emoji/ui/EmojiCustomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    EmojiCustomUI.e(this.pPC);
     a.a(this, "com/tencent/mm/plugin/emoji/ui/EmojiCustomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(108871);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiCustomUI.13
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.ui.chatting;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -13,15 +14,16 @@ import android.view.KeyEvent;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.d.b;
-import com.tencent.mm.g.a.no;
-import com.tencent.mm.g.a.rm;
+import com.tencent.mm.g.a.np;
+import com.tencent.mm.g.a.rn;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.chatting.d.b.af;
 import com.tencent.mm.ui.chatting.d.c;
+import com.tencent.mm.ui.tools.w;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -32,21 +34,21 @@ import java.util.Set;
 public class ChattingUI
   extends MMFragmentActivity
 {
-  public ChattingUIFragment JDf;
-  public ap JDg;
+  public ChattingUIFragment JXW;
+  public aq JXX;
   
   public ChattingUI()
   {
     AppMethodBeat.i(34694);
-    this.JDg = new ap();
+    this.JXX = new aq();
     AppMethodBeat.o(34694);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34697);
-    ad.d("MicroMsg.ChattingUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
-    if ((this.JDf != null) && (this.JDf.onKeyDown(paramKeyEvent.getKeyCode(), paramKeyEvent)))
+    ae.d("MicroMsg.ChattingUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
+    if ((this.JXW != null) && (this.JXW.onKeyDown(paramKeyEvent.getKeyCode(), paramKeyEvent)))
     {
       AppMethodBeat.o(34697);
       return true;
@@ -56,7 +58,7 @@ public class ChattingUI
     return bool;
   }
   
-  protected ChattingUIFragment fAy()
+  protected ChattingUIFragment fEA()
   {
     AppMethodBeat.i(34696);
     ChattingUIFragment localChattingUIFragment = new ChattingUIFragment((byte)0);
@@ -66,16 +68,16 @@ public class ChattingUI
   
   public void finish()
   {
-    AppMethodBeat.i(193856);
+    AppMethodBeat.i(187161);
     int i;
     Object localObject1;
     long l;
     Object localObject2;
-    if ((((af)this.JDf.cWM.bh(af.class)).fEz()) && (!((af)this.JDf.cWM.bh(af.class)).fEC()))
+    if ((this.JXW != null) && (((af)this.JXW.cXJ.bh(af.class)).fID()) && (!((af)this.JXW.cXJ.bh(af.class)).fIG()))
     {
-      i = ((af)this.JDf.cWM.bh(af.class)).fEE();
+      i = ((af)this.JXW.cXJ.bh(af.class)).fII();
       getIntent().putExtra("select_record_msg_num", i);
-      localObject1 = ((com.tencent.mm.ui.chatting.d.b.k)this.JDf.cWM.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fCk();
+      localObject1 = ((com.tencent.mm.ui.chatting.d.b.k)this.JXW.cXJ.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fGm();
       if (localObject1 != null)
       {
         localObject1 = ((Set)localObject1).iterator();
@@ -84,18 +86,18 @@ public class ChattingUI
         {
           localObject2 = (Long)((Iterator)localObject1).next();
           if (((Long)localObject2).longValue() >= l) {
-            break label304;
+            break label311;
           }
           l = ((Long)localObject2).longValue();
         }
       }
     }
-    label304:
+    label311:
     for (;;)
     {
       break;
       getIntent().putExtra("select_record_min_msg_id", l);
-      localObject2 = ((af)this.JDf.cWM.bh(af.class)).fED();
+      localObject2 = ((af)this.JXW.cXJ.bh(af.class)).fIH();
       if (localObject2 != null)
       {
         localObject1 = new ArrayList();
@@ -105,10 +107,10 @@ public class ChattingUI
         }
         getIntent().putStringArrayListExtra("key_select_record_msg_black_list", (ArrayList)localObject1);
       }
-      ad.i("MicroMsg.ChattingUI", "select record msg %s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.ChattingUI", "select record msg %s", new Object[] { Integer.valueOf(i) });
       setResult(-1, getIntent());
       super.finish();
-      AppMethodBeat.o(193856);
+      AppMethodBeat.o(187161);
       return;
     }
   }
@@ -117,7 +119,7 @@ public class ChattingUI
   {
     AppMethodBeat.i(34701);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.JDf.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.JXW.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(34701);
   }
   
@@ -125,24 +127,24 @@ public class ChattingUI
   {
     AppMethodBeat.i(34695);
     getWindow().setFormat(-2);
-    com.tencent.mm.pluginsdk.h.aN(this);
+    com.tencent.mm.pluginsdk.h.aO(this);
     super.onCreate(null);
-    if (c.br(getIntent()))
+    if (c.bs(getIntent()))
     {
       finish();
       AppMethodBeat.o(34695);
       return;
     }
     setContentView(2131493526);
-    this.JDf = fAy();
+    this.JXW = fEA();
     paramBundle = getIntent().getExtras();
     paramBundle.putBoolean("FROM_CHATTING_ACTIVITY", true);
-    this.JDf.setArguments(paramBundle);
-    getSupportFragmentManager().beginTransaction().a(2131302341, this.JDf).commit();
+    this.JXW.setArguments(paramBundle);
+    getSupportFragmentManager().beginTransaction().a(2131302341, this.JXW).commit();
     getSupportActionBar().show();
     if (getIntent().getBooleanExtra("resend_fail_messages", false))
     {
-      aq.o(new Runnable()
+      ar.o(new Runnable()
       {
         public final void run()
         {
@@ -152,8 +154,8 @@ public class ChattingUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(34690);
-              paramAnonymous2DialogInterface = new rm();
-              com.tencent.mm.sdk.b.a.IbL.l(paramAnonymous2DialogInterface);
+              paramAnonymous2DialogInterface = new rn();
+              com.tencent.mm.sdk.b.a.IvT.l(paramAnonymous2DialogInterface);
               AppMethodBeat.o(34690);
             }
           }, new DialogInterface.OnClickListener()
@@ -161,8 +163,8 @@ public class ChattingUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(34691);
-              paramAnonymous2DialogInterface = new no();
-              com.tencent.mm.sdk.b.a.IbL.l(paramAnonymous2DialogInterface);
+              paramAnonymous2DialogInterface = new np();
+              com.tencent.mm.sdk.b.a.IvT.l(paramAnonymous2DialogInterface);
               AppMethodBeat.o(34691);
             }
           });
@@ -172,15 +174,15 @@ public class ChattingUI
       getIntent().putExtra("is_need_resend_sns", false);
     }
     initNavigationSwipeBack();
-    this.JDg.post(new Runnable()
+    this.JXX.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34693);
-        if (ChattingUI.this.JDf != null) {
-          com.tencent.mm.pluginsdk.h.a(ChattingUI.this, ChattingUI.this.JDf.getBodyView());
+        if (ChattingUI.this.JXW != null) {
+          com.tencent.mm.pluginsdk.h.a(ChattingUI.this, ChattingUI.this.JXW.getBodyView());
         }
-        b.bZ(ChattingUI.this.JDf.getContext());
+        b.cb(ChattingUI.this.JXW.getContext());
         AppMethodBeat.o(34693);
       }
     });
@@ -190,7 +192,7 @@ public class ChattingUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34699);
-    ad.d("MicroMsg.ChattingUI", "chatting ui on key down, %d, %s", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
+    ae.d("MicroMsg.ChattingUI", "chatting ui on key down, %d, %s", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(34699);
     return bool;
@@ -199,7 +201,7 @@ public class ChattingUI
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34698);
-    ad.d("MicroMsg.ChattingUI", "chatting ui on key up");
+    ae.d("MicroMsg.ChattingUI", "chatting ui on key up");
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(34698);
     return bool;
@@ -208,8 +210,8 @@ public class ChattingUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(34700);
-    ad.i("MicroMsg.ChattingUI", "chatting onRequestPermissionsResult");
-    this.JDf.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    ae.i("MicroMsg.ChattingUI", "chatting onRequestPermissionsResult");
+    this.JXW.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(34700);
   }
   
@@ -217,6 +219,18 @@ public class ChattingUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(187162);
+    if ((paramIntent != null) && (paramIntent.getComponent() != null))
+    {
+      w localw = w.Lim;
+      w.aYQ(paramIntent.getComponent().getClassName());
+    }
+    super.startActivityForResult(paramIntent, paramInt, paramBundle);
+    AppMethodBeat.o(187162);
   }
 }
 

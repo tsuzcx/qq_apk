@@ -9,21 +9,21 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class q
   implements View.OnClickListener
 {
-  int fPp;
+  int fRv;
   protected Context mContext;
-  private com.tencent.mm.plugin.game.model.c ubv;
-  String usi;
+  String uDB;
+  private com.tencent.mm.plugin.game.model.c umx;
   
   public q(Context paramContext)
   {
     this.mContext = paramContext;
-    this.usi = null;
+    this.uDB = null;
   }
   
   public final void onClick(View paramView)
@@ -31,37 +31,37 @@ public final class q
     AppMethodBeat.i(42340);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (!(paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c))
     {
-      ad.e("MicroMsg.GamePreemptiveCliclListener", "No GameAppInfo");
+      ae.e("MicroMsg.GamePreemptiveCliclListener", "No GameAppInfo");
       a.a(this, "com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42340);
       return;
     }
-    this.ubv = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
-    ad.i("MicroMsg.GamePreemptiveCliclListener", "Clicked appid = " + this.ubv.field_appId);
-    if (h.s(this.mContext, this.ubv.field_appId))
+    this.umx = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
+    ae.i("MicroMsg.GamePreemptiveCliclListener", "Clicked appid = " + this.umx.field_appId);
+    if (h.s(this.mContext, this.umx.field_appId))
     {
-      ad.d("MicroMsg.GamePreemptiveCliclListener", "launchFromWX, appId = " + this.ubv.field_appId + ", pkg = " + this.ubv.field_packageName + ", openId = " + this.ubv.field_openId);
-      e.ai(this.mContext, this.ubv.field_appId);
-      f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 3, this.ubv.field_appId, this.fPp, this.ubv.dls, this.ubv.uaR);
+      ae.d("MicroMsg.GamePreemptiveCliclListener", "launchFromWX, appId = " + this.umx.field_appId + ", pkg = " + this.umx.field_packageName + ", openId = " + this.umx.field_openId);
+      e.ak(this.mContext, this.umx.field_appId);
+      f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 3, this.umx.field_appId, this.fRv, this.umx.dmu, this.umx.ulT);
       a.a(this, "com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42340);
       return;
     }
-    ad.i("MicroMsg.GamePreemptiveCliclListener", "get preemptive url:[%s]", new Object[] { this.usi });
-    if (!bt.isNullOrNil(this.usi))
+    ae.i("MicroMsg.GamePreemptiveCliclListener", "get preemptive url:[%s]", new Object[] { this.uDB });
+    if (!bu.isNullOrNil(this.uDB))
     {
-      com.tencent.mm.plugin.game.f.c.aB(this.mContext, this.usi);
-      f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 11, this.ubv.field_appId, this.fPp, this.ubv.dls, this.ubv.uaR);
+      com.tencent.mm.plugin.game.f.c.aD(this.mContext, this.uDB);
+      f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 11, this.umx.field_appId, this.fRv, this.umx.dmu, this.umx.ulT);
     }
     for (;;)
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42340);
       return;
-      ad.e("MicroMsg.GamePreemptiveCliclListener", "null or nill preemptive url");
+      ae.e("MicroMsg.GamePreemptiveCliclListener", "null or nill preemptive url");
     }
   }
 }

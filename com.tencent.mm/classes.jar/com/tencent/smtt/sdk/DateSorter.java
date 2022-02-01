@@ -6,7 +6,7 @@ import com.tencent.smtt.export.external.interfaces.IX5CoreMessy;
 import com.tencent.smtt.export.external.interfaces.IX5DateSorter;
 
 public class DateSorter
-  extends x
+  extends z
 {
   public static int DAY_COUNT;
   private android.webkit.DateSorter a;
@@ -23,8 +23,8 @@ public class DateSorter
   public DateSorter(Context paramContext)
   {
     AppMethodBeat.i(54068);
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
       this.b = getCoreMessy().createDateSorter(paramContext);
       AppMethodBeat.o(54068);
@@ -37,8 +37,8 @@ public class DateSorter
   public long getBoundary(int paramInt)
   {
     AppMethodBeat.i(54071);
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
       l = this.b.getBoundary(paramInt);
       AppMethodBeat.o(54071);
@@ -52,8 +52,8 @@ public class DateSorter
   public int getIndex(long paramLong)
   {
     AppMethodBeat.i(54069);
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
       i = this.b.getIndex(paramLong);
       AppMethodBeat.o(54069);
@@ -67,8 +67,8 @@ public class DateSorter
   public String getLabel(int paramInt)
   {
     AppMethodBeat.i(54070);
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b()))
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b()))
     {
       localObject = this.b.getLabel(paramInt);
       AppMethodBeat.o(54070);

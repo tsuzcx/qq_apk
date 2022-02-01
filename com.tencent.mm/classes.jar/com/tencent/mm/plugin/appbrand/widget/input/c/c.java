@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.input.c;
 
 public abstract interface c
 {
-  public abstract void bD(String paramString, int paramInt);
+  public abstract void bG(String paramString, int paramInt);
 }
 
 

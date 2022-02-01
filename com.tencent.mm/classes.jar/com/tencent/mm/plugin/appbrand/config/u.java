@@ -4,15 +4,15 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.protocal.protobuf.egl;
-import com.tencent.mm.protocal.protobuf.ego;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.protocal.protobuf.eic;
+import com.tencent.mm.protocal.protobuf.eif;
 import com.tencent.mm.protocal.protobuf.kv;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.f;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,14 +26,14 @@ public class u
   
   public u(e parame, String paramString, String[] paramArrayOfString)
   {
-    super(parame, WxaAttributes.jGU, paramString, paramArrayOfString);
+    super(parame, WxaAttributes.jJU, paramString, paramArrayOfString);
     this.db = parame;
   }
   
   private boolean a(WxaAttributes paramWxaAttributes, boolean paramBoolean)
   {
     boolean bool = true;
-    AppMethodBeat.i(190880);
+    AppMethodBeat.i(220753);
     paramWxaAttributes.field_usernameHash = paramWxaAttributes.field_username.hashCode();
     super.insertNotify(paramWxaAttributes, false);
     if (d(paramWxaAttributes.field_username, new String[] { "appId" }) != null) {}
@@ -42,7 +42,7 @@ public class u
       if ((bool) && (paramBoolean) && (!TextUtils.isEmpty(paramWxaAttributes.field_username))) {
         doNotify("single", 2, paramWxaAttributes.field_username);
       }
-      AppMethodBeat.o(190880);
+      AppMethodBeat.o(220753);
       return bool;
       bool = false;
     }
@@ -50,9 +50,9 @@ public class u
   
   private boolean a(WxaAttributes paramWxaAttributes, boolean paramBoolean, String... paramVarArgs)
   {
-    AppMethodBeat.i(190881);
+    AppMethodBeat.i(220754);
     int i;
-    if (!bt.V(paramVarArgs)) {
+    if (!bu.V(paramVarArgs)) {
       i = 0;
     }
     for (;;)
@@ -71,19 +71,19 @@ public class u
         if ((bool) && (paramBoolean) && (!TextUtils.isEmpty(paramWxaAttributes.field_username))) {
           doNotify("single", 3, paramWxaAttributes.field_username);
         }
-        AppMethodBeat.o(190881);
+        AppMethodBeat.o(220754);
         return bool;
       }
       i += 1;
     }
   }
   
-  private boolean a(String paramString, b paramb, List<egl> paramList, boolean paramBoolean)
+  private boolean a(String paramString, b paramb, List<eic> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(190879);
-    if (bt.hj(paramList))
+    AppMethodBeat.i(220752);
+    if (bu.ht(paramList))
     {
-      AppMethodBeat.o(190879);
+      AppMethodBeat.o(220752);
       return false;
     }
     WxaAttributes localWxaAttributes = new WxaAttributes();
@@ -96,17 +96,17 @@ public class u
       bool = false;
       while (paramString.hasNext())
       {
-        paramList = (egl)paramString.next();
+        paramList = (eic)paramString.next();
         if (paramList != null) {
           bool = a(localWxaAttributes, paramList) | bool;
         }
       }
     }
-    localWxaAttributes.field_syncTimeSecond = bt.aQJ();
+    localWxaAttributes.field_syncTimeSecond = bu.aRi();
     if (paramb == null)
     {
       paramString = new byte[0];
-      localWxaAttributes.field_syncVersion = bt.cE(paramString);
+      localWxaAttributes.field_syncVersion = bu.cH(paramString);
       if (!bool) {
         break label190;
       }
@@ -117,7 +117,7 @@ public class u
     }
     for (;;)
     {
-      AppMethodBeat.o(190879);
+      AppMethodBeat.o(220752);
       return bool;
       paramString = paramb.zr;
       break;
@@ -132,7 +132,7 @@ public class u
   private boolean b(WxaAttributes paramWxaAttributes, boolean paramBoolean, String... paramVarArgs)
   {
     AppMethodBeat.i(146055);
-    if (!bt.isNullOrNil(paramWxaAttributes.field_username)) {
+    if (!bu.isNullOrNil(paramWxaAttributes.field_username)) {
       paramWxaAttributes.field_usernameHash = paramWxaAttributes.field_username.hashCode();
     }
     boolean bool = super.delete(paramWxaAttributes, false, paramVarArgs);
@@ -143,12 +143,12 @@ public class u
     return bool;
   }
   
-  private long bei()
+  private long beP()
   {
     AppMethodBeat.i(182788);
     if ((this.db instanceof f))
     {
-      long l = ((f)this.db).xO(Thread.currentThread().getId());
+      long l = ((f)this.db).yi(Thread.currentThread().getId());
       AppMethodBeat.o(182788);
       return l;
     }
@@ -156,20 +156,20 @@ public class u
     return -1L;
   }
   
-  private static boolean cD(String paramString1, String paramString2)
+  private static boolean cF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146053);
-    boolean bool = bt.nullAsNil(paramString1).equals(bt.nullAsNil(paramString2));
+    boolean bool = bu.nullAsNil(paramString1).equals(bu.nullAsNil(paramString2));
     AppMethodBeat.o(146053);
     return bool;
   }
   
-  private int sJ(long paramLong)
+  private int sW(long paramLong)
   {
     AppMethodBeat.i(182789);
     if ((this.db instanceof f))
     {
-      int i = ((f)this.db).sJ(paramLong);
+      int i = ((f)this.db).sW(paramLong);
       AppMethodBeat.o(182789);
       return i;
     }
@@ -177,12 +177,12 @@ public class u
     return -1;
   }
   
-  final b Nw(String paramString)
+  final b Oe(String paramString)
   {
     AppMethodBeat.i(146046);
     paramString = d(paramString, new String[] { "syncVersion" });
     if (paramString == null) {}
-    for (paramString = new byte[0];; paramString = bt.aRa(bt.nullAsNil(paramString.field_syncVersion)))
+    for (paramString = new byte[0];; paramString = bu.aSx(bu.nullAsNil(paramString.field_syncVersion)))
     {
       paramString = new b(paramString);
       AppMethodBeat.o(146046);
@@ -190,12 +190,12 @@ public class u
     }
   }
   
-  public final boolean Nx(String paramString)
+  public final boolean Of(String paramString)
   {
     AppMethodBeat.i(146047);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WxaAttrStorage", "delete with invalid username");
+      ae.e("MicroMsg.WxaAttrStorage", "delete with invalid username");
       AppMethodBeat.o(146047);
       return false;
     }
@@ -206,42 +206,42 @@ public class u
     return bool;
   }
   
-  protected boolean a(WxaAttributes paramWxaAttributes, egl paramegl)
+  protected boolean a(WxaAttributes paramWxaAttributes, eic parameic)
   {
     AppMethodBeat.i(146052);
-    if (("NickName".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_nickname)))
+    if (("NickName".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_nickname)))
     {
-      paramWxaAttributes.field_nickname = bt.nullAsNil(paramegl.yhw);
+      paramWxaAttributes.field_nickname = bu.nullAsNil(parameic.yxn);
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("BrandIconURL".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_brandIconURL)))
+    if (("BrandIconURL".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_brandIconURL)))
     {
-      paramWxaAttributes.field_brandIconURL = paramegl.yhw;
+      paramWxaAttributes.field_brandIconURL = parameic.yxn;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("BigHeadImgUrl".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_bigHeadURL)))
+    if (("BigHeadImgUrl".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_bigHeadURL)))
     {
-      paramWxaAttributes.field_bigHeadURL = paramegl.yhw;
+      paramWxaAttributes.field_bigHeadURL = parameic.yxn;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("SmallHeadImgUrl".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_smallHeadURL)))
+    if (("SmallHeadImgUrl".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_smallHeadURL)))
     {
-      paramWxaAttributes.field_smallHeadURL = paramegl.yhw;
+      paramWxaAttributes.field_smallHeadURL = parameic.yxn;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("Signature".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_signature)))
+    if (("Signature".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_signature)))
     {
-      paramWxaAttributes.field_signature = paramegl.yhw;
+      paramWxaAttributes.field_signature = parameic.yxn;
       AppMethodBeat.o(146052);
       return true;
     }
-    if ("WxAppOpt".equals(paramegl.ujy))
+    if ("WxAppOpt".equals(parameic.uuW))
     {
-      int i = bt.getInt(paramegl.yhw, 0);
+      int i = bu.getInt(parameic.yxn, 0);
       if (i != paramWxaAttributes.field_appOpt)
       {
         paramWxaAttributes.field_appOpt = i;
@@ -249,51 +249,51 @@ public class u
         return true;
       }
     }
-    if (("RegisterSource".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_registerSource)))
+    if (("RegisterSource".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_registerSource)))
     {
-      paramWxaAttributes.field_registerSource = paramegl.yhw;
+      paramWxaAttributes.field_registerSource = parameic.yxn;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("WxaAppInfo".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_appInfo))) {
-      paramWxaAttributes.field_appInfo = paramegl.yhw;
+    if (("WxaAppInfo".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_appInfo))) {
+      paramWxaAttributes.field_appInfo = parameic.yxn;
     }
     try
     {
-      paramegl = new JSONObject(paramegl.yhw);
-      paramWxaAttributes.field_appId = paramegl.getString("Appid");
-      paramWxaAttributes.field_roundedSquareIconURL = paramegl.getString("RoundedSquareIconUrl");
-      paramWxaAttributes.field_shortNickname = paramegl.optString("ShortNickName");
+      parameic = new JSONObject(parameic.yxn);
+      paramWxaAttributes.field_appId = parameic.getString("Appid");
+      paramWxaAttributes.field_roundedSquareIconURL = parameic.getString("RoundedSquareIconUrl");
+      paramWxaAttributes.field_shortNickname = parameic.optString("ShortNickName");
       label376:
       AppMethodBeat.o(146052);
       return true;
-      if (("WxaAppVersionInfo".equalsIgnoreCase(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_versionInfo)))
+      if (("WxaAppVersionInfo".equalsIgnoreCase(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_versionInfo)))
       {
-        paramWxaAttributes.field_versionInfo = paramegl.yhw;
+        paramWxaAttributes.field_versionInfo = parameic.yxn;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("BindWxaInfo".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_bindWxaInfo)))
+      if (("BindWxaInfo".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_bindWxaInfo)))
       {
-        paramWxaAttributes.field_bindWxaInfo = paramegl.yhw;
+        paramWxaAttributes.field_bindWxaInfo = parameic.yxn;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("WxaAppDynamic".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_dynamicInfo)))
+      if (("WxaAppDynamic".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_dynamicInfo)))
       {
-        paramWxaAttributes.field_dynamicInfo = paramegl.yhw;
+        paramWxaAttributes.field_dynamicInfo = parameic.yxn;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("MMBizMenu".equals(paramegl.ujy)) && (!cD(paramegl.yhw, paramWxaAttributes.field_bizMenu)))
+      if (("MMBizMenu".equals(parameic.uuW)) && (!cF(parameic.yxn, paramWxaAttributes.field_bizMenu)))
       {
-        paramWxaAttributes.field_bizMenu = paramegl.yhw;
+        paramWxaAttributes.field_bizMenu = parameic.yxn;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("PassThroughInfo".equals(paramegl.ujy)) && (!cD(paramegl.ujy, paramWxaAttributes.field_passThroughInfo)))
+      if (("PassThroughInfo".equals(parameic.uuW)) && (!cF(parameic.uuW, paramWxaAttributes.field_passThroughInfo)))
       {
-        paramWxaAttributes.field_passThroughInfo = paramegl.yhw;
+        paramWxaAttributes.field_passThroughInfo = parameic.yxn;
         AppMethodBeat.o(146052);
         return true;
       }
@@ -310,7 +310,7 @@ public class u
   {
     AppMethodBeat.i(146054);
     int i;
-    if (!bt.V(paramVarArgs)) {
+    if (!bu.V(paramVarArgs)) {
       i = 0;
     }
     for (;;)
@@ -333,38 +333,42 @@ public class u
     }
   }
   
-  public final boolean a(kv paramkv)
+  public final boolean a(kv paramkv, List<String> paramList)
   {
-    AppMethodBeat.i(182790);
-    long l = bei();
+    AppMethodBeat.i(220751);
+    long l = beP();
     LinkedList localLinkedList = new LinkedList();
-    paramkv = paramkv.FCX.iterator();
+    paramkv = paramkv.FVs.iterator();
     boolean bool1 = false;
     while (paramkv.hasNext())
     {
-      ego localego = (ego)paramkv.next();
-      ad.i("MicroMsg.WxaAttrStorage", "batchSyncInGroup flushAttrs(%s)", new Object[] { localego.GNH });
-      boolean bool2 = bool1 | a(localego.GNH, localego.FGF, localego.FGG, false);
+      eif localeif = (eif)paramkv.next();
+      ae.i("MicroMsg.WxaAttrStorage", "batchSyncInGroup flushAttrs(%s)", new Object[] { localeif.Hhh });
+      boolean bool2 = bool1 | a(localeif.Hhh, localeif.FZb, localeif.FZc, false);
       bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (!TextUtils.isEmpty(localego.GNH))
+        if (!TextUtils.isEmpty(localeif.Hhh))
         {
-          localLinkedList.add(localego.GNH);
+          localLinkedList.add(localeif.Hhh);
           bool1 = bool2;
         }
       }
     }
-    sJ(l);
-    if (localLinkedList.size() > 0) {
+    sW(l);
+    if (localLinkedList.size() > 0)
+    {
+      if (paramList != null) {
+        paramList.addAll(localLinkedList);
+      }
       doNotify("batch", 3, localLinkedList);
     }
-    AppMethodBeat.o(182790);
+    AppMethodBeat.o(220751);
     return bool1;
   }
   
-  public boolean a(String paramString, b paramb, List<egl> paramList)
+  public boolean a(String paramString, b paramb, List<eic> paramList)
   {
     AppMethodBeat.i(146051);
     boolean bool = a(paramString, paramb, paramList, true);
@@ -372,10 +376,10 @@ public class u
     return bool;
   }
   
-  public final boolean beh()
+  public final boolean beO()
   {
     AppMethodBeat.i(146045);
-    if ((this.db != null) && (!this.db.fmj()))
+    if ((this.db != null) && (!this.db.fqe()))
     {
       AppMethodBeat.o(146045);
       return true;
@@ -388,7 +392,7 @@ public class u
   {
     Object localObject1 = null;
     AppMethodBeat.i(146048);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146048);
       return null;
@@ -400,7 +404,7 @@ public class u
     }
     Object localObject2 = this.db;
     String str = getTableName();
-    if (bt.V(paramVarArgs)) {
+    if (bu.V(paramVarArgs)) {
       paramVarArgs = null;
     }
     for (;;)
@@ -428,14 +432,14 @@ public class u
   {
     Object localObject1 = null;
     AppMethodBeat.i(146049);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146049);
       return null;
     }
     Object localObject2 = this.db;
     String str = getTableName();
-    if (bt.V(paramVarArgs)) {
+    if (bu.V(paramVarArgs)) {
       paramVarArgs = null;
     }
     for (;;)
@@ -444,7 +448,7 @@ public class u
       if (localObject2 != null) {
         break;
       }
-      ad.e("MicroMsg.WxaAttrStorage", "queryWithAppId(%s) null==cursor", new Object[] { paramString });
+      ae.e("MicroMsg.WxaAttrStorage", "queryWithAppId(%s) null==cursor", new Object[] { paramString });
       AppMethodBeat.o(146049);
       return null;
     }
@@ -459,14 +463,14 @@ public class u
       ((Cursor)localObject2).close();
       AppMethodBeat.o(146049);
       return paramString;
-      ad.e("MicroMsg.WxaAttrStorage", "queryWithAppId(%s) !cursor.moveToFirst()", new Object[] { paramString });
+      ae.e("MicroMsg.WxaAttrStorage", "queryWithAppId(%s) !cursor.moveToFirst()", new Object[] { paramString });
     }
   }
   
   protected boolean j(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(146050);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146050);
       return false;

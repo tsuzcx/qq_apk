@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cch;
-import com.tencent.mm.protocal.protobuf.cci;
-import com.tencent.mm.protocal.protobuf.ccl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cdb;
+import com.tencent.mm.protocal.protobuf.cdc;
+import com.tencent.mm.protocal.protobuf.cdf;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -29,14 +29,14 @@ public final class ac
   {
     AppMethodBeat.i(131102);
     b.a locala = new b.a();
-    locala.hNM = new cch();
-    locala.hNN = new cci();
+    locala.hQF = new cdb();
+    locala.hQG = new cdc();
     locala.uri = "/cgi-bin/micromsg-bin/newgetinvitefriend";
     locala.funcId = 135;
-    locala.hNO = 23;
+    locala.hQH = 23;
     locala.respCmdId = 1000000023;
-    this.rr = locala.aDC();
-    ((cch)this.rr.hNK.hNQ).GKD = paramInt;
+    this.rr = locala.aDS();
+    ((cdb)this.rr.hQD.hQJ).Hee = paramInt;
     AppMethodBeat.o(131102);
   }
   
@@ -57,22 +57,22 @@ public final class ac
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131104);
-    paramq = (cci)this.rr.hNL.hNQ;
-    ad.d("MicroMsg.NetSceneGetInviteFriend", "friend:" + paramq.ujw.size() + " group:" + paramq.GroupList.size());
+    paramq = (cdc)this.rr.hQE.hQJ;
+    ae.d("MicroMsg.NetSceneGetInviteFriend", "friend:" + paramq.uuU.size() + " group:" + paramq.GroupList.size());
     paramArrayOfByte = new HashSet();
     LinkedList localLinkedList = new LinkedList();
     paramInt1 = 0;
-    while (paramInt1 < paramq.GWa)
+    while (paramInt1 < paramq.HpA)
     {
-      if (!paramArrayOfByte.contains(((ccl)paramq.ujw.get(paramInt1)).nDo))
+      if (!paramArrayOfByte.contains(((cdf)paramq.uuU.get(paramInt1)).nIJ))
       {
-        localLinkedList.add(paramq.ujw.get(paramInt1));
-        paramArrayOfByte.add(((ccl)paramq.ujw.get(paramInt1)).nDo);
+        localLinkedList.add(paramq.uuU.get(paramInt1));
+        paramArrayOfByte.add(((cdf)paramq.uuU.get(paramInt1)).nIJ);
       }
       paramInt1 += 1;
     }
-    paramq.ujw = localLinkedList;
-    paramq.GWa = localLinkedList.size();
+    paramq.uuU = localLinkedList;
+    paramq.HpA = localLinkedList.size();
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(131104);
   }

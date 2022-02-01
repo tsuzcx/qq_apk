@@ -8,20 +8,20 @@ import java.util.Arrays;
 
 public final class d
 {
-  private static long dcf = 0L;
-  private static long dcg = 0L;
+  private static long ddh = 0L;
+  private static long ddi = 0L;
   public boolean aBS;
   private String appId;
   private long bufferSize;
   public int channels;
   private int count;
-  public int dbW;
-  private ArrayList<e> dbZ;
-  public String dca;
-  public boolean dcb;
-  public boolean dcc;
-  private a dcd;
-  public String dce;
+  public int dcY;
+  private ArrayList<e> ddb;
+  public String ddc;
+  public boolean ddd;
+  public boolean dde;
+  private a ddf;
+  public String ddg;
   public long duration;
   private int index;
   public int sampleRate;
@@ -32,29 +32,29 @@ public final class d
     this.index = 0;
     this.count = 0;
     this.bufferSize = 0L;
-    this.dcc = false;
+    this.dde = false;
     this.sampleRate = 44100;
     this.channels = 2;
-    this.dbW = 2;
-    this.dbZ = new ArrayList();
-    this.dca = paramString;
+    this.dcY = 2;
+    this.ddb = new ArrayList();
+    this.ddc = paramString;
     AppMethodBeat.o(136709);
+  }
+  
+  private void Of()
+  {
+    AppMethodBeat.i(136719);
+    this.dde = false;
+    Oj();
+    AppMethodBeat.o(136719);
   }
   
   private void Oh()
   {
-    AppMethodBeat.i(136719);
-    this.dcc = false;
-    Ol();
-    AppMethodBeat.o(136719);
-  }
-  
-  private void Oj()
-  {
     try
     {
       AppMethodBeat.i(136721);
-      Ok();
+      Oi();
       AppMethodBeat.o(136721);
       return;
     }
@@ -65,53 +65,53 @@ public final class d
     }
   }
   
-  private void Ok()
+  private void Oi()
   {
     AppMethodBeat.i(136722);
-    if (this.dcd == null)
+    if (this.ddf == null)
     {
-      this.dcd = new a(this.appId, this.dca);
-      if (this.dcd.open())
+      this.ddf = new a(this.appId, this.ddc);
+      if (this.ddf.open())
       {
         b.i("MicroMsg.Mix.PcmBufferProvider", "openCacheFile success");
-        this.dcd.setLength(getBufferSize());
+        this.ddf.setLength(getBufferSize());
         AppMethodBeat.o(136722);
         return;
       }
       b.i("MicroMsg.Mix.PcmBufferProvider", "openCacheFile fail");
-      this.dcc = false;
-      Ol();
+      this.dde = false;
+      Oj();
     }
     AppMethodBeat.o(136722);
   }
   
-  private void Ol()
+  private void Oj()
   {
     AppMethodBeat.i(136723);
-    if (this.dcd != null)
+    if (this.ddf != null)
     {
-      this.dcd.close();
-      this.dcd.Og();
-      this.dcd = null;
+      this.ddf.close();
+      this.ddf.Oe();
+      this.ddf = null;
     }
     AppMethodBeat.o(136723);
   }
   
-  private void hE(int paramInt)
+  private void hG(int paramInt)
   {
     AppMethodBeat.i(136713);
-    b.i("MicroMsg.Mix.PcmBufferProvider", "resetProvider src:%s, size:%d, complete:%b, duration:%d, supportMixPlay:%b, bufferSize:%d", new Object[] { this.dca, Integer.valueOf(paramInt), Boolean.valueOf(this.aBS), Long.valueOf(this.duration), Boolean.valueOf(this.dcb), Long.valueOf(this.bufferSize) });
-    this.dbZ.clear();
+    b.i("MicroMsg.Mix.PcmBufferProvider", "resetProvider src:%s, size:%d, complete:%b, duration:%d, supportMixPlay:%b, bufferSize:%d", new Object[] { this.ddc, Integer.valueOf(paramInt), Boolean.valueOf(this.aBS), Long.valueOf(this.duration), Boolean.valueOf(this.ddd), Long.valueOf(this.bufferSize) });
+    this.ddb.clear();
     this.aBS = false;
     this.duration = 0L;
-    this.dcb = false;
+    this.ddd = false;
     this.index = 0;
     this.bufferSize = 0L;
-    Oh();
+    Of();
     AppMethodBeat.o(136713);
   }
   
-  private e hG(int paramInt)
+  private e hI(int paramInt)
   {
     AppMethodBeat.i(136725);
     if (paramInt >= this.count)
@@ -119,42 +119,42 @@ public final class d
       AppMethodBeat.o(136725);
       return null;
     }
-    if (this.dcd == null)
+    if (this.ddf == null)
     {
       AppMethodBeat.o(136725);
       return null;
     }
     int i = paramInt * 3536;
-    if (i > this.dcd.getLength())
+    if (i > this.ddf.getLength())
     {
       AppMethodBeat.o(136725);
       return null;
     }
-    e locale = c.Oq().Or();
+    e locale = c.Oo().Op();
     if (locale == null)
     {
       AppMethodBeat.o(136725);
       return null;
     }
-    if (locale.dbX == null) {
-      locale.dbX = new byte[3536];
+    if (locale.dcZ == null) {
+      locale.dcZ = new byte[3536];
     }
     for (;;)
     {
       System.nanoTime();
-      if (read(locale.dbX, i, locale.dbX.length) > 0) {
+      if (read(locale.dcZ, i, locale.dcZ.length) > 0) {
         break;
       }
-      c.Oq().b(locale);
+      c.Oo().b(locale);
       AppMethodBeat.o(136725);
       return null;
-      Arrays.fill(locale.dbX, 0, locale.dbX.length, (byte)0);
+      Arrays.fill(locale.dcZ, 0, locale.dcZ.length, (byte)0);
     }
-    locale.dce = this.dce;
+    locale.ddg = this.ddg;
     locale.sampleRate = this.sampleRate;
     locale.channels = this.channels;
-    locale.dbW = this.dbW;
-    locale.dch = (paramInt * 20);
+    locale.dcY = this.dcY;
+    locale.ddj = (paramInt * 20);
     AppMethodBeat.o(136725);
     return locale;
   }
@@ -162,9 +162,9 @@ public final class d
   private int read(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
     AppMethodBeat.i(136724);
-    if (this.dcd != null)
+    if (this.ddf != null)
     {
-      paramInt = this.dcd.read(paramArrayOfByte, paramLong, paramInt);
+      paramInt = this.ddf.read(paramArrayOfByte, paramLong, paramInt);
       AppMethodBeat.o(136724);
       return paramInt;
     }
@@ -172,16 +172,16 @@ public final class d
     return 0;
   }
   
-  public final void Oi()
+  public final void Og()
   {
     try
     {
       AppMethodBeat.i(136720);
-      if (this.dcd != null)
+      if (this.ddf != null)
       {
         b.i("MicroMsg.Mix.PcmBufferProvider", "closeCacheFileWithNoDiscard success");
-        this.dcd.close();
-        this.dcd = null;
+        this.ddf.close();
+        this.ddf = null;
       }
       AppMethodBeat.o(136720);
       return;
@@ -193,9 +193,9 @@ public final class d
   {
     AppMethodBeat.i(136715);
     this.index += 1;
-    parame.dch = (this.index * 20);
-    if (this.dbZ != null) {
-      this.dbZ.add(parame);
+    parame.ddj = (this.index * 20);
+    if (this.ddb != null) {
+      this.ddb.add(parame);
     }
     AppMethodBeat.o(136715);
   }
@@ -205,11 +205,11 @@ public final class d
     AppMethodBeat.i(136717);
     this.aBS = true;
     this.count = size();
-    b.i("MicroMsg.Mix.PcmBufferProvider", "src:%s is complete cache", new Object[] { this.dca });
+    b.i("MicroMsg.Mix.PcmBufferProvider", "src:%s is complete cache", new Object[] { this.ddc });
     AppMethodBeat.o(136717);
   }
   
-  public final boolean fI(String paramString)
+  public final boolean fO(String paramString)
   {
     for (;;)
     {
@@ -217,64 +217,64 @@ public final class d
       try
       {
         AppMethodBeat.i(136712);
-        if (this.dcc)
+        if (this.dde)
         {
-          b.i("MicroMsg.Mix.PcmBufferProvider", "cache to file has finish, file:%s", new Object[] { this.dca });
+          b.i("MicroMsg.Mix.PcmBufferProvider", "cache to file has finish, file:%s", new Object[] { this.ddc });
           AppMethodBeat.o(136712);
           bool = true;
           return bool;
         }
         this.appId = paramString;
-        int j = this.dbZ.size();
+        int j = this.ddb.size();
         if (j > 0) {
-          Ok();
+          Oi();
         }
-        if (this.dcd == null)
+        if (this.ddf == null)
         {
           b.e("MicroMsg.Mix.PcmBufferProvider", "cacheFile is null");
-          this.dcc = false;
+          this.dde = false;
           AppMethodBeat.o(136712);
           bool = false;
           continue;
           if (i < j)
           {
-            paramString = (e)this.dbZ.get(i);
+            paramString = (e)this.ddb.get(i);
             if (i == 0)
             {
-              this.dce = paramString.dce;
+              this.ddg = paramString.ddg;
               this.sampleRate = paramString.sampleRate;
-              this.dbW = paramString.dbW;
+              this.dcY = paramString.dcY;
               this.channels = paramString.channels;
             }
             if (paramString == null) {
               break label302;
             }
-            byte[] arrayOfByte = paramString.dbX;
+            byte[] arrayOfByte = paramString.dcZ;
             long l = i * 3536;
-            int k = paramString.dbX.length;
-            if (this.dcd == null) {
+            int k = paramString.dcZ.length;
+            if (this.ddf == null) {
               break label296;
             }
-            bool = this.dcd.a(arrayOfByte, l, k);
+            bool = this.ddf.a(arrayOfByte, l, k);
             if (bool) {
               break label302;
             }
-            Ol();
+            Oj();
             b.e("MicroMsg.Mix.PcmBufferProvider", "setCacheToFile fail");
-            this.dcc = false;
+            this.dde = false;
             AppMethodBeat.o(136712);
             bool = false;
             continue;
           }
-          this.dcc = true;
+          this.dde = true;
           i = j - 1;
           if (i >= 0)
           {
-            paramString = (e)this.dbZ.remove(i);
+            paramString = (e)this.ddb.remove(i);
             if (paramString == null) {
               break label309;
             }
-            com.tencent.mm.audio.mix.b.d.Os().b(paramString);
+            com.tencent.mm.audio.mix.b.d.Oq().b(paramString);
             break label309;
           }
           b.i("MicroMsg.Mix.PcmBufferProvider", "setCacheToFile finish");
@@ -312,33 +312,33 @@ public final class d
     return l;
   }
   
-  public final e hF(int paramInt)
+  public final e hH(int paramInt)
   {
     AppMethodBeat.i(136714);
-    if ((this.dcc) && (this.dcd != null))
+    if ((this.dde) && (this.ddf != null))
     {
-      locale = hG(paramInt);
+      locale = hI(paramInt);
       AppMethodBeat.o(136714);
       return locale;
     }
-    if ((this.dcc) && (this.dcd == null))
+    if ((this.dde) && (this.ddf == null))
     {
-      Oj();
-      locale = hG(paramInt);
+      Oh();
+      locale = hI(paramInt);
       AppMethodBeat.o(136714);
       return locale;
     }
-    if ((this.dbZ == null) || (this.dbZ.size() == 0))
+    if ((this.ddb == null) || (this.ddb.size() == 0))
     {
       AppMethodBeat.o(136714);
       return null;
     }
-    if (paramInt >= this.dbZ.size())
+    if (paramInt >= this.ddb.size())
     {
       AppMethodBeat.o(136714);
       return null;
     }
-    e locale = (e)this.dbZ.get(paramInt);
+    e locale = (e)this.ddb.get(paramInt);
     AppMethodBeat.o(136714);
     return locale;
   }
@@ -351,18 +351,18 @@ public final class d
       try
       {
         AppMethodBeat.i(136711);
-        int j = this.dbZ.size();
+        int j = this.ddb.size();
         i = j - 1;
         if (i >= 0)
         {
-          e locale = (e)this.dbZ.remove(i);
+          e locale = (e)this.ddb.remove(i);
           if (locale != null) {
-            com.tencent.mm.audio.mix.b.d.Os().b(locale);
+            com.tencent.mm.audio.mix.b.d.Oq().b(locale);
           }
         }
         else
         {
-          hE(j);
+          hG(j);
           AppMethodBeat.o(136711);
           return;
         }
@@ -380,20 +380,20 @@ public final class d
       try
       {
         AppMethodBeat.i(136710);
-        int j = this.dbZ.size();
+        int j = this.ddb.size();
         i = j - 1;
         if (i >= 0)
         {
-          e locale = (e)this.dbZ.remove(i);
+          e locale = (e)this.ddb.remove(i);
           if (locale != null)
           {
-            locale.dce = null;
-            locale.dbX = null;
+            locale.ddg = null;
+            locale.dcZ = null;
           }
         }
         else
         {
-          hE(j);
+          hG(j);
           AppMethodBeat.o(136710);
           return;
         }
@@ -412,14 +412,14 @@ public final class d
       AppMethodBeat.o(136716);
       return i;
     }
-    int i = this.dbZ.size();
+    int i = this.ddb.size();
     AppMethodBeat.o(136716);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.a.d
  * JD-Core Version:    0.7.0.1
  */

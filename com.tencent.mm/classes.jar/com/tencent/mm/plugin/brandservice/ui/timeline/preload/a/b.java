@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.List;
@@ -11,21 +11,21 @@ import java.util.List;
 public final class b
   extends j<a>
 {
-  public static final String[] hEf;
-  public static final String[] hEg;
+  public static final String[] hGX;
+  public static final String[] hGY;
   final com.tencent.mm.sdk.e.e db;
   
   static
   {
     AppMethodBeat.i(6191);
-    hEf = new String[] { j.getCreateSQLs(a.hEe, "BizAppMsgReportContext") };
-    hEg = new String[0];
+    hGX = new String[] { j.getCreateSQLs(a.hGW, "BizAppMsgReportContext") };
+    hGY = new String[0];
     AppMethodBeat.o(6191);
   }
   
   public b(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, a.hEe, "BizAppMsgReportContext", hEg);
+    super(parame, a.hGW, "BizAppMsgReportContext", hGY);
     this.db = parame;
   }
   
@@ -38,17 +38,17 @@ public final class b
     return bool;
   }
   
-  public final void ct(List<a> paramList)
+  public final void cv(List<a> paramList)
   {
     AppMethodBeat.i(6189);
-    long l = g.ajC().gBq.xO(Thread.currentThread().getId());
+    long l = g.ajR().gDX.yi(Thread.currentThread().getId());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       if (!delete((a)paramList.next(), new String[0])) {
-        ad.v("MicroMsg.Preload.BizAppMsgReportContextStorage", "[remove] delete fail");
+        ae.v("MicroMsg.Preload.BizAppMsgReportContextStorage", "[remove] delete fail");
       }
     }
-    g.ajC().gBq.sJ(l);
+    g.ajR().gDX.sW(l);
     AppMethodBeat.o(6189);
   }
 }

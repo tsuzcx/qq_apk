@@ -20,8 +20,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.platformtools.v;
 import com.tencent.mm.plugin.ball.f.f;
@@ -30,15 +31,17 @@ import com.tencent.mm.plugin.fav.ui.widget.FavVideoView;
 import com.tencent.mm.plugin.fav.ui.widget.FavVideoView.b;
 import com.tencent.mm.pluginsdk.ui.tools.q;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.tools.e.c;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,73 +49,73 @@ import java.util.List;
 public class FavoriteVideoPlayUI
   extends MMActivity
 {
-  private boolean dBt;
-  private String dsU;
-  private String hdP;
-  private ImageView iUP;
+  private boolean dCy;
+  private String dua;
+  private String hgD;
+  private ImageView iXI;
   private boolean isAnimated;
-  private String iuq;
+  private String ixk;
   private long msgId;
-  private Bundle oGn;
-  private com.tencent.mm.ui.tools.e oGo;
-  private int oGp;
-  private int oGq;
-  private int oGr;
-  private int oGs;
-  private boolean rAV;
-  private View.OnLongClickListener rAj;
-  private String rBn;
-  private RelativeLayout rBo;
-  private FavVideoView rBp;
-  private LinearLayout rBq;
-  private boolean rBr;
-  private int rBs;
-  private boolean rBt;
-  private boolean rBu;
-  private boolean rBv;
-  private String rso;
+  private Bundle oMP;
+  private com.tencent.mm.ui.tools.e oMQ;
+  private int oMR;
+  private int oMS;
+  private int oMT;
+  private int oMU;
+  private String rAB;
+  private View.OnLongClickListener rIu;
+  private FavVideoView rJA;
+  private LinearLayout rJB;
+  private boolean rJC;
+  private int rJD;
+  private boolean rJE;
+  private boolean rJF;
+  private boolean rJG;
+  private boolean rJg;
+  private String rJy;
+  private RelativeLayout rJz;
   private String thumbPath;
   private int videoDuration;
   
   public FavoriteVideoPlayUI()
   {
     AppMethodBeat.i(107266);
-    this.rAV = true;
+    this.rJg = true;
     this.isAnimated = false;
-    this.oGp = 0;
-    this.oGq = 0;
-    this.oGr = 0;
-    this.oGs = 0;
-    this.rBr = true;
-    this.dBt = true;
-    this.rBt = false;
-    this.rso = "";
-    this.rBu = true;
-    this.rAj = new View.OnLongClickListener()
+    this.oMR = 0;
+    this.oMS = 0;
+    this.oMT = 0;
+    this.oMU = 0;
+    this.rJC = true;
+    this.dCy = true;
+    this.rJE = false;
+    this.rAB = "";
+    this.rJF = true;
+    this.rIu = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107260);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
         if (!FavoriteVideoPlayUI.a(FavoriteVideoPlayUI.this).Zn)
         {
-          ad.i("MicroMsg.FavoriteVideoPlayUI", "longClickListener onClick isPrepared:false");
+          ae.i("MicroMsg.FavoriteVideoPlayUI", "longClickListener onClick isPrepared:false");
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(107260);
           return true;
         }
         paramAnonymousView.getTag();
         paramAnonymousView = new com.tencent.mm.ui.widget.a.e(FavoriteVideoPlayUI.this.getContext(), 1, false);
-        paramAnonymousView.KJy = new n.d()
+        paramAnonymousView.LfS = new n.d()
         {
           public final void onCreateMMMenu(l paramAnonymous2l)
           {
             AppMethodBeat.i(107258);
             if (FavoriteVideoPlayUI.b(FavoriteVideoPlayUI.this))
             {
-              if (com.tencent.mm.vfs.i.fv(FavoriteVideoPlayUI.c(FavoriteVideoPlayUI.this))) {
+              if (o.fB(FavoriteVideoPlayUI.c(FavoriteVideoPlayUI.this))) {
                 paramAnonymous2l.add(0, 1, 0, FavoriteVideoPlayUI.this.getString(2131759001));
               }
               paramAnonymous2l.add(0, 2, 0, FavoriteVideoPlayUI.this.getString(2131762784));
@@ -120,7 +123,7 @@ public class FavoriteVideoPlayUI
             AppMethodBeat.o(107258);
           }
         };
-        paramAnonymousView.KJz = new n.e()
+        paramAnonymousView.LfT = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -136,13 +139,13 @@ public class FavoriteVideoPlayUI
               paramAnonymous2MenuItem.putExtra("Select_Conv_Type", 3);
               paramAnonymous2MenuItem.putExtra("select_is_ret", true);
               paramAnonymous2MenuItem.putExtra("mutil_select_is_ret", true);
-              if (com.tencent.mm.vfs.i.fv(FavoriteVideoPlayUI.c(FavoriteVideoPlayUI.this))) {
+              if (o.fB(FavoriteVideoPlayUI.c(FavoriteVideoPlayUI.this))) {
                 paramAnonymous2MenuItem.putExtra("image_path", FavoriteVideoPlayUI.c(FavoriteVideoPlayUI.this));
               }
               for (;;)
               {
                 paramAnonymous2MenuItem.putExtra("Retr_Msg_Type", 1);
-                com.tencent.mm.bs.d.c(FavoriteVideoPlayUI.this.getContext(), ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 1);
+                com.tencent.mm.br.d.c(FavoriteVideoPlayUI.this.getContext(), ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 1);
                 if (FavoriteVideoPlayUI.e(FavoriteVideoPlayUI.this) != 0) {
                   break;
                 }
@@ -154,80 +157,80 @@ public class FavoriteVideoPlayUI
               paramAnonymous2MenuItem = FavoriteVideoPlayUI.this;
               String str1 = FavoriteVideoPlayUI.d(FavoriteVideoPlayUI.this);
               FavoriteVideoPlayUI localFavoriteVideoPlayUI = FavoriteVideoPlayUI.this;
-              String str2 = u.Hz(str1);
-              ad.i("MicroMsg.FavoriteVideoPlayUI", "save video now video path %s out path %s", new Object[] { str1, str2 });
-              if (bt.isNullOrNil(str2))
+              String str2 = u.Ib(str1);
+              ae.i("MicroMsg.FavoriteVideoPlayUI", "save video now video path %s out path %s", new Object[] { str1, str2 });
+              if (bu.isNullOrNil(str2))
               {
                 Toast.makeText(localFavoriteVideoPlayUI, localFavoriteVideoPlayUI.getString(2131764682), 1).show();
                 AppMethodBeat.o(107259);
                 return;
               }
-              Toast.makeText(localFavoriteVideoPlayUI, localFavoriteVideoPlayUI.getString(2131764683, new Object[] { com.tencent.mm.sdk.f.b.aRB(str2) }), 1).show();
+              Toast.makeText(localFavoriteVideoPlayUI, localFavoriteVideoPlayUI.getString(2131764683, new Object[] { com.tencent.mm.sdk.f.b.aSY(str2) }), 1).show();
               q.k(str2, localFavoriteVideoPlayUI);
-              com.tencent.e.h.LTJ.aR(new FavoriteVideoPlayUI.4(paramAnonymous2MenuItem, str2));
+              com.tencent.e.h.MqF.aO(new FavoriteVideoPlayUI.4(paramAnonymous2MenuItem, str2));
             }
           }
         };
-        paramAnonymousView.cMW();
+        paramAnonymousView.cPF();
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(107260);
         return true;
       }
     };
-    this.rBv = false;
+    this.rJG = false;
     AppMethodBeat.o(107266);
   }
   
   private void g(ImageView paramImageView)
   {
     AppMethodBeat.i(107268);
-    if (this.rBu)
+    if (this.rJF)
     {
-      this.rBp.c(this.hdP, this.rBt, this.rso);
+      this.rJA.c(this.hgD, this.rJE, this.rAB);
       if (paramImageView != null)
       {
-        if (!com.tencent.mm.vfs.i.fv(this.thumbPath)) {
+        if (!o.fB(this.thumbPath)) {
           break label70;
         }
-        paramImageView.setImageBitmap(BackwardSupportUtil.b.o(this.thumbPath, 1.0F));
+        paramImageView.setImageBitmap(BackwardSupportUtil.b.p(this.thumbPath, 1.0F));
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay: fullPath is not null,but not exist videoView.setVideoData(null)");
+      ae.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay: fullPath is not null,but not exist videoView.setVideoData(null)");
       AppMethodBeat.o(107268);
       return;
       label70:
       paramImageView.setImageResource(2131231602);
       continue;
-      ((com.tencent.mm.plugin.record.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.record.a.g.class)).g(getIntent().getStringExtra("record_xml"), this.msgId, this.dsU);
-      this.rBp.c(this.hdP, true, this.dsU);
-      this.rBp.setThumbView(this.thumbPath);
+      ((com.tencent.mm.plugin.record.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.record.a.g.class)).g(getIntent().getStringExtra("record_xml"), this.msgId, this.dua);
+      this.rJA.c(this.hgD, true, this.dua);
+      this.rJA.setThumbView(this.thumbPath);
     }
   }
   
-  public final void bWL()
+  public final void bYa()
   {
     AppMethodBeat.i(107276);
-    this.rBq.setVisibility(8);
-    int k = this.rBo.getWidth();
-    int j = this.rBo.getHeight();
+    this.rJB.setVisibility(8);
+    int k = this.rJz.getWidth();
+    int j = this.rJz.getHeight();
     int i = j;
-    if (this.oGr != 0)
+    if (this.oMT != 0)
     {
       i = j;
-      if (this.oGs != 0) {
-        i = (int)(k / this.oGr * this.oGs);
+      if (this.oMU != 0) {
+        i = (int)(k / this.oMT * this.oMU);
       }
     }
-    this.oGo.jZ(k, i);
-    this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
-    this.oGo.a(this.rBp, this.iUP, new e.c()
+    this.oMQ.kg(k, i);
+    this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
+    this.oMQ.a(this.rJA, this.iXI, new e.c()
     {
       public final void onAnimationEnd()
       {
         AppMethodBeat.i(164105);
-        new ap().post(new Runnable()
+        new aq().post(new Runnable()
         {
           public final void run()
           {
@@ -279,11 +282,11 @@ public class FavoriteVideoPlayUI
           public final void run()
           {
             AppMethodBeat.i(164101);
-            this.rvc.dismiss();
+            this.rDo.dismiss();
             AppMethodBeat.o(164101);
           }
         };
-        if (!bt.isNullOrNil((String)localObject)) {
+        if (!bu.isNullOrNil((String)localObject)) {
           break label91;
         }
         AppMethodBeat.o(107275);
@@ -292,38 +295,38 @@ public class FavoriteVideoPlayUI
         break;
       }
       label91:
-      Object localObject = bt.U(((String)localObject).split(",")).iterator();
+      Object localObject = bu.U(((String)localObject).split(",")).iterator();
       label295:
       while (((Iterator)localObject).hasNext())
       {
         String str1 = (String)((Iterator)localObject).next();
         AppCompatActivity localAppCompatActivity = getContext();
-        String str2 = this.hdP;
+        String str2 = this.hgD;
         String str3 = this.thumbPath;
         paramInt1 = this.videoDuration;
-        String str4 = this.rBn;
-        String str5 = this.iuq;
+        String str4 = this.rJy;
+        String str5 = this.ixk;
         if (localAppCompatActivity == null) {
-          ad.w("MicroMsg.FavSendLogic", "want to send fav video, but context is null");
+          ae.w("MicroMsg.FavSendLogic", "want to send fav video, but context is null");
         }
         for (;;)
         {
-          if (bt.isNullOrNil(paramIntent)) {
+          if (bu.isNullOrNil(paramIntent)) {
             break label295;
           }
-          com.tencent.mm.plugin.messenger.a.g.dlD().aa(str1, paramIntent, w.Ar(str1));
+          com.tencent.mm.plugin.messenger.a.g.doC().aa(str1, paramIntent, x.Bb(str1));
           break;
-          if (bt.isNullOrNil(str1))
+          if (bu.isNullOrNil(str1))
           {
-            ad.w("MicroMsg.FavSendLogic", "want to send fav video, but to user is null");
+            ae.w("MicroMsg.FavSendLogic", "want to send fav video, but to user is null");
           }
           else
           {
-            com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(str2);
-            if ((bt.isNullOrNil(str2)) && (!locale.exists())) {
-              ad.w("MicroMsg.FavSendLogic", "want to send fav video, but datapath is null or is not exist ");
+            k localk = new k(str2);
+            if ((bu.isNullOrNil(str2)) && (!localk.exists())) {
+              ae.w("MicroMsg.FavSendLogic", "want to send fav video, but datapath is null or is not exist ");
             } else {
-              com.tencent.mm.kernel.g.ajF().ay(new l.6(localAppCompatActivity, str1, str2, str3, paramInt1, str4, str5, local5));
+              com.tencent.mm.kernel.g.ajU().aw(new l.6(localAppCompatActivity, str1, str2, str3, paramInt1, str4, str5, local5));
             }
           }
         }
@@ -339,7 +342,7 @@ public class FavoriteVideoPlayUI
   public void onBackPressed()
   {
     AppMethodBeat.i(107277);
-    bWL();
+    bYa();
     AppMethodBeat.o(107277);
   }
   
@@ -348,83 +351,83 @@ public class FavoriteVideoPlayUI
     AppMethodBeat.i(107267);
     super.onCreate(paramBundle);
     hideTitleView();
-    if (com.tencent.mm.compatible.util.d.ly(19)) {
+    if (com.tencent.mm.compatible.util.d.lA(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
     {
-      this.oGn = paramBundle;
+      this.oMP = paramBundle;
       getWindow().addFlags(128);
-      this.rBr = getIntent().getBooleanExtra("key_detail_data_valid", true);
-      this.hdP = getIntent().getStringExtra("key_detail_fav_path");
+      this.rJC = getIntent().getBooleanExtra("key_detail_data_valid", true);
+      this.hgD = getIntent().getStringExtra("key_detail_fav_path");
       this.thumbPath = getIntent().getStringExtra("key_detail_fav_thumb_path");
       this.videoDuration = getIntent().getIntExtra("key_detail_fav_video_duration", 0);
-      this.rBn = getIntent().getStringExtra("key_detail_statExtStr");
-      this.rBs = getIntent().getIntExtra("key_detail_fav_video_scene_from", 0);
-      this.dBt = getIntent().getBooleanExtra("show_share", true);
-      this.rBt = getIntent().getBooleanExtra("key_detail_fav_video_show_download_status", false);
-      this.rso = getIntent().getStringExtra("key_detail_data_id");
-      this.rBu = getIntent().getBooleanExtra("key_detail_is_data_exist", true);
-      this.dsU = getIntent().getStringExtra("record_data_id");
+      this.rJy = getIntent().getStringExtra("key_detail_statExtStr");
+      this.rJD = getIntent().getIntExtra("key_detail_fav_video_scene_from", 0);
+      this.dCy = getIntent().getBooleanExtra("show_share", true);
+      this.rJE = getIntent().getBooleanExtra("key_detail_fav_video_show_download_status", false);
+      this.rAB = getIntent().getStringExtra("key_detail_data_id");
+      this.rJF = getIntent().getBooleanExtra("key_detail_is_data_exist", true);
+      this.dua = getIntent().getStringExtra("record_data_id");
       this.msgId = getIntent().getLongExtra("message_id", -1L);
-      this.iuq = getIntent().getStringExtra("key_detail_msg_uuid");
-      if (!com.tencent.mm.vfs.i.fv(this.thumbPath))
+      this.ixk = getIntent().getStringExtra("key_detail_msg_uuid");
+      if (!o.fB(this.thumbPath))
       {
-        paramBundle = com.tencent.mm.plugin.fav.ui.e.agH(this.hdP);
+        paramBundle = com.tencent.mm.plugin.fav.ui.e.ahE(this.hgD);
         if (paramBundle == null) {}
       }
       try
       {
-        ad.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay: create thumbpath bitmap, saveBitmapToImage ");
-        com.tencent.mm.sdk.platformtools.g.a(paramBundle, 60, Bitmap.CompressFormat.JPEG, this.thumbPath, true);
-        boolean bool = this.rBr;
-        if (bt.isNullOrNil(this.thumbPath))
+        ae.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay: create thumbpath bitmap, saveBitmapToImage ");
+        com.tencent.mm.sdk.platformtools.h.a(paramBundle, 60, Bitmap.CompressFormat.JPEG, this.thumbPath, true);
+        boolean bool = this.rJC;
+        if (bu.isNullOrNil(this.thumbPath))
         {
           paramBundle = "";
-          if (!bt.isNullOrNil(this.hdP)) {
+          if (!bu.isNullOrNil(this.hgD)) {
             break label580;
           }
           str = "";
-          ad.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay: init data, isVideoValid: %B. thumbPath: %s, fullPath: %s", new Object[] { Boolean.valueOf(bool), paramBundle, str });
-          this.rBo = ((RelativeLayout)findViewById(2131306409));
-          this.rBp = ((FavVideoView)findViewById(2131306410));
+          ae.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay: init data, isVideoValid: %B. thumbPath: %s, fullPath: %s", new Object[] { Boolean.valueOf(bool), paramBundle, str });
+          this.rJz = ((RelativeLayout)findViewById(2131306409));
+          this.rJA = ((FavVideoView)findViewById(2131306410));
           paramBundle = (ImageView)findViewById(2131306398);
-          this.iUP = ((ImageView)findViewById(2131300336));
-          this.rBq = ((LinearLayout)findViewById(2131299788));
-          if ((!this.rBr) && (this.rBq != null)) {
-            this.rBq.setVisibility(0);
+          this.iXI = ((ImageView)findViewById(2131300336));
+          this.rJB = ((LinearLayout)findViewById(2131299788));
+          if ((!this.rJC) && (this.rJB != null)) {
+            this.rJB.setVisibility(0);
           }
-          if (bt.isNullOrNil(this.hdP)) {
+          if (bu.isNullOrNil(this.hgD)) {
             break label596;
           }
-          if (!com.tencent.mm.vfs.i.fv(this.hdP)) {
+          if (!o.fB(this.hgD)) {
             break label588;
           }
-          this.rBp.setVideoData(this.hdP);
-          ad.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay:  videoView.setVideoData(fullPath)");
-          if (this.dBt) {
-            this.rBp.setOnLongClickListener(this.rAj);
+          this.rJA.setVideoData(this.hgD);
+          ae.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay:  videoView.setVideoData(fullPath)");
+          if (this.dCy) {
+            this.rJA.setOnLongClickListener(this.rIu);
           }
-          this.oGo = new com.tencent.mm.ui.tools.e(null);
-          this.rBp.setCallback(new FavVideoView.b()
+          this.oMQ = new com.tencent.mm.ui.tools.e(null);
+          this.rJA.setCallback(new FavVideoView.b()
           {
             public final void finish()
             {
               AppMethodBeat.i(107256);
-              FavoriteVideoPlayUI.this.bWL();
+              FavoriteVideoPlayUI.this.bYa();
               AppMethodBeat.o(107256);
             }
           });
-          this.rBp.setOnClickListener(new View.OnClickListener()
+          this.rJA.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(107257);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
               localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
               if (FavoriteVideoPlayUI.a(FavoriteVideoPlayUI.this) != null) {
-                FavoriteVideoPlayUI.a(FavoriteVideoPlayUI.this).cxq();
+                FavoriteVideoPlayUI.a(FavoriteVideoPlayUI.this).cyR();
               }
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteVideoPlayUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(107257);
@@ -439,12 +442,12 @@ public class FavoriteVideoPlayUI
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.FavoriteVideoPlayUI", paramBundle, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.FavoriteVideoPlayUI", paramBundle, "", new Object[0]);
           continue;
           paramBundle = this.thumbPath;
           continue;
           label580:
-          String str = this.hdP;
+          String str = this.hgD;
           continue;
           label588:
           g(paramBundle);
@@ -460,7 +463,7 @@ public class FavoriteVideoPlayUI
   {
     AppMethodBeat.i(107273);
     setResult(0, getIntent().putExtra("key_activity_browse_time", getActivityBrowseTimeMs()));
-    this.rBp.onDestroy();
+    this.rJA.onDestroy();
     getWindow().clearFlags(128);
     super.onDestroy();
     AppMethodBeat.o(107273);
@@ -472,13 +475,13 @@ public class FavoriteVideoPlayUI
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(2048, 2048);
     }
-    if (this.rBp.isPlaying()) {
-      this.rBv = true;
+    if (this.rJA.isPlaying()) {
+      this.rJG = true;
     }
-    FavVideoView localFavVideoView = this.rBp;
-    ad.i("MicroMsg.FavVideoView", "VideoPlay:   onPause()");
-    localFavVideoView.cxs();
-    localFavVideoView.cxt();
+    FavVideoView localFavVideoView = this.rJA;
+    ae.i("MicroMsg.FavVideoView", "VideoPlay:   onPause()");
+    localFavVideoView.cyT();
+    localFavVideoView.cyU();
     super.onPause();
     f.e(false, true, true);
     AppMethodBeat.o(107272);
@@ -490,11 +493,11 @@ public class FavoriteVideoPlayUI
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().clearFlags(2048);
     }
-    ad.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay:  onResume,hadOnStart is %B", new Object[] { Boolean.valueOf(this.rAV) });
-    this.rAV = false;
+    ae.i("MicroMsg.FavoriteVideoPlayUI", "VideoPlay:  onResume,hadOnStart is %B", new Object[] { Boolean.valueOf(this.rJg) });
+    this.rJg = false;
     super.onResume();
-    if (this.rBv) {
-      this.rBp.cxu();
+    if (this.rJG) {
+      this.rJA.cyV();
     }
     f.e(true, true, true);
     AppMethodBeat.o(107271);
@@ -503,19 +506,19 @@ public class FavoriteVideoPlayUI
   public void onStart()
   {
     AppMethodBeat.i(107270);
-    Bundle localBundle = this.oGn;
+    Bundle localBundle = this.oMP;
     if (!this.isAnimated)
     {
       this.isAnimated = true;
       if (Build.VERSION.SDK_INT >= 12)
       {
-        this.oGp = getIntent().getIntExtra("img_gallery_top", 0);
-        this.oGq = getIntent().getIntExtra("img_gallery_left", 0);
-        this.oGr = getIntent().getIntExtra("img_gallery_width", 0);
-        this.oGs = getIntent().getIntExtra("img_gallery_height", 0);
-        this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
+        this.oMR = getIntent().getIntExtra("img_gallery_top", 0);
+        this.oMS = getIntent().getIntExtra("img_gallery_left", 0);
+        this.oMT = getIntent().getIntExtra("img_gallery_width", 0);
+        this.oMU = getIntent().getIntExtra("img_gallery_height", 0);
+        this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
         if (localBundle == null) {
-          this.rBp.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+          this.rJA.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
           {
             public final boolean onPreDraw()
             {

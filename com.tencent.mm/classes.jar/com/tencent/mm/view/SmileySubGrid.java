@@ -9,9 +9,9 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
 import com.tencent.mm.ui.base.CustomViewPager;
 import com.tencent.mm.ui.base.MMFlipper;
 import com.tencent.mm.view.a.a;
@@ -21,50 +21,50 @@ import com.tencent.mm.view.popview.c;
 public class SmileySubGrid
   extends SmileyGrid
 {
-  private volatile int GlH;
-  int JjA;
-  int LrL;
-  boolean LrM;
-  private AbstractPopView LrN;
-  private c LrO;
-  private int LrP;
-  private a LrQ;
-  private b LrR;
-  private View LrS;
-  private boolean LrT;
-  private av LrU;
-  private volatile boolean LrV;
-  public boolean LrW;
-  private final Object LrX;
+  private volatile int GEJ;
+  int JEo;
+  private int LOA;
+  private a LOB;
+  private b LOC;
+  private View LOD;
+  private boolean LOE;
+  private aw LOF;
+  private volatile boolean LOH;
+  public boolean LOI;
+  private final Object LOJ;
+  int LOw;
+  boolean LOx;
+  private AbstractPopView LOy;
+  private c LOz;
   Rect amF;
   int amK;
   private int anx;
   int aye;
-  private WindowManager gKC;
-  private ap mHandler;
+  private WindowManager gNl;
+  private aq mHandler;
   private int mTouchSlop;
-  float pLf;
-  float pLg;
-  private boolean pPL;
+  float pRK;
+  float pRL;
+  private boolean pWq;
   
   public SmileySubGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(105228);
-    this.JjA = 6;
-    this.LrL = -1;
+    this.JEo = 6;
+    this.LOw = -1;
     this.amF = new Rect();
-    this.mHandler = new ap();
-    this.LrT = false;
-    this.LrU = null;
-    this.GlH = -1;
-    this.LrV = false;
-    this.LrW = true;
-    this.LrX = new Object();
+    this.mHandler = new aq();
+    this.LOE = false;
+    this.LOF = null;
+    this.GEJ = -1;
+    this.LOH = false;
+    this.LOI = true;
+    this.LOJ = new Object();
     this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.gKC = ((WindowManager)paramContext.getSystemService("window"));
+    this.gNl = ((WindowManager)paramContext.getSystemService("window"));
     this.anx = getLongTouchTime();
-    this.LrP = ViewConfiguration.getPressedStateDuration();
+    this.LOA = ViewConfiguration.getPressedStateDuration();
     AppMethodBeat.o(105228);
   }
   
@@ -78,19 +78,19 @@ public class SmileySubGrid
   private void aU(final View paramView, int paramInt)
   {
     AppMethodBeat.i(105230);
-    if (paramInt != this.GlH)
+    if (paramInt != this.GEJ)
     {
-      ad.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "jacks begin show:%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "jacks begin show:%d", new Object[] { Integer.valueOf(paramInt) });
       Object localObject = getAdapter().getItem(paramInt);
-      if (this.LrN == null)
+      if (this.LOy == null)
       {
-        this.LrN = c.b(getContext(), localObject);
-        this.gKC.addView(this.LrN, this.LrN.getWindowLayoutParams());
-        this.LrN.setVisibility(4);
+        this.LOy = c.b(getContext(), localObject);
+        this.gNl.addView(this.LOy, this.LOy.getWindowLayoutParams());
+        this.LOy.setVisibility(4);
       }
-      el(localObject);
-      this.gKC.updateViewLayout(this.LrN, this.LrN.getWindowLayoutParams());
-      this.LrN.post(new Runnable()
+      eo(localObject);
+      this.gNl.updateViewLayout(this.LOy, this.LOy.getWindowLayoutParams());
+      this.LOy.post(new Runnable()
       {
         public final void run()
         {
@@ -98,7 +98,7 @@ public class SmileySubGrid
           if (SmileySubGrid.a(SmileySubGrid.this) != null)
           {
             SmileySubGrid.a(SmileySubGrid.this).setVisibility(0);
-            SmileySubGrid.a(SmileySubGrid.this).hl(paramView);
+            SmileySubGrid.a(SmileySubGrid.this).hq(paramView);
             SmileySubGrid.b(SmileySubGrid.this).updateViewLayout(SmileySubGrid.a(SmileySubGrid.this), SmileySubGrid.a(SmileySubGrid.this).getWindowLayoutParams());
           }
           AppMethodBeat.o(183931);
@@ -107,52 +107,52 @@ public class SmileySubGrid
     }
     for (;;)
     {
-      this.GlH = paramInt;
+      this.GEJ = paramInt;
       AppMethodBeat.o(105230);
       return;
-      ad.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "jacks already show:%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "jacks already show:%d", new Object[] { Integer.valueOf(paramInt) });
     }
   }
   
-  private void el(Object paramObject)
+  private void eo(Object paramObject)
   {
     AppMethodBeat.i(105238);
-    synchronized (this.LrX)
+    synchronized (this.LOJ)
     {
-      if (this.LrN != null)
+      if (this.LOy != null)
       {
-        c.a(this.LrN, paramObject);
+        c.a(this.LOy, paramObject);
         AppMethodBeat.o(105238);
         return;
       }
-      ad.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "mPopImageView is null.");
+      ae.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "mPopImageView is null.");
     }
   }
   
-  private void fQg()
+  private void fUC()
   {
     AppMethodBeat.i(105233);
-    if (this.LrO != null) {
-      this.mHandler.removeCallbacks(this.LrO);
+    if (this.LOz != null) {
+      this.mHandler.removeCallbacks(this.LOz);
     }
-    if (this.LrN != null)
+    if (this.LOy != null)
     {
-      this.gKC.removeView(this.LrN);
-      this.LrN = null;
-      this.pPL = false;
-      this.LrV = false;
+      this.gNl.removeView(this.LOy);
+      this.LOy = null;
+      this.pWq = false;
+      this.LOH = false;
     }
-    this.GlH = -1;
+    this.GEJ = -1;
     AppMethodBeat.o(105233);
   }
   
-  private void hj(View paramView)
+  private void ho(View paramView)
   {
     AppMethodBeat.i(105234);
     Rect localRect = this.amF;
     localRect.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
     T(localRect.left, localRect.top, localRect.right, localRect.bottom);
-    boolean bool = this.LrM;
+    boolean bool = this.LOx;
     if (paramView.isEnabled() != bool) {
       if (bool) {
         break label86;
@@ -161,7 +161,7 @@ public class SmileySubGrid
     label86:
     for (bool = true;; bool = false)
     {
-      this.LrM = bool;
+      this.LOx = bool;
       refreshDrawableState();
       AppMethodBeat.o(105234);
       return;
@@ -180,7 +180,7 @@ public class SmileySubGrid
   {
     AppMethodBeat.i(105240);
     super.onDetachedFromWindow();
-    fQg();
+    fUC();
     AppMethodBeat.o(105240);
   }
   
@@ -188,9 +188,9 @@ public class SmileySubGrid
   {
     b localb = null;
     AppMethodBeat.i(105229);
-    if (!this.LrW)
+    if (!this.LOI)
     {
-      fQg();
+      fUC();
       boolean bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(105229);
       return bool;
@@ -205,8 +205,8 @@ public class SmileySubGrid
       return true;
       i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
-      this.pLf = i;
-      this.pLg = j;
+      this.pRK = i;
+      this.pRL = j;
       i = pointToPosition(i, j);
       if ((i >= 0) && (getAdapter().isEnabled(i))) {
         this.aye = 0;
@@ -214,24 +214,24 @@ public class SmileySubGrid
       paramMotionEvent = localb;
       if (i >= 0)
       {
-        this.LrL = i;
+        this.LOw = i;
         paramMotionEvent = getChildAt(i - getFirstVisiblePosition());
       }
       if (paramMotionEvent != null)
       {
         paramMotionEvent.setPressed(true);
         paramMotionEvent.setSelected(true);
-        hj(paramMotionEvent);
+        ho(paramMotionEvent);
       }
-      if (this.LrQ == null) {
-        this.LrQ = new a((byte)0);
+      if (this.LOB == null) {
+        this.LOB = new a((byte)0);
       }
-      this.LrQ.fJK();
+      this.LOB.fOb();
       this.amK = i;
       if ((i >= 0) && ((getAdapter() instanceof a)))
       {
         getAdapter();
-        this.mHandler.postDelayed(this.LrQ, this.anx);
+        this.mHandler.postDelayed(this.LOB, this.anx);
       }
       if ((i >= 0) && ((getAdapter() instanceof a)))
       {
@@ -239,83 +239,83 @@ public class SmileySubGrid
         continue;
         i = (int)paramMotionEvent.getX();
         j = (int)paramMotionEvent.getY();
-        if (this.JjA == 5)
+        if (this.JEo == 5)
         {
           i = pointToPosition(i, j);
           this.amK = i;
           if ((i >= 0) && ((getAdapter() instanceof a)))
           {
             getAdapter();
-            if (this.LrL != i)
+            if (this.LOw != i)
             {
-              this.LrL = i;
+              this.LOw = i;
               paramMotionEvent = getChildAt(i - getFirstVisiblePosition());
               layoutChildren();
               if (paramMotionEvent != null)
               {
                 paramMotionEvent.setPressed(true);
                 paramMotionEvent.setSelected(true);
-                hj(paramMotionEvent);
-                aU(paramMotionEvent, this.LrL);
+                ho(paramMotionEvent);
+                aU(paramMotionEvent, this.LOw);
               }
             }
           }
           for (;;)
           {
-            this.mHandler.removeCallbacks(this.LrQ);
+            this.mHandler.removeCallbacks(this.LOB);
             break;
-            fQg();
-            if (this.LrL >= 0)
+            fUC();
+            if (this.LOw >= 0)
             {
-              paramMotionEvent = getChildAt(this.LrL - getFirstVisiblePosition());
+              paramMotionEvent = getChildAt(this.LOw - getFirstVisiblePosition());
               if (paramMotionEvent != null)
               {
                 paramMotionEvent.setPressed(false);
                 paramMotionEvent.setSelected(false);
-                hj(paramMotionEvent);
+                ho(paramMotionEvent);
               }
             }
           }
         }
-        if (Math.abs(this.pLf - i) > this.mTouchSlop)
+        if (Math.abs(this.pRK - i) > this.mTouchSlop)
         {
           this.aye = -1;
-          this.mHandler.removeCallbacks(this.LrQ);
+          this.mHandler.removeCallbacks(this.LOB);
         }
-        fQg();
+        fUC();
         continue;
         j = this.amK;
         paramMotionEvent = getChildAt(j - getFirstVisiblePosition());
         if ((i == 1) && (this.aye != -1))
         {
-          if (this.LrR == null) {
-            this.LrR = new b((byte)0);
+          if (this.LOC == null) {
+            this.LOC = new b((byte)0);
           }
-          localb = this.LrR;
+          localb = this.LOC;
           localb.FF = paramMotionEvent;
-          localb.KBd = j;
-          localb.fJK();
+          localb.KXx = j;
+          localb.fOb();
           this.mHandler.post(localb);
         }
-        if (this.LrU != null)
+        if (this.LOF != null)
         {
-          this.LrU.stopTimer();
-          this.LrU = null;
+          this.LOF.stopTimer();
+          this.LOF = null;
         }
-        this.mHandler.removeCallbacks(this.LrQ);
+        this.mHandler.removeCallbacks(this.LOB);
         setScrollEnable(true);
-        fQg();
-        if (this.LrL >= 0)
+        fUC();
+        if (this.LOw >= 0)
         {
-          paramMotionEvent = getChildAt(this.LrL - getFirstVisiblePosition());
+          paramMotionEvent = getChildAt(this.LOw - getFirstVisiblePosition());
           if (paramMotionEvent != null)
           {
             paramMotionEvent.setPressed(false);
             paramMotionEvent.setSelected(false);
-            hj(paramMotionEvent);
+            ho(paramMotionEvent);
           }
         }
-        this.JjA = 6;
+        this.JEo = 6;
       }
     }
   }
@@ -324,34 +324,34 @@ public class SmileySubGrid
   {
     AppMethodBeat.i(105239);
     super.release();
-    fQg();
+    fUC();
     AppMethodBeat.o(105239);
   }
   
   public void setFromDetail(boolean paramBoolean)
   {
-    this.LrT = paramBoolean;
+    this.LOE = paramBoolean;
   }
   
   public void setIsShowPopWin(boolean paramBoolean)
   {
-    this.LrW = paramBoolean;
+    this.LOI = paramBoolean;
   }
   
   protected void setScrollEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(105236);
-    ad.d("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "cpan t setScrollEnable:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.LrS != null)
+    ae.d("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "cpan t setScrollEnable:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.LOD != null)
     {
-      if ((this.LrS instanceof MMFlipper))
+      if ((this.LOD instanceof MMFlipper))
       {
-        ((MMFlipper)this.LrS).setScrollEnable(paramBoolean);
+        ((MMFlipper)this.LOD).setScrollEnable(paramBoolean);
         AppMethodBeat.o(105236);
         return;
       }
-      if ((this.LrS instanceof CustomViewPager)) {
-        ((CustomViewPager)this.LrS).setCanSlide(paramBoolean);
+      if ((this.LOD instanceof CustomViewPager)) {
+        ((CustomViewPager)this.LOD).setCanSlide(paramBoolean);
       }
     }
     AppMethodBeat.o(105236);
@@ -359,7 +359,7 @@ public class SmileySubGrid
   
   public void setViewParent(View paramView)
   {
-    this.LrS = paramView;
+    this.LOD = paramView;
   }
   
   final class a
@@ -374,7 +374,7 @@ public class SmileySubGrid
     public final void run()
     {
       AppMethodBeat.i(105223);
-      ad.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "LongPress run");
+      ae.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "LongPress run");
       int i = SmileySubGrid.this.amK;
       Object localObject = SmileySubGrid.this;
       localObject = ((SmileySubGrid)localObject).getChildAt(i - ((SmileySubGrid)localObject).getFirstVisiblePosition());
@@ -382,12 +382,12 @@ public class SmileySubGrid
       {
         int j = SmileySubGrid.this.amK;
         long l = SmileySubGrid.this.getAdapter().getItemId(SmileySubGrid.this.amK);
-        if (fJL())
+        if (fOc())
         {
-          ad.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "CheckForLongPress performLongPress position:[%d] id:[%d]", new Object[] { Integer.valueOf(j), Long.valueOf(l) });
+          ae.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "CheckForLongPress performLongPress position:[%d] id:[%d]", new Object[] { Integer.valueOf(j), Long.valueOf(l) });
           SmileySubGrid.a(SmileySubGrid.this, (View)localObject, i);
           SmileySubGrid.this.aye = -1;
-          SmileySubGrid.this.JjA = 5;
+          SmileySubGrid.this.JEo = 5;
           SmileySubGrid.this.setScrollEnable(false);
         }
       }
@@ -400,7 +400,7 @@ public class SmileySubGrid
     implements Runnable
   {
     View FF;
-    int KBd;
+    int KXx;
     
     private b()
     {
@@ -410,12 +410,12 @@ public class SmileySubGrid
     public final void run()
     {
       AppMethodBeat.i(105224);
-      ad.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "Click run");
+      ae.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "Click run");
       ListAdapter localListAdapter = SmileySubGrid.this.getAdapter();
-      int i = this.KBd;
-      if ((localListAdapter != null) && (SmileySubGrid.this.getCount() > 0) && (i != -1) && (i < localListAdapter.getCount()) && (fJL()))
+      int i = this.KXx;
+      if ((localListAdapter != null) && (SmileySubGrid.this.getCount() > 0) && (i != -1) && (i < localListAdapter.getCount()) && (fOc()))
       {
-        ad.d("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "PerformClick performItemClick position:[%d] id:[%d] ", new Object[] { Integer.valueOf(i), Long.valueOf(localListAdapter.getItemId(i)) });
+        ae.d("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "PerformClick performItemClick position:[%d] id:[%d] ", new Object[] { Integer.valueOf(i), Long.valueOf(localListAdapter.getItemId(i)) });
         SmileySubGrid.this.performItemClick(this.FF, i, localListAdapter.getItemId(i));
       }
       AppMethodBeat.o(105224);
@@ -428,10 +428,10 @@ public class SmileySubGrid
     public final void run()
     {
       AppMethodBeat.i(105225);
-      if (!SmileySubGrid.e(this.LrY))
+      if (!SmileySubGrid.e(this.LOK))
       {
-        SmileySubGrid.b(this.LrY).addView(SmileySubGrid.a(this.LrY), SmileySubGrid.a(this.LrY).getWindowLayoutParams());
-        SmileySubGrid.f(this.LrY);
+        SmileySubGrid.b(this.LOK).addView(SmileySubGrid.a(this.LOK), SmileySubGrid.a(this.LOK).getWindowLayoutParams());
+        SmileySubGrid.f(this.LOK);
       }
       AppMethodBeat.o(105225);
     }
@@ -439,21 +439,21 @@ public class SmileySubGrid
   
   class d
   {
-    private int Jnt;
+    private int JIi;
     
     private d() {}
     
-    public final void fJK()
+    public final void fOb()
     {
       AppMethodBeat.i(105226);
-      this.Jnt = SmileySubGrid.c(SmileySubGrid.this);
+      this.JIi = SmileySubGrid.c(SmileySubGrid.this);
       AppMethodBeat.o(105226);
     }
     
-    public final boolean fJL()
+    public final boolean fOc()
     {
       AppMethodBeat.i(105227);
-      if ((SmileySubGrid.this.hasWindowFocus()) && (SmileySubGrid.d(SmileySubGrid.this) == this.Jnt))
+      if ((SmileySubGrid.this.hasWindowFocus()) && (SmileySubGrid.d(SmileySubGrid.this) == this.JIi))
       {
         AppMethodBeat.o(105227);
         return true;
@@ -465,7 +465,7 @@ public class SmileySubGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.SmileySubGrid
  * JD-Core Version:    0.7.0.1
  */

@@ -94,6 +94,7 @@ public final class g$a
   public static final int[] PopupWindow = { 16843126, 16843465, 2130969358 };
   public static final int[] PopupWindowBackgroundState = { 2130969478 };
   public static final int[] Preference = { 2130968903, 2130968905, 2130968972, 2130969030, 2130969062, 2130969066, 2130969128, 2130969147, 2130969356, 2130969373, 2130969433, 2130969445, 2130969495, 2130969590, 2130969637 };
+  public static final int[] ProgressLoading = { 2130969721, 2130969722, 2130969723, 2130969724 };
   public static final int[] RecycleListView = { 2130969359, 2130969362 };
   public static final int[] RecyclerView = { 16842948, 16842993, 2130968997, 2130968998, 2130968999, 2130969000, 2130969001, 2130969148, 2130969412, 2130969466, 2130969475 };
   public static final int[] RefreshLoadMoreLayout = { 2130969247, 2130969408 };

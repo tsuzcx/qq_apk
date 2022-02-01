@@ -5,7 +5,7 @@ import org.json.JSONObject;
 public final class e
 {
   public JSONObject jsonObject;
-  public boolean kFz;
+  public boolean kIO;
   public String uuid;
 }
 

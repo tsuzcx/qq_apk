@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.l;
 import com.tencent.mm.plugin.wallet_core.ui.l.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.wallet_core.ui.f;
 import junit.framework.Assert;
 
 public final class c
@@ -22,24 +22,24 @@ public final class c
     {
       Assert.assertTrue(bool);
       l locall1 = new l(paramContext);
-      locall1.DfS = new l.a()
+      locall1.Dxw = new l.a()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72051);
-          ad.i("MicroMsg.PayUUtil", "hy: user clicked the span");
-          e.aW(this.val$context, "https://www.payu.co.za/wechat/terms-and-conditions/");
+          ae.i("MicroMsg.PayUUtil", "hy: user clicked the span");
+          f.aY(this.val$context, "https://www.payu.co.za/wechat/terms-and-conditions/");
           AppMethodBeat.o(72051);
         }
       };
       l locall2 = new l(paramContext);
-      locall2.DfS = new l.a()
+      locall2.Dxw = new l.a()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72052);
-          ad.i("MicroMsg.PayUUtil", "hy: user clicked the tos span");
-          e.aW(this.val$context, "https://weixin.qq.com/cgi-bin/readtemplate?lang=en_US&check=false&t=weixin_agreement&s=terms");
+          ae.i("MicroMsg.PayUUtil", "hy: user clicked the tos span");
+          f.aY(this.val$context, "https://weixin.qq.com/cgi-bin/readtemplate?lang=en_US&check=false&t=weixin_agreement&s=terms");
           AppMethodBeat.o(72052);
         }
       };
@@ -56,7 +56,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.a.c
  * JD-Core Version:    0.7.0.1
  */

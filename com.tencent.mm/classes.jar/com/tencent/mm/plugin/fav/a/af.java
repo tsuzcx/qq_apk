@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.ajt;
-import com.tencent.mm.protocal.protobuf.akg;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akq;
 import java.util.List;
 
 public abstract interface af
   extends d
 {
-  public abstract void checkFavItem(akg paramakg);
+  public abstract void checkFavItem(akq paramakq);
   
-  public abstract void checkFavItem(List<ajt> paramList);
+  public abstract void checkFavItem(List<akd> paramList);
   
   public abstract r getCheckCdnService();
   

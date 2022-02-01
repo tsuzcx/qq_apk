@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.uc;
 
 public final class b
-  extends ua
+  extends uc
 {
-  public boolean dKs = false;
-  public String hAD;
-  public int oxX;
-  public boolean oxY = false;
-  public boolean oxZ = false;
-  public boolean oya = false;
-  public String oyb;
+  public boolean dLH = false;
+  public String hDr;
+  public boolean oEA = false;
+  public boolean oEB = false;
+  public boolean oEC = false;
+  public String oED;
+  public int oEz;
 }
 
 

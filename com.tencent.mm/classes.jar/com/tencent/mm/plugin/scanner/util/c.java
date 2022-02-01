@@ -11,42 +11,39 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.q;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.g.a.oo;
-import com.tencent.mm.g.a.oo.b;
-import com.tencent.mm.g.a.sm;
-import com.tencent.mm.g.a.sm.b;
+import com.tencent.mm.g.a.op;
+import com.tencent.mm.g.a.op.b;
+import com.tencent.mm.g.a.sn;
+import com.tencent.mm.g.a.sn.b;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.w;
 import com.tencent.mm.model.x;
 import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
-import com.tencent.mm.network.ae;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.plugin.i.a.t;
 import com.tencent.mm.plugin.i.a.u;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.scanner.model.OfflineScanContext;
+import com.tencent.mm.plugin.scanner.model.o;
 import com.tencent.mm.plugin.scanner.view.b.a;
 import com.tencent.mm.plugin.w.a.a.a;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.ui.tools.k;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.acf;
-import com.tencent.mm.protocal.protobuf.aoq;
-import com.tencent.mm.protocal.protobuf.brw;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.protocal.protobuf.cyp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.aco;
+import com.tencent.mm.protocal.protobuf.apd;
+import com.tencent.mm.protocal.protobuf.bsq;
+import com.tencent.mm.protocal.protobuf.cyw;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
@@ -60,58 +57,58 @@ import java.util.TimerTask;
 import org.json.JSONObject;
 
 public final class c
-  implements com.tencent.mm.al.f, a.a
+  implements com.tencent.mm.ak.f, a.a
 {
   public String appId;
-  private int dnt;
-  private int dnu;
-  public String dnw;
+  private int dov;
+  private int dow;
+  public String doy;
   public String imagePath;
   public Activity mActivity;
-  public ProgressDialog nZt;
-  public int ooi;
+  public ProgressDialog ofc;
+  public int otZ;
   public String source;
   public int sourceType;
   public String talker;
   private String typeName;
-  private boolean ymW;
-  private int ypM;
-  private boolean ypb;
-  private boolean yyY;
-  private int yyZ;
-  private com.tencent.mm.plugin.scanner.view.b yzb;
-  private Timer yzc;
-  private TimerTask yzd;
-  private int yzm;
-  private String yzn;
-  private Bundle yzo;
-  com.tencent.mm.plugin.scanner.d.e.a yzp;
-  private Map<com.tencent.mm.al.n, Integer> yzq;
-  boolean yzr;
+  private boolean yCV;
+  private int yFL;
+  private boolean yFa;
+  private boolean yOY;
+  private int yOZ;
+  private com.tencent.mm.plugin.scanner.view.b yPb;
+  private Timer yPc;
+  private TimerTask yPd;
+  private int yPm;
+  private String yPn;
+  private Bundle yPo;
+  com.tencent.mm.plugin.scanner.d.e.a yPp;
+  private Map<com.tencent.mm.ak.n, Integer> yPq;
+  boolean yPr;
   
   public c()
   {
     AppMethodBeat.i(52043);
-    this.ymW = false;
-    this.yyZ = -1;
-    this.ypb = false;
-    this.nZt = null;
-    this.yzp = null;
-    this.yzb = null;
-    this.yzq = new HashMap();
-    this.yzc = null;
-    this.yzd = null;
-    this.yzr = false;
-    ad.i("MicroMsg.QBarStringHandler", "onResume");
-    com.tencent.mm.kernel.g.aiU().a(106, this);
-    com.tencent.mm.kernel.g.aiU().a(233, this);
-    com.tencent.mm.kernel.g.aiU().a(666, this);
-    com.tencent.mm.kernel.g.aiU().a(372, this);
-    com.tencent.mm.kernel.g.aiU().a(3512, this);
+    this.yCV = false;
+    this.yOZ = -1;
+    this.yFa = false;
+    this.ofc = null;
+    this.yPp = null;
+    this.yPb = null;
+    this.yPq = new HashMap();
+    this.yPc = null;
+    this.yPd = null;
+    this.yPr = false;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "onResume");
+    com.tencent.mm.kernel.g.ajj().a(106, this);
+    com.tencent.mm.kernel.g.ajj().a(233, this);
+    com.tencent.mm.kernel.g.ajj().a(666, this);
+    com.tencent.mm.kernel.g.ajj().a(372, this);
+    com.tencent.mm.kernel.g.ajj().a(3512, this);
     AppMethodBeat.o(52043);
   }
   
-  private static int Nq(int paramInt)
+  private static int NW(int paramInt)
   {
     if ((paramInt == 30) || (paramInt == 37) || (paramInt == 38) || (paramInt == 40)) {
       return 13;
@@ -125,7 +122,7 @@ public final class c
     return 0;
   }
   
-  private static int OT(int paramInt)
+  private static int PA(int paramInt)
   {
     if (paramInt == 1) {
       return 34;
@@ -139,14 +136,14 @@ public final class c
     return 30;
   }
   
-  private void OU(int paramInt)
+  private void PB(int paramInt)
   {
     AppMethodBeat.i(52055);
     Object localObject2;
-    if (this.yzo != null)
+    if (this.yPo != null)
     {
-      localObject2 = this.yzo.getString("stat_url");
-      if (((this.sourceType == 6) || (this.sourceType == 0)) && (!bt.isNullOrNil((String)localObject2)))
+      localObject2 = this.yPo.getString("stat_url");
+      if (((this.sourceType == 6) || (this.sourceType == 0)) && (!bu.isNullOrNil((String)localObject2)))
       {
         localObject1 = "";
         localObject4 = "";
@@ -154,9 +151,9 @@ public final class c
     }
     try
     {
-      localObject2 = URLEncoder.encode(bt.nullAsNil((String)localObject2), "UTF-8");
+      localObject2 = URLEncoder.encode(bu.nullAsNil((String)localObject2), "UTF-8");
       localObject1 = localObject2;
-      String str = URLEncoder.encode(bt.nullAsNil(this.yzn), "UTF-8");
+      String str = URLEncoder.encode(bu.nullAsNil(this.yPn), "UTF-8");
       localObject1 = str;
       localObject4 = localObject2;
       localObject2 = localObject1;
@@ -165,12 +162,12 @@ public final class c
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.QBarStringHandler", localUnsupportedEncodingException, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.QBarStringHandler", localUnsupportedEncodingException, "", new Object[0]);
         Object localObject3 = localObject4;
         localObject4 = localObject1;
       }
     }
-    com.tencent.mm.plugin.report.service.g.yhR.f(13329, new Object[] { localObject4, localObject2, Integer.valueOf(paramInt) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(13329, new Object[] { localObject4, localObject2, Integer.valueOf(paramInt) });
     AppMethodBeat.o(52055);
   }
   
@@ -178,30 +175,30 @@ public final class c
   {
     int i = 2;
     AppMethodBeat.i(52052);
-    ad.i("MicroMsg.QBarStringHandler", "start search contact %s", new Object[] { paramString });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "start search contact %s", new Object[] { paramString });
     if (paramInt == 2) {}
     for (paramInt = i;; paramInt = 1)
     {
       paramString = new com.tencent.mm.plugin.messenger.a.f(paramString, paramInt, 5, paramBoolean);
-      this.yzq.put(paramString, Integer.valueOf(1));
-      com.tencent.mm.kernel.g.aiU().a(paramString, 0);
+      this.yPq.put(paramString, Integer.valueOf(1));
+      com.tencent.mm.kernel.g.ajj().a(paramString, 0);
       paramString = new b.a()
       {
-        public final void dMH()
+        public final void dQa()
         {
-          AppMethodBeat.i(186233);
-          com.tencent.mm.kernel.g.aiU().a(paramString);
-          if (c.this.yzp != null) {
-            c.this.yzp.t(1, null);
+          AppMethodBeat.i(189515);
+          com.tencent.mm.kernel.g.ajj().a(paramString);
+          if (c.this.yPp != null) {
+            c.this.yPp.t(1, null);
           }
           c.a(c.this, paramString);
-          AppMethodBeat.o(186233);
+          AppMethodBeat.o(189515);
         }
       };
       if (paramActivity == null) {
         break label127;
       }
-      if ((!paramBoolean) || (!this.yzr)) {
+      if ((!paramBoolean) || (!this.yPr)) {
         break;
       }
       c(paramActivity.getString(2131762836), paramString);
@@ -216,44 +213,44 @@ public final class c
   private void a(Activity paramActivity, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(52053);
-    if (this.ooi > 0) {}
-    for (int i = this.ooi;; i = OT(this.yzm))
+    if (this.otZ > 0) {}
+    for (int i = this.otZ;; i = PA(this.yPm))
     {
-      ad.i("MicroMsg.QBarStringHandler", "getA8Key text:%s, mQBarStringSource: %s, sceneValue: %s", new Object[] { paramString1, Integer.valueOf(this.yzm), Integer.valueOf(i) });
-      final com.tencent.mm.modelsimple.k localk = new com.tencent.mm.modelsimple.k(paramString1, i, paramInt1, paramInt2, paramString2, (int)System.currentTimeMillis(), new byte[0]);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "getA8Key text:%s, mQBarStringSource: %s, sceneValue: %s", new Object[] { paramString1, Integer.valueOf(this.yPm), Integer.valueOf(i) });
+      final com.tencent.mm.modelsimple.l locall = new com.tencent.mm.modelsimple.l(paramString1, i, paramInt1, paramInt2, paramString2, (int)System.currentTimeMillis(), new byte[0]);
       if (paramString1.startsWith("http://weixin.qq.com/r/"))
       {
         String str = paramActivity.getIntent().getStringExtra("img_gallery_session_id");
-        paramInt1 = com.tencent.mm.ui.e.a.abw(this.yzm);
-        localk.setSubScene(paramInt1);
+        paramInt1 = com.tencent.mm.ui.e.a.ace(this.yPm);
+        locall.setSubScene(paramInt1);
         paramString1 = "";
         paramString2 = paramString1;
-        if (!bt.isNullOrNil(str))
+        if (!bu.isNullOrNil(str))
         {
-          paramString2 = y.aBq().AF(str);
+          paramString2 = com.tencent.mm.model.z.aBG().Bp(str);
           if (paramString2 != null) {
             paramString1 = paramString2.getString("url", null);
           }
-          localk.Gl(paramString1);
+          locall.GN(paramString1);
           paramString2 = paramString1;
         }
-        ad.i("MicroMsg.QBarStringHandler", "getA8Key currentUrl:%s, qBarScene: %d", new Object[] { paramString2, Integer.valueOf(paramInt1) });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "getA8Key currentUrl:%s, qBarScene: %d", new Object[] { paramString2, Integer.valueOf(paramInt1) });
       }
-      this.yzq.put(localk, Integer.valueOf(1));
-      com.tencent.mm.kernel.g.aiU().a(localk, 0);
-      if (this.nZt != null) {
-        this.nZt.dismiss();
+      this.yPq.put(locall, Integer.valueOf(1));
+      com.tencent.mm.kernel.g.ajj().a(locall, 0);
+      if (this.ofc != null) {
+        this.ofc.dismiss();
       }
       a(paramActivity.getString(2131762131), new b.a()
       {
-        public final void dMH()
+        public final void dQa()
         {
           AppMethodBeat.i(52042);
-          com.tencent.mm.kernel.g.aiU().a(localk);
-          if (c.this.yzp != null) {
-            c.this.yzp.t(1, null);
+          com.tencent.mm.kernel.g.ajj().a(locall);
+          if (c.this.yPp != null) {
+            c.this.yPp.t(1, null);
           }
-          c.a(c.this, localk);
+          c.a(c.this, locall);
           AppMethodBeat.o(52042);
         }
       });
@@ -266,23 +263,23 @@ public final class c
   {
     boolean bool1 = false;
     AppMethodBeat.i(52044);
-    boolean bool2 = this.ypb;
-    if (this.yzb == null) {
+    boolean bool2 = this.yFa;
+    if (this.yPb == null) {
       bool1 = true;
     }
-    ad.d("MicroMsg.QBarStringHandler", "alvinluo showLoading isFromScanUI: %b, loadingViewModel == null: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-    if ((this.yzb != null) && (this.ypb))
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "alvinluo showLoading isFromScanUI: %b, loadingViewModel == null: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+    if ((this.yPb != null) && (this.yFa))
     {
       cancelLoading();
-      this.yzc = new Timer();
-      this.yzd = new h(this.yzb, new h.b()
+      this.yPc = new Timer();
+      this.yPd = new h(this.yPb, new h.b()
       {
         public final void onShow()
         {
-          c.this.yzr = true;
+          c.this.yPr = true;
         }
       }, parama);
-      this.yzc.schedule(this.yzd, 500L);
+      this.yPc.schedule(this.yPd, 500L);
       AppMethodBeat.o(52044);
       return;
     }
@@ -290,7 +287,7 @@ public final class c
     AppMethodBeat.o(52044);
   }
   
-  private static boolean awW(String paramString)
+  private static boolean ayl(String paramString)
   {
     AppMethodBeat.i(52049);
     if ((paramString.startsWith("weixin://wxpay/bizpayurl")) || (paramString.startsWith("https://wx.tenpay.com/f2f")) || (paramString.startsWith("wxp://f2f")) || (paramString.startsWith("wxhb://f2f")) || (paramString.startsWith("wxp://wbf2f")) || (paramString.startsWith("m")) || (paramString.startsWith("https://payapp.weixin.qq.com/qr/")) || (paramString.startsWith("n")))
@@ -305,16 +302,16 @@ public final class c
   private void b(String paramString, final b.a parama)
   {
     AppMethodBeat.i(52047);
-    if (this.nZt != null) {
-      this.nZt.dismiss();
+    if (this.ofc != null) {
+      this.ofc.dismiss();
     }
-    this.nZt = com.tencent.mm.ui.base.h.b(this.mActivity, paramString, true, new DialogInterface.OnCancelListener()
+    this.ofc = com.tencent.mm.ui.base.h.b(this.mActivity, paramString, true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(52035);
         if (parama != null) {
-          parama.dMH();
+          parama.dQa();
         }
         AppMethodBeat.o(52035);
       }
@@ -325,16 +322,16 @@ public final class c
   private void c(String paramString, b.a parama)
   {
     AppMethodBeat.i(52045);
-    boolean bool2 = this.ypb;
-    if (this.yzb == null) {}
+    boolean bool2 = this.yFa;
+    if (this.yPb == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ad.d("MicroMsg.QBarStringHandler", "alvinluo directShowLoading isFromScanUI: %b, loadingViewModel == null: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if ((this.yzb == null) || (!this.ypb)) {
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "alvinluo directShowLoading isFromScanUI: %b, loadingViewModel == null: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      if ((this.yPb == null) || (!this.yFa)) {
         break;
       }
-      this.yzr = true;
-      this.yzb.a(true, false, parama);
+      this.yPr = true;
+      this.yPb.a(true, false, parama);
       AppMethodBeat.o(52045);
       return;
     }
@@ -345,25 +342,25 @@ public final class c
   private void cancelLoading()
   {
     AppMethodBeat.i(52046);
-    ad.i("MicroMsg.QBarStringHandler", "alvinluo cancelLoading");
-    if (this.yzb != null) {
-      this.yzb.a(false, false, null);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "alvinluo cancelLoading");
+    if (this.yPb != null) {
+      this.yPb.a(false, false, null);
     }
-    if ((this.nZt != null) && (this.nZt.isShowing())) {
-      this.nZt.dismiss();
+    if ((this.ofc != null) && (this.ofc.isShowing())) {
+      this.ofc.dismiss();
     }
-    if (this.yzc != null) {
-      this.yzc.cancel();
+    if (this.yPc != null) {
+      this.yPc.cancel();
     }
-    if (this.yzd != null) {
-      this.yzd.cancel();
+    if (this.yPd != null) {
+      this.yPd.cancel();
     }
     AppMethodBeat.o(52046);
   }
   
-  private int dBq()
+  private int dEH()
   {
-    switch (this.yzm)
+    switch (this.yPm)
     {
     case 0: 
     case 2: 
@@ -376,76 +373,76 @@ public final class c
   private void onPause()
   {
     AppMethodBeat.i(52051);
-    ad.i("MicroMsg.QBarStringHandler", "onPause");
-    com.tencent.mm.kernel.g.aiU().b(106, this);
-    com.tencent.mm.kernel.g.aiU().b(233, this);
-    com.tencent.mm.kernel.g.aiU().b(666, this);
-    com.tencent.mm.kernel.g.aiU().b(372, this);
-    com.tencent.mm.kernel.g.aiU().b(3512, this);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "onPause");
+    com.tencent.mm.kernel.g.ajj().b(106, this);
+    com.tencent.mm.kernel.g.ajj().b(233, this);
+    com.tencent.mm.kernel.g.ajj().b(666, this);
+    com.tencent.mm.kernel.g.ajj().b(372, this);
+    com.tencent.mm.kernel.g.ajj().b(3512, this);
     AppMethodBeat.o(52051);
   }
   
   public final void a(final Activity paramActivity, String paramString1, final int paramInt1, final String paramString2, final int paramInt2, int paramInt3, com.tencent.mm.plugin.scanner.d.e.a parama, com.tencent.mm.plugin.scanner.view.b paramb, Bundle paramBundle, int paramInt4, boolean paramBoolean1, int paramInt5, boolean paramBoolean2)
   {
     AppMethodBeat.i(52048);
-    ad.i("MicroMsg.QBarStringHandler", "dealQBarString %s, source:%d, codeType: %s, codeVersion: %s, scanEntryScene: %d, processOfflineScan: %b, networkStatus: %d, isFromScanUI: %b", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(paramBoolean1), Integer.valueOf(com.tencent.mm.kernel.g.aiU().aEN()), Boolean.valueOf(paramBoolean2) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "dealQBarString %s, source:%d, codeType: %s, codeVersion: %s, scanEntryScene: %d, processOfflineScan: %b, networkStatus: %d, isFromScanUI: %b", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(paramBoolean1), Integer.valueOf(com.tencent.mm.kernel.g.ajj().aFd()), Boolean.valueOf(paramBoolean2) });
     this.mActivity = paramActivity;
-    this.yzm = paramInt1;
-    this.yzn = paramString1;
-    this.dnt = paramInt2;
-    this.dnu = paramInt3;
+    this.yPm = paramInt1;
+    this.yPn = paramString1;
+    this.dov = paramInt2;
+    this.dow = paramInt3;
     this.typeName = paramString2;
-    this.yzp = parama;
-    this.yzo = paramBundle;
-    this.yyY = paramBoolean1;
-    this.ypM = paramInt4;
-    this.ypb = paramBoolean2;
+    this.yPp = parama;
+    this.yPo = paramBundle;
+    this.yOY = paramBoolean1;
+    this.yFL = paramInt4;
+    this.yFa = paramBoolean2;
     if (paramInt1 == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ymW = bool;
-      this.yyZ = paramInt5;
-      this.yzb = paramb;
+      this.yCV = bool;
+      this.yOZ = paramInt5;
+      this.yPb = paramb;
       paramString2 = "";
       if (paramBundle != null) {
         paramString2 = paramBundle.getString("stat_url", "");
       }
-      if (!bt.isNullOrNil(paramString1)) {
+      if (!bu.isNullOrNil(paramString1)) {
         break;
       }
-      ad.e("MicroMsg.QBarStringHandler", "qbarstring is null or nil");
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.QBarStringHandler", "qbarstring is null or nil");
       AppMethodBeat.o(52048);
       return;
     }
-    if (com.tencent.mm.kernel.g.aiU().aEN() == 0)
+    if (com.tencent.mm.kernel.g.ajj().aFd() == 0)
     {
-      paramBoolean1 = ay.isConnected(this.mActivity);
-      if (this.yzp != null)
+      paramBoolean1 = az.isConnected(this.mActivity);
+      if (this.yPp != null)
       {
         paramString2 = null;
-        if (awW(paramString1))
+        if (ayl(paramString1))
         {
           paramString2 = new Bundle();
           paramString2.putBoolean("key_offline_scan_show_tips", false);
         }
-        this.yzp.t(0, paramString2);
-        this.yzp.t(6, paramString2);
+        this.yPp.t(0, paramString2);
+        this.yPp.t(6, paramString2);
       }
       if (paramBoolean1)
       {
         paramInt4 = 2;
-        if (this.yyY) {
+        if (this.yOY) {
           break label466;
         }
-        paramString2 = b.yzj;
-        if (!b.qK(paramBoolean2)) {
+        paramString2 = b.yPj;
+        if (!b.qR(paramBoolean2)) {
           break label466;
         }
-        ad.e("MicroMsg.QBarStringHandler", "alvinluo dealQBarString network unavailable and deal with offline, isConnected: %b", new Object[] { Boolean.valueOf(paramBoolean1) });
-        if (!awW(paramString1))
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.QBarStringHandler", "alvinluo dealQBarString network unavailable and deal with offline, isConnected: %b", new Object[] { Boolean.valueOf(paramBoolean1) });
+        if (!ayl(paramString1))
         {
-          paramString2 = b.yzj;
-          paramString2 = new OfflineScanContext(paramActivity, paramInt4, paramString1, paramInt1, paramInt2, paramInt3, this.typeName, this.ymW, paramBundle);
+          paramString2 = b.yPj;
+          paramString2 = new OfflineScanContext(paramActivity, paramInt4, paramString1, paramInt1, paramInt2, paramInt3, this.typeName, this.yCV, paramBundle);
           if (!paramBoolean1) {
             break label447;
           }
@@ -453,9 +450,9 @@ public final class c
           label400:
           b.a(paramString2, paramActivity, false);
         }
-        paramActivity = com.tencent.mm.plugin.scanner.model.n.ymX;
+        paramActivity = o.yCW;
         paramActivity = this.typeName;
-        if (!this.ymW) {
+        if (!this.yCV) {
           break label461;
         }
       }
@@ -463,7 +460,7 @@ public final class c
       label461:
       for (paramInt1 = 2;; paramInt1 = 1)
       {
-        com.tencent.mm.plugin.scanner.model.n.d(paramString1, paramActivity, paramInt1, paramInt4, 0);
+        o.d(paramString1, paramActivity, paramInt1, paramInt4, 0);
         AppMethodBeat.o(52048);
         return;
         paramInt4 = 1;
@@ -472,16 +469,16 @@ public final class c
         break label400;
       }
       label466:
-      if (this.yyY)
+      if (this.yOY)
       {
-        paramString1 = b.yzj;
-        if (b.qK(paramBoolean2))
+        paramString1 = b.yPj;
+        if (b.qR(paramBoolean2))
         {
-          paramString1 = b.yzj;
+          paramString1 = b.yPj;
           if (paramBoolean1) {}
           for (paramString1 = this.mActivity.getString(2131762850);; paramString1 = this.mActivity.getString(2131762853))
           {
-            b.f(paramActivity, paramString1);
+            b.g(paramActivity, paramString1);
             AppMethodBeat.o(52048);
             return;
           }
@@ -495,91 +492,91 @@ public final class c
     if (paramString1.startsWith("weixin://qr/")) {
       parama = paramString1.substring(12) + "@qr";
     }
-    if (!bt.isNullOrNil(parama))
+    if (!bu.isNullOrNil(parama))
     {
       a(paramActivity, paramInt1, parama, false);
       AppMethodBeat.o(52048);
       return;
     }
-    if (awW(paramString1))
+    if (ayl(paramString1))
     {
-      ad.i("MicroMsg.QBarStringHandler", "alvinluo dealQBarString isPayCode and report");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "alvinluo dealQBarString isPayCode and report");
       if (!paramBoolean1)
       {
-        parama = b.yzj;
-        if (b.qK(paramBoolean2))
+        parama = b.yPj;
+        if (b.qR(paramBoolean2))
         {
-          parama = com.tencent.mm.plugin.scanner.model.n.ymX;
+          parama = o.yCW;
           parama = this.typeName;
-          if (!this.ymW) {
+          if (!this.yCV) {
             break label973;
           }
           paramInt1 = 2;
-          com.tencent.mm.plugin.scanner.model.n.d(paramString1, parama, paramInt1, 4, 0);
+          o.d(paramString1, parama, paramInt1, 4, 0);
         }
       }
     }
-    ad.d("MicroMsg.QBarStringHandler", "qbarString: %s, auth native: %s, remittance: %s", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "qbarString: %s, auth native: %s, remittance: %s", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
     if (paramString1.startsWith("weixin://wxpay/bizpayurl"))
     {
-      ad.i("MicroMsg.QBarStringHandler", "do native pay");
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "do native pay");
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
-      paramInt1 = OT(this.yzm);
-      paramInt2 = Nq(paramInt1);
-      paramActivity = new oo();
-      paramActivity.dCw.url = paramString1;
-      paramActivity.dCw.channel = paramInt2;
-      paramActivity.dCw.scene = paramInt1;
-      paramActivity.dCw.context = this.mActivity;
+      paramInt1 = PA(this.yPm);
+      paramInt2 = NW(paramInt1);
+      paramActivity = new op();
+      paramActivity.dDB.url = paramString1;
+      paramActivity.dDB.channel = paramInt2;
+      paramActivity.dDB.scene = paramInt1;
+      paramActivity.dDB.context = this.mActivity;
       if (paramInt2 == 13)
       {
-        ad.d("MicroMsg.QBarStringHandler", "add source and sourceType");
-        paramActivity.dCw.source = this.source;
-        paramActivity.dCw.sourceType = this.sourceType;
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "add source and sourceType");
+        paramActivity.dDB.source = this.source;
+        paramActivity.dDB.sourceType = this.sourceType;
       }
       paramActivity.callback = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(52036);
-          if ((c.this.mActivity == null) || (paramActivity.dCx == null))
+          if ((c.this.mActivity == null) || (paramActivity.dDC == null))
           {
             AppMethodBeat.o(52036);
             return;
           }
-          if (paramActivity.dCx.ret == 1)
+          if (paramActivity.dDC.ret == 1)
           {
-            c.this.pB(true);
+            c.this.pJ(true);
             AppMethodBeat.o(52036);
             return;
           }
-          if (paramActivity.dCx.ret == 2) {
-            c.this.pB(false);
+          if (paramActivity.dDC.ret == 2) {
+            c.this.pJ(false);
           }
           AppMethodBeat.o(52036);
         }
       };
-      com.tencent.mm.sdk.b.a.IbL.a(paramActivity, Looper.myLooper());
+      com.tencent.mm.sdk.b.a.IvT.a(paramActivity, Looper.myLooper());
       if ((((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).TenPaySDKABTestKindaEnable()) && (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_NATIVE_PAY_SWTICH_KEY"))) {}
       for (paramInt1 = 1;; paramInt1 = 0)
       {
         if (paramInt1 == 0) {
-          new ap(Looper.getMainLooper()).postDelayed(new Runnable()
+          new aq(Looper.getMainLooper()).postDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(52037);
-              if ((c.this.yzp != null) && ((paramActivity.dCx == null) || (paramActivity.dCx.ret != 1))) {
+              if ((c.this.yPp != null) && ((paramActivity.dDC == null) || (paramActivity.dDC.ret != 1))) {
                 c.this.a(false, null);
               }
               AppMethodBeat.o(52037);
             }
           }, 10000L);
         }
-        OU(11);
-        com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(2), paramString1, paramString2 });
+        PB(11);
+        com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(2), paramString1, paramString2 });
         AppMethodBeat.o(52048);
         return;
         label973:
@@ -589,170 +586,176 @@ public final class c
     }
     if ((paramString1.startsWith("https://wx.tenpay.com/f2f")) || (paramString1.startsWith("wxp://f2f")))
     {
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
-      paramInt1 = Nq(OT(this.yzm));
+      paramInt1 = NW(PA(this.yPm));
       com.tencent.mm.pluginsdk.wallet.f.a(this.mActivity, 1, paramString1, paramInt1, null);
       a(true, null);
-      OU(11);
-      com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(1), paramString1, paramString2 });
+      PB(11);
+      com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(1), paramString1, paramString2 });
       AppMethodBeat.o(52048);
       return;
     }
     if (paramString1.startsWith("wxp://wbf2f"))
     {
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
-      paramInt1 = Nq(OT(this.yzm));
+      paramInt1 = NW(PA(this.yPm));
       com.tencent.mm.pluginsdk.wallet.f.a(this.mActivity, 6, paramString1, paramInt1, null);
       a(true, null);
-      OU(11);
-      com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(3), paramString1, paramString2 });
+      PB(11);
+      com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(3), paramString1, paramString2 });
       AppMethodBeat.o(52048);
       return;
     }
     if ((paramInt2 == 22) && (paramString1.startsWith("m")))
     {
-      ad.d("MicroMsg.QBarStringHandler", "go to reward");
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "go to reward");
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
-      paramInt2 = Nq(OT(this.yzm));
+      paramInt2 = NW(PA(this.yPm));
       paramInt1 = 1;
-      if (this.ooi == 37) {
+      if (this.otZ == 37) {
         paramInt1 = 2;
       }
       for (;;)
       {
         com.tencent.mm.pluginsdk.wallet.f.a(this.mActivity, paramString1, paramInt2, paramString2, paramInt1);
         a(true, null);
-        OU(11);
-        com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(6), paramString1, paramString2 });
+        PB(11);
+        com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(6), paramString1, paramString2 });
         AppMethodBeat.o(52048);
         return;
-        if (this.ooi == 38) {
+        if (this.otZ == 38) {
           paramInt1 = 3;
-        } else if (this.ooi == 40) {
+        } else if (this.otZ == 40) {
           paramInt1 = 4;
         }
       }
     }
     if (paramString1.startsWith("https://payapp.weixin.qq.com/qr/"))
     {
-      ad.d("MicroMsg.QBarStringHandler", "f2f pay material");
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "f2f pay material");
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
-      paramInt1 = Nq(OT(this.yzm));
+      paramInt1 = NW(PA(this.yPm));
       com.tencent.mm.pluginsdk.wallet.f.a(this.mActivity, 1, paramString1, paramInt1, null);
       a(true, null);
-      OU(11);
-      com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(5), paramString1, paramString2 });
+      PB(11);
+      com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(5), paramString1, paramString2 });
       AppMethodBeat.o(52048);
       return;
     }
     if ((paramInt2 == 22) && (paramString1.startsWith("n")))
     {
-      ad.d("MicroMsg.QBarStringHandler", "qr reward pay material");
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "qr reward pay material");
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
-      paramInt1 = OT(this.yzm);
-      paramInt2 = Nq(paramInt1);
-      paramActivity = new sm();
-      paramActivity.dGY.dHa = paramString1;
-      paramActivity.dGY.scene = paramInt1;
-      paramActivity.dGY.type = 1;
-      paramActivity.dGY.aWN = new WeakReference(this.mActivity);
-      paramActivity.dGY.callback = new Runnable()
+      paramInt1 = PA(this.yPm);
+      paramInt2 = NW(paramInt1);
+      paramActivity = new sn();
+      paramActivity.dIe.dIg = paramString1;
+      paramActivity.dIe.scene = paramInt1;
+      paramActivity.dIe.type = 1;
+      paramActivity.dIe.aWN = new WeakReference(this.mActivity);
+      paramActivity.dIe.callback = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(52038);
-          if (!bt.isNullOrNil(paramActivity.dGZ.errMsg))
+          if (!bu.isNullOrNil(paramActivity.dIf.errMsg))
           {
             if (c.this.mActivity != null) {
-              Toast.makeText(c.this.mActivity, paramActivity.dGZ.errMsg, 1).show();
+              Toast.makeText(c.this.mActivity, paramActivity.dIf.errMsg, 1).show();
             }
             c.this.a(false, null);
             AppMethodBeat.o(52038);
             return;
           }
-          if (bt.isNullOrNil(paramActivity.dGZ.dHb))
+          if (bu.isNullOrNil(paramActivity.dIf.dIh))
           {
-            ad.w("MicroMsg.QBarStringHandler", "resp url is null!");
+            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.QBarStringHandler", "resp url is null!");
             c.this.a(false, null);
             AppMethodBeat.o(52038);
             return;
           }
-          if (paramActivity.dGZ.actionType == 1)
+          if (paramActivity.dIf.actionType == 1)
           {
-            com.tencent.mm.pluginsdk.wallet.f.a(c.this.mActivity, paramActivity.dGZ.dHb, paramInt2, paramString2, paramInt1);
+            com.tencent.mm.pluginsdk.wallet.f.a(c.this.mActivity, paramActivity.dIf.dIh, paramInt2, paramString2, paramInt1);
             c.this.a(true, null);
             AppMethodBeat.o(52038);
             return;
           }
           Intent localIntent = new Intent();
-          localIntent.putExtra("rawUrl", paramActivity.dGZ.dHb);
-          com.tencent.mm.plugin.scanner.g.iRG.i(localIntent, c.this.mActivity);
+          localIntent.putExtra("rawUrl", paramActivity.dIf.dIh);
+          com.tencent.mm.plugin.scanner.h.iUz.i(localIntent, c.this.mActivity);
           c.this.a(true, null);
           AppMethodBeat.o(52038);
         }
       };
-      com.tencent.mm.sdk.b.a.IbL.l(paramActivity);
-      OU(11);
-      com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(7), paramString1, paramString2 });
+      com.tencent.mm.sdk.b.a.IvT.l(paramActivity);
+      PB(11);
+      com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(7), paramString1, paramString2 });
       AppMethodBeat.o(52048);
       return;
     }
     if (paramString1.startsWith("wxhb://f2f"))
     {
-      ad.i("MicroMsg.QBarStringHandler", "scan f2f hb url");
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "scan f2f hb url");
       if (paramInt2 != 19)
       {
         AppMethodBeat.o(52048);
         return;
       }
-      if (this.yzp != null) {
-        this.yzp.t(5, null);
+      if (this.yPp != null) {
+        this.yPp.t(5, null);
       }
       paramActivity = new Intent();
       paramActivity.putExtra("key_share_url", paramString1);
-      com.tencent.mm.bs.d.b(this.mActivity, "luckymoney", ".f2f.ui.LuckyMoneyF2FReceiveUI", paramActivity, 1001);
-      com.tencent.mm.plugin.report.service.g.yhR.f(16472, new Object[] { Integer.valueOf(4), paramString1, paramString2 });
-      OU(11);
+      com.tencent.mm.br.d.b(this.mActivity, "luckymoney", ".f2f.ui.LuckyMoneyF2FReceiveUI", paramActivity, 1001);
+      com.tencent.mm.plugin.report.service.g.yxI.f(16472, new Object[] { Integer.valueOf(4), paramString1, paramString2 });
+      PB(11);
       AppMethodBeat.o(52048);
       return;
     }
+    paramString2 = new com.tencent.mm.plugin.scanner.c();
+    paramString2.activity = paramActivity;
+    paramString2.yyB = paramString1;
+    paramString2.dov = paramInt2;
+    paramString2.dow = paramInt3;
+    com.tencent.mm.sdk.b.a.IvT.l(paramString2);
     a(paramActivity, paramString1, paramInt2, paramInt3, this.appId);
-    if (this.yzp != null) {
-      this.yzp.t(5, null);
+    if (this.yPp != null) {
+      this.yPp.t(5, null);
     }
     AppMethodBeat.o(52048);
   }
   
   final void a(boolean paramBoolean, Bundle paramBundle)
   {
-    AppMethodBeat.i(186235);
-    if (this.yzp != null)
+    AppMethodBeat.i(189517);
+    if (this.yPp != null)
     {
       Bundle localBundle = paramBundle;
       if (paramBundle == null) {
         localBundle = new Bundle();
       }
       localBundle.putBoolean("key_scan_qr_code_result", paramBoolean);
-      this.yzp.t(3, localBundle);
+      this.yPp.t(3, localBundle);
     }
-    AppMethodBeat.o(186235);
+    AppMethodBeat.o(189517);
   }
   
-  public final void dML()
+  public final void dQe()
   {
     AppMethodBeat.i(52050);
-    ad.i("MicroMsg.QBarStringHandler", "cancel Deal");
-    this.yzn = null;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "cancel Deal");
+    this.yPn = null;
     this.mActivity = null;
     onPause();
     AppMethodBeat.o(52050);
@@ -763,45 +766,45 @@ public final class c
     return this.mActivity;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(52054);
-    ad.i("MicroMsg.QBarStringHandler", "onSceneEnd: errType = [%s] errCode = [%s] errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "onSceneEnd: errType = [%s] errCode = [%s] errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     boolean bool;
     if (paramn == null)
     {
       if (paramn == null) {}
       for (bool = true;; bool = false)
       {
-        ad.e("MicroMsg.QBarStringHandler", "onSceneEnd() scene is null [%s]", new Object[] { Boolean.valueOf(bool) });
-        if (this.yzp != null) {
-          this.yzp.t(2, null);
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.QBarStringHandler", "onSceneEnd() scene is null [%s]", new Object[] { Boolean.valueOf(bool) });
+        if (this.yPp != null) {
+          this.yPp.t(2, null);
         }
         AppMethodBeat.o(52054);
         return;
       }
     }
-    if (!this.yzq.containsKey(paramn))
+    if (!this.yPq.containsKey(paramn))
     {
-      if ((paramn instanceof com.tencent.mm.ar.c)) {
-        ad.e("MicroMsg.QBarStringHandler", "emotion scan scene");
+      if ((paramn instanceof com.tencent.mm.aq.c)) {
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.QBarStringHandler", "emotion scan scene");
       }
     }
     else
     {
-      this.yzq.remove(paramn);
+      this.yPq.remove(paramn);
       cancelLoading();
       if ((paramn.getType() != 372) || (paramInt1 != 4) || (paramInt2 != -2034)) {
         break label246;
       }
-      paramString = new com.tencent.mm.modelsimple.k(((com.tencent.mm.openim.b.n)paramn).iHI, null, 50, 0, 0, new byte[0]);
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajB().gAO.a(paramString, 0);
-      this.yzq.put(paramString, Integer.valueOf(1));
+      paramString = new com.tencent.mm.modelsimple.l(((com.tencent.mm.openim.b.n)paramn).iKB, null, 50, 0, 0, new byte[0]);
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
+      this.yPq.put(paramString, Integer.valueOf(1));
       AppMethodBeat.o(52054);
       return;
     }
-    ad.e("MicroMsg.QBarStringHandler", "not my scene, don't care it");
+    com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.QBarStringHandler", "not my scene, don't care it");
     AppMethodBeat.o(52054);
     return;
     label246:
@@ -812,8 +815,8 @@ public final class c
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(52031);
-          if (c.this.yzp != null) {
-            c.this.yzp.t(1, null);
+          if (c.this.yPp != null) {
+            c.this.yPp.t(1, null);
           }
           AppMethodBeat.o(52031);
         }
@@ -821,29 +824,29 @@ public final class c
       AppMethodBeat.o(52054);
       return;
     }
-    paramString = b.yzj;
-    if (b.qK(this.ypb))
+    paramString = b.yPj;
+    if (b.qR(this.yFa))
     {
-      paramString = b.yzj;
+      paramString = b.yPj;
       if (b.b(paramInt1, paramn))
       {
-        if (!this.yyY)
+        if (!this.yOY)
         {
-          ad.i("MicroMsg.QBarStringHandler", "alvinluo dealQBarString onSceneEnd overtime and deal with offline");
-          if (this.yzp != null) {
-            this.yzp.t(7, null);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "alvinluo dealQBarString onSceneEnd overtime and deal with offline");
+          if (this.yPp != null) {
+            this.yPp.t(7, null);
           }
           if (this.mActivity != null)
           {
-            paramString = b.yzj;
-            b.a(new OfflineScanContext(this.mActivity, 2, this.yzn, this.yzm, this.dnt, this.dnu, this.typeName, this.ymW, this.yzo), this.mActivity.getString(2131762850), true);
-            paramString = com.tencent.mm.plugin.scanner.model.n.ymX;
-            paramString = this.yzn;
+            paramString = b.yPj;
+            b.a(new OfflineScanContext(this.mActivity, 2, this.yPn, this.yPm, this.dov, this.dow, this.typeName, this.yCV, this.yPo), this.mActivity.getString(2131762850), true);
+            paramString = o.yCW;
+            paramString = this.yPn;
             paramn = this.typeName;
-            if (this.ymW) {}
+            if (this.yCV) {}
             for (paramInt1 = 2;; paramInt1 = 1)
             {
-              com.tencent.mm.plugin.scanner.model.n.d(paramString, paramn, paramInt1, 2, 0);
+              o.d(paramString, paramn, paramInt1, 2, 0);
               AppMethodBeat.o(52054);
               return;
             }
@@ -851,8 +854,8 @@ public final class c
         }
         else
         {
-          paramString = b.yzj;
-          b.f(this.mActivity, this.mActivity.getString(2131762848));
+          paramString = b.yPj;
+          b.g(this.mActivity, this.mActivity.getString(2131762848));
         }
         AppMethodBeat.o(52054);
         return;
@@ -866,22 +869,22 @@ public final class c
     }
     while (i != 0)
     {
-      if (this.yzp != null) {
-        this.yzp.t(0, null);
+      if (this.yPp != null) {
+        this.yPp.t(0, null);
       }
       AppMethodBeat.o(52054);
       return;
-      if (com.tencent.mm.kernel.g.aiU().aEO())
+      if (com.tencent.mm.kernel.g.ajj().aFe())
       {
-        com.tencent.mm.kernel.g.aiU().getNetworkServerIp();
+        com.tencent.mm.kernel.g.ajj().getNetworkServerIp();
         new StringBuilder().append(paramInt2);
       }
       for (;;)
       {
         i = 1;
         break;
-        if (ae.cP(this.mActivity)) {
-          com.tencent.mm.pluginsdk.ui.tools.k.hC(this.mActivity);
+        if (com.tencent.mm.network.ae.cR(this.mActivity)) {
+          k.hI(this.mActivity);
         } else {
           Toast.makeText(this.mActivity, this.mActivity.getString(2131759510, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
         }
@@ -892,8 +895,8 @@ public final class c
     if ((paramInt1 == 4) && (paramInt2 == -2004))
     {
       com.tencent.mm.ui.base.h.l(this.mActivity, 2131762118, 2131755906);
-      if (this.yzp != null) {
-        this.yzp.t(1, null);
+      if (this.yPp != null) {
+        this.yPp.t(1, null);
       }
       AppMethodBeat.o(52054);
       return;
@@ -901,22 +904,22 @@ public final class c
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       Toast.makeText(this.mActivity, this.mActivity.getString(2131759560, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      if (this.yzp != null) {
-        this.yzp.t(1, null);
+      if (this.yPp != null) {
+        this.yPp.t(1, null);
       }
       AppMethodBeat.o(52054);
       return;
     }
-    paramString = b.yzj;
-    if ((b.m(paramn)) && (!this.yyY))
+    paramString = b.yPj;
+    if ((b.m(paramn)) && (!this.yOY))
     {
-      paramString = com.tencent.mm.plugin.scanner.model.n.ymX;
-      paramString = this.yzn;
+      paramString = o.yCW;
+      paramString = this.yPn;
       localObject1 = this.typeName;
-      if (this.ymW)
+      if (this.yCV)
       {
         i = 2;
-        com.tencent.mm.plugin.scanner.model.n.d(paramString, (String)localObject1, i, 4, 0);
+        o.d(paramString, (String)localObject1, i, 4, 0);
       }
     }
     else
@@ -925,33 +928,33 @@ public final class c
         break label1967;
       }
       paramString = (com.tencent.mm.plugin.messenger.a.f)paramn;
-      if (paramString.vJe) {
+      if (paramString.vVi) {
         break label1071;
       }
-      paramString = paramString.dlC();
-      if ((!am.aaR(paramString.GNU)) || (paramString.GOb == null) || (bt.isNullOrNil(paramString.GOb.jdr)) || (!com.tencent.mm.modelappbrand.a.BY(paramString.GOb.jdr))) {
+      paramString = paramString.doB();
+      if ((!an.abz(paramString.Hhu)) || (paramString.HhB == null) || (bu.isNullOrNil(paramString.HhB.jgk)) || (!com.tencent.mm.modelappbrand.a.CA(paramString.HhB.jgk))) {
         break label1071;
       }
-      if (this.ooi <= 0) {
+      if (this.otZ <= 0) {
         break label1060;
       }
-      paramInt1 = this.ooi;
+      paramInt1 = this.otZ;
       label925:
-      ad.i("MicroMsg.QBarStringHandler", "getA8Key text:%s, mQBarStringSource: %s, sceneValue: %s", new Object[] { this.yzn, Integer.valueOf(this.yzm), Integer.valueOf(paramInt1) });
-      paramString = new com.tencent.mm.modelsimple.k(this.yzn, null, 43, 0, 0, new byte[0]);
-      this.yzq.put(paramString, Integer.valueOf(1));
-      com.tencent.mm.kernel.g.aiU().a(paramString, 0);
-      if (this.nZt != null) {
-        this.nZt.dismiss();
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "getA8Key text:%s, mQBarStringSource: %s, sceneValue: %s", new Object[] { this.yPn, Integer.valueOf(this.yPm), Integer.valueOf(paramInt1) });
+      paramString = new com.tencent.mm.modelsimple.l(this.yPn, null, 43, 0, 0, new byte[0]);
+      this.yPq.put(paramString, Integer.valueOf(1));
+      com.tencent.mm.kernel.g.ajj().a(paramString, 0);
+      if (this.ofc != null) {
+        this.ofc.dismiss();
       }
       a(this.mActivity.getString(2131762131), new b.a()
       {
-        public final void dMH()
+        public final void dQa()
         {
           AppMethodBeat.i(52034);
-          com.tencent.mm.kernel.g.aiU().a(paramString);
-          if (c.this.yzp != null) {
-            c.this.yzp.t(1, null);
+          com.tencent.mm.kernel.g.ajj().a(paramString);
+          if (c.this.yPp != null) {
+            c.this.yPp.t(1, null);
           }
           AppMethodBeat.o(52034);
         }
@@ -968,43 +971,43 @@ public final class c
       return;
       i = 1;
       break;
-      paramInt1 = OT(this.yzm);
+      paramInt1 = PA(this.yPm);
       break label925;
     }
     label1076:
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.a.f)paramn).dlC();
-    Object localObject2 = z.a(((cyc)localObject1).GbY);
-    ad.d("MicroMsg.QBarStringHandler", "handle search contact result, username:" + ((cyc)localObject1).GbY);
-    p.aEk().h((String)localObject2, z.a(((cyc)localObject1).Fvm));
-    if ((this.nZt != null) && (this.nZt.isShowing()))
+    Object localObject1 = ((com.tencent.mm.plugin.messenger.a.f)paramn).doB();
+    Object localObject2 = com.tencent.mm.platformtools.z.a(((cyw)localObject1).GuF);
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "handle search contact result, username:" + ((cyw)localObject1).GuF);
+    p.aEA().h((String)localObject2, com.tencent.mm.platformtools.z.a(((cyw)localObject1).FNK));
+    if ((this.ofc != null) && (this.ofc.isShowing()))
     {
-      ad.d("MicroMsg.QBarStringHandler", "tip dialog dismiss");
-      this.nZt.dismiss();
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "tip dialog dismiss");
+      this.ofc.dismiss();
     }
     cancelLoading();
     Object localObject3;
     Object localObject4;
-    if (bt.nullAsNil((String)localObject2).length() > 0)
+    if (bu.nullAsNil((String)localObject2).length() > 0)
     {
-      localObject3 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf((String)localObject2);
-      if ((localObject3 != null) && (com.tencent.mm.o.b.lM(((aw)localObject3).field_type)) && (((am)localObject3).fqg()))
+      localObject3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH((String)localObject2);
+      if ((localObject3 != null) && (com.tencent.mm.contact.c.lO(((aw)localObject3).field_type)) && (((an)localObject3).fug()))
       {
-        paramString = ag.aFZ().DD((String)localObject2);
+        paramString = ag.aGp().Ef((String)localObject2);
         paramString.bX(false);
-        localObject4 = paramString.cQr;
-        if (((c.b)localObject4).cQv != null) {
-          ((c.b)localObject4).cQM = ((c.b)localObject4).cQv.optInt("ScanQRCodeType", 0);
+        localObject4 = paramString.cRb;
+        if (((c.b)localObject4).cRf != null) {
+          ((c.b)localObject4).cRw = ((c.b)localObject4).cRf.optInt("ScanQRCodeType", 0);
         }
-        if (((c.b)localObject4).cQM == 1)
+        if (((c.b)localObject4).cRw == 1)
         {
           paramInt1 = 1;
-          if ((paramInt1 == 0) || (paramString.Kn())) {
+          if ((paramInt1 == 0) || (paramString.Kv())) {
             break label1414;
           }
           paramString = new Intent();
           paramString.putExtra("Chat_User", (String)localObject2);
           paramString.putExtra("finish_direct", true);
-          com.tencent.mm.plugin.scanner.g.iRG.d(paramString, this.mActivity);
+          com.tencent.mm.plugin.scanner.h.iUz.d(paramString, this.mActivity);
           paramInt1 = 1;
         }
       }
@@ -1014,49 +1017,49 @@ public final class c
       if (paramInt1 == 0) {
         break label1942;
       }
-      if (this.yzp != null)
+      if (this.yPp != null)
       {
         paramString = new Bundle();
-        paramString.putString("geta8key_fullurl", z.a(((com.tencent.mm.plugin.messenger.a.f)paramn).dlC().GbY));
+        paramString.putString("geta8key_fullurl", com.tencent.mm.platformtools.z.a(((com.tencent.mm.plugin.messenger.a.f)paramn).doB().GuF));
         paramString.putInt("geta8key_action_code", 4);
         a(true, paramString);
       }
-      OU(4);
+      PB(4);
       AppMethodBeat.o(52054);
       return;
       paramInt1 = 0;
       break;
       label1414:
-      paramInt1 = dBq();
+      paramInt1 = dEH();
       paramString = new Intent();
-      com.tencent.mm.api.d.a(paramString, (cyc)localObject1, paramInt1);
-      if ((localObject3 != null) && (!com.tencent.mm.o.b.lM(((aw)localObject3).field_type))) {
+      com.tencent.mm.api.d.a(paramString, (cyw)localObject1, paramInt1);
+      if ((localObject3 != null) && (!com.tencent.mm.contact.c.lO(((aw)localObject3).field_type))) {
         paramString.putExtra("Contact_IsLBSFriend", true);
       }
-      if ((((cyc)localObject1).GNU & 0x8) > 0) {
-        com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, (String)localObject2 + "," + paramInt1);
+      if ((((cyw)localObject1).Hhu & 0x8) > 0) {
+        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10298, (String)localObject2 + "," + paramInt1);
       }
       if (this.mActivity != null)
       {
-        if (am.aaR(((cyc)localObject1).GNU))
+        if (an.abz(((cyw)localObject1).Hhu))
         {
           localObject2 = this.mActivity;
           if (localObject2 != null)
           {
-            paramString.putExtra("qbarScene", this.yzm);
+            paramString.putExtra("qbarScene", this.yPm);
             localObject2 = ((Activity)localObject2).getIntent().getStringExtra("img_gallery_session_id");
-            if (!bt.isNullOrNil((String)localObject2))
+            if (!bu.isNullOrNil((String)localObject2))
             {
-              Object localObject5 = y.aBq().AF((String)localObject2);
+              Object localObject5 = com.tencent.mm.model.z.aBG().Bp((String)localObject2);
               if (localObject5 != null)
               {
-                localObject2 = ((y.b)localObject5).getString("preUsername", null);
-                localObject3 = ((y.b)localObject5).getString("preChatName", null);
-                localObject4 = ((y.b)localObject5).getString("url", null);
-                String str = ((y.b)localObject5).getString("rawUrl", null);
-                paramInt1 = ((y.b)localObject5).getInt("Contact_Sub_Scene", 0);
-                paramInt2 = x.aG((String)localObject2, (String)localObject3);
-                localObject5 = ((y.b)localObject5).getString("Contact_Scene_Note", null);
+                localObject2 = ((z.b)localObject5).getString("preUsername", null);
+                localObject3 = ((z.b)localObject5).getString("preChatName", null);
+                localObject4 = ((z.b)localObject5).getString("url", null);
+                String str = ((z.b)localObject5).getString("rawUrl", null);
+                paramInt1 = ((z.b)localObject5).getInt("Contact_Sub_Scene", 0);
+                paramInt2 = y.aH((String)localObject2, (String)localObject3);
+                localObject5 = ((z.b)localObject5).getString("Contact_Scene_Note", null);
                 paramString.putExtra("preUsername", (String)localObject2);
                 paramString.putExtra("preChatName", (String)localObject3);
                 paramString.putExtra("url", (String)localObject4);
@@ -1068,18 +1071,18 @@ public final class c
             }
           }
         }
-        if (this.yzm != 0) {
+        if (this.yPm != 0) {
           break label1862;
         }
         paramString.putExtra("Contact_Sub_Scene", 7);
         label1739:
-        com.tencent.mm.plugin.scanner.g.iRG.c(paramString, this.mActivity);
+        com.tencent.mm.plugin.scanner.h.iUz.c(paramString, this.mActivity);
         paramString = "";
-        if (w.zE(this.talker)) {
+        if (x.Ao(this.talker)) {
           paramString = this.talker;
         }
-        localObject2 = com.tencent.mm.plugin.report.service.g.yhR;
-        if (!am.aaR(((cyc)localObject1).GNU)) {
+        localObject2 = com.tencent.mm.plugin.report.service.g.yxI;
+        if (!an.abz(((cyw)localObject1).Hhu)) {
           break label1911;
         }
       }
@@ -1087,7 +1090,7 @@ public final class c
       label1911:
       for (paramInt1 = 0;; paramInt1 = 1)
       {
-        ((com.tencent.mm.plugin.report.service.g)localObject2).f(14268, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.sourceType), Integer.valueOf(this.yzm), this.imagePath, this.yzn, bt.nullAsNil(this.dnw), paramString });
+        ((com.tencent.mm.plugin.report.service.g)localObject2).f(14268, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.sourceType), Integer.valueOf(this.yPm), this.imagePath, this.yPn, bu.nullAsNil(this.doy), paramString });
         paramInt1 = 1;
         break;
         if (this.sourceType == 7)
@@ -1107,62 +1110,62 @@ public final class c
       paramInt1 = 0;
     }
     label1942:
-    if (this.yzp != null) {
-      this.yzp.t(1, null);
+    if (this.yPp != null) {
+      this.yPp.t(1, null);
     }
     AppMethodBeat.o(52054);
     return;
     label1967:
     if (paramn.getType() == 372)
     {
-      paramString = ((com.tencent.mm.openim.b.n)paramn).iHH;
-      paramn = paramString.nDo;
-      ad.d("MicroMsg.QBarStringHandler", "handle search openim contact result, username:".concat(String.valueOf(paramn)));
+      paramString = ((com.tencent.mm.openim.b.n)paramn).iKA;
+      paramn = paramString.nIJ;
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "handle search openim contact result, username:".concat(String.valueOf(paramn)));
       cancelLoading();
-      if (bt.nullAsNil(paramn).length() > 0)
+      if (bu.nullAsNil(paramn).length() > 0)
       {
-        paramn = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramn);
-        paramInt1 = dBq();
+        paramn = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(paramn);
+        paramInt1 = dEH();
         localObject1 = new Intent();
         com.tencent.mm.api.d.a((Intent)localObject1, paramString, paramInt1);
-        if ((paramn != null) && (!com.tencent.mm.o.b.lM(paramn.field_type))) {
+        if ((paramn != null) && (!com.tencent.mm.contact.c.lO(paramn.field_type))) {
           ((Intent)localObject1).putExtra("Contact_IsLBSFriend", true);
         }
         if (this.mActivity != null)
         {
-          com.tencent.mm.plugin.scanner.g.iRG.c((Intent)localObject1, this.mActivity);
-          com.tencent.mm.plugin.report.service.g.yhR.f(14268, new Object[] { Integer.valueOf(2), Integer.valueOf(this.sourceType), Integer.valueOf(this.yzm), this.imagePath, this.yzn, bt.nullAsNil(this.dnw) });
+          com.tencent.mm.plugin.scanner.h.iUz.c((Intent)localObject1, this.mActivity);
+          com.tencent.mm.plugin.report.service.g.yxI.f(14268, new Object[] { Integer.valueOf(2), Integer.valueOf(this.sourceType), Integer.valueOf(this.yPm), this.imagePath, this.yPn, bu.nullAsNil(this.doy) });
         }
       }
       for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
       {
-        if (this.yzp != null)
+        if (this.yPp != null)
         {
           paramn = new Bundle();
-          paramn.putString("geta8key_fullurl", paramString.nDo);
+          paramn.putString("geta8key_fullurl", paramString.nIJ);
           paramn.putInt("geta8key_action_code", 4);
           a(true, paramn);
         }
-        OU(4);
+        PB(4);
         AppMethodBeat.o(52054);
         return;
         if (this.mActivity != null) {
           Toast.makeText(this.mActivity, 2131762876, 0).show();
         }
       }
-      if (this.yzp != null) {
-        this.yzp.t(1, null);
+      if (this.yPp != null) {
+        this.yPp.t(1, null);
       }
       AppMethodBeat.o(52054);
       return;
     }
     if (paramn.getType() == 3512)
     {
-      paramString = (aoq)((com.tencent.mm.al.b)paramn.getReqResp()).hNL.hNQ;
-      if (paramString.Gmj.size() > 0)
+      paramString = (apd)((com.tencent.mm.ak.b)paramn.getReqResp()).hQE.hQJ;
+      if (paramString.GFl.size() > 0)
       {
         paramn = new Intent();
-        paramn.putExtra("finder_username", ((FinderContact)paramString.Gmj.get(0)).username);
+        paramn.putExtra("finder_username", ((FinderContact)paramString.GFl.get(0)).username);
         paramn.putExtra("key_comment_scene", 10);
         paramn.putExtra("key_enter_profile_type", 3);
         ((t)com.tencent.mm.kernel.g.ad(t.class)).enterFinderProfileUI(this.mActivity, paramn);
@@ -1173,26 +1176,26 @@ public final class c
     }
     if (paramn.getType() == 233)
     {
-      paramString = ((com.tencent.mm.modelsimple.k)paramn).aKr();
+      paramString = ((com.tencent.mm.modelsimple.l)paramn).aKO();
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("geta8key_fullurl", paramString);
-      ((Bundle)localObject1).putInt("geta8key_action_code", ((com.tencent.mm.modelsimple.k)paramn).aKt());
-      OU(((com.tencent.mm.modelsimple.k)paramn).aKt());
-      if (this.ooi > 0) {}
-      for (paramInt1 = this.ooi;; paramInt1 = OT(this.yzm))
+      ((Bundle)localObject1).putInt("geta8key_action_code", ((com.tencent.mm.modelsimple.l)paramn).aKQ());
+      PB(((com.tencent.mm.modelsimple.l)paramn).aKQ());
+      if (this.otZ > 0) {}
+      for (paramInt1 = this.otZ;; paramInt1 = PA(this.yPm))
       {
-        ad.i("MicroMsg.QBarStringHandler", "handleGetA8KeyRedirect, sceneValue: %s", new Object[] { Integer.valueOf(paramInt1) });
-        bool = com.tencent.mm.plugin.w.a.a.a(this, (com.tencent.mm.modelsimple.k)paramn, new DialogInterface.OnClickListener()
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "handleGetA8KeyRedirect, sceneValue: %s", new Object[] { Integer.valueOf(paramInt1) });
+        bool = com.tencent.mm.plugin.w.a.a.a(this, (com.tencent.mm.modelsimple.l)paramn, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(52032);
-            if (c.this.yzp != null) {
-              c.this.yzp.t(1, null);
+            if (c.this.yPp != null) {
+              c.this.yPp.t(1, null);
             }
             AppMethodBeat.o(52032);
           }
-        }, this.yzn, paramInt1, this.yzm, new Runnable()
+        }, this.yPn, paramInt1, this.yPm, new Runnable()
         {
           public final void run()
           {
@@ -1200,34 +1203,34 @@ public final class c
             c.this.a(true, null);
             AppMethodBeat.o(52033);
           }
-        }, this.yzo);
-        if ((bool) || (((com.tencent.mm.modelsimple.k)paramn).aKt() != 4)) {
+        }, this.yPo);
+        if ((bool) || (((com.tencent.mm.modelsimple.l)paramn).aKQ() != 4)) {
           break;
         }
-        a(this.mActivity, this.yzm, paramString, true);
+        a(this.mActivity, this.yPm, paramString, true);
         AppMethodBeat.o(52054);
         return;
       }
-      if ((!bool) && (((com.tencent.mm.modelsimple.k)paramn).aKt() == 29))
+      if ((!bool) && (((com.tencent.mm.modelsimple.l)paramn).aKQ() == 29))
       {
         paramn = this.mActivity;
-        ad.i("MicroMsg.QBarStringHandler", "start search contact %s", new Object[] { paramString });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "start search contact %s", new Object[] { paramString });
         paramString = new com.tencent.mm.openim.b.n(paramString, (byte)0);
-        this.yzq.put(paramString, Integer.valueOf(1));
-        com.tencent.mm.kernel.g.aiU().a(paramString, 0);
+        this.yPq.put(paramString, Integer.valueOf(1));
+        com.tencent.mm.kernel.g.ajj().a(paramString, 0);
         paramString = new b.a()
         {
-          public final void dMH()
+          public final void dQa()
           {
             AppMethodBeat.i(52040);
-            com.tencent.mm.kernel.g.aiU().a(paramString);
-            if (c.this.yzp != null) {
-              c.this.yzp.t(1, null);
+            com.tencent.mm.kernel.g.ajj().a(paramString);
+            if (c.this.yPp != null) {
+              c.this.yPp.t(1, null);
             }
             AppMethodBeat.o(52040);
           }
         };
-        if (this.yzr)
+        if (this.yPr)
         {
           c(paramn.getString(2131762836), paramString);
           AppMethodBeat.o(52054);
@@ -1237,42 +1240,42 @@ public final class c
         AppMethodBeat.o(52054);
         return;
       }
-      if ((!bool) && (((com.tencent.mm.modelsimple.k)paramn).aKt() == 37))
+      if ((!bool) && (((com.tencent.mm.modelsimple.l)paramn).aKQ() == 37))
       {
         paramn = this.mActivity;
-        ad.i("MicroMsg.QBarStringHandler", "search finder contact %s", new Object[] { paramString });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "search finder contact %s", new Object[] { paramString });
         localObject1 = new ArrayList();
         ((List)localObject1).add(paramString);
         paramString = new u((List)localObject1);
-        this.yzq.put(paramString, Integer.valueOf(1));
-        com.tencent.mm.kernel.g.aiU().a(paramString, 0);
+        this.yPq.put(paramString, Integer.valueOf(1));
+        com.tencent.mm.kernel.g.ajj().a(paramString, 0);
         paramn.getString(2131755906);
-        this.nZt = com.tencent.mm.ui.base.h.c(paramn, paramn.getString(2131762836), true, new DialogInterface.OnCancelListener()
+        this.ofc = com.tencent.mm.ui.base.h.c(paramn, paramn.getString(2131762836), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
-            AppMethodBeat.i(186234);
-            com.tencent.mm.kernel.g.aiU().a(paramString);
-            if (c.this.yzp != null) {
-              c.this.yzp.t(1, null);
+            AppMethodBeat.i(189516);
+            com.tencent.mm.kernel.g.ajj().a(paramString);
+            if (c.this.yPp != null) {
+              c.this.yPp.t(1, null);
             }
-            AppMethodBeat.o(186234);
+            AppMethodBeat.o(189516);
           }
         });
         AppMethodBeat.o(52054);
         return;
       }
-      if ((!bool) && (((com.tencent.mm.modelsimple.k)paramn).aKt() == 41))
+      if ((!bool) && (((com.tencent.mm.modelsimple.l)paramn).aKQ() == 41))
       {
         paramn = new Intent();
         paramn.putExtra("key_qrcode_string", paramString);
-        com.tencent.mm.bs.d.b(this.mActivity, "account", ".friend.ui.RecoverAccountUI1", paramn);
+        com.tencent.mm.br.d.b(this.mActivity, "account", ".friend.ui.RecoverAccountUI1", paramn);
         AppMethodBeat.o(52054);
         return;
       }
-      ad.i("MicroMsg.QBarStringHandler", "scene geta8key, redirect result = [%s]", new Object[] { Boolean.valueOf(bool) });
-      if ((!bool) && (this.yzp != null)) {
-        this.yzp.t(1, null);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "scene geta8key, redirect result = [%s]", new Object[] { Boolean.valueOf(bool) });
+      if ((!bool) && (this.yPp != null)) {
+        this.yPp.t(1, null);
       }
       AppMethodBeat.o(52054);
       return;
@@ -1280,35 +1283,35 @@ public final class c
     if (paramn.getType() == 666) {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if ((paramn instanceof com.tencent.mm.ar.c))
+        if ((paramn instanceof com.tencent.mm.aq.c))
         {
-          paramString = ((com.tencent.mm.ar.c)paramn).aHt().ProductID;
-          ad.d("MicroMsg.QBarStringHandler", "[oneliang]NetSceneScanEmoji productId:%s", new Object[] { paramString });
+          paramString = ((com.tencent.mm.aq.c)paramn).aHK().ProductID;
+          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.QBarStringHandler", "[oneliang]NetSceneScanEmoji productId:%s", new Object[] { paramString });
           paramn = new Intent();
           paramn.putExtra("extra_id", paramString);
           paramn.putExtra("preceding_scence", 11);
           paramn.putExtra("download_entrance_scene", 14);
-          com.tencent.mm.bs.d.b(this.mActivity, "emoji", ".ui.EmojiStoreDetailUI", paramn);
-          ad.i("MicroMsg.QBarStringHandler", "[oneliang]NetSceneScanEmoji onSceneEnd.");
+          com.tencent.mm.br.d.b(this.mActivity, "emoji", ".ui.EmojiStoreDetailUI", paramn);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "[oneliang]NetSceneScanEmoji onSceneEnd.");
           a(true, null);
           AppMethodBeat.o(52054);
         }
       }
       else {
-        ad.i("MicroMsg.QBarStringHandler", "jump emotion detail failed.");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QBarStringHandler", "jump emotion detail failed.");
       }
     }
     AppMethodBeat.o(52054);
   }
   
-  public final void pB(boolean paramBoolean)
+  public final void pJ(boolean paramBoolean)
   {
     AppMethodBeat.i(52056);
     if (paramBoolean)
     {
-      if (this.yzp != null)
+      if (this.yPp != null)
       {
-        this.yzp.t(1, null);
+        this.yPp.t(1, null);
         AppMethodBeat.o(52056);
       }
     }
@@ -1320,7 +1323,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.c
  * JD-Core Version:    0.7.0.1
  */

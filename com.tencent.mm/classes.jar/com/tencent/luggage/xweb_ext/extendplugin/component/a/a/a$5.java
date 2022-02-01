@@ -1,25 +1,25 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.a.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.a.d;
 import com.tencent.mm.plugin.appbrand.jsapi.u;
 import com.tencent.mm.plugin.appbrand.jsapi.w;
 
 final class a$5
   implements w
 {
-  private u csr;
+  private u csU;
   
   a$5(a parama)
   {
     AppMethodBeat.i(178801);
-    this.csr = new d();
+    this.csU = new d();
     AppMethodBeat.o(178801);
   }
   
-  public final u Gh()
+  public final u Gn()
   {
-    return this.csr;
+    return this.csU;
   }
 }
 

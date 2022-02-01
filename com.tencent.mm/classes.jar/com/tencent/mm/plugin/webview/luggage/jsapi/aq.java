@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 import android.content.Context;
 import com.tencent.luggage.bridge.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.handoff.a.a;
@@ -14,12 +14,12 @@ import com.tencent.mm.plugin.webview.luggage.u;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.c.g;
-import com.tencent.mm.protocal.protobuf.bql;
-import com.tencent.mm.protocal.protobuf.bqr;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.brf;
+import com.tencent.mm.protocal.protobuf.brl;
+import com.tencent.mm.protocal.protobuf.brm;
+import com.tencent.mm.protocal.protobuf.dvl;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,8 +35,8 @@ public class aq
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
   {
     AppMethodBeat.i(78596);
-    ad.i("MicroMsg.JsApiPreVerify", "invokeInOwn");
-    com.tencent.mm.plugin.webview.ui.tools.game.g.bG(((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).bQm(), System.currentTimeMillis());
+    ae.i("MicroMsg.JsApiPreVerify", "invokeInOwn");
+    com.tencent.mm.plugin.webview.ui.tools.game.g.bH(((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).bRn(), System.currentTimeMillis());
     Object localObject1 = paramb.chh.cgn;
     String str1 = ((JSONObject)localObject1).optString("verifyAppId");
     String str2 = ((JSONObject)localObject1).optString("verifySignature");
@@ -44,12 +44,12 @@ public class aq
     String str4 = ((JSONObject)localObject1).optString("verifyTimestamp");
     String str5 = ((JSONObject)localObject1).optString("verifySignType");
     Object localObject2 = ((JSONObject)localObject1).optJSONArray("verifyJsApiList");
-    ad.i("MicroMsg.JsApiPreVerify", "appid : %s, %s, %s, %s, %s", new Object[] { str1, str2, str3, str4, str5 });
+    ae.i("MicroMsg.JsApiPreVerify", "appid : %s, %s, %s, %s, %s", new Object[] { str1, str2, str3, str4, str5 });
     localObject1 = ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).getUrl();
     LinkedList localLinkedList = new LinkedList();
     try
     {
-      ad.i("MicroMsg.JsApiPreVerify", "jsItem length %s", new Object[] { Integer.valueOf(((JSONArray)localObject2).length()) });
+      ae.i("MicroMsg.JsApiPreVerify", "jsItem length %s", new Object[] { Integer.valueOf(((JSONArray)localObject2).length()) });
       if (((JSONArray)localObject2).length() == 0)
       {
         paramb.a("checkJsApi:param is empty", null);
@@ -60,51 +60,51 @@ public class aq
       while (i < ((JSONArray)localObject2).length())
       {
         localObject3 = ((JSONArray)localObject2).getString(i);
-        if (!bt.isNullOrNil((String)localObject3)) {
+        if (!bu.isNullOrNil((String)localObject3)) {
           localLinkedList.add(localObject3);
         }
         i += 1;
       }
-      if (bt.isNullOrNil(localException)) {
+      if (bu.isNullOrNil(localException)) {
         break label292;
       }
     }
     catch (Exception localException)
     {
-      ad.w("MicroMsg.JsApiPreVerify", "exception occur " + localException.getMessage());
+      ae.w("MicroMsg.JsApiPreVerify", "exception occur " + localException.getMessage());
       paramb.a("", null);
       AppMethodBeat.o(78596);
       return;
     }
-    if ((localLinkedList.size() <= 0) || (bt.isNullOrNil((String)localObject1)))
+    if ((localLinkedList.size() <= 0) || (bu.isNullOrNil((String)localObject1)))
     {
       label292:
-      ad.e("MicroMsg.JsApiPreVerify", "handlePreVerify wrong args, %s", new Object[] { localException });
+      ae.e("MicroMsg.JsApiPreVerify", "handlePreVerify wrong args, %s", new Object[] { localException });
       paramb.a("pre_verify_jsapi:fail_invalid_args", null);
       AppMethodBeat.o(78596);
       return;
     }
-    localObject2 = new com.tencent.mm.al.b.a();
-    ((com.tencent.mm.al.b.a)localObject2).hNM = new bqr();
-    ((com.tencent.mm.al.b.a)localObject2).hNN = new bqs();
-    ((com.tencent.mm.al.b.a)localObject2).uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
-    ((com.tencent.mm.al.b.a)localObject2).funcId = 1093;
-    ((com.tencent.mm.al.b.a)localObject2).hNO = 0;
-    ((com.tencent.mm.al.b.a)localObject2).respCmdId = 0;
-    localObject2 = ((com.tencent.mm.al.b.a)localObject2).aDC();
-    Object localObject3 = (bqr)((com.tencent.mm.al.b)localObject2).hNK.hNQ;
-    ((bqr)localObject3).url = ((String)localObject1);
-    ((bqr)localObject3).duW = localException;
-    ((bqr)localObject3).GLd = localLinkedList;
-    ((bqr)localObject3).cUM = str4;
-    ((bqr)localObject3).GKK = str3;
-    ((bqr)localObject3).signature = str2;
-    ((bqr)localObject3).GKL = str5;
-    IPCRunCgi.a((com.tencent.mm.al.b)localObject2, new a(paramb, localException));
+    localObject2 = new com.tencent.mm.ak.b.a();
+    ((com.tencent.mm.ak.b.a)localObject2).hQF = new brl();
+    ((com.tencent.mm.ak.b.a)localObject2).hQG = new brm();
+    ((com.tencent.mm.ak.b.a)localObject2).uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
+    ((com.tencent.mm.ak.b.a)localObject2).funcId = 1093;
+    ((com.tencent.mm.ak.b.a)localObject2).hQH = 0;
+    ((com.tencent.mm.ak.b.a)localObject2).respCmdId = 0;
+    localObject2 = ((com.tencent.mm.ak.b.a)localObject2).aDS();
+    Object localObject3 = (brl)((com.tencent.mm.ak.b)localObject2).hQD.hQJ;
+    ((brl)localObject3).url = ((String)localObject1);
+    ((brl)localObject3).dwb = localException;
+    ((brl)localObject3).HeE = localLinkedList;
+    ((brl)localObject3).cVJ = str4;
+    ((brl)localObject3).Hel = str3;
+    ((brl)localObject3).signature = str2;
+    ((brl)localObject3).Hem = str5;
+    IPCRunCgi.a((com.tencent.mm.ak.b)localObject2, new a(paramb, localException));
     AppMethodBeat.o(78596);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }
@@ -117,106 +117,106 @@ public class aq
   static final class a
     implements IPCRunCgi.a
   {
-    private com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a DQQ;
+    private com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a EiQ;
     private String appId;
     
     a(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb, String paramString)
     {
-      this.DQQ = paramb;
+      this.EiQ = paramb;
       this.appId = paramString;
     }
     
-    private void Pr(String paramString)
+    private void PZ(String paramString)
     {
       AppMethodBeat.i(78595);
-      if (bt.isNullOrNil(paramString)) {
-        this.DQQ.a("", null);
+      if (bu.isNullOrNil(paramString)) {
+        this.EiQ.a("", null);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.webview.ui.tools.game.g.bH(((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).bQm(), System.currentTimeMillis());
+        com.tencent.mm.plugin.webview.ui.tools.game.g.bI(((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).bRn(), System.currentTimeMillis());
         release();
         AppMethodBeat.o(78595);
         return;
-        this.DQQ.a(paramString, null);
+        this.EiQ.a(paramString, null);
       }
     }
     
     private void release()
     {
-      this.DQQ = null;
+      this.EiQ = null;
       this.appId = null;
     }
     
-    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(78594);
-      if (this.DQQ == null)
+      if (this.EiQ == null)
       {
         AppMethodBeat.o(78594);
         return;
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.JsApiPreVerify", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        Pr(paramString);
+        ae.e("MicroMsg.JsApiPreVerify", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        PZ(paramString);
         AppMethodBeat.o(78594);
         return;
       }
-      paramb = (bqs)paramb.hNL.hNQ;
-      if ((paramb == null) || (paramb.GKP == null) || (paramb.GKP.dqI != 0))
+      paramb = (brm)paramb.hQE.hQJ;
+      if ((paramb == null) || (paramb.Heq == null) || (paramb.Heq.drN != 0))
       {
-        Pr(paramString);
+        PZ(paramString);
         AppMethodBeat.o(78594);
         return;
       }
-      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).DOL;
+      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).EgL;
       Object localObject1 = this.appId;
-      if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil(paramString.DOl.getUrl()))) {
-        paramString.DQo.put(u.aHc(paramString.DOl.getUrl()), localObject1);
+      if ((!bu.isNullOrNil((String)localObject1)) && (!bu.isNullOrNil(paramString.Egl.getUrl()))) {
+        paramString.Eio.put(u.aIw(paramString.Egl.getUrl()), localObject1);
       }
-      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).DOL;
+      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).EgL;
       localObject1 = this.appId;
-      Object localObject2 = paramb.GLi;
-      if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil((String)localObject2))) {
-        paramString.DQq.put(localObject1, localObject2);
+      Object localObject2 = paramb.HeJ;
+      if ((!bu.isNullOrNil((String)localObject1)) && (!bu.isNullOrNil((String)localObject2))) {
+        paramString.Eiq.put(localObject1, localObject2);
       }
       paramString = new a.d(this.appId, paramb);
-      localObject1 = ((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).DOL;
-      if (!bt.isNullOrNil(((u)localObject1).DOl.getUrl())) {
-        ((u)localObject1).DQp.put(u.aHc(((u)localObject1).DOl.getUrl()), paramString);
+      localObject1 = ((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).EgL;
+      if (!bu.isNullOrNil(((u)localObject1).Egl.getUrl())) {
+        ((u)localObject1).Eip.put(u.aIw(((u)localObject1).Egl.getUrl()), paramString);
       }
-      localObject1 = paramb.GLg;
-      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).ePi().aIe(((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).getUrl());
+      localObject1 = paramb.HeH;
+      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).eSU().aJx(((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).getUrl());
       if (paramString == null)
       {
-        Pr("");
+        PZ("");
         AppMethodBeat.o(78594);
         return;
       }
-      if (!bt.hj((List)localObject1))
+      if (!bu.ht((List)localObject1))
       {
         localObject1 = ((LinkedList)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (duo)((Iterator)localObject1).next();
-          c.g localg = com.tencent.mm.protocal.c.aOb(((duo)localObject2).GKI);
-          if ((localg != null) && (paramString.ZB(localg.fgc()) != ((duo)localObject2).state)) {
-            paramString.a(localg.fgc(), (byte)((duo)localObject2).state);
+          localObject2 = (dvl)((Iterator)localObject1).next();
+          c.g localg = com.tencent.mm.protocal.c.aPy(((dvl)localObject2).Hej);
+          if ((localg != null) && (paramString.aah(localg.fjS()) != ((dvl)localObject2).state)) {
+            paramString.a(localg.fjS(), (byte)((dvl)localObject2).state);
           }
         }
       }
-      if (((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).ePl() != null)
+      if (((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).eSX() != null)
       {
-        ad.i("MicroMsg.JsApiPreVerify", "updateFloatBallIcon:%s", new Object[] { paramb.GLi });
-        ((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).ePl().Wl(paramb.GLi);
+        ae.i("MicroMsg.JsApiPreVerify", "updateFloatBallIcon:%s", new Object[] { paramb.HeJ });
+        ((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).eSX().WX(paramb.HeJ);
       }
-      if (((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).ePm() != null)
+      if (((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).eSY() != null)
       {
-        ((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).ePm().setIcon(bt.nullAsNil(paramb.GLi));
-        ((a)com.tencent.mm.kernel.g.ab(a.class)).e(((com.tencent.mm.plugin.webview.luggage.g)this.DQQ.chg).ePm());
+        ((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).eSY().setIcon(bu.nullAsNil(paramb.HeJ));
+        ((a)com.tencent.mm.kernel.g.ab(a.class)).e(((com.tencent.mm.plugin.webview.luggage.g)this.EiQ.chg).eSY());
       }
-      Pr("");
+      PZ("");
       AppMethodBeat.o(78594);
     }
   }

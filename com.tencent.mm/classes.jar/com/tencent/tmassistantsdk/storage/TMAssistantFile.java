@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.io.File;
@@ -97,10 +97,10 @@ public class TMAssistantFile
     TMLog.i("TMAssistantFile", "moveFileFromTmpToSavaPath, tmpFilePath = " + paramString1 + ", saveFilePath = " + paramString2);
     if ((paramString1 != null) && (paramString2 != null))
     {
-      paramString1 = new e(paramString1);
+      paramString1 = new k(paramString1);
       if (paramString1.exists() == true)
       {
-        boolean bool = paramString1.ag(new e(paramString2));
+        boolean bool = paramString1.ag(new k(paramString2));
         if (bool) {
           GlobalUtil.updateFilePathAuthorized(paramString2);
         }
@@ -144,7 +144,7 @@ public class TMAssistantFile
       }
       catch (IOException paramOutputStream)
       {
-        ad.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
+        ae.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
         TMLog.w("TMAssistantFile", "writeData1 failed " + paramOutputStream.getMessage());
         AppMethodBeat.o(177060);
         return false;
@@ -160,7 +160,7 @@ public class TMAssistantFile
       }
       catch (IOException paramOutputStream)
       {
-        ad.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
+        ae.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
         TMLog.w("TMAssistantFile", "writeData2 failed " + paramOutputStream.getMessage());
         AppMethodBeat.o(177060);
       }
@@ -205,7 +205,7 @@ public class TMAssistantFile
     //   53: ldc 190
     //   55: iconst_0
     //   56: anewarray 4	java/lang/Object
-    //   59: invokestatic 196	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: invokestatic 196	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   62: goto -36 -> 26
     //   65: astore_1
     //   66: aload_0
@@ -233,11 +233,11 @@ public class TMAssistantFile
     TMLog.i("TMAssistantFile", "deleteFile 1 tmpFilePathString: ".concat(String.valueOf(str)));
     if (!TextUtils.isEmpty(str))
     {
-      e locale = new e(str);
-      TMLog.i("TMAssistantFile", "deleteFile 2 file: ".concat(String.valueOf(locale)));
-      if (locale.exists())
+      k localk = new k(str);
+      TMLog.i("TMAssistantFile", "deleteFile 2 file: ".concat(String.valueOf(localk)));
+      if (localk.exists())
       {
-        boolean bool = locale.delete();
+        boolean bool = localk.delete();
         TMLog.i("TMAssistantFile", "deleteFile result:" + bool + ",filename:" + str);
         AppMethodBeat.o(102415);
         return;
@@ -270,7 +270,7 @@ public class TMAssistantFile
     if (i > 0) {
       str = paramString.substring(0, i);
     }
-    paramString = new e(str);
+    paramString = new k(str);
     if (!paramString.exists()) {
       bool = paramString.mkdirs();
     }
@@ -327,7 +327,7 @@ public class TMAssistantFile
     //   63: ldc 190
     //   65: iconst_0
     //   66: anewarray 4	java/lang/Object
-    //   69: invokestatic 196	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: invokestatic 196	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: ldc 11
     //   74: ldc_w 270
     //   77: aload_3
@@ -384,15 +384,15 @@ public class TMAssistantFile
     Object localObject = getSaveFilePath(this.mFinalFileName);
     if (localObject != null)
     {
-      localObject = new e((String)localObject);
-      e locale;
-      if (!((e)localObject).exists())
+      localObject = new k((String)localObject);
+      k localk;
+      if (!((k)localObject).exists())
       {
         localObject = getTmpFilePath(this.mTempFileName);
         if (localObject != null)
         {
-          locale = new e((String)localObject);
-          if (locale.exists()) {
+          localk = new k((String)localObject);
+          if (localk.exists()) {
             break label83;
           }
           this.mFileDataLen = 0L;
@@ -405,9 +405,9 @@ public class TMAssistantFile
         return l;
         label83:
         TMLog.i("TMAssistantFile", (String)localObject + " exists");
-        this.mFileDataLen = locale.length();
+        this.mFileDataLen = localk.length();
         continue;
-        this.mFileDataLen = ((e)localObject).length();
+        this.mFileDataLen = ((k)localObject).length();
       }
     }
     AppMethodBeat.o(102416);
@@ -440,7 +440,7 @@ public class TMAssistantFile
           try
           {
             ensureFilePath(str);
-            this.mFileOutputStream = i.cX(str, true);
+            this.mFileOutputStream = o.db(str, true);
             if (this.mWriteDataBuffer == null)
             {
               this.mWriteDataBuffer = new byte[16384];
@@ -455,7 +455,7 @@ public class TMAssistantFile
           }
           catch (Exception paramArrayOfByte)
           {
-            ad.printErrStackTrace("TMAssistantFile", paramArrayOfByte, "", new Object[0]);
+            ae.printErrStackTrace("TMAssistantFile", paramArrayOfByte, "", new Object[0]);
             TMLog.w("TMAssistantFile", "write failed" + paramArrayOfByte.getMessage());
             AppMethodBeat.o(102418);
             paramBoolean = bool;

@@ -24,7 +24,7 @@ import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.b.g.a;
 import com.tencent.mm.live.c.b.c;
 import com.tencent.mm.live.view.BaseLivePluginLayout;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.tools.h;
@@ -34,36 +34,36 @@ import d.v;
 import org.xwalk.core.XWalkEnvironment;
 
 @a(35)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/LiveUIA;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "uiRouter", "Lcom/tencent/mm/live/controller/LiveUIRouter;", "addKeyBoardListener", "", "getForceOrientation", "", "getLayoutId", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/LiveUIA;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "uiRouter", "Lcom/tencent/mm/live/controller/LiveUIRouter;", "addKeyBoardListener", "", "getForceOrientation", "", "getLayoutId", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "Companion", "plugin-logic_release"})
 public class LiveUIA
   extends MMActivity
 {
-  public static final LiveUIA.a gYm;
-  private b gYl;
+  public static final LiveUIA.a haZ;
+  private b haY;
   
   static
   {
-    AppMethodBeat.i(212787);
-    gYm = new LiveUIA.a((byte)0);
-    AppMethodBeat.o(212787);
+    AppMethodBeat.i(216415);
+    haZ = new LiveUIA.a((byte)0);
+    AppMethodBeat.o(216415);
   }
   
   public int getForceOrientation()
   {
-    AppMethodBeat.i(212782);
-    Object localObject = g.gOr;
-    if (g.anI().gOs)
+    AppMethodBeat.i(216410);
+    Object localObject = g.gQZ;
+    if (g.anX().gRa)
     {
       localObject = getIntent();
       if ((localObject != null) && (((Intent)localObject).getBooleanExtra("key_is_live_finished", false) == true))
       {
-        AppMethodBeat.o(212782);
+        AppMethodBeat.o(216410);
         return 1;
       }
-      AppMethodBeat.o(212782);
+      AppMethodBeat.o(216410);
       return 14;
     }
-    AppMethodBeat.o(212782);
+    AppMethodBeat.o(216410);
     return 1;
   }
   
@@ -74,50 +74,50 @@ public class LiveUIA
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(212781);
-    ad.i("MicroMsg.LiveUI", "onActivityResult (" + hashCode() + ')');
+    AppMethodBeat.i(216409);
+    ae.i("MicroMsg.LiveUI", "onActivityResult (" + hashCode() + ')');
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Object localObject = this.gYl;
+    Object localObject = this.haY;
     if (localObject != null)
     {
-      ad.i(((b)localObject).TAG, "onActivityResult " + ((b)localObject).gGH);
-      localObject = ((b)localObject).gGH;
+      ae.i(((b)localObject).TAG, "onActivityResult " + ((b)localObject).gJq);
+      localObject = ((b)localObject).gJq;
       if (localObject != null)
       {
         ((BaseLivePluginLayout)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
-        AppMethodBeat.o(212781);
+        AppMethodBeat.o(216409);
         return;
       }
-      AppMethodBeat.o(212781);
+      AppMethodBeat.o(216409);
       return;
     }
-    AppMethodBeat.o(212781);
+    AppMethodBeat.o(216409);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(212785);
-    Object localObject = this.gYl;
+    AppMethodBeat.i(216413);
+    Object localObject = this.haY;
     if (localObject != null)
     {
-      localObject = ((b)localObject).gGH;
+      localObject = ((b)localObject).gJq;
       if (localObject != null) {}
-      for (boolean bool = ((BaseLivePluginLayout)localObject).aoB();; bool = false)
+      for (boolean bool = ((BaseLivePluginLayout)localObject).aoQ();; bool = false)
       {
         if (!bool) {
           super.onBackPressed();
         }
-        AppMethodBeat.o(212785);
+        AppMethodBeat.o(216413);
         return;
       }
     }
-    AppMethodBeat.o(212785);
+    AppMethodBeat.o(216413);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(212777);
-    ad.i("MicroMsg.LiveUI", "onCreate (" + hashCode() + ')');
+    AppMethodBeat.i(216405);
+    ae.i("MicroMsg.LiveUI", "onCreate (" + hashCode() + ')');
     super.onCreate(paramBundle);
     paramBundle = getSupportActionBar();
     if (paramBundle != null) {
@@ -153,34 +153,34 @@ public class LiveUIA
     if (localObject1 == null)
     {
       paramBundle = new v("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(212777);
+      AppMethodBeat.o(216405);
       throw paramBundle;
     }
-    this.gYl = new b((Context)localObject2, (ViewGroup)localObject1, paramBundle, bool);
-    localObject1 = this.gYl;
+    this.haY = new b((Context)localObject2, (ViewGroup)localObject1, paramBundle, bool);
+    localObject1 = this.haY;
     if (localObject1 != null)
     {
       localObject2 = ((b)localObject1).context.getSystemService("phone");
       if (localObject2 == null)
       {
         paramBundle = new v("null cannot be cast to non-null type android.telephony.TelephonyManager");
-        AppMethodBeat.o(212777);
+        AppMethodBeat.o(216405);
         throw paramBundle;
       }
-      ((TelephonyManager)localObject2).listen(((b)localObject1).gGJ, 32);
+      ((TelephonyManager)localObject2).listen(((b)localObject1).gJs, 32);
     }
-    localObject1 = g.gOr;
+    localObject1 = g.gQZ;
     int i;
     if (paramBundle != null)
     {
       i = paramBundle.getFromScene();
-      g.nD(i);
+      g.nG(i);
       if (paramBundle == null) {
         break label393;
       }
-      paramBundle = Integer.valueOf(paramBundle.akU());
+      paramBundle = Integer.valueOf(paramBundle.alj());
       label364:
-      i = LiveConfig.gGr;
+      i = LiveConfig.gJa;
       if (paramBundle != null) {
         break label398;
       }
@@ -189,148 +189,148 @@ public class LiveUIA
     label398:
     while (paramBundle.intValue() != i)
     {
-      i = LiveConfig.gGs;
+      i = LiveConfig.gJb;
       if (paramBundle != null) {
         break label439;
       }
-      AppMethodBeat.o(212777);
+      AppMethodBeat.o(216405);
       return;
-      i = LiveConfig.gGw;
+      i = LiveConfig.gJf;
       break;
       paramBundle = null;
       break label364;
     }
-    paramBundle = this.gYl;
+    paramBundle = this.haY;
     if (paramBundle != null)
     {
-      localObject1 = f.j.gNB;
-      paramBundle.mY(f.j.ank());
-      AppMethodBeat.o(212777);
+      localObject1 = f.j.gQk;
+      paramBundle.nb(f.j.anA());
+      AppMethodBeat.o(216405);
       return;
     }
-    AppMethodBeat.o(212777);
+    AppMethodBeat.o(216405);
     return;
     label439:
     if (paramBundle.intValue() == i)
     {
-      paramBundle = this.gYl;
+      paramBundle = this.haY;
       if (paramBundle != null)
       {
-        localObject1 = f.j.gNB;
-        paramBundle.mY(f.j.anl());
-        AppMethodBeat.o(212777);
+        localObject1 = f.j.gQk;
+        paramBundle.nb(f.j.anB());
+        AppMethodBeat.o(216405);
         return;
       }
     }
-    AppMethodBeat.o(212777);
+    AppMethodBeat.o(216405);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(212784);
-    ad.i("MicroMsg.LiveUI", "onDestroy (" + hashCode() + ')');
+    AppMethodBeat.i(216412);
+    ae.i("MicroMsg.LiveUI", "onDestroy (" + hashCode() + ')');
     super.onDestroy();
-    b localb = this.gYl;
+    b localb = this.haY;
     if (localb != null)
     {
       localb.onDestroy();
-      AppMethodBeat.o(212784);
+      AppMethodBeat.o(216412);
       return;
     }
-    AppMethodBeat.o(212784);
+    AppMethodBeat.o(216412);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(212786);
-    ad.i("MicroMsg.LiveUI", "onNewIntent (" + hashCode() + ')');
+    AppMethodBeat.i(216414);
+    ae.i("MicroMsg.LiveUI", "onNewIntent (" + hashCode() + ')');
     super.onNewIntent(paramIntent);
     if (paramIntent != null)
     {
       if (paramIntent.getBooleanExtra("route_to_maximize", false) != true) {
         break label103;
       }
-      paramIntent = this.gYl;
+      paramIntent = this.haY;
       if (paramIntent == null) {
         break label103;
       }
-      paramIntent = paramIntent.gGH;
+      paramIntent = paramIntent.gJq;
       if (paramIntent != null)
       {
-        com.tencent.mm.live.c.b.b.a(paramIntent, b.c.gRK);
-        AppMethodBeat.o(212786);
+        com.tencent.mm.live.c.b.b.a(paramIntent, b.c.gUs);
+        AppMethodBeat.o(216414);
       }
     }
     else
     {
-      AppMethodBeat.o(212786);
+      AppMethodBeat.o(216414);
       return;
     }
-    AppMethodBeat.o(212786);
+    AppMethodBeat.o(216414);
     return;
     label103:
-    AppMethodBeat.o(212786);
+    AppMethodBeat.o(216414);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(212780);
-    ad.i("MicroMsg.LiveUI", "onPause (" + hashCode() + ')');
+    AppMethodBeat.i(216408);
+    ae.i("MicroMsg.LiveUI", "onPause (" + hashCode() + ')');
     super.onPause();
-    Object localObject = this.gYl;
+    Object localObject = this.haY;
     if (localObject != null)
     {
-      ad.i(((b)localObject).TAG, "onPause " + ((b)localObject).gGH);
-      localObject = ((b)localObject).gGH;
+      ae.i(((b)localObject).TAG, "onPause " + ((b)localObject).gJq);
+      localObject = ((b)localObject).gJq;
       if (localObject != null)
       {
         ((BaseLivePluginLayout)localObject).pause();
-        AppMethodBeat.o(212780);
+        AppMethodBeat.o(216408);
         return;
       }
-      AppMethodBeat.o(212780);
+      AppMethodBeat.o(216408);
       return;
     }
-    AppMethodBeat.o(212780);
+    AppMethodBeat.o(216408);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(212778);
-    ad.i("MicroMsg.LiveUI", "onResume (" + hashCode() + ')');
+    AppMethodBeat.i(216406);
+    ae.i("MicroMsg.LiveUI", "onResume (" + hashCode() + ')');
     super.onResume();
-    b localb = this.gYl;
+    b localb = this.haY;
     if (localb != null)
     {
-      ad.i(localb.TAG, "onResume " + localb.gGH);
-      BaseLivePluginLayout localBaseLivePluginLayout = localb.gGH;
+      ae.i(localb.TAG, "onResume " + localb.gJq);
+      BaseLivePluginLayout localBaseLivePluginLayout = localb.gJq;
       if (localBaseLivePluginLayout != null) {
         localBaseLivePluginLayout.resume();
       }
-      localBaseLivePluginLayout = localb.gGH;
+      localBaseLivePluginLayout = localb.gJq;
       if (localBaseLivePluginLayout != null)
       {
         localBaseLivePluginLayout.post((Runnable)new com.tencent.mm.live.a.b.b(localb));
-        AppMethodBeat.o(212778);
+        AppMethodBeat.o(216406);
         return;
       }
-      AppMethodBeat.o(212778);
+      AppMethodBeat.o(216406);
       return;
     }
-    AppMethodBeat.o(212778);
+    AppMethodBeat.o(216406);
   }
   
   public void onStart()
   {
     boolean bool = true;
-    AppMethodBeat.i(212779);
-    ad.i("MicroMsg.LiveUI", "onStart (" + hashCode() + ')');
+    AppMethodBeat.i(216407);
+    ae.i("MicroMsg.LiveUI", "onStart (" + hashCode() + ')');
     super.onStart();
-    Object localObject1 = this.gYl;
+    Object localObject1 = this.haY;
     if (localObject1 != null)
     {
-      ad.i(((b)localObject1).TAG, "onStart " + ((b)localObject1).gGH);
-      Object localObject2 = ((b)localObject1).gGH;
+      ae.i(((b)localObject1).TAG, "onStart " + ((b)localObject1).gJq);
+      Object localObject2 = ((b)localObject1).gJq;
       if (localObject2 != null) {
         if ((Settings.System.getInt(XWalkEnvironment.getContentResolver(), "accelerometer_rotation") != 1) || (!((b)localObject1).sp.getBoolean("settings_landscape_mode", false))) {
           break label164;
@@ -338,51 +338,51 @@ public class LiveUIA
       }
       for (;;)
       {
-        ((BaseLivePluginLayout)localObject2).dW(bool);
-        localObject2 = ((b)localObject1).gGE;
-        ((b.a)localObject2).gGN.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, (ContentObserver)localObject2);
-        localObject1 = ((b)localObject1).gGH;
+        ((BaseLivePluginLayout)localObject2).dY(bool);
+        localObject2 = ((b)localObject1).gJn;
+        ((b.a)localObject2).gJw.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, (ContentObserver)localObject2);
+        localObject1 = ((b)localObject1).gJq;
         if (localObject1 == null) {
           break;
         }
         ((BaseLivePluginLayout)localObject1).start();
-        AppMethodBeat.o(212779);
+        AppMethodBeat.o(216407);
         return;
         label164:
         bool = false;
       }
-      AppMethodBeat.o(212779);
+      AppMethodBeat.o(216407);
       return;
     }
-    AppMethodBeat.o(212779);
+    AppMethodBeat.o(216407);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(212783);
-    ad.i("MicroMsg.LiveUI", "onStop (" + hashCode() + ')');
+    AppMethodBeat.i(216411);
+    ae.i("MicroMsg.LiveUI", "onStop (" + hashCode() + ')');
     super.onStop();
-    Object localObject1 = this.gYl;
+    Object localObject1 = this.haY;
     if (localObject1 != null)
     {
-      ad.i(((b)localObject1).TAG, "onStop " + ((b)localObject1).gGH);
-      Object localObject2 = ((b)localObject1).gGE;
-      ((b.a)localObject2).gGN.unregisterContentObserver((ContentObserver)localObject2);
-      localObject2 = ((b)localObject1).fQT;
+      ae.i(((b)localObject1).TAG, "onStop " + ((b)localObject1).gJq);
+      Object localObject2 = ((b)localObject1).gJn;
+      ((b.a)localObject2).gJw.unregisterContentObserver((ContentObserver)localObject2);
+      localObject2 = ((b)localObject1).fSZ;
       if (localObject2 != null) {
         ((h)localObject2).close();
       }
-      localObject1 = ((b)localObject1).gGH;
+      localObject1 = ((b)localObject1).gJq;
       if (localObject1 != null)
       {
         ((BaseLivePluginLayout)localObject1).stop();
-        AppMethodBeat.o(212783);
+        AppMethodBeat.o(216411);
         return;
       }
-      AppMethodBeat.o(212783);
+      AppMethodBeat.o(216411);
       return;
     }
-    AppMethodBeat.o(212783);
+    AppMethodBeat.o(216411);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -393,7 +393,7 @@ public class LiveUIA
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIA
  * JD-Core Version:    0.7.0.1
  */

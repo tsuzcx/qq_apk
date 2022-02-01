@@ -8,22 +8,22 @@ public abstract class ef
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGk = "version".hashCode();
-  private static final int eWa = "subtype".hashCode();
-  private static final int fjX = "bubbleMd5".hashCode();
-  private static final int fjY = "coverMd5".hashCode();
-  private static final int fjZ = "minilogoMd5".hashCode();
+  private static final int eHT = "version".hashCode();
+  private static final int eXL = "subtype".hashCode();
+  private static final int flU = "bubbleMd5".hashCode();
+  private static final int flV = "coverMd5".hashCode();
+  private static final int flW = "minilogoMd5".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGf = true;
-  private boolean eVY = true;
+  private boolean eHO = true;
+  private boolean eXJ = true;
   public String field_bubbleMd5;
   public String field_coverMd5;
   public String field_minilogoMd5;
   public int field_subtype;
   public int field_version;
-  private boolean fjU = true;
-  private boolean fjV = true;
-  private boolean fjW = true;
+  private boolean flR = true;
+  private boolean flS = true;
+  private boolean flT = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,11 +38,11 @@ public abstract class ef
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eWa != k) {
+      if (eXL != k) {
         break label65;
       }
       this.field_subtype = paramCursor.getInt(i);
-      this.eVY = true;
+      this.eXJ = true;
     }
     for (;;)
     {
@@ -50,13 +50,13 @@ public abstract class ef
       break label20;
       break;
       label65:
-      if (fjX == k) {
+      if (flU == k) {
         this.field_bubbleMd5 = paramCursor.getString(i);
-      } else if (fjY == k) {
+      } else if (flV == k) {
         this.field_coverMd5 = paramCursor.getString(i);
-      } else if (fjZ == k) {
+      } else if (flW == k) {
         this.field_minilogoMd5 = paramCursor.getString(i);
-      } else if (eGk == k) {
+      } else if (eHT == k) {
         this.field_version = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -67,19 +67,19 @@ public abstract class ef
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVY) {
+    if (this.eXJ) {
       localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.fjU) {
+    if (this.flR) {
       localContentValues.put("bubbleMd5", this.field_bubbleMd5);
     }
-    if (this.fjV) {
+    if (this.flS) {
       localContentValues.put("coverMd5", this.field_coverMd5);
     }
-    if (this.fjW) {
+    if (this.flT) {
       localContentValues.put("minilogoMd5", this.field_minilogoMd5);
     }
-    if (this.eGf) {
+    if (this.eHO) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
     if (this.systemRowid > 0L) {

@@ -7,12 +7,8 @@
         </LinearLayout>
     </LinearLayout>
     <FrameLayout android:id="@id/f2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <LinearLayout android:orientation="horizontal" android:id="@id/d6" android:background="@drawable/c9" android:clickable="true" android:layout_width="wrap_content" android:layout_height="@dimen/ol" android:layout_marginRight="@dimen/am4" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton android:id="@id/d9" android:background="@drawable/c6" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-            <View android:layout_gravity="center_vertical" android:id="@id/d7" android:background="@color/cq" android:layout_width="@dimen/t5" android:layout_height="@dimen/ok" />
-            <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton android:id="@id/d8" android:background="@drawable/c7" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-        </LinearLayout>
-        <ViewStub android:layout_gravity="center_vertical" android:id="@id/b7t" android:layout="@layout/c5" android:layout_width="@dimen/oe" android:layout_height="@dimen/oe" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView android:layout_gravity="center|right" android:id="@id/hxp" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ani" android:layout_height="@dimen/ol" android:layout_marginRight="@dimen/am4" />
+        <ViewStub android:layout_gravity="center|right" android:id="@id/b7t" android:layout="@layout/c5" android:layout_width="@dimen/oe" android:layout_height="@dimen/oe" android:layout_marginRight="16.0dip" />
     </FrameLayout>
     <RelativeLayout android:id="@id/di" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/f2e" android:layout_toRightOf="@id/db">
         <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/dj" android:paddingRight="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">

@@ -1,13 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.ah.z;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bv;
+import java.util.List;
 
 public final class rx
   extends b
 {
-  public a dGw;
+  public a dHz;
   
   public rx()
   {
@@ -16,16 +19,20 @@ public final class rx
   
   private rx(byte paramByte)
   {
-    AppMethodBeat.i(125630);
-    this.dGw = new a();
-    this.IbR = false;
+    AppMethodBeat.i(149887);
+    this.dHz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125630);
+    AppMethodBeat.o(149887);
   }
   
   public static final class a
   {
-    public SnsObject dwq;
+    public Context context;
+    public List<bv> dFX;
+    public boolean dHA = false;
+    public z dHB;
+    public String talker;
   }
 }
 

@@ -10,7 +10,7 @@ import org.xwalk.core.XWalkView;
 public final class c
   extends XWalkExtendPluginClient
 {
-  com.tencent.luggage.xweb_ext.extendplugin.b.c cqP;
+  com.tencent.luggage.xweb_ext.extendplugin.b.c crt;
   
   public c(XWalkView paramXWalkView)
   {
@@ -21,8 +21,8 @@ public final class c
   {
     AppMethodBeat.i(138805);
     super.onPluginDestroy(paramString, paramInt);
-    if (this.cqP != null) {
-      this.cqP.onPluginDestroy(paramString, paramInt);
+    if (this.crt != null) {
+      this.crt.onPluginDestroy(paramString, paramInt);
     }
     AppMethodBeat.o(138805);
   }
@@ -31,8 +31,8 @@ public final class c
   {
     AppMethodBeat.i(138804);
     super.onPluginReady(paramString, paramInt, paramSurfaceTexture);
-    if (this.cqP != null) {
-      this.cqP.onPluginReady(paramString, paramInt, paramSurfaceTexture);
+    if (this.crt != null) {
+      this.crt.onPluginReady(paramString, paramInt, paramSurfaceTexture);
     }
     AppMethodBeat.o(138804);
   }
@@ -41,8 +41,8 @@ public final class c
   {
     AppMethodBeat.i(178798);
     super.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
-    if (this.cqP != null) {
-      this.cqP.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
+    if (this.crt != null) {
+      this.crt.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
     }
     AppMethodBeat.o(178798);
   }
@@ -51,8 +51,8 @@ public final class c
   {
     AppMethodBeat.i(138806);
     super.onPluginTouch(paramString, paramInt, paramMotionEvent);
-    if (this.cqP != null) {
-      this.cqP.onPluginTouch(paramString, paramInt, paramMotionEvent);
+    if (this.crt != null) {
+      this.crt.onPluginTouch(paramString, paramInt, paramMotionEvent);
     }
     AppMethodBeat.o(138806);
   }

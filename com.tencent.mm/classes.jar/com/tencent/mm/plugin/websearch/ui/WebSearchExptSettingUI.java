@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahq;
-import com.tencent.mm.protocal.protobuf.ahr;
+import com.tencent.mm.protocal.protobuf.aia;
+import com.tencent.mm.protocal.protobuf.aib;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -17,7 +17,7 @@ import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getResourceId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "plugin-websearch_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getResourceId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "plugin-websearch_release"})
 public final class WebSearchExptSettingUI
   extends MMPreference
 {
@@ -32,16 +32,16 @@ public final class WebSearchExptSettingUI
     super.onCreate(paramBundle);
     setMMTitle(2131758652);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    paramBundle = c.LgD;
-    paramBundle = c.fNH().Gfg;
+    paramBundle = c.LDf;
+    paramBundle = c.fSc().GxO;
     p.g(paramBundle, "ExptSettingLogic.exptSettingConfig.groups");
     paramBundle = ((Iterable)paramBundle).iterator();
     while (paramBundle.hasNext())
     {
-      ahr localahr = (ahr)paramBundle.next();
+      aib localaib = (aib)paramBundle.next();
       Preference localPreference = new Preference((Context)this);
-      localPreference.setKey(localahr.key);
-      localPreference.setTitle((CharSequence)localahr.title);
+      localPreference.setKey(localaib.key);
+      localPreference.setTitle((CharSequence)localaib.title);
       getPreferenceScreen().b(localPreference);
     }
     AppMethodBeat.o(116565);
@@ -55,8 +55,8 @@ public final class WebSearchExptSettingUI
       paramf = new Intent((Context)this, WebSearchExptSubSettingUI.class);
       paramf.putExtra("groupKey", paramPreference.getKey());
       paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(116566);
@@ -69,7 +69,7 @@ public final class WebSearchExptSettingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -77,9 +77,9 @@ public final class WebSearchExptSettingUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(220003);
-      this.DDk.finish();
-      AppMethodBeat.o(220003);
+      AppMethodBeat.i(209746);
+      this.DVi.finish();
+      AppMethodBeat.o(209746);
       return false;
     }
   }

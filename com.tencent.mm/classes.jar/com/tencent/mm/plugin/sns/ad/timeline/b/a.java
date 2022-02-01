@@ -3,8 +3,10 @@ package com.tencent.mm.plugin.sns.ad.timeline.b;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.d.i;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.ad.e.j;
+import com.tencent.mm.plugin.sns.ad.timeline.a.f;
+import com.tencent.mm.plugin.sns.ad.timeline.c.a.d;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.plugin.sns.ui.aq;
@@ -12,93 +14,79 @@ import com.tencent.mm.plugin.sns.ui.bh;
 import com.tencent.mm.plugin.sns.ui.bi;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.item.n;
-import com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView.b;
 import com.tencent.mm.plugin.sns.ui.video.b;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   extends n
 {
-  private boolean zbn = false;
-  private String zbo = "";
+  private boolean zrR = false;
+  private String zrS = "";
   
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    AppMethodBeat.i(197683);
-    if (this.zbn)
+    AppMethodBeat.i(219155);
+    if (this.zrR)
     {
-      ad.d("SnsAd.AdSightTimeLineItem", "the new video  item is online video");
+      ae.d("SnsAd.AdSightTimeLineItem", "the new video  item is online video");
       if (paramBaseViewHolder == null)
       {
-        ad.e("SnsAd.AdSightTimeLineItem", "the holder is null");
-        AppMethodBeat.o(197683);
+        ae.e("SnsAd.AdSightTimeLineItem", "the holder is null");
+        AppMethodBeat.o(219155);
         return;
       }
-      byn localbyn = com.tencent.mm.plugin.sns.ad.timeline.a.d.a(paramBaseViewHolder);
-      String str1 = com.tencent.mm.plugin.sns.ad.timeline.a.d.c(paramBaseViewHolder);
-      p localp = ag.dUe().aAa(paramBaseViewHolder.doX);
-      i locali = com.tencent.mm.plugin.sns.ad.timeline.a.d.a(this.zpI);
-      String str2 = paramBaseViewHolder.doX;
-      if ((localbyn == null) || (str1 == null) || (localp == null))
+      bzh localbzh = f.a(paramBaseViewHolder);
+      String str1 = f.c(paramBaseViewHolder);
+      p localp = ah.dXE().aBr(paramBaseViewHolder.dqc);
+      j localj = f.a(this.zGX);
+      String str2 = paramBaseViewHolder.dqc;
+      if ((localbzh == null) || (str1 == null) || (localp == null))
       {
-        ad.e("SnsAd.AdSightTimeLineItem", "the media , timelineId, sns info is null");
-        AppMethodBeat.o(197683);
+        ae.e("SnsAd.AdSightTimeLineItem", "the media , timelineId, sns info is null");
+        AppMethodBeat.o(219155);
         return;
       }
-      b.eeD().pause();
-      eeG();
-      paramBaseViewHolder = (FrameLayout)paramBaseViewHolder.Atv.zWx.findViewById(2131305105);
-      com.tencent.mm.plugin.sns.ad.timeline.c.a.d locald = new com.tencent.mm.plugin.sns.ad.timeline.c.a.d("SnsAd.AdSightTimeLineItem");
+      b.eil().pause();
+      ehP();
+      paramBaseViewHolder = (FrameLayout)paramBaseViewHolder.AKJ.AnG.findViewById(2131305105);
+      d locald = new d("SnsAd.AdSightTimeLineItem");
       locald.mContainer = paramBaseViewHolder;
-      locald.zbu = localbyn;
-      locald.yVM = localp;
-      locald.qbR = str2;
-      locald.zbo = str1;
-      locald.zbv = locali;
-      locald.a(1, new SnsTimelineVideoView.b()
-      {
-        public final void Pj(String paramAnonymousString)
-        {
-          AppMethodBeat.i(197680);
-          if ((!bt.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals(a.a(a.this))))
-          {
-            ad.w("SnsAd.AdSightTimeLineItem", "timelineVideoView setUICallback onDestroy, the tlId is " + paramAnonymousString + ", the timelineId is " + a.a(a.this));
-            a.b(a.this);
-          }
-          AppMethodBeat.o(197680);
-        }
-      });
-      AppMethodBeat.o(197683);
+      locald.zrY = localbzh;
+      locald.zlW = localp;
+      locald.qiw = str2;
+      locald.zrS = str1;
+      locald.zrZ = localj;
+      locald.a(1, new a.1(this));
+      AppMethodBeat.o(219155);
       return;
     }
-    ad.d("SnsAd.AdSightTimeLineItem", "the new video item is running, execute super play!");
+    ae.d("SnsAd.AdSightTimeLineItem", "the new video item is running, execute super play!");
     super.a(paramBaseViewHolder, paramInt);
-    AppMethodBeat.o(197683);
+    AppMethodBeat.o(219155);
   }
   
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bi parambi, TimeLineObject paramTimeLineObject, int paramInt2, bh parambh)
   {
-    AppMethodBeat.i(197681);
+    AppMethodBeat.i(219153);
     if (parambi != null) {}
     try
     {
-      if (parambi.yVM != null) {
-        if ((!com.tencent.mm.plugin.sns.ad.timeline.a.a.a(parambi.yVM.dRL())) || (!com.tencent.mm.plugin.sns.ad.timeline.a.a.dRT())) {
+      if (parambi.zlW != null) {
+        if ((!com.tencent.mm.plugin.sns.ad.timeline.a.a.a(parambi.zlW.dVj())) || (!com.tencent.mm.plugin.sns.ad.timeline.a.a.dVr())) {
           break label81;
         }
       }
       label40:
       label81:
-      for (this.zbn = true;; this.zbn = false)
+      for (this.zrR = true;; this.zrR = false)
       {
         if ((paramTimeLineObject != null) && (paramTimeLineObject.Id != null)) {
-          this.zbo = paramTimeLineObject.Id;
+          this.zrS = paramTimeLineObject.Id;
         }
         super.a(paramBaseViewHolder, paramInt1, parambi, paramTimeLineObject, paramInt2, parambh);
-        AppMethodBeat.o(197681);
+        AppMethodBeat.o(219153);
         return;
       }
     }
@@ -108,16 +96,16 @@ public final class a
     }
   }
   
-  public final boolean dRZ()
+  public final boolean dVx()
   {
-    AppMethodBeat.i(197682);
-    if (this.zbn)
+    AppMethodBeat.i(219154);
+    if (this.zrR)
     {
-      AppMethodBeat.o(197682);
+      AppMethodBeat.o(219154);
       return false;
     }
-    boolean bool = super.dRZ();
-    AppMethodBeat.o(197682);
+    boolean bool = super.dVx();
+    AppMethodBeat.o(219154);
     return bool;
   }
   

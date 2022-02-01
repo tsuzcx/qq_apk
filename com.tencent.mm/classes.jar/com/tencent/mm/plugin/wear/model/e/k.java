@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.wear.model.g;
-import com.tencent.mm.protocal.protobuf.edf;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.eew;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
 public final class k
   extends a
 {
-  public final List<Integer> eKN()
+  public final List<Integer> eOv()
   {
     AppMethodBeat.i(30089);
     ArrayList localArrayList = new ArrayList();
@@ -37,29 +37,29 @@ public final class k
     {
       AppMethodBeat.o(30090);
       return null;
-      Object localObject = new edf();
+      Object localObject = new eew();
       try
       {
-        ((edf)localObject).parseFrom(paramArrayOfByte);
+        ((eew)localObject).parseFrom(paramArrayOfByte);
         label50:
-        com.tencent.mm.plugin.wear.model.a.eKt().fq(((edf)localObject).Hnp, ((edf)localObject).Hrp);
+        com.tencent.mm.plugin.wear.model.a.eOb().fz(((eew)localObject).HGP, ((eew)localObject).HKR);
         AppMethodBeat.o(30090);
         return null;
         try
         {
           paramArrayOfByte = new String(paramArrayOfByte, "utf8");
-          ba.aBQ();
-          localObject = c.azp().Bf(paramArrayOfByte);
-          if (w.vF(paramArrayOfByte))
+          bc.aCg();
+          localObject = c.azF().BH(paramArrayOfByte);
+          if (x.wb(paramArrayOfByte))
           {
-            ba.aBQ();
-            localObject = c.azp().Bf(paramArrayOfByte);
-            ((am)localObject).ki(0);
-            ba.aBQ();
-            c.azp().c(paramArrayOfByte, (am)localObject);
-            ba.aBQ();
-            c.azo().c(new com.tencent.mm.chatroom.f.a(paramArrayOfByte, 0));
-            com.tencent.mm.plugin.wear.model.c.a.iP(4, 0);
+            bc.aCg();
+            localObject = c.azF().BH(paramArrayOfByte);
+            ((an)localObject).kk(0);
+            bc.aCg();
+            c.azF().c(paramArrayOfByte, (an)localObject);
+            bc.aCg();
+            c.azE().d(new com.tencent.mm.chatroom.f.a(paramArrayOfByte, 0));
+            com.tencent.mm.plugin.wear.model.c.a.iT(4, 0);
           }
         }
         catch (UnsupportedEncodingException paramArrayOfByte)
@@ -68,7 +68,7 @@ public final class k
           {
             paramArrayOfByte = "";
             continue;
-            w.s((am)localObject);
+            x.z((an)localObject);
           }
         }
       }

@@ -6,7 +6,7 @@ import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.ui.FTSMainUI;
 import com.tencent.mm.plugin.fts.ui.k;
@@ -15,12 +15,12 @@ import com.tencent.mm.plugin.fts.ui.webview.PardusWebView;
 import com.tencent.mm.plugin.websearch.api.ao;
 import com.tencent.mm.plugin.websearch.api.h;
 import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.protocal.protobuf.cib;
-import com.tencent.mm.protocal.protobuf.cup;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.protocal.protobuf.cvj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,51 +30,51 @@ import org.json.JSONObject;
 public final class e
 {
   private static final int maxHeight;
-  String dBF;
-  private boolean dlh;
-  private FrameLayout nVl;
-  private boolean tED;
-  public PardusWebView tEV;
-  private FrameLayout tEW;
-  boolean tEX;
-  d tzN;
+  String dCK;
+  private boolean dmj;
+  private FrameLayout oaS;
+  d tKE;
+  public PardusWebView tPM;
+  private FrameLayout tPN;
+  boolean tPO;
+  private boolean tPu;
   
   static
   {
     AppMethodBeat.i(176953);
-    maxHeight = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 163);
+    maxHeight = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 163);
     AppMethodBeat.o(176953);
   }
   
   public e(d paramd, FrameLayout paramFrameLayout)
   {
     AppMethodBeat.i(176944);
-    this.dBF = "";
-    this.nVl = paramFrameLayout;
-    this.tzN = paramd;
+    this.dCK = "";
+    this.oaS = paramFrameLayout;
+    this.tKE = paramd;
     paramd = new com.tencent.mm.plugin.fts.ui.webview.b();
     Object localObject = new com.tencent.mm.plugin.fts.ui.webview.a();
-    this.tEV = new PardusWebView(aj.getContext());
-    this.tEV.a((com.tencent.mm.plugin.fts.ui.webview.a)localObject, paramd);
-    this.tEV.addJavascriptInterface(this, "pardusJSApi");
-    int i = com.tencent.mm.cc.a.ip(aj.getContext());
-    this.tEW = new FrameLayout(aj.getContext());
-    this.tEW.addView(this.tEV, new FrameLayout.LayoutParams(i, maxHeight));
-    paramFrameLayout.addView(this.tEW, new FrameLayout.LayoutParams(i, maxHeight));
+    this.tPM = new PardusWebView(ak.getContext());
+    this.tPM.a((com.tencent.mm.plugin.fts.ui.webview.a)localObject, paramd);
+    this.tPM.addJavascriptInterface(this, "pardusJSApi");
+    int i = com.tencent.mm.cb.a.iu(ak.getContext());
+    this.tPN = new FrameLayout(ak.getContext());
+    this.tPN.addView(this.tPM, new FrameLayout.LayoutParams(i, maxHeight));
+    paramFrameLayout.addView(this.tPN, new FrameLayout.LayoutParams(i, maxHeight));
     paramFrameLayout.measure(i, -2);
     paramFrameLayout.requestLayout();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "containerWidth: %s webviewWidth: %s", new Object[] { Integer.valueOf(paramFrameLayout.getMeasuredWidth()), Integer.valueOf(this.tEV.getMeasuredWidth()) });
-    paramd = this.tEV;
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "containerWidth: %s webviewWidth: %s", new Object[] { Integer.valueOf(paramFrameLayout.getMeasuredWidth()), Integer.valueOf(this.tPM.getMeasuredWidth()) });
+    paramd = this.tPM;
     paramFrameLayout = new HashMap();
     paramFrameLayout.put("scene", "1");
-    paramFrameLayout.put("lang", ac.iM(aj.getContext()));
+    paramFrameLayout.put("lang", com.tencent.mm.sdk.platformtools.ad.iR(ak.getContext()));
     paramFrameLayout.put("platform", "android");
-    paramFrameLayout.put("version", String.valueOf(com.tencent.mm.plugin.websearch.api.ad.Wc(5).aHm()));
-    paramFrameLayout.put("netType", com.tencent.mm.plugin.websearch.api.ad.Ux());
-    paramFrameLayout.put("wechatVersion", i.hgG);
+    paramFrameLayout.put("version", String.valueOf(com.tencent.mm.plugin.websearch.api.ad.WJ(5).aHD()));
+    paramFrameLayout.put("netType", com.tencent.mm.plugin.websearch.api.ad.UD());
+    paramFrameLayout.put("wechatVersion", j.hju);
     localObject = new StringBuffer();
     ((StringBuffer)localObject).append("file://");
-    ((StringBuffer)localObject).append(com.tencent.mm.plugin.websearch.api.ad.Wc(5).eMw());
+    ((StringBuffer)localObject).append(com.tencent.mm.plugin.websearch.api.ad.WJ(5).eQf());
     ((StringBuffer)localObject).append("/");
     ((StringBuffer)localObject).append("app.html");
     ((StringBuffer)localObject).append("?");
@@ -83,37 +83,37 @@ public final class e
     AppMethodBeat.o(176944);
   }
   
-  public final void cUr()
+  public final void cWW()
   {
     AppMethodBeat.i(176945);
-    if (this.nVl != null) {
-      this.nVl.setVisibility(8);
+    if (this.oaS != null) {
+      this.oaS.setVisibility(8);
     }
     AppMethodBeat.o(176945);
   }
   
   public final void clearData()
   {
-    this.tED = false;
-    this.dlh = false;
-    this.dBF = "";
+    this.tPu = false;
+    this.dmj = false;
+    this.dCK = "";
   }
   
-  final void gO(final String paramString1, String paramString2)
+  final void gT(final String paramString1, String paramString2)
   {
     AppMethodBeat.i(176946);
     try
     {
-      boolean bool = bt.isNullOrNil(paramString1);
+      boolean bool = bu.isNullOrNil(paramString1);
       if (bool)
       {
         AppMethodBeat.o(176946);
         return;
       }
-      paramString2 = bt.nullAsNil(paramString2);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
+      paramString2 = bu.nullAsNil(paramString2);
+      ae.i("MicroMsg.FTS.PardusWebViewLogic", "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
       paramString1 = String.format("javascript:window['%s'] && %s(%s)", new Object[] { paramString1, paramString1, paramString2 });
-      this.tzN.tDV.runOnUiThread(new Runnable()
+      this.tKE.tOM.runOnUiThread(new Runnable()
       {
         public final void run()
         {
@@ -127,7 +127,7 @@ public final class e
     }
     catch (Exception paramString1)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.FTS.PardusWebViewLogic", paramString1, "notifyJsEvent", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FTS.PardusWebViewLogic", paramString1, "notifyJsEvent", new Object[0]);
       AppMethodBeat.o(176946);
     }
   }
@@ -136,7 +136,7 @@ public final class e
   public final void pardusAction(String paramString)
   {
     AppMethodBeat.i(176950);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusAction %s", new Object[] { paramString });
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "pardusAction %s", new Object[] { paramString });
     try
     {
       localObject1 = new JSONObject(paramString);
@@ -163,11 +163,11 @@ public final class e
       localObject4 = (String)((Iterator)localObject3).next();
       ((HashMap)localObject2).put(localObject4, ((JSONObject)localObject1).optString((String)localObject4));
     }
-    this.tzN.l((Map)localObject2, paramString);
-    this.tzN.tDV.tAf.tzM.GY(28);
-    this.tzN.tDV.tAf.tzH = true;
-    this.tzN.Hc(6);
-    l.a(this.dBF, 1, 1, this.tzN.tDV.ljZ, this.tzN.tDV.tAf.tzM, 28, "", "", "");
+    this.tKE.l((Map)localObject2, paramString);
+    this.tKE.tOM.tKW.tKD.Hv(28);
+    this.tKE.tOM.tKW.tKy = true;
+    this.tKE.Hz(6);
+    l.a(this.dCK, 1, 1, this.tKE.tOM.lox, this.tKE.tOM.tKW.tKD, 28, "", "", "");
     AppMethodBeat.o(176950);
     return;
     localObject1 = ((JSONObject)localObject1).optJSONObject("actionInfo");
@@ -180,42 +180,42 @@ public final class e
       String str = (String)((Iterator)localObject4).next();
       ((HashMap)localObject3).put(str, ((JSONObject)localObject2).optString(str));
     }
-    ((h)g.ab(h.class)).a(this.tzN.tDV, 3, paramString, String.valueOf(com.tencent.mm.plugin.fts.a.e.ttw), (Map)localObject3);
-    this.tzN.tDV.tAf.tzM.GY(27);
-    this.tzN.tDV.tAf.tzH = true;
-    this.tzN.Hc(5);
-    if (this.tED) {}
+    ((h)g.ab(h.class)).a(this.tKE.tOM, 3, paramString, String.valueOf(com.tencent.mm.plugin.fts.a.e.tEn), (Map)localObject3);
+    this.tKE.tOM.tKW.tKD.Hv(27);
+    this.tKE.tOM.tKW.tKy = true;
+    this.tKE.Hz(5);
+    if (this.tPu) {}
     for (int i = 2;; i = 1)
     {
       localObject2 = ((JSONObject)localObject1).optString("nickname");
       localObject3 = ((JSONObject)localObject1).optString("docId");
       localObject1 = ((JSONObject)localObject1).optString("appId");
-      l.a(paramString, i, 2, this.tzN.tDV.ljZ, this.tzN.tDV.tAf.tzM, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, (String)localObject1);
+      l.a(paramString, i, 2, this.tKE.tOM.lox, this.tKE.tOM.tKW.tKD, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, (String)localObject1);
       AppMethodBeat.o(176950);
       return;
-      localObject2 = new cib();
-      ((cib)localObject2).FJz = ((JSONObject)localObject1).optInt("actionType");
+      localObject2 = new civ();
+      ((civ)localObject2).GbY = ((JSONObject)localObject1).optInt("actionType");
       paramString = ((JSONObject)localObject1).optJSONObject("actionInfo");
-      ((cib)localObject2).nDo = paramString.optString("userName");
-      ((cib)localObject2).Gde = paramString.optString("relativeURL");
-      ((cib)localObject2).Gdf = paramString.optInt("appVersion");
-      this.tzN.a((cib)localObject2);
+      ((civ)localObject2).nIJ = paramString.optString("userName");
+      ((civ)localObject2).GvL = paramString.optString("relativeURL");
+      ((civ)localObject2).GvM = paramString.optInt("appVersion");
+      this.tKE.a((civ)localObject2);
       localObject2 = new JSONObject();
       ((JSONObject)localObject1).put("type", "pardusAction");
       ((JSONObject)localObject1).put("actionId", "1");
       ((JSONObject)localObject1).put("params", localObject1);
-      gO("pardusActionCallBack", ((JSONObject)localObject2).toString());
-      this.tzN.Hc(4);
-      this.tzN.tDV.tAf.tzM.GY(27);
-      this.tzN.tDV.tAf.tzH = true;
-      if (this.tED) {}
+      gT("pardusActionCallBack", ((JSONObject)localObject2).toString());
+      this.tKE.Hz(4);
+      this.tKE.tOM.tKW.tKD.Hv(27);
+      this.tKE.tOM.tKW.tKy = true;
+      if (this.tPu) {}
       for (i = 2;; i = 1)
       {
         localObject1 = paramString.optString("query");
         localObject2 = paramString.optString("nickname");
         localObject3 = paramString.optString("docId");
         paramString = paramString.optString("appId");
-        l.a((String)localObject1, i, 1, this.tzN.tDV.ljZ, this.tzN.tDV.tAf.tzM, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, paramString);
+        l.a((String)localObject1, i, 1, this.tKE.tOM.lox, this.tKE.tOM.tKW.tKD, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, paramString);
         break;
       }
     }
@@ -225,7 +225,7 @@ public final class e
   public final void pardusCommCgi(String paramString)
   {
     AppMethodBeat.i(176949);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusCommCgi %s", new Object[] { paramString });
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "pardusCommCgi %s", new Object[] { paramString });
     AppMethodBeat.o(176949);
   }
   
@@ -233,16 +233,16 @@ public final class e
   public final void pardusReport(String paramString)
   {
     AppMethodBeat.i(176951);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString).optString("logStr", "");
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
-        cup localcup = new cup();
-        localcup.Hmu = paramString;
-        paramString = new z(localcup);
-        g.aiU().a(paramString, 0);
+        cvj localcvj = new cvj();
+        localcvj.HFU = paramString;
+        paramString = new z(localcvj);
+        g.ajj().a(paramString, 0);
       }
       AppMethodBeat.o(176951);
       return;
@@ -258,7 +258,7 @@ public final class e
   {
     boolean bool2 = true;
     AppMethodBeat.i(176948);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "renderFinish %s", new Object[] { paramString });
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "renderFinish %s", new Object[] { paramString });
     for (;;)
     {
       try
@@ -272,20 +272,20 @@ public final class e
         {
           i = paramString.length();
           break label153;
-          this.tED = bool1;
-          if (!bt.isNullOrNil((String)localObject))
+          this.tPu = bool1;
+          if (!bu.isNullOrNil((String)localObject))
           {
             bool1 = bool2;
-            this.dlh = bool1;
-            this.tzN.tDV.runOnUiThread(new Runnable()
+            this.dmj = bool1;
+            this.tKE.tOM.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(184536);
                 if (e.a(e.this).isXWalkKernel()) {}
-                for (int i = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), j);; i = Math.round(com.tencent.mm.cd.a.fhL() * j))
+                for (int i = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), j);; i = Math.round(com.tencent.mm.cc.a.flD() * j))
                 {
-                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "start to update webview %d", new Object[] { Integer.valueOf(i) });
+                  ae.i("MicroMsg.FTS.PardusWebViewLogic", "start to update webview %d", new Object[] { Integer.valueOf(i) });
                   e.a(e.this).getLayoutParams().height = i;
                   e.a(e.this).requestLayout();
                   e.b(e.this).getLayoutParams().height = 0;
@@ -297,14 +297,14 @@ public final class e
                     {
                       AppMethodBeat.i(184534);
                       int i = ((Integer)paramAnonymous2ValueAnimator.getAnimatedValue()).intValue();
-                      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "webview onAnimationUpdate %d", new Object[] { Integer.valueOf(i) });
+                      ae.i("MicroMsg.FTS.PardusWebViewLogic", "webview onAnimationUpdate %d", new Object[] { Integer.valueOf(i) });
                       e.b(e.this).getLayoutParams().height = i;
                       e.b(e.this).requestLayout();
                       AppMethodBeat.o(184534);
                     }
                   });
                   d locald = e.c(e.this);
-                  localValueAnimator.addListener(new d.a(locald, locald.tzp));
+                  localValueAnimator.addListener(new d.a(locald, locald.tKg));
                   localValueAnimator.setDuration(400L);
                   localValueAnimator.start();
                   e.d(e.this).setVisibility(0);
@@ -314,21 +314,21 @@ public final class e
                     {
                       int j = 0;
                       AppMethodBeat.i(184535);
-                      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "update footer view");
+                      ae.i("MicroMsg.FTS.PardusWebViewLogic", "update footer view");
                       Object localObject = e.c(e.this);
                       boolean bool1 = e.e(e.this);
                       boolean bool2 = e.f(e.this);
-                      ((d)localObject).tED = bool1;
-                      ((d)localObject).dlh = bool2;
-                      ((d)localObject).chU();
-                      localObject = e.c(e.this).tDV.tAf.tzM;
-                      int k = e.3.this.tFb;
+                      ((d)localObject).tPu = bool1;
+                      ((d)localObject).dmj = bool2;
+                      ((d)localObject).cjk();
+                      localObject = e.c(e.this).tOM.tKW.tKD;
+                      int k = e.3.this.tPS;
                       if (e.f(e.this)) {}
                       for (int i = 2;; i = 0)
                       {
                         ((com.tencent.mm.plugin.fts.ui.c.b)localObject).gg(k, i);
                         if (e.e(e.this)) {
-                          e.c(e.this).tDV.tAf.tzM.p(System.currentTimeMillis(), "PardusSug");
+                          e.c(e.this).tOM.tKW.tKD.p(System.currentTimeMillis(), "PardusSug");
                         }
                         if (e.f(e.this))
                         {
@@ -336,8 +336,8 @@ public final class e
                           if (e.e(e.this)) {
                             i = 1;
                           }
-                          e.c(e.this).tDV.tAf.tzM.a(i, System.currentTimeMillis(), "PardusMore", 3, e.3.this.tFc);
-                          e.c(e.this).tDV.tAf.tzM.a(i + 1, System.currentTimeMillis(), e.3.this.tFc, 3, e.3.this.tFc);
+                          e.c(e.this).tOM.tKW.tKD.a(i, System.currentTimeMillis(), "PardusMore", 3, e.3.this.tPT);
+                          e.c(e.this).tOM.tKW.tKD.a(i + 1, System.currentTimeMillis(), e.3.this.tPT, 3, e.3.this.tPT);
                         }
                         AppMethodBeat.o(184535);
                         return;
@@ -379,13 +379,13 @@ public final class e
   public final void reportKV(String paramString)
   {
     AppMethodBeat.i(176952);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("logid");
       paramString = paramString.optString("msg", "");
-      com.tencent.mm.plugin.report.e.ygI.kvStat(i, paramString);
+      com.tencent.mm.plugin.report.e.ywz.kvStat(i, paramString);
       AppMethodBeat.o(176952);
       return;
     }
@@ -399,14 +399,14 @@ public final class e
   public final void webViewReady(String paramString)
   {
     AppMethodBeat.i(176947);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.PardusWebViewLogic", "webViewReady %s", new Object[] { paramString });
-    this.tEX = true;
+    ae.i("MicroMsg.FTS.PardusWebViewLogic", "webViewReady %s", new Object[] { paramString });
+    this.tPO = true;
     AppMethodBeat.o(176947);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.storage.w;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class p$e
   implements View.OnClickListener
 {
@@ -16,18 +16,18 @@ final class p$e
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(209772);
+    AppMethodBeat.i(208746);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem$refreshHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    paramView = this.oeh;
-    localObject = this.oeh.odX;
+    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem$refreshHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    paramView = this.ojX;
+    localObject = this.ojX.ojN;
     if (localObject == null) {
-      d.g.b.p.bcb("closeIv");
+      d.g.b.p.bdF("closeIv");
     }
-    p.a(paramView, (View)localObject, this.ocJ, this.ghM);
+    p.a(paramView, (View)localObject, this.oiy, this.gke);
     a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem$refreshHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(209772);
+    AppMethodBeat.o(208746);
   }
 }
 

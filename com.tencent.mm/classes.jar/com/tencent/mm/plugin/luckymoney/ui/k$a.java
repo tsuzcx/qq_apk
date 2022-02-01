@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(65970);
-    vBz = new a("NOTSET", 0);
-    vBA = new a("ON", 1);
-    vBB = new a("OFF", 2);
-    vBC = new a[] { vBz, vBA, vBB };
+    vND = new a("NOTSET", 0);
+    vNE = new a("ON", 1);
+    vNF = new a("OFF", 2);
+    vNG = new a[] { vND, vNE, vNF };
     AppMethodBeat.o(65970);
   }
   

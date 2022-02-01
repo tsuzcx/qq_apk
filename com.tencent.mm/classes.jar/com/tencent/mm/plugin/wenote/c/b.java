@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wenote.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class b
 {
-  public static ArrayList<String> aaQ(String paramString)
+  public static ArrayList<String> abH(String paramString)
   {
     AppMethodBeat.i(30671);
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() == 0))
+    if ((bu.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(30671);
       return null;
@@ -46,10 +46,10 @@ public final class b
     return localArrayList;
   }
   
-  public static String aaR(String paramString)
+  public static String abI(String paramString)
   {
     AppMethodBeat.i(30672);
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() == 0))
+    if ((bu.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(30672);
       return paramString;
@@ -67,11 +67,11 @@ public final class b
     return paramString;
   }
   
-  public static boolean aaS(String paramString)
+  public static boolean abJ(String paramString)
   {
     AppMethodBeat.i(30673);
     int k = "<br/>".length();
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() < k))
+    if ((bu.isNullOrNil(paramString)) || (paramString.length() < k))
     {
       AppMethodBeat.o(30673);
       return false;
@@ -95,11 +95,11 @@ public final class b
     return true;
   }
   
-  public static String aaT(String paramString)
+  public static String abK(String paramString)
   {
     AppMethodBeat.i(30674);
-    paramString = aaR(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() == 0))
+    paramString = abI(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
+    if ((bu.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(30674);
       return paramString;

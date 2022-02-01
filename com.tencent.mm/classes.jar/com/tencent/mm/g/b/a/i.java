@@ -2,60 +2,60 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class i
   extends a
 {
-  public String dRB = "";
-  public long dRC = 0L;
-  public long dRD = 0L;
-  public long dRE = 0L;
-  public boolean dRF;
-  public long dRG = 0L;
-  public long dRH = 0L;
-  public long dRI = 0L;
-  private long dRJ = 0L;
-  private long dRK = 0L;
-  public a dRL;
+  public String dSR = "";
+  public long dSS = 0L;
+  public long dST = 0L;
+  public long dSU = 0L;
+  public boolean dSV;
+  public long dSW = 0L;
+  public long dSX = 0L;
+  public long dSY = 0L;
+  private long dSZ = 0L;
+  private long dTa = 0L;
+  public a dTb;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(19862);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dRB);
+    ((StringBuffer)localObject).append(this.dSR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRC);
+    ((StringBuffer)localObject).append(this.dSS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRD);
+    ((StringBuffer)localObject).append(this.dST);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRE);
+    ((StringBuffer)localObject).append(this.dSU);
     ((StringBuffer)localObject).append(",");
-    if (this.dRF)
+    if (this.dSV)
     {
       i = 1;
       ((StringBuffer)localObject).append(i);
       ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dRG);
+      ((StringBuffer)localObject).append(this.dSW);
       ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dRH);
+      ((StringBuffer)localObject).append(this.dSX);
       ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dRI);
+      ((StringBuffer)localObject).append(this.dSY);
       ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dRJ);
+      ((StringBuffer)localObject).append(this.dSZ);
       ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dRK);
+      ((StringBuffer)localObject).append(this.dTa);
       ((StringBuffer)localObject).append(",");
-      if (this.dRL == null) {
+      if (this.dTb == null) {
         break label225;
       }
     }
     label225:
-    for (int i = this.dRL.value;; i = -1)
+    for (int i = this.dTb.value;; i = -1)
     {
       ((StringBuffer)localObject).append(i);
       localObject = ((StringBuffer)localObject).toString();
-      awz((String)localObject);
+      axO((String)localObject);
       AppMethodBeat.o(19862);
       return localObject;
       i = 0;
@@ -63,50 +63,50 @@ public final class i
     }
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(19863);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatName:").append(this.dRB);
+    ((StringBuffer)localObject).append("ChatName:").append(this.dSR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MemberCount:").append(this.dRC);
+    ((StringBuffer)localObject).append("MemberCount:").append(this.dSS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgSvrId:").append(this.dRD);
+    ((StringBuffer)localObject).append("MsgSvrId:").append(this.dST);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgCreateTime:").append(this.dRE);
+    ((StringBuffer)localObject).append("MsgCreateTime:").append(this.dSU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsHdImgBool:").append(this.dRF);
+    ((StringBuffer)localObject).append("IsHdImgBool:").append(this.dSV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ImgSize:").append(this.dRG);
+    ((StringBuffer)localObject).append("ImgSize:").append(this.dSW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ImgWidth:").append(this.dRH);
+    ((StringBuffer)localObject).append("ImgWidth:").append(this.dSX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ImgHeight:").append(this.dRI);
+    ((StringBuffer)localObject).append("ImgHeight:").append(this.dSY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartDownloadTimeStampMs:").append(this.dRJ);
+    ((StringBuffer)localObject).append("StartDownloadTimeStampMs:").append(this.dSZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FinishDownloadTimeStampMs:").append(this.dRK);
+    ((StringBuffer)localObject).append("FinishDownloadTimeStampMs:").append(this.dTa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FinishCode:").append(this.dRL);
+    ((StringBuffer)localObject).append("FinishCode:").append(this.dTb);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(19863);
     return localObject;
   }
   
-  public final i RH()
+  public final i RG()
   {
     AppMethodBeat.i(19860);
-    this.dRJ = bt.flT();
-    super.bg("StartDownloadTimeStampMs", this.dRJ);
+    this.dSZ = bu.fpO();
+    super.bh("StartDownloadTimeStampMs", this.dSZ);
     AppMethodBeat.o(19860);
     return this;
   }
   
-  public final i RI()
+  public final i RH()
   {
     AppMethodBeat.i(19861);
-    this.dRK = bt.flT();
-    super.bg("FinishDownloadTimeStampMs", this.dRK);
+    this.dTa = bu.fpO();
+    super.bh("FinishDownloadTimeStampMs", this.dTa);
     AppMethodBeat.o(19861);
     return this;
   }
@@ -123,10 +123,10 @@ public final class i
     static
     {
       AppMethodBeat.i(19859);
-      dRM = new a("ok", 0, 0);
-      dRN = new a("cancel", 1, 1);
-      dRO = new a("error", 2, 2);
-      dRP = new a[] { dRM, dRN, dRO };
+      dTc = new a("ok", 0, 0);
+      dTd = new a("cancel", 1, 1);
+      dTe = new a("error", 2, 2);
+      dTf = new a[] { dTc, dTd, dTe };
       AppMethodBeat.o(19859);
     }
     

@@ -7,15 +7,15 @@ import java.util.concurrent.Executor;
 
 public class b
 {
-  private static final LinkedList<a> cKF = new LinkedList();
-  public int cKE = 0;
+  private static final LinkedList<a> cLo = new LinkedList();
+  public int cLn = 0;
   private Executor executor;
   public final List<a> list = new LinkedList();
   public long time;
   
   public void F(List<a> paramList) {}
   
-  public int Jh()
+  public int Jp()
   {
     return 0;
   }
@@ -32,21 +32,21 @@ public class b
   
   public static final class a
   {
-    public String cKI;
-    public long cKJ;
-    public long cKK;
-    public int cKL;
-    public long cKM;
-    public long cKN;
-    public long cKO;
-    public long cKP;
-    public boolean cKg;
+    public boolean cKP;
+    public String cLr;
+    public long cLs;
+    public long cLt;
+    public int cLu;
+    public long cLv;
+    public long cLw;
+    public long cLx;
+    public long cLy;
     
-    public static a Jj()
+    public static a Jr()
     {
       synchronized ()
       {
-        a locala = (a)b.Ji().poll();
+        a locala = (a)b.Jq().poll();
         ??? = locala;
         if (locala == null) {
           ??? = new a();

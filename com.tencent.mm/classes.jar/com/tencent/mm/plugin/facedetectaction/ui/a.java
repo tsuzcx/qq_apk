@@ -9,10 +9,10 @@ import com.tencent.mm.ui.al;
 public final class a
   extends o
 {
-  private a EIt;
-  private boolean sWc = true;
-  private int sWd = 0;
-  private boolean sWe = true;
+  private boolean ryP = true;
+  private int ryQ = 0;
+  private boolean ryR = true;
+  private a ryS;
   private String text = "";
   private int textColor = 0;
   
@@ -20,48 +20,48 @@ public final class a
   {
     super(paramInt1, paramInt2);
     this.textColor = paramInt1;
-    this.sWd = paramInt2;
-    this.sWe = true;
+    this.ryQ = paramInt2;
+    this.ryR = true;
     this.text = paramString;
-    this.EIt = parama;
+    this.ryS = parama;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(221173);
-    if ((this.sWc) && (this.EIt != null)) {
-      this.EIt.axC(this.text);
+    AppMethodBeat.i(188673);
+    if ((this.ryP) && (this.ryS != null)) {
+      this.ryS.agX(this.text);
     }
-    AppMethodBeat.o(221173);
+    AppMethodBeat.o(188673);
   }
   
   public final void setColor(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221171);
+    AppMethodBeat.i(188671);
     super.setColor(paramInt1, paramInt2);
     this.textColor = paramInt1;
-    this.sWd = paramInt2;
-    AppMethodBeat.o(221171);
+    this.ryQ = paramInt2;
+    AppMethodBeat.o(188671);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(221172);
+    AppMethodBeat.i(188672);
     super.updateDrawState(paramTextPaint);
-    if (this.sWe) {
+    if (this.ryR) {
       al.a(paramTextPaint, 0.8F);
     }
-    AppMethodBeat.o(221172);
+    AppMethodBeat.o(188672);
   }
   
   static abstract interface a
   {
-    public abstract void axC(String paramString);
+    public abstract void agX(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.a
  * JD-Core Version:    0.7.0.1
  */

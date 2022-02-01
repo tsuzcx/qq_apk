@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 
 public final class a<Type>
 {
-  private Class<?> cNV;
-  private String cNW;
+  private Class<?> cOF;
+  private String cOG;
   private Field mField;
   private boolean mInit;
   
@@ -19,12 +19,12 @@ public final class a<Type>
       AppMethodBeat.o(183484);
       throw paramClass;
     }
-    this.cNV = paramClass;
-    this.cNW = paramString;
+    this.cOF = paramClass;
+    this.cOG = paramString;
     AppMethodBeat.o(183484);
   }
   
-  private boolean P(Object paramObject, Type paramType)
+  private boolean O(Object paramObject, Type paramType)
   {
     try
     {
@@ -32,7 +32,7 @@ public final class a<Type>
       prepare();
       if (this.mField == null)
       {
-        paramObject = new NoSuchFieldException("Method " + this.cNW + " is not exists.");
+        paramObject = new NoSuchFieldException("Method " + this.cOG + " is not exists.");
         AppMethodBeat.o(183489);
         throw paramObject;
       }
@@ -43,7 +43,7 @@ public final class a<Type>
     return true;
   }
   
-  private Type ahG()
+  private Type ahV()
   {
     try
     {
@@ -83,7 +83,7 @@ public final class a<Type>
           AppMethodBeat.o(183485);
           return;
         }
-        localClass1 = this.cNV;
+        localClass1 = this.cOF;
         if (localClass1 == null) {}
       }
       finally
@@ -91,7 +91,7 @@ public final class a<Type>
         try
         {
           Class localClass1;
-          Field localField = localClass1.getDeclaredField(this.cNW);
+          Field localField = localClass1.getDeclaredField(this.cOG);
           localField.setAccessible(true);
           this.mField = localField;
           this.mInit = true;
@@ -106,12 +106,12 @@ public final class a<Type>
     }
   }
   
-  public final boolean ex(Object paramObject)
+  public final boolean eA(Object paramObject)
   {
     try
     {
       AppMethodBeat.i(183488);
-      boolean bool = P(paramObject, null);
+      boolean bool = O(paramObject, null);
       AppMethodBeat.o(183488);
       return bool;
     }
@@ -122,12 +122,12 @@ public final class a<Type>
     }
   }
   
-  public final boolean ey(Type paramType)
+  public final boolean eB(Type paramType)
   {
     try
     {
       AppMethodBeat.i(183490);
-      boolean bool = P(null, paramType);
+      boolean bool = O(null, paramType);
       AppMethodBeat.o(183490);
       return bool;
     }
@@ -143,7 +143,7 @@ public final class a<Type>
     try
     {
       AppMethodBeat.i(183486);
-      Object localObject1 = ahG();
+      Object localObject1 = ahV();
       AppMethodBeat.o(183486);
       return localObject1;
     }

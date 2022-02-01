@@ -3,110 +3,110 @@ package com.tencent.mm.plugin.finder.storage.data;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.protocal.protobuf.aqs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.c;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.arh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.c;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import d.f;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/PageRecovery;", "", "()V", "SENSITIVE_CRASH_DURATION", "", "SENSITIVE_DURATION", "TAG", "", "lastEnterTimeMs", "", "getLastEnterTimeMs", "()J", "setLastEnterTimeMs", "(J)V", "touchFile", "getTouchFile", "()Ljava/lang/String;", "touchFile$delegate", "Lkotlin/Lazy;", "enterActivity", "", "setup", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/PageRecovery;", "", "()V", "SENSITIVE_CRASH_DURATION", "", "SENSITIVE_DURATION", "TAG", "", "lastEnterTimeMs", "", "getLastEnterTimeMs", "()J", "setLastEnterTimeMs", "(J)V", "touchFile", "getTouchFile", "()Ljava/lang/String;", "touchFile$delegate", "Lkotlin/Lazy;", "enterActivity", "", "setup", "plugin-finder_release"})
 public final class q
 {
-  private static long sAl;
-  private static final f sAm;
-  public static final q sAn;
+  private static long sLj;
+  private static final f sLk;
+  public static final q sLl;
   
   static
   {
-    AppMethodBeat.i(203852);
-    sAn = new q();
-    sAm = d.g.O((a)b.sAp);
-    AppMethodBeat.o(203852);
+    AppMethodBeat.i(204443);
+    sLl = new q();
+    sLk = d.g.O((a)b.sLn);
+    AppMethodBeat.o(204443);
   }
   
-  public static long cJl()
+  public static long cLO()
   {
-    return sAl;
+    return sLj;
   }
   
-  public static String cJm()
+  public static String cLP()
   {
-    AppMethodBeat.i(203850);
-    String str = (String)sAm.getValue();
-    AppMethodBeat.o(203850);
+    AppMethodBeat.i(204441);
+    String str = (String)sLk.getValue();
+    AppMethodBeat.o(204441);
     return str;
   }
   
-  public static void cJn()
+  public static void cLQ()
   {
-    AppMethodBeat.i(203851);
-    sAl = SystemClock.uptimeMillis();
-    AppMethodBeat.o(203851);
+    AppMethodBeat.i(204442);
+    sLj = SystemClock.uptimeMillis();
+    AppMethodBeat.o(204442);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "kotlin.jvm.PlatformType", "msg", "", "ex", "", "uncaughtException"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "kotlin.jvm.PlatformType", "msg", "", "ex", "", "uncaughtException"})
   public static final class a
-    implements au.c
+    implements av.c
   {
-    public a(aqs paramaqs) {}
+    public a(arh paramarh) {}
     
-    public final void a(au paramau, String paramString, Throwable paramThrowable)
+    public final void a(av paramav, String paramString, Throwable paramThrowable)
     {
       paramThrowable = null;
-      AppMethodBeat.i(203847);
-      paramau = this.sAo;
-      if (paramau == null)
+      AppMethodBeat.i(204438);
+      paramav = this.sLm;
+      if (paramav == null)
       {
-        paramau = new aqs();
-        paramau.crashCount = 0;
-        paramau.GoL = 0L;
+        paramav = new arh();
+        paramav.crashCount = 0;
+        paramav.GIb = 0L;
       }
       for (;;)
       {
         paramString = new StringBuilder("get crash msg ").append(paramString).append(", isInFinder ").append(((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isInFinder()).append(" lastEnterTimeMs:");
-        Object localObject = q.sAn;
-        paramString = paramString.append(q.cJl()).append(" pass: ");
+        Object localObject = q.sLl;
+        paramString = paramString.append(q.cLO()).append(" pass: ");
         long l = SystemClock.uptimeMillis();
-        localObject = q.sAn;
-        localObject = paramString.append(l - q.cJl()).append(" info: ");
-        paramString = this.sAo;
+        localObject = q.sLl;
+        localObject = paramString.append(l - q.cLO()).append(" info: ");
+        paramString = this.sLm;
         if (paramString != null)
         {
           paramString = Integer.valueOf(paramString.crashCount);
           localObject = ((StringBuilder)localObject).append(paramString).append(' ');
-          paramString = this.sAo;
+          paramString = this.sLm;
           if (paramString == null) {
             break label402;
           }
-          paramString = Long.valueOf(paramString.GoL);
+          paramString = Long.valueOf(paramString.GIb);
           label164:
-          ad.i("Finder.PageRecovery", paramString);
+          ae.i("Finder.PageRecovery", paramString);
           if (((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isInFinder())
           {
             l = SystemClock.uptimeMillis();
-            paramString = q.sAn;
-            if (l - q.cJl() <= 5000L)
+            paramString = q.sLl;
+            if (l - q.cLO() <= 5000L)
             {
-              if (System.currentTimeMillis() - paramau.GoL >= 300000L) {
+              if (System.currentTimeMillis() - paramav.GIb >= 300000L) {
                 break label407;
               }
-              paramau.crashCount += 1;
+              paramav.crashCount += 1;
               label239:
-              paramau.GoL = System.currentTimeMillis();
-              paramString = q.sAn;
-              i.aYg(new e(q.cJo()).getParent());
-              paramString = q.sAn;
-              i.C(q.cJo(), paramau.toByteArray());
+              paramav.GIb = System.currentTimeMillis();
+              paramString = q.sLl;
+              o.aZI(new k(q.cLR()).getParent());
+              paramString = q.sLl;
+              o.C(q.cLR(), paramav.toByteArray());
               paramString = new StringBuilder("[setup] crash happen =");
-              localObject = q.sAn;
-              paramString = paramString.append(i.fv(q.cJo())).append(" touchFile=");
-              localObject = q.sAn;
-              localObject = paramString.append(q.cJo()).append(" info: ");
-              if (paramau == null) {
+              localObject = q.sLl;
+              paramString = paramString.append(o.fB(q.cLR())).append(" touchFile=");
+              localObject = q.sLl;
+              localObject = paramString.append(q.cLR()).append(" info: ");
+              if (paramav == null) {
                 break label415;
               }
             }
@@ -115,39 +115,39 @@ public final class q
         label402:
         label407:
         label415:
-        for (paramString = Integer.valueOf(paramau.crashCount);; paramString = null)
+        for (paramString = Integer.valueOf(paramav.crashCount);; paramString = null)
         {
           localObject = ((StringBuilder)localObject).append(paramString.intValue()).append(' ');
           paramString = paramThrowable;
-          if (paramau != null) {
-            paramString = Long.valueOf(paramau.GoL);
+          if (paramav != null) {
+            paramString = Long.valueOf(paramav.GIb);
           }
-          ad.i("Finder.PageRecovery", paramString.longValue());
-          AppMethodBeat.o(203847);
+          ae.i("Finder.PageRecovery", paramString.longValue());
+          AppMethodBeat.o(204438);
           return;
           paramString = null;
           break;
           paramString = null;
           break label164;
-          paramau.crashCount = 1;
+          paramav.crashCount = 1;
           break label239;
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.q
     implements a<String>
   {
-    public static final b sAp;
+    public static final b sLn;
     
     static
     {
-      AppMethodBeat.i(203849);
-      sAp = new b();
-      AppMethodBeat.o(203849);
+      AppMethodBeat.i(204440);
+      sLn = new b();
+      AppMethodBeat.o(204440);
     }
     
     b()

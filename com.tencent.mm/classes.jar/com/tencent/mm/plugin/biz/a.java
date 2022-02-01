@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.biz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.u;
+import com.tencent.mm.ah.m;
+import com.tencent.mm.ah.u;
 
 public final class a
   implements com.tencent.mm.plugin.biz.a.a
@@ -15,10 +15,10 @@ public final class a
     return paramString;
   }
   
-  public final String aB(String paramString1, String paramString2)
+  public final String aC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(124331);
-    paramString1 = m.aB(paramString1, paramString2);
+    paramString1 = m.aC(paramString1, paramString2);
     AppMethodBeat.o(124331);
     return paramString1;
   }
@@ -31,26 +31,26 @@ public final class a
     return i;
   }
   
-  public final boolean yt(String paramString)
+  public final boolean zd(String paramString)
   {
     AppMethodBeat.i(124332);
-    boolean bool = m.yt(paramString);
+    boolean bool = m.zd(paramString);
     AppMethodBeat.o(124332);
     return bool;
   }
   
-  public final String yu(String paramString)
+  public final String ze(String paramString)
   {
     AppMethodBeat.i(124333);
-    paramString = m.yu(paramString);
+    paramString = m.ze(paramString);
     AppMethodBeat.o(124333);
     return paramString;
   }
   
-  public final String yv(String paramString)
+  public final String zf(String paramString)
   {
     AppMethodBeat.i(124334);
-    paramString = m.yv(paramString);
+    paramString = m.zf(paramString);
     AppMethodBeat.o(124334);
     return paramString;
   }

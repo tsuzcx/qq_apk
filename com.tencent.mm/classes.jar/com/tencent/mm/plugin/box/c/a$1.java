@@ -17,8 +17,8 @@ final class a$1
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/box/ui/BoxDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    this.nVp.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/box/ui/BoxDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    this.oaW.dismiss();
     com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/box/ui/BoxDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(76331);
     return true;

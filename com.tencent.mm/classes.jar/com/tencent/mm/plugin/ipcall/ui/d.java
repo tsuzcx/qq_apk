@@ -5,35 +5,35 @@ import android.graphics.Bitmap;
 import android.os.Looper;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.plugin.ipcall.a.a;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bf.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 
 public final class d
 {
   Context context;
-  private ap gIf;
-  ag<String, WeakReference<Bitmap>> giF;
-  be uPJ;
+  private aq gKO;
+  ah<String, WeakReference<Bitmap>> gkX;
+  bf vbv;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(25637);
-    this.giF = new ag(50);
-    this.gIf = new ap(Looper.getMainLooper());
-    this.uPJ = new be(5, "IPCallAddressAvatarLoader", 1, Looper.getMainLooper());
+    this.gkX = new ah(50);
+    this.gKO = new aq(Looper.getMainLooper());
+    this.vbv = new bf(5, "IPCallAddressAvatarLoader", 1, Looper.getMainLooper());
     this.context = paramContext;
     AppMethodBeat.o(25637);
   }
   
-  private static String anM(String paramString)
+  private static String aoO(String paramString)
   {
     AppMethodBeat.i(25645);
     paramString = paramString + "@username";
@@ -41,7 +41,7 @@ public final class d
     return paramString;
   }
   
-  private static String anN(String paramString)
+  private static String aoP(String paramString)
   {
     AppMethodBeat.i(25646);
     paramString = paramString + "@contactId";
@@ -52,7 +52,7 @@ public final class d
   private boolean b(String paramString1, String paramString2, ImageView paramImageView)
   {
     AppMethodBeat.i(25643);
-    boolean bool = h(hy(paramString1, paramString2), paramImageView);
+    boolean bool = h(hF(paramString1, paramString2), paramImageView);
     AppMethodBeat.o(25643);
     return bool;
   }
@@ -60,7 +60,7 @@ public final class d
   private boolean e(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(25640);
-    boolean bool = h(anN(paramString), paramImageView);
+    boolean bool = h(aoP(paramString), paramImageView);
     AppMethodBeat.o(25640);
     return bool;
   }
@@ -68,7 +68,7 @@ public final class d
   private boolean g(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(25642);
-    boolean bool = h(anM(paramString), paramImageView);
+    boolean bool = h(aoO(paramString), paramImageView);
     AppMethodBeat.o(25642);
     return bool;
   }
@@ -76,7 +76,7 @@ public final class d
   private boolean h(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(25644);
-    Object localObject = (WeakReference)this.giF.get(paramString);
+    Object localObject = (WeakReference)this.gkX.get(paramString);
     if (localObject != null)
     {
       localObject = (Bitmap)((WeakReference)localObject).get();
@@ -93,7 +93,7 @@ public final class d
     return false;
   }
   
-  public static String hy(String paramString1, String paramString2)
+  public static String hF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25647);
     paramString1 = paramString1 + "@" + paramString2 + "@contactId@username";
@@ -104,43 +104,43 @@ public final class d
   public final void a(final String paramString1, final String paramString2, final ImageView paramImageView)
   {
     AppMethodBeat.i(25638);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)) || (paramImageView == null))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)) || (paramImageView == null))
     {
       AppMethodBeat.o(25638);
       return;
     }
-    final String str = hy(paramString1, paramString2);
+    final String str = hF(paramString1, paramString2);
     paramImageView.setTag(str);
     if (!b(paramString1, paramString2, paramImageView)) {
-      this.uPJ.c(new be.a()
+      this.vbv.c(new bf.a()
       {
-        private boolean gEA = false;
+        private boolean gHh = false;
         
-        public final boolean aEm()
+        public final boolean aEC()
         {
           AppMethodBeat.i(25631);
-          Bitmap localBitmap = a.aO(d.this.context, paramString1);
+          Bitmap localBitmap = a.aQ(d.this.context, paramString1);
           if (localBitmap != null)
           {
-            d.this.giF.put(str, new WeakReference(localBitmap));
-            this.gEA = true;
+            d.this.gkX.put(str, new WeakReference(localBitmap));
+            this.gHh = true;
             d.a(d.this, paramImageView, str, localBitmap);
           }
           AppMethodBeat.o(25631);
           return true;
         }
         
-        public final boolean aEn()
+        public final boolean aED()
         {
           AppMethodBeat.i(25632);
-          if (!this.gEA)
+          if (!this.gHh)
           {
             d locald = d.this;
             String str2 = paramString1;
             String str1 = paramString2;
             ImageView localImageView = paramImageView;
-            str2 = d.hy(str2, str1);
-            locald.uPJ.c(new d.2(locald, str1, localImageView, str2));
+            str2 = d.hF(str2, str1);
+            locald.vbv.c(new d.2(locald, str1, localImageView, str2));
           }
           AppMethodBeat.o(25632);
           return true;
@@ -153,26 +153,26 @@ public final class d
   public final void d(final String paramString, final ImageView paramImageView)
   {
     AppMethodBeat.i(25639);
-    if ((bt.isNullOrNil(paramString)) || (paramImageView == null))
+    if ((bu.isNullOrNil(paramString)) || (paramImageView == null))
     {
       AppMethodBeat.o(25639);
       return;
     }
-    final String str = anN(paramString);
+    final String str = aoP(paramString);
     paramImageView.setTag(str);
     if (!e(paramString, paramImageView)) {
-      this.uPJ.c(new be.a()
+      this.vbv.c(new bf.a()
       {
-        public final boolean aEm()
+        public final boolean aEC()
         {
           AppMethodBeat.i(25634);
-          Bitmap localBitmap = a.aO(d.this.context, paramString);
+          Bitmap localBitmap = a.aQ(d.this.context, paramString);
           d.a(d.this, paramImageView, str, localBitmap);
           AppMethodBeat.o(25634);
           return true;
         }
         
-        public final boolean aEn()
+        public final boolean aED()
         {
           return true;
         }
@@ -184,32 +184,32 @@ public final class d
   public final void f(final String paramString, final ImageView paramImageView)
   {
     AppMethodBeat.i(25641);
-    if ((bt.isNullOrNil(paramString)) || (paramImageView == null))
+    if ((bu.isNullOrNil(paramString)) || (paramImageView == null))
     {
       AppMethodBeat.o(25641);
       return;
     }
-    final String str = anM(paramString);
+    final String str = aoO(paramString);
     paramImageView.setTag(str);
     if (!g(paramString, paramImageView)) {
-      this.uPJ.c(new be.a()
+      this.vbv.c(new bf.a()
       {
-        public final boolean aEm()
+        public final boolean aEC()
         {
           AppMethodBeat.i(25635);
           Bitmap localBitmap2 = c.a(paramString, false, -1, null);
           Bitmap localBitmap1 = localBitmap2;
           if (localBitmap2 == null)
           {
-            p.aEk();
-            localBitmap1 = e.Da(paramString);
+            p.aEA();
+            localBitmap1 = e.DC(paramString);
           }
           d.a(d.this, paramImageView, str, localBitmap1);
           AppMethodBeat.o(25635);
           return true;
         }
         
-        public final boolean aEn()
+        public final boolean aED()
         {
           return false;
         }

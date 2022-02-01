@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class l<CONTEXT extends c>
@@ -21,17 +21,17 @@ public class l<CONTEXT extends c>
   {
     AppMethodBeat.i(137673);
     paramJSONObject = paramJSONObject.optString("data");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bu.isNullOrNil(paramJSONObject))
     {
       paramCONTEXT.h(paramInt, e("fail", null));
       AppMethodBeat.o(137673);
       return;
     }
-    ad.d("MicroMsg.JsApiSetClipboardData", "stevyang dataStr %s", new Object[] { paramJSONObject });
+    ae.d("MicroMsg.JsApiSetClipboardData", "stevyang dataStr %s", new Object[] { paramJSONObject });
     ClipboardManager localClipboardManager = (ClipboardManager)paramCONTEXT.getContext().getSystemService("clipboard");
     if (localClipboardManager == null)
     {
-      ad.i("MicroMsg.JsApiSetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
+      ae.i("MicroMsg.JsApiSetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
       paramCONTEXT.h(paramInt, e("fail", null));
       AppMethodBeat.o(137673);
       return;
@@ -46,7 +46,7 @@ public class l<CONTEXT extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.x.l
  * JD-Core Version:    0.7.0.1
  */

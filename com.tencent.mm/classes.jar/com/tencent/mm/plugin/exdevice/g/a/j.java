@@ -1,52 +1,54 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.exdevice.g.b.f;
-import com.tencent.mm.protocal.protobuf.atc;
-import com.tencent.mm.protocal.protobuf.bkc;
-import com.tencent.mm.protocal.protobuf.bkd;
-import com.tencent.mm.protocal.protobuf.eix;
-import com.tencent.mm.protocal.protobuf.eiy;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.protocal.protobuf.ats;
+import com.tencent.mm.protocal.protobuf.bku;
+import com.tencent.mm.protocal.protobuf.bkv;
+import com.tencent.mm.protocal.protobuf.eko;
+import com.tencent.mm.protocal.protobuf.ekp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.plugin.exdevice.b.a<bkc, bkd>
+  extends com.tencent.mm.plugin.exdevice.b.a<bku, bkv>
 {
   public String appName;
-  public String qeQ;
-  public String qeR;
-  public boolean qfa;
-  public boolean qfb;
-  public String qfc;
-  public String qfd;
-  public com.tencent.mm.plugin.exdevice.g.b.a.a qfe;
-  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> qff;
-  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> qfg;
-  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> qfh;
-  public ArrayList<String> qfi;
-  public String qfj;
-  public String qfk;
-  public boolean qfl;
-  public boolean qfm;
-  public String qfn;
-  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<j>> qfo;
-  public a qfp;
+  public boolean qlF;
+  public boolean qlG;
+  public String qlH;
+  public String qlI;
+  public com.tencent.mm.plugin.exdevice.g.b.a.a qlJ;
+  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> qlK;
+  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> qlL;
+  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> qlM;
+  public ArrayList<String> qlN;
+  public String qlO;
+  public String qlP;
+  public boolean qlQ;
+  public boolean qlR;
+  public String qlS;
+  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<j>> qlT;
+  public a qlU;
+  public String qlv;
+  public String qlw;
   
   public j(String paramString1, String paramString2, String paramString3, boolean paramBoolean, com.tencent.mm.plugin.exdevice.b.b<j> paramb)
   {
     AppMethodBeat.i(23526);
-    this.qfo = new WeakReference(paramb);
-    this.qfj = paramString1;
-    this.qfc = paramString1;
-    this.appName = bt.nullAsNil(paramString2);
-    this.qfb = paramBoolean;
-    this.qfd = paramString3;
+    this.qlT = new WeakReference(paramb);
+    this.qlO = paramString1;
+    this.qlH = paramString1;
+    this.appName = bu.nullAsNil(paramString2);
+    this.qlG = paramBoolean;
+    this.qlI = paramString3;
     AppMethodBeat.o(23526);
   }
   
@@ -63,8 +65,8 @@ public final class j
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23527);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetRankInfo", "hy: get rank info end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    bkd localbkd;
+    ae.d("MicroMsg.NetSceneGetRankInfo", "hy: get rank info end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    bkv localbkv;
     Object localObject1;
     Object localObject3;
     Object localObject4;
@@ -73,23 +75,23 @@ public final class j
     Object localObject2;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      localbkd = (bkd)bIz();
+      localbkv = (bkv)bJx();
       localObject1 = "";
-      this.qfg = new ArrayList();
-      if (localbkd.Fve != null)
+      this.qlL = new ArrayList();
+      if (localbkv.FNC != null)
       {
-        localObject3 = localbkd.Fve.iterator();
+        localObject3 = localbkv.FNC.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (atc)((Iterator)localObject3).next();
-          ba.aBQ();
-          if (com.tencent.mm.model.c.azp().aTg(((atc)localObject4).username))
+          localObject4 = (ats)((Iterator)localObject3).next();
+          bc.aCg();
+          if (com.tencent.mm.model.c.azF().aUH(((ats)localObject4).username))
           {
-            str1 = localbkd.hAy;
+            str1 = localbkv.hDm;
             str2 = this.appName;
-            if ((bt.isNullOrNil(str1)) || (localObject4 == null))
+            if ((bu.isNullOrNil(str1)) || (localObject4 == null))
             {
-              com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
+              ae.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
               localObject2 = null;
             }
             for (;;)
@@ -97,36 +99,36 @@ public final class j
               if (localObject2 == null) {
                 break label226;
               }
-              this.qfg.add(localObject2);
+              this.qlL.add(localObject2);
               break;
               localObject2 = new com.tencent.mm.plugin.exdevice.g.b.a.c();
               ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_rankID = str1;
-              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_username = ((atc)localObject4).username;
-              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_step = ((atc)localObject4).kuN;
+              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_username = ((ats)localObject4).username;
+              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_step = ((ats)localObject4).kyd;
               ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_appusername = str2;
             }
           }
           else
           {
             label226:
-            ba.aiU().a(new h(((atc)localObject4).username, null), 0);
+            bc.ajj().a(new h(((ats)localObject4).username, null), 0);
           }
         }
       }
-      this.qff = new ArrayList();
+      this.qlK = new ArrayList();
       localObject2 = localObject1;
-      if (localbkd.GEE != null)
+      if (localbkv.GYh != null)
       {
-        localObject3 = localbkd.GEE.iterator();
+        localObject3 = localbkv.GYh.iterator();
         localObject2 = localObject1;
         if (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (eix)((Iterator)localObject3).next();
-          str1 = localbkd.hAy;
+          localObject4 = (eko)((Iterator)localObject3).next();
+          str1 = localbkv.hDm;
           str2 = this.appName;
-          if ((bt.isNullOrNil(str1)) || (localObject4 == null))
+          if ((bu.isNullOrNil(str1)) || (localObject4 == null))
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
+            ae.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
             localObject2 = null;
             label347:
             if (localObject2 == null) {
@@ -146,31 +148,31 @@ public final class j
     label1235:
     for (;;)
     {
-      this.qff.add(localObject2);
+      this.qlK.add(localObject2);
       break;
       localObject2 = new com.tencent.mm.plugin.exdevice.g.b.a.d();
       ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_appusername = str2;
       ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_rankID = str1;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_likecount = ((eix)localObject4).HTw;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_ranknum = ((eix)localObject4).HTv;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_score = ((eix)localObject4).score;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_selfLikeState = ((eix)localObject4).HTx;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_username = ((eix)localObject4).username;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_likecount = ((eko)localObject4).InD;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_ranknum = ((eko)localObject4).InC;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_score = ((eko)localObject4).score;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_selfLikeState = ((eko)localObject4).InE;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_username = ((eko)localObject4).username;
       break label347;
       break;
-      this.qfh = new ArrayList();
-      if (localbkd.GEF != null)
+      this.qlM = new ArrayList();
+      if (localbkv.GYi != null)
       {
-        localObject3 = localbkd.GEF.iterator();
+        localObject3 = localbkv.GYi.iterator();
         label606:
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (eiy)((Iterator)localObject3).next();
-          str1 = localbkd.hAy;
+          localObject4 = (ekp)((Iterator)localObject3).next();
+          str1 = localbkv.hDm;
           str2 = this.appName;
-          if ((bt.isNullOrNil(str1)) || (localObject4 == null))
+          if ((bu.isNullOrNil(str1)) || (localObject4 == null))
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
+            ae.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
             localObject1 = null;
           }
           for (;;)
@@ -178,95 +180,95 @@ public final class j
             if (localObject1 == null) {
               break label606;
             }
-            this.qfh.add(localObject1);
+            this.qlM.add(localObject1);
             break;
             localObject1 = new com.tencent.mm.plugin.exdevice.g.b.a.e();
             ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_appusername = str2;
             ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_rankID = str1;
-            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_timestamp = ((eiy)localObject4).paX;
-            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_username = ((eiy)localObject4).username;
+            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_timestamp = ((ekp)localObject4).phB;
+            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_username = ((ekp)localObject4).username;
           }
         }
       }
-      this.qfi = new ArrayList();
-      if (localbkd.GEx != null)
+      this.qlN = new ArrayList();
+      if (localbkv.GYa != null)
       {
-        localObject1 = localbkd.GEx.iterator();
+        localObject1 = localbkv.GYa.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject3 = (String)((Iterator)localObject1).next();
-          this.qfi.add(localObject3);
+          this.qlN.add(localObject3);
         }
       }
-      if (!bt.isNullOrNil(this.qfd)) {
-        localObject2 = this.qfd;
+      if (!bu.isNullOrNil(this.qlI)) {
+        localObject2 = this.qlI;
       }
-      localObject3 = localbkd.GEG;
-      localObject4 = localbkd.GEH;
+      localObject3 = localbkv.GYj;
+      localObject4 = localbkv.GYk;
       boolean bool;
       int i;
       int j;
-      if (bt.isNullOrNil((String)localObject2))
+      if (bu.isNullOrNil((String)localObject2))
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
+        ae.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
         localObject1 = null;
-        this.qfe = ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1);
-        this.qfj = localbkd.hAy;
-        this.qeR = localbkd.GEz;
-        this.qeQ = localbkd.GEy;
-        this.qfk = localbkd.GEI;
-        this.qfl = localbkd.qfl;
-        if (localbkd.GEL != 1) {
+        this.qlJ = ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1);
+        this.qlO = localbkv.hDm;
+        this.qlw = localbkv.GYc;
+        this.qlv = localbkv.GYb;
+        this.qlP = localbkv.GYl;
+        this.qlQ = localbkv.qlQ;
+        if (localbkv.GYo != 1) {
           break label1159;
         }
         bool = true;
-        this.qfm = bool;
-        this.qfn = localbkd.GEM;
-        this.qfa = localbkd.GEB;
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetRankInfo", "hy: get score info ok.");
-        if ((this.qfc == null) || (!this.qfc.equals(this.qfj)))
+        this.qlR = bool;
+        this.qlS = localbkv.GYp;
+        this.qlF = localbkv.GYe;
+        ae.d("MicroMsg.NetSceneGetRankInfo", "hy: get score info ok.");
+        if ((this.qlH == null) || (!this.qlH.equals(this.qlO)))
         {
-          localObject1 = com.tencent.mm.plugin.exdevice.model.ad.clB().qfw;
+          localObject1 = ad.cmR().qmb;
           if (localObject1 != null) {
-            ((f)localObject1).acC(this.qfj);
+            ((f)localObject1).adt(this.qlO);
           }
         }
-        if ((this.qfp != null) && (this.qfb)) {
-          this.qfp.a(this);
+        if ((this.qlU != null) && (this.qlG)) {
+          this.qlU.a(this);
         }
-        if (this.qfb) {
-          com.tencent.mm.plugin.exdevice.model.ad.clv().cV(this.qfg);
+        if (this.qlG) {
+          ad.cmL().cY(this.qlL);
         }
-        localObject1 = com.tencent.mm.plugin.exdevice.model.ad.clu();
-        localObject2 = this.qfj;
-        if (!bt.isNullOrNil((String)localObject2)) {
+        localObject1 = ad.cmK();
+        localObject2 = this.qlO;
+        if (!bu.isNullOrNil((String)localObject2)) {
           break label1165;
         }
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdeviceRankInfoStg", "delete rankInfo by rankId failed, rankId is null or nil.");
-        com.tencent.mm.plugin.exdevice.model.ad.clu().f(this.qfj, this.qff);
-        bool = this.qfl;
-        if (this.qfg == null) {
+        ae.w("MicroMsg.ExdeviceRankInfoStg", "delete rankInfo by rankId failed, rankId is null or nil.");
+        ad.cmK().f(this.qlO, this.qlK);
+        bool = this.qlQ;
+        if (this.qlL == null) {
           break label1217;
         }
-        i = this.qfg.size();
-        if (this.qff == null) {
+        i = this.qlL.size();
+        if (this.qlK == null) {
           break label1223;
         }
-        j = this.qff.size();
+        j = this.qlK.size();
         label981:
-        if (this.qfh == null) {
+        if (this.qlM == null) {
           break label1229;
         }
       }
-      for (int k = this.qfh.size();; k = 0)
+      for (int k = this.qlM.size();; k = 0)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneGetRankInfo", "isCacheExist(%s), RankFollowInfo size(%s), RankInfo size(%d), LikeInfo size(%d).", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-        com.tencent.mm.plugin.exdevice.model.ad.cly().b(this.qfj, this.appName, this.qfh);
-        if (this.qfe != null) {
-          com.tencent.mm.plugin.exdevice.model.ad.clx().a(this.qfe);
+        ae.i("MicroMsg.NetSceneGetRankInfo", "isCacheExist(%s), RankFollowInfo size(%s), RankInfo size(%d), LikeInfo size(%d).", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+        ad.cmO().b(this.qlO, this.appName, this.qlM);
+        if (this.qlJ != null) {
+          ad.cmN().a(this.qlJ);
         }
         super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-        paramq = (com.tencent.mm.plugin.exdevice.b.b)this.qfo.get();
+        paramq = (com.tencent.mm.plugin.exdevice.b.b)this.qlT.get();
         if (paramq != null) {
           paramq.a(paramInt2, paramInt3, paramString, this);
         }
@@ -279,7 +281,7 @@ public final class j
         break;
         bool = false;
         break label783;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceRankInfoStg", "delete rankInfo by rankId (%s).(r : %d)", new Object[] { localObject2, Integer.valueOf(((com.tencent.mm.plugin.exdevice.g.b.b.d)localObject1).db.delete("HardDeviceRankInfo", "rankID = ? ", new String[] { localObject2 })) });
+        ae.i("MicroMsg.ExdeviceRankInfoStg", "delete rankInfo by rankId (%s).(r : %d)", new Object[] { localObject2, Integer.valueOf(((com.tencent.mm.plugin.exdevice.g.b.b.d)localObject1).db.delete("HardDeviceRankInfo", "rankID = ? ", new String[] { localObject2 })) });
         break label929;
         i = 0;
         break label965;

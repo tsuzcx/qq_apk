@@ -18,7 +18,7 @@ import android.os.ResultReceiver;
 import android.support.v4.app.a.a;
 import android.support.v4.content.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.ui.tools.e;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.ui.MMActivity;
@@ -31,9 +31,9 @@ public class WebViewStubTempUI
   extends MMActivity
   implements a.a, MMActivity.a
 {
-  private int DYp = 0;
-  private boolean DYq = false;
-  private Dialog DYr = null;
+  private int Eqr = 0;
+  private boolean Eqs = false;
+  private Dialog Eqt = null;
   
   public static void a(Context paramContext, f paramf, String paramString1, String paramString2, String paramString3, String paramString4, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2)
   {
@@ -80,16 +80,16 @@ public class WebViewStubTempUI
     }
     localIntent.putExtra("key_action_code", 2);
     StartActivityForResultTask localStartActivityForResultTask = new StartActivityForResultTask();
-    localStartActivityForResultTask.til = paramString1;
-    localStartActivityForResultTask.tim = paramString2;
-    localStartActivityForResultTask.DYw = paramIntent;
+    localStartActivityForResultTask.ttd = paramString1;
+    localStartActivityForResultTask.tte = paramString2;
+    localStartActivityForResultTask.Eqy = paramIntent;
     localStartActivityForResultTask.requestCode = 15;
-    localStartActivityForResultTask.DYx = false;
-    localStartActivityForResultTask.DYy = paramInt;
+    localStartActivityForResultTask.Eqz = false;
+    localStartActivityForResultTask.EqA = paramInt;
     localIntent.putExtra("key_activity_result_task", localStartActivityForResultTask);
     paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahp(), "com/tencent/mm/plugin/webview/stub/WebViewStubTempUI", "startActivityForResult", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahE(), "com/tencent/mm/plugin/webview/stub/WebViewStubTempUI", "startActivityForResult", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/stub/WebViewStubTempUI", "startActivityForResult", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(79420);
   }
@@ -130,9 +130,9 @@ public class WebViewStubTempUI
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(79428);
-    if (this.DYq)
+    if (this.Eqs)
     {
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.f localf = g.XN(this.DYp);
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.f localf = g.Yt(this.Eqr);
       if (localf != null) {
         localf.c(paramInt1, paramInt2, paramIntent);
       }
@@ -164,7 +164,7 @@ public class WebViewStubTempUI
         AppMethodBeat.o(79425);
         return;
       }
-      this.DYr = h.a(this, getIntent().getBooleanExtra("key_alert_cancelable", false), getIntent().getStringExtra("key_alert_message"), getIntent().getStringExtra("key_alert_title"), getIntent().getStringExtra("key_alert_yes"), getIntent().getStringExtra("key_alert_no"), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.Eqt = h.a(this, getIntent().getBooleanExtra("key_alert_cancelable", false), getIntent().getStringExtra("key_alert_message"), getIntent().getStringExtra("key_alert_title"), getIntent().getStringExtra("key_alert_yes"), getIntent().getStringExtra("key_alert_no"), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -183,7 +183,7 @@ public class WebViewStubTempUI
           AppMethodBeat.o(79414);
         }
       });
-      this.DYr.setOnCancelListener(new DialogInterface.OnCancelListener()
+      this.Eqt.setOnCancelListener(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -200,10 +200,10 @@ public class WebViewStubTempUI
       return;
     }
     paramBundle = (StartActivityForResultTask)getIntent().getParcelableExtra("key_activity_result_task");
-    this.DYp = paramBundle.DYy;
-    this.DYq = true;
+    this.Eqr = paramBundle.EqA;
+    this.Eqs = true;
     mmSetOnActivityResultCallback(this);
-    d.a(this, paramBundle.til, paramBundle.tim, paramBundle.DYw, paramBundle.requestCode, paramBundle.DYx);
+    d.a(this, paramBundle.ttd, paramBundle.tte, paramBundle.Eqy, paramBundle.requestCode, paramBundle.Eqz);
     AppMethodBeat.o(79425);
   }
   
@@ -211,8 +211,8 @@ public class WebViewStubTempUI
   {
     AppMethodBeat.i(79426);
     super.onDestroy();
-    if (this.DYr != null) {
-      this.DYr.dismiss();
+    if (this.Eqt != null) {
+      this.Eqt.dismiss();
     }
     AppMethodBeat.o(79426);
   }
@@ -230,9 +230,9 @@ public class WebViewStubTempUI
       AppMethodBeat.o(79427);
       return;
       if (paramArrayOfInt[0] == 0) {
-        g.XN(i).c(paramInt, -1, null);
+        g.Yt(i).c(paramInt, -1, null);
       } else {
-        g.XN(i).c(paramInt, 0, null);
+        g.Yt(i).c(paramInt, 0, null);
       }
     }
   }
@@ -247,12 +247,12 @@ public class WebViewStubTempUI
     implements Parcelable
   {
     public static final Parcelable.Creator<StartActivityForResultTask> CREATOR;
-    Intent DYw;
-    boolean DYx;
-    int DYy;
+    int EqA;
+    Intent Eqy;
+    boolean Eqz;
     int requestCode;
-    String til;
-    String tim;
+    String ttd;
+    String tte;
     
     static
     {
@@ -266,15 +266,15 @@ public class WebViewStubTempUI
     StartActivityForResultTask(Parcel paramParcel)
     {
       AppMethodBeat.i(79418);
-      this.til = paramParcel.readString();
-      this.tim = paramParcel.readString();
-      this.DYw = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
+      this.ttd = paramParcel.readString();
+      this.tte = paramParcel.readString();
+      this.Eqy = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
       this.requestCode = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.DYx = bool;
-        this.DYy = paramParcel.readInt();
+        this.Eqz = bool;
+        this.EqA = paramParcel.readInt();
         AppMethodBeat.o(79418);
         return;
       }
@@ -288,15 +288,15 @@ public class WebViewStubTempUI
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(79417);
-      paramParcel.writeString(this.til);
-      paramParcel.writeString(this.tim);
-      paramParcel.writeParcelable(this.DYw, paramInt);
+      paramParcel.writeString(this.ttd);
+      paramParcel.writeString(this.tte);
+      paramParcel.writeParcelable(this.Eqy, paramInt);
       paramParcel.writeInt(this.requestCode);
-      if (this.DYx) {}
+      if (this.Eqz) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeInt(this.DYy);
+        paramParcel.writeInt(this.EqA);
         AppMethodBeat.o(79417);
         return;
       }

@@ -3,7 +3,7 @@ package com.tencent.mm.modelappbrand;
 public abstract class ai
   implements o
 {
-  public abstract void Cq(String paramString);
+  public abstract void CS(String paramString);
   
   public final String getName()
   {

@@ -5,60 +5,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements com.tencent.mapsdk.raster.model.CustomLayer
 {
-  private com.tencent.tencentmap.mapsdk.maps.model.CustomLayer Mzv;
+  private com.tencent.tencentmap.mapsdk.maps.model.CustomLayer MWC;
   
   public c(com.tencent.tencentmap.mapsdk.maps.model.CustomLayer paramCustomLayer)
   {
-    this.Mzv = paramCustomLayer;
+    this.MWC = paramCustomLayer;
   }
   
   public final void clearDiskCache()
   {
-    AppMethodBeat.i(199946);
-    if (this.Mzv == null)
+    AppMethodBeat.i(212638);
+    if (this.MWC == null)
     {
-      AppMethodBeat.o(199946);
+      AppMethodBeat.o(212638);
       return;
     }
-    this.Mzv.clearDiskCache();
-    AppMethodBeat.o(199946);
+    this.MWC.clearDiskCache();
+    AppMethodBeat.o(212638);
   }
   
   public final String getId()
   {
-    AppMethodBeat.i(199947);
-    if (this.Mzv == null)
+    AppMethodBeat.i(212639);
+    if (this.MWC == null)
     {
-      AppMethodBeat.o(199947);
+      AppMethodBeat.o(212639);
       return null;
     }
-    String str = this.Mzv.getId();
-    AppMethodBeat.o(199947);
+    String str = this.MWC.getId();
+    AppMethodBeat.o(212639);
     return str;
   }
   
   public final void reload()
   {
-    AppMethodBeat.i(199944);
-    if (this.Mzv == null)
+    AppMethodBeat.i(212636);
+    if (this.MWC == null)
     {
-      AppMethodBeat.o(199944);
+      AppMethodBeat.o(212636);
       return;
     }
-    this.Mzv.reload();
-    AppMethodBeat.o(199944);
+    this.MWC.reload();
+    AppMethodBeat.o(212636);
   }
   
   public final void remove()
   {
-    AppMethodBeat.i(199945);
-    if (this.Mzv == null)
+    AppMethodBeat.i(212637);
+    if (this.MWC == null)
     {
-      AppMethodBeat.o(199945);
+      AppMethodBeat.o(212637);
       return;
     }
-    this.Mzv.remove();
-    AppMethodBeat.o(199945);
+    this.MWC.remove();
+    AppMethodBeat.o(212637);
   }
 }
 

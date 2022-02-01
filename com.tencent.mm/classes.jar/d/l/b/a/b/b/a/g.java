@@ -11,7 +11,7 @@ import java.util.List;
 public abstract interface g
   extends a, Iterable<c>
 {
-  public static final a MVP = a.MVR;
+  public static final a NsU = a.NsW;
   
   public abstract c g(b paramb);
   
@@ -21,28 +21,28 @@ public abstract interface g
   
   public static final class a
   {
-    private static final g MVQ;
+    private static final g NsV;
     
     static
     {
       AppMethodBeat.i(56946);
-      MVR = new a();
-      MVQ = (g)new a();
+      NsW = new a();
+      NsV = (g)new a();
       AppMethodBeat.o(56946);
     }
     
-    public static g gjL()
+    public static g gon()
     {
-      return MVQ;
+      return NsV;
     }
     
-    public static g jl(List<? extends c> paramList)
+    public static g ju(List<? extends c> paramList)
     {
       AppMethodBeat.i(56945);
       p.h(paramList, "annotations");
       if (paramList.isEmpty())
       {
-        paramList = MVQ;
+        paramList = NsV;
         AppMethodBeat.o(56945);
         return paramList;
       }
@@ -71,7 +71,7 @@ public abstract interface g
       public final Iterator<c> iterator()
       {
         AppMethodBeat.i(56943);
-        Iterator localIterator = ((List)v.MKE).iterator();
+        Iterator localIterator = ((List)v.NhH).iterator();
         AppMethodBeat.o(56943);
         return localIterator;
       }
@@ -96,7 +96,7 @@ public abstract interface g
           break;
         }
         paramg = localIterator.next();
-      } while (!p.i(((c)paramg).gjg(), paramb));
+      } while (!p.i(((c)paramg).gnI(), paramb));
       for (;;)
       {
         paramg = (c)paramg;

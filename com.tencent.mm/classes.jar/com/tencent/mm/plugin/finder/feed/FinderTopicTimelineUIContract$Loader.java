@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.plugin.finder.cgi.ar;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.plugin.finder.cgi.as;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
 import com.tencent.mm.plugin.finder.feed.model.internal.e;
 import com.tencent.mm.plugin.finder.feed.model.internal.g;
 import com.tencent.mm.plugin.finder.feed.ui.FinderTopicFeedUI;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.a;
 import com.tencent.mm.plugin.finder.storage.logic.b;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.arg;
-import com.tencent.mm.protocal.protobuf.cta;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.ctu;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -29,36 +29,36 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "type", "", "topic", "", "location", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderLocation;Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "fetchEndCallback", "Lkotlin/Function0;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "refObjectId", "", "getRefObjectId", "()J", "setRefObjectId", "(J)V", "relatedTopic", "Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "getRelatedTopic", "()Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "setRelatedTopic", "(Lcom/tencent/mm/protocal/protobuf/RelatedTopic;)V", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "getTopic", "getType", "()I", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "FinderTopicTimelineResponse", "TopicTimelineDataFetcher", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "type", "", "topic", "", "location", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderLocation;Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "fetchEndCallback", "Lkotlin/Function0;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "refObjectId", "", "getRefObjectId", "()J", "setRefObjectId", "(J)V", "relatedTopic", "Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "getRelatedTopic", "()Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "setRelatedTopic", "(Lcom/tencent/mm/protocal/protobuf/RelatedTopic;)V", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "getTopic", "getType", "()I", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "FinderTopicTimelineResponse", "TopicTimelineDataFetcher", "plugin-finder_release"})
 public final class FinderTopicTimelineUIContract$Loader
   extends BaseFinderFeedLoader
 {
   private String TAG;
-  final String dzZ;
-  final aoy location;
-  final arg rJv;
-  public d.g.a.a<z> rTm;
+  final String dBe;
+  final apl location;
+  final arv rRJ;
   public long refObjectId;
-  public cta saJ;
+  public d.g.a.a<z> sbQ;
+  public ctu sjy;
   final int type;
   
-  public FinderTopicTimelineUIContract$Loader(int paramInt, String paramString, aoy paramaoy, e parame, arg paramarg, aqy paramaqy)
+  public FinderTopicTimelineUIContract$Loader(int paramInt, String paramString, apl paramapl, e parame, arv paramarv, arn paramarn)
   {
-    super(paramaqy);
-    AppMethodBeat.i(202304);
+    super(paramarn);
+    AppMethodBeat.i(202769);
     this.type = paramInt;
-    this.dzZ = paramString;
-    this.location = paramaoy;
-    this.rJv = paramarg;
+    this.dBe = paramString;
+    this.location = paramapl;
+    this.rRJ = paramarv;
     this.TAG = "Finder.FinderTopicTimelineLoader";
-    AppMethodBeat.o(202304);
+    AppMethodBeat.o(202769);
   }
   
-  public final g<al> createDataFetch()
+  public final g<am> createDataFetch()
   {
-    AppMethodBeat.i(202303);
+    AppMethodBeat.i(202768);
     g localg = (g)new b();
-    AppMethodBeat.o(202303);
+    AppMethodBeat.o(202768);
     return localg;
   }
   
@@ -67,7 +67,7 @@ public final class FinderTopicTimelineUIContract$Loader
     return this.TAG;
   }
   
-  public final void onFetchDone(IResponse<al> paramIResponse)
+  public final void onFetchDone(IResponse<am> paramIResponse)
   {
     AppMethodBeat.i(165995);
     p.h(paramIResponse, "response");
@@ -79,7 +79,7 @@ public final class FinderTopicTimelineUIContract$Loader
     }
     if (!paramIResponse.getHasMore())
     {
-      paramIResponse = this.rTm;
+      paramIResponse = this.sbQ;
       if (paramIResponse != null)
       {
         paramIResponse.invoke();
@@ -98,44 +98,44 @@ public final class FinderTopicTimelineUIContract$Loader
     AppMethodBeat.o(165993);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader$FinderTopicTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "totalCount", "", "errType", "", "errCode", "errMsg", "", "(JIILjava/lang/String;)V", "getTotalCount", "()J", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader$FinderTopicTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "totalCount", "", "errType", "", "errCode", "errMsg", "", "(JIILjava/lang/String;)V", "getTotalCount", "()J", "plugin-finder_release"})
   public static final class a
-    extends IResponse<al>
+    extends IResponse<am>
   {
-    private final long rTp;
+    private final long sbT;
     
     public a(long paramLong, int paramInt1, int paramInt2, String paramString)
     {
       super(paramInt2, paramString);
-      this.rTp = paramLong;
+      this.sbT = paramLong;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader$TopicTimelineDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader$FinderTopicTimelineResponse;", "dealOnSceneEnd", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdId", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader$TopicTimelineDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader$FinderTopicTimelineResponse;", "dealOnSceneEnd", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdId", "plugin-finder_release"})
   public final class b
     extends com.tencent.mm.plugin.finder.feed.model.internal.a
   {
-    public final IResponse<al> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    public final IResponse<am> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      AppMethodBeat.i(202301);
+      AppMethodBeat.i(202766);
       p.h(paramn, "scene");
-      ar localar = (ar)paramn;
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (localar.cyq() == 0)) {}
+      as localas = (as)paramn;
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (localas.czR() == 0)) {}
       FinderTopicTimelineUIContract.Loader.a locala;
       for (boolean bool = false;; bool = true)
       {
-        locala = new FinderTopicTimelineUIContract.Loader.a(localar.cyw(), paramInt1, paramInt2, paramString);
-        paramn = (Iterable)((ar)paramn).cyv();
+        locala = new FinderTopicTimelineUIContract.Loader.a(localas.czX(), paramInt1, paramInt2, paramString);
+        paramn = (Iterable)((as)paramn).czW();
         paramString = (Collection)new ArrayList(j.a(paramn, 10));
         paramn = paramn.iterator();
         while (paramn.hasNext())
         {
           localObject1 = (FinderObject)paramn.next();
-          Object localObject2 = FinderItem.syk;
+          Object localObject2 = FinderItem.sJb;
           localObject1 = FinderItem.a.a((FinderObject)localObject1, 64);
-          localObject2 = FinderTopicFeedUI.shU;
-          ((Map)FinderTopicFeedUI.cCa()).put(Long.valueOf(((FinderItem)localObject1).getId()), localObject1);
-          localObject2 = b.sAs;
+          localObject2 = FinderTopicFeedUI.sqP;
+          ((Map)FinderTopicFeedUI.cDM()).put(Long.valueOf(((FinderItem)localObject1).getId()), localObject1);
+          localObject2 = b.sLq;
           paramString.add(b.a.j((FinderItem)localObject1));
         }
       }
@@ -146,21 +146,21 @@ public final class FinderTopicTimelineUIContract$Loader
       if (paramString != null) {}
       for (paramString = Integer.valueOf(paramString.size());; paramString = null)
       {
-        ad.i(paramn, paramString);
-        locala.setPullType(localar.pullType);
-        locala.setLastBuffer(localar.cyp());
+        ae.i(paramn, paramString);
+        locala.setPullType(localas.pullType);
+        locala.setLastBuffer(localas.czQ());
         locala.setHasMore(bool);
         paramString = (IResponse)locala;
-        AppMethodBeat.o(202301);
+        AppMethodBeat.o(202766);
         return paramString;
       }
     }
     
     public final n genLoadMoreNetScene()
     {
-      AppMethodBeat.i(202300);
+      AppMethodBeat.i(202765);
       Object localObject;
-      switch (this.saK.type)
+      switch (this.sjz.type)
       {
       default: 
         localObject = null;
@@ -168,15 +168,18 @@ public final class FinderTopicTimelineUIContract$Loader
       for (;;)
       {
         localObject = (n)localObject;
-        AppMethodBeat.o(202300);
+        AppMethodBeat.o(202765);
         return localObject;
-        localObject = new ar(this.saK.dzZ, Long.valueOf(this.saK.refObjectId), this.saK.getLastBuffer(), this.saK.rJv, this.saK.getContextObj());
-        ((ar)localObject).pullType = 2;
+        localObject = new as(this.sjz.dBe, Long.valueOf(this.sjz.refObjectId), this.sjz.getLastBuffer(), this.sjz.rRJ, this.sjz.getContextObj());
+        ((as)localObject).pullType = 2;
         continue;
-        localObject = this.saK.location.Gnu;
-        p.g(localObject, "location.poiClassifyId");
-        localObject = new ar((String)localObject, this.saK.location.dAp, this.saK.location.dyz, Long.valueOf(this.saK.refObjectId), this.saK.getLastBuffer(), this.saK.saJ, this.saK.rJv, this.saK.getContextObj());
-        ((ar)localObject).pullType = 2;
+        String str = this.sjz.location.GGA;
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
+        localObject = new as((String)localObject, this.sjz.location.dBu, this.sjz.location.dzE, Long.valueOf(this.sjz.refObjectId), this.sjz.getLastBuffer(), this.sjz.sjy, this.sjz.rRJ, this.sjz.getContextObj());
+        ((as)localObject).pullType = 2;
       }
     }
     

@@ -13,8 +13,8 @@ import java.io.File;
 public class TinkerServerResultService
   extends DefaultTinkerResultService
 {
-  private static boolean MAu = false;
-  private static com.tinkerboots.sdk.tinker.a.a uIZ = null;
+  private static boolean MXB = false;
+  private static com.tinkerboots.sdk.tinker.a.a uUM = null;
   
   static void restartProcess()
   {
@@ -22,8 +22,8 @@ public class TinkerServerResultService
     ShareTinkerLog.v("Tinker.TinkerServerResultService", "app is background now, i can kill quietly", new Object[0]);
     com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tinkerboots/sdk/tinker/service/TinkerServerResultService", "restartProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tinkerboots/sdk/tinker/service/TinkerServerResultService", "restartProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tinkerboots/sdk/tinker/service/TinkerServerResultService", "restartProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(3458);
   }
@@ -38,17 +38,17 @@ public class TinkerServerResultService
       return;
     }
     ShareTinkerLog.v("Tinker.TinkerServerResultService", "receive result: %s", new Object[] { parama.toString() });
-    b.ll(getApplicationContext());
-    if (uIZ != null) {
-      uIZ.a(parama);
+    b.lr(getApplicationContext());
+    if (uUM != null) {
+      uUM.a(parama);
     }
-    if (parama.dpX)
+    if (parama.drc)
     {
       ShareTinkerLog.v("Tinker.TinkerServerResultService", "patch success, please restart process", new Object[0]);
-      ac(new File(parama.MgK));
+      ab(new File(parama.MDH));
       if (b(parama))
       {
-        if (MAu)
+        if (MXB)
         {
           ShareTinkerLog.v("Tinker.TinkerServerResultService", "tinker wait screen to restart process", new Object[0]);
           new d.b(getApplicationContext(), new d.a()

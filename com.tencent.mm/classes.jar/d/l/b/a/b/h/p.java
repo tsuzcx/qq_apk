@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 class p
   extends d
 {
-  private int xbE = 0;
+  private int xrv = 0;
   protected final byte[] zr;
   
   p(byte[] paramArrayOfByte)
@@ -45,9 +45,9 @@ class p
     }
     byte[] arrayOfByte1 = this.zr;
     byte[] arrayOfByte2 = paramp.zr;
-    int j = grn();
-    int i = grn();
-    paramInt1 = paramp.grn() + paramInt1;
+    int j = gvP();
+    int i = gvP();
+    paramInt1 = paramp.gvP() + paramInt1;
     while (i < j + paramInt2)
     {
       if (arrayOfByte1[i] != arrayOfByte2[paramInt1])
@@ -62,7 +62,7 @@ class p
     return true;
   }
   
-  public byte akW(int paramInt)
+  public byte alG(int paramInt)
   {
     return this.zr[paramInt];
   }
@@ -70,14 +70,14 @@ class p
   final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59522);
-    paramOutputStream.write(this.zr, grn() + paramInt1, paramInt2);
+    paramOutputStream.write(this.zr, gvP() + paramInt1, paramInt2);
     AppMethodBeat.o(59522);
   }
   
-  protected final int bb(int paramInt1, int paramInt2, int paramInt3)
+  protected final int bc(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59525);
-    paramInt2 = grn() + paramInt2;
+    paramInt2 = gvP() + paramInt2;
     byte[] arrayOfByte = this.zr;
     int k = paramInt2 + paramInt3;
     int m;
@@ -114,7 +114,7 @@ class p
           paramInt1 = arrayOfByte[paramInt2];
           if (paramInt3 >= k)
           {
-            paramInt1 = y.lt(m, paramInt1);
+            paramInt1 = y.lA(m, paramInt1);
             AppMethodBeat.o(59525);
             return paramInt1;
           }
@@ -138,7 +138,7 @@ class p
         if (j < k) {
           break label347;
         }
-        paramInt1 = y.lt(m, paramInt3);
+        paramInt1 = y.lA(m, paramInt3);
         AppMethodBeat.o(59525);
         return paramInt1;
       }
@@ -154,7 +154,7 @@ class p
         paramInt2 = i;
         if (i >= k)
         {
-          paramInt1 = y.bd(m, paramInt3, j);
+          paramInt1 = y.be(m, paramInt3, j);
           AppMethodBeat.o(59525);
           return paramInt1;
         }
@@ -171,7 +171,7 @@ class p
         paramInt1 = paramInt2;
       }
       label331:
-      paramInt1 = y.M(arrayOfByte, paramInt1, k);
+      paramInt1 = y.N(arrayOfByte, paramInt1, k);
       AppMethodBeat.o(59525);
       return paramInt1;
       label347:
@@ -180,10 +180,10 @@ class p
     }
   }
   
-  protected final int bc(int paramInt1, int paramInt2, int paramInt3)
+  protected final int bd(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59529);
-    paramInt1 = a(paramInt1, this.zr, grn() + paramInt2, paramInt3);
+    paramInt1 = a(paramInt1, this.zr, gvP() + paramInt2, paramInt3);
     AppMethodBeat.o(59529);
     return paramInt1;
   }
@@ -230,12 +230,12 @@ class p
     throw paramObject;
   }
   
-  protected int grn()
+  protected int gvP()
   {
     return 0;
   }
   
-  public d.a gro()
+  public d.a gvQ()
   {
     AppMethodBeat.i(59531);
     a locala = new a((byte)0);
@@ -243,16 +243,16 @@ class p
     return locala;
   }
   
-  public final boolean grp()
+  public final boolean gvR()
   {
     AppMethodBeat.i(59524);
-    int i = grn();
-    boolean bool = y.L(this.zr, i, size() + i);
+    int i = gvP();
+    boolean bool = y.M(this.zr, i, size() + i);
     AppMethodBeat.o(59524);
     return bool;
   }
   
-  public final e grq()
+  public final e gvS()
   {
     AppMethodBeat.i(59530);
     e locale = e.a(this);
@@ -260,41 +260,41 @@ class p
     return locale;
   }
   
-  protected final int grs()
+  protected final int gvU()
   {
     return 0;
   }
   
-  protected final boolean grt()
+  protected final boolean gvV()
   {
     return true;
   }
   
-  protected final int gru()
+  protected final int gvW()
   {
-    return this.xbE;
+    return this.xrv;
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(59528);
-    int j = this.xbE;
+    int j = this.xrv;
     int i = j;
     if (j == 0)
     {
       i = size();
-      j = bc(i, 0, i);
+      j = bd(i, 0, i);
       i = j;
       if (j == 0) {
         i = 1;
       }
-      this.xbE = i;
+      this.xrv = i;
     }
     AppMethodBeat.o(59528);
     return i;
   }
   
-  protected void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  protected void k(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59521);
     System.arraycopy(this.zr, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
@@ -309,7 +309,7 @@ class p
   public final String toString(String paramString)
   {
     AppMethodBeat.i(59523);
-    paramString = new String(this.zr, grn(), size(), paramString);
+    paramString = new String(this.zr, gvP(), size(), paramString);
     AppMethodBeat.o(59523);
     return paramString;
   }
@@ -364,7 +364,7 @@ class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.p
  * JD-Core Version:    0.7.0.1
  */

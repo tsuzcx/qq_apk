@@ -3,35 +3,35 @@ package com.tencent.luggage.game.page;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.plugin.appbrand.r.a.e;
-import com.tencent.mm.plugin.appbrand.r.a.e.a;
-import com.tencent.mm.plugin.appbrand.r.a.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.plugin.appbrand.platform.window.e;
+import com.tencent.mm.plugin.appbrand.platform.window.e.a;
+import com.tencent.mm.plugin.appbrand.platform.window.e.b;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class g
-  implements com.tencent.mm.plugin.appbrand.page.b.b, com.tencent.mm.plugin.appbrand.page.b.d, e.a
+  implements com.tencent.mm.plugin.appbrand.page.a.b, com.tencent.mm.plugin.appbrand.page.a.d, e.a
 {
-  private final aa ckN;
-  private String ckX;
-  private boolean ckY = false;
+  private final z ckP;
+  private String ckZ;
+  private boolean cla = false;
   private boolean mDestroyed = false;
   
-  g(aa paramaa, String paramString)
+  g(z paramz, String paramString)
   {
-    this.ckN = paramaa;
-    this.ckX = paramString;
+    this.ckP = paramz;
+    this.ckZ = paramString;
   }
   
-  public final boolean Dy()
+  public final boolean DB()
   {
     return false;
   }
   
-  public final String Dz()
+  public final String DC()
   {
-    return this.ckX;
+    return this.ckZ;
   }
   
   public final void a(final e.a parama)
@@ -39,11 +39,11 @@ public final class g
     AppMethodBeat.i(177442);
     if (this.mDestroyed)
     {
-      ad.w("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation but destroyed, appId:%s", new Object[] { this.ckN.getAppId() });
+      ae.w("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation but destroyed, appId:%s", new Object[] { this.ckP.getAppId() });
       AppMethodBeat.o(177442);
       return;
     }
-    if ((this.ckN.jzX == null) || (this.ckN.jzX.getOrientationHandler() == null))
+    if ((this.ckP.jDa == null) || (this.ckP.jDa.getOrientationHandler() == null))
     {
       if (parama != null) {
         parama.a(null, false);
@@ -51,19 +51,19 @@ public final class g
       AppMethodBeat.o(177442);
       return;
     }
-    if (this.ckN.getRuntime().aWo())
+    if (this.ckP.getRuntime().aWP())
     {
-      ad.m("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, game is showing launch ad, ignore changing orientation", new Object[0]);
+      ae.m("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, game is showing launch ad, ignore changing orientation", new Object[0]);
       if (parama != null) {
         parama.a(null, false);
       }
       AppMethodBeat.o(177442);
       return;
     }
-    e.b localb = e.b.Uf(this.ckX);
-    ad.m("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, appId[%s], orientation[%s]", new Object[] { this.ckN.getAppId(), localb });
+    e.b localb = e.b.UP(this.ckZ);
+    ae.m("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, appId[%s], orientation[%s]", new Object[] { this.ckP.getAppId(), localb });
     if (localb != null) {
-      this.ckN.jzX.getOrientationHandler().a(localb, new e.a()
+      this.ckP.jDa.getOrientationHandler().a(localb, new e.a()
       {
         public final void a(e.b paramAnonymousb, boolean paramAnonymousBoolean)
         {
@@ -85,7 +85,7 @@ public final class g
     if (paramb == null) {}
     for (paramb = "null";; paramb = paramb.name())
     {
-      ad.i("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "onOrientationChanged requested[%s], success[%b]", new Object[] { paramb, Boolean.valueOf(paramBoolean) });
+      ae.i("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "onOrientationChanged requested[%s], success[%b]", new Object[] { paramb, Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(177443);
       return;
     }
@@ -93,41 +93,41 @@ public final class g
   
   public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb) {}
   
-  public final void cW(String paramString)
+  public final void cY(String paramString)
   {
     AppMethodBeat.i(130646);
-    ad.e("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "setRequestedOrientation not support for game, appId[%s]", new Object[] { this.ckN.getAppId() });
+    ae.e("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "setRequestedOrientation not support for game, appId[%s]", new Object[] { this.ckP.getAppId() });
     AppMethodBeat.o(130646);
   }
   
   public final void onBackground()
   {
-    this.ckY = false;
+    this.cla = false;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onDestroy()
   {
-    this.ckY = false;
+    this.cla = false;
     this.mDestroyed = true;
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(130649);
-    this.ckY = true;
-    if ((this.ckN.getFullscreenImpl() != null) && (this.ckN.getFullscreenImpl().bwI())) {
-      this.ckN.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
+    this.cla = true;
+    if ((this.ckP.getFullscreenImpl() != null) && (this.ckP.getFullscreenImpl().bxz())) {
+      this.ckP.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.platform.window.b()
       {
-        public final void DA()
+        public final void DD()
         {
-          AppMethodBeat.i(190415);
+          AppMethodBeat.i(220732);
           g.a(g.this).getFullscreenImpl().b(this);
           if ((!g.b(g.this)) && (g.c(g.this))) {
             g.this.a(null);
           }
-          AppMethodBeat.o(190415);
+          AppMethodBeat.o(220732);
         }
       });
     }

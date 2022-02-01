@@ -11,8 +11,8 @@ final class TopStoryFSVideoUI$11
   public final void run()
   {
     AppMethodBeat.i(126346);
-    if (this.Bxi.Bxc.getVisibility() == 0) {
-      this.Bxi.Bxc.setVisibility(8);
+    if (this.BOG.BOA.getVisibility() == 0) {
+      this.BOG.BOA.setVisibility(8);
     }
     AppMethodBeat.o(126346);
   }

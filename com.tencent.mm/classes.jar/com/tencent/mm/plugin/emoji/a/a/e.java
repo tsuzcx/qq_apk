@@ -5,10 +5,10 @@ import com.tencent.mm.protocal.protobuf.EmotionSummary;
 
 public final class e
 {
-  public static boolean BY(int paramInt)
+  public static boolean Ck(int paramInt)
   {
     AppMethodBeat.i(108375);
-    if ((fk(paramInt, 4)) || (fk(paramInt, 8)))
+    if ((fl(paramInt, 4)) || (fl(paramInt, 8)))
     {
       AppMethodBeat.o(108375);
       return true;
@@ -25,7 +25,7 @@ public final class e
       AppMethodBeat.o(108373);
       return false;
     }
-    boolean bool = fk(paramEmotionSummary.PackFlag, 1);
+    boolean bool = fl(paramEmotionSummary.PackFlag, 1);
     AppMethodBeat.o(108373);
     return bool;
   }
@@ -50,7 +50,7 @@ public final class e
       AppMethodBeat.o(108376);
       return false;
     }
-    boolean bool = fk(paramEmotionSummary.PackType, 4);
+    boolean bool = fl(paramEmotionSummary.PackType, 4);
     AppMethodBeat.o(108376);
     return bool;
   }
@@ -63,7 +63,7 @@ public final class e
       AppMethodBeat.o(108377);
       return false;
     }
-    boolean bool = fk(paramEmotionSummary.PackType, 8);
+    boolean bool = fl(paramEmotionSummary.PackType, 8);
     AppMethodBeat.o(108377);
     return bool;
   }
@@ -76,19 +76,19 @@ public final class e
       AppMethodBeat.o(108378);
       return false;
     }
-    boolean bool = fk(paramEmotionSummary.PackFlag, 8);
+    boolean bool = fl(paramEmotionSummary.PackFlag, 8);
     AppMethodBeat.o(108378);
     return bool;
   }
   
-  public static boolean fk(int paramInt1, int paramInt2)
+  public static boolean fl(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) == paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,26 +4,26 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.protocal.protobuf.ax;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class er
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFq = "updateTime".hashCode();
-  private static final int fnw = "acctTypeId".hashCode();
-  private static final int fnx = "language".hashCode();
-  private static final int fny = "accTypeRec".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int fpx = "acctTypeId".hashCode();
+  private static final int fpy = "language".hashCode();
+  private static final int fpz = "accTypeRec".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFn = true;
+  private boolean eGW = true;
   public ax field_accTypeRec;
   public String field_acctTypeId;
   public String field_language;
   public long field_updateTime;
-  private boolean fnt = true;
-  private boolean fnu = true;
-  private boolean fnv = true;
+  private boolean fpu = true;
+  private boolean fpv = true;
+  private boolean fpw = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,7 +38,7 @@ public abstract class er
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fnw != k) {
+      if (fpx != k) {
         break label60;
       }
       this.field_acctTypeId = paramCursor.getString(i);
@@ -49,9 +49,9 @@ public abstract class er
       break label20;
       break;
       label60:
-      if (fnx == k) {
+      if (fpy == k) {
         this.field_language = paramCursor.getString(i);
-      } else if (fny == k) {
+      } else if (fpz == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
@@ -62,9 +62,9 @@ public abstract class er
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseOpenIMAccTypeInfo", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseOpenIMAccTypeInfo", localIOException.getMessage());
         }
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -75,17 +75,17 @@ public abstract class er
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fnt) {
+    if (this.fpu) {
       localContentValues.put("acctTypeId", this.field_acctTypeId);
     }
-    if (this.fnu) {
+    if (this.fpv) {
       localContentValues.put("language", this.field_language);
     }
-    if ((this.fnv) && (this.field_accTypeRec != null)) {}
+    if ((this.fpw) && (this.field_accTypeRec != null)) {}
     try
     {
       localContentValues.put("accTypeRec", this.field_accTypeRec.toByteArray());
-      if (this.eFn) {
+      if (this.eGW) {
         localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
       }
       if (this.systemRowid > 0L) {
@@ -97,14 +97,14 @@ public abstract class er
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseOpenIMAccTypeInfo", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseOpenIMAccTypeInfo", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.er
  * JD-Core Version:    0.7.0.1
  */

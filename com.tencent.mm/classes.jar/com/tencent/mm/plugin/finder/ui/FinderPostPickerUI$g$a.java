@@ -5,16 +5,16 @@ import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class FinderPostPickerUI$g$a
   implements DialogInterface.OnCancelListener
 {
-  public static final a sEJ;
+  public static final a sPI;
   
   static
   {
     AppMethodBeat.i(167489);
-    sEJ = new a();
+    sPI = new a();
     AppMethodBeat.o(167489);
   }
   

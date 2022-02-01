@@ -17,33 +17,33 @@ public class k<V>
   extends FutureTask<V>
   implements c, d<V>, h, Delayed, RunnableScheduledFuture<V>
 {
-  private static final com.tencent.e.g.a.b LSZ;
-  private static final com.tencent.e.f.a LVp;
-  private static final AtomicLong LVq;
-  private static final long LVx;
-  private boolean LVn;
-  private f LVo;
-  private volatile long LVr;
-  public Object LVs;
-  private String LVt;
-  private com.tencent.e.g.g LVu;
-  public com.tencent.e.h.d LVv;
-  public final int LVw;
+  private static final com.tencent.e.g.a.b MpW;
+  private static final com.tencent.e.f.a Msk;
+  private static final AtomicLong Msl;
+  private static final long Mss;
+  private boolean Msi;
+  private f Msj;
+  private volatile long Msm;
+  public Object Msn;
+  private String Mso;
+  private com.tencent.e.g.g Msp;
+  public com.tencent.e.h.d Msq;
+  public final int Msr;
   private final long aDT;
   private final long period;
   protected Thread thread;
   private Throwable throwable;
   protected long time;
-  protected long wIM;
+  protected long wYx;
   protected long waitTime;
   
   static
   {
     AppMethodBeat.i(183391);
-    LVp = com.tencent.e.c.b.LUm;
-    LVq = new AtomicLong();
-    LSZ = com.tencent.e.g.h.LUN;
-    LVx = Looper.getMainLooper().getThread().getId();
+    Msk = com.tencent.e.c.b.Mrh;
+    Msl = new AtomicLong();
+    MpW = com.tencent.e.g.h.MrI;
+    Mss = Looper.getMainLooper().getThread().getId();
     AppMethodBeat.o(183391);
   }
   
@@ -51,22 +51,22 @@ public class k<V>
   {
     super(paramRunnable, null);
     AppMethodBeat.i(183377);
-    this.LVn = true;
+    this.Msi = true;
     this.time = 0L;
     this.waitTime = 0L;
-    this.wIM = 0L;
-    this.LVo = f.LTC;
-    this.aDT = LVq.getAndIncrement();
-    this.LVs = paramRunnable;
-    this.LVr = paramLong1;
+    this.wYx = 0L;
+    this.Msj = f.Mqz;
+    this.aDT = Msl.getAndIncrement();
+    this.Msn = paramRunnable;
+    this.Msm = paramLong1;
     this.period = paramLong2;
-    this.LVt = getKey();
-    this.LVw = paramRunnable.hashCode();
-    this.LVn = paramBoolean;
-    if ((paramBoolean) && (LVp != null)) {
-      LVp.a(this);
+    this.Mso = getKey();
+    this.Msr = paramRunnable.hashCode();
+    this.Msi = paramBoolean;
+    if ((paramBoolean) && (Msk != null)) {
+      Msk.a(this);
     }
-    com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, paramLong1 - System.nanoTime(), 0L, "", paramBoolean);
+    com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, paramLong1 - System.nanoTime(), 0L, "", paramBoolean);
     AppMethodBeat.o(183377);
   }
   
@@ -74,22 +74,22 @@ public class k<V>
   {
     super(paramRunnable, null);
     AppMethodBeat.i(183376);
-    this.LVn = true;
+    this.Msi = true;
     this.time = 0L;
     this.waitTime = 0L;
-    this.wIM = 0L;
-    this.LVo = f.LTC;
-    this.aDT = LVq.getAndIncrement();
-    this.LVs = paramRunnable;
-    this.LVr = paramLong;
+    this.wYx = 0L;
+    this.Msj = f.Mqz;
+    this.aDT = Msl.getAndIncrement();
+    this.Msn = paramRunnable;
+    this.Msm = paramLong;
     this.period = 0L;
-    this.LVt = getKey();
-    this.LVw = paramRunnable.hashCode();
-    this.LVn = paramBoolean;
-    if ((paramBoolean) && (LVp != null)) {
-      LVp.a(this);
+    this.Mso = getKey();
+    this.Msr = paramRunnable.hashCode();
+    this.Msi = paramBoolean;
+    if ((paramBoolean) && (Msk != null)) {
+      Msk.a(this);
     }
-    com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, paramLong - System.nanoTime(), 0L, "", paramBoolean);
+    com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, paramLong - System.nanoTime(), 0L, "", paramBoolean);
     AppMethodBeat.o(183376);
   }
   
@@ -97,26 +97,26 @@ public class k<V>
   {
     super(paramCallable);
     AppMethodBeat.i(183378);
-    this.LVn = true;
+    this.Msi = true;
     this.time = 0L;
     this.waitTime = 0L;
-    this.wIM = 0L;
-    this.LVo = f.LTC;
-    this.aDT = LVq.getAndIncrement();
-    this.LVs = paramCallable;
-    this.LVr = paramLong;
+    this.wYx = 0L;
+    this.Msj = f.Mqz;
+    this.aDT = Msl.getAndIncrement();
+    this.Msn = paramCallable;
+    this.Msm = paramLong;
     this.period = 0L;
-    this.LVt = getKey();
-    this.LVw = paramCallable.hashCode();
-    this.LVn = paramBoolean;
-    if ((paramBoolean) && (LVp != null)) {
-      LVp.a(this);
+    this.Mso = getKey();
+    this.Msr = paramCallable.hashCode();
+    this.Msi = paramBoolean;
+    if ((paramBoolean) && (Msk != null)) {
+      Msk.a(this);
     }
-    com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, paramLong - System.nanoTime(), 0L, "", paramBoolean);
+    com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, paramLong - System.nanoTime(), 0L, "", paramBoolean);
     AppMethodBeat.o(183378);
   }
   
-  private void fVP()
+  private void gao()
   {
     AppMethodBeat.i(183380);
     if (this.throwable != null)
@@ -140,23 +140,23 @@ public class k<V>
     AppMethodBeat.o(183380);
   }
   
-  public static com.tencent.e.g.a.b fVQ()
+  public static com.tencent.e.g.a.b gap()
   {
-    return LSZ;
+    return MpW;
   }
   
   private void o(Looper paramLooper)
   {
-    AppMethodBeat.i(219284);
-    g.b localb = com.tencent.e.a.LTd;
-    if ((localb.dyV()) && (LVx != Thread.currentThread().getId()) && (Looper.myLooper() != null) && (paramLooper == null))
+    AppMethodBeat.i(216746);
+    g.b localb = com.tencent.e.a.Mqa;
+    if ((localb.dCm()) && (Mss != Thread.currentThread().getId()) && (Looper.myLooper() != null) && (paramLooper == null))
     {
       localb.a(Thread.currentThread(), getKey());
-      if (localb.dyW()) {
+      if (localb.dCn()) {
         try
         {
           ((ThreadLocal)com.tencent.e.k.c.f(Looper.class, "sThreadLocal")).set(null);
-          AppMethodBeat.o(219284);
+          AppMethodBeat.o(216746);
           return;
         }
         catch (Exception paramLooper)
@@ -165,13 +165,13 @@ public class k<V>
         }
       }
     }
-    AppMethodBeat.o(219284);
+    AppMethodBeat.o(216746);
   }
   
   public final void a(com.tencent.e.h.d paramd)
   {
     AppMethodBeat.i(183382);
-    this.LVv = paramd;
+    this.Msq = paramd;
     this.waitTime = SystemClock.uptimeMillis();
     AppMethodBeat.o(183382);
   }
@@ -181,13 +181,13 @@ public class k<V>
     AppMethodBeat.i(183381);
     if (super.cancel(paramBoolean))
     {
-      this.LVo = f.LTB;
-      if ((this.LVn) && (LVp != null)) {
-        LVp.b(this);
+      this.Msj = f.Mqy;
+      if ((this.Msi) && (Msk != null)) {
+        Msk.b(this);
       }
-      com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, 0L, 0L, "", this.LVn);
-      if (this.LVv != null) {
-        this.LVv.j(this);
+      com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, 0L, 0L, "", this.Msi);
+      if (this.Msq != null) {
+        this.Msq.j(this);
       }
       AppMethodBeat.o(183381);
       return true;
@@ -200,43 +200,43 @@ public class k<V>
   {
     AppMethodBeat.i(183388);
     super.done();
-    this.LVs = null;
+    this.Msn = null;
     AppMethodBeat.o(183388);
-  }
-  
-  public final com.tencent.e.g.g fVR()
-  {
-    AppMethodBeat.i(183383);
-    if (this.LVu == null) {
-      this.LVu = LSZ.aZE(this.LVt);
-    }
-    com.tencent.e.g.g localg = this.LVu;
-    AppMethodBeat.o(183383);
-    return localg;
-  }
-  
-  public final long[] fVS()
-  {
-    if (this.LVo == f.LTG) {
-      return new long[] { this.wIM, this.time };
-    }
-    return new long[2];
   }
   
   protected void finalize()
   {
     AppMethodBeat.i(183389);
     super.finalize();
-    if ((this.LVo == f.LTC) || (this.LVo == f.LTD)) {
+    if ((this.Msj == f.Mqz) || (this.Msj == f.MqA)) {
       cancel(false);
     }
     AppMethodBeat.o(183389);
   }
   
+  public final com.tencent.e.g.g gaq()
+  {
+    AppMethodBeat.i(183383);
+    if (this.Msp == null) {
+      this.Msp = MpW.bbh(this.Mso);
+    }
+    com.tencent.e.g.g localg = this.Msp;
+    AppMethodBeat.o(183383);
+    return localg;
+  }
+  
+  public final long[] gar()
+  {
+    if (this.Msj == f.MqC) {
+      return new long[] { this.wYx, this.time };
+    }
+    return new long[2];
+  }
+  
   public long getDelay(TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(183386);
-    long l = paramTimeUnit.convert(this.LVr - System.nanoTime(), TimeUnit.NANOSECONDS);
+    long l = paramTimeUnit.convert(this.Msm - System.nanoTime(), TimeUnit.NANOSECONDS);
     AppMethodBeat.o(183386);
     return l;
   }
@@ -244,19 +244,19 @@ public class k<V>
   public final String getKey()
   {
     AppMethodBeat.i(183385);
-    if (this.LVt == null)
+    if (this.Mso == null)
     {
-      if ((this.LVs instanceof g))
+      if ((this.Msn instanceof g))
       {
-        str = ((g)this.LVs).getKey();
+        str = ((g)this.Msn).getKey();
         AppMethodBeat.o(183385);
         return str;
       }
-      str = this.LVs.getClass().getName();
+      str = this.Msn.getClass().getName();
       AppMethodBeat.o(183385);
       return str;
     }
-    String str = this.LVt;
+    String str = this.Mso;
     AppMethodBeat.o(183385);
     return str;
   }
@@ -281,42 +281,42 @@ public class k<V>
     }
     long l1;
     int i;
-    if (!LSZ.c(fVR()))
+    if (!MpW.c(gaq()))
     {
-      l1 = LSZ.a(fVR(), TimeUnit.NANOSECONDS);
+      l1 = MpW.a(gaq(), TimeUnit.NANOSECONDS);
       if (l1 >= 0L) {
-        this.LVr = (l1 + System.nanoTime());
+        this.Msm = (l1 + System.nanoTime());
       }
       for (i = 1; i != 0; i = 0)
       {
-        this.LVo = f.LTD;
-        this.LVv.h(this);
-        com.tencent.e.d.LTw.a(getKey(), this.LVw, fVR().fVK(), this.LVr - System.nanoTime(), this.LVv.getName());
+        this.Msj = f.MqA;
+        this.Msq.h(this);
+        com.tencent.e.d.Mqt.a(getKey(), this.Msr, gaq().gaj(), this.Msm - System.nanoTime(), this.Msq.getName());
         AppMethodBeat.o(183379);
         return;
       }
-      this.LVo = f.LTz;
-      if ((this.LVn) && (LVp != null)) {
-        LVp.f(this);
+      this.Msj = f.Mqw;
+      if ((this.Msi) && (Msk != null)) {
+        Msk.f(this);
       }
-      com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, 0L, 0L, this.LVv.getName(), this.LVn);
+      com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, 0L, 0L, this.Msq.getName(), this.Msi);
       AppMethodBeat.o(183379);
       return;
     }
     this.time = SystemClock.uptimeMillis();
     this.waitTime -= this.time;
-    this.wIM = SystemClock.currentThreadTimeMillis();
-    this.LVo = f.LTF;
-    com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, this.time, this.wIM, this.LVv.getName(), this.LVn);
-    if ((this.LVn) && (LVp != null)) {
-      LVp.d(this);
+    this.wYx = SystemClock.currentThreadTimeMillis();
+    this.Msj = f.MqB;
+    com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, this.time, this.wYx, this.Msq.getName(), this.Msi);
+    if ((this.Msi) && (Msk != null)) {
+      Msk.d(this);
     }
     Looper localLooper = Looper.myLooper();
     this.thread = Thread.currentThread();
     try
     {
       boolean bool = isPeriodic();
-      if (!this.LVv.isShutdown())
+      if (!this.Msq.isShutdown())
       {
         i = 1;
         label342:
@@ -328,17 +328,17 @@ public class k<V>
       for (;;)
       {
         this.time = (SystemClock.uptimeMillis() - this.time);
-        this.wIM = (SystemClock.currentThreadTimeMillis() - this.wIM);
-        if (this.LVo != f.LTA) {
-          this.LVo = f.LTG;
+        this.wYx = (SystemClock.currentThreadTimeMillis() - this.wYx);
+        if (this.Msj != f.Mqx) {
+          this.Msj = f.MqC;
         }
-        if (LVp != null) {}
-        switch (1.LVy[this.LVo.ordinal()])
+        if (Msk != null) {}
+        switch (1.Mst[this.Msj.ordinal()])
         {
         default: 
           label432:
           o(localLooper);
-          fVP();
+          gao();
           AppMethodBeat.o(183379);
           return;
           i = 0;
@@ -355,19 +355,19 @@ public class k<V>
     finally
     {
       this.time = (SystemClock.uptimeMillis() - this.time);
-      this.wIM = (SystemClock.currentThreadTimeMillis() - this.wIM);
-      if (this.LVo != f.LTA) {
-        this.LVo = f.LTG;
+      this.wYx = (SystemClock.currentThreadTimeMillis() - this.wYx);
+      if (this.Msj != f.Mqx) {
+        this.Msj = f.MqC;
       }
-      if (LVp != null) {
-        switch (1.LVy[this.LVo.ordinal()])
+      if (Msk != null) {
+        switch (1.Mst[this.Msj.ordinal()])
         {
         }
       }
     }
     for (;;)
     {
-      fVP();
+      gao();
       AppMethodBeat.o(183379);
       throw localObject;
       label567:
@@ -377,15 +377,15 @@ public class k<V>
       l1 = this.period;
       long l2;
       if (l1 > 0L) {
-        l2 = this.LVr;
+        l2 = this.Msm;
       }
       for (;;)
       {
-        this.LVr = (l1 + l2);
-        if ((this.LVn) && (LVp != null)) {
-          LVp.a(this);
+        this.Msm = (l1 + l2);
+        if ((this.Msi) && (Msk != null)) {
+          Msk.a(this);
         }
-        this.LVv.h(this);
+        this.Msq.h(this);
         break;
         l1 = -l1;
         l2 = System.nanoTime();
@@ -393,25 +393,25 @@ public class k<V>
           l1 = 4611686018427387903L;
         }
       }
-      if (this.LVn) {
-        LVp.e(this);
+      if (this.Msi) {
+        Msk.e(this);
       }
-      com.tencent.e.d.LTw.a(getKey(), this.LVw, this.throwable);
+      com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.throwable);
       break label432;
-      if (this.LVn) {
-        LVp.c(this);
+      if (this.Msi) {
+        Msk.c(this);
       }
-      com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, this.time, this.wIM, this.LVv.getName(), this.LVn);
+      com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, this.time, this.wYx, this.Msq.getName(), this.Msi);
       break label432;
-      if (this.LVn) {
-        LVp.e(this);
+      if (this.Msi) {
+        Msk.e(this);
       }
-      com.tencent.e.d.LTw.a(getKey(), this.LVw, this.throwable);
+      com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.throwable);
       continue;
-      if (this.LVn) {
-        LVp.c(this);
+      if (this.Msi) {
+        Msk.c(this);
       }
-      com.tencent.e.d.LTw.a(getKey(), this.LVw, this.LVo, this.time, this.wIM, this.LVv.getName(), this.LVn);
+      com.tencent.e.d.Mqt.a(getKey(), this.Msr, this.Msj, this.time, this.wYx, this.Msq.getName(), this.Msi);
     }
   }
   
@@ -419,7 +419,7 @@ public class k<V>
   {
     AppMethodBeat.i(183384);
     super.setException(paramThrowable);
-    this.LVo = f.LTA;
+    this.Msj = f.Mqx;
     this.throwable = paramThrowable;
     AppMethodBeat.o(183384);
   }

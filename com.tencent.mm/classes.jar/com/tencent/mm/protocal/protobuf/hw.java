@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class hw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String data;
-  public int dqI;
+  public int drN;
   public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -21,7 +21,7 @@ public final class hw
       if (this.data != null) {
         paramVarArgs.d(2, this.data);
       }
-      paramVarArgs.aS(3, this.dqI);
+      paramVarArgs.aS(3, this.drN);
       AppMethodBeat.o(153261);
       return 0;
     }
@@ -37,15 +37,15 @@ public final class hw
       if (this.data != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.data);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.dqI);
+      paramInt = f.a.a.b.b.a.bz(3, this.drN);
       AppMethodBeat.o(153261);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(153261);
@@ -61,15 +61,15 @@ public final class hw
           AppMethodBeat.o(153261);
           return -1;
         case 1: 
-          localhw.username = locala.NPN.readString();
+          localhw.username = locala.OmT.readString();
           AppMethodBeat.o(153261);
           return 0;
         case 2: 
-          localhw.data = locala.NPN.readString();
+          localhw.data = locala.OmT.readString();
           AppMethodBeat.o(153261);
           return 0;
         }
-        localhw.dqI = locala.NPN.zc();
+        localhw.drN = locala.OmT.zc();
         AppMethodBeat.o(153261);
         return 0;
       }

@@ -4,11 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lk;
+import com.tencent.mm.g.a.ll;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class o$a
   extends BroadcastReceiver
@@ -18,31 +18,31 @@ final class o$a
     AppMethodBeat.i(151115);
     try
     {
-      if (g.ajA().aiK())
+      if (g.ajP().aiZ())
       {
-        g.ajA();
-        if (!com.tencent.mm.kernel.a.aiE()) {}
+        g.ajP();
+        if (!com.tencent.mm.kernel.a.aiT()) {}
       }
       else
       {
-        bool = g.ajA().aiK();
-        g.ajA();
-        ad.e("MicroMsg.NetTypeReporter", "onReceive acc not ready .%b %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(com.tencent.mm.kernel.a.aiE()) });
+        bool = g.ajP().aiZ();
+        g.ajP();
+        ae.e("MicroMsg.NetTypeReporter", "onReceive acc not ready .%b %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(com.tencent.mm.kernel.a.aiT()) });
         AppMethodBeat.o(151115);
         return;
       }
-      if ((paramIntent == null) || (bt.isNullOrNil(paramIntent.getAction())))
+      if ((paramIntent == null) || (bu.isNullOrNil(paramIntent.getAction())))
       {
         if (paramIntent == null) {}
         for (paramContext = "intent is null";; paramContext = "action is null")
         {
-          ad.e("MicroMsg.NetTypeReporter", "onReceive %s  ", new Object[] { paramContext });
+          ae.e("MicroMsg.NetTypeReporter", "onReceive %s  ", new Object[] { paramContext });
           AppMethodBeat.o(151115);
           return;
         }
       }
       paramContext = paramIntent.getAction();
-      ad.i("MicroMsg.NetTypeReporter", "onReceive action:%s foreground:%b", new Object[] { paramContext, Boolean.valueOf(b.foreground) });
+      ae.i("MicroMsg.NetTypeReporter", "onReceive action:%s foreground:%b", new Object[] { paramContext, Boolean.valueOf(b.foreground) });
       boolean bool = b.foreground;
       if (!bool)
       {
@@ -58,7 +58,7 @@ final class o$a
     }
     catch (Throwable paramContext)
     {
-      ad.e("MicroMsg.NetTypeReporter", "onReceive : %s", new Object[] { bt.n(paramContext) });
+      ae.e("MicroMsg.NetTypeReporter", "onReceive : %s", new Object[] { bu.o(paramContext) });
       AppMethodBeat.o(151115);
       return;
     }
@@ -89,7 +89,7 @@ final class o$a
     if (paramContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
     {
       o.run(1006);
-      com.tencent.mm.sdk.b.a.IbL.l(new lk());
+      com.tencent.mm.sdk.b.a.IvT.l(new ll());
     }
     AppMethodBeat.o(151115);
   }

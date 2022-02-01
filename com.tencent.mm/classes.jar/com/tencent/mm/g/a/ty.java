@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ty
   extends b
 {
-  public a dIv;
+  public a dJt;
+  public b dJu;
   
   public ty()
   {
@@ -15,21 +16,32 @@ public final class ty
   
   private ty(byte paramByte)
   {
-    AppMethodBeat.i(19836);
-    this.dIv = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125631);
+    this.dJt = new a();
+    this.dJu = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19836);
+    AppMethodBeat.o(125631);
   }
   
   public static final class a
   {
-    public byte[] data;
+    public boolean dJv;
+    public String dJw;
+    public boolean dJx = false;
+    public int type;
+    public String videoPath;
+  }
+  
+  public static final class b
+  {
+    public String dJw;
+    public String dJy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ty
  * JD-Core Version:    0.7.0.1
  */

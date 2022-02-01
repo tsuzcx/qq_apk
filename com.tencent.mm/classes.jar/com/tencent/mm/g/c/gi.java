@@ -11,49 +11,49 @@ public abstract class gi
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIm = "url".hashCode();
-  private static final int eNc = "filePath".hashCode();
-  private static final int eXi = "totalSize".hashCode();
-  private static final int eZd = "cacheSize".hashCode();
-  private static final int ftU = "storyId".hashCode();
+  private static final int fgE = "roomname".hashCode();
+  private static final int fwP = "newStoryList".hashCode();
+  private static final int fwQ = "extbuf".hashCode();
+  private static final int fwR = "nextSyncTime".hashCode();
+  private static final int fwy = "userStoryFlag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eIi = true;
-  private boolean eMU = true;
-  private boolean eWF = true;
-  private boolean eYR = true;
-  public int field_cacheSize;
-  public String field_filePath;
-  public long field_storyId;
-  public int field_totalSize;
-  public String field_url;
-  private boolean ftO = true;
+  private boolean fgt = true;
+  public byte[] field_extbuf;
+  public String field_newStoryList;
+  public long field_nextSyncTime;
+  public String field_roomname;
+  public int field_userStoryFlag;
+  private boolean fwM = true;
+  private boolean fwN = true;
+  private boolean fwO = true;
+  private boolean fwk = true;
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[5];
+    locala.IBL = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "storyId";
-    locala.IhC.put("storyId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" storyId LONG PRIMARY KEY ");
+    locala.columns[0] = "roomname";
+    locala.IBN.put("roomname", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" roomname TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "storyId";
-    locala.columns[1] = "url";
-    locala.IhC.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
+    locala.IBM = "roomname";
+    locala.columns[1] = "userStoryFlag";
+    locala.IBN.put("userStoryFlag", "INTEGER");
+    localStringBuilder.append(" userStoryFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "filePath";
-    locala.IhC.put("filePath", "TEXT");
-    localStringBuilder.append(" filePath TEXT");
+    locala.columns[2] = "newStoryList";
+    locala.IBN.put("newStoryList", "TEXT");
+    localStringBuilder.append(" newStoryList TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "totalSize";
-    locala.IhC.put("totalSize", "INTEGER");
-    localStringBuilder.append(" totalSize INTEGER");
+    locala.columns[3] = "extbuf";
+    locala.IBN.put("extbuf", "BLOB");
+    localStringBuilder.append(" extbuf BLOB");
     localStringBuilder.append(", ");
-    locala.columns[4] = "cacheSize";
-    locala.IhC.put("cacheSize", "INTEGER");
-    localStringBuilder.append(" cacheSize INTEGER");
+    locala.columns[4] = "nextSyncTime";
+    locala.IBN.put("nextSyncTime", "LONG");
+    localStringBuilder.append(" nextSyncTime LONG");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
@@ -72,11 +72,11 @@ public abstract class gi
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ftU != k) {
+      if (fgE != k) {
         break label65;
       }
-      this.field_storyId = paramCursor.getLong(i);
-      this.ftO = true;
+      this.field_roomname = paramCursor.getString(i);
+      this.fgt = true;
     }
     for (;;)
     {
@@ -84,14 +84,14 @@ public abstract class gi
       break label20;
       break;
       label65:
-      if (eIm == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (eNc == k) {
-        this.field_filePath = paramCursor.getString(i);
-      } else if (eXi == k) {
-        this.field_totalSize = paramCursor.getInt(i);
-      } else if (eZd == k) {
-        this.field_cacheSize = paramCursor.getInt(i);
+      if (fwy == k) {
+        this.field_userStoryFlag = paramCursor.getInt(i);
+      } else if (fwP == k) {
+        this.field_newStoryList = paramCursor.getString(i);
+      } else if (fwQ == k) {
+        this.field_extbuf = paramCursor.getBlob(i);
+      } else if (fwR == k) {
+        this.field_nextSyncTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -101,20 +101,23 @@ public abstract class gi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ftO) {
-      localContentValues.put("storyId", Long.valueOf(this.field_storyId));
+    if (this.field_roomname == null) {
+      this.field_roomname = "";
     }
-    if (this.eIi) {
-      localContentValues.put("url", this.field_url);
+    if (this.fgt) {
+      localContentValues.put("roomname", this.field_roomname);
     }
-    if (this.eMU) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.fwk) {
+      localContentValues.put("userStoryFlag", Integer.valueOf(this.field_userStoryFlag));
     }
-    if (this.eWF) {
-      localContentValues.put("totalSize", Integer.valueOf(this.field_totalSize));
+    if (this.fwM) {
+      localContentValues.put("newStoryList", this.field_newStoryList);
     }
-    if (this.eYR) {
-      localContentValues.put("cacheSize", Integer.valueOf(this.field_cacheSize));
+    if (this.fwN) {
+      localContentValues.put("extbuf", this.field_extbuf);
+    }
+    if (this.fwO) {
+      localContentValues.put("nextSyncTime", Long.valueOf(this.field_nextSyncTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -124,7 +127,7 @@ public abstract class gi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.gi
  * JD-Core Version:    0.7.0.1
  */

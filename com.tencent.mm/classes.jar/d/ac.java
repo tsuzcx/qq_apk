@@ -2,18 +2,18 @@ package d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/_Assertions;", "", "()V", "ENABLED", "", "ENABLED$annotations", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/_Assertions;", "", "()V", "ENABLED", "", "ENABLED$annotations", "kotlin-stdlib"})
 public final class ac
 {
-  public static final boolean MKp;
-  public static final ac MKq;
+  public static final boolean Nhs;
+  public static final ac Nht;
   
   static
   {
     AppMethodBeat.i(129581);
     ac localac = new ac();
-    MKq = localac;
-    MKp = localac.getClass().desiredAssertionStatus();
+    Nht = localac;
+    Nhs = localac.getClass().desiredAssertionStatus();
     AppMethodBeat.o(129581);
   }
 }

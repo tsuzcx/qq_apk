@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -17,9 +17,9 @@ public final class ax
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(45492);
-    paramJSONObject = q.aaC();
-    ad.i("MicroMsg.JsApiGetOAID", "getOAID, oaid=".concat(String.valueOf(paramJSONObject)));
-    if (bt.isNullOrNil(paramJSONObject))
+    paramJSONObject = q.aaL();
+    ae.i("MicroMsg.JsApiGetOAID", "getOAID, oaid=".concat(String.valueOf(paramJSONObject)));
+    if (bu.isNullOrNil(paramJSONObject))
     {
       paramc.h(paramInt, e("fail", null));
       AppMethodBeat.o(45492);
@@ -27,7 +27,7 @@ public final class ax
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("result", paramJSONObject);
-    paramc.h(paramInt, m("ok", localHashMap));
+    paramc.h(paramInt, n("ok", localHashMap));
     AppMethodBeat.o(45492);
   }
 }

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.hz;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -69,11 +69,11 @@ public final class o
             }
             paramLinkedList1 = new LinkedList();
             localObject = "SELECT * FROM BackupTempMoveTime WHERE sessionName = \"" + str + "\" ";
-            ad.d("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession:".concat(String.valueOf(localObject)));
+            ae.d("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession:".concat(String.valueOf(localObject)));
             localObject = this.db.rawQuery((String)localObject, null);
             if (localObject == null)
             {
-              ad.e("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession failed, sessionName:%s ", new Object[] { str });
+              ae.e("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession failed, sessionName:%s ", new Object[] { str });
               paramLinkedList1 = null;
             }
             for (;;)
@@ -150,23 +150,23 @@ public final class o
     }
   }
   
-  public final boolean aoy()
+  public final boolean aoN()
   {
     AppMethodBeat.i(32836);
     boolean bool = this.db.execSQL("BackupTempMoveTime", "delete from BackupTempMoveTime");
-    ad.i("MicroMsg.BackupTempMoveTimeStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
+    ae.i("MicroMsg.BackupTempMoveTimeStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(32836);
     return bool;
   }
   
-  public final LinkedList<n> foL()
+  public final LinkedList<n> fsE()
   {
     AppMethodBeat.i(32834);
     LinkedList localLinkedList = new LinkedList();
     Cursor localCursor = getAll();
     if (localCursor == null)
     {
-      ad.e("MicroMsg.BackupTempMoveTimeStorage", "getAllData failed.");
+      ae.e("MicroMsg.BackupTempMoveTimeStorage", "getAllData failed.");
       AppMethodBeat.o(32834);
       return localLinkedList;
     }
@@ -183,7 +183,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.o
  * JD-Core Version:    0.7.0.1
  */

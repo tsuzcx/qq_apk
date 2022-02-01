@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.Comparator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/comparisons/NaturalOrderComparator;", "Ljava/util/Comparator;", "", "", "Lkotlin/Comparator;", "()V", "compare", "", "a", "b", "reversed", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/comparisons/NaturalOrderComparator;", "Ljava/util/Comparator;", "", "", "Lkotlin/Comparator;", "()V", "compare", "", "a", "b", "reversed", "kotlin-stdlib"})
 final class e
   implements Comparator<Comparable<? super Object>>
 {
-  public static final e MKL;
+  public static final e NhO;
   
   static
   {
     AppMethodBeat.i(128998);
-    MKL = new e();
+    NhO = new e();
     AppMethodBeat.o(128998);
   }
   
   public final Comparator<Comparable<Object>> reversed()
   {
-    return (Comparator)f.MKM;
+    return (Comparator)f.NhP;
   }
 }
 

@@ -7,20 +7,20 @@ import java.util.Map.Entry;
 public final class l
   extends m
 {
-  private final q Nrr;
+  private final q NOx;
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(59497);
-    boolean bool = grX().equals(paramObject);
+    boolean bool = gwz().equals(paramObject);
     AppMethodBeat.o(59497);
     return bool;
   }
   
-  public final q grX()
+  public final q gwz()
   {
     AppMethodBeat.i(59495);
-    q localq = d(this.Nrr);
+    q localq = d(this.NOx);
     AppMethodBeat.o(59495);
     return localq;
   }
@@ -28,7 +28,7 @@ public final class l
   public final int hashCode()
   {
     AppMethodBeat.i(59496);
-    int i = grX().hashCode();
+    int i = gwz().hashCode();
     AppMethodBeat.o(59496);
     return i;
   }
@@ -36,7 +36,7 @@ public final class l
   public final String toString()
   {
     AppMethodBeat.i(59498);
-    String str = grX().toString();
+    String str = gwz().toString();
     AppMethodBeat.o(59498);
     return str;
   }
@@ -68,7 +68,7 @@ public final class l
         AppMethodBeat.o(59490);
         return null;
       }
-      localObject = ((l)localObject).grX();
+      localObject = ((l)localObject).gwz();
       AppMethodBeat.o(59490);
       return localObject;
     }
@@ -91,17 +91,17 @@ public final class l
   static final class b<K>
     implements Iterator<Map.Entry<K, Object>>
   {
-    private Iterator<Map.Entry<K, Object>> MKI;
+    private Iterator<Map.Entry<K, Object>> NhL;
     
     public b(Iterator<Map.Entry<K, Object>> paramIterator)
     {
-      this.MKI = paramIterator;
+      this.NhL = paramIterator;
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(59492);
-      boolean bool = this.MKI.hasNext();
+      boolean bool = this.NhL.hasNext();
       AppMethodBeat.o(59492);
       return bool;
     }
@@ -109,14 +109,14 @@ public final class l
     public final void remove()
     {
       AppMethodBeat.i(59493);
-      this.MKI.remove();
+      this.NhL.remove();
       AppMethodBeat.o(59493);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.h.l
  * JD-Core Version:    0.7.0.1
  */

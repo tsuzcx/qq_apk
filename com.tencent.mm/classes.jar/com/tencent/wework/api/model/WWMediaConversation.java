@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaConversation
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] Mot;
-  public WWMediaMessage.WWMediaObject Mou;
+  public byte[] MLp;
+  public WWMediaMessage.WWMediaObject MLq;
   public String name;
-  public String rBN;
-  public long rak;
+  public String rJY;
+  public long riq;
   
   public final boolean checkArgs()
   {
@@ -20,22 +20,22 @@ public class WWMediaConversation
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.Mot != null) && (this.Mot.length > 10485760))
+    if ((this.MLp != null) && (this.MLp.length > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.rBN != null) && (this.rBN.length() > 10240))
+    if ((this.rJY != null) && (this.rJY.length() > 10240))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.rBN != null) && (getFileSize(this.rBN) > 10485760))
+    if ((this.rJY != null) && (getFileSize(this.rJY) > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.Mou != null) && (this.Mou.checkArgs()))
+    if ((this.MLq != null) && (this.MLq.checkArgs()))
     {
       AppMethodBeat.o(106538);
       return true;
@@ -46,21 +46,21 @@ public class WWMediaConversation
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(190355);
+    AppMethodBeat.i(193327);
     super.fromBundle(paramBundle);
     this.name = paramBundle.getString("_wwconvobject_name");
-    this.rak = paramBundle.getLong("_wwconvobject_date");
-    this.Mot = paramBundle.getByteArray("_wwconvobject_avatarData");
-    this.rBN = paramBundle.getString("_wwconvobject_avatarPath");
+    this.riq = paramBundle.getLong("_wwconvobject_date");
+    this.MLp = paramBundle.getByteArray("_wwconvobject_avatarData");
+    this.rJY = paramBundle.getString("_wwconvobject_avatarPath");
     try
     {
-      this.Mou = ((WWMediaMessage.WWMediaObject)BaseMessage.bn(paramBundle.getBundle("_wwconvobject_message")));
-      AppMethodBeat.o(190355);
+      this.MLq = ((WWMediaMessage.WWMediaObject)BaseMessage.bo(paramBundle.getBundle("_wwconvobject_message")));
+      AppMethodBeat.o(193327);
       return;
     }
     catch (Throwable paramBundle)
     {
-      AppMethodBeat.o(190355);
+      AppMethodBeat.o(193327);
     }
   }
   
@@ -69,10 +69,10 @@ public class WWMediaConversation
     AppMethodBeat.i(106539);
     super.toBundle(paramBundle);
     paramBundle.putString("_wwconvobject_name", this.name);
-    paramBundle.putLong("_wwconvobject_date", this.rak);
-    paramBundle.putByteArray("_wwconvobject_avatarData", this.Mot);
-    paramBundle.putString("_wwconvobject_avatarPath", this.rBN);
-    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.Mou));
+    paramBundle.putLong("_wwconvobject_date", this.riq);
+    paramBundle.putByteArray("_wwconvobject_avatarData", this.MLp);
+    paramBundle.putString("_wwconvobject_avatarPath", this.rJY);
+    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.MLq));
     AppMethodBeat.o(106539);
   }
 }

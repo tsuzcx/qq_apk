@@ -1,306 +1,135 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Intent;
-import android.text.TextUtils;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.h;
-import java.util.HashMap;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
+import com.tencent.mm.plugin.appbrand.appstorage.d;
+import com.tencent.mm.plugin.appbrand.appstorage.h;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.plugin.appbrand.appstorage.z;
+import com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiOperateWXData;
+import com.tencent.mm.plugin.appbrand.jsapi.file.at;
+import com.tencent.mm.plugin.appbrand.task.f;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import d.g.b.p;
+import d.l;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/AppBrandFileCleaner;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class g
 {
-  private static final Iterator<g.c> jvZ;
-  private static final Map<String, b> jwa;
-  private static final Map<String, d> jwb;
-  private static final h<String, g.c> jwc;
-  private static final h<String, g.a> jwd;
+  public static final a jyU;
   
   static
   {
-    AppMethodBeat.i(140582);
-    jvZ = new g.1();
-    jwa = new HashMap();
-    jwb = new HashMap();
-    jwc = new h();
-    jwd = new h();
-    AppMethodBeat.o(140582);
+    AppMethodBeat.i(223189);
+    jyU = new a((byte)0);
+    AppMethodBeat.o(223189);
   }
   
-  private static Iterator<g.c> Km(String paramString)
+  public static final void clean()
   {
-    AppMethodBeat.i(140568);
-    paramString = jwc.cE(paramString);
-    if (paramString != null)
+    AppMethodBeat.i(223190);
+    a locala = jyU;
+    long l = bu.HQ();
+    Object localObject1 = j.T(com.tencent.mm.plugin.appbrand.appusage.k.class);
+    p.g(localObject1, "SubCoreAppBrand.getStora…icateStorage::class.java)");
+    Object localObject2 = ((com.tencent.mm.plugin.appbrand.appusage.k)localObject1).bcE();
+    localObject1 = f.bzB();
+    p.g(localObject1, "aliveTaskAppId");
+    ((List)localObject2).removeAll((Collection)localObject1);
+    p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
+    localObject1 = com.tencent.mm.kernel.a.aiF();
+    Object localObject3 = (CharSequence)localObject1;
+    if ((localObject3 == null) || (((CharSequence)localObject3).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramString = paramString.iterator();
-      AppMethodBeat.o(140568);
-      return paramString;
-    }
-    paramString = jvZ;
-    AppMethodBeat.o(140568);
-    return paramString;
-  }
-  
-  public static void Kn(String paramString)
-  {
-    AppMethodBeat.i(140569);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140569);
+      ae.e("MicroMsg.AppBrandFileCleaner", "uin value is invaild");
+      AppMethodBeat.o(223190);
       return;
     }
-    paramString = Km(paramString);
-    while (paramString.hasNext()) {
-      ((g.c)paramString.next()).onCreate();
-    }
-    AppMethodBeat.o(140569);
-  }
-  
-  public static void Ko(String paramString)
-  {
-    AppMethodBeat.i(140570);
-    if (TextUtils.isEmpty(paramString))
+    localObject2 = ((List)localObject2).iterator();
+    for (;;)
     {
-      AppMethodBeat.o(140570);
-      return;
-    }
-    paramString = Km(paramString);
-    while (paramString.hasNext()) {
-      ((g.c)paramString.next()).onDestroy();
-    }
-    AppMethodBeat.o(140570);
-  }
-  
-  public static void Kp(String paramString)
-  {
-    AppMethodBeat.i(187606);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(187606);
-      return;
-    }
-    paramString = Km(paramString);
-    while (paramString.hasNext()) {
-      ((g.c)paramString.next()).aVG();
-    }
-    AppMethodBeat.o(187606);
-  }
-  
-  public static void Kq(String paramString)
-  {
-    AppMethodBeat.i(140571);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140571);
-      return;
-    }
-    Iterator localIterator = Km(paramString);
-    while (localIterator.hasNext()) {
-      ((g.c)localIterator.next()).a(Kv(paramString));
-    }
-    AppMethodBeat.o(140571);
-  }
-  
-  public static void Kr(String paramString)
-  {
-    AppMethodBeat.i(140572);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140572);
-      return;
-    }
-    paramString = Km(paramString);
-    while (paramString.hasNext()) {
-      ((g.c)paramString.next()).onResume();
-    }
-    AppMethodBeat.o(140572);
-  }
-  
-  public static void Ks(String paramString)
-  {
-    AppMethodBeat.i(140573);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140573);
-      return;
-    }
-    paramString = Km(paramString);
-    while (paramString.hasNext()) {
-      paramString.next();
-    }
-    AppMethodBeat.o(140573);
-  }
-  
-  public static void Kt(String paramString)
-  {
-    AppMethodBeat.i(140576);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140576);
-      return;
-    }
-    jwc.cF(paramString);
-    jwd.cF(paramString);
-    AppMethodBeat.o(140576);
-  }
-  
-  public static void Ku(String paramString)
-  {
-    AppMethodBeat.i(140577);
-    a(paramString, d.jwn);
-    AppMethodBeat.o(140577);
-  }
-  
-  public static d Kv(String paramString)
-  {
-    AppMethodBeat.i(140578);
-    paramString = (d)jwb.get(paramString);
-    if (paramString == null)
-    {
-      paramString = d.jwn;
-      AppMethodBeat.o(140578);
-      return paramString;
-    }
-    AppMethodBeat.o(140578);
-    return paramString;
-  }
-  
-  public static b Kw(String paramString)
-  {
-    AppMethodBeat.i(140581);
-    b localb = (b)jwa.get(paramString);
-    paramString = localb;
-    if (localb == null) {
-      paramString = b.jwe;
-    }
-    AppMethodBeat.o(140581);
-    return paramString;
-  }
-  
-  public static void a(String paramString, g.a parama)
-  {
-    AppMethodBeat.i(182832);
-    jwd.j(paramString, parama);
-    AppMethodBeat.o(182832);
-  }
-  
-  public static void a(String paramString, b paramb)
-  {
-    AppMethodBeat.i(140580);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140580);
-      return;
-    }
-    jwa.put(paramString, paramb);
-    AppMethodBeat.o(140580);
-  }
-  
-  public static void a(String paramString, g.c paramc)
-  {
-    AppMethodBeat.i(140567);
-    if ((TextUtils.isEmpty(paramString)) || (paramc == null))
-    {
-      AppMethodBeat.o(140567);
-      return;
-    }
-    jwc.j(paramString, paramc);
-    AppMethodBeat.o(140567);
-  }
-  
-  public static void a(String paramString, d paramd)
-  {
-    AppMethodBeat.i(140579);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(140579);
-      return;
-    }
-    jwb.put(paramString, paramd);
-    AppMethodBeat.o(140579);
-  }
-  
-  public static void b(String paramString, g.a parama)
-  {
-    AppMethodBeat.i(182833);
-    jwd.D(paramString, parama);
-    AppMethodBeat.o(182833);
-  }
-  
-  public static void b(String paramString, g.c paramc)
-  {
-    AppMethodBeat.i(140574);
-    if ((paramc == null) || (TextUtils.isEmpty(paramString)))
-    {
-      AppMethodBeat.o(140574);
-      return;
-    }
-    jwc.D(paramString, paramc);
-    AppMethodBeat.o(140574);
-  }
-  
-  public static boolean b(String paramString, Intent paramIntent)
-  {
-    AppMethodBeat.i(182834);
-    paramString = jwd.cE(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        if (((g.a)paramString.next()).onNewIntent(paramIntent))
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (String)((Iterator)localObject2).next();
+        p.g(localObject3, "appId");
+        try
         {
-          AppMethodBeat.o(182834);
-          return true;
+          localk = new com.tencent.mm.vfs.k(at.bkQ() + (String)localObject3 + "/");
+          n.u(localk);
+          if (localk.exists()) {
+            localk.delete();
+          }
+        }
+        catch (Exception localException3)
+        {
+          try
+          {
+            at.dd((String)localObject1, (String)localObject3).bcb();
+          }
+          catch (Exception localException3)
+          {
+            try
+            {
+              at.dh((String)localObject1, (String)localObject3).bcb();
+            }
+            catch (Exception localException3)
+            {
+              try
+              {
+                for (;;)
+                {
+                  com.tencent.mm.vfs.k localk = new com.tencent.mm.vfs.k(at.bkQ() + (String)localObject3 + "/blobTmp/");
+                  n.u(localk);
+                  if (localk.exists()) {
+                    localk.delete();
+                  }
+                  AppBrandLocalMediaObjectManager.clear((String)localObject3);
+                  j.El().MA((String)localObject3);
+                  ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dl((String)localObject3).MA((String)localObject3);
+                  JsApiOperateWXData.clear((String)localObject3);
+                  break;
+                  localException1 = localException1;
+                  ae.e("MicroMsg.AppBrandFileCleaner", "clean Flatten appId=%s e=%s", new Object[] { localObject3, localException1 });
+                  continue;
+                  localException2 = localException2;
+                  ae.e("MicroMsg.AppBrandFileCleaner", "clean NonFlatten appId=%s e=%s", new Object[] { localObject3, localException2 });
+                  continue;
+                  localException3 = localException3;
+                  ae.e("MicroMsg.AppBrandFileCleaner", "clean SinglePageNotFlatten appId=%s e=%s", new Object[] { localObject3, localException3 });
+                }
+              }
+              catch (Exception localException4)
+              {
+                for (;;)
+                {
+                  ae.e("MicroMsg.AppBrandFileCleaner", "clean flattenBlobPath appId=%s e=%s", new Object[] { localObject3, localException4 });
+                }
+              }
+            }
+          }
         }
       }
     }
-    AppMethodBeat.o(182834);
-    return false;
+    l = bu.aO(l);
+    ae.d("MicroMsg.AppBrandFileCleaner", "%d clean appbrand file costTime[%d]", new Object[] { Integer.valueOf(((a)locala).hashCode()), Long.valueOf(l) });
+    com.tencent.mm.plugin.report.service.g.yxI.n(1508L, 0L, l);
+    com.tencent.mm.plugin.report.service.g.yxI.n(1508L, 1L, 1L);
+    AppMethodBeat.o(223190);
   }
   
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(140563);
-      jwe = new b("INIT", 0);
-      jwf = new b("ON_CREATE", 1);
-      jwg = new b("ON_RESUME", 2);
-      jwh = new b("ON_PAUSE", 3);
-      jwi = new b("ON_STOP", 4);
-      jwj = new b("ON_DESTROY", 5);
-      jwk = new b[] { jwe, jwf, jwg, jwh, jwi, jwj };
-      AppMethodBeat.o(140563);
-    }
-    
-    private b() {}
-  }
-  
-  public static enum d
-  {
-    static
-    {
-      AppMethodBeat.i(140566);
-      jwl = new d("CLOSE", 0);
-      jwm = new d("BACK", 1);
-      jwn = new d("HIDE", 2);
-      jwo = new d("HANG", 3);
-      jwp = new d("HOME_PRESSED", 4);
-      jwq = new d("RECENT_APPS_PRESSED", 5);
-      jwr = new d("LAUNCH_NATIVE_PAGE", 6);
-      jws = new d("LAUNCH_MINI_PROGRAM", 7);
-      jwt = new d[] { jwl, jwm, jwn, jwo, jwp, jwq, jwr, jws };
-      AppMethodBeat.o(140566);
-    }
-    
-    private d() {}
-  }
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/AppBrandFileCleaner$Companion;", "", "()V", "IDKEY_CLEAN_APPBRAND_FILE", "", "TAG", "", "clean", "", "cleanImpl", "uinStr", "appId", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g
  * JD-Core Version:    0.7.0.1
  */

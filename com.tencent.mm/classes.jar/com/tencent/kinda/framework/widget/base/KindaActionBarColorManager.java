@@ -1,7 +1,7 @@
 package com.tencent.kinda.framework.widget.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -81,7 +81,7 @@ public class KindaActionBarColorManager
     AppMethodBeat.i(18826);
     if (paramBaseFragment == null)
     {
-      ad.w("KindaActionBarColorManager", "onRestoreActionBarColor return NO_RESTORE(-1), because baseFragment null.");
+      ae.w("KindaActionBarColorManager", "onRestoreActionBarColor return NO_RESTORE(-1), because baseFragment null.");
       AppMethodBeat.o(18826);
       return -1;
     }
@@ -91,14 +91,14 @@ public class KindaActionBarColorManager
     }
     if (localObject == null)
     {
-      ad.w("KindaActionBarColorManager", "onRestoreActionBarColor return NO_RESTORE(-1), because mColorItemStack empty.");
+      ae.w("KindaActionBarColorManager", "onRestoreActionBarColor return NO_RESTORE(-1), because mColorItemStack empty.");
       AppMethodBeat.o(18826);
       return -1;
     }
     if (paramBaseFragment.equals(((ActionBarColorItem)localObject).baseFragment))
     {
       int i = popTopRestoreColor();
-      ad.i("KindaActionBarColorManager", "onRestoreActionBarColor return " + i + " while the baseFragment at the top of stack.");
+      ae.i("KindaActionBarColorManager", "onRestoreActionBarColor return " + i + " while the baseFragment at the top of stack.");
       AppMethodBeat.o(18826);
       return i;
     }
@@ -110,7 +110,7 @@ public class KindaActionBarColorManager
         localActionBarColorItem.enable = false;
       }
     }
-    ad.i("KindaActionBarColorManager", "onRestoreActionBarColor return NO_RESTORE(-1), Because it's not at the top of stack.");
+    ae.i("KindaActionBarColorManager", "onRestoreActionBarColor return NO_RESTORE(-1), Because it's not at the top of stack.");
     AppMethodBeat.o(18826);
     return -1;
   }
@@ -147,7 +147,7 @@ public class KindaActionBarColorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaActionBarColorManager
  * JD-Core Version:    0.7.0.1
  */

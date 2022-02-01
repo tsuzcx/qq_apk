@@ -1,14 +1,14 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public final class r
 {
-  public static a irp;
+  public static a iuk;
   
   public static abstract interface a
   {
-    public abstract void q(bu parambu);
+    public abstract void q(bv parambv);
   }
 }
 

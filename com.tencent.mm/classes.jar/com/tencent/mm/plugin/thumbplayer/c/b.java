@@ -2,110 +2,110 @@ package com.tencent.mm.plugin.thumbplayer.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.thumbplayer.b.b.h;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/thumbplayer/player/MMTPPlayer;", "Lcom/tencent/thumbplayer/tplayer/TPPlayer;", "Lcom/tencent/mm/plugin/thumbplayer/player/IMMTPPlayer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "threadLooper", "Landroid/os/Looper;", "(Landroid/content/Context;Landroid/os/Looper;)V", "callbackLoop", "(Landroid/content/Context;Landroid/os/Looper;Landroid/os/Looper;)V", "TAG", "", "id", "getId", "()Ljava/lang/String;", "setId", "(Ljava/lang/String;)V", "inInitializing", "", "getInInitializing", "()Z", "setInInitializing", "(Z)V", "inPrepareAsync", "getInPrepareAsync", "setInPrepareAsync", "prepareCostTime", "", "getPrepareCostTime", "()J", "setPrepareCostTime", "(J)V", "startInitializedTimestamp", "getStartInitializedTimestamp", "setStartInitializedTimestamp", "stateChangeListenerProxy", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnStateChangeListener;", "stateListener", "prepareAsync", "", "reset", "resetData", "setDataSource", "pfd", "Landroid/os/ParcelFileDescriptor;", "mediaAsset", "Lcom/tencent/thumbplayer/api/composition/ITPMediaAsset;", "url", "httpHeader", "", "setMediaId", "mediaId", "setOnPlayerStateChangeListener", "listener", "stop", "plugin-thumbplayer_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/thumbplayer/player/MMTPPlayer;", "Lcom/tencent/thumbplayer/tplayer/TPPlayer;", "Lcom/tencent/mm/plugin/thumbplayer/player/IMMTPPlayer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "threadLooper", "Landroid/os/Looper;", "(Landroid/content/Context;Landroid/os/Looper;)V", "callbackLoop", "(Landroid/content/Context;Landroid/os/Looper;Landroid/os/Looper;)V", "TAG", "", "id", "getId", "()Ljava/lang/String;", "setId", "(Ljava/lang/String;)V", "inInitializing", "", "getInInitializing", "()Z", "setInInitializing", "(Z)V", "inPrepareAsync", "getInPrepareAsync", "setInPrepareAsync", "prepareCostTime", "", "getPrepareCostTime", "()J", "setPrepareCostTime", "(J)V", "startInitializedTimestamp", "getStartInitializedTimestamp", "setStartInitializedTimestamp", "stateChangeListenerProxy", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnStateChangeListener;", "stateListener", "prepareAsync", "", "reset", "resetData", "setDataSource", "pfd", "Landroid/os/ParcelFileDescriptor;", "mediaAsset", "Lcom/tencent/thumbplayer/api/composition/ITPMediaAsset;", "url", "httpHeader", "", "setMediaId", "mediaId", "setOnPlayerStateChangeListener", "listener", "stop", "plugin-thumbplayer_release"})
 public final class b
   extends com.tencent.thumbplayer.g.a
   implements a
 {
-  boolean Bqe;
-  long Bqf;
-  boolean Bqg;
-  private b.h Bqh;
-  private b.h Bqi;
+  boolean BHD;
+  long BHE;
+  boolean BHF;
+  private b.h BHG;
+  private b.h BHH;
   private final String TAG;
   String id;
-  long rQy;
+  long rZa;
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(217095);
+    AppMethodBeat.i(211705);
     this.TAG = "MicroMsg.TP.MMTPPlayer";
     this.id = "";
-    this.Bqh = ((b.h)new a(this));
-    super.a(this.Bqh);
-    AppMethodBeat.o(217095);
+    this.BHG = ((b.h)new a(this));
+    super.a(this.BHG);
+    AppMethodBeat.o(211705);
   }
   
-  private final void Zh()
+  private final void Zq()
   {
     this.id = "";
-    this.Bqe = false;
-    this.Bqg = false;
-    this.Bqf = 0L;
-    this.rQy = 0L;
+    this.BHD = false;
+    this.BHF = false;
+    this.BHE = 0L;
+    this.rZa = 0L;
   }
   
   public final void a(b.h paramh)
   {
-    this.Bqi = paramh;
+    this.BHH = paramh;
   }
   
-  public final void aCK(String paramString)
+  public final void aEd(String paramString)
   {
-    AppMethodBeat.i(217090);
+    AppMethodBeat.i(211700);
     p.h(paramString, "mediaId");
     this.id = paramString;
-    AppMethodBeat.o(217090);
+    AppMethodBeat.o(211700);
   }
   
-  public final long eoh()
+  public final long erO()
   {
-    return this.rQy;
+    return this.rZa;
   }
   
   public final void prepareAsync()
   {
-    AppMethodBeat.i(217092);
-    if (!this.Bqg)
+    AppMethodBeat.i(211702);
+    if (!this.BHF)
     {
-      this.Bqg = true;
+      this.BHF = true;
       super.prepareAsync();
-      AppMethodBeat.o(217092);
+      AppMethodBeat.o(211702);
       return;
     }
-    ad.i(this.TAG, "already prepareAsync");
-    AppMethodBeat.o(217092);
+    ae.i(this.TAG, "already prepareAsync");
+    AppMethodBeat.o(211702);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(217094);
+    AppMethodBeat.i(211704);
     super.reset();
-    Zh();
-    AppMethodBeat.o(217094);
+    Zq();
+    AppMethodBeat.o(211704);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(217091);
-    if (!this.Bqe)
+    AppMethodBeat.i(211701);
+    if (!this.BHD)
     {
-      this.Bqe = true;
-      this.Bqf = cf.aCM();
+      this.BHD = true;
+      this.BHE = ch.aDc();
       super.setDataSource(paramString);
-      AppMethodBeat.o(217091);
+      AppMethodBeat.o(211701);
       return;
     }
-    ad.i(this.TAG, "already setDataSource ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(217091);
+    ae.i(this.TAG, "already setDataSource ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(211701);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(217093);
+    AppMethodBeat.i(211703);
     super.stop();
-    Zh();
-    AppMethodBeat.o(217093);
+    Zq();
+    AppMethodBeat.o(211703);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "preState", "", "curState", "onStateChange"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "preState", "", "curState", "onStateChange"})
   static final class a
     implements b.h
   {
@@ -113,35 +113,35 @@ public final class b
     
     public final void fW(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(217089);
-      if (this.Bqj.Bqf > 0L) {
-        ad.i(b.a(this.Bqj), "state from:" + paramInt1 + " to:" + paramInt2 + " cost:" + (cf.aCM() - this.Bqj.Bqf) + " id:" + this.Bqj.id);
+      AppMethodBeat.i(211699);
+      if (this.BHI.BHE > 0L) {
+        ae.i(b.a(this.BHI), "state from:" + paramInt1 + " to:" + paramInt2 + " cost:" + (ch.aDc() - this.BHI.BHE) + " id:" + this.BHI.id);
       }
       switch (paramInt2)
       {
       }
       for (;;)
       {
-        b.h localh = b.b(this.Bqj);
+        b.h localh = b.b(this.BHI);
         if (localh == null) {
           break;
         }
         localh.fW(paramInt1, paramInt2);
-        AppMethodBeat.o(217089);
+        AppMethodBeat.o(211699);
         return;
-        this.Bqj.Bqe = false;
+        this.BHI.BHD = false;
         continue;
-        this.Bqj.Bqg = false;
+        this.BHI.BHF = false;
         continue;
-        this.Bqj.rQy = (cf.aCM() - this.Bqj.Bqf);
+        this.BHI.rZa = (ch.aDc() - this.BHI.BHE);
       }
-      AppMethodBeat.o(217089);
+      AppMethodBeat.o(211699);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public abstract class ProfileTracker
   {
     Validate.sdkInitialized();
     this.receiver = new ProfileBroadcastReceiver(null);
-    this.broadcastManager = d.U(FacebookSdk.getApplicationContext());
+    this.broadcastManager = d.V(FacebookSdk.getApplicationContext());
     startTracking();
   }
   

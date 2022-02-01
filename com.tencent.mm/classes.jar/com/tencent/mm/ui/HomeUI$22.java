@@ -1,9 +1,9 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.aj;
 
 final class HomeUI$22
   implements Runnable
@@ -13,12 +13,12 @@ final class HomeUI$22
   public final void run()
   {
     AppMethodBeat.i(163262);
-    if (ba.ajx())
+    if (bc.ajM())
     {
-      ba.aBQ();
-      ai localai = c.ajl();
-      if (localai != null) {
-        localai.fqc();
+      bc.aCg();
+      aj localaj = c.ajA();
+      if (localaj != null) {
+        localaj.fuc();
       }
     }
     AppMethodBeat.o(163262);

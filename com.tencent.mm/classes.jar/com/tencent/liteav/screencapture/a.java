@@ -48,7 +48,7 @@ public class a
   
   public a(Context paramContext, boolean paramBoolean, a parama)
   {
-    AppMethodBeat.i(187042);
+    AppMethodBeat.i(221171);
     this.b = null;
     this.c = null;
     this.d = null;
@@ -65,51 +65,51 @@ public class a
     {
       public void a()
       {
-        AppMethodBeat.i(187054);
+        AppMethodBeat.i(221183);
         f.a(a.a(a.this), -7001, "录屏停止，可能是被其他应用抢占");
         a.a locala = a.b(a.this);
         a.a(a.this, null);
         if (locala != null) {
           locala.onScreenCaptureStopped(1);
         }
-        AppMethodBeat.o(187054);
+        AppMethodBeat.o(221183);
       }
       
       public void a(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(187055);
+        AppMethodBeat.i(221184);
         if (a.c(a.this))
         {
           a.this.b(paramAnonymousBoolean);
           a.this.b(105, a.d(a.this), a.e(a.this));
         }
-        AppMethodBeat.o(187055);
+        AppMethodBeat.o(221184);
       }
       
       public void a(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        AppMethodBeat.i(187053);
+        AppMethodBeat.i(221182);
         if (paramAnonymousBoolean1)
         {
           a.this.b(106);
-          AppMethodBeat.o(187053);
+          AppMethodBeat.o(221182);
           return;
         }
         a.a(a.this, null);
         f.a(a.a(a.this), -1308, "录屏失败");
-        AppMethodBeat.o(187053);
+        AppMethodBeat.o(221182);
       }
     };
     this.p = new WeakReference(parama);
     this.k = paramContext.getApplicationContext();
     this.a = new Handler(Looper.getMainLooper());
     this.j = paramBoolean;
-    AppMethodBeat.o(187042);
+    AppMethodBeat.o(221171);
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187045);
+    AppMethodBeat.i(221174);
     if (this.j)
     {
       int i1 = ((WindowManager)this.k.getSystemService("window")).getDefaultDisplay().getRotation();
@@ -125,7 +125,7 @@ public class a
     {
       this.m = this.f;
       this.n = this.g;
-      AppMethodBeat.o(187045);
+      AppMethodBeat.o(221174);
       return;
       this.f = paramInt1;
       this.g = paramInt2;
@@ -148,15 +148,15 @@ public class a
   
   private a d()
   {
-    AppMethodBeat.i(187049);
+    AppMethodBeat.i(221178);
     Object localObject = this.p;
     if (localObject != null)
     {
       localObject = (a)((WeakReference)localObject).get();
-      AppMethodBeat.o(187049);
+      AppMethodBeat.o(221178);
       return localObject;
     }
-    AppMethodBeat.o(187049);
+    AppMethodBeat.o(221178);
     return null;
   }
   
@@ -281,10 +281,10 @@ public class a
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187044);
+    AppMethodBeat.i(221173);
     c(paramInt1, paramInt2);
     b(105, paramInt1, paramInt2);
-    AppMethodBeat.o(187044);
+    AppMethodBeat.o(221173);
   }
   
   protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
@@ -356,9 +356,9 @@ public class a
   
   public void a(b paramb)
   {
-    AppMethodBeat.i(187043);
+    AppMethodBeat.i(221172);
     this.d = new WeakReference(paramb);
-    AppMethodBeat.o(187043);
+    AppMethodBeat.o(221172);
   }
   
   public void a(Object paramObject)
@@ -502,7 +502,7 @@ public class a
   
   protected void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187047);
+    AppMethodBeat.i(221176);
     try
     {
       if (this.c != null)
@@ -516,7 +516,7 @@ public class a
     }
     finally
     {
-      AppMethodBeat.o(187047);
+      AppMethodBeat.o(221176);
     }
   }
   
@@ -543,7 +543,7 @@ public class a
   
   protected void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(187048);
+    AppMethodBeat.i(221177);
     if (paramBoolean)
     {
       if (this.f < this.g)
@@ -559,7 +559,7 @@ public class a
       {
         this.n = i1;
         TXCLog.i("TXCScreenCapture", String.format(Locale.ENGLISH, "reset screen capture isPortrait[%b] output size[%d/%d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.m), Integer.valueOf(this.n) }));
-        AppMethodBeat.o(187048);
+        AppMethodBeat.o(221177);
         return;
         i1 = this.g;
         break;
@@ -586,14 +586,14 @@ public class a
   
   protected b c()
   {
-    AppMethodBeat.i(187046);
+    AppMethodBeat.i(221175);
     if (this.d == null)
     {
-      AppMethodBeat.o(187046);
+      AppMethodBeat.o(221175);
       return null;
     }
     b localb = (b)this.d.get();
-    AppMethodBeat.o(187046);
+    AppMethodBeat.o(221175);
     return localb;
   }
   
@@ -629,7 +629,7 @@ public class a
     public b(Looper paramLooper, a parama)
     {
       super();
-      AppMethodBeat.i(187018);
+      AppMethodBeat.i(221147);
       this.a = 0;
       this.b = null;
       this.c = null;
@@ -644,12 +644,12 @@ public class a
       this.l = null;
       this.m = new float[16];
       this.o = true;
-      AppMethodBeat.o(187018);
+      AppMethodBeat.o(221147);
     }
     
     protected void a()
     {
-      AppMethodBeat.i(187021);
+      AppMethodBeat.i(221150);
       if ((this.o) && (this.k != null))
       {
         Bundle localBundle = new Bundle();
@@ -658,12 +658,12 @@ public class a
         a.this.a(0, this.k.d());
       }
       this.o = false;
-      AppMethodBeat.o(187021);
+      AppMethodBeat.o(221150);
     }
     
     protected void a(Message paramMessage)
     {
-      AppMethodBeat.i(187020);
+      AppMethodBeat.i(221149);
       this.i = 0L;
       this.j = 0L;
       if (!b())
@@ -672,12 +672,12 @@ public class a
         a.this.b();
         a.this.a(20000003, null);
       }
-      AppMethodBeat.o(187020);
+      AppMethodBeat.o(221149);
     }
     
     protected void b(Message paramMessage)
     {
-      AppMethodBeat.i(187022);
+      AppMethodBeat.i(221151);
       a.this.i = false;
       paramMessage = a.b(a.this);
       if (paramMessage != null) {
@@ -688,36 +688,36 @@ public class a
         paramMessage.a(a.f(a.this));
       }
       c();
-      AppMethodBeat.o(187022);
+      AppMethodBeat.o(221151);
     }
     
     protected boolean b()
     {
-      AppMethodBeat.i(187025);
+      AppMethodBeat.i(221154);
       TXCLog.i("TXCScreenCapture", String.format("init egl size[%d/%d]", new Object[] { Integer.valueOf(this.e), Integer.valueOf(this.f) }));
       this.k = com.tencent.liteav.basic.d.b.a(null, null, null, this.e, this.f);
       if (this.k == null)
       {
-        AppMethodBeat.o(187025);
+        AppMethodBeat.o(221154);
         return false;
       }
       this.l = new i();
       if (!this.l.a())
       {
-        AppMethodBeat.o(187025);
+        AppMethodBeat.o(221154);
         return false;
       }
       this.l.a(true);
       this.l.a(this.e, this.f);
       this.l.a(l.e, l.a(k.a, false, false));
       e();
-      AppMethodBeat.o(187025);
+      AppMethodBeat.o(221154);
       return true;
     }
     
     protected void c()
     {
-      AppMethodBeat.i(187026);
+      AppMethodBeat.i(221155);
       d();
       if (this.l != null)
       {
@@ -729,29 +729,29 @@ public class a
         this.k.c();
         this.k = null;
       }
-      AppMethodBeat.o(187026);
+      AppMethodBeat.o(221155);
     }
     
     protected void c(Message paramMessage)
     {
-      AppMethodBeat.i(187023);
+      AppMethodBeat.i(221152);
       a.this.a(102, 5L);
       if (!a.this.i)
       {
-        AppMethodBeat.o(187023);
+        AppMethodBeat.o(221152);
         return;
       }
       if (!this.h)
       {
         this.i = 0L;
         this.j = System.nanoTime();
-        AppMethodBeat.o(187023);
+        AppMethodBeat.o(221152);
         return;
       }
       long l1 = System.nanoTime();
       if (l1 < this.j + this.i * 1000L * 1000L * 1000L / this.g)
       {
-        AppMethodBeat.o(187023);
+        AppMethodBeat.o(221152);
         return;
       }
       if (this.j == 0L) {
@@ -763,7 +763,7 @@ public class a
         if ((this.d != null) && (this.b != null)) {
           break;
         }
-        AppMethodBeat.o(187023);
+        AppMethodBeat.o(221152);
         return;
         if (l1 > this.j + 1000000000L)
         {
@@ -779,7 +779,7 @@ public class a
         GLES20.glViewport(0, 0, this.e, this.f);
         int i1 = this.l.b(this.b[0]);
         a.this.a(0, i1, this.e, this.f, TXCTimeUtil.getTimeTick());
-        AppMethodBeat.o(187023);
+        AppMethodBeat.o(221152);
         return;
       }
       catch (Exception paramMessage)
@@ -793,14 +793,14 @@ public class a
     
     protected void d()
     {
-      AppMethodBeat.i(187027);
+      AppMethodBeat.i(221156);
       new e(Looper.getMainLooper()).a(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(187057);
+          AppMethodBeat.i(221186);
           c.a(a.g(a.this)).a(a.b.this.c);
-          AppMethodBeat.o(187057);
+          AppMethodBeat.o(221186);
         }
       });
       if (this.c != null)
@@ -820,7 +820,7 @@ public class a
         GLES20.glDeleteTextures(1, this.b, 0);
         this.b = null;
       }
-      AppMethodBeat.o(187027);
+      AppMethodBeat.o(221156);
     }
     
     protected void d(Message paramMessage)
@@ -840,13 +840,13 @@ public class a
     
     protected void e()
     {
-      AppMethodBeat.i(187028);
+      AppMethodBeat.i(221157);
       this.b = new int[1];
       this.b[0] = j.b();
       if (this.b[0] <= 0)
       {
         this.b = null;
-        AppMethodBeat.o(187028);
+        AppMethodBeat.o(221157);
         return;
       }
       this.d = new SurfaceTexture(this.b[0]);
@@ -856,39 +856,39 @@ public class a
       {
         public void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
         {
-          AppMethodBeat.i(187052);
+          AppMethodBeat.i(221181);
           a.this.a(104, new Runnable()
           {
             public void run()
             {
-              AppMethodBeat.i(187041);
+              AppMethodBeat.i(221170);
               a.b.this.h = true;
               a.this.b(102);
-              AppMethodBeat.o(187041);
+              AppMethodBeat.o(221170);
             }
           });
           paramAnonymousSurfaceTexture.setOnFrameAvailableListener(null);
-          AppMethodBeat.o(187052);
+          AppMethodBeat.o(221181);
         }
       });
       new Handler(Looper.getMainLooper()).post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(187058);
+          AppMethodBeat.i(221187);
           c.a(a.g(a.this)).a(a.b.this.c, a.b.this.e, a.b.this.f, a.h(a.this));
-          AppMethodBeat.o(187058);
+          AppMethodBeat.o(221187);
         }
       });
-      AppMethodBeat.o(187028);
+      AppMethodBeat.o(221157);
     }
     
     protected void e(Message paramMessage)
     {
-      AppMethodBeat.i(187024);
+      AppMethodBeat.i(221153);
       if (paramMessage == null)
       {
-        AppMethodBeat.o(187024);
+        AppMethodBeat.o(221153);
         return;
       }
       this.e = paramMessage.arg1;
@@ -897,20 +897,20 @@ public class a
       this.l.a(this.e, this.f);
       e();
       TXCLog.i("TXCScreenCapture", String.format("set screen capture size[%d/%d]", new Object[] { Integer.valueOf(a.d(a.this)), Integer.valueOf(a.e(a.this)) }));
-      AppMethodBeat.o(187024);
+      AppMethodBeat.o(221153);
     }
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(187019);
+      AppMethodBeat.i(221148);
       if (paramMessage == null)
       {
-        AppMethodBeat.o(187019);
+        AppMethodBeat.o(221148);
         return;
       }
       if ((this.a != a.this.e) && (101 != paramMessage.what))
       {
-        AppMethodBeat.o(187019);
+        AppMethodBeat.o(221148);
         return;
       }
       switch (paramMessage.what)
@@ -921,7 +921,7 @@ public class a
         if ((paramMessage != null) && (paramMessage.obj != null)) {
           ((Runnable)paramMessage.obj).run();
         }
-        AppMethodBeat.o(187019);
+        AppMethodBeat.o(221148);
         return;
         a(paramMessage);
         continue;

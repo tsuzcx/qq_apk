@@ -5,55 +5,55 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void Bv(int paramInt);
+  public abstract void BH(int paramInt);
   
-  public abstract void Bw(int paramInt);
+  public abstract void BI(int paramInt);
   
-  public abstract void Bx(int paramInt);
+  public abstract void BJ(int paramInt);
   
-  public abstract void By(int paramInt);
+  public abstract void BK(int paramInt);
   
-  public abstract void O(int paramInt, long paramLong);
+  public abstract void N(int paramInt, long paramLong);
   
   public abstract void a(WXRTEditText paramWXRTEditText);
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract int cdA();
+  public abstract void ceF();
   
-  public abstract boolean cdB();
+  public abstract void ceG();
   
-  public abstract RecyclerView cdC();
+  public abstract void ceH();
   
-  public abstract void cdP();
+  public abstract void ceI();
   
-  public abstract void cdq();
+  public abstract void ceJ();
   
-  public abstract void cdr();
+  public abstract void ceK();
   
-  public abstract void cds();
+  public abstract void ceL();
   
-  public abstract void cdt();
+  public abstract void ceM();
   
-  public abstract void cdu();
+  public abstract void ceN();
   
-  public abstract void cdv();
+  public abstract int ceO();
   
-  public abstract void cdw();
+  public abstract int ceP();
   
-  public abstract void cdx();
+  public abstract boolean ceQ();
   
-  public abstract void cdy();
+  public abstract RecyclerView ceR();
   
-  public abstract int cdz();
+  public abstract void cfe();
   
   public abstract void e(boolean paramBoolean, long paramLong);
-  
-  public abstract void fc(int paramInt1, int paramInt2);
   
   public abstract void fd(int paramInt1, int paramInt2);
   
   public abstract void fe(int paramInt1, int paramInt2);
+  
+  public abstract void ff(int paramInt1, int paramInt2);
 }
 
 

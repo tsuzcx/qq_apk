@@ -1,0 +1,22 @@
+package com.tencent.mm.app;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jx;
+import com.tencent.mm.sdk.b.c;
+
+final class WorkerProfile$16
+  extends c<jx>
+{
+  WorkerProfile$16(WorkerProfile paramWorkerProfile)
+  {
+    AppMethodBeat.i(161245);
+    this.__eventId = jx.class.getName().hashCode();
+    AppMethodBeat.o(161245);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.app.WorkerProfile.16
+ * JD-Core Version:    0.7.0.1
+ */

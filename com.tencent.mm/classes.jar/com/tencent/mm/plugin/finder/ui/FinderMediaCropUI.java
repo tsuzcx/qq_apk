@@ -26,7 +26,6 @@ import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.v;
-import android.util.AttributeSet;
 import android.util.LongSparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,10 +35,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
-import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.model.MediaSelectedData;
@@ -53,13 +49,13 @@ import com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout.b;
 import com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout.c;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.as;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
+import d.g;
 import d.g.a.m;
 import d.g.b.q;
 import d.g.b.y.d;
@@ -73,90 +69,90 @@ import java.util.Iterator;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(3)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "actionBarLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getActionBarLayout", "()Landroid/view/View;", "actionBarLayout$delegate", "Lkotlin/Lazy;", "calculateCallback", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "getCalculateCallback", "()Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "cropLayout", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "getCropLayout", "()Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "cropLayout$delegate", "editBtn", "getEditBtn", "editBtn$delegate", "footer", "getFooter", "footer$delegate", "hasDestroyVideoView", "", "getHasDestroyVideoView", "()Z", "setHasDestroyVideoView", "(Z)V", "isFromAppBrand", "isFromAppBrand$delegate", "isPreviewTvChange", "isSwitchNormalMode", "mediaExtraMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$MediaExtra;", "mediaTailor", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor;", "value", "", "previewId", "setPreviewId", "(J)V", "previewNumTv", "Landroid/widget/TextView;", "getPreviewNumTv", "()Landroid/widget/TextView;", "previewNumTv$delegate", "previewRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getPreviewRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "previewRecyclerView$delegate", "processDialogRunnable", "Ljava/lang/Runnable;", "selectPathList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "getSelectPathList", "()Ljava/util/ArrayList;", "selectPathList$delegate", "switchVLogCheckbox", "Landroid/widget/CheckBox;", "getSwitchVLogCheckbox", "()Landroid/widget/CheckBox;", "switchVLogCheckbox$delegate", "switchVLogLayout", "getSwitchVLogLayout", "switchVLogLayout$delegate", "tipDialog", "Landroid/app/Dialog;", "vLogCropRect", "Landroid/graphics/Rect;", "vlogVideoPath", "getVlogVideoPath", "()Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "setVlogVideoPath", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;)V", "canEnableMultiImage", "checkCropInfo", "", "type", "", "path", "", "matrix", "Landroid/graphics/Matrix;", "cropRect", "contentRect", "viewRect", "position", "initCropRect", "checkIsAllImage", "defaultPreview", "getDefaultVideoVisibilityRect", "Landroid/graphics/RectF;", "getDefaultVisibilityRect", "getForceOrientation", "getLayoutId", "getMenuText", "initView", "isInVLogMode", "noActionBar", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinish", "onGenerateMedia", "selectedMedias", "", "callback", "Lkotlin/Function2;", "Lcom/tencent/mm/plugin/finder/model/MediaSelectedData;", "Lkotlin/ParameterName;", "name", "generateList", "isSuccessfully", "onPause", "onPreviewItem", "view", "item", "onResume", "reloadVLogFake", "setWindowStyle", "showProcessDialog", "delay", "updateOptionMenu", "Companion", "FooterPreviewAdapter", "ItemTouchHelperCallback", "MediaExtra", "PreviewItemView", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "actionBarLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getActionBarLayout", "()Landroid/view/View;", "actionBarLayout$delegate", "Lkotlin/Lazy;", "calculateCallback", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "getCalculateCallback", "()Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "cropLayout", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "getCropLayout", "()Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "cropLayout$delegate", "editBtn", "getEditBtn", "editBtn$delegate", "footer", "getFooter", "footer$delegate", "hasDestroyVideoView", "", "getHasDestroyVideoView", "()Z", "setHasDestroyVideoView", "(Z)V", "isFromAppBrand", "isFromAppBrand$delegate", "isPreviewTvChange", "isSwitchNormalMode", "mediaExtraMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$MediaExtra;", "mediaTailor", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor;", "value", "", "previewId", "setPreviewId", "(J)V", "previewNumTv", "Landroid/widget/TextView;", "getPreviewNumTv", "()Landroid/widget/TextView;", "previewNumTv$delegate", "previewRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getPreviewRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "previewRecyclerView$delegate", "processDialogRunnable", "Ljava/lang/Runnable;", "selectPathList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "getSelectPathList", "()Ljava/util/ArrayList;", "selectPathList$delegate", "switchVLogCheckbox", "Landroid/widget/CheckBox;", "getSwitchVLogCheckbox", "()Landroid/widget/CheckBox;", "switchVLogCheckbox$delegate", "switchVLogLayout", "getSwitchVLogLayout", "switchVLogLayout$delegate", "tipDialog", "Landroid/app/Dialog;", "vLogCropRect", "Landroid/graphics/Rect;", "vlogVideoPath", "getVlogVideoPath", "()Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "setVlogVideoPath", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;)V", "canEnableMultiImage", "checkCropInfo", "", "type", "", "path", "", "matrix", "Landroid/graphics/Matrix;", "cropRect", "contentRect", "viewRect", "position", "initCropRect", "checkIsAllImage", "defaultPreview", "getDefaultVideoVisibilityRect", "Landroid/graphics/RectF;", "getDefaultVisibilityRect", "getForceOrientation", "getLayoutId", "getMenuText", "initView", "isInVLogMode", "noActionBar", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinish", "onGenerateMedia", "selectedMedias", "", "callback", "Lkotlin/Function2;", "Lcom/tencent/mm/plugin/finder/model/MediaSelectedData;", "Lkotlin/ParameterName;", "name", "generateList", "isSuccessfully", "onPause", "onPreviewItem", "view", "item", "onResume", "reloadVLogFake", "setWindowStyle", "showProcessDialog", "delay", "updateOptionMenu", "Companion", "FooterPreviewAdapter", "ItemTouchHelperCallback", "MediaExtra", "PreviewItemView", "plugin-finder_release"})
 public final class FinderMediaCropUI
   extends MMFinderUI
 {
-  public static final FinderMediaCropUI.a sDs;
+  public static final FinderMediaCropUI.a sOr;
   private HashMap _$_findViewCache;
-  private final Runnable sCi;
-  private final LongSparseArray<FinderMediaCropUI.d> sDa;
-  private final d.f sDb;
-  GalleryItem.MediaItem sDc;
-  private final d.f sDd;
-  private final d.f sDe;
-  private final d.f sDf;
-  private final d.f sDg;
-  private final d.f sDh;
-  private final d.f sDi;
-  private final d.f sDj;
-  private final d.f sDk;
-  final d.f sDl;
-  boolean sDm;
-  private final WxMediaCropLayout.c sDn;
-  private long sDo;
-  private boolean sDp;
-  private boolean sDq;
-  private com.tencent.mm.plugin.gallery.picker.b.b sDr;
+  private final LongSparseArray<FinderMediaCropUI.d> sNZ;
+  private final Runnable sNh;
+  private final d.f sOa;
+  GalleryItem.MediaItem sOb;
+  private final d.f sOc;
+  private final d.f sOd;
+  private final d.f sOe;
+  private final d.f sOf;
+  private final d.f sOg;
+  private final d.f sOh;
+  private final d.f sOi;
+  private final d.f sOj;
+  final d.f sOk;
+  boolean sOl;
+  private final WxMediaCropLayout.c sOm;
+  private long sOn;
+  private boolean sOo;
+  private boolean sOp;
+  private com.tencent.mm.plugin.gallery.picker.b.b sOq;
   private Dialog tipDialog;
   
   static
   {
     AppMethodBeat.i(167382);
-    sDs = new FinderMediaCropUI.a((byte)0);
+    sOr = new FinderMediaCropUI.a((byte)0);
     AppMethodBeat.o(167382);
   }
   
   public FinderMediaCropUI()
   {
     AppMethodBeat.i(167398);
-    this.sDa = new LongSparseArray();
-    this.sDb = d.g.O((d.g.a.a)new ac(this));
-    this.sDd = d.g.O((d.g.a.a)new g(this));
-    this.sDe = d.g.O((d.g.a.a)new e(this));
-    this.sDf = d.g.O((d.g.a.a)new aa(this));
-    this.sDg = d.g.O((d.g.a.a)new k(this));
-    this.sDh = d.g.O((d.g.a.a)new z(this));
-    this.sDi = d.g.O((d.g.a.a)new j(this));
-    this.sDj = d.g.O((d.g.a.a)new ae(this));
-    this.sDk = d.g.O((d.g.a.a)new ad(this));
-    this.sDl = d.g.O((d.g.a.a)new s(this));
-    this.sDn = ((WxMediaCropLayout.c)new f(this));
-    this.sCi = ((Runnable)new ab(this));
+    this.sNZ = new LongSparseArray();
+    this.sOa = g.O((d.g.a.a)new ac(this));
+    this.sOc = g.O((d.g.a.a)new g(this));
+    this.sOd = g.O((d.g.a.a)new e(this));
+    this.sOe = g.O((d.g.a.a)new aa(this));
+    this.sOf = g.O((d.g.a.a)new k(this));
+    this.sOg = g.O((d.g.a.a)new z(this));
+    this.sOh = g.O((d.g.a.a)new j(this));
+    this.sOi = g.O((d.g.a.a)new ae(this));
+    this.sOj = g.O((d.g.a.a)new ad(this));
+    this.sOk = g.O((d.g.a.a)new s(this));
+    this.sOm = ((WxMediaCropLayout.c)new f(this));
+    this.sNh = ((Runnable)new ab(this));
     AppMethodBeat.o(167398);
   }
   
   private final void a(List<? extends GalleryItem.MediaItem> paramList, final m<? super List<? extends MediaSelectedData>, ? super Boolean, z> paramm)
   {
     AppMethodBeat.i(167396);
-    aq.o(this.sCi, 300L);
+    ar.o(this.sNh, 300L);
     final y.d locald = new y.d();
-    locald.MLT = ((Collection)paramList).size();
+    locald.NiW = ((Collection)paramList).size();
     final ArrayList localArrayList = new ArrayList(9);
     final y.f localf = new y.f();
-    localf.MLV = new Rect();
+    localf.NiY = new Rect();
     paramList = ((Iterable)paramList).iterator();
     final int i = 0;
     if (paramList.hasNext())
     {
       Object localObject1 = paramList.next();
       if (i < 0) {
-        d.a.j.gfB();
+        d.a.j.gkd();
       }
       localObject1 = (GalleryItem.MediaItem)localObject1;
       localArrayList.add(new MediaSelectedData(-1));
-      Object localObject2 = (FinderMediaCropUI.d)this.sDa.get(((GalleryItem.MediaItem)localObject1).tGV);
-      String str = ((GalleryItem.MediaItem)localObject1).tGS;
-      Matrix localMatrix = new Matrix(((FinderMediaCropUI.d)localObject2).sDC.cVM());
-      Rect localRect1 = new Rect(((FinderMediaCropUI.d)localObject2).sDC.hmm);
-      Rect localRect2 = new Rect(((FinderMediaCropUI.d)localObject2).sDC.pZj);
-      localObject2 = new Rect(((FinderMediaCropUI.d)localObject2).sDC.viewRect);
+      Object localObject2 = (FinderMediaCropUI.d)this.sNZ.get(((GalleryItem.MediaItem)localObject1).tRM);
+      String str = ((GalleryItem.MediaItem)localObject1).tRJ;
+      Matrix localMatrix = new Matrix(((FinderMediaCropUI.d)localObject2).sOB.cYr());
+      Rect localRect1 = new Rect(((FinderMediaCropUI.d)localObject2).sOB.hpa);
+      Rect localRect2 = new Rect(((FinderMediaCropUI.d)localObject2).sOB.qfO);
+      localObject2 = new Rect(((FinderMediaCropUI.d)localObject2).sOB.viewRect);
       if (i == 0) {
-        ((Rect)localf.MLV).set(localRect1);
+        ((Rect)localf.NiY).set(localRect1);
       }
       int j = ((GalleryItem.MediaItem)localObject1).getType();
       d.g.b.p.g(str, "path");
-      Object localObject3 = (Rect)localf.MLV;
+      Object localObject3 = (Rect)localf.NiY;
       Object localObject4;
       Object localObject5;
       Object localObject6;
@@ -169,47 +165,47 @@ public final class FinderMediaCropUI
         if (j != 2) {
           break label723;
         }
-        localObject6 = c.tQu;
-        localObject6 = c.aiV(str);
+        localObject6 = c.ubl;
+        localObject6 = c.ajS(str);
         CropLayout.a((CropLayout)localObject4, (View)localObject5, ((com.tencent.mm.plugin.sight.base.a)localObject6).width, ((com.tencent.mm.plugin.sight.base.a)localObject6).height, null, null, null, 56);
         ((Rect)localObject2).set(0, 0, ((com.tencent.mm.plugin.sight.base.a)localObject6).width, ((com.tencent.mm.plugin.sight.base.a)localObject6).height);
         ((View)localObject5).setRight(((com.tencent.mm.plugin.sight.base.a)localObject6).width);
         ((View)localObject5).setBottom(((com.tencent.mm.plugin.sight.base.a)localObject6).height);
         label399:
-        ad.i("Finder.MediaCropUI", "[checkCropInfo] need to set default CropInfo. type=" + j + " position=" + i + " viewRect=" + localObject2 + " contentRect=" + localRect2 + " cropRect=" + localRect1);
+        ae.i("Finder.MediaCropUI", "[checkCropInfo] need to set default CropInfo. type=" + j + " position=" + i + " viewRect=" + localObject2 + " contentRect=" + localRect2 + " cropRect=" + localRect1);
         ((CropLayout)localObject4).getVisibilityRect().set((Rect)localObject3);
-        localObject5 = cJP();
+        localObject5 = cMs();
         d.g.b.p.g(localObject5, "cropLayout");
         j = ((WxMediaCropLayout)localObject5).getLeft();
-        localObject5 = cJP();
+        localObject5 = cMs();
         d.g.b.p.g(localObject5, "cropLayout");
         int k = ((WxMediaCropLayout)localObject5).getTop();
-        localObject5 = cJP();
+        localObject5 = cMs();
         d.g.b.p.g(localObject5, "cropLayout");
         int m = ((WxMediaCropLayout)localObject5).getRight();
-        localObject5 = cJP();
+        localObject5 = cMs();
         d.g.b.p.g(localObject5, "cropLayout");
         ((CropLayout)localObject4).e(true, j, k, m, ((WxMediaCropLayout)localObject5).getBottom());
         localMatrix.set(((CropLayout)localObject4).getMainMatrix());
         if (!((Rect)localObject3).isEmpty()) {
           break label792;
         }
-        cJI().round(localRect1);
+        cMl().round(localRect1);
       }
       for (;;)
       {
         localRect2.set(((CropLayout)localObject4).getContentRect());
-        ad.i("Finder.MediaCropUI", "onGenerateMedia, cropRect:" + localRect1 + ", contentRect:" + localRect1 + ", viewRect:" + localObject2);
+        ae.i("Finder.MediaCropUI", "onGenerateMedia, cropRect:" + localRect1 + ", contentRect:" + localRect1 + ", viewRect:" + localObject2);
         j = ((GalleryItem.MediaItem)localObject1).getType();
-        localObject3 = this.sDr;
+        localObject3 = this.sOq;
         if (localObject3 == null) {
-          d.g.b.p.bcb("mediaTailor");
+          d.g.b.p.bdF("mediaTailor");
         }
         com.tencent.mm.plugin.gallery.picker.b.b.a((com.tencent.mm.plugin.gallery.picker.b.b)localObject3, str, j, localMatrix, localRect1, localRect2, (Rect)localObject2, i, (m)new y((GalleryItem.MediaItem)localObject1, i, this, localArrayList, localf, paramm, locald));
         i += 1;
         break;
         label723:
-        localObject6 = com.tencent.mm.sdk.platformtools.g.aQc(str);
+        localObject6 = com.tencent.mm.sdk.platformtools.h.aRz(str);
         CropLayout.a((CropLayout)localObject4, (View)localObject5, ((BitmapFactory.Options)localObject6).outWidth, ((BitmapFactory.Options)localObject6).outHeight, null, null, null, 56);
         ((Rect)localObject2).set(0, 0, ((BitmapFactory.Options)localObject6).outWidth, ((BitmapFactory.Options)localObject6).outHeight);
         ((View)localObject5).setRight(((BitmapFactory.Options)localObject6).outWidth);
@@ -222,7 +218,40 @@ public final class FinderMediaCropUI
     AppMethodBeat.o(167396);
   }
   
-  private final RectF cJI()
+  private final boolean cMA()
+  {
+    AppMethodBeat.i(204627);
+    Object localObject = cMr();
+    if (localObject != null) {}
+    for (localObject = Integer.valueOf(((ArrayList)localObject).size());; localObject = null)
+    {
+      if (localObject == null) {
+        d.g.b.p.gkB();
+      }
+      if (((Integer)localObject).intValue() > 1) {
+        break;
+      }
+      AppMethodBeat.o(204627);
+      return false;
+    }
+    localObject = cMr();
+    d.g.b.p.g(localObject, "selectPathList");
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)((Iterator)localObject).next();
+      d.g.b.p.g(localMediaItem, "it");
+      if (localMediaItem.getType() == 2)
+      {
+        AppMethodBeat.o(204627);
+        return false;
+      }
+    }
+    AppMethodBeat.o(204627);
+    return true;
+  }
+  
+  private final RectF cMl()
   {
     AppMethodBeat.i(167392);
     Object localObject = getContext();
@@ -231,46 +260,46 @@ public final class FinderMediaCropUI
     localObject = getContext();
     d.g.b.p.g(localObject, "context");
     float f3 = ((AppCompatActivity)localObject).getResources().getDimension(2131165298);
-    localObject = cJP();
+    localObject = cMs();
     d.g.b.p.g(localObject, "cropLayout");
     float f1 = ((WxMediaCropLayout)localObject).getWidth() * 3.5F / 3.0F;
-    localObject = cJP();
+    localObject = cMs();
     d.g.b.p.g(localObject, "cropLayout");
     int i = ((WxMediaCropLayout)localObject).getHeight();
-    localObject = cJS();
+    localObject = cMv();
     d.g.b.p.g(localObject, "footer");
-    f2 = f2 + f3 + (i - ((View)localObject).getHeight() - f2 - f3 - as.ej(getBaseContext()) - f1) / 2.0F;
-    localObject = cJP();
+    f2 = f2 + f3 + (i - ((View)localObject).getHeight() - f2 - f3 - as.en(getBaseContext()) - f1) / 2.0F;
+    localObject = cMs();
     d.g.b.p.g(localObject, "cropLayout");
     f3 = ((WxMediaCropLayout)localObject).getLeft();
-    localObject = cJP();
+    localObject = cMs();
     d.g.b.p.g(localObject, "cropLayout");
     localObject = new RectF(f3, f2, ((WxMediaCropLayout)localObject).getRight(), f1 + f2);
     AppMethodBeat.o(167392);
     return localObject;
   }
   
-  private TextView cJT()
+  private TextView cMw()
   {
     AppMethodBeat.i(167388);
-    TextView localTextView = (TextView)this.sDh.getValue();
+    TextView localTextView = (TextView)this.sOg.getValue();
     AppMethodBeat.o(167388);
     return localTextView;
   }
   
-  private View cJU()
+  private View cMx()
   {
-    AppMethodBeat.i(204028);
-    View localView = (View)this.sDj.getValue();
-    AppMethodBeat.o(204028);
+    AppMethodBeat.i(204624);
+    View localView = (View)this.sOi.getValue();
+    AppMethodBeat.o(204624);
     return localView;
   }
   
-  private final void cJW()
+  private final void cMz()
   {
     AppMethodBeat.i(167390);
     TextView localTextView = (TextView)findViewById(2131296376);
-    Object localObject1 = cJO();
+    Object localObject1 = cMr();
     d.g.b.p.g(localObject1, "selectPathList");
     Object localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList();
@@ -281,7 +310,7 @@ public final class FinderMediaCropUI
     {
       localObject3 = ((Iterator)localObject2).next();
       GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)localObject3;
-      if (((FinderMediaCropUI.d)this.sDa.get(localMediaItem.tGV)).sDD != -1) {}
+      if (((FinderMediaCropUI.d)this.sNZ.get(localMediaItem.tRM)).sOC != -1) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -299,7 +328,7 @@ public final class FinderMediaCropUI
       d.g.b.p.g(localObject2, "context");
       localObject1 = ((AppCompatActivity)localObject2).getResources().getString(2131755779) + '(' + i + ')';
       localTextView.setText((CharSequence)localObject1);
-      localObject1 = cJO();
+      localObject1 = cMr();
       d.g.b.p.g(localObject1, "selectPathList");
       localObject2 = ((Iterable)localObject1).iterator();
       label228:
@@ -308,7 +337,7 @@ public final class FinderMediaCropUI
       }
       localObject1 = ((Iterator)localObject2).next();
       localObject3 = (GalleryItem.MediaItem)localObject1;
-      if (((FinderMediaCropUI.d)this.sDa.get(((GalleryItem.MediaItem)localObject3).tGV)).sDD == -1) {
+      if (((FinderMediaCropUI.d)this.sNZ.get(((GalleryItem.MediaItem)localObject3).tRM)).sOC == -1) {
         break label332;
       }
       i = 1;
@@ -343,42 +372,9 @@ public final class FinderMediaCropUI
     }
   }
   
-  private final boolean cJX()
-  {
-    AppMethodBeat.i(204031);
-    Object localObject = cJO();
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((ArrayList)localObject).size());; localObject = null)
-    {
-      if (localObject == null) {
-        d.g.b.p.gfZ();
-      }
-      if (((Integer)localObject).intValue() > 1) {
-        break;
-      }
-      AppMethodBeat.o(204031);
-      return false;
-    }
-    localObject = cJO();
-    d.g.b.p.g(localObject, "selectPathList");
-    localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)((Iterator)localObject).next();
-      d.g.b.p.g(localMediaItem, "it");
-      if (localMediaItem.getType() == 2)
-      {
-        AppMethodBeat.o(204031);
-        return false;
-      }
-    }
-    AppMethodBeat.o(204031);
-    return true;
-  }
-  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204033);
+    AppMethodBeat.i(204629);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -389,30 +385,30 @@ public final class FinderMediaCropUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204033);
+    AppMethodBeat.o(204629);
     return localView1;
   }
   
   public final void a(int paramInt, View paramView, GalleryItem.MediaItem paramMediaItem)
   {
-    AppMethodBeat.i(204030);
+    AppMethodBeat.i(204626);
     d.g.b.p.h(paramView, "view");
     d.g.b.p.h(paramMediaItem, "item");
     if (paramView.getTag() != null)
     {
-      ad.w("Finder.MediaCropUI", "this view is Animating");
-      AppMethodBeat.o(204030);
+      ae.w("Finder.MediaCropUI", "this view is Animating");
+      AppMethodBeat.o(204626);
       return;
     }
-    Object localObject1 = cJR().m(this.sDo);
+    Object localObject1 = cMu().m(this.sOn);
     if (localObject1 != null)
     {
       localObject1 = ((RecyclerView.w)localObject1).auu;
       d.g.b.p.g(localObject1, "preHolder.itemView");
       ((View)localObject1).setFocusable(false);
     }
-    this.sDo = paramMediaItem.tGV;
-    localObject1 = cJO();
+    this.sOn = paramMediaItem.tRM;
+    localObject1 = cMr();
     d.g.b.p.g(localObject1, "selectPathList");
     localObject1 = (List)localObject1;
     int i = 0;
@@ -426,7 +422,7 @@ public final class FinderMediaCropUI
     label336:
     boolean bool;
     if (((Iterator)localObject1).hasNext()) {
-      if (((GalleryItem.MediaItem)((Iterator)localObject1).next()).tGV == this.sDo)
+      if (((GalleryItem.MediaItem)((Iterator)localObject1).next()).tRM == this.sOn)
       {
         j = 1;
         if (j == 0) {
@@ -434,46 +430,46 @@ public final class FinderMediaCropUI
         }
         if (i >= 0)
         {
-          cJO().get(i);
-          if (((FinderMediaCropUI.d)this.sDa.get(this.sDo)).sDD != -1) {
+          cMr().get(i);
+          if (((FinderMediaCropUI.d)this.sNZ.get(this.sOn)).sOC != -1) {
             break label471;
           }
-          localObject1 = cJT();
+          localObject1 = cMw();
           d.g.b.p.g(localObject1, "previewNumTv");
           ((TextView)localObject1).setText((CharSequence)"");
-          localObject1 = cJT();
+          localObject1 = cMw();
           d.g.b.p.g(localObject1, "previewNumTv");
           localObject2 = getContext();
           d.g.b.p.g(localObject2, "context");
           ((TextView)localObject1).setBackground(((AppCompatActivity)localObject2).getResources().getDrawable(2131233512));
         }
         paramView.setFocusable(true);
-        paramView = cJR();
+        paramView = cMu();
         d.g.b.p.g(paramView, "previewRecyclerView");
         paramView = paramView.getAdapter();
         if (paramView != null) {
           paramView.b(paramInt, new Object());
         }
         if (paramInt == 0) {
-          cJP().setLockCropMediaId(paramMediaItem.tGV);
+          cMs().setLockCropMediaId(paramMediaItem.tRM);
         }
-        l = paramMediaItem.tGV;
+        l = paramMediaItem.tRM;
         if (paramMediaItem.getType() != 2) {
           break label547;
         }
         paramInt = 1;
-        localObject1 = (FinderMediaCropUI.d)this.sDa.get(this.sDo);
-        paramView = cJP();
-        paramMediaItem = paramMediaItem.cVj();
+        localObject1 = (FinderMediaCropUI.d)this.sNZ.get(this.sOn);
+        paramView = cMs();
+        paramMediaItem = paramMediaItem.cXO();
         d.g.b.p.g(paramMediaItem, "item.originalPath");
-        localObject2 = this.sDn;
+        localObject2 = this.sOm;
         d.g.b.p.h(paramMediaItem, "mediaPath");
-        ad.i("WxMediaCropLayout", "onPreview type: ".concat(String.valueOf(paramInt)));
+        ae.i("WxMediaCropLayout", "onPreview type: ".concat(String.valueOf(paramInt)));
         bool = false;
-        if (paramView.oDy != paramInt) {
+        if (paramView.oKa != paramInt) {
           bool = true;
         }
-        paramView.oDy = paramInt;
+        paramView.oKa = paramInt;
         if (paramInt != 2) {
           break label552;
         }
@@ -483,7 +479,7 @@ public final class FinderMediaCropUI
     for (;;)
     {
       ((FinderMediaCropUI.d)localObject1).a(paramView);
-      AppMethodBeat.o(204030);
+      AppMethodBeat.o(204626);
       return;
       j = 0;
       break label157;
@@ -493,10 +489,10 @@ public final class FinderMediaCropUI
       i = -1;
       break label162;
       label471:
-      localObject1 = cJT();
+      localObject1 = cMw();
       d.g.b.p.g(localObject1, "previewNumTv");
       ((TextView)localObject1).setText((CharSequence)String.valueOf(i + 1));
-      localObject1 = cJT();
+      localObject1 = cMw();
       d.g.b.p.g(localObject1, "previewNumTv");
       localObject2 = getContext();
       d.g.b.p.g(localObject2, "context");
@@ -514,51 +510,51 @@ public final class FinderMediaCropUI
     }
   }
   
-  public final ArrayList<GalleryItem.MediaItem> cJO()
+  public final ArrayList<GalleryItem.MediaItem> cMr()
   {
     AppMethodBeat.i(167383);
-    ArrayList localArrayList = (ArrayList)this.sDb.getValue();
+    ArrayList localArrayList = (ArrayList)this.sOa.getValue();
     AppMethodBeat.o(167383);
     return localArrayList;
   }
   
-  public final WxMediaCropLayout cJP()
+  public final WxMediaCropLayout cMs()
   {
     AppMethodBeat.i(167384);
-    WxMediaCropLayout localWxMediaCropLayout = (WxMediaCropLayout)this.sDd.getValue();
+    WxMediaCropLayout localWxMediaCropLayout = (WxMediaCropLayout)this.sOc.getValue();
     AppMethodBeat.o(167384);
     return localWxMediaCropLayout;
   }
   
-  public final View cJQ()
+  public final View cMt()
   {
     AppMethodBeat.i(167385);
-    View localView = (View)this.sDe.getValue();
+    View localView = (View)this.sOd.getValue();
     AppMethodBeat.o(167385);
     return localView;
   }
   
-  public final RecyclerView cJR()
+  public final RecyclerView cMu()
   {
     AppMethodBeat.i(167386);
-    RecyclerView localRecyclerView = (RecyclerView)this.sDf.getValue();
+    RecyclerView localRecyclerView = (RecyclerView)this.sOe.getValue();
     AppMethodBeat.o(167386);
     return localRecyclerView;
   }
   
-  public final View cJS()
+  public final View cMv()
   {
     AppMethodBeat.i(167387);
-    View localView = (View)this.sDg.getValue();
+    View localView = (View)this.sOf.getValue();
     AppMethodBeat.o(167387);
     return localView;
   }
   
-  public final CheckBox cJV()
+  public final CheckBox cMy()
   {
-    AppMethodBeat.i(204029);
-    CheckBox localCheckBox = (CheckBox)this.sDk.getValue();
-    AppMethodBeat.o(204029);
+    AppMethodBeat.i(204625);
+    CheckBox localCheckBox = (CheckBox)this.sOj.getValue();
+    AppMethodBeat.o(204625);
     return localCheckBox;
   }
   
@@ -576,29 +572,29 @@ public final class FinderMediaCropUI
   {
     AppMethodBeat.i(167391);
     super.initView();
-    cJP().setShowBorder(true);
-    cJP().post((Runnable)new l(this));
-    cJT().setOnClickListener((View.OnClickListener)new m(this));
-    ((View)this.sDi.getValue()).setOnClickListener((View.OnClickListener)new n(this));
-    cJR().setHasFixedSize(true);
+    cMs().setShowBorder(true);
+    cMs().post((Runnable)new l(this));
+    cMw().setOnClickListener((View.OnClickListener)new m(this));
+    ((View)this.sOh.getValue()).setOnClickListener((View.OnClickListener)new n(this));
+    cMu().setHasFixedSize(true);
     getContext();
     Object localObject1 = new LinearLayoutManager();
     ((LinearLayoutManager)localObject1).setOrientation(0);
-    Object localObject2 = cJR();
+    Object localObject2 = cMu();
     d.g.b.p.g(localObject2, "previewRecyclerView");
     ((RecyclerView)localObject2).setLayoutManager((RecyclerView.i)localObject1);
     ((LinearLayoutManager)localObject1).aw(true);
-    localObject1 = cJR();
+    localObject1 = cMu();
     d.g.b.p.g(localObject1, "previewRecyclerView");
     ((RecyclerView)localObject1).setItemAnimator((RecyclerView.f)new v());
-    cJR().b((RecyclerView.h)new o(this));
+    cMu().b((RecyclerView.h)new o(this));
     localObject1 = new b();
-    new android.support.v7.widget.a.a((android.support.v7.widget.a.a.a)new c((com.tencent.mm.ui.base.a.a)localObject1)).j(cJR());
-    localObject2 = cJR();
+    new android.support.v7.widget.a.a((android.support.v7.widget.a.a.a)new c((com.tencent.mm.ui.base.a.a)localObject1)).j(cMu());
+    localObject2 = cMu();
     d.g.b.p.g(localObject2, "previewRecyclerView");
     ((RecyclerView)localObject2).setAdapter((RecyclerView.a)localObject1);
-    ((b)localObject1).Jrp = ((com.tencent.mm.ui.base.a.a.a)new p(this));
-    localObject2 = cJO();
+    ((b)localObject1).JMe = ((com.tencent.mm.ui.base.a.a.a)new p(this));
+    localObject2 = cMr();
     d.g.b.p.g(localObject2, "selectPathList");
     localObject2 = ((Iterable)localObject2).iterator();
     Object localObject3;
@@ -611,42 +607,42 @@ public final class FinderMediaCropUI
       {
         i = 0;
         if (i != 0) {
-          this.sDp = true;
+          this.sOo = true;
         }
-        localObject2 = cJV();
+        localObject2 = cMy();
         d.g.b.p.g(localObject2, "switchVLogCheckbox");
-        ((CheckBox)localObject2).setChecked(this.sDp);
-        if (!cJX()) {
+        ((CheckBox)localObject2).setChecked(this.sOo);
+        if (!cMA()) {
           break label474;
         }
-        localObject2 = cJU();
+        localObject2 = cMx();
         d.g.b.p.g(localObject2, "switchVLogLayout");
         ((View)localObject2).setVisibility(0);
-        cJV().setOnClickListener((View.OnClickListener)new q(this, (b)localObject1));
+        cMy().setOnClickListener((View.OnClickListener)new q(this, (b)localObject1));
       }
     }
     for (;;)
     {
       localObject2 = new StringBuilder("isInVLogMode: false, final check, IS_VLOG_BACKGROUND_MUX: ");
-      localObject3 = com.tencent.mm.plugin.finder.storage.b.sxa;
-      ad.i("Finder.MediaCropUI", com.tencent.mm.plugin.finder.storage.b.cGb());
-      ((b)localObject1).setItems((List)cJO());
-      if ((this.sDc == null) || (!cJX())) {
+      localObject3 = com.tencent.mm.plugin.finder.storage.b.sHP;
+      ae.i("Finder.MediaCropUI", com.tencent.mm.plugin.finder.storage.b.cHY());
+      ((b)localObject1).setItems((List)cMr());
+      if ((this.sOb == null) || (!cMA())) {
         break label495;
       }
-      cJR().postDelayed((Runnable)new r(this, (b)localObject1), 500L);
+      cMu().postDelayed((Runnable)new r(this, (b)localObject1), 500L);
       AppMethodBeat.o(167391);
       return;
       i = 1;
       break;
       label474:
-      localObject2 = cJU();
+      localObject2 = cMx();
       d.g.b.p.g(localObject2, "switchVLogLayout");
       ((View)localObject2).setVisibility(8);
     }
     label495:
-    cJR().post((Runnable)new h(this));
-    cJR().postDelayed((Runnable)new i(this), 500L);
+    cMu().post((Runnable)new h(this));
+    cMu().postDelayed((Runnable)new i(this), 500L);
     AppMethodBeat.o(167391);
   }
   
@@ -666,21 +662,21 @@ public final class FinderMediaCropUI
       if (paramInt2 == -1)
       {
         if (paramIntent == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         paramIntent = paramIntent.getParcelableExtra("KSEGMENTMEDIAINFO");
         if (paramIntent == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         Object localObject2 = (CaptureDataManager.CaptureVideoNormalModel)paramIntent;
-        this.sDm = false;
-        paramIntent = cJO();
+        this.sOl = false;
+        paramIntent = cMr();
         d.g.b.p.g(paramIntent, "selectPathList");
         paramIntent = (List)paramIntent;
         paramInt1 = 0;
         paramIntent = paramIntent.iterator();
         if (paramIntent.hasNext()) {
-          if (((GalleryItem.MediaItem)paramIntent.next()).tGV == this.sDo)
+          if (((GalleryItem.MediaItem)paramIntent.next()).tRM == this.sOn)
           {
             paramInt2 = 1;
             if (paramInt2 == 0) {
@@ -703,7 +699,7 @@ public final class FinderMediaCropUI
           paramInt1 = -1;
         }
         label145:
-        paramIntent = cJR();
+        paramIntent = cMu();
         d.g.b.p.g(paramIntent, "previewRecyclerView");
         localObject1 = paramIntent.getAdapter();
         paramIntent = (Intent)localObject1;
@@ -714,21 +710,21 @@ public final class FinderMediaCropUI
         if (localObject1 != null)
         {
           paramIntent = (GalleryItem.MediaItem)((b)localObject1).getItemAtPosition(paramInt1);
-          Boolean localBoolean = ((CaptureDataManager.CaptureVideoNormalModel)localObject2).dFE();
+          Boolean localBoolean = ((CaptureDataManager.CaptureVideoNormalModel)localObject2).dIV();
           d.g.b.p.g(localBoolean, "model.photo");
           if (localBoolean.booleanValue())
           {
-            paramIntent.tGZ = true;
-            paramIntent.tGS = ((CaptureDataManager.CaptureVideoNormalModel)localObject2).axA();
-            ad.i("Finder.MediaCropUI", "[onActivityResult] edit photo output=" + ((CaptureDataManager.CaptureVideoNormalModel)localObject2).axA());
-            localObject1 = (FinderMediaCropUI.d)this.sDa.get(paramIntent.tGV);
-            localObject2 = cJP();
-            long l = paramIntent.tGV;
+            paramIntent.tRQ = true;
+            paramIntent.tRJ = ((CaptureDataManager.CaptureVideoNormalModel)localObject2).axP();
+            ae.i("Finder.MediaCropUI", "[onActivityResult] edit photo output=" + ((CaptureDataManager.CaptureVideoNormalModel)localObject2).axP());
+            localObject1 = (FinderMediaCropUI.d)this.sNZ.get(paramIntent.tRM);
+            localObject2 = cMs();
+            long l = paramIntent.tRM;
             d.g.b.p.g(paramIntent, "item");
-            paramIntent = paramIntent.cVj();
+            paramIntent = paramIntent.cXO();
             d.g.b.p.g(paramIntent, "item.originalPath");
-            ((FinderMediaCropUI.d)localObject1).a(WxMediaCropLayout.a((WxMediaCropLayout)localObject2, l, paramIntent, true, this.sDn, null, 16));
-            paramIntent = cJR();
+            ((FinderMediaCropUI.d)localObject1).a(WxMediaCropLayout.a((WxMediaCropLayout)localObject2, l, paramIntent, true, this.sOm, null, 16));
+            paramIntent = cMu();
             d.g.b.p.g(paramIntent, "previewRecyclerView");
             paramIntent = paramIntent.getAdapter();
             if (paramIntent != null)
@@ -739,24 +735,24 @@ public final class FinderMediaCropUI
           }
           else
           {
-            ad.i("Finder.MediaCropUI", "[onActivityResult] edit video output=" + ((CaptureDataManager.CaptureVideoNormalModel)localObject2).getVideoPath());
-            paramIntent = GalleryItem.MediaItem.a(2, 0L, ((CaptureDataManager.CaptureVideoNormalModel)localObject2).getVideoPath(), ((CaptureDataManager.CaptureVideoNormalModel)localObject2).axA(), "");
-            cJO().clear();
-            cJO().add(paramIntent);
-            ((b)localObject1).setItems((List)cJO());
+            ae.i("Finder.MediaCropUI", "[onActivityResult] edit video output=" + ((CaptureDataManager.CaptureVideoNormalModel)localObject2).getVideoPath());
+            paramIntent = GalleryItem.MediaItem.a(2, 0L, ((CaptureDataManager.CaptureVideoNormalModel)localObject2).getVideoPath(), ((CaptureDataManager.CaptureVideoNormalModel)localObject2).axP(), "");
+            cMr().clear();
+            cMr().add(paramIntent);
+            ((b)localObject1).setItems((List)cMr());
             ((b)localObject1).notifyDataSetChanged();
             paramIntent = new FinderMediaCropUI.d();
-            paramIntent.sDD = 1;
-            this.sDa.put(0L, paramIntent);
-            paramIntent = cJR().ch(0);
+            paramIntent.sOC = 1;
+            this.sNZ.put(0L, paramIntent);
+            paramIntent = cMu().ch(0);
             if (paramIntent != null) {}
             for (paramIntent = paramIntent.auu;; paramIntent = null)
             {
               if (paramIntent == null) {
-                d.g.b.p.gfZ();
+                d.g.b.p.gkB();
               }
               d.g.b.p.g(paramIntent, "previewRecyclerView.find…utPosition(0)?.itemView!!");
-              localObject1 = cJO().get(0);
+              localObject1 = cMr().get(0);
               d.g.b.p.g(localObject1, "selectPathList[0]");
               a(0, paramIntent, (GalleryItem.MediaItem)localObject1);
               break;
@@ -768,7 +764,7 @@ public final class FinderMediaCropUI
         AppMethodBeat.o(167397);
         return;
       }
-      paramIntent = cJR().ch(0);
+      paramIntent = cMu().ch(0);
       if (paramIntent == null) {
         break label614;
       }
@@ -777,10 +773,10 @@ public final class FinderMediaCropUI
     for (paramIntent = paramIntent.auu;; paramIntent = null)
     {
       if (paramIntent == null) {
-        d.g.b.p.gfZ();
+        d.g.b.p.gkB();
       }
       d.g.b.p.g(paramIntent, "previewRecyclerView.find…utPosition(0)?.itemView!!");
-      localObject1 = cJO().get(0);
+      localObject1 = cMr().get(0);
       d.g.b.p.g(localObject1, "selectPathList[0]");
       a(0, paramIntent, (GalleryItem.MediaItem)localObject1);
       AppMethodBeat.o(167397);
@@ -807,63 +803,63 @@ public final class FinderMediaCropUI
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
     getWindow().setFlags(201327616, 201327616);
-    com.tencent.mm.plugin.mmsight.d.or(true);
+    com.tencent.mm.plugin.mmsight.d.ow(true);
     getWindow().setFormat(-3);
     paramBundle = getIntent().getParcelableArrayListExtra("front_vlog_video");
     if ((paramBundle != null) && (paramBundle.size() > 0)) {
-      this.sDc = ((GalleryItem.MediaItem)paramBundle.get(0));
+      this.sOb = ((GalleryItem.MediaItem)paramBundle.get(0));
     }
-    cJQ().post((Runnable)new t(this));
+    cMt().post((Runnable)new FinderMediaCropUI.t(this));
     paramBundle = new FrameLayout.LayoutParams(-1, -2);
-    paramBundle.bottomMargin = as.ej(getBaseContext());
+    paramBundle.bottomMargin = as.en(getBaseContext());
     paramBundle.gravity = 80;
-    Object localObject = cJS();
+    Object localObject = cMv();
     d.g.b.p.g(localObject, "footer");
     ((View)localObject).setLayoutParams((ViewGroup.LayoutParams)paramBundle);
-    cJS().post((Runnable)new u(this));
+    cMv().post((Runnable)new FinderMediaCropUI.u(this));
     setActionbarColor(getResources().getColor(2131101053));
-    findViewById(2131296417).setOnClickListener((View.OnClickListener)new v(this));
-    findViewById(2131296376).setOnClickListener((View.OnClickListener)new w(this));
-    cJW();
+    findViewById(2131296417).setOnClickListener((View.OnClickListener)new FinderMediaCropUI.v(this));
+    findViewById(2131296376).setOnClickListener((View.OnClickListener)new FinderMediaCropUI.w(this));
+    cMz();
     paramBundle = new b.b();
-    localObject = r.sNc;
-    paramBundle.akS(r.cLP());
-    localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-    paramBundle.maxHeight = com.tencent.mm.plugin.finder.storage.b.cFh();
-    localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-    paramBundle.maxWidth = com.tencent.mm.plugin.finder.storage.b.cFi();
-    localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-    paramBundle.tIV = com.tencent.mm.plugin.finder.storage.b.cFj();
-    this.sDr = new com.tencent.mm.plugin.gallery.picker.b.b(paramBundle);
-    localObject = this.sDr;
+    localObject = r.sYn;
+    paramBundle.alQ(r.cOx());
+    localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+    paramBundle.maxHeight = com.tencent.mm.plugin.finder.storage.b.cHe();
+    localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+    paramBundle.maxWidth = com.tencent.mm.plugin.finder.storage.b.cHf();
+    localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+    paramBundle.tTM = com.tencent.mm.plugin.finder.storage.b.cHg();
+    this.sOq = new com.tencent.mm.plugin.gallery.picker.b.b(paramBundle);
+    localObject = this.sOq;
     if (localObject == null) {
-      d.g.b.p.bcb("mediaTailor");
+      d.g.b.p.bdF("mediaTailor");
     }
     ((com.tencent.mm.plugin.gallery.picker.b.b)localObject).a((com.tencent.mm.plugin.gallery.picker.b.a)new com.tencent.mm.plugin.finder.video.j(paramBundle));
-    localObject = this.sDr;
+    localObject = this.sOq;
     if (localObject == null) {
-      d.g.b.p.bcb("mediaTailor");
+      d.g.b.p.bdF("mediaTailor");
     }
     paramBundle = (com.tencent.mm.plugin.gallery.picker.b.a)new com.tencent.mm.plugin.finder.video.h(paramBundle);
     d.g.b.p.h(paramBundle, "<set-?>");
-    ((com.tencent.mm.plugin.gallery.picker.b.b)localObject).tIR = paramBundle;
+    ((com.tencent.mm.plugin.gallery.picker.b.b)localObject).tTI = paramBundle;
     initView();
     AppMethodBeat.o(167389);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(204032);
+    AppMethodBeat.i(204628);
     super.onDestroy();
-    AppMethodBeat.o(204032);
+    AppMethodBeat.o(204628);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(167394);
     super.onPause();
-    if (!this.sDm) {
-      cJP().onUIPause();
+    if (!this.sOl) {
+      cMs().onUIPause();
     }
     AppMethodBeat.o(167394);
   }
@@ -873,9 +869,9 @@ public final class FinderMediaCropUI
     AppMethodBeat.i(167393);
     super.onResume();
     Object localObject2;
-    if (this.sDm)
+    if (this.sOl)
     {
-      localObject1 = cJR();
+      localObject1 = cMu();
       d.g.b.p.g(localObject1, "previewRecyclerView");
       localObject2 = ((RecyclerView)localObject1).getAdapter();
       localObject1 = localObject2;
@@ -883,13 +879,13 @@ public final class FinderMediaCropUI
         localObject1 = null;
       }
       localObject1 = (b)localObject1;
-      localObject2 = cJO();
+      localObject2 = cMr();
       d.g.b.p.g(localObject2, "selectPathList");
       localObject2 = ((List)localObject2).iterator();
       int i = 0;
       int j;
       if (((Iterator)localObject2).hasNext()) {
-        if (((GalleryItem.MediaItem)((Iterator)localObject2).next()).tGV == this.sDo)
+        if (((GalleryItem.MediaItem)((Iterator)localObject2).next()).tRM == this.sOn)
         {
           j = 1;
           label121:
@@ -916,32 +912,32 @@ public final class FinderMediaCropUI
       if (localObject1 != null)
       {
         localObject2 = (GalleryItem.MediaItem)((b)localObject1).getItemAtPosition(i);
-        localObject1 = cJP();
-        long l = ((GalleryItem.MediaItem)localObject2).tGV;
+        localObject1 = cMs();
+        long l = ((GalleryItem.MediaItem)localObject2).tRM;
         d.g.b.p.g(localObject2, "item");
-        localObject2 = ((GalleryItem.MediaItem)localObject2).cVj();
+        localObject2 = ((GalleryItem.MediaItem)localObject2).cXO();
         d.g.b.p.g(localObject2, "item.originalPath");
-        ((WxMediaCropLayout)localObject1).a(l, (String)localObject2, true, this.sDn, true);
+        ((WxMediaCropLayout)localObject1).a(l, (String)localObject2, true, this.sOm, true);
       }
-      this.sDm = false;
+      this.sOl = false;
       AppMethodBeat.o(167393);
       return;
     }
-    Object localObject1 = cJP();
-    ad.i("WxMediaCropLayout", "onUIResume");
-    if (((WxMediaCropLayout)localObject1).mNP != null)
+    Object localObject1 = cMs();
+    ae.i("WxMediaCropLayout", "onUIResume");
+    if (((WxMediaCropLayout)localObject1).mST != null)
     {
-      localObject2 = ((WxMediaCropLayout)localObject1).mNP;
+      localObject2 = ((WxMediaCropLayout)localObject1).mST;
       if (localObject2 != null) {
         ((CommonVideoView)localObject2).onUIResume();
       }
     }
-    if (((WxMediaCropLayout)localObject1).tKS != null)
+    if (((WxMediaCropLayout)localObject1).tVJ != null)
     {
-      localObject1 = ((WxMediaCropLayout)localObject1).tKS;
+      localObject1 = ((WxMediaCropLayout)localObject1).tVJ;
       if (localObject1 != null)
       {
-        ((com.tencent.mm.plugin.recordvideo.plugin.a.b)localObject1).dGF();
+        ((com.tencent.mm.plugin.recordvideo.plugin.a.b)localObject1).dJW();
         AppMethodBeat.o(167393);
         return;
       }
@@ -955,183 +951,7 @@ public final class FinderMediaCropUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$PreviewItemView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "focusedView", "Landroid/view/View;", "getFocusedView", "()Landroid/view/View;", "imageView", "Landroid/widget/ImageView;", "getImageView", "()Landroid/widget/ImageView;", "maskView", "getMaskView", "orangeColor", "padding", "getPadding", "()I", "size", "getSize", "setFocusable", "", "focusable", "", "setSelected", "selected", "plugin-finder_release"})
-  public static final class PreviewItemView
-    extends FrameLayout
-  {
-    private final ImageView dsD;
-    private final View gZU;
-    private final int padding;
-    private final int sDF;
-    private final View sDG;
-    private final int size;
-    
-    public PreviewItemView(Context paramContext)
-    {
-      super();
-      AppMethodBeat.i(167351);
-      paramContext = aj.getContext();
-      d.g.b.p.g(paramContext, "MMApplicationContext.getContext()");
-      this.sDF = paramContext.getResources().getColor(2131100726);
-      this.dsD = new ImageView(getContext());
-      this.gZU = new View(getContext());
-      this.sDG = new View(getContext());
-      paramContext = getContext();
-      d.g.b.p.g(paramContext, "context");
-      this.padding = ((int)paramContext.getResources().getDimension(2131165274));
-      paramContext = getContext();
-      d.g.b.p.g(paramContext, "context");
-      this.size = ((int)paramContext.getResources().getDimension(2131165300));
-      this.dsD.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramContext = new FrameLayout.LayoutParams(this.size + this.padding * 2, this.size + this.padding * 2);
-      Object localObject = new FrameLayout.LayoutParams(this.size, this.size);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.size, this.size);
-      ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      paramContext.gravity = 17;
-      localLayoutParams.gravity = 17;
-      this.sDG.setBackgroundColor(this.sDF);
-      addView(this.sDG, (ViewGroup.LayoutParams)paramContext);
-      addView((View)this.dsD, (ViewGroup.LayoutParams)localLayoutParams);
-      paramContext = this.gZU;
-      localObject = getContext();
-      d.g.b.p.g(localObject, "context");
-      paramContext.setBackgroundColor(((Context)localObject).getResources().getColor(2131101179));
-      this.gZU.setAlpha(0.5F);
-      paramContext = new FrameLayout.LayoutParams(-2, -1);
-      paramContext.gravity = 17;
-      setLayoutParams((ViewGroup.LayoutParams)paramContext);
-      AppMethodBeat.o(167351);
-    }
-    
-    public PreviewItemView(Context paramContext, AttributeSet paramAttributeSet)
-    {
-      super(paramAttributeSet);
-      AppMethodBeat.i(167352);
-      paramContext = aj.getContext();
-      d.g.b.p.g(paramContext, "MMApplicationContext.getContext()");
-      this.sDF = paramContext.getResources().getColor(2131100726);
-      this.dsD = new ImageView(getContext());
-      this.gZU = new View(getContext());
-      this.sDG = new View(getContext());
-      paramContext = getContext();
-      d.g.b.p.g(paramContext, "context");
-      this.padding = ((int)paramContext.getResources().getDimension(2131165274));
-      paramContext = getContext();
-      d.g.b.p.g(paramContext, "context");
-      this.size = ((int)paramContext.getResources().getDimension(2131165300));
-      this.dsD.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramContext = new FrameLayout.LayoutParams(this.size + this.padding * 2, this.size + this.padding * 2);
-      paramAttributeSet = new FrameLayout.LayoutParams(this.size, this.size);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.size, this.size);
-      paramAttributeSet.gravity = 17;
-      paramContext.gravity = 17;
-      localLayoutParams.gravity = 17;
-      this.sDG.setBackgroundColor(this.sDF);
-      addView(this.sDG, (ViewGroup.LayoutParams)paramContext);
-      addView((View)this.dsD, (ViewGroup.LayoutParams)localLayoutParams);
-      paramContext = this.gZU;
-      paramAttributeSet = getContext();
-      d.g.b.p.g(paramAttributeSet, "context");
-      paramContext.setBackgroundColor(paramAttributeSet.getResources().getColor(2131101179));
-      this.gZU.setAlpha(0.5F);
-      paramContext = new FrameLayout.LayoutParams(-2, -1);
-      paramContext.gravity = 17;
-      setLayoutParams((ViewGroup.LayoutParams)paramContext);
-      AppMethodBeat.o(167352);
-    }
-    
-    public PreviewItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-    {
-      super(paramAttributeSet, paramInt);
-      AppMethodBeat.i(167353);
-      paramContext = aj.getContext();
-      d.g.b.p.g(paramContext, "MMApplicationContext.getContext()");
-      this.sDF = paramContext.getResources().getColor(2131100726);
-      this.dsD = new ImageView(getContext());
-      this.gZU = new View(getContext());
-      this.sDG = new View(getContext());
-      paramContext = getContext();
-      d.g.b.p.g(paramContext, "context");
-      this.padding = ((int)paramContext.getResources().getDimension(2131165274));
-      paramContext = getContext();
-      d.g.b.p.g(paramContext, "context");
-      this.size = ((int)paramContext.getResources().getDimension(2131165300));
-      this.dsD.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramContext = new FrameLayout.LayoutParams(this.size + this.padding * 2, this.size + this.padding * 2);
-      paramAttributeSet = new FrameLayout.LayoutParams(this.size, this.size);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.size, this.size);
-      paramAttributeSet.gravity = 17;
-      paramContext.gravity = 17;
-      localLayoutParams.gravity = 17;
-      this.sDG.setBackgroundColor(this.sDF);
-      addView(this.sDG, (ViewGroup.LayoutParams)paramContext);
-      addView((View)this.dsD, (ViewGroup.LayoutParams)localLayoutParams);
-      paramContext = this.gZU;
-      paramAttributeSet = getContext();
-      d.g.b.p.g(paramAttributeSet, "context");
-      paramContext.setBackgroundColor(paramAttributeSet.getResources().getColor(2131101179));
-      this.gZU.setAlpha(0.5F);
-      paramContext = new FrameLayout.LayoutParams(-2, -1);
-      paramContext.gravity = 17;
-      setLayoutParams((ViewGroup.LayoutParams)paramContext);
-      AppMethodBeat.o(167353);
-    }
-    
-    public final View getFocusedView()
-    {
-      return this.sDG;
-    }
-    
-    public final ImageView getImageView()
-    {
-      return this.dsD;
-    }
-    
-    public final View getMaskView()
-    {
-      return this.gZU;
-    }
-    
-    public final int getPadding()
-    {
-      return this.padding;
-    }
-    
-    public final int getSize()
-    {
-      return this.size;
-    }
-    
-    public final void setFocusable(boolean paramBoolean)
-    {
-      AppMethodBeat.i(167349);
-      super.setFocusable(paramBoolean);
-      if (paramBoolean)
-      {
-        this.sDG.setVisibility(0);
-        AppMethodBeat.o(167349);
-        return;
-      }
-      this.sDG.setVisibility(4);
-      AppMethodBeat.o(167349);
-    }
-    
-    public final void setSelected(boolean paramBoolean)
-    {
-      AppMethodBeat.i(167350);
-      super.setSelected(paramBoolean);
-      if (paramBoolean)
-      {
-        this.gZU.setVisibility(4);
-        AppMethodBeat.o(167350);
-        return;
-      }
-      this.gZU.setVisibility(0);
-      AppMethodBeat.o(167350);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class aa
     extends q
     implements d.g.a.a<RecyclerView>
@@ -1142,7 +962,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class ab
     implements Runnable
   {
@@ -1151,24 +971,24 @@ public final class FinderMediaCropUI
     public final void run()
     {
       AppMethodBeat.i(167380);
-      Object localObject = FinderMediaCropUI.d(this.sDt);
+      Object localObject = FinderMediaCropUI.d(this.sOs);
       if (localObject != null) {
         ((Dialog)localObject).show();
       }
       for (;;)
       {
-        ad.d("Finder.MediaCropUI", "tipDialog is show!");
+        ae.d("Finder.MediaCropUI", "tipDialog is show!");
         AppMethodBeat.o(167380);
         return;
-        localObject = this.sDt;
+        localObject = this.sOs;
         Context localContext = (Context)localObject;
         ((FinderMediaCropUI)localObject).getString(2131755906);
-        FinderMediaCropUI.a((FinderMediaCropUI)localObject, (Dialog)com.tencent.mm.ui.base.h.b(localContext, ((FinderMediaCropUI)localObject).getString(2131755936), false, (DialogInterface.OnCancelListener)FinderMediaCropUI.ab.a.sDR));
+        FinderMediaCropUI.a((FinderMediaCropUI)localObject, (Dialog)com.tencent.mm.ui.base.h.b(localContext, ((FinderMediaCropUI)localObject).getString(2131755936), false, (DialogInterface.OnCancelListener)FinderMediaCropUI.ab.a.sOQ));
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "kotlin.jvm.PlatformType", "invoke"})
   static final class ac
     extends q
     implements d.g.a.a<ArrayList<GalleryItem.MediaItem>>
@@ -1179,7 +999,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/widget/CheckBox;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/CheckBox;", "kotlin.jvm.PlatformType", "invoke"})
   static final class ad
     extends q
     implements d.g.a.a<CheckBox>
@@ -1190,7 +1010,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class ae
     extends q
     implements d.g.a.a<View>
@@ -1201,7 +1021,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$FooterPreviewAdapter;", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$PreviewItemView;", "(Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI;)V", "getItemId", "", "position", "", "onBindViewHolder", "", "viewWrapper", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "i", "holder", "payloads", "", "", "onCreateItemView", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$FooterPreviewAdapter;", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$PreviewItemView;", "(Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI;)V", "getItemId", "", "position", "", "onBindViewHolder", "", "viewWrapper", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "i", "holder", "payloads", "", "", "onCreateItemView", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
   public final class b
     extends com.tencent.mm.ui.base.a.a<GalleryItem.MediaItem, FinderMediaCropUI.PreviewItemView>
   {
@@ -1220,16 +1040,16 @@ public final class FinderMediaCropUI
       super.a(paramb, paramInt);
       paramb = (FinderMediaCropUI.PreviewItemView)paramb.getView();
       GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)getItemAtPosition(paramInt);
-      Object localObject = com.tencent.mm.plugin.gallery.picker.c.f.tJx;
-      localObject = com.tencent.mm.plugin.gallery.picker.c.f.cVF();
+      Object localObject = com.tencent.mm.plugin.gallery.picker.c.f.tUo;
+      localObject = com.tencent.mm.plugin.gallery.picker.c.f.cYk();
       d.g.b.p.g(localMediaItem, "media");
       ((com.tencent.mm.loader.d)localObject).bH(localMediaItem).a(paramb.getImageView(), true);
       d.g.b.p.g(paramb, "itemView");
-      if (((FinderMediaCropUI.d)FinderMediaCropUI.a(this.sDt).get(localMediaItem.tGV)).sDD != -1)
+      if (((FinderMediaCropUI.d)FinderMediaCropUI.a(this.sOs).get(localMediaItem.tRM)).sOC != -1)
       {
         bool1 = true;
         paramb.setSelected(bool1);
-        if (localMediaItem.tGV != FinderMediaCropUI.b(this.sDt)) {
+        if (localMediaItem.tRM != FinderMediaCropUI.b(this.sOs)) {
           break label143;
         }
       }
@@ -1246,41 +1066,41 @@ public final class FinderMediaCropUI
     
     public final void a(com.tencent.mm.ui.base.a.b paramb, int paramInt, List<Object> paramList)
     {
-      AppMethodBeat.i(204023);
+      AppMethodBeat.i(204619);
       d.g.b.p.h(paramb, "holder");
       d.g.b.p.h(paramList, "payloads");
       if (paramList.isEmpty()) {
         a(paramb, paramInt);
       }
-      AppMethodBeat.o(204023);
+      AppMethodBeat.o(204619);
     }
     
     public final long getItemId(int paramInt)
     {
       AppMethodBeat.i(167330);
-      long l = ((GalleryItem.MediaItem)getItemAtPosition(paramInt)).tGV;
+      long l = ((GalleryItem.MediaItem)getItemAtPosition(paramInt)).tRM;
       AppMethodBeat.o(167330);
       return l;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$ItemTouchHelperCallback;", "Landroid/support/v7/widget/helper/ItemTouchHelper$Callback;", "adapter", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$PreviewItemView;", "(Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI;Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;)V", "lastVisiblePos", "", "getLastVisiblePos", "()I", "setLastVisiblePos", "(I)V", "mBeginDragPos", "mCurPositionInBar", "mEndDragPos", "clearView", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "viewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "getMoveThreshold", "", "getMovementFlags", "isItemViewSwipeEnabled", "", "isLongPressDragEnabled", "onChildDraw", "c", "Landroid/graphics/Canvas;", "dX", "dY", "actionState", "isCurrentlyActive", "onMove", "target", "onSelectedChanged", "onSwiped", "direction", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$ItemTouchHelperCallback;", "Landroid/support/v7/widget/helper/ItemTouchHelper$Callback;", "adapter", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI$PreviewItemView;", "(Lcom/tencent/mm/plugin/finder/ui/FinderMediaCropUI;Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;)V", "lastVisiblePos", "", "getLastVisiblePos", "()I", "setLastVisiblePos", "(I)V", "mBeginDragPos", "mCurPositionInBar", "mEndDragPos", "clearView", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "viewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "getMoveThreshold", "", "getMovementFlags", "isItemViewSwipeEnabled", "", "isLongPressDragEnabled", "onChildDraw", "c", "Landroid/graphics/Canvas;", "dX", "dY", "actionState", "isCurrentlyActive", "onMove", "target", "onSelectedChanged", "onSwiped", "direction", "plugin-finder_release"})
   public final class c
     extends android.support.v7.widget.a.a.a
   {
-    int dLx;
-    private int sDu;
-    private int sDv;
-    private int sDw;
-    private final com.tencent.mm.ui.base.a.a<GalleryItem.MediaItem, FinderMediaCropUI.PreviewItemView> sDx;
+    int dMM;
+    private int sOt;
+    private int sOu;
+    private int sOv;
+    private final com.tencent.mm.ui.base.a.a<GalleryItem.MediaItem, FinderMediaCropUI.PreviewItemView> sOw;
     
     public c()
     {
       AppMethodBeat.i(167345);
-      this.sDx = localObject;
-      this.dLx = -1;
-      this.sDu = -1;
-      this.sDv = -1;
+      this.sOw = localObject;
+      this.dMM = -1;
+      this.sOt = -1;
+      this.sOu = -1;
       AppMethodBeat.o(167345);
     }
     
@@ -1327,10 +1147,10 @@ public final class FinderMediaCropUI
       d.g.b.p.h(paramw2, "target");
       int i = paramw1.lN();
       int j = paramw2.lN();
-      ad.d("Finder.MediaCropUI", "[onMove] from=" + i + " to=" + j);
-      com.tencent.mm.plugin.gallery.a.d.swap((List)FinderMediaCropUI.this.cJO(), i, j);
-      this.sDx.aq(i, j);
-      this.sDv = j;
+      ae.d("Finder.MediaCropUI", "[onMove] from=" + i + " to=" + j);
+      com.tencent.mm.plugin.gallery.a.d.swap((List)FinderMediaCropUI.this.cMr(), i, j);
+      this.sOw.aq(i, j);
+      this.sOu = j;
       AppMethodBeat.o(167338);
       return true;
     }
@@ -1372,7 +1192,7 @@ public final class FinderMediaCropUI
       return false;
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$ItemTouchHelperCallback$clearView$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$ItemTouchHelperCallback$clearView$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
     public static final class a
       implements Animation.AnimationListener
     {
@@ -1385,7 +1205,7 @@ public final class FinderMediaCropUI
         paramAnimation = paramw.auu;
         d.g.b.p.g(paramAnimation, "viewHolder.itemView");
         paramAnimation.setTag(null);
-        ad.d("Finder.MediaCropUI", "finally change from=" + FinderMediaCropUI.c.b(this.sDy) + " to=" + FinderMediaCropUI.c.a(this.sDy));
+        ae.d("Finder.MediaCropUI", "finally change from=" + FinderMediaCropUI.c.b(this.sOx) + " to=" + FinderMediaCropUI.c.a(this.sOx));
         AppMethodBeat.o(167333);
       }
       
@@ -1407,7 +1227,7 @@ public final class FinderMediaCropUI
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$ItemTouchHelperCallback$onSelectedChanged$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$ItemTouchHelperCallback$onSelectedChanged$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
     public static final class b
       implements Animation.AnimationListener
     {
@@ -1439,16 +1259,16 @@ public final class FinderMediaCropUI
         paramAnimation.setTag(new Object());
         if (paramInt == 2)
         {
-          FinderMediaCropUI.c.a(this.sDy, paramw.lN());
-          FinderMediaCropUI.c.b(this.sDy, FinderMediaCropUI.c.a(this.sDy));
-          this.sDy.dLx = FinderMediaCropUI.c.c(this.sDy);
+          FinderMediaCropUI.c.a(this.sOx, paramw.lN());
+          FinderMediaCropUI.c.b(this.sOx, FinderMediaCropUI.c.a(this.sOx));
+          this.sOx.dMM = FinderMediaCropUI.c.c(this.sOx);
         }
         AppMethodBeat.o(167335);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
     extends q
     implements d.g.a.a<View>
@@ -1459,7 +1279,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$calculateCallback$1", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "calculate", "", "mediaWH", "", "maxCropRect", "Landroid/graphics/RectF;", "isAdaptSrc", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$calculateCallback$1", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "calculate", "", "mediaWH", "", "maxCropRect", "Landroid/graphics/RectF;", "isAdaptSrc", "", "plugin-finder_release"})
   public static final class f
     implements WxMediaCropLayout.c
   {
@@ -1469,19 +1289,19 @@ public final class FinderMediaCropUI
       d.g.b.p.h(paramArrayOfInt, "mediaWH");
       d.g.b.p.h(paramRectF, "maxCropRect");
       RectF localRectF = new RectF(paramRectF);
-      Object localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
+      Object localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
       localObject = com.tencent.mm.plugin.finder.utils.p.fS(paramArrayOfInt[0], paramArrayOfInt[1]);
       ((Bundle)localObject).getInt("media_layout_width", paramArrayOfInt[0]);
       int i = ((Bundle)localObject).getInt("media_layout_height", paramArrayOfInt[1]);
       float f = (paramRectF.height() - i) / 2.0F;
       paramRectF.top += f;
       paramRectF.bottom -= f;
-      ad.i("Finder.MediaCropUI", "[calculate] NEW=" + paramRectF + " OLD=" + localRectF + " isAdaptSrc=true");
+      ae.i("Finder.MediaCropUI", "[calculate] NEW=" + paramRectF + " OLD=" + localRectF + " isAdaptSrc=true");
       AppMethodBeat.o(167355);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "kotlin.jvm.PlatformType", "invoke"})
   static final class g
     extends q
     implements d.g.a.a<WxMediaCropLayout>
@@ -1492,7 +1312,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class h
     implements Runnable
   {
@@ -1501,7 +1321,7 @@ public final class FinderMediaCropUI
     public final void run()
     {
       AppMethodBeat.i(167357);
-      RecyclerView.w localw = this.sDt.cJR().ci(this.ghM);
+      RecyclerView.w localw = this.sOs.cMu().ci(this.gke);
       if (localw != null)
       {
         localw.auu.callOnClick();
@@ -1512,7 +1332,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class i
     implements Runnable
   {
@@ -1521,7 +1341,7 @@ public final class FinderMediaCropUI
     public final void run()
     {
       AppMethodBeat.i(167358);
-      RecyclerView.w localw = this.sDt.cJR().ci(this.ghM);
+      RecyclerView.w localw = this.sOs.cMu().ci(this.gke);
       if (localw != null)
       {
         localw.auu.callOnClick();
@@ -1532,7 +1352,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class j
     extends q
     implements d.g.a.a<View>
@@ -1543,7 +1363,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class k
     extends q
     implements d.g.a.a<View>
@@ -1554,7 +1374,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class l
     implements Runnable
   {
@@ -1563,13 +1383,13 @@ public final class FinderMediaCropUI
     public final void run()
     {
       AppMethodBeat.i(167361);
-      RectF localRectF = FinderMediaCropUI.e(this.sDt);
-      WxMediaCropLayout.a(this.sDt.cJP(), localRectF.width() * 0.5625F, localRectF.height(), localRectF);
+      RectF localRectF = FinderMediaCropUI.e(this.sOs);
+      WxMediaCropLayout.a(this.sOs.cMs(), localRectF.width() * 0.5625F, localRectF.height(), localRectF);
       AppMethodBeat.o(167361);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class m
     implements View.OnClickListener
   {
@@ -1580,13 +1400,13 @@ public final class FinderMediaCropUI
       AppMethodBeat.i(167362);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = this.sDt.cJO();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = this.sOs.cMr();
       d.g.b.p.g(paramView, "selectPathList");
       paramView = ((List)paramView).iterator();
       int i = 0;
       if (paramView.hasNext()) {
-        if (((GalleryItem.MediaItem)paramView.next()).tGV == FinderMediaCropUI.b(this.sDt))
+        if (((GalleryItem.MediaItem)paramView.next()).tRM == FinderMediaCropUI.b(this.sOs))
         {
           j = 1;
           label97:
@@ -1611,15 +1431,15 @@ public final class FinderMediaCropUI
         i = -1;
       }
       label140:
-      int j = this.sDt.cJO().size();
-      localObject = (GalleryItem.MediaItem)this.sDt.cJO().get(i);
-      FinderMediaCropUI.f(this.sDt);
+      int j = this.sOs.cMr().size();
+      localObject = (GalleryItem.MediaItem)this.sOs.cMr().get(i);
+      FinderMediaCropUI.f(this.sOs);
       if (j <= 1)
       {
         paramView = new Intent();
         paramView.putExtra("clear_list", true);
-        this.sDt.setResult(-1, paramView);
-        this.sDt.finish();
+        this.sOs.setResult(-1, paramView);
+        this.sOs.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(167362);
         return;
@@ -1627,9 +1447,9 @@ public final class FinderMediaCropUI
       if (i == 0) {}
       for (j = 1;; j = i - 1)
       {
-        paramView = this.sDt.cJR().ch(j);
-        this.sDt.cJO().remove(localObject);
-        localObject = this.sDt.cJR();
+        paramView = this.sOs.cMu().ch(j);
+        this.sOs.cMr().remove(localObject);
+        localObject = this.sOs.cMu();
         d.g.b.p.g(localObject, "previewRecyclerView");
         localObject = ((RecyclerView)localObject).getAdapter();
         if (localObject != null) {
@@ -1642,7 +1462,7 @@ public final class FinderMediaCropUI
             paramView.callOnClick();
           }
         }
-        FinderMediaCropUI.g(this.sDt);
+        FinderMediaCropUI.g(this.sOs);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(167362);
         return;
@@ -1650,7 +1470,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class n
     implements View.OnClickListener
   {
@@ -1661,14 +1481,14 @@ public final class FinderMediaCropUI
       AppMethodBeat.i(167363);
       Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-      paramView = this.sDt.cJO();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+      paramView = this.sOs.cMr();
       d.g.b.p.g(paramView, "selectPathList");
       paramView = ((List)paramView).iterator();
       int i = 0;
       int j;
       if (paramView.hasNext()) {
-        if (((GalleryItem.MediaItem)paramView.next()).tGV == FinderMediaCropUI.b(this.sDt))
+        if (((GalleryItem.MediaItem)paramView.next()).tRM == FinderMediaCropUI.b(this.sOs))
         {
           j = 1;
           label99:
@@ -1693,7 +1513,7 @@ public final class FinderMediaCropUI
         i = -1;
       }
       label148:
-      paramView = this.sDt.cJR();
+      paramView = this.sOs.cMu();
       d.g.b.p.g(paramView, "previewRecyclerView");
       localObject1 = paramView.getAdapter();
       paramView = (View)localObject1;
@@ -1709,68 +1529,68 @@ public final class FinderMediaCropUI
       if (paramView != null)
       {
         paramView = (GalleryItem.MediaItem)paramView.getItemAtPosition(i);
-        localObject1 = (CharSequence)paramView.tGT;
+        localObject1 = (CharSequence)paramView.tRK;
         if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
           break label801;
         }
         i = 1;
         if (i != 0) {
-          paramView.tGT = paramView.tGS;
+          paramView.tRK = paramView.tRJ;
         }
         d.g.b.p.g(paramView, "item");
         if (paramView.getType() != 2) {
           break label807;
         }
-        this.sDt.sDm = true;
-        localObject1 = this.sDt.cJP();
-        ad.i("WxMediaCropLayout", "onUIRelease");
-        if (((WxMediaCropLayout)localObject1).mNP != null)
+        this.sOs.sOl = true;
+        localObject1 = this.sOs.cMs();
+        ae.i("WxMediaCropLayout", "onUIRelease");
+        if (((WxMediaCropLayout)localObject1).mST != null)
         {
-          localObject2 = ((WxMediaCropLayout)localObject1).mNP;
+          localObject2 = ((WxMediaCropLayout)localObject1).mST;
           if (localObject2 != null) {
             ((CommonVideoView)localObject2).onUIDestroy();
           }
-          ((WxMediaCropLayout)localObject1).mNP = null;
+          ((WxMediaCropLayout)localObject1).mST = null;
         }
-        if (((WxMediaCropLayout)localObject1).tKS != null)
+        if (((WxMediaCropLayout)localObject1).tVJ != null)
         {
-          localObject2 = ((WxMediaCropLayout)localObject1).tKS;
+          localObject2 = ((WxMediaCropLayout)localObject1).tVJ;
           if (localObject2 != null) {
             ((com.tencent.mm.plugin.recordvideo.plugin.a.b)localObject2).release();
           }
-          ((WxMediaCropLayout)localObject1).tKS = null;
+          ((WxMediaCropLayout)localObject1).tVJ = null;
         }
-        localObject3 = this.sDt.cJP().getCurrentCropInfo();
-        localObject1 = ((WxMediaCropLayout.b)localObject3).hmm;
-        f1 = ((WxMediaCropLayout.b)localObject3).viewRect.height() * 1.0F / ((WxMediaCropLayout.b)localObject3).viewRect.width() * ((WxMediaCropLayout.b)localObject3).hmm.width();
-        i = ((WxMediaCropLayout.b)localObject3).hmm.left;
-        j = (int)(((WxMediaCropLayout.b)localObject3).hmm.centerY() - f1 / 2.0F);
-        int k = ((WxMediaCropLayout.b)localObject3).hmm.right;
-        f2 = ((WxMediaCropLayout.b)localObject3).hmm.centerY();
+        localObject3 = this.sOs.cMs().getCurrentCropInfo();
+        localObject1 = ((WxMediaCropLayout.b)localObject3).hpa;
+        f1 = ((WxMediaCropLayout.b)localObject3).viewRect.height() * 1.0F / ((WxMediaCropLayout.b)localObject3).viewRect.width() * ((WxMediaCropLayout.b)localObject3).hpa.width();
+        i = ((WxMediaCropLayout.b)localObject3).hpa.left;
+        j = (int)(((WxMediaCropLayout.b)localObject3).hpa.centerY() - f1 / 2.0F);
+        int k = ((WxMediaCropLayout.b)localObject3).hpa.right;
+        f2 = ((WxMediaCropLayout.b)localObject3).hpa.centerY();
         localObject4 = new Rect(i, j, k, (int)(f1 / 2.0F + f2));
-        localObject2 = this.sDt.cJP();
+        localObject2 = this.sOs.cMs();
         d.g.b.p.g(localObject2, "cropLayout");
-        i = ((WxMediaCropLayout)localObject2).getHeight() / 2 - ((WxMediaCropLayout.b)localObject3).tLd.centerY();
+        i = ((WxMediaCropLayout)localObject2).getHeight() / 2 - ((WxMediaCropLayout.b)localObject3).tVU.centerY();
         ((Rect)localObject4).top += i;
         ((Rect)localObject4).bottom += i;
-        f1 = ((WxMediaCropLayout.b)localObject3).pZj.width() * 1.0F / ((WxMediaCropLayout.b)localObject3).hmm.width();
+        f1 = ((WxMediaCropLayout.b)localObject3).qfO.width() * 1.0F / ((WxMediaCropLayout.b)localObject3).hpa.width();
         localObject2 = new Matrix();
         ((Matrix)localObject2).setScale(f1, f1);
-        ((Matrix)localObject2).postTranslate(((WxMediaCropLayout.b)localObject3).pZj.left - ((Rect)localObject4).left, ((WxMediaCropLayout.b)localObject3).pZj.top - ((Rect)localObject4).top);
-        f1 = ((WxMediaCropLayout.b)localObject3).pZj.centerX();
-        f2 = ((WxMediaCropLayout.b)localObject3).hmm.centerX();
-        float f3 = ((WxMediaCropLayout.b)localObject3).pZj.centerY();
-        float f4 = ((WxMediaCropLayout.b)localObject3).hmm.centerY();
+        ((Matrix)localObject2).postTranslate(((WxMediaCropLayout.b)localObject3).qfO.left - ((Rect)localObject4).left, ((WxMediaCropLayout.b)localObject3).qfO.top - ((Rect)localObject4).top);
+        f1 = ((WxMediaCropLayout.b)localObject3).qfO.centerX();
+        f2 = ((WxMediaCropLayout.b)localObject3).hpa.centerX();
+        float f3 = ((WxMediaCropLayout.b)localObject3).qfO.centerY();
+        float f4 = ((WxMediaCropLayout.b)localObject3).hpa.centerY();
         float f5 = i;
-        localObject3 = al.ci((Context)this.sDt.getContext());
-        localObject4 = com.tencent.mm.plugin.finder.utils.p.sMo;
+        localObject3 = al.ck((Context)this.sOs.getContext());
+        localObject4 = com.tencent.mm.plugin.finder.utils.p.sXz;
         com.tencent.mm.plugin.finder.utils.p.fS(((Point)localObject3).x, ((Point)localObject3).y);
         new Point(((Point)localObject3).x, ((Point)localObject3).y);
-        localObject3 = com.tencent.mm.plugin.finder.utils.a.sKD;
-        localObject3 = this.sDt.getContext();
+        localObject3 = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        localObject3 = this.sOs.getContext();
         d.g.b.p.g(localObject3, "context");
         localObject3 = (Activity)localObject3;
-        localObject4 = paramView.tGT;
+        localObject4 = paramView.tRK;
         d.g.b.p.g(localObject4, "item.mRawEditPath");
         com.tencent.mm.plugin.finder.utils.a.a((Activity)localObject3, (String)localObject4, paramView.getType(), (Matrix)localObject2, (Rect)localObject1, new float[] { f1 - f2, f3 - f4 - f5 });
       }
@@ -1783,8 +1603,8 @@ public final class FinderMediaCropUI
         i = 0;
         break;
         label807:
-        localObject3 = this.sDt.cJP().getCurrentCropInfo();
-        localObject1 = ((WxMediaCropLayout.b)localObject3).hmm;
+        localObject3 = this.sOs.cMs().getCurrentCropInfo();
+        localObject1 = ((WxMediaCropLayout.b)localObject3).hpa;
         localObject2 = new Matrix();
         localObject4 = new float[9];
         ((WxMediaCropLayout.b)localObject3).gR.getValues((float[])localObject4);
@@ -1794,19 +1614,19 @@ public final class FinderMediaCropUI
         double d2 = f2;
         f1 = (float)Math.sqrt(f2 * d2 + d1);
         ((Matrix)localObject2).setScale(f1, f1);
-        ((Matrix)localObject2).postTranslate(((WxMediaCropLayout.b)localObject3).pZj.left, ((WxMediaCropLayout.b)localObject3).pZj.top);
-        localObject3 = com.tencent.mm.plugin.finder.utils.a.sKD;
-        localObject3 = this.sDt.getContext();
+        ((Matrix)localObject2).postTranslate(((WxMediaCropLayout.b)localObject3).qfO.left, ((WxMediaCropLayout.b)localObject3).qfO.top);
+        localObject3 = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        localObject3 = this.sOs.getContext();
         d.g.b.p.g(localObject3, "context");
         localObject3 = (Activity)localObject3;
-        localObject4 = paramView.tGT;
+        localObject4 = paramView.tRK;
         d.g.b.p.g(localObject4, "item.mRawEditPath");
         com.tencent.mm.plugin.finder.utils.a.a((Activity)localObject3, (String)localObject4, paramView.getType(), (Matrix)localObject2, (Rect)localObject1);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$4", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "offset", "", "getOffset", "()F", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$4", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "offset", "", "getOffset", "()F", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
   public static final class o
     extends RecyclerView.h
   {
@@ -1815,7 +1635,7 @@ public final class FinderMediaCropUI
     o()
     {
       AppMethodBeat.i(167365);
-      Context localContext = aj.getContext();
+      Context localContext = ak.getContext();
       d.g.b.p.g(localContext, "MMApplicationContext.getContext()");
       this.offset = localContext.getResources().getDimension(2131165289);
       AppMethodBeat.o(167365);
@@ -1833,19 +1653,19 @@ public final class FinderMediaCropUI
       d.g.b.p.g(paramView, "parent.getChildViewHolder(view)");
       int i = paramView.lN();
       paramRect.left = ((int)this.offset);
-      if (i + 1 == this.sDt.cJO().size()) {
+      if (i + 1 == this.sOs.cMr().size()) {
         paramRect.right = ((int)this.offset);
       }
       AppMethodBeat.o(167364);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$5", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$OnItemClickListeners;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "item", "onItemLongClick", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$5", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$OnItemClickListeners;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "item", "onItemLongClick", "", "plugin-finder_release"})
   public static final class p
     implements com.tencent.mm.ui.base.a.a.a<GalleryItem.MediaItem>
   {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class q
     implements View.OnClickListener
   {
@@ -1853,19 +1673,19 @@ public final class FinderMediaCropUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204024);
+      AppMethodBeat.i(204620);
       Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-      paramView = this.sDt;
-      localObject1 = this.sDt.cJV();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+      paramView = this.sOs;
+      localObject1 = this.sOs.cMy();
       d.g.b.p.g(localObject1, "switchVLogCheckbox");
       FinderMediaCropUI.a(paramView, ((CheckBox)localObject1).isChecked());
-      if (FinderMediaCropUI.h(this.sDt))
+      if (FinderMediaCropUI.h(this.sOs))
       {
-        this.sDH.setItems((List)this.sDt.cJO());
-        localObject1 = this.sDt;
-        paramView = this.sDt.cJR().ch(0);
+        this.sOG.setItems((List)this.sOs.cMr());
+        localObject1 = this.sOs;
+        paramView = this.sOs.cMu().ch(0);
         if (paramView == null) {
           break label173;
         }
@@ -1874,20 +1694,20 @@ public final class FinderMediaCropUI
       for (paramView = paramView.auu;; paramView = null)
       {
         if (paramView == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         d.g.b.p.g(paramView, "previewRecyclerView.find…utPosition(0)?.itemView!!");
-        Object localObject2 = this.sDt.cJO().get(0);
+        Object localObject2 = this.sOs.cMr().get(0);
         d.g.b.p.g(localObject2, "selectPathList[0]");
         ((FinderMediaCropUI)localObject1).a(0, paramView, (GalleryItem.MediaItem)localObject2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204024);
+        AppMethodBeat.o(204620);
         return;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class r
     implements Runnable
   {
@@ -1895,30 +1715,30 @@ public final class FinderMediaCropUI
     
     public final void run()
     {
-      AppMethodBeat.i(204025);
-      this.sDH.setItems(this.sDt.cJO().subList(0, 1));
-      FinderMediaCropUI.a(this.sDt).put(0L, new FinderMediaCropUI.d());
-      FinderMediaCropUI localFinderMediaCropUI = this.sDt;
-      Object localObject = this.sDt.cJR().ch(0);
+      AppMethodBeat.i(204621);
+      this.sOG.setItems(this.sOs.cMr().subList(0, 1));
+      FinderMediaCropUI.a(this.sOs).put(0L, new FinderMediaCropUI.d());
+      FinderMediaCropUI localFinderMediaCropUI = this.sOs;
+      Object localObject = this.sOs.cMu().ch(0);
       if (localObject != null) {}
       for (localObject = ((RecyclerView.w)localObject).auu;; localObject = null)
       {
         if (localObject == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         d.g.b.p.g(localObject, "previewRecyclerView.find…utPosition(0)?.itemView!!");
-        GalleryItem.MediaItem localMediaItem = this.sDt.sDc;
+        GalleryItem.MediaItem localMediaItem = this.sOs.sOb;
         if (localMediaItem == null) {
-          d.g.b.p.gfZ();
+          d.g.b.p.gkB();
         }
         localFinderMediaCropUI.a(0, (View)localObject, localMediaItem);
-        AppMethodBeat.o(204025);
+        AppMethodBeat.o(204621);
         return;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class s
     extends q
     implements d.g.a.a<Boolean>
@@ -1929,84 +1749,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class t
-    implements Runnable
-  {
-    t(FinderMediaCropUI paramFinderMediaCropUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(167369);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-      Object localObject = this.sDt.getContext();
-      d.g.b.p.g(localObject, "context");
-      localLayoutParams.topMargin = ((int)((AppCompatActivity)localObject).getResources().getDimension(2131165303) + ar.B(this.sDt.getBaseContext(), (int)this.sDt.getResources().getDimension(2131165298)));
-      localObject = this.sDt.cJQ();
-      d.g.b.p.g(localObject, "actionBarLayout");
-      ((View)localObject).setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-      this.sDt.cJQ().requestLayout();
-      AppMethodBeat.o(167369);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class u
-    implements Runnable
-  {
-    u(FinderMediaCropUI paramFinderMediaCropUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(167370);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-      localLayoutParams.bottomMargin = as.ej(this.sDt.getBaseContext());
-      localLayoutParams.gravity = 80;
-      View localView = this.sDt.cJS();
-      d.g.b.p.g(localView, "footer");
-      localView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-      AppMethodBeat.o(167370);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class v
-    implements View.OnClickListener
-  {
-    v(FinderMediaCropUI paramFinderMediaCropUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(167371);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      this.sDt.setResult(0);
-      this.sDt.finish();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(167371);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class w
-    implements View.OnClickListener
-  {
-    w(FinderMediaCropUI paramFinderMediaCropUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(167372);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      FinderMediaCropUI.c(this.sDt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(167372);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "", "Lcom/tencent/mm/plugin/finder/model/MediaSelectedData;", "isSuccessfully", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "", "Lcom/tencent/mm/plugin/finder/model/MediaSelectedData;", "isSuccessfully", "", "invoke"})
   static final class x
     extends q
     implements m<List<? extends MediaSelectedData>, Boolean, z>
@@ -2017,7 +1760,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "isSuccessfully", "", "result", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "invoke", "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$onGenerateMedia$1$1$1", "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$$special$$inlined$apply$lambda$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "isSuccessfully", "", "result", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "invoke", "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$onGenerateMedia$1$1$1", "com/tencent/mm/plugin/finder/ui/FinderMediaCropUI$$special$$inlined$apply$lambda$1"})
   static final class y
     extends q
     implements m<Boolean, b.f, z>
@@ -2028,7 +1771,7 @@ public final class FinderMediaCropUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class z
     extends q
     implements d.g.a.a<TextView>
@@ -2041,7 +1784,7 @@ public final class FinderMediaCropUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderMediaCropUI
  * JD-Core Version:    0.7.0.1
  */

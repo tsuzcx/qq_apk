@@ -8,21 +8,21 @@ import com.tencent.mm.pluginsdk.j.a.c.f.d;
 import com.tencent.mm.pluginsdk.j.a.c.q;
 import com.tencent.mm.pluginsdk.j.a.c.q.a;
 import com.tencent.mm.pluginsdk.j.a.c.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.SynchronousQueue;
 
 final class k
   extends f<a>
 {
-  private final com.tencent.e.b EQj;
+  private final com.tencent.e.b FiE;
   
   k()
   {
     AppMethodBeat.i(151989);
-    this.EQj = new f.a(this, "MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", 0, 2147483647, new SynchronousQueue());
+    this.FiE = new f.a(this, "MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", 0, 2147483647, new SynchronousQueue());
     AppMethodBeat.o(151989);
   }
   
@@ -44,19 +44,19 @@ final class k
   final void a(a parama)
   {
     AppMethodBeat.i(151991);
-    if (aMf(parama.EPe))
+    if (aNB(parama.Fhz))
     {
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", "URLKey(%s) is already decrypting, skip repeated task", new Object[] { parama.EPe });
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", "URLKey(%s) is already decrypting, skip repeated task", new Object[] { parama.Fhz });
       AppMethodBeat.o(151991);
       return;
     }
-    if (((parama.EPf) && (parama.dmy == parama.EPi) && (parama.EPi >= 0)) || ((!parama.EPf) && (parama.EPg))) {}
+    if (((parama.FhA) && (parama.dnA == parama.FhD) && (parama.FhD >= 0)) || ((!parama.FhA) && (parama.FhB))) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(151991);
       return;
     }
-    ad.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", "request#URLKey(%s) posted to decryptWorker", new Object[] { parama.EPe });
+    ae.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", "request#URLKey(%s) posted to decryptWorker", new Object[] { parama.Fhz });
     try
     {
       super.b(parama);
@@ -65,16 +65,16 @@ final class k
     }
     catch (RejectedExecutionException localRejectedExecutionException)
     {
-      ad.e("MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", "submitRequest(%s) get rejected[%s]", new Object[] { parama.EPe, localRejectedExecutionException });
-      Pd(parama.EPe);
+      ae.e("MicroMsg.ResDownloader.CheckResUpdate.DecryptExecutor", "submitRequest(%s) get rejected[%s]", new Object[] { parama.Fhz, localRejectedExecutionException });
+      PL(parama.Fhz);
       b(parama).run();
       AppMethodBeat.o(151991);
     }
   }
   
-  public final com.tencent.e.b faO()
+  public final com.tencent.e.b feC()
   {
-    return this.EQj;
+    return this.FiE;
   }
   
   static final class a
@@ -88,11 +88,11 @@ final class k
     public final void run()
     {
       AppMethodBeat.i(151988);
-      ad.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptTask", "%s: decryptTask, entered", new Object[] { ((a)baG()).EPe });
-      Object localObject1 = (a)baG();
-      int i = ((a)localObject1).dmx;
+      ae.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptTask", "%s: decryptTask, entered", new Object[] { ((a)bbf()).Fhz });
+      Object localObject1 = (a)bbf();
+      int i = ((a)localObject1).dnz;
       int j = ((a)localObject1).subType;
-      int k = ((a)localObject1).dmy;
+      int k = ((a)localObject1).dnA;
       label1087:
       label1090:
       label1093:
@@ -100,61 +100,61 @@ final class k
       {
         try
         {
-          localObject1 = (a)baG();
-          localObject1 = new l(((a)localObject1).dmx, ((a)localObject1).subType, ((a)localObject1).filePath, ((a)localObject1).EPf, ((a)localObject1).EPg, ((a)localObject1).EPh, ((a)localObject1).EPi, ((a)localObject1).EPk, ((a)localObject1).dmz, ((a)localObject1).EPj, ((a)localObject1).dmA, ((a)localObject1).EPl, ((a)localObject1).DAq, ((a)localObject1).url, ((a)localObject1).EPm, ((a)localObject1).EPn, ((a)localObject1).dmy);
-          if (((l)localObject1).EPK)
+          localObject1 = (a)bbf();
+          localObject1 = new l(((a)localObject1).dnz, ((a)localObject1).subType, ((a)localObject1).filePath, ((a)localObject1).FhA, ((a)localObject1).FhB, ((a)localObject1).FhC, ((a)localObject1).FhD, ((a)localObject1).FhF, ((a)localObject1).dnB, ((a)localObject1).FhE, ((a)localObject1).dnC, ((a)localObject1).FhG, ((a)localObject1).DRK, ((a)localObject1).url, ((a)localObject1).FhH, ((a)localObject1).FhI, ((a)localObject1).dnA);
+          if (((l)localObject1).Fif)
           {
-            ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), do fileDecompress", new Object[] { ((l)localObject1).EPe });
-            ((l)localObject1).EQm = (((l)localObject1).filePath + ".decompressed");
+            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), do fileDecompress", new Object[] { ((l)localObject1).Fhz });
+            ((l)localObject1).FiH = (((l)localObject1).filePath + ".decompressed");
             ((l)localObject1).state = 32;
-            if (((l)localObject1).faR() == null) {
+            if (((l)localObject1).feF() == null) {
               break label1087;
             }
             ((l)localObject1).state = 16;
-            ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), file already valid", new Object[] { ((l)localObject1).EPe });
+            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), file already valid", new Object[] { ((l)localObject1).Fhz });
             break label1087;
-            ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: verify(), file_state " + ((l)localObject1).faT(), new Object[] { ((l)localObject1).EPe });
+            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: verify(), file_state " + ((l)localObject1).feH(), new Object[] { ((l)localObject1).Fhz });
             if (16 == ((l)localObject1).state)
             {
-              localObject1 = ((l)localObject1).faP().faQ().faR();
-              if (bt.isNullOrNil((String)localObject1)) {
+              localObject1 = ((l)localObject1).feD().feE().feF();
+              if (bu.isNullOrNil((String)localObject1)) {
                 break label880;
               }
-              b.faE().a(i, j, (String)localObject1, k, ((a)baG()).dmA);
+              b.fes().a(i, j, (String)localObject1, k, ((a)bbf()).dnC);
             }
           }
           else
           {
-            if (((l)localObject1).EPL)
+            if (((l)localObject1).Fig)
             {
-              ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), do fileDecrypt", new Object[] { ((l)localObject1).EPe });
-              ((l)localObject1).EQm = (((l)localObject1).filePath + ".decrypted");
+              ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), do fileDecrypt", new Object[] { ((l)localObject1).Fhz });
+              ((l)localObject1).FiH = (((l)localObject1).filePath + ".decrypted");
               ((l)localObject1).state = 32;
-              if (((l)localObject1).faR() == null) {
+              if (((l)localObject1).feF() == null) {
                 break label1090;
               }
               ((l)localObject1).state = 16;
-              ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), file already valid", new Object[] { ((l)localObject1).EPe });
+              ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), file already valid", new Object[] { ((l)localObject1).Fhz });
               break label1090;
             }
-            ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), just check sum", new Object[] { ((l)localObject1).EPe });
-            ((l)localObject1).EQm = ((l)localObject1).filePath;
+            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), just check sum", new Object[] { ((l)localObject1).Fhz });
+            ((l)localObject1).FiH = ((l)localObject1).filePath;
             ((l)localObject1).state = 32;
-            if (((l)localObject1).faR() == null) {
+            if (((l)localObject1).feF() == null) {
               break label1093;
             }
             ((l)localObject1).state = 16;
-            ad.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), file already valid", new Object[] { ((l)localObject1).EPe });
+            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkFileExists(), file already valid", new Object[] { ((l)localObject1).Fhz });
             break label1093;
           }
-          if (((l)localObject1).EPL)
+          if (((l)localObject1).Fig)
           {
-            ((l)localObject1).EQm = ((l)localObject1).filePath;
-            ((l)localObject1).tJf = (((l)localObject1).filePath + ".decrypted");
+            ((l)localObject1).FiH = ((l)localObject1).filePath;
+            ((l)localObject1).tTW = (((l)localObject1).filePath + ".decrypted");
             ((l)localObject1).state = 1;
             continue;
           }
-          if (!localObject2.EPK) {
+          if (!localObject2.Fif) {
             break label861;
           }
         }
@@ -162,44 +162,44 @@ final class k
         {
           if (Thread.interrupted())
           {
-            ad.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptTask", "%s: decrypting and interrupted", new Object[] { ((a)baG()).EPe });
-            com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath);
-            com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath + ".decrypted");
-            com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath + ".decompressed");
+            ae.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptTask", "%s: decrypting and interrupted", new Object[] { ((a)bbf()).Fhz });
+            com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath);
+            com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath + ".decrypted");
+            com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath + ".decompressed");
           }
           AppMethodBeat.o(151988);
         }
-        localObject2.EQm = localObject2.filePath;
-        localObject2.tJf = (localObject2.filePath + ".decompressed");
+        localObject2.FiH = localObject2.filePath;
+        localObject2.tTW = (localObject2.filePath + ".decompressed");
         localObject2.state = 2;
         continue;
         label861:
-        localObject2.EQm = localObject2.filePath;
+        localObject2.FiH = localObject2.filePath;
         localObject2.state = 4;
         continue;
         label880:
-        com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath + ".decrypted");
-        com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath + ".decompressed");
+        com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath + ".decrypted");
+        com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath + ".decompressed");
         if (Thread.interrupted())
         {
-          ad.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptTask", "%s: decrypting and interrupted", new Object[] { ((a)baG()).EPe });
-          com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath);
-          com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath + ".decrypted");
-          com.tencent.mm.pluginsdk.j.a.d.a.aMl(((a)baG()).filePath + ".decompressed");
+          ae.i("MicroMsg.ResDownloader.CheckResUpdate.DecryptTask", "%s: decrypting and interrupted", new Object[] { ((a)bbf()).Fhz });
+          com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath);
+          com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath + ".decrypted");
+          com.tencent.mm.pluginsdk.j.a.d.a.aNH(((a)bbf()).filePath + ".decompressed");
         }
-        final a locala = (a)baG();
-        q.a.fbc().handler.post(new Runnable()
+        final a locala = (a)bbf();
+        q.a.feQ().handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(151987);
             bo localbo = new bo();
-            localbo.dmB.dmx = locala.dmx;
-            localbo.dmB.subType = locala.subType;
-            localbo.dmB.dmD = locala.EPk;
-            localbo.dmB.dkM = 1;
-            localbo.dmB.dmC = false;
-            com.tencent.mm.sdk.b.a.IbL.l(localbo);
+            localbo.dnD.dnz = locala.dnz;
+            localbo.dnD.subType = locala.subType;
+            localbo.dnD.dnF = locala.FhF;
+            localbo.dnD.dlO = 1;
+            localbo.dnD.dnE = false;
+            com.tencent.mm.sdk.b.a.IvT.l(localbo);
             AppMethodBeat.o(151987);
           }
         });
@@ -212,7 +212,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.a.k
  * JD-Core Version:    0.7.0.1
  */

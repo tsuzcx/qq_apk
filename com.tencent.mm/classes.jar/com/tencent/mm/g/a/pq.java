@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class pq
   extends b
 {
-  public a dDT;
-  public b dDU;
+  public a dEV;
+  public b dEW;
   
   public pq()
   {
@@ -16,37 +16,27 @@ public final class pq
   
   private pq(byte paramByte)
   {
-    AppMethodBeat.i(91211);
-    this.dDT = new a();
-    this.dDU = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149881);
+    this.dEV = new a();
+    this.dEW = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91211);
+    AppMethodBeat.o(149881);
   }
   
   public static final class a
   {
-    public String appId;
-    public String url;
+    public String dEX;
   }
   
   public static final class b
   {
-    public boolean dDV = false;
-    public String dDW;
-    public String dDX;
-    public String dDY;
-    public String dDZ;
-    public String dEa;
-    public String dEb;
-    public String dEc;
-    public int errCode = 0;
-    public String userName;
+    public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.pq
  * JD-Core Version:    0.7.0.1
  */

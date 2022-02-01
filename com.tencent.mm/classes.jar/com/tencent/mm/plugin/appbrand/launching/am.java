@@ -3,69 +3,69 @@ package com.tencent.mm.plugin.appbrand.launching;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ko;
+import com.tencent.mm.g.a.kp;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ac;
+import com.tencent.mm.plugin.appbrand.appcache.ad;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.sdk.b.c;
 
 public abstract class am
   implements aa
 {
-  QualitySession lJv;
-  private final c<ko> lJw = new c() {};
-  public volatile aa.e lJx;
-  private volatile aa.b lJy;
-  final ac lJz;
+  QualitySession lNV;
+  private final c<kp> lNW = new c() {};
+  public volatile aa.e lNX;
+  private volatile aa.b lNY;
+  final ad lNZ;
   
-  am(ac paramac)
+  am(ad paramad)
   {
-    this.lJz = paramac;
+    this.lNZ = paramad;
   }
   
   public final void a(aa.b paramb)
   {
-    this.lJy = paramb;
+    this.lNY = paramb;
   }
   
   public final void a(aa.e parame)
   {
-    this.lJx = parame;
+    this.lNX = parame;
   }
   
   public void a(QualitySession paramQualitySession)
   {
-    this.lJv = paramQualitySession;
+    this.lNV = paramQualitySession;
   }
   
-  public abstract String aWs();
+  public abstract String aWU();
   
-  final void brr()
+  final void bsc()
   {
-    if (this.lJx != null) {
-      this.lJx.bri();
+    if (this.lNX != null) {
+      this.lNX.brT();
     }
-    this.lJw.dead();
+    this.lNW.dead();
   }
   
-  final void brs()
+  final void bsd()
   {
-    if (this.lJx != null) {
-      this.lJx.brj();
+    if (this.lNX != null) {
+      this.lNX.brU();
     }
   }
   
-  final void brt()
+  final void bse()
   {
-    if (this.lJx != null) {
-      this.lJx.brk();
+    if (this.lNX != null) {
+      this.lNX.brV();
     }
   }
   
   final void c(WxaPkgLoadProgress paramWxaPkgLoadProgress)
   {
-    aa.b localb = this.lJy;
+    aa.b localb = this.lNY;
     if (localb != null) {
       localb.a(paramWxaPkgLoadProgress);
     }
@@ -73,16 +73,16 @@ public abstract class am
   
   final void f(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    if (this.lJx != null) {
-      this.lJx.c(paramWxaPkgWrappingInfo);
+    if (this.lNX != null) {
+      this.lNX.c(paramWxaPkgWrappingInfo);
     }
-    this.lJw.dead();
+    this.lNW.dead();
   }
   
   final void g(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    if (this.lJx != null) {
-      this.lJx.d(paramWxaPkgWrappingInfo);
+    if (this.lNX != null) {
+      this.lNX.d(paramWxaPkgWrappingInfo);
     }
   }
   
@@ -90,10 +90,10 @@ public abstract class am
   
   public final void prepareAsync()
   {
-    if (this.lJv != null) {
-      this.lJw.alive();
+    if (this.lNV != null) {
+      this.lNW.alive();
     }
-    h.LTJ.f(new Runnable()
+    h.MqF.f(new Runnable()
     {
       public final void run()
       {
@@ -101,7 +101,7 @@ public abstract class am
         am.this.prepare();
         AppMethodBeat.o(47241);
       }
-    }, "AppBrandLaunchPrepareJob#" + aWs());
+    }, "AppBrandLaunchPrepareJob#" + aWU());
   }
 }
 

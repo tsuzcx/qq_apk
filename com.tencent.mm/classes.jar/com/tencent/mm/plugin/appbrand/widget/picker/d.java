@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.SpannableStringBuilder;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -19,7 +22,32 @@ final class d
     {
       paramNumberPicker = (EditText)new c(paramNumberPicker, "mInputText", null).get();
       if (paramNumberPicker != null) {
-        paramNumberPicker.setEditableFactory(new d.1());
+        paramNumberPicker.setEditableFactory(new Editable.Factory()
+        {
+          public final Editable newEditable(CharSequence paramAnonymousCharSequence)
+          {
+            AppMethodBeat.i(138085);
+            paramAnonymousCharSequence = new SpannableStringBuilder(paramAnonymousCharSequence)
+            {
+              public final void setSpan(Object paramAnonymous2Object, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
+              {
+                AppMethodBeat.i(138084);
+                try
+                {
+                  super.setSpan(paramAnonymous2Object, paramAnonymous2Int1, paramAnonymous2Int2, paramAnonymous2Int3);
+                  AppMethodBeat.o(138084);
+                  return;
+                }
+                catch (Exception paramAnonymous2Object)
+                {
+                  AppMethodBeat.o(138084);
+                }
+              }
+            };
+            AppMethodBeat.o(138085);
+            return paramAnonymousCharSequence;
+          }
+        });
       }
       AppMethodBeat.o(138086);
       return;

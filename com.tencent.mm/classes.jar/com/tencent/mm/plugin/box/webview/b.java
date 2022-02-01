@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.box.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.box.c.c;
-import com.tencent.mm.protocal.protobuf.bla;
+import com.tencent.mm.protocal.protobuf.bls;
 
 public final class b
   implements f, e
 {
-  private c nVq;
-  public com.tencent.mm.plugin.box.b.a nVr;
+  private c oaX;
+  public com.tencent.mm.plugin.box.b.a oaY;
   
   public b(c paramc)
   {
     AppMethodBeat.i(76341);
-    this.nVq = paramc;
-    g.aiU().a(1869, this);
+    this.oaX = paramc;
+    g.ajj().a(1869, this);
     AppMethodBeat.o(76341);
   }
   
-  public final void eH(String paramString1, String paramString2)
+  public final void eK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(76343);
-    if (this.nVr != null) {
-      g.aiU().a(this.nVr);
+    if (this.oaY != null) {
+      g.ajj().a(this.oaY);
     }
-    this.nVr = new com.tencent.mm.plugin.box.b.a(paramString1, paramString2);
-    g.aiU().a(this.nVr, 0);
-    com.tencent.mm.plugin.box.a.a.ma(2);
+    this.oaY = new com.tencent.mm.plugin.box.b.a(paramString1, paramString2);
+    g.ajj().a(this.oaY, 0);
+    com.tencent.mm.plugin.box.a.a.md(2);
     AppMethodBeat.o(76343);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(76342);
-    if (paramn.equals(this.nVr))
+    if (paramn.equals(this.oaY))
     {
-      this.nVq.bNb().f(this.nVr.dwW, paramInt2, paramString, this.nVr.nVj.FKb);
+      this.oaX.bNZ().f(this.oaY.dyb, paramInt2, paramString, this.oaY.oaQ.GcA);
       if ((paramInt2 == 0) && (paramInt2 == 0))
       {
-        com.tencent.mm.plugin.box.a.a.ma(3);
+        com.tencent.mm.plugin.box.a.a.md(3);
         AppMethodBeat.o(76342);
         return;
       }
-      com.tencent.mm.plugin.box.a.a.ma(4);
+      com.tencent.mm.plugin.box.a.a.md(4);
     }
     AppMethodBeat.o(76342);
   }

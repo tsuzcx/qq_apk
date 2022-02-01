@@ -39,7 +39,7 @@ public abstract class a
     return this.Yt;
   }
   
-  abstract ActionBar fyg();
+  abstract ActionBar fCi();
   
   public final MenuInflater getMenuInflater()
   {
@@ -60,7 +60,7 @@ public abstract class a
   final ActionBar getSupportActionBar()
   {
     if (this.mActionBar == null) {
-      this.mActionBar = fyg();
+      this.mActionBar = fCi();
     }
     return this.mActionBar;
   }

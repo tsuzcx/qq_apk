@@ -11,7 +11,7 @@ final class ac$1
   public final void run()
   {
     AppMethodBeat.i(132893);
-    MMLogic.reportCGIServerError(this.iGe, this.iGf);
+    MMLogic.reportCGIServerError(this.iIX, this.iIY);
     AppMethodBeat.o(132893);
   }
 }

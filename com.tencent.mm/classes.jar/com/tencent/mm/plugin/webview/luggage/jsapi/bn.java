@@ -6,7 +6,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class bn
   extends br<g>
@@ -16,20 +16,20 @@ public class bn
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78637);
-    ad.i("MicroMsg.JsApiShowOptionMenu", "invoke");
-    m localm = ((g)paramb.chg).ePe();
+    ae.i("MicroMsg.JsApiShowOptionMenu", "invoke");
+    m localm = ((g)paramb.chg).eSQ();
     if (localm == null)
     {
-      ad.i("MicroMsg.JsApiShowOptionMenu", "actionBar is null");
+      ae.i("MicroMsg.JsApiShowOptionMenu", "actionBar is null");
       AppMethodBeat.o(78637);
       return;
     }
-    localm.ePz();
+    localm.eTl();
     paramb.a("", null);
     AppMethodBeat.o(78637);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

@@ -5,22 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/EmojiGroupDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "()V", "TAG", "", "TAG$1", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "Companion", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiGroupDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "()V", "TAG", "", "TAG$1", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "Companion", "plugin-emojisdk_release"})
 public final class b
   extends com.tencent.mm.loader.b.a.a<a>
 {
   private static final String TAG = "MicroMsg.EmojiGroupDiskCache";
-  public static final b.a gip;
-  private final String gio = "MicroMsg.EmojiThumbLoader";
+  public static final b.a gkH;
+  private final String gkG = "MicroMsg.EmojiThumbLoader";
   
   static
   {
     AppMethodBeat.i(183953);
-    gip = new b.a((byte)0);
+    gkH = new b.a((byte)0);
     TAG = "MicroMsg.EmojiGroupDiskCache";
     AppMethodBeat.o(183953);
   }
@@ -58,12 +58,12 @@ public final class b
     paramf = ((d)paramf).getProvider();
     p.g(paramf, "MMKernel.plugin(IPluginEmoji::class.java).provider");
     parame = paramf.getAccPath() + "emoji/";
-    parama = ((a)parama.value()).gin.fxi();
+    parama = ((a)parama.value()).gkF.fxk();
     p.g(parama, "url.value().groupInfo.productID");
     parama = p.C(b.a.j(parame, parama, ""), "_panel_enable");
-    if (i.fv(parama))
+    if (o.fB(parama))
     {
-      parama = com.tencent.mm.loader.h.b.a.yb(parama);
+      parama = com.tencent.mm.loader.h.b.a.yL(parama);
       AppMethodBeat.o(105383);
       return parama;
     }
@@ -73,7 +73,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.b
  * JD-Core Version:    0.7.0.1
  */

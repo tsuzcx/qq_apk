@@ -9,18 +9,18 @@ import com.tencent.c.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.f.c;
 import com.tencent.matrix.trace.f.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class e
 {
-  private static ax cBg = ax.aQz("MatrixDelegate");
+  private static ay cBN = ay.aRW("MatrixDelegate");
   
-  public static boolean HS()
+  public static boolean Ia()
   {
     if (Build.VERSION.SDK_INT >= 23) {
-      return Settings.canDrawOverlays(aj.getContext());
+      return Settings.canDrawOverlays(ak.getContext());
     }
     return true;
   }
@@ -45,7 +45,7 @@ public final class e
     int n = 1;
     int i1 = 1;
     int i = 1;
-    Object localObject = (com.tencent.matrix.trace.a)b.HL().V(com.tencent.matrix.trace.a.class);
+    Object localObject = (com.tencent.matrix.trace.a)b.HT().V(com.tencent.matrix.trace.a.class);
     if (localObject == null) {}
     label102:
     label635:
@@ -57,17 +57,17 @@ public final class e
         return;
         if ("ENABLE_FPS".equals(paramIntent.getAction()))
         {
-          localObject = ((com.tencent.matrix.trace.a)localObject).cJy;
-          bool = paramIntent.getBooleanExtra("ENABLE_FPS", ((f)localObject).cKc);
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          localObject = ((com.tencent.matrix.trace.a)localObject).cKh;
+          bool = paramIntent.getBooleanExtra("ENABLE_FPS", ((f)localObject).cKL);
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
           if (bool)
           {
-            ((c)localObject).Jk();
-            if (!aj.cmR()) {
+            ((c)localObject).Js();
+            if (!ak.coh()) {
               break label146;
             }
-            paramIntent = cBg;
-            localObject = a.a.LCo.name();
+            paramIntent = cBN;
+            localObject = a.a.LZs.name();
             if (!bool) {
               break label148;
             }
@@ -76,32 +76,32 @@ public final class e
           {
             paramIntent.putInt((String)localObject, i).apply();
             return;
-            ((c)localObject).Jl();
+            ((c)localObject).Jt();
             break label102;
             break;
           }
         }
         if ("ENABLE_FPS_FLOAT".equals(paramIntent.getAction()))
         {
-          localObject = com.tencent.matrix.trace.view.a.aN(aj.getContext());
-          ((com.tencent.matrix.trace.view.a)localObject).eb(aj.getProcessName());
-          ((com.tencent.matrix.trace.view.a)localObject).cMV = new e.1();
+          localObject = com.tencent.matrix.trace.view.a.aO(ak.getContext());
+          ((com.tencent.matrix.trace.view.a)localObject).eg(ak.getProcessName());
+          ((com.tencent.matrix.trace.view.a)localObject).cNE = new e.1();
           bool = paramIntent.getBooleanExtra("ENABLE_FPS_FLOAT", false);
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
-          if ((bool) && (!HS()))
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          if ((bool) && (!Ia()))
           {
-            ad.e("Matrix.UISettingHandler", "permission denied for window type");
+            ae.e("Matrix.UISettingHandler", "permission denied for window type");
             return;
           }
-          ((com.tencent.matrix.trace.view.a)localObject).cMW = true;
+          ((com.tencent.matrix.trace.view.a)localObject).cNF = true;
           if (bool) {
-            if (a.cAS.cAU)
+            if (a.cBz.cBB)
             {
               ((com.tencent.matrix.trace.view.a)localObject).show();
-              if (!aj.cmR()) {
+              if (!ak.coh()) {
                 break label322;
               }
-              paramIntent = cBg;
+              paramIntent = cBN;
               if (!bool) {
                 break label324;
               }
@@ -111,10 +111,10 @@ public final class e
           {
             paramIntent.putInt("ENABLE_FPS_FLOAT", i).apply();
             return;
-            ad.w("Matrix.UISettingHandler", "not in the foreground now!");
+            ae.w("Matrix.UISettingHandler", "not in the foreground now!");
             break label272;
             ((com.tencent.matrix.trace.view.a)localObject).dismiss();
-            ((com.tencent.matrix.trace.view.a)localObject).cMW = false;
+            ((com.tencent.matrix.trace.view.a)localObject).cNF = false;
             break label272;
             break;
             i = -1;
@@ -122,17 +122,17 @@ public final class e
         }
         if ("ENABLE_START_UP".equals(paramIntent.getAction()))
         {
-          localObject = ((com.tencent.matrix.trace.a)localObject).cJx;
-          bool = paramIntent.getBooleanExtra("ENABLE_START_UP", ((f)localObject).cKc);
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          localObject = ((com.tencent.matrix.trace.a)localObject).cKg;
+          bool = paramIntent.getBooleanExtra("ENABLE_START_UP", ((f)localObject).cKL);
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
           if (bool)
           {
-            ((com.tencent.matrix.trace.f.e)localObject).Jk();
-            if (!aj.cmR()) {
+            ((com.tencent.matrix.trace.f.e)localObject).Js();
+            if (!ak.coh()) {
               break label441;
             }
-            paramIntent = cBg;
-            localObject = a.a.LCy.name();
+            paramIntent = cBN;
+            localObject = a.a.LZC.name();
             if (!bool) {
               break label443;
             }
@@ -141,24 +141,24 @@ public final class e
           {
             paramIntent.putInt((String)localObject, i).apply();
             return;
-            ((com.tencent.matrix.trace.f.e)localObject).Jl();
+            ((com.tencent.matrix.trace.f.e)localObject).Jt();
             break label397;
             break;
           }
         }
         if ("ENABLE_EVIL_METHOD".equals(paramIntent.getAction()))
         {
-          localObject = ((com.tencent.matrix.trace.a)localObject).cJw;
-          bool = paramIntent.getBooleanExtra("ENABLE_EVIL_METHOD", ((f)localObject).cKc);
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          localObject = ((com.tencent.matrix.trace.a)localObject).cKf;
+          bool = paramIntent.getBooleanExtra("ENABLE_EVIL_METHOD", ((f)localObject).cKL);
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
           if (bool)
           {
-            ((com.tencent.matrix.trace.f.b)localObject).Jk();
-            if (!aj.cmR()) {
+            ((com.tencent.matrix.trace.f.b)localObject).Js();
+            if (!ak.coh()) {
               break label560;
             }
-            paramIntent = cBg;
-            localObject = a.a.LCw.name();
+            paramIntent = cBN;
+            localObject = a.a.LZA.name();
             if (!bool) {
               break label562;
             }
@@ -167,24 +167,24 @@ public final class e
           {
             paramIntent.putInt((String)localObject, i).apply();
             return;
-            ((com.tencent.matrix.trace.f.b)localObject).Jl();
+            ((com.tencent.matrix.trace.f.b)localObject).Jt();
             break label516;
             break;
           }
         }
         if ("ENABLE_ANR".equals(paramIntent.getAction()))
         {
-          localObject = ((com.tencent.matrix.trace.a)localObject).cJz;
-          bool = paramIntent.getBooleanExtra("ENABLE_ANR", ((f)localObject).cKc);
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          localObject = ((com.tencent.matrix.trace.a)localObject).cKi;
+          bool = paramIntent.getBooleanExtra("ENABLE_ANR", ((f)localObject).cKL);
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
           if (bool)
           {
-            ((com.tencent.matrix.trace.f.a)localObject).Jk();
-            if (!aj.cmR()) {
+            ((com.tencent.matrix.trace.f.a)localObject).Js();
+            if (!ak.coh()) {
               break label680;
             }
-            paramIntent = cBg;
-            localObject = a.a.LCx.name();
+            paramIntent = cBN;
+            localObject = a.a.LZB.name();
             if (!bool) {
               break label682;
             }
@@ -193,16 +193,16 @@ public final class e
           {
             paramIntent.putInt((String)localObject, i).apply();
             return;
-            ((com.tencent.matrix.trace.f.a)localObject).Jl();
+            ((com.tencent.matrix.trace.f.a)localObject).Jt();
             break label635;
             break;
           }
         }
         if ("ENABLE_METHOD_BEAT".equals(paramIntent.getAction()))
         {
-          localObject = com.tencent.matrix.trace.a.IW();
+          localObject = com.tencent.matrix.trace.a.Je();
           bool = paramIntent.getBooleanExtra("ENABLE_METHOD_BEAT", ((AppMethodBeat)localObject).isAlive());
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
           if (bool)
           {
             ((AppMethodBeat)localObject).onStart();
@@ -214,30 +214,30 @@ public final class e
         if ("ENABLE_DEV_LOG".equals(paramIntent.getAction()))
         {
           bool = paramIntent.getBooleanExtra("ENABLE_DEV_LOG", false);
-          ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
-          ((com.tencent.matrix.trace.a)localObject).cJv.cJH = bool;
+          ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+          ((com.tencent.matrix.trace.a)localObject).cKe.cKq = bool;
           return;
         }
         if (!"MODIFY_EVIL_THRESHOLD".equals(paramIntent.getAction())) {
           break;
         }
         l = paramIntent.getLongExtra("MODIFY_EVIL_THRESHOLD", 700L);
-        ((com.tencent.matrix.trace.a)localObject).cJw.cLb = l;
-      } while (!aj.cmR());
-      cBg.putLong(a.a.LCr.name(), l).apply();
+        ((com.tencent.matrix.trace.a)localObject).cKf.cLK = l;
+      } while (!ak.coh());
+      cBN.putLong(a.a.LZv.name(), l).apply();
       return;
       if ("ENABLE_BATTERY".equals(paramIntent.getAction()))
       {
         bool = paramIntent.getBooleanExtra("ENABLE_BATTERY", false);
-        ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
-        paramIntent = (com.tencent.matrix.a.c.a)b.HL().V(com.tencent.matrix.a.c.a.class);
+        ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+        paramIntent = (com.tencent.matrix.a.c.a)b.HT().V(com.tencent.matrix.a.c.a.class);
         if (bool)
         {
           paramIntent.start();
-          if (!aj.cmR()) {
+          if (!ak.coh()) {
             break label985;
           }
-          paramIntent = cBg;
+          paramIntent = cBN;
           if (!bool) {
             break label987;
           }
@@ -262,22 +262,22 @@ public final class e
     label272:
     label441:
     label443:
-    ad.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
+    ae.i("Matrix.UISettingHandler", "action=%s isEnable=%s", new Object[] { paramIntent.getAction(), Boolean.valueOf(bool) });
     label397:
     label560:
     label562:
     label948:
-    paramIntent = (com.tencent.matrix.f.a)b.HL().V(com.tencent.matrix.f.a.class);
+    paramIntent = (com.tencent.matrix.f.a)b.HT().V(com.tencent.matrix.f.a.class);
     label516:
     label680:
     label682:
     if (bool)
     {
       paramIntent.start();
-      if (!aj.cmR()) {
+      if (!ak.coh()) {
         break label1100;
       }
-      paramIntent = cBg;
+      paramIntent = cBN;
       if (!bool) {
         break label1102;
       }

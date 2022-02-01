@@ -7,7 +7,7 @@ import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/eggspring/ui/SpringEggVideoView;", "Lcom/tencent/mm/modelvideo/MMVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "setFilepath", "", "filepath", "", "plugin-eggspring_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/eggspring/ui/SpringEggVideoView;", "Lcom/tencent/mm/modelvideo/MMVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "setFilepath", "", "filepath", "", "plugin-eggspring_release"})
 public final class SpringEggVideoView
   extends MMVideoView
 {
@@ -15,7 +15,7 @@ public final class SpringEggVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(108227);
-    setScaleType(i.e.ESN);
+    setScaleType(i.e.Fli);
     setIsShowBasicControls(false);
     AppMethodBeat.o(108227);
   }
@@ -24,7 +24,7 @@ public final class SpringEggVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(108228);
-    setScaleType(i.e.ESN);
+    setScaleType(i.e.Fli);
     setIsShowBasicControls(false);
     AppMethodBeat.o(108228);
   }
@@ -38,7 +38,7 @@ public final class SpringEggVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.SpringEggVideoView
  * JD-Core Version:    0.7.0.1
  */

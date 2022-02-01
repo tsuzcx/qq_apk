@@ -2,227 +2,227 @@ package com.tencent.mm.plugin.subapp.jdbiz;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.kl;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.cd;
+import com.tencent.mm.app.o.a;
+import com.tencent.mm.g.a.km;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.pluginsdk.i.g.a;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Map;
 
 public class d
-  implements ax, g.a
+  implements az, g.a
 {
-  private a Bht;
-  private c Bhu;
-  Map<String, Integer> Bhv;
-  private n.a appForegroundListener;
-  private com.tencent.mm.sdk.b.c fFn;
+  private a ByR;
+  private c ByS;
+  Map<String, Integer> ByT;
+  private o.a appForegroundListener;
+  private com.tencent.mm.sdk.b.c fHr;
   
   public d()
   {
     AppMethodBeat.i(28881);
-    this.Bht = null;
-    this.Bhu = null;
-    this.Bhv = new HashMap();
-    this.appForegroundListener = new n.a()
+    this.ByR = null;
+    this.ByS = null;
+    this.ByT = new HashMap();
+    this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString) {}
       
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(28878);
-        if (com.tencent.mm.pluginsdk.i.g.EPa != null)
+        if (com.tencent.mm.pluginsdk.i.g.Fhv != null)
         {
-          d.emI();
-          d.emP();
+          d.eqr();
+          d.eqy();
         }
         AppMethodBeat.o(28878);
       }
     };
-    this.fFn = new d.2(this);
-    ad.i("MicroMsg.SubCoreJdIP6", "new SubCoreJDBiz this: " + hashCode() + " stack: " + bt.flS());
+    this.fHr = new d.2(this);
+    ae.i("MicroMsg.SubCoreJdIP6", "new SubCoreJDBiz this: " + hashCode() + " stack: " + bu.fpN());
     AppMethodBeat.o(28881);
   }
   
   public static void b(c paramc)
   {
     AppMethodBeat.i(28890);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    d locald = emI();
-    if (locald.Bhu == null) {
-      locald.Bhu = c.emF();
+    com.tencent.mm.kernel.g.ajP().aiU();
+    d locald = eqr();
+    if (locald.ByS == null) {
+      locald.ByS = c.eqo();
     }
-    ad.i("MicroMsg.SubCoreJdIP6", "updatejdMsgContent old: %s new: %s", new Object[] { locald.Bhu.akR(), paramc.akR() });
-    if (!paramc.a(locald.Bhu))
+    ae.i("MicroMsg.SubCoreJdIP6", "updatejdMsgContent old: %s new: %s", new Object[] { locald.ByS.alg(), paramc.alg() });
+    if (!paramc.a(locald.ByS))
     {
-      ad.i("MicroMsg.SubCoreJdIP6", "fo zu baoyou! the activityid is same");
+      ae.i("MicroMsg.SubCoreJdIP6", "fo zu baoyou! the activityid is same");
       AppMethodBeat.o(28890);
       return;
     }
-    if ((!bt.isNullOrNil(paramc.Bhg)) || (paramc.Bhf))
+    if ((!bu.isNullOrNil(paramc.ByE)) || (paramc.ByD))
     {
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(327939, "1");
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(327939, "1");
     }
-    if (paramc.Bhe)
+    if (paramc.ByC)
     {
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(327938, "1");
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(327938, "1");
     }
     for (;;)
     {
-      locald.Bhu = paramc;
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(327942, paramc.dDP);
-      locald.emO();
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IGo, Boolean.TRUE);
+      locald.ByS = paramc;
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(327942, paramc.dEU);
+      locald.eqx();
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.JaO, Boolean.TRUE);
       AppMethodBeat.o(28890);
       return;
-      ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(327938, "");
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(327938, "");
     }
   }
   
-  public static d emI()
+  public static String eqA()
+  {
+    AppMethodBeat.i(28895);
+    String str;
+    if (ad.foj()) {
+      str = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigName");
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(28895);
+      return str;
+      if (ad.fok()) {
+        str = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigNameHKTW");
+      } else {
+        str = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigNameEN");
+      }
+    }
+  }
+  
+  public static String eqB()
+  {
+    AppMethodBeat.i(28896);
+    String str = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigJumpUrl");
+    AppMethodBeat.o(28896);
+    return str;
+  }
+  
+  private static b eqC()
+  {
+    AppMethodBeat.i(186631);
+    b localb = new b();
+    localb.username = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigJumpWeAppUsername");
+    localb.path = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigJumpWeAppPath");
+    localb.version = com.tencent.mm.n.g.acL().getInt("JDEntranceConfigJumpWeAppVersion", 0);
+    AppMethodBeat.o(186631);
+    return localb;
+  }
+  
+  public static d eqr()
   {
     AppMethodBeat.i(28882);
-    d locald2 = (d)com.tencent.mm.pluginsdk.i.g.EPa;
+    d locald2 = (d)com.tencent.mm.pluginsdk.i.g.Fhv;
     d locald1 = locald2;
     if (locald2 == null)
     {
       locald1 = new d();
-      com.tencent.mm.pluginsdk.i.g.EPa = locald1;
+      com.tencent.mm.pluginsdk.i.g.Fhv = locald1;
     }
     AppMethodBeat.o(28882);
     return locald1;
   }
   
-  public static boolean emJ()
+  public static boolean eqs()
   {
     AppMethodBeat.i(28885);
-    ba.aBQ();
-    boolean bool = "1".equals((String)com.tencent.mm.model.c.ajl().get(327939, ""));
+    bc.aCg();
+    boolean bool = "1".equals((String)com.tencent.mm.model.c.ajA().get(327939, ""));
     AppMethodBeat.o(28885);
     return bool;
   }
   
-  public static boolean emK()
+  public static boolean eqt()
   {
     AppMethodBeat.i(28886);
-    ba.aBQ();
-    boolean bool = "1".equals((String)com.tencent.mm.model.c.ajl().get(327938, ""));
+    bc.aCg();
+    boolean bool = "1".equals((String)com.tencent.mm.model.c.ajA().get(327938, ""));
     AppMethodBeat.o(28886);
     return bool;
   }
   
-  public static void emL()
+  public static void equ()
   {
     AppMethodBeat.i(28887);
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(327938, "");
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(327938, "");
     AppMethodBeat.o(28887);
   }
   
-  public static void emM()
+  public static void eqv()
   {
     AppMethodBeat.i(28888);
-    ba.aBQ();
-    com.tencent.mm.model.c.ajl().set(327939, "");
+    bc.aCg();
+    com.tencent.mm.model.c.ajA().set(327939, "");
     AppMethodBeat.o(28888);
   }
   
-  private void emO()
+  private void eqx()
   {
     AppMethodBeat.i(28891);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28880);
-        kl localkl = new kl();
-        com.tencent.mm.sdk.b.a.IbL.l(localkl);
+        km localkm = new km();
+        com.tencent.mm.sdk.b.a.IvT.l(localkm);
         AppMethodBeat.o(28880);
       }
     });
     AppMethodBeat.o(28891);
   }
   
-  public static void emP()
+  public static void eqy()
   {
     AppMethodBeat.i(28892);
-    if (ba.ajx())
+    if (bc.ajM())
     {
-      emI();
-      if (!emJ())
+      eqr();
+      if (!eqs())
       {
-        emI();
-        if (!emK()) {}
+        eqr();
+        if (!eqt()) {}
       }
       else
       {
-        c localc = emI().emN();
-        if (((!bt.isNullOrNil(localc.Bhg)) || (localc.Bhf)) && (localc.cQB()))
+        c localc = eqr().eqw();
+        if (((!bu.isNullOrNil(localc.ByE)) || (localc.ByD)) && (localc.cTg()))
         {
-          ad.i("MicroMsg.SubCoreJdIP6", "clear red dot/friend dot");
-          emI();
-          emL();
-          emI();
-          emM();
-          emI().emO();
+          ae.i("MicroMsg.SubCoreJdIP6", "clear red dot/friend dot");
+          eqr();
+          equ();
+          eqr();
+          eqv();
+          eqr().eqx();
         }
       }
     }
     AppMethodBeat.o(28892);
   }
   
-  public static String emR()
-  {
-    AppMethodBeat.i(28895);
-    String str;
-    if (ac.fkp()) {
-      str = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigName");
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(28895);
-      return str;
-      if (ac.fkq()) {
-        str = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigNameHKTW");
-      } else {
-        str = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigNameEN");
-      }
-    }
-  }
-  
-  public static String emS()
-  {
-    AppMethodBeat.i(28896);
-    String str = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigJumpUrl");
-    AppMethodBeat.o(28896);
-    return str;
-  }
-  
-  private static b emT()
-  {
-    AppMethodBeat.i(193356);
-    b localb = new b();
-    localb.username = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigJumpWeAppUsername");
-    localb.path = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigJumpWeAppPath");
-    localb.version = com.tencent.mm.n.g.acA().getInt("JDEntranceConfigJumpWeAppVersion", 0);
-    AppMethodBeat.o(193356);
-    return localb;
-  }
-  
-  public static String fh(String paramString, int paramInt)
+  public static String fq(String paramString, int paramInt)
   {
     AppMethodBeat.i(28893);
     String str = paramString;
@@ -241,46 +241,20 @@ public class d
   
   public void clearPluginData(int paramInt) {}
   
-  public final c emN()
-  {
-    AppMethodBeat.i(28889);
-    if (this.Bhu == null) {
-      this.Bhu = c.emF();
-    }
-    c localc = this.Bhu;
-    AppMethodBeat.o(28889);
-    return localc;
-  }
-  
-  public final boolean emQ()
-  {
-    AppMethodBeat.i(28894);
-    String str1 = emR();
-    String str2 = emS();
-    String str3 = com.tencent.mm.n.g.acA().getValue("JDEntranceConfigJumpWeAppUsername");
-    if ((!bt.isNullOrNil(str1)) && ((!bt.isNullOrNil(str2)) || (!bt.isNullOrNil(str3))))
-    {
-      AppMethodBeat.o(28894);
-      return true;
-    }
-    AppMethodBeat.o(28894);
-    return false;
-  }
-  
-  public final String emU()
+  public final String eqD()
   {
     int j = 1;
     AppMethodBeat.i(28897);
     Object localObject2 = "";
-    c localc = emN();
+    c localc = eqw();
     int i = j;
     Object localObject1 = localObject2;
-    if (emJ())
+    if (eqs())
     {
-      if ((localc.cQB()) || (!"3".equals(localc.Bhc)) || (bt.isNullOrNil(localc.jumpUrl))) {
+      if ((localc.cTg()) || (!"3".equals(localc.ByA)) || (bu.isNullOrNil(localc.jumpUrl))) {
         break label184;
       }
-      ad.i("MicroMsg.SubCoreJdIP6", "jumpUrl update %s", new Object[] { localc.jumpUrl });
+      ae.i("MicroMsg.SubCoreJdIP6", "jumpUrl update %s", new Object[] { localc.jumpUrl });
       localObject1 = localc.jumpUrl;
       i = 6;
     }
@@ -288,19 +262,19 @@ public class d
     {
       j = i;
       localObject2 = localObject1;
-      if ("2".equals(localc.Bhc))
+      if ("2".equals(localc.ByA))
       {
         j = i;
         localObject2 = localObject1;
-        if (!bt.isNullOrNil(localc.jumpUrl))
+        if (!bu.isNullOrNil(localc.jumpUrl))
         {
           j = i;
           localObject2 = localObject1;
-          if (localc.emG())
+          if (localc.eqp())
           {
             j = i;
             localObject2 = localObject1;
-            if (!localc.emH())
+            if (!localc.eqq())
             {
               localObject2 = localc.jumpUrl;
               j = 3;
@@ -308,51 +282,77 @@ public class d
           }
         }
       }
-      if (bt.isNullOrNil((String)localObject2)) {
+      if (bu.isNullOrNil((String)localObject2)) {
         break;
       }
-      localObject1 = fh((String)localObject2, j);
+      localObject1 = fq((String)localObject2, j);
       AppMethodBeat.o(28897);
       return localObject1;
       label184:
       i = j;
       localObject1 = localObject2;
-      if (localc.Bhf)
+      if (localc.ByD)
       {
         i = 2;
         localObject1 = localObject2;
       }
     }
-    localObject1 = emS();
+    localObject1 = eqB();
     AppMethodBeat.o(28897);
     return localObject1;
   }
   
-  public final b emV()
+  public final b eqE()
   {
     AppMethodBeat.i(28898);
     b localb = new b();
-    Object localObject = emN();
-    if ((emJ()) && (!((c)localObject).cQB()) && ("3".equals(((c)localObject).Bhc)))
+    Object localObject = eqw();
+    if ((eqs()) && (!((c)localObject).cTg()) && ("3".equals(((c)localObject).ByA)))
     {
-      ad.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).Bhc, ((c)localObject).Bhq, ((c)localObject).Bhr, Integer.valueOf(((c)localObject).Bhs) });
-      localb.username = ((c)localObject).Bhq;
-      localb.path = ((c)localObject).Bhr;
-      localb.version = ((c)localObject).Bhs;
+      ae.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).ByA, ((c)localObject).ByO, ((c)localObject).ByP, Integer.valueOf(((c)localObject).ByQ) });
+      localb.username = ((c)localObject).ByO;
+      localb.path = ((c)localObject).ByP;
+      localb.version = ((c)localObject).ByQ;
     }
-    if (("2".equals(((c)localObject).Bhc)) && (((c)localObject).emG()) && (!((c)localObject).emH()))
+    if (("2".equals(((c)localObject).ByA)) && (((c)localObject).eqp()) && (!((c)localObject).eqq()))
     {
-      ad.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).Bhc, ((c)localObject).Bhq, ((c)localObject).Bhr, Integer.valueOf(((c)localObject).Bhs) });
-      localb.username = ((c)localObject).Bhq;
-      localb.path = ((c)localObject).Bhr;
-      localb.version = ((c)localObject).Bhs;
+      ae.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).ByA, ((c)localObject).ByO, ((c)localObject).ByP, Integer.valueOf(((c)localObject).ByQ) });
+      localb.username = ((c)localObject).ByO;
+      localb.path = ((c)localObject).ByP;
+      localb.version = ((c)localObject).ByQ;
     }
     localObject = localb;
     if (!localb.isValid()) {
-      localObject = emT();
+      localObject = eqC();
     }
     AppMethodBeat.o(28898);
     return localObject;
+  }
+  
+  public final c eqw()
+  {
+    AppMethodBeat.i(28889);
+    if (this.ByS == null) {
+      this.ByS = c.eqo();
+    }
+    c localc = this.ByS;
+    AppMethodBeat.o(28889);
+    return localc;
+  }
+  
+  public final boolean eqz()
+  {
+    AppMethodBeat.i(28894);
+    String str1 = eqA();
+    String str2 = eqB();
+    String str3 = com.tencent.mm.n.g.acL().getValue("JDEntranceConfigJumpWeAppUsername");
+    if ((!bu.isNullOrNil(str1)) && ((!bu.isNullOrNil(str2)) || (!bu.isNullOrNil(str3))))
+    {
+      AppMethodBeat.o(28894);
+      return true;
+    }
+    AppMethodBeat.o(28894);
+    return false;
   }
   
   public HashMap<Integer, h.b> getBaseDBFactories()
@@ -363,30 +363,30 @@ public class d
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28883);
-    ad.i("MicroMsg.SubCoreJdIP6", "onAccountPostReset");
-    if (this.Bht == null) {
-      this.Bht = new a();
+    ae.i("MicroMsg.SubCoreJdIP6", "onAccountPostReset");
+    if (this.ByR == null) {
+      this.ByR = new a();
     }
     this.appForegroundListener.alive();
-    ba.getSysCmdMsgExtension().a("jd", this.Bht, true);
-    com.tencent.mm.sdk.b.a.IbL.c(this.fFn);
+    bc.getSysCmdMsgExtension().a("jd", this.ByR, true);
+    com.tencent.mm.sdk.b.a.IvT.c(this.fHr);
     AppMethodBeat.o(28883);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(28884);
-    ad.i("MicroMsg.SubCoreJdIP6", "onAccountRelease");
+    ae.i("MicroMsg.SubCoreJdIP6", "onAccountRelease");
     this.appForegroundListener.dead();
-    if (this.Bht != null)
+    if (this.ByR != null)
     {
-      a locala = this.Bht;
-      com.tencent.mm.sdk.b.a.IbL.d(locala.BgZ);
-      ba.getSysCmdMsgExtension().b("jd", this.Bht, true);
+      a locala = this.ByR;
+      com.tencent.mm.sdk.b.a.IvT.d(locala.Byx);
+      bc.getSysCmdMsgExtension().b("jd", this.ByR, true);
     }
-    this.Bhv.clear();
-    this.Bht = null;
-    com.tencent.mm.sdk.b.a.IbL.d(this.fFn);
+    this.ByT.clear();
+    this.ByR = null;
+    com.tencent.mm.sdk.b.a.IvT.d(this.fHr);
     AppMethodBeat.o(28884);
   }
   

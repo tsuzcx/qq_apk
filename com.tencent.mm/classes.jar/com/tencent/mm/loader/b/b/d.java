@@ -4,55 +4,55 @@ import android.graphics.Bitmap;
 import com.tencent.mm.memory.a.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/memory/DefaultMemoryCacheMap;", "", "()V", "MAX_BIG_BITMAP_SIZE", "", "getMAX_BIG_BITMAP_SIZE", "()I", "MAX_DEFAULT_BITMAP_SIZE", "getMAX_DEFAULT_BITMAP_SIZE", "OVERSIZE_BITMAP_SIZE", "getOVERSIZE_BITMAP_SIZE", "bigImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "getBigImageMemoryCache", "()Lcom/tencent/mm/memory/cache/BitmapResource;", "defaultImageMemoryCache", "getDefaultImageMemoryCache", "libimageloader_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/cache/memory/DefaultMemoryCacheMap;", "", "()V", "MAX_BIG_BITMAP_SIZE", "", "getMAX_BIG_BITMAP_SIZE", "()I", "MAX_DEFAULT_BITMAP_SIZE", "getMAX_DEFAULT_BITMAP_SIZE", "OVERSIZE_BITMAP_SIZE", "getOVERSIZE_BITMAP_SIZE", "bigImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "getBigImageMemoryCache", "()Lcom/tencent/mm/memory/cache/BitmapResource;", "defaultImageMemoryCache", "getDefaultImageMemoryCache", "libimageloader_release"})
 public final class d
 {
-  private static final b<Bitmap> hdc;
-  private static final int hdd = 50;
-  private static final int hdf = 524288;
-  private static final int hdg = 10;
-  private static final b<Bitmap> hdl;
-  public static final d hdm;
+  private static final b<Bitmap> hfQ;
+  private static final int hfR = 50;
+  private static final int hfT = 524288;
+  private static final int hfU = 10;
+  private static final b<Bitmap> hfZ;
+  public static final d hga;
   
   static
   {
     d locald = new d();
-    hdm = locald;
-    hdf = 524288;
-    hdd = 50;
-    hdg = 10;
-    hdc = new b(hdd, locald.getClass());
-    hdl = new b(hdg, locald.getClass());
+    hga = locald;
+    hfT = 524288;
+    hfR = 50;
+    hfU = 10;
+    hfQ = new b(hfR, locald.getClass());
+    hfZ = new b(hfU, locald.getClass());
   }
   
-  public static int aqK()
+  public static int aqZ()
   {
-    return hdf;
+    return hfT;
   }
   
-  public static int aqL()
+  public static int ara()
   {
-    return hdd;
+    return hfR;
   }
   
-  public static int aqM()
+  public static int arb()
   {
-    return hdg;
+    return hfU;
   }
   
-  public static b<Bitmap> aqN()
+  public static b<Bitmap> arc()
   {
-    return hdc;
+    return hfQ;
   }
   
-  public static b<Bitmap> aqO()
+  public static b<Bitmap> ard()
   {
-    return hdl;
+    return hfZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.b.b.d
  * JD-Core Version:    0.7.0.1
  */

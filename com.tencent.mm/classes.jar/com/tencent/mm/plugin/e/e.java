@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.e;
 import android.content.Intent;
 import com.tencent.mars.Mars;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.o;
-import com.tencent.mm.al.q;
-import com.tencent.mm.al.q.a;
+import com.tencent.mm.aj.o;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.a;
 import com.tencent.mm.booter.NotifyReceiver.NotifyService;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.model.as;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMAppMgr;
 
 public final class e
   extends com.tencent.mm.kernel.a.c.a
 {
-  private aq hFU;
+  private as hIM;
   
-  public e(aq paramaq)
+  public e(as paramas)
   {
-    this.hFU = paramaq;
+    this.hIM = paramas;
   }
   
   public final void execute(g paramg)
   {
     AppMethodBeat.i(22638);
-    ba.a(this.hFU, new q.a()
+    bc.a(this.hIM, new q.a()
     {
       public final void a(q paramAnonymousq) {}
       
@@ -37,24 +37,24 @@ public final class e
         AppMethodBeat.i(22637);
         if ((paramAnonymousBoolean) && (!paramAnonymousq.foreground))
         {
-          if (!e.bMS())
+          if (!e.bNQ())
           {
-            ad.w("MicroMsg.MMCoreInitTask", "can't kill the working process");
+            ae.w("MicroMsg.MMCoreInitTask", "can't kill the working process");
             AppMethodBeat.o(22637);
             return;
           }
-          MMAppMgr.fwX();
-          ad.appenderClose();
+          MMAppMgr.fAZ();
+          ae.appenderClose();
           Mars.onSingalCrash(0);
-          ad.e("MicroMsg.MMCoreInitTask", "now killing the working process....");
-          if (com.tencent.mm.platformtools.a.aQk())
+          ae.e("MicroMsg.MMCoreInitTask", "now killing the working process....");
+          if (com.tencent.mm.platformtools.a.aQJ())
           {
-            ad.e("MicroMsg.MMCoreInitTask", "address book syncing, wait a minute please");
+            ae.e("MicroMsg.MMCoreInitTask", "address book syncing, wait a minute please");
             AppMethodBeat.o(22637);
             return;
           }
-          d.bf(new Intent(aj.getContext(), NotifyReceiver.NotifyService.class));
-          o.F(new Runnable()
+          d.bg(new Intent(ak.getContext(), NotifyReceiver.NotifyService.class));
+          o.D(new Runnable()
           {
             public final void run()
             {

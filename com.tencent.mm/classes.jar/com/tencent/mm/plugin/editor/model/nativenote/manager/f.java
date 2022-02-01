@@ -6,62 +6,62 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public abstract class f
 {
-  private static float cAF = 3.4028235E+38F;
-  private static float puW = 3.4028235E+38F;
-  private static int puX = -1;
-  public static float puY = 48.0F;
+  private static float cBm = 3.4028235E+38F;
+  private static float pBA = 3.4028235E+38F;
+  private static int pBB = -1;
+  public static float pBC = 48.0F;
   
-  public static int BD(int paramInt)
+  public static int BP(int paramInt)
   {
-    return Math.round(paramInt * cey());
+    return Math.round(paramInt * cfN());
   }
   
-  public static int BE(int paramInt)
+  public static int BQ(int paramInt)
   {
-    return Math.round(paramInt / cey());
+    return Math.round(paramInt / cfN());
   }
   
-  private static float cex()
+  private static float cfM()
   {
     try
     {
-      if (cAF == 3.4028235E+38F) {
-        cAF = getDisplayMetrics().density;
+      if (cBm == 3.4028235E+38F) {
+        cBm = getDisplayMetrics().density;
       }
-      float f = cAF;
+      float f = cBm;
       return f;
     }
     finally {}
   }
   
-  private static float cey()
+  private static float cfN()
   {
     try
     {
-      if (puW == 3.4028235E+38F) {
-        puW = getDisplayMetrics().density * aj.getContext().getResources().getConfiguration().fontScale;
+      if (pBA == 3.4028235E+38F) {
+        pBA = getDisplayMetrics().density * ak.getContext().getResources().getConfiguration().fontScale;
       }
-      float f = puW;
+      float f = pBA;
       return f;
     }
     finally {}
   }
   
-  public static int cez()
+  public static int cfO()
   {
-    if (puX == -1) {
-      puX = Math.round(cex() * 30.0F);
+    if (pBB == -1) {
+      pBB = Math.round(cfM() * 30.0F);
     }
-    return puX;
+    return pBB;
   }
   
   private static DisplayMetrics getDisplayMetrics()
   {
-    Display localDisplay = ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay();
+    Display localDisplay = ((WindowManager)ak.getContext().getSystemService("window")).getDefaultDisplay();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     localDisplay.getMetrics(localDisplayMetrics);
     return localDisplayMetrics;
@@ -69,12 +69,12 @@ public abstract class f
   
   public static float getTextSize()
   {
-    return puY;
+    return pBC;
   }
   
   public static void setTextSize(float paramFloat)
   {
-    puY = paramFloat;
+    pBC = paramFloat;
   }
 }
 

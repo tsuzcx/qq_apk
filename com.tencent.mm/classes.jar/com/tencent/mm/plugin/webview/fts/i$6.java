@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.f;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
@@ -22,19 +22,19 @@ final class i$6
   
   public final void b(k paramk)
   {
-    AppMethodBeat.i(207817);
+    AppMethodBeat.i(197993);
     switch (paramk.bZU)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(207817);
+      AppMethodBeat.o(197993);
       return;
-      if ((paramk.tvl == null) || (paramk.tvl.size() == 0))
+      if ((paramk.tGc == null) || (paramk.tGc.size() == 0))
       {
-        ad.i("MicroMsg.WebSearch.WebSearchLogic", "local contact search size 0");
-        g.XN(((Integer)i.e(this.DKT).tuc).intValue()).aGL("");
-        AppMethodBeat.o(207817);
+        ae.i("MicroMsg.WebSearch.WebSearchLogic", "local contact search size 0");
+        g.Yt(((Integer)i.e(this.EcR).tET).intValue()).aIf("");
+        AppMethodBeat.o(197993);
         return;
       }
       JSONObject localJSONObject1;
@@ -47,32 +47,32 @@ final class i$6
         localJSONArray1 = new JSONArray();
         localJSONObject2 = new JSONObject();
         localJSONArray2 = new JSONArray();
-        Iterator localIterator = paramk.tvl.iterator();
+        Iterator localIterator = paramk.tGc.iterator();
         while (localIterator.hasNext())
         {
           m localm = (m)localIterator.next();
           if (localm.type == 131072) {
-            localJSONArray2.put(i.a(localm, paramk.tun));
+            localJSONArray2.put(i.a(localm, paramk.tFe));
           }
         }
         localJSONObject2.put("items", localJSONArray2);
       }
       catch (Exception paramk)
       {
-        ad.printErrStackTrace("MicroMsg.WebSearch.WebSearchLogic", paramk, "onSearchDone", new Object[0]);
-        AppMethodBeat.o(207817);
+        ae.printErrStackTrace("MicroMsg.WebSearch.WebSearchLogic", paramk, "onSearchDone", new Object[0]);
+        AppMethodBeat.o(197993);
         return;
       }
-      localJSONObject2.put("title", aj.getContext().getString(2131759716));
+      localJSONObject2.put("title", ak.getContext().getString(2131759716));
       localJSONObject2.put("count", localJSONArray2.length());
       localJSONObject2.put("type", 3);
       localJSONArray1.put(localJSONObject2);
       localJSONObject1.put("data", localJSONArray1);
       localJSONObject1.put("ret", 0);
-      g.XN(((Integer)i.e(this.DKT).tuc).intValue()).aGL(localJSONObject1.toString());
-      AppMethodBeat.o(207817);
+      g.Yt(((Integer)i.e(this.EcR).tET).intValue()).aIf(localJSONObject1.toString());
+      AppMethodBeat.o(197993);
       return;
-      g.XN(((Integer)i.e(this.DKT).tuc).intValue()).aGL("");
+      g.Yt(((Integer)i.e(this.EcR).tET).intValue()).aIf("");
     }
   }
 }

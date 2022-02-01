@@ -2,8 +2,8 @@ package com.tencent.mm.modelmulti;
 
 public final class r
 {
-  public boolean cBJ;
-  public int igM;
+  public boolean cCq;
+  public int ijF;
 }
 
 

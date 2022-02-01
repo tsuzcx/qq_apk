@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/WebPrefetcherFile;", "Lcom/tencent/mm/vfs/VFSFile;", "path", "", "(Ljava/lang/String;)V", "clearAll", "", "contains", "id", "content", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/WebPrefetcherFile;", "Lcom/tencent/mm/vfs/VFSFile;", "path", "", "(Ljava/lang/String;)V", "clearAll", "", "contains", "id", "content", "plugin-brandservice_release"})
 public final class v
-  extends e
+  extends k
 {
   public v(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(209946);
-    AppMethodBeat.o(209946);
+    AppMethodBeat.i(208933);
+    AppMethodBeat.o(208933);
   }
   
-  public final e XH(String paramString)
+  public final k Yu(String paramString)
   {
-    AppMethodBeat.i(209944);
+    AppMethodBeat.i(208931);
     p.h(paramString, "id");
-    paramString = new e(getPath() + '/' + paramString);
-    AppMethodBeat.o(209944);
+    paramString = new k(getPath() + '/' + paramString);
+    AppMethodBeat.o(208931);
     return paramString;
   }
   
-  public final boolean aBY()
+  public final boolean aCo()
   {
-    AppMethodBeat.i(209945);
-    boolean bool = i.cZ(getPath(), true);
-    AppMethodBeat.o(209945);
+    AppMethodBeat.i(208932);
+    boolean bool = o.dd(getPath(), true);
+    AppMethodBeat.o(208932);
     return bool;
   }
   
   public final boolean contains(String paramString)
   {
-    AppMethodBeat.i(209943);
+    AppMethodBeat.i(208930);
     p.h(paramString, "id");
-    boolean bool = i.fv(getPath() + '/' + paramString);
-    AppMethodBeat.o(209943);
+    boolean bool = o.fB(getPath() + '/' + paramString);
+    AppMethodBeat.o(208930);
     return bool;
   }
 }

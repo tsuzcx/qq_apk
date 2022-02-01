@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.websearch.api.b;
 
 public final class i$b
 {
-  public b DKZ;
+  public b EcX;
   
   private i$b(i parami) {}
 }

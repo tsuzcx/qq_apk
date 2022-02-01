@@ -10,7 +10,7 @@ import com.tencent.mm.ui.ap;
 public class OverScrollListView
   extends ListView
 {
-  private int KZs;
+  private int LvQ;
   private float y1;
   private float y2;
   
@@ -26,28 +26,28 @@ public class OverScrollListView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(192642);
+    AppMethodBeat.i(200407);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(192642);
+      AppMethodBeat.o(200407);
       return bool;
       this.y1 = paramMotionEvent.getY(0);
       continue;
       this.y2 = paramMotionEvent.getY(0);
-      this.KZs = ((int)Math.abs(this.y2 - this.y1));
+      this.LvQ = ((int)Math.abs(this.y2 - this.y1));
     }
   }
   
   protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
-    AppMethodBeat.i(192643);
-    ap.d("OverScrollListView", "dancy test maxOverScrollYDis: %s", new Object[] { Integer.valueOf(this.KZs) });
-    paramBoolean = super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, this.KZs / 2, paramBoolean);
-    AppMethodBeat.o(192643);
+    AppMethodBeat.i(200408);
+    ap.d("OverScrollListView", "dancy test maxOverScrollYDis: %s", new Object[] { Integer.valueOf(this.LvQ) });
+    paramBoolean = super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, this.LvQ / 2, paramBoolean);
+    AppMethodBeat.o(200408);
     return paramBoolean;
   }
 }

@@ -13,40 +13,40 @@ import java.util.Date;
 
 public class k
 {
-  SimpleDateFormat a;
-  a b;
-  public File c;
-  private String d;
-  private ModuleEncryptListener e;
-  private Context f;
-  private v g;
-  private SimpleDateFormat h;
-  private StringBuilder i;
-  private String j;
+  private String a;
+  private ModuleEncryptListener b;
+  private Context c;
+  private u d;
+  private SimpleDateFormat e;
+  private SimpleDateFormat f;
+  private a g;
+  private StringBuilder h;
+  private String i;
+  private File j;
   private String k;
   
   public k(Context paramContext, Looper paramLooper, File paramFile, ModuleEncryptListener paramModuleEncryptListener)
   {
     AppMethodBeat.i(180814);
-    this.d = k.class.getSimpleName();
-    this.a = new SimpleDateFormat("HHmmss");
-    this.h = new SimpleDateFormat("yyyyMMdd-HHmmss");
-    this.j = "/d_l";
-    this.c = null;
-    this.f = paramContext;
-    this.b = new a(paramLooper);
-    this.e = paramModuleEncryptListener;
+    this.a = k.class.getSimpleName();
+    this.e = new SimpleDateFormat("HHmmss");
+    this.f = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    this.i = "/d_l";
+    this.j = null;
+    this.c = paramContext;
+    this.g = new a(paramLooper);
+    this.b = paramModuleEncryptListener;
     paramLooper = paramFile;
     if (paramFile == null) {}
     try
     {
-      paramLooper = new File(paramContext.getExternalFilesDir("data").getAbsolutePath() + File.separator + a.a + "_" + this.j);
-      this.c = paramLooper;
+      paramLooper = new File(paramContext.getExternalFilesDir("data").getAbsolutePath() + File.separator + a.a + "_" + this.i);
+      this.j = paramLooper;
       this.k = "d_";
-      this.g = new v(this.f, paramLooper, "d");
+      this.d = new u(this.c, paramLooper, "d");
       a();
-      r.a(this.b, 10003, 15000L);
-      r.a(this.b, 10004, 60000L);
+      q.a(this.g, 10003, 15000L);
+      q.a(this.g, 10004, 60000L);
       AppMethodBeat.o(180814);
       return;
     }
@@ -59,22 +59,64 @@ public class k
     }
   }
   
-  private String b()
+  private String d()
   {
-    AppMethodBeat.i(180816);
+    AppMethodBeat.i(224083);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("LOC_CORE,").append(this.h.format(new Date())).append(',').append(y.c(this.f)).append(',').append(',').append(',').append("MapSDK_COMP,").append(a.b).append(".").append(a.c).append(',').append(a.d).append(',').append(a.e).append("$");
+    ((StringBuilder)localObject).append("LOC_CORE,").append(this.f.format(new Date())).append(',').append(x.c(this.c)).append(',').append(',').append(',').append("MapSDK_COMP,").append(a.b).append(".").append(a.c).append(',').append(a.e).append(',').append(a.f).append("$");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(180816);
+    AppMethodBeat.o(224083);
     return localObject;
   }
   
   public final void a()
   {
     AppMethodBeat.i(180815);
-    String str = b();
-    r.a(this.b, 10001, str);
+    String str = d();
+    q.a(this.g, 10001, str);
     AppMethodBeat.o(180815);
+  }
+  
+  public final void a(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(224084);
+    if (!a.i)
+    {
+      AppMethodBeat.o(224084);
+      return;
+    }
+    paramString1 = this.e.format(new Date()) + "," + paramString1 + "," + paramString2;
+    q.a(this.g, 10001, paramString1);
+    AppMethodBeat.o(224084);
+  }
+  
+  public final void a(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(224086);
+    if (!a.i)
+    {
+      AppMethodBeat.o(224086);
+      return;
+    }
+    this.g.a(paramArrayOfByte);
+    AppMethodBeat.o(224086);
+  }
+  
+  public final void b()
+  {
+    AppMethodBeat.i(224085);
+    if (!a.i)
+    {
+      AppMethodBeat.o(224085);
+      return;
+    }
+    q.a(this.g, 10004, 0L);
+    AppMethodBeat.o(224085);
+  }
+  
+  public final File c()
+  {
+    return this.j;
   }
   
   final class a
@@ -247,7 +289,7 @@ public class k
           AppMethodBeat.o(180811);
           return true;
         }
-        if (s.a(a.j, arrayOfByte) == null) {
+        if (r.a(a.k, arrayOfByte) == null) {
           k.c(k.this).a(arrayOfByte);
         }
         AppMethodBeat.o(180811);
@@ -276,7 +318,7 @@ public class k
         k.a(k.this).append(paramMessage).append("$");
         if (k.a(k.this).length() > 20480L)
         {
-          r.a(k.b(k.this), 10003, 0L);
+          q.a(k.b(k.this), 10003, 0L);
           AppMethodBeat.o(180810);
           return;
         }
@@ -305,7 +347,7 @@ public class k
                   if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
                     break label313;
                   }
-                  if (s.a(a.j, arrayOfByte) != null) {
+                  if (r.a(a.k, arrayOfByte) != null) {
                     localFile.delete();
                   }
                 }
@@ -321,7 +363,7 @@ public class k
               }
             }
           }
-          r.a(k.b(k.this), 10004, 60000L);
+          q.a(k.b(k.this), 10004, 60000L);
         }
       }
     }

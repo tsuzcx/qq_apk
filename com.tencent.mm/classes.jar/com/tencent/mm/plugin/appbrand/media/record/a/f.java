@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -11,26 +11,26 @@ import java.io.OutputStream;
 public class f
   extends c
 {
-  protected e gdT;
+  protected k ggb;
   private OutputStream zp;
   
-  private boolean Sz(String paramString)
+  private boolean Ti(String paramString)
   {
     AppMethodBeat.i(146353);
     try
     {
-      this.gdT = new e(paramString);
-      if (this.gdT.exists()) {
-        this.gdT.delete();
+      this.ggb = new k(paramString);
+      if (this.ggb.exists()) {
+        this.ggb.delete();
       }
-      this.gdT.createNewFile();
-      this.zp = new DataOutputStream(i.cX(paramString, false));
+      this.ggb.createNewFile();
+      this.zp = new DataOutputStream(o.db(paramString, false));
       AppMethodBeat.o(146353);
       return true;
     }
     catch (Exception paramString)
     {
-      ad.m("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
+      ae.m("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
       AppMethodBeat.o(146353);
     }
     return false;
@@ -84,7 +84,7 @@ public class f
   public boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(146349);
-    Sz(paramString);
+    Ti(paramString);
     AppMethodBeat.o(146349);
     return true;
   }

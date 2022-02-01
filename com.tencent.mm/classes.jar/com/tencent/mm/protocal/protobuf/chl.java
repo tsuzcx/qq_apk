@@ -1,97 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class chl
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<Long> HaX;
-  public int aHQ;
-  public int dFx;
-  public String dtL;
-  public long qXg;
-  public long qXh;
-  public long qXi;
-  public String qXj;
-  public String qXk;
-  public String sessionId;
-  
-  public chl()
-  {
-    AppMethodBeat.i(210607);
-    this.aHQ = 0;
-    this.qXg = 0L;
-    this.qXh = 0L;
-    this.qXi = 0L;
-    this.dFx = 0;
-    this.HaX = new LinkedList();
-    AppMethodBeat.o(210607);
-  }
+  public String HtA;
+  public String HtB;
+  public String HtC;
+  public String HtD;
+  public String HtE;
+  public String HtF;
+  public String Htz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(210608);
+    AppMethodBeat.i(189428);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.sessionId != null) {
-        paramVarArgs.d(1, this.sessionId);
+      if (this.Htz != null) {
+        paramVarArgs.d(1, this.Htz);
       }
-      if (this.dtL != null) {
-        paramVarArgs.d(2, this.dtL);
+      if (this.HtA != null) {
+        paramVarArgs.d(2, this.HtA);
       }
-      paramVarArgs.aS(3, this.aHQ);
-      paramVarArgs.aY(4, this.qXg);
-      paramVarArgs.aY(5, this.qXh);
-      paramVarArgs.aY(6, this.qXi);
-      if (this.qXj != null) {
-        paramVarArgs.d(7, this.qXj);
+      if (this.HtB != null) {
+        paramVarArgs.d(3, this.HtB);
       }
-      if (this.qXk != null) {
-        paramVarArgs.d(8, this.qXk);
+      if (this.HtC != null) {
+        paramVarArgs.d(4, this.HtC);
       }
-      paramVarArgs.aS(9, this.dFx);
-      paramVarArgs.e(10, 3, this.HaX);
-      AppMethodBeat.o(210608);
+      if (this.HtD != null) {
+        paramVarArgs.d(5, this.HtD);
+      }
+      if (this.HtE != null) {
+        paramVarArgs.d(6, this.HtE);
+      }
+      if (this.HtF != null) {
+        paramVarArgs.d(7, this.HtF);
+      }
+      AppMethodBeat.o(189428);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sessionId == null) {
-        break label681;
+      if (this.Htz == null) {
+        break label578;
       }
     }
-    label681:
-    for (paramInt = f.a.a.b.b.a.e(1, this.sessionId) + 0;; paramInt = 0)
+    label578:
+    for (int i = f.a.a.b.b.a.e(1, this.Htz) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.dtL != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.dtL);
-      }
-      i = i + f.a.a.b.b.a.bz(3, this.aHQ) + f.a.a.b.b.a.p(4, this.qXg) + f.a.a.b.b.a.p(5, this.qXh) + f.a.a.b.b.a.p(6, this.qXi);
       paramInt = i;
-      if (this.qXj != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.qXj);
+      if (this.HtA != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.HtA);
       }
       i = paramInt;
-      if (this.qXk != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.qXk);
+      if (this.HtB != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.HtB);
       }
-      paramInt = f.a.a.b.b.a.bz(9, this.dFx);
-      int j = f.a.a.a.c(10, 3, this.HaX);
-      AppMethodBeat.o(210608);
-      return i + paramInt + j;
+      paramInt = i;
+      if (this.HtC != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.HtC);
+      }
+      i = paramInt;
+      if (this.HtD != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.HtD);
+      }
+      paramInt = i;
+      if (this.HtE != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.HtE);
+      }
+      i = paramInt;
+      if (this.HtF != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.HtF);
+      }
+      AppMethodBeat.o(189428);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.HaX.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(210608);
+        AppMethodBeat.o(189428);
         return 0;
       }
       if (paramInt == 3)
@@ -101,57 +95,45 @@ public final class chl
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(210608);
+          AppMethodBeat.o(189428);
           return -1;
         case 1: 
-          localchl.sessionId = locala.NPN.readString();
-          AppMethodBeat.o(210608);
+          localchl.Htz = locala.OmT.readString();
+          AppMethodBeat.o(189428);
           return 0;
         case 2: 
-          localchl.dtL = locala.NPN.readString();
-          AppMethodBeat.o(210608);
+          localchl.HtA = locala.OmT.readString();
+          AppMethodBeat.o(189428);
           return 0;
         case 3: 
-          localchl.aHQ = locala.NPN.zc();
-          AppMethodBeat.o(210608);
+          localchl.HtB = locala.OmT.readString();
+          AppMethodBeat.o(189428);
           return 0;
         case 4: 
-          localchl.qXg = locala.NPN.zd();
-          AppMethodBeat.o(210608);
+          localchl.HtC = locala.OmT.readString();
+          AppMethodBeat.o(189428);
           return 0;
         case 5: 
-          localchl.qXh = locala.NPN.zd();
-          AppMethodBeat.o(210608);
+          localchl.HtD = locala.OmT.readString();
+          AppMethodBeat.o(189428);
           return 0;
         case 6: 
-          localchl.qXi = locala.NPN.zd();
-          AppMethodBeat.o(210608);
-          return 0;
-        case 7: 
-          localchl.qXj = locala.NPN.readString();
-          AppMethodBeat.o(210608);
-          return 0;
-        case 8: 
-          localchl.qXk = locala.NPN.readString();
-          AppMethodBeat.o(210608);
-          return 0;
-        case 9: 
-          localchl.dFx = locala.NPN.zc();
-          AppMethodBeat.o(210608);
+          localchl.HtE = locala.OmT.readString();
+          AppMethodBeat.o(189428);
           return 0;
         }
-        localchl.HaX.add(Long.valueOf(locala.NPN.zd()));
-        AppMethodBeat.o(210608);
+        localchl.HtF = locala.OmT.readString();
+        AppMethodBeat.o(189428);
         return 0;
       }
-      AppMethodBeat.o(210608);
+      AppMethodBeat.o(189428);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.chl
  * JD-Core Version:    0.7.0.1
  */

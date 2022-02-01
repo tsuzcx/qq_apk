@@ -2,8 +2,6 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -23,12 +21,15 @@ import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.r.a;
+import com.tencent.mm.av.r.a;
 import com.tencent.mm.b.g;
+import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.q;
+import com.tencent.mm.plugin.aa.model.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.r;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.l;
@@ -38,6 +39,7 @@ import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.c;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.vfs.o;
 import com.tencent.mm.view.AnimationLayout;
 import com.tencent.mm.view.ViewAnimHelper;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
@@ -45,32 +47,32 @@ import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 public class AAImagPreviewUI
   extends MMActivity
 {
-  private View fOB;
-  private String hym;
-  private final int iUF = 1;
-  private final int iUG = 2;
-  private MMGestureGallery iUH;
-  private a iUI;
-  private int iUJ;
-  private int iUK;
-  private Dialog iUL = null;
-  private AnimationLayout iUM;
-  private boolean iUN = false;
-  private ViewAnimHelper.ViewInfo iUO;
-  private ImageView iUP;
+  private View fQH;
+  private String hBa;
+  private MMGestureGallery iXA;
+  private a iXB;
+  private int iXC;
+  private int iXD;
+  private Dialog iXE = null;
+  private AnimationLayout iXF;
+  private boolean iXG = false;
+  private ViewAnimHelper.ViewInfo iXH;
+  private ImageView iXI;
+  private final int iXy = 1;
+  private final int iXz = 2;
   private String imagePath;
   
   private static void a(MultiTouchImageView paramMultiTouchImageView, Bitmap paramBitmap)
   {
     AppMethodBeat.i(63489);
-    q.A(paramMultiTouchImageView, paramBitmap.getWidth(), paramBitmap.getHeight());
+    r.z(paramMultiTouchImageView, paramBitmap.getWidth(), paramBitmap.getHeight());
     int i = paramMultiTouchImageView.getWidth();
     int j = paramMultiTouchImageView.getHeight();
     Matrix localMatrix = new Matrix();
     localMatrix.reset();
     float f1 = paramBitmap.getWidth() / paramBitmap.getHeight();
     float f2 = paramBitmap.getHeight() / paramBitmap.getWidth();
-    ad.v("MicroMsg.PreviewHdHeadImg", "whDiv is " + f1 + " hwDiv is " + f2);
+    ae.v("MicroMsg.PreviewHdHeadImg", "whDiv is " + f1 + " hwDiv is " + f2);
     if ((f2 >= 2.0F) && (paramBitmap.getHeight() >= 480))
     {
       f1 = paramBitmap.getWidth() / i;
@@ -107,7 +109,7 @@ public class AAImagPreviewUI
       {
         localMatrix.postScale(1.0F, 1.0F);
         f1 = (j - paramBitmap.getHeight()) / 2;
-        ad.d("MicroMsg.PreviewHdHeadImg", " offsety ".concat(String.valueOf(f1)));
+        ae.d("MicroMsg.PreviewHdHeadImg", " offsety ".concat(String.valueOf(f1)));
         localMatrix.postTranslate(0.0F, f1);
       }
     }
@@ -142,48 +144,40 @@ public class AAImagPreviewUI
     }
   }
   
-  private void aRo()
+  private void aRN()
   {
-    AppMethodBeat.i(198901);
-    if (this.iUN)
+    AppMethodBeat.i(189735);
+    if (this.iXG)
     {
-      AppMethodBeat.o(198901);
+      AppMethodBeat.o(189735);
       return;
     }
-    this.iUN = true;
-    ad.i("MicroMsg.PreviewHdHeadImg", "runExitAnimation");
-    this.iUM.a(this.iUP, this.fOB, this.iUO, new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
+    this.iXG = true;
+    ae.i("MicroMsg.PreviewHdHeadImg", "runExitAnimation");
+    this.iXF.a(this.iXI, this.fQH, this.iXH, new Animator.AnimatorListener()new AAImagPreviewUI.11
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(198900);
+        AppMethodBeat.i(224224);
         AAImagPreviewUI.this.finish();
         AAImagPreviewUI.this.overridePendingTransition(2130771986, 2130771986);
-        AppMethodBeat.o(198900);
+        AppMethodBeat.o(224224);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-    }, new ValueAnimator.AnimatorUpdateListener()
-    {
-      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-      {
-        AppMethodBeat.i(198895);
-        ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        AppMethodBeat.o(198895);
-      }
-    });
-    AppMethodBeat.o(198901);
+    }, new AAImagPreviewUI.11(this));
+    AppMethodBeat.o(189735);
   }
   
   public void finish()
   {
     AppMethodBeat.i(63488);
     super.finish();
-    aRo();
+    aRN();
     overridePendingTransition(2130771986, 2130771986);
     AppMethodBeat.o(63488);
   }
@@ -198,53 +192,53 @@ public class AAImagPreviewUI
     AppMethodBeat.i(63487);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.ly(19)) {
+    if (d.lA(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
     {
-      this.iUM = ((AnimationLayout)findViewById(2131296674));
-      this.fOB = findViewById(2131304241);
-      this.iUP = ((ImageView)findViewById(2131300336));
-      if (this.iUO == null) {
-        this.iUO = ViewAnimHelper.o(this.iUP, getContext().getWindow().getDecorView());
+      this.iXF = ((AnimationLayout)findViewById(2131296674));
+      this.fQH = findViewById(2131304241);
+      this.iXI = ((ImageView)findViewById(2131300336));
+      if (this.iXH == null) {
+        this.iXH = ViewAnimHelper.o(this.iXI, getContext().getWindow().getDecorView());
       }
-      this.iUH = ((MMGestureGallery)findViewById(2131300335));
-      this.iUH.setVerticalFadingEdgeEnabled(false);
-      this.iUH.setHorizontalFadingEdgeEnabled(false);
-      this.iUH.setSingleClickOverListener(new MMGestureGallery.f()
+      this.iXA = ((MMGestureGallery)findViewById(2131300335));
+      this.iXA.setVerticalFadingEdgeEnabled(false);
+      this.iXA.setHorizontalFadingEdgeEnabled(false);
+      this.iXA.setSingleClickOverListener(new MMGestureGallery.f()
       {
-        public final void aRp()
+        public final void aRO()
         {
           AppMethodBeat.i(63477);
           AAImagPreviewUI.this.finish();
           AppMethodBeat.o(63477);
         }
       });
-      this.iUH.setLongClickOverListener(new MMGestureGallery.c()
+      this.iXA.setLongClickOverListener(new MMGestureGallery.c()
       {
-        public final void aRq()
+        public final void aRP()
         {
           AppMethodBeat.i(63480);
           e locale = new e(AAImagPreviewUI.this, 1, false);
-          locale.KJy = new n.d()
+          locale.LfS = new n.d()
           {
             public final void onCreateMMMenu(l paramAnonymous2l)
             {
               AppMethodBeat.i(63478);
-              paramAnonymous2l.jI(1, 2131760662);
+              paramAnonymous2l.jM(1, 2131760662);
               if (AAImagPreviewUI.a(AAImagPreviewUI.this) == 1) {
-                paramAnonymous2l.jI(2, 2131760653);
+                paramAnonymous2l.jM(2, 2131760653);
               }
               AppMethodBeat.o(63478);
             }
           };
-          locale.KJz = new n.e()
+          locale.LfT = new n.e()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
               AppMethodBeat.i(63479);
-              ad.i("MicroMsg.PreviewHdHeadImg", "onMMMenuItemSelected %s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
+              ae.i("MicroMsg.PreviewHdHeadImg", "onMMMenuItemSelected %s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
               switch (paramAnonymous2MenuItem.getItemId())
               {
               }
@@ -260,12 +254,12 @@ public class AAImagPreviewUI
               }
             }
           };
-          locale.cMW();
+          locale.cPF();
           AppMethodBeat.o(63480);
         }
       });
-      this.iUI = new a((byte)0);
-      this.iUH.setAdapter(this.iUI);
+      this.iXB = new a((byte)0);
+      this.iXA.setAdapter(this.iXB);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -276,28 +270,28 @@ public class AAImagPreviewUI
           return true;
         }
       });
-      if (!this.iUN)
+      if (!this.iXG)
       {
-        this.iUN = true;
-        ad.i("MicroMsg.PreviewHdHeadImg", "runEnterAnimation");
-        this.iUM.b(this.iUP, this.fOB, this.iUO, new Animator.AnimatorListener()
+        this.iXG = true;
+        ae.i("MicroMsg.PreviewHdHeadImg", "runEnterAnimation");
+        this.iXF.b(this.iXI, this.fQH, this.iXH, new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(198899);
+            AppMethodBeat.i(189734);
             AAImagPreviewUI.f(AAImagPreviewUI.this);
-            AppMethodBeat.o(198899);
+            AppMethodBeat.o(189734);
           }
           
           public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
           
           public final void onAnimationStart(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(198898);
+            AppMethodBeat.i(224227);
             AAImagPreviewUI.e(AAImagPreviewUI.this).setVisibility(0);
-            AppMethodBeat.o(198898);
+            AppMethodBeat.o(224227);
           }
         }, null);
       }
@@ -309,10 +303,10 @@ public class AAImagPreviewUI
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(198902);
+    AppMethodBeat.i(189736);
     super.onBackPressed();
-    aRo();
-    AppMethodBeat.o(198902);
+    aRN();
+    AppMethodBeat.o(189736);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -322,11 +316,11 @@ public class AAImagPreviewUI
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    this.iUJ = getIntent().getIntExtra("use_scene", 1);
-    this.iUK = getIntent().getIntExtra("scene", 1);
+    this.iXC = getIntent().getIntExtra("use_scene", 1);
+    this.iXD = getIntent().getIntExtra("scene", 1);
     this.imagePath = getIntent().getStringExtra("path");
-    this.hym = getIntent().getStringExtra("url");
-    this.iUO = ((ViewAnimHelper.ViewInfo)getIntent().getParcelableExtra("view_info"));
+    this.hBa = getIntent().getStringExtra("url");
+    this.iXH = ((ViewAnimHelper.ViewInfo)getIntent().getParcelableExtra("view_info"));
     initView();
     setResult(0);
     AppMethodBeat.o(63486);

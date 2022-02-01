@@ -46,8 +46,8 @@ public class CheckResultActivity
         paramAnonymousAdapterView.setClass(CheckResultActivity.this.getBaseContext(), IssueDetailActivity.class);
         paramAnonymousView = CheckResultActivity.this;
         paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahE(), "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(52880);
       }
@@ -176,7 +176,7 @@ public class CheckResultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckResultActivity
  * JD-Core Version:    0.7.0.1
  */

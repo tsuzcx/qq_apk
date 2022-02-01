@@ -31,12 +31,12 @@ public final class g
       AppMethodBeat.o(145369);
       return false;
     }
-    paramPath.lineTo(com.tencent.mm.plugin.appbrand.z.g.f(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.z.g.f(paramJSONArray, 1));
+    paramPath.lineTo(com.tencent.mm.plugin.appbrand.y.g.f(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.y.g.f(paramJSONArray, 1));
     AppMethodBeat.o(145369);
     return true;
   }
   
-  public final BasePathActionArg bdz()
+  public final BasePathActionArg bee()
   {
     AppMethodBeat.i(145371);
     PathLineToActionArg localPathLineToActionArg = new PathLineToActionArg();

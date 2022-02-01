@@ -7,14 +7,14 @@ import java.nio.charset.Charset;
 public final class p
   implements i<String>
 {
-  private static final Charset LDj;
-  public static final p MGc;
+  private static final Charset Man;
+  public static final p Ndi;
   
   static
   {
     AppMethodBeat.i(9849);
-    LDj = Charset.forName("UTF8");
-    MGc = new p();
+    Man = Charset.forName("UTF8");
+    Ndi = new p();
     AppMethodBeat.o(9849);
   }
   
@@ -36,7 +36,7 @@ public final class p
     }
     for (paramByteBuffer = arrayOfByte;; paramByteBuffer = arrayOfByte)
     {
-      paramByteBuffer = new String(paramByteBuffer, i, j, LDj);
+      paramByteBuffer = new String(paramByteBuffer, i, j, Man);
       AppMethodBeat.o(9846);
       return paramByteBuffer;
       arrayOfByte = new byte[j];
@@ -45,7 +45,7 @@ public final class p
     }
   }
   
-  public static ByteBuffer bbY(String paramString)
+  public static ByteBuffer bdC(String paramString)
   {
     AppMethodBeat.i(9845);
     if (paramString == null)
@@ -53,7 +53,7 @@ public final class p
       AppMethodBeat.o(9845);
       return null;
     }
-    paramString = paramString.getBytes(LDj);
+    paramString = paramString.getBytes(Man);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramString.length);
     localByteBuffer.put(paramString);
     AppMethodBeat.o(9845);

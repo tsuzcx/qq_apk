@@ -18,12 +18,12 @@ public final class u<T>
   
   public u(g paramg, Uri paramUri, a<? extends T> parama)
   {
-    AppMethodBeat.i(217127);
+    AppMethodBeat.i(211654);
     this.bhN = paramg;
     this.bxi = new j(paramUri);
     this.type = 4;
     this.bFz = parama;
-    AppMethodBeat.o(217127);
+    AppMethodBeat.o(211654);
   }
   
   public final void vu()

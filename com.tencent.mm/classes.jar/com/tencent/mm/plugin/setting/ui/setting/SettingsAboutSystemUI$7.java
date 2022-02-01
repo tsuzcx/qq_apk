@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class SettingsAboutSystemUI$7
   implements DialogInterface.OnClickListener
@@ -13,7 +13,7 @@ final class SettingsAboutSystemUI$7
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(74050);
-    ad.i("MicroMsg.SettingsAboutSystemUI", "lo-nfc-goTosetNfcSwitch user cancel go set system nfc switch");
+    ae.i("MicroMsg.SettingsAboutSystemUI", "lo-nfc-goTosetNfcSwitch user cancel go set system nfc switch");
     AppMethodBeat.o(74050);
   }
 }

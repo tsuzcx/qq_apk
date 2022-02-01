@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/CommonCamera2$Companion;", "", "()V", "FOCUS_TAG", "", "ORIENTATIONS", "Landroid/util/SparseIntArray;", "SMALL_ZOOM_STEP_NUM", "", "SMALL_ZOOM_STEP_UPPER_BOUND", "TAG", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/CommonCamera2$Companion;", "", "()V", "FOCUS_TAG", "", "ORIENTATIONS", "Landroid/util/SparseIntArray;", "SMALL_ZOOM_STEP_NUM", "", "SMALL_ZOOM_STEP_UPPER_BOUND", "TAG", "plugin-mediaeditor_release"})
 public final class e$a {}
 
 

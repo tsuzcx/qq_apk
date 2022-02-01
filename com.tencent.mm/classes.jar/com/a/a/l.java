@@ -33,11 +33,11 @@ final class l
   
   private void A(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215031);
+    AppMethodBeat.i(213262);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215031);
+      AppMethodBeat.o(213262);
       throw paramAttributes;
     }
     h.bf localbf = new h.bf();
@@ -48,16 +48,16 @@ final class l
     a(localbf, paramAttributes);
     this.aTV.a(localbf);
     this.aTV = localbf;
-    AppMethodBeat.o(215031);
+    AppMethodBeat.o(213262);
   }
   
   private void B(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215032);
+    AppMethodBeat.i(213263);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215032);
+      AppMethodBeat.o(213263);
       throw paramAttributes;
     }
     h.s locals = new h.s();
@@ -69,16 +69,16 @@ final class l
     a(locals, paramAttributes);
     this.aTV.a(locals);
     this.aTV = locals;
-    AppMethodBeat.o(215032);
+    AppMethodBeat.o(213263);
   }
   
   private void C(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215076);
+    AppMethodBeat.i(213307);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215076);
+      AppMethodBeat.o(213307);
       throw paramAttributes;
     }
     Object localObject = "all";
@@ -87,7 +87,7 @@ final class l
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -102,35 +102,35 @@ final class l
     if ((bool) && (b.a((String)localObject, b.e.aOG)))
     {
       this.aUb = true;
-      AppMethodBeat.o(215076);
+      AppMethodBeat.o(213307);
       return;
     }
     this.aTW = true;
     this.aTX = 1;
-    AppMethodBeat.o(215076);
+    AppMethodBeat.o(213307);
   }
   
   private static int T(float paramFloat)
   {
-    AppMethodBeat.i(215052);
+    AppMethodBeat.i(213283);
     if (paramFloat < 0.0F)
     {
-      AppMethodBeat.o(215052);
+      AppMethodBeat.o(213283);
       return 0;
     }
     if (paramFloat > 255.0F)
     {
-      AppMethodBeat.o(215052);
+      AppMethodBeat.o(213283);
       return 255;
     }
     int i = Math.round(paramFloat);
-    AppMethodBeat.o(215052);
+    AppMethodBeat.o(213283);
     return i;
   }
   
   static Map<String, String> a(h paramh)
   {
-    AppMethodBeat.i(214982);
+    AppMethodBeat.i(213213);
     HashMap localHashMap = new HashMap();
     paramh.rp();
     for (String str = paramh.c('='); str != null; str = paramh.c('='))
@@ -139,18 +139,18 @@ final class l
       localHashMap.put(str, paramh.rB());
       paramh.rp();
     }
-    AppMethodBeat.o(214982);
+    AppMethodBeat.o(213213);
     return localHashMap;
   }
   
   private static void a(h.a parama, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214988);
+    AppMethodBeat.i(213219);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -162,17 +162,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(214988);
+    AppMethodBeat.o(213219);
   }
   
   private static void a(h.ab paramab, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214996);
+    AppMethodBeat.i(213227);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       do
@@ -194,35 +194,35 @@ final class l
               paramab.aQR = ag(str);
             } while (!paramab.aQR.isNegative());
             paramab = new k("Invalid <rect> element. width cannot be negative");
-            AppMethodBeat.o(214996);
+            AppMethodBeat.o(213227);
             throw paramab;
             paramab.aQS = ag(str);
           } while (!paramab.aQS.isNegative());
           paramab = new k("Invalid <rect> element. height cannot be negative");
-          AppMethodBeat.o(214996);
+          AppMethodBeat.o(213227);
           throw paramab;
           paramab.aQF = ag(str);
         } while (!paramab.aQF.isNegative());
         paramab = new k("Invalid <rect> element. rx cannot be negative");
-        AppMethodBeat.o(214996);
+        AppMethodBeat.o(213227);
         throw paramab;
         paramab.aQG = ag(str);
       } while (!paramab.aQG.isNegative());
       paramab = new k("Invalid <rect> element. ry cannot be negative");
-      AppMethodBeat.o(214996);
+      AppMethodBeat.o(213227);
       throw paramab;
     }
-    AppMethodBeat.o(214996);
+    AppMethodBeat.o(213227);
   }
   
   private static void a(h.ad paramad, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215022);
+    AppMethodBeat.i(213253);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -232,15 +232,15 @@ final class l
         paramad.aRq = ae(str);
       }
     }
-    AppMethodBeat.o(215022);
+    AppMethodBeat.o(213253);
   }
   
   private static void a(h.ae paramae, String paramString)
   {
-    AppMethodBeat.i(215055);
+    AppMethodBeat.i(213286);
     if (!"|caption|icon|menu|message-box|small-caption|status-bar|".contains("|" + paramString + '|'))
     {
-      AppMethodBeat.o(215055);
+      AppMethodBeat.o(213286);
       return;
     }
     h localh = new h(paramString);
@@ -256,7 +256,7 @@ final class l
       localh.rp();
       if (str == null)
       {
-        AppMethodBeat.o(215055);
+        AppMethodBeat.o(213286);
         return;
       }
       if (localObject1 != null)
@@ -332,13 +332,13 @@ final class l
           }
           paramae.aRI = paramString;
           paramae.aRr |= 0x1E000;
-          AppMethodBeat.o(215055);
+          AppMethodBeat.o(213286);
           return;
         }
       }
       catch (k paramae)
       {
-        AppMethodBeat.o(215055);
+        AppMethodBeat.o(213286);
         return;
       }
       int i = localObject5.intValue();
@@ -347,199 +347,199 @@ final class l
   
   static void a(h.ae paramae, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215037);
+    AppMethodBeat.i(213268);
     if (paramString2.length() == 0)
     {
-      AppMethodBeat.o(215037);
+      AppMethodBeat.o(213268);
       return;
     }
     if (paramString2.equals("inherit"))
     {
-      AppMethodBeat.o(215037);
+      AppMethodBeat.o(213268);
       return;
     }
-    switch (l.1.aUe[l.f.aM(paramString1).ordinal()])
+    switch (1.aUe[f.aM(paramString1).ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(215037);
+      AppMethodBeat.o(213268);
       return;
       paramae.aRs = al(paramString2);
       if (paramae.aRs != null)
       {
         paramae.aRr |= 1L;
-        AppMethodBeat.o(215037);
+        AppMethodBeat.o(213268);
         return;
         paramae.aRt = au(paramString2);
         if (paramae.aRt != null)
         {
           paramae.aRr |= 0x2;
-          AppMethodBeat.o(215037);
+          AppMethodBeat.o(213268);
           return;
           paramae.aRu = ai(paramString2);
           if (paramae.aRu != null)
           {
             paramae.aRr |= 0x4;
-            AppMethodBeat.o(215037);
+            AppMethodBeat.o(213268);
             return;
             paramae.aRv = al(paramString2);
             if (paramae.aRv != null)
             {
               paramae.aRr |= 0x8;
-              AppMethodBeat.o(215037);
+              AppMethodBeat.o(213268);
               return;
               paramae.aRw = ai(paramString2);
               if (paramae.aRw != null)
               {
                 paramae.aRr |= 0x10;
-                AppMethodBeat.o(215037);
+                AppMethodBeat.o(213268);
                 return;
                 try
                 {
                   paramae.aRx = ag(paramString2);
                   paramae.aRr |= 0x20;
-                  AppMethodBeat.o(215037);
+                  AppMethodBeat.o(213268);
                   return;
                 }
                 catch (k paramae)
                 {
-                  AppMethodBeat.o(215037);
+                  AppMethodBeat.o(213268);
                   return;
                 }
                 paramae.aRy = av(paramString2);
                 if (paramae.aRy != null)
                 {
                   paramae.aRr |= 0x40;
-                  AppMethodBeat.o(215037);
+                  AppMethodBeat.o(213268);
                   return;
                   paramae.aRz = aw(paramString2);
                   if (paramae.aRz != null)
                   {
                     paramae.aRr |= 0x80;
-                    AppMethodBeat.o(215037);
+                    AppMethodBeat.o(213268);
                     return;
                     try
                     {
                       paramae.aRA = Float.valueOf(parseFloat(paramString2));
                       paramae.aRr |= 0x100;
-                      AppMethodBeat.o(215037);
+                      AppMethodBeat.o(213268);
                       return;
                     }
                     catch (k paramae)
                     {
-                      AppMethodBeat.o(215037);
+                      AppMethodBeat.o(213268);
                       return;
                     }
                     if ("none".equals(paramString2))
                     {
                       paramae.aRB = null;
                       paramae.aRr |= 0x200;
-                      AppMethodBeat.o(215037);
+                      AppMethodBeat.o(213268);
                       return;
                     }
                     paramae.aRB = ax(paramString2);
                     if (paramae.aRB != null)
                     {
                       paramae.aRr |= 0x200;
-                      AppMethodBeat.o(215037);
+                      AppMethodBeat.o(213268);
                       return;
                       try
                       {
                         paramae.aRC = ag(paramString2);
                         paramae.aRr |= 0x400;
-                        AppMethodBeat.o(215037);
+                        AppMethodBeat.o(213268);
                         return;
                       }
                       catch (k paramae)
                       {
-                        AppMethodBeat.o(215037);
+                        AppMethodBeat.o(213268);
                         return;
                       }
                       paramae.aRD = ai(paramString2);
                       paramae.aRr |= 0x800;
-                      AppMethodBeat.o(215037);
+                      AppMethodBeat.o(213268);
                       return;
                       try
                       {
                         paramae.aRE = an(paramString2);
                         paramae.aRr |= 0x1000;
-                        AppMethodBeat.o(215037);
+                        AppMethodBeat.o(213268);
                         return;
                       }
                       catch (k paramae)
                       {
-                        AppMethodBeat.o(215037);
+                        AppMethodBeat.o(213268);
                         return;
                       }
                       a(paramae, paramString2);
-                      AppMethodBeat.o(215037);
+                      AppMethodBeat.o(213268);
                       return;
                       paramae.aRF = ap(paramString2);
                       if (paramae.aRF != null)
                       {
                         paramae.aRr |= 0x2000;
-                        AppMethodBeat.o(215037);
+                        AppMethodBeat.o(213268);
                         return;
                         paramae.aRG = aq(paramString2);
                         if (paramae.aRG != null)
                         {
                           paramae.aRr |= 0x4000;
-                          AppMethodBeat.o(215037);
+                          AppMethodBeat.o(213268);
                           return;
                           paramae.aRH = l.d.aK(paramString2);
                           if (paramae.aRH != null)
                           {
                             paramae.aRr |= 0x8000;
-                            AppMethodBeat.o(215037);
+                            AppMethodBeat.o(213268);
                             return;
                             paramae.aRI = ar(paramString2);
                             if (paramae.aRI != null)
                             {
                               paramae.aRr |= 0x10000;
-                              AppMethodBeat.o(215037);
+                              AppMethodBeat.o(213268);
                               return;
                               paramae.aRJ = as(paramString2);
                               if (paramae.aRJ != null)
                               {
                                 paramae.aRr |= 0x20000;
-                                AppMethodBeat.o(215037);
+                                AppMethodBeat.o(213268);
                                 return;
                                 paramae.aRK = at(paramString2);
                                 if (paramae.aRK != null)
                                 {
                                   paramae.aRr |= 0x0;
-                                  AppMethodBeat.o(215037);
+                                  AppMethodBeat.o(213268);
                                   return;
                                   paramae.aRL = ay(paramString2);
                                   if (paramae.aRL != null)
                                   {
                                     paramae.aRr |= 0x40000;
-                                    AppMethodBeat.o(215037);
+                                    AppMethodBeat.o(213268);
                                     return;
                                     paramae.aRM = az(paramString2);
                                     if (paramae.aRM != null)
                                     {
                                       paramae.aRr |= 0x80000;
-                                      AppMethodBeat.o(215037);
+                                      AppMethodBeat.o(213268);
                                       return;
                                       paramae.aRO = aH(paramString2);
                                       paramae.aRP = paramae.aRO;
                                       paramae.aRQ = paramae.aRO;
                                       paramae.aRr |= 0xE00000;
-                                      AppMethodBeat.o(215037);
+                                      AppMethodBeat.o(213268);
                                       return;
                                       paramae.aRO = aH(paramString2);
                                       paramae.aRr |= 0x200000;
-                                      AppMethodBeat.o(215037);
+                                      AppMethodBeat.o(213268);
                                       return;
                                       paramae.aRP = aH(paramString2);
                                       paramae.aRr |= 0x400000;
-                                      AppMethodBeat.o(215037);
+                                      AppMethodBeat.o(213268);
                                       return;
                                       paramae.aRQ = aH(paramString2);
                                       paramae.aRr |= 0x800000;
-                                      AppMethodBeat.o(215037);
+                                      AppMethodBeat.o(213268);
                                       return;
                                       if ((paramString2.indexOf('|') < 0) && ("|inline|block|list-item|run-in|compact|marker|table|inline-table|table-row-group|table-header-group|table-footer-group|table-row|table-column-group|table-column|table-cell|table-caption|none|".contains("|" + paramString2 + '|')))
                                       {
@@ -548,14 +548,14 @@ final class l
                                         {
                                           paramae.aRR = Boolean.valueOf(bool);
                                           paramae.aRr |= 0x1000000;
-                                          AppMethodBeat.o(215037);
+                                          AppMethodBeat.o(213268);
                                           return;
                                         }
                                         if ((paramString2.indexOf('|') < 0) && ("|visible|hidden|collapse|".contains("|" + paramString2 + '|')))
                                         {
                                           paramae.aRS = Boolean.valueOf(paramString2.equals("visible"));
                                           paramae.aRr |= 0x2000000;
-                                          AppMethodBeat.o(215037);
+                                          AppMethodBeat.o(213268);
                                           return;
                                           if (paramString2.equals("currentColor")) {
                                             paramae.aRT = h.g.qQ();
@@ -563,7 +563,7 @@ final class l
                                           for (;;)
                                           {
                                             paramae.aRr |= 0x4000000;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             try
                                             {
@@ -572,31 +572,31 @@ final class l
                                             catch (k paramae)
                                             {
                                               paramae.getMessage();
-                                              AppMethodBeat.o(215037);
+                                              AppMethodBeat.o(213268);
                                               return;
                                             }
                                           }
                                           paramae.aRU = ai(paramString2);
                                           paramae.aRr |= 0x8000000;
-                                          AppMethodBeat.o(215037);
+                                          AppMethodBeat.o(213268);
                                           return;
                                           paramae.aRN = aA(paramString2);
                                           if (paramae.aRN != null)
                                           {
                                             paramae.aRr |= 0x100000;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             paramae.aRV = aH(paramString2);
                                             paramae.aRr |= 0x10000000;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             paramae.aRW = au(paramString2);
                                             paramae.aRr |= 0x20000000;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             paramae.aRX = aH(paramString2);
                                             paramae.aRr |= 0x40000000;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             if (paramString2.equals("currentColor")) {
                                               paramae.aRY = h.g.qQ();
@@ -604,7 +604,7 @@ final class l
                                             for (;;)
                                             {
                                               paramae.aRr |= 0x80000000;
-                                              AppMethodBeat.o(215037);
+                                              AppMethodBeat.o(213268);
                                               return;
                                               try
                                               {
@@ -613,13 +613,13 @@ final class l
                                               catch (k paramae)
                                               {
                                                 paramae.getMessage();
-                                                AppMethodBeat.o(215037);
+                                                AppMethodBeat.o(213268);
                                                 return;
                                               }
                                             }
                                             paramae.aRZ = ai(paramString2);
                                             paramae.aRr |= 0x0;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             if (paramString2.equals("currentColor")) {
                                               paramae.aSa = h.g.qQ();
@@ -627,7 +627,7 @@ final class l
                                             for (;;)
                                             {
                                               paramae.aRr |= 0x0;
-                                              AppMethodBeat.o(215037);
+                                              AppMethodBeat.o(213268);
                                               return;
                                               try
                                               {
@@ -636,19 +636,19 @@ final class l
                                               catch (k paramae)
                                               {
                                                 paramae.getMessage();
-                                                AppMethodBeat.o(215037);
+                                                AppMethodBeat.o(213268);
                                                 return;
                                               }
                                             }
                                             paramae.aSb = ai(paramString2);
                                             paramae.aRr |= 0x0;
-                                            AppMethodBeat.o(215037);
+                                            AppMethodBeat.o(213268);
                                             return;
                                             paramae.aSc = aB(paramString2);
                                             if (paramae.aSc != null)
                                             {
                                               paramae.aRr |= 0x0;
-                                              AppMethodBeat.o(215037);
+                                              AppMethodBeat.o(213268);
                                               return;
                                               paramae.aSd = aC(paramString2);
                                               if (paramae.aSd != null) {
@@ -679,12 +679,12 @@ final class l
   
   private static void a(h.af paramaf, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214984);
+    AppMethodBeat.i(213215);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -699,30 +699,30 @@ final class l
         if (paramaf.aQR.isNegative())
         {
           paramaf = new k("Invalid <svg> element. width cannot be negative");
-          AppMethodBeat.o(214984);
+          AppMethodBeat.o(213215);
           throw paramaf;
           paramaf.aQS = ag(str);
           if (paramaf.aQS.isNegative())
           {
             paramaf = new k("Invalid <svg> element. height cannot be negative");
-            AppMethodBeat.o(214984);
+            AppMethodBeat.o(213215);
             throw paramaf;
             paramaf.version = str;
           }
         }
       }
     }
-    AppMethodBeat.o(214984);
+    AppMethodBeat.o(213215);
   }
   
   private static void a(h.ag paramag, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215012);
+    AppMethodBeat.i(213243);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       Object localObject = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       default: 
       case 21: 
@@ -750,12 +750,12 @@ final class l
         break;
       }
     }
-    AppMethodBeat.o(215012);
+    AppMethodBeat.o(213243);
   }
   
   private static void a(h.al paramal, String paramString)
   {
-    AppMethodBeat.i(215036);
+    AppMethodBeat.i(213267);
     paramString = new b.c(paramString.replaceAll("/\\*.*?\\*/", ""));
     while (!paramString.empty())
     {
@@ -783,12 +783,12 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215036);
+    AppMethodBeat.o(213267);
   }
   
   private static void a(h.al paramal, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215034);
+    AppMethodBeat.i(213265);
     int i = 0;
     while (i < paramAttributes.getLength())
     {
@@ -796,7 +796,7 @@ final class l
       if ((str.equals("id")) || (str.equals("xml:id")))
       {
         paramal.id = paramAttributes.getValue(i).trim();
-        AppMethodBeat.o(215034);
+        AppMethodBeat.o(213265);
         return;
       }
       if (str.equals("xml:space"))
@@ -805,32 +805,32 @@ final class l
         if ("default".equals(paramAttributes))
         {
           paramal.aST = Boolean.FALSE;
-          AppMethodBeat.o(215034);
+          AppMethodBeat.o(213265);
           return;
         }
         if ("preserve".equals(paramAttributes))
         {
           paramal.aST = Boolean.TRUE;
-          AppMethodBeat.o(215034);
+          AppMethodBeat.o(213265);
           return;
         }
         paramal = new k("Invalid value for \"xml:space\" attribute: ".concat(String.valueOf(paramAttributes)));
-        AppMethodBeat.o(215034);
+        AppMethodBeat.o(213265);
         throw paramal;
       }
       i += 1;
     }
-    AppMethodBeat.o(215034);
+    AppMethodBeat.o(213265);
   }
   
   private static void a(h.am paramam, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215018);
+    AppMethodBeat.i(213249);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -846,24 +846,24 @@ final class l
         paramam.aQX = ag(str);
       }
     }
-    AppMethodBeat.o(215018);
+    AppMethodBeat.o(213249);
   }
   
   private static void a(h.ap paramap, String paramString)
   {
-    AppMethodBeat.i(215047);
+    AppMethodBeat.i(213278);
     paramap.aQg = ak(paramString);
-    AppMethodBeat.o(215047);
+    AppMethodBeat.o(213278);
   }
   
   private static void a(h.aq paramaq, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215020);
+    AppMethodBeat.i(213251);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -878,7 +878,7 @@ final class l
         if (paramaq.aQz.isNegative())
         {
           paramaq = new k("Invalid <radialGradient> element. r cannot be negative");
-          AppMethodBeat.o(215020);
+          AppMethodBeat.o(213251);
           throw paramaq;
           paramaq.aSY = ag(str);
           continue;
@@ -886,17 +886,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215020);
+    AppMethodBeat.o(213251);
   }
   
   private static void a(h.ar paramar, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215038);
+    AppMethodBeat.i(213269);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -908,17 +908,17 @@ final class l
         a(paramar, str);
       }
     }
-    AppMethodBeat.o(215038);
+    AppMethodBeat.o(213269);
   }
   
   private static void a(h.au paramau, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215010);
+    AppMethodBeat.i(213241);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -930,17 +930,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215010);
+    AppMethodBeat.o(213241);
   }
   
   private static void a(h.az paramaz, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215028);
+    AppMethodBeat.i(213259);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -955,17 +955,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215028);
+    AppMethodBeat.o(213259);
   }
   
   private static void a(h.ba paramba, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215007);
+    AppMethodBeat.i(213238);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -981,17 +981,17 @@ final class l
         paramba.aTf = ah(str);
       }
     }
-    AppMethodBeat.o(215007);
+    AppMethodBeat.o(213238);
   }
   
   private static void a(h.be parambe, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214990);
+    AppMethodBeat.i(213221);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1006,13 +1006,13 @@ final class l
         if (parambe.aQR.isNegative())
         {
           parambe = new k("Invalid <use> element. width cannot be negative");
-          AppMethodBeat.o(214990);
+          AppMethodBeat.o(213221);
           throw parambe;
           parambe.aQS = ag(str);
           if (parambe.aQS.isNegative())
           {
             parambe = new k("Invalid <use> element. height cannot be negative");
-            AppMethodBeat.o(214990);
+            AppMethodBeat.o(213221);
             throw parambe;
             if (("".equals(paramAttributes.getURI(i))) || ("http://www.w3.org/1999/xlink".equals(paramAttributes.getURI(i)))) {
               parambe.aQs = str;
@@ -1021,17 +1021,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(214990);
+    AppMethodBeat.o(213221);
   }
   
   private static void a(h.d paramd, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214998);
+    AppMethodBeat.i(213229);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       do
@@ -1047,20 +1047,20 @@ final class l
         paramd.aQz = ag(str);
       } while (!paramd.aQz.isNegative());
       paramd = new k("Invalid <circle> element. r cannot be negative");
-      AppMethodBeat.o(214998);
+      AppMethodBeat.o(213229);
       throw paramd;
     }
-    AppMethodBeat.o(214998);
+    AppMethodBeat.o(213229);
   }
   
   private static void a(h.e parame, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215026);
+    AppMethodBeat.i(213257);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1081,20 +1081,20 @@ final class l
       }
       label111:
       parame = new k("Invalid value for attribute clipPathUnits");
-      AppMethodBeat.o(215026);
+      AppMethodBeat.o(213257);
       throw parame;
     }
-    AppMethodBeat.o(215026);
+    AppMethodBeat.o(213257);
   }
   
   private static void a(h.i parami, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215000);
+    AppMethodBeat.i(213231);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       do
@@ -1112,25 +1112,25 @@ final class l
           parami.aQF = ag(str);
         } while (!parami.aQF.isNegative());
         parami = new k("Invalid <ellipse> element. rx cannot be negative");
-        AppMethodBeat.o(215000);
+        AppMethodBeat.o(213231);
         throw parami;
         parami.aQG = ag(str);
       } while (!parami.aQG.isNegative());
       parami = new k("Invalid <ellipse> element. ry cannot be negative");
-      AppMethodBeat.o(215000);
+      AppMethodBeat.o(213231);
       throw parami;
     }
-    AppMethodBeat.o(215000);
+    AppMethodBeat.o(213231);
   }
   
   private static void a(h.j paramj, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215017);
+    AppMethodBeat.i(213248);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1148,7 +1148,7 @@ final class l
         else
         {
           paramj = new k("Invalid value for attribute gradientUnits");
-          AppMethodBeat.o(215017);
+          AppMethodBeat.o(213248);
           throw paramj;
           paramj.aQJ = af(str);
           continue;
@@ -1159,7 +1159,7 @@ final class l
           catch (IllegalArgumentException paramj)
           {
             paramj = new k("Invalid spreadMethod attribute. \"" + str + "\" is not a valid value.");
-            AppMethodBeat.o(215017);
+            AppMethodBeat.o(213248);
             throw paramj;
           }
           if (("".equals(paramAttributes.getURI(i))) || ("http://www.w3.org/1999/xlink".equals(paramAttributes.getURI(i)))) {
@@ -1168,31 +1168,31 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215017);
+    AppMethodBeat.o(213248);
   }
   
   private static void a(h.n paramn, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215039);
+    AppMethodBeat.i(213270);
     int i = 0;
     while (i < paramAttributes.getLength())
     {
-      if (l.f.aM(paramAttributes.getLocalName(i)) == l.f.aVI) {
+      if (f.aM(paramAttributes.getLocalName(i)) == f.aVI) {
         paramn.setTransform(af(paramAttributes.getValue(i)));
       }
       i += 1;
     }
-    AppMethodBeat.o(215039);
+    AppMethodBeat.o(213270);
   }
   
   private static void a(h.o paramo, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214992);
+    AppMethodBeat.i(213223);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1207,13 +1207,13 @@ final class l
         if (paramo.aQR.isNegative())
         {
           paramo = new k("Invalid <use> element. width cannot be negative");
-          AppMethodBeat.o(214992);
+          AppMethodBeat.o(213223);
           throw paramo;
           paramo.aQS = ag(str);
           if (paramo.aQS.isNegative())
           {
             paramo = new k("Invalid <use> element. height cannot be negative");
-            AppMethodBeat.o(214992);
+            AppMethodBeat.o(213223);
             throw paramo;
             if (("".equals(paramAttributes.getURI(i))) || ("http://www.w3.org/1999/xlink".equals(paramAttributes.getURI(i))))
             {
@@ -1225,17 +1225,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(214992);
+    AppMethodBeat.o(213223);
   }
   
   private static void a(h.q paramq, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215002);
+    AppMethodBeat.i(213233);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1251,17 +1251,17 @@ final class l
         paramq.aQX = ag(str);
       }
     }
-    AppMethodBeat.o(215002);
+    AppMethodBeat.o(213233);
   }
   
   private static void a(h.r paramr, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215015);
+    AppMethodBeat.i(213246);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1276,13 +1276,13 @@ final class l
         if (paramr.aRb.isNegative())
         {
           paramr = new k("Invalid <marker> element. markerWidth cannot be negative");
-          AppMethodBeat.o(215015);
+          AppMethodBeat.o(213246);
           throw paramr;
           paramr.aRc = ag(str);
           if (paramr.aRc.isNegative())
           {
             paramr = new k("Invalid <marker> element. markerHeight cannot be negative");
-            AppMethodBeat.o(215015);
+            AppMethodBeat.o(213246);
             throw paramr;
             if ("strokeWidth".equals(str))
             {
@@ -1295,7 +1295,7 @@ final class l
             else
             {
               paramr = new k("Invalid value for attribute markerUnits");
-              AppMethodBeat.o(215015);
+              AppMethodBeat.o(213246);
               throw paramr;
               if ("auto".equals(str)) {
                 paramr.aRd = Float.valueOf((0.0F / 0.0F));
@@ -1307,17 +1307,17 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215015);
+    AppMethodBeat.o(213246);
   }
   
   private static void a(h.s params, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215033);
+    AppMethodBeat.i(213264);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       do
@@ -1339,7 +1339,7 @@ final class l
             else
             {
               params = new k("Invalid value for attribute maskUnits");
-              AppMethodBeat.o(215033);
+              AppMethodBeat.o(213264);
               throw params;
               if ("objectBoundingBox".equals(str))
               {
@@ -1352,7 +1352,7 @@ final class l
               else
               {
                 params = new k("Invalid value for attribute maskContentUnits");
-                AppMethodBeat.o(215033);
+                AppMethodBeat.o(213264);
                 throw params;
                 params.aQP = ag(str);
                 continue;
@@ -1363,25 +1363,25 @@ final class l
           params.aQR = ag(str);
         } while (!params.aQR.isNegative());
         params = new k("Invalid <mask> element. width cannot be negative");
-        AppMethodBeat.o(215033);
+        AppMethodBeat.o(213264);
         throw params;
         params.aQS = ag(str);
       } while (!params.aQS.isNegative());
       params = new k("Invalid <mask> element. height cannot be negative");
-      AppMethodBeat.o(215033);
+      AppMethodBeat.o(213264);
       throw params;
     }
-    AppMethodBeat.o(215033);
+    AppMethodBeat.o(213264);
   }
   
   private static void a(h.v paramv, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214994);
+    AppMethodBeat.i(213225);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       do
@@ -1395,20 +1395,20 @@ final class l
         paramv.aRi = Float.valueOf(parseFloat(str));
       } while (paramv.aRi.floatValue() >= 0.0F);
       paramv = new k("Invalid <path> element. pathLength cannot be negative");
-      AppMethodBeat.o(214994);
+      AppMethodBeat.o(213225);
       throw paramv;
     }
-    AppMethodBeat.o(214994);
+    AppMethodBeat.o(213225);
   }
   
   private static void a(h.y paramy, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215030);
+    AppMethodBeat.i(213261);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
-      switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+      switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
       {
       }
       for (;;)
@@ -1426,7 +1426,7 @@ final class l
         else
         {
           paramy = new k("Invalid value for attribute patternUnits");
-          AppMethodBeat.o(215030);
+          AppMethodBeat.o(213261);
           throw paramy;
           if ("objectBoundingBox".equals(str))
           {
@@ -1439,7 +1439,7 @@ final class l
           else
           {
             paramy = new k("Invalid value for attribute patternContentUnits");
-            AppMethodBeat.o(215030);
+            AppMethodBeat.o(213261);
             throw paramy;
             paramy.aRp = af(str);
             continue;
@@ -1451,13 +1451,13 @@ final class l
             if (paramy.aQR.isNegative())
             {
               paramy = new k("Invalid <pattern> element. width cannot be negative");
-              AppMethodBeat.o(215030);
+              AppMethodBeat.o(213261);
               throw paramy;
               paramy.aQS = ag(str);
               if (paramy.aQS.isNegative())
               {
                 paramy = new k("Invalid <pattern> element. height cannot be negative");
-                AppMethodBeat.o(215030);
+                AppMethodBeat.o(213261);
                 throw paramy;
                 if (("".equals(paramAttributes.getURI(i))) || ("http://www.w3.org/1999/xlink".equals(paramAttributes.getURI(i)))) {
                   paramy.aQs = str;
@@ -1468,16 +1468,16 @@ final class l
         }
       }
     }
-    AppMethodBeat.o(215030);
+    AppMethodBeat.o(213261);
   }
   
   private static void a(h.z paramz, Attributes paramAttributes, String paramString)
   {
-    AppMethodBeat.i(215004);
+    AppMethodBeat.i(213235);
     int i = 0;
     while (i < paramAttributes.getLength())
     {
-      if (l.f.aM(paramAttributes.getLocalName(i)) == l.f.aVf)
+      if (f.aM(paramAttributes.getLocalName(i)) == f.aVf)
       {
         Object localObject = new h(paramAttributes.getValue(i));
         ArrayList localArrayList = new ArrayList();
@@ -1489,7 +1489,7 @@ final class l
           if (Float.isNaN(f1))
           {
             paramz = new k("Invalid <" + paramString + "> points attribute. Non-coordinate content found in list.");
-            AppMethodBeat.o(215004);
+            AppMethodBeat.o(213235);
             throw paramz;
           }
           ((h)localObject).rq();
@@ -1497,7 +1497,7 @@ final class l
           if (Float.isNaN(f2))
           {
             paramz = new k("Invalid <" + paramString + "> points attribute. There should be an even number of coordinates.");
-            AppMethodBeat.o(215004);
+            AppMethodBeat.o(213235);
             throw paramz;
           }
           ((h)localObject).rq();
@@ -1516,12 +1516,12 @@ final class l
       }
       i += 1;
     }
-    AppMethodBeat.o(215004);
+    AppMethodBeat.o(213235);
   }
   
   private void a(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214983);
+    AppMethodBeat.i(213214);
     h.af localaf = new h.af();
     localaf.aSW = this.aTU;
     localaf.aSX = this.aTV;
@@ -1536,7 +1536,7 @@ final class l
     for (;;)
     {
       this.aTV = localaf;
-      AppMethodBeat.o(214983);
+      AppMethodBeat.o(213214);
       return;
       this.aTV.a(localaf);
     }
@@ -1544,15 +1544,15 @@ final class l
   
   private static h.c aA(String paramString)
   {
-    AppMethodBeat.i(215067);
+    AppMethodBeat.i(213298);
     if ("auto".equals(paramString))
     {
-      AppMethodBeat.o(215067);
+      AppMethodBeat.o(213298);
       return null;
     }
     if (!paramString.startsWith("rect("))
     {
-      AppMethodBeat.o(215067);
+      AppMethodBeat.o(213298);
       return null;
     }
     paramString = new h(paramString.substring(5));
@@ -1567,17 +1567,17 @@ final class l
     paramString.rp();
     if ((!paramString.b(')')) && (!paramString.empty()))
     {
-      AppMethodBeat.o(215067);
+      AppMethodBeat.o(213298);
       return null;
     }
     paramString = new h.c(localp1, localp2, localp3, localp4);
-    AppMethodBeat.o(215067);
+    AppMethodBeat.o(213298);
     return paramString;
   }
   
   private static h.ae.i aB(String paramString)
   {
-    AppMethodBeat.i(215069);
+    AppMethodBeat.i(213300);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -1587,7 +1587,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215069);
+        AppMethodBeat.o(213300);
         return null;
         if (paramString.equals("none"))
         {
@@ -1601,16 +1601,16 @@ final class l
       }
     }
     paramString = h.ae.i.aSK;
-    AppMethodBeat.o(215069);
+    AppMethodBeat.o(213300);
     return paramString;
     paramString = h.ae.i.aSL;
-    AppMethodBeat.o(215069);
+    AppMethodBeat.o(213300);
     return paramString;
   }
   
   private static h.ae.e aC(String paramString)
   {
-    AppMethodBeat.i(215070);
+    AppMethodBeat.i(213301);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -1620,7 +1620,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215070);
+        AppMethodBeat.o(213301);
         return null;
         if (paramString.equals("auto"))
         {
@@ -1639,19 +1639,19 @@ final class l
       }
     }
     paramString = h.ae.e.aSt;
-    AppMethodBeat.o(215070);
+    AppMethodBeat.o(213301);
     return paramString;
     paramString = h.ae.e.aSu;
-    AppMethodBeat.o(215070);
+    AppMethodBeat.o(213301);
     return paramString;
     paramString = h.ae.e.aSv;
-    AppMethodBeat.o(215070);
+    AppMethodBeat.o(213301);
     return paramString;
   }
   
   private static h.w aD(String paramString)
   {
-    AppMethodBeat.i(215071);
+    AppMethodBeat.i(213302);
     paramString = new h(paramString);
     float f3 = 0.0F;
     float f4 = 0.0F;
@@ -1660,7 +1660,7 @@ final class l
     h.w localw = new h.w();
     if (paramString.empty())
     {
-      AppMethodBeat.o(215071);
+      AppMethodBeat.o(213302);
       return localw;
     }
     int i = paramString.rs().intValue();
@@ -1672,7 +1672,7 @@ final class l
     float f7;
     if ((i != 77) && (i != 109))
     {
-      AppMethodBeat.o(215071);
+      AppMethodBeat.o(213302);
       return localw;
       if ((i == 109) && (!localw.isEmpty()))
       {
@@ -1713,7 +1713,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215071);
+        AppMethodBeat.o(213302);
         return localw;
       case 77: 
       case 109: 
@@ -1723,7 +1723,7 @@ final class l
           break;
         }
         new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-        AppMethodBeat.o(215071);
+        AppMethodBeat.o(213302);
         return localw;
         i = 76;
         break;
@@ -1734,7 +1734,7 @@ final class l
         if (Float.isNaN(f6))
         {
           new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-          AppMethodBeat.o(215071);
+          AppMethodBeat.o(213302);
           return localw;
         }
         if (i == 108) {
@@ -1774,7 +1774,7 @@ final class l
           if (Float.isNaN(f10))
           {
             new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-            AppMethodBeat.o(215071);
+            AppMethodBeat.o(213302);
             return localw;
           }
           if (i == 99)
@@ -1800,7 +1800,7 @@ final class l
             if (Float.isNaN(f5))
             {
               new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-              AppMethodBeat.o(215071);
+              AppMethodBeat.o(213302);
               return localw;
             }
             if (i == 115)
@@ -1830,7 +1830,7 @@ final class l
               if (Float.isNaN(f5))
               {
                 new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-                AppMethodBeat.o(215071);
+                AppMethodBeat.o(213302);
                 return localw;
               }
               if (i == 104) {}
@@ -1847,7 +1847,7 @@ final class l
                 if (Float.isNaN(f5))
                 {
                   new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-                  AppMethodBeat.o(215071);
+                  AppMethodBeat.o(213302);
                   return localw;
                 }
                 if (i == 118) {}
@@ -1867,7 +1867,7 @@ final class l
                   if (Float.isNaN(f7))
                   {
                     new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-                    AppMethodBeat.o(215071);
+                    AppMethodBeat.o(213302);
                     return localw;
                   }
                   if (i == 113)
@@ -1895,7 +1895,7 @@ final class l
                     if (Float.isNaN(f8))
                     {
                       new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-                      AppMethodBeat.o(215071);
+                      AppMethodBeat.o(213302);
                       return localw;
                     }
                     if (i == 116) {
@@ -1918,7 +1918,7 @@ final class l
                       if ((Float.isNaN(f6)) || (f7 < 0.0F) || (f8 < 0.0F))
                       {
                         new StringBuilder("Bad path coords for ").append((char)i).append(" path segment");
-                        AppMethodBeat.o(215071);
+                        AppMethodBeat.o(213302);
                         return localw;
                       }
                       if (i == 97) {
@@ -1934,7 +1934,7 @@ final class l
                         f3 = f7;
                         break;
                         label1460:
-                        AppMethodBeat.o(215071);
+                        AppMethodBeat.o(213302);
                         return localw;
                         label1469:
                         f7 = f3;
@@ -1966,7 +1966,7 @@ final class l
   
   private static Set<String> aE(String paramString)
   {
-    AppMethodBeat.i(215072);
+    AppMethodBeat.i(213303);
     paramString = new h(paramString);
     HashSet localHashSet = new HashSet();
     if (!paramString.empty())
@@ -1982,13 +1982,13 @@ final class l
         localHashSet.add("UNSUPPORTED");
       }
     }
-    AppMethodBeat.o(215072);
+    AppMethodBeat.o(213303);
     return localHashSet;
   }
   
   private static Set<String> aF(String paramString)
   {
-    AppMethodBeat.i(215073);
+    AppMethodBeat.i(213304);
     h localh = new h(paramString);
     HashSet localHashSet = new HashSet();
     while (!localh.empty())
@@ -2002,13 +2002,13 @@ final class l
       localHashSet.add(new Locale(paramString, "", "").getLanguage());
       localh.rp();
     }
-    AppMethodBeat.o(215073);
+    AppMethodBeat.o(213304);
     return localHashSet;
   }
   
   private static Set<String> aG(String paramString)
   {
-    AppMethodBeat.i(215074);
+    AppMethodBeat.i(213305);
     paramString = new h(paramString);
     HashSet localHashSet = new HashSet();
     while (!paramString.empty())
@@ -2016,45 +2016,45 @@ final class l
       localHashSet.add(paramString.nextToken());
       paramString.rp();
     }
-    AppMethodBeat.o(215074);
+    AppMethodBeat.o(213305);
     return localHashSet;
   }
   
   private static String aH(String paramString)
   {
-    AppMethodBeat.i(215075);
+    AppMethodBeat.i(213306);
     if (paramString.equals("none"))
     {
-      AppMethodBeat.o(215075);
+      AppMethodBeat.o(213306);
       return null;
     }
     if (!paramString.startsWith("url("))
     {
-      AppMethodBeat.o(215075);
+      AppMethodBeat.o(213306);
       return null;
     }
     if (paramString.endsWith(")"))
     {
       paramString = paramString.substring(4, paramString.length() - 1).trim();
-      AppMethodBeat.o(215075);
+      AppMethodBeat.o(213306);
       return paramString;
     }
     paramString = paramString.substring(4).trim();
-    AppMethodBeat.o(215075);
+    AppMethodBeat.o(213306);
     return paramString;
   }
   
   private void aI(String paramString)
   {
-    AppMethodBeat.i(215077);
+    AppMethodBeat.i(213308);
     b localb = new b(b.e.aOG, b.t.aPz);
     this.aTU.b(localb.V(paramString));
-    AppMethodBeat.o(215077);
+    AppMethodBeat.o(213308);
   }
   
   private void ad(String paramString)
   {
-    AppMethodBeat.i(214979);
+    AppMethodBeat.i(213210);
     Object localObject = (h.ah)this.aTV;
     int i = ((h.ah)localObject).aQH.size();
     if (i == 0) {}
@@ -2063,21 +2063,21 @@ final class l
       StringBuilder localStringBuilder = new StringBuilder();
       localObject = (h.bc)localObject;
       ((h.bc)localObject).text += paramString;
-      AppMethodBeat.o(214979);
+      AppMethodBeat.o(213210);
       return;
     }
     this.aTV.a(new h.bc(paramString));
-    AppMethodBeat.o(214979);
+    AppMethodBeat.o(213210);
   }
   
   private static Float ae(String paramString)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(215023);
+    AppMethodBeat.i(213254);
     if (paramString.length() == 0)
     {
       paramString = new k("Invalid offset value in <stop> (empty string)");
-      AppMethodBeat.o(215023);
+      AppMethodBeat.o(213254);
       throw paramString;
     }
     int j = paramString.length();
@@ -2102,10 +2102,10 @@ final class l
       catch (NumberFormatException localNumberFormatException)
       {
         paramString = new k("Invalid offset value in <stop>: ".concat(String.valueOf(paramString)), localNumberFormatException);
-        AppMethodBeat.o(215023);
+        AppMethodBeat.o(213254);
         throw paramString;
       }
-      AppMethodBeat.o(215023);
+      AppMethodBeat.o(213254);
       return Float.valueOf(f1);
       if (f1 > 100.0F)
       {
@@ -2126,7 +2126,7 @@ final class l
   
   private static Matrix af(String paramString)
   {
-    AppMethodBeat.i(215040);
+    AppMethodBeat.i(213271);
     Matrix localMatrix = new Matrix();
     h localh = new h(paramString);
     localh.rp();
@@ -2136,7 +2136,7 @@ final class l
       if (localObject == null)
       {
         paramString = new k("Bad transform function encountered in transform list: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(215040);
+        AppMethodBeat.o(213271);
         throw paramString;
       }
       int i = -1;
@@ -2149,7 +2149,7 @@ final class l
         {
         default: 
           paramString = new k("Invalid transform list fn: " + (String)localObject + ")");
-          AppMethodBeat.o(215040);
+          AppMethodBeat.o(213271);
           throw paramString;
           if (((String)localObject).equals("matrix"))
           {
@@ -2198,7 +2198,7 @@ final class l
       if ((Float.isNaN(f6)) || (!localh.b(')')))
       {
         paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(215040);
+        AppMethodBeat.o(213271);
         throw paramString;
       }
       localObject = new Matrix();
@@ -2218,7 +2218,7 @@ final class l
         if ((Float.isNaN(f1)) || (!localh.b(')')))
         {
           paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(215040);
+          AppMethodBeat.o(213271);
           throw paramString;
         }
         if (Float.isNaN(f2))
@@ -2236,7 +2236,7 @@ final class l
           if ((Float.isNaN(f1)) || (!localh.b(')')))
           {
             paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-            AppMethodBeat.o(215040);
+            AppMethodBeat.o(213271);
             throw paramString;
           }
           if (Float.isNaN(f2))
@@ -2255,7 +2255,7 @@ final class l
             if ((Float.isNaN(f1)) || (!localh.b(')')))
             {
               paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-              AppMethodBeat.o(215040);
+              AppMethodBeat.o(213271);
               throw paramString;
             }
             if (Float.isNaN(f2))
@@ -2269,7 +2269,7 @@ final class l
             else
             {
               paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-              AppMethodBeat.o(215040);
+              AppMethodBeat.o(213271);
               throw paramString;
               localh.rp();
               f1 = localh.nextFloat();
@@ -2277,7 +2277,7 @@ final class l
               if ((Float.isNaN(f1)) || (!localh.b(')')))
               {
                 paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-                AppMethodBeat.o(215040);
+                AppMethodBeat.o(213271);
                 throw paramString;
               }
               localMatrix.preSkew((float)Math.tan(Math.toRadians(f1)), 0.0F);
@@ -2288,7 +2288,7 @@ final class l
               if ((Float.isNaN(f1)) || (!localh.b(')')))
               {
                 paramString = new k("Invalid transform list: ".concat(String.valueOf(paramString)));
-                AppMethodBeat.o(215040);
+                AppMethodBeat.o(213271);
                 throw paramString;
               }
               localMatrix.preSkew(0.0F, (float)Math.tan(Math.toRadians(f1)));
@@ -2298,17 +2298,17 @@ final class l
       }
     }
     label1011:
-    AppMethodBeat.o(215040);
+    AppMethodBeat.o(213271);
     return localMatrix;
   }
   
   private static h.p ag(String paramString)
   {
-    AppMethodBeat.i(215041);
+    AppMethodBeat.i(213272);
     if (paramString.length() == 0)
     {
       paramString = new k("Invalid length value (empty string)");
-      AppMethodBeat.o(215041);
+      AppMethodBeat.o(213272);
       throw paramString;
     }
     int j = paramString.length();
@@ -2326,13 +2326,13 @@ final class l
       try
       {
         localObject = new h.p(g(paramString, i), (h.bd)localObject);
-        AppMethodBeat.o(215041);
+        AppMethodBeat.o(213272);
         return localObject;
       }
       catch (NumberFormatException localNumberFormatException)
       {
         paramString = new k("Invalid length value: ".concat(String.valueOf(paramString)), localNumberFormatException);
-        AppMethodBeat.o(215041);
+        AppMethodBeat.o(213272);
         throw paramString;
       }
       localObject = localbd;
@@ -2359,7 +2359,7 @@ final class l
       catch (IllegalArgumentException localIllegalArgumentException)
       {
         paramString = new k("Invalid length unit specifier: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(215041);
+        AppMethodBeat.o(213272);
         throw paramString;
       }
     }
@@ -2367,11 +2367,11 @@ final class l
   
   private static List<h.p> ah(String paramString)
   {
-    AppMethodBeat.i(215042);
+    AppMethodBeat.i(213273);
     if (paramString.length() == 0)
     {
       paramString = new k("Invalid length list (empty string)");
-      AppMethodBeat.o(215042);
+      AppMethodBeat.o(213273);
       throw paramString;
     }
     ArrayList localArrayList = new ArrayList(1);
@@ -2383,7 +2383,7 @@ final class l
       if (Float.isNaN(f))
       {
         paramString = new k("Invalid length list value: " + localh.ry());
-        AppMethodBeat.o(215042);
+        AppMethodBeat.o(213273);
         throw paramString;
       }
       h.bd localbd = localh.rz();
@@ -2394,21 +2394,21 @@ final class l
       localArrayList.add(new h.p(f, paramString));
       localh.rq();
     }
-    AppMethodBeat.o(215042);
+    AppMethodBeat.o(213273);
     return localArrayList;
   }
   
   private static Float ai(String paramString)
   {
     float f1 = 0.0F;
-    AppMethodBeat.i(215045);
+    AppMethodBeat.i(213276);
     try
     {
       float f2 = parseFloat(paramString);
       if (f2 < 0.0F) {}
       for (;;)
       {
-        AppMethodBeat.o(215045);
+        AppMethodBeat.o(213276);
         return Float.valueOf(f1);
         if (f2 > 1.0F) {
           f1 = 1.0F;
@@ -2420,13 +2420,13 @@ final class l
     }
     catch (k paramString)
     {
-      AppMethodBeat.o(215045);
+      AppMethodBeat.o(213276);
     }
   }
   
   private static h.b aj(String paramString)
   {
-    AppMethodBeat.i(215046);
+    AppMethodBeat.i(213277);
     paramString = new h(paramString);
     paramString.rp();
     float f1 = paramString.nextFloat();
@@ -2439,29 +2439,29 @@ final class l
     if ((Float.isNaN(f1)) || (Float.isNaN(f2)) || (Float.isNaN(f3)) || (Float.isNaN(f4)))
     {
       paramString = new k("Invalid viewBox definition - should have four numbers");
-      AppMethodBeat.o(215046);
+      AppMethodBeat.o(213277);
       throw paramString;
     }
     if (f3 < 0.0F)
     {
       paramString = new k("Invalid viewBox. width cannot be negative");
-      AppMethodBeat.o(215046);
+      AppMethodBeat.o(213277);
       throw paramString;
     }
     if (f4 < 0.0F)
     {
       paramString = new k("Invalid viewBox. height cannot be negative");
-      AppMethodBeat.o(215046);
+      AppMethodBeat.o(213277);
       throw paramString;
     }
     paramString = new h.b(f1, f2, f3, f4);
-    AppMethodBeat.o(215046);
+    AppMethodBeat.o(213277);
     return paramString;
   }
   
   private static f ak(String paramString)
   {
-    AppMethodBeat.i(215048);
+    AppMethodBeat.i(213279);
     h localh = new h(paramString);
     localh.rp();
     Object localObject2 = localh.a(' ', false);
@@ -2487,7 +2487,7 @@ final class l
         {
         default: 
           paramString = new k("Invalid preserveAspectRatio definition: ".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(215048);
+          AppMethodBeat.o(213279);
           throw paramString;
           if (((String)localObject1).equals("meet"))
           {
@@ -2504,7 +2504,7 @@ final class l
     for (localObject1 = f.b.aQc;; localObject1 = f.b.aQd)
     {
       paramString = new f((f.a)localObject2, (f.b)localObject1);
-      AppMethodBeat.o(215048);
+      AppMethodBeat.o(213279);
       return paramString;
     }
   }
@@ -2512,7 +2512,7 @@ final class l
   private static h.ao al(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(215049);
+    AppMethodBeat.i(213280);
     if (paramString.startsWith("url("))
     {
       int i = paramString.indexOf(")");
@@ -2525,21 +2525,21 @@ final class l
           paramString = am(str2);
         }
         paramString = new h.u(str1, paramString);
-        AppMethodBeat.o(215049);
+        AppMethodBeat.o(213280);
         return paramString;
       }
       paramString = new h.u(paramString.substring(4).trim(), null);
-      AppMethodBeat.o(215049);
+      AppMethodBeat.o(213280);
       return paramString;
     }
     paramString = am(paramString);
-    AppMethodBeat.o(215049);
+    AppMethodBeat.o(213280);
     return paramString;
   }
   
   private static h.ao am(String paramString)
   {
-    AppMethodBeat.i(215050);
+    AppMethodBeat.i(213281);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -2552,12 +2552,12 @@ final class l
       try
       {
         paramString = an(paramString);
-        AppMethodBeat.o(215050);
+        AppMethodBeat.o(213281);
         return paramString;
       }
       catch (k paramString)
       {
-        AppMethodBeat.o(215050);
+        AppMethodBeat.o(213281);
       }
       if (paramString.equals("none"))
       {
@@ -2569,17 +2569,17 @@ final class l
       }
     }
     paramString = h.f.aQD;
-    AppMethodBeat.o(215050);
+    AppMethodBeat.o(213281);
     return paramString;
     paramString = h.g.qQ();
-    AppMethodBeat.o(215050);
+    AppMethodBeat.o(213281);
     return paramString;
     return null;
   }
   
   private static h.f an(String paramString)
   {
-    AppMethodBeat.i(215051);
+    AppMethodBeat.i(213282);
     int i;
     if (paramString.charAt(0) == '#')
     {
@@ -2587,7 +2587,7 @@ final class l
       if (localObject == null)
       {
         paramString = new k("Bad hex colour value: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         throw paramString;
       }
       int k;
@@ -2598,7 +2598,7 @@ final class l
       case 8: 
       default: 
         paramString = new k("Bad hex colour value: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         throw paramString;
       case 4: 
         k = (int)((d)localObject).value;
@@ -2606,7 +2606,7 @@ final class l
         j = k & 0xF0;
         k &= 0xF;
         paramString = new h.f(i << 8 | i << 12 | 0xFF000000 | j << 8 | j << 4 | k << 4 | k);
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         return paramString;
       case 5: 
         int m = (int)((d)localObject).value;
@@ -2615,16 +2615,16 @@ final class l
         k = m & 0xF0;
         m &= 0xF;
         paramString = new h.f(i << 4 | m << 24 | m << 28 | i << 8 | j << 4 | j | k | k >> 4);
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         return paramString;
       case 7: 
         paramString = new h.f((int)((d)localObject).value | 0xFF000000);
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         return paramString;
       }
       i = (int)((d)localObject).value;
       paramString = new h.f((int)((d)localObject).value >>> 8 | i << 24);
-      AppMethodBeat.o(215051);
+      AppMethodBeat.o(213282);
       return paramString;
     }
     Object localObject = paramString.toLowerCase(Locale.US);
@@ -2674,25 +2674,25 @@ final class l
         if ((Float.isNaN(f4)) || (!((h)localObject).b(')')))
         {
           paramString = new k("Bad rgba() colour value: ".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(215051);
+          AppMethodBeat.o(213282);
           throw paramString;
           i = 4;
           break;
         }
         i = T(f4 * 256.0F);
         paramString = new h.f(T(f1) << 16 | i << 24 | T(f2) << 8 | T(f3));
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         return paramString;
       }
       ((h)localObject).rp();
       if ((Float.isNaN(f3)) || (!((h)localObject).b(')')))
       {
         paramString = new k("Bad rgb() colour value: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         throw paramString;
       }
       paramString = new h.f(T(f1) << 16 | 0xFF000000 | T(f2) << 8 | T(f3));
-      AppMethodBeat.o(215051);
+      AppMethodBeat.o(213282);
       return paramString;
       bool = ((String)localObject).startsWith("hsla(");
       if ((bool) || (((String)localObject).startsWith("hsl(")))
@@ -2720,48 +2720,48 @@ final class l
             break;
           }
           paramString = new k("Bad hsla() colour value: ".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(215051);
+          AppMethodBeat.o(213282);
           throw paramString;
         }
         paramString = new h.f(T(f4 * 256.0F) << 24 | h(f1, f2, f3));
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         return paramString;
         label953:
         ((h)localObject).rp();
         if ((Float.isNaN(f3)) || (!((h)localObject).b(')')))
         {
           paramString = new k("Bad hsl() colour value: ".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(215051);
+          AppMethodBeat.o(213282);
           throw paramString;
         }
         paramString = new h.f(h(f1, f2, f3) | 0xFF000000);
-        AppMethodBeat.o(215051);
+        AppMethodBeat.o(213282);
         return paramString;
       }
       paramString = ao((String)localObject);
-      AppMethodBeat.o(215051);
+      AppMethodBeat.o(213282);
       return paramString;
     }
   }
   
   private static h.f ao(String paramString)
   {
-    AppMethodBeat.i(215054);
-    Integer localInteger = l.b.aK(paramString);
+    AppMethodBeat.i(213285);
+    Integer localInteger = b.aK(paramString);
     if (localInteger == null)
     {
       paramString = new k("Invalid colour keyword: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(215054);
+      AppMethodBeat.o(213285);
       throw paramString;
     }
     paramString = new h.f(localInteger.intValue());
-    AppMethodBeat.o(215054);
+    AppMethodBeat.o(213285);
     return paramString;
   }
   
   private static List<String> ap(String paramString)
   {
-    AppMethodBeat.i(215056);
+    AppMethodBeat.i(213287);
     Object localObject1 = null;
     h localh = new h(paramString);
     paramString = (String)localObject1;
@@ -2784,13 +2784,13 @@ final class l
       localh.rq();
       paramString = (String)localObject1;
     } while (!localh.empty());
-    AppMethodBeat.o(215056);
+    AppMethodBeat.o(213287);
     return localObject1;
   }
   
   private static h.p aq(String paramString)
   {
-    AppMethodBeat.i(215057);
+    AppMethodBeat.i(213288);
     try
     {
       h.p localp2 = c.aL(paramString);
@@ -2798,19 +2798,19 @@ final class l
       if (localp2 == null) {
         localp1 = ag(paramString);
       }
-      AppMethodBeat.o(215057);
+      AppMethodBeat.o(213288);
       return localp1;
     }
     catch (k paramString)
     {
-      AppMethodBeat.o(215057);
+      AppMethodBeat.o(213288);
     }
     return null;
   }
   
   private static h.ae.b ar(String paramString)
   {
-    AppMethodBeat.i(215058);
+    AppMethodBeat.i(213289);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -2820,7 +2820,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215058);
+        AppMethodBeat.o(213289);
         return null;
         if (paramString.equals("italic"))
         {
@@ -2839,19 +2839,19 @@ final class l
       }
     }
     paramString = h.ae.b.aSi;
-    AppMethodBeat.o(215058);
+    AppMethodBeat.o(213289);
     return paramString;
     paramString = h.ae.b.aSh;
-    AppMethodBeat.o(215058);
+    AppMethodBeat.o(213289);
     return paramString;
     paramString = h.ae.b.aSj;
-    AppMethodBeat.o(215058);
+    AppMethodBeat.o(213289);
     return paramString;
   }
   
   private static h.ae.g as(String paramString)
   {
-    AppMethodBeat.i(215059);
+    AppMethodBeat.i(213290);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -2861,7 +2861,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215059);
+        AppMethodBeat.o(213290);
         return null;
         if (paramString.equals("none"))
         {
@@ -2890,25 +2890,25 @@ final class l
       }
     }
     paramString = h.ae.g.aSB;
-    AppMethodBeat.o(215059);
+    AppMethodBeat.o(213290);
     return paramString;
     paramString = h.ae.g.aSC;
-    AppMethodBeat.o(215059);
+    AppMethodBeat.o(213290);
     return paramString;
     paramString = h.ae.g.aSD;
-    AppMethodBeat.o(215059);
+    AppMethodBeat.o(213290);
     return paramString;
     paramString = h.ae.g.aSE;
-    AppMethodBeat.o(215059);
+    AppMethodBeat.o(213290);
     return paramString;
     paramString = h.ae.g.aSF;
-    AppMethodBeat.o(215059);
+    AppMethodBeat.o(213290);
     return paramString;
   }
   
   private static h.ae.h at(String paramString)
   {
-    AppMethodBeat.i(215060);
+    AppMethodBeat.i(213291);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -2918,7 +2918,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215060);
+        AppMethodBeat.o(213291);
         return null;
         if (paramString.equals("ltr"))
         {
@@ -2932,101 +2932,101 @@ final class l
       }
     }
     paramString = h.ae.h.aSH;
-    AppMethodBeat.o(215060);
+    AppMethodBeat.o(213291);
     return paramString;
     paramString = h.ae.h.aSI;
-    AppMethodBeat.o(215060);
+    AppMethodBeat.o(213291);
     return paramString;
   }
   
   private static h.ae.a au(String paramString)
   {
-    AppMethodBeat.i(215061);
+    AppMethodBeat.i(213292);
     if ("nonzero".equals(paramString))
     {
       paramString = h.ae.a.aSe;
-      AppMethodBeat.o(215061);
+      AppMethodBeat.o(213292);
       return paramString;
     }
     if ("evenodd".equals(paramString))
     {
       paramString = h.ae.a.aSf;
-      AppMethodBeat.o(215061);
+      AppMethodBeat.o(213292);
       return paramString;
     }
-    AppMethodBeat.o(215061);
+    AppMethodBeat.o(213292);
     return null;
   }
   
   private static h.ae.c av(String paramString)
   {
-    AppMethodBeat.i(215062);
+    AppMethodBeat.i(213293);
     if ("butt".equals(paramString))
     {
       paramString = h.ae.c.aSl;
-      AppMethodBeat.o(215062);
+      AppMethodBeat.o(213293);
       return paramString;
     }
     if ("round".equals(paramString))
     {
       paramString = h.ae.c.aSm;
-      AppMethodBeat.o(215062);
+      AppMethodBeat.o(213293);
       return paramString;
     }
     if ("square".equals(paramString))
     {
       paramString = h.ae.c.aSn;
-      AppMethodBeat.o(215062);
+      AppMethodBeat.o(213293);
       return paramString;
     }
-    AppMethodBeat.o(215062);
+    AppMethodBeat.o(213293);
     return null;
   }
   
   private static h.ae.d aw(String paramString)
   {
-    AppMethodBeat.i(215063);
+    AppMethodBeat.i(213294);
     if ("miter".equals(paramString))
     {
       paramString = h.ae.d.aSp;
-      AppMethodBeat.o(215063);
+      AppMethodBeat.o(213294);
       return paramString;
     }
     if ("round".equals(paramString))
     {
       paramString = h.ae.d.aSq;
-      AppMethodBeat.o(215063);
+      AppMethodBeat.o(213294);
       return paramString;
     }
     if ("bevel".equals(paramString))
     {
       paramString = h.ae.d.aSr;
-      AppMethodBeat.o(215063);
+      AppMethodBeat.o(213294);
       return paramString;
     }
-    AppMethodBeat.o(215063);
+    AppMethodBeat.o(213294);
     return null;
   }
   
   private static h.p[] ax(String paramString)
   {
-    AppMethodBeat.i(215064);
+    AppMethodBeat.i(213295);
     paramString = new h(paramString);
     paramString.rp();
     if (paramString.empty())
     {
-      AppMethodBeat.o(215064);
+      AppMethodBeat.o(213295);
       return null;
     }
     h.p localp = paramString.rt();
     if (localp == null)
     {
-      AppMethodBeat.o(215064);
+      AppMethodBeat.o(213295);
       return null;
     }
     if (localp.isNegative())
     {
-      AppMethodBeat.o(215064);
+      AppMethodBeat.o(213295);
       return null;
     }
     float f = localp.value;
@@ -3038,12 +3038,12 @@ final class l
       localp = paramString.rt();
       if (localp == null)
       {
-        AppMethodBeat.o(215064);
+        AppMethodBeat.o(213295);
         return null;
       }
       if (localp.isNegative())
       {
-        AppMethodBeat.o(215064);
+        AppMethodBeat.o(213295);
         return null;
       }
       localArrayList.add(localp);
@@ -3051,17 +3051,17 @@ final class l
     }
     if (f == 0.0F)
     {
-      AppMethodBeat.o(215064);
+      AppMethodBeat.o(213295);
       return null;
     }
     paramString = (h.p[])localArrayList.toArray(new h.p[localArrayList.size()]);
-    AppMethodBeat.o(215064);
+    AppMethodBeat.o(213295);
     return paramString;
   }
   
   private static h.ae.f ay(String paramString)
   {
-    AppMethodBeat.i(215065);
+    AppMethodBeat.i(213296);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -3071,7 +3071,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215065);
+        AppMethodBeat.o(213296);
         return null;
         if (paramString.equals("start"))
         {
@@ -3090,19 +3090,19 @@ final class l
       }
     }
     paramString = h.ae.f.aSx;
-    AppMethodBeat.o(215065);
+    AppMethodBeat.o(213296);
     return paramString;
     paramString = h.ae.f.aSy;
-    AppMethodBeat.o(215065);
+    AppMethodBeat.o(213296);
     return paramString;
     paramString = h.ae.f.aSz;
-    AppMethodBeat.o(215065);
+    AppMethodBeat.o(213296);
     return paramString;
   }
   
   private static Boolean az(String paramString)
   {
-    AppMethodBeat.i(215066);
+    AppMethodBeat.i(213297);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -3112,7 +3112,7 @@ final class l
       switch (i)
       {
       default: 
-        AppMethodBeat.o(215066);
+        AppMethodBeat.o(213297);
         return null;
         if (paramString.equals("visible"))
         {
@@ -3136,36 +3136,36 @@ final class l
       }
     }
     paramString = Boolean.TRUE;
-    AppMethodBeat.o(215066);
+    AppMethodBeat.o(213297);
     return paramString;
     paramString = Boolean.FALSE;
-    AppMethodBeat.o(215066);
+    AppMethodBeat.o(213297);
     return paramString;
   }
   
   private static h.p b(h paramh)
   {
-    AppMethodBeat.i(215068);
+    AppMethodBeat.i(213299);
     if (paramh.aO("auto"))
     {
       paramh = new h.p(0.0F);
-      AppMethodBeat.o(215068);
+      AppMethodBeat.o(213299);
       return paramh;
     }
     paramh = paramh.rt();
-    AppMethodBeat.o(215068);
+    AppMethodBeat.o(213299);
     return paramh;
   }
   
   private static void b(h.al paramal, Attributes paramAttributes)
   {
-    AppMethodBeat.i(215035);
+    AppMethodBeat.i(213266);
     int i = 0;
     if (i < paramAttributes.getLength())
     {
       String str = paramAttributes.getValue(i).trim();
       if (str.length() != 0) {
-        switch (l.1.aUe[l.f.aM(paramAttributes.getLocalName(i)).ordinal()])
+        switch (1.aUe[f.aM(paramAttributes.getLocalName(i)).ordinal()])
         {
         default: 
           if (paramal.aSU == null) {
@@ -3183,41 +3183,41 @@ final class l
         paramal.aSV = b.W(str);
       }
     }
-    AppMethodBeat.o(215035);
+    AppMethodBeat.o(213266);
   }
   
   static void b(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(214981);
+    AppMethodBeat.i(213212);
     if ((paramString.equals("xml-stylesheet")) && (h.qN() != null))
     {
       if (((String)paramMap.get("type") != null) && (!"text/css".equals(paramMap.get("type"))))
       {
-        AppMethodBeat.o(214981);
+        AppMethodBeat.o(213212);
         return;
       }
       if (((String)paramMap.get("alternate") != null) && (!"no".equals(paramMap.get("alternate"))))
       {
-        AppMethodBeat.o(214981);
+        AppMethodBeat.o(213212);
         return;
       }
       if ((String)paramMap.get("href") != null)
       {
         h.qN();
-        AppMethodBeat.o(214981);
+        AppMethodBeat.o(213212);
         return;
       }
     }
-    AppMethodBeat.o(214981);
+    AppMethodBeat.o(213212);
   }
   
   private void b(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214985);
+    AppMethodBeat.i(213216);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214985);
+      AppMethodBeat.o(213216);
       throw paramAttributes;
     }
     h.m localm = new h.m();
@@ -3229,16 +3229,16 @@ final class l
     a(localm, paramAttributes);
     this.aTV.a(localm);
     this.aTV = localm;
-    AppMethodBeat.o(214985);
+    AppMethodBeat.o(213216);
   }
   
   private void c(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214986);
+    AppMethodBeat.i(213217);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214986);
+      AppMethodBeat.o(213217);
       throw paramAttributes;
     }
     h.h localh = new h.h();
@@ -3249,16 +3249,16 @@ final class l
     a(localh, paramAttributes);
     this.aTV.a(localh);
     this.aTV = localh;
-    AppMethodBeat.o(214986);
+    AppMethodBeat.o(213217);
   }
   
   private void d(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214987);
+    AppMethodBeat.i(213218);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214987);
+      AppMethodBeat.o(213218);
       throw paramAttributes;
     }
     h.a locala = new h.a();
@@ -3271,16 +3271,16 @@ final class l
     a(locala, paramAttributes);
     this.aTV.a(locala);
     this.aTV = locala;
-    AppMethodBeat.o(214987);
+    AppMethodBeat.o(213218);
   }
   
   private void e(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214989);
+    AppMethodBeat.i(213220);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214989);
+      AppMethodBeat.o(213220);
       throw paramAttributes;
     }
     h.be localbe = new h.be();
@@ -3293,16 +3293,16 @@ final class l
     a(localbe, paramAttributes);
     this.aTV.a(localbe);
     this.aTV = localbe;
-    AppMethodBeat.o(214989);
+    AppMethodBeat.o(213220);
   }
   
   private void f(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214991);
+    AppMethodBeat.i(213222);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214991);
+      AppMethodBeat.o(213222);
       throw paramAttributes;
     }
     h.o localo = new h.o();
@@ -3315,26 +3315,26 @@ final class l
     a(localo, paramAttributes);
     this.aTV.a(localo);
     this.aTV = localo;
-    AppMethodBeat.o(214991);
+    AppMethodBeat.o(213222);
   }
   
   private static float g(String paramString, int paramInt)
   {
-    AppMethodBeat.i(215044);
+    AppMethodBeat.i(213275);
     float f = new e().f(paramString, 0, paramInt);
     if (!Float.isNaN(f))
     {
-      AppMethodBeat.o(215044);
+      AppMethodBeat.o(213275);
       return f;
     }
     paramString = new k("Invalid float value: ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(215044);
+    AppMethodBeat.o(213275);
     throw paramString;
   }
   
   private void g(InputStream paramInputStream)
   {
-    AppMethodBeat.i(214975);
+    AppMethodBeat.i(213206);
     for (;;)
     {
       XmlPullParser localXmlPullParser;
@@ -3351,7 +3351,7 @@ final class l
       {
         l.i locali;
         paramInputStream = new k("XML parser problem", paramInputStream);
-        AppMethodBeat.o(214975);
+        AppMethodBeat.o(213206);
         throw paramInputStream;
         localObject = localXmlPullParser.getName();
         paramInputStream = (InputStream)localObject;
@@ -3365,7 +3365,7 @@ final class l
       catch (IOException paramInputStream)
       {
         paramInputStream = new k("Stream error", paramInputStream);
-        AppMethodBeat.o(214975);
+        AppMethodBeat.o(213206);
         throw paramInputStream;
       }
       int i = localXmlPullParser.nextToken();
@@ -3411,7 +3411,7 @@ final class l
           {
             Object localObject;
             int j;
-            AppMethodBeat.o(214975);
+            AppMethodBeat.o(213206);
             return;
           }
           switch (i)
@@ -3424,11 +3424,11 @@ final class l
   
   private void g(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214993);
+    AppMethodBeat.i(213224);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214993);
+      AppMethodBeat.o(213224);
       throw paramAttributes;
     }
     h.v localv = new h.v();
@@ -3440,12 +3440,12 @@ final class l
     a(localv, paramAttributes);
     a(localv, paramAttributes);
     this.aTV.a(localv);
-    AppMethodBeat.o(214993);
+    AppMethodBeat.o(213224);
   }
   
   private static int h(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(215053);
+    AppMethodBeat.i(213284);
     float f1;
     if (paramFloat1 >= 0.0F)
     {
@@ -3479,7 +3479,7 @@ final class l
       int i = T(paramFloat2 * 256.0F);
       int j = T(paramFloat3 * 256.0F);
       int k = T(paramFloat1 * 256.0F);
-      AppMethodBeat.o(215053);
+      AppMethodBeat.o(213284);
       return k | i << 16 | j << 8;
       paramFloat1 = paramFloat1 % 360.0F + 360.0F;
       break;
@@ -3500,11 +3500,11 @@ final class l
   
   private void h(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214995);
+    AppMethodBeat.i(213226);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214995);
+      AppMethodBeat.o(213226);
       throw paramAttributes;
     }
     h.ab localab = new h.ab();
@@ -3516,7 +3516,7 @@ final class l
     a(localab, paramAttributes);
     a(localab, paramAttributes);
     this.aTV.a(localab);
-    AppMethodBeat.o(214995);
+    AppMethodBeat.o(213226);
   }
   
   private static float i(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -3547,11 +3547,11 @@ final class l
   
   private void i(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214997);
+    AppMethodBeat.i(213228);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214997);
+      AppMethodBeat.o(213228);
       throw paramAttributes;
     }
     h.d locald = new h.d();
@@ -3563,16 +3563,16 @@ final class l
     a(locald, paramAttributes);
     a(locald, paramAttributes);
     this.aTV.a(locald);
-    AppMethodBeat.o(214997);
+    AppMethodBeat.o(213228);
   }
   
   private void j(Attributes paramAttributes)
   {
-    AppMethodBeat.i(214999);
+    AppMethodBeat.i(213230);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(214999);
+      AppMethodBeat.o(213230);
       throw paramAttributes;
     }
     h.i locali = new h.i();
@@ -3584,16 +3584,16 @@ final class l
     a(locali, paramAttributes);
     a(locali, paramAttributes);
     this.aTV.a(locali);
-    AppMethodBeat.o(214999);
+    AppMethodBeat.o(213230);
   }
   
   private void k(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215001);
+    AppMethodBeat.i(213232);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215001);
+      AppMethodBeat.o(213232);
       throw paramAttributes;
     }
     h.q localq = new h.q();
@@ -3605,16 +3605,16 @@ final class l
     a(localq, paramAttributes);
     a(localq, paramAttributes);
     this.aTV.a(localq);
-    AppMethodBeat.o(215001);
+    AppMethodBeat.o(213232);
   }
   
   private void l(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215003);
+    AppMethodBeat.i(213234);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215003);
+      AppMethodBeat.o(213234);
       throw paramAttributes;
     }
     h.z localz = new h.z();
@@ -3626,16 +3626,16 @@ final class l
     a(localz, paramAttributes);
     a(localz, paramAttributes, "polyline");
     this.aTV.a(localz);
-    AppMethodBeat.o(215003);
+    AppMethodBeat.o(213234);
   }
   
   private void m(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215005);
+    AppMethodBeat.i(213236);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215005);
+      AppMethodBeat.o(213236);
       throw paramAttributes;
     }
     h.aa localaa = new h.aa();
@@ -3647,16 +3647,16 @@ final class l
     a(localaa, paramAttributes);
     a(localaa, paramAttributes, "polygon");
     this.aTV.a(localaa);
-    AppMethodBeat.o(215005);
+    AppMethodBeat.o(213236);
   }
   
   private void n(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215006);
+    AppMethodBeat.i(213237);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215006);
+      AppMethodBeat.o(213237);
       throw paramAttributes;
     }
     h.aw localaw = new h.aw();
@@ -3669,22 +3669,22 @@ final class l
     a(localaw, paramAttributes);
     this.aTV.a(localaw);
     this.aTV = localaw;
-    AppMethodBeat.o(215006);
+    AppMethodBeat.o(213237);
   }
   
   private void o(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215008);
+    AppMethodBeat.i(213239);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215008);
+      AppMethodBeat.o(213239);
       throw paramAttributes;
     }
     if (!(this.aTV instanceof h.ay))
     {
       paramAttributes = new k("Invalid document. <tspan> elements are only valid inside <text> or other <tspan> elements.");
-      AppMethodBeat.o(215008);
+      AppMethodBeat.o(213239);
       throw paramAttributes;
     }
     h.av localav = new h.av();
@@ -3699,26 +3699,26 @@ final class l
     if ((localav.aSX instanceof h.bb))
     {
       localav.aTa = ((h.bb)localav.aSX);
-      AppMethodBeat.o(215008);
+      AppMethodBeat.o(213239);
       return;
     }
     localav.aTa = ((h.ax)localav.aSX).qX();
-    AppMethodBeat.o(215008);
+    AppMethodBeat.o(213239);
   }
   
   private void p(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215009);
+    AppMethodBeat.i(213240);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215009);
+      AppMethodBeat.o(213240);
       throw paramAttributes;
     }
     if (!(this.aTV instanceof h.ay))
     {
       paramAttributes = new k("Invalid document. <tref> elements are only valid inside <text> or <tspan> elements.");
-      AppMethodBeat.o(215009);
+      AppMethodBeat.o(213240);
       throw paramAttributes;
     }
     h.au localau = new h.au();
@@ -3732,35 +3732,35 @@ final class l
     if ((localau.aSX instanceof h.bb))
     {
       localau.aTa = ((h.bb)localau.aSX);
-      AppMethodBeat.o(215009);
+      AppMethodBeat.o(213240);
       return;
     }
     localau.aTa = ((h.ax)localau.aSX).qX();
-    AppMethodBeat.o(215009);
+    AppMethodBeat.o(213240);
   }
   
   private static float parseFloat(String paramString)
   {
-    AppMethodBeat.i(215043);
+    AppMethodBeat.i(213274);
     int i = paramString.length();
     if (i == 0)
     {
       paramString = new k("Invalid float value (empty string)");
-      AppMethodBeat.o(215043);
+      AppMethodBeat.o(213274);
       throw paramString;
     }
     float f = g(paramString, i);
-    AppMethodBeat.o(215043);
+    AppMethodBeat.o(213274);
     return f;
   }
   
   private void q(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215011);
+    AppMethodBeat.i(213242);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215011);
+      AppMethodBeat.o(213242);
       throw paramAttributes;
     }
     h.as localas = new h.as();
@@ -3772,16 +3772,16 @@ final class l
     a(localas, paramAttributes);
     this.aTV.a(localas);
     this.aTV = localas;
-    AppMethodBeat.o(215011);
+    AppMethodBeat.o(213242);
   }
   
   private void r(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215013);
+    AppMethodBeat.i(213244);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215013);
+      AppMethodBeat.o(213244);
       throw paramAttributes;
     }
     h.at localat = new h.at();
@@ -3793,16 +3793,16 @@ final class l
     a(localat, paramAttributes);
     this.aTV.a(localat);
     this.aTV = localat;
-    AppMethodBeat.o(215013);
+    AppMethodBeat.o(213244);
   }
   
   private void s(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215014);
+    AppMethodBeat.i(213245);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215014);
+      AppMethodBeat.o(213245);
       throw paramAttributes;
     }
     h.r localr = new h.r();
@@ -3815,16 +3815,16 @@ final class l
     a(localr, paramAttributes);
     this.aTV.a(localr);
     this.aTV = localr;
-    AppMethodBeat.o(215014);
+    AppMethodBeat.o(213245);
   }
   
   private void t(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215016);
+    AppMethodBeat.i(213247);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215016);
+      AppMethodBeat.o(213247);
       throw paramAttributes;
     }
     h.am localam = new h.am();
@@ -3836,16 +3836,16 @@ final class l
     a(localam, paramAttributes);
     this.aTV.a(localam);
     this.aTV = localam;
-    AppMethodBeat.o(215016);
+    AppMethodBeat.o(213247);
   }
   
   private void u(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215019);
+    AppMethodBeat.i(213250);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215019);
+      AppMethodBeat.o(213250);
       throw paramAttributes;
     }
     h.aq localaq = new h.aq();
@@ -3857,22 +3857,22 @@ final class l
     a(localaq, paramAttributes);
     this.aTV.a(localaq);
     this.aTV = localaq;
-    AppMethodBeat.o(215019);
+    AppMethodBeat.o(213250);
   }
   
   private void v(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215021);
+    AppMethodBeat.i(213252);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215021);
+      AppMethodBeat.o(213252);
       throw paramAttributes;
     }
     if (!(this.aTV instanceof h.j))
     {
       paramAttributes = new k("Invalid document. <stop> elements are only valid inside <linearGradient> or <radialGradient> elements.");
-      AppMethodBeat.o(215021);
+      AppMethodBeat.o(213252);
       throw paramAttributes;
     }
     h.ad localad = new h.ad();
@@ -3883,16 +3883,16 @@ final class l
     a(localad, paramAttributes);
     this.aTV.a(localad);
     this.aTV = localad;
-    AppMethodBeat.o(215021);
+    AppMethodBeat.o(213252);
   }
   
   private void w(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215024);
+    AppMethodBeat.i(213255);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215024);
+      AppMethodBeat.o(213255);
       throw paramAttributes;
     }
     h.ac localac = new h.ac();
@@ -3902,16 +3902,16 @@ final class l
     b(localac, paramAttributes);
     this.aTV.a(localac);
     this.aTV = localac;
-    AppMethodBeat.o(215024);
+    AppMethodBeat.o(213255);
   }
   
   private void x(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215025);
+    AppMethodBeat.i(213256);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215025);
+      AppMethodBeat.o(213256);
       throw paramAttributes;
     }
     h.e locale = new h.e();
@@ -3924,16 +3924,16 @@ final class l
     a(locale, paramAttributes);
     this.aTV.a(locale);
     this.aTV = locale;
-    AppMethodBeat.o(215025);
+    AppMethodBeat.o(213256);
   }
   
   private void y(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215027);
+    AppMethodBeat.i(213258);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215027);
+      AppMethodBeat.o(213258);
       throw paramAttributes;
     }
     h.az localaz = new h.az();
@@ -3948,20 +3948,20 @@ final class l
     if ((localaz.aSX instanceof h.bb))
     {
       localaz.aTa = ((h.bb)localaz.aSX);
-      AppMethodBeat.o(215027);
+      AppMethodBeat.o(213258);
       return;
     }
     localaz.aTa = ((h.ax)localaz.aSX).qX();
-    AppMethodBeat.o(215027);
+    AppMethodBeat.o(213258);
   }
   
   private void z(Attributes paramAttributes)
   {
-    AppMethodBeat.i(215029);
+    AppMethodBeat.i(213260);
     if (this.aTV == null)
     {
       paramAttributes = new k("Invalid document. Root element must be <svg>");
-      AppMethodBeat.o(215029);
+      AppMethodBeat.o(213260);
       throw paramAttributes;
     }
     h.y localy = new h.y();
@@ -3974,7 +3974,7 @@ final class l
     a(localy, paramAttributes);
     this.aTV.a(localy);
     this.aTV = localy;
-    AppMethodBeat.o(215029);
+    AppMethodBeat.o(213260);
   }
   
   /* Error */
@@ -3982,7 +3982,7 @@ final class l
   {
     // Byte code:
     //   0: ldc_w 2019
-    //   3: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: invokevirtual 2024	java/io/InputStream:markSupported	()Z
     //   10: ifne +381 -> 391
@@ -4027,7 +4027,7 @@ final class l
     //   86: sipush 4096
     //   89: newarray byte
     //   91: astore 5
-    //   93: new 134	java/lang/String
+    //   93: new 137	java/lang/String
     //   96: dup
     //   97: aload 5
     //   99: iconst_0
@@ -4040,7 +4040,7 @@ final class l
     //   112: invokevirtual 2037	java/io/InputStream:reset	()V
     //   115: aload 5
     //   117: ldc_w 2049
-    //   120: invokevirtual 1473	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   120: invokevirtual 1474	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   123: istore_3
     //   124: iload_3
     //   125: iflt +218 -> 343
@@ -4058,7 +4058,7 @@ final class l
     //   153: invokevirtual 2064	javax/xml/parsers/SAXParserFactory:newSAXParser	()Ljavax/xml/parsers/SAXParser;
     //   156: invokevirtual 2070	javax/xml/parsers/SAXParser:getXMLReader	()Lorg/xml/sax/XMLReader;
     //   159: astore 5
-    //   161: new 16	com/a/a/l$e
+    //   161: new 19	com/a/a/l$e
     //   164: dup
     //   165: aload_0
     //   166: iconst_0
@@ -4078,23 +4078,23 @@ final class l
     //   200: invokespecial 2088	org/xml/sax/InputSource:<init>	(Ljava/io/InputStream;)V
     //   203: invokeinterface 2092 2 0
     //   208: aload_0
-    //   209: getfield 48	com/a/a/l:aTU	Lcom/a/a/h;
+    //   209: getfield 52	com/a/a/l:aTU	Lcom/a/a/h;
     //   212: astore 5
     //   214: aload_1
     //   215: invokevirtual 2095	java/io/InputStream:close	()V
     //   218: ldc_w 2019
-    //   221: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   221: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   224: aload 5
     //   226: areturn
     //   227: astore 5
-    //   229: new 74	com/a/a/k
+    //   229: new 78	com/a/a/k
     //   232: dup
     //   233: ldc_w 1793
     //   236: aload 5
-    //   238: invokespecial 1319	com/a/a/k:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
+    //   238: invokespecial 1320	com/a/a/k:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
     //   241: astore 5
     //   243: ldc_w 2019
-    //   246: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   246: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   249: aload 5
     //   251: athrow
     //   252: astore 5
@@ -4102,53 +4102,53 @@ final class l
     //   255: aload_1
     //   256: invokespecial 2097	com/a/a/l:g	(Ljava/io/InputStream;)V
     //   259: aload_0
-    //   260: getfield 48	com/a/a/l:aTU	Lcom/a/a/h;
+    //   260: getfield 52	com/a/a/l:aTU	Lcom/a/a/h;
     //   263: astore 5
     //   265: aload_1
     //   266: invokevirtual 2095	java/io/InputStream:close	()V
     //   269: ldc_w 2019
-    //   272: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   272: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: aload 5
     //   277: areturn
     //   278: astore 5
-    //   280: new 74	com/a/a/k
+    //   280: new 78	com/a/a/k
     //   283: dup
     //   284: ldc_w 2099
     //   287: aload 5
-    //   289: invokespecial 1319	com/a/a/k:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
+    //   289: invokespecial 1320	com/a/a/k:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
     //   292: astore 5
     //   294: ldc_w 2019
-    //   297: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   297: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   300: aload 5
     //   302: athrow
     //   303: astore 5
     //   305: aload_1
     //   306: invokevirtual 2095	java/io/InputStream:close	()V
     //   309: ldc_w 2019
-    //   312: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   312: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   315: aload 5
     //   317: athrow
     //   318: astore 5
-    //   320: new 74	com/a/a/k
+    //   320: new 78	com/a/a/k
     //   323: dup
     //   324: ldc_w 1808
     //   327: aload 5
-    //   329: invokespecial 1319	com/a/a/k:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
+    //   329: invokespecial 1320	com/a/a/k:<init>	(Ljava/lang/String;Ljava/lang/Exception;)V
     //   332: astore 5
     //   334: ldc_w 2019
-    //   337: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   337: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   340: aload 5
     //   342: athrow
     //   343: aload_0
     //   344: aload_1
     //   345: invokespecial 2097	com/a/a/l:g	(Ljava/io/InputStream;)V
     //   348: aload_0
-    //   349: getfield 48	com/a/a/l:aTU	Lcom/a/a/h;
+    //   349: getfield 52	com/a/a/l:aTU	Lcom/a/a/h;
     //   352: astore 5
     //   354: aload_1
     //   355: invokevirtual 2095	java/io/InputStream:close	()V
     //   358: ldc_w 2019
-    //   361: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   361: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   364: aload 5
     //   366: areturn
     //   367: astore_1
@@ -4211,10 +4211,10 @@ final class l
   
   final void ac(String paramString)
   {
-    AppMethodBeat.i(214978);
+    AppMethodBeat.i(213209);
     if (this.aTW)
     {
-      AppMethodBeat.o(214978);
+      AppMethodBeat.o(213209);
       return;
     }
     if (this.aTY)
@@ -4223,7 +4223,7 @@ final class l
         this.aUa = new StringBuilder(paramString.length());
       }
       this.aUa.append(paramString);
-      AppMethodBeat.o(214978);
+      AppMethodBeat.o(213209);
       return;
     }
     if (this.aUb)
@@ -4232,18 +4232,18 @@ final class l
         this.aUc = new StringBuilder(paramString.length());
       }
       this.aUc.append(paramString);
-      AppMethodBeat.o(214978);
+      AppMethodBeat.o(213209);
       return;
     }
     if ((this.aTV instanceof h.ay)) {
       ad(paramString);
     }
-    AppMethodBeat.o(214978);
+    AppMethodBeat.o(213209);
   }
   
   final void endElement(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(214980);
+    AppMethodBeat.i(213211);
     if (this.aTW)
     {
       int i = this.aTX - 1;
@@ -4251,22 +4251,22 @@ final class l
       if (i == 0) {
         this.aTW = false;
       }
-      AppMethodBeat.o(214980);
+      AppMethodBeat.o(213211);
       return;
     }
     if ((!"http://www.w3.org/2000/svg".equals(paramString1)) && (!"".equals(paramString1)))
     {
-      AppMethodBeat.o(214980);
+      AppMethodBeat.o(213211);
       return;
     }
     if (paramString2.length() > 0) {
-      switch (l.1.aUd[g.aN(paramString2).ordinal()])
+      switch (1.aUd[g.aN(paramString2).ordinal()])
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(214980);
+      AppMethodBeat.o(213211);
       return;
       paramString2 = paramString3;
       break;
@@ -4281,7 +4281,7 @@ final class l
       for (;;)
       {
         this.aUa.setLength(0);
-        AppMethodBeat.o(214980);
+        AppMethodBeat.o(213211);
         return;
         label291:
         if (this.aTZ == g.aWe) {
@@ -4293,12 +4293,12 @@ final class l
         this.aUb = false;
         aI(this.aUc.toString());
         this.aUc.setLength(0);
-        AppMethodBeat.o(214980);
+        AppMethodBeat.o(213211);
         return;
         if (this.aTV == null)
         {
           paramString1 = new k(String.format("Unbalanced end element </%s> found", new Object[] { paramString2 }));
-          AppMethodBeat.o(214980);
+          AppMethodBeat.o(213211);
           throw paramString1;
         }
         this.aTV = ((h.an)this.aTV).aSX;
@@ -4308,129 +4308,129 @@ final class l
   
   final void startDocument()
   {
-    AppMethodBeat.i(214976);
+    AppMethodBeat.i(213207);
     this.aTU = new h();
-    AppMethodBeat.o(214976);
+    AppMethodBeat.o(213207);
   }
   
   final void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    AppMethodBeat.i(214977);
+    AppMethodBeat.i(213208);
     if (this.aTW)
     {
       this.aTX += 1;
-      AppMethodBeat.o(214977);
+      AppMethodBeat.o(213208);
       return;
     }
     if ((!"http://www.w3.org/2000/svg".equals(paramString1)) && (!"".equals(paramString1)))
     {
-      AppMethodBeat.o(214977);
+      AppMethodBeat.o(213208);
       return;
     }
     if (paramString2.length() > 0) {}
     for (;;)
     {
       paramString1 = g.aN(paramString2);
-      switch (l.1.aUd[paramString1.ordinal()])
+      switch (1.aUd[paramString1.ordinal()])
       {
       default: 
         this.aTW = true;
         this.aTX = 1;
-        AppMethodBeat.o(214977);
+        AppMethodBeat.o(213208);
         return;
         paramString2 = paramString3;
       }
     }
     a(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     b(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     c(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     d(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     e(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     g(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     h(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     i(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     j(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     k(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     l(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     m(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     n(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     o(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     p(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     q(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     r(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     s(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     t(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     u(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     v(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     this.aTY = true;
     this.aTZ = paramString1;
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     x(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     y(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     z(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     f(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     A(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     B(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     C(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
     return;
     w(paramAttributes);
-    AppMethodBeat.o(214977);
+    AppMethodBeat.o(213208);
   }
   
   static final class a
@@ -4439,7 +4439,7 @@ final class l
     
     static
     {
-      AppMethodBeat.i(214925);
+      AppMethodBeat.i(213156);
       HashMap localHashMap = new HashMap(10);
       aUf = localHashMap;
       localHashMap.put("none", f.a.aPR);
@@ -4452,14 +4452,184 @@ final class l
       aUf.put("xMinYMax", f.a.aPY);
       aUf.put("xMidYMax", f.a.aPZ);
       aUf.put("xMaxYMax", f.a.aQa);
-      AppMethodBeat.o(214925);
+      AppMethodBeat.o(213156);
     }
     
     static f.a aJ(String paramString)
     {
-      AppMethodBeat.i(214924);
+      AppMethodBeat.i(213155);
       paramString = (f.a)aUf.get(paramString);
-      AppMethodBeat.o(214924);
+      AppMethodBeat.o(213155);
+      return paramString;
+    }
+  }
+  
+  static final class b
+  {
+    private static final Map<String, Integer> aUg;
+    
+    static
+    {
+      AppMethodBeat.i(213158);
+      HashMap localHashMap = new HashMap(47);
+      aUg = localHashMap;
+      localHashMap.put("aliceblue", Integer.valueOf(-984833));
+      aUg.put("antiquewhite", Integer.valueOf(-332841));
+      aUg.put("aqua", Integer.valueOf(-16711681));
+      aUg.put("aquamarine", Integer.valueOf(-8388652));
+      aUg.put("azure", Integer.valueOf(-983041));
+      aUg.put("beige", Integer.valueOf(-657956));
+      aUg.put("bisque", Integer.valueOf(-6972));
+      aUg.put("black", Integer.valueOf(-16777216));
+      aUg.put("blanchedalmond", Integer.valueOf(-5171));
+      aUg.put("blue", Integer.valueOf(-16776961));
+      aUg.put("blueviolet", Integer.valueOf(-7722014));
+      aUg.put("brown", Integer.valueOf(-5952982));
+      aUg.put("burlywood", Integer.valueOf(-2180985));
+      aUg.put("cadetblue", Integer.valueOf(-10510688));
+      aUg.put("chartreuse", Integer.valueOf(-8388864));
+      aUg.put("chocolate", Integer.valueOf(-2987746));
+      aUg.put("coral", Integer.valueOf(-32944));
+      aUg.put("cornflowerblue", Integer.valueOf(-10185235));
+      aUg.put("cornsilk", Integer.valueOf(-1828));
+      aUg.put("crimson", Integer.valueOf(-2354116));
+      aUg.put("cyan", Integer.valueOf(-16711681));
+      aUg.put("darkblue", Integer.valueOf(-16777077));
+      aUg.put("darkcyan", Integer.valueOf(-16741493));
+      aUg.put("darkgoldenrod", Integer.valueOf(-4684277));
+      aUg.put("darkgray", Integer.valueOf(-5658199));
+      aUg.put("darkgreen", Integer.valueOf(-16751616));
+      aUg.put("darkgrey", Integer.valueOf(-5658199));
+      aUg.put("darkkhaki", Integer.valueOf(-4343957));
+      aUg.put("darkmagenta", Integer.valueOf(-7667573));
+      aUg.put("darkolivegreen", Integer.valueOf(-11179217));
+      aUg.put("darkorange", Integer.valueOf(-29696));
+      aUg.put("darkorchid", Integer.valueOf(-6737204));
+      aUg.put("darkred", Integer.valueOf(-7667712));
+      aUg.put("darksalmon", Integer.valueOf(-1468806));
+      aUg.put("darkseagreen", Integer.valueOf(-7357297));
+      aUg.put("darkslateblue", Integer.valueOf(-12042869));
+      aUg.put("darkslategray", Integer.valueOf(-13676721));
+      aUg.put("darkslategrey", Integer.valueOf(-13676721));
+      aUg.put("darkturquoise", Integer.valueOf(-16724271));
+      aUg.put("darkviolet", Integer.valueOf(-7077677));
+      aUg.put("deeppink", Integer.valueOf(-60269));
+      aUg.put("deepskyblue", Integer.valueOf(-16728065));
+      aUg.put("dimgray", Integer.valueOf(-9868951));
+      aUg.put("dimgrey", Integer.valueOf(-9868951));
+      aUg.put("dodgerblue", Integer.valueOf(-14774017));
+      aUg.put("firebrick", Integer.valueOf(-5103070));
+      aUg.put("floralwhite", Integer.valueOf(-1296));
+      aUg.put("forestgreen", Integer.valueOf(-14513374));
+      aUg.put("fuchsia", Integer.valueOf(-65281));
+      aUg.put("gainsboro", Integer.valueOf(-2302756));
+      aUg.put("ghostwhite", Integer.valueOf(-460545));
+      aUg.put("gold", Integer.valueOf(-10496));
+      aUg.put("goldenrod", Integer.valueOf(-2448096));
+      aUg.put("gray", Integer.valueOf(-8355712));
+      aUg.put("green", Integer.valueOf(-16744448));
+      aUg.put("greenyellow", Integer.valueOf(-5374161));
+      aUg.put("grey", Integer.valueOf(-8355712));
+      aUg.put("honeydew", Integer.valueOf(-983056));
+      aUg.put("hotpink", Integer.valueOf(-38476));
+      aUg.put("indianred", Integer.valueOf(-3318692));
+      aUg.put("indigo", Integer.valueOf(-11861886));
+      aUg.put("ivory", Integer.valueOf(-16));
+      aUg.put("khaki", Integer.valueOf(-989556));
+      aUg.put("lavender", Integer.valueOf(-1644806));
+      aUg.put("lavenderblush", Integer.valueOf(-3851));
+      aUg.put("lawngreen", Integer.valueOf(-8586240));
+      aUg.put("lemonchiffon", Integer.valueOf(-1331));
+      aUg.put("lightblue", Integer.valueOf(-5383962));
+      aUg.put("lightcoral", Integer.valueOf(-1015680));
+      aUg.put("lightcyan", Integer.valueOf(-2031617));
+      aUg.put("lightgoldenrodyellow", Integer.valueOf(-329006));
+      aUg.put("lightgray", Integer.valueOf(-2894893));
+      aUg.put("lightgreen", Integer.valueOf(-7278960));
+      aUg.put("lightgrey", Integer.valueOf(-2894893));
+      aUg.put("lightpink", Integer.valueOf(-18751));
+      aUg.put("lightsalmon", Integer.valueOf(-24454));
+      aUg.put("lightseagreen", Integer.valueOf(-14634326));
+      aUg.put("lightskyblue", Integer.valueOf(-7876870));
+      aUg.put("lightslategray", Integer.valueOf(-8943463));
+      aUg.put("lightslategrey", Integer.valueOf(-8943463));
+      aUg.put("lightsteelblue", Integer.valueOf(-5192482));
+      aUg.put("lightyellow", Integer.valueOf(-32));
+      aUg.put("lime", Integer.valueOf(-16711936));
+      aUg.put("limegreen", Integer.valueOf(-13447886));
+      aUg.put("linen", Integer.valueOf(-331546));
+      aUg.put("magenta", Integer.valueOf(-65281));
+      aUg.put("maroon", Integer.valueOf(-8388608));
+      aUg.put("mediumaquamarine", Integer.valueOf(-10039894));
+      aUg.put("mediumblue", Integer.valueOf(-16777011));
+      aUg.put("mediumorchid", Integer.valueOf(-4565549));
+      aUg.put("mediumpurple", Integer.valueOf(-7114533));
+      aUg.put("mediumseagreen", Integer.valueOf(-12799119));
+      aUg.put("mediumslateblue", Integer.valueOf(-8689426));
+      aUg.put("mediumspringgreen", Integer.valueOf(-16713062));
+      aUg.put("mediumturquoise", Integer.valueOf(-12004916));
+      aUg.put("mediumvioletred", Integer.valueOf(-3730043));
+      aUg.put("midnightblue", Integer.valueOf(-15132304));
+      aUg.put("mintcream", Integer.valueOf(-655366));
+      aUg.put("mistyrose", Integer.valueOf(-6943));
+      aUg.put("moccasin", Integer.valueOf(-6987));
+      aUg.put("navajowhite", Integer.valueOf(-8531));
+      aUg.put("navy", Integer.valueOf(-16777088));
+      aUg.put("oldlace", Integer.valueOf(-133658));
+      aUg.put("olive", Integer.valueOf(-8355840));
+      aUg.put("olivedrab", Integer.valueOf(-9728477));
+      aUg.put("orange", Integer.valueOf(-23296));
+      aUg.put("orangered", Integer.valueOf(-47872));
+      aUg.put("orchid", Integer.valueOf(-2461482));
+      aUg.put("palegoldenrod", Integer.valueOf(-1120086));
+      aUg.put("palegreen", Integer.valueOf(-6751336));
+      aUg.put("paleturquoise", Integer.valueOf(-5247250));
+      aUg.put("palevioletred", Integer.valueOf(-2396013));
+      aUg.put("papayawhip", Integer.valueOf(-4139));
+      aUg.put("peachpuff", Integer.valueOf(-9543));
+      aUg.put("peru", Integer.valueOf(-3308225));
+      aUg.put("pink", Integer.valueOf(-16181));
+      aUg.put("plum", Integer.valueOf(-2252579));
+      aUg.put("powderblue", Integer.valueOf(-5185306));
+      aUg.put("purple", Integer.valueOf(-8388480));
+      aUg.put("rebeccapurple", Integer.valueOf(-10079335));
+      aUg.put("red", Integer.valueOf(-65536));
+      aUg.put("rosybrown", Integer.valueOf(-4419697));
+      aUg.put("royalblue", Integer.valueOf(-12490271));
+      aUg.put("saddlebrown", Integer.valueOf(-7650029));
+      aUg.put("salmon", Integer.valueOf(-360334));
+      aUg.put("sandybrown", Integer.valueOf(-744352));
+      aUg.put("seagreen", Integer.valueOf(-13726889));
+      aUg.put("seashell", Integer.valueOf(-2578));
+      aUg.put("sienna", Integer.valueOf(-6270419));
+      aUg.put("silver", Integer.valueOf(-4144960));
+      aUg.put("skyblue", Integer.valueOf(-7876885));
+      aUg.put("slateblue", Integer.valueOf(-9807155));
+      aUg.put("slategray", Integer.valueOf(-9404272));
+      aUg.put("slategrey", Integer.valueOf(-9404272));
+      aUg.put("snow", Integer.valueOf(-1286));
+      aUg.put("springgreen", Integer.valueOf(-16711809));
+      aUg.put("steelblue", Integer.valueOf(-12156236));
+      aUg.put("tan", Integer.valueOf(-2968436));
+      aUg.put("teal", Integer.valueOf(-16744320));
+      aUg.put("thistle", Integer.valueOf(-2572328));
+      aUg.put("tomato", Integer.valueOf(-40121));
+      aUg.put("turquoise", Integer.valueOf(-12525360));
+      aUg.put("violet", Integer.valueOf(-1146130));
+      aUg.put("wheat", Integer.valueOf(-663885));
+      aUg.put("white", Integer.valueOf(-1));
+      aUg.put("whitesmoke", Integer.valueOf(-657931));
+      aUg.put("yellow", Integer.valueOf(-256));
+      aUg.put("yellowgreen", Integer.valueOf(-6632142));
+      aUg.put("transparent", Integer.valueOf(0));
+      AppMethodBeat.o(213158);
+    }
+    
+    static Integer aK(String paramString)
+    {
+      AppMethodBeat.i(213157);
+      paramString = (Integer)aUg.get(paramString);
+      AppMethodBeat.o(213157);
       return paramString;
     }
   }
@@ -4470,7 +4640,7 @@ final class l
     
     static
     {
-      AppMethodBeat.i(214929);
+      AppMethodBeat.i(213160);
       HashMap localHashMap = new HashMap(9);
       aUh = localHashMap;
       localHashMap.put("xx-small", new h.p(0.694F, h.bd.aTm));
@@ -4482,14 +4652,14 @@ final class l
       aUh.put("xx-large", new h.p(20.700001F, h.bd.aTm));
       aUh.put("smaller", new h.p(83.330002F, h.bd.aTo));
       aUh.put("larger", new h.p(120.0F, h.bd.aTo));
-      AppMethodBeat.o(214929);
+      AppMethodBeat.o(213160);
     }
     
     static h.p aL(String paramString)
     {
-      AppMethodBeat.i(214928);
+      AppMethodBeat.i(213159);
       paramString = (h.p)aUh.get(paramString);
-      AppMethodBeat.o(214928);
+      AppMethodBeat.o(213159);
       return paramString;
     }
   }
@@ -4501,39 +4671,180 @@ final class l
     
     public final void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(214934);
+      AppMethodBeat.i(213165);
       l.this.ac(new String(paramArrayOfChar, paramInt1, paramInt2));
-      AppMethodBeat.o(214934);
+      AppMethodBeat.o(213165);
     }
     
     public final void endDocument() {}
     
     public final void endElement(String paramString1, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(214935);
+      AppMethodBeat.i(213166);
       l.this.endElement(paramString1, paramString2, paramString3);
-      AppMethodBeat.o(214935);
+      AppMethodBeat.o(213166);
     }
     
     public final void processingInstruction(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(214936);
+      AppMethodBeat.i(213167);
       l.b(paramString1, l.a(new l.h(paramString2)));
-      AppMethodBeat.o(214936);
+      AppMethodBeat.o(213167);
     }
     
     public final void startDocument()
     {
-      AppMethodBeat.i(214932);
+      AppMethodBeat.i(213163);
       l.this.startDocument();
-      AppMethodBeat.o(214932);
+      AppMethodBeat.o(213163);
     }
     
     public final void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
     {
-      AppMethodBeat.i(214933);
+      AppMethodBeat.i(213164);
       l.this.startElement(paramString1, paramString2, paramString3, paramAttributes);
-      AppMethodBeat.o(214933);
+      AppMethodBeat.o(213164);
+    }
+  }
+  
+  static enum f
+  {
+    private static final Map<String, f> aOa;
+    
+    static
+    {
+      int i = 0;
+      AppMethodBeat.i(213171);
+      aUk = new f("CLASS", 0);
+      aUl = new f("clip", 1);
+      aUm = new f("clip_path", 2);
+      aUn = new f("clipPathUnits", 3);
+      aUo = new f("clip_rule", 4);
+      aUp = new f("color", 5);
+      aUq = new f("cx", 6);
+      aUr = new f("cy", 7);
+      aUs = new f("direction", 8);
+      aUt = new f("dx", 9);
+      aUu = new f("dy", 10);
+      aUv = new f("fx", 11);
+      aUw = new f("fy", 12);
+      aUx = new f("d", 13);
+      aUy = new f("display", 14);
+      aUz = new f("fill", 15);
+      aUA = new f("fill_rule", 16);
+      aUB = new f("fill_opacity", 17);
+      aUC = new f("font", 18);
+      aUD = new f("font_family", 19);
+      aUE = new f("font_size", 20);
+      aUF = new f("font_weight", 21);
+      aUG = new f("font_style", 22);
+      aUH = new f("gradientTransform", 23);
+      aUI = new f("gradientUnits", 24);
+      aUJ = new f("height", 25);
+      aUK = new f("href", 26);
+      aUL = new f("image_rendering", 27);
+      aUM = new f("marker", 28);
+      aUN = new f("marker_start", 29);
+      aUO = new f("marker_mid", 30);
+      aUP = new f("marker_end", 31);
+      aUQ = new f("markerHeight", 32);
+      aUR = new f("markerUnits", 33);
+      aUS = new f("markerWidth", 34);
+      aUT = new f("mask", 35);
+      aUU = new f("maskContentUnits", 36);
+      aUV = new f("maskUnits", 37);
+      aUW = new f("media", 38);
+      aUX = new f("offset", 39);
+      aUY = new f("opacity", 40);
+      aUZ = new f("orient", 41);
+      aVa = new f("overflow", 42);
+      aVb = new f("pathLength", 43);
+      aVc = new f("patternContentUnits", 44);
+      aVd = new f("patternTransform", 45);
+      aVe = new f("patternUnits", 46);
+      aVf = new f("points", 47);
+      aVg = new f("preserveAspectRatio", 48);
+      aVh = new f("r", 49);
+      aVi = new f("refX", 50);
+      aVj = new f("refY", 51);
+      aVk = new f("requiredFeatures", 52);
+      aVl = new f("requiredExtensions", 53);
+      aVm = new f("requiredFormats", 54);
+      aVn = new f("requiredFonts", 55);
+      aVo = new f("rx", 56);
+      aVp = new f("ry", 57);
+      aVq = new f("solid_color", 58);
+      aVr = new f("solid_opacity", 59);
+      aVs = new f("spreadMethod", 60);
+      aVt = new f("startOffset", 61);
+      aVu = new f("stop_color", 62);
+      aVv = new f("stop_opacity", 63);
+      aVw = new f("stroke", 64);
+      aVx = new f("stroke_dasharray", 65);
+      aVy = new f("stroke_dashoffset", 66);
+      aVz = new f("stroke_linecap", 67);
+      aVA = new f("stroke_linejoin", 68);
+      aVB = new f("stroke_miterlimit", 69);
+      aVC = new f("stroke_opacity", 70);
+      aVD = new f("stroke_width", 71);
+      aVE = new f("style", 72);
+      aVF = new f("systemLanguage", 73);
+      aVG = new f("text_anchor", 74);
+      aVH = new f("text_decoration", 75);
+      aVI = new f("transform", 76);
+      aVJ = new f("type", 77);
+      aVK = new f("vector_effect", 78);
+      aVL = new f("version", 79);
+      aVM = new f("viewBox", 80);
+      aVN = new f("width", 81);
+      aVO = new f("x", 82);
+      aVP = new f("y", 83);
+      aVQ = new f("x1", 84);
+      aVR = new f("y1", 85);
+      aVS = new f("x2", 86);
+      aVT = new f("y2", 87);
+      aVU = new f("viewport_fill", 88);
+      aVV = new f("viewport_fill_opacity", 89);
+      aVW = new f("visibility", 90);
+      aVX = new f("UNSUPPORTED", 91);
+      aVY = new f[] { aUk, aUl, aUm, aUn, aUo, aUp, aUq, aUr, aUs, aUt, aUu, aUv, aUw, aUx, aUy, aUz, aUA, aUB, aUC, aUD, aUE, aUF, aUG, aUH, aUI, aUJ, aUK, aUL, aUM, aUN, aUO, aUP, aUQ, aUR, aUS, aUT, aUU, aUV, aUW, aUX, aUY, aUZ, aVa, aVb, aVc, aVd, aVe, aVf, aVg, aVh, aVi, aVj, aVk, aVl, aVm, aVn, aVo, aVp, aVq, aVr, aVs, aVt, aVu, aVv, aVw, aVx, aVy, aVz, aVA, aVB, aVC, aVD, aVE, aVF, aVG, aVH, aVI, aVJ, aVK, aVL, aVM, aVN, aVO, aVP, aVQ, aVR, aVS, aVT, aVU, aVV, aVW, aVX };
+      aOa = new HashMap();
+      f[] arrayOff = values();
+      int j = arrayOff.length;
+      if (i < j)
+      {
+        f localf = arrayOff[i];
+        if (localf == aUk) {
+          aOa.put("class", localf);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (localf != aVX)
+          {
+            String str = localf.name().replace('_', '-');
+            aOa.put(str, localf);
+          }
+        }
+      }
+      AppMethodBeat.o(213171);
+    }
+    
+    private f() {}
+    
+    public static f aM(String paramString)
+    {
+      AppMethodBeat.i(213170);
+      paramString = (f)aOa.get(paramString);
+      if (paramString != null)
+      {
+        AppMethodBeat.o(213170);
+        return paramString;
+      }
+      paramString = aVX;
+      AppMethodBeat.o(213170);
+      return paramString;
     }
   }
   
@@ -4544,7 +4855,7 @@ final class l
     static
     {
       int i = 0;
-      AppMethodBeat.i(214944);
+      AppMethodBeat.i(213175);
       aVZ = new g("svg", 0);
       aWa = new g("a", 1);
       aWb = new g("circle", 2);
@@ -4598,22 +4909,22 @@ final class l
           }
         }
       }
-      AppMethodBeat.o(214944);
+      AppMethodBeat.o(213175);
     }
     
     private g() {}
     
     public static g aN(String paramString)
     {
-      AppMethodBeat.i(214943);
+      AppMethodBeat.i(213174);
       paramString = (g)aOa.get(paramString);
       if (paramString != null)
       {
-        AppMethodBeat.o(214943);
+        AppMethodBeat.o(213174);
         return paramString;
       }
       paramString = aWE;
-      AppMethodBeat.o(214943);
+      AppMethodBeat.o(213174);
       return paramString;
     }
   }
@@ -4627,13 +4938,13 @@ final class l
     
     h(String paramString)
     {
-      AppMethodBeat.i(214945);
+      AppMethodBeat.i(213176);
       this.position = 0;
       this.aWH = 0;
       this.aWI = new e();
       this.aWG = paramString.trim();
       this.aWH = this.aWG.length();
-      AppMethodBeat.o(214945);
+      AppMethodBeat.o(213176);
     }
     
     static boolean dB(int paramInt)
@@ -4648,10 +4959,10 @@ final class l
     
     private Boolean ru()
     {
-      AppMethodBeat.i(214954);
+      AppMethodBeat.i(213185);
       if (this.position == this.aWH)
       {
-        AppMethodBeat.o(214954);
+        AppMethodBeat.o(213185);
         return null;
       }
       int i = this.aWG.charAt(this.position);
@@ -4661,66 +4972,66 @@ final class l
         if (i == 49) {}
         for (boolean bool = true;; bool = false)
         {
-          AppMethodBeat.o(214954);
+          AppMethodBeat.o(213185);
           return Boolean.valueOf(bool);
         }
       }
-      AppMethodBeat.o(214954);
+      AppMethodBeat.o(213185);
       return null;
     }
     
     final float U(float paramFloat)
     {
-      AppMethodBeat.i(214950);
+      AppMethodBeat.i(213181);
       if (Float.isNaN(paramFloat))
       {
-        AppMethodBeat.o(214950);
+        AppMethodBeat.o(213181);
         return (0.0F / 0.0F);
       }
       rq();
       paramFloat = nextFloat();
-      AppMethodBeat.o(214950);
+      AppMethodBeat.o(213181);
       return paramFloat;
     }
     
     final float a(Boolean paramBoolean)
     {
-      AppMethodBeat.i(214951);
+      AppMethodBeat.i(213182);
       if (paramBoolean == null)
       {
-        AppMethodBeat.o(214951);
+        AppMethodBeat.o(213182);
         return (0.0F / 0.0F);
       }
       rq();
       float f = nextFloat();
-      AppMethodBeat.o(214951);
+      AppMethodBeat.o(213182);
       return f;
     }
     
     final String a(char paramChar, boolean paramBoolean)
     {
-      AppMethodBeat.i(214961);
+      AppMethodBeat.i(213192);
       if (empty())
       {
-        AppMethodBeat.o(214961);
+        AppMethodBeat.o(213192);
         return null;
       }
       char c = this.aWG.charAt(this.position);
       if (((!paramBoolean) && (isWhitespace(c))) || (c == paramChar))
       {
-        AppMethodBeat.o(214961);
+        AppMethodBeat.o(213192);
         return null;
       }
       int i = this.position;
       for (c = rv(); (c != 'ð¿¿') && (c != paramChar) && ((paramBoolean) || (!isWhitespace(c))); c = rv()) {}
       String str = this.aWG.substring(i, this.position);
-      AppMethodBeat.o(214961);
+      AppMethodBeat.o(213192);
       return str;
     }
     
     final boolean aO(String paramString)
     {
-      AppMethodBeat.i(214957);
+      AppMethodBeat.i(213188);
       int i = paramString.length();
       if ((this.position <= this.aWH - i) && (this.aWG.substring(this.position, this.position + i).equals(paramString))) {}
       for (boolean bool = true;; bool = false)
@@ -4728,44 +5039,44 @@ final class l
         if (bool) {
           this.position = (i + this.position);
         }
-        AppMethodBeat.o(214957);
+        AppMethodBeat.o(213188);
         return bool;
       }
     }
     
     final Boolean ab(Object paramObject)
     {
-      AppMethodBeat.i(214955);
+      AppMethodBeat.i(213186);
       if (paramObject == null)
       {
-        AppMethodBeat.o(214955);
+        AppMethodBeat.o(213186);
         return null;
       }
       rq();
       paramObject = ru();
-      AppMethodBeat.o(214955);
+      AppMethodBeat.o(213186);
       return paramObject;
     }
     
     final boolean b(char paramChar)
     {
-      AppMethodBeat.i(214956);
+      AppMethodBeat.i(213187);
       if ((this.position < this.aWH) && (this.aWG.charAt(this.position) == paramChar)) {}
       for (boolean bool = true;; bool = false)
       {
         if (bool) {
           this.position += 1;
         }
-        AppMethodBeat.o(214956);
+        AppMethodBeat.o(213187);
         return bool;
       }
     }
     
     final String c(char paramChar)
     {
-      AppMethodBeat.i(214960);
+      AppMethodBeat.i(213191);
       String str = a(paramChar, false);
-      AppMethodBeat.o(214960);
+      AppMethodBeat.o(213191);
       return str;
     }
     
@@ -4776,54 +5087,54 @@ final class l
     
     final float nextFloat()
     {
-      AppMethodBeat.i(214948);
+      AppMethodBeat.i(213179);
       float f = this.aWI.f(this.aWG, this.position, this.aWH);
       if (!Float.isNaN(f)) {
         this.position = this.aWI.pos;
       }
-      AppMethodBeat.o(214948);
+      AppMethodBeat.o(213179);
       return f;
     }
     
     final String nextToken()
     {
-      AppMethodBeat.i(221620);
+      AppMethodBeat.i(224177);
       String str = a(' ', false);
-      AppMethodBeat.o(221620);
+      AppMethodBeat.o(224177);
       return str;
     }
     
     final boolean rA()
     {
-      AppMethodBeat.i(214966);
+      AppMethodBeat.i(213197);
       if (this.position == this.aWH)
       {
-        AppMethodBeat.o(214966);
+        AppMethodBeat.o(213197);
         return false;
       }
       int i = this.aWG.charAt(this.position);
       if (((i >= 97) && (i <= 122)) || ((i >= 65) && (i <= 90)))
       {
-        AppMethodBeat.o(214966);
+        AppMethodBeat.o(213197);
         return true;
       }
-      AppMethodBeat.o(214966);
+      AppMethodBeat.o(213197);
       return false;
     }
     
     final String rB()
     {
-      AppMethodBeat.i(214967);
+      AppMethodBeat.i(213198);
       if (empty())
       {
-        AppMethodBeat.o(214967);
+        AppMethodBeat.o(213198);
         return null;
       }
       int i = this.position;
       int j = this.aWG.charAt(this.position);
       if ((j != 39) && (j != 34))
       {
-        AppMethodBeat.o(214967);
+        AppMethodBeat.o(213198);
         return null;
       }
       int k;
@@ -4834,133 +5145,133 @@ final class l
       if (k == -1)
       {
         this.position = i;
-        AppMethodBeat.o(214967);
+        AppMethodBeat.o(213198);
         return null;
       }
       this.position += 1;
       String str = this.aWG.substring(i + 1, this.position - 1);
-      AppMethodBeat.o(214967);
+      AppMethodBeat.o(213198);
       return str;
     }
     
     final String rC()
     {
-      AppMethodBeat.i(214968);
+      AppMethodBeat.i(213199);
       if (empty())
       {
-        AppMethodBeat.o(214968);
+        AppMethodBeat.o(213199);
         return null;
       }
       int i = this.position;
       this.position = this.aWH;
       String str = this.aWG.substring(i);
-      AppMethodBeat.o(214968);
+      AppMethodBeat.o(213199);
       return str;
     }
     
     final void rp()
     {
-      AppMethodBeat.i(214946);
+      AppMethodBeat.i(213177);
       while ((this.position < this.aWH) && (isWhitespace(this.aWG.charAt(this.position)))) {
         this.position += 1;
       }
-      AppMethodBeat.o(214946);
+      AppMethodBeat.o(213177);
     }
     
     final boolean rq()
     {
-      AppMethodBeat.i(214947);
+      AppMethodBeat.i(213178);
       rp();
       if (this.position == this.aWH)
       {
-        AppMethodBeat.o(214947);
+        AppMethodBeat.o(213178);
         return false;
       }
       if (this.aWG.charAt(this.position) != ',')
       {
-        AppMethodBeat.o(214947);
+        AppMethodBeat.o(213178);
         return false;
       }
       this.position += 1;
       rp();
-      AppMethodBeat.o(214947);
+      AppMethodBeat.o(213178);
       return true;
     }
     
     final float rr()
     {
-      AppMethodBeat.i(214949);
+      AppMethodBeat.i(213180);
       rq();
       float f = this.aWI.f(this.aWG, this.position, this.aWH);
       if (!Float.isNaN(f)) {
         this.position = this.aWI.pos;
       }
-      AppMethodBeat.o(214949);
+      AppMethodBeat.o(213180);
       return f;
     }
     
     final Integer rs()
     {
-      AppMethodBeat.i(214952);
+      AppMethodBeat.i(213183);
       if (this.position == this.aWH)
       {
-        AppMethodBeat.o(214952);
+        AppMethodBeat.o(213183);
         return null;
       }
       String str = this.aWG;
       int i = this.position;
       this.position = (i + 1);
       i = str.charAt(i);
-      AppMethodBeat.o(214952);
+      AppMethodBeat.o(213183);
       return Integer.valueOf(i);
     }
     
     final h.p rt()
     {
-      AppMethodBeat.i(214953);
+      AppMethodBeat.i(213184);
       float f = nextFloat();
       if (Float.isNaN(f))
       {
-        AppMethodBeat.o(214953);
+        AppMethodBeat.o(213184);
         return null;
       }
       Object localObject = rz();
       if (localObject == null)
       {
         localObject = new h.p(f, h.bd.aTg);
-        AppMethodBeat.o(214953);
+        AppMethodBeat.o(213184);
         return localObject;
       }
       localObject = new h.p(f, (h.bd)localObject);
-      AppMethodBeat.o(214953);
+      AppMethodBeat.o(213184);
       return localObject;
     }
     
     final int rv()
     {
-      AppMethodBeat.i(214958);
+      AppMethodBeat.i(213189);
       if (this.position == this.aWH)
       {
-        AppMethodBeat.o(214958);
+        AppMethodBeat.o(213189);
         return -1;
       }
       this.position += 1;
       if (this.position < this.aWH)
       {
         int i = this.aWG.charAt(this.position);
-        AppMethodBeat.o(214958);
+        AppMethodBeat.o(213189);
         return i;
       }
-      AppMethodBeat.o(214958);
+      AppMethodBeat.o(213189);
       return -1;
     }
     
     final String rw()
     {
-      AppMethodBeat.i(214962);
+      AppMethodBeat.i(213193);
       if (empty())
       {
-        AppMethodBeat.o(214962);
+        AppMethodBeat.o(213193);
         return null;
       }
       int j = this.position;
@@ -4969,20 +5280,20 @@ final class l
       {
         for (i = rv(); ((i >= 65) && (i <= 90)) || ((i >= 97) && (i <= 122)); i = rv()) {}
         String str = this.aWG.substring(j, this.position);
-        AppMethodBeat.o(214962);
+        AppMethodBeat.o(213193);
         return str;
       }
       this.position = j;
-      AppMethodBeat.o(214962);
+      AppMethodBeat.o(213193);
       return null;
     }
     
     final String rx()
     {
-      AppMethodBeat.i(214963);
+      AppMethodBeat.i(213194);
       if (empty())
       {
-        AppMethodBeat.o(214963);
+        AppMethodBeat.o(213194);
         return null;
       }
       int j = this.position;
@@ -4995,33 +5306,33 @@ final class l
       {
         this.position += 1;
         String str = this.aWG.substring(j, k);
-        AppMethodBeat.o(214963);
+        AppMethodBeat.o(213194);
         return str;
       }
       this.position = j;
-      AppMethodBeat.o(214963);
+      AppMethodBeat.o(213194);
       return null;
     }
     
     final String ry()
     {
-      AppMethodBeat.i(214964);
+      AppMethodBeat.i(213195);
       int i = this.position;
       while ((!empty()) && (!isWhitespace(this.aWG.charAt(this.position)))) {
         this.position += 1;
       }
       String str = this.aWG.substring(i, this.position);
       this.position = i;
-      AppMethodBeat.o(214964);
+      AppMethodBeat.o(213195);
       return str;
     }
     
     final h.bd rz()
     {
-      AppMethodBeat.i(214965);
+      AppMethodBeat.i(213196);
       if (empty())
       {
-        AppMethodBeat.o(214965);
+        AppMethodBeat.o(213196);
         return null;
       }
       h.bd localbd;
@@ -5029,24 +5340,24 @@ final class l
       {
         this.position += 1;
         localbd = h.bd.aTo;
-        AppMethodBeat.o(214965);
+        AppMethodBeat.o(213196);
         return localbd;
       }
       if (this.position > this.aWH - 2)
       {
-        AppMethodBeat.o(214965);
+        AppMethodBeat.o(213196);
         return null;
       }
       try
       {
         localbd = h.bd.valueOf(this.aWG.substring(this.position, this.position + 2).toLowerCase(Locale.US));
         this.position += 2;
-        AppMethodBeat.o(214965);
+        AppMethodBeat.o(213196);
         return localbd;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        AppMethodBeat.o(214965);
+        AppMethodBeat.o(213196);
       }
       return null;
     }
@@ -5054,7 +5365,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.l
  * JD-Core Version:    0.7.0.1
  */

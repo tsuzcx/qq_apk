@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IMBehaviorChattingOP
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int changeNotifyStatus;
   public int changeSaveAddress;
@@ -38,9 +38,9 @@ public class IMBehaviorChattingOP
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(151536);
@@ -56,23 +56,23 @@ public class IMBehaviorChattingOP
         AppMethodBeat.o(151536);
         return -1;
       case 1: 
-        localIMBehaviorChattingOP.changeUnread = locala.NPN.zc();
+        localIMBehaviorChattingOP.changeUnread = locala.OmT.zc();
         AppMethodBeat.o(151536);
         return 0;
       case 2: 
-        localIMBehaviorChattingOP.changeTop = locala.NPN.zc();
+        localIMBehaviorChattingOP.changeTop = locala.OmT.zc();
         AppMethodBeat.o(151536);
         return 0;
       case 3: 
-        localIMBehaviorChattingOP.changeNotifyStatus = locala.NPN.zc();
+        localIMBehaviorChattingOP.changeNotifyStatus = locala.OmT.zc();
         AppMethodBeat.o(151536);
         return 0;
       case 4: 
-        localIMBehaviorChattingOP.changeSaveAddress = locala.NPN.zc();
+        localIMBehaviorChattingOP.changeSaveAddress = locala.OmT.zc();
         AppMethodBeat.o(151536);
         return 0;
       }
-      localIMBehaviorChattingOP.expose = locala.NPN.zc();
+      localIMBehaviorChattingOP.expose = locala.OmT.zc();
       AppMethodBeat.o(151536);
       return 0;
     }

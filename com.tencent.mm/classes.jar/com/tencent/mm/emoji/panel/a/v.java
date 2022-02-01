@@ -3,55 +3,55 @@ package com.tencent.mm.emoji.panel.a;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SmileyPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/SmileyPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
 public final class v
   extends o
 {
-  private static final float gnH;
-  private static final float gnI;
-  private static final float gnJ;
-  private static final float gnK;
-  public static final v gof;
+  public static final v gqB;
+  private static final float gqd;
+  private static final float gqe;
+  private static final float gqf;
+  private static final float gqg;
   
   static
   {
     AppMethodBeat.i(105689);
     v localv = new v();
-    gof = localv;
-    Object localObject = aj.getContext();
+    gqB = localv;
+    Object localObject = ak.getContext();
     p.g(localObject, "context");
     localObject = ((Context)localObject).getResources();
-    gnH = ((Resources)localObject).getDimension(2131166243);
-    gnI = ((Resources)localObject).getDimension(2131165289);
-    gnJ = ((Resources)localObject).getDimension(2131165289) - 1.0F;
-    gnK = ((Resources)localObject).getDimension(2131165274);
+    gqd = ((Resources)localObject).getDimension(2131166243);
+    gqe = ((Resources)localObject).getDimension(2131165289);
+    gqf = ((Resources)localObject).getDimension(2131165289) - 1.0F;
+    gqg = ((Resources)localObject).getDimension(2131165274);
     localv.atv = 8;
     localv.updateSize();
     AppMethodBeat.o(105689);
   }
   
-  public final float afQ()
+  public final float age()
   {
-    return gnH;
+    return gqd;
   }
   
-  public final float afR()
+  public final float agf()
   {
-    return gnI;
+    return gqe;
   }
   
-  public final float afS()
+  public final float agg()
   {
-    return gnJ;
+    return gqf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.v
  * JD-Core Version:    0.7.0.1
  */

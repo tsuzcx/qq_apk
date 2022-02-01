@@ -6,31 +6,31 @@ import com.tencent.tinker.a.a.b.e;
 public final class f
   extends s.a.a<f>
 {
-  public int McK;
-  public int McN;
-  public int McO;
-  public int McP;
-  public int McQ;
-  public int McR;
-  public int McS;
-  public int McT;
+  public int MzF;
+  public int MzI;
+  public int MzJ;
+  public int MzK;
+  public int MzL;
+  public int MzM;
+  public int MzN;
+  public int MzO;
   
   public f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
     super(paramInt1);
-    this.McN = paramInt2;
-    this.McK = paramInt3;
-    this.McO = paramInt4;
-    this.McP = paramInt5;
-    this.McQ = paramInt6;
-    this.McR = paramInt7;
-    this.McS = paramInt8;
-    this.McT = paramInt9;
+    this.MzI = paramInt2;
+    this.MzF = paramInt3;
+    this.MzJ = paramInt4;
+    this.MzK = paramInt5;
+    this.MzL = paramInt6;
+    this.MzM = paramInt7;
+    this.MzN = paramInt8;
+    this.MzO = paramInt9;
   }
   
   private int a(f paramf)
   {
-    int i = c.kY(this.McN, paramf.McN);
+    int i = c.lf(this.MzI, paramf.MzI);
     if (i != 0) {}
     int j;
     do
@@ -46,25 +46,25 @@ public final class f
               do
               {
                 return i;
-                j = c.kZ(this.McK, paramf.McK);
+                j = c.lg(this.MzF, paramf.MzF);
                 i = j;
               } while (j != 0);
-              j = c.kY(this.McO, paramf.McO);
+              j = c.lf(this.MzJ, paramf.MzJ);
               i = j;
             } while (j != 0);
-            j = c.kZ(this.McP, paramf.McP);
+            j = c.lg(this.MzK, paramf.MzK);
             i = j;
           } while (j != 0);
-          j = c.kY(this.McQ, paramf.McQ);
+          j = c.lf(this.MzL, paramf.MzL);
           i = j;
         } while (j != 0);
-        j = c.kZ(this.McR, paramf.McR);
+        j = c.lg(this.MzM, paramf.MzM);
         i = j;
       } while (j != 0);
-      j = c.kZ(this.McS, paramf.McS);
+      j = c.lg(this.MzN, paramf.MzN);
       i = j;
     } while (j != 0);
-    return c.kZ(this.McT, paramf.McT);
+    return c.lg(this.MzO, paramf.MzO);
   }
   
   public final boolean equals(Object paramObject)
@@ -78,7 +78,7 @@ public final class f
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.McN), Integer.valueOf(this.McK), Integer.valueOf(this.McO), Integer.valueOf(this.McP), Integer.valueOf(this.McQ), Integer.valueOf(this.McR), Integer.valueOf(this.McS), Integer.valueOf(this.McT) });
+    return e.hash(new Object[] { Integer.valueOf(this.MzI), Integer.valueOf(this.MzF), Integer.valueOf(this.MzJ), Integer.valueOf(this.MzK), Integer.valueOf(this.MzL), Integer.valueOf(this.MzM), Integer.valueOf(this.MzN), Integer.valueOf(this.MzO) });
   }
 }
 

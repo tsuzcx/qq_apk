@@ -1,28 +1,35 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.content.Intent;
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import com.tencent.mm.plugin.mmsight.SightCaptureResult;
-import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.ui.chatting.v;
+import java.util.ArrayList;
 
 public abstract interface aj
   extends ad
 {
-  public abstract void F(String paramString1, int paramInt, String paramString2);
+  public abstract boolean Ew(long paramLong);
   
-  public abstract void R(int paramInt1, int paramInt2, String paramString);
+  public abstract void adT(int paramInt);
   
-  public abstract void a(ContextMenu paramContextMenu, int paramInt, bu parambu);
+  public abstract ArrayList<String> fIK();
   
-  public abstract void a(SightCaptureResult paramSightCaptureResult);
+  public abstract void fIL();
   
-  public abstract boolean a(MenuItem paramMenuItem, bu parambu);
+  public abstract void fIM();
   
-  public abstract boolean bF(bu parambu);
+  public abstract boolean fIN();
   
-  public abstract boolean h(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract v fIO();
+  
+  public abstract boolean fIP();
+  
+  public abstract boolean fIQ();
+  
+  public abstract boolean fIR();
+  
+  public abstract boolean fIS();
+  
+  public abstract boolean fIT();
 }
 
 

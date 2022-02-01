@@ -1,68 +1,66 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class bdr
-  extends cvc
+  extends cvw
 {
-  public float FOA;
-  public float FOB;
-  public int GAe;
-  public int GAf;
-  public int Height;
-  public int Width;
-  public String qei;
+  public String GwI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56247);
+    AppMethodBeat.i(104805);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.GwI == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: LensId");
+        AppMethodBeat.o(104805);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.z(2, this.FOA);
-      paramVarArgs.z(3, this.FOB);
-      paramVarArgs.aS(4, this.Width);
-      paramVarArgs.aS(5, this.Height);
-      if (this.qei != null) {
-        paramVarArgs.d(6, this.qei);
+      if (this.GwI != null) {
+        paramVarArgs.d(2, this.GwI);
       }
-      paramVarArgs.aS(7, this.GAe);
-      paramVarArgs.aS(8, this.GAf);
-      AppMethodBeat.o(56247);
+      AppMethodBeat.o(104805);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label636;
+        break label418;
       }
     }
-    label636:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label418:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.alU(2) + f.a.a.b.b.a.alU(3) + f.a.a.b.b.a.bz(4, this.Width) + f.a.a.b.b.a.bz(5, this.Height);
-      paramInt = i;
-      if (this.qei != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.qei);
+      int i = paramInt;
+      if (this.GwI != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.GwI);
       }
-      i = f.a.a.b.b.a.bz(7, this.GAe);
-      int j = f.a.a.b.b.a.bz(8, this.GAf);
-      AppMethodBeat.o(56247);
-      return paramInt + i + j;
+      AppMethodBeat.o(104805);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(56247);
+        if (this.GwI == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: LensId");
+          AppMethodBeat.o(104805);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104805);
         return 0;
       }
       if (paramInt == 3)
@@ -73,10 +71,10 @@ public final class bdr
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(56247);
+          AppMethodBeat.o(104805);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -84,42 +82,18 @@ public final class bdr
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbdr.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(56247);
-          return 0;
-        case 2: 
-          localbdr.FOA = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
-          AppMethodBeat.o(56247);
-          return 0;
-        case 3: 
-          localbdr.FOB = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
-          AppMethodBeat.o(56247);
-          return 0;
-        case 4: 
-          localbdr.Width = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(56247);
-          return 0;
-        case 5: 
-          localbdr.Height = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(56247);
-          return 0;
-        case 6: 
-          localbdr.qei = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(56247);
-          return 0;
-        case 7: 
-          localbdr.GAe = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(56247);
+          AppMethodBeat.o(104805);
           return 0;
         }
-        localbdr.GAf = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(56247);
+        localbdr.GwI = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(104805);
         return 0;
       }
-      AppMethodBeat.o(56247);
+      AppMethodBeat.o(104805);
       return -1;
     }
   }

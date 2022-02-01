@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-@d.l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"Iterable", "", "T", "iterator", "Lkotlin/Function0;", "", "collectionSizeOrDefault", "", "default", "collectionSizeOrNull", "(Ljava/lang/Iterable;)Ljava/lang/Integer;", "convertToSetForSetOperation", "", "convertToSetForSetOperationWith", "source", "flatten", "", "safeToConvertToSet", "", "safeToConvertToSet$CollectionsKt__IterablesKt", "unzip", "Lkotlin/Pair;", "R", "kotlin-stdlib"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Iterable", "", "T", "iterator", "Lkotlin/Function0;", "", "collectionSizeOrDefault", "", "default", "collectionSizeOrNull", "(Ljava/lang/Iterable;)Ljava/lang/Integer;", "convertToSetForSetOperation", "", "convertToSetForSetOperationWith", "source", "flatten", "", "safeToConvertToSet", "", "safeToConvertToSet$CollectionsKt__IterablesKt", "unzip", "Lkotlin/Pair;", "R", "kotlin-stdlib"}, gkc=1)
 public class m
   extends l
 {
@@ -26,13 +26,13 @@ public class m
   
   public static final <T> Collection<T> a(Iterable<? extends T> paramIterable1, Iterable<? extends T> paramIterable2)
   {
-    AppMethodBeat.i(199615);
+    AppMethodBeat.i(188707);
     p.h(paramIterable1, "$this$convertToSetForSetOperationWith");
     p.h(paramIterable2, "source");
     if ((paramIterable1 instanceof Set))
     {
       paramIterable1 = (Collection)paramIterable1;
-      AppMethodBeat.o(199615);
+      AppMethodBeat.o(188707);
       return paramIterable1;
     }
     if ((paramIterable1 instanceof Collection))
@@ -40,7 +40,7 @@ public class m
       if (((paramIterable2 instanceof Collection)) && (((Collection)paramIterable2).size() < 2))
       {
         paramIterable1 = (Collection)paramIterable1;
-        AppMethodBeat.o(199615);
+        AppMethodBeat.o(188707);
         return paramIterable1;
       }
       paramIterable2 = (Collection)paramIterable1;
@@ -48,12 +48,12 @@ public class m
       for (int i = 1; i == 0; i = 0)
       {
         paramIterable1 = (Collection)paramIterable1;
-        AppMethodBeat.o(199615);
+        AppMethodBeat.o(188707);
         return paramIterable1;
       }
     }
     paramIterable1 = (Collection)j.k(paramIterable1);
-    AppMethodBeat.o(199615);
+    AppMethodBeat.o(188707);
     return paramIterable1;
   }
 }

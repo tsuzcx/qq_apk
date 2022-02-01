@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactListAdapter$Companion;", "", "()V", "DIFF_CALLBACK", "com/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactListAdapter$Companion$DIFF_CALLBACK$1", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactListAdapter$Companion$DIFF_CALLBACK$1;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactListAdapter$Companion;", "", "()V", "DIFF_CALLBACK", "com/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactListAdapter$Companion$DIFF_CALLBACK$1", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactListAdapter$Companion$DIFF_CALLBACK$1;", "plugin-finder_release"})
 public final class FinderConversationBlackUI$f$a {}
 
 

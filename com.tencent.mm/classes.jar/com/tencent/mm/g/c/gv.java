@@ -8,25 +8,25 @@ public abstract class gv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fys = "wallet_tpa_country".hashCode();
-  private static final int fyt = "wallet_type".hashCode();
-  private static final int fyu = "wallet_name".hashCode();
-  private static final int fyv = "wallet_selected".hashCode();
-  private static final int fyw = "wallet_balance".hashCode();
-  private static final int fyx = "wallet_tpa_country_mask".hashCode();
+  private static final int fAg = "wallet_region".hashCode();
+  private static final int fAh = "function_list".hashCode();
+  private static final int fAi = "new_list".hashCode();
+  private static final int fAj = "banner_list".hashCode();
+  private static final int fAk = "type_name_list".hashCode();
+  private static final int fAl = "isShowSetting".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public int field_wallet_balance;
-  public String field_wallet_name;
-  public int field_wallet_selected;
-  public String field_wallet_tpa_country;
-  public int field_wallet_tpa_country_mask;
-  public int field_wallet_type;
-  private boolean fym = true;
-  private boolean fyn = true;
-  private boolean fyo = true;
-  private boolean fyp = true;
-  private boolean fyq = true;
-  private boolean fyr = true;
+  private boolean fAa = true;
+  private boolean fAb = true;
+  private boolean fAc = true;
+  private boolean fAd = true;
+  private boolean fAe = true;
+  private boolean fAf = true;
+  public String field_banner_list;
+  public String field_function_list;
+  public int field_isShowSetting;
+  public String field_new_list;
+  public String field_type_name_list;
+  public int field_wallet_region;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +41,11 @@ public abstract class gv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fys != k) {
+      if (fAg != k) {
         break label65;
       }
-      this.field_wallet_tpa_country = paramCursor.getString(i);
-      this.fym = true;
+      this.field_wallet_region = paramCursor.getInt(i);
+      this.fAa = true;
     }
     for (;;)
     {
@@ -53,16 +53,16 @@ public abstract class gv
       break label20;
       break;
       label65:
-      if (fyt == k) {
-        this.field_wallet_type = paramCursor.getInt(i);
-      } else if (fyu == k) {
-        this.field_wallet_name = paramCursor.getString(i);
-      } else if (fyv == k) {
-        this.field_wallet_selected = paramCursor.getInt(i);
-      } else if (fyw == k) {
-        this.field_wallet_balance = paramCursor.getInt(i);
-      } else if (fyx == k) {
-        this.field_wallet_tpa_country_mask = paramCursor.getInt(i);
+      if (fAh == k) {
+        this.field_function_list = paramCursor.getString(i);
+      } else if (fAi == k) {
+        this.field_new_list = paramCursor.getString(i);
+      } else if (fAj == k) {
+        this.field_banner_list = paramCursor.getString(i);
+      } else if (fAk == k) {
+        this.field_type_name_list = paramCursor.getString(i);
+      } else if (fAl == k) {
+        this.field_isShowSetting = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +72,23 @@ public abstract class gv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fym) {
-      localContentValues.put("wallet_tpa_country", this.field_wallet_tpa_country);
+    if (this.fAa) {
+      localContentValues.put("wallet_region", Integer.valueOf(this.field_wallet_region));
     }
-    if (this.fyn) {
-      localContentValues.put("wallet_type", Integer.valueOf(this.field_wallet_type));
+    if (this.fAb) {
+      localContentValues.put("function_list", this.field_function_list);
     }
-    if (this.fyo) {
-      localContentValues.put("wallet_name", this.field_wallet_name);
+    if (this.fAc) {
+      localContentValues.put("new_list", this.field_new_list);
     }
-    if (this.fyp) {
-      localContentValues.put("wallet_selected", Integer.valueOf(this.field_wallet_selected));
+    if (this.fAd) {
+      localContentValues.put("banner_list", this.field_banner_list);
     }
-    if (this.fyq) {
-      localContentValues.put("wallet_balance", Integer.valueOf(this.field_wallet_balance));
+    if (this.fAe) {
+      localContentValues.put("type_name_list", this.field_type_name_list);
     }
-    if (this.fyr) {
-      localContentValues.put("wallet_tpa_country_mask", Integer.valueOf(this.field_wallet_tpa_country_mask));
+    if (this.fAf) {
+      localContentValues.put("isShowSetting", Integer.valueOf(this.field_isShowSetting));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +98,7 @@ public abstract class gv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gv
  * JD-Core Version:    0.7.0.1
  */

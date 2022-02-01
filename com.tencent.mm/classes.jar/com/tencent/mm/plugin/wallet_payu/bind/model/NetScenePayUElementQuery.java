@@ -11,20 +11,20 @@ import org.json.JSONObject;
 public final class NetScenePayUElementQuery
   extends a
 {
-  public String DrH;
-  public PayUBankcardElement DrJ;
+  public String DJm;
+  public PayUBankcardElement DJo;
   
   public NetScenePayUElementQuery(String paramString)
   {
     AppMethodBeat.i(71975);
-    this.DrH = paramString;
+    this.DJm = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("card_number", paramString);
     setRequestData(localHashMap);
     AppMethodBeat.o(71975);
   }
   
-  public final int eEK()
+  public final int eIr()
   {
     return 22;
   }
@@ -32,23 +32,23 @@ public final class NetScenePayUElementQuery
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71976);
-    this.DrJ = new PayUBankcardElement();
-    this.DrJ.DrK = paramJSONObject.optString("bin");
-    this.DrJ.wCD = paramJSONObject.optString("bank_name");
-    this.DrJ.DrL = paramJSONObject.optString("issuer_type");
-    this.DrJ.cardType = paramJSONObject.optString("card_type");
-    this.DrJ.dyV = paramJSONObject.optString("payu_reference");
+    this.DJo = new PayUBankcardElement();
+    this.DJo.DJp = paramJSONObject.optString("bin");
+    this.DJo.wSo = paramJSONObject.optString("bank_name");
+    this.DJo.DJq = paramJSONObject.optString("issuer_type");
+    this.DJo.cardType = paramJSONObject.optString("card_type");
+    this.DJo.dAa = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(71976);
   }
   
   public static class PayUBankcardElement
     implements Parcelable
   {
-    public String DrK = "";
-    public String DrL = "";
+    public String DJp = "";
+    public String DJq = "";
     public String cardType = "";
-    public String dyV = "";
-    public String wCD = "";
+    public String dAa = "";
+    public String wSo = "";
     
     public int describeContents()
     {
@@ -58,18 +58,18 @@ public final class NetScenePayUElementQuery
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(71974);
-      paramParcel.writeString(this.DrK);
-      paramParcel.writeString(this.wCD);
-      paramParcel.writeString(this.DrL);
+      paramParcel.writeString(this.DJp);
+      paramParcel.writeString(this.wSo);
+      paramParcel.writeString(this.DJq);
       paramParcel.writeString(this.cardType);
-      paramParcel.writeString(this.dyV);
+      paramParcel.writeString(this.dAa);
       AppMethodBeat.o(71974);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.NetScenePayUElementQuery
  * JD-Core Version:    0.7.0.1
  */

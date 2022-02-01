@@ -10,8 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class c
   extends a
 {
-  private static long dfJ = 0L;
-  private static long dfK = 0L;
+  private static long dgL = 0L;
+  private static long dgM = 0L;
   
   public c(int paramInt1, int paramInt2, d paramd, f paramf)
   {
@@ -26,8 +26,8 @@ public final class c
       b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack before");
       if (!createAudioTrack())
       {
-        if (this.dfF != null) {
-          this.dfF.onError(707);
+        if (this.dgH != null) {
+          this.dgH.onError(707);
         }
         b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack fail");
         AppMethodBeat.o(136952);
@@ -37,12 +37,12 @@ public final class c
     }
     try
     {
-      i(this.dfE);
+      i(this.dgG);
       this.bfq.play();
       this.bfq.setStereoVolume(this.volume, this.volume);
       b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack after");
-      if (this.dfF != null) {
-        this.dfF.OQ();
+      if (this.dgH != null) {
+        this.dgH.OO();
       }
       this.bfq.setStereoVolume(this.volume, this.volume);
       this.bfq.write(paramArrayOfByte, 0, paramArrayOfByte.length);
@@ -58,10 +58,10 @@ public final class c
     }
   }
   
-  public final void PB()
+  public final void Pz()
   {
     AppMethodBeat.i(136953);
-    super.PB();
+    super.Pz();
     b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "playFlush");
     AppMethodBeat.o(136953);
   }
@@ -70,7 +70,7 @@ public final class c
   {
     AppMethodBeat.i(136951);
     b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "createAudioTrack");
-    if (this.dfC > 1)
+    if (this.dgE > 1)
     {
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "createAudioTrack fail count reach MAX COUNT");
       AppMethodBeat.o(136951);
@@ -89,21 +89,21 @@ public final class c
       return false;
     }
     int j = k;
-    if (this.dfE > 1.0D) {
-      j = (int)(this.dfE * k);
+    if (this.dgG > 1.0D) {
+      j = (int)(this.dgG * k);
     }
     if (this.bfq == null)
     {
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "new AudioTrack");
       System.currentTimeMillis();
       this.bfq = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
-      this.dfC += 1;
-      dfI.incrementAndGet();
+      this.dgE += 1;
+      dgK.incrementAndGet();
     }
     if ((this.bfq == null) || (this.bfq.getState() != 1))
     {
-      dfH.incrementAndGet();
-      b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(dfI.get()), Integer.valueOf(dfH.get()) });
+      dgJ.incrementAndGet();
+      b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(dgK.get()), Integer.valueOf(dgJ.get()) });
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "audio track not initialized");
       if (this.bfq != null) {
         b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.bfq.getState()) });
@@ -129,7 +129,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.a.c
  * JD-Core Version:    0.7.0.1
  */

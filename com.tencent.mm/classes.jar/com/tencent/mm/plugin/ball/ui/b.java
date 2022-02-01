@@ -2,26 +2,28 @@ package com.tencent.mm.plugin.ball.ui;
 
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.a.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.ball.d.e;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public com.tencent.mm.plugin.ball.a.f nHb;
-  com.tencent.mm.plugin.ball.d.f nHc;
-  float nHs;
+  public f nME;
+  e nMF;
+  float nMU;
   
-  public b(com.tencent.mm.plugin.ball.a.f paramf, com.tencent.mm.plugin.ball.d.f paramf1)
+  public b(f paramf, e parame)
   {
-    this.nHb = paramf;
-    this.nHc = paramf1;
+    this.nME = paramf;
+    this.nMF = parame;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(106281);
-    ad.i("MicroMsg.FloatBallFadeInController", "stop FloatIndicatorController");
-    this.nHb.a(null);
+    ae.i("MicroMsg.FloatBallFadeInController", "stop FloatIndicatorController");
+    this.nME.a(null);
     AppMethodBeat.o(106281);
   }
 }

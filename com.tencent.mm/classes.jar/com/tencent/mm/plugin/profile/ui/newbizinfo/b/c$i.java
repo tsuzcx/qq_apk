@@ -6,17 +6,17 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "kotlin.jvm.PlatformType", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "kotlin.jvm.PlatformType", "invoke"})
 final class c$i
   extends q
   implements a<b>
 {
-  public static final i wXP;
+  public static final i xnG;
   
   static
   {
     AppMethodBeat.i(39719);
-    wXP = new i();
+    xnG = new i();
     AppMethodBeat.o(39719);
   }
   

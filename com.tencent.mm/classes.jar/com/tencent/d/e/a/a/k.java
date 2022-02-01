@@ -2,10 +2,10 @@ package com.tencent.d.e.a.a;
 
 public final class k
 {
-  public int LNJ = 0;
-  public int LNK = 0;
-  public int LNL = 0;
-  public int LNM = 0;
+  public int MkI = 0;
+  public int MkJ = 0;
+  public int MkK = 0;
+  public int MkL = 0;
 }
 
 

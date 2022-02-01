@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.topstory.ui.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
@@ -11,31 +11,31 @@ public final class a
     AppMethodBeat.i(126548);
     try
     {
-      boolean bool = bt.isNullOrNil(paramString1);
+      boolean bool = bu.isNullOrNil(paramString1);
       if (bool)
       {
         AppMethodBeat.o(126548);
         return;
       }
-      paramString2 = bt.nullAsNil(paramString2);
-      ad.i("MicroMsg.TopStory.TopStoryJsEventNotifier", "lxl notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
+      paramString2 = bu.nullAsNil(paramString2);
+      ae.i("MicroMsg.TopStory.TopStoryJsEventNotifier", "lxl notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
       paramString1 = String.format("javascript:window['%s'] && %s(%s)", new Object[] { paramString1, paramString1, paramString2 });
-      if ((parame != null) && (parame.Byu != null)) {
-        parame.Byu.evaluateJavascript(paramString1, null);
+      if ((parame != null) && (parame.BPS != null)) {
+        parame.BPS.evaluateJavascript(paramString1, null);
       }
       AppMethodBeat.o(126548);
       return;
     }
     catch (Exception parame)
     {
-      ad.printErrStackTrace("MicroMsg.TopStory.TopStoryJsEventNotifier", parame, "notifyJsEvent", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryJsEventNotifier", parame, "notifyJsEvent", new Object[0]);
       AppMethodBeat.o(126548);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.webview.a
  * JD-Core Version:    0.7.0.1
  */

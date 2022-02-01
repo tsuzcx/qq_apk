@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wp
   extends b
 {
-  public a dKX;
+  public a dMa;
   
   public wp()
   {
@@ -15,22 +15,21 @@ public final class wp
   
   private wp(byte paramByte)
   {
-    AppMethodBeat.i(200893);
-    this.dKX = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19841);
+    this.dMa = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(200893);
+    AppMethodBeat.o(19841);
   }
   
   public static final class a
   {
-    public int dKY;
-    public int duh;
+    public boolean dMb = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.wp
  * JD-Core Version:    0.7.0.1
  */

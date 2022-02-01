@@ -8,6 +8,6 @@
     </LinearLayout>
     <LinearLayout android:gravity="center" android:id="@id/gos" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginBottom="96.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
         <Button android:id="@id/a9_" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/egg" style="@style/o7" />
-        <ProgressBar android:id="@id/ekr" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" style="@style/a4h" />
+        <ProgressBar android:id="@id/ekr" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" />
     </LinearLayout>
 </RelativeLayout>

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String name;
   public String value;
@@ -40,9 +40,9 @@ public final class i
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91275);
@@ -58,11 +58,11 @@ public final class i
           AppMethodBeat.o(91275);
           return -1;
         case 1: 
-          locali.name = locala.NPN.readString();
+          locali.name = locala.OmT.readString();
           AppMethodBeat.o(91275);
           return 0;
         }
-        locali.value = locala.NPN.readString();
+        locali.value = locala.OmT.readString();
         AppMethodBeat.o(91275);
         return 0;
       }

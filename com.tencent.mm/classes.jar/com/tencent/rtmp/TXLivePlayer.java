@@ -210,9 +210,9 @@ public class TXLivePlayer
   
   public int setVideoRenderListener(ITXLivePlayVideoRenderListener paramITXLivePlayVideoRenderListener, Object paramObject)
   {
-    AppMethodBeat.i(187544);
+    AppMethodBeat.i(221673);
     int i = this.mTXLivePlayerImpl.a(paramITXLivePlayVideoRenderListener, paramObject);
-    AppMethodBeat.o(187544);
+    AppMethodBeat.o(221673);
     return i;
   }
   

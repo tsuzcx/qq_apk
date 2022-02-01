@@ -11,9 +11,9 @@ final class SelfQRCodeUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(220946);
-    SelfQRCodeUI.a(this.yEJ, 2);
-    AppMethodBeat.o(220946);
+    AppMethodBeat.i(190308);
+    SelfQRCodeUI.a(this.yUO, 2);
+    AppMethodBeat.o(190308);
   }
 }
 

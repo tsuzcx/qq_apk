@@ -1,7 +1,7 @@
 package com.tencent.mm;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.d.a;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.api.h;
 import com.tencent.mm.api.v;
 import com.tencent.mm.kernel.api.bucket.c;
@@ -9,40 +9,46 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.messenger.foundation.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.y;
+import com.tencent.mm.plugin.messenger.foundation.a.z;
+import com.tencent.mm.s.b;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.t.b;
-import com.tencent.mm.v.e;
+import com.tencent.mm.u.e;
 import java.util.HashMap;
 
 public class PluginFunctionMsg
   extends f
   implements v, com.tencent.mm.kernel.api.a, c
 {
-  private static HashMap<Integer, h.b> cPe;
-  private b cPd;
+  private static HashMap<Integer, h.b> cPO;
+  private b cPN;
   
   static
   {
     AppMethodBeat.i(114094);
-    cPe = new HashMap();
+    cPO = new HashMap();
     String str = j.getCreateSQLs(h.info, "FunctionMsgItem");
-    cPe.put(Integer.valueOf("FunctionMsgItem".hashCode()), new PluginFunctionMsg.2(new String[] { str }));
+    cPO.put(Integer.valueOf("FunctionMsgItem".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return this.cPQ;
+      }
+    });
     AppMethodBeat.o(114094);
   }
   
   public PluginFunctionMsg()
   {
     AppMethodBeat.i(114088);
-    this.cPd = new b();
+    this.cPN = new b();
     AppMethodBeat.o(114088);
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    return cPe;
+    return cPO;
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
@@ -56,19 +62,19 @@ public class PluginFunctionMsg
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(114090);
-    if (paramg.akw()) {
-      ((k)com.tencent.mm.kernel.g.ab(k.class)).addSyncDoCmdCallback(new y()
+    if (paramg.akL()) {
+      ((k)com.tencent.mm.kernel.g.ab(k.class)).addSyncDoCmdCallback(new z()
       {
         public final void aI(Object paramAnonymousObject)
         {
           AppMethodBeat.i(114085);
           PluginFunctionMsg.this.getReceiver();
-          if (com.tencent.mm.v.a.cAX)
+          if (com.tencent.mm.u.a.cBE)
           {
-            com.tencent.mm.v.a.agt();
-            com.tencent.mm.v.a.cAX = false;
+            com.tencent.mm.u.a.agH();
+            com.tencent.mm.u.a.cBE = false;
           }
-          ad.i("FunctionMsg.FunctionMsgEngine", "[beforeSyncDoCmd] isInit:" + com.tencent.mm.v.a.cAX);
+          ae.i("FunctionMsg.FunctionMsgEngine", "[beforeSyncDoCmd] isInit:" + com.tencent.mm.u.a.cBE);
           AppMethodBeat.o(114085);
         }
         
@@ -76,12 +82,12 @@ public class PluginFunctionMsg
         {
           AppMethodBeat.i(114086);
           PluginFunctionMsg.this.getReceiver();
-          if (com.tencent.mm.v.a.ags())
+          if (com.tencent.mm.u.a.agG())
           {
-            com.tencent.mm.v.a.gqA.agv();
-            com.tencent.mm.v.a.cOF = System.currentTimeMillis();
-            com.tencent.mm.v.a.gqB = false;
-            ad.i("FunctionMsg.FunctionMsgEngine", "[afterSyncDoCmd] check time:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+            com.tencent.mm.u.a.gta.agJ();
+            com.tencent.mm.u.a.cPp = System.currentTimeMillis();
+            com.tencent.mm.u.a.gtb = false;
+            ae.i("FunctionMsg.FunctionMsgEngine", "[afterSyncDoCmd] check time:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
           }
           AppMethodBeat.o(114086);
         }
@@ -90,12 +96,12 @@ public class PluginFunctionMsg
         {
           AppMethodBeat.i(114087);
           PluginFunctionMsg.this.getReceiver();
-          if (com.tencent.mm.v.a.ags())
+          if (com.tencent.mm.u.a.agG())
           {
-            com.tencent.mm.v.a.gqA.agv();
-            com.tencent.mm.v.a.cOF = System.currentTimeMillis();
-            com.tencent.mm.v.a.gqB = false;
-            ad.i("FunctionMsg.FunctionMsgEngine", "[finishSyncDoCmd] check time:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+            com.tencent.mm.u.a.gta.agJ();
+            com.tencent.mm.u.a.cPp = System.currentTimeMillis();
+            com.tencent.mm.u.a.gtb = false;
+            ae.i("FunctionMsg.FunctionMsgEngine", "[finishSyncDoCmd] check time:%s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
           }
           AppMethodBeat.o(114087);
         }
@@ -104,22 +110,22 @@ public class PluginFunctionMsg
     AppMethodBeat.o(114090);
   }
   
-  public com.tencent.mm.v.a getReceiver()
+  public com.tencent.mm.u.a getReceiver()
   {
-    return com.tencent.mm.v.a.gqD;
+    return com.tencent.mm.u.a.gtd;
   }
   
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(114091);
-    d.a.a(this.cPd);
+    d.a.a(this.cPN);
     AppMethodBeat.o(114091);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(114092);
-    d.a.b(this.cPd);
+    d.a.b(this.cPN);
     AppMethodBeat.o(114092);
   }
 }

@@ -12,18 +12,18 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ExdeviceLikeView
   extends RelativeLayout
 {
   private Context mContext;
-  private int qkt;
-  private a qku;
-  private int qkv;
-  private TextView qkw;
-  private ImageView qkx;
-  private ProgressBar qky;
+  private int qqY;
+  private a qqZ;
+  private int qra;
+  private TextView qrb;
+  private ImageView qrc;
+  private ProgressBar qrd;
   
   public ExdeviceLikeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,12 +34,12 @@ public class ExdeviceLikeView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24046);
-    this.qkv = 2;
+    this.qra = 2;
     this.mContext = paramContext;
     paramContext = LayoutInflater.from(this.mContext).inflate(2131493869, this, true);
-    this.qkw = ((TextView)paramContext.findViewById(2131299552));
-    this.qkx = ((ImageView)paramContext.findViewById(2131299551));
-    this.qky = ((ProgressBar)paramContext.findViewById(2131299555));
+    this.qrb = ((TextView)paramContext.findViewById(2131299552));
+    this.qrc = ((ImageView)paramContext.findViewById(2131299551));
+    this.qrd = ((ProgressBar)paramContext.findViewById(2131299555));
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -47,20 +47,20 @@ public class ExdeviceLikeView
         AppMethodBeat.i(24045);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (ExdeviceLikeView.a(ExdeviceLikeView.this) != null)
         {
           paramAnonymousView = ExdeviceLikeView.a(ExdeviceLikeView.this);
           ExdeviceLikeView.b(ExdeviceLikeView.this);
-          if ((!paramAnonymousView.cmj()) && (ExdeviceLikeView.b(ExdeviceLikeView.this) == 0))
+          if ((!paramAnonymousView.cnz()) && (ExdeviceLikeView.b(ExdeviceLikeView.this) == 0))
           {
-            ad.d("MicroMsg.ExdeviceLikeView", "click listener is not null");
-            ExdeviceLikeView.this.setSelfLikeState(ExdeviceLikeView.CJ(ExdeviceLikeView.b(ExdeviceLikeView.this)));
+            ae.d("MicroMsg.ExdeviceLikeView", "click listener is not null");
+            ExdeviceLikeView.this.setSelfLikeState(ExdeviceLikeView.CV(ExdeviceLikeView.b(ExdeviceLikeView.this)));
             if (ExdeviceLikeView.b(ExdeviceLikeView.this) == 1) {
               ExdeviceLikeView.c(ExdeviceLikeView.this);
             }
             if (ExdeviceLikeView.a(ExdeviceLikeView.this) != null) {
-              ExdeviceLikeView.a(ExdeviceLikeView.this).lf(ExdeviceLikeView.b(ExdeviceLikeView.this));
+              ExdeviceLikeView.a(ExdeviceLikeView.this).lh(ExdeviceLikeView.b(ExdeviceLikeView.this));
             }
           }
         }
@@ -69,7 +69,7 @@ public class ExdeviceLikeView
           a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(24045);
           return;
-          ad.d("MicroMsg.ExdeviceLikeView", "hy: loading or has liked or consumed. abort event");
+          ae.d("MicroMsg.ExdeviceLikeView", "hy: loading or has liked or consumed. abort event");
         }
       }
     });
@@ -79,77 +79,77 @@ public class ExdeviceLikeView
   public void setLikeNum(int paramInt)
   {
     AppMethodBeat.i(24047);
-    this.qkt = paramInt;
-    String str = this.qkt;
-    if (this.qkt < 0)
+    this.qqY = paramInt;
+    String str = this.qqY;
+    if (this.qqY < 0)
     {
-      ad.w("MicroMsg.ExdeviceLikeView", "hy: like num is negative. set to 0");
+      ae.w("MicroMsg.ExdeviceLikeView", "hy: like num is negative. set to 0");
       str = "0";
-      if (this.qkt > 0) {
+      if (this.qqY > 0) {
         break label97;
       }
-      this.qkw.setVisibility(8);
+      this.qrb.setVisibility(8);
     }
     for (;;)
     {
-      this.qkw.setText(str);
+      this.qrb.setText(str);
       AppMethodBeat.o(24047);
       return;
       if (paramInt <= 999) {
         break;
       }
-      ad.d("MicroMsg.ExdeviceLikeView", "hy: like num exceeded the limit. put plus");
+      ae.d("MicroMsg.ExdeviceLikeView", "hy: like num exceeded the limit. put plus");
       str = "999+";
       break;
       label97:
-      this.qkw.setVisibility(0);
+      this.qrb.setVisibility(0);
     }
   }
   
   public void setOnLikeViewClickListener(a parama)
   {
-    this.qku = parama;
+    this.qqZ = parama;
   }
   
   public void setSelfLikeState(int paramInt)
   {
     AppMethodBeat.i(24048);
-    this.qkv = paramInt;
-    if (this.qkv == 1)
+    this.qra = paramInt;
+    if (this.qra == 1)
     {
-      this.qky.setVisibility(8);
-      this.qkw.setVisibility(0);
-      this.qkx.setVisibility(0);
-      this.qkx.setImageResource(2131690052);
+      this.qrd.setVisibility(8);
+      this.qrb.setVisibility(0);
+      this.qrc.setVisibility(0);
+      this.qrc.setImageResource(2131690052);
       AppMethodBeat.o(24048);
       return;
     }
-    if (this.qkv == 0)
+    if (this.qra == 0)
     {
-      this.qky.setVisibility(8);
-      this.qkw.setVisibility(0);
-      this.qkx.setVisibility(0);
-      this.qkx.setImageResource(2131690053);
+      this.qrd.setVisibility(8);
+      this.qrb.setVisibility(0);
+      this.qrc.setVisibility(0);
+      this.qrc.setImageResource(2131690053);
       AppMethodBeat.o(24048);
       return;
     }
-    if (this.qkv == 2)
+    if (this.qra == 2)
     {
-      this.qkw.setVisibility(8);
-      this.qky.setVisibility(0);
-      this.qkx.setVisibility(8);
+      this.qrb.setVisibility(8);
+      this.qrd.setVisibility(0);
+      this.qrc.setVisibility(8);
       AppMethodBeat.o(24048);
       return;
     }
-    ad.w("MicroMsg.ExdeviceLikeView", "hy: error state");
+    ae.w("MicroMsg.ExdeviceLikeView", "hy: error state");
     AppMethodBeat.o(24048);
   }
   
   public static abstract interface a
   {
-    public abstract boolean cmj();
+    public abstract boolean cnz();
     
-    public abstract void lf(int paramInt);
+    public abstract void lh(int paramInt);
   }
 }
 

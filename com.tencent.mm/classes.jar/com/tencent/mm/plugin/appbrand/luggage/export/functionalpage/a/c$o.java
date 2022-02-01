@@ -9,7 +9,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnPreDraw$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnPreDraw$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-appbrand-integration_release"})
 public final class c$o
   implements ViewTreeObserver.OnPreDrawListener
 {
@@ -17,12 +17,12 @@ public final class c$o
   
   public final boolean onPreDraw()
   {
-    AppMethodBeat.i(189505);
-    this.lPR.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
-    View localView = this.lPR;
+    AppMethodBeat.i(223765);
+    this.lUs.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
+    View localView = this.lUs;
     localView.setTranslationY(localView.getMeasuredHeight());
     localView.animate().setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator()).translationY(0.0F).setDuration(300L).start();
-    AppMethodBeat.o(189505);
+    AppMethodBeat.o(223765);
     return true;
   }
 }

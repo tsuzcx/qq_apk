@@ -11,31 +11,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class m
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  public static float pxn = 0.0F;
+  public static float pDR = 0.0F;
   private float mWidth;
-  private final int pxh;
-  public boolean pxi;
-  private final int pxl;
-  private float pxm;
+  private final int pDL;
+  public boolean pDM;
+  private final int pDP;
+  private float pDQ;
   
   private m(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.pxm = 10.0F;
-    this.pxl = paramInt1;
-    this.pxh = paramInt2;
-    this.pxi = paramBoolean;
+    this.pDQ = 10.0F;
+    this.pDP = paramInt1;
+    this.pDL = paramInt2;
+    this.pDM = paramBoolean;
   }
   
   public m(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(30648);
-    this.pxm = 10.0F;
-    this.pxl = paramInt1;
-    this.pxh = paramInt2;
+    this.pDQ = 10.0F;
+    this.pDP = paramInt1;
+    this.pDL = paramInt2;
     if ((paramBoolean1) && (paramBoolean3) && (!paramBoolean2)) {}
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      this.pxi = paramBoolean1;
+      this.pDM = paramBoolean1;
       AppMethodBeat.o(30648);
       return;
     }
@@ -45,14 +45,14 @@ public class m
   {
     AppMethodBeat.i(30650);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.pxi) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.pDM) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
       paramCharSequence = paramPaint.getStyle();
       float f = paramPaint.getTextSize();
       paramPaint.setStyle(Paint.Style.FILL);
-      this.pxm = (paramInt4 - paramInt3);
-      this.mWidth = paramPaint.measureText(this.pxl + ".");
-      paramCanvas.drawText(this.pxl + ".", paramInt1, paramInt4, paramPaint);
+      this.pDQ = (paramInt4 - paramInt3);
+      this.mWidth = paramPaint.measureText(this.pDP + ".");
+      paramCanvas.drawText(this.pDP + ".", paramInt1, paramInt4, paramPaint);
       paramPaint.setStyle(paramCharSequence);
       paramPaint.setTextSize(f);
     }
@@ -62,17 +62,17 @@ public class m
   public int getLeadingMargin(boolean paramBoolean)
   {
     AppMethodBeat.i(30649);
-    if (this.mWidth + 2.0F > pxn) {}
-    for (float f = this.mWidth + 2.0F;; f = pxn)
+    if (this.mWidth + 2.0F > pDR) {}
+    for (float f = this.mWidth + 2.0F;; f = pDR)
     {
-      pxn = Math.max(Math.round(f), this.pxh);
-      if (!this.pxi) {
+      pDR = Math.max(Math.round(f), this.pDL);
+      if (!this.pDM) {
         break;
       }
       AppMethodBeat.o(30649);
       return 0;
     }
-    int i = (int)pxn;
+    int i = (int)pDR;
     AppMethodBeat.o(30649);
     return i;
   }

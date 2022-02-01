@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.luggage.c;
 
-import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
 public class d
-  extends ae
+  extends ad
 {
   public d()
   {
@@ -12,7 +12,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.d
  * JD-Core Version:    0.7.0.1
  */

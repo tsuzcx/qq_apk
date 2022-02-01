@@ -2,54 +2,54 @@ package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 
 public abstract class i
   extends a
 {
-  private WeakReference<l> trw;
-  public j tuY;
-  public k tuZ;
+  private WeakReference<l> tCn;
+  public j tFP;
+  public k tFQ;
   
   public i(j paramj)
   {
-    this.tuY = paramj;
-    this.trw = new WeakReference(paramj.tvj);
-    this.tuY.tvj = null;
+    this.tFP = paramj;
+    this.tCn = new WeakReference(paramj.tGa);
+    this.tFP.tGa = null;
   }
   
   protected void a(k paramk)
   {
-    paramk.tun = h.bn(this.tuY.query, false);
+    paramk.tFe = h.bq(this.tFP.query, false);
     paramk.bZU = -5;
   }
   
   public final boolean execute()
   {
-    Object localObject1 = this.tuY;
-    if (!bt.isNullOrNil(((j)localObject1).query)) {}
+    Object localObject1 = this.tFP;
+    if (!bu.isNullOrNil(((j)localObject1).query)) {}
     try
     {
       ((j)localObject1).query = new String(((j)localObject1).query.getBytes("UTF8"), "UTF8");
       label37:
-      this.tuZ = new k(this.tuY);
+      this.tFQ = new k(this.tFP);
       try
       {
-        this.tuZ.tvk = this;
-        a(this.tuZ);
-        this.tuZ.bZU = 0;
-        if (this.tuY.handler == null)
+        this.tFQ.tGb = this;
+        a(this.tFQ);
+        this.tFQ.bZU = 0;
+        if (this.tFP.handler == null)
         {
-          localObject1 = (l)this.trw.get();
+          localObject1 = (l)this.tCn.get();
           if (localObject1 != null) {
-            ((l)localObject1).b(this.tuZ);
+            ((l)localObject1).b(this.tFQ);
           }
           return true;
         }
-        this.tuY.handler.post(new Runnable()
+        this.tFP.handler.post(new Runnable()
         {
           public final void run()
           {
@@ -67,25 +67,25 @@ public abstract class i
       {
         if ((localException instanceof InterruptedException))
         {
-          this.tuZ.bZU = 1;
+          this.tFQ.bZU = 1;
           throw localException;
         }
       }
       finally
       {
-        if (this.tuY.handler == null)
+        if (this.tFP.handler == null)
         {
-          l locall = (l)this.trw.get();
+          l locall = (l)this.tCn.get();
           if (locall != null) {
-            locall.b(this.tuZ);
+            locall.b(this.tFQ);
           }
         }
         for (;;)
         {
           throw localObject2;
-          this.tuZ.bZU = -1;
+          this.tFQ.bZU = -1;
           break;
-          this.tuY.handler.post(new Runnable()
+          this.tFP.handler.post(new Runnable()
           {
             public final void run()
             {
@@ -108,7 +108,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.i
  * JD-Core Version:    0.7.0.1
  */

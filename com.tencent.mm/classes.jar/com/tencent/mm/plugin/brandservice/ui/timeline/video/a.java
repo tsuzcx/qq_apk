@@ -6,16 +6,16 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplShareWebViewToolUI;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.e;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k;
 import com.tencent.mm.protocal.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.ac;
@@ -26,15 +26,15 @@ import d.v;
 import d.z;
 import java.lang.ref.WeakReference;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/AdWebViewManager;", "", "()V", "TAG", "", "initAdWebView", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewWithJsApi;", "webView", "publishId", "configMpAdAttrs", "Lkotlin/Function2;", "", "", "onPageFinsh", "Lcom/tencent/xweb/WebView;", "Lkotlin/ParameterName;", "name", "view", "url", "getA8KeyScene", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/AdWebViewManager;", "", "()V", "TAG", "", "initAdWebView", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewWithJsApi;", "webView", "publishId", "configMpAdAttrs", "Lkotlin/Function2;", "", "", "onPageFinsh", "Lcom/tencent/xweb/WebView;", "Lkotlin/ParameterName;", "name", "view", "url", "getA8KeyScene", "plugin-brandservice_release"})
 public final class a
 {
-  public static final a onR;
+  public static final a otI;
   
   static
   {
     AppMethodBeat.i(7036);
-    onR = new a();
+    otI = new a();
     AppMethodBeat.o(7036);
   }
   
@@ -52,17 +52,17 @@ public final class a
       AppMethodBeat.o(175497);
       throw paramMMWebViewWithJsApi;
     }
-    localf.MLV = new WeakReference((TmplShareWebViewToolUI)localObject);
+    localf.NiY = new WeakReference((TmplShareWebViewToolUI)localObject);
     localObject = new y.f();
-    ((y.f)localObject).MLV = new WeakReference((View)paramMMWebViewWithJsApi);
+    ((y.f)localObject).NiY = new WeakReference((View)paramMMWebViewWithJsApi);
     paramMMWebViewWithJsApi.setBackgroundColor(0);
     paramMMWebViewWithJsApi.setWebViewClient((ac)new a(new b(localf, paramString, (y.f)localObject, paramm), paramInt, paramm1, paramMMWebViewWithJsApi, (MMWebView)paramMMWebViewWithJsApi));
-    ad.i("MicroMsg.AdWebViewManager", "init:".concat(String.valueOf(paramString)));
+    ae.i("MicroMsg.AdWebViewManager", "init:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(175497);
     return paramMMWebViewWithJsApi;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/brandservice/ui/timeline/video/AdWebViewManager$initAdWebView$1", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewClient;", "getA8KeyScene", "", "getWebViewStubCallback", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewStubCallback;", "mmOnPageFinished", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "mmOnPageStarted", "favicon", "Landroid/graphics/Bitmap;", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/brandservice/ui/timeline/video/AdWebViewManager$initAdWebView$1", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewClient;", "getA8KeyScene", "", "getWebViewStubCallback", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewStubCallback;", "mmOnPageFinished", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "mmOnPageStarted", "favicon", "Landroid/graphics/Bitmap;", "plugin-brandservice_release"})
   public static final class a
     extends k
   {
@@ -85,12 +85,12 @@ public final class a
       AppMethodBeat.o(7029);
     }
     
-    public final com.tencent.mm.plugin.webview.ui.tools.widget.m bpl()
+    public final com.tencent.mm.plugin.webview.ui.tools.widget.m bpV()
     {
-      return (com.tencent.mm.plugin.webview.ui.tools.widget.m)this.onS;
+      return (com.tencent.mm.plugin.webview.ui.tools.widget.m)this.otJ;
     }
     
-    public final int bpm()
+    public final int bpW()
     {
       return paramInt;
     }
@@ -104,13 +104,13 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/brandservice/ui/timeline/video/AdWebViewManager$initAdWebView$callback$1", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewStubCallback;", "callback", "", "actionCode", "", "data", "Landroid/os/Bundle;", "handleMsg", "func", "", "param", "invokeAsResult", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/brandservice/ui/timeline/video/AdWebViewManager$initAdWebView$callback$1", "Lcom/tencent/mm/plugin/webview/ui/tools/widget/MMWebViewStubCallback;", "callback", "", "actionCode", "", "data", "Landroid/os/Bundle;", "handleMsg", "func", "", "param", "invokeAsResult", "plugin-brandservice_release"})
   public static final class b
     extends com.tencent.mm.plugin.webview.ui.tools.widget.m
   {
     b(y.f paramf1, String paramString, y.f paramf2, d.g.a.m paramm) {}
     
-    public final Bundle eR(String paramString1, String paramString2)
+    public final Bundle eU(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7034);
       if (paramString1 == null) {}
@@ -118,7 +118,7 @@ public final class a
       {
         for (;;)
         {
-          paramString1 = super.eR(paramString1, paramString2);
+          paramString1 = super.eU(paramString1, paramString2);
           p.g(paramString1, "super.handleMsg(func, param)");
           AppMethodBeat.o(7034);
           return paramString1;
@@ -127,14 +127,14 @@ public final class a
           }
         }
       } while (!paramString1.equals("configMpAdAttrs"));
-      ad.i("MicroMsg.AdWebViewManager", "configMpAdAttrs:".concat(String.valueOf(paramString2)));
+      ae.i("MicroMsg.AdWebViewManager", "configMpAdAttrs:".concat(String.valueOf(paramString2)));
       paramString2 = new i(paramString2);
       paramString1 = paramString2.getString("posInfo");
       int i = paramString2.getInt("webviewId");
       paramString2 = paramm;
       p.g(paramString1, "posInfo");
       paramString2.p(paramString1, Integer.valueOf(i));
-      paramString1 = c.aOa("configMpAdAttrs:ok");
+      paramString1 = c.aPx("configMpAdAttrs:ok");
       p.g(paramString1, "ConstantsJSAPIFunc.creat…ue, \"configMpAdAttrs:ok\")");
       AppMethodBeat.o(7034);
       return paramString1;
@@ -144,7 +144,7 @@ public final class a
     {
       AppMethodBeat.i(7032);
       p.h(paramBundle, "data");
-      ad.i("MicroMsg.AdWebViewManager", "callback:".concat(String.valueOf(paramInt)));
+      ae.i("MicroMsg.AdWebViewManager", "callback:".concat(String.valueOf(paramInt)));
       boolean bool = super.g(paramInt, paramBundle);
       AppMethodBeat.o(7032);
       return bool;
@@ -153,12 +153,12 @@ public final class a
     public final Bundle k(int paramInt, Bundle paramBundle)
     {
       AppMethodBeat.i(7033);
-      ad.i("MicroMsg.AdWebViewManager", "invokeAsResult:".concat(String.valueOf(paramInt)));
+      ae.i("MicroMsg.AdWebViewManager", "invokeAsResult:".concat(String.valueOf(paramInt)));
       Bundle localBundle = new Bundle();
       Object localObject1;
-      if (((WeakReference)this.onW.MLV).get() != null)
+      if (((WeakReference)this.otN.NiY).get() != null)
       {
-        localObject1 = ((WeakReference)this.onW.MLV).get();
+        localObject1 = ((WeakReference)this.otN.NiY).get();
         if (localObject1 == null)
         {
           paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplShareWebViewToolUI");
@@ -180,20 +180,20 @@ public final class a
         AppMethodBeat.o(7033);
         return localBundle;
         if (paramBundle == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramBundle.setClassLoader(WebViewUI.class.getClassLoader());
-        localObject1 = (Context)((WeakReference)this.onW.MLV).get();
+        localObject1 = (Context)((WeakReference)this.otN.NiY).get();
         Object localObject2 = paramBundle.getString("open_ui_with_webview_ui_plugin_name");
         String str = paramBundle.getString("open_ui_with_webview_ui_plugin_entry");
         Intent localIntent = new Intent();
         paramBundle = paramBundle.getBundle("open_ui_with_webview_ui_extras");
         if (paramBundle == null) {
-          p.gfZ();
+          p.gkB();
         }
-        d.b((Context)localObject1, (String)localObject2, str, localIntent.putExtras(paramBundle).putExtra("KPublisherId", bt.nullAsNil(paramString)));
+        d.b((Context)localObject1, (String)localObject2, str, localIntent.putExtras(paramBundle).putExtra("KPublisherId", bu.nullAsNil(paramString)));
         continue;
-        localObject1 = ((WeakReference)this.onW.MLV).get();
+        localObject1 = ((WeakReference)this.otN.NiY).get();
         if (localObject1 == null)
         {
           paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplShareWebViewToolUI");
@@ -207,59 +207,59 @@ public final class a
           if (!p.i("sendMPPageData", localObject1)) {
             break label314;
           }
-          ((TmplShareWebViewToolUI)localObject2).T(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).U(paramBundle);
           break;
         }
         label314:
         if (p.i("closeAdWebview", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).bQU();
+          ((TmplShareWebViewToolUI)localObject2).bRV();
         }
         else if (p.i("adWebviewReady", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).bQV();
+          ((TmplShareWebViewToolUI)localObject2).bRW();
         }
         else if (p.i("dotWebViewReady", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).W(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).X(paramBundle);
         }
         else if (p.i("closeDotWebview", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).U(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).V(paramBundle);
         }
         else if (p.i("hideDotWebview", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).V(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).W(paramBundle);
         }
         else if (p.i("getMPVideoState", localObject1))
         {
-          localBundle.putAll(((TmplShareWebViewToolUI)localObject2).bQW());
+          localBundle.putAll(((TmplShareWebViewToolUI)localObject2).bRX());
         }
         else if (p.i("setWebviewBackground", localObject1))
         {
           paramBundle = paramBundle.getString("backgroundColor");
-          ad.i("MicroMsg.AdWebViewManager", "setWebviewBackground ".concat(String.valueOf(paramBundle)));
-          paramInt = e.fO(paramBundle, 0);
-          if (((WeakReference)this.onY.MLV).get() != null)
+          ae.i("MicroMsg.AdWebViewManager", "setWebviewBackground ".concat(String.valueOf(paramBundle)));
+          paramInt = e.ee(paramBundle, 0);
+          if (((WeakReference)this.otP.NiY).get() != null)
           {
-            paramBundle = ((WeakReference)this.onY.MLV).get();
+            paramBundle = ((WeakReference)this.otP.NiY).get();
             if (paramBundle == null) {
-              p.gfZ();
+              p.gkB();
             }
             ((View)paramBundle).setBackgroundColor(paramInt);
           }
         }
         else if (p.i("opPlayer", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).Y(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).Z(paramBundle);
         }
         else if (p.i("setDotScriptData", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).X(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).Y(paramBundle);
         }
         else if (p.i("switchVideo", localObject1))
         {
-          ((TmplShareWebViewToolUI)localObject2).R(paramBundle);
+          ((TmplShareWebViewToolUI)localObject2).S(paramBundle);
         }
       }
     }

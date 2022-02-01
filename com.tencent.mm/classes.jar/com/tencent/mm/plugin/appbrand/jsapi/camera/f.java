@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 public abstract interface f
   extends f.b, f.c, f.d
 {
-  public static final f kIb = new f()
+  public static final f kLq = new f()
   {
     public final void ap(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
@@ -19,15 +19,15 @@ public abstract interface f
       return 0.0F;
     }
     
-    public final void bjF() {}
+    public final void bko() {}
     
-    public final void bjH() {}
+    public final void bkq() {}
     
-    public final void bjI() {}
+    public final void bkr() {}
     
-    public final void bjO() {}
+    public final void bkx() {}
     
-    public final void bjP() {}
+    public final void bky() {}
     
     public final boolean dO(int paramAnonymousInt1, int paramAnonymousInt2)
     {
@@ -93,15 +93,15 @@ public abstract interface f
   
   public abstract float az(float paramFloat);
   
-  public abstract void bjF();
+  public abstract void bko();
   
-  public abstract void bjH();
+  public abstract void bkq();
   
-  public abstract void bjI();
+  public abstract void bkr();
   
-  public abstract void bjO();
+  public abstract void bkx();
   
-  public abstract void bjP();
+  public abstract void bky();
   
   public abstract boolean dO(int paramInt1, int paramInt2);
   
@@ -149,7 +149,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.f
  * JD-Core Version:    0.7.0.1
  */

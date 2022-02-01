@@ -16,7 +16,7 @@ final class d$a
   List<String> aKA;
   private final Context context;
   private final int style;
-  int wNr = -1;
+  int xdf = -1;
   
   public d$a(Context paramContext)
   {
@@ -56,35 +56,35 @@ final class d$a
     {
       paramViewGroup = View.inflate(this.context, 2131494854, null);
       paramView = new d.b();
-      paramView.wNs = ((TextView)paramViewGroup.findViewById(2131305710));
-      paramView.wNt = ((CheckBox)paramViewGroup.findViewById(2131298214));
-      paramView.wNu = ((RadioButton)paramViewGroup.findViewById(2131303704));
+      paramView.xdg = ((TextView)paramViewGroup.findViewById(2131305710));
+      paramView.xdh = ((CheckBox)paramViewGroup.findViewById(2131298214));
+      paramView.xdi = ((RadioButton)paramViewGroup.findViewById(2131303704));
       paramViewGroup.setTag(paramView);
     }
     paramView = (d.b)paramViewGroup.getTag();
-    paramView.wNs.setText((CharSequence)this.aKA.get(paramInt));
+    paramView.xdg.setText((CharSequence)this.aKA.get(paramInt));
     switch (this.style)
     {
     default: 
-      paramView.wNt.setVisibility(8);
-      paramView.wNu.setVisibility(8);
+      paramView.xdh.setVisibility(8);
+      paramView.xdi.setVisibility(8);
       AppMethodBeat.o(66958);
       return paramViewGroup;
     case 1: 
-      paramView.wNt.setVisibility(8);
-      paramView.wNu.setVisibility(0);
-      paramView = paramView.wNu;
-      if (paramInt == this.wNr) {}
+      paramView.xdh.setVisibility(8);
+      paramView.xdi.setVisibility(0);
+      paramView = paramView.xdi;
+      if (paramInt == this.xdf) {}
       for (bool = true;; bool = false)
       {
         paramView.setChecked(bool);
         break;
       }
     }
-    paramView.wNt.setVisibility(0);
-    paramView.wNu.setVisibility(8);
-    paramView = paramView.wNt;
-    if (paramInt == this.wNr) {}
+    paramView.xdh.setVisibility(0);
+    paramView.xdi.setVisibility(8);
+    paramView = paramView.xdh;
+    if (paramInt == this.xdf) {}
     for (;;)
     {
       paramView.setChecked(bool);
@@ -95,7 +95,7 @@ final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

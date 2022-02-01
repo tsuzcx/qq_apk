@@ -5,21 +5,24 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.z;
 
 public final class p
   extends q
 {
-  private TextView IaW;
+  private TextView Ivd;
   private View mContentView;
   private Context mContext;
-  public ProgressBar mTD;
+  public ProgressBar mYL;
   private int style;
   
   private p(Context paramContext, int paramInt1, int paramInt2)
@@ -34,9 +37,21 @@ public final class p
     }
     for (paramInt1 = i;; paramInt1 = 2131494897)
     {
-      this.mContentView = z.jO(this.mContext).inflate(paramInt1, null);
-      this.IaW = ((TextView)this.mContentView.findViewById(2131302339));
-      this.mTD = ((ProgressBar)this.mContentView.findViewById(2131302338));
+      this.mContentView = z.jV(this.mContext).inflate(paramInt1, null);
+      this.Ivd = ((TextView)this.mContentView.findViewById(2131302339));
+      this.Ivd.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+      {
+        public final void onGlobalLayout()
+        {
+          AppMethodBeat.i(193723);
+          if (p.c(p.this).getLineCount() > 1) {
+            p.c(p.this).setTextSize(0, a.ax(p.d(p.this), 2131165257));
+          }
+          p.c(p.this).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+          AppMethodBeat.o(193723);
+        }
+      });
+      this.mYL = ((ProgressBar)this.mContentView.findViewById(2131302338));
       setCanceledOnTouchOutside(true);
       AppMethodBeat.o(142066);
       return;
@@ -109,7 +124,7 @@ public final class p
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      ae.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(142075);
     }
   }
@@ -142,7 +157,7 @@ public final class p
   public final void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142069);
-    this.IaW.setText(paramCharSequence);
+    this.Ivd.setText(paramCharSequence);
     AppMethodBeat.o(142069);
   }
   
@@ -157,7 +172,7 @@ public final class p
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
       AppMethodBeat.o(142074);
     }
   }

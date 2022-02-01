@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.menu.a;
 
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 
-public abstract interface b<T extends aa>
+public abstract interface b<T extends z>
 {
   public abstract boolean a(Context paramContext, T paramT, String paramString);
   
@@ -13,7 +13,7 @@ public abstract interface b<T extends aa>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.b
  * JD-Core Version:    0.7.0.1
  */

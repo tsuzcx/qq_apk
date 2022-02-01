@@ -8,10 +8,10 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.d;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,26 +23,26 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public boolean CFj;
-  public String CFk;
-  public String CFl;
-  private String CFm;
-  public ArrayList<Bankcard> CyC;
-  public boolean dMK;
+  public ArrayList<Bankcard> CQh;
+  public boolean CWP;
+  public String CWQ;
+  public String CWR;
+  private String CWS;
+  public boolean dOa;
   public String token;
   
   public c(String paramString, PayInfo paramPayInfo)
   {
     AppMethodBeat.i(69065);
-    this.CFj = true;
-    this.CyC = null;
-    this.dMK = false;
+    this.CWP = true;
+    this.CQh = null;
+    this.dOa = false;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     setPayInfo(paramPayInfo, localHashMap1, localHashMap2);
-    g.ajD();
-    paramPayInfo = new p(bt.a((Integer)g.ajC().ajl().get(9, null), 0));
-    this.CFm = paramString;
+    g.ajS();
+    paramPayInfo = new p(bu.a((Integer)g.ajR().ajA().get(9, null), 0));
+    this.CWS = paramString;
     localHashMap1.put("import_code", paramString);
     localHashMap1.put("qqid", paramPayInfo.toString());
     setRequestData(localHashMap1);
@@ -63,12 +63,12 @@ public final class c
       AppMethodBeat.o(69066);
       return;
     }
-    this.CyC = new ArrayList();
+    this.CQh = new ArrayList();
     for (;;)
     {
       try
       {
-        this.dMK = "1".equals(paramJSONObject.optString("is_reg", "0"));
+        this.dOa = "1".equals(paramJSONObject.optString("is_reg", "0"));
         this.token = paramJSONObject.optString("token", "");
         paramString = paramJSONObject.getJSONArray("Array");
         int j = paramString.length();
@@ -77,7 +77,7 @@ public final class c
           break label424;
         }
         JSONObject localJSONObject = paramString.getJSONObject(paramInt);
-        paramJSONObject = d.eEX().ba(localJSONObject);
+        paramJSONObject = d.eIE().ba(localJSONObject);
         if (paramJSONObject == null) {
           break label472;
         }
@@ -86,53 +86,53 @@ public final class c
         }
         i = 1;
         if (i != 0) {
-          paramJSONObject.field_cardType |= Bankcard.CUq;
+          paramJSONObject.field_cardType |= Bankcard.DlW;
         }
         paramJSONObject.field_bankcardTail = localJSONObject.optString("bank_tail");
-        paramJSONObject.CUz = ("************" + paramJSONObject.field_bankcardTail);
+        paramJSONObject.Dmf = ("************" + paramJSONObject.field_bankcardTail);
         paramJSONObject.field_trueName = localJSONObject.optString("true_name");
-        paramJSONObject.CUy = localJSONObject.optString("cre_id");
-        paramJSONObject.CTR = localJSONObject.optInt("cre_type", -1);
-        paramJSONObject.CUM = this.CFm;
+        paramJSONObject.Dme = localJSONObject.optString("cre_id");
+        paramJSONObject.Dlx = localJSONObject.optInt("cre_type", -1);
+        paramJSONObject.Dms = this.CWS;
         if (1 != localJSONObject.optInt("samecardexist", 0)) {
           break label485;
         }
         bool = true;
-        paramJSONObject.CUN = bool;
-        if (paramJSONObject.eER())
+        paramJSONObject.Dmt = bool;
+        if (paramJSONObject.eIy())
         {
           paramJSONObject.field_desc = paramJSONObject.field_bankName;
           localJSONObject = localJSONObject.optJSONObject("bankappservice");
           if (localJSONObject != null)
           {
-            this.CFk = localJSONObject.optString("username");
-            this.CFl = localJSONObject.optString("app_recommend_desc");
+            this.CWQ = localJSONObject.optString("username");
+            this.CWR = localJSONObject.optString("app_recommend_desc");
           }
-          this.CyC.add(paramJSONObject);
+          this.CQh.add(paramJSONObject);
           break label472;
         }
-        if (paramJSONObject.eET())
+        if (paramJSONObject.eIA())
         {
-          paramJSONObject.field_desc = aj.getContext().getString(2131765222, new Object[] { paramJSONObject.field_bankName, paramJSONObject.field_bankcardTail });
+          paramJSONObject.field_desc = ak.getContext().getString(2131765222, new Object[] { paramJSONObject.field_bankName, paramJSONObject.field_bankcardTail });
           continue;
         }
-        if (!paramJSONObject.eEQ()) {
+        if (!paramJSONObject.eIx()) {
           break label390;
         }
       }
       catch (JSONException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.NetSceneTenpayQueryBindBankcard", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.NetSceneTenpayQueryBindBankcard", paramString, "", new Object[0]);
         AppMethodBeat.o(69066);
         return;
       }
-      paramJSONObject.field_desc = aj.getContext().getString(2131765998, new Object[] { paramJSONObject.field_bankName, paramJSONObject.field_bankcardTail });
+      paramJSONObject.field_desc = ak.getContext().getString(2131765998, new Object[] { paramJSONObject.field_bankName, paramJSONObject.field_bankcardTail });
       continue;
       label390:
-      paramJSONObject.field_desc = aj.getContext().getString(2131765242, new Object[] { paramJSONObject.field_bankName, paramJSONObject.field_bankcardTail });
+      paramJSONObject.field_desc = ak.getContext().getString(2131765242, new Object[] { paramJSONObject.field_bankName, paramJSONObject.field_bankcardTail });
       continue;
       label424:
-      ad.d("MicroMsg.NetSceneTenpayQueryBindBankcard", "got data---isReg:" + this.dMK + ",bankcard.size:" + this.CyC.size());
+      ae.d("MicroMsg.NetSceneTenpayQueryBindBankcard", "got data---isReg:" + this.dOa + ",bankcard.size:" + this.CQh.size());
       AppMethodBeat.o(69066);
       return;
       label472:
@@ -148,7 +148,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.a.c
  * JD-Core Version:    0.7.0.1
  */

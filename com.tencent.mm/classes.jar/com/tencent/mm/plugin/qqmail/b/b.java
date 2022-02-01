@@ -7,20 +7,20 @@ public final class b
   extends a
 {
   private String filePath;
-  private int hOs;
+  private int hRl;
   Bundle param = null;
   private String url;
-  private a.a xbe;
+  private a.a xqV;
   
   b(String paramString1, String paramString2, a.a parama)
   {
     this.url = paramString1;
     this.filePath = paramString2;
-    this.xbe = parama;
+    this.xqV = parama;
   }
   
   /* Error */
-  private Bundle dCf()
+  private Bundle dFw()
   {
     // Byte code:
     //   0: ldc 32
@@ -62,7 +62,7 @@ public final class b
     //   79: iconst_0
     //   80: aload 4
     //   82: aastore
-    //   83: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   83: invokestatic 85	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   86: aload 7
     //   88: ldc 87
     //   90: aload 4
@@ -88,20 +88,20 @@ public final class b
     //   131: iload_1
     //   132: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   135: aastore
-    //   136: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   136: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   139: iload_1
     //   140: sipush 302
     //   143: if_icmpne +89 -> 232
     //   146: aload_0
-    //   147: getfield 113	com/tencent/mm/plugin/qqmail/b/b:hOs	I
+    //   147: getfield 113	com/tencent/mm/plugin/qqmail/b/b:hRl	I
     //   150: iconst_2
     //   151: if_icmpge +61 -> 212
     //   154: aload_0
     //   155: aload_0
-    //   156: getfield 113	com/tencent/mm/plugin/qqmail/b/b:hOs	I
+    //   156: getfield 113	com/tencent/mm/plugin/qqmail/b/b:hRl	I
     //   159: iconst_1
     //   160: iadd
-    //   161: putfield 113	com/tencent/mm/plugin/qqmail/b/b:hOs	I
+    //   161: putfield 113	com/tencent/mm/plugin/qqmail/b/b:hRl	I
     //   164: aload_0
     //   165: aload 7
     //   167: ldc 115
@@ -116,9 +116,9 @@ public final class b
     //   185: aload_0
     //   186: getfield 22	com/tencent/mm/plugin/qqmail/b/b:url	Ljava/lang/String;
     //   189: aastore
-    //   190: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   190: invokestatic 85	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   193: aload_0
-    //   194: invokespecial 122	com/tencent/mm/plugin/qqmail/b/b:dCf	()Landroid/os/Bundle;
+    //   194: invokespecial 122	com/tencent/mm/plugin/qqmail/b/b:dFw	()Landroid/os/Bundle;
     //   197: astore 4
     //   199: aload 7
     //   201: invokevirtual 125	com/tencent/mm/network/v:disconnect	()V
@@ -128,7 +128,7 @@ public final class b
     //   211: areturn
     //   212: ldc 76
     //   214: ldc 130
-    //   216: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   216: invokestatic 132	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   219: aload 7
     //   221: invokevirtual 125	com/tencent/mm/network/v:disconnect	()V
     //   224: ldc 32
@@ -138,7 +138,7 @@ public final class b
     //   232: aload 7
     //   234: ldc 134
     //   236: invokevirtual 118	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   239: invokestatic 140	com/tencent/mm/sdk/platformtools/bt:aRe	(Ljava/lang/String;)I
+    //   239: invokestatic 140	com/tencent/mm/sdk/platformtools/bu:aSB	(Ljava/lang/String;)I
     //   242: istore_3
     //   243: new 142	java/io/BufferedInputStream
     //   246: dup
@@ -174,7 +174,7 @@ public final class b
     //   305: iload_2
     //   306: invokevirtual 167	java/io/BufferedOutputStream:write	([BII)V
     //   309: aload_0
-    //   310: getfield 26	com/tencent/mm/plugin/qqmail/b/b:xbe	Lcom/tencent/mm/plugin/qqmail/b/a$a;
+    //   310: getfield 26	com/tencent/mm/plugin/qqmail/b/b:xqV	Lcom/tencent/mm/plugin/qqmail/b/a$a;
     //   313: ifnull +44 -> 357
     //   316: iload_3
     //   317: ifle +40 -> 357
@@ -188,7 +188,7 @@ public final class b
     //   328: f2i
     //   329: istore_2
     //   330: aload_0
-    //   331: getfield 174	com/tencent/mm/pluginsdk/model/m:handler	Lcom/tencent/mm/sdk/platformtools/ap;
+    //   331: getfield 174	com/tencent/mm/pluginsdk/model/m:handler	Lcom/tencent/mm/sdk/platformtools/aq;
     //   334: new 176	com/tencent/mm/pluginsdk/model/m$2
     //   337: dup
     //   338: aload_0
@@ -200,7 +200,7 @@ public final class b
     //   346: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   349: aastore
     //   350: invokespecial 179	com/tencent/mm/pluginsdk/model/m$2:<init>	(Lcom/tencent/mm/pluginsdk/model/m;[Ljava/lang/Object;)V
-    //   353: invokevirtual 185	com/tencent/mm/sdk/platformtools/ap:post	(Ljava/lang/Runnable;)Z
+    //   353: invokevirtual 185	com/tencent/mm/sdk/platformtools/aq:post	(Ljava/lang/Runnable;)Z
     //   356: pop
     //   357: aload 6
     //   359: aload 4
@@ -225,7 +225,7 @@ public final class b
     //   389: iload_1
     //   390: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   393: aastore
-    //   394: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   394: invokestatic 85	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   397: aload 7
     //   399: invokevirtual 125	com/tencent/mm/network/v:disconnect	()V
     //   402: aload 6
@@ -269,7 +269,7 @@ public final class b
     //   481: aload 4
     //   483: invokevirtual 197	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   486: aastore
-    //   487: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   487: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   490: aload 8
     //   492: ldc 96
     //   494: iconst_m1
@@ -329,12 +329,12 @@ public final class b
   
   public final Bundle a(Bundle... paramVarArgs)
   {
-    AppMethodBeat.i(215171);
+    AppMethodBeat.i(217917);
     if (paramVarArgs.length > 0) {
       this.param = paramVarArgs[0];
     }
-    paramVarArgs = dCf();
-    AppMethodBeat.o(215171);
+    paramVarArgs = dFw();
+    AppMethodBeat.o(217917);
     return paramVarArgs;
   }
 }

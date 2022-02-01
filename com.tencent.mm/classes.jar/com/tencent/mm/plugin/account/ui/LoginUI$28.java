@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.n.e;
 
 final class LoginUI$28
@@ -20,10 +20,10 @@ final class LoginUI$28
     {
       AppMethodBeat.o(128228);
       return;
-      LoginUI.c(this.jlW);
+      LoginUI.c(this.joQ);
       AppMethodBeat.o(128228);
       return;
-      LoginUI.R(this.jlW, this.jlW.getString(2131766190) + ac.fks());
+      LoginUI.S(this.joQ, this.joQ.getString(2131766190) + ad.fom());
     }
   }
 }

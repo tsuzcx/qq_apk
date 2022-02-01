@@ -10,29 +10,29 @@ import d.l;
 import d.l.d;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCConnect;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/AbsJsApiNFCConnectClose;", "()V", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCConnect;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/AbsJsApiNFCConnectClose;", "()V", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class f
   extends a
 {
   public static final int CTRL_INDEX = 812;
   public static final String NAME = "NFCConnect";
-  public static final a kYZ;
+  public static final a lcI;
   
   static
   {
-    AppMethodBeat.i(199679);
-    kYZ = new a((byte)0);
-    AppMethodBeat.o(199679);
+    AppMethodBeat.i(208193);
+    lcI = new a((byte)0);
+    AppMethodBeat.o(208193);
   }
   
   public f()
   {
-    super((q)1.kZa);
-    AppMethodBeat.i(199678);
-    AppMethodBeat.o(199678);
+    super((q)1.lcJ);
+    AppMethodBeat.i(208192);
+    AppMethodBeat.o(208192);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCConnect$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCConnect$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
 }
 

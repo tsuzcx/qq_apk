@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 
@@ -12,7 +12,7 @@ public class PluginCompatOldStructure
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(22433);
-    if (((h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
+    if (((h)com.tencent.mm.kernel.g.ajO().ajq()).akL())
     {
       new m.1().alone();
       new m.2().alone();
@@ -55,7 +55,6 @@ public class PluginCompatOldStructure
       c.b("backup", null);
       c.b("record", null);
       c.b("webwx", null);
-      c.b("notification", new com.tencent.mm.plugin.notification.d.a());
       c.b("extaccessories", null);
       c.b("voiceprint", null);
       c.b("wear", null);

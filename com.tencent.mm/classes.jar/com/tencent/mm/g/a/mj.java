@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class mj
   extends b
 {
-  public a dzR;
-  public b dzS;
+  public a dAV;
   
   public mj()
   {
@@ -17,28 +15,23 @@ public final class mj
   
   private mj(byte paramByte)
   {
-    AppMethodBeat.i(155373);
-    this.dzR = new a();
-    this.dzS = new b();
-    this.IbR = false;
+    AppMethodBeat.i(43442);
+    this.dAV = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(155373);
+    AppMethodBeat.o(43442);
   }
   
   public static final class a
   {
-    public Activity dsa;
-    public Runnable dzT;
-  }
-  
-  public static final class b
-  {
-    public boolean dno = false;
+    public String businessType;
+    public String dAU;
+    public int errCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.mj
  * JD-Core Version:    0.7.0.1
  */

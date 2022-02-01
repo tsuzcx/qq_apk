@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.backup.b;
 
 public abstract interface b$a
 {
-  public abstract void xo(int paramInt);
+  public abstract void xt(int paramInt);
 }
 
 

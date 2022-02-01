@@ -4,15 +4,15 @@ import com.tencent.mm.compatible.util.b.a;
 
 public abstract interface d
 {
-  public abstract boolean Gv();
+  public abstract boolean GB();
   
-  public abstract double PF();
+  public abstract double PE();
   
   public abstract void a(a parama);
   
   public abstract void a(b paramb);
   
-  public abstract void aNn();
+  public abstract void aNL();
   
   public abstract void b(b.a parama);
   
@@ -40,7 +40,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvoice.d
  * JD-Core Version:    0.7.0.1
  */

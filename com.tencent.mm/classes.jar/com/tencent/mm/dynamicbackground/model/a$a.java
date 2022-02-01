@@ -2,7 +2,7 @@ package com.tencent.mm.dynamicbackground.model;
 
 import d.l;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl$Companion;", "", "()V", "TAG", "", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl$Companion;", "", "()V", "TAG", "", "dynamicbg_release"})
 public final class a$a {}
 
 

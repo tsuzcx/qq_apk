@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.keylogger.stepview;
 
 public final class a
 {
-  public static int tZ(int paramInt)
+  public static int uf(int paramInt)
   {
     switch (paramInt)
     {

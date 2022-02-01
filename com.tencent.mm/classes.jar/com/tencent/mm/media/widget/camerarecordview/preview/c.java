@@ -3,13 +3,13 @@ package com.tencent.mm.media.widget.camerarecordview.preview;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class c
   implements Runnable
 {
   c(a parama)
   {
-    this.civ = parama;
+    this.cix = parama;
   }
 }
 

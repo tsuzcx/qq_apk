@@ -14,10 +14,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class HeadImgPreference
   extends Preference
 {
-  private Bitmap FfW;
+  private Bitmap Fyu;
   private int height;
   private ImageView ka;
-  private View.OnClickListener waa;
+  private View.OnClickListener wme;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,13 +40,13 @@ public final class HeadImgPreference
     if (this.ka == null) {
       this.ka = ((ImageView)paramView.findViewById(2131300940));
     }
-    if (this.waa != null) {
-      this.ka.setOnClickListener(this.waa);
+    if (this.wme != null) {
+      this.ka.setOnClickListener(this.wme);
     }
-    if (this.FfW != null)
+    if (this.Fyu != null)
     {
-      this.ka.setImageBitmap(this.FfW);
-      this.FfW = null;
+      this.ka.setImageBitmap(this.Fyu);
+      this.Fyu = null;
     }
     paramView = (LinearLayout)paramView.findViewById(2131302326);
     if (this.height != -1) {

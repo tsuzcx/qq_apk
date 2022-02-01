@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dcq;
-import com.tencent.mm.protocal.protobuf.dcr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ddk;
+import com.tencent.mm.protocal.protobuf.ddl;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class k
   extends n
   implements com.tencent.mm.network.k
 {
-  public dcq CKT;
-  private dcr CKU;
+  private ddl DcA;
+  public ddk Dcz;
   private f callback;
   private final b rr;
   
@@ -25,17 +25,17 @@ public final class k
   {
     AppMethodBeat.i(69553);
     b.a locala = new b.a();
-    dcq localdcq = new dcq();
-    localdcq.FpN = System.currentTimeMillis();
+    ddk localddk = new ddk();
+    localddk.FIl = System.currentTimeMillis();
     if (paramBoolean) {}
-    for (localdcq.HrB = 1;; localdcq.HrB = 0)
+    for (localddk.HLd = 1;; localddk.HLd = 0)
     {
-      this.CKT = localdcq;
-      locala.hNM = localdcq;
-      locala.hNN = new dcr();
+      this.Dcz = localddk;
+      locala.hQF = localddk;
+      locala.hQG = new ddl();
       locala.uri = "/cgi-bin/mmpay-bin/setwalletentrancebalanceswitchstate";
       locala.funcId = 2554;
-      this.rr = locala.aDC();
+      this.rr = locala.aDS();
       AppMethodBeat.o(69553);
       return;
     }
@@ -50,18 +50,18 @@ public final class k
     return i;
   }
   
-  public final dcr eDY()
+  public final ddl eHF()
   {
     AppMethodBeat.i(69556);
-    if (this.CKU == null)
+    if (this.DcA == null)
     {
-      localdcr = new dcr();
+      localddl = new ddl();
       AppMethodBeat.o(69556);
-      return localdcr;
+      return localddl;
     }
-    dcr localdcr = this.CKU;
+    ddl localddl = this.DcA;
     AppMethodBeat.o(69556);
-    return localdcr;
+    return localddl;
   }
   
   public final int getType()
@@ -72,9 +72,9 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69555);
-    ad.w("MicroMsg.NetSceneSetWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.w("MicroMsg.NetSceneSetWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.CKU = ((dcr)((b)paramq).hNL.hNQ);
+      this.DcA = ((ddl)((b)paramq).hQE.hQJ);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69555);

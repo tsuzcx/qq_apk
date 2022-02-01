@@ -2,51 +2,51 @@ package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 
 public final class e
 {
-  private static final HashMap<String, MMToClientEvent> kpX;
+  private static final HashMap<String, MMToClientEvent> ktm;
   
   static
   {
     AppMethodBeat.i(134857);
-    kpX = new HashMap();
+    ktm = new HashMap();
     AppMethodBeat.o(134857);
   }
   
   public static void a(MMToClientEvent paramMMToClientEvent)
   {
     AppMethodBeat.i(134852);
-    ad.i("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId:%s, MMToClientEvent.hash:%d", new Object[] { paramMMToClientEvent.appId, Integer.valueOf(paramMMToClientEvent.hashCode()) });
+    ae.i("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId:%s, MMToClientEvent.hash:%d", new Object[] { paramMMToClientEvent.appId, Integer.valueOf(paramMMToClientEvent.hashCode()) });
     if (paramMMToClientEvent.appId == null)
     {
-      ad.e("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId is null!!!");
+      ae.e("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId is null!!!");
       AppMethodBeat.o(134852);
       return;
     }
-    synchronized (kpX)
+    synchronized (ktm)
     {
-      if (kpX.get(paramMMToClientEvent.appId) == null)
+      if (ktm.get(paramMMToClientEvent.appId) == null)
       {
-        kpX.put(paramMMToClientEvent.appId, paramMMToClientEvent);
+        ktm.put(paramMMToClientEvent.appId, paramMMToClientEvent);
         AppMethodBeat.o(134852);
         return;
       }
-      ad.d("MicroMsg.MMToClientEventCenter", "The CommonConfig is already exist!~ so replace it");
-      kpX.remove(paramMMToClientEvent.appId);
-      kpX.put(paramMMToClientEvent.appId, paramMMToClientEvent);
+      ae.d("MicroMsg.MMToClientEventCenter", "The CommonConfig is already exist!~ so replace it");
+      ktm.remove(paramMMToClientEvent.appId);
+      ktm.put(paramMMToClientEvent.appId, paramMMToClientEvent);
     }
   }
   
   public static void b(MMToClientEvent paramMMToClientEvent)
   {
     AppMethodBeat.i(134853);
-    ad.i("MicroMsg.MMToClientEventCenter", "unregister MMToClientEvent.appId:%s", new Object[] { paramMMToClientEvent.appId });
-    synchronized (kpX)
+    ae.i("MicroMsg.MMToClientEventCenter", "unregister MMToClientEvent.appId:%s", new Object[] { paramMMToClientEvent.appId });
+    synchronized (ktm)
     {
-      kpX.remove(paramMMToClientEvent.appId);
+      ktm.remove(paramMMToClientEvent.appId);
       AppMethodBeat.o(134853);
       return;
     }
@@ -55,23 +55,24 @@ public final class e
   public static <T extends Parcelable> void b(String paramString, T paramT)
   {
     AppMethodBeat.i(134856);
-    synchronized (kpX)
+    MMToClientEvent localMMToClientEvent;
+    synchronized (ktm)
     {
-      paramString = (MMToClientEvent)kpX.get(paramString);
-      if (paramString == null)
+      localMMToClientEvent = (MMToClientEvent)ktm.get(paramString);
+      if (localMMToClientEvent == null)
       {
-        ad.e("MicroMsg.MMToClientEventCenter", "notify failed, appId[%s] data[%s]");
+        ae.e("MicroMsg.MMToClientEventCenter", "notify failed, appId[%s] data[%s]", new Object[] { paramString, paramT });
         AppMethodBeat.o(134856);
         return;
       }
     }
-    if ((paramString != null) && (paramT != null) && (paramT != null)) {
+    if ((localMMToClientEvent != null) && (paramT != null) && (paramT != null)) {
       try
       {
-        paramString.kpO = 5;
-        paramString.kpP = paramT.getClass().getName();
-        paramString.kpQ = paramT;
-        paramString.bhX();
+        localMMToClientEvent.ktd = 5;
+        localMMToClientEvent.kte = paramT.getClass().getName();
+        localMMToClientEvent.ktf = paramT;
+        localMMToClientEvent.biG();
         return;
       }
       finally
@@ -82,30 +83,30 @@ public final class e
     AppMethodBeat.o(134856);
   }
   
-  public static void bA(String paramString, int paramInt)
+  public static void bD(String paramString, int paramInt)
   {
     AppMethodBeat.i(134855);
-    ad.i("MicroMsg.MMToClientEventCenter", "notify unread:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (kpX)
+    ae.i("MicroMsg.MMToClientEventCenter", "notify unread:%d", new Object[] { Integer.valueOf(paramInt) });
+    synchronized (ktm)
     {
-      paramString = (MMToClientEvent)kpX.get(paramString);
+      paramString = (MMToClientEvent)ktm.get(paramString);
       if (paramString == null) {}
     }
-    ad.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
+    ae.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
     AppMethodBeat.o(134855);
   }
   
-  public static void p(String paramString1, int paramInt, String paramString2)
+  public static void r(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(134854);
-    ad.i("MicroMsg.MMToClientEventCenter", "notify appId:%s, type:%d, config:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    ae.i("MicroMsg.MMToClientEventCenter", "notify appId:%s, type:%d, config:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     MMToClientEvent localMMToClientEvent;
-    synchronized (kpX)
+    synchronized (ktm)
     {
-      localMMToClientEvent = (MMToClientEvent)kpX.get(paramString1);
+      localMMToClientEvent = (MMToClientEvent)ktm.get(paramString1);
       if (localMMToClientEvent == null) {}
     }
-    ad.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
+    ae.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
     AppMethodBeat.o(134854);
   }
 }

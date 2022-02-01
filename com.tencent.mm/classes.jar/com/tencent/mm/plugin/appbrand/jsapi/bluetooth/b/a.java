@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "dispatchEvent", "", "event", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "data", "Lorg/json/JSONObject;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "jOnBLEPeripheralConnectionStateChanged", "deviceID", "serverID", "connected", "", "jOnCharacteristicReadRequest", "", "serviceUUID", "characteristicUUID", "callbackId", "jOnCharacteristicWriteRequest", "base64Value", "luggage-commons-jsapi-connectivity-ext_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"TAG", "", "dispatchEvent", "", "event", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "data", "Lorg/json/JSONObject;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "jOnBLEPeripheralConnectionStateChanged", "deviceID", "serverID", "connected", "", "jOnCharacteristicReadRequest", "", "serviceUUID", "characteristicUUID", "callbackId", "jOnCharacteristicWriteRequest", "base64Value", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class a
 {
   private static final void a(at paramat, JSONObject paramJSONObject, c paramc)
   {
     AppMethodBeat.i(144737);
-    paramat.Pi(paramJSONObject.toString());
+    paramat.PQ(paramJSONObject.toString());
     paramat.h(paramc);
-    paramat.bir();
+    paramat.bja();
     AppMethodBeat.o(144737);
   }
   
@@ -26,7 +26,7 @@ public final class a
     p.h(paramc, "component");
     p.h(paramString1, "deviceID");
     p.h(paramString2, "serverID");
-    ad.i("MicroMsg.BLE.BlePeripheralPublishEventFuns", "jOnBLEPeripheralConnectionStateChanged: connected = " + paramBoolean + ", deviceID = " + paramString1 + ", serverID = " + paramString2);
+    ae.i("MicroMsg.BLE.BlePeripheralPublishEventFuns", "jOnBLEPeripheralConnectionStateChanged: connected = " + paramBoolean + ", deviceID = " + paramString1 + ", serverID = " + paramString2);
     try
     {
       j localj = new j();
@@ -40,7 +40,7 @@ public final class a
     }
     catch (JSONException paramc)
     {
-      ad.e("MicroMsg.BLE.BlePeripheralPublishEventFuns", "BlePeripheralPublishEventFuns fail", new Object[] { paramc });
+      ae.e("MicroMsg.BLE.BlePeripheralPublishEventFuns", "BlePeripheralPublishEventFuns fail", new Object[] { paramc });
       AppMethodBeat.o(144734);
     }
   }
@@ -51,7 +51,7 @@ public final class a
     p.h(paramc, "component");
     p.h(paramString1, "serviceUUID");
     p.h(paramString2, "characteristicUUID");
-    ad.i("MicroMsg.BLE.BlePeripheralPublishEventFuns", "jOnCharacteristicReadRequest: serverID = " + paramInt1 + ", serviceUUID = " + paramString1 + ",\" +\n        \" characteristicUUID = " + paramString2 + ", callbackId = " + paramInt2);
+    ae.i("MicroMsg.BLE.BlePeripheralPublishEventFuns", "jOnCharacteristicReadRequest: serverID = " + paramInt1 + ", serviceUUID = " + paramString1 + ",\" +\n        \" characteristicUUID = " + paramString2 + ", callbackId = " + paramInt2);
     try
     {
       k localk = new k();
@@ -67,7 +67,7 @@ public final class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.BLE.BlePeripheralPublishEventFuns", "OnCharacteristicReadRequest: fail", new Object[] { paramc });
+        ae.e("MicroMsg.BLE.BlePeripheralPublishEventFuns", "OnCharacteristicReadRequest: fail", new Object[] { paramc });
         boolean bool = false;
       }
     }
@@ -82,7 +82,7 @@ public final class a
     p.h(paramString1, "serviceUUID");
     p.h(paramString2, "characteristicUUID");
     p.h(paramString3, "base64Value");
-    ad.i("MicroMsg.BLE.BlePeripheralPublishEventFuns", "jOnCharacteristicWriteRequest: serverID = " + paramInt1 + ", serviceUUID = " + paramString1 + ',' + " characteristicUUID = " + paramString2 + ", callbackId = " + paramInt2);
+    ae.i("MicroMsg.BLE.BlePeripheralPublishEventFuns", "jOnCharacteristicWriteRequest: serverID = " + paramInt1 + ", serviceUUID = " + paramString1 + ',' + " characteristicUUID = " + paramString2 + ", callbackId = " + paramInt2);
     try
     {
       l locall = new l();
@@ -99,7 +99,7 @@ public final class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.BLE.BlePeripheralPublishEventFuns", "BlePeripheralPublishEventFuns fail", new Object[] { paramc });
+        ae.e("MicroMsg.BLE.BlePeripheralPublishEventFuns", "BlePeripheralPublishEventFuns fail", new Object[] { paramc });
         boolean bool = false;
       }
     }

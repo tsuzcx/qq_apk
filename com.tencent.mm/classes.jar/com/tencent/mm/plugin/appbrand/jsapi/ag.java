@@ -16,9 +16,9 @@ public final class ag
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(45432);
-    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.Kl(paramc.getAppId());
+    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.KK(paramc.getAppId());
     if (localAppBrandStatObject != null) {}
-    for (paramJSONObject = localAppBrandStatObject.scene + "," + localAppBrandStatObject.dkh + "," + localAppBrandStatObject.dJQ + "," + localAppBrandStatObject.dJR + "," + paramJSONObject.optString("adInfo");; paramJSONObject = paramJSONObject.optString("adInfo"))
+    for (paramJSONObject = localAppBrandStatObject.scene + "," + localAppBrandStatObject.dlj + "," + localAppBrandStatObject.dLf + "," + localAppBrandStatObject.dLg + "," + paramJSONObject.optString("adInfo");; paramJSONObject = paramJSONObject.optString("adInfo"))
     {
       AdReportCgiHelper.a(15175, paramJSONObject + "," + q.cH(false), new AdReportCgiHelper.a()
       {
@@ -36,7 +36,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ag
  * JD-Core Version:    0.7.0.1
  */

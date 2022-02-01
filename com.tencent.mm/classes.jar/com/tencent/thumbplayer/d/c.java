@@ -2,14 +2,14 @@ package com.tencent.thumbplayer.d;
 
 final class c
 {
-  public static String Mak = "base_video";
-  private static int Mal = 0;
-  private static int Mam = 0;
-  private static int Man = 0;
+  public static String Mxf = "base_video";
+  private static int Mxg = 0;
+  private static int Mxh = 0;
+  private static int Mxi = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.d.c
  * JD-Core Version:    0.7.0.1
  */

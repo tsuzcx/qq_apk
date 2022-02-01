@@ -7,24 +7,24 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "audioPlayer", "Landroid/media/MediaPlayer;", "rotateAnim", "Landroid/view/animation/Animation;", "rotateWaveIV", "Landroid/view/View;", "init", "", "release", "startWaves", "stopWaves", "Companion", "plugin-radar_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "audioPlayer", "Landroid/media/MediaPlayer;", "rotateAnim", "Landroid/view/animation/Animation;", "rotateWaveIV", "Landroid/view/View;", "init", "", "release", "startWaves", "stopWaves", "Companion", "plugin-radar_release"})
 public final class RadarWaveView
   extends RelativeLayout
 {
   static final String TAG = "MicroMsg.RadarWaveView";
-  public static final RadarWaveView.a xlR;
-  MediaPlayer xlO;
-  View xlP;
-  Animation xlQ;
+  public static final RadarWaveView.a xBO;
+  MediaPlayer xBL;
+  View xBM;
+  Animation xBN;
   
   static
   {
     AppMethodBeat.i(138789);
-    xlR = new RadarWaveView.a((byte)0);
+    xBO = new RadarWaveView.a((byte)0);
     TAG = "MicroMsg.RadarWaveView";
     AppMethodBeat.o(138789);
   }
@@ -36,27 +36,27 @@ public final class RadarWaveView
     AppMethodBeat.o(138788);
   }
   
-  public final void dDy()
+  public final void dGP()
   {
     AppMethodBeat.i(138786);
-    ad.d(TAG, "start wave animation");
+    ae.d(TAG, "start wave animation");
     setVisibility(0);
-    View localView = this.xlP;
+    View localView = this.xBM;
     if (localView == null) {
-      p.gfZ();
+      p.gkB();
     }
-    localView.startAnimation(this.xlQ);
+    localView.startAnimation(this.xBN);
     AppMethodBeat.o(138786);
   }
   
-  public final void dDz()
+  public final void dGQ()
   {
     AppMethodBeat.i(138787);
-    ad.d(TAG, "stop wave animation. forces, %d, %d", new Object[] { Integer.valueOf(getMeasuredHeight()), Integer.valueOf(getMeasuredWidth()) });
+    ae.d(TAG, "stop wave animation. forces, %d, %d", new Object[] { Integer.valueOf(getMeasuredHeight()), Integer.valueOf(getMeasuredWidth()) });
     setVisibility(4);
-    View localView = this.xlP;
+    View localView = this.xBM;
     if (localView == null) {
-      p.gfZ();
+      p.gkB();
     }
     localView.clearAnimation();
     AppMethodBeat.o(138787);

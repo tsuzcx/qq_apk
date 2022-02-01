@@ -6,7 +6,7 @@ import d.g.b.p;
 import d.l;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$verifyPhoneNumber$1", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberVerifyCodeDialog$OnVerifyCallback;", "onVerifyCallback", "", "isSuccess", "", "result", "", "", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$verifyPhoneNumber$1", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberVerifyCodeDialog$OnVerifyCallback;", "onVerifyCallback", "", "isSuccess", "", "result", "", "", "luggage-wechat-full-sdk_release"})
 public final class i$d
   implements aa.b
 {
@@ -14,10 +14,10 @@ public final class i$d
   
   public final void a(boolean paramBoolean, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(192383);
+    AppMethodBeat.i(220996);
     p.h(paramMap, "result");
-    this.mju.p(Boolean.valueOf(paramBoolean), paramMap);
-    AppMethodBeat.o(192383);
+    this.mor.p(Boolean.valueOf(paramBoolean), paramMap);
+    AppMethodBeat.o(220996);
   }
 }
 

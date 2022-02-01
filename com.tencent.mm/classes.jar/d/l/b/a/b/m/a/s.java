@@ -18,12 +18,12 @@ import java.util.List;
 public final class s
   implements c
 {
-  public static final s NDu;
+  public static final s OaB;
   
   static
   {
     AppMethodBeat.i(61092);
-    NDu = new s();
+    OaB = new s();
     AppMethodBeat.o(61092);
   }
   
@@ -373,11 +373,11 @@ public final class s
     return paramj;
   }
   
-  public final d.l.b.a.b.m.c.h ju(List<? extends d.l.b.a.b.m.c.h> paramList)
+  public final d.l.b.a.b.m.c.h jD(List<? extends d.l.b.a.b.m.c.h> paramList)
   {
     AppMethodBeat.i(61131);
     p.h(paramList, "types");
-    paramList = c.a.jv(paramList);
+    paramList = c.a.jE(paramList);
     AppMethodBeat.o(61131);
     return paramList;
   }
@@ -528,7 +528,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.s
  * JD-Core Version:    0.7.0.1
  */

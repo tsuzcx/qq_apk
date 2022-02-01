@@ -6,20 +6,20 @@ import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.i;
 import com.tencent.mm.ui.widget.cropview.CropLayout.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewImpl;", "", "getCropChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getCropInView", "Landroid/graphics/Rect;", "getCropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "path", "", "getOperationCallback", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "onActiveChange", "", "active", "", "onPreview", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "onUpdate", "playAfterUpdate", "seekToOriginPosition", "seekTo", "", "setMaxVisibleRect", "rect", "Landroid/graphics/RectF;", "setVideoSize", "size", "Landroid/util/Size;", "setVisibleRect", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewImpl;", "", "getCropChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getCropInView", "Landroid/graphics/Rect;", "getCropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "path", "", "getOperationCallback", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "onActiveChange", "", "active", "", "onPreview", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "onUpdate", "playAfterUpdate", "seekToOriginPosition", "seekTo", "", "setMaxVisibleRect", "rect", "Landroid/graphics/RectF;", "setVideoSize", "size", "Landroid/util/Size;", "setVisibleRect", "plugin-vlog_release"})
 public abstract interface v
 {
   public abstract void a(Size paramSize);
   
   public abstract void a(com.tencent.mm.plugin.vlog.model.v paramv, boolean paramBoolean1, boolean paramBoolean2, long paramLong);
   
-  public abstract CropLayout.c etA();
+  public abstract Rect ewP();
   
-  public abstract WxCropOperationLayout.i etB();
+  public abstract CropLayout.c exh();
   
-  public abstract Rect eti();
+  public abstract WxCropOperationLayout.i exi();
   
-  public abstract void sU(boolean paramBoolean);
+  public abstract void tb(boolean paramBoolean);
 }
 
 

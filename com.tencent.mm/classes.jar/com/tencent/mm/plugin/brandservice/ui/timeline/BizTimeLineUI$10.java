@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.p;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class BizTimeLineUI$10
   implements h
@@ -28,27 +28,27 @@ final class BizTimeLineUI$10
   
   public final Object b(u paramu)
   {
-    AppMethodBeat.i(209512);
+    AppMethodBeat.i(208467);
     if (paramu.type == 45)
     {
       String str1 = new String(Base64.decode(paramu.url, 0));
-      String str2 = new String(Base64.decode(bt.bI((String)paramu.aY(String.class), ""), 0));
-      ad.d("MicroMsg.BizTimeLineUI", "appId:%s,path:%s", new Object[] { str1, str2 });
+      String str2 = new String(Base64.decode(bu.bI((String)paramu.aY(String.class), ""), 0));
+      ae.d("MicroMsg.BizTimeLineUI", "appId:%s,path:%s", new Object[] { str1, str2 });
       AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
       localAppBrandStatObject.scene = 1082;
       paramu = paramu.mSessionId;
-      if (!bt.isNullOrNil(paramu))
+      if (!bu.isNullOrNil(paramu))
       {
-        paramu = y.aBq().AF(paramu);
+        paramu = z.aBG().Bp(paramu);
         if (paramu != null)
         {
           paramu = paramu.getString("preUsername", null);
-          localAppBrandStatObject.dkh = (paramu + "|3");
+          localAppBrandStatObject.dlj = (paramu + "|3");
         }
       }
-      ((o)g.ab(o.class)).a(this.ocb.getContext(), null, str1, 0, 0, str2, localAppBrandStatObject);
+      ((p)g.ab(p.class)).a(this.ohP.getContext(), null, str1, 0, 0, str2, localAppBrandStatObject);
     }
-    AppMethodBeat.o(209512);
+    AppMethodBeat.o(208467);
     return null;
   }
 }

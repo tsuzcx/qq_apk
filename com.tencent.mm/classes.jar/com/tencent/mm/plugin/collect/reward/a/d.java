@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.va;
-import com.tencent.mm.protocal.protobuf.vb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.vc;
+import com.tencent.mm.protocal.protobuf.vd;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends a
 {
   private final String TAG;
   private f callback;
-  private vb pbM;
+  private vd pis;
   private b rr;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
@@ -25,32 +25,32 @@ public final class d
     AppMethodBeat.i(63899);
     this.TAG = "MicroMsg.NetSceneQrRewardPayCheck";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new va();
-    ((b.a)localObject).hNN = new vb();
+    ((b.a)localObject).hQF = new vc();
+    ((b.a)localObject).hQG = new vd();
     ((b.a)localObject).funcId = 1960;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/rewardqrcodepaycheck";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (va)this.rr.hNK.hNQ;
-    ((va)localObject).dve = paramString1;
-    ((va)localObject).FUy = paramString2;
-    ((va)localObject).FvI = paramString3;
-    ((va)localObject).vls = paramInt;
-    ((va)localObject).FUw = paramString4;
-    ((va)localObject).FUv = paramString5;
-    ad.i("MicroMsg.NetSceneQrRewardPayCheck", "rewardid: %s, amt: %s", new Object[] { paramString2, Integer.valueOf(paramInt) });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (vc)this.rr.hQD.hQJ;
+    ((vc)localObject).dwj = paramString1;
+    ((vc)localObject).GmX = paramString2;
+    ((vc)localObject).FOg = paramString3;
+    ((vc)localObject).vxx = paramInt;
+    ((vc)localObject).GmV = paramString4;
+    ((vc)localObject).GmU = paramString5;
+    ae.i("MicroMsg.NetSceneQrRewardPayCheck", "rewardid: %s, amt: %s", new Object[] { paramString2, Integer.valueOf(paramInt) });
     AppMethodBeat.o(63899);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63901);
-    ad.i("MicroMsg.NetSceneQrRewardPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.pbM = ((vb)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneQrRewardPayCheck", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.pbM.dlw), this.pbM.paA });
-    if ((!this.pbG) && (this.pbM.dlw != 0)) {
-      this.pbH = true;
+    ae.i("MicroMsg.NetSceneQrRewardPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.pis = ((vd)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneQrRewardPayCheck", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.pis.dmy), this.pis.phe });
+    if ((!this.pil) && (this.pis.dmy != 0)) {
+      this.pim = true;
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);

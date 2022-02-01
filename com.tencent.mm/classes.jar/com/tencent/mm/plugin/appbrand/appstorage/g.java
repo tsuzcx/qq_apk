@@ -1,52 +1,53 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.file.at;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoDownLoadMgr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.m;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.util.concurrent.TimeUnit;
 
 public final class g
 {
-  public static final Runnable jMl;
-  private static final long jMm;
-  private static final long jMn;
+  public static final Runnable jPx;
+  private static final long jPy;
+  private static final long jPz;
   
   static
   {
     AppMethodBeat.i(44454);
-    jMl = new Runnable()
+    jPx = new Runnable()
     {
-      private void q(e paramAnonymouse)
+      private void q(k paramAnonymousk)
       {
         int i = 0;
         AppMethodBeat.i(174713);
-        if ((!paramAnonymouse.exists()) || (!paramAnonymouse.isDirectory()))
+        if ((!paramAnonymousk.exists()) || (!paramAnonymousk.isDirectory()))
         {
           AppMethodBeat.o(174713);
           return;
         }
-        if (i.fv(q.B(paramAnonymouse.fOK()) + "/dir.lock"))
+        if (o.fB(w.B(paramAnonymousk.fTh()) + "/dir.lock"))
         {
-          if (bt.flT() - new e(q.B(paramAnonymouse.fOK()) + "/dir.lock").lastModified() < g.jMn)
+          if (bu.fpO() - new k(w.B(paramAnonymousk.fTh()) + "/dir.lock").lastModified() < g.jPz)
           {
-            ad.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymouse.getName() });
+            ae.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymousk.getName() });
             AppMethodBeat.o(174713);
             return;
           }
-          ad.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymouse.getName() });
+          ae.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymousk.getName() });
         }
-        ad.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymouse.getName() });
-        paramAnonymouse = paramAnonymouse.a(new com.tencent.mm.vfs.g()
+        ae.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymousk.getName() });
+        paramAnonymousk = paramAnonymousk.a(new m()
         {
-          public final boolean accept(e paramAnonymous2e)
+          public final boolean accept(k paramAnonymous2k)
           {
             AppMethodBeat.i(174712);
-            if ((!paramAnonymous2e.getName().endsWith(".data")) && (!paramAnonymous2e.getName().startsWith("store_")) && (!paramAnonymous2e.getName().endsWith(".nomedia")))
+            if ((!paramAnonymous2k.getName().endsWith(".data")) && (!paramAnonymous2k.getName().startsWith("store_")) && (!paramAnonymous2k.getName().endsWith(".nomedia")))
             {
               AppMethodBeat.o(174712);
               return true;
@@ -55,18 +56,18 @@ public final class g
             return false;
           }
         });
-        if ((paramAnonymouse == null) || (paramAnonymouse.length <= 0))
+        if ((paramAnonymousk == null) || (paramAnonymousk.length <= 0))
         {
           AppMethodBeat.o(174713);
           return;
         }
-        long l = bt.flT();
-        int j = paramAnonymouse.length;
+        long l = bu.fpO();
+        int j = paramAnonymousk.length;
         while (i < j)
         {
-          Object localObject = paramAnonymouse[i];
-          if (l - localObject.lastModified() >= g.jMm) {
-            i.deleteFile(q.B(localObject.fOK()));
+          Object localObject = paramAnonymousk[i];
+          if (l - localObject.lastModified() >= g.jPy) {
+            o.deleteFile(w.B(localObject.fTh()));
           }
           i += 1;
         }
@@ -77,13 +78,13 @@ public final class g
       {
         int j = 0;
         AppMethodBeat.i(44452);
-        Object localObject = new e(ar.bkh());
-        if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
+        Object localObject = new k(at.bkQ());
+        if ((!((k)localObject).exists()) || (!((k)localObject).isDirectory()))
         {
           AppMethodBeat.o(44452);
           return;
         }
-        localObject = ((e)localObject).fOM();
+        localObject = ((k)localObject).fTj();
         if ((localObject == null) || (localObject.length <= 0))
         {
           AppMethodBeat.o(44452);
@@ -96,13 +97,13 @@ public final class g
           q(localObject[i]);
           i += 1;
         }
-        localObject = new e(AppBrandVideoDownLoadMgr.lkz);
-        if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
+        localObject = new k(AppBrandVideoDownLoadMgr.loX);
+        if ((!((k)localObject).exists()) || (!((k)localObject).isDirectory()))
         {
           AppMethodBeat.o(44452);
           return;
         }
-        localObject = ((e)localObject).fOM();
+        localObject = ((k)localObject).fTj();
         if ((localObject == null) || (localObject.length <= 0))
         {
           AppMethodBeat.o(44452);
@@ -118,8 +119,8 @@ public final class g
         AppMethodBeat.o(44452);
       }
     };
-    jMm = TimeUnit.MINUTES.toMillis(30L);
-    jMn = TimeUnit.DAYS.toMillis(1L);
+    jPy = TimeUnit.MINUTES.toMillis(30L);
+    jPz = TimeUnit.DAYS.toMillis(1L);
     AppMethodBeat.o(44454);
   }
 }

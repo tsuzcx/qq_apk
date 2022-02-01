@@ -8,15 +8,15 @@ import android.os.Looper;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.contact.a.e;
 import com.tencent.mm.ui.contact.a.i;
 import java.util.ArrayList;
@@ -32,46 +32,46 @@ import java.util.Set;
 public final class v
   extends o
 {
-  private g Kkr;
-  private List<String> KnT;
-  private Map<String, List<m>> KnU;
-  private Map<String, Boolean> KnV;
-  private Map<String, com.tencent.mm.plugin.fts.a.a.h> KnW;
-  private List<String> KnX;
-  private List<String> KnY;
-  private List<String> KnZ;
-  private List<Integer> Kns;
-  protected com.tencent.mm.plugin.fts.a.l Knt;
-  protected int Koa;
-  private Map<String, LinkedList<String>> Kob;
-  private int[] Koc;
-  private Cursor Kod;
-  private Map<Integer, String> Koe;
-  private Map<String, Integer> Kof;
-  private int Kog;
-  private int Koh;
+  private g KGL;
+  private List<Integer> KJM;
+  protected com.tencent.mm.plugin.fts.a.l KJN;
+  private int KKA;
+  private int KKB;
+  private List<String> KKn;
+  private Map<String, List<m>> KKo;
+  private Map<String, Boolean> KKp;
+  private Map<String, com.tencent.mm.plugin.fts.a.a.h> KKq;
+  private List<String> KKr;
+  private List<String> KKs;
+  private List<String> KKt;
+  protected int KKu;
+  private Map<String, LinkedList<String>> KKv;
+  private int[] KKw;
+  private Cursor KKx;
+  private Map<Integer, String> KKy;
+  private Map<String, Integer> KKz;
   private int count;
-  private List<String> fSL;
-  private ap handler;
-  private int qYl;
-  private com.tencent.mm.plugin.fts.a.a.a tvk;
+  private List<String> fUR;
+  private aq handler;
+  private int rgr;
+  private com.tencent.mm.plugin.fts.a.a.a tGb;
   
   public v(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList1, List<String> paramList2, List<String> paramList3, boolean paramBoolean, int paramInt)
   {
     super(paramMMBaseSelectContactUI, paramBoolean, paramInt);
     AppMethodBeat.i(102893);
-    this.KnT = new LinkedList();
-    this.KnU = null;
-    this.KnV = new HashMap();
-    this.KnW = null;
-    this.Koa = 0;
-    this.Kob = new HashMap();
-    this.Koe = new HashMap();
-    this.Kof = new HashMap();
-    this.Kog = 0;
-    this.Kkr = new g();
-    this.handler = new ap(Looper.getMainLooper());
-    this.Knt = new com.tencent.mm.plugin.fts.a.l()
+    this.KKn = new LinkedList();
+    this.KKo = null;
+    this.KKp = new HashMap();
+    this.KKq = null;
+    this.KKu = 0;
+    this.KKv = new HashMap();
+    this.KKy = new HashMap();
+    this.KKz = new HashMap();
+    this.KKA = 0;
+    this.KGL = new g();
+    this.handler = new aq(Looper.getMainLooper());
+    this.KJN = new com.tencent.mm.plugin.fts.a.l()
     {
       public final void b(k paramAnonymousk)
       {
@@ -83,38 +83,38 @@ public final class v
         {
           AppMethodBeat.o(102892);
           return;
-          if ((v.a(v.this) == null) || (paramAnonymousk.tun == null))
+          if ((v.a(v.this) == null) || (paramAnonymousk.tFe == null))
           {
             AppMethodBeat.o(102892);
             return;
           }
-          v.a(v.this, paramAnonymousk.tvl);
-          String str = paramAnonymousk.tun.tuL;
+          v.a(v.this, paramAnonymousk.tGc);
+          String str = paramAnonymousk.tFe.tFC;
           if (v.b(v.this).get(str) == null)
           {
             v.b(v.this).put(str, new LinkedList());
             if (v.c(v.this).get(str) == null) {
               v.c(v.this).put(str, Boolean.FALSE);
             }
-            v.d(v.this).put(str, paramAnonymousk.tun);
+            v.d(v.this).put(str, paramAnonymousk.tFe);
           }
-          if (paramAnonymousk.tvl.size() > 0) {
-            switch (((m)paramAnonymousk.tvl.get(0)).type)
+          if (paramAnonymousk.tGc.size() > 0) {
+            switch (((m)paramAnonymousk.tGc.get(0)).type)
             {
             default: 
-              ad.i("MicroMsg.MultiSearchContactAdapter", "not support search type");
+              ae.i("MicroMsg.MultiSearchContactAdapter", "not support search type");
             }
           }
           for (;;)
           {
             boolean bool = v.e(v.this);
-            v.a(v.this, paramAnonymousk.trv.query, bool);
+            v.a(v.this, paramAnonymousk.tCm.query, bool);
             AppMethodBeat.o(102892);
             return;
-            ((List)v.b(v.this).get(paramAnonymousk.tun.tuL)).addAll(paramAnonymousk.tvl);
+            ((List)v.b(v.this).get(paramAnonymousk.tFe.tFC)).addAll(paramAnonymousk.tGc);
           }
-          ad.i("MicroMsg.MultiSearchContactAdapter", "search query:%s, err:%s", new Object[] { paramAnonymousk.trv.query, Integer.valueOf(paramAnonymousk.bZU) });
-          if (!paramAnonymousk.trv.query.equals(v.f(v.this).get(v.this.Koa)))
+          ae.i("MicroMsg.MultiSearchContactAdapter", "search query:%s, err:%s", new Object[] { paramAnonymousk.tCm.query, Integer.valueOf(paramAnonymousk.bZU) });
+          if (!paramAnonymousk.tCm.query.equals(v.f(v.this).get(v.this.KKu)))
           {
             AppMethodBeat.o(102892);
             return;
@@ -123,28 +123,28 @@ public final class v
         }
       }
     };
-    this.qYl = 1;
-    this.Koh = 1;
+    this.rgr = 1;
+    this.KKB = 1;
     this.count = 0;
-    this.KnY = paramList1;
-    this.KnX = paramList2;
-    this.fSL = paramList3;
-    this.Kns = new ArrayList();
-    Zd();
+    this.KKs = paramList1;
+    this.KKr = paramList2;
+    this.fUR = paramList3;
+    this.KJM = new ArrayList();
+    Zm();
     AppMethodBeat.o(102893);
   }
   
-  private void Zd()
+  private void Zm()
   {
     AppMethodBeat.i(102898);
-    this.Koa = 0;
-    fIn();
+    this.KKu = 0;
+    fMF();
     clearTask();
     clearCache();
     AppMethodBeat.o(102898);
   }
   
-  private List<String> aWS(String paramString)
+  private List<String> aYt(String paramString)
   {
     AppMethodBeat.i(102895);
     LinkedList localLinkedList = new LinkedList();
@@ -155,15 +155,15 @@ public final class v
     while (i < j)
     {
       localObject = paramString[i];
-      if (!bt.isNullOrNil(((String)localObject).trim())) {
+      if (!bu.isNullOrNil(((String)localObject).trim())) {
         localLinkedList.add(localObject);
       }
       i += 1;
     }
-    localLinkedList.addAll(this.Kob.keySet());
-    if (this.KnZ != null)
+    localLinkedList.addAll(this.KKv.keySet());
+    if (this.KKt != null)
     {
-      if (localLinkedList.size() != this.KnZ.size())
+      if (localLinkedList.size() != this.KKt.size())
       {
         AppMethodBeat.o(102895);
         return localLinkedList;
@@ -172,19 +172,19 @@ public final class v
       while (paramString.hasNext())
       {
         localObject = (String)paramString.next();
-        if (!this.KnZ.contains(localObject))
+        if (!this.KKt.contains(localObject))
         {
           AppMethodBeat.o(102895);
           return localLinkedList;
         }
       }
     }
-    if (this.KnZ == null)
+    if (this.KKt == null)
     {
       AppMethodBeat.o(102895);
       return localLinkedList;
     }
-    paramString = this.KnZ;
+    paramString = this.KKt;
     AppMethodBeat.o(102895);
     return paramString;
   }
@@ -192,72 +192,72 @@ public final class v
   private void clearTask()
   {
     AppMethodBeat.i(102896);
-    if (this.tvk != null)
+    if (this.tGb != null)
     {
-      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.tvk);
-      this.tvk = null;
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.tGb);
+      this.tGb = null;
     }
     AppMethodBeat.o(102896);
   }
   
-  private void fIn()
+  private void fMF()
   {
     AppMethodBeat.i(102897);
-    this.KnU = new HashMap();
-    this.KnW = new HashMap();
-    this.KnT.clear();
-    if (this.Kod != null)
+    this.KKo = new HashMap();
+    this.KKq = new HashMap();
+    this.KKn.clear();
+    if (this.KKx != null)
     {
-      this.Kod.close();
-      this.Kod = null;
-      this.Koe.clear();
-      this.Kof.clear();
+      this.KKx.close();
+      this.KKx = null;
+      this.KKy.clear();
+      this.KKz.clear();
     }
     clearCache();
     notifyDataSetChanged();
     AppMethodBeat.o(102897);
   }
   
-  private boolean fIo()
+  private boolean fMG()
   {
     AppMethodBeat.i(102900);
     Object localObject;
     int i;
-    if ((this.Kns.size() > 0) && (this.KnZ.size() > 0))
+    if ((this.KJM.size() > 0) && (this.KKt.size() > 0))
     {
       localObject = new HashSet();
-      i = ((Integer)this.Kns.remove(0)).intValue();
+      i = ((Integer)this.KJM.remove(0)).intValue();
       com.tencent.mm.plugin.fts.a.a.j localj = new com.tencent.mm.plugin.fts.a.a.j();
-      localj.query = ((String)this.KnZ.get(this.Koa));
-      localj.tve = new int[] { i };
-      localj.tvh = ((HashSet)localObject);
-      localj.tvj = this.Knt;
+      localj.query = ((String)this.KKt.get(this.KKu));
+      localj.tFV = new int[] { i };
+      localj.tFY = ((HashSet)localObject);
+      localj.tGa = this.KJN;
       localj.handler = this.handler;
       if (i == 131075) {
-        localj.jQN = 32;
+        localj.jUf = 32;
       }
-      for (localj.tvi = com.tencent.mm.plugin.fts.a.c.a.tvH;; localj.tvi = b.tvI)
+      for (localj.tFZ = com.tencent.mm.plugin.fts.a.c.a.tGy;; localj.tFZ = b.tGz)
       {
-        this.tvk = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
+        this.tGb = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
         AppMethodBeat.o(102900);
         return false;
-        localj.jQN = 16;
+        localj.jUf = 16;
       }
     }
-    if (this.Koa < this.KnZ.size() - 1)
+    if (this.KKu < this.KKt.size() - 1)
     {
-      this.Koa += 1;
-      this.Kns.clear();
-      localObject = this.Koc;
+      this.KKu += 1;
+      this.KJM.clear();
+      localObject = this.KKw;
       int j = localObject.length;
       i = 0;
       while (i < j)
       {
         int k = localObject[i];
-        this.Kns.add(Integer.valueOf(k));
+        this.KJM.add(Integer.valueOf(k));
         i += 1;
       }
-      fIo();
+      fMG();
       AppMethodBeat.o(102900);
       return false;
     }
@@ -265,47 +265,47 @@ public final class v
     return true;
   }
   
-  private void fIt()
+  private void fML()
   {
     AppMethodBeat.i(102908);
     ArrayList localArrayList = new ArrayList();
     Object localObject;
     int i;
     int j;
-    if (this.KnY.size() < 41)
+    if (this.KKs.size() < 41)
     {
-      this.Kkr.ir(this.fSL);
+      this.KGL.iB(this.fUR);
       localObject = new LinkedList();
-      ((List)localObject).addAll(this.KnY);
-      ((List)localObject).addAll(this.KnX);
-      this.Kkr.ip((List)localObject);
-      localObject = this.Kkr.fHL();
+      ((List)localObject).addAll(this.KKs);
+      ((List)localObject).addAll(this.KKr);
+      this.KGL.iz((List)localObject);
+      localObject = this.KGL.fMd();
       i = ((Cursor)localObject).getCount();
       if (i > 0)
       {
         localArrayList.add(localObject);
-        this.Koe.put(Integer.valueOf(0), this.KmO.getActivity().getString(2131762998));
-        j = this.qYl;
-        ad.i("MicroMsg.MultiSearchContactAdapter", "add recommend contact cursor %s", new Object[] { Integer.valueOf(i) });
+        this.KKy.put(Integer.valueOf(0), this.KJi.getActivity().getString(2131762998));
+        j = this.rgr;
+        ae.i("MicroMsg.MultiSearchContactAdapter", "add recommend contact cursor %s", new Object[] { Integer.valueOf(i) });
         i = j + i + 0;
-        com.tencent.mm.kernel.g.ajD();
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().hF(this.fSL);
+        com.tencent.mm.kernel.g.ajS();
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().hP(this.fUR);
         this.count = ((Cursor)localObject).getCount();
         if (this.count <= 0) {
           break label470;
         }
         localArrayList.add(localObject);
-        this.Koe.put(Integer.valueOf(i), this.KmO.getActivity().getString(2131762985));
-        this.Kof.put("☆", Integer.valueOf(i));
-        i += this.qYl + this.count;
+        this.KKy.put(Integer.valueOf(i), this.KJi.getActivity().getString(2131762985));
+        this.KKz.put("☆", Integer.valueOf(i));
+        i += this.rgr + this.count;
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.ajD();
-      localArrayList.add(((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c("@all.contact.without.chatroom", "", this.fSL));
-      localObject = w.a(null, "@all.contact.without.chatroom", "", "", this.fSL);
-      int[] arrayOfInt = w.a(null, "@all.contact.without.chatroom", "", this.fSL, "");
+      com.tencent.mm.kernel.g.ajS();
+      localArrayList.add(((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().c("@all.contact.without.chatroom", "", this.fUR));
+      localObject = x.a(null, "@all.contact.without.chatroom", "", "", this.fUR);
+      int[] arrayOfInt = x.a(null, "@all.contact.without.chatroom", "", this.fUR, "");
       if ((localObject == null) || (arrayOfInt == null)) {
         break label480;
       }
@@ -317,8 +317,8 @@ public final class v
         k = j;
         if (i < arrayOfInt.length)
         {
-          this.Koe.put(Integer.valueOf(arrayOfInt[i] + j), localObject[i]);
-          this.Kof.put(localObject[i], Integer.valueOf(arrayOfInt[i] + j));
+          this.KKy.put(Integer.valueOf(arrayOfInt[i] + j), localObject[i]);
+          this.KKz.put(localObject[i], Integer.valueOf(arrayOfInt[i] + j));
           k = j + 1;
         }
         i += 1;
@@ -331,11 +331,11 @@ public final class v
       ((Cursor)localObject).close();
     }
     label480:
-    this.Kod = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
+    this.KKx = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
     AppMethodBeat.o(102908);
   }
   
-  private static com.tencent.mm.ui.contact.a.a gH(String paramString, int paramInt)
+  private static com.tencent.mm.ui.contact.a.a gQ(String paramString, int paramInt)
   {
     AppMethodBeat.i(102910);
     com.tencent.mm.ui.contact.a.h localh = new com.tencent.mm.ui.contact.a.h(paramInt);
@@ -349,25 +349,25 @@ public final class v
     AppMethodBeat.i(102901);
     Object localObject;
     int i;
-    if ((paramBoolean1) && (fIs()) && (this.KnY.size() < 3))
+    if ((paramBoolean1) && (fMK()) && (this.KKs.size() < 3))
     {
-      this.Kkr.ir(this.fSL);
+      this.KGL.iB(this.fUR);
       localObject = new LinkedList();
-      ((List)localObject).addAll(this.KnY);
-      ((List)localObject).addAll(this.KnX);
-      this.KnT = this.Kkr.c((List)localObject, this.KnU);
-      if (this.KnT.size() > 0)
+      ((List)localObject).addAll(this.KKs);
+      ((List)localObject).addAll(this.KKr);
+      this.KKn = this.KGL.c((List)localObject, this.KKo);
+      if (this.KKn.size() > 0)
       {
-        i = this.KnT.size() + this.qYl + 0;
-        ad.i("MicroMsg.MultiSearchContactAdapter", "recommend chatroom size:%d", new Object[] { Integer.valueOf(this.KnT.size()) });
+        i = this.KKn.size() + this.rgr + 0;
+        ae.i("MicroMsg.MultiSearchContactAdapter", "recommend chatroom size:%d", new Object[] { Integer.valueOf(this.KKn.size()) });
       }
     }
     for (;;)
     {
       int j;
-      if (this.KnZ != null)
+      if (this.KKt != null)
       {
-        localObject = this.KnZ.iterator();
+        localObject = this.KKt.iterator();
         String str;
         for (;;)
         {
@@ -376,31 +376,31 @@ public final class v
             break label414;
           }
           str = (String)((Iterator)localObject).next();
-          if (this.KnU.get(str) != null)
+          if (this.KKo.get(str) != null)
           {
-            if (((List)this.KnU.get(str)).size() <= 0) {
+            if (((List)this.KKo.get(str)).size() <= 0) {
               break;
             }
-            j = ((List)this.KnU.get(str)).size();
-            if ((fIs()) && (j > 3))
+            j = ((List)this.KKo.get(str)).size();
+            if ((fMK()) && (j > 3))
             {
-              if (((Boolean)this.KnV.get(str)).booleanValue()) {
-                i = this.qYl + j + this.Koh + i;
+              if (((Boolean)this.KKp.get(str)).booleanValue()) {
+                i = this.rgr + j + this.KKB + i;
               } else {
-                i = this.qYl + 3 + this.Koh + i;
+                i = this.rgr + 3 + this.KKB + i;
               }
             }
             else {
-              i = this.qYl + j + i;
+              i = this.rgr + j + i;
             }
           }
         }
-        if ((!paramBoolean1) || (!fIs())) {
+        if ((!paramBoolean1) || (!fMK())) {
           break label558;
         }
-        ((List)this.KnU.get(paramString)).add(new m());
-        j = this.qYl;
-        i += ((List)this.KnU.get(str)).size() + j;
+        ((List)this.KKo.get(paramString)).add(new m());
+        j = this.rgr;
+        i += ((List)this.KKo.get(str)).size() + j;
       }
       label414:
       label558:
@@ -408,19 +408,19 @@ public final class v
       {
         break;
         j = i;
-        this.Kog = j;
-        if ((paramBoolean1) && (fIs())) {
-          fIt();
+        this.KKA = j;
+        if ((paramBoolean1) && (fMK())) {
+          fML();
         }
         i = j;
-        if (this.Kod != null) {
-          i = j + (this.Kod.getCount() + this.Koe.size());
+        if (this.KKx != null) {
+          i = j + (this.KKx.getCount() + this.KKy.size());
         }
         this.count = i;
-        if ((paramBoolean2) && (this.KmN != null)) {
-          this.KmN.y(paramString, getCount(), paramBoolean1);
+        if ((paramBoolean2) && (this.KJh != null)) {
+          this.KJh.y(paramString, getCount(), paramBoolean1);
         }
-        ad.i("MicroMsg.MultiSearchContactAdapter", "updateHeaderPosition, query:%s, isFinish:%b, searchEnd:%b, count:%d", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(getCount()) });
+        ae.i("MicroMsg.MultiSearchContactAdapter", "updateHeaderPosition, query:%s, isFinish:%b, searchEnd:%b, count:%d", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(getCount()) });
         clearCache();
         notifyDataSetChanged();
         AppMethodBeat.o(102901);
@@ -432,13 +432,13 @@ public final class v
     }
   }
   
-  public final int aWM(String paramString)
+  public final int aYn(String paramString)
   {
     AppMethodBeat.i(102906);
-    if (this.Kof.get(paramString) != null)
+    if (this.KKz.get(paramString) != null)
     {
-      int i = ((Integer)this.Kof.get(paramString)).intValue();
-      int j = this.Kog;
+      int i = ((Integer)this.KKz.get(paramString)).intValue();
+      int j = this.KKA;
       AppMethodBeat.o(102906);
       return i + j;
     }
@@ -446,10 +446,10 @@ public final class v
     return 0;
   }
   
-  public final int aWR(String paramString)
+  public final int aYs(String paramString)
   {
     AppMethodBeat.i(102905);
-    Iterator localIterator = this.Kob.values().iterator();
+    Iterator localIterator = this.KKv.values().iterator();
     while (localIterator.hasNext()) {
       if (((List)localIterator.next()).contains(paramString))
       {
@@ -457,7 +457,7 @@ public final class v
         return 3;
       }
     }
-    if (this.Kkr.aWO(paramString))
+    if (this.KGL.aYp(paramString))
     {
       AppMethodBeat.o(102905);
       return 4;
@@ -466,23 +466,23 @@ public final class v
     return 0;
   }
   
-  public final boolean aeo(int paramInt)
+  public final boolean aeX(int paramInt)
   {
     boolean bool2 = false;
     AppMethodBeat.i(102913);
-    com.tencent.mm.ui.contact.a.a locala = aen(paramInt - this.KmO.getContentLV().getHeaderViewsCount());
+    com.tencent.mm.ui.contact.a.a locala = aeW(paramInt - this.KJi.getContentLV().getHeaderViewsCount());
     boolean bool1;
     if ((locala instanceof com.tencent.mm.ui.contact.a.j))
     {
-      Map localMap = this.KnV;
+      Map localMap = this.KKp;
       String str = locala.query;
-      if (!((Boolean)this.KnV.get(locala.query)).booleanValue())
+      if (!((Boolean)this.KKp.get(locala.query)).booleanValue())
       {
         bool1 = true;
         localMap.put(str, Boolean.valueOf(bool1));
         n(null, true, false);
-        paramInt = this.KmO.getContentLV().getSelectedItemPosition();
-        this.KmO.getContentLV().setSelection(paramInt);
+        paramInt = this.KJi.getContentLV().getSelectedItemPosition();
+        this.KJi.getContentLV().setSelection(paramInt);
         bool1 = true;
       }
     }
@@ -495,54 +495,54 @@ public final class v
         bool1 = false;
         break;
         bool1 = bool2;
-      } while (bt.isNullOrNil(locala.query));
+      } while (bu.isNullOrNil(locala.query));
       bool1 = bool2;
     } while (!(locala instanceof e));
-    if (this.KnX.contains(locala.contact.field_username)) {
-      if (this.Kob.get(locala.query) != null) {
-        ((LinkedList)this.Kob.get(locala.query)).remove(locala.contact.field_username);
+    if (this.KKr.contains(locala.contact.field_username)) {
+      if (this.KKv.get(locala.query) != null) {
+        ((LinkedList)this.KKv.get(locala.query)).remove(locala.contact.field_username);
       }
     }
     for (;;)
     {
-      this.Kkr.reset();
+      this.KGL.reset();
       bool1 = bool2;
       break;
-      if (this.Kob.get(locala.query) == null) {
-        this.Kob.put(locala.query, new LinkedList());
+      if (this.KKv.get(locala.query) == null) {
+        this.KKv.put(locala.query, new LinkedList());
       }
-      ((LinkedList)this.Kob.get(locala.query)).add(locala.contact.field_username);
+      ((LinkedList)this.KKv.get(locala.query)).add(locala.contact.field_username);
     }
   }
   
   public final void b(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(102894);
-    this.KnU = new HashMap();
-    this.KnW = new HashMap();
-    this.KnT.clear();
-    if (this.Kod != null)
+    this.KKo = new HashMap();
+    this.KKq = new HashMap();
+    this.KKn.clear();
+    if (this.KKx != null)
     {
-      this.Kod.close();
-      this.Kod = null;
-      this.Koe.clear();
-      this.Kof.clear();
+      this.KKx.close();
+      this.KKx = null;
+      this.KKy.clear();
+      this.KKz.clear();
     }
     this.count = 0;
-    this.KnZ = aWS(paramString);
-    this.Koa = 0;
-    this.Koc = paramArrayOfInt;
-    this.Kns.clear();
+    this.KKt = aYt(paramString);
+    this.KKu = 0;
+    this.KKw = paramArrayOfInt;
+    this.KJM.clear();
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      this.Kns.add(Integer.valueOf(k));
+      this.KJM.add(Integer.valueOf(k));
       i += 1;
     }
-    ad.i("MicroMsg.MultiSearchContactAdapter", "doSearch: queryString:%s, queryWords:%s", new Object[] { paramString, this.KnZ });
-    fIo();
+    ae.i("MicroMsg.MultiSearchContactAdapter", "doSearch: queryString:%s, queryWords:%s", new Object[] { paramString, this.KKt });
+    fMG();
     AppMethodBeat.o(102894);
   }
   
@@ -555,19 +555,19 @@ public final class v
       AppMethodBeat.o(102912);
       return true;
     }
-    if ((i >= this.Kog) && (this.Koe.get(Integer.valueOf(i - this.Kog)) != null))
+    if ((i >= this.KKA) && (this.KKy.get(Integer.valueOf(i - this.KKA)) != null))
     {
       AppMethodBeat.o(102912);
       return true;
     }
-    if ((this.KnT.size() > 0) && (i == this.KnT.size() + this.qYl))
+    if ((this.KKn.size() > 0) && (i == this.KKn.size() + this.rgr))
     {
       AppMethodBeat.o(102912);
       return true;
     }
-    if (i < this.Kog)
+    if (i < this.KKA)
     {
-      parama = rh(i);
+      parama = rk(i);
       if ((parama == null) && ((parama instanceof com.tencent.mm.ui.contact.a.h)))
       {
         AppMethodBeat.o(102912);
@@ -583,62 +583,74 @@ public final class v
   public final void clearData()
   {
     AppMethodBeat.i(102899);
-    this.Kob.clear();
-    this.KnV.clear();
-    Zd();
+    this.KKv.clear();
+    this.KKp.clear();
+    Zm();
     AppMethodBeat.o(102899);
   }
   
-  public final int fHH()
+  public final int fLZ()
   {
     AppMethodBeat.i(102904);
-    int i = this.KnT.size();
+    int i = this.KKn.size();
     AppMethodBeat.o(102904);
     return i;
   }
   
-  public final boolean fIb()
+  final boolean fMK()
+  {
+    AppMethodBeat.i(102902);
+    if ((this.KKt != null) && (this.KKt.size() > 1))
+    {
+      AppMethodBeat.o(102902);
+      return true;
+    }
+    AppMethodBeat.o(102902);
+    return false;
+  }
+  
+  public final boolean fMt()
   {
     AppMethodBeat.i(102903);
-    boolean bool = fIs();
+    boolean bool = fMK();
     AppMethodBeat.o(102903);
     return bool;
   }
   
-  public final String fIc()
+  public final String fMu()
   {
     AppMethodBeat.i(102907);
-    Object localObject1 = this.Kob.keySet().iterator();
+    Object localObject1 = this.KKv.keySet().iterator();
     Object localObject3;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      localObject3 = (String[])((LinkedList)this.Kob.get(localObject2)).toArray(new String[0]);
+      localObject3 = (String[])((LinkedList)this.KKv.get(localObject2)).toArray(new String[0]);
       int j = localObject3.length;
       int i = 0;
       while (i < j)
       {
         Object localObject4 = localObject3[i];
-        if (!this.KnX.contains(localObject4)) {
-          ((LinkedList)this.Kob.get(localObject2)).remove(localObject4);
+        if (!this.KKr.contains(localObject4)) {
+          ((LinkedList)this.KKv.get(localObject2)).remove(localObject4);
         }
         i += 1;
       }
     }
-    localObject1 = this.Kob.keySet().iterator();
+    localObject1 = this.KKv.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      if (((LinkedList)this.Kob.get(localObject2)).size() == 0) {
-        this.Kob.remove(localObject2);
+      if (((LinkedList)this.KKv.get(localObject2)).size() == 0) {
+        this.KKv.remove(localObject2);
       }
     }
-    Object localObject2 = this.KnZ.iterator();
+    Object localObject2 = this.KKt.iterator();
     localObject1 = "";
     if (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
-      if (this.Kob.containsKey(localObject3)) {
+      if (this.KKv.containsKey(localObject3)) {
         break label322;
       }
       localObject1 = (String)localObject1 + (String)localObject3 + " ";
@@ -648,36 +660,24 @@ public final class v
     {
       break;
       localObject2 = localObject1;
-      if (bt.isNullOrNil((String)localObject1))
+      if (bu.isNullOrNil((String)localObject1))
       {
         localObject2 = localObject1;
-        if (fIs()) {
+        if (fMK()) {
           localObject2 = " ";
         }
       }
-      ad.i("MicroMsg.MultiSearchContactAdapter", "getRealSearchText %s", new Object[] { localObject2 });
+      ae.i("MicroMsg.MultiSearchContactAdapter", "getRealSearchText %s", new Object[] { localObject2 });
       AppMethodBeat.o(102907);
       return localObject2;
     }
-  }
-  
-  final boolean fIs()
-  {
-    AppMethodBeat.i(102902);
-    if ((this.KnZ != null) && (this.KnZ.size() > 1))
-    {
-      AppMethodBeat.o(102902);
-      return true;
-    }
-    AppMethodBeat.o(102902);
-    return false;
   }
   
   public final void finish()
   {
     AppMethodBeat.i(102911);
     super.finish();
-    ad.i("MicroMsg.MultiSearchContactAdapter", "finish!");
+    ae.i("MicroMsg.MultiSearchContactAdapter", "finish!");
     clearData();
     AppMethodBeat.o(102911);
   }
@@ -687,70 +687,70 @@ public final class v
     return this.count;
   }
   
-  protected final com.tencent.mm.ui.contact.a.a rh(int paramInt)
+  protected final com.tencent.mm.ui.contact.a.a rk(int paramInt)
   {
     int m = 3;
     boolean bool = false;
     AppMethodBeat.i(102909);
     if (paramInt >= this.count)
     {
-      ad.e("MicroMsg.MultiSearchContactAdapter", "createDataItem err %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.count) });
+      ae.e("MicroMsg.MultiSearchContactAdapter", "createDataItem err %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.count) });
       AppMethodBeat.o(102909);
       return null;
     }
     Object localObject1;
     Object localObject2;
-    if ((this.KnT != null) && (this.KnT.size() > 0)) {
-      if (paramInt < this.KnT.size() + this.qYl)
+    if ((this.KKn != null) && (this.KKn.size() > 0)) {
+      if (paramInt < this.KKn.size() + this.rgr)
       {
         if (paramInt == 0)
         {
-          localObject1 = gH(this.KmO.getActivity().getString(2131762999), paramInt);
+          localObject1 = gQ(this.KJi.getActivity().getString(2131762999), paramInt);
           AppMethodBeat.o(102909);
           return localObject1;
         }
-        com.tencent.mm.kernel.g.ajD();
-        localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf((String)this.KnT.get(paramInt - this.qYl));
+        com.tencent.mm.kernel.g.ajS();
+        localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH((String)this.KKn.get(paramInt - this.rgr));
         localObject2 = new e(paramInt);
-        ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((am)localObject1);
-        if (w.vF(((aw)localObject1).field_username))
+        ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((an)localObject1);
+        if (x.wb(((aw)localObject1).field_username))
         {
-          ((com.tencent.mm.ui.contact.a.a)localObject2).KmP = false;
-          ((com.tencent.mm.ui.contact.a.a)localObject2).KmQ = false;
-          ((com.tencent.mm.ui.contact.a.a)localObject2).KqG = false;
+          ((com.tencent.mm.ui.contact.a.a)localObject2).KJj = false;
+          ((com.tencent.mm.ui.contact.a.a)localObject2).KJk = false;
+          ((com.tencent.mm.ui.contact.a.a)localObject2).KNa = false;
         }
-        for (((e)localObject2).KqV = true;; ((e)localObject2).KqV = false)
+        for (((e)localObject2).KNp = true;; ((e)localObject2).KNp = false)
         {
           AppMethodBeat.o(102909);
           return localObject2;
-          ((com.tencent.mm.ui.contact.a.a)localObject2).KmP = dQK();
-          ((com.tencent.mm.ui.contact.a.a)localObject2).KmQ = this.KmQ;
+          ((com.tencent.mm.ui.contact.a.a)localObject2).KJj = dUh();
+          ((com.tencent.mm.ui.contact.a.a)localObject2).KJk = this.KJk;
         }
       }
     }
-    for (int i = this.KnT.size() + this.qYl + 0;; i = 0)
+    for (int i = this.KKn.size() + this.rgr + 0;; i = 0)
     {
       localObject2 = null;
       Object localObject3;
       int j;
-      if (paramInt < this.Kog)
+      if (paramInt < this.KKA)
       {
-        localObject3 = this.KnZ.iterator();
+        localObject3 = this.KKt.iterator();
         for (;;)
         {
           if (((Iterator)localObject3).hasNext())
           {
             localObject1 = (String)((Iterator)localObject3).next();
-            if (this.KnU.get(localObject1) == null)
+            if (this.KKo.get(localObject1) == null)
             {
-              ad.w("MicroMsg.MultiSearchContactAdapter", "word:%s, position:%d, count:%d", new Object[] { localObject1, Integer.valueOf(paramInt), Integer.valueOf(this.count) });
+              ae.w("MicroMsg.MultiSearchContactAdapter", "word:%s, position:%d, count:%d", new Object[] { localObject1, Integer.valueOf(paramInt), Integer.valueOf(this.count) });
             }
             else
             {
-              j = ((List)this.KnU.get(localObject1)).size();
-              if ((fIs()) && (j > 3))
+              j = ((List)this.KKo.get(localObject1)).size();
+              if ((fMK()) && (j > 3))
               {
-                if (((Boolean)this.KnV.get(localObject1)).booleanValue()) {
+                if (((Boolean)this.KKp.get(localObject1)).booleanValue()) {
                   break label1143;
                 }
                 j = 3;
@@ -764,7 +764,7 @@ public final class v
       for (;;)
       {
         int k;
-        if (paramInt < i + j + this.qYl + this.Koh)
+        if (paramInt < i + j + this.rgr + this.KKB)
         {
           j = paramInt - i;
           localObject2 = localObject1;
@@ -774,31 +774,31 @@ public final class v
         {
           if (localObject2 == null)
           {
-            if (this.Koe.get(Integer.valueOf(paramInt - k)) != null)
+            if (this.KKy.get(Integer.valueOf(paramInt - k)) != null)
             {
-              localObject1 = gH((String)this.Koe.get(Integer.valueOf(paramInt - k)), paramInt);
+              localObject1 = gQ((String)this.KKy.get(Integer.valueOf(paramInt - k)), paramInt);
               AppMethodBeat.o(102909);
               return localObject1;
-              i = this.qYl + j + this.Koh + i;
+              i = this.rgr + j + this.KKB + i;
               break;
-              if (paramInt < i + j + this.qYl)
+              if (paramInt < i + j + this.rgr)
               {
                 j = paramInt - i;
                 k = i;
                 localObject2 = localObject1;
                 continue;
               }
-              i = this.qYl + j + i;
+              i = this.rgr + j + i;
               break;
               j = 0;
               k = i;
               continue;
-              k = this.Kog;
+              k = this.KKA;
               j = 0;
               continue;
             }
-            localObject1 = this.Kod;
-            localObject2 = this.Koe.keySet().iterator();
+            localObject1 = this.KKx;
+            localObject2 = this.KKy.keySet().iterator();
             i = 0;
             if (((Iterator)localObject2).hasNext())
             {
@@ -814,65 +814,65 @@ public final class v
           break;
           if (((Cursor)localObject1).moveToPosition(paramInt - k - i))
           {
-            localObject1 = new am();
-            ((am)localObject1).convertFrom(this.Kod);
+            localObject1 = new an();
+            ((an)localObject1).convertFrom(this.KKx);
             localObject2 = new e(paramInt);
-            ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((am)localObject1);
-            if (w.vF(((aw)localObject1).field_username))
+            ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((an)localObject1);
+            if (x.wb(((aw)localObject1).field_username))
             {
-              ((com.tencent.mm.ui.contact.a.a)localObject2).KmP = false;
-              ((com.tencent.mm.ui.contact.a.a)localObject2).KmQ = false;
-              ((com.tencent.mm.ui.contact.a.a)localObject2).KqG = false;
+              ((com.tencent.mm.ui.contact.a.a)localObject2).KJj = false;
+              ((com.tencent.mm.ui.contact.a.a)localObject2).KJk = false;
+              ((com.tencent.mm.ui.contact.a.a)localObject2).KNa = false;
             }
-            for (((e)localObject2).KqV = true;; ((e)localObject2).KqV = false)
+            for (((e)localObject2).KNp = true;; ((e)localObject2).KNp = false)
             {
               AppMethodBeat.o(102909);
               return localObject2;
-              ((com.tencent.mm.ui.contact.a.a)localObject2).KmP = dQK();
-              ((com.tencent.mm.ui.contact.a.a)localObject2).KmQ = this.KmQ;
+              ((com.tencent.mm.ui.contact.a.a)localObject2).KJj = dUh();
+              ((com.tencent.mm.ui.contact.a.a)localObject2).KJk = this.KJk;
             }
           }
-          ad.e("MicroMsg.MultiSearchContactAdapter", "create contact item error: position=%d, %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.count) });
+          ae.e("MicroMsg.MultiSearchContactAdapter", "create contact item error: position=%d, %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.count) });
           AppMethodBeat.o(102909);
           return null;
           if (j == 0)
           {
             localObject1 = "\"" + (String)localObject2 + "\"";
-            if (!fIs()) {
-              localObject1 = this.KmO.getActivity().getResources().getString(2131759682);
+            if (!fMK()) {
+              localObject1 = this.KJi.getActivity().getResources().getString(2131759682);
             }
-            localObject1 = gH((String)localObject1, paramInt);
+            localObject1 = gQ((String)localObject1, paramInt);
             ((com.tencent.mm.ui.contact.a.a)localObject1).query = ((String)localObject2);
-            ((com.tencent.mm.ui.contact.a.a)localObject1).tun = ((com.tencent.mm.plugin.fts.a.a.h)this.KnW.get(localObject2));
+            ((com.tencent.mm.ui.contact.a.a)localObject1).tFe = ((com.tencent.mm.plugin.fts.a.a.h)this.KKq.get(localObject2));
             ((com.tencent.mm.ui.contact.a.a)localObject1).scene = this.scene;
             AppMethodBeat.o(102909);
             return localObject1;
           }
-          i = ((List)this.KnU.get(localObject2)).size();
-          if ((fIs()) && (!((Boolean)this.KnV.get(localObject2)).booleanValue())) {
+          i = ((List)this.KKo.get(localObject2)).size();
+          if ((fMK()) && (!((Boolean)this.KKp.get(localObject2)).booleanValue())) {
             i = m;
           }
           for (;;)
           {
             if (j > i)
             {
-              if (!((Boolean)this.KnV.get(localObject2)).booleanValue()) {
+              if (!((Boolean)this.KKp.get(localObject2)).booleanValue()) {
                 bool = true;
               }
               localObject1 = new com.tencent.mm.ui.contact.a.j(paramInt);
               ((com.tencent.mm.ui.contact.a.j)localObject1).resId = 2131759682;
-              ((com.tencent.mm.ui.contact.a.j)localObject1).sSq = bool;
+              ((com.tencent.mm.ui.contact.a.j)localObject1).tdC = bool;
               break;
             }
-            localObject3 = (m)((List)this.KnU.get(localObject2)).get(j - 1);
-            if (((m)localObject3).tvm > 0L)
+            localObject3 = (m)((List)this.KKo.get(localObject2)).get(j - 1);
+            if (((m)localObject3).tGd > 0L)
             {
               localObject1 = new e(paramInt);
-              ((e)localObject1).kjY = ((m)localObject3);
-              ((com.tencent.mm.ui.contact.a.a)localObject1).KmP = dQK();
-              ((e)localObject1).gvn = true;
-              ((e)localObject1).tvV = (j + 1);
-              ((e)localObject1).gf(((e)localObject1).kjY.type, ((e)localObject1).kjY.tug);
+              ((e)localObject1).kno = ((m)localObject3);
+              ((com.tencent.mm.ui.contact.a.a)localObject1).KJj = dUh();
+              ((e)localObject1).gxU = true;
+              ((e)localObject1).tGM = (j + 1);
+              ((e)localObject1).gf(((e)localObject1).kno.type, ((e)localObject1).kno.tEX);
               break;
             }
             localObject1 = new i(paramInt);

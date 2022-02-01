@@ -9,10 +9,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.be;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,55 +20,55 @@ public final class c
   implements b
 {
   private static String TAG = "MicroMsg.NormalFaceMotion";
-  private static long riy = 500L;
-  private boolean riA;
-  private View riB;
-  private View riC;
-  private String riD;
-  private long riE;
-  private final Object riF;
-  private Timer riG;
-  private volatile boolean riH;
-  private Animation riI;
-  private volatile boolean riJ;
-  private volatile boolean riK;
-  private boolean riz;
+  private static long rqC = 500L;
+  private boolean rqD;
+  private boolean rqE;
+  private View rqF;
+  private View rqG;
+  private String rqH;
+  private long rqI;
+  private final Object rqJ;
+  private Timer rqK;
+  private volatile boolean rqL;
+  private Animation rqM;
+  private volatile boolean rqN;
+  private volatile boolean rqO;
   
   public c(String paramString, long paramLong)
   {
     AppMethodBeat.i(103819);
-    this.riz = false;
-    this.riA = false;
-    this.riB = null;
-    this.riC = null;
-    this.riF = new Object();
-    this.riG = null;
-    this.riH = false;
-    this.riJ = false;
-    this.riK = false;
-    this.riD = paramString;
-    this.riE = paramLong;
-    this.riI = AnimationUtils.loadAnimation(aj.getContext(), 2130772144);
+    this.rqD = false;
+    this.rqE = false;
+    this.rqF = null;
+    this.rqG = null;
+    this.rqJ = new Object();
+    this.rqK = null;
+    this.rqL = false;
+    this.rqN = false;
+    this.rqO = false;
+    this.rqH = paramString;
+    this.rqI = paramLong;
+    this.rqM = AnimationUtils.loadAnimation(ak.getContext(), 2130772144);
     AppMethodBeat.o(103819);
   }
   
   public final void a(Context paramContext, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2)
   {
     AppMethodBeat.i(103822);
-    this.riB = LayoutInflater.from(paramContext).inflate(2131493907, paramViewGroup1);
-    this.riC = LayoutInflater.from(paramContext).inflate(2131493908, paramViewGroup2);
-    this.riC.setVisibility(4);
-    if (cty() != null) {
-      cty().setText(this.riD);
+    this.rqF = LayoutInflater.from(paramContext).inflate(2131493907, paramViewGroup1);
+    this.rqG = LayoutInflater.from(paramContext).inflate(2131493908, paramViewGroup2);
+    this.rqG.setVisibility(4);
+    if (cuZ() != null) {
+      cuZ().setText(this.rqH);
     }
-    long l = this.riE;
-    ad.i(TAG, "hy: starting tween timer: tween: %d", new Object[] { Long.valueOf(l) });
-    if (this.riG != null) {
-      this.riG.cancel();
+    long l = this.rqI;
+    ae.i(TAG, "hy: starting tween timer: tween: %d", new Object[] { Long.valueOf(l) });
+    if (this.rqK != null) {
+      this.rqK.cancel();
     }
-    this.riG = new Timer("FaceDetect_hint", true);
-    this.riH = true;
-    this.riG.scheduleAtFixedRate(new TimerTask()
+    this.rqK = new Timer("FaceDetect_hint", true);
+    this.rqL = true;
+    this.rqK.scheduleAtFixedRate(new TimerTask()
     {
       public final void run()
       {
@@ -77,16 +77,16 @@ public final class c
         {
           if (!c.c(c.this))
           {
-            ad.w(c.TAG, "hy: already stopped");
+            ae.w(c.TAG, "hy: already stopped");
             cancel();
           }
-          aq.f(new Runnable()
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(103817);
-              if (c.this.cty() != null) {
-                c.this.cty().startAnimation(c.d(c.this));
+              if (c.this.cuZ() != null) {
+                c.this.cuZ().startAnimation(c.d(c.this));
               }
               AppMethodBeat.o(103817);
             }
@@ -102,9 +102,9 @@ public final class c
   public final boolean a(FaceCharacteristicsResult paramFaceCharacteristicsResult)
   {
     AppMethodBeat.i(103823);
-    if ((this.riz) && (paramFaceCharacteristicsResult != null) && (paramFaceCharacteristicsResult.errCode == 18))
+    if ((this.rqD) && (paramFaceCharacteristicsResult != null) && (paramFaceCharacteristicsResult.errCode == 18))
     {
-      ad.d(TAG, "hy: ignore too active");
+      ae.d(TAG, "hy: ignore too active");
       AppMethodBeat.o(103823);
       return true;
     }
@@ -117,21 +117,21 @@ public final class c
     AppMethodBeat.i(103824);
     if (paramFaceCharacteristicsResult.errCode == -1)
     {
-      this.riz = true;
-      if (!this.riJ)
+      this.rqD = true;
+      if (!this.rqN)
       {
-        bd.aI(aj.getContext(), 2131762119);
-        paramFaceCharacteristicsResult = (TextView)this.riB.findViewById(2131300745);
-        Animation localAnimation1 = AnimationUtils.loadAnimation(aj.getContext(), 2130772040);
-        Animation localAnimation2 = AnimationUtils.loadAnimation(aj.getContext(), 2130772047);
-        localAnimation1.setDuration(riy);
-        localAnimation2.setDuration(riy);
+        be.aI(ak.getContext(), 2131762119);
+        paramFaceCharacteristicsResult = (TextView)this.rqF.findViewById(2131300745);
+        Animation localAnimation1 = AnimationUtils.loadAnimation(ak.getContext(), 2130772040);
+        Animation localAnimation2 = AnimationUtils.loadAnimation(ak.getContext(), 2130772047);
+        localAnimation1.setDuration(rqC);
+        localAnimation2.setDuration(rqC);
         paramFaceCharacteristicsResult.startAnimation(localAnimation1);
         paramFaceCharacteristicsResult.setVisibility(4);
-        this.riC.setVisibility(0);
-        this.riC.startAnimation(localAnimation2);
-        this.riC.findViewById(2131299694).setOnClickListener(new c.1(this));
-        this.riJ = true;
+        this.rqG.setVisibility(0);
+        this.rqG.startAnimation(localAnimation2);
+        this.rqG.findViewById(2131299694).setOnClickListener(new c.1(this));
+        this.rqN = true;
         AppMethodBeat.o(103824);
         return true;
       }
@@ -140,34 +140,34 @@ public final class c
     return false;
   }
   
-  public final boolean ctt()
+  public final boolean cuU()
   {
-    return (this.riz) && (this.riA);
+    return (this.rqD) && (this.rqE);
   }
   
-  public final boolean ctu()
+  public final boolean cuV()
   {
     return false;
   }
   
-  public final void ctv()
+  public final void cuW()
   {
     AppMethodBeat.i(103825);
-    this.riH = false;
-    if (this.riG != null) {
-      this.riG.cancel();
+    this.rqL = false;
+    if (this.rqK != null) {
+      this.rqK.cancel();
     }
-    this.riz = false;
-    this.riJ = false;
-    this.riK = false;
-    this.riA = false;
+    this.rqD = false;
+    this.rqN = false;
+    this.rqO = false;
+    this.rqE = false;
     AppMethodBeat.o(103825);
   }
   
-  public final b.b ctw()
+  public final b.b cuX()
   {
     AppMethodBeat.i(103826);
-    if (this.riz)
+    if (this.rqD)
     {
       localb = new b.b(90025, "user cancelled in intermediate page");
       AppMethodBeat.o(103826);
@@ -178,12 +178,12 @@ public final class c
     return localb;
   }
   
-  public final b.a ctx()
+  public final b.a cuY()
   {
     AppMethodBeat.i(103827);
-    if ((this.riz) && (!this.riK))
+    if ((this.rqD) && (!this.rqO))
     {
-      this.riK = true;
+      this.rqO = true;
       b.a locala = new b.a();
       AppMethodBeat.o(103827);
       return locala;
@@ -192,19 +192,19 @@ public final class c
     return null;
   }
   
-  public final TextView cty()
+  public final TextView cuZ()
   {
     AppMethodBeat.i(103820);
     TextView localTextView;
-    if ((!this.riz) && (this.riB != null))
+    if ((!this.rqD) && (this.rqF != null))
     {
-      localTextView = (TextView)this.riB.findViewById(2131300745);
+      localTextView = (TextView)this.rqF.findViewById(2131300745);
       AppMethodBeat.o(103820);
       return localTextView;
     }
-    if ((this.riz) && (this.riC != null))
+    if ((this.rqD) && (this.rqG != null))
     {
-      localTextView = (TextView)this.riC.findViewById(2131300745);
+      localTextView = (TextView)this.rqG.findViewById(2131300745);
       AppMethodBeat.o(103820);
       return localTextView;
     }
@@ -217,17 +217,17 @@ public final class c
     AppMethodBeat.i(103821);
     String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder("getHintMsgTv() == null : ");
-    if (cty() == null) {}
+    if (cuZ() == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d(str, bool);
-      if (cty() != null) {
+      ae.d(str, bool);
+      if (cuZ() != null) {
         break;
       }
       AppMethodBeat.o(103821);
       return;
     }
-    cty().setText(paramString);
+    cuZ().setText(paramString);
     AppMethodBeat.o(103821);
   }
 }

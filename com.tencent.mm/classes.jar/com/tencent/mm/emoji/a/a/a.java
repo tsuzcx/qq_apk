@@ -1,42 +1,50 @@
 package com.tencent.mm.emoji.a.a;
 
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import d.g.b.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.ExchangeEmotionPackRequest;
+import com.tencent.mm.protocal.protobuf.ExchangeEmotionPackResponse;
 import d.l;
-import java.util.LinkedList;
-import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "contentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "getContentList", "()Ljava/util/LinkedList;", "groupItem", "Lcom/tencent/mm/emoji/model/panel/GroupTitleItem;", "getGroupItem", "()Lcom/tencent/mm/emoji/model/panel/GroupTitleItem;", "equals", "", "other", "", "getGroupInfo", "getItemList", "", "plugin-emojisdk_release"})
-public abstract class a
-  implements w
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/cgi/CgiExchangeEmotionPack;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ExchangeEmotionPackResponse;", "groupId", "", "scene", "", "(Ljava/lang/String;I)V", "Companion", "plugin-emojisdk_release"})
+public final class a
+  extends com.tencent.mm.ak.a<ExchangeEmotionPackResponse>
 {
-  final u gkI;
-  protected final LinkedList<ac> gkJ;
+  public static final a gnc;
   
-  public a(EmojiGroupInfo paramEmojiGroupInfo)
+  static
   {
-    this.gkI = new u(paramEmojiGroupInfo);
-    this.gkJ = new LinkedList();
+    AppMethodBeat.i(188559);
+    gnc = new a((byte)0);
+    AppMethodBeat.o(188559);
   }
   
-  public final EmojiGroupInfo afk()
+  public a(String paramString)
   {
-    return this.gkI.gin;
+    AppMethodBeat.i(188558);
+    ExchangeEmotionPackRequest localExchangeEmotionPackRequest = new ExchangeEmotionPackRequest();
+    ExchangeEmotionPackResponse localExchangeEmotionPackResponse = new ExchangeEmotionPackResponse();
+    localExchangeEmotionPackRequest.IsAutomatic = 1;
+    localExchangeEmotionPackRequest.ProductID = paramString;
+    localExchangeEmotionPackRequest.Scene = 1;
+    localExchangeEmotionPackRequest.SeriesID = null;
+    paramString = new b.a();
+    paramString.c((com.tencent.mm.bw.a)localExchangeEmotionPackRequest);
+    paramString.d((com.tencent.mm.bw.a)localExchangeEmotionPackResponse);
+    paramString.DN("/cgi-bin/micromsg-bin/exchangeemotionpack");
+    paramString.oS(423);
+    paramString.oU(213);
+    paramString.oV(1000000213);
+    c(paramString.aDS());
+    AppMethodBeat.o(188558);
   }
   
-  public final List<ac> afl()
-  {
-    return (List)this.gkJ;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof a)) && (p.i(((a)paramObject).gkI.gin.fxi(), this.gkI.gin.fxi()));
-  }
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/cgi/CgiExchangeEmotionPack$Companion;", "", "()V", "MM_EXCHANGE_EMOTION_PACK", "", "MM_EXCHANGE_EMOTION_PIECE", "NOT_PAY_PRODUCT", "NOT_VALID_AREA", "NOT_VALID_WEAR", "NO_SUCH_PRODUCT", "PRODUCT_EXPIRED", "plugin-emojisdk_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.a
  * JD-Core Version:    0.7.0.1
  */

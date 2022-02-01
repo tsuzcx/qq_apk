@@ -17,10 +17,10 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.aa;
 import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,106 +34,37 @@ public final class h
   List<Long> idList;
   Context mContext;
   ArrayList<f.d> mDataList;
-  private ap mHandler;
-  private GridLayoutManager oTd;
-  f.b rCD;
-  g.b rCX;
-  f rCY;
-  boolean rCZ;
-  int rDa;
-  int rDb;
+  private aq mHandler;
+  private GridLayoutManager oZF;
+  f.b rKO;
+  g.b rLi;
+  f rLj;
+  boolean rLk;
+  int rLl;
+  int rLm;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(107429);
     this.mDataList = null;
-    this.rCZ = false;
-    this.mHandler = new ap(Looper.getMainLooper());
-    this.rDa = 0;
+    this.rLk = false;
+    this.mHandler = new aq(Looper.getMainLooper());
+    this.rLl = 0;
     this.idList = new ArrayList();
-    this.rDb = 0;
+    this.rLm = 0;
     this.mContext = paramContext;
     this.mDataList = new ArrayList();
     AppMethodBeat.o(107429);
   }
   
-  public final void E(final boolean paramBoolean, final int paramInt)
-  {
-    AppMethodBeat.i(107439);
-    this.rCY.oSR = true;
-    this.rCX.jD(paramBoolean);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
-    {
-      public final void run()
-      {
-        int j = 100;
-        AppMethodBeat.i(107428);
-        if (paramBoolean)
-        {
-          h.this.mDataList.clear();
-          h.this.rDb = 0;
-          localObject1 = new ArrayList();
-          ((List)localObject1).add(Integer.valueOf(21));
-          h.this.idList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavSearchStorage().b(null, null, (List)localObject1);
-          h.this.rDa = h.this.idList.size();
-        }
-        final int i = j;
-        if (paramInt >= 0)
-        {
-          i = j;
-          if (h.this.rDa - paramInt > 100) {
-            i = h.this.rDa - paramInt;
-          }
-        }
-        ad.i("MicroMsg.MediaHistoryGalleryPresenter", "offset:%s limit:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-        Object localObject1 = new LinkedList();
-        while ((((LinkedList)localObject1).size() < i) && (h.this.rDb < h.this.idList.size()))
-        {
-          int k = h.this.rDb;
-          if (k + i > h.this.idList.size()) {}
-          for (j = h.this.idList.size();; j = k + i)
-          {
-            Object localObject2 = h.dx(h.this.idList.subList(k, j));
-            h.this.rDb = j;
-            localObject2 = ((List)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext()) {
-              ((LinkedList)localObject1).addAll(h.I((com.tencent.mm.plugin.fav.a.g)((Iterator)localObject2).next()));
-            }
-          }
-          ad.i("MicroMsg.MediaHistoryGalleryPresenter", "traverse until size ok. start:%s, end:%s, idListSize:%s, limit:%s, linklistSize:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(h.this.idList.size()), Integer.valueOf(i), Integer.valueOf(((LinkedList)localObject1).size()) });
-        }
-        i = ((LinkedList)localObject1).size();
-        Collections.reverse((List)localObject1);
-        h.this.mDataList.addAll(0, (Collection)localObject1);
-        ((LinkedList)localObject1).clear();
-        ad.i("MicroMsg.MediaHistoryGalleryPresenter", "[loadData] %s", new Object[] { Integer.valueOf(h.this.mDataList.size()) });
-        aq.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(107427);
-            h.this.rCY.oSR = false;
-            if (h.this.rCX != null) {
-              h.this.rCX.B(h.5.this.oSY, i);
-            }
-            AppMethodBeat.o(107427);
-          }
-        });
-        AppMethodBeat.o(107428);
-      }
-    });
-    AppMethodBeat.o(107439);
-  }
-  
-  public final void Ei(int paramInt)
+  public final void Ev(int paramInt)
   {
     AppMethodBeat.i(107434);
-    ad.i("MicroMsg.MediaHistoryGalleryPresenter", "[handleSelectedItem] type:%s", new Object[] { Integer.valueOf(paramInt) });
-    ArrayList localArrayList = e.a.cxj().rCx;
+    ae.i("MicroMsg.MediaHistoryGalleryPresenter", "[handleSelectedItem] type:%s", new Object[] { Integer.valueOf(paramInt) });
+    ArrayList localArrayList = e.a.cyK().rKI;
     if ((localArrayList == null) || (localArrayList.size() == 0))
     {
-      ad.i("MicroMsg.MediaHistoryGalleryPresenter", "handleSelectedItem() list == null");
+      ae.i("MicroMsg.MediaHistoryGalleryPresenter", "handleSelectedItem() list == null");
       AppMethodBeat.o(107434);
       return;
     }
@@ -144,90 +75,159 @@ public final class h
     {
       AppMethodBeat.o(107434);
       return;
-      this.rCX.dv(localArrayList);
-      this.rCX.cxe();
+      this.rLi.dy(localArrayList);
+      this.rLi.cyF();
       AppMethodBeat.o(107434);
       return;
-      this.rCX.dw(localArrayList);
-      this.rCX.cxe();
+      this.rLi.dz(localArrayList);
+      this.rLi.cyF();
     }
+  }
+  
+  public final void F(final boolean paramBoolean, final int paramInt)
+  {
+    AppMethodBeat.i(107439);
+    this.rLj.oZt = true;
+    this.rLi.jC(paramBoolean);
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    {
+      public final void run()
+      {
+        int j = 100;
+        AppMethodBeat.i(107428);
+        if (paramBoolean)
+        {
+          h.this.mDataList.clear();
+          h.this.rLm = 0;
+          localObject1 = new ArrayList();
+          ((List)localObject1).add(Integer.valueOf(21));
+          h.this.idList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavSearchStorage().b(null, null, (List)localObject1);
+          h.this.rLl = h.this.idList.size();
+        }
+        final int i = j;
+        if (paramInt >= 0)
+        {
+          i = j;
+          if (h.this.rLl - paramInt > 100) {
+            i = h.this.rLl - paramInt;
+          }
+        }
+        ae.i("MicroMsg.MediaHistoryGalleryPresenter", "offset:%s limit:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        Object localObject1 = new LinkedList();
+        while ((((LinkedList)localObject1).size() < i) && (h.this.rLm < h.this.idList.size()))
+        {
+          int k = h.this.rLm;
+          if (k + i > h.this.idList.size()) {}
+          for (j = h.this.idList.size();; j = k + i)
+          {
+            Object localObject2 = h.dA(h.this.idList.subList(k, j));
+            h.this.rLm = j;
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              ((LinkedList)localObject1).addAll(h.I((com.tencent.mm.plugin.fav.a.g)((Iterator)localObject2).next()));
+            }
+          }
+          ae.i("MicroMsg.MediaHistoryGalleryPresenter", "traverse until size ok. start:%s, end:%s, idListSize:%s, limit:%s, linklistSize:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(h.this.idList.size()), Integer.valueOf(i), Integer.valueOf(((LinkedList)localObject1).size()) });
+        }
+        i = ((LinkedList)localObject1).size();
+        Collections.reverse((List)localObject1);
+        h.this.mDataList.addAll(0, (Collection)localObject1);
+        ((LinkedList)localObject1).clear();
+        ae.i("MicroMsg.MediaHistoryGalleryPresenter", "[loadData] %s", new Object[] { Integer.valueOf(h.this.mDataList.size()) });
+        ar.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(107427);
+            h.this.rLj.oZt = false;
+            if (h.this.rLi != null) {
+              h.this.rLi.C(h.5.this.oZA, i);
+            }
+            AppMethodBeat.o(107427);
+          }
+        });
+        AppMethodBeat.o(107428);
+      }
+    });
+    AppMethodBeat.o(107439);
   }
   
   public final void a(f.b paramb)
   {
-    this.rCD = paramb;
+    this.rKO = paramb;
   }
   
-  public final RecyclerView.a bZA()
+  public final RecyclerView.a caP()
   {
     AppMethodBeat.i(107433);
-    this.rCY = new f(this.mContext, this.mDataList, this.rCX, new Runnable()
+    this.rLj = new f(this.mContext, this.mDataList, this.rLi, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107425);
-        ad.i("MicroMsg.MediaHistoryGalleryPresenter", "uiCallback()");
-        h.this.E(true, -1);
+        ae.i("MicroMsg.MediaHistoryGalleryPresenter", "uiCallback()");
+        h.this.F(true, -1);
         AppMethodBeat.o(107425);
       }
     });
-    this.rCY.rCC = new f.c()
+    this.rLj.rKN = new f.c()
     {
       public final void a(boolean paramAnonymousBoolean, f.d paramAnonymousd, int paramAnonymousInt)
       {
         AppMethodBeat.i(107426);
-        ad.i("MicroMsg.MediaHistoryGalleryPresenter", "[onCheck] isChecked :%s pos:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt) });
-        if ((paramAnonymousBoolean) && (e.a.cxj().rCx.size() >= 9))
+        ae.i("MicroMsg.MediaHistoryGalleryPresenter", "[onCheck] isChecked :%s pos:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt) });
+        if ((paramAnonymousBoolean) && (e.a.cyK().rKI.size() >= 9))
         {
           Toast.makeText(h.this.mContext, h.this.mContext.getResources().getString(2131758830, new Object[] { Integer.valueOf(9) }), 1).show();
-          h.this.rCY.cj(paramAnonymousInt);
+          h.this.rLj.cj(paramAnonymousInt);
           AppMethodBeat.o(107426);
           return;
         }
         e locale;
         if (paramAnonymousBoolean)
         {
-          locale = e.a.cxj();
-          paramAnonymousd = paramAnonymousd.rCG;
+          locale = e.a.cyK();
+          paramAnonymousd = paramAnonymousd.rKR;
           if (paramAnonymousd != null)
           {
-            ad.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { paramAnonymousd });
-            locale.rCx.remove(paramAnonymousd);
-            locale.rCx.remove(locale.agQ(paramAnonymousd.dsX.dsU));
-            locale.rCx.add(paramAnonymousd);
-            locale.cxi();
+            ae.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { paramAnonymousd });
+            locale.rKI.remove(paramAnonymousd);
+            locale.rKI.remove(locale.ahN(paramAnonymousd.dud.dua));
+            locale.rKI.add(paramAnonymousd);
+            locale.cyJ();
           }
         }
         for (;;)
         {
-          h.this.rCX.Eg(e.a.cxj().rCx.size());
+          h.this.rLi.Et(e.a.cyK().rKI.size());
           AppMethodBeat.o(107426);
           return;
-          locale = e.a.cxj();
-          paramAnonymousd = paramAnonymousd.rCG;
+          locale = e.a.cyK();
+          paramAnonymousd = paramAnonymousd.rKR;
           if (paramAnonymousd != null)
           {
-            ad.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { paramAnonymousd.dsX.dsU });
-            locale.rCx.remove(paramAnonymousd);
-            locale.rCx.remove(locale.agQ(paramAnonymousd.dsX.dsU));
-            locale.cxi();
+            ae.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { paramAnonymousd.dud.dua });
+            locale.rKI.remove(paramAnonymousd);
+            locale.rKI.remove(locale.ahN(paramAnonymousd.dud.dua));
+            locale.cyJ();
           }
         }
       }
     };
-    this.rCY.rCD = this.rCD;
-    f localf = this.rCY;
+    this.rLj.rKO = this.rKO;
+    f localf = this.rLj;
     AppMethodBeat.o(107433);
     return localf;
   }
   
-  public final <T extends RecyclerView.i> T bZB()
+  public final <T extends RecyclerView.i> T caQ()
   {
     AppMethodBeat.i(107431);
-    if (this.oTd == null)
+    if (this.oZF == null)
     {
-      this.oTd = new GridLayoutManager(4);
-      this.oTd.apF = new GridLayoutManager.b()
+      this.oZF = new GridLayoutManager(4);
+      this.oZF.apF = new GridLayoutManager.b()
       {
         public final int bW(int paramAnonymousInt)
         {
@@ -247,47 +247,47 @@ public final class h
         }
       };
     }
-    GridLayoutManager localGridLayoutManager = this.oTd;
+    GridLayoutManager localGridLayoutManager = this.oZF;
     AppMethodBeat.o(107431);
     return localGridLayoutManager;
   }
   
-  public final boolean cxc()
+  public final boolean cyD()
   {
     AppMethodBeat.i(107437);
-    boolean bool = e.a.cxj().rCy;
+    boolean bool = e.a.cyK().rKJ;
     AppMethodBeat.o(107437);
     return bool;
   }
   
-  public final void cxd()
+  public final void cyE()
   {
     AppMethodBeat.i(107435);
-    this.rCY.rCE = true;
-    e.a.cxj().rCy = true;
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)bZB();
+    this.rLj.rKP = true;
+    e.a.cyK().rKJ = true;
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)caQ();
     int i = localGridLayoutManager.km();
     int j = localGridLayoutManager.ko();
-    this.rCY.e(i, j - i + 1, Integer.valueOf(0));
+    this.rLj.e(i, j - i + 1, Integer.valueOf(0));
     AppMethodBeat.o(107435);
   }
   
-  public final void cxe()
+  public final void cyF()
   {
     AppMethodBeat.i(107436);
-    this.rCY.rCE = false;
-    e.a.cxj().clear();
-    e.a.cxj().rCy = false;
-    this.rCY.asY.notifyChanged();
+    this.rLj.rKP = false;
+    e.a.cyK().clear();
+    e.a.cyK().rKJ = false;
+    this.rLj.asY.notifyChanged();
     AppMethodBeat.o(107436);
   }
   
-  public final void cxk()
+  public final void cyL()
   {
-    this.rCZ = true;
+    this.rLk = true;
   }
   
-  public final RecyclerView.h eK(final Context paramContext)
+  public final RecyclerView.h eO(final Context paramContext)
   {
     AppMethodBeat.i(107432);
     paramContext = new RecyclerView.h()
@@ -310,25 +310,25 @@ public final class h
   public final void onDetach()
   {
     AppMethodBeat.i(107430);
-    if (this.rCX != null)
+    if (this.rLi != null)
     {
-      this.rCX.a(null);
-      this.rCX = null;
+      this.rLi.a(null);
+      this.rLi = null;
     }
-    e locale = e.a.cxj();
-    locale.rCz.clear();
+    e locale = e.a.cyK();
+    locale.rKK.clear();
     locale.clear();
-    locale.rCy = false;
+    locale.rKJ = false;
     AppMethodBeat.o(107430);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(107438);
-    if ((this.rCZ) && (e.a.cxj().rCy))
+    if ((this.rLk) && (e.a.cyK().rKJ))
     {
-      this.rCX.Eg(e.a.cxj().rCx.size());
-      this.rCY.asY.notifyChanged();
+      this.rLi.Et(e.a.cyK().rKI.size());
+      this.rLj.asY.notifyChanged();
     }
     AppMethodBeat.o(107438);
   }

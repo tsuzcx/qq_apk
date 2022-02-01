@@ -11,21 +11,21 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public class FrameAnimatorImageView
   extends ImageView
 {
-  private Runnable tfT;
-  private DrawFilter tfU;
+  private Runnable tqM;
+  private DrawFilter tqN;
   
   public FrameAnimatorImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(64218);
-    this.tfT = null;
-    this.tfU = new PaintFlagsDrawFilter(0, 3);
+    this.tqM = null;
+    this.tqN = new PaintFlagsDrawFilter(0, 3);
     AppMethodBeat.o(64218);
   }
   
@@ -33,15 +33,15 @@ public class FrameAnimatorImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(64219);
-    this.tfT = null;
-    this.tfU = new PaintFlagsDrawFilter(0, 3);
+    this.tqM = null;
+    this.tqN = new PaintFlagsDrawFilter(0, 3);
     AppMethodBeat.o(64219);
   }
   
   public final void a(int paramInt, final a parama)
   {
     AppMethodBeat.i(64220);
-    Object localObject = aj.getContext().getResources().getDrawable(paramInt);
+    Object localObject = ak.getContext().getResources().getDrawable(paramInt);
     setImageDrawable((Drawable)localObject);
     if ((localObject instanceof AnimationDrawable))
     {
@@ -58,7 +58,7 @@ public class FrameAnimatorImageView
         }
         if (parama != null)
         {
-          this.tfT = new Runnable()
+          this.tqM = new Runnable()
           {
             public final void run()
             {
@@ -67,7 +67,7 @@ public class FrameAnimatorImageView
               AppMethodBeat.o(64217);
             }
           };
-          aq.o(this.tfT, paramInt);
+          ar.o(this.tqM, paramInt);
         }
       }
     }
@@ -77,7 +77,7 @@ public class FrameAnimatorImageView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(64224);
-    paramCanvas.setDrawFilter(this.tfU);
+    paramCanvas.setDrawFilter(this.tqN);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(64224);
   }
@@ -85,7 +85,7 @@ public class FrameAnimatorImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(64223);
-    aq.aA(this.tfT);
+    ar.ay(this.tqM);
     super.setImageBitmap(paramBitmap);
     AppMethodBeat.o(64223);
   }
@@ -93,7 +93,7 @@ public class FrameAnimatorImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(64221);
-    aq.aA(this.tfT);
+    ar.ay(this.tqM);
     super.setImageDrawable(paramDrawable);
     AppMethodBeat.o(64221);
   }
@@ -101,7 +101,7 @@ public class FrameAnimatorImageView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(64222);
-    aq.aA(this.tfT);
+    ar.ay(this.tqM);
     super.setImageResource(paramInt);
     AppMethodBeat.o(64222);
   }

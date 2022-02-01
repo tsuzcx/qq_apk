@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,8 +16,8 @@ public class y
   public final void a(Context paramContext, String paramString, bq.a parama)
   {
     AppMethodBeat.i(83085);
-    ad.i("MicroMsg.JsApiPublishHaowanEdition", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    ae.i("MicroMsg.JsApiPublishHaowanEdition", "invokeInMM");
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
     if (paramContext == null)
     {
       parama.f("invalid_data", null);
@@ -26,8 +26,8 @@ public class y
     }
     paramString = paramContext.optString("postId");
     boolean bool = paramContext.optBoolean("compressImg", true);
-    if (!bt.isNullOrNil(paramString)) {
-      paramContext = ((d)com.tencent.mm.kernel.g.ab(d.class)).alk(paramString);
+    if (!bu.isNullOrNil(paramString)) {
+      paramContext = ((d)com.tencent.mm.kernel.g.ab(d.class)).ami(paramString);
     }
     for (;;)
     {
@@ -54,7 +54,7 @@ public class y
   
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

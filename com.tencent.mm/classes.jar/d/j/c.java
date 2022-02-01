@@ -6,24 +6,24 @@ import d.e.b;
 import d.g.b.k;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/random/Random;", "", "()V", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "fromIndex", "toIndex", "size", "nextDouble", "", "until", "from", "nextFloat", "", "nextInt", "nextLong", "", "Companion", "Default", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/random/Random;", "", "()V", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "fromIndex", "toIndex", "size", "nextDouble", "", "until", "from", "nextFloat", "", "nextInt", "nextLong", "", "Companion", "Default", "kotlin-stdlib"})
 public abstract class c
 {
-  public static final c MMc = a.gfM();
-  public static final a MMd = a.MMf;
-  public static final b MMe = new b((byte)0);
+  public static final c Njf = a.gko();
+  public static final a Njg = a.Nji;
+  public static final b Njh = new b((byte)0);
   
   static
   {
-    a locala = b.MLv;
+    a locala = b.Niy;
   }
   
-  public abstract int ajk(int paramInt);
+  public abstract int ajU(int paramInt);
   
   public double nextDouble()
   {
-    int i = ajk(26);
-    int j = ajk(27);
+    int i = ajU(26);
+    int j = ajU(27);
     long l = i;
     return (j + (l << 27)) / 9007199254740992.0D;
   }
@@ -33,7 +33,7 @@ public abstract class c
     int j = 1;
     if (paramDouble2 > paramDouble1) {}
     for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(d.T(Double.valueOf(paramDouble1), Double.valueOf(paramDouble2)).toString()));
+      throw ((Throwable)new IllegalArgumentException(d.S(Double.valueOf(paramDouble1), Double.valueOf(paramDouble2)).toString()));
     }
     double d = paramDouble2 - paramDouble1;
     if (Double.isInfinite(d)) {
@@ -61,8 +61,8 @@ public abstract class c
       d = paramDouble1;
       if (paramDouble1 >= paramDouble2)
       {
-        k localk = k.MLL;
-        d = Math.nextAfter(paramDouble2, k.gfW());
+        k localk = k.NiO;
+        d = Math.nextAfter(paramDouble2, k.gky());
       }
       return d;
       i = 0;
@@ -74,20 +74,20 @@ public abstract class c
   
   public int nextInt()
   {
-    return ajk(32);
+    return ajU(32);
   }
   
   public int nextInt(int paramInt1, int paramInt2)
   {
     if (paramInt2 > paramInt1) {}
     for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(d.T(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)).toString()));
+      throw ((Throwable)new IllegalArgumentException(d.S(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)).toString()));
     }
     i = paramInt2 - paramInt1;
     if ((i > 0) || (i == -2147483648))
     {
       if ((-i & i) == i) {
-        paramInt2 = ajk(31 - Integer.numberOfLeadingZeros(i));
+        paramInt2 = ajU(31 - Integer.numberOfLeadingZeros(i));
       }
       for (;;)
       {
@@ -107,36 +107,36 @@ public abstract class c
     return i;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/random/Random$Companion;", "Lkotlin/random/Random;", "()V", "nextBits", "", "bitCount", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/random/Random$Companion;", "Lkotlin/random/Random;", "()V", "nextBits", "", "bitCount", "kotlin-stdlib"})
   public static final class a
     extends c
   {
-    public static final a MMf;
+    public static final a Nji;
     
     static
     {
       AppMethodBeat.i(129567);
-      MMf = new a();
+      Nji = new a();
       AppMethodBeat.o(129567);
     }
     
-    public final int ajk(int paramInt)
+    public final int ajU(int paramInt)
     {
       AppMethodBeat.i(129566);
-      paramInt = c.MMc.ajk(paramInt);
+      paramInt = c.Njf.ajU(paramInt);
       AppMethodBeat.o(129566);
       return paramInt;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/random/Random$Default;", "Lkotlin/random/Random;", "()V", "Companion", "Lkotlin/random/Random$Companion;", "Companion$annotations", "defaultRandom", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "fromIndex", "toIndex", "size", "nextDouble", "", "until", "from", "nextFloat", "", "nextInt", "nextLong", "", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/random/Random$Default;", "Lkotlin/random/Random;", "()V", "Companion", "Lkotlin/random/Random$Companion;", "Companion$annotations", "defaultRandom", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "fromIndex", "toIndex", "size", "nextDouble", "", "until", "from", "nextFloat", "", "nextInt", "nextLong", "", "kotlin-stdlib"})
   public static final class b
     extends c
   {
-    public final int ajk(int paramInt)
+    public final int ajU(int paramInt)
     {
       AppMethodBeat.i(129560);
-      paramInt = c.MMc.ajk(paramInt);
+      paramInt = c.Njf.ajU(paramInt);
       AppMethodBeat.o(129560);
       return paramInt;
     }
@@ -144,7 +144,7 @@ public abstract class c
     public final double nextDouble()
     {
       AppMethodBeat.i(129563);
-      double d = c.MMc.nextDouble();
+      double d = c.Njf.nextDouble();
       AppMethodBeat.o(129563);
       return d;
     }
@@ -152,7 +152,7 @@ public abstract class c
     public final double nextDouble(double paramDouble1, double paramDouble2)
     {
       AppMethodBeat.i(129564);
-      paramDouble1 = c.MMc.nextDouble(paramDouble1, paramDouble2);
+      paramDouble1 = c.Njf.nextDouble(paramDouble1, paramDouble2);
       AppMethodBeat.o(129564);
       return paramDouble1;
     }
@@ -160,7 +160,7 @@ public abstract class c
     public final int nextInt()
     {
       AppMethodBeat.i(129561);
-      int i = c.MMc.nextInt();
+      int i = c.Njf.nextInt();
       AppMethodBeat.o(129561);
       return i;
     }
@@ -168,7 +168,7 @@ public abstract class c
     public final int nextInt(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(129562);
-      paramInt1 = c.MMc.nextInt(paramInt1, paramInt2);
+      paramInt1 = c.Njf.nextInt(paramInt1, paramInt2);
       AppMethodBeat.o(129562);
       return paramInt1;
     }

@@ -10,42 +10,42 @@ import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 public final class g
 {
   public final View auu;
-  private ThreeDotsLoadingView mLk;
-  View mLl;
-  private View mLm;
+  private ThreeDotsLoadingView mQm;
+  View mQn;
+  private View mQo;
   
   public g(Context paramContext, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(49140);
     this.auu = LayoutInflater.from(paramContext).inflate(2131493035, paramViewGroup, false);
-    this.mLk = ((ThreeDotsLoadingView)this.auu.findViewById(2131301514));
-    this.mLl = this.auu.findViewById(2131300215);
-    this.mLm = this.auu.findViewById(2131299491);
+    this.mQm = ((ThreeDotsLoadingView)this.auu.findViewById(2131301514));
+    this.mQn = this.auu.findViewById(2131300215);
+    this.mQo = this.auu.findViewById(2131299491);
     AppMethodBeat.o(49140);
   }
   
-  public final boolean bAK()
+  public final boolean bBE()
   {
-    AppMethodBeat.i(188938);
-    if ((this.mLk != null) && (this.mLk.isShown()))
+    AppMethodBeat.i(223171);
+    if ((this.mQm != null) && (this.mQm.isShown()))
     {
-      AppMethodBeat.o(188938);
+      AppMethodBeat.o(223171);
       return true;
     }
-    AppMethodBeat.o(188938);
+    AppMethodBeat.o(223171);
     return false;
   }
   
-  public final void bAL()
+  public final void bBF()
   {
     AppMethodBeat.i(49141);
-    if (this.mLl != null) {
-      this.mLl.setBackgroundResource(2131101053);
+    if (this.mQn != null) {
+      this.mQn.setBackgroundResource(2131101053);
     }
     AppMethodBeat.o(49141);
   }
   
-  public final View bAv()
+  public final View bBp()
   {
     return this.auu;
   }
@@ -55,26 +55,26 @@ public final class g
     AppMethodBeat.i(49139);
     if (paramBoolean)
     {
-      if (this.mLk != null)
+      if (this.mQm != null)
       {
-        this.mLk.setVisibility(0);
-        this.mLk.fLJ();
+        this.mQm.setVisibility(0);
+        this.mQm.fQd();
       }
-      if (this.mLm != null)
+      if (this.mQo != null)
       {
-        this.mLm.setVisibility(8);
+        this.mQo.setVisibility(8);
         AppMethodBeat.o(49139);
       }
     }
     else
     {
-      if (this.mLk != null)
+      if (this.mQm != null)
       {
-        this.mLk.fLK();
-        this.mLk.setVisibility(8);
+        this.mQm.fQe();
+        this.mQm.setVisibility(8);
       }
-      if (this.mLm != null) {
-        this.mLm.setVisibility(0);
+      if (this.mQo != null) {
+        this.mQo.setVisibility(0);
       }
     }
     AppMethodBeat.o(49139);
@@ -82,13 +82,13 @@ public final class g
   
   public final void onDetached()
   {
-    this.mLk = null;
-    this.mLm = null;
+    this.mQm = null;
+    this.mQo = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.g
  * JD-Core Version:    0.7.0.1
  */

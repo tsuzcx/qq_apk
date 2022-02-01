@@ -8,7 +8,7 @@ import com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider;
 
 public final class a
 {
-  public static Bundle co(Context paramContext)
+  public static Bundle cq(Context paramContext)
   {
     AppMethodBeat.i(138304);
     paramContext = paramContext.getContentResolver();

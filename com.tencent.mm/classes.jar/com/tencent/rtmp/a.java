@@ -109,12 +109,12 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(187542);
+        AppMethodBeat.i(221671);
         if (paramITXSnapshotListener != null) {
           paramITXSnapshotListener.onSnapshot(paramBitmap);
         }
         a.a(a.this, false);
-        AppMethodBeat.o(187542);
+        AppMethodBeat.o(221671);
       }
     });
     AppMethodBeat.o(14099);
@@ -239,21 +239,21 @@ public class a
   
   public int a(TXLivePlayer.ITXLivePlayVideoRenderListener paramITXLivePlayVideoRenderListener, Object paramObject)
   {
-    AppMethodBeat.i(187540);
+    AppMethodBeat.i(221669);
     if (paramObject != null) {
       if (Build.VERSION.SDK_INT >= 17)
       {
         if ((!(paramObject instanceof javax.microedition.khronos.egl.EGLContext)) && (!(paramObject instanceof android.opengl.EGLContext)))
         {
           TXCLog.w("TXLivePlayer", "liteav_api setVideoRenderListener error when glContext error ".concat(String.valueOf(paramObject)));
-          AppMethodBeat.o(187540);
+          AppMethodBeat.o(221669);
           return -1;
         }
       }
       else if (!(paramObject instanceof javax.microedition.khronos.egl.EGLContext))
       {
         TXCLog.w("TXLivePlayer", "liteav_api setVideoRenderListener error when glContext error ".concat(String.valueOf(paramObject)));
-        AppMethodBeat.o(187540);
+        AppMethodBeat.o(221669);
         return -1;
       }
     }
@@ -291,7 +291,7 @@ public class a
     }
     for (;;)
     {
-      AppMethodBeat.o(187540);
+      AppMethodBeat.o(221669);
       return 0;
       label168:
       this.t.a(null, b.a, null);
@@ -594,10 +594,10 @@ public class a
       {
         public void onRenderVideoFrame(String paramAnonymousString, int paramAnonymousInt, TXSVideoFrame paramAnonymousTXSVideoFrame)
         {
-          AppMethodBeat.i(187543);
+          AppMethodBeat.i(221672);
           if ((paramAnonymousTXSVideoFrame == null) || (paramAnonymousTXSVideoFrame.width <= 0) || (paramAnonymousTXSVideoFrame.height <= 0))
           {
-            AppMethodBeat.o(187543);
+            AppMethodBeat.o(221672);
             return;
           }
           paramAnonymousString = a.f(a.this);
@@ -610,12 +610,12 @@ public class a
               paramAnonymousTXSVideoFrame.loadYUVArray(paramAnonymousString);
               localITXVideoRawDataListener.onVideoRawDataAvailable(paramAnonymousString, paramAnonymousTXSVideoFrame.width, paramAnonymousTXSVideoFrame.height, (int)paramAnonymousTXSVideoFrame.pts);
               paramAnonymousTXSVideoFrame.release();
-              AppMethodBeat.o(187543);
+              AppMethodBeat.o(221672);
               return;
             }
             TXCLog.e("TXLivePlayer", "raw data buffer length is too large");
           }
-          AppMethodBeat.o(187543);
+          AppMethodBeat.o(221672);
         }
       }, b.b, null);
       AppMethodBeat.o(14089);
@@ -697,12 +697,12 @@ public class a
       {
         public void a(long paramAnonymousLong)
         {
-          AppMethodBeat.i(187551);
+          AppMethodBeat.i(221680);
           a.a(a.this, paramAnonymousLong);
           if (a.a(a.this) != null) {
             a.a(a.this).f();
           }
-          AppMethodBeat.o(187551);
+          AppMethodBeat.o(221680);
         }
       });
       AppMethodBeat.o(14091);

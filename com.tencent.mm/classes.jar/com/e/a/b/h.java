@@ -16,7 +16,7 @@ public final class h
     this.cer = parama;
   }
   
-  private long Bo()
+  private long Bp()
   {
     switch (this.ces)
     {
@@ -36,7 +36,7 @@ public final class h
     return this.cer.readLong();
   }
   
-  private void Bp()
+  private void Bq()
   {
     int j = this.cer.readInt();
     int k = this.cer.readInt();
@@ -46,7 +46,7 @@ public final class h
     while (i < m)
     {
       l locall = this.ceo;
-      long l = Bo();
+      long l = Bp();
       localObject[i] = ((m)locall.cfb.ceh.get(l));
       i += 1;
     }
@@ -54,9 +54,9 @@ public final class h
     this.ceo.cfb.cei.d(((n)localObject).cfh, localObject);
   }
   
-  private int Bq()
+  private int Br()
   {
-    long l = Bo();
+    long l = Bp();
     int i = this.cer.readInt();
     Object localObject = this.ceo.gf(i);
     i = this.cer.readInt();
@@ -71,7 +71,7 @@ public final class h
   
   private int a(k paramk)
   {
-    paramk = new j(paramk, Bo());
+    paramk = new j(paramk, Bp());
     this.ceo.a(paramk);
     return this.ces;
   }
@@ -89,17 +89,17 @@ public final class h
       switch (i)
       {
       default: 
-        throw new IllegalArgumentException("loadHeapDump loop with unknown tag " + i + " with " + this.cer.Bx() + " bytes possibly remaining");
+        throw new IllegalArgumentException("loadHeapDump loop with unknown tag " + i + " with " + this.cer.By() + " bytes possibly remaining");
       case 255: 
         paramLong -= a(k.ceJ);
         break;
       case 1: 
         l1 = a(k.ceO);
-        Bo();
+        Bp();
         paramLong = paramLong - l1 - this.ces;
         break;
       case 2: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         j = this.cer.readInt();
         localObject1 = this.ceo.gg(i);
@@ -109,7 +109,7 @@ public final class h
         paramLong -= this.ces + 4 + 4;
         break;
       case 3: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         j = this.cer.readInt();
         localObject1 = this.ceo.gg(i);
@@ -119,7 +119,7 @@ public final class h
         paramLong -= this.ces + 4 + 4;
         break;
       case 4: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         localObject1 = this.ceo.gg(i);
         localObject1 = this.ceo.gf(((o)localObject1).cfm);
@@ -131,7 +131,7 @@ public final class h
         paramLong -= a(k.ceK);
         break;
       case 6: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         localObject1 = this.ceo.gg(i);
         localObject1 = this.ceo.gf(((o)localObject1).cfm);
@@ -143,22 +143,22 @@ public final class h
         paramLong -= a(k.ceQ);
         break;
       case 8: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         localObject1 = new o(l1, this.cer.readInt());
         this.ceo.cfb.cek.d(i, localObject1);
         paramLong -= this.ces + 4 + 4;
         break;
       case 32: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         localObject1 = this.ceo.gf(i);
-        l2 = Bo();
-        long l3 = Bo();
-        Bo();
-        Bo();
-        Bo();
-        Bo();
+        l2 = Bp();
+        long l3 = Bp();
+        Bp();
+        Bp();
+        Bp();
+        Bp();
         int k = this.cer.readInt();
         i = this.ces;
         int m = readUnsignedShort();
@@ -181,7 +181,7 @@ public final class h
         j = 0;
         while (j < m)
         {
-          localObject3 = (String)this.cet.get(Bo());
+          localObject3 = (String)this.cet.get(Bp());
           p localp = p.gj(this.cer.readByte());
           localObject2[j] = new d(localp, (String)localObject3);
           aD(this.ceo.b(localp));
@@ -195,7 +195,7 @@ public final class h
         i = 0;
         while (i < m)
         {
-          localObject3 = (String)this.cet.get(Bo());
+          localObject3 = (String)this.cet.get(Bp());
           localObject2[i] = new d(p.gj(readUnsignedByte()), (String)localObject3);
           j += this.ces + 1;
           i += 1;
@@ -210,10 +210,10 @@ public final class h
         paramLong -= j;
         break;
       case 33: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         localObject1 = this.ceo.gf(i);
-        l2 = Bo();
+        l2 = Bp();
         i = this.cer.readInt();
         localObject1 = new b(l1, (n)localObject1, this.cer.position());
         ((i)localObject1).cew = l2;
@@ -222,11 +222,11 @@ public final class h
         paramLong -= this.ces + 4 + this.ces + 4 + i;
         break;
       case 34: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         localObject1 = this.ceo.gf(i);
         i = this.cer.readInt();
-        l2 = Bo();
+        l2 = Bp();
         localObject1 = new a(l1, (n)localObject1, p.cfn, i, this.cer.position());
         ((i)localObject1).cew = l2;
         this.ceo.a(l1, (i)localObject1);
@@ -235,15 +235,15 @@ public final class h
         paramLong -= i + (this.ces + 4 + 4 + this.ces);
         break;
       case 35: 
-        paramLong -= Bq();
+        paramLong -= Br();
         break;
       case 195: 
         System.err.println("+--- PRIMITIVE ARRAY NODATA DUMP");
-        Bq();
+        Br();
         throw new IllegalArgumentException("Don't know how to load a nodata array");
       case 254: 
         i = this.cer.readInt();
-        l1 = Bo();
+        l1 = Bp();
         localObject1 = (String)this.cet.get(l1);
         this.ceo.f(i, (String)localObject1);
         paramLong -= this.ces + 4;
@@ -264,7 +264,7 @@ public final class h
         paramLong -= a(k.ceL);
         break;
       case 142: 
-        l1 = Bo();
+        l1 = Bp();
         i = this.cer.readInt();
         j = this.cer.readInt();
         localObject1 = this.ceo.gg(i);
@@ -293,7 +293,7 @@ public final class h
     return this.cer.readShort() & 0xFFFF;
   }
   
-  public final l Bn()
+  public final l Bo()
   {
     locall = new l(this.cer);
     this.ceo = locall;
@@ -315,29 +315,29 @@ public final class h
       }
       catch (EOFException localEOFException)
       {
-        this.ceo.Bv();
         this.ceo.Bw();
+        this.ceo.Bx();
         this.ceu.clear();
         this.cet.clear();
         return locall;
         int i = (int)l;
         int j = this.ces;
-        long l = Bo();
+        long l = Bp();
         Object localObject = new byte[i - j];
         this.cer.y((byte[])localObject);
         localObject = new String((byte[])localObject, "utf-8");
         this.cet.a(l, localObject);
         continue;
         this.cer.readInt();
-        l = Bo();
+        l = Bp();
         this.cer.readInt();
-        localObject = (String)this.cet.get(Bo());
+        localObject = (String)this.cet.get(Bp());
         this.ceu.a(l, localObject);
         continue;
-        localObject = new m(Bo(), (String)this.cet.get(Bo()), (String)this.cet.get(Bo()), (String)this.cet.get(Bo()), this.cer.readInt(), this.cer.readInt());
+        localObject = new m(Bp(), (String)this.cet.get(Bp()), (String)this.cet.get(Bp()), (String)this.cet.get(Bp()), this.cer.readInt(), this.cer.readInt());
         this.ceo.cfb.ceh.a(((m)localObject).MI, localObject);
         continue;
-        Bp();
+        Bq();
         continue;
         aC(l);
         this.ceo.f(0, "default");

@@ -3,7 +3,7 @@ package com.tencent.mm.vending.g;
 public abstract interface c<_Var>
   extends com.tencent.mm.vending.e.a, d<_Var>
 {
-  public abstract c<_Var> Et(long paramLong);
+  public abstract c<_Var> EV(long paramLong);
   
   public abstract c<_Var> b(com.tencent.mm.vending.e.b paramb);
   
@@ -17,11 +17,11 @@ public abstract interface c<_Var>
   
   public abstract <_Ret> c<_Ret> f(com.tencent.mm.vending.c.a<_Ret, _Var> parama);
   
-  public abstract b fOa();
+  public abstract b fSv();
   
-  public abstract d<_Var> fOb();
+  public abstract d<_Var> fSw();
   
-  public abstract c<_Var> yX(boolean paramBoolean);
+  public abstract c<_Var> zl(boolean paramBoolean);
   
   public static abstract interface a<_Ret>
   {

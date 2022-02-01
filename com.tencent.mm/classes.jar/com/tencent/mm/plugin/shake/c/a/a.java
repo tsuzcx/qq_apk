@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.shake.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.sk;
-import com.tencent.mm.protocal.protobuf.sl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.sm;
+import com.tencent.mm.protocal.protobuf.sn;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   extends n
@@ -24,16 +24,16 @@ public final class a
   {
     AppMethodBeat.i(28179);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new sk();
-    ((b.a)localObject).hNN = new sl();
+    ((b.a)localObject).hQF = new sm();
+    ((b.a)localObject).hQG = new sn();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/cancelshakecard";
     ((b.a)localObject).funcId = 1252;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (sk)this.rr.hNK.hNQ;
-    ((sk)localObject).oxM = paramString1;
-    ((sk)localObject).dHY = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (sm)this.rr.hQD.hQJ;
+    ((sm)localObject).oEo = paramString1;
+    ((sm)localObject).dJc = paramString2;
     AppMethodBeat.o(28179);
   }
   
@@ -54,7 +54,7 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28181);
-    ad.i("MicroMsg.NetSceneCancelShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
+    ae.i("MicroMsg.NetSceneCancelShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(28181);
   }

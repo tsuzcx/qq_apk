@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.wenote.model.a;
 public class l
   extends v
 {
-  public Boolean puc = Boolean.FALSE;
-  public Boolean pud = Boolean.FALSE;
+  public Boolean pAG = Boolean.FALSE;
+  public Boolean pAH = Boolean.FALSE;
   
-  public final String ceb()
+  public final String cfq()
   {
-    return this.ptU;
+    return this.pAy;
   }
   
   public int getType()

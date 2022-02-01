@@ -12,20 +12,20 @@ public abstract class s
     return paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager()).toString();
   }
   
-  public abstract boolean aLv(String paramString);
+  public abstract boolean aMR(String paramString);
   
-  public abstract String aQx();
+  public abstract String aQW();
   
   public boolean ah(Context paramContext, Intent paramIntent)
   {
     return false;
   }
   
-  public abstract String eZs();
+  public abstract String fdg();
   
-  public abstract t.a eZt();
+  public abstract t.a fdh();
   
-  public abstract boolean hn(Context paramContext);
+  public abstract boolean ht(Context paramContext);
 }
 
 

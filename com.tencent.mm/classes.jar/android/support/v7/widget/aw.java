@@ -31,7 +31,7 @@ public final class aw
     this.mTheme = null;
   }
   
-  public static Context ac(Context paramContext)
+  public static Context ad(Context paramContext)
   {
     int j = 0;
     int i = j;

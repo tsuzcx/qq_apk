@@ -11,8 +11,8 @@ public class WxaPkgLoadProgress
   implements Parcelable, c, k
 {
   public static final Parcelable.Creator<WxaPkgLoadProgress> CREATOR;
-  public long jIs;
-  public long jIt;
+  public long jLt;
+  public long jLu;
   public int progress;
   
   static
@@ -25,40 +25,40 @@ public class WxaPkgLoadProgress
   public WxaPkgLoadProgress()
   {
     this.progress = 0;
-    this.jIs = -1L;
-    this.jIt = -1L;
+    this.jLt = -1L;
+    this.jLu = -1L;
   }
   
   public WxaPkgLoadProgress(int paramInt, long paramLong1, long paramLong2)
   {
     this.progress = 0;
-    this.jIs = -1L;
-    this.jIt = -1L;
+    this.jLt = -1L;
+    this.jLu = -1L;
     this.progress = paramInt;
-    this.jIs = paramLong1;
-    this.jIt = paramLong2;
+    this.jLt = paramLong1;
+    this.jLu = paramLong2;
   }
   
   protected WxaPkgLoadProgress(Parcel paramParcel)
   {
     AppMethodBeat.i(90640);
     this.progress = 0;
-    this.jIs = -1L;
-    this.jIt = -1L;
+    this.jLt = -1L;
+    this.jLu = -1L;
     this.progress = paramParcel.readInt();
-    this.jIs = paramParcel.readLong();
-    this.jIt = paramParcel.readLong();
+    this.jLt = paramParcel.readLong();
+    this.jLu = paramParcel.readLong();
     AppMethodBeat.o(90640);
   }
   
-  public final long baJ()
+  public final long bbi()
   {
-    return this.jIs;
+    return this.jLt;
   }
   
-  public final long baK()
+  public final long bbj()
   {
-    return this.jIt;
+    return this.jLu;
   }
   
   public int describeContents()
@@ -74,7 +74,7 @@ public class WxaPkgLoadProgress
   public String toString()
   {
     AppMethodBeat.i(90641);
-    String str = "WxaPkgLoadProgress{progress=" + this.progress + ", writtenLength=" + this.jIs + ", totalLength=" + this.jIt + '}';
+    String str = "WxaPkgLoadProgress{progress=" + this.progress + ", writtenLength=" + this.jLt + ", totalLength=" + this.jLu + '}';
     AppMethodBeat.o(90641);
     return str;
   }
@@ -83,8 +83,8 @@ public class WxaPkgLoadProgress
   {
     AppMethodBeat.i(90642);
     paramParcel.writeInt(this.progress);
-    paramParcel.writeLong(this.jIs);
-    paramParcel.writeLong(this.jIt);
+    paramParcel.writeLong(this.jLt);
+    paramParcel.writeLong(this.jLu);
     AppMethodBeat.o(90642);
   }
 }

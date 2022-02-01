@@ -8,7 +8,7 @@ import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handleOnSurfaceTextureUpdated", "", "surface", "Landroid/graphics/SurfaceTexture;", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handleOnSurfaceTextureUpdated", "", "surface", "Landroid/graphics/SurfaceTexture;", "plugin-recordvideo_release"})
 public class EditorVideoPlayView
   extends VideoPlayerTextureView
 {
@@ -31,10 +31,10 @@ public class EditorVideoPlayView
   {
     AppMethodBeat.i(75716);
     super.k(paramSurfaceTexture);
-    paramSurfaceTexture = this.pUM;
+    paramSurfaceTexture = this.qbr;
     if (paramSurfaceTexture != null)
     {
-      paramSurfaceTexture.eT(getCurrentPosition(), getDuration());
+      paramSurfaceTexture.eU(getCurrentPosition(), getDuration());
       AppMethodBeat.o(75716);
       return;
     }
@@ -43,7 +43,7 @@ public class EditorVideoPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditorVideoPlayView
  * JD-Core Version:    0.7.0.1
  */

@@ -92,7 +92,7 @@ final class u
     AppMethodBeat.o(87988);
   }
   
-  static u AD()
+  static u AE()
   {
     AppMethodBeat.i(87987);
     if (caQ == null) {
@@ -193,7 +193,7 @@ final class u
     return new float[] { paramArrayOfFloat1[0] * paramArrayOfFloat2[0] + paramArrayOfFloat1[1] * paramArrayOfFloat2[3] + paramArrayOfFloat1[2] * paramArrayOfFloat2[6], paramArrayOfFloat1[0] * paramArrayOfFloat2[1] + paramArrayOfFloat1[1] * paramArrayOfFloat2[4] + paramArrayOfFloat1[2] * paramArrayOfFloat2[7], paramArrayOfFloat1[0] * paramArrayOfFloat2[2] + paramArrayOfFloat1[1] * paramArrayOfFloat2[5] + paramArrayOfFloat1[2] * paramArrayOfFloat2[8], paramArrayOfFloat1[3] * paramArrayOfFloat2[0] + paramArrayOfFloat1[4] * paramArrayOfFloat2[3] + paramArrayOfFloat1[5] * paramArrayOfFloat2[6], paramArrayOfFloat1[3] * paramArrayOfFloat2[1] + paramArrayOfFloat1[4] * paramArrayOfFloat2[4] + paramArrayOfFloat1[5] * paramArrayOfFloat2[7], paramArrayOfFloat1[3] * paramArrayOfFloat2[2] + paramArrayOfFloat1[4] * paramArrayOfFloat2[5] + paramArrayOfFloat1[5] * paramArrayOfFloat2[8], paramArrayOfFloat1[6] * paramArrayOfFloat2[0] + paramArrayOfFloat1[7] * paramArrayOfFloat2[3] + paramArrayOfFloat1[8] * paramArrayOfFloat2[6], paramArrayOfFloat1[6] * paramArrayOfFloat2[1] + paramArrayOfFloat1[7] * paramArrayOfFloat2[4] + paramArrayOfFloat1[8] * paramArrayOfFloat2[7], paramArrayOfFloat1[6] * paramArrayOfFloat2[2] + paramArrayOfFloat1[7] * paramArrayOfFloat2[5] + paramArrayOfFloat1[8] * paramArrayOfFloat2[8] };
   }
   
-  final void Ab() {}
+  final void Ac() {}
   
   final void a(Context paramContext, Handler paramHandler, d.a parama)
   {
@@ -283,9 +283,9 @@ final class u
     }
   }
   
-  final void as(Context paramContext) {}
+  final void at(Context paramContext) {}
   
-  final void at(Context paramContext)
+  final void au(Context paramContext)
   {
     AppMethodBeat.i(87991);
     if (this.caS != null) {
@@ -635,7 +635,7 @@ final class u
       super();
     }
     
-    final void Af()
+    final void Ag()
     {
       AppMethodBeat.i(87975);
       u.a(u.this);
@@ -792,7 +792,9 @@ final class u
       this.cbY = new ArrayList();
       this.cbZ = new a[5];
       this.cca = 0;
-      this.ccb = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
+      this$1 = new float[] { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
+      float[] arrayOfFloat = { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
+      this.ccb = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, u.this, arrayOfFloat };
       this.ccc = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
       this.ccd = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 }));
       this.cce = new int[6];
@@ -803,7 +805,7 @@ final class u
     }
     
     /* Error */
-    private boolean AE()
+    private boolean AF()
     {
       // Byte code:
       //   0: aload_0
@@ -813,7 +815,7 @@ final class u
       //   7: aload_0
       //   8: getfield 51	com/d/a/a/u$f:cca	I
       //   11: bipush 20
-      //   13: if_icmplt +716 -> 729
+      //   13: if_icmplt +708 -> 721
       //   16: aload_0
       //   17: getfield 57	com/d/a/a/u$f:ccb	[[F
       //   20: iconst_0
@@ -1173,164 +1175,160 @@ final class u
       //   516: fastore
       //   517: aload_0
       //   518: aload_0
-      //   519: invokespecial 99	com/d/a/a/u$f:AF	()Lcom/d/a/a/u$f$a;
+      //   519: invokespecial 99	com/d/a/a/u$f:AG	()Lcom/d/a/a/u$f$a;
       //   522: invokespecial 102	com/d/a/a/u$f:a	(Lcom/d/a/a/u$f$a;)V
       //   525: aload_0
       //   526: iconst_0
       //   527: putfield 51	com/d/a/a/u$f:cca	I
-      //   530: iconst_3
-      //   531: newarray float
-      //   533: dup
-      //   534: iconst_0
-      //   535: ldc 54
-      //   537: fastore
-      //   538: dup
-      //   539: iconst_1
-      //   540: ldc 55
-      //   542: fastore
-      //   543: dup
-      //   544: iconst_2
-      //   545: fconst_0
-      //   546: fastore
-      //   547: astore 17
-      //   549: iconst_3
-      //   550: newarray float
-      //   552: dup
-      //   553: iconst_0
-      //   554: ldc 54
-      //   556: fastore
-      //   557: dup
-      //   558: iconst_1
-      //   559: ldc 55
-      //   561: fastore
-      //   562: dup
-      //   563: iconst_2
-      //   564: fconst_0
-      //   565: fastore
-      //   566: astore 18
-      //   568: aload_0
-      //   569: iconst_3
-      //   570: anewarray 53	[F
-      //   573: dup
-      //   574: iconst_0
-      //   575: iconst_3
-      //   576: newarray float
-      //   578: dup
-      //   579: iconst_0
-      //   580: ldc 54
-      //   582: fastore
-      //   583: dup
-      //   584: iconst_1
-      //   585: ldc 55
-      //   587: fastore
-      //   588: dup
-      //   589: iconst_2
-      //   590: fconst_0
-      //   591: fastore
-      //   592: aastore
-      //   593: dup
-      //   594: iconst_1
-      //   595: aload 17
-      //   597: aastore
-      //   598: dup
-      //   599: iconst_2
-      //   600: aload 18
-      //   602: aastore
-      //   603: putfield 57	com/d/a/a/u$f:ccb	[[F
-      //   606: iconst_3
-      //   607: newarray float
-      //   609: dup
-      //   610: iconst_0
-      //   611: ldc 54
-      //   613: fastore
-      //   614: dup
-      //   615: iconst_1
-      //   616: ldc 55
-      //   618: fastore
-      //   619: dup
-      //   620: iconst_2
-      //   621: fconst_0
-      //   622: fastore
-      //   623: astore 17
-      //   625: iconst_3
-      //   626: newarray float
-      //   628: dup
-      //   629: iconst_0
-      //   630: ldc 54
-      //   632: fastore
-      //   633: dup
-      //   634: iconst_1
-      //   635: ldc 55
-      //   637: fastore
-      //   638: dup
-      //   639: iconst_2
-      //   640: fconst_0
-      //   641: fastore
-      //   642: astore 18
-      //   644: aload_0
-      //   645: iconst_3
-      //   646: anewarray 53	[F
-      //   649: dup
-      //   650: iconst_0
-      //   651: aload 17
-      //   653: aastore
-      //   654: dup
-      //   655: iconst_1
-      //   656: iconst_3
-      //   657: newarray float
-      //   659: dup
-      //   660: iconst_0
-      //   661: ldc 54
-      //   663: fastore
-      //   664: dup
-      //   665: iconst_1
-      //   666: ldc 55
-      //   668: fastore
-      //   669: dup
-      //   670: iconst_2
-      //   671: fconst_0
-      //   672: fastore
-      //   673: aastore
-      //   674: dup
-      //   675: iconst_2
-      //   676: aload 18
-      //   678: aastore
-      //   679: putfield 59	com/d/a/a/u$f:ccc	[[F
-      //   682: aload_0
-      //   683: getfield 47	com/d/a/a/u$f:cbY	Ljava/util/ArrayList;
-      //   686: invokevirtual 106	java/util/ArrayList:size	()I
-      //   689: bipush 100
-      //   691: if_icmplt +25 -> 716
-      //   694: aload_0
-      //   695: getfield 47	com/d/a/a/u$f:cbY	Ljava/util/ArrayList;
-      //   698: iconst_0
-      //   699: bipush 20
-      //   701: invokevirtual 110	java/util/ArrayList:subList	(II)Ljava/util/List;
-      //   704: invokeinterface 115 1 0
-      //   709: aload_0
-      //   710: getfield 47	com/d/a/a/u$f:cbY	Ljava/util/ArrayList;
-      //   713: invokevirtual 118	java/util/ArrayList:trimToSize	()V
-      //   716: iconst_1
-      //   717: istore 16
-      //   719: ldc 92
-      //   721: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   724: aload_0
-      //   725: monitorexit
-      //   726: iload 16
-      //   728: ireturn
-      //   729: iconst_0
-      //   730: istore 16
-      //   732: ldc 92
-      //   734: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   737: goto -13 -> 724
-      //   740: astore 17
-      //   742: aload_0
-      //   743: monitorexit
-      //   744: aload 17
-      //   746: athrow
+      //   530: aload_0
+      //   531: iconst_3
+      //   532: anewarray 55	[F
+      //   535: dup
+      //   536: iconst_0
+      //   537: iconst_3
+      //   538: newarray float
+      //   540: dup
+      //   541: iconst_0
+      //   542: ldc 52
+      //   544: fastore
+      //   545: dup
+      //   546: iconst_1
+      //   547: ldc 53
+      //   549: fastore
+      //   550: dup
+      //   551: iconst_2
+      //   552: fconst_0
+      //   553: fastore
+      //   554: aastore
+      //   555: dup
+      //   556: iconst_1
+      //   557: iconst_3
+      //   558: newarray float
+      //   560: dup
+      //   561: iconst_0
+      //   562: ldc 52
+      //   564: fastore
+      //   565: dup
+      //   566: iconst_1
+      //   567: ldc 53
+      //   569: fastore
+      //   570: dup
+      //   571: iconst_2
+      //   572: fconst_0
+      //   573: fastore
+      //   574: aastore
+      //   575: dup
+      //   576: iconst_2
+      //   577: iconst_3
+      //   578: newarray float
+      //   580: dup
+      //   581: iconst_0
+      //   582: ldc 52
+      //   584: fastore
+      //   585: dup
+      //   586: iconst_1
+      //   587: ldc 53
+      //   589: fastore
+      //   590: dup
+      //   591: iconst_2
+      //   592: fconst_0
+      //   593: fastore
+      //   594: aastore
+      //   595: putfield 57	com/d/a/a/u$f:ccb	[[F
+      //   598: iconst_3
+      //   599: newarray float
+      //   601: dup
+      //   602: iconst_0
+      //   603: ldc 52
+      //   605: fastore
+      //   606: dup
+      //   607: iconst_1
+      //   608: ldc 53
+      //   610: fastore
+      //   611: dup
+      //   612: iconst_2
+      //   613: fconst_0
+      //   614: fastore
+      //   615: astore 17
+      //   617: iconst_3
+      //   618: newarray float
+      //   620: dup
+      //   621: iconst_0
+      //   622: ldc 52
+      //   624: fastore
+      //   625: dup
+      //   626: iconst_1
+      //   627: ldc 53
+      //   629: fastore
+      //   630: dup
+      //   631: iconst_2
+      //   632: fconst_0
+      //   633: fastore
+      //   634: astore 18
+      //   636: aload_0
+      //   637: iconst_3
+      //   638: anewarray 55	[F
+      //   641: dup
+      //   642: iconst_0
+      //   643: aload 17
+      //   645: aastore
+      //   646: dup
+      //   647: iconst_1
+      //   648: iconst_3
+      //   649: newarray float
+      //   651: dup
+      //   652: iconst_0
+      //   653: ldc 52
+      //   655: fastore
+      //   656: dup
+      //   657: iconst_1
+      //   658: ldc 53
+      //   660: fastore
+      //   661: dup
+      //   662: iconst_2
+      //   663: fconst_0
+      //   664: fastore
+      //   665: aastore
+      //   666: dup
+      //   667: iconst_2
+      //   668: aload 18
+      //   670: aastore
+      //   671: putfield 59	com/d/a/a/u$f:ccc	[[F
+      //   674: aload_0
+      //   675: getfield 47	com/d/a/a/u$f:cbY	Ljava/util/ArrayList;
+      //   678: invokevirtual 106	java/util/ArrayList:size	()I
+      //   681: bipush 100
+      //   683: if_icmplt +25 -> 708
+      //   686: aload_0
+      //   687: getfield 47	com/d/a/a/u$f:cbY	Ljava/util/ArrayList;
+      //   690: iconst_0
+      //   691: bipush 20
+      //   693: invokevirtual 110	java/util/ArrayList:subList	(II)Ljava/util/List;
+      //   696: invokeinterface 115 1 0
+      //   701: aload_0
+      //   702: getfield 47	com/d/a/a/u$f:cbY	Ljava/util/ArrayList;
+      //   705: invokevirtual 118	java/util/ArrayList:trimToSize	()V
+      //   708: iconst_1
+      //   709: istore 16
+      //   711: ldc 92
+      //   713: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   716: aload_0
+      //   717: monitorexit
+      //   718: iload 16
+      //   720: ireturn
+      //   721: iconst_0
+      //   722: istore 16
+      //   724: ldc 92
+      //   726: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   729: goto -13 -> 716
+      //   732: astore 17
+      //   734: aload_0
+      //   735: monitorexit
+      //   736: aload 17
+      //   738: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	747	0	this	f
+      //   0	739	0	this	f
       //   138	147	1	f1	float
       //   147	162	2	f2	float
       //   156	154	3	f3	float
@@ -1346,18 +1344,18 @@ final class u
       //   255	229	13	f13	float
       //   265	245	14	f14	float
       //   275	237	15	f15	float
-      //   717	14	16	bool	boolean
-      //   22	630	17	arrayOfFloat1	float[]
-      //   740	5	17	localObject	Object
-      //   566	111	18	arrayOfFloat2	float[]
+      //   709	14	16	bool	boolean
+      //   22	622	17	arrayOfFloat1	float[]
+      //   732	5	17	localObject	Object
+      //   634	35	18	arrayOfFloat2	float[]
       // Exception table:
       //   from	to	target	type
-      //   2	716	740	finally
-      //   719	724	740	finally
-      //   732	737	740	finally
+      //   2	708	732	finally
+      //   711	716	732	finally
+      //   724	729	732	finally
     }
     
-    private a AF()
+    private a AG()
     {
       int i2;
       int j;
@@ -1951,7 +1949,7 @@ final class u
     }
     
     /* Error */
-    final a AG()
+    final a AH()
     {
       // Byte code:
       //   0: aload_0
@@ -1967,7 +1965,7 @@ final class u
       //   17: getfield 49	com/d/a/a/u$f:cbZ	[Lcom/d/a/a/u$f$a;
       //   20: iconst_4
       //   21: aaload
-      //   22: invokevirtual 254	com/d/a/a/u$f$a:AH	()Lcom/d/a/a/u$f$a;
+      //   22: invokevirtual 254	com/d/a/a/u$f$a:AI	()Lcom/d/a/a/u$f$a;
       //   25: astore_1
       //   26: ldc 251
       //   28: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -2054,7 +2052,7 @@ final class u
         }
         arrayOfFloat = this.ccc[2];
         arrayOfFloat[2] += paramb.cbD;
-        if (AE()) {
+        if (AF()) {
           u.b(u.this);
         }
         AppMethodBeat.o(87984);
@@ -2071,7 +2069,9 @@ final class u
         this.cbY.clear();
         this.cbZ = new a[5];
         this.cca = 0;
-        this.ccb = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
+        float[] arrayOfFloat1 = { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
+        float[] arrayOfFloat2 = { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
+        this.ccb = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, arrayOfFloat1, arrayOfFloat2 };
         this.ccc = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
         this.ccd = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 }));
         this.cce = new int[6];
@@ -2099,7 +2099,7 @@ final class u
       
       private a() {}
       
-      protected final a AH()
+      protected final a AI()
       {
         AppMethodBeat.i(87977);
         a locala = new a(u.f.this);

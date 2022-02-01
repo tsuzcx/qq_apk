@@ -10,13 +10,13 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZoneSelectOtherCountryPreference
   extends Preference
 {
-  a KMe;
+  a LiC;
   String text;
   
   public ZoneSelectOtherCountryPreference(Context paramContext)
@@ -42,7 +42,7 @@ public class ZoneSelectOtherCountryPreference
     AppMethodBeat.i(39219);
     super.onBindView(paramView);
     TextView localTextView = (TextView)paramView.findViewById(2131307140);
-    if (!bt.isNullOrNil(this.text)) {
+    if (!bu.isNullOrNil(this.text)) {
       localTextView.setText(this.text);
     }
     paramView.setOnClickListener(new View.OnClickListener()
@@ -52,7 +52,7 @@ public class ZoneSelectOtherCountryPreference
         AppMethodBeat.i(39216);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/tools/ZoneSelectOtherCountryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/ui/tools/ZoneSelectOtherCountryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (ZoneSelectOtherCountryPreference.a(ZoneSelectOtherCountryPreference.this) != null) {
           ZoneSelectOtherCountryPreference.a(ZoneSelectOtherCountryPreference.this).onClick();
         }

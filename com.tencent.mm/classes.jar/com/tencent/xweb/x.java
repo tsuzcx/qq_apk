@@ -12,7 +12,7 @@ import com.tencent.xweb.internal.e;
 
 public class x
 {
-  e MpP;
+  e MMT;
   
   public void a(WebView paramWebView, int paramInt) {}
   
@@ -23,7 +23,7 @@ public class x
   
   public boolean a(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.MpP != null) {}
+    if (this.MMT != null) {}
     return false;
   }
   
@@ -35,9 +35,9 @@ public class x
   public boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(156776);
-    if (this.MpP != null)
+    if (this.MMT != null)
     {
-      boolean bool = this.MpP.a(paramString1, paramString2, paramJsResult);
+      boolean bool = this.MMT.a(paramString1, paramString2, paramJsResult);
       AppMethodBeat.o(156776);
       return bool;
     }
@@ -48,9 +48,9 @@ public class x
   public boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
   {
     AppMethodBeat.i(156778);
-    if (this.MpP != null)
+    if (this.MMT != null)
     {
-      boolean bool = this.MpP.a(paramString1, paramString2, paramString3, paramo);
+      boolean bool = this.MMT.a(paramString1, paramString2, paramString3, paramo);
       AppMethodBeat.o(156778);
       return bool;
     }
@@ -63,9 +63,9 @@ public class x
   public boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(156777);
-    if (this.MpP != null)
+    if (this.MMT != null)
     {
-      boolean bool = this.MpP.b(paramString1, paramString2, paramJsResult);
+      boolean bool = this.MMT.b(paramString1, paramString2, paramJsResult);
       AppMethodBeat.o(156777);
       return bool;
     }
@@ -73,9 +73,9 @@ public class x
     return false;
   }
   
-  public boolean bpk()
+  public boolean bpU()
   {
-    if (this.MpP != null) {}
+    if (this.MMT != null) {}
     return false;
   }
   
@@ -110,8 +110,8 @@ public class x
   public void onHideCustomView()
   {
     AppMethodBeat.i(156775);
-    if (this.MpP != null) {
-      this.MpP.onHideCustomView();
+    if (this.MMT != null) {
+      this.MMT.onHideCustomView();
     }
     AppMethodBeat.o(156775);
   }
@@ -119,8 +119,8 @@ public class x
   public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
     AppMethodBeat.i(156780);
-    if (this.MpP != null) {
-      this.MpP.onShowCustomView(paramView, paramCustomViewCallback);
+    if (this.MMT != null) {
+      this.MMT.onShowCustomView(paramView, paramCustomViewCallback);
     }
     AppMethodBeat.o(156780);
   }

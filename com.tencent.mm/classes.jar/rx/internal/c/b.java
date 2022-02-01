@@ -14,11 +14,11 @@ public final class b
   extends rx.g
   implements j
 {
-  static final int NYV;
-  static final c NYW;
-  static final b NYX;
-  final ThreadFactory LTn;
-  public final AtomicReference<b> NYI;
+  static final int Owa;
+  static final c Owb;
+  static final b Owc;
+  final ThreadFactory Mqk;
+  public final AtomicReference<b> OvN;
   
   static
   {
@@ -35,19 +35,19 @@ public final class b
     {
       i = k;
     }
-    NYV = i;
-    c localc = new c(rx.internal.util.g.Oax);
-    NYW = localc;
-    localc.gyQ();
-    NYX = new b(null, 0);
+    Owa = i;
+    c localc = new c(rx.internal.util.g.OxC);
+    Owb = localc;
+    localc.gDs();
+    Owc = new b(null, 0);
     AppMethodBeat.o(90360);
   }
   
   public b(ThreadFactory paramThreadFactory)
   {
     AppMethodBeat.i(90356);
-    this.LTn = paramThreadFactory;
-    this.NYI = new AtomicReference(NYX);
+    this.Mqk = paramThreadFactory;
+    this.OvN = new AtomicReference(Owc);
     start();
     AppMethodBeat.o(90356);
   }
@@ -55,7 +55,7 @@ public final class b
   public final g.a createWorker()
   {
     AppMethodBeat.i(90357);
-    a locala = new a(((b)this.NYI.get()).gza());
+    a locala = new a(((b)this.OvN.get()).gDC());
     AppMethodBeat.o(90357);
     return locala;
   }
@@ -66,13 +66,13 @@ public final class b
     b localb;
     do
     {
-      localb = (b)this.NYI.get();
-      if (localb == NYX)
+      localb = (b)this.OvN.get();
+      if (localb == Owc)
       {
         AppMethodBeat.o(90359);
         return;
       }
-    } while (!this.NYI.compareAndSet(localb, NYX));
+    } while (!this.OvN.compareAndSet(localb, Owc));
     localb.shutdown();
     AppMethodBeat.o(90359);
   }
@@ -80,8 +80,8 @@ public final class b
   public final void start()
   {
     AppMethodBeat.i(90358);
-    b localb = new b(this.LTn, NYV);
-    if (!this.NYI.compareAndSet(NYX, localb)) {
+    b localb = new b(this.Mqk, Owa);
+    if (!this.OvN.compareAndSet(Owc, localb)) {
       localb.shutdown();
     }
     AppMethodBeat.o(90358);
@@ -90,37 +90,37 @@ public final class b
   static final class a
     extends g.a
   {
-    private final rx.internal.util.i NYY;
-    private final rx.f.b NYZ;
-    final rx.internal.util.i NZa;
-    private final b.c NZb;
+    private final rx.internal.util.i Owd;
+    private final rx.f.b Owe;
+    final rx.internal.util.i Owf;
+    private final b.c Owg;
     
     a(b.c paramc)
     {
       AppMethodBeat.i(90352);
-      this.NYY = new rx.internal.util.i();
-      this.NYZ = new rx.f.b();
-      this.NZa = new rx.internal.util.i(new rx.j[] { this.NYY, this.NYZ });
-      this.NZb = paramc;
+      this.Owd = new rx.internal.util.i();
+      this.Owe = new rx.f.b();
+      this.Owf = new rx.internal.util.i(new rx.j[] { this.Owd, this.Owe });
+      this.Owg = paramc;
       AppMethodBeat.o(90352);
     }
     
     public final rx.j a(final a parama)
     {
       AppMethodBeat.i(90354);
-      if (this.NZa.OaI)
+      if (this.Owf.OxN)
       {
-        parama = d.gzD();
+        parama = d.gEf();
         AppMethodBeat.o(90354);
         return parama;
       }
-      b.c localc = this.NZb;
+      b.c localc = this.Owg;
       Object localObject = new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90350);
-          if (b.a.this.NZa.OaI)
+          if (b.a.this.Owf.OxN)
           {
             AppMethodBeat.o(90350);
             return;
@@ -129,11 +129,11 @@ public final class b
           AppMethodBeat.o(90350);
         }
       };
-      parama = this.NYY;
+      parama = this.Owd;
       localObject = new i(c.b((a)localObject), parama);
       parama.b((rx.j)localObject);
       if (0L <= 0L) {}
-      for (parama = localc.NZu.submit((Runnable)localObject);; parama = localc.NZu.schedule((Runnable)localObject, 0L, null))
+      for (parama = localc.Owz.submit((Runnable)localObject);; parama = localc.Owz.schedule((Runnable)localObject, 0L, null))
       {
         ((i)localObject).b(parama);
         AppMethodBeat.o(90354);
@@ -144,19 +144,19 @@ public final class b
     public final rx.j a(final a parama, long paramLong, TimeUnit paramTimeUnit)
     {
       AppMethodBeat.i(90355);
-      if (this.NZa.OaI)
+      if (this.Owf.OxN)
       {
-        parama = d.gzD();
+        parama = d.gEf();
         AppMethodBeat.o(90355);
         return parama;
       }
-      b.c localc = this.NZb;
+      b.c localc = this.Owg;
       Object localObject = new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90351);
-          if (b.a.this.NZa.OaI)
+          if (b.a.this.Owf.OxN)
           {
             AppMethodBeat.o(90351);
             return;
@@ -165,11 +165,11 @@ public final class b
           AppMethodBeat.o(90351);
         }
       };
-      parama = this.NYZ;
+      parama = this.Owe;
       localObject = new i(c.b((a)localObject), parama);
       parama.b((rx.j)localObject);
       if (paramLong <= 0L) {}
-      for (parama = localc.NZu.submit((Runnable)localObject);; parama = localc.NZu.schedule((Runnable)localObject, paramLong, paramTimeUnit))
+      for (parama = localc.Owz.submit((Runnable)localObject);; parama = localc.Owz.schedule((Runnable)localObject, paramLong, paramTimeUnit))
       {
         ((i)localObject).b(parama);
         AppMethodBeat.o(90355);
@@ -177,46 +177,46 @@ public final class b
       }
     }
     
-    public final void gyQ()
+    public final void gDs()
     {
       AppMethodBeat.i(90353);
-      this.NZa.gyQ();
+      this.Owf.gDs();
       AppMethodBeat.o(90353);
     }
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
-      return this.NZa.OaI;
+      return this.Owf.OxN;
     }
   }
   
   public static final class b
   {
-    final int NZd;
-    final b.c[] NZe;
+    final int Owi;
+    final b.c[] Owj;
     long n;
     
     b(ThreadFactory paramThreadFactory, int paramInt)
     {
       AppMethodBeat.i(90348);
-      this.NZd = paramInt;
-      this.NZe = new b.c[paramInt];
+      this.Owi = paramInt;
+      this.Owj = new b.c[paramInt];
       int i = 0;
       while (i < paramInt)
       {
-        this.NZe[i] = new b.c(paramThreadFactory);
+        this.Owj[i] = new b.c(paramThreadFactory);
         i += 1;
       }
       AppMethodBeat.o(90348);
     }
     
-    public final b.c gza()
+    public final b.c gDC()
     {
-      int i = this.NZd;
+      int i = this.Owi;
       if (i == 0) {
-        return b.NYW;
+        return b.Owb;
       }
-      b.c[] arrayOfc = this.NZe;
+      b.c[] arrayOfc = this.Owj;
       long l = this.n;
       this.n = (1L + l);
       return arrayOfc[((int)(l % i))];
@@ -225,12 +225,12 @@ public final class b
     public final void shutdown()
     {
       AppMethodBeat.i(90349);
-      b.c[] arrayOfc = this.NZe;
+      b.c[] arrayOfc = this.Owj;
       int j = arrayOfc.length;
       int i = 0;
       while (i < j)
       {
-        arrayOfc[i].gyQ();
+        arrayOfc[i].gDs();
         i += 1;
       }
       AppMethodBeat.o(90349);
@@ -248,7 +248,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.b
  * JD-Core Version:    0.7.0.1
  */

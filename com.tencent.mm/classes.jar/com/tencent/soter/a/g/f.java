@@ -6,28 +6,28 @@ import com.tencent.soter.a.b.e;
 
 public class f
 {
-  private static volatile f LRL = null;
-  static volatile SparseArray<d> LRM = null;
-  final Object LRN;
+  private static volatile f MoI = null;
+  static volatile SparseArray<d> MoJ = null;
+  final Object MoK;
   
   private f()
   {
     AppMethodBeat.i(35);
-    this.LRN = new Object();
-    LRM = new SparseArray(5);
+    this.MoK = new Object();
+    MoJ = new SparseArray(5);
     AppMethodBeat.o(35);
   }
   
-  public static f fVe()
+  public static f fZD()
   {
     AppMethodBeat.i(36);
-    if (LRL == null) {
+    if (MoI == null) {
       try
       {
-        if (LRL == null) {
-          LRL = new f();
+        if (MoI == null) {
+          MoI = new f();
         }
-        f localf1 = LRL;
+        f localf1 = MoI;
         return localf1;
       }
       finally
@@ -35,7 +35,7 @@ public class f
         AppMethodBeat.o(36);
       }
     }
-    f localf2 = LRL;
+    f localf2 = MoI;
     AppMethodBeat.o(36);
     return localf2;
   }
@@ -43,17 +43,17 @@ public class f
   public final boolean a(final d paramd, e parame)
   {
     AppMethodBeat.i(37);
-    if (!paramd.fVc())
+    if (!paramd.fZB())
     {
       int j = paramd.hashCode();
-      Object localObject = this.LRN;
+      Object localObject = this.MoK;
       int i = 0;
       try
       {
-        while (i < LRM.size())
+        while (i < MoJ.size())
         {
-          int k = LRM.keyAt(i);
-          if ((LRM.get(k) != null) && (((d)LRM.get(k)).getClass().getName().equals(paramd.getClass().getName())))
+          int k = MoJ.keyAt(i);
+          if ((MoJ.get(k) != null) && (((d)MoJ.get(k)).getClass().getName().equals(paramd.getClass().getName())))
           {
             com.tencent.soter.core.c.d.w("Soter.SoterTaskManager", "soter: already such type of task. abandon add task", new Object[0]);
             parame.errCode = 1023;
@@ -63,8 +63,8 @@ public class f
           }
           i += 1;
         }
-        LRM.put(j, paramd);
-        g.fVh().af(new Runnable()
+        MoJ.put(j, paramd);
+        g.fZG().ad(new Runnable()
         {
           public final void run()
           {
@@ -86,27 +86,27 @@ public class f
     return false;
   }
   
-  public final void fVf()
+  public final void fZE()
   {
     int i = 0;
     AppMethodBeat.i(38);
-    synchronized (this.LRN)
+    synchronized (this.MoK)
     {
       com.tencent.soter.core.c.d.i("Soter.SoterTaskManager", "soter: request cancel all", new Object[0]);
-      if (LRM.size() != 0) {
-        while (i < LRM.size())
+      if (MoJ.size() != 0) {
+        while (i < MoJ.size())
         {
-          final int j = LRM.keyAt(i);
-          g.fVh().af(new Runnable()
+          final int j = MoJ.keyAt(i);
+          g.fZG().ad(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(33);
               synchronized (f.a(f.this))
               {
-                d locald = (d)f.ahY().get(j);
+                d locald = (d)f.ain().get(j);
                 if (locald != null) {
-                  locald.fVd();
+                  locald.fZC();
                 }
                 AppMethodBeat.o(33);
                 return;
@@ -116,33 +116,33 @@ public class f
           i += 1;
         }
       }
-      LRM.clear();
+      MoJ.clear();
       AppMethodBeat.o(38);
       return;
     }
   }
   
-  public final void fVg()
+  public final void fZF()
   {
     int i = 0;
     AppMethodBeat.i(39);
-    synchronized (this.LRN)
+    synchronized (this.MoK)
     {
       com.tencent.soter.core.c.d.i("Soter.SoterTaskManager", "soter: request publish cancellation", new Object[0]);
-      if (LRM.size() != 0) {
-        while (i < LRM.size())
+      if (MoJ.size() != 0) {
+        while (i < MoJ.size())
         {
-          final int j = LRM.keyAt(i);
-          g.fVh().af(new Runnable()
+          final int j = MoJ.keyAt(i);
+          g.fZG().ad(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(34);
               synchronized (f.a(f.this))
               {
-                d locald = (d)f.ahY().get(j);
+                d locald = (d)f.ain().get(j);
                 if ((locald != null) && ((locald instanceof a)) && (!((a)locald).isCancelled())) {
-                  ((a)locald).fVb();
+                  ((a)locald).fZA();
                 }
                 AppMethodBeat.o(34);
                 return;
@@ -159,7 +159,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.g.f
  * JD-Core Version:    0.7.0.1
  */

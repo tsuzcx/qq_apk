@@ -6,84 +6,84 @@ import android.view.View.OnClickListener;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.pluginsdk.model.app.k.a;
 import com.tencent.mm.pluginsdk.ui.chat.l;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.ab;
 import com.tencent.mm.ui.chatting.d.ad;
 import com.tencent.mm.ui.chatting.h.d.a;
-import com.tencent.mm.ui.chatting.s.f;
-import com.tencent.mm.ui.chatting.s.g;
+import com.tencent.mm.ui.chatting.t.f;
+import com.tencent.mm.ui.chatting.t.g;
 import java.util.Set;
 
 public abstract interface k
   extends k.a, ad
 {
-  public abstract boolean DR(long paramLong);
+  public abstract boolean Eq(long paramLong);
   
-  public abstract View DS(long paramLong);
+  public abstract View Er(long paramLong);
   
-  public abstract void J(long paramLong, boolean paramBoolean);
+  public abstract void L(long paramLong, boolean paramBoolean);
   
   public abstract void a(int paramInt, d.a parama);
   
-  public abstract void a(long paramLong, bu parambu, boolean paramBoolean);
+  public abstract void a(long paramLong, bv parambv, boolean paramBoolean);
   
   public abstract void a(long paramLong, boolean paramBoolean, d.a parama);
   
-  public abstract bu ada(int paramInt);
+  public abstract bv adI(int paramInt);
   
-  public abstract void adb(int paramInt);
+  public abstract void adJ(int paramInt);
   
-  public abstract void adc(int paramInt);
+  public abstract void adK(int paramInt);
   
-  public abstract boolean bE(bu parambu);
+  public abstract boolean bD(bv parambv);
   
-  public abstract void cwh();
+  public abstract void cxI();
   
-  public abstract int dCM();
+  public abstract int dGd();
   
   public abstract void e(View.OnClickListener paramOnClickListener);
   
-  public abstract SparseArray<bu> fCi();
+  public abstract long fGA();
   
-  public abstract Set<Long> fCk();
+  public abstract com.tencent.mm.av.a.a.c fGB();
   
-  public abstract void fCl();
+  public abstract SparseArray<bv> fGk();
   
-  public abstract void fCm();
+  public abstract Set<Long> fGm();
   
-  public abstract void fCn();
+  public abstract void fGn();
   
-  public abstract void fCo();
+  public abstract void fGo();
   
-  public abstract void fCp();
+  public abstract void fGp();
   
-  public abstract void fCq();
+  public abstract void fGq();
   
-  public abstract void fCr();
+  public abstract void fGr();
   
-  public abstract t.a fCs();
+  public abstract void fGs();
   
-  public abstract s.f fCt();
+  public abstract void fGt();
   
-  public abstract s.g fCu();
+  public abstract t.a fGu();
   
-  public abstract ab fCv();
+  public abstract t.f fGv();
   
-  public abstract l fCw();
+  public abstract t.g fGw();
   
-  public abstract com.tencent.mm.ui.chatting.c fCx();
+  public abstract ab fGx();
   
-  public abstract long fCy();
+  public abstract l fGy();
   
-  public abstract com.tencent.mm.aw.a.a.c fCz();
+  public abstract com.tencent.mm.ui.chatting.c fGz();
   
-  public abstract int fpw();
+  public abstract int ftv();
   
   public abstract int getCount();
   
   public abstract boolean isInEditMode();
   
-  public abstract void qM(boolean paramBoolean);
+  public abstract void qT(boolean paramBoolean);
   
   public abstract void r(long paramLong, int paramInt1, int paramInt2);
 }

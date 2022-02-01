@@ -23,72 +23,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
 import com.tencent.mm.plugin.sight.decode.a.b.f;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
-import com.tencent.mm.plugin.sns.model.f;
-import com.tencent.mm.plugin.sns.storage.b.j;
-import com.tencent.mm.plugin.sns.storage.b.m;
+import com.tencent.mm.plugin.sns.ad.e.j;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.mm.plugin.sns.model.g;
+import com.tencent.mm.plugin.sns.storage.b.k;
+import com.tencent.mm.plugin.sns.storage.b.o;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.MaskImageView;
 import com.tencent.mm.plugin.sns.ui.aq;
 import com.tencent.mm.plugin.sns.ui.bh;
 import com.tencent.mm.plugin.sns.ui.bi;
 import com.tencent.mm.plugin.sns.ui.d.c;
+import com.tencent.mm.plugin.sns.ui.i;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 import com.tencent.mm.ui.widget.QImageView.a;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
+import com.tencent.mm.vfs.o;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class m
   extends BaseTimeLineItem
 {
-  private static int[] AuF = { 2131306089, 2131306090 };
-  private static int[] Axv = { 2131306091 };
-  private static int[][] Axw;
-  private int Axu = 0;
+  private static int[] ALV = { 2131306089, 2131306090 };
+  private static int[] AOO = { 2131306091 };
+  private static int[][] AOP = { { 2131306095, 2131306093 }, { 2131306094, 2131306092 }, { 2131306094, 2131306093 } };
+  private int AON = 0;
   public int mScreenHeight = 0;
   private int mScreenWidth = 0;
-  
-  static
-  {
-    int[] arrayOfInt1 = { 2131306094, 2131306092 };
-    int[] arrayOfInt2 = { 2131306094, 2131306093 };
-    Axw = new int[][] { { 2131306095, 2131306093 }, arrayOfInt1, arrayOfInt2 };
-  }
   
   private static void a(a parama)
   {
     AppMethodBeat.i(100119);
-    parama.AxD.sUS.setVisibility(8);
-    parama.AxD.AtN.setVisibility(8);
-    ((TextView)parama.AxD.AxF.findViewById(2131306094)).setText(null);
-    ((TextView)parama.AxD.AxF.findViewById(2131306095)).setText(null);
-    ((TextView)parama.AxD.AxF.findViewById(2131306092)).setText(null);
-    ((TextView)parama.AxD.AxF.findViewById(2131306093)).setText(null);
-    Object localObject = parama.yXF.dRL();
+    parama.AOW.tgh.setVisibility(8);
+    parama.AOW.ALc.setVisibility(8);
+    ((TextView)parama.AOW.AOY.findViewById(2131306094)).setText(null);
+    ((TextView)parama.AOW.AOY.findViewById(2131306095)).setText(null);
+    ((TextView)parama.AOW.AOY.findViewById(2131306092)).setText(null);
+    ((TextView)parama.AOW.AOY.findViewById(2131306093)).setText(null);
+    Object localObject = parama.znm.dVj();
     TextView localTextView;
-    if ((((com.tencent.mm.plugin.sns.storage.b)localObject).zwo != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject).zwo.zxz != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject).zwo.zxz.size() >= 2))
+    if ((((com.tencent.mm.plugin.sns.storage.b)localObject).zNJ != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject).zNJ.zOY != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject).zNJ.zOY.size() >= 2))
     {
-      localObject = (b.m)((com.tencent.mm.plugin.sns.storage.b)localObject).zwo.zxz.get(parama.index);
-      if ((((b.m)localObject).zxf >= 0) && (((b.m)localObject).zxf < Axw.length))
+      localObject = (b.o)((com.tencent.mm.plugin.sns.storage.b)localObject).zNJ.zOY.get(parama.index);
+      if ((((b.o)localObject).zOE >= 0) && (((b.o)localObject).zOE < AOP.length))
       {
-        int[] arrayOfInt = Axw[localObject.zxf];
-        localTextView = (TextView)parama.AxD.AxF.findViewById(arrayOfInt[0]);
-        parama = (TextView)parama.AxD.AxF.findViewById(arrayOfInt[1]);
-        if (!bt.isNullOrNil(((b.m)localObject).title)) {
+        int[] arrayOfInt = AOP[localObject.zOE];
+        localTextView = (TextView)parama.AOW.AOY.findViewById(arrayOfInt[0]);
+        parama = (TextView)parama.AOW.AOY.findViewById(arrayOfInt[1]);
+        if (!bu.isNullOrNil(((b.o)localObject).title)) {
           break label287;
         }
         localTextView.setVisibility(8);
-        if (!bt.isNullOrNil(((b.m)localObject).desc)) {
+        if (!bu.isNullOrNil(((b.o)localObject).desc)) {
           break label303;
         }
         parama.setVisibility(8);
@@ -102,24 +98,24 @@ public final class m
       return;
       label287:
       localTextView.setVisibility(0);
-      localTextView.setText(((b.m)localObject).title);
+      localTextView.setText(((b.o)localObject).title);
       break;
       label303:
       parama.setVisibility(0);
-      parama.setText(((b.m)localObject).desc);
+      parama.setText(((b.o)localObject).desc);
     }
   }
   
-  public static View x(View paramView, int paramInt1, int paramInt2)
+  public static View w(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100118);
     if (paramInt2 == 6)
     {
-      paramView = paramView.findViewById(Axv[0]);
+      paramView = paramView.findViewById(AOO[0]);
       AppMethodBeat.o(100118);
       return paramView;
     }
-    paramView = paramView.findViewById(AuF[paramInt1]);
+    paramView = paramView.findViewById(ALV[paramInt1]);
     AppMethodBeat.o(100118);
     return paramView;
   }
@@ -128,18 +124,18 @@ public final class m
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bi parambi, TimeLineObject paramTimeLineObject, final int paramInt2, final bh parambh)
   {
     AppMethodBeat.i(100117);
-    ad.i("MiroMsg.TurnMediaTimeLineItem", "fill turn card ad item %d", new Object[] { Integer.valueOf(paramInt1) });
-    if (paramBaseViewHolder.grY)
+    ae.i("MiroMsg.TurnMediaTimeLineItem", "fill turn card ad item %d", new Object[] { Integer.valueOf(paramInt1) });
+    if (paramBaseViewHolder.guz)
     {
-      ad.i("MiroMsg.TurnMediaTimeLineItem", "holder is busy");
+      ae.i("MiroMsg.TurnMediaTimeLineItem", "holder is busy");
       AppMethodBeat.o(100117);
       return;
     }
     final b localb = (b)paramBaseViewHolder;
-    localb.AxF.setTag(localb);
-    localb.AxF.setVisibility(0);
+    localb.AOY.setTag(localb);
+    localb.AOY.setVisibility(0);
     Object localObject1 = (b)localb;
-    Object localObject2 = AuF;
+    Object localObject2 = ALV;
     int j = localObject2.length;
     final int i = 0;
     int k;
@@ -147,22 +143,22 @@ public final class m
     while (i < j)
     {
       k = localObject2[i];
-      localObject3 = ((b)localObject1).AxF.findViewById(k);
+      localObject3 = ((b)localObject1).AOY.findViewById(k);
       if (localObject3 != null) {
         ((View)localObject3).setVisibility(8);
       }
       if ((localObject3 instanceof MaskImageView)) {
-        ((MaskImageView)localObject3).setScaleType(QImageView.a.KTb);
+        ((MaskImageView)localObject3).setScaleType(QImageView.a.Lpz);
       }
       i += 1;
     }
-    localObject2 = Axv;
+    localObject2 = AOO;
     j = localObject2.length;
     i = 0;
     while (i < j)
     {
       k = localObject2[i];
-      localObject3 = ((b)localObject1).AxF.findViewById(k);
+      localObject3 = ((b)localObject1).AOY.findViewById(k);
       if (localObject3 != null)
       {
         ((View)localObject3).setBackground(null);
@@ -173,10 +169,10 @@ public final class m
       }
       i += 1;
     }
-    localObject1 = new LinearLayout.LayoutParams(((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getWidth() - com.tencent.mm.cc.a.fromDPToPix(this.mActivity, 54) - this.mActivity.getResources().getDimensionPixelSize(2131165490) - this.mActivity.getResources().getDimensionPixelSize(2131165516) - this.mActivity.getResources().getDimensionPixelSize(2131165568), -2);
-    paramBaseViewHolder.Avb.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = new LinearLayout.LayoutParams(((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getWidth() - com.tencent.mm.cb.a.fromDPToPix(this.mActivity, 54) - this.mActivity.getResources().getDimensionPixelSize(2131165490) - this.mActivity.getResources().getDimensionPixelSize(2131165516) - this.mActivity.getResources().getDimensionPixelSize(2131165568), -2);
+    paramBaseViewHolder.AMr.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     label397:
-    byn localbyn;
+    bzh localbzh;
     View localView;
     Object localObject4;
     label532:
@@ -187,36 +183,36 @@ public final class m
     label669:
     Object localObject6;
     boolean bool2;
-    if ((parambi.zOM) && (paramInt2 == 11)) {
-      if ((paramTimeLineObject.HAT != null) && (paramTimeLineObject.HAT.GaQ != null) && (paramTimeLineObject.HAT.GaQ.size() >= 2)) {
-        if (localb.AuU == 1)
+    if ((parambi.AfT) && (paramInt2 == 11)) {
+      if ((paramTimeLineObject.HUG != null) && (paramTimeLineObject.HUG.Gtx != null) && (paramTimeLineObject.HUG.Gtx.size() >= 2)) {
+        if (localb.AMk == 1)
         {
           paramInt2 = 1;
           localObject2 = null;
           localObject1 = null;
           i = 0;
-          if (i >= Math.min(paramTimeLineObject.HAT.GaQ.size(), 2)) {
+          if (i >= Math.min(paramTimeLineObject.HUG.Gtx.size(), 2)) {
             break label1938;
           }
-          localbyn = (byn)paramTimeLineObject.HAT.GaQ.get(i);
-          localView = x(localb.AxF, i, 2);
+          localbzh = (bzh)paramTimeLineObject.HUG.Gtx.get(i);
+          localView = w(localb.AOY, i, 2);
           localView.setVisibility(4);
           if (localView == null) {
             break label2045;
           }
           localView.setTag(paramBaseViewHolder);
-          localView.setOnClickListener(parambh.zpd.Azc);
-          if (localbyn.nEf != 2) {
+          localView.setOnClickListener(parambh.zGs.AQy);
+          if (localbzh.nJA != 2) {
             break label1288;
           }
-          localObject3 = ag.dUb();
+          localObject3 = ah.dXB();
           j = this.mActivity.hashCode();
-          localObject4 = bj.frn();
-          ((bj)localObject4).hbR = paramTimeLineObject.CreateTime;
-          ((f)localObject3).a(localbyn, localView, -1, j, (bj)localObject4, 3);
+          localObject4 = bk.fvn();
+          ((bk)localObject4).heF = paramTimeLineObject.CreateTime;
+          ((g)localObject3).a(localbzh, localView, -1, j, (bk)localObject4, 3);
           localObject4 = null;
           localObject3 = localObject4;
-          if (localbyn.nEf == 6)
+          if (localbzh.nJA == 6)
           {
             localObject3 = localObject4;
             if (paramInt2 == i)
@@ -225,124 +221,124 @@ public final class m
                 break label1333;
               }
               bool1 = true;
-              l = parambi.AmB;
-              localObject5 = localb.AxI;
-              localObject4 = parambi.yVM;
-              localObject3 = ((aq)localObject5).zWx;
-              ((aq)localObject5).zWw = paramTimeLineObject;
-              ((aq)localObject5).zWy.setOnCompletionListener(new b.e()
+              l = parambi.ADP;
+              localObject5 = localb.APb;
+              localObject4 = parambi.zlW;
+              localObject3 = ((aq)localObject5).AnG;
+              ((aq)localObject5).AnF = paramTimeLineObject;
+              ((aq)localObject5).AnH.setOnCompletionListener(new b.e()
               {
                 public final void c(com.tencent.mm.plugin.sight.decode.a.b paramAnonymousb, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(100109);
                   if (paramAnonymousInt != -1)
                   {
-                    if ((parambh == null) || (parambh.AjE == null) || (parambh.AjE.zPb == null))
+                    if ((parambh == null) || (parambh.AAQ == null) || (parambh.AAQ.Agi == null))
                     {
                       AppMethodBeat.o(100109);
                       return;
                     }
-                    parambh.AjE.zPb.A(l, this.yYO);
+                    parambh.AAQ.Agi.C(l, this.zpp);
                   }
                   AppMethodBeat.o(100109);
                 }
               });
-              if (parambh.AjE.zPb.zm(i + l)) {
+              if (parambh.AAQ.Agi.zL(i + l)) {
                 break label1339;
               }
-              ((aq)localObject5).zWy.setOnDecodeDurationListener(new b.f()
+              ((aq)localObject5).AnH.setOnDecodeDurationListener(new b.f()
               {
                 public final void b(com.tencent.mm.plugin.sight.decode.a.b paramAnonymousb, long paramAnonymousLong)
                 {
                   AppMethodBeat.i(100110);
-                  if ((parambh == null) || (parambh.AjE == null) || (parambh.AjE.zPb == null))
+                  if ((parambh == null) || (parambh.AAQ == null) || (parambh.AAQ.Agi == null))
                   {
                     AppMethodBeat.o(100110);
                     return;
                   }
                   if (paramAnonymousLong >= 3L)
                   {
-                    int i = (int)paramAnonymousb.dQg();
-                    parambh.AjE.zPb.d(l, bt.HI(), i);
-                    parambh.AjE.zPb.e(l, i, i);
-                    parambh.AjE.zPb.aj(l, l + this.val$index);
-                    this.Axy.zWy.setOnDecodeDurationListener(null);
+                    int i = (int)paramAnonymousb.dTD();
+                    parambh.AAQ.Agi.d(l, bu.HQ(), i);
+                    parambh.AAQ.Agi.e(l, i, i);
+                    parambh.AAQ.Agi.ai(l, l + this.val$index);
+                    this.AOR.AnH.setOnDecodeDurationListener(null);
                   }
                   AppMethodBeat.o(100110);
                 }
               });
-              ((aq)localObject5).a(paramTimeLineObject, paramInt1, parambi.zQD, parambi.zOM);
-              ((aq)localObject5).zFE.setVisibility(8);
-              localObject6 = ag.dUb();
+              ((aq)localObject5).a(paramTimeLineObject, paramInt1, parambi.AhK, parambi.AfT);
+              ((aq)localObject5).zWK.setVisibility(8);
+              localObject6 = ah.dXB();
               l = System.nanoTime();
-              bool2 = f.t(localbyn);
-              ad.i("MiroMsg.TurnMediaTimeLineItem", "isMediaSightExist %b duration %s", new Object[] { Boolean.valueOf(bool2), Long.valueOf(System.nanoTime() - l) });
+              bool2 = g.t(localbzh);
+              ae.i("MiroMsg.TurnMediaTimeLineItem", "isMediaSightExist %b duration %s", new Object[] { Boolean.valueOf(bool2), Long.valueOf(System.nanoTime() - l) });
               if (bool2) {
                 break label1562;
               }
-              if (!((f)localObject6).w(localbyn)) {
+              if (!((g)localObject6).w(localbzh)) {
                 break label1384;
               }
-              ((aq)localObject5).zFD.setVisibility(8);
-              ((aq)localObject5).zWB.setVisibility(0);
-              ((aq)localObject5).zWB.fLr();
+              ((aq)localObject5).zWJ.setVisibility(8);
+              ((aq)localObject5).AnK.setVisibility(0);
+              ((aq)localObject5).AnK.fPL();
               label786:
-              Object localObject7 = ((aq)localObject5).zWC.getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject7).width = this.Axu;
-              ((ViewGroup.LayoutParams)localObject7).height = this.Axu;
-              ((aq)localObject5).zWC.setLayoutParams((ViewGroup.LayoutParams)localObject7);
-              ((aq)localObject5).zWy.setTagObject(localObject5);
-              localObject7 = ((aq)localObject5).zWy;
+              Object localObject7 = ((aq)localObject5).AnL.getLayoutParams();
+              ((ViewGroup.LayoutParams)localObject7).width = this.AON;
+              ((ViewGroup.LayoutParams)localObject7).height = this.AON;
+              ((aq)localObject5).AnL.setLayoutParams((ViewGroup.LayoutParams)localObject7);
+              ((aq)localObject5).AnH.setTagObject(localObject5);
+              localObject7 = ((aq)localObject5).AnH;
               j = this.mActivity.hashCode();
-              bj localbj = bj.frn();
-              localbj.hbR = paramTimeLineObject.CreateTime;
-              ((f)localObject6).a((p)localObject4, localbyn, (VideoSightView)localObject7, j, paramInt1, localbj, parambi.zOM, true);
-              ((f)localObject6).start();
+              bk localbk = bk.fvn();
+              localbk.heF = paramTimeLineObject.CreateTime;
+              ((g)localObject6).a((p)localObject4, localbzh, (VideoSightView)localObject7, j, paramInt1, localbk, parambi.AfT, true);
+              ((g)localObject6).start();
               ((View)localObject3).setVisibility(0);
-              ((aq)localObject5).zWA.setTag(paramBaseViewHolder);
-              ((aq)localObject5).zWA.setOnClickListener(new View.OnClickListener()
+              ((aq)localObject5).AnJ.setTag(paramBaseViewHolder);
+              ((aq)localObject5).AnJ.setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymousView)
                 {
                   AppMethodBeat.i(100111);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
                   localb.bd(paramAnonymousView);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/item/TurnMediaTimeLineItem$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/item/TurnMediaTimeLineItem$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
                   if (paramInt2 > 0) {
-                    parambh.AjE.zPb.zo(localb.AuT);
+                    parambh.AAQ.Agi.zN(localb.AMj);
                   }
-                  parambh.zpd.Azc.onClick(paramAnonymousView);
+                  parambh.zGs.AQy.onClick(paramAnonymousView);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/item/TurnMediaTimeLineItem$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(100111);
                 }
               });
-              localObject5 = ao.jo(ag.getAccSnsPath(), localbyn.Id);
-              localObject6 = q.i(localbyn);
-              if (!com.tencent.mm.vfs.i.fv((String)localObject5 + (String)localObject6)) {
+              localObject5 = ap.jv(ah.getAccSnsPath(), localbzh.Id);
+              localObject6 = r.i(localbzh);
+              if (!o.fB((String)localObject5 + (String)localObject6)) {
                 break label1903;
               }
-              parambh.AjE.zPb.b(parambi.AmB, 0, true, bool1);
+              parambh.AAQ.Agi.b(parambi.ADP, 0, true, bool1);
               label994:
-              if (ag.dUb().b((p)localObject4, null) != 5) {
+              if (ah.dXB().b((p)localObject4, null) != 5) {
                 break label1925;
               }
               bool2 = true;
               label1010:
-              parambh.AjE.zPb.c(parambi.AmB, bool2, bool1);
+              parambh.AAQ.Agi.c(parambi.ADP, bool2, bool1);
             }
           }
           localObject4 = localView.getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject4).width = this.Axu;
-          ((ViewGroup.LayoutParams)localObject4).height = this.Axu;
+          ((ViewGroup.LayoutParams)localObject4).width = this.AON;
+          ((ViewGroup.LayoutParams)localObject4).height = this.AON;
           localView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
           if (localObject3 != null)
           {
             localObject4 = ((View)localObject3).getLayoutParams();
-            ((ViewGroup.LayoutParams)localObject4).width = this.Axu;
-            ((ViewGroup.LayoutParams)localObject4).height = this.Axu;
+            ((ViewGroup.LayoutParams)localObject4).width = this.AON;
+            ((ViewGroup.LayoutParams)localObject4).height = this.AON;
             ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
           }
-          if ((paramInt2 == i) && (localbyn.nEf == 2))
+          if ((paramInt2 == i) && (localbzh.nJA == 2))
           {
             localView.setVisibility(0);
             localView.setOnTouchListener(new m.4(this));
@@ -354,21 +350,21 @@ public final class m
             localObject5 = localView;
           }
           ((a)localObject4).view = ((View)localObject5);
-          ((a)localObject4).AxC = localView;
-          ((a)localObject4).AxD = localb;
-          ((a)localObject4).zhs = localbyn;
-          ((a)localObject4).yXF = parambi.yVM;
+          ((a)localObject4).AOV = localView;
+          ((a)localObject4).AOW = localb;
+          ((a)localObject4).zyh = localbzh;
+          ((a)localObject4).znm = parambi.zlW;
           if (localObject2 == null) {
             break label1931;
           }
-          ((a)localObject2).AxE = ((a)localObject4);
+          ((a)localObject2).AOX = ((a)localObject4);
           label1211:
-          if (i == paramTimeLineObject.HAT.GaQ.size() - 1) {
-            ((a)localObject4).AxE = ((a)localObject1);
+          if (i == paramTimeLineObject.HUG.Gtx.size() - 1) {
+            ((a)localObject4).AOX = ((a)localObject1);
           }
           if (i == paramInt2)
           {
-            localb.AxH = ((a)localObject4);
+            localb.APa = ((a)localObject4);
             a((a)localObject4);
           }
           localObject2 = localObject4;
@@ -388,112 +384,112 @@ public final class m
       break label397;
       paramInt2 = 0;
       break;
-      ad.e("MiroMsg.TurnMediaTimeLineItem", "not enough medias!");
+      ae.e("MiroMsg.TurnMediaTimeLineItem", "not enough medias!");
       AppMethodBeat.o(100117);
       return;
-      localObject3 = ag.dUb();
+      localObject3 = ah.dXB();
       j = this.mActivity.hashCode();
-      localObject4 = bj.frn();
-      ((bj)localObject4).hbR = paramTimeLineObject.CreateTime;
-      ((f)localObject3).a(localbyn, localView, j, (bj)localObject4);
+      localObject4 = bk.fvn();
+      ((bk)localObject4).heF = paramTimeLineObject.CreateTime;
+      ((g)localObject3).a(localbzh, localView, j, (bk)localObject4);
       break label532;
       bool1 = false;
       break label568;
-      if ((parambh == null) || (parambh.AjE == null) || (parambh.AjE.zPb == null)) {
+      if ((parambh == null) || (parambh.AAQ == null) || (parambh.AAQ.Agi == null)) {
         break label669;
       }
-      parambh.AjE.zPb.d(l, bt.HI(), bool1);
+      parambh.AAQ.Agi.d(l, bu.HQ(), bool1);
       break label669;
-      if (((f)localObject6).b((p)localObject4, null) == 5)
+      if (((g)localObject6).b((p)localObject4, null) == 5)
       {
-        ((f)localObject6).A(localbyn);
-        ((aq)localObject5).zFD.setVisibility(8);
-        ((aq)localObject5).zWB.setVisibility(0);
-        ((aq)localObject5).zWB.fLr();
+        ((g)localObject6).A(localbzh);
+        ((aq)localObject5).zWJ.setVisibility(8);
+        ((aq)localObject5).AnK.setVisibility(0);
+        ((aq)localObject5).AnK.fPL();
         break label786;
       }
-      if (((f)localObject6).x(localbyn))
+      if (((g)localObject6).x(localbzh))
       {
-        ((aq)localObject5).zWB.setVisibility(8);
-        ((aq)localObject5).zFD.setImageResource(2131691612);
-        ((aq)localObject5).zFD.setVisibility(0);
+        ((aq)localObject5).AnK.setVisibility(8);
+        ((aq)localObject5).zWJ.setImageResource(2131691612);
+        ((aq)localObject5).zWJ.setVisibility(0);
         break label786;
       }
-      ((f)localObject6).y(localbyn);
-      ((aq)localObject5).zFD.setVisibility(0);
-      ((aq)localObject5).zWB.setVisibility(8);
-      ((aq)localObject5).zFD.setImageDrawable(com.tencent.mm.cc.a.l(this.mActivity, 2131691166));
-      ((aq)localObject5).zFD.setContentDescription(this.mActivity.getString(2131761939));
-      if (((f)localObject6).b((p)localObject4, null) != 4) {
+      ((g)localObject6).y(localbzh);
+      ((aq)localObject5).zWJ.setVisibility(0);
+      ((aq)localObject5).AnK.setVisibility(8);
+      ((aq)localObject5).zWJ.setImageDrawable(com.tencent.mm.cb.a.l(this.mActivity, 2131691166));
+      ((aq)localObject5).zWJ.setContentDescription(this.mActivity.getString(2131761939));
+      if (((g)localObject6).b((p)localObject4, null) != 4) {
         break label786;
       }
-      ((aq)localObject5).zFE.setVisibility(0);
+      ((aq)localObject5).zWK.setVisibility(0);
       break label786;
-      if (((f)localObject6).u(localbyn))
+      if (((g)localObject6).u(localbzh))
       {
-        ((aq)localObject5).zFD.setVisibility(0);
-        ((aq)localObject5).zWB.setVisibility(8);
-        ((aq)localObject5).zFD.setImageDrawable(com.tencent.mm.cc.a.l(this.mActivity, 2131691166));
-        ((aq)localObject5).zFD.setContentDescription(this.mActivity.getString(2131761939));
+        ((aq)localObject5).zWJ.setVisibility(0);
+        ((aq)localObject5).AnK.setVisibility(8);
+        ((aq)localObject5).zWJ.setImageDrawable(com.tencent.mm.cb.a.l(this.mActivity, 2131691166));
+        ((aq)localObject5).zWJ.setContentDescription(this.mActivity.getString(2131761939));
       }
       for (;;)
       {
-        if (!((aq)localObject5).zWy.ySq.dQd()) {
+        if (!((aq)localObject5).AnH.ziA.dTA()) {
           break label1901;
         }
-        ad.d("MiroMsg.TurnMediaTimeLineItem", "play video error " + localbyn.Id + " " + localbyn.Url + " " + localbyn.GSI + " " + paramInt1);
-        ((f)localObject6).y(localbyn);
-        ((aq)localObject5).zFD.setVisibility(0);
-        ((aq)localObject5).zWB.setVisibility(8);
-        ((aq)localObject5).zFD.setImageDrawable(com.tencent.mm.cc.a.l(this.mActivity, 2131691166));
-        ((aq)localObject5).zFD.setContentDescription(this.mActivity.getString(2131761939));
+        ae.d("MiroMsg.TurnMediaTimeLineItem", "play video error " + localbzh.Id + " " + localbzh.Url + " " + localbzh.Hmj + " " + paramInt1);
+        ((g)localObject6).y(localbzh);
+        ((aq)localObject5).zWJ.setVisibility(0);
+        ((aq)localObject5).AnK.setVisibility(8);
+        ((aq)localObject5).zWJ.setImageDrawable(com.tencent.mm.cb.a.l(this.mActivity, 2131691166));
+        ((aq)localObject5).zWJ.setContentDescription(this.mActivity.getString(2131761939));
         break;
-        if (((f)localObject6).v(localbyn))
+        if (((g)localObject6).v(localbzh))
         {
-          ((aq)localObject5).zFD.setVisibility(8);
-          ((aq)localObject5).zWB.setVisibility(8);
+          ((aq)localObject5).zWJ.setVisibility(8);
+          ((aq)localObject5).AnK.setVisibility(8);
         }
-        else if (((f)localObject6).b((p)localObject4, null) <= 5)
+        else if (((g)localObject6).b((p)localObject4, null) <= 5)
         {
-          ((aq)localObject5).zFD.setVisibility(8);
-          ((aq)localObject5).zWB.setVisibility(8);
+          ((aq)localObject5).zWJ.setVisibility(8);
+          ((aq)localObject5).AnK.setVisibility(8);
         }
         else
         {
-          ((f)localObject6).y(localbyn);
-          ((aq)localObject5).zFD.setVisibility(0);
-          ((aq)localObject5).zWB.setVisibility(8);
-          ((aq)localObject5).zFD.setImageDrawable(com.tencent.mm.cc.a.l(this.mActivity, 2131691166));
-          ((aq)localObject5).zFD.setContentDescription(this.mActivity.getString(2131761939));
+          ((g)localObject6).y(localbzh);
+          ((aq)localObject5).zWJ.setVisibility(0);
+          ((aq)localObject5).AnK.setVisibility(8);
+          ((aq)localObject5).zWJ.setImageDrawable(com.tencent.mm.cb.a.l(this.mActivity, 2131691166));
+          ((aq)localObject5).zWJ.setContentDescription(this.mActivity.getString(2131761939));
         }
       }
       break label786;
-      parambh.AjE.zPb.b(parambi.AmB, 0, false, bool1);
+      parambh.AAQ.Agi.b(parambi.ADP, 0, false, bool1);
       break label994;
       bool2 = false;
       break label1010;
       localObject1 = localObject4;
       break label1211;
-      if ((localb.tPw != null) && ((localb.tPw instanceof FrameLayout))) {
-        ((FrameLayout)localb.tPw).setClipChildren(false);
+      if ((localb.uan != null) && ((localb.uan instanceof FrameLayout))) {
+        ((FrameLayout)localb.uan).setClipChildren(false);
       }
-      if (localb.Avb != null) {
-        localb.Avb.setClipChildren(false);
+      if (localb.AMr != null) {
+        localb.AMr.setClipChildren(false);
       }
-      if ((localb.AvV != null) && ((localb.AvV instanceof LinearLayout))) {
-        ((LinearLayout)localb.AvV).setClipChildren(false);
+      if ((localb.ANm != null) && ((localb.ANm instanceof LinearLayout))) {
+        ((LinearLayout)localb.ANm).setClipChildren(false);
       }
-      localb.AxF.setOnClickListener(new View.OnClickListener()
+      localb.AOY.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(100112);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/item/TurnMediaTimeLineItem$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          parambh.zpd.Azc.onClick(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/item/TurnMediaTimeLineItem$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          parambh.zGs.AQy.onClick(paramAnonymousView);
           if (paramInt2 > 0) {
-            parambh.AjE.zPb.zo(localb.AuT);
+            parambh.AAQ.Agi.zN(localb.AMj);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/item/TurnMediaTimeLineItem$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(100112);
@@ -513,74 +509,74 @@ public final class m
       this.mActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
       this.mScreenWidth = ((DisplayMetrics)localObject1).widthPixels;
       this.mScreenHeight = ((DisplayMetrics)localObject1).heightPixels;
-      this.Axu = (Math.min(this.mScreenWidth, this.mScreenHeight) - com.tencent.mm.cc.a.fromDPToPix(this.mActivity, 54) - this.mActivity.getResources().getDimensionPixelSize(2131165490) - this.mActivity.getResources().getDimensionPixelSize(2131165516) - this.mActivity.getResources().getDimensionPixelSize(2131165568));
+      this.AON = (Math.min(this.mScreenWidth, this.mScreenHeight) - com.tencent.mm.cb.a.fromDPToPix(this.mActivity, 54) - this.mActivity.getResources().getDimensionPixelSize(2131165490) - this.mActivity.getResources().getDimensionPixelSize(2131165516) - this.mActivity.getResources().getDimensionPixelSize(2131165568));
     }
     Object localObject1 = (b)paramBaseViewHolder;
-    if ((((BaseTimeLineItem.BaseViewHolder)localObject1).Avc != null) && (!((b)localObject1).AxG))
+    if ((((BaseTimeLineItem.BaseViewHolder)localObject1).AMs != null) && (!((b)localObject1).AOZ))
     {
-      ((BaseTimeLineItem.BaseViewHolder)localObject1).Avc.setLayoutResource(2131495614);
-      if (!((b)localObject1).AxG)
+      ((BaseTimeLineItem.BaseViewHolder)localObject1).AMs.setLayoutResource(2131495614);
+      if (!((b)localObject1).AOZ)
       {
-        ((b)localObject1).AxF = ((BaseTimeLineItem.BaseViewHolder)localObject1).Avc.inflate();
-        ((b)localObject1).AxG = true;
+        ((b)localObject1).AOY = ((BaseTimeLineItem.BaseViewHolder)localObject1).AMs.inflate();
+        ((b)localObject1).AOZ = true;
       }
     }
     for (;;)
     {
-      Object localObject2 = ((b)localObject1).AxF.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).width = this.Axu;
-      ((ViewGroup.LayoutParams)localObject2).height = this.Axu;
-      ((RoundedCornerFrameLayout)((b)localObject1).AxF).setRadius(8.0F);
-      localObject2 = ((b)localObject1).AxI;
-      ((aq)localObject2).zWA = x(((b)localObject1).AxF, 0, 6);
-      ((aq)localObject2).zWx = ((aq)localObject2).zWA;
-      ((aq)localObject2).zWy = ((VideoSightView)((aq)localObject2).zWA.findViewById(2131300914));
-      paramBaseViewHolder.Atv.zWy.setMute(true);
-      ((aq)localObject2).zFD = ((ImageView)((aq)localObject2).zWA.findViewById(2131305196));
-      ((aq)localObject2).zWB = ((MMPinProgressBtn)((aq)localObject2).zWA.findViewById(2131303515));
-      ((aq)localObject2).zWC = ((TextView)((aq)localObject2).zWA.findViewById(2131299492));
-      ((aq)localObject2).zFE = ((TextView)((aq)localObject2).zWA.findViewById(2131299517));
-      ((aq)localObject2).zWy.ySy = true;
-      ((aq)localObject2).zWy.setScaleType(QImageView.a.KTb);
-      ((aq)localObject2).zWy.hw(this.Axu, this.Axu);
-      ((b)localObject1).sUS = ((b)localObject1).AxF.findViewById(2131305720);
-      ((b)localObject1).AtN = ((b)localObject1).AxF.findViewById(2131305719);
+      Object localObject2 = ((b)localObject1).AOY.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject2).width = this.AON;
+      ((ViewGroup.LayoutParams)localObject2).height = this.AON;
+      ((RoundedCornerFrameLayout)((b)localObject1).AOY).setRadius(8.0F);
+      localObject2 = ((b)localObject1).APb;
+      ((aq)localObject2).AnJ = w(((b)localObject1).AOY, 0, 6);
+      ((aq)localObject2).AnG = ((aq)localObject2).AnJ;
+      ((aq)localObject2).AnH = ((VideoSightView)((aq)localObject2).AnJ.findViewById(2131300914));
+      paramBaseViewHolder.AKJ.AnH.setMute(true);
+      ((aq)localObject2).zWJ = ((ImageView)((aq)localObject2).AnJ.findViewById(2131305196));
+      ((aq)localObject2).AnK = ((MMPinProgressBtn)((aq)localObject2).AnJ.findViewById(2131303515));
+      ((aq)localObject2).AnL = ((TextView)((aq)localObject2).AnJ.findViewById(2131299492));
+      ((aq)localObject2).zWK = ((TextView)((aq)localObject2).AnJ.findViewById(2131299517));
+      ((aq)localObject2).AnH.ziI = true;
+      ((aq)localObject2).AnH.setScaleType(QImageView.a.Lpz);
+      ((aq)localObject2).AnH.hy(this.AON, this.AON);
+      ((b)localObject1).tgh = ((b)localObject1).AOY.findViewById(2131305720);
+      ((b)localObject1).ALc = ((b)localObject1).AOY.findViewById(2131305719);
       AppMethodBeat.o(100116);
       return;
-      if (!((b)localObject1).AxG)
+      if (!((b)localObject1).AOZ)
       {
-        ((b)localObject1).AxF = ((b)localObject1).tPw.findViewById(2131306088);
-        ((b)localObject1).AxG = true;
+        ((b)localObject1).AOY = ((b)localObject1).uan.findViewById(2131306088);
+        ((b)localObject1).AOZ = true;
       }
     }
   }
   
   public static final class a
   {
-    public View AxC;
-    public m.b AxD;
-    public a AxE;
+    public View AOV;
+    public m.b AOW;
+    public a AOX;
     public int index;
     public View view;
-    public p yXF;
-    public byn zhs;
+    public p znm;
+    public bzh zyh;
   }
   
   public static class b
     extends BaseTimeLineItem.BaseViewHolder
   {
-    public View AtN;
-    public View AxF;
-    public boolean AxG;
-    public m.a AxH;
-    public aq AxI;
-    public View sUS;
+    public View ALc;
+    public View AOY;
+    public boolean AOZ;
+    public m.a APa;
+    public aq APb;
+    public View tgh;
     
     public b()
     {
       AppMethodBeat.i(100115);
-      this.AxG = false;
-      this.AxI = new aq();
+      this.AOZ = false;
+      this.APb = new aq();
       AppMethodBeat.o(100115);
     }
   }

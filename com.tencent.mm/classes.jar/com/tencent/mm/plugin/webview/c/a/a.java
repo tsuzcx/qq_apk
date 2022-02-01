@@ -2,81 +2,81 @@ package com.tencent.mm.plugin.webview.c.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.eq;
-import com.tencent.mm.g.a.eq.b;
-import com.tencent.mm.g.a.ew;
-import com.tencent.mm.g.a.ew.b;
+import com.tencent.mm.g.a.er;
+import com.tencent.mm.g.a.er.b;
+import com.tencent.mm.g.a.ex;
+import com.tencent.mm.g.a.ex.b;
 import com.tencent.mm.pluginsdk.ui.tools.w.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
   implements w.a
 {
-  private static a DNJ;
-  private static final byte[] qdd = { -2, 1, 1 };
-  public a.a DNI;
-  public byte[] DNK = null;
-  public int DNL = -1;
-  public boolean DNM = false;
-  public boolean DNN = false;
-  public String doD;
+  private static a EfI;
+  private static final byte[] qjI = { -2, 1, 1 };
+  public a.a EfH;
+  public byte[] EfJ = null;
+  public int EfK = -1;
+  public boolean EfL = false;
+  public boolean EfM = false;
+  public String dpI;
   public boolean hasInit = false;
   
-  public static boolean cf(byte[] paramArrayOfByte)
+  public static boolean ci(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte != null) && (paramArrayOfByte.length >= 9) && (paramArrayOfByte[(paramArrayOfByte.length - 7)] == 1) && (paramArrayOfByte[(paramArrayOfByte.length - 8)] == 1) && (paramArrayOfByte[(paramArrayOfByte.length - 9)] == -2);
   }
   
-  public static a eOV()
+  public static a eSG()
   {
-    AppMethodBeat.i(213943);
-    if (DNJ == null) {
-      DNJ = new a();
+    AppMethodBeat.i(213772);
+    if (EfI == null) {
+      EfI = new a();
     }
-    a locala = DNJ;
-    AppMethodBeat.o(213943);
+    a locala = EfI;
+    AppMethodBeat.o(213772);
     return locala;
   }
   
-  public final void eOW()
+  public final void eSH()
   {
-    AppMethodBeat.i(213944);
-    ad.i("MicroMsg.webview.WebViewExDeviceMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.DNM) });
-    if (this.DNM)
+    AppMethodBeat.i(213773);
+    ae.i("MicroMsg.webview.WebViewExDeviceMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.EfL) });
+    if (this.EfL)
     {
-      localObject = new eq();
-      ((eq)localObject).dpK.doE = false;
-      ((eq)localObject).dpK.doD = this.doD;
-      com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
-      if (!((eq)localObject).dpL.doF) {
-        ad.e("MicroMsg.webview.WebViewExDeviceMgr", "stopScanWXDevice fail");
+      localObject = new er();
+      ((er)localObject).dqP.dpJ = false;
+      ((er)localObject).dqP.dpI = this.dpI;
+      com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
+      if (!((er)localObject).dqQ.dpK) {
+        ae.e("MicroMsg.webview.WebViewExDeviceMgr", "stopScanWXDevice fail");
       }
-      this.DNM = false;
+      this.EfL = false;
     }
     this.hasInit = false;
-    if (this.DNI != null)
+    if (this.EfH != null)
     {
-      com.tencent.mm.sdk.b.a.IbL.d(this.DNI.DNP);
-      com.tencent.mm.sdk.b.a.IbL.d(this.DNI.DNQ);
-      com.tencent.mm.sdk.b.a.IbL.d(this.DNI.DNS);
-      com.tencent.mm.sdk.b.a.IbL.d(this.DNI.DNR);
-      com.tencent.mm.sdk.b.a.IbL.d(this.DNI.yQg);
-      this.DNI = null;
+      com.tencent.mm.sdk.b.a.IvT.d(this.EfH.EfO);
+      com.tencent.mm.sdk.b.a.IvT.d(this.EfH.EfP);
+      com.tencent.mm.sdk.b.a.IvT.d(this.EfH.EfR);
+      com.tencent.mm.sdk.b.a.IvT.d(this.EfH.EfQ);
+      com.tencent.mm.sdk.b.a.IvT.d(this.EfH.zgq);
+      this.EfH = null;
     }
-    this.DNK = null;
-    Object localObject = new ew();
-    ((ew)localObject).dqb.cUi = "";
-    ((ew)localObject).dqb.direction = 0;
-    ((ew)localObject).dqb.clear = true;
-    com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
-    ad.i("MicroMsg.webview.WebViewExDeviceMgr", "stop EcDeviceMgr for webview %s", new Object[] { Boolean.valueOf(((ew)localObject).dqc.doF) });
-    AppMethodBeat.o(213944);
+    this.EfJ = null;
+    Object localObject = new ex();
+    ((ex)localObject).drg.cVh = "";
+    ((ex)localObject).drg.direction = 0;
+    ((ex)localObject).drg.clear = true;
+    com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
+    ae.i("MicroMsg.webview.WebViewExDeviceMgr", "stop EcDeviceMgr for webview %s", new Object[] { Boolean.valueOf(((ex)localObject).drh.dpK) });
+    AppMethodBeat.o(213773);
   }
   
-  public final void eOX() {}
+  public final void eSI() {}
   
-  public final void gT(Context paramContext) {}
+  public final void gZ(Context paramContext) {}
   
   public final String getName()
   {

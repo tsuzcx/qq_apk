@@ -6,12 +6,17 @@ import android.text.TextUtils;
 import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.io.Closeable;
 
 public abstract interface ICommLibReader
-  extends Parcelable, b, o, Comparable<ICommLibReader>
+  extends Parcelable, b, o, Closeable, Comparable<ICommLibReader>
 {
-  public abstract String Le(String paramString);
+  public abstract String LE(String paramString);
+  
+  public static final class a
+    extends RuntimeException
+  {}
   
   public static final class b
   {
@@ -46,7 +51,7 @@ public abstract interface ICommLibReader
       }
       catch (Exception paramParcel)
       {
-        ad.e("Luggage.WXA.ICommLibReader.ParcelHelper", "readFromParcel e=%s", new Object[] { paramParcel });
+        ae.e("Luggage.WXA.ICommLibReader.ParcelHelper", "readFromParcel e=%s", new Object[] { paramParcel });
         AppMethodBeat.o(178573);
       }
       return null;

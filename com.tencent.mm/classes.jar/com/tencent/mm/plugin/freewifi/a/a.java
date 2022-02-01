@@ -7,14 +7,14 @@ import java.net.HttpURLConnection;
 
 public final class a
 {
-  private static final int tma;
-  private static final int tmb;
+  private static final int twS;
+  private static final int twT;
   
   static
   {
     AppMethodBeat.i(24737);
-    tma = h.b.cQP().cQL();
-    tmb = h.b.cQP().cQM();
+    twS = h.b.cTu().cTq();
+    twT = h.b.cTu().cTr();
     AppMethodBeat.o(24737);
   }
   
@@ -32,9 +32,9 @@ public final class a
     //   15: iconst_0
     //   16: aload_0
     //   17: aastore
-    //   18: invokestatic 63	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   18: invokestatic 63	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   21: aload_0
-    //   22: invokestatic 69	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   22: invokestatic 69	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   25: ifeq +10 -> 35
     //   28: sipush 24735
     //   31: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -53,14 +53,14 @@ public final class a
     //   55: aload_0
     //   56: ifnull +46 -> 102
     //   59: aload_0
-    //   60: getstatic 35	com/tencent/mm/plugin/freewifi/a/a:tma	I
+    //   60: getstatic 35	com/tencent/mm/plugin/freewifi/a/a:twS	I
     //   63: invokevirtual 83	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   66: aload_0
-    //   67: getstatic 40	com/tencent/mm/plugin/freewifi/a/a:tmb	I
+    //   67: getstatic 40	com/tencent/mm/plugin/freewifi/a/a:twT	I
     //   70: invokevirtual 86	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   73: aload_0
     //   74: ldc 88
-    //   76: invokestatic 27	com/tencent/mm/plugin/freewifi/h$b:cQP	()Lcom/tencent/mm/plugin/freewifi/h;
+    //   76: invokestatic 27	com/tencent/mm/plugin/freewifi/h$b:cTu	()Lcom/tencent/mm/plugin/freewifi/h;
     //   79: invokevirtual 92	com/tencent/mm/plugin/freewifi/h:getUserAgent	()Ljava/lang/String;
     //   82: invokevirtual 96	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   85: aload_0
@@ -128,19 +128,19 @@ public final class a
     //   207: ldc 56
     //   209: aload_1
     //   210: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   213: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   213: invokestatic 128	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   216: goto -103 -> 113
     //   219: astore_1
     //   220: ldc 56
     //   222: aload_1
     //   223: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   226: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   226: invokestatic 128	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   229: goto -73 -> 156
     //   232: astore_1
     //   233: ldc 56
     //   235: aload_1
     //   236: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   239: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   239: invokestatic 128	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   242: goto -48 -> 194
     //   245: sipush 24735
     //   248: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -200,12 +200,12 @@ public final class a
     //   19: iconst_1
     //   20: aload_1
     //   21: aastore
-    //   22: invokestatic 63	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   22: invokestatic 63	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   25: aload_0
-    //   26: invokestatic 69	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   26: invokestatic 69	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   29: ifne +10 -> 39
     //   32: aload_1
-    //   33: invokestatic 69	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+    //   33: invokestatic 69	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
     //   36: ifeq +10 -> 46
     //   39: sipush 24736
     //   42: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -230,7 +230,7 @@ public final class a
     //   76: iconst_1
     //   77: aload 6
     //   79: aastore
-    //   80: invokestatic 63	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   80: invokestatic 63	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   83: aconst_null
     //   84: astore_1
     //   85: aconst_null
@@ -245,14 +245,14 @@ public final class a
     //   103: aload_0
     //   104: ifnull +124 -> 228
     //   107: aload_0
-    //   108: getstatic 35	com/tencent/mm/plugin/freewifi/a/a:tma	I
+    //   108: getstatic 35	com/tencent/mm/plugin/freewifi/a/a:twS	I
     //   111: invokevirtual 83	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   114: aload_0
-    //   115: getstatic 40	com/tencent/mm/plugin/freewifi/a/a:tmb	I
+    //   115: getstatic 40	com/tencent/mm/plugin/freewifi/a/a:twT	I
     //   118: invokevirtual 86	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   121: aload_0
     //   122: ldc 88
-    //   124: invokestatic 27	com/tencent/mm/plugin/freewifi/h$b:cQP	()Lcom/tencent/mm/plugin/freewifi/h;
+    //   124: invokestatic 27	com/tencent/mm/plugin/freewifi/h$b:cTu	()Lcom/tencent/mm/plugin/freewifi/h;
     //   127: invokevirtual 92	com/tencent/mm/plugin/freewifi/h:getUserAgent	()Ljava/lang/String;
     //   130: invokevirtual 96	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: aload_0
@@ -495,19 +495,19 @@ public final class a
     //   614: ldc 56
     //   616: aload_1
     //   617: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   620: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   620: invokestatic 128	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   623: goto -384 -> 239
     //   626: astore_1
     //   627: ldc 56
     //   629: aload_1
     //   630: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   633: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   633: invokestatic 128	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   636: goto -73 -> 563
     //   639: astore_2
     //   640: ldc 56
     //   642: aload_2
     //   643: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   646: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   646: invokestatic 128	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   649: goto -48 -> 601
     //   652: sipush 24736
     //   655: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -555,10 +555,10 @@ public final class a
     //   88	103	663	java/lang/Exception
   }
   
-  public static a cQZ()
+  public static a cTE()
   {
     AppMethodBeat.i(24734);
-    a locala = b.cRa();
+    a locala = b.cTF();
     AppMethodBeat.o(24734);
     return locala;
   }
@@ -572,12 +572,12 @@ public final class a
   
   static final class b
   {
-    private static a tmc;
+    private static a twU;
     
     static
     {
       AppMethodBeat.i(24733);
-      tmc = new a((byte)0);
+      twU = new a((byte)0);
       AppMethodBeat.o(24733);
     }
   }

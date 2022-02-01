@@ -1,26 +1,26 @@
 package kotlinx.coroutines.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.k.h;
+import d.k.j;
 import d.l;
 import kotlinx.coroutines.ac;
 import kotlinx.coroutines.internal.u;
 import kotlinx.coroutines.internal.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/DefaultScheduler;", "Lkotlinx/coroutines/scheduling/ExperimentalCoroutineDispatcher;", "()V", "IO", "Lkotlinx/coroutines/CoroutineDispatcher;", "getIO", "()Lkotlinx/coroutines/CoroutineDispatcher;", "close", "", "toDebugString", "", "toString", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/scheduling/DefaultScheduler;", "Lkotlinx/coroutines/scheduling/ExperimentalCoroutineDispatcher;", "()V", "IO", "Lkotlinx/coroutines/CoroutineDispatcher;", "getIO", "()Lkotlinx/coroutines/CoroutineDispatcher;", "close", "", "toDebugString", "", "toString", "kotlinx-coroutines-core"})
 public final class c
   extends d
 {
-  private static final ac NIs;
-  public static final c NKP;
+  private static final ac Ofy;
+  public static final c OhV;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(117977);
     Object localObject = new c();
-    NKP = (c)localObject;
-    int j = u.g("kotlinx.coroutines.io.parallelism", h.lp(64, v.gwi()), 0, 0, 12);
+    OhV = (c)localObject;
+    int j = u.g("kotlinx.coroutines.io.parallelism", j.lw(64, v.gAK()), 0, 0, 12);
     if (j > 0) {
       i = 1;
     }
@@ -30,13 +30,13 @@ public final class c
       AppMethodBeat.o(117977);
       throw ((Throwable)localObject);
     }
-    NIs = (ac)new f((d)localObject, j);
+    Ofy = (ac)new f((d)localObject, j);
     AppMethodBeat.o(117977);
   }
   
-  public static ac gvp()
+  public static ac gzR()
   {
-    return NIs;
+    return Ofy;
   }
   
   public final void close()

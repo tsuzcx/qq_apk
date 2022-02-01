@@ -10,11 +10,11 @@ public abstract interface c
   public static final class a
   {
     public String businessType;
-    public int dJQ;
-    public String dJR;
-    public String dkh;
-    public String jXT;
-    public String kVU;
+    public int dLf;
+    public String dLg;
+    public String dlj;
+    public String kZC;
+    public String kbi;
     public int scene;
     public int sourceType;
   }

@@ -10,28 +10,28 @@ import com.tencent.mm.plugin.ball.c.c;
 import com.tencent.mm.plugin.ball.c.c.a;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.d.b.r;
 import d.l;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=r.class)
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/chatting/component/FloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/AbstractChattingComponent;", "Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter$OnFooterPanelSwitchListener;", "()V", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "chattingContext", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "floatBallService", "Lcom/tencent/mm/plugin/ball/api/IFloatBallService;", "lastPanelHeight", "", "lastPanelType", "attachFooter", "", "detachFooter", "getDelayDuration", "", "panelType", "getExtraHeight", "isVoipFloatBallShowing", "", "needDelay", "onChattingPause", "onChattingResume", "onComponentInstall", "context", "onComponentUnInstall", "onFooterPanelSwitch", "panelHeight", "Companion", "app_release"})
+@com.tencent.mm.ui.chatting.d.a.a(fJv=r.class)
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/component/FloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/AbstractChattingComponent;", "Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter$OnFooterPanelSwitchListener;", "()V", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "chattingContext", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "floatBallService", "Lcom/tencent/mm/plugin/ball/api/IFloatBallService;", "lastPanelHeight", "", "lastPanelType", "attachFooter", "", "detachFooter", "getDelayDuration", "", "panelType", "getExtraHeight", "isVoipFloatBallShowing", "", "needDelay", "onChattingPause", "onChattingResume", "onComponentInstall", "context", "onComponentUnInstall", "onFooterPanelSwitch", "panelHeight", "Companion", "app_release"})
 public final class u
   extends a
   implements ChatFooter.f, r
 {
-  public static final u.a JIO;
-  private ChatFooter JIL;
-  private int JIM = -1;
-  private int JIN = -1;
-  private com.tencent.mm.ui.chatting.e.a Jaj;
-  private c nGl;
+  public static final u.a KdK;
+  private com.tencent.mm.ui.chatting.e.a JuR;
+  private ChatFooter KdH;
+  private int KdI = -1;
+  private int KdJ = -1;
+  private c nLM;
   
   static
   {
     AppMethodBeat.i(180128);
-    JIO = new u.a((byte)0);
+    KdK = new u.a((byte)0);
     AppMethodBeat.o(180128);
   }
   
@@ -39,16 +39,16 @@ public final class u
   {
     AppMethodBeat.i(180122);
     super.a(parama);
-    this.Jaj = parama;
-    this.nGl = ((c)g.ab(c.class));
+    this.JuR = parama;
+    this.nLM = ((c)g.ab(c.class));
     AppMethodBeat.o(180122);
   }
   
-  public final void bA(ChatFooter paramChatFooter)
+  public final void bC(ChatFooter paramChatFooter)
   {
     AppMethodBeat.i(180126);
-    this.JIL = paramChatFooter;
-    paramChatFooter = this.JIL;
+    this.KdH = paramChatFooter;
+    paramChatFooter = this.KdH;
     if (paramChatFooter != null)
     {
       paramChatFooter.setOnFooterPanelSwitchListener((ChatFooter.f)this);
@@ -58,46 +58,34 @@ public final class u
     AppMethodBeat.o(180126);
   }
   
-  public final void fCC()
-  {
-    AppMethodBeat.i(180123);
-    super.fCC();
-    ChatFooter localChatFooter = this.JIL;
-    if (localChatFooter != null) {
-      localChatFooter.setOnFooterPanelSwitchListener(null);
-    }
-    this.JIL = null;
-    AppMethodBeat.o(180123);
-  }
-  
-  public final void fwv()
+  public final void fAv()
   {
     AppMethodBeat.i(180124);
-    super.fwv();
-    Object localObject = this.nGl;
+    super.fAv();
+    Object localObject = this.nLM;
     if (localObject != null) {
-      ((c)localObject).iU(true);
+      ((c)localObject).iT(true);
     }
-    localObject = this.nGl;
+    localObject = this.nLM;
     if (localObject != null) {
-      ((c)localObject).bKf();
+      ((c)localObject).bLd();
     }
-    localObject = this.Jaj;
+    localObject = this.JuR;
     int i;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).fFs();
+      localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).fJz();
       if (localObject != null)
       {
         localObject = ((MMFragment)localObject).getArguments();
         if (localObject != null)
         {
           i = ((Bundle)localObject).getInt("chat_from_scene", 0);
-          localObject = this.Jaj;
+          localObject = this.JuR;
           if (localObject == null) {
             break label323;
           }
-          localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).fFs();
+          localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).fJz();
           if (localObject == null) {
             break label323;
           }
@@ -111,32 +99,32 @@ public final class u
     label323:
     for (final boolean bool = ((Bundle)localObject).getBoolean("key_can_show_message_float_ball", false);; bool = false)
     {
-      localObject = this.nGl;
-      if ((localObject != null) && (((c)localObject).bJX() == true)) {
-        ad.w("MicroMsg.FloatBallComponent", "alvinluo onChattingResume current is in QBFileViewPage");
+      localObject = this.nLM;
+      if ((localObject != null) && (((c)localObject).bKV() == true)) {
+        ae.w("MicroMsg.FloatBallComponent", "alvinluo onChattingResume current is in QBFileViewPage");
       }
       if ((i != 1) || (!bool)) {
         break label334;
       }
-      localObject = this.nGl;
+      localObject = this.nLM;
       if (localObject == null) {
         break label328;
       }
-      if (((c)localObject).bJX()) {
+      if (((c)localObject).bKV()) {
         break label334;
       }
-      localObject = this.nGl;
+      localObject = this.nLM;
       if (localObject != null) {
-        ((c)localObject).iR(true);
+        ((c)localObject).iQ(true);
       }
-      localObject = this.nGl;
+      localObject = this.nLM;
       if (localObject != null) {
-        ((c)localObject).te(System.currentTimeMillis());
+        ((c)localObject).ts(System.currentTimeMillis());
       }
-      localObject = this.Jaj;
+      localObject = this.JuR;
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).fFs();
+        localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).fJz();
         if (localObject != null)
         {
           localObject = ((MMFragment)localObject).getArguments();
@@ -146,7 +134,7 @@ public final class u
         }
       }
       final long l = System.currentTimeMillis();
-      localObject = this.nGl;
+      localObject = this.nLM;
       if (localObject == null) {
         break label334;
       }
@@ -163,29 +151,41 @@ public final class u
     AppMethodBeat.o(180124);
   }
   
-  public final void fww()
+  public final void fAw()
   {
     AppMethodBeat.i(180125);
-    super.fww();
-    c localc = this.nGl;
+    super.fAw();
+    c localc = this.nLM;
     if (localc != null) {
-      localc.iU(false);
+      localc.iT(false);
     }
-    localc = this.nGl;
+    localc = this.nLM;
     if (localc != null)
     {
-      localc.bKe();
+      localc.bLc();
       AppMethodBeat.o(180125);
       return;
     }
     AppMethodBeat.o(180125);
   }
   
-  public final void jo(int paramInt1, int paramInt2)
+  public final void fGE()
+  {
+    AppMethodBeat.i(180123);
+    super.fGE();
+    ChatFooter localChatFooter = this.KdH;
+    if (localChatFooter != null) {
+      localChatFooter.setOnFooterPanelSwitchListener(null);
+    }
+    this.KdH = null;
+    AppMethodBeat.o(180123);
+  }
+  
+  public final void js(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(180127);
-    ad.d("MicroMsg.FloatBallComponent", "alvinluo onFooterPanelSwitch panelType: %d, panelHeight: %d, last: %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.JIM), Integer.valueOf(this.JIN) });
-    Object localObject = this.JIL;
+    ae.d("MicroMsg.FloatBallComponent", "alvinluo onFooterPanelSwitch panelType: %d, panelHeight: %d, last: %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.KdI), Integer.valueOf(this.KdJ) });
+    Object localObject = this.KdH;
     int i;
     boolean bool1;
     label75:
@@ -201,14 +201,14 @@ public final class u
         break label256;
       }
       bool1 = true;
-      if ((paramInt1 != 0) || (this.JIM == 0) || (this.JIM == -1)) {
+      if ((paramInt1 != 0) || (this.KdI == 0) || (this.KdI == -1)) {
         break label268;
       }
-      localObject = this.nGl;
+      localObject = this.nLM;
       if (localObject == null) {
         break label262;
       }
-      bool2 = ((c)localObject).xS(9);
+      bool2 = ((c)localObject).xW(9);
       if (!bool2) {
         break label268;
       }
@@ -216,23 +216,23 @@ public final class u
       if ((j == 0) || (paramInt1 != 0)) {
         break label306;
       }
-      if (this.JIM != 1) {
+      if (this.KdI != 1) {
         break label274;
       }
       l = 200L;
     }
     for (;;)
     {
-      ad.i("MicroMsg.FloatBallComponent", "alvinluo onFooterPanelSwitch delay: %d", new Object[] { Long.valueOf(l) });
-      localObject = this.nGl;
+      ae.i("MicroMsg.FloatBallComponent", "alvinluo onFooterPanelSwitch delay: %d", new Object[] { Long.valueOf(l) });
+      localObject = this.nLM;
       if (localObject != null) {
         ((c)localObject).a(paramInt2, i, bool1, l);
       }
-      this.JIM = paramInt1;
-      this.JIN = paramInt2;
+      this.KdI = paramInt1;
+      this.KdJ = paramInt2;
       AppMethodBeat.o(180127);
       return;
-      localObject = this.cWM;
+      localObject = this.cXJ;
       if (localObject != null)
       {
         localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).getContext();
@@ -258,9 +258,9 @@ public final class u
       j = 0;
       break label124;
       label274:
-      if (this.JIM == 3) {
+      if (this.KdI == 3) {
         l = 300L;
-      } else if (this.JIM == 2) {
+      } else if (this.KdI == 2) {
         l = 350L;
       } else {
         label306:
@@ -269,21 +269,21 @@ public final class u
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "", "onAddResult"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "", "onAddResult"})
   static final class b
     implements c.a
   {
     b(int paramInt, boolean paramBoolean, long paramLong) {}
     
-    public final void xV(int paramInt)
+    public final void xZ(int paramInt)
     {
-      AppMethodBeat.i(194863);
-      ad.i("MicroMsg.FloatBallComponent", "alvinluo onChattingResume fromScene: %d, canShowMessageFloatBall: %b, addMessageBallResult: %d", new Object[] { Integer.valueOf(this.nWA), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+      AppMethodBeat.i(188270);
+      ae.i("MicroMsg.FloatBallComponent", "alvinluo onChattingResume fromScene: %d, canShowMessageFloatBall: %b, addMessageBallResult: %d", new Object[] { Integer.valueOf(this.ocj), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
       b localb = (b)g.ab(b.class);
       if (localb != null) {
         localb.n(l, paramInt);
       }
-      AppMethodBeat.o(194863);
+      AppMethodBeat.o(188270);
     }
   }
 }

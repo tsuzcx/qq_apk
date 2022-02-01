@@ -1,9 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.r;
 
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.widget.e.b;
+import com.tencent.mm.plugin.appbrand.widget.e.b.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   private static final int CTRL_INDEX = 106;
   private static final String NAME = "hideToast";

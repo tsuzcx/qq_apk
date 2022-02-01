@@ -15,19 +15,17 @@ import android.os.Build.VERSION;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ac;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.c.a;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.v;
-import com.tencent.mm.g.a.os;
+import com.tencent.mm.g.a.ot;
 import com.tencent.mm.plugin.video.ObservableSurfaceView;
 import com.tencent.mm.plugin.video.ObservableTextureView;
 import com.tencent.mm.plugin.video.b;
 import com.tencent.mm.plugin.voip.b.n;
 import com.tencent.mm.plugin.voip.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,99 +34,99 @@ import java.util.regex.Pattern;
 public class a
   implements com.tencent.mm.plugin.video.a, b
 {
-  private static final Pattern ClN;
-  private static int ClO;
-  private static int ClP;
-  protected boolean ClQ;
-  protected boolean ClR;
-  protected boolean ClS;
-  protected boolean ClT;
-  protected boolean ClU;
-  protected long ClV;
-  protected long ClW;
-  protected int ClX;
-  protected Camera.Parameters ClY;
-  protected ac ClZ;
-  protected int Cma;
-  protected boolean Cmb;
-  protected boolean Cmc;
-  protected boolean Cmd;
-  protected ObservableSurfaceView Cme;
-  protected ObservableTextureView Cmf;
-  protected f Cmg;
-  protected boolean Cmh;
-  protected boolean Cmi;
-  protected byte[] Cmj;
-  protected int[] Cmk;
-  protected List<byte[]> Cml;
-  protected boolean Cmm;
-  protected int Cmn;
-  protected int Cmo;
-  protected int Cmp;
-  protected int Cmq;
-  protected boolean Cmr;
-  private byte[] Cms;
-  Camera.PreviewCallback Cmt;
+  private static final Pattern CDr;
+  private static int CDs;
+  private static int CDt;
+  protected long CDA;
+  protected int CDB;
+  protected Camera.Parameters CDC;
+  protected ac CDD;
+  protected int CDE;
+  protected boolean CDF;
+  protected boolean CDG;
+  protected boolean CDH;
+  protected ObservableSurfaceView CDI;
+  protected ObservableTextureView CDJ;
+  protected f CDK;
+  protected boolean CDL;
+  protected boolean CDM;
+  protected byte[] CDN;
+  protected int[] CDO;
+  protected List<byte[]> CDP;
+  protected boolean CDQ;
+  protected int CDR;
+  protected int CDS;
+  protected int CDT;
+  protected int CDU;
+  protected boolean CDV;
+  private byte[] CDW;
+  Camera.PreviewCallback CDX;
+  protected boolean CDu;
+  protected boolean CDv;
+  protected boolean CDw;
+  protected boolean CDx;
+  protected boolean CDy;
+  protected long CDz;
   protected int mHeight;
   protected int mWidth;
-  protected v rqL;
-  protected boolean rqM;
+  protected v rza;
+  protected boolean rzb;
   
   static
   {
     AppMethodBeat.i(115564);
-    ClN = Pattern.compile(",");
-    ClO = 20;
-    ClP = 70;
+    CDr = Pattern.compile(",");
+    CDs = 20;
+    CDt = 70;
     AppMethodBeat.o(115564);
   }
   
   public a(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115545);
-    this.ClQ = false;
-    this.ClR = false;
-    this.ClS = false;
-    this.ClT = false;
-    this.ClU = false;
-    this.ClV = 0L;
-    this.ClW = 30000L;
-    this.ClX = 0;
-    this.Cmb = false;
-    this.Cmc = false;
-    this.Cmd = false;
-    this.Cme = null;
-    this.Cmh = false;
-    this.Cmi = false;
-    this.Cmj = null;
-    this.Cmk = null;
+    this.CDu = false;
+    this.CDv = false;
+    this.CDw = false;
+    this.CDx = false;
+    this.CDy = false;
+    this.CDz = 0L;
+    this.CDA = 30000L;
+    this.CDB = 0;
+    this.CDF = false;
+    this.CDG = false;
+    this.CDH = false;
+    this.CDI = null;
+    this.CDL = false;
+    this.CDM = false;
+    this.CDN = null;
+    this.CDO = null;
     this.mWidth = 320;
     this.mHeight = 240;
-    this.Cmm = true;
-    this.Cmo = 0;
-    this.Cmp = 0;
-    this.Cmq = 0;
-    this.rqM = false;
-    this.Cmr = false;
-    this.Cms = null;
-    this.Cmt = new Camera.PreviewCallback()
+    this.CDQ = true;
+    this.CDS = 0;
+    this.CDT = 0;
+    this.CDU = 0;
+    this.rzb = false;
+    this.CDV = false;
+    this.CDW = null;
+    this.CDX = new Camera.PreviewCallback()
     {
       public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
       {
         AppMethodBeat.i(115544);
         if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length <= 0))
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 3L, 1L, false);
-          if (a.this.Cmg != null) {
-            a.this.Cmg.bZW();
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 3L, 1L, false);
+          if (a.this.CDK != null) {
+            a.this.CDK.cbl();
           }
           AppMethodBeat.o(115544);
           return;
         }
-        if (a.this.ClZ == null)
+        if (a.this.CDD == null)
         {
-          ad.e("MicroMsg.Voip.CaptureRender", "onPreviewFrame mSize is null");
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "onPreviewFrame mSize is null");
           AppMethodBeat.o(115544);
           return;
         }
@@ -136,25 +134,25 @@ public class a
         int i;
         int k;
         int j;
-        if (a.this.Cmg != null)
+        if (a.this.CDK != null)
         {
           if ((a.a(a.this) == null) || (a.a(a.this).length != paramAnonymousArrayOfByte.length)) {
             a.a(a.this, new byte[paramAnonymousArrayOfByte.length]);
           }
           System.arraycopy(paramAnonymousArrayOfByte, 0, a.a(a.this), 0, paramAnonymousArrayOfByte.length);
           m = 1;
-          if (a.this.ClQ)
+          if (a.this.CDu)
           {
-            i = j.Coz;
+            i = j.CGd;
             k = i;
-            if (!ae.gcE.fYi) {
+            if (!com.tencent.mm.compatible.deviceinfo.ae.geM.gao) {
               break label609;
             }
             k = i;
-            if (ae.gcE.fYh.dGc == 0) {
+            if (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.dHi == 0) {
               break label609;
             }
-            j = ae.gcE.fYh.fYQ;
+            j = com.tencent.mm.compatible.deviceinfo.ae.geM.gan.gaX;
             m = 1;
             k = i;
             i = m;
@@ -173,40 +171,40 @@ public class a
             }
             bool = true;
             label241:
-            paramAnonymousCamera.ClR = bool;
-            k = a.this.ClZ.width;
-            int n = a.this.ClZ.height;
-            if ((i == 0) || (a.this.bZV())) {
+            paramAnonymousCamera.CDv = bool;
+            k = a.this.CDD.width;
+            int n = a.this.CDD.height;
+            if ((i == 0) || (a.this.cbk())) {
               break label522;
             }
-            if (a.this.Cmj == null)
+            if (a.this.CDN == null)
             {
               i = k * n * 3 / 2;
-              a.this.Cmj = new byte[i];
-              a.this.Cmj[0] = 90;
+              a.this.CDN = new byte[i];
+              a.this.CDN[0] = 90;
             }
-            com.tencent.mm.plugin.voip.c.euM().a(a.a(a.this), a.a(a.this).length, k, n, a.this.Cma, a.this.Cmj, a.this.Cmj.length, k, n, j);
-            a.this.Cmg.a(a.this.Cmj, a.this.Cmj.length, k, n, a.this.Cma, m);
+            com.tencent.mm.plugin.voip.c.eys().a(a.a(a.this), a.a(a.this).length, k, n, a.this.CDE, a.this.CDN, a.this.CDN.length, k, n, j);
+            a.this.CDK.a(a.this.CDN, a.this.CDN.length, k, n, a.this.CDE, m);
           }
           for (;;)
           {
             if (n.getApiLevel() >= 8)
             {
-              if (a.this.rqL == null)
+              if (a.this.rza == null)
               {
-                ad.e("MicroMsg.Voip.CaptureRender", "the camera is null and has been release");
+                com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "the camera is null and has been release");
                 AppMethodBeat.o(115544);
                 return;
-                j = j.CoA;
+                j = j.CGe;
                 k = j;
-                if (!ae.gcE.fYk) {
+                if (!com.tencent.mm.compatible.deviceinfo.ae.geM.gar) {
                   break label609;
                 }
                 k = j;
-                if (ae.gcE.fYj.dGc == 0) {
+                if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.dHi == 0) {
                   break label609;
                 }
-                m = ae.gcE.fYj.fYQ;
+                m = com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.gaX;
                 i = 1;
                 k = j;
                 j = m;
@@ -217,11 +215,11 @@ public class a
                 bool = false;
                 break label241;
                 label522:
-                a.this.Cmg.a(a.a(a.this), a.a(a.this).length, a.this.ClZ.width, a.this.ClZ.height, a.this.Cma, m);
+                a.this.CDK.a(a.a(a.this), a.a(a.this).length, a.this.CDD.width, a.this.CDD.height, a.this.CDE, m);
                 continue;
               }
-              if (a.this.rqL != null) {
-                a.this.rqL.addCallbackBuffer(paramAnonymousArrayOfByte);
+              if (a.this.rza != null) {
+                a.this.rza.addCallbackBuffer(paramAnonymousArrayOfByte);
               }
             }
           }
@@ -235,8 +233,8 @@ public class a
     };
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    j.gH(aj.getContext().getApplicationContext());
-    ad.d("MicroMsg.Voip.CaptureRender", "width: %d, height: %d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
+    j.gM(ak.getContext().getApplicationContext());
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "width: %d, height: %d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
     AppMethodBeat.o(115545);
   }
   
@@ -244,7 +242,7 @@ public class a
   {
     AppMethodBeat.i(115556);
     int i1 = 2147483647;
-    paramCharSequence = ClN.split(paramCharSequence);
+    paramCharSequence = CDr.split(paramCharSequence);
     int i6 = paramCharSequence.length;
     int m = 0;
     int j = 0;
@@ -263,7 +261,7 @@ public class a
       if (k >= 0) {
         break;
       }
-      ad.w("MicroMsg.Voip.CaptureRender", "Bad preview-size: ".concat(String.valueOf(str)));
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.Voip.CaptureRender", "Bad preview-size: ".concat(String.valueOf(str)));
       i4 = i;
       i3 = j;
       i2 = i1;
@@ -276,8 +274,8 @@ public class a
       int i5;
       try
       {
-        n = bt.getInt(str.substring(0, k), 0);
-        k = bt.getInt(str.substring(k + 1), 0);
+        n = bu.getInt(str.substring(0, k), 0);
+        k = bu.getInt(str.substring(k + 1), 0);
         i5 = Math.abs(n - paramPoint.x) + Math.abs(k - paramPoint.y);
         if (i5 != 0) {
           break label218;
@@ -291,7 +289,7 @@ public class a
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        ad.w("MicroMsg.Voip.CaptureRender", "Bad preview-size: ".concat(String.valueOf(str)));
+        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.Voip.CaptureRender", "Bad preview-size: ".concat(String.valueOf(str)));
         i2 = i1;
         i3 = j;
         i4 = i;
@@ -343,8 +341,8 @@ public class a
     }
     catch (Exception paramv)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-      ad.e("MicroMsg.Voip.CaptureRender", "TryPreviewSize fail:" + paramv.toString());
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "TryPreviewSize fail:" + paramv.toString());
       AppMethodBeat.o(115554);
     }
     return false;
@@ -362,34 +360,34 @@ public class a
     List localList;
     try
     {
-      ad.i("MicroMsg.Voip.CaptureRender", "trySetAutoFocus, isFrontCamera:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "trySetAutoFocus, isFrontCamera:%s", new Object[] { Boolean.valueOf(paramBoolean) });
       localParameters = paramv.getParameters();
       localList = localParameters.getSupportedFocusModes();
       if (localList == null) {
         break label224;
       }
-      ad.i("MicroMsg.Voip.CaptureRender", "supported focus modes size = " + localList.size());
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "supported focus modes size = " + localList.size());
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext()) {
-        ad.i("MicroMsg.Voip.CaptureRender", "supported focus modes : ".concat(String.valueOf((String)localIterator.next())));
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "supported focus modes : ".concat(String.valueOf((String)localIterator.next())));
       }
-      if (ae.gcE.fYI != 0) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaP != 0) {
         break label268;
       }
     }
     catch (Exception paramv)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-      ad.e("MicroMsg.Voip.CaptureRender", "TrySetAutoFocus fail:" + paramv.toString());
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "TrySetAutoFocus fail:" + paramv.toString());
       AppMethodBeat.o(115555);
       return false;
     }
     if (paramBoolean) {
       if (localList.contains("auto"))
       {
-        ad.i("MicroMsg.Voip.CaptureRender", "camera support auto focus");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "camera support auto focus");
         localParameters.setFocusMode("auto");
-        this.Cmc = false;
+        this.CDG = false;
       }
     }
     for (;;)
@@ -400,66 +398,66 @@ public class a
       return true;
       if (localList.contains("continuous-video"))
       {
-        ad.i("MicroMsg.Voip.CaptureRender", "camera support continuous video focus");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "camera support continuous video focus");
         localParameters.setFocusMode("continuous-video");
-        this.Cmc = true;
+        this.CDG = true;
         continue;
         label268:
-        if ((ae.gcE.fYI == 1) || (!paramBoolean)) {
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaP == 1) || (!paramBoolean)) {
           if (localList.contains("continuous-video"))
           {
-            ad.i("MicroMsg.Voip.CaptureRender", "camera support continuous video focus");
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "camera support continuous video focus");
             localParameters.setFocusMode("continuous-video");
-            this.Cmc = true;
+            this.CDG = true;
           }
           else if (localList.contains("auto"))
           {
-            ad.i("MicroMsg.Voip.CaptureRender", "camera support auto focus");
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "camera support auto focus");
             localParameters.setFocusMode("auto");
-            this.Cmc = false;
+            this.CDG = false;
           }
         }
       }
     }
   }
   
-  private void eAh()
+  private void eDP()
   {
     AppMethodBeat.i(115551);
     for (;;)
     {
       try
       {
-        if ((this.rqL != null) && (this.Cmb))
+        if ((this.rza != null) && (this.CDF))
         {
-          if ((this.ClZ != null) && (this.ClZ.height > 0) && (this.ClZ.width > 0))
+          if ((this.CDD != null) && (this.CDD.height > 0) && (this.CDD.width > 0))
           {
-            int j = this.ClZ.height * this.ClZ.width * 3 / 2;
-            if (this.Cml == null)
+            int j = this.CDD.height * this.CDD.width * 3 / 2;
+            if (this.CDP == null)
             {
-              this.Cml = new ArrayList(3);
+              this.CDP = new ArrayList(3);
               i = 0;
               if (i < 3)
               {
-                this.Cml.add(new byte[j]);
+                this.CDP.add(new byte[j]);
                 i += 1;
                 continue;
-                if (i < this.Cml.size())
+                if (i < this.CDP.size())
                 {
-                  if (this.rqL == null) {
+                  if (this.rza == null) {
                     break label225;
                   }
-                  this.rqL.addCallbackBuffer((byte[])this.Cml.get(i));
+                  this.rza.addCallbackBuffer((byte[])this.CDP.get(i));
                   break label225;
                 }
-                this.rqL.setPreviewCallbackWithBuffer(this.Cmt);
+                this.rza.setPreviewCallbackWithBuffer(this.CDX);
                 AppMethodBeat.o(115551);
               }
             }
           }
           else
           {
-            this.rqL.setPreviewCallback(this.Cmt);
+            this.rza.setPreviewCallback(this.CDX);
           }
         }
         else
@@ -470,7 +468,7 @@ public class a
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Voip.CaptureRender", localException, "setPreviewCallback error: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.Voip.CaptureRender", localException, "setPreviewCallback error: %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(115551);
         return;
       }
@@ -513,11 +511,11 @@ public class a
         if (((Iterator)localObject).hasNext())
         {
           Camera.Size localSize = (Camera.Size)((Iterator)localObject).next();
-          ad.d("MicroMsg.Voip.CaptureRender", "support Size:" + localSize.width + "," + localSize.height);
+          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "support Size:" + localSize.width + "," + localSize.height);
           if (i == 0)
           {
-            this.Cmo = localSize.width;
-            this.Cmp = localSize.height;
+            this.CDS = localSize.width;
+            this.CDT = localSize.height;
           }
           i += 1;
           continue;
@@ -532,9 +530,9 @@ public class a
           if (!paramv.hasNext()) {
             continue;
           }
-          ad.i("MicroMsg.Voip.CaptureRender", "support Format:".concat(String.valueOf(((Integer)paramv.next()).intValue())));
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "support Format:".concat(String.valueOf(((Integer)paramv.next()).intValue())));
           continue;
-          ad.printErrStackTrace("MicroMsg.Voip.CaptureRender", paramv, "", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.Voip.CaptureRender", paramv, "", new Object[0]);
         }
         catch (Exception paramv) {}
       }
@@ -575,10 +573,10 @@ public class a
       v localv;
       for (;;)
       {
-        ad.d("MicroMsg.Voip.CaptureRender", "getSupportedPreviewFrameRates:error:" + paramv.toString());
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "getSupportedPreviewFrameRates:error:" + paramv.toString());
         List localList = null;
       }
-      ad.i("MicroMsg.Voip.CaptureRender", localv);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", localv);
       AppMethodBeat.o(115563);
     }
   }
@@ -594,38 +592,38 @@ public class a
     //   11: iload_1
     //   12: invokestatic 464	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   15: invokevirtual 215	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: aload_0
     //   22: iconst_0
-    //   23: putfield 118	com/tencent/mm/plugin/voip/video/a:Cmc	Z
+    //   23: putfield 118	com/tencent/mm/plugin/voip/video/a:CDG	Z
     //   26: iconst_1
     //   27: istore 17
     //   29: iload 17
     //   31: istore 16
     //   33: aload_0
-    //   34: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   34: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   37: ifnull +52 -> 89
     //   40: aload_0
-    //   41: getfield 98	com/tencent/mm/plugin/voip/video/a:ClQ	Z
+    //   41: getfield 98	com/tencent/mm/plugin/voip/video/a:CDu	Z
     //   44: iload_1
     //   45: if_icmpeq +78 -> 123
     //   48: aload_0
-    //   49: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
-    //   52: getfield 467	com/tencent/mm/compatible/deviceinfo/v:gbd	Z
+    //   49: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   52: getfield 467	com/tencent/mm/compatible/deviceinfo/v:gdl	Z
     //   55: ifne +11 -> 66
     //   58: aload_0
-    //   59: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   59: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   62: aconst_null
     //   63: invokevirtual 410	com/tencent/mm/compatible/deviceinfo/v:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
     //   66: aload_0
-    //   67: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   67: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   70: invokevirtual 470	com/tencent/mm/compatible/deviceinfo/v:stopPreview	()V
     //   73: aload_0
-    //   74: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   74: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   77: invokevirtual 473	com/tencent/mm/compatible/deviceinfo/v:release	()V
     //   80: aload_0
     //   81: aconst_null
-    //   82: putfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   82: putfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   85: iload 17
     //   87: istore 16
     //   89: iload 16
@@ -633,40 +631,40 @@ public class a
     //   94: aload_0
     //   95: aload_0
     //   96: iload_1
-    //   97: invokespecial 477	com/tencent/mm/plugin/voip/video/a:tE	(Z)Lcom/tencent/mm/compatible/deviceinfo/v;
-    //   100: putfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   97: invokespecial 477	com/tencent/mm/plugin/voip/video/a:tL	(Z)Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   100: putfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   103: aload_0
-    //   104: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   104: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   107: ifnonnull +25 -> 132
     //   110: aload_0
     //   111: iconst_0
-    //   112: putfield 116	com/tencent/mm/plugin/voip/video/a:Cmb	Z
+    //   112: putfield 116	com/tencent/mm/plugin/voip/video/a:CDF	Z
     //   115: ldc_w 459
     //   118: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   121: iconst_m1
     //   122: ireturn
     //   123: aload_0
-    //   124: getfield 146	com/tencent/mm/plugin/voip/video/a:Cmr	Z
+    //   124: getfield 146	com/tencent/mm/plugin/voip/video/a:CDV	Z
     //   127: istore 16
     //   129: goto -40 -> 89
     //   132: aload_0
     //   133: iconst_0
-    //   134: putfield 146	com/tencent/mm/plugin/voip/video/a:Cmr	Z
+    //   134: putfield 146	com/tencent/mm/plugin/voip/video/a:CDV	Z
     //   137: aload_0
-    //   138: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   138: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   141: ifnull +11 -> 152
     //   144: aload_0
-    //   145: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   145: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   148: invokevirtual 257	com/tencent/mm/compatible/deviceinfo/v:getParameters	()Landroid/hardware/Camera$Parameters;
     //   151: pop
     //   152: aload_0
     //   153: iconst_1
-    //   154: putfield 116	com/tencent/mm/plugin/voip/video/a:Cmb	Z
+    //   154: putfield 116	com/tencent/mm/plugin/voip/video/a:CDF	Z
     //   157: aload_0
-    //   158: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   158: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   161: astore 18
-    //   163: getstatic 481	com/tencent/mm/plugin/voip/video/j:Cow	Lcom/tencent/mm/plugin/voip/video/g;
-    //   166: getfield 486	com/tencent/mm/plugin/voip/video/g:CmT	I
+    //   163: getstatic 481	com/tencent/mm/plugin/voip/video/j:CGa	Lcom/tencent/mm/plugin/voip/video/g;
+    //   166: getfield 486	com/tencent/mm/plugin/voip/video/g:CEx	I
     //   169: istore 11
     //   171: aload 18
     //   173: ifnull +256 -> 429
@@ -681,11 +679,11 @@ public class a
     //   191: iload 11
     //   193: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   196: aastore
-    //   197: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   200: aload 18
     //   202: invokevirtual 257	com/tencent/mm/compatible/deviceinfo/v:getParameters	()Landroid/hardware/Camera$Parameters;
     //   205: astore 19
-    //   207: invokestatic 491	com/tencent/mm/sdk/platformtools/aj:cmR	()Z
+    //   207: invokestatic 491	com/tencent/mm/sdk/platformtools/ak:coh	()Z
     //   210: ifeq +27 -> 237
     //   213: ldc_w 493
     //   216: invokestatic 499	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
@@ -704,11 +702,11 @@ public class a
     //   248: iload 4
     //   250: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   253: aastore
-    //   254: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   257: invokestatic 515	com/tencent/mm/compatible/util/k:Xm	()Z
+    //   254: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   257: invokestatic 515	com/tencent/mm/compatible/util/k:Xu	()Z
     //   260: ifne +11 -> 271
     //   263: iload 4
-    //   265: invokestatic 521	com/tencent/mm/compatible/util/d:ly	(I)Z
+    //   265: invokestatic 521	com/tencent/mm/compatible/util/d:lA	(I)Z
     //   268: ifeq +1114 -> 1382
     //   271: ldc 192
     //   273: istore 6
@@ -718,15 +716,15 @@ public class a
     //   279: istore 8
     //   281: iconst_0
     //   282: istore 7
-    //   284: getstatic 351	com/tencent/mm/compatible/deviceinfo/ae:gcE	Lcom/tencent/mm/compatible/deviceinfo/c;
+    //   284: getstatic 351	com/tencent/mm/compatible/deviceinfo/ae:geM	Lcom/tencent/mm/compatible/deviceinfo/c;
     //   287: ifnull +1752 -> 2039
-    //   290: getstatic 351	com/tencent/mm/compatible/deviceinfo/ae:gcE	Lcom/tencent/mm/compatible/deviceinfo/c;
-    //   293: getfield 524	com/tencent/mm/compatible/deviceinfo/c:fYL	I
+    //   290: getstatic 351	com/tencent/mm/compatible/deviceinfo/ae:geM	Lcom/tencent/mm/compatible/deviceinfo/c;
+    //   293: getfield 524	com/tencent/mm/compatible/deviceinfo/c:gaS	I
     //   296: sipush 1000
     //   299: imul
     //   300: istore 8
-    //   302: getstatic 351	com/tencent/mm/compatible/deviceinfo/ae:gcE	Lcom/tencent/mm/compatible/deviceinfo/c;
-    //   305: getfield 527	com/tencent/mm/compatible/deviceinfo/c:fYM	I
+    //   302: getstatic 351	com/tencent/mm/compatible/deviceinfo/ae:geM	Lcom/tencent/mm/compatible/deviceinfo/c;
+    //   305: getfield 527	com/tencent/mm/compatible/deviceinfo/c:gaT	I
     //   308: sipush 1000
     //   311: imul
     //   312: istore 7
@@ -755,7 +753,7 @@ public class a
     //   352: iload 17
     //   354: invokestatic 308	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   357: aastore
-    //   358: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   358: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   361: iload 8
     //   363: ldc 192
     //   365: if_icmpeq +15 -> 380
@@ -777,7 +775,7 @@ public class a
     //   399: iload 11
     //   401: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   404: aastore
-    //   405: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   405: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   408: aload 18
     //   410: invokevirtual 257	com/tencent/mm/compatible/deviceinfo/v:getParameters	()Landroid/hardware/Camera$Parameters;
     //   413: astore 19
@@ -799,11 +797,11 @@ public class a
     //   450: iload_3
     //   451: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   454: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   457: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   457: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   460: iload_1
     //   461: ifeq +992 -> 1453
-    //   464: getstatic 481	com/tencent/mm/plugin/voip/video/j:Cow	Lcom/tencent/mm/plugin/voip/video/g;
-    //   467: getfield 540	com/tencent/mm/plugin/voip/video/g:CmY	Landroid/graphics/Point;
+    //   464: getstatic 481	com/tencent/mm/plugin/voip/video/j:CGa	Lcom/tencent/mm/plugin/voip/video/g;
+    //   467: getfield 540	com/tencent/mm/plugin/voip/video/g:CEC	Landroid/graphics/Point;
     //   470: astore 18
     //   472: aload 18
     //   474: ifnull +990 -> 1464
@@ -835,9 +833,9 @@ public class a
     //   534: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   537: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   540: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   543: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   546: aload_0
-    //   547: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   547: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   550: invokevirtual 257	com/tencent/mm/compatible/deviceinfo/v:getParameters	()Landroid/hardware/Camera$Parameters;
     //   553: astore 18
     //   555: new 234	android/graphics/Point
@@ -865,7 +863,7 @@ public class a
     //   604: aload 20
     //   606: invokestatic 211	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   609: invokevirtual 215	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   612: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   612: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   615: aload 20
     //   617: aload 22
     //   619: invokestatic 553	com/tencent/mm/plugin/voip/video/a:a	(Ljava/lang/CharSequence;Landroid/graphics/Point;)Landroid/graphics/Point;
@@ -912,11 +910,11 @@ public class a
     //   706: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   709: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   712: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   715: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   715: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   718: iload 4
     //   720: ifeq +779 -> 1499
     //   723: aload_0
-    //   724: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   724: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   727: aload 19
     //   729: getfield 385	com/tencent/mm/compatible/deviceinfo/ac:width	I
     //   732: aload 19
@@ -937,7 +935,7 @@ public class a
     //   769: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   772: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   775: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   778: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   778: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   781: iload_1
     //   782: ifne +838 -> 1620
     //   785: aload 18
@@ -956,9 +954,9 @@ public class a
     //   818: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   821: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   824: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   827: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   827: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   830: aload_0
-    //   831: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   831: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   834: aload 18
     //   836: getfield 385	com/tencent/mm/compatible/deviceinfo/ac:width	I
     //   839: aload 18
@@ -979,13 +977,13 @@ public class a
     //   878: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   881: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   884: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   887: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   887: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   890: ldc_w 459
     //   893: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   896: iconst_m1
     //   897: ireturn
     //   898: astore 18
-    //   900: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   900: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   903: ldc2_w 273
     //   906: lconst_0
     //   907: lconst_1
@@ -1000,33 +998,33 @@ public class a
     //   923: aload 18
     //   925: invokevirtual 415	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   928: aastore
-    //   929: invokestatic 569	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   929: invokestatic 569	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   932: aload_0
-    //   933: getfield 571	com/tencent/mm/plugin/voip/video/a:Cmg	Lcom/tencent/mm/plugin/voip/video/f;
+    //   933: getfield 571	com/tencent/mm/plugin/voip/video/a:CDK	Lcom/tencent/mm/plugin/voip/video/f;
     //   936: ifnull +54 -> 990
     //   939: aload_0
-    //   940: getfield 571	com/tencent/mm/plugin/voip/video/a:Cmg	Lcom/tencent/mm/plugin/voip/video/f;
+    //   940: getfield 571	com/tencent/mm/plugin/voip/video/a:CDK	Lcom/tencent/mm/plugin/voip/video/f;
     //   943: invokeinterface 576 1 0
     //   948: aload_0
     //   949: iconst_1
-    //   950: putfield 146	com/tencent/mm/plugin/voip/video/a:Cmr	Z
+    //   950: putfield 146	com/tencent/mm/plugin/voip/video/a:CDV	Z
     //   953: aload_0
-    //   954: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
-    //   957: getfield 467	com/tencent/mm/compatible/deviceinfo/v:gbd	Z
+    //   954: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   957: getfield 467	com/tencent/mm/compatible/deviceinfo/v:gdl	Z
     //   960: ifne +11 -> 971
     //   963: aload_0
-    //   964: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   964: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   967: aconst_null
     //   968: invokevirtual 410	com/tencent/mm/compatible/deviceinfo/v:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
     //   971: aload_0
-    //   972: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   972: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   975: invokevirtual 470	com/tencent/mm/compatible/deviceinfo/v:stopPreview	()V
     //   978: aload_0
-    //   979: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   979: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   982: invokevirtual 473	com/tencent/mm/compatible/deviceinfo/v:release	()V
     //   985: aload_0
     //   986: aconst_null
-    //   987: putfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   987: putfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   990: ldc_w 459
     //   993: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   996: iconst_m1
@@ -1042,7 +1040,7 @@ public class a
     //   1013: aload 18
     //   1015: invokevirtual 415	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1018: aastore
-    //   1019: invokestatic 419	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1019: invokestatic 419	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1022: goto -32 -> 990
     //   1025: iload 8
     //   1027: ifne +24 -> 1051
@@ -1120,7 +1118,7 @@ public class a
     //   1182: iload 10
     //   1184: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1187: aastore
-    //   1188: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1188: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1191: iload 8
     //   1193: iflt +831 -> 2024
     //   1196: iload 10
@@ -1205,7 +1203,7 @@ public class a
     //   1351: iload 11
     //   1353: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1356: aastore
-    //   1357: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1357: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1360: aload 19
     //   1362: iload 8
     //   1364: iload 7
@@ -1229,7 +1227,7 @@ public class a
     //   1404: invokevirtual 288	java/lang/Exception:toString	()Ljava/lang/String;
     //   1407: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1410: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1413: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1413: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1416: iconst_1
     //   1417: istore 4
     //   1419: goto -1036 -> 383
@@ -1243,10 +1241,10 @@ public class a
     //   1438: invokevirtual 288	java/lang/Exception:toString	()Ljava/lang/String;
     //   1441: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1444: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1447: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1447: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1450: goto -1021 -> 429
-    //   1453: getstatic 481	com/tencent/mm/plugin/voip/video/j:Cow	Lcom/tencent/mm/plugin/voip/video/g;
-    //   1456: getfield 604	com/tencent/mm/plugin/voip/video/g:CmZ	Landroid/graphics/Point;
+    //   1453: getstatic 481	com/tencent/mm/plugin/voip/video/j:CGa	Lcom/tencent/mm/plugin/voip/video/g;
+    //   1456: getfield 604	com/tencent/mm/plugin/voip/video/g:CED	Landroid/graphics/Point;
     //   1459: astore 18
     //   1461: goto -989 -> 472
     //   1464: iconst_0
@@ -1264,11 +1262,11 @@ public class a
     //   1487: aload 20
     //   1489: invokevirtual 415	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1492: aastore
-    //   1493: invokestatic 569	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1493: invokestatic 569	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1496: goto -778 -> 718
     //   1499: ldc 172
     //   1501: ldc_w 608
-    //   1504: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1504: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1507: aload 18
     //   1509: ifnull +111 -> 1620
     //   1512: ldc 172
@@ -1285,9 +1283,9 @@ public class a
     //   1540: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   1543: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1546: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1549: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1549: invokestatic 327	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1552: aload_0
-    //   1553: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   1553: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   1556: aload 18
     //   1558: getfield 385	com/tencent/mm/compatible/deviceinfo/ac:width	I
     //   1561: aload 18
@@ -1308,25 +1306,25 @@ public class a
     //   1600: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   1603: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1606: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1609: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1609: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1612: ldc_w 459
     //   1615: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1618: iconst_m1
     //   1619: ireturn
     //   1620: aload_0
     //   1621: aload_0
-    //   1622: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   1622: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   1625: aload_0
-    //   1626: getfield 98	com/tencent/mm/plugin/voip/video/a:ClQ	Z
+    //   1626: getfield 98	com/tencent/mm/plugin/voip/video/a:CDu	Z
     //   1629: invokespecial 614	com/tencent/mm/plugin/voip/video/a:c	(Lcom/tencent/mm/compatible/deviceinfo/v;Z)Z
     //   1632: pop
     //   1633: aload_0
     //   1634: aload_0
-    //   1635: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   1635: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   1638: invokevirtual 257	com/tencent/mm/compatible/deviceinfo/v:getParameters	()Landroid/hardware/Camera$Parameters;
-    //   1641: putfield 616	com/tencent/mm/plugin/voip/video/a:ClY	Landroid/hardware/Camera$Parameters;
+    //   1641: putfield 616	com/tencent/mm/plugin/voip/video/a:CDC	Landroid/hardware/Camera$Parameters;
     //   1644: aload_0
-    //   1645: getfield 616	com/tencent/mm/plugin/voip/video/a:ClY	Landroid/hardware/Camera$Parameters;
+    //   1645: getfield 616	com/tencent/mm/plugin/voip/video/a:CDC	Landroid/hardware/Camera$Parameters;
     //   1648: invokevirtual 620	android/hardware/Camera$Parameters:getPreviewSize	()Landroid/hardware/Camera$Size;
     //   1651: astore 18
     //   1653: aload 18
@@ -1339,36 +1337,36 @@ public class a
     //   1668: aload 18
     //   1670: getfield 431	android/hardware/Camera$Size:height	I
     //   1673: invokespecial 541	com/tencent/mm/compatible/deviceinfo/ac:<init>	(II)V
-    //   1676: putfield 377	com/tencent/mm/plugin/voip/video/a:ClZ	Lcom/tencent/mm/compatible/deviceinfo/ac;
+    //   1676: putfield 377	com/tencent/mm/plugin/voip/video/a:CDD	Lcom/tencent/mm/compatible/deviceinfo/ac;
     //   1679: aload_0
-    //   1680: getfield 616	com/tencent/mm/plugin/voip/video/a:ClY	Landroid/hardware/Camera$Parameters;
+    //   1680: getfield 616	com/tencent/mm/plugin/voip/video/a:CDC	Landroid/hardware/Camera$Parameters;
     //   1683: invokevirtual 623	android/hardware/Camera$Parameters:getPreviewFrameRate	()I
     //   1686: istore_3
     //   1687: aload_0
-    //   1688: getstatic 626	com/tencent/mm/plugin/voip/video/j:CoB	I
-    //   1691: putfield 628	com/tencent/mm/plugin/voip/video/a:Cma	I
+    //   1688: getstatic 626	com/tencent/mm/plugin/voip/video/j:CGf	I
+    //   1691: putfield 628	com/tencent/mm/plugin/voip/video/a:CDE	I
     //   1694: aload_0
-    //   1695: getfield 628	com/tencent/mm/plugin/voip/video/a:Cma	I
+    //   1695: getfield 628	com/tencent/mm/plugin/voip/video/a:CDE	I
     //   1698: ifgt +9 -> 1707
     //   1701: aload_0
     //   1702: bipush 7
-    //   1704: putfield 628	com/tencent/mm/plugin/voip/video/a:Cma	I
+    //   1704: putfield 628	com/tencent/mm/plugin/voip/video/a:CDE	I
     //   1707: aload_0
-    //   1708: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   1708: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   1711: astore 18
     //   1713: new 630	android/hardware/Camera$CameraInfo
     //   1716: dup
     //   1717: invokespecial 631	android/hardware/Camera$CameraInfo:<init>	()V
     //   1720: astore 19
     //   1722: aload_0
-    //   1723: getfield 98	com/tencent/mm/plugin/voip/video/a:ClQ	Z
+    //   1723: getfield 98	com/tencent/mm/plugin/voip/video/a:CDu	Z
     //   1726: ifeq +233 -> 1959
-    //   1729: getstatic 634	com/tencent/mm/plugin/voip/video/j:Cox	I
+    //   1729: getstatic 634	com/tencent/mm/plugin/voip/video/j:CGb	I
     //   1732: istore_2
     //   1733: iload_2
     //   1734: aload 19
     //   1736: invokestatic 640	android/hardware/Camera:getCameraInfo	(ILandroid/hardware/Camera$CameraInfo;)V
-    //   1739: invokestatic 159	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   1739: invokestatic 159	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   1742: ldc_w 642
     //   1745: invokevirtual 646	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   1748: checkcast 648	android/view/WindowManager
@@ -1379,7 +1377,7 @@ public class a
     //   1762: istore_2
     //   1763: iload 4
     //   1765: tableswitch	default:+330 -> 2095, 0:+333->2098, 1:+338->2103, 2:+344->2109, 3:+351->2116
-    //   1797: getfield 98	com/tencent/mm/plugin/voip/video/a:ClQ	Z
+    //   1797: getfield 98	com/tencent/mm/plugin/voip/video/a:CDu	Z
     //   1800: ifeq +166 -> 1966
     //   1803: sipush 360
     //   1806: iload_2
@@ -1397,7 +1395,7 @@ public class a
     //   1826: invokevirtual 663	com/tencent/mm/compatible/deviceinfo/v:setDisplayOrientation	(I)V
     //   1829: aload_0
     //   1830: iload_2
-    //   1831: putfield 665	com/tencent/mm/plugin/voip/video/a:Cmn	I
+    //   1831: putfield 665	com/tencent/mm/plugin/voip/video/a:CDR	I
     //   1834: ldc 172
     //   1836: ldc_w 667
     //   1839: bipush 6
@@ -1410,41 +1408,41 @@ public class a
     //   1851: dup
     //   1852: iconst_1
     //   1853: aload_0
-    //   1854: getfield 377	com/tencent/mm/plugin/voip/video/a:ClZ	Lcom/tencent/mm/compatible/deviceinfo/ac;
+    //   1854: getfield 377	com/tencent/mm/plugin/voip/video/a:CDD	Lcom/tencent/mm/compatible/deviceinfo/ac;
     //   1857: getfield 385	com/tencent/mm/compatible/deviceinfo/ac:width	I
     //   1860: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1863: aastore
     //   1864: dup
     //   1865: iconst_2
     //   1866: aload_0
-    //   1867: getfield 377	com/tencent/mm/plugin/voip/video/a:ClZ	Lcom/tencent/mm/compatible/deviceinfo/ac;
+    //   1867: getfield 377	com/tencent/mm/plugin/voip/video/a:CDD	Lcom/tencent/mm/compatible/deviceinfo/ac;
     //   1870: getfield 382	com/tencent/mm/compatible/deviceinfo/ac:height	I
     //   1873: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1876: aastore
     //   1877: dup
     //   1878: iconst_3
     //   1879: aload_0
-    //   1880: getfield 628	com/tencent/mm/plugin/voip/video/a:Cma	I
+    //   1880: getfield 628	com/tencent/mm/plugin/voip/video/a:CDE	I
     //   1883: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1886: aastore
     //   1887: dup
     //   1888: iconst_4
-    //   1889: getstatic 670	com/tencent/mm/plugin/voip/video/j:Coz	I
+    //   1889: getstatic 670	com/tencent/mm/plugin/voip/video/j:CGd	I
     //   1892: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1895: aastore
     //   1896: dup
     //   1897: iconst_5
     //   1898: aload_0
-    //   1899: getfield 665	com/tencent/mm/plugin/voip/video/a:Cmn	I
+    //   1899: getfield 665	com/tencent/mm/plugin/voip/video/a:CDR	I
     //   1902: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1905: aastore
-    //   1906: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1906: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1909: ldc_w 459
     //   1912: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1915: iconst_1
     //   1916: ireturn
     //   1917: astore 18
-    //   1919: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   1919: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   1922: ldc2_w 273
     //   1925: lconst_0
     //   1926: lconst_1
@@ -1459,12 +1457,12 @@ public class a
     //   1942: aload 18
     //   1944: invokevirtual 415	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1947: aastore
-    //   1948: invokestatic 569	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1948: invokestatic 569	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1951: ldc_w 459
     //   1954: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1957: iconst_m1
     //   1958: ireturn
-    //   1959: getstatic 675	com/tencent/mm/plugin/voip/video/j:Coy	I
+    //   1959: getstatic 675	com/tencent/mm/plugin/voip/video/j:CGc	I
     //   1962: istore_2
     //   1963: goto -230 -> 1733
     //   1966: aload 19
@@ -1487,7 +1485,7 @@ public class a
     //   1998: aload 18
     //   2000: invokevirtual 415	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   2003: aastore
-    //   2004: invokestatic 569	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2004: invokestatic 569	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   2007: goto -173 -> 1834
     //   2010: astore 20
     //   2012: goto -536 -> 1476
@@ -1613,16 +1611,16 @@ public class a
     //   679	718	2010	java/lang/Exception
   }
   
-  private static v tD(boolean paramBoolean)
+  private static v tK(boolean paramBoolean)
   {
     localObject2 = null;
     AppMethodBeat.i(115552);
-    if (j.Cow.fYa <= 0)
+    if (j.CGa.gag <= 0)
     {
       AppMethodBeat.o(115552);
       return null;
     }
-    if (!j.CoC)
+    if (!j.CGg)
     {
       AppMethodBeat.o(115552);
       return null;
@@ -1632,41 +1630,41 @@ public class a
     {
       try
       {
-        locala = com.tencent.mm.compatible.deviceinfo.d.a(aj.getContext(), j.Cox, null);
-        ad.i("Camera", "Use front");
+        locala = com.tencent.mm.compatible.deviceinfo.d.a(ak.getContext(), j.CGb, null);
+        com.tencent.mm.sdk.platformtools.ae.i("Camera", "Use front");
         localObject1 = localObject2;
         if (locala != null) {
-          localObject1 = locala.fYS;
+          localObject1 = locala.gaZ;
         }
       }
       catch (Exception localException)
       {
         d.a.a locala;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 1L, 1L, false);
-        ad.e("MicroMsg.Voip.CaptureRender", "openCameraByHighApiLvl:error:" + localException.toString());
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 1L, 1L, false);
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "openCameraByHighApiLvl:error:" + localException.toString());
         Object localObject1 = localObject2;
         continue;
       }
       AppMethodBeat.o(115552);
       return localObject1;
-      locala = com.tencent.mm.compatible.deviceinfo.d.a(aj.getContext(), j.Coy, null);
-      ad.i("Camera", "Use back");
+      locala = com.tencent.mm.compatible.deviceinfo.d.a(ak.getContext(), j.CGc, null);
+      com.tencent.mm.sdk.platformtools.ae.i("Camera", "Use back");
     }
   }
   
-  private v tE(boolean paramBoolean)
+  private v tL(boolean paramBoolean)
   {
     AppMethodBeat.i(115553);
-    v localv = tD(paramBoolean);
+    v localv = tK(paramBoolean);
     if (localv == null) {}
     for (;;)
     {
       try
       {
         localv = new v(Camera.open());
-        this.ClQ = false;
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
+        this.CDu = false;
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
         h(localv);
         g(localv);
         AppMethodBeat.o(115553);
@@ -1674,50 +1672,50 @@ public class a
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.Voip.CaptureRender", "OpenCameraError:" + localException.toString());
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 1L, 1L, false);
-        if (this.Cmg != null) {
-          this.Cmg.bZW();
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "OpenCameraError:" + localException.toString());
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 1L, 1L, false);
+        if (this.CDK != null) {
+          this.CDK.cbl();
         }
         AppMethodBeat.o(115553);
         return null;
       }
-      this.ClQ = paramBoolean;
+      this.CDu = paramBoolean;
     }
   }
   
   @TargetApi(14)
-  public final void E(int[] paramArrayOfInt)
+  public final void F(int[] paramArrayOfInt)
   {
     boolean bool3 = true;
     AppMethodBeat.i(115561);
-    if ((ae.gcE.fYI == 1) && (this.Cmc))
+    if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaP == 1) && (this.CDG))
     {
       AppMethodBeat.o(115561);
       return;
     }
-    if (ae.gcE.fYH > 2000) {
-      this.ClW = ae.gcE.fYH;
+    if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaO > 2000) {
+      this.CDA = com.tencent.mm.compatible.deviceinfo.ae.geM.gaO;
     }
     if (paramArrayOfInt == null)
     {
-      ad.e("MicroMsg.Voip.CaptureRender", "focusOnFace error, faceLocation is null");
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "focusOnFace error, faceLocation is null");
       boolean bool2;
-      if (System.currentTimeMillis() - this.ClV > this.ClW)
+      if (System.currentTimeMillis() - this.CDz > this.CDA)
       {
         bool1 = true;
-        if ((this.ClS) && (!bool1) && (this.ClT == this.ClQ)) {
+        if ((this.CDw) && (!bool1) && (this.CDx == this.CDu)) {
           break label336;
         }
         paramArrayOfInt = new StringBuilder("now i need autoFocus! and !mIsCameraNoParamAutoFocus: ");
-        if (this.ClS) {
+        if (this.CDw) {
           break label298;
         }
         bool2 = true;
         label131:
-        paramArrayOfInt = paramArrayOfInt.append(bool2).append(",isAutoFocusTimeout: ").append(bool1).append(",mAutoFocusTimeOut:").append(this.ClW).append(",mIsLastAutoFocusFaceCamera != mIsCurrentFaceCamera :");
-        if (this.ClT == this.ClQ) {
+        paramArrayOfInt = paramArrayOfInt.append(bool2).append(",isAutoFocusTimeout: ").append(bool1).append(",mAutoFocusTimeOut:").append(this.CDA).append(",mIsLastAutoFocusFaceCamera != mIsCurrentFaceCamera :");
+        if (this.CDx == this.CDu) {
           break label304;
         }
       }
@@ -1725,23 +1723,23 @@ public class a
       label304:
       for (boolean bool1 = bool3;; bool1 = false)
       {
-        ad.i("MicroMsg.Voip.CaptureRender", bool1 + ",isClickScreen :false");
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", bool1 + ",isClickScreen :false");
         try
         {
-          if ((this.rqL != null) && (this.rqL.getParameters() != null) && (this.rqL.getParameters().getFocusMode() != null) && (this.rqL.getParameters().getFocusMode().equals("auto")))
+          if ((this.rza != null) && (this.rza.getParameters() != null) && (this.rza.getParameters().getFocusMode() != null) && (this.rza.getParameters().getFocusMode().equals("auto")))
           {
-            this.rqL.autoFocus(null);
-            this.Cmk = null;
-            this.ClV = System.currentTimeMillis();
-            this.ClS = true;
-            this.ClT = this.ClQ;
+            this.rza.autoFocus(null);
+            this.CDO = null;
+            this.CDz = System.currentTimeMillis();
+            this.CDw = true;
+            this.CDx = this.CDu;
           }
           AppMethodBeat.o(115561);
           return;
         }
         catch (Exception paramArrayOfInt)
         {
-          ad.e("MicroMsg.Voip.CaptureRender", "mCamera.getParameters() or autoFocus fail!" + paramArrayOfInt.toString());
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "mCamera.getParameters() or autoFocus fail!" + paramArrayOfInt.toString());
         }
         bool1 = false;
         break;
@@ -1760,37 +1758,37 @@ public class a
     label487:
     int n;
     int i1;
-    if (this.Cmk == null)
+    if (this.CDO == null)
     {
-      this.Cmk = paramArrayOfInt;
+      this.CDO = paramArrayOfInt;
       i = 1;
-      localObject = this.Cmk;
+      localObject = this.CDO;
       j = Math.abs(localObject[0] - paramArrayOfInt[0]);
       k = Math.abs(localObject[1] - paramArrayOfInt[1]);
       m = Math.abs(localObject[2] - paramArrayOfInt[2]);
       k = Math.abs(localObject[3] - paramArrayOfInt[3]) + (j + k + m);
-      ad.d("MicroMsg.Voip.CaptureRender", "face location diff:%d", new Object[] { Integer.valueOf(k) });
-      if (k <= ClP)
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "face location diff:%d", new Object[] { Integer.valueOf(k) });
+      if (k <= CDt)
       {
         j = i;
-        if (k <= ClO) {}
+        if (k <= CDs) {}
       }
       else
       {
-        this.Cmk = paramArrayOfInt;
-        if (k > ClP) {
+        this.CDO = paramArrayOfInt;
+        if (k > CDt) {
           i = 1;
         }
         j = i;
-        if (k > ClO)
+        if (k > CDs)
         {
           j = 1;
           if ((i != 0) || (j != 0))
           {
-            k = this.Cmk[0];
-            m = this.Cmk[1];
-            n = this.Cmk[2];
-            i1 = this.Cmk[3];
+            k = this.CDO[0];
+            m = this.CDO[1];
+            n = this.CDO[2];
+            i1 = this.CDO[3];
           }
         }
       }
@@ -1800,12 +1798,12 @@ public class a
       try
       {
         paramArrayOfInt = new Rect(k, m, n, i1);
-        localObject = this.rqL.getParameters();
+        localObject = this.rza.getParameters();
         k = j;
         ArrayList localArrayList;
         if (j != 0)
         {
-          if ((com.tencent.mm.compatible.util.d.ly(14)) && (((Camera.Parameters)localObject).getMaxNumMeteringAreas() > 0))
+          if ((com.tencent.mm.compatible.util.d.lA(14)) && (((Camera.Parameters)localObject).getMaxNumMeteringAreas() > 0))
           {
             localArrayList = new ArrayList();
             localArrayList.add(new Camera.Area(paramArrayOfInt, 1000));
@@ -1819,7 +1817,7 @@ public class a
           if (i == 0) {
             break label815;
           }
-          if ((!com.tencent.mm.compatible.util.d.ly(14)) || (((Camera.Parameters)localObject).getMaxNumFocusAreas() <= 0)) {
+          if ((!com.tencent.mm.compatible.util.d.lA(14)) || (((Camera.Parameters)localObject).getMaxNumFocusAreas() <= 0)) {
             continue;
           }
           localArrayList = new ArrayList();
@@ -1827,21 +1825,21 @@ public class a
           ((Camera.Parameters)localObject).setFocusAreas(localArrayList);
           j = i;
           break label815;
-          this.rqL.setParameters((Camera.Parameters)localObject);
+          this.rza.setParameters((Camera.Parameters)localObject);
           if (j != 0)
           {
-            ad.d("MicroMsg.Voip.CaptureRender", "refocus, mIsFocusOnFace:%b", new Object[] { Boolean.valueOf(this.Cmm) });
-            if (this.Cmm)
+            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "refocus, mIsFocusOnFace:%b", new Object[] { Boolean.valueOf(this.CDQ) });
+            if (this.CDQ)
             {
-              this.ClS = false;
-              this.Cmm = false;
-              this.rqL.autoFocus(new Camera.AutoFocusCallback()
+              this.CDw = false;
+              this.CDQ = false;
+              this.rza.autoFocus(new Camera.AutoFocusCallback()
               {
                 public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
                 {
                   AppMethodBeat.i(115543);
-                  ad.d("MicroMsg.Voip.CaptureRender", "onAutoFocus, success:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-                  a.this.Cmm = true;
+                  com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "onAutoFocus, success:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+                  a.this.CDQ = true;
                   AppMethodBeat.o(115543);
                 }
               });
@@ -1850,15 +1848,15 @@ public class a
           AppMethodBeat.o(115561);
           return;
         }
-        ad.d("MicroMsg.Voip.CaptureRender", "camera not support metering area");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "camera not support metering area");
         k = 0;
         continue;
-        ad.d("MicroMsg.Voip.CaptureRender", "camera not support area focus");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "camera not support area focus");
         j = 0;
       }
       catch (Exception paramArrayOfInt)
       {
-        ad.e("MicroMsg.Voip.CaptureRender", "focusOnFace exception:%s", new Object[] { paramArrayOfInt.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "focusOnFace exception:%s", new Object[] { paramArrayOfInt.getMessage() });
       }
       AppMethodBeat.o(115561);
       return;
@@ -1878,20 +1876,20 @@ public class a
   public final int a(f paramf, boolean paramBoolean)
   {
     AppMethodBeat.i(115550);
-    if (j.Cow.fYa <= 0)
+    if (j.CGa.gag <= 0)
     {
-      this.ClX = 1;
+      this.CDB = 1;
       AppMethodBeat.o(115550);
       return -1;
     }
     if (paramBoolean) {
-      if (!j.Cow.CmU) {
+      if (!j.CGa.CEy) {
         paramBoolean = false;
       }
     }
     for (;;)
     {
-      this.Cmg = paramf;
+      this.CDK = paramf;
       if (l(paramBoolean, this.mWidth, this.mHeight) > 0) {
         break;
       }
@@ -1899,15 +1897,15 @@ public class a
       if (i > 0) {
         break;
       }
-      this.ClX = 1;
+      this.CDB = 1;
       AppMethodBeat.o(115550);
       return i;
-      if (!j.Cow.CmV) {
+      if (!j.CGa.CEz) {
         paramBoolean = true;
       }
     }
-    eAh();
-    this.ClX = 0;
+    eDP();
+    this.CDB = 0;
     AppMethodBeat.o(115550);
     return 1;
   }
@@ -1916,45 +1914,45 @@ public class a
   {
     boolean bool1 = false;
     AppMethodBeat.i(115548);
-    ad.d("MicroMsg.Voip.CaptureRender", "surfaceChange");
-    if ((!this.Cmb) || (paramSurfaceHolder.getSurface() == null))
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "surfaceChange");
+    if ((!this.CDF) || (paramSurfaceHolder.getSurface() == null))
     {
-      boolean bool2 = this.Cmb;
+      boolean bool2 = this.CDF;
       if (paramSurfaceHolder.getSurface() == null) {
         bool1 = true;
       }
-      ad.e("MicroMsg.Voip.CaptureRender", "surfaceChange failed, CameraOpen: %b, surface: %b, apiLevel: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(Build.VERSION.SDK_INT) });
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "surfaceChange failed, CameraOpen: %b, surface: %b, apiLevel: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(115548);
       return;
     }
     try
     {
-      if (!this.rqL.gbd) {
-        this.rqL.setPreviewCallback(null);
+      if (!this.rza.gdl) {
+        this.rza.setPreviewCallback(null);
       }
-      this.rqL.stopPreview();
-      this.rqL.setPreviewDisplay(paramSurfaceHolder);
-      eAh();
-      this.rqL.startPreview();
-      this.rqM = true;
+      this.rza.stopPreview();
+      this.rza.setPreviewDisplay(paramSurfaceHolder);
+      eDP();
+      this.rza.startPreview();
+      this.rzb = true;
     }
     catch (Exception paramSurfaceHolder)
     {
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 2L, 1L, false);
-        ad.e("MicroMsg.Voip.CaptureRender", "surfaceChange failed" + paramSurfaceHolder.getMessage());
-        this.ClX = 1;
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 2L, 1L, false);
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "surfaceChange failed" + paramSurfaceHolder.getMessage());
+        this.CDB = 1;
       }
     }
-    if (this.Cmi)
+    if (this.CDM)
     {
-      eAk();
-      this.Cmi = false;
+      eDS();
+      this.CDM = false;
     }
-    if (!bZV()) {
-      com.tencent.mm.plugin.voip.c.euM().Um(this.ClX);
+    if (!cbk()) {
+      com.tencent.mm.plugin.voip.c.eys().UT(this.CDB);
     }
     AppMethodBeat.o(115548);
   }
@@ -1962,127 +1960,127 @@ public class a
   public final void a(ObservableSurfaceView paramObservableSurfaceView)
   {
     AppMethodBeat.i(115546);
-    ad.d("MicroMsg.Voip.CaptureRender", "bind ObservableSurfaceView");
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "bind ObservableSurfaceView");
     if (paramObservableSurfaceView == null)
     {
       AppMethodBeat.o(115546);
       return;
     }
-    this.Cme = paramObservableSurfaceView;
-    this.Cme.setSurfaceChangeCallback(this);
-    this.Cmd = true;
+    this.CDI = paramObservableSurfaceView;
+    this.CDI.setSurfaceChangeCallback(this);
+    this.CDH = true;
     AppMethodBeat.o(115546);
   }
   
   public final void a(ObservableTextureView paramObservableTextureView)
   {
     AppMethodBeat.i(115547);
-    ad.i("MicroMsg.Voip.CaptureRender", "bind ObservableTextureView");
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "bind ObservableTextureView");
     if (paramObservableTextureView == null)
     {
       AppMethodBeat.o(115547);
       return;
     }
-    this.Cmf = paramObservableTextureView;
-    this.Cmf.setTextureChangeCallback(this);
-    this.Cmd = false;
+    this.CDJ = paramObservableTextureView;
+    this.CDJ.setTextureChangeCallback(this);
+    this.CDH = false;
     AppMethodBeat.o(115547);
   }
   
-  public boolean bZV()
+  public final boolean cOB()
+  {
+    return this.rzb;
+  }
+  
+  public boolean cbk()
   {
     return false;
   }
   
-  public final boolean cLT()
-  {
-    return this.rqM;
-  }
-  
-  public final void eAi()
+  public final void eDQ()
   {
     AppMethodBeat.i(115558);
-    if (j.Cow.fYa < 2)
+    if (j.CGa.gag < 2)
     {
-      ad.e("MicroMsg.Voip.CaptureRender", "ExchangeCapture...gCameraNum= " + j.Cow.fYa);
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "ExchangeCapture...gCameraNum= " + j.CGa.gag);
       AppMethodBeat.o(115558);
       return;
     }
-    ad.i("MicroMsg.Voip.CaptureRender", "ExchangeCapture start, gCameraNum= " + j.Cow.fYa);
-    eAl();
-    f localf = this.Cmg;
-    if (!this.ClQ) {}
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "ExchangeCapture start, gCameraNum= " + j.CGa.gag);
+    eDT();
+    f localf = this.CDK;
+    if (!this.CDu) {}
     for (boolean bool = true;; bool = false)
     {
       a(localf, bool);
-      eAk();
-      if (!bZV()) {
-        com.tencent.mm.plugin.voip.c.euM().Um(this.ClX);
+      eDS();
+      if (!cbk()) {
+        com.tencent.mm.plugin.voip.c.eys().UT(this.CDB);
       }
-      this.Cmm = true;
+      this.CDQ = true;
       AppMethodBeat.o(115558);
       return;
     }
   }
   
-  public final void eAj()
+  public final void eDR()
   {
-    AppMethodBeat.i(216535);
-    ad.i("MicroMsg.Voip.CaptureRender", "exchangeToHignCapture 1280 true");
-    eAl();
+    AppMethodBeat.i(210214);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip.CaptureRender", "exchangeToHignCapture 1280 true");
+    eDT();
     this.mWidth = 1280;
     this.mHeight = 720;
-    a(this.Cmg, this.ClQ);
-    eAk();
-    if (!bZV()) {
-      com.tencent.mm.plugin.voip.c.euM().Um(this.ClX);
+    a(this.CDK, this.CDu);
+    eDS();
+    if (!cbk()) {
+      com.tencent.mm.plugin.voip.c.eys().UT(this.CDB);
     }
-    this.Cmm = true;
-    AppMethodBeat.o(216535);
+    this.CDQ = true;
+    AppMethodBeat.o(210214);
   }
   
   /* Error */
-  public final int eAk()
+  public final int eDS()
   {
     // Byte code:
     //   0: ldc_w 896
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 116	com/tencent/mm/plugin/voip/video/a:Cmb	Z
+    //   7: getfield 116	com/tencent/mm/plugin/voip/video/a:CDF	Z
     //   10: ifne +24 -> 34
     //   13: ldc 172
     //   15: ldc_w 898
-    //   18: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: aload_0
     //   22: iconst_1
-    //   23: putfield 114	com/tencent/mm/plugin/voip/video/a:ClX	I
+    //   23: putfield 114	com/tencent/mm/plugin/voip/video/a:CDB	I
     //   26: ldc_w 896
     //   29: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: iconst_m1
     //   33: ireturn
     //   34: aload_0
-    //   35: getfield 124	com/tencent/mm/plugin/voip/video/a:Cmh	Z
+    //   35: getfield 124	com/tencent/mm/plugin/voip/video/a:CDL	Z
     //   38: ifeq +19 -> 57
     //   41: ldc 172
     //   43: ldc_w 900
-    //   46: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   49: ldc_w 896
     //   52: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: iconst_m1
     //   56: ireturn
     //   57: aload_0
-    //   58: getfield 122	com/tencent/mm/plugin/voip/video/a:Cme	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
+    //   58: getfield 122	com/tencent/mm/plugin/voip/video/a:CDI	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
     //   61: ifnull +34 -> 95
     //   64: aload_0
-    //   65: getfield 122	com/tencent/mm/plugin/voip/video/a:Cme	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
-    //   68: invokevirtual 903	com/tencent/mm/plugin/video/ObservableSurfaceView:erP	()Z
+    //   65: getfield 122	com/tencent/mm/plugin/voip/video/a:CDI	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
+    //   68: invokevirtual 903	com/tencent/mm/plugin/video/ObservableSurfaceView:evw	()Z
     //   71: ifne +24 -> 95
     //   74: ldc 172
     //   76: ldc_w 905
-    //   79: invokestatic 433	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 433	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aload_0
     //   83: iconst_1
-    //   84: putfield 126	com/tencent/mm/plugin/voip/video/a:Cmi	Z
+    //   84: putfield 126	com/tencent/mm/plugin/voip/video/a:CDM	Z
     //   87: ldc_w 896
     //   90: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: iconst_0
@@ -2094,43 +2092,43 @@ public class a
     //   104: dup
     //   105: iconst_0
     //   106: aload_0
-    //   107: getfield 120	com/tencent/mm/plugin/voip/video/a:Cmd	Z
+    //   107: getfield 120	com/tencent/mm/plugin/voip/video/a:CDH	Z
     //   110: invokestatic 308	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   113: aastore
-    //   114: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   114: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   117: aload_0
-    //   118: getfield 122	com/tencent/mm/plugin/voip/video/a:Cme	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
+    //   118: getfield 122	com/tencent/mm/plugin/voip/video/a:CDI	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
     //   121: ifnull +109 -> 230
     //   124: aload_0
-    //   125: getfield 120	com/tencent/mm/plugin/voip/video/a:Cmd	Z
+    //   125: getfield 120	com/tencent/mm/plugin/voip/video/a:CDH	Z
     //   128: ifeq +102 -> 230
     //   131: aload_0
-    //   132: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   132: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   135: aload_0
-    //   136: getfield 122	com/tencent/mm/plugin/voip/video/a:Cme	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
+    //   136: getfield 122	com/tencent/mm/plugin/voip/video/a:CDI	Lcom/tencent/mm/plugin/video/ObservableSurfaceView;
     //   139: invokevirtual 911	com/tencent/mm/plugin/video/ObservableSurfaceView:getSurfaceHolder	()Landroid/view/SurfaceHolder;
     //   142: invokevirtual 833	com/tencent/mm/compatible/deviceinfo/v:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
     //   145: aload_0
-    //   146: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   146: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   149: invokevirtual 836	com/tencent/mm/compatible/deviceinfo/v:startPreview	()V
     //   152: aload_0
     //   153: iconst_1
-    //   154: putfield 144	com/tencent/mm/plugin/voip/video/a:rqM	Z
+    //   154: putfield 144	com/tencent/mm/plugin/voip/video/a:rzb	Z
     //   157: aload_0
     //   158: iconst_1
-    //   159: putfield 124	com/tencent/mm/plugin/voip/video/a:Cmh	Z
+    //   159: putfield 124	com/tencent/mm/plugin/voip/video/a:CDL	Z
     //   162: ldc_w 896
     //   165: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   168: iconst_1
     //   169: ireturn
     //   170: astore_1
-    //   171: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   171: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   174: ldc2_w 273
     //   177: lconst_0
     //   178: lconst_1
     //   179: iconst_0
     //   180: invokevirtual 278	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   183: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   183: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   186: ldc2_w 273
     //   189: ldc2_w 854
     //   192: lconst_1
@@ -2138,7 +2136,7 @@ public class a
     //   194: invokevirtual 278	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
     //   197: aload_0
     //   198: iconst_1
-    //   199: putfield 114	com/tencent/mm/plugin/voip/video/a:ClX	I
+    //   199: putfield 114	com/tencent/mm/plugin/voip/video/a:CDB	I
     //   202: ldc 172
     //   204: new 280	java/lang/StringBuilder
     //   207: dup
@@ -2148,29 +2146,29 @@ public class a
     //   215: invokevirtual 288	java/lang/Exception:toString	()Ljava/lang/String;
     //   218: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   221: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   224: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   224: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   227: goto -82 -> 145
     //   230: aload_0
-    //   231: getfield 873	com/tencent/mm/plugin/voip/video/a:Cmf	Lcom/tencent/mm/plugin/video/ObservableTextureView;
+    //   231: getfield 873	com/tencent/mm/plugin/voip/video/a:CDJ	Lcom/tencent/mm/plugin/video/ObservableTextureView;
     //   234: ifnull -89 -> 145
     //   237: aload_0
-    //   238: getfield 120	com/tencent/mm/plugin/voip/video/a:Cmd	Z
+    //   238: getfield 120	com/tencent/mm/plugin/voip/video/a:CDH	Z
     //   241: ifne -96 -> 145
     //   244: aload_0
-    //   245: getfield 375	com/tencent/mm/plugin/voip/video/a:rqL	Lcom/tencent/mm/compatible/deviceinfo/v;
+    //   245: getfield 375	com/tencent/mm/plugin/voip/video/a:rza	Lcom/tencent/mm/compatible/deviceinfo/v;
     //   248: aload_0
-    //   249: getfield 873	com/tencent/mm/plugin/voip/video/a:Cmf	Lcom/tencent/mm/plugin/video/ObservableTextureView;
+    //   249: getfield 873	com/tencent/mm/plugin/voip/video/a:CDJ	Lcom/tencent/mm/plugin/video/ObservableTextureView;
     //   252: invokevirtual 917	com/tencent/mm/plugin/video/ObservableTextureView:getSurfaceTexture	()Landroid/graphics/SurfaceTexture;
     //   255: invokevirtual 921	com/tencent/mm/compatible/deviceinfo/v:setPreviewTexture	(Landroid/graphics/SurfaceTexture;)V
     //   258: goto -113 -> 145
     //   261: astore_1
-    //   262: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   262: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   265: ldc2_w 273
     //   268: lconst_0
     //   269: lconst_1
     //   270: iconst_0
     //   271: invokevirtual 278	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   274: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   274: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   277: ldc2_w 273
     //   280: ldc2_w 854
     //   283: lconst_1
@@ -2178,7 +2176,7 @@ public class a
     //   285: invokevirtual 278	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
     //   288: aload_0
     //   289: iconst_1
-    //   290: putfield 114	com/tencent/mm/plugin/voip/video/a:ClX	I
+    //   290: putfield 114	com/tencent/mm/plugin/voip/video/a:CDB	I
     //   293: ldc 172
     //   295: new 280	java/lang/StringBuilder
     //   298: dup
@@ -2188,16 +2186,16 @@ public class a
     //   306: invokevirtual 288	java/lang/Exception:toString	()Ljava/lang/String;
     //   309: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   312: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   315: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   315: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   318: goto -173 -> 145
     //   321: astore_1
-    //   322: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   322: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   325: ldc2_w 273
     //   328: lconst_0
     //   329: lconst_1
     //   330: iconst_0
     //   331: invokevirtual 278	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   334: getstatic 272	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   334: getstatic 272	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   337: ldc2_w 273
     //   340: ldc2_w 854
     //   343: lconst_1
@@ -2205,12 +2203,12 @@ public class a
     //   345: invokevirtual 278	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
     //   348: aload_0
     //   349: iconst_1
-    //   350: putfield 114	com/tencent/mm/plugin/voip/video/a:ClX	I
+    //   350: putfield 114	com/tencent/mm/plugin/voip/video/a:CDB	I
     //   353: aload_0
-    //   354: getfield 571	com/tencent/mm/plugin/voip/video/a:Cmg	Lcom/tencent/mm/plugin/voip/video/f;
+    //   354: getfield 571	com/tencent/mm/plugin/voip/video/a:CDK	Lcom/tencent/mm/plugin/voip/video/f;
     //   357: ifnull +12 -> 369
     //   360: aload_0
-    //   361: getfield 571	com/tencent/mm/plugin/voip/video/a:Cmg	Lcom/tencent/mm/plugin/voip/video/f;
+    //   361: getfield 571	com/tencent/mm/plugin/voip/video/a:CDK	Lcom/tencent/mm/plugin/voip/video/f;
     //   364: invokeinterface 576 1 0
     //   369: ldc 172
     //   371: new 280	java/lang/StringBuilder
@@ -2221,7 +2219,7 @@ public class a
     //   382: invokevirtual 288	java/lang/Exception:toString	()Ljava/lang/String;
     //   385: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   391: invokestatic 296	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   391: invokestatic 296	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   394: goto -237 -> 157
     // Local variable table:
     //   start	length	slot	name	signature
@@ -2236,46 +2234,46 @@ public class a
     //   145	157	321	java/lang/Exception
   }
   
-  public final void eAl()
+  public final void eDT()
   {
     AppMethodBeat.i(115560);
-    ad.d("MicroMsg.Voip.CaptureRender", "StopCapture....mIsInCapture = " + this.Cmh);
-    if ((this.Cmh) && (this.rqL != null))
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "StopCapture....mIsInCapture = " + this.CDL);
+    if ((this.CDL) && (this.rza != null))
     {
-      this.Cmi = false;
-      if (!this.rqL.gbd) {
-        this.rqL.setPreviewCallback(null);
+      this.CDM = false;
+      if (!this.rza.gdl) {
+        this.rza.setPreviewCallback(null);
       }
     }
     try
     {
-      this.rqL.stopPreview();
-      this.rqM = false;
-      this.Cmh = false;
-      if (1 == this.ClX)
+      this.rza.stopPreview();
+      this.rzb = false;
+      this.CDL = false;
+      if (1 == this.CDB)
       {
-        os localos = new os();
-        localos.dCJ.type = 2;
-        com.tencent.mm.sdk.b.a.IbL.l(localos);
+        ot localot = new ot();
+        localot.dDO.type = 2;
+        com.tencent.mm.sdk.b.a.IvT.l(localot);
       }
-      ad.d("MicroMsg.Voip.CaptureRender", "UnInitCapture....mCameraOpen = " + this.Cmb);
-      if (this.Cmb)
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "UnInitCapture....mCameraOpen = " + this.CDF);
+      if (this.CDF)
       {
-        this.ClX = 0;
-        this.Cmi = false;
-        if ((this.rqL != null) && (!this.rqL.gbd))
+        this.CDB = 0;
+        this.CDM = false;
+        if ((this.rza != null) && (!this.rza.gdl))
         {
-          this.rqL.setPreviewCallback(null);
-          this.rqL.release();
+          this.rza.setPreviewCallback(null);
+          this.rza.release();
         }
-        this.rqL = null;
-        this.Cmb = false;
-        this.Cmj = null;
-        if (this.Cml != null) {
-          this.Cml.clear();
+        this.rza = null;
+        this.CDF = false;
+        this.CDN = null;
+        if (this.CDP != null) {
+          this.CDP.clear();
         }
-        this.Cml = null;
-        this.Cmc = false;
+        this.CDP = null;
+        this.CDG = false;
         AppMethodBeat.o(115560);
         return;
       }
@@ -2284,79 +2282,79 @@ public class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.Voip.CaptureRender", "stopPreview:error" + localException.toString());
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "stopPreview:error" + localException.toString());
         continue;
-        if (this.rqL != null)
+        if (this.rza != null)
         {
-          if (!this.rqL.gbd) {
-            this.rqL.setPreviewCallback(null);
+          if (!this.rza.gdl) {
+            this.rza.setPreviewCallback(null);
           }
-          this.rqL.release();
-          this.rqL = null;
-          this.Cmb = false;
+          this.rza.release();
+          this.rza = null;
+          this.CDF = false;
         }
       }
     }
   }
   
-  public final boolean eAm()
+  public final boolean eDU()
   {
-    return this.ClQ;
+    return this.CDu;
   }
   
-  public final boolean eAn()
+  public final boolean eDV()
   {
-    return this.ClR;
+    return this.CDv;
   }
   
-  public final int eAo()
+  public final int eDW()
   {
-    return this.ClX;
+    return this.CDB;
   }
   
   public final void f(SurfaceTexture paramSurfaceTexture)
   {
     boolean bool1 = false;
     AppMethodBeat.i(115549);
-    ad.d("MicroMsg.Voip.CaptureRender", "onSurfaceTextureAvailable");
-    if ((!this.Cmb) || (paramSurfaceTexture == null))
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.Voip.CaptureRender", "onSurfaceTextureAvailable");
+    if ((!this.CDF) || (paramSurfaceTexture == null))
     {
-      boolean bool2 = this.Cmb;
+      boolean bool2 = this.CDF;
       if (paramSurfaceTexture == null) {
         bool1 = true;
       }
-      ad.e("MicroMsg.Voip.CaptureRender", "onSurfaceTextureAvailable failed, CameraOpen: %b, surface: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "onSurfaceTextureAvailable failed, CameraOpen: %b, surface: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       AppMethodBeat.o(115549);
       return;
     }
     try
     {
-      if (!this.rqL.gbd) {
-        this.rqL.setPreviewCallback(null);
+      if (!this.rza.gdl) {
+        this.rza.setPreviewCallback(null);
       }
-      this.rqL.stopPreview();
-      this.rqL.setPreviewTexture(paramSurfaceTexture);
-      eAh();
-      this.rqL.startPreview();
-      this.rqM = true;
+      this.rza.stopPreview();
+      this.rza.setPreviewTexture(paramSurfaceTexture);
+      eDP();
+      this.rza.startPreview();
+      this.rzb = true;
     }
     catch (Exception paramSurfaceTexture)
     {
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 0L, 1L, false);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(159L, 2L, 1L, false);
-        ad.e("MicroMsg.Voip.CaptureRender", "surfaceChange failed" + paramSurfaceTexture.getMessage());
-        this.ClX = 1;
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(159L, 2L, 1L, false);
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.Voip.CaptureRender", "surfaceChange failed" + paramSurfaceTexture.getMessage());
+        this.CDB = 1;
       }
     }
-    if (this.Cmi)
+    if (this.CDM)
     {
-      eAk();
-      this.Cmi = false;
+      eDS();
+      this.CDM = false;
     }
-    if (!bZV()) {
-      com.tencent.mm.plugin.voip.c.euM().Um(this.ClX);
+    if (!cbk()) {
+      com.tencent.mm.plugin.voip.c.eys().UT(this.CDB);
     }
     AppMethodBeat.o(115549);
   }

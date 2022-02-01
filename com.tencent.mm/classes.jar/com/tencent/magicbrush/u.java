@@ -8,25 +8,25 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class u
   extends t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
     AppMethodBeat.i(182574);
-    cxK = new u();
+    cyr = new u();
     AppMethodBeat.o(182574);
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return "getEnable_switch_thread_native_for_jsapis()Z";
   }
   
-  public final d Hv()
+  public final d HD()
   {
     AppMethodBeat.i(182575);
     b localb = z.bp(MBRuntime.MBParams.class);
@@ -56,7 +56,7 @@ final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.u
  * JD-Core Version:    0.7.0.1
  */

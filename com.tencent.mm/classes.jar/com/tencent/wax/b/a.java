@@ -9,92 +9,73 @@ import java.util.Map;
 public final class a
   implements c
 {
-  b MkX;
+  private b MHV;
   
   public a(b paramb)
   {
-    this.MkX = paramb;
+    this.MHV = paramb;
   }
   
-  private Map fYV()
+  private Map gdv()
   {
-    AppMethodBeat.i(217497);
+    AppMethodBeat.i(195503);
     HashMap localHashMap = new HashMap();
-    String str = this.MkX.dfV();
-    Map localMap = this.MkX.dfW();
-    localHashMap.put("name", str);
+    String str1 = this.MHV.diR();
+    String str2 = this.MHV.diS();
+    Map localMap = this.MHV.diT();
+    localHashMap.put("activityId", str1);
+    localHashMap.put("name", str2);
     localHashMap.put("params", localMap);
-    AppMethodBeat.o(217497);
+    AppMethodBeat.o(195503);
     return localHashMap;
   }
   
-  public final void onBackPressed()
+  public final void a(k.d paramd)
   {
-    AppMethodBeat.i(217502);
+    AppMethodBeat.i(195508);
     com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "onBackPressed", new Object[0]);
-    e locale = e.fYT();
-    k.d local1 = new k.d()
-    {
-      public final void de(Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(217494);
-        if ((paramAnonymousObject == null) || (!((Boolean)paramAnonymousObject).booleanValue())) {
-          a.this.MkX.finish();
-        }
-        AppMethodBeat.o(217494);
-      }
-      
-      public final void djR()
-      {
-        AppMethodBeat.i(217496);
-        com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "notImplemented finish", new Object[0]);
-        a.this.MkX.finish();
-        AppMethodBeat.o(217496);
-      }
-      
-      public final void f(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(217495);
-        com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "error finish", new Object[0]);
-        a.this.MkX.finish();
-        AppMethodBeat.o(217495);
-      }
-    };
-    locale.MkP.a("backPressed", null, local1);
-    AppMethodBeat.o(217502);
+    e.gdt().MHN.a("onBackPressed", null, paramd);
+    AppMethodBeat.o(195508);
+  }
+  
+  public final void gdw()
+  {
+    AppMethodBeat.i(195509);
+    e.gdt().A("closeView", gdv());
+    AppMethodBeat.o(195509);
   }
   
   public final void onCreateView()
   {
-    AppMethodBeat.i(217498);
-    e.fYT().A("onCreateView", fYV());
-    AppMethodBeat.o(217498);
+    AppMethodBeat.i(195504);
+    e.gdt().A("onCreateView", gdv());
+    AppMethodBeat.o(195504);
   }
   
   public final void onDestroyView()
   {
-    AppMethodBeat.i(217501);
-    e.fYT().A("onDestroyView", fYV());
-    AppMethodBeat.o(217501);
+    AppMethodBeat.i(195507);
+    e.gdt().A("onDestroyView", gdv());
+    AppMethodBeat.o(195507);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(217500);
-    e.fYT().A("onPause", fYV());
-    AppMethodBeat.o(217500);
+    AppMethodBeat.i(195506);
+    e.gdt().A("onPauseView", gdv());
+    AppMethodBeat.o(195506);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(217499);
-    e.fYT().A("onResume", fYV());
-    AppMethodBeat.o(217499);
+    AppMethodBeat.i(195505);
+    e.gdt().A("onResumeView", gdv());
+    AppMethodBeat.o(195505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wax.b.a
  * JD-Core Version:    0.7.0.1
  */

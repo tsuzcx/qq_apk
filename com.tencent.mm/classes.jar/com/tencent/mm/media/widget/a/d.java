@@ -14,7 +14,6 @@ import android.os.Looper;
 import android.util.Size;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.v;
 import com.tencent.mm.compatible.deviceinfo.x;
@@ -25,9 +24,8 @@ import com.tencent.mm.plugin.mmsight.model.h;
 import com.tencent.mm.plugin.mmsight.model.h.c;
 import com.tencent.mm.plugin.mmsight.model.q;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import d.a.j;
 import d.g.b.p;
@@ -38,35 +36,35 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera/CommonCamera1;", "Lcom/tencent/mm/media/widget/camera/BaseCommonCamera;", "context", "Landroid/content/Context;", "useBack", "", "(Landroid/content/Context;Z)V", "DEFAULT_UPPER_BOUND", "", "SMALL_ZOOM_STEP_NUM", "getSMALL_ZOOM_STEP_NUM", "()I", "SMALL_ZOOM_STEP_UPPER_BOUND", "getSMALL_ZOOM_STEP_UPPER_BOUND", "SMALL_ZOOM_STEP_VAL", "TAG", "", "availableZoomRatioIndexList", "Ljava/util/ArrayList;", "camera", "Lcom/tencent/mm/compatible/deviceinfo/MCamera;", "getCamera", "()Lcom/tencent/mm/compatible/deviceinfo/MCamera;", "setCamera", "(Lcom/tencent/mm/compatible/deviceinfo/MCamera;)V", "cameraCallback", "Lcom/tencent/mm/plugin/mmsight/model/CounterUtil;", "cameraCropCallback", "cameraPreviewCallback", "cropSize", "Landroid/graphics/Point;", "getCropSize", "()Landroid/graphics/Point;", "setCropSize", "(Landroid/graphics/Point;)V", "currentFrameData", "", "finishCallbackTimeCallback", "frameDataCallbackList", "", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getFrameDataCallbackList", "()Ljava/util/List;", "setFrameDataCallbackList", "(Ljava/util/List;)V", "isCameraOpen", "isZooming", "()Z", "setZooming", "(Z)V", "lock", "Ljava/lang/Object;", "mCameraFps", "getMCameraFps", "setMCameraFps", "(I)V", "mZoomTimesToRatio", "Lcom/tencent/tinker/android/utils/SparseIntArray;", "onHDRCheckerResult", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "openCameraRes", "Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "getOpenCameraRes", "()Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "setOpenCameraRes", "(Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;)V", "prevcameraCallback", "scrollSmallZoomStep", "getScrollSmallZoomStep", "setScrollSmallZoomStep", "sightHandler", "Lcom/tencent/mm/media/widget/camera/CameraHandler;", "getSightHandler", "()Lcom/tencent/mm/media/widget/camera/CameraHandler;", "smallZoomStep", "getSmallZoomStep", "setSmallZoomStep", "takePictureLock", "addFrameDataCallback", "callback", "calcScrollZoomStep", "recordButtonTopLocation", "stepInterval", "configVendorTagValue", "tag", "value", "dispatchCameraFrame", "frame", "doStartPreview", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "surface", "Landroid/view/SurfaceHolder;", "generateCameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getAvailableZoomRatioIndexList", "parameters", "Landroid/hardware/Camera$Parameters;", "Landroid/hardware/Camera;", "getCameraOrientation", "getCurrentCameraId", "getFlashMode", "getOrientation", "getPreviewHeight", "getPreviewSize", "cropSizeIfCan", "getPreviewWidth", "getSupportZoomRatios", "", "initCamera", "initRawRatios", "postFocusOnTouch", "x", "", "y", "surfaceWidth", "surfaceHeight", "delay", "", "release", "removeFocusOnTouch", "removeFrameDataCallback", "safeResetZoom", "safeSetFocusMode", "safeSetMetering", "safeSetPreviewFormat", "safeSetPreviewFrameRate", "useFixMode", "safeSetPreviewSize", "resolutionLimit", "safeSetPreviewSizeWithLimitAndRatio", "sizeLimit", "displayRatio", "safeSetStabilization", "selectNoCropPreviewSize", "setCameraPreviewFps", "fpsValue", "setFlashMode", "mode", "setFlashOn", "isOn", "setForceZoomTargetRatio", "ratio", "setPreviewCallbackImpl", "setPreviewCallbackImplInGPUCrop", "setPreviewDisplayRatio", "setSafeConfig", "startPreview", "useCpuCrop", "startPreviewWithCPU", "startPreviewWithGPU", "switchVendorTag", "isChecked", "triggerCameraZoom", "zoom", "isScrollZoom", "factor", "trySetPreviewFpsRangeParameters", "p", "trySetPreviewFrameRateParameters", "plugin-mediaeditor_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera/CommonCamera1;", "Lcom/tencent/mm/media/widget/camera/BaseCommonCamera;", "context", "Landroid/content/Context;", "useBack", "", "(Landroid/content/Context;Z)V", "DEFAULT_UPPER_BOUND", "", "SMALL_ZOOM_STEP_NUM", "getSMALL_ZOOM_STEP_NUM", "()I", "SMALL_ZOOM_STEP_UPPER_BOUND", "getSMALL_ZOOM_STEP_UPPER_BOUND", "SMALL_ZOOM_STEP_VAL", "TAG", "", "availableZoomRatioIndexList", "Ljava/util/ArrayList;", "camera", "Lcom/tencent/mm/compatible/deviceinfo/MCamera;", "getCamera", "()Lcom/tencent/mm/compatible/deviceinfo/MCamera;", "setCamera", "(Lcom/tencent/mm/compatible/deviceinfo/MCamera;)V", "cameraCallback", "Lcom/tencent/mm/plugin/mmsight/model/CounterUtil;", "cameraCropCallback", "cameraPreviewCallback", "cropSize", "Landroid/graphics/Point;", "getCropSize", "()Landroid/graphics/Point;", "setCropSize", "(Landroid/graphics/Point;)V", "currentFrameData", "", "finishCallbackTimeCallback", "frameDataCallbackList", "", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getFrameDataCallbackList", "()Ljava/util/List;", "setFrameDataCallbackList", "(Ljava/util/List;)V", "isCameraOpen", "isZooming", "()Z", "setZooming", "(Z)V", "lock", "Ljava/lang/Object;", "mCameraFps", "getMCameraFps", "setMCameraFps", "(I)V", "mZoomTimesToRatio", "Lcom/tencent/tinker/android/utils/SparseIntArray;", "onHDRCheckerResult", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "openCameraRes", "Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "getOpenCameraRes", "()Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "setOpenCameraRes", "(Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;)V", "prevcameraCallback", "scrollSmallZoomStep", "getScrollSmallZoomStep", "setScrollSmallZoomStep", "sightHandler", "Lcom/tencent/mm/media/widget/camera/CameraHandler;", "getSightHandler", "()Lcom/tencent/mm/media/widget/camera/CameraHandler;", "smallZoomStep", "getSmallZoomStep", "setSmallZoomStep", "takePictureLock", "addFrameDataCallback", "callback", "calcScrollZoomStep", "recordButtonTopLocation", "stepInterval", "configVendorTagValue", "tag", "value", "dispatchCameraFrame", "frame", "doStartPreview", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "surface", "Landroid/view/SurfaceHolder;", "generateCameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getAvailableZoomRatioIndexList", "parameters", "Landroid/hardware/Camera$Parameters;", "Landroid/hardware/Camera;", "getCameraOrientation", "getCurrentCameraId", "getFlashMode", "getOrientation", "getPreviewHeight", "getPreviewSize", "cropSizeIfCan", "getPreviewWidth", "getSupportZoomRatios", "", "initCamera", "initRawRatios", "postFocusOnTouch", "x", "", "y", "surfaceWidth", "surfaceHeight", "delay", "", "release", "removeFocusOnTouch", "removeFrameDataCallback", "safeResetZoom", "safeSetFocusMode", "safeSetMetering", "safeSetPreviewFormat", "safeSetPreviewFrameRate", "useFixMode", "safeSetPreviewSize", "resolutionLimit", "safeSetPreviewSizeWithLimitAndRatio", "sizeLimit", "displayRatio", "safeSetStabilization", "selectNoCropPreviewSize", "setCameraPreviewFps", "fpsValue", "setFlashMode", "mode", "setFlashOn", "isOn", "setForceZoomTargetRatio", "ratio", "setPreviewCallbackImpl", "setPreviewCallbackImplInGPUCrop", "setPreviewDisplayRatio", "setSafeConfig", "startPreview", "useCpuCrop", "startPreviewWithCPU", "startPreviewWithGPU", "switchVendorTag", "isChecked", "triggerCameraZoom", "zoom", "isScrollZoom", "factor", "trySetPreviewFpsRangeParameters", "p", "trySetPreviewFrameRateParameters", "plugin-mediaeditor_release"})
 public final class d
   extends a
 {
   private final String TAG;
   private boolean aYh;
-  v fYS;
-  private final int hpK;
-  private final int hpL;
-  private final int hpM;
-  List<g> hpN;
-  private final c hpO;
-  d.a.a hpP;
-  Point hpQ;
-  private int hpR;
-  private int hpS;
-  private final com.tencent.mm.plugin.mmsight.model.c hpT;
-  private final com.tencent.mm.plugin.mmsight.model.c hpU;
-  private final com.tencent.mm.plugin.mmsight.model.c hpV;
-  private final com.tencent.mm.plugin.mmsight.model.c hpW;
-  private final com.tencent.mm.plugin.mmsight.model.c hpX;
-  private volatile boolean hpY;
-  private volatile byte[] hpZ;
-  private boolean hqa;
-  private final int hqb;
-  private com.tencent.tinker.a.c.b hqc;
-  private final ArrayList<Integer> hqd;
-  private d.g.a.b<? super Boolean, z> hqe;
-  private int hqf;
+  v gaZ;
+  private final int hsA;
+  List<g> hsB;
+  private final c hsC;
+  d.a.a hsD;
+  Point hsE;
+  private int hsF;
+  private int hsG;
+  private final com.tencent.mm.plugin.mmsight.model.c hsH;
+  private final com.tencent.mm.plugin.mmsight.model.c hsI;
+  private final com.tencent.mm.plugin.mmsight.model.c hsJ;
+  private final com.tencent.mm.plugin.mmsight.model.c hsK;
+  private final com.tencent.mm.plugin.mmsight.model.c hsL;
+  private volatile boolean hsM;
+  private volatile byte[] hsN;
+  private boolean hsO;
+  private final int hsP;
+  private com.tencent.tinker.a.c.b hsQ;
+  private final ArrayList<Integer> hsR;
+  private d.g.a.b<? super Boolean, z> hsS;
+  private int hsT;
+  private final int hsy;
+  private final int hsz;
   private final Object lock;
   
   public d(Context paramContext)
@@ -74,22 +72,22 @@ public final class d
     super(paramContext);
     AppMethodBeat.i(94058);
     this.TAG = "MicroMsg.CommonCamera1";
-    this.hpK = 40;
-    this.hpL = 5;
-    this.hpM = 10;
-    this.hpN = ((List)new ArrayList());
+    this.hsy = 40;
+    this.hsz = 5;
+    this.hsA = 10;
+    this.hsB = ((List)new ArrayList());
     paramContext = Looper.getMainLooper();
     p.g(paramContext, "Looper.getMainLooper()");
-    this.hpO = new c(paramContext);
-    this.hpR = -1;
-    this.hpS = -1;
-    this.hpT = new com.tencent.mm.plugin.mmsight.model.c("prevcameraCallback");
-    this.hpU = new com.tencent.mm.plugin.mmsight.model.c("cameraCallback");
-    this.hpV = new com.tencent.mm.plugin.mmsight.model.c("cameraPreviewCallback");
-    this.hpW = new com.tencent.mm.plugin.mmsight.model.c("cameraCropCallback");
-    this.hpX = new com.tencent.mm.plugin.mmsight.model.c("finishCallbackTimeCallback");
-    this.hqb = 2100;
-    this.hqd = new ArrayList();
+    this.hsC = new c(paramContext);
+    this.hsF = -1;
+    this.hsG = -1;
+    this.hsH = new com.tencent.mm.plugin.mmsight.model.c("prevcameraCallback");
+    this.hsI = new com.tencent.mm.plugin.mmsight.model.c("cameraCallback");
+    this.hsJ = new com.tencent.mm.plugin.mmsight.model.c("cameraPreviewCallback");
+    this.hsK = new com.tencent.mm.plugin.mmsight.model.c("cameraCropCallback");
+    this.hsL = new com.tencent.mm.plugin.mmsight.model.c("finishCallbackTimeCallback");
+    this.hsP = 2100;
+    this.hsR = new ArrayList();
     this.lock = new Object();
     AppMethodBeat.o(94058);
   }
@@ -97,12 +95,12 @@ public final class d
   private final boolean T(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(94051);
-    bt.HI();
+    bu.HQ();
     synchronized (this.lock)
     {
-      if (this.hpN != null)
+      if (this.hsB != null)
       {
-        int i = this.hpN.size();
+        int i = this.hsB.size();
         if (i != 0) {}
       }
       else
@@ -110,7 +108,7 @@ public final class d
         AppMethodBeat.o(94051);
         return false;
       }
-      Iterator localIterator = this.hpN.iterator();
+      Iterator localIterator = this.hsB.iterator();
       boolean bool1 = false;
       while (localIterator.hasNext())
       {
@@ -125,23 +123,23 @@ public final class d
   private final void a(SurfaceTexture paramSurfaceTexture, SurfaceHolder paramSurfaceHolder, int paramInt)
   {
     AppMethodBeat.i(94024);
-    long l = bt.HI();
-    ad.i(this.TAG, "start startPreviewWithCPU,Looper.myLooper(): " + Looper.myLooper() + ",surfaceTexture:" + paramSurfaceTexture + ", surface:" + paramSurfaceHolder);
-    if (awa())
+    long l = bu.HQ();
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "start startPreviewWithCPU,Looper.myLooper(): " + Looper.myLooper() + ",surfaceTexture:" + paramSurfaceTexture + ", surface:" + paramSurfaceHolder);
+    if (awp())
     {
-      ad.i(this.TAG, "startPreviewWithCPU, camera previewing");
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "startPreviewWithCPU, camera previewing");
       AppMethodBeat.o(94024);
       return;
     }
     try
     {
-      nX(paramInt);
-      awj();
-      awn();
+      oa(paramInt);
+      awy();
+      awC();
       if (a(paramSurfaceTexture, paramSurfaceHolder)) {
-        a(a.a.hpm);
+        a(a.a.hsa);
       }
-      ad.i(this.TAG, "start preview end, use %dms %s", new Object[] { Long.valueOf(bt.aO(l)), Looper.myLooper() });
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "start preview end, use %dms %s", new Object[] { Long.valueOf(bu.aO(l)), Looper.myLooper() });
       AppMethodBeat.o(94024);
       return;
     }
@@ -149,9 +147,9 @@ public final class d
     {
       for (;;)
       {
-        ad.e(this.TAG, "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
-        paramSurfaceTexture = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.auk();
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
+        paramSurfaceTexture = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.auz();
       }
     }
   }
@@ -159,7 +157,7 @@ public final class d
   private final boolean a(SurfaceTexture paramSurfaceTexture, SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(94027);
-    v localv = this.fYS;
+    v localv = this.gaZ;
     if (localv != null)
     {
       if ((paramSurfaceTexture != null) || (paramSurfaceHolder != null))
@@ -170,17 +168,17 @@ public final class d
         for (;;)
         {
           localv.startPreview();
-          ad.i(this.TAG, "doStartPreview finish");
-          paramSurfaceTexture = com.tencent.mm.media.k.d.hoU;
-          com.tencent.mm.media.k.d.auj();
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "doStartPreview finish");
+          paramSurfaceTexture = com.tencent.mm.media.k.d.hrI;
+          com.tencent.mm.media.k.d.auy();
           AppMethodBeat.o(94027);
           return true;
           localv.setPreviewDisplay(paramSurfaceHolder);
         }
       }
-      ad.i(this.TAG, "doStartPreview error, surfaceTexture and surface is null");
-      paramSurfaceTexture = com.tencent.mm.media.k.d.hoU;
-      com.tencent.mm.media.k.d.auk();
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "doStartPreview error, surfaceTexture and surface is null");
+      paramSurfaceTexture = com.tencent.mm.media.k.d.hrI;
+      com.tencent.mm.media.k.d.auz();
       AppMethodBeat.o(94027);
       return false;
     }
@@ -207,16 +205,16 @@ public final class d
         localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("continuous-picture")))
         {
-          ad.i(this.TAG, "support continuous picture");
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "support continuous picture");
           localParameters.setFocusMode("continuous-picture");
-          this.hpO.hpB = localParameters.getFocusMode();
+          this.hsC.hsp = localParameters.getFocusMode();
           paramv.setParameters(localParameters);
           AppMethodBeat.o(94042);
           return true;
         }
         if ((localList != null) && (localList.contains("continuous-video")))
         {
-          ad.i(this.TAG, "support continuous video");
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "support continuous video");
           localParameters.setFocusMode("continuous-video");
           continue;
         }
@@ -226,19 +224,19 @@ public final class d
       }
       catch (Exception paramv)
       {
-        ad.i(this.TAG, "setFocusMode Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "setFocusMode Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
         AppMethodBeat.o(94042);
         return false;
       }
       if (localList.contains("auto"))
       {
-        ad.i(this.TAG, "support auto focus");
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "support auto focus");
         localParameters.setFocusMode("auto");
       }
       else
       {
         label200:
-        ad.i(this.TAG, "not support continuous video or auto focus");
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "not support continuous video or auto focus");
       }
     }
   }
@@ -269,19 +267,19 @@ public final class d
           break label319;
         }
         Object localObject1;
-        if (ae.gcE.fYs > 0)
+        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaz > 0)
         {
-          ad.i(this.hoZ, "set frame rate > 0, do not try set preview frame rate");
+          com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "set frame rate > 0, do not try set preview frame rate");
           p.g(localParameters, "p");
           localObject1 = localParameters.getSupportedPreviewFrameRates();
-          ad.i(this.hoZ, "use fix mode %B, supported preview frame rates %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 });
+          com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "use fix mode %B, supported preview frame rates %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 });
           paramv.setParameters(localParameters);
           AppMethodBeat.o(94041);
           return true;
         }
         if (localParameters == null)
         {
-          ad.e(this.TAG, "trySetPreviewFrameRateParameters error, p is null!");
+          com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "trySetPreviewFrameRateParameters error, p is null!");
           continue;
         }
         try
@@ -290,24 +288,24 @@ public final class d
           if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
             continue;
           }
-          if (this.hqf != 0)
+          if (this.hsT != 0)
           {
-            i = this.hqf;
+            i = this.hsT;
             localObject1 = Collections.max((Collection)localObject1);
             p.g(localObject1, "Collections.max(fr)");
             i = Math.min(i, ((Number)localObject1).intValue());
             localParameters.setPreviewFrameRate(i);
-            ad.i(this.hoZ, "set preview frame rate %d", new Object[] { Integer.valueOf(i) });
+            com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "set preview frame rate %d", new Object[] { Integer.valueOf(i) });
           }
         }
         catch (Exception localException1)
         {
-          ad.i(this.hoZ, "trySetPreviewFrameRateParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException1.getMessage() });
+          com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "trySetPreviewFrameRateParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException1.getMessage() });
         }
       }
       catch (Exception paramv)
       {
-        ad.i(this.hoZ, "setPreviewFrameRate Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "setPreviewFrameRate Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
         AppMethodBeat.o(94041);
         return false;
       }
@@ -320,9 +318,9 @@ public final class d
         i = Math.min(30, ((Number)localObject2).intValue());
       }
       p.g(localParameters, "p");
-      if (ae.gcE.fYs > 0)
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaz > 0)
       {
-        ad.i(this.hoZ, "set frame rate > 0, do not try set preview fps range");
+        com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "set frame rate > 0, do not try set preview fps range");
       }
       else
       {
@@ -342,7 +340,7 @@ public final class d
             }
             i3 = arrayOfInt[0];
             i2 = arrayOfInt[1];
-            ad.i(this.TAG, "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(i1), Integer.valueOf(i3), Integer.valueOf(i2) });
+            com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(i1), Integer.valueOf(i3), Integer.valueOf(i2) });
             if (i3 < 0) {
               break label678;
             }
@@ -350,10 +348,10 @@ public final class d
               break label681;
             }
             break label678;
-            if (this.hqf == 0) {
+            if (this.hsT == 0) {
               break label719;
             }
-            if (i2 < this.hqf * 1000) {
+            if (i2 < this.hsT * 1000) {
               break;
             }
             i = 1;
@@ -361,16 +359,16 @@ public final class d
             j = n;
             break label669;
           }
-          ad.i(this.hoZ, "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(30) });
+          com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(30) });
           if ((j != 2147483647) && (k != 2147483647)) {
             try
             {
               localParameters.setPreviewFpsRange(j, k);
-              ad.i(this.hoZ, "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
+              com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
             }
             catch (Exception localException2)
             {
-              ad.i(this.hoZ, "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException2.getMessage() });
+              com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException2.getMessage() });
             }
           }
         }
@@ -410,20 +408,171 @@ public final class d
     }
   }
   
-  private final void awj()
+  private void awB()
+  {
+    AppMethodBeat.i(94043);
+    try
+    {
+      Object localObject = this.gaZ;
+      if (localObject != null) {}
+      for (localObject = ((v)localObject).getParameters();; localObject = null)
+      {
+        if ((localObject != null) && (((Camera.Parameters)localObject).isZoomSupported() == true)) {
+          ((Camera.Parameters)localObject).setZoom(0);
+        }
+        v localv = this.gaZ;
+        if (localv == null) {
+          break;
+        }
+        localv.setParameters((Camera.Parameters)localObject);
+        AppMethodBeat.o(94043);
+        return;
+      }
+      AppMethodBeat.o(94043);
+      return;
+    }
+    catch (Exception localException)
+    {
+      com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "safeResetZoom error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(94043);
+    }
+  }
+  
+  private final void awC()
+  {
+    AppMethodBeat.i(94046);
+    if (this.gaZ == null)
+    {
+      AppMethodBeat.o(94046);
+      return;
+    }
+    try
+    {
+      if (this.gaZ == null) {
+        break label240;
+      }
+      Object localObject1 = this.gaZ;
+      if (localObject1 != null)
+      {
+        localObject1 = ((v)localObject1).getParameters();
+        if (localObject1 != null) {}
+      }
+      else
+      {
+        AppMethodBeat.o(94046);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "setPreviewCallbackImpl error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(94046);
+      return;
+    }
+    int i = this.hrV.ruC;
+    int j = this.hrV.ruD;
+    j = ImageFormat.getBitsPerPixel(localException.getPreviewFormat()) * (i * j) / 8;
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "setPreviewCallbackImpl  size: ".concat(String.valueOf(j)));
+    i = 0;
+    for (;;)
+    {
+      Object localObject2;
+      if (i < 5)
+      {
+        localObject2 = k.wcg.h(Integer.valueOf(j));
+        v localv = this.gaZ;
+        if (localv != null) {
+          localv.addCallbackBuffer((byte[])localObject2);
+        }
+      }
+      else
+      {
+        this.hsH.reset();
+        this.hsI.reset();
+        this.hsJ.reset();
+        this.hsK.reset();
+        this.hsL.reset();
+        localObject2 = this.gaZ;
+        if (localObject2 != null)
+        {
+          ((v)localObject2).setPreviewCallbackWithBuffer((Camera.PreviewCallback)new a(this));
+          AppMethodBeat.o(94046);
+          return;
+        }
+        AppMethodBeat.o(94046);
+        return;
+        label240:
+        AppMethodBeat.o(94046);
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  private void awD()
+  {
+    AppMethodBeat.i(94047);
+    if (this.gaZ != null) {
+      try
+      {
+        Object localObject = this.gaZ;
+        if (localObject == null) {
+          p.gkB();
+        }
+        localObject = ((v)localObject).getParameters();
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "setPreviewCallbackImpl");
+        int i = this.hrV.ruC;
+        int j = this.hrV.ruD;
+        if (localObject == null) {
+          p.gkB();
+        }
+        j = ImageFormat.getBitsPerPixel(((Camera.Parameters)localObject).getPreviewFormat()) * (i * j) / 8;
+        i = 0;
+        while (i < 5)
+        {
+          localObject = k.wcg.h(Integer.valueOf(j));
+          v localv = this.gaZ;
+          if (localv == null) {
+            p.gkB();
+          }
+          localv.addCallbackBuffer((byte[])localObject);
+          i += 1;
+        }
+        this.hsH.reset();
+        this.hsI.reset();
+        this.hsJ.reset();
+        this.hsK.reset();
+        this.hsL.reset();
+        localObject = this.gaZ;
+        if (localObject == null) {
+          p.gkB();
+        }
+        ((v)localObject).setPreviewCallbackWithBuffer((Camera.PreviewCallback)new b(this));
+        AppMethodBeat.o(94047);
+        return;
+      }
+      catch (Exception localException)
+      {
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "setPreviewCallbackImpl error: %s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(94047);
+  }
+  
+  private final void awy()
   {
     AppMethodBeat.i(94028);
     Integer localInteger = Integer.valueOf(0);
-    Object localObject = com.tencent.mm.plugin.mmsight.model.a.l.dno();
+    Object localObject = com.tencent.mm.plugin.mmsight.model.a.l.dqm();
     p.g(localObject, "MMSightController.getInstance()");
-    if (((com.tencent.mm.plugin.mmsight.model.a.l)localObject).dnp() != null)
+    if (((com.tencent.mm.plugin.mmsight.model.a.l)localObject).dqn() != null)
     {
-      localObject = com.tencent.mm.plugin.mmsight.model.a.l.dno();
+      localObject = com.tencent.mm.plugin.mmsight.model.a.l.dqm();
       p.g(localObject, "MMSightController.getInstance()");
-      localInteger = Integer.valueOf(((com.tencent.mm.plugin.mmsight.model.a.l)localObject).dnp().vMM);
+      localInteger = Integer.valueOf(((com.tencent.mm.plugin.mmsight.model.a.l)localObject).dqn().vYP);
     }
     String str = this.TAG;
-    if (ae.gcE.fYx == 1) {
+    if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaE == 1) {
       localObject = "Range";
     }
     for (;;)
@@ -435,52 +584,52 @@ public final class d
       boolean bool3;
       label116:
       boolean bool4;
-      if (ae.gcE.fYy == 1)
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaF == 1)
       {
         bool1 = true;
-        if (ae.gcE.fYz != 1) {
+        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaG != 1) {
           break label417;
         }
         bool2 = true;
-        if (ae.gcE.fYA != 1) {
+        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaH != 1) {
           break label422;
         }
         bool3 = true;
-        if (ae.gcE.fYB != 1) {
+        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaI != 1) {
           break label427;
         }
         bool4 = true;
         label129:
-        ad.i(str, "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, localObject, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) });
-        if ((ae.gcE.fYx != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 1))) {
+        com.tencent.mm.sdk.platformtools.ae.i(str, "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, localObject, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) });
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaE != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 1))) {
           break label433;
         }
-        a(this.fYS, false);
+        a(this.gaZ, false);
         label218:
-        if ((ae.gcE.fYy == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
-          b(this.fYS);
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaF == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
+          b(this.gaZ);
         }
-        if ((ae.gcL.gbr != -1) && (ae.gcL.gbr == 1) && (com.tencent.mm.compatible.util.d.lA(14))) {
-          c(this.fYS);
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdz != -1) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdz == 1) && (com.tencent.mm.compatible.util.d.lC(14))) {
+          c(this.gaZ);
         }
-        if ((ae.gcE.fYA == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
-          a(this.fYS);
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaH == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
+          a(this.gaZ);
         }
-        if ((ae.gcE.fYB == 1) && (localInteger.intValue() != 0)) {
+        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaI == 1) && (localInteger.intValue() != 0)) {
           localInteger.intValue();
         }
-        awm();
+        awB();
       }
       try
       {
-        localObject = this.fYS;
+        localObject = this.gaZ;
         if (localObject != null) {}
         for (localObject = ((v)localObject).getParameters();; localObject = null)
         {
           b((Camera.Parameters)localObject);
           AppMethodBeat.o(94028);
           return;
-          if (ae.gcE.fYw == 1)
+          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaD == 1)
           {
             localObject = "Fix";
             break;
@@ -499,181 +648,30 @@ public final class d
           bool4 = false;
           break label129;
           label433:
-          if ((ae.gcE.fYw != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
+          if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaD != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
             break label218;
           }
-          a(this.fYS, true);
+          a(this.gaZ, true);
           break label218;
         }
         return;
       }
       catch (Exception localException)
       {
-        ad.i(this.TAG, "current get parameters is null");
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "current get parameters is null");
         AppMethodBeat.o(94028);
       }
     }
   }
   
-  private void awm()
-  {
-    AppMethodBeat.i(94043);
-    try
-    {
-      Object localObject = this.fYS;
-      if (localObject != null) {}
-      for (localObject = ((v)localObject).getParameters();; localObject = null)
-      {
-        if ((localObject != null) && (((Camera.Parameters)localObject).isZoomSupported() == true)) {
-          ((Camera.Parameters)localObject).setZoom(0);
-        }
-        v localv = this.fYS;
-        if (localv == null) {
-          break;
-        }
-        localv.setParameters((Camera.Parameters)localObject);
-        AppMethodBeat.o(94043);
-        return;
-      }
-      AppMethodBeat.o(94043);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ad.e(this.TAG, "safeResetZoom error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(94043);
-    }
-  }
-  
-  private final void awn()
-  {
-    AppMethodBeat.i(94046);
-    if (this.fYS == null)
-    {
-      AppMethodBeat.o(94046);
-      return;
-    }
-    try
-    {
-      if (this.fYS == null) {
-        break label240;
-      }
-      Object localObject1 = this.fYS;
-      if (localObject1 != null)
-      {
-        localObject1 = ((v)localObject1).getParameters();
-        if (localObject1 != null) {}
-      }
-      else
-      {
-        AppMethodBeat.o(94046);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      ad.e(this.TAG, "setPreviewCallbackImpl error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(94046);
-      return;
-    }
-    int i = this.hph.rmx;
-    int j = this.hph.rmy;
-    j = ImageFormat.getBitsPerPixel(localException.getPreviewFormat()) * (i * j) / 8;
-    ad.i(this.TAG, "setPreviewCallbackImpl  size: ".concat(String.valueOf(j)));
-    i = 0;
-    for (;;)
-    {
-      Object localObject2;
-      if (i < 5)
-      {
-        localObject2 = k.vQc.g(Integer.valueOf(j));
-        v localv = this.fYS;
-        if (localv != null) {
-          localv.addCallbackBuffer((byte[])localObject2);
-        }
-      }
-      else
-      {
-        this.hpT.reset();
-        this.hpU.reset();
-        this.hpV.reset();
-        this.hpW.reset();
-        this.hpX.reset();
-        localObject2 = this.fYS;
-        if (localObject2 != null)
-        {
-          ((v)localObject2).setPreviewCallbackWithBuffer((Camera.PreviewCallback)new a(this));
-          AppMethodBeat.o(94046);
-          return;
-        }
-        AppMethodBeat.o(94046);
-        return;
-        label240:
-        AppMethodBeat.o(94046);
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  private void awo()
-  {
-    AppMethodBeat.i(94047);
-    if (this.fYS != null) {
-      try
-      {
-        Object localObject = this.fYS;
-        if (localObject == null) {
-          p.gfZ();
-        }
-        localObject = ((v)localObject).getParameters();
-        ad.i(this.TAG, "setPreviewCallbackImpl");
-        int i = this.hph.rmx;
-        int j = this.hph.rmy;
-        if (localObject == null) {
-          p.gfZ();
-        }
-        j = ImageFormat.getBitsPerPixel(((Camera.Parameters)localObject).getPreviewFormat()) * (i * j) / 8;
-        i = 0;
-        while (i < 5)
-        {
-          localObject = k.vQc.g(Integer.valueOf(j));
-          v localv = this.fYS;
-          if (localv == null) {
-            p.gfZ();
-          }
-          localv.addCallbackBuffer((byte[])localObject);
-          i += 1;
-        }
-        this.hpT.reset();
-        this.hpU.reset();
-        this.hpV.reset();
-        this.hpW.reset();
-        this.hpX.reset();
-        localObject = this.fYS;
-        if (localObject == null) {
-          p.gfZ();
-        }
-        ((v)localObject).setPreviewCallbackWithBuffer((Camera.PreviewCallback)new b(this));
-        AppMethodBeat.o(94047);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ad.e(this.TAG, "setPreviewCallbackImpl error: %s", new Object[] { localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(94047);
-  }
-  
   private final void b(SurfaceTexture paramSurfaceTexture, SurfaceHolder paramSurfaceHolder, int paramInt)
   {
     AppMethodBeat.i(94025);
-    long l = bt.HI();
-    ad.i(this.TAG, "start startPreviewWithGPU,Looper.myLooper(): " + Looper.myLooper() + "  ,surfaceTexture:" + paramSurfaceTexture + ", surface:" + paramSurfaceHolder);
-    if (awa())
+    long l = bu.HQ();
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "start startPreviewWithGPU,Looper.myLooper(): " + Looper.myLooper() + "  ,surfaceTexture:" + paramSurfaceTexture + ", surface:" + paramSurfaceHolder);
+    if (awp())
     {
-      ad.i(this.TAG, "startPreviewWithGPU, camera previewing");
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "startPreviewWithGPU, camera previewing");
       AppMethodBeat.o(94025);
       return;
     }
@@ -681,27 +679,27 @@ public final class d
     {
       try
       {
-        if (!this.hpg) {
+        if (!this.hrU) {
           continue;
         }
-        j(paramInt, this.hpf);
-        awo();
-        awj();
+        j(paramInt, this.hrT);
+        awD();
+        awy();
         if (a(paramSurfaceTexture, paramSurfaceHolder)) {
-          a(a.a.hpm);
+          a(a.a.hsa);
         }
       }
       catch (Exception paramSurfaceTexture)
       {
-        ad.e(this.TAG, "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
-        paramSurfaceTexture = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.auk();
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
+        paramSurfaceTexture = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.auz();
         continue;
       }
-      ad.i(this.TAG, "start preview end, use %dms %s", new Object[] { Long.valueOf(bt.aO(l)), Looper.myLooper() });
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "start preview end, use %dms %s", new Object[] { Long.valueOf(bu.aO(l)), Looper.myLooper() });
       AppMethodBeat.o(94025);
       return;
-      nY(paramInt);
+      ob(paramInt);
     }
   }
   
@@ -715,13 +713,13 @@ public final class d
       Object localObject = paramParameters.getZoomRatios();
       if (localObject != null)
       {
-        localObject = (Integer)j.jc((List)localObject);
+        localObject = (Integer)j.jl((List)localObject);
         if (localObject != null)
         {
           i = ((Integer)localObject).intValue();
-          this.hqd.clear();
-          this.hqd.add(Integer.valueOf(0));
-          int k = this.hpM;
+          this.hsR.clear();
+          this.hsR.add(Integer.valueOf(0));
+          int k = this.hsA;
           if (paramParameters == null) {
             break label174;
           }
@@ -737,13 +735,13 @@ public final class d
           }
           localObject = paramParameters.next();
           if (j < 0) {
-            j.gfB();
+            j.gkd();
           }
           if (p.compare(((Integer)localObject).intValue(), i) <= 0) {
             break label181;
           }
-          i = this.hpM + i;
-          this.hqd.add(Integer.valueOf(j));
+          i = this.hsA + i;
+          this.hsR.add(Integer.valueOf(j));
         }
       }
     }
@@ -773,12 +771,12 @@ public final class d
     }
     try
     {
-      ad.i(this.TAG, "safeSetPreviewFormat");
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "safeSetPreviewFormat");
       Camera.Parameters localParameters = paramv.getParameters();
       p.g(localParameters, "p");
       List localList = localParameters.getSupportedPreviewFormats();
       if ((localList == null) || (!localList.contains(Integer.valueOf(17)))) {
-        ad.e(this.TAG, "not support YCbCr_420_SP");
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "not support YCbCr_420_SP");
       }
       localParameters.setPreviewFormat(17);
       paramv.setParameters(localParameters);
@@ -787,7 +785,7 @@ public final class d
     }
     catch (Exception paramv)
     {
-      ad.i(this.TAG, "setPreviewFormat Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "setPreviewFormat Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
       AppMethodBeat.o(94044);
     }
     return false;
@@ -804,7 +802,7 @@ public final class d
     }
     try
     {
-      ad.i(this.TAG, "safeSetMetering");
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "safeSetMetering");
       Camera.Parameters localParameters = paramv.getParameters();
       p.g(localParameters, "params");
       if (localParameters.getMaxNumMeteringAreas() > 0)
@@ -819,7 +817,7 @@ public final class d
     }
     catch (Exception paramv)
     {
-      ad.i(this.TAG, "safeSetMetering Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "safeSetMetering Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
       AppMethodBeat.o(94045);
     }
     return false;
@@ -828,12 +826,12 @@ public final class d
   private final int getOrientation()
   {
     AppMethodBeat.i(94040);
-    if ((this.hpP != null) && (awa()))
+    if ((this.hsD != null) && (awp()))
     {
-      d.a.a locala = this.hpP;
+      d.a.a locala = this.hsD;
       if (locala != null)
       {
-        int i = locala.dGc;
+        int i = locala.dHi;
         AppMethodBeat.o(94040);
         return i;
       }
@@ -847,31 +845,31 @@ public final class d
   private final int getPreviewHeight()
   {
     AppMethodBeat.i(94037);
-    if (this.fYS == null)
+    if (this.gaZ == null)
     {
       AppMethodBeat.o(94037);
       return 0;
     }
-    if (this.hpP != null) {
+    if (this.hsD != null) {
       try
       {
-        if ((this.hpe) && (this.hpQ != null))
+        if ((this.hrS) && (this.hsE != null))
         {
-          Point localPoint = this.hpQ;
+          Point localPoint = this.hsE;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
           i = localPoint.y;
           AppMethodBeat.o(94037);
           return i;
         }
-        int i = this.hph.rmy;
+        int i = this.hrV.ruD;
         AppMethodBeat.o(94037);
         return i;
       }
       catch (Exception localException)
       {
-        ad.e(this.TAG, "getPreviewHeight: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "getPreviewHeight: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(94037);
@@ -881,31 +879,31 @@ public final class d
   private final int getPreviewWidth()
   {
     AppMethodBeat.i(94038);
-    if (this.fYS == null)
+    if (this.gaZ == null)
     {
       AppMethodBeat.o(94038);
       return 0;
     }
-    if (this.hpP != null) {
+    if (this.hsD != null) {
       try
       {
-        if ((this.hpe) && (this.hpQ != null))
+        if ((this.hrS) && (this.hsE != null))
         {
-          Point localPoint = this.hpQ;
+          Point localPoint = this.hsE;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
           i = localPoint.x;
           AppMethodBeat.o(94038);
           return i;
         }
-        int i = this.hph.rmx;
+        int i = this.hrV.ruC;
         AppMethodBeat.o(94038);
         return i;
       }
       catch (Exception localException)
       {
-        ad.e(this.TAG, "getPreviewWidth: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "getPreviewWidth: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(94038);
@@ -916,7 +914,7 @@ public final class d
   {
     Object localObject4 = null;
     AppMethodBeat.i(94026);
-    if ((this.fYS == null) || (paramInt <= 0))
+    if ((this.gaZ == null) || (paramInt <= 0))
     {
       AppMethodBeat.o(94026);
       return false;
@@ -928,36 +926,36 @@ public final class d
     boolean bool;
     try
     {
-      localObject1 = this.fYS;
+      localObject1 = this.gaZ;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       localParameters = ((v)localObject1).getParameters();
-      if (this.hpk != null) {
+      if (this.hrY != null) {
         break label538;
       }
-      localObject1 = al.ci(aj.getContext());
+      localObject1 = al.ck(ak.getContext());
       localPoint = new Point(Math.min(((Point)localObject1).x, ((Point)localObject1).y), Math.max(((Point)localObject1).x, ((Point)localObject1).y));
-      ad.i(this.TAG, "screenSize: %s, currentScreenSize: %s", new Object[] { localPoint, localObject1 });
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "screenSize: %s, currentScreenSize: %s", new Object[] { localPoint, localObject1 });
       float f1 = Math.min(localPoint.x, localPoint.y) / Math.max(localPoint.x, localPoint.y);
       f2 = 1.0F / paramFloat;
       if (paramFloat >= 1.0F) {
         break label592;
       }
       i = paramInt;
-      ad.i(this.TAG, "safeSetPreviewSizeWithLimitAndRatio, shortSize: %s, displayRatio: %s, screenRatio: %s", new Object[] { Integer.valueOf(i), Float.valueOf(paramFloat), Float.valueOf(f1) });
-      localObject1 = this.hpP;
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "safeSetPreviewSizeWithLimitAndRatio, shortSize: %s, displayRatio: %s, screenRatio: %s", new Object[] { Integer.valueOf(i), Float.valueOf(paramFloat), Float.valueOf(f1) });
+      localObject1 = this.hsD;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      if (((d.a.a)localObject1).dGc == 90) {
+      if (((d.a.a)localObject1).dHi == 90) {
         break label623;
       }
-      localObject1 = this.hpP;
+      localObject1 = this.hsD;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      if (((d.a.a)localObject1).dGc != 270) {
+      if (((d.a.a)localObject1).dHi != 270) {
         break label605;
       }
     }
@@ -966,7 +964,7 @@ public final class d
       Object localObject1;
       Camera.Parameters localParameters;
       Point localPoint;
-      ad.e(this.TAG, "safeSetPreviewSizeWithLimit error: %s", new Object[] { localException.getMessage() });
+      com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "safeSetPreviewSizeWithLimit error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(94026);
       return false;
     }
@@ -974,26 +972,26 @@ public final class d
     Object localObject3;
     if (localObject1 != null)
     {
-      localObject3 = ((h.c)localObject1).vOe;
+      localObject3 = ((h.c)localObject1).wah;
       label280:
       if (localObject3 == null)
       {
-        ad.e(this.TAG, "fuck, preview size still null!!");
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "fuck, preview size still null!!");
         if (localParameters == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localObject1 = this.hpP;
+        localObject1 = this.hsD;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        if (((d.a.a)localObject1).dGc == 90) {
+        if (((d.a.a)localObject1).dHi == 90) {
           break label629;
         }
-        localObject1 = this.hpP;
+        localObject1 = this.hsD;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        if (((d.a.a)localObject1).dGc != 270) {
+        if (((d.a.a)localObject1).dHi != 270) {
           break label617;
         }
         break label629;
@@ -1004,36 +1002,36 @@ public final class d
       localObject1 = h.d(localParameters, localPoint, paramInt, bool);
       localObject3 = localObject4;
       if (localObject1 != null) {
-        localObject3 = ((h.c)localObject1).vOe;
+        localObject3 = ((h.c)localObject1).wah;
       }
       if (localObject3 != null)
       {
-        localObject1 = ((h.c)localObject1).vOe;
-        this.hph.rmx = ((Point)localObject1).x;
-        this.hph.rmy = ((Point)localObject1).y;
-        this.hpQ = null;
-        ad.i(this.hoZ, "final set camera preview size: : %s, cropSize: %s", new Object[] { localObject1, this.hpQ });
+        localObject1 = ((h.c)localObject1).wah;
+        this.hrV.ruC = ((Point)localObject1).x;
+        this.hrV.ruD = ((Point)localObject1).y;
+        this.hsE = null;
+        com.tencent.mm.sdk.platformtools.ae.i(this.hrN, "final set camera preview size: : %s, cropSize: %s", new Object[] { localObject1, this.hsE });
         if (localParameters == null) {
-          p.gfZ();
+          p.gkB();
         }
-        localParameters.setPreviewSize(this.hph.rmx, this.hph.rmy);
-        localObject1 = this.fYS;
+        localParameters.setPreviewSize(this.hrV.ruC, this.hrV.ruD);
+        localObject1 = this.gaZ;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((v)localObject1).setParameters(localParameters);
         AppMethodBeat.o(94026);
         return true;
       }
       label538:
-      Object localObject2 = this.hpk;
+      Object localObject2 = this.hrY;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       i = ((Size)localObject2).getWidth();
-      localObject2 = this.hpk;
+      localObject2 = this.hrY;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       localObject2 = new Point(i, ((Size)localObject2).getHeight());
       break;
@@ -1056,20 +1054,20 @@ public final class d
     }
   }
   
-  private final boolean nX(int paramInt)
+  private final boolean oa(int paramInt)
   {
     AppMethodBeat.i(94048);
-    if ((this.fYS == null) || (this.hpP == null))
+    if ((this.gaZ == null) || (this.hsD == null))
     {
-      ad.d(this.TAG, "maybe sth. is wrong ,camera is null");
+      com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "maybe sth. is wrong ,camera is null");
       AppMethodBeat.o(94048);
       return false;
     }
-    Object localObject1 = this.hpP;
-    if ((localObject1 == null) || (((d.a.a)localObject1).dGc != 90))
+    Object localObject1 = this.hsD;
+    if ((localObject1 == null) || (((d.a.a)localObject1).dHi != 90))
     {
-      localObject1 = this.hpP;
-      if ((localObject1 == null) || (((d.a.a)localObject1).dGc != 270)) {
+      localObject1 = this.hsD;
+      if ((localObject1 == null) || (((d.a.a)localObject1).dHi != 270)) {
         break label157;
       }
     }
@@ -1078,7 +1076,7 @@ public final class d
     for (boolean bool = true;; bool = false) {
       try
       {
-        localObject1 = this.fYS;
+        localObject1 = this.gaZ;
         if (localObject1 != null)
         {
           localParameters = ((v)localObject1).getParameters();
@@ -1091,58 +1089,58 @@ public final class d
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)localException, "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace(this.TAG, (Throwable)localException, "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), localException.getMessage() });
         AppMethodBeat.o(94048);
         return false;
       }
     }
     Object localObject3;
-    if (this.hpk == null)
+    if (this.hrY == null)
     {
-      localObject2 = com.tencent.mm.plugin.mmsight.d.fM(this.context);
+      localObject2 = com.tencent.mm.plugin.mmsight.d.fS(this.context);
       localObject3 = h.c(localParameters, (Point)localObject2, paramInt, bool);
-      if (((h.c)localObject3).vOe != null) {
+      if (((h.c)localObject3).wah != null) {
         break label513;
       }
-      ad.e(this.TAG, "fuck, preview size still null!!");
+      com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "fuck, preview size still null!!");
     }
     label513:
-    for (Object localObject2 = h.d(localParameters, new Point(Math.min(((Point)localObject2).x, ((Point)localObject2).y), Math.max(((Point)localObject2).x, ((Point)localObject2).y)), this.hqb, bool);; localObject2 = localObject3)
+    for (Object localObject2 = h.d(localParameters, new Point(Math.min(((Point)localObject2).x, ((Point)localObject2).y), Math.max(((Point)localObject2).x, ((Point)localObject2).y)), this.hsP, bool);; localObject2 = localObject3)
     {
-      if (((h.c)localObject2).vOe == null)
+      if (((h.c)localObject2).wah == null)
       {
-        ad.i(this.TAG, "checkMore start %s", new Object[] { ((h.c)localObject2).toString() });
-        ((h.c)localObject2).vOe = ((h.c)localObject2).vOh;
-        ((h.c)localObject2).vOf = ((h.c)localObject2).vOi;
-        ((h.c)localObject2).vOg = ((h.c)localObject2).vOj;
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "checkMore start %s", new Object[] { ((h.c)localObject2).toString() });
+        ((h.c)localObject2).wah = ((h.c)localObject2).wak;
+        ((h.c)localObject2).wai = ((h.c)localObject2).wal;
+        ((h.c)localObject2).waj = ((h.c)localObject2).wam;
       }
-      localObject3 = ((h.c)localObject2).vOe;
+      localObject3 = ((h.c)localObject2).wah;
       if (localObject3 == null)
       {
-        com.tencent.mm.plugin.mmsight.model.l.awB();
+        com.tencent.mm.plugin.mmsight.model.l.awQ();
         AppMethodBeat.o(94048);
         return false;
-        localObject2 = this.hpk;
+        localObject2 = this.hrY;
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         int i = ((Size)localObject2).getWidth();
-        localObject2 = this.hpk;
+        localObject2 = this.hrY;
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject2 = new Point(i, ((Size)localObject2).getHeight());
         break;
       }
-      this.hph.rmx = ((Point)localObject3).x;
-      this.hph.rmy = ((Point)localObject3).y;
-      this.hpQ = ((Point)localObject3);
-      if (((h.c)localObject2).vOf != null) {
-        this.hpQ = ((h.c)localObject2).vOf;
+      this.hrV.ruC = ((Point)localObject3).x;
+      this.hrV.ruD = ((Point)localObject3).y;
+      this.hsE = ((Point)localObject3);
+      if (((h.c)localObject2).wai != null) {
+        this.hsE = ((h.c)localObject2).wai;
       }
-      ad.i(this.TAG, "final set camera preview size: " + localObject3 + ", cropSize: " + this.hpQ);
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "final set camera preview size: " + localObject3 + ", cropSize: " + this.hsE);
       localParameters.setPreviewSize(((Point)localObject3).x, ((Point)localObject3).y);
-      localObject2 = this.fYS;
+      localObject2 = this.gaZ;
       if (localObject2 != null) {
         ((v)localObject2).setParameters(localParameters);
       }
@@ -1151,19 +1149,19 @@ public final class d
     }
   }
   
-  private final boolean nY(int paramInt)
+  private final boolean ob(int paramInt)
   {
     AppMethodBeat.i(94049);
-    if ((this.fYS == null) || (this.hpP == null))
+    if ((this.gaZ == null) || (this.hsD == null))
     {
-      ad.d(this.TAG, "maybe sth. is wrong ,camera is null");
+      com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "maybe sth. is wrong ,camera is null");
       AppMethodBeat.o(94049);
       return false;
     }
-    Object localObject1 = this.hpP;
+    Object localObject1 = this.hsD;
     boolean bool;
     if (localObject1 != null) {
-      if ((((d.a.a)localObject1).dGc == 90) || (((d.a.a)localObject1).dGc == 270)) {
+      if ((((d.a.a)localObject1).dHi == 90) || (((d.a.a)localObject1).dHi == 270)) {
         bool = true;
       }
     }
@@ -1172,39 +1170,39 @@ public final class d
       Object localObject3;
       try
       {
-        localObject1 = this.fYS;
+        localObject1 = this.gaZ;
         if (localObject1 == null) {
           break label306;
         }
         localObject1 = ((v)localObject1).getParameters();
-        if (this.hpk != null) {
+        if (this.hrY != null) {
           break label312;
         }
-        localObject2 = com.tencent.mm.plugin.mmsight.d.fM(this.context);
+        localObject2 = com.tencent.mm.plugin.mmsight.d.fS(this.context);
         localObject3 = h.e((Camera.Parameters)localObject1, (Point)localObject2, paramInt, bool);
-        if (((h.c)localObject3).vOe != null) {
+        if (((h.c)localObject3).wah != null) {
           break label493;
         }
-        ad.e(this.TAG, "fuck, preview size still null!!");
-        localObject2 = h.d((Camera.Parameters)localObject1, new Point(Math.min(((Point)localObject2).x, ((Point)localObject2).y), Math.max(((Point)localObject2).x, ((Point)localObject2).y)), this.hqb, bool);
-        if (((h.c)localObject2).vOe == null)
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "fuck, preview size still null!!");
+        localObject2 = h.d((Camera.Parameters)localObject1, new Point(Math.min(((Point)localObject2).x, ((Point)localObject2).y), Math.max(((Point)localObject2).x, ((Point)localObject2).y)), this.hsP, bool);
+        if (((h.c)localObject2).wah == null)
         {
-          ad.i(this.TAG, "checkMore start %s", new Object[] { ((h.c)localObject2).toString() });
-          ((h.c)localObject2).vOe = ((h.c)localObject2).vOh;
-          ((h.c)localObject2).vOf = ((h.c)localObject2).vOi;
-          ((h.c)localObject2).vOg = ((h.c)localObject2).vOj;
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "checkMore start %s", new Object[] { ((h.c)localObject2).toString() });
+          ((h.c)localObject2).wah = ((h.c)localObject2).wak;
+          ((h.c)localObject2).wai = ((h.c)localObject2).wal;
+          ((h.c)localObject2).waj = ((h.c)localObject2).wam;
         }
-        localObject3 = ((h.c)localObject2).vOe;
+        localObject3 = ((h.c)localObject2).wah;
         if (localObject3 != null) {
           break label364;
         }
-        com.tencent.mm.plugin.mmsight.model.l.awB();
+        com.tencent.mm.plugin.mmsight.model.l.awQ();
         AppMethodBeat.o(94049);
         return false;
       }
       catch (Exception localException)
       {
-        ad.i(this.TAG, "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), localException.getMessage() });
         AppMethodBeat.o(94049);
         return false;
       }
@@ -1214,28 +1212,28 @@ public final class d
       Camera.Parameters localParameters = null;
       continue;
       label312:
-      Object localObject2 = this.hpk;
+      Object localObject2 = this.hrY;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = ((Size)localObject2).getWidth();
-      localObject2 = this.hpk;
+      localObject2 = this.hrY;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       localObject2 = new Point(i, ((Size)localObject2).getHeight());
       continue;
       label364:
-      this.hph.rmx = ((Point)localObject3).x;
-      this.hph.rmy = ((Point)localObject3).y;
-      if (((h.c)localObject2).vOg != null) {
-        this.hpQ = ((h.c)localObject2).vOg;
+      this.hrV.ruC = ((Point)localObject3).x;
+      this.hrV.ruD = ((Point)localObject3).y;
+      if (((h.c)localObject2).waj != null) {
+        this.hsE = ((h.c)localObject2).waj;
       }
-      ad.i(this.TAG, "final set camera preview size: " + localObject3 + ", cropSize: " + this.hpQ);
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "final set camera preview size: " + localObject3 + ", cropSize: " + this.hsE);
       if (localParameters != null) {
-        localParameters.setPreviewSize(this.hph.rmx, this.hph.rmy);
+        localParameters.setPreviewSize(this.hrV.ruC, this.hrV.ruD);
       }
-      localObject2 = this.fYS;
+      localObject2 = this.gaZ;
       if (localObject2 != null) {
         ((v)localObject2).setParameters(localParameters);
       }
@@ -1284,7 +1282,7 @@ public final class d
   public final void a(g paramg)
   {
     AppMethodBeat.i(94020);
-    ad.m(this.TAG, "addFrameDataCallback ".concat(String.valueOf(paramg)), new Object[0]);
+    com.tencent.mm.sdk.platformtools.ae.m(this.TAG, "addFrameDataCallback ".concat(String.valueOf(paramg)), new Object[0]);
     if (paramg == null)
     {
       AppMethodBeat.o(94020);
@@ -1292,68 +1290,54 @@ public final class d
     }
     synchronized (this.lock)
     {
-      this.hpN.add(paramg);
+      this.hsB.add(paramg);
       AppMethodBeat.o(94020);
       return;
     }
   }
   
-  public final void aa(String paramString, int paramInt)
+  public final void ab(String paramString, int paramInt)
   {
     AppMethodBeat.i(94053);
     p.h(paramString, "tag");
     AppMethodBeat.o(94053);
   }
   
-  public final void awk()
-  {
-    AppMethodBeat.i(94030);
-    if (!awa())
-    {
-      AppMethodBeat.o(94030);
-      return;
-    }
-    c localc = this.hpO;
-    c.a locala = c.hpI;
-    localc.removeMessages(c.awi());
-    AppMethodBeat.o(94030);
-  }
-  
-  public final b awl()
+  public final b awA()
   {
     boolean bool = true;
     AppMethodBeat.i(94036);
-    ad.m(this.TAG, "generateCameraConfig", new Object[0]);
-    if (this.fYS == null)
+    com.tencent.mm.sdk.platformtools.ae.m(this.TAG, "generateCameraConfig", new Object[0]);
+    if (this.gaZ == null)
     {
-      ad.i(this.TAG, "generateCameraConfig, camera is null!!");
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "generateCameraConfig, camera is null!!");
       AppMethodBeat.o(94036);
       return null;
     }
-    if (!awa())
+    if (!awp())
     {
-      ad.i(this.TAG, "generateCameraConfig, camera not previewing");
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "generateCameraConfig, camera not previewing");
       AppMethodBeat.o(94036);
       return null;
     }
-    b.nR(getPreviewWidth());
-    b.nQ(getPreviewHeight());
-    Object localObject = this.hpP;
+    b.nU(getPreviewWidth());
+    b.nT(getPreviewHeight());
+    Object localObject = this.hsD;
     int i;
     if (localObject != null) {
-      if ((((d.a.a)localObject).dGc == 90) || (((d.a.a)localObject).dGc == 270))
+      if ((((d.a.a)localObject).dHi == 90) || (((d.a.a)localObject).dHi == 270))
       {
         i = 1;
-        b.nT(this.hph.rmx);
-        b.nU(this.hph.rmy);
+        b.nW(this.hrV.ruC);
+        b.nX(this.hrV.ruD);
         if (i != 0)
         {
-          i = b.awe();
-          b.nT(b.awf());
-          b.nU(i);
+          i = b.awt();
+          b.nW(b.awu());
+          b.nX(i);
         }
-        b.nS(getOrientation());
-        if (this.hpc) {
+        b.nV(getOrientation());
+        if (this.hrQ) {
           break label202;
         }
       }
@@ -1361,8 +1345,8 @@ public final class d
     for (;;)
     {
       b.setFrontCamera(bool);
-      b.eh(this.hpe);
-      localObject = this.hpi;
+      b.ej(this.hrS);
+      localObject = this.hrW;
       AppMethodBeat.o(94036);
       return localObject;
       i = 0;
@@ -1374,15 +1358,15 @@ public final class d
     }
   }
   
-  public final int awp()
+  public final int awE()
   {
-    if (this.hpc) {
+    if (this.hrQ) {
       return 0;
     }
     return 1;
   }
   
-  public final int awq()
+  public final int awF()
   {
     AppMethodBeat.i(94050);
     int i = getOrientation();
@@ -1390,42 +1374,56 @@ public final class d
     return i;
   }
   
-  public final void awr()
+  public final void awG()
   {
-    this.hqf = 15;
+    this.hsT = 15;
+  }
+  
+  public final void awz()
+  {
+    AppMethodBeat.i(94030);
+    if (!awp())
+    {
+      AppMethodBeat.o(94030);
+      return;
+    }
+    c localc = this.hsC;
+    c.a locala = c.hsw;
+    localc.removeMessages(c.awx());
+    AppMethodBeat.o(94030);
   }
   
   public final void b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(94029);
-    if (!awa())
+    if (!awp())
     {
       AppMethodBeat.o(94029);
       return;
     }
-    if (com.tencent.mm.compatible.util.d.lz(14))
+    if (com.tencent.mm.compatible.util.d.lB(14))
     {
       AppMethodBeat.o(94029);
       return;
     }
-    c localc = this.hpO;
-    Object localObject = c.hpI;
-    localc.removeMessages(c.awi());
-    this.hpO.gmK = paramFloat1;
-    this.hpO.gmL = paramFloat2;
-    this.hpO.hpy = paramInt1;
-    this.hpO.hpz = paramInt2;
-    localc = this.hpO;
-    localObject = this.hpO;
-    c.a locala = c.hpI;
-    localc.sendMessageDelayed(((c)localObject).obtainMessage(c.awi(), this.fYS), 400L);
+    c localc = this.hsC;
+    Object localObject = c.hsw;
+    localc.removeMessages(c.awx());
+    this.hsC.gpg = paramFloat1;
+    this.hsC.gph = paramFloat2;
+    this.hsC.hsm = paramInt1;
+    this.hsC.hsn = paramInt2;
+    localc = this.hsC;
+    localObject = this.hsC;
+    c.a locala = c.hsw;
+    localc.sendMessageDelayed(((c)localObject).obtainMessage(c.awx(), this.gaZ), 400L);
     AppMethodBeat.o(94029);
   }
   
   public final void b(g paramg)
   {
     AppMethodBeat.i(94021);
-    ad.m(this.TAG, "removeFrameDataCallback ".concat(String.valueOf(paramg)), new Object[0]);
+    com.tencent.mm.sdk.platformtools.ae.m(this.TAG, "removeFrameDataCallback ".concat(String.valueOf(paramg)), new Object[0]);
     if (paramg == null)
     {
       AppMethodBeat.o(94021);
@@ -1433,49 +1431,49 @@ public final class d
     }
     synchronized (this.lock)
     {
-      this.hpN.remove(paramg);
+      this.hsB.remove(paramg);
       AppMethodBeat.o(94021);
       return;
     }
   }
   
-  public final Point ei(boolean paramBoolean)
+  public final Point ek(boolean paramBoolean)
   {
     AppMethodBeat.i(94039);
     Object localObject;
     if (!paramBoolean)
     {
-      localObject = new Point(this.hph.rmx, this.hph.rmy);
+      localObject = new Point(this.hrV.ruC, this.hrV.ruD);
       AppMethodBeat.o(94039);
       return localObject;
     }
-    if (this.hpQ != null)
+    if (this.hsE != null)
     {
-      Point localPoint = this.hpQ;
+      Point localPoint = this.hsE;
       localObject = localPoint;
       if (localPoint == null)
       {
-        p.gfZ();
+        p.gkB();
         AppMethodBeat.o(94039);
         return localPoint;
       }
     }
     else
     {
-      localObject = new Point(this.hph.rmx, this.hph.rmy);
+      localObject = new Point(this.hrV.ruC, this.hrV.ruD);
     }
     AppMethodBeat.o(94039);
     return localObject;
   }
   
-  public final void ej(boolean paramBoolean)
+  public final void el(boolean paramBoolean)
   {
     AppMethodBeat.i(94055);
     for (;;)
     {
       try
       {
-        Object localObject1 = this.fYS;
+        Object localObject1 = this.gaZ;
         if (localObject1 == null) {
           break label103;
         }
@@ -1485,7 +1483,7 @@ public final class d
           if (localObject1 != null) {
             ((Camera.Parameters)localObject1).setFlashMode("torch");
           }
-          v localv = this.fYS;
+          v localv = this.gaZ;
           if (localv != null)
           {
             localv.setParameters((Camera.Parameters)localObject1);
@@ -1504,7 +1502,7 @@ public final class d
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)localException, "set flash mode error", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace(this.TAG, (Throwable)localException, "set flash mode error", new Object[0]);
         AppMethodBeat.o(94055);
         return;
       }
@@ -1517,7 +1515,7 @@ public final class d
   public final int getFlashMode()
   {
     AppMethodBeat.i(94056);
-    Object localObject = this.fYS;
+    Object localObject = this.gaZ;
     if (localObject != null)
     {
       localObject = ((v)localObject).getParameters();
@@ -1561,7 +1559,7 @@ public final class d
   {
     Object localObject1 = null;
     AppMethodBeat.i(94033);
-    if ((this.hqc != null) || (this.fYS != null)) {}
+    if ((this.hsQ != null) || (this.gaZ != null)) {}
     float[] arrayOfFloat;
     label218:
     label474:
@@ -1570,13 +1568,13 @@ public final class d
       Object localObject2;
       try
       {
-        localObject2 = this.fYS;
+        localObject2 = this.gaZ;
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject2 = ((v)localObject2).getParameters();
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         boolean bool = ((Camera.Parameters)localObject2).isZoomSupported();
         if (!bool)
@@ -1584,24 +1582,24 @@ public final class d
           if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
             break label218;
           }
-          this.hqc = new com.tencent.tinker.a.c.b();
-          localObject1 = this.hqc;
+          this.hsQ = new com.tencent.tinker.a.c.b();
+          localObject1 = this.hsQ;
           if (localObject1 == null) {
-            p.gfZ();
+            p.gkB();
           }
           localObject1 = new float[((com.tencent.tinker.a.c.b)localObject1).size()];
-          localObject2 = this.hqc;
+          localObject2 = this.hsQ;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
           j = ((com.tencent.tinker.a.c.b)localObject2).size();
           i = 0;
           if (i >= j) {
             break;
           }
-          localObject2 = this.hqc;
+          localObject2 = this.hsQ;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
           localObject1[i] = (((com.tencent.tinker.a.c.b)localObject2).keyAt(i) * 1.0F / 10.0F);
           i += 1;
@@ -1613,7 +1611,7 @@ public final class d
       }
       catch (Exception localException)
       {
-        ad.e(this.TAG, "getZoom error: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "getZoom error: %s", new Object[] { localException.getMessage() });
       }
       continue;
       int k = ((Number)arrayOfFloat.get(arrayOfFloat.size() - 1)).intValue();
@@ -1629,7 +1627,7 @@ public final class d
       if ((k + 4) / i > m) {
         j = m + 1;
       }
-      this.hqc = new com.tencent.tinker.a.c.b(j);
+      this.hsQ = new com.tencent.tinker.a.c.b(j);
       if (10 <= j)
       {
         k = 10;
@@ -1641,9 +1639,9 @@ public final class d
             if (arrayOfFloat.indexOf(Integer.valueOf(k * i - m)) <= 0) {
               break label393;
             }
-            localObject2 = this.hqc;
+            localObject2 = this.hsQ;
             if (localObject2 == null) {
-              p.gfZ();
+              p.gkB();
             }
             ((com.tencent.tinker.a.c.b)localObject2).append(k, k * i - m);
           }
@@ -1657,9 +1655,9 @@ public final class d
           break;
           if (arrayOfFloat.indexOf(Integer.valueOf(k * i + m)) > 0)
           {
-            localObject2 = this.hqc;
+            localObject2 = this.hsQ;
             if (localObject2 == null) {
-              p.gfZ();
+              p.gkB();
             }
             ((com.tencent.tinker.a.c.b)localObject2).append(k, m + k * i);
           }
@@ -1667,9 +1665,9 @@ public final class d
           {
             m += 1;
             break label330;
-            localObject2 = this.hqc;
+            localObject2 = this.hsQ;
             if (localObject2 == null) {
-              p.gfZ();
+              p.gkB();
             }
             ((com.tencent.tinker.a.c.b)localObject2).append(k, k * i);
           }
@@ -1685,16 +1683,16 @@ public final class d
   public final void j(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(94032);
-    if ((this.fYS != null) && (awa())) {
+    if ((this.gaZ != null) && (awp())) {
       try
       {
-        ad.d(this.TAG, "triggerSmallZoom, zoom: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+        com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "triggerSmallZoom, zoom: %s", new Object[] { Boolean.valueOf(paramBoolean) });
         if (this.aYh)
         {
-          ad.d(this.TAG, "triggerSmallZoom, zooming, ignore");
+          com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "triggerSmallZoom, zooming, ignore");
           return;
         }
-        Object localObject1 = this.fYS;
+        Object localObject1 = this.gaZ;
         if (localObject1 != null) {
           localObject1 = ((v)localObject1).getParameters();
         }
@@ -1704,9 +1702,9 @@ public final class d
         {
           this.aYh = true;
           i = ((Camera.Parameters)localObject1).getZoom();
-          j = this.hqd.indexOf(Integer.valueOf(i));
+          j = this.hsR.indexOf(Integer.valueOf(i));
           int k = ((Camera.Parameters)localObject1).getMaxZoom();
-          ad.d(this.TAG, "triggerSmallZoom, currentZoom: %s, maxZoom: %s, smallZoomStep: %s, scrollSmallZoomStep: %s, factor: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(this.hpS), Integer.valueOf(this.hpR), Integer.valueOf(paramInt) });
+          com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "triggerSmallZoom, currentZoom: %s, maxZoom: %s, smallZoomStep: %s, scrollSmallZoomStep: %s, factor: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(this.hsG), Integer.valueOf(this.hsF), Integer.valueOf(paramInt) });
           if (!paramBoolean) {
             break label349;
           }
@@ -1717,23 +1715,23 @@ public final class d
           }
           else
           {
-            if (j != this.hqd.size() - 1) {
+            if (j != this.hsR.size() - 1) {
               break label316;
             }
-            paramInt = ((Number)j.je((List)this.hqd)).intValue();
+            paramInt = ((Number)j.jn((List)this.hsR)).intValue();
           }
         }
         for (;;)
         {
-          ad.d(this.TAG, "triggerSmallZoom, nextZoom: %s, smoothZoomSupported: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(((Camera.Parameters)localObject1).isSmoothZoomSupported()) });
+          com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "triggerSmallZoom, nextZoom: %s, smoothZoomSupported: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(((Camera.Parameters)localObject1).isSmoothZoomSupported()) });
           ((Camera.Parameters)localObject1).setZoom(paramInt);
-          Object localObject3 = this.fYS;
+          Object localObject3 = this.gaZ;
           if (localObject3 != null) {
             ((v)localObject3).setParameters((Camera.Parameters)localObject1);
           }
           return;
           label316:
-          localObject3 = this.hqd.get(j + 1);
+          localObject3 = this.hsR.get(j + 1);
           p.g(localObject3, "availableZoomRatioIndexList[currentZoomIndex + 1]");
           paramInt = ((Number)localObject3).intValue();
           continue;
@@ -1743,11 +1741,11 @@ public final class d
           }
           if (j == 0)
           {
-            paramInt = ((Number)j.jc((List)this.hqd)).intValue();
+            paramInt = ((Number)j.jl((List)this.hsR)).intValue();
           }
           else
           {
-            localObject3 = this.hqd.get(j - 1);
+            localObject3 = this.hsR.get(j - 1);
             p.g(localObject3, "availableZoomRatioIndexList[currentZoomIndex - 1]");
             paramInt = ((Number)localObject3).intValue();
           }
@@ -1756,7 +1754,7 @@ public final class d
       }
       catch (Exception localException)
       {
-        ad.e(this.TAG, "triggerSmallZoom error: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "triggerSmallZoom error: %s", new Object[] { localException.getMessage() });
         return;
       }
       finally
@@ -1767,17 +1765,17 @@ public final class d
     }
   }
   
-  public final void nW(int paramInt)
+  public final void nZ(int paramInt)
   {
     AppMethodBeat.i(94031);
-    if (this.hpR > 0)
+    if (this.hsF > 0)
     {
       AppMethodBeat.o(94031);
       return;
     }
-    Object localObject = al.ci(aj.getContext());
+    Object localObject = al.ck(ak.getContext());
     int i = ((Point)localObject).y;
-    ad.i(this.TAG, "calcScrollZoomStep, recordButtonTopLocation: %s, screenSize: %s", new Object[] { Integer.valueOf(paramInt), localObject });
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "calcScrollZoomStep, recordButtonTopLocation: %s, screenSize: %s", new Object[] { Integer.valueOf(paramInt), localObject });
     if (i / 2 >= paramInt)
     {
       AppMethodBeat.o(94031);
@@ -1785,9 +1783,9 @@ public final class d
     }
     try
     {
-      if (this.fYS != null)
+      if (this.gaZ != null)
       {
-        localObject = this.fYS;
+        localObject = this.gaZ;
         if (localObject != null)
         {
           localObject = ((v)localObject).getParameters();
@@ -1800,9 +1798,9 @@ public final class d
         {
           double d = i / (paramInt / 3.0D / 10.0D);
           if (d > 0.0D) {
-            this.hpR = ((int)d + 1);
+            this.hsF = ((int)d + 1);
           }
-          ad.i(this.TAG, "scrollSmallZoomStep: %s, maxZoom: %s", new Object[] { Integer.valueOf(this.hpR), Integer.valueOf(i) });
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "scrollSmallZoomStep: %s, maxZoom: %s", new Object[] { Integer.valueOf(this.hsF), Integer.valueOf(i) });
           AppMethodBeat.o(94031);
           return;
           localObject = null;
@@ -1813,14 +1811,14 @@ public final class d
     }
     catch (Exception localException)
     {
-      ad.e(this.TAG, "calcScrollZoomStep error: %s", new Object[] { localException.getMessage() });
+      com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "calcScrollZoomStep error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(94031);
     }
   }
   
   public final void o(d.g.a.b<? super Boolean, z> paramb)
   {
-    this.hqe = paramb;
+    this.hsS = paramb;
   }
   
   public final void release()
@@ -1829,43 +1827,43 @@ public final class d
     super.release();
     try
     {
-      ad.i(this.TAG, this.hpT.getValue());
-      ad.i(this.TAG, this.hpU.getValue());
-      ad.i(this.TAG, this.hpV.getValue());
-      ad.i(this.TAG, this.hpW.getValue());
-      ad.i(this.TAG, this.hpX.getValue());
-      if (this.fYS != null)
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, this.hsH.getValue());
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, this.hsI.getValue());
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, this.hsJ.getValue());
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, this.hsK.getValue());
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, this.hsL.getValue());
+      if (this.gaZ != null)
       {
-        long l = bt.HI();
-        ad.i(this.TAG, "release camera beg, %s", new Object[] { Looper.myLooper() });
-        this.hpO.removeCallbacksAndMessages(null);
-        this.hpO.hpx = true;
-        v localv = this.fYS;
+        long l = bu.HQ();
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "release camera beg, %s", new Object[] { Looper.myLooper() });
+        this.hsC.removeCallbacksAndMessages(null);
+        this.hsC.hsl = true;
+        v localv = this.gaZ;
         if (localv != null) {
           localv.setPreviewCallback(null);
         }
-        localv = this.fYS;
+        localv = this.gaZ;
         if (localv != null) {
           localv.stopPreview();
         }
-        localv = this.fYS;
+        localv = this.gaZ;
         if (localv != null) {
           localv.release();
         }
-        this.fYS = null;
-        ad.i(this.TAG, "release camera end, use %dms, %s", new Object[] { Long.valueOf(bt.aO(l)), Looper.myLooper() });
+        this.gaZ = null;
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "release camera end, use %dms, %s", new Object[] { Long.valueOf(bu.aO(l)), Looper.myLooper() });
       }
-      this.hpO.hpv = false;
-      this.hpO.hpA = true;
-      this.hpQ = null;
-      this.hpZ = null;
-      this.hqa = false;
+      this.hsC.hsj = false;
+      this.hsC.hso = true;
+      this.hsE = null;
+      this.hsN = null;
+      this.hsO = false;
       AppMethodBeat.o(94054);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "cameraRelease error", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace(this.TAG, (Throwable)localException, "cameraRelease error", new Object[0]);
       AppMethodBeat.o(94054);
     }
   }
@@ -1878,65 +1876,65 @@ public final class d
     {
       try
       {
-        if (this.hqa)
+        if (this.hsO)
         {
-          ad.i(this.TAG, "initCamera, already open");
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "initCamera, already open");
           AppMethodBeat.o(94019);
           return true;
         }
-        Object localObject = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.aui();
+        Object localObject = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.aux();
         super.s(paramContext, paramBoolean);
         release();
         if (paramBoolean)
         {
-          i = com.tencent.mm.compatible.deviceinfo.d.ZY();
-          ad.m(this.TAG, "use camera id %d, SrvDeviceInfo id %d", new Object[] { Integer.valueOf(i), Integer.valueOf(ae.gcE.fYD) });
-          this.hpP = new f().a(paramContext, i, Looper.getMainLooper());
-          ad.i(this.TAG, "open camera end, %s", new Object[] { Looper.myLooper() });
-          if (this.hpP == null)
+          i = com.tencent.mm.compatible.deviceinfo.d.aah();
+          com.tencent.mm.sdk.platformtools.ae.m(this.TAG, "use camera id %d, SrvDeviceInfo id %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geM.gaK) });
+          this.hsD = new f().a(paramContext, i, Looper.getMainLooper());
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "open camera end, %s", new Object[] { Looper.myLooper() });
+          if (this.hsD == null)
           {
-            ad.i(this.TAG, "open camera FAILED, %s", new Object[] { Looper.myLooper() });
-            avY();
+            com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "open camera FAILED, %s", new Object[] { Looper.myLooper() });
+            awn();
             AppMethodBeat.o(94019);
             return false;
           }
         }
         else
         {
-          i = com.tencent.mm.compatible.deviceinfo.d.ZZ();
+          i = com.tencent.mm.compatible.deviceinfo.d.aai();
           continue;
         }
-        paramContext = this.hpP;
+        paramContext = this.hsD;
         if (paramContext != null)
         {
-          paramContext = paramContext.fYS;
-          this.fYS = paramContext;
-          this.hpO.hpx = false;
-          paramContext = this.hph;
-          localObject = this.hpP;
+          paramContext = paramContext.gaZ;
+          this.gaZ = paramContext;
+          this.hsC.hsl = false;
+          paramContext = this.hrV;
+          localObject = this.hsD;
           if (localObject == null) {
             break label317;
           }
-          i = ((d.a.a)localObject).dGc;
-          paramContext.dGc = i;
-          if (this.fYS == null)
+          i = ((d.a.a)localObject).dHi;
+          paramContext.dHi = i;
+          if (this.gaZ == null)
           {
-            ad.e(this.TAG, "start camera FAILED!");
-            avY();
+            com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "start camera FAILED!");
+            awn();
             AppMethodBeat.o(94019);
             return false;
           }
-          this.hqa = true;
+          this.hsO = true;
           AppMethodBeat.o(94019);
           return true;
         }
       }
       catch (Exception paramContext)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)paramContext, "init camera failed!", new Object[0]);
-        paramContext = com.tencent.mm.media.k.d.hoU;
-        com.tencent.mm.media.k.d.auk();
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace(this.TAG, (Throwable)paramContext, "init camera failed!", new Object[0]);
+        paramContext = com.tencent.mm.media.k.d.hrI;
+        com.tencent.mm.media.k.d.auz();
         AppMethodBeat.o(94019);
         return false;
       }
@@ -1957,10 +1955,10 @@ public final class d
     {
       AppMethodBeat.o(94057);
       return;
-      ej(false);
+      el(false);
       AppMethodBeat.o(94057);
       return;
-      ej(true);
+      el(true);
     }
   }
   
@@ -1969,36 +1967,36 @@ public final class d
     AppMethodBeat.i(94034);
     if (this.aYh)
     {
-      ad.d(this.TAG, "setForceZoomTargetRatio, zooming, ignore");
+      com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "setForceZoomTargetRatio, zooming, ignore");
       AppMethodBeat.o(94034);
       return;
     }
-    if (this.fYS != null) {
+    if (this.gaZ != null) {
       try
       {
-        Object localObject1 = this.fYS;
+        Object localObject1 = this.gaZ;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject1 = ((v)localObject1).getParameters();
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         boolean bool = ((Camera.Parameters)localObject1).isZoomSupported();
         if (!bool) {
           return;
         }
-        if (this.hqc == null)
+        if (this.hsQ == null)
         {
-          ad.d(this.TAG, "setForceZoomTargetRatio before init zoom info, ignore");
+          com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "setForceZoomTargetRatio before init zoom info, ignore");
           return;
         }
         Object localObject3 = ((Camera.Parameters)localObject1).getZoomRatios();
-        com.tencent.tinker.a.c.b localb = this.hqc;
+        com.tencent.tinker.a.c.b localb = this.hsQ;
         if (localb == null) {
-          p.gfZ();
+          p.gkB();
         }
-        int i = ((List)localObject3).indexOf(Integer.valueOf(localb.get(d.h.a.co(10.0F * paramFloat))));
+        int i = ((List)localObject3).indexOf(Integer.valueOf(localb.get(d.h.a.cm(10.0F * paramFloat))));
         if (i >= 0)
         {
           int j = ((Camera.Parameters)localObject1).getMaxZoom();
@@ -2010,16 +2008,16 @@ public final class d
         }
         this.aYh = true;
         ((Camera.Parameters)localObject1).setZoom(i);
-        localObject3 = this.fYS;
+        localObject3 = this.gaZ;
         if (localObject3 == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((v)localObject3).setParameters((Camera.Parameters)localObject1);
         return;
       }
       catch (Exception localException)
       {
-        ad.e(this.TAG, "setForceZoomTargetRatio error: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "setForceZoomTargetRatio error: %s", new Object[] { localException.getMessage() });
         return;
       }
       finally
@@ -2031,7 +2029,7 @@ public final class d
     AppMethodBeat.o(94034);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "data", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/hardware/Camera;", "onPreviewFrame", "com/tencent/mm/media/widget/camera/CommonCamera1$setPreviewCallbackImpl$1$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/hardware/Camera;", "onPreviewFrame", "com/tencent/mm/media/widget/camera/CommonCamera1$setPreviewCallbackImpl$1$1"})
   static final class a
     implements Camera.PreviewCallback
   {
@@ -2048,13 +2046,13 @@ public final class d
       label38:
       for (int i = 1; i != 0; i = 0)
       {
-        ad.e(d.a(this.hqg), "onPreviewFrame, frame data is null!!");
+        com.tencent.mm.sdk.platformtools.ae.e(d.a(this.hsU), "onPreviewFrame, frame data is null!!");
         AppMethodBeat.o(94017);
         return;
       }
-      if (this.hqg.hpN.size() <= 0)
+      if (this.hsU.hsB.size() <= 0)
       {
-        paramCamera = this.hqg.fYS;
+        paramCamera = this.hsU.gaZ;
         if (paramCamera != null)
         {
           paramCamera.addCallbackBuffer(paramArrayOfByte);
@@ -2067,68 +2065,68 @@ public final class d
       paramCamera = paramArrayOfByte;
       Object localObject;
       long l1;
-      if (!d.b(this.hqg))
+      if (!d.b(this.hsU))
       {
         paramCamera = paramArrayOfByte;
-        if (this.hqg.hpN.size() > 0)
+        if (this.hsU.hsB.size() > 0)
         {
           paramCamera = paramArrayOfByte;
-          if (this.hqg.hpQ != null)
+          if (this.hsU.hsE != null)
           {
-            paramCamera = this.hqg.hpQ;
-            if ((paramCamera != null) && (paramCamera.x == this.hqg.hph.rmx))
+            paramCamera = this.hsU.hsE;
+            if ((paramCamera != null) && (paramCamera.x == this.hsU.hrV.ruC))
             {
-              paramCamera = this.hqg.hpQ;
-              if ((paramCamera != null) && (paramCamera.y == this.hqg.hph.rmy)) {
+              paramCamera = this.hsU.hsE;
+              if ((paramCamera != null) && (paramCamera.y == this.hsU.hrV.ruD)) {
                 break label573;
               }
             }
-            paramCamera = k.vQc;
-            i = this.hqg.hph.rmx;
-            localObject = this.hqg.hpQ;
+            paramCamera = k.wcg;
+            i = this.hsU.hrV.ruC;
+            localObject = this.hsU.hsE;
             if (localObject == null) {
-              p.gfZ();
+              p.gkB();
             }
-            paramCamera = paramCamera.g(Integer.valueOf(i * ((Point)localObject).y * 3 / 2));
-            d.c(this.hqg).yf(1L);
-            l1 = bt.HI();
-            i = this.hqg.hph.rmx;
-            int j = this.hqg.hph.rmy;
-            localObject = this.hqg.hpQ;
+            paramCamera = paramCamera.h(Integer.valueOf(i * ((Point)localObject).y * 3 / 2));
+            d.c(this.hsU).yz(1L);
+            l1 = bu.HQ();
+            i = this.hsU.hrV.ruC;
+            int j = this.hsU.hrV.ruD;
+            localObject = this.hsU.hsE;
             if (localObject == null) {
-              p.gfZ();
+              p.gkB();
             }
             SightVideoJNI.cropCameraData(paramArrayOfByte, paramCamera, i, j, ((Point)localObject).y);
-            localObject = this.hqg.hpQ;
+            localObject = this.hsU.hsE;
             if (localObject == null) {
-              p.gfZ();
+              p.gkB();
             }
-            if (((Point)localObject).x >= this.hqg.hph.rmx) {
+            if (((Point)localObject).x >= this.hsU.hrV.ruC) {
               break label640;
             }
-            localObject = k.vQc;
-            Point localPoint = this.hqg.hpQ;
+            localObject = k.wcg;
+            Point localPoint = this.hsU.hsE;
             if (localPoint == null) {
-              p.gfZ();
+              p.gkB();
             }
             i = localPoint.x;
-            localPoint = this.hqg.hpQ;
+            localPoint = this.hsU.hsE;
             if (localPoint == null) {
-              p.gfZ();
+              p.gkB();
             }
-            localObject = ((k)localObject).g(Integer.valueOf(i * localPoint.y * 3 / 2));
-            i = this.hqg.hph.rmx;
-            localPoint = this.hqg.hpQ;
+            localObject = ((k)localObject).h(Integer.valueOf(i * localPoint.y * 3 / 2));
+            i = this.hsU.hrV.ruC;
+            localPoint = this.hsU.hsE;
             if (localPoint == null) {
-              p.gfZ();
+              p.gkB();
             }
             j = localPoint.x;
-            localPoint = this.hqg.hpQ;
+            localPoint = this.hsU.hsE;
             if (localPoint == null) {
-              p.gfZ();
+              p.gkB();
             }
             SightVideoJNI.cropCameraDataLongEdge(paramCamera, (byte[])localObject, i, j, localPoint.y);
-            k.vQc.k(paramCamera);
+            k.wcg.k(paramCamera);
             paramCamera = (Camera)localObject;
           }
         }
@@ -2136,21 +2134,21 @@ public final class d
       label640:
       for (;;)
       {
-        long l2 = bt.aO(l1);
-        d.d(this.hqg).yf(l2);
-        localObject = this.hqg;
+        long l2 = bu.aO(l1);
+        d.d(this.hsU).yz(l2);
+        localObject = this.hsU;
         p.g(paramCamera, "curFrameData");
         boolean bool = d.a((d)localObject, paramCamera);
-        l1 = bt.aO(l1);
+        l1 = bu.aO(l1);
         paramCamera = paramArrayOfByte;
         if (bool)
         {
-          d.e(this.hqg).yf(l1);
+          d.e(this.hsU).yz(l1);
           paramCamera = paramArrayOfByte;
         }
         for (;;)
         {
-          paramArrayOfByte = this.hqg.fYS;
+          paramArrayOfByte = this.hsU.gaZ;
           if (paramArrayOfByte == null) {
             break;
           }
@@ -2158,15 +2156,15 @@ public final class d
           AppMethodBeat.o(94017);
           return;
           label573:
-          l1 = bt.HI();
-          bool = d.a(this.hqg, paramArrayOfByte);
-          l1 = bt.aO(l1);
+          l1 = bu.HQ();
+          bool = d.a(this.hsU, paramArrayOfByte);
+          l1 = bu.aO(l1);
           if (bool) {
-            d.e(this.hqg).yf(l1);
+            d.e(this.hsU).yz(l1);
           }
           paramCamera = paramArrayOfByte;
           if (bool) {
-            paramCamera = k.vQc.g(Integer.valueOf(paramArrayOfByte.length));
+            paramCamera = k.wcg.h(Integer.valueOf(paramArrayOfByte.length));
           }
         }
         AppMethodBeat.o(94017);
@@ -2175,7 +2173,7 @@ public final class d
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "data", "", "kotlin.jvm.PlatformType", "ca", "Landroid/hardware/Camera;", "onPreviewFrame"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "", "kotlin.jvm.PlatformType", "ca", "Landroid/hardware/Camera;", "onPreviewFrame"})
   static final class b
     implements Camera.PreviewCallback
   {
@@ -2193,94 +2191,94 @@ public final class d
       label41:
       for (int i = 1; i != 0; i = 0)
       {
-        ad.e(d.a(this.hqg), "onPreviewFrame, frame data is null!!");
+        com.tencent.mm.sdk.platformtools.ae.e(d.a(this.hsU), "onPreviewFrame, frame data is null!!");
         AppMethodBeat.o(94018);
         return;
       }
       Object localObject;
       long l1;
       int j;
-      if ((!d.b(this.hqg)) && (this.hqg.hpN != null) && (this.hqg.hpN.size() > 0)) {
-        if (this.hqg.hpQ != null)
+      if ((!d.b(this.hsU)) && (this.hsU.hsB != null) && (this.hsU.hsB.size() > 0)) {
+        if (this.hsU.hsE != null)
         {
-          paramCamera = k.vQc;
-          i = this.hqg.hph.rmx;
-          localObject = this.hqg.hpQ;
+          paramCamera = k.wcg;
+          i = this.hsU.hrV.ruC;
+          localObject = this.hsU.hsE;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
-          paramCamera = paramCamera.g(Integer.valueOf(i * ((Point)localObject).y * 3 / 2));
-          d.c(this.hqg).yf(1L);
-          l1 = bt.HI();
-          i = this.hqg.hph.rmx;
-          j = this.hqg.hph.rmy;
-          localObject = this.hqg.hpQ;
+          paramCamera = paramCamera.h(Integer.valueOf(i * ((Point)localObject).y * 3 / 2));
+          d.c(this.hsU).yz(1L);
+          l1 = bu.HQ();
+          i = this.hsU.hrV.ruC;
+          j = this.hsU.hrV.ruD;
+          localObject = this.hsU.hsE;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
           SightVideoJNI.cropCameraData(paramArrayOfByte, paramCamera, i, j, ((Point)localObject).y);
-          localObject = this.hqg.hpQ;
+          localObject = this.hsU.hsE;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
-          if (((Point)localObject).x >= this.hqg.hph.rmx) {
+          if (((Point)localObject).x >= this.hsU.hrV.ruC) {
             break label728;
           }
-          localObject = k.vQc;
-          Point localPoint = this.hqg.hpQ;
+          localObject = k.wcg;
+          Point localPoint = this.hsU.hsE;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
           i = localPoint.x;
-          localPoint = this.hqg.hpQ;
+          localPoint = this.hsU.hsE;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
-          localObject = ((k)localObject).g(Integer.valueOf(i * localPoint.y * 3 / 2));
-          i = this.hqg.hph.rmx;
-          localPoint = this.hqg.hpQ;
+          localObject = ((k)localObject).h(Integer.valueOf(i * localPoint.y * 3 / 2));
+          i = this.hsU.hrV.ruC;
+          localPoint = this.hsU.hsE;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
           j = localPoint.x;
-          localPoint = this.hqg.hpQ;
+          localPoint = this.hsU.hsE;
           if (localPoint == null) {
-            p.gfZ();
+            p.gkB();
           }
           SightVideoJNI.cropCameraDataLongEdge(paramCamera, (byte[])localObject, i, j, localPoint.y);
-          k.vQc.k(paramCamera);
+          k.wcg.k(paramCamera);
           paramCamera = (Camera)localObject;
         }
       }
       label728:
       for (;;)
       {
-        long l2 = bt.aO(l1);
-        d.d(this.hqg).yf(l2);
-        if (!this.hqg.hpc)
+        long l2 = bu.aO(l1);
+        d.d(this.hsU).yz(l2);
+        if (!this.hsU.hrQ)
         {
-          l1 = bt.HI();
-          localObject = this.hqg.hpQ;
+          l1 = bu.HQ();
+          localObject = this.hsU.hsE;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
           i = ((Point)localObject).x;
-          localObject = this.hqg.hpQ;
+          localObject = this.hsU.hsE;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
           j = ((Point)localObject).y;
-          localObject = this.hqg.hpP;
+          localObject = this.hsU.hsD;
           if (localObject == null) {
-            p.gfZ();
+            p.gkB();
           }
-          if (((d.a.a)localObject).dGc != 270)
+          if (((d.a.a)localObject).dHi != 270)
           {
-            localObject = this.hqg.hpP;
+            localObject = this.hsU.hsD;
             if (localObject == null) {
-              p.gfZ();
+              p.gkB();
             }
-            if (((d.a.a)localObject).dGc != 90) {}
+            if (((d.a.a)localObject).dHi != 90) {}
           }
           else
           {
@@ -2290,41 +2288,41 @@ public final class d
         }
         else
         {
-          localObject = this.hqg;
+          localObject = this.hsU;
           p.g(paramCamera, "curFrameData");
           bool = d.a((d)localObject, paramCamera);
-          l1 = bt.aO(l1);
+          l1 = bu.aO(l1);
           if (bool) {
-            d.e(this.hqg).yf(l1);
+            d.e(this.hsU).yz(l1);
           }
         }
         for (;;)
         {
-          d.b(this.hqg, paramCamera);
-          paramCamera = this.hqg.fYS;
+          d.b(this.hsU, paramCamera);
+          paramCamera = this.hsU.gaZ;
           if (paramCamera == null) {
-            p.gfZ();
+            p.gkB();
           }
           paramCamera.addCallbackBuffer(paramArrayOfByte);
           AppMethodBeat.o(94018);
           return;
           bool = false;
           break;
-          if (!this.hqg.hpc)
+          if (!this.hsU.hrQ)
           {
-            i = this.hqg.hph.rmx;
-            j = this.hqg.hph.rmy;
-            paramCamera = this.hqg.hpP;
+            i = this.hsU.hrV.ruC;
+            j = this.hsU.hrV.ruD;
+            paramCamera = this.hsU.hsD;
             if (paramCamera == null) {
-              p.gfZ();
+              p.gkB();
             }
-            if (paramCamera.dGc != 270)
+            if (paramCamera.dHi != 270)
             {
-              paramCamera = this.hqg.hpP;
+              paramCamera = this.hsU.hsD;
               if (paramCamera == null) {
-                p.gfZ();
+                p.gkB();
               }
-              if (paramCamera.dGc != 90) {}
+              if (paramCamera.dHi != 90) {}
             }
             else
             {
@@ -2332,7 +2330,7 @@ public final class d
             }
             SightVideoJNI.mirrorCameraData(paramArrayOfByte, i, j, bool);
           }
-          d.a(this.hqg, paramArrayOfByte);
+          d.a(this.hsU, paramArrayOfByte);
           paramCamera = paramArrayOfByte;
         }
       }

@@ -9,13 +9,13 @@ public final class c$1
   public c$1(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(27594);
-    add(this.fNr);
+    add(this.fOj);
     add("3");
-    add(String.valueOf(this.wXU));
+    add(String.valueOf(this.xnL));
     add("4");
-    add(this.wXV);
-    add(this.kgO);
-    add(String.valueOf(this.wXW));
+    add(this.xnM);
+    add(this.kke);
+    add(String.valueOf(this.xnN));
     AppMethodBeat.o(27594);
   }
 }

@@ -7,21 +7,21 @@ public final class k
 {
   private float A;
   private float B;
-  private float deJ;
-  private float deK;
-  private float deL;
-  private int deM;
-  private int deN;
+  private float dfL;
+  private float dfM;
+  private float dfN;
+  private int dfO;
+  private int dfP;
   
   public k()
   {
     AppMethodBeat.i(136878);
-    this.deJ = 128.0F;
-    this.deK = 128.0F;
-    this.deL = 128.0F;
-    this.deM = 44100;
-    this.deN = ((int)(0.02F * this.deM * 2.0F * 16.0F / 8.0F));
-    this.A = (this.deM / this.deN);
+    this.dfL = 128.0F;
+    this.dfM = 128.0F;
+    this.dfN = 128.0F;
+    this.dfO = 44100;
+    this.dfP = ((int)(0.02F * this.dfO * 2.0F * 16.0F / 8.0F));
+    this.A = (this.dfO / this.dfP);
     this.B = 1.0F;
     AppMethodBeat.o(136878);
   }
@@ -36,28 +36,28 @@ public final class k
       int k = 0;
       if (k < paramInt1)
       {
-        i += this.dez[k][j];
+        i += this.dfB[k][j];
         if (i > this.MAX_VALUE) {
-          this.deJ *= 32768.0F / i;
+          this.dfL *= 32768.0F / i;
         }
         for (;;)
         {
           k += 1;
           break;
           if (i < this.MIN_VALUE) {
-            this.deJ *= 32768.0F / i;
+            this.dfL *= 32768.0F / i;
           }
         }
       }
-      if (this.deJ >= this.deK) {}
-      for (this.deJ = ((this.A * (this.deK + 1.0F) + this.B * this.deJ) / (this.A + this.B));; this.deJ = ((this.deK + this.deJ) / 2.0F))
+      if (this.dfL >= this.dfM) {}
+      for (this.dfL = ((this.A * (this.dfM + 1.0F) + this.B * this.dfL) / (this.A + this.B));; this.dfL = ((this.dfM + this.dfL) / 2.0F))
       {
-        this.deK = this.deJ;
+        this.dfM = this.dfL;
         k = i;
-        if ((int)(this.deJ * 128.0F) >> 7 != 128) {
-          k = (int)(this.deL * this.deJ / 128.0F * i) / 128;
+        if ((int)(this.dfL * 128.0F) >> 7 != 128) {
+          k = (int)(this.dfN * this.dfL / 128.0F * i) / 128;
         }
-        this.deC[j] = hJ(k);
+        this.dfE[j] = hL(k);
         j += 1;
         break;
       }
@@ -69,7 +69,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.k
  * JD-Core Version:    0.7.0.1
  */

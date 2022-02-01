@@ -15,8 +15,8 @@ import java.util.List;
 public abstract class b<T extends CharacterStyle>
   implements Serializable
 {
-  protected LinkedList<RectF> LDp;
-  public CharacterStyle LDq;
+  protected LinkedList<RectF> Mat;
+  public CharacterStyle Mau;
   private int OQ;
   private int avj;
   
@@ -24,7 +24,7 @@ public abstract class b<T extends CharacterStyle>
   {
     this.avj = paramInt1;
     this.OQ = paramInt2;
-    this.LDq = paramCharacterStyle;
+    this.Mau = paramCharacterStyle;
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
@@ -32,12 +32,12 @@ public abstract class b<T extends CharacterStyle>
     this.avj = paramObjectInputStream.readInt();
     this.OQ = paramObjectInputStream.readInt();
     int j = paramObjectInputStream.readInt();
-    this.LDp = new LinkedList();
+    this.Mat = new LinkedList();
     int i = 0;
     while (i < j)
     {
       RectF localRectF = new RectF(paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat());
-      this.LDp.add(localRectF);
+      this.Mat.add(localRectF);
       i += 1;
     }
   }
@@ -46,8 +46,8 @@ public abstract class b<T extends CharacterStyle>
   {
     paramObjectOutputStream.writeInt(this.avj);
     paramObjectOutputStream.writeInt(this.OQ);
-    paramObjectOutputStream.writeInt(this.LDp.size());
-    Iterator localIterator = this.LDp.iterator();
+    paramObjectOutputStream.writeInt(this.Mat.size());
+    Iterator localIterator = this.Mat.iterator();
     while (localIterator.hasNext())
     {
       RectF localRectF = (RectF)localIterator.next();
@@ -62,10 +62,10 @@ public abstract class b<T extends CharacterStyle>
   
   public final boolean at(float paramFloat1, float paramFloat2)
   {
-    if (this.LDp == null) {
+    if (this.Mat == null) {
       return false;
     }
-    Iterator localIterator = this.LDp.iterator();
+    Iterator localIterator = this.Mat.iterator();
     while (localIterator.hasNext()) {
       if (((RectF)localIterator.next()).contains(paramFloat1, paramFloat2)) {
         return true;
@@ -88,10 +88,10 @@ public abstract class b<T extends CharacterStyle>
     int i = 0;
     for (;;)
     {
-      if (i >= this.LDp.size()) {
+      if (i >= this.Mat.size()) {
         break label88;
       }
-      if (!((RectF)this.LDp.get(i)).equals((RectF)paramObject.LDp.get(i))) {
+      if (!((RectF)this.Mat.get(i)).equals((RectF)paramObject.Mat.get(i))) {
         break;
       }
       i += 1;
@@ -104,19 +104,19 @@ public abstract class b<T extends CharacterStyle>
   {
     int i = 0;
     int j = 0;
-    while (i < this.LDp.size())
+    while (i < this.Mat.size())
     {
-      j += ((RectF)this.LDp.get(i)).hashCode();
+      j += ((RectF)this.Mat.get(i)).hashCode();
       i += 1;
     }
     return this.avj + this.OQ + j;
   }
   
-  final void iO(List<d> paramList)
+  final void iY(List<d> paramList)
   {
-    if (this.LDp == null)
+    if (this.Mat == null)
     {
-      this.LDp = new LinkedList();
+      this.Mat = new LinkedList();
       paramList = paramList.iterator();
     }
     for (;;)
@@ -126,7 +126,7 @@ public abstract class b<T extends CharacterStyle>
       {
         locald = (d)paramList.next();
         if ((locald.avj <= this.avj) && (this.OQ < locald.OQ)) {
-          this.LDp.add(locald.kI(this.avj, this.OQ));
+          this.Mat.add(locald.kP(this.avj, this.OQ));
         }
       }
       else
@@ -135,17 +135,17 @@ public abstract class b<T extends CharacterStyle>
       }
       if ((locald.avj <= this.avj) && (this.avj < locald.OQ) && (locald.OQ <= this.OQ))
       {
-        this.LDp.add(locald.kI(this.avj, locald.OQ));
+        this.Mat.add(locald.kP(this.avj, locald.OQ));
       }
       else
       {
         if ((this.avj < locald.avj) && (this.OQ < locald.OQ) && (this.OQ >= locald.avj))
         {
-          this.LDp.add(locald.kI(locald.avj, this.OQ));
+          this.Mat.add(locald.kP(locald.avj, this.OQ));
           return;
         }
         if ((this.avj < locald.avj) && (this.OQ >= locald.OQ)) {
-          this.LDp.add(locald.kI(locald.avj, locald.OQ));
+          this.Mat.add(locald.kP(locald.avj, locald.OQ));
         }
       }
     }
@@ -153,7 +153,7 @@ public abstract class b<T extends CharacterStyle>
   
   public String toString()
   {
-    return "CharacterBgStyle{mRectFList=" + this.LDp + ", mStart=" + this.avj + ", mEnd=" + this.OQ + '}';
+    return "CharacterBgStyle{mRectFList=" + this.Mat + ", mStart=" + this.avj + ", mEnd=" + this.OQ + '}';
   }
 }
 

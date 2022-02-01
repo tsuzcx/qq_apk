@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.wallet_core.model.mall.c;
-import com.tencent.mm.protocal.protobuf.bcw;
-import com.tencent.mm.protocal.protobuf.bcx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bdn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,40 +23,40 @@ public final class d
   implements k
 {
   private f callback;
-  public int hHz;
-  public String jDb;
-  public String jhp;
-  public com.tencent.mm.al.b rr;
-  public String xnd;
-  public MallRechargeProduct xnl;
-  public List<MallRechargeProduct> xnm;
-  public String xnn;
+  public int hKr;
+  public String jFZ;
+  public String jki;
+  public com.tencent.mm.ak.b rr;
+  public String xDa;
+  public MallRechargeProduct xDi;
+  public List<MallRechargeProduct> xDj;
+  public String xDk;
   
   public d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(67104);
-    this.xnl = null;
-    this.xnm = null;
-    this.xnd = null;
-    this.jDb = paramString1;
-    this.hHz = paramInt;
-    this.jhp = paramString5;
-    this.xnn = paramString2;
+    this.xDi = null;
+    this.xDj = null;
+    this.xDa = null;
+    this.jFZ = paramString1;
+    this.hKr = paramInt;
+    this.jki = paramString5;
+    this.xDk = paramString2;
     paramString5 = new b.a();
-    paramString5.hNM = new bcw();
-    paramString5.hNN = new bcx();
+    paramString5.hQF = new bdm();
+    paramString5.hQG = new bdn();
     paramString5.uri = "/cgi-bin/micromsg-bin/getlatestpayproductinfo";
     paramString5.funcId = 497;
-    paramString5.hNO = 229;
+    paramString5.hQH = 229;
     paramString5.respCmdId = 1000000229;
-    this.rr = paramString5.aDC();
-    paramString5 = (bcw)this.rr.hNK.hNQ;
-    paramString5.Gra = paramString1;
-    paramString5.Grb = paramString3;
-    paramString5.Gzq = paramString2;
-    paramString5.Grc = paramString4;
-    paramString5.xbo = c.eGT().aEB(paramString1);
-    ad.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("funcId:%s, appId:%s, productId:%s, remark:%s", new Object[] { paramString1, paramString3, paramString2, paramString4 }));
+    this.rr = paramString5.aDS();
+    paramString5 = (bdm)this.rr.hQD.hQJ;
+    paramString5.GKy = paramString1;
+    paramString5.GKz = paramString3;
+    paramString5.GSQ = paramString2;
+    paramString5.GKA = paramString4;
+    paramString5.xrf = c.eKB().aFV(paramString1);
+    ae.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("funcId:%s, appId:%s, productId:%s, remark:%s", new Object[] { paramString1, paramString3, paramString2, paramString4 }));
     AppMethodBeat.o(67104);
   }
   
@@ -77,12 +77,12 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(67105);
-    ad.d("MicroMsg.NetSceneGetLatestPayProductInfo", "errCode " + paramInt3 + ", errMsg " + paramString);
-    paramArrayOfByte = (bcx)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-    ad.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.OurterRemark " + paramArrayOfByte.Grf);
-    paramq = paramArrayOfByte.Grf;
-    this.xnd = "";
-    if (!bt.isNullOrNil(paramq))
+    ae.d("MicroMsg.NetSceneGetLatestPayProductInfo", "errCode " + paramInt3 + ", errMsg " + paramString);
+    paramArrayOfByte = (bdn)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    ae.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.OurterRemark " + paramArrayOfByte.GKD);
+    paramq = paramArrayOfByte.GKD;
+    this.xDa = "";
+    if (!bu.isNullOrNil(paramq))
     {
       paramq = paramq.split("&");
       if ((paramq != null) && (paramq.length > 0))
@@ -98,11 +98,11 @@ public final class d
             if (paramInt1 != 0) {
               break label229;
             }
-            this.xnd += " ";
+            this.xDa += " ";
           }
           for (;;)
           {
-            this.xnd += arrayOfString[1];
+            this.xDa += arrayOfString[1];
             j = paramInt1;
             i += 1;
             paramInt1 = j;
@@ -113,59 +113,59 @@ public final class d
         }
       }
     }
-    if (!bt.isNullOrNil(paramArrayOfByte.Gzs)) {}
+    if (!bu.isNullOrNil(paramArrayOfByte.GSS)) {}
     try
     {
-      paramq = new JSONObject(paramArrayOfByte.Gzs);
-      this.xnm = b.a(this.jDb, paramq.optJSONArray("product_info"));
+      paramq = new JSONObject(paramArrayOfByte.GSS);
+      this.xDj = b.a(this.jFZ, paramq.optJSONArray("product_info"));
       if ((paramInt2 == 0) && (paramInt3 == 0))
       {
-        paramq = paramArrayOfByte.Gzr;
-        ad.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.Product ".concat(String.valueOf(paramq)));
-        if (bt.isNullOrNil(paramq)) {}
+        paramq = paramArrayOfByte.GSR;
+        ae.d("MicroMsg.NetSceneGetLatestPayProductInfo", "resp.Product ".concat(String.valueOf(paramq)));
+        if (bu.isNullOrNil(paramq)) {}
       }
     }
     catch (JSONException paramq)
     {
       try
       {
-        this.xnl = b.k(this.jDb, new JSONObject(paramq));
-        this.xnl.xnd = this.xnd;
-        ad.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("OutErrCode : %d ,OutErrMsg : %s , WxErrCode : %d , WxErrMsg : %s", new Object[] { Integer.valueOf(paramArrayOfByte.Grd), paramArrayOfByte.Gre, Integer.valueOf(paramArrayOfByte.Grg), paramArrayOfByte.Grh }));
+        this.xDi = b.k(this.jFZ, new JSONObject(paramq));
+        this.xDi.xDa = this.xDa;
+        ae.d("MicroMsg.NetSceneGetLatestPayProductInfo", String.format("OutErrCode : %d ,OutErrMsg : %s , WxErrCode : %d , WxErrMsg : %s", new Object[] { Integer.valueOf(paramArrayOfByte.GKB), paramArrayOfByte.GKC, Integer.valueOf(paramArrayOfByte.GKE), paramArrayOfByte.GKF }));
         paramInt1 = paramInt3;
         if (paramInt3 == 0)
         {
-          if (paramArrayOfByte.Grg != 0) {
-            paramInt1 = paramArrayOfByte.Grg;
+          if (paramArrayOfByte.GKE != 0) {
+            paramInt1 = paramArrayOfByte.GKE;
           }
         }
         else
         {
           paramq = paramString;
-          if (bt.isNullOrNil(paramString))
+          if (bu.isNullOrNil(paramString))
           {
-            if (bt.isNullOrNil(paramArrayOfByte.Grh)) {
+            if (bu.isNullOrNil(paramArrayOfByte.GKF)) {
               break label513;
             }
-            paramq = paramArrayOfByte.Grh;
+            paramq = paramArrayOfByte.GKF;
           }
           this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
           AppMethodBeat.o(67105);
           return;
           paramq = paramq;
-          ad.printErrStackTrace("MicroMsg.NetSceneGetLatestPayProductInfo", paramq, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.NetSceneGetLatestPayProductInfo", paramq, "", new Object[0]);
         }
       }
       catch (JSONException paramq)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.NetSceneGetLatestPayProductInfo", paramq, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.NetSceneGetLatestPayProductInfo", paramq, "", new Object[0]);
           continue;
-          paramInt1 = paramArrayOfByte.Grd;
+          paramInt1 = paramArrayOfByte.GKB;
           continue;
           label513:
-          paramq = paramArrayOfByte.Gre;
+          paramq = paramArrayOfByte.GKC;
         }
       }
     }

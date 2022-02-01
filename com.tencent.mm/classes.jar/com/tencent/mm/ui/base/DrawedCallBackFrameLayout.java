@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class DrawedCallBackFrameLayout
   extends FrameLayout
 {
-  private a Jiw;
+  private a JDk;
   
   public DrawedCallBackFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,10 +23,10 @@ public class DrawedCallBackFrameLayout
     {
       super.dispatchDraw(paramCanvas);
       label10:
-      if (this.Jiw != null)
+      if (this.JDk != null)
       {
-        this.Jiw.cWa();
-        this.Jiw = null;
+        this.JDk.cYF();
+        this.JDk = null;
       }
       AppMethodBeat.o(141624);
       return;
@@ -46,12 +46,12 @@ public class DrawedCallBackFrameLayout
   
   public void setListener(a parama)
   {
-    this.Jiw = parama;
+    this.JDk = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cWa();
+    public abstract void cYF();
   }
 }
 

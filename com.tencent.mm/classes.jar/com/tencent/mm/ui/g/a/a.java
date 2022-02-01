@@ -8,16 +8,16 @@ import java.net.MalformedURLException;
 
 public final class a
 {
-  c KzK;
+  c KWe;
   
   public a(c paramc)
   {
-    this.KzK = paramc;
+    this.KWe = paramc;
   }
   
   public static abstract interface a
   {
-    public abstract void JQ(String paramString);
+    public abstract void Kp(String paramString);
     
     public abstract void a(FileNotFoundException paramFileNotFoundException);
     

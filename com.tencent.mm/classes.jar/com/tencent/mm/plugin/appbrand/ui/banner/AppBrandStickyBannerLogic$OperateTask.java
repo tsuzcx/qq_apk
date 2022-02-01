@@ -9,10 +9,10 @@ final class AppBrandStickyBannerLogic$OperateTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<OperateTask> CREATOR;
-  boolean mHX;
-  String mHY;
-  int mHZ;
-  String mIa;
+  boolean mNb;
+  String mNc;
+  int mNd;
+  String mNe;
   int op = 0;
   
   static
@@ -22,7 +22,7 @@ final class AppBrandStickyBannerLogic$OperateTask
     AppMethodBeat.o(49023);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(49019);
     switch (this.op)
@@ -32,11 +32,11 @@ final class AppBrandStickyBannerLogic$OperateTask
     {
       AppMethodBeat.o(49019);
       return;
-      this.mHX = AppBrandStickyBannerLogic.b.bAc();
-      bhX();
+      this.mNb = AppBrandStickyBannerLogic.b.bAX();
+      biG();
       AppMethodBeat.o(49019);
       return;
-      AppBrandStickyBannerLogic.b.bAe();
+      AppBrandStickyBannerLogic.b.bAZ();
       AppMethodBeat.o(49019);
       return;
       AppBrandStickyBannerLogic.b.b(this);
@@ -50,10 +50,10 @@ final class AppBrandStickyBannerLogic$OperateTask
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mHX = bool;
-      this.mHY = paramParcel.readString();
-      this.mHZ = paramParcel.readInt();
-      this.mIa = paramParcel.readString();
+      this.mNb = bool;
+      this.mNc = paramParcel.readString();
+      this.mNd = paramParcel.readInt();
+      this.mNe = paramParcel.readString();
       AppMethodBeat.o(49022);
       return;
     }
@@ -64,13 +64,13 @@ final class AppBrandStickyBannerLogic$OperateTask
     AppMethodBeat.i(49021);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.op);
-    if (this.mHX) {}
+    if (this.mNb) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeString(this.mHY);
-      paramParcel.writeInt(this.mHZ);
-      paramParcel.writeString(this.mIa);
+      paramParcel.writeString(this.mNc);
+      paramParcel.writeInt(this.mNd);
+      paramParcel.writeString(this.mNe);
       AppMethodBeat.o(49021);
       return;
     }
@@ -78,7 +78,7 @@ final class AppBrandStickyBannerLogic$OperateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.OperateTask
  * JD-Core Version:    0.7.0.1
  */

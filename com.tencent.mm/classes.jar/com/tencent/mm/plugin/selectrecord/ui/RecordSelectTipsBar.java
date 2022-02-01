@@ -12,89 +12,89 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class RecordSelectTipsBar
   extends LinearLayout
 {
-  private FrameLayout tiH;
-  private LinearLayout yCs;
-  private TextView yCt;
-  private LinearLayout yCu;
-  private TextView yCv;
-  private TextView yCw;
-  private TextView yCx;
-  private boolean yCy;
-  private a yCz;
+  private FrameLayout ttz;
+  private TextView ySA;
+  private boolean ySB;
+  private a ySC;
+  private LinearLayout ySv;
+  private TextView ySw;
+  private LinearLayout ySx;
+  private TextView ySy;
+  private TextView ySz;
   
   public RecordSelectTipsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(207418);
-    this.yCy = false;
-    this.yCz = null;
+    AppMethodBeat.i(194025);
+    this.ySB = false;
+    this.ySC = null;
     initView();
-    AppMethodBeat.o(207418);
+    AppMethodBeat.o(194025);
   }
   
   public RecordSelectTipsBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(207419);
-    this.yCy = false;
-    this.yCz = null;
+    AppMethodBeat.i(194026);
+    this.ySB = false;
+    this.ySC = null;
     initView();
-    AppMethodBeat.o(207419);
+    AppMethodBeat.o(194026);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(207420);
+    AppMethodBeat.i(194027);
     View localView = inflate(getContext(), 2131496486, this);
-    this.tiH = ((FrameLayout)localView.findViewById(2131307946));
-    this.yCs = ((LinearLayout)localView.findViewById(2131308325));
-    this.yCt = ((TextView)localView.findViewById(2131308332));
-    this.yCu = ((LinearLayout)localView.findViewById(2131308433));
-    this.yCv = ((TextView)localView.findViewById(2131308395));
-    this.yCw = ((TextView)localView.findViewById(2131308353));
-    this.yCx = ((TextView)localView.findViewById(2131308394));
-    this.yCx.setOnClickListener(new View.OnClickListener()
+    this.ttz = ((FrameLayout)localView.findViewById(2131307946));
+    this.ySv = ((LinearLayout)localView.findViewById(2131308325));
+    this.ySw = ((TextView)localView.findViewById(2131308332));
+    this.ySx = ((LinearLayout)localView.findViewById(2131308433));
+    this.ySy = ((TextView)localView.findViewById(2131308395));
+    this.ySz = ((TextView)localView.findViewById(2131308353));
+    this.ySA = ((TextView)localView.findViewById(2131308394));
+    this.ySA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207415);
+        AppMethodBeat.i(194022);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/selectrecord/ui/RecordSelectTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.i("MicroMsg.recordSelect.RecordSelectTipsBar", "clear all select record");
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/selectrecord/ui/RecordSelectTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ae.i("MicroMsg.recordSelect.RecordSelectTipsBar", "clear all select record");
         if (RecordSelectTipsBar.a(RecordSelectTipsBar.this) != null)
         {
-          paramAnonymousView = com.tencent.mm.plugin.selectrecord.b.a.dNa();
-          paramAnonymousView.yCa += 1;
-          RecordSelectTipsBar.a(RecordSelectTipsBar.this).dNf();
+          paramAnonymousView = com.tencent.mm.plugin.selectrecord.b.a.dQt();
+          paramAnonymousView.ySb += 1;
+          RecordSelectTipsBar.a(RecordSelectTipsBar.this).dQB();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/selectrecord/ui/RecordSelectTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(207415);
+        AppMethodBeat.o(194022);
       }
     });
-    AppMethodBeat.o(207420);
+    AppMethodBeat.o(194027);
   }
   
-  public final void OZ(final int paramInt)
+  public final void PH(final int paramInt)
   {
-    AppMethodBeat.i(207421);
-    h.LTJ.aP(new Runnable()
+    AppMethodBeat.i(194028);
+    h.MqF.aM(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207417);
+        AppMethodBeat.i(194024);
         RecordSelectTipsBar.b(RecordSelectTipsBar.this).setVisibility(8);
         RecordSelectTipsBar.c(RecordSelectTipsBar.this).setVisibility(0);
-        RecordSelectTipsBar.e(RecordSelectTipsBar.this).setText(aj.getContext().getString(2131767154, new Object[] { Integer.toString(paramInt) }));
+        RecordSelectTipsBar.e(RecordSelectTipsBar.this).setText(ak.getContext().getString(2131767154, new Object[] { Integer.toString(paramInt) }));
         if (paramInt > 0)
         {
-          RecordSelectTipsBar.f(RecordSelectTipsBar.this).setTextColor(aj.getContext().getResources().getColor(2131100134));
+          RecordSelectTipsBar.f(RecordSelectTipsBar.this).setTextColor(ak.getContext().getResources().getColor(2131100134));
           if (paramInt < 99) {
             break label176;
           }
@@ -104,11 +104,11 @@ public class RecordSelectTipsBar
         for (;;)
         {
           if (RecordSelectTipsBar.a(RecordSelectTipsBar.this) != null) {
-            RecordSelectTipsBar.a(RecordSelectTipsBar.this).qM(RecordSelectTipsBar.g(RecordSelectTipsBar.this));
+            RecordSelectTipsBar.a(RecordSelectTipsBar.this).qT(RecordSelectTipsBar.g(RecordSelectTipsBar.this));
           }
-          AppMethodBeat.o(207417);
+          AppMethodBeat.o(194024);
           return;
-          RecordSelectTipsBar.f(RecordSelectTipsBar.this).setTextColor(aj.getContext().getResources().getColor(2131100490));
+          RecordSelectTipsBar.f(RecordSelectTipsBar.this).setTextColor(ak.getContext().getResources().getColor(2131100490));
           break;
           label176:
           RecordSelectTipsBar.d(RecordSelectTipsBar.this).setVisibility(8);
@@ -116,19 +116,19 @@ public class RecordSelectTipsBar
         }
       }
     });
-    AppMethodBeat.o(207421);
+    AppMethodBeat.o(194028);
   }
   
   public void setIRecordSelectCallback(a parama)
   {
-    this.yCz = parama;
+    this.ySC = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void dNf();
+    public abstract void dQB();
     
-    public abstract void qM(boolean paramBoolean);
+    public abstract void qT(boolean paramBoolean);
   }
 }
 

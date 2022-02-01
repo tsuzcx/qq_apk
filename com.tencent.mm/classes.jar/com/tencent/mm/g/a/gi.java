@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gi
   extends b
 {
-  public a dsb;
+  public a dtd;
   
   public gi()
   {
@@ -16,23 +16,24 @@ public final class gi
   
   private gi(byte paramByte)
   {
-    AppMethodBeat.i(163527);
-    this.dsb = new a();
-    this.IbR = false;
+    AppMethodBeat.i(63288);
+    this.dtd = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(163527);
+    AppMethodBeat.o(63288);
   }
   
   public static final class a
   {
-    public Activity dsa;
-    public String dsc;
-    public int dsd;
+    public String dte;
+    public int dtf = 0;
+    public Activity dtg;
+    public int mRequestCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.gi
  * JD-Core Version:    0.7.0.1
  */

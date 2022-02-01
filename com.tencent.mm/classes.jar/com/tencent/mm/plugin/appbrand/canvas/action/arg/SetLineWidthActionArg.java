@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -11,7 +11,7 @@ public class SetLineWidthActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineWidthActionArg> CREATOR;
-  public float jTB;
+  public float jWS;
   
   static
   {
@@ -50,7 +50,7 @@ public class SetLineWidthActionArg
       AppMethodBeat.o(145214);
       return false;
     }
-    if (Float.compare(((SetLineWidthActionArg)paramObject).jTB, this.jTB) == 0)
+    if (Float.compare(((SetLineWidthActionArg)paramObject).jWS, this.jWS) == 0)
     {
       AppMethodBeat.o(145214);
       return true;
@@ -63,14 +63,14 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145211);
     super.h(paramParcel);
-    this.jTB = paramParcel.readFloat();
+    this.jWS = paramParcel.readFloat();
     AppMethodBeat.o(145211);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145215);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTB) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jWS) });
     AppMethodBeat.o(145215);
     return i;
   }
@@ -79,7 +79,7 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145212);
     super.parse(paramJSONObject);
-    this.jTB = g.f(paramJSONObject.optJSONArray("data"), 0);
+    this.jWS = g.f(paramJSONObject.optJSONArray("data"), 0);
     AppMethodBeat.o(145212);
   }
   
@@ -87,7 +87,7 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145213);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jTB);
+    paramParcel.writeFloat(this.jWS);
     AppMethodBeat.o(145213);
   }
 }

@@ -5,40 +5,39 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.i;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.e;
 import com.tencent.mm.n.g;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class k
 {
   public static void run()
   {
     AppMethodBeat.i(19890);
-    int i = g.acA().getInt("EnableForgroundService", 0);
-    ba.aBQ();
-    int j = i.ce(c.getUin(), 101);
-    if ((b.fjN()) || ((i > 0) && (j >= 0) && (j <= i))) {}
+    int i = g.acL().getInt("EnableForgroundService", 0);
+    bc.aCg();
+    int j = i.cf(c.getUin(), 101);
+    if ((b.fnF()) || ((i > 0) && (j >= 0) && (j <= i))) {}
     for (boolean bool2 = true;; bool2 = false)
     {
       boolean bool1 = bool2;
       if (!bool2) {
-        bool1 = d.Fnm;
+        bool1 = d.FFK;
       }
       bool2 = bool1;
       if (!bool1) {
-        bool2 = b.fjN();
+        bool2 = b.fnF();
       }
-      if (j.cSc == 1) {
+      if (com.tencent.mm.sdk.platformtools.k.cSM == 1) {
         bool2 = false;
       }
-      aj.getContext().getSharedPreferences("system_config_prefs", 0).edit().putBoolean("set_service", bool2).commit();
-      ad.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.Fnm), Integer.valueOf(j.cSc) });
+      ak.getContext().getSharedPreferences("system_config_prefs", 0).edit().putBoolean("set_service", bool2).commit();
+      ae.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.FFK), Integer.valueOf(com.tencent.mm.sdk.platformtools.k.cSM) });
       AppMethodBeat.o(19890);
       return;
     }

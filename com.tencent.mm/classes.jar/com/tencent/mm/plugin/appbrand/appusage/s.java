@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.am;
+import com.tencent.mm.model.ao;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.Locale;
 
 public final class s
-  extends am
+  extends ao
 {
   public final String getTag()
   {
     return "MicroMsg.AppBrandPluginCodeTransfer";
   }
   
-  public final boolean op(int paramInt)
+  public final boolean os(int paramInt)
   {
     AppMethodBeat.i(44548);
-    boolean bool = g.ajC().ajl().getBoolean(al.a.IvM, false);
-    ad.d("MicroMsg.AppBrandPluginCodeTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = g.ajR().ajA().getBoolean(am.a.IQk, false);
+    ae.d("MicroMsg.AppBrandPluginCodeTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
       AppMethodBeat.o(44548);
@@ -40,14 +40,14 @@ public final class s
     {
       String str = String.format(Locale.US, "where %s like '%%$%s' or %s like '%%$%s'", new Object[] { "appId", "__WITHOUT_CODELIB__", "appId", "__CODELIB__" });
       str = String.format(Locale.US, "delete from %s %s", new Object[] { "AppBrandWxaPkgManifestRecord", str });
-      j.aYM().aYN().execSQL("AppBrandWxaPkgManifestRecord", str);
-      g.ajC().ajl().set(al.a.IvM, Boolean.TRUE);
+      j.aZi().aZj().execSQL("AppBrandWxaPkgManifestRecord", str);
+      g.ajR().ajA().set(am.a.IQk, Boolean.TRUE);
       AppMethodBeat.o(44547);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandPluginCodeTransfer", localException, "transfer failed", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandPluginCodeTransfer", localException, "transfer failed", new Object[0]);
       AppMethodBeat.o(44547);
     }
   }

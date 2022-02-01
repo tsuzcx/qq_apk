@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.wenote.model.a;
 
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 
 public class o
   extends c
 {
-  public String dBx;
-  public ajn ptR;
-  public String ptS = "";
-  public boolean ptT;
+  public String dCC;
+  public ajx pAv;
+  public String pAw = "";
+  public boolean pAx;
   public int type;
   
-  public String eWO()
+  public String faA()
   {
-    return this.ptS;
+    return this.pAw;
   }
 }
 

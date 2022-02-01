@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PreferenceInfoCategory
   extends Preference
 {
-  public int ITD;
-  public View.OnClickListener JtQ;
-  public View.OnClickListener JtR;
+  public View.OnClickListener JOF;
+  public View.OnClickListener JOG;
+  public int Jol;
   
   public PreferenceInfoCategory(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,9 +24,9 @@ public class PreferenceInfoCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142661);
-    this.JtQ = null;
-    this.JtR = null;
-    this.ITD = 0;
+    this.JOF = null;
+    this.JOG = null;
+    this.Jol = 0;
     setLayoutResource(2131494868);
     AppMethodBeat.o(142661);
   }
@@ -47,15 +47,15 @@ public class PreferenceInfoCategory
     for (;;)
     {
       paramView = (ImageView)paramView.findViewById(2131296462);
-      paramView.setOnClickListener(this.JtQ);
-      if (this.ITD > 0) {
-        paramView.setImageResource(this.ITD);
+      paramView.setOnClickListener(this.JOF);
+      if (this.Jol > 0) {
+        paramView.setImageResource(this.Jol);
       }
       AppMethodBeat.o(142662);
       return;
       localTextView.setVisibility(0);
       localTextView.setText(getTitle());
-      localTextView.setOnClickListener(this.JtR);
+      localTextView.setOnClickListener(this.JOG);
     }
   }
 }

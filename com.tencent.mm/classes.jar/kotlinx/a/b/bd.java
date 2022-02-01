@@ -6,25 +6,25 @@ import d.l;
 import kotlinx.a.a.e;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/ShortArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/ShortArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ShortArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/ShortArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
 public final class bd
   extends ax<Short, short[], bc>
   implements h<short[]>
 {
-  public static final bd NMS;
+  public static final bd OjY;
   
   static
   {
-    AppMethodBeat.i(191030);
-    NMS = new bd();
-    AppMethodBeat.o(191030);
+    AppMethodBeat.i(199618);
+    OjY = new bd();
+    AppMethodBeat.o(199618);
   }
   
   private bd()
   {
-    super(e.a(ab.MLY));
-    AppMethodBeat.i(191029);
-    AppMethodBeat.o(191029);
+    super(e.a(ab.Njb));
+    AppMethodBeat.i(199617);
+    AppMethodBeat.o(199617);
   }
 }
 

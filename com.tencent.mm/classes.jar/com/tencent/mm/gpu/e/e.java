@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
 {
   public String activityName = "";
-  public int gtW;
-  public int gtX;
-  public int gtY;
-  public long gtZ;
-  public int gua;
+  public int gwD;
+  public int gwE;
+  public int gwF;
+  public long gwG;
+  public int gwH;
   public int pid;
   public String processName;
   
   public final String toString()
   {
-    AppMethodBeat.i(219550);
-    String str = " \n" + String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %s(pid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { this.processName, Integer.valueOf(this.pid) }) + "\n| gfx-dev:\t " + this.gtW + "kb\n| gl-mtrack:\t " + this.gtX + "kb\n| egl-mtrack:\t " + this.gtY + "kb\n| spend:\t " + this.gua + "min\n| activity:\t " + this.activityName + "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:" + this.gtZ + "ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
-    AppMethodBeat.o(219550);
+    AppMethodBeat.i(209672);
+    String str = " \n" + String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %s(pid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { this.processName, Integer.valueOf(this.pid) }) + "\n| gfx-dev:\t " + this.gwD + "kb\n| gl-mtrack:\t " + this.gwE + "kb\n| egl-mtrack:\t " + this.gwF + "kb\n| spend:\t " + this.gwH + "min\n| activity:\t " + this.activityName + "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:" + this.gwG + "ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
+    AppMethodBeat.o(209672);
     return str;
   }
 }

@@ -6,18 +6,18 @@ import rx.d.a;
 
 public class a
 {
-  private static a kds;
+  private static a kgJ;
   
-  public static a bft()
+  public static a bgb()
   {
     AppMethodBeat.i(158949);
-    if (kds == null) {}
+    if (kgJ == null) {}
     try
     {
-      if (kds == null) {
-        kds = new a();
+      if (kgJ == null) {
+        kgJ = new a();
       }
-      a locala = kds;
+      a locala = kgJ;
       AppMethodBeat.o(158949);
       return locala;
     }

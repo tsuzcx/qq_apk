@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lm
   extends b
 {
-  public a dyK;
+  public a dzO;
   
   public lm()
   {
@@ -15,18 +15,16 @@ public final class lm
   
   private lm(byte paramByte)
   {
-    AppMethodBeat.i(19818);
-    this.dyK = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19817);
+    this.dzO = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19818);
+    AppMethodBeat.o(19817);
   }
   
   public static final class a
   {
-    public String dyL;
     public int opType;
-    public int viewId = 1;
   }
 }
 

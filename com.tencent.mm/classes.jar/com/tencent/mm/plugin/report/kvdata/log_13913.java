@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class log_13913
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int clientVersion_;
   public int device_;
@@ -22,10 +22,10 @@ public class log_13913
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.import_ds_);
       paramVarArgs.aS(2, this.ds_);
-      paramVarArgs.aY(3, this.uin_);
+      paramVarArgs.aZ(3, this.uin_);
       paramVarArgs.aS(4, this.device_);
       paramVarArgs.aS(5, this.clientVersion_);
-      paramVarArgs.aY(6, this.time_stamp_);
+      paramVarArgs.aZ(6, this.time_stamp_);
       paramVarArgs.aS(7, this.scene_);
       if (this.error_ != null) {
         paramVarArgs.d(8, this.error_);
@@ -46,9 +46,9 @@ public class log_13913
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(151548);
@@ -64,35 +64,35 @@ public class log_13913
         AppMethodBeat.o(151548);
         return -1;
       case 1: 
-        locallog_13913.import_ds_ = locala.NPN.zc();
+        locallog_13913.import_ds_ = locala.OmT.zc();
         AppMethodBeat.o(151548);
         return 0;
       case 2: 
-        locallog_13913.ds_ = locala.NPN.zc();
+        locallog_13913.ds_ = locala.OmT.zc();
         AppMethodBeat.o(151548);
         return 0;
       case 3: 
-        locallog_13913.uin_ = locala.NPN.zd();
+        locallog_13913.uin_ = locala.OmT.zd();
         AppMethodBeat.o(151548);
         return 0;
       case 4: 
-        locallog_13913.device_ = locala.NPN.zc();
+        locallog_13913.device_ = locala.OmT.zc();
         AppMethodBeat.o(151548);
         return 0;
       case 5: 
-        locallog_13913.clientVersion_ = locala.NPN.zc();
+        locallog_13913.clientVersion_ = locala.OmT.zc();
         AppMethodBeat.o(151548);
         return 0;
       case 6: 
-        locallog_13913.time_stamp_ = locala.NPN.zd();
+        locallog_13913.time_stamp_ = locala.OmT.zd();
         AppMethodBeat.o(151548);
         return 0;
       case 7: 
-        locallog_13913.scene_ = locala.NPN.zc();
+        locallog_13913.scene_ = locala.OmT.zc();
         AppMethodBeat.o(151548);
         return 0;
       }
-      locallog_13913.error_ = locala.NPN.readString();
+      locallog_13913.error_ = locala.OmT.readString();
       AppMethodBeat.o(151548);
       return 0;
     }

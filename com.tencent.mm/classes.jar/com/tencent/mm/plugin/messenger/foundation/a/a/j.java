@@ -6,9 +6,9 @@ public abstract interface j
   
   public abstract void b(int paramInt, a parama);
   
-  public abstract void c(k.b paramb);
-  
   public abstract void d(k.b paramb);
+  
+  public abstract void e(k.b paramb);
   
   public static abstract interface a
   {

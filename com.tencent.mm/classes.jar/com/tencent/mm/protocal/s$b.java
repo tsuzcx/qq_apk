@@ -1,23 +1,23 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.protocal.protobuf.aiv;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.protocal.protobuf.ajf;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class s$b
   extends l.d
   implements l.b
 {
-  public aiv For;
-  private boolean wtN;
+  public ajf FGP;
+  private boolean wJx;
   
   public s$b(boolean paramBoolean)
   {
     AppMethodBeat.i(149120);
-    this.wtN = true;
-    this.For = new aiv();
-    this.wtN = paramBoolean;
+    this.wJx = true;
+    this.FGP = new ajf();
+    this.wJx = paramBoolean;
     AppMethodBeat.o(149120);
   }
   
@@ -28,7 +28,7 @@ public final class s$b
   
   public final int getFuncId()
   {
-    if (this.wtN) {
+    if (this.wJx) {
       return 3789;
     }
     return 3644;
@@ -37,17 +37,17 @@ public final class s$b
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(149121);
-    this.For.setBaseRequest(l.a(this));
-    if (this.wtN)
+    this.FGP.setBaseRequest(l.a(this));
+    if (this.wJx)
     {
-      arrayOfByte = bt.flL();
-      setRsaInfo(ac.fgx());
-      this.For.GfY = b.cj(arrayOfByte);
-      if (!f.Fns) {
+      arrayOfByte = bu.fpG();
+      setRsaInfo(ac.fkn());
+      this.FGP.GyH = b.cm(arrayOfByte);
+      if (!f.FFQ) {
         setPassKey(arrayOfByte);
       }
     }
-    byte[] arrayOfByte = this.For.toByteArray();
+    byte[] arrayOfByte = this.FGP.toByteArray();
     AppMethodBeat.o(149121);
     return arrayOfByte;
   }

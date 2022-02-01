@@ -15,9 +15,9 @@ final class WalletOfflineCoinPurseUI$21
     AppMethodBeat.i(66422);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    com.tencent.mm.plugin.offline.c.a.j(this.wAR, WalletOfflineCoinPurseUI.b(this.wAR));
-    this.wAR.finish();
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    com.tencent.mm.plugin.offline.c.a.j(this.wQC, WalletOfflineCoinPurseUI.b(this.wQC));
+    this.wQC.finish();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66422);
   }

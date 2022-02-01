@@ -3,34 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dfq
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Huc;
+  public int HMO;
+  public int HMP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117929);
+    AppMethodBeat.i(134259);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).aS(1, this.Huc);
-      AppMethodBeat.o(117929);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aS(1, this.HMO);
+      paramVarArgs.aS(2, this.HMP);
+      AppMethodBeat.o(134259);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.Huc);
-      AppMethodBeat.o(117929);
-      return paramInt + 0;
+      paramInt = f.a.a.b.b.a.bz(1, this.HMO);
+      int i = f.a.a.b.b.a.bz(2, this.HMP);
+      AppMethodBeat.o(134259);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(117929);
+      AppMethodBeat.o(134259);
       return 0;
     }
     if (paramInt == 3)
@@ -40,14 +44,18 @@ public final class dfq
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(117929);
+        AppMethodBeat.o(134259);
         return -1;
+      case 1: 
+        localdfq.HMO = locala.OmT.zc();
+        AppMethodBeat.o(134259);
+        return 0;
       }
-      localdfq.Huc = locala.NPN.zc();
-      AppMethodBeat.o(117929);
+      localdfq.HMP = locala.OmT.zc();
+      AppMethodBeat.o(134259);
       return 0;
     }
-    AppMethodBeat.o(117929);
+    AppMethodBeat.o(134259);
     return -1;
   }
 }

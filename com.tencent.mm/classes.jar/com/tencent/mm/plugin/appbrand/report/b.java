@@ -4,10 +4,10 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.os.Looper;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.c;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
@@ -15,40 +15,40 @@ import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.k;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.protocal.protobuf.blu;
-import com.tencent.mm.protocal.protobuf.blv;
-import com.tencent.mm.protocal.protobuf.egy;
-import com.tencent.mm.protocal.protobuf.egz;
-import com.tencent.mm.protocal.protobuf.eha;
-import com.tencent.mm.protocal.protobuf.ehb;
-import com.tencent.mm.protocal.protobuf.ehd;
-import com.tencent.mm.protocal.protobuf.ehe;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.protocal.protobuf.bmm;
+import com.tencent.mm.protocal.protobuf.bmn;
+import com.tencent.mm.protocal.protobuf.eip;
+import com.tencent.mm.protocal.protobuf.eiq;
+import com.tencent.mm.protocal.protobuf.eir;
 import com.tencent.mm.protocal.protobuf.eis;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.eiu;
+import com.tencent.mm.protocal.protobuf.eiv;
+import com.tencent.mm.protocal.protobuf.ekj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
 {
-  public ap knP;
-  public egz mqp;
-  public egy mqq;
-  public ehd mqr;
-  public ehe mqs;
-  public ehb mqt;
-  public eis mqu;
+  public aq krf;
+  public eiq mvn;
+  public eip mvo;
+  public eiu mvp;
+  public eiv mvq;
+  public eis mvr;
+  public ekj mvs;
   
   public b()
   {
     AppMethodBeat.i(48014);
-    this.mqp = null;
-    this.mqq = null;
-    this.mqr = null;
-    this.mqs = null;
-    this.mqt = null;
-    this.mqu = null;
-    this.knP = new ap(Looper.getMainLooper());
+    this.mvn = null;
+    this.mvo = null;
+    this.mvp = null;
+    this.mvq = null;
+    this.mvr = null;
+    this.mvs = null;
+    this.krf = new aq(Looper.getMainLooper());
     AppMethodBeat.o(48014);
   }
   
@@ -59,7 +59,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.b
  * JD-Core Version:    0.7.0.1
  */

@@ -165,7 +165,7 @@ public class MessengerShareContentUtility
       AppMethodBeat.o(8167);
       return "horizontal";
     }
-    switch (MessengerShareContentUtility.1.$SwitchMap$com$facebook$share$model$ShareMessengerGenericTemplateContent$ImageAspectRatio[paramImageAspectRatio.ordinal()])
+    switch (1.$SwitchMap$com$facebook$share$model$ShareMessengerGenericTemplateContent$ImageAspectRatio[paramImageAspectRatio.ordinal()])
     {
     default: 
       AppMethodBeat.o(8167);
@@ -183,7 +183,7 @@ public class MessengerShareContentUtility
       AppMethodBeat.o(8168);
       return "image";
     }
-    switch (MessengerShareContentUtility.1.$SwitchMap$com$facebook$share$model$ShareMessengerMediaTemplateContent$MediaType[paramMediaType.ordinal()])
+    switch (1.$SwitchMap$com$facebook$share$model$ShareMessengerMediaTemplateContent$MediaType[paramMediaType.ordinal()])
     {
     default: 
       AppMethodBeat.o(8168);
@@ -226,7 +226,7 @@ public class MessengerShareContentUtility
       AppMethodBeat.o(8166);
       return "full";
     }
-    switch (MessengerShareContentUtility.1.$SwitchMap$com$facebook$share$model$ShareMessengerURLActionButton$WebviewHeightRatio[paramWebviewHeightRatio.ordinal()])
+    switch (1.$SwitchMap$com$facebook$share$model$ShareMessengerURLActionButton$WebviewHeightRatio[paramWebviewHeightRatio.ordinal()])
     {
     default: 
       AppMethodBeat.o(8166);

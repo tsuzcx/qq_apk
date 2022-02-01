@@ -10,41 +10,41 @@ import com.tencent.mm.plugin.appbrand.permission.a.b.c;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalPageAuthorizePresenterViewsFactory;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$FactoryInterface;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView$FactoryInterface;", "()V", "createPresenterView", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView;", "listener", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalPageAuthorizePresenterViewsFactory;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$FactoryInterface;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView$FactoryInterface;", "()V", "createPresenterView", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView;", "listener", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "plugin-appbrand-integration_release"})
 public final class i
   implements a.b, b.b
 {
-  public static final i lOv;
+  public static final i lSW;
   
   static
   {
-    AppMethodBeat.i(189358);
-    lOv = new i();
-    AppMethodBeat.o(189358);
+    AppMethodBeat.i(223618);
+    lSW = new i();
+    AppMethodBeat.o(223618);
   }
   
   public final com.tencent.mm.plugin.appbrand.permission.a.b a(d paramd, b.c paramc)
   {
-    AppMethodBeat.i(189356);
+    AppMethodBeat.i(223616);
     p.h(paramd, "component");
     p.h(paramc, "listener");
     paramd = (com.tencent.mm.plugin.appbrand.permission.a.b)new com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a.b(paramd, paramc);
-    AppMethodBeat.o(189356);
+    AppMethodBeat.o(223616);
     return paramd;
   }
   
   public final a e(d paramd)
   {
-    AppMethodBeat.i(189357);
+    AppMethodBeat.i(223617);
     p.h(paramd, "component");
     paramd = (a)new c(paramd);
-    AppMethodBeat.o(189357);
+    AppMethodBeat.o(223617);
     return paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.i
  * JD-Core Version:    0.7.0.1
  */

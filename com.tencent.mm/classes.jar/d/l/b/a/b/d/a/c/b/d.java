@@ -20,12 +20,12 @@ import java.util.List;
 
 public final class d
 {
-  private static final b NgF;
+  private static final b NDK;
   
   static
   {
     AppMethodBeat.i(57981);
-    NgF = new b("java.lang.Class");
+    NDK = new b("java.lang.Class");
     AppMethodBeat.o(57981);
   }
   
@@ -40,10 +40,10 @@ public final class d
       AppMethodBeat.o(57979);
       return paramas1;
     }
-    Object localObject = paramas1.ggj();
+    Object localObject = paramas1.gkL();
     p.g(localObject, "upperBounds");
-    localObject = (ab)j.jc((List)localObject);
-    if ((((ab)localObject).gsZ().ghO() instanceof e))
+    localObject = (ab)j.jl((List)localObject);
+    if ((((ab)localObject).gxB().gmq() instanceof e))
     {
       p.g(localObject, "firstUpperBound");
       paramas1 = d.l.b.a.b.m.d.a.aP((ab)localObject);
@@ -53,7 +53,7 @@ public final class d
     if (paramas2 == null) {}
     for (;;)
     {
-      paramas2 = ((ab)localObject).gsZ().ghO();
+      paramas2 = ((ab)localObject).gxB().gmq();
       if (paramas2 == null)
       {
         paramas1 = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.TypeParameterDescriptor");
@@ -62,17 +62,17 @@ public final class d
       }
       for (paramas2 = (as)paramas2; (p.i(paramas2, paramas1) ^ true); paramas2 = (as)paramas2)
       {
-        paramas2 = paramas2.ggj();
+        paramas2 = paramas2.gkL();
         p.g(paramas2, "current.upperBounds");
-        paramas2 = (ab)j.jc(paramas2);
-        if ((paramas2.gsZ().ghO() instanceof e))
+        paramas2 = (ab)j.jl(paramas2);
+        if ((paramas2.gxB().gmq() instanceof e))
         {
           p.g(paramas2, "nextUpperBound");
           paramas1 = d.l.b.a.b.m.d.a.aP(paramas2);
           AppMethodBeat.o(57979);
           return paramas1;
         }
-        paramas2 = paramas2.gsZ().ghO();
+        paramas2 = paramas2.gxB().gmq();
         if (paramas2 == null)
         {
           paramas1 = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.TypeParameterDescriptor");
@@ -92,7 +92,7 @@ public final class d
     AppMethodBeat.i(57977);
     p.h(paramas, "typeParameter");
     p.h(parama, "attr");
-    if (parama.Ngp == l.NdH)
+    if (parama.NDu == l.NAM)
     {
       paramas = (av)new ax(ap.c(paramas));
       AppMethodBeat.o(57977);
@@ -115,7 +115,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.b.d
  * JD-Core Version:    0.7.0.1
  */

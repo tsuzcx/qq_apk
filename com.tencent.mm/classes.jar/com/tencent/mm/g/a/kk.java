@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kk
   extends b
 {
-  public a dxt;
+  public a dyu;
   
   public kk()
   {
@@ -15,16 +15,20 @@ public final class kk
   
   private kk(byte paramByte)
   {
-    AppMethodBeat.i(19815);
-    this.dxt = new a();
-    this.IbR = false;
+    AppMethodBeat.i(140988);
+    this.dyu = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19815);
+    AppMethodBeat.o(140988);
   }
   
   public static final class a
   {
-    public boolean dvN;
+    public Boolean dyv;
+    public int dyw;
+    public Boolean dyx;
+    public String imagePath;
+    public String toUser;
   }
 }
 

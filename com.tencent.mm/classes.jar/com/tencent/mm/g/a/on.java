@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class on
   extends b
 {
-  public a dCu;
+  public a dDv;
   
   public on()
   {
@@ -15,17 +15,18 @@ public final class on
   
   private on(byte paramByte)
   {
-    AppMethodBeat.i(149877);
-    this.dCu = new a();
-    this.IbR = false;
+    AppMethodBeat.i(220276);
+    this.dDv = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149877);
+    AppMethodBeat.o(220276);
   }
   
   public static final class a
   {
-    public boolean dCv;
-    public String talker;
+    public String dDw;
+    public String dDx;
+    public int dDy;
   }
 }
 

@@ -25,48 +25,48 @@ import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 public class FavVideoView
   extends RelativeLayout
   implements View.OnClickListener, h.a
 {
   public boolean Zn;
-  private String dsU;
-  private String hdP;
-  private ProgressBar ltc;
-  private ap oGm;
-  private h oHt;
-  private av oHz;
-  private ImageView rAT;
-  private boolean rAW;
-  public LinearLayout rBq;
-  private TextView rEY;
-  private View rEZ;
-  private ImageView rFa;
-  private VideoPlayerSeekBar rFb;
-  private RelativeLayout rFc;
-  private boolean rFd;
-  private boolean rFe;
-  private int rFf;
-  private int rFg;
-  private boolean rFh;
-  private MMPinProgressBtn rFi;
-  private int rFj;
-  private b rFk;
-  av rFl;
-  private com.tencent.mm.plugin.sight.decode.ui.b rFm;
-  private a rFn;
+  private String dua;
+  private String hgD;
+  private ProgressBar lxB;
+  private aq oMO;
+  private h oNV;
+  private aw oOb;
+  public LinearLayout rJB;
+  private ImageView rJe;
+  private boolean rJh;
+  private TextView rNj;
+  private View rNk;
+  private ImageView rNl;
+  private VideoPlayerSeekBar rNm;
+  private RelativeLayout rNn;
+  private boolean rNo;
+  private boolean rNp;
+  private int rNq;
+  private int rNr;
+  private boolean rNs;
+  private MMPinProgressBtn rNt;
+  private int rNu;
+  private b rNv;
+  aw rNw;
+  private com.tencent.mm.plugin.sight.decode.ui.b rNx;
+  private a rNy;
   
   public FavVideoView(Context paramContext)
   {
@@ -82,17 +82,17 @@ public class FavVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(107576);
-    this.oGm = new ap(Looper.getMainLooper());
-    this.rFd = false;
-    this.rFe = false;
-    this.rFf = 0;
-    this.rAW = false;
-    this.rFg = 0;
+    this.oMO = new aq(Looper.getMainLooper());
+    this.rNo = false;
+    this.rNp = false;
+    this.rNq = 0;
+    this.rJh = false;
+    this.rNr = 0;
     this.Zn = false;
-    this.rFh = false;
-    this.dsU = "";
-    this.rFj = 0;
-    this.oHz = new av(new av.a()
+    this.rNs = false;
+    this.dua = "";
+    this.rNu = 0;
+    this.oOb = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -104,73 +104,73 @@ public class FavVideoView
         return true;
       }
     }, true);
-    this.rFl = new av(new av.a()
+    this.rNw = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(107563);
         if (FavVideoView.c(FavVideoView.this)) {
-          FavVideoView.this.cxr();
+          FavVideoView.this.cyS();
         }
         AppMethodBeat.o(107563);
         return false;
       }
     }, false);
-    this.rFm = new com.tencent.mm.plugin.sight.decode.ui.b()
+    this.rNx = new com.tencent.mm.plugin.sight.decode.ui.b()
     {
-      public final void aqD()
+      public final void aqS()
       {
         AppMethodBeat.i(107564);
-        FavVideoView.this.cxw();
-        FavVideoView.this.rFl.stopTimer();
+        FavVideoView.this.cyX();
+        FavVideoView.this.rNw.stopTimer();
         AppMethodBeat.o(107564);
       }
       
-      public final void nM(int paramAnonymousInt)
+      public final void nP(int paramAnonymousInt)
       {
         AppMethodBeat.i(107565);
         if (!FavVideoView.this.isPlaying())
         {
-          FavVideoView.d(FavVideoView.this).az(500L, 500L);
+          FavVideoView.d(FavVideoView.this).ay(500L, 500L);
           FavVideoView.this.setVideoStateIv(false);
         }
         FavVideoView.this.seek(paramAnonymousInt);
-        FavVideoView.this.cxx();
+        FavVideoView.this.cyY();
         AppMethodBeat.o(107565);
       }
     };
-    this.rFn = new a((byte)0);
-    ad.i("MicroMsg.FavVideoView", "%d ui init view.", new Object[] { Integer.valueOf(hashCode()) });
+    this.rNy = new a((byte)0);
+    ae.i("MicroMsg.FavVideoView", "%d ui init view.", new Object[] { Integer.valueOf(hashCode()) });
     LayoutInflater.from(paramContext).inflate(2131493985, this);
-    this.rAT = ((ImageView)findViewById(2131306398));
+    this.rJe = ((ImageView)findViewById(2131306398));
     paramAttributeSet = (RelativeLayout)findViewById(2131300914);
     ((TextView)findViewById(2131306332)).setVisibility(8);
-    this.rFi = ((MMPinProgressBtn)findViewById(2131306379));
-    this.ltc = ((ProgressBar)findViewById(2131306352));
-    this.rBq = ((LinearLayout)findViewById(2131299788));
-    this.rFa = ((ImageView)findViewById(2131306316));
-    this.rFc = ((RelativeLayout)findViewById(2131298875));
-    this.rEZ = findViewById(2131306342);
-    this.rFb = ((VideoPlayerSeekBar)findViewById(2131306375));
-    this.rEY = ((TextView)findViewById(2131306403));
-    if (com.tencent.mm.modelcontrol.d.aHc()) {
-      this.rFe = true;
+    this.rNt = ((MMPinProgressBtn)findViewById(2131306379));
+    this.lxB = ((ProgressBar)findViewById(2131306352));
+    this.rJB = ((LinearLayout)findViewById(2131299788));
+    this.rNl = ((ImageView)findViewById(2131306316));
+    this.rNn = ((RelativeLayout)findViewById(2131298875));
+    this.rNk = findViewById(2131306342);
+    this.rNm = ((VideoPlayerSeekBar)findViewById(2131306375));
+    this.rNj = ((TextView)findViewById(2131306403));
+    if (com.tencent.mm.modelcontrol.d.aHt()) {
+      this.rNp = true;
     }
-    for (this.oHt = new VideoPlayerTextureView(paramContext);; this.oHt = new VideoTextureView(paramContext))
+    for (this.oNV = new VideoPlayerTextureView(paramContext);; this.oNV = new VideoTextureView(paramContext))
     {
-      this.oHt.setVideoCallback(this);
-      cxr();
+      this.oNV.setVideoCallback(this);
+      cyS();
       setVideoStateIv(true);
-      this.rFb.setIplaySeekCallback(this.rFm);
-      this.rFb.setPlayBtnOnClickListener(this);
-      this.rFa.setOnClickListener(new View.OnClickListener()
+      this.rNm.setIplaySeekCallback(this.rNx);
+      this.rNm.setPlayBtnOnClickListener(this);
+      this.rNl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107566);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/widget/FavVideoView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/widget/FavVideoView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (FavVideoView.e(FavVideoView.this) != null) {
             FavVideoView.e(FavVideoView.this).finish();
           }
@@ -178,47 +178,47 @@ public class FavVideoView
           AppMethodBeat.o(107566);
         }
       });
-      this.rFb.setOnClickListener(this);
+      this.rNm.setOnClickListener(this);
       paramContext = new RelativeLayout.LayoutParams(-1, -2);
       paramContext.addRule(13);
-      paramAttributeSet.addView((View)this.oHt, paramContext);
-      ((com.tencent.mm.plugin.record.a.a)g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(this.rFn);
-      ((af)g.ad(af.class)).getFavCdnStorage().a(this.rFn);
-      boolean bool = al.jR(getContext());
-      paramInt = al.ej(getContext());
-      ad.i("MicroMsg.FavVideoView", "%d handleVerticalUI image gallery ui isNavBarVisibility %b navBarHeight %d", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+      paramAttributeSet.addView((View)this.oNV, paramContext);
+      ((com.tencent.mm.plugin.record.a.a)g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(this.rNy);
+      ((af)g.ad(af.class)).getFavCdnStorage().a(this.rNy);
+      boolean bool = al.jY(getContext());
+      paramInt = al.en(getContext());
+      ae.i("MicroMsg.FavVideoView", "%d handleVerticalUI image gallery ui isNavBarVisibility %b navBarHeight %d", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
       if (bool)
       {
-        paramContext = new RelativeLayout.LayoutParams(this.rEZ.getLayoutParams());
+        paramContext = new RelativeLayout.LayoutParams(this.rNk.getLayoutParams());
         paramContext.addRule(12);
         paramContext.setMargins(paramContext.leftMargin, paramContext.topMargin, paramContext.rightMargin, paramInt);
-        this.rFc.setLayoutParams(paramContext);
+        this.rNn.setLayoutParams(paramContext);
       }
       AppMethodBeat.o(107576);
       return;
-      this.rFe = false;
+      this.rNp = false;
     }
   }
   
-  private void cxv()
+  private void cyW()
   {
     AppMethodBeat.i(107588);
-    if ((!bt.isNullOrNil(this.hdP)) && (i.fv(this.hdP)))
+    if ((!bu.isNullOrNil(this.hgD)) && (o.fB(this.hgD)))
     {
-      ad.i("MicroMsg.FavVideoView", "VideoPlay: fullPath is not null,exist,  toggleVideo()");
-      agT(this.hdP);
+      ae.i("MicroMsg.FavVideoView", "VideoPlay: fullPath is not null,exist,  toggleVideo()");
+      ahQ(this.hgD);
       AppMethodBeat.o(107588);
       return;
     }
-    ad.i("MicroMsg.FavVideoView", "VideoPlay: fullPath is  null, show error, toggleVideo()");
+    ae.i("MicroMsg.FavVideoView", "VideoPlay: fullPath is  null, show error, toggleVideo()");
     lI(false);
     AppMethodBeat.o(107588);
   }
   
-  private static boolean cxy()
+  private static boolean cyZ()
   {
     AppMethodBeat.i(107593);
-    boolean bool = g.ajC().ajl().getBoolean(al.a.IxQ, false);
+    boolean bool = g.ajR().ajA().getBoolean(am.a.ISo, false);
     AppMethodBeat.o(107593);
     return bool;
   }
@@ -226,12 +226,12 @@ public class FavVideoView
   private void lI(final boolean paramBoolean)
   {
     AppMethodBeat.i(107587);
-    this.oGm.post(new Runnable()
+    this.oMO.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107567);
-        ad.i("MicroMsg.FavVideoView", "VideoPlay: switch video model isVideoPlay %b ", new Object[] { Boolean.valueOf(paramBoolean) });
+        ae.i("MicroMsg.FavVideoView", "VideoPlay: switch video model isVideoPlay %b ", new Object[] { Boolean.valueOf(paramBoolean) });
         View localView = (View)FavVideoView.f(FavVideoView.this);
         if (paramBoolean)
         {
@@ -253,7 +253,7 @@ public class FavVideoView
   private void showLoading()
   {
     AppMethodBeat.i(107600);
-    this.oGm.post(new Runnable()
+    this.oMO.post(new Runnable()
     {
       public final void run()
       {
@@ -270,30 +270,30 @@ public class FavVideoView
     AppMethodBeat.o(107600);
   }
   
-  public final void agT(String paramString)
+  public final void ahQ(String paramString)
   {
     AppMethodBeat.i(107594);
-    ad.i("MicroMsg.FavVideoView", "VideoPlay: prepareVideo");
-    if (bt.isNullOrNil(paramString))
+    ae.i("MicroMsg.FavVideoView", "VideoPlay: prepareVideo");
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.FavVideoView", "VideoPlay: %d prepare video but filepath is null.", new Object[] { Integer.valueOf(hashCode()) });
+      ae.e("MicroMsg.FavVideoView", "VideoPlay: %d prepare video but filepath is null.", new Object[] { Integer.valueOf(hashCode()) });
       AppMethodBeat.o(107594);
       return;
     }
-    if (this.oHt != null)
+    if (this.oNV != null)
     {
-      if ((this.oHt instanceof VideoPlayerTextureView)) {
-        ((VideoPlayerTextureView)this.oHt).setNeedResetExtractor(cxy());
+      if ((this.oNV instanceof VideoPlayerTextureView)) {
+        ((VideoPlayerTextureView)this.oNV).setNeedResetExtractor(cyZ());
       }
-      ((View)this.oHt).setVisibility(0);
-      ((View)this.oHt).setAlpha(0.0F);
-      this.rAT.setVisibility(0);
-      this.oHt.setVideoPath(paramString);
+      ((View)this.oNV).setVisibility(0);
+      ((View)this.oNV).setAlpha(0.0F);
+      this.rJe.setVisibility(0);
+      this.oNV.setVideoPath(paramString);
     }
-    if (((Integer)g.ajC().ajl().get(al.a.Iwy, Integer.valueOf(0))).intValue() == 1)
+    if (((Integer)g.ajR().ajA().get(am.a.IQW, Integer.valueOf(0))).intValue() == 1)
     {
-      this.rEY.setText(com.tencent.mm.plugin.sight.base.e.aqM(paramString));
-      this.rEY.setVisibility(0);
+      this.rNj.setText(com.tencent.mm.plugin.sight.base.e.arR(paramString));
+      this.rNj.setVisibility(0);
     }
     AppMethodBeat.o(107594);
   }
@@ -301,96 +301,96 @@ public class FavVideoView
   public final void c(String paramString1, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(107577);
-    this.hdP = paramString1;
+    this.hgD = paramString1;
     if (paramBoolean)
     {
       showLoading();
-      this.dsU = paramString2;
+      this.dua = paramString2;
     }
     AppMethodBeat.o(107577);
   }
   
-  public final void cxq()
+  public final void cyR()
   {
     AppMethodBeat.i(107582);
     if (!this.Zn)
     {
-      ad.i("MicroMsg.FavVideoView", "handleSingleClck isPrepared:false");
+      ae.i("MicroMsg.FavVideoView", "handleSingleClck isPrepared:false");
       AppMethodBeat.o(107582);
       return;
     }
-    if (this.rFh)
+    if (this.rNs)
     {
-      cxr();
+      cyS();
       AppMethodBeat.o(107582);
       return;
     }
-    cxs();
+    cyT();
     AppMethodBeat.o(107582);
   }
   
-  public final void cxr()
+  public final void cyS()
   {
     AppMethodBeat.i(107583);
-    ad.i("MicroMsg.FavVideoView", "hide video tool bar");
-    this.rEZ.setVisibility(8);
-    this.rFa.setVisibility(8);
-    this.rFh = false;
+    ae.i("MicroMsg.FavVideoView", "hide video tool bar");
+    this.rNk.setVisibility(8);
+    this.rNl.setVisibility(8);
+    this.rNs = false;
     AppMethodBeat.o(107583);
   }
   
-  public final void cxs()
+  public final void cyT()
   {
     AppMethodBeat.i(107584);
-    ad.i("MicroMsg.FavVideoView", "show video tool bar");
-    this.rEZ.setVisibility(0);
-    this.rFa.setVisibility(0);
-    this.rFh = true;
-    cxx();
+    ae.i("MicroMsg.FavVideoView", "show video tool bar");
+    this.rNk.setVisibility(0);
+    this.rNl.setVisibility(0);
+    this.rNs = true;
+    cyY();
     AppMethodBeat.o(107584);
   }
   
-  public final void cxt()
+  public final void cyU()
   {
     AppMethodBeat.i(107585);
-    cxw();
-    this.oHz.stopTimer();
+    cyX();
+    this.oOb.stopTimer();
     setVideoStateIv(true);
-    this.rFl.stopTimer();
+    this.rNw.stopTimer();
     AppMethodBeat.o(107585);
   }
   
-  public final void cxu()
+  public final void cyV()
   {
     AppMethodBeat.i(107586);
-    seek(this.rFb.getmPosition());
-    this.oHz.az(500L, 500L);
+    seek(this.rNm.getmPosition());
+    this.oOb.ay(500L, 500L);
     setVideoStateIv(false);
-    cxx();
+    cyY();
     AppMethodBeat.o(107586);
   }
   
-  public final void cxw()
+  public final void cyX()
   {
     AppMethodBeat.i(107589);
-    if (this.oHt.isPlaying())
+    if (this.oNV.isPlaying())
     {
-      ad.i("MicroMsg.FavVideoView", "VideoPlay: pausePlay()");
-      this.oHt.pause();
+      ae.i("MicroMsg.FavVideoView", "VideoPlay: pausePlay()");
+      this.oNV.pause();
     }
     AppMethodBeat.o(107589);
   }
   
-  protected final void cxx()
+  protected final void cyY()
   {
     AppMethodBeat.i(107592);
-    if (this.rFh) {
-      this.rFl.az(4000L, 4000L);
+    if (this.rNs) {
+      this.rNw.ay(4000L, 4000L);
     }
     AppMethodBeat.o(107592);
   }
   
-  public final int eT(int paramInt1, int paramInt2)
+  public final int eU(int paramInt1, int paramInt2)
   {
     return 0;
   }
@@ -400,7 +400,7 @@ public class FavVideoView
   public int getPalyPosition()
   {
     AppMethodBeat.i(107596);
-    int i = this.oHt.getCurrentPosition();
+    int i = this.oNV.getCurrentPosition();
     AppMethodBeat.o(107596);
     return i;
   }
@@ -408,12 +408,12 @@ public class FavVideoView
   public final boolean isPlaying()
   {
     AppMethodBeat.i(107590);
-    if (this.oHt == null)
+    if (this.oNV == null)
     {
       AppMethodBeat.o(107590);
       return false;
     }
-    boolean bool = this.oHt.isPlaying();
+    boolean bool = this.oNV.isPlaying();
     AppMethodBeat.o(107590);
     return bool;
   }
@@ -423,14 +423,14 @@ public class FavVideoView
     AppMethodBeat.i(107581);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/widget/FavVideoView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/widget/FavVideoView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (paramView.getId() == 2131303281)
     {
-      ad.i("MicroMsg.FavVideoView", "toggle video");
+      ae.i("MicroMsg.FavVideoView", "toggle video");
       if (!isPlaying()) {
         break label91;
       }
-      cxt();
+      cyU();
     }
     for (;;)
     {
@@ -438,22 +438,22 @@ public class FavVideoView
       AppMethodBeat.o(107581);
       return;
       label91:
-      cxu();
+      cyV();
     }
   }
   
   public final void onCompletion()
   {
     AppMethodBeat.i(107598);
-    ad.i("MicroMsg.FavVideoView", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
-    if ((com.tencent.mm.compatible.util.d.lA(18)) || (!this.rFe))
+    ae.i("MicroMsg.FavVideoView", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
+    if ((com.tencent.mm.compatible.util.d.lC(18)) || (!this.rNp))
     {
       seek(0);
       AppMethodBeat.o(107598);
       return;
     }
-    if (this.oHt != null) {
-      this.oHt.stop();
+    if (this.oNV != null) {
+      this.oNV.stop();
     }
     AppMethodBeat.o(107598);
   }
@@ -461,21 +461,21 @@ public class FavVideoView
   public final void onDestroy()
   {
     AppMethodBeat.i(107580);
-    ad.i("MicroMsg.FavVideoView", "VideoPlay:   onDestroy()");
-    this.oHz.stopTimer();
-    this.rFl.stopTimer();
-    this.rFl.stopTimer();
+    ae.i("MicroMsg.FavVideoView", "VideoPlay:   onDestroy()");
+    this.oOb.stopTimer();
+    this.rNw.stopTimer();
+    this.rNw.stopTimer();
     try
     {
-      ((com.tencent.mm.plugin.record.a.a)g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(this.rFn);
-      ((af)g.ad(af.class)).getFavCdnStorage().b(this.rFn);
-      this.oHt.stop();
+      ((com.tencent.mm.plugin.record.a.a)g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(this.rNy);
+      ((af)g.ad(af.class)).getFavCdnStorage().b(this.rNy);
+      this.oNV.stop();
       AppMethodBeat.o(107580);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("MicroMsg.FavVideoView", "onDestroy() %s %s", new Object[] { localThrowable.getClass().getSimpleName(), localThrowable.getMessage() });
+      ae.e("MicroMsg.FavVideoView", "onDestroy() %s %s", new Object[] { localThrowable.getClass().getSimpleName(), localThrowable.getMessage() });
       AppMethodBeat.o(107580);
     }
   }
@@ -483,30 +483,30 @@ public class FavVideoView
   public final void onError(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(107599);
-    ad.e("MicroMsg.FavVideoView", "VideoPlay: %d on play video error what %d extra %d. isMMVideoPlayer[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.rFe) });
-    if (this.rAW)
+    ae.e("MicroMsg.FavVideoView", "VideoPlay: %d on play video error what %d extra %d. isMMVideoPlayer[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.rNp) });
+    if (this.rJh)
     {
       onCompletion();
       AppMethodBeat.o(107599);
       return;
     }
-    this.rFf = paramInt2;
-    String str = this.oHt.getVideoPath();
-    this.oHt.stop();
-    this.rFd = true;
+    this.rNq = paramInt2;
+    String str = this.oNV.getVideoPath();
+    this.oNV.stop();
+    this.rNo = true;
     lI(false);
-    if (this.rFf == -1)
+    if (this.rNq == -1)
     {
-      this.rFj += 1;
-      if (this.rFj <= 3)
+      this.rNu += 1;
+      if (this.rNu <= 3)
       {
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107568);
             if (FavVideoView.f(FavVideoView.this) != null) {
-              FavVideoView.this.agT(FavVideoView.h(FavVideoView.this));
+              FavVideoView.this.ahQ(FavVideoView.h(FavVideoView.this));
             }
             AppMethodBeat.o(107568);
           }
@@ -515,10 +515,10 @@ public class FavVideoView
         return;
       }
     }
-    if ((!bt.isNullOrNil(str)) && (i.fv(str)))
+    if ((!bu.isNullOrNil(str)) && (o.fB(str)))
     {
-      ad.e("MicroMsg.FavVideoView", "VideoPlay: start third player to play");
-      this.oGm.post(new FavVideoView.8(this, str));
+      ae.e("MicroMsg.FavVideoView", "VideoPlay: start third player to play");
+      this.oMO.post(new FavVideoView.8(this, str));
     }
     AppMethodBeat.o(107599);
   }
@@ -526,9 +526,9 @@ public class FavVideoView
   public final void onResume()
   {
     AppMethodBeat.i(107579);
-    ad.i("MicroMsg.FavVideoView", "VideoPlay:   onResume()");
-    if (!this.rFd) {
-      cxv();
+    ae.i("MicroMsg.FavVideoView", "VideoPlay:   onResume()");
+    if (!this.rNo) {
+      cyW();
     }
     AppMethodBeat.o(107579);
   }
@@ -536,26 +536,26 @@ public class FavVideoView
   public final void seek(int paramInt)
   {
     AppMethodBeat.i(107595);
-    ad.i("MicroMsg.FavVideoView", "VideoPlay: seek second is %d", new Object[] { Integer.valueOf(paramInt) });
-    this.oHt.p(paramInt * 1000);
+    ae.i("MicroMsg.FavVideoView", "VideoPlay: seek second is %d", new Object[] { Integer.valueOf(paramInt) });
+    this.oNV.p(paramInt * 1000);
     AppMethodBeat.o(107595);
   }
   
   public void setCallback(b paramb)
   {
-    this.rFk = paramb;
+    this.rNv = paramb;
   }
   
   public void setThumbView(String paramString)
   {
     AppMethodBeat.i(107578);
-    this.rAT.setImageBitmap(BackwardSupportUtil.b.o(paramString, 1.0F));
+    this.rJe.setImageBitmap(BackwardSupportUtil.b.p(paramString, 1.0F));
     AppMethodBeat.o(107578);
   }
   
   public void setVideoData(String paramString)
   {
-    this.hdP = paramString;
+    this.hgD = paramString;
   }
   
   public void setVideoStateIv(boolean paramBoolean)
@@ -563,7 +563,7 @@ public class FavVideoView
     AppMethodBeat.i(107591);
     try
     {
-      VideoPlayerSeekBar localVideoPlayerSeekBar = this.rFb;
+      VideoPlayerSeekBar localVideoPlayerSeekBar = this.rNm;
       if (!paramBoolean) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
@@ -575,7 +575,7 @@ public class FavVideoView
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.FavVideoView", "set video state iv error : " + localException.toString());
+      ae.e("MicroMsg.FavVideoView", "set video state iv error : " + localException.toString());
       AppMethodBeat.o(107591);
     }
   }
@@ -583,14 +583,14 @@ public class FavVideoView
   public final void ta()
   {
     AppMethodBeat.i(107597);
-    this.rFf = 0;
+    this.rNq = 0;
     this.Zn = true;
     lI(true);
-    this.rAW = this.oHt.start();
-    int i = this.oHt.getDuration() / 1000;
-    this.oHz.az(500L, 500L);
+    this.rJh = this.oNV.start();
+    int i = this.oNV.getDuration() / 1000;
+    this.oOb.ay(500L, 500L);
     setVideoStateIv(false);
-    ad.i("MicroMsg.FavVideoView", "VideoPlay: startPlay(),duration is %d", new Object[] { Integer.valueOf(i) });
+    ae.i("MicroMsg.FavVideoView", "VideoPlay: startPlay(),duration is %d", new Object[] { Integer.valueOf(i) });
     AppMethodBeat.o(107597);
   }
   
@@ -602,19 +602,19 @@ public class FavVideoView
     private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(107575);
-      ad.d("MicroMsg.FavVideoView", "onCdnStatusChanged status:%s, offset:%s, totalLength:%s, path:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-      if (((paramInt1 == 3) || (paramInt1 == 2)) && (i.fv(paramString)))
+      ae.d("MicroMsg.FavVideoView", "onCdnStatusChanged status:%s, offset:%s, totalLength:%s, path:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      if (((paramInt1 == 3) || (paramInt1 == 2)) && (o.fB(paramString)))
       {
         FavVideoView.f(FavVideoView.this).stop();
         FavVideoView.l(FavVideoView.this);
         FavVideoView.a(FavVideoView.this, paramString);
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107572);
             if (FavVideoView.f(FavVideoView.this) != null) {
-              FavVideoView.this.agT(FavVideoView.h(FavVideoView.this));
+              FavVideoView.this.ahQ(FavVideoView.h(FavVideoView.this));
             }
             AppMethodBeat.o(107572);
           }
@@ -651,7 +651,7 @@ public class FavVideoView
         AppMethodBeat.o(107573);
         return;
       }
-      if ((bt.isNullOrNil(paramc.field_dataId)) || (!paramc.field_dataId.equals(FavVideoView.k(FavVideoView.this))))
+      if ((bu.isNullOrNil(paramc.field_dataId)) || (!paramc.field_dataId.equals(FavVideoView.k(FavVideoView.this))))
       {
         AppMethodBeat.o(107573);
         return;

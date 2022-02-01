@@ -8,19 +8,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class at$c
   extends c.a
 {
-  TextView KeJ;
-  TextView rDq;
+  TextView KBc;
+  TextView rLB;
   
-  public final c.a gI(View paramView)
+  public final c.a gN(View paramView)
   {
     AppMethodBeat.i(37372);
-    super.gn(paramView);
-    this.fTP = ((TextView)paramView.findViewById(2131298178));
-    this.yEk = ((TextView)paramView.findViewById(2131298185));
-    this.KeJ = ((TextView)paramView.findViewById(2131298073));
-    this.rDq = ((TextView)paramView.findViewById(2131298161));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
+    super.gs(paramView);
+    this.fVV = ((TextView)paramView.findViewById(2131298178));
+    this.yUp = ((TextView)paramView.findViewById(2131298185));
+    this.KBc = ((TextView)paramView.findViewById(2131298073));
+    this.rLB = ((TextView)paramView.findViewById(2131298161));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
     AppMethodBeat.o(37372);
     return this;
   }

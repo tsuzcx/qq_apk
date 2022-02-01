@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.o;
+import com.tencent.mm.vfs.k;
 
 final class d$a
   implements View.OnClickListener
@@ -24,17 +24,17 @@ final class d$a
     AppMethodBeat.i(111515);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     paramView = new Intent();
     paramView.setAction("android.intent.action.VIEW");
-    localObject = new e(this.filePath);
-    n.a(this.tNF.mContext, paramView, (e)localObject, "video/*");
+    localObject = new k(this.filePath);
+    o.a(this.tYw.mContext, paramView, (k)localObject, "video/*");
     try
     {
-      localObject = this.tNF.mContext;
+      localObject = this.tYw.mContext;
       paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahp(), "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject).startActivity((Intent)paramView.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahE(), "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramView.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       label143:
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

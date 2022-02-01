@@ -6,7 +6,7 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class be
@@ -16,15 +16,15 @@ public class be
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(207919);
+    AppMethodBeat.i(198099);
     int i = paramb.chh.cgn.optInt("fontSize");
-    ((g)paramb.chg).WI(i);
-    ad.i("MicroMsg.JsApiSetFrontSizeCallback", "doSetFontSizeCb, fontSize = ".concat(String.valueOf(i)));
+    ((g)paramb.chg).Xp(i);
+    ae.i("MicroMsg.JsApiSetFrontSizeCallback", "doSetFontSizeCb, fontSize = ".concat(String.valueOf(i)));
     paramb.a("", null);
-    AppMethodBeat.o(207919);
+    AppMethodBeat.o(198099);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

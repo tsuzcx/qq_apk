@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Companion;", "", "()V", "BORDER_DELAY", "", "BORDER_DURATION", "TAG", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Companion;", "", "()V", "BORDER_DELAY", "", "BORDER_DURATION", "TAG", "", "plugin-recordvideo_release"})
 public final class WxCropOperationLayout$g {}
 
 

@@ -1,88 +1,73 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aec
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public String FMk;
+  public int GuO;
+  public int GuP;
+  public String info;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72469);
+    AppMethodBeat.i(125721);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.aS(1, this.GuO);
+      paramVarArgs.aS(2, this.GuP);
+      if (this.info != null) {
+        paramVarArgs.d(3, this.info);
       }
-      if (this.FMk != null) {
-        paramVarArgs.d(2, this.FMk);
-      }
-      AppMethodBeat.o(72469);
+      AppMethodBeat.o(125721);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label370;
-      }
-    }
-    label370:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.FMk != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FMk);
+      int i = f.a.a.b.b.a.bz(1, this.GuO) + 0 + f.a.a.b.b.a.bz(2, this.GuP);
+      paramInt = i;
+      if (this.info != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.info);
       }
-      AppMethodBeat.o(72469);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(72469);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        aec localaec = (aec)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(72469);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaec.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72469);
-          return 0;
-        }
-        localaec.FMk = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(72469);
-        return 0;
-      }
-      AppMethodBeat.o(72469);
-      return -1;
+      AppMethodBeat.o(125721);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(125721);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      aec localaec = (aec)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(125721);
+        return -1;
+      case 1: 
+        localaec.GuO = locala.OmT.zc();
+        AppMethodBeat.o(125721);
+        return 0;
+      case 2: 
+        localaec.GuP = locala.OmT.zc();
+        AppMethodBeat.o(125721);
+        return 0;
+      }
+      localaec.info = locala.OmT.readString();
+      AppMethodBeat.o(125721);
+      return 0;
+    }
+    AppMethodBeat.o(125721);
+    return -1;
   }
 }
 

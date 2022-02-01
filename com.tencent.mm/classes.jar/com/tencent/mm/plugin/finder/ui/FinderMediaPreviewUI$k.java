@@ -7,16 +7,16 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class FinderMediaPreviewUI$k
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public static final k sEd;
+  public static final k sPc;
   
   static
   {
     AppMethodBeat.i(167418);
-    sEd = new k();
+    sPc = new k();
     AppMethodBeat.o(167418);
   }
   

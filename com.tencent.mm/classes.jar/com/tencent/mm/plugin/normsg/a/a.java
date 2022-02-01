@@ -8,13 +8,15 @@ import com.tencent.mm.sdk.b.b;
 
 public abstract interface a
 {
-  public abstract byte[] LX(int paramInt);
+  public abstract boolean A(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public abstract String LY(int paramInt);
+  public abstract byte[] MC(int paramInt);
   
-  public abstract void LZ(int paramInt);
+  public abstract String MD(int paramInt);
   
-  public abstract byte[] Ma(int paramInt);
+  public abstract void ME(int paramInt);
+  
+  public abstract byte[] MF(int paramInt);
   
   public abstract void a(View paramView, Class<? extends b> paramClass);
   
@@ -24,63 +26,65 @@ public abstract interface a
   
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
-  public abstract String aaC();
+  public abstract String aaL();
   
   public abstract void ao(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract String atn(String paramString);
+  public abstract String auA(String paramString);
   
-  public abstract void atp(String paramString);
+  public abstract void auC(String paramString);
   
-  public abstract void atq(String paramString);
+  public abstract void auD(String paramString);
   
-  public abstract void atr(String paramString);
+  public abstract void auE(String paramString);
   
-  public abstract boolean ats(String paramString);
+  public abstract boolean auF(String paramString);
   
-  public abstract byte[] att(String paramString);
+  public abstract byte[] auG(String paramString);
   
-  public abstract void atu(String paramString);
+  public abstract void auH(String paramString);
   
-  public abstract boolean atv(String paramString);
+  public abstract boolean auI(String paramString);
   
-  public abstract byte[] atw(String paramString);
+  public abstract byte[] auJ(String paramString);
   
-  public abstract String duI();
+  public abstract String[] auK(String paramString);
   
-  public abstract boolean duJ();
+  public abstract void dWk();
   
-  public abstract boolean duK();
+  public abstract String dxY();
   
-  public abstract byte[] duO();
+  public abstract boolean dxZ();
   
-  public abstract byte[] duP();
+  public abstract boolean dy(Object paramObject);
   
-  public abstract boolean duQ();
+  public abstract boolean dya();
   
-  public abstract byte[] duR();
+  public abstract byte[] dye();
   
-  public abstract boolean duS();
+  public abstract byte[] dyf();
   
-  public abstract String duT();
+  public abstract boolean dyg();
   
-  public abstract String duU();
+  public abstract byte[] dyh();
   
-  public abstract String duV();
+  public abstract boolean dyi();
   
-  public abstract com.tencent.mm.normsg.a duW();
+  public abstract String dyj();
   
-  public abstract com.tencent.mm.normsgext.a duX();
+  public abstract String dyk();
   
-  public abstract boolean dx(Object paramObject);
+  public abstract String dyl();
+  
+  public abstract com.tencent.mm.normsg.a dym();
+  
+  public abstract com.tencent.mm.normsgext.a dyn();
   
   public abstract boolean e(Object paramObject, Class paramClass);
   
-  public abstract void io(String paramString1, String paramString2);
+  public abstract void iu(String paramString1, String paramString2);
   
-  public abstract String pi(boolean paramBoolean);
-  
-  public abstract boolean z(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract String pq(boolean paramBoolean);
 }
 
 

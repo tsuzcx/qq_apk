@@ -13,62 +13,62 @@ import d.l;
 import d.z;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/adapter/LiveShareRoomsAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$LiveShareRoomsItemHolder;", "()V", "itemClickListener", "Lkotlin/Function0;", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function0;", "setItemClickListener", "(Lkotlin/jvm/functions/Function0;)V", "lastSelectedList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLastSelectedList", "()Ljava/util/ArrayList;", "roomsList", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "selectedList", "getSelectedList", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "reset", "updateRooms", "rooms", "", "LiveShareRoomsItemHolder", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/adapter/LiveShareRoomsAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$LiveShareRoomsItemHolder;", "()V", "itemClickListener", "Lkotlin/Function0;", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function0;", "setItemClickListener", "(Lkotlin/jvm/functions/Function0;)V", "lastSelectedList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLastSelectedList", "()Ljava/util/ArrayList;", "roomsList", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "selectedList", "getSelectedList", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "reset", "updateRooms", "rooms", "", "LiveShareRoomsItemHolder", "plugin-logic_release"})
 public final class f
   extends RecyclerView.a<a>
 {
-  public final ArrayList<h> hcd;
-  final ArrayList<String> hce;
-  public final ArrayList<String> hcf;
-  public d.g.a.a<z> hcg;
+  public final ArrayList<h> heR;
+  final ArrayList<String> heS;
+  public final ArrayList<String> heT;
+  public d.g.a.a<z> heU;
   
   public f()
   {
-    AppMethodBeat.i(213077);
-    this.hcd = new ArrayList();
-    this.hce = new ArrayList();
-    this.hcf = new ArrayList();
-    AppMethodBeat.o(213077);
+    AppMethodBeat.i(216707);
+    this.heR = new ArrayList();
+    this.heS = new ArrayList();
+    this.heT = new ArrayList();
+    AppMethodBeat.o(216707);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(213075);
-    int i = this.hcd.size();
-    AppMethodBeat.o(213075);
+    AppMethodBeat.i(216705);
+    int i = this.heR.size();
+    AppMethodBeat.o(216705);
     return i;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$LiveShareRoomsItemHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIcon", "Landroid/widget/ImageView;", "getAvatarIcon", "()Landroid/widget/ImageView;", "countTv", "Landroid/widget/TextView;", "getCountTv", "()Landroid/widget/TextView;", "selectIcon", "getSelectIcon", "usernameTv", "getUsernameTv", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$LiveShareRoomsItemHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIcon", "Landroid/widget/ImageView;", "getAvatarIcon", "()Landroid/widget/ImageView;", "countTv", "Landroid/widget/TextView;", "getCountTv", "()Landroid/widget/TextView;", "selectIcon", "getSelectIcon", "usernameTv", "getUsernameTv", "plugin-logic_release"})
   public static final class a
     extends RecyclerView.w
   {
-    final ImageView gXb;
-    final ImageView hbT;
-    final TextView hbU;
-    final TextView hch;
+    final ImageView gZO;
+    final ImageView heH;
+    final TextView heI;
+    final TextView heV;
     
     public a(View paramView)
     {
       super();
-      AppMethodBeat.i(213072);
+      AppMethodBeat.i(216702);
       View localView = paramView.findViewById(2131307780);
       p.g(localView, "itemView.findViewById(R.…hare_rooms_item_selector)");
-      this.gXb = ((ImageView)localView);
+      this.gZO = ((ImageView)localView);
       localView = paramView.findViewById(2131307778);
       p.g(localView, "itemView.findViewById(R.…e_rooms_item_avatar_icon)");
-      this.hbT = ((ImageView)localView);
+      this.heH = ((ImageView)localView);
       localView = paramView.findViewById(2131307781);
       p.g(localView, "itemView.findViewById(R.…e_rooms_item_username_tv)");
-      this.hbU = ((TextView)localView);
+      this.heI = ((TextView)localView);
       paramView = paramView.findViewById(2131307779);
       p.g(paramView, "itemView.findViewById(R.…hare_rooms_item_count_tv)");
-      this.hch = ((TextView)paramView);
-      AppMethodBeat.o(213072);
+      this.heV = ((TextView)paramView);
+      AppMethodBeat.o(216702);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -76,38 +76,38 @@ public final class f
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(213073);
+      AppMethodBeat.i(216703);
       b localb = new b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = ((h)f.a(this.hci).get(this.ghM)).username;
-      if (!this.hci.hce.contains(paramView))
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = ((h)f.a(this.heW).get(this.gke)).username;
+      if (!this.heW.heS.contains(paramView))
       {
-        if (!this.hci.hcf.contains(paramView)) {
+        if (!this.heW.heT.contains(paramView)) {
           break label143;
         }
-        this.hci.hcf.remove(paramView);
-        this.hcj.gXb.setActivated(false);
+        this.heW.heT.remove(paramView);
+        this.heX.gZO.setActivated(false);
       }
       for (;;)
       {
-        paramView = this.hci.hcg;
+        paramView = this.heW.heU;
         if (paramView != null) {
           paramView.invoke();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/view/adapter/LiveShareRoomsAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(213073);
+        AppMethodBeat.o(216703);
         return;
         label143:
-        this.hci.hcf.add(paramView);
-        this.hcj.gXb.setActivated(true);
+        this.heW.heT.add(paramView);
+        this.heX.gZO.setActivated(true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.view.a.f
  * JD-Core Version:    0.7.0.1
  */

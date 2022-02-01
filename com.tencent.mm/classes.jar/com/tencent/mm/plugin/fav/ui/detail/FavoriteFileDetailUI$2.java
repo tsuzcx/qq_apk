@@ -18,7 +18,7 @@ final class FavoriteFileDetailUI$2
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteFileDetailUI$10", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fav/ui/detail/FavoriteFileDetailUI$10", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,8 +27,8 @@ final class FavoriteFileDetailUI$2
       a.a(false, this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteFileDetailUI$10", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(107115);
       return false;
-      FavoriteFileDetailUI.a(this.rAl, (int)paramMotionEvent.getRawX());
-      FavoriteFileDetailUI.b(this.rAl, (int)paramMotionEvent.getRawY());
+      FavoriteFileDetailUI.a(this.rIw, (int)paramMotionEvent.getRawX());
+      FavoriteFileDetailUI.b(this.rIw, (int)paramMotionEvent.getRawY());
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yd;
-import com.tencent.mm.g.a.yd.b;
+import com.tencent.mm.g.a.yj;
+import com.tencent.mm.g.a.yj.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -20,44 +20,44 @@ public final class d
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46716);
-    ad.i("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "invoke JsApiHandleWCPayOverseaWalletBuffer!");
+    ae.i("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "invoke JsApiHandleWCPayOverseaWalletBuffer!");
     if (paramc == null)
     {
-      ad.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:component is null");
+      ae.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:component is null");
       AppMethodBeat.o(46716);
       return;
     }
     if (paramc.getContext() == null)
     {
-      ad.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:context is null");
+      ae.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:context is null");
       paramc.h(paramInt, e("fail", null));
       AppMethodBeat.o(46716);
       return;
     }
-    final yd localyd = new yd();
-    localyd.dMt.action = paramJSONObject.optString("action");
-    localyd.dMt.buffer = paramJSONObject.optString("buffer");
-    localyd.dMt.appId = paramJSONObject.optString("appId");
-    localyd.dMt.dMx = bt.getInt(paramJSONObject.optString("walletRegion"), 0);
-    localyd.dMt.cUM = paramJSONObject.optString("timeStamp");
-    localyd.dMt.nonceStr = paramJSONObject.optString("nonceStr");
-    localyd.dMt.dMw = paramJSONObject.optString("paySign");
-    localyd.dMt.signType = paramJSONObject.optString("signType");
-    localyd.dMt.dMv = paramJSONObject.optString("package");
-    localyd.dMt.url = paramJSONObject.optString("url");
-    localyd.dMu.dMy = new Runnable()
+    final yj localyj = new yj();
+    localyj.dNJ.action = paramJSONObject.optString("action");
+    localyj.dNJ.buffer = paramJSONObject.optString("buffer");
+    localyj.dNJ.appId = paramJSONObject.optString("appId");
+    localyj.dNJ.dNN = bu.getInt(paramJSONObject.optString("walletRegion"), 0);
+    localyj.dNJ.cVJ = paramJSONObject.optString("timeStamp");
+    localyj.dNJ.nonceStr = paramJSONObject.optString("nonceStr");
+    localyj.dNJ.dNM = paramJSONObject.optString("paySign");
+    localyj.dNJ.signType = paramJSONObject.optString("signType");
+    localyj.dNJ.dNL = paramJSONObject.optString("package");
+    localyj.dNJ.url = paramJSONObject.optString("url");
+    localyj.dNK.dNO = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(46715);
-        if (localyd.dMu.retCode == 0)
+        if (localyj.dNK.retCode == 0)
         {
-          new HashMap().put("buffer", localyd.dMu.buffer);
+          new HashMap().put("buffer", localyj.dNK.buffer);
           paramc.h(paramInt, d.this.e("ok", null));
           AppMethodBeat.o(46715);
           return;
         }
-        if (localyd.dMu.retCode == -2)
+        if (localyj.dNK.retCode == -2)
         {
           paramc.h(paramInt, d.this.e("null", null));
           AppMethodBeat.o(46715);
@@ -67,7 +67,7 @@ public final class d
         AppMethodBeat.o(46715);
       }
     };
-    com.tencent.mm.sdk.b.a.IbL.l(localyd);
+    com.tencent.mm.sdk.b.a.IvT.l(localyj);
     AppMethodBeat.o(46716);
   }
 }

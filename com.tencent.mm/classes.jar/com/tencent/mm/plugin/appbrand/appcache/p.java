@@ -4,13 +4,13 @@ import java.io.InputStream;
 
 public abstract interface p
 {
-  public abstract InputStream Lh(String paramString);
+  public abstract InputStream LI(String paramString);
   
-  public abstract boolean aZr();
+  public abstract boolean aZO();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.p
  * JD-Core Version:    0.7.0.1
  */

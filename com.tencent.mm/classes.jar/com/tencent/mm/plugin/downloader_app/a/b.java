@@ -6,38 +6,38 @@ import android.content.Intent;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.downloader.model.FileDownloadPendingReceive;
 import com.tencent.mm.plugin.downloader.model.FileDownloadService;
 import com.tencent.mm.plugin.downloader_app.ui.DownloadMainUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class b
 {
   private static Object lock;
-  private static Map<String, Long> poF;
-  private static Map<String, Integer> poG;
+  private static Map<String, Long> pvl;
+  private static Map<String, Integer> pvm;
   
   static
   {
     AppMethodBeat.i(8839);
-    poF = new HashMap();
-    poG = new HashMap();
+    pvl = new HashMap();
+    pvm = new HashMap();
     lock = new Object();
     AppMethodBeat.o(8839);
   }
   
-  private static PendingIntent aau(String paramString)
+  private static PendingIntent abl(String paramString)
   {
     AppMethodBeat.i(8838);
-    Intent localIntent = new Intent(aj.getContext(), DownloadMainUI.class);
+    Intent localIntent = new Intent(ak.getContext(), DownloadMainUI.class);
     localIntent.putExtra("appId", paramString);
     localIntent.putExtra("view_task", true);
     localIntent.putExtra("from_scene", 1);
-    paramString = PendingIntent.getActivity(aj.getContext(), (int)System.currentTimeMillis(), localIntent, 0);
+    paramString = PendingIntent.getActivity(ak.getContext(), (int)System.currentTimeMillis(), localIntent, 0);
     AppMethodBeat.o(8838);
     return paramString;
   }
@@ -47,17 +47,17 @@ public final class b
     AppMethodBeat.i(8837);
     synchronized (lock)
     {
-      Integer localInteger = (Integer)poG.get(paramString);
+      Integer localInteger = (Integer)pvm.get(paramString);
       if (localInteger == null)
       {
-        ad.i("MicroMsg.DownloadNotificationManager", "No notification id found");
+        ae.i("MicroMsg.DownloadNotificationManager", "No notification id found");
         AppMethodBeat.o(8837);
         return;
       }
       ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(localInteger.intValue());
-      ad.i("MicroMsg.DownloadNotificationManager", "cancelNotification, id = ".concat(String.valueOf(localInteger)));
-      poG.remove(paramString);
-      poF.remove(paramString);
+      ae.i("MicroMsg.DownloadNotificationManager", "cancelNotification, id = ".concat(String.valueOf(localInteger)));
+      pvm.remove(paramString);
+      pvl.remove(paramString);
       AppMethodBeat.o(8837);
       return;
     }
@@ -69,13 +69,13 @@ public final class b
     AppMethodBeat.i(8836);
     if (parama == null)
     {
-      ad.e("MicroMsg.DownloadNotificationManager", "updateNotification failed: null task info");
+      ae.e("MicroMsg.DownloadNotificationManager", "updateNotification failed: null task info");
       AppMethodBeat.o(8836);
       return;
     }
     if (!parama.field_fromDownloadApp)
     {
-      ad.i("MicroMsg.DownloadNotificationManager", "updateNotification not from download app");
+      ae.i("MicroMsg.DownloadNotificationManager", "updateNotification not from download app");
       AppMethodBeat.o(8836);
       return;
     }
@@ -87,13 +87,13 @@ public final class b
     if (parama.field_totalSize > 0L) {}
     for (int i = (int)(parama.field_downloadedSize * 100L / parama.field_totalSize);; i = 0)
     {
-      Object localObject3 = com.tencent.mm.br.a.bI(aj.getContext(), "reminder_channel_id");
-      Object localObject2 = (Long)poF.get(parama.field_downloadUrl);
+      Object localObject3 = com.tencent.mm.bq.a.bJ(ak.getContext(), "reminder_channel_id");
+      Object localObject2 = (Long)pvl.get(parama.field_downloadUrl);
       ??? = localObject2;
       if (localObject2 == null)
       {
         ??? = Long.valueOf(System.currentTimeMillis());
-        poF.put(parama.field_downloadUrl, ???);
+        pvl.put(parama.field_downloadUrl, ???);
       }
       ((s.c)localObject3).i(((Long)???).longValue());
       ((s.c)localObject3).f(parama.field_fileName);
@@ -104,7 +104,7 @@ public final class b
         AppMethodBeat.o(8836);
         return;
       case 1: 
-        ((s.c)localObject3).as(com.tencent.mm.br.a.dwe());
+        ((s.c)localObject3).as(com.tencent.mm.bq.a.dzu());
         int j = i;
         if (i == 0) {
           j = 1;
@@ -114,50 +114,50 @@ public final class b
         }
         ((s.c)localObject3).b(100, j, bool);
         if (parama.field_reserveInWifi) {
-          ((s.c)localObject3).g(aj.getContext().getString(2131759054) + "·" + aj.getContext().getString(2131759052));
+          ((s.c)localObject3).g(ak.getContext().getString(2131759054) + "·" + ak.getContext().getString(2131759052));
         }
         break;
       }
       for (;;)
       {
         ((s.c)localObject3).f(2, true);
-        ((s.c)localObject3).Hl = aau(parama.field_appId);
+        ((s.c)localObject3).Hl = abl(parama.field_appId);
         synchronized (lock)
         {
-          localObject2 = (Integer)poG.get(parama.field_downloadUrl);
+          localObject2 = (Integer)pvm.get(parama.field_downloadUrl);
           if (localObject2 == null)
           {
             i = ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().c(((s.c)localObject3).build());
-            poG.put(parama.field_downloadUrl, Integer.valueOf(i));
+            pvm.put(parama.field_downloadUrl, Integer.valueOf(i));
             if (parama.field_status == 4)
             {
-              poG.remove(parama.field_downloadUrl);
-              poF.remove(parama.field_downloadUrl);
+              pvm.remove(parama.field_downloadUrl);
+              pvl.remove(parama.field_downloadUrl);
             }
             AppMethodBeat.o(8836);
             return;
-            ((s.c)localObject3).g(aj.getContext().getString(2131759052));
+            ((s.c)localObject3).g(ak.getContext().getString(2131759052));
             continue;
-            ((s.c)localObject3).as(com.tencent.mm.br.a.dwe());
+            ((s.c)localObject3).as(com.tencent.mm.bq.a.dzu());
             ((s.c)localObject3).F(true);
-            ((s.c)localObject3).Hl = aau(parama.field_appId);
-            if ((parama.field_errCode == com.tencent.mm.plugin.downloader.a.a.pjm) || (parama.field_errCode == com.tencent.mm.plugin.downloader.a.a.pji)) {
-              ((s.c)localObject3).g(aj.getContext().getString(2131761678));
+            ((s.c)localObject3).Hl = abl(parama.field_appId);
+            if ((parama.field_errCode == com.tencent.mm.plugin.downloader.a.a.ppR) || (parama.field_errCode == com.tencent.mm.plugin.downloader.a.a.ppN)) {
+              ((s.c)localObject3).g(ak.getContext().getString(2131761678));
             }
             for (;;)
             {
-              ((s.c)localObject3).Hl = aau(parama.field_appId);
+              ((s.c)localObject3).Hl = abl(parama.field_appId);
               break;
-              if (com.tencent.mm.plugin.downloader.model.a.tP(parama.field_downloadId))
+              if (com.tencent.mm.plugin.downloader.model.a.ug(parama.field_downloadId))
               {
-                if (com.tinkerboots.sdk.b.a.isWifi(aj.getContext())) {
-                  ((s.c)localObject3).g(aj.getContext().getString(2131761676));
+                if (com.tinkerboots.sdk.b.a.isWifi(ak.getContext())) {
+                  ((s.c)localObject3).g(ak.getContext().getString(2131761676));
                 } else {
-                  ((s.c)localObject3).g(aj.getContext().getString(2131761677));
+                  ((s.c)localObject3).g(ak.getContext().getString(2131761677));
                 }
               }
               else {
-                ((s.c)localObject3).g(aj.getContext().getString(2131761675));
+                ((s.c)localObject3).g(ak.getContext().getString(2131761675));
               }
             }
             cancelNotification(parama.field_downloadUrl);
@@ -167,17 +167,17 @@ public final class b
             AppMethodBeat.o(8836);
             return;
             cancelNotification(parama.field_downloadUrl);
-            ??? = aj.getContext();
-            localObject2 = com.tencent.mm.br.a.bI((Context)???, "reminder_channel_id");
+            ??? = ak.getContext();
+            localObject2 = com.tencent.mm.bq.a.bJ((Context)???, "reminder_channel_id");
             ((s.c)localObject2).f(parama.field_fileName);
-            ((s.c)localObject2).as(com.tencent.mm.br.a.dwe());
+            ((s.c)localObject2).as(com.tencent.mm.bq.a.dzu());
             ((s.c)localObject2).F(true);
             localObject3 = new Intent();
-            Context localContext = aj.getContext();
+            Context localContext = ak.getContext();
             ((Intent)localObject3).setClass(localContext, FileDownloadPendingReceive.class);
-            ((Intent)localObject3).putExtra(FileDownloadService.pmP, 3);
-            ((Intent)localObject3).putExtra(FileDownloadService.pmQ, parama.field_filePath);
-            ((Intent)localObject3).putExtra(FileDownloadService.pmR, parama.field_md5);
+            ((Intent)localObject3).putExtra(FileDownloadService.ptw, 3);
+            ((Intent)localObject3).putExtra(FileDownloadService.ptx, parama.field_filePath);
+            ((Intent)localObject3).putExtra(FileDownloadService.pty, parama.field_md5);
             ((Intent)localObject3).putExtra("downloadId", parama.field_downloadId);
             ((s.c)localObject2).Hl = PendingIntent.getBroadcast(localContext, (int)System.currentTimeMillis(), (Intent)localObject3, 0);
             if (parama.field_reserveInWifi) {
@@ -190,8 +190,8 @@ public final class b
               return;
               if (parama.field_autoDownload)
               {
-                ((s.c)localObject2).f(parama.field_fileName + " · " + aj.getContext().getString(2131759047));
-                ((s.c)localObject2).g(aj.getContext().getString(2131759046));
+                ((s.c)localObject2).f(parama.field_fileName + " · " + ak.getContext().getString(2131759047));
+                ((s.c)localObject2).g(ak.getContext().getString(2131759046));
               }
               else
               {

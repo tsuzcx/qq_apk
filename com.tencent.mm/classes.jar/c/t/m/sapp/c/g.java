@@ -11,7 +11,7 @@ public class g
 {
   public static void a(Context paramContext)
   {
-    AppMethodBeat.i(190453);
+    AppMethodBeat.i(210718);
     b(paramContext);
     Object localObject1 = c(paramContext);
     Object localObject2 = q.e(q.a(paramContext, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
@@ -112,7 +112,7 @@ public class g
               q.b(paramContext, "__SP_LAST_TencentLoc_COMP_INFO__sapp_", q.a((List)localObject3));
               q.b(paramContext, "__SP_LAST_TencentLoc_COMP_SDK_VER__sapp_", h.a);
             }
-            AppMethodBeat.o(190453);
+            AppMethodBeat.o(210718);
             return;
           }
           i = 1;
@@ -123,17 +123,17 @@ public class g
   
   public static void b(Context paramContext)
   {
-    AppMethodBeat.i(190454);
+    AppMethodBeat.i(210719);
     paramContext = new File(paramContext.getFilesDir(), "TencentLocation_sapp/lastComp");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    AppMethodBeat.o(190454);
+    AppMethodBeat.o(210719);
   }
   
   public static List<String> c(Context paramContext)
   {
-    AppMethodBeat.i(190455);
+    AppMethodBeat.i(210720);
     Object localObject = new File(paramContext.getFilesDir(), q.b);
     ArrayList localArrayList = null;
     paramContext = localArrayList;
@@ -166,7 +166,7 @@ public class g
         }
       }
     }
-    AppMethodBeat.o(190455);
+    AppMethodBeat.o(210720);
     return paramContext;
   }
 }

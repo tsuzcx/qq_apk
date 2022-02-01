@@ -1,8 +1,18 @@
 package com.tencent.luggage.sdk.b.a;
 
+import com.tencent.mm.plugin.appbrand.appcache.q.a;
+
 public abstract interface d
 {
-  public static final String[] cnu = { "WAWebview.js", "WAVConsole.js", "WAPerf.js", "WARemoteDebug.js" };
+  public static final String[] cnw = { "WAWebview.js", "WAVConsole.js", "WAPerf.js", "WARemoteDebug.js" };
+  
+  public static final class a
+    extends q.a
+  {
+    public String cnx;
+    public int cny;
+    public String scriptName;
+  }
 }
 
 

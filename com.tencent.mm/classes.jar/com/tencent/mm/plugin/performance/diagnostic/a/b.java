@@ -2,38 +2,40 @@ package com.tencent.mm.plugin.performance.diagnostic.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.apache.commons.a.e;
 
 public final class b
 {
-  private static com.tencent.mm.vfs.e O(com.tencent.mm.vfs.e parame)
+  private static k O(k paramk)
   {
     AppMethodBeat.i(176895);
-    parame = new com.tencent.mm.vfs.e(q.B(parame.fOK()));
+    paramk = new k(w.B(paramk.fTh()));
     AppMethodBeat.o(176895);
-    return parame;
+    return paramk;
   }
   
-  static com.tencent.mm.vfs.e P(com.tencent.mm.vfs.e parame)
+  static k P(k paramk)
   {
     AppMethodBeat.i(176897);
-    if (!parame.canRead())
+    if (!paramk.canRead())
     {
-      parame = new IOException("cannot read file: " + q.B(parame.fOK()));
+      paramk = new IOException("cannot read file: " + w.B(paramk.fTh()));
       AppMethodBeat.o(176897);
-      throw parame;
+      throw paramk;
     }
     AppMethodBeat.o(176897);
-    return parame;
+    return paramk;
   }
   
   /* Error */
-  public static void a(com.tencent.mm.vfs.e parame1, com.tencent.mm.vfs.e parame2, com.tencent.mm.vfs.g paramg)
+  public static void a(k paramk1, k paramk2, com.tencent.mm.vfs.m paramm)
   {
     // Byte code:
     //   0: ldc 58
@@ -43,7 +45,7 @@ public final class b
     //   9: new 62	java/io/BufferedOutputStream
     //   12: dup
     //   13: aload_1
-    //   14: invokestatic 68	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   14: invokestatic 68	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
     //   17: invokespecial 71	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   20: invokespecial 72	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   23: astore_3
@@ -52,15 +54,15 @@ public final class b
     //   28: invokespecial 77	java/util/ArrayList:<init>	()V
     //   31: astore 4
     //   33: aload_0
-    //   34: invokestatic 79	com/tencent/mm/plugin/performance/diagnostic/a/b:O	(Lcom/tencent/mm/vfs/e;)Lcom/tencent/mm/vfs/e;
+    //   34: invokestatic 79	com/tencent/mm/plugin/performance/diagnostic/a/b:O	(Lcom/tencent/mm/vfs/k;)Lcom/tencent/mm/vfs/k;
     //   37: astore 5
     //   39: aload 5
-    //   41: invokevirtual 82	com/tencent/mm/vfs/e:isDirectory	()Z
+    //   41: invokevirtual 82	com/tencent/mm/vfs/k:isDirectory	()Z
     //   44: ifeq +167 -> 211
     //   47: aload 4
     //   49: aload 5
     //   51: aload_2
-    //   52: invokevirtual 85	com/tencent/mm/vfs/e:a	(Lcom/tencent/mm/vfs/g;)[Lcom/tencent/mm/vfs/e;
+    //   52: invokevirtual 85	com/tencent/mm/vfs/k:a	(Lcom/tencent/mm/vfs/m;)[Lcom/tencent/mm/vfs/k;
     //   55: invokestatic 91	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
     //   58: invokeinterface 97 2 0
     //   63: pop
@@ -70,15 +72,15 @@ public final class b
     //   74: aload 4
     //   76: iconst_0
     //   77: invokeinterface 104 2 0
-    //   82: checkcast 15	com/tencent/mm/vfs/e
-    //   85: invokestatic 79	com/tencent/mm/plugin/performance/diagnostic/a/b:O	(Lcom/tencent/mm/vfs/e;)Lcom/tencent/mm/vfs/e;
+    //   82: checkcast 15	com/tencent/mm/vfs/k
+    //   85: invokestatic 79	com/tencent/mm/plugin/performance/diagnostic/a/b:O	(Lcom/tencent/mm/vfs/k;)Lcom/tencent/mm/vfs/k;
     //   88: astore 6
     //   90: aload 6
-    //   92: invokevirtual 19	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
-    //   95: invokestatic 25	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   92: invokevirtual 19	com/tencent/mm/vfs/k:fTh	()Landroid/net/Uri;
+    //   95: invokestatic 25	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   98: aload 5
-    //   100: invokevirtual 19	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
-    //   103: invokestatic 25	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   100: invokevirtual 19	com/tencent/mm/vfs/k:fTh	()Landroid/net/Uri;
+    //   103: invokestatic 25	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   106: invokevirtual 110	java/lang/String:length	()I
     //   109: invokevirtual 114	java/lang/String:substring	(I)Ljava/lang/String;
     //   112: astore_1
@@ -98,7 +100,7 @@ public final class b
     //   133: invokevirtual 121	java/lang/String:isEmpty	()Z
     //   136: ifeq +9 -> 145
     //   139: aload 6
-    //   141: invokevirtual 124	com/tencent/mm/vfs/e:getName	()Ljava/lang/String;
+    //   141: invokevirtual 124	com/tencent/mm/vfs/k:getName	()Ljava/lang/String;
     //   144: astore_1
     //   145: new 126	java/util/zip/ZipEntry
     //   148: dup
@@ -112,12 +114,12 @@ public final class b
     //   161: aload_0
     //   162: invokevirtual 134	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   165: aload 6
-    //   167: invokevirtual 82	com/tencent/mm/vfs/e:isDirectory	()Z
+    //   167: invokevirtual 82	com/tencent/mm/vfs/k:isDirectory	()Z
     //   170: ifeq +54 -> 224
     //   173: aload 4
     //   175: aload 6
     //   177: aload_2
-    //   178: invokevirtual 85	com/tencent/mm/vfs/e:a	(Lcom/tencent/mm/vfs/g;)[Lcom/tencent/mm/vfs/e;
+    //   178: invokevirtual 85	com/tencent/mm/vfs/k:a	(Lcom/tencent/mm/vfs/m;)[Lcom/tencent/mm/vfs/k;
     //   181: invokestatic 91	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
     //   184: invokeinterface 97 2 0
     //   189: pop
@@ -140,7 +142,7 @@ public final class b
     //   221: goto -157 -> 64
     //   224: aload 6
     //   226: aload_3
-    //   227: invokestatic 149	com/tencent/mm/plugin/performance/diagnostic/a/b:a	(Lcom/tencent/mm/vfs/e;Ljava/io/OutputStream;)V
+    //   227: invokestatic 149	com/tencent/mm/plugin/performance/diagnostic/a/b:a	(Lcom/tencent/mm/vfs/k;Ljava/io/OutputStream;)V
     //   230: goto -40 -> 190
     //   233: astore_0
     //   234: aload_3
@@ -160,13 +162,13 @@ public final class b
     //   258: goto -58 -> 200
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	261	0	parame1	com.tencent.mm.vfs.e
-    //   0	261	1	parame2	com.tencent.mm.vfs.e
-    //   0	261	2	paramg	com.tencent.mm.vfs.g
+    //   0	261	0	paramk1	k
+    //   0	261	1	paramk2	k
+    //   0	261	2	paramm	com.tencent.mm.vfs.m
     //   23	223	3	localZipOutputStream	java.util.zip.ZipOutputStream
     //   31	181	4	localArrayList	java.util.ArrayList
-    //   37	177	5	locale1	com.tencent.mm.vfs.e
-    //   88	137	6	locale2	com.tencent.mm.vfs.e
+    //   37	177	5	localk1	k
+    //   88	137	6	localk2	k
     // Exception table:
     //   from	to	target	type
     //   24	64	197	finally
@@ -182,13 +184,13 @@ public final class b
     //   5	24	255	finally
   }
   
-  private static void a(com.tencent.mm.vfs.e parame, OutputStream paramOutputStream)
+  private static void a(k paramk, OutputStream paramOutputStream)
   {
     AppMethodBeat.i(176898);
     byte[] arrayOfByte = new byte[4096];
     try
     {
-      localBufferedInputStream = new BufferedInputStream(i.ai(parame));
+      localBufferedInputStream = new BufferedInputStream(o.ai(paramk));
       try
       {
         for (;;)
@@ -210,15 +212,15 @@ public final class b
         BufferedInputStream localBufferedInputStream = null;
       }
     }
-    org.apache.commons.a.e.Z(localBufferedInputStream);
+    e.Z(localBufferedInputStream);
     AppMethodBeat.o(176898);
-    throw parame;
+    throw paramk;
     paramOutputStream.flush();
-    org.apache.commons.a.e.Z(localBufferedInputStream);
+    e.Z(localBufferedInputStream);
     AppMethodBeat.o(176898);
   }
   
-  static String aup(String paramString)
+  static String avE(String paramString)
   {
     AppMethodBeat.i(124914);
     if (TextUtils.equals(paramString, "armeabi"))
@@ -262,12 +264,12 @@ public final class b
   }
   
   /* Error */
-  static int auq(String paramString)
+  static int avF(String paramString)
   {
     // Byte code:
     //   0: ldc 221
     //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 227	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   5: invokestatic 227	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   8: ldc 229
     //   10: invokevirtual 235	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   13: checkcast 237	android/app/ActivityManager
@@ -301,11 +303,11 @@ public final class b
     //   86: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: iload_1
     //   90: ireturn
-    //   91: new 15	com/tencent/mm/vfs/e
+    //   91: new 15	com/tencent/mm/vfs/k
     //   94: dup
     //   95: ldc_w 266
-    //   98: invokespecial 29	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   101: invokevirtual 270	com/tencent/mm/vfs/e:fOM	()[Lcom/tencent/mm/vfs/e;
+    //   98: invokespecial 29	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   101: invokevirtual 270	com/tencent/mm/vfs/k:fTj	()[Lcom/tencent/mm/vfs/k;
     //   104: astore 6
     //   106: aload 6
     //   108: arraylength
@@ -320,29 +322,29 @@ public final class b
     //   120: aaload
     //   121: astore 7
     //   123: aload 7
-    //   125: invokevirtual 124	com/tencent/mm/vfs/e:getName	()Ljava/lang/String;
+    //   125: invokevirtual 124	com/tencent/mm/vfs/k:getName	()Ljava/lang/String;
     //   128: invokestatic 274	android/text/TextUtils:isDigitsOnly	(Ljava/lang/CharSequence;)Z
     //   131: ifeq +115 -> 246
     //   134: aload 7
-    //   136: invokevirtual 39	com/tencent/mm/vfs/e:canRead	()Z
+    //   136: invokevirtual 39	com/tencent/mm/vfs/k:canRead	()Z
     //   139: ifeq +107 -> 246
-    //   142: new 15	com/tencent/mm/vfs/e
+    //   142: new 15	com/tencent/mm/vfs/k
     //   145: dup
     //   146: aload 7
     //   148: ldc_w 276
-    //   151: invokespecial 279	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
+    //   151: invokespecial 279	com/tencent/mm/vfs/k:<init>	(Lcom/tencent/mm/vfs/k;Ljava/lang/String;)V
     //   154: astore 4
     //   156: aload 4
-    //   158: invokevirtual 39	com/tencent/mm/vfs/e:canRead	()Z
+    //   158: invokevirtual 39	com/tencent/mm/vfs/k:canRead	()Z
     //   161: ifeq +85 -> 246
     //   164: aconst_null
     //   165: astore 5
     //   167: new 281	java/io/BufferedReader
     //   170: dup
-    //   171: new 283	com/tencent/mm/vfs/k
+    //   171: new 283	com/tencent/mm/vfs/q
     //   174: dup
     //   175: aload 4
-    //   177: invokespecial 286	com/tencent/mm/vfs/k:<init>	(Lcom/tencent/mm/vfs/e;)V
+    //   177: invokespecial 286	com/tencent/mm/vfs/q:<init>	(Lcom/tencent/mm/vfs/k;)V
     //   180: invokespecial 289	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   183: astore 4
     //   185: aload_0
@@ -354,7 +356,7 @@ public final class b
     //   198: iload_3
     //   199: ifeq +42 -> 241
     //   202: aload 7
-    //   204: invokevirtual 124	com/tencent/mm/vfs/e:getName	()Ljava/lang/String;
+    //   204: invokevirtual 124	com/tencent/mm/vfs/k:getName	()Ljava/lang/String;
     //   207: invokevirtual 295	java/lang/String:trim	()Ljava/lang/String;
     //   210: bipush 10
     //   212: invokestatic 303	java/lang/Integer:parseInt	(Ljava/lang/String;I)I
@@ -413,8 +415,8 @@ public final class b
     //   257	15	4	localObject2	Object
     //   64	192	5	localRunningAppProcessInfo	android.app.ActivityManager.RunningAppProcessInfo
     //   294	1	5	localThrowable2	java.lang.Throwable
-    //   104	14	6	arrayOfe	com.tencent.mm.vfs.e[]
-    //   121	82	7	locale	com.tencent.mm.vfs.e
+    //   104	14	6	arrayOfk	k[]
+    //   121	82	7	localk	k
     // Exception table:
     //   from	to	target	type
     //   202	216	228	java/lang/Throwable

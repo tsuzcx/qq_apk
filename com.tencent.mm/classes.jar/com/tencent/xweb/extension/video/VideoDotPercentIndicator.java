@@ -11,7 +11,7 @@ import org.xwalk.core.Log;
 public class VideoDotPercentIndicator
   extends LinearLayout
 {
-  private int lsk;
+  private int lwJ;
   private LayoutInflater mInflater;
   
   public VideoDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
@@ -44,10 +44,10 @@ public class VideoDotPercentIndicator
     if (paramInt > 1) {}
     for (;;)
     {
-      this.lsk = paramInt;
+      this.lwJ = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.lsk)
+      while (paramInt < this.lwJ)
       {
         addView((ImageView)this.mInflater.inflate(2131496126, this, false));
         paramInt += 1;
@@ -75,7 +75,7 @@ public class VideoDotPercentIndicator
     label128:
     for (;;)
     {
-      int k = (int)Math.rint(this.lsk * paramFloat);
+      int k = (int)Math.rint(this.lwJ * paramFloat);
       Log.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:" + paramFloat + " dotsOnNum:" + k);
       int i = 0;
       for (;;)

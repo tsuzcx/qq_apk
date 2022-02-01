@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionSummary
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String CoverUrl;
   public String ExptDesc;
@@ -163,9 +163,9 @@ public class EmotionSummary
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(104781);
@@ -181,83 +181,83 @@ public class EmotionSummary
           AppMethodBeat.o(104781);
           return -1;
         case 1: 
-          localEmotionSummary.ProductID = locala.NPN.readString();
+          localEmotionSummary.ProductID = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 2: 
-          localEmotionSummary.IconUrl = locala.NPN.readString();
+          localEmotionSummary.IconUrl = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 3: 
-          localEmotionSummary.PackName = locala.NPN.readString();
+          localEmotionSummary.PackName = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 4: 
-          localEmotionSummary.PackDesc = locala.NPN.readString();
+          localEmotionSummary.PackDesc = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 5: 
-          localEmotionSummary.PackAuthInfo = locala.NPN.readString();
+          localEmotionSummary.PackAuthInfo = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 6: 
-          localEmotionSummary.PackPrice = locala.NPN.readString();
+          localEmotionSummary.PackPrice = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 7: 
-          localEmotionSummary.PackType = locala.NPN.zc();
+          localEmotionSummary.PackType = locala.OmT.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 8: 
-          localEmotionSummary.PackFlag = locala.NPN.zc();
+          localEmotionSummary.PackFlag = locala.OmT.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 9: 
-          localEmotionSummary.CoverUrl = locala.NPN.readString();
+          localEmotionSummary.CoverUrl = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 10: 
-          localEmotionSummary.PackExpire = locala.NPN.zc();
+          localEmotionSummary.PackExpire = locala.OmT.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 11: 
-          localEmotionSummary.PackCopyright = locala.NPN.readString();
+          localEmotionSummary.PackCopyright = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 12: 
-          localEmotionSummary.Timestamp = locala.NPN.zc();
+          localEmotionSummary.Timestamp = locala.OmT.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 13: 
-          localEmotionSummary.PanelUrl = locala.NPN.readString();
+          localEmotionSummary.PanelUrl = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 14: 
-          localEmotionSummary.PriceNum = locala.NPN.readString();
+          localEmotionSummary.PriceNum = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 15: 
-          localEmotionSummary.PriceType = locala.NPN.readString();
+          localEmotionSummary.PriceType = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 16: 
-          localEmotionSummary.SendInfo = locala.NPN.readString();
+          localEmotionSummary.SendInfo = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 17: 
-          localEmotionSummary.TimeLimitStr = locala.NPN.readString();
+          localEmotionSummary.TimeLimitStr = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 18: 
-          localEmotionSummary.Introduce = locala.NPN.readString();
+          localEmotionSummary.Introduce = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 19: 
-          localEmotionSummary.TagUri = locala.NPN.readString();
+          localEmotionSummary.TagUri = locala.OmT.readString();
           AppMethodBeat.o(104781);
           return 0;
         }
-        localEmotionSummary.ExptDesc = locala.NPN.readString();
+        localEmotionSummary.ExptDesc = locala.OmT.readString();
         AppMethodBeat.o(104781);
         return 0;
       }
@@ -268,7 +268,7 @@ public class EmotionSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionSummary
  * JD-Core Version:    0.7.0.1
  */

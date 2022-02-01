@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class az
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public long uin;
-  public long xdu;
+  public long xtl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215242);
+    AppMethodBeat.i(217988);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.uin);
-      paramVarArgs.aY(2, this.xdu);
-      AppMethodBeat.o(215242);
+      paramVarArgs.aZ(1, this.uin);
+      paramVarArgs.aZ(2, this.xtl);
+      AppMethodBeat.o(217988);
       return 0;
     }
     if (paramInt == 1)
     {
       paramInt = f.a.a.b.b.a.p(1, this.uin);
-      int i = f.a.a.b.b.a.p(2, this.xdu);
-      AppMethodBeat.o(215242);
+      int i = f.a.a.b.b.a.p(2, this.xtl);
+      AppMethodBeat.o(217988);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(215242);
+      AppMethodBeat.o(217988);
       return 0;
     }
     if (paramInt == 3)
@@ -44,18 +44,18 @@ public final class az
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(215242);
+        AppMethodBeat.o(217988);
         return -1;
       case 1: 
-        localaz.uin = locala.NPN.zd();
-        AppMethodBeat.o(215242);
+        localaz.uin = locala.OmT.zd();
+        AppMethodBeat.o(217988);
         return 0;
       }
-      localaz.xdu = locala.NPN.zd();
-      AppMethodBeat.o(215242);
+      localaz.xtl = locala.OmT.zd();
+      AppMethodBeat.o(217988);
       return 0;
     }
-    AppMethodBeat.o(215242);
+    AppMethodBeat.o(217988);
     return -1;
   }
 }

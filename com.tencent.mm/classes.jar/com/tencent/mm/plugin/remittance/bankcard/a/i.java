@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpc;
-import com.tencent.mm.protocal.protobuf.cpd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cpw;
+import com.tencent.mm.protocal.protobuf.cpx;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i
   extends b
 {
   private f callback;
   public int limit;
-  private com.tencent.mm.al.b rr;
-  public cpd xRW;
+  private com.tencent.mm.ak.b rr;
+  public cpx yhP;
   
   public i(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(67373);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cpc();
-    ((b.a)localObject).hNN = new cpd();
+    ((b.a)localObject).hQF = new cpw();
+    ((b.a)localObject).hQG = new cpx();
     ((b.a)localObject).funcId = 1511;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/historylist_tsbc";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (cpc)this.rr.hNK.hNQ;
-    ((cpc)localObject).limit = paramInt1;
-    ((cpc)localObject).offset = paramInt2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cpw)this.rr.hQD.hQJ;
+    ((cpw)localObject).limit = paramInt1;
+    ((cpw)localObject).offset = paramInt2;
     this.limit = paramInt1;
-    ad.i("MicroMsg.NetSceneBankRemitHistoryList", "limit: %s, offset: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.NetSceneBankRemitHistoryList", "limit: %s, offset: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(67373);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67375);
-    ad.i("MicroMsg.NetSceneBankRemitHistoryList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.xRW = ((cpd)((com.tencent.mm.al.b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.NetSceneBankRemitHistoryList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.xRW.dlw), this.xRW.paA });
+    ae.i("MicroMsg.NetSceneBankRemitHistoryList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.yhP = ((cpx)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.NetSceneBankRemitHistoryList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yhP.dmy), this.yhP.phe });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -61,9 +61,9 @@ public final class i
   
   public final void e(q paramq)
   {
-    paramq = (cpd)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-    this.Lyu = paramq.dlw;
-    this.Lyv = paramq.paA;
+    paramq = (cpx)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    this.LVj = paramq.dmy;
+    this.LVk = paramq.phe;
   }
   
   public final int getType()

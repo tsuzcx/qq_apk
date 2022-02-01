@@ -16,8 +16,8 @@ final class LoginHistoryUI$6
     AppMethodBeat.i(128092);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    LoginHistoryUI.f(this.jlq);
+    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    LoginHistoryUI.f(this.jok);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginHistoryUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128092);
   }

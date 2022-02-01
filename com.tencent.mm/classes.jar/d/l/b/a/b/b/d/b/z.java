@@ -10,28 +10,28 @@ public final class z
   extends w
   implements d.l.b.a.b.d.a.e.z
 {
-  private final WildcardType NaM;
+  private final WildcardType NxS;
   
   public z(WildcardType paramWildcardType)
   {
     AppMethodBeat.i(57520);
-    this.NaM = paramWildcardType;
+    this.NxS = paramWildcardType;
     AppMethodBeat.o(57520);
   }
   
-  public final boolean glh()
+  public final boolean gpJ()
   {
     AppMethodBeat.i(57519);
-    Type[] arrayOfType = this.NaM.getUpperBounds();
+    Type[] arrayOfType = this.NxS.getUpperBounds();
     p.g(arrayOfType, "reflectType.upperBounds");
-    boolean bool = p.i((Type)e.R(arrayOfType), Object.class);
+    boolean bool = p.i((Type)e.Q(arrayOfType), Object.class);
     AppMethodBeat.o(57519);
     return bool ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.z
  * JD-Core Version:    0.7.0.1
  */

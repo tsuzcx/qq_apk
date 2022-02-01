@@ -15,7 +15,7 @@ import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderUnOpenUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderUnOpenUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
 public final class FinderUnOpenUI
   extends MMFinderUI
 {
@@ -23,7 +23,7 @@ public final class FinderUnOpenUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204253);
+    AppMethodBeat.i(204871);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -34,7 +34,7 @@ public final class FinderUnOpenUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204253);
+    AppMethodBeat.o(204871);
     return localView1;
   }
   
@@ -50,7 +50,7 @@ public final class FinderUnOpenUI
     setActionbarColor(getResources().getColor(2131101179));
     setMMTitle("");
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    paramBundle = g.acA().getValue("FinderFunctionUnopenTip");
+    paramBundle = g.acL().getValue("FinderFunctionUnopenTip");
     Object localObject = findViewById(2131305880);
     p.g(localObject, "findViewById<TextView>(R.id.tip_tv)");
     localObject = (TextView)localObject;
@@ -69,7 +69,7 @@ public final class FinderUnOpenUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -78,7 +78,7 @@ public final class FinderUnOpenUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167680);
-      this.sIe.finish();
+      this.sTq.finish();
       AppMethodBeat.o(167680);
       return false;
     }

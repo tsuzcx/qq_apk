@@ -10,18 +10,18 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
 final class d<T>
   implements a, Collection<T>
 {
-  private final boolean MKw;
+  private final boolean Nhz;
   private final T[] apv;
   
   public d(T[] paramArrayOfT, boolean paramBoolean)
   {
     AppMethodBeat.i(129067);
     this.apv = paramArrayOfT;
-    this.MKw = paramBoolean;
+    this.Nhz = paramBoolean;
     AppMethodBeat.o(129067);
   }
   
@@ -85,7 +85,7 @@ final class d<T>
   public final Iterator<T> iterator()
   {
     AppMethodBeat.i(129065);
-    Iterator localIterator = b.ae(this.apv);
+    Iterator localIterator = b.ad(this.apv);
     AppMethodBeat.o(129065);
     return localIterator;
   }
@@ -118,7 +118,7 @@ final class d<T>
   {
     AppMethodBeat.i(129066);
     Object[] arrayOfObject = this.apv;
-    boolean bool = this.MKw;
+    boolean bool = this.Nhz;
     p.h(arrayOfObject, "$this$copyToArrayOfAny");
     if ((bool) && (p.i(arrayOfObject.getClass(), [Ljava.lang.Object.class)))
     {

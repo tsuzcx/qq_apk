@@ -5,20 +5,18 @@ import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.RecyclerView.s.a;
 import android.support.v7.widget.RecyclerView.t;
-import android.support.v7.widget.ae;
 import android.support.v7.widget.aj;
 import android.support.v7.widget.ak;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
   extends ak
 {
   public Context context;
-  public View vqW;
-  public boolean vqX = false;
+  public View vDb;
+  public boolean vDc = false;
   
   public static View h(RecyclerView.i parami)
   {
@@ -78,15 +76,15 @@ public final class a
       return -1;
     }
     View localView1 = localView2;
-    if (this.vqW != null)
+    if (this.vDb != null)
     {
       localView1 = localView2;
-      if (this.vqW != localView2) {
-        localView1 = this.vqW;
+      if (this.vDb != localView2) {
+        localView1 = this.vDb;
       }
     }
     paramInt2 = RecyclerView.i.bB(localView1);
-    ad.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
+    com.tencent.mm.sdk.platformtools.ae.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
     if ((paramInt1 >= 100) && (paramInt2 + 1 < parami.getItemCount()))
     {
       AppMethodBeat.o(65322);
@@ -120,7 +118,7 @@ public final class a
     label118:
     for (;;)
     {
-      if (localView2 == this.vqW) {
+      if (localView2 == this.vDb) {
         k = i;
       }
       i += 1;
@@ -145,13 +143,13 @@ public final class a
   public final RecyclerView.s g(final RecyclerView.i parami)
   {
     AppMethodBeat.i(65324);
-    if (this.vqX)
+    if (this.vDc)
     {
       parami = super.g(parami);
       AppMethodBeat.o(65324);
       return parami;
     }
-    parami = new ae(this.context)
+    parami = new android.support.v7.widget.ae(this.context)
     {
       public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
@@ -185,7 +183,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.scaledLayout.a
  * JD-Core Version:    0.7.0.1
  */

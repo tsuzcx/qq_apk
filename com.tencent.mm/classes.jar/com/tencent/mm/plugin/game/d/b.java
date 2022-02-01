@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Desc;
   public String Title;
-  public String ueX;
-  public String ueY;
+  public String uqe;
+  public String uqf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -28,11 +28,11 @@ public final class b
       if (this.Desc != null) {
         paramVarArgs.d(2, this.Desc);
       }
-      if (this.ueX != null) {
-        paramVarArgs.d(3, this.ueX);
+      if (this.uqe != null) {
+        paramVarArgs.d(3, this.uqe);
       }
-      if (this.ueY != null) {
-        paramVarArgs.d(4, this.ueY);
+      if (this.uqf != null) {
+        paramVarArgs.d(4, this.uqf);
       }
       AppMethodBeat.o(41707);
       return 0;
@@ -50,21 +50,21 @@ public final class b
         paramInt = i + f.a.a.b.b.a.e(2, this.Desc);
       }
       i = paramInt;
-      if (this.ueX != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ueX);
+      if (this.uqe != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.uqe);
       }
       paramInt = i;
-      if (this.ueY != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.ueY);
+      if (this.uqf != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.uqf);
       }
       AppMethodBeat.o(41707);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.Title == null)
@@ -86,19 +86,19 @@ public final class b
           AppMethodBeat.o(41707);
           return -1;
         case 1: 
-          localb.Title = locala.NPN.readString();
+          localb.Title = locala.OmT.readString();
           AppMethodBeat.o(41707);
           return 0;
         case 2: 
-          localb.Desc = locala.NPN.readString();
+          localb.Desc = locala.OmT.readString();
           AppMethodBeat.o(41707);
           return 0;
         case 3: 
-          localb.ueX = locala.NPN.readString();
+          localb.uqe = locala.OmT.readString();
           AppMethodBeat.o(41707);
           return 0;
         }
-        localb.ueY = locala.NPN.readString();
+        localb.uqf = locala.OmT.readString();
         AppMethodBeat.o(41707);
         return 0;
       }

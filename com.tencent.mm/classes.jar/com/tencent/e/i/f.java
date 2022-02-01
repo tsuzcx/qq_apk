@@ -2,7 +2,7 @@ package com.tencent.e.i;
 
 public abstract interface f<T>
 {
-  public abstract void aTv();
+  public abstract void aTU();
   
   public abstract void cg(T paramT);
 }

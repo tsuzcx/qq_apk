@@ -3,7 +3,7 @@ package com.tencent.mm.app;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,94 +13,94 @@ import java.util.Locale;
 
 public final class x
 {
-  private static final List<c> cUI;
-  private static final List<b> cUJ;
-  private static final List<Object> cUK;
+  private static final List<c> cVF;
+  private static final List<b> cVG;
+  private static final List<Object> cVH;
   
   static
   {
-    AppMethodBeat.i(199823);
-    cUI = new ArrayList();
-    cUJ = new ArrayList();
-    cUK = new ArrayList();
-    AppMethodBeat.o(199823);
+    AppMethodBeat.i(210663);
+    cVF = new ArrayList();
+    cVG = new ArrayList();
+    cVH = new ArrayList();
+    AppMethodBeat.o(210663);
   }
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199819);
-    List localList = cUI;
+    AppMethodBeat.i(210659);
+    List localList = cVF;
     String str = paramString2;
     try
     {
       if (paramVarArgs.length > 0) {
         str = String.format(paramString2, paramVarArgs);
       }
-      cUI.add(new c(4, paramString1, str));
+      cVF.add(new c(4, paramString1, str));
       return;
     }
     finally
     {
-      AppMethodBeat.o(199819);
+      AppMethodBeat.o(210659);
     }
   }
   
   public static void a(String paramString1, Throwable arg1, String paramVarArgs)
   {
-    AppMethodBeat.i(199820);
+    AppMethodBeat.i(210660);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramVarArgs);
     localStringBuilder.append("  ").append(Log.getStackTraceString(???));
-    synchronized (cUI)
+    synchronized (cVF)
     {
-      cUI.add(new c(6, paramString1, localStringBuilder.toString()));
-      AppMethodBeat.o(199820);
+      cVF.add(new c(6, paramString1, localStringBuilder.toString()));
+      AppMethodBeat.o(210660);
       return;
     }
   }
   
   public static void execute()
   {
-    AppMethodBeat.i(199822);
-    synchronized (cUI)
+    AppMethodBeat.i(210662);
+    synchronized (cVF)
     {
-      Iterator localIterator1 = cUI.iterator();
+      Iterator localIterator1 = cVF.iterator();
       if (localIterator1.hasNext()) {
         ((a)localIterator1.next()).execute();
       }
     }
-    synchronized (cUK)
+    synchronized (cVH)
     {
-      Iterator localIterator2 = cUK.iterator();
+      Iterator localIterator2 = cVH.iterator();
       if (localIterator2.hasNext()) {
         ((a)localIterator2.next()).execute();
       }
     }
-    synchronized (cUJ)
+    synchronized (cVG)
     {
-      Iterator localIterator3 = cUJ.iterator();
+      Iterator localIterator3 = cVG.iterator();
       if (localIterator3.hasNext()) {
         ((a)localIterator3.next()).execute();
       }
     }
-    AppMethodBeat.o(199822);
+    AppMethodBeat.o(210662);
   }
   
-  public static void g(Object... paramVarArgs)
+  public static void f(Object... paramVarArgs)
   {
-    AppMethodBeat.i(199821);
-    synchronized (cUJ)
+    AppMethodBeat.i(210661);
+    synchronized (cVG)
     {
-      cUJ.add(new b(paramVarArgs));
-      AppMethodBeat.o(199821);
+      cVG.add(new b(paramVarArgs));
+      AppMethodBeat.o(210661);
       return;
     }
   }
   
   static abstract class a
   {
-    final SimpleDateFormat cUL = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
-    final String cUM = this.cUL.format(new Date());
+    final SimpleDateFormat cVI = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
+    final String cVJ = this.cVI.format(new Date());
     
     abstract void execute();
   }
@@ -119,9 +119,9 @@ public final class x
     
     final void execute()
     {
-      AppMethodBeat.i(199817);
-      e.ygI.a(this.id, true, true, false, this.apv);
-      AppMethodBeat.o(199817);
+      AppMethodBeat.i(210657);
+      e.ywz.a(this.id, true, true, false, this.apv);
+      AppMethodBeat.o(210657);
     }
   }
   
@@ -142,27 +142,27 @@ public final class x
     
     final void execute()
     {
-      AppMethodBeat.i(199818);
+      AppMethodBeat.i(210658);
       switch (this.level)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(199818);
+        AppMethodBeat.o(210658);
         return;
-        ad.v("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cUM, this.msg });
-        AppMethodBeat.o(199818);
+        ae.v("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cVJ, this.msg });
+        AppMethodBeat.o(210658);
         return;
-        ad.d("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cUM, this.msg });
-        AppMethodBeat.o(199818);
+        ae.d("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cVJ, this.msg });
+        AppMethodBeat.o(210658);
         return;
-        ad.i("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cUM, this.msg });
-        AppMethodBeat.o(199818);
+        ae.i("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cVJ, this.msg });
+        AppMethodBeat.o(210658);
         return;
-        ad.w("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cUM, this.msg });
-        AppMethodBeat.o(199818);
+        ae.w("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cVJ, this.msg });
+        AppMethodBeat.o(210658);
         return;
-        ad.e("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cUM, this.msg });
+        ae.e("MicroMsg.PendingOps", "[%s @ %s] %s", new Object[] { this.tag, this.cVJ, this.msg });
       }
     }
   }

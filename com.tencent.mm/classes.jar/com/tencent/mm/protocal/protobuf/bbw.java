@@ -4,72 +4,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bbw
-  extends cvc
+  extends cvw
 {
-  public int GyH;
-  public int GyI;
-  public String GyJ;
-  public int GyK;
-  public String nDo;
-  public int xcK;
-  public int xcL;
+  public String GRH;
+  public String GRQ;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152570);
+    AppMethodBeat.i(188675);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.nDo != null) {
-        paramVarArgs.d(2, this.nDo);
+      paramVarArgs.aS(2, this.scene);
+      if (this.GRQ != null) {
+        paramVarArgs.d(3, this.GRQ);
       }
-      paramVarArgs.aS(3, this.GyH);
-      paramVarArgs.aS(4, this.GyI);
-      if (this.GyJ != null) {
-        paramVarArgs.d(5, this.GyJ);
+      if (this.GRH != null) {
+        paramVarArgs.d(4, this.GRH);
       }
-      paramVarArgs.aS(6, this.xcK);
-      paramVarArgs.aS(7, this.xcL);
-      paramVarArgs.aS(8, this.GyK);
-      AppMethodBeat.o(152570);
+      AppMethodBeat.o(188675);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label658;
+        break label474;
       }
     }
-    label658:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label474:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.nDo != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.nDo);
-      }
-      i = i + f.a.a.b.b.a.bz(3, this.GyH) + f.a.a.b.b.a.bz(4, this.GyI);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.scene);
       paramInt = i;
-      if (this.GyJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.GyJ);
+      if (this.GRQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.GRQ);
       }
-      i = f.a.a.b.b.a.bz(6, this.xcK);
-      int j = f.a.a.b.b.a.bz(7, this.xcL);
-      int k = f.a.a.b.b.a.bz(8, this.GyK);
-      AppMethodBeat.o(152570);
-      return paramInt + i + j + k;
+      i = paramInt;
+      if (this.GRH != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.GRH);
+      }
+      AppMethodBeat.o(188675);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(152570);
+        AppMethodBeat.o(188675);
         return 0;
       }
       if (paramInt == 3)
@@ -80,10 +69,10 @@ public final class bbw
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152570);
+          AppMethodBeat.o(188675);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -91,49 +80,33 @@ public final class bbw
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbbw.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(152570);
+          AppMethodBeat.o(188675);
           return 0;
         case 2: 
-          localbbw.nDo = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(152570);
+          localbbw.scene = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(188675);
           return 0;
         case 3: 
-          localbbw.GyH = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(152570);
-          return 0;
-        case 4: 
-          localbbw.GyI = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(152570);
-          return 0;
-        case 5: 
-          localbbw.GyJ = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(152570);
-          return 0;
-        case 6: 
-          localbbw.xcK = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(152570);
-          return 0;
-        case 7: 
-          localbbw.xcL = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(152570);
+          localbbw.GRQ = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(188675);
           return 0;
         }
-        localbbw.GyK = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(152570);
+        localbbw.GRH = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(188675);
         return 0;
       }
-      AppMethodBeat.o(152570);
+      AppMethodBeat.o(188675);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bbw
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,11 @@ import android.view.MotionEvent;
 
 public abstract class a
 {
-  public abstract boolean dgX();
-  
   public abstract boolean dispatchKeyEvent(KeyEvent paramKeyEvent);
   
   public abstract boolean dispatchTouchEvent(MotionEvent paramMotionEvent);
+  
+  public abstract boolean djW();
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   

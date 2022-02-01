@@ -18,7 +18,7 @@ final class SDKOAuthUI$13
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,8 +27,8 @@ final class SDKOAuthUI$13
       a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(79745);
       return false;
-      SDKOAuthUI.b(this.Eab, (int)paramMotionEvent.getRawX());
-      SDKOAuthUI.c(this.Eab, (int)paramMotionEvent.getRawY());
+      SDKOAuthUI.b(this.Esd, (int)paramMotionEvent.getRawX());
+      SDKOAuthUI.c(this.Esd, (int)paramMotionEvent.getRawY());
     }
   }
 }

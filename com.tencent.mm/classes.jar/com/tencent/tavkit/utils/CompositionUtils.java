@@ -22,26 +22,26 @@ public class CompositionUtils
   
   private static void checkScaleTimeRange(MutableCompositionTrack paramMutableCompositionTrack, CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(219970);
+    AppMethodBeat.i(201001);
     if ((!CMTime.CMTimeInvalid.equalsTo(paramCMTimeRange1.getDuration())) && (!paramCMTimeRange2.getDuration().equalsTo(paramCMTimeRange1.getDuration()))) {
       paramMutableCompositionTrack.scaleTimeRange(new CMTimeRange(paramCMTimeRange1.getStart(), paramCMTimeRange2.getDuration()), paramCMTimeRange1.getDuration());
     }
-    AppMethodBeat.o(219970);
+    AppMethodBeat.o(201001);
   }
   
   public static TAVEmptyResource createEmptyResource(CMTime paramCMTime)
   {
-    AppMethodBeat.i(219971);
+    AppMethodBeat.i(201002);
     TAVEmptyResource localTAVEmptyResource = new TAVEmptyResource(paramCMTime);
     localTAVEmptyResource.setDuration(paramCMTime);
     localTAVEmptyResource.setScaledDuration(paramCMTime);
-    AppMethodBeat.o(219971);
+    AppMethodBeat.o(201002);
     return localTAVEmptyResource;
   }
   
   public static void insertTimeRangeToTrack(TrackInfo paramTrackInfo, MutableCompositionTrack paramMutableCompositionTrack, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(219969);
+    AppMethodBeat.i(201000);
     try
     {
       CMTimeRange localCMTimeRange = paramTrackInfo.getSelectedTimeRange();
@@ -49,28 +49,28 @@ public class CompositionUtils
       {
         paramMutableCompositionTrack.insertTimeRange(localCMTimeRange, paramTrackInfo.getTrack(), paramCMTimeRange.getStart());
         checkScaleTimeRange(paramMutableCompositionTrack, paramCMTimeRange, localCMTimeRange);
-        AppMethodBeat.o(219969);
+        AppMethodBeat.o(201000);
         return;
       }
       if (paramTrackInfo.getCompositionTrackSegment(paramCMTimeRange) != null)
       {
         paramMutableCompositionTrack.insertCompositionTrackSegment(paramTrackInfo.getCompositionTrackSegment(paramCMTimeRange));
-        AppMethodBeat.o(219969);
+        AppMethodBeat.o(201000);
         return;
       }
     }
     catch (Exception paramTrackInfo)
     {
-      AppMethodBeat.o(219969);
+      AppMethodBeat.o(201000);
       return;
     }
     Logger.e("CompositionUtils", "insertTimeRangeToTrack: TrackInfo track and segment are null !!!");
-    AppMethodBeat.o(219969);
+    AppMethodBeat.o(201000);
   }
   
   public static MutableCompositionTrack mutableTrackCompatibleWithTimeRange(MutableComposition paramMutableComposition, CMTimeRange paramCMTimeRange, int paramInt)
   {
-    AppMethodBeat.i(219965);
+    AppMethodBeat.i(200996);
     paramMutableComposition = paramMutableComposition.tracksWithMediaType(paramInt).iterator();
     while (paramMutableComposition.hasNext())
     {
@@ -78,40 +78,40 @@ public class CompositionUtils
       CMTimeRange localCMTimeRange = TAVTimeUtil.getIntersection(localMutableCompositionTrack.getTimeRange(), paramCMTimeRange);
       if ((localCMTimeRange == null) || (localCMTimeRange.getDuration().getTimeSeconds() <= 0.0F))
       {
-        AppMethodBeat.o(219965);
+        AppMethodBeat.o(200996);
         return localMutableCompositionTrack;
       }
     }
-    AppMethodBeat.o(219965);
+    AppMethodBeat.o(200996);
     return null;
   }
   
   public static void reloadAudioStartTimeWithTransitionableAudio(List<? extends TAVTransitionableAudio> paramList)
   {
-    AppMethodBeat.i(219967);
+    AppMethodBeat.i(200998);
     reloadStartTimeWithTransitionable(paramList, new TransitionTimeCalculator()
     {
       public final CMTime transition(int paramAnonymousInt)
       {
-        AppMethodBeat.i(219964);
+        AppMethodBeat.i(200995);
         Object localObject = ((TAVTransitionableAudio)this.val$transitionableAudios.get(paramAnonymousInt)).getAudioTransition();
         if (localObject != null)
         {
           localObject = ((TAVAudioTransition)localObject).getDuration();
-          AppMethodBeat.o(219964);
+          AppMethodBeat.o(200995);
           return localObject;
         }
         localObject = CMTime.CMTimeZero;
-        AppMethodBeat.o(219964);
+        AppMethodBeat.o(200995);
         return localObject;
       }
     });
-    AppMethodBeat.o(219967);
+    AppMethodBeat.o(200998);
   }
   
   private static void reloadStartTimeWithTransitionable(List<? extends TAVCompositionTimeRange> paramList, TransitionTimeCalculator paramTransitionTimeCalculator)
   {
-    AppMethodBeat.i(219968);
+    AppMethodBeat.i(200999);
     CMTime localCMTime1 = CMTime.CMTimeZero;
     Object localObject3 = CMTime.CMTimeZero;
     int i = 0;
@@ -147,32 +147,32 @@ public class CompositionUtils
         localObject3 = localObject1;
         break;
       }
-      AppMethodBeat.o(219968);
+      AppMethodBeat.o(200999);
       return;
     }
   }
   
   public static void reloadVideoStartTimeWithTransitionableVideo(List<? extends TAVTransitionableVideo> paramList)
   {
-    AppMethodBeat.i(219966);
+    AppMethodBeat.i(200997);
     reloadStartTimeWithTransitionable(paramList, new TransitionTimeCalculator()
     {
       public final CMTime transition(int paramAnonymousInt)
       {
-        AppMethodBeat.i(219963);
+        AppMethodBeat.i(200994);
         Object localObject = ((TAVTransitionableVideo)this.val$transitionableVideos.get(paramAnonymousInt)).getVideoTransition();
         if (localObject != null)
         {
           localObject = ((TAVVideoTransition)localObject).getDuration();
-          AppMethodBeat.o(219963);
+          AppMethodBeat.o(200994);
           return localObject;
         }
         localObject = CMTime.CMTimeZero;
-        AppMethodBeat.o(219963);
+        AppMethodBeat.o(200994);
         return localObject;
       }
     });
-    AppMethodBeat.o(219966);
+    AppMethodBeat.o(200997);
   }
   
   static abstract interface TransitionTimeCalculator

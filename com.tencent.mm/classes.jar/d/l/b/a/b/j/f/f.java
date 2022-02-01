@@ -10,12 +10,12 @@ import java.util.Set;
 public final class f
   extends i
 {
-  private final h NxR;
+  private final h NUY;
   
   public f(h paramh)
   {
     AppMethodBeat.i(60210);
-    this.NxR = paramh;
+    this.NUY = paramh;
     AppMethodBeat.o(60210);
   }
   
@@ -24,7 +24,7 @@ public final class f
     AppMethodBeat.i(60205);
     p.h(paramf, "name");
     p.h(parama, "location");
-    paramf = this.NxR.c(paramf, parama);
+    paramf = this.NUY.c(paramf, parama);
     if (paramf != null) {
       if ((paramf instanceof e)) {
         break label97;
@@ -54,18 +54,18 @@ public final class f
     }
   }
   
-  public final Set<d.l.b.a.b.f.f> gjW()
+  public final Set<d.l.b.a.b.f.f> goy()
   {
     AppMethodBeat.i(60207);
-    Set localSet = this.NxR.gjW();
+    Set localSet = this.NUY.goy();
     AppMethodBeat.o(60207);
     return localSet;
   }
   
-  public final Set<d.l.b.a.b.f.f> gjX()
+  public final Set<d.l.b.a.b.f.f> goz()
   {
     AppMethodBeat.i(60208);
-    Set localSet = this.NxR.gjX();
+    Set localSet = this.NUY.goz();
     AppMethodBeat.o(60208);
     return localSet;
   }
@@ -73,14 +73,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(60209);
-    String str = "Classes from " + this.NxR;
+    String str = "Classes from " + this.NUY;
     AppMethodBeat.o(60209);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.f
  * JD-Core Version:    0.7.0.1
  */

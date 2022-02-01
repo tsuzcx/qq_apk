@@ -16,22 +16,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.u;
-import com.tencent.mm.modelsimple.t;
-import com.tencent.mm.plugin.setting.b;
-import com.tencent.mm.plugin.setting.model.d;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.v;
+import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.plugin.setting.c;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.s.b;
@@ -40,16 +38,16 @@ public class SettingsCreateAliasUI
   extends MMActivity
   implements f
 {
-  private ProgressDialog fMu = null;
-  private ImageView fOf;
-  private TextView fOg;
-  private String ffB;
-  private TextView jpy;
-  private f yFz = null;
-  private EditText yGG;
-  private d yGH;
-  private boolean yGI = false;
-  private TextView yGJ;
+  private ProgressDialog fOC = null;
+  private ImageView fQl;
+  private TextView fQm;
+  private String fhy;
+  private TextView jsr;
+  private f yVI = null;
+  private EditText yWP;
+  private com.tencent.mm.plugin.setting.model.e yWQ;
+  private boolean yWR = false;
+  private TextView yWS;
   
   public int getLayoutId()
   {
@@ -58,23 +56,23 @@ public class SettingsCreateAliasUI
   
   public void initView()
   {
-    AppMethodBeat.i(220990);
+    AppMethodBeat.i(190361);
     setMMTitle(2131762350);
-    this.fOf = ((ImageView)findViewById(2131297008));
-    this.fOg = ((TextView)findViewById(2131302867));
-    this.jpy = ((TextView)findViewById(2131306253));
-    this.yGJ = ((TextView)findViewById(2131302439));
-    this.yGG = ((EditText)findViewById(2131303958));
-    String str = u.aAm();
-    if (!am.aSX(str))
+    this.fQl = ((ImageView)findViewById(2131297008));
+    this.fQm = ((TextView)findViewById(2131302867));
+    this.jsr = ((TextView)findViewById(2131306253));
+    this.yWS = ((TextView)findViewById(2131302439));
+    this.yWP = ((EditText)findViewById(2131303958));
+    String str = v.aAC();
+    if (!an.aUy(str))
     {
-      this.yGG.setText(u.aAm());
-      this.jpy.setText(getString(2131755271, new Object[] { str }));
+      this.yWP.setText(v.aAC());
+      this.jsr.setText(getString(2131755271, new Object[] { str }));
     }
-    this.yGG.setSelection(this.yGG.getText().length());
-    this.yGG.setFocusable(true);
-    this.yGG.setFocusableInTouchMode(true);
-    this.yGG.addTextChangedListener(new TextWatcher()
+    this.yWP.setSelection(this.yWP.getText().length());
+    this.yWP.setFocusable(true);
+    this.yWP.setFocusableInTouchMode(true);
+    this.yWP.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -82,14 +80,14 @@ public class SettingsCreateAliasUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(220980);
+        AppMethodBeat.i(190351);
         SettingsCreateAliasUI localSettingsCreateAliasUI = SettingsCreateAliasUI.this;
         a locala = new a();
         if ((paramAnonymousCharSequence.length() < 6) || (paramAnonymousCharSequence.length() > 20))
         {
           locala.errMsg = localSettingsCreateAliasUI.getString(2131764649);
-          locala.dpn = false;
-          if (!locala.dpn) {
+          locala.dqs = false;
+          if (!locala.dqs) {
             break label339;
           }
           SettingsCreateAliasUI.this.enableOptionMenu(true);
@@ -99,12 +97,12 @@ public class SettingsCreateAliasUI
         {
           SettingsCreateAliasUI.a(SettingsCreateAliasUI.this).setText(locala.errMsg);
           SettingsCreateAliasUI.b(SettingsCreateAliasUI.this).setText(SettingsCreateAliasUI.this.getString(2131755271, new Object[] { paramAnonymousCharSequence }));
-          AppMethodBeat.o(220980);
+          AppMethodBeat.o(190351);
           return;
-          if (!bt.F(paramAnonymousCharSequence.charAt(0)))
+          if (!bu.F(paramAnonymousCharSequence.charAt(0)))
           {
             locala.errMsg = localSettingsCreateAliasUI.getString(2131764647);
-            locala.dpn = false;
+            locala.dqs = false;
             break;
           }
           paramAnonymousInt1 = paramAnonymousCharSequence.length() - 1;
@@ -114,29 +112,29 @@ public class SettingsCreateAliasUI
               break label318;
             }
             char c = paramAnonymousCharSequence.charAt(paramAnonymousInt1);
-            if ((!bt.F(c)) && (c != '-') && (c != '_') && (!bt.G(c)))
+            if ((!bu.F(c)) && (c != '-') && (c != '_') && (!bu.G(c)))
             {
               if (Character.isSpace(c))
               {
                 locala.errMsg = localSettingsCreateAliasUI.getString(2131764646);
-                locala.dpn = false;
+                locala.dqs = false;
                 break;
               }
-              if (bt.E(c))
+              if (bu.E(c))
               {
                 locala.errMsg = localSettingsCreateAliasUI.getString(2131764644);
-                locala.dpn = false;
+                locala.dqs = false;
                 break;
               }
               locala.errMsg = localSettingsCreateAliasUI.getString(2131764649);
-              locala.dpn = false;
+              locala.dqs = false;
               break;
             }
             paramAnonymousInt1 -= 1;
           }
           label318:
           locala.errMsg = localSettingsCreateAliasUI.getString(2131761322);
-          locala.dpn = true;
+          locala.dqs = true;
           break;
           label339:
           SettingsCreateAliasUI.this.enableOptionMenu(false);
@@ -144,16 +142,16 @@ public class SettingsCreateAliasUI
         }
       }
     });
-    this.fOg.setText(k.b(this, bt.nullAsNil(u.aAo()), this.fOg.getTextSize()));
-    a.b.c(this.fOf, str);
+    this.fQm.setText(k.b(this, bu.nullAsNil(v.aAE()), this.fQm.getTextSize()));
+    a.b.c(this.fQl, str);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(220981);
+        AppMethodBeat.i(190352);
         SettingsCreateAliasUI.this.hideVKB();
         SettingsCreateAliasUI.this.finish();
-        AppMethodBeat.o(220981);
+        AppMethodBeat.o(190352);
         return true;
       }
     });
@@ -161,84 +159,84 @@ public class SettingsCreateAliasUI
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(220983);
+        AppMethodBeat.i(190354);
         SettingsCreateAliasUI.a(SettingsCreateAliasUI.this, SettingsCreateAliasUI.c(SettingsCreateAliasUI.this).getText().toString().trim());
-        if (u.aAm().equalsIgnoreCase(SettingsCreateAliasUI.d(SettingsCreateAliasUI.this)))
+        if (v.aAC().equalsIgnoreCase(SettingsCreateAliasUI.d(SettingsCreateAliasUI.this)))
         {
           SettingsCreateAliasUI.this.hideVKB();
           SettingsCreateAliasUI.this.finish();
-          AppMethodBeat.o(220983);
+          AppMethodBeat.o(190354);
           return true;
         }
         h.a(SettingsCreateAliasUI.this.getContext(), SettingsCreateAliasUI.this.getString(2131761320, new Object[] { SettingsCreateAliasUI.d(SettingsCreateAliasUI.this) }), SettingsCreateAliasUI.this.getString(2131757566), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
-            AppMethodBeat.i(220982);
+            AppMethodBeat.i(190353);
             SettingsCreateAliasUI.e(SettingsCreateAliasUI.this);
-            AppMethodBeat.o(220982);
+            AppMethodBeat.o(190353);
           }
         }, null);
-        AppMethodBeat.o(220983);
+        AppMethodBeat.o(190354);
         return true;
       }
-    }, null, s.b.JbS);
+    }, null, s.b.JwA);
     enableOptionMenu(false);
-    AppMethodBeat.o(220990);
+    AppMethodBeat.o(190361);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(220987);
+    AppMethodBeat.i(190358);
     super.onCreate(paramBundle);
-    this.yGI = getIntent().getBooleanExtra("KFromSetAliasTips", false);
+    this.yWR = getIntent().getBooleanExtra("KFromSetAliasTips", false);
     initView();
-    com.tencent.mm.kernel.g.aiU().a(177, this);
-    AppMethodBeat.o(220987);
+    com.tencent.mm.kernel.g.ajj().a(177, this);
+    AppMethodBeat.o(190358);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(220989);
-    if (this.yGH != null) {
-      com.tencent.mm.kernel.g.aiU().a(this.yGH);
+    AppMethodBeat.i(190360);
+    if (this.yWQ != null) {
+      com.tencent.mm.kernel.g.ajj().a(this.yWQ);
     }
-    com.tencent.mm.kernel.g.aiU().b(177, this);
+    com.tencent.mm.kernel.g.ajj().b(177, this);
     super.onDestroy();
-    AppMethodBeat.o(220989);
+    AppMethodBeat.o(190360);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(220988);
+    AppMethodBeat.i(190359);
     super.onPause();
-    AppMethodBeat.o(220988);
+    AppMethodBeat.o(190359);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     int i = 1;
-    AppMethodBeat.i(220991);
+    AppMethodBeat.i(190362);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.yGI) {
-        com.tencent.mm.plugin.report.service.g.yhR.kvStat(10358, "1");
+      if (this.yWR) {
+        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10358, "1");
       }
       hideVKB();
-      com.tencent.mm.kernel.g.ajC().ajl().set(42, this.ffB);
-      paramString = com.tencent.mm.kernel.g.aiU();
+      com.tencent.mm.kernel.g.ajR().ajA().set(42, this.fhy);
+      paramString = com.tencent.mm.kernel.g.ajj();
       paramn = new f()
       {
         public final void onSceneEnd(final int paramAnonymousInt1, final int paramAnonymousInt2, String paramAnonymousString, final n paramAnonymousn)
         {
-          AppMethodBeat.i(220986);
-          ad.d("MicroMsg.SettingsCreateAliasUI", "onSceneEnd " + paramAnonymousInt1 + " errCode " + paramAnonymousInt2 + " errMsg " + paramAnonymousString + "  " + paramAnonymousn.getType());
-          com.tencent.mm.kernel.g.aiU().b(255, SettingsCreateAliasUI.g(SettingsCreateAliasUI.this));
-          aq.f(new Runnable()
+          AppMethodBeat.i(190357);
+          ae.d("MicroMsg.SettingsCreateAliasUI", "onSceneEnd " + paramAnonymousInt1 + " errCode " + paramAnonymousInt2 + " errMsg " + paramAnonymousString + "  " + paramAnonymousn.getType());
+          com.tencent.mm.kernel.g.ajj().b(255, SettingsCreateAliasUI.g(SettingsCreateAliasUI.this));
+          ar.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(220985);
+              AppMethodBeat.i(190356);
               if (SettingsCreateAliasUI.h(SettingsCreateAliasUI.this) != null)
               {
                 SettingsCreateAliasUI.h(SettingsCreateAliasUI.this).dismiss();
@@ -257,36 +255,36 @@ public class SettingsCreateAliasUI
                 ((Intent)localObject).putExtra("has_pwd", bool);
                 SettingsCreateAliasUI localSettingsCreateAliasUI = SettingsCreateAliasUI.this;
                 localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(localSettingsCreateAliasUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsCreateAliasUI$5$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                localSettingsCreateAliasUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+                com.tencent.mm.hellhoundlib.a.a.a(localSettingsCreateAliasUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsCreateAliasUI$5$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localSettingsCreateAliasUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
                 com.tencent.mm.hellhoundlib.a.a.a(localSettingsCreateAliasUI, "com/tencent/mm/plugin/setting/ui/setting/SettingsCreateAliasUI$5$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 SettingsCreateAliasUI.this.finish();
-                AppMethodBeat.o(220985);
+                AppMethodBeat.o(190356);
                 return;
               }
             }
           });
-          AppMethodBeat.o(220986);
+          AppMethodBeat.o(190357);
         }
       };
-      this.yFz = paramn;
+      this.yVI = paramn;
       paramString.a(255, paramn);
-      paramString = new t(1);
-      com.tencent.mm.kernel.g.aiU().a(paramString, 0);
-      AppMethodBeat.o(220991);
+      paramString = new u(1);
+      com.tencent.mm.kernel.g.ajj().a(paramString, 0);
+      AppMethodBeat.o(190362);
       return;
     }
-    if (this.fMu != null)
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
-    if (b.iRH.a(getContext(), paramInt1, paramInt2, paramString)) {
+    if (c.iUA.a(getContext(), paramInt1, paramInt2, paramString)) {
       paramInt1 = i;
     }
     while (paramInt1 != 0)
     {
-      AppMethodBeat.o(220991);
+      AppMethodBeat.o(190362);
       return;
       switch (paramInt1)
       {
@@ -299,7 +297,7 @@ public class SettingsCreateAliasUI
       h.l(getContext(), 2131762274, 2131761323);
       paramInt1 = i;
     }
-    AppMethodBeat.o(220991);
+    AppMethodBeat.o(190362);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

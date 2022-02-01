@@ -12,7 +12,7 @@ public final class cm
   
   private cm(byte paramByte)
   {
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
   }
 }

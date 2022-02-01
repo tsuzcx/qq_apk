@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 public final class n
 {
-  public boolean cmH;
-  public boolean kbm = false;
-  public String kbn;
-  public String kbo;
-  public int kbp;
-  public int kbq;
-  public int kbr;
+  public boolean cmJ;
+  public boolean keD = false;
+  public String keE;
+  public String keF;
+  public int keG;
+  public int keH;
+  public int keI;
   public String roomId;
 }
 

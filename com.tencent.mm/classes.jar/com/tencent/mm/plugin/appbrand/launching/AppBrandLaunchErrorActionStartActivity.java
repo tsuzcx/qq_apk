@@ -6,48 +6,48 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Locale;
 
 final class AppBrandLaunchErrorActionStartActivity
   extends AppBrandLaunchErrorAction
 {
-  final String lDX;
-  final String lDY;
-  final Intent lDZ;
+  final String lIw;
+  final String lIx;
+  final Intent lIy;
   
   @Keep
   AppBrandLaunchErrorActionStartActivity(Parcel paramParcel)
   {
     super(paramParcel);
     AppMethodBeat.i(47047);
-    this.lDX = paramParcel.readString();
-    this.lDY = paramParcel.readString();
-    this.lDZ = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
+    this.lIw = paramParcel.readString();
+    this.lIx = paramParcel.readString();
+    this.lIy = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
     AppMethodBeat.o(47047);
   }
   
   AppBrandLaunchErrorActionStartActivity(String paramString1, int paramInt, String paramString2, String paramString3, Intent paramIntent)
   {
     super(paramString1, paramInt);
-    this.lDX = paramString2;
-    this.lDY = paramString3;
-    this.lDZ = paramIntent;
+    this.lIw = paramString2;
+    this.lIx = paramString3;
+    this.lIy = paramIntent;
   }
   
-  final void U(Context paramContext, String paramString)
+  final void W(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(188579);
-    ad.i("MicroMsg.AppBrandLaunchErrorAction", "showError(%s) startActivity %s -> %s", new Object[] { paramString, paramContext.getClass().getName(), this.lDY });
-    paramString = this.lDZ;
+    AppMethodBeat.i(222738);
+    ae.i("MicroMsg.AppBrandLaunchErrorAction", "showError(%s) startActivity %s -> %s", new Object[] { paramString, paramContext.getClass().getName(), this.lIx });
+    paramString = this.lIy;
     if (!(paramContext instanceof Activity)) {
       paramString.addFlags(268435456);
     }
     for (;;)
     {
-      d.b(paramContext, this.lDX, this.lDY, paramString);
-      AppMethodBeat.o(188579);
+      d.b(paramContext, this.lIw, this.lIx, paramString);
+      AppMethodBeat.o(222738);
       return;
       paramString.setFlags(paramString.getFlags() & 0xEFFFFFFF);
     }
@@ -56,7 +56,7 @@ final class AppBrandLaunchErrorActionStartActivity
   public final String toString()
   {
     AppMethodBeat.i(174927);
-    String str = String.format(Locale.ENGLISH, "AppBrandLaunchErrorActionStartActivity[%s.%s|%s]", new Object[] { this.lDX, this.lDY, this.lDZ });
+    String str = String.format(Locale.ENGLISH, "AppBrandLaunchErrorActionStartActivity[%s.%s|%s]", new Object[] { this.lIw, this.lIx, this.lIy });
     AppMethodBeat.o(174927);
     return str;
   }
@@ -65,9 +65,9 @@ final class AppBrandLaunchErrorActionStartActivity
   {
     AppMethodBeat.i(47048);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.lDX);
-    paramParcel.writeString(this.lDY);
-    paramParcel.writeParcelable(this.lDZ, 0);
+    paramParcel.writeString(this.lIw);
+    paramParcel.writeString(this.lIx);
+    paramParcel.writeParcelable(this.lIy, 0);
     AppMethodBeat.o(47048);
   }
 }

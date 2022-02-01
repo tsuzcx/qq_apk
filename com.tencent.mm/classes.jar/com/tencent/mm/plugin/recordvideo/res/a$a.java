@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.res;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$Companion;", "", "()V", "RES_CONFIG", "", "RES_FILE_KEY", "RES_FILE_NAME", "RES_SUB_TYPE", "", "RES_TMP_PATH", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$Companion;", "", "()V", "RES_CONFIG", "", "RES_FILE_KEY", "RES_FILE_NAME", "RES_SUB_TYPE", "", "RES_TMP_PATH", "plugin-recordvideo_release"})
 public final class a$a {}
 
 

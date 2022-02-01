@@ -25,57 +25,57 @@ public class TAVVideoConfiguration
   
   static
   {
-    AppMethodBeat.i(219878);
+    AppMethodBeat.i(200909);
     FIX_RENDER_SIZE = new CGRect();
     CGRect localCGRect = new CGRect();
     SOURCE_SIZE = localCGRect;
     DEFAULT_VIDEO_FRAME = localCGRect;
-    AppMethodBeat.o(219878);
+    AppMethodBeat.o(200909);
   }
   
   public TAVVideoConfiguration()
   {
-    AppMethodBeat.i(219871);
+    AppMethodBeat.i(200902);
     this.frame = DEFAULT_VIDEO_FRAME;
     this.preferRotation = 0;
     this.contentMode = TAVVideoConfigurationContentMode.aspectFit;
     this.transform = new Matrix();
     this.effects = new ArrayList();
-    AppMethodBeat.o(219871);
+    AppMethodBeat.o(200902);
   }
   
   public void addEffect(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(219873);
+    AppMethodBeat.i(200904);
     if (this.effects == null) {
       this.effects = new ArrayList();
     }
     this.effects.add(paramTAVVideoEffect);
-    AppMethodBeat.o(219873);
+    AppMethodBeat.o(200904);
   }
   
   public TAVVideoConfiguration clone()
   {
-    AppMethodBeat.i(219874);
+    AppMethodBeat.i(200905);
     TAVVideoConfiguration localTAVVideoConfiguration = new TAVVideoConfiguration();
     localTAVVideoConfiguration.contentMode = this.contentMode;
     localTAVVideoConfiguration.frame = this.frame;
     localTAVVideoConfiguration.transform = this.transform;
     localTAVVideoConfiguration.effects = new ArrayList(this.effects);
     localTAVVideoConfiguration.preferRotation = this.preferRotation;
-    AppMethodBeat.o(219874);
+    AppMethodBeat.o(200905);
     return localTAVVideoConfiguration;
   }
   
   public boolean frameEnable()
   {
-    AppMethodBeat.i(219872);
+    AppMethodBeat.i(200903);
     if ((this.frame != null) && (this.frame != FIX_RENDER_SIZE) && (this.frame != SOURCE_SIZE) && (Utils.isRectValid(this.frame)))
     {
-      AppMethodBeat.o(219872);
+      AppMethodBeat.o(200903);
       return true;
     }
-    AppMethodBeat.o(219872);
+    AppMethodBeat.o(200903);
     return false;
   }
   
@@ -131,18 +131,18 @@ public class TAVVideoConfiguration
   
   public String toString()
   {
-    AppMethodBeat.i(219876);
+    AppMethodBeat.i(200907);
     String str = "TAVVideoConfiguration{contentMode=" + this.contentMode + ", frame=" + this.frame + ", transform=" + this.transform + '}';
-    AppMethodBeat.o(219876);
+    AppMethodBeat.o(200907);
     return str;
   }
   
   public void updateTimeRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(219875);
+    AppMethodBeat.i(200906);
     if (this.effects == null)
     {
-      AppMethodBeat.o(219875);
+      AppMethodBeat.o(200906);
       return;
     }
     Iterator localIterator = this.effects.iterator();
@@ -153,19 +153,19 @@ public class TAVVideoConfiguration
         ((TAVAttachTimeRangeSourceEffect)localTAVVideoEffect).attachTimeRange(paramCMTimeRange);
       }
     }
-    AppMethodBeat.o(219875);
+    AppMethodBeat.o(200906);
   }
   
   public static enum TAVVideoConfigurationContentMode
   {
     static
     {
-      AppMethodBeat.i(219870);
+      AppMethodBeat.i(200901);
       aspectFit = new TAVVideoConfigurationContentMode("aspectFit", 0);
       aspectFill = new TAVVideoConfigurationContentMode("aspectFill", 1);
       scaleToFit = new TAVVideoConfigurationContentMode("scaleToFit", 2);
       $VALUES = new TAVVideoConfigurationContentMode[] { aspectFit, aspectFill, scaleToFit };
-      AppMethodBeat.o(219870);
+      AppMethodBeat.o(200901);
     }
     
     private TAVVideoConfigurationContentMode() {}

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public final class d
 {
-  protected final int cIP;
+  protected final int cJy;
   protected final Context mContext;
   
   public d(Context paramContext)
@@ -20,12 +20,12 @@ public final class d
   private d(Context paramContext, byte paramByte)
   {
     this.mContext = paramContext;
-    this.cIP = 5;
+    this.cJy = 5;
   }
   
-  private File IO()
+  private File IW()
   {
-    File localFile2 = IP();
+    File localFile2 = IX();
     File localFile1;
     if ((!localFile2.exists()) && ((!localFile2.mkdirs()) || (!localFile2.canWrite())))
     {
@@ -48,7 +48,7 @@ public final class d
         localFile1 = localFile2;
       } while (arrayOfFile == null);
       localFile1 = localFile2;
-    } while (arrayOfFile.length <= this.cIP);
+    } while (arrayOfFile.length <= this.cJy);
     int j = arrayOfFile.length;
     int i = 0;
     for (;;)
@@ -65,7 +65,7 @@ public final class d
     }
   }
   
-  private File IP()
+  private File IX()
   {
     if ("mounted".equals(Environment.getExternalStorageState())) {}
     for (File localFile = this.mContext.getExternalCacheDir();; localFile = this.mContext.getCacheDir())
@@ -76,9 +76,9 @@ public final class d
     }
   }
   
-  public final File IN()
+  public final File IV()
   {
-    File localFile = IO();
+    File localFile = IW();
     if (localFile == null) {
       return null;
     }

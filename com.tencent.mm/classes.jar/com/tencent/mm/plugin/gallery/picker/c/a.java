@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaBitmapDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "()V", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaBitmapDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "()V", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "plugin-gallery_release"})
 public final class a
   extends com.tencent.mm.loader.b.a.a<GalleryItem.MediaItem>
 {
@@ -49,14 +49,14 @@ public final class a
     p.h(parama, "url");
     p.h(parame, "opts");
     p.h(paramf, "reaper");
-    parama = com.tencent.mm.loader.h.b.a.j(((GalleryItem.MediaItem)parama.value()).tGS, parama.value());
+    parama = com.tencent.mm.loader.h.b.a.j(((GalleryItem.MediaItem)parama.value()).tRJ, parama.value());
     AppMethodBeat.o(164894);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.c.a
  * JD-Core Version:    0.7.0.1
  */

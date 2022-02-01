@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMCheckBox
   extends CheckBox
 {
-  private Drawable Chq;
-  private int Chr;
+  private Drawable CyR;
+  private int CyS;
   
   public MMCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,10 +30,10 @@ public class MMCheckBox
   {
     AppMethodBeat.i(115298);
     super.drawableStateChanged();
-    if (this.Chq != null)
+    if (this.CyR != null)
     {
       int[] arrayOfInt = getDrawableState();
-      this.Chq.setState(arrayOfInt);
+      this.CyR.setState(arrayOfInt);
       invalidate();
     }
     AppMethodBeat.o(115298);
@@ -44,8 +44,8 @@ public class MMCheckBox
   {
     AppMethodBeat.i(115300);
     super.jumpDrawablesToCurrentState();
-    if ((Build.VERSION.SDK_INT >= 11) && (this.Chq != null)) {
-      this.Chq.jumpToCurrentState();
+    if ((Build.VERSION.SDK_INT >= 11) && (this.CyR != null)) {
+      this.CyR.jumpToCurrentState();
     }
     AppMethodBeat.o(115300);
   }
@@ -55,7 +55,7 @@ public class MMCheckBox
     int j = 0;
     AppMethodBeat.i(115301);
     super.onDraw(paramCanvas);
-    Drawable localDrawable = this.Chq;
+    Drawable localDrawable = this.CyR;
     int i;
     int k;
     int m;
@@ -94,15 +94,15 @@ public class MMCheckBox
   public void setButtonDrawable(int paramInt)
   {
     AppMethodBeat.i(115297);
-    if ((paramInt != 0) && (paramInt == this.Chr))
+    if ((paramInt != 0) && (paramInt == this.CyS))
     {
       AppMethodBeat.o(115297);
       return;
     }
-    this.Chr = paramInt;
+    this.CyS = paramInt;
     Drawable localDrawable = null;
-    if (this.Chr != 0) {
-      localDrawable = getResources().getDrawable(this.Chr);
+    if (this.CyS != 0) {
+      localDrawable = getResources().getDrawable(this.CyS);
     }
     setButtonDrawable(localDrawable);
     AppMethodBeat.o(115297);
@@ -110,13 +110,13 @@ public class MMCheckBox
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
-    this.Chq = paramDrawable;
+    this.CyR = paramDrawable;
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(115299);
-    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.Chq))
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.CyR))
     {
       AppMethodBeat.o(115299);
       return true;

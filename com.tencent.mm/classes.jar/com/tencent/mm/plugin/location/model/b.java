@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
 import com.tencent.mm.model.e;
 
 public final class b
@@ -13,7 +13,7 @@ public final class b
     AppMethodBeat.i(55682);
     parama = super.b(parama);
     if (parama != null) {
-      n.aq(parama.dku);
+      n.ap(parama.dlw);
     }
     AppMethodBeat.o(55682);
     return parama;

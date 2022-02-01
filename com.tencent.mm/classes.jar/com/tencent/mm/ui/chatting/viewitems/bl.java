@@ -1,125 +1,125 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class bl
 {
-  private static final List<c> KhE;
+  private static final List<c> KDY;
   
   static
   {
     AppMethodBeat.i(37561);
     ArrayList localArrayList = new ArrayList();
-    KhE = localArrayList;
+    KDY = localArrayList;
     localArrayList.add(new ax.b());
-    KhE.add(new ax.a());
-    KhE.add(new e.e());
-    KhE.add(new e.d());
-    KhE.add(new s.c());
-    KhE.add(new s.b());
-    KhE.add(new aa.c());
-    KhE.add(new aa.b());
-    KhE.add(new r.c());
-    KhE.add(new r.b());
-    KhE.add(new v.c());
-    KhE.add(new v.b());
-    KhE.add(new l.d());
-    KhE.add(new l.c());
-    KhE.add(new au());
-    KhE.add(new ap.b());
-    KhE.add(new ak.b());
-    KhE.add(new ak.a());
-    KhE.add(new az.a());
-    KhE.add(new az.b());
-    KhE.add(new ar.a());
-    KhE.add(new ag.c());
-    KhE.add(new ag.b());
-    KhE.add(new al.a());
-    KhE.add(new ay.b());
-    KhE.add(new ay.a());
-    KhE.add(new aq.b());
-    KhE.add(new aq.a());
-    KhE.add(new bd.f());
-    KhE.add(new bd.c());
-    KhE.add(new bd.g());
-    KhE.add(new ae.j());
-    KhE.add(new bd.d());
-    KhE.add(new bd.e());
-    KhE.add(new bc());
-    KhE.add(new ba());
-    KhE.add(new bb());
-    KhE.add(new at.a());
-    KhE.add(new at.b());
-    KhE.add(new be.c());
-    KhE.add(new be.b());
-    KhE.add(new ai());
-    KhE.add(new d());
-    KhE.add(new u.b());
-    KhE.add(new u.c());
-    KhE.add(new am());
-    KhE.add(new an());
-    KhE.add(new ao());
-    KhE.add(new y.c());
-    KhE.add(new y.b());
-    KhE.add(new f.c());
-    KhE.add(new f.b());
-    KhE.add(new j.c());
-    KhE.add(new j.b());
-    KhE.add(new h.c());
-    KhE.add(new h.b());
-    KhE.add(new i.c());
-    KhE.add(new i.b());
-    KhE.add(new ac.b());
-    KhE.add(new ac.a());
-    KhE.add(new ad.b());
-    KhE.add(new ad.a());
-    KhE.add(new ab.b());
-    KhE.add(new ab.a());
-    KhE.add(new t.c());
-    KhE.add(new t.b());
-    KhE.add(new ap.a());
-    KhE.add(new g.c());
-    KhE.add(new g.b());
-    KhE.add(new k.c());
-    KhE.add(new w());
-    KhE.add(new n.b());
-    KhE.add(new n.c());
-    KhE.add(new p.b());
-    KhE.add(new p.c());
-    KhE.add(new m.b());
-    KhE.add(new m.c());
-    KhE.add(new o.b());
-    KhE.add(new o.c());
-    KhE.add(new z.a());
-    KhE.add(new z.b());
-    KhE.add(new q.b());
-    KhE.add(new q.c());
-    KhE.add(new x());
-    KhE.add(new ax.b()
+    KDY.add(new ax.a());
+    KDY.add(new e.e());
+    KDY.add(new e.d());
+    KDY.add(new s.c());
+    KDY.add(new s.b());
+    KDY.add(new aa.c());
+    KDY.add(new aa.b());
+    KDY.add(new r.c());
+    KDY.add(new r.b());
+    KDY.add(new v.c());
+    KDY.add(new v.b());
+    KDY.add(new l.d());
+    KDY.add(new l.c());
+    KDY.add(new au());
+    KDY.add(new ap.b());
+    KDY.add(new ak.b());
+    KDY.add(new ak.a());
+    KDY.add(new az.a());
+    KDY.add(new az.b());
+    KDY.add(new ar.a());
+    KDY.add(new ag.c());
+    KDY.add(new ag.b());
+    KDY.add(new al.a());
+    KDY.add(new ay.b());
+    KDY.add(new ay.a());
+    KDY.add(new aq.b());
+    KDY.add(new aq.a());
+    KDY.add(new bd.f());
+    KDY.add(new bd.c());
+    KDY.add(new bd.g());
+    KDY.add(new ae.j());
+    KDY.add(new bd.d());
+    KDY.add(new bd.e());
+    KDY.add(new bc());
+    KDY.add(new ba());
+    KDY.add(new bb());
+    KDY.add(new at.a());
+    KDY.add(new at.b());
+    KDY.add(new be.c());
+    KDY.add(new be.b());
+    KDY.add(new ai());
+    KDY.add(new d());
+    KDY.add(new u.b());
+    KDY.add(new u.c());
+    KDY.add(new am());
+    KDY.add(new an());
+    KDY.add(new ao());
+    KDY.add(new y.c());
+    KDY.add(new y.b());
+    KDY.add(new f.c());
+    KDY.add(new f.b());
+    KDY.add(new j.c());
+    KDY.add(new j.b());
+    KDY.add(new h.c());
+    KDY.add(new h.b());
+    KDY.add(new i.c());
+    KDY.add(new i.b());
+    KDY.add(new ac.b());
+    KDY.add(new ac.a());
+    KDY.add(new ad.b());
+    KDY.add(new ad.a());
+    KDY.add(new ab.b());
+    KDY.add(new ab.a());
+    KDY.add(new t.c());
+    KDY.add(new t.b());
+    KDY.add(new ap.a());
+    KDY.add(new g.c());
+    KDY.add(new g.b());
+    KDY.add(new k.c());
+    KDY.add(new w());
+    KDY.add(new n.b());
+    KDY.add(new n.c());
+    KDY.add(new p.b());
+    KDY.add(new p.c());
+    KDY.add(new m.b());
+    KDY.add(new m.c());
+    KDY.add(new o.b());
+    KDY.add(new o.c());
+    KDY.add(new z.a());
+    KDY.add(new z.b());
+    KDY.add(new q.b());
+    KDY.add(new q.c());
+    KDY.add(new x());
+    KDY.add(new ax.b()
     {
-      public final boolean bi(int paramAnonymousInt, boolean paramAnonymousBoolean)
+      public final boolean br(int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(37556);
-        ad.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
+        ae.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
         AppMethodBeat.o(37556);
         return paramAnonymousBoolean;
       }
     });
-    KhE.add(new ax.a()
+    KDY.add(new ax.a()
     {
-      public final boolean bi(int paramAnonymousInt, boolean paramAnonymousBoolean)
+      public final boolean br(int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(37557);
-        ad.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
+        ae.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
         if (!paramAnonymousBoolean)
         {
           AppMethodBeat.o(37557);
@@ -132,27 +132,54 @@ public final class bl
     AppMethodBeat.o(37561);
   }
   
-  public static int cA(bu parambu)
+  public static c cy(bv parambv)
+  {
+    AppMethodBeat.i(37558);
+    Iterator localIterator = KDY.iterator();
+    while (localIterator.hasNext())
+    {
+      c localc = (c)localIterator.next();
+      int i = parambv.getType();
+      if (parambv.field_isSend == 1) {}
+      for (boolean bool = true; localc.br(i, bool); bool = false) {
+        try
+        {
+          localc = (c)localc.getClass().newInstance();
+          AppMethodBeat.o(37558);
+          return localc;
+        }
+        catch (Exception localException)
+        {
+          ae.printErrStackTrace("MicroMsg.Chatting.ItemFactory", localException, "", new Object[0]);
+        }
+      }
+    }
+    parambv = new ax.a();
+    AppMethodBeat.o(37558);
+    return parambv;
+  }
+  
+  public static int cz(bv parambv)
   {
     AppMethodBeat.i(37560);
-    if (parambu.getType() == 49)
+    if (parambv.getType() == 49)
     {
-      i = m.g(k.b.yr(parambu.field_content));
-      ad.d("MicroMsg.Chatting.ItemFactory", "maybe honeypay need change type: %s", new Object[] { Integer.valueOf(i) });
+      i = m.g(k.b.zb(parambv.field_content));
+      ae.d("MicroMsg.Chatting.ItemFactory", "maybe honeypay need change type: %s", new Object[] { Integer.valueOf(i) });
       if (i != 49)
       {
-        parambu.setType(i);
-        com.tencent.mm.model.ba.aBQ();
-        com.tencent.mm.model.c.azs().a(parambu.field_msgId, parambu);
+        parambv.setType(i);
+        com.tencent.mm.model.bc.aCg();
+        com.tencent.mm.model.c.azI().a(parambv.field_msgId, parambv);
       }
     }
     int i = 0;
-    while (i < KhE.size())
+    while (i < KDY.size())
     {
-      c localc = (c)KhE.get(i);
-      int j = parambu.getType();
-      if (parambu.field_isSend == 1) {}
-      for (boolean bool = true; localc.bi(j, bool); bool = false)
+      c localc = (c)KDY.get(i);
+      int j = parambv.getType();
+      if (parambv.field_isSend == 1) {}
+      for (boolean bool = true; localc.br(j, bool); bool = false)
       {
         AppMethodBeat.o(37560);
         return i;
@@ -163,37 +190,10 @@ public final class bl
     return 0;
   }
   
-  public static c cz(bu parambu)
-  {
-    AppMethodBeat.i(37558);
-    Iterator localIterator = KhE.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      int i = parambu.getType();
-      if (parambu.field_isSend == 1) {}
-      for (boolean bool = true; localc.bi(i, bool); bool = false) {
-        try
-        {
-          localc = (c)localc.getClass().newInstance();
-          AppMethodBeat.o(37558);
-          return localc;
-        }
-        catch (Exception localException)
-        {
-          ad.printErrStackTrace("MicroMsg.Chatting.ItemFactory", localException, "", new Object[0]);
-        }
-      }
-    }
-    parambu = new ax.a();
-    AppMethodBeat.o(37558);
-    return parambu;
-  }
-  
-  public static int fHx()
+  public static int fLP()
   {
     AppMethodBeat.i(37559);
-    int i = KhE.size();
+    int i = KDY.size();
     AppMethodBeat.o(37559);
     return i + 2;
   }

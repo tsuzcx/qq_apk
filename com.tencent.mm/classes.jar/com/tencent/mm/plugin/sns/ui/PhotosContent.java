@@ -15,25 +15,25 @@ import java.util.ArrayList;
 public class PhotosContent
   extends MMFrameLayout
 {
-  private int ciz;
-  public ArrayList<TagImageView> zUJ;
-  private float zUK;
+  public ArrayList<TagImageView> AlR;
+  private float AlS;
+  private int ciB;
   
   public PhotosContent(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98153);
-    this.zUJ = new ArrayList();
-    this.ciz = 120;
+    this.AlR = new ArrayList();
+    this.ciB = 120;
     AppMethodBeat.o(98153);
   }
   
-  public final TagImageView Ra(int paramInt)
+  public final TagImageView RH(int paramInt)
   {
     AppMethodBeat.i(98152);
-    if (paramInt < this.zUJ.size())
+    if (paramInt < this.AlR.size())
     {
-      TagImageView localTagImageView = (TagImageView)this.zUJ.get(paramInt);
+      TagImageView localTagImageView = (TagImageView)this.AlR.get(paramInt);
       AppMethodBeat.o(98152);
       return localTagImageView;
     }
@@ -44,14 +44,14 @@ public class PhotosContent
   public final void a(TagImageView paramTagImageView)
   {
     AppMethodBeat.i(98150);
-    this.zUJ.add(paramTagImageView);
+    this.AlR.add(paramTagImageView);
     AppMethodBeat.o(98150);
   }
   
-  public final void eaI()
+  public final void eeo()
   {
     AppMethodBeat.i(98149);
-    this.zUJ.clear();
+    this.AlR.clear();
     AppMethodBeat.o(98149);
   }
   
@@ -70,34 +70,34 @@ public class PhotosContent
       AppMethodBeat.o(98151);
       return;
     }
-    this.zUK = getResources().getDisplayMetrics().density;
-    this.ciz = ((int)(this.ciz * this.zUK));
-    if (paramInt < this.ciz) {}
+    this.AlS = getResources().getDisplayMetrics().density;
+    this.ciB = ((int)(this.ciB * this.AlS));
+    if (paramInt < this.ciB) {}
     Object localObject1;
     for (;;)
     {
       i = 0;
-      while (i < this.zUJ.size())
+      while (i < this.AlR.size())
       {
         localObject1 = getChildAt(i);
         Object localObject2 = new ViewGroup.MarginLayoutParams(((View)localObject1).getLayoutParams());
         ((ViewGroup.MarginLayoutParams)localObject2).width = paramInt;
         ((ViewGroup.MarginLayoutParams)localObject2).height = paramInt;
-        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)(i % 3 * (paramInt + this.zUK * 3.0F)));
-        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)(i / 3 * (paramInt + this.zUK * 3.0F)));
+        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)(i % 3 * (paramInt + this.AlS * 3.0F)));
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)(i / 3 * (paramInt + this.AlS * 3.0F)));
         localObject2 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject2);
         ((FrameLayout.LayoutParams)localObject2).gravity = 51;
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         i += 1;
       }
-      paramInt = this.ciz;
+      paramInt = this.ciB;
     }
-    int i = this.zUJ.size() / 3;
+    int i = this.AlR.size() / 3;
     if (i > 0)
     {
       localObject1 = (ViewGroup.MarginLayoutParams)getLayoutParams();
       float f1 = paramInt * i;
-      float f2 = this.zUK;
+      float f2 = this.AlS;
       ((ViewGroup.MarginLayoutParams)localObject1).height = ((int)((i - 1) * (f2 * 3.0F) + f1));
       setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }

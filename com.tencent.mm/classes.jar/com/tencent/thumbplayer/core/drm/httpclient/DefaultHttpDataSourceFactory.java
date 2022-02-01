@@ -28,34 +28,34 @@ public final class DefaultHttpDataSourceFactory
   
   public DefaultHttpDataSourceFactory(String paramString, TransferListener paramTransferListener, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(220629);
+    AppMethodBeat.i(197568);
     this.userAgent = Assertions.checkNotEmpty(paramString);
     this.listener = paramTransferListener;
     this.connectTimeoutMillis = paramInt1;
     this.readTimeoutMillis = paramInt2;
     this.allowCrossProtocolRedirects = paramBoolean;
-    AppMethodBeat.o(220629);
+    AppMethodBeat.o(197568);
   }
   
   protected final DefaultHttpDataSource createDataSourceInternal(int paramInt, HttpDataSource.RequestProperties paramRequestProperties)
   {
-    AppMethodBeat.i(220631);
+    AppMethodBeat.i(197570);
     paramRequestProperties = new DefaultHttpDataSource(this.userAgent, null, paramInt, paramInt, this.allowCrossProtocolRedirects, paramRequestProperties);
     if (this.listener != null) {
       paramRequestProperties.addTransferListener(this.listener);
     }
-    AppMethodBeat.o(220631);
+    AppMethodBeat.o(197570);
     return paramRequestProperties;
   }
   
   protected final DefaultHttpDataSource createDataSourceInternal(HttpDataSource.RequestProperties paramRequestProperties)
   {
-    AppMethodBeat.i(220630);
+    AppMethodBeat.i(197569);
     paramRequestProperties = new DefaultHttpDataSource(this.userAgent, null, this.connectTimeoutMillis, this.readTimeoutMillis, this.allowCrossProtocolRedirects, paramRequestProperties);
     if (this.listener != null) {
       paramRequestProperties.addTransferListener(this.listener);
     }
-    AppMethodBeat.o(220630);
+    AppMethodBeat.o(197569);
     return paramRequestProperties;
   }
 }

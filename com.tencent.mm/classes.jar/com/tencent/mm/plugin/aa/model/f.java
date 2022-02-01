@@ -6,8 +6,8 @@ import com.tencent.mm.vending.c.b;
 public final class f
   implements b<e>
 {
-  protected e iSK;
-  public final a iSL;
+  protected e iVD;
+  public final a iVE;
   
   public f()
   {
@@ -19,14 +19,14 @@ public final class f
   private f(e parame)
   {
     AppMethodBeat.i(63333);
-    this.iSL = new a();
-    this.iSK = parame;
+    this.iVE = new a();
+    this.iVD = parame;
     AppMethodBeat.o(63333);
   }
   
-  public final e aRf()
+  public final e aRE()
   {
-    return this.iSK;
+    return this.iVD;
   }
   
   public final class a
@@ -34,7 +34,7 @@ public final class f
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

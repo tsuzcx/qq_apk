@@ -21,18 +21,18 @@ import java.util.concurrent.ExecutionException;
 final class c
 {
   private static final String[] SUPPORTED_ABIS;
-  private final String MDx;
-  private final HashSet<String> MDy;
-  private a MDz;
+  private final String NaC;
+  private final HashSet<String> NaD;
+  private a NaE;
   
   static
   {
-    AppMethodBeat.i(213289);
+    AppMethodBeat.i(197871);
     if (Build.VERSION.SDK_INT >= 21) {}
     for (Object localObject = Build.SUPPORTED_ABIS;; localObject = (String[])((ArrayList)localObject).toArray(new String[0]))
     {
       SUPPORTED_ABIS = (String[])localObject;
-      AppMethodBeat.o(213289);
+      AppMethodBeat.o(197871);
       return;
       localObject = new ArrayList(Arrays.asList(new String[] { Build.CPU_ABI, Build.CPU_ABI2 }));
       ((ArrayList)localObject).removeAll(Arrays.asList(new String[] { null, "" }));
@@ -41,19 +41,19 @@ final class c
   
   private static String a(File paramFile, PackageManager paramPackageManager, String paramString)
   {
-    AppMethodBeat.i(213285);
+    AppMethodBeat.i(197867);
     try
     {
       paramPackageManager = paramPackageManager.getPackageInfo(paramString, 0);
       if (paramPackageManager == null)
       {
-        AppMethodBeat.o(213285);
+        AppMethodBeat.o(197867);
         return "res_timestamp-";
       }
     }
     catch (PackageManager.NameNotFoundException paramFile)
     {
-      AppMethodBeat.o(213285);
+      AppMethodBeat.o(197867);
       return "res_timestamp-";
     }
     paramString = new StringBuilder("res_timestamp-");
@@ -61,25 +61,25 @@ final class c
     for (long l = paramPackageManager.getLongVersionCode();; l = paramPackageManager.versionCode)
     {
       paramPackageManager = l + "-" + paramPackageManager.lastUpdateTime;
-      paramFile = an(paramFile);
+      paramFile = am(paramFile);
       if (paramFile != null) {
         break;
       }
-      AppMethodBeat.o(213285);
+      AppMethodBeat.o(197867);
       return paramPackageManager;
     }
     if ((paramFile.length != 1) || (!paramPackageManager.equals(paramFile[0])))
     {
-      AppMethodBeat.o(213285);
+      AppMethodBeat.o(197867);
       return paramPackageManager;
     }
-    AppMethodBeat.o(213285);
+    AppMethodBeat.o(197867);
     return null;
   }
   
   private static void a(String paramString, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(213284);
+    AppMethodBeat.i(197866);
     paramString = new File(paramString);
     paramHashSet = paramHashSet.iterator();
     while (paramHashSet.hasNext())
@@ -89,10 +89,10 @@ final class c
         localFile.delete();
       }
     }
-    paramHashSet = an(paramString);
+    paramHashSet = am(paramString);
     if (paramHashSet == null)
     {
-      AppMethodBeat.o(213284);
+      AppMethodBeat.o(197866);
       return;
     }
     int j = paramHashSet.length;
@@ -102,44 +102,44 @@ final class c
       new File(paramString, paramHashSet[i]).delete();
       i += 1;
     }
-    AppMethodBeat.o(213284);
+    AppMethodBeat.o(197866);
   }
   
-  private static String[] an(File paramFile)
+  private static String[] am(File paramFile)
   {
-    AppMethodBeat.i(213283);
+    AppMethodBeat.i(197865);
     paramFile = paramFile.list(new FilenameFilter()
     {
       public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
       {
-        AppMethodBeat.i(213293);
+        AppMethodBeat.i(197875);
         boolean bool = paramAnonymousString.startsWith("res_timestamp-");
-        AppMethodBeat.o(213293);
+        AppMethodBeat.o(197875);
         return bool;
       }
     });
-    AppMethodBeat.o(213283);
+    AppMethodBeat.o(197865);
     return paramFile;
   }
   
-  final void geS()
+  final void gju()
   {
-    AppMethodBeat.i(213282);
-    if (this.MDz == null)
+    AppMethodBeat.i(197864);
+    if (this.NaE == null)
     {
-      AppMethodBeat.o(213282);
+      AppMethodBeat.o(197864);
       return;
     }
     try
     {
-      this.MDz.get();
-      AppMethodBeat.o(213282);
+      this.NaE.get();
+      AppMethodBeat.o(197864);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      a(this.MDx, this.MDy);
-      AppMethodBeat.o(213282);
+      a(this.NaC, this.NaD);
+      AppMethodBeat.o(197864);
       return;
     }
     catch (ExecutionException localExecutionException)
@@ -156,26 +156,26 @@ final class c
   static final class a
     extends AsyncTask<Void, Void, Void>
   {
-    private final String MDx;
-    private final HashSet<String> MDy;
+    private final String NaC;
+    private final HashSet<String> NaD;
     private final PackageManager bWW;
-    private final AssetManager jFq;
+    private final AssetManager jIp;
     private final String mPackageName;
     
-    private Void aRZ()
+    private Void aSy()
     {
-      AppMethodBeat.i(213290);
-      File localFile = new File(this.MDx);
+      AppMethodBeat.i(197872);
+      File localFile = new File(this.NaC);
       String str = c.b(localFile, this.bWW, this.mPackageName);
       if (str == null)
       {
-        AppMethodBeat.o(213290);
+        AppMethodBeat.o(197872);
         return null;
       }
-      c.b(this.MDx, this.MDy);
-      if (!ao(localFile))
+      c.b(this.NaC, this.NaD);
+      if (!an(localFile))
       {
-        AppMethodBeat.o(213290);
+        AppMethodBeat.o(197872);
         return null;
       }
       if (str != null) {}
@@ -183,7 +183,7 @@ final class c
       {
         new File(localFile, str).createNewFile();
         label84:
-        AppMethodBeat.o(213290);
+        AppMethodBeat.o(197872);
         return null;
       }
       catch (IOException localIOException)
@@ -193,13 +193,13 @@ final class c
     }
     
     /* Error */
-    private boolean ao(File paramFile)
+    private boolean an(File paramFile)
     {
       // Byte code:
       //   0: ldc 70
       //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 50	io/flutter/embedding/engine/a/c$a:MDy	Ljava/util/HashSet;
+      //   6: getfield 50	io/flutter/embedding/engine/a/c$a:NaD	Ljava/util/HashSet;
       //   9: invokevirtual 76	java/util/HashSet:iterator	()Ljava/util/Iterator;
       //   12: astore 4
       //   14: aload 4
@@ -226,7 +226,7 @@ final class c
       //   63: invokevirtual 97	java/io/File:mkdirs	()Z
       //   66: pop
       //   67: aload_0
-      //   68: getfield 99	io/flutter/embedding/engine/a/c$a:jFq	Landroid/content/res/AssetManager;
+      //   68: getfield 99	io/flutter/embedding/engine/a/c$a:jIp	Landroid/content/res/AssetManager;
       //   71: aload_3
       //   72: invokevirtual 105	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
       //   75: astore 5
@@ -287,9 +287,9 @@ final class c
       //   185: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   188: pop
       //   189: aload_0
-      //   190: getfield 33	io/flutter/embedding/engine/a/c$a:MDx	Ljava/lang/String;
+      //   190: getfield 33	io/flutter/embedding/engine/a/c$a:NaC	Ljava/lang/String;
       //   193: aload_0
-      //   194: getfield 50	io/flutter/embedding/engine/a/c$a:MDy	Ljava/util/HashSet;
+      //   194: getfield 50	io/flutter/embedding/engine/a/c$a:NaD	Ljava/util/HashSet;
       //   197: invokestatic 53	io/flutter/embedding/engine/a/c:b	(Ljava/lang/String;Ljava/util/HashSet;)V
       //   200: ldc 70
       //   202: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V

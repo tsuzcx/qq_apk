@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class c
 {
-  public abstract int gti();
+  public abstract int gxK();
   
   public String toString()
   {
@@ -14,41 +14,41 @@ public abstract class c
   public static final class a
     extends c
   {
-    private static final int Nxl;
-    public static final a Nxm;
+    private static final int NUr;
+    public static final a NUs;
     
     static
     {
       AppMethodBeat.i(60194);
-      Nxm = new a();
-      d.a locala = d.NxN;
-      int i = d.gtq();
-      locala = d.NxN;
-      int j = d.gto();
-      locala = d.NxN;
-      Nxl = i & ((j | d.gtp()) ^ 0xFFFFFFFF);
+      NUs = new a();
+      d.a locala = d.NUU;
+      int i = d.gxS();
+      locala = d.NUU;
+      int j = d.gxQ();
+      locala = d.NUU;
+      NUr = i & ((j | d.gxR()) ^ 0xFFFFFFFF);
       AppMethodBeat.o(60194);
     }
     
-    public final int gti()
+    public final int gxK()
     {
-      return Nxl;
+      return NUr;
     }
   }
   
   public static final class b
     extends c
   {
-    public static final b Nxn;
+    public static final b NUt;
     
     static
     {
       AppMethodBeat.i(60195);
-      Nxn = new b();
+      NUt = new b();
       AppMethodBeat.o(60195);
     }
     
-    public final int gti()
+    public final int gxK()
     {
       return 0;
     }
@@ -56,7 +56,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.c
  * JD-Core Version:    0.7.0.1
  */

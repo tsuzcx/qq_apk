@@ -6,56 +6,56 @@ import android.os.Looper;
 public abstract class d
   implements c
 {
-  public boolean LFl = false;
-  b LFm = null;
-  protected byte[] LFn = null;
-  public Object LFo = null;
-  protected int LFp;
-  protected int LFq = 0;
+  public boolean Mcp = false;
+  b Mcq = null;
+  protected byte[] Mcr = null;
+  public Object Mcs = null;
+  protected int Mct;
+  protected int Mcu = 0;
   protected final String TAG2 = getClass().getSimpleName();
-  private final long hOM = 60000L;
-  private Runnable hOQ = new Runnable()
+  private final long hRF = 60000L;
+  private Runnable hRJ = new Runnable()
   {
     public final void run()
     {
-      d.this.nTk = true;
-      com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV TimeOut cmd= ", d.this.fSQ() });
+      d.this.nYQ = true;
+      com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV TimeOut cmd= ", d.this.fXq() });
       com.tencent.pb.common.c.e.S(20006, 3, "-1104");
-      if (d.this.LFm != null) {
-        d.this.LFm.a(2, -1, "time exceed, force to callback", d.this);
+      if (d.this.Mcq != null) {
+        d.this.Mcq.a(2, -1, "time exceed, force to callback", d.this);
       }
     }
   };
   private int mErrorCode = -999;
   private Handler mHandler = new Handler(Looper.getMainLooper());
   protected int mNetType = 2;
-  boolean nTk = false;
+  boolean nYQ = false;
   
   public final int a(b paramb)
   {
-    if (this.LFn == null)
+    if (this.Mcr == null)
     {
-      com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { this.TAG2, "dosene reqData is null cmd=" + this.LFp });
+      com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { this.TAG2, "dosene reqData is null cmd=" + this.Mct });
       return -1;
     }
-    this.LFm = paramb;
+    this.Mcq = paramb;
     paramb = new i(this);
-    int i = f.fSU().a(null, paramb, this.LFp, fSQ(), this.LFn, this.LFq);
+    int i = f.fXu().a(null, paramb, this.Mct, fXq(), this.Mcr, this.Mcu);
     if (i >= 0) {
-      this.mHandler.postDelayed(this.hOQ, 60000L);
+      this.mHandler.postDelayed(this.hRJ, 60000L);
     }
-    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_SEND dosene:cmd ", fSQ(), Integer.valueOf(i) });
+    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_SEND dosene:cmd ", fXq(), Integer.valueOf(i) });
     return i;
   }
   
   public final void c(int paramInt, com.google.b.a.e parame)
   {
-    this.LFp = paramInt;
+    this.Mct = paramInt;
     Object localObject = null;
     try
     {
       parame = com.google.b.a.e.b(parame);
-      this.LFn = parame;
+      this.Mcr = parame;
       return;
     }
     catch (Exception parame)
@@ -67,9 +67,9 @@ public abstract class d
     }
   }
   
-  protected abstract Object cI(byte[] paramArrayOfByte);
+  protected abstract Object cL(byte[] paramArrayOfByte);
   
-  protected abstract String fSQ();
+  protected abstract String fXq();
   
   public abstract int getType();
   
@@ -77,8 +77,8 @@ public abstract class d
   {
     final int i = 2;
     com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { this.TAG2, "onResp errcode", Integer.valueOf(paramInt) });
-    this.mHandler.removeCallbacks(this.hOQ);
-    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV onResp:cmd= ", fSQ(), Integer.valueOf(paramInt), Boolean.valueOf(this.nTk) });
+    this.mHandler.removeCallbacks(this.hRJ);
+    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV onResp:cmd= ", fXq(), Integer.valueOf(paramInt), Boolean.valueOf(this.nYQ) });
     if (paramInt != 0)
     {
       com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { this.TAG2, "getNetworkErrType errcode:".concat(String.valueOf(paramInt)) });
@@ -90,9 +90,9 @@ public abstract class d
     }
     for (;;)
     {
-      if (this.nTk)
+      if (this.nYQ)
       {
-        com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "onResp netscene already canceled, cmd:" + this.LFp });
+        com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "onResp netscene already canceled, cmd:" + this.Mct });
         return;
         if (paramInt == 6801) {
           i = 10;
@@ -103,18 +103,18 @@ public abstract class d
       else
       {
         this.mErrorCode = paramInt;
-        this.LFo = cI(paramArrayOfByte);
+        this.Mcs = cL(paramArrayOfByte);
         this.mHandler.post(new Runnable()
         {
           public final void run()
           {
-            if (d.this.nTk) {
-              com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { d.this.TAG2, "onResp netscene already canceled, cmd:" + d.this.LFp });
+            if (d.this.nYQ) {
+              com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { d.this.TAG2, "onResp netscene already canceled, cmd:" + d.this.Mct });
             }
-            while (d.this.LFm == null) {
+            while (d.this.Mcq == null) {
               return;
             }
-            d.this.LFm.a(i, paramInt, "", d.this);
+            d.this.Mcq.a(i, paramInt, "", d.this);
           }
         });
         return;

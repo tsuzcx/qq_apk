@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,20 +20,20 @@ import java.util.Set;
 public final class a
   extends BaseAdapter
 {
-  private Context wNa;
-  private List<com.tencent.mm.plugin.product.c.a> wNb;
-  private List<Boolean> wNc;
-  private int wNd = 1;
+  private Context xcO;
+  private List<com.tencent.mm.plugin.product.c.a> xcP;
+  private List<Boolean> xcQ;
+  private int xcR = 1;
   
   public a(Context paramContext)
   {
-    this.wNa = paramContext;
+    this.xcO = paramContext;
   }
   
-  private com.tencent.mm.plugin.product.c.a MB(int paramInt)
+  private com.tencent.mm.plugin.product.c.a Nh(int paramInt)
   {
     AppMethodBeat.i(66938);
-    com.tencent.mm.plugin.product.c.a locala = (com.tencent.mm.plugin.product.c.a)this.wNb.get(paramInt);
+    com.tencent.mm.plugin.product.c.a locala = (com.tencent.mm.plugin.product.c.a)this.xcP.get(paramInt);
     AppMethodBeat.o(66938);
     return locala;
   }
@@ -42,13 +42,13 @@ public final class a
   {
     AppMethodBeat.i(66936);
     paramView = (b)paramView.getTag();
-    ad.i("MicroMsg.MallCustomActionAdapter", "onItemClick holder.type" + paramView.type);
-    ad.i("MicroMsg.MallCustomActionAdapter", "onItemClick holder.content" + paramView.wNh);
+    ae.i("MicroMsg.MallCustomActionAdapter", "onItemClick holder.type" + paramView.type);
+    ae.i("MicroMsg.MallCustomActionAdapter", "onItemClick holder.content" + paramView.xcV);
     switch (paramView.type)
     {
     case 3: 
     default: 
-      ad.w("MicroMsg.MallCustomActionAdapter", "not support type");
+      ae.w("MicroMsg.MallCustomActionAdapter", "not support type");
     case 0: 
     case 1: 
     case 2: 
@@ -64,22 +64,22 @@ public final class a
             return;
             AppMethodBeat.o(66936);
             return;
-          } while (!(paramView.wNh instanceof String));
-          e.a(this.wNa, (String)paramView.wNh, false, 10000);
+          } while (!(paramView.xcV instanceof String));
+          f.a(this.xcO, (String)paramView.xcV, false, 10000);
           AppMethodBeat.o(66936);
           return;
-        } while (!(paramView.wNh instanceof ArrayList));
-        paramView = (ArrayList)paramView.wNh;
+        } while (!(paramView.xcV instanceof ArrayList));
+        paramView = (ArrayList)paramView.xcV;
         localObject = new Intent(paramActivity, MallGalleryUI.class);
         ((Intent)localObject).putExtra("keys_img_urls", paramView);
         paramView = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramView.ahp(), "com/tencent/mm/plugin/product/ui/MallCustomActionAdapter", "onItemClick", "(Landroid/app/Activity;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramView.ahE(), "com/tencent/mm/plugin/product/ui/MallCustomActionAdapter", "onItemClick", "(Landroid/app/Activity;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/product/ui/MallCustomActionAdapter", "onItemClick", "(Landroid/app/Activity;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(66936);
         return;
-      } while (!(paramView.wNh instanceof String));
-      Object localObject = (String)paramView.wNh;
+      } while (!(paramView.xcV instanceof String));
+      Object localObject = (String)paramView.xcV;
       Intent localIntent = new Intent();
       localIntent.putExtra("title", paramView.title);
       localIntent.putExtra("neverGetA8Key", false);
@@ -87,42 +87,42 @@ public final class a
       localIntent.putExtra("show_bottom", false);
       localIntent.putExtra("data", (String)localObject);
       localIntent.putExtra("QRDataFlag", false);
-      e.an(paramActivity, localIntent);
+      f.an(paramActivity, localIntent);
       AppMethodBeat.o(66936);
       return;
     }
-    if (((Boolean)this.wNc.get(paramInt)).booleanValue()) {
-      this.wNc.set(paramInt, Boolean.FALSE);
+    if (((Boolean)this.xcQ.get(paramInt)).booleanValue()) {
+      this.xcQ.set(paramInt, Boolean.FALSE);
     }
     for (;;)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(66936);
       return;
-      this.wNc.set(paramInt, Boolean.TRUE);
+      this.xcQ.set(paramInt, Boolean.TRUE);
     }
   }
   
-  public final void eL(List<com.tencent.mm.plugin.product.c.a> paramList)
+  public final void eT(List<com.tencent.mm.plugin.product.c.a> paramList)
   {
     AppMethodBeat.i(66935);
-    this.wNb = paramList;
-    this.wNd = 0;
-    this.wNc = new ArrayList();
-    if (this.wNb != null)
+    this.xcP = paramList;
+    this.xcR = 0;
+    this.xcQ = new ArrayList();
+    if (this.xcP != null)
     {
       HashSet localHashSet = new HashSet();
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.product.c.a locala = (com.tencent.mm.plugin.product.c.a)localIterator.next();
-        this.wNc.add(Boolean.FALSE);
-        localHashSet.add(Integer.valueOf(locala.nEf));
+        this.xcQ.add(Boolean.FALSE);
+        localHashSet.add(Integer.valueOf(locala.nJA));
       }
-      this.wNd = paramList.size();
+      this.xcR = paramList.size();
     }
-    if (this.wNd <= 0) {
-      this.wNd = 1;
+    if (this.xcR <= 0) {
+      this.xcR = 1;
     }
     AppMethodBeat.o(66935);
   }
@@ -130,9 +130,9 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(66937);
-    if (this.wNb != null)
+    if (this.xcP != null)
     {
-      int i = this.wNb.size();
+      int i = this.xcP.size();
       AppMethodBeat.o(66937);
       return i;
     }
@@ -148,7 +148,7 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(66939);
-    paramInt = MB(paramInt).nEf;
+    paramInt = Nh(paramInt).nJA;
     AppMethodBeat.o(66939);
     return paramInt;
   }
@@ -159,22 +159,22 @@ public final class a
     com.tencent.mm.plugin.product.c.a locala;
     if (paramView == null)
     {
-      paramView = View.inflate(this.wNa, 2131495121, null);
+      paramView = View.inflate(this.xcO, 2131495121, null);
       paramViewGroup = new b();
-      paramViewGroup.lCL = ((TextView)paramView.findViewById(2131305948));
-      paramViewGroup.wNe = ((TextView)paramView.findViewById(2131305553));
-      paramViewGroup.wNf = ((ImageView)paramView.findViewById(2131300997));
-      paramViewGroup.wNg = ((HtmlTextView)paramView.findViewById(2131299046));
+      paramViewGroup.lHk = ((TextView)paramView.findViewById(2131305948));
+      paramViewGroup.xcS = ((TextView)paramView.findViewById(2131305553));
+      paramViewGroup.xcT = ((ImageView)paramView.findViewById(2131300997));
+      paramViewGroup.xcU = ((HtmlTextView)paramView.findViewById(2131299046));
       paramView.setTag(paramViewGroup);
-      locala = MB(paramInt);
+      locala = Nh(paramInt);
       if (locala != null)
       {
-        paramViewGroup.lCL.setText(locala.Name);
-        paramViewGroup.wNe.setText(locala.wMs);
-        paramViewGroup.type = locala.nEf;
-        paramViewGroup.wNh = locala.hDa;
+        paramViewGroup.lHk.setText(locala.Name);
+        paramViewGroup.xcS.setText(locala.xcg);
+        paramViewGroup.type = locala.nJA;
+        paramViewGroup.xcV = locala.hFS;
         paramViewGroup.title = locala.Name;
-        switch (locala.nEf)
+        switch (locala.nJA)
         {
         }
       }
@@ -186,31 +186,31 @@ public final class a
       return paramView;
       paramViewGroup = (b)paramView.getTag();
       break;
-      paramViewGroup.wNf.setVisibility(8);
+      paramViewGroup.xcT.setVisibility(8);
       continue;
-      if (((Boolean)this.wNc.get(paramInt)).booleanValue()) {
-        paramViewGroup.wNg.setVisibility(0);
+      if (((Boolean)this.xcQ.get(paramInt)).booleanValue()) {
+        paramViewGroup.xcU.setVisibility(0);
       }
       for (;;)
       {
-        if (paramViewGroup.wNg.getText().equals(locala.hDa)) {
+        if (paramViewGroup.xcU.getText().equals(locala.hFS)) {
           break label301;
         }
-        paramViewGroup.wNg.setText(locala.hDa);
+        paramViewGroup.xcU.setText(locala.hFS);
         break;
-        paramViewGroup.wNg.setVisibility(8);
+        paramViewGroup.xcU.setVisibility(8);
       }
     }
   }
   
   public final int getViewTypeCount()
   {
-    return this.wNd;
+    return this.xcR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;", "", "(Ljava/lang/String;I)V", "INIT", "CREATED", "CONNECTED", "DESTROYED", "TROUBLESOME", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;", "", "(Ljava/lang/String;I)V", "INIT", "CREATED", "CONNECTED", "DESTROYED", "TROUBLESOME", "luggage-commons-jsapi-connectivity-ext_release"})
 public enum p
 {
   static
   {
     AppMethodBeat.i(144788);
     p localp1 = new p("INIT", 0);
-    kEg = localp1;
+    kHv = localp1;
     p localp2 = new p("CREATED", 1);
-    kEh = localp2;
+    kHw = localp2;
     p localp3 = new p("CONNECTED", 2);
-    kEi = localp3;
+    kHx = localp3;
     p localp4 = new p("DESTROYED", 3);
-    kEj = localp4;
+    kHy = localp4;
     p localp5 = new p("TROUBLESOME", 4);
-    kEk = localp5;
-    kEl = new p[] { localp1, localp2, localp3, localp4, localp5 };
+    kHz = localp5;
+    kHA = new p[] { localp1, localp2, localp3, localp4, localp5 };
     AppMethodBeat.o(144788);
   }
   

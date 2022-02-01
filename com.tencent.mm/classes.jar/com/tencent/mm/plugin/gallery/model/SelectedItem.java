@@ -12,7 +12,7 @@ public class SelectedItem
   public static final Parcelable.Creator<SelectedItem> CREATOR;
   public Matrix gR;
   public String path;
-  public long tHA;
+  public long tSr;
   public int type;
   
   static
@@ -28,7 +28,7 @@ public class SelectedItem
   {
     AppMethodBeat.i(164772);
     this.path = paramParcel.readString();
-    this.tHA = paramParcel.readLong();
+    this.tSr = paramParcel.readLong();
     this.gR.setValues(paramParcel.createFloatArray());
     this.type = paramParcel.readInt();
     AppMethodBeat.o(164772);
@@ -44,7 +44,7 @@ public class SelectedItem
     AppMethodBeat.i(164770);
     if ((paramObject instanceof SelectedItem))
     {
-      if (((SelectedItem)paramObject).tHA == this.tHA)
+      if (((SelectedItem)paramObject).tSr == this.tSr)
       {
         AppMethodBeat.o(164770);
         return true;
@@ -66,7 +66,7 @@ public class SelectedItem
   {
     AppMethodBeat.i(164771);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.tHA);
+    paramParcel.writeLong(this.tSr);
     float[] arrayOfFloat = new float[9];
     this.gR.getValues(arrayOfFloat);
     paramParcel.writeFloatArray(arrayOfFloat);
@@ -76,7 +76,7 @@ public class SelectedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.SelectedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,10 @@ public class k
   
   public k(Context paramContext)
   {
-    AppMethodBeat.i(190474);
+    AppMethodBeat.i(210739);
     if (paramContext == null)
     {
-      AppMethodBeat.o(190474);
+      AppMethodBeat.o(210739);
       return;
     }
     this.c = paramContext.getApplicationContext();
@@ -24,19 +24,19 @@ public class k
       StringBuilder localStringBuilder = new StringBuilder();
       paramContext = localStringBuilder.append(paramContext.getExternalFilesDir("data").getAbsolutePath());
       this.a = new File("/d_l");
-      AppMethodBeat.o(190474);
+      AppMethodBeat.o(210739);
       return;
     }
     catch (Throwable paramContext)
     {
       this.a = null;
-      AppMethodBeat.o(190474);
+      AppMethodBeat.o(210739);
     }
   }
   
   public final File a()
   {
-    AppMethodBeat.i(190476);
+    AppMethodBeat.i(210741);
     try
     {
       File localFile = this.a;
@@ -48,12 +48,12 @@ public class k
       localObject = q.c("");
       StringBuilder localStringBuilder = new StringBuilder();
       localFile = new File(localFile, "d_" + (String)localObject);
-      AppMethodBeat.o(190476);
+      AppMethodBeat.o(210741);
       return localFile;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(190476);
+      AppMethodBeat.o(210741);
     }
     return null;
   }

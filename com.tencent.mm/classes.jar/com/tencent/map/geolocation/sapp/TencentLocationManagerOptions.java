@@ -19,14 +19,14 @@ public class TencentLocationManagerOptions
   
   public static boolean setKey(String paramString)
   {
-    AppMethodBeat.i(190570);
+    AppMethodBeat.i(210835);
     if ((paramString != null) && (!paramString.equals("")))
     {
       mKey = paramString;
-      AppMethodBeat.o(190570);
+      AppMethodBeat.o(210835);
       return true;
     }
-    AppMethodBeat.o(190570);
+    AppMethodBeat.o(210835);
     return false;
   }
   

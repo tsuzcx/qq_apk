@@ -10,10 +10,10 @@ import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.DataUsageFeedback;
 import com.google.android.search.verification.client.SearchActionVerificationClientService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class VoiceActionService
   extends SearchActionVerificationClientService
@@ -23,15 +23,15 @@ public class VoiceActionService
     AppMethodBeat.i(127863);
     if (!paramBoolean)
     {
-      ad.i("MicroMsg.VoiceActionService", "Action is not verified");
+      ae.i("MicroMsg.VoiceActionService", "Action is not verified");
       AppMethodBeat.o(127863);
       return false;
     }
     Object localObject = paramIntent.getStringExtra("com.google.android.voicesearch.extra.RECIPIENT_CONTACT_CHAT_ID");
     String str1 = paramIntent.getStringExtra("android.intent.extra.TEXT");
-    String str2 = com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.pluginsdk.b.JV((String)localObject).getBytes());
-    str2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Jx(str2).getUsername();
-    com.tencent.mm.plugin.messenger.a.g.dlD().aa(str2, str1, w.Ar(str2));
+    String str2 = com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.pluginsdk.b.Ku((String)localObject).getBytes());
+    str2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().JW(str2).getUsername();
+    com.tencent.mm.plugin.messenger.a.g.doC().aa(str2, str1, x.Bb(str2));
     for (;;)
     {
       try
@@ -42,14 +42,14 @@ public class VoiceActionService
           continue;
         }
         paramIntent = paramIntent[(paramIntent.length - 1)];
-        if (!bt.isNullOrNil(paramIntent)) {
+        if (!bu.isNullOrNil(paramIntent)) {
           continue;
         }
-        ad.e("MicroMsg.VoiceActionService", "extract contact Id error, %s %s", new Object[] { str1, localObject });
+        ae.e("MicroMsg.VoiceActionService", "extract contact Id error, %s %s", new Object[] { str1, localObject });
       }
       catch (Exception paramIntent)
       {
-        ad.printErrStackTrace("MicroMsg.VoiceActionService", paramIntent, "updateContactMarked error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.VoiceActionService", paramIntent, "updateContactMarked error", new Object[0]);
         continue;
         paramIntent = getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] { "_id" }, "contact_id=? AND data1=? AND account_type=? AND mimetype=?", new String[] { paramIntent, localObject, "com.tencent.mm.account", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voiceaction" }, null);
         if (paramIntent == null) {
@@ -62,7 +62,7 @@ public class VoiceActionService
       continue;
       if (!com.tencent.mm.pluginsdk.permission.b.n(this, "android.permission.READ_CONTACTS"))
       {
-        ad.e("MicroMsg.VoiceActionService", "no contacts permission");
+        ae.e("MicroMsg.VoiceActionService", "no contacts permission");
       }
       else if (paramIntent.getCount() > 0)
       {
@@ -78,7 +78,7 @@ public class VoiceActionService
     label353:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      ad.i("MicroMsg.VoiceActionService", "updateContactMarked: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      ae.i("MicroMsg.VoiceActionService", "updateContactMarked: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       for (;;)
       {
         if (paramIntent == null) {
@@ -86,7 +86,7 @@ public class VoiceActionService
         }
         paramIntent.close();
         break;
-        ad.i("MicroMsg.VoiceActionService", "updateContactMarked: false");
+        ae.i("MicroMsg.VoiceActionService", "updateContactMarked: false");
       }
       break;
     }

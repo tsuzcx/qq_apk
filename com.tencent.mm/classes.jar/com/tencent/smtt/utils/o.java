@@ -374,14 +374,14 @@ public class o
     //   209: aload 4
     //   211: astore_2
     //   212: goto -44 -> 168
-    //   215: astore 4
+    //   215: astore 5
     //   217: aload_1
-    //   218: astore 5
+    //   218: astore 4
     //   220: aload_2
     //   221: astore_3
-    //   222: aload 4
+    //   222: aload 5
     //   224: astore_1
-    //   225: aload 5
+    //   225: aload 4
     //   227: astore_2
     //   228: goto -60 -> 168
     //   231: astore_1
@@ -415,9 +415,8 @@ public class o
     //   195	1	3	localException8	java.lang.Exception
     //   208	14	3	localObject7	Object
     //   237	1	3	localThrowable3	Throwable
-    //   205	5	4	localObject8	Object
-    //   215	8	4	localObject9	Object
-    //   218	8	5	localObject10	Object
+    //   205	21	4	localObject8	Object
+    //   215	8	5	localObject9	Object
     // Exception table:
     //   from	to	target	type
     //   22	30	30	java/lang/Exception

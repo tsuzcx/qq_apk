@@ -6,6 +6,9 @@ import com.tencent.mm.sdk.b.b;
 public final class vq
   extends b
 {
+  public vq.a dKT;
+  public b dKU;
+  
   public vq()
   {
     this((byte)0);
@@ -13,15 +16,23 @@ public final class vq
   
   private vq(byte paramByte)
   {
-    AppMethodBeat.i(43443);
-    this.IbR = false;
+    AppMethodBeat.i(153187);
+    this.dKT = new vq.a();
+    this.dKU = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(43443);
+    AppMethodBeat.o(153187);
+  }
+  
+  public static final class b
+  {
+    public boolean dLn;
+    public String dLo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.vq
  * JD-Core Version:    0.7.0.1
  */

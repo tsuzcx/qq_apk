@@ -14,10 +14,10 @@ final class h$3
   {
     AppMethodBeat.i(128265);
     paramDialogInterface = new StringBuilder();
-    g.ajA();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",F200_200,");
-    g.ajA();
-    com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.wS("F200_200") + ",2");
+    g.ajP();
+    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",F200_200,");
+    g.ajP();
+    com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.xB("F200_200") + ",2");
     AppMethodBeat.o(128265);
   }
 }

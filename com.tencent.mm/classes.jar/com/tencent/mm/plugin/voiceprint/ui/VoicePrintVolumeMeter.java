@@ -8,51 +8,49 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public class VoicePrintVolumeMeter
   extends View
 {
-  private static int BWJ;
-  private static int BWK;
-  private static int BWL;
-  private static float BWS;
-  private static float BWT;
-  private static float BWU;
-  private static float BWV;
-  static int veE;
-  private int BWF;
-  private int BWG;
-  private aq BWH;
-  av BWI;
-  private float BWM;
-  private float BWN;
-  private float BWO;
-  private float BWP;
-  private float BWQ;
-  private float BWR;
-  private boolean BWW;
+  private static int Cok;
+  private static int Col;
+  private static int Com;
+  private static float Cot;
+  private static float Cou;
+  private static float Cov;
+  private static float Cow;
+  static int vqO;
+  private int Cog;
+  private int Coh;
+  private com.tencent.mm.sdk.platformtools.ar Coi;
+  aw Coj;
+  private float Con;
+  private float Coo;
+  private float Cop;
+  private float Coq;
+  private float Cor;
+  private float Cos;
+  private boolean Cox;
   private Context mContext;
   boolean mIsPlaying;
   private Paint mPaint;
   private float mVolume;
-  private View ves;
+  private View vqC;
   
   static
   {
     AppMethodBeat.i(29900);
-    BWJ = Color.rgb(240, 250, 235);
-    BWK = Color.rgb(210, 240, 200);
-    BWL = 100;
-    veE = 20;
-    BWS = 1.5F;
-    BWT = 2.0F;
-    BWU = 0.1F;
-    BWV = 0.05F;
+    Cok = Color.rgb(240, 250, 235);
+    Col = Color.rgb(210, 240, 200);
+    Com = 100;
+    vqO = 20;
+    Cot = 1.5F;
+    Cou = 2.0F;
+    Cov = 0.1F;
+    Cow = 0.05F;
     AppMethodBeat.o(29900);
   }
   
@@ -60,18 +58,18 @@ public class VoicePrintVolumeMeter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29892);
-    this.BWF = -1;
-    this.BWG = -1;
-    this.BWH = null;
-    this.BWI = null;
-    this.BWM = 0.0F;
-    this.BWN = 0.0F;
-    this.BWO = 0.0F;
-    this.BWP = 0.0F;
-    this.BWQ = 0.0F;
-    this.BWR = 0.0F;
+    this.Cog = -1;
+    this.Coh = -1;
+    this.Coi = null;
+    this.Coj = null;
+    this.Con = 0.0F;
+    this.Coo = 0.0F;
+    this.Cop = 0.0F;
+    this.Coq = 0.0F;
+    this.Cor = 0.0F;
+    this.Cos = 0.0F;
     this.mVolume = -1.0F;
-    this.BWW = true;
+    this.Cox = true;
     this.mIsPlaying = false;
     init(paramContext);
     AppMethodBeat.o(29892);
@@ -81,18 +79,18 @@ public class VoicePrintVolumeMeter
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29893);
-    this.BWF = -1;
-    this.BWG = -1;
-    this.BWH = null;
-    this.BWI = null;
-    this.BWM = 0.0F;
-    this.BWN = 0.0F;
-    this.BWO = 0.0F;
-    this.BWP = 0.0F;
-    this.BWQ = 0.0F;
-    this.BWR = 0.0F;
+    this.Cog = -1;
+    this.Coh = -1;
+    this.Coi = null;
+    this.Coj = null;
+    this.Con = 0.0F;
+    this.Coo = 0.0F;
+    this.Cop = 0.0F;
+    this.Coq = 0.0F;
+    this.Cor = 0.0F;
+    this.Cos = 0.0F;
     this.mVolume = -1.0F;
-    this.BWW = true;
+    this.Cox = true;
     this.mIsPlaying = false;
     init(paramContext);
     AppMethodBeat.o(29893);
@@ -103,9 +101,9 @@ public class VoicePrintVolumeMeter
     AppMethodBeat.i(29894);
     this.mContext = paramContext;
     this.mPaint = new Paint();
-    BWJ = paramContext.getResources().getColor(2131099704);
-    BWK = paramContext.getResources().getColor(2131099706);
-    this.BWI = new av("VoicePrintVolumeMeter", new av.a()
+    Cok = paramContext.getResources().getColor(2131099704);
+    Col = paramContext.getResources().getColor(2131099706);
+    this.Coj = new aw("VoicePrintVolumeMeter", new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -119,39 +117,39 @@ public class VoicePrintVolumeMeter
     AppMethodBeat.o(29894);
   }
   
-  final void euy()
+  final void eye()
   {
     AppMethodBeat.i(29895);
-    if ((this.ves == null) || (this.ves.getVisibility() == 8))
+    if ((this.vqC == null) || (this.vqC.getVisibility() == 8))
     {
       AppMethodBeat.o(29895);
       return;
     }
     int[] arrayOfInt = new int[2];
-    this.ves.getLocationOnScreen(arrayOfInt);
+    this.vqC.getLocationOnScreen(arrayOfInt);
     if ((arrayOfInt[0] == 0) || (arrayOfInt[1] == 0))
     {
-      ad.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView location");
+      ae.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView location");
       AppMethodBeat.o(29895);
       return;
     }
-    int i = this.ves.getWidth();
-    int j = this.ves.getHeight();
+    int i = this.vqC.getWidth();
+    int j = this.vqC.getHeight();
     if ((j == 0) || (i == 0))
     {
-      ad.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView size");
+      ae.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView size");
       AppMethodBeat.o(29895);
       return;
     }
-    this.BWF = (arrayOfInt[0] + i / 2);
-    this.BWG = (arrayOfInt[1] + j / 2 - ar.jG(this.mContext));
-    ad.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, mCenterX:%d, mCenterY:%d", new Object[] { Integer.valueOf(this.BWF), Integer.valueOf(this.BWG) });
-    this.BWM = (i / 2.0F);
-    this.BWN = (this.BWM * BWS);
-    this.BWO = (this.BWM * BWT);
-    this.BWP = (this.BWN * BWT);
-    this.BWR = this.BWN;
-    this.BWQ = this.BWM;
+    this.Cog = (arrayOfInt[0] + i / 2);
+    this.Coh = (arrayOfInt[1] + j / 2 - com.tencent.mm.ui.ar.jN(this.mContext));
+    ae.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, mCenterX:%d, mCenterY:%d", new Object[] { Integer.valueOf(this.Cog), Integer.valueOf(this.Coh) });
+    this.Con = (i / 2.0F);
+    this.Coo = (this.Con * Cot);
+    this.Cop = (this.Con * Cou);
+    this.Coq = (this.Coo * Cou);
+    this.Cos = this.Coo;
+    this.Cor = this.Con;
     AppMethodBeat.o(29895);
   }
   
@@ -164,50 +162,50 @@ public class VoicePrintVolumeMeter
       AppMethodBeat.o(29896);
       return;
     }
-    if ((this.BWF == -1) || (this.BWG == -1)) {
-      euy();
+    if ((this.Cog == -1) || (this.Coh == -1)) {
+      eye();
     }
-    this.mPaint.setAlpha(BWL);
-    if (this.BWR > this.BWP) {
-      this.BWR = this.BWP;
+    this.mPaint.setAlpha(Com);
+    if (this.Cos > this.Coq) {
+      this.Cos = this.Coq;
     }
-    if (this.BWR < this.BWN) {
-      this.BWR = this.BWN;
+    if (this.Cos < this.Coo) {
+      this.Cos = this.Coo;
     }
-    this.mPaint.setColor(BWJ);
-    paramCanvas.drawCircle(this.BWF, this.BWG, this.BWR, this.mPaint);
-    if (this.BWQ > this.BWO) {
-      this.BWQ = this.BWO;
+    this.mPaint.setColor(Cok);
+    paramCanvas.drawCircle(this.Cog, this.Coh, this.Cos, this.mPaint);
+    if (this.Cor > this.Cop) {
+      this.Cor = this.Cop;
     }
-    if (this.BWQ < this.BWM) {
-      this.BWQ = this.BWM;
+    if (this.Cor < this.Con) {
+      this.Cor = this.Con;
     }
-    this.mPaint.setColor(BWK);
-    paramCanvas.drawCircle(this.BWF, this.BWG, this.BWQ, this.mPaint);
+    this.mPaint.setColor(Col);
+    paramCanvas.drawCircle(this.Cog, this.Coh, this.Cor, this.mPaint);
     AppMethodBeat.o(29896);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(29898);
-    this.BWW = false;
+    this.Cox = false;
     this.mVolume = -1.0F;
     this.mIsPlaying = false;
-    this.BWQ = 0.0F;
-    this.BWR = 0.0F;
+    this.Cor = 0.0F;
+    this.Cos = 0.0F;
     postInvalidate();
     AppMethodBeat.o(29898);
   }
   
   public void setArchView(View paramView)
   {
-    this.ves = paramView;
+    this.vqC = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
     if (paramFloat > this.mVolume) {}
-    for (this.BWW = true;; this.BWW = false)
+    for (this.Cox = true;; this.Cox = false)
     {
       this.mVolume = paramFloat;
       return;
@@ -219,7 +217,7 @@ public class VoicePrintVolumeMeter
     AppMethodBeat.i(29897);
     reset();
     this.mIsPlaying = false;
-    this.BWI.stopTimer();
+    this.Coj.stopTimer();
     postInvalidate();
     AppMethodBeat.o(29897);
   }

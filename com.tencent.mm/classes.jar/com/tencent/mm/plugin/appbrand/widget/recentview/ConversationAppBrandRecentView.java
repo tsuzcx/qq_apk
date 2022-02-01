@@ -23,34 +23,34 @@ import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.appusage.ai;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
-import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.base.n.e;
 import java.util.List;
 
 public class ConversationAppBrandRecentView
   extends BaseAppBrandRecentView
 {
-  private static final int nol;
+  private static final int ntv;
   private int mScreenWidth = 0;
-  private AppBrandRecentView.b mZs;
-  private e.a nok;
-  private float nom = 0.0F;
-  private int non = 0;
-  private a noo = null;
-  private View.OnCreateContextMenuListener nop = null;
-  private AppBrandRecentView.a noq = null;
-  private boolean nor = false;
+  private AppBrandRecentView.b neA;
+  private AppBrandRecentView.a ntA = null;
+  private boolean ntB = false;
+  private e.a ntu;
+  private float ntw = 0.0F;
+  private int ntx = 0;
+  private a nty = null;
+  private View.OnCreateContextMenuListener ntz = null;
   
   static
   {
     AppMethodBeat.i(50001);
-    nol = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 200);
+    ntv = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 200);
     AppMethodBeat.o(50001);
   }
   
@@ -67,7 +67,7 @@ public class ConversationAppBrandRecentView
   private void g(RecyclerView.w paramw, int paramInt)
   {
     AppMethodBeat.i(49993);
-    ad.d("MicroMsg.ConversationAppBrandRecentView", "alvinluo updateAlpha pos: %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.d("MicroMsg.ConversationAppBrandRecentView", "alvinluo updateAlpha pos: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramw != null)
     {
       float f = paramw.auu.getX();
@@ -77,10 +77,10 @@ public class ConversationAppBrandRecentView
         AppMethodBeat.o(49993);
         return;
       }
-      if ((f < this.mScreenWidth - getItemWidth() / 2) && (f >= this.nom))
+      if ((f < this.mScreenWidth - getItemWidth() / 2) && (f >= this.ntw))
       {
-        f = 1.0F - (f - this.nom) / this.non * 0.7F;
-        ad.d("MicroMsg.ConversationAppBrandRecentView", "alvinluo updateAlpha %f", new Object[] { Float.valueOf(f) });
+        f = 1.0F - (f - this.ntw) / this.ntx * 0.7F;
+        ae.d("MicroMsg.ConversationAppBrandRecentView", "alvinluo updateAlpha %f", new Object[] { Float.valueOf(f) });
         paramw.auu.setAlpha(f);
         AppMethodBeat.o(49993);
         return;
@@ -93,7 +93,7 @@ public class ConversationAppBrandRecentView
   private int getItemPadding()
   {
     AppMethodBeat.i(49997);
-    int i = com.tencent.mm.plugin.appbrand.widget.desktop.d.dY(getContext());
+    int i = com.tencent.mm.plugin.appbrand.widget.desktop.d.ec(getContext());
     AppMethodBeat.o(49997);
     return i;
   }
@@ -105,13 +105,13 @@ public class ConversationAppBrandRecentView
     if ((parama != null) && (parama.type == 0))
     {
       paramb.titleTv.setVisibility(4);
-      paramb.lZa.setImageResource(2131690904);
+      paramb.mdt.setImageResource(2131690904);
     }
-    if ((!b.bCH()) || (parama == null) || (paramb == null) || (paramb.auu == null)) {}
+    if ((!b.bDz()) || (parama == null) || (paramb == null) || (paramb.auu == null)) {}
     for (;;)
     {
-      if (this.noo != null) {
-        this.noo.a(paramb, paramInt);
+      if (this.nty != null) {
+        this.nty.a(paramb, paramInt);
       }
       AppMethodBeat.o(49984);
       return;
@@ -120,22 +120,22 @@ public class ConversationAppBrandRecentView
         paramb.auu.setVisibility(4);
         paramb.auu.getLayoutParams().width = 0;
       }
-      int i = (int)com.tencent.mm.plugin.appbrand.widget.desktop.d.ea(getContext());
-      paramb.noe.getLayoutParams().width = (com.tencent.mm.cc.a.ay(getContext(), 2131165568) * 2 + i);
-      paramb.noe.getLayoutParams().height = (com.tencent.mm.cc.a.ay(getContext(), 2131165568) * 2 + i);
-      paramb.lZa.getLayoutParams().width = i;
-      paramb.lZa.getLayoutParams().height = i;
-      paramb.mYh.getLayoutParams().width = i;
-      paramb.mYh.getLayoutParams().height = i;
+      int i = (int)com.tencent.mm.plugin.appbrand.widget.desktop.d.ee(getContext());
+      paramb.nto.getLayoutParams().width = (com.tencent.mm.cb.a.ay(getContext(), 2131165568) * 2 + i);
+      paramb.nto.getLayoutParams().height = (com.tencent.mm.cb.a.ay(getContext(), 2131165568) * 2 + i);
+      paramb.mdt.getLayoutParams().width = i;
+      paramb.mdt.getLayoutParams().height = i;
+      paramb.ndo.getLayoutParams().width = i;
+      paramb.ndo.getLayoutParams().height = i;
       i = getCurrentPage();
-      int j = e.wU(i);
-      int k = e.wV(i);
-      ad.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo configView curPage: %d, firstPositionOfCurPage: %d, lastPositionOfCurPage: %d, position: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt) });
+      int j = e.wZ(i);
+      int k = e.xa(i);
+      ae.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo configView curPage: %d, firstPositionOfCurPage: %d, lastPositionOfCurPage: %d, position: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt) });
       if (paramInt == k)
       {
         paramb.auu.animate().alpha(0.3F).setDuration(1L).start();
       }
-      else if (parama.nmR)
+      else if (parama.nsb)
       {
         paramb.auu.setVisibility(4);
       }
@@ -150,8 +150,8 @@ public class ConversationAppBrandRecentView
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(49995);
-    ad.i("MicroMsg.ConversationAppBrandRecentView", "[onNotifyChange] process:%s eventId:%s, mType: %s", new Object[] { ((h)g.ajz().ajb()).toString(), Integer.valueOf(paramm.dtK), this.mZx });
-    if (bFD())
+    ae.i("MicroMsg.ConversationAppBrandRecentView", "[onNotifyChange] process:%s eventId:%s, mType: %s", new Object[] { ((h)g.ajO().ajq()).toString(), Integer.valueOf(paramm.duP), this.neF });
+    if (bGy())
     {
       AppMethodBeat.o(49995);
       return;
@@ -160,22 +160,22 @@ public class ConversationAppBrandRecentView
     AppMethodBeat.o(49995);
   }
   
-  protected final boolean bFD()
+  protected final boolean bGy()
   {
-    boolean bool = this.nor;
-    this.nor = false;
+    boolean bool = this.ntB;
+    this.ntB = false;
     return bool;
   }
   
-  public final void bI(List<a> paramList)
+  public final void bK(List<a> paramList)
   {
     AppMethodBeat.i(49990);
-    if (!b.bCH()) {
+    if (!b.bDz()) {
       paramList.add(new a(0));
     }
-    if (b.bCH())
+    if (b.bDz())
     {
-      b.bCI();
+      b.bDA();
       paramList.add(0, new a(3));
     }
     AppMethodBeat.o(49990);
@@ -192,14 +192,14 @@ public class ConversationAppBrandRecentView
   public int getCustomItemCount()
   {
     AppMethodBeat.i(49991);
-    if (!b.bCH())
+    if (!b.bDz())
     {
       AppMethodBeat.o(49991);
       return 1;
     }
-    if (b.bCH())
+    if (b.bDz())
     {
-      b.bCI();
+      b.bDA();
       AppMethodBeat.o(49991);
       return 1;
     }
@@ -210,7 +210,7 @@ public class ConversationAppBrandRecentView
   public int getItemWidth()
   {
     AppMethodBeat.i(49996);
-    int i = com.tencent.mm.plugin.appbrand.widget.desktop.d.dX(getContext());
+    int i = com.tencent.mm.plugin.appbrand.widget.desktop.d.eb(getContext());
     AppMethodBeat.o(49996);
     return i;
   }
@@ -223,14 +223,14 @@ public class ConversationAppBrandRecentView
   protected int getLoadCount()
   {
     AppMethodBeat.i(49987);
-    if (this.mZx == AppBrandRecentView.f.nmT)
+    if (this.neF == AppBrandRecentView.f.nsd)
     {
       AppMethodBeat.o(49987);
       return 50;
     }
-    if (this.mZx == AppBrandRecentView.f.nmU)
+    if (this.neF == AppBrandRecentView.f.nse)
     {
-      int i = b.bcu();
+      int i = b.bcZ();
       AppMethodBeat.o(49987);
       return i;
     }
@@ -250,15 +250,15 @@ public class ConversationAppBrandRecentView
   {
     AppMethodBeat.i(49988);
     int i;
-    if (this.mZx == AppBrandRecentView.f.nmT)
+    if (this.neF == AppBrandRecentView.f.nsd)
     {
-      i = b.mVM;
+      i = b.naS;
       AppMethodBeat.o(49988);
       return i;
     }
-    if (this.mZx == AppBrandRecentView.f.nmU)
+    if (this.neF == AppBrandRecentView.f.nse)
     {
-      i = b.bcu();
+      i = b.bcZ();
       AppMethodBeat.o(49988);
       return i;
     }
@@ -297,17 +297,17 @@ public class ConversationAppBrandRecentView
         }
         if (paramAnonymousa.type == 0)
         {
-          ((q)g.ab(q.class)).H(ConversationAppBrandRecentView.this.getContext(), 13);
+          ((r)g.ab(r.class)).H(ConversationAppBrandRecentView.this.getContext(), 13);
           AppMethodBeat.o(49978);
           return false;
         }
         ConversationAppBrandRecentView.this.setLayoutFrozen(true);
         paramAnonymousView = new AppBrandStatObject();
-        if (ConversationAppBrandRecentView.this.mZx == AppBrandRecentView.f.nmU) {}
+        if (ConversationAppBrandRecentView.this.neF == AppBrandRecentView.f.nse) {}
         for (int i = 1104;; i = 1089)
         {
           paramAnonymousView.scene = i;
-          ((o)g.ab(o.class)).a(ConversationAppBrandRecentView.this.getContext(), paramAnonymousa.mXW.username, null, paramAnonymousa.mXW.hQh, -1, null, paramAnonymousView);
+          ((p)g.ab(p.class)).a(ConversationAppBrandRecentView.this.getContext(), paramAnonymousa.ndd.username, null, paramAnonymousa.ndd.hSZ, -1, null, paramAnonymousView);
           break;
         }
       }
@@ -318,7 +318,7 @@ public class ConversationAppBrandRecentView
         if (ConversationAppBrandRecentView.a(ConversationAppBrandRecentView.this) != null) {
           ConversationAppBrandRecentView.a(ConversationAppBrandRecentView.this).b(paramAnonymousView, paramAnonymousa, paramAnonymousFloat1, paramAnonymousFloat2);
         }
-        ad.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] x:%s", new Object[] { Float.valueOf(paramAnonymousFloat1) });
+        ae.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] x:%s", new Object[] { Float.valueOf(paramAnonymousFloat1) });
         if (paramAnonymousa.type != 0) {
           new com.tencent.mm.ui.widget.b.a(ConversationAppBrandRecentView.this.getContext()).a(paramAnonymousView, new View.OnCreateContextMenuListener()new n.e
           {
@@ -342,21 +342,21 @@ public class ConversationAppBrandRecentView
               if ((paramAnonymous2MenuItem.getItemId() == 1) && (paramAnonymousa.position >= 0))
               {
                 ConversationAppBrandRecentView.d(ConversationAppBrandRecentView.this);
-                ad.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] Delete position:%s, mType: %s", new Object[] { Integer.valueOf(paramAnonymousa.position), ConversationAppBrandRecentView.this.mZx });
-                if (ConversationAppBrandRecentView.this.mZx != AppBrandRecentView.f.nmT) {
+                ae.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] Delete position:%s, mType: %s", new Object[] { Integer.valueOf(paramAnonymousa.position), ConversationAppBrandRecentView.this.neF });
+                if (ConversationAppBrandRecentView.this.neF != AppBrandRecentView.f.nsd) {
                   break label223;
                 }
-                ((ai)g.ab(ai.class)).ba(paramAnonymousa.mXW.username, paramAnonymousa.mXW.hQh);
+                ((ai)g.ab(ai.class)).bd(paramAnonymousa.ndd.username, paramAnonymousa.ndd.hSZ);
               }
               for (;;)
               {
-                ad.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo Delete %s, pos: %d", new Object[] { paramAnonymousa.mXW.nickname, Integer.valueOf(paramAnonymousa.position) });
-                ConversationAppBrandRecentView.this.wP(paramAnonymousa.position);
+                ae.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo Delete %s, pos: %d", new Object[] { paramAnonymousa.ndd.nickname, Integer.valueOf(paramAnonymousa.position) });
+                ConversationAppBrandRecentView.this.wU(paramAnonymousa.position);
                 AppMethodBeat.o(49977);
                 return;
                 label223:
-                if (ConversationAppBrandRecentView.this.mZx == AppBrandRecentView.f.nmU) {
-                  ((ah)g.ab(ah.class)).aZ(paramAnonymousa.mXW.username, paramAnonymousa.mXW.hQh);
+                if (ConversationAppBrandRecentView.this.neF == AppBrandRecentView.f.nse) {
+                  ((ah)g.ab(ah.class)).bc(paramAnonymousa.ndd.username, paramAnonymousa.ndd.hSZ);
                 }
               }
             }
@@ -366,14 +366,14 @@ public class ConversationAppBrandRecentView
         return false;
       }
     });
-    if (b.bCH()) {
+    if (b.bDz()) {
       super.setOnScrollPageListener(new e.a()
       {
-        public final void M(int paramAnonymousInt, boolean paramAnonymousBoolean)
+        public final void N(int paramAnonymousInt, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(49981);
           if (ConversationAppBrandRecentView.f(ConversationAppBrandRecentView.this) != null) {
-            ConversationAppBrandRecentView.f(ConversationAppBrandRecentView.this).M(paramAnonymousInt, paramAnonymousBoolean);
+            ConversationAppBrandRecentView.f(ConversationAppBrandRecentView.this).N(paramAnonymousInt, paramAnonymousBoolean);
           }
           AppMethodBeat.o(49981);
         }
@@ -381,7 +381,7 @@ public class ConversationAppBrandRecentView
         public final void d(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
         {
           AppMethodBeat.i(49980);
-          ad.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo ScrollPageListener onScrolled offsetOfCurPage: %d, , currentPage: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(ConversationAppBrandRecentView.this.getCurrentPage()) });
+          ae.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo ScrollPageListener onScrolled offsetOfCurPage: %d, , currentPage: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(ConversationAppBrandRecentView.this.getCurrentPage()) });
           ConversationAppBrandRecentView.e(ConversationAppBrandRecentView.this);
           if (ConversationAppBrandRecentView.f(ConversationAppBrandRecentView.this) != null) {
             ConversationAppBrandRecentView.f(ConversationAppBrandRecentView.this).d(paramAnonymousRecyclerView, paramAnonymousInt);
@@ -404,56 +404,56 @@ public class ConversationAppBrandRecentView
   
   public void setCreateContextMenuListener(View.OnCreateContextMenuListener paramOnCreateContextMenuListener)
   {
-    this.nop = paramOnCreateContextMenuListener;
+    this.ntz = paramOnCreateContextMenuListener;
   }
   
   public void setIgnoreNotify(boolean paramBoolean)
   {
-    this.nor = paramBoolean;
+    this.ntB = paramBoolean;
   }
   
   public void setMenuItemSelectedListener(AppBrandRecentView.a parama)
   {
-    this.noq = parama;
+    this.ntA = parama;
   }
   
   public void setOnBindCustomViewHolderListener(a parama)
   {
-    this.noo = parama;
+    this.nty = parama;
   }
   
   public void setOnItemClickListener(AppBrandRecentView.b paramb)
   {
-    this.mZs = paramb;
+    this.neA = paramb;
   }
   
   public void setOnScrollPageListener(e.a parama)
   {
-    this.nok = parama;
+    this.ntu = parama;
   }
   
-  protected final void wP(int paramInt)
+  protected final void wU(int paramInt)
   {
     AppMethodBeat.i(49994);
-    super.wP(paramInt);
+    super.wU(paramInt);
     getPreviewItemList().remove(paramInt);
     getAdapter().cl(paramInt);
     getAdapter().ap(paramInt, 5);
-    if (this.mZx == AppBrandRecentView.f.nmT)
+    if (this.neF == AppBrandRecentView.f.nsd)
     {
-      aq.o(new Runnable()
+      ar.o(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(49983);
           Object localObject = ConversationAppBrandRecentView.this;
-          if (((BaseAppBrandRecentView)localObject).nnT)
+          if (((BaseAppBrandRecentView)localObject).ntd)
           {
-            int i = ((BaseAppBrandRecentView)localObject).nnP.size();
-            if ((i - 1 < ((BaseAppBrandRecentView)localObject).mYL.size()) && ((a)((BaseAppBrandRecentView)localObject).mYL.get(i - 1) != null))
+            int i = ((BaseAppBrandRecentView)localObject).nsZ.size();
+            if ((i - 1 < ((BaseAppBrandRecentView)localObject).ndS.size()) && ((a)((BaseAppBrandRecentView)localObject).ndS.get(i - 1) != null))
             {
-              ad.i("MicroMsg.BaseAppBrandRecentView", "alvinluo addCacheItemAtLast pos: %d", new Object[] { Integer.valueOf(i) });
-              ((BaseAppBrandRecentView)localObject).nnP.add(i, ((BaseAppBrandRecentView)localObject).mYL.get(i - 1));
+              ae.i("MicroMsg.BaseAppBrandRecentView", "alvinluo addCacheItemAtLast pos: %d", new Object[] { Integer.valueOf(i) });
+              ((BaseAppBrandRecentView)localObject).nsZ.add(i, ((BaseAppBrandRecentView)localObject).ndS.get(i - 1));
               ((BaseAppBrandRecentView)localObject).getAdapter().ck(i);
               ((BaseAppBrandRecentView)localObject).getAdapter().ap(i, 5);
             }
@@ -462,7 +462,7 @@ public class ConversationAppBrandRecentView
           {
             localObject = ConversationAppBrandRecentView.this.getOnDataChangedListener();
             ConversationAppBrandRecentView.this.getPreviewItemList().size();
-            ((AppBrandRecentView.d)localObject).bDx();
+            ((AppBrandRecentView.d)localObject).bEp();
           }
           AppMethodBeat.o(49983);
         }
@@ -474,17 +474,17 @@ public class ConversationAppBrandRecentView
     {
       AppBrandRecentView.d locald = getOnDataChangedListener();
       getPreviewItemList().size();
-      locald.bDx();
+      locald.bEp();
     }
     AppMethodBeat.o(49994);
   }
   
-  public final boolean wQ(int paramInt)
+  public final boolean wV(int paramInt)
   {
     AppMethodBeat.i(49999);
     int i = getCurrentPage();
     int j = b.getCompletelyCountPerPage();
-    b.bCI();
+    b.bDA();
     if ((i + 1) * j + 1 == paramInt)
     {
       AppMethodBeat.o(49999);

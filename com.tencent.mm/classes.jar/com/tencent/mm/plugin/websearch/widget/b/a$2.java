@@ -14,12 +14,12 @@ public final class a$2
     AppMethodBeat.i(116655);
     if (paramInt == 0)
     {
-      this.DEB.eMN();
+      this.DWz.eQy();
       AppMethodBeat.o(116655);
       return;
     }
     if (paramInt == 1) {
-      this.DEB.eLS();
+      this.DWz.ePB();
     }
     AppMethodBeat.o(116655);
   }

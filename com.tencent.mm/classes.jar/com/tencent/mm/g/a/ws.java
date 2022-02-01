@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dnp;
 import com.tencent.mm.sdk.b.b;
 
 public final class ws
   extends b
 {
-  public a dLb;
-  public b dLc;
+  public a dMk;
   
   public ws()
   {
@@ -17,28 +15,21 @@ public final class ws
   
   private ws(byte paramByte)
   {
-    AppMethodBeat.i(152988);
-    this.dLb = new a();
-    this.dLc = new b();
-    this.IbR = false;
+    AppMethodBeat.i(127290);
+    this.dMk = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(152988);
+    AppMethodBeat.o(127290);
   }
   
   public static final class a
   {
-    public int actionType;
-  }
-  
-  public static final class b
-  {
-    public boolean dLd;
-    public dnp dLe;
+    public boolean dMl = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.ws
  * JD-Core Version:    0.7.0.1
  */

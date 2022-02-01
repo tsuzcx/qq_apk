@@ -1,58 +1,58 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.protocal.protobuf.aok;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aow;
+import com.tencent.mm.protocal.protobuf.aox;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetFeedRelList;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "feedId", "", "nonceId", "", "relatedListScene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getFeedId", "()J", "getNonceId", "()Ljava/lang/String;", "getRelatedListScene", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getFeedRelList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetFeedRelList;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "feedId", "", "nonceId", "", "relatedListScene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getFeedId", "()J", "getNonceId", "()Ljava/lang/String;", "getRelatedListScene", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getFeedRelList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class f
-  extends w<aok>
+  extends w<aox>
 {
   private final String TAG;
-  private final long dtq;
-  private aoj rHN;
-  private final String rHO;
-  private final int rHP;
+  private final long duw;
+  private aow rPY;
+  private final String rPZ;
+  private final int rQa;
   private b rr;
   
-  public f(long paramLong, String paramString, aqy paramaqy)
+  public f(long paramLong, String paramString, arn paramarn)
   {
-    super(paramaqy);
-    AppMethodBeat.i(201024);
-    this.dtq = paramLong;
-    this.rHO = paramString;
-    this.rHP = 5;
+    super(paramarn);
+    AppMethodBeat.i(201446);
+    this.duw = paramLong;
+    this.rPZ = paramString;
+    this.rQa = 5;
     this.TAG = "Finder.CgiFinderGetFeedRelList";
-    this.rHN = new aoj();
-    paramString = this.rHN;
-    v localv = v.rIR;
-    paramString.Gle = v.a(paramaqy);
-    this.rHN.rIZ = this.dtq;
-    this.rHN.objectNonceId = this.rHO;
-    this.rHN.scene = this.rHP;
+    this.rPY = new aow();
+    paramString = this.rPY;
+    v localv = v.rRb;
+    paramString.GEg = v.a(paramarn);
+    this.rPY.rRn = this.duw;
+    this.rPY.objectNonceId = this.rPZ;
+    this.rPY.scene = this.rQa;
     paramString = new b.a();
-    paramString.c((a)this.rHN);
-    paramaqy = new aok();
-    paramaqy.setBaseResponse(new BaseResponse());
-    paramaqy.getBaseResponse().ErrMsg = new cwt();
-    paramString.d((a)paramaqy);
-    paramString.Dl("/cgi-bin/micromsg-bin/findergetrelatedlist");
-    paramString.oP(3688);
-    paramString = paramString.aDC();
+    paramString.c((a)this.rPY);
+    paramarn = new aox();
+    paramarn.setBaseResponse(new BaseResponse());
+    paramarn.getBaseResponse().ErrMsg = new cxn();
+    paramString.d((a)paramarn);
+    paramString.DN("/cgi-bin/micromsg-bin/findergetrelatedlist");
+    paramString.oS(3688);
+    paramString = paramString.aDS();
     p.g(paramString, "builder.buildInstance()");
     this.rr = paramString;
     c(this.rr);
-    ad.i(this.TAG, "init feedId:" + this.dtq + ", relatedListScene:" + this.rHP);
-    AppMethodBeat.o(201024);
+    ae.i(this.TAG, "init feedId:" + this.duw + ", relatedListScene:" + this.rQa);
+    AppMethodBeat.o(201446);
   }
 }
 

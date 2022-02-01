@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.i;
 
 public abstract interface a
 {
-  public abstract void OK(String paramString);
+  public abstract void Ps(String paramString);
   
   public abstract void report();
 }

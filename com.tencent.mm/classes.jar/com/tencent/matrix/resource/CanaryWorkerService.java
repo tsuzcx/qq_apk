@@ -38,11 +38,11 @@ public class CanaryWorkerService
     //   35: aload 6
     //   37: ifnull +775 -> 812
     //   40: aload 6
-    //   42: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cGO	Ljava/io/File;
+    //   42: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cHx	Ljava/io/File;
     //   45: invokevirtual 72	java/io/File:getParentFile	()Ljava/io/File;
     //   48: astore_1
     //   49: aload 6
-    //   51: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cGO	Ljava/io/File;
+    //   51: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cHx	Ljava/io/File;
     //   54: invokevirtual 75	java/io/File:getName	()Ljava/lang/String;
     //   57: astore 4
     //   59: aload 4
@@ -103,7 +103,7 @@ public class CanaryWorkerService
     //   186: invokespecial 100	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   189: astore 8
     //   191: aload 6
-    //   193: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cGO	Ljava/io/File;
+    //   193: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cHx	Ljava/io/File;
     //   196: astore 9
     //   198: invokestatic 145	java/lang/System:currentTimeMillis	()J
     //   201: lstore_2
@@ -296,7 +296,7 @@ public class CanaryWorkerService
     //   598: ldc_w 286
     //   601: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   604: aload 6
-    //   606: getfield 289	com/tencent/matrix/resource/analyzer/model/f:cFK	Ljava/lang/String;
+    //   606: getfield 289	com/tencent/matrix/resource/analyzer/model/f:cGt	Ljava/lang/String;
     //   609: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   612: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   615: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V

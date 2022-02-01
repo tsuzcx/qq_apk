@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.c;
+import com.tencent.mm.ah.a.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.m;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.j;
 import junit.framework.Assert;
 
 public final class JsApiShowUpdatableMessageSubscribeButton
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 465;
   public static final String NAME = "showUpdatableMessageSubscribeButton";
@@ -23,7 +23,7 @@ public final class JsApiShowUpdatableMessageSubscribeButton
     extends MainProcessTask
   {
     public static final Parcelable.Creator<ShowUpdatableMessageSubscribeButtonTask> CREATOR;
-    public String cmu;
+    public String cmw;
     
     static
     {
@@ -41,40 +41,40 @@ public final class JsApiShowUpdatableMessageSubscribeButton
       AppMethodBeat.o(46790);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(46791);
       if (g.ab(m.class) == null)
       {
-        ad.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "IWxaUpdateableMsgService is null, err, return");
-        if (i.IS_FLAVOR_RED) {
+        ae.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "IWxaUpdateableMsgService is null, err, return");
+        if (j.IS_FLAVOR_RED) {
           Assert.assertTrue("IWxaUpdateableMsgService is null, err, @tummy", false);
         }
         AppMethodBeat.o(46791);
         return;
       }
-      c localc = ((m)g.ab(m.class)).Cd(this.cmu);
+      c localc = ((m)g.ab(m.class)).CF(this.cmw);
       if ((localc != null) && ((localc.field_btnState == 2) || (localc.field_msgState != 0)))
       {
-        ad.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "shareKey:%s btnState:%d msgState:%d ingore already process", new Object[] { this.cmu, Integer.valueOf(localc.field_btnState), Integer.valueOf(localc.field_msgState) });
+        ae.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "shareKey:%s btnState:%d msgState:%d ingore already process", new Object[] { this.cmw, Integer.valueOf(localc.field_btnState), Integer.valueOf(localc.field_msgState) });
         AppMethodBeat.o(46791);
         return;
       }
-      ((m)g.ab(m.class)).aj(this.cmu, 1);
+      ((m)g.ab(m.class)).ak(this.cmw, 1);
       AppMethodBeat.o(46791);
     }
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(46792);
-      this.cmu = paramParcel.readString();
+      this.cmw = paramParcel.readString();
       AppMethodBeat.o(46792);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46793);
-      paramParcel.writeString(this.cmu);
+      paramParcel.writeString(this.cmw);
       AppMethodBeat.o(46793);
     }
   }

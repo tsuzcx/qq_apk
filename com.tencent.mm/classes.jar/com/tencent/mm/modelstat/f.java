@@ -5,24 +5,24 @@ import com.tencent.mm.memory.a.c;
 
 public final class f
 {
-  private static f ipP = null;
-  public com.tencent.mm.b.f<String, Long> ipQ;
-  public String ipR;
+  private static f isK = null;
+  public com.tencent.mm.b.f<String, Long> isL;
+  public String isM;
   
   private f()
   {
     AppMethodBeat.i(151076);
-    this.ipQ = new c(10);
+    this.isL = new c(10);
     AppMethodBeat.o(151076);
   }
   
-  public static f aLG()
+  public static f aMd()
   {
     AppMethodBeat.i(151075);
-    if (ipP == null) {
-      ipP = new f();
+    if (isK == null) {
+      isK = new f();
     }
-    f localf = ipP;
+    f localf = isK;
     AppMethodBeat.o(151075);
     return localf;
   }
@@ -30,10 +30,10 @@ public final class f
   public final void I(String paramString, long paramLong)
   {
     AppMethodBeat.i(151077);
-    if (this.ipQ != null)
+    if (this.isL != null)
     {
-      this.ipR = paramString;
-      this.ipQ.put(paramString, Long.valueOf(paramLong));
+      this.isM = paramString;
+      this.isL.put(paramString, Long.valueOf(paramLong));
     }
     AppMethodBeat.o(151077);
   }

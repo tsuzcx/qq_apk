@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.aa.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
+import com.tencent.mm.ak.a.a;
 import com.tencent.mm.protocal.protobuf.y;
 import com.tencent.mm.vending.g.b;
 
 public final class a
   extends com.tencent.mm.vending.app.a
 {
-  int iTU = 0;
-  String iTV;
-  int iTW;
-  int iTX;
-  String iTY;
-  boolean iTZ = false;
-  int iUa;
+  int iWN = 0;
+  String iWO;
+  int iWP;
+  int iWQ;
+  String iWR;
+  boolean iWS = false;
+  int iWT;
   
   public final void onCreate()
   {

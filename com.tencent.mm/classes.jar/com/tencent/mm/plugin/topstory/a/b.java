@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.topstory.a;
 
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.doa;
+import com.tencent.mm.protocal.protobuf.dox;
 import com.tencent.xweb.WebView.c;
 
 public abstract interface b
@@ -13,15 +13,17 @@ public abstract interface b
   
   public abstract WebView.c getWebViewType();
   
-  public abstract void onVideoListUIDestroy(doa paramdoa);
+  public abstract void onVideoListUIDestroy(dox paramdox);
   
   public abstract void onVideoListUIPause();
   
   public abstract void onVideoListUIResume();
+  
+  public abstract boolean openJsAccelerate();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.b
  * JD-Core Version:    0.7.0.1
  */

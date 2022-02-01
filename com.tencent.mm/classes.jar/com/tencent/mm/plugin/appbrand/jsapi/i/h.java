@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.q;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.v;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -28,24 +28,24 @@ public final class h
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiAddMapMarkers", "data is null");
+      ae.e("MicroMsg.JsApiAddMapMarkers", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(143661);
       return;
     }
-    ad.i("MicroMsg.JsApiAddMapMarkers", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiAddMapMarkers", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiAddMapMarkers", "mapView is null, return");
+      ae.e("MicroMsg.JsApiAddMapMarkers", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(143661);
       return;
     }
     boolean bool = paramJSONObject.optBoolean("clear", true);
-    ad.i("MicroMsg.JsApiAddMapMarkers", "clear:%b", new Object[] { Boolean.valueOf(bool) });
+    ae.i("MicroMsg.JsApiAddMapMarkers", "clear:%b", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      localb.bkW();
+      localb.blG();
     }
     if (paramJSONObject.has("markers"))
     {
@@ -56,7 +56,7 @@ public final class h
         JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("markers"));
         if (localJSONArray == null)
         {
-          ad.e("MicroMsg.JsApiAddMapMarkers", "markersArray is null, return");
+          ae.e("MicroMsg.JsApiAddMapMarkers", "markersArray is null, return");
           paramc.h(paramInt, e("fail:internal error", null));
           AppMethodBeat.o(143661);
           return;
@@ -80,47 +80,47 @@ public final class h
             {
               b.v localv = a(paramc, paramJSONObject, (JSONObject)localObject2);
               localObject2 = ((JSONObject)localObject2).optString("id");
-              if ((localv.kRV) && (!localb.bla())) {
+              if ((localv.kVE) && (!localb.blK())) {
                 localb.a(true, true, 2, 60, new b.q()
                 {
                   public final void R(JSONObject paramAnonymousJSONObject)
                   {
-                    AppMethodBeat.i(186140);
+                    AppMethodBeat.i(206455);
                     s.a locala = new s.a();
                     HashMap localHashMap = new HashMap();
                     localHashMap.put("cluster", paramAnonymousJSONObject);
                     localHashMap.put("mapId", Integer.valueOf(f.S(paramJSONObject)));
-                    locala.B(localHashMap);
-                    ad.i("MicroMsg.JsApiAddMapMarkers", "click clusterInfo:%s", new Object[] { paramAnonymousJSONObject });
+                    locala.I(localHashMap);
+                    ae.i("MicroMsg.JsApiAddMapMarkers", "click clusterInfo:%s", new Object[] { paramAnonymousJSONObject });
                     paramAnonymousJSONObject = ((g)paramc.K(g.class)).c(paramc, paramJSONObject);
                     if (paramAnonymousJSONObject != null)
                     {
                       paramAnonymousJSONObject.b(locala);
-                      AppMethodBeat.o(186140);
+                      AppMethodBeat.o(206455);
                       return;
                     }
                     paramc.a(locala);
-                    AppMethodBeat.o(186140);
+                    AppMethodBeat.o(206455);
                   }
                   
-                  public final void o(JSONArray paramAnonymousJSONArray)
+                  public final void p(JSONArray paramAnonymousJSONArray)
                   {
-                    AppMethodBeat.i(186139);
+                    AppMethodBeat.i(206454);
                     s.b localb = new s.b();
                     HashMap localHashMap = new HashMap();
                     localHashMap.put("clusters", paramAnonymousJSONArray);
                     localHashMap.put("mapId", Integer.valueOf(f.S(paramJSONObject)));
-                    localb.B(localHashMap);
-                    ad.i("MicroMsg.JsApiAddMapMarkers", "create clusterInfo:%s", new Object[] { paramAnonymousJSONArray });
+                    localb.I(localHashMap);
+                    ae.i("MicroMsg.JsApiAddMapMarkers", "create clusterInfo:%s", new Object[] { paramAnonymousJSONArray });
                     paramAnonymousJSONArray = ((g)paramc.K(g.class)).c(paramc, paramJSONObject);
                     if (paramAnonymousJSONArray != null)
                     {
                       paramAnonymousJSONArray.b(localb);
-                      AppMethodBeat.o(186139);
+                      AppMethodBeat.o(206454);
                       return;
                     }
                     paramc.a(localb);
-                    AppMethodBeat.o(186139);
+                    AppMethodBeat.o(206454);
                   }
                 });
               }
@@ -132,20 +132,20 @@ public final class h
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.JsApiAddMapMarkers", localJSONException2, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.JsApiAddMapMarkers", localJSONException2, "", new Object[0]);
               Object localObject3 = null;
             }
           }
         }
       }
     }
-    a(paramc, paramInt, e("ok", null), true, localb.bkR());
+    a(paramc, paramInt, e("ok", null), true, localb.blB());
     AppMethodBeat.o(143661);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.h
  * JD-Core Version:    0.7.0.1
  */

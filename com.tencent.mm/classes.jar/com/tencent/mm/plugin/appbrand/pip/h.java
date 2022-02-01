@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.pip;
 import android.graphics.Point;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "", "onPipStablePosGot", "", "point", "Landroid/graphics/Point;", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "", "onPipStablePosGot", "", "point", "Landroid/graphics/Point;", "luggage-wxa-app_release"})
 public abstract interface h
 {
   public abstract void e(Point paramPoint);

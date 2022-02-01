@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
-import com.tencent.mm.plugin.appbrand.report.model.kv_14609.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class ko
   extends b
 {
-  public a dxz;
+  public a dyC;
   
   public ko()
   {
@@ -17,22 +16,23 @@ public final class ko
   
   private ko(byte paramByte)
   {
-    AppMethodBeat.i(43441);
-    this.dxz = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91208);
+    this.dyC = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(43441);
+    AppMethodBeat.o(91208);
   }
   
   public static final class a
   {
-    public kv_14609 dxA;
-    public kv_14609.a dxB;
+    public int bZU;
+    public Intent dyD;
+    public int requestCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ko
  * JD-Core Version:    0.7.0.1
  */

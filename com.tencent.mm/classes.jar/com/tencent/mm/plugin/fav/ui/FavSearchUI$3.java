@@ -18,7 +18,7 @@ final class FavSearchUI$3
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/fav/ui/FavSearchUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fav/ui/FavSearchUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,9 +27,9 @@ final class FavSearchUI$3
       a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavSearchUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(106819);
       return false;
-      this.rxy.hideVKB();
-      FavSearchUI.c(this.rxy)[0] = ((int)paramMotionEvent.getRawX());
-      FavSearchUI.c(this.rxy)[1] = ((int)paramMotionEvent.getRawY());
+      this.rFJ.hideVKB();
+      FavSearchUI.c(this.rFJ)[0] = ((int)paramMotionEvent.getRawX());
+      FavSearchUI.c(this.rFJ)[1] = ((int)paramMotionEvent.getRawY());
     }
   }
 }

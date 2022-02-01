@@ -31,8 +31,8 @@ public class TbsMediaFactory
     }
     if (this.b == null)
     {
-      e.a(true).a(this.a, false, false, null);
-      this.b = e.a(true).a();
+      g.a(true).a(this.a, false, false, null);
+      this.b = g.a(true).a();
       if (this.b != null) {
         this.c = this.b.dexLoader();
       }
@@ -55,7 +55,7 @@ public class TbsMediaFactory
       AppMethodBeat.o(54531);
       throw ((Throwable)localObject);
     }
-    Object localObject = new TbsMediaPlayer(new p(this.c, this.a));
+    Object localObject = new TbsMediaPlayer(new r(this.c, this.a));
     AppMethodBeat.o(54531);
     return localObject;
   }

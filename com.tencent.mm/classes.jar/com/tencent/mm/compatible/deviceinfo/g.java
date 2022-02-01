@@ -7,8 +7,8 @@ import android.os.Looper;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
   implements d.a
@@ -17,32 +17,32 @@ public final class g
   {
     AppMethodBeat.i(155650);
     d.a.a locala = new d.a.a();
-    locala.fYS = null;
+    locala.gaZ = null;
     try
     {
-      l = bt.HI();
-      ad.i("MicroMsg.CameraUtil", "ashu::begin to try Call Camera.open cameraID %d", new Object[] { Integer.valueOf(paramInt) });
-      locala.fYS = w.b(paramInt, paramLooper);
-      ad.i("MicroMsg.CameraUtil", "ashu::Call Camera.open back,  %dms", new Object[] { Long.valueOf(bt.aO(l)) });
-      if (locala.fYS == null)
+      l = bu.HQ();
+      ae.i("MicroMsg.CameraUtil", "ashu::begin to try Call Camera.open cameraID %d", new Object[] { Integer.valueOf(paramInt) });
+      locala.gaZ = w.b(paramInt, paramLooper);
+      ae.i("MicroMsg.CameraUtil", "ashu::Call Camera.open back,  %dms", new Object[] { Long.valueOf(bu.aO(l)) });
+      if (locala.gaZ == null)
       {
-        ad.e("MicroMsg.CameraUtil", "open camera error, not exception, but camera null");
+        ae.e("MicroMsg.CameraUtil", "open camera error, not exception, but camera null");
         AppMethodBeat.o(155650);
         return null;
       }
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.CameraUtil", "open camera error %s", new Object[] { paramContext.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CameraUtil", paramContext, "", new Object[0]);
+      ae.e("MicroMsg.CameraUtil", "open camera error %s", new Object[] { paramContext.getMessage() });
+      ae.printErrStackTrace("MicroMsg.CameraUtil", paramContext, "", new Object[0]);
       AppMethodBeat.o(155650);
       return null;
     }
     paramLooper = new Camera.CameraInfo();
-    long l = bt.HI();
-    ad.i("MicroMsg.CameraUtil", "ashu::begin to Call Camera.getCameraInfo cameraID %d", new Object[] { Integer.valueOf(paramInt) });
+    long l = bu.HQ();
+    ae.i("MicroMsg.CameraUtil", "ashu::begin to Call Camera.getCameraInfo cameraID %d", new Object[] { Integer.valueOf(paramInt) });
     Camera.getCameraInfo(paramInt, paramLooper);
-    ad.i("MicroMsg.CameraUtil", "ashu::Call Camera.getCameraInfo back, use %dms", new Object[] { Long.valueOf(bt.aO(l)) });
+    ae.i("MicroMsg.CameraUtil", "ashu::Call Camera.getCameraInfo back, use %dms", new Object[] { Long.valueOf(bu.aO(l)) });
     switch (((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRotation())
     {
     default: 
@@ -53,11 +53,11 @@ public final class g
     }
     for (paramInt = (360 - paramLooper.orientation % 360) % 360;; paramInt = (paramLooper.orientation - paramInt + 360) % 360)
     {
-      l = bt.HI();
-      ad.i("MicroMsg.CameraUtil", "ashu::begin to Call Camera.setDisplayOrientation %d", new Object[] { Integer.valueOf(paramInt) });
-      locala.fYS.setDisplayOrientation(paramInt);
-      ad.i("MicroMsg.CameraUtil", "ashu::Call Camera.setDisplayOrientation back, use %dms", new Object[] { Long.valueOf(bt.aO(l)) });
-      locala.dGc = paramLooper.orientation;
+      l = bu.HQ();
+      ae.i("MicroMsg.CameraUtil", "ashu::begin to Call Camera.setDisplayOrientation %d", new Object[] { Integer.valueOf(paramInt) });
+      locala.gaZ.setDisplayOrientation(paramInt);
+      ae.i("MicroMsg.CameraUtil", "ashu::Call Camera.setDisplayOrientation back, use %dms", new Object[] { Long.valueOf(bu.aO(l)) });
+      locala.dHi = paramLooper.orientation;
       AppMethodBeat.o(155650);
       return locala;
       paramInt = 0;

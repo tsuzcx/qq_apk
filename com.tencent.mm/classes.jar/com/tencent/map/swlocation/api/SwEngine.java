@@ -46,7 +46,7 @@ public class SwEngine
   public static void stopContinousLocationUpdate()
   {
     AppMethodBeat.i(87877);
-    t.Az();
+    t.AA();
     AppMethodBeat.o(87877);
   }
 }

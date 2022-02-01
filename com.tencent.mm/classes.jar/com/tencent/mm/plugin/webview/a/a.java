@@ -10,30 +10,30 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static m iRG;
-  public static l iRH;
+  public static l iUA;
+  public static m iUz;
   
-  public static void af(Runnable paramRunnable)
+  public static void ad(Runnable paramRunnable)
   {
     AppMethodBeat.i(77826);
     if (0L > 0L)
     {
-      h.LTJ.a(paramRunnable, 0L, "WebViewWorkerThread");
+      h.MqF.a(paramRunnable, 0L, "WebViewWorkerThread");
       AppMethodBeat.o(77826);
       return;
     }
-    h.LTJ.f(paramRunnable, "WebViewWorkerThread");
+    h.MqF.f(paramRunnable, "WebViewWorkerThread");
     AppMethodBeat.o(77826);
   }
   
   public final void a(l paraml)
   {
-    iRH = paraml;
+    iUA = paraml;
   }
   
   public final void a(m paramm)
   {
-    iRG = paramm;
+    iUz = paramm;
   }
 }
 

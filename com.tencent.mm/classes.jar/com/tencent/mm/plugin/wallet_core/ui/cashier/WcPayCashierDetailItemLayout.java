@@ -10,27 +10,27 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class WcPayCashierDetailItemLayout
   extends LinearLayout
 {
-  private static final int Dkq;
-  private static final int Dkr;
-  private static final int oUJ;
-  public CdnImageView Dks;
-  public CdnImageView Dkt;
-  public TextView pAE;
-  public TextView xZN;
+  private static final int DBU;
+  private static final int DBV;
+  private static final int pbm;
+  public CdnImageView DBW;
+  public CdnImageView DBX;
+  public TextView pHi;
+  public TextView ypF;
   
   static
   {
     AppMethodBeat.i(71333);
-    oUJ = a.fromDPToPix(aj.getContext(), 288);
-    Dkq = a.fromDPToPix(aj.getContext(), 20);
-    Dkr = a.fromDPToPix(aj.getContext(), 11);
+    pbm = a.fromDPToPix(ak.getContext(), 288);
+    DBU = a.fromDPToPix(ak.getContext(), 20);
+    DBV = a.fromDPToPix(ak.getContext(), 11);
     AppMethodBeat.o(71333);
   }
   
@@ -62,29 +62,29 @@ public class WcPayCashierDetailItemLayout
   {
     AppMethodBeat.i(71330);
     View.inflate(getContext(), 2131496054, this);
-    this.xZN = ((TextView)findViewById(2131307052));
-    this.Dks = ((CdnImageView)findViewById(2131307053));
-    this.pAE = ((TextView)findViewById(2131307055));
-    this.Dkt = ((CdnImageView)findViewById(2131307054));
-    Drawable localDrawable = this.Dkt.getDrawable();
+    this.ypF = ((TextView)findViewById(2131307052));
+    this.DBW = ((CdnImageView)findViewById(2131307053));
+    this.pHi = ((TextView)findViewById(2131307055));
+    this.DBX = ((CdnImageView)findViewById(2131307054));
+    Drawable localDrawable = this.DBX.getDrawable();
     if (localDrawable != null) {
       localDrawable.setColorFilter(getResources().getColor(2131099676), PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(71330);
   }
   
-  public final void Q(CharSequence paramCharSequence)
+  public final void P(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(71332);
-    this.pAE.setText(paramCharSequence);
+    this.pHi.setText(paramCharSequence);
     post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(71326);
-        Layout localLayout = WcPayCashierDetailItemLayout.this.pAE.getLayout();
+        Layout localLayout = WcPayCashierDetailItemLayout.this.pHi.getLayout();
         if ((localLayout != null) && (localLayout.getLineCount() > 1)) {
-          WcPayCashierDetailItemLayout.this.pAE.setMaxWidth((int)localLayout.getLineWidth(0));
+          WcPayCashierDetailItemLayout.this.pHi.setMaxWidth((int)localLayout.getLineWidth(0));
         }
         AppMethodBeat.o(71326);
       }
@@ -92,26 +92,26 @@ public class WcPayCashierDetailItemLayout
     AppMethodBeat.o(71332);
   }
   
-  public final void eId()
+  public final void eLL()
   {
     AppMethodBeat.i(71331);
-    if (this.pAE.getVisibility() != 8) {
+    if (this.pHi.getVisibility() != 8) {
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(71325);
-          int j = WcPayCashierDetailItemLayout.this.xZN.getWidth();
+          int j = WcPayCashierDetailItemLayout.this.ypF.getWidth();
           int i = j;
-          if (WcPayCashierDetailItemLayout.this.Dks.getVisibility() != 8) {
-            i = j + WcPayCashierDetailItemLayout.Dkq;
+          if (WcPayCashierDetailItemLayout.this.DBW.getVisibility() != 8) {
+            i = j + WcPayCashierDetailItemLayout.DBU;
           }
           j = i;
-          if (WcPayCashierDetailItemLayout.this.Dkt.getVisibility() != 8) {
-            j = i + WcPayCashierDetailItemLayout.Dkr;
+          if (WcPayCashierDetailItemLayout.this.DBX.getVisibility() != 8) {
+            j = i + WcPayCashierDetailItemLayout.DBV;
           }
-          i = WcPayCashierDetailItemLayout.oUJ;
-          WcPayCashierDetailItemLayout.this.pAE.setMaxWidth(i - j);
+          i = WcPayCashierDetailItemLayout.pbm;
+          WcPayCashierDetailItemLayout.this.pHi.setMaxWidth(i - j);
           AppMethodBeat.o(71325);
         }
       });
@@ -121,7 +121,7 @@ public class WcPayCashierDetailItemLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierDetailItemLayout
  * JD-Core Version:    0.7.0.1
  */

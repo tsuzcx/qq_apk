@@ -6,39 +6,38 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.b;
-import com.tencent.mm.model.as.b.a;
-import com.tencent.mm.o.b;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.b;
+import com.tencent.mm.model.au.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class c
   extends Preference
 {
-  String fGM;
-  private TextView lCL;
+  String fIQ;
+  private TextView lHk;
   private Context mContext;
   String mTitle;
   private View mView;
-  private ImageView pcD;
+  private ImageView pjj;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(64187);
     this.mView = null;
-    this.lCL = null;
-    this.pcD = null;
-    this.fGM = null;
+    this.lHk = null;
+    this.pjj = null;
+    this.fIQ = null;
     this.mTitle = null;
     this.mContext = null;
     this.mContext = paramContext;
@@ -51,9 +50,9 @@ public final class c
     super(paramContext);
     AppMethodBeat.i(64188);
     this.mView = null;
-    this.lCL = null;
-    this.pcD = null;
-    this.fGM = null;
+    this.lHk = null;
+    this.pjj = null;
+    this.fIQ = null;
     this.mTitle = null;
     this.mContext = null;
     this.mContext = paramContext;
@@ -77,46 +76,46 @@ public final class c
   {
     AppMethodBeat.i(64190);
     super.onBindView(paramView);
-    this.lCL = ((TextView)paramView.findViewById(16908310));
-    this.pcD = ((ImageView)paramView.findViewById(2131298480));
-    this.lCL.setText(k.b(this.mContext, this.mTitle, this.lCL.getTextSize()));
-    if (!bt.isNullOrNil(this.fGM))
+    this.lHk = ((TextView)paramView.findViewById(16908310));
+    this.pjj = ((ImageView)paramView.findViewById(2131298480));
+    this.lHk.setText(k.b(this.mContext, this.mTitle, this.lHk.getTextSize()));
+    if (!bu.isNullOrNil(this.fIQ))
     {
-      this.pcD.setVisibility(0);
-      g.ajD();
-      paramView = ((l)g.ab(l.class)).azp().aTk(this.fGM);
-      if ((paramView == null) || ((int)paramView.gfj <= 0))
+      this.pjj.setVisibility(0);
+      g.ajS();
+      paramView = ((l)g.ab(l.class)).azF().aUL(this.fIQ);
+      if ((paramView == null) || ((int)paramView.ght <= 0))
       {
-        ad.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
-        final long l = bt.flT();
-        as.a.hFO.a(this.fGM, "", new as.b.a()
+        ae.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
+        final long l = bu.fpO();
+        au.a.hIG.a(this.fIQ, "", new au.b.a()
         {
           public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(64186);
             if (paramAnonymousBoolean)
             {
-              ad.v("MicroMsg.CollectPayInfoPreference", "getContact suc; cost=" + (bt.flT() - l) + " ms");
-              com.tencent.mm.ak.c.ak(paramAnonymousString, 3);
-              p.aEz().CU(paramAnonymousString);
+              ae.v("MicroMsg.CollectPayInfoPreference", "getContact suc; cost=" + (bu.fpO() - l) + " ms");
+              com.tencent.mm.aj.c.al(paramAnonymousString, 3);
+              p.aEP().Dw(paramAnonymousString);
             }
             for (;;)
             {
               a.b.c(c.a(c.this), c.b(c.this));
               AppMethodBeat.o(64186);
               return;
-              ad.w("MicroMsg.CollectPayInfoPreference", "getContact failed");
+              ae.w("MicroMsg.CollectPayInfoPreference", "getContact failed");
             }
           }
         });
         AppMethodBeat.o(64190);
         return;
       }
-      a.b.c(this.pcD, this.fGM);
+      a.b.c(this.pjj, this.fIQ);
       AppMethodBeat.o(64190);
       return;
     }
-    this.pcD.setVisibility(8);
+    this.pjj.setVisibility(8);
     AppMethodBeat.o(64190);
   }
 }

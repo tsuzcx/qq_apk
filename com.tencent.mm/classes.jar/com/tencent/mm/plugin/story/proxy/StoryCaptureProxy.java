@@ -7,16 +7,16 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.story.f.g.c;
 import com.tencent.mm.plugin.story.f.j;
 import com.tencent.mm.plugin.story.f.j.b;
-import com.tencent.mm.protocal.protobuf.aal;
-import com.tencent.mm.protocal.protobuf.bxa;
-import com.tencent.mm.protocal.protobuf.bxm;
-import com.tencent.mm.protocal.protobuf.csd;
-import com.tencent.mm.protocal.protobuf.djk;
+import com.tencent.mm.protocal.protobuf.aao;
+import com.tencent.mm.protocal.protobuf.bxu;
+import com.tencent.mm.protocal.protobuf.byg;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.protocal.protobuf.dkf;
 import com.tencent.mm.remoteservice.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.a.r;
 import d.g.b.p;
 import d.l;
@@ -28,21 +28,21 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "Lcom/tencent/mm/plugin/story/proxy/IProxyAction;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "musicCallback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "errType", "errCode", "", "errMsg", "Lcom/tencent/mm/protocal/protobuf/MMSPRGetRecommendedMusicResponse;", "resp", "", "getMusicCallback", "()Lkotlin/jvm/functions/Function4;", "setMusicCallback", "(Lkotlin/jvm/functions/Function4;)V", "commitStory", "taskId", "thumbPath", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "captureInfo", "Lcom/tencent/mm/protocal/protobuf/CommonCaptureParams;", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "scope", "groupList", "", "blackList", "videoPath", "mediaDes", "isCaptureVideo", "", "favorite", "commitStoryRemote", "get", "", "key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "defva", "getAccPath", "getAccPathRemote", "getVideoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getVideoParaRemote", "onCallback", "methodName", "data", "Landroid/os/Bundle;", "clientCall", "set", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "Lcom/tencent/mm/plugin/story/proxy/IProxyAction;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "musicCallback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "errType", "errCode", "", "errMsg", "Lcom/tencent/mm/protocal/protobuf/MMSPRGetRecommendedMusicResponse;", "resp", "", "getMusicCallback", "()Lkotlin/jvm/functions/Function4;", "setMusicCallback", "(Lkotlin/jvm/functions/Function4;)V", "commitStory", "taskId", "thumbPath", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "captureInfo", "Lcom/tencent/mm/protocal/protobuf/CommonCaptureParams;", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "scope", "groupList", "", "blackList", "videoPath", "mediaDes", "isCaptureVideo", "", "favorite", "commitStoryRemote", "get", "", "key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "defva", "getAccPath", "getAccPathRemote", "getVideoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getVideoParaRemote", "onCallback", "methodName", "data", "Landroid/os/Bundle;", "clientCall", "set", "Companion", "plugin-story_release"})
 public final class StoryCaptureProxy
   extends com.tencent.mm.remoteservice.a
   implements a
 {
-  public static StoryCaptureProxy AQJ;
-  public static final a AQK;
+  public static StoryCaptureProxy Bih;
+  public static final a Bii;
   private static final String RESULT_KEY = "result_key";
   private static final String TAG = "MicroMsg.StoryCaptureProxy";
-  private r<? super Integer, ? super Integer, ? super String, ? super bxa, z> AQI;
+  private r<? super Integer, ? super Integer, ? super String, ? super bxu, z> Big;
   
   static
   {
     AppMethodBeat.i(119365);
-    AQK = new a((byte)0);
+    Bii = new a((byte)0);
     TAG = "MicroMsg.StoryCaptureProxy";
     RESULT_KEY = "result_key";
     AppMethodBeat.o(119365);
@@ -62,61 +62,61 @@ public final class StoryCaptureProxy
     AppMethodBeat.o(119366);
   }
   
-  public final int commitStory(String paramString1, String paramString2, csd paramcsd, aal paramaal, djk paramdjk, int paramInt, List<String> paramList1, List<String> paramList2)
+  public final int commitStory(String paramString1, String paramString2, csx paramcsx, aao paramaao, dkf paramdkf, int paramInt, List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(119360);
     p.h(paramString1, "taskId");
     p.h(paramString2, "thumbPath");
-    p.h(paramcsd, "location");
-    p.h(paramaal, "captureInfo");
-    p.h(paramdjk, "editorInfo");
+    p.h(paramcsx, "location");
+    p.h(paramaao, "captureInfo");
+    p.h(paramdkf, "editorInfo");
     p.h(paramList1, "groupList");
     p.h(paramList2, "blackList");
     com.tencent.mm.plugin.story.f.g.d locald = new com.tencent.mm.plugin.story.f.g.d();
-    bxm localbxm = new bxm();
-    ad.d(TAG, "storyEditorData " + paramString1 + " isCaptureVideo:" + paramaal.htP);
-    localbxm.GRA = paramaal.htP;
-    locald.ke(paramString1, paramString2);
-    locald.a(paramdjk);
-    locald.b(paramcsd);
-    locald.a(localbxm);
-    locald.Sg(paramInt);
-    locald.gn(paramList1);
-    locald.go(paramList2);
-    locald.sm(paramaal.xwT);
+    byg localbyg = new byg();
+    ae.d(TAG, "storyEditorData " + paramString1 + " isCaptureVideo:" + paramaao.hwD);
+    localbyg.Hlb = paramaao.hwD;
+    locald.kl(paramString1, paramString2);
+    locald.a(paramdkf);
+    locald.b(paramcsx);
+    locald.a(localbyg);
+    locald.SN(paramInt);
+    locald.gw(paramList1);
+    locald.gx(paramList2);
+    locald.st(paramaao.xMQ);
     paramInt = locald.commit();
-    paramString1 = j.AKb;
-    j.b.ehZ().checkPost();
+    paramString1 = j.BbE;
+    j.b.elH().checkPost();
     AppMethodBeat.o(119360);
     return paramInt;
   }
   
-  public final int commitStory(String paramString1, String paramString2, String paramString3, csd paramcsd, boolean paramBoolean, djk paramdjk, int paramInt1, int paramInt2, List<String> paramList1, List<String> paramList2)
+  public final int commitStory(String paramString1, String paramString2, String paramString3, csx paramcsx, boolean paramBoolean, dkf paramdkf, int paramInt1, int paramInt2, List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(119359);
     p.h(paramString1, "videoPath");
     p.h(paramString2, "thumbPath");
     p.h(paramString3, "mediaDes");
-    p.h(paramcsd, "location");
-    p.h(paramdjk, "editorInfo");
+    p.h(paramcsx, "location");
+    p.h(paramdkf, "editorInfo");
     p.h(paramList1, "groupList");
     p.h(paramList2, "blackList");
     String str = com.tencent.mm.d.g.getMD5(paramString1);
     com.tencent.mm.plugin.story.f.g.d locald = new com.tencent.mm.plugin.story.f.g.d();
-    bxm localbxm = new bxm();
-    ad.d(TAG, "videoPath:" + paramString1 + " thumbPath:" + paramString2 + " mediaDes:" + paramString3 + " videoMd5:" + str + " isCaptureVideo:" + paramBoolean);
-    localbxm.GRA = paramBoolean;
+    byg localbyg = new byg();
+    ae.d(TAG, "videoPath:" + paramString1 + " thumbPath:" + paramString2 + " mediaDes:" + paramString3 + " videoMd5:" + str + " isCaptureVideo:" + paramBoolean);
+    localbyg.Hlb = paramBoolean;
     p.g(str, "md5");
     locald.aK(paramString1, paramString2, str);
-    locald.a(paramdjk);
-    locald.b(paramcsd);
-    locald.a(localbxm);
-    locald.Sg(paramInt1);
-    locald.gn(paramList1);
-    locald.go(paramList2);
+    locald.a(paramdkf);
+    locald.b(paramcsx);
+    locald.a(localbyg);
+    locald.SN(paramInt1);
+    locald.gw(paramList1);
+    locald.gx(paramList2);
     paramInt1 = locald.commit();
-    paramString1 = j.AKb;
-    j.b.ehZ().checkPost();
+    paramString1 = j.BbE;
+    j.b.elH().checkPost();
     AppMethodBeat.o(119359);
     return paramInt1;
   }
@@ -130,28 +130,28 @@ public final class StoryCaptureProxy
     p.h(paramString3, "mediaDes");
     String str = com.tencent.mm.d.g.getMD5(paramString1);
     com.tencent.mm.plugin.story.f.g.d locald = new com.tencent.mm.plugin.story.f.g.d();
-    bxm localbxm = new bxm();
-    ad.d(TAG, "videoPath:" + paramString1 + " thumbPath:" + paramString2 + " mediaDes:" + paramString3 + " videoMd5:" + str + " isCaptureVideo:" + paramBoolean);
-    localbxm.GRA = paramBoolean;
+    byg localbyg = new byg();
+    ae.d(TAG, "videoPath:" + paramString1 + " thumbPath:" + paramString2 + " mediaDes:" + paramString3 + " videoMd5:" + str + " isCaptureVideo:" + paramBoolean);
+    localbyg.Hlb = paramBoolean;
     p.g(str, "md5");
     locald.aK(paramString1, paramString2, str);
-    locald.a(localbxm);
+    locald.a(localbyg);
     locald.commit();
-    paramString1 = j.AKb;
-    j.b.ehZ().checkPost();
+    paramString1 = j.BbE;
+    j.b.elH().checkPost();
     AppMethodBeat.o(119361);
   }
   
-  public final Object get(al.a parama, Object paramObject)
+  public final Object get(am.a parama, Object paramObject)
   {
     AppMethodBeat.i(119363);
     p.h(parama, "key");
     p.h(paramObject, "defva");
-    parama = ((al.a[])al.a.class.getEnumConstants())[parama.ordinal()];
-    ad.i(TAG, "getConfigStorage, %s %s", new Object[] { parama, paramObject });
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajC();
+    parama = ((am.a[])am.a.class.getEnumConstants())[parama.ordinal()];
+    ae.i(TAG, "getConfigStorage, %s %s", new Object[] { parama, paramObject });
+    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajR();
     p.g(locale, "MMKernel.storage()");
-    parama = locale.ajl().get(parama, paramObject);
+    parama = locale.ajA().get(parama, paramObject);
     p.g(parama, "MMKernel.storage().configStg.get(index, defva)");
     AppMethodBeat.o(119363);
     return parama;
@@ -169,7 +169,7 @@ public final class StoryCaptureProxy
   public final String getAccPathRemote()
   {
     AppMethodBeat.i(119356);
-    Object localObject = com.tencent.mm.kernel.g.ajC();
+    Object localObject = com.tencent.mm.kernel.g.ajR();
     p.g(localObject, "storage()");
     localObject = ((com.tencent.mm.kernel.e)localObject).getAccPath();
     p.g(localObject, "storage().accPath");
@@ -177,9 +177,9 @@ public final class StoryCaptureProxy
     return localObject;
   }
   
-  public final r<Integer, Integer, String, bxa, z> getMusicCallback()
+  public final r<Integer, Integer, String, bxu, z> getMusicCallback()
   {
-    return this.AQI;
+    return this.Big;
   }
   
   public final VideoTransPara getVideoPara()
@@ -187,7 +187,7 @@ public final class StoryCaptureProxy
     AppMethodBeat.i(119357);
     VideoTransPara localVideoTransPara = (VideoTransPara)REMOTE_CALL("getVideoParaRemote", new Object[0]);
     if (localVideoTransPara == null) {
-      p.gfZ();
+      p.gkB();
     }
     AppMethodBeat.o(119357);
     return localVideoTransPara;
@@ -197,9 +197,9 @@ public final class StoryCaptureProxy
   public final VideoTransPara getVideoParaRemote()
   {
     AppMethodBeat.i(119358);
-    Object localObject = com.tencent.mm.modelcontrol.d.aGQ();
+    Object localObject = com.tencent.mm.modelcontrol.d.aHh();
     p.g(localObject, "SubCoreVideoControl.getCore()");
-    localObject = ((com.tencent.mm.modelcontrol.d)localObject).aGU();
+    localObject = ((com.tencent.mm.modelcontrol.d)localObject).aHl();
     p.g(localObject, "para");
     AppMethodBeat.o(119358);
     return localObject;
@@ -210,7 +210,7 @@ public final class StoryCaptureProxy
     AppMethodBeat.i(119364);
     p.h(paramString, "methodName");
     p.h(paramBundle, "data");
-    ad.i(TAG, "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
+    ae.i(TAG, "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
@@ -233,7 +233,7 @@ public final class StoryCaptureProxy
       }
       catch (Exception paramString)
       {
-        ad.e(TAG, "exception:%s", new Object[] { bt.n((Throwable)paramString) });
+        ae.e(TAG, "exception:%s", new Object[] { bu.o((Throwable)paramString) });
         AppMethodBeat.o(119364);
         return;
       }
@@ -279,34 +279,34 @@ public final class StoryCaptureProxy
     }
   }
   
-  public final void set(al.a parama, Object paramObject)
+  public final void set(am.a parama, Object paramObject)
   {
     AppMethodBeat.i(119362);
     p.h(parama, "key");
     p.h(paramObject, "defva");
-    ad.i(TAG, "get %s %s", new Object[] { parama, paramObject });
-    parama = ((al.a[])al.a.class.getEnumConstants())[parama.ordinal()];
-    ad.i(TAG, "setConfigStorage, %s %s", new Object[] { parama, paramObject });
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajC();
+    ae.i(TAG, "get %s %s", new Object[] { parama, paramObject });
+    parama = ((am.a[])am.a.class.getEnumConstants())[parama.ordinal()];
+    ae.i(TAG, "setConfigStorage, %s %s", new Object[] { parama, paramObject });
+    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajR();
     p.g(locale, "MMKernel.storage()");
-    locale.ajl().set(parama, paramObject);
+    locale.ajA().set(parama, paramObject);
     AppMethodBeat.o(119362);
   }
   
-  public final void setMusicCallback(r<? super Integer, ? super Integer, ? super String, ? super bxa, z> paramr)
+  public final void setMusicCallback(r<? super Integer, ? super Integer, ? super String, ? super bxu, z> paramr)
   {
-    this.AQI = paramr;
+    this.Big = paramr;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy$Companion;", "", "()V", "RESULT_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "getInstance", "()Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "setInstance", "(Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;)V", "createInstance", "", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy$Companion;", "", "()V", "RESULT_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "getInstance", "()Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "setInstance", "(Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;)V", "createInstance", "", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "plugin-story_release"})
   public static final class a
   {
-    public static StoryCaptureProxy ejz()
+    public static StoryCaptureProxy eni()
     {
       AppMethodBeat.i(119354);
       StoryCaptureProxy localStoryCaptureProxy = StoryCaptureProxy.access$getInstance$cp();
       if (localStoryCaptureProxy == null) {
-        p.bcb("instance");
+        p.bdF("instance");
       }
       AppMethodBeat.o(119354);
       return localStoryCaptureProxy;
@@ -315,7 +315,7 @@ public final class StoryCaptureProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.proxy.StoryCaptureProxy
  * JD-Core Version:    0.7.0.1
  */

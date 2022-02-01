@@ -12,21 +12,21 @@ import org.xmlpull.v1.XmlSerializer;
 public final class g
   implements c
 {
-  private Map<String, String> Mat;
+  private Map<String, String> Mxo;
   private int mDrmType;
   public String mPlayUrl;
   
-  public final void aZK(String paramString)
+  public final void bbn(String paramString)
   {
     this.mPlayUrl = paramString;
   }
   
-  public final String fWC()
+  public final String gbb()
   {
     return this.mPlayUrl;
   }
   
-  public final int fWD()
+  public final int gbc()
   {
     return this.mDrmType;
   }
@@ -39,7 +39,7 @@ public final class g
   public final String getUrl()
   {
     int i = 0;
-    AppMethodBeat.i(191889);
+    AppMethodBeat.i(194567);
     try
     {
       Object localObject = Xml.newSerializer();
@@ -57,38 +57,38 @@ public final class g
       ((XmlSerializer)localObject).text("0");
       ((XmlSerializer)localObject).endTag("", "clip_placeHolder");
       ((XmlSerializer)localObject).startTag("", "clip_path");
-      ((XmlSerializer)localObject).text(fWC());
+      ((XmlSerializer)localObject).text(gbb());
       ((XmlSerializer)localObject).endTag("", "clip_path");
       ((XmlSerializer)localObject).startTag("", "clip_drmType");
-      int j = fWD();
+      int j = gbc();
       if (j == 0) {}
       for (;;)
       {
         ((XmlSerializer)localObject).text(String.valueOf(i));
         ((XmlSerializer)localObject).endTag("", "clip_drmType");
         ((XmlSerializer)localObject).startTag("", "clip_drmProvisionUrl");
-        ((XmlSerializer)localObject).text(mP("drm_property_provision_url", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_provision_url", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmProvisionUrl");
         ((XmlSerializer)localObject).startTag("", "clip_drmLicenseUrl");
-        ((XmlSerializer)localObject).text(mP("drm_property_license_url", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_license_url", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmLicenseUrl");
         ((XmlSerializer)localObject).startTag("", "clip_drmUseL1");
-        ((XmlSerializer)localObject).text(mP("drm_property_use_l1", "1"));
+        ((XmlSerializer)localObject).text(mV("drm_property_use_l1", "1"));
         ((XmlSerializer)localObject).endTag("", "clip_drmUseL1");
         ((XmlSerializer)localObject).startTag("", "clip_drmSavePath");
-        ((XmlSerializer)localObject).text(mP("drm_property_save_path", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_save_path", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmSavePath");
         ((XmlSerializer)localObject).startTag("", "clip_drmGuid");
-        ((XmlSerializer)localObject).text(mP("drm_property_guid", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_guid", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmGuid");
         ((XmlSerializer)localObject).startTag("", "clip_drmPlatform");
-        ((XmlSerializer)localObject).text(mP("drm_property_platform", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_platform", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmPlatform");
         ((XmlSerializer)localObject).startTag("", "clip_drmAppVersion");
-        ((XmlSerializer)localObject).text(mP("drm_property_app_ver", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_app_ver", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmAppVersion");
         ((XmlSerializer)localObject).startTag("", "clip_drmCookie");
-        ((XmlSerializer)localObject).text(mP("drm_property_cookie", ""));
+        ((XmlSerializer)localObject).text(mV("drm_property_cookie", ""));
         ((XmlSerializer)localObject).endTag("", "clip_drmCookie");
         ((XmlSerializer)localObject).endTag("", "track_clip");
         ((XmlSerializer)localObject).endTag("", "av_track");
@@ -96,7 +96,7 @@ public final class g
         ((XmlSerializer)localObject).endTag("", "assets");
         ((XmlSerializer)localObject).endDocument();
         localObject = localStringWriter.toString();
-        AppMethodBeat.o(191889);
+        AppMethodBeat.o(194567);
         return localObject;
         if (1 == j) {
           i = 1;
@@ -113,25 +113,25 @@ public final class g
     catch (IOException localIOException)
     {
       d.e("TPMediaDRMAsset", localIOException);
-      AppMethodBeat.o(191889);
+      AppMethodBeat.o(194567);
     }
   }
   
-  public final String mP(String paramString1, String paramString2)
+  public final String mV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191888);
-    if ((this.Mat == null) || (this.Mat.isEmpty()))
+    AppMethodBeat.i(194566);
+    if ((this.Mxo == null) || (this.Mxo.isEmpty()))
     {
-      AppMethodBeat.o(191888);
+      AppMethodBeat.o(194566);
       return paramString2;
     }
-    paramString1 = (String)this.Mat.get(paramString1);
+    paramString1 = (String)this.Mxo.get(paramString1);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(191888);
+      AppMethodBeat.o(194566);
       return paramString2;
     }
-    AppMethodBeat.o(191888);
+    AppMethodBeat.o(194566);
     return paramString1;
   }
 }

@@ -11,7 +11,7 @@ public abstract class a
   
   public final void a(c paramc)
   {
-    String str = paramc.gre;
+    String str = paramc.gtE;
     int i = -1;
     switch (str.hashCode())
     {
@@ -116,15 +116,15 @@ public abstract class a
     return;
     e(paramc);
     return;
-    a((String)paramc.wd("productId"), paramc);
+    a((String)paramc.wM("productId"), paramc);
     return;
-    a((String)paramc.wd("productId"), ((Integer)paramc.wd("version")).intValue(), paramc);
+    a((String)paramc.wM("productId"), ((Integer)paramc.wM("version")).intValue(), paramc);
     return;
     f(paramc);
     return;
     g(paramc);
     return;
-    a((String)paramc.wd("productId"), (String)paramc.wd("packName"), paramc);
+    a((String)paramc.wM("productId"), (String)paramc.wM("packName"), paramc);
     return;
     h(paramc);
     return;
@@ -132,15 +132,15 @@ public abstract class a
     return;
     j(paramc);
     return;
-    a(((Integer)paramc.wd("scene")).intValue(), paramc);
+    a(((Integer)paramc.wM("scene")).intValue(), paramc);
     return;
-    a((Map)paramc.wd("detailItem"), (String)paramc.wd("selectUserName"), paramc);
+    a((Map)paramc.wM("detailItem"), (String)paramc.wM("selectUserName"), paramc);
     return;
-    a((String)paramc.wd("productId"), (Map)paramc.wd("packThumbExtItem"), paramc);
+    a((String)paramc.wM("productId"), (Map)paramc.wM("packThumbExtItem"), paramc);
     return;
-    a((String)paramc.wd("productId"), (String)paramc.wd("seriesId"), (String)paramc.wd("productName"), (String)paramc.wd("cdnClientID"), ((Integer)paramc.wd("productStatus")).intValue());
+    a((String)paramc.wM("productId"), (String)paramc.wM("seriesId"), (String)paramc.wM("productName"), (String)paramc.wM("cdnClientID"), ((Integer)paramc.wM("productStatus")).intValue());
     return;
-    b((String)paramc.wd("productId"), paramc);
+    b((String)paramc.wM("productId"), paramc);
   }
   
   public abstract void a(String paramString, int paramInt, c paramc);
@@ -155,7 +155,7 @@ public abstract class a
   
   public abstract void a(Map<String, Object> paramMap, String paramString, c paramc);
   
-  public final String agw()
+  public final String agK()
   {
     return "Emoticon";
   }
@@ -182,7 +182,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.flutter.a.a.a
  * JD-Core Version:    0.7.0.1
  */

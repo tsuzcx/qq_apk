@@ -9,7 +9,7 @@ public class LogInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LogInfo> CREATOR;
-  public long hKv;
+  public long hNo;
   public int level;
   public String message;
   
@@ -28,7 +28,7 @@ public class LogInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(76376);
-    paramParcel.writeLong(this.hKv);
+    paramParcel.writeLong(this.hNo);
     paramParcel.writeInt(this.level);
     paramParcel.writeString(this.message);
     AppMethodBeat.o(76376);

@@ -1,447 +1,245 @@
 package com.tencent.mm.x;
 
-import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import android.opengl.GLES20;
+import android.opengl.GLES30;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.c;
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.media.k.c;
+import com.tencent.mm.media.k.c.a;
+import com.tencent.mm.media.k.c.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import d.g.b.p;
+import d.l;
+import d.z;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/glrender/FilterRender;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callbackHandler", "Landroid/os/Handler;", "getCallbackHandler", "()Landroid/os/Handler;", "setCallbackHandler", "(Landroid/os/Handler;)V", "callbackThread", "Landroid/os/HandlerThread;", "getCallbackThread", "()Landroid/os/HandlerThread;", "setCallbackThread", "(Landroid/os/HandlerThread;)V", "curHeight", "", "getCurHeight", "()I", "setCurHeight", "(I)V", "curWidth", "getCurWidth", "setCurWidth", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "handlerThread", "getHandlerThread", "setHandlerThread", "imageReader", "Landroid/media/ImageReader;", "getImageReader", "()Landroid/media/ImageReader;", "setImageReader", "(Landroid/media/ImageReader;)V", "inputBitmap", "Landroid/graphics/Bitmap;", "getInputBitmap", "()Landroid/graphics/Bitmap;", "setInputBitmap", "(Landroid/graphics/Bitmap;)V", "inputTextureId", "getInputTextureId", "setInputTextureId", "mEGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "getMEGLEnvironment", "()Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "setMEGLEnvironment", "(Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;)V", "outputTextureId", "getOutputTextureId", "setOutputTextureId", "renderOutputBuffer", "Ljava/nio/ByteBuffer;", "getRenderOutputBuffer", "()Ljava/nio/ByteBuffer;", "setRenderOutputBuffer", "(Ljava/nio/ByteBuffer;)V", "waitingList", "", "Lkotlin/Function1;", "", "getWaitingList", "()Ljava/util/List;", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "getXLabEffect", "()Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "setXLabEffect", "(Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;)V", "allocTexutreMem", "texture", "width", "height", "checkInitOutputBuffer", "copyToByteArray", "buffer", "rowPadding", "extractBitmapBuffer", "Lkotlin/Pair;", "reader", "filter", "lutFilePath", "colorWeight", "", "callback", "initGL", "setBitmap", "bitmap", "start", "originBitmap", "context", "Landroid/content/Context;", "stop", "plugin-photoedit-sdk_release"})
 public final class b
-  extends com.tencent.mm.plugin.fts.a.b
 {
-  m grs;
-  a grt;
-  private n.b gru;
+  final String TAG;
+  public Handler callbackHandler;
+  public HandlerThread gvM;
+  public ImageReader gvN;
+  public c.b gvO;
+  public Bitmap gvP;
+  int gvQ;
+  int gvR;
+  com.tencent.mm.plugin.xlabeffect.b gvS;
+  int gvT;
+  int gvU;
+  final List<d.g.a.b<Bitmap, z>> gvV;
+  aq handler;
+  HandlerThread handlerThread;
   
   public b()
   {
-    AppMethodBeat.i(127644);
-    this.gru = new n.b()
-    {
-      public final void a(int paramAnonymousInt, com.tencent.mm.sdk.e.n paramAnonymousn, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(127632);
-        if (!b.agB())
-        {
-          AppMethodBeat.o(127632);
-          return;
-        }
-        if ((paramAnonymousObject != null) && ((paramAnonymousObject instanceof String)))
-        {
-          paramAnonymousn = (String)paramAnonymousObject;
-          switch (paramAnonymousInt)
-          {
-          }
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(127632);
-          return;
-          paramAnonymousn = null;
-          break;
-          if (paramAnonymousn != null)
-          {
-            b.this.grs.a(65636, new b.f(b.this, paramAnonymousn));
-            AppMethodBeat.o(127632);
-            return;
-            if (paramAnonymousn == null)
-            {
-              b.this.grs.a(65636, new b.c(b.this));
-              AppMethodBeat.o(127632);
-              return;
-            }
-            b.this.grs.a(65636, new b.d(b.this, paramAnonymousn));
-          }
-        }
-      }
-    };
-    AppMethodBeat.o(127644);
+    AppMethodBeat.i(163164);
+    this.TAG = "MicroMsg.FilterRender";
+    this.gvV = ((List)new ArrayList());
+    HandlerThread localHandlerThread = d.hi("FilterRenderHandlerThread", 5);
+    p.g(localHandlerThread, "SpecialThreadFactory.cre…d\", Thread.NORM_PRIORITY)");
+    this.handlerThread = localHandlerThread;
+    this.handlerThread.start();
+    this.handler = new aq(this.handlerThread.getLooper());
+    AppMethodBeat.o(163164);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(com.tencent.mm.plugin.fts.a.a.j paramj)
+  public final HandlerThread agW()
   {
-    AppMethodBeat.i(127647);
-    paramj = new b.g(this, paramj);
-    paramj = this.grs.a(-65536, paramj);
-    AppMethodBeat.o(127647);
-    return paramj;
-  }
-  
-  public final boolean agA()
-  {
-    AppMethodBeat.i(127646);
-    ((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg().b(this.gru);
-    AppMethodBeat.o(127646);
-    return true;
-  }
-  
-  public final String getName()
-  {
-    return "FTS5SearchFriendLogic";
-  }
-  
-  public final boolean onCreate()
-  {
-    AppMethodBeat.i(127645);
-    if (!((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
-    {
-      ad.i("MicroMsg.FTS.FTS5SearchFriendLogic", "Create Fail!");
-      AppMethodBeat.o(127645);
-      return false;
+    AppMethodBeat.i(163161);
+    HandlerThread localHandlerThread = this.gvM;
+    if (localHandlerThread == null) {
+      p.bdF("callbackThread");
     }
-    ad.i("MicroMsg.FTS.FTS5SearchFriendLogic", "Create Success!");
-    this.grt = ((a)((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(1280));
-    this.grs = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
-    this.grs.a(131172, new b((byte)0));
-    ((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg().a(this.gru);
-    AppMethodBeat.o(127645);
-    return true;
+    AppMethodBeat.o(163161);
+    return localHandlerThread;
   }
   
+  public final c.b agX()
+  {
+    AppMethodBeat.i(163162);
+    c.b localb = this.gvO;
+    if (localb == null) {
+      p.bdF("mEGLEnvironment");
+    }
+    AppMethodBeat.o(163162);
+    return localb;
+  }
+  
+  public final Bitmap agY()
+  {
+    AppMethodBeat.i(163163);
+    Bitmap localBitmap = this.gvP;
+    if (localBitmap == null) {
+      p.bdF("inputBitmap");
+    }
+    AppMethodBeat.o(163163);
+    return localBitmap;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
+    implements Runnable
   {
-    String bVF;
-    String dzn;
-    String grw;
-    String grx;
-    String gry;
-    String grz;
-    long id;
-    String realName;
-    int status;
-    int type;
-    String userName;
+    a(b paramb, d.g.a.b paramb1, String paramString, float paramFloat) {}
     
-    a() {}
-    
-    a(com.tencent.mm.plugin.account.friend.a.a parama)
+    public final void run()
     {
-      AppMethodBeat.i(127633);
-      this.id = com.tencent.mm.plugin.account.friend.a.a.Js(parama.Lb());
-      this.realName = parama.aSy();
-      this.grw = parama.aSA();
-      this.grx = parama.aSz();
-      this.bVF = parama.getNickName();
-      this.gry = parama.aSC();
-      this.grz = parama.aSB();
-      this.userName = parama.getUsername();
-      this.dzn = parama.aSD();
-      this.type = parama.type;
-      this.status = parama.status;
-      AppMethodBeat.o(127633);
+      AppMethodBeat.i(163158);
+      synchronized (this.gvW.gvV)
+      {
+        this.gvW.gvV.add(this.gll);
+        ??? = c.hrD;
+        c.a.auv();
+        ??? = this.gvW.gvS;
+        if (??? != null)
+        {
+          ((com.tencent.mm.plugin.xlabeffect.b)???).o(this.gvX, this.gvY);
+          com.tencent.mm.plugin.xlabeffect.b.a((com.tencent.mm.plugin.xlabeffect.b)???, this.gvW.gvQ, this.gvW.gvR, false, 60);
+        }
+      }
+      synchronized (this.gvW.gvV)
+      {
+        if (this.gvW.gvV.size() > 0)
+        {
+          localObject2 = c.hrD;
+          int i = this.gvW.gvR;
+          int j = this.gvW.gvT;
+          int k = this.gvW.gvU;
+          localObject2 = new int[1];
+          GLES30.glGenFramebuffers(1, (int[])localObject2, 0);
+          GLES30.glBindFramebuffer(36160, localObject2[0]);
+          GLES30.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
+          ByteBuffer localByteBuffer = ByteBuffer.allocate(j * k * 4);
+          GLES30.glReadPixels(0, 0, j, k, 6408, 5121, (Buffer)localByteBuffer);
+          Bitmap localBitmap = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+          localBitmap.copyPixelsFromBuffer((Buffer)localByteBuffer);
+          GLES30.glBindFramebuffer(36160, 0);
+          GLES30.glDeleteFramebuffers(1, (int[])localObject2, 0);
+          p.g(localBitmap, "bitmap");
+          ((d.g.a.b)this.gvW.gvV.remove(0)).invoke(localBitmap);
+        }
+        Object localObject2 = z.Nhr;
+        ??? = c.hrD;
+        c.a.a(this.gvW.agX().hrE, this.gvW.agX().eglSurface);
+        AppMethodBeat.o(163158);
+        return;
+        localObject3 = finally;
+        AppMethodBeat.o(163158);
+        throw localObject3;
+      }
     }
   }
   
-  final class b
-    extends com.tencent.mm.plugin.fts.a.a.a
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
   {
-    public boolean grA;
-    private HashSet<Long> grB;
-    private long grC;
-    private int grD;
-    private HashMap<int[], b.e> grE;
+    b(b paramb) {}
     
-    private b()
+    public final void run()
     {
-      AppMethodBeat.i(127634);
-      this.grA = false;
-      this.grB = null;
-      this.grC = -9223372036854775808L;
-      this.grD = -1;
-      this.grE = new HashMap();
-      AppMethodBeat.o(127634);
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(127635);
-      ad.i("MicroMsg.FTS.FTS5SearchFriendLogic", "Start building friend index.");
-      this.grA = b.agB();
-      if (this.grD < 0) {
-        this.grD = 0;
+      AppMethodBeat.i(163159);
+      ae.i(this.gvW.TAG, "initGL");
+      Object localObject1 = this.gvW;
+      Object localObject2 = d.hf("FilterRenderCallbackHandlerThread", 5);
+      p.g(localObject2, "SpecialThreadFactory.cre…d\", Thread.NORM_PRIORITY)");
+      p.h(localObject2, "<set-?>");
+      ((b)localObject1).gvM = ((HandlerThread)localObject2);
+      this.gvW.agW().start();
+      localObject1 = this.gvW;
+      localObject2 = new Handler(this.gvW.agW().getLooper());
+      p.h(localObject2, "<set-?>");
+      ((b)localObject1).callbackHandler = ((Handler)localObject2);
+      localObject1 = this.gvW;
+      localObject2 = ImageReader.newInstance(this.gvW.gvT, this.gvW.gvU, 1, 3);
+      p.g(localObject2, "ImageReader.newInstance(…PixelFormat.RGBA_8888, 3)");
+      p.h(localObject2, "<set-?>");
+      ((b)localObject1).gvN = ((ImageReader)localObject2);
+      localObject1 = this.gvW.gvN;
+      if (localObject1 == null) {
+        p.bdF("imageReader");
       }
-      ad.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[BuildFriendIndexTask mBuildMobileIndex : %s, mCurrentTask : %d]", new Object[] { Boolean.valueOf(this.grA), Integer.valueOf(this.grD) });
-      Object localObject1;
-      long l;
-      int i;
-      Object localObject2;
-      if (this.grD == 0) {
-        if (this.grA)
-        {
-          if (!this.grE.containsKey(c.tsW)) {
-            this.grE.put(c.tsW, new b.e((byte)0));
-          }
-          if (this.grB == null)
-          {
-            this.grB = new HashSet();
-            localObject1 = b.this.grt.a(c.tsW, false, true, false, false, false);
-            while (((Cursor)localObject1).moveToNext())
-            {
-              l = ((Cursor)localObject1).getLong(0);
-              this.grB.add(Long.valueOf(l));
-            }
-            ((Cursor)localObject1).close();
-          }
-          if (Thread.interrupted())
-          {
-            localObject1 = new InterruptedException();
-            AppMethodBeat.o(127635);
-            throw ((Throwable)localObject1);
-          }
-          localObject1 = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSMainDB().i("SELECT id, realname, realnamequanpin, realnamepyinitial, nickname, nicknamequanpin, nicknamepyinitial, username, status, moblie FROM addr_upload2 WHERE id > ? AND type=0 ORDER BY id;", new String[] { Long.toString(this.grC) });
-          i = 50;
-          while (((Cursor)localObject1).moveToNext())
-          {
-            if (Thread.interrupted())
-            {
-              ((Cursor)localObject1).close();
-              b.this.grt.commit();
-              localObject1 = new InterruptedException();
-              AppMethodBeat.o(127635);
-              throw ((Throwable)localObject1);
-            }
-            l = ((Cursor)localObject1).getLong(0);
-            this.grC = l;
-            localObject2 = new b.a();
-            ((b.a)localObject2).id = l;
-            ((b.a)localObject2).realName = ((Cursor)localObject1).getString(1);
-            ((b.a)localObject2).grw = ((Cursor)localObject1).getString(2);
-            ((b.a)localObject2).grx = ((Cursor)localObject1).getString(3);
-            ((b.a)localObject2).bVF = ((Cursor)localObject1).getString(4);
-            ((b.a)localObject2).gry = ((Cursor)localObject1).getString(5);
-            ((b.a)localObject2).grz = ((Cursor)localObject1).getString(6);
-            ((b.a)localObject2).userName = ((Cursor)localObject1).getString(7);
-            ((b.a)localObject2).status = ((Cursor)localObject1).getInt(8);
-            ((b.a)localObject2).dzn = ((Cursor)localObject1).getString(9);
-            ((b.a)localObject2).type = 0;
-            if (((b.a)localObject2).status == 65536) {
-              ((b.a)localObject2).status = 0;
-            }
-            if ((b.a((b.a)localObject2)) && (!this.grB.remove(Long.valueOf(((b.a)localObject2).id))))
-            {
-              if (i < 50) {
-                break label793;
-              }
-              b.this.grt.commit();
-              b.this.grt.beginTransaction();
-            }
-          }
-        }
-      }
-      label790:
-      label793:
-      for (int j = 0;; j = i)
+      localObject2 = (ImageReader.OnImageAvailableListener)new ImageReader.OnImageAvailableListener()
       {
-        b.e locale;
-        for (;;)
-        {
-          i = j;
-          try
-          {
-            j += b.a(b.this, (b.a)localObject2);
-            i = j;
-            localObject2 = (b.e)this.grE.get(c.tsW);
-            i = j;
-            ((b.e)localObject2).grH += 1;
-            i = j;
-          }
-          catch (Exception localException)
-          {
-            ad.printErrStackTrace("MicroMsg.FTS.FTS5SearchFriendLogic", localException, "Build mobile friend index failed with exception.", new Object[0]);
-            locale = (b.e)this.grE.get(c.tsW);
-            locale.mFailedCount += 1;
-          }
-        }
-        break;
-        ((Cursor)localObject1).close();
-        b.this.grt.commit();
-        localObject1 = this.grB.iterator();
-        i = 50;
-        if (((Iterator)localObject1).hasNext())
-        {
-          if (i < 50) {
-            break label790;
-          }
-          b.this.grt.commit();
-          b.this.grt.beginTransaction();
-          i = 0;
-        }
-        for (;;)
-        {
-          l = ((Long)((Iterator)localObject1).next()).longValue();
-          b.this.grt.c(c.tsW, l);
-          locale = (b.e)this.grE.get(c.tsW);
-          locale.grI += 1;
-          ((Iterator)localObject1).remove();
-          i += 1;
-          break;
-          b.this.grt.commit();
-          this.grB = null;
-          this.grC = -9223372036854775808L;
-          this.grD = -1;
-          AppMethodBeat.o(127635);
-          return true;
-        }
+        public final void onImageAvailable(ImageReader paramAnonymousImageReader) {}
+      };
+      Handler localHandler = this.gvW.callbackHandler;
+      if (localHandler == null) {
+        p.bdF("callbackHandler");
       }
-    }
-    
-    public final int getId()
-    {
-      return 2;
-    }
-    
-    public final String getName()
-    {
-      return "BuildFriendIndexTask";
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(127636);
-      if (this.grE.containsKey(c.tsW))
-      {
-        String str = "BuildFriendIndex IDXTYPE_SET_CONTACT_FRIEND [new: " + ((b.e)this.grE.get(c.tsW)).grH + ", removed: " + ((b.e)this.grE.get(c.tsW)).grI + ", failed: " + ((b.e)this.grE.get(c.tsW)).mFailedCount + "]";
-        AppMethodBeat.o(127636);
-        return str;
+      ((ImageReader)localObject1).setOnImageAvailableListener((ImageReader.OnImageAvailableListener)localObject2, localHandler);
+      localObject1 = this.gvW;
+      localObject2 = c.hrD;
+      localObject2 = ((b)localObject1).gvN;
+      if (localObject2 == null) {
+        p.bdF("imageReader");
       }
-      AppMethodBeat.o(127636);
-      return "";
+      ((b)localObject1).gvO = c.a.a(((ImageReader)localObject2).getSurface(), 0, 0, null, 16);
+      localObject2 = ((b)localObject1).gvS;
+      if (localObject2 != null) {
+        ((com.tencent.mm.plugin.xlabeffect.b)localObject2).destroy();
+      }
+      ((b)localObject1).gvS = new com.tencent.mm.plugin.xlabeffect.b(((b)localObject1).gvT, ((b)localObject1).gvU, 1, 8);
+      localObject2 = ((b)localObject1).gvS;
+      if (localObject2 != null) {
+        ((com.tencent.mm.plugin.xlabeffect.b)localObject2).vJ(false);
+      }
+      localObject2 = c.hrD;
+      ((b)localObject1).gvQ = c.a.auw();
+      localObject2 = c.hrD;
+      ((b)localObject1).gvR = c.a.auw();
+      localObject2 = c.hrD;
+      localObject2 = ((b)localObject1).gvP;
+      if (localObject2 == null) {
+        p.bdF("inputBitmap");
+      }
+      c.a.b((Bitmap)localObject2, ((b)localObject1).gvQ);
+      int i = ((b)localObject1).gvR;
+      int j = ((b)localObject1).gvT;
+      int k = ((b)localObject1).gvU;
+      GLES20.glBindTexture(3553, i);
+      GLES20.glTexImage2D(3553, 0, 6408, j, k, 0, 6408, 5121, null);
+      GLES20.glBindTexture(3553, 0);
+      AppMethodBeat.o(163159);
     }
   }
   
-  final class c
-    extends com.tencent.mm.plugin.fts.a.a.a
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
   {
-    private int grF = 0;
-    private int mCount = 0;
+    c(b paramb) {}
     
-    public c() {}
-    
-    public final boolean execute()
+    public final void run()
     {
-      AppMethodBeat.i(127637);
-      ad.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[DeleteAllFriendsTask mFriendType: %s]", new Object[] { Integer.valueOf(this.grF) });
-      if (this.grF == 0) {
-        this.mCount = b.this.grt.j(c.tsW, -1).size();
+      AppMethodBeat.i(163160);
+      Object localObject = c.hrD;
+      c.a.a(this.gvW.agX());
+      this.gvW.handlerThread.quit();
+      this.gvW.agW().quit();
+      localObject = this.gvW.gvS;
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.xlabeffect.b)localObject).destroy();
       }
-      AppMethodBeat.o(127637);
-      return true;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(127638);
-      String str = "DeleteAllFriends [" + this.mCount + ", " + this.grF + "]";
-      AppMethodBeat.o(127638);
-      return str;
-    }
-  }
-  
-  final class d
-    extends com.tencent.mm.plugin.fts.a.a.a
-  {
-    private int grF;
-    private String grG;
-    
-    public d(String paramString)
-    {
-      this.grG = paramString;
-      this.grF = 0;
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(127639);
-      ad.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[DeleteFriendTask mEntityId: %s, mFriendType: %s]", new Object[] { this.grG, Integer.valueOf(this.grF) });
-      if (this.grF == 0)
-      {
-        long l = com.tencent.mm.plugin.account.friend.a.a.Js(this.grG);
-        b.this.grt.c(c.tsW, l);
-      }
-      AppMethodBeat.o(127639);
-      return true;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(127640);
-      String str = "DeleteFriend(\"" + this.grG + "\", " + this.grF + ")";
-      AppMethodBeat.o(127640);
-      return str;
-    }
-  }
-  
-  static final class e
-  {
-    public int grH = 0;
-    public int grI = 0;
-    public int mFailedCount = 0;
-  }
-  
-  final class f
-    extends com.tencent.mm.plugin.fts.a.a.a
-  {
-    private int grF;
-    private String grG;
-    private boolean grJ = false;
-    
-    public f(String paramString)
-    {
-      this.grG = paramString;
-      this.grF = 0;
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(127641);
-      ad.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[InsertFriendTask mEntityId: %s, mFriendType: %s]", new Object[] { this.grG, Integer.valueOf(this.grF) });
-      if (this.grF == 0)
-      {
-        Object localObject = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Jx(this.grG);
-        if (localObject == null)
-        {
-          this.grJ = true;
-          AppMethodBeat.o(127641);
-          return true;
-        }
-        localObject = new b.a((com.tencent.mm.plugin.account.friend.a.a)localObject);
-        if (!b.a((b.a)localObject)) {
-          break label112;
-        }
-        b.a(b.this, (b.a)localObject);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(127641);
-        return true;
-        label112:
-        this.grJ = true;
-      }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(127642);
-      StringBuilder localStringBuilder = new StringBuilder("InsertFriend(\"").append(this.grG).append("\", ").append(this.grF).append(")");
-      if (this.grJ) {}
-      for (String str = " [skipped]";; str = "")
-      {
-        str = str;
-        AppMethodBeat.o(127642);
-        return str;
-      }
+      this.gvW.gvS = null;
+      AppMethodBeat.o(163160);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.x.b
  * JD-Core Version:    0.7.0.1
  */

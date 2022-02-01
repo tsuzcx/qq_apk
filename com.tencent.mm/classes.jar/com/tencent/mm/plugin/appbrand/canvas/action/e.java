@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawArcActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class e
@@ -15,7 +15,7 @@ public final class e
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     AppMethodBeat.i(144867);
-    paramCanvas.drawArc(new RectF(paramFloat1 - paramFloat3, paramFloat2 - paramFloat3, paramFloat1 + paramFloat3, paramFloat2 + paramFloat3), (float)(paramFloat4 / 3.141592653589793D * 180.0D), (float)(paramFloat5 / 3.141592653589793D * 180.0D), true, paramd.jSY);
+    paramCanvas.drawArc(new RectF(paramFloat1 - paramFloat3, paramFloat2 - paramFloat3, paramFloat1 + paramFloat3, paramFloat2 + paramFloat3), (float)(paramFloat4 / 3.141592653589793D * 180.0D), (float)(paramFloat5 / 3.141592653589793D * 180.0D), true, paramd.jWp);
     AppMethodBeat.o(144867);
     return true;
   }
@@ -47,7 +47,7 @@ public final class e
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144865);
     DrawArcActionArg localDrawArcActionArg = new DrawArcActionArg();

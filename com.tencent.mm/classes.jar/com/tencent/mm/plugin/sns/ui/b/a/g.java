@@ -9,16 +9,16 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.b.b.b.a;
 import com.tencent.mm.plugin.sns.ui.c.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public final class g
   extends a
 {
-  private ValueAnimator AsN;
-  private ValueAnimator AsO;
-  d Atc;
-  private AnimatorSet yvH;
+  private ValueAnimator AKb;
+  private ValueAnimator AKc;
+  d AKq;
+  private AnimatorSet yLH;
   
   public g(MMActivity paramMMActivity, com.tencent.mm.plugin.sns.ui.c.a.a parama)
   {
@@ -26,9 +26,9 @@ public final class g
     try
     {
       this.activity = paramMMActivity;
-      this.Atc = ((d)parama);
-      this.AsN = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AKq = ((d)parama);
+      this.AKb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.AKb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -36,53 +36,53 @@ public final class g
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 0.0F)
           {
-            g.this.Atc.zYc.setScaleX(f);
-            g.this.Atc.zYc.setScaleY(f);
-            g.this.Atc.zYc.setAlpha(f);
+            g.this.AKq.Apn.setScaleX(f);
+            g.this.AKq.Apn.setScaleY(f);
+            g.this.AKq.Apn.setAlpha(f);
           }
           AppMethodBeat.o(99924);
         }
       });
-      this.AsN.setDuration(400L);
-      this.AsN.addListener(new AnimatorListenerAdapter()
+      this.AKb.setDuration(400L);
+      this.AKb.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99925);
-          g.this.Atc.Aup.setAlpha(0.0F);
-          g.this.Atc.Auq.setAlpha(0.0F);
+          g.this.AKq.ALE.setAlpha(0.0F);
+          g.this.AKq.ALF.setAlpha(0.0F);
           AppMethodBeat.o(99925);
         }
       });
-      this.AsO = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AKc = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.AKc.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(99926);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          g.this.Atc.Aup.setAlpha(f);
-          g.this.Atc.Auq.setAlpha(f);
+          g.this.AKq.ALE.setAlpha(f);
+          g.this.AKq.ALF.setAlpha(f);
           AppMethodBeat.o(99926);
         }
       });
-      this.AsO.setDuration(100L);
-      this.AsO.setStartDelay(300L);
-      this.yvH = new AnimatorSet();
-      this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
-      this.yvH.addListener(new AnimatorListenerAdapter()
+      this.AKc.setDuration(100L);
+      this.AKc.setStartDelay(300L);
+      this.yLH = new AnimatorSet();
+      this.yLH.playTogether(new Animator[] { this.AKb, this.AKc });
+      this.yLH.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99928);
-          ad.i("MicroMsg.SphereCardAdDetailBackAnimation", "onAnimation end");
-          g.this.Atc.zYc.setScaleX(1.0F);
-          g.this.Atc.zYc.setScaleY(1.0F);
-          g.this.Atc.zYc.setAlpha(1.0F);
-          g.this.Atc.Aup.setAlpha(1.0F);
-          g.this.Atc.Auq.setAlpha(1.0F);
-          if (g.this.AsL != null) {
-            g.this.AsL.onAnimationEnd();
+          ae.i("MicroMsg.SphereCardAdDetailBackAnimation", "onAnimation end");
+          g.this.AKq.Apn.setScaleX(1.0F);
+          g.this.AKq.Apn.setScaleY(1.0F);
+          g.this.AKq.Apn.setAlpha(1.0F);
+          g.this.AKq.ALE.setAlpha(1.0F);
+          g.this.AKq.ALF.setAlpha(1.0F);
+          if (g.this.AJZ != null) {
+            g.this.AJZ.onAnimationEnd();
           }
           AppMethodBeat.o(99928);
         }
@@ -90,7 +90,7 @@ public final class g
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99927);
-          ad.i("MicroMsg.SphereCardAdDetailBackAnimation", "onAnimation start");
+          ae.i("MicroMsg.SphereCardAdDetailBackAnimation", "onAnimation start");
           AppMethodBeat.o(99927);
         }
       });
@@ -99,18 +99,18 @@ public final class g
     }
     catch (Throwable paramMMActivity)
     {
-      ad.e("MicroMsg.SphereCardAdDetailBackAnimation", "init exp=" + paramMMActivity.toString());
+      ae.e("MicroMsg.SphereCardAdDetailBackAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99929);
     }
   }
   
-  public final void At(long paramLong)
+  public final void AR(long paramLong)
   {
     AppMethodBeat.i(99930);
-    if ((this.yvH != null) && (!this.yvH.isStarted()))
+    if ((this.yLH != null) && (!this.yLH.isStarted()))
     {
-      this.yvH.setStartDelay(paramLong);
-      this.yvH.start();
+      this.yLH.setStartDelay(paramLong);
+      this.yLH.start();
     }
     AppMethodBeat.o(99930);
   }

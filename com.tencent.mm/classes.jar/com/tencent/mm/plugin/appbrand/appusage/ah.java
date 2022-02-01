@@ -15,15 +15,15 @@ public abstract interface ah
   
   public abstract List<LocalUsageInfo> a(int paramInt1, a parama, int paramInt2);
   
-  public abstract boolean aX(String paramString, int paramInt);
+  public abstract boolean ba(String paramString, int paramInt);
   
-  public abstract int aY(String paramString, int paramInt);
+  public abstract int bb(String paramString, int paramInt);
   
-  public abstract boolean aZ(String paramString, int paramInt);
+  public abstract boolean bc(String paramString, int paramInt);
   
-  public abstract void bbN();
+  public abstract void bcr();
   
-  public abstract int bbO();
+  public abstract int bcs();
   
   public abstract boolean g(List<LocalUsageInfo> paramList, int paramInt);
   
@@ -34,10 +34,10 @@ public abstract interface ah
     static
     {
       AppMethodBeat.i(153196);
-      jPV = new a("DESC", 0);
-      jPW = new a("ASC", 1);
-      jPX = new a("UPATE_TIME_DESC", 2);
-      jPY = new a[] { jPV, jPW, jPX };
+      jTn = new a("DESC", 0);
+      jTo = new a("ASC", 1);
+      jTp = new a("UPATE_TIME_DESC", 2);
+      jTq = new a[] { jTn, jTo, jTp };
       AppMethodBeat.o(153196);
     }
     

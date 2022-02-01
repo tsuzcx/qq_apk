@@ -32,44 +32,44 @@ import d.l;
 import d.v;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/TextEditorItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "animCount", "animIndex", "bitmapArray", "", "Landroid/graphics/Bitmap;", "[Landroid/graphics/Bitmap;", "bitmapOffset", "Landroid/graphics/PointF;", "bottomMargin", "", "clipPath", "Landroid/graphics/Path;", "contentPadding", "drawingOffset", "fontPaths", "[Ljava/lang/String;", "framePadding", "framePaint", "Landroid/graphics/Paint;", "framePath", "framePathRect", "Landroid/graphics/RectF;", "frameStrokeWidth", "isClipping", "", "isEditing", "isEditingBeforeTouch", "isValid", "maxScale", "minScale", "originPivot", "", "strokeColor", "switchRunnable", "Ljava/lang/Runnable;", "text", "", "textColor", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "touchDownX", "touchDownY", "touchMoved", "touchSlop", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "typefaceIndex", "validRect", "wxTypeFaces", "Landroid/graphics/Typeface;", "[Landroid/graphics/Typeface;", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "Landroid/graphics/Matrix;", "createTextBitmap", "typeface", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getText", "getTextColor", "handleRemove", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "preSetMatrix", "refresh", "resetFrame", "contentWidth", "contentHeight", "resume", "setEditing", "editing", "setValidArea", "bounds", "radius", "switchFont", "updateText", "color", "change", "Companion", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/TextEditorItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "animCount", "animIndex", "bitmapArray", "", "Landroid/graphics/Bitmap;", "[Landroid/graphics/Bitmap;", "bitmapOffset", "Landroid/graphics/PointF;", "bottomMargin", "", "clipPath", "Landroid/graphics/Path;", "contentPadding", "drawingOffset", "fontPaths", "[Ljava/lang/String;", "framePadding", "framePaint", "Landroid/graphics/Paint;", "framePath", "framePathRect", "Landroid/graphics/RectF;", "frameStrokeWidth", "isClipping", "", "isEditing", "isEditingBeforeTouch", "isValid", "maxScale", "minScale", "originPivot", "", "strokeColor", "switchRunnable", "Ljava/lang/Runnable;", "text", "", "textColor", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "touchDownX", "touchDownY", "touchMoved", "touchSlop", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "typefaceIndex", "validRect", "wxTypeFaces", "Landroid/graphics/Typeface;", "[Landroid/graphics/Typeface;", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "Landroid/graphics/Matrix;", "createTextBitmap", "typeface", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getText", "getTextColor", "handleRemove", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "preSetMatrix", "refresh", "resetFrame", "contentWidth", "contentHeight", "resume", "setEditing", "editing", "setValidArea", "bounds", "radius", "switchFont", "updateText", "color", "change", "Companion", "plugin-emojicapture_release"})
 public final class TextEditorItemView
   extends View
   implements c.b
 {
-  public static final TextEditorItemView.a pYa;
+  public static final TextEditorItemView.a qeF;
   private final String TAG;
   private float aXE;
   private float aXF;
   private final float bottomMargin;
-  private boolean cJS;
-  private boolean gmF;
-  private float gmI;
-  private float gmJ;
-  private final float ngm;
-  private final float[] pTB;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.c.c pTr;
-  private final Path pTt;
-  private boolean pTv;
-  private boolean pTw;
-  private final float pTz;
-  private com.tencent.mm.plugin.emojicapture.ui.editor.text.c pXJ;
-  private String[] pXL;
-  private Typeface[] pXM;
-  private int pXN;
-  private final Runnable pXO;
-  private final Paint pXP;
-  private final float pXQ;
-  private final Path pXR;
-  private final RectF pXS;
-  private final int pXT;
-  private int pXU;
-  private final Bitmap[] pXV;
-  private final float pXW;
-  private boolean pXX;
-  private final PointF pXY;
-  private final PointF pXZ;
-  private RectF pXo;
+  private boolean cKB;
+  private boolean gpb;
+  private float gpe;
+  private float gpf;
+  private final float nlu;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.c.c pZW;
+  private final Path pZY;
+  private boolean qaa;
+  private boolean qab;
+  private final float qae;
+  private final float[] qag;
+  private RectF qdT;
+  private final Bitmap[] qeA;
+  private final float qeB;
+  private boolean qeC;
+  private final PointF qeD;
+  private final PointF qeE;
+  private com.tencent.mm.plugin.emojicapture.ui.editor.text.c qeo;
+  private String[] qeq;
+  private Typeface[] qer;
+  private int qes;
+  private final Runnable qet;
+  private final Paint qeu;
+  private final float qev;
+  private final Path qew;
+  private final RectF qex;
+  private final int qey;
+  private int qez;
   private int strokeColor;
   private CharSequence text;
   private int textColor;
@@ -77,7 +77,7 @@ public final class TextEditorItemView
   static
   {
     AppMethodBeat.i(804);
-    pYa = new TextEditorItemView.a((byte)0);
+    qeF = new TextEditorItemView.a((byte)0);
     AppMethodBeat.o(804);
   }
   
@@ -96,50 +96,50 @@ public final class TextEditorItemView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(803);
     this.TAG = "MicroMsg.TextEditorItemView";
-    this.pXO = ((Runnable)new d(this));
-    this.pXP = new Paint(1);
-    this.pXR = new Path();
-    this.pXS = new RectF();
-    this.pXo = new RectF();
+    this.qet = ((Runnable)new d(this));
+    this.qeu = new Paint(1);
+    this.qew = new Path();
+    this.qex = new RectF();
+    this.qdT = new RectF();
     this.textColor = -1;
     this.strokeColor = -1;
-    this.pXY = new PointF();
-    this.pXZ = new PointF();
-    this.pTr = new com.tencent.mm.plugin.recordvideo.ui.editor.c.c();
-    this.pTt = new Path();
+    this.qeD = new PointF();
+    this.qeE = new PointF();
+    this.pZW = new com.tencent.mm.plugin.recordvideo.ui.editor.c.c();
+    this.pZY = new Path();
     this.aXE = 2.0F;
     this.aXF = 0.25F;
-    this.pTB = new float[2];
+    this.qag = new float[2];
     if (paramContext == null) {
-      p.gfZ();
+      p.gkB();
     }
     float f = paramContext.getResources().getDimension(2131166194);
     int i;
-    if (com.tencent.mm.ar.b.aHo().aHr())
+    if (com.tencent.mm.aq.b.aHF().aHI())
     {
-      paramAttributeSet = d.pQW;
-      if (d.a.cju())
+      paramAttributeSet = d.pXB;
+      if (d.a.ckK())
       {
-        p.g(com.tencent.mm.ar.b.aHo(), "FontResLogic.getInstance()");
-        paramAttributeSet = com.tencent.mm.ar.b.aHs();
+        p.g(com.tencent.mm.aq.b.aHF(), "FontResLogic.getInstance()");
+        paramAttributeSet = com.tencent.mm.aq.b.aHJ();
         p.g(paramAttributeSet, "FontResLogic.getInstance().fontPath");
-        this.pXL = paramAttributeSet;
-        paramAttributeSet = d.pQW;
-        this.pXJ = ((com.tencent.mm.plugin.emojicapture.ui.editor.text.c)new com.tencent.mm.plugin.emojicapture.ui.editor.text.b(this.pXL, (int)f));
-        i = this.pXL.length;
+        this.qeq = paramAttributeSet;
+        paramAttributeSet = d.pXB;
+        this.qeo = ((com.tencent.mm.plugin.emojicapture.ui.editor.text.c)new com.tencent.mm.plugin.emojicapture.ui.editor.text.b(this.qeq, (int)f));
+        i = this.qeq.length;
         paramAttributeSet = new Typeface[i];
         paramInt = 0;
         while (paramInt < i)
         {
-          paramAttributeSet[paramInt] = Typeface.createFromFile(this.pXL[paramInt]);
+          paramAttributeSet[paramInt] = Typeface.createFromFile(this.qeq[paramInt]);
           paramInt += 1;
         }
       }
     }
-    for (this.pXM = paramAttributeSet;; this.pXM = new Typeface[] { null })
+    for (this.qer = paramAttributeSet;; this.qer = new Typeface[] { null })
     {
-      this.pXT = this.pXM.length;
-      i = this.pXT;
+      this.qey = this.qer.length;
+      i = this.qey;
       paramAttributeSet = new Bitmap[i];
       paramInt = 0;
       while (paramInt < i)
@@ -147,69 +147,69 @@ public final class TextEditorItemView
         paramAttributeSet[paramInt] = null;
         paramInt += 1;
       }
-      this.pXL = new String[] { "" };
-      g.yhR.A(933L, 3L);
-      this.pXJ = ((com.tencent.mm.plugin.emojicapture.ui.editor.text.c)new com.tencent.mm.plugin.emojicapture.ui.editor.text.a());
+      this.qeq = new String[] { "" };
+      g.yxI.A(933L, 3L);
+      this.qeo = ((com.tencent.mm.plugin.emojicapture.ui.editor.text.c)new com.tencent.mm.plugin.emojicapture.ui.editor.text.a());
     }
-    this.pXV = paramAttributeSet;
-    cky();
-    this.pTz = getResources().getDimension(2131166191);
-    this.pXQ = getResources().getDimension(2131166192);
-    this.pXP.setColor(-1);
-    this.pXP.setStyle(Paint.Style.STROKE);
-    this.pXP.setStrokeWidth(this.pXQ);
-    this.pXZ.set(this.pTz, this.pTz);
+    this.qeA = paramAttributeSet;
+    clO();
+    this.qae = getResources().getDimension(2131166191);
+    this.qev = getResources().getDimension(2131166192);
+    this.qeu.setColor(-1);
+    this.qeu.setStyle(Paint.Style.STROKE);
+    this.qeu.setStrokeWidth(this.qev);
+    this.qeE.set(this.qae, this.qae);
     this.bottomMargin = getResources().getDimension(2131166190);
-    this.pXW = getResources().getDimension(2131166193);
+    this.qeB = getResources().getDimension(2131166193);
     paramContext = ViewConfiguration.get(paramContext);
     p.g(paramContext, "ViewConfiguration.get(context)");
-    this.ngm = paramContext.getScaledTouchSlop();
-    this.pTr.aXE = this.aXE;
-    this.pTr.aXF = this.aXF;
+    this.nlu = paramContext.getScaledTouchSlop();
+    this.pZW.aXE = this.aXE;
+    this.pZW.aXF = this.aXF;
     AppMethodBeat.o(803);
   }
   
-  private final void cky()
+  private final void clO()
   {
     AppMethodBeat.i(797);
     Object localObject;
-    if (this.cJS)
+    if (this.cKB)
     {
-      this.pXU += 1;
-      this.pXU %= this.pXT;
-      localObject = this.pXM[this.pXN];
-      this.pXJ.acr(this.pXL[this.pXN]);
-      this.pXN += 1;
-      this.pXN %= this.pXM.length;
-      if (this.pXV[this.pXU] == null)
+      this.qez += 1;
+      this.qez %= this.qey;
+      localObject = this.qer[this.qes];
+      this.qeo.adi(this.qeq[this.qes]);
+      this.qes += 1;
+      this.qes %= this.qer.length;
+      if (this.qeA[this.qez] == null)
       {
         localObject = d((Typeface)localObject);
-        this.pXV[this.pXU] = localObject;
-        fu(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        this.qeA[this.qez] = localObject;
+        fv(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       }
-      removeCallbacks(this.pXO);
-      postDelayed(this.pXO, 100L);
+      removeCallbacks(this.qet);
+      postDelayed(this.qet, 100L);
     }
     for (;;)
     {
       invalidate();
       AppMethodBeat.o(797);
       return;
-      if (this.pXV[this.pXU] == null)
+      if (this.qeA[this.qez] == null)
       {
-        localObject = this.pXM[0];
-        this.pXJ.acr(this.pXL[this.pXN]);
+        localObject = this.qer[0];
+        this.qeo.adi(this.qeq[this.qes]);
         localObject = d((Typeface)localObject);
-        this.pXV[this.pXU] = localObject;
-        fu(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        this.qeA[this.qez] = localObject;
+        fv(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       }
     }
   }
   
-  private final void ckz()
+  private final void clP()
   {
     AppMethodBeat.i(799);
-    this.pTr.gR.setTranslate(this.pXY.x, this.pXY.y);
+    this.pZW.gR.setTranslate(this.qeD.x, this.qeD.y);
     AppMethodBeat.o(799);
   }
   
@@ -217,11 +217,11 @@ public final class TextEditorItemView
   {
     AppMethodBeat.i(800);
     FontTextView localFontTextView = new FontTextView(getContext());
-    localFontTextView.setMaxWidth(this.pXo.width());
-    localFontTextView.setTextDrawer(this.pXJ);
+    localFontTextView.setMaxWidth(this.qdT.width());
+    localFontTextView.setTextDrawer(this.qeo);
     localFontTextView.setTypeface(paramTypeface);
     localFontTextView.d(this.text, this.textColor, this.strokeColor);
-    localFontTextView.measure(View.MeasureSpec.makeMeasureSpec((int)(this.pXo.width() - 2.0F * this.pXW), -2147483648), 0);
+    localFontTextView.measure(View.MeasureSpec.makeMeasureSpec((int)(this.qdT.width() - 2.0F * this.qeB), -2147483648), 0);
     paramTypeface = Bitmap.createBitmap(localFontTextView.getMeasuredWidth(), localFontTextView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(paramTypeface);
     localCanvas.save();
@@ -232,40 +232,40 @@ public final class TextEditorItemView
     return paramTypeface;
   }
   
-  private final void fu(int paramInt1, int paramInt2)
+  private final void fv(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(798);
-    float f1 = paramInt1 + this.pTz * 2.0F;
-    float f2 = paramInt2 + this.pTz * 2.0F;
-    float f3 = this.pXS.width();
-    float f4 = this.pXS.height();
-    if (this.pXS.isEmpty()) {
-      this.pXY.offset(f1 / 2.0F, -f2);
+    float f1 = paramInt1 + this.qae * 2.0F;
+    float f2 = paramInt2 + this.qae * 2.0F;
+    float f3 = this.qex.width();
+    float f4 = this.qex.height();
+    if (this.qex.isEmpty()) {
+      this.qeD.offset(f1 / 2.0F, -f2);
     }
     for (;;)
     {
-      this.pXS.set(0.0F, 0.0F, f1, f2);
-      this.pXR.reset();
-      this.pXR.addRoundRect(this.pXS, this.pTz, this.pTz, Path.Direction.CW);
-      this.pTr.gR.preTranslate((this.pTr.width - f1) / 2.0F, this.pTr.height - f2);
-      if (!this.cJS) {
-        ckz();
+      this.qex.set(0.0F, 0.0F, f1, f2);
+      this.qew.reset();
+      this.qew.addRoundRect(this.qex, this.qae, this.qae, Path.Direction.CW);
+      this.pZW.gR.preTranslate((this.pZW.width - f1) / 2.0F, this.pZW.height - f2);
+      if (!this.cKB) {
+        clP();
       }
-      this.pTr.width = ((int)f1);
-      this.pTr.height = ((int)f2);
+      this.pZW.width = ((int)f1);
+      this.pZW.height = ((int)f2);
       AppMethodBeat.o(798);
       return;
-      this.pXY.offset((f3 - f1) / 2.0F, (f4 - f2) / 2.0F);
+      this.qeD.offset((f3 - f1) / 2.0F, (f4 - f2) / 2.0F);
     }
   }
   
   private final void refresh()
   {
     AppMethodBeat.i(796);
-    e.P(this.pXV);
-    this.pXU = 0;
-    this.pXN = 0;
-    cky();
+    e.O(this.qeA);
+    this.qez = 0;
+    this.qes = 0;
+    clO();
     AppMethodBeat.o(796);
   }
   
@@ -273,10 +273,10 @@ public final class TextEditorItemView
   {
     AppMethodBeat.i(790);
     p.h(paramRectF, "bounds");
-    this.pXo.set(paramRectF);
-    this.pTt.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
-    this.pXY.set(paramRectF.left + paramRectF.width() / 2.0F - this.pXS.width() / 2.0F, paramRectF.bottom - this.bottomMargin - this.pXS.height());
-    ckz();
+    this.qdT.set(paramRectF);
+    this.pZY.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
+    this.qeD.set(paramRectF.left + paramRectF.width() / 2.0F - this.qex.width() / 2.0F, paramRectF.bottom - this.bottomMargin - this.qex.height());
+    clP();
     AppMethodBeat.o(790);
   }
   
@@ -288,7 +288,7 @@ public final class TextEditorItemView
     {
       this.text = paramCharSequence;
       this.textColor = paramInt;
-      this.strokeColor = com.tencent.mm.plugin.emojicapture.ui.c.Cs(this.textColor);
+      this.strokeColor = com.tencent.mm.plugin.emojicapture.ui.c.CE(this.textColor);
       if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {
         break label72;
       }
@@ -301,7 +301,7 @@ public final class TextEditorItemView
     label77:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      this.cJS = paramBoolean;
+      this.cKB = paramBoolean;
       refresh();
       AppMethodBeat.o(793);
       return;
@@ -312,33 +312,33 @@ public final class TextEditorItemView
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a c(Matrix paramMatrix)
   {
-    AppMethodBeat.i(195144);
-    if (!this.cJS)
+    AppMethodBeat.i(221778);
+    if (!this.cKB)
     {
-      AppMethodBeat.o(195144);
+      AppMethodBeat.o(221778);
       return null;
     }
     Matrix localMatrix = new Matrix();
-    localMatrix.postConcat(this.pTr.gR);
-    localMatrix.postTranslate(this.pXZ.x, this.pXZ.y);
+    localMatrix.postConcat(this.pZW.gR);
+    localMatrix.postTranslate(this.qeE.x, this.qeE.y);
     if (paramMatrix != null) {
       localMatrix.postConcat(paramMatrix);
     }
-    paramMatrix = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.b(this.pXV, localMatrix);
-    AppMethodBeat.o(195144);
+    paramMatrix = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.b(this.qeA, localMatrix);
+    AppMethodBeat.o(221778);
     return paramMatrix;
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a ckw()
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a clM()
   {
     return null;
   }
   
-  public final boolean ckx()
+  public final boolean clN()
   {
     AppMethodBeat.i(792);
     a((CharSequence)"", 0, true);
-    post((Runnable)new TextEditorItemView.b(this));
+    post((Runnable)new b(this));
     AppMethodBeat.o(792);
     return true;
   }
@@ -369,7 +369,7 @@ public final class TextEditorItemView
   
   public final CharSequence getText()
   {
-    if (this.cJS) {
+    if (this.cKB) {
       return this.text;
     }
     return null;
@@ -377,7 +377,7 @@ public final class TextEditorItemView
   
   public final int getTextColor()
   {
-    if (this.cJS) {
+    if (this.cKB) {
       return this.textColor;
     }
     return 0;
@@ -387,17 +387,17 @@ public final class TextEditorItemView
   {
     AppMethodBeat.i(795);
     p.h(paramCanvas, "canvas");
-    if (this.pTw) {
-      paramCanvas.clipPath(this.pTt);
+    if (this.qab) {
+      paramCanvas.clipPath(this.pZY);
     }
     paramCanvas.save();
-    paramCanvas.concat(this.pTr.gR);
-    if (this.pTv) {
-      paramCanvas.drawPath(this.pXR, this.pXP);
+    paramCanvas.concat(this.pZW.gR);
+    if (this.qaa) {
+      paramCanvas.drawPath(this.qew, this.qeu);
     }
-    Bitmap localBitmap = this.pXV[this.pXU];
+    Bitmap localBitmap = this.qeA[this.qez];
     if (localBitmap != null) {
-      paramCanvas.drawBitmap(localBitmap, this.pXZ.x, this.pXZ.y, null);
+      paramCanvas.drawBitmap(localBitmap, this.qeE.x, this.qeE.y, null);
     }
     paramCanvas.restore();
     AppMethodBeat.o(795);
@@ -407,7 +407,7 @@ public final class TextEditorItemView
   {
     AppMethodBeat.i(794);
     p.h(paramMotionEvent, "event");
-    boolean bool = this.pTr.W(paramMotionEvent);
+    boolean bool = this.pZW.U(paramMotionEvent);
     if (bool)
     {
       postInvalidate();
@@ -415,8 +415,8 @@ public final class TextEditorItemView
       {
       case 4: 
       default: 
-        if (!this.cJS) {
-          ckz();
+        if (!this.cKB) {
+          clP();
         }
         break;
       }
@@ -427,40 +427,40 @@ public final class TextEditorItemView
       return bool;
       AppMethodBeat.o(794);
       return false;
-      this.pXX = this.pTv;
-      this.gmF = false;
-      this.gmI = paramMotionEvent.getX();
-      this.gmJ = paramMotionEvent.getY();
-      this.pTw = true;
-      this.pTB[0] = (this.pTr.width / 2.0F);
-      this.pTB[1] = (this.pTr.height / 2.0F);
-      this.pTr.gR.mapPoints(this.pTB);
+      this.qeC = this.qaa;
+      this.gpb = false;
+      this.gpe = paramMotionEvent.getX();
+      this.gpf = paramMotionEvent.getY();
+      this.qab = true;
+      this.qag[0] = (this.pZW.width / 2.0F);
+      this.qag[1] = (this.pZW.height / 2.0F);
+      this.pZW.gR.mapPoints(this.qag);
       break;
-      this.pTw = false;
-      if ((Math.abs(paramMotionEvent.getX() - this.gmI) <= this.ngm) && (Math.abs(paramMotionEvent.getY() - this.gmJ) <= this.ngm)) {
+      this.qab = false;
+      if ((Math.abs(paramMotionEvent.getX() - this.gpe) <= this.nlu) && (Math.abs(paramMotionEvent.getY() - this.gpf) <= this.nlu)) {
         break;
       }
-      this.gmF = true;
+      this.gpb = true;
       break;
-      this.pTw = true;
-      if (((!this.cJS) || (this.pXX)) && (!this.gmF)) {
+      this.qab = true;
+      if (((!this.cKB) || (this.qeC)) && (!this.gpb)) {
         performClick();
       }
       Object localObject = new com.tencent.mm.plugin.recordvideo.ui.editor.c.a();
       ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).aXF = this.aXF;
       ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).aXE = this.aXE;
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).n(new float[] { this.pXS.width() / 2.0F, this.pXS.height() / 2.0F });
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).f(new RectF(this.pXo.left, this.pXo.top, this.pXo.right, this.pXo.bottom));
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).n(new float[] { this.qex.width() / 2.0F, this.qex.height() / 2.0F });
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).f(new RectF(this.qdT.left, this.qdT.top, this.qdT.right, this.qdT.bottom));
       float[] arrayOfFloat = new float[2];
-      arrayOfFloat[0] = (this.pTr.width / 2.0F);
-      arrayOfFloat[1] = (this.pTr.height / 2.0F);
-      this.pTr.gR.mapPoints(arrayOfFloat);
-      if (!((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).xPV.contains(arrayOfFloat[0], arrayOfFloat[1])) {
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).f(new RectF(this.pTB[0], this.pTB[1], this.pTB[0], this.pTB[1]));
+      arrayOfFloat[0] = (this.pZW.width / 2.0F);
+      arrayOfFloat[1] = (this.pZW.height / 2.0F);
+      this.pZW.gR.mapPoints(arrayOfFloat);
+      if (!((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).yfO.contains(arrayOfFloat[0], arrayOfFloat[1])) {
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).f(new RectF(this.qag[0], this.qag[1], this.qag[0], this.qag[1]));
       }
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).a(this.pTr.gR, (m)new c(this));
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject).a(this.pZW.gR, (m)new c(this));
       break;
-      if (this.cJS) {
+      if (this.cKB) {
         break;
       }
       AppMethodBeat.o(794);
@@ -475,26 +475,46 @@ public final class TextEditorItemView
   public final void pause()
   {
     AppMethodBeat.i(789);
-    removeCallbacks(this.pXO);
+    removeCallbacks(this.qet);
     AppMethodBeat.o(789);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(788);
-    cky();
+    clO();
     AppMethodBeat.o(788);
   }
   
   public final void setEditing(boolean paramBoolean)
   {
     AppMethodBeat.i(791);
-    this.pTv = paramBoolean;
+    this.qaa = paramBoolean;
     postInvalidate();
     AppMethodBeat.o(791);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "<anonymous parameter 1>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(TextEditorItemView paramTextEditorItemView) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(785);
+      EditorItemContainer localEditorItemContainer = this.qeG.getItemContainer();
+      if (localEditorItemContainer != null)
+      {
+        localEditorItemContainer.setEditing((a)this.qeG);
+        AppMethodBeat.o(785);
+        return;
+      }
+      AppMethodBeat.o(785);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "<anonymous parameter 1>", "", "invoke"})
   static final class c
     extends q
     implements m<Matrix, Boolean, z>
@@ -505,7 +525,7 @@ public final class TextEditorItemView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -514,7 +534,7 @@ public final class TextEditorItemView
     public final void run()
     {
       AppMethodBeat.i(787);
-      TextEditorItemView.c(this.pYb);
+      TextEditorItemView.c(this.qeG);
       AppMethodBeat.o(787);
     }
   }

@@ -28,7 +28,7 @@ public final class e
   
   public static String a(i parami)
   {
-    parami = b(((b)parami).Bh(), "name");
+    parami = b(((b)parami).Bi(), "name");
     if (parami == null) {
       return "Thread name not available";
     }
@@ -39,7 +39,7 @@ public final class e
   {
     int j = 1;
     Object localObject2 = (i)paramObject;
-    paramObject = ((b)localObject2).Bh();
+    paramObject = ((b)localObject2).Bi();
     Object localObject1 = (Integer)b(paramObject, "count");
     com.tencent.matrix.resource.analyzer.a.b.checkNotNull(localObject1, "count");
     if (((Integer)localObject1).intValue() == 0) {
@@ -121,7 +121,7 @@ public final class e
     if (!(paramObject instanceof b)) {
       return false;
     }
-    return ceg.contains(((b)paramObject).Bg().mClassName);
+    return ceg.contains(((b)paramObject).Bh().mClassName);
   }
   
   public static boolean au(Object paramObject)
@@ -133,7 +133,7 @@ public final class e
     if (paramObject.cdS != p.cfn) {
       return true;
     }
-    return ceg.contains(paramObject.Bg().mClassName);
+    return ceg.contains(paramObject.Bh().mClassName);
   }
   
   public static <T> T b(List<b.a> paramList, String paramString)
@@ -156,12 +156,12 @@ public final class e
   
   public static List<b.a> b(i parami)
   {
-    return ((b)parami).Bh();
+    return ((b)parami).Bi();
   }
   
   public static boolean b(c paramc)
   {
-    for (c localc = paramc; localc.Bj() != null; localc = localc.Bj()) {
+    for (c localc = paramc; localc.Bk() != null; localc = localc.Bk()) {
       if (paramc.mClassName.equals(Thread.class.getName())) {
         return true;
       }

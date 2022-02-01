@@ -6,66 +6,66 @@ import com.tencent.mm.plugin.report.a;
 public final class cy
   extends a
 {
-  private String ecZ;
-  private long edJ = 0L;
-  private long edK;
-  private long edL;
-  private String edM;
-  private long eda;
-  private long edc;
-  private String edw;
-  private String edx;
+  private String eeR = "";
+  private String eeS = "";
+  private String eeu = "";
+  private long eev;
+  private long eex;
+  private long efe = 0L;
+  private long eff;
+  private long efg;
+  private String efh = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(211906);
+    AppMethodBeat.i(215522);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecZ);
+    ((StringBuffer)localObject).append(this.eeu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eda);
+    ((StringBuffer)localObject).append(this.eev);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edJ);
+    ((StringBuffer)localObject).append(this.efe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edw);
+    ((StringBuffer)localObject).append(this.eeR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edc);
+    ((StringBuffer)localObject).append(this.eex);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edK);
+    ((StringBuffer)localObject).append(this.eff);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edL);
+    ((StringBuffer)localObject).append(this.efg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edx);
+    ((StringBuffer)localObject).append(this.eeS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edM);
+    ((StringBuffer)localObject).append(this.efh);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(211906);
+    axO((String)localObject);
+    AppMethodBeat.o(215522);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(211907);
+    AppMethodBeat.i(215523);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomid:").append(this.ecZ);
+    ((StringBuffer)localObject).append("roomid:").append(this.eeu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("liveid:").append(this.eda);
+    ((StringBuffer)localObject).append("liveid:").append(this.eev);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("micid:").append(this.edJ);
+    ((StringBuffer)localObject).append("micid:").append(this.efe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("liveuin:").append(this.edw);
+    ((StringBuffer)localObject).append("liveuin:").append(this.eeR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("lastTime:").append(this.edc);
+    ((StringBuffer)localObject).append("lastTime:").append(this.eex);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("closeRole:").append(this.edK);
+    ((StringBuffer)localObject).append("closeRole:").append(this.eff);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hasVideo:").append(this.edL);
+    ((StringBuffer)localObject).append("hasVideo:").append(this.efg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("liveusername:").append(this.edx);
+    ((StringBuffer)localObject).append("liveusername:").append(this.eeS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("livemicid:").append(this.edM);
+    ((StringBuffer)localObject).append("livemicid:").append(this.efh);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(211907);
+    AppMethodBeat.o(215523);
     return localObject;
   }
   
@@ -74,57 +74,57 @@ public final class cy
     return 19895;
   }
   
-  public final cy iR(long paramLong)
+  public final cy iW(long paramLong)
   {
-    this.eda = paramLong;
+    this.eev = paramLong;
     return this;
   }
   
-  public final cy iS(long paramLong)
+  public final cy iX(long paramLong)
   {
-    this.edc = paramLong;
+    this.eex = paramLong;
     return this;
   }
   
-  public final cy iT(long paramLong)
+  public final cy iY(long paramLong)
   {
-    this.edK = paramLong;
+    this.eff = paramLong;
     return this;
   }
   
-  public final cy iU(long paramLong)
+  public final cy iZ(long paramLong)
   {
-    this.edL = paramLong;
+    this.efg = paramLong;
     return this;
   }
   
-  public final cy md(String paramString)
+  public final cy mu(String paramString)
   {
-    AppMethodBeat.i(211903);
-    this.ecZ = t("roomid", paramString, true);
-    AppMethodBeat.o(211903);
+    AppMethodBeat.i(215519);
+    this.eeu = t("roomid", paramString, true);
+    AppMethodBeat.o(215519);
     return this;
   }
   
-  public final cy me(String paramString)
+  public final cy mv(String paramString)
   {
-    AppMethodBeat.i(211904);
-    this.edx = t("liveusername", paramString, true);
-    AppMethodBeat.o(211904);
+    AppMethodBeat.i(215520);
+    this.eeS = t("liveusername", paramString, true);
+    AppMethodBeat.o(215520);
     return this;
   }
   
-  public final cy mf(String paramString)
+  public final cy mw(String paramString)
   {
-    AppMethodBeat.i(211905);
-    this.edM = t("livemicid", paramString, true);
-    AppMethodBeat.o(211905);
+    AppMethodBeat.i(215521);
+    this.efh = t("livemicid", paramString, true);
+    AppMethodBeat.o(215521);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.cy
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class v
   public static final int CTRL_INDEX = 198;
   public static final String NAME = "setNavigationBarColor";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }

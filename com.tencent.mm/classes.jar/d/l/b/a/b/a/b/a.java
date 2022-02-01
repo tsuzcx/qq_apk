@@ -18,16 +18,16 @@ import java.util.List;
 public final class a
   extends d.l.b.a.b.j.f.e
 {
-  private static final f MSW;
-  public static final a MSX;
+  private static final f Nqb;
+  public static final a Nqc;
   
   static
   {
     AppMethodBeat.i(56746);
-    MSX = new a((byte)0);
-    f localf = f.bcE("clone");
+    Nqc = new a((byte)0);
+    f localf = f.bei("clone");
     p.g(localf, "Name.identifier(\"clone\")");
-    MSW = localf;
+    Nqb = localf;
     AppMethodBeat.o(56746);
   }
   
@@ -38,13 +38,13 @@ public final class a
     AppMethodBeat.o(56745);
   }
   
-  public final List<t> ghS()
+  public final List<t> gmu()
   {
     AppMethodBeat.i(56744);
-    Object localObject = (l)this.NxP;
-    g.a locala = d.l.b.a.b.b.a.g.MVP;
-    localObject = ae.a((l)localObject, g.a.gjL(), MSW, b.a.MUj, an.MUX);
-    ((ae)localObject).b(null, this.NxP.giK(), (List)v.MKE, (List)v.MKE, (ab)d.l.b.a.b.j.d.a.G((l)this.NxP).ghd(), w.MUD, az.MVf);
+    Object localObject = (l)this.NUW;
+    g.a locala = d.l.b.a.b.b.a.g.NsU;
+    localObject = ae.a((l)localObject, g.a.gon(), Nqb, b.a.Nro, an.Nsc);
+    ((ae)localObject).b(null, this.NUW.gnm(), (List)v.NhH, (List)v.NhH, (ab)d.l.b.a.b.j.d.a.G((l)this.NUW).glF(), w.NrI, az.Nsk);
     localObject = d.a.j.listOf(localObject);
     AppMethodBeat.o(56744);
     return localObject;
@@ -54,7 +54,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.b.a
  * JD-Core Version:    0.7.0.1
  */

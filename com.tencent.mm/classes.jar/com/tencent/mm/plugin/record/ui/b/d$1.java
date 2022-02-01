@@ -18,11 +18,11 @@ final class d$1
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/record/ui/viewWrappers/TextViewWrapper$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/record/ui/viewWrappers/TextViewWrapper$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     if (paramMotionEvent.getAction() == 0)
     {
-      this.xtg.nYw = ((int)paramMotionEvent.getRawX());
-      this.xtg.nYx = ((int)paramMotionEvent.getRawY());
+      this.xJd.oef = ((int)paramMotionEvent.getRawX());
+      this.xJd.oeg = ((int)paramMotionEvent.getRawY());
     }
     a.a(false, this, "com/tencent/mm/plugin/record/ui/viewWrappers/TextViewWrapper$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(28033);

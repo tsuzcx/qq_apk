@@ -10,9 +10,9 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.chatting.f.b.a;
@@ -23,55 +23,55 @@ public class AppBrandHistoryListUI
   extends MMActivity
   implements b.b
 {
-  private b.a JPh;
+  private b.a Kkt;
   private RecyclerView anl;
-  private String fTa;
-  private TextView fTc;
-  private ProgressDialog oTu;
+  private String fVg;
+  private TextView fVi;
+  private ProgressDialog oZW;
   
-  private void jt(boolean paramBoolean)
+  private void js(boolean paramBoolean)
   {
     AppMethodBeat.i(35874);
-    ad.i("MicroMsg.AppBrandHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.AppBrandHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.oTu = p.a(this, getString(2131760709), true, 0, null);
+      this.oZW = p.a(this, getString(2131760709), true, 0, null);
       AppMethodBeat.o(35874);
       return;
     }
-    if ((this.oTu != null) && (this.oTu.isShowing()))
+    if ((this.oZW != null) && (this.oZW.isShowing()))
     {
-      this.oTu.dismiss();
-      this.oTu = null;
+      this.oZW.dismiss();
+      this.oZW = null;
     }
     AppMethodBeat.o(35874);
   }
   
-  public final void B(boolean paramBoolean, int paramInt)
+  public final void C(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(35872);
-    jt(false);
-    ad.i("MicroMsg.AppBrandHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    js(false);
+    ae.i("MicroMsg.AppBrandHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      this.fTc.setVisibility(0);
+      this.fVi.setVisibility(0);
       this.anl.setVisibility(8);
-      this.fTc.setText(getString(2131757279));
+      this.fVi.setText(getString(2131757279));
       AppMethodBeat.o(35872);
       return;
     }
-    this.fTc.setVisibility(8);
+    this.fVi.setVisibility(8);
     this.anl.setVisibility(0);
     this.anl.getAdapter().ap(0, paramInt);
     AppMethodBeat.o(35872);
   }
   
-  public final void cS(String paramString, boolean paramBoolean) {}
+  public final void cW(String paramString, boolean paramBoolean) {}
   
-  public final void fFI()
+  public final void fJP()
   {
     AppMethodBeat.i(35871);
-    jt(true);
+    js(true);
     AppMethodBeat.o(35871);
   }
   
@@ -84,11 +84,11 @@ public class AppBrandHistoryListUI
   {
     AppMethodBeat.i(35869);
     setMMTitle(getString(2131757040));
-    this.fTc = ((TextView)findViewById(2131304436));
+    this.fVi = ((TextView)findViewById(2131304436));
     this.anl = ((RecyclerView)findViewById(2131300757));
     this.anl.setBackgroundColor(-1);
-    this.anl.setLayoutManager(this.JPh.bZB());
-    this.anl.setAdapter(this.JPh.aWm(this.fTa));
+    this.anl.setLayoutManager(this.Kkt.caQ());
+    this.anl.setAdapter(this.Kkt.aXN(this.fVg));
     this.anl.setHasFixedSize(true);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -107,17 +107,17 @@ public class AppBrandHistoryListUI
   {
     AppMethodBeat.i(35868);
     super.onCreate(paramBundle);
-    this.fTa = getIntent().getStringExtra("Chat_User");
+    this.fVg = getIntent().getStringExtra("Chat_User");
     new a(this).a(this);
     initView();
-    this.JPh.fFE();
-    if (w.vF(this.fTa))
+    this.Kkt.fJL();
+    if (x.wb(this.fVg))
     {
-      g.yhR.f(14562, new Object[] { this.fTa, Integer.valueOf(0) });
+      g.yxI.f(14562, new Object[] { this.fVg, Integer.valueOf(0) });
       AppMethodBeat.o(35868);
       return;
     }
-    g.yhR.f(14562, new Object[] { this.fTa, Integer.valueOf(1) });
+    g.yxI.f(14562, new Object[] { this.fVg, Integer.valueOf(1) });
     AppMethodBeat.o(35868);
   }
   
@@ -125,14 +125,14 @@ public class AppBrandHistoryListUI
   {
     AppMethodBeat.i(35870);
     super.onDestroy();
-    this.JPh.onDetach();
+    this.Kkt.onDetach();
     AppMethodBeat.o(35870);
   }
   
   public final void onFinish()
   {
     AppMethodBeat.i(35873);
-    ad.i("MicroMsg.AppBrandHistoryListUI", "[onRefreshed]");
+    ae.i("MicroMsg.AppBrandHistoryListUI", "[onRefreshed]");
     finish();
     AppMethodBeat.o(35873);
   }

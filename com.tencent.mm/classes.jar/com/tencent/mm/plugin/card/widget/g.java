@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.card.base.b;
 
 public abstract interface g
 {
-  public abstract void AQ(int paramInt);
+  public abstract void Bc(int paramInt);
   
   public abstract void I(boolean paramBoolean1, boolean paramBoolean2);
   
@@ -17,9 +17,9 @@ public abstract interface g
   
   public abstract void i(b paramb);
   
-  public abstract void jB(boolean paramBoolean);
+  public abstract void jA(boolean paramBoolean);
   
-  public abstract void jC(boolean paramBoolean);
+  public abstract void jB(boolean paramBoolean);
   
   public abstract View jq();
   

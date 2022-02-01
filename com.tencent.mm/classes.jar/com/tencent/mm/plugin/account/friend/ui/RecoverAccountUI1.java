@@ -12,16 +12,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.b.a.js;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.b.a.ju;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.y;
 import com.tencent.mm.protocal.protobuf.lp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -31,8 +31,8 @@ public class RecoverAccountUI1
   extends MMActivity
   implements f
 {
-  private p fNb;
-  private String jgH;
+  private p fPj;
+  private String jjA;
   
   public int getLayoutId()
   {
@@ -61,12 +61,12 @@ public class RecoverAccountUI1
         AppMethodBeat.i(184447);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/RecoverAccountUI1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = new js();
-        paramAnonymousView.dUD = 3;
-        paramAnonymousView.aLk();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/RecoverAccountUI1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = new ju();
+        paramAnonymousView.dVT = 3;
+        paramAnonymousView.aLH();
         paramAnonymousView = new y(RecoverAccountUI1.a(RecoverAccountUI1.this));
-        g.aiU().a(paramAnonymousView, 0);
+        g.ajj().a(paramAnonymousView, 0);
         RecoverAccountUI1.a(RecoverAccountUI1.this, h.b(RecoverAccountUI1.this, RecoverAccountUI1.this.getString(2131755804), false, null));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/RecoverAccountUI1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(184447);
@@ -79,9 +79,9 @@ public class RecoverAccountUI1
   {
     AppMethodBeat.i(184449);
     super.onCreate(paramBundle);
-    this.jgH = getIntent().getStringExtra("key_qrcode_string");
+    this.jjA = getIntent().getStringExtra("key_qrcode_string");
     initView();
-    g.aiU().a(870, this);
+    g.ajj().a(870, this);
     AppMethodBeat.o(184449);
   }
   
@@ -89,28 +89,28 @@ public class RecoverAccountUI1
   {
     AppMethodBeat.i(184451);
     super.onDestroy();
-    g.aiU().b(870, this);
+    g.ajj().b(870, this);
     AppMethodBeat.o(184451);
   }
   
   public void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(184452);
-    ad.i("MicroMsg.RecoverAccountUI1", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.fNb != null) {
-      this.fNb.dismiss();
+    ae.i("MicroMsg.RecoverAccountUI1", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.fPj != null) {
+      this.fPj.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = new Intent();
-      paramString.putExtra("key_session_id", ((lp)((y)paramn).gPp.hNL.hNQ).session_id);
-      paramString.putExtra("key_old_username", ((lp)((y)paramn).gPp.hNL.hNQ).FDH);
+      paramString.putExtra("key_session_id", ((lp)((y)paramn).gRX.hQE.hQJ).session_id);
+      paramString.putExtra("key_old_username", ((lp)((y)paramn).gRX.hQE.hQJ).FWc);
       startActivity(RecoverFriendUI.class, paramString);
       finish();
       AppMethodBeat.o(184452);
       return;
     }
-    if (bt.isNullOrNil(paramString)) {
+    if (bu.isNullOrNil(paramString)) {
       paramString = getString(2131755733);
     }
     for (;;)
@@ -122,18 +122,18 @@ public class RecoverAccountUI1
           AppMethodBeat.i(184448);
           if (paramInt1 == 4)
           {
-            paramAnonymousDialogInterface = new js();
-            paramAnonymousDialogInterface.dUD = 2;
-            paramAnonymousDialogInterface.eCn = paramInt2;
-            paramAnonymousDialogInterface.aLk();
+            paramAnonymousDialogInterface = new ju();
+            paramAnonymousDialogInterface.dVT = 2;
+            paramAnonymousDialogInterface.eDW = paramInt2;
+            paramAnonymousDialogInterface.aLH();
             RecoverAccountUI1.this.finish();
             AppMethodBeat.o(184448);
             return;
           }
-          paramAnonymousDialogInterface = new js();
-          paramAnonymousDialogInterface.dUD = 2;
-          paramAnonymousDialogInterface.eCn = 1;
-          paramAnonymousDialogInterface.aLk();
+          paramAnonymousDialogInterface = new ju();
+          paramAnonymousDialogInterface.dVT = 2;
+          paramAnonymousDialogInterface.eDW = 1;
+          paramAnonymousDialogInterface.aLH();
           AppMethodBeat.o(184448);
         }
       });

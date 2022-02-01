@@ -1,18 +1,18 @@
 package com.tencent.mm.modelgeo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.avt;
-import com.tencent.mm.protocal.protobuf.avu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.awj;
+import com.tencent.mm.protocal.protobuf.awk;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,32 +21,32 @@ public final class e
   implements k
 {
   private f callback;
-  private String duO;
+  private String dvT;
   public final b rr;
   
   public e(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(150500);
-    this.duO = "";
+    this.dvT = "";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new avt();
-    ((b.a)localObject).hNN = new avu();
+    ((b.a)localObject).hQF = new awj();
+    ((b.a)localObject).hQG = new awk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getaddress";
     ((b.a)localObject).funcId = 655;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (avt)this.rr.hNK.hNQ;
-    ((avt)localObject).FIc = paramDouble1;
-    ((avt)localObject).FIb = paramDouble2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (awj)this.rr.hQD.hQJ;
+    ((awj)localObject).Gay = paramDouble1;
+    ((awj)localObject).Gax = paramDouble2;
     AppMethodBeat.o(150500);
   }
   
-  public final Addr aHT()
+  public final Addr aIk()
   {
     int i = 0;
     AppMethodBeat.i(150503);
-    if (bt.isNullOrNil(this.duO))
+    if (bu.isNullOrNil(this.dvT))
     {
       AppMethodBeat.o(150503);
       return null;
@@ -56,18 +56,18 @@ public final class e
     {
       try
       {
-        ad.d("MicroMsg.NetSceneGetAddress", "tofutest retJson: %s", new Object[] { this.duO });
-        Object localObject = new JSONObject(this.duO);
-        localAddr.hXi = ((JSONObject)localObject).optString("request_id");
+        ae.d("MicroMsg.NetSceneGetAddress", "tofutest retJson: %s", new Object[] { this.dvT });
+        Object localObject = new JSONObject(this.dvT);
+        localAddr.iaa = ((JSONObject)localObject).optString("request_id");
         localObject = ((JSONObject)localObject).getJSONArray("results");
-        localAddr.hWY = ((JSONArray)localObject).getJSONObject(1).getString("address_name");
+        localAddr.hZQ = ((JSONArray)localObject).getJSONObject(1).getString("address_name");
         JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(0);
-        localAddr.hWZ = localJSONObject.getString("p");
-        localAddr.hXa = localJSONObject.getString("c");
-        localAddr.hXc = localJSONObject.getString("d");
-        localAddr.hXd = "";
-        localAddr.hXe = "";
-        localAddr.hXf = "";
+        localAddr.hZR = localJSONObject.getString("p");
+        localAddr.hZS = localJSONObject.getString("c");
+        localAddr.hZU = localJSONObject.getString("d");
+        localAddr.hZV = "";
+        localAddr.hZW = "";
+        localAddr.hZX = "";
         int j = ((JSONArray)localObject).length();
         if (i < j) {
           try
@@ -76,25 +76,25 @@ public final class e
             String str = localJSONObject.getString("dtype");
             if ("ST".equals(str))
             {
-              localAddr.hXe = localJSONObject.getString("name");
+              localAddr.hZW = localJSONObject.getString("name");
               if (!"FORMAT_ADDRESS".equals(str)) {
                 break label290;
               }
-              localAddr.hXg = localJSONObject.getString("rough_address_name");
+              localAddr.hZY = localJSONObject.getString("rough_address_name");
               break label290;
             }
             if (!"ST_NO".equals(str)) {
               continue;
             }
-            localAddr.hXf = localJSONObject.getString("name");
+            localAddr.hZX = localJSONObject.getString("name");
             continue;
-            if (bt.isNullOrNil(localAddr.hXf)) {
+            if (bu.isNullOrNil(localAddr.hZX)) {
               continue;
             }
           }
           catch (Exception localException2) {}
         } else {
-          localAddr.hXe = "";
+          localAddr.hZW = "";
         }
         AppMethodBeat.o(150503);
         return localAddr;
@@ -126,11 +126,11 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150502);
-    ad.d("MicroMsg.NetSceneGetAddress", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.d("MicroMsg.NetSceneGetAddress", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.duO = ((avu)((b)paramq).hNL.hNQ).GuC;
-      ad.d("MicroMsg.NetSceneGetAddress", this.duO);
+      this.dvT = ((awk)((b)paramq).hQE.hQJ).GOb;
+      ae.d("MicroMsg.NetSceneGetAddress", this.dvT);
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
@@ -145,7 +145,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelgeo.e
  * JD-Core Version:    0.7.0.1
  */

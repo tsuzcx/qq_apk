@@ -3,21 +3,54 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class hr
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEU = "appId".hashCode();
-  private static final int fCB = "openDebug".hashCode();
-  private static final int fiC = "appIdHash".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eHj = "token".hashCode();
+  private static final int fBB = "uin".hashCode();
+  private static final int fpC = "appid".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean fCA = true;
-  public String field_appId;
-  public int field_appIdHash;
-  public boolean field_openDebug;
-  private boolean fiw = true;
+  private boolean eGV = true;
+  private boolean eHi = true;
+  private boolean fAW = true;
+  public String field_appid;
+  public String field_token;
+  public int field_uin;
+  public String field_username;
+  private boolean fpA = true;
+  
+  public static c.a VD()
+  {
+    c.a locala = new c.a();
+    locala.IBL = new Field[4];
+    locala.columns = new String[5];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "token";
+    locala.IBN.put("token", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" token TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "token";
+    locala.columns[1] = "username";
+    locala.IBN.put("username", "TEXT");
+    localStringBuilder.append(" username TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "uin";
+    locala.IBN.put("uin", "INTEGER");
+    localStringBuilder.append(" uin INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "appid";
+    locala.IBN.put("appid", "TEXT");
+    localStringBuilder.append(" appid TEXT");
+    locala.columns[4] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -25,18 +58,18 @@ public abstract class hr
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fiC != k) {
+      if (eHj != k) {
         break label65;
       }
-      this.field_appIdHash = paramCursor.getInt(i);
-      this.fiw = true;
+      this.field_token = paramCursor.getString(i);
+      this.eHi = true;
     }
     for (;;)
     {
@@ -44,24 +77,14 @@ public abstract class hr
       break label20;
       break;
       label65:
-      if (eEU == k)
-      {
-        this.field_appId = paramCursor.getString(i);
-      }
-      else
-      {
-        if (fCB == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_openDebug = bool;
-            break;
-          }
-        }
-        if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (eGY == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (fBB == k) {
+        this.field_uin = paramCursor.getInt(i);
+      } else if (fpC == k) {
+        this.field_appid = paramCursor.getString(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -69,14 +92,17 @@ public abstract class hr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fiw) {
-      localContentValues.put("appIdHash", Integer.valueOf(this.field_appIdHash));
+    if (this.eHi) {
+      localContentValues.put("token", this.field_token);
     }
-    if (this.eED) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eGV) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.fCA) {
-      localContentValues.put("openDebug", Boolean.valueOf(this.field_openDebug));
+    if (this.fAW) {
+      localContentValues.put("uin", Integer.valueOf(this.field_uin));
+    }
+    if (this.fpA) {
+      localContentValues.put("appid", this.field_appid);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

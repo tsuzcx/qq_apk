@@ -5,53 +5,53 @@ import d.g.b.p;
 
 public final class j
 {
-  private static final Object MOQ;
-  public static volatile boolean NGh;
+  private static final Object NlV;
+  public static volatile boolean Odn;
   
   static
   {
     AppMethodBeat.i(61411);
-    MOQ = new Object()
+    NlV = new Object()
     {
       public final String toString()
       {
         return "NULL_VALUE";
       }
     };
-    NGh = false;
+    Odn = false;
     AppMethodBeat.o(61411);
   }
   
-  public static <V> Object fA(V paramV)
+  public static <V> Object fD(V paramV)
   {
     AppMethodBeat.i(61407);
     if (paramV == null)
     {
-      paramV = MOQ;
+      paramV = NlV;
       if (paramV == null) {
-        ajm(1);
+        ajW(1);
       }
       AppMethodBeat.o(61407);
       return paramV;
     }
     if (paramV == null) {
-      ajm(2);
+      ajW(2);
     }
     AppMethodBeat.o(61407);
     return paramV;
   }
   
-  public static <V> V fB(Object paramObject)
+  public static <V> V fE(Object paramObject)
   {
     AppMethodBeat.i(61409);
     if (paramObject == null) {
-      ajm(4);
+      ajW(4);
     }
-    paramObject = fC(paramObject);
+    paramObject = fF(paramObject);
     if (paramObject == null) {
-      ajm(0);
+      ajW(0);
     }
-    if (paramObject == MOQ)
+    if (paramObject == NlV)
     {
       AppMethodBeat.o(61409);
       return null;
@@ -60,13 +60,13 @@ public final class j
     return paramObject;
   }
   
-  public static <V> V fC(Object paramObject)
+  public static <V> V fF(Object paramObject)
   {
     AppMethodBeat.i(61410);
     if ((paramObject instanceof a))
     {
       paramObject = ((a)paramObject).getThrowable();
-      if ((NGh) && (c.s(paramObject)))
+      if ((Odn) && (c.t(paramObject)))
       {
         paramObject = new b(paramObject);
         AppMethodBeat.o(61410);
@@ -80,7 +80,7 @@ public final class j
     return paramObject;
   }
   
-  public static Object t(Throwable paramThrowable)
+  public static Object u(Throwable paramThrowable)
   {
     AppMethodBeat.i(61408);
     paramThrowable = new a(paramThrowable, (byte)0);
@@ -104,7 +104,7 @@ public final class j
       AppMethodBeat.i(61404);
       Throwable localThrowable = this.throwable;
       if (localThrowable == null) {
-        ajm(1);
+        ajW(1);
       }
       AppMethodBeat.o(61404);
       return localThrowable;

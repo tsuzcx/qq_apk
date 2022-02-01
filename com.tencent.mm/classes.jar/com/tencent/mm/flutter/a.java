@@ -4,7 +4,7 @@ public abstract class a
 {
   public abstract void a(c paramc);
   
-  public abstract String agw();
+  public abstract String agK();
   
   public void create() {}
   
@@ -12,7 +12,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.flutter.a
  * JD-Core Version:    0.7.0.1
  */

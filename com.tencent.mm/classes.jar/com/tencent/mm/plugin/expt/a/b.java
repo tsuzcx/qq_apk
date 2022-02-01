@@ -3,115 +3,132 @@ package com.tencent.mm.plugin.expt.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.h.a;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.protocal.protobuf.ahm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ahw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
   static String TAG = "MicroMsg.ExptIdMMKV";
-  private static b qpw;
-  ax cBy = null;
+  private static b qwc;
   private String name = null;
   
-  public static ax bNe()
+  public static b coo()
   {
-    AppMethodBeat.i(210194);
-    d.crP();
-    int i = d.getUin();
-    if (i == 0)
-    {
-      ad.e(TAG, "uin err [%d]", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(210194);
-      return null;
+    AppMethodBeat.i(195833);
+    if (qwc == null) {
+      qwc = new b();
     }
-    ax localax = ax.aQz(i + "_WxExptIdmmkv");
-    AppMethodBeat.o(210194);
-    return localax;
-  }
-  
-  public static b cmY()
-  {
-    AppMethodBeat.i(210193);
-    if (qpw == null) {
-      qpw = new b();
-    }
-    b localb = qpw;
-    AppMethodBeat.o(210193);
+    b localb = qwc;
+    AppMethodBeat.o(195833);
     return localb;
   }
   
-  public final List<ahm> cmZ()
+  private String info()
   {
-    AppMethodBeat.i(210195);
-    LinkedList localLinkedList = new LinkedList();
-    if (this.cBy != null)
+    AppMethodBeat.i(195837);
+    String str = hashCode();
+    AppMethodBeat.o(195837);
+    return str;
+  }
+  
+  public final ay bOc()
+  {
+    AppMethodBeat.i(195834);
+    d.ctr();
+    int i = d.getUin();
+    if (i == 0)
     {
-      String[] arrayOfString = this.cBy.allKeys();
-      ad.i(TAG, "mmkv keys is [%s] ,length is [%d] ", new Object[] { arrayOfString.toString(), Integer.valueOf(arrayOfString.length) });
+      ae.e(TAG, "uin err [%d]", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(195834);
+      return null;
+    }
+    Object localObject = i + "_WxExptIdmmkv";
+    if (!bu.lX(this.name, (String)localObject))
+    {
+      ae.i(TAG, "%s get mmkv change uin old[%s] new[%s]", new Object[] { info(), this.name, localObject });
+      this.name = ((String)localObject);
+    }
+    localObject = ay.aRW(this.name);
+    AppMethodBeat.o(195834);
+    return localObject;
+  }
+  
+  public final List<ahw> cop()
+  {
+    AppMethodBeat.i(195835);
+    LinkedList localLinkedList = new LinkedList();
+    ay localay = bOc();
+    if (localay != null)
+    {
+      String[] arrayOfString = localay.allKeys();
       if ((arrayOfString != null) && (arrayOfString.length > 0))
       {
+        ae.i(TAG, "mmkv keys length is [%d] ", new Object[] { Integer.valueOf(arrayOfString.length) });
         int i = 0;
         while (i < arrayOfString.length)
         {
-          ahm localahm = new ahm();
-          a locala = com.tencent.mm.plugin.expt.h.b.crz().DA(bt.getInt(arrayOfString[i], 0));
+          ahw localahw = new ahw();
+          a locala = com.tencent.mm.plugin.expt.h.b.ctb().DN(bu.getInt(arrayOfString[i], 0));
           if (locala != null)
           {
-            localahm.GeZ = locala.rbx;
-            localahm.Gfa = locala.adG;
-            localahm.Gfb = locala.rby;
-            localahm.count = this.cBy.decodeInt(arrayOfString[i]);
-            localLinkedList.add(localahm);
+            localahw.GxH = locala.rjD;
+            localahw.GxI = locala.adG;
+            localahw.GxJ = locala.rjE;
+            localahw.count = localay.decodeInt(arrayOfString[i]);
+            localLinkedList.add(localahw);
           }
           i += 1;
         }
       }
     }
-    AppMethodBeat.o(210195);
+    AppMethodBeat.o(195835);
     return localLinkedList;
   }
   
   /* Error */
-  final void cna()
+  final void coq()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 161
-    //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 171
+    //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 25	com/tencent/mm/plugin/expt/a/b:cBy	Lcom/tencent/mm/sdk/platformtools/ax;
-    //   11: ifnonnull +11 -> 22
-    //   14: ldc 161
-    //   16: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 25	com/tencent/mm/plugin/expt/a/b:cBy	Lcom/tencent/mm/sdk/platformtools/ax;
-    //   26: invokevirtual 165	com/tencent/mm/sdk/platformtools/ax:clear	()Landroid/content/SharedPreferences$Editor;
-    //   29: invokeinterface 171 1 0
-    //   34: pop
-    //   35: ldc 161
-    //   37: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   40: goto -21 -> 19
-    //   43: astore_1
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: aload_1
-    //   47: athrow
+    //   8: invokevirtual 110	com/tencent/mm/plugin/expt/a/b:bOc	()Lcom/tencent/mm/sdk/platformtools/ay;
+    //   11: astore_1
+    //   12: aload_1
+    //   13: ifnonnull +11 -> 24
+    //   16: ldc 171
+    //   18: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: return
+    //   24: aload_1
+    //   25: invokevirtual 175	com/tencent/mm/sdk/platformtools/ay:clear	()Landroid/content/SharedPreferences$Editor;
+    //   28: invokeinterface 181 1 0
+    //   33: pop
+    //   34: ldc 171
+    //   36: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: goto -18 -> 21
+    //   42: astore_1
+    //   43: aload_0
+    //   44: monitorexit
+    //   45: aload_1
+    //   46: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	48	0	this	b
-    //   43	4	1	localObject	Object
+    //   0	47	0	this	b
+    //   11	14	1	localay	ay
+    //   42	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	19	43	finally
-    //   22	40	43	finally
+    //   2	12	42	finally
+    //   16	21	42	finally
+    //   24	39	42	finally
   }
 }
 

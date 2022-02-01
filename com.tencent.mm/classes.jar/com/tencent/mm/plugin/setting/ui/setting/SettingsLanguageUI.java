@@ -9,14 +9,14 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bo.a;
+import com.tencent.mm.model.bq.a;
 import com.tencent.mm.network.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.account.ui.LanguagePreference;
 import com.tencent.mm.plugin.account.ui.LanguagePreference.a;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
@@ -29,11 +29,11 @@ import java.util.List;
 public class SettingsLanguageUI
   extends MMPreference
 {
-  private static final String[] yHe = ab.yHe;
+  private static final String[] yXo = ac.yXo;
   private String languageCode;
   private f screen;
-  private List<LanguagePreference.a> yHf;
-  private boolean yHg = false;
+  private List<LanguagePreference.a> yXp;
+  private boolean yXq = false;
   
   public int getResourceId()
   {
@@ -66,20 +66,20 @@ public class SettingsLanguageUI
         AppMethodBeat.o(74176);
         return true;
       }
-    }, null, s.b.JbS);
-    this.yHg = getIntent().getBooleanExtra("not_auth_setting", false);
+    }, null, s.b.JwA);
+    this.yXq = getIntent().getBooleanExtra("not_auth_setting", false);
     this.screen.removeAll();
     Object localObject1 = getResources().getStringArray(2130903056);
-    this.languageCode = ac.g(getSharedPreferences(aj.fkC(), 0));
-    this.yHf = new ArrayList();
+    this.languageCode = ad.g(getSharedPreferences(ak.fow(), 0));
+    this.yXp = new ArrayList();
     Object localObject2;
-    while (i < yHe.length)
+    while (i < yXo.length)
     {
-      localObject2 = yHe[i];
-      this.yHf.add(new LanguagePreference.a(localObject1[i], "", (String)localObject2, this.languageCode.equalsIgnoreCase((String)localObject2)));
+      localObject2 = yXo[i];
+      this.yXp.add(new LanguagePreference.a(localObject1[i], "", (String)localObject2, this.languageCode.equalsIgnoreCase((String)localObject2)));
       i += 1;
     }
-    localObject1 = this.yHf.iterator();
+    localObject1 = this.yXp.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (LanguagePreference.a)((Iterator)localObject1).next();
@@ -114,14 +114,14 @@ public class SettingsLanguageUI
     AppMethodBeat.i(74181);
     if ((paramPreference instanceof LanguagePreference))
     {
-      paramPreference = ((LanguagePreference)paramPreference).jkl;
+      paramPreference = ((LanguagePreference)paramPreference).jne;
       if (paramPreference == null)
       {
         AppMethodBeat.o(74181);
         return false;
       }
-      this.languageCode = paramPreference.jko;
-      Iterator localIterator = this.yHf.iterator();
+      this.languageCode = paramPreference.jnh;
+      Iterator localIterator = this.yXp.iterator();
       while (localIterator.hasNext()) {
         ((LanguagePreference.a)localIterator.next()).isSelected = false;
       }

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.talkroom.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.d;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.bh.d;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
 public final class i
 {
   List<d> callbacks;
-  ap handler;
+  aq handler;
   
   public i()
   {
     AppMethodBeat.i(29541);
     this.callbacks = new LinkedList();
-    this.handler = new ap(Looper.getMainLooper());
+    this.handler = new aq(Looper.getMainLooper());
     AppMethodBeat.o(29541);
   }
   
-  public final void GI(final String paramString)
+  public final void Hk(final String paramString)
   {
     AppMethodBeat.i(29545);
     paramString = new Runnable()
@@ -33,7 +33,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).GI(paramString);
+            ((d)localIterator.next()).Hk(paramString);
           }
         }
         AppMethodBeat.o(29536);
@@ -49,35 +49,7 @@ public final class i
     AppMethodBeat.o(29545);
   }
   
-  public final void aMb()
-  {
-    AppMethodBeat.i(29542);
-    Runnable local1 = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(29529);
-        synchronized (i.this.callbacks)
-        {
-          Iterator localIterator = i.this.callbacks.iterator();
-          if (localIterator.hasNext()) {
-            ((d)localIterator.next()).aMb();
-          }
-        }
-        AppMethodBeat.o(29529);
-      }
-    };
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      local1.run();
-      AppMethodBeat.o(29542);
-      return;
-    }
-    this.handler.post(local1);
-    AppMethodBeat.o(29542);
-  }
-  
-  public final void aMd()
+  public final void aMA()
   {
     AppMethodBeat.i(29547);
     Runnable local12 = new Runnable()
@@ -89,7 +61,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).aMd();
+            ((d)localIterator.next()).aMA();
           }
         }
         AppMethodBeat.o(29540);
@@ -105,7 +77,7 @@ public final class i
     AppMethodBeat.o(29547);
   }
   
-  public final void aMg()
+  public final void aMD()
   {
     AppMethodBeat.i(29548);
     Runnable local4 = new Runnable()
@@ -117,7 +89,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).aMg();
+            ((d)localIterator.next()).aMD();
           }
         }
         AppMethodBeat.o(29532);
@@ -131,6 +103,34 @@ public final class i
     }
     this.handler.post(local4);
     AppMethodBeat.o(29548);
+  }
+  
+  public final void aMy()
+  {
+    AppMethodBeat.i(29542);
+    Runnable local1 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(29529);
+        synchronized (i.this.callbacks)
+        {
+          Iterator localIterator = i.this.callbacks.iterator();
+          if (localIterator.hasNext()) {
+            ((d)localIterator.next()).aMy();
+          }
+        }
+        AppMethodBeat.o(29529);
+      }
+    };
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      local1.run();
+      AppMethodBeat.o(29542);
+      return;
+    }
+    this.handler.post(local1);
+    AppMethodBeat.o(29542);
   }
   
   public final void j(final int paramInt1, final int paramInt2, final String paramString)
@@ -161,7 +161,7 @@ public final class i
     AppMethodBeat.o(29546);
   }
   
-  public final void qh(final int paramInt)
+  public final void qk(final int paramInt)
   {
     AppMethodBeat.i(29544);
     Runnable local7 = new Runnable()
@@ -173,7 +173,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).qh(paramInt);
+            ((d)localIterator.next()).qk(paramInt);
           }
         }
         AppMethodBeat.o(29535);

@@ -6,7 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.Keep;
+import com.tencent.tinker.anno.Keep;
 
 @Keep
 public final class TinkerApplicationInlineFence

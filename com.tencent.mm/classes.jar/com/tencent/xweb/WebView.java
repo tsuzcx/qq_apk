@@ -44,24 +44,24 @@ public class WebView
   extends FrameLayout
   implements IWebView
 {
-  static c Mqg;
-  static String Mqh;
-  static boolean Mqi;
-  static com.tencent.xweb.x5.sdk.c Mqm;
-  View.OnLongClickListener KRn;
-  IWebView Mqj;
-  c Mqk;
-  com.tencent.xweb.internal.d Mql;
-  private int Mqn;
+  static WebView.c MNk;
+  static String MNl;
+  static boolean MNm;
+  static com.tencent.xweb.x5.sdk.c MNq;
+  View.OnLongClickListener LnL;
+  IWebView MNn;
+  WebView.c MNo;
+  com.tencent.xweb.internal.d MNp;
+  private int MNr;
   public boolean isX5Kernel;
   
   static
   {
     AppMethodBeat.i(156917);
     aj.initInterface();
-    Mqg = c.Mqt;
-    Mqh = "";
-    Mqi = false;
+    MNk = WebView.c.MNx;
+    MNl = "";
+    MNm = false;
     AppMethodBeat.o(156917);
   }
   
@@ -77,21 +77,21 @@ public class WebView
   
   public WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    this(paramContext, paramAttributeSet, 0, c.Mqt);
+    this(paramContext, paramAttributeSet, 0, WebView.c.MNx);
   }
   
-  public WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, c paramc)
+  public WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, WebView.c paramc)
   {
     super((Context)localObject, paramAttributeSet, paramInt);
     AppMethodBeat.i(156815);
-    this.Mqk = c.Mqt;
+    this.MNo = WebView.c.MNx;
     this.isX5Kernel = false;
-    this.Mqn = -1;
+    this.MNr = -1;
     b(paramc);
     AppMethodBeat.o(156815);
   }
   
-  public static boolean _initWebviewCore(Context paramContext, c paramc, WebView.PreInitCallback paramPreInitCallback, boolean paramBoolean)
+  public static boolean _initWebviewCore(Context paramContext, WebView.c paramc, WebView.PreInitCallback paramPreInitCallback, boolean paramBoolean)
   {
     try
     {
@@ -108,43 +108,43 @@ public class WebView
   }
   
   /* Error */
-  private static boolean a(Context paramContext, c paramc, WebView.PreInitCallback paramPreInitCallback, boolean paramBoolean1, boolean paramBoolean2)
+  private static boolean a(Context paramContext, WebView.c paramc, WebView.PreInitCallback paramPreInitCallback, boolean paramBoolean1, boolean paramBoolean2)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 6
     //   3: ldc 2
     //   5: monitorenter
-    //   6: ldc 106
-    //   8: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 105
+    //   8: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: aload_1
     //   12: astore 7
     //   14: aload_1
     //   15: aload_0
     //   16: aload_2
     //   17: iload 4
-    //   19: invokestatic 109	com/tencent/xweb/WebView:a	(Lcom/tencent/xweb/WebView$c;Landroid/content/Context;Lcom/tencent/xweb/WebView$PreInitCallback;Z)Z
+    //   19: invokestatic 108	com/tencent/xweb/WebView:a	(Lcom/tencent/xweb/WebView$c;Landroid/content/Context;Lcom/tencent/xweb/WebView$PreInitCallback;Z)Z
     //   22: ifne +84 -> 106
     //   25: aload_1
     //   26: astore 7
     //   28: iload_3
     //   29: ifeq +77 -> 106
-    //   32: getstatic 57	com/tencent/xweb/WebView$c:Mqt	Lcom/tencent/xweb/WebView$c;
+    //   32: getstatic 56	com/tencent/xweb/WebView$c:MNx	Lcom/tencent/xweb/WebView$c;
     //   35: astore_1
     //   36: iconst_3
     //   37: anewarray 18	com/tencent/xweb/WebView$c
     //   40: astore 8
     //   42: aload 8
     //   44: iconst_0
-    //   45: getstatic 112	com/tencent/xweb/WebView$c:Mqu	Lcom/tencent/xweb/WebView$c;
+    //   45: getstatic 111	com/tencent/xweb/WebView$c:MNy	Lcom/tencent/xweb/WebView$c;
     //   48: aastore
     //   49: aload 8
     //   51: iconst_1
-    //   52: getstatic 115	com/tencent/xweb/WebView$c:Mqw	Lcom/tencent/xweb/WebView$c;
+    //   52: getstatic 114	com/tencent/xweb/WebView$c:MNA	Lcom/tencent/xweb/WebView$c;
     //   55: aastore
     //   56: aload 8
     //   58: iconst_2
-    //   59: getstatic 118	com/tencent/xweb/WebView$c:Mqv	Lcom/tencent/xweb/WebView$c;
+    //   59: getstatic 117	com/tencent/xweb/WebView$c:MNz	Lcom/tencent/xweb/WebView$c;
     //   62: aastore
     //   63: iconst_0
     //   64: istore 5
@@ -164,26 +164,26 @@ public class WebView
     //   89: aload_0
     //   90: aload_2
     //   91: iload 4
-    //   93: invokestatic 109	com/tencent/xweb/WebView:a	(Lcom/tencent/xweb/WebView$c;Landroid/content/Context;Lcom/tencent/xweb/WebView$PreInitCallback;Z)Z
+    //   93: invokestatic 108	com/tencent/xweb/WebView:a	(Lcom/tencent/xweb/WebView$c;Landroid/content/Context;Lcom/tencent/xweb/WebView$PreInitCallback;Z)Z
     //   96: ifeq +54 -> 150
     //   99: aload 8
     //   101: iload 5
     //   103: aaload
     //   104: astore 7
     //   106: aload 7
-    //   108: putstatic 59	com/tencent/xweb/WebView:Mqg	Lcom/tencent/xweb/WebView$c;
-    //   111: getstatic 57	com/tencent/xweb/WebView$c:Mqt	Lcom/tencent/xweb/WebView$c;
+    //   108: putstatic 58	com/tencent/xweb/WebView:MNk	Lcom/tencent/xweb/WebView$c;
+    //   111: getstatic 56	com/tencent/xweb/WebView$c:MNx	Lcom/tencent/xweb/WebView$c;
     //   114: aload 7
     //   116: if_acmpne +43 -> 159
-    //   119: invokestatic 123	com/tencent/xweb/util/g:gcz	()V
-    //   122: ldc 125
-    //   124: ldc 127
+    //   119: invokestatic 122	com/tencent/xweb/util/g:ghb	()V
+    //   122: ldc 124
+    //   124: ldc 126
     //   126: aload 7
-    //   128: invokestatic 133	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   131: invokevirtual 137	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   134: invokestatic 143	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   137: ldc 106
-    //   139: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: invokestatic 132	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   131: invokevirtual 136	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   134: invokestatic 142	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: ldc 105
+    //   139: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   142: iload 6
     //   144: istore_3
     //   145: ldc 2
@@ -195,20 +195,20 @@ public class WebView
     //   153: iadd
     //   154: istore 5
     //   156: goto -90 -> 66
-    //   159: new 145	java/lang/StringBuilder
+    //   159: new 144	java/lang/StringBuilder
     //   162: dup
-    //   163: ldc 147
-    //   165: invokespecial 150	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   163: ldc 146
+    //   165: invokespecial 149	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   168: aload 7
-    //   170: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   173: ldc 156
-    //   175: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokestatic 165	org/xwalk/core/XWalkEnvironment:getAvailableVersion	()I
-    //   181: invokevirtual 168	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: invokestatic 175	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   190: ldc 106
-    //   192: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   173: ldc 155
+    //   175: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokestatic 164	org/xwalk/core/XWalkEnvironment:getAvailableVersion	()I
+    //   181: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   184: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: invokestatic 174	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   190: ldc 105
+    //   192: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   195: iconst_1
     //   196: istore_3
     //   197: goto -52 -> 145
@@ -220,14 +220,14 @@ public class WebView
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	206	0	paramContext	Context
-    //   0	206	1	paramc	c
+    //   0	206	1	paramc	WebView.c
     //   0	206	2	paramPreInitCallback	WebView.PreInitCallback
     //   0	206	3	paramBoolean1	boolean
     //   0	206	4	paramBoolean2	boolean
     //   64	91	5	i	int
     //   1	142	6	bool	boolean
-    //   12	157	7	localc	c
-    //   40	60	8	arrayOfc	c[]
+    //   12	157	7	localc	WebView.c
+    //   40	60	8	arrayOfc	WebView.c[]
     // Exception table:
     //   from	to	target	type
     //   6	11	200	finally
@@ -238,12 +238,12 @@ public class WebView
     //   159	195	200	finally
   }
   
-  private static boolean a(c paramc, Context paramContext, WebView.PreInitCallback paramPreInitCallback, boolean paramBoolean)
+  private static boolean a(WebView.c paramc, Context paramContext, WebView.PreInitCallback paramPreInitCallback, boolean paramBoolean)
   {
     boolean bool = false;
     AppMethodBeat.i(156813);
-    if (paramc == c.Mqv) {
-      com.tencent.xweb.x5.sdk.d.gcN();
+    if (paramc == WebView.c.MNz) {
+      com.tencent.xweb.x5.sdk.d.ghp();
     }
     org.xwalk.core.Log.i("xweb.WebView", "try to init webview core = ".concat(String.valueOf(paramc)));
     if ((!paramBoolean) && (b.c(paramc)))
@@ -253,7 +253,7 @@ public class WebView
       return false;
     }
     b localb = b.c("LOAD_CORE", paramc);
-    localb.gbG();
+    localb.ggi();
     paramBoolean = bool;
     try
     {
@@ -263,13 +263,13 @@ public class WebView
       if (bool)
       {
         paramBoolean = bool;
-        c.gaw().Mpc = locala.getCookieManager();
+        c.geY().MLY = locala.getCookieManager();
         paramBoolean = bool;
-        d.Mpe = locala.getCookieSyncManager();
+        d.MMa = locala.getCookieSyncManager();
         paramBoolean = bool;
         com.tencent.xweb.util.g.i(paramc);
         paramBoolean = bool;
-        localb.gbH();
+        localb.ggj();
         paramBoolean = bool;
       }
       for (;;)
@@ -297,35 +297,35 @@ public class WebView
     }
   }
   
-  private void b(c paramc)
+  private void b(WebView.c paramc)
   {
     AppMethodBeat.i(156819);
     org.xwalk.core.Log.i("xweb.WebView", "start to init, prefer type = " + getCurWebType() + " , forcetype = " + paramc);
     if (XWalkEnvironment.getApplicationContext() == null) {
       XWalkEnvironment.init(getContext());
     }
-    if (this.Mqk != c.Mqt)
+    if (this.MNo != WebView.c.MNx)
     {
       AppMethodBeat.o(156819);
       return;
     }
-    if (getCurWebType() == c.Mqt)
+    if (getCurWebType() == WebView.c.MNx)
     {
-      _initWebviewCore(getContext(), c.Mqw, null, true);
+      _initWebviewCore(getContext(), WebView.c.MNA, null, true);
       org.xwalk.core.Log.e("xweb.Webview", "use xweb without init, force to use sys web");
     }
     int i;
-    if (h.gbL().gbO())
+    if (h.ggn().ggq())
     {
-      this.Mqk = c.Mqw;
+      this.MNo = WebView.c.MNA;
       XWalkEnvironment.addXWalkInitializeLog("xweb.WebView", "isTestingSys, force to use sys web");
-      this.Mqj = j.a(this.Mqk, this);
-      if (this.Mqj == null)
+      this.MNn = j.a(this.MNo, this);
+      if (this.MNn == null)
       {
-        paramc = new c[3];
-        paramc[0] = c.Mqu;
-        paramc[1] = c.Mqw;
-        paramc[2] = c.Mqv;
+        paramc = new WebView.c[3];
+        paramc[0] = WebView.c.MNy;
+        paramc[1] = WebView.c.MNA;
+        paramc[2] = WebView.c.MNz;
         i = 0;
       }
     }
@@ -333,48 +333,48 @@ public class WebView
     {
       if (i < 3)
       {
-        if ((paramc[i] != this.Mqk) && (_initWebviewCore(getContext(), paramc[i], null, false)))
+        if ((paramc[i] != this.MNo) && (_initWebviewCore(getContext(), paramc[i], null, false)))
         {
-          this.Mqj = j.a(paramc[i], this);
-          if (this.Mqj != null) {
-            this.Mqk = getCurWebType();
+          this.MNn = j.a(paramc[i], this);
+          if (this.MNn != null) {
+            this.MNo = getCurWebType();
           }
         }
       }
       else
       {
-        if (this.Mqj == null)
+        if (this.MNn == null)
         {
-          a(getContext(), c.Mqw, null, false, true);
-          this.Mqj = j.a(c.Mqw, this);
-          this.Mqk = getCurWebType();
+          a(getContext(), WebView.c.MNA, null, false, true);
+          this.MNn = j.a(WebView.c.MNA, this);
+          this.MNo = getCurWebType();
         }
-        if (this.Mqj != null) {
+        if (this.MNn != null) {
           break label360;
         }
-        org.xwalk.core.Log.e("xweb.WebView", "init finally failed type = " + this.Mqk);
-        com.tencent.xweb.util.g.gcA();
+        org.xwalk.core.Log.e("xweb.WebView", "init finally failed type = " + this.MNo);
+        com.tencent.xweb.util.g.ghc();
         AppMethodBeat.o(156819);
         return;
-        if (paramc == c.Mqw)
+        if (paramc == WebView.c.MNA)
         {
-          this.Mqk = paramc;
-          paramc = j.g(c.Mqw);
+          this.MNo = paramc;
+          paramc = j.g(WebView.c.MNA);
           if (paramc == null) {
             break;
           }
           paramc.initWebviewCore(getContext(), null);
           break;
         }
-        this.Mqk = getCurWebType();
+        this.MNo = getCurWebType();
         break;
       }
       i += 1;
     }
     label360:
-    addView(this.Mqj.getWebViewUI());
-    if (this.Mqk == c.Mqv) {
-      if (this.Mqj.getX5WebViewExtension() != null)
+    addView(this.MNn.getWebViewUI());
+    if (this.MNo == WebView.c.MNz) {
+      if (this.MNn.getX5WebViewExtension() != null)
       {
         this.isX5Kernel = true;
         org.xwalk.core.Log.i("xweb.WebView", "this webview instance is using x5-x5kernal");
@@ -382,24 +382,24 @@ public class WebView
     }
     for (;;)
     {
-      if (this.Mqj.getCurWebviewClient() != null) {
-        this.Mqj.getCurWebviewClient().MpP = this.Mqj.getDefalutOpProvider();
+      if (this.MNn.getCurWebviewClient() != null) {
+        this.MNn.getCurWebviewClient().MMT = this.MNn.getDefalutOpProvider();
       }
-      if (this.Mqj.getCurWebChromeClient() != null) {
-        this.Mqj.getCurWebChromeClient().MpP = this.Mqj.getDefalutOpProvider();
+      if (this.MNn.getCurWebChromeClient() != null) {
+        this.MNn.getCurWebChromeClient().MMT = this.MNn.getDefalutOpProvider();
       }
-      this.Mqj.getView().setOnLongClickListener(new WebView.1(this));
+      this.MNn.getView().setOnLongClickListener(new WebView.1(this));
       try
       {
-        this.Mql = ((com.tencent.xweb.internal.d)j.g(c.Mqu).excute("STR_CMD_GET_DEBUG_VIEW", new Object[] { this }));
-        this.Mql.gbf();
-        if (getWebCoreType() == c.Mqu)
+        this.MNp = ((com.tencent.xweb.internal.d)j.g(WebView.c.MNy).excute("STR_CMD_GET_DEBUG_VIEW", new Object[] { this }));
+        this.MNp.gfH();
+        if (getWebCoreType() == WebView.c.MNy)
         {
           paramc = getContext();
           if ((paramc instanceof d)) {
-            ((d)paramc).Mqy = this.Mqj;
+            ((d)paramc).MNC = this.MNn;
           }
-          com.tencent.xweb.internal.i.f(c.Mqu).gbK();
+          com.tencent.xweb.internal.i.f(WebView.c.MNy).ggm();
         }
         paramc = getSettings().getUserAgentString();
         getSettings().setUserAgentString(paramc + " MMWEBID/" + XWalkEnvironment.getGrayValue());
@@ -407,21 +407,21 @@ public class WebView
         return;
         org.xwalk.core.Log.i("xweb.WebView", "this webview instance is using x5-syskernal ");
         continue;
-        org.xwalk.core.Log.i("xweb.WebView", "this webview instance is using :" + this.Mqk);
+        org.xwalk.core.Log.i("xweb.WebView", "this webview instance is using :" + this.MNo);
       }
       catch (Exception paramc)
       {
         for (;;)
         {
           org.xwalk.core.Log.e("xweb.WebView", "create IDebugView failed, use dummy one ");
-          this.Mql = new com.tencent.xweb.internal.d()
+          this.MNp = new com.tencent.xweb.internal.d()
           {
-            public final boolean bba(String paramAnonymousString)
+            public final boolean bcD(String paramAnonymousString)
             {
               return false;
             }
             
-            public final void gbf() {}
+            public final void gfH() {}
           };
         }
       }
@@ -432,8 +432,8 @@ public class WebView
   public static void disablePlatformNotifications()
   {
     AppMethodBeat.i(156877);
-    if (getCurWebType() == c.Mqw) {
-      com.tencent.xweb.util.f.ni("android.webkit.WebView", "disablePlatformNotifications");
+    if (getCurWebType() == WebView.c.MNA) {
+      com.tencent.xweb.util.f.no("android.webkit.WebView", "disablePlatformNotifications");
     }
     AppMethodBeat.o(156877);
   }
@@ -442,8 +442,8 @@ public class WebView
   public static void enablePlatformNotifications()
   {
     AppMethodBeat.i(156876);
-    if (getCurWebType() == c.Mqw) {
-      com.tencent.xweb.util.f.ni("android.webkit.WebView", "enablePlatformNotifications");
+    if (getCurWebType() == WebView.c.MNA) {
+      com.tencent.xweb.util.f.no("android.webkit.WebView", "enablePlatformNotifications");
     }
     AppMethodBeat.o(156876);
   }
@@ -451,29 +451,29 @@ public class WebView
   public static boolean getCanReboot()
   {
     AppMethodBeat.i(156860);
-    if ((Mqi) && (XWebCoreInfo.getCurAbiInstalledNewestVersion(XWalkEnvironment.getApplicationContext()) > 0))
+    if ((MNm) && (XWebCoreInfo.getCurAbiInstalledNewestVersion(XWalkEnvironment.getApplicationContext()) > 0))
     {
       org.xwalk.core.Log.i("xweb.WebView", "need rebot because of has installed xweb core ");
       AppMethodBeat.o(156860);
       return true;
     }
-    if ((getCurWebType() == c.Mqu) && (XWalkEnvironment.getAvailableVersion() > 0) && (XWalkEnvironment.getInstalledNewstVersionForCurAbi() > XWalkEnvironment.getAvailableVersion()))
+    if ((getCurWebType() == WebView.c.MNy) && (XWalkEnvironment.getAvailableVersion() > 0) && (XWalkEnvironment.getInstalledNewstVersionForCurAbi() > XWalkEnvironment.getAvailableVersion()))
     {
       org.xwalk.core.Log.i("xweb.WebView", "need rebot because of has newer xweb version ");
       AppMethodBeat.o(156860);
       return true;
     }
-    if (getCurWebType() == c.Mqv)
+    if (getCurWebType() == WebView.c.MNz)
     {
-      if (Mqm != null)
+      if (MNq != null)
       {
-        boolean bool = Mqm.getCanReboot();
+        boolean bool = MNq.getCanReboot();
         AppMethodBeat.o(156860);
         return bool;
       }
       org.xwalk.core.Log.e("xweb.WebView", "getCanReboot: sImp is null");
     }
-    if (h.gbL().gbP())
+    if (h.ggn().ggr())
     {
       AppMethodBeat.o(156860);
       return true;
@@ -485,9 +485,9 @@ public class WebView
   public static String getCrashExtraMessage(Context paramContext)
   {
     AppMethodBeat.i(156859);
-    if (Mqm != null)
+    if (MNq != null)
     {
-      paramContext = Mqm.getCrashExtraMessage(paramContext);
+      paramContext = MNq.getCrashExtraMessage(paramContext);
       AppMethodBeat.o(156859);
       return paramContext;
     }
@@ -498,20 +498,20 @@ public class WebView
   
   public static String getCurStrModule()
   {
-    return Mqh;
+    return MNl;
   }
   
-  public static c getCurWebType()
+  public static WebView.c getCurWebType()
   {
-    return Mqg;
+    return MNk;
   }
   
   public static int getInstalledTbsCoreVersion(Context paramContext)
   {
     AppMethodBeat.i(156856);
-    if (Mqm != null)
+    if (MNq != null)
     {
-      int i = Mqm.getTbsCoreVersion(paramContext);
+      int i = MNq.getTbsCoreVersion(paramContext);
       AppMethodBeat.o(156856);
       return i;
     }
@@ -520,12 +520,12 @@ public class WebView
     return 0;
   }
   
-  public static c getPreferedWebviewType(Context paramContext, c paramc, String paramString)
+  public static WebView.c getPreferedWebviewType(Context paramContext, WebView.c paramc, String paramString)
   {
     AppMethodBeat.i(156809);
-    if (Mqg != c.Mqt)
+    if (MNk != WebView.c.MNx)
     {
-      paramContext = Mqg;
+      paramContext = MNk;
       AppMethodBeat.o(156809);
       return paramContext;
     }
@@ -533,53 +533,53 @@ public class WebView
     if (XWalkEnvironment.isIaDevice())
     {
       XWalkEnvironment.addXWalkInitializeLog("XWeb.getPreferedWebviewType", "x86 device use WV_KIND_SYS");
-      com.tencent.xweb.util.g.Fh(69L);
-      paramContext = c.Mqw;
+      com.tencent.xweb.util.g.FJ(69L);
+      paramContext = WebView.c.MNA;
       AppMethodBeat.o(156809);
       return paramContext;
     }
-    if (y.gaM().baY(paramString) != c.Mqt)
+    if (y.gfo().bcB(paramString) != WebView.c.MNx)
     {
-      paramc = y.gaM().baY(paramString);
+      paramc = y.gfo().bcB(paramString);
       XWalkEnvironment.addXWalkInitializeLog("XWeb.getPreferedWebviewType", "use hard code web type = ".concat(String.valueOf(paramc)));
     }
     for (;;)
     {
       com.tencent.xweb.util.g.h(paramc);
       paramContext = paramc;
-      if (paramc == c.Mqu)
+      if (paramc == WebView.c.MNy)
       {
         paramContext = paramc;
         if (!XWalkEnvironment.hasAvailableVersion())
         {
-          paramContext = c.Mqw;
-          Mqi = true;
+          paramContext = WebView.c.MNA;
+          MNm = true;
           XWalkEnvironment.addXWalkInitializeLog("xwalk is not available , use sys");
         }
       }
       h.d(paramContext);
-      if (h.gbL().gbQ())
+      if (h.ggn().ggs())
       {
         XWalkEnvironment.addXWalkInitializeLog("kind is match loadurlwatchdog switch to syskernal");
-        paramContext = c.Mqw;
+        paramContext = WebView.c.MNA;
       }
-      if (paramContext == c.Mqv) {
-        com.tencent.xweb.x5.sdk.d.gcN();
+      if (paramContext == WebView.c.MNz) {
+        com.tencent.xweb.x5.sdk.d.ghp();
       }
       AppMethodBeat.o(156809);
       return paramContext;
-      if (a.baw(paramString) != c.Mqt)
+      if (a.bbZ(paramString) != WebView.c.MNx)
       {
-        paramc = a.baw(paramString);
+        paramc = a.bbZ(paramString);
         XWalkEnvironment.addXWalkInitializeLog("XWeb.getPreferedWebviewType", "module " + paramString + "use cmd web type = " + paramc);
       }
     }
   }
   
-  public static c getPreferedWebviewType(Context paramContext, String paramString)
+  public static WebView.c getPreferedWebviewType(Context paramContext, String paramString)
   {
     AppMethodBeat.i(156808);
-    paramContext = getPreferedWebviewType(paramContext, c.Mqv, paramString);
+    paramContext = getPreferedWebviewType(paramContext, WebView.c.MNz, paramString);
     AppMethodBeat.o(156808);
     return paramContext;
   }
@@ -588,9 +588,9 @@ public class WebView
   public static int getTbsCoreVersion(Context paramContext)
   {
     AppMethodBeat.i(156857);
-    if (Mqm != null)
+    if (MNq != null)
     {
-      int i = Mqm.getTbsCoreVersion(paramContext);
+      int i = MNq.getTbsCoreVersion(paramContext);
       AppMethodBeat.o(156857);
       return i;
     }
@@ -602,9 +602,9 @@ public class WebView
   public static int getTbsSDKVersion(Context paramContext)
   {
     AppMethodBeat.i(156858);
-    if (Mqm != null)
+    if (MNq != null)
     {
-      int i = Mqm.getTbsSDKVersion(paramContext);
+      int i = MNq.getTbsSDKVersion(paramContext);
       AppMethodBeat.o(156858);
       return i;
     }
@@ -616,11 +616,11 @@ public class WebView
   public static int getUsingTbsCoreVersion(Context paramContext)
   {
     AppMethodBeat.i(156855);
-    if (Mqg == c.Mqv)
+    if (MNk == WebView.c.MNz)
     {
-      if (Mqm != null)
+      if (MNq != null)
       {
-        int i = Mqm.getTbsCoreVersion(paramContext);
+        int i = MNq.getTbsCoreVersion(paramContext);
         AppMethodBeat.o(156855);
         return i;
       }
@@ -633,7 +633,7 @@ public class WebView
   public static boolean hasInited()
   {
     AppMethodBeat.i(156814);
-    if (getCurWebType() == c.Mqt)
+    if (getCurWebType() == WebView.c.MNx)
     {
       AppMethodBeat.o(156814);
       return false;
@@ -648,7 +648,7 @@ public class WebView
     return bool;
   }
   
-  private List<TextureView> hr(View paramView)
+  private List<TextureView> hw(View paramView)
   {
     AppMethodBeat.i(156836);
     ArrayList localArrayList = new ArrayList();
@@ -665,14 +665,14 @@ public class WebView
         int i = 0;
         while (i < paramView.getChildCount())
         {
-          localArrayList.addAll(hr(paramView.getChildAt(i)));
+          localArrayList.addAll(hw(paramView.getChildAt(i)));
           i += 1;
         }
       }
     }
   }
   
-  public static void initWebviewCore(Context paramContext, c paramc, String paramString, WebView.PreInitCallback paramPreInitCallback)
+  public static void initWebviewCore(Context paramContext, WebView.c paramc, String paramString, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(156810);
     String str;
@@ -685,27 +685,27 @@ public class WebView
     {
       str = "tools";
     }
-    if (Mqg != c.Mqt)
+    if (MNk != WebView.c.MNx)
     {
-      if (Mqg != paramc) {
+      if (MNk != paramc) {
         org.xwalk.core.Log.e("xweb.WebView", "invalid set webview kind to diffrent type");
       }
       AppMethodBeat.o(156810);
       return;
     }
-    Mqh = str;
-    com.tencent.xweb.util.g.bbr(str);
+    MNl = str;
+    com.tencent.xweb.util.g.bcU(str);
     paramString = str;
     if (str == null) {
       paramString = "";
     }
     XWalkEnvironment.init(paramContext);
     s.init();
-    y.lx(paramContext);
+    y.lD(paramContext);
     if (XWalkEnvironment.getAvailableVersion() <= 0)
     {
       XWalkEnvironment.addXWalkInitializeLog("initWebviewCore with no xweb, tryEmbedInstall");
-      w.gaK();
+      w.gfm();
     }
     _initWebviewCore(paramContext, getPreferedWebviewType(paramContext, paramc, paramString), paramPreInitCallback, true);
     AppMethodBeat.o(156810);
@@ -714,7 +714,7 @@ public class WebView
   public static boolean isSys()
   {
     AppMethodBeat.i(156914);
-    if (getCurWebType() == c.Mqw)
+    if (getCurWebType() == WebView.c.MNA)
     {
       AppMethodBeat.o(156914);
       return true;
@@ -726,7 +726,7 @@ public class WebView
   public static boolean isX5()
   {
     AppMethodBeat.i(156913);
-    if (getCurWebType() == c.Mqv)
+    if (getCurWebType() == WebView.c.MNz)
     {
       AppMethodBeat.o(156913);
       return true;
@@ -738,7 +738,7 @@ public class WebView
   public static boolean isXWalk()
   {
     AppMethodBeat.i(156912);
-    if (getCurWebType() == c.Mqu)
+    if (getCurWebType() == WebView.c.MNy)
     {
       AppMethodBeat.o(156912);
       return true;
@@ -751,9 +751,9 @@ public class WebView
   {
     AppMethodBeat.i(185175);
     XWalkEnvironment.addXWalkInitializeLog("reinitToXWeb");
-    Mqg = c.Mqt;
+    MNk = WebView.c.MNx;
     XWalkEnvironment.refreshVerInfo();
-    initWebviewCore(XWalkEnvironment.getApplicationContext(), c.Mqu, Mqh, null);
+    initWebviewCore(XWalkEnvironment.getApplicationContext(), WebView.c.MNy, MNl, null);
     AppMethodBeat.o(185175);
   }
   
@@ -763,7 +763,7 @@ public class WebView
     com.tencent.xweb.internal.f localf = com.tencent.xweb.internal.i.f(getCurWebType());
     if (localf != null)
     {
-      boolean bool = localf.gbJ().setProfileResultCallback(paramString, paramk);
+      boolean bool = localf.ggl().setProfileResultCallback(paramString, paramk);
       AppMethodBeat.o(183498);
       return bool;
     }
@@ -773,7 +773,7 @@ public class WebView
   
   public static void setX5Interface(com.tencent.xweb.x5.sdk.c paramc)
   {
-    Mqm = paramc;
+    MNq = paramc;
   }
   
   public void _disablePlatformNotifications() {}
@@ -783,14 +783,14 @@ public class WebView
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
     AppMethodBeat.i(156875);
-    this.Mqj.addJavascriptInterface(paramObject, paramString);
+    this.MNn.addJavascriptInterface(paramObject, paramString);
     AppMethodBeat.o(156875);
   }
   
   public boolean canGoBack()
   {
     AppMethodBeat.i(156888);
-    boolean bool = this.Mqj.canGoBack();
+    boolean bool = this.MNn.canGoBack();
     AppMethodBeat.o(156888);
     return bool;
   }
@@ -798,7 +798,7 @@ public class WebView
   public boolean canGoForward()
   {
     AppMethodBeat.i(156900);
-    boolean bool = this.Mqj.canGoForward();
+    boolean bool = this.MNn.canGoForward();
     AppMethodBeat.o(156900);
     return bool;
   }
@@ -807,57 +807,57 @@ public class WebView
   {
     AppMethodBeat.i(156817);
     org.xwalk.core.Log.d("xweb.WebView", "captureBitmap");
-    this.Mqj.captureBitmap(parama);
+    this.MNn.captureBitmap(parama);
     AppMethodBeat.o(156817);
   }
   
   public void clearHistory()
   {
     AppMethodBeat.i(156899);
-    this.Mqj.clearHistory();
+    this.MNn.clearHistory();
     AppMethodBeat.o(156899);
   }
   
   public void clearMatches()
   {
     AppMethodBeat.i(156847);
-    this.Mqj.clearMatches();
+    this.MNn.clearMatches();
     AppMethodBeat.o(156847);
   }
   
   public void clearSslPreferences()
   {
     AppMethodBeat.i(156862);
-    this.Mqj.clearSslPreferences();
+    this.MNn.clearSslPreferences();
     AppMethodBeat.o(156862);
   }
   
   public void clearView()
   {
     AppMethodBeat.i(156890);
-    this.Mqj.clearView();
+    this.MNn.clearView();
     AppMethodBeat.o(156890);
   }
   
   public WebBackForwardList copyBackForwardList()
   {
-    AppMethodBeat.i(197078);
-    WebBackForwardList localWebBackForwardList = this.Mqj.copyBackForwardList();
-    AppMethodBeat.o(197078);
+    AppMethodBeat.i(217396);
+    WebBackForwardList localWebBackForwardList = this.MNn.copyBackForwardList();
+    AppMethodBeat.o(217396);
     return localWebBackForwardList;
   }
   
   public void destroy()
   {
     AppMethodBeat.i(156891);
-    this.Mqj.destroy();
+    this.MNn.destroy();
     AppMethodBeat.o(156891);
   }
   
   public void disableVideoJsCallback(boolean paramBoolean)
   {
     AppMethodBeat.i(156910);
-    this.Mqj.disableVideoJsCallback(paramBoolean);
+    this.MNn.disableVideoJsCallback(paramBoolean);
     AppMethodBeat.o(156910);
   }
   
@@ -892,28 +892,28 @@ public class WebView
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(156894);
-    this.Mqj.evaluateJavascript(paramString, paramValueCallback);
+    this.MNn.evaluateJavascript(paramString, paramValueCallback);
     AppMethodBeat.o(156894);
   }
   
   public void findAllAsync(String paramString)
   {
     AppMethodBeat.i(156849);
-    this.Mqj.findAllAsync(paramString);
+    this.MNn.findAllAsync(paramString);
     AppMethodBeat.o(156849);
   }
   
   public void findNext(boolean paramBoolean)
   {
     AppMethodBeat.i(156848);
-    this.Mqj.findNext(paramBoolean);
+    this.MNn.findNext(paramBoolean);
     AppMethodBeat.o(156848);
   }
   
   public String getAbstractInfo()
   {
     AppMethodBeat.i(156851);
-    String str = this.Mqj.getAbstractInfo();
+    String str = this.MNn.getAbstractInfo();
     AppMethodBeat.o(156851);
     return str;
   }
@@ -936,7 +936,7 @@ public class WebView
       {
         localPaint = new Paint();
         localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
-        localObject1 = hr(this).iterator();
+        localObject1 = hw(this).iterator();
         for (;;)
         {
           if (((Iterator)localObject1).hasNext())
@@ -971,7 +971,7 @@ public class WebView
   public int getContentHeight()
   {
     AppMethodBeat.i(156864);
-    int i = this.Mqj.getContentHeight();
+    int i = this.MNn.getContentHeight();
     AppMethodBeat.o(156864);
     return i;
   }
@@ -989,7 +989,7 @@ public class WebView
   public x getCurWebChromeClient()
   {
     AppMethodBeat.i(156853);
-    x localx = this.Mqj.getCurWebChromeClient();
+    x localx = this.MNn.getCurWebChromeClient();
     AppMethodBeat.o(156853);
     return localx;
   }
@@ -997,7 +997,7 @@ public class WebView
   public ac getCurWebviewClient()
   {
     AppMethodBeat.i(156852);
-    ac localac = this.Mqj.getCurWebviewClient();
+    ac localac = this.MNn.getCurWebviewClient();
     AppMethodBeat.o(156852);
     return localac;
   }
@@ -1010,7 +1010,7 @@ public class WebView
   public a getFullscreenVideoKind()
   {
     AppMethodBeat.i(156895);
-    a locala = this.Mqj.getFullscreenVideoKind();
+    a locala = this.MNn.getFullscreenVideoKind();
     AppMethodBeat.o(156895);
     return locala;
   }
@@ -1018,23 +1018,23 @@ public class WebView
   public b getHitTestResult()
   {
     AppMethodBeat.i(156845);
-    b localb = this.Mqj.getHitTestResult();
+    b localb = this.MNn.getHitTestResult();
     AppMethodBeat.o(156845);
     return localb;
   }
   
   public String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197080);
-    paramString1 = this.Mqj.getHttpAuthUsernamePassword(paramString1, paramString2);
-    AppMethodBeat.o(197080);
+    AppMethodBeat.i(217398);
+    paramString1 = this.MNn.getHttpAuthUsernamePassword(paramString1, paramString2);
+    AppMethodBeat.o(217398);
     return paramString1;
   }
   
   public boolean getImageBitmapToFile(String paramString1, String paramString2, String paramString3, i parami)
   {
     AppMethodBeat.i(156916);
-    boolean bool = this.Mqj.getImageBitmapToFile(paramString1, paramString2, paramString3, parami);
+    boolean bool = this.MNn.getImageBitmapToFile(paramString1, paramString2, paramString3, parami);
     AppMethodBeat.o(156916);
     return bool;
   }
@@ -1042,7 +1042,7 @@ public class WebView
   public float getScale()
   {
     AppMethodBeat.i(156865);
-    float f = this.Mqj.getScale();
+    float f = this.MNn.getScale();
     AppMethodBeat.o(156865);
     return f;
   }
@@ -1050,7 +1050,7 @@ public class WebView
   public int getScrollHeight()
   {
     AppMethodBeat.i(156907);
-    int i = this.Mqj.getScrollHeight();
+    int i = this.MNn.getScrollHeight();
     AppMethodBeat.o(156907);
     return i;
   }
@@ -1058,7 +1058,7 @@ public class WebView
   public z getSettings()
   {
     AppMethodBeat.i(156878);
-    z localz = this.Mqj.getSettings();
+    z localz = this.MNn.getSettings();
     AppMethodBeat.o(156878);
     return localz;
   }
@@ -1066,7 +1066,7 @@ public class WebView
   public String getTitle()
   {
     AppMethodBeat.i(156846);
-    String str = this.Mqj.getTitle();
+    String str = this.MNn.getTitle();
     AppMethodBeat.o(156846);
     return str;
   }
@@ -1074,7 +1074,7 @@ public class WebView
   public ViewGroup getTopView()
   {
     AppMethodBeat.i(156840);
-    ViewGroup localViewGroup = this.Mqj.getTopView();
+    ViewGroup localViewGroup = this.MNn.getTopView();
     AppMethodBeat.o(156840);
     return localViewGroup;
   }
@@ -1082,7 +1082,7 @@ public class WebView
   public String getUrl()
   {
     AppMethodBeat.i(156841);
-    String str = this.Mqj.getUrl();
+    String str = this.MNn.getUrl();
     AppMethodBeat.o(156841);
     return str;
   }
@@ -1090,7 +1090,7 @@ public class WebView
   public String getVersionInfo()
   {
     AppMethodBeat.i(156850);
-    String str = this.Mqj.getVersionInfo();
+    String str = this.MNn.getVersionInfo();
     AppMethodBeat.o(156850);
     return str;
   }
@@ -1098,7 +1098,7 @@ public class WebView
   public View getView()
   {
     AppMethodBeat.i(156839);
-    View localView = this.Mqj.getView();
+    View localView = this.MNn.getView();
     AppMethodBeat.o(156839);
     return localView;
   }
@@ -1106,20 +1106,20 @@ public class WebView
   public int getVisibleTitleHeight()
   {
     AppMethodBeat.i(156869);
-    int i = this.Mqj.getVisibleTitleHeight();
+    int i = this.MNn.getVisibleTitleHeight();
     AppMethodBeat.o(156869);
     return i;
   }
   
-  public c getWebCoreType()
+  public WebView.c getWebCoreType()
   {
-    return this.Mqk;
+    return this.MNo;
   }
   
   public int getWebScrollX()
   {
     AppMethodBeat.i(156867);
-    int i = this.Mqj.getWebScrollX();
+    int i = this.MNn.getWebScrollX();
     AppMethodBeat.o(156867);
     return i;
   }
@@ -1127,7 +1127,7 @@ public class WebView
   public int getWebScrollY()
   {
     AppMethodBeat.i(156866);
-    int i = this.Mqj.getWebScrollY();
+    int i = this.MNn.getWebScrollY();
     AppMethodBeat.o(156866);
     return i;
   }
@@ -1135,7 +1135,7 @@ public class WebView
   public View getWebViewUI()
   {
     AppMethodBeat.i(156879);
-    View localView = this.Mqj.getWebViewUI();
+    View localView = this.MNn.getWebViewUI();
     AppMethodBeat.o(156879);
     return localView;
   }
@@ -1143,7 +1143,7 @@ public class WebView
   public Object getX5WebViewExtension()
   {
     AppMethodBeat.i(156820);
-    Object localObject = this.Mqj.getX5WebViewExtension();
+    Object localObject = this.MNn.getX5WebViewExtension();
     AppMethodBeat.o(156820);
     return localObject;
   }
@@ -1151,21 +1151,21 @@ public class WebView
   public void goBack()
   {
     AppMethodBeat.i(156889);
-    this.Mqj.goBack();
+    this.MNn.goBack();
     AppMethodBeat.o(156889);
   }
   
   public void goForward()
   {
     AppMethodBeat.i(156901);
-    this.Mqj.goForward();
+    this.MNn.goForward();
     AppMethodBeat.o(156901);
   }
   
   public boolean hasEnteredFullscreen()
   {
     AppMethodBeat.i(156892);
-    boolean bool = this.Mqj.hasEnteredFullscreen();
+    boolean bool = this.MNn.hasEnteredFullscreen();
     AppMethodBeat.o(156892);
     return bool;
   }
@@ -1173,7 +1173,7 @@ public class WebView
   public Bundle invokeMiscMethod(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(156897);
-    paramString = this.Mqj.invokeMiscMethod(paramString, paramBundle);
+    paramString = this.MNn.invokeMiscMethod(paramString, paramBundle);
     AppMethodBeat.o(156897);
     return paramString;
   }
@@ -1181,7 +1181,7 @@ public class WebView
   public boolean isOverScrollStart()
   {
     AppMethodBeat.i(156868);
-    boolean bool = this.Mqj.isOverScrollStart();
+    boolean bool = this.MNn.isOverScrollStart();
     AppMethodBeat.o(156868);
     return bool;
   }
@@ -1191,7 +1191,7 @@ public class WebView
     AppMethodBeat.i(156854);
     if (isXWalkKernel())
     {
-      boolean bool = this.Mqj.isSupportExtendPluginForAppbrand();
+      boolean bool = this.MNn.isSupportExtendPluginForAppbrand();
       AppMethodBeat.o(156854);
       return bool;
     }
@@ -1201,13 +1201,13 @@ public class WebView
   
   public boolean isSysKernel()
   {
-    return this.Mqk == c.Mqw;
+    return this.MNo == WebView.c.MNA;
   }
   
   public boolean isX5WrappedSysKernel()
   {
     AppMethodBeat.i(175639);
-    if ((getCurWebType() == c.Mqv) && (!this.isX5Kernel))
+    if ((getCurWebType() == WebView.c.MNz) && (!this.isX5Kernel))
     {
       AppMethodBeat.o(175639);
       return true;
@@ -1218,20 +1218,20 @@ public class WebView
   
   public boolean isXWalkKernel()
   {
-    return this.Mqk == c.Mqu;
+    return this.MNo == WebView.c.MNy;
   }
   
   public void leaveFullscreen()
   {
     AppMethodBeat.i(156893);
-    this.Mqj.leaveFullscreen();
+    this.MNn.leaveFullscreen();
     AppMethodBeat.o(156893);
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(156863);
-    this.Mqj.loadData(paramString1, paramString2, paramString3);
+    this.MNn.loadData(paramString1, paramString2, paramString3);
     com.tencent.xweb.util.g.a(paramString1, this);
     reportLoadByReason();
     AppMethodBeat.o(156863);
@@ -1240,7 +1240,7 @@ public class WebView
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(156871);
-    this.Mqj.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    this.MNn.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
     com.tencent.xweb.util.g.a(paramString1, this);
     AppMethodBeat.o(156871);
   }
@@ -1248,13 +1248,13 @@ public class WebView
   public void loadUrl(String paramString)
   {
     AppMethodBeat.i(156884);
-    if (this.Mql.bba(paramString))
+    if (this.MNp.bcD(paramString))
     {
-      this.Mqj.loadUrl("http://weixin.qq.com/");
+      this.MNn.loadUrl("http://weixin.qq.com/");
       AppMethodBeat.o(156884);
       return;
     }
-    this.Mqj.loadUrl(paramString);
+    this.MNn.loadUrl(paramString);
     com.tencent.xweb.util.g.a(paramString, this);
     reportLoadByReason();
     AppMethodBeat.o(156884);
@@ -1264,13 +1264,13 @@ public class WebView
   public void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(156874);
-    if (this.Mql.bba(paramString))
+    if (this.MNp.bcD(paramString))
     {
-      this.Mqj.loadUrl("http://weixin.qq.com/");
+      this.MNn.loadUrl("http://weixin.qq.com/");
       AppMethodBeat.o(156874);
       return;
     }
-    this.Mqj.loadUrl(paramString, paramMap);
+    this.MNn.loadUrl(paramString, paramMap);
     com.tencent.xweb.util.g.a(paramString, this);
     reportLoadByReason();
     AppMethodBeat.o(156874);
@@ -1282,7 +1282,7 @@ public class WebView
     AppMethodBeat.i(156886);
     com.tencent.xweb.internal.f localf = com.tencent.xweb.internal.i.f(getCurWebType());
     if (localf != null) {
-      localf.gbJ().baU("xprofile.frameCost");
+      localf.ggl().bcx("xprofile.frameCost");
     }
     AppMethodBeat.o(156886);
   }
@@ -1293,7 +1293,7 @@ public class WebView
     AppMethodBeat.i(156887);
     com.tencent.xweb.internal.f localf = com.tencent.xweb.internal.i.f(getCurWebType());
     if (localf != null) {
-      localf.gbJ().a(paraml);
+      localf.ggl().a(paraml);
     }
     AppMethodBeat.o(156887);
   }
@@ -1301,28 +1301,28 @@ public class WebView
   public void onHide()
   {
     AppMethodBeat.i(156906);
-    this.Mqj.onHide();
+    this.MNn.onHide();
     AppMethodBeat.o(156906);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(156830);
-    this.Mqj.onPause();
+    this.MNn.onPause();
     AppMethodBeat.o(156830);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(156829);
-    this.Mqj.onResume();
+    this.MNn.onResume();
     AppMethodBeat.o(156829);
   }
   
   public void onShow()
   {
     AppMethodBeat.i(156905);
-    this.Mqj.onShow();
+    this.MNn.onShow();
     AppMethodBeat.o(156905);
   }
   
@@ -1330,8 +1330,8 @@ public class WebView
   {
     AppMethodBeat.i(156833);
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.Mqj != null) {
-      this.Mqj.getView().setVisibility(paramInt);
+    if (this.MNn != null) {
+      this.MNn.getView().setVisibility(paramInt);
     }
     AppMethodBeat.o(156833);
   }
@@ -1341,7 +1341,7 @@ public class WebView
   public boolean overlayHorizontalScrollbar()
   {
     AppMethodBeat.i(156870);
-    boolean bool = this.Mqj.overlayHorizontalScrollbar();
+    boolean bool = this.MNn.overlayHorizontalScrollbar();
     AppMethodBeat.o(156870);
     return bool;
   }
@@ -1349,36 +1349,36 @@ public class WebView
   public void reload()
   {
     AppMethodBeat.i(156861);
-    this.Mqj.reload();
+    this.MNn.reload();
     AppMethodBeat.o(156861);
   }
   
   public void removeJavascriptInterface(String paramString)
   {
     AppMethodBeat.i(156842);
-    this.Mqj.removeJavascriptInterface(paramString);
+    this.MNn.removeJavascriptInterface(paramString);
     AppMethodBeat.o(156842);
   }
   
   public void reportLoadByReason()
   {
     AppMethodBeat.i(156915);
-    com.tencent.xweb.util.g.aiD(this.Mqn);
-    this.Mqn = -1;
+    com.tencent.xweb.util.g.ajm(this.MNr);
+    this.MNr = -1;
     AppMethodBeat.o(156915);
   }
   
   public boolean savePage(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(156898);
-    boolean bool = this.Mqj.savePage(paramString1, paramString2, paramInt);
+    boolean bool = this.MNn.savePage(paramString1, paramString2, paramInt);
     AppMethodBeat.o(156898);
     return bool;
   }
   
   public void setA8keyReason(int paramInt)
   {
-    this.Mqn = paramInt;
+    this.MNr = paramInt;
   }
   
   public void setBackgroundColor(int paramInt)
@@ -1386,8 +1386,8 @@ public class WebView
     AppMethodBeat.i(156832);
     org.xwalk.core.Log.i("xweb.WebView", "setBackgroundColor color:" + Integer.toHexString(paramInt));
     super.setBackgroundColor(paramInt);
-    if (this.Mqj != null) {
-      this.Mqj.getWebViewUI().setBackgroundColor(paramInt);
+    if (this.MNn != null) {
+      this.MNn.getWebViewUI().setBackgroundColor(paramInt);
     }
     AppMethodBeat.o(156832);
   }
@@ -1395,21 +1395,21 @@ public class WebView
   public void setBottomHeight(int paramInt)
   {
     AppMethodBeat.i(156904);
-    this.Mqj.setBottomHeight(paramInt);
+    this.MNn.setBottomHeight(paramInt);
     AppMethodBeat.o(156904);
   }
   
   public void setDownloadListener(DownloadListener paramDownloadListener)
   {
     AppMethodBeat.i(156882);
-    this.Mqj.setDownloadListener(paramDownloadListener);
+    this.MNn.setDownloadListener(paramDownloadListener);
     AppMethodBeat.o(156882);
   }
   
   public void setFindListener(WebView.FindListener paramFindListener)
   {
     AppMethodBeat.i(156883);
-    this.Mqj.setFindListener(paramFindListener);
+    this.MNn.setFindListener(paramFindListener);
     AppMethodBeat.o(156883);
   }
   
@@ -1446,47 +1446,47 @@ public class WebView
   public void setHorizontalScrollBarEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(156909);
-    this.Mqj.setHorizontalScrollBarEnabled(paramBoolean);
+    this.MNn.setHorizontalScrollBarEnabled(paramBoolean);
     AppMethodBeat.o(156909);
   }
   
   public void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(197079);
-    this.Mqj.setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(197079);
+    AppMethodBeat.i(217397);
+    this.MNn.setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
+    AppMethodBeat.o(217397);
   }
   
   public void setJSExceptionListener(ae paramae)
   {
     AppMethodBeat.i(156896);
-    this.Mqj.setJSExceptionListener(paramae);
+    this.MNn.setJSExceptionListener(paramae);
     AppMethodBeat.o(156896);
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.KRn = paramOnLongClickListener;
+    this.LnL = paramOnLongClickListener;
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(156831);
-    this.Mqj.getWebViewUI().setOnTouchListener(paramOnTouchListener);
+    this.MNn.getWebViewUI().setOnTouchListener(paramOnTouchListener);
     AppMethodBeat.o(156831);
   }
   
   public void setVerticalScrollBarEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(156908);
-    this.Mqj.setVerticalScrollBarEnabled(paramBoolean);
+    this.MNn.setVerticalScrollBarEnabled(paramBoolean);
     AppMethodBeat.o(156908);
   }
   
   public u setVideoJsCallback(v paramv)
   {
     AppMethodBeat.i(156911);
-    paramv = this.Mqj.setVideoJsCallback(paramv);
+    paramv = this.MNn.setVideoJsCallback(paramv);
     AppMethodBeat.o(156911);
     return paramv;
   }
@@ -1495,16 +1495,16 @@ public class WebView
   {
     AppMethodBeat.i(156881);
     if (paramx != null) {
-      paramx.MpP = this.Mqj.getDefalutOpProvider();
+      paramx.MMT = this.MNn.getDefalutOpProvider();
     }
-    this.Mqj.setWebChromeClient(paramx);
+    this.MNn.setWebChromeClient(paramx);
     AppMethodBeat.o(156881);
   }
   
   public void setWebViewCallbackClient(ab paramab)
   {
     AppMethodBeat.i(156844);
-    this.Mqj.setWebViewCallbackClient(paramab);
+    this.MNn.setWebViewCallbackClient(paramab);
     AppMethodBeat.o(156844);
   }
   
@@ -1512,31 +1512,31 @@ public class WebView
   {
     AppMethodBeat.i(156880);
     if (paramac != null) {
-      paramac.MpP = this.Mqj.getDefalutOpProvider();
+      paramac.MMT = this.MNn.getDefalutOpProvider();
     }
-    this.Mqj.setWebViewClient(paramac);
+    this.MNn.setWebViewClient(paramac);
     AppMethodBeat.o(156880);
   }
   
   public void setWebViewClientExtension(com.tencent.xweb.x5.export.external.extension.proxy.a parama)
   {
     AppMethodBeat.i(156821);
-    this.Mqj.setWebViewClientExtension(parama);
+    this.MNn.setWebViewClientExtension(parama);
     AppMethodBeat.o(156821);
   }
   
   public void smoothScroll(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(156903);
-    this.Mqj.smoothScroll(paramInt1, paramInt2, paramLong);
+    this.MNn.smoothScroll(paramInt1, paramInt2, paramLong);
     AppMethodBeat.o(156903);
   }
   
   public void startLongScreenshot(q paramq, boolean paramBoolean)
   {
     AppMethodBeat.i(156885);
-    if (((this.Mqj instanceof com.tencent.xweb.internal.g)) && (this.Mqk == c.Mqu)) {
-      ((com.tencent.xweb.internal.g)this.Mqj).a(((ViewGroup)getWebViewUI()).getChildAt(0), paramBoolean, paramq);
+    if (((this.MNn instanceof com.tencent.xweb.internal.g)) && (this.MNo == WebView.c.MNy)) {
+      ((com.tencent.xweb.internal.g)this.MNn).a(((ViewGroup)getWebViewUI()).getChildAt(0), paramBoolean, paramq);
     }
     AppMethodBeat.o(156885);
   }
@@ -1544,21 +1544,21 @@ public class WebView
   public void stopLoading()
   {
     AppMethodBeat.i(156843);
-    this.Mqj.stopLoading();
+    this.MNn.stopLoading();
     AppMethodBeat.o(156843);
   }
   
   public void super_computeScroll()
   {
     AppMethodBeat.i(156826);
-    this.Mqj.super_computeScroll();
+    this.MNn.super_computeScroll();
     AppMethodBeat.o(156826);
   }
   
   public boolean super_dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(156825);
-    boolean bool = this.Mqj.super_dispatchTouchEvent(paramMotionEvent);
+    boolean bool = this.MNn.super_dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(156825);
     return bool;
   }
@@ -1566,7 +1566,7 @@ public class WebView
   public boolean super_onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(156823);
-    boolean bool = this.Mqj.super_onInterceptTouchEvent(paramMotionEvent);
+    boolean bool = this.MNn.super_onInterceptTouchEvent(paramMotionEvent);
     AppMethodBeat.o(156823);
     return bool;
   }
@@ -1574,21 +1574,21 @@ public class WebView
   public void super_onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(156824);
-    this.Mqj.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    this.MNn.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     AppMethodBeat.o(156824);
   }
   
   public void super_onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(156827);
-    this.Mqj.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.MNn.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(156827);
   }
   
   public boolean super_onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(156822);
-    boolean bool = this.Mqj.super_onTouchEvent(paramMotionEvent);
+    boolean bool = this.MNn.super_onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(156822);
     return bool;
   }
@@ -1596,7 +1596,7 @@ public class WebView
   public boolean super_overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     AppMethodBeat.i(156828);
-    paramBoolean = this.Mqj.super_overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
+    paramBoolean = this.MNn.super_overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
     AppMethodBeat.o(156828);
     return paramBoolean;
   }
@@ -1604,7 +1604,7 @@ public class WebView
   public boolean supportFeature(int paramInt)
   {
     AppMethodBeat.i(156902);
-    boolean bool = this.Mqj.supportFeature(paramInt);
+    boolean bool = this.MNn.supportFeature(paramInt);
     AppMethodBeat.o(156902);
     return bool;
   }
@@ -1612,7 +1612,7 @@ public class WebView
   public boolean zoomIn()
   {
     AppMethodBeat.i(156873);
-    boolean bool = this.Mqj.zoomIn();
+    boolean bool = this.MNn.zoomIn();
     AppMethodBeat.o(156873);
     return bool;
   }
@@ -1620,7 +1620,7 @@ public class WebView
   public boolean zoomOut()
   {
     AppMethodBeat.i(156872);
-    boolean bool = this.Mqj.zoomOut();
+    boolean bool = this.MNn.zoomOut();
     AppMethodBeat.o(156872);
     return bool;
   }
@@ -1630,10 +1630,10 @@ public class WebView
     static
     {
       AppMethodBeat.i(156802);
-      Mqp = new a("NOT_HOOK", 0);
-      Mqq = new a("HOOK_NOT_EVALUTE_JS", 1);
-      Mqr = new a("HOOK_EVALUTE_JS", 2);
-      Mqs = new a[] { Mqp, Mqq, Mqr };
+      MNt = new a("NOT_HOOK", 0);
+      MNu = new a("HOOK_NOT_EVALUTE_JS", 1);
+      MNv = new a("HOOK_EVALUTE_JS", 2);
+      MNw = new a[] { MNt, MNu, MNv };
       AppMethodBeat.o(156802);
     }
     
@@ -1646,26 +1646,10 @@ public class WebView
     public int mType = 0;
   }
   
-  public static enum c
-  {
-    static
-    {
-      AppMethodBeat.i(156805);
-      Mqt = new c("WV_KIND_NONE", 0);
-      Mqu = new c("WV_KIND_CW", 1);
-      Mqv = new c("WV_KIND_X5", 2);
-      Mqw = new c("WV_KIND_SYS", 3);
-      Mqx = new c[] { Mqt, Mqu, Mqv, Mqw };
-      AppMethodBeat.o(156805);
-    }
-    
-    private c() {}
-  }
-  
   static final class d
     extends MutableContextWrapper
   {
-    IWebView Mqy;
+    IWebView MNC;
     
     public d(Context paramContext)
     {
@@ -1676,8 +1660,8 @@ public class WebView
     {
       AppMethodBeat.i(156806);
       super.setBaseContext(paramContext);
-      if (!y.gaM().MpW) {
-        ah.B("BASE_CONTEXT_CHANGED", this.Mqy);
+      if (!y.gfo().MNa) {
+        ah.B("BASE_CONTEXT_CHANGED", this.MNC);
       }
       AppMethodBeat.o(156806);
     }

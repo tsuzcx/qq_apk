@@ -1,26 +1,24 @@
 package com.tencent.mm.plugin.appbrand;
 
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.appcache.q;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.i;
 import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
 import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public abstract class d
   extends i
 {
-  public p Fg()
+  public com.tencent.mm.plugin.appbrand.appstorage.q Fl()
   {
     if (!isRunning()) {
-      return super.Fg();
+      return super.Fl();
     }
-    return getRuntime().Fg();
+    return getRuntime().Fl();
   }
   
   public final <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass)
@@ -59,32 +57,32 @@ public abstract class d
     return true;
   }
   
-  public final q aVC()
+  public final com.tencent.mm.plugin.appbrand.appcache.q aWb()
   {
     AppBrandRuntime localAppBrandRuntime = getRuntime();
     if (localAppBrandRuntime == null) {
       return null;
     }
-    return bf.O(localAppBrandRuntime);
+    return bg.M(localAppBrandRuntime);
   }
   
-  public final com.tencent.mm.plugin.appbrand.a.b aVD()
+  public final com.tencent.mm.plugin.appbrand.a.b aWc()
   {
     if (!isRunning()) {
-      return com.tencent.mm.plugin.appbrand.a.b.jKR;
+      return com.tencent.mm.plugin.appbrand.a.b.jOd;
     }
-    return getRuntime().jwS.jKT.bbg();
+    return getRuntime().jzQ.jOf.bbI();
   }
   
-  public final m aVE()
+  public final m aWd()
   {
     if (!isRunning()) {
-      return super.aVE();
+      return super.aWd();
     }
-    return getRuntime().iDP;
+    return getRuntime().iGI;
   }
   
-  public final ICommLibReader aVF()
+  public final ICommLibReader aWe()
   {
     return (ICommLibReader)K(ICommLibReader.class);
   }
@@ -129,7 +127,7 @@ public abstract class d
   {
     Object localObject1;
     if (getRuntime() == null) {
-      localObject1 = aj.getContext();
+      localObject1 = ak.getContext();
     }
     Object localObject2;
     do
@@ -137,16 +135,16 @@ public abstract class d
       do
       {
         return localObject1;
-        localObject2 = a.jq(getRuntime().mContext);
+        localObject2 = a.jw(getRuntime().mContext);
         localObject1 = localObject2;
       } while (localObject2 != null);
       localObject2 = getRuntime().mContext;
       localObject1 = localObject2;
     } while (localObject2 != null);
-    return aj.getContext();
+    return ak.getContext();
   }
   
-  public abstract com.tencent.mm.plugin.appbrand.r.a.c getWindowAndroid();
+  public abstract com.tencent.mm.plugin.appbrand.platform.window.c getWindowAndroid();
   
   public boolean isRunning()
   {
@@ -156,7 +154,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.d
  * JD-Core Version:    0.7.0.1
  */

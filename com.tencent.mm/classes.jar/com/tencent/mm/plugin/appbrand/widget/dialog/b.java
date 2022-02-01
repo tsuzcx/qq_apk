@@ -15,11 +15,11 @@ public class b
   implements k
 {
   private View contentView;
-  private m iDj;
-  private DialogInterface.OnCancelListener jjc;
-  private DialogInterface.OnDismissListener naV;
-  private DialogInterface.OnShowListener ncc;
-  private boolean ncd;
+  private m iGc;
+  private DialogInterface.OnCancelListener jlV;
+  private DialogInterface.OnDismissListener ngd;
+  private DialogInterface.OnShowListener ngl;
+  private boolean ngm;
   private boolean ov;
   private boolean ow;
   
@@ -28,7 +28,7 @@ public class b
     super(paramContext, (byte)0);
     AppMethodBeat.i(135470);
     this.ov = true;
-    this.ncd = false;
+    this.ngm = false;
     setContentView(super.getContentView());
     setCanceledOnTouchOutside(false);
     AppMethodBeat.o(135470);
@@ -38,25 +38,25 @@ public class b
   {
     super(paramContext, (byte)0);
     this.ov = true;
-    this.ncd = false;
+    this.ngm = false;
   }
   
   public final void a(m paramm)
   {
     AppMethodBeat.i(135471);
-    if (this.ncc != null) {
-      this.ncc.onShow(this);
+    if (this.ngl != null) {
+      this.ngl.onShow(this);
     }
-    this.iDj = paramm;
+    this.iGc = paramm;
     AppMethodBeat.o(135471);
   }
   
-  public final boolean aOv()
+  public final boolean aOS()
   {
     return false;
   }
   
-  public final boolean aOw()
+  public final boolean aOT()
   {
     return this.ow;
   }
@@ -64,17 +64,17 @@ public class b
   public void dismiss()
   {
     AppMethodBeat.i(135478);
-    if (this.ncd)
+    if (this.ngm)
     {
       AppMethodBeat.o(135478);
       return;
     }
-    this.ncd = true;
-    if (this.iDj != null)
+    this.ngm = true;
+    if (this.iGc != null)
     {
-      this.iDj.c(this);
-      if (this.naV != null) {
-        this.naV.onDismiss(this);
+      this.iGc.c(this);
+      if (this.ngd != null) {
+        this.ngd.onDismiss(this);
       }
     }
     AppMethodBeat.o(135478);
@@ -107,13 +107,13 @@ public class b
   public final void onCancel()
   {
     AppMethodBeat.i(135477);
-    if (this.jjc != null) {
-      this.jjc.onCancel(this);
+    if (this.jlV != null) {
+      this.jlV.onCancel(this);
     }
     AppMethodBeat.o(135477);
   }
   
-  public final void qy(int paramInt) {}
+  public final void qB(int paramInt) {}
   
   public void setCancelable(boolean paramBoolean)
   {
@@ -163,7 +163,7 @@ public class b
   {
     AppMethodBeat.i(135482);
     super.setOnCancelListener(paramOnCancelListener);
-    this.jjc = paramOnCancelListener;
+    this.jlV = paramOnCancelListener;
     AppMethodBeat.o(135482);
   }
   
@@ -171,7 +171,7 @@ public class b
   {
     AppMethodBeat.i(135479);
     super.setOnDismissListener(paramOnDismissListener);
-    this.naV = paramOnDismissListener;
+    this.ngd = paramOnDismissListener;
     AppMethodBeat.o(135479);
   }
   
@@ -179,7 +179,7 @@ public class b
   {
     AppMethodBeat.i(135476);
     super.setOnShowListener(paramOnShowListener);
-    this.ncc = paramOnShowListener;
+    this.ngl = paramOnShowListener;
     AppMethodBeat.o(135476);
   }
   
@@ -187,7 +187,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.b
  * JD-Core Version:    0.7.0.1
  */

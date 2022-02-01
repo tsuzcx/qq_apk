@@ -2,12 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class es
   extends b
 {
-  public a dpP;
-  public b dpQ;
+  public a dqS;
+  public b dqT;
   
   public es()
   {
@@ -16,29 +17,24 @@ public final class es
   
   private es(byte paramByte)
   {
-    AppMethodBeat.i(116006);
-    this.dpP = new a();
-    this.dpQ = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116005);
+    this.dqS = new a();
+    this.dqT = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116006);
+    AppMethodBeat.o(116005);
   }
   
   public static final class a
   {
-    public String cUi;
-    public byte[] data;
-    public String doD;
+    public List dqf;
   }
   
-  public static final class b
-  {
-    public boolean doF;
-  }
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.es
  * JD-Core Version:    0.7.0.1
  */

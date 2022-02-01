@@ -2,11 +2,9 @@ package d.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ae;
-import d.a.j;
 import d.a.x;
 import d.a.y;
 import d.g.b.p;
-import d.k.h;
 import d.l.b.a.b.e.b.c;
 import d.l.b.a.b.e.c.a.d;
 import d.l.b.a.b.e.c.a.d.b;
@@ -25,51 +23,51 @@ import java.util.Set;
 public final class g
   implements c
 {
-  private static final List<String> NpZ;
-  private static final Map<String, Integer> Nqa;
-  public static final a Nqb;
-  private final Set<Integer> NpX;
-  private final a.d NpY;
-  private final List<a.d.b> paT;
+  private static final List<String> NNf;
+  private static final Map<String, Integer> NNg;
+  public static final a NNh;
+  private final Set<Integer> NNd;
+  private final a.d NNe;
+  private final List<a.d.b> phx;
   private final String[] strings;
   
   static
   {
     AppMethodBeat.i(59250);
-    Nqb = new a((byte)0);
-    Object localObject1 = j.listOf(new String[] { "kotlin/Any", "kotlin/Nothing", "kotlin/Unit", "kotlin/Throwable", "kotlin/Number", "kotlin/Byte", "kotlin/Double", "kotlin/Float", "kotlin/Int", "kotlin/Long", "kotlin/Short", "kotlin/Boolean", "kotlin/Char", "kotlin/CharSequence", "kotlin/String", "kotlin/Comparable", "kotlin/Enum", "kotlin/Array", "kotlin/ByteArray", "kotlin/DoubleArray", "kotlin/FloatArray", "kotlin/IntArray", "kotlin/LongArray", "kotlin/ShortArray", "kotlin/BooleanArray", "kotlin/CharArray", "kotlin/Cloneable", "kotlin/Annotation", "kotlin/collections/Iterable", "kotlin/collections/MutableIterable", "kotlin/collections/Collection", "kotlin/collections/MutableCollection", "kotlin/collections/List", "kotlin/collections/MutableList", "kotlin/collections/Set", "kotlin/collections/MutableSet", "kotlin/collections/Map", "kotlin/collections/MutableMap", "kotlin/collections/Map.Entry", "kotlin/collections/MutableMap.MutableEntry", "kotlin/collections/Iterator", "kotlin/collections/MutableIterator", "kotlin/collections/ListIterator", "kotlin/collections/MutableListIterator" });
-    NpZ = (List)localObject1;
-    Object localObject2 = j.o((Iterable)localObject1);
-    localObject1 = (Map)new LinkedHashMap(h.lp(ae.aji(j.a((Iterable)localObject2, 10)), 16));
+    NNh = new a((byte)0);
+    Object localObject1 = d.a.j.listOf(new String[] { "kotlin/Any", "kotlin/Nothing", "kotlin/Unit", "kotlin/Throwable", "kotlin/Number", "kotlin/Byte", "kotlin/Double", "kotlin/Float", "kotlin/Int", "kotlin/Long", "kotlin/Short", "kotlin/Boolean", "kotlin/Char", "kotlin/CharSequence", "kotlin/String", "kotlin/Comparable", "kotlin/Enum", "kotlin/Array", "kotlin/ByteArray", "kotlin/DoubleArray", "kotlin/FloatArray", "kotlin/IntArray", "kotlin/LongArray", "kotlin/ShortArray", "kotlin/BooleanArray", "kotlin/CharArray", "kotlin/Cloneable", "kotlin/Annotation", "kotlin/collections/Iterable", "kotlin/collections/MutableIterable", "kotlin/collections/Collection", "kotlin/collections/MutableCollection", "kotlin/collections/List", "kotlin/collections/MutableList", "kotlin/collections/Set", "kotlin/collections/MutableSet", "kotlin/collections/Map", "kotlin/collections/MutableMap", "kotlin/collections/Map.Entry", "kotlin/collections/MutableMap.MutableEntry", "kotlin/collections/Iterator", "kotlin/collections/MutableIterator", "kotlin/collections/ListIterator", "kotlin/collections/MutableListIterator" });
+    NNf = (List)localObject1;
+    Object localObject2 = d.a.j.o((Iterable)localObject1);
+    localObject1 = (Map)new LinkedHashMap(d.k.j.lw(ae.ajS(d.a.j.a((Iterable)localObject2, 10)), 16));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Object localObject3 = ((Iterator)localObject2).next();
       ((Map)localObject1).put((String)((y)localObject3).value, Integer.valueOf(((y)localObject3).index));
     }
-    Nqa = (Map)localObject1;
+    NNg = (Map)localObject1;
     AppMethodBeat.o(59250);
   }
   
   public g(a.d paramd, String[] paramArrayOfString)
   {
     AppMethodBeat.i(59249);
-    this.NpY = paramd;
+    this.NNe = paramd;
     this.strings = paramArrayOfString;
-    paramd = this.NpY.Npw;
+    paramd = this.NNe.NMC;
     if (paramd.isEmpty()) {}
-    for (paramd = (Set)x.MKG;; paramd = j.n((Iterable)paramd))
+    for (paramd = (Set)x.NhJ;; paramd = d.a.j.n((Iterable)paramd))
     {
-      this.NpX = paramd;
+      this.NNd = paramd;
       paramd = new ArrayList();
-      paramArrayOfString = this.NpY.Npv;
+      paramArrayOfString = this.NNe.NMB;
       paramd.ensureCapacity(paramArrayOfString.size());
       paramArrayOfString = paramArrayOfString.iterator();
       while (paramArrayOfString.hasNext())
       {
         a.d.b localb = (a.d.b)paramArrayOfString.next();
         p.g(localb, "record");
-        int j = localb.Npz;
+        int j = localb.NMF;
         int i = 0;
         while (i < j)
         {
@@ -79,11 +77,11 @@ public final class g
       }
     }
     paramd.trimToSize();
-    this.paT = ((List)paramd);
+    this.phx = ((List)paramd);
     AppMethodBeat.o(59249);
   }
   
-  public final String akL(int paramInt)
+  public final String alv(int paramInt)
   {
     AppMethodBeat.i(59247);
     String str = getString(paramInt);
@@ -91,10 +89,10 @@ public final class g
     return str;
   }
   
-  public final boolean akM(int paramInt)
+  public final boolean alw(int paramInt)
   {
     AppMethodBeat.i(59248);
-    boolean bool = this.NpX.contains(Integer.valueOf(paramInt));
+    boolean bool = this.NNd.contains(Integer.valueOf(paramInt));
     AppMethodBeat.o(59248);
     return bool;
   }
@@ -102,10 +100,10 @@ public final class g
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(59246);
-    Object localObject3 = (a.d.b)this.paT.get(paramInt);
-    if (((a.d.b)localObject3).gqP())
+    Object localObject3 = (a.d.b)this.phx.get(paramInt);
+    if (((a.d.b)localObject3).gvr())
     {
-      localObject1 = ((a.d.b)localObject3).NpB;
+      localObject1 = ((a.d.b)localObject3).NMH;
       if ((localObject1 instanceof String)) {
         localObject1 = (String)localObject1;
       }
@@ -115,10 +113,10 @@ public final class g
     for (;;)
     {
       localObject2 = localObject1;
-      if (((a.d.b)localObject3).NpD.size() < 2) {
+      if (((a.d.b)localObject3).NMJ.size() < 2) {
         break label338;
       }
-      localObject2 = ((a.d.b)localObject3).NpD;
+      localObject2 = ((a.d.b)localObject3).NMJ;
       localObject4 = (Integer)((List)localObject2).get(0);
       Integer localInteger = (Integer)((List)localObject2).get(1);
       p.g(localObject4, "begin");
@@ -146,16 +144,16 @@ public final class g
       AppMethodBeat.o(59246);
       throw ((Throwable)localObject1);
       localObject2 = (d)localObject1;
-      localObject1 = ((d)localObject2).ffY();
-      if (((d)localObject2).grp()) {
-        ((a.d.b)localObject3).NpB = localObject1;
+      localObject1 = ((d)localObject2).fjO();
+      if (((d)localObject2).gvR()) {
+        ((a.d.b)localObject3).NMH = localObject1;
       }
       continue;
       int j;
-      if (((a.d.b)localObject3).gqO())
+      if (((a.d.b)localObject3).gvq())
       {
-        i = ((Collection)NpZ).size();
-        j = ((a.d.b)localObject3).NpA;
+        i = ((Collection)NNf).size();
+        j = ((a.d.b)localObject3).NMG;
         if (j >= 0) {
           break label295;
         }
@@ -166,27 +164,27 @@ public final class g
         localObject1 = this.strings[paramInt];
         break;
       }
-      localObject1 = (String)NpZ.get(((a.d.b)localObject3).NpA);
+      localObject1 = (String)NNf.get(((a.d.b)localObject3).NMG);
     }
     Object localObject2 = ((String)localObject1).substring(paramInt, i);
     p.g(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     label338:
     Object localObject1 = localObject2;
-    if (((a.d.b)localObject3).NpF.size() >= 2)
+    if (((a.d.b)localObject3).NML.size() >= 2)
     {
-      localObject4 = ((a.d.b)localObject3).NpF;
+      localObject4 = ((a.d.b)localObject3).NML;
       localObject1 = (Integer)((List)localObject4).get(0);
       localObject4 = (Integer)((List)localObject4).get(1);
       p.g(localObject2, "string");
       localObject1 = n.a((String)localObject2, (char)((Integer)localObject1).intValue(), (char)((Integer)localObject4).intValue());
     }
-    localObject2 = ((a.d.b)localObject3).NpC;
+    localObject2 = ((a.d.b)localObject3).NMI;
     localObject3 = localObject2;
     if (localObject2 == null) {
-      localObject3 = a.d.b.b.NpH;
+      localObject3 = a.d.b.b.NMN;
     }
     localObject2 = localObject1;
-    switch (h.cpQ[localObject3.ordinal()])
+    switch (h.cqt[localObject3.ordinal()])
     {
     default: 
       localObject2 = localObject1;
@@ -222,7 +220,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.g
  * JD-Core Version:    0.7.0.1
  */

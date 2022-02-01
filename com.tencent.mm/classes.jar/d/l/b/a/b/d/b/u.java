@@ -7,25 +7,25 @@ import java.util.List;
 
 public abstract interface u
 {
-  public abstract List<String> bcw(String paramString);
+  public abstract List<String> bea(String paramString);
   
   public static final class a
     implements u
   {
-    public static final a Njf;
+    public static final a NGl;
     
     static
     {
       AppMethodBeat.i(58248);
-      Njf = new a();
+      NGl = new a();
       AppMethodBeat.o(58248);
     }
     
-    public final List<String> bcw(String paramString)
+    public final List<String> bea(String paramString)
     {
       AppMethodBeat.i(58247);
       p.h(paramString, "packageFqName");
-      paramString = (List)v.MKE;
+      paramString = (List)v.NhH;
       AppMethodBeat.o(58247);
       return paramString;
     }

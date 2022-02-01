@@ -6,20 +6,20 @@ import java.io.Writer;
 final class GLTextureView$l
   extends Writer
 {
-  private StringBuilder zKr;
+  private StringBuilder Aby;
   
   GLTextureView$l()
   {
     AppMethodBeat.i(97204);
-    this.zKr = new StringBuilder();
+    this.Aby = new StringBuilder();
     AppMethodBeat.o(97204);
   }
   
   private void fq()
   {
     AppMethodBeat.i(97208);
-    if (this.zKr.length() > 0) {
-      this.zKr.delete(0, this.zKr.length());
+    if (this.Aby.length() > 0) {
+      this.Aby.delete(0, this.Aby.length());
     }
     AppMethodBeat.o(97208);
   }
@@ -52,7 +52,7 @@ final class GLTextureView$l
       {
         i += 1;
         break;
-        this.zKr.append(c);
+        this.Aby.append(c);
       }
     }
     AppMethodBeat.o(97207);
@@ -60,7 +60,7 @@ final class GLTextureView$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.GLTextureView.l
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public final class j
   public final u<Drawable> a(Context paramContext, u<Drawable> paramu, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(77404);
-    Object localObject2 = c.ad(paramContext).aCk;
+    Object localObject2 = c.ae(paramContext).aCk;
     Object localObject1 = (Drawable)paramu.get();
     localObject2 = i.a((e)localObject2, (Drawable)localObject1, paramInt1, paramInt2);
     if (localObject2 == null)

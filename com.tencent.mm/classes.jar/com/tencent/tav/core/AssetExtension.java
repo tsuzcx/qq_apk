@@ -13,32 +13,32 @@ public class AssetExtension
   
   public AssetExtension(String paramString)
   {
-    AppMethodBeat.i(217760);
+    AppMethodBeat.i(214398);
     this.extensionMap = new ConcurrentHashMap();
     this.scene = paramString;
-    AppMethodBeat.o(217760);
+    AppMethodBeat.o(214398);
   }
   
   public void addExtension(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(217761);
+    AppMethodBeat.i(214399);
     this.extensionMap.put(paramString, paramObject);
-    AppMethodBeat.o(217761);
+    AppMethodBeat.o(214399);
   }
   
   public boolean containsKey(String paramString)
   {
-    AppMethodBeat.i(217762);
+    AppMethodBeat.i(214400);
     boolean bool = this.extensionMap.containsKey(paramString);
-    AppMethodBeat.o(217762);
+    AppMethodBeat.o(214400);
     return bool;
   }
   
   public boolean containsValue(String paramString)
   {
-    AppMethodBeat.i(217763);
+    AppMethodBeat.i(214401);
     boolean bool = this.extensionMap.containsValue(paramString);
-    AppMethodBeat.o(217763);
+    AppMethodBeat.o(214401);
     return bool;
   }
   
@@ -49,9 +49,9 @@ public class AssetExtension
   
   public Object remove(String paramString)
   {
-    AppMethodBeat.i(217764);
+    AppMethodBeat.i(214402);
     paramString = this.extensionMap.remove(paramString);
-    AppMethodBeat.o(217764);
+    AppMethodBeat.o(214402);
     return paramString;
   }
 }

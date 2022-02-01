@@ -9,30 +9,30 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
 {
-  List<Runnable> HUV;
-  c HUW;
+  List<Runnable> Ipd;
+  c Ipe;
   private Context context;
-  private ServiceConnection oRd;
+  private ServiceConnection oXF;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(152748);
-    this.HUV = new LinkedList();
-    this.oRd = new ServiceConnection()
+    this.Ipd = new LinkedList();
+    this.oXF = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(152747);
-        d.this.HUW = c.a.K(paramAnonymousIBinder);
-        paramAnonymousComponentName = (Runnable[])d.this.HUV.toArray(new Runnable[d.this.HUV.size()]);
+        d.this.Ipe = c.a.L(paramAnonymousIBinder);
+        paramAnonymousComponentName = (Runnable[])d.this.Ipd.toArray(new Runnable[d.this.Ipd.size()]);
         int j = paramAnonymousComponentName.length;
         int i = 0;
         while (i < j)
@@ -43,18 +43,18 @@ public final class d
           }
           i += 1;
         }
-        d.this.HUV.clear();
+        d.this.Ipd.clear();
         AppMethodBeat.o(152747);
       }
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        d.this.HUW = null;
+        d.this.Ipe = null;
       }
     };
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = aj.getContext();
+      localContext = ak.getContext();
     }
     this.context = localContext;
     AppMethodBeat.o(152748);
@@ -66,13 +66,13 @@ public final class d
     if (isConnected()) {
       try
       {
-        this.HUW.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
+        this.Ipe.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
         AppMethodBeat.o(152752);
         return;
       }
       catch (RemoteException paramb)
       {
-        ad.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bt.n(paramb) });
+        ae.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bu.o(paramb) });
       }
     }
     AppMethodBeat.o(152752);
@@ -93,16 +93,16 @@ public final class d
       AppMethodBeat.o(152749);
       return;
     }
-    this.HUV.add(paramRunnable);
+    this.Ipd.add(paramRunnable);
     paramRunnable = new Intent(this.context, RemoteService.class);
-    this.context.bindService(paramRunnable, this.oRd, 1);
+    this.context.bindService(paramRunnable, this.oXF, 1);
     AppMethodBeat.o(152749);
   }
   
   public final boolean isConnected()
   {
     AppMethodBeat.i(152750);
-    if ((this.HUW != null) && (this.HUW.asBinder().isBinderAlive()))
+    if ((this.Ipe != null) && (this.Ipe.asBinder().isBinderAlive()))
     {
       AppMethodBeat.o(152750);
       return true;
@@ -114,10 +114,10 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(152751);
-    if ((this.HUW != null) && (this.oRd != null))
+    if ((this.Ipe != null) && (this.oXF != null))
     {
-      this.context.unbindService(this.oRd);
-      this.HUW = null;
+      this.context.unbindService(this.oXF);
+      this.Ipe = null;
     }
     this.context = null;
     AppMethodBeat.o(152751);

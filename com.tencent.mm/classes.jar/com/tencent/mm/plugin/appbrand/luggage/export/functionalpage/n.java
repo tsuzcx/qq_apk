@@ -8,28 +8,28 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.config.v;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class n
   implements k<IPCString, AppBrandSysConfigWC>
 {
   private static AppBrandSysConfigWC b(IPCString paramIPCString)
   {
     AppMethodBeat.i(50878);
-    ad.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
+    ae.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
     if (paramIPCString == null) {}
     try
     {
-      p.gfZ();
-      if (g.ajA().aiK())
+      p.gkB();
+      if (g.ajP().aiZ())
       {
-        paramIPCString = v.NB(paramIPCString.value);
+        paramIPCString = v.Oj(paramIPCString.value);
         if (paramIPCString != null)
         {
-          paramIPCString.cnf = AppBrandGlobalSystemConfig.bdT();
+          paramIPCString.cnh = AppBrandGlobalSystemConfig.bez();
           AppMethodBeat.o(50878);
           return paramIPCString;
         }

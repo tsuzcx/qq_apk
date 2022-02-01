@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="148.0dip" android:layout_height="wrap_content"
+<android.support.constraint.ConstraintLayout android:id="@id/i7x" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/g8t" android:layout_width="148.0dip" android:layout_height="172.0dip" android:scaleType="centerCrop" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
     <ImageView android:id="@id/dmh" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/c0" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />

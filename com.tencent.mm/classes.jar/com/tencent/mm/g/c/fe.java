@@ -8,26 +8,26 @@ public abstract class fe
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEU = "appId".hashCode();
-  private static final int eGk = "version".hashCode();
-  private static final int eGm = "pkgPath".hashCode();
-  private static final int foA;
+  private static final int eGD = "appId".hashCode();
+  private static final int eHT = "version".hashCode();
+  private static final int eHV = "pkgPath".hashCode();
+  private static final int fqB;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean eED = true;
-  private boolean eGf = true;
-  private boolean eGh = true;
+  private boolean eGm = true;
+  private boolean eHO = true;
+  private boolean eHQ = true;
   public String field_appId;
   public String field_pkgMd5;
   public String field_pkgPath;
   public int field_type;
   public int field_version;
-  private boolean jdField_for = true;
+  private boolean fqs = true;
   
   static
   {
-    foA = "pkgMd5".hashCode();
+    fqB = "pkgMd5".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,7 +43,7 @@ public abstract class fe
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eGD != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -54,13 +54,13 @@ public abstract class fe
       break label20;
       break;
       label60:
-      if (eGk == k) {
+      if (eHT == k) {
         this.field_version = paramCursor.getInt(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (foA == k) {
+      } else if (fqB == k) {
         this.field_pkgMd5 = paramCursor.getString(i);
-      } else if (eGm == k) {
+      } else if (eHV == k) {
         this.field_pkgPath = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -71,19 +71,19 @@ public abstract class fe
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eGf) {
+    if (this.eHO) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.jdField_for) {
+    if (this.fqs) {
       localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.eGh) {
+    if (this.eHQ) {
       localContentValues.put("pkgPath", this.field_pkgPath);
     }
     if (this.systemRowid > 0L) {

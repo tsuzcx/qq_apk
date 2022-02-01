@@ -16,35 +16,35 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class d
   implements Handler.Callback
 {
-  AtomicBoolean LUo;
-  Handler LVO;
-  final d LVP;
-  HashSet<e> LVQ;
-  LinkedList<e> LVR;
-  final LinkedList<c> LVS;
-  c[] LVT;
+  AtomicBoolean Mrj;
+  Handler MsJ;
+  final d MsK;
+  HashSet<e> MsL;
+  LinkedList<e> MsM;
+  final LinkedList<c> MsN;
+  c[] MsO;
   boolean isRunning;
   
   d(d paramd)
   {
     AppMethodBeat.i(183466);
-    this.LVO = com.tencent.e.e.d.a("SerialQueueLeader", this);
-    this.LUo = new AtomicBoolean(false);
+    this.MsJ = com.tencent.e.e.d.a("SerialQueueLeader", this);
+    this.Mrj = new AtomicBoolean(false);
     this.isRunning = false;
-    this.LVQ = new HashSet();
-    this.LVR = new LinkedList();
-    this.LVS = new LinkedList();
-    this.LVP = paramd;
+    this.MsL = new HashSet();
+    this.MsM = new LinkedList();
+    this.MsN = new LinkedList();
+    this.MsK = paramd;
     AppMethodBeat.o(183466);
   }
   
-  private LinkedList<e> fVZ()
+  private LinkedList<e> gay()
   {
     AppMethodBeat.i(183474);
     try
     {
-      LinkedList localLinkedList = new LinkedList(this.LVR);
-      localLinkedList.addAll(this.LVQ);
+      LinkedList localLinkedList = new LinkedList(this.MsM);
+      localLinkedList.addAll(this.MsL);
       return localLinkedList;
     }
     finally
@@ -58,7 +58,7 @@ public final class d
     AppMethodBeat.i(183467);
     try
     {
-      if (this.LUo.get()) {
+      if (this.Mrj.get()) {
         return;
       }
       if (parame == null) {
@@ -69,18 +69,18 @@ public final class d
       }
       if (paramLong > 0L)
       {
-        Message localMessage = this.LVO.obtainMessage();
+        Message localMessage = this.MsJ.obtainMessage();
         localMessage.obj = parame;
         localMessage.what = 1;
         try
         {
-          this.LVQ.add(parame);
-          this.LVO.sendMessageAtTime(localMessage, SystemClock.uptimeMillis() + paramLong);
+          this.MsL.add(parame);
+          this.MsJ.sendMessageAtTime(localMessage, SystemClock.uptimeMillis() + paramLong);
           return;
         }
         finally {}
       }
-      bool = this.LVR.isEmpty();
+      bool = this.MsM.isEmpty();
     }
     finally
     {
@@ -90,18 +90,18 @@ public final class d
     if ((bool) && (!this.isRunning))
     {
       this.isRunning = true;
-      ((d)Objects.requireNonNull(this.LVP)).a(parame);
+      ((d)Objects.requireNonNull(this.MsK)).a(parame);
       AppMethodBeat.o(183467);
       return;
     }
     if ((bool) || (paramLong == -9223372036854775808L)) {
-      this.LVR.addFirst(parame);
+      this.MsM.addFirst(parame);
     }
     for (;;)
     {
       AppMethodBeat.o(183467);
       return;
-      this.LVR.addLast(parame);
+      this.MsM.addLast(parame);
     }
   }
   
@@ -113,20 +113,20 @@ public final class d
     e locale;
     try
     {
-      localIterator = this.LVQ.iterator();
+      localIterator = this.MsL.iterator();
       while (localIterator.hasNext())
       {
         locale = (e)localIterator.next();
         if (paramb.c(locale))
         {
-          this.LVO.removeMessages(1, locale);
+          this.MsJ.removeMessages(1, locale);
           if (!locale.isCancelled()) {
             locale.cancel(false);
           }
           localIterator.remove();
         }
       }
-      localIterator = this.LVR.iterator();
+      localIterator = this.MsM.iterator();
     }
     finally
     {
@@ -151,13 +151,13 @@ public final class d
     AppMethodBeat.i(183472);
     try
     {
-      Iterator localIterator = this.LVQ.iterator();
+      Iterator localIterator = this.MsL.iterator();
       while (localIterator.hasNext()) {
         if (parama.d((e)localIterator.next())) {
           return true;
         }
       }
-      localIterator = this.LVR.iterator();
+      localIterator = this.MsM.iterator();
       while (localIterator.hasNext()) {
         if (parama.d((e)localIterator.next())) {
           return true;
@@ -177,8 +177,8 @@ public final class d
     e locale;
     try
     {
-      this.LVO.removeMessages(1);
-      Iterator localIterator1 = this.LVR.iterator();
+      this.MsJ.removeMessages(1);
+      Iterator localIterator1 = this.MsM.iterator();
       while (localIterator1.hasNext())
       {
         locale = (e)localIterator1.next();
@@ -186,13 +186,13 @@ public final class d
           locale.cancel(false);
         }
       }
-      this.LVR.clear();
+      this.MsM.clear();
     }
     finally
     {
       AppMethodBeat.o(183469);
     }
-    Iterator localIterator2 = this.LVQ.iterator();
+    Iterator localIterator2 = this.MsL.iterator();
     while (localIterator2.hasNext())
     {
       locale = (e)localIterator2.next();
@@ -200,15 +200,15 @@ public final class d
         locale.cancel(false);
       }
     }
-    this.LVQ.clear();
+    this.MsL.clear();
     AppMethodBeat.o(183469);
   }
   
-  public final List<String> fVY()
+  public final List<String> gax()
   {
     AppMethodBeat.i(183470);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = fVZ().iterator();
+    Iterator localIterator = gay().iterator();
     while (localIterator.hasNext()) {
       localLinkedList.add(((e)localIterator.next()).getKey());
     }
@@ -222,7 +222,7 @@ public final class d
     if (paramMessage.what == 1) {}
     try
     {
-      if (this.LVQ.remove(paramMessage.obj))
+      if (this.MsL.remove(paramMessage.obj))
       {
         a(0L, (e)paramMessage.obj);
         return true;
@@ -243,7 +243,7 @@ public final class d
   public final boolean quit()
   {
     AppMethodBeat.i(183473);
-    if (this.LUo.compareAndSet(false, true)) {
+    if (this.Mrj.compareAndSet(false, true)) {
       try
       {
         clear();
@@ -262,8 +262,8 @@ public final class d
   public final int size()
   {
     AppMethodBeat.i(183468);
-    int i = this.LVR.size();
-    int j = this.LVQ.size();
+    int i = this.MsM.size();
+    int j = this.MsL.size();
     AppMethodBeat.o(183468);
     return i + j;
   }

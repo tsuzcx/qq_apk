@@ -2,11 +2,11 @@ package com.tencent.mm.audio.mix.f;
 
 public abstract interface g
 {
-  public abstract void hN(int paramInt);
+  public abstract void hP(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.g
  * JD-Core Version:    0.7.0.1
  */

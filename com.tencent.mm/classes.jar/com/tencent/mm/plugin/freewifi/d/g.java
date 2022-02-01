@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.protocal.protobuf.bcm;
-import com.tencent.mm.protocal.protobuf.bcn;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.protocal.protobuf.bdd;
 
 public final class g
   extends c
@@ -15,32 +15,32 @@ public final class g
   public g(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(24858);
-    cRG();
-    bcm localbcm = (bcm)this.rr.hNK.hNQ;
-    localbcm.tmO = paramString1;
-    localbcm.tmP = paramString2;
-    localbcm.tmQ = paramString3;
-    localbcm.FqZ = m.cQY();
+    cUl();
+    bdc localbdc = (bdc)this.rr.hQD.hQJ;
+    localbdc.txG = paramString1;
+    localbdc.txH = paramString2;
+    localbdc.txI = paramString3;
+    localbdc.FJx = m.cTD();
     AppMethodBeat.o(24858);
   }
   
-  protected final void cRG()
+  protected final void cUl()
   {
     AppMethodBeat.i(24857);
     b.a locala = new b.a();
-    locala.hNM = new bcm();
-    locala.hNN = new bcn();
+    locala.hQF = new bdc();
+    locala.hQG = new bdd();
     locala.uri = "/cgi-bin/mmo2o-bin/getprotocol31schemaurl";
     locala.funcId = 1746;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(24857);
   }
   
-  public final String cRO()
+  public final String cUt()
   {
-    return ((bcn)this.rr.hNL.hNQ).Gze;
+    return ((bdd)this.rr.hQE.hQJ).GSE;
   }
   
   public final int getType()
@@ -50,7 +50,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.g
  * JD-Core Version:    0.7.0.1
  */

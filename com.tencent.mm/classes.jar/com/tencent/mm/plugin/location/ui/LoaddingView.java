@@ -11,25 +11,25 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class LoaddingView
   extends LinearLayout
   implements c
 {
   private Animation FD;
-  private TextView vbq;
-  private ProgressBar vbr;
-  private View vbs;
-  private boolean vbt;
-  private String vbu;
+  private TextView vnB;
+  private ProgressBar vnC;
+  private View vnD;
+  private boolean vnE;
+  private String vnF;
   
   public LoaddingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55802);
-    this.vbt = false;
-    this.vbu = "";
+    this.vnE = false;
+    this.vnF = "";
     init(paramContext);
     AppMethodBeat.o(55802);
   }
@@ -39,8 +39,8 @@ public class LoaddingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55801);
-    this.vbt = false;
-    this.vbu = "";
+    this.vnE = false;
+    this.vnF = "";
     init(paramContext);
     AppMethodBeat.o(55801);
   }
@@ -50,60 +50,60 @@ public class LoaddingView
     AppMethodBeat.i(55803);
     this.FD = AnimationUtils.loadAnimation(paramContext, 2130772163);
     paramContext = LayoutInflater.from(paramContext).inflate(2131494600, this, true);
-    this.vbr = ((ProgressBar)paramContext.findViewById(2131301532));
-    this.vbq = ((TextView)paramContext.findViewById(2131301545));
-    this.vbs = paramContext.findViewById(2131301523);
-    this.vbq.setText("");
-    this.vbq.setVisibility(0);
-    this.vbr.setVisibility(0);
+    this.vnC = ((ProgressBar)paramContext.findViewById(2131301532));
+    this.vnB = ((TextView)paramContext.findViewById(2131301545));
+    this.vnD = paramContext.findViewById(2131301523);
+    this.vnB.setText("");
+    this.vnB.setVisibility(0);
+    this.vnC.setVisibility(0);
     AppMethodBeat.o(55803);
   }
   
   public String getPreText()
   {
-    return this.vbu;
+    return this.vnF;
   }
   
   public void setPreText(String paramString)
   {
     AppMethodBeat.i(55806);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(55806);
       return;
     }
-    this.vbu = (paramString + "\n");
+    this.vnF = (paramString + "\n");
     AppMethodBeat.o(55806);
   }
   
   public void setProgressAlwaysGone(boolean paramBoolean)
   {
     AppMethodBeat.i(55804);
-    this.vbt = paramBoolean;
-    this.vbr.setVisibility(8);
-    this.vbq.setVisibility(8);
+    this.vnE = paramBoolean;
+    this.vnC.setVisibility(8);
+    this.vnB.setVisibility(8);
     AppMethodBeat.o(55804);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(55805);
-    if ((this.vbq == null) || (this.vbr == null) || (this.vbt))
+    if ((this.vnB == null) || (this.vnC == null) || (this.vnE))
     {
       AppMethodBeat.o(55805);
       return;
     }
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      this.vbq.setText(String.valueOf(paramString));
-      this.vbr.setVisibility(8);
-      this.vbq.setVisibility(0);
+      this.vnB.setText(String.valueOf(paramString));
+      this.vnC.setVisibility(8);
+      this.vnB.setVisibility(0);
       AppMethodBeat.o(55805);
       return;
     }
-    this.vbq.setText("");
-    this.vbq.setVisibility(0);
-    this.vbr.setVisibility(0);
+    this.vnB.setText("");
+    this.vnB.setVisibility(0);
+    this.vnC.setVisibility(0);
     AppMethodBeat.o(55805);
   }
 }

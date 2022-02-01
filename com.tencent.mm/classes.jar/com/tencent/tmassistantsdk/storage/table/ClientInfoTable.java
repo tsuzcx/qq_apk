@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
 import com.tencent.tmassistantsdk.storage.helper.SqliteHelper;
 import com.tencent.tmassistantsdk.storage.model.ClientInfo;
@@ -42,7 +42,7 @@ public class ClientInfoTable
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("ClientInfoTable", paramString1, "", new Object[0]);
+        ae.printErrStackTrace("ClientInfoTable", paramString1, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102436);
@@ -60,7 +60,7 @@ public class ClientInfoTable
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("ClientInfoTable", paramString, "", new Object[0]);
+        ae.printErrStackTrace("ClientInfoTable", paramString, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102437);
@@ -142,7 +142,7 @@ public class ClientInfoTable
     //   103: ldc 99
     //   105: iconst_0
     //   106: anewarray 4	java/lang/Object
-    //   109: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: invokestatic 105	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   112: aload_2
     //   113: ifnull +9 -> 122
     //   116: aload_2
@@ -207,7 +207,7 @@ public class ClientInfoTable
       }
       catch (Exception paramClientInfo)
       {
-        ad.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
+        ae.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102432);
@@ -246,7 +246,7 @@ public class ClientInfoTable
     }
     catch (Exception paramClientInfo)
     {
-      ad.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
+      ae.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
       AppMethodBeat.o(102434);
     }
     return -2;
@@ -301,7 +301,7 @@ public class ClientInfoTable
       for (;;)
       {
         localObject = localSQLiteDatabase;
-        ad.printErrStackTrace("ClientInfoTable", paramSQLiteDatabase1, "", new Object[0]);
+        ae.printErrStackTrace("ClientInfoTable", paramSQLiteDatabase1, "", new Object[0]);
         if (localSQLiteDatabase != null) {
           localSQLiteDatabase.close();
         }

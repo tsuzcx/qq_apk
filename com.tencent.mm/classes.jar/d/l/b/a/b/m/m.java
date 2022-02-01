@@ -7,12 +7,12 @@ import d.l.b.a.b.b.a.g;
 public class m
   extends ay
 {
-  private final ay MYs;
+  private final ay Nvy;
   
   public m(ay paramay)
   {
     AppMethodBeat.i(60638);
-    this.MYs = paramay;
+    this.Nvy = paramay;
     AppMethodBeat.o(60638);
   }
   
@@ -20,7 +20,7 @@ public class m
   {
     AppMethodBeat.i(60632);
     p.h(paramab, "key");
-    paramab = this.MYs.O(paramab);
+    paramab = this.Nvy.O(paramab);
     AppMethodBeat.o(60632);
     return paramab;
   }
@@ -30,24 +30,24 @@ public class m
     AppMethodBeat.i(60633);
     p.h(paramab, "topLevelType");
     p.h(parambh, "position");
-    paramab = this.MYs.a(paramab, parambh);
+    paramab = this.Nvy.a(paramab, parambh);
     AppMethodBeat.o(60633);
     return paramab;
   }
   
-  public final boolean gtT()
+  public boolean gxD()
   {
-    AppMethodBeat.i(60635);
-    boolean bool = this.MYs.gtT();
-    AppMethodBeat.o(60635);
+    AppMethodBeat.i(60636);
+    boolean bool = this.Nvy.gxD();
+    AppMethodBeat.o(60636);
     return bool;
   }
   
-  public boolean gtb()
+  public final boolean gyv()
   {
-    AppMethodBeat.i(60636);
-    boolean bool = this.MYs.gtb();
-    AppMethodBeat.o(60636);
+    AppMethodBeat.i(60635);
+    boolean bool = this.Nvy.gyv();
+    AppMethodBeat.o(60635);
     return bool;
   }
   
@@ -55,7 +55,7 @@ public class m
   {
     AppMethodBeat.i(60637);
     p.h(paramg, "annotations");
-    paramg = this.MYs.h(paramg);
+    paramg = this.Nvy.h(paramg);
     AppMethodBeat.o(60637);
     return paramg;
   }
@@ -63,14 +63,14 @@ public class m
   public final boolean isEmpty()
   {
     AppMethodBeat.i(60634);
-    boolean bool = this.MYs.isEmpty();
+    boolean bool = this.Nvy.isEmpty();
     AppMethodBeat.o(60634);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.m
  * JD-Core Version:    0.7.0.1
  */

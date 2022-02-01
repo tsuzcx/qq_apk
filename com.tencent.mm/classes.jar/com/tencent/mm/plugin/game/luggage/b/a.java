@@ -6,21 +6,21 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> pow;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> pvc;
   
   private static void aM(Class<? extends com.tencent.luggage.d.b> paramClass)
   {
     AppMethodBeat.i(83050);
-    pow.add(paramClass);
+    pvc.add(paramClass);
     AppMethodBeat.o(83050);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> ccP()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> cee()
   {
     try
     {
       AppMethodBeat.i(83049);
-      pow = new LinkedList();
+      pvc = new LinkedList();
       aM(g.class);
       aM(j.class);
       aM(k.class);
@@ -54,7 +54,7 @@ public final class a
       aM(ad.class);
       aM(u.class);
       aM(ac.class);
-      LinkedList localLinkedList = pow;
+      LinkedList localLinkedList = pvc;
       AppMethodBeat.o(83049);
       return localLinkedList;
     }

@@ -17,13 +17,13 @@ public final class f
     String str = paramJSONObject.optString("mode");
     if ("date".equals(str))
     {
-      new b().a(this, parame, paramJSONObject, paramInt, this.ldw);
+      new b().a(this, parame, paramJSONObject, paramInt, this.lhh);
       AppMethodBeat.o(137580);
       return;
     }
     if ("time".equals(str))
     {
-      new k().a(this, parame, paramJSONObject, paramInt, this.ldw);
+      new k().a(this, parame, paramJSONObject, paramInt, this.lhh);
       AppMethodBeat.o(137580);
       return;
     }
@@ -33,7 +33,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,111 +1,116 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.al;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.s.c;
+import com.tencent.mm.plugin.appbrand.widget.b.a;
+import com.tencent.mm.plugin.appbrand.widget.b.b;
+import com.tencent.mm.plugin.gif.MMAnimateView;
 
 public final class n
-  extends com.tencent.luggage.f.a.b
+  implements b
 {
-  public static Integer lOl;
-  
-  private static int getMapType()
+  public final a dI(Context paramContext)
   {
-    AppMethodBeat.i(47493);
-    if (lOl != null)
-    {
-      i = lOl.intValue();
-      AppMethodBeat.o(47493);
-      return i;
-    }
-    Object localObject = a.a.gyq;
-    localObject = a.wz("100487");
-    if ((localObject == null) || (!((com.tencent.mm.storage.c)localObject).isValid()))
-    {
-      ad.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
-      AppMethodBeat.o(47493);
-      return 1;
-    }
-    lOl = Integer.valueOf(bt.getInt((String)((com.tencent.mm.storage.c)localObject).foF().get("MapType"), 1));
-    ad.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { lOl });
-    int i = lOl.intValue();
-    AppMethodBeat.o(47493);
-    return i;
+    AppMethodBeat.i(47492);
+    paramContext = new a(paramContext);
+    AppMethodBeat.o(47492);
+    return paramContext;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
+  public final class a
+    extends FrameLayout
+    implements a
   {
-    int i = 0;
-    AppMethodBeat.i(47495);
-    if (paramContext == null)
+    private c csx;
+    private ImageView cuP;
+    private MMAnimateView lSJ;
+    private boolean lSK;
+    
+    public a(Context paramContext)
     {
-      AppMethodBeat.o(47495);
-      return null;
+      super();
+      AppMethodBeat.i(47486);
+      this.csx = null;
+      this.lSJ = new MMAnimateView(paramContext);
+      addView(this.lSJ, new ViewGroup.LayoutParams(-1, -1));
+      this.lSJ.setVisibility(8);
+      this.cuP = new ImageView(paramContext);
+      addView(this.cuP, new ViewGroup.LayoutParams(-1, -1));
+      this.cuP.setVisibility(8);
+      AppMethodBeat.o(47486);
     }
-    int k = f.a(paramMap, "mapType", getMapType());
-    int j = f.a(paramMap, "enableDarkMode", 0);
-    if (!al.isDarkMode()) {}
-    for (;;)
+    
+    public final boolean bjI()
     {
-      paramMap.put("enableDarkMode", Integer.valueOf(i));
-      if (k == 2)
-      {
-        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.ac.d.b(paramContext, paramString, paramMap);
-        AppMethodBeat.o(47495);
-        return paramContext;
-      }
-      paramContext = super.a(paramContext, paramString, paramMap);
-      AppMethodBeat.o(47495);
-      return paramContext;
-      i = j;
+      return this.lSK;
     }
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(47494);
-    if (paramJSONObject != null) {}
-    for (;;)
+    
+    public final c getReferrerPolicy()
     {
-      try
-      {
-        paramJSONObject.put("mapType", getMapType());
-        bool = paramJSONObject.optBoolean("enableDarkMode", false);
-        if (al.isDarkMode()) {
-          continue;
-        }
-        bool = false;
-      }
-      catch (JSONException localJSONException)
-      {
-        boolean bool;
-        ad.m("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
-        continue;
-        if (!bool) {
-          continue;
-        }
-        int i = 1;
-        continue;
-      }
-      paramJSONObject.put("enableDarkMode", i);
-      paramc = super.b(paramc, paramJSONObject);
-      AppMethodBeat.o(47494);
-      return paramc;
-      i = 0;
+      return this.csx;
+    }
+    
+    public final View getView()
+    {
+      return this;
+    }
+    
+    public final void setImageBitmap(Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(47489);
+      this.lSJ.setVisibility(8);
+      this.cuP.setVisibility(0);
+      this.cuP.setImageBitmap(paramBitmap);
+      AppMethodBeat.o(47489);
+    }
+    
+    public final void setImageByteArray(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(47488);
+      this.lSJ.setVisibility(0);
+      this.cuP.setVisibility(8);
+      this.lSJ.g(paramArrayOfByte, "");
+      AppMethodBeat.o(47488);
+    }
+    
+    public final void setImageFilePath(String paramString)
+    {
+      AppMethodBeat.i(47487);
+      this.lSJ.setVisibility(0);
+      this.cuP.setVisibility(8);
+      this.lSJ.setImageFilePath(paramString);
+      AppMethodBeat.o(47487);
+    }
+    
+    public final void setInterceptEvent(boolean paramBoolean)
+    {
+      this.lSK = paramBoolean;
+    }
+    
+    public final void setReferrerPolicy(c paramc)
+    {
+      this.csx = paramc;
+    }
+    
+    public final void setScaleType(ImageView.ScaleType paramScaleType)
+    {
+      AppMethodBeat.i(47490);
+      this.cuP.setScaleType(paramScaleType);
+      this.lSJ.setScaleType(paramScaleType);
+      AppMethodBeat.o(47490);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.n
  * JD-Core Version:    0.7.0.1
  */

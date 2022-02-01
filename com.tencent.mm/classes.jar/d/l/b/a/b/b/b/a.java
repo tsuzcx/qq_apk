@@ -23,12 +23,12 @@ public abstract interface a
   public static final class a
     implements a
   {
-    public static final a MXb;
+    public static final a Nuh;
     
     static
     {
       AppMethodBeat.i(56986);
-      MXb = new a();
+      Nuh = new a();
       AppMethodBeat.o(56986);
     }
     
@@ -37,7 +37,7 @@ public abstract interface a
       AppMethodBeat.i(56983);
       p.h(paramf, "name");
       p.h(parame, "classDescriptor");
-      paramf = (Collection)v.MKE;
+      paramf = (Collection)v.NhH;
       AppMethodBeat.o(56983);
       return paramf;
     }
@@ -46,7 +46,7 @@ public abstract interface a
     {
       AppMethodBeat.i(56982);
       p.h(parame, "classDescriptor");
-      parame = (Collection)v.MKE;
+      parame = (Collection)v.NhH;
       AppMethodBeat.o(56982);
       return parame;
     }
@@ -55,7 +55,7 @@ public abstract interface a
     {
       AppMethodBeat.i(56984);
       p.h(parame, "classDescriptor");
-      parame = (Collection)v.MKE;
+      parame = (Collection)v.NhH;
       AppMethodBeat.o(56984);
       return parame;
     }
@@ -64,7 +64,7 @@ public abstract interface a
     {
       AppMethodBeat.i(56985);
       p.h(parame, "classDescriptor");
-      parame = (Collection)v.MKE;
+      parame = (Collection)v.NhH;
       AppMethodBeat.o(56985);
       return parame;
     }
@@ -72,7 +72,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.b.a
  * JD-Core Version:    0.7.0.1
  */

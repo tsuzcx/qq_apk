@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
 
 public final class k$a
   extends k.b
@@ -11,7 +11,7 @@ public final class k$a
   {
     super(paramInt);
     this.cmdId = paramInt;
-    this.vKm = parama;
+    this.vWq = parama;
   }
   
   public final int getCmdId()

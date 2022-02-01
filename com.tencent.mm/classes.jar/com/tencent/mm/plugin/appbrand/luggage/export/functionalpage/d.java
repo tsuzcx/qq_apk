@@ -7,18 +7,18 @@ import d.n.n;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"makeReturnJson", "", "apiName", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"makeReturnJson", "", "apiName", "plugin-appbrand-integration_release"})
 public final class d
 {
-  static final String dU(String paramString1, String paramString2)
+  static final String dW(String paramString1, String paramString2)
   {
     int i = 1;
-    AppMethodBeat.i(189354);
+    AppMethodBeat.i(223614);
     try
     {
       String str = new JSONObject(paramString1).getString("errMsg");
       p.g(str, "this.getString(\"errMsg\")");
-      boolean bool = n.nz(str, paramString2 + ':');
+      boolean bool = n.nF(str, paramString2 + ':');
       if (bool) {
         i = 0;
       }
@@ -32,10 +32,10 @@ public final class d
     {
       paramString1 = new JSONObject().put("errMsg", paramString2 + ':' + paramString1).toString();
       p.g(paramString1, "JSONObject().put(\"errMsg…ame}:${this}\").toString()");
-      AppMethodBeat.o(189354);
+      AppMethodBeat.o(223614);
       return paramString1;
     }
-    AppMethodBeat.o(189354);
+    AppMethodBeat.o(223614);
     return paramString1;
   }
 }

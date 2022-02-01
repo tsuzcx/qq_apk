@@ -1,74 +1,94 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class dva
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FxO;
-  public String Gdg;
-  public int HHB;
+  public long GrE;
+  public String GrF;
+  public String key;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152724);
+    AppMethodBeat.i(121106);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FxO);
-      if (this.Gdg != null) {
-        paramVarArgs.d(2, this.Gdg);
-      }
-      paramVarArgs.aS(3, this.HHB);
-      AppMethodBeat.o(152724);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.FxO) + 0;
-      paramInt = i;
-      if (this.Gdg != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Gdg);
-      }
-      i = f.a.a.b.b.a.bz(3, this.HHB);
-      AppMethodBeat.o(152724);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
-      }
-      AppMethodBeat.o(152724);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dva localdva = (dva)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.key == null)
       {
-      default: 
-        AppMethodBeat.o(152724);
-        return -1;
-      case 1: 
-        localdva.FxO = locala.NPN.zc();
-        AppMethodBeat.o(152724);
-        return 0;
-      case 2: 
-        localdva.Gdg = locala.NPN.readString();
-        AppMethodBeat.o(152724);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: key");
+        AppMethodBeat.o(121106);
+        throw paramVarArgs;
       }
-      localdva.HHB = locala.NPN.zc();
-      AppMethodBeat.o(152724);
+      if (this.key != null) {
+        paramVarArgs.d(1, this.key);
+      }
+      paramVarArgs.aZ(2, this.GrE);
+      if (this.GrF != null) {
+        paramVarArgs.d(3, this.GrF);
+      }
+      AppMethodBeat.o(121106);
       return 0;
     }
-    AppMethodBeat.o(152724);
-    return -1;
+    if (paramInt == 1) {
+      if (this.key == null) {
+        break label366;
+      }
+    }
+    label366:
+    for (paramInt = f.a.a.b.b.a.e(1, this.key) + 0;; paramInt = 0)
+    {
+      int i = paramInt + f.a.a.b.b.a.p(2, this.GrE);
+      paramInt = i;
+      if (this.GrF != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.GrF);
+      }
+      AppMethodBeat.o(121106);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        if (this.key == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: key");
+          AppMethodBeat.o(121106);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(121106);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dva localdva = (dva)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(121106);
+          return -1;
+        case 1: 
+          localdva.key = locala.OmT.readString();
+          AppMethodBeat.o(121106);
+          return 0;
+        case 2: 
+          localdva.GrE = locala.OmT.zd();
+          AppMethodBeat.o(121106);
+          return 0;
+        }
+        localdva.GrF = locala.OmT.readString();
+        AppMethodBeat.o(121106);
+        return 0;
+      }
+      AppMethodBeat.o(121106);
+      return -1;
+    }
   }
 }
 

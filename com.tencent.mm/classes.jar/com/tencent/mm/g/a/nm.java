@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class nm
   extends b
 {
-  public a dBz;
-  
   public nm()
   {
     this((byte)0);
@@ -15,21 +12,13 @@ public final class nm
   
   private nm(byte paramByte)
   {
-    AppMethodBeat.i(117548);
-    this.dBz = new a();
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(117548);
-  }
-  
-  public static final class a
-  {
-    public int aHQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.nm
  * JD-Core Version:    0.7.0.1
  */

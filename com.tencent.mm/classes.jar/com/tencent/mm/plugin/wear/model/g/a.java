@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ze;
-import com.tencent.mm.g.a.ze.b;
+import com.tencent.mm.g.a.zk;
+import com.tencent.mm.g.a.zk.b;
 import com.tencent.mm.plugin.wear.ui.WearYoLockUI;
 import com.tencent.mm.plugin.wear.ui.WearYoNoLockUI;
-import com.tencent.mm.protocal.protobuf.edy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.efp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -23,36 +23,36 @@ import java.util.Set;
 
 public final class a
 {
-  private KeyguardManager DwQ;
-  LinkedHashMap<String, a> DxO;
+  private KeyguardManager DOv;
+  LinkedHashMap<String, a> DPt;
   private PowerManager powerManager;
   
   public a()
   {
     AppMethodBeat.i(30135);
-    this.DxO = new LinkedHashMap();
-    this.powerManager = ((PowerManager)aj.getContext().getSystemService("power"));
-    this.DwQ = ((KeyguardManager)aj.getContext().getSystemService("keyguard"));
+    this.DPt = new LinkedHashMap();
+    this.powerManager = ((PowerManager)ak.getContext().getSystemService("power"));
+    this.DOv = ((KeyguardManager)ak.getContext().getSystemService("keyguard"));
     AppMethodBeat.o(30135);
   }
   
-  public static ze aFu(String paramString)
+  public static zk aGO(String paramString)
   {
     AppMethodBeat.i(30136);
-    ze localze = new ze();
-    localze.dOl.dkM = 1;
-    localze.dOl.username = paramString;
-    com.tencent.mm.sdk.b.a.IbL.l(localze);
+    zk localzk = new zk();
+    localzk.dPB.dlO = 1;
+    localzk.dPB.username = paramString;
+    com.tencent.mm.sdk.b.a.IvT.l(localzk);
     AppMethodBeat.o(30136);
-    return localze;
+    return localzk;
   }
   
-  public final void eKQ()
+  public final void eOy()
   {
     AppMethodBeat.i(30137);
-    if (aFu(null).dOm.dOn != 0)
+    if (aGO(null).dPC.dPD != 0)
     {
-      ad.i("MicroMsg.wear.WearYoLogic", "current show yo");
+      ae.i("MicroMsg.wear.WearYoLogic", "current show yo");
       AppMethodBeat.o(30137);
       return;
     }
@@ -60,50 +60,50 @@ public final class a
     {
       Object localObject1;
       Object localObject5;
-      synchronized (this.DxO)
+      synchronized (this.DPt)
       {
-        localObject1 = this.DxO.entrySet().iterator();
+        localObject1 = this.DPt.entrySet().iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break label362;
         }
         localObject1 = (a)((Map.Entry)((Iterator)localObject1).next()).getValue();
         if (localObject1 != null) {
-          this.DxO.remove(((a)localObject1).dHm);
+          this.DPt.remove(((a)localObject1).cUA);
         }
         if (localObject1 != null)
         {
           localObject5 = ((a)localObject1).content;
-          ??? = new edy();
-          localObject5 = bw.M((String)localObject5, "msg");
+          ??? = new efp();
+          localObject5 = bx.M((String)localObject5, "msg");
           if (localObject5 != null) {
             break label296;
           }
-          ((edy)???).nEf = 0;
+          ((efp)???).nJA = 0;
           localObject5 = new Intent();
-          ((Intent)localObject5).putExtra("key_talker", ((a)localObject1).dHm);
+          ((Intent)localObject5).putExtra("key_talker", ((a)localObject1).cUA);
         }
       }
       try
       {
-        ((Intent)localObject5).putExtra("key_data", ((edy)???).toByteArray());
+        ((Intent)localObject5).putExtra("key_data", ((efp)???).toByteArray());
         label168:
         ((Intent)localObject5).addFlags(268435456);
         int i;
-        if ((this.DwQ.inKeyguardRestrictedInputMode()) || (!this.powerManager.isScreenOn()))
+        if ((this.DOv.inKeyguardRestrictedInputMode()) || (!this.powerManager.isScreenOn()))
         {
           i = 1;
           label198:
           if (i == 0) {
             break label344;
           }
-          ((Intent)localObject5).setClass(aj.getContext(), WearYoLockUI.class);
+          ((Intent)localObject5).setClass(ak.getContext(), WearYoLockUI.class);
         }
         for (;;)
         {
-          localObject1 = aj.getContext();
+          localObject1 = ak.getContext();
           ??? = new com.tencent.mm.hellhoundlib.b.a().bc(localObject5);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)???).ahp(), "com/tencent/mm/plugin/wear/model/yo/WearYoLogic", "publishNextYoMessage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)???).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)???).ahE(), "com/tencent/mm/plugin/wear/model/yo/WearYoLogic", "publishNextYoMessage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)???).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/wear/model/yo/WearYoLogic", "publishNextYoMessage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(30137);
           return;
@@ -111,13 +111,13 @@ public final class a
           AppMethodBeat.o(30137);
           throw localObject2;
           label296:
-          ((edy)???).nEf = bt.getInt((String)((Map)localObject5).get(".msg.yo.$type"), 0);
-          ((edy)???).nDi = bt.getInt((String)((Map)localObject5).get(".msg.yo.$count"), 0);
+          ((efp)???).nJA = bu.getInt((String)((Map)localObject5).get(".msg.yo.$type"), 0);
+          ((efp)???).nID = bu.getInt((String)((Map)localObject5).get(".msg.yo.$count"), 0);
           break;
           i = 0;
           break label198;
           label344:
-          ((Intent)localObject5).setClass(aj.getContext(), WearYoNoLockUI.class);
+          ((Intent)localObject5).setClass(ak.getContext(), WearYoNoLockUI.class);
         }
       }
       catch (IOException localIOException)
@@ -131,12 +131,12 @@ public final class a
   
   final class a
   {
+    String cUA;
     String content;
-    String dHm;
     
     public a(String paramString1, String paramString2)
     {
-      this.dHm = paramString1;
+      this.cUA = paramString1;
       this.content = paramString2;
     }
   }

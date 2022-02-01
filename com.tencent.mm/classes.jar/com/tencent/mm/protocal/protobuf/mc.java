@@ -3,41 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class mc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public float FET;
-  public float dAp;
-  public float dyz;
+  public float FXo;
+  public float dBu;
+  public float dzE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(191535);
+    AppMethodBeat.i(210677);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.z(1, this.dyz);
-      paramVarArgs.z(2, this.dAp);
-      paramVarArgs.z(3, this.FET);
-      AppMethodBeat.o(191535);
+      paramVarArgs.y(1, this.dzE);
+      paramVarArgs.y(2, this.dBu);
+      paramVarArgs.y(3, this.FXo);
+      AppMethodBeat.o(210677);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.alU(1);
-      int i = f.a.a.b.b.a.alU(2);
-      int j = f.a.a.b.b.a.alU(3);
-      AppMethodBeat.o(191535);
+      paramInt = f.a.a.b.b.a.amE(1);
+      int i = f.a.a.b.b.a.amE(2);
+      int j = f.a.a.b.b.a.amE(3);
+      AppMethodBeat.o(210677);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(191535);
+      AppMethodBeat.o(210677);
       return 0;
     }
     if (paramInt == 3)
@@ -47,22 +47,22 @@ public final class mc
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(191535);
+        AppMethodBeat.o(210677);
         return -1;
       case 1: 
-        localmc.dyz = Float.intBitsToFloat(locala.NPN.grz());
-        AppMethodBeat.o(191535);
+        localmc.dzE = Float.intBitsToFloat(locala.OmT.gwb());
+        AppMethodBeat.o(210677);
         return 0;
       case 2: 
-        localmc.dAp = Float.intBitsToFloat(locala.NPN.grz());
-        AppMethodBeat.o(191535);
+        localmc.dBu = Float.intBitsToFloat(locala.OmT.gwb());
+        AppMethodBeat.o(210677);
         return 0;
       }
-      localmc.FET = Float.intBitsToFloat(locala.NPN.grz());
-      AppMethodBeat.o(191535);
+      localmc.FXo = Float.intBitsToFloat(locala.OmT.gwb());
+      AppMethodBeat.o(210677);
       return 0;
     }
-    AppMethodBeat.o(191535);
+    AppMethodBeat.o(210677);
     return -1;
   }
 }

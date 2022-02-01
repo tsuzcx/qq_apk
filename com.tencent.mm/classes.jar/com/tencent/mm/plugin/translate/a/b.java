@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.translate.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bjg;
-import com.tencent.mm.protocal.protobuf.bjh;
-import com.tencent.mm.protocal.protobuf.dpy;
-import com.tencent.mm.protocal.protobuf.dpz;
+import com.tencent.mm.protocal.protobuf.bjy;
+import com.tencent.mm.protocal.protobuf.bjz;
+import com.tencent.mm.protocal.protobuf.dqv;
+import com.tencent.mm.protocal.protobuf.dqw;
 import java.util.LinkedList;
 
 public final class b
   extends n
   implements k
 {
-  public LinkedList<dpz> BBg;
+  public LinkedList<dqw> BSE;
   private f callback;
-  private final com.tencent.mm.al.b rr;
+  private final com.tencent.mm.ak.b rr;
   
-  public b(LinkedList<dpy> paramLinkedList)
+  public b(LinkedList<dqv> paramLinkedList)
   {
     AppMethodBeat.i(29739);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bjg();
-    ((b.a)localObject).hNN = new bjh();
+    ((b.a)localObject).hQF = new bjy();
+    ((b.a)localObject).hQG = new bjz();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/gettranstext";
     ((b.a)localObject).funcId = 631;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bjg)this.rr.hNK.hNQ;
-    ((bjg)localObject).GDO = paramLinkedList;
-    ((bjg)localObject).nDh = paramLinkedList.size();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bjy)this.rr.hQD.hQJ;
+    ((bjy)localObject).GXr = paramLinkedList;
+    ((bjy)localObject).nIC = paramLinkedList.size();
     AppMethodBeat.o(29739);
   }
   
@@ -58,7 +58,7 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29741);
-    this.BBg = ((bjh)this.rr.hNL.hNQ).GDO;
+    this.BSE = ((bjz)this.rr.hQE.hQJ).GXr;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(29741);
   }

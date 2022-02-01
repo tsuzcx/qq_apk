@@ -22,18 +22,18 @@ public class RecentAppBrandViewContainer
 {
   Runnable acb;
   private Context mContext;
-  RecentAppBrandView mWZ;
-  private View mYZ;
-  boolean mZa;
-  private View.OnClickListener mZb;
+  RecentAppBrandView ncf;
+  private View neg;
+  boolean neh;
+  private View.OnClickListener nei;
   
   public RecentAppBrandViewContainer(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(49704);
     this.acb = null;
-    this.mZa = true;
-    this.mZb = null;
+    this.neh = true;
+    this.nei = null;
     init(paramContext);
     AppMethodBeat.o(49704);
   }
@@ -43,8 +43,8 @@ public class RecentAppBrandViewContainer
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49705);
     this.acb = null;
-    this.mZa = true;
-    this.mZb = null;
+    this.neh = true;
+    this.nei = null;
     init(paramContext);
     AppMethodBeat.o(49705);
   }
@@ -54,22 +54,22 @@ public class RecentAppBrandViewContainer
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49706);
     this.acb = null;
-    this.mZa = true;
-    this.mZb = null;
+    this.neh = true;
+    this.nei = null;
     init(paramContext);
     AppMethodBeat.o(49706);
   }
   
-  private void bDi()
+  private void bEa()
   {
     AppMethodBeat.i(49710);
-    if (this.mWZ.getDataCount() > this.mWZ.getMaxShowItemCountIncludeMore())
+    if (this.ncf.getDataCount() > this.ncf.getMaxShowItemCountIncludeMore())
     {
-      this.mYZ.setVisibility(0);
+      this.neg.setVisibility(0);
       AppMethodBeat.o(49710);
       return;
     }
-    this.mYZ.setVisibility(4);
+    this.neg.setVisibility(4);
     AppMethodBeat.o(49710);
   }
   
@@ -77,19 +77,19 @@ public class RecentAppBrandViewContainer
   {
     AppMethodBeat.i(49712);
     this.mContext = paramContext;
-    paramContext = z.jO(paramContext).inflate(2131492988, this);
-    this.mWZ = ((RecentAppBrandView)paramContext.findViewById(2131303807));
-    this.mYZ = paramContext.findViewById(2131302475);
-    paramContext = new f(this.mYZ);
-    int i = (int)d.ea(getContext());
-    paramContext.mYi.getLayoutParams().width = ((int)(com.tencent.mm.cc.a.ay(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
-    paramContext.mYi.getLayoutParams().height = ((int)(com.tencent.mm.cc.a.ay(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
-    paramContext.lZa.getLayoutParams().width = i;
-    paramContext.lZa.getLayoutParams().height = i;
-    paramContext.mYh.getLayoutParams().width = i;
-    paramContext.mYh.getLayoutParams().height = i;
-    paramContext.lZa.setImageResource(2131690904);
-    paramContext.mYj.setVisibility(8);
+    paramContext = z.jV(paramContext).inflate(2131492988, this);
+    this.ncf = ((RecentAppBrandView)paramContext.findViewById(2131303807));
+    this.neg = paramContext.findViewById(2131302475);
+    paramContext = new f(this.neg);
+    int i = (int)d.ee(getContext());
+    paramContext.ndp.getLayoutParams().width = ((int)(com.tencent.mm.cb.a.ay(getContext(), 2131165568) * 2 * d.ef(getContext())) + i);
+    paramContext.ndp.getLayoutParams().height = ((int)(com.tencent.mm.cb.a.ay(getContext(), 2131165568) * 2 * d.ef(getContext())) + i);
+    paramContext.mdt.getLayoutParams().width = i;
+    paramContext.mdt.getLayoutParams().height = i;
+    paramContext.ndo.getLayoutParams().width = i;
+    paramContext.ndo.getLayoutParams().height = i;
+    paramContext.mdt.setImageResource(2131690904);
+    paramContext.ndq.setVisibility(8);
     paramContext.titleTv.setText("");
     paramContext.auu.setOnClickListener(new View.OnClickListener()
     {
@@ -98,7 +98,7 @@ public class RecentAppBrandViewContainer
         AppMethodBeat.i(49702);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandViewContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandViewContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (RecentAppBrandViewContainer.b(RecentAppBrandViewContainer.this) != null) {
           RecentAppBrandViewContainer.b(RecentAppBrandViewContainer.this).onClick(paramAnonymousView);
         }
@@ -111,15 +111,15 @@ public class RecentAppBrandViewContainer
   
   public RecentAppBrandView getRecentView()
   {
-    return this.mWZ;
+    return this.ncf;
   }
   
   public int getShowLines()
   {
     AppMethodBeat.i(49709);
-    if (this.mWZ != null)
+    if (this.ncf != null)
     {
-      int i = this.mWZ.getShowLines();
+      int i = this.ncf.getShowLines();
       AppMethodBeat.o(49709);
       return i;
     }
@@ -130,10 +130,10 @@ public class RecentAppBrandViewContainer
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(49707);
-    if (this.mWZ != null)
+    if (this.ncf != null)
     {
-      bDi();
-      this.mWZ.bDh();
+      bEa();
+      this.ncf.bDZ();
     }
     AppMethodBeat.o(49707);
   }
@@ -141,10 +141,10 @@ public class RecentAppBrandViewContainer
   public void setDataList(List<AppBrandDesktopView.c> paramList)
   {
     AppMethodBeat.i(49708);
-    if (this.mWZ != null)
+    if (this.ncf != null)
     {
-      this.mWZ.setDataList(paramList);
-      bDi();
+      this.ncf.setDataList(paramList);
+      bEa();
     }
     AppMethodBeat.o(49708);
   }
@@ -152,20 +152,20 @@ public class RecentAppBrandViewContainer
   public void setItemPadding(int paramInt)
   {
     AppMethodBeat.i(49711);
-    if (this.mWZ != null) {
-      this.mWZ.setItemPadding(paramInt);
+    if (this.ncf != null) {
+      this.ncf.setItemPadding(paramInt);
     }
-    if (this.mYZ != null)
+    if (this.neg != null)
     {
-      View localView = this.mYZ;
-      localView.setPadding(paramInt, localView.getPaddingTop(), paramInt, this.mYZ.getPaddingBottom());
+      View localView = this.neg;
+      localView.setPadding(paramInt, localView.getPaddingTop(), paramInt, this.neg.getPaddingBottom());
     }
     AppMethodBeat.o(49711);
   }
   
   public void setOnMoreClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.mZb = paramOnClickListener;
+    this.nei = paramOnClickListener;
   }
 }
 

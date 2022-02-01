@@ -72,7 +72,8 @@ public final class wc
       ((Path)localObject3).lineTo(0.0F, 0.0F);
       ((Path)localObject3).close();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(-372399);
+      ((Paint)localObject2).setColor(-855638017);
+      localCanvas.saveLayerAlpha(null, 51, 31);
       localCanvas.save();
       arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 3.0F, 0.0F, 1.0F, 3.0F);
       ((Matrix)localObject1).reset();
@@ -125,6 +126,7 @@ public final class wc
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
+      localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();

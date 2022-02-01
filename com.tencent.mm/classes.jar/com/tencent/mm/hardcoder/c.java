@@ -6,7 +6,7 @@ public final class c
 {
   public static abstract interface a
   {
-    public abstract void dv(boolean paramBoolean);
+    public abstract void dw(boolean paramBoolean);
   }
   
   public static abstract interface b
@@ -16,29 +16,29 @@ public final class c
   
   public static final class c
   {
-    public long gvL;
-    public int gwb;
-    public int gwc;
-    public int gwd;
-    public int[] gwe;
+    public int gyI;
+    public int gyJ;
+    public int gyK;
+    public int[] gyL;
+    public long gys;
     public int scene;
     
     public c(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
     {
       AppMethodBeat.i(62457);
       this.scene = paramInt1;
-      this.gvL = paramLong;
-      this.gwb = paramInt2;
-      this.gwc = paramInt3;
-      this.gwd = paramInt4;
-      this.gwe = ((int[])paramArrayOfInt.clone());
+      this.gys = paramLong;
+      this.gyI = paramInt2;
+      this.gyJ = paramInt3;
+      this.gyK = paramInt4;
+      this.gyL = ((int[])paramArrayOfInt.clone());
       AppMethodBeat.o(62457);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(62458);
-      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.gvL + ", cpulevel:" + this.gwb + ", gpulevel:" + this.gwc + ", iolevel:" + this.gwd + ", bindtids size:" + this.gwe.length + "]";
+      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.gys + ", cpulevel:" + this.gyI + ", gpulevel:" + this.gyJ + ", iolevel:" + this.gyK + ", bindtids size:" + this.gyL.length + "]";
       AppMethodBeat.o(62458);
       return str;
     }

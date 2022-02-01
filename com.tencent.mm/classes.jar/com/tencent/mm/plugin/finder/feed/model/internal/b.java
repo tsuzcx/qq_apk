@@ -13,15 +13,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "areContentsTheSame", "item1", "item2", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;)Z", "areItemsTheSame", "diff", "", "oldList", "", "newList", "diffDetectMoves", "finallyHandleMergeList", "srcList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "Ljava/util/LinkedList;", "insertIndex", "", "cmd", "request", "findMergeIndex", "getChangePayload", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;)Ljava/lang/Object;", "getDiffCallback", "Landroid/support/v7/util/DiffUtil$Callback;", "getListUpdateCallback", "Landroid/support/v7/util/ListUpdateCallback;", "mergeDataAndNotify", "Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "insList", "isNeedClear", "mergeInit", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "mergeInsert", "mergeLoadMore", "mergeRefresh", "needCleanWhenRefresh", "MergeDiffCallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "areContentsTheSame", "item1", "item2", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;)Z", "areItemsTheSame", "diff", "", "oldList", "", "newList", "diffDetectMoves", "finallyHandleMergeList", "srcList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "Ljava/util/LinkedList;", "insertIndex", "", "cmd", "request", "findMergeIndex", "getChangePayload", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;)Ljava/lang/Object;", "getDiffCallback", "Landroid/support/v7/util/DiffUtil$Callback;", "getListUpdateCallback", "Landroid/support/v7/util/ListUpdateCallback;", "mergeDataAndNotify", "Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "insList", "isNeedClear", "mergeInit", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "mergeInsert", "mergeLoadMore", "mergeRefresh", "needCleanWhenRefresh", "MergeDiffCallback", "plugin-finder_release"})
 public abstract class b<T extends i>
 {
   private final boolean DEBUG;
   
   public b()
   {
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    this.DEBUG = ((Boolean)com.tencent.mm.plugin.finder.storage.b.cHx().value()).booleanValue();
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
+    this.DEBUG = ((Boolean)com.tencent.mm.plugin.finder.storage.b.cJw().value()).booleanValue();
   }
   
   public boolean areContentsTheSame(T paramT1, T paramT2)
@@ -103,65 +103,65 @@ public abstract class b<T extends i>
     return true;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger$MergeDiffCallback;", "Landroid/support/v7/util/DiffUtil$Callback;", "oldList", "", "newList", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;Ljava/util/List;Ljava/util/List;)V", "getNewList", "()Ljava/util/List;", "getOldList", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getChangePayload", "", "getNewListSize", "getOldListSize", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger$MergeDiffCallback;", "Landroid/support/v7/util/DiffUtil$Callback;", "oldList", "", "newList", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;Ljava/util/List;Ljava/util/List;)V", "getNewList", "()Ljava/util/List;", "getOldList", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getChangePayload", "", "getNewListSize", "getOldListSize", "plugin-finder_release"})
   public final class a
     extends c.a
   {
-    private final List<T> mMq;
-    private final List<T> mMr;
+    private final List<T> mRt;
+    private final List<T> mRu;
     
     public a(List<? extends T> paramList)
     {
-      AppMethodBeat.i(202560);
-      this.mMq = paramList;
-      this.mMr = localObject;
-      AppMethodBeat.o(202560);
+      AppMethodBeat.i(203036);
+      this.mRt = paramList;
+      this.mRu = localObject;
+      AppMethodBeat.o(203036);
     }
     
     public final int aA()
     {
-      AppMethodBeat.i(202557);
-      int i = this.mMr.size();
-      AppMethodBeat.o(202557);
+      AppMethodBeat.i(203033);
+      int i = this.mRu.size();
+      AppMethodBeat.o(203033);
       return i;
     }
     
     public final int az()
     {
-      AppMethodBeat.i(202556);
-      int i = this.mMq.size();
-      AppMethodBeat.o(202556);
+      AppMethodBeat.i(203032);
+      int i = this.mRt.size();
+      AppMethodBeat.o(203032);
       return i;
     }
     
     public final Object h(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(202559);
-      Object localObject = b.this.getChangePayload((i)this.mMq.get(paramInt1), (i)this.mMr.get(paramInt2));
-      AppMethodBeat.o(202559);
+      AppMethodBeat.i(203035);
+      Object localObject = b.this.getChangePayload((i)this.mRt.get(paramInt1), (i)this.mRu.get(paramInt2));
+      AppMethodBeat.o(203035);
       return localObject;
     }
     
     public final boolean i(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(202555);
-      boolean bool = b.this.areItemsTheSame((i)this.mMq.get(paramInt1), (i)this.mMr.get(paramInt2));
-      AppMethodBeat.o(202555);
+      AppMethodBeat.i(203031);
+      boolean bool = b.this.areItemsTheSame((i)this.mRt.get(paramInt1), (i)this.mRu.get(paramInt2));
+      AppMethodBeat.o(203031);
       return bool;
     }
     
     public final boolean j(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(202558);
-      boolean bool = b.this.areContentsTheSame((i)this.mMq.get(paramInt1), (i)this.mMr.get(paramInt2));
-      AppMethodBeat.o(202558);
+      AppMethodBeat.i(203034);
+      boolean bool = b.this.areContentsTheSame((i)this.mRt.get(paramInt1), (i)this.mRu.get(paramInt2));
+      AppMethodBeat.o(203034);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,82 +7,83 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.a.f.a;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.view.FloatIndicatorView;
 import com.tencent.mm.plugin.ball.view.FloatIndicatorView.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 public final class e
 {
-  boolean htY;
-  public FloatIndicatorView nHW;
-  int nHX;
-  int nHY;
-  FrameLayout.LayoutParams nHZ;
-  private com.tencent.mm.plugin.ball.a.f nHb;
-  com.tencent.mm.plugin.ball.d.f nHc;
-  float nHs;
-  boolean nIa;
-  boolean nIb;
-  boolean nIc;
-  long nId;
+  boolean hwM;
+  private f nME;
+  com.tencent.mm.plugin.ball.d.e nMF;
+  float nMU;
+  int nNA;
+  int nNB;
+  FrameLayout.LayoutParams nNC;
+  boolean nND;
+  boolean nNE;
+  boolean nNF;
+  long nNG;
+  public FloatIndicatorView nNz;
   
-  public e(com.tencent.mm.plugin.ball.a.f paramf, com.tencent.mm.plugin.ball.d.f paramf1)
+  public e(f paramf, com.tencent.mm.plugin.ball.d.e parame)
   {
     AppMethodBeat.i(106321);
-    this.nId = -1L;
-    this.nHb = paramf;
-    this.nHc = paramf1;
-    this.nHW = new FloatIndicatorView(this.nHb.getActivity());
-    this.nHW.setOnOrientationChangedListener(new FloatIndicatorView.a()
+    this.nNG = -1L;
+    this.nME = paramf;
+    this.nMF = parame;
+    this.nNz = new FloatIndicatorView(this.nME.getActivity());
+    this.nNz.setOnOrientationChangedListener(new FloatIndicatorView.a()
     {
-      public final void jb(boolean paramAnonymousBoolean)
+      public final void ja(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(106316);
-        ad.i("MicroMsg.FloatIndicatorController", "onOrientationChanged, isLandscape:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        e.this.ja(paramAnonymousBoolean);
-        e.this.nHZ.bottomMargin = e.this.nHY;
-        e.this.nHZ.rightMargin = e.this.nHX;
-        e.this.nHW.setLayoutParams(e.this.nHZ);
-        ad.i("MicroMsg.FloatIndicatorController", "onOrientationChanged layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(e.this.nHZ.rightMargin), Integer.valueOf(e.this.nHZ.bottomMargin) });
+        ae.i("MicroMsg.FloatIndicatorController", "onOrientationChanged, isLandscape:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        e.this.iZ(paramAnonymousBoolean);
+        e.this.nNC.bottomMargin = e.this.nNB;
+        e.this.nNC.rightMargin = e.this.nNA;
+        e.this.nNz.setLayoutParams(e.this.nNC);
+        ae.i("MicroMsg.FloatIndicatorController", "onOrientationChanged layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(e.this.nNC.rightMargin), Integer.valueOf(e.this.nNC.bottomMargin) });
         AppMethodBeat.o(106316);
       }
     });
-    if (com.tencent.mm.cc.a.ip(aj.getContext()) > com.tencent.mm.cc.a.iq(aj.getContext())) {}
+    if (com.tencent.mm.cb.a.iu(ak.getContext()) > com.tencent.mm.cb.a.iv(ak.getContext())) {}
     for (boolean bool = true;; bool = false)
     {
-      ja(bool);
-      this.nHZ = new FrameLayout.LayoutParams(-2, -2);
-      this.nHZ.gravity = 8388693;
-      this.nHZ.bottomMargin = this.nHY;
-      this.nHZ.rightMargin = this.nHX;
-      this.nHW.setLayoutParams(this.nHZ);
-      ad.i("MicroMsg.FloatIndicatorController", "createFloatIndicator layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(this.nHZ.rightMargin), Integer.valueOf(this.nHZ.bottomMargin) });
+      iZ(bool);
+      this.nNC = new FrameLayout.LayoutParams(-2, -2);
+      this.nNC.gravity = 8388693;
+      this.nNC.bottomMargin = this.nNB;
+      this.nNC.rightMargin = this.nNA;
+      this.nNz.setLayoutParams(this.nNC);
+      ae.i("MicroMsg.FloatIndicatorController", "createFloatIndicator layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(this.nNC.rightMargin), Integer.valueOf(this.nNC.bottomMargin) });
       AppMethodBeat.o(106321);
       return;
     }
   }
   
-  private void bLr()
+  private void bMo()
   {
     AppMethodBeat.i(106328);
     ViewGroup localViewGroup;
-    if (this.nHW != null)
+    if (this.nNz != null)
     {
-      this.nHW.setVisibility(8);
-      localViewGroup = this.nHb.bJP();
+      this.nNz.setVisibility(8);
+      localViewGroup = this.nME.bKN();
     }
     for (;;)
     {
       int i;
       try
       {
-        if (this.nHW.getParent() == null)
+        if (this.nNz.getParent() == null)
         {
           int k = localViewGroup.getChildCount();
           i = 0;
@@ -94,17 +95,17 @@ public final class e
             }
             j = i + 1;
           }
-          localViewGroup.addView(this.nHW, j);
+          localViewGroup.addView(this.nNz, j);
           AppMethodBeat.o(106328);
           return;
         }
-        ad.w("MicroMsg.FloatIndicatorController", "attachFloatIndicatorView, already attached");
+        ae.w("MicroMsg.FloatIndicatorController", "attachFloatIndicatorView, already attached");
         AppMethodBeat.o(106328);
         return;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.FloatIndicatorController", localException, "attachFloatIndicatorView exception:%s", new Object[] { localException });
+        ae.printErrStackTrace("MicroMsg.FloatIndicatorController", localException, "attachFloatIndicatorView exception:%s", new Object[] { localException });
       }
       AppMethodBeat.o(106328);
       return;
@@ -113,26 +114,26 @@ public final class e
     }
   }
   
-  private void bLs()
+  private void bMp()
   {
     AppMethodBeat.i(106329);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106320);
-        if (e.this.nHW != null) {
+        if (e.this.nNz != null) {
           try
           {
-            if (e.this.nHW.getParent() != null) {
-              ((ViewGroup)e.this.nHW.getParent()).removeView(e.this.nHW);
+            if (e.this.nNz.getParent() != null) {
+              ((ViewGroup)e.this.nNz.getParent()).removeView(e.this.nNz);
             }
             AppMethodBeat.o(106320);
             return;
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.FloatIndicatorController", localException, "detachFloatIndicatorView exception:%s", new Object[] { localException });
+            ae.printErrStackTrace("MicroMsg.FloatIndicatorController", localException, "detachFloatIndicatorView exception:%s", new Object[] { localException });
           }
         }
         AppMethodBeat.o(106320);
@@ -141,102 +142,102 @@ public final class e
     AppMethodBeat.o(106329);
   }
   
-  final int bLp()
+  final int bMm()
   {
     AppMethodBeat.i(106324);
-    if (this.nHb.bJQ() >= 0)
+    if (this.nME.bKO() >= 0)
     {
-      i = this.nHb.bJQ();
+      i = this.nME.bKO();
       AppMethodBeat.o(106324);
       return i;
     }
-    int i = com.tencent.mm.plugin.ball.f.e.nIw;
+    int i = com.tencent.mm.plugin.ball.f.e.nNZ;
     AppMethodBeat.o(106324);
     return i;
   }
   
-  final void bLq()
+  final void bMn()
   {
     AppMethodBeat.i(106327);
-    if (!this.nIb)
+    if (!this.nNE)
     {
       AppMethodBeat.o(106327);
       return;
     }
-    if (this.nHW != null)
+    if (this.nNz != null)
     {
-      this.nHW.setVisibility(8);
-      this.nIb = false;
+      this.nNz.setVisibility(8);
+      this.nNE = false;
     }
     AppMethodBeat.o(106327);
   }
   
-  final void boE()
+  final void bpo()
   {
     AppMethodBeat.i(106323);
-    com.tencent.mm.plugin.ball.f.e.ek(this.nHb.getActivity());
-    if (this.htY)
+    com.tencent.mm.plugin.ball.f.e.eo(this.nME.getActivity());
+    if (this.hwM)
     {
-      this.nHY = (-com.tencent.mm.plugin.ball.f.e.nIr);
-      this.nHX = (bLp() - com.tencent.mm.plugin.ball.f.e.nIr);
+      this.nNB = (-com.tencent.mm.plugin.ball.f.e.nNU);
+      this.nNA = (bMm() - com.tencent.mm.plugin.ball.f.e.nNU);
       AppMethodBeat.o(106323);
       return;
     }
-    this.nHX = (-com.tencent.mm.plugin.ball.f.e.nIr);
-    this.nHY = (bLp() - com.tencent.mm.plugin.ball.f.e.nIr);
+    this.nNA = (-com.tencent.mm.plugin.ball.f.e.nNU);
+    this.nNB = (bMm() - com.tencent.mm.plugin.ball.f.e.nNU);
     AppMethodBeat.o(106323);
   }
   
-  final void ja(boolean paramBoolean)
+  final void iZ(boolean paramBoolean)
   {
     AppMethodBeat.i(106322);
-    ad.i("MicroMsg.FloatIndicatorController", "updateOrientation, isLandscape:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.htY = paramBoolean;
-    boE();
+    ae.i("MicroMsg.FloatIndicatorController", "updateOrientation, isLandscape:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.hwM = paramBoolean;
+    bpo();
     AppMethodBeat.o(106322);
   }
   
   public final void start()
   {
     AppMethodBeat.i(106325);
-    ad.i("MicroMsg.FloatIndicatorController", "start FloatIndicatorController");
-    bLq();
-    this.nId = -1L;
-    this.nIa = false;
-    this.nIb = false;
-    this.nIc = false;
-    if (!this.nHb.bgz())
+    ae.i("MicroMsg.FloatIndicatorController", "start FloatIndicatorController");
+    bMn();
+    this.nNG = -1L;
+    this.nND = false;
+    this.nNE = false;
+    this.nNF = false;
+    if (!this.nME.bhh())
     {
       AppMethodBeat.o(106325);
       return;
     }
-    this.nHb.a(new f.a()
+    this.nME.a(new f.a()
     {
       public final void aR(float paramAnonymousFloat)
       {
         float f1 = 1.0F;
         float f2 = 0.0F;
         AppMethodBeat.i(106317);
-        if (e.this.nIc)
+        if (e.this.nNF)
         {
           AppMethodBeat.o(106317);
           return;
         }
-        if (e.this.nId < 0L) {
-          e.this.nId = bt.flT();
+        if (e.this.nNG < 0L) {
+          e.this.nNG = bu.fpO();
         }
         e locale = e.this;
         int i;
-        if (((locale.nIa) || ((paramAnonymousFloat >= 0.1F) && (paramAnonymousFloat < 0.9F))) && (bt.flT() - locale.nId > 200L))
+        if (((locale.nND) || ((paramAnonymousFloat >= 0.1F) && (paramAnonymousFloat < 0.9F))) && (bu.fpO() - locale.nNG > 200L))
         {
           i = 1;
           if (i == 0) {
             break label348;
           }
-          if (!e.this.nIb) {
-            e.this.boE();
+          if (!e.this.nNE) {
+            e.this.bpo();
           }
-          if (!e.this.nIa)
+          if (!e.this.nND)
           {
             paramAnonymousFloat = (paramAnonymousFloat - 0.1F) / 0.3F;
             if (paramAnonymousFloat >= 0.0F) {
@@ -249,24 +250,24 @@ public final class e
             }
             paramAnonymousFloat = f1;
             label150:
-            i = (int)(paramAnonymousFloat * com.tencent.mm.plugin.ball.f.e.nIr);
-            if (!e.this.htY) {
+            i = (int)(paramAnonymousFloat * com.tencent.mm.plugin.ball.f.e.nNU);
+            if (!e.this.hwM) {
               break label310;
             }
-            e.this.nHY = (-com.tencent.mm.plugin.ball.f.e.nIr + i);
-            e.this.nHX = (i + (e.this.bLp() - com.tencent.mm.plugin.ball.f.e.nIr));
+            e.this.nNB = (-com.tencent.mm.plugin.ball.f.e.nNU + i);
+            e.this.nNA = (i + (e.this.bMm() - com.tencent.mm.plugin.ball.f.e.nNU));
           }
         }
         for (;;)
         {
-          e.this.nHZ.bottomMargin = e.this.nHY;
-          e.this.nHZ.rightMargin = e.this.nHX;
-          e.this.nHW.setLayoutParams(e.this.nHZ);
+          e.this.nNC.bottomMargin = e.this.nNB;
+          e.this.nNC.rightMargin = e.this.nNA;
+          e.this.nNz.setLayoutParams(e.this.nNC);
           locale = e.this;
-          if ((!locale.nIb) && (locale.nHW != null))
+          if ((!locale.nNE) && (locale.nNz != null))
           {
-            locale.nHW.setVisibility(0);
-            locale.nIb = true;
+            locale.nNz.setVisibility(0);
+            locale.nNE = true;
           }
           AppMethodBeat.o(106317);
           return;
@@ -277,36 +278,36 @@ public final class e
           label307:
           break label150;
           label310:
-          e.this.nHX = (-com.tencent.mm.plugin.ball.f.e.nIr + i);
-          e.this.nHY = (i + (e.this.bLp() - com.tencent.mm.plugin.ball.f.e.nIr));
+          e.this.nNA = (-com.tencent.mm.plugin.ball.f.e.nNU + i);
+          e.this.nNB = (i + (e.this.bMm() - com.tencent.mm.plugin.ball.f.e.nNU));
         }
         label348:
-        e.this.bLq();
+        e.this.bMn();
         AppMethodBeat.o(106317);
       }
       
-      public final int iL(boolean paramAnonymousBoolean)
+      public final int iJ(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(106319);
-        ad.i("MicroMsg.FloatIndicatorController", "onSwipeReleased, willSwipeBack:%s, isIndicatorHit:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(e.this.nIa) });
-        e.this.nId = -1L;
-        e.this.nIc = paramAnonymousBoolean;
+        ae.i("MicroMsg.FloatIndicatorController", "onSwipeReleased, willSwipeBack:%s, isIndicatorHit:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(e.this.nND) });
+        e.this.nNG = -1L;
+        e.this.nNF = paramAnonymousBoolean;
         if (!paramAnonymousBoolean)
         {
-          e.this.bLq();
-          e.this.nIa = false;
+          e.this.bMn();
+          e.this.nND = false;
           AppMethodBeat.o(106319);
           return 1;
         }
-        if (e.this.nIa)
+        if (e.this.nND)
         {
-          e.this.bLq();
-          e.this.nIa = false;
-          ad.i("MicroMsg.FloatIndicatorController", "onSwipeReleased, swipe to float ball");
-          int i = e.this.nHc.aS(e.this.nHs);
+          e.this.bMn();
+          e.this.nND = false;
+          ae.i("MicroMsg.FloatIndicatorController", "onSwipeReleased, swipe to float ball");
+          int i = e.this.nMF.aS(e.this.nMU);
           if (i == 2)
           {
-            e.this.nIc = false;
+            e.this.nNF = false;
             AppMethodBeat.o(106319);
             return 2;
           }
@@ -320,85 +321,85 @@ public final class e
       public final void k(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(106318);
-        boolean bool = e.this.nIa;
+        boolean bool = e.this.nND;
         e locale = e.this;
-        if (!locale.nIb)
+        if (!locale.nNE)
         {
-          locale.nIa = false;
-          if ((!e.this.nIb) || (e.this.nIa == bool)) {
+          locale.nND = false;
+          if ((!e.this.nNE) || (e.this.nND == bool)) {
             break label364;
           }
-          if (e.this.nIa)
+          if (e.this.nND)
           {
-            e.this.nHZ.bottomMargin = e.this.nHY;
-            e.this.nHZ.rightMargin = e.this.nHX;
-            e.this.nHW.setLayoutParams(e.this.nHZ);
-            e.this.nHs = paramAnonymousMotionEvent.getRawX();
+            e.this.nNC.bottomMargin = e.this.nNB;
+            e.this.nNC.rightMargin = e.this.nNA;
+            e.this.nNz.setLayoutParams(e.this.nNC);
+            e.this.nMU = paramAnonymousMotionEvent.getRawX();
           }
-          paramAnonymousMotionEvent = e.this.nHW;
-          if (!e.this.nIa) {
+          paramAnonymousMotionEvent = e.this.nNz;
+          if (!e.this.nND) {
             break label307;
           }
-          if (paramAnonymousMotionEvent.nKv != null)
+          if (paramAnonymousMotionEvent.nQa != null)
           {
-            if (!paramAnonymousMotionEvent.nLS) {
+            if (!paramAnonymousMotionEvent.nRx) {
               break label275;
             }
-            paramAnonymousMotionEvent.nKv.vibrate(new long[] { 0L, 10L, 100L, 10L }, -1);
+            paramAnonymousMotionEvent.nQa.vibrate(new long[] { 0L, 10L, 100L, 10L }, -1);
           }
           label188:
-          if (!paramAnonymousMotionEvent.nLS) {
+          if (!paramAnonymousMotionEvent.nRx) {
             break label288;
           }
-          paramAnonymousMotionEvent.nLM.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690225));
+          paramAnonymousMotionEvent.nRr.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690225));
         }
         for (;;)
         {
-          if (paramAnonymousMotionEvent.nLP.isRunning()) {
-            paramAnonymousMotionEvent.nLP.cancel();
+          if (paramAnonymousMotionEvent.nRu.isRunning()) {
+            paramAnonymousMotionEvent.nRu.cancel();
           }
-          if (!paramAnonymousMotionEvent.nLQ.isRunning()) {
-            paramAnonymousMotionEvent.nLQ.start();
+          if (!paramAnonymousMotionEvent.nRv.isRunning()) {
+            paramAnonymousMotionEvent.nRv.start();
           }
           AppMethodBeat.o(106318);
           return;
-          locale.nIa = d.r(locale.nHW, (int)paramAnonymousMotionEvent.getRawX(), (int)paramAnonymousMotionEvent.getRawY());
+          locale.nND = d.q(locale.nNz, (int)paramAnonymousMotionEvent.getRawX(), (int)paramAnonymousMotionEvent.getRawY());
           break;
           label275:
-          paramAnonymousMotionEvent.nKv.vibrate(10L);
+          paramAnonymousMotionEvent.nQa.vibrate(10L);
           break label188;
           label288:
-          paramAnonymousMotionEvent.nLM.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690227));
+          paramAnonymousMotionEvent.nRr.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690227));
         }
         label307:
-        if (paramAnonymousMotionEvent.nLS) {
-          paramAnonymousMotionEvent.nLM.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690224));
+        if (paramAnonymousMotionEvent.nRx) {
+          paramAnonymousMotionEvent.nRr.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690224));
         }
         for (;;)
         {
-          if (paramAnonymousMotionEvent.nLQ.isRunning()) {
-            paramAnonymousMotionEvent.nLQ.cancel();
+          if (paramAnonymousMotionEvent.nRv.isRunning()) {
+            paramAnonymousMotionEvent.nRv.cancel();
           }
-          if (!paramAnonymousMotionEvent.nLP.isRunning()) {
-            paramAnonymousMotionEvent.nLP.start();
+          if (!paramAnonymousMotionEvent.nRu.isRunning()) {
+            paramAnonymousMotionEvent.nRu.start();
           }
           label364:
           AppMethodBeat.o(106318);
           return;
-          paramAnonymousMotionEvent.nLM.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690226));
+          paramAnonymousMotionEvent.nRr.setImageDrawable(com.tencent.mm.svg.a.a.g(paramAnonymousMotionEvent.getResources(), 2131690226));
         }
       }
     });
-    bLr();
+    bMo();
     AppMethodBeat.o(106325);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(106326);
-    ad.i("MicroMsg.FloatIndicatorController", "stop FloatIndicatorController");
-    bLs();
-    this.nHb.a(null);
+    ae.i("MicroMsg.FloatIndicatorController", "stop FloatIndicatorController");
+    bMp();
+    this.nME.a(null);
     AppMethodBeat.o(106326);
   }
 }

@@ -8,17 +8,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ae.a.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMFormSelectorView
   extends LinearLayout
 {
   private String hint;
-  private TextView iVq;
+  private TextView iYj;
   private int layout;
   private Context mContext;
-  private EditText mlU;
+  private EditText mqR;
   private String title;
   
   public MMFormSelectorView(Context paramContext, AttributeSet paramAttributeSet)
@@ -52,13 +52,13 @@ public class MMFormSelectorView
   public String getText()
   {
     AppMethodBeat.i(141933);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      String str = this.mlU.getText().toString();
+      String str = this.mqR.getText().toString();
       AppMethodBeat.o(141933);
       return str;
     }
-    ad.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141933);
     return null;
   }
@@ -66,19 +66,19 @@ public class MMFormSelectorView
   public void onFinishInflate()
   {
     AppMethodBeat.i(141927);
-    this.iVq = ((TextView)findViewById(2131305902));
-    this.mlU = ((EditText)findViewById(2131299306));
-    if ((this.iVq == null) || (this.mlU == null))
+    this.iYj = ((TextView)findViewById(2131305902));
+    this.mqR = ((EditText)findViewById(2131299306));
+    if ((this.iYj == null) || (this.mqR == null))
     {
-      ad.w("MicroMsg.MMFormSelectorView", "titleTV : %s, contentET : %s", new Object[] { this.iVq, this.mlU });
+      ae.w("MicroMsg.MMFormSelectorView", "titleTV : %s, contentET : %s", new Object[] { this.iYj, this.mqR });
       AppMethodBeat.o(141927);
       return;
     }
     if (this.title != null) {
-      this.iVq.setText(this.title);
+      this.iYj.setText(this.title);
     }
     if (this.hint != null) {
-      this.mlU.setHint(this.hint);
+      this.mqR.setHint(this.hint);
     }
     AppMethodBeat.o(141927);
   }
@@ -86,65 +86,65 @@ public class MMFormSelectorView
   public void setHint(int paramInt)
   {
     AppMethodBeat.i(141931);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setHint(paramInt);
+      this.mqR.setHint(paramInt);
       AppMethodBeat.o(141931);
       return;
     }
-    ad.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141931);
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(141929);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setHint(paramString);
+      this.mqR.setHint(paramString);
       AppMethodBeat.o(141929);
       return;
     }
-    ad.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141929);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(141932);
-    if (this.mlU != null)
+    if (this.mqR != null)
     {
-      this.mlU.setText(paramString);
+      this.mqR.setText(paramString);
       AppMethodBeat.o(141932);
       return;
     }
-    ad.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141932);
   }
   
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(141930);
-    if (this.iVq != null)
+    if (this.iYj != null)
     {
-      this.iVq.setText(paramInt);
+      this.iYj.setText(paramInt);
       AppMethodBeat.o(141930);
       return;
     }
-    ad.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
+    ae.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
     AppMethodBeat.o(141930);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(141928);
-    if (this.iVq != null)
+    if (this.iYj != null)
     {
-      this.iVq.setText(paramString);
+      this.iYj.setText(paramString);
       AppMethodBeat.o(141928);
       return;
     }
-    ad.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
+    ae.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
     AppMethodBeat.o(141928);
   }
 }

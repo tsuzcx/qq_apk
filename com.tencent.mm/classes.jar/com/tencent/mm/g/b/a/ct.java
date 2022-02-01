@@ -6,87 +6,87 @@ import com.tencent.mm.plugin.report.a;
 public final class ct
   extends a
 {
-  private long dSx;
-  private long dUW;
-  private String dYk = "";
-  private String ecZ;
-  private long edb;
-  private long edj;
-  private long edq;
-  private long edr;
-  private long eds;
-  private long edt;
-  private long edu;
-  private long edv;
+  private long dTN;
+  private long dWm;
+  private String dZB = "";
+  private long eeE;
+  private long eeL;
+  private long eeM;
+  private long eeN;
+  private long eeO;
+  private long eeP;
+  private long eeQ;
+  private String eeu = "";
+  private long eew;
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(215501);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.dWm);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeL);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dZB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeO);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eew);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eeE);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(215501);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(211885);
+    AppMethodBeat.i(215502);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edq);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edr);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYk);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eds);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edt);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edu);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edv);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.edj);
+    ((StringBuffer)localObject).append("scene:").append(this.dWm);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("roomid:").append(this.eeu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("rulePop:").append(this.eeL);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ruleCheck:").append(this.eeM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("topic:").append(this.dZB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("customTopic:").append(this.eeN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("cameraStatus:").append(this.eeO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("horizontalStatus:").append(this.eeP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("exitType:").append(this.dTN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("errcode:").append(this.eeQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("roomRole:").append(this.eew);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("roomCount:").append(this.eeE);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(211885);
+    AppMethodBeat.o(215502);
     return localObject;
   }
   
-  public final String RE()
+  public final ct SV()
   {
-    AppMethodBeat.i(211886);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.dUW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomid:").append(this.ecZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("rulePop:").append(this.edq);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ruleCheck:").append(this.edr);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topic:").append(this.dYk);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("customTopic:").append(this.eds);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cameraStatus:").append(this.edt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("horizontalStatus:").append(this.edu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exitType:").append(this.dSx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errcode:").append(this.edv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomRole:").append(this.edb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomCount:").append(this.edj);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(211886);
-    return localObject;
-  }
-  
-  public final ct SR()
-  {
-    this.dUW = 1L;
+    this.dWm = 1L;
     return this;
   }
   
@@ -97,77 +97,77 @@ public final class ct
   
   public final ct iA(long paramLong)
   {
-    this.edb = paramLong;
+    this.eeN = paramLong;
     return this;
   }
   
   public final ct iB(long paramLong)
   {
-    this.edj = paramLong;
+    this.eeO = paramLong;
     return this;
   }
   
-  public final ct it(long paramLong)
+  public final ct iC(long paramLong)
   {
-    this.edq = paramLong;
+    this.eeP = paramLong;
     return this;
   }
   
-  public final ct iu(long paramLong)
+  public final ct iD(long paramLong)
   {
-    this.edr = paramLong;
+    this.dTN = paramLong;
     return this;
   }
   
-  public final ct iv(long paramLong)
+  public final ct iE(long paramLong)
   {
-    this.eds = paramLong;
+    this.eeQ = paramLong;
     return this;
   }
   
-  public final ct iw(long paramLong)
+  public final ct iF(long paramLong)
   {
-    this.edt = paramLong;
+    this.eew = paramLong;
     return this;
   }
   
-  public final ct ix(long paramLong)
+  public final ct iG(long paramLong)
   {
-    this.edu = paramLong;
+    this.eeE = paramLong;
     return this;
   }
   
   public final ct iy(long paramLong)
   {
-    this.dSx = paramLong;
+    this.eeL = paramLong;
     return this;
   }
   
   public final ct iz(long paramLong)
   {
-    this.edv = paramLong;
+    this.eeM = paramLong;
     return this;
   }
   
-  public final ct lT(String paramString)
+  public final ct mk(String paramString)
   {
-    AppMethodBeat.i(211883);
-    this.ecZ = t("roomid", paramString, true);
-    AppMethodBeat.o(211883);
+    AppMethodBeat.i(215499);
+    this.eeu = t("roomid", paramString, true);
+    AppMethodBeat.o(215499);
     return this;
   }
   
-  public final ct lU(String paramString)
+  public final ct ml(String paramString)
   {
-    AppMethodBeat.i(211884);
-    this.dYk = t("topic", paramString, true);
-    AppMethodBeat.o(211884);
+    AppMethodBeat.i(215500);
+    this.dZB = t("topic", paramString, true);
+    AppMethodBeat.o(215500);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ct
  * JD-Core Version:    0.7.0.1
  */

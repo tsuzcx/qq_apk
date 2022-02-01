@@ -12,18 +12,18 @@ public final class h
   extends Preference
 {
   private View mView;
-  boolean nlS;
-  boolean wFg;
-  boolean wFh;
+  boolean nrc;
+  boolean wUR;
+  boolean wUS;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66824);
     this.mView = null;
-    this.wFg = false;
-    this.wFh = false;
-    this.nlS = true;
+    this.wUR = false;
+    this.wUS = false;
+    this.nrc = true;
     setLayoutResource(2131494712);
     AppMethodBeat.o(66824);
   }
@@ -46,16 +46,16 @@ public final class h
     super.onBindView(paramView);
     paramView = paramView.findViewById(2131302042);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    int i = BackwardSupportUtil.b.g(this.mContext, 10.0F);
-    if (this.wFg) {}
+    int i = BackwardSupportUtil.b.h(this.mContext, 10.0F);
+    if (this.wUR) {}
     for (int j = i;; j = 0)
     {
-      if (this.wFh) {}
+      if (this.wUS) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.nlS)
+        if (!this.nrc)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(66826);

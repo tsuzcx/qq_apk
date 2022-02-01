@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.exdevice.g.b;
 public final class d
 {
   public String appName;
-  public String qfc;
+  public String qlH;
   public String username;
   
   public d() {}
   
   public d(String paramString1, String paramString2, String paramString3)
   {
-    this.qfc = paramString1;
+    this.qlH = paramString1;
     this.appName = paramString2;
     this.username = paramString3;
   }

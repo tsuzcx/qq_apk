@@ -7,11 +7,11 @@ import junit.framework.Assert;
 
 public final class f
 {
-  public String gxB;
+  public String gAi;
   
   public f(String paramString)
   {
-    this.gxB = paramString;
+    this.gAi = paramString;
   }
   
   public static String bf(Object paramObject)

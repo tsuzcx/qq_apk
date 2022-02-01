@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"appendRange", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "value", "", "startIndex", "", "endIndex", "", "appendln", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "", "Ljava/lang/StringBuffer;", "", "", "", "", "", "", "", "", "clear", "deleteAt", "index", "deleteRange", "insertRange", "set", "", "setRange", "toCharArray", "destination", "destinationOffset", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"appendRange", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "value", "", "startIndex", "", "endIndex", "", "appendln", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "", "Ljava/lang/StringBuffer;", "", "", "", "", "", "", "", "", "clear", "deleteAt", "index", "deleteRange", "insertRange", "set", "", "setRange", "toCharArray", "destination", "destinationOffset", "kotlin-stdlib"}, gkc=1)
 public class s
   extends r
 {
@@ -21,7 +21,7 @@ public class s
   {
     AppMethodBeat.i(129420);
     p.h(paramStringBuilder, "$this$appendln");
-    paramStringBuilder = paramStringBuilder.append(aa.NHr);
+    paramStringBuilder = paramStringBuilder.append(aa.Oex);
     p.g(paramStringBuilder, "append(SystemProperties.LINE_SEPARATOR)");
     AppMethodBeat.o(129420);
     return paramStringBuilder;

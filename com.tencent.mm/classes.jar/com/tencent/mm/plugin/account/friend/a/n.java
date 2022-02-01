@@ -15,72 +15,72 @@ public final class n
   {
     AppMethodBeat.i(131047);
     c.a locala = new c.a();
-    locala.IhA = new Field[16];
+    locala.IBL = new Field[16];
     locala.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "googleid";
-    locala.IhC.put("googleid", "TEXT");
+    locala.IBN.put("googleid", "TEXT");
     localStringBuilder.append(" googleid TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "googlename";
-    locala.IhC.put("googlename", "TEXT");
+    locala.IBN.put("googlename", "TEXT");
     localStringBuilder.append(" googlename TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "googlephotourl";
-    locala.IhC.put("googlephotourl", "TEXT");
+    locala.IBN.put("googlephotourl", "TEXT");
     localStringBuilder.append(" googlephotourl TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "googlegmail";
-    locala.IhC.put("googlegmail", "TEXT");
+    locala.IBN.put("googlegmail", "TEXT");
     localStringBuilder.append(" googlegmail TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "username";
-    locala.IhC.put("username", "TEXT");
+    locala.IBN.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "nickname";
-    locala.IhC.put("nickname", "TEXT");
+    locala.IBN.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "nicknameqp";
-    locala.IhC.put("nicknameqp", "TEXT");
+    locala.IBN.put("nicknameqp", "TEXT");
     localStringBuilder.append(" nicknameqp TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "usernamepy";
-    locala.IhC.put("usernamepy", "TEXT");
+    locala.IBN.put("usernamepy", "TEXT");
     localStringBuilder.append(" usernamepy TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "small_url";
-    locala.IhC.put("small_url", "TEXT");
+    locala.IBN.put("small_url", "TEXT");
     localStringBuilder.append(" small_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "big_url";
-    locala.IhC.put("big_url", "TEXT");
+    locala.IBN.put("big_url", "TEXT");
     localStringBuilder.append(" big_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "ret";
-    locala.IhC.put("ret", "INTEGER");
+    locala.IBN.put("ret", "INTEGER");
     localStringBuilder.append(" ret INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "status";
-    locala.IhC.put("status", "INTEGER");
+    locala.IBN.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "googleitemid";
-    locala.IhC.put("googleitemid", "TEXT PRIMARY KEY ");
+    locala.IBN.put("googleitemid", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" googleitemid TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "googleitemid";
+    locala.IBM = "googleitemid";
     locala.columns[13] = "googlecgistatus";
-    locala.IhC.put("googlecgistatus", "INTEGER default '2' ");
+    locala.IBN.put("googlecgistatus", "INTEGER default '2' ");
     localStringBuilder.append(" googlecgistatus INTEGER default '2' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "contecttype";
-    locala.IhC.put("contecttype", "TEXT");
+    locala.IBN.put("contecttype", "TEXT");
     localStringBuilder.append(" contecttype TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "googlenamepy";
-    locala.IhC.put("googlenamepy", "TEXT");
+    locala.IBN.put("googlenamepy", "TEXT");
     localStringBuilder.append(" googlenamepy TEXT");
     locala.columns[16] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -120,7 +120,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.n
  * JD-Core Version:    0.7.0.1
  */

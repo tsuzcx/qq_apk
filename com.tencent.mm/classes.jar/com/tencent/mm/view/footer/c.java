@@ -4,39 +4,41 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bu.b;
+import com.tencent.mm.api.g;
+import com.tencent.mm.bt.b;
+import com.tencent.mm.sdk.platformtools.h;
 
 public final class c
   extends a
 {
-  private Bitmap Lub;
-  private Bitmap Luc;
+  private Bitmap LQO;
+  private Bitmap LQP;
   
   public c(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
   }
   
-  protected final Bitmap a(com.tencent.mm.api.g paramg, boolean paramBoolean)
+  protected final Bitmap a(g paramg, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
-    if (paramg == com.tencent.mm.api.g.cRI)
+    if (paramg == g.cSs)
     {
       if (paramBoolean) {
-        localBitmap = this.Luc;
+        localBitmap = this.LQP;
       }
     }
     else {
       return localBitmap;
     }
-    return this.Lub;
+    return this.LQO;
   }
   
-  protected final boolean agd(int paramInt)
+  protected final boolean agM(int paramInt)
   {
     AppMethodBeat.i(9426);
-    boolean bool = super.agd(paramInt);
-    switch (1.FmQ[agc(paramInt).ordinal()])
+    boolean bool = super.agM(paramInt);
+    switch (c.1.FFo[agL(paramInt).ordinal()])
     {
     }
     for (;;)
@@ -47,12 +49,12 @@ public final class c
     }
   }
   
-  protected final void fQp()
+  protected final void fUL()
   {
     AppMethodBeat.i(9425);
-    super.fQp();
-    this.Lub = com.tencent.mm.sdk.platformtools.g.A(getResources().getDrawable(2131690010));
-    this.Luc = com.tencent.mm.sdk.platformtools.g.A(getResources().getDrawable(2131690009));
+    super.fUL();
+    this.LQO = h.B(getResources().getDrawable(2131690010));
+    this.LQP = h.B(getResources().getDrawable(2131690009));
     AppMethodBeat.o(9425);
   }
 }

@@ -28,13 +28,13 @@ import java.util.List;
 public final class a
   extends ae
 {
-  private final u.b NDM;
+  private final u.b OaT;
   
   public a(e parame, u.b paramb)
   {
-    super(parame, null, g.a.gjL(), f.bcG("<ERROR FUNCTION>"), b.a.MUj, an.MUX);
+    super(parame, null, g.a.gon(), f.bek("<ERROR FUNCTION>"), b.a.Nro, an.Nsc);
     AppMethodBeat.i(61213);
-    this.NDM = paramb;
+    this.OaT = paramb;
     AppMethodBeat.o(61213);
   }
   
@@ -42,16 +42,16 @@ public final class a
   {
     AppMethodBeat.i(61214);
     if (paraml == null) {
-      ajm(2);
+      ajW(2);
     }
     if (parama == null) {
-      ajm(3);
+      ajW(3);
     }
     if (paramg == null) {
-      ajm(4);
+      ajW(4);
     }
     if (paraman == null) {
-      ajm(5);
+      ajW(5);
     }
     AppMethodBeat.o(61214);
     return this;
@@ -67,24 +67,34 @@ public final class a
     return this;
   }
   
-  public final boolean giV()
+  public final boolean gnx()
   {
     return false;
   }
   
-  public final t.a<? extends am> giW()
+  public final t.a<? extends am> gny()
   {
     AppMethodBeat.i(61215);
     t.a local1 = new t.a()
     {
+      public final t.a<am> Ak(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(61198);
+        if (this == null) {
+          ajW(8);
+        }
+        AppMethodBeat.o(61198);
+        return this;
+      }
+      
       public final t.a<am> H(ab paramAnonymousab)
       {
         AppMethodBeat.i(61202);
         if (paramAnonymousab == null) {
-          ajm(19);
+          ajW(19);
         }
         if (this == null) {
-          ajm(20);
+          ajW(20);
         }
         AppMethodBeat.o(61202);
         return this;
@@ -94,10 +104,10 @@ public final class a
       {
         AppMethodBeat.i(61211);
         if (paramAnonymousg == null) {
-          ajm(29);
+          ajW(29);
         }
         if (this == null) {
-          ajm(30);
+          ajW(30);
         }
         AppMethodBeat.o(61211);
         return this;
@@ -107,7 +117,7 @@ public final class a
       {
         AppMethodBeat.i(61203);
         if (this == null) {
-          ajm(21);
+          ajW(21);
         }
         AppMethodBeat.o(61203);
         return this;
@@ -117,10 +127,10 @@ public final class a
       {
         AppMethodBeat.i(61197);
         if (paramAnonymousa == null) {
-          ajm(6);
+          ajW(6);
         }
         if (this == null) {
-          ajm(7);
+          ajW(7);
         }
         AppMethodBeat.o(61197);
         return this;
@@ -130,10 +140,10 @@ public final class a
       {
         AppMethodBeat.i(61196);
         if (paramAnonymousba == null) {
-          ajm(4);
+          ajW(4);
         }
         if (this == null) {
-          ajm(5);
+          ajW(5);
         }
         AppMethodBeat.o(61196);
         return this;
@@ -143,10 +153,10 @@ public final class a
       {
         AppMethodBeat.i(61195);
         if (paramAnonymousw == null) {
-          ajm(2);
+          ajW(2);
         }
         if (this == null) {
-          ajm(3);
+          ajW(3);
         }
         AppMethodBeat.o(61195);
         return this;
@@ -156,7 +166,7 @@ public final class a
       {
         AppMethodBeat.i(61204);
         if (this == null) {
-          ajm(22);
+          ajW(22);
         }
         AppMethodBeat.o(61204);
         return this;
@@ -166,10 +176,10 @@ public final class a
       {
         AppMethodBeat.i(61201);
         if (paramAnonymousay == null) {
-          ajm(13);
+          ajW(13);
         }
         if (this == null) {
-          ajm(14);
+          ajW(14);
         }
         AppMethodBeat.o(61201);
         return this;
@@ -179,7 +189,7 @@ public final class a
       {
         AppMethodBeat.i(61205);
         if (this == null) {
-          ajm(23);
+          ajW(23);
         }
         AppMethodBeat.o(61205);
         return this;
@@ -189,62 +199,62 @@ public final class a
       {
         AppMethodBeat.i(61199);
         if (paramAnonymousf == null) {
-          ajm(9);
+          ajW(9);
         }
         if (this == null) {
-          ajm(10);
+          ajW(10);
         }
         AppMethodBeat.o(61199);
         return this;
       }
       
-      public final t.a<am> giX()
-      {
-        AppMethodBeat.i(61206);
-        if (this == null) {
-          ajm(24);
-        }
-        AppMethodBeat.o(61206);
-        return this;
-      }
-      
-      public final t.a<am> giY()
+      public final t.a<am> gnA()
       {
         AppMethodBeat.i(61207);
         if (this == null) {
-          ajm(25);
+          ajW(25);
         }
         AppMethodBeat.o(61207);
         return this;
       }
       
-      public final t.a<am> giZ()
+      public final t.a<am> gnB()
       {
         AppMethodBeat.i(61208);
         if (this == null) {
-          ajm(26);
+          ajW(26);
         }
         AppMethodBeat.o(61208);
         return this;
       }
       
-      public final t.a<am> gja()
+      public final t.a<am> gnC()
       {
         AppMethodBeat.i(61209);
         if (this == null) {
-          ajm(27);
+          ajW(27);
         }
         AppMethodBeat.o(61209);
         return this;
       }
       
-      public final t.a<am> gjb()
+      public final t.a<am> gnD()
       {
         AppMethodBeat.i(61210);
         if (this == null) {
-          ajm(28);
+          ajW(28);
         }
         AppMethodBeat.o(61210);
+        return this;
+      }
+      
+      public final t.a<am> gnz()
+      {
+        AppMethodBeat.i(61206);
+        if (this == null) {
+          ajW(24);
+        }
+        AppMethodBeat.o(61206);
         return this;
       }
       
@@ -252,35 +262,25 @@ public final class a
       {
         AppMethodBeat.i(61194);
         if (paramAnonymousl == null) {
-          ajm(0);
+          ajW(0);
         }
         if (this == null) {
-          ajm(1);
+          ajW(1);
         }
         AppMethodBeat.o(61194);
         return this;
       }
       
-      public final t.a<am> jk(List<av> paramAnonymousList)
+      public final t.a<am> jt(List<av> paramAnonymousList)
       {
         AppMethodBeat.i(61200);
         if (paramAnonymousList == null) {
-          ajm(11);
+          ajW(11);
         }
         if (this == null) {
-          ajm(12);
+          ajW(12);
         }
         AppMethodBeat.o(61200);
-        return this;
-      }
-      
-      public final t.a<am> zX(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(61198);
-        if (this == null) {
-          ajm(8);
-        }
-        AppMethodBeat.o(61198);
         return this;
       }
     };
@@ -292,14 +292,14 @@ public final class a
   {
     AppMethodBeat.i(61216);
     if (paramCollection == null) {
-      ajm(8);
+      ajW(8);
     }
     AppMethodBeat.o(61216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.b.a
  * JD-Core Version:    0.7.0.1
  */

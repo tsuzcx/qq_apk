@@ -1,10 +1,10 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.y;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelappbrand.f;
-import com.tencent.mm.plugin.appbrand.z.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.n;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.chatting.d.b.j;
 import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.l;
@@ -13,69 +13,69 @@ import java.lang.ref.WeakReference;
 final class ac$c
   implements l
 {
-  private WeakReference<a> oeg;
+  private WeakReference<a> ojW;
   
-  public final void fws() {}
+  public final void fAs() {}
   
-  public final void fwt() {}
+  public final void fAt() {}
   
-  public final void fwu() {}
+  public final void fAu() {}
   
-  public final void fwv()
+  public final void fAv()
   {
     AppMethodBeat.i(37100);
-    if (this.oeg == null)
+    if (this.ojW == null)
     {
       AppMethodBeat.o(37100);
       return;
     }
-    a locala = (a)this.oeg.get();
+    a locala = (a)this.ojW.get();
     if (locala != null) {
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDE().Cb(n.cG(locala));
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDU().CD(n.cH(locala));
     }
     AppMethodBeat.o(37100);
   }
   
-  public final void fww()
+  public final void fAw()
   {
     AppMethodBeat.i(37101);
-    if (this.oeg == null)
+    if (this.ojW == null)
     {
       AppMethodBeat.o(37101);
       return;
     }
-    a locala = (a)this.oeg.get();
+    a locala = (a)this.ojW.get();
     if (locala != null) {
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDE().Ca(n.cG(locala));
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDU().CC(n.cH(locala));
     }
     AppMethodBeat.o(37101);
   }
   
-  public final void fwx()
+  public final void fAx()
   {
     AppMethodBeat.i(37102);
-    ad.i("MicroMsg.ChattingLifecycleChangedListener", "onChattingExitAnimStart, then detach DynamicPageView.");
-    if (this.oeg == null)
+    ae.i("MicroMsg.ChattingLifecycleChangedListener", "onChattingExitAnimStart, then detach DynamicPageView.");
+    if (this.ojW == null)
     {
       AppMethodBeat.o(37102);
       return;
     }
-    a locala = (a)this.oeg.get();
+    a locala = (a)this.ojW.get();
     if (locala != null)
     {
-      y.aBq().AG(n.cG(locala));
+      z.aBG().Bq(n.cH(locala));
       ((j)locala.bh(j.class)).b(this);
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).Cc(n.cG(locala));
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).CE(n.cH(locala));
     }
     AppMethodBeat.o(37102);
   }
   
-  public final void fwy() {}
+  public final void fAy() {}
   
   final void n(a parama)
   {
     AppMethodBeat.i(37099);
-    this.oeg = new WeakReference(parama);
+    this.ojW = new WeakReference(parama);
     ((j)parama.bh(j.class)).a(this);
     AppMethodBeat.o(37099);
   }

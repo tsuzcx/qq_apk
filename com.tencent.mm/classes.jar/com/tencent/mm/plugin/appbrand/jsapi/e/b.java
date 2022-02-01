@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,13 +19,13 @@ public final class b
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144674);
-    ad.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
+    ae.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
     paramJSONObject = new JSONArray();
-    Object localObject = a.PD(paramc.getAppId());
+    Object localObject = a.Ql(paramc.getAppId());
     if (localObject != null)
     {
-      localObject = ((a.a)localObject).kNG;
-      ad.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
+      localObject = ((a.a)localObject).kRi;
+      ae.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
       if ((localObject != null) && (((Map)localObject).size() > 0))
       {
         localObject = ((Map)localObject).values().iterator();
@@ -36,11 +36,11 @@ public final class b
     }
     else
     {
-      ad.e("MicroMsg.JsApiGetBeacons", "not found device");
+      ae.e("MicroMsg.JsApiGetBeacons", "not found device");
     }
     localObject = new HashMap();
     ((Map)localObject).put("beacons", paramJSONObject);
-    paramc.h(paramInt, m("ok", (Map)localObject));
+    paramc.h(paramInt, n("ok", (Map)localObject));
     AppMethodBeat.o(144674);
   }
 }

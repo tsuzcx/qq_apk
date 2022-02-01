@@ -16,56 +16,67 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.g.a.au;
-import com.tencent.mm.g.a.sq;
-import com.tencent.mm.g.a.sq.a;
-import com.tencent.mm.g.a.vf;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.g.a.sr;
+import com.tencent.mm.g.a.sr.a;
+import com.tencent.mm.g.a.vj;
 import com.tencent.mm.network.n;
 import com.tencent.mm.network.n.a;
+import com.tencent.mm.plugin.scanner.i;
 import com.tencent.mm.plugin.scanner.ui.TranslationResultUI;
 import com.tencent.mm.plugin.scanner.word.ImageWordScanDetailEngine;
 import com.tencent.mm.plugin.scanner.word.a.a;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.b.b;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.c.b;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.MMViewPager;
 import com.tencent.mm.ui.base.MMViewPager.k;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.vfs.o;
 
 public abstract class SnsBaseGalleryUI
   extends MMActivity
-  implements a.a<String, com.tencent.mm.plugin.scanner.word.b>, b.b, SnsInfoFlip.b, v.a
+  implements a.a<String, com.tencent.mm.plugin.scanner.word.b>, c.b, SnsInfoFlip.b, v.a
 {
-  private com.tencent.mm.plugin.scanner.word.a ryT;
-  private int ryU = 0;
-  private int ryV = 0;
-  private ImageView ryX;
-  private ImageView ryY;
-  private ImageView ryZ;
-  private ValueAnimator rza;
-  private c<sq> rzb = new c() {};
-  private n rzc = new n.a()
+  private LinearLayout Ard;
+  u Are;
+  private LinearLayout Arf;
+  v Arg;
+  private boolean Arh = true;
+  private TextView Ari = null;
+  protected SnsInfoFlip Arj;
+  protected Button Ark;
+  private int Arl = -1;
+  private com.tencent.mm.sdk.b.c<vj> Arm = new com.tencent.mm.sdk.b.c() {};
+  private com.tencent.mm.plugin.scanner.word.a rHe;
+  private int rHf = 0;
+  private int rHg = 0;
+  private ImageView rHi;
+  private ImageView rHj;
+  private ImageView rHk;
+  private ValueAnimator rHl;
+  private com.tencent.mm.sdk.b.c<sr> rHm = new com.tencent.mm.sdk.b.c() {};
+  private n rHn = new n.a()
   {
     public final void onNetworkChange(int paramAnonymousInt)
     {
       AppMethodBeat.i(98487);
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(98486);
-          if ((g.aiU().aEN() != 6) && (g.aiU().aEN() != 4) && (SnsBaseGalleryUI.e(SnsBaseGalleryUI.this) == 1))
+          if ((com.tencent.mm.kernel.g.ajj().aFd() != 6) && (com.tencent.mm.kernel.g.ajj().aFd() != 4) && (SnsBaseGalleryUI.e(SnsBaseGalleryUI.this) == 1))
           {
-            com.tencent.mm.ui.base.h.c(SnsBaseGalleryUI.this, SnsBaseGalleryUI.this.getString(2131755828), "", true);
-            SnsBaseGalleryUI.this.cwC();
+            h.c(SnsBaseGalleryUI.this, SnsBaseGalleryUI.this.getString(2131755828), "", true);
+            SnsBaseGalleryUI.this.cyd();
           }
           AppMethodBeat.o(98486);
         }
@@ -73,119 +84,109 @@ public abstract class SnsBaseGalleryUI
       AppMethodBeat.o(98487);
     }
   };
-  private boolean yyS = true;
-  private LinearLayout zZQ;
-  u zZR;
-  private LinearLayout zZS;
-  v zZT;
-  private boolean zZU = true;
-  private TextView zZV = null;
-  protected SnsInfoFlip zZW;
-  protected Button zZX;
-  private int zZY = -1;
-  private c<vf> zZZ = new c() {};
+  private boolean yOS = true;
   
-  private void cwE()
+  private void cyf()
   {
-    this.rza.setRepeatMode(1);
-    this.rza.setRepeatCount(0);
-    this.rza.end();
+    this.rHl.setRepeatMode(1);
+    this.rHl.setRepeatCount(0);
+    this.rHl.end();
   }
   
-  private boolean ebB()
+  private boolean efi()
   {
-    return ebA() == 3;
+    return efh() == 3;
   }
   
   @SuppressLint({"ResourceAsColor"})
-  public final void R(boolean paramBoolean, int paramInt)
+  public final void U(boolean paramBoolean, int paramInt)
   {
-    this.zZR = new u(this, paramInt, paramBoolean);
-    this.zZR.setBackgroundColor(2131101053);
+    this.Are = new u(this, paramInt, paramBoolean);
+    this.Are.setBackgroundColor(2131101053);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.zZR.getBackground().setAlpha(50);
-    this.zZS.addView(this.zZR, localLayoutParams);
+    this.Are.getBackground().setAlpha(50);
+    this.Arf.addView(this.Are, localLayoutParams);
     paramInt = getIntent().getIntExtra("sns_source", 0);
-    this.zZR.setSnsSource(paramInt);
+    this.Are.setSnsSource(paramInt);
   }
   
-  public void a(byn parambyn, int paramInt, String paramString)
+  public void a(bzh parambzh, int paramInt, String paramString)
   {
-    if ((parambyn.nEf == 2) && (com.tencent.mm.plugin.scanner.h.dKw()) && (ebz()))
+    if ((parambzh.nJA == 2) && (i.dNO()) && (efg()))
     {
-      if (paramInt != this.zZY)
+      if (paramInt != this.Arl)
       {
-        this.zZW.setNeedTranslationImg(false);
-        this.ryU = 0;
+        this.Arj.setNeedTranslationImg(false);
+        this.rHf = 0;
       }
-      this.zZY = paramInt;
-      if (this.ryT == null) {
-        this.ryT = new ImageWordScanDetailEngine(this);
+      this.Arl = paramInt;
+      if (this.rHe == null) {
+        this.rHe = new ImageWordScanDetailEngine(this);
       }
-      paramString = ag.dUe().aAa(paramString);
-      if ((paramString != null) && (!paramString.dYL()))
+      paramString = ah.dXE().aBr(paramString);
+      if ((paramString != null) && (!paramString.ecp()))
       {
-        parambyn = com.tencent.mm.plugin.sns.model.f.C(parambyn);
-        if (!bt.isNullOrNil(parambyn)) {
-          this.ryT.a(parambyn, this);
+        parambzh = com.tencent.mm.plugin.sns.model.g.C(parambzh);
+        if (!bu.isNullOrNil(parambzh)) {
+          this.rHe.a(parambzh, this);
         }
       }
       return;
     }
-    this.zZW.setNeedTranslationImg(false);
+    this.Arj.setNeedTranslationImg(false);
   }
   
   public void addView(View paramView)
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    this.zZQ.addView(paramView, localLayoutParams);
+    this.Ard.addView(paramView, localLayoutParams);
   }
   
-  public final void ays(String paramString) {}
+  public final void azJ(String paramString) {}
   
-  public final void bM(String paramString, boolean paramBoolean)
+  public final void bQ(String paramString, boolean paramBoolean)
   {
-    if ((com.tencent.mm.plugin.scanner.h.dKw()) && (ebz()) && (paramBoolean) && (!bt.isNullOrNil(paramString)) && (paramString.equals(this.zZW.getSelectedMediaId())))
+    if ((i.dNO()) && (efg()) && (paramBoolean) && (!bu.isNullOrNil(paramString)) && (paramString.equals(this.Arj.getSelectedMediaId())))
     {
-      if (this.ryT == null) {
-        this.ryT = new ImageWordScanDetailEngine(this);
+      if (this.rHe == null) {
+        this.rHe = new ImageWordScanDetailEngine(this);
       }
-      paramString = com.tencent.mm.plugin.sns.model.f.C(this.zZW.getCntMedia());
-      if (!bt.isNullOrNil(paramString)) {
-        this.ryT.a(paramString, this);
+      paramString = com.tencent.mm.plugin.sns.model.g.C(this.Arj.getCntMedia());
+      if (!bu.isNullOrNil(paramString)) {
+        this.rHe.a(paramString, this);
       }
     }
   }
   
-  public final void bN(String paramString, boolean paramBoolean) {}
+  public final void bR(String paramString, boolean paramBoolean) {}
   
-  public final void cwC()
+  public final void cyd()
   {
-    this.ryV = 0;
-    this.ryX.setVisibility(8);
-    this.ryY.setVisibility(8);
-    this.ryZ.setVisibility(8);
-    cwE();
+    this.rHg = 0;
+    this.rHi.setVisibility(8);
+    this.rHj.setVisibility(8);
+    this.rHk.setVisibility(8);
+    cyf();
   }
   
-  public final void dTb() {}
+  public final void dWB() {}
   
-  public void dZM()
+  public void eds()
   {
     int j = 8;
     boolean bool = false;
-    if (!this.yyS) {
+    if (!this.yOS) {
       return;
     }
     u localu;
-    if (this.zZU)
+    if (this.Arh)
     {
       i = 8;
       setTitleVisibility(i);
-      if (this.zZR != null)
+      if (this.Are != null)
       {
-        localu = this.zZR;
-        if (!this.zZU) {
+        localu = this.Are;
+        if (!this.Arh) {
           break label76;
         }
       }
@@ -194,34 +195,34 @@ public abstract class SnsBaseGalleryUI
     for (int i = j;; i = 0)
     {
       localu.setVisibility(i);
-      if (!this.zZU) {
+      if (!this.Arh) {
         bool = true;
       }
-      this.zZU = bool;
+      this.Arh = bool;
       return;
       i = 0;
       break;
     }
   }
   
-  protected int ebA()
-  {
-    return 3;
-  }
-  
-  protected boolean ebz()
+  protected boolean efg()
   {
     return false;
   }
   
-  public void fa(String paramString, int paramInt) {}
-  
-  public void fb(String paramString, int paramInt)
+  protected int efh()
   {
-    if ((!this.yyS) || (ag.dTN())) {
+    return 3;
+  }
+  
+  public void fj(String paramString, int paramInt) {}
+  
+  public void fk(String paramString, int paramInt)
+  {
+    if ((!this.yOS) || (ah.dXn())) {
       return;
     }
-    paramString = ag.dUe().aAa(paramString);
+    paramString = ah.dXE().aBr(paramString);
     if ((paramString == null) || (paramString.field_snsId == 0L))
     {
       enableOptionMenu(false);
@@ -235,9 +236,9 @@ public abstract class SnsBaseGalleryUI
     return 2131495548;
   }
   
-  public final void jV(String paramString1, String paramString2)
+  public final void kc(String paramString1, String paramString2)
   {
-    if (!this.yyS) {
+    if (!this.yOS) {
       return;
     }
     setMMTitle(paramString1);
@@ -247,85 +248,85 @@ public abstract class SnsBaseGalleryUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ag.dTZ().aw(3, true);
-    this.zZQ = ((LinearLayout)findViewById(2131301356));
-    this.zZS = ((LinearLayout)findViewById(2131298739));
-    this.zZT = new v(this, this);
-    paramBundle = this.zZT;
-    ad.i("MicroMsg.GalleryTitleManager", "onAttach");
-    g.ajD();
-    g.ajB().gAO.a(218, paramBundle);
-    com.tencent.mm.sdk.b.a.IbL.c(paramBundle.rwO);
-    com.tencent.mm.sdk.b.a.IbL.c(paramBundle.zQO);
-    if (ebz())
+    ah.dXz().az(3, true);
+    this.Ard = ((LinearLayout)findViewById(2131301356));
+    this.Arf = ((LinearLayout)findViewById(2131298739));
+    this.Arg = new v(this, this);
+    paramBundle = this.Arg;
+    ae.i("MicroMsg.GalleryTitleManager", "onAttach");
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.a(218, paramBundle);
+    com.tencent.mm.sdk.b.a.IvT.c(paramBundle.rFa);
+    com.tencent.mm.sdk.b.a.IvT.c(paramBundle.AhV);
+    if (efg())
     {
-      this.ryX = ((ImageView)findViewById(2131304343));
-      this.ryY = ((ImageView)findViewById(2131304342));
-      this.ryZ = ((ImageView)findViewById(2131304340));
-      paramBundle = (FrameLayout.LayoutParams)this.ryZ.getLayoutParams();
-      paramBundle.bottomMargin += al.ej(this);
-      this.ryZ.setLayoutParams(paramBundle);
-      this.ryX = ((ImageView)findViewById(2131304343));
-      this.rza = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.rza.setDuration(5000L);
-      this.rza.addListener(new SnsBaseGalleryUI.1(this));
+      this.rHi = ((ImageView)findViewById(2131304343));
+      this.rHj = ((ImageView)findViewById(2131304342));
+      this.rHk = ((ImageView)findViewById(2131304340));
+      paramBundle = (FrameLayout.LayoutParams)this.rHk.getLayoutParams();
+      paramBundle.bottomMargin += al.en(this);
+      this.rHk.setLayoutParams(paramBundle);
+      this.rHi = ((ImageView)findViewById(2131304343));
+      this.rHl = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.rHl.setDuration(5000L);
+      this.rHl.addListener(new SnsBaseGalleryUI.1(this));
       int i = getWindowManager().getDefaultDisplay().getHeight();
-      this.rza.addUpdateListener(new SnsBaseGalleryUI.2(this, i));
+      this.rHl.addUpdateListener(new SnsBaseGalleryUI.2(this, i));
     }
-    ag.dTZ().a(this);
+    ah.dXz().a(this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     Object localObject;
-    if (this.zZT != null)
+    if (this.Arg != null)
     {
-      localObject = this.zZT;
-      ad.i("MicroMsg.GalleryTitleManager", "onDetach");
-      g.ajD();
-      g.ajB().gAO.b(218, (com.tencent.mm.al.f)localObject);
-      com.tencent.mm.sdk.b.a.IbL.d(((v)localObject).rwO);
-      com.tencent.mm.sdk.b.a.IbL.d(((v)localObject).zQO);
+      localObject = this.Arg;
+      ae.i("MicroMsg.GalleryTitleManager", "onDetach");
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajQ().gDv.b(218, (f)localObject);
+      com.tencent.mm.sdk.b.a.IvT.d(((v)localObject).rFa);
+      com.tencent.mm.sdk.b.a.IvT.d(((v)localObject).AhV);
     }
-    if (this.zZW != null)
+    if (this.Arj != null)
     {
-      this.zZW.tOn.Joq.removeMessages(1);
-      localObject = this.zZW;
-      ad.i("MicroMsg.SnsInfoFlip", "sns info flip on detach.");
-      if (((SnsInfoFlip)localObject).Adz != null)
+      this.Arj.tZe.JJf.removeMessages(1);
+      localObject = this.Arj;
+      ae.i("MicroMsg.SnsInfoFlip", "sns info flip on detach.");
+      if (((SnsInfoFlip)localObject).AuL != null)
       {
-        ((SnsInfoFlip)localObject).Adz.ecc();
-        ((SnsInfoFlip)localObject).Adz.clear();
+        ((SnsInfoFlip)localObject).AuL.efJ();
+        ((SnsInfoFlip)localObject).AuL.clear();
       }
-      ag.dTZ().b((b.b)localObject);
-      this.zZW.onDestroy();
+      ah.dXz().b((c.b)localObject);
+      this.Arj.onDestroy();
     }
-    if (ebz()) {
-      cwC();
+    if (efg()) {
+      cyd();
     }
-    g.ajB().b(this.rzc);
-    com.tencent.mm.sdk.b.a.IbL.d(this.rzb);
-    ag.dTZ().b(this);
+    com.tencent.mm.kernel.g.ajQ().b(this.rHn);
+    com.tencent.mm.sdk.b.a.IvT.d(this.rHm);
+    ah.dXz().b(this);
   }
   
   public void onPause()
   {
-    if (this.zZW != null) {
-      this.zZW.onPause();
+    if (this.Arj != null) {
+      this.Arj.onPause();
     }
-    if (this.zZT != null)
+    if (this.Arg != null)
     {
-      v localv = this.zZT;
-      if (localv.zQF != null)
+      v localv = this.Arg;
+      if (localv.AhM != null)
       {
         au localau = new au();
-        localau.dlF.activity = ((Activity)localv.context);
-        localau.dlF.dlG = localv.zQF;
-        com.tencent.mm.sdk.b.a.IbL.l(localau);
-        localv.zQF = null;
-        localv.dnu = 0;
-        localv.dnt = 0;
+        localau.dmH.activity = ((Activity)localv.context);
+        localau.dmH.dmI = localv.AhM;
+        com.tencent.mm.sdk.b.a.IvT.l(localau);
+        localv.AhM = null;
+        localv.dow = 0;
+        localv.dov = 0;
       }
     }
     super.onPause();
@@ -334,21 +335,21 @@ public abstract class SnsBaseGalleryUI
   public void onResume()
   {
     super.onResume();
-    if (this.zZR != null) {
-      this.zZR.refresh();
+    if (this.Are != null) {
+      this.Are.refresh();
     }
-    if (ebz())
+    if (efg())
     {
-      g.ajB().a(this.rzc);
-      com.tencent.mm.sdk.b.a.IbL.c(this.zZZ);
-      com.tencent.mm.sdk.b.a.IbL.c(this.rzb);
+      com.tencent.mm.kernel.g.ajQ().a(this.rHn);
+      com.tencent.mm.sdk.b.a.IvT.c(this.Arm);
+      com.tencent.mm.sdk.b.a.IvT.c(this.rHm);
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    com.tencent.mm.sdk.b.a.IbL.d(this.zZZ);
+    com.tencent.mm.sdk.b.a.IvT.d(this.Arm);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

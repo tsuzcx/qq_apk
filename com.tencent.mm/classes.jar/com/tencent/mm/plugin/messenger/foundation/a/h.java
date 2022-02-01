@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public abstract interface h
 {
-  public abstract String Q(bu parambu);
+  public abstract String Q(bv parambv);
 }
 
 

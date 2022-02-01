@@ -13,7 +13,7 @@ final class IPCallTalkUI$3
   {
     AppMethodBeat.i(25983);
     paramDialogInterface.dismiss();
-    this.uUM.finish();
+    this.vgz.finish();
     AppMethodBeat.o(25983);
   }
 }

@@ -12,7 +12,7 @@ final class ProtocolThreeTwoUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25237);
-    ProtocolThreeTwoUI.b(this.trp);
+    ProtocolThreeTwoUI.b(this.tCg);
     AppMethodBeat.o(25237);
     return true;
   }

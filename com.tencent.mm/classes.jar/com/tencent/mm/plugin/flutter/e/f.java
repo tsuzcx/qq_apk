@@ -8,11 +8,12 @@ import android.os.Message;
 import android.view.Surface;
 import com.tencent.map.tools.net.NetUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import io.flutter.plugin.a.d.a;
 import io.flutter.plugin.a.d.c;
 import io.flutter.plugin.a.j;
@@ -33,45 +34,45 @@ public final class f
   implements k.c
 {
   private final m.c bbB;
-  a tjn;
-  final Map<Long, b> tjo;
-  b tjp;
-  private HashMap<String, Integer> tjq;
-  int tjr;
+  a tuf;
+  final Map<Long, b> tug;
+  b tuh;
+  private HashMap<String, Integer> tui;
+  int tuj;
   
   public f(m.c paramc)
   {
     AppMethodBeat.i(148925);
-    this.tjq = new HashMap();
+    this.tui = new HashMap();
     this.bbB = paramc;
-    this.tjo = new HashMap();
-    this.tjr = NetUtil.getNetType(aj.getContext());
-    this.tjn = new a();
-    aj.getContext().registerReceiver(this.tjn, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+    this.tug = new HashMap();
+    this.tuj = NetUtil.getNetType(ak.getContext());
+    this.tuf = new a();
+    ak.getContext().registerReceiver(this.tuf, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
     AppMethodBeat.o(148925);
   }
   
   private static boolean a(b paramb)
   {
-    AppMethodBeat.i(219128);
-    e.tjm.cQu();
-    if (!e.cQs())
+    AppMethodBeat.i(213534);
+    e.tue.cSZ();
+    if (!e.cSX())
     {
       b.a(paramb, 1, 2, "视频加载失败，请检查网络连接后重试", "重试");
-      AppMethodBeat.o(219128);
+      AppMethodBeat.o(213534);
       return false;
     }
-    if (!e.tjm.cQu().tji)
+    if (!e.tue.cSZ().tua)
     {
-      e.tjm.cQu();
-      if (!e.chr())
+      e.tue.cSZ();
+      if (!e.ciH())
       {
         b.a(paramb, 2, 1, "当前为非Wi-Fi环境，是否使用流量观看视频？", "仍然播放");
-        AppMethodBeat.o(219128);
+        AppMethodBeat.o(213534);
         return false;
       }
     }
-    AppMethodBeat.o(219128);
+    AppMethodBeat.o(213534);
     return true;
   }
   
@@ -79,16 +80,16 @@ public final class f
   {
     int j = -1;
     AppMethodBeat.i(148926);
-    Object localObject1 = this.bbB.JT();
+    Object localObject1 = this.bbB.Kb();
     if (localObject1 == null)
     {
-      ad.e("MicroMsg.FlutterVideoPlayerPlugin", "texture null");
+      ae.e("MicroMsg.FlutterVideoPlayerPlugin", "texture null");
       paramd.f("no_activity", "video_player plugin requires a foreground activity", null);
       AppMethodBeat.o(148926);
       return;
     }
-    if (paramj.wd("force") != null) {}
-    for (boolean bool = ((Boolean)paramj.wd("force")).booleanValue();; bool = false)
+    if (paramj.wM("force") != null) {}
+    for (boolean bool = ((Boolean)paramj.wM("force")).booleanValue();; bool = false)
     {
       Object localObject2 = paramj.method;
       switch (((String)localObject2).hashCode())
@@ -102,8 +103,8 @@ public final class f
         switch (i)
         {
         default: 
-          l = ((Number)paramj.wd("textureId")).longValue();
-          localObject1 = (b)this.tjo.get(Long.valueOf(l));
+          l = ((Number)paramj.wM("textureId")).longValue();
+          localObject1 = (b)this.tug.get(Long.valueOf(l));
           if (localObject1 != null) {
             break label684;
           }
@@ -126,23 +127,23 @@ public final class f
           i = 2;
         }
       }
-      paramj = this.tjo.values().iterator();
+      paramj = this.tug.values().iterator();
       while (paramj.hasNext()) {
         ((b)paramj.next()).dispose();
       }
-      this.tjo.clear();
-      e.tjm.cQu().tji = false;
-      e.tjm.cQu().tjk.clearAll();
+      this.tug.clear();
+      e.tue.cSZ().tua = false;
+      e.tue.cSZ().tuc.clearAll();
       AppMethodBeat.o(148926);
       return;
-      localObject1 = ((io.flutter.view.c)localObject1).geU();
-      localObject2 = new io.flutter.plugin.a.d(this.bbB.JS(), "com.tencent.mm.flutter/videoPlayer/videoEvents" + ((c.a)localObject1).geX());
-      if (paramj.wd("asset") != null) {
-        if (paramj.wd("package") != null)
+      localObject1 = ((io.flutter.view.c)localObject1).gjw();
+      localObject2 = new io.flutter.plugin.a.d(this.bbB.Ka(), "com.tencent.mm.flutter/videoPlayer/videoEvents" + ((c.a)localObject1).gjz());
+      if (paramj.wM("asset") != null) {
+        if (paramj.wM("package") != null)
         {
-          paramj = this.bbB.L((String)paramj.wd("asset"), (String)paramj.wd("package"));
-          paramj = new b(this.bbB.JR(), (io.flutter.plugin.a.d)localObject2, (c.a)localObject1, "asset:///".concat(String.valueOf(paramj)), paramd);
-          this.tjo.put(Long.valueOf(((c.a)localObject1).geX()), paramj);
+          paramj = this.bbB.L((String)paramj.wM("asset"), (String)paramj.wM("package"));
+          paramj = new b(this.bbB.JZ(), (io.flutter.plugin.a.d)localObject2, (c.a)localObject1, "asset:///".concat(String.valueOf(paramj)), paramd);
+          this.tug.put(Long.valueOf(((c.a)localObject1).gjz()), paramj);
         }
       }
       for (;;)
@@ -152,20 +153,20 @@ public final class f
           paramj.prepare();
           paramd = com.tencent.mm.b.g.getMessageDigest(paramj.getVideoPath().getBytes());
           paramj = paramj.getVideoPath();
-          e.tjm.cQu().tjj.gE(paramj, paramd);
+          e.tue.cSZ().tub.gJ(paramj, paramd);
         }
-        ad.d("MicroMsg.FlutterVideoPlayerPlugin", "player createOrDispose size:%d ", new Object[] { Integer.valueOf(this.tjo.size()) });
+        ae.d("MicroMsg.FlutterVideoPlayerPlugin", "player createOrDispose size:%d ", new Object[] { Integer.valueOf(this.tug.size()) });
         AppMethodBeat.o(148926);
         return;
-        paramj = this.bbB.en((String)paramj.wd("asset"));
+        paramj = this.bbB.es((String)paramj.wM("asset"));
         break;
-        paramj = new b(this.bbB.JR(), (io.flutter.plugin.a.d)localObject2, (c.a)localObject1, (String)paramj.wd("uri"), paramd);
-        this.tjo.put(Long.valueOf(((c.a)localObject1).geX()), paramj);
+        paramj = new b(this.bbB.JZ(), (io.flutter.plugin.a.d)localObject2, (c.a)localObject1, (String)paramj.wM("uri"), paramd);
+        this.tug.put(Long.valueOf(((c.a)localObject1).gjz()), paramj);
       }
-      paramj = (String)paramj.wd("url");
-      if (!bt.isNullOrNil(paramj))
+      paramj = (String)paramj.wM("url");
+      if (!bu.isNullOrNil(paramj))
       {
-        e.tjm.cQu().tjj.a(paramj, null);
+        e.tue.cSZ().tub.a(paramj, null);
         AppMethodBeat.o(148926);
         return;
         label684:
@@ -181,7 +182,7 @@ public final class f
         switch (i)
         {
         default: 
-          paramd.djR();
+          paramd.dmQ();
           AppMethodBeat.o(148926);
           return;
           i = j;
@@ -233,100 +234,100 @@ public final class f
           break;
         }
       }
-      bool = ((Boolean)paramj.wd("looping")).booleanValue();
-      ((b)localObject1).tju.setLooping(bool);
-      paramd.de(null);
+      bool = ((Boolean)paramj.wM("looping")).booleanValue();
+      ((b)localObject1).tum.setLooping(bool);
+      paramd.df(null);
       AppMethodBeat.o(148926);
       return;
-      float f = (float)Math.max(0.0D, Math.min(1.0D, ((Double)paramj.wd("volume")).doubleValue()));
-      ((b)localObject1).tju.u(f);
-      paramd.de(null);
+      float f = (float)Math.max(0.0D, Math.min(1.0D, ((Double)paramj.wM("volume")).doubleValue()));
+      ((b)localObject1).tum.u(f);
+      paramd.df(null);
       AppMethodBeat.o(148926);
       return;
-      ad.d("MicroMsg.FlutterVideoPlayerPlugin", "video_status method call: " + paramj.method);
-      if (this.tjp != localObject1)
+      ae.d("MicroMsg.FlutterVideoPlayerPlugin", "video_status method call: " + paramj.method);
+      if (this.tuh != localObject1)
       {
-        if (this.tjp != null)
+        if (this.tuh != null)
         {
-          this.tjp.pause();
-          paramj = com.tencent.mm.b.g.getMessageDigest(this.tjp.getVideoPath().getBytes());
-          e.tjm.cQu().tjj.aju(paramj);
+          this.tuh.pause();
+          paramj = com.tencent.mm.b.g.getMessageDigest(this.tuh.getVideoPath().getBytes());
+          e.tue.cSZ().tub.aks(paramj);
         }
-        this.tjp = ((b)localObject1);
+        this.tuh = ((b)localObject1);
       }
       if (bool) {
-        e.tjm.cQu().tji = true;
+        e.tue.cSZ().tua = true;
       }
-      if (a(this.tjp))
+      if (a(this.tuh))
       {
-        if (!this.tjp.Zn) {
-          this.tjp.prepare();
+        if (!this.tuh.Zn) {
+          this.tuh.prepare();
         }
-        if (this.tjq.containsKey(this.tjp.getVideoPath())) {
-          this.tjp.seekTo(((Integer)this.tjq.get(this.tjp.getVideoPath())).intValue());
+        if (this.tui.containsKey(this.tuh.getVideoPath())) {
+          this.tuh.seekTo(((Integer)this.tui.get(this.tuh.getVideoPath())).intValue());
         }
-        paramj = this.tjp;
-        ad.i("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer play %s", new Object[] { Integer.valueOf(paramj.hashCode()) });
-        paramj.tju.start();
-        paramj = com.tencent.mm.b.g.getMessageDigest(this.tjp.getVideoPath().getBytes());
-        localObject1 = this.tjp.getVideoPath();
-        e.tjm.cQu().tjj.gE((String)localObject1, paramj);
+        paramj = this.tuh;
+        ae.i("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer play %s", new Object[] { Integer.valueOf(paramj.hashCode()) });
+        paramj.tum.start();
+        paramj = com.tencent.mm.b.g.getMessageDigest(this.tuh.getVideoPath().getBytes());
+        localObject1 = this.tuh.getVideoPath();
+        e.tue.cSZ().tub.gJ((String)localObject1, paramj);
       }
-      paramd.de(null);
+      paramd.df(null);
       AppMethodBeat.o(148926);
       return;
-      ad.d("MicroMsg.FlutterVideoPlayerPlugin", "video_status method call: " + paramj.method);
-      if (this.tjp == localObject1) {
+      ae.d("MicroMsg.FlutterVideoPlayerPlugin", "video_status method call: " + paramj.method);
+      if (this.tuh == localObject1) {
         ((b)localObject1).pause();
       }
       for (;;)
       {
-        paramd.de(null);
+        paramd.df(null);
         AppMethodBeat.o(148926);
         return;
-        ad.d("MicroMsg.FlutterVideoPlayerPlugin", "pause ignore %s", new Object[] { Integer.valueOf(localObject1.hashCode()) });
+        ae.d("MicroMsg.FlutterVideoPlayerPlugin", "pause ignore %s", new Object[] { Integer.valueOf(localObject1.hashCode()) });
       }
-      if (this.tjp != localObject1)
+      if (this.tuh != localObject1)
       {
-        if (this.tjp != null)
+        if (this.tuh != null)
         {
-          this.tjp.pause();
-          localObject2 = com.tencent.mm.b.g.getMessageDigest(this.tjp.getVideoPath().getBytes());
-          e.tjm.cQu().tjj.aju((String)localObject2);
+          this.tuh.pause();
+          localObject2 = com.tencent.mm.b.g.getMessageDigest(this.tuh.getVideoPath().getBytes());
+          e.tue.cSZ().tub.aks((String)localObject2);
         }
-        this.tjp = ((b)localObject1);
+        this.tuh = ((b)localObject1);
       }
-      int i = ((Number)paramj.wd("location")).intValue();
-      this.tjq.put(this.tjp.getVideoPath(), Integer.valueOf(i));
-      this.tjp.seekTo(i);
-      paramj = com.tencent.mm.b.g.getMessageDigest(this.tjp.getVideoPath().getBytes());
-      localObject1 = this.tjp.getVideoPath();
-      e.tjm.cQu().tjj.gE((String)localObject1, paramj);
-      paramd.de(null);
+      int i = ((Number)paramj.wM("location")).intValue();
+      this.tui.put(this.tuh.getVideoPath(), Integer.valueOf(i));
+      this.tuh.seekTo(i);
+      paramj = com.tencent.mm.b.g.getMessageDigest(this.tuh.getVideoPath().getBytes());
+      localObject1 = this.tuh.getVideoPath();
+      e.tue.cSZ().tub.gJ((String)localObject1, paramj);
+      paramd.df(null);
       AppMethodBeat.o(148926);
       return;
-      long l = ((b)localObject1).tju.getCurrentPosition();
-      this.tjq.put(((b)localObject1).getVideoPath(), Integer.valueOf((int)l));
-      paramd.de(Long.valueOf(l));
+      long l = ((b)localObject1).tum.getCurrentPosition();
+      this.tui.put(((b)localObject1).getVideoPath(), Integer.valueOf((int)l));
+      paramd.df(Long.valueOf(l));
       AppMethodBeat.o(148926);
       return;
       ((b)localObject1).seekTo(0);
       ((b)localObject1).pause();
-      this.tjq.put(((b)localObject1).getVideoPath(), Integer.valueOf(0));
-      paramd.de(null);
+      this.tui.put(((b)localObject1).getVideoPath(), Integer.valueOf(0));
+      paramd.df(null);
       AppMethodBeat.o(148926);
       return;
-      if ((this.tjp != null) && (localObject1 != null) && (this.tjp.getVideoPath().equalsIgnoreCase(((b)localObject1).getVideoPath()))) {
-        this.tjq.remove(((b)localObject1).getVideoPath());
+      if ((this.tuh != null) && (localObject1 != null) && (this.tuh.getVideoPath().equalsIgnoreCase(((b)localObject1).getVideoPath()))) {
+        this.tui.remove(((b)localObject1).getVideoPath());
       }
-      ad.d("MicroMsg.FlutterVideoPlayerPlugin", "video_status method call: " + paramj.method);
-      if (this.tjp == localObject1) {
-        this.tjp = null;
+      ae.d("MicroMsg.FlutterVideoPlayerPlugin", "video_status method call: " + paramj.method);
+      if (this.tuh == localObject1) {
+        this.tuh = null;
       }
       ((b)localObject1).dispose();
-      this.tjo.remove(Long.valueOf(l));
-      ad.d("MicroMsg.FlutterVideoPlayerPlugin", "player createOrDispose size:%d ", new Object[] { Integer.valueOf(this.tjo.size()) });
-      paramd.de(null);
+      this.tug.remove(Long.valueOf(l));
+      ae.d("MicroMsg.FlutterVideoPlayerPlugin", "player createOrDispose size:%d ", new Object[] { Integer.valueOf(this.tug.size()) });
+      paramd.df(null);
       AppMethodBeat.o(148926);
       return;
     }
@@ -339,20 +340,20 @@ public final class f
     
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(219116);
-      int i = f.this.tjr;
-      f.this.tjr = NetUtil.getNetType(aj.getContext());
-      if ((i != f.this.tjr) && (f.this.tjr != 5) && (NetUtil.isNetAvailable(aj.getContext())))
+      AppMethodBeat.i(213522);
+      int i = f.this.tuj;
+      f.this.tuj = NetUtil.getNetType(ak.getContext());
+      if ((i != f.this.tuj) && (f.this.tuj != 5) && (NetUtil.isNetAvailable(ak.getContext())))
       {
-        ad.i("MicroMsg.FlutterVideoPlayerPlugin", "network change to mobile net. reset enable play in mobile net false.");
-        e.tjm.cQu().tji = false;
-        if (f.this.tjp != null)
+        ae.i("MicroMsg.FlutterVideoPlayerPlugin", "network change to mobile net. reset enable play in mobile net false.");
+        e.tue.cSZ().tua = false;
+        if (f.this.tuh != null)
         {
-          ad.i("MicroMsg.FlutterVideoPlayerPlugin", "network change to mobile net.");
-          f.this.tjp.pause();
+          ae.i("MicroMsg.FlutterVideoPlayerPlugin", "network change to mobile net.");
+          f.this.tuh.pause();
         }
       }
-      AppMethodBeat.o(219116);
+      AppMethodBeat.o(213522);
     }
   }
   
@@ -360,98 +361,98 @@ public final class f
   {
     boolean Zn;
     private Context context;
-    ap handler;
+    aq handler;
     boolean isInitialized;
     private Surface surface;
-    g tju;
-    private final c.a tjv;
-    i tjw;
-    private final io.flutter.plugin.a.d tjx;
+    g tum;
+    private final c.a tun;
+    i tuo;
+    private final io.flutter.plugin.a.d tup;
     
     b(Context paramContext, io.flutter.plugin.a.d paramd, c.a parama, String paramString, k.d paramd1)
     {
       AppMethodBeat.i(148923);
-      this.tjw = new i();
+      this.tuo = new i();
       this.isInitialized = false;
       this.Zn = false;
-      this.handler = new ap()
+      this.handler = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
-          AppMethodBeat.i(219117);
+          AppMethodBeat.i(213523);
           switch (paramAnonymousMessage.what)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(219117);
+            AppMethodBeat.o(213523);
             return;
             paramAnonymousMessage = f.b.this;
-            ad.d("MicroMsg.FlutterVideoPlayerPlugin", "FlutterThumb [buffering prepare]");
-            if (paramAnonymousMessage.tjw != null)
+            ae.d("MicroMsg.FlutterVideoPlayerPlugin", "FlutterThumb [buffering prepare]");
+            if (paramAnonymousMessage.tuo != null)
             {
               HashMap localHashMap = new HashMap();
               localHashMap.put("event", "preparing");
-              paramAnonymousMessage.tjw.de(localHashMap);
+              paramAnonymousMessage.tuo.df(localHashMap);
             }
           }
         }
       };
-      ad.d("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer create %s", new Object[] { Integer.valueOf(hashCode()) });
+      ae.d("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer create %s", new Object[] { Integer.valueOf(hashCode()) });
       this.context = paramContext;
-      this.tjx = paramd;
-      this.tjv = parama;
-      this.tju = new d(paramContext, q.B(new com.tencent.mm.vfs.e(paramContext.getCacheDir() + "/flutter/MMVideo-" + paramString.hashCode() + ".mp4").fOK()));
-      this.tju.setPath(paramString);
+      this.tup = paramd;
+      this.tun = parama;
+      this.tum = new d(paramContext, w.B(new k(paramContext.getCacheDir() + "/flutter/MMVideo-" + paramString.hashCode() + ".mp4").fTh()));
+      this.tum.setPath(paramString);
       paramd.a(new d.c()
       {
         public final void a(d.a paramAnonymousa)
         {
-          AppMethodBeat.i(219118);
-          f.b.this.tjw.b(paramAnonymousa);
-          AppMethodBeat.o(219118);
+          AppMethodBeat.i(213524);
+          f.b.this.tuo.b(paramAnonymousa);
+          AppMethodBeat.o(213524);
         }
         
         public final void sQ()
         {
-          AppMethodBeat.i(219119);
-          f.b.this.tjw.b(null);
-          AppMethodBeat.o(219119);
+          AppMethodBeat.i(213525);
+          f.b.this.tuo.b(null);
+          AppMethodBeat.o(213525);
         }
       });
       this.surface = new Surface(parama.surfaceTexture());
-      this.tju.setSurface(this.surface);
-      this.tju.a(new a()
+      this.tum.setSurface(this.surface);
+      this.tum.a(new a()
       {
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(219121);
+          AppMethodBeat.i(213527);
           super.d(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString1, paramAnonymousString2);
-          if (f.b.this.tjw != null)
+          if (f.b.this.tuo != null)
           {
             HashMap localHashMap = new HashMap();
             localHashMap.put("errorCode", Integer.valueOf(paramAnonymousInt1));
             localHashMap.put("errorType", Integer.valueOf(paramAnonymousInt2));
             localHashMap.put("errorMsg", paramAnonymousString1);
             localHashMap.put("errorActionDesc", paramAnonymousString2);
-            f.b.this.tjw.f(String.valueOf(paramAnonymousInt1), paramAnonymousString1, localHashMap);
+            f.b.this.tuo.f(String.valueOf(paramAnonymousInt1), paramAnonymousString1, localHashMap);
           }
-          AppMethodBeat.o(219121);
+          AppMethodBeat.o(213527);
         }
         
         public final void e(boolean paramAnonymousBoolean, int paramAnonymousInt)
         {
-          AppMethodBeat.i(219120);
+          AppMethodBeat.i(213526);
           super.e(paramAnonymousBoolean, paramAnonymousInt);
           switch (paramAnonymousInt)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(219120);
+            AppMethodBeat.o(213526);
             return;
             f.b.this.handler.sendEmptyMessageDelayed(1001, 500L);
-            AppMethodBeat.o(219120);
+            AppMethodBeat.o(213526);
             return;
             f.b.this.handler.removeMessages(1001);
             if (!f.b.this.isInitialized)
@@ -463,52 +464,52 @@ public final class f
               {
                 localHashMap = new HashMap();
                 localHashMap.put("event", "initialized");
-                localHashMap.put("duration", Long.valueOf(localb.tju.getDurationMs()));
-                localHashMap.put("width", Integer.valueOf(localb.tju.getWidth()));
-                localHashMap.put("height", Integer.valueOf(localb.tju.getHeight()));
-                localb.tjw.de(localHashMap);
+                localHashMap.put("duration", Long.valueOf(localb.tum.getDurationMs()));
+                localHashMap.put("width", Integer.valueOf(localb.tum.getWidth()));
+                localHashMap.put("height", Integer.valueOf(localb.tum.getHeight()));
+                localb.tuo.df(localHashMap);
               }
               if (paramAnonymousBoolean)
               {
-                f.b.this.tju.start();
-                AppMethodBeat.o(219120);
+                f.b.this.tum.start();
+                AppMethodBeat.o(213526);
                 return;
                 localb = f.b.this;
-                if (localb.tjw != null)
+                if (localb.tuo != null)
                 {
                   localHashMap = new HashMap();
                   localHashMap.put("event", "bufferingUpdate");
-                  localHashMap.put("values", Collections.singletonList(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(localb.tju.getBufferedPercentage()) })));
-                  localb.tjw.de(localHashMap);
+                  localHashMap.put("values", Collections.singletonList(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(localb.tum.getBufferedPercentage()) })));
+                  localb.tuo.df(localHashMap);
                 }
-                AppMethodBeat.o(219120);
+                AppMethodBeat.o(213526);
                 return;
                 localb = f.b.this;
-                ad.d("MicroMsg.FlutterVideoPlayerPlugin", "FlutterThumb [buffering start]");
-                if (localb.tjw != null)
+                ae.d("MicroMsg.FlutterVideoPlayerPlugin", "FlutterThumb [buffering start]");
+                if (localb.tuo != null)
                 {
                   localHashMap = new HashMap();
                   localHashMap.put("event", "bufferingStart");
-                  localb.tjw.de(localHashMap);
+                  localb.tuo.df(localHashMap);
                 }
-                AppMethodBeat.o(219120);
+                AppMethodBeat.o(213526);
                 return;
                 localb = f.b.this;
-                ad.i("FlutterThumb", "[buffering end]");
-                if (localb.tjw != null)
+                ae.i("FlutterThumb", "[buffering end]");
+                if (localb.tuo != null)
                 {
                   localHashMap = new HashMap();
                   localHashMap.put("event", "bufferingEnd");
-                  localb.tjw.de(localHashMap);
+                  localb.tuo.df(localHashMap);
                 }
-                AppMethodBeat.o(219120);
+                AppMethodBeat.o(213526);
                 return;
                 localb = f.b.this;
                 if (localb.isInitialized)
                 {
                   localHashMap = new HashMap();
                   localHashMap.put("event", "completed");
-                  localb.tjw.de(localHashMap);
+                  localb.tuo.df(localHashMap);
                 }
               }
             }
@@ -516,80 +517,80 @@ public final class f
         }
       });
       paramContext = new HashMap();
-      paramContext.put("textureId", Long.valueOf(parama.geX()));
-      paramd1.de(paramContext);
+      paramContext.put("textureId", Long.valueOf(parama.gjz()));
+      paramd1.df(paramContext);
       AppMethodBeat.o(148923);
     }
     
     private void e(int paramInt1, int paramInt2, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(219125);
-      if (this.tjw != null)
+      AppMethodBeat.i(213531);
+      if (this.tuo != null)
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("errorCode", Integer.valueOf(paramInt1));
         localHashMap.put("errorType", Integer.valueOf(paramInt2));
         localHashMap.put("errorMsg", paramString1);
         localHashMap.put("errorActionDesc", paramString2);
-        this.tjw.f(String.valueOf(paramInt1), paramString1, localHashMap);
+        this.tuo.f(String.valueOf(paramInt1), paramString1, localHashMap);
       }
-      AppMethodBeat.o(219125);
+      AppMethodBeat.o(213531);
     }
     
     final void dispose()
     {
       AppMethodBeat.i(148924);
-      ad.d("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer createOfDispose %s", new Object[] { Integer.valueOf(hashCode()) });
+      ae.d("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer createOfDispose %s", new Object[] { Integer.valueOf(hashCode()) });
       if (this.isInitialized) {
-        this.tju.stop();
+        this.tum.stop();
       }
-      this.tjv.release();
-      this.tjx.a(null);
+      this.tun.release();
+      this.tup.a(null);
       if ((this.surface != null) && (this.surface.isValid())) {
         this.surface.release();
       }
-      if (this.tju != null) {
-        this.tju.release();
+      if (this.tum != null) {
+        this.tum.release();
       }
       AppMethodBeat.o(148924);
     }
     
     final String getVideoPath()
     {
-      AppMethodBeat.i(219126);
-      String str = this.tju.getVideoPath();
-      AppMethodBeat.o(219126);
+      AppMethodBeat.i(213532);
+      String str = this.tum.getVideoPath();
+      AppMethodBeat.o(213532);
       return str;
     }
     
     final void pause()
     {
-      AppMethodBeat.i(219123);
-      ad.i("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer pause %s", new Object[] { Integer.valueOf(hashCode()) });
-      this.tju.pause();
-      AppMethodBeat.o(219123);
+      AppMethodBeat.i(213529);
+      ae.i("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer pause %s", new Object[] { Integer.valueOf(hashCode()) });
+      this.tum.pause();
+      AppMethodBeat.o(213529);
     }
     
     final void prepare()
     {
-      AppMethodBeat.i(219122);
-      this.tju.cQr();
+      AppMethodBeat.i(213528);
+      this.tum.cSW();
       this.Zn = true;
-      AppMethodBeat.o(219122);
+      AppMethodBeat.o(213528);
     }
     
     final void seekTo(int paramInt)
     {
-      AppMethodBeat.i(219124);
-      ad.i("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer seekTo %s", new Object[] { Integer.valueOf(hashCode()) });
-      this.tju.seek(paramInt);
-      AppMethodBeat.o(219124);
+      AppMethodBeat.i(213530);
+      ae.i("MicroMsg.FlutterVideoPlayerPlugin", "VideoPlayer seekTo %s", new Object[] { Integer.valueOf(hashCode()) });
+      this.tum.seek(paramInt);
+      AppMethodBeat.o(213530);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.e.f
  * JD-Core Version:    0.7.0.1
  */

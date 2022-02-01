@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.wallet_core.model.mall.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.protobuf.dks;
-import com.tencent.mm.protocal.protobuf.dkt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dln;
+import com.tencent.mm.protocal.protobuf.dlo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.c.j;
 import com.tencent.mm.wallet_core.c.w;
 
@@ -24,32 +24,32 @@ public final class g
   private f callback;
   public String mAppId;
   private b rr;
-  public PayInfo xnF;
+  public PayInfo xDC;
   
   public g(MallRechargeProduct paramMallRechargeProduct, String paramString)
   {
-    this(paramMallRechargeProduct.appId, paramMallRechargeProduct.jDb, paramMallRechargeProduct.dok, paramString);
+    this(paramMallRechargeProduct.appId, paramMallRechargeProduct.jFZ, paramMallRechargeProduct.dpp, paramString);
   }
   
   public g(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(67113);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dks();
-    ((b.a)localObject).hNN = new dkt();
+    ((b.a)localObject).hQF = new dln();
+    ((b.a)localObject).hQG = new dlo();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/submitpayproductbuyinfo";
     ((b.a)localObject).funcId = 498;
-    ((b.a)localObject).hNO = 230;
+    ((b.a)localObject).hQH = 230;
     ((b.a)localObject).respCmdId = 1000000230;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dks)this.rr.hNK.hNQ;
-    ad.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "remark: %s", new Object[] { paramString4 });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dln)this.rr.hQD.hQJ;
+    ae.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "remark: %s", new Object[] { paramString4 });
     this.mAppId = paramString1;
-    ((dks)localObject).Grb = paramString1;
-    ((dks)localObject).Gra = paramString2;
-    ((dks)localObject).Gzq = paramString3;
-    ((dks)localObject).Grc = paramString4;
-    ((dks)localObject).xbo = c.eGT().aEB(paramString2);
+    ((dln)localObject).GKz = paramString1;
+    ((dln)localObject).GKy = paramString2;
+    ((dln)localObject).GSQ = paramString3;
+    ((dln)localObject).GKA = paramString4;
+    ((dln)localObject).xrf = c.eKB().aFV(paramString2);
     AppMethodBeat.o(67113);
   }
   
@@ -70,30 +70,30 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(67114);
-    this.xnF = new PayInfo();
-    paramArrayOfByte = (dkt)((b)paramq).hNL.hNQ;
+    this.xDC = new PayInfo();
+    paramArrayOfByte = (dlo)((b)paramq).hQE.hQJ;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "resp.ReqKey " + paramArrayOfByte.FyM);
-      this.xnF.appId = this.mAppId;
-      this.xnF.DpS = paramArrayOfByte.GsS;
-      this.xnF.dlu = paramArrayOfByte.FyM;
+      ae.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "resp.ReqKey " + paramArrayOfByte.FRk);
+      this.xDC.appId = this.mAppId;
+      this.xDC.DHy = paramArrayOfByte.GMq;
+      this.xDC.dmw = paramArrayOfByte.FRk;
     }
     paramInt1 = paramInt3;
     if (paramInt3 == 0) {
-      paramInt1 = paramArrayOfByte.Grd;
+      paramInt1 = paramArrayOfByte.GKB;
     }
     paramq = paramString;
-    if (bt.isNullOrNil(paramString)) {
-      paramq = paramArrayOfByte.Gre;
+    if (bu.isNullOrNil(paramString)) {
+      paramq = paramArrayOfByte.GKC;
     }
-    this.xnF.FlR = String.valueOf(paramInt1);
-    paramArrayOfByte = this.xnF;
+    this.xDC.FEp = String.valueOf(paramInt1);
+    paramArrayOfByte = this.xDC;
     if (paramq != null) {}
     for (paramString = String.valueOf(paramq);; paramString = "")
     {
       paramArrayOfByte.errMsg = paramString;
-      ad.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "errCode " + paramInt1 + ", errMsg " + paramq);
+      ae.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "errCode " + paramInt1 + ", errMsg " + paramq);
       this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
       AppMethodBeat.o(67114);
       return;

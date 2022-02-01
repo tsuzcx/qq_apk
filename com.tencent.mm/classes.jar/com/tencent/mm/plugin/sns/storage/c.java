@@ -15,20 +15,20 @@ public final class c
   {
     AppMethodBeat.i(96280);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "canvasId";
-    locala.IhC.put("canvasId", "LONG PRIMARY KEY ");
+    locala.IBN.put("canvasId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" canvasId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "canvasId";
+    locala.IBM = "canvasId";
     locala.columns[1] = "canvasXml";
-    locala.IhC.put("canvasXml", "TEXT");
+    locala.IBN.put("canvasXml", "TEXT");
     localStringBuilder.append(" canvasXml TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "createTime";
-    locala.IhC.put("createTime", "LONG");
+    locala.IBN.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -43,7 +43,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.c
  * JD-Core Version:    0.7.0.1
  */

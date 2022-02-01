@@ -6,38 +6,38 @@ import d.l.b.a.b.b.a.g;
 public abstract class o
   extends n
 {
-  private final aj Nhg;
+  private final aj NEl;
   
   public o(aj paramaj)
   {
-    this.Nhg = paramaj;
+    this.NEl = paramaj;
   }
   
   private o i(g paramg)
   {
     p.h(paramg, "newAnnotations");
-    if (paramg != ghH()) {
+    if (paramg != gmj()) {
       return (o)new i((aj)this, paramg);
     }
     return this;
   }
   
-  public final aj Ac(boolean paramBoolean)
+  public final aj Ap(boolean paramBoolean)
   {
-    if (paramBoolean == glW()) {
+    if (paramBoolean == gqy()) {
       return (aj)this;
     }
-    return this.Nhg.Ac(paramBoolean).d(ghH());
+    return this.NEl.Ap(paramBoolean).d(gmj());
   }
   
-  protected final aj glS()
+  protected final aj gqu()
   {
-    return this.Nhg;
+    return this.NEl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.o
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.ui.base.sortview;
 
 public final class d
 {
-  public String Juj;
+  public String JOY;
   public Object data;
   
-  public final String fzO()
+  public final String fDQ()
   {
-    return this.Juj;
+    return this.JOY;
   }
   
   public final Object getData()
@@ -17,7 +17,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.d
  * JD-Core Version:    0.7.0.1
  */

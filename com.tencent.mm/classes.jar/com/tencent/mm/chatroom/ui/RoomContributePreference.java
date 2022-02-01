@@ -7,16 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RoomContributePreference
   extends Preference
 {
-  private MaskLayout fRc;
-  private ImageView fRd;
-  private String fRe;
+  private MaskLayout fTi;
+  private ImageView fTj;
+  private String fTk;
   
   public RoomContributePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,8 +36,8 @@ public class RoomContributePreference
   {
     AppMethodBeat.i(12730);
     super.onBindView(paramView);
-    if ((this.fRd != null) && (!bt.isNullOrNil(this.fRe))) {
-      a.b.c(this.fRd, this.fRe);
+    if ((this.fTj != null) && (!bu.isNullOrNil(this.fTk))) {
+      a.b.c(this.fTj, this.fTk);
     }
     AppMethodBeat.o(12730);
   }
@@ -46,8 +46,8 @@ public class RoomContributePreference
   {
     AppMethodBeat.i(12729);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    this.fRc = ((MaskLayout)paramViewGroup.findViewById(2131300952));
-    this.fRd = ((ImageView)paramViewGroup.findViewById(2131300914));
+    this.fTi = ((MaskLayout)paramViewGroup.findViewById(2131300952));
+    this.fTj = ((ImageView)paramViewGroup.findViewById(2131300914));
     AppMethodBeat.o(12729);
     return paramViewGroup;
   }

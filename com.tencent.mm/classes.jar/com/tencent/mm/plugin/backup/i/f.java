@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long nzv;
+  public long nEQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(22106);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).aY(1, this.nzv);
+      ((f.a.a.c.a)paramVarArgs[0]).aZ(1, this.nEQ);
       AppMethodBeat.o(22106);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.nzv);
+      paramInt = f.a.a.b.b.a.p(1, this.nEQ);
       AppMethodBeat.o(22106);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(22106);
@@ -43,7 +43,7 @@ public final class f
         AppMethodBeat.o(22106);
         return -1;
       }
-      localf.nzv = locala.NPN.zd();
+      localf.nEQ = locala.OmT.zd();
       AppMethodBeat.o(22106);
       return 0;
     }
@@ -53,7 +53,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.f
  * JD-Core Version:    0.7.0.1
  */

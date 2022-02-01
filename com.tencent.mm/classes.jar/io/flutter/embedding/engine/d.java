@@ -10,25 +10,25 @@ import java.util.Set;
 
 public final class d
 {
-  private Set<String> MCP;
+  private Set<String> MZU;
   
   private d(List<String> paramList)
   {
     AppMethodBeat.i(10183);
-    this.MCP = new HashSet(paramList);
+    this.MZU = new HashSet(paramList);
     AppMethodBeat.o(10183);
   }
   
   public d(String[] paramArrayOfString)
   {
     AppMethodBeat.i(10182);
-    this.MCP = new HashSet(Arrays.asList(paramArrayOfString));
+    this.MZU = new HashSet(Arrays.asList(paramArrayOfString));
     AppMethodBeat.o(10182);
   }
   
-  public static d bB(Intent paramIntent)
+  public static d bC(Intent paramIntent)
   {
-    AppMethodBeat.i(213248);
+    AppMethodBeat.i(197830);
     ArrayList localArrayList = new ArrayList();
     if (paramIntent.getBooleanExtra("trace-startup", false)) {
       localArrayList.add("--trace-startup");
@@ -74,22 +74,22 @@ public final class d
       localArrayList.add("--dart-flags=" + paramIntent.getStringExtra("dart-flags"));
     }
     paramIntent = new d(localArrayList);
-    AppMethodBeat.o(213248);
+    AppMethodBeat.o(197830);
     return paramIntent;
   }
   
   public final String[] toArray()
   {
     AppMethodBeat.i(10184);
-    String[] arrayOfString = new String[this.MCP.size()];
-    arrayOfString = (String[])this.MCP.toArray(arrayOfString);
+    String[] arrayOfString = new String[this.MZU.size()];
+    arrayOfString = (String[])this.MZU.toArray(arrayOfString);
     AppMethodBeat.o(10184);
     return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.d
  * JD-Core Version:    0.7.0.1
  */

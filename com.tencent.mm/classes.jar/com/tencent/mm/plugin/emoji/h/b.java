@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.a.i;
 import com.tencent.mm.emoji.a.m;
 import com.tencent.mm.emoji.d.a;
-import com.tencent.mm.protocal.protobuf.agb;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bc;
+import com.tencent.mm.protocal.protobuf.agk;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.ArrayList;
@@ -16,27 +16,27 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public static void a(agb paramagb, EmojiInfo paramEmojiInfo)
+  public static void a(agk paramagk, EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104577);
-    if ((!bt.isNullOrNil(paramEmojiInfo.field_md5)) && (!paramEmojiInfo.field_md5.equals(paramagb.Md5)))
+    if ((!bu.isNullOrNil(paramEmojiInfo.field_md5)) && (!paramEmojiInfo.field_md5.equals(paramagk.Md5)))
     {
       AppMethodBeat.o(104577);
       return;
     }
-    paramEmojiInfo.field_md5 = fA(paramagb.Md5, paramEmojiInfo.field_md5);
-    paramEmojiInfo.field_cdnUrl = fA(paramagb.Url, paramEmojiInfo.field_cdnUrl);
-    paramEmojiInfo.field_thumbUrl = fA(paramagb.ThumbUrl, paramEmojiInfo.field_thumbUrl);
-    paramEmojiInfo.field_designerID = fA(paramagb.GdY, paramEmojiInfo.field_designerID);
-    paramEmojiInfo.field_encrypturl = fA(paramagb.EncryptUrl, paramEmojiInfo.field_encrypturl);
-    paramEmojiInfo.field_aeskey = fA(paramagb.AesKey, paramEmojiInfo.field_aeskey);
-    paramEmojiInfo.field_groupId = fA(paramagb.ProductID, paramEmojiInfo.field_groupId);
-    paramEmojiInfo.field_externUrl = fA(paramagb.ExternUrl, paramEmojiInfo.field_externUrl);
-    paramEmojiInfo.field_externMd5 = fA(paramagb.ExternMd5, paramEmojiInfo.field_externMd5);
-    paramEmojiInfo.field_activityid = fA(paramagb.ActivityID, paramEmojiInfo.field_activityid);
-    paramEmojiInfo.field_attachedText = fA(paramagb.GdZ, paramEmojiInfo.field_attachedText);
-    paramEmojiInfo.field_attachTextColor = fA(paramagb.Gea, paramEmojiInfo.field_attachTextColor);
-    paramEmojiInfo.field_lensId = fA(paramagb.Geb, paramEmojiInfo.field_lensId);
+    paramEmojiInfo.field_md5 = fE(paramagk.Md5, paramEmojiInfo.field_md5);
+    paramEmojiInfo.field_cdnUrl = fE(paramagk.Url, paramEmojiInfo.field_cdnUrl);
+    paramEmojiInfo.field_thumbUrl = fE(paramagk.ThumbUrl, paramEmojiInfo.field_thumbUrl);
+    paramEmojiInfo.field_designerID = fE(paramagk.GwF, paramEmojiInfo.field_designerID);
+    paramEmojiInfo.field_encrypturl = fE(paramagk.EncryptUrl, paramEmojiInfo.field_encrypturl);
+    paramEmojiInfo.field_aeskey = fE(paramagk.AesKey, paramEmojiInfo.field_aeskey);
+    paramEmojiInfo.field_groupId = fE(paramagk.ProductID, paramEmojiInfo.field_groupId);
+    paramEmojiInfo.field_externUrl = fE(paramagk.ExternUrl, paramEmojiInfo.field_externUrl);
+    paramEmojiInfo.field_externMd5 = fE(paramagk.ExternMd5, paramEmojiInfo.field_externMd5);
+    paramEmojiInfo.field_activityid = fE(paramagk.ActivityID, paramEmojiInfo.field_activityid);
+    paramEmojiInfo.field_attachedText = fE(paramagk.GwG, paramEmojiInfo.field_attachedText);
+    paramEmojiInfo.field_attachTextColor = fE(paramagk.GwH, paramEmojiInfo.field_attachTextColor);
+    paramEmojiInfo.field_lensId = fE(paramagk.GwI, paramEmojiInfo.field_lensId);
     AppMethodBeat.o(104577);
   }
   
@@ -45,7 +45,7 @@ public final class b
     AppMethodBeat.i(104576);
     try
     {
-      if (!bt.isNullOrNil(paramEmojiInfo.field_md5))
+      if (!bu.isNullOrNil(paramEmojiInfo.field_md5))
       {
         boolean bool = paramEmojiInfo.field_md5.equals(paramJSONObject.getString("md5"));
         if (!bool)
@@ -54,15 +54,15 @@ public final class b
           return;
         }
       }
-      paramEmojiInfo.field_md5 = fA(paramJSONObject.optString("md5", ""), paramEmojiInfo.field_md5);
-      paramEmojiInfo.field_cdnUrl = fA(paramJSONObject.optString("productUrl", ""), paramEmojiInfo.field_cdnUrl);
-      paramEmojiInfo.field_thumbUrl = fA(paramJSONObject.optString("thumb", ""), paramEmojiInfo.field_thumbUrl);
-      paramEmojiInfo.field_encrypturl = fA(paramJSONObject.optString("encryptUrl", ""), paramEmojiInfo.field_encrypturl);
-      paramEmojiInfo.field_aeskey = fA(paramJSONObject.optString("aesKey", ""), paramEmojiInfo.field_aeskey);
-      paramEmojiInfo.field_groupId = fA(paramJSONObject.optString("productID", ""), paramEmojiInfo.field_groupId);
-      paramEmojiInfo.Ofj = fA(paramJSONObject.optString("productName", ""), paramEmojiInfo.Ofj);
-      paramEmojiInfo.field_catalog = EmojiInfo.OeN;
-      if ((com.tencent.matrix.trace.g.b.ea(paramEmojiInfo.field_cdnUrl)) && (com.tencent.matrix.trace.g.b.ea(paramEmojiInfo.field_aeskey))) {
+      paramEmojiInfo.field_md5 = fE(paramJSONObject.optString("md5", ""), paramEmojiInfo.field_md5);
+      paramEmojiInfo.field_cdnUrl = fE(paramJSONObject.optString("productUrl", ""), paramEmojiInfo.field_cdnUrl);
+      paramEmojiInfo.field_thumbUrl = fE(paramJSONObject.optString("thumb", ""), paramEmojiInfo.field_thumbUrl);
+      paramEmojiInfo.field_encrypturl = fE(paramJSONObject.optString("encryptUrl", ""), paramEmojiInfo.field_encrypturl);
+      paramEmojiInfo.field_aeskey = fE(paramJSONObject.optString("aesKey", ""), paramEmojiInfo.field_aeskey);
+      paramEmojiInfo.field_groupId = fE(paramJSONObject.optString("productID", ""), paramEmojiInfo.field_groupId);
+      paramEmojiInfo.OAq = fE(paramJSONObject.optString("productName", ""), paramEmojiInfo.OAq);
+      paramEmojiInfo.field_catalog = EmojiInfo.OzU;
+      if ((com.tencent.matrix.trace.g.b.ef(paramEmojiInfo.field_cdnUrl)) && (com.tencent.matrix.trace.g.b.ef(paramEmojiInfo.field_aeskey))) {
         paramEmojiInfo.field_cdnUrl = paramEmojiInfo.field_encrypturl;
       }
       AppMethodBeat.o(104576);
@@ -74,10 +74,10 @@ public final class b
     }
   }
   
-  public static boolean aci(String paramString)
+  public static boolean acZ(String paramString)
   {
     AppMethodBeat.i(104580);
-    if ((!bt.isNullOrNil(paramString)) && (!bt.lQ(paramString, "capture")) && (!bt.lQ(paramString, EmojiGroupInfo.OeK)))
+    if ((!bu.isNullOrNil(paramString)) && (!bu.lX(paramString, "capture")) && (!bu.lX(paramString, EmojiGroupInfo.OzR)))
     {
       AppMethodBeat.o(104580);
       return true;
@@ -86,10 +86,10 @@ public final class b
     return false;
   }
   
-  public static boolean acj(String paramString)
+  public static boolean ada(String paramString)
   {
     AppMethodBeat.i(104583);
-    if ((!bt.isNullOrNil(paramString)) && (!bt.lQ(paramString, "capture")))
+    if ((!bu.isNullOrNil(paramString)) && (!bu.lX(paramString, "capture")))
     {
       AppMethodBeat.o(104583);
       return true;
@@ -98,62 +98,81 @@ public final class b
     return false;
   }
   
-  public static String azF()
+  public static String azV()
   {
-    AppMethodBeat.i(221213);
-    Object localObject = a.gqn;
-    localObject = a.agp();
-    AppMethodBeat.o(221213);
+    AppMethodBeat.i(224505);
+    Object localObject = a.gsI;
+    localObject = a.agD();
+    AppMethodBeat.o(224505);
     return localObject;
   }
   
-  public static void b(bc parambc, EmojiInfo paramEmojiInfo)
+  public static void b(bd parambd, EmojiInfo paramEmojiInfo)
   {
+    int j = 1;
     AppMethodBeat.i(162344);
-    paramEmojiInfo.field_md5 = fA(parambc.md5, paramEmojiInfo.field_md5);
-    paramEmojiInfo.field_svrid = fA(parambc.id, paramEmojiInfo.field_svrid);
-    paramEmojiInfo.field_type = parambc.ILc;
-    paramEmojiInfo.field_size = parambc.ILd;
-    paramEmojiInfo.field_groupId = fA(parambc.dok, paramEmojiInfo.field_groupId);
-    paramEmojiInfo.field_designerID = fA(parambc.ILh, paramEmojiInfo.field_designerID);
-    paramEmojiInfo.field_thumbUrl = fA(parambc.thumbUrl, paramEmojiInfo.field_thumbUrl);
-    paramEmojiInfo.field_cdnUrl = fA(parambc.gHx, paramEmojiInfo.field_cdnUrl);
-    paramEmojiInfo.field_encrypturl = fA(parambc.dsv, paramEmojiInfo.field_encrypturl);
-    paramEmojiInfo.field_aeskey = fA(parambc.aeskey, paramEmojiInfo.field_aeskey);
-    paramEmojiInfo.field_width = parambc.width;
-    paramEmojiInfo.field_height = parambc.height;
-    paramEmojiInfo.field_externUrl = fA(parambc.ILi, paramEmojiInfo.field_externUrl);
-    paramEmojiInfo.field_externMd5 = fA(parambc.ILj, paramEmojiInfo.field_externMd5);
-    paramEmojiInfo.field_activityid = fA(parambc.ILl, paramEmojiInfo.field_activityid);
-    paramEmojiInfo.field_tpurl = fA(parambc.hzU, paramEmojiInfo.field_tpurl);
-    paramEmojiInfo.field_tpauthkey = fA(parambc.hAa, paramEmojiInfo.field_tpauthkey);
-    paramEmojiInfo.field_attachedText = fA(parambc.gkl, paramEmojiInfo.field_attachedText);
-    paramEmojiInfo.field_lensId = fA(parambc.pQo, paramEmojiInfo.field_lensId);
-    paramEmojiInfo.field_attachTextColor = fA(parambc.ILm, paramEmojiInfo.field_attachTextColor);
-    AppMethodBeat.o(162344);
+    paramEmojiInfo.field_md5 = fE(parambd.md5, paramEmojiInfo.field_md5);
+    paramEmojiInfo.field_svrid = fE(parambd.id, paramEmojiInfo.field_svrid);
+    paramEmojiInfo.field_type = parambd.JfJ;
+    paramEmojiInfo.field_size = parambd.JfK;
+    paramEmojiInfo.field_groupId = fE(parambd.dpp, paramEmojiInfo.field_groupId);
+    paramEmojiInfo.field_designerID = fE(parambd.JfO, paramEmojiInfo.field_designerID);
+    paramEmojiInfo.field_thumbUrl = fE(parambd.thumbUrl, paramEmojiInfo.field_thumbUrl);
+    paramEmojiInfo.field_cdnUrl = fE(parambd.gKg, paramEmojiInfo.field_cdnUrl);
+    paramEmojiInfo.field_encrypturl = fE(parambd.dtB, paramEmojiInfo.field_encrypturl);
+    paramEmojiInfo.field_width = parambd.width;
+    paramEmojiInfo.field_height = parambd.height;
+    paramEmojiInfo.field_externUrl = fE(parambd.JfP, paramEmojiInfo.field_externUrl);
+    paramEmojiInfo.field_externMd5 = fE(parambd.JfQ, paramEmojiInfo.field_externMd5);
+    paramEmojiInfo.field_activityid = fE(parambd.JfS, paramEmojiInfo.field_activityid);
+    paramEmojiInfo.field_tpurl = fE(parambd.hCI, paramEmojiInfo.field_tpurl);
+    paramEmojiInfo.field_tpauthkey = fE(parambd.hCO, paramEmojiInfo.field_tpauthkey);
+    int i;
+    if ((!bu.isNullOrNil(paramEmojiInfo.field_externUrl)) || (!bu.isNullOrNil(paramEmojiInfo.field_encrypturl)) || (!bu.isNullOrNil(paramEmojiInfo.field_cdnUrl)))
+    {
+      i = 1;
+      if (bu.isNullOrNil(parambd.hCI)) {
+        break label340;
+      }
+    }
+    for (;;)
+    {
+      if ((j == 0) || (i == 0)) {
+        paramEmojiInfo.field_aeskey = fE(parambd.aeskey, paramEmojiInfo.field_aeskey);
+      }
+      paramEmojiInfo.field_attachedText = fE(parambd.gmF, paramEmojiInfo.field_attachedText);
+      paramEmojiInfo.field_lensId = fE(parambd.pWT, paramEmojiInfo.field_lensId);
+      paramEmojiInfo.field_attachTextColor = fE(parambd.JfT, paramEmojiInfo.field_attachTextColor);
+      AppMethodBeat.o(162344);
+      return;
+      i = 0;
+      break;
+      label340:
+      j = 0;
+    }
   }
   
-  public static int bd(byte[] paramArrayOfByte)
+  public static int bc(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4)) {
-      return EmojiInfo.OeJ;
+      return EmojiInfo.OzQ;
     }
     if ((paramArrayOfByte[1] == 80) && (paramArrayOfByte[2] == 78) && (paramArrayOfByte[3] == 71)) {
-      return EmojiInfo.OeU;
+      return EmojiInfo.OAb;
     }
     if ((paramArrayOfByte[0] == 71) && (paramArrayOfByte[1] == 73) && (paramArrayOfByte[2] == 70)) {
-      return EmojiInfo.OeV;
+      return EmojiInfo.OAc;
     }
     if ((paramArrayOfByte[6] == 74) && (paramArrayOfByte[7] == 70) && (paramArrayOfByte[8] == 73) && (paramArrayOfByte[9] == 70)) {
-      return EmojiInfo.OeW;
+      return EmojiInfo.OAd;
     }
-    return EmojiInfo.OeJ;
+    return EmojiInfo.OzQ;
   }
   
-  public static String fA(String paramString1, String paramString2)
+  public static String fE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104578);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       if (paramString2 == null)
       {
@@ -170,7 +189,7 @@ public final class b
   public static boolean w(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104579);
-    if ((paramEmojiInfo != null) && (aci(paramEmojiInfo.field_groupId)))
+    if ((paramEmojiInfo != null) && (acZ(paramEmojiInfo.field_groupId)))
     {
       AppMethodBeat.o(104579);
       return true;
@@ -182,12 +201,12 @@ public final class b
   public static boolean x(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(183923);
-    if (paramEmojiInfo.field_catalog == EmojiInfo.OeT)
+    if (paramEmojiInfo.field_catalog == EmojiInfo.OAa)
     {
       AppMethodBeat.o(183923);
       return true;
     }
-    Object localObject = i.aeL().dj(true);
+    Object localObject = i.aeX().dj(true);
     if (localObject == null)
     {
       AppMethodBeat.o(183923);
@@ -195,7 +214,7 @@ public final class b
     }
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (bt.lQ(((EmojiInfo)((Iterator)localObject).next()).field_md5, paramEmojiInfo.field_md5))
+      if (bu.lX(((EmojiInfo)((Iterator)localObject).next()).field_md5, paramEmojiInfo.field_md5))
       {
         AppMethodBeat.o(183923);
         return true;
@@ -208,7 +227,7 @@ public final class b
   public static boolean y(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104581);
-    boolean bool = bt.lQ(paramEmojiInfo.field_groupId, "capture");
+    boolean bool = bu.lX(paramEmojiInfo.field_groupId, "capture");
     AppMethodBeat.o(104581);
     return bool;
   }
@@ -221,7 +240,7 @@ public final class b
       AppMethodBeat.o(104582);
       return false;
     }
-    if (!m.afg())
+    if (!m.afu())
     {
       AppMethodBeat.o(104582);
       return false;
@@ -237,7 +256,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.h.b
  * JD-Core Version:    0.7.0.1
  */

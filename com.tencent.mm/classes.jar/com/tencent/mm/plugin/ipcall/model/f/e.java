@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.report.service.g;
 public final class e
   extends a
 {
-  public long uNK = 0L;
-  public long uNL = 0L;
+  public long uZx = 0L;
+  public long uZy = 0L;
   
-  public final void bxK()
+  public final void byD()
   {
     AppMethodBeat.i(25502);
-    g.yhR.f(12935, new Object[] { Long.valueOf(this.uNK), Long.valueOf(this.uNL) });
+    g.yxI.f(12935, new Object[] { Long.valueOf(this.uZx), Long.valueOf(this.uZy) });
     AppMethodBeat.o(25502);
   }
 }

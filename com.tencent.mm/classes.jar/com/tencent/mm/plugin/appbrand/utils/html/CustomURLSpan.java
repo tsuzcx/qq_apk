@@ -8,27 +8,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CustomURLSpan
   extends URLSpan
 {
-  private c.a mPN;
-  private boolean mPO;
+  private c.a mUX;
+  private boolean mUY;
   private String mUrl;
   
   public CustomURLSpan(String paramString, c.a parama, boolean paramBoolean)
   {
     super(paramString);
     this.mUrl = paramString;
-    this.mPN = parama;
-    this.mPO = paramBoolean;
+    this.mUX = parama;
+    this.mUY = paramBoolean;
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(147727);
-    if (this.mPN == null)
+    if (this.mUX == null)
     {
       AppMethodBeat.o(147727);
       return;
     }
-    this.mPN.OM(this.mUrl);
+    this.mUX.Pu(this.mUrl);
     AppMethodBeat.o(147727);
   }
   
@@ -36,13 +36,13 @@ public class CustomURLSpan
   {
     AppMethodBeat.i(147728);
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(this.mPO);
+    paramTextPaint.setUnderlineText(this.mUY);
     AppMethodBeat.o(147728);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.html.CustomURLSpan
  * JD-Core Version:    0.7.0.1
  */

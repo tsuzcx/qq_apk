@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public final class c
   extends b
 {
-  private long LUJ = 1000L;
+  private long MrE = 1000L;
   
   public c(int paramInt1, int paramInt2)
   {
@@ -16,7 +16,7 @@ public final class c
   public final long a(g paramg, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(183325);
-    long l = paramTimeUnit.convert(this.LUJ, TimeUnit.MILLISECONDS);
+    long l = paramTimeUnit.convert(this.MrE, TimeUnit.MILLISECONDS);
     AppMethodBeat.o(183325);
     return l;
   }

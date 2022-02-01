@@ -10,21 +10,21 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> gxZ;
-  private static Map<String, a> gya;
+  private static List<a> gAG;
+  private static Map<String, a> gAH;
   
   static
   {
     AppMethodBeat.i(158796);
-    gxZ = new LinkedList();
-    gya = new HashMap();
+    gAG = new LinkedList();
+    gAH = new HashMap();
     AppMethodBeat.o(158796);
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
     AppMethodBeat.i(158794);
-    paramString = (a)gya.get(paramString);
+    paramString = (a)gAH.get(paramString);
     if (paramString != null)
     {
       paramString = paramString.c(paramParcel);
@@ -38,13 +38,13 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(158795);
-    if ((parama == null) || (gxZ.contains(parama)))
+    if ((parama == null) || (gAG.contains(parama)))
     {
       AppMethodBeat.o(158795);
       return;
     }
-    gya.put(parama.getClass().getName(), parama);
-    gxZ.add(parama);
+    gAH.put(parama.getClass().getName(), parama);
+    gAG.add(parama);
     AppMethodBeat.o(158795);
   }
   
@@ -61,7 +61,7 @@ public final class c
   public static a bh(Object paramObject)
   {
     AppMethodBeat.i(158792);
-    Iterator localIterator = gxZ.iterator();
+    Iterator localIterator = gAG.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();

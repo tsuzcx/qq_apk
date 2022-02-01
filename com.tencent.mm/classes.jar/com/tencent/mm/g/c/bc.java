@@ -8,13 +8,13 @@ public abstract class bc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEU = "appId".hashCode();
-  private static final int eFF = "versionType".hashCode();
-  private static final int eQO = "extJson".hashCode();
+  private static final int eGD = "appId".hashCode();
+  private static final int eHo = "versionType".hashCode();
+  private static final int eSz = "extJson".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean eFB = true;
-  private boolean eQN = true;
+  private boolean eGm = true;
+  private boolean eHk = true;
+  private boolean eSy = true;
   public String field_appId;
   public String field_extJson;
   public int field_versionType;
@@ -32,7 +32,7 @@ public abstract class bc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eGD != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class bc
       break label20;
       break;
       label60:
-      if (eFF == k) {
+      if (eHo == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (eQO == k) {
+      } else if (eSz == k) {
         this.field_extJson = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class bc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eFB) {
+    if (this.eHk) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eQN) {
+    if (this.eSy) {
       localContentValues.put("extJson", this.field_extJson);
     }
     if (this.systemRowid > 0L) {

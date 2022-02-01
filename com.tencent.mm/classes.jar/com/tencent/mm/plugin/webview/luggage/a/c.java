@@ -9,7 +9,7 @@ public final class c
   JSONObject cgn;
   String mName;
   
-  public final JSONObject BO()
+  public final JSONObject BP()
   {
     return this.cgn;
   }

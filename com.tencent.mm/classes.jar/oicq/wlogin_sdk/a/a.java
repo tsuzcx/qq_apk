@@ -6,43 +6,43 @@ import oicq.wlogin_sdk.tools.util;
 
 public class a
 {
-  public int NQg;
-  public int NQh;
-  public byte[] NQm;
-  public int NQs;
-  int NRa;
-  public int NRb;
-  public int NRc;
+  public int Onm;
+  public int Onn;
+  public byte[] Ons;
+  public int Ony;
+  int Oog;
+  public int Ooh;
+  public int Ooi;
   
   public a()
   {
     AppMethodBeat.i(88120);
-    this.NQg = 128;
-    this.NQh = 0;
-    this.NRa = 0;
-    this.NRb = 4;
-    this.NRc = 0;
-    this.NQm = new byte[this.NQg];
-    this.NQs = 0;
+    this.Onm = 128;
+    this.Onn = 0;
+    this.Oog = 0;
+    this.Ooh = 4;
+    this.Ooi = 0;
+    this.Ons = new byte[this.Onm];
+    this.Ony = 0;
     AppMethodBeat.o(88120);
   }
   
-  private void S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private void T(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88123);
-    if (paramInt2 > this.NQg)
+    if (paramInt2 > this.Onm)
     {
-      this.NQg = (paramInt2 + 128);
-      this.NQm = new byte[this.NQg];
+      this.Onm = (paramInt2 + 128);
+      this.Ons = new byte[this.Onm];
     }
-    this.NQh = paramInt2;
-    System.arraycopy(paramArrayOfByte, paramInt1, this.NQm, 0, paramInt2);
-    this.NQs = util.ai(paramArrayOfByte, paramInt1);
-    this.NRc = (paramInt2 - this.NRb);
+    this.Onn = paramInt2;
+    System.arraycopy(paramArrayOfByte, paramInt1, this.Ons, 0, paramInt2);
+    this.Ony = util.am(paramArrayOfByte, paramInt1);
+    this.Ooi = (paramInt2 - this.Ooh);
     AppMethodBeat.o(88123);
   }
   
-  private static int T(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static int U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88127);
     int j = paramArrayOfByte.length;
@@ -60,45 +60,45 @@ public class a
             break;
           }
           i = paramInt1;
-        } while (util.ai(paramArrayOfByte, paramInt1) == paramInt2);
+        } while (util.am(paramArrayOfByte, paramInt1) == paramInt2);
         paramInt1 += 2;
       } while (paramInt1 + 2 > j);
-      paramInt1 += util.ai(paramArrayOfByte, paramInt1) + 2;
+      paramInt1 += util.am(paramArrayOfByte, paramInt1) + 2;
     }
   }
   
   private int d(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88129);
-    if (this.NRb >= paramInt)
+    if (this.Ooh >= paramInt)
     {
       AppMethodBeat.o(88129);
       return -1;
     }
-    this.NRc = util.ai(paramArrayOfByte1, 2);
-    if (this.NRb + this.NRc > paramInt)
+    this.Ooi = util.am(paramArrayOfByte1, 2);
+    if (this.Ooh + this.Ooi > paramInt)
     {
       AppMethodBeat.o(88129);
       return -1;
     }
-    paramArrayOfByte2 = d.decrypt(paramArrayOfByte1, this.NRb, this.NRc, paramArrayOfByte2);
+    paramArrayOfByte2 = d.decrypt(paramArrayOfByte1, this.Ooh, this.Ooi, paramArrayOfByte2);
     if (paramArrayOfByte2 == null)
     {
       AppMethodBeat.o(88129);
       return -1015;
     }
-    if (this.NRb + paramArrayOfByte2.length > this.NQg)
+    if (this.Ooh + paramArrayOfByte2.length > this.Onm)
     {
-      this.NQg = (this.NRb + paramArrayOfByte2.length);
-      this.NQm = new byte[this.NQg];
+      this.Onm = (this.Ooh + paramArrayOfByte2.length);
+      this.Ons = new byte[this.Onm];
     }
-    this.NQh = 0;
-    System.arraycopy(paramArrayOfByte1, 0, this.NQm, 0, this.NRb);
-    this.NQh += this.NRb;
-    System.arraycopy(paramArrayOfByte2, 0, this.NQm, this.NQh, paramArrayOfByte2.length);
-    this.NQh += paramArrayOfByte2.length;
-    this.NRc = paramArrayOfByte2.length;
-    if (!gxW().booleanValue())
+    this.Onn = 0;
+    System.arraycopy(paramArrayOfByte1, 0, this.Ons, 0, this.Ooh);
+    this.Onn += this.Ooh;
+    System.arraycopy(paramArrayOfByte2, 0, this.Ons, this.Onn, paramArrayOfByte2.length);
+    this.Onn += paramArrayOfByte2.length;
+    this.Ooi = paramArrayOfByte2.length;
+    if (!gCy().booleanValue())
     {
       AppMethodBeat.o(88129);
       return -1005;
@@ -107,69 +107,69 @@ public class a
     return 0;
   }
   
-  public final int U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int V(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88128);
-    int i = T(paramArrayOfByte, paramInt1, this.NQs);
+    int i = U(paramArrayOfByte, paramInt1, this.Ony);
     if (i < 0)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
     paramInt1 = paramInt2 - (i - paramInt1);
-    if (this.NRb >= paramInt1)
+    if (this.Ooh >= paramInt1)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
-    this.NRc = util.ai(paramArrayOfByte, i + 2);
-    if (this.NRb + this.NRc > paramInt1)
+    this.Ooi = util.am(paramArrayOfByte, i + 2);
+    if (this.Ooh + this.Ooi > paramInt1)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
-    S(paramArrayOfByte, i, this.NRb + this.NRc);
-    if (!gxW().booleanValue())
+    T(paramArrayOfByte, i, this.Ooh + this.Ooi);
+    if (!gCy().booleanValue())
     {
       AppMethodBeat.o(88128);
       return -1005;
     }
-    paramInt1 = this.NRb;
-    paramInt2 = this.NRc;
+    paramInt1 = this.Ooh;
+    paramInt2 = this.Ooi;
     AppMethodBeat.o(88128);
     return paramInt1 + i + paramInt2;
   }
   
-  public final void af(byte[] paramArrayOfByte, int paramInt)
+  public final void aj(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(88126);
-    if (paramInt > this.NQg - this.NRb)
+    if (paramInt > this.Onm - this.Ooh)
     {
-      this.NQg = (this.NRb + paramInt + 64);
-      byte[] arrayOfByte = new byte[this.NQg];
-      System.arraycopy(this.NQm, 0, arrayOfByte, 0, this.NQh);
-      this.NQm = arrayOfByte;
+      this.Onm = (this.Ooh + paramInt + 64);
+      byte[] arrayOfByte = new byte[this.Onm];
+      System.arraycopy(this.Ons, 0, arrayOfByte, 0, this.Onn);
+      this.Ons = arrayOfByte;
     }
-    this.NRc = paramInt;
-    System.arraycopy(paramArrayOfByte, 0, this.NQm, this.NQh, paramInt);
-    this.NQh += paramInt;
+    this.Ooi = paramInt;
+    System.arraycopy(paramArrayOfByte, 0, this.Ons, this.Onn, paramInt);
+    this.Onn += paramInt;
     AppMethodBeat.o(88126);
   }
   
-  public final void alW(int paramInt)
+  public final void amG(int paramInt)
   {
     AppMethodBeat.i(88124);
-    util.W(this.NQm, this.NQh, paramInt);
-    this.NQh += 2;
-    util.W(this.NQm, this.NQh, 0);
-    this.NQh += 2;
+    util.X(this.Ons, this.Onn, paramInt);
+    this.Onn += 2;
+    util.X(this.Ons, this.Onn, 0);
+    this.Onn += 2;
     AppMethodBeat.o(88124);
   }
   
   public final int b(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88130);
-    int i = T(paramArrayOfByte1, paramInt1, this.NQs);
+    int i = U(paramArrayOfByte1, paramInt1, this.Ony);
     if (i < 0)
     {
       AppMethodBeat.o(88130);
@@ -183,32 +183,32 @@ public class a
     return paramInt1;
   }
   
-  public final byte[] gxR()
+  public final byte[] gCt()
   {
     AppMethodBeat.i(88121);
-    byte[] arrayOfByte = new byte[this.NQh];
-    System.arraycopy(this.NQm, 0, arrayOfByte, 0, this.NQh);
+    byte[] arrayOfByte = new byte[this.Onn];
+    System.arraycopy(this.Ons, 0, arrayOfByte, 0, this.Onn);
     AppMethodBeat.o(88121);
     return arrayOfByte;
   }
   
-  public final byte[] gxU()
+  public final byte[] gCw()
   {
     AppMethodBeat.i(88122);
-    byte[] arrayOfByte = new byte[this.NRc];
-    System.arraycopy(this.NQm, this.NRb, arrayOfByte, 0, this.NRc);
+    byte[] arrayOfByte = new byte[this.Ooi];
+    System.arraycopy(this.Ons, this.Ooh, arrayOfByte, 0, this.Ooi);
     AppMethodBeat.o(88122);
     return arrayOfByte;
   }
   
-  public final void gxV()
+  public final void gCx()
   {
     AppMethodBeat.i(88125);
-    util.W(this.NQm, 2, this.NQh - this.NRb);
+    util.X(this.Ons, 2, this.Onn - this.Ooh);
     AppMethodBeat.o(88125);
   }
   
-  public Boolean gxW()
+  public Boolean gCy()
   {
     return Boolean.TRUE;
   }

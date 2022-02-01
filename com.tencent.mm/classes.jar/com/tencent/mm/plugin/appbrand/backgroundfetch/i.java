@@ -7,23 +7,21 @@ import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 
 public final class i
-  extends p
+  extends com.tencent.mm.plugin.appbrand.jsapi.p
 {
   private static final int CTRL_INDEX = 523;
   private static final String NAME = "onBackgroundFetchData";
   
-  public static void o(o paramo)
+  public static void p(com.tencent.mm.plugin.appbrand.p paramp)
   {
     AppMethodBeat.i(44759);
-    String str = paramo.mAppId;
+    String str = paramp.mAppId;
     MMToClientEvent.c local1 = new MMToClientEvent.c()
     {
       public final void ch(Object paramAnonymousObject)
@@ -36,39 +34,39 @@ public final class i
         HashMap localHashMap;
         if ((paramAnonymousObject instanceof AppBrandBackgroundFetchDataParcel))
         {
-          ad.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app received data, appId:%s", new Object[] { this.val$appId });
+          ae.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app received data, appId:%s", new Object[] { this.val$appId });
           str1 = this.val$appId;
           localObject = (AppBrandBackgroundFetchDataParcel)paramAnonymousObject;
-          if ((localObject == null) || (bt.isNullOrNil(str1)))
+          if ((localObject == null) || (bu.isNullOrNil(str1)))
           {
-            ad.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "dispatch, parcel is null or appid is null");
+            ae.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "dispatch, parcel is null or appid is null");
             AppMethodBeat.o(44757);
             return;
           }
           str2 = ((AppBrandBackgroundFetchDataParcel)localObject).username;
-          i = ((AppBrandBackgroundFetchDataParcel)localObject).jRB;
+          i = ((AppBrandBackgroundFetchDataParcel)localObject).jUT;
           paramAnonymousObject = ((AppBrandBackgroundFetchDataParcel)localObject).data;
           String str3 = ((AppBrandBackgroundFetchDataParcel)localObject).path;
           String str4 = ((AppBrandBackgroundFetchDataParcel)localObject).query;
           int j = ((AppBrandBackgroundFetchDataParcel)localObject).scene;
-          long l = ((AppBrandBackgroundFetchDataParcel)localObject).fMf;
-          if ((bt.isNullOrNil(str2)) || (bt.isNullOrNil(paramAnonymousObject)))
+          long l = ((AppBrandBackgroundFetchDataParcel)localObject).fOl;
+          if ((bu.isNullOrNil(str2)) || (bu.isNullOrNil(paramAnonymousObject)))
           {
-            ad.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "username or data is null");
+            ae.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "username or data is null");
             AppMethodBeat.o(44757);
             return;
           }
-          localObject = a.Kj(str1);
+          localObject = a.KI(str1);
           if ((localObject == null) || (!((AppBrandRuntime)localObject).mInitialized))
           {
-            ad.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app(%s) runtime is null or not initialized, appId:%s", new Object[] { str2, str1 });
+            ae.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app(%s) runtime is null or not initialized, appId:%s", new Object[] { str2, str1 });
             AppMethodBeat.o(44757);
             return;
           }
-          localObject = ((AppBrandRuntime)localObject).Ew();
-          if ((localObject == null) || (((q)localObject).aVD() == b.jKR))
+          localObject = ((AppBrandRuntime)localObject).Ey();
+          if ((localObject == null) || (((r)localObject).aWc() == b.jOd))
           {
-            ad.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app(%s) service is null or has destroyed, appId:%s", new Object[] { str2, str1 });
+            ae.w("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app(%s) service is null or has destroyed, appId:%s", new Object[] { str2, str1 });
             AppMethodBeat.o(44757);
             return;
           }
@@ -86,24 +84,24 @@ public final class i
         for (paramAnonymousObject = "pre";; paramAnonymousObject = "peroid")
         {
           localHashMap.put("fetchType", paramAnonymousObject);
-          ad.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "AppBrandOnBackgroundFetchDataEvent dispatch to app(%s), appId:%s, fetch type:%d", new Object[] { str2, str1, Integer.valueOf(i) });
-          new i().A(localHashMap).g((com.tencent.mm.plugin.appbrand.jsapi.c)localObject).bir();
+          ae.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "AppBrandOnBackgroundFetchDataEvent dispatch to app(%s), appId:%s, fetch type:%d", new Object[] { str2, str1, Integer.valueOf(i) });
+          new i().H(localHashMap).g((com.tencent.mm.plugin.appbrand.jsapi.c)localObject).bja();
           AppMethodBeat.o(44757);
           return;
         }
       }
     };
     MMToClientEvent.a(str, local1);
-    ad.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app start listening background fetched data event, appId:%s", new Object[] { str });
-    paramo.jwS.a(new c.a()
+    ae.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app start listening background fetched data event, appId:%s", new Object[] { str });
+    paramp.jzQ.a(new c.a()
     {
       public final void a(String paramAnonymousString, b paramAnonymousb)
       {
         AppMethodBeat.i(44758);
-        if (paramAnonymousb == b.jKR)
+        if (paramAnonymousb == b.jOd)
         {
-          MMToClientEvent.b(paramAnonymousString, this.jRG);
-          ad.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app stop listening background fetched data event, appId:%s", new Object[] { paramAnonymousString });
+          MMToClientEvent.b(paramAnonymousString, this.jUY);
+          ae.i("MicroMsg.AppBrand.AppBrandOnBackgroundFetchDataEvent", "app stop listening background fetched data event, appId:%s", new Object[] { paramAnonymousString });
         }
         AppMethodBeat.o(44758);
       }

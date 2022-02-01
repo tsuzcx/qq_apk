@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum c
 {
-  public final SparseArray<b> yQS;
+  public final SparseArray<b> zhc;
   
   static
   {
     AppMethodBeat.i(151584);
-    yQR = new c("INSTANCE");
-    yQT = new c[] { yQR };
+    zhb = new c("INSTANCE");
+    zhd = new c[] { zhb };
     AppMethodBeat.o(151584);
   }
   
   private c()
   {
     AppMethodBeat.i(151582);
-    this.yQS = new SparseArray();
+    this.zhc = new SparseArray();
     AppMethodBeat.o(151582);
   }
   
   public final boolean a(b paramb)
   {
     AppMethodBeat.i(151583);
-    this.yQS.put(paramb.getType(), paramb);
+    this.zhc.put(paramb.getType(), paramb);
     AppMethodBeat.o(151583);
     return true;
   }

@@ -1,0 +1,8 @@
+{
+  "version": "1.1.0",
+  "buildType": "production",
+  "template": {
+    "pageCodeTemplate": "\n    function __runner_%instanceId%_%uuid%__(globalThis,runInInstance,createInstance,destroyInstance,callJS,register,setUp,liteAppVDom,reporter,setRuntimeConfig,baseLibApi) {\n      with (globalThis) {\n        (function() {\n          'use strict';\n          %code%\n        }.call(globalThis));\n      }\n    }\n  ",
+    "libCodeTemplate": "\n    function __runner_%instanceId%_%uuid%__(module,globalThis,runInInstance,createInstance,destroyInstance,callJS,register,setUp,liteAppVDom,reporter,setRuntimeConfig,baseLibApi) {\n      with (globalThis) {\n        (function() {\n          'use strict';\n          %code%\n        }.call(globalThis));\n      }\n    }\n  "
+  }
+}

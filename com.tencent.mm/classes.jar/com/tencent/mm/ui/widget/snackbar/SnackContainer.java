@@ -24,16 +24,16 @@ import java.util.Queue;
 public class SnackContainer
   extends FrameLayout
 {
-  private AnimationSet JIZ;
-  Queue<a> Ldl;
-  private AnimationSet Ldm;
+  private AnimationSet KdV;
+  Queue<a> LzM;
+  private AnimationSet LzN;
   private final Runnable mHideRunnable;
   
   public SnackContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159724);
-    this.Ldl = new LinkedList();
+    this.LzM = new LinkedList();
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -53,7 +53,7 @@ public class SnackContainer
   {
     super(paramViewGroup.getContext());
     AppMethodBeat.i(159725);
-    this.Ldl = new LinkedList();
+    this.LzM = new LinkedList();
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -75,10 +75,10 @@ public class SnackContainer
   private static void b(a parama)
   {
     AppMethodBeat.i(159732);
-    if (parama.Lds != null)
+    if (parama.LzT != null)
     {
-      b.yW(false);
-      parama.Lds.onHide();
+      b.zk(false);
+      parama.LzT.onHide();
     }
     AppMethodBeat.o(159732);
   }
@@ -86,10 +86,10 @@ public class SnackContainer
   private static void c(a parama)
   {
     AppMethodBeat.i(159733);
-    if (parama.Lds != null)
+    if (parama.LzT != null)
     {
-      b.yW(true);
-      parama.Lds.onShow();
+      b.zk(true);
+      parama.LzT.onShow();
     }
     AppMethodBeat.o(159733);
   }
@@ -97,19 +97,19 @@ public class SnackContainer
   private void init()
   {
     AppMethodBeat.i(159726);
-    this.JIZ = new AnimationSet(false);
+    this.KdV = new AnimationSet(false);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 1.0F, 1, 0.0F);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.JIZ.setInterpolator(new DecelerateInterpolator(1.5F));
-    this.JIZ.addAnimation(localTranslateAnimation);
-    this.JIZ.addAnimation(localAlphaAnimation);
-    this.Ldm = new AnimationSet(false);
+    this.KdV.setInterpolator(new DecelerateInterpolator(1.5F));
+    this.KdV.addAnimation(localTranslateAnimation);
+    this.KdV.addAnimation(localAlphaAnimation);
+    this.LzN = new AnimationSet(false);
     localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 0.0F, 1, 1.0F);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.Ldm.addAnimation(localTranslateAnimation);
-    this.Ldm.addAnimation(localAlphaAnimation);
-    this.Ldm.setDuration(300L);
-    this.Ldm.setAnimationListener(new Animation.AnimationListener()
+    this.LzN.addAnimation(localTranslateAnimation);
+    this.LzN.addAnimation(localAlphaAnimation);
+    this.LzN.setDuration(300L);
+    this.LzN.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -133,10 +133,10 @@ public class SnackContainer
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(159720);
-        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).Lds != null))
+        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).LzT != null))
         {
-          b.yW(false);
-          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).Lds.bio();
+          b.zk(false);
+          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).LzT.biX();
         }
         AppMethodBeat.o(159720);
       }
@@ -149,26 +149,26 @@ public class SnackContainer
     AppMethodBeat.i(159731);
     setVisibility(0);
     c(parama);
-    addView(parama.Ldp);
-    parama.ty.setText(parama.Ldr.uDD);
-    if (parama.Ldr.LcX != null)
+    addView(parama.LzQ);
+    parama.ty.setText(parama.LzS.uPi);
+    if (parama.LzS.Lzy != null)
     {
-      parama.Ldq.setVisibility(0);
-      parama.Ldq.setText(parama.Ldr.LcX);
+      parama.LzR.setVisibility(0);
+      parama.LzR.setText(parama.LzS.Lzy);
     }
     for (;;)
     {
-      this.JIZ.setDuration(500L);
+      this.KdV.setDuration(500L);
       Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772047);
       localAnimation.setDuration(500L);
-      startAnimation(this.JIZ);
+      startAnimation(this.KdV);
       localAnimation.setStartOffset(200L);
-      parama.Ldq.startAnimation(localAnimation);
+      parama.LzR.startAnimation(localAnimation);
       parama.ty.startAnimation(localAnimation);
-      if (parama.Ldr.Lda > 0) {
-        postDelayed(this.mHideRunnable, parama.Ldr.Lda);
+      if (parama.LzS.LzB > 0) {
+        postDelayed(this.mHideRunnable, parama.LzS.LzB);
       }
-      parama.Ldp.setOnTouchListener(new View.OnTouchListener()
+      parama.LzQ.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -176,7 +176,7 @@ public class SnackContainer
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          a.b("com/tencent/mm/ui/widget/snackbar/SnackContainer$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          a.b("com/tencent/mm/ui/widget/snackbar/SnackContainer$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
@@ -196,7 +196,7 @@ public class SnackContainer
       });
       AppMethodBeat.o(159731);
       return;
-      parama.Ldq.setVisibility(8);
+      parama.LzR.setVisibility(8);
     }
   }
   
@@ -211,7 +211,7 @@ public class SnackContainer
   public final boolean isEmpty()
   {
     AppMethodBeat.i(159728);
-    boolean bool = this.Ldl.isEmpty();
+    boolean bool = this.LzM.isEmpty();
     AppMethodBeat.o(159728);
     return bool;
   }
@@ -219,7 +219,7 @@ public class SnackContainer
   public final boolean isShowing()
   {
     AppMethodBeat.i(159729);
-    if (!this.Ldl.isEmpty())
+    if (!this.LzM.isEmpty())
     {
       AppMethodBeat.o(159729);
       return true;
@@ -232,10 +232,10 @@ public class SnackContainer
   {
     AppMethodBeat.i(159727);
     super.onDetachedFromWindow();
-    this.JIZ.cancel();
-    this.Ldm.cancel();
+    this.KdV.cancel();
+    this.LzN.cancel();
     removeCallbacks(this.mHideRunnable);
-    this.Ldl.clear();
+    this.LzM.clear();
     AppMethodBeat.o(159727);
   }
   
@@ -246,17 +246,17 @@ public class SnackContainer
     if (8 == paramInt)
     {
       removeAllViews();
-      if (!this.Ldl.isEmpty()) {
-        b((a)this.Ldl.poll());
+      if (!this.LzM.isEmpty()) {
+        b((a)this.LzM.poll());
       }
       if (isEmpty()) {
         break label83;
       }
-      a((a)this.Ldl.peek());
+      a((a)this.LzM.peek());
     }
     for (;;)
     {
-      b.yW(false);
+      b.zk(false);
       AppMethodBeat.o(159734);
       return;
       label83:
@@ -266,20 +266,20 @@ public class SnackContainer
   
   static final class a
   {
-    final View Ldp;
-    final TextView Ldq;
-    final Snack Ldr;
-    final a.c Lds;
+    final View LzQ;
+    final TextView LzR;
+    final Snack LzS;
+    final a.c LzT;
     final TextView ty;
     
     private a(Snack paramSnack, View paramView, a.c paramc)
     {
       AppMethodBeat.i(159723);
-      this.Ldp = paramView;
-      this.Ldq = ((TextView)paramView.findViewById(2131304881));
+      this.LzQ = paramView;
+      this.LzR = ((TextView)paramView.findViewById(2131304881));
       this.ty = ((TextView)paramView.findViewById(2131304883));
-      this.Ldr = paramSnack;
-      this.Lds = paramc;
+      this.LzS = paramSnack;
+      this.LzT = paramc;
       AppMethodBeat.o(159723);
     }
   }

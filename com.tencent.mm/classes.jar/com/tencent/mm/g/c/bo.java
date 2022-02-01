@@ -8,11 +8,11 @@ public abstract class bo
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEm = "content".hashCode();
-  private static final int eRD = "productID".hashCode();
+  private static final int eFV = "content".hashCode();
+  private static final int eTo = "productID".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDP = true;
-  private boolean eRd = true;
+  private boolean eFy = true;
+  private boolean eSO = true;
   public byte[] field_content;
   public String field_productID;
   
@@ -29,11 +29,11 @@ public abstract class bo
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eRD != k) {
+      if (eTo != k) {
         break label65;
       }
       this.field_productID = paramCursor.getString(i);
-      this.eRd = true;
+      this.eSO = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class bo
       break label20;
       break;
       label65:
-      if (eEm == k) {
+      if (eFV == k) {
         this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class bo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eRd) {
+    if (this.eSO) {
       localContentValues.put("productID", this.field_productID);
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {

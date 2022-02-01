@@ -5,11 +5,11 @@ import java.util.Map;
 
 public abstract interface a
 {
-  public abstract void S(Map<String, Object> paramMap);
+  public abstract void U(Bundle paramBundle);
   
-  public abstract void T(Bundle paramBundle);
+  public abstract void Z(Map<String, Object> paramMap);
   
-  public abstract int bRA();
+  public abstract int bSB();
 }
 
 

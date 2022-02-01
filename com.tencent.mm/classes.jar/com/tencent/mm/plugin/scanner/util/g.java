@@ -4,115 +4,115 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager;", "", "()V", "canRetryReopenCamera", "", "canRetryUsingTexture", "enterTimestamp", "", "exitTimestamp", "isRetry", "isScanSuccess", "isUpdated", "mRetryType", "", "mTextureScaledFactor", "", "mTimeout", "mTimeoutFactor", "maxTimeout", "minTimeout", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "onPreviewFrameCalled", "stayTime", "canRetry", "retryType", "cancelRetryType", "", "checkAndResetTimeout", "enterScanUI", "exitScanUI", "getMMKVKey", "", "getRetryType", "getSavedTimeout", "getTextureScaleFactor", "getTimeout", "init", "initMMKV", "saveTimeout", "timeout", "setIsRetry", "setOnPreviewFrameCalled", "setScanSuccess", "updateTimeout", "time", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager;", "", "()V", "canRetryReopenCamera", "", "canRetryUsingTexture", "enterTimestamp", "", "exitTimestamp", "isRetry", "isScanSuccess", "isUpdated", "mRetryType", "", "mTextureScaledFactor", "", "mTimeout", "mTimeoutFactor", "maxTimeout", "minTimeout", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "onPreviewFrameCalled", "stayTime", "canRetry", "retryType", "cancelRetryType", "", "checkAndResetTimeout", "enterScanUI", "exitScanUI", "getMMKVKey", "", "getRetryType", "getSavedTimeout", "getTextureScaleFactor", "getTimeout", "init", "initMMKV", "saveTimeout", "timeout", "setIsRetry", "setOnPreviewFrameCalled", "setScanSuccess", "updateTimeout", "time", "Companion", "plugin-scan_release"})
 public final class g
 {
-  public static final g.a yzR;
-  private ax cBy;
-  public long dBD;
+  public static final g.a yPR;
+  private ay cCf;
+  public long dCI;
   public boolean isRetry;
   public long mTimeout;
-  public long wQm;
-  public boolean ytP;
-  public long yzH;
-  public long yzI;
-  public float yzJ;
-  public boolean yzK;
-  public int yzL;
-  public boolean yzM;
-  public boolean yzN;
-  public float yzO;
-  public long yzP;
-  public boolean yzQ;
+  public long xgd;
+  public boolean yJQ;
+  public long yPH;
+  public long yPI;
+  public float yPJ;
+  public boolean yPK;
+  public int yPL;
+  public boolean yPM;
+  public boolean yPN;
+  public float yPO;
+  public long yPP;
+  public boolean yPQ;
   
   static
   {
     AppMethodBeat.i(161061);
-    yzR = new g.a((byte)0);
+    yPR = new g.a((byte)0);
     AppMethodBeat.o(161061);
   }
   
   public g()
   {
     AppMethodBeat.i(161060);
-    this.yzH = 5000L;
-    this.yzI = 1000L;
-    this.yzJ = 2.0F;
-    this.yzO = 0.8F;
+    this.yPH = 5000L;
+    this.yPI = 1000L;
+    this.yPJ = 2.0F;
+    this.yPO = 0.8F;
     Object localObject = new StringBuilder();
-    p.g(com.tencent.mm.kernel.g.ajA(), "MMKernel.account()");
-    this.cBy = ax.aQA(a.aiq() + "_scan_code_retry");
-    localObject = this.cBy;
+    p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
+    this.cCf = ay.aRX(a.aiF() + "_scan_code_retry");
+    localObject = this.cCf;
     long l;
     int i;
     int j;
     if (localObject != null)
     {
-      l = ((ax)localObject).getLong("scan_code_retry_timeout", 5000L);
+      l = ((ay)localObject).getLong("scan_code_retry_timeout", 5000L);
       this.mTimeout = l;
-      this.yzL = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qBz, 0);
-      this.yzH = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qBB, 5000L);
-      this.yzI = 1000L;
-      i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qBC, 200);
-      this.yzJ = (i / 100.0F);
-      this.mTimeout = Math.max(this.yzI, this.mTimeout);
-      this.mTimeout = Math.min(this.yzH, this.mTimeout);
-      j = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qBD, 80);
+      this.yPL = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIS, 0);
+      this.yPH = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIU, 5000L);
+      this.yPI = 1000L;
+      i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIV, 200);
+      this.yPJ = (i / 100.0F);
+      this.mTimeout = Math.max(this.yPI, this.mTimeout);
+      this.mTimeout = Math.min(this.yPH, this.mTimeout);
+      j = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIW, 80);
       if (j != 0)
       {
-        this.yzO = (j / 100.0F);
-        this.yzO = Math.min(1.0F, this.yzO);
+        this.yPO = (j / 100.0F);
+        this.yPO = Math.min(1.0F, this.yPO);
       }
-      if (this.yzL != 1) {
+      if (this.yPL != 1) {
         break label396;
       }
-      this.yzM = true;
-      this.yzN = false;
+      this.yPM = true;
+      this.yPN = false;
     }
     for (;;)
     {
-      ad.i("MicroMsg.ScanRetryManager", "alvinluo init retryType: %d, maxTimeout: %d, minTimeout: %d, timeout: %d, timeoutFactor config: %d, factor: %f, textureScaleFactor: %d, factor: %f, canRetry: %b, %b", new Object[] { Integer.valueOf(this.yzL), Long.valueOf(this.yzH), Long.valueOf(this.yzI), Long.valueOf(this.mTimeout), Integer.valueOf(i), Float.valueOf(this.yzJ), Integer.valueOf(j), Float.valueOf(this.yzO), Boolean.valueOf(this.yzM), Boolean.valueOf(this.yzN) });
+      ae.i("MicroMsg.ScanRetryManager", "alvinluo init retryType: %d, maxTimeout: %d, minTimeout: %d, timeout: %d, timeoutFactor config: %d, factor: %f, textureScaleFactor: %d, factor: %f, canRetry: %b, %b", new Object[] { Integer.valueOf(this.yPL), Long.valueOf(this.yPH), Long.valueOf(this.yPI), Long.valueOf(this.mTimeout), Integer.valueOf(i), Float.valueOf(this.yPJ), Integer.valueOf(j), Float.valueOf(this.yPO), Boolean.valueOf(this.yPM), Boolean.valueOf(this.yPN) });
       AppMethodBeat.o(161060);
       return;
       l = 5000L;
       break;
       label396:
-      if (this.yzL == 2)
+      if (this.yPL == 2)
       {
-        this.yzM = false;
-        this.yzN = true;
+        this.yPM = false;
+        this.yPN = true;
       }
     }
   }
   
-  public final boolean OV(int paramInt)
+  public final boolean PC(int paramInt)
   {
     if (paramInt == 1) {
-      return this.yzM;
+      return this.yPM;
     }
     if (paramInt == 2) {
-      return this.yzN;
+      return this.yPN;
     }
     return false;
   }
   
-  public final void zd(long paramLong)
+  public final void zA(long paramLong)
   {
     AppMethodBeat.i(161059);
-    ad.i("MicroMsg.ScanRetryManager", "alvinluo saveTimeout %d", new Object[] { Long.valueOf(paramLong) });
-    ax localax = this.cBy;
-    if (localax != null) {
-      localax.putLong("scan_code_retry_timeout", paramLong);
+    ae.i("MicroMsg.ScanRetryManager", "alvinluo saveTimeout %d", new Object[] { Long.valueOf(paramLong) });
+    ay localay = this.cCf;
+    if (localay != null) {
+      localay.putLong("scan_code_retry_timeout", paramLong);
     }
-    localax = this.cBy;
-    if (localax != null)
+    localay = this.cCf;
+    if (localay != null)
     {
-      localax.apply();
+      localay.apply();
       AppMethodBeat.o(161059);
       return;
     }
@@ -121,7 +121,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.g
  * JD-Core Version:    0.7.0.1
  */

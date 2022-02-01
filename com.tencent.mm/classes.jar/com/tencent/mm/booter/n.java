@@ -1,42 +1,42 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bc.l;
-import com.tencent.mm.bh.d;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bb.l;
+import com.tencent.mm.bg.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 
 public final class n
 {
-  private static long fFq = 86400000L;
+  private static long fHu = 86400000L;
   
   public static void run()
   {
     AppMethodBeat.i(19898);
-    ba.aBQ();
-    if (bt.rM(bt.g((Long)c.ajl().get(81944, null))) * 1000L > fFq) {}
+    bc.aCg();
+    if (bu.rZ(bu.i((Long)c.ajA().get(81944, null))) * 1000L > fHu) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        Object localObject = d.aLp();
-        d.aLq();
-        if (!((d)localObject).glB)
+        Object localObject = d.aLM();
+        d.aLN();
+        if (!((d)localObject).gnW)
         {
-          g.ajD();
-          if (g.ajC().isSDCardAvailable())
+          g.ajS();
+          if (g.ajR().isSDCardAvailable())
           {
             ((d)localObject).release();
-            ((d)localObject).glB = true;
-            g.aiU().a(159, (f)localObject);
+            ((d)localObject).gnW = true;
+            g.ajj().a(159, (f)localObject);
             localObject = new l(9);
-            g.aiU().a((com.tencent.mm.al.n)localObject, 0);
+            g.ajj().a((com.tencent.mm.ak.n)localObject, 0);
           }
         }
       }

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.h;
-import com.tencent.mm.al.h.a;
-import com.tencent.mm.al.h.b;
-import com.tencent.mm.al.i;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.audio.c.a;
 import com.tencent.mm.sdk.platformtools.SensorController;
 import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bl;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,90 +24,90 @@ import java.util.List;
 public final class u
   implements h.a, h.b, SensorController.a
 {
-  public static SensorController pyv;
+  public static SensorController pEZ;
   public List<a> callbacks;
-  private int dtc;
+  private int dui;
   long lastShakeTime;
+  public h pEU;
+  private boolean pEV;
+  private boolean pEW;
+  private boolean pEX;
+  private bl pEY;
   public String path;
-  public h pyq;
-  private boolean pyr;
-  private boolean pys;
-  private boolean pyt;
-  private bk pyu;
   
   public u()
   {
     AppMethodBeat.i(27818);
-    this.pyr = true;
-    this.pyt = false;
+    this.pEV = true;
+    this.pEX = false;
     this.lastShakeTime = -1L;
     this.callbacks = new LinkedList();
-    this.pyq = ((i)g.ab(i.class)).MS();
-    ba.aBQ();
-    Boolean localBoolean = (Boolean)c.ajl().get(26, Boolean.FALSE);
-    this.pys = localBoolean.booleanValue();
+    this.pEU = ((i)g.ab(i.class)).MN();
+    bc.aCg();
+    Boolean localBoolean = (Boolean)c.ajA().get(26, Boolean.FALSE);
+    this.pEW = localBoolean.booleanValue();
     boolean bool;
     if (!localBoolean.booleanValue())
     {
       bool = true;
-      this.pyr = bool;
-      if (this.pyq == null) {
+      this.pEV = bool;
+      if (this.pEU == null) {
         break label213;
       }
-      this.pyq.a(this);
-      this.pyq.a(this);
-      if ((!a.bGx()) && (!a.bGD())) {
+      this.pEU.a(this);
+      this.pEU.a(this);
+      if ((!a.bHt()) && (!a.bHz())) {
         break label197;
       }
-      this.pyq.cm(false);
+      this.pEU.cm(false);
     }
     for (;;)
     {
-      if (pyv == null) {
-        pyv = new SensorController(aj.getContext());
+      if (pEZ == null) {
+        pEZ = new SensorController(ak.getContext());
       }
-      if (this.pyu == null) {
-        this.pyu = new bk(aj.getContext());
+      if (this.pEY == null) {
+        this.pEY = new bl(ak.getContext());
       }
       AppMethodBeat.o(27818);
       return;
       bool = false;
       break;
       label197:
-      this.pyq.cm(this.pyr);
+      this.pEU.cm(this.pEV);
       continue;
       label213:
-      ad.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
+      ae.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
     }
   }
   
-  public final boolean cQ(String paramString, int paramInt)
+  public final boolean cU(String paramString, int paramInt)
   {
     AppMethodBeat.i(27819);
-    if (this.pyq == null)
+    if (this.pEU == null)
     {
-      ad.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(27819);
       return false;
     }
-    this.pyq.stop();
+    this.pEU.stop();
     Object localObject = this.callbacks.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).avs(paramString);
+      ((a)((Iterator)localObject).next()).awH(paramString);
     }
-    if ((pyv != null) && (!pyv.aMy))
+    if ((pEZ != null) && (!pEZ.aMy))
     {
-      pyv.a(this);
+      pEZ.a(this);
       localObject = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27817);
-          u.this.lastShakeTime = bt.HI();
+          u.this.lastShakeTime = bu.HQ();
           AppMethodBeat.o(27817);
         }
       };
-      if (!this.pyu.aD((Runnable)localObject)) {
+      if (!this.pEY.aB((Runnable)localObject)) {
         break label186;
       }
     }
@@ -115,11 +115,11 @@ public final class u
     for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
     {
       this.path = paramString;
-      this.dtc = paramInt;
-      if ((bt.isNullOrNil(paramString)) || (!this.pyq.a(paramString, this.pyr, true, paramInt))) {
+      this.dui = paramInt;
+      if ((bu.isNullOrNil(paramString)) || (!this.pEU.a(paramString, this.pEV, true, paramInt))) {
         break;
       }
-      an.aQu("keep_app_silent");
+      ao.aRR("keep_app_silent");
       AppMethodBeat.o(27819);
       return true;
     }
@@ -127,85 +127,85 @@ public final class u
     return false;
   }
   
-  public final void cfB()
+  public final void cgR()
   {
     AppMethodBeat.i(27824);
-    if (pyv != null) {
-      pyv.flC();
+    if (pEZ != null) {
+      pEZ.fpx();
     }
-    if (this.pyu != null) {
-      this.pyu.flD();
+    if (this.pEY != null) {
+      this.pEY.fpy();
     }
     AppMethodBeat.o(27824);
   }
   
-  public final boolean cfC()
+  public final boolean cgS()
   {
     AppMethodBeat.i(27820);
-    if (this.pyq == null)
+    if (this.pEU == null)
     {
-      ad.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
+      ae.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
       AppMethodBeat.o(27820);
       return false;
     }
-    boolean bool = this.pyq.isPlaying();
+    boolean bool = this.pEU.isPlaying();
     AppMethodBeat.o(27820);
     return bool;
   }
   
-  public final void kn(boolean paramBoolean)
+  public final void km(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(27825);
-    if (bt.isNullOrNil(this.path))
+    if (bu.isNullOrNil(this.path))
     {
       AppMethodBeat.o(27825);
       return;
     }
-    if (this.pyt)
+    if (this.pEX)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.pyt = paramBoolean;
+        this.pEX = paramBoolean;
         AppMethodBeat.o(27825);
         return;
       }
     }
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bt.aO(this.lastShakeTime) > 400L))
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bu.aO(this.lastShakeTime) > 400L))
     {
-      this.pyt = true;
+      this.pEX = true;
       AppMethodBeat.o(27825);
       return;
     }
-    this.pyt = false;
-    if ((this.pyq != null) && (this.pyq.PD()))
+    this.pEX = false;
+    if ((this.pEU != null) && (this.pEU.PC()))
     {
       AppMethodBeat.o(27825);
       return;
     }
-    if (this.pys)
+    if (this.pEW)
     {
-      if (this.pyq != null) {
-        this.pyq.cm(false);
+      if (this.pEU != null) {
+        this.pEU.cm(false);
       }
-      this.pyr = false;
+      this.pEV = false;
       AppMethodBeat.o(27825);
       return;
     }
-    if ((this.pyq != null) && (!this.pyq.isPlaying()))
+    if ((this.pEU != null) && (!this.pEU.isPlaying()))
     {
-      this.pyq.cm(true);
-      this.pyr = true;
+      this.pEU.cm(true);
+      this.pEV = true;
       AppMethodBeat.o(27825);
       return;
     }
-    if (this.pyq != null) {
-      this.pyq.cm(paramBoolean);
+    if (this.pEU != null) {
+      this.pEU.cm(paramBoolean);
     }
-    this.pyr = paramBoolean;
+    this.pEV = paramBoolean;
     if (!paramBoolean) {
-      cQ(this.path, this.dtc);
+      cU(this.path, this.dui);
     }
     AppMethodBeat.o(27825);
   }
@@ -213,7 +213,7 @@ public final class u
   public final void onCompletion()
   {
     AppMethodBeat.i(27823);
-    ad.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
+    ae.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
     stopPlay();
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
@@ -225,7 +225,7 @@ public final class u
   public final void onError()
   {
     AppMethodBeat.i(27822);
-    ad.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
+    ae.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
     stopPlay();
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
@@ -237,18 +237,18 @@ public final class u
   public final void stopPlay()
   {
     AppMethodBeat.i(27821);
-    ad.d("MicroMsg.RecordVoiceHelper", "stop play");
-    an.aQv("keep_app_silent");
-    if (this.pyq != null) {
-      this.pyq.stop();
+    ae.d("MicroMsg.RecordVoiceHelper", "stop play");
+    ao.aRS("keep_app_silent");
+    if (this.pEU != null) {
+      this.pEU.stop();
     }
-    cfB();
+    cgR();
     AppMethodBeat.o(27821);
   }
   
   public static abstract interface a
   {
-    public abstract void avs(String paramString);
+    public abstract void awH(String paramString);
     
     public abstract void onFinish();
   }

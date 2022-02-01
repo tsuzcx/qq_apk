@@ -19,7 +19,7 @@ class MMKView$2
     AppMethodBeat.i(19122);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/kinda/framework/widget/base/MMKView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/kinda/framework/widget/base/MMKView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (MMKView.access$500(this.this$0) != null) {
       MMKView.access$500(this.this$0).onClick(this.this$0);
     }
@@ -29,7 +29,7 @@ class MMKView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKView.2
  * JD-Core Version:    0.7.0.1
  */

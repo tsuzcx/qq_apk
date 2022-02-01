@@ -9,12 +9,12 @@ public enum c$a
   static
   {
     AppMethodBeat.i(109456);
-    ELC = new a("TencentMap", 0, 0);
-    ELD = new a("GoogleMap", 1, 1);
-    ELE = new a("SogouMap", 2, 2);
-    ELF = new a("BaiduMap", 3, 3);
-    ELG = new a("AutonaviMap", 4, 4);
-    ELH = new a[] { ELC, ELD, ELE, ELF, ELG };
+    Fea = new a("TencentMap", 0, 0);
+    Feb = new a("GoogleMap", 1, 1);
+    Fec = new a("SogouMap", 2, 2);
+    Fed = new a("BaiduMap", 3, 3);
+    Fee = new a("AutonaviMap", 4, 4);
+    Fef = new a[] { Fea, Feb, Fec, Fed, Fee };
     AppMethodBeat.o(109456);
   }
   
@@ -23,28 +23,28 @@ public enum c$a
     this.code = paramInt;
   }
   
-  public static a Yk(int paramInt)
+  public static a YQ(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return ELC;
+      return Fea;
     case 0: 
-      return ELC;
+      return Fea;
     case 1: 
-      return ELD;
+      return Feb;
     case 2: 
-      return ELE;
+      return Fec;
     case 3: 
-      return ELF;
+      return Fed;
     }
-    return ELG;
+    return Fee;
   }
   
   public final String getPackage()
   {
     AppMethodBeat.i(109455);
-    switch (c.1.ELB[ordinal()])
+    switch (c.1.FdZ[ordinal()])
     {
     default: 
       AppMethodBeat.o(109455);
@@ -68,7 +68,7 @@ public enum c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,17 @@ public final class f
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  protected final void aS(Map<String, String> paramMap)
+  protected final void aY(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69270);
-    paramMap.put("busi_scene", this.CIo.dkR);
+    paramMap.put("busi_scene", this.CZU.dlT);
     AppMethodBeat.o(69270);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(69271);
-    g.yhR.idkeyStat(663L, 20L, 1L, false);
+    g.yxI.idkeyStat(663L, 20L, 1L, false);
     int i = super.doScene(parame, paramf);
     AppMethodBeat.o(69271);
     return i;
@@ -47,14 +47,14 @@ public final class f
     AppMethodBeat.i(69272);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0) {
-      g.yhR.idkeyStat(663L, 21L, 1L, false);
+      g.yxI.idkeyStat(663L, 21L, 1L, false);
     }
     AppMethodBeat.o(69272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -5,22 +5,27 @@ import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class PLTextView
   extends StaticTextView
 {
-  private static long gEL = 0L;
-  private static int gEM = 0;
-  private static long gEN = -2147483648L;
-  private static long gEO = 0L;
-  private static int gEP = 0;
-  private static long gEQ = -2147483648L;
-  private static long gER = 0L;
-  private static long gES = -2147483648L;
-  private static boolean gET = false;
-  private static int gfZ = 0;
+  private static boolean gHA = false;
+  private static long gHs = 0L;
+  private static int gHt = 0;
+  private static long gHu = -2147483648L;
+  private static long gHv = 0L;
+  private static int gHw = 0;
+  private static long gHx = -2147483648L;
+  private static long gHy = 0L;
+  private static long gHz;
+  private static int gir = 0;
+  
+  static
+  {
+    gHz = -2147483648L;
+  }
   
   public PLTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,7 +42,7 @@ public class PLTextView
     AppMethodBeat.i(141026);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().gFk = false;
+      getLayoutWrapper().gHR = false;
     }
     AppMethodBeat.o(141026);
   }
@@ -46,17 +51,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141024);
     long l = 0L;
-    if (gET) {
+    if (gHA) {
       l = System.currentTimeMillis();
     }
     super.onDraw(paramCanvas);
-    if (gET)
+    if (gHA)
     {
       l = System.currentTimeMillis() - l;
-      gER += l;
-      gfZ += 1;
-      if (l > gES) {
-        gES = l;
+      gHy += l;
+      gir += 1;
+      if (l > gHz) {
+        gHz = l;
       }
     }
     AppMethodBeat.o(141024);
@@ -66,17 +71,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141023);
     long l = 0L;
-    if (gET) {
+    if (gHA) {
       l = System.currentTimeMillis();
     }
     super.onMeasure(paramInt1, paramInt2);
-    if (gET)
+    if (gHA)
     {
       l = System.currentTimeMillis() - l;
-      gEO += l;
-      gEP += 1;
-      if (l > gEQ) {
-        gEQ = l;
+      gHv += l;
+      gHw += 1;
+      if (l > gHx) {
+        gHx = l;
       }
     }
     AppMethodBeat.o(141023);
@@ -85,10 +90,10 @@ public class PLTextView
   public void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141022);
-    if (bt.ai(paramCharSequence))
+    if (bu.ah(paramCharSequence))
     {
       if (h.DEBUG) {
-        ad.d("MicroMsg.PLTextView", "set null text");
+        ae.d("MicroMsg.PLTextView", "set null text");
       }
       AppMethodBeat.o(141022);
       return;
@@ -98,10 +103,10 @@ public class PLTextView
     if (h.DEBUG) {
       l1 = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().gFk)) {
-      c.gEJ.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().gHR)) {
+      c.gHq.a(getConfig(), getLayoutWrapper());
     }
-    f localf = c.gEJ.a(getConfig(), paramCharSequence);
+    f localf = c.gHq.a(getConfig(), paramCharSequence);
     boolean bool;
     if (localf != null)
     {
@@ -114,15 +119,15 @@ public class PLTextView
       if (h.DEBUG)
       {
         l2 = System.currentTimeMillis();
-        ad.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
+        ae.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
       }
-      if (gET)
+      if (gHA)
       {
         l1 = l2 - l1;
-        gEL += l1;
-        gEM += 1;
-        if (l1 > gEN) {
-          gEN = l1;
+        gHs += l1;
+        gHt += 1;
+        if (l1 > gHu) {
+          gHu = l1;
         }
       }
       AppMethodBeat.o(141022);

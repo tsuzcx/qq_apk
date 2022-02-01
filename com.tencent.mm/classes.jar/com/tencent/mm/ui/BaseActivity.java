@@ -33,29 +33,29 @@ import java.util.LinkedList;
 public abstract class BaseActivity
   extends AppCompatActivity
 {
-  private int DPG = 0;
-  private TextView ITe;
-  private View ITf;
-  private View ITg;
-  private WeImageView ITh;
-  private WeImageView ITi;
-  private TextView ITj;
-  private MenuItem ITk;
-  private MenuItem ITl;
-  private int ITm;
-  private int ITn;
-  private c ITo;
-  private BaseActivity.a ITp = BaseActivity.a.ITy;
-  private boolean ITq = false;
-  private int ITr;
-  private int ITs;
-  private LinkedList<b> ITt = new LinkedList();
+  private int EhG = 0;
+  private TextView JnM;
+  private View JnN;
+  private View JnO;
+  private WeImageView JnP;
+  private WeImageView JnQ;
+  private TextView JnR;
+  private MenuItem JnS;
+  private MenuItem JnT;
+  private int JnU;
+  private int JnV;
+  private c JnW;
+  private BaseActivity.a JnX = BaseActivity.a.Jog;
+  private boolean JnY = false;
+  private int JnZ;
+  private int Joa;
+  private LinkedList<b> Job = new LinkedList();
   private View actionbarView;
-  private int bIc = this.ITr;
+  private int bIc = this.JnZ;
   private ActionBar mActionBar;
   private Context mContext;
-  private ImageView mGO;
-  private TextView mZo;
+  private ImageView mLS;
+  private TextView jdField_new;
   private int theme;
   
   private void a(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt, BaseActivity.a parama)
@@ -66,50 +66,50 @@ public abstract class BaseActivity
     if (paramOnMenuItemClickListener == null)
     {
       this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      this.ITp = parama;
+      this.JnX = parama;
       if (paramInt != 0) {
-        this.ITm = paramInt;
+        this.JnU = paramInt;
       }
-      if (this.ITp == BaseActivity.a.ITA) {
-        this.ITm = 0;
+      if (this.JnX == BaseActivity.a.Joi) {
+        this.JnU = 0;
       }
-      if (this.ITp != BaseActivity.a.ITy) {
+      if (this.JnX != BaseActivity.a.Jog) {
         break label141;
       }
-      this.ITm = 2131230842;
+      this.JnU = 2131230842;
     }
     for (;;)
     {
-      if ((this.mGO != null) && (this.ITm != 0))
+      if ((this.mLS != null) && (this.JnU != 0))
       {
-        fuU();
-        this.mGO.setImageResource(this.ITm);
+        fyV();
+        this.mLS.setImageResource(this.JnU);
       }
-      fuY();
+      fyZ();
       return;
       this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      if (this.ITg == null) {
+      if (this.JnO == null) {
         break;
       }
-      this.ITg.setVisibility(0);
-      this.ITg.setOnClickListener(new BaseActivity.2(this, paramOnMenuItemClickListener));
+      this.JnO.setVisibility(0);
+      this.JnO.setOnClickListener(new BaseActivity.2(this, paramOnMenuItemClickListener));
       break;
       label141:
-      if (this.ITp == BaseActivity.a.ITz) {
-        this.ITm = 2131230844;
+      if (this.JnX == BaseActivity.a.Joh) {
+        this.JnU = 2131230844;
       }
     }
   }
   
-  private void fuU()
+  private void fyV()
   {
-    if (this.mGO == null) {
+    if (this.mLS == null) {
       return;
     }
-    this.mGO.setVisibility(0);
+    this.mLS.setVisibility(0);
   }
   
-  private void fuV()
+  private void fyW()
   {
     View localView;
     int i;
@@ -117,7 +117,7 @@ public abstract class BaseActivity
     {
       localView = getWindow().getDecorView();
       i = localView.getSystemUiVisibility();
-      if (!this.ITq) {
+      if (!this.JnY) {
         break label40;
       }
       i &= 0xFFFFDFFF;
@@ -131,64 +131,64 @@ public abstract class BaseActivity
     }
   }
   
-  private void fuW()
+  private void fyX()
   {
-    if (this.ITo == c.ITJ) {
-      if (this.ITj != null) {}
+    if (this.JnW == c.Jor) {
+      if (this.JnR != null) {}
     }
     for (;;)
     {
       return;
-      if (this.ITq)
+      if (this.JnY)
       {
-        this.ITj.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.JnR.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
         return;
       }
-      this.ITj.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+      this.JnR.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
       return;
-      if (this.ITo == c.ITL) {
-        this.ITn = 2131230841;
+      if (this.JnW == c.Jot) {
+        this.JnV = 2131230841;
       }
-      while ((this.ITh != null) && (this.ITn != 0))
+      while ((this.JnP != null) && (this.JnV != 0))
       {
-        this.ITh.setImageResource(this.ITn);
-        if (!this.ITq) {
+        this.JnP.setImageResource(this.JnV);
+        if (!this.JnY) {
           break label166;
         }
-        this.ITh.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+        this.JnP.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
         return;
-        if (this.ITo == c.ITM) {
-          this.ITn = 2131230845;
-        } else if (this.ITo == c.ITN) {
-          this.ITn = 2131230846;
+        if (this.JnW == c.Jou) {
+          this.JnV = 2131230845;
+        } else if (this.JnW == c.Jov) {
+          this.JnV = 2131230846;
         }
       }
     }
     label166:
-    this.ITh.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    this.JnP.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
-  private void fuX()
+  private void fyY()
   {
-    if (this.ITi == null) {
+    if (this.JnQ == null) {
       return;
     }
-    if (this.ITq)
+    if (this.JnY)
     {
-      this.ITi.setImageResource(2131230854);
+      this.JnQ.setImageResource(2131230854);
       return;
     }
-    this.ITi.setImageResource(2131230846);
+    this.JnQ.setImageResource(2131230846);
   }
   
-  private void fuY()
+  private void fyZ()
   {
-    if (this.ITq)
+    if (this.JnY)
     {
-      this.mGO.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.mLS.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
       return;
     }
-    this.mGO.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    this.mLS.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
   public static void showVKB(Activity paramActivity)
@@ -209,49 +209,49 @@ public abstract class BaseActivity
   
   private void updateTitle()
   {
-    if (this.mZo == null) {
+    if (this.jdField_new == null) {
       return;
     }
-    if (this.ITq)
+    if (this.JnY)
     {
-      this.mZo.setTextColor(this.mContext.getResources().getColor(2131099886));
+      this.jdField_new.setTextColor(this.mContext.getResources().getColor(2131099886));
       return;
     }
-    this.mZo.setTextColor(this.mContext.getResources().getColor(2131099885));
+    this.jdField_new.setTextColor(this.mContext.getResources().getColor(2131099885));
   }
   
   public final void a(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    a(paramOnMenuItemClickListener, 2131689492, BaseActivity.a.ITx);
+    a(paramOnMenuItemClickListener, 2131689492, BaseActivity.a.Jof);
   }
   
   public final void a(String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, c paramc)
   {
     b localb = new b();
-    localb.ITC = 0;
-    localb.ITD = 0;
+    localb.Jok = 0;
+    localb.Jol = 0;
     localb.text = paramString;
-    localb.jil = paramOnMenuItemClickListener;
-    localb.rAj = null;
-    localb.ITH = paramc;
-    if ((localb.ITD == 2131230845) && ((paramString == null) || (paramString.length() <= 0))) {
+    localb.jle = paramOnMenuItemClickListener;
+    localb.rIu = null;
+    localb.Jop = paramc;
+    if ((localb.Jol == 2131230845) && ((paramString == null) || (paramString.length() <= 0))) {
       localb.text = getString(2131755127);
     }
-    int j = localb.ITC;
+    int j = localb.Jok;
     int i = 0;
     for (;;)
     {
-      if (i < this.ITt.size())
+      if (i < this.Job.size())
       {
-        if (((b)this.ITt.get(i)).ITC == j)
+        if (((b)this.Job.get(i)).Jok == j)
         {
           ap.d("BaseActivity", "match menu, id ：" + j + ", remove it", new Object[0]);
-          this.ITt.remove(i);
+          this.Job.remove(i);
         }
       }
       else
       {
-        this.ITt.add(localb);
+        this.Job.add(localb);
         new Handler().postDelayed(new Runnable()
         {
           public final void run()
@@ -296,30 +296,30 @@ public abstract class BaseActivity
         this.mActionBar.gn();
         paramBundle = LayoutInflater.from(this).inflate(2131492926, null);
         this.mActionBar.setCustomView(paramBundle);
-        if (this.DPG == 0) {
-          this.DPG = aq.aN(this.mContext, 2130968653);
+        if (this.EhG == 0) {
+          this.EhG = aq.aN(this.mContext, 2130968653);
         }
-        this.ITq = ao.abX(this.DPG);
-        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.DPG));
-        this.mZo = ((TextView)findViewById(16908308));
-        this.ITe = ((TextView)findViewById(16908309));
-        this.ITf = findViewById(2131305937);
-        this.ITg = findViewById(2131296416);
-        this.mGO = ((ImageView)findViewById(2131296417));
+        this.JnY = ao.acF(this.EhG);
+        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.EhG));
+        this.jdField_new = ((TextView)findViewById(16908308));
+        this.JnM = ((TextView)findViewById(16908309));
+        this.JnN = findViewById(2131305937);
+        this.JnO = findViewById(2131296416);
+        this.mLS = ((ImageView)findViewById(2131296417));
         setBackBtn(new BaseActivity.1(this));
       }
-      this.ITr = aq.ay(this.mContext, 2131165252);
-      this.ITs = aq.ay(this.mContext, 2131165559);
+      this.JnZ = aq.ay(this.mContext, 2131165252);
+      this.Joa = aq.ay(this.mContext, 2131165559);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        if (this.DPG == 0) {
-          this.DPG = aq.aN(this.mContext, 2130968653);
+        if (this.EhG == 0) {
+          this.EhG = aq.aN(this.mContext, 2130968653);
         }
         paramBundle = getWindow();
         paramBundle.clearFlags(201326592);
         paramBundle.addFlags(-2147483648);
-        paramBundle.setStatusBarColor(this.DPG);
-        fuV();
+        paramBundle.setStatusBarColor(this.EhG);
+        fyW();
       }
       return;
       this.theme = 2131821548;
@@ -330,23 +330,23 @@ public abstract class BaseActivity
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    ap.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.ITt.size()) });
-    if ((this.mActionBar == null) || (this.ITt.size() == 0)) {
-      ap.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.ITt.size()) });
+    ap.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.Job.size()) });
+    if ((this.mActionBar == null) || (this.Job.size() == 0)) {
+      ap.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.Job.size()) });
     }
     for (int i = 0; i != 0; i = 1)
     {
       return true;
-      Iterator localIterator = this.ITt.iterator();
+      Iterator localIterator = this.Job.iterator();
       while (localIterator.hasNext())
       {
         final b localb = (b)localIterator.next();
-        if (localb.ITC != 16908332)
+        if (localb.Jok != 16908332)
         {
           Object localObject;
-          if (localb.ITH == c.ITN)
+          if (localb.Jop == c.Jov)
           {
-            this.ITk = paramMenu.add(0, localb.ITC, 0, localb.text);
+            this.JnS = paramMenu.add(0, localb.Jok, 0, localb.text);
             localObject = new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
@@ -354,27 +354,27 @@ public abstract class BaseActivity
                 AppMethodBeat.i(159088);
                 b localb = new b();
                 localb.bd(paramAnonymousView);
-                a.b("com/tencent/mm/ui/BaseActivity$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+                a.b("com/tencent/mm/ui/BaseActivity$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
                 BaseActivity.a(BaseActivity.a(BaseActivity.this), localb);
                 a.a(this, "com/tencent/mm/ui/BaseActivity$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(159088);
               }
             };
-            if (localb.ITG == null) {
-              localb.ITG = View.inflate(this.mContext, 2131492920, null);
+            if (localb.Joo == null) {
+              localb.Joo = View.inflate(this.mContext, 2131492920, null);
             }
-            this.ITi = ((WeImageView)localb.ITG.findViewById(2131296376));
-            this.ITi.setVisibility(0);
-            fuX();
-            this.ITi.setOnClickListener((View.OnClickListener)localObject);
-            this.ITi.setEnabled(localb.enable);
-            this.ITk.setActionView(localb.ITG);
-            this.ITk.setEnabled(localb.enable);
-            this.ITk.setVisible(localb.visible);
+            this.JnQ = ((WeImageView)localb.Joo.findViewById(2131296376));
+            this.JnQ.setVisibility(0);
+            fyY();
+            this.JnQ.setOnClickListener((View.OnClickListener)localObject);
+            this.JnQ.setEnabled(localb.enable);
+            this.JnS.setActionView(localb.Joo);
+            this.JnS.setEnabled(localb.enable);
+            this.JnS.setVisible(localb.visible);
           }
           else
           {
-            this.ITl = paramMenu.add(0, localb.ITC, 0, localb.text);
+            this.JnT = paramMenu.add(0, localb.Jok, 0, localb.text);
             localObject = new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
@@ -382,7 +382,7 @@ public abstract class BaseActivity
                 AppMethodBeat.i(159089);
                 b localb = new b();
                 localb.bd(paramAnonymousView);
-                a.b("com/tencent/mm/ui/BaseActivity$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+                a.b("com/tencent/mm/ui/BaseActivity$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
                 BaseActivity.a(BaseActivity.b(BaseActivity.this), localb);
                 a.a(this, "com/tencent/mm/ui/BaseActivity$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(159089);
@@ -395,68 +395,68 @@ public abstract class BaseActivity
                 AppMethodBeat.i(159090);
                 b localb = new b();
                 localb.bd(paramAnonymousView);
-                a.b("com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+                a.b("com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
                 boolean bool = BaseActivity.a(paramAnonymousView, localb);
                 a.a(bool, this, "com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
                 AppMethodBeat.o(159090);
                 return bool;
               }
             };
-            this.ITo = localb.ITH;
-            if ((localb.ITH == c.ITK) || (localb.ITH == c.ITJ))
+            this.JnW = localb.Jop;
+            if ((localb.Jop == c.Jos) || (localb.Jop == c.Jor))
             {
-              if (localb.ITE == null) {
-                localb.ITE = View.inflate(this.mContext, 2131492920, null);
+              if (localb.Jom == null) {
+                localb.Jom = View.inflate(this.mContext, 2131492920, null);
               }
-              this.ITj = ((TextView)localb.ITE.findViewById(2131296377));
-              this.ITj.setVisibility(0);
-              this.ITj.setText(localb.text);
-              if (localb.ITH == c.ITK)
+              this.JnR = ((TextView)localb.Jom.findViewById(2131296377));
+              this.JnR.setVisibility(0);
+              this.JnR.setText(localb.text);
+              if (localb.Jop == c.Jos)
               {
-                this.ITj.setTextColor(this.mContext.getResources().getColorStateList(2131100038));
+                this.JnR.setTextColor(this.mContext.getResources().getColorStateList(2131100038));
                 label454:
-                this.ITj.setOnClickListener((View.OnClickListener)localObject);
-                this.ITj.setOnLongClickListener(local5);
-                this.ITj.setEnabled(localb.enable);
-                this.ITl.setActionView(localb.ITE);
+                this.JnR.setOnClickListener((View.OnClickListener)localObject);
+                this.JnR.setOnLongClickListener(local5);
+                this.JnR.setEnabled(localb.enable);
+                this.JnT.setActionView(localb.Jom);
               }
             }
             for (;;)
             {
-              this.ITl.setEnabled(localb.enable);
-              this.ITl.setVisible(localb.visible);
-              if (this.ITl == null) {
+              this.JnT.setEnabled(localb.enable);
+              this.JnT.setVisible(localb.visible);
+              if (this.JnT == null) {
                 break;
               }
-              this.ITl.setShowAsAction(2);
+              this.JnT.setShowAsAction(2);
               break;
-              fuW();
+              fyX();
               break label454;
-              if (localb.ITD != 0) {
-                this.ITn = localb.ITD;
+              if (localb.Jol != 0) {
+                this.JnV = localb.Jol;
               }
-              if (localb.ITH == c.ITO) {
-                this.ITn = 0;
+              if (localb.Jop == c.Jow) {
+                this.JnV = 0;
               }
-              if (localb.ITF == null) {
-                localb.ITF = View.inflate(this.mContext, 2131492920, null);
+              if (localb.Jon == null) {
+                localb.Jon = View.inflate(this.mContext, 2131492920, null);
               }
-              this.ITh = ((WeImageView)localb.ITF.findViewById(2131296376));
-              fuW();
-              if (this.ITn != 0)
+              this.JnP = ((WeImageView)localb.Jon.findViewById(2131296376));
+              fyX();
+              if (this.JnV != 0)
               {
-                this.ITh.setVisibility(0);
-                this.ITh.setOnClickListener((View.OnClickListener)localObject);
-                this.ITh.setOnLongClickListener(local5);
-                this.ITh.setEnabled(localb.enable);
-                this.ITl.setActionView(localb.ITF);
+                this.JnP.setVisibility(0);
+                this.JnP.setOnClickListener((View.OnClickListener)localObject);
+                this.JnP.setOnLongClickListener(local5);
+                this.JnP.setEnabled(localb.enable);
+                this.JnT.setActionView(localb.Jon);
               }
             }
           }
         }
       }
-      if (this.ITk != null) {
-        this.ITk.setShowAsAction(2);
+      if (this.JnS != null) {
+        this.JnS.setShowAsAction(2);
       }
     }
     return super.onCreateOptionsMenu(paramMenu);
@@ -470,10 +470,10 @@ public abstract class BaseActivity
   
   public final void removeAllOptionMenu()
   {
-    if (this.ITt.isEmpty()) {
+    if (this.Job.isEmpty()) {
       return;
     }
-    this.ITt.clear();
+    this.Job.clear();
     supportInvalidateOptionsMenu();
   }
   
@@ -482,57 +482,57 @@ public abstract class BaseActivity
     if (this.mActionBar == null) {
       return;
     }
-    this.DPG = paramInt;
-    this.ITq = ao.abX(this.DPG);
-    this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.DPG));
+    this.EhG = paramInt;
+    this.JnY = ao.acF(this.EhG);
+    this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.EhG));
     if (Build.VERSION.SDK_INT >= 21) {
-      getWindow().setStatusBarColor(this.DPG);
+      getWindow().setStatusBarColor(this.EhG);
     }
-    fuV();
-    fuY();
-    fuW();
+    fyW();
+    fyZ();
+    fyX();
     updateTitle();
-    if (this.ITe != null)
+    if (this.JnM != null)
     {
-      if (!this.ITq) {
+      if (!this.JnY) {
         break label116;
       }
-      this.ITe.setTextColor(this.mContext.getResources().getColor(2131099883));
+      this.JnM.setTextColor(this.mContext.getResources().getColor(2131099883));
     }
     for (;;)
     {
-      fuX();
+      fyY();
       return;
       label116:
-      this.ITe.setTextColor(this.mContext.getResources().getColor(2131099882));
+      this.JnM.setTextColor(this.mContext.getResources().getColor(2131099882));
     }
   }
   
   public final void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    a(paramOnMenuItemClickListener, 0, BaseActivity.a.ITy);
+    a(paramOnMenuItemClickListener, 0, BaseActivity.a.Jog);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.mActionBar == null) || (this.mZo == null)) {
+    if ((this.mActionBar == null) || (this.jdField_new == null)) {
       return;
     }
-    this.mZo.setText(paramCharSequence.toString());
+    this.jdField_new.setText(paramCharSequence.toString());
     updateTitle();
   }
   
   public static final class b
   {
-    int ITC = -1;
-    int ITD;
-    View ITE;
-    View ITF;
-    View ITG;
-    BaseActivity.c ITH = BaseActivity.c.ITI;
+    int Jok = -1;
+    int Jol;
+    View Jom;
+    View Jon;
+    View Joo;
+    BaseActivity.c Jop = BaseActivity.c.Joq;
     boolean enable = true;
-    MenuItem.OnMenuItemClickListener jil;
-    View.OnLongClickListener rAj;
+    MenuItem.OnMenuItemClickListener jle;
+    View.OnLongClickListener rIu;
     String text;
     boolean visible = true;
   }
@@ -542,14 +542,14 @@ public abstract class BaseActivity
     static
     {
       AppMethodBeat.i(159097);
-      ITI = new c("CUSTOM", 0);
-      ITJ = new c("TEXT", 1);
-      ITK = new c("GREEN_TEXT", 2);
-      ITL = new c("ADD", 3);
-      ITM = new c("MORE", 4);
-      ITN = new c("SEARCH", 5);
-      ITO = new c("NONE", 6);
-      ITP = new c[] { ITI, ITJ, ITK, ITL, ITM, ITN, ITO };
+      Joq = new c("CUSTOM", 0);
+      Jor = new c("TEXT", 1);
+      Jos = new c("GREEN_TEXT", 2);
+      Jot = new c("ADD", 3);
+      Jou = new c("MORE", 4);
+      Jov = new c("SEARCH", 5);
+      Jow = new c("NONE", 6);
+      Jox = new c[] { Joq, Jor, Jos, Jot, Jou, Jov, Jow };
       AppMethodBeat.o(159097);
     }
     

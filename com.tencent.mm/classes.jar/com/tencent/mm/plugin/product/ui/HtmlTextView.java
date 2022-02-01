@@ -13,22 +13,22 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ar.a;
 import java.net.URL;
 import org.xml.sax.XMLReader;
 
 public class HtmlTextView
   extends TextView
 {
-  Html.ImageGetter wMS;
-  Html.TagHandler wMT;
+  Html.ImageGetter xcG;
+  Html.TagHandler xcH;
   
   public HtmlTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(66922);
-    this.wMS = new Html.ImageGetter()
+    this.xcG = new Html.ImageGetter()
     {
       public final Drawable getDrawable(String paramAnonymousString)
       {
@@ -49,7 +49,7 @@ public class HtmlTextView
         return null;
       }
     };
-    this.wMT = new Html.TagHandler()
+    this.xcH = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -104,7 +104,7 @@ public class HtmlTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(66921);
-    this.wMS = new Html.ImageGetter()
+    this.xcG = new Html.ImageGetter()
     {
       public final Drawable getDrawable(String paramAnonymousString)
       {
@@ -125,7 +125,7 @@ public class HtmlTextView
         return null;
       }
     };
-    this.wMT = new Html.TagHandler()
+    this.xcH = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -179,22 +179,22 @@ public class HtmlTextView
   public void setText(final String paramString)
   {
     AppMethodBeat.i(66923);
-    g.ajF().a(new aq.a()
+    g.ajU().a(new ar.a()
     {
-      private volatile Spanned wMU;
+      private volatile Spanned xcI;
       
-      public final boolean aEm()
+      public final boolean aEC()
       {
         AppMethodBeat.i(66915);
-        this.wMU = HtmlTextView.a(HtmlTextView.this, paramString);
+        this.xcI = HtmlTextView.a(HtmlTextView.this, paramString);
         AppMethodBeat.o(66915);
         return true;
       }
       
-      public final boolean aEn()
+      public final boolean aED()
       {
         AppMethodBeat.i(66916);
-        HtmlTextView.a(HtmlTextView.this, this.wMU, TextView.BufferType.SPANNABLE);
+        HtmlTextView.a(HtmlTextView.this, this.xcI, TextView.BufferType.SPANNABLE);
         HtmlTextView.this.setMovementMethod(LinkMovementMethod.getInstance());
         AppMethodBeat.o(66916);
         return true;

@@ -14,39 +14,39 @@ import com.tencent.mm.ui.ao;
 final class ak$e
   extends c.a
 {
-  ImageView JZD;
-  ImageView KbA;
-  RTChattingEmojiView Kbz;
-  ViewStub KeG;
-  View KeH;
-  ImageView KeI;
+  ViewStub KAZ;
+  View KBa;
+  ImageView KBb;
+  ImageView KvW;
+  RTChattingEmojiView KxR;
+  ImageView KxS;
   
-  public final c.a z(View paramView, boolean paramBoolean)
+  public final c.a E(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(37294);
-    super.gn(paramView);
-    this.fTP = ((TextView)paramView.findViewById(2131298178));
-    this.Kbz = ((RTChattingEmojiView)paramView.findViewById(2131298074));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
-    this.KeH = paramView.findViewById(2131298083);
-    this.KeI = ((ImageView)paramView.findViewById(2131298084));
-    this.KeI.setImageDrawable(ao.k(paramView.getContext(), 2131690116, -1));
+    super.gs(paramView);
+    this.fVV = ((TextView)paramView.findViewById(2131298178));
+    this.KxR = ((RTChattingEmojiView)paramView.findViewById(2131298074));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
+    this.KBa = paramView.findViewById(2131298083);
+    this.KBb = ((ImageView)paramView.findViewById(2131298084));
+    this.KBb.setImageDrawable(ao.k(paramView.getContext(), 2131690116, -1));
     if (paramBoolean) {
-      this.yEk = ((TextView)paramView.findViewById(2131298185));
+      this.yUp = ((TextView)paramView.findViewById(2131298185));
     }
     for (;;)
     {
-      if (this.KbA != null) {
-        ((ViewGroup)this.KbA.getParent()).setBackgroundDrawable(null);
+      if (this.KxS != null) {
+        ((ViewGroup)this.KxS.getParent()).setBackgroundDrawable(null);
       }
-      this.KeG = ((ViewStub)paramView.findViewById(2131298162));
+      this.KAZ = ((ViewStub)paramView.findViewById(2131298162));
       AppMethodBeat.o(37294);
       return this;
-      this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
-      this.yEk = ((TextView)paramView.findViewById(2131298185));
-      this.JYs = ((ImageView)paramView.findViewById(2131298174));
-      this.JZD = ((ImageView)paramView.findViewById(2131298176));
+      this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
+      this.yUp = ((TextView)paramView.findViewById(2131298185));
+      this.KuL = ((ImageView)paramView.findViewById(2131298174));
+      this.KvW = ((ImageView)paramView.findViewById(2131298176));
     }
   }
 }

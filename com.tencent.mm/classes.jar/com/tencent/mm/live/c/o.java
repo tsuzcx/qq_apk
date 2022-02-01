@@ -16,210 +16,210 @@ import com.tencent.mm.live.b.k.a;
 import com.tencent.mm.live.core.core.b.e;
 import com.tencent.mm.live.core.core.c.c;
 import com.tencent.mm.live.d.f;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import d.g.b.ad;
 import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "curNetStatus", "", "durationGroup", "Landroid/view/View;", "durationIcon", "Landroid/widget/ImageView;", "durationText", "durationTv", "Landroid/widget/TextView;", "isAnchor", "", "likeGroup", "likeTv", "membersGroup", "membersIcon", "membersTv", "netBadIcon", "Landroid/graphics/drawable/Drawable;", "netGoodIcon", "netNormalIcon", "timerThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "checkDuration", "", "checkNetwork", "getNetStatusIcon", "resId", "refreshViews", "setVisible", "visible", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "start", "startLive", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "curNetStatus", "", "durationGroup", "Landroid/view/View;", "durationIcon", "Landroid/widget/ImageView;", "durationText", "durationTv", "Landroid/widget/TextView;", "isAnchor", "", "likeGroup", "likeTv", "membersGroup", "membersIcon", "membersTv", "netBadIcon", "Landroid/graphics/drawable/Drawable;", "netGoodIcon", "netNormalIcon", "timerThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "checkDuration", "", "checkNetwork", "getNetStatusIcon", "resId", "refreshViews", "setVisible", "visible", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "start", "startLive", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"})
 public final class o
   extends a
 {
   private final String TAG;
-  boolean dyu;
-  final b gSM;
-  final TextView gUb;
-  final TextView gUc;
-  final TextView gUd;
-  private final View gUe;
-  private final View gUf;
-  private final View gUg;
-  final ImageView gUh;
-  private final ImageView gUi;
-  final Drawable gUj;
-  final Drawable gUk;
-  final Drawable gUl;
-  int gUm;
-  String gUn;
-  private av gUo;
+  boolean dzz;
+  final b gVv;
+  final TextView gWK;
+  final TextView gWL;
+  final TextView gWM;
+  private final View gWN;
+  private final View gWO;
+  private final View gWP;
+  final ImageView gWQ;
+  private final ImageView gWR;
+  final Drawable gWS;
+  final Drawable gWT;
+  final Drawable gWU;
+  int gWV;
+  String gWW;
+  private aw gWX;
   
   public o(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(212410);
-    this.gSM = paramb;
+    AppMethodBeat.i(216030);
+    this.gVv = paramb;
     this.TAG = "MicroMsg.LiveCommonInfoPlugin";
     paramb = paramViewGroup.findViewById(2131307616);
     p.g(paramb, "root.findViewById(R.id.l…e_common_info_members_tv)");
-    this.gUb = ((TextView)paramb);
+    this.gWK = ((TextView)paramb);
     paramb = paramViewGroup.findViewById(2131307610);
     p.g(paramb, "root.findViewById(R.id.l…_common_info_duration_tv)");
-    this.gUc = ((TextView)paramb);
+    this.gWL = ((TextView)paramb);
     paramb = paramViewGroup.findViewById(2131307613);
     p.g(paramb, "root.findViewById(R.id.live_common_info_like_tv)");
-    this.gUd = ((TextView)paramb);
+    this.gWM = ((TextView)paramb);
     paramb = paramViewGroup.findViewById(2131307614);
     p.g(paramb, "root.findViewById(R.id.l…ommon_info_members_group)");
-    this.gUe = paramb;
+    this.gWN = paramb;
     paramb = paramViewGroup.findViewById(2131307608);
     p.g(paramb, "root.findViewById(R.id.l…mmon_info_duration_group)");
-    this.gUf = paramb;
+    this.gWO = paramb;
     paramb = paramViewGroup.findViewById(2131307611);
     p.g(paramb, "root.findViewById(R.id.l…e_common_info_like_group)");
-    this.gUg = paramb;
+    this.gWP = paramb;
     paramb = paramViewGroup.findViewById(2131307609);
     p.g(paramb, "root.findViewById(R.id.l…ommon_info_duration_icon)");
-    this.gUh = ((ImageView)paramb);
+    this.gWQ = ((ImageView)paramb);
     paramViewGroup = paramViewGroup.findViewById(2131307607);
     p.g(paramViewGroup, "root.findViewById(R.id.l…e_common_info_arrow_icon)");
-    this.gUi = ((ImageView)paramViewGroup);
-    this.gUj = nJ(2131691546);
-    this.gUk = nJ(2131691547);
-    this.gUl = nJ(2131691545);
-    paramViewGroup = c.c.gHi;
-    this.gUm = c.c.alu();
-    this.gUn = "00:00:00";
-    this.gUo = new av("LiveCommonInfoPlugin::Timer", (av.a)new b(this), true);
-    this.gUe.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gWR = ((ImageView)paramViewGroup);
+    this.gWS = nM(2131691546);
+    this.gWT = nM(2131691547);
+    this.gWU = nM(2131691545);
+    paramViewGroup = c.c.gJR;
+    this.gWV = c.c.alJ();
+    this.gWW = "00:00:00";
+    this.gWX = new aw("LiveCommonInfoPlugin::Timer", (aw.a)new b(this), true);
+    this.gWN.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212398);
+        AppMethodBeat.i(216018);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommonInfoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (this.gUp.gSM.getLiveRole() == 0) {
-          f.aqa();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommonInfoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (this.gWY.gVv.getLiveRole() == 0) {
+          f.aqp();
         }
         for (;;)
         {
-          b.b.a(this.gUp.gSM, b.c.gRH);
+          b.b.a(this.gWY.gVv, b.c.gUp);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveCommonInfoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(212398);
+          AppMethodBeat.o(216018);
           return;
-          com.tencent.mm.live.d.a.app();
+          com.tencent.mm.live.d.a.apD();
         }
       }
     });
-    AppMethodBeat.o(212410);
+    AppMethodBeat.o(216030);
   }
   
-  private void aos()
+  private void aoH()
   {
-    AppMethodBeat.i(212403);
-    if (this.gGK.getVisibility() == 0)
+    AppMethodBeat.i(216023);
+    if (this.gJt.getVisibility() == 0)
     {
-      this.gUo.stopTimer();
-      this.gUo.CX(1000L);
+      this.gWX.stopTimer();
+      this.gWX.Dv(1000L);
     }
-    AppMethodBeat.o(212403);
+    AppMethodBeat.o(216023);
   }
   
-  private final Drawable nJ(int paramInt)
+  private final Drawable nM(int paramInt)
   {
-    AppMethodBeat.i(212402);
-    Object localObject = this.gGK.getContext();
+    AppMethodBeat.i(216022);
+    Object localObject = this.gJt.getContext();
     p.g(localObject, "root.context");
     localObject = ((Context)localObject).getResources().getDrawable(paramInt);
     p.g(localObject, "root.context.resources.getDrawable(resId)");
-    AppMethodBeat.o(212402);
+    AppMethodBeat.o(216022);
     return localObject;
   }
   
   public final void a(LiveConfig paramLiveConfig)
   {
-    AppMethodBeat.i(212404);
-    if ((paramLiveConfig != null) && (paramLiveConfig.akU() == LiveConfig.gGr)) {}
+    AppMethodBeat.i(216024);
+    if ((paramLiveConfig != null) && (paramLiveConfig.alj() == LiveConfig.gJa)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.dyu = bool;
-      if ((paramLiveConfig == null) || (paramLiveConfig.akU() != LiveConfig.gGr)) {
+      this.dzz = bool;
+      if ((paramLiveConfig == null) || (paramLiveConfig.alj() != LiveConfig.gJa)) {
         break;
       }
-      this.gUe.setVisibility(0);
-      this.gUf.setVisibility(0);
-      this.gUg.setVisibility(0);
-      AppMethodBeat.o(212404);
+      this.gWN.setVisibility(0);
+      this.gWO.setVisibility(0);
+      this.gWP.setVisibility(0);
+      AppMethodBeat.o(216024);
       return;
     }
-    this.gUe.setVisibility(0);
-    this.gUf.setVisibility(8);
-    this.gUg.setVisibility(8);
-    AppMethodBeat.o(212404);
+    this.gWN.setVisibility(0);
+    this.gWO.setVisibility(8);
+    this.gWP.setVisibility(8);
+    AppMethodBeat.o(216024);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(212409);
+    AppMethodBeat.i(216029);
     p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (p.cpQ[paramc.ordinal()])
+    switch (p.cqt[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(212409);
+      AppMethodBeat.o(216029);
       return;
-      nI(0);
-      aos();
-      AppMethodBeat.o(212409);
+      nL(0);
+      aoH();
+      AppMethodBeat.o(216029);
       return;
-      nI(8);
-      AppMethodBeat.o(212409);
+      nL(8);
+      AppMethodBeat.o(216029);
       return;
-      if (this.gSM.getLiveRole() == 0)
+      if (this.gVv.getLiveRole() == 0)
       {
         if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
         {
-          nI(4);
-          AppMethodBeat.o(212409);
+          nL(4);
+          AppMethodBeat.o(216029);
           return;
         }
-        nI(0);
+        nL(0);
       }
     }
   }
   
-  public final void aoA()
+  public final void aoP()
   {
-    AppMethodBeat.i(212408);
-    this.gUo.stopTimer();
-    AppMethodBeat.o(212408);
+    AppMethodBeat.i(216028);
+    this.gWX.stopTimer();
+    AppMethodBeat.o(216028);
   }
   
-  public final void nI(int paramInt)
+  public final void nL(int paramInt)
   {
-    AppMethodBeat.i(212405);
-    super.nI(paramInt);
+    AppMethodBeat.i(216025);
+    super.nL(paramInt);
     if (paramInt != 0)
     {
-      this.gUo.stopTimer();
-      AppMethodBeat.o(212405);
+      this.gWX.stopTimer();
+      AppMethodBeat.o(216025);
       return;
     }
-    this.gUo.CX(1000L);
-    AppMethodBeat.o(212405);
+    this.gWX.Dv(1000L);
+    AppMethodBeat.o(216025);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(212407);
-    aos();
-    AppMethodBeat.o(212407);
+    AppMethodBeat.i(216027);
+    aoH();
+    AppMethodBeat.o(216027);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(212406);
-    this.gUo.stopTimer();
-    AppMethodBeat.o(212406);
+    AppMethodBeat.i(216026);
+    this.gWX.stopTimer();
+    AppMethodBeat.o(216026);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -227,78 +227,78 @@ public final class o
     
     public final void run()
     {
-      AppMethodBeat.i(212400);
-      int i = this.gUp.gUm;
-      Object localObject1 = c.c.gHi;
-      if (i == c.c.alu()) {
-        this.gUp.gUh.setImageDrawable(this.gUp.gUj);
+      AppMethodBeat.i(216020);
+      int i = this.gWY.gWV;
+      Object localObject1 = c.c.gJR;
+      if (i == c.c.alJ()) {
+        this.gWY.gWQ.setImageDrawable(this.gWY.gWS);
       }
       for (;;)
       {
-        localObject1 = this.gUp.gUb;
-        Object localObject2 = ad.MLZ;
-        localObject2 = this.gUp.gGK.getContext().getString(2131766638);
+        localObject1 = this.gWY.gWK;
+        Object localObject2 = ad.Njc;
+        localObject2 = this.gWY.gJt.getContext().getString(2131766638);
         p.g(localObject2, "root.context.getString(R.string.live_members_tip)");
-        com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gOr;
-        localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { Integer.valueOf(com.tencent.mm.live.b.g.ans().GzV) }, 1));
+        com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
+        localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { Integer.valueOf(com.tencent.mm.live.b.g.anH().GTv) }, 1));
         p.g(localObject2, "java.lang.String.format(format, *args)");
         ((TextView)localObject1).setText((CharSequence)String.valueOf(localObject2));
-        this.gUp.gUc.setText((CharSequence)String.valueOf(this.gUp.gUn));
-        localObject1 = this.gUp.gUd;
-        localObject2 = com.tencent.mm.live.b.g.gOr;
-        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.live.b.g.aof());
-        AppMethodBeat.o(212400);
+        this.gWY.gWL.setText((CharSequence)String.valueOf(this.gWY.gWW));
+        localObject1 = this.gWY.gWM;
+        localObject2 = com.tencent.mm.live.b.g.gQZ;
+        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.live.b.g.aou());
+        AppMethodBeat.o(216020);
         return;
-        localObject1 = c.c.gHi;
-        if (i == c.c.alv())
+        localObject1 = c.c.gJR;
+        if (i == c.c.alK())
         {
-          this.gUp.gUh.setImageDrawable(this.gUp.gUk);
+          this.gWY.gWQ.setImageDrawable(this.gWY.gWT);
         }
         else
         {
-          localObject1 = c.c.gHi;
-          if (i == c.c.alw()) {
-            this.gUp.gUh.setImageDrawable(this.gUp.gUl);
+          localObject1 = c.c.gJR;
+          if (i == c.c.alL()) {
+            this.gWY.gWQ.setImageDrawable(this.gWY.gWU);
           }
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class b
-    implements av.a
+    implements aw.a
   {
     b(o paramo) {}
     
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(212401);
-      o localo = this.gUp;
+      AppMethodBeat.i(216021);
+      o localo = this.gWY;
       Object localObject;
-      if (com.tencent.mm.kernel.g.ajA().aiK())
+      if (com.tencent.mm.kernel.g.ajP().aiZ())
       {
-        i = cf.aCN();
-        localObject = k.gPm;
-        localObject = com.tencent.mm.live.b.g.gOr;
-        localo.gUn = k.a.a(i - com.tencent.mm.live.b.g.ans().FHr, ":", false, false, false, 28);
+        i = ch.aDd();
+        localObject = k.gRU;
+        localObject = com.tencent.mm.live.b.g.gQZ;
+        localo.gWW = k.a.a(i - com.tencent.mm.live.b.g.anH().FZN, ":", false, false, false, 28);
       }
-      localo = this.gUp;
-      if (localo.dyu)
+      localo = this.gWY;
+      if (localo.dzz)
       {
-        localObject = com.tencent.mm.live.core.core.a.b.gHl;
-        localObject = localo.gGK.getContext();
+        localObject = com.tencent.mm.live.core.core.a.b.gJU;
+        localObject = localo.gJt.getContext();
         p.g(localObject, "root.context");
       }
-      for (int i = com.tencent.mm.live.core.core.a.b.a.cq((Context)localObject).gIt.gHR;; i = com.tencent.mm.live.core.core.c.b.a.cr((Context)localObject).gIt.gHR)
+      for (int i = com.tencent.mm.live.core.core.a.b.a.cs((Context)localObject).gLc.gKA;; i = com.tencent.mm.live.core.core.c.b.a.ct((Context)localObject).gLc.gKA)
       {
-        localo.gUm = i;
-        localo = this.gUp;
-        localo.gGK.post((Runnable)new o.a(localo));
-        AppMethodBeat.o(212401);
+        localo.gWV = i;
+        localo = this.gWY;
+        localo.gJt.post((Runnable)new o.a(localo));
+        AppMethodBeat.o(216021);
         return true;
-        localObject = com.tencent.mm.live.core.core.c.b.gKd;
-        localObject = localo.gGK.getContext();
+        localObject = com.tencent.mm.live.core.core.c.b.gMM;
+        localObject = localo.gJt.getContext();
         p.g(localObject, "root.context");
       }
     }
@@ -306,7 +306,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.c.o
  * JD-Core Version:    0.7.0.1
  */

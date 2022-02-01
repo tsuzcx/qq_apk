@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.j.a.a.a;
 
 public abstract interface a
 {
-  public abstract boolean yS(int paramInt);
+  public abstract boolean zb(int paramInt);
 }
 
 

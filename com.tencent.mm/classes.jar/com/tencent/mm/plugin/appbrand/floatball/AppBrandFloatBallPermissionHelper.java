@@ -18,7 +18,7 @@ public final class AppBrandFloatBallPermissionHelper
   {
     AppMethodBeat.i(44992);
     CheckFloatBallPermissionRequest localCheckFloatBallPermissionRequest = new CheckFloatBallPermissionRequest();
-    localCheckFloatBallPermissionRequest.kjJ = paramInt;
+    localCheckFloatBallPermissionRequest.kmZ = paramInt;
     a.a(paramContext, localCheckFloatBallPermissionRequest, new AppBrandProxyUIProcessTask.b() {});
     AppMethodBeat.o(44992);
   }
@@ -27,7 +27,7 @@ public final class AppBrandFloatBallPermissionHelper
     extends AppBrandProxyUIProcessTask.ProcessRequest
   {
     public static final Parcelable.Creator<CheckFloatBallPermissionRequest> CREATOR;
-    int kjJ;
+    int kmZ;
     
     static
     {
@@ -43,7 +43,7 @@ public final class AppBrandFloatBallPermissionHelper
       super();
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+    public final Class<? extends AppBrandProxyUIProcessTask> bhv()
     {
       return AppBrandFloatBallPermissionHelper.a.class;
     }
@@ -56,14 +56,14 @@ public final class AppBrandFloatBallPermissionHelper
     public final void j(Parcel paramParcel)
     {
       AppMethodBeat.i(44982);
-      this.kjJ = paramParcel.readInt();
+      this.kmZ = paramParcel.readInt();
       AppMethodBeat.o(44982);
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(44983);
-      paramParcel.writeInt(this.kjJ);
+      paramParcel.writeInt(this.kmZ);
       AppMethodBeat.o(44983);
     }
   }
@@ -72,7 +72,7 @@ public final class AppBrandFloatBallPermissionHelper
     extends AppBrandProxyUIProcessTask.ProcessResult
   {
     public static final Parcelable.Creator<CheckFloatBallPermissionResult> CREATOR;
-    boolean dpn;
+    boolean dqs;
     
     static
     {
@@ -100,7 +100,7 @@ public final class AppBrandFloatBallPermissionHelper
       if (paramParcel.readByte() == 1) {}
       for (;;)
       {
-        this.dpn = bool;
+        this.dqs = bool;
         AppMethodBeat.o(44986);
         return;
         bool = false;
@@ -110,7 +110,7 @@ public final class AppBrandFloatBallPermissionHelper
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(44987);
-      if (this.dpn) {}
+      if (this.dqs) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -131,14 +131,14 @@ public final class AppBrandFloatBallPermissionHelper
         AppMethodBeat.o(44990);
         return;
       }
-      int i = ((AppBrandFloatBallPermissionHelper.CheckFloatBallPermissionRequest)paramProcessRequest).kjJ;
-      c.a(bhJ(), i, false, new c.a()
+      int i = ((AppBrandFloatBallPermissionHelper.CheckFloatBallPermissionRequest)paramProcessRequest).kmZ;
+      c.a(bis(), i, false, new c.a()
       {
-        public final void ge(boolean paramAnonymousBoolean)
+        public final void gd(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(44989);
           AppBrandFloatBallPermissionHelper.CheckFloatBallPermissionResult localCheckFloatBallPermissionResult = new AppBrandFloatBallPermissionHelper.CheckFloatBallPermissionResult();
-          localCheckFloatBallPermissionResult.dpn = paramAnonymousBoolean;
+          localCheckFloatBallPermissionResult.dqs = paramAnonymousBoolean;
           AppBrandFloatBallPermissionHelper.a.a(AppBrandFloatBallPermissionHelper.a.this, localCheckFloatBallPermissionResult);
           AppMethodBeat.o(44989);
         }
@@ -149,7 +149,7 @@ public final class AppBrandFloatBallPermissionHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.AppBrandFloatBallPermissionHelper
  * JD-Core Version:    0.7.0.1
  */

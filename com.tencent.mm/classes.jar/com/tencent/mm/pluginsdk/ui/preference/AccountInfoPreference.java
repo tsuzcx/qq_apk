@@ -20,36 +20,36 @@ import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.j;
 import com.tencent.mm.plugin.story.api.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.u;
-import com.tencent.mm.z.c;
+import com.tencent.mm.y.c;
 
 public class AccountInfoPreference
   extends Preference
 {
-  public View.OnClickListener FfA;
-  public View.OnClickListener FfB;
-  private View.OnClickListener FfC;
-  private View.OnClickListener FfD;
-  public SpannableString Ffn;
-  public String Ffo;
-  private RelativeLayout Ffp;
-  private View Ffq;
-  private boolean Ffr;
-  private int Ffs;
-  private NoMeasuredTextView Fft;
-  public ImageView Ffu;
-  private RelativeLayout Ffv;
-  private FrameLayout Ffw;
-  private LinearLayout Ffx;
-  public boolean Ffy;
-  public boolean Ffz;
+  public SpannableString FxL;
+  public String FxM;
+  private RelativeLayout FxN;
+  private View FxO;
+  private boolean FxP;
+  private int FxQ;
+  private NoMeasuredTextView FxR;
+  public ImageView FxS;
+  private RelativeLayout FxT;
+  private FrameLayout FxU;
+  private LinearLayout FxV;
+  public boolean FxW;
+  public boolean FxX;
+  public View.OnClickListener FxY;
+  public View.OnClickListener FxZ;
+  private View.OnClickListener Fya;
+  private View.OnClickListener Fyb;
   private final String TAG;
-  public boolean qhs;
+  public boolean qnX;
   public String userName;
-  private boolean wQj;
+  private boolean xga;
   
   public AccountInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -61,114 +61,114 @@ public class AccountInfoPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31806);
     this.TAG = "MicroMsg.AccountInfoPreference";
-    this.wQj = false;
-    this.Ffr = true;
-    this.Fft = null;
-    this.Ffu = null;
-    this.Ffv = null;
-    this.Ffw = null;
-    this.Ffx = null;
-    this.Ffy = false;
-    this.Ffz = true;
-    this.qhs = false;
-    this.FfA = null;
-    this.FfB = null;
-    this.FfC = null;
-    this.FfD = new AccountInfoPreference.1(this);
+    this.xga = false;
+    this.FxP = true;
+    this.FxR = null;
+    this.FxS = null;
+    this.FxT = null;
+    this.FxU = null;
+    this.FxV = null;
+    this.FxW = false;
+    this.FxX = true;
+    this.qnX = false;
+    this.FxY = null;
+    this.FxZ = null;
+    this.Fya = null;
+    this.Fyb = new AccountInfoPreference.1(this);
     AppMethodBeat.o(31806);
   }
   
-  public final void aO(boolean paramBoolean1, boolean paramBoolean2)
+  public final void aN(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(31808);
-    this.wQj = paramBoolean1;
-    this.Ffr = paramBoolean2;
+    this.xga = paramBoolean1;
+    this.FxP = paramBoolean2;
     LinearLayout.LayoutParams localLayoutParams;
-    if (this.Fft != null)
+    if (this.FxR != null)
     {
       if (paramBoolean1)
       {
-        this.Fft.setTextColor(com.tencent.mm.cc.a.m(this.mContext, 2131101182));
-        localLayoutParams = (LinearLayout.LayoutParams)this.Ffp.getLayoutParams();
+        this.FxR.setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131101182));
+        localLayoutParams = (LinearLayout.LayoutParams)this.FxN.getLayoutParams();
         localLayoutParams.gravity = 8388693;
-        this.Ffp.setLayoutParams(localLayoutParams);
-        this.Ffp.setGravity(16);
+        this.FxN.setLayoutParams(localLayoutParams);
+        this.FxN.setGravity(16);
       }
     }
-    else if (this.Ffq != null) {
+    else if (this.FxO != null) {
       if ((paramBoolean1) || (!paramBoolean2)) {
         break label200;
       }
     }
     label200:
-    for (int i = com.tencent.mm.cc.a.ay(this.mContext, 2131166722);; i = com.tencent.mm.cc.a.ay(this.mContext, 2131166721))
+    for (int i = com.tencent.mm.cb.a.ay(this.mContext, 2131166722);; i = com.tencent.mm.cb.a.ay(this.mContext, 2131166721))
     {
-      this.Ffq.setPadding(this.Ffq.getPaddingLeft(), i, this.Ffq.getPaddingRight(), this.Ffq.getPaddingBottom());
+      this.FxO.setPadding(this.FxO.getPaddingLeft(), i, this.FxO.getPaddingRight(), this.FxO.getPaddingBottom());
       AppMethodBeat.o(31808);
       return;
-      this.Fft.setTextColor(this.mContext.getResources().getColor(2131099732));
-      localLayoutParams = (LinearLayout.LayoutParams)this.Ffp.getLayoutParams();
+      this.FxR.setTextColor(this.mContext.getResources().getColor(2131099732));
+      localLayoutParams = (LinearLayout.LayoutParams)this.FxN.getLayoutParams();
       localLayoutParams.gravity = 8388693;
-      this.Ffp.setGravity(16);
-      this.Ffp.setLayoutParams(localLayoutParams);
+      this.FxN.setGravity(16);
+      this.FxN.setLayoutParams(localLayoutParams);
       break;
     }
   }
   
-  public final void feD()
+  public final void fit()
   {
     AppMethodBeat.i(169793);
-    ad.i("MicroMsg.AccountInfoPreference", "forceStopBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.qhs) });
-    if (!this.qhs)
+    ae.i("MicroMsg.AccountInfoPreference", "forceStopBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.qnX) });
+    if (!this.qnX)
     {
       AppMethodBeat.o(169793);
       return;
     }
-    this.Ffv.setVisibility(8);
-    if (((PluginStory)g.ad(PluginStory.class)).getStoryNewFeatureConfig().egX())
+    this.FxT.setVisibility(8);
+    if (((PluginStory)g.ad(PluginStory.class)).getStoryNewFeatureConfig().ekF())
     {
-      this.Ffx.setVisibility(8);
+      this.FxV.setVisibility(8);
       AppMethodBeat.o(169793);
       return;
     }
-    this.Ffu.setVisibility(8);
-    this.Ffw.setVisibility(8);
-    ((e)g.ad(e.class)).getStoryUIFactory().fB(this.Ffu);
+    this.FxS.setVisibility(8);
+    this.FxU.setVisibility(8);
+    ((e)g.ad(e.class)).getStoryUIFactory().fA(this.FxS);
     AppMethodBeat.o(169793);
   }
   
-  public final void feE()
+  public final void fiu()
   {
     AppMethodBeat.i(169794);
-    ad.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip hasUnreadComment:%s, isListVisible:%s", new Object[] { Boolean.valueOf(this.Ffy), Boolean.valueOf(this.Ffz) });
-    if ((this.Ffy) && (this.Ffz))
+    ae.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip hasUnreadComment:%s, isListVisible:%s", new Object[] { Boolean.valueOf(this.FxW), Boolean.valueOf(this.FxX) });
+    if ((this.FxW) && (this.FxX))
     {
-      ad.i("MicroMsg.AccountInfoPreference", "activeBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.qhs) });
-      if (this.qhs)
+      ae.i("MicroMsg.AccountInfoPreference", "activeBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.qnX) });
+      if (this.qnX)
       {
-        this.Ffv.setVisibility(0);
-        if (!((e)g.ad(e.class)).getStoryNewFeatureConfig().egX()) {
+        this.FxT.setVisibility(0);
+        if (!((e)g.ad(e.class)).getStoryNewFeatureConfig().ekF()) {
           break label186;
         }
-        this.Ffu.setVisibility(8);
-        this.Ffw.setVisibility(4);
-        this.Ffx.setVisibility(0);
+        this.FxS.setVisibility(8);
+        this.FxU.setVisibility(4);
+        this.FxV.setVisibility(0);
       }
     }
     for (;;)
     {
-      if (this.qhs) {
-        ad.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip mBubbleContentNewGroup.visible:%s, mStoryBubbleTipViews.visible:%s", new Object[] { Integer.valueOf(this.Ffx.getVisibility()), Integer.valueOf(this.Ffu.getVisibility()) });
+      if (this.qnX) {
+        ae.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip mBubbleContentNewGroup.visible:%s, mStoryBubbleTipViews.visible:%s", new Object[] { Integer.valueOf(this.FxV.getVisibility()), Integer.valueOf(this.FxS.getVisibility()) });
       }
       AppMethodBeat.o(169794);
       return;
       label186:
-      this.Ffu.setVisibility(0);
-      this.Ffw.setVisibility(0);
-      this.Ffx.setVisibility(8);
-      ((e)g.ad(e.class)).getStoryUIFactory().fA(this.Ffu);
+      this.FxS.setVisibility(0);
+      this.FxU.setVisibility(0);
+      this.FxV.setVisibility(8);
+      ((e)g.ad(e.class)).getStoryUIFactory().fz(this.FxS);
       continue;
-      feD();
+      fit();
     }
   }
   
@@ -177,62 +177,62 @@ public class AccountInfoPreference
     AppMethodBeat.i(31807);
     super.onBindView(paramView);
     Object localObject = (ImageView)paramView.findViewById(2131297008);
-    if ((this.userName != null) && (localObject != null) && (g.ajx())) {
+    if ((this.userName != null) && (localObject != null) && (g.ajM())) {
       a.b.c((ImageView)localObject, this.userName);
     }
-    ((ImageView)localObject).setOnClickListener(this.FfD);
-    this.Fft = ((NoMeasuredTextView)paramView.findViewById(2131302860));
-    if ((this.userName != null) && (this.Fft != null))
+    ((ImageView)localObject).setOnClickListener(this.Fyb);
+    this.FxR = ((NoMeasuredTextView)paramView.findViewById(2131302860));
+    if ((this.userName != null) && (this.FxR != null))
     {
-      this.Fft.setShouldEllipsize(true);
-      this.Fft.setTextSize(0, com.tencent.mm.cc.a.ax(this.mContext, 2131165467));
-      if (!this.wQj) {
+      this.FxR.setShouldEllipsize(true);
+      this.FxR.setTextSize(0, com.tencent.mm.cb.a.ax(this.mContext, 2131165467));
+      if (!this.xga) {
         break label427;
       }
-      this.Fft.setTextColor(com.tencent.mm.cc.a.m(this.mContext, 2131101182));
-      NoMeasuredTextView localNoMeasuredTextView = this.Fft;
-      if (this.Ffn != null) {
+      this.FxR.setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131101182));
+      NoMeasuredTextView localNoMeasuredTextView = this.FxR;
+      if (this.FxL != null) {
         break label449;
       }
       localObject = this.userName;
       label151:
       localNoMeasuredTextView.setText((CharSequence)localObject);
-      if (this.Fft.getPaint() != null) {
-        this.Fft.getPaint().setFakeBoldText(true);
+      if (this.FxR.getPaint() != null) {
+        this.FxR.getPaint().setFakeBoldText(true);
       }
     }
     localObject = (TextView)paramView.findViewById(2131306244);
-    if ((this.Ffo != null) && (localObject != null))
+    if ((this.FxM != null) && (localObject != null))
     {
-      ((TextView)localObject).setText(paramView.getResources().getString(2131755271, new Object[] { this.Ffo }));
+      ((TextView)localObject).setText(paramView.getResources().getString(2131755271, new Object[] { this.FxM }));
       label225:
-      ((TextView)localObject).setOnClickListener(this.FfD);
+      ((TextView)localObject).setOnClickListener(this.Fyb);
       localObject = (TextView)paramView.findViewById(2131304190);
       if (localObject != null)
       {
-        if (this.Ffs <= 99) {
+        if (this.FxQ <= 99) {
           break label470;
         }
         ((TextView)localObject).setText(this.mContext.getString(2131764343));
-        ((TextView)localObject).setBackgroundResource(u.kE(this.mContext));
+        ((TextView)localObject).setBackgroundResource(u.kL(this.mContext));
         ((TextView)localObject).setVisibility(0);
       }
       label287:
-      this.Ffp = ((RelativeLayout)paramView.findViewById(2131303604));
-      this.Ffp.setOnClickListener(this.FfD);
-      this.Ffq = paramView.findViewById(2131300699);
-      if (this.Ffq != null) {
-        if ((this.wQj) || (!this.Ffr)) {
+      this.FxN = ((RelativeLayout)paramView.findViewById(2131303604));
+      this.FxN.setOnClickListener(this.Fyb);
+      this.FxO = paramView.findViewById(2131300699);
+      if (this.FxO != null) {
+        if ((this.xga) || (!this.FxP)) {
           break label530;
         }
       }
     }
     label530:
-    for (int i = com.tencent.mm.cc.a.ay(this.mContext, 2131166722);; i = com.tencent.mm.cc.a.ay(this.mContext, 2131166721))
+    for (int i = com.tencent.mm.cb.a.ay(this.mContext, 2131166722);; i = com.tencent.mm.cb.a.ay(this.mContext, 2131166721))
     {
-      this.Ffq.setPadding(this.Ffq.getPaddingLeft(), i, this.Ffq.getPaddingRight(), this.Ffq.getPaddingBottom());
-      this.Ffq.setOnClickListener(this.FfB);
-      aO(this.wQj, this.Ffr);
+      this.FxO.setPadding(this.FxO.getPaddingLeft(), i, this.FxO.getPaddingRight(), this.FxO.getPaddingBottom());
+      this.FxO.setOnClickListener(this.FxZ);
+      aN(this.xga, this.FxP);
       paramView.post(new Runnable()
       {
         public final void run()
@@ -251,21 +251,21 @@ public class AccountInfoPreference
             }
           }
           label316:
-          for (int i = com.tencent.mm.cc.a.ay(AccountInfoPreference.this.mContext, 2131166721) - com.tencent.mm.cc.a.ay(AccountInfoPreference.this.mContext, 2131166722);; i = 0)
+          for (int i = com.tencent.mm.cb.a.ay(AccountInfoPreference.this.mContext, 2131166721) - com.tencent.mm.cb.a.ay(AccountInfoPreference.this.mContext, 2131166722);; i = 0)
           {
-            ad.d("MicroMsg.AccountInfoPreference", "root.width:%s, root.height:%s, tip.width:%s, tip.height:%s, offsetY:%s", new Object[] { Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getHeight()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getHeight()), Integer.valueOf(i) });
+            ae.d("MicroMsg.AccountInfoPreference", "root.width:%s, root.height:%s, tip.width:%s, tip.height:%s, offsetY:%s", new Object[] { Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getHeight()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getHeight()), Integer.valueOf(i) });
             ((e)g.ad(e.class)).getStoryUIFactory().b(AccountInfoPreference.d(AccountInfoPreference.this), AccountInfoPreference.e(AccountInfoPreference.this), i);
             AccountInfoPreference localAccountInfoPreference = AccountInfoPreference.this;
             boolean bool1 = bool2;
             if (((e)g.ad(e.class)).isShowStoryCheck())
             {
               bool1 = bool2;
-              if (c.aht().cI(352279, 266241)) {
+              if (c.ahI().cI(352279, 266241)) {
                 bool1 = true;
               }
             }
-            localAccountInfoPreference.Ffy = bool1;
-            AccountInfoPreference.this.feE();
+            localAccountInfoPreference.FxW = bool1;
+            AccountInfoPreference.this.fiu();
             AppMethodBeat.o(169792);
             return;
           }
@@ -274,10 +274,10 @@ public class AccountInfoPreference
       AppMethodBeat.o(31807);
       return;
       label427:
-      this.Fft.setTextColor(this.mContext.getResources().getColor(2131099732));
+      this.FxR.setTextColor(this.mContext.getResources().getColor(2131099732));
       break;
       label449:
-      localObject = this.Ffn;
+      localObject = this.FxL;
       break label151;
       if (localObject == null) {
         break label225;
@@ -285,10 +285,10 @@ public class AccountInfoPreference
       ((TextView)localObject).setVisibility(8);
       break label225;
       label470:
-      if (this.Ffs > 0)
+      if (this.FxQ > 0)
       {
-        ((TextView)localObject).setText(this.Ffs);
-        ((TextView)localObject).setBackgroundResource(u.aP(this.mContext, this.Ffs));
+        ((TextView)localObject).setText(this.FxQ);
+        ((TextView)localObject).setBackgroundResource(u.aP(this.mContext, this.FxQ));
         ((TextView)localObject).setVisibility(0);
         break label287;
       }

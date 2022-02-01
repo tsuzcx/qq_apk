@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wenote.model.a;
 public class s
   extends o
 {
-  public double EzS;
-  public String hWY;
-  public String jDf;
+  public double ESo;
+  public String hZQ;
+  public String jGd;
   public double lat;
   public double lng;
 }

@@ -6,61 +6,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public enum q
 {
   public String mStartTag;
-  public String pxA;
-  public String pxB;
-  public boolean pxC;
-  public boolean pxD = false;
-  public String pxy;
-  public boolean pxz;
+  public String pEc;
+  public boolean pEd;
+  public String pEe;
+  public String pEf;
+  public boolean pEg;
+  public boolean pEh = false;
   
   static
   {
     AppMethodBeat.i(30662);
-    EAP = new q("NONE", 0, "", "", "", "", false);
-    EAQ = new q("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
-    EAR = new q("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
-    EAS = new q("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
-    EAT = new q[] { EAP, EAQ, EAR, EAS };
+    ETl = new q("NONE", 0, "", "", "", "", false);
+    ETm = new q("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
+    ETn = new q("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
+    ETo = new q("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
+    ETp = new q[] { ETl, ETm, ETn, ETo };
     AppMethodBeat.o(30662);
   }
   
   private q(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mStartTag = paramString1;
-    this.pxy = paramString2;
-    this.pxA = paramString3;
-    this.pxB = paramString4;
-    this.pxz = false;
-    this.pxC = paramBoolean1;
+    this.pEc = paramString2;
+    this.pEe = paramString3;
+    this.pEf = paramString4;
+    this.pEd = false;
+    this.pEg = paramBoolean1;
   }
   
   public static q b(ParagraphStyle paramParagraphStyle)
   {
     if ((paramParagraphStyle instanceof d)) {
-      return EAQ;
+      return ETm;
     }
     if ((paramParagraphStyle instanceof m)) {
-      return EAR;
+      return ETn;
     }
     if ((paramParagraphStyle instanceof k)) {
-      return EAS;
+      return ETo;
     }
     return null;
   }
   
-  public final boolean cft()
+  public final boolean cgJ()
   {
-    return this == EAQ;
+    return this == ETm;
   }
   
-  public final boolean cfu()
+  public final boolean cgK()
   {
-    return this == EAR;
+    return this == ETn;
   }
   
-  public final boolean cfv()
+  public final boolean cgL()
   {
-    return this == EAS;
+    return this == ETo;
   }
 }
 

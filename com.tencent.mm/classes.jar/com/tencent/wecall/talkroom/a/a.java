@@ -12,38 +12,38 @@ import com.tencent.pb.common.c.b;
 public final class a
   extends d
 {
-  public long Clq;
-  public int LFq;
-  public int Mob;
-  public int uRy;
-  public String ukT;
+  public long CCU;
+  public int MKX;
+  public int Mcu;
+  public String uwq;
+  public int vdk;
   
   public a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62531);
-    this.ukT = null;
-    this.uRy = 0;
-    this.Clq = 0L;
+    this.uwq = null;
+    this.vdk = 0;
+    this.CCU = 0L;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
     a.k localk = new a.k();
     try
     {
       localk.groupId = paramString;
-      this.ukT = paramString;
-      localk.CcE = paramInt1;
-      this.uRy = paramInt1;
-      localk.CcF = paramLong;
-      this.Clq = paramLong;
-      this.Mob = paramInt3;
-      this.LFq = paramInt2;
+      this.uwq = paramString;
+      localk.Cuf = paramInt1;
+      this.vdk = paramInt1;
+      localk.Cug = paramLong;
+      this.CCU = paramLong;
+      this.MKX = paramInt3;
+      this.Mcu = paramInt2;
       paramString = new a.an();
       paramString.iLen = 0;
       a.bd localbd = new a.bd();
       localbd.type = 3;
-      localbd.LJn = paramString;
-      localk.LFZ = localbd;
+      localbd.Mgr = paramString;
+      localk.Mdd = localbd;
       this.mNetType = 3;
-      this.LFq = paramInt2;
+      this.Mcu = paramInt2;
       c(189, localk);
       AppMethodBeat.o(62531);
       return;
@@ -57,7 +57,7 @@ public final class a
     }
   }
   
-  public final Object cI(byte[] paramArrayOfByte)
+  public final Object cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62532);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -80,7 +80,7 @@ public final class a
     }
   }
   
-  public final String fSQ()
+  public final String fXq()
   {
     return "CsCmd.Cmd_V_CSVoiceAckReq";
   }

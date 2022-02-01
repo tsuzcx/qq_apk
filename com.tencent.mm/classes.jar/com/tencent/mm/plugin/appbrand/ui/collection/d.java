@@ -18,18 +18,18 @@ import d.v;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragSortAdapter;", "Landroid/widget/ArrayAdapter;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "context", "Landroid/content/Context;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "(Landroid/content/Context;Ljava/util/ArrayList;)V", "getDataList", "()Ljava/util/ArrayList;", "mList", "Lcom/tencent/mm/ui/widget/sortlist/DragSortListView;", "attachListView", "", "list", "getItemId", "", "position", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "onBindViewHolder", "holder", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "item", "onCreateViewHolder", "inflater", "Landroid/view/LayoutInflater;", "remove", "index", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragSortAdapter;", "Landroid/widget/ArrayAdapter;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "context", "Landroid/content/Context;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "(Landroid/content/Context;Ljava/util/ArrayList;)V", "getDataList", "()Ljava/util/ArrayList;", "mList", "Lcom/tencent/mm/ui/widget/sortlist/DragSortListView;", "attachListView", "", "list", "getItemId", "", "position", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "onBindViewHolder", "holder", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "item", "onCreateViewHolder", "inflater", "Landroid/view/LayoutInflater;", "remove", "index", "plugin-appbrand-integration_release"})
 public final class d
   extends ArrayAdapter<LocalUsageInfo>
 {
-  final ArrayList<LocalUsageInfo> jfg;
-  DragSortListView mIB;
+  final ArrayList<LocalUsageInfo> jhZ;
+  DragSortListView mNE;
   
   public d(Context paramContext, ArrayList<LocalUsageInfo> paramArrayList)
   {
-    super(paramContext, e.bAp(), (List)paramArrayList);
+    super(paramContext, e.bBk(), (List)paramArrayList);
     AppMethodBeat.i(51256);
-    this.jfg = paramArrayList;
+    this.jhZ = paramArrayList;
     AppMethodBeat.o(51256);
   }
   
@@ -37,7 +37,7 @@ public final class d
   {
     AppMethodBeat.i(51254);
     LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)getItem(paramInt);
-    long l = (localLocalUsageInfo.username + localLocalUsageInfo.hQh).hashCode();
+    long l = (localLocalUsageInfo.username + localLocalUsageInfo.hSZ).hashCode();
     AppMethodBeat.o(51254);
     return l;
   }
@@ -49,7 +49,7 @@ public final class d
     {
       paramView = LayoutInflater.from(getContext());
       p.g(paramView, "LayoutInflater.from(context)");
-      paramView = paramView.inflate(e.bAp(), paramViewGroup, false);
+      paramView = paramView.inflate(e.bBk(), paramViewGroup, false);
       paramViewGroup = ((ViewStub)paramView.findViewById(2131298774)).inflate();
       if (paramViewGroup != null) {
         paramViewGroup.setBackground(null);
@@ -69,11 +69,11 @@ public final class d
     label224:
     for (int i = 8;; i = 0)
     {
-      paramView.mJf.setVisibility(i);
-      paramViewGroup = paramView.mIZ;
+      paramView.mOh.setVisibility(i);
+      paramViewGroup = paramView.mOb;
       p.g(paramViewGroup, "rightExtraBottomLine");
       paramViewGroup.setVisibility(i);
-      paramView.mIY.setOnClickListener((View.OnClickListener)new a(this, paramInt));
+      paramView.mOa.setOnClickListener((View.OnClickListener)new a(this, paramInt));
       paramView = paramView.auu;
       p.g(paramView, "holder.itemView");
       AppMethodBeat.o(51255);
@@ -90,7 +90,7 @@ public final class d
     }
   }
   
-  public final LocalUsageInfo vz(int paramInt)
+  public final LocalUsageInfo vE(int paramInt)
   {
     AppMethodBeat.i(51253);
     LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)getItem(paramInt);
@@ -99,7 +99,7 @@ public final class d
     return localLocalUsageInfo;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -110,8 +110,8 @@ public final class d
       AppMethodBeat.i(51252);
       b localb = new b();
       localb.bd(paramView);
-      a.b("com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragSortAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = d.a(this.mIT);
+      a.b("com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragSortAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = d.a(this.mNV);
       if (paramView != null) {
         paramView.removeItem(paramInt);
       }
@@ -122,7 +122,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.d
  * JD-Core Version:    0.7.0.1
  */

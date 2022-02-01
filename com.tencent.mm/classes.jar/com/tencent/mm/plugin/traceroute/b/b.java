@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.traceroute.b;
 
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -24,14 +24,14 @@ public final class b
       str = str + (String)localObject + " ";
       i += 1;
     }
-    ad.i("MicroMsg.MMTraceRoute", str);
+    ae.i("MicroMsg.MMTraceRoute", str);
     Object localObject = new ArrayList();
     paramArrayOfString = new a(paramArrayOfString, (List)localObject);
-    paramArrayOfString = com.tencent.e.h.LTJ.aR(paramArrayOfString);
+    paramArrayOfString = com.tencent.e.h.MqF.aO(paramArrayOfString);
     try
     {
       paramArrayOfString.get(5000L, TimeUnit.MILLISECONDS);
-      ad.i("MicroMsg.MMTraceRoute", "watcher thread stopped".concat(String.valueOf(str)));
+      ae.i("MicroMsg.MMTraceRoute", "watcher thread stopped".concat(String.valueOf(str)));
       label112:
       AppMethodBeat.o(29672);
       return localObject;
@@ -50,10 +50,10 @@ public final class b
     }
   }
   
-  public static String aDb(String paramString)
+  public static String aEu(String paramString)
   {
     AppMethodBeat.i(29670);
-    ad.i("MicroMsg.MMTraceRoute", "output string: ".concat(String.valueOf(paramString)));
+    ae.i("MicroMsg.MMTraceRoute", "output string: ".concat(String.valueOf(paramString)));
     if ((paramString == null) || (paramString.length() == 0))
     {
       AppMethodBeat.o(29670);
@@ -77,7 +77,7 @@ public final class b
     return paramString;
   }
   
-  public static int aDc(String paramString)
+  public static int aEv(String paramString)
   {
     AppMethodBeat.i(29671);
     int i = paramString.indexOf("ttl=");
@@ -93,7 +93,7 @@ public final class b
       AppMethodBeat.o(29671);
       return -1;
     }
-    i = bt.getInt(paramString.substring(i, j), 0);
+    i = bu.getInt(paramString.substring(i, j), 0);
     AppMethodBeat.o(29671);
     return i;
   }
@@ -101,13 +101,13 @@ public final class b
   static final class a
     implements com.tencent.e.i.h
   {
-    private String[] Bzv;
-    private List<Object> lKC;
+    private String[] BQT;
+    private List<Object> lPc;
     
     public a(String[] paramArrayOfString, List<Object> paramList)
     {
-      this.Bzv = paramArrayOfString;
-      this.lKC = paramList;
+      this.BQT = paramArrayOfString;
+      this.lPc = paramList;
     }
     
     public final String getKey()
@@ -128,16 +128,16 @@ public final class b
       //   15: new 48	java/lang/ProcessBuilder
       //   18: dup
       //   19: aload_0
-      //   20: getfield 21	com/tencent/mm/plugin/traceroute/b/b$a:Bzv	[Ljava/lang/String;
+      //   20: getfield 21	com/tencent/mm/plugin/traceroute/b/b$a:BQT	[Ljava/lang/String;
       //   23: invokespecial 51	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
       //   26: astore 11
       //   28: aload 11
       //   30: iconst_1
       //   31: invokevirtual 55	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
       //   34: pop
-      //   35: invokestatic 61	com/tencent/mm/sdk/platformtools/bt:flT	()J
+      //   35: invokestatic 61	com/tencent/mm/sdk/platformtools/bu:fpO	()J
       //   38: lstore 9
-      //   40: invokestatic 61	com/tencent/mm/sdk/platformtools/bt:flT	()J
+      //   40: invokestatic 61	com/tencent/mm/sdk/platformtools/bu:fpO	()J
       //   43: lstore_1
       //   44: aload 11
       //   46: invokevirtual 65	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
@@ -150,14 +150,14 @@ public final class b
       //   57: lstore 7
       //   59: aload 11
       //   61: invokevirtual 71	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
-      //   64: invokestatic 75	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+      //   64: invokestatic 75	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
       //   67: lload_1
       //   68: lstore_3
       //   69: lload_1
       //   70: lstore 5
       //   72: lload_1
       //   73: lstore 7
-      //   75: invokestatic 61	com/tencent/mm/sdk/platformtools/bt:flT	()J
+      //   75: invokestatic 61	com/tencent/mm/sdk/platformtools/bu:fpO	()J
       //   78: lstore_1
       //   79: lload_1
       //   80: lstore_3
@@ -207,18 +207,18 @@ public final class b
       //   173: invokevirtual 106	java/io/IOException:getMessage	()Ljava/lang/String;
       //   176: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   179: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   182: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   182: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   185: aload 11
       //   187: aload 14
       //   189: invokestatic 118	com/tencent/mm/plugin/traceroute/b/b:a	(Ljava/lang/Process;Ljava/io/BufferedReader;)V
       //   192: aload_0
-      //   193: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:lKC	Ljava/util/List;
+      //   193: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:lPc	Ljava/util/List;
       //   196: aload 16
       //   198: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   201: invokeinterface 124 2 0
       //   206: pop
       //   207: aload_0
-      //   208: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:lKC	Ljava/util/List;
+      //   208: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:lPc	Ljava/util/List;
       //   211: lload_1
       //   212: lload 9
       //   214: lsub
@@ -234,7 +234,7 @@ public final class b
       //   237: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   240: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   243: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   246: invokestatic 134	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   246: invokestatic 134	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   249: sipush 29669
       //   252: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   255: return
@@ -267,7 +267,7 @@ public final class b
       //   309: invokevirtual 144	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
       //   312: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   315: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   318: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   318: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   321: aload 11
       //   323: aload 14
       //   325: invokestatic 118	com/tencent/mm/plugin/traceroute/b/b:a	(Ljava/lang/Process;Ljava/io/BufferedReader;)V
@@ -290,7 +290,7 @@ public final class b
       //   360: invokevirtual 147	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   363: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   366: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   369: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   369: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   372: aload 11
       //   374: aload 14
       //   376: invokestatic 118	com/tencent/mm/plugin/traceroute/b/b:a	(Ljava/lang/Process;Ljava/io/BufferedReader;)V

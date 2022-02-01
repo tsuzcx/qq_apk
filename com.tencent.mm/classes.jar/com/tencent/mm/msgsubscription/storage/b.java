@@ -12,7 +12,7 @@ import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.msgsubscription.ui.b.d;
 import com.tencent.mm.msgsubscription.ui.b.e;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.g.b.q;
@@ -22,15 +22,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController;", "Lcom/tencent/mm/msgsubscription/storage/IBrandSubscribeMsgRequestController;", "()V", "TAG", "", "getSubscribeMsgList", "", "requestTask", "Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask;", "subscribeMsgList", "SubscribeMsgRequestCallback", "SubscribeMsgRequestTask", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController;", "Lcom/tencent/mm/msgsubscription/storage/IBrandSubscribeMsgRequestController;", "()V", "TAG", "", "getSubscribeMsgList", "", "requestTask", "Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask;", "subscribeMsgList", "SubscribeMsgRequestCallback", "SubscribeMsgRequestTask", "plugin-comm_release"})
 public final class b
 {
-  public static final b iBt;
+  public static final b iEm;
   
   static
   {
     AppMethodBeat.i(149633);
-    iBt = new b();
+    iEm = new b();
     AppMethodBeat.o(149633);
   }
   
@@ -50,10 +50,10 @@ public final class b
     AppMethodBeat.o(149632);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;", "", "dismissProgressDialog", "", "onCancel", "onDismissDialog", "onError", "action", "", "errType", "errCode", "errMsg", "", "onGetSubscribeListSuccess", "showDialog", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onShowDialog", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "containerLayout", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "onSubscribeMsgSuccess", "Companion", "plugin-comm_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;", "", "dismissProgressDialog", "", "onCancel", "onDismissDialog", "onError", "action", "", "errType", "errCode", "errMsg", "", "onGetSubscribeListSuccess", "showDialog", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onShowDialog", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "containerLayout", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "onSubscribeMsgSuccess", "Companion", "plugin-comm_release"})
   public static abstract interface a
   {
-    public static final b.a.a iBu = b.a.a.iBv;
+    public static final b.a.a iEn = b.a.a.iEo;
     
     public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
     
@@ -63,34 +63,34 @@ public final class b
     
     public abstract void a(boolean paramBoolean, SubscribeMsgRequestResult paramSubscribeMsgRequestResult);
     
-    public abstract void aOr();
+    public abstract void aOO();
     
-    public abstract void aOs();
+    public abstract void aOP();
     
     public abstract void onCancel();
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask;", "", "context", "Landroid/content/Context;", "action", "", "bizUsername", "", "subscribeUrl", "content", "requestCallback", "Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;)V", "getAction", "()I", "setAction", "(I)V", "getBizUsername", "()Ljava/lang/String;", "buffer", "", "getContent", "getContext", "()Landroid/content/Context;", "dataLoader", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader;", "mDialogContainerLayout", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "mEvent", "getRequestCallback", "()Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;", "subscribeMsgTmpItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Lkotlin/collections/ArrayList;", "getSubscribeMsgTmpItems", "()Ljava/util/ArrayList;", "setSubscribeMsgTmpItems", "(Ljava/util/ArrayList;)V", "getSubscribeUrl", "uiData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "applyUserAction", "", "event", "resultData", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "", "dispatchSuccessResult", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "run", "showAlertDialog", "title", "okOnClickListener", "Landroid/content/DialogInterface$OnClickListener;", "showSettingPageAlert", "showSubscribeRequestDialog", "timestamp", "", "showToast", "msg", "callback", "Lkotlin/Function0;", "Companion", "plugin-comm_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask;", "", "context", "Landroid/content/Context;", "action", "", "bizUsername", "", "subscribeUrl", "content", "requestCallback", "Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;)V", "getAction", "()I", "setAction", "(I)V", "getBizUsername", "()Ljava/lang/String;", "buffer", "", "getContent", "getContext", "()Landroid/content/Context;", "dataLoader", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader;", "mDialogContainerLayout", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "mEvent", "getRequestCallback", "()Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestCallback;", "subscribeMsgTmpItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Lkotlin/collections/ArrayList;", "getSubscribeMsgTmpItems", "()Ljava/util/ArrayList;", "setSubscribeMsgTmpItems", "(Ljava/util/ArrayList;)V", "getSubscribeUrl", "uiData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "applyUserAction", "", "event", "resultData", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "", "dispatchSuccessResult", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "run", "showAlertDialog", "title", "okOnClickListener", "Landroid/content/DialogInterface$OnClickListener;", "showSettingPageAlert", "showSubscribeRequestDialog", "timestamp", "", "showToast", "msg", "callback", "Lkotlin/Function0;", "Companion", "plugin-comm_release"})
   public static final class b
   {
-    public static final a iBB;
+    public static final a iEu;
     int action;
     private byte[] buffer;
     private final String content;
     final Context context;
-    final String dCB;
-    private final String iAS;
-    final b.a iBA;
-    private e iBi;
-    ArrayList<SubscribeMsgTmpItem> iBw;
-    private com.tencent.mm.plugin.appbrand.widget.dialog.e iBx;
-    private int iBy;
-    private SubscribeMsgRequestDialogUiData iBz;
+    final String dDG;
+    private final String iDL;
+    private e iEb;
+    ArrayList<SubscribeMsgTmpItem> iEp;
+    private com.tencent.mm.plugin.appbrand.widget.dialog.e iEq;
+    private int iEr;
+    private SubscribeMsgRequestDialogUiData iEs;
+    final b.a iEt;
     
     static
     {
       AppMethodBeat.i(149628);
-      iBB = new a((byte)0);
+      iEu = new a((byte)0);
       AppMethodBeat.o(149628);
     }
     
@@ -99,16 +99,16 @@ public final class b
       AppMethodBeat.i(149627);
       this.context = paramContext;
       this.action = paramInt;
-      this.dCB = paramString1;
-      this.iAS = paramString2;
+      this.dDG = paramString1;
+      this.iDL = paramString2;
       this.content = paramString3;
-      this.iBA = parama;
-      this.iBy = -1;
+      this.iEt = parama;
+      this.iEr = -1;
       this.buffer = new byte[] { 0 };
-      paramContext = f.iBR;
-      paramContext = f.Ig("name_biz");
+      paramContext = f.iEK;
+      paramContext = f.II("name_biz");
       if (paramContext != null) {
-        this.iBi = new e(paramContext.aOt());
+        this.iEb = new e(paramContext.aOQ());
       }
       AppMethodBeat.o(149627);
     }
@@ -140,12 +140,12 @@ public final class b
         AppMethodBeat.o(149625);
         return;
         int i;
-        if (((CharSequence)this.iAS).length() == 0) {
+        if (((CharSequence)this.iDL).length() == 0) {
           i = 1;
         }
         while (i != 0)
         {
-          localObject1 = this.iBA;
+          localObject1 = this.iEt;
           if (localObject1 != null)
           {
             ((b.a)localObject1).a(this.action, 1, -1, "invalid subscribe url");
@@ -159,23 +159,23 @@ public final class b
             return;
           }
         }
-        ad.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo getSubscribeMsgByUrl bizUsername: %s, url: %s", new Object[] { this.dCB, this.iAS });
-        localObject1 = this.iBi;
+        ae.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo getSubscribeMsgByUrl bizUsername: %s, url: %s", new Object[] { this.dDG, this.iDL });
+        localObject1 = this.iEb;
         if (localObject1 != null)
         {
-          ((e)localObject1).a(this.dCB, this.iAS, (e.b)new e(this));
+          ((e)localObject1).a(this.dDG, this.iDL, (e.b)new e(this));
           AppMethodBeat.o(149625);
           return;
         }
         AppMethodBeat.o(149625);
         return;
-        localObject1 = (Collection)this.iBw;
+        localObject1 = (Collection)this.iEp;
         if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {
           i = 1;
         }
         while (i != 0)
         {
-          localObject1 = this.iBA;
+          localObject1 = this.iEt;
           if (localObject1 != null)
           {
             ((b.a)localObject1).a(this.action, 2, -1, "invalid subscribe msg list");
@@ -189,27 +189,27 @@ public final class b
             return;
           }
         }
-        localObject1 = this.dCB;
-        localObject2 = this.iBw;
+        localObject1 = this.dDG;
+        localObject2 = this.iEp;
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        ad.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo doSubscribeMsg bizUsername: %s, template size: %s", new Object[] { localObject1, Integer.valueOf(((ArrayList)localObject2).size()) });
-        localObject1 = this.iBi;
+        ae.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo doSubscribeMsg bizUsername: %s, template size: %s", new Object[] { localObject1, Integer.valueOf(((ArrayList)localObject2).size()) });
+        localObject1 = this.iEb;
       } while (localObject1 == null);
-      Object localObject2 = this.dCB;
-      ArrayList localArrayList = this.iBw;
+      Object localObject2 = this.dDG;
+      ArrayList localArrayList = this.iEp;
       if (localArrayList == null) {
-        p.gfZ();
+        p.gkB();
       }
-      ((e)localObject1).a((String)localObject2, (List)localArrayList, this.buffer, this.iBz, (e.b)new f(this));
+      ((e)localObject1).a((String)localObject2, (List)localArrayList, this.buffer, this.iEs, (e.b)new f(this));
       AppMethodBeat.o(149625);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$Companion;", "", "()V", "ACTION_FINISHED", "", "ACTION_GET_AND_SUBSCRIBE", "ACTION_GET_SUBSCRIBE_MSG_LIST", "ACTION_SUBSCRIBE_MSG", "Action", "plugin-comm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$Companion;", "", "()V", "ACTION_FINISHED", "", "ACTION_GET_AND_SUBSCRIBE", "ACTION_GET_SUBSCRIBE_MSG_LIST", "ACTION_SUBSCRIBE_MSG", "Action", "plugin-comm_release"})
     public static final class a {}
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
     static final class b
       implements DialogInterface.OnClickListener
     {
@@ -218,22 +218,22 @@ public final class b
       public final void onClick(DialogInterface paramDialogInterface, int paramInt)
       {
         AppMethodBeat.i(149612);
-        if ((this.iBD == 3) || (this.iBD == 1))
+        if ((this.iEw == 3) || (this.iEw == 1))
         {
-          paramDialogInterface = this.iBC.iBA;
+          paramDialogInterface = this.iEv.iEt;
           if (paramDialogInterface != null)
           {
-            paramDialogInterface.a(false, this.iBE);
+            paramDialogInterface.a(false, this.iEx);
             AppMethodBeat.o(149612);
             return;
           }
           AppMethodBeat.o(149612);
           return;
         }
-        paramDialogInterface = this.iBC.iBA;
+        paramDialogInterface = this.iEv.iEt;
         if (paramDialogInterface != null)
         {
-          paramDialogInterface.a(this.iBE);
+          paramDialogInterface.a(this.iEx);
           AppMethodBeat.o(149612);
           return;
         }
@@ -241,7 +241,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
     static final class c
       extends q
       implements d.g.a.a<z>
@@ -252,7 +252,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
     static final class d
       extends q
       implements d.g.a.a<z>
@@ -263,7 +263,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$run$1", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$run$1", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
     public static final class e
       implements e.b
     {
@@ -272,8 +272,8 @@ public final class b
         AppMethodBeat.i(149615);
         p.h(paramString, "bizUsername");
         p.h(paramSubscribeMsgRequestResult, "result");
-        ad.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo getSubscribeMsgListByUrl onSuccess bizUsername: %s, size: %d", new Object[] { paramString, Integer.valueOf(paramSubscribeMsgRequestResult.iAc.size()) });
-        b.b.a(this.iBC, this.iBC.context, this.iBC.action, paramSubscribeMsgRequestResult);
+        ae.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo getSubscribeMsgListByUrl onSuccess bizUsername: %s, size: %d", new Object[] { paramString, Integer.valueOf(paramSubscribeMsgRequestResult.iCV.size()) });
+        b.b.a(this.iEv, this.iEv.context, this.iEv.action, paramSubscribeMsgRequestResult);
         AppMethodBeat.o(149615);
       }
       
@@ -281,11 +281,11 @@ public final class b
       {
         AppMethodBeat.i(149616);
         p.h(paramString, "errMsg");
-        ad.e("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo getSubscribeMsgByUrl onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        b.a locala = this.iBC.iBA;
+        ae.e("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo getSubscribeMsgByUrl onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        b.a locala = this.iEv.iEt;
         if (locala != null)
         {
-          locala.a(this.iBC.action, 1, paramInt2, paramString);
+          locala.a(this.iEv.action, 1, paramInt2, paramString);
           AppMethodBeat.o(149616);
           return;
         }
@@ -293,7 +293,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$run$2", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$run$2", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
     public static final class f
       implements e.b
     {
@@ -302,8 +302,8 @@ public final class b
         AppMethodBeat.i(149617);
         p.h(paramString, "bizUsername");
         p.h(paramSubscribeMsgRequestResult, "result");
-        ad.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo doSubscribeMsg success bizUsername: %s, template size: %d", new Object[] { paramString, Integer.valueOf(paramSubscribeMsgRequestResult.iAc.size()) });
-        b.b.a(this.iBC, this.iBC.context, this.iBC.action, paramSubscribeMsgRequestResult);
+        ae.i("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo doSubscribeMsg success bizUsername: %s, template size: %d", new Object[] { paramString, Integer.valueOf(paramSubscribeMsgRequestResult.iCV.size()) });
+        b.b.a(this.iEv, this.iEv.context, this.iEv.action, paramSubscribeMsgRequestResult);
         AppMethodBeat.o(149617);
       }
       
@@ -311,11 +311,11 @@ public final class b
       {
         AppMethodBeat.i(149618);
         p.h(paramString, "errMsg");
-        ad.e("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo doSubscribeMsg onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        b.a locala = this.iBC.iBA;
+        ae.e("MicroMsg.BrandSubscribeMsgRequestController", "alvinluo doSubscribeMsg onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        b.a locala = this.iEv.iEt;
         if (locala != null)
         {
-          locala.a(this.iBC.action, 2, paramInt2, paramString);
+          locala.a(this.iEv.action, 2, paramInt2, paramString);
           AppMethodBeat.o(149618);
           return;
         }
@@ -323,7 +323,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
     static final class g
       implements DialogInterface.OnClickListener
     {
@@ -332,15 +332,15 @@ public final class b
       public final void onClick(DialogInterface paramDialogInterface, int paramInt)
       {
         AppMethodBeat.i(149619);
-        paramDialogInterface = this.iBC.iBA;
+        paramDialogInterface = this.iEv.iEt;
         if (paramDialogInterface != null) {
-          paramDialogInterface.a(false, this.iBE);
+          paramDialogInterface.a(false, this.iEx);
         }
-        paramDialogInterface = f.iBR;
-        paramDialogInterface = f.Ig("name_biz");
+        paramDialogInterface = f.iEK;
+        paramDialogInterface = f.II("name_biz");
         if (paramDialogInterface != null)
         {
-          paramDialogInterface.k(this.cqB, this.iBC.dCB, this.iBE.appName);
+          paramDialogInterface.k(this.crf, this.iEv.dDG, this.iEx.appName);
           AppMethodBeat.o(149619);
           return;
         }
@@ -348,7 +348,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
     static final class h
       implements DialogInterface.OnClickListener
     {
@@ -357,10 +357,10 @@ public final class b
       public final void onClick(DialogInterface paramDialogInterface, int paramInt)
       {
         AppMethodBeat.i(149620);
-        paramDialogInterface = this.iBC.iBA;
+        paramDialogInterface = this.iEv.iEt;
         if (paramDialogInterface != null)
         {
-          paramDialogInterface.a(false, this.iBE);
+          paramDialogInterface.a(false, this.iEx);
           AppMethodBeat.o(149620);
           return;
         }
@@ -368,7 +368,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$showSubscribeRequestDialog$2", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "onDismiss", "", "onShow", "plugin-comm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$showSubscribeRequestDialog$2", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$SubscribeRequestDialogListener;", "onDismiss", "", "onShow", "plugin-comm_release"})
     public static final class i
       implements b.e
     {
@@ -377,10 +377,10 @@ public final class b
       public final void onDismiss()
       {
         AppMethodBeat.i(149622);
-        b.a locala = this.iBC.iBA;
+        b.a locala = this.iEv.iEt;
         if (locala != null)
         {
-          locala.aOr();
+          locala.aOO();
           AppMethodBeat.o(149622);
           return;
         }
@@ -390,10 +390,10 @@ public final class b
       public final void onShow()
       {
         AppMethodBeat.i(149621);
-        b.a locala = this.iBC.iBA;
+        b.a locala = this.iEv.iEt;
         if (locala != null)
         {
-          locala.a((k)this.iBF, b.b.c(this.iBC));
+          locala.a((k)this.iEy, b.b.c(this.iEv));
           AppMethodBeat.o(149621);
           return;
         }
@@ -401,21 +401,21 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$showSubscribeRequestDialog$3", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "onSampleShow", "", "templateId", "", "check", "", "index", "", "plugin-comm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$showSubscribeRequestDialog$3", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Companion$TemplateShowSampleListener;", "onSampleShow", "", "templateId", "", "check", "", "index", "", "plugin-comm_release"})
     public static final class j
       implements com.tencent.mm.msgsubscription.ui.b.a.a
     {
-      public final void ax(String paramString, int paramInt)
+      public final void ay(String paramString, int paramInt)
       {
         AppMethodBeat.i(149623);
         p.h(paramString, "templateId");
-        paramString = com.tencent.mm.msgsubscription.b.a.iBg;
-        com.tencent.mm.msgsubscription.b.a.qw(paramInt);
+        paramString = com.tencent.mm.msgsubscription.b.a.iDZ;
+        com.tencent.mm.msgsubscription.b.a.qz(paramInt);
         AppMethodBeat.o(149623);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$showSubscribeRequestDialog$subscribeMsgRequestDialog$1", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Listener;", "onEvent", "", "event", "", "resultData", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "plugin-comm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/storage/BrandSubscribeMsgRequestController$SubscribeMsgRequestTask$showSubscribeRequestDialog$subscribeMsgRequestDialog$1", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Listener;", "onEvent", "", "event", "", "resultData", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "plugin-comm_release"})
     public static final class k
       implements b.d
     {
@@ -432,34 +432,34 @@ public final class b
         {
           AppMethodBeat.o(149624);
           return;
-          if (b.b.b(paramInt, paramList, (List)this.iBE.iAc))
+          if (b.b.b(paramInt, paramList, (List)this.iEx.iCV))
           {
-            this.iBC.iBw = this.iBE.iAc;
-            this.iBC.action = 2;
-            b.b.a(this.iBC, this.iBE.buffer);
-            localObject = this.iBC;
-            SubscribeMsgRequestDialogUiData.a locala = SubscribeMsgRequestDialogUiData.izU;
+            this.iEv.iEp = this.iEx.iCV;
+            this.iEv.action = 2;
+            b.b.a(this.iEv, this.iEx.buffer);
+            localObject = this.iEv;
+            SubscribeMsgRequestDialogUiData.a locala = SubscribeMsgRequestDialogUiData.iCN;
             b.b.a((b.b)localObject, SubscribeMsgRequestDialogUiData.a.a(paramInt, j.s((Collection)paramList), false));
-            b.b.a(this.iBC, paramInt);
-            paramList = b.iBt;
-            b.b(this.iBC);
+            b.b.a(this.iEv, paramInt);
+            paramList = b.iEm;
+            b.b(this.iEv);
             if (paramInt == 1) {
-              paramList = SubscribeMsgRequestDialogUiData.izU;
+              paramList = SubscribeMsgRequestDialogUiData.iCN;
             }
-            for (paramInt = SubscribeMsgRequestDialogUiData.aOi();; paramInt = SubscribeMsgRequestDialogUiData.aOj())
+            for (paramInt = SubscribeMsgRequestDialogUiData.aOG();; paramInt = SubscribeMsgRequestDialogUiData.aOH())
             {
-              paramList = com.tencent.mm.msgsubscription.b.a.iBg;
-              com.tencent.mm.msgsubscription.b.a.a(this.iBC.dCB, paramInt, (List)this.iBE.iAc, this.iBG);
+              paramList = com.tencent.mm.msgsubscription.b.a.iDZ;
+              com.tencent.mm.msgsubscription.b.a.a(this.iEv.dDG, paramInt, (List)this.iEx.iCV, this.iEz);
               AppMethodBeat.o(149624);
               return;
-              paramList = SubscribeMsgRequestDialogUiData.izU;
+              paramList = SubscribeMsgRequestDialogUiData.iCN;
             }
           }
-          paramList = com.tencent.mm.msgsubscription.b.a.iBg;
-          paramList = this.iBC.dCB;
-          Object localObject = SubscribeMsgRequestDialogUiData.izU;
-          com.tencent.mm.msgsubscription.b.a.a(paramList, SubscribeMsgRequestDialogUiData.aOj(), (List)this.iBE.iAc, this.iBG);
-          paramList = this.iBC.iBA;
+          paramList = com.tencent.mm.msgsubscription.b.a.iDZ;
+          paramList = this.iEv.dDG;
+          Object localObject = SubscribeMsgRequestDialogUiData.iCN;
+          com.tencent.mm.msgsubscription.b.a.a(paramList, SubscribeMsgRequestDialogUiData.aOH(), (List)this.iEx.iCV, this.iEz);
+          paramList = this.iEv.iEt;
         } while (paramList == null);
         paramList.onCancel();
         AppMethodBeat.o(149624);

@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.eeo;
-import com.tencent.mm.protocal.protobuf.eep;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.egf;
+import com.tencent.mm.protocal.protobuf.egg;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class x
   extends n
   implements k
 {
-  eeo DBy;
-  eep DBz;
+  egf DTv;
+  egg DTw;
   private f callback;
-  private b hWL;
+  private b hZD;
   
   public x(int paramInt)
   {
     AppMethodBeat.i(117635);
-    this.DBy = new eeo();
+    this.DTv = new egf();
     b.a locala = new b.a();
     locala.funcId = 1948;
     locala.uri = "/cgi-bin/mmsearch-bin/websearchconfig";
-    locala.hNM = new eeo();
-    locala.hNN = new eep();
-    this.hWL = locala.aDC();
-    this.DBy = ((eeo)this.hWL.hNK.hNQ);
-    this.DBy.GDa = ad.We(0);
-    this.DBy.qei = ac.iM(aj.getContext());
-    this.DBy.orm = ad.Ux();
-    this.DBy.GRt = ad.bNG();
-    this.DBy.Scene = paramInt;
-    this.DBy.FMq = 0L;
+    locala.hQF = new egf();
+    locala.hQG = new egg();
+    this.hZD = locala.aDS();
+    this.DTv = ((egf)this.hZD.hQD.hQJ);
+    this.DTv.GWA = ad.WL(0);
+    this.DTv.qkN = com.tencent.mm.sdk.platformtools.ad.iR(ak.getContext());
+    this.DTv.oxI = ad.UD();
+    this.DTv.HkU = ad.bOD();
+    this.DTv.Scene = paramInt;
+    this.DTv.GeP = 0L;
     AppMethodBeat.o(117635);
   }
   
@@ -48,7 +48,7 @@ public final class x
   {
     AppMethodBeat.i(117636);
     this.callback = paramf;
-    int i = dispatch(parame, this.hWL, this);
+    int i = dispatch(parame, this.hZD, this);
     AppMethodBeat.o(117636);
     return i;
   }
@@ -61,16 +61,16 @@ public final class x
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(117637);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.NetSceneWebSearchConfig", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.WebSearch.NetSceneWebSearchConfig", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(117637);
       return;
     }
-    this.DBz = ((eep)this.hWL.hNL.hNQ);
-    if (this.DBz != null) {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.NetSceneWebSearchConfig", "return data\n%s", new Object[] { this.DBz.GDb });
+    this.DTw = ((egg)this.hZD.hQE.hQJ);
+    if (this.DTw != null) {
+      ae.v("MicroMsg.WebSearch.NetSceneWebSearchConfig", "return data\n%s", new Object[] { this.DTw.GWB });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(117637);
@@ -78,7 +78,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.x
  * JD-Core Version:    0.7.0.1
  */

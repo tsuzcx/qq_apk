@@ -14,13 +14,13 @@ final class ChatFooter$8
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(193469);
+    AppMethodBeat.i(186751);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$16", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$16", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     a.a(true, this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$16", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(193469);
+    AppMethodBeat.o(186751);
     return true;
   }
 }

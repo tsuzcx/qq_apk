@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ay
   extends b
 {
-  public a dlN;
-  public b dlO;
+  public a dmP;
+  public b dmQ;
   
   public ay()
   {
@@ -17,19 +17,19 @@ public final class ay
   private ay(byte paramByte)
   {
     AppMethodBeat.i(91198);
-    this.dlN = new a();
-    this.dlO = new b();
-    this.IbR = false;
+    this.dmP = new a();
+    this.dmQ = new b();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(91198);
   }
   
   public static final class a
   {
-    public String dlP;
-    public boolean dlQ;
-    public boolean dlR;
-    public boolean dlS;
+    public String dmR;
+    public boolean dmS;
+    public boolean dmT;
+    public boolean dmU;
   }
   
   public static final class b

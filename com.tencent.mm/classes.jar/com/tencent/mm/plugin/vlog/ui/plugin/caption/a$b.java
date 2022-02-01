@@ -10,14 +10,14 @@ import d.l;
 import d.z;
 import kotlinx.coroutines.ah;
 
-@f(c="com.tencent.mm.plugin.vlog.ui.plugin.caption.EditCaptionDataManager$voiceTransLate$1", f="EditCaptionDataManager.kt", gfL={}, m="invokeSuspend")
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+@f(c="com.tencent.mm.plugin.vlog.ui.plugin.caption.EditCaptionDataManager$voiceTransLate$1", f="EditCaptionDataManager.kt", gkn={}, m="invokeSuspend")
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
 final class a$b
   extends j
   implements m<ah, d<? super z>, Object>
 {
   int label;
-  private ah nWQ;
+  private ah ocz;
   
   a$b(a parama, int paramInt, d paramd)
   {
@@ -26,37 +26,37 @@ final class a$b
   
   public final d<z> a(Object paramObject, d<?> paramd)
   {
-    AppMethodBeat.i(196453);
+    AppMethodBeat.i(191912);
     p.h(paramd, "completion");
-    paramd = new b(this.BPL, this.czG, paramd);
-    paramd.nWQ = ((ah)paramObject);
-    AppMethodBeat.o(196453);
+    paramd = new b(this.Chk, this.cAn, paramd);
+    paramd.ocz = ((ah)paramObject);
+    AppMethodBeat.o(191912);
     return paramd;
   }
   
-  public final Object cQ(Object paramObject)
+  public final Object cR(Object paramObject)
   {
-    AppMethodBeat.i(196452);
-    paramObject = d.d.a.a.MLc;
+    AppMethodBeat.i(191911);
+    paramObject = d.d.a.a.Nif;
     switch (this.label)
     {
     default: 
       paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-      AppMethodBeat.o(196452);
+      AppMethodBeat.o(191911);
       throw paramObject;
     }
-    a.a(this.BPL);
-    a.a(this.BPL, this.czG);
-    paramObject = z.MKo;
-    AppMethodBeat.o(196452);
+    a.a(this.Chk);
+    a.a(this.Chk, this.cAn);
+    paramObject = z.Nhr;
+    AppMethodBeat.o(191911);
     return paramObject;
   }
   
   public final Object p(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(196454);
-    paramObject1 = ((b)a(paramObject1, (d)paramObject2)).cQ(z.MKo);
-    AppMethodBeat.o(196454);
+    AppMethodBeat.i(191913);
+    paramObject1 = ((b)a(paramObject1, (d)paramObject2)).cR(z.Nhr);
+    AppMethodBeat.o(191913);
     return paramObject1;
   }
 }

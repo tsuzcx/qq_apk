@@ -8,5 +8,6 @@
     <ViewStub android:id="@id/i0f" android:layout="@layout/bub" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
     <ViewStub android:id="@id/i6t" android:layout="@layout/bvm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:id="@id/i6u" android:layout="@layout/bvn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
+    <ViewStub android:id="@id/i8i" android:layout="@layout/bxw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
     <LinearLayout android:orientation="vertical" android:id="@id/h8g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

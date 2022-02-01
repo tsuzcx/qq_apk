@@ -8,82 +8,82 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.q;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
 final class b
   extends BaseAdapter
 {
-  private List<y> Jyb;
-  boolean Jyc;
+  private List<z> JSR;
+  boolean JSS;
   private Context context;
-  private c qhI;
+  private c qon;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(34220);
-    this.Jyc = false;
+    this.JSS = false;
     this.context = paramContext;
-    this.Jyb = new ArrayList();
+    this.JSR = new ArrayList();
     paramContext = new c.a();
-    paramContext.idD = 2131233401;
-    this.qhI = paramContext.aJc();
+    paramContext.igv = 2131233401;
+    this.qon = paramContext.aJu();
     V(null);
     AppMethodBeat.o(34220);
   }
   
-  private y acH(int paramInt)
+  private z adp(int paramInt)
   {
     AppMethodBeat.i(34225);
-    y localy = (y)this.Jyb.get(paramInt);
+    z localz = (z)this.JSR.get(paramInt);
     AppMethodBeat.o(34225);
-    return localy;
+    return localz;
   }
   
-  private y fAD()
+  private z fEF()
   {
     AppMethodBeat.i(34222);
-    y localy = new y();
-    localy.resId = 2131233942;
-    localy.fVj = this.context.getString(2131763457);
+    z localz = new z();
+    localz.resId = 2131233942;
+    localz.fXp = this.context.getString(2131763457);
     AppMethodBeat.o(34222);
-    return localy;
+    return localz;
   }
   
-  private y fAE()
+  private z fEG()
   {
     AppMethodBeat.i(34223);
-    y localy = new y();
-    localy.resId = 2131233943;
-    localy.fVj = this.context.getString(2131757313);
+    z localz = new z();
+    localz.resId = 2131233943;
+    localz.fXp = this.context.getString(2131757313);
     AppMethodBeat.o(34223);
-    return localy;
+    return localz;
   }
   
-  public final void V(List<y> paramList)
+  public final void V(List<z> paramList)
   {
     AppMethodBeat.i(34221);
-    this.Jyb.clear();
+    this.JSR.clear();
     if ((paramList != null) && (paramList.size() != 0)) {
-      this.Jyb.addAll(paramList);
+      this.JSR.addAll(paramList);
     }
-    if (this.Jyc) {
-      this.Jyb.add(fAE());
+    if (this.JSS) {
+      this.JSR.add(fEG());
     }
-    this.Jyb.add(fAD());
-    ad.d("MicroMsg.AppInfoListAdapter", "updateData mDeviceInfoList.size() = %d.", new Object[] { Integer.valueOf(this.Jyb.size()) });
+    this.JSR.add(fEF());
+    ae.d("MicroMsg.AppInfoListAdapter", "updateData mDeviceInfoList.size() = %d.", new Object[] { Integer.valueOf(this.JSR.size()) });
     AppMethodBeat.o(34221);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(34224);
-    int i = this.Jyb.size();
+    int i = this.JSR.size();
     AppMethodBeat.o(34224);
     return i;
   }
@@ -96,48 +96,48 @@ final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(34226);
-    y localy = acH(paramInt);
+    z localz = adp(paramInt);
     Object localObject;
     if (paramView == null)
     {
-      paramView = new aq();
+      paramView = new ar();
       localObject = View.inflate(paramViewGroup.getContext(), 2131495368, null);
-      paramView.qkI = ((View)localObject).findViewById(2131298736);
-      paramView.jfJ = ((TextView)((View)localObject).findViewById(2131302656));
-      paramView.lZa = ((ImageView)((View)localObject).findViewById(2131300880));
-      paramView.JCW = ((TextView)((View)localObject).findViewById(2131304561));
-      paramView.JET = ((SendDataToDeviceProgressBar)((View)localObject).findViewById(2131304560));
-      paramView.JET.setVisibility(4);
+      paramView.qrn = ((View)localObject).findViewById(2131298736);
+      paramView.jiC = ((TextView)((View)localObject).findViewById(2131302656));
+      paramView.mdt = ((ImageView)((View)localObject).findViewById(2131300880));
+      paramView.JXN = ((TextView)((View)localObject).findViewById(2131304561));
+      paramView.JZK = ((SendDataToDeviceProgressBar)((View)localObject).findViewById(2131304560));
+      paramView.JZK.setVisibility(4);
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      paramViewGroup.jfJ.setText(localy.fVj);
-      ad.v("MicroMsg.AppInfoListAdapter", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localy.fVj });
-      if (localy.resId == 0) {
+      paramViewGroup.jiC.setText(localz.fXp);
+      ae.v("MicroMsg.AppInfoListAdapter", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localz.fXp });
+      if (localz.resId == 0) {
         break label209;
       }
-      paramViewGroup.lZa.setImageResource(localy.resId);
+      paramViewGroup.mdt.setImageResource(localz.resId);
     }
     for (;;)
     {
-      paramViewGroup.qkI.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.qrn.setTag(Integer.valueOf(paramInt));
       AppMethodBeat.o(34226);
       return paramView;
-      paramViewGroup = (aq)paramView.getTag();
+      paramViewGroup = (ar)paramView.getTag();
       break;
       label209:
-      localObject = h.c(localy.appId, 1, com.tencent.mm.cc.a.getDensity(this.context));
+      localObject = h.c(localz.appId, 1, com.tencent.mm.cb.a.getDensity(this.context));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        paramViewGroup.lZa.setImageBitmap((Bitmap)localObject);
+        paramViewGroup.mdt.setImageBitmap((Bitmap)localObject);
       } else {
-        q.aIJ().a(localy.iconUrl, paramViewGroup.lZa, this.qhI);
+        q.aJb().a(localz.iconUrl, paramViewGroup.mdt, this.qon);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.b
  * JD-Core Version:    0.7.0.1
  */

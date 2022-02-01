@@ -7,5 +7,6 @@
     <IconSummaryPreference android:key="funtion_update" android:title="@string/cnt" />
     <IconPreference android:key="funtion_check_update" android:title="@string/cnr" />
     <IconPreference android:key="funtion_crowdtest_update" android:title="@string/cns" />
+    <IconPreference android:key="funtion_about_flavor_blue" android:title="@string/i3p" />
     <PreferenceCategory />
 </PreferenceScreen>

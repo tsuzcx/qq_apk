@@ -4,25 +4,25 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.b.f;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.ui.j;
 import com.tencent.mm.pluginsdk.ui.j.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storagebase.h.b;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public final class c
-  implements ax
+  implements az
 {
   public final void clearPluginData(int paramInt) {}
   
@@ -34,14 +34,14 @@ public final class c
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(27618);
-    b.a.wYb = new j.a()
+    b.a.xnS = new j.a()
     {
-      private Bitmap cTq;
-      private f<String, WeakReference<Bitmap>> wYc;
+      private Bitmap cUb;
+      private f<String, WeakReference<Bitmap>> xnT;
       
-      public final Bitmap LL()
+      public final Bitmap LT()
       {
-        return this.cTq;
+        return this.cUb;
       }
       
       public final Bitmap a(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -53,24 +53,24 @@ public final class c
       {
         AppMethodBeat.i(27616);
         if ((paramAnonymousj instanceof e.a)) {
-          p.aEk().a((e.a)paramAnonymousj);
+          p.aEA().a((e.a)paramAnonymousj);
         }
         AppMethodBeat.o(27616);
       }
       
-      public final Bitmap fg(String paramAnonymousString)
+      public final Bitmap fl(String paramAnonymousString)
       {
         AppMethodBeat.i(27617);
-        Object localObject = (WeakReference)this.wYc.get(paramAnonymousString);
-        if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != LL()))
+        Object localObject = (WeakReference)this.xnT.get(paramAnonymousString);
+        if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != LT()))
         {
-          localObject = com.tencent.mm.ak.c.a(paramAnonymousString, false, -1, null);
+          localObject = com.tencent.mm.aj.c.a(paramAnonymousString, false, -1, null);
           if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {}
-          for (paramAnonymousString = this.cTq;; paramAnonymousString = (String)localObject)
+          for (paramAnonymousString = this.cUb;; paramAnonymousString = (String)localObject)
           {
             AppMethodBeat.o(27617);
             return paramAnonymousString;
-            this.wYc.q(paramAnonymousString, new WeakReference(localObject));
+            this.xnT.q(paramAnonymousString, new WeakReference(localObject));
           }
         }
         paramAnonymousString = (Bitmap)((WeakReference)localObject).get();
@@ -78,7 +78,7 @@ public final class c
         return paramAnonymousString;
       }
       
-      public final Bitmap fh(String paramAnonymousString)
+      public final Bitmap fm(String paramAnonymousString)
       {
         return null;
       }

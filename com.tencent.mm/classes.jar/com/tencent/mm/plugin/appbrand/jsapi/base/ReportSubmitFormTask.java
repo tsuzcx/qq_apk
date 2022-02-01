@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.protobuf.eim;
+import com.tencent.mm.protocal.protobuf.ekd;
 import com.tencent.mm.protocal.protobuf.kh;
 import com.tencent.mm.protocal.protobuf.ki;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,8 +30,8 @@ public class ReportSubmitFormTask
   public static final Parcelable.Creator<ReportSubmitFormTask> CREATOR;
   public int aDD;
   public String appId;
-  public int dkg;
-  public String kCm;
+  public int dli;
+  public String kFB;
   public String pageId;
   public int type;
   
@@ -47,15 +47,15 @@ public class ReportSubmitFormTask
   public ReportSubmitFormTask(k paramk)
   {
     this.appId = paramk.appId;
-    this.dkg = paramk.jYh.jIU;
-    this.aDD = paramk.jYh.pkgVersion;
+    this.dli = paramk.kbw.jLV;
+    this.aDD = paramk.kbw.pkgVersion;
   }
   
-  private static LinkedList<eim> bja()
+  private static LinkedList<ekd> bjJ()
   {
     AppMethodBeat.i(46141);
     localLinkedList = new LinkedList();
-    Object localObject = (String)g.ajC().ajl().get(al.a.Iwr, null);
+    Object localObject = (String)g.ajR().ajA().get(am.a.IQP, null);
     try
     {
       localObject = new JSONArray((String)localObject);
@@ -63,48 +63,48 @@ public class ReportSubmitFormTask
       while (i < ((JSONArray)localObject).length())
       {
         JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        eim localeim = new eim();
-        localeim.type = localJSONObject.getInt("type");
-        localeim.duW = localJSONObject.getString("appid");
-        localeim.HTb = localJSONObject.getString("formid");
-        localeim.HTc = localJSONObject.getString("pageid");
-        localeim.mtG = localJSONObject.getInt("appstate");
-        localeim.mvi = localJSONObject.getInt("appversion");
-        localLinkedList.add(localeim);
+        ekd localekd = new ekd();
+        localekd.type = localJSONObject.getInt("type");
+        localekd.dwb = localJSONObject.getString("appid");
+        localekd.Ini = localJSONObject.getString("formid");
+        localekd.Inj = localJSONObject.getString("pageid");
+        localekd.myD = localJSONObject.getInt("appstate");
+        localekd.mAf = localJSONObject.getInt("appversion");
+        localLinkedList.add(localekd);
         i += 1;
       }
       return localLinkedList;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ReportSubmitFormTask", localException.getMessage());
-      g.ajC().ajl().set(al.a.Iwr, "");
+      ae.e("MicroMsg.ReportSubmitFormTask", localException.getMessage());
+      g.ajR().ajA().set(am.a.IQP, "");
       AppMethodBeat.o(46141);
     }
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(46140);
     Object localObject1 = new b.a();
-    ((b.a)localObject1).hNM = new kh();
-    ((b.a)localObject1).hNN = new ki();
+    ((b.a)localObject1).hQF = new kh();
+    ((b.a)localObject1).hQG = new ki();
     ((b.a)localObject1).uri = "/cgi-bin/mmbiz-bin/wxausrevent/batchrecordwxatemplatemsgevent";
     ((b.a)localObject1).funcId = 1129;
-    localObject1 = ((b.a)localObject1).aDC();
-    final kh localkh = (kh)((b)localObject1).hNK.hNQ;
-    localkh.FCK = new LinkedList();
-    ??? = new eim();
-    ((eim)???).type = this.type;
-    ((eim)???).duW = this.appId;
-    ((eim)???).HTb = this.kCm;
-    ((eim)???).HTc = this.pageId;
-    ((eim)???).mtG = this.dkg;
-    ((eim)???).mvi = this.aDD;
-    localkh.FCK.add(???);
+    localObject1 = ((b.a)localObject1).aDS();
+    final kh localkh = (kh)((b)localObject1).hQD.hQJ;
+    localkh.FVf = new LinkedList();
+    ??? = new ekd();
+    ((ekd)???).type = this.type;
+    ((ekd)???).dwb = this.appId;
+    ((ekd)???).Ini = this.kFB;
+    ((ekd)???).Inj = this.pageId;
+    ((ekd)???).myD = this.dli;
+    ((ekd)???).mAf = this.aDD;
+    localkh.FVf.add(???);
     synchronized (getClass())
     {
-      localkh.FCK.addAll(bja());
+      localkh.FVf.addAll(bjJ());
       x.a((b)localObject1, new x.a()
       {
         public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String arg3, b paramAnonymousb, n paramAnonymousn)
@@ -113,8 +113,8 @@ public class ReportSubmitFormTask
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
             synchronized (ReportSubmitFormTask.this.getClass())
             {
-              ReportSubmitFormTask.z(localkh.FCK);
-              ad.e("MicroMsg.ReportSubmitFormTask", "Error: %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+              ReportSubmitFormTask.z(localkh.FVf);
+              ae.e("MicroMsg.ReportSubmitFormTask", "Error: %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
               AppMethodBeat.o(46138);
               return 0;
             }
@@ -133,9 +133,9 @@ public class ReportSubmitFormTask
     AppMethodBeat.i(46143);
     this.type = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.kCm = paramParcel.readString();
+    this.kFB = paramParcel.readString();
     this.pageId = paramParcel.readString();
-    this.dkg = paramParcel.readInt();
+    this.dli = paramParcel.readInt();
     this.aDD = paramParcel.readInt();
     AppMethodBeat.o(46143);
   }
@@ -145,9 +145,9 @@ public class ReportSubmitFormTask
     AppMethodBeat.i(46142);
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.kCm);
+    paramParcel.writeString(this.kFB);
     paramParcel.writeString(this.pageId);
-    paramParcel.writeInt(this.dkg);
+    paramParcel.writeInt(this.dli);
     paramParcel.writeInt(this.aDD);
     AppMethodBeat.o(46142);
   }

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import com.tencent.mm.plugin.music.e.a;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
 {
-  public static String asG(String paramString)
+  public static String atT(String paramString)
   {
     AppMethodBeat.i(63092);
-    f localf = k.dta().wkp.dsL();
-    if ((localf == null) || (!paramString.equalsIgnoreCase(localf.ihg)))
+    f localf = k.dwp().wzU.dwa();
+    if ((localf == null) || (!paramString.equalsIgnoreCase(localf.ijZ)))
     {
-      paramString = "0_" + ai.ee(paramString);
+      paramString = "0_" + aj.ej(paramString);
       AppMethodBeat.o(63092);
       return paramString;
     }

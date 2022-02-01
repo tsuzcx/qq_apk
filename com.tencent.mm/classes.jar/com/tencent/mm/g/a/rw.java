@@ -1,16 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.z;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
-import java.util.List;
 
 public final class rw
   extends b
 {
-  public a dGt;
+  public a dHy;
   
   public rw()
   {
@@ -19,20 +15,16 @@ public final class rw
   
   private rw(byte paramByte)
   {
-    AppMethodBeat.i(149887);
-    this.dGt = new a();
-    this.IbR = false;
+    AppMethodBeat.i(55665);
+    this.dHy = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149887);
+    AppMethodBeat.o(55665);
   }
   
   public static final class a
   {
-    public Context context;
-    public List<bu> dES;
-    public boolean dGu = false;
-    public z dGv;
-    public String talker;
+    public boolean active;
   }
 }
 

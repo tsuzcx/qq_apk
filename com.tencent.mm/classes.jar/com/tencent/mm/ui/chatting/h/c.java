@@ -8,7 +8,7 @@ public abstract interface c<T>
 {
   public abstract void a(d.a parama, e<T> parame, d.d<T> paramd, d.b paramb);
   
-  public abstract SparseArray<T> ii(List<T> paramList);
+  public abstract SparseArray<T> is(List<T> paramList);
 }
 
 

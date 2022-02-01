@@ -6,21 +6,21 @@ import java.util.Arrays;
 public final class g
   extends a<byte[]>
 {
-  public static final g hwC;
+  public static final g hzq;
   
   static
   {
     AppMethodBeat.i(156423);
-    hwC = new g();
+    hzq = new g();
     AppMethodBeat.o(156423);
   }
   
-  protected final long ayu()
+  protected final long ayJ()
   {
     return 5242880L;
   }
   
-  protected final long ayv()
+  protected final long ayK()
   {
     return 1048576L;
   }

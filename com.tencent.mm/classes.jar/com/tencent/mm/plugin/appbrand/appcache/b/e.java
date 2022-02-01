@@ -6,20 +6,20 @@ import com.tencent.mm.plugin.appbrand.appcache.b.b.c;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.d;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.h;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.i;
-import com.tencent.mm.protocal.protobuf.dlm;
-import com.tencent.mm.protocal.protobuf.eie;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dmj;
+import com.tencent.mm.protocal.protobuf.ejv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.vending.c.a;
 import java.util.Iterator;
 import java.util.List;
 
 public final class e
 {
-  static void a(List<dlm> paramList, boolean paramBoolean, int paramInt)
+  static void a(List<dmj> paramList, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(44374);
-    if (bt.hj(paramList))
+    if (bu.ht(paramList))
     {
       AppMethodBeat.o(44374);
       return;
@@ -27,15 +27,15 @@ public final class e
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      dlm localdlm = (dlm)paramList.next();
-      if (localdlm.HzX == null)
+      dmj localdmj = (dmj)paramList.next();
+      if (localdmj.HTK == null)
       {
-        ad.e("MicroMsg.AppBrand.PredownloadCmdProcessor", "processCmd, username %s, appId %s, nil Cmds", new Object[] { localdlm.GNH, localdlm.FuU });
+        ae.e("MicroMsg.AppBrand.PredownloadCmdProcessor", "processCmd, username %s, appId %s, nil Cmds", new Object[] { localdmj.Hhh, localdmj.FNs });
       }
       else
       {
-        String str1 = localdlm.GNH;
-        String str2 = localdlm.FuU;
+        String str1 = localdmj.Hhh;
+        String str2 = localdmj.FNs;
         boolean bool1;
         label110:
         boolean bool2;
@@ -45,27 +45,27 @@ public final class e
         boolean bool4;
         label152:
         boolean bool5;
-        if (localdlm.HzX.HSJ != null)
+        if (localdmj.HTK.ImQ != null)
         {
           bool1 = true;
-          if (localdlm.HzX.HSK == null) {
+          if (localdmj.HTK.ImR == null) {
             break label615;
           }
           bool2 = true;
-          if (localdlm.HzX.HSL == null) {
+          if (localdmj.HTK.ImS == null) {
             break label621;
           }
           bool3 = true;
-          if (localdlm.HzX.HSM == null) {
+          if (localdmj.HTK.ImT == null) {
             break label627;
           }
           bool4 = true;
-          if (localdlm.HzX.HSN == null) {
+          if (localdmj.HTK.ImU == null) {
             break label633;
           }
           bool5 = true;
           label166:
-          if (localdlm.HzX.HSO == null) {
+          if (localdmj.HTK.ImV == null) {
             break label639;
           }
         }
@@ -76,32 +76,32 @@ public final class e
         label639:
         for (boolean bool6 = true;; bool6 = false)
         {
-          ad.i("MicroMsg.AppBrand.PredownloadCmdProcessor", "processCmd, username %s appId %s, GetContact(%b), GetCode(%b), IssueContact(%b), IssueLaunch(%b), IssueDecryptKey(%s), UpdateVersion(%b)", new Object[] { str1, str2, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6) });
-          if (localdlm.HzX.HSJ != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSJ).j(new d());
+          ae.i("MicroMsg.AppBrand.PredownloadCmdProcessor", "processCmd, username %s appId %s, GetContact(%b), GetCode(%b), IssueContact(%b), IssueLaunch(%b), IssueDecryptKey(%s), UpdateVersion(%b)", new Object[] { str1, str2, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6) });
+          if (localdmj.HTK.ImQ != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImQ).j(new d());
           }
-          if (localdlm.HzX.HSK != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSK).j(new c(paramBoolean, paramInt)).g(new a() {});
+          if (localdmj.HTK.ImR != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImR).j(new c(paramBoolean, paramInt)).g(new a() {});
           }
-          if (localdlm.HzX.HSL != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSL).j(new com.tencent.mm.plugin.appbrand.appcache.b.b.e());
+          if (localdmj.HTK.ImS != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImS).j(new com.tencent.mm.plugin.appbrand.appcache.b.b.e());
           }
-          if (localdlm.HzX.HSM != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSM).j(new com.tencent.mm.plugin.appbrand.appcache.b.b.g());
+          if (localdmj.HTK.ImT != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImT).j(new com.tencent.mm.plugin.appbrand.appcache.b.b.g());
           }
-          if (localdlm.HzX.HSN != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSN).j(new com.tencent.mm.plugin.appbrand.appcache.b.b.f());
+          if (localdmj.HTK.ImU != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImU).j(new com.tencent.mm.plugin.appbrand.appcache.b.b.f());
           }
-          if (localdlm.HzX.HSO != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSO).j(new i());
+          if (localdmj.HTK.ImV != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImV).j(new i());
           }
-          if (localdlm.HzX.HSP != null) {
-            com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSP).j(new b());
+          if (localdmj.HTK.ImW != null) {
+            com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImW).j(new b());
           }
-          if (localdlm.HzX.HSQ == null) {
+          if (localdmj.HTK.ImX == null) {
             break;
           }
-          com.tencent.mm.cn.g.j(localdlm.GNH, localdlm.FuU, localdlm.HzX.HSQ).j(new h());
+          com.tencent.mm.cm.g.j(localdmj.Hhh, localdmj.FNs, localdmj.HTK.ImX).j(new h());
           break;
           bool1 = false;
           break label110;

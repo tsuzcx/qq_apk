@@ -9,46 +9,46 @@ public class o
 {
   public static boolean a(Handler paramHandler)
   {
-    AppMethodBeat.i(190501);
+    AppMethodBeat.i(210766);
     if (paramHandler == null) {}
     for (paramHandler = null;; paramHandler = paramHandler.getLooper())
     {
       boolean bool = a(paramHandler);
-      AppMethodBeat.o(190501);
+      AppMethodBeat.o(210766);
       return bool;
     }
   }
   
   public static boolean a(Handler paramHandler, Message paramMessage)
   {
-    AppMethodBeat.i(190503);
+    AppMethodBeat.i(210768);
     boolean bool = a(paramHandler, paramMessage, 0L);
-    AppMethodBeat.o(190503);
+    AppMethodBeat.o(210768);
     return bool;
   }
   
   public static boolean a(Handler paramHandler, Message paramMessage, long paramLong)
   {
-    AppMethodBeat.i(190504);
+    AppMethodBeat.i(210769);
     if ((paramMessage != null) && (a(paramHandler)))
     {
       boolean bool = paramHandler.sendMessageDelayed(paramMessage, paramLong);
-      AppMethodBeat.o(190504);
+      AppMethodBeat.o(210769);
       return bool;
     }
-    AppMethodBeat.o(190504);
+    AppMethodBeat.o(210769);
     return false;
   }
   
   public static boolean a(Looper paramLooper)
   {
-    AppMethodBeat.i(190502);
+    AppMethodBeat.i(210767);
     if ((paramLooper != null) && (paramLooper.getThread().isAlive()))
     {
-      AppMethodBeat.o(190502);
+      AppMethodBeat.o(210767);
       return true;
     }
-    AppMethodBeat.o(190502);
+    AppMethodBeat.o(210767);
     return false;
   }
 }

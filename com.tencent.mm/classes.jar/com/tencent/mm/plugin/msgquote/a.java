@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.msgquote;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import java.util.HashMap;
 
 public abstract interface a
@@ -16,7 +16,7 @@ public abstract interface a
   
   public abstract void handleRevokeMsgBySvrId(long paramLong);
   
-  public abstract void sendQuoteMsg(bu parambu, int paramInt1, String paramString1, CharSequence paramCharSequence, String paramString2, int paramInt2, HashMap<String, String> paramHashMap);
+  public abstract void sendQuoteMsg(bv parambv, int paramInt1, String paramString1, CharSequence paramCharSequence, String paramString2, int paramInt2, HashMap<String, String> paramHashMap);
 }
 
 

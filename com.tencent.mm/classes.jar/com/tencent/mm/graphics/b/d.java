@@ -2,7 +2,7 @@ package com.tencent.mm.graphics.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,42 +10,42 @@ import java.util.Iterator;
 
 public enum d
 {
-  public WeakReference<Context> guS;
-  public HashMap<Integer, a> guT;
-  public com.tencent.e.i.b guU;
-  public final Object guV;
+  public HashMap<Integer, a> gxA;
+  public com.tencent.e.i.b gxB;
+  public final Object gxC;
+  public WeakReference<Context> gxz;
   public boolean isRunning;
   
   static
   {
     AppMethodBeat.i(136211);
-    guR = new d("INSTANCE");
-    guW = new d[] { guR };
+    gxy = new d("INSTANCE");
+    gxD = new d[] { gxy };
     AppMethodBeat.o(136211);
   }
   
   private d()
   {
     AppMethodBeat.i(136208);
-    this.guS = null;
-    this.guT = new HashMap();
+    this.gxz = null;
+    this.gxA = new HashMap();
     this.isRunning = false;
-    this.guU = null;
-    this.guV = new Object();
+    this.gxB = null;
+    this.gxC = new Object();
     AppMethodBeat.o(136208);
   }
   
-  public final b ahf()
+  public final b ahu()
   {
     AppMethodBeat.i(136209);
-    synchronized (this.guV)
+    synchronized (this.gxC)
     {
-      if (this.guT != null)
+      if (this.gxA != null)
       {
-        Object localObject2 = (a)this.guT.get(Integer.valueOf(2));
+        Object localObject2 = (a)this.gxA.get(Integer.valueOf(2));
         if ((localObject2 != null) && ((localObject2 instanceof b)))
         {
-          ((a)localObject2).ahc();
+          ((a)localObject2).ahr();
           localObject2 = (b)localObject2;
           AppMethodBeat.o(136209);
           return localObject2;
@@ -56,22 +56,22 @@ public enum d
     }
   }
   
-  public final void ahg()
+  public final void ahv()
   {
     AppMethodBeat.i(136210);
-    synchronized (this.guV)
+    synchronized (this.gxC)
     {
       if (!this.isRunning)
       {
         AppMethodBeat.o(136210);
         return;
       }
-      if (this.guU != null) {
-        this.guU.cancel();
+      if (this.gxB != null) {
+        this.gxB.cancel();
       }
       this.isRunning = false;
-      if (this.guT != null) {
-        this.guT.clear();
+      if (this.gxA != null) {
+        this.gxA.clear();
       }
       AppMethodBeat.o(136210);
       return;

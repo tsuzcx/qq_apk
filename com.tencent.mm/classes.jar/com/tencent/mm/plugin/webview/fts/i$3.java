@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.webview.fts;
 import android.os.Bundle;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
-import com.tencent.mm.protocal.protobuf.cyv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.czp;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i$3
   implements x.a
@@ -26,18 +26,18 @@ public final class i$3
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.WebSearch.WebSearchLogic", "getPoiInfo onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " will retry");
+      ae.e("MicroMsg.WebSearch.WebSearchLogic", "getPoiInfo onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " will retry");
       AppMethodBeat.o(77953);
       return 0;
     }
     Bundle localBundle;
     if (paramb != null)
     {
-      Object localObject = (cyv)paramb.hNL.hNQ;
-      paramString = g.XN(this.DKU);
-      paramb = this.kfq;
-      paramn = this.DKV;
-      localObject = ((cyv)localObject).GDb;
+      Object localObject = (czp)paramb.hQE.hQJ;
+      paramString = g.Yt(this.EcS);
+      paramb = this.kiG;
+      paramn = this.EcT;
+      localObject = ((czp)localObject).GWB;
       localBundle = new Bundle();
       localBundle.putString("searchId", paramb);
       localBundle.putString("poiId", paramn);
@@ -45,8 +45,8 @@ public final class i$3
     }
     try
     {
-      if (paramString.DNO != null) {
-        paramString.DNO.g(145, localBundle);
+      if (paramString.EfN != null) {
+        paramString.EfN.g(145, localBundle);
       }
       AppMethodBeat.o(77953);
       return 0;
@@ -55,7 +55,7 @@ public final class i$3
     {
       for (;;)
       {
-        ad.w("MicroMsg.MsgHandler", "onGetPoiReady exception" + paramString.getMessage());
+        ae.w("MicroMsg.MsgHandler", "onGetPoiReady exception" + paramString.getMessage());
       }
     }
   }

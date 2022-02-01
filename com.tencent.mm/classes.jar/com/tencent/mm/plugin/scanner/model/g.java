@@ -1,95 +1,130 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.mf;
-import com.tencent.mm.protocal.protobuf.mg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.scanner.api.ScanImagePHashInfo;
+import com.tencent.mm.protocal.protobuf.mh;
+import com.tencent.mm.protocal.protobuf.mi;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "requestId", "", "requestJson", "type", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRequestId", "getResp", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageRetrievalResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/NetSceneAiScanImageScenePreview;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "sessionId", "", "seqNum", "", "pHashInfo", "Lcom/tencent/mm/plugin/scanner/api/ScanImagePHashInfo;", "(JILcom/tencent/mm/plugin/scanner/api/ScanImagePHashInfo;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "session", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageScenePreviewResponse;", "getSession", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"})
 public final class g
   extends n
   implements k
 {
-  public static final a ymO;
+  public static final a yCM;
   private f callback;
-  public String dwW;
-  public final b hWL;
+  long dmK;
+  final b rr;
   
   static
   {
-    AppMethodBeat.i(52165);
-    ymO = new a((byte)0);
-    AppMethodBeat.o(52165);
+    AppMethodBeat.i(189567);
+    yCM = new a((byte)0);
+    AppMethodBeat.o(189567);
   }
   
-  public g(String paramString1, String paramString2)
+  public g(long paramLong, ScanImagePHashInfo paramScanImagePHashInfo)
   {
-    AppMethodBeat.i(52164);
-    this.dwW = paramString1;
-    paramString1 = new b.a();
-    paramString1.c((a)new mf());
-    paramString1.d((a)new mg());
-    paramString1.Dl("/cgi-bin/mmbiz-bin/usrmsg/aiscan_image_retrieval");
-    paramString1.oP(1532);
-    paramString1.oR(0);
-    paramString1.oS(0);
-    paramString1 = paramString1.aDC();
-    p.g(paramString1, "builder.buildInstance()");
-    this.hWL = paramString1;
-    paramString1 = this.hWL.aEE();
-    if (paramString1 == null)
+    AppMethodBeat.i(189566);
+    this.dmK = paramLong;
+    Object localObject = new b.a();
+    ((b.a)localObject).c((a)new mh());
+    ((b.a)localObject).d((a)new mi());
+    ((b.a)localObject).DN("/cgi-bin/mmbiz-bin/imgretrieval/aiscan_image_scene_preview");
+    ((b.a)localObject).oS(5079);
+    ((b.a)localObject).oU(0);
+    ((b.a)localObject).oV(0);
+    localObject = ((b.a)localObject).aDS();
+    p.g(localObject, "builder.buildInstance()");
+    this.rr = ((b)localObject);
+    localObject = this.rr.aEU();
+    if (localObject == null)
     {
-      paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageRetrievalRequest");
-      AppMethodBeat.o(52164);
-      throw paramString1;
+      paramScanImagePHashInfo = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageScenePreviewRequest");
+      AppMethodBeat.o(189566);
+      throw paramScanImagePHashInfo;
     }
-    paramString1 = (mf)paramString1;
-    paramString1.FFt = paramString2;
-    paramString1.type = 1;
-    ad.d("MicroMsg.NetSceneBizAiScanImageRetrieval", "alvinluo AiScanImageRetrieval requestJson: %s, type: %d", new Object[] { paramString2, Integer.valueOf(1) });
-    AppMethodBeat.o(52164);
+    mh localmh = (mh)localObject;
+    localmh.FXv = paramLong;
+    localmh.FTU = 0;
+    String str2;
+    if (paramScanImagePHashInfo != null)
+    {
+      str2 = paramScanImagePHashInfo.pHash;
+      localObject = str2;
+      if (str2 != null) {}
+    }
+    else
+    {
+      localObject = "";
+    }
+    localmh.FXQ = ((String)localObject);
+    if (paramScanImagePHashInfo != null)
+    {
+      str2 = paramScanImagePHashInfo.pHashVersion;
+      localObject = str2;
+      if (str2 != null) {}
+    }
+    else
+    {
+      localObject = "";
+    }
+    localmh.FXR = ((String)localObject);
+    ae.i("MicroMsg.NetSceneAiScanImageScenePreview", "alvinluo NetSceneAiScanImageScenePreview sessionId: %d, seqNum: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(0) });
+    if (paramScanImagePHashInfo != null) {}
+    for (localObject = paramScanImagePHashInfo.pHash;; localObject = null)
+    {
+      if (paramScanImagePHashInfo != null) {
+        str1 = paramScanImagePHashInfo.pHashVersion;
+      }
+      ae.v("MicroMsg.NetSceneAiScanImageScenePreview", "alvinluo NetSceneAiScanImageScenePreview pHash: %s, pHashVersion: %s", new Object[] { localObject, str1 });
+      AppMethodBeat.o(189566);
+      return;
+    }
   }
   
   public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(52162);
+    AppMethodBeat.i(189565);
+    p.h(parame, "dispatcher");
+    p.h(paramf, "callback");
     this.callback = paramf;
-    int i = dispatch(parame, (q)this.hWL, (k)this);
-    AppMethodBeat.o(52162);
+    int i = dispatch(parame, (q)this.rr, (k)this);
+    AppMethodBeat.o(189565);
     return i;
   }
   
   public final int getType()
   {
-    return 1532;
+    return 5079;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(52163);
-    ad.i("MicroMsg.NetSceneBizAiScanImageRetrieval", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(189564);
+    ae.i("MicroMsg.NetSceneAiScanImageScenePreview", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     paramq = this.callback;
     if (paramq != null)
     {
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(52163);
+      AppMethodBeat.o(189564);
       return;
     }
-    AppMethodBeat.o(52163);
+    AppMethodBeat.o(189564);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval$Companion;", "", "()V", "AI_SCAN_IMAGE_TYPE_RETRIEVAL_BY_KEY", "", "AI_SCAN_IMAGE_TYPE_UNKNOWN", "TAG", "", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/NetSceneAiScanImageScenePreview$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
   public static final class a {}
 }
 

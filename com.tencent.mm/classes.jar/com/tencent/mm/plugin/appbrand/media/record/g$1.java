@@ -11,14 +11,14 @@ final class g$1
   public final void D(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(146150);
-    g.yhR.b(paramArrayList, true);
+    g.yxI.b(paramArrayList, true);
     AppMethodBeat.o(146150);
   }
   
-  public final void qQ(long paramLong)
+  public final void rd(long paramLong)
   {
     AppMethodBeat.i(146149);
-    g.yhR.idkeyStat(689L, paramLong, 1L, true);
+    g.yxI.idkeyStat(689L, paramLong, 1L, true);
     AppMethodBeat.o(146149);
   }
 }

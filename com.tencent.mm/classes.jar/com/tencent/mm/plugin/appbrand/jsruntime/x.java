@@ -23,7 +23,7 @@ public class x
   protected final m a(IJSRuntime paramIJSRuntime, int paramInt)
   {
     AppMethodBeat.i(144176);
-    paramIJSRuntime = ((h)paramIJSRuntime).Nt();
+    paramIJSRuntime = ((h)paramIJSRuntime).No();
     AppMethodBeat.o(144176);
     return paramIJSRuntime;
   }
@@ -38,7 +38,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.x
  * JD-Core Version:    0.7.0.1
  */

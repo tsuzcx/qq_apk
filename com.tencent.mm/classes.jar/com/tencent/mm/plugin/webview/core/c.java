@@ -4,11 +4,11 @@ import com.tencent.mm.plugin.webview.stub.e;
 import d.l;
 import java.io.Closeable;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "Ljava/io/Closeable;", "invoker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getInvoker", "()Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "Ljava/io/Closeable;", "invoker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getInvoker", "()Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "webview-sdk_release"})
 public abstract interface c
   extends Closeable
 {
-  public abstract e eNh();
+  public abstract e eQS();
 }
 
 

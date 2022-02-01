@@ -8,19 +8,19 @@ import d.g.b.p;
 import d.l;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/SwipeBackLayoutSettingsAlignmentWC;", "", "()V", "alignSettings", "", "maybeSwipeLayout", "Landroid/view/View;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/SwipeBackLayoutSettingsAlignmentWC;", "", "()V", "alignSettings", "", "maybeSwipeLayout", "Landroid/view/View;", "plugin-appbrand-integration_release"})
 public final class bv
 {
-  public static final bv mfV;
+  public static final bv mkq;
   
   static
   {
     AppMethodBeat.i(50952);
-    mfV = new bv();
+    mkq = new bv();
     AppMethodBeat.o(50952);
   }
   
-  public static final void cK(View paramView)
+  public static final void cL(View paramView)
   {
     AppMethodBeat.i(50951);
     if (!(paramView instanceof SwipeBackLayout)) {

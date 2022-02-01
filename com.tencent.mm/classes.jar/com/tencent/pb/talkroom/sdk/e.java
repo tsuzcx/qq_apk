@@ -8,29 +8,29 @@ public abstract interface e
   
   public abstract int a(int paramInt1, int paramInt2, c paramc);
   
-  public abstract int aaf();
+  public abstract int aao();
   
-  public abstract boolean c(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  public abstract boolean d(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract boolean dpj();
+  public abstract int dsA();
   
-  public abstract int dpk();
+  public abstract int dsB();
   
-  public abstract int dpl();
+  public abstract int dsC();
   
-  public abstract boolean dpm();
+  public abstract boolean dsu();
   
-  public abstract boolean dpn();
+  public abstract int dsv();
   
-  public abstract int dpo();
+  public abstract int dsw();
   
-  public abstract int dpp();
+  public abstract boolean dsx();
   
-  public abstract int dpq();
+  public abstract boolean dsy();
   
-  public abstract int dpr();
+  public abstract int dsz();
   
-  public abstract boolean oM(boolean paramBoolean);
+  public abstract boolean oT(boolean paramBoolean);
 }
 
 

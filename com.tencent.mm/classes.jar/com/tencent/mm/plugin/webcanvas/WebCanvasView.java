@@ -15,14 +15,15 @@ import com.tencent.magicbrush.ui.MBViewManager;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.magicbrush.ui.MagicBrushView.b;
 import com.tencent.magicbrush.ui.MagicBrushView.j;
-import com.tencent.magicbrush.utils.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.ac.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 import d.n.n;
 import d.z;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,526 +31,460 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasNoneLifecycleObserver;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasLifecycleObserver;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MODE_MASK", "MODE_MASK_PERSIST", "TAG", "", "canvasId", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "setJsEngine", "(Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;)V", "lastCanvasId", "layoutListener", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "magicBrushView", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "getMagicBrushView", "()Lcom/tencent/magicbrush/ui/MagicBrushView;", "setMagicBrushView", "(Lcom/tencent/magicbrush/ui/MagicBrushView;)V", "measured", "", "getMeasured", "()Z", "setMeasured", "(Z)V", "popupCloseListener", "Lkotlin/Function1;", "", "Lcom/tencent/mm/plugin/webcanvas/PopupCloseListener;", "popupListener", "Lkotlin/Function10;", "Lkotlin/Function0;", "Lcom/tencent/mm/plugin/webcanvas/PopupListener;", "popupWindow", "Landroid/widget/PopupWindow;", "getPopupWindow", "()Landroid/widget/PopupWindow;", "setPopupWindow", "(Landroid/widget/PopupWindow;)V", "resizeListener", "Lkotlin/Function3;", "Lcom/tencent/mm/plugin/webcanvas/ResizeListener;", "init", "type", "data", "parent", "Landroid/view/View;", "onAttachedToWindow", "onDestroy", "onDetachedFromWindow", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "onScreenShot", "onScroll", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "popup", "popupMagicBrushView", "width", "height", "left", "top", "mode", "color", "onOuterClick", "onDismiss", "webview-sdk_release"})
-public class WebCanvasView
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasNoneLifecycleObserver;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasLifecycleObserver;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MODE_MASK", "MODE_MASK_PERSIST", "TAG", "", "canvasId", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "lastCanvasId", "lastHeight", "getLastHeight", "()I", "setLastHeight", "(I)V", "lastWidth", "getLastWidth", "setLastWidth", "layoutListener", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "magicBrushView", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "getMagicBrushView", "()Lcom/tencent/magicbrush/ui/MagicBrushView;", "setMagicBrushView", "(Lcom/tencent/magicbrush/ui/MagicBrushView;)V", "measured", "", "getMeasured", "()Z", "setMeasured", "(Z)V", "popupCloseListener", "Lkotlin/Function1;", "", "Lcom/tencent/mm/plugin/webcanvas/PopupCloseListener;", "popupListener", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasView$PopupListenerWrapper;", "popupWindow", "Landroid/widget/PopupWindow;", "getPopupWindow", "()Landroid/widget/PopupWindow;", "setPopupWindow", "(Landroid/widget/PopupWindow;)V", "resizeListener", "Lkotlin/Function3;", "Lcom/tencent/mm/plugin/webcanvas/ResizeListener;", "weakReference", "Ljava/lang/ref/WeakReference;", "kotlin.jvm.PlatformType", "getWeakReference", "()Ljava/lang/ref/WeakReference;", "setWeakReference", "(Ljava/lang/ref/WeakReference;)V", "init", "type", "data", "parent", "Landroid/view/View;", "onAttachedToWindow", "onDestroy", "onDetachedFromWindow", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "onScreenShot", "onScroll", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "popup", "popupMagicBrushView", "width", "height", "left", "top", "mode", "color", "onOuterClick", "Lkotlin/Function0;", "onDismiss", "PopupListenerWrapper", "webview-sdk_release"})
+public abstract class WebCanvasView
   extends FrameLayout
-  implements c, e
+  implements d, f
 {
-  protected MagicBrushView Dzj;
-  protected b Dzk;
-  private String Dzl;
-  private boolean Dzm;
-  private PopupWindow Dzn;
-  private final ViewTreeObserver.OnGlobalLayoutListener Dzo;
-  private final d.g.a.q<String, Integer, Integer, z> Dzp;
-  private final d.g.a.c<String, String, Integer, Integer, Integer, Integer, Integer, Integer, d.g.a.a<z>, d.g.a.a<z>, Integer> Dzq;
-  private final d.g.a.b<String, z> Dzr;
-  private final int Dzs;
-  private final int Dzt;
-  private final String TAG;
-  private String ktn;
+  protected MagicBrushView DQS;
+  private String DQT = "none";
+  private boolean DQU;
+  private PopupWindow DQV;
+  private final ViewTreeObserver.OnGlobalLayoutListener DQW;
+  private final d.g.a.q<String, Integer, Integer, z> DQX;
+  private final d.g.a.b<String, z> DQZ;
+  private final int DRa;
+  private final int DRb;
+  private final f Jid;
+  private final String TAG = "MicroMsg.WebCanvasView" + hashCode();
+  private WeakReference<Context> cyH;
+  private String kwD = "";
+  private int nmb;
+  private int nmc;
   
   public WebCanvasView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, (byte)0);
   }
   
-  public WebCanvasView(final Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public WebCanvasView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(214165);
-    this.TAG = "MicroMsg.WebCanvasView";
-    this.ktn = "";
-    this.Dzl = "none";
-    this.Dzo = ((ViewTreeObserver.OnGlobalLayoutListener)new b(this));
-    this.Dzp = ((d.g.a.q)new g(this));
-    this.Dzq = ((d.g.a.c)new f(this, paramContext));
-    this.Dzr = ((d.g.a.b)new e(this));
-    this.Dzs = 1;
-    this.Dzt = 2;
-    AppMethodBeat.o(214165);
+    this.cyH = new WeakReference(paramContext);
+    this.DQW = ((ViewTreeObserver.OnGlobalLayoutListener)new b(this));
+    this.DQX = ((d.g.a.q)new g(this));
+    paramContext = new f();
+    p.h(this, "view");
+    paramContext.cyH = new WeakReference(this);
+    this.Jid = paramContext;
+    this.DQZ = ((d.g.a.b)new e(this));
+    this.DRa = 1;
+    this.DRb = 2;
   }
   
-  public final void a(String paramString1, b paramb, String paramString2, String paramString3, final View paramView)
+  public final void a(String paramString1, String paramString2, String paramString3, final View paramView)
   {
-    AppMethodBeat.i(214158);
     p.h(paramString1, "canvasId");
-    p.h(paramb, "jsEngine");
     p.h(paramString2, "type");
     p.h(paramString3, "data");
     p.h(paramView, "parent");
-    this.ktn = paramString1;
-    this.Dzk = paramb;
+    this.kwD = paramString1;
+    Object localObject = getJsEngine();
     int i = getMeasuredWidth();
     p.h(paramString1, "canvasId");
-    Object localObject = paramb.aFx(b.fr(paramString1, i));
+    localObject = ((c)localObject).aGR(c.fA(paramString1, i));
     if (localObject != null) {
-      if ((((b.k)localObject).width == 0) || (((b.k)localObject).height == 0) || (getWidth() == ((b.k)localObject).width) || (getHeight() == ((b.k)localObject).height)) {
-        break label261;
+      if ((((c.k)localObject).width == 0) || (((c.k)localObject).height == 0) || (getWidth() == ((c.k)localObject).width) || (getHeight() == ((c.k)localObject).height)) {
+        break label243;
       }
     }
-    label261:
+    label243:
     for (i = 1;; i = 0)
     {
       if (i == 1)
       {
         ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-        localLayoutParams.width = ((b.k)localObject).width;
-        localLayoutParams.height = ((b.k)localObject).height;
-        ad.i(this.TAG, "resume:" + localLayoutParams.width + ", " + localLayoutParams.height);
+        localLayoutParams.width = ((c.k)localObject).width;
+        localLayoutParams.height = ((c.k)localObject).height;
+        ae.i(this.TAG, "resume:" + localLayoutParams.width + ", " + localLayoutParams.height);
         setLayoutParams(localLayoutParams);
       }
-      ad.i(this.TAG, "init:" + paramString1 + ", inited=" + this.Dzl);
-      if (!p.i(this.Dzl, paramString1)) {
+      ae.i(this.TAG, "init:" + paramString1 + ", inited=" + this.DQT);
+      if (!p.i(this.DQT, paramString1)) {
         break;
       }
-      AppMethodBeat.o(214158);
       return;
     }
-    if ((p.i(this.Dzl, "none") ^ true))
+    if ((p.i(this.DQT, "none") ^ true))
     {
-      localObject = this.Dzj;
+      localObject = this.DQS;
       if (localObject == null) {
-        p.bcb("magicBrushView");
+        p.bdF("magicBrushView");
       }
       removeView((View)localObject);
     }
-    this.Dzl = paramString1;
-    localObject = getContext();
-    p.g(localObject, "context");
-    this.Dzj = paramb.bw((Context)localObject, paramString1);
-    localObject = this.Dzj;
-    if (localObject == null) {
-      p.bcb("magicBrushView");
-    }
-    paramb.a(paramString2, paramString1, paramString3, ((MagicBrushView)localObject).getVirtualElementId(), (a)new a(this, paramView));
-    paramString1 = this.Dzj;
+    this.DQT = paramString1;
+    paramString1 = getJsEngine().a(paramString2, paramString1, paramString3, getContext(), (a)new a(this, paramView));
     if (paramString1 == null) {
-      p.bcb("magicBrushView");
+      p.gkB();
+    }
+    this.DQS = paramString1;
+    paramString1 = this.DQS;
+    if (paramString1 == null) {
+      p.bdF("magicBrushView");
     }
     addView((View)paramString1);
-    AppMethodBeat.o(214158);
   }
   
-  public final void bYv()
+  public final void bZK()
   {
-    AppMethodBeat.i(214161);
-    b localb = this.Dzk;
-    if (localb == null) {
-      p.bcb("jsEngine");
-    }
-    String str = this.ktn;
+    c localc = getJsEngine();
+    String str = this.kwD;
     p.h(str, "canvasId");
-    ad.i(localb.TAG, "onScreenShot ".concat(String.valueOf(str)));
-    b.a(localb, "onScreenShot", str, 0, null, 12);
-    AppMethodBeat.o(214161);
+    ae.i(localc.TAG, "onScreenShot ".concat(String.valueOf(str)));
+    c.a(localc, "onScreenShot", str, 0, null, 12);
   }
   
-  public final void eLm()
+  public final void eOU()
   {
-    AppMethodBeat.i(214160);
-    PopupWindow localPopupWindow = this.Dzn;
-    if (localPopupWindow != null)
-    {
+    PopupWindow localPopupWindow = this.DQV;
+    if (localPopupWindow != null) {
       localPopupWindow.dismiss();
-      AppMethodBeat.o(214160);
-      return;
     }
-    AppMethodBeat.o(214160);
   }
   
-  public final void eLn()
+  public final void eOV()
   {
-    AppMethodBeat.i(214159);
-    Object localObject = this.Dzk;
-    if (localObject == null) {
-      p.bcb("jsEngine");
-    }
-    String str = this.ktn;
+    Object localObject = getJsEngine();
+    String str = this.kwD;
     p.h(str, "canvasId");
-    b.a((b)localObject, "scroll", str, 0, null, 12);
-    localObject = this.Dzn;
-    if (localObject != null)
-    {
+    c.a((c)localObject, "scroll", str, 0, null, 12);
+    localObject = this.DQV;
+    if (localObject != null) {
       ((PopupWindow)localObject).dismiss();
-      AppMethodBeat.o(214159);
-      return;
     }
-    AppMethodBeat.o(214159);
   }
   
-  protected final b getJsEngine()
+  protected abstract c getJsEngine();
+  
+  public final int getLastHeight()
   {
-    AppMethodBeat.i(214153);
-    b localb = this.Dzk;
-    if (localb == null) {
-      p.bcb("jsEngine");
-    }
-    AppMethodBeat.o(214153);
-    return localb;
+    return this.nmc;
+  }
+  
+  public final int getLastWidth()
+  {
+    return this.nmb;
   }
   
   protected final MagicBrushView getMagicBrushView()
   {
-    AppMethodBeat.i(214151);
-    MagicBrushView localMagicBrushView = this.Dzj;
+    MagicBrushView localMagicBrushView = this.DQS;
     if (localMagicBrushView == null) {
-      p.bcb("magicBrushView");
+      p.bdF("magicBrushView");
     }
-    AppMethodBeat.o(214151);
     return localMagicBrushView;
   }
   
   protected final boolean getMeasured()
   {
-    return this.Dzm;
+    return this.DQU;
   }
   
   protected final PopupWindow getPopupWindow()
   {
-    return this.Dzn;
+    return this.DQV;
+  }
+  
+  public final WeakReference<Context> getWeakReference()
+  {
+    return this.cyH;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(214156);
-    ad.i(this.TAG, "onAttachedToWindow#" + this.ktn + ' ' + getMeasuredWidth());
+    ae.i(this.TAG, "onAttachedToWindow#" + this.kwD + ' ' + getMeasuredWidth());
     if (getMeasuredWidth() == 0) {
-      this.Dzm = false;
+      this.DQU = false;
     }
     for (;;)
     {
-      Object localObject1 = this.Dzk;
-      if (localObject1 == null) {
-        p.bcb("jsEngine");
-      }
-      Object localObject2 = this.Dzp;
+      Object localObject1 = getJsEngine();
+      Object localObject2 = this.DQX;
       p.h(localObject2, "listener");
-      if (!((b)localObject1).DxZ.contains(localObject2)) {
-        ((b)localObject1).DxZ.add(localObject2);
+      if (!((c)localObject1).DPG.contains(localObject2)) {
+        ((c)localObject1).DPG.add(localObject2);
       }
-      localObject1 = this.Dzk;
-      if (localObject1 == null) {
-        p.bcb("jsEngine");
-      }
-      localObject2 = this.Dzq;
+      localObject1 = getJsEngine();
+      localObject2 = (d.g.a.c)this.Jid;
       p.h(localObject2, "listener");
-      if (!((b)localObject1).Dya.contains(localObject2)) {
-        ((b)localObject1).Dya.add(localObject2);
+      if (!((c)localObject1).DPH.contains(localObject2)) {
+        ((c)localObject1).DPH.add(localObject2);
       }
-      localObject1 = this.Dzk;
-      if (localObject1 == null) {
-        p.bcb("jsEngine");
-      }
-      localObject2 = this.Dzr;
+      localObject1 = getJsEngine();
+      localObject2 = this.DQZ;
       p.h(localObject2, "listener");
-      if (!((b)localObject1).Dyb.contains(localObject2)) {
-        ((b)localObject1).Dyb.add(localObject2);
+      if (!((c)localObject1).DPI.contains(localObject2)) {
+        ((c)localObject1).DPI.add(localObject2);
       }
-      getViewTreeObserver().addOnGlobalLayoutListener(this.Dzo);
+      getViewTreeObserver().addOnGlobalLayoutListener(this.DQW);
       localObject2 = getContext();
       localObject1 = localObject2;
-      if (!(localObject2 instanceof d)) {
+      if (!(localObject2 instanceof e)) {
         localObject1 = null;
       }
-      localObject1 = (d)localObject1;
+      localObject1 = (e)localObject1;
       if (localObject1 != null) {
-        ((d)localObject1).a((e)this);
+        ((e)localObject1).a((f)this);
       }
       localObject2 = getContext();
       localObject1 = localObject2;
-      if (!(localObject2 instanceof d)) {
+      if (!(localObject2 instanceof e)) {
         localObject1 = null;
       }
-      localObject1 = (d)localObject1;
+      localObject1 = (e)localObject1;
       if (localObject1 != null) {
-        ((d)localObject1).a((c)this);
+        ((e)localObject1).a((d)this);
       }
-      localObject1 = this.Dzn;
+      localObject1 = this.DQV;
       if (localObject1 != null) {
         ((PopupWindow)localObject1).dismiss();
       }
       super.onAttachedToWindow();
-      AppMethodBeat.o(214156);
       return;
-      this.Dzm = true;
-      localObject1 = this.Dzk;
-      if (localObject1 == null) {
-        p.bcb("jsEngine");
-      }
-      localObject2 = this.ktn;
-      MagicBrushView localMagicBrushView = this.Dzj;
+      this.DQU = true;
+      localObject1 = getJsEngine();
+      localObject2 = this.kwD;
+      MagicBrushView localMagicBrushView = this.DQS;
       if (localMagicBrushView == null) {
-        p.bcb("magicBrushView");
+        p.bdF("magicBrushView");
       }
-      ((b)localObject1).fs((String)localObject2, localMagicBrushView.getVirtualElementId());
+      ((c)localObject1).fB((String)localObject2, localMagicBrushView.getVirtualElementId());
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(214162);
-    ??? = this.Dzn;
-    if (??? != null) {
-      ((PopupWindow)???).dismiss();
+    Object localObject1 = this.DQV;
+    if (localObject1 != null) {
+      ((PopupWindow)localObject1).dismiss();
     }
-    Object localObject2 = this.Dzk;
-    if (localObject2 == null) {
-      p.bcb("jsEngine");
-    }
+    localObject1 = getJsEngine();
     for (;;)
     {
       Object localObject5;
-      synchronized (((b)localObject2).Dym)
+      synchronized (((c)localObject1).DPT)
       {
-        localObject4 = ((Map)((b)localObject2).Dym).entrySet().iterator();
+        localObject4 = ((Map)((c)localObject1).DPT).entrySet().iterator();
         if (!((Iterator)localObject4).hasNext()) {
           break;
         }
         localObject5 = (Map.Entry)((Iterator)localObject4).next();
         localObject6 = (String)((Map.Entry)localObject5).getKey();
-        int i = ((b.f)((Map.Entry)localObject5).getValue()).id;
+        int i = ((c.f)((Map.Entry)localObject5).getValue()).id;
         p.h(localObject6, "canvasId");
-        ad.i(((b)localObject2).TAG, "unbind #" + (String)localObject6 + ':' + i);
-        ((b)localObject2).Dyl.remove(localObject6);
-        ((b)localObject2).evaluateJavascript("WeixinCore.unbind(" + i + ')', null);
-        b.a((b)localObject2, "unbind", (String)localObject6, i, null, 8);
-        localObject5 = ((b)localObject2).Dyi.cwM.find(i);
-        if (!f.HH())
-        {
-          localObject2 = (Throwable)new IllegalStateException("Check failed.".toString());
-          AppMethodBeat.o(214162);
-          throw ((Throwable)localObject2);
+        ae.i(((c)localObject1).TAG, "unbind #" + (String)localObject6 + ':' + i);
+        ((c)localObject1).DPS.remove(localObject6);
+        ((c)localObject1).evaluateJavascript("WeixinCore.unbind(" + i + ')', null);
+        c.a((c)localObject1, "unbind", (String)localObject6, i, null, 8);
+        localObject5 = ((c)localObject1).nvp.cxr.find(i);
+        if (!com.tencent.magicbrush.utils.f.HP()) {
+          throw ((Throwable)new IllegalStateException("Check failed.".toString()));
         }
       }
       c.c.i("MagicBrushView", "dlview: destroy this MagicBrushView %s", new Object[] { localObject5 });
-      Object localObject6 = ((MagicBrushView)localObject5).cAf.getSurface();
+      Object localObject6 = ((MagicBrushView)localObject5).cAM.getSurface();
       if (localObject6 != null) {
-        ((MagicBrushView)localObject5).cAl.b(localObject6, false);
+        ((MagicBrushView)localObject5).cAS.b(localObject6, false);
       }
-      ((MagicBrushView)localObject5).cAf.setSurfaceListener(null);
-      localObject6 = ((MagicBrushView)localObject5).cin;
+      ((MagicBrushView)localObject5).cAM.setSurfaceListener(null);
+      localObject6 = ((MagicBrushView)localObject5).cip;
       if (localObject6 == null) {
-        p.bcb("magicbrush");
+        p.bdF("magicbrush");
       }
-      ((com.tencent.magicbrush.d)localObject6).cwM.remove$lib_magicbrush_nano_release((MagicBrushView)localObject5);
+      ((com.tencent.magicbrush.d)localObject6).cxr.remove$lib_magicbrush_nano_release((MagicBrushView)localObject5);
     }
-    localObject3.Dym.clear();
-    Object localObject4 = z.MKo;
-    ??? = localObject3.OdU;
+    localObject2.DPT.clear();
+    Object localObject4 = z.Nhr;
+    ??? = localObject2.DPM;
     if (??? != null)
     {
-      Context localContext = aj.getContext();
-      p.g(localContext, "MMApplicationContext.getContext()");
-      ((com.tencent.mm.plugin.ac.e)???).setContext(localContext);
+      localObject4 = ak.getContext();
+      p.g(localObject4, "MMApplicationContext.getContext()");
+      ((g)???).setContext((Context)localObject4);
     }
-    ad.i(this.TAG, "onDestroy");
-    AppMethodBeat.o(214162);
+    localObject2.DPH.clear();
+    ae.i(this.TAG, "onDestroy");
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(214157);
-    this.Dzm = false;
-    ad.i(this.TAG, "onDetachedFromWindow#" + this.ktn + ':' + getMeasuredWidth());
+    this.DQU = false;
+    ae.i(this.TAG, "onDetachedFromWindow#" + this.kwD + ':' + getMeasuredWidth());
     super.onDetachedFromWindow();
-    Object localObject1 = this.Dzk;
-    if (localObject1 == null) {
-      p.bcb("jsEngine");
-    }
-    Object localObject2 = this.Dzp;
+    Object localObject1 = getJsEngine();
+    Object localObject2 = this.DQX;
     p.h(localObject2, "listener");
-    ((b)localObject1).DxZ.remove(localObject2);
-    localObject1 = this.Dzk;
-    if (localObject1 == null) {
-      p.bcb("jsEngine");
-    }
-    localObject2 = this.Dzq;
+    ((c)localObject1).DPG.remove(localObject2);
+    localObject1 = getJsEngine();
+    localObject2 = (d.g.a.c)this.Jid;
     p.h(localObject2, "listener");
-    ((b)localObject1).Dya.remove(localObject2);
-    localObject1 = this.Dzk;
-    if (localObject1 == null) {
-      p.bcb("jsEngine");
-    }
-    localObject2 = this.Dzr;
+    ((c)localObject1).DPH.remove(localObject2);
+    localObject1 = getJsEngine();
+    localObject2 = this.DQZ;
     p.h(localObject2, "listener");
-    ((b)localObject1).Dyb.remove(localObject2);
-    localObject1 = this.Dzk;
-    if (localObject1 == null) {
-      p.bcb("jsEngine");
-    }
-    localObject2 = this.ktn;
-    MagicBrushView localMagicBrushView = this.Dzj;
+    ((c)localObject1).DPI.remove(localObject2);
+    localObject1 = getJsEngine();
+    localObject2 = this.kwD;
+    MagicBrushView localMagicBrushView = this.DQS;
     if (localMagicBrushView == null) {
-      p.bcb("magicBrushView");
+      p.bdF("magicBrushView");
     }
     int i = localMagicBrushView.getVirtualElementId();
     p.h(localObject2, "canvasId");
-    ad.i(((b)localObject1).TAG, "detach #".concat(String.valueOf(localObject2)));
-    b.a((b)localObject1, "detach", (String)localObject2, i, null, 8);
-    getViewTreeObserver().removeOnGlobalLayoutListener(this.Dzo);
+    ae.i(((c)localObject1).TAG, "detach #".concat(String.valueOf(localObject2)));
+    c.a((c)localObject1, "detach", (String)localObject2, i, null, 8);
+    getViewTreeObserver().removeOnGlobalLayoutListener(this.DQW);
     localObject2 = getContext();
     localObject1 = localObject2;
-    if (!(localObject2 instanceof d)) {
+    if (!(localObject2 instanceof e)) {
       localObject1 = null;
     }
-    localObject1 = (d)localObject1;
+    localObject1 = (e)localObject1;
     if (localObject1 != null) {
-      ((d)localObject1).b((e)this);
+      ((e)localObject1).b((f)this);
     }
-    localObject1 = this.Dzn;
-    if (localObject1 != null)
-    {
+    localObject1 = this.DQV;
+    if (localObject1 != null) {
       ((PopupWindow)localObject1).dismiss();
-      AppMethodBeat.o(214157);
-      return;
     }
-    AppMethodBeat.o(214157);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214155);
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.Dzm)
+    if (!this.DQU)
     {
-      this.Dzm = true;
-      b localb = this.Dzk;
-      if (localb == null) {
-        p.bcb("jsEngine");
-      }
-      String str = this.ktn;
-      MagicBrushView localMagicBrushView = this.Dzj;
+      this.DQU = true;
+      c localc = getJsEngine();
+      String str = this.kwD;
+      MagicBrushView localMagicBrushView = this.DQS;
       if (localMagicBrushView == null) {
-        p.bcb("magicBrushView");
+        p.bdF("magicBrushView");
       }
-      localb.fs(str, localMagicBrushView.getVirtualElementId());
+      localc.fB(str, localMagicBrushView.getVirtualElementId());
     }
-    ad.i(this.TAG, "onMeasure#" + this.ktn + ' ' + getMeasuredWidth());
-    AppMethodBeat.o(214155);
+    ae.i(this.TAG, "onMeasure#" + this.kwD + ' ' + getMeasuredWidth());
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(214163);
-    if (!n.aE((CharSequence)this.ktn)) {}
+    if (!n.aD((CharSequence)this.kwD)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        b localb = this.Dzk;
-        if (localb == null) {
-          p.bcb("jsEngine");
-        }
-        String str = this.ktn;
-        MagicBrushView localMagicBrushView = this.Dzj;
+        c localc = getJsEngine();
+        String str = this.kwD;
+        MagicBrushView localMagicBrushView = this.DQS;
         if (localMagicBrushView == null) {
-          p.bcb("magicBrushView");
+          p.bdF("magicBrushView");
         }
         i = localMagicBrushView.getVirtualElementId();
         p.h(str, "canvasId");
-        ad.i(localb.TAG, "pause #" + str + ':' + i);
-        b.a(localb, "pause", str, i, null, 8);
+        ae.i(localc.TAG, "pause #" + str + ':' + i);
+        c.a(localc, "pause", str, i, null, 8);
       }
-      AppMethodBeat.o(214163);
       return;
     }
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(214164);
-    if (!n.aE((CharSequence)this.ktn)) {}
+    if (!n.aD((CharSequence)this.kwD)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        b localb = this.Dzk;
-        if (localb == null) {
-          p.bcb("jsEngine");
-        }
-        String str = this.ktn;
-        MagicBrushView localMagicBrushView = this.Dzj;
+        c localc = getJsEngine();
+        String str = this.kwD;
+        MagicBrushView localMagicBrushView = this.DQS;
         if (localMagicBrushView == null) {
-          p.bcb("magicBrushView");
+          p.bdF("magicBrushView");
         }
         i = localMagicBrushView.getVirtualElementId();
         p.h(str, "canvasId");
-        ad.i(localb.TAG, "resume #" + str + ':' + i);
-        b.a(localb, "resume", str, i, null, 8);
+        ae.i(localc.TAG, "resume #" + str + ':' + i);
+        localc.DPL.fF(str, i);
+        c.a(localc, "resume", str, i, null, 8);
       }
-      AppMethodBeat.o(214164);
       return;
     }
   }
   
-  protected final void setJsEngine(b paramb)
+  public final void setLastHeight(int paramInt)
   {
-    AppMethodBeat.i(214154);
-    p.h(paramb, "<set-?>");
-    this.Dzk = paramb;
-    AppMethodBeat.o(214154);
+    this.nmc = paramInt;
+  }
+  
+  public final void setLastWidth(int paramInt)
+  {
+    this.nmb = paramInt;
   }
   
   protected final void setMagicBrushView(MagicBrushView paramMagicBrushView)
   {
-    AppMethodBeat.i(214152);
     p.h(paramMagicBrushView, "<set-?>");
-    this.Dzj = paramMagicBrushView;
-    AppMethodBeat.o(214152);
+    this.DQS = paramMagicBrushView;
   }
   
   protected final void setMeasured(boolean paramBoolean)
   {
-    this.Dzm = paramBoolean;
+    this.DQU = paramBoolean;
   }
   
   protected final void setPopupWindow(PopupWindow paramPopupWindow)
   {
-    this.Dzn = paramPopupWindow;
+    this.DQV = paramPopupWindow;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webcanvas/WebCanvasView$init$3", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasDimension;", "height", "", "getHeight", "()I", "offsetHeight", "getOffsetHeight", "offsetTop", "getOffsetTop", "width", "getWidth", "webview-sdk_release"})
+  public final void setWeakReference(WeakReference<Context> paramWeakReference)
+  {
+    p.h(paramWeakReference, "<set-?>");
+    this.cyH = paramWeakReference;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webcanvas/WebCanvasView$init$3", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasDimension;", "height", "", "getHeight", "()I", "offsetHeight", "getOffsetHeight", "offsetTop", "getOffsetTop", "width", "getWidth", "webview-sdk_release"})
   public static final class a
     implements a
   {
     a(View paramView) {}
     
-    public final int eKT()
+    public final int eOB()
     {
-      AppMethodBeat.i(214140);
-      int i = com.tencent.mm.ad.c.cw(this.Dzu)[1];
-      int j = com.tencent.mm.ad.c.cw(paramView)[1];
-      AppMethodBeat.o(214140);
+      AppMethodBeat.i(213983);
+      int i = com.tencent.mm.ac.c.cw(this.DRc)[1];
+      int j = com.tencent.mm.ac.c.cw(paramView)[1];
+      AppMethodBeat.o(213983);
       return i - j;
     }
     
-    public final int eKU()
+    public final int eOC()
     {
-      AppMethodBeat.i(214141);
+      AppMethodBeat.i(213984);
       int i = paramView.getMeasuredHeight();
-      AppMethodBeat.o(214141);
+      AppMethodBeat.o(213984);
       return i;
     }
     
     public final int getHeight()
     {
-      AppMethodBeat.i(214139);
-      int i = this.Dzu.getMeasuredHeight();
-      AppMethodBeat.o(214139);
+      AppMethodBeat.i(213982);
+      int i = this.DRc.getMeasuredHeight();
+      AppMethodBeat.o(213982);
       return i;
     }
     
     public final int getWidth()
     {
-      AppMethodBeat.i(214138);
-      int i = this.Dzu.getMeasuredWidth();
-      AppMethodBeat.o(214138);
+      AppMethodBeat.i(213981);
+      int i = this.DRc.getMeasuredWidth();
+      AppMethodBeat.o(213981);
       return i;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onGlobalLayout"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onGlobalLayout"})
   static final class b
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
@@ -557,13 +492,18 @@ public class WebCanvasView
     
     public final void onGlobalLayout()
     {
-      AppMethodBeat.i(214142);
-      this.Dzu.getJsEngine().ft(WebCanvasView.b(this.Dzu), this.Dzu.getMagicBrushView().getVirtualElementId());
-      AppMethodBeat.o(214142);
+      AppMethodBeat.i(213985);
+      ae.i(WebCanvasView.a(this.DRc), "OnGlobalLayout:#" + WebCanvasView.b(this.DRc) + ", " + this.DRc.getWidth() + ", " + this.DRc.getHeight());
+      if ((this.DRc.getLastHeight() != this.DRc.getHeight()) || (this.DRc.getLastWidth() != this.DRc.getWidth())) {
+        this.DRc.getJsEngine().fC(WebCanvasView.b(this.DRc), this.DRc.getMagicBrushView().getVirtualElementId());
+      }
+      this.DRc.setLastHeight(this.DRc.getHeight());
+      this.DRc.setLastWidth(this.DRc.getWidth());
+      AppMethodBeat.o(213985);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss", "com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$3$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss", "com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$3$1"})
   static final class c
     implements PopupWindow.OnDismissListener
   {
@@ -571,14 +511,14 @@ public class WebCanvasView
     
     public final void onDismiss()
     {
-      AppMethodBeat.i(214143);
-      ad.i(WebCanvasView.a(this.Dzu), "popup on dismiss");
-      this.Dzw.invoke();
-      AppMethodBeat.o(214143);
+      AppMethodBeat.i(213986);
+      ae.i(WebCanvasView.a(this.DRc), "popup on dismiss");
+      this.DRe.invoke();
+      AppMethodBeat.o(213986);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$2$1$2", "com/tencent/mm/plugin/webcanvas/WebCanvasView$$special$$inlined$apply$lambda$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$2$1$2", "com/tencent/mm/plugin/webcanvas/WebCanvasView$$special$$inlined$apply$lambda$1"})
   static final class d
     implements View.OnClickListener
   {
@@ -586,19 +526,19 @@ public class WebCanvasView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(214144);
+      AppMethodBeat.i(213987);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      if (this.DzC) {
-        this.DzD.invoke();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      if (this.DRk) {
+        this.DRl.invoke();
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webcanvas/WebCanvasView$popup$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(214144);
+        AppMethodBeat.o(213987);
         return;
-        paramView = this.Dzu.getPopupWindow();
+        paramView = this.DRc.getPopupWindow();
         if (paramView != null) {
           paramView.dismiss();
         }
@@ -606,7 +546,7 @@ public class WebCanvasView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "anchorId", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "anchorId", "", "invoke"})
   static final class e
     extends d.g.b.q
     implements d.g.a.b<String, z>
@@ -617,18 +557,14 @@ public class WebCanvasView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "popupCanvasId", "", "anchorId", "width", "height", "left", "top", "mode", "color", "onOuterClick", "Lkotlin/Function0;", "", "onDismiss", "invoke"})
-  static final class f
-    extends d.g.b.q
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasView$PopupListenerWrapper;", "Lkotlin/Function10;", "", "", "Lkotlin/Function0;", "", "Lcom/tencent/mm/plugin/webcanvas/PopupListener;", "()V", "weakReference", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "getWeakReference", "()Ljava/lang/ref/WeakReference;", "setWeakReference", "(Ljava/lang/ref/WeakReference;)V", "invoke", "popupCanvasId", "anchorId", "width", "height", "left", "top", "mode", "color", "onOuterClick", "onDismiss", "(Ljava/lang/String;Ljava/lang/String;IIIIIILkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Ljava/lang/Integer;", "setWebCanvasView", "view", "webview-sdk_release"})
+  public static final class f
     implements d.g.a.c<String, String, Integer, Integer, Integer, Integer, Integer, Integer, d.g.a.a<? extends z>, d.g.a.a<? extends z>, Integer>
   {
-    f(WebCanvasView paramWebCanvasView, Context paramContext)
-    {
-      super();
-    }
+    WeakReference<WebCanvasView> cyH;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "resizeCanvasId", "", "width", "", "height", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "resizeCanvasId", "", "width", "", "height", "invoke"})
   static final class g
     extends d.g.b.q
     implements d.g.a.q<String, Integer, Integer, z>

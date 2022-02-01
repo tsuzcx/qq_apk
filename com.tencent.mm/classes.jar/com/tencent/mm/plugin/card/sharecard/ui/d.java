@@ -10,18 +10,18 @@ import java.util.ArrayList;
 public final class d
   implements a
 {
-  private c oDa;
+  private c oJC;
   
   public d(c paramc)
   {
-    this.oDa = paramc;
+    this.oJC = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113080);
-    if (this.oDa != null) {
-      am.bUN().add(this.oDa);
+    if (this.oJC != null) {
+      am.bWc().add(this.oJC);
     }
     AppMethodBeat.o(113080);
   }
@@ -29,13 +29,13 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113081);
-    if (this.oDa != null)
+    if (this.oJC != null)
     {
-      am.bUN().remove(this.oDa);
-      Object localObject = this.oDa;
-      ((c)localObject).oCY.release();
-      ((c)localObject).oCY = null;
-      ((c)localObject).det();
+      am.bWc().remove(this.oJC);
+      Object localObject = this.oJC;
+      ((c)localObject).oJA.release();
+      ((c)localObject).oJA = null;
+      ((c)localObject).dhl();
       int i = (int)(((c)localObject).endTime - ((c)localObject).beginTime);
       localObject = new ArrayList();
       IDKey localIDKey1 = new IDKey();
@@ -48,8 +48,8 @@ public final class d
       localIDKey2.SetValue(i);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      g.yhR.b((ArrayList)localObject, true);
-      this.oDa = null;
+      g.yxI.b((ArrayList)localObject, true);
+      this.oJC = null;
     }
     AppMethodBeat.o(113081);
   }
@@ -57,8 +57,8 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113082);
-    if (this.oDa != null) {
-      this.oDa.a(null, null);
+    if (this.oJC != null) {
+      this.oJC.a(null, null);
     }
     AppMethodBeat.o(113082);
   }

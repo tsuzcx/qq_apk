@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -26,10 +26,10 @@ public class SettingsVoipSoundVibrateUI
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.screen.cP("settings_voip_sound", false);
-    ((CheckBoxPreference)this.screen.aVD("settings_voip_sound")).oB = com.tencent.mm.n.f.abS();
-    this.screen.cP("settings_voip_shake", false);
-    ((CheckBoxPreference)this.screen.aVD("settings_voip_shake")).oB = com.tencent.mm.n.f.abT();
+    this.screen.cT("settings_voip_sound", false);
+    ((CheckBoxPreference)this.screen.aXe("settings_voip_sound")).setChecked(com.tencent.mm.n.f.acb());
+    this.screen.cT("settings_voip_shake", false);
+    ((CheckBoxPreference)this.screen.aXe("settings_voip_shake")).setChecked(com.tencent.mm.n.f.acc());
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -81,7 +81,7 @@ public class SettingsVoipSoundVibrateUI
     {
       com.tencent.mm.n.f.cY(((CheckBoxPreference)paramPreference).isChecked());
       initView();
-      bt.F(this, ((CheckBoxPreference)paramPreference).isChecked());
+      bu.F(this, ((CheckBoxPreference)paramPreference).isChecked());
       AppMethodBeat.o(74565);
       return true;
     }

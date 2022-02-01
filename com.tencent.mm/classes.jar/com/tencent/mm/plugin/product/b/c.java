@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.product.b;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.product.c.f;
 import com.tencent.mm.plugin.product.c.h;
 import com.tencent.mm.plugin.product.c.j;
 import com.tencent.mm.plugin.product.c.k;
 import com.tencent.mm.plugin.product.c.l;
-import com.tencent.mm.protocal.protobuf.aew;
-import com.tencent.mm.protocal.protobuf.ahk;
+import com.tencent.mm.protocal.protobuf.aff;
+import com.tencent.mm.protocal.protobuf.ahu;
 import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.protocal.protobuf.bsj;
-import com.tencent.mm.protocal.protobuf.cmh;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.cwy;
-import com.tencent.mm.protocal.protobuf.dex;
+import com.tencent.mm.protocal.protobuf.btd;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.protocal.protobuf.cxs;
+import com.tencent.mm.protocal.protobuf.dfr;
 import com.tencent.mm.protocal.protobuf.di;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -35,33 +35,33 @@ import java.util.Set;
 public final class c
 {
   public int mCount;
-  private d wLG;
-  public m wLH;
-  public List<n> wLI;
-  public String wLJ;
-  public String wLK;
-  public String wLL;
-  public ahk wLM;
-  public di wLN;
-  public crm wLO;
-  public String wLP;
-  public String wLQ;
-  public int wLR;
-  public Map<String, e> wLS;
-  public Map<String, String> wLT;
-  public LinkedList<ahk> wLU;
-  public LinkedList<az> wLV;
-  public e wLW;
-  private com.tencent.mm.plugin.product.ui.e wLX;
-  public Map<String, LinkedList<aew>> wLY;
+  public ahu xbA;
+  public di xbB;
+  public csg xbC;
+  public String xbD;
+  public String xbE;
+  public int xbF;
+  public Map<String, e> xbG;
+  public Map<String, String> xbH;
+  public LinkedList<ahu> xbI;
+  public LinkedList<az> xbJ;
+  public e xbK;
+  private com.tencent.mm.plugin.product.ui.e xbL;
+  public Map<String, LinkedList<aff>> xbM;
+  private d xbu;
+  public m xbv;
+  public List<n> xbw;
+  public String xbx;
+  public String xby;
+  public String xbz;
   
   public c()
   {
     AppMethodBeat.i(66858);
-    this.wLG = null;
+    this.xbu = null;
     this.mCount = 1;
-    this.wLT = new HashMap();
-    this.wLY = null;
+    this.xbH = new HashMap();
+    this.xbM = null;
     AppMethodBeat.o(66858);
   }
   
@@ -87,90 +87,34 @@ public final class c
         j += 1;
       }
       localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf(";"));
-      e locale = (e)this.wLS.get(localStringBuilder.toString());
+      e locale = (e)this.xbG.get(localStringBuilder.toString());
       if (locale != null)
       {
-        if (locale.wMa < paraml.wMM) {
-          locale.wMa = paraml.wMM;
+        if (locale.xbO < paraml.xcA) {
+          locale.xbO = paraml.xcA;
         }
-        if (locale.wMb > paraml.wMM) {
-          locale.wMb = paraml.wMM;
+        if (locale.xbP > paraml.xcA) {
+          locale.xbP = paraml.xcA;
         }
-        locale.wMj += paraml.wMj;
+        locale.xbX += paraml.xbX;
       }
       for (;;)
       {
         i += 1;
         break;
         locale = new e();
-        locale.wMa = paraml.wMM;
-        locale.wMb = paraml.wMM;
-        locale.wMj = paraml.wMj;
-        locale.wMN = paraml.wMN;
+        locale.xbO = paraml.xcA;
+        locale.xbP = paraml.xcA;
+        locale.xbX = paraml.xbX;
+        locale.xcB = paraml.xcB;
         locale.url = paraml.url;
-        this.wLS.put(localStringBuilder.toString(), locale);
+        this.xbG.put(localStringBuilder.toString(), locale);
       }
     }
     AppMethodBeat.o(66881);
   }
   
-  private void aJ(LinkedList<l> paramLinkedList)
-  {
-    AppMethodBeat.i(66880);
-    this.wLS = new HashMap();
-    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
-    {
-      AppMethodBeat.o(66880);
-      return;
-    }
-    int j = paramLinkedList.size();
-    int i = 0;
-    while (i < j)
-    {
-      l locall = (l)paramLinkedList.get(i);
-      a(locall.wML.split(";"), locall);
-      i += 1;
-    }
-    dzK();
-    AppMethodBeat.o(66880);
-  }
-  
-  private int auA(String paramString)
-  {
-    AppMethodBeat.i(66869);
-    int k = 0;
-    int i = 0;
-    int j = k;
-    if (this.wLY != null)
-    {
-      j = k;
-      if (this.wLY.size() > 0)
-      {
-        paramString = (LinkedList)this.wLY.get(paramString);
-        j = k;
-        if (paramString != null)
-        {
-          j = k;
-          if (paramString.size() > 0)
-          {
-            paramString = paramString.iterator();
-            for (;;)
-            {
-              j = i;
-              if (!paramString.hasNext()) {
-                break;
-              }
-              i = ((aew)paramString.next()).FMH + i;
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(66869);
-    return j;
-  }
-  
-  public static String az(Map<String, String> paramMap)
+  public static String aF(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66879);
     if ((paramMap == null) || (paramMap.isEmpty()))
@@ -193,16 +137,72 @@ public final class c
     return paramMap;
   }
   
-  public final void MA(int paramInt)
+  private void aK(LinkedList<l> paramLinkedList)
+  {
+    AppMethodBeat.i(66880);
+    this.xbG = new HashMap();
+    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
+    {
+      AppMethodBeat.o(66880);
+      return;
+    }
+    int j = paramLinkedList.size();
+    int i = 0;
+    while (i < j)
+    {
+      l locall = (l)paramLinkedList.get(i);
+      a(locall.xcz.split(";"), locall);
+      i += 1;
+    }
+    dDb();
+    AppMethodBeat.o(66880);
+  }
+  
+  private int avP(String paramString)
+  {
+    AppMethodBeat.i(66869);
+    int k = 0;
+    int i = 0;
+    int j = k;
+    if (this.xbM != null)
+    {
+      j = k;
+      if (this.xbM.size() > 0)
+      {
+        paramString = (LinkedList)this.xbM.get(paramString);
+        j = k;
+        if (paramString != null)
+        {
+          j = k;
+          if (paramString.size() > 0)
+          {
+            paramString = paramString.iterator();
+            for (;;)
+            {
+              j = i;
+              if (!paramString.hasNext()) {
+                break;
+              }
+              i = ((aff)paramString.next()).Gfg + i;
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(66869);
+    return j;
+  }
+  
+  public final void Ng(int paramInt)
   {
     AppMethodBeat.i(66866);
-    if (this.wLU == null)
+    if (this.xbI == null)
     {
       AppMethodBeat.o(66866);
       return;
     }
-    if ((paramInt < this.wLU.size()) && (paramInt >= 0)) {
-      this.wLM = ((ahk)this.wLU.get(paramInt));
+    if ((paramInt < this.xbI.size()) && (paramInt >= 0)) {
+      this.xbA = ((ahu)this.xbI.get(paramInt));
     }
     AppMethodBeat.o(66866);
   }
@@ -212,36 +212,36 @@ public final class c
     AppMethodBeat.i(66884);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<mallProductInfo>");
-    localStringBuilder.append("<type>").append(paramm.wMi).append("</type>");
-    localStringBuilder.append("<id>").append(paramm.wMh).append("</id>");
-    localStringBuilder.append("<version>").append(paramm.wMl.version).append("</version>");
-    localStringBuilder.append("<name>").append(bt.aRc(paramm.wMl.name)).append("</name>");
-    localStringBuilder.append("<highPrice>").append(paramm.wMl.wMw).append("</highPrice>");
-    localStringBuilder.append("<lowPrice>").append(paramm.wMl.wMx).append("</lowPrice>");
-    localStringBuilder.append("<originPrice>").append(paramm.wMl.wMv).append("</originPrice>");
-    localStringBuilder.append("<sourceUrl>").append(bt.aRc(this.wLH.lox)).append("</sourceUrl>");
-    if (paramm.wMl.wMy != null)
+    localStringBuilder.append("<type>").append(paramm.xbW).append("</type>");
+    localStringBuilder.append("<id>").append(paramm.xbV).append("</id>");
+    localStringBuilder.append("<version>").append(paramm.xbZ.version).append("</version>");
+    localStringBuilder.append("<name>").append(bu.aSz(paramm.xbZ.name)).append("</name>");
+    localStringBuilder.append("<highPrice>").append(paramm.xbZ.xck).append("</highPrice>");
+    localStringBuilder.append("<lowPrice>").append(paramm.xbZ.xcl).append("</lowPrice>");
+    localStringBuilder.append("<originPrice>").append(paramm.xbZ.xcj).append("</originPrice>");
+    localStringBuilder.append("<sourceUrl>").append(bu.aSz(this.xbv.dJL)).append("</sourceUrl>");
+    if (paramm.xbZ.xcm != null)
     {
-      localStringBuilder.append("<imgCount>").append(paramm.wMl.wMy.size()).append("</imgCount>");
+      localStringBuilder.append("<imgCount>").append(paramm.xbZ.xcm.size()).append("</imgCount>");
       localStringBuilder.append("<imgList>");
-      Iterator localIterator = paramm.wMl.wMy.iterator();
+      Iterator localIterator = paramm.xbZ.xcm.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        localStringBuilder.append("<imgUrl>").append(bt.aRc(str)).append("</imgUrl>");
+        localStringBuilder.append("<imgUrl>").append(bu.aSz(str)).append("</imgUrl>");
       }
       localStringBuilder.append("</imgList>");
     }
     localStringBuilder.append("<shareInfo>");
-    localStringBuilder.append("<shareUrl>").append(bt.aRc(dzD())).append("</shareUrl>");
-    localStringBuilder.append("<shareThumbUrl>").append(bt.aRc(paramm.dzO())).append("</shareThumbUrl>");
+    localStringBuilder.append("<shareUrl>").append(bu.aSz(dCU())).append("</shareUrl>");
+    localStringBuilder.append("<shareThumbUrl>").append(bu.aSz(paramm.dDf())).append("</shareThumbUrl>");
     localStringBuilder.append("</shareInfo>");
-    if (this.wLH.wMm != null)
+    if (this.xbv.xca != null)
     {
       localStringBuilder.append("<sellerInfo>");
-      localStringBuilder.append("<appID>").append(paramm.wMm.duW).append("</appID>");
-      localStringBuilder.append("<appName>").append(paramm.wMm.name).append("</appName>");
-      localStringBuilder.append("<usrName>").append(paramm.wMm.username).append("</usrName>");
+      localStringBuilder.append("<appID>").append(paramm.xca.dwb).append("</appID>");
+      localStringBuilder.append("<appName>").append(paramm.xca.name).append("</appName>");
+      localStringBuilder.append("<usrName>").append(paramm.xca.username).append("</usrName>");
       localStringBuilder.append("</sellerInfo>");
     }
     localStringBuilder.append("</mallProductInfo>");
@@ -255,73 +255,56 @@ public final class c
     int j = 0;
     AppMethodBeat.i(66860);
     clear();
-    this.wLH = paramm;
-    this.wLI = paramList;
-    if (bt.isNullOrNil(this.wLH.lox)) {
-      this.wLH.lox = this.wLK;
+    this.xbv = paramm;
+    this.xbw = paramList;
+    if (bu.isNullOrNil(this.xbv.dJL)) {
+      this.xbv.dJL = this.xby;
     }
-    aJ(this.wLH.wMn);
-    if ((this.wLH.wMl != null) && (this.wLH.wMl.wME != null)) {
-      this.wLR = this.wLH.wMl.wME.size();
+    aK(this.xbv.xcb);
+    if ((this.xbv.xbZ != null) && (this.xbv.xbZ.xcs != null)) {
+      this.xbF = this.xbv.xbZ.xcs.size();
     }
-    if ((this.wLH.wMl != null) && (this.wLH.wMl.wMy != null) && (this.wLH.wMl.wMy.size() > 0)) {
-      this.wLP = ((String)this.wLH.wMl.wMy.get(0));
+    if ((this.xbv.xbZ != null) && (this.xbv.xbZ.xcm != null) && (this.xbv.xbZ.xcm.size() > 0)) {
+      this.xbD = ((String)this.xbv.xbZ.xcm.get(0));
     }
-    if (!bt.isNullOrNil(this.wLH.dzO()))
+    if (!bu.isNullOrNil(this.xbv.dDf()))
     {
-      u.a(new com.tencent.mm.plugin.product.ui.c(this.wLH.dzO()));
-      ad.d("MicroMsg.MallProductManager", "product img path : " + dzC());
+      u.a(new com.tencent.mm.plugin.product.ui.c(this.xbv.dDf()));
+      ae.d("MicroMsg.MallProductManager", "product img path : " + dCT());
     }
-    if ((this.wLH.wMo != null) && (this.wLH.wMo.wMI != null)) {}
-    for (int i = this.wLH.wMo.wMI.dDp;; i = 0)
+    if ((this.xbv.xcc != null) && (this.xbv.xcc.xcw != null)) {}
+    for (int i = this.xbv.xcc.xcw.dEu;; i = 0)
     {
-      if (this.wLH.wMm != null) {
-        j = this.wLH.wMm.dDp;
+      if (this.xbv.xca != null) {
+        j = this.xbv.xca.dEu;
       }
-      this.wLX = new com.tencent.mm.plugin.product.ui.e(i, j);
+      this.xbL = new com.tencent.mm.plugin.product.ui.e(i, j);
       AppMethodBeat.o(66860);
       return;
     }
   }
   
-  public final void aF(Intent paramIntent)
-  {
-    AppMethodBeat.i(66864);
-    di localdi = new di();
-    localdi.nDo = bt.bI(paramIntent.getStringExtra("userName"), "");
-    localdi.FvB = bt.bI(paramIntent.getStringExtra("telNumber"), "");
-    localdi.FvC = bt.bI(paramIntent.getStringExtra("addressPostalCode"), "");
-    localdi.jdd = bt.bI(paramIntent.getStringExtra("proviceFirstStageName"), "");
-    localdi.jde = bt.bI(paramIntent.getStringExtra("addressCitySecondStageName"), "");
-    localdi.jdl = bt.bI(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
-    localdi.ugo = bt.bI(paramIntent.getStringExtra("addressDetailInfo"), "");
-    if ((!bt.isNullOrNil(localdi.nDo)) && (!bt.isNullOrNil(localdi.FvB))) {
-      this.wLN = localdi;
-    }
-    AppMethodBeat.o(66864);
-  }
-  
-  public final LinkedList<com.tencent.mm.plugin.product.c.a> az(Activity paramActivity)
+  public final LinkedList<com.tencent.mm.plugin.product.c.a> aA(Activity paramActivity)
   {
     AppMethodBeat.i(66865);
     LinkedList localLinkedList = new LinkedList();
-    if (this.wLV != null)
+    if (this.xbJ != null)
     {
-      Iterator localIterator = this.wLV.iterator();
+      Iterator localIterator = this.xbJ.iterator();
       while (localIterator.hasNext())
       {
         az localaz = (az)localIterator.next();
         com.tencent.mm.plugin.product.c.a locala = new com.tencent.mm.plugin.product.c.a();
         locala.Name = localaz.Name;
-        locala.wMs = localaz.wMs;
-        locala.hDa = localaz.hDa;
-        locala.nEf = localaz.nEf;
+        locala.xcg = localaz.xcg;
+        locala.hFS = localaz.hFS;
+        locala.nJA = localaz.nJA;
         locala.IconUrl = localaz.IconUrl;
-        if (locala.nEf == 1)
+        if (locala.nJA == 1)
         {
-          int i = auA(locala.hDa);
+          int i = avP(locala.hFS);
           if (i > 0) {
-            locala.wMs = paramActivity.getString(2131761140, new Object[] { b.c(i, this.wLH.wMl.wCF) });
+            locala.xcg = paramActivity.getString(2131761140, new Object[] { b.c(i, this.xbv.xbZ.wSq) });
           }
         }
         localLinkedList.add(locala);
@@ -331,418 +314,102 @@ public final class c
     return localLinkedList;
   }
   
+  public final void aG(Intent paramIntent)
+  {
+    AppMethodBeat.i(66864);
+    di localdi = new di();
+    localdi.nIJ = bu.bI(paramIntent.getStringExtra("userName"), "");
+    localdi.FNZ = bu.bI(paramIntent.getStringExtra("telNumber"), "");
+    localdi.FOa = bu.bI(paramIntent.getStringExtra("addressPostalCode"), "");
+    localdi.jfW = bu.bI(paramIntent.getStringExtra("proviceFirstStageName"), "");
+    localdi.jfX = bu.bI(paramIntent.getStringExtra("addressCitySecondStageName"), "");
+    localdi.jge = bu.bI(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
+    localdi.urL = bu.bI(paramIntent.getStringExtra("addressDetailInfo"), "");
+    if ((!bu.isNullOrNil(localdi.nIJ)) && (!bu.isNullOrNil(localdi.FNZ))) {
+      this.xbB = localdi;
+    }
+    AppMethodBeat.o(66864);
+  }
+  
   public final void clear()
   {
     AppMethodBeat.i(66859);
-    this.wLH = null;
-    if (this.wLI != null)
+    this.xbv = null;
+    if (this.xbw != null)
     {
-      this.wLI.clear();
-      this.wLI = null;
+      this.xbw.clear();
+      this.xbw = null;
     }
-    this.wLJ = null;
-    this.wLK = null;
+    this.xbx = null;
+    this.xby = null;
     this.mCount = 1;
-    this.wLL = null;
-    this.wLM = null;
-    this.wLO = null;
-    this.wLP = null;
-    this.wLR = 0;
-    this.wLW = null;
-    if (this.wLS != null)
+    this.xbz = null;
+    this.xbA = null;
+    this.xbC = null;
+    this.xbD = null;
+    this.xbF = 0;
+    this.xbK = null;
+    if (this.xbG != null)
     {
-      this.wLS.clear();
-      this.wLS = null;
+      this.xbG.clear();
+      this.xbG = null;
     }
-    if (this.wLT != null) {
-      this.wLT.clear();
+    if (this.xbH != null) {
+      this.xbH.clear();
     }
-    if (this.wLU != null)
+    if (this.xbI != null)
     {
-      this.wLU.clear();
-      this.wLU = null;
+      this.xbI.clear();
+      this.xbI = null;
     }
-    if (this.wLY != null)
+    if (this.xbM != null)
     {
-      this.wLY.clear();
-      this.wLY = null;
+      this.xbM.clear();
+      this.xbM = null;
     }
     AppMethodBeat.o(66859);
   }
   
-  public final crm dzA()
-  {
-    AppMethodBeat.i(66870);
-    if (this.wLO != null)
-    {
-      localObject = this.wLO;
-      AppMethodBeat.o(66870);
-      return localObject;
-    }
-    if (this.wLG == null) {
-      this.wLG = com.tencent.mm.plugin.product.a.a.dzs().dzu();
-    }
-    Object localObject = this.wLG;
-    if ((((d)localObject).wLZ != null) && (((d)localObject).wLZ.size() > 0)) {}
-    for (localObject = (String)((d)localObject).wLZ.get(0); !bt.isNullOrNil((String)localObject); localObject = null)
-    {
-      this.wLO = new crm();
-      this.wLO.ugo = ((String)localObject);
-      this.wLO.HjU = 1;
-      localObject = this.wLO;
-      AppMethodBeat.o(66870);
-      return localObject;
-    }
-    localObject = this.wLN;
-    if ((localObject != null) && (!bt.isNullOrNil(((di)localObject).nDo)))
-    {
-      this.wLO = new crm();
-      this.wLO.ugo = ((di)localObject).nDo;
-      this.wLO.HjU = 1;
-      localObject = this.wLO;
-      AppMethodBeat.o(66870);
-      return localObject;
-    }
-    AppMethodBeat.o(66870);
-    return null;
-  }
-  
-  public final String dzB()
-  {
-    if (this.wLH.wMm != null) {
-      return this.wLH.wMm.username;
-    }
-    return null;
-  }
-  
-  public final String dzC()
-  {
-    AppMethodBeat.i(66871);
-    if (!bt.isNullOrNil(this.wLH.dzO()))
-    {
-      String str = com.tencent.mm.plugin.product.ui.c.auC(this.wLH.dzO());
-      AppMethodBeat.o(66871);
-      return str;
-    }
-    AppMethodBeat.o(66871);
-    return null;
-  }
-  
-  public final String dzD()
-  {
-    AppMethodBeat.i(66872);
-    if ((this.wLH.wMl != null) && (this.wLH.wMl.wMG != null))
-    {
-      str = this.wLH.wMl.wMG.url;
-      AppMethodBeat.o(66872);
-      return str;
-    }
-    if (!bt.isNullOrNil(this.wLH.lox))
-    {
-      str = this.wLH.lox;
-      AppMethodBeat.o(66872);
-      return str;
-    }
-    String str = this.wLK;
-    AppMethodBeat.o(66872);
-    return str;
-  }
-  
-  public final int dzE()
-  {
-    int j = this.wLH.wMj;
-    int i = j;
-    if (this.wLW != null)
-    {
-      i = j;
-      if (j > this.wLW.wMj) {
-        i = this.wLW.wMj;
-      }
-    }
-    return i;
-  }
-  
-  public final boolean dzF()
-  {
-    AppMethodBeat.i(66873);
-    if ((this.mCount > 0) && (this.wLH != null) && (this.mCount <= dzE()) && (this.wLH.wMl != null) && (this.wLH.wMl.wME != null))
-    {
-      AppMethodBeat.o(66873);
-      return true;
-    }
-    AppMethodBeat.o(66873);
-    return false;
-  }
-  
-  public final boolean dzG()
-  {
-    AppMethodBeat.i(66874);
-    if (!dzF())
-    {
-      AppMethodBeat.o(66874);
-      return false;
-    }
-    if ((this.wLT != null) && (this.wLT.size() == this.wLR)) {
-      if (this.wLR > 0)
-      {
-        if ((this.wLW != null) && (this.mCount > 0) && (this.mCount <= dzE()))
-        {
-          AppMethodBeat.o(66874);
-          return true;
-        }
-      }
-      else if (this.wLR == 0)
-      {
-        AppMethodBeat.o(66874);
-        return true;
-      }
-    }
-    AppMethodBeat.o(66874);
-    return false;
-  }
-  
-  public final boolean dzH()
-  {
-    AppMethodBeat.i(66875);
-    if (!dzG())
-    {
-      AppMethodBeat.o(66875);
-      return false;
-    }
-    if (this.wLN == null)
-    {
-      AppMethodBeat.o(66875);
-      return false;
-    }
-    if ((!dzv().dzR()) && (this.wLM == null))
-    {
-      AppMethodBeat.o(66875);
-      return false;
-    }
-    AppMethodBeat.o(66875);
-    return true;
-  }
-  
-  public final LinkedList<cwy> dzI()
-  {
-    AppMethodBeat.i(66876);
-    LinkedList localLinkedList = new LinkedList();
-    cwy localcwy = new cwy();
-    localcwy.nDi = this.mCount;
-    localcwy.GBF = this.wLH.wMh;
-    localcwy.HfF = this.wLH.lox;
-    localcwy.HfG = this.wLL;
-    localLinkedList.add(localcwy);
-    AppMethodBeat.o(66876);
-    return localLinkedList;
-  }
-  
-  public final dex dzJ()
-  {
-    AppMethodBeat.i(66877);
-    dex localdex = new dex();
-    localdex.FOY = this.wLJ;
-    localdex.wDB = 1;
-    localdex.Htn = new LinkedList();
-    cmh localcmh = new cmh();
-    localcmh.nDi = this.mCount;
-    localcmh.GBF = this.wLH.wMh;
-    localcmh.Name = this.wLH.wMl.name;
-    if (this.wLW != null) {}
-    Iterator localIterator;
-    Object localObject;
-    for (localcmh.HfE = this.wLW.wMa;; localcmh.HfE = this.wLH.wMl.wMw)
-    {
-      localcmh.HfF = this.wLH.lox;
-      localcmh.HfG = this.wLL;
-      localcmh.nEf = this.wLH.wMi;
-      localcmh.HfC = this.wLR;
-      localcmh.HfD = new LinkedList();
-      localIterator = this.wLT.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        String str = (String)this.wLT.get(localObject);
-        bsj localbsj = new bsj();
-        localbsj.ujy = ((String)localObject);
-        localbsj.yhw = str;
-        localcmh.HfD.add(localbsj);
-      }
-    }
-    localcmh.HfK = new LinkedList();
-    localcmh.HfJ = 0;
-    if ((this.wLY != null) && (this.wLY.size() > 0))
-    {
-      localIterator = this.wLY.values().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (LinkedList)localIterator.next();
-        localcmh.HfK.addAll((Collection)localObject);
-        int i = localcmh.HfJ;
-        localcmh.HfJ = (((LinkedList)localObject).size() + i);
-      }
-    }
-    localdex.Htn.add(localcmh);
-    localdex.Htp = new LinkedList();
-    localdex.Htq = 1;
-    this.wLO = dzA();
-    if (this.wLO != null) {
-      localdex.Htp.add(this.wLO);
-    }
-    for (;;)
-    {
-      localdex.Gzn = this.wLN;
-      localdex.Hto = this.wLM;
-      AppMethodBeat.o(66877);
-      return localdex;
-      this.wLO = new crm();
-      this.wLO.HjU = 0;
-      localdex.Htp.add(this.wLO);
-    }
-  }
-  
-  public final void dzK()
-  {
-    AppMethodBeat.i(66878);
-    if (this.wLT == null)
-    {
-      AppMethodBeat.o(66878);
-      return;
-    }
-    Iterator localIterator1 = this.wLH.wMl.wME.iterator();
-    if (localIterator1.hasNext())
-    {
-      com.tencent.mm.plugin.product.c.m localm = (com.tencent.mm.plugin.product.c.m)localIterator1.next();
-      Iterator localIterator2 = localm.wMQ.iterator();
-      label62:
-      h localh;
-      Object localObject;
-      String str2;
-      boolean bool;
-      if (localIterator2.hasNext())
-      {
-        localh = (h)localIterator2.next();
-        localObject = localm.wMO;
-        str2 = localh.id;
-        if ((this.wLT != null) && (this.wLS != null)) {
-          break label176;
-        }
-        bool = false;
-      }
-      for (;;)
-      {
-        localh.iH = bool;
-        ad.d("MicroMsg.MallProductManager", "(" + localm.wMO + " , " + localh.id + ") hasStock--> " + localh.iH);
-        break label62;
-        break;
-        label176:
-        String str1;
-        if (this.wLT.containsKey(localObject))
-        {
-          str1 = (String)this.wLT.get(localObject);
-          this.wLT.put(localObject, str2);
-          str2 = az(this.wLT);
-          this.wLT.put(localObject, str1);
-          localObject = (e)this.wLS.get(str2);
-          if (localObject != null)
-          {
-            if (((e)localObject).wMj > 0) {
-              bool = true;
-            } else {
-              bool = false;
-            }
-          }
-          else {
-            bool = false;
-          }
-        }
-        else
-        {
-          this.wLT.put(localObject, str2);
-          str1 = az(this.wLT);
-          this.wLT.remove(localObject);
-          localObject = (e)this.wLS.get(str1);
-          if (localObject != null)
-          {
-            if (((e)localObject).wMj > 0) {
-              bool = true;
-            } else {
-              bool = false;
-            }
-          }
-          else {
-            bool = false;
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(66878);
-  }
-  
-  public final String dzL()
-  {
-    AppMethodBeat.i(66882);
-    Object localObject = new k.b();
-    ((k.b)localObject).title = this.wLH.wMl.name;
-    ((k.b)localObject).description = dzM();
-    ((k.b)localObject).type = 13;
-    ((k.b)localObject).url = dzD();
-    ((k.b)localObject).thumburl = this.wLH.dzO();
-    ((k.b)localObject).hAt = this.wLH.wMi;
-    ((k.b)localObject).hAu = a(this.wLH);
-    localObject = k.b.a((k.b)localObject, null, null);
-    AppMethodBeat.o(66882);
-    return localObject;
-  }
-  
-  public final String dzM()
-  {
-    AppMethodBeat.i(66883);
-    String str = b.c(this.wLH.wMl.wMx, this.wLH.wMl.wCF);
-    AppMethodBeat.o(66883);
-    return str;
-  }
-  
-  public final com.tencent.mm.plugin.product.ui.e dzv()
+  public final com.tencent.mm.plugin.product.ui.e dCM()
   {
     AppMethodBeat.i(66861);
-    if (this.wLX == null) {
-      this.wLX = new com.tencent.mm.plugin.product.ui.e(0, 0);
+    if (this.xbL == null) {
+      this.xbL = new com.tencent.mm.plugin.product.ui.e(0, 0);
     }
-    com.tencent.mm.plugin.product.ui.e locale = this.wLX;
+    com.tencent.mm.plugin.product.ui.e locale = this.xbL;
     AppMethodBeat.o(66861);
     return locale;
   }
   
-  public final String dzw()
+  public final String dCN()
   {
     AppMethodBeat.i(66862);
-    if ((this.wLW != null) && (!bt.isNullOrNil(this.wLW.url)))
+    if ((this.xbK != null) && (!bu.isNullOrNil(this.xbK.url)))
     {
-      str = this.wLW.url;
+      str = this.xbK.url;
       AppMethodBeat.o(66862);
       return str;
     }
-    String str = this.wLP;
+    String str = this.xbD;
     AppMethodBeat.o(66862);
     return str;
   }
   
-  public final String dzx()
+  public final String dCO()
   {
     AppMethodBeat.i(66863);
     Object localObject1 = new StringBuilder();
-    Iterator localIterator = this.wLH.wMl.wME.iterator();
+    Iterator localIterator = this.xbv.xbZ.xcs.iterator();
     for (;;)
     {
       if (!localIterator.hasNext()) {
         break label133;
       }
       Object localObject2 = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-      String str = (String)this.wLT.get(((com.tencent.mm.plugin.product.c.m)localObject2).wMO);
+      String str = (String)this.xbH.get(((com.tencent.mm.plugin.product.c.m)localObject2).xcC);
       if (str != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).wMQ.iterator();
+        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).xcE.iterator();
         if (((Iterator)localObject2).hasNext())
         {
           h localh = (h)((Iterator)localObject2).next();
@@ -759,41 +426,41 @@ public final class c
     return localObject1;
   }
   
-  public final int dzy()
+  public final int dCP()
   {
     AppMethodBeat.i(66867);
     int j = 0;
     int i = j;
-    if (!dzv().dzR())
+    if (!dCM().dDi())
     {
       i = j;
-      if (this.wLM != null) {
-        i = this.wLM.FMH + 0;
+      if (this.xbA != null) {
+        i = this.xbA.Gfg + 0;
       }
     }
-    if (this.wLW != null) {
-      i += this.wLW.wMa * this.mCount;
+    if (this.xbK != null) {
+      i += this.xbK.xbO * this.mCount;
     }
     for (;;)
     {
-      j = dzz();
+      j = dCQ();
       AppMethodBeat.o(66867);
       return i - j;
-      i += this.wLH.wMl.wMw * this.mCount;
+      i += this.xbv.xbZ.xck * this.mCount;
     }
   }
   
-  public final int dzz()
+  public final int dCQ()
   {
     AppMethodBeat.i(66868);
     int j = 0;
     int i = j;
-    if (this.wLY != null)
+    if (this.xbM != null)
     {
       i = j;
-      if (this.wLY.size() > 0)
+      if (this.xbM.size() > 0)
       {
-        Iterator localIterator = this.wLY.values().iterator();
+        Iterator localIterator = this.xbM.values().iterator();
         for (i = 0; localIterator.hasNext(); i = j)
         {
           Object localObject = (LinkedList)localIterator.next();
@@ -810,7 +477,7 @@ public final class c
                 if (!((Iterator)localObject).hasNext()) {
                   break;
                 }
-                i += ((aew)((Iterator)localObject).next()).FMH;
+                i += ((aff)((Iterator)localObject).next()).Gfg;
               }
             }
           }
@@ -821,17 +488,350 @@ public final class c
     return i;
   }
   
+  public final csg dCR()
+  {
+    AppMethodBeat.i(66870);
+    if (this.xbC != null)
+    {
+      localObject = this.xbC;
+      AppMethodBeat.o(66870);
+      return localObject;
+    }
+    if (this.xbu == null) {
+      this.xbu = com.tencent.mm.plugin.product.a.a.dCJ().dCL();
+    }
+    Object localObject = this.xbu;
+    if ((((d)localObject).xbN != null) && (((d)localObject).xbN.size() > 0)) {}
+    for (localObject = (String)((d)localObject).xbN.get(0); !bu.isNullOrNil((String)localObject); localObject = null)
+    {
+      this.xbC = new csg();
+      this.xbC.urL = ((String)localObject);
+      this.xbC.HDu = 1;
+      localObject = this.xbC;
+      AppMethodBeat.o(66870);
+      return localObject;
+    }
+    localObject = this.xbB;
+    if ((localObject != null) && (!bu.isNullOrNil(((di)localObject).nIJ)))
+    {
+      this.xbC = new csg();
+      this.xbC.urL = ((di)localObject).nIJ;
+      this.xbC.HDu = 1;
+      localObject = this.xbC;
+      AppMethodBeat.o(66870);
+      return localObject;
+    }
+    AppMethodBeat.o(66870);
+    return null;
+  }
+  
+  public final String dCS()
+  {
+    if (this.xbv.xca != null) {
+      return this.xbv.xca.username;
+    }
+    return null;
+  }
+  
+  public final String dCT()
+  {
+    AppMethodBeat.i(66871);
+    if (!bu.isNullOrNil(this.xbv.dDf()))
+    {
+      String str = com.tencent.mm.plugin.product.ui.c.avR(this.xbv.dDf());
+      AppMethodBeat.o(66871);
+      return str;
+    }
+    AppMethodBeat.o(66871);
+    return null;
+  }
+  
+  public final String dCU()
+  {
+    AppMethodBeat.i(66872);
+    if ((this.xbv.xbZ != null) && (this.xbv.xbZ.xcu != null))
+    {
+      str = this.xbv.xbZ.xcu.url;
+      AppMethodBeat.o(66872);
+      return str;
+    }
+    if (!bu.isNullOrNil(this.xbv.dJL))
+    {
+      str = this.xbv.dJL;
+      AppMethodBeat.o(66872);
+      return str;
+    }
+    String str = this.xby;
+    AppMethodBeat.o(66872);
+    return str;
+  }
+  
+  public final int dCV()
+  {
+    int j = this.xbv.xbX;
+    int i = j;
+    if (this.xbK != null)
+    {
+      i = j;
+      if (j > this.xbK.xbX) {
+        i = this.xbK.xbX;
+      }
+    }
+    return i;
+  }
+  
+  public final boolean dCW()
+  {
+    AppMethodBeat.i(66873);
+    if ((this.mCount > 0) && (this.xbv != null) && (this.mCount <= dCV()) && (this.xbv.xbZ != null) && (this.xbv.xbZ.xcs != null))
+    {
+      AppMethodBeat.o(66873);
+      return true;
+    }
+    AppMethodBeat.o(66873);
+    return false;
+  }
+  
+  public final boolean dCX()
+  {
+    AppMethodBeat.i(66874);
+    if (!dCW())
+    {
+      AppMethodBeat.o(66874);
+      return false;
+    }
+    if ((this.xbH != null) && (this.xbH.size() == this.xbF)) {
+      if (this.xbF > 0)
+      {
+        if ((this.xbK != null) && (this.mCount > 0) && (this.mCount <= dCV()))
+        {
+          AppMethodBeat.o(66874);
+          return true;
+        }
+      }
+      else if (this.xbF == 0)
+      {
+        AppMethodBeat.o(66874);
+        return true;
+      }
+    }
+    AppMethodBeat.o(66874);
+    return false;
+  }
+  
+  public final boolean dCY()
+  {
+    AppMethodBeat.i(66875);
+    if (!dCX())
+    {
+      AppMethodBeat.o(66875);
+      return false;
+    }
+    if (this.xbB == null)
+    {
+      AppMethodBeat.o(66875);
+      return false;
+    }
+    if ((!dCM().dDi()) && (this.xbA == null))
+    {
+      AppMethodBeat.o(66875);
+      return false;
+    }
+    AppMethodBeat.o(66875);
+    return true;
+  }
+  
+  public final LinkedList<cxs> dCZ()
+  {
+    AppMethodBeat.i(66876);
+    LinkedList localLinkedList = new LinkedList();
+    cxs localcxs = new cxs();
+    localcxs.nID = this.mCount;
+    localcxs.GVf = this.xbv.xbV;
+    localcxs.Hzf = this.xbv.dJL;
+    localcxs.Hzg = this.xbz;
+    localLinkedList.add(localcxs);
+    AppMethodBeat.o(66876);
+    return localLinkedList;
+  }
+  
+  public final dfr dDa()
+  {
+    AppMethodBeat.i(66877);
+    dfr localdfr = new dfr();
+    localdfr.Ghx = this.xbx;
+    localdfr.wTm = 1;
+    localdfr.HMQ = new LinkedList();
+    cnb localcnb = new cnb();
+    localcnb.nID = this.mCount;
+    localcnb.GVf = this.xbv.xbV;
+    localcnb.Name = this.xbv.xbZ.name;
+    if (this.xbK != null) {}
+    Iterator localIterator;
+    Object localObject;
+    for (localcnb.Hze = this.xbK.xbO;; localcnb.Hze = this.xbv.xbZ.xck)
+    {
+      localcnb.Hzf = this.xbv.dJL;
+      localcnb.Hzg = this.xbz;
+      localcnb.nJA = this.xbv.xbW;
+      localcnb.Hzc = this.xbF;
+      localcnb.Hzd = new LinkedList();
+      localIterator = this.xbH.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (String)localIterator.next();
+        String str = (String)this.xbH.get(localObject);
+        btd localbtd = new btd();
+        localbtd.uuW = ((String)localObject);
+        localbtd.yxn = str;
+        localcnb.Hzd.add(localbtd);
+      }
+    }
+    localcnb.Hzk = new LinkedList();
+    localcnb.Hzj = 0;
+    if ((this.xbM != null) && (this.xbM.size() > 0))
+    {
+      localIterator = this.xbM.values().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (LinkedList)localIterator.next();
+        localcnb.Hzk.addAll((Collection)localObject);
+        int i = localcnb.Hzj;
+        localcnb.Hzj = (((LinkedList)localObject).size() + i);
+      }
+    }
+    localdfr.HMQ.add(localcnb);
+    localdfr.HMS = new LinkedList();
+    localdfr.HMT = 1;
+    this.xbC = dCR();
+    if (this.xbC != null) {
+      localdfr.HMS.add(this.xbC);
+    }
+    for (;;)
+    {
+      localdfr.GSN = this.xbB;
+      localdfr.HMR = this.xbA;
+      AppMethodBeat.o(66877);
+      return localdfr;
+      this.xbC = new csg();
+      this.xbC.HDu = 0;
+      localdfr.HMS.add(this.xbC);
+    }
+  }
+  
+  public final void dDb()
+  {
+    AppMethodBeat.i(66878);
+    if (this.xbH == null)
+    {
+      AppMethodBeat.o(66878);
+      return;
+    }
+    Iterator localIterator1 = this.xbv.xbZ.xcs.iterator();
+    if (localIterator1.hasNext())
+    {
+      com.tencent.mm.plugin.product.c.m localm = (com.tencent.mm.plugin.product.c.m)localIterator1.next();
+      Iterator localIterator2 = localm.xcE.iterator();
+      label62:
+      h localh;
+      Object localObject;
+      String str2;
+      boolean bool;
+      if (localIterator2.hasNext())
+      {
+        localh = (h)localIterator2.next();
+        localObject = localm.xcC;
+        str2 = localh.id;
+        if ((this.xbH != null) && (this.xbG != null)) {
+          break label176;
+        }
+        bool = false;
+      }
+      for (;;)
+      {
+        localh.iH = bool;
+        ae.d("MicroMsg.MallProductManager", "(" + localm.xcC + " , " + localh.id + ") hasStock--> " + localh.iH);
+        break label62;
+        break;
+        label176:
+        String str1;
+        if (this.xbH.containsKey(localObject))
+        {
+          str1 = (String)this.xbH.get(localObject);
+          this.xbH.put(localObject, str2);
+          str2 = aF(this.xbH);
+          this.xbH.put(localObject, str1);
+          localObject = (e)this.xbG.get(str2);
+          if (localObject != null)
+          {
+            if (((e)localObject).xbX > 0) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+          }
+          else {
+            bool = false;
+          }
+        }
+        else
+        {
+          this.xbH.put(localObject, str2);
+          str1 = aF(this.xbH);
+          this.xbH.remove(localObject);
+          localObject = (e)this.xbG.get(str1);
+          if (localObject != null)
+          {
+            if (((e)localObject).xbX > 0) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+          }
+          else {
+            bool = false;
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(66878);
+  }
+  
+  public final String dDc()
+  {
+    AppMethodBeat.i(66882);
+    Object localObject = new k.b();
+    ((k.b)localObject).title = this.xbv.xbZ.name;
+    ((k.b)localObject).description = dDd();
+    ((k.b)localObject).type = 13;
+    ((k.b)localObject).url = dCU();
+    ((k.b)localObject).thumburl = this.xbv.dDf();
+    ((k.b)localObject).hDh = this.xbv.xbW;
+    ((k.b)localObject).hDi = a(this.xbv);
+    localObject = k.b.a((k.b)localObject, null, null);
+    AppMethodBeat.o(66882);
+    return localObject;
+  }
+  
+  public final String dDd()
+  {
+    AppMethodBeat.i(66883);
+    String str = b.c(this.xbv.xbZ.xcl, this.xbv.xbZ.wSq);
+    AppMethodBeat.o(66883);
+    return str;
+  }
+  
   public final String getAppId()
   {
-    if (this.wLH.wMm != null) {
-      return this.wLH.wMm.duW;
+    if (this.xbv.xca != null) {
+      return this.xbv.xca.dwb;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.c
  * JD-Core Version:    0.7.0.1
  */

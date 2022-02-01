@@ -10,24 +10,24 @@ import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Landroid/os/Parcelable;", "()V", "taskId", "", "getTaskId", "()Ljava/lang/String;", "taskId$delegate", "Lkotlin/Lazy;", "callback", "", "describeContents", "", "execAsync", "keepMe", "parseFromParcel", "p", "Landroid/os/Parcel;", "releaseMe", "runInClientProcess", "runInMainProcess", "wxbiz-msgsubscription-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Landroid/os/Parcelable;", "()V", "taskId", "", "getTaskId", "()Ljava/lang/String;", "taskId$delegate", "Lkotlin/Lazy;", "callback", "", "describeContents", "", "execAsync", "keepMe", "parseFromParcel", "p", "Landroid/os/Parcel;", "releaseMe", "runInClientProcess", "runInMainProcess", "wxbiz-msgsubscription-sdk_release"})
 public abstract class CompatProcessTask
   implements Parcelable
 {
-  private final f iEc = g.O((a)new c(this));
+  private final f iGV = g.O((a)new c(this));
   
-  public abstract void aOA();
+  public abstract void aOX();
   
-  public void aOB() {}
+  public void aOY() {}
   
-  public final String aOC()
+  public final String aOZ()
   {
-    return (String)this.iEc.getValue();
+    return (String)this.iGV.getValue();
   }
   
-  public final void aOD()
+  public final void aPa()
   {
-    h.LTJ.f((Runnable)new b(this), "CompatProcessTask_" + aOC());
+    h.MqF.f((Runnable)new b(this), "CompatProcessTask_" + aOZ());
   }
   
   public int describeContents()
@@ -35,7 +35,7 @@ public abstract class CompatProcessTask
     return 0;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class a
     implements Runnable
   {
@@ -44,12 +44,12 @@ public abstract class CompatProcessTask
     public final void run()
     {
       AppMethodBeat.i(174575);
-      this.iEd.aOB();
+      this.iGW.aOY();
       AppMethodBeat.o(174575);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -58,12 +58,12 @@ public abstract class CompatProcessTask
     public final void run()
     {
       AppMethodBeat.i(174576);
-      this.iEd.aOA();
+      this.iGW.aOX();
       AppMethodBeat.o(174576);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<String>

@@ -4,11 +4,11 @@ import android.content.Context;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.ch.a;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -21,7 +21,7 @@ public class au
   private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(78607);
-    if (bt.hj(paramLinkedList))
+    if (bu.ht(paramLinkedList))
     {
       AppMethodBeat.o(78607);
       return;
@@ -39,7 +39,7 @@ public class au
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
+        ae.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
       }
     }
     AppMethodBeat.o(78607);
@@ -48,7 +48,7 @@ public class au
   public final void a(final Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(78606);
-    ad.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
+    ae.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
@@ -69,7 +69,7 @@ public class au
           FileDownloadTaskInfo localFileDownloadTaskInfo;
           if (l > 0L)
           {
-            localFileDownloadTaskInfo = f.ccl().tS(l);
+            localFileDownloadTaskInfo = f.cdA().uj(l);
             localObject = localFileDownloadTaskInfo;
             if (localFileDownloadTaskInfo == null) {
               localObject = new FileDownloadTaskInfo();
@@ -78,9 +78,9 @@ public class au
             AppMethodBeat.o(78605);
             return;
           }
-          if (!bt.isNullOrNil((String)localObject))
+          if (!bu.isNullOrNil((String)localObject))
           {
-            localFileDownloadTaskInfo = f.ccl().aai((String)localObject);
+            localFileDownloadTaskInfo = f.cdA().aaZ((String)localObject);
             localObject = localFileDownloadTaskInfo;
             if (localFileDownloadTaskInfo == null) {
               localObject = new FileDownloadTaskInfo();
@@ -98,7 +98,7 @@ public class au
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
+      ae.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78606);
     }
@@ -106,7 +106,7 @@ public class au
   
   public final void b(b<s>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

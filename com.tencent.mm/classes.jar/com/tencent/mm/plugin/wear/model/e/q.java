@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 public final class q
 {
-  public HashMap<Integer, a> DxL;
+  public HashMap<Integer, a> DPq;
   
   public q()
   {
     AppMethodBeat.i(30108);
-    this.DxL = new HashMap();
+    this.DPq = new HashMap();
     AppMethodBeat.o(30108);
   }
   
-  public final a VW(int paramInt)
+  public final a WD(int paramInt)
   {
     AppMethodBeat.i(30110);
-    a locala = (a)this.DxL.get(Integer.valueOf(paramInt));
+    a locala = (a)this.DPq.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(30110);
     return locala;
   }
@@ -28,12 +28,12 @@ public final class q
   public final void a(a parama)
   {
     AppMethodBeat.i(30109);
-    Iterator localIterator = parama.eKN().iterator();
+    Iterator localIterator = parama.eOv().iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      ad.d("MicroMsg.Wear.WearHttpServerLogic", "add funId %d %s", new Object[] { Integer.valueOf(i), parama });
-      this.DxL.put(Integer.valueOf(i), parama);
+      ae.d("MicroMsg.Wear.WearHttpServerLogic", "add funId %d %s", new Object[] { Integer.valueOf(i), parama });
+      this.DPq.put(Integer.valueOf(i), parama);
     }
     AppMethodBeat.o(30109);
   }

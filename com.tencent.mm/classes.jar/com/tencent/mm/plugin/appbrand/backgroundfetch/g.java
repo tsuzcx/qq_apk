@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class g
   extends j<f>
 {
-  public static final String[] hEf;
+  public static final String[] hGX;
   
   static
   {
     AppMethodBeat.i(44743);
-    hEf = new String[] { j.getCreateSQLs(f.hEe, "AppBrandBackgroundFetchDataToken") };
+    hGX = new String[] { j.getCreateSQLs(f.hGW, "AppBrandBackgroundFetchDataToken") };
     AppMethodBeat.o(44743);
   }
   
   public g(e parame)
   {
-    super(parame, f.hEe, "AppBrandBackgroundFetchDataToken", null);
+    super(parame, f.hGW, "AppBrandBackgroundFetchDataToken", null);
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(44742);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44742);
       return true;
@@ -37,10 +37,10 @@ public class g
     return bool;
   }
   
-  public final AppBrandBackgroundFetchDataTokenParcel MJ(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel Nq(String paramString)
   {
     AppMethodBeat.i(44741);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44741);
       return null;
@@ -59,10 +59,10 @@ public class g
     return null;
   }
   
-  public final boolean cx(String paramString1, String paramString2)
+  public final boolean cz(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44740);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(44740);
       return true;
@@ -70,7 +70,7 @@ public class g
     f localf = new f();
     localf.field_username = paramString1;
     localf.field_token = paramString2;
-    if (!bt.isNullOrNil(paramString1))
+    if (!bu.isNullOrNil(paramString1))
     {
       paramString2 = new f();
       paramString2.field_username = paramString1;

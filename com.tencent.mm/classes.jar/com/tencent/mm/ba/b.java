@@ -1,89 +1,186 @@
 package com.tencent.mm.ba;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.b;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.chf;
+import com.tencent.mm.protocal.protobuf.chg;
+import com.tencent.mm.protocal.protobuf.zx;
+import com.tencent.mm.protocal.protobuf.zy;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
-public final class b
-  extends a
+public class b
+  extends n
+  implements k
 {
-  public String dpf;
-  public String ihU;
-  public LinkedList<String> ihV;
-  public String ihW;
-  public String text;
+  private f callback;
+  public a ilc;
+  public final List<k.b> ild;
   
-  public b(Map<String, String> paramMap, bu parambu)
+  public b(List<k.b> paramList)
   {
-    super(paramMap, parambu);
-    AppMethodBeat.i(101782);
-    this.ihV = new LinkedList();
-    this.text = null;
-    this.ihW = null;
-    this.dpf = null;
-    AppMethodBeat.o(101782);
+    AppMethodBeat.i(43049);
+    this.ild = new ArrayList();
+    this.ild.addAll(paramList);
+    this.ilc = new a();
+    ((b)this.ilc.getReqObj()).ilg.Hqt = aq(paramList);
+    AppMethodBeat.o(43049);
   }
   
-  protected final boolean aAc()
+  private static zy aq(List<k.b> paramList)
   {
-    AppMethodBeat.i(101783);
-    if (this.values == null)
+    AppMethodBeat.i(43050);
+    zy localzy = new zy();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      ad.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] values == null ");
-      AppMethodBeat.o(101783);
-      return false;
+      k.b localb = (k.b)localIterator.next();
+      byte[] arrayOfByte = localb.getBuffer();
+      zx localzx = new zx();
+      localzx.Gru = localb.getCmdId();
+      localzx.Grv = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
+      localzy.nIE.add(localzx);
     }
-    ad.i("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bt.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
-    if ((!bt.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlChatRoomAccessVerifyApproval")))
+    localzy.nID = paramList.size();
+    ae.d("MicroMsg.NetSceneOplog", "summeroplog oplogs size=" + paramList.size());
+    AppMethodBeat.o(43050);
+    return localzy;
+  }
+  
+  public int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(43051);
+    this.callback = paramf;
+    int i = dispatch(parame, this.ilc, this);
+    AppMethodBeat.o(43051);
+    return i;
+  }
+  
+  public int getType()
+  {
+    return 681;
+  }
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(43052);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(43052);
+  }
+  
+  public int securityLimitCount()
+  {
+    return 5;
+  }
+  
+  public n.b securityVerificationChecked(q paramq)
+  {
+    return n.b.hRi;
+  }
+  
+  public static final class a
+    extends l
+  {
+    private final b.b ile;
+    private final b.c ilf;
+    
+    public a()
     {
-      this.ihU = ((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.RoomName"));
-      if (this.values.containsKey(ihM)) {
-        this.text = bt.nullAsNil((String)this.values.get(ihM));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text")) {
-        this.ihW = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text"));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket")) {
-        this.dpf = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket"));
-      }
-      this.ihO = this.text;
-      if (!this.dBd.fsh())
-      {
-        this.ihQ.add(this.ihW);
-        this.ihR.add(Integer.valueOf(this.ihO.length()));
-        this.ihO += this.ihW;
-        this.ihS.add(Integer.valueOf(this.ihO.length()));
-      }
-      for (;;)
-      {
-        Iterator localIterator = this.values.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (str.startsWith(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.memberlist.username")) {
-            this.ihV.add(this.values.get(str));
-          }
-        }
-        this.ihO = (this.ihO + " " + aj.getContext().getString(2131760234));
-      }
-      AppMethodBeat.o(101783);
-      return true;
+      AppMethodBeat.i(43044);
+      this.ile = new b.b();
+      this.ilf = new b.c();
+      AppMethodBeat.o(43044);
     }
-    ad.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type err :%s", new Object[] { bt.nullAsNil(this.TYPE) });
-    AppMethodBeat.o(101783);
-    return false;
+    
+    public final l.d getReqObjImp()
+    {
+      return this.ile;
+    }
+    
+    public final l.e getRespObj()
+    {
+      return this.ilf;
+    }
+    
+    public final int getType()
+    {
+      return 681;
+    }
+    
+    public final String getUri()
+    {
+      return "/cgi-bin/micromsg-bin/oplog";
+    }
+  }
+  
+  static final class b
+    extends l.d
+    implements l.b
+  {
+    public chf ilg;
+    
+    b()
+    {
+      AppMethodBeat.i(43045);
+      this.ilg = new chf();
+      AppMethodBeat.o(43045);
+    }
+    
+    public final int getFuncId()
+    {
+      return 681;
+    }
+    
+    public final byte[] toProtoBuf()
+    {
+      AppMethodBeat.i(43046);
+      byte[] arrayOfByte = this.ilg.toByteArray();
+      AppMethodBeat.o(43046);
+      return arrayOfByte;
+    }
+  }
+  
+  public static final class c
+    extends l.e
+    implements l.c
+  {
+    public chg ilh;
+    
+    public c()
+    {
+      AppMethodBeat.i(43047);
+      this.ilh = new chg();
+      AppMethodBeat.o(43047);
+    }
+    
+    public final int fromProtoBuf(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(43048);
+      this.ilh = ((chg)new chg().parseFrom(paramArrayOfByte));
+      int i = this.ilh.Ret;
+      AppMethodBeat.o(43048);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ba.b
  * JD-Core Version:    0.7.0.1
  */

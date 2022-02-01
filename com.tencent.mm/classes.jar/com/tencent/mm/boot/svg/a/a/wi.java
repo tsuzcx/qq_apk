@@ -71,7 +71,7 @@ public final class wi
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(436207615);
+      ((Paint)localObject1).setColor(419430400);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(12.0F, 0.0F);
       ((Path)localObject2).cubicTo(18.627417F, 0.0F, 24.0F, 5.372583F, 24.0F, 12.0F);

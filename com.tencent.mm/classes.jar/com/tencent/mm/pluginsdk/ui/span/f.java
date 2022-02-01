@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.StaticTextView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
 {
@@ -15,10 +15,10 @@ public final class f
     AppMethodBeat.i(152267);
     if ((paramView != null) && (paramSpanned != null) && (((paramView instanceof TextView)) || ((paramView instanceof StaticTextView))))
     {
-      int j = fX(paramView);
+      int j = fW(paramView);
       if ((j == 1) && (paramSpanned.length() > 500))
       {
-        ad.e("MicroMsg.InvalidTextCheck", "error black dot");
+        ae.e("MicroMsg.InvalidTextCheck", "error black dot");
         AppMethodBeat.o(152267);
         return true;
       }
@@ -27,7 +27,7 @@ public final class f
       {
         if (ay(paramView, i) - ay(paramView, i - 1) > 500)
         {
-          ad.e("MicroMsg.InvalidTextCheck", "error black dot");
+          ae.e("MicroMsg.InvalidTextCheck", "error black dot");
           AppMethodBeat.o(152267);
           return true;
         }
@@ -67,7 +67,7 @@ public final class f
     return 0;
   }
   
-  private static int fX(View paramView)
+  private static int fW(View paramView)
   {
     AppMethodBeat.i(152265);
     int i = 0;
@@ -86,7 +86,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.f
  * JD-Core Version:    0.7.0.1
  */

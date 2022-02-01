@@ -12,14 +12,14 @@ final class ProtocolThreeThreeUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25209);
-    ProtocolThreeThreeUI.b(this.trm);
+    ProtocolThreeThreeUI.b(this.tCd);
     AppMethodBeat.o(25209);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.ProtocolThreeThreeUI.2
  * JD-Core Version:    0.7.0.1
  */

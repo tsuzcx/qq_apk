@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class pz
   extends b
 {
-  public a dEt;
+  public a dFw;
   
   public pz()
   {
@@ -16,18 +16,16 @@ public final class pz
   
   private pz(byte paramByte)
   {
-    AppMethodBeat.i(91215);
-    this.dEt = new a();
-    this.IbR = false;
+    AppMethodBeat.i(118413);
+    this.dFw = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91215);
+    AppMethodBeat.o(118413);
   }
   
   public static final class a
   {
-    public k.b dEu;
-    public String dxv;
-    public long msgId;
+    public List dFx;
   }
 }
 

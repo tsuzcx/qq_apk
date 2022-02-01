@@ -9,37 +9,37 @@ import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/sdk/CLog;", "", "()V", "LEVEL_DEBUG", "", "LEVEL_ERROR", "LEVEL_FATAL", "LEVEL_INFO", "LEVEL_NONE", "LEVEL_VERBOSE", "LEVEL_WARNING", "logImp", "Lcom/tencent/mm/videocomposition/sdk/CLog$LogImp;", "d", "", "tag", "", "format", "obj", "", "(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V", "e", "f", "getStack", "Lcom/tencent/mm/videocomposition/sdk/MMStack;", "i", "printDebugStack", "printErrStackTrace", "tr", "", "(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V", "printInfoStack", "setLogImpl", "v", "w", "LogImp", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/sdk/CLog;", "", "()V", "LEVEL_DEBUG", "", "LEVEL_ERROR", "LEVEL_FATAL", "LEVEL_INFO", "LEVEL_NONE", "LEVEL_VERBOSE", "LEVEL_WARNING", "logImp", "Lcom/tencent/mm/videocomposition/sdk/CLog$LogImp;", "d", "", "tag", "", "format", "obj", "", "(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V", "e", "f", "getStack", "Lcom/tencent/mm/videocomposition/sdk/MMStack;", "i", "printDebugStack", "printErrStackTrace", "tr", "", "(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V", "printInfoStack", "setLogImpl", "v", "w", "LogImp", "video_composition_release"})
 public final class b
 {
-  private static a LnD;
-  public static final b LnE;
+  private static a LKo;
+  public static final b LKp;
   
   static
   {
-    AppMethodBeat.i(220925);
-    LnE = new b();
-    AppMethodBeat.o(220925);
+    AppMethodBeat.i(195060);
+    LKp = new b();
+    AppMethodBeat.o(195060);
   }
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(220917);
+    AppMethodBeat.i(195052);
     p.h(parama, "logImp");
-    LnD = parama;
-    AppMethodBeat.o(220917);
+    LKo = parama;
+    AppMethodBeat.o(195052);
   }
   
   public static final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220921);
+    AppMethodBeat.i(195056);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, paramVarArgs.length);
       paramVarArgs = String.format(paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -58,23 +58,23 @@ public final class b
       paramVarArgs = paramVarArgs.getThread();
       p.g(paramVarArgs, "Looper.getMainLooper().thread");
       paramVarArgs.getId();
-      locala.kj(paramString1, paramString2);
-      AppMethodBeat.o(220921);
+      locala.kp(paramString1, paramString2);
+      AppMethodBeat.o(195056);
       return;
     }
-    AppMethodBeat.o(220921);
+    AppMethodBeat.o(195056);
   }
   
   public static final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220918);
+    AppMethodBeat.i(195053);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, paramVarArgs.length);
       paramVarArgs = String.format(paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -93,23 +93,23 @@ public final class b
       paramVarArgs = paramVarArgs.getThread();
       p.g(paramVarArgs, "Looper.getMainLooper().thread");
       paramVarArgs.getId();
-      locala.kk(paramString1, paramString2);
-      AppMethodBeat.o(220918);
+      locala.kq(paramString1, paramString2);
+      AppMethodBeat.o(195053);
       return;
     }
-    AppMethodBeat.o(220918);
+    AppMethodBeat.o(195053);
   }
   
   public static final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220920);
+    AppMethodBeat.i(195055);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, paramVarArgs.length);
       paramVarArgs = String.format(paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -128,23 +128,23 @@ public final class b
       paramVarArgs = paramVarArgs.getThread();
       p.g(paramVarArgs, "Looper.getMainLooper().thread");
       paramVarArgs.getId();
-      locala.kl(paramString1, paramString2);
-      AppMethodBeat.o(220920);
+      locala.kr(paramString1, paramString2);
+      AppMethodBeat.o(195055);
       return;
     }
-    AppMethodBeat.o(220920);
+    AppMethodBeat.o(195055);
   }
   
   public static final void m(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220923);
+    AppMethodBeat.i(195058);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, 0);
       paramVarArgs = String.format(paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -164,23 +164,23 @@ public final class b
       paramVarArgs = paramVarArgs.getThread();
       p.g(paramVarArgs, "Looper.getMainLooper().thread");
       paramVarArgs.getId();
-      locala.kl(paramString1, paramString2);
-      AppMethodBeat.o(220923);
+      locala.kr(paramString1, paramString2);
+      AppMethodBeat.o(195058);
       return;
     }
-    AppMethodBeat.o(220923);
+    AppMethodBeat.o(195058);
   }
   
   public static final void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220924);
+    AppMethodBeat.i(195059);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, 0);
       paramVarArgs = String.format(paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -200,23 +200,23 @@ public final class b
       paramString2 = paramString2.getThread();
       p.g(paramString2, "Looper.getMainLooper().thread");
       paramString2.getId();
-      locala.kk(paramString1, paramThrowable);
-      AppMethodBeat.o(220924);
+      locala.kq(paramString1, paramThrowable);
+      AppMethodBeat.o(195059);
       return;
     }
-    AppMethodBeat.o(220924);
+    AppMethodBeat.o(195059);
   }
   
   public static final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220922);
+    AppMethodBeat.i(195057);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, 0);
       paramVarArgs = String.format(paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -235,23 +235,23 @@ public final class b
       paramVarArgs = paramVarArgs.getThread();
       p.g(paramVarArgs, "Looper.getMainLooper().thread");
       paramVarArgs.getId();
-      locala.km(paramString1, paramString2);
-      AppMethodBeat.o(220922);
+      locala.ks(paramString1, paramString2);
+      AppMethodBeat.o(195057);
       return;
     }
-    AppMethodBeat.o(220922);
+    AppMethodBeat.o(195057);
   }
   
   public static final void y(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220919);
+    AppMethodBeat.i(195054);
     p.h(paramVarArgs, "obj");
-    a locala = LnD;
+    a locala = LKo;
     if (locala != null)
     {
-      ad localad = ad.MLZ;
+      ad localad = ad.Njc;
       if (paramString == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramVarArgs = Arrays.copyOf(paramVarArgs, 0);
       paramVarArgs = String.format(paramString, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
@@ -270,30 +270,30 @@ public final class b
       paramVarArgs = paramVarArgs.getThread();
       p.g(paramVarArgs, "Looper.getMainLooper().thread");
       paramVarArgs.getId();
-      locala.aDo(paramString);
-      AppMethodBeat.o(220919);
+      locala.aEH(paramString);
+      AppMethodBeat.o(195054);
       return;
     }
-    AppMethodBeat.o(220919);
+    AppMethodBeat.o(195054);
   }
   
-  @l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/sdk/CLog$LogImp;", "", "logLevel", "", "getLogLevel", "()I", "logD", "", "tag", "", "filename", "funcname", "linuxTid", "pid", "tid", "", "maintid", "log", "logE", "logF", "logI", "logV", "logW", "video_composition_release"})
+  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/sdk/CLog$LogImp;", "", "logLevel", "", "getLogLevel", "()I", "logD", "", "tag", "", "filename", "funcname", "linuxTid", "pid", "tid", "", "maintid", "log", "logE", "logF", "logI", "logV", "logW", "video_composition_release"})
   public static abstract interface a
   {
-    public abstract void aDo(String paramString);
+    public abstract void aEH(String paramString);
     
-    public abstract void kj(String paramString1, String paramString2);
+    public abstract void kp(String paramString1, String paramString2);
     
-    public abstract void kk(String paramString1, String paramString2);
+    public abstract void kq(String paramString1, String paramString2);
     
-    public abstract void kl(String paramString1, String paramString2);
+    public abstract void kr(String paramString1, String paramString2);
     
-    public abstract void km(String paramString1, String paramString2);
+    public abstract void ks(String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.b
  * JD-Core Version:    0.7.0.1
  */

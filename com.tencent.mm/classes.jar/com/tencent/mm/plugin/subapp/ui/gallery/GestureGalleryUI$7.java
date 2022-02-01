@@ -14,17 +14,17 @@ final class GestureGalleryUI$7
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(193367);
+    AppMethodBeat.i(186646);
     if (paramBoolean)
     {
-      if (o.zbR != null)
+      if (o.zsu != null)
       {
-        o.zbR.jd(this.val$filePath, paramString);
-        o.zbR.dSE();
+        o.zsu.jk(this.val$filePath, paramString);
+        o.zsu.dWc();
       }
-      h.cl(this.BjD, this.BjD.getResources().getString(2131755894));
+      h.cm(this.BBc, this.BBc.getResources().getString(2131755894));
     }
-    AppMethodBeat.o(193367);
+    AppMethodBeat.o(186646);
   }
 }
 

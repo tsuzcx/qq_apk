@@ -1,122 +1,136 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class afv
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public String dbName;
-  public String owc;
-  public String qQf;
-  public int qQi;
-  public String qQm;
-  public String sql;
+  public String dwb;
+  public String key;
+  public String query;
+  public int scene;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(210587);
+    AppMethodBeat.i(123568);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.qQf != null) {
-        paramVarArgs.d(1, this.qQf);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.qQi);
-      if (this.sql != null) {
-        paramVarArgs.d(3, this.sql);
+      if (this.key != null) {
+        paramVarArgs.d(2, this.key);
       }
-      if (this.dbName != null) {
-        paramVarArgs.d(4, this.dbName);
+      if (this.dwb != null) {
+        paramVarArgs.d(3, this.dwb);
       }
-      if (this.owc != null) {
-        paramVarArgs.d(5, this.owc);
+      if (this.query != null) {
+        paramVarArgs.d(4, this.query);
       }
-      if (this.qQm != null) {
-        paramVarArgs.d(6, this.qQm);
+      paramVarArgs.aS(5, this.scene);
+      if (this.url != null) {
+        paramVarArgs.d(6, this.url);
       }
-      AppMethodBeat.o(210587);
+      AppMethodBeat.o(123568);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qQf == null) {
-        break label502;
+      if (this.BaseRequest == null) {
+        break label598;
       }
     }
-    label502:
-    for (paramInt = f.a.a.b.b.a.e(1, this.qQf) + 0;; paramInt = 0)
+    label598:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.qQi);
       paramInt = i;
-      if (this.sql != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.sql);
+      if (this.key != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.key);
       }
       i = paramInt;
-      if (this.dbName != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.dbName);
+      if (this.dwb != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dwb);
       }
       paramInt = i;
-      if (this.owc != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.owc);
+      if (this.query != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.query);
       }
-      i = paramInt;
-      if (this.qQm != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.qQm);
+      i = paramInt + f.a.a.b.b.a.bz(5, this.scene);
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.url);
       }
-      AppMethodBeat.o(210587);
-      return i;
+      AppMethodBeat.o(123568);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(210587);
+        AppMethodBeat.o(123568);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         afv localafv = (afv)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(210587);
+          AppMethodBeat.o(123568);
           return -1;
         case 1: 
-          localafv.qQf = locala.NPN.readString();
-          AppMethodBeat.o(210587);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localafv.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(123568);
           return 0;
         case 2: 
-          localafv.qQi = locala.NPN.zc();
-          AppMethodBeat.o(210587);
+          localafv.key = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(123568);
           return 0;
         case 3: 
-          localafv.sql = locala.NPN.readString();
-          AppMethodBeat.o(210587);
+          localafv.dwb = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(123568);
           return 0;
         case 4: 
-          localafv.dbName = locala.NPN.readString();
-          AppMethodBeat.o(210587);
+          localafv.query = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(123568);
           return 0;
         case 5: 
-          localafv.owc = locala.NPN.readString();
-          AppMethodBeat.o(210587);
+          localafv.scene = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(123568);
           return 0;
         }
-        localafv.qQm = locala.NPN.readString();
-        AppMethodBeat.o(210587);
+        localafv.url = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(123568);
         return 0;
       }
-      AppMethodBeat.o(210587);
+      AppMethodBeat.o(123568);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.afv
  * JD-Core Version:    0.7.0.1
  */

@@ -22,24 +22,24 @@ import com.tencent.mm.plugin.voip.b.a;
 public class VoipBigIconButton
   extends FrameLayout
 {
-  private Drawable Cju;
-  private Drawable Cjv;
-  private Drawable Cjw;
-  private Drawable Cjx;
-  private View.OnTouchListener Cjy;
+  private Drawable CAY;
+  private Drawable CAZ;
+  private Drawable CBa;
+  private Drawable CBb;
+  private View.OnTouchListener CBc;
   private TextView Wf;
-  private ImageView cum;
+  private ImageView cuP;
   private Context mContext;
   
   public VoipBigIconButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115375);
-    this.Cju = null;
-    this.Cjv = null;
-    this.Cjw = null;
-    this.Cjx = null;
-    this.Cjy = new View.OnTouchListener()
+    this.CAY = null;
+    this.CAZ = null;
+    this.CBa = null;
+    this.CBb = null;
+    this.CBc = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -47,7 +47,7 @@ public class VoipBigIconButton
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/voip/ui/VoipBigIconButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/voip/ui/VoipBigIconButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         }
@@ -73,10 +73,10 @@ public class VoipBigIconButton
     {
       try
       {
-        this.Cju = paramAttributeSet.getDrawable(0);
-        this.Cjv = paramAttributeSet.getDrawable(1);
-        this.Cjw = paramAttributeSet.getDrawable(2);
-        this.Cjx = paramAttributeSet.getDrawable(3);
+        this.CAY = paramAttributeSet.getDrawable(0);
+        this.CAZ = paramAttributeSet.getDrawable(1);
+        this.CBa = paramAttributeSet.getDrawable(2);
+        this.CBb = paramAttributeSet.getDrawable(3);
         int i = paramAttributeSet.getResourceId(4, -1);
         int j = paramAttributeSet.getResourceId(4, 0);
         if (j == 0) {
@@ -84,20 +84,20 @@ public class VoipBigIconButton
         }
         paramContext = getContext().getString(j);
         paramAttributeSet.recycle();
-        if (this.Cjv == null)
+        if (this.CAZ == null)
         {
-          paramAttributeSet = this.Cju;
-          this.Cjv = paramAttributeSet;
-          if (this.Cjx != null) {
+          paramAttributeSet = this.CAY;
+          this.CAZ = paramAttributeSet;
+          if (this.CBb != null) {
             break label290;
           }
-          paramAttributeSet = this.Cjw;
-          this.Cjx = paramAttributeSet;
-          this.cum = ((ImageView)findViewById(2131297213));
-          this.cum.setBackgroundDrawable(this.Cju);
-          this.cum.setImageDrawable(this.Cjw);
-          this.cum.setOnTouchListener(this.Cjy);
-          this.cum.setContentDescription(paramContext);
+          paramAttributeSet = this.CBa;
+          this.CBb = paramAttributeSet;
+          this.cuP = ((ImageView)findViewById(2131297213));
+          this.cuP.setBackgroundDrawable(this.CAY);
+          this.cuP.setImageDrawable(this.CBa);
+          this.cuP.setOnTouchListener(this.CBc);
+          this.cuP.setContentDescription(paramContext);
           this.Wf = ((TextView)findViewById(2131297216));
           if (i != -1) {
             this.Wf.setText(getContext().getString(i));
@@ -111,10 +111,10 @@ public class VoipBigIconButton
         paramAttributeSet.recycle();
         AppMethodBeat.o(115375);
       }
-      paramAttributeSet = this.Cjv;
+      paramAttributeSet = this.CAZ;
       continue;
       label290:
-      paramAttributeSet = this.Cjx;
+      paramAttributeSet = this.CBb;
       continue;
       label298:
       paramContext = null;
@@ -124,7 +124,7 @@ public class VoipBigIconButton
   public void setEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(115376);
-    this.cum.setEnabled(paramBoolean);
+    this.cuP.setEnabled(paramBoolean);
     this.Wf.setEnabled(paramBoolean);
     AppMethodBeat.o(115376);
   }
@@ -132,7 +132,7 @@ public class VoipBigIconButton
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(115377);
-    this.cum.setOnClickListener(paramOnClickListener);
+    this.cuP.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(115377);
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.luggage.game.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   private static final int CTRL_INDEX = 70;
   private static final String NAME = "hideKeyboard";

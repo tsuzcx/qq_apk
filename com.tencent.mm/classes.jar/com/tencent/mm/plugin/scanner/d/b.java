@@ -6,15 +6,15 @@ import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/result/DefaultScanCodeResultFilter;", "Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "()V", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "scan-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/result/DefaultScanCodeResultFilter;", "Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "()V", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "scan-sdk_release"})
 public final class b
   implements c
 {
-  public final List<a.a> fw(List<? extends a.a> paramList)
+  public final List<a.a> fE(List<? extends a.a> paramList)
   {
-    AppMethodBeat.i(218766);
+    AppMethodBeat.i(196702);
     p.h(paramList, "codeResultList");
-    AppMethodBeat.o(218766);
+    AppMethodBeat.o(196702);
     return paramList;
   }
 }

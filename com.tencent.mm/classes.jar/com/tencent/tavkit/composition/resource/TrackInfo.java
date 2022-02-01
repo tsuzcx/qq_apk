@@ -16,20 +16,20 @@ public class TrackInfo
   
   public CompositionTrackSegment getCompositionTrackSegment(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(219899);
+    AppMethodBeat.i(200930);
     paramCMTimeRange = new CompositionTrackSegment(this.compositionTrackSegment.getSourcePath(), this.compositionTrackSegment.getSourceTrackID(), this.compositionTrackSegment.getTimeMapping().getSource(), paramCMTimeRange, this.compositionTrackSegment.getSourceType());
-    AppMethodBeat.o(219899);
+    AppMethodBeat.o(200930);
     return paramCMTimeRange;
   }
   
   public int getMediaType()
   {
-    AppMethodBeat.i(219900);
+    AppMethodBeat.i(200931);
     int i;
     if (this.track != null)
     {
       i = this.track.getMediaType();
-      AppMethodBeat.o(219900);
+      AppMethodBeat.o(200931);
       return i;
     }
     if (this.compositionTrackSegment != null)
@@ -39,10 +39,10 @@ public class TrackInfo
       if (j == 3) {
         i = 1;
       }
-      AppMethodBeat.o(219900);
+      AppMethodBeat.o(200931);
       return i;
     }
-    AppMethodBeat.o(219900);
+    AppMethodBeat.o(200931);
     return 0;
   }
   

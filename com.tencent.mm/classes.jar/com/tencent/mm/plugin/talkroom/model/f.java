@@ -1,108 +1,108 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class f
 {
-  private int BnA;
-  long BnB;
-  int BnC;
-  int BnD;
-  private int BnE;
-  private int BnF;
-  private int BnG;
-  int BnH;
-  int BnI;
-  public int BnJ = 0;
-  private int BnK;
-  private int BnL;
-  private int BnM;
-  private int BnN;
-  private int BnO;
-  private int BnP;
-  private int BnQ;
-  private int BnR;
-  private int BnS;
-  String BnT;
-  int BnU;
-  int BnV;
-  long BnW;
-  int BnX;
-  long BnY;
-  long BnZ;
-  private int Bnx;
-  private long Bny;
-  int Bnz = 0;
-  boolean Boa;
-  boolean Bob;
-  private long gvM;
+  private int BEW;
+  private long BEX;
+  int BEY = 0;
+  private int BEZ;
+  boolean BFA;
+  long BFa;
+  int BFb;
+  int BFc;
+  private int BFd;
+  private int BFe;
+  private int BFf;
+  int BFg;
+  int BFh;
+  public int BFi = 0;
+  private int BFj;
+  private int BFk;
+  private int BFl;
+  private int BFm;
+  private int BFn;
+  private int BFo;
+  private int BFp;
+  private int BFq;
+  private int BFr;
+  String BFs;
+  int BFt;
+  int BFu;
+  long BFv;
+  int BFw;
+  long BFx;
+  long BFy;
+  boolean BFz;
+  private long gyt;
   int roomId;
-  long uLt;
+  long uXg;
   
-  public final void SM(int paramInt)
+  public final void Tt(int paramInt)
   {
     AppMethodBeat.i(29477);
-    if (this.BnW == 0L)
+    if (this.BFv == 0L)
     {
       AppMethodBeat.o(29477);
       return;
     }
-    this.Bnx = paramInt;
-    this.Bny = bt.aO(this.BnW);
+    this.BEW = paramInt;
+    this.BEX = bu.aO(this.BFv);
     AppMethodBeat.o(29477);
   }
   
-  public final void enL()
+  public final void ers()
   {
     AppMethodBeat.i(29478);
-    if (this.BnW == 0L)
+    if (this.BFv == 0L)
     {
       AppMethodBeat.o(29478);
       return;
     }
-    this.gvM = bt.aO(this.BnW);
+    this.gyt = bu.aO(this.BFv);
     AppMethodBeat.o(29478);
   }
   
-  public final void enM()
+  public final void ert()
   {
-    this.BnG += 1;
+    this.BFf += 1;
   }
   
-  public final void enN()
+  public final void eru()
   {
     AppMethodBeat.i(29480);
-    if (this.BnZ == 0L)
+    if (this.BFy == 0L)
     {
       AppMethodBeat.o(29480);
       return;
     }
-    long l = bt.aO(this.BnZ) / 1000L;
+    long l = bu.aO(this.BFy) / 1000L;
     if (l < 2L) {
-      this.BnK += 1;
+      this.BFj += 1;
     }
     for (;;)
     {
-      this.BnZ = 0L;
+      this.BFy = 0L;
       AppMethodBeat.o(29480);
       return;
       if (l < 6L) {
-        this.BnL += 1;
+        this.BFk += 1;
       } else if (l < 11L) {
-        this.BnM += 1;
+        this.BFl += 1;
       } else if (l < 21L) {
-        this.BnN += 1;
+        this.BFm += 1;
       } else if (l < 31L) {
-        this.BnO += 1;
+        this.BFn += 1;
       } else if (l < 41L) {
-        this.BnP += 1;
+        this.BFo += 1;
       } else if (l < 51L) {
-        this.BnQ += 1;
+        this.BFp += 1;
       } else if (l < 61L) {
-        this.BnR += 1;
+        this.BFq += 1;
       } else {
-        this.BnS += 1;
+        this.BFr += 1;
       }
     }
   }
@@ -110,19 +110,19 @@ public final class f
   public final void exitRoom()
   {
     AppMethodBeat.i(29479);
-    if (this.BnW == 0L)
+    if (this.BFv == 0L)
     {
       AppMethodBeat.o(29479);
       return;
     }
-    this.BnA = ((int)(bt.aO(this.BnW) / 1000L));
+    this.BEZ = ((int)(bu.aO(this.BFv) / 1000L));
     AppMethodBeat.o(29479);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(29481);
-    String str = this.Bnx + "," + this.Bny + "," + this.gvM + "," + this.Bnz + "," + this.BnA + "," + this.BnB + "," + this.BnC + "," + this.BnD + "," + this.BnE + "," + this.BnF + "," + this.BnG + "," + this.BnH + "," + this.BnI + "," + this.BnJ + "," + this.BnK + "," + this.BnL + "," + this.BnM + "," + this.BnN + "," + this.BnO + "," + this.BnP + "," + this.BnQ + "," + this.BnR + "," + this.BnS + "," + this.BnT + "," + this.roomId + "," + this.uLt + "," + this.BnU + "," + this.BnV;
+    String str = this.BEW + "," + this.BEX + "," + this.gyt + "," + this.BEY + "," + this.BEZ + "," + this.BFa + "," + this.BFb + "," + this.BFc + "," + this.BFd + "," + this.BFe + "," + this.BFf + "," + this.BFg + "," + this.BFh + "," + this.BFi + "," + this.BFj + "," + this.BFk + "," + this.BFl + "," + this.BFm + "," + this.BFn + "," + this.BFo + "," + this.BFp + "," + this.BFq + "," + this.BFr + "," + this.BFs + "," + this.roomId + "," + this.uXg + "," + this.BFt + "," + this.BFu;
     AppMethodBeat.o(29481);
     return str;
   }

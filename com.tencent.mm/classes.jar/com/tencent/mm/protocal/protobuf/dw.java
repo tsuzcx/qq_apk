@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int gfo;
+  public int ghG;
   public String mac;
   public String ssid;
   
@@ -18,7 +18,7 @@ public final class dw
       if (this.mac != null) {
         paramVarArgs.d(1, this.mac);
       }
-      paramVarArgs.aS(2, this.gfo);
+      paramVarArgs.aS(2, this.ghG);
       if (this.ssid != null) {
         paramVarArgs.d(3, this.ssid);
       }
@@ -33,7 +33,7 @@ public final class dw
     label327:
     for (paramInt = f.a.a.b.b.a.e(1, this.mac) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.gfo);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.ghG);
       paramInt = i;
       if (this.ssid != null) {
         paramInt = i + f.a.a.b.b.a.e(3, this.ssid);
@@ -43,9 +43,9 @@ public final class dw
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(32114);
@@ -61,15 +61,15 @@ public final class dw
           AppMethodBeat.o(32114);
           return -1;
         case 1: 
-          localdw.mac = locala.NPN.readString();
+          localdw.mac = locala.OmT.readString();
           AppMethodBeat.o(32114);
           return 0;
         case 2: 
-          localdw.gfo = locala.NPN.zc();
+          localdw.ghG = locala.OmT.zc();
           AppMethodBeat.o(32114);
           return 0;
         }
-        localdw.ssid = locala.NPN.readString();
+        localdw.ssid = locala.OmT.readString();
         AppMethodBeat.o(32114);
         return 0;
       }

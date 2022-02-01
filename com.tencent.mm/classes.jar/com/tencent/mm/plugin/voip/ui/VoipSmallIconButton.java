@@ -22,20 +22,20 @@ import com.tencent.mm.plugin.voip.b.a;
 public class VoipSmallIconButton
   extends FrameLayout
 {
-  private Drawable Cjw;
-  private Drawable Cjx;
-  private View.OnTouchListener Cjy;
+  private Drawable CBa;
+  private Drawable CBb;
+  private View.OnTouchListener CBc;
   private TextView Wf;
-  private ImageView cum;
+  private ImageView cuP;
   private Context mContext;
   
   public VoipSmallIconButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115391);
-    this.Cjw = null;
-    this.Cjx = null;
-    this.Cjy = new View.OnTouchListener()
+    this.CBa = null;
+    this.CBb = null;
+    this.CBc = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -43,7 +43,7 @@ public class VoipSmallIconButton
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/voip/ui/VoipSmallIconButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/voip/ui/VoipSmallIconButton$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
         }
@@ -65,15 +65,15 @@ public class VoipSmallIconButton
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, b.a.VoipButton, 0, 0);
     try
     {
-      this.Cjw = paramContext.getDrawable(2);
-      this.Cjx = paramContext.getDrawable(3);
+      this.CBa = paramContext.getDrawable(2);
+      this.CBb = paramContext.getDrawable(3);
       paramAttributeSet = paramContext.getString(4);
       int i = paramContext.getResourceId(4, -1);
       paramContext.recycle();
-      this.cum = ((ImageView)findViewById(2131304850));
-      this.cum.setImageDrawable(this.Cjw);
-      this.cum.setOnTouchListener(this.Cjy);
-      this.cum.setContentDescription(paramAttributeSet);
+      this.cuP = ((ImageView)findViewById(2131304850));
+      this.cuP.setImageDrawable(this.CBa);
+      this.cuP.setOnTouchListener(this.CBc);
+      this.cuP.setContentDescription(paramAttributeSet);
       this.Wf = ((TextView)findViewById(2131304852));
       if (i != -1) {
         this.Wf.setText(getContext().getString(i));
@@ -91,7 +91,7 @@ public class VoipSmallIconButton
   public void setEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(115392);
-    this.cum.setEnabled(paramBoolean);
+    this.cuP.setEnabled(paramBoolean);
     this.Wf.setEnabled(paramBoolean);
     AppMethodBeat.o(115392);
   }
@@ -99,7 +99,7 @@ public class VoipSmallIconButton
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(115390);
-    this.cum.setOnClickListener(paramOnClickListener);
+    this.cuP.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(115390);
   }
 }

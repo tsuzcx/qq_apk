@@ -1,84 +1,84 @@
 package com.tencent.mm.plugin.ipcall.model.b;
 
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class a
   implements f
 {
   protected int errCode = 0;
   protected int errType = 0;
-  protected c uKI;
-  protected a uLq;
+  protected c uWv;
+  protected a uXd;
   
-  public abstract void Dd();
+  public abstract void Dg();
   
   public final void a(a parama)
   {
-    this.uLq = parama;
+    this.uXd = parama;
   }
   
   public void a(c paramc)
   {
-    ad.d("MicroMsg.BaseIPCallService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
-    this.uKI = paramc;
-    b(this.uKI);
+    ae.d("MicroMsg.BaseIPCallService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
+    this.uWv = paramc;
+    b(this.uWv);
   }
   
   public abstract void b(c paramc);
   
-  public abstract int[] ddT();
-  
   public void destroy()
   {
-    int[] arrayOfInt = ddT();
+    int[] arrayOfInt = dgL();
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = arrayOfInt[i];
-      ba.aiU().b(k, this);
+      bc.ajj().b(k, this);
       i += 1;
     }
-    this.uLq = null;
+    this.uXd = null;
     onDestroy();
   }
+  
+  public abstract int[] dgL();
   
   public abstract int getServiceType();
   
   public void init()
   {
-    int[] arrayOfInt = ddT();
+    int[] arrayOfInt = dgL();
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = arrayOfInt[i];
-      ba.aiU().a(k, this);
+      bc.ajj().a(k, this);
       i += 1;
     }
-    Dd();
+    Dg();
   }
   
   public abstract void onDestroy();
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    ad.d("MicroMsg.BaseIPCallService", "onSceneEnd, errType: %d, errCode: %d, scene.getType: %d, serviceType: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.getType()), Integer.valueOf(getServiceType()) });
+    ae.d("MicroMsg.BaseIPCallService", "onSceneEnd, errType: %d, errCode: %d, scene.getType: %d, serviceType: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.getType()), Integer.valueOf(getServiceType()) });
     this.errType = paramInt1;
     this.errCode = paramInt2;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (this.uLq != null) {
-        this.uLq.a(getServiceType(), paramn, paramInt1, paramInt2);
+      if (this.uXd != null) {
+        this.uXd.a(getServiceType(), paramn, paramInt1, paramInt2);
       }
     }
-    while (this.uLq == null) {
+    while (this.uXd == null) {
       return;
     }
-    this.uLq.b(getServiceType(), paramn, paramInt1, paramInt2);
+    this.uXd.b(getServiceType(), paramn, paramInt1, paramInt2);
   }
   
   public static abstract interface a

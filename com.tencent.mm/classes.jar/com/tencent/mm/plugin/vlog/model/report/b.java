@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/MultiVideoProfileIDKeyStat;", "", "()V", "ID", "", "endSeek", "", "cost", "endUpdateComposition", "report", "key", "startSeek", "startUpdateComposition", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/MultiVideoProfileIDKeyStat;", "", "()V", "ID", "", "endSeek", "", "cost", "endUpdateComposition", "report", "key", "startSeek", "startUpdateComposition", "plugin-vlog_release"})
 public final class b
 {
-  public static final b BHP;
+  public static final b BZo;
   
   static
   {
-    AppMethodBeat.i(195891);
-    BHP = new b();
-    AppMethodBeat.o(195891);
+    AppMethodBeat.i(191351);
+    BZo = new b();
+    AppMethodBeat.o(191351);
   }
   
   public static void report(long paramLong)
   {
-    AppMethodBeat.i(195890);
-    g.yhR.A(1468L, paramLong);
-    AppMethodBeat.o(195890);
+    AppMethodBeat.i(191350);
+    g.yxI.A(1468L, paramLong);
+    AppMethodBeat.o(191350);
   }
 }
 

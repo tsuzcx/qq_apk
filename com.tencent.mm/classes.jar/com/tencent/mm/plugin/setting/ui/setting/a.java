@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 final class a
 {
-  boolean dpn = false;
+  boolean dqs = false;
   String errMsg = "";
 }
 

@@ -6,8 +6,8 @@ public abstract interface g$a
 {
   public static final class a
   {
-    public int dGc;
-    public Camera gbc;
+    public int dHi;
+    public Camera gdk;
   }
 }
 

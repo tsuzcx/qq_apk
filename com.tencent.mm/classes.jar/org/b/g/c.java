@@ -16,7 +16,7 @@ import org.b.b.b;
 public final class c
 {
   private static String CHARSET;
-  private static final Map<String, String> NWK;
+  private static final Map<String, String> OtP;
   
   static
   {
@@ -26,7 +26,7 @@ public final class c
     localHashMap.put("*", "%2A");
     localHashMap.put("+", "%20");
     localHashMap.put("%7E", "~");
-    NWK = Collections.unmodifiableMap(localHashMap);
+    OtP = Collections.unmodifiableMap(localHashMap);
     AppMethodBeat.o(40580);
   }
   
@@ -58,7 +58,7 @@ public final class c
       try
       {
         paramString = URLEncoder.encode(paramString, CHARSET);
-        localIterator = NWK.entrySet().iterator();
+        localIterator = OtP.entrySet().iterator();
         if (!localIterator.hasNext())
         {
           AppMethodBeat.o(40581);

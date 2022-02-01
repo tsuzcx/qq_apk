@@ -20,12 +20,13 @@ import com.facebook.device.yearclass.YearClass;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.plugin.game.d.dm;
+import com.tencent.mm.plugin.game.d.dv;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.f.72;
 import com.tencent.mm.plugin.webview.c.l.a;
 import com.tencent.mm.plugin.webview.core.h;
 import com.tencent.mm.plugin.webview.core.j;
+import com.tencent.mm.plugin.webview.model.ay;
 import com.tencent.mm.plugin.webview.model.ay.d;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI.b;
@@ -36,12 +37,13 @@ import com.tencent.mm.plugin.webview.ui.tools.game.menu.b.c;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.c;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MovingImageButton;
 import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
-import com.tencent.mm.protocal.protobuf.byv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -60,64 +62,64 @@ public class GameWebViewUI
   extends GameBaseWebViewUI
   implements e
 {
-  private static String EjI = "wx_fullscreen";
-  public com.tencent.mm.plugin.wepkg.d Eiw;
-  private boolean EjH;
-  private HashMap<String, String> EjJ;
-  private Drawable EjK;
-  private Drawable EjL;
-  private String EjM;
-  private Map<Integer, byv> EjN;
-  private String EjO;
-  private GameMenuImageButton EjP;
-  private boolean EjQ;
-  private boolean EjR;
-  private boolean EjS;
-  private ViewGroup EjT;
-  private boolean EjU;
-  private boolean EjV;
-  private boolean tTj;
-  public g tVA;
-  public GameWebPerformanceInfo tVm;
-  private boolean tVn;
-  private Object tVo;
-  private long tVz;
+  private static String EBM = "wx_fullscreen";
+  public com.tencent.mm.plugin.wepkg.d EAA;
+  private boolean EBL;
+  private HashMap<String, String> EBN;
+  private Drawable EBO;
+  private Drawable EBP;
+  private String EBQ;
+  private Map<Integer, bzp> EBR;
+  private String EBS;
+  private GameMenuImageButton EBT;
+  private boolean EBU;
+  private boolean EBV;
+  private boolean EBW;
+  private ViewGroup EBX;
+  private boolean EBY;
+  private boolean EBZ;
+  private boolean uea;
+  public GameWebPerformanceInfo ugi;
+  private boolean ugj;
+  private Object ugk;
+  private long ugw;
+  public g ugx;
   
   public GameWebViewUI()
   {
     AppMethodBeat.i(80915);
-    this.tTj = false;
-    this.EjH = false;
-    this.EjJ = new HashMap();
-    this.EjM = null;
-    this.EjN = new HashMap();
-    this.EjR = false;
-    this.tVn = false;
-    this.tVo = new Object();
-    this.EjU = false;
-    this.EjV = false;
+    this.uea = false;
+    this.EBL = false;
+    this.EBN = new HashMap();
+    this.EBQ = null;
+    this.EBR = new HashMap();
+    this.EBV = false;
+    this.ugj = false;
+    this.ugk = new Object();
+    this.EBY = false;
+    this.EBZ = false;
     AppMethodBeat.o(80915);
   }
   
-  private l eUp()
+  private l eYc()
   {
     AppMethodBeat.i(80918);
     try
     {
-      List localList = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.Ekd;
-      new Bundle().putString("game_hv_menu_appid", this.EjO);
-      this.EjN.clear();
+      List localList = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.ECh;
+      new Bundle().putString("game_hv_menu_appid", this.EBS);
+      this.EBR.clear();
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
-        byv localbyv = (byv)localIterator.next();
-        this.EjN.put(Integer.valueOf(localbyv.GTY), localbyv);
+        bzp localbzp = (bzp)localIterator.next();
+        this.EBR.put(Integer.valueOf(localbzp.Hnz), localbzp);
       }
       locall = c.c(this, localException);
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.Wepkg.GameWebViewUI", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
+      ae.e("MicroMsg.Wepkg.GameWebViewUI", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(80918);
       return null;
     }
@@ -126,202 +128,45 @@ public class GameWebViewUI
     return locall;
   }
   
-  private void eUq()
+  private void eYd()
   {
     AppMethodBeat.i(80937);
-    if (this.EcB != null) {
-      this.EcB.setVisibility(0);
+    if (this.EuD != null) {
+      this.EuD.setVisibility(0);
     }
     AppMethodBeat.o(80937);
   }
   
-  public final void aO(Bundle paramBundle)
+  public final void aE(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(198416);
+    super.aE(paramString, paramInt1, paramInt2);
+    AppMethodBeat.o(198416);
+  }
+  
+  public final void aP(Bundle paramBundle)
   {
     AppMethodBeat.i(80922);
-    super.aO(paramBundle);
+    super.aP(paramBundle);
     AppMethodBeat.o(80922);
   }
   
   public void addIconOptionMenu(int paramInt1, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
     AppMethodBeat.i(80925);
-    if (this.EjQ) {
+    if (this.EBU) {
       super.addIconOptionMenu(paramInt1, paramInt2, paramOnMenuItemClickListener);
     }
     AppMethodBeat.o(80925);
   }
   
-  public boolean bQO()
-  {
-    AppMethodBeat.i(80938);
-    getIntent().putExtra("minimize_secene", 2);
-    AppMethodBeat.o(80938);
-    return true;
-  }
-  
-  public final void bQS()
-  {
-    AppMethodBeat.i(80919);
-    if (this.EdR.Ebg) {
-      this.EdR.eSg();
-    }
-    if ((this.EjP == null) || (!this.EjP.oqn))
-    {
-      super.bQS();
-      AppMethodBeat.o(80919);
-      return;
-    }
-    final com.tencent.mm.plugin.webview.ui.tools.game.menu.d locald = new com.tencent.mm.plugin.webview.ui.tools.game.menu.d(getContext());
-    locald.a(new b.c()
-    {
-      public final void c(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(80900);
-        paramAnonymousMenuItem = (byv)GameWebViewUI.l(GameWebViewUI.this).get(Integer.valueOf(paramAnonymousMenuItem.getItemId()));
-        if (paramAnonymousMenuItem == null)
-        {
-          AppMethodBeat.o(80900);
-          return;
-        }
-        switch (GameWebViewUI.8.EjZ[com.tencent.mm.plugin.webview.ui.tools.game.menu.c.a.XJ(paramAnonymousMenuItem.FJz).ordinal()])
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(80900);
-          return;
-          Object localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", paramAnonymousMenuItem.Gsq);
-          com.tencent.mm.bs.d.b(GameWebViewUI.this.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-          AppMethodBeat.o(80900);
-          return;
-          GameWebViewUI.this.DIg.eQG().C(new Object[] { GameWebViewUI.this.bQm(), Integer.valueOf(32), Integer.valueOf(1) }).report();
-          if (!GameWebViewUI.m(GameWebViewUI.this))
-          {
-            GameWebViewUI.this.finish();
-            AppMethodBeat.o(80900);
-            return;
-            paramAnonymousMenuItem = GameWebViewUI.this.getIntent().getStringExtra("KPublisherId");
-            localObject = GameWebViewUI.this.getIntent().getStringExtra("KAppId");
-            String str = GameWebViewUI.this.getIntent().getStringExtra("srcUsername");
-            GameWebViewUI.this.DIg.eQG().C(new Object[] { GameWebViewUI.this.bQm(), Integer.valueOf(1), Integer.valueOf(1), paramAnonymousMenuItem, localObject, str }).report();
-            GameWebViewUI.n(GameWebViewUI.this);
-            AppMethodBeat.o(80900);
-            return;
-            GameWebViewUI.this.DIg.eQG().C(new Object[] { GameWebViewUI.this.bQm(), Integer.valueOf(3), Integer.valueOf(1) }).report();
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(157L, 6L, 1L, false);
-            GameWebViewUI.o(GameWebViewUI.this);
-            AppMethodBeat.o(80900);
-            return;
-            GameWebViewUI.this.DIg.eQG().C(new Object[] { GameWebViewUI.this.bQm(), Integer.valueOf(10), Integer.valueOf(1) }).report();
-            if (GameWebViewUI.p(GameWebViewUI.this) != null)
-            {
-              GameWebViewUI.q(GameWebViewUI.this).reload();
-              AppMethodBeat.o(80900);
-              return;
-              GameWebViewUI.this.DIg.eQG().C(new Object[] { GameWebViewUI.this.bQm(), Integer.valueOf(31), Integer.valueOf(1) }).report();
-              GameWebViewUI.r(GameWebViewUI.this);
-              AppMethodBeat.o(80900);
-              return;
-              GameWebViewUI.this.DIg.eQG().C(new Object[] { GameWebViewUI.this.bQm(), Integer.valueOf(11), Integer.valueOf(1) }).report();
-              GameWebViewUI.s(GameWebViewUI.this);
-              AppMethodBeat.o(80900);
-              return;
-              if (GameWebViewUI.this.DzP != null)
-              {
-                localObject = GameWebViewUI.this.DzP;
-                int i = paramAnonymousMenuItem.GTY;
-                if (!((f)localObject).BHY)
-                {
-                  ad.e("MicroMsg.JsApiHandler", "not ready");
-                  AppMethodBeat.o(80900);
-                  return;
-                }
-                ad.i("MicroMsg.JsApiHandler", "onCustomGameMenuClicked");
-                paramAnonymousMenuItem = new HashMap();
-                paramAnonymousMenuItem.put("itemId", Integer.valueOf(i));
-                aq.f(new f.72((f)localObject, l.a.b("onCustomGameMenuClicked", paramAnonymousMenuItem, ((f)localObject).DMD, ((f)localObject).vJP)));
-              }
-            }
-          }
-        }
-      }
-    });
-    locald.Eks = new b.b()
-    {
-      public final void onCreateMMMenu(l paramAnonymousl)
-      {
-        AppMethodBeat.i(80901);
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(480L, 0L, 1L, false);
-        l locall = GameWebViewUI.t(GameWebViewUI.this);
-        if (locall != null) {
-          paramAnonymousl.JlY.addAll(locall.JlY);
-        }
-        AppMethodBeat.o(80901);
-      }
-    };
-    if (this.EcL) {
-      locald.lzG = true;
-    }
-    for (locald.lzH = true; (this.EcP != null) && (this.EcP.isShown()); locald.lzH = false)
-    {
-      this.EcP.hide();
-      aq.o(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(80902);
-          if ((GameWebViewUI.this.isFinishing()) || (GameWebViewUI.u(GameWebViewUI.this)))
-          {
-            ad.i("MicroMsg.Wepkg.GameWebViewUI", "tryShow bottom sheet failed, the activity has been destroyed.");
-            AppMethodBeat.o(80902);
-            return;
-          }
-          locald.cMW();
-          AppMethodBeat.o(80902);
-        }
-      }, 100L);
-      AppMethodBeat.o(80919);
-      return;
-      locald.lzG = false;
-    }
-    hideVKB();
-    aq.o(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(80903);
-        if ((GameWebViewUI.this.isFinishing()) || (GameWebViewUI.v(GameWebViewUI.this)))
-        {
-          ad.i("MicroMsg.Wepkg.GameWebViewUI", "tryShow bottom sheet failed, the activity has been destroyed.");
-          AppMethodBeat.o(80903);
-          return;
-        }
-        locald.cMW();
-        AppMethodBeat.o(80903);
-      }
-    }, 100L);
-    AppMethodBeat.o(80919);
-  }
-  
-  public final h bRd()
-  {
-    AppMethodBeat.i(208234);
-    h localh = super.bRd();
-    if (localh != null) {
-      localh.a(new c((byte)0));
-    }
-    AppMethodBeat.o(208234);
-    return localh;
-  }
-  
-  public final void bzn()
+  public final void bAi()
   {
     AppMethodBeat.i(80923);
-    super.bzn();
-    this.EjQ = true;
+    super.bAi();
+    this.EBU = true;
     int i;
-    if ((this.tTj) || (this.ulT != null) || (this.ulS != 0)) {
+    if ((this.uea) || (this.uxq != null) || (this.uxp != 0)) {
       i = 0;
     }
     for (;;)
@@ -329,30 +174,30 @@ public class GameWebViewUI
       Object localObject;
       if (i != 0)
       {
-        localObject = com.tencent.mm.plugin.game.commlib.a.cWQ();
-        if ((localObject == null) || (bt.isNullOrNil(((dm)localObject).hAD)) || (bt.isNullOrNil(((dm)localObject).ujP))) {}
+        localObject = com.tencent.mm.plugin.game.commlib.a.cZu();
+        if ((localObject == null) || (bu.isNullOrNil(((dv)localObject).hDr)) || (bu.isNullOrNil(((dv)localObject).uvn))) {}
       }
       try
       {
         if (al.isDarkMode()) {}
-        for (this.ulS = Color.parseColor(((dm)localObject).ujP);; this.ulS = Color.parseColor(((dm)localObject).hAD))
+        for (this.uxp = Color.parseColor(((dv)localObject).uvn);; this.uxp = Color.parseColor(((dv)localObject).hDr))
         {
-          this.ulT = ((dm)localObject).udZ;
-          eSJ();
-          vg(true);
+          this.uxq = ((dv)localObject).uph;
+          eWv();
+          vo(true);
           localObject = getIntent();
           if ((localObject == null) || (!((Intent)localObject).getBooleanExtra("game_check_float", false))) {
             break label421;
           }
           i = ((Intent)localObject).getIntExtra("game_sourceScene", 0);
-          this.EjM = ((Intent)localObject).getStringExtra("game_transparent_float_url");
-          if (!bt.isNullOrNil(this.EjM)) {
+          this.EBQ = ((Intent)localObject).getStringExtra("game_transparent_float_url");
+          if (!bu.isNullOrNil(this.EBQ)) {
             break label247;
           }
           localObject = new Intent();
           ((Intent)localObject).putExtra("game_check_float", true);
           ((Intent)localObject).putExtra("game_sourceScene", i);
-          com.tencent.mm.bs.d.b(this, "game", ".ui.GameCenterUI", (Intent)localObject);
+          com.tencent.mm.br.d.b(this, "game", ".ui.GameCenterUI", (Intent)localObject);
           AppMethodBeat.o(80923);
           return;
           i = 1;
@@ -363,32 +208,32 @@ public class GameWebViewUI
       {
         for (;;)
         {
-          ad.e("MicroMsg.Wepkg.GameWebViewUI", "parse color: " + localIllegalArgumentException.getMessage());
+          ae.e("MicroMsg.Wepkg.GameWebViewUI", "parse color: " + localIllegalArgumentException.getMessage());
         }
         try
         {
           label247:
           localObject = new Bundle();
           ((Bundle)localObject).putInt("game_sourceScene", i);
-          if (this.lvv != null) {
-            this.lvv.k(91, (Bundle)localObject);
+          if (this.lzT != null) {
+            this.lzT.k(91, (Bundle)localObject);
           }
-          if (this.Eij == null) {
-            this.Eij = new a(this, this.EcJ, this.EjM);
+          if (this.EAn == null) {
+            this.EAn = new a(this, this.EuL, this.EBQ);
           }
-          localObject = this.Eij;
-          String str = this.EjM;
-          ((a)localObject).tVg = str;
-          ((a)localObject).Eiw.k(str, false, false);
-          if ((((a)localObject).hJc != null) && (((a)localObject).hJc.getParent() == null))
+          localObject = this.EAn;
+          String str = this.EBQ;
+          ((a)localObject).ugc = str;
+          ((a)localObject).EAA.k(str, false, false);
+          if ((((a)localObject).hLV != null) && (((a)localObject).hLV.getParent() == null))
           {
             ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-            ((a)localObject).WA.addView(((a)localObject).hJc, localLayoutParams);
+            ((a)localObject).WA.addView(((a)localObject).hLV, localLayoutParams);
           }
-          if ((((a)localObject).hJc != null) && (((a)localObject).Eix != null)) {
-            ((a)localObject).hJc.post(new a.3((a)localObject, str));
+          if ((((a)localObject).hLV != null) && (((a)localObject).EAB != null)) {
+            ((a)localObject).hLV.post(new a.3((a)localObject, str));
           }
-          this.EjM = null;
+          this.EBQ = null;
           AppMethodBeat.o(80923);
           return;
         }
@@ -399,24 +244,188 @@ public class GameWebViewUI
     }
   }
   
-  public final Map<Integer, Object> cXy()
+  public boolean bRP()
   {
-    AppMethodBeat.i(208235);
+    AppMethodBeat.i(80938);
+    getIntent().putExtra("minimize_secene", 2);
+    AppMethodBeat.o(80938);
+    return true;
+  }
+  
+  public final void bRT()
+  {
+    AppMethodBeat.i(80919);
+    if (this.EvT.Eth) {
+      this.EvT.eVS();
+    }
+    if ((this.EBT == null) || (!this.EBT.owJ))
+    {
+      super.bRT();
+      AppMethodBeat.o(80919);
+      return;
+    }
+    final com.tencent.mm.plugin.webview.ui.tools.game.menu.d locald = new com.tencent.mm.plugin.webview.ui.tools.game.menu.d(getContext());
+    locald.a(new b.c()
+    {
+      public final void c(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(80900);
+        paramAnonymousMenuItem = (bzp)GameWebViewUI.l(GameWebViewUI.this).get(Integer.valueOf(paramAnonymousMenuItem.getItemId()));
+        if (paramAnonymousMenuItem == null)
+        {
+          AppMethodBeat.o(80900);
+          return;
+        }
+        switch (GameWebViewUI.8.ECd[com.tencent.mm.plugin.webview.ui.tools.game.menu.c.a.Yp(paramAnonymousMenuItem.GbY).ordinal()])
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(80900);
+          return;
+          Object localObject = new Intent();
+          ((Intent)localObject).putExtra("rawUrl", paramAnonymousMenuItem.GLO);
+          com.tencent.mm.br.d.b(GameWebViewUI.this.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+          AppMethodBeat.o(80900);
+          return;
+          GameWebViewUI.this.Eae.eUs().B(new Object[] { GameWebViewUI.this.bRn(), Integer.valueOf(32), Integer.valueOf(1) }).report();
+          if (!GameWebViewUI.m(GameWebViewUI.this))
+          {
+            GameWebViewUI.this.finish();
+            AppMethodBeat.o(80900);
+            return;
+            paramAnonymousMenuItem = GameWebViewUI.this.getIntent().getStringExtra("KPublisherId");
+            localObject = GameWebViewUI.this.getIntent().getStringExtra("KAppId");
+            String str = GameWebViewUI.this.getIntent().getStringExtra("srcUsername");
+            GameWebViewUI.this.Eae.eUs().B(new Object[] { GameWebViewUI.this.bRn(), Integer.valueOf(1), Integer.valueOf(1), paramAnonymousMenuItem, localObject, str }).report();
+            GameWebViewUI.n(GameWebViewUI.this);
+            AppMethodBeat.o(80900);
+            return;
+            GameWebViewUI.this.Eae.eUs().B(new Object[] { GameWebViewUI.this.bRn(), Integer.valueOf(3), Integer.valueOf(1) }).report();
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(157L, 6L, 1L, false);
+            GameWebViewUI.o(GameWebViewUI.this);
+            AppMethodBeat.o(80900);
+            return;
+            GameWebViewUI.this.Eae.eUs().B(new Object[] { GameWebViewUI.this.bRn(), Integer.valueOf(10), Integer.valueOf(1) }).report();
+            if (GameWebViewUI.p(GameWebViewUI.this) != null)
+            {
+              GameWebViewUI.q(GameWebViewUI.this).reload();
+              AppMethodBeat.o(80900);
+              return;
+              GameWebViewUI.this.Eae.eUs().B(new Object[] { GameWebViewUI.this.bRn(), Integer.valueOf(31), Integer.valueOf(1) }).report();
+              GameWebViewUI.r(GameWebViewUI.this);
+              AppMethodBeat.o(80900);
+              return;
+              GameWebViewUI.this.Eae.eUs().B(new Object[] { GameWebViewUI.this.bRn(), Integer.valueOf(11), Integer.valueOf(1) }).report();
+              GameWebViewUI.s(GameWebViewUI.this);
+              AppMethodBeat.o(80900);
+              return;
+              if (GameWebViewUI.this.DRx != null)
+              {
+                localObject = GameWebViewUI.this.DRx;
+                int i = paramAnonymousMenuItem.Hnz;
+                if (!((f)localObject).BZx)
+                {
+                  ae.e("MicroMsg.JsApiHandler", "not ready");
+                  AppMethodBeat.o(80900);
+                  return;
+                }
+                ae.i("MicroMsg.JsApiHandler", "onCustomGameMenuClicked");
+                paramAnonymousMenuItem = new HashMap();
+                paramAnonymousMenuItem.put("itemId", Integer.valueOf(i));
+                ar.f(new f.72((f)localObject, l.a.b("onCustomGameMenuClicked", paramAnonymousMenuItem, ((f)localObject).EeC, ((f)localObject).vVT)));
+              }
+            }
+          }
+        }
+      }
+    });
+    locald.ECw = new b.b()
+    {
+      public final void onCreateMMMenu(l paramAnonymousl)
+      {
+        AppMethodBeat.i(80901);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(480L, 0L, 1L, false);
+        l locall = GameWebViewUI.t(GameWebViewUI.this);
+        if (locall != null) {
+          paramAnonymousl.JGM.addAll(locall.JGM);
+        }
+        AppMethodBeat.o(80901);
+      }
+    };
+    if (this.EuN) {
+      locald.lEe = true;
+    }
+    for (locald.lEf = true; (this.EuR != null) && (this.EuR.isShown()); locald.lEf = false)
+    {
+      this.EuR.hide();
+      ar.o(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(80902);
+          if ((GameWebViewUI.this.isFinishing()) || (GameWebViewUI.u(GameWebViewUI.this)))
+          {
+            ae.i("MicroMsg.Wepkg.GameWebViewUI", "tryShow bottom sheet failed, the activity has been destroyed.");
+            AppMethodBeat.o(80902);
+            return;
+          }
+          locald.cPF();
+          AppMethodBeat.o(80902);
+        }
+      }, 100L);
+      AppMethodBeat.o(80919);
+      return;
+      locald.lEe = false;
+    }
+    hideVKB();
+    ar.o(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(80903);
+        if ((GameWebViewUI.this.isFinishing()) || (GameWebViewUI.v(GameWebViewUI.this)))
+        {
+          ae.i("MicroMsg.Wepkg.GameWebViewUI", "tryShow bottom sheet failed, the activity has been destroyed.");
+          AppMethodBeat.o(80903);
+          return;
+        }
+        locald.cPF();
+        AppMethodBeat.o(80903);
+      }
+    }, 100L);
+    AppMethodBeat.o(80919);
+  }
+  
+  public final h bSe()
+  {
+    AppMethodBeat.i(198415);
+    h localh = super.bSe();
+    if (localh != null) {
+      localh.a(new c((byte)0));
+    }
+    AppMethodBeat.o(198415);
+    return localh;
+  }
+  
+  public final Map<Integer, Object> dai()
+  {
+    AppMethodBeat.i(198417);
     HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(d.a.EiM), eUr());
-    localHashMap.put(Integer.valueOf(d.a.EiN), com.tencent.mm.sdk.platformtools.ay.iR(aj.getContext()));
-    localHashMap.put(Integer.valueOf(d.a.EiO), String.valueOf(YearClass.get(aj.getContext())));
-    String str = bQm();
+    localHashMap.put(Integer.valueOf(d.a.EAQ), eYe());
+    localHashMap.put(Integer.valueOf(d.a.EAR), az.iW(ak.getContext()));
+    localHashMap.put(Integer.valueOf(d.a.EAS), String.valueOf(YearClass.get(ak.getContext())));
+    String str = bRn();
     try
     {
-      localHashMap.put(Integer.valueOf(d.a.EiP), q.encode(bt.nullAsNil(str), "UTF-8"));
+      localHashMap.put(Integer.valueOf(d.a.EAT), q.encode(bu.nullAsNil(str), "UTF-8"));
       label92:
-      localHashMap.put(Integer.valueOf(d.a.EiQ), Boolean.valueOf(this.Eiw.aKu(str)));
-      localHashMap.put(Integer.valueOf(d.a.EiR), Integer.valueOf(0));
-      localHashMap.put(Integer.valueOf(d.a.EiS), Integer.valueOf(0));
-      localHashMap.put(Integer.valueOf(d.a.EiT), this.Eiw.eXF());
-      localHashMap.put(Integer.valueOf(d.a.EiU), com.tencent.mm.plugin.wepkg.d.eXG());
-      AppMethodBeat.o(208235);
+      localHashMap.put(Integer.valueOf(d.a.EAU), Boolean.valueOf(this.EAA.aLQ(str)));
+      localHashMap.put(Integer.valueOf(d.a.EAV), Integer.valueOf(0));
+      localHashMap.put(Integer.valueOf(d.a.EAW), Integer.valueOf(0));
+      localHashMap.put(Integer.valueOf(d.a.EAX), this.EAA.fbr());
+      localHashMap.put(Integer.valueOf(d.a.EAY), com.tencent.mm.plugin.wepkg.d.fbs());
+      AppMethodBeat.o(198417);
       return localHashMap;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -425,49 +434,49 @@ public class GameWebViewUI
     }
   }
   
-  public final Map<Integer, Object> cXz()
+  public final Map<Integer, Object> daj()
   {
-    AppMethodBeat.i(208236);
+    AppMethodBeat.i(198418);
     HashMap localHashMap = new HashMap();
-    g localg = g.aJe(bQm());
+    g localg = g.aKx(bRn());
     if (localg != null)
     {
-      localHashMap.put(Integer.valueOf(d.b.EiX), Long.valueOf(localg.Ejq - localg.startTime));
-      localHashMap.put(Integer.valueOf(d.b.EiY), Long.valueOf(localg.Ejr - localg.startTime));
-      localHashMap.put(Integer.valueOf(d.b.EiZ), Long.valueOf(localg.Ejs - localg.Ejr));
-      localHashMap.put(Integer.valueOf(d.b.Eja), Long.valueOf(localg.Eju - localg.Ejt));
-      localHashMap.put(Integer.valueOf(d.b.Ejb), Long.valueOf(localg.Ejw - localg.Ejv));
-      localHashMap.put(Integer.valueOf(d.b.Ejj), Long.valueOf(localg.Ejx));
+      localHashMap.put(Integer.valueOf(d.b.EBb), Long.valueOf(localg.EBu - localg.startTime));
+      localHashMap.put(Integer.valueOf(d.b.EBc), Long.valueOf(localg.EBv - localg.startTime));
+      localHashMap.put(Integer.valueOf(d.b.EBd), Long.valueOf(localg.EBw - localg.EBv));
+      localHashMap.put(Integer.valueOf(d.b.EBe), Long.valueOf(localg.EBy - localg.EBx));
+      localHashMap.put(Integer.valueOf(d.b.EBf), Long.valueOf(localg.EBA - localg.EBz));
+      localHashMap.put(Integer.valueOf(d.b.EBn), Long.valueOf(localg.EBB));
     }
-    localHashMap.put(Integer.valueOf(d.b.Ejk), Integer.valueOf(0));
-    AppMethodBeat.o(208236);
+    localHashMap.put(Integer.valueOf(d.b.EBo), Integer.valueOf(0));
+    AppMethodBeat.o(198418);
     return localHashMap;
   }
   
-  public final int eSP()
+  public final int eWB()
   {
     AppMethodBeat.i(80921);
-    int i = super.eSP();
+    int i = super.eWB();
     AppMethodBeat.o(80921);
     return i;
   }
   
-  public final void eSQ()
+  public final void eWC()
   {
     AppMethodBeat.i(80931);
-    super.eSQ();
-    this.EjO = getIntent().getStringExtra("game_hv_menu_appid");
-    if ((this.EcL) && (!bt.isNullOrNil(this.EjO)))
+    super.eWC();
+    this.EBS = getIntent().getStringExtra("game_hv_menu_appid");
+    if ((this.EuN) && (!bu.isNullOrNil(this.EBS)))
     {
-      if (this.EcK != null) {
-        this.EcK.setVisibility(8);
+      if (this.EuM != null) {
+        this.EuM.setVisibility(8);
       }
-      this.EjP.a(this.EcI, new GameMenuImageButton.a()
+      this.EBT.a(this.EuK, new GameMenuImageButton.a()
       {
-        public final void cXC()
+        public final void dam()
         {
           AppMethodBeat.i(80904);
-          GameWebViewUI.this.bQS();
+          GameWebViewUI.this.bRT();
           AppMethodBeat.o(80904);
         }
       });
@@ -475,40 +484,33 @@ public class GameWebViewUI
     AppMethodBeat.o(80931);
   }
   
-  public final x eSR()
+  public final x eWE()
   {
     try
     {
       AppMethodBeat.i(80917);
-      if (this.Edl == null) {
-        this.Edl = new b();
+      if (this.Evn == null) {
+        this.Evn = new b();
       }
-      x localx = this.Edl;
+      x localx = this.Evn;
       AppMethodBeat.o(80917);
       return localx;
     }
     finally {}
   }
   
-  public final String eUr()
+  public final String eYe()
   {
-    AppMethodBeat.i(208237);
-    String str = (hashCode() & 0x7FFFFFFF) + "_" + (bQm().hashCode() & 0x7FFFFFFF);
-    AppMethodBeat.o(208237);
+    AppMethodBeat.i(198419);
+    String str = (hashCode() & 0x7FFFFFFF) + "_" + (bRn().hashCode() & 0x7FFFFFFF);
+    AppMethodBeat.o(198419);
     return str;
-  }
-  
-  public final void fQ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(80920);
-    super.fQ(paramString, paramInt);
-    AppMethodBeat.o(80920);
   }
   
   public int getLayoutId()
   {
     AppMethodBeat.i(80929);
-    this.tVm.gsw = System.currentTimeMillis();
+    this.ugi.guX = System.currentTimeMillis();
     int i = super.getLayoutId();
     AppMethodBeat.o(80929);
     return i;
@@ -518,20 +520,20 @@ public class GameWebViewUI
   {
     AppMethodBeat.i(80930);
     super.initView();
-    this.EjK = new ColorDrawable(android.support.v4.content.b.n(this, 2131099879));
-    this.EjL = new ColorDrawable(android.support.v4.content.b.n(this, 2131099879));
-    this.tVm.gsx = System.currentTimeMillis();
-    this.tVA.Ejq = System.currentTimeMillis();
+    this.EBO = new ColorDrawable(android.support.v4.content.b.n(this, 2131099879));
+    this.EBP = new ColorDrawable(android.support.v4.content.b.n(this, 2131099879));
+    this.ugi.guY = System.currentTimeMillis();
+    this.ugx.EBu = System.currentTimeMillis();
     AppMethodBeat.o(80930);
   }
   
   public final void loadUrl(String paramString, Map<String, String> paramMap, boolean paramBoolean)
   {
     AppMethodBeat.i(80933);
-    if (this.tVm.gsz == 0L) {
-      this.tVm.gsz = System.currentTimeMillis();
+    if (this.ugi.gva == 0L) {
+      this.ugi.gva = System.currentTimeMillis();
     }
-    if (this.Eiw.eXE())
+    if (this.EAA.fbq())
     {
       super.loadUrl(paramString, paramMap, false);
       AppMethodBeat.o(80933);
@@ -546,50 +548,50 @@ public class GameWebViewUI
     AppMethodBeat.i(80916);
     final String str1 = getIntent().getStringExtra("rawUrl");
     String str2;
-    if (!bt.isNullOrNil(str1))
+    if (!bu.isNullOrNil(str1))
     {
       str2 = Uri.parse(str1).getQueryParameter("nav_color");
-      if (bt.isNullOrNil(str2)) {}
+      if (bu.isNullOrNil(str2)) {}
     }
     try
     {
       int i = Color.parseColor("#".concat(String.valueOf(str2)));
       getIntent().putExtra("customize_status_bar_color", i);
       label74:
-      ad.i("MicroMsg.Wepkg.GameWebViewUI", "rawUrl rid:%s, pkgId:%s", new Object[] { com.tencent.mm.plugin.wepkg.utils.d.aLa(str1), com.tencent.mm.plugin.wepkg.utils.d.aKY(str1) });
+      ae.i("MicroMsg.Wepkg.GameWebViewUI", "rawUrl rid:%s, pkgId:%s", new Object[] { com.tencent.mm.plugin.wepkg.utils.d.aMw(str1), com.tencent.mm.plugin.wepkg.utils.d.aMu(str1) });
       if (getIntent().getLongExtra("gamecenterui_createtime", 0L) > 0L)
       {
-        this.tVm = GameWebPerformanceInfo.wg(str1);
-        this.tVm.url = str1;
-        this.tVm.gse = eUr();
-        this.tVm.gso = getIntent().getLongExtra("gamecenterui_createtime", 0L);
-        this.tVm.gsp = getIntent().getLongExtra("start_activity_time", System.currentTimeMillis());
-        this.tVm.startTime = getIntent().getLongExtra("start_time", this.tVm.gsp);
-        this.tVm.gsu = System.currentTimeMillis();
-        this.tVm.gsi = 1;
-        ad.i("MicroMsg.Wepkg.GameWebViewUI", "onCreate, startTime: %d, gameCenterUICreate: %d, startWebUI: %d,webUICreate: %d", new Object[] { Long.valueOf(this.tVm.startTime), Long.valueOf(this.tVm.gso), Long.valueOf(this.tVm.gsp), Long.valueOf(this.tVm.gsu) });
-        this.tVA = g.aJc(str1);
-        this.tVA.startTime = System.currentTimeMillis();
-        this.Eiw = new com.tencent.mm.plugin.wepkg.d();
+        this.ugi = GameWebPerformanceInfo.wP(str1);
+        this.ugi.url = str1;
+        this.ugi.guF = eYe();
+        this.ugi.guP = getIntent().getLongExtra("gamecenterui_createtime", 0L);
+        this.ugi.guQ = getIntent().getLongExtra("start_activity_time", System.currentTimeMillis());
+        this.ugi.startTime = getIntent().getLongExtra("start_time", this.ugi.guQ);
+        this.ugi.guV = System.currentTimeMillis();
+        this.ugi.guJ = 1;
+        ae.i("MicroMsg.Wepkg.GameWebViewUI", "onCreate, startTime: %d, gameCenterUICreate: %d, startWebUI: %d,webUICreate: %d", new Object[] { Long.valueOf(this.ugi.startTime), Long.valueOf(this.ugi.guP), Long.valueOf(this.ugi.guQ), Long.valueOf(this.ugi.guV) });
+        this.ugx = g.aKv(str1);
+        this.ugx.startTime = System.currentTimeMillis();
+        this.EAA = new com.tencent.mm.plugin.wepkg.d();
         super.onCreate(paramBundle);
-        if (this.omW != null) {
-          this.omW.getSettings().setForceDarkBehavior(1);
+        if (this.osM != null) {
+          this.osM.getSettings().setForceDarkBehavior(1);
         }
         paramBundle = getIntent();
         if ((paramBundle != null) && (paramBundle.getBooleanExtra("disable_progress_bar", false)))
         {
-          this.EcA.mTk = false;
-          eUq();
+          this.EuC.mYs = false;
+          eYd();
         }
-        if (this.omW.getIsX5Kernel()) {
-          this.omW.setWebViewClientExtension(new a(this));
+        if (this.osM.getIsX5Kernel()) {
+          this.osM.setWebViewClientExtension(new a(this));
         }
-        this.Eiw.EDt = new com.tencent.mm.plugin.wepkg.event.b()
+        this.EAA.EVP = new com.tencent.mm.plugin.wepkg.event.b()
         {
-          public final void cXA()
+          public final void dak()
           {
             AppMethodBeat.i(80897);
-            ad.i("MicroMsg.Wepkg.GameWebViewUI", "onReload");
+            ae.i("MicroMsg.Wepkg.GameWebViewUI", "onReload");
             GameWebViewUI.a(GameWebViewUI.this);
             if (GameWebViewUI.b(GameWebViewUI.this)) {
               GameWebViewUI.c(GameWebViewUI.this);
@@ -597,7 +599,7 @@ public class GameWebViewUI
             AppMethodBeat.o(80897);
           }
           
-          public final void cXB()
+          public final void dal()
           {
             AppMethodBeat.i(80898);
             if (!GameWebViewUI.d(GameWebViewUI.this))
@@ -618,7 +620,7 @@ public class GameWebViewUI
             AppMethodBeat.o(80898);
           }
           
-          public final void nb(final boolean paramAnonymousBoolean)
+          public final void nf(final boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(80899);
             GameWebViewUI.k(GameWebViewUI.this).post(new Runnable()
@@ -636,7 +638,7 @@ public class GameWebViewUI
                   {
                     GameWebViewUI.h(GameWebViewUI.this).stopLoading();
                     locald = GameWebViewUI.j(GameWebViewUI.this);
-                    str = GameWebViewUI.1.this.iNS;
+                    str = GameWebViewUI.1.this.iQM;
                     if (GameWebViewUI.i(GameWebViewUI.this)) {
                       break label125;
                     }
@@ -646,7 +648,7 @@ public class GameWebViewUI
                 for (boolean bool = true;; bool = false)
                 {
                   locald.k(str, bool, false);
-                  GameWebViewUI.a(GameWebViewUI.this, GameWebViewUI.1.this.iNS);
+                  GameWebViewUI.a(GameWebViewUI.this, GameWebViewUI.1.this.iQM);
                   AppMethodBeat.o(80896);
                   return;
                 }
@@ -655,9 +657,9 @@ public class GameWebViewUI
             AppMethodBeat.o(80899);
           }
         };
-        this.EjS = getIntent().getBooleanExtra("open_game_float", false);
-        paramBundle = this.Eiw;
-        if (this.EjS) {
+        this.EBW = getIntent().getBooleanExtra("open_game_float", false);
+        paramBundle = this.EAA;
+        if (this.EBW) {
           break label513;
         }
       }
@@ -666,14 +668,14 @@ public class GameWebViewUI
       {
         if (paramBundle.k(str1, bool, false))
         {
-          ad.i("MicroMsg.Wepkg.GameWebViewUI", "current page use wepkg");
-          this.EjR = true;
-          eUq();
+          ae.i("MicroMsg.Wepkg.GameWebViewUI", "current page use wepkg");
+          this.EBV = true;
+          eYd();
         }
-        this.EjP = new GameMenuImageButton(getContext());
+        this.EBT = new GameMenuImageButton(getContext());
         AppMethodBeat.o(80916);
         return;
-        this.tVm = GameWebPerformanceInfo.wh(str1);
+        this.ugi = GameWebPerformanceInfo.wQ(str1);
         break;
       }
     }
@@ -687,12 +689,12 @@ public class GameWebViewUI
   {
     AppMethodBeat.i(80928);
     super.onDestroy();
-    this.Eiw.vz(this.EjS);
-    this.tVm.gsF = System.currentTimeMillis();
-    com.tencent.mm.game.report.api.a.gsb.a(this.tVm);
-    GameWebPerformanceInfo.wi(bQm());
-    d.a(eUr(), this);
-    g.aJf(bQm());
+    this.EAA.vI(this.EBW);
+    this.ugi.gvg = System.currentTimeMillis();
+    com.tencent.mm.game.report.api.a.guC.a(this.ugi);
+    GameWebPerformanceInfo.wR(bRn());
+    d.a(eYe(), this);
+    g.aKy(bRn());
     AppMethodBeat.o(80928);
   }
   
@@ -700,8 +702,8 @@ public class GameWebViewUI
   {
     AppMethodBeat.i(80927);
     super.onPause();
-    GameWebPerformanceInfo localGameWebPerformanceInfo = this.tVm;
-    localGameWebPerformanceInfo.gsE += System.currentTimeMillis() - this.tVz;
+    GameWebPerformanceInfo localGameWebPerformanceInfo = this.ugi;
+    localGameWebPerformanceInfo.gvf += System.currentTimeMillis() - this.ugw;
     AppMethodBeat.o(80927);
   }
   
@@ -709,13 +711,13 @@ public class GameWebViewUI
   {
     AppMethodBeat.i(80926);
     super.onResume();
-    if (this.tVm.gsv == 0L)
+    if (this.ugi.guW == 0L)
     {
       long l = System.currentTimeMillis();
-      ad.i("MicroMsg.Wepkg.GameWebViewUI", "onResume: ".concat(String.valueOf(l)));
-      this.tVm.gsv = l;
+      ae.i("MicroMsg.Wepkg.GameWebViewUI", "onResume: ".concat(String.valueOf(l)));
+      this.ugi.guW = l;
     }
-    this.tVz = System.currentTimeMillis();
+    this.ugw = System.currentTimeMillis();
     AppMethodBeat.o(80926);
   }
   
@@ -732,7 +734,7 @@ public class GameWebViewUI
     {
       if (getForceOrientation() == -1)
       {
-        this.landscapeMode = getSharedPreferences(aj.fkC(), 4).getBoolean("settings_landscape_mode", false);
+        this.landscapeMode = getSharedPreferences(ak.fow(), 4).getBoolean("settings_landscape_mode", false);
         if (this.landscapeMode)
         {
           setRequestedOrientation(2);
@@ -751,11 +753,11 @@ public class GameWebViewUI
     AppMethodBeat.o(80934);
   }
   
-  public final void vg(boolean paramBoolean)
+  public final void vo(boolean paramBoolean)
   {
     AppMethodBeat.i(80924);
-    super.vg(paramBoolean);
-    vi(false);
+    super.vo(paramBoolean);
+    vq(false);
     AppMethodBeat.o(80924);
   }
   
@@ -809,30 +811,30 @@ public class GameWebViewUI
     
     public final WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
     {
-      AppMethodBeat.i(208233);
+      AppMethodBeat.i(198414);
       if ((paramWebResourceRequest == null) || (paramWebResourceRequest.getUrl() == null))
       {
-        AppMethodBeat.o(208233);
+        AppMethodBeat.o(198414);
         return null;
       }
-      paramWebView = GameWebViewUI.j(GameWebViewUI.this).o(paramWebView, paramWebResourceRequest.getUrl().toString());
-      AppMethodBeat.o(208233);
+      paramWebView = GameWebViewUI.j(GameWebViewUI.this).p(paramWebView, paramWebResourceRequest.getUrl().toString());
+      AppMethodBeat.o(198414);
       return paramWebView;
     }
     
-    public final com.tencent.mm.plugin.webview.core.e eNP()
+    public final com.tencent.mm.plugin.webview.core.e eRA()
     {
-      AppMethodBeat.i(208231);
+      AppMethodBeat.i(198412);
       a locala = new a((byte)0);
-      AppMethodBeat.o(208231);
+      AppMethodBeat.o(198412);
       return locala;
     }
     
-    public final com.tencent.mm.plugin.webview.core.i eNQ()
+    public final com.tencent.mm.plugin.webview.core.i eRB()
     {
-      AppMethodBeat.i(208232);
+      AppMethodBeat.i(198413);
       b localb = new b((byte)0);
-      AppMethodBeat.o(208232);
+      AppMethodBeat.o(198413);
       return localb;
     }
     
@@ -846,38 +848,38 @@ public class GameWebViewUI
       
       public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
       {
-        AppMethodBeat.i(208228);
+        AppMethodBeat.i(198409);
         GameWebViewUI.A(GameWebViewUI.this);
         super.a(paramWebView, paramInt, paramString1, paramString2);
-        AppMethodBeat.o(208228);
+        AppMethodBeat.o(198409);
       }
       
-      public final void aGk(String paramString)
+      public final void aHE(String paramString)
       {
-        AppMethodBeat.i(208226);
-        if (GameWebViewUI.w(GameWebViewUI.this).gsA == 0L) {
-          GameWebViewUI.w(GameWebViewUI.this).gsA = System.currentTimeMillis();
+        AppMethodBeat.i(198407);
+        if (GameWebViewUI.w(GameWebViewUI.this).gvb == 0L) {
+          GameWebViewUI.w(GameWebViewUI.this).gvb = System.currentTimeMillis();
         }
-        if (GameWebViewUI.x(GameWebViewUI.this).Ejr == 0L) {
-          GameWebViewUI.x(GameWebViewUI.this).Ejr = System.currentTimeMillis();
+        if (GameWebViewUI.x(GameWebViewUI.this).EBv == 0L) {
+          GameWebViewUI.x(GameWebViewUI.this).EBv = System.currentTimeMillis();
         }
-        GameWebViewUI.j(GameWebViewUI.this).aKt(paramString);
-        AppMethodBeat.o(208226);
+        GameWebViewUI.j(GameWebViewUI.this).aLP(paramString);
+        AppMethodBeat.o(198407);
       }
       
       public final void b(WebView paramWebView, String paramString)
       {
-        AppMethodBeat.i(208227);
-        if (GameWebViewUI.w(GameWebViewUI.this).gsB == 0L) {
-          GameWebViewUI.w(GameWebViewUI.this).gsB = System.currentTimeMillis();
+        AppMethodBeat.i(198408);
+        if (GameWebViewUI.w(GameWebViewUI.this).gvc == 0L) {
+          GameWebViewUI.w(GameWebViewUI.this).gvc = System.currentTimeMillis();
         }
-        if (GameWebViewUI.x(GameWebViewUI.this).Ejs == 0L) {
-          GameWebViewUI.x(GameWebViewUI.this).Ejs = System.currentTimeMillis();
+        if (GameWebViewUI.x(GameWebViewUI.this).EBw == 0L) {
+          GameWebViewUI.x(GameWebViewUI.this).EBw = System.currentTimeMillis();
         }
         GameWebViewUI.A(GameWebViewUI.this);
-        GameWebViewUI.j(GameWebViewUI.this).n(paramWebView, paramString);
+        GameWebViewUI.j(GameWebViewUI.this).o(paramWebView, paramString);
         super.b(paramWebView, paramString);
-        AppMethodBeat.o(208227);
+        AppMethodBeat.o(198408);
       }
     }
     
@@ -886,32 +888,32 @@ public class GameWebViewUI
     {
       private b() {}
       
-      public final void aGt(String paramString)
+      public final void aHN(String paramString)
       {
-        AppMethodBeat.i(208230);
-        if (GameWebViewUI.w(GameWebViewUI.this).gsD == 0L) {
-          GameWebViewUI.w(GameWebViewUI.this).gsD = System.currentTimeMillis();
+        AppMethodBeat.i(198411);
+        if (GameWebViewUI.w(GameWebViewUI.this).gve == 0L) {
+          GameWebViewUI.w(GameWebViewUI.this).gve = System.currentTimeMillis();
         }
-        if (GameWebViewUI.x(GameWebViewUI.this).Eju == 0L) {
-          GameWebViewUI.x(GameWebViewUI.this).Eju = System.currentTimeMillis();
+        if (GameWebViewUI.x(GameWebViewUI.this).EBy == 0L) {
+          GameWebViewUI.x(GameWebViewUI.this).EBy = System.currentTimeMillis();
         }
         GameWebViewUI.y(GameWebViewUI.this);
         if (GameWebViewUI.z(GameWebViewUI.this)) {
           GameWebViewUI.c(GameWebViewUI.this);
         }
-        AppMethodBeat.o(208230);
+        AppMethodBeat.o(198411);
       }
       
-      public final void bn(int paramInt, String paramString)
+      public final void bm(int paramInt, String paramString)
       {
-        AppMethodBeat.i(208229);
-        if (GameWebViewUI.w(GameWebViewUI.this).gsC == 0L) {
-          GameWebViewUI.w(GameWebViewUI.this).gsC = System.currentTimeMillis();
+        AppMethodBeat.i(198410);
+        if (GameWebViewUI.w(GameWebViewUI.this).gvd == 0L) {
+          GameWebViewUI.w(GameWebViewUI.this).gvd = System.currentTimeMillis();
         }
-        if (GameWebViewUI.x(GameWebViewUI.this).Ejt == 0L) {
-          GameWebViewUI.x(GameWebViewUI.this).Ejt = System.currentTimeMillis();
+        if (GameWebViewUI.x(GameWebViewUI.this).EBx == 0L) {
+          GameWebViewUI.x(GameWebViewUI.this).EBx = System.currentTimeMillis();
         }
-        AppMethodBeat.o(208229);
+        AppMethodBeat.o(198410);
       }
     }
   }

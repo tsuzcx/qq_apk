@@ -13,7 +13,7 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import d.v;
 import java.util.ArrayList;
@@ -25,24 +25,24 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiStartBlePeripheralAdvertising;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "connectable", "", "deviceName", "", "manufacturerData", "", "Lkotlin/Pair;", "", "powerLevel", "serverId", "getServerId", "()I", "setServerId", "(I)V", "serviceUuids", "Landroid/os/ParcelUuid;", "getAdvertiseReqData", "Landroid/bluetooth/le/AdvertiseData;", "getAdvertiseRespData", "getAdvertiseSettings", "Landroid/bluetooth/le/AdvertiseSettings;", "getPowerInfo", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "parseData", "reset", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiStartBlePeripheralAdvertising;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "connectable", "", "deviceName", "", "manufacturerData", "", "Lkotlin/Pair;", "", "powerLevel", "serverId", "getServerId", "()I", "setServerId", "(I)V", "serviceUuids", "Landroid/os/ParcelUuid;", "getAdvertiseReqData", "Landroid/bluetooth/le/AdvertiseData;", "getAdvertiseRespData", "getAdvertiseSettings", "Landroid/bluetooth/le/AdvertiseSettings;", "getPowerInfo", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "parseData", "reset", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class g
   extends a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   private static final int CTRL_INDEX = 725;
   private static final String NAME = "startBLEPeripheralAdvertising";
-  public static final a kDG;
+  public static final a kGV;
   private String deviceName;
-  private int jsi;
-  private boolean kDC;
-  private final List<ParcelUuid> kDD;
-  private final List<d.o<Integer, String>> kDE;
-  private String kDF;
+  private int jvb;
+  private boolean kGR;
+  private final List<ParcelUuid> kGS;
+  private final List<d.o<Integer, String>> kGT;
+  private String kGU;
   
   static
   {
     AppMethodBeat.i(144764);
-    kDG = new a((byte)0);
+    kGV = new a((byte)0);
     NAME = "startBLEPeripheralAdvertising";
     CTRL_INDEX = 725;
     AppMethodBeat.o(144764);
@@ -51,11 +51,11 @@ public final class g
   public g()
   {
     AppMethodBeat.i(144763);
-    this.jsi = -1;
-    this.kDC = true;
-    this.kDD = ((List)new ArrayList());
-    this.kDE = ((List)new ArrayList());
-    this.kDF = "medium";
+    this.jvb = -1;
+    this.kGR = true;
+    this.kGS = ((List)new ArrayList());
+    this.kGT = ((List)new ArrayList());
+    this.kGU = "medium";
     this.deviceName = "";
     AppMethodBeat.o(144763);
   }
@@ -76,12 +76,12 @@ public final class g
     boolean bool;
     try
     {
-      this.jsi = paramJSONObject.optInt("serverId");
+      this.jvb = paramJSONObject.optInt("serverId");
       localObject1 = paramJSONObject.optString("powerLevel", "medium");
       d.g.b.p.g(localObject1, "data.optString(\"powerLevel\", \"medium\")");
-      this.kDF = ((String)localObject1);
+      this.kGU = ((String)localObject1);
       paramJSONObject = paramJSONObject.optJSONObject("advertiseRequest");
-      this.kDC = paramJSONObject.optBoolean("connectable", true);
+      this.kGR = paramJSONObject.optBoolean("connectable", true);
       localObject1 = paramJSONObject.optString("deviceName", "");
       d.g.b.p.g(localObject1, "jAdvertiseRequest.optString(\"deviceName\", \"\")");
       this.deviceName = ((String)localObject1);
@@ -105,7 +105,7 @@ public final class g
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "parseData: error ", new Object[] { paramJSONObject });
+      ae.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "parseData: error ", new Object[] { paramJSONObject });
       bool = false;
     }
     for (;;)
@@ -127,7 +127,7 @@ public final class g
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ParcelUuid)((Iterator)localObject1).next();
-        this.kDD.add(localObject2);
+        this.kGS.add(localObject2);
       }
       paramJSONObject = paramJSONObject.optJSONArray("manufacturerData");
       if (paramJSONObject != null)
@@ -158,7 +158,7 @@ public final class g
             j = 10;
             d.g.b.p.g(localObject1, "manufacturerIdString");
             paramJSONObject = (JSONObject)localObject1;
-            if (d.n.n.nz((String)localObject1, "0x"))
+            if (d.n.n.nF((String)localObject1, "0x"))
             {
               paramJSONObject = d.n.n.h((String)localObject1, "0x", "", false);
               j = 16;
@@ -167,14 +167,14 @@ public final class g
             {
               j = Integer.parseInt(paramJSONObject, j);
               paramJSONObject = localObject3.optString("manufacturerSpecificData", "");
-              this.kDE.add(new d.o(Integer.valueOf(j), paramJSONObject));
+              this.kGT.add(new d.o(Integer.valueOf(j), paramJSONObject));
               i += 1;
             }
             catch (NumberFormatException localNumberFormatException)
             {
               for (;;)
               {
-                ad.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "NumberFormatException: input = ".concat(String.valueOf(paramJSONObject)));
+                ae.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "NumberFormatException: input = ".concat(String.valueOf(paramJSONObject)));
                 j = 0;
               }
             }
@@ -185,14 +185,14 @@ public final class g
     }
   }
   
-  private final AdvertiseData bji()
+  private final AdvertiseData bjR()
   {
     AppMethodBeat.i(144762);
-    if (!d.n.n.aE((CharSequence)this.deviceName)) {}
+    if (!d.n.n.aD((CharSequence)this.deviceName)) {}
     for (boolean bool = true;; bool = false)
     {
       localObject = new AdvertiseData.Builder().setIncludeDeviceName(bool);
-      localIterator = ((Iterable)this.kDE).iterator();
+      localIterator = ((Iterable)this.kGT).iterator();
       while (localIterator.hasNext())
       {
         d.o localo = (d.o)localIterator.next();
@@ -200,7 +200,7 @@ public final class g
         ((AdvertiseData.Builder)localObject).addManufacturerData(((Number)localo.first).intValue(), com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.at(arrayOfByte));
       }
     }
-    Iterator localIterator = ((Iterable)this.kDD).iterator();
+    Iterator localIterator = ((Iterable)this.kGS).iterator();
     while (localIterator.hasNext()) {
       ((AdvertiseData.Builder)localObject).addServiceUuid((ParcelUuid)localIterator.next());
     }
@@ -214,32 +214,32 @@ public final class g
   {
     AppMethodBeat.i(144760);
     d.g.b.p.h(paramc, "env");
-    this.kDE.clear();
-    this.kDD.clear();
-    this.kDF = "medium";
+    this.kGT.clear();
+    this.kGS.clear();
+    this.kGU = "medium";
     this.deviceName = "";
-    this.kDC = true;
-    this.jsi = -1;
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz())
+    this.kGR = true;
+    this.jvb = -1;
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki())
     {
       b.a(this, paramInt, paramc, 10001, "fail:not available");
-      ad.i("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "invoke: Ble is not available");
+      ae.i("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "invoke: Ble is not available");
       AppMethodBeat.o(144760);
       return;
     }
     if (!J(paramJSONObject))
     {
-      ad.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "createBLEPeripheralServer data is invalid");
+      ae.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "createBLEPeripheralServer data is invalid");
       b.a(this, paramInt, paramc, 10013, "fail:invalid data");
       AppMethodBeat.o(144760);
       return;
     }
-    paramJSONObject = o.kEf;
-    paramJSONObject = o.sR(this.jsi);
-    if ((paramJSONObject == null) || (paramJSONObject.kDO != p.kEh))
+    paramJSONObject = o.kHu;
+    paramJSONObject = o.sU(this.jvb);
+    if ((paramJSONObject == null) || (paramJSONObject.kHd != p.kHw))
     {
-      ad.i("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "invoke: retrieve a null server");
-      if ((paramJSONObject != null) && (paramJSONObject.kDO == p.kEi))
+      ae.i("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "invoke: retrieve a null server");
+      if ((paramJSONObject != null) && (paramJSONObject.kHd == p.kHx))
       {
         b.a(this, paramInt, paramc, 10000, "fail:not init:already connected");
         AppMethodBeat.o(144760);
@@ -249,17 +249,17 @@ public final class g
       AppMethodBeat.o(144760);
       return;
     }
-    BluetoothAdapter localBluetoothAdapter = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjx();
+    BluetoothAdapter localBluetoothAdapter = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bkg();
     if (localBluetoothAdapter == null)
     {
-      ad.i("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "invoke: adapter is null");
+      ae.i("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "invoke: adapter is null");
       b.a(this, paramInt, paramc, 10001, "fail:not available");
       AppMethodBeat.o(144760);
       return;
     }
     d.g.b.p.h(paramc, "<set-?>");
-    paramJSONObject.kjg = paramc;
-    Object localObject = this.kDF;
+    paramJSONObject.kmw = paramc;
+    Object localObject = this.kGU;
     int i;
     int j;
     switch (((String)localObject).hashCode())
@@ -276,9 +276,9 @@ public final class g
       localObject = new d.o(Integer.valueOf(j), Integer.valueOf(i));
       i = ((Number)((d.o)localObject).first).intValue();
       j = ((Number)((d.o)localObject).second).intValue();
-      localObject = new AdvertiseSettings.Builder().setAdvertiseMode(i).setTxPowerLevel(j).setTimeout(0).setConnectable(this.kDC).build();
+      localObject = new AdvertiseSettings.Builder().setAdvertiseMode(i).setTxPowerLevel(j).setTimeout(0).setConnectable(this.kGR).build();
       d.g.b.p.g(localObject, "AdvertiseSettings.Builde…ble)\n            .build()");
-      localAdvertiseData1 = bji();
+      localAdvertiseData1 = bjR();
       localAdvertiseData2 = new AdvertiseData.Builder().setIncludeDeviceName(false).build();
       d.g.b.p.g(localAdvertiseData2, "AdvertiseData.Builder()\n…lse)\n            .build()");
       str = this.deviceName;
@@ -289,7 +289,7 @@ public final class g
       d.g.b.p.h(str, "deviceName");
       d.g.b.p.h(localBluetoothAdapter, "adapter");
       d.g.b.p.h(paramc, "userCallback");
-      if (!paramJSONObject.bjk()) {
+      if (!paramJSONObject.bjT()) {
         break label566;
       }
       paramc.onStartFailure(3);
@@ -314,16 +314,16 @@ public final class g
       j = 1;
     }
     label566:
-    paramJSONObject.kDS = paramc;
-    paramJSONObject.kDT.set(true);
-    h.LTJ.aR((Runnable)new n.d(paramJSONObject, localBluetoothAdapter, str, (AdvertiseSettings)localObject, localAdvertiseData1, localAdvertiseData2));
+    paramJSONObject.kHh = paramc;
+    paramJSONObject.kHi.set(true);
+    h.MqF.aO((Runnable)new n.d(paramJSONObject, localBluetoothAdapter, str, (AdvertiseSettings)localObject, localAdvertiseData1, localAdvertiseData2));
     AppMethodBeat.o(144760);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiStartBlePeripheralAdvertising$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiStartBlePeripheralAdvertising$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiStartBlePeripheralAdvertising$invoke$1", "Landroid/bluetooth/le/AdvertiseCallback;", "onStartFailure", "", "errorCode", "", "onStartSuccess", "settingsInEffect", "Landroid/bluetooth/le/AdvertiseSettings;", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiStartBlePeripheralAdvertising$invoke$1", "Landroid/bluetooth/le/AdvertiseCallback;", "onStartFailure", "", "errorCode", "", "onStartSuccess", "settingsInEffect", "Landroid/bluetooth/le/AdvertiseSettings;", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class b
     extends AdvertiseCallback
   {
@@ -333,7 +333,7 @@ public final class g
     {
       AppMethodBeat.i(144759);
       super.onStartFailure(paramInt);
-      ad.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "Not broadcasting: ".concat(String.valueOf(paramInt)));
+      ae.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "Not broadcasting: ".concat(String.valueOf(paramInt)));
       String str;
       switch (paramInt)
       {
@@ -342,8 +342,8 @@ public final class g
       }
       for (;;)
       {
-        ad.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "onStartFailure: error msg = ".concat(String.valueOf(str)));
-        b.a(this.kDH, paramInt, paramc, 10008, str);
+        ae.e("MicroMsg.BLE.JsApiStartBlePeripheralAdvertising", "onStartFailure: error msg = ".concat(String.valueOf(str)));
+        b.a(this.kGW, paramInt, paramc, 10008, str);
         AppMethodBeat.o(144759);
         return;
         str = "fail:already started";
@@ -362,7 +362,7 @@ public final class g
     {
       AppMethodBeat.i(144758);
       super.onStartSuccess(paramAdvertiseSettings);
-      b.a(this.kDH, paramInt, paramc);
+      b.a(this.kGW, paramInt, paramc);
       AppMethodBeat.o(144758);
     }
   }

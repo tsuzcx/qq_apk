@@ -4,15 +4,15 @@ import com.tencent.mm.kernel.b.g;
 
 public abstract interface b
 {
-  public abstract void LE();
+  public abstract void LM();
   
-  public abstract void LF();
+  public abstract void LN();
   
   public abstract void a(g paramg);
   
-  public abstract void ajN();
+  public abstract void akc();
   
-  public abstract void ajO();
+  public abstract void akd();
   
   public abstract void b(g paramg);
 }

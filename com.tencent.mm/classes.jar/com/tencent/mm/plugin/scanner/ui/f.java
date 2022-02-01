@@ -34,9 +34,9 @@ public final class f
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(221338);
+    AppMethodBeat.i(224240);
     super.onBindView(paramView);
-    AppMethodBeat.o(221338);
+    AppMethodBeat.o(224240);
   }
 }
 

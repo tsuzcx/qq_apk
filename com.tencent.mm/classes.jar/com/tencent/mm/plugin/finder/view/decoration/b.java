@@ -14,17 +14,17 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/decoration/ItemDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerHeight", "", "(Landroid/graphics/drawable/Drawable;I)V", "padding", "", "(Landroid/graphics/drawable/Drawable;I[I)V", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "onDraw", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/decoration/ItemDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerHeight", "", "(Landroid/graphics/drawable/Drawable;I)V", "padding", "", "(Landroid/graphics/drawable/Drawable;I[I)V", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "onDraw", "plugin-finder_release"})
 public final class b
   extends RecyclerView.h
 {
-  private Drawable jiP;
-  private int[] sXV;
+  private Drawable jlI;
+  private int[] tjj;
   
   public b(Drawable paramDrawable, int paramInt)
   {
     AppMethodBeat.i(168501);
-    this.jiP = paramDrawable;
+    this.jlI = paramDrawable;
     paramDrawable.setBounds(0, 0, 0, paramInt);
     AppMethodBeat.o(168501);
   }
@@ -52,7 +52,7 @@ public final class b
       localObject = (RecyclerView.LayoutParams)localObject;
       int i1 = paramt.getLeft();
       int i2 = ((RecyclerView.LayoutParams)localObject).leftMargin;
-      int[] arrayOfInt = this.sXV;
+      int[] arrayOfInt = this.tjj;
       int j;
       label124:
       int i3;
@@ -67,7 +67,7 @@ public final class b
         j = arrayOfInt[0];
         m = paramt.getBottom();
         i3 = ((RecyclerView.LayoutParams)localObject).bottomMargin;
-        arrayOfInt = this.sXV;
+        arrayOfInt = this.tjj;
         if (arrayOfInt == null) {
           break label273;
         }
@@ -75,13 +75,13 @@ public final class b
         i3 = k + (i3 + m);
         i4 = paramt.getRight();
         i5 = ((RecyclerView.LayoutParams)localObject).rightMargin;
-        paramt = this.sXV;
+        paramt = this.tjj;
         if (paramt == null) {
           break label279;
         }
         k = paramt[2];
-        i6 = this.jiP.getBounds().height();
-        paramt = this.sXV;
+        i6 = this.jlI.getBounds().height();
+        paramt = this.tjj;
         if (paramt == null) {
           break label285;
         }
@@ -91,8 +91,8 @@ public final class b
       label285:
       for (int m = paramt[3];; m = 0)
       {
-        this.jiP.setBounds(i1 - i2 + j, i3, i4 + i5 - k, i3 + i6 - m);
-        this.jiP.draw(paramCanvas);
+        this.jlI.setBounds(i1 - i2 + j, i3, i4 + i5 - k, i3 + i6 - m);
+        this.jlI.draw(paramCanvas);
         i += 1;
         break;
         j = 0;
@@ -136,7 +136,7 @@ public final class b
       if (paramView != null) {
         break label140;
       }
-      paramRect.set(0, 0, 0, this.jiP.getBounds().height());
+      paramRect.set(0, 0, 0, this.jlI.getBounds().height());
       AppMethodBeat.o(168500);
       return;
       paramView = null;

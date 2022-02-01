@@ -6,16 +6,16 @@ import java.security.NoSuchAlgorithmException;
 
 public final class c
 {
-  protected static ThreadLocal<MessageDigest> dfO;
+  protected static ThreadLocal<MessageDigest> dgQ;
   protected static char[] hexDigits;
   
   static
   {
     AppMethodBeat.i(136971);
     hexDigits = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-    dfO = new ThreadLocal()
+    dgQ = new ThreadLocal()
     {
-      private static MessageDigest Jv()
+      private static MessageDigest JD()
       {
         AppMethodBeat.i(136968);
         try
@@ -36,11 +36,11 @@ public final class c
   }
   
   @Deprecated
-  public static String ee(String paramString)
+  public static String ej(String paramString)
   {
     AppMethodBeat.i(136970);
     paramString = paramString.getBytes();
-    paramString = ((MessageDigest)dfO.get()).digest(paramString);
+    paramString = ((MessageDigest)dgQ.get()).digest(paramString);
     int j = paramString.length;
     StringBuffer localStringBuffer = new StringBuffer(j * 2);
     int i = 0;
@@ -60,7 +60,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.audio.mix.h.c
  * JD-Core Version:    0.7.0.1
  */

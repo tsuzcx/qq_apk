@@ -10,32 +10,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends LinearLayout
 {
-  private ImageView kAX;
-  private TextView lDu;
+  private ImageView kEm;
+  private TextView lHT;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(187722);
+    AppMethodBeat.i(201289);
     LayoutInflater.from(paramContext).inflate(2131496160, this);
-    this.lDu = ((TextView)findViewById(2131298996));
-    this.kAX = ((ImageView)findViewById(2131300874));
-    AppMethodBeat.o(187722);
+    this.lHT = ((TextView)findViewById(2131298996));
+    this.kEm = ((ImageView)findViewById(2131300874));
+    AppMethodBeat.o(201289);
   }
   
   public final void setStep(c paramc)
   {
-    AppMethodBeat.i(187723);
+    AppMethodBeat.i(201290);
     if (paramc == null)
     {
-      this.lDu.setText(null);
-      this.kAX.setImageDrawable(null);
-      AppMethodBeat.o(187723);
+      this.lHT.setText(null);
+      this.kEm.setImageDrawable(null);
+      AppMethodBeat.o(201290);
       return;
     }
-    this.lDu.setText(paramc.lDw);
-    this.kAX.setImageResource(a.tZ(paramc.mState));
-    AppMethodBeat.o(187723);
+    this.lHT.setText(paramc.lHV);
+    this.kEm.setImageResource(a.uf(paramc.mState));
+    AppMethodBeat.o(201290);
   }
 }
 

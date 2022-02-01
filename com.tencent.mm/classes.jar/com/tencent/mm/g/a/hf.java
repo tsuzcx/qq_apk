@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hf
   extends b
 {
-  public a dtD;
+  public a duE;
   
   public hf()
   {
@@ -15,25 +15,26 @@ public final class hf
   
   private hf(byte paramByte)
   {
-    AppMethodBeat.i(136974);
-    this.dtD = new a();
-    this.IbR = false;
+    AppMethodBeat.i(168880);
+    this.duE = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(136974);
+    AppMethodBeat.o(168880);
   }
   
   public static final class a
   {
-    public String appId;
-    public String doD;
-    public String dtE;
-    public int dtF;
-    public String dtG;
+    public int duF;
+    public int duG;
+    public int duH;
+    public long id;
+    public int likeCount;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.hf
  * JD-Core Version:    0.7.0.1
  */

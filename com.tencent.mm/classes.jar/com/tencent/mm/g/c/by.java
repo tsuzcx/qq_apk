@@ -8,27 +8,27 @@ public abstract class by
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDc = "status".hashCode();
-  private static final int eFM;
-  private static final int eFq;
-  private static final int eFw;
-  private static final int eIm = "url".hashCode();
-  private static final int eVS;
-  private static final int eVT;
-  private static final int eVU;
-  private static final int eVV = "failNum".hashCode();
-  private static final int eVW = "isReport".hashCode();
+  private static final int eEL = "status".hashCode();
+  private static final int eGZ;
+  private static final int eHf;
+  private static final int eHv;
+  private static final int eJV = "url".hashCode();
+  private static final int eXD;
+  private static final int eXE;
+  private static final int eXF;
+  private static final int eXG = "failNum".hashCode();
+  private static final int eXH = "isReport".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCZ = true;
-  private boolean eFK = true;
-  private boolean eFn = true;
-  private boolean eFs = true;
-  private boolean eIi = true;
-  private boolean eVN = true;
-  private boolean eVO = true;
-  private boolean eVP = true;
-  private boolean eVQ = true;
-  private boolean eVR = true;
+  private boolean eEI = true;
+  private boolean eGW = true;
+  private boolean eHb = true;
+  private boolean eHt = true;
+  private boolean eJR = true;
+  private boolean eXA = true;
+  private boolean eXB = true;
+  private boolean eXC = true;
+  private boolean eXy = true;
+  private boolean eXz = true;
   public int field_failNum;
   public long field_favTime;
   public String field_imgDirPath;
@@ -42,12 +42,12 @@ public abstract class by
   
   static
   {
-    eFM = "size".hashCode();
-    eFw = "path".hashCode();
-    eVS = "imgDirPath".hashCode();
-    eVT = "imgPaths".hashCode();
-    eVU = "favTime".hashCode();
-    eFq = "updateTime".hashCode();
+    eHv = "size".hashCode();
+    eHf = "path".hashCode();
+    eXD = "imgDirPath".hashCode();
+    eXE = "imgPaths".hashCode();
+    eXF = "favTime".hashCode();
+    eGZ = "updateTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -63,7 +63,7 @@ public abstract class by
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eIm != k) {
+      if (eJV != k) {
         break label60;
       }
       this.field_url = paramCursor.getString(i);
@@ -74,23 +74,23 @@ public abstract class by
       break label20;
       break;
       label60:
-      if (eFM == k) {
+      if (eHv == k) {
         this.field_size = paramCursor.getLong(i);
-      } else if (eFw == k) {
+      } else if (eHf == k) {
         this.field_path = paramCursor.getString(i);
-      } else if (eVS == k) {
+      } else if (eXD == k) {
         this.field_imgDirPath = paramCursor.getString(i);
-      } else if (eVT == k) {
+      } else if (eXE == k) {
         this.field_imgPaths = paramCursor.getString(i);
-      } else if (eVU == k) {
+      } else if (eXF == k) {
         this.field_favTime = paramCursor.getLong(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (eVV == k) {
+      } else if (eXG == k) {
         this.field_failNum = paramCursor.getInt(i);
-      } else if (eVW == k) {
+      } else if (eXH == k) {
         this.field_isReport = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -101,34 +101,34 @@ public abstract class by
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eIi) {
+    if (this.eJR) {
       localContentValues.put("url", this.field_url);
     }
-    if (this.eFK) {
+    if (this.eHt) {
       localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eFs) {
+    if (this.eHb) {
       localContentValues.put("path", this.field_path);
     }
-    if (this.eVN) {
+    if (this.eXy) {
       localContentValues.put("imgDirPath", this.field_imgDirPath);
     }
-    if (this.eVO) {
+    if (this.eXz) {
       localContentValues.put("imgPaths", this.field_imgPaths);
     }
-    if (this.eVP) {
+    if (this.eXA) {
       localContentValues.put("favTime", Long.valueOf(this.field_favTime));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eVQ) {
+    if (this.eXB) {
       localContentValues.put("failNum", Integer.valueOf(this.field_failNum));
     }
-    if (this.eVR) {
+    if (this.eXC) {
       localContentValues.put("isReport", Integer.valueOf(this.field_isReport));
     }
     if (this.systemRowid > 0L) {

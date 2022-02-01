@@ -16,10 +16,10 @@ public class FinderTagFlowLayout
   extends ViewGroup
 {
   private int Kk;
-  public List<List<View>> sVw;
-  protected List<Integer> sVx;
-  protected List<Integer> sVy;
-  private List<View> sVz;
+  public List<List<View>> tgN;
+  protected List<Integer> tgO;
+  protected List<Integer> tgP;
+  private List<View> tgQ;
   
   public FinderTagFlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,10 +30,10 @@ public class FinderTagFlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168643);
-    this.sVw = new ArrayList();
-    this.sVx = new ArrayList();
-    this.sVy = new ArrayList();
-    this.sVz = new ArrayList();
+    this.tgN = new ArrayList();
+    this.tgO = new ArrayList();
+    this.tgP = new ArrayList();
+    this.tgQ = new ArrayList();
     this.Kk = -1;
     AppMethodBeat.o(168643);
   }
@@ -65,10 +65,10 @@ public class FinderTagFlowLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(168645);
-    this.sVw.clear();
-    this.sVx.clear();
-    this.sVy.clear();
-    this.sVz.clear();
+    this.tgN.clear();
+    this.tgO.clear();
+    this.tgP.clear();
+    this.tgQ.clear();
     int j = getWidth();
     paramInt1 = 0;
     paramInt2 = 0;
@@ -92,44 +92,44 @@ public class FinderTagFlowLayout
         i = paramInt1;
         if (n + paramInt1 + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin > j - getPaddingLeft() - getPaddingRight())
         {
-          this.sVx.add(Integer.valueOf(paramInt2));
-          this.sVw.add(this.sVz);
-          this.sVy.add(Integer.valueOf(paramInt1));
+          this.tgO.add(Integer.valueOf(paramInt2));
+          this.tgN.add(this.tgQ);
+          this.tgP.add(Integer.valueOf(paramInt1));
           i = 0;
           paramInt4 = localMarginLayoutParams.topMargin + m + localMarginLayoutParams.bottomMargin;
-          this.sVz = new ArrayList();
+          this.tgQ = new ArrayList();
         }
         paramInt1 = i + (n + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin);
         paramInt2 = localMarginLayoutParams.topMargin;
         i = Math.max(paramInt4, localMarginLayoutParams.bottomMargin + (paramInt2 + m));
-        this.sVz.add(localView);
+        this.tgQ.add(localView);
         paramInt4 = paramInt1;
       }
       paramInt3 += 1;
       paramInt2 = i;
       paramInt1 = paramInt4;
     }
-    this.sVx.add(Integer.valueOf(paramInt2));
-    this.sVy.add(Integer.valueOf(paramInt1));
-    this.sVw.add(this.sVz);
+    this.tgO.add(Integer.valueOf(paramInt2));
+    this.tgP.add(Integer.valueOf(paramInt1));
+    this.tgN.add(this.tgQ);
     paramInt1 = getPaddingLeft();
     paramInt2 = getPaddingTop();
-    int i = this.sVw.size();
+    int i = this.tgN.size();
     paramInt3 = 0;
     if (paramInt3 < i)
     {
-      this.sVz = ((List)this.sVw.get(paramInt3));
-      k = ((Integer)this.sVx.get(paramInt3)).intValue();
-      paramInt4 = ((Integer)this.sVy.get(paramInt3)).intValue();
+      this.tgQ = ((List)this.tgN.get(paramInt3));
+      k = ((Integer)this.tgO.get(paramInt3)).intValue();
+      paramInt4 = ((Integer)this.tgP.get(paramInt3)).intValue();
       switch (this.Kk)
       {
       default: 
         label456:
         paramInt4 = 0;
         label459:
-        if (paramInt4 < this.sVz.size())
+        if (paramInt4 < this.tgQ.size())
         {
-          localView = (View)this.sVz.get(paramInt4);
+          localView = (View)this.tgQ.get(paramInt4);
           if (localView.getVisibility() == 8) {
             break label651;
           }
@@ -152,7 +152,7 @@ public class FinderTagFlowLayout
       paramInt1 = (j - paramInt4) / 2 + getPaddingLeft();
       break label456;
       paramInt1 = j - (paramInt4 + getPaddingLeft()) - getPaddingRight();
-      Collections.reverse(this.sVz);
+      Collections.reverse(this.tgQ);
       break label456;
       paramInt3 += 1;
       paramInt2 += k;
@@ -248,7 +248,7 @@ public class FinderTagFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderTagFlowLayout
  * JD-Core Version:    0.7.0.1
  */

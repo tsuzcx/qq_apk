@@ -6,91 +6,92 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.af;
 import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.aw;
-import com.tencent.mm.plugin.appbrand.page.ay;
-import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.plugin.appbrand.page.av;
+import com.tencent.mm.plugin.appbrand.page.ax;
+import com.tencent.mm.plugin.appbrand.page.bb;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
 import com.tencent.mm.plugin.appbrand.widget.base.e.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class al
-  implements bc
+  implements bb
 {
-  private static View.OnTouchListener ngM;
-  private final aa ckN;
-  private final g ngN;
+  private static View.OnTouchListener nlU;
+  private final z ckP;
+  private final g nlV;
   
   static
   {
     AppMethodBeat.i(177120);
-    ngM = new al.1();
+    nlU = new al.1();
     AppMethodBeat.o(177120);
   }
   
-  public al(aa paramaa)
+  public al(z paramz)
   {
     AppMethodBeat.i(136600);
-    this.ckN = paramaa;
-    this.ngN = new g(paramaa);
+    this.ckP = paramz;
+    this.nlV = new g(paramz);
     AppMethodBeat.o(136600);
   }
   
-  public final void a(aw paramaw)
+  public final void a(av paramav)
   {
     AppMethodBeat.i(136602);
-    if ((paramaw == aw.mes) || (paramaw == aw.met)) {
-      o.x(this.ckN);
+    if ((paramav == av.miM) || (paramav == av.miN)) {
+      o.y(this.ckP);
     }
     AppMethodBeat.o(136602);
   }
   
-  public final void a(ay paramay)
+  public final void a(ax paramax)
   {
     AppMethodBeat.i(177119);
-    if (paramay.getContentView() == null)
+    if (paramax.getContentView() == null)
     {
       AppMethodBeat.o(177119);
       return;
     }
-    ((ViewGroup)paramay.getContentView()).setOnTouchListener(ngM);
+    ((ViewGroup)paramax.getContentView()).setOnTouchListener(nlU);
     AppMethodBeat.o(177119);
   }
   
   public final void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(136605);
-    this.ngN.c(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    this.nlV.c(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(136605);
   }
   
   public final ViewGroup getContainer()
   {
-    return this.ngN;
+    return this.nlV;
   }
   
   public final void gw(int paramInt)
   {
     AppMethodBeat.i(136603);
-    this.ngN.setTranslationY(paramInt);
+    this.nlV.setTranslationY(paramInt);
     AppMethodBeat.o(136603);
   }
   
   public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     AppMethodBeat.i(136604);
-    this.ngN.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    this.nlV.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     AppMethodBeat.o(136604);
   }
   
-  public final void setupWebViewTouchInterceptor(ay paramay)
+  public final void setupWebViewTouchInterceptor(ax paramax)
   {
     AppMethodBeat.i(136601);
-    paramay = (ViewGroup)paramay.getContentView();
-    final g localg = this.ngN;
-    paramay.setOnTouchListener(new View.OnTouchListener()
+    paramax = (ViewGroup)paramax.getContentView();
+    final g localg = this.nlV;
+    paramax.setOnTouchListener(new View.OnTouchListener()
     {
       @SuppressLint({"ClickableViewAccessibility"})
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -99,11 +100,11 @@ public final class al
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/NativeWidgetContainerWithInputDuplicateTouch$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/NativeWidgetContainerWithInputDuplicateTouch$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         if (paramAnonymousMotionEvent.getAction() != 0) {
-          com.tencent.mm.plugin.appbrand.jsapi.z.e.a(localg, paramAnonymousMotionEvent);
+          com.tencent.mm.plugin.appbrand.jsapi.aa.e.a(localg, paramAnonymousMotionEvent);
         }
-        ah localah = this.ngP;
+        ah localah = this.nlX;
         boolean bool2;
         com.tencent.mm.plugin.appbrand.widget.base.e locale;
         label163:
@@ -120,26 +121,26 @@ public final class al
         }
         else
         {
-          locale = localah.ngt.ndf;
-          if (locale.gqv.onFilterTouchEventForSecurity(paramAnonymousMotionEvent))
+          locale = localah.nlB.nio;
+          if (locale.gsV.onFilterTouchEventForSecurity(paramAnonymousMotionEvent))
           {
             label173:
             int j;
             if (paramAnonymousMotionEvent.getActionMasked() == 0)
             {
-              paramAnonymousView = new com.tencent.mm.plugin.appbrand.widget.base.b(locale.gqv);
+              paramAnonymousView = new com.tencent.mm.plugin.appbrand.widget.base.b(locale.gsV);
               if (paramAnonymousMotionEvent.getActionMasked() != 0) {
                 break label322;
               }
               localObject = new e.a(paramAnonymousMotionEvent.getDownTime(), paramAnonymousMotionEvent.getEventTime(), (byte)0);
-              locale.mUq = ((e.a)localObject);
+              locale.mZx = ((e.a)localObject);
               bool1 = false;
               if (!paramAnonymousView.hasNext()) {
                 break label356;
               }
               localObject = (View)paramAnonymousView.next();
               j = paramAnonymousMotionEvent.getActionIndex();
-              if (!locale.gqv.isMotionEventSplittingEnabled()) {
+              if (!locale.gsV.isMotionEventSplittingEnabled()) {
                 break label328;
               }
             }
@@ -153,25 +154,25 @@ public final class al
               if (paramAnonymousMotionEvent.getActionMasked() != 0) {
                 break label334;
               }
-              if ((!AppBrandViewMotionCompat.cW((View)localObject)) || (!AppBrandViewMotionCompat.a(locale.gqv, f1, f2, (View)localObject))) {
+              if ((!AppBrandViewMotionCompat.cW((View)localObject)) || (!AppBrandViewMotionCompat.a(locale.gsV, f1, f2, (View)localObject))) {
                 break label173;
               }
               if (!AppBrandViewMotionCompat.cV((View)localObject)) {
                 break label655;
               }
-              if (!AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.gqv, paramAnonymousMotionEvent, false, (View)localObject, i)) {
+              if (!AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.gsV, paramAnonymousMotionEvent, false, (View)localObject, i)) {
                 break label652;
               }
-              locale.mUp.addLast(localObject);
+              locale.mZw.addLast(localObject);
               bool1 |= true;
               break label173;
-              paramAnonymousView = locale.mUp.iterator();
+              paramAnonymousView = locale.mZw.iterator();
               break;
               localObject = null;
               break label163;
             }
             label334:
-            bool1 = AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.gqv, paramAnonymousMotionEvent, false, (View)localObject, i) | bool1;
+            bool1 = AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.gsV, paramAnonymousMotionEvent, false, (View)localObject, i) | bool1;
           }
         }
         label396:
@@ -189,25 +190,25 @@ public final class al
             com.tencent.mm.plugin.appbrand.widget.base.a.a("MicroMsg.AppBrand.InputTouchDuplicateDispatcher", "[textscroll] handled | ".concat(String.valueOf(bool2)), paramAnonymousMotionEvent);
             if (2 == paramAnonymousMotionEvent.getActionMasked())
             {
-              if ((bool2) && (!localah.ngu))
+              if ((bool2) && (!localah.nlC))
               {
-                paramAnonymousView = (com.tencent.mm.plugin.appbrand.page.ah)localah.ngy.jdMethod_do(localah.ngt);
+                paramAnonymousView = (ag)localah.nlG.jdMethod_do(localah.nlB);
                 if (paramAnonymousView != null)
                 {
-                  if (paramAnonymousView.mcS) {
+                  if (paramAnonymousView.mhk) {
                     break label562;
                   }
                   bool1 = true;
-                  localah.ngv = bool1;
+                  localah.nlD = bool1;
                   paramAnonymousView.setPullDownEnabled(false);
                   paramAnonymousView.requestDisallowInterceptTouchEvent(true);
-                  localah.ngu = true;
+                  localah.nlC = true;
                 }
               }
               if (!bool2) {
                 break label568;
               }
-              localah.ngw = true;
+              localah.nlE = true;
             }
             else
             {
@@ -224,7 +225,7 @@ public final class al
               label498:
               bool2 = false;
               break;
-              locale.mUp.clear();
+              locale.mZw.clear();
               bool2 = bool1;
               break label396;
               bool2 = false;
@@ -233,18 +234,18 @@ public final class al
               bool1 = false;
               break label464;
               label568:
-              if (!localah.ngw) {
+              if (!localah.nlE) {
                 break label498;
               }
-              localah.ngw = false;
+              localah.nlE = false;
               break label498;
-              if (localah.ngu)
+              if (localah.nlC)
               {
-                paramAnonymousView = (com.tencent.mm.plugin.appbrand.page.ah)localah.ngy.jdMethod_do(localah.ngt);
+                paramAnonymousView = (ag)localah.nlG.jdMethod_do(localah.nlB);
                 if (paramAnonymousView != null) {
-                  paramAnonymousView.setPullDownEnabled(localah.ngv);
+                  paramAnonymousView.setPullDownEnabled(localah.nlD);
                 }
-                localah.ngu = false;
+                localah.nlC = false;
               }
             }
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/input/NativeWidgetContainerWithInputDuplicateTouch$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -260,7 +261,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.al
  * JD-Core Version:    0.7.0.1
  */

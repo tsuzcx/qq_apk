@@ -45,7 +45,7 @@ public final class n
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144903);
     RotateActionArg localRotateActionArg = new RotateActionArg();

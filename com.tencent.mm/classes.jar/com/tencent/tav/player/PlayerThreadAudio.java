@@ -33,7 +33,7 @@ public class PlayerThreadAudio
   
   public PlayerThreadAudio(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack, Handler paramHandler1, Handler paramHandler2)
   {
-    AppMethodBeat.i(218682);
+    AppMethodBeat.i(215322);
     this.currentPlayingState = new CMSampleState();
     this.lastSyncMessgeId = -1L;
     this.mStatus = 1;
@@ -43,55 +43,55 @@ public class PlayerThreadAudio
     this.mMainHandler = paramHandler1;
     this.mVideoHandler = paramHandler2;
     initThread();
-    AppMethodBeat.o(218682);
+    AppMethodBeat.o(215322);
   }
   
   private void actionPrepare()
   {
-    AppMethodBeat.i(218693);
+    AppMethodBeat.i(215333);
     if (this.audioDecoderTrack != null)
     {
       updateStatus(2);
       releaseAudioTrack();
     }
-    AppMethodBeat.o(218693);
+    AppMethodBeat.o(215333);
   }
   
   private String catLog(int paramInt)
   {
-    AppMethodBeat.i(218704);
+    AppMethodBeat.i(215344);
     String str = (String)PlayerThread.map.get(paramInt, null);
-    AppMethodBeat.o(218704);
+    AppMethodBeat.o(215344);
     return str;
   }
   
   private void initThread()
   {
-    AppMethodBeat.i(218684);
+    AppMethodBeat.i(215324);
     this.mThread = new HandlerThread("PlayerAudioThread");
     this.mThread.start();
     this.mPlayHandler = new Handler(this.mThread.getLooper(), this);
-    AppMethodBeat.o(218684);
+    AppMethodBeat.o(215324);
   }
   
   private void pause()
   {
-    AppMethodBeat.i(218696);
+    AppMethodBeat.i(215336);
     if (this.mStatus == 2)
     {
       this.mLooper = false;
       this.currentPlayingState = new CMSampleState();
       removePendingMessage(new int[] { 12 });
     }
-    AppMethodBeat.o(218696);
+    AppMethodBeat.o(215336);
   }
   
   private void play(Object paramObject)
   {
-    AppMethodBeat.i(218697);
+    AppMethodBeat.i(215337);
     if (this.mStatus == 1)
     {
-      AppMethodBeat.o(218697);
+      AppMethodBeat.o(215337);
       return;
     }
     this.mLooper = true;
@@ -102,27 +102,27 @@ public class PlayerThreadAudio
       updateStatus(2);
     }
     sendMessage(12, "play", System.currentTimeMillis());
-    AppMethodBeat.o(218697);
+    AppMethodBeat.o(215337);
   }
   
   private void playerFinish()
   {
-    AppMethodBeat.i(218698);
+    AppMethodBeat.i(215338);
     this.currentPlayingState = new CMSampleState();
     this.audioDecoderTrack.seekTo(CMTime.CMTimeZero, false, true);
     this.mLooper = false;
     updateStatus(3);
     removePendingMessage(new int[] { 12 });
-    AppMethodBeat.o(218698);
+    AppMethodBeat.o(215338);
   }
   
   private void readSample()
   {
     Object localObject4 = null;
-    AppMethodBeat.i(218701);
+    AppMethodBeat.i(215341);
     if ((this.audioDecoderTrack == null) || (!this.mLooper))
     {
-      AppMethodBeat.o(218701);
+      AppMethodBeat.o(215341);
       return;
     }
     this.audioDecoderTrack.setRate(this.rate);
@@ -156,7 +156,7 @@ public class PlayerThreadAudio
           v("PlayerThreadAudio", "processFrame() called end of stream");
           playerFinish();
           this.currentPlayingState = ((CMSampleState)localObject2);
-          AppMethodBeat.o(218701);
+          AppMethodBeat.o(215341);
           return;
         }
         catch (Exception localException3)
@@ -206,7 +206,7 @@ public class PlayerThreadAudio
         v("PlayerThreadAudio", "processFrame() called run audioData length exception");
       }
       v("PlayerThreadAudio", "processFrame() not run looper");
-      AppMethodBeat.o(218701);
+      AppMethodBeat.o(215341);
       return;
     }
     if (localObject1 != null)
@@ -220,7 +220,7 @@ public class PlayerThreadAudio
       }
       v("PlayerThreadAudio", "processFrame() called run looper " + this.currentPlayingState);
       scheduleNextWork();
-      AppMethodBeat.o(218701);
+      AppMethodBeat.o(215341);
     }
   }
   
@@ -367,23 +367,23 @@ public class PlayerThreadAudio
   
   private void releaseAudioTrack()
   {
-    AppMethodBeat.i(218695);
+    AppMethodBeat.i(215335);
     if (this.mAudioTrack != null)
     {
       this.mAudioTrack.stop();
       this.mAudioTrack.release();
       this.mAudioTrack = null;
     }
-    AppMethodBeat.o(218695);
+    AppMethodBeat.o(215335);
   }
   
   private void removePendingMessage(int... paramVarArgs)
   {
-    AppMethodBeat.i(218700);
+    AppMethodBeat.i(215340);
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
       this.mPlayHandler.removeCallbacksAndMessages(null);
-      AppMethodBeat.o(218700);
+      AppMethodBeat.o(215340);
       return;
     }
     int j = paramVarArgs.length;
@@ -394,19 +394,19 @@ public class PlayerThreadAudio
       this.mPlayHandler.removeMessages(k);
       i += 1;
     }
-    AppMethodBeat.o(218700);
+    AppMethodBeat.o(215340);
   }
   
   private void scheduleNextWork()
   {
-    AppMethodBeat.i(218702);
+    AppMethodBeat.i(215342);
     sendMessage(12, "schedule next", System.currentTimeMillis());
-    AppMethodBeat.o(218702);
+    AppMethodBeat.o(215342);
   }
   
   private void seekTo(Object paramObject)
   {
-    AppMethodBeat.i(218690);
+    AppMethodBeat.i(215330);
     if ((paramObject instanceof PlayerMessage)) {
       paramObject = ((PlayerMessage)paramObject).bizMsg1;
     }
@@ -420,14 +420,14 @@ public class PlayerThreadAudio
       if (this.mAudioTrack != null) {
         this.mAudioTrack.flush();
       }
-      AppMethodBeat.o(218690);
+      AppMethodBeat.o(215330);
       return;
     }
   }
   
   private void setVolume(Object paramObject)
   {
-    AppMethodBeat.i(218691);
+    AppMethodBeat.i(215331);
     float f;
     if ((paramObject instanceof PlayerMessage)) {
       f = ((Float)((PlayerMessage)paramObject).bizMsg1).floatValue();
@@ -437,7 +437,7 @@ public class PlayerThreadAudio
       if ((f >= 0.0F) && (f <= 1.0F)) {
         setVolumeToAudioTrack(f);
       }
-      AppMethodBeat.o(218691);
+      AppMethodBeat.o(215331);
       return;
       if ((paramObject instanceof Float)) {
         f = ((Float)paramObject).floatValue();
@@ -449,17 +449,17 @@ public class PlayerThreadAudio
   
   private void setVolumeToAudioTrack(float paramFloat)
   {
-    AppMethodBeat.i(218692);
+    AppMethodBeat.i(215332);
     this.volume = paramFloat;
     if (this.mAudioTrack != null) {
       this.mAudioTrack.setVolume(paramFloat);
     }
-    AppMethodBeat.o(218692);
+    AppMethodBeat.o(215332);
   }
   
   private void stop(boolean paramBoolean)
   {
-    AppMethodBeat.i(218694);
+    AppMethodBeat.i(215334);
     if (paramBoolean)
     {
       removePendingMessage(new int[] { 12 });
@@ -468,7 +468,7 @@ public class PlayerThreadAudio
     }
     updateStatus(1);
     releaseAudioTrack();
-    AppMethodBeat.o(218694);
+    AppMethodBeat.o(215334);
   }
   
   private void updateStatus(int paramInt)
@@ -478,23 +478,23 @@ public class PlayerThreadAudio
   
   private void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218705);
+    AppMethodBeat.i(215345);
     Logger.v(paramString1, paramString2);
-    AppMethodBeat.o(218705);
+    AppMethodBeat.o(215345);
   }
   
   public CMTime getCurrentPlayingState()
   {
-    AppMethodBeat.i(218706);
+    AppMethodBeat.i(215346);
     CMTime localCMTime = this.currentPlayingState.getTime();
-    AppMethodBeat.o(218706);
+    AppMethodBeat.o(215346);
     return localCMTime;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     Object localObject4 = null;
-    AppMethodBeat.i(218689);
+    AppMethodBeat.i(215329);
     PlayerMessage localPlayerMessage;
     if (paramMessage.obj == null)
     {
@@ -535,14 +535,14 @@ public class PlayerThreadAudio
           }
           new StringBuilder("handleMessage:  SyncMessageId = ").append(localPlayerMessage.msgId).append(", what = ").append(paramMessage.what);
           this.lastSyncMessgeId = localPlayerMessage.msgId;
-          AppMethodBeat.o(218689);
+          AppMethodBeat.o(215329);
         }
         if ((localPlayerMessage != null) && (!TextUtils.isEmpty(localPlayerMessage.form)) && (localPlayerMessage.form.startsWith("syncAudioStatus")))
         {
           new StringBuilder("handleMessage:  SyncMessageId = ").append(localPlayerMessage.msgId).append(", what = ").append(paramMessage.what);
           this.lastSyncMessgeId = localPlayerMessage.msgId;
         }
-        AppMethodBeat.o(218689);
+        AppMethodBeat.o(215329);
         return true;
         localPlayerMessage = (PlayerMessage)paramMessage.obj;
         break;
@@ -569,19 +569,19 @@ public class PlayerThreadAudio
   
   public boolean isFinished()
   {
-    AppMethodBeat.i(218699);
+    AppMethodBeat.i(215339);
     if ((3 == this.mStatus) && (this.currentPlayingState.isInvalid()))
     {
-      AppMethodBeat.o(218699);
+      AppMethodBeat.o(215339);
       return true;
     }
-    AppMethodBeat.o(218699);
+    AppMethodBeat.o(215339);
     return false;
   }
   
   public void sendMessage(int paramInt, Object paramObject, String paramString, long paramLong)
   {
-    AppMethodBeat.i(218686);
+    AppMethodBeat.i(215326);
     v("PlayerThreadAudio", "sendMessage() called with: what = [" + catLog(paramInt) + "], obj = [" + paramObject + "], from = [" + paramString + "]");
     if ((this.mPlayHandler != null) && (this.mThread != null))
     {
@@ -592,22 +592,22 @@ public class PlayerThreadAudio
       }
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(paramObject, paramString, paramLong)).sendToTarget();
     }
-    AppMethodBeat.o(218686);
+    AppMethodBeat.o(215326);
   }
   
   public void sendMessage(int paramInt, String paramString, long paramLong)
   {
-    AppMethodBeat.i(218687);
+    AppMethodBeat.i(215327);
     v("PlayerThreadAudio", "sendMessage() called with: what = [" + catLog(paramInt) + "], from = [" + paramString + "]");
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(null, paramString, paramLong)).sendToTarget();
     }
-    AppMethodBeat.o(218687);
+    AppMethodBeat.o(215327);
   }
   
   public void sendMessageDelay(int paramInt, long paramLong1, String paramString, long paramLong2)
   {
-    AppMethodBeat.i(218688);
+    AppMethodBeat.i(215328);
     v("PlayerThreadAudio", "sendMessageDelay() called with: what = [" + catLog(paramInt) + "], delay = [" + paramLong1 + "], from = [" + paramString + "]");
     if (this.mPlayHandler != null)
     {
@@ -616,14 +616,14 @@ public class PlayerThreadAudio
       localMessage.obj = new PlayerMessage(null, paramString, paramLong2);
       this.mPlayHandler.sendMessageDelayed(localMessage, paramLong1);
     }
-    AppMethodBeat.o(218688);
+    AppMethodBeat.o(215328);
   }
   
   public void setRate(float paramFloat)
   {
-    AppMethodBeat.i(218683);
+    AppMethodBeat.i(215323);
     this.rate = Math.abs(paramFloat);
-    AppMethodBeat.o(218683);
+    AppMethodBeat.o(215323);
   }
   
   public void update(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack)
@@ -634,10 +634,10 @@ public class PlayerThreadAudio
   @Deprecated
   public void updateComposition(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack)
   {
-    AppMethodBeat.i(218685);
+    AppMethodBeat.i(215325);
     sendMessage(4, "updateComposition", System.currentTimeMillis());
     sendMessage(1, paramAudioCompositionDecoderTrack, "updateComposition", System.currentTimeMillis());
-    AppMethodBeat.o(218685);
+    AppMethodBeat.o(215325);
   }
 }
 

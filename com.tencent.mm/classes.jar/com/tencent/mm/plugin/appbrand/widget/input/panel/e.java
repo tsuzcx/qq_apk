@@ -10,11 +10,11 @@ import com.tencent.mm.plugin.appbrand.widget.input.ac;
 public abstract interface e
   extends ac
 {
-  public abstract boolean bEA();
+  public abstract void bFU();
   
-  public abstract void bFc();
+  public abstract void bFV();
   
-  public abstract void bFd();
+  public abstract boolean bFs();
   
   public abstract View getPanelView();
   
@@ -22,14 +22,14 @@ public abstract interface e
   
   public abstract void setOnTextOperationListener(f paramf);
   
-  public abstract boolean ws(int paramInt);
+  public abstract boolean wx(int paramInt);
   
   public static final class a
     implements e
   {
-    int lYB;
     boolean mInLayout;
     private View mView;
+    int mdi;
     
     public a(Context paramContext)
     {
@@ -48,8 +48,8 @@ public abstract interface e
         protected final void onMeasure(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(136689);
-          if (e.a.this.lYB > 0) {
-            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(e.a.this.lYB, 1073741824);
+          if (e.a.this.mdi > 0) {
+            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(e.a.this.mdi, 1073741824);
           }
           super.onMeasure(paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(136689);
@@ -58,7 +58,26 @@ public abstract interface e
       AppMethodBeat.o(136691);
     }
     
-    public final boolean bEA()
+    public final void bFU()
+    {
+      AppMethodBeat.i(136692);
+      this.mView.setVisibility(0);
+      AppMethodBeat.o(136692);
+    }
+    
+    public final void bFV()
+    {
+      AppMethodBeat.i(136693);
+      this.mView.setVisibility(4);
+      AppMethodBeat.o(136693);
+    }
+    
+    public final boolean bFo()
+    {
+      return true;
+    }
+    
+    public final boolean bFs()
     {
       AppMethodBeat.i(136694);
       if (Build.VERSION.SDK_INT >= 18)
@@ -72,25 +91,6 @@ public abstract interface e
       return bool;
     }
     
-    public final boolean bEw()
-    {
-      return true;
-    }
-    
-    public final void bFc()
-    {
-      AppMethodBeat.i(136692);
-      this.mView.setVisibility(0);
-      AppMethodBeat.o(136692);
-    }
-    
-    public final void bFd()
-    {
-      AppMethodBeat.i(136693);
-      this.mView.setVisibility(4);
-      AppMethodBeat.o(136693);
-    }
-    
     public final View getPanelView()
     {
       return this.mView;
@@ -100,11 +100,11 @@ public abstract interface e
     
     public final void setOnTextOperationListener(f paramf) {}
     
-    public final boolean ws(int paramInt)
+    public final boolean wx(int paramInt)
     {
-      if ((paramInt > 0) && (this.lYB != paramInt))
+      if ((paramInt > 0) && (this.mdi != paramInt))
       {
-        this.lYB = paramInt;
+        this.mdi = paramInt;
         return true;
       }
       return false;

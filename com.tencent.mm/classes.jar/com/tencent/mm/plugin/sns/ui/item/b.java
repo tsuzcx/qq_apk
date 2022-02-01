@@ -7,9 +7,9 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.f;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.g;
 import com.tencent.mm.plugin.sns.ui.TagImageView;
 import com.tencent.mm.plugin.sns.ui.az;
 import com.tencent.mm.plugin.sns.ui.bh;
@@ -17,9 +17,9 @@ import com.tencent.mm.plugin.sns.ui.bi;
 import com.tencent.mm.plugin.sns.ui.d.c;
 import com.tencent.mm.plugin.sns.ui.s;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.widget.b.a;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -31,81 +31,81 @@ public final class b
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bi parambi, TimeLineObject paramTimeLineObject, int paramInt2, bh parambh)
   {
     AppMethodBeat.i(100067);
-    paramBaseViewHolder.Avf.setPosition(paramInt1);
-    Object localObject2 = parambi.zQD;
-    paramInt2 = paramTimeLineObject.HAT.GaQ.size();
+    paramBaseViewHolder.AMv.setPosition(paramInt1);
+    Object localObject2 = parambi.AhK;
+    paramInt2 = paramTimeLineObject.HUG.Gtx.size();
     if (paramInt2 > 0)
     {
-      parambi = (byn)paramTimeLineObject.HAT.GaQ.get(0);
-      switch (paramTimeLineObject.HAT.GaP)
+      parambi = (bzh)paramTimeLineObject.HUG.Gtx.get(0);
+      switch (paramTimeLineObject.HUG.Gtw)
       {
       }
     }
     for (;;)
     {
-      parambh.ecN().c(paramBaseViewHolder.Avf, parambh.zpd.AyH, parambh.zpd.Ayq);
+      parambh.egu().c(paramBaseViewHolder.AMv, parambh.zGs.AQd, parambh.zGs.APL);
       AppMethodBeat.o(100067);
       return;
-      paramBaseViewHolder.Avf.setOnClickListener(parambh.zpd.zRv);
+      paramBaseViewHolder.AMv.setOnClickListener(parambh.zGs.AiC);
       Object localObject1 = new az();
-      ((az)localObject1).drH = ((String)localObject2);
+      ((az)localObject1).dsN = ((String)localObject2);
       ((az)localObject1).index = 0;
       localObject2 = new ArrayList();
-      ((List)localObject2).add(paramBaseViewHolder.Avf);
-      ((az)localObject1).Ady = ((List)localObject2);
-      ((az)localObject1).Aae = this.Aae;
+      ((List)localObject2).add(paramBaseViewHolder.AMv);
+      ((az)localObject1).AuK = ((List)localObject2);
+      ((az)localObject1).Arr = this.Arr;
       ((az)localObject1).position = paramInt1;
-      paramBaseViewHolder.Avf.setTag(localObject1);
-      paramBaseViewHolder.Avf.setVisibility(0);
-      localObject1 = ag.dUb();
-      localObject2 = paramBaseViewHolder.Avf;
+      paramBaseViewHolder.AMv.setTag(localObject1);
+      paramBaseViewHolder.AMv.setVisibility(0);
+      localObject1 = ah.dXB();
+      localObject2 = paramBaseViewHolder.AMv;
       paramInt1 = this.mActivity.hashCode();
-      bj localbj = bj.frn();
-      localbj.hbR = paramTimeLineObject.CreateTime;
-      ((f)localObject1).b(parambi, (View)localObject2, paramInt1, localbj);
-      paramBaseViewHolder.zOS.setVisibility(8);
+      bk localbk = bk.fvn();
+      localbk.heF = paramTimeLineObject.CreateTime;
+      ((g)localObject1).b(parambi, (View)localObject2, paramInt1, localbk);
+      paramBaseViewHolder.AfZ.setVisibility(8);
       paramBaseViewHolder.titleTv.setText(this.mActivity.getString(2131763937, new Object[] { Integer.valueOf(paramInt2) }));
       paramBaseViewHolder.titleTv.setVisibility(0);
       continue;
-      paramBaseViewHolder.Avf.setTag(new s(paramTimeLineObject, (String)localObject2));
-      paramBaseViewHolder.Avf.setOnClickListener(parambh.zpd.AyQ);
-      paramBaseViewHolder.zOS.setImageResource(2131691189);
-      paramBaseViewHolder.zOS.setVisibility(0);
+      paramBaseViewHolder.AMv.setTag(new s(paramTimeLineObject, (String)localObject2));
+      paramBaseViewHolder.AMv.setOnClickListener(parambh.zGs.AQm);
+      paramBaseViewHolder.AfZ.setImageResource(2131691189);
+      paramBaseViewHolder.AfZ.setVisibility(0);
       paramBaseViewHolder.titleTv.setVisibility(8);
-      localObject1 = ag.dUb();
-      localObject2 = paramBaseViewHolder.Avf;
+      localObject1 = ah.dXB();
+      localObject2 = paramBaseViewHolder.AMv;
       paramInt1 = this.mActivity.hashCode();
-      localbj = bj.frn();
-      localbj.hbR = paramTimeLineObject.CreateTime;
-      ((f)localObject1).b(parambi, (View)localObject2, paramInt1, localbj);
+      localbk = bk.fvn();
+      localbk.heF = paramTimeLineObject.CreateTime;
+      ((g)localObject1).b(parambi, (View)localObject2, paramInt1, localbk);
     }
   }
   
   public final void h(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(100066);
-    int i = ag.dUp();
-    if (paramBaseViewHolder.Avc != null) {
-      if (!paramBaseViewHolder.AvP)
+    int i = ah.dXP();
+    if (paramBaseViewHolder.AMs != null) {
+      if (!paramBaseViewHolder.ANg)
       {
-        paramBaseViewHolder.Avc.setLayoutResource(2131495564);
-        paramBaseViewHolder.AvQ = paramBaseViewHolder.Avc.inflate();
+        paramBaseViewHolder.AMs.setLayoutResource(2131495564);
+        paramBaseViewHolder.ANh = paramBaseViewHolder.AMs.inflate();
       }
     }
-    for (paramBaseViewHolder.AvP = true;; paramBaseViewHolder.AvP = true)
+    for (paramBaseViewHolder.ANg = true;; paramBaseViewHolder.ANg = true)
     {
-      paramBaseViewHolder.Avf = ((TagImageView)paramBaseViewHolder.AvQ.findViewById(2131298769));
-      paramBaseViewHolder.zOS = ((ImageView)paramBaseViewHolder.AvQ.findViewById(2131305185));
-      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.AvQ.findViewById(2131298756));
-      View localView = paramBaseViewHolder.AvQ;
+      paramBaseViewHolder.AMv = ((TagImageView)paramBaseViewHolder.ANh.findViewById(2131298769));
+      paramBaseViewHolder.AfZ = ((ImageView)paramBaseViewHolder.ANh.findViewById(2131305185));
+      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.ANh.findViewById(2131298756));
+      View localView = paramBaseViewHolder.ANh;
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
       localLayoutParams.height = i;
       localLayoutParams.width = i;
       localView.setLayoutParams(localLayoutParams);
-      q.b(paramBaseViewHolder.Avf, this.mActivity);
+      r.b(paramBaseViewHolder.AMv, this.mActivity);
       AppMethodBeat.o(100066);
       return;
-      paramBaseViewHolder.AvQ = paramBaseViewHolder.tPw.findViewById(2131298751);
+      paramBaseViewHolder.ANh = paramBaseViewHolder.uan.findViewById(2131298751);
     }
   }
 }

@@ -1,179 +1,181 @@
 package com.tencent.mm.plugin.appbrand;
 
 import android.os.Build.VERSION;
-import android.os.StatFs;
-import android.system.ErrnoException;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ht;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.appbrand.appcache.n;
-import com.tencent.mm.plugin.appbrand.appcache.n.b;
-import com.tencent.mm.plugin.appbrand.appcache.n.c;
-import com.tencent.mm.plugin.appbrand.appcache.n.e;
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig.PackageManager;
-import com.tencent.mm.plugin.appbrand.jsruntime.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.kernel.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.sdk.platformtools.ae;
+import d.g.b.q;
+import d.l;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/AppBrandProcessSharedPersistentRuntimeStore;", "", "()V", "TAG", "", "runtimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "contains", "", "runtime", "isAllEquals", "array", "", "objectToMatch", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "isEmpty", "poll", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "pollOrCreate", "remotePop", "", "remove", "stash", "plugin-appbrand-integration_release"})
 public final class j
 {
-  private static final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.d> jwA;
+  private static final ConcurrentHashMap<String, p> jzt;
+  public static final j jzu;
   
   static
   {
-    AppMethodBeat.i(43798);
-    jwA = new com.tencent.mm.sdk.b.c() {};
-    AppMethodBeat.o(43798);
+    AppMethodBeat.i(50146);
+    jzu = new j();
+    jzt = new ConcurrentHashMap();
+    AppMethodBeat.o(50146);
   }
   
-  public static void aVI()
+  public static final p a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
-    AppMethodBeat.i(187873);
-    h.LTJ.f(new a(new Runnable()
+    boolean bool2 = true;
+    AppMethodBeat.i(175099);
+    d.g.b.p.h(paramAppBrandInitConfigWC, "cfg");
+    d.g.b.p.h(paramAppBrandRuntimeContainerWC, "container");
+    p localp = (p)jzt.remove(paramAppBrandInitConfigWC.appId);
+    if (localp != null)
     {
-      public final void run()
+      e(localp);
+      Boolean[] arrayOfBoolean = new Boolean[4];
+      if (localp.aXp() == paramAppBrandInitConfigWC.kaG)
       {
-        AppMethodBeat.i(187872);
-        if (!com.tencent.mm.kernel.g.ajA().gAD)
-        {
-          AppMethodBeat.o(187872);
-          return;
+        bool1 = true;
+        arrayOfBoolean[0] = Boolean.valueOf(bool1);
+        arrayOfBoolean[1] = Boolean.valueOf(localp.aWy());
+        if (localp.isFinishing()) {
+          break label196;
         }
-        long l1 = AppBrandGlobalSystemConfig.bdT().jWS.jXi;
-        long l2 = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivm, Long.valueOf(0L))).longValue();
-        long l3 = bt.aQJ();
-        if (l3 >= l2)
-        {
-          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Ivm, Long.valueOf(l1 + l3));
-          n.c.aZD().run();
-          if (com.tencent.mm.plugin.appbrand.app.j.aYL() == null)
-          {
-            ad.e("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage, db not ready");
-            aa.bqn();
-            com.tencent.mm.plugin.appbrand.appstorage.g.jMl.run();
-            ((com.tencent.mm.plugin.appbrand.appcache.b.d.a)com.tencent.mm.plugin.appbrand.app.j.T(com.tencent.mm.plugin.appbrand.appcache.b.d.a.class)).bbd();
-            com.tencent.mm.plugin.appbrand.page.web_renderingcache.d.bvH();
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(187872);
-          return;
-        }
-        ht localht = new ht();
-        StatFs localStatFs = new StatFs(ay.baz());
-        if (Build.VERSION.SDK_INT >= 18)
-        {
-          l1 = localStatFs.getBlockCountLong();
-          label173:
-          l3 = n.b.aZC();
-          if (Build.VERSION.SDK_INT < 18) {
-            break label335;
-          }
-          l2 = localStatFs.getBlockSizeLong();
-          label193:
-          double d = l3 / l2 / l1;
-          localht.etj = l3;
-          localht.etk = Math.round(d * 100.0D);
-          localStatFs = new StatFs(b.arM());
-          if (Build.VERSION.SDK_INT < 18) {
-            break label346;
-          }
-          l1 = localStatFs.getBlockCountLong();
-          label249:
-          if (Build.VERSION.SDK_INT < 18) {
-            break label356;
-          }
-        }
-        label335:
-        label346:
-        label356:
-        for (l2 = localStatFs.getAvailableBlocksLong();; l2 = localStatFs.getAvailableBlocks())
-        {
-          localht.etl = Math.round(l2 / l1 * 100.0D);
-          localht.etm = 1L;
-          localht.etn = n.e.aZJ();
-          ad.i("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage %s", new Object[] { localht.RE() });
-          localht.aLk();
-          break;
-          l1 = localStatFs.getBlockCount();
-          break label173;
-          l2 = localStatFs.getBlockSize();
-          break label193;
-          l1 = localStatFs.getBlockCount();
-          break label249;
+        bool1 = true;
+        label94:
+        arrayOfBoolean[2] = Boolean.valueOf(bool1);
+        if (localp.isDestroyed()) {
+          break label201;
         }
       }
-    }), "MicroMsg.AppBrandPruner");
-    AppMethodBeat.o(187873);
-  }
-  
-  public static void release()
-  {
-    AppMethodBeat.i(43797);
-    jwA.dead();
-    AppMethodBeat.o(43797);
-  }
-  
-  public static void setup()
-  {
-    AppMethodBeat.i(43796);
-    jwA.alive();
-    AppMethodBeat.o(43796);
-  }
-  
-  final class a
-    implements com.tencent.mm.kernel.api.c, Runnable
-  {
-    private volatile boolean jwB;
-    
-    a()
-    {
-      AppMethodBeat.i(187870);
-      this.jwB = false;
-      com.tencent.mm.kernel.a.c.ajP().add(this);
-      AppMethodBeat.o(187870);
+      label196:
+      label201:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        arrayOfBoolean[3] = Boolean.valueOf(bool1);
+        ae.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "pollOrCreate, existed runtime[" + localp.getAppId() + "], conditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
+        if (!a(arrayOfBoolean, Boolean.TRUE)) {
+          break label206;
+        }
+        localp.a((ai)paramAppBrandRuntimeContainerWC);
+        AppMethodBeat.o(175099);
+        return localp;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label94;
+      }
     }
-    
-    public final void onAccountInitialized(e.c paramc) {}
-    
-    public final void onAccountRelease()
+    label206:
+    AppMethodBeat.o(175099);
+    return null;
+  }
+  
+  private static boolean a(Object[] paramArrayOfObject, Object paramObject)
+  {
+    AppMethodBeat.i(50138);
+    int i = 0;
+    while (i < 4)
     {
-      this.jwB = true;
+      if ((d.g.b.p.i(paramArrayOfObject[i], paramObject) ^ true))
+      {
+        AppMethodBeat.o(50138);
+        return false;
+      }
+      i += 1;
     }
-    
-    public final void run()
+    AppMethodBeat.o(50138);
+    return true;
+  }
+  
+  public static final p b(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  {
+    AppMethodBeat.i(175100);
+    d.g.b.p.h(paramAppBrandInitConfigWC, "cfg");
+    d.g.b.p.h(paramAppBrandRuntimeContainerWC, "container");
+    p localp = a(paramAppBrandInitConfigWC, paramAppBrandRuntimeContainerWC);
+    paramAppBrandInitConfigWC = localp;
+    if (localp == null) {
+      paramAppBrandInitConfigWC = new p(paramAppBrandRuntimeContainerWC);
+    }
+    AppMethodBeat.o(175100);
+    return paramAppBrandInitConfigWC;
+  }
+  
+  public static final void c(p paramp)
+  {
+    AppMethodBeat.i(50142);
+    d.g.b.p.h(paramp, "runtime");
+    ae.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "stash ".concat(String.valueOf(paramp)));
+    paramp.a(null);
+    Object localObject1 = (Map)jzt;
+    Object localObject2 = paramp.getAppId();
+    d.g.b.p.g(localObject2, "runtime.appId");
+    ((Map)localObject1).put(localObject2, paramp);
+    localObject1 = paramp.getAppId();
+    localObject2 = g.ajO().ajq();
+    d.g.b.p.g(localObject2, "MMKernel.process().current()");
+    XIPCInvoker.a("com.tencent.mm", new IPC_PARAM_stashPersistentApp((String)localObject1, ((h)localObject2).getProcessName(), paramp.jCl), ag.class);
+    AppMethodBeat.o(50142);
+  }
+  
+  public static final boolean d(p paramp)
+  {
+    AppMethodBeat.i(50143);
+    d.g.b.p.h(paramp, "runtime");
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = jzt.remove(paramp.getAppId(), paramp);
+    }
+    for (;;)
     {
-      AppMethodBeat.i(187871);
-      try
-      {
-        j.this.run();
-        AppMethodBeat.o(187871);
-        return;
+      if (bool) {
+        e(paramp);
       }
-      catch (Throwable localThrowable)
+      AppMethodBeat.o(50143);
+      return bool;
+      d.g.b.p.h(paramp, "runtime");
+      if (jzt.containsValue(paramp))
       {
-        if ((localThrowable instanceof ErrnoException))
-        {
-          AppMethodBeat.o(187871);
-          return;
-        }
-        ad.printErrStackTrace("MicroMsg.AppBrandPruner", localThrowable, "caught exception while prune", new Object[0]);
-        if (!this.jwB)
-        {
-          AppMethodBeat.o(187871);
-          throw localThrowable;
-        }
-        AppMethodBeat.o(187871);
+        jzt.remove(paramp.getAppId());
+        bool = true;
       }
+      else
+      {
+        bool = false;
+      }
+    }
+  }
+  
+  private static void e(p paramp)
+  {
+    AppMethodBeat.i(50145);
+    ((d.g.a.a)new a(paramp)).invoke();
+    AppMethodBeat.o(50145);
+  }
+  
+  public static final boolean isEmpty()
+  {
+    AppMethodBeat.i(50139);
+    boolean bool = jzt.isEmpty();
+    AppMethodBeat.o(50139);
+    return bool;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class a
+    extends q
+    implements d.g.a.a<IPCVoid>
+  {
+    a(p paramp)
+    {
+      super();
     }
   }
 }

@@ -1,23 +1,24 @@
 package com.tencent.mm.model;
 
-import android.os.Bundle;
-import android.os.Looper;
-import com.tencent.mm.storage.bu;
-import java.util.List;
-
+@Deprecated
 public abstract interface au
 {
-  public abstract void M(List<bu> paramList);
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
-  
-  public abstract void a(bu parambu);
-  
-  public abstract Looper getLooper();
+  public static abstract interface c
+  {
+    public abstract String A(int paramInt, boolean paramBoolean);
+    
+    public abstract void aBR();
+    
+    public abstract String ou(int paramInt);
+    
+    public abstract String ov(int paramInt);
+    
+    public abstract boolean ow(int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.au
  * JD-Core Version:    0.7.0.1
  */

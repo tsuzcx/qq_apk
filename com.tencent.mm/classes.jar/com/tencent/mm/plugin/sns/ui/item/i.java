@@ -8,13 +8,11 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.i.a.t;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.an.a;
-import com.tencent.mm.plugin.sns.model.f;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ao.a;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.TagImageView;
 import com.tencent.mm.plugin.sns.ui.bh;
@@ -24,18 +22,18 @@ import com.tencent.mm.plugin.sns.ui.d.c;
 import com.tencent.mm.plugin.sns.ui.s;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.protocal.protobuf.ari;
-import com.tencent.mm.protocal.protobuf.arj;
-import com.tencent.mm.protocal.protobuf.ark;
-import com.tencent.mm.protocal.protobuf.bww;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.protocal.protobuf.byp;
-import com.tencent.mm.protocal.protobuf.ece;
-import com.tencent.mm.protocal.protobuf.eeq;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.arx;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.protocal.protobuf.arz;
+import com.tencent.mm.protocal.protobuf.bxq;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.protocal.protobuf.bzj;
+import com.tencent.mm.protocal.protobuf.edv;
+import com.tencent.mm.protocal.protobuf.egh;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.widget.b.a;
 import java.util.LinkedList;
 
@@ -45,18 +43,18 @@ public final class i
   public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bi parambi, TimeLineObject paramTimeLineObject, int paramInt2, bh parambh)
   {
     AppMethodBeat.i(100090);
-    paramBaseViewHolder.Avf.setPosition(paramInt1);
-    Object localObject1 = parambi.zQD;
-    Object localObject3 = parambi.yVM;
+    paramBaseViewHolder.AMv.setPosition(paramInt1);
+    Object localObject1 = parambi.AhK;
+    Object localObject3 = parambi.zlW;
     paramInt1 = 0;
     int i;
-    if (parambi.zOM)
+    if (parambi.AfT)
     {
-      if (((p)localObject3).dRL().zwi == 2)
+      if (((p)localObject3).dVj().zND == 2)
       {
         paramInt1 = 1;
-        paramBaseViewHolder.AhO.setTag(paramBaseViewHolder);
-        paramBaseViewHolder.AhO.setOnClickListener(parambh.zpd.Azh);
+        paramBaseViewHolder.Aza.setTag(paramBaseViewHolder);
+        paramBaseViewHolder.Aza.setOnClickListener(parambh.zGs.AQD);
       }
       i = 0;
     }
@@ -67,8 +65,8 @@ public final class i
       int j;
       if (paramInt1 != 0)
       {
-        parambh.ecN().c(paramBaseViewHolder.AhO, parambh.zpd.AyJ, parambh.zpd.Ayq);
-        if (paramTimeLineObject.HAT.GaP != 9) {
+        parambh.egu().c(paramBaseViewHolder.Aza, parambh.zGs.AQf, parambh.zGs.APL);
+        if (paramTimeLineObject.HUG.Gtw != 9) {
           break label1344;
         }
         j = 1;
@@ -76,12 +74,12 @@ public final class i
         if (j == 0) {
           break label1364;
         }
-        parambi = bh.aAS(paramTimeLineObject.HAT.Url);
+        parambi = bh.aCj(paramTimeLineObject.HUG.Url);
         label139:
-        if ((paramTimeLineObject.HAT.GaP == 9) || (paramTimeLineObject.HAT.GaP == 14) || (paramTimeLineObject.HAT.GaP == 12) || (paramTimeLineObject.HAT.GaP == 13) || (paramInt1 != 0)) {
-          parambi = paramTimeLineObject.HAT.Desc;
+        if ((paramTimeLineObject.HUG.Gtw == 9) || (paramTimeLineObject.HUG.Gtw == 14) || (paramTimeLineObject.HUG.Gtw == 12) || (paramTimeLineObject.HUG.Gtw == 13) || (paramInt1 != 0)) {
+          parambi = paramTimeLineObject.HUG.Desc;
         }
-        if ((paramTimeLineObject.HAT.GaT == null) || (paramTimeLineObject.HAT.GaT.hzk != 1)) {
+        if ((paramTimeLineObject.HUG.GtA == null) || (paramTimeLineObject.HUG.GtA.hBY != 1)) {
           break label2685;
         }
       }
@@ -91,185 +89,185 @@ public final class i
       label1364:
       label2135:
       label2685:
-      for (localObject1 = aj.getContext().getString(2131761345);; localObject1 = parambi)
+      for (localObject1 = ak.getContext().getString(2131761345);; localObject1 = parambi)
       {
-        parambi = paramTimeLineObject.HAT.Title;
+        parambi = paramTimeLineObject.HUG.Title;
         if ((parambi != null) && (parambi.length() > 40)) {
           parambi = parambi.substring(0, 40) + "...";
         }
         for (;;)
         {
-          paramBaseViewHolder.zOS.setVisibility(8);
+          paramBaseViewHolder.AfZ.setVisibility(8);
           Object localObject2;
-          bj localbj;
-          if (!paramTimeLineObject.HAT.GaQ.isEmpty())
+          bk localbk;
+          if (!paramTimeLineObject.HUG.Gtx.isEmpty())
           {
-            paramBaseViewHolder.Avf.setVisibility(0);
-            localObject2 = (byn)paramTimeLineObject.HAT.GaQ.get(0);
-            if (paramTimeLineObject.HAT.GaP == 5)
+            paramBaseViewHolder.AMv.setVisibility(0);
+            localObject2 = (bzh)paramTimeLineObject.HUG.Gtx.get(0);
+            if (paramTimeLineObject.HUG.Gtw == 5)
             {
-              parambh = ((byn)localObject2).Title;
-              paramBaseViewHolder.zOS.setImageResource(2131691166);
-              paramBaseViewHolder.zOS.setVisibility(0);
-              parambi = ag.dUb();
-              localObject3 = paramBaseViewHolder.Avf;
+              parambh = ((bzh)localObject2).Title;
+              paramBaseViewHolder.AfZ.setImageResource(2131691166);
+              paramBaseViewHolder.AfZ.setVisibility(0);
+              parambi = ah.dXB();
+              localObject3 = paramBaseViewHolder.AMv;
               paramInt1 = this.mActivity.hashCode();
-              localbj = bj.frn();
-              localbj.hbR = paramTimeLineObject.CreateTime;
-              parambi.a((byn)localObject2, (View)localObject3, 2131689581, paramInt1, localbj);
+              localbk = bk.fvn();
+              localbk.heF = paramTimeLineObject.CreateTime;
+              parambi.a((bzh)localObject2, (View)localObject3, 2131689581, paramInt1, localbk);
               localObject2 = localObject1;
-              if (bt.isNullOrNil((String)localObject2)) {
+              if (bu.isNullOrNil((String)localObject2)) {
                 break label2571;
               }
-              paramBaseViewHolder.Avg.setVisibility(0);
-              paramBaseViewHolder.Avg.setText((CharSequence)localObject2);
-              if (bt.isNullOrNil(parambh)) {
+              paramBaseViewHolder.AMw.setVisibility(0);
+              paramBaseViewHolder.AMw.setText((CharSequence)localObject2);
+              if (bu.isNullOrNil(parambh)) {
                 break label2629;
               }
-              if (paramBaseViewHolder.Avg.getVisibility() != 8) {
+              if (paramBaseViewHolder.AMw.getVisibility() != 8) {
                 break label2583;
               }
-              if (paramBaseViewHolder.Avh != 2) {
+              if (paramBaseViewHolder.AMx != 2) {
                 paramBaseViewHolder.titleTv.setMaxLines(2);
               }
             }
           }
-          for (paramBaseViewHolder.Avh = 2;; paramBaseViewHolder.Avh = 1)
+          for (paramBaseViewHolder.AMx = 2;; paramBaseViewHolder.AMx = 1)
           {
             paramBaseViewHolder.titleTv.setVisibility(0);
             if (i == 0) {
               break label2607;
             }
-            paramBaseViewHolder.titleTv.setText(q.a(parambh, this.mActivity, paramBaseViewHolder.titleTv));
+            paramBaseViewHolder.titleTv.setText(r.a(parambh, this.mActivity, paramBaseViewHolder.titleTv));
             AppMethodBeat.o(100090);
             return;
-            if (paramTimeLineObject.HAT.GaP == 9)
+            if (paramTimeLineObject.HUG.Gtw == 9)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqc);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHq);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 10)
+            if (paramTimeLineObject.HUG.Gtw == 10)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqe);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHs);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 17)
+            if (paramTimeLineObject.HUG.Gtw == 17)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqf);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHt);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 22)
+            if (paramTimeLineObject.HUG.Gtw == 22)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqg);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHu);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 23)
+            if (paramTimeLineObject.HUG.Gtw == 23)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqh);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHv);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 14)
+            if (paramTimeLineObject.HUG.Gtw == 14)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqd);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHr);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 12)
+            if (paramTimeLineObject.HUG.Gtw == 12)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() <= 0) {
+              if (paramTimeLineObject.HUG.Gtx.size() <= 0) {
                 break label2691;
               }
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqm);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHA);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 13)
+            if (paramTimeLineObject.HUG.Gtw == 13)
             {
-              if (paramTimeLineObject.HAT.GaQ.size() > 0)
+              if (paramTimeLineObject.HUG.Gtx.size() > 0)
               {
-                paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-                paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqn);
+                paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+                paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHB);
                 paramInt1 = 0;
                 i = 0;
                 break;
               }
-              paramBaseViewHolder.AhO.setOnClickListener(null);
+              paramBaseViewHolder.Aza.setOnClickListener(null);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 30)
+            if (paramTimeLineObject.HUG.Gtw == 30)
             {
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqk);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHy);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if (paramTimeLineObject.HAT.GaP == 26)
+            if (paramTimeLineObject.HUG.Gtw == 26)
             {
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Aqo);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AHC);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            if ((paramTimeLineObject.HAT.GaP == 28) || (paramTimeLineObject.HAT.GaP == 29))
+            if ((paramTimeLineObject.HUG.Gtw == 28) || (paramTimeLineObject.HUG.Gtw == 29))
             {
-              paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-              paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Ahy);
+              paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+              paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AyK);
               paramInt1 = 0;
               i = 0;
               break;
             }
-            paramBaseViewHolder.AhO.setTag(new s(paramTimeLineObject, (String)localObject1));
-            paramBaseViewHolder.AhO.setOnClickListener(parambh.AaW.Ahy);
-            if ((paramTimeLineObject.hzT & 0x1) <= 0) {
+            paramBaseViewHolder.Aza.setTag(new s(paramTimeLineObject, (String)localObject1));
+            paramBaseViewHolder.Aza.setOnClickListener(parambh.Asj.AyK);
+            if ((paramTimeLineObject.hCH & 0x1) <= 0) {
               break label2691;
             }
             paramInt1 = 0;
             i = 1;
             break;
-            parambh.ecN().c(paramBaseViewHolder.AhO, parambh.zpd.AyF, parambh.zpd.Ayq);
+            parambh.egu().c(paramBaseViewHolder.Aza, parambh.zGs.AQb, parambh.zGs.APL);
             break label106;
-            if ((an.a.dUJ() & 0x1) <= 0)
+            if ((ao.a.dYj() & 0x1) <= 0)
             {
               j = 1;
               break label122;
@@ -278,159 +276,159 @@ public final class i
             break label122;
             parambi = "";
             break label139;
-            if (paramTimeLineObject.HAT.GaP == 18)
+            if (paramTimeLineObject.HUG.Gtw == 18)
             {
-              paramBaseViewHolder.zOS.setVisibility(0);
-              paramBaseViewHolder.zOS.setImageResource(2131691166);
-              paramBaseViewHolder.Avf.setVisibility(0);
-              parambh = ag.dUb();
-              localObject3 = paramBaseViewHolder.Avf;
+              paramBaseViewHolder.AfZ.setVisibility(0);
+              paramBaseViewHolder.AfZ.setImageResource(2131691166);
+              paramBaseViewHolder.AMv.setVisibility(0);
+              parambh = ah.dXB();
+              localObject3 = paramBaseViewHolder.AMv;
               paramInt1 = this.mActivity.hashCode();
-              localbj = bj.frn();
-              localbj.hbR = paramTimeLineObject.CreateTime;
-              parambh.a((byn)localObject2, (View)localObject3, 2131689581, paramInt1, localbj);
+              localbk = bk.fvn();
+              localbk.heF = paramTimeLineObject.CreateTime;
+              parambh.a((bzh)localObject2, (View)localObject3, 2131689581, paramInt1, localbk);
               localObject2 = localObject1;
               parambh = parambi;
               break label422;
             }
-            if ((paramTimeLineObject.HAZ != null) && (paramTimeLineObject.HAZ.path != null) && (paramTimeLineObject.HAZ.subType == 1))
+            if ((paramTimeLineObject.HUM != null) && (paramTimeLineObject.HUM.path != null) && (paramTimeLineObject.HUM.subType == 1))
             {
-              paramBaseViewHolder.zOS.setImageResource(2131691166);
-              paramBaseViewHolder.zOS.setVisibility(0);
+              paramBaseViewHolder.AfZ.setImageResource(2131691166);
+              paramBaseViewHolder.AfZ.setVisibility(0);
             }
-            if ((paramTimeLineObject.znS != null) && (!bt.isNullOrNil(paramTimeLineObject.znS.DBG)))
+            if ((paramTimeLineObject.zFh != null) && (!bu.isNullOrNil(paramTimeLineObject.zFh.DTD)))
             {
-              paramBaseViewHolder.zOS.setImageResource(2131691166);
-              paramBaseViewHolder.zOS.setVisibility(0);
+              paramBaseViewHolder.AfZ.setImageResource(2131691166);
+              paramBaseViewHolder.AfZ.setVisibility(0);
             }
-            if ((paramTimeLineObject.HAT.GaT != null) && (paramTimeLineObject.HAT.GaT.hCZ == 5))
+            if ((paramTimeLineObject.HUG.GtA != null) && (paramTimeLineObject.HUG.GtA.hFR == 5))
             {
-              paramBaseViewHolder.zOS.setImageResource(2131691166);
-              paramBaseViewHolder.zOS.setVisibility(0);
+              paramBaseViewHolder.AfZ.setImageResource(2131691166);
+              paramBaseViewHolder.AfZ.setVisibility(0);
             }
-            parambh = ag.dUb();
-            localObject3 = paramBaseViewHolder.Avf;
+            parambh = ah.dXB();
+            localObject3 = paramBaseViewHolder.AMv;
             paramInt1 = this.mActivity.hashCode();
-            localbj = bj.frn();
-            localbj.hbR = paramTimeLineObject.CreateTime;
-            parambh.b((byn)localObject2, (View)localObject3, paramInt1, localbj);
+            localbk = bk.fvn();
+            localbk.heF = paramTimeLineObject.CreateTime;
+            parambh.b((bzh)localObject2, (View)localObject3, paramInt1, localbk);
             localObject2 = localObject1;
             parambh = parambi;
             break label422;
-            if (paramTimeLineObject.HAT.GaP == 18)
+            if (paramTimeLineObject.HUG.Gtw == 18)
             {
-              paramBaseViewHolder.zOS.setVisibility(0);
-              paramBaseViewHolder.zOS.setImageResource(2131691166);
-              paramBaseViewHolder.Avf.setVisibility(0);
-              ag.dUb().d(paramBaseViewHolder.Avf, -1, 2131689581, this.mActivity.hashCode());
+              paramBaseViewHolder.AfZ.setVisibility(0);
+              paramBaseViewHolder.AfZ.setImageResource(2131691166);
+              paramBaseViewHolder.AMv.setVisibility(0);
+              ah.dXB().d(paramBaseViewHolder.AMv, -1, 2131689581, this.mActivity.hashCode());
               localObject2 = localObject1;
               parambh = parambi;
               break label422;
             }
-            if (paramTimeLineObject.HAT.GaP == 26)
+            if (paramTimeLineObject.HUG.Gtw == 26)
             {
-              paramBaseViewHolder.Avf.setVisibility(0);
-              ag.dUb().d(paramBaseViewHolder.Avf, -1, 2131690949, this.mActivity.hashCode());
+              paramBaseViewHolder.AMv.setVisibility(0);
+              ah.dXB().d(paramBaseViewHolder.AMv, -1, 2131690949, this.mActivity.hashCode());
               localObject2 = localObject1;
               parambh = parambi;
               break label422;
             }
-            if (paramTimeLineObject.HAT.GaP == 28)
+            if (paramTimeLineObject.HUG.Gtw == 28)
             {
               localObject2 = localObject1;
               parambh = parambi;
-              if (paramTimeLineObject.HAT.GaU == null) {
+              if (paramTimeLineObject.HUG.GtB == null) {
                 break label422;
               }
-              if ((((t)g.ad(t.class)).showFinderEntry()) || (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qAv, 0) == 0))
+              if ((((t)com.tencent.mm.kernel.g.ad(t.class)).showFinderEntry()) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHF, 0) == 0))
               {
-                if ((!bt.isNullOrNil(paramTimeLineObject.HAT.GaU.nickname)) || (bt.isNullOrNil(paramTimeLineObject.HAT.GaU.desc))) {
+                if ((!bu.isNullOrNil(paramTimeLineObject.HUG.GtB.nickname)) || (bu.isNullOrNil(paramTimeLineObject.HUG.GtB.desc))) {
                   break label2135;
                 }
-                parambi = paramTimeLineObject.HAT.GaU.desc;
+                parambi = paramTimeLineObject.HUG.GtB.desc;
               }
               for (;;)
               {
-                paramBaseViewHolder.Avf.setVisibility(0);
+                paramBaseViewHolder.AMv.setVisibility(0);
                 localObject2 = localObject1;
                 parambh = parambi;
-                if (paramTimeLineObject.HAT.GaU.mediaList.isEmpty()) {
+                if (paramTimeLineObject.HUG.GtB.mediaList.isEmpty()) {
                   break;
                 }
-                parambh = new byn();
-                parambh.Url = ((ari)paramTimeLineObject.HAT.GaU.mediaList.get(0)).thumbUrl;
-                parambh.GSI = ((ari)paramTimeLineObject.HAT.GaU.mediaList.get(0)).thumbUrl;
-                parambh.nEf = 2;
-                parambh.GSJ = 1;
-                parambh.GSL = new byp();
-                parambh.GEe = 1;
-                parambh.GSL.GTz = ((ari)paramTimeLineObject.HAT.GaU.mediaList.get(0)).width;
-                parambh.GSL.GTA = ((ari)paramTimeLineObject.HAT.GaU.mediaList.get(0)).height;
+                parambh = new bzh();
+                parambh.Url = ((arx)paramTimeLineObject.HUG.GtB.mediaList.get(0)).thumbUrl;
+                parambh.Hmj = ((arx)paramTimeLineObject.HUG.GtB.mediaList.get(0)).thumbUrl;
+                parambh.nJA = 2;
+                parambh.Hmk = 1;
+                parambh.Hmm = new bzj();
+                parambh.GXH = 1;
+                parambh.Hmm.Hna = ((arx)paramTimeLineObject.HUG.GtB.mediaList.get(0)).width;
+                parambh.Hmm.Hnb = ((arx)paramTimeLineObject.HUG.GtB.mediaList.get(0)).height;
                 parambh.Id = ((p)localObject3).getSnsId();
-                localObject2 = ag.dUb();
-                localObject3 = paramBaseViewHolder.Avf;
+                localObject2 = ah.dXB();
+                localObject3 = paramBaseViewHolder.AMv;
                 paramInt1 = this.mActivity.hashCode();
-                localbj = bj.frn();
-                localbj.hbR = paramTimeLineObject.CreateTime;
-                ((f)localObject2).b(parambh, (View)localObject3, paramInt1, localbj);
+                localbk = bk.fvn();
+                localbk.heF = paramTimeLineObject.CreateTime;
+                ((com.tencent.mm.plugin.sns.model.g)localObject2).b(parambh, (View)localObject3, paramInt1, localbk);
                 localObject2 = localObject1;
                 parambh = parambi;
                 break;
-                if (!bt.isNullOrNil(paramTimeLineObject.HAT.GaU.desc)) {
-                  parambi = paramTimeLineObject.HAT.GaU.nickname + ": " + paramTimeLineObject.HAT.GaU.desc;
+                if (!bu.isNullOrNil(paramTimeLineObject.HUG.GtB.desc)) {
+                  parambi = paramTimeLineObject.HUG.GtB.nickname + ": " + paramTimeLineObject.HUG.GtB.desc;
                 } else {
-                  parambi = this.mActivity.getString(2131763973, new Object[] { paramTimeLineObject.HAT.GaU.nickname });
+                  parambi = this.mActivity.getString(2131763973, new Object[] { paramTimeLineObject.HUG.GtB.nickname });
                 }
               }
             }
-            if (paramTimeLineObject.HAT.GaP == 29)
+            if (paramTimeLineObject.HUG.Gtw == 29)
             {
               localObject2 = localObject1;
               parambh = parambi;
-              if (paramTimeLineObject.HAT.GaV == null) {
+              if (paramTimeLineObject.HUG.GtC == null) {
                 break label422;
               }
               parambi = this.mActivity.getString(2131755778);
-              if (paramTimeLineObject.HAT.GaV != null) {
-                if (paramTimeLineObject.HAT.GaV.sMj != 1) {
+              if (paramTimeLineObject.HUG.GtC != null) {
+                if (paramTimeLineObject.HUG.GtC.sXu != 1) {
                   break label2517;
                 }
               }
-              for (parambi = aj.getContext().getString(2131763974, new Object[] { paramTimeLineObject.HAT.GaV.dzZ });; parambi = paramTimeLineObject.HAT.GaV.dzZ)
+              for (parambi = ak.getContext().getString(2131763974, new Object[] { paramTimeLineObject.HUG.GtC.dBe });; parambi = paramTimeLineObject.HUG.GtC.dBe)
               {
-                paramBaseViewHolder.Avf.setVisibility(0);
-                if (!bt.isNullOrNil(paramTimeLineObject.HAT.GaV.iconUrl))
+                paramBaseViewHolder.AMv.setVisibility(0);
+                if (!bu.isNullOrNil(paramTimeLineObject.HUG.GtC.iconUrl))
                 {
-                  parambh = new byn();
-                  parambh.Url = paramTimeLineObject.HAT.GaV.iconUrl;
-                  parambh.GSI = paramTimeLineObject.HAT.GaV.iconUrl;
-                  parambh.nEf = 2;
-                  parambh.GSJ = 1;
-                  parambh.GSL = new byp();
-                  parambh.GEe = 1;
-                  parambh.GSL.GTz = 0.0F;
-                  parambh.GSL.GTA = 0.0F;
+                  parambh = new bzh();
+                  parambh.Url = paramTimeLineObject.HUG.GtC.iconUrl;
+                  parambh.Hmj = paramTimeLineObject.HUG.GtC.iconUrl;
+                  parambh.nJA = 2;
+                  parambh.Hmk = 1;
+                  parambh.Hmm = new bzj();
+                  parambh.GXH = 1;
+                  parambh.Hmm.Hna = 0.0F;
+                  parambh.Hmm.Hnb = 0.0F;
                   parambh.Id = ((p)localObject3).getSnsId();
-                  localObject1 = ag.dUb();
-                  localObject2 = paramBaseViewHolder.Avf;
+                  localObject1 = ah.dXB();
+                  localObject2 = paramBaseViewHolder.AMv;
                   paramInt1 = this.mActivity.hashCode();
-                  localObject3 = bj.frn();
-                  ((bj)localObject3).hbR = paramTimeLineObject.CreateTime;
-                  ((f)localObject1).b(parambh, (View)localObject2, paramInt1, (bj)localObject3);
+                  localObject3 = bk.fvn();
+                  ((bk)localObject3).heF = paramTimeLineObject.CreateTime;
+                  ((com.tencent.mm.plugin.sns.model.g)localObject1).b(parambh, (View)localObject2, paramInt1, (bk)localObject3);
                 }
-                localObject2 = paramTimeLineObject.HAT.GaV.desc;
+                localObject2 = paramTimeLineObject.HUG.GtC.desc;
                 parambh = parambi;
                 break;
               }
             }
-            paramBaseViewHolder.Avf.setVisibility(0);
-            ag.dUb().d(paramBaseViewHolder.Avf, -1, 2131689584, this.mActivity.hashCode());
+            paramBaseViewHolder.AMv.setVisibility(0);
+            ah.dXB().d(paramBaseViewHolder.AMv, -1, 2131689584, this.mActivity.hashCode());
             localObject2 = localObject1;
             parambh = parambi;
             break label422;
-            paramBaseViewHolder.Avg.setVisibility(8);
+            paramBaseViewHolder.AMw.setVisibility(8);
             break label447;
-            if (paramBaseViewHolder.Avh != 1) {
+            if (paramBaseViewHolder.AMx != 1) {
               paramBaseViewHolder.titleTv.setMaxLines(1);
             }
           }
@@ -439,7 +437,7 @@ public final class i
           return;
           if (paramInt2 == 1)
           {
-            paramBaseViewHolder.titleTv.setText(bh.aAS(paramTimeLineObject.HAT.Url));
+            paramBaseViewHolder.titleTv.setText(bh.aCj(paramTimeLineObject.HUG.Url));
             paramBaseViewHolder.titleTv.setVisibility(0);
             AppMethodBeat.o(100090);
             return;
@@ -462,25 +460,25 @@ public final class i
   public final void h(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(100089);
-    if ((paramBaseViewHolder.Avc != null) && (paramBaseViewHolder.Avc.getParent() != null))
+    if ((paramBaseViewHolder.AMs != null) && (paramBaseViewHolder.AMs.getParent() != null))
     {
-      paramBaseViewHolder.Avc.setLayoutResource(2131495568);
-      if (!paramBaseViewHolder.AvP) {
-        paramBaseViewHolder.AvQ = paramBaseViewHolder.Avc.inflate();
+      paramBaseViewHolder.AMs.setLayoutResource(2131495568);
+      if (!paramBaseViewHolder.ANg) {
+        paramBaseViewHolder.ANh = paramBaseViewHolder.AMs.inflate();
       }
     }
-    for (paramBaseViewHolder.AvP = true;; paramBaseViewHolder.AvP = true)
+    for (paramBaseViewHolder.ANg = true;; paramBaseViewHolder.ANg = true)
     {
-      paramBaseViewHolder.AhO = paramBaseViewHolder.AvQ;
-      paramBaseViewHolder.Avf = ((TagImageView)paramBaseViewHolder.AhO.findViewById(2131300948));
-      paramBaseViewHolder.zOS = ((ImageView)paramBaseViewHolder.AhO.findViewById(2131305185));
-      paramBaseViewHolder.Avg = ((TextView)paramBaseViewHolder.AhO.findViewById(2131304202));
-      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.AhO.findViewById(2131305950));
+      paramBaseViewHolder.Aza = paramBaseViewHolder.ANh;
+      paramBaseViewHolder.AMv = ((TagImageView)paramBaseViewHolder.Aza.findViewById(2131300948));
+      paramBaseViewHolder.AfZ = ((ImageView)paramBaseViewHolder.Aza.findViewById(2131305185));
+      paramBaseViewHolder.AMw = ((TextView)paramBaseViewHolder.Aza.findViewById(2131304202));
+      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.Aza.findViewById(2131305950));
       paramBaseViewHolder.titleTv.setTextColor(this.mActivity.getResources().getColor(2131100711));
-      q.b(paramBaseViewHolder.Avf, this.mActivity);
+      r.b(paramBaseViewHolder.AMv, this.mActivity);
       AppMethodBeat.o(100089);
       return;
-      paramBaseViewHolder.AvQ = paramBaseViewHolder.tPw.findViewById(2131302207);
+      paramBaseViewHolder.ANh = paramBaseViewHolder.uan.findViewById(2131302207);
     }
   }
 }

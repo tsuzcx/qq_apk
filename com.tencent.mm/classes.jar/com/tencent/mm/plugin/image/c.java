@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.image;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
-import com.tencent.mm.storage.bt;
+import com.tencent.mm.model.u;
+import com.tencent.mm.storage.bu;
 
 public final class c
-  extends t
+  extends u
 {
-  private static c uJy;
+  private static c uVl;
   
   private c()
   {
     super(q.class);
   }
   
-  public static bt azx()
+  public static bu azN()
   {
     AppMethodBeat.i(151491);
-    g.ajA().aiF();
-    bt localbt = ((com.tencent.mm.plugin.n.a.a)g.ab(com.tencent.mm.plugin.n.a.a.class)).azx();
+    g.ajP().aiU();
+    bu localbu = ((com.tencent.mm.plugin.n.a.a)g.ab(com.tencent.mm.plugin.n.a.a.class)).azN();
     AppMethodBeat.o(151491);
-    return localbt;
+    return localbu;
   }
   
-  public static c dcR()
+  public static c dfJ()
   {
     try
     {
       AppMethodBeat.i(151490);
-      if (uJy == null) {
-        uJy = new c();
+      if (uVl == null) {
+        uVl = new c();
       }
-      c localc = uJy;
+      c localc = uVl;
       AppMethodBeat.o(151490);
       return localc;
     }

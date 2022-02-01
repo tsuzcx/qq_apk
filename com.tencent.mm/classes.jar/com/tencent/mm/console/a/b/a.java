@@ -6,20 +6,20 @@ import android.content.DialogInterface.OnClickListener;
 import android.database.Cursor;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.i.d;
+import com.tencent.mm.av.i.d;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.v;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storagebase.h;
 import java.util.List;
@@ -27,12 +27,12 @@ import java.util.List;
 public class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  private static final int[] geV;
+  private static final int[] ghf;
   
   static
   {
     AppMethodBeat.i(20217);
-    geV = new int[] { 0, 1 };
+    ghf = new int[] { 0, 1 };
     try
     {
       Object localObject = Class.forName("com.tencent.mm.console.a.b.a").newInstance();
@@ -44,27 +44,27 @@ public class a
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.AgingTestCommand", localThrowable, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AgingTestCommand", localThrowable, "", new Object[0]);
       AppMethodBeat.o(20217);
     }
   }
   
-  private static am K(String paramString, int paramInt)
+  private static an L(String paramString, int paramInt)
   {
     AppMethodBeat.i(20206);
-    am localam = new am();
-    localam.gfj = (100000 + paramInt);
-    localam.setUsername(paramString);
-    localam.sQ("alias_".concat(String.valueOf(paramInt)));
-    localam.sT("nickName_".concat(String.valueOf(paramInt)));
-    localam.sV("quanPin_".concat(String.valueOf(paramInt)));
-    localam.sU("pyInitial_".concat(String.valueOf(paramInt)));
-    localam.setType(3);
+    an localan = new an();
+    localan.ght = (100000 + paramInt);
+    localan.setUsername(paramString);
+    localan.tl("alias_".concat(String.valueOf(paramInt)));
+    localan.to("nickName_".concat(String.valueOf(paramInt)));
+    localan.tq("quanPin_".concat(String.valueOf(paramInt)));
+    localan.tp("pyInitial_".concat(String.valueOf(paramInt)));
+    localan.setType(3);
     AppMethodBeat.o(20206);
-    return localam;
+    return localan;
   }
   
-  private static int lJ(int paramInt)
+  private static int lL(int paramInt)
   {
     AppMethodBeat.i(20205);
     int j = (int)(Math.random() * paramInt);
@@ -76,7 +76,7 @@ public class a
     return i;
   }
   
-  private static byte[] qS(long paramLong)
+  private static byte[] rf(long paramLong)
   {
     int i = (byte)(int)(paramLong & 0xFF);
     int j = (byte)(int)(paramLong >> 8 & 0xFF);
@@ -91,7 +91,7 @@ public class a
   public final boolean a(final Context paramContext, final String[] paramArrayOfString, final String paramString)
   {
     AppMethodBeat.i(20204);
-    if (ad.getLogLevel() > 1)
+    if (ae.getLogLevel() > 1)
     {
       AppMethodBeat.o(20204);
       return false;
@@ -101,75 +101,75 @@ public class a
       AppMethodBeat.o(20204);
       return false;
     }
-    paramString = u.aAm();
+    paramString = v.aAC();
     final b localb = new b();
     int i = 5001;
     while (i <= 6000)
     {
-      localb.gfd.add("rdgztest_atm".concat(String.valueOf(i)));
+      localb.ghn.add("rdgztest_atm".concat(String.valueOf(i)));
       i += 1;
     }
-    h localh = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().getDB();
+    h localh = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().getDB();
     Cursor localCursor1 = localh.a("SELECT * FROM message WHERE talker=? AND (type=3 OR type=43 OR type=47) AND isSend=1", new String[] { paramString }, 0);
     while (localCursor1.moveToNext())
     {
-      bu localbu = new bu();
-      localbu.convertFrom(localCursor1);
+      bv localbv = new bv();
+      localbv.convertFrom(localCursor1);
       Cursor localCursor2;
       Object localObject;
-      switch (localbu.getType())
+      switch (localbv.getType())
       {
       default: 
         break;
       case 3: 
-        localCursor2 = localh.a("SELECT * FROM " + i.d.Fu(paramString) + " WHERE msgSvrId=?", new String[] { String.valueOf(localbu.field_msgSvrId) }, 0);
+        localCursor2 = localh.a("SELECT * FROM " + i.d.FW(paramString) + " WHERE msgSvrId=?", new String[] { String.valueOf(localbv.field_msgSvrId) }, 0);
         if (localCursor2.moveToNext())
         {
-          localObject = new com.tencent.mm.aw.g();
-          ((com.tencent.mm.aw.g)localObject).convertFrom(localCursor2);
-          localb.gfe.add(new c(localbu, localObject));
+          localObject = new com.tencent.mm.av.g();
+          ((com.tencent.mm.av.g)localObject).convertFrom(localCursor2);
+          localb.gho.add(new c(localbv, localObject));
         }
         localCursor2.close();
         break;
       case 43: 
-        localCursor2 = localh.a("SELECT * FROM videoinfo2 WHERE msgsvrid=?", new String[] { String.valueOf(localbu.field_msgSvrId) }, 0);
+        localCursor2 = localh.a("SELECT * FROM videoinfo2 WHERE msgsvrid=?", new String[] { String.valueOf(localbv.field_msgSvrId) }, 0);
         if (localCursor2.moveToNext())
         {
           localObject = new s();
           ((s)localObject).convertFrom(localCursor2);
-          localb.gff.add(new c(localbu, localObject));
+          localb.ghp.add(new c(localbv, localObject));
         }
         localCursor2.close();
         break;
       case 47: 
-        localCursor2 = localh.a("SELECT * FROM EmojiInfo WHERE md5=?", new String[] { localbu.field_imgPath }, 0);
+        localCursor2 = localh.a("SELECT * FROM EmojiInfo WHERE md5=?", new String[] { localbv.field_imgPath }, 0);
         if (localCursor2.moveToNext())
         {
           localObject = new EmojiInfo();
           ((EmojiInfo)localObject).convertFrom(localCursor2);
-          localb.gfg.add(new c(localbu, localObject));
+          localb.ghq.add(new c(localbv, localObject));
         }
         localCursor2.close();
       }
     }
     localCursor1.close();
-    if ((localb.gfe.isEmpty()) && (localb.gfg.isEmpty()) && (localb.gff.isEmpty()))
+    if ((localb.gho.isEmpty()) && (localb.ghq.isEmpty()) && (localb.ghp.isEmpty()))
     {
       Toast.makeText(paramContext, "please send some data(img,video,emoji) to yourself", 1).show();
       AppMethodBeat.o(20204);
       return false;
     }
-    ad.i("MicroMsg.AgingTestCommand", "[oneliang]username size:%s,image size:%s,emoji size:%s,video size:%s", new Object[] { Integer.valueOf(localb.gfd.size()), Integer.valueOf(localb.gfe.size()), Integer.valueOf(localb.gfg.size()), Integer.valueOf(localb.gff.size()) });
+    ae.i("MicroMsg.AgingTestCommand", "[oneliang]username size:%s,image size:%s,emoji size:%s,video size:%s", new Object[] { Integer.valueOf(localb.ghn.size()), Integer.valueOf(localb.gho.size()), Integer.valueOf(localb.ghq.size()), Integer.valueOf(localb.ghp.size()) });
     if (paramArrayOfString.length == 2)
     {
       Toast.makeText(paramContext, "aging begin", 1).show();
-      ba.ajF().ay(new Runnable()
+      bc.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(20199);
-          a.T(localb.gfd);
-          a.a(a.this, null, bt.getInt(paramArrayOfString[1], 0), localb);
+          a.T(localb.ghn);
+          a.a(a.this, null, bu.getInt(paramArrayOfString[1], 0), localb);
           a.a(a.this, paramContext);
           AppMethodBeat.o(20199);
         }
@@ -182,7 +182,7 @@ public class a
       AppMethodBeat.o(20204);
       return false;
     }
-    final int j = bt.getInt(paramArrayOfString[2], 0);
+    final int j = bu.getInt(paramArrayOfString[2], 0);
     paramString = paramArrayOfString[1];
     i = -1;
     switch (paramString.hashCode())
@@ -211,12 +211,12 @@ public class a
         break;
       }
     }
-    ba.ajF().ay(new Runnable()
+    bc.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(20200);
-        a.lK(j);
+        a.lM(j);
         a.a(a.this, paramContext);
         AppMethodBeat.o(20200);
       }
@@ -227,7 +227,7 @@ public class a
     if (paramArrayOfString.length == 4) {
       paramString = paramArrayOfString[3];
     }
-    ba.ajF().ay(new Runnable()
+    bc.ajU().aw(new Runnable()
     {
       public final void run()
       {

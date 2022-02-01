@@ -6,118 +6,153 @@ import com.tencent.mm.plugin.report.a;
 public final class gx
   extends a
 {
-  public long eqI;
-  public long eqJ;
-  public long eqK;
-  public long eqL;
-  public String eqM;
-  public String eqN;
-  public long eqO;
-  private String eqP;
-  private String eqQ;
-  private String eqR;
-  private String eqS;
-  public long eqT;
+  private String dYc = "";
+  private String ecB = "";
+  private String erZ = "";
+  private String esa = "";
+  public long esb = 0L;
+  public long esc = 0L;
+  public long esd = 0L;
+  public long esh = 0L;
+  public long esi = 0L;
+  public long esj = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(43454);
+    AppMethodBeat.i(221926);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eqI);
+    ((StringBuffer)localObject).append(this.erZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqJ);
+    ((StringBuffer)localObject).append(this.dYc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqK);
+    ((StringBuffer)localObject).append(this.esb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqL);
+    ((StringBuffer)localObject).append(this.esc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqM);
+    ((StringBuffer)localObject).append(this.esd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqN);
+    ((StringBuffer)localObject).append(this.esi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqO);
+    ((StringBuffer)localObject).append(this.esj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqP);
+    ((StringBuffer)localObject).append(this.ecB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqQ);
+    ((StringBuffer)localObject).append(this.esh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqT);
+    ((StringBuffer)localObject).append(this.esa);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(43454);
+    axO((String)localObject);
+    AppMethodBeat.o(221926);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(43455);
+    AppMethodBeat.i(221927);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("EnterListTimeStamp:").append(this.eqI);
+    ((StringBuffer)localObject).append("Appid:").append(this.erZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LeaveListTimeStamp:").append(this.eqJ);
+    ((StringBuffer)localObject).append("Username:").append(this.dYc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LeaveListType:").append(this.eqK);
+    ((StringBuffer)localObject).append("OpenScene:").append(this.esb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickAppidIndex:").append(this.eqL);
+    ((StringBuffer)localObject).append("TargetAppVersion:").append(this.esc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickAppid:").append(this.eqM);
+    ((StringBuffer)localObject).append("LocalAppVersion:").append(this.esd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickAppidName:").append(this.eqN);
+    ((StringBuffer)localObject).append("FallbackScene:").append(this.esi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickAppidIsStar:").append(this.eqO);
+    ((StringBuffer)localObject).append("WaitTimeInMs:").append(this.esj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppidFrom1And5:").append(this.eqP);
+    ((StringBuffer)localObject).append("NetType:").append(this.ecB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppidFrom6And10:").append(this.eqQ);
+    ((StringBuffer)localObject).append("IsWeakNet:").append(this.esh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppidFrom11And15:").append(this.eqR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppidFrom16And20:").append(this.eqS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("openSession:").append(this.eqT);
+    ((StringBuffer)localObject).append("InstanceId:").append(this.esa);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43455);
+    AppMethodBeat.o(221927);
     return localObject;
+  }
+  
+  public final long UA()
+  {
+    return this.esc;
+  }
+  
+  public final long UB()
+  {
+    return this.esd;
+  }
+  
+  public final long UC()
+  {
+    return this.esj;
+  }
+  
+  public final String UD()
+  {
+    return this.ecB;
+  }
+  
+  public final long UE()
+  {
+    return this.esh;
+  }
+  
+  public final String UF()
+  {
+    return this.esa;
+  }
+  
+  public final long Uz()
+  {
+    return this.esb;
+  }
+  
+  public final String getAppid()
+  {
+    return this.erZ;
   }
   
   public final int getId()
   {
-    return 18094;
+    return 20572;
   }
   
-  public final gx pP(String paramString)
+  public final String getUsername()
   {
-    AppMethodBeat.i(43450);
-    this.eqP = t("AppidFrom1And5", paramString, true);
-    AppMethodBeat.o(43450);
+    return this.dYc;
+  }
+  
+  public final gx qc(String paramString)
+  {
+    AppMethodBeat.i(221922);
+    this.erZ = t("Appid", paramString, true);
+    AppMethodBeat.o(221922);
     return this;
   }
   
-  public final gx pQ(String paramString)
+  public final gx qd(String paramString)
   {
-    AppMethodBeat.i(43451);
-    this.eqQ = t("AppidFrom6And10", paramString, true);
-    AppMethodBeat.o(43451);
+    AppMethodBeat.i(221923);
+    this.dYc = t("Username", paramString, true);
+    AppMethodBeat.o(221923);
     return this;
   }
   
-  public final gx pR(String paramString)
+  public final gx qe(String paramString)
   {
-    AppMethodBeat.i(43452);
-    this.eqR = t("AppidFrom11And15", paramString, true);
-    AppMethodBeat.o(43452);
+    AppMethodBeat.i(221924);
+    this.ecB = t("NetType", paramString, true);
+    AppMethodBeat.o(221924);
     return this;
   }
   
-  public final gx pS(String paramString)
+  public final gx qf(String paramString)
   {
-    AppMethodBeat.i(43453);
-    this.eqS = t("AppidFrom16And20", paramString, true);
-    AppMethodBeat.o(43453);
+    AppMethodBeat.i(221925);
+    this.esa = t("InstanceId", paramString, true);
+    AppMethodBeat.o(221925);
     return this;
   }
 }

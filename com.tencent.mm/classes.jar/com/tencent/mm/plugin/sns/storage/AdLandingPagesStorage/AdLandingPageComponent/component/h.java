@@ -10,19 +10,18 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class h
-  extends l
+  extends m
 {
-  ImageView dsD;
+  ImageView dtJ;
   ProgressBar progressBar;
-  boolean zDq = true;
+  boolean zUs = true;
   
   public h(Context paramContext, ViewGroup paramViewGroup)
   {
@@ -44,9 +43,9 @@ public final class h
     }
     try
     {
-      if (!this.zDq)
+      if (!this.zUs)
       {
-        String str = ai.ee(((s)this.zDK).zzL);
+        String str = aj.ej(((s)this.zUP).zQK);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("urlMd5", str);
         localJSONObject.put("needDownload", 1);
@@ -57,96 +56,96 @@ public final class h
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace("AdLandingImageComp", paramJSONObject, "", new Object[0]);
+      ae.printErrStackTrace("AdLandingImageComp", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(96456);
     }
     return false;
   }
   
-  public final void dRk()
+  public final void dUI()
   {
     AppMethodBeat.i(96452);
     View localView = this.contentView;
-    this.dsD = ((ImageView)localView.findViewById(2131304915));
+    this.dtJ = ((ImageView)localView.findViewById(2131304915));
     this.progressBar = ((ProgressBar)localView.findViewById(2131303535));
     AppMethodBeat.o(96452);
   }
   
-  protected final void dRl()
+  protected final void dUJ()
   {
     AppMethodBeat.i(96453);
-    if ((this.contentView == null) || (this.dsD == null) || (this.progressBar == null))
+    if ((this.contentView == null) || (this.dtJ == null) || (this.progressBar == null))
     {
       AppMethodBeat.o(96453);
       return;
     }
-    if ((s)this.zDK == null)
+    if ((s)this.zUP == null)
     {
       AppMethodBeat.o(96453);
       return;
     }
-    float f1 = ((s)this.zDK).paddingTop;
-    float f2 = ((s)this.zDK).paddingBottom;
-    float f3 = ((s)this.zDK).paddingLeft;
-    float f4 = ((s)this.zDK).paddingRight;
-    String str = ((s)this.zDK).zzL;
-    float f5 = ((s)this.zDK).height;
-    float f6 = ((s)this.zDK).width;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.dsD.getLayoutParams();
+    float f1 = ((s)this.zUP).paddingTop;
+    float f2 = ((s)this.zUP).paddingBottom;
+    float f3 = ((s)this.zUP).paddingLeft;
+    float f4 = ((s)this.zUP).paddingRight;
+    String str = ((s)this.zUP).zQK;
+    float f5 = ((s)this.zUP).height;
+    float f6 = ((s)this.zUP).width;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.dtJ.getLayoutParams();
     localLayoutParams.width = ((int)f6);
     localLayoutParams.height = ((int)f5);
-    this.dsD.setLayoutParams(localLayoutParams);
-    this.zDq = false;
+    this.dtJ.setLayoutParams(localLayoutParams);
+    this.zUs = false;
     startLoading();
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, ((s)this.zDK).zAh, new f.a()
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, ((s)this.zUP).zRh, new f.a()
     {
-      public final void axG(String paramAnonymousString)
+      public final void ayY(String paramAnonymousString)
       {
         AppMethodBeat.i(96451);
         h localh;
         try
         {
           h.this.stopLoading();
-          paramAnonymousString = g.decodeFile(paramAnonymousString);
+          paramAnonymousString = com.tencent.mm.sdk.platformtools.h.decodeFile(paramAnonymousString);
           localh = h.this;
           if (paramAnonymousString == null)
           {
-            ad.e("AdLandingImageComp", "when set image the bmp is null!");
+            ae.e("AdLandingImageComp", "when set image the bmp is null!");
             AppMethodBeat.o(96451);
             return;
           }
-          if (localh.dsD == null)
+          if (localh.dtJ == null)
           {
-            ad.e("AdLandingImageComp", "when set image the imageView is null!");
+            ae.e("AdLandingImageComp", "when set image the imageView is null!");
             AppMethodBeat.o(96451);
             return;
           }
         }
         catch (Exception paramAnonymousString)
         {
-          ad.e("AdLandingImageComp", "%s" + bt.n(paramAnonymousString));
+          ae.e("AdLandingImageComp", "%s" + bu.o(paramAnonymousString));
           AppMethodBeat.o(96451);
           return;
         }
         if (paramAnonymousString.getWidth() == 0)
         {
-          ad.e("AdLandingImageComp", "when set image the bmp.getWidth is 0!");
+          ae.e("AdLandingImageComp", "when set image the bmp.getWidth is 0!");
           AppMethodBeat.o(96451);
           return;
         }
-        localh.dsD.setImageBitmap(paramAnonymousString);
+        localh.dtJ.setImageBitmap(paramAnonymousString);
         localh.progressBar.setVisibility(8);
         AppMethodBeat.o(96451);
       }
       
-      public final void dRW()
+      public final void dVu()
       {
         AppMethodBeat.i(96449);
         h.this.startLoading();
         AppMethodBeat.o(96449);
       }
       
-      public final void dRX()
+      public final void dVv()
       {
         AppMethodBeat.i(96450);
         h.this.stopLoading();

@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.wallet_core.c.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,13 +15,13 @@ public final class n
   extends m
   implements k
 {
-  public JSONObject CLe;
+  public JSONObject DcK;
   
   public n(boolean paramBoolean, String paramString1, String paramString2)
   {
     AppMethodBeat.i(69563);
     HashMap localHashMap = new HashMap();
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "cpuId: %s, uid: %s", new Object[] { paramString1, paramString2 });
+    ae.d("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "cpuId: %s, uid: %s", new Object[] { paramString1, paramString2 });
     localHashMap.put("is_root", "0");
     if (paramBoolean) {}
     for (String str = "1";; str = "0")
@@ -60,19 +62,19 @@ public final class n
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69565);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ae.i("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     if ((paramInt == 0) && (paramJSONObject != null))
     {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo json: %s", new Object[] { paramJSONObject.toString() });
-      this.CLe = paramJSONObject;
-      com.tencent.mm.wallet_core.c.ad.fRC().bK(this.CLe);
+      ae.v("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo json: %s", new Object[] { paramJSONObject.toString() });
+      this.DcK = paramJSONObject;
+      ad.fVY().bK(this.DcK);
     }
     AppMethodBeat.o(69565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ final class SnsMsgUI$11
   
   public final int dA(View paramView)
   {
-    AppMethodBeat.i(198367);
-    int i = SnsMsgUI.b(this.AfF).getPositionForView(paramView);
-    AppMethodBeat.o(198367);
+    AppMethodBeat.i(219905);
+    int i = SnsMsgUI.b(this.AwR).getPositionForView(paramView);
+    AppMethodBeat.o(219905);
     return i;
   }
 }

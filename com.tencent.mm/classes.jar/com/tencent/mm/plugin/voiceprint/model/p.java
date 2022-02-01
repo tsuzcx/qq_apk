@@ -3,61 +3,61 @@ package com.tencent.mm.plugin.voiceprint.model;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voiceprint.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.a.b;
 import d.z;
 
 public final class p
 {
-  public static int diF = 100;
-  public b BVO;
-  public String BVP;
-  public boolean BVQ;
-  public a BVR;
-  public a BVS;
-  public int BhZ;
-  public com.tencent.mm.modelvoice.m cXf;
+  public static int djH = 100;
+  public int Bzx;
+  public b Cnp;
+  public String Cnq;
+  public boolean Cnr;
+  public a Cns;
+  public a Cnt;
+  public com.tencent.mm.modelvoice.m cYc;
   public String fileName;
-  private int nUr;
-  public long pto;
+  private int nZX;
+  public long pzU;
   
   public p()
   {
-    AppMethodBeat.i(193405);
-    this.cXf = null;
-    this.nUr = 0;
+    AppMethodBeat.i(186684);
+    this.cYc = null;
+    this.nZX = 0;
     this.fileName = "";
-    this.pto = 0L;
-    this.BhZ = 0;
-    this.BVQ = false;
-    this.BVS = null;
-    this.BVR = new a(new b() {});
-    AppMethodBeat.o(193405);
+    this.pzU = 0L;
+    this.Bzx = 0;
+    this.Cnr = false;
+    this.Cnt = null;
+    this.Cns = new a(new b() {});
+    AppMethodBeat.o(186684);
   }
   
-  public final boolean Gv()
+  public final boolean GB()
   {
     long l = 0L;
     AppMethodBeat.i(29808);
-    this.BVR.sX(false);
-    this.BVQ = false;
-    ad.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
+    this.Cns.te(false);
+    this.Cnr = false;
+    ae.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
     try
     {
-      ad.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
-      if (this.cXf != null) {
-        this.cXf.PG();
+      ae.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
+      if (this.cYc != null) {
+        this.cYc.PF();
       }
-      if (this.BhZ != 2)
+      if (this.Bzx != 2)
       {
         this.fileName = null;
-        this.BVQ = false;
-        ad.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
-        this.BhZ = -1;
-        ad.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.BVQ);
-        boolean bool = this.BVQ;
+        this.Cnr = false;
+        ae.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
+        this.Bzx = -1;
+        ae.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.Cnr);
+        boolean bool = this.Cnr;
         AppMethodBeat.o(29808);
         return bool;
       }
@@ -66,43 +66,43 @@ public final class p
     {
       AppMethodBeat.o(29808);
     }
-    if (this.pto <= 0L)
+    if (this.pzU <= 0L)
     {
       label194:
-      this.nUr = ((int)l);
-      if (this.nUr >= 1000) {
+      this.nZX = ((int)l);
+      if (this.nZX >= 1000) {
         break label277;
       }
-      ad.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.nUr);
+      ae.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.nZX);
       this.fileName = "";
-      this.BVQ = false;
+      this.Cnr = false;
     }
     for (;;)
     {
       this.fileName = "";
       break;
-      l = bt.aO(this.pto);
+      l = bu.aO(this.pzU);
       break label194;
       label277:
-      this.BVQ = true;
-      ad.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
+      this.Cnr = true;
+      ae.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void eum();
+    public abstract void exS();
   }
   
   final class b
     extends Thread
   {
-    ap handler;
+    aq handler;
     
     public b()
     {
       AppMethodBeat.i(29805);
-      this.handler = new ap()
+      this.handler = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
@@ -124,25 +124,25 @@ public final class p
       AppMethodBeat.i(29806);
       if (p.d(p.this) == null)
       {
-        ad.e("MicroMsg.VoicePrintRecoder", "Stop Record Failed recorder == null");
+        ae.e("MicroMsg.VoicePrintRecoder", "Stop Record Failed recorder == null");
         AppMethodBeat.o(29806);
         return;
       }
       synchronized (p.this)
       {
-        String str = m.cd(p.e(p.this), true);
-        ad.d("MicroMsg.VoicePrintRecoder", "fullPathName %s", new Object[] { str });
-        p.this.BVP = str;
-        p.this.BVR.sX(true);
-        if (!p.d(p.this).gz(str))
+        String str = m.ch(p.e(p.this), true);
+        ae.d("MicroMsg.VoicePrintRecoder", "fullPathName %s", new Object[] { str });
+        p.this.Cnq = str;
+        p.this.Cns.te(true);
+        if (!p.d(p.this).gF(str))
         {
           p.f(p.this);
-          ad.d("MicroMsg.VoicePrintRecoder", "Thread Start Record  Error fileName[" + p.e(p.this) + "]");
-          p.d(p.this).PG();
+          ae.d("MicroMsg.VoicePrintRecoder", "Thread Start Record  Error fileName[" + p.e(p.this) + "]");
+          p.d(p.this).PF();
           p.g(p.this);
-          p.this.BVR.sX(true);
+          p.this.Cns.te(true);
           if (p.h(p.this) != null) {
-            p.h(p.this).eum();
+            p.h(p.this).exS();
           }
           AppMethodBeat.o(29806);
           return;
@@ -150,8 +150,8 @@ public final class p
         if (p.h(p.this) != null) {
           p.h(p.this);
         }
-        p.a(p.this, bt.HI());
-        ad.d("MicroMsg.VoicePrintRecoder", "Thread Started Record fileName[" + p.e(p.this) + "]");
+        p.a(p.this, bu.HQ());
+        ae.d("MicroMsg.VoicePrintRecoder", "Thread Started Record fileName[" + p.e(p.this) + "]");
         this.handler.sendEmptyMessageDelayed(0, 1L);
         AppMethodBeat.o(29806);
         return;

@@ -21,11 +21,11 @@ public final class g
     super(paramHandler, paramInt1, paramInt2, paramInt3);
   }
   
-  protected final com.google.android.exoplayer2.c.h bos()
+  protected final com.google.android.exoplayer2.c.h bpc()
   {
-    AppMethodBeat.i(206347);
+    AppMethodBeat.i(211377);
     h localh = new h();
-    AppMethodBeat.o(206347);
+    AppMethodBeat.o(211377);
     return localh;
   }
 }

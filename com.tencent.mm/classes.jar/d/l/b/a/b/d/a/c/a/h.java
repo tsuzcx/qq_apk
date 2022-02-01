@@ -19,37 +19,37 @@ import java.util.Map;
 public final class h
   extends y
 {
-  private final d.l.b.a.b.b.a.g MVu;
-  private final d.l.b.a.b.d.a.c.h NeA;
-  private final d.l.b.a.b.l.f NfF;
-  private final d NfG;
-  public final d.l.b.a.b.l.f<List<d.l.b.a.b.f.b>> NfH;
-  private final d.l.b.a.b.l.f NfI;
-  private final t NfJ;
+  private final d.l.b.a.b.d.a.c.h NBF;
+  private final d.l.b.a.b.l.f NCK;
+  private final d NCL;
+  public final d.l.b.a.b.l.f<List<d.l.b.a.b.f.b>> NCM;
+  private final d.l.b.a.b.l.f NCN;
+  private final t NCO;
+  private final d.l.b.a.b.b.a.g Nsz;
   
   static
   {
     AppMethodBeat.i(57885);
-    cwV = new k[] { (k)z.a(new x(z.bp(h.class), "binaryClasses", "getBinaryClasses$descriptors_jvm()Ljava/util/Map;")), (k)z.a(new x(z.bp(h.class), "partToFacade", "getPartToFacade()Ljava/util/HashMap;")) };
+    cxA = new k[] { (k)z.a(new x(z.bp(h.class), "binaryClasses", "getBinaryClasses$descriptors_jvm()Ljava/util/Map;")), (k)z.a(new x(z.bp(h.class), "partToFacade", "getPartToFacade()Ljava/util/HashMap;")) };
     AppMethodBeat.o(57885);
   }
   
   public h(d.l.b.a.b.d.a.c.h paramh, t paramt)
   {
-    super(paramh.NeI.MSC, paramt.gjg());
+    super(paramh.NBN.NpH, paramt.gnI());
     AppMethodBeat.i(57890);
-    this.NfJ = paramt;
-    this.NeA = d.l.b.a.b.d.a.c.a.a(paramh, (d.l.b.a.b.b.g)this, null, 6);
-    this.NfF = this.NeA.NeI.MQa.S((d.g.a.a)new a(this));
-    this.NfG = new d(this.NeA, this.NfJ, this);
-    this.NfH = this.NeA.NeI.MQa.a((d.g.a.a)new c(this), (List)v.MKE);
-    if (this.NeA.NeI.Neq.CKM) {
-      paramh = d.l.b.a.b.b.a.g.MVP;
+    this.NCO = paramt;
+    this.NBF = d.l.b.a.b.d.a.c.a.a(paramh, (d.l.b.a.b.b.g)this, null, 6);
+    this.NCK = this.NBF.NBN.Nnf.S((d.g.a.a)new a(this));
+    this.NCL = new d(this.NBF, this.NCO, this);
+    this.NCM = this.NBF.NBN.Nnf.a((d.g.a.a)new c(this), (List)v.NhH);
+    if (this.NBF.NBN.NBv.Dcs) {
+      paramh = d.l.b.a.b.b.a.g.NsU;
     }
-    for (paramh = g.a.gjL();; paramh = d.l.b.a.b.d.a.c.f.a(this.NeA, (d.l.b.a.b.d.a.e.d)this.NfJ))
+    for (paramh = g.a.gon();; paramh = d.l.b.a.b.d.a.c.f.a(this.NBF, (d.l.b.a.b.d.a.e.d)this.NCO))
     {
-      this.MVu = paramh;
-      this.NfI = this.NeA.NeI.MQa.S((d.g.a.a)new b(this));
+      this.Nsz = paramh;
+      this.NCN = this.NBF.NBN.Nnf.S((d.g.a.a)new b(this));
       AppMethodBeat.o(57890);
       return;
     }
@@ -59,19 +59,19 @@ public final class h
   {
     AppMethodBeat.i(57887);
     d.g.b.p.h(paramg, "jClass");
-    j localj = this.NfG.Nfa;
+    j localj = this.NCL.NCf;
     d.g.b.p.h(paramg, "javaClass");
-    paramg = localj.a(paramg.giD(), paramg);
+    paramg = localj.a(paramg.gnf(), paramg);
     AppMethodBeat.o(57887);
     return paramg;
   }
   
-  public final d.l.b.a.b.b.a.g ghH()
+  public final d.l.b.a.b.b.a.g gmj()
   {
-    return this.MVu;
+    return this.Nsz;
   }
   
-  public final an ghI()
+  public final an gmk()
   {
     AppMethodBeat.i(57889);
     an localan = (an)new d.l.b.a.b.d.b.q(this);
@@ -79,10 +79,10 @@ public final class h
     return localan;
   }
   
-  public final Map<String, d.l.b.a.b.d.b.p> glP()
+  public final Map<String, d.l.b.a.b.d.b.p> gqr()
   {
     AppMethodBeat.i(57886);
-    Map localMap = (Map)i.a(this.NfF, cwV[0]);
+    Map localMap = (Map)i.a(this.NCK, cxA[0]);
     AppMethodBeat.o(57886);
     return localMap;
   }
@@ -90,7 +90,7 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(57888);
-    String str = "Lazy Java package fragment: " + this.MVU;
+    String str = "Lazy Java package fragment: " + this.Nta;
     AppMethodBeat.o(57888);
     return str;
   }
@@ -127,7 +127,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.h
  * JD-Core Version:    0.7.0.1
  */

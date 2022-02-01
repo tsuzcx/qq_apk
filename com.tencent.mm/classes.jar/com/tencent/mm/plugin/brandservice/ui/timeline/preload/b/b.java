@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
+import com.tencent.mm.ak.a.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.s;
-import com.tencent.mm.protocal.protobuf.bos;
-import com.tencent.mm.protocal.protobuf.dnh;
-import com.tencent.mm.protocal.protobuf.dni;
-import com.tencent.mm.protocal.protobuf.dnj;
-import com.tencent.mm.protocal.protobuf.dnk;
-import com.tencent.mm.protocal.protobuf.ya;
-import com.tencent.mm.protocal.protobuf.yc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.protocal.protobuf.bpk;
+import com.tencent.mm.protocal.protobuf.doe;
+import com.tencent.mm.protocal.protobuf.dof;
+import com.tencent.mm.protocal.protobuf.dog;
+import com.tencent.mm.protocal.protobuf.doh;
+import com.tencent.mm.protocal.protobuf.yd;
+import com.tencent.mm.protocal.protobuf.yf;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.at;
 import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g;
 import d.g.b.q;
-import d.l;
 import d.v;
 import d.z;
 import java.net.URLEncoder;
@@ -37,25 +36,25 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import kotlinx.coroutines.ah;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager;", "", "()V", "HARDCODE_URL", "", "MIN_CHECK_TIME", "", "PPREFIX_MP", "PREFIX", "SUPPORT_TMPL_TYPES", "", "getSUPPORT_TMPL_TYPES", "()[Ljava/lang/Integer;", "SUPPORT_TMPL_TYPES$delegate", "Lkotlin/Lazy;", "TAG", "checkTmplList", "Ljava/util/ArrayList;", "expireTime", "", "expireTime$annotations", "getExpireTime", "()J", "lastCheckTimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "keyDownloadTime", "getKeyDownloadTime", "(I)Ljava/lang/String;", "checkTmpl", "", "openScene", "netType", "tmplTypes", "", "checkTmplInner", "typeInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/CheckTmplClientTypeInfo;", "cleanInvalidTmpl", "cleanInvalidTmplInner", "clear", "createTmplParam", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "tmplType", "download", "url", "tmplInfo", "Lcom/tencent/mm/protocal/protobuf/TmplInfo;", "httpHeaderMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "onSuccess", "Lkotlin/Function0;", "downloadFile", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager$DownloadResult;", "reportId", "downloadUrl", "headers", "", "filePath", "downloadTmpl", "getHARDCODE_URL", "getLatestTmplInfo", "getPrefix", "getSaveDir", "getTmplByte", "Ljava/io/InputStream;", "file", "getTmplInfo", "skipUid", "getUrlWithA8key", "(Ljava/lang/String;Ljava/util/HashMap;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "injectRecord", "tmplParams", "success", "", "isTmplInfoExist", "needCheck", "processPatch", "result", "md5", "Lcom/tencent/mm/vfs/VFSFile;", "patchBase", "processTmplInfo", "saveCheckTimeColdDown", "coldDown", "unzip", "dir", "updateTmplInfo", "verify", "standard", "verifyMD5", "verifyVersion", "appendToList", "key", "debugInfo", "parseFrom", "type", "uid", "DownloadResult", "plugin-brandservice_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager;", "", "()V", "HARDCODE_URL", "", "MIN_CHECK_TIME", "", "PPREFIX_MP", "PREFIX", "SUPPORT_TMPL_TYPES", "", "getSUPPORT_TMPL_TYPES", "()[Ljava/lang/Integer;", "SUPPORT_TMPL_TYPES$delegate", "Lkotlin/Lazy;", "TAG", "checkTmplList", "Ljava/util/ArrayList;", "expireTime", "", "expireTime$annotations", "getExpireTime", "()J", "lastCheckTimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "keyDownloadTime", "getKeyDownloadTime", "(I)Ljava/lang/String;", "checkTmpl", "", "openScene", "netType", "tmplTypes", "", "checkTmplInner", "typeInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/CheckTmplClientTypeInfo;", "cleanInvalidTmpl", "cleanInvalidTmplInner", "clear", "createTmplParam", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "tmplType", "download", "url", "tmplInfo", "Lcom/tencent/mm/protocal/protobuf/TmplInfo;", "httpHeaderMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "onSuccess", "Lkotlin/Function0;", "downloadFile", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager$DownloadResult;", "reportId", "downloadUrl", "headers", "", "filePath", "downloadTmpl", "getHARDCODE_URL", "getLatestTmplInfo", "getPrefix", "getSaveDir", "getTmplByte", "Ljava/io/InputStream;", "file", "getTmplInfo", "skipUid", "getUrlWithA8key", "(Ljava/lang/String;Ljava/util/HashMap;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "injectRecord", "tmplParams", "success", "", "isTmplInfoExist", "needCheck", "processPatch", "result", "md5", "Lcom/tencent/mm/vfs/VFSFile;", "patchBase", "processTmplInfo", "saveCheckTimeColdDown", "coldDown", "unzip", "dir", "updateTmplInfo", "verify", "standard", "verifyMD5", "verifyVersion", "appendToList", "key", "debugInfo", "parseFrom", "type", "uid", "DownloadResult", "plugin-brandservice_release"})
 public final class b
 {
   private static final String PREFIX = "https://mp.weixin.qq.com/__tmpl__/";
-  private static final d.f olZ;
-  private static final int oma = 60000;
-  private static final ConcurrentHashMap<Integer, Long> omb;
-  private static final ArrayList<Integer> omc;
-  public static final b omd;
+  private static final d.f orP;
+  private static final int orQ = 60000;
+  private static final ConcurrentHashMap<Integer, Long> orR;
+  private static final ArrayList<Integer> orS;
+  public static final b orT;
   
   static
   {
     AppMethodBeat.i(6840);
-    omd = new b();
+    orT = new b();
     PREFIX = "https://mp.weixin.qq.com/__tmpl__/";
-    olZ = g.O((d.g.a.a)b.omg);
-    oma = 60000;
-    omb = new ConcurrentHashMap();
-    omc = new ArrayList();
+    orP = g.O((d.g.a.a)b.orW);
+    orQ = 60000;
+    orR = new ConcurrentHashMap();
+    orS = new ArrayList();
     AppMethodBeat.o(6840);
   }
   
@@ -69,16 +68,16 @@ public final class b
     //   9: dup
     //   10: invokespecial 188	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:<init>	()V
     //   13: astore 7
-    //   15: new 190	com/tencent/mm/vfs/e
+    //   15: new 190	com/tencent/mm/vfs/k
     //   18: dup
     //   19: aload_3
-    //   20: invokespecial 193	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 193	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
     //   23: astore 8
     //   25: aload 8
-    //   27: invokevirtual 197	com/tencent/mm/vfs/e:exists	()Z
+    //   27: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
     //   30: ifeq +9 -> 39
     //   33: aload 8
-    //   35: invokevirtual 200	com/tencent/mm/vfs/e:delete	()Z
+    //   35: invokevirtual 200	com/tencent/mm/vfs/k:delete	()Z
     //   38: pop
     //   39: new 202	java/net/URL
     //   42: dup
@@ -114,7 +113,7 @@ public final class b
     //   104: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   107: iconst_0
     //   108: anewarray 4	java/lang/Object
-    //   111: invokestatic 235	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: invokestatic 235	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   114: aload 7
     //   116: aload_2
     //   117: checkcast 237	java/lang/Exception
@@ -123,10 +122,10 @@ public final class b
     //   124: bipush 7
     //   126: invokestatic 247	com/tencent/mm/plugin/webview/g/a:gi	(II)V
     //   129: aload 8
-    //   131: invokevirtual 197	com/tencent/mm/vfs/e:exists	()Z
+    //   131: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
     //   134: ifeq +9 -> 143
     //   137: aload 8
-    //   139: invokevirtual 200	com/tencent/mm/vfs/e:delete	()Z
+    //   139: invokevirtual 200	com/tencent/mm/vfs/k:delete	()Z
     //   142: pop
     //   143: sipush 6862
     //   146: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -165,7 +164,7 @@ public final class b
     //   217: invokeinterface 274 1 0
     //   222: invokestatic 280	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   225: aastore
-    //   226: invokestatic 283	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   226: invokestatic 283	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   229: aload_2
     //   230: invokeinterface 287 1 0
     //   235: invokeinterface 293 1 0
@@ -221,7 +220,7 @@ public final class b
     //   355: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   358: iconst_0
     //   359: anewarray 4	java/lang/Object
-    //   362: invokestatic 235	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   362: invokestatic 235	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   365: aload 7
     //   367: aload_2
     //   368: checkcast 237	java/lang/Exception
@@ -230,10 +229,10 @@ public final class b
     //   375: bipush 7
     //   377: invokestatic 247	com/tencent/mm/plugin/webview/g/a:gi	(II)V
     //   380: aload 8
-    //   382: invokevirtual 197	com/tencent/mm/vfs/e:exists	()Z
+    //   382: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
     //   385: ifeq -242 -> 143
     //   388: aload 8
-    //   390: invokevirtual 200	com/tencent/mm/vfs/e:delete	()Z
+    //   390: invokevirtual 200	com/tencent/mm/vfs/k:delete	()Z
     //   393: pop
     //   394: goto -251 -> 143
     //   397: iconst_0
@@ -260,7 +259,7 @@ public final class b
     //   447: sipush 200
     //   450: if_icmpne +219 -> 669
     //   453: aload 8
-    //   455: invokevirtual 345	com/tencent/mm/vfs/e:createNewFile	()Z
+    //   455: invokevirtual 345	com/tencent/mm/vfs/k:createNewFile	()Z
     //   458: pop
     //   459: sipush 8192
     //   462: newarray byte
@@ -270,7 +269,7 @@ public final class b
     //   469: invokespecial 348	d/g/b/y$d:<init>	()V
     //   472: astore 11
     //   474: aload 8
-    //   476: invokestatic 354	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   476: invokestatic 354	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
     //   479: checkcast 356	java/io/Closeable
     //   482: astore 10
     //   484: aconst_null
@@ -285,7 +284,7 @@ public final class b
     //   503: istore 4
     //   505: aload 11
     //   507: iload 4
-    //   509: putfield 365	d/g/b/y$d:MLT	I
+    //   509: putfield 365	d/g/b/y$d:NiW	I
     //   512: iload 4
     //   514: iconst_m1
     //   515: if_icmpeq +45 -> 560
@@ -293,7 +292,7 @@ public final class b
     //   520: aload_2
     //   521: iconst_0
     //   522: aload 11
-    //   524: getfield 365	d/g/b/y$d:MLT	I
+    //   524: getfield 365	d/g/b/y$d:NiW	I
     //   527: invokevirtual 369	java/io/OutputStream:write	([BII)V
     //   530: goto -36 -> 494
     //   533: astore 6
@@ -309,7 +308,7 @@ public final class b
     //   555: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   558: aload_2
     //   559: athrow
-    //   560: getstatic 380	d/z:MKo	Ld/z;
+    //   560: getstatic 380	d/z:Nhr	Ld/z;
     //   563: astore_2
     //   564: aload 10
     //   566: aconst_null
@@ -321,12 +320,12 @@ public final class b
     //   578: aload 9
     //   580: ldc_w 385
     //   583: invokevirtual 389	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   586: putfield 392	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:ome	Ljava/lang/String;
+    //   586: putfield 392	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:orU	Ljava/lang/String;
     //   589: aload 7
     //   591: aload 9
     //   593: ldc_w 394
     //   596: invokevirtual 389	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   599: putfield 397	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:omf	Ljava/lang/String;
+    //   599: putfield 397	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:orV	Ljava/lang/String;
     //   602: aload 9
     //   604: ldc_w 399
     //   607: invokevirtual 389	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
@@ -343,8 +342,8 @@ public final class b
     //   628: istore 5
     //   630: aload 7
     //   632: iload 5
-    //   634: putfield 409	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:oiD	Z
-    //   637: getstatic 380	d/z:MKo	Ld/z;
+    //   634: putfield 409	com/tencent/mm/plugin/brandservice/ui/timeline/preload/b/b$a:ooD	Z
+    //   637: getstatic 380	d/z:Nhr	Ld/z;
     //   640: astore_2
     //   641: aload 9
     //   643: invokevirtual 312	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
@@ -364,7 +363,7 @@ public final class b
     //   674: iload 4
     //   676: invokestatic 413	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   679: invokevirtual 416	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   682: invokestatic 419	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   682: invokestatic 419	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   685: iload 4
     //   687: sipush 500
     //   690: if_icmple +12 -> 702
@@ -397,7 +396,7 @@ public final class b
     //   533	15	6	localThrowable1	Throwable
     //   719	1	6	localThrowable2	Throwable
     //   13	618	7	locala	a
-    //   23	452	8	locale	e
+    //   23	452	8	localk	com.tencent.mm.vfs.k
     //   157	499	9	localHttpURLConnection	java.net.HttpURLConnection
     //   262	303	10	localObject2	Object
     //   472	51	11	locald	d.g.b.y.d
@@ -466,12 +465,12 @@ public final class b
     //   560	564	728	finally
   }
   
-  private static dni a(dni paramdni, int paramInt, String paramString)
+  private static dof a(dof paramdof, int paramInt, String paramString)
   {
     AppMethodBeat.i(6848);
-    paramdni.nEf = paramInt;
-    paramdni.GsT = paramString;
-    byte[] arrayOfByte = s.bPI().decodeBytes(s.e(paramdni));
+    paramdof.nJA = paramInt;
+    paramdof.GMr = paramString;
+    byte[] arrayOfByte = s.bQG().decodeBytes(s.e(paramdof));
     int i;
     if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
       i = 1;
@@ -481,16 +480,16 @@ public final class b
       if (i == 0) {}
       try
       {
-        paramdni.parseFrom(arrayOfByte);
+        paramdof.parseFrom(arrayOfByte);
         AppMethodBeat.o(6848);
-        return paramdni;
+        return paramdof;
         i = 0;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Preload.TmplInfoManager", (Throwable)localException, "decode TmplInfo:" + paramInt + ", " + paramString, new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Preload.TmplInfoManager", (Throwable)localException, "decode TmplInfo:" + paramInt + ", " + paramString, new Object[0]);
         }
       }
     }
@@ -505,20 +504,20 @@ public final class b
         AppMethodBeat.i(6844);
         d.g.b.p.h(paramString, "netType");
         d.g.b.p.h(paramVarArgs, "tmplTypes");
-        if (ay.is2G(aj.getContext()))
+        if (az.is2G(ak.getContext()))
         {
-          ad.w("MicroMsg.Preload.TmplInfoManager", "[checkTmpl] not check, because network is 2g");
+          ae.w("MicroMsg.Preload.TmplInfoManager", "[checkTmpl] not check, because network is 2g");
           AppMethodBeat.o(6844);
           return;
         }
-        paramVarArgs = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.ojh;
-        if ((!com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) && (com.tencent.mm.plugin.brandservice.ui.timeline.preload.i.bFO().getInt("preload_type", 1) == 3))
+        paramVarArgs = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.oph;
+        if ((!com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) && (com.tencent.mm.plugin.brandservice.ui.timeline.preload.i.bGK().getInt("preload_type", 1) == 3))
         {
           i = 1;
           if (i == 0) {
             break;
           }
-          com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.eN("MicroMsg.Preload.TmplInfoManager", "use local file, ignore");
+          com.tencent.mm.plugin.brandservice.ui.timeline.preload.m.eQ("MicroMsg.Preload.TmplInfoManager", "use local file, ignore");
           AppMethodBeat.o(6844);
         }
         else
@@ -529,10 +528,10 @@ public final class b
       finally {}
     }
     if (paramInt == -1) {
-      omb.clear();
+      orR.clear();
     }
     final LinkedList localLinkedList = new LinkedList();
-    paramVarArgs = bQf();
+    paramVarArgs = bRg();
     Object localObject1 = (Collection)new ArrayList();
     int j = paramVarArgs.length;
     int i = 0;
@@ -542,9 +541,9 @@ public final class b
     {
       int m = paramVarArgs[i];
       int k = ((Number)m).intValue();
-      localObject2 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.ojh;
+      localObject2 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.oph;
       boolean bool;
-      if (com.tencent.mm.plugin.brandservice.ui.timeline.preload.i.bFO().getBoolean("preload_tmpl_always_check_tmpl_ver", false)) {
+      if (com.tencent.mm.plugin.brandservice.ui.timeline.preload.i.bGK().getBoolean("preload_tmpl_always_check_tmpl_ver", false)) {
         bool = true;
       }
       while (bool)
@@ -552,22 +551,22 @@ public final class b
         ((Collection)localObject1).add(m);
         break;
         long l = 0L;
-        if (omb.containsKey(Integer.valueOf(k)))
+        if (orR.containsKey(Integer.valueOf(k)))
         {
-          localObject2 = omb.get(Integer.valueOf(k));
+          localObject2 = orR.get(Integer.valueOf(k));
           if (localObject2 == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
           l = ((Number)localObject2).longValue();
         }
-        if (omc.contains(Integer.valueOf(k)))
+        if (orS.contains(Integer.valueOf(k)))
         {
-          ad.v("MicroMsg.Preload.TmplInfoManager", "[checkTmplVer] %d already check", new Object[] { Integer.valueOf(k) });
+          ae.v("MicroMsg.Preload.TmplInfoManager", "[checkTmplVer] %d already check", new Object[] { Integer.valueOf(k) });
           bool = false;
         }
         else
         {
-          bool = as.ay(l, s.bPI().getLong("_check_time_colddown", oma));
+          bool = at.ax(l, s.bQG().getLong("_check_time_colddown", orQ));
         }
       }
     }
@@ -578,26 +577,26 @@ public final class b
     for (;;)
     {
       label336:
-      ya localya;
+      yd localyd;
       if (((Iterator)localObject1).hasNext())
       {
         i = ((Number)((Iterator)localObject1).next()).intValue();
-        omc.add(Integer.valueOf(i));
-        ((Map)omb).put(Integer.valueOf(i), Long.valueOf(System.currentTimeMillis()));
-        localya = new ya();
-        localya.nEf = i;
-        if (com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.zc(101)) {
-          localya.FXG = s.bPH();
+        orS.add(Integer.valueOf(i));
+        ((Map)orR).put(Integer.valueOf(i), Long.valueOf(System.currentTimeMillis()));
+        localyd = new yd();
+        localyd.nJA = i;
+        if (com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.zl(101)) {
+          localyd.Gqf = s.bQF();
         }
-        localLinkedList.add(localya);
-        paramVarArgs = zO(i);
+        localLinkedList.add(localyd);
+        paramVarArgs = zX(i);
         if (!s.a(paramVarArgs)) {
           continue;
         }
-        if (s.XA(s.b(paramVarArgs))) {
-          localya.FXF = paramVarArgs.GsT;
+        if (s.Yn(s.b(paramVarArgs))) {
+          localyd.Gqe = paramVarArgs.GMr;
         }
-        localObject2 = s.bPI().getStringSet(s.h(paramVarArgs), null);
+        localObject2 = s.bQG().getStringSet(s.h(paramVarArgs), null);
         if (localObject2 == null) {
           break label710;
         }
@@ -608,9 +607,9 @@ public final class b
         {
           Object localObject4 = ((Iterator)localObject3).next();
           String str = (String)localObject4;
-          dni localdni = new dni();
+          dof localdof = new dof();
           d.g.b.p.g(str, "it");
-          if (a(a(localdni, i, str), paramVarArgs)) {
+          if (a(a(localdof, i, str), paramVarArgs)) {
             ((Collection)localObject2).add(localObject4);
           }
         }
@@ -629,15 +628,15 @@ public final class b
         if (i != 0) {
           break label718;
         }
-        localya.FXE.addAll((Collection)paramVarArgs);
+        localyd.Gqd.addAll((Collection)paramVarArgs);
         break label336;
         if (!((Collection)localLinkedList).isEmpty()) {}
         for (i = 1;; i = 0)
         {
           if (i != 0)
           {
-            com.tencent.mm.plugin.webview.g.a.ma(0);
-            new a(localLinkedList, paramInt, paramString).aED().g((com.tencent.mm.vending.c.a)new c(paramInt, localLinkedList));
+            com.tencent.mm.plugin.webview.g.a.md(0);
+            new a(localLinkedList, paramInt, paramString).aET().g((com.tencent.mm.vending.c.a)new c(paramInt, localLinkedList));
           }
           AppMethodBeat.o(6844);
           break;
@@ -653,93 +652,93 @@ public final class b
     }
   }
   
-  public static void a(dnj paramdnj, boolean paramBoolean)
+  public static void a(dog paramdog, boolean paramBoolean)
   {
-    AppMethodBeat.i(209980);
-    d.g.b.p.h(paramdnj, "tmplParams");
-    String str = "_tmpl_info_inject_fail_-" + paramdnj.ojt + '-' + paramdnj.AFz;
+    AppMethodBeat.i(208968);
+    d.g.b.p.h(paramdog, "tmplParams");
+    String str = "_tmpl_info_inject_fail_-" + paramdog.opt + '-' + paramdog.AXc;
     if (paramBoolean)
     {
-      s.bPI().removeValueForKey(str);
-      AppMethodBeat.o(209980);
+      s.bQG().removeValueForKey(str);
+      AppMethodBeat.o(208968);
       return;
     }
-    int i = s.bPI().getInt(str, 0) + 1;
-    s.bPI().putInt(str, i);
-    ad.e("MicroMsg.Preload.TmplInfoManager", "store tmpl inject fail:" + paramdnj.ojt + ',' + paramdnj.AFz + ',' + i);
+    int i = s.bQG().getInt(str, 0) + 1;
+    s.bQG().putInt(str, i);
+    ae.e("MicroMsg.Preload.TmplInfoManager", "store tmpl inject fail:" + paramdog.opt + ',' + paramdog.AXc + ',' + i);
     if (i > 2)
     {
-      com.tencent.mm.plugin.webview.g.a.ma(219);
-      ad.e("MicroMsg.Preload.TmplInfoManager", "clear tmpl for too many inject fail:" + paramdnj.ojt + ',' + paramdnj.AFz + ',' + i);
+      com.tencent.mm.plugin.webview.g.a.md(219);
+      ae.e("MicroMsg.Preload.TmplInfoManager", "clear tmpl for too many inject fail:" + paramdog.opt + ',' + paramdog.AXc + ',' + i);
     }
-    AppMethodBeat.o(209980);
+    AppMethodBeat.o(208968);
   }
   
-  private static boolean a(dni paramdni1, dni paramdni2)
+  private static boolean a(dof paramdof1, dof paramdof2)
   {
     AppMethodBeat.i(6849);
-    if (s.Xz(s.b(paramdni1)).exists())
+    if (s.Ym(s.b(paramdof1)).exists())
     {
-      if (b(paramdni1, paramdni2))
+      if (b(paramdof1, paramdof2))
       {
-        s.bPI().putString(s.f(paramdni1), paramdni1.GsT);
-        com.tencent.mm.plugin.brandservice.ui.timeline.preload.d.b(s.bPI(), s.g(paramdni1));
+        s.bQG().putString(s.f(paramdof1), paramdof1.GMr);
+        com.tencent.mm.plugin.brandservice.ui.timeline.preload.d.b(s.bQG(), s.g(paramdof1));
         AppMethodBeat.o(6849);
         return true;
       }
-      if (d.g.b.p.i(s.e(paramdni1), s.bPI().getString(s.f(paramdni1), null)))
+      if (d.g.b.p.i(s.e(paramdof1), s.bQG().getString(s.f(paramdof1), null)))
       {
-        s.bPI().removeValueForKey(s.f(paramdni1));
-        s.bPI().removeValueForKey(s.g(paramdni1));
+        s.bQG().removeValueForKey(s.f(paramdof1));
+        s.bQG().removeValueForKey(s.g(paramdof1));
       }
-      s.bPI().remove(s.e(paramdni1));
-      paramdni2 = s.h(paramdni2);
-      Set localSet = s.bPI().getStringSet(paramdni2, null);
+      s.bQG().remove(s.e(paramdof1));
+      paramdof2 = s.h(paramdof2);
+      Set localSet = s.bQG().getStringSet(paramdof2, null);
       if (localSet != null)
       {
-        localSet.remove(paramdni1.GsT);
-        s.bPI().putStringSet(paramdni2, localSet);
+        localSet.remove(paramdof1.GMr);
+        s.bQG().putStringSet(paramdof2, localSet);
       }
-      ad.e("MicroMsg.Preload.TmplInfoManager", "tmpl " + paramdni1.GsT + " is invalid");
+      ae.e("MicroMsg.Preload.TmplInfoManager", "tmpl " + paramdof1.GMr + " is invalid");
     }
     for (;;)
     {
       AppMethodBeat.o(6849);
       return false;
-      ad.i("MicroMsg.Preload.TmplInfoManager", "no tmpl file:" + paramdni1.GsT);
+      ae.i("MicroMsg.Preload.TmplInfoManager", "no tmpl file:" + paramdof1.GMr);
     }
   }
   
-  private static dni aE(int paramInt, String paramString)
+  private static dof aD(int paramInt, String paramString)
   {
     AppMethodBeat.i(6852);
-    dni localdni1 = zN(paramInt);
-    if (s.a(localdni1))
+    dof localdof1 = zW(paramInt);
+    if (s.a(localdof1))
     {
-      if ((s.XA(s.b(localdni1))) && ((d.g.b.p.i(localdni1.GsT, paramString) ^ true)))
+      if ((s.Yn(s.b(localdof1))) && ((d.g.b.p.i(localdof1.GMr, paramString) ^ true)))
       {
         AppMethodBeat.o(6852);
-        return localdni1;
+        return localdof1;
       }
-      Object localObject1 = s.bPI().getString(s.f(localdni1), null);
+      Object localObject1 = s.bQG().getString(s.f(localdof1), null);
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = new dni();
+        localObject2 = new dof();
         d.g.b.p.g(localObject1, "it");
-        localObject1 = a((dni)localObject2, paramInt, (String)localObject1);
-        if ((localObject1 != null) && (s.a((dni)localObject1)) && (!s.i((dni)localObject1)) && (s.XA(s.b((dni)localObject1))) && ((d.g.b.p.i(((dni)localObject1).GsT, paramString) ^ true)))
+        localObject1 = a((dof)localObject2, paramInt, (String)localObject1);
+        if ((localObject1 != null) && (s.a((dof)localObject1)) && (!s.i((dof)localObject1)) && (s.Yn(s.b((dof)localObject1))) && ((d.g.b.p.i(((dof)localObject1).GMr, paramString) ^ true)))
         {
           AppMethodBeat.o(6852);
           return localObject1;
         }
       }
-      localObject1 = s.bPI().getStringSet(s.h(localdni1), null);
+      localObject1 = s.bQG().getStringSet(s.h(localdof1), null);
       if (localObject1 != null)
       {
         localObject1 = (Iterable)localObject1;
         d.g.b.p.h(localObject1, "$this$sortedDescending");
-        localObject2 = d.b.f.MKM;
+        localObject2 = d.b.f.NhP;
         if (localObject2 == null)
         {
           paramString = new v("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
@@ -755,10 +754,10 @@ public final class b
             localObject2 = (String)((Iterator)localObject1).next();
             if ((d.g.b.p.i(localObject2, paramString) ^ true))
             {
-              dni localdni2 = new dni();
+              dof localdof2 = new dof();
               d.g.b.p.g(localObject2, "uid");
-              localObject2 = a(localdni2, paramInt, (String)localObject2);
-              if (a((dni)localObject2, localdni1))
+              localObject2 = a(localdof2, paramInt, (String)localObject2);
+              if (a((dof)localObject2, localdof1))
               {
                 AppMethodBeat.o(6852);
                 return localObject2;
@@ -768,47 +767,47 @@ public final class b
         }
       }
     }
-    paramString = new dni();
+    paramString = new dof();
     AppMethodBeat.o(6852);
     return paramString;
   }
   
-  private static boolean b(dni paramdni1, dni paramdni2)
+  private static boolean b(dof paramdof1, dof paramdof2)
   {
     AppMethodBeat.i(6850);
-    if ((d.g.b.p.i(paramdni1, paramdni2)) && (paramdni1.Version != 0))
+    if ((d.g.b.p.i(paramdof1, paramdof2)) && (paramdof1.Version != 0))
     {
       AppMethodBeat.o(6850);
       return true;
     }
-    int i = paramdni2.FXJ;
+    int i = paramdof2.Gqi;
     Object localObject;
-    if (ad.getLogLevel() == 0)
+    if (ae.getLogLevel() == 0)
     {
-      localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.ojh;
-      int j = h.a.bPt();
+      localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.oph;
+      int j = h.a.bQr();
       if (j > 0) {
         i = j;
       }
     }
     for (;;)
     {
-      if (paramdni1.Version < i)
+      if (paramdof1.Version < i)
       {
-        ad.e("MicroMsg.Preload.TmplInfoManager", "tmpl " + paramdni1.GsT + " version:" + paramdni1.Version + " < " + i);
+        ae.e("MicroMsg.Preload.TmplInfoManager", "tmpl " + paramdof1.GMr + " version:" + paramdof1.Version + " < " + i);
         AppMethodBeat.o(6850);
         return false;
       }
-      paramdni2 = paramdni2.HBs;
-      d.g.b.p.g(paramdni2, "standard.VersionControlList");
-      paramdni2 = ((Iterable)paramdni2).iterator();
-      while (paramdni2.hasNext())
+      paramdof2 = paramdof2.HVf;
+      d.g.b.p.g(paramdof2, "standard.VersionControlList");
+      paramdof2 = ((Iterable)paramdof2).iterator();
+      while (paramdof2.hasNext())
       {
-        localObject = (dnk)paramdni2.next();
-        if (d.g.b.p.i(((dnk)localObject).GsT, paramdni1.GsT))
+        localObject = (doh)paramdof2.next();
+        if (d.g.b.p.i(((doh)localObject).GMr, paramdof1.GMr))
         {
-          ad.i("MicroMsg.Preload.TmplInfoManager", "tmpl " + ((dnk)localObject).GsT + " matchControls in forceH5:" + ((dnk)localObject).HBw);
-          if (!((dnk)localObject).HBw)
+          ae.i("MicroMsg.Preload.TmplInfoManager", "tmpl " + ((doh)localObject).GMr + " matchControls in forceH5:" + ((doh)localObject).HVj);
+          if (!((doh)localObject).HVj)
           {
             AppMethodBeat.o(6850);
             return true;
@@ -822,55 +821,55 @@ public final class b
     }
   }
   
-  public static Integer[] bQf()
+  public static Integer[] bRg()
   {
     AppMethodBeat.i(6841);
-    Integer[] arrayOfInteger = (Integer[])olZ.getValue();
+    Integer[] arrayOfInteger = (Integer[])orP.getValue();
     AppMethodBeat.o(6841);
     return arrayOfInteger;
   }
   
-  public static final void bQg()
+  public static final void bRh()
   {
     AppMethodBeat.i(6855);
-    com.tencent.e.h.LTJ.f((Runnable)d.omi, "tmplPreload");
+    com.tencent.e.h.MqF.f((Runnable)d.orY, "tmplPreload");
     AppMethodBeat.o(6855);
   }
   
-  public static final String bQh()
+  public static final String bRi()
   {
     AppMethodBeat.i(6857);
-    String str = com.tencent.mm.loader.j.b.arM() + "webview_tmpl/";
-    Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.ojh;
-    if (h.a.bPs())
+    String str = com.tencent.mm.loader.j.b.asb() + "webview_tmpl/";
+    Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.oph;
+    if (h.a.bQq())
     {
-      str = com.tencent.mm.loader.j.b.arU();
+      str = com.tencent.mm.loader.j.b.asj();
       d.g.b.p.g(str, "CConstants.DATAROOT_SDCARD_PATH()");
     }
     localObject = str;
-    if (!d.n.n.nA(str, "/")) {
+    if (!d.n.n.nG(str, "/")) {
       localObject = str + "/";
     }
     str = (String)localObject + "tmpls/";
-    com.tencent.mm.sdk.platformtools.m.aLc(str);
+    com.tencent.mm.sdk.platformtools.n.aMy(str);
     AppMethodBeat.o(6857);
     return str;
   }
   
-  public static final String bQi()
+  public static final String bRj()
   {
     return "https://mp.weixin.qq.com/__tmpl__/";
   }
   
-  private static boolean c(String paramString, e parame)
+  private static boolean c(String paramString, com.tencent.mm.vfs.k paramk)
   {
     AppMethodBeat.i(175496);
-    if ((!bt.isNullOrNil(paramString)) && (d.g.b.p.i(paramString, com.tencent.mm.vfs.i.aPK(parame.getPath()))))
+    if ((!bu.isNullOrNil(paramString)) && (d.g.b.p.i(paramString, o.aRh(paramk.getPath()))))
     {
       AppMethodBeat.o(175496);
       return true;
     }
-    ad.e("MicroMsg.Preload.TmplInfoManager", "checkTmpl %s, MD5 not match", new Object[] { parame.getAbsolutePath() });
+    ae.e("MicroMsg.Preload.TmplInfoManager", "checkTmpl %s, MD5 not match", new Object[] { paramk.getAbsolutePath() });
     AppMethodBeat.o(175496);
     return false;
   }
@@ -878,14 +877,14 @@ public final class b
   public static final void clear()
   {
     AppMethodBeat.i(6845);
-    s.bPI().clear();
-    com.tencent.mm.vfs.i.cZ(bQh(), true);
-    com.tencent.mm.vfs.i.deleteDir(com.tencent.mm.loader.j.b.arM() + "/jscache/");
+    s.bQG().clear();
+    o.dd(bRi(), true);
+    o.deleteDir(com.tencent.mm.loader.j.b.asb() + "/jscache/");
     AppMethodBeat.o(6845);
   }
   
   /* Error */
-  private static boolean eQ(String paramString1, String paramString2)
+  private static boolean eT(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 6861
@@ -942,7 +941,7 @@ public final class b
     //   119: iconst_0
     //   120: aload 5
     //   122: aastore
-    //   123: invokestatic 960	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   123: invokestatic 960	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   126: goto -81 -> 45
     //   129: astore_1
     //   130: sipush 6861
@@ -957,7 +956,7 @@ public final class b
     //   147: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   150: aload_0
     //   151: athrow
-    //   152: new 190	com/tencent/mm/vfs/e
+    //   152: new 190	com/tencent/mm/vfs/k
     //   155: dup
     //   156: new 216	java/lang/StringBuilder
     //   159: dup
@@ -967,35 +966,35 @@ public final class b
     //   167: aload 5
     //   169: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   175: invokespecial 193	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   175: invokespecial 193	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
     //   178: astore 5
-    //   180: new 190	com/tencent/mm/vfs/e
+    //   180: new 190	com/tencent/mm/vfs/k
     //   183: dup
     //   184: aload 5
-    //   186: invokevirtual 1247	com/tencent/mm/vfs/e:getParent	()Ljava/lang/String;
-    //   189: invokespecial 193	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   186: invokevirtual 1247	com/tencent/mm/vfs/k:getParent	()Ljava/lang/String;
+    //   189: invokespecial 193	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
     //   192: astore 9
     //   194: aload 9
-    //   196: invokevirtual 197	com/tencent/mm/vfs/e:exists	()Z
+    //   196: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
     //   199: ifne +9 -> 208
     //   202: aload 9
-    //   204: invokevirtual 1250	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   204: invokevirtual 1250	com/tencent/mm/vfs/k:mkdirs	()Z
     //   207: pop
     //   208: aload 4
     //   210: invokevirtual 1251	java/util/zip/ZipEntry:isDirectory	()Z
     //   213: ifeq +20 -> 233
     //   216: aload 5
-    //   218: invokevirtual 197	com/tencent/mm/vfs/e:exists	()Z
+    //   218: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
     //   221: ifne -176 -> 45
     //   224: aload 5
-    //   226: invokevirtual 1254	com/tencent/mm/vfs/e:mkdir	()Z
+    //   226: invokevirtual 1254	com/tencent/mm/vfs/k:mkdir	()Z
     //   229: pop
     //   230: goto -185 -> 45
     //   233: aload 5
-    //   235: invokevirtual 197	com/tencent/mm/vfs/e:exists	()Z
+    //   235: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
     //   238: ifne +9 -> 247
     //   241: aload 5
-    //   243: invokevirtual 345	com/tencent/mm/vfs/e:createNewFile	()Z
+    //   243: invokevirtual 345	com/tencent/mm/vfs/k:createNewFile	()Z
     //   246: pop
     //   247: aload_0
     //   248: aload 4
@@ -1008,7 +1007,7 @@ public final class b
     //   265: new 1259	java/io/BufferedOutputStream
     //   268: dup
     //   269: aload 5
-    //   271: invokestatic 354	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   271: invokestatic 354	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
     //   274: invokespecial 1262	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   277: checkcast 356	java/io/Closeable
     //   280: astore 5
@@ -1021,14 +1020,14 @@ public final class b
     //   296: istore_2
     //   297: aload 8
     //   299: iload_2
-    //   300: putfield 365	d/g/b/y$d:MLT	I
+    //   300: putfield 365	d/g/b/y$d:NiW	I
     //   303: iload_2
     //   304: ifle +67 -> 371
     //   307: aload 10
     //   309: aload 7
     //   311: iconst_0
     //   312: aload 8
-    //   314: getfield 365	d/g/b/y$d:MLT	I
+    //   314: getfield 365	d/g/b/y$d:NiW	I
     //   317: invokevirtual 1263	java/io/BufferedOutputStream:write	([BII)V
     //   320: goto -31 -> 289
     //   323: astore_1
@@ -1059,12 +1058,12 @@ public final class b
     //   370: athrow
     //   371: aload 10
     //   373: invokevirtual 1266	java/io/BufferedOutputStream:flush	()V
-    //   376: getstatic 380	d/z:MKo	Ld/z;
+    //   376: getstatic 380	d/z:Nhr	Ld/z;
     //   379: astore 9
     //   381: aload 5
     //   383: aconst_null
     //   384: invokestatic 374	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   387: getstatic 380	d/z:MKo	Ld/z;
+    //   387: getstatic 380	d/z:Nhr	Ld/z;
     //   390: astore 5
     //   392: aload 4
     //   394: aconst_null
@@ -1144,29 +1143,29 @@ public final class b
     return PREFIX;
   }
   
-  public static final void j(dni paramdni)
+  public static final void j(dof paramdof)
   {
     AppMethodBeat.i(6847);
-    d.g.b.p.h(paramdni, "tmplInfo");
-    Object localObject1 = s.e(paramdni);
-    Object localObject2 = paramdni.GsT;
-    s.bPI().putString(s.zI(paramdni.nEf), (String)localObject2);
-    s.bPI().removeValueForKey(s.f(paramdni));
-    s.bPI().removeValueForKey(s.g(paramdni));
-    s.bPI().encode((String)localObject1, paramdni.toByteArray());
-    String str = s.h(paramdni);
-    ax localax = s.bPI();
-    localObject2 = s.bPI().getStringSet(str, null);
+    d.g.b.p.h(paramdof, "tmplInfo");
+    Object localObject1 = s.e(paramdof);
+    Object localObject2 = paramdof.GMr;
+    s.bQG().putString(s.zR(paramdof.nJA), (String)localObject2);
+    s.bQG().removeValueForKey(s.f(paramdof));
+    s.bQG().removeValueForKey(s.g(paramdof));
+    s.bQG().encode((String)localObject1, paramdof.toByteArray());
+    String str = s.h(paramdof);
+    ay localay = s.bQG();
+    localObject2 = s.bQG().getStringSet(str, null);
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = (Set)new HashSet();
     }
-    ((Set)localObject1).add(paramdni.GsT);
-    localax.putStringSet(str, (Set)localObject1);
+    ((Set)localObject1).add(paramdof.GMr);
+    localay.putStringSet(str, (Set)localObject1);
     AppMethodBeat.o(6847);
   }
   
-  private static final boolean k(dni paramdni)
+  private static final boolean k(dof paramdof)
   {
     boolean bool = false;
     for (;;)
@@ -1174,19 +1173,19 @@ public final class b
       try
       {
         AppMethodBeat.i(6854);
-        if (paramdni == null)
+        if (paramdof == null)
         {
-          ad.e("MicroMsg.Preload.TmplInfoManager", "isTmplInfoExist() tmplInfo is null, return false");
+          ae.e("MicroMsg.Preload.TmplInfoManager", "isTmplInfoExist() tmplInfo is null, return false");
           AppMethodBeat.o(6854);
           return bool;
         }
-        if (!s.a(paramdni))
+        if (!s.a(paramdof))
         {
-          ad.e("MicroMsg.Preload.TmplInfoManager", "isTmplInfoExist() tmplInfo is invalid, return false");
+          ae.e("MicroMsg.Preload.TmplInfoManager", "isTmplInfoExist() tmplInfo is invalid, return false");
           AppMethodBeat.o(6854);
           continue;
         }
-        if (zN(paramdni.nEf).Version == paramdni.Version) {
+        if (zW(paramdof.nJA).Version == paramdof.Version) {
           break label90;
         }
       }
@@ -1194,9 +1193,9 @@ public final class b
       AppMethodBeat.o(6854);
       continue;
       label90:
-      if (!s.XA(s.b(paramdni)))
+      if (!s.Yn(s.b(paramdof)))
       {
-        ad.w("MicroMsg.Preload.TmplInfoManager", "[isTmplInfoExist]file isn't exist, may be delete");
+        ae.w("MicroMsg.Preload.TmplInfoManager", "[isTmplInfoExist]file isn't exist, may be delete");
         AppMethodBeat.o(6854);
       }
       else
@@ -1207,15 +1206,15 @@ public final class b
     }
   }
   
-  private static String l(dni paramdni)
+  private static String l(dof paramdof)
   {
     AppMethodBeat.i(6858);
-    paramdni = "Type:" + paramdni.nEf + " Version:" + paramdni.Version + " CdnUrl:" + paramdni.FIi + " Md5:" + paramdni.Md5;
+    paramdof = "Type:" + paramdof.nJA + " Version:" + paramdof.Version + " CdnUrl:" + paramdof.GaE + " Md5:" + paramdof.Md5;
     AppMethodBeat.o(6858);
-    return paramdni;
+    return paramdof;
   }
   
-  private static String zL(int paramInt)
+  private static String zU(int paramInt)
   {
     AppMethodBeat.i(6842);
     String str = "_tmpl_download_time_".concat(String.valueOf(paramInt));
@@ -1223,97 +1222,97 @@ public final class b
     return str;
   }
   
-  public static final void zM(int paramInt)
+  public static final void zV(int paramInt)
   {
     AppMethodBeat.i(6846);
-    s.bPI().putLong("_check_time_colddown", paramInt * 1000);
+    s.bQG().putLong("_check_time_colddown", paramInt * 1000);
     AppMethodBeat.o(6846);
   }
   
-  public static final dni zN(int paramInt)
+  public static final dof zW(int paramInt)
   {
     AppMethodBeat.i(6851);
-    dni localdni = new dni();
-    String str = s.bPI().getString(s.zI(paramInt), null);
+    dof localdof = new dof();
+    String str = s.bQG().getString(s.zR(paramInt), null);
     if (str != null)
     {
       d.g.b.p.g(str, "uid");
-      a(localdni, paramInt, str);
+      a(localdof, paramInt, str);
     }
     AppMethodBeat.o(6851);
-    return localdni;
+    return localdof;
   }
   
-  public static final dnj zP(int paramInt)
+  public static final dog zY(int paramInt)
   {
-    AppMethodBeat.i(209981);
-    Object localObject2 = zO(paramInt);
-    if (!s.a((dni)localObject2))
+    AppMethodBeat.i(208969);
+    Object localObject2 = zX(paramInt);
+    if (!s.a((dof)localObject2))
     {
-      ad.e("MicroMsg.Preload.TmplInfoManager", "[createTmplParams]type:" + paramInt + " localTmplInfo is null");
-      com.tencent.mm.plugin.webview.g.a.ma(100);
-      AppMethodBeat.o(209981);
+      ae.e("MicroMsg.Preload.TmplInfoManager", "[createTmplParams]type:" + paramInt + " localTmplInfo is null");
+      com.tencent.mm.plugin.webview.g.a.md(100);
+      AppMethodBeat.o(208969);
       return null;
     }
-    Object localObject1 = s.c((dni)localObject2);
-    if (!s.XA((String)localObject1))
+    Object localObject1 = s.c((dof)localObject2);
+    if (!s.Yn((String)localObject1))
     {
-      ad.e("MicroMsg.Preload.TmplInfoManager", "[createTmplParams]filePath:" + (String)localObject1 + " is null");
-      com.tencent.mm.plugin.webview.g.a.gi(((dni)localObject2).HnC, 100);
-      AppMethodBeat.o(209981);
+      ae.e("MicroMsg.Preload.TmplInfoManager", "[createTmplParams]filePath:" + (String)localObject1 + " is null");
+      com.tencent.mm.plugin.webview.g.a.gi(((dof)localObject2).HHc, 100);
+      AppMethodBeat.o(208969);
       return null;
     }
-    dnj localdnj = new dnj();
-    localdnj.ojt = paramInt;
-    localdnj.version = ((dni)localObject2).Version;
-    localdnj.md5 = ((dni)localObject2).Md5;
-    localdnj.HBu = ((String)localObject1);
-    Object localObject3 = new StringBuilder("https://mp.weixin.qq.com/__tmpl__/").append(paramInt).append('_').append(((dni)localObject2).GsT).append(".html");
+    dog localdog = new dog();
+    localdog.opt = paramInt;
+    localdog.version = ((dof)localObject2).Version;
+    localdog.md5 = ((dof)localObject2).Md5;
+    localdog.HVh = ((String)localObject1);
+    Object localObject3 = new StringBuilder("https://mp.weixin.qq.com/__tmpl__/").append(paramInt).append('_').append(((dof)localObject2).GMr).append(".html");
     if ((d.g.b.p.i(PREFIX, "https://mp.weixin.qq.com/__tmpl__/") ^ true)) {}
     for (localObject1 = "?prefix=" + URLEncoder.encode(PREFIX);; localObject1 = "")
     {
-      localdnj.DNG = ((String)localObject1);
-      localdnj.reportId = ((dni)localObject2).HnC;
-      localdnj.zok = s.bPI().getLong(zL(((dni)localObject2).nEf), 0L);
-      localdnj.AFz = ((dni)localObject2).GsT;
-      localObject1 = ((dni)localObject2).HBq;
+      localdog.EfF = ((String)localObject1);
+      localdog.reportId = ((dof)localObject2).HHc;
+      localdog.zFz = s.bQG().getLong(zU(((dof)localObject2).nJA), 0L);
+      localdog.AXc = ((dof)localObject2).GMr;
+      localObject1 = ((dof)localObject2).HVd;
       d.g.b.p.g(localObject1, "tmplInfo.HttpHeaderList");
       localObject2 = (Iterable)localObject1;
       localObject1 = new StringBuilder();
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (dnh)((Iterator)localObject2).next();
-        localObject1 = ((StringBuilder)localObject1).append("\n" + ((dnh)localObject3).ujy + ':' + ((dnh)localObject3).yhw);
+        localObject3 = (doe)((Iterator)localObject2).next();
+        localObject1 = ((StringBuilder)localObject1).append("\n" + ((doe)localObject3).uuW + ':' + ((doe)localObject3).yxn);
         d.g.b.p.g(localObject1, "sb.append(\"\\n${header.Key}:${header.Value}\")");
       }
     }
-    localdnj.HBv = ((StringBuilder)localObject1).toString();
-    AppMethodBeat.o(209981);
-    return localdnj;
+    localdog.HVi = ((StringBuilder)localObject1).toString();
+    AppMethodBeat.o(208969);
+    return localdog;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager$DownloadResult;", "", "()V", "exception", "Ljava/lang/Exception;", "getException", "()Ljava/lang/Exception;", "setException", "(Ljava/lang/Exception;)V", "isZip", "", "()Z", "setZip", "(Z)V", "patchBase", "", "getPatchBase", "()Ljava/lang/String;", "setPatchBase", "(Ljava/lang/String;)V", "patchMD5", "getPatchMD5", "setPatchMD5", "success", "getSuccess", "setSuccess", "plugin-brandservice_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager$DownloadResult;", "", "()V", "exception", "Ljava/lang/Exception;", "getException", "()Ljava/lang/Exception;", "setException", "(Ljava/lang/Exception;)V", "isZip", "", "()Z", "setZip", "(Z)V", "patchBase", "", "getPatchBase", "()Ljava/lang/String;", "setPatchBase", "(Ljava/lang/String;)V", "patchMD5", "getPatchMD5", "setPatchMD5", "success", "getSuccess", "setSuccess", "plugin-brandservice_release"})
   public static final class a
   {
     Exception exception;
-    boolean oiD;
-    String ome;
-    String omf;
+    boolean ooD;
+    String orU;
+    String orV;
     boolean success;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "", "invoke", "()[Ljava/lang/Integer;"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "invoke", "()[Ljava/lang/Integer;"})
   static final class b
     extends q
     implements d.g.a.a<Integer[]>
   {
-    public static final b omg;
+    public static final b orW;
     
     static
     {
       AppMethodBeat.i(6828);
-      omg = new b();
+      orW = new b();
       AppMethodBeat.o(6828);
     }
     
@@ -1323,45 +1322,45 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "checkTmplVerRespCgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/CheckTmplVerResp;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "checkTmplVerRespCgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/CheckTmplVerResp;", "kotlin.jvm.PlatformType", "call"})
   static final class c<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<Void, a.a<yc>>
+    implements com.tencent.mm.vending.c.a<Void, a.a<yf>>
   {
     c(int paramInt, LinkedList paramLinkedList) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    public static final d omi;
+    public static final d orY;
     
     static
     {
       AppMethodBeat.i(6831);
-      omi = new d();
+      orY = new d();
       AppMethodBeat.o(6831);
     }
     
     public final void run()
     {
       AppMethodBeat.i(6830);
-      b.bQk();
+      b.bRl();
       AppMethodBeat.o(6830);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"isIncludeFile", "", "Ljava/util/ArrayList;", "", "file", "Lcom/tencent/mm/vfs/VFSFile;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"isIncludeFile", "", "Ljava/util/ArrayList;", "", "file", "Lcom/tencent/mm/vfs/VFSFile;", "invoke"})
   static final class e
     extends q
-    implements d.g.a.m<ArrayList<String>, e, Boolean>
+    implements d.g.a.m<ArrayList<String>, com.tencent.mm.vfs.k, Boolean>
   {
-    public static final e omj;
+    public static final e orZ;
     
     static
     {
       AppMethodBeat.i(6834);
-      omj = new e();
+      orZ = new e();
       AppMethodBeat.o(6834);
     }
     
@@ -1370,35 +1369,35 @@ public final class b
       super();
     }
     
-    public static boolean a(ArrayList<String> paramArrayList, e parame)
+    public static boolean a(ArrayList<String> paramArrayList, com.tencent.mm.vfs.k paramk)
     {
       AppMethodBeat.i(6833);
       d.g.b.p.h(paramArrayList, "$this$isIncludeFile");
-      d.g.b.p.h(parame, "file");
-      StringBuilder localStringBuilder = new StringBuilder().append(parame.getAbsolutePath());
-      if (parame.isDirectory()) {}
-      for (parame = "/";; parame = "")
+      d.g.b.p.h(paramk, "file");
+      StringBuilder localStringBuilder = new StringBuilder().append(paramk.getAbsolutePath());
+      if (paramk.isDirectory()) {}
+      for (paramk = "/";; paramk = "")
       {
-        boolean bool = paramArrayList.contains(parame);
+        boolean bool = paramArrayList.contains(paramk);
         AppMethodBeat.o(6833);
         return bool;
       }
     }
   }
   
-  @d.d.b.a.f(c="com.tencent.mm.plugin.brandservice.ui.timeline.preload.resdownload.LocalTmplInfoManager$downloadTmpl$1", f="LocalTmplInfoManager.kt", gfL={585}, m="invokeSuspend")
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.d.b.a.f(c="com.tencent.mm.plugin.brandservice.ui.timeline.preload.resdownload.LocalTmplInfoManager$downloadTmpl$1", f="LocalTmplInfoManager.kt", gkn={585}, m="invokeSuspend")
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class f
     extends d.d.b.a.j
     implements d.g.a.m<ah, d.d.d<? super z>, Object>
   {
     int label;
-    private ah nWQ;
-    Object nWR;
-    Object olg;
-    Object olh;
+    Object ocA;
+    private ah ocz;
+    Object oqW;
+    Object oqX;
     
-    f(dni paramdni, int paramInt, d.g.a.a parama, d.d.d paramd)
+    f(dof paramdof, int paramInt, d.g.a.a parama, d.d.d paramd)
     {
       super();
     }
@@ -1407,16 +1406,16 @@ public final class b
     {
       AppMethodBeat.i(6836);
       d.g.b.p.h(paramd, "completion");
-      paramd = new f(this.omk, this.nVJ, this.oml, paramd);
-      paramd.nWQ = ((ah)paramObject);
+      paramd = new f(this.osa, this.obr, this.osb, paramd);
+      paramd.ocz = ((ah)paramObject);
       AppMethodBeat.o(6836);
       return paramd;
     }
     
-    public final Object cQ(Object paramObject)
+    public final Object cR(Object paramObject)
     {
       AppMethodBeat.i(6835);
-      d.d.a.a locala = d.d.a.a.MLc;
+      d.d.a.a locala = d.d.a.a.Nif;
       int i;
       switch (this.label)
       {
@@ -1425,23 +1424,23 @@ public final class b
         AppMethodBeat.o(6835);
         throw paramObject;
       case 0: 
-        localObject2 = this.nWQ;
+        localObject2 = this.ocz;
         paramObject = new HashMap();
-        localObject1 = this.omk.FIi;
-        Object localObject3 = this.omk.HBq;
+        localObject1 = this.osa.GaE;
+        Object localObject3 = this.osa.HVd;
         d.g.b.p.g(localObject3, "tmplInfo.HttpHeaderList");
         localObject3 = ((Iterable)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Object localObject4 = (dnh)((Iterator)localObject3).next();
-          Object localObject5 = (CharSequence)((dnh)localObject4).ujy;
+          Object localObject4 = (doe)((Iterator)localObject3).next();
+          Object localObject5 = (CharSequence)((doe)localObject4).uuW;
           if ((localObject5 == null) || (((CharSequence)localObject5).length() == 0))
           {
             i = 1;
             if (i != 0) {
               continue;
             }
-            localObject5 = (CharSequence)((dnh)localObject4).yhw;
+            localObject5 = (CharSequence)((doe)localObject4).yxn;
             if ((localObject5 != null) && (((CharSequence)localObject5).length() != 0)) {
               break label242;
             }
@@ -1449,9 +1448,9 @@ public final class b
           for (i = 1; i == 0; i = 0)
           {
             localObject5 = (Map)paramObject;
-            String str = ((dnh)localObject4).ujy;
+            String str = ((doe)localObject4).uuW;
             d.g.b.p.g(str, "it.Key");
-            localObject4 = ((dnh)localObject4).yhw;
+            localObject4 = ((doe)localObject4).yxn;
             d.g.b.p.g(localObject4, "it.Value");
             ((Map)localObject5).put(str, localObject4);
             break;
@@ -1459,14 +1458,14 @@ public final class b
             break label153;
           }
         }
-        if (!this.omk.HBr) {
+        if (!this.osa.HVe) {
           break label396;
         }
-        localObject3 = b.omd;
+        localObject3 = b.orT;
         d.g.b.p.g(localObject1, "downloadUrl");
-        this.nWR = localObject2;
-        this.olg = paramObject;
-        this.olh = localObject1;
+        this.ocA = localObject2;
+        this.oqW = paramObject;
+        this.oqX = localObject1;
         this.label = 1;
         localObject2 = b.a((String)localObject1, paramObject, this);
         localObject1 = localObject2;
@@ -1479,7 +1478,7 @@ public final class b
       case 1: 
         label153:
         label242:
-        localObject2 = (HashMap)this.olg;
+        localObject2 = (HashMap)this.oqW;
         localObject1 = paramObject;
         paramObject = localObject2;
       }
@@ -1492,12 +1491,12 @@ public final class b
         if (i != 0) {
           break label404;
         }
-        localObject2 = b.omd;
-        b.a((String)localObject1, this.omk, paramObject, this.nVJ, this.oml);
+        localObject2 = b.orT;
+        b.a((String)localObject1, this.osa, paramObject, this.obr, this.osb);
       }
       for (;;)
       {
-        paramObject = z.MKo;
+        paramObject = z.Nhr;
         AppMethodBeat.o(6835);
         return paramObject;
         label396:
@@ -1506,30 +1505,30 @@ public final class b
         break label358;
         label404:
         paramObject = new StringBuilder("url is null or empty:");
-        localObject1 = b.omd;
-        ad.e("MicroMsg.Preload.TmplInfoManager", b.m(this.omk));
+        localObject1 = b.orT;
+        ae.e("MicroMsg.Preload.TmplInfoManager", b.m(this.osa));
       }
     }
     
     public final Object p(Object paramObject1, Object paramObject2)
     {
       AppMethodBeat.i(6837);
-      paramObject1 = ((f)a(paramObject1, (d.d.d)paramObject2)).cQ(z.MKo);
+      paramObject1 = ((f)a(paramObject1, (d.d.d)paramObject2)).cR(z.Nhr);
       AppMethodBeat.o(6837);
       return paramObject1;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager$getUrlWithA8key$2$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/resdownload/LocalTmplInfoManager$getUrlWithA8key$2$1"})
   static final class g
-    implements com.tencent.mm.al.f
+    implements com.tencent.mm.ak.f
   {
     g(d.d.d paramd, String paramString, HashMap paramHashMap) {}
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
     {
       AppMethodBeat.i(6838);
-      ad.i("MicroMsg.Preload.TmplInfoManager", "[processTmplInfo]errType:%d, errCode:%dm errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ae.i("MicroMsg.Preload.TmplInfoManager", "[processTmplInfo]errType:%d, errCode:%dm errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       paramn.setHasCallbackToQueue(true);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
@@ -1542,13 +1541,13 @@ public final class b
           }
           catch (Exception paramString)
           {
-            ad.e("MicroMsg.Preload.TmplInfoManager", "NetSceneGetA8Key ex " + paramString.getMessage());
+            ae.e("MicroMsg.Preload.TmplInfoManager", "NetSceneGetA8Key ex " + paramString.getMessage());
             AppMethodBeat.o(6838);
             return;
           }
         }
-        paramString = (com.tencent.mm.modelsimple.k)paramn;
-        paramn = paramString.aKy();
+        paramString = (com.tencent.mm.modelsimple.l)paramn;
+        paramn = paramString.aKV();
         d.g.b.p.g(paramn, "netSceneGetA8Key.httpHeader");
         paramn = ((Iterable)paramn).iterator();
       }
@@ -1565,8 +1564,8 @@ public final class b
         Object localObject2;
         if (paramn.hasNext())
         {
-          localObject1 = (bos)paramn.next();
-          localObject2 = (CharSequence)((bos)localObject1).ujy;
+          localObject1 = (bpk)paramn.next();
+          localObject2 = (CharSequence)((bpk)localObject1).uuW;
           if (localObject2 == null) {
             break label335;
           }
@@ -1577,7 +1576,7 @@ public final class b
           if (paramInt1 != 0) {
             break label348;
           }
-          localObject2 = (CharSequence)((bos)localObject1).yhw;
+          localObject2 = (CharSequence)((bpk)localObject1).yxn;
           if (localObject2 == null) {
             break label340;
           }
@@ -1591,22 +1590,22 @@ public final class b
           if (paramInt1 != 0) {
             break label353;
           }
-          localObject2 = (Map)this.omm;
-          String str = ((bos)localObject1).ujy;
+          localObject2 = (Map)this.osc;
+          String str = ((bpk)localObject1).uuW;
           d.g.b.p.g(str, "it.Key");
-          localObject1 = ((bos)localObject1).yhw;
+          localObject1 = ((bpk)localObject1).yxn;
           d.g.b.p.g(localObject1, "it.Value");
           ((Map)localObject2).put(str, localObject1);
           break;
-          paramn = this.okX;
-          paramString = paramString.aKr();
-          localObject1 = d.p.MKe;
-          paramn.eN(d.p.eL(paramString));
+          paramn = this.oqN;
+          paramString = paramString.aKO();
+          localObject1 = d.p.Nhh;
+          paramn.eQ(d.p.eO(paramString));
           AppMethodBeat.o(6838);
           return;
-          paramString = this.okX;
-          paramn = d.p.MKe;
-          paramString.eN(d.p.eL(""));
+          paramString = this.oqN;
+          paramn = d.p.Nhh;
+          paramString.eQ(d.p.eO(""));
           AppMethodBeat.o(6838);
           return;
           paramInt1 = 1;
@@ -1622,7 +1621,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class h
     extends q
     implements d.g.a.a<z>

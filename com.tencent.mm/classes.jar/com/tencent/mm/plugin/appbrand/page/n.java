@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.p;
 public final class n
   extends p
 {
-  private static final int CTRL_INDEX = -2;
-  private static final String NAME = "onAppRunningStatusChange";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "onPageReload";
 }
 
 

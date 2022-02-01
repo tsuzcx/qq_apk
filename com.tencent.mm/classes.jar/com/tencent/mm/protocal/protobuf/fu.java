@@ -3,17 +3,17 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fu
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FxX;
-  public int FxY;
-  public int FxZ;
-  public int Fya;
-  public int Fyb;
-  public String Fyc;
-  public int Fyd;
+  public String FQA;
+  public int FQB;
+  public int FQv;
+  public int FQw;
+  public int FQx;
+  public int FQy;
+  public int FQz;
   public int height;
-  public long ood;
+  public long otU;
   public String url;
   public int width;
   
@@ -26,18 +26,18 @@ public final class fu
       if (this.url != null) {
         paramVarArgs.d(1, this.url);
       }
-      paramVarArgs.aS(2, this.FxX);
-      paramVarArgs.aS(3, this.FxY);
-      paramVarArgs.aY(4, this.ood);
+      paramVarArgs.aS(2, this.FQv);
+      paramVarArgs.aS(3, this.FQw);
+      paramVarArgs.aZ(4, this.otU);
       paramVarArgs.aS(5, this.width);
       paramVarArgs.aS(6, this.height);
-      paramVarArgs.aS(10, this.FxZ);
-      paramVarArgs.aS(11, this.Fya);
-      paramVarArgs.aS(12, this.Fyb);
-      if (this.Fyc != null) {
-        paramVarArgs.d(13, this.Fyc);
+      paramVarArgs.aS(10, this.FQx);
+      paramVarArgs.aS(11, this.FQy);
+      paramVarArgs.aS(12, this.FQz);
+      if (this.FQA != null) {
+        paramVarArgs.d(13, this.FQA);
       }
-      paramVarArgs.aS(15, this.Fyd);
+      paramVarArgs.aS(15, this.FQB);
       AppMethodBeat.o(103201);
       return 0;
     }
@@ -49,20 +49,20 @@ public final class fu
     label686:
     for (paramInt = f.a.a.b.b.a.e(1, this.url) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.FxX) + f.a.a.b.b.a.bz(3, this.FxY) + f.a.a.b.b.a.p(4, this.ood) + f.a.a.b.b.a.bz(5, this.width) + f.a.a.b.b.a.bz(6, this.height) + f.a.a.b.b.a.bz(10, this.FxZ) + f.a.a.b.b.a.bz(11, this.Fya) + f.a.a.b.b.a.bz(12, this.Fyb);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.FQv) + f.a.a.b.b.a.bz(3, this.FQw) + f.a.a.b.b.a.p(4, this.otU) + f.a.a.b.b.a.bz(5, this.width) + f.a.a.b.b.a.bz(6, this.height) + f.a.a.b.b.a.bz(10, this.FQx) + f.a.a.b.b.a.bz(11, this.FQy) + f.a.a.b.b.a.bz(12, this.FQz);
       paramInt = i;
-      if (this.Fyc != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.Fyc);
+      if (this.FQA != null) {
+        paramInt = i + f.a.a.b.b.a.e(13, this.FQA);
       }
-      i = f.a.a.b.b.a.bz(15, this.Fyd);
+      i = f.a.a.b.b.a.bz(15, this.FQB);
       AppMethodBeat.o(103201);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(103201);
@@ -82,47 +82,47 @@ public final class fu
           AppMethodBeat.o(103201);
           return -1;
         case 1: 
-          localfu.url = locala.NPN.readString();
+          localfu.url = locala.OmT.readString();
           AppMethodBeat.o(103201);
           return 0;
         case 2: 
-          localfu.FxX = locala.NPN.zc();
+          localfu.FQv = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 3: 
-          localfu.FxY = locala.NPN.zc();
+          localfu.FQw = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 4: 
-          localfu.ood = locala.NPN.zd();
+          localfu.otU = locala.OmT.zd();
           AppMethodBeat.o(103201);
           return 0;
         case 5: 
-          localfu.width = locala.NPN.zc();
+          localfu.width = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 6: 
-          localfu.height = locala.NPN.zc();
+          localfu.height = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 10: 
-          localfu.FxZ = locala.NPN.zc();
+          localfu.FQx = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 11: 
-          localfu.Fya = locala.NPN.zc();
+          localfu.FQy = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 12: 
-          localfu.Fyb = locala.NPN.zc();
+          localfu.FQz = locala.OmT.zc();
           AppMethodBeat.o(103201);
           return 0;
         case 13: 
-          localfu.Fyc = locala.NPN.readString();
+          localfu.FQA = locala.OmT.readString();
           AppMethodBeat.o(103201);
           return 0;
         }
-        localfu.Fyd = locala.NPN.zc();
+        localfu.FQB = locala.OmT.zc();
         AppMethodBeat.o(103201);
         return 0;
       }
@@ -133,7 +133,7 @@ public final class fu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fu
  * JD-Core Version:    0.7.0.1
  */

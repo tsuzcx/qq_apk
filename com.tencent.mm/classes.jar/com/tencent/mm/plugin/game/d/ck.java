@@ -1,72 +1,43 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class ck
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Title;
-  public String ufb;
-  public String ufg;
+  public String uuq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41805);
+    AppMethodBeat.i(221891);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ufg == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: IconURL");
-        AppMethodBeat.o(41805);
-        throw paramVarArgs;
+      if (this.uuq != null) {
+        paramVarArgs.d(1, this.uuq);
       }
-      if (this.ufg != null) {
-        paramVarArgs.d(1, this.ufg);
-      }
-      if (this.Title != null) {
-        paramVarArgs.d(2, this.Title);
-      }
-      if (this.ufb != null) {
-        paramVarArgs.d(3, this.ufb);
-      }
-      AppMethodBeat.o(41805);
+      AppMethodBeat.o(221891);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ufg == null) {
-        break label382;
+      if (this.uuq == null) {
+        break label213;
       }
     }
-    label382:
-    for (int i = f.a.a.b.b.a.e(1, this.ufg) + 0;; i = 0)
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.uuq) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.Title != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
-      }
-      i = paramInt;
-      if (this.ufb != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ufb);
-      }
-      AppMethodBeat.o(41805);
-      return i;
+      AppMethodBeat.o(221891);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.ufg == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: IconURL");
-          AppMethodBeat.o(41805);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41805);
+        AppMethodBeat.o(221891);
         return 0;
       }
       if (paramInt == 3)
@@ -76,22 +47,14 @@ public final class ck
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41805);
+          AppMethodBeat.o(221891);
           return -1;
-        case 1: 
-          localck.ufg = locala.NPN.readString();
-          AppMethodBeat.o(41805);
-          return 0;
-        case 2: 
-          localck.Title = locala.NPN.readString();
-          AppMethodBeat.o(41805);
-          return 0;
         }
-        localck.ufb = locala.NPN.readString();
-        AppMethodBeat.o(41805);
+        localck.uuq = locala.OmT.readString();
+        AppMethodBeat.o(221891);
         return 0;
       }
-      AppMethodBeat.o(41805);
+      AppMethodBeat.o(221891);
       return -1;
     }
   }

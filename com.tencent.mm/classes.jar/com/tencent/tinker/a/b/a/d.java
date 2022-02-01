@@ -4,28 +4,28 @@ import com.tencent.tinker.a.a.j;
 
 public final class d
 {
-  private final g Meo;
+  private final g MBl;
   
   public d(g paramg)
   {
-    this.Meo = paramg;
+    this.MBl = paramg;
   }
   
   public final void a(e parame)
   {
-    Object localObject = this.Meo;
-    ((a)localObject).Mel.mSize = 0;
+    Object localObject = this.MBl;
+    ((a)localObject).MBi.mSize = 0;
     ((a)localObject).aoY = 0;
     for (;;)
     {
-      localObject = this.Meo;
-      if (((a)localObject).aoY < ((g)localObject).Met.length) {}
+      localObject = this.MBl;
+      if (((a)localObject).aoY < ((g)localObject).MBq.length) {}
       int i1;
       int n;
       for (int i = 1; i != 0; i = 0)
       {
-        i1 = this.Meo.aoY;
-        n = this.Meo.read();
+        i1 = this.MBl.aoY;
+        n = this.MBl.read();
         j = n & 0xFF;
         if (j != 0)
         {
@@ -39,73 +39,73 @@ public final class d
         switch (i)
         {
         default: 
-          throw new IllegalStateException("Unknown opcode: " + com.tencent.tinker.a.b.b.a.ahQ(i));
+          throw new IllegalStateException("Unknown opcode: " + com.tencent.tinker.a.b.b.a.aiz(i));
         }
       }
       parame.a(i1, n, 0, 1, 0, 0L);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (byte)b.ahK(n), 0L);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (byte)b.ait(n), 0L);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, b.ahK(n));
+      parame.a(i1, n & 0xFF, 0, 1, 0, b.ait(n));
       continue;
       parame.a(i1, n & 0xFF, 0, 1, 0, (n >> 12 & 0xF) << 28 >> 28, n >> 8 & 0xF);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.ahK(n));
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.ait(n));
       continue;
       parame.a(i1, n & 0xFF, 0, 1, 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
       continue;
-      i = b.ahK(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Meo.read(), i);
+      i = b.ait(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.MBl.read(), i);
       continue;
       i = n & 0xFF;
-      int j = b.ahK(n);
-      parame.a(i1, i, this.Meo.read(), b.ahN(i), 0, 0L, j);
+      int j = b.ait(n);
+      parame.a(i1, i, this.MBl.read(), b.aiw(i), 0, 0L, j);
       continue;
       j = n & 0xFF;
-      int k = b.ahK(n);
-      long l = (short)this.Meo.read();
+      int k = b.ait(n);
+      long l = (short)this.MBl.read();
       if (j == 21) {}
       for (i = 16;; i = 48)
       {
         parame.a(i1, j, 0, 1, 0, l << i, k);
         break;
       }
-      i = b.ahK(n);
-      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.Meo.read(), i);
+      i = b.ait(n);
+      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.MBl.read(), i);
       continue;
-      i = b.ahK(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Meo.read(), 0L, i);
+      i = b.ait(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.MBl.read(), 0L, i);
       continue;
-      i = b.ahK(n);
-      j = this.Meo.read();
-      parame.a(i1, n & 0xFF, 0, 1, 0, (byte)b.ahK(j), i, j & 0xFF);
-      continue;
-      i = n & 0xFF;
-      parame.a(i1, i, this.Meo.read(), b.ahN(i), 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.Meo.read(), n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Meo.read(), 0L, n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.ahK(n), this.Meo.read());
-      continue;
-      i = b.ahK(n);
-      j = this.Meo.read();
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, i, j & 0xFF, b.ahK(j));
-      continue;
-      i = b.ahK(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + this.Meo.readInt(), i);
+      i = b.ait(n);
+      j = this.MBl.read();
+      parame.a(i1, n & 0xFF, 0, 1, 0, (byte)b.ait(j), i, j & 0xFF);
       continue;
       i = n & 0xFF;
-      j = b.ahK(n);
-      parame.a(i1, i, this.Meo.readInt(), b.ahN(i), 0, 0L, j);
+      parame.a(i1, i, this.MBl.read(), b.aiw(i), 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
       continue;
-      i = b.ahK(n);
-      parame.a(i1, n & 0xFF, 0, 1, 0, this.Meo.readInt(), i);
+      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.MBl.read(), n >> 8 & 0xF, n >> 12 & 0xF);
+      continue;
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.MBl.read(), 0L, n >> 8 & 0xF, n >> 12 & 0xF);
+      continue;
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.ait(n), this.MBl.read());
+      continue;
+      i = b.ait(n);
+      j = this.MBl.read();
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, i, j & 0xFF, b.ait(j));
+      continue;
+      i = b.ait(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + this.MBl.readInt(), i);
       continue;
       i = n & 0xFF;
-      j = b.ahK(n);
-      k = i1 + this.Meo.readInt();
+      j = b.ait(n);
+      parame.a(i1, i, this.MBl.readInt(), b.aiw(i), 0, 0L, j);
+      continue;
+      i = b.ait(n);
+      parame.a(i1, n & 0xFF, 0, 1, 0, this.MBl.readInt(), i);
+      continue;
+      i = n & 0xFF;
+      j = b.ait(n);
+      k = i1 + this.MBl.readInt();
       switch (i)
       {
       }
@@ -113,22 +113,22 @@ public final class d
       {
         parame.a(i1, i, 0, 1, k, 0L, j);
         break;
-        this.Meo.la(k + 1, i1);
+        this.MBl.lh(k + 1, i1);
       }
-      i = b.ahK(n);
-      j = this.Meo.read();
-      k = this.Meo.read();
+      i = b.ait(n);
+      j = this.MBl.read();
+      k = this.MBl.read();
       parame.a(i1, n & 0xFF, 0, 1, 0, i, j, k);
       continue;
       i = n & 0xFF;
       j = n >> 12 & 0xF;
-      k = this.Meo.read();
-      int i4 = this.Meo.read();
+      k = this.MBl.read();
+      int i4 = this.MBl.read();
       int m = i4 & 0xF;
       int i2 = i4 >> 4 & 0xF;
       int i3 = i4 >> 8 & 0xF;
       i4 = i4 >> 12 & 0xF;
-      int i5 = b.ahN(i);
+      int i5 = b.aiw(i);
       switch (j)
       {
       default: 
@@ -152,16 +152,16 @@ public final class d
         parame.a(i1, i, k, i5, 0, 0L, m, i2, i3, i4, n >> 8 & 0xF);
         continue;
         i = n & 0xFF;
-        j = b.ahK(n);
-        k = this.Meo.read();
-        m = this.Meo.read();
-        parame.b(i1, i, k, b.ahN(i), 0, 0L, m, j);
+        j = b.ait(n);
+        k = this.MBl.read();
+        m = this.MBl.read();
+        parame.b(i1, i, k, b.aiw(i), 0, 0L, m, j);
         continue;
-        i = b.ahK(n);
-        parame.a(i1, n & 0xFF, 0, 1, 0, this.Meo.readLong(), i);
+        i = b.ait(n);
+        parame.a(i1, n & 0xFF, 0, 1, 0, this.MBl.readLong(), i);
         continue;
-        i = this.Meo.read();
-        i2 = this.Meo.readInt();
+        i = this.MBl.read();
+        i2 = this.MBl.readInt();
         switch (i)
         {
         case 3: 
@@ -169,7 +169,7 @@ public final class d
         case 6: 
         case 7: 
         default: 
-          throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.ahR(i));
+          throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.aiA(i));
         case 1: 
           localObject = new byte[i2];
           i = 0;
@@ -179,7 +179,7 @@ public final class d
           {
             m = i;
             if (j != 0) {
-              m = this.Meo.read();
+              m = this.MBl.read();
             }
             localObject[k] = ((byte)(m & 0xFF));
             k += 1;
@@ -199,7 +199,7 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = ((short)this.Meo.read());
+            localObject[i] = ((short)this.MBl.read());
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 2);
@@ -209,7 +209,7 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = this.Meo.readInt();
+            localObject[i] = this.MBl.readInt();
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 4);
@@ -219,37 +219,37 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = this.Meo.readLong();
+            localObject[i] = this.MBl.readLong();
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 8);
           continue;
-          j = this.Meo.fYq();
-          k = this.Meo.read();
-          m = this.Meo.readInt();
+          j = this.MBl.gcP();
+          k = this.MBl.read();
+          m = this.MBl.readInt();
           localObject = new int[k];
           i = 0;
           while (i < k)
           {
-            localObject[i] = (this.Meo.readInt() + j);
+            localObject[i] = (this.MBl.readInt() + j);
             i += 1;
           }
           parame.a(i1, n, m, (int[])localObject);
           continue;
-          j = this.Meo.fYq();
-          k = this.Meo.read();
+          j = this.MBl.gcP();
+          k = this.MBl.read();
           localObject = new int[k];
           int[] arrayOfInt = new int[k];
           i = 0;
           while (i < k)
           {
-            localObject[i] = this.Meo.readInt();
+            localObject[i] = this.MBl.readInt();
             i += 1;
           }
           i = 0;
           while (i < k)
           {
-            arrayOfInt[i] = (this.Meo.readInt() + j);
+            arrayOfInt[i] = (this.MBl.readInt() + j);
             i += 1;
           }
           parame.a(i1, n, (int[])localObject, arrayOfInt);

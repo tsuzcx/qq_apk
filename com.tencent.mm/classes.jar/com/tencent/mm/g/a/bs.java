@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bs
   extends b
 {
-  public a dmI;
+  public a dnK;
   
   public bs()
   {
@@ -16,8 +16,8 @@ public final class bs
   private bs(byte paramByte)
   {
     AppMethodBeat.i(114791);
-    this.dmI = new a();
-    this.IbR = false;
+    this.dnK = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(114791);
   }

@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public abstract interface c
 {
-  public abstract void AY(int paramInt);
+  public abstract void Bk(int paramInt);
   
   public abstract void a(a parama);
   
@@ -13,7 +13,9 @@ public abstract interface c
   
   public abstract void ap(JSONObject paramJSONObject);
   
-  public abstract boolean bZT();
+  public abstract boolean cbi();
+  
+  public abstract int getHeight();
   
   public abstract int getMemberId();
   
@@ -21,11 +23,13 @@ public abstract interface c
   
   public abstract int getViewId();
   
+  public abstract int getWidth();
+  
   public abstract void uint();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c
  * JD-Core Version:    0.7.0.1
  */

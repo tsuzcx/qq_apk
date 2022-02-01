@@ -31,7 +31,7 @@ public final class c
     return str;
   }
   
-  public final void w(Runnable paramRunnable)
+  public final void u(Runnable paramRunnable)
   {
     AppMethodBeat.i(74925);
     a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);

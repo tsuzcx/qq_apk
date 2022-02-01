@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ak
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String code;
   public String fileid;
@@ -11,11 +11,11 @@ public final class ak
   public String name;
   public int size;
   public String type;
-  public String xcP;
+  public String xsG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215225);
+    AppMethodBeat.i(217971);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
@@ -29,8 +29,8 @@ public final class ak
       if (this.type != null) {
         paramVarArgs.d(4, this.type);
       }
-      if (this.xcP != null) {
-        paramVarArgs.d(5, this.xcP);
+      if (this.xsG != null) {
+        paramVarArgs.d(5, this.xsG);
       }
       if (this.key != null) {
         paramVarArgs.d(6, this.key);
@@ -38,7 +38,7 @@ public final class ak
       if (this.code != null) {
         paramVarArgs.d(7, this.code);
       }
-      AppMethodBeat.o(215225);
+      AppMethodBeat.o(217971);
       return 0;
     }
     if (paramInt == 1) {
@@ -59,8 +59,8 @@ public final class ak
         paramInt = i + f.a.a.b.b.a.e(4, this.type);
       }
       i = paramInt;
-      if (this.xcP != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.xcP);
+      if (this.xsG != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.xsG);
       }
       paramInt = i;
       if (this.key != null) {
@@ -70,17 +70,17 @@ public final class ak
       if (this.code != null) {
         i = paramInt + f.a.a.b.b.a.e(7, this.code);
       }
-      AppMethodBeat.o(215225);
+      AppMethodBeat.o(217971);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(215225);
+        AppMethodBeat.o(217971);
         return 0;
       }
       if (paramInt == 3)
@@ -90,38 +90,38 @@ public final class ak
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(215225);
+          AppMethodBeat.o(217971);
           return -1;
         case 1: 
-          localak.fileid = locala.NPN.readString();
-          AppMethodBeat.o(215225);
+          localak.fileid = locala.OmT.readString();
+          AppMethodBeat.o(217971);
           return 0;
         case 2: 
-          localak.name = locala.NPN.readString();
-          AppMethodBeat.o(215225);
+          localak.name = locala.OmT.readString();
+          AppMethodBeat.o(217971);
           return 0;
         case 3: 
-          localak.size = locala.NPN.zc();
-          AppMethodBeat.o(215225);
+          localak.size = locala.OmT.zc();
+          AppMethodBeat.o(217971);
           return 0;
         case 4: 
-          localak.type = locala.NPN.readString();
-          AppMethodBeat.o(215225);
+          localak.type = locala.OmT.readString();
+          AppMethodBeat.o(217971);
           return 0;
         case 5: 
-          localak.xcP = locala.NPN.readString();
-          AppMethodBeat.o(215225);
+          localak.xsG = locala.OmT.readString();
+          AppMethodBeat.o(217971);
           return 0;
         case 6: 
-          localak.key = locala.NPN.readString();
-          AppMethodBeat.o(215225);
+          localak.key = locala.OmT.readString();
+          AppMethodBeat.o(217971);
           return 0;
         }
-        localak.code = locala.NPN.readString();
-        AppMethodBeat.o(215225);
+        localak.code = locala.OmT.readString();
+        AppMethodBeat.o(217971);
         return 0;
       }
-      AppMethodBeat.o(215225);
+      AppMethodBeat.o(217971);
       return -1;
     }
   }

@@ -2,33 +2,33 @@ package com.tencent.mm.sticker.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a.c;
-import com.tencent.mm.protocal.protobuf.bty;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bus;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.o;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/model/LensInfoMemCache;", "", "()V", "Expired", "", "TAG", "", "infoMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "invalidList", "get", "lensId", "isInvalid", "", "markInvalid", "", "remove", "update", "info", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/model/LensInfoMemCache;", "", "()V", "Expired", "", "TAG", "", "infoMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "invalidList", "get", "lensId", "isInvalid", "", "markInvalid", "", "remove", "update", "info", "plugin-sticker_release"})
 public final class a
 {
-  private static final c<String, o<bty, Long>> ImU;
-  private static final c<String, Long> ImV;
-  public static final a ImW;
+  private static final c<String, o<bus, Long>> IHf;
+  private static final c<String, Long> IHg;
+  public static final a IHh;
   private static final String TAG = "MicroMsg.LensInfoMemCache";
   
   static
   {
     AppMethodBeat.i(105959);
-    ImW = new a();
+    IHh = new a();
     TAG = "MicroMsg.LensInfoMemCache";
-    ImU = new c(100);
-    ImV = new c(100);
+    IHf = new c(100);
+    IHg = new c(100);
     AppMethodBeat.o(105959);
   }
   
   /* Error */
-  public final bty aSg(String paramString)
+  public final bus aTD(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -38,7 +38,7 @@ public final class a
     //   7: aload_1
     //   8: ldc 71
     //   10: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 60	com/tencent/mm/sticker/a/a:ImU	Lcom/tencent/mm/memory/a/c;
+    //   13: getstatic 60	com/tencent/mm/sticker/a/a:IHf	Lcom/tencent/mm/memory/a/c;
     //   16: aload_1
     //   17: invokevirtual 80	com/tencent/mm/memory/a/c:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   20: checkcast 82	d/o
@@ -57,11 +57,11 @@ public final class a
     //   40: getfield 86	d/o:second	Ljava/lang/Object;
     //   43: checkcast 88	java/lang/Number
     //   46: invokevirtual 92	java/lang/Number:longValue	()J
-    //   49: invokestatic 98	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   49: invokestatic 98	com/tencent/mm/sdk/platformtools/bu:aO	(J)J
     //   52: ldc2_w 99
     //   55: lcmp
     //   56: ifle +61 -> 117
-    //   59: getstatic 60	com/tencent/mm/sticker/a/a:ImU	Lcom/tencent/mm/memory/a/c;
+    //   59: getstatic 60	com/tencent/mm/sticker/a/a:IHf	Lcom/tencent/mm/memory/a/c;
     //   62: aload_1
     //   63: invokevirtual 102	com/tencent/mm/memory/a/c:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   66: pop
@@ -80,7 +80,7 @@ public final class a
     //   95: invokevirtual 92	java/lang/Number:longValue	()J
     //   98: invokevirtual 118	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   101: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   104: invokestatic 127	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: ldc 70
     //   109: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: aconst_null
@@ -101,10 +101,10 @@ public final class a
     //   145: invokevirtual 92	java/lang/Number:longValue	()J
     //   148: invokevirtual 118	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   151: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   154: invokestatic 127	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   157: aload_2
     //   158: getfield 132	d/o:first	Ljava/lang/Object;
-    //   161: checkcast 134	com/tencent/mm/protocal/protobuf/bty
+    //   161: checkcast 134	com/tencent/mm/protocal/protobuf/bus
     //   164: astore_1
     //   165: ldc 70
     //   167: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -128,7 +128,7 @@ public final class a
   }
   
   /* Error */
-  public final boolean aSh(String paramString)
+  public final boolean aTE(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -138,7 +138,7 @@ public final class a
     //   7: aload_1
     //   8: ldc 71
     //   10: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 62	com/tencent/mm/sticker/a/a:ImV	Lcom/tencent/mm/memory/a/c;
+    //   13: getstatic 62	com/tencent/mm/sticker/a/a:IHg	Lcom/tencent/mm/memory/a/c;
     //   16: aload_1
     //   17: invokevirtual 80	com/tencent/mm/memory/a/c:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   20: checkcast 139	java/lang/Long
@@ -149,11 +149,11 @@ public final class a
     //   32: invokevirtual 140	java/lang/Long:longValue	()J
     //   35: lstore_2
     //   36: lload_2
-    //   37: invokestatic 98	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   37: invokestatic 98	com/tencent/mm/sdk/platformtools/bu:aO	(J)J
     //   40: ldc2_w 99
     //   43: lcmp
     //   44: ifle +66 -> 110
-    //   47: getstatic 62	com/tencent/mm/sticker/a/a:ImV	Lcom/tencent/mm/memory/a/c;
+    //   47: getstatic 62	com/tencent/mm/sticker/a/a:IHg	Lcom/tencent/mm/memory/a/c;
     //   50: aload_1
     //   51: invokevirtual 102	com/tencent/mm/memory/a/c:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   54: pop
@@ -169,7 +169,7 @@ public final class a
     //   76: lload_2
     //   77: invokevirtual 118	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   80: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: invokestatic 127	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   86: ldc 137
     //   88: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: iconst_0
@@ -193,7 +193,7 @@ public final class a
     //   126: ldc 146
     //   128: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   131: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   134: invokestatic 127	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   137: iconst_1
     //   138: istore 4
     //   140: ldc 137
@@ -220,15 +220,15 @@ public final class a
     //   140	145	148	finally
   }
   
-  public final void aSi(String paramString)
+  public final void aTF(String paramString)
   {
     try
     {
       AppMethodBeat.i(105958);
       p.h(paramString, "lensId");
-      long l = bt.HI();
-      ad.i(TAG, "markInvalid: " + paramString + ", " + l);
-      ImV.put(paramString, Long.valueOf(l));
+      long l = bu.HQ();
+      ae.i(TAG, "markInvalid: " + paramString + ", " + l);
+      IHg.put(paramString, Long.valueOf(l));
       AppMethodBeat.o(105958);
       return;
     }
@@ -239,20 +239,20 @@ public final class a
     }
   }
   
-  public final void e(bty parambty)
+  public final void e(bus parambus)
   {
     try
     {
       AppMethodBeat.i(105955);
-      p.h(parambty, "info");
-      long l = bt.HI();
-      o localo2 = (o)ImU.get(parambty.Geb);
+      p.h(parambus, "info");
+      long l = bu.HQ();
+      o localo2 = (o)IHf.get(parambus.GwI);
       o localo1 = localo2;
       if (localo2 == null) {
-        localo1 = new o(parambty, Long.valueOf(l));
+        localo1 = new o(parambus, Long.valueOf(l));
       }
-      ImU.put(parambty.Geb, localo1);
-      ad.i(TAG, "update: " + parambty.Geb + ", " + l);
+      IHf.put(parambus.GwI, localo1);
+      ae.i(TAG, "update: " + parambus.GwI + ", " + l);
       AppMethodBeat.o(105955);
       return;
     }
@@ -261,7 +261,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sticker.a.a
  * JD-Core Version:    0.7.0.1
  */

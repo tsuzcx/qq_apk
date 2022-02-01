@@ -1,80 +1,68 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 import java.util.LinkedList;
 
 public final class azd
-  extends cvp
+  extends cvw
 {
-  public int Gwu;
-  public int Gwv;
-  public int Gww;
-  public int Gwx;
-  public String Gwy;
-  public int Gwz;
-  public int nDG;
+  public String GiJ;
+  public long GiW;
+  public int GjL;
+  public double latitude;
+  public double longitude;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101813);
+    AppMethodBeat.i(114015);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(101813);
-        throw paramVarArgs;
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.GiJ != null) {
+        paramVarArgs.d(2, this.GiJ);
       }
-      paramVarArgs.aS(2, this.nDG);
-      paramVarArgs.aS(3, this.Gwu);
-      paramVarArgs.aS(4, this.Gwv);
-      paramVarArgs.aS(5, this.Gww);
-      paramVarArgs.aS(6, this.Gwx);
-      if (this.Gwy != null) {
-        paramVarArgs.d(7, this.Gwy);
-      }
-      paramVarArgs.aS(8, this.Gwz);
-      AppMethodBeat.o(101813);
+      paramVarArgs.e(3, this.latitude);
+      paramVarArgs.e(4, this.longitude);
+      paramVarArgs.aZ(5, this.GiW);
+      paramVarArgs.aS(6, this.GjL);
+      paramVarArgs.aS(7, this.scene);
+      AppMethodBeat.o(114015);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label682;
+      if (this.BaseRequest == null) {
+        break label600;
       }
     }
-    label682:
-    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label600:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.nDG) + f.a.a.b.b.a.bz(3, this.Gwu) + f.a.a.b.b.a.bz(4, this.Gwv) + f.a.a.b.b.a.bz(5, this.Gww) + f.a.a.b.b.a.bz(6, this.Gwx);
-      paramInt = i;
-      if (this.Gwy != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.Gwy);
+      int i = paramInt;
+      if (this.GiJ != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.GiJ);
       }
-      i = f.a.a.b.b.a.bz(8, this.Gwz);
-      AppMethodBeat.o(101813);
-      return paramInt + i;
+      paramInt = f.a.a.b.b.a.amD(3);
+      int j = f.a.a.b.b.a.amD(4);
+      int k = f.a.a.b.b.a.p(5, this.GiW);
+      int m = f.a.a.b.b.a.bz(6, this.GjL);
+      int n = f.a.a.b.b.a.bz(7, this.scene);
+      AppMethodBeat.o(114015);
+      return i + paramInt + j + k + m + n;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(101813);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(101813);
+        AppMethodBeat.o(114015);
         return 0;
       }
       if (paramInt == 3)
@@ -85,53 +73,49 @@ public final class azd
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(101813);
+          AppMethodBeat.o(114015);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localazd.BaseResponse = ((BaseResponse)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localazd.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(101813);
+          AppMethodBeat.o(114015);
           return 0;
         case 2: 
-          localazd.nDG = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(101813);
+          localazd.GiJ = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(114015);
           return 0;
         case 3: 
-          localazd.Gwu = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(101813);
+          localazd.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(114015);
           return 0;
         case 4: 
-          localazd.Gwv = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(101813);
+          localazd.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
+          AppMethodBeat.o(114015);
           return 0;
         case 5: 
-          localazd.Gww = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(101813);
+          localazd.GiW = ((f.a.a.a.a)localObject1).OmT.zd();
+          AppMethodBeat.o(114015);
           return 0;
         case 6: 
-          localazd.Gwx = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(101813);
-          return 0;
-        case 7: 
-          localazd.Gwy = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(101813);
+          localazd.GjL = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(114015);
           return 0;
         }
-        localazd.Gwz = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(101813);
+        localazd.scene = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(114015);
         return 0;
       }
-      AppMethodBeat.o(101813);
+      AppMethodBeat.o(114015);
       return -1;
     }
   }

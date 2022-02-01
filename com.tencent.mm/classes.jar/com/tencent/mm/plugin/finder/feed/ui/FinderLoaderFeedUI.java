@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -15,10 +16,11 @@ import com.tencent.mm.plugin.finder.feed.u.a;
 import com.tencent.mm.plugin.finder.feed.u.b;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
+import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getModel", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "initOnCreate", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getModel", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "initOnCreate", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSaveInstanceState", "outState", "plugin-finder_release"})
 public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V extends u.b, P extends u.a>
   extends MMFinderUI
 {
@@ -39,9 +41,9 @@ public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V exten
     return localView1;
   }
   
-  public abstract P cBX();
+  public abstract P cDJ();
   
-  public abstract V cBY();
+  public abstract V cDK();
   
   public abstract M getModel();
   
@@ -49,7 +51,7 @@ public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V exten
   
   public void onBackPressed()
   {
-    cBX().onBackPressed();
+    cDJ().onBackPressed();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -57,28 +59,37 @@ public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V exten
     super.onCreate(paramBundle);
     initOnCreate();
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    paramBundle = cBX();
-    u.b localb = cBY();
+    paramBundle = cDJ();
+    u.b localb = cDK();
     paramBundle.a(getModel(), localb);
-    setTitleBarClickListener((Runnable)new b(localb), (Runnable)c.sfg);
+    setTitleBarClickListener((Runnable)new b(localb), (Runnable)FinderLoaderFeedUI.c.snV);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    cBX().onDetach();
+    cDJ().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    cBX().onUIPause();
+    cDJ().onUIPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    cBX().onUIResume();
+    cDJ().onUIResume();
+  }
+  
+  public void onSaveInstanceState(Bundle paramBundle)
+  {
+    super.onSaveInstanceState(paramBundle);
+    paramBundle = getModel();
+    Intent localIntent = getIntent();
+    p.g(localIntent, "intent");
+    BaseFinderFeedLoader.saveCache$default(paramBundle, localIntent, getModel().getInitPos(), null, 4, null);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -87,7 +98,7 @@ public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V exten
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -96,13 +107,13 @@ public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V exten
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(166128);
-      this.sfe.onBackPressed();
+      this.snT.onBackPressed();
       AppMethodBeat.o(166128);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "run"})
   static final class b
     implements Runnable
   {
@@ -111,34 +122,18 @@ public abstract class FinderLoaderFeedUI<M extends BaseFinderFeedLoader, V exten
     public final void run()
     {
       AppMethodBeat.i(166129);
-      RecyclerView localRecyclerView = this.sff.rTF.getRecyclerView();
+      RecyclerView localRecyclerView = this.snU.scj.getRecyclerView();
       com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahp(), "com/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI$onCreate$2", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-      localRecyclerView.smoothScrollToPosition(((Integer)locala.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahE(), "com/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI$onCreate$2", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+      localRecyclerView.smoothScrollToPosition(((Integer)locala.mt(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, "com/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI$onCreate$2", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
       AppMethodBeat.o(166129);
     }
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "run"})
-  static final class c
-    implements Runnable
-  {
-    public static final c sfg;
-    
-    static
-    {
-      AppMethodBeat.i(166130);
-      sfg = new c();
-      AppMethodBeat.o(166130);
-    }
-    
-    public final void run() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLoaderFeedUI
  * JD-Core Version:    0.7.0.1
  */

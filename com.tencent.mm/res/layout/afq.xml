@@ -2,7 +2,7 @@
 <RelativeLayout android:id="@id/glw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/gmn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/gof" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:src="@drawable/ag6" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/gof" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:src="@drawable/ag6" android:layout_centerInParent="true" android:contentDescription="@string/vl" />
     <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gm8" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
     <RelativeLayout android:id="@id/gmf" android:background="@color/rx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">

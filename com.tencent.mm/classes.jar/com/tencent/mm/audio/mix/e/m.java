@@ -16,13 +16,13 @@ public final class m
       if (j < paramInt1)
       {
         if (j == 0) {
-          f1 = this.dez[j][i];
+          f1 = this.dfB[j][i];
         }
         for (;;)
         {
           j += 1;
           break;
-          float f2 = this.dez[j][i];
+          float f2 = this.dfB[j][i];
           if ((f1 < 0.0F) && (f2 < 0.0F)) {
             f1 = f1 + f2 - f1 * f2 / this.MIN_VALUE;
           } else if ((f1 > 0.0F) && (f2 > 0.0F)) {
@@ -33,7 +33,7 @@ public final class m
         }
       }
       j = (int)f1;
-      this.deC[i] = hJ(j);
+      this.dfE[i] = hL(j);
       i += 1;
     }
     byte[] arrayOfByte = cg(paramInt3, paramInt2);
@@ -43,7 +43,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.m
  * JD-Core Version:    0.7.0.1
  */

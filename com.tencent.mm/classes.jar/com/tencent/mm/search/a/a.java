@@ -5,47 +5,47 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/search/gesture/GallerySwipeBackConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "galleryView", "Landroid/view/View;", "galleryScaleListener", "Lcom/tencent/mm/search/gesture/IOnGalleryScale;", "(Landroid/view/View;Lcom/tencent/mm/search/gesture/IOnGalleryScale;)V", "consumed", "", "currScrollType", "", "downX", "", "downY", "getGalleryScaleListener", "()Lcom/tencent/mm/search/gesture/IOnGalleryScale;", "getGalleryView", "()Landroid/view/View;", "maxDownX", "moveExitY", "totalMovedX", "totalMovedY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "touchRelease", "touchTranslate", "Companion", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/gesture/GallerySwipeBackConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "galleryView", "Landroid/view/View;", "galleryScaleListener", "Lcom/tencent/mm/search/gesture/IOnGalleryScale;", "(Landroid/view/View;Lcom/tencent/mm/search/gesture/IOnGalleryScale;)V", "consumed", "", "currScrollType", "", "downX", "", "downY", "getGalleryScaleListener", "()Lcom/tencent/mm/search/gesture/IOnGalleryScale;", "getGalleryView", "()Landroid/view/View;", "maxDownX", "moveExitY", "totalMovedX", "totalMovedY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "touchRelease", "touchTranslate", "Companion", "plugin-emojisdk_release"})
 public final class a
   extends com.tencent.mm.ui.j.a
 {
-  public static final a.a Iil;
-  private int BcN;
-  private int Bdi;
-  private final int Bdj;
-  private float Bdk;
-  private float Bdl;
-  private boolean Bdm;
-  private final View Bdn;
-  private final b Iik;
-  private float cNg;
-  private float cNh;
+  public static final a.a ICw;
+  private int BuG;
+  private final int BuH;
+  private float BuI;
+  private float BuJ;
+  private boolean BuK;
+  private final View BuL;
+  private int Bul;
+  private final b ICv;
+  private float cNQ;
+  private float cNR;
   private VelocityTracker oj;
   
   static
   {
-    AppMethodBeat.i(218996);
-    Iil = new a.a((byte)0);
-    AppMethodBeat.o(218996);
+    AppMethodBeat.i(188618);
+    ICw = new a.a((byte)0);
+    AppMethodBeat.o(188618);
   }
   
   public a(View paramView, b paramb)
   {
-    AppMethodBeat.i(218995);
-    this.Bdn = paramView;
-    this.Iik = paramb;
-    this.Bdi = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 32);
-    this.Bdj = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 96);
-    AppMethodBeat.o(218995);
+    AppMethodBeat.i(188617);
+    this.BuL = paramView;
+    this.ICv = paramb;
+    this.BuG = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 32);
+    this.BuH = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 96);
+    AppMethodBeat.o(188617);
   }
   
   private final void nn()
   {
-    AppMethodBeat.i(218994);
+    AppMethodBeat.i(188616);
     VelocityTracker localVelocityTracker = this.oj;
     if (localVelocityTracker != null) {
       localVelocityTracker.clear();
@@ -55,14 +55,14 @@ public final class a
       localVelocityTracker.recycle();
     }
     this.oj = null;
-    AppMethodBeat.o(218994);
+    AppMethodBeat.o(188616);
   }
   
   public final boolean a(MotionEvent paramMotionEvent, boolean paramBoolean, int paramInt)
   {
     int i = 1;
     boolean bool = true;
-    AppMethodBeat.i(218993);
+    AppMethodBeat.i(188615);
     p.h(paramMotionEvent, "event");
     if (this.oj == null) {
       this.oj = VelocityTracker.obtain();
@@ -76,19 +76,19 @@ public final class a
     }
     for (;;)
     {
-      paramBoolean = this.Bdm;
-      AppMethodBeat.o(218993);
+      paramBoolean = this.BuK;
+      AppMethodBeat.o(188615);
       return paramBoolean;
-      this.cNg = paramMotionEvent.getRawX();
-      this.cNh = paramMotionEvent.getRawY();
+      this.cNQ = paramMotionEvent.getRawX();
+      this.cNR = paramMotionEvent.getRawY();
       continue;
       if (paramBoolean)
       {
-        this.BcN = paramInt;
+        this.Bul = paramInt;
         if (paramInt == 8)
         {
           paramBoolean = bool;
-          if (this.cNg < this.Bdi) {}
+          if (this.cNQ < this.BuG) {}
         }
         else
         {
@@ -98,29 +98,29 @@ public final class a
           paramBoolean = bool;
         }
         label154:
-        this.Bdm = paramBoolean;
+        this.BuK = paramBoolean;
         float f1 = paramMotionEvent.getRawX();
         float f2 = paramMotionEvent.getRawY();
-        this.Bdk = (f1 - this.cNg);
-        this.Bdl = (f2 - this.cNh);
-        if (this.Bdm)
+        this.BuI = (f1 - this.cNQ);
+        this.BuJ = (f2 - this.cNR);
+        if (this.BuK)
         {
-          this.Bdn.animate().cancel();
-          if (this.BcN == 2) {}
-          for (f1 = this.Bdl;; f1 = this.Bdk * this.Bdn.getHeight() / this.Bdn.getWidth())
+          this.BuL.animate().cancel();
+          if (this.Bul == 2) {}
+          for (f1 = this.BuJ;; f1 = this.BuI * this.BuL.getHeight() / this.BuL.getWidth())
           {
             f2 = f1;
             if (f1 < 0.0F) {
               f2 = 0.0F;
             }
-            this.Bdn.setTranslationY(f2);
-            this.Bdn.getHeight();
+            this.BuL.setTranslationY(f2);
+            this.BuL.getHeight();
             break;
             label258:
             paramBoolean = false;
             break label154;
           }
-          if (this.Bdm)
+          if (this.BuK)
           {
             paramMotionEvent = this.oj;
             if (paramMotionEvent != null) {
@@ -138,11 +138,11 @@ public final class a
             }
             f2 = paramMotionEvent.getYVelocity();
             label343:
-            if (this.BcN != 2) {
+            if (this.Bul != 2) {
               break label434;
             }
             paramInt = i;
-            if (this.Bdl <= this.Bdj)
+            if (this.BuJ <= this.BuH)
             {
               if (f2 <= 0.0F) {
                 break label429;
@@ -153,14 +153,14 @@ public final class a
             if (paramInt == 0) {
               break label471;
             }
-            this.Iik.aqy();
+            this.ICv.aqN();
           }
           for (;;)
           {
-            this.BcN = 0;
-            this.Bdk = 0.0F;
-            this.Bdl = 0.0F;
-            this.Bdm = false;
+            this.Bul = 0;
+            this.BuI = 0.0F;
+            this.BuJ = 0.0F;
+            this.BuK = false;
             nn();
             break;
             label417:
@@ -174,7 +174,7 @@ public final class a
             break label377;
             label434:
             paramInt = i;
-            if (this.Bdk > this.Bdn.getWidth() / 2) {
+            if (this.BuI > this.BuL.getWidth() / 2) {
               break label377;
             }
             paramInt = i;
@@ -184,27 +184,27 @@ public final class a
             paramInt = 0;
             break label377;
             label471:
-            this.Bdn.animate().translationY(0.0F).start();
+            this.BuL.animate().translationY(0.0F).start();
           }
-          this.BcN = 0;
-          this.Bdn.setTranslationY(0.0F);
-          this.Bdk = 0.0F;
-          this.Bdl = 0.0F;
-          this.Bdm = false;
+          this.Bul = 0;
+          this.BuL.setTranslationY(0.0F);
+          this.BuI = 0.0F;
+          this.BuJ = 0.0F;
+          this.BuK = false;
           nn();
         }
       }
     }
   }
   
-  public final int emc()
+  public final int epL()
   {
     return 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.search.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.emoji.model;
 
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.e;
 
 final class c$1
@@ -19,33 +19,33 @@ final class c$1
   {
     int i = 1;
     AppMethodBeat.i(108572);
-    Object localObject = k.getEmojiStorageMgr().ILp;
-    String str = this.pDy;
+    Object localObject = k.getEmojiStorageMgr().JfW;
+    String str = this.pKc;
     long l1;
     long l2;
-    if (com.tencent.mm.plugin.emoji.h.b.aci(str))
+    if (com.tencent.mm.plugin.emoji.h.b.acZ(str))
     {
-      l1 = ((e)localObject).IOg.getLong("274544".concat(String.valueOf(str)), 0L);
+      l1 = ((e)localObject).JiM.getLong("274544".concat(String.valueOf(str)), 0L);
       l2 = System.currentTimeMillis();
       if (l2 - l1 < 86400000L) {}
     }
     while (i != 0)
     {
-      k.cgQ();
-      localObject = this.pDy;
-      if (bt.isNullOrNil((String)localObject))
+      k.cig();
+      localObject = this.pKc;
+      if (bu.isNullOrNil((String)localObject))
       {
-        ad.w("MicroMsg.emoji.EmojiMgrImpl", "doSceneGetEmotionDesc get emotion desc faild.");
+        ae.w("MicroMsg.emoji.EmojiMgrImpl", "doSceneGetEmotionDesc get emotion desc faild.");
         AppMethodBeat.o(108572);
         return;
-        if ((((e)localObject).aUI(str)) || (l2 - l1 < 3600000L)) {
+        if ((((e)localObject).aWj(str)) || (l2 - l1 < 3600000L)) {
           i = 0;
         }
       }
       else
       {
         localObject = new com.tencent.mm.plugin.emoji.f.k((String)localObject);
-        g.ajB().gAO.a((n)localObject, 0);
+        g.ajQ().gDv.a((n)localObject, 0);
       }
     }
     AppMethodBeat.o(108572);

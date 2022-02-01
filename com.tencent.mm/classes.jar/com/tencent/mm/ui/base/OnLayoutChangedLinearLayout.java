@@ -9,7 +9,7 @@ import com.tencent.mm.ui.widget.DrawnCallBackLinearLayout;
 public class OnLayoutChangedLinearLayout
   extends DrawnCallBackLinearLayout
 {
-  public a JqD;
+  public a JLs;
   
   public OnLayoutChangedLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,20 +26,20 @@ public class OnLayoutChangedLinearLayout
   {
     AppMethodBeat.i(142450);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.JqD != null) {
-      this.JqD.fxA();
+    if (this.JLs != null) {
+      this.JLs.fBC();
     }
     AppMethodBeat.o(142450);
   }
   
   public void setOnChattingLayoutChangedListener(a parama)
   {
-    this.JqD = parama;
+    this.JLs = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fxA();
+    public abstract void fBC();
   }
 }
 

@@ -3,10 +3,10 @@ package com.tencent.mm.videocomposition.a;
 import com.tencent.tavkit.composition.audio.TAVAudioProcessorNode;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/audio/IAudioProcessorFactory;", "", "createAudioProcessorNode", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/audio/IAudioProcessorFactory;", "", "createAudioProcessorNode", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "video_composition_release"})
 public abstract interface a
 {
-  public abstract TAVAudioProcessorNode fPG();
+  public abstract TAVAudioProcessorNode fUc();
 }
 
 

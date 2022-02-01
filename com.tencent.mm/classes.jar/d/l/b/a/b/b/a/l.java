@@ -10,31 +10,31 @@ import java.util.List;
 public final class l
   implements g
 {
-  private final g MWa;
-  private final boolean MWb;
-  private final d.g.a.b<d.l.b.a.b.f.b, Boolean> MWc;
+  private final g Ntg;
+  private final boolean Nth;
+  private final d.g.a.b<d.l.b.a.b.f.b, Boolean> Nti;
   
   private l(g paramg, d.g.a.b<? super d.l.b.a.b.f.b, Boolean> paramb)
   {
     AppMethodBeat.i(56975);
-    this.MWa = paramg;
-    this.MWb = false;
-    this.MWc = paramb;
+    this.Ntg = paramg;
+    this.Nth = false;
+    this.Nti = paramb;
     AppMethodBeat.o(56975);
   }
   
   public l(g paramg, d.g.a.b<? super d.l.b.a.b.f.b, Boolean> paramb, byte paramByte)
   {
     this(paramg, paramb);
-    AppMethodBeat.i(187768);
-    AppMethodBeat.o(187768);
+    AppMethodBeat.i(193292);
+    AppMethodBeat.o(193292);
   }
   
   private final boolean c(c paramc)
   {
     AppMethodBeat.i(56974);
-    paramc = paramc.gjg();
-    if ((paramc != null) && (((Boolean)this.MWc.invoke(paramc)).booleanValue()))
+    paramc = paramc.gnI();
+    if ((paramc != null) && (((Boolean)this.Nti.invoke(paramc)).booleanValue()))
     {
       AppMethodBeat.o(56974);
       return true;
@@ -47,9 +47,9 @@ public final class l
   {
     AppMethodBeat.i(56971);
     p.h(paramb, "fqName");
-    if (((Boolean)this.MWc.invoke(paramb)).booleanValue())
+    if (((Boolean)this.Nti.invoke(paramb)).booleanValue())
     {
-      paramb = this.MWa.g(paramb);
+      paramb = this.Ntg.g(paramb);
       AppMethodBeat.o(56971);
       return paramb;
     }
@@ -61,9 +61,9 @@ public final class l
   {
     AppMethodBeat.i(56970);
     p.h(paramb, "fqName");
-    if (((Boolean)this.MWc.invoke(paramb)).booleanValue())
+    if (((Boolean)this.Nti.invoke(paramb)).booleanValue())
     {
-      boolean bool = this.MWa.h(paramb);
+      boolean bool = this.Ntg.h(paramb);
       AppMethodBeat.o(56970);
       return bool;
     }
@@ -74,7 +74,7 @@ public final class l
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56973);
-    Object localObject = (Iterable)this.MWa;
+    Object localObject = (Iterable)this.Ntg;
     boolean bool;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
@@ -87,7 +87,7 @@ public final class l
         }
       }
     }
-    while (this.MWb) {
+    while (this.Nth) {
       if (!bool)
       {
         AppMethodBeat.o(56973);
@@ -107,7 +107,7 @@ public final class l
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56972);
-    Object localObject2 = (Iterable)this.MWa;
+    Object localObject2 = (Iterable)this.Ntg;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())

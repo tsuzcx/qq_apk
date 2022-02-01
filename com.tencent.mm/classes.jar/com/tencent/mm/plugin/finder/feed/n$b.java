@@ -10,11 +10,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.z;
 import com.tencent.mm.plugin.finder.utils.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import com.tencent.mm.view.recyclerview.d;
@@ -22,7 +22,7 @@ import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendLikeFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;IIZ)V", "TAG", "", "getActivity", "getDescStringID", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "getEmptyView", "Landroid/view/View;", "getHeaderView", "", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getTitleStringId", "onGridItemClick", "", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "view", "position", "onItemDelete", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendLikeFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;IIZ)V", "TAG", "", "getActivity", "getDescStringID", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "getEmptyView", "Landroid/view/View;", "getHeaderView", "", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getTitleStringId", "onGridItemClick", "", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "view", "position", "onItemDelete", "plugin-finder_release"})
 public final class n$b
   extends b.b
 {
@@ -31,87 +31,87 @@ public final class n$b
   public n$b(MMActivity paramMMActivity)
   {
     super(paramMMActivity, 0, 0, true);
-    AppMethodBeat.i(201843);
+    AppMethodBeat.i(202303);
     this.TAG = "Finder.FinderFriendLikeFeedUIContract.ViewCallback";
-    AppMethodBeat.o(201843);
+    AppMethodBeat.o(202303);
   }
   
   public final void a(RecyclerView.a<?> parama, View paramView, int paramInt)
   {
-    AppMethodBeat.i(201840);
+    AppMethodBeat.i(202300);
     p.h(parama, "adapter");
     p.h(paramView, "view");
-    paramInt -= ((d)parama).Lvi.size();
-    if ((paramInt >= 0) && (paramInt < cAP().rTS.getSize()))
+    paramInt -= ((d)parama).LRV.size();
+    if ((paramInt >= 0) && (paramInt < cCB().scw.getSize()))
     {
-      parama = (al)cAP().rTS.getDataListJustForAdapter().get(paramInt);
+      parama = (am)cCB().scw.getDataListJustForAdapter().get(paramInt);
       if (!(parama instanceof BaseFinderFeed))
       {
-        AppMethodBeat.o(201840);
+        AppMethodBeat.o(202300);
         return;
       }
-      ad.i(this.TAG, "onClick " + paramInt + " id:" + ((BaseFinderFeed)parama).feedObject.getId() + ", pos:" + paramInt);
+      ae.i(this.TAG, "onClick " + paramInt + " id:" + ((BaseFinderFeed)parama).feedObject.getId() + ", pos:" + paramInt);
       parama = new Intent();
-      BaseFinderFeedLoader.saveCache$default(cAP().rTS, parama, paramInt, null, 4, null);
-      a locala = a.sKD;
+      BaseFinderFeedLoader.saveCache$default(cCB().scw, parama, paramInt, null, 4, null);
+      a locala = a.sVQ;
       paramView = paramView.getContext();
       p.g(paramView, "view.context");
       a.O(paramView, parama);
     }
-    AppMethodBeat.o(201840);
+    AppMethodBeat.o(202300);
   }
   
-  public final void cAT() {}
+  public final void cCF() {}
   
   public final String e(RefreshLoadMoreLayout.c<Object> paramc)
   {
-    AppMethodBeat.i(201841);
+    AppMethodBeat.i(202301);
     p.h(paramc, "reason");
-    AppMethodBeat.o(201841);
+    AppMethodBeat.o(202301);
     return "";
   }
   
-  public final RecyclerView.i eL(Context paramContext)
+  public final RecyclerView.i eP(Context paramContext)
   {
-    AppMethodBeat.i(201839);
+    AppMethodBeat.i(202299);
     p.h(paramContext, "context");
-    paramContext = cAR().eL(paramContext);
-    AppMethodBeat.o(201839);
+    paramContext = cCD().eP(paramContext);
+    AppMethodBeat.o(202299);
     return paramContext;
   }
   
   public final String f(RefreshLoadMoreLayout.c<Object> paramc)
   {
-    AppMethodBeat.i(201842);
+    AppMethodBeat.i(202302);
     p.h(paramc, "reason");
-    AppMethodBeat.o(201842);
+    AppMethodBeat.o(202302);
     return "";
   }
   
   public final MMActivity getActivity()
   {
-    return this.fLP;
+    return this.fNT;
   }
   
   public final View getEmptyView()
   {
-    AppMethodBeat.i(201838);
-    View localView = this.fLP.findViewById(2131299478);
-    AppMethodBeat.o(201838);
+    AppMethodBeat.i(202298);
+    View localView = this.fNT.findViewById(2131299478);
+    AppMethodBeat.o(202298);
     return localView;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(201837);
-    RecyclerView.h localh = cAR().getItemDecoration();
-    AppMethodBeat.o(201837);
+    AppMethodBeat.i(202297);
+    RecyclerView.h localh = cCD().getItemDecoration();
+    AppMethodBeat.o(202297);
     return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.n.b
  * JD-Core Version:    0.7.0.1
  */

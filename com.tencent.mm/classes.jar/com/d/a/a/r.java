@@ -54,7 +54,7 @@ final class r
     AppMethodBeat.o(87892);
   }
   
-  static r Am()
+  static r An()
   {
     AppMethodBeat.i(87893);
     if (bZB == null) {
@@ -65,12 +65,12 @@ final class r
     return localr;
   }
   
-  private String Ap()
+  private String Aq()
   {
     AppMethodBeat.i(87902);
     try
     {
-      String str = Ar().getString("1-115-10127", "");
+      String str = As().getString("1-115-10127", "");
       AppMethodBeat.o(87902);
       return str;
     }
@@ -82,18 +82,18 @@ final class r
   }
   
   @SuppressLint({"NewApi"})
-  private void Aq()
+  private void Ar()
   {
     AppMethodBeat.i(87903);
     try
     {
       if (Build.VERSION.SDK_INT >= 9)
       {
-        Ar().edit().remove("1-115-10127").apply();
+        As().edit().remove("1-115-10127").apply();
         AppMethodBeat.o(87903);
         return;
       }
-      Ar().edit().remove("1-115-10127").commit();
+      As().edit().remove("1-115-10127").commit();
       AppMethodBeat.o(87903);
       return;
     }
@@ -103,7 +103,7 @@ final class r
     }
   }
   
-  private SharedPreferences Ar()
+  private SharedPreferences As()
   {
     AppMethodBeat.i(87904);
     if (this.bZH == null)
@@ -117,7 +117,7 @@ final class r
     return localObject;
   }
   
-  private void As()
+  private void At()
   {
     String str;
     b localb;
@@ -164,7 +164,7 @@ final class r
   }
   
   @SuppressLint({"NewApi"})
-  private void cm(String paramString)
+  private void cn(String paramString)
   {
     AppMethodBeat.i(87901);
     if (paramString == null)
@@ -178,7 +178,7 @@ final class r
       {
         try
         {
-          String str = Ar().getString("1-115-10127", "") + paramString;
+          String str = As().getString("1-115-10127", "") + paramString;
           int i = str.length() - 307200;
           paramString = str;
           if (i > 0)
@@ -192,7 +192,7 @@ final class r
           if (Build.VERSION.SDK_INT < 9) {
             continue;
           }
-          Ar().edit().putString("1-115-10127", paramString).apply();
+          As().edit().putString("1-115-10127", paramString).apply();
         }
         catch (Exception paramString)
         {
@@ -203,16 +203,16 @@ final class r
         return;
         paramString = "";
         continue;
-        Ar().edit().putString("1-115-10127", paramString).commit();
+        As().edit().putString("1-115-10127", paramString).commit();
       }
       try
       {
         if (Build.VERSION.SDK_INT >= 9)
         {
-          Ar().edit().putString("1-115-10127", "").apply();
+          As().edit().putString("1-115-10127", "").apply();
           continue;
         }
-        Ar().edit().putString("1-115-10127", "").commit();
+        As().edit().putString("1-115-10127", "").commit();
       }
       catch (Exception paramString) {}
       paramString = finally;
@@ -221,7 +221,7 @@ final class r
     }
   }
   
-  private static String cn(String paramString)
+  private static String co(String paramString)
   {
     AppMethodBeat.i(87906);
     try
@@ -449,11 +449,11 @@ final class r
     }
     else
     {
-      cm(str);
+      cn(str);
       AppMethodBeat.o(87900);
       return;
     }
-    paramString = v.cp(v.cq(paramString));
+    paramString = v.cq(v.cr(paramString));
     if (paramString == null)
     {
       paramString = null;
@@ -472,12 +472,12 @@ final class r
     }
   }
   
-  final void Ab()
+  final void Ac()
   {
     this.bZL = null;
   }
   
-  final void An()
+  final void Ao()
   {
     AppMethodBeat.i(87896);
     if (this.bZG != null) {
@@ -492,7 +492,7 @@ final class r
     AppMethodBeat.o(87896);
   }
   
-  final boolean Ao()
+  final boolean Ap()
   {
     return this.bZE.code == 1;
   }
@@ -501,11 +501,11 @@ final class r
   {
     AppMethodBeat.i(87895);
     this.bZG = z.b(paramHandler);
-    An();
+    Ao();
     AppMethodBeat.o(87895);
   }
   
-  final void as(Context paramContext)
+  final void at(Context paramContext)
   {
     AppMethodBeat.i(87894);
     try
@@ -515,7 +515,7 @@ final class r
       if (TextUtils.isEmpty(str2)) {
         str1 = "0000000000";
       }
-      this.bZC = cn(str1);
+      this.bZC = co(str1);
       this.bZD = a(Long.valueOf(System.currentTimeMillis() / 1000L));
       this.bZI = new f(paramContext);
     }
@@ -528,9 +528,9 @@ final class r
     AppMethodBeat.o(87894);
   }
   
-  final void at(Context paramContext) {}
+  final void au(Context paramContext) {}
   
-  final void cl(String paramString)
+  final void cm(String paramString)
   {
     AppMethodBeat.i(87897);
     if (this.bZG != null) {
@@ -549,7 +549,7 @@ final class r
       this.bZN = new WeakReference(paramr);
     }
     
-    final r At()
+    final r Au()
     {
       r localr = (r)this.bZN.get();
       if (localr == null) {
@@ -610,10 +610,10 @@ final class r
           AppMethodBeat.o(87886);
           return;
         }
-        r.a(At(), this.bZP, this.bZQ);
+        r.a(Au(), this.bZP, this.bZQ);
         AppMethodBeat.o(87886);
         return;
-        r.a(At(), this.bZP);
+        r.a(Au(), this.bZP);
       }
     }
   }
@@ -635,8 +635,8 @@ final class r
       {
         try
         {
-          r.a(At());
-          localf = r.b(At());
+          r.a(Au());
+          localf = r.b(Au());
         }
         catch (Exception localException1)
         {
@@ -715,7 +715,7 @@ final class r
       AppMethodBeat.i(87889);
       try
       {
-        r.a(At(), this.bZP, this.bZQ, this.bZS, this.bZh, this.bZT);
+        r.a(Au(), this.bZP, this.bZQ, this.bZS, this.bZh, this.bZT);
         AppMethodBeat.o(87889);
         return;
       }

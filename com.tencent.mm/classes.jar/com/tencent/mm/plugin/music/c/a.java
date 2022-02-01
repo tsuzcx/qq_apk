@@ -4,11 +4,11 @@ public final class a
 {
   public int endFlag;
   public String mimeType;
-  public long wjG;
-  public long wjH;
-  public long wjI;
-  public int wjJ;
-  public long wjK;
+  public long wzl;
+  public long wzm;
+  public long wzn;
+  public int wzo;
+  public long wzp;
 }
 
 

@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FoM;
+  public int FHk;
   public int count;
   public int value;
   
@@ -15,7 +15,7 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FoM);
+      paramVarArgs.aS(1, this.FHk);
       paramVarArgs.aS(2, this.value);
       paramVarArgs.aS(3, this.count);
       AppMethodBeat.o(143939);
@@ -23,7 +23,7 @@ public final class a
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.FoM);
+      paramInt = f.a.a.b.b.a.bz(1, this.FHk);
       int i = f.a.a.b.b.a.bz(2, this.value);
       int j = f.a.a.b.b.a.bz(3, this.count);
       AppMethodBeat.o(143939);
@@ -32,9 +32,9 @@ public final class a
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(143939);
@@ -50,15 +50,15 @@ public final class a
         AppMethodBeat.o(143939);
         return -1;
       case 1: 
-        locala1.FoM = locala.NPN.zc();
+        locala1.FHk = locala.OmT.zc();
         AppMethodBeat.o(143939);
         return 0;
       case 2: 
-        locala1.value = locala.NPN.zc();
+        locala1.value = locala.OmT.zc();
         AppMethodBeat.o(143939);
         return 0;
       }
-      locala1.count = locala.NPN.zc();
+      locala1.count = locala.OmT.zc();
       AppMethodBeat.o(143939);
       return 0;
     }

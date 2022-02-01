@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class ExdeviceConnectWifiUI$a
 {
-  public static String aP(int paramInt, String paramString)
+  public static String aO(int paramInt, String paramString)
   {
     AppMethodBeat.i(23960);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(23960);
       return null;

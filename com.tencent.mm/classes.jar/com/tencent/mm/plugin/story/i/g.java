@@ -3,58 +3,58 @@ package com.tencent.mm.plugin.story.i;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gg;
+import com.tencent.mm.g.c.gh;
 import com.tencent.mm.plugin.story.f.b;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bq;
 import d.g.b.p;
 import d.v;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryExtInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "Lcom/tencent/mm/plugin/story/storage/IStoryStorage;", "vdb", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "db", "extLruMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "notifyListener", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "userUpdateMap", "getVdb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "addStoryStatusNotifyListener", "", "listener", "droptable", "dumpinfo", "get", "userName", "getAllData", "", "getAllUserStatus", "getFavoriteMd5", "getFromCache", "username", "getFromDb", "getMd5", "getStoryStatus", "insertFavMd5", "", "md5", "insertMd5", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "removeStoryStatusNotifyListener", "replace", "", "item", "set", "info", "startNotifyListener", "stopNotifyListener", "updateByLocal", "id", "", "extinfo", "updateCache", "updatePreCache", "updateReadIdWithNotify", "storyId", "updateStoryUserInfo", "storyUserInfo", "Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "updateSyncIdWithNotify", "syncId", "createTime", "thumb", "videoUrl", "duration", "Companion", "plugin-story_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/StoryExtInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "Lcom/tencent/mm/plugin/story/storage/IStoryStorage;", "vdb", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "db", "extLruMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "notifyListener", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "userUpdateMap", "getVdb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "addStoryStatusNotifyListener", "", "listener", "droptable", "dumpinfo", "get", "userName", "getAllData", "", "getAllUserStatus", "getFavoriteMd5", "getFromCache", "username", "getFromDb", "getMd5", "getStoryStatus", "insertFavMd5", "", "md5", "insertMd5", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "removeStoryStatusNotifyListener", "replace", "", "item", "set", "info", "startNotifyListener", "stopNotifyListener", "updateByLocal", "id", "", "extinfo", "updateCache", "updatePreCache", "updateReadIdWithNotify", "storyId", "updateStoryUserInfo", "storyUserInfo", "Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "updateSyncIdWithNotify", "syncId", "createTime", "thumb", "videoUrl", "duration", "Companion", "plugin-story_release"})
 public final class g
   extends j<f>
   implements k.a
 {
-  private static final String ATW = "select *, rowid from StoryExtItem ";
-  private static final String ATX = "select * from StoryExtItem";
-  public static final g.a ATY;
+  private static final String Blu = "select *, rowid from StoryExtItem ";
+  private static final String Blv = "select * from StoryExtItem";
+  public static final g.a Blw;
   private static final String[] SQL_CREATE;
   private static final String TABLE = "StoryExtItem";
   private static final String TAG = "MicroMsg.StoryExtInfoStorage";
-  public final ArrayList<com.tencent.mm.plugin.story.api.m> ATS;
-  private final com.tencent.mm.memory.a.c<String, f> ATT;
-  private com.tencent.mm.memory.a.c<String, f> ATU;
-  private final e ATV;
+  public final ArrayList<com.tencent.mm.plugin.story.api.m> Blq;
+  private final com.tencent.mm.memory.a.c<String, f> Blr;
+  private com.tencent.mm.memory.a.c<String, f> Bls;
+  private final e Blt;
   private final e db;
   
   static
   {
     AppMethodBeat.i(119518);
-    ATY = new g.a((byte)0);
+    Blw = new g.a((byte)0);
     TAG = "MicroMsg.StoryExtInfoStorage";
     TABLE = "StoryExtItem";
-    f.a locala = f.ATQ;
+    f.a locala = f.Blo;
     SQL_CREATE = new String[] { j.getCreateSQLs(f.access$getInfo$cp(), TABLE) };
-    ATW = "select *, rowid from " + TABLE + ' ';
-    ATX = "select * from " + TABLE;
+    Blu = "select *, rowid from " + TABLE + ' ';
+    Blv = "select * from " + TABLE;
     AppMethodBeat.o(119518);
   }
   
   public g(e parame)
   {
-    super(parame, f.access$getInfo$cp(), TABLE, gg.INDEX_CREATE);
+    super(parame, f.access$getInfo$cp(), TABLE, gh.INDEX_CREATE);
     AppMethodBeat.i(119517);
-    this.ATV = parame;
-    this.ATS = new ArrayList();
-    this.ATT = new com.tencent.mm.memory.a.c(1000);
-    this.ATU = new com.tencent.mm.memory.a.c(1000);
-    this.db = this.ATV;
+    this.Blt = parame;
+    this.Blq = new ArrayList();
+    this.Blr = new com.tencent.mm.memory.a.c(1000);
+    this.Bls = new com.tencent.mm.memory.a.c(1000);
+    this.db = this.Blt;
     AppMethodBeat.o(119517);
   }
   
@@ -76,15 +76,15 @@ public final class g
     }
     Object localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    if (((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().aTg(paramf.getUserName()))
+    if (((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF().aUH(paramf.getUserName()))
     {
-      this.ATT.put(paramf.getUserName(), paramf);
-      this.ATU.remove(paramf.getUserName());
+      this.Blr.put(paramf.getUserName(), paramf);
+      this.Bls.remove(paramf.getUserName());
       AppMethodBeat.o(119509);
       return;
     }
-    this.ATT.remove(paramf.getUserName());
-    this.ATU.put(paramf.getUserName(), paramf);
+    this.Blr.remove(paramf.getUserName());
+    this.Bls.put(paramf.getUserName(), paramf);
     AppMethodBeat.o(119509);
   }
   
@@ -103,12 +103,12 @@ public final class g
           throw paramString;
         }
         paramString = ((f)paramString).getUserName();
-        paramm = ((Iterable)this.ATS).iterator();
+        paramm = ((Iterable)this.Blq).iterator();
         while (paramm.hasNext()) {
-          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bV(paramString, true);
+          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bZ(paramString, true);
         }
-        paramString = b.AJk;
-        b.ehu();
+        paramString = b.BaN;
+        b.elc();
         AppMethodBeat.o(119515);
         return;
       }
@@ -122,12 +122,12 @@ public final class g
           throw paramString;
         }
         paramString = ((f)paramString).getUserName();
-        paramm = ((Iterable)this.ATS).iterator();
+        paramm = ((Iterable)this.Blq).iterator();
         while (paramm.hasNext()) {
-          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bV(paramString, false);
+          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bZ(paramString, false);
         }
-        paramString = b.AJk;
-        b.ehu();
+        paramString = b.BaN;
+        b.elc();
         AppMethodBeat.o(119515);
         return;
       }
@@ -141,12 +141,12 @@ public final class g
           throw paramString;
         }
         paramString = ((f)paramString).getUserName();
-        paramm = ((Iterable)this.ATS).iterator();
+        paramm = ((Iterable)this.Blq).iterator();
         while (paramm.hasNext()) {
-          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bV(paramString, true);
+          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bZ(paramString, true);
         }
-        paramString = b.AJk;
-        b.ehu();
+        paramString = b.BaN;
+        b.elc();
         AppMethodBeat.o(119515);
         return;
       }
@@ -160,16 +160,16 @@ public final class g
           throw paramString;
         }
         paramString = ((f)paramString).getUserName();
-        paramm = ((Iterable)this.ATS).iterator();
+        paramm = ((Iterable)this.Blq).iterator();
         while (paramm.hasNext()) {
-          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bV(paramString, true);
+          ((com.tencent.mm.plugin.story.api.m)paramm.next()).bZ(paramString, true);
         }
-        paramString = b.AJk;
-        b.ehu();
+        paramString = b.BaN;
+        b.elc();
         AppMethodBeat.o(119515);
         return;
       }
-      ad.d(TAG, "unknown event ".concat(String.valueOf(paramString)));
+      ae.d(TAG, "unknown event ".concat(String.valueOf(paramString)));
     }
     AppMethodBeat.o(119515);
   }
@@ -185,41 +185,22 @@ public final class g
     return true;
   }
   
-  public final f aBD(String paramString)
+  public final f aCW(String paramString)
   {
     AppMethodBeat.i(119502);
     p.h(paramString, "userName");
-    f localf = aCh(paramString);
+    f localf = aDA(paramString);
     if (localf != null)
     {
       AppMethodBeat.o(119502);
       return localf;
     }
-    paramString = aCf(paramString);
+    paramString = aDy(paramString);
     AppMethodBeat.o(119502);
     return paramString;
   }
   
-  public final f aCf(String paramString)
-  {
-    AppMethodBeat.i(119501);
-    f localf = new f();
-    localf.field_userName = paramString;
-    super.get((com.tencent.mm.sdk.e.c)localf, new String[] { getPrimaryKey() });
-    AppMethodBeat.o(119501);
-    return localf;
-  }
-  
-  public final String aCg(String paramString)
-  {
-    AppMethodBeat.i(119505);
-    p.h(paramString, "userName");
-    paramString = aCf(paramString).field_md5;
-    AppMethodBeat.o(119505);
-    return paramString;
-  }
-  
-  public final f aCh(String paramString)
+  public final f aDA(String paramString)
   {
     AppMethodBeat.i(119512);
     p.h(paramString, "username");
@@ -229,15 +210,15 @@ public final class g
       AppMethodBeat.o(119512);
       return null;
     }
-    f localf2 = (f)this.ATT.get(paramString);
+    f localf2 = (f)this.Blr.get(paramString);
     f localf1 = localf2;
     if (localf2 == null)
     {
-      localf2 = (f)this.ATU.get(paramString);
+      localf2 = (f)this.Bls.get(paramString);
       localf1 = localf2;
       if (localf2 == null)
       {
-        localf1 = aCf(paramString);
+        localf1 = aDy(paramString);
         c(localf1);
       }
     }
@@ -245,19 +226,38 @@ public final class g
     return localf1;
   }
   
-  public final f aCi(String paramString)
+  public final f aDB(String paramString)
   {
     AppMethodBeat.i(119513);
     p.h(paramString, "username");
-    f localf2 = (f)this.ATU.get(paramString);
+    f localf2 = (f)this.Bls.get(paramString);
     f localf1 = localf2;
     if (localf2 == null)
     {
-      localf1 = aCf(paramString);
+      localf1 = aDy(paramString);
       c(localf1);
     }
     AppMethodBeat.o(119513);
     return localf1;
+  }
+  
+  public final f aDy(String paramString)
+  {
+    AppMethodBeat.i(119501);
+    f localf = new f();
+    localf.field_userName = paramString;
+    super.get((com.tencent.mm.sdk.e.c)localf, new String[] { getPrimaryKey() });
+    AppMethodBeat.o(119501);
+    return localf;
+  }
+  
+  public final String aDz(String paramString)
+  {
+    AppMethodBeat.i(119505);
+    p.h(paramString, "userName");
+    paramString = aDy(paramString).field_md5;
+    AppMethodBeat.o(119505);
+    return paramString;
   }
   
   public final int b(long paramLong, f paramf)
@@ -282,19 +282,19 @@ public final class g
     return bool;
   }
   
-  public final void dEM()
+  public final void dId()
   {
     AppMethodBeat.i(119516);
     int i = this.db.delete(TABLE, null, null);
-    ad.i(TAG, "dropTable ".concat(String.valueOf(i)));
+    ae.i(TAG, "dropTable ".concat(String.valueOf(i)));
     AppMethodBeat.o(119516);
   }
   
-  public final List<f> elm()
+  public final List<f> eoV()
   {
     AppMethodBeat.i(119511);
     Object localObject1 = new ArrayList();
-    Object localObject2 = ATX;
+    Object localObject2 = Blv;
     localObject2 = this.db.a((String)localObject2, null, 2);
     ((Cursor)localObject2).moveToFirst();
     do
@@ -310,11 +310,11 @@ public final class g
     return localObject1;
   }
   
-  public final List<f> elt()
+  public final List<f> epc()
   {
     AppMethodBeat.i(119510);
     Object localObject1 = new ArrayList();
-    Object localObject2 = ATW;
+    Object localObject2 = Blu;
     localObject2 = this.db.a((String)localObject2, null, 2);
     ((Cursor)localObject2).moveToFirst();
     do
@@ -330,24 +330,24 @@ public final class g
     return localObject1;
   }
   
-  public final int kg(String paramString1, String paramString2)
+  public final int jV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(119506);
     p.h(paramString1, "userName");
     p.h(paramString2, "md5");
-    paramString1 = aCf(paramString1);
+    paramString1 = aDy(paramString1);
     paramString1.field_md5 = paramString2;
     super.replace((com.tencent.mm.sdk.e.c)paramString1);
     AppMethodBeat.o(119506);
     return 0;
   }
   
-  public final int kh(String paramString1, String paramString2)
+  public final int kn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(119507);
     p.h(paramString1, "userName");
     p.h(paramString2, "md5");
-    paramString1 = aCf(paramString1);
+    paramString1 = aDy(paramString1);
     paramString1.field_favoriteMd5 = paramString2;
     super.replace((com.tencent.mm.sdk.e.c)paramString1);
     AppMethodBeat.o(119507);
@@ -356,7 +356,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.i.g
  * JD-Core Version:    0.7.0.1
  */

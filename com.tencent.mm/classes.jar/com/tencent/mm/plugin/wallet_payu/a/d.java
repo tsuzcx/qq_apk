@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet_payu.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.f;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.wallet_core.a;
 import java.util.HashMap;
 
 public class d
-  implements ax
+  implements az
 {
-  private String DsE = null;
-  private int DsF = -1;
+  private String DKj = null;
+  private int DKk = -1;
   
   static
   {
@@ -40,7 +40,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.a.d
  * JD-Core Version:    0.7.0.1
  */

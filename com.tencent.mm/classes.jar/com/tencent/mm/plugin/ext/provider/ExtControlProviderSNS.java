@@ -6,51 +6,49 @@ import android.database.Cursor;
 import android.net.Uri;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fq;
-import com.tencent.mm.g.a.fq.b;
 import com.tencent.mm.g.a.fr;
 import com.tencent.mm.g.a.fr.b;
-import com.tencent.mm.g.a.fz;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bo.a;
+import com.tencent.mm.g.a.fs;
+import com.tencent.mm.g.a.fs.b;
+import com.tencent.mm.g.a.ga;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bq.a;
 import com.tencent.mm.plugin.ext.key.AESUtil;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.List;
 
 @JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public final class ExtControlProviderSNS
   extends ExtContentProviderBase
 {
-  private static boolean grY;
-  private static av rdS;
-  private static final String[] rdU;
-  private static final UriMatcher rdu;
-  private boolean dru = false;
-  private boolean drv = false;
-  private int drw = 0;
-  private String rdV = "";
+  private static boolean guz;
+  private static final UriMatcher rlA;
+  private static com.tencent.mm.sdk.platformtools.aw rlY;
+  private static final String[] rma;
+  private boolean dsA = false;
+  private boolean dsB = false;
+  private int dsC = 0;
+  private String rmb = "";
   
   static
   {
     AppMethodBeat.i(24463);
-    rdU = new String[] { "feedId", "desc", "url", "nickname", "avatar", "timestamp", "mediaCount", "type", "bigImgUrl", "firstImgWidth", "firstImgHeight" };
+    rma = new String[] { "feedId", "desc", "url", "nickname", "avatar", "timestamp", "mediaCount", "type", "bigImgUrl", "firstImgWidth", "firstImgHeight" };
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    rdu = localUriMatcher;
+    rlA = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.ext.SNS", "snsInfo", 17);
-    grY = false;
-    rdS = new av(new av.a()
+    guz = false;
+    rlY = new com.tencent.mm.sdk.platformtools.aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(24456);
-        ExtControlProviderSNS.Jy();
+        ExtControlProviderSNS.JG();
         AppMethodBeat.o(24456);
         return false;
       }
@@ -58,36 +56,36 @@ public final class ExtControlProviderSNS
     AppMethodBeat.o(24463);
   }
   
-  private Cursor cso()
+  private Cursor ctQ()
   {
     AppMethodBeat.i(24462);
-    ad.i("MicroMsg.ExtControlProviderSNS", "getSnsCursor() , needDownload = true");
-    com.tencent.mm.storagebase.e locale = new com.tencent.mm.storagebase.e(rdU, (byte)0);
-    Object localObject1 = new fq();
-    ((fq)localObject1).dqK.dqM = this.rdV;
-    if (!a.IbL.l((com.tencent.mm.sdk.b.b)localObject1))
+    ae.i("MicroMsg.ExtControlProviderSNS", "getSnsCursor() , needDownload = true");
+    com.tencent.mm.storagebase.e locale = new com.tencent.mm.storagebase.e(rma, (byte)0);
+    Object localObject1 = new fr();
+    ((fr)localObject1).drP.drR = this.rmb;
+    if (!a.IvT.l((com.tencent.mm.sdk.b.b)localObject1))
     {
       locale.close();
       AppMethodBeat.o(24462);
       return null;
     }
-    Cursor localCursor = ((fq)localObject1).dqL.dqD;
+    Cursor localCursor = ((fr)localObject1).drQ.drI;
     if (localCursor != null) {}
     for (;;)
     {
       try
       {
         i = localCursor.getCount();
-        ad.i("MicroMsg.ExtControlProviderSNS", "in getSnsCursor(), snsCount = ".concat(String.valueOf(i)));
-        fr localfr;
+        ae.i("MicroMsg.ExtControlProviderSNS", "in getSnsCursor(), snsCount = ".concat(String.valueOf(i)));
+        fs localfs;
         if ((i > 0) && (localCursor.moveToFirst()))
         {
           if (localCursor != null)
           {
-            localfr = new fr();
-            localfr.dqN.dqP = localCursor;
-            if (!a.IbL.l(localfr)) {
-              ad.w("MicroMsg.ExtControlProviderSNS", "ExtGetSnsDataEvent publish error");
+            localfs = new fs();
+            localfs.drS.drU = localCursor;
+            if (!a.IvT.l(localfs)) {
+              ae.w("MicroMsg.ExtControlProviderSNS", "ExtGetSnsDataEvent publish error");
             }
           }
           else
@@ -99,38 +97,38 @@ public final class ExtControlProviderSNS
         }
         else
         {
-          ad.i("MicroMsg.ExtControlProviderSNS", "in getSnsCursor(), matrixCursor Count = " + locale.getCount());
+          ae.i("MicroMsg.ExtControlProviderSNS", "in getSnsCursor(), matrixCursor Count = " + locale.getCount());
           localCursor.close();
           AppMethodBeat.o(24462);
           return locale;
         }
-        ba.aBQ();
-        Object localObject2 = com.tencent.mm.model.c.azp().aTj(localfr.dqO.dqQ);
-        if ((localObject2 == null) || ((int)((com.tencent.mm.o.b)localObject2).gfj <= 0)) {
+        bc.aCg();
+        Object localObject2 = com.tencent.mm.model.c.azF().aUK(localfs.drT.drV);
+        if ((localObject2 == null) || ((int)((com.tencent.mm.contact.c)localObject2).ght <= 0)) {
           continue;
         }
         String str3 = "";
-        switch (localfr.dqO.mediaType)
+        switch (localfs.drT.mediaType)
         {
         case 2: 
-          if ((localfr.dqO.dqV == null) || (localfr.dqO.dqV.size() <= 0) || (getContext() == null)) {
+          if ((localfs.drT.dsa == null) || (localfs.drT.dsa.size() <= 0) || (getContext() == null)) {
             break label816;
           }
-          ad.d("MicroMsg.ExtControlProviderSNS", "uris.size() = [%s]", new Object[] { Integer.valueOf(localfr.dqO.dqV.size()) });
+          ae.d("MicroMsg.ExtControlProviderSNS", "uris.size() = [%s]", new Object[] { Integer.valueOf(localfs.drT.dsa.size()) });
           if ((i != 2) && (i != 6) && (i != 3) && (i != 4)) {
             break label816;
           }
-          localObject1 = (String)localfr.dqO.dqV.get(0);
+          localObject1 = (String)localfs.drT.dsa.get(0);
           String str2 = str3;
-          if (localfr.dqO.dqW != null)
+          if (localfs.drT.dsb != null)
           {
             str2 = str3;
-            if (localfr.dqO.dqW.size() > 0)
+            if (localfs.drT.dsb.size() > 0)
             {
               str2 = str3;
               if (getContext() != null)
               {
-                ad.d("MicroMsg.ExtControlProviderSNS", "bigImgUris.size() = [%s], firstImgWidth = [%s], firstImgHeight = [%s]", new Object[] { Integer.valueOf(localfr.dqO.dqW.size()), Integer.valueOf(localfr.dqO.dqX), Integer.valueOf(localfr.dqO.dqY) });
+                ae.d("MicroMsg.ExtControlProviderSNS", "bigImgUris.size() = [%s], firstImgWidth = [%s], firstImgHeight = [%s]", new Object[] { Integer.valueOf(localfs.drT.dsb.size()), Integer.valueOf(localfs.drT.dsc), Integer.valueOf(localfs.drT.dsd) });
                 if ((i != 2) && (i != 6) && (i != 3))
                 {
                   str2 = str3;
@@ -138,27 +136,27 @@ public final class ExtControlProviderSNS
                 }
                 else
                 {
-                  str2 = (String)localfr.dqO.dqW.get(0);
+                  str2 = (String)localfs.drT.dsb.get(0);
                 }
               }
             }
           }
-          str3 = com.tencent.mm.ak.c.CS(localfr.dqO.dqQ);
+          str3 = com.tencent.mm.aj.c.Du(localfs.drT.drV);
           try
           {
-            String str4 = AESUtil.vi(localfr.dqO.dqR);
-            String str5 = localfr.dqO.dqS;
-            String str6 = ((am)localObject2).adv();
+            String str4 = AESUtil.vy(localfs.drT.drW);
+            String str5 = localfs.drT.drX;
+            String str6 = ((an)localObject2).adG();
             localObject2 = str3;
             if (str3 == null) {
               localObject2 = "";
             }
-            locale.addRow(new Object[] { str4, str5, localObject1, str6, localObject2, Long.valueOf(localfr.dqO.dqT), Integer.valueOf(localfr.dqO.dqU), Integer.valueOf(i), str2, Integer.valueOf(localfr.dqO.dqX), Integer.valueOf(localfr.dqO.dqY) });
+            locale.addRow(new Object[] { str4, str5, localObject1, str6, localObject2, Long.valueOf(localfs.drT.drY), Integer.valueOf(localfs.drT.drZ), Integer.valueOf(i), str2, Integer.valueOf(localfs.drT.dsc), Integer.valueOf(localfs.drT.dsd) });
           }
           catch (Exception localException1)
           {
-            ad.e("MicroMsg.ExtControlProviderSNS", localException1.getMessage());
-            ad.printErrStackTrace("MicroMsg.ExtControlProviderSNS", localException1, "", new Object[0]);
+            ae.e("MicroMsg.ExtControlProviderSNS", localException1.getMessage());
+            ae.printErrStackTrace("MicroMsg.ExtControlProviderSNS", localException1, "", new Object[0]);
           }
           continue;
           i = 1;
@@ -166,8 +164,8 @@ public final class ExtControlProviderSNS
       }
       catch (Exception localException2)
       {
-        ad.e("MicroMsg.ExtControlProviderSNS", localException2.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderSNS", localException2, "", new Object[0]);
+        ae.e("MicroMsg.ExtControlProviderSNS", localException2.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderSNS", localException2, "", new Object[0]);
         if (localCursor != null) {
           localCursor.close();
         }
@@ -191,22 +189,22 @@ public final class ExtControlProviderSNS
     }
   }
   
-  private static void ga(boolean paramBoolean)
+  private static void fZ(boolean paramBoolean)
   {
     AppMethodBeat.i(24459);
     if (paramBoolean)
     {
-      grY = true;
-      rdS.az(15000L, 15000L);
+      guz = true;
+      rlY.ay(15000L, 15000L);
       AppMethodBeat.o(24459);
       return;
     }
-    rdS.az(0L, 0L);
+    rlY.ay(0L, 0L);
     AppMethodBeat.o(24459);
   }
   
   /* Error */
-  private Cursor vj(long paramLong)
+  private Cursor vz(long paramLong)
   {
     // Byte code:
     //   0: iconst_1
@@ -218,7 +216,7 @@ public final class ExtControlProviderSNS
     //   13: lload_1
     //   14: invokestatic 365	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   17: invokevirtual 187	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   20: invokestatic 131	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: invokestatic 131	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: ldc 124
     //   25: ldc_w 367
     //   28: iconst_1
@@ -228,40 +226,40 @@ public final class ExtControlProviderSNS
     //   34: lload_1
     //   35: invokestatic 334	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   38: aastore
-    //   39: invokestatic 369	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 369	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: lload_1
     //   43: lconst_0
     //   44: lcmp
     //   45: ifne +64 -> 109
-    //   48: invokestatic 233	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
+    //   48: invokestatic 233	com/tencent/mm/model/bc:aCg	()Lcom/tencent/mm/model/c;
     //   51: pop
-    //   52: invokestatic 239	com/tencent/mm/model/c:azp	()Lcom/tencent/mm/storage/bp;
-    //   55: invokestatic 374	com/tencent/mm/model/u:aAm	()Ljava/lang/String;
+    //   52: invokestatic 239	com/tencent/mm/model/c:azF	()Lcom/tencent/mm/storage/bq;
+    //   55: invokestatic 374	com/tencent/mm/model/v:aAC	()Ljava/lang/String;
     //   58: invokeinterface 254 2 0
     //   63: astore 4
     //   65: aload 4
     //   67: ifnull +12 -> 79
     //   70: aload 4
-    //   72: getfield 260	com/tencent/mm/o/b:gfj	J
+    //   72: getfield 260	com/tencent/mm/contact/c:ght	J
     //   75: l2i
     //   76: ifgt +51 -> 127
     //   79: ldc 124
     //   81: ldc_w 376
-    //   84: invokestatic 347	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   84: invokestatic 347	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   87: iconst_0
     //   88: istore_3
     //   89: iload_3
     //   90: ifne +158 -> 248
     //   93: ldc 124
     //   95: ldc_w 378
-    //   98: invokestatic 207	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: invokestatic 207	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   101: sipush 24461
     //   104: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: aconst_null
     //   108: areturn
-    //   109: invokestatic 233	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
+    //   109: invokestatic 233	com/tencent/mm/model/bc:aCg	()Lcom/tencent/mm/model/c;
     //   112: pop
-    //   113: invokestatic 239	com/tencent/mm/model/c:azp	()Lcom/tencent/mm/storage/bp;
+    //   113: invokestatic 239	com/tencent/mm/model/c:azF	()Lcom/tencent/mm/storage/bq;
     //   116: lload_1
     //   117: invokeinterface 382 3 0
     //   122: astore 4
@@ -269,13 +267,13 @@ public final class ExtControlProviderSNS
     //   127: aload_0
     //   128: aload 4
     //   130: getfield 387	com/tencent/mm/g/c/aw:field_type	I
-    //   133: invokestatic 391	com/tencent/mm/o/b:lM	(I)Z
-    //   136: putfield 103	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:dru	Z
+    //   133: invokestatic 391	com/tencent/mm/contact/c:lO	(I)Z
+    //   136: putfield 103	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:dsA	Z
     //   139: aload_0
     //   140: aload 4
     //   142: getfield 394	com/tencent/mm/g/c/aw:field_username	Ljava/lang/String;
-    //   145: invokestatic 398	com/tencent/mm/model/u:za	(Ljava/lang/String;)Z
-    //   148: putfield 105	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:drv	Z
+    //   145: invokestatic 398	com/tencent/mm/model/v:zK	(Ljava/lang/String;)Z
+    //   148: putfield 105	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:dsB	Z
     //   151: ldc 124
     //   153: ldc_w 400
     //   156: iconst_3
@@ -288,16 +286,16 @@ public final class ExtControlProviderSNS
     //   168: dup
     //   169: iconst_1
     //   170: aload_0
-    //   171: getfield 103	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:dru	Z
+    //   171: getfield 103	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:dsA	Z
     //   174: invokestatic 405	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   177: aastore
     //   178: dup
     //   179: iconst_2
     //   180: aload_0
-    //   181: getfield 105	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:drv	Z
+    //   181: getfield 105	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:dsB	Z
     //   184: invokestatic 405	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   187: aastore
-    //   188: invokestatic 289	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   188: invokestatic 289	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   191: new 407	com/tencent/mm/pluginsdk/d/a/b
     //   194: dup
     //   195: invokespecial 408	com/tencent/mm/pluginsdk/d/a/b:<init>	()V
@@ -309,22 +307,22 @@ public final class ExtControlProviderSNS
     //   209: aload_0
     //   210: aload 4
     //   212: aload 5
-    //   214: invokespecial 413	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS$2:<init>	(Lcom/tencent/mm/plugin/ext/provider/ExtControlProviderSNS;Lcom/tencent/mm/storage/am;Lcom/tencent/mm/pluginsdk/d/a/b;)V
+    //   214: invokespecial 413	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS$2:<init>	(Lcom/tencent/mm/plugin/ext/provider/ExtControlProviderSNS;Lcom/tencent/mm/storage/an;Lcom/tencent/mm/pluginsdk/d/a/b;)V
     //   217: invokevirtual 416	com/tencent/mm/pluginsdk/d/a/b:c	(JLjava/lang/Runnable;)V
     //   220: goto -131 -> 89
     //   223: astore 4
     //   225: ldc 124
     //   227: aload 4
     //   229: invokevirtual 344	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   232: invokestatic 347	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   232: invokestatic 347	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   235: ldc 124
     //   237: aload 4
     //   239: ldc 109
     //   241: iconst_0
     //   242: anewarray 280	java/lang/Object
-    //   245: invokestatic 351	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   245: invokestatic 351	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   248: aload_0
-    //   249: invokespecial 418	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:cso	()Landroid/database/Cursor;
+    //   249: invokespecial 418	com/tencent/mm/plugin/ext/provider/ExtControlProviderSNS:ctQ	()Landroid/database/Cursor;
     //   252: astore 4
     //   254: sipush 24461
     //   257: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -335,7 +333,7 @@ public final class ExtControlProviderSNS
     //   0	263	0	this	ExtControlProviderSNS
     //   0	263	1	paramLong	long
     //   1	89	3	i	int
-    //   63	148	4	localam	am
+    //   63	148	4	localan	an
     //   223	15	4	localException	Exception
     //   252	9	4	localCursor	Cursor
     //   198	15	5	localb	com.tencent.mm.pluginsdk.d.a.b
@@ -373,58 +371,58 @@ public final class ExtControlProviderSNS
   public final Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(24460);
-    ad.i("MicroMsg.ExtControlProviderSNS", "query() ".concat(String.valueOf(paramUri)));
-    a(paramUri, getContext(), rdu);
+    ae.i("MicroMsg.ExtControlProviderSNS", "query() ".concat(String.valueOf(paramUri)));
+    a(paramUri, getContext(), rlA);
     if (paramUri == null)
     {
-      DF(3);
+      DS(3);
       AppMethodBeat.o(24460);
       return null;
     }
-    if ((bt.isNullOrNil(this.rdo)) || (bt.isNullOrNil(csj())))
+    if ((bu.isNullOrNil(this.rlu)) || (bu.isNullOrNil(ctL())))
     {
-      DF(3);
+      DS(3);
       AppMethodBeat.o(24460);
       return null;
     }
-    if (grY)
+    if (guz)
     {
-      ad.w("MicroMsg.ExtControlProviderSNS", "isBusy, return null");
-      DF(5);
+      ae.w("MicroMsg.ExtControlProviderSNS", "isBusy, return null");
+      DS(5);
       AppMethodBeat.o(24460);
       return null;
     }
-    ga(true);
-    if (!bMn())
+    fZ(true);
+    if (!bNl())
     {
-      ga(false);
-      DF(1);
-      paramUri = this.nNT;
+      fZ(false);
+      DS(1);
+      paramUri = this.nTy;
       AppMethodBeat.o(24460);
       return paramUri;
     }
-    if (!eG(getContext()))
+    if (!eK(getContext()))
     {
-      ad.w("MicroMsg.ExtControlProviderSNS", "invalid appid ! return null");
-      ga(false);
-      DF(2);
+      ae.w("MicroMsg.ExtControlProviderSNS", "invalid appid ! return null");
+      fZ(false);
+      DS(2);
       AppMethodBeat.o(24460);
       return null;
     }
     if ((paramArrayOfString2 == null) || (paramArrayOfString2.length == 0))
     {
-      ad.e("MicroMsg.ExtControlProviderSNS", "invaild selections");
-      ga(false);
-      DF(3);
+      ae.e("MicroMsg.ExtControlProviderSNS", "invaild selections");
+      fZ(false);
+      DS(3);
       AppMethodBeat.o(24460);
       return null;
     }
     paramArrayOfString1 = paramArrayOfString2[0];
-    if (bt.isNullOrNil(paramArrayOfString1))
+    if (bu.isNullOrNil(paramArrayOfString1))
     {
-      ad.e("MicroMsg.ExtControlProviderSNS", "userIdStr should not be null or nil");
-      ga(false);
-      DF(3);
+      ae.e("MicroMsg.ExtControlProviderSNS", "userIdStr should not be null or nil");
+      fZ(false);
+      DS(3);
       AppMethodBeat.o(24460);
       return null;
     }
@@ -437,35 +435,35 @@ public final class ExtControlProviderSNS
         if (bool) {
           l = 0L;
         }
-        switch (rdu.match(paramUri))
+        switch (rlA.match(paramUri))
         {
         default: 
           paramUri = null;
           if (paramUri == null) {
             break label380;
           }
-          DF(0);
-          ga(false);
+          DS(0);
+          fZ(false);
           AppMethodBeat.o(24460);
           return paramUri;
-          l = AESUtil.afI(paramArrayOfString1.trim());
+          l = AESUtil.agE(paramArrayOfString1.trim());
           break;
         case 17: 
-          paramUri = vj(l);
+          paramUri = vz(l);
         }
       }
       catch (Exception paramUri)
       {
-        ad.e("MicroMsg.ExtControlProviderSNS", paramUri.getMessage());
-        ad.printErrStackTrace("MicroMsg.ExtControlProviderSNS", paramUri, "", new Object[0]);
-        ga(false);
-        DF(4);
+        ae.e("MicroMsg.ExtControlProviderSNS", paramUri.getMessage());
+        ae.printErrStackTrace("MicroMsg.ExtControlProviderSNS", paramUri, "", new Object[0]);
+        fZ(false);
+        DS(4);
         AppMethodBeat.o(24460);
         return null;
       }
       continue;
       label380:
-      DF(4);
+      DS(4);
     }
   }
   
@@ -476,7 +474,7 @@ public final class ExtControlProviderSNS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtControlProviderSNS
  * JD-Core Version:    0.7.0.1
  */

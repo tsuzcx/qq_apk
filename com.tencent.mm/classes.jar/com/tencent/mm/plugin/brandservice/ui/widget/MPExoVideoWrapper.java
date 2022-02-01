@@ -29,91 +29,93 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.h;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a;
 import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.protocal.protobuf.es;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import d.g.b.ad;
 import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/model/AudioHelperTool$AudioRespond;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "ERROR_CHECK_TIME", "", "getERROR_CHECK_TIME", "()I", "ERROR_TRY_AGAIN_DELAY_TIME", "getERROR_TRY_AGAIN_DELAY_TIME", "ERROR_TRY_MAX_TIME", "getERROR_TRY_MAX_TIME", "bandwidthFraction", "", "bizVideoProfiler", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "getBizVideoProfiler", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "cacheTimeSec", "getCacheTimeSec", "callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "checkTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getCheckTimer", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "setCheckTimer", "(Lcom/tencent/mm/sdk/platformtools/MTimerHandler;)V", "currPosMs", "getCurrPosMs", "currPosSec", "getCurrPosSec", "downloadPercent", "durationSec", "errorCheckTimer", "getErrorCheckTimer", "setErrorCheckTimer", "errorCount", "getErrorCount", "setErrorCount", "(I)V", "footerView", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoFooter;", "hasExoParam", "", "inBackGround", "isControllerBarShowing", "()Z", "setControllerBarShowing", "(Z)V", "isInFullScreen", "isLive", "setLive", "isPlayOnUiPause", "setPlayOnUiPause", "isPlaying", "isSwitchingResolution", "setSwitchingResolution", "isUIAvailable", "setUIAvailable", "lastSeekAutoPlay", "lastSeekTime", "loading", "Landroid/widget/ProgressBar;", "getLoading", "()Landroid/widget/ProgressBar;", "setLoading", "(Landroid/widget/ProgressBar;)V", "localIsPlaying", "mAudioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "mCoverIv", "Landroid/widget/ImageView;", "mFirstRenderStartTime", "", "mFooterContainer", "Landroid/widget/LinearLayout;", "mLastUpdateBuffer", "mMediaPlayer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/ExoMediaPlayer;", "mMediaPlayerAvailable", "mPlayingBeforeBuffering", "mPlayingBeforeSeeking", "mPlayingWhenBackground", "mStartSeekPosition", "mStartWhenPrepared", "mStartWhenSeekCompleted", "mSurface", "Landroid/view/Surface;", "mSwitchCoverIv", "mSwitchTitleTextView", "Landroid/widget/TextView;", "mVideoDuration", "mVideoHasEndedPlaying", "mVideoHasPrepared", "mVideoHeight", "mVideoLooping", "mVideoPath", "", "mVideoProxyUrl", "mVideoSource", "getMVideoSource", "setMVideoSource", "mVideoTextureView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoTextureView;", "mVideoWidth", "maxBufferMs", "maxDurForQualityMs", "maxInitialBitrate", "minBufferMs", "minDurForQualityMs", "mute", "needShowSwitchTitleTextView", "getNeedShowSwitchTitleTextView", "setNeedShowSwitchTitleTextView", "pauseByDestroyed", "resolutionStr", "showLoadingRunning", "Ljava/lang/Runnable;", "showLoadingTimer", "getShowLoadingTimer", "setShowLoadingTimer", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getUiHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setUiHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "videoDurationMs", "getVideoDurationMs", "videoDurationSec", "getVideoDurationSec", "videoHeight", "getVideoHeight", "videoWidth", "getVideoWidth", "adjustObjectFit", "", "applyMediaPlayerParams", "checkExoPlayerParam", "checkVideoUrl", "clearSurface", "createMediaPlayer", "enterFullScreen", "gain", "getCoverIv", "getFirstRenderTime", "hideCover", "hideLoading", "init", "isNeedToPlay", "isShowingLoading", "isSwitchTitleTextViewShowing", "loss", "lossTransient", "lossTransientCanDuck", "onControllerBarVisible", "visible", "onError", "what", "extra", "onMediaPlayerBufferingUpdate", "percent", "onMediaPlayerCompletion", "onMediaPlayerInfo", "onMediaPlayerPrepared", "onMediaPlayerSeekComplete", "onMediaPlayerVideoSizeChanged", "width", "height", "onPlayDoSwitchEnd", "onSeekEnd", "onSetResolution", "onSwitchEnd", "onSwitchEndShowSuccessWording", "onUIDestroy", "onUIPause", "onUIResume", "onVideoLoadedMetaData", "duration", "onVideoPause", "onVideoPlay", "onVideoProgress", "onVideoWaiting", "onVideoWaitingEnd", "pause", "prepareAsync", "quitFullScreen", "releaseMediaPlayer", "releaseSurface", "reset", "resetErrorCount", "resetMediaPlayer", "resetResolutionStatus", "restartVideo", "seekPosition", "play", "retryWhenError", "seekTo", "ms", "afterPlay", "setExoPlayerParam", "setIMMVideoViewCallback", "_callback", "setKeepScreenOn", "keepScreenOn", "setMute", "_mute", "setSwitchSpeedCover", "setVideoFooterView", "_footerView", "setVideoPath", "_isLive", "_url", "_durationSec", "setVideoSource", "videoSource", "setVideoTotalTime", "seconds", "showCover", "showLoading", "showLoadingDelayed", "delayMillis", "start", "startErrorCheckTimer", "startTimer", "stop", "stopErrorCheckTimer", "stopTimer", "tryPreloadVideo", "unKown", "updateUI", "currPlaySec", "updateVideoStatus", "isPlay", "Companion", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/model/AudioHelperTool$AudioRespond;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "ERROR_CHECK_TIME", "", "getERROR_CHECK_TIME", "()I", "ERROR_TRY_AGAIN_DELAY_TIME", "getERROR_TRY_AGAIN_DELAY_TIME", "ERROR_TRY_MAX_TIME", "getERROR_TRY_MAX_TIME", "bandwidthFraction", "", "bizVideoProfiler", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "getBizVideoProfiler", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "cacheTimeSec", "getCacheTimeSec", "callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "checkTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getCheckTimer", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "setCheckTimer", "(Lcom/tencent/mm/sdk/platformtools/MTimerHandler;)V", "currPosMs", "getCurrPosMs", "currPosSec", "getCurrPosSec", "downloadPercent", "durationSec", "errorCheckTimer", "getErrorCheckTimer", "setErrorCheckTimer", "errorCount", "getErrorCount", "setErrorCount", "(I)V", "footerView", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoFooter;", "hasExoParam", "", "inBackGround", "isControllerBarShowing", "()Z", "setControllerBarShowing", "(Z)V", "isInFullScreen", "isLive", "setLive", "isPlayOnUiPause", "setPlayOnUiPause", "isPlaying", "isSwitchingResolution", "setSwitchingResolution", "isUIAvailable", "setUIAvailable", "lastSeekAutoPlay", "lastSeekTime", "loading", "Landroid/widget/ProgressBar;", "getLoading", "()Landroid/widget/ProgressBar;", "setLoading", "(Landroid/widget/ProgressBar;)V", "localIsPlaying", "mAudioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "mCoverIv", "Landroid/widget/ImageView;", "mFirstRenderStartTime", "", "mFooterContainer", "Landroid/widget/LinearLayout;", "mLastUpdateBuffer", "mMediaPlayer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/ExoMediaPlayer;", "mMediaPlayerAvailable", "mPlayingBeforeBuffering", "mPlayingBeforeSeeking", "mPlayingWhenBackground", "mStartSeekPosition", "mStartWhenPrepared", "mStartWhenSeekCompleted", "mSurface", "Landroid/view/Surface;", "mSwitchCoverIv", "mSwitchTitleTextView", "Landroid/widget/TextView;", "mVideoDuration", "mVideoHasEndedPlaying", "mVideoHasPrepared", "mVideoHeight", "mVideoLooping", "mVideoPath", "", "mVideoProxyUrl", "mVideoSource", "getMVideoSource", "setMVideoSource", "mVideoTextureView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoTextureView;", "mVideoWidth", "maxBufferMs", "maxDurForQualityMs", "maxInitialBitrate", "minBufferMs", "minDurForQualityMs", "mute", "needShowSwitchTitleTextView", "getNeedShowSwitchTitleTextView", "setNeedShowSwitchTitleTextView", "pauseByDestroyed", "resolutionStr", "showLoadingRunning", "Ljava/lang/Runnable;", "showLoadingTimer", "getShowLoadingTimer", "setShowLoadingTimer", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getUiHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setUiHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "videoDurationMs", "getVideoDurationMs", "videoDurationSec", "getVideoDurationSec", "videoHeight", "getVideoHeight", "videoWidth", "getVideoWidth", "adjustObjectFit", "", "applyMediaPlayerParams", "checkExoPlayerParam", "checkVideoUrl", "clearSurface", "createMediaPlayer", "enterFullScreen", "gain", "getCoverIv", "getFirstRenderTime", "hideCover", "hideLoading", "init", "isNeedToPlay", "isShowingLoading", "isSwitchTitleTextViewShowing", "loss", "lossTransient", "lossTransientCanDuck", "onControllerBarVisible", "visible", "onError", "what", "extra", "onMediaPlayerBufferingUpdate", "percent", "onMediaPlayerCompletion", "onMediaPlayerInfo", "onMediaPlayerPrepared", "onMediaPlayerSeekComplete", "onMediaPlayerVideoSizeChanged", "width", "height", "onPlayDoSwitchEnd", "onSeekEnd", "onSetResolution", "onSwitchEnd", "onSwitchEndShowSuccessWording", "onUIDestroy", "onUIPause", "onUIResume", "onVideoLoadedMetaData", "duration", "onVideoPause", "onVideoPlay", "onVideoProgress", "onVideoWaiting", "onVideoWaitingEnd", "pause", "prepareAsync", "quitFullScreen", "releaseMediaPlayer", "releaseSurface", "reset", "resetErrorCount", "resetMediaPlayer", "resetResolutionStatus", "restartVideo", "seekPosition", "play", "retryWhenError", "seekTo", "ms", "afterPlay", "setExoPlayerParam", "setIMMVideoViewCallback", "_callback", "setKeepScreenOn", "keepScreenOn", "setMute", "_mute", "setSwitchSpeedCover", "setVideoFooterView", "_footerView", "setVideoPath", "_isLive", "_url", "_durationSec", "setVideoSource", "videoSource", "setVideoTotalTime", "seconds", "showCover", "showLoading", "showLoadingDelayed", "delayMillis", "start", "startErrorCheckTimer", "startTimer", "stop", "stopErrorCheckTimer", "stopTimer", "tryPreloadVideo", "unKown", "updateUI", "currPlaySec", "updateVideoStatus", "isPlay", "Companion", "plugin-brandservice_release"})
 public final class MPExoVideoWrapper
   extends RelativeLayout
   implements d.a
 {
   public static final String TAG = "MicroMsg.MPExoVideoWrapper";
-  private static final int oto = 500;
-  private static final int otp = 0;
-  public static final MPExoVideoWrapper.a otq;
+  private static final int ozP = 500;
+  private static final int ozQ = 0;
+  public static final MPExoVideoWrapper.a ozR;
   private int bDT;
   private float bDX;
   private int bFv;
   boolean bzN;
-  private boolean cuC;
-  private boolean cuD;
-  private boolean cuE;
-  private boolean cuH;
-  public boolean cuI;
-  private boolean cuJ;
-  private final boolean cuK;
-  private int cuM;
-  private int cuN;
-  private String cuO;
-  private boolean cuQ;
-  ap gIf;
-  private boolean hvp;
-  boolean jBC;
-  private ImageView lkQ;
-  private int llD;
-  private int llm;
-  private int lra;
-  private int lrb;
-  private int lrc;
-  private int lrd;
-  private int lsH;
-  private boolean lsR;
-  public boolean lsZ;
-  public ProgressBar ltc;
-  public boolean ltl;
-  private av lts;
-  private av ltu;
-  private final Runnable ltx;
+  private boolean cvf;
+  private boolean cvg;
+  private boolean cvh;
+  private boolean cvk;
+  public boolean cvl;
+  private boolean cvm;
+  private final boolean cvn;
+  private int cvp;
+  private int cvq;
+  private String cvr;
+  private boolean cvt;
+  aq gKO;
+  private boolean hyd;
+  boolean jEw;
+  private int lpK;
+  private ImageView lpo;
+  private int lqc;
+  private int lvA;
+  private int lvB;
+  private int lvC;
+  private int lvz;
+  public ProgressBar lxB;
+  public boolean lxK;
+  private aw lxR;
+  private aw lxT;
+  private final Runnable lxW;
+  private int lxg;
+  private boolean lxq;
+  public boolean lxy;
   private Surface mSurface;
   private int mVideoHeight;
   private int mVideoWidth;
-  private final int osP;
-  private final int osQ;
-  private final int osR;
-  private LinearLayout osS;
-  ImageView osT;
-  TextView osU;
-  private com.tencent.mm.pluginsdk.ui.h osV;
-  String osW;
-  MPExoVideoTextureView osX;
-  public com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c osY;
-  private i.b osZ;
-  public final d ota;
-  private String otb;
-  public boolean otc;
-  private int otd;
-  public boolean ote;
-  private boolean otf;
-  private int otg;
-  private boolean oth;
-  private long oti;
-  private boolean otj;
-  boolean otk;
-  boolean otl;
-  boolean otm;
-  private av otn;
+  private i.b ozA;
+  public final d ozB;
+  private String ozC;
+  public boolean ozD;
+  private int ozE;
+  public boolean ozF;
+  private boolean ozG;
+  private int ozH;
+  private boolean ozI;
+  private long ozJ;
+  private boolean ozK;
+  boolean ozL;
+  boolean ozM;
+  boolean ozN;
+  private aw ozO;
+  private final int ozq;
+  private final int ozr;
+  private final int ozs;
+  private LinearLayout ozt;
+  ImageView ozu;
+  TextView ozv;
+  private com.tencent.mm.pluginsdk.ui.h ozw;
+  String ozx;
+  MPExoVideoTextureView ozy;
+  public com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c ozz;
   
   static
   {
     AppMethodBeat.i(7467);
-    otq = new MPExoVideoWrapper.a((byte)0);
+    ozR = new MPExoVideoWrapper.a((byte)0);
     TAG = "MicroMsg.MPExoVideoWrapper";
-    oto = 500;
+    ozP = 500;
     AppMethodBeat.o(7467);
   }
   
@@ -121,117 +123,117 @@ public final class MPExoVideoWrapper
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(7466);
-    this.osP = 5000;
-    this.osQ = 200;
-    this.osR = 5;
-    this.gIf = new ap(Looper.getMainLooper());
-    paramContext = d.azW();
+    this.ozq = 5000;
+    this.ozr = 200;
+    this.ozs = 5;
+    this.gKO = new aq(Looper.getMainLooper());
+    paramContext = d.aAm();
     p.g(paramContext, "AudioHelperTool.createTool()");
-    this.ota = paramContext;
-    this.llm = otp;
-    this.lsZ = true;
+    this.ozB = paramContext;
+    this.lpK = ozQ;
+    this.lxy = true;
     this.bDT = 800000;
     this.bDX = 0.75F;
-    this.lra = 10000;
-    this.lrb = 25000;
-    this.lrc = 15000;
-    this.lrd = 30000;
-    this.lts = new av((av.a)new c(this), true);
+    this.lvz = 10000;
+    this.lvA = 25000;
+    this.lvB = 15000;
+    this.lvC = 30000;
+    this.lxR = new aw((aw.a)new c(this), true);
     LayoutInflater.from(getContext()).inflate(2131494956, (ViewGroup)this);
-    this.osX = ((MPExoVideoTextureView)findViewById(2131302512));
-    this.ltc = ((ProgressBar)findViewById(2131306352));
-    this.osS = ((LinearLayout)findViewById(2131306342));
-    this.lkQ = ((ImageView)findViewById(2131302505));
-    this.osT = ((ImageView)findViewById(2131302511));
-    this.osU = ((TextView)findViewById(2131305584));
-    paramContext = this.osX;
+    this.ozy = ((MPExoVideoTextureView)findViewById(2131302512));
+    this.lxB = ((ProgressBar)findViewById(2131306352));
+    this.ozt = ((LinearLayout)findViewById(2131306342));
+    this.lpo = ((ImageView)findViewById(2131302505));
+    this.ozu = ((ImageView)findViewById(2131302511));
+    this.ozv = ((TextView)findViewById(2131305584));
+    paramContext = this.ozy;
     if (paramContext == null) {
-      p.gfZ();
+      p.gkB();
     }
     paramContext.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new m(this));
-    this.ltx = ((Runnable)new aa(this));
-    this.otn = new av((av.a)new ab(this), false);
-    this.ltu = new av((av.a)new k(this), true);
+    this.lxW = ((Runnable)new MPExoVideoWrapper.aa(this));
+    this.ozO = new aw((aw.a)new ab(this), false);
+    this.lxT = new aw((aw.a)new k(this), true);
     AppMethodBeat.o(7466);
   }
   
-  private final void Gw()
+  private final void GC()
   {
     try
     {
       AppMethodBeat.i(7435);
-      if (this.osY != null)
+      if (this.ozz != null)
       {
-        com.tencent.mm.sdk.platformtools.ad.i(TAG, "releaseMediaPlayer");
-        com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+        ae.i(TAG, "releaseMediaPlayer");
+        com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.a(null);
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.a(null);
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.a(null);
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.a(null);
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.a(null);
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.a(null);
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.stop();
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.reset();
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.release();
       }
-      this.osY = null;
-      this.cuJ = false;
+      this.ozz = null;
+      this.cvm = false;
       AppMethodBeat.o(7435);
       return;
     }
     finally {}
   }
   
-  private final void Gx()
+  private final void GD()
   {
     AppMethodBeat.i(7438);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localc.setMute(this.hvp);
+      localc.setMute(this.hyd);
       if (this.mSurface != null)
       {
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.setSurface(this.mSurface);
       }
@@ -239,15 +241,15 @@ public final class MPExoVideoWrapper
     AppMethodBeat.o(7438);
   }
   
-  private final void bSo()
+  private final void bTB()
   {
     AppMethodBeat.i(7436);
-    if ((this.mSurface != null) && (this.cuI))
+    if ((this.mSurface != null) && (this.cvl))
     {
-      MPExoVideoTextureView localMPExoVideoTextureView = this.osX;
+      MPExoVideoTextureView localMPExoVideoTextureView = this.ozy;
       if (localMPExoVideoTextureView != null)
       {
-        localMPExoVideoTextureView.bSo();
+        localMPExoVideoTextureView.bTB();
         AppMethodBeat.o(7436);
         return;
       }
@@ -255,39 +257,39 @@ public final class MPExoVideoWrapper
     AppMethodBeat.o(7436);
   }
   
-  private final void bSu()
+  private final void bTH()
   {
     AppMethodBeat.i(7439);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
       AppMethodBeat.o(7439);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "createMediaPlayer");
-    this.lsH = 0;
+    ae.i(TAG, "createMediaPlayer");
+    this.lxg = 0;
     float f;
-    if (this.otj)
+    if (this.ozK)
     {
-      localObject1 = new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c(this.bDT, this.bDX, this.lra, this.lrb, this.lrc, this.lrd);
-      this.osY = ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1);
-      localObject1 = this.osY;
+      localObject1 = new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c(this.bDT, this.bDX, this.lvz, this.lvA, this.lvB, this.lvC);
+      this.ozz = ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1);
+      localObject1 = this.ozz;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).setLooping(this.cuK);
-      localObject1 = this.osY;
+      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).setLooping(this.cvn);
+      localObject1 = this.ozz;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      Object localObject2 = c.otD;
-      localObject2 = c.bSy();
+      Object localObject2 = c.oAe;
+      localObject2 = c.bTL();
       if (localObject2 == null) {
         break label185;
       }
-      f = ((c.a)localObject2).otK;
+      f = ((c.a)localObject2).oAl;
       label131:
       ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).aF(f);
-      if (this.osY == null) {
+      if (this.ozz == null) {
         break label190;
       }
     }
@@ -295,11 +297,11 @@ public final class MPExoVideoWrapper
     label190:
     for (boolean bool = true;; bool = false)
     {
-      this.cuJ = bool;
-      if (this.cuJ) {
+      this.cvm = bool;
+      if (this.cvm) {
         break label195;
       }
-      com.tencent.mm.sdk.platformtools.ad.e(TAG, "createMediaPlayer, create media player fail");
+      ae.e(TAG, "createMediaPlayer, create media player fail");
       AppMethodBeat.o(7439);
       return;
       localObject1 = new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c();
@@ -308,113 +310,113 @@ public final class MPExoVideoWrapper
       break label131;
     }
     label195:
-    Object localObject1 = this.osY;
+    Object localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.e)new d(this));
-    localObject1 = this.osY;
+    localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.d)new e(this));
-    localObject1 = this.osY;
+    localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.f)new f(this));
-    localObject1 = this.osY;
+    localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.b)new g(this));
-    localObject1 = this.osY;
+    localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.g)new h(this));
-    localObject1 = this.osY;
+    localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.h)new i(this));
-    localObject1 = this.osY;
+    localObject1 = this.ozz;
     if (localObject1 == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).a((b.a)new j(this));
-    if (!bt.isNullOrNil(this.cuO))
+    if (!bu.isNullOrNil(this.cvr))
     {
-      if (bt.isNullOrNil(this.otb))
+      if (bu.isNullOrNil(this.ozC))
       {
-        localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr();
+        localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.j.bob();
         p.g(localObject1, "VideoCore.getInstance()");
-        if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject1).bnt())
+        if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject1).bod())
         {
-          localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr();
+          localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.j.bob();
           p.g(localObject1, "VideoCore.getInstance()");
-          if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject1).bns()) {
-            this.otb = com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr().getProxyUrl(this.cuO);
+          if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject1).boc()) {
+            this.ozC = com.tencent.mm.plugin.appbrand.jsapi.video.j.bob().getProxyUrl(this.cvr);
           }
         }
       }
-      if (!bt.isNullOrNil(this.otb))
+      if (!bu.isNullOrNil(this.ozC))
       {
-        localObject1 = this.osY;
+        localObject1 = this.ozz;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).setDataSource(this.otb);
+        ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).setDataSource(this.ozC);
         AppMethodBeat.o(7439);
         return;
       }
-      localObject1 = this.osY;
+      localObject1 = this.ozz;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
-      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).setDataSource(this.cuO);
+      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).setDataSource(this.cvr);
     }
     AppMethodBeat.o(7439);
   }
   
-  private final void bSw()
+  private final void bTJ()
   {
     AppMethodBeat.i(7463);
-    this.gIf.post((Runnable)new MPExoVideoWrapper.b(this));
+    this.gKO.post((Runnable)new MPExoVideoWrapper.b(this));
     AppMethodBeat.o(7463);
   }
   
-  private final void gS(final boolean paramBoolean)
+  private final void gS(boolean paramBoolean)
   {
     AppMethodBeat.i(7444);
-    this.gIf.post((Runnable)new ae(this, paramBoolean));
+    this.gKO.post((Runnable)new MPExoVideoWrapper.ae(this, paramBoolean));
     AppMethodBeat.o(7444);
   }
   
   private final j.a getBizVideoProfiler()
   {
-    AppMethodBeat.i(210140);
-    Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.ork;
-    localObject = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.XV(getContext().toString());
-    AppMethodBeat.o(210140);
+    AppMethodBeat.i(209177);
+    Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.oxG;
+    localObject = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.YJ(getContext().toString());
+    AppMethodBeat.o(209177);
     return localObject;
   }
   
-  private final void onError(final int paramInt1, final int paramInt2)
+  private final void onError(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(7464);
-    Object localObject = d.g.b.ad.MLZ;
+    Object localObject = ad.Njc;
     localObject = String.format("PlayError %s/%s", Arrays.copyOf(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }, 2));
     p.g(localObject, "java.lang.String.format(format, *args)");
-    com.tencent.mm.sdk.platformtools.ad.w(TAG, "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), localObject, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.w(TAG, "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), localObject, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     this.bFv += 1;
-    if (this.bFv > this.osR)
+    if (this.bFv > this.ozs)
     {
-      this.gIf.post((Runnable)new n(this, (String)localObject, paramInt1, paramInt2));
+      this.gKO.post((Runnable)new MPExoVideoWrapper.n(this, (String)localObject, paramInt1, paramInt2));
       AppMethodBeat.o(7464);
       return;
     }
-    this.gIf.postDelayed((Runnable)new o(this), this.osQ);
+    this.gKO.postDelayed((Runnable)new o(this), this.ozr);
     AppMethodBeat.o(7464);
   }
   
@@ -422,100 +424,100 @@ public final class MPExoVideoWrapper
   {
     AppMethodBeat.i(7454);
     Object localObject;
-    if ((this.osY != null) && (!bt.isNullOrNil(this.cuO)))
+    if ((this.ozz != null) && (!bu.isNullOrNil(this.cvr)))
     {
-      if (bt.isNullOrNil(this.otb))
+      if (bu.isNullOrNil(this.ozC))
       {
-        localObject = com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr();
+        localObject = com.tencent.mm.plugin.appbrand.jsapi.video.j.bob();
         p.g(localObject, "VideoCore.getInstance()");
-        if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject).bnt())
+        if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject).bod())
         {
-          localObject = com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr();
+          localObject = com.tencent.mm.plugin.appbrand.jsapi.video.j.bob();
           p.g(localObject, "VideoCore.getInstance()");
-          if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject).bns()) {
-            this.otb = com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr().getProxyUrl(this.cuO);
+          if (((com.tencent.mm.plugin.appbrand.jsapi.video.j)localObject).boc()) {
+            this.ozC = com.tencent.mm.plugin.appbrand.jsapi.video.j.bob().getProxyUrl(this.cvr);
           }
         }
       }
-      if (bt.isNullOrNil(this.otb)) {
+      if (bu.isNullOrNil(this.ozC)) {
         break label204;
       }
-      localObject = this.osY;
+      localObject = this.ozz;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject).setDataSource(this.otb);
+      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject).setDataSource(this.ozC);
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "video prepare async");
-      tx(500L);
-      this.cuI = false;
-      this.oti = System.currentTimeMillis();
-      if (this.osY != null)
+      ae.i(TAG, "video prepare async");
+      tO(500L);
+      this.cvl = false;
+      this.ozJ = System.currentTimeMillis();
+      if (this.ozz != null)
       {
         localObject = getBizVideoProfiler();
         if (localObject != null)
         {
-          localObject = ((j.a)localObject).XX("10");
+          localObject = ((j.a)localObject).YL("10");
           if (localObject != null)
           {
-            com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j localj = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.ork;
+            com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j localj = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.oxG;
             com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a((es)localObject, getBizVideoProfiler());
           }
         }
-        localObject = this.osY;
+        localObject = this.ozz;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject).prepareAsync();
       }
       AppMethodBeat.o(7454);
       return;
       label204:
-      localObject = this.osY;
+      localObject = this.ozz;
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject).setDataSource(this.cuO);
+      ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject).setDataSource(this.cvr);
     }
   }
   
   private final void reset()
   {
-    this.cuC = false;
-    this.cuD = false;
-    this.cuE = false;
+    this.cvf = false;
+    this.cvg = false;
+    this.cvh = false;
   }
   
-  private final void setVideoTotalTime(final int paramInt)
+  private final void setVideoTotalTime(int paramInt)
   {
     AppMethodBeat.i(7445);
-    this.gIf.post((Runnable)new z(this, paramInt));
+    this.gKO.post((Runnable)new MPExoVideoWrapper.z(this, paramInt));
     AppMethodBeat.o(7445);
   }
   
   private final void stopTimer()
   {
     AppMethodBeat.i(7447);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "stop timer");
-    this.lts.stopTimer();
+    ae.d(TAG, "stop timer");
+    this.lxR.stopTimer();
     AppMethodBeat.o(7447);
   }
   
-  public final boolean Gv()
+  public final boolean GB()
   {
     AppMethodBeat.i(7457);
-    this.otf = false;
+    this.ozG = false;
     stopTimer();
-    MPExoVideoTextureView localMPExoVideoTextureView = this.osX;
+    MPExoVideoTextureView localMPExoVideoTextureView = this.ozy;
     if (localMPExoVideoTextureView != null) {
       localMPExoVideoTextureView.stop();
     }
-    this.lsH = 0;
-    if (this.osY != null)
+    this.lxg = 0;
+    if (this.ozz != null)
     {
-      this.gIf.post((Runnable)new ac(this));
+      this.gKO.post((Runnable)new MPExoVideoWrapper.ac(this));
       AppMethodBeat.o(7457);
       return true;
     }
@@ -523,23 +525,23 @@ public final class MPExoVideoWrapper
     return false;
   }
   
-  public final void T(int paramInt, boolean paramBoolean)
+  public final void V(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(7429);
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "prepare async");
-    bSt();
+    ae.i(TAG, "prepare async");
+    bTG();
     prepareAsync();
-    U(paramInt, paramBoolean);
+    W(paramInt, paramBoolean);
     if (paramBoolean) {
       start();
     }
     AppMethodBeat.o(7429);
   }
   
-  public final void U(int paramInt, boolean paramBoolean)
+  public final void W(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(7448);
-    this.oth = paramBoolean;
+    this.ozI = paramBoolean;
     int j = getVideoDurationMs();
     int i = paramInt;
     if (j > 100)
@@ -549,38 +551,38 @@ public final class MPExoVideoWrapper
         i = j;
       }
     }
-    if ((this.cuI) && (this.osY != null))
+    if ((this.cvl) && (this.ozz != null))
     {
-      this.cuD = bSv();
-      com.tencent.mm.sdk.platformtools.ad.d(TAG, "seekTo mPlayingBeforeSeeking %b, afterPlay %b, seekTime %d", new Object[] { Boolean.valueOf(this.cuD), Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
+      this.cvg = bTI();
+      ae.d(TAG, "seekTo mPlayingBeforeSeeking %b, afterPlay %b, seekTime %d", new Object[] { Boolean.valueOf(this.cvg), Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
       com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc;
       if (!paramBoolean)
       {
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.pause();
       }
       for (;;)
       {
         if ((j != i) && (i > 0)) {
-          this.cuQ = false;
+          this.cvt = false;
         }
-        localc = this.osY;
+        localc = this.ozz;
         if (localc == null) {
-          p.gfZ();
+          p.gkB();
         }
         localc.k(i, paramBoolean);
-        this.otg = i;
-        tx(500L);
-        tF(i / 1000);
+        this.ozH = i;
+        tO(500L);
+        tK(i / 1000);
         AppMethodBeat.o(7448);
         return;
         startTimer();
       }
     }
-    this.otd = i;
+    this.ozE = i;
     AppMethodBeat.o(7448);
   }
   
@@ -589,64 +591,64 @@ public final class MPExoVideoWrapper
     AppMethodBeat.i(175547);
     this.bDT = paramInt1;
     this.bDX = paramFloat;
-    this.lra = paramInt2;
-    this.lrb = paramInt3;
-    this.lrc = paramInt4;
-    this.lrd = paramInt5;
-    if ((this.bDT != 0) && (this.bDX != 0.0F) && (this.lra != 0) && (this.lrb != 0) && (this.lrc != 0) && (this.lrd != 0)) {}
+    this.lvz = paramInt2;
+    this.lvA = paramInt3;
+    this.lvB = paramInt4;
+    this.lvC = paramInt5;
+    if ((this.bDT != 0) && (this.bDX != 0.0F) && (this.lvz != 0) && (this.lvA != 0) && (this.lvB != 0) && (this.lvC != 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.otj = bool;
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "setExoPlayerParam checkExoPlayerParam result = " + this.otj);
+      this.ozK = bool;
+      ae.i(TAG, "setExoPlayerParam checkExoPlayerParam result = " + this.ozK);
       AppMethodBeat.o(175547);
       return;
     }
   }
   
-  public final void aAa() {}
+  public final void aAo() {}
   
-  public final void aAb() {}
+  public final void aAp() {}
   
-  public final void azY() {}
+  public final void aAq() {}
   
-  public final void azZ() {}
+  public final void aAr() {}
   
-  final void bSp()
+  final void bTC()
   {
     AppMethodBeat.i(7431);
-    Object localObject = this.osT;
+    Object localObject = this.ozu;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(0);
     }
-    if (!this.otm)
+    if (!this.ozN)
     {
-      localObject = this.osU;
+      localObject = this.ozv;
       if (localObject != null) {
         ((TextView)localObject).setVisibility(0);
       }
-      this.otk = false;
+      this.ozL = false;
       AppMethodBeat.o(7431);
       return;
     }
-    this.otk = true;
+    this.ozL = true;
     AppMethodBeat.o(7431);
   }
   
-  final void bSq()
+  final void bTD()
   {
     AppMethodBeat.i(7432);
-    if (this.osW != null)
+    if (this.ozx != null)
     {
-      localTextView = this.osU;
+      localTextView = this.ozv;
       if (localTextView != null) {
-        localTextView.setText((CharSequence)getContext().getString(2131761349, new Object[] { this.osW }));
+        localTextView.setText((CharSequence)getContext().getString(2131761349, new Object[] { this.ozx }));
       }
-      this.gIf.postDelayed((Runnable)new s(this), 1500L);
+      this.gKO.postDelayed((Runnable)new s(this), 1500L);
       AppMethodBeat.o(7432);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.w(TAG, "resolutionStr is null");
-    TextView localTextView = this.osU;
+    ae.w(TAG, "resolutionStr is null");
+    TextView localTextView = this.ozv;
     if (localTextView != null)
     {
       localTextView.setVisibility(8);
@@ -656,44 +658,44 @@ public final class MPExoVideoWrapper
     AppMethodBeat.o(7432);
   }
   
-  public final void bSr()
+  public final void bTE()
   {
     AppMethodBeat.i(7433);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "show cover");
-    ImageView localImageView = this.lkQ;
+    ae.d(TAG, "show cover");
+    ImageView localImageView = this.lpo;
     if (localImageView == null) {
-      p.gfZ();
+      p.gkB();
     }
     localImageView.setVisibility(0);
     AppMethodBeat.o(7433);
   }
   
-  public final void bSs()
+  public final void bTF()
   {
     AppMethodBeat.i(7434);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "hide cover");
-    ImageView localImageView = this.lkQ;
+    ae.d(TAG, "hide cover");
+    ImageView localImageView = this.lpo;
     if (localImageView == null) {
-      p.gfZ();
+      p.gkB();
     }
     localImageView.setVisibility(8);
     AppMethodBeat.o(7434);
   }
   
-  public final void bSt()
+  public final void bTG()
   {
     AppMethodBeat.i(7437);
     reset();
-    Gw();
-    bSu();
-    Gx();
+    GC();
+    bTH();
+    GD();
     AppMethodBeat.o(7437);
   }
   
-  public final boolean bSv()
+  public final boolean bTI()
   {
     AppMethodBeat.i(7450);
-    if ((this.otf) || (isPlaying()) || (this.cuD) || (this.cuC))
+    if ((this.ozG) || (isPlaying()) || (this.cvg) || (this.cvf))
     {
       AppMethodBeat.o(7450);
       return true;
@@ -702,16 +704,16 @@ public final class MPExoVideoWrapper
     return false;
   }
   
-  public final void cC(String paramString, int paramInt)
+  public final void cG(String paramString, int paramInt)
   {
     AppMethodBeat.i(7440);
     p.h(paramString, "_url");
-    this.cuO = paramString;
-    this.llD = paramInt;
+    this.cvr = paramString;
+    this.lqc = paramInt;
     this.bzN = false;
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "setVideoPath, media player prepare async");
+    ae.i(TAG, "setVideoPath, media player prepare async");
     prepareAsync();
-    com.tencent.e.h.LTJ.f((Runnable)new y(this), "AppBrandVideo_checkVideoUrl");
+    com.tencent.e.h.MqF.f((Runnable)new y(this), "AppBrandVideo_checkVideoUrl");
     AppMethodBeat.o(7440);
   }
   
@@ -720,7 +722,7 @@ public final class MPExoVideoWrapper
     AppMethodBeat.i(179023);
     if (getVideoDurationSec() > 0)
     {
-      int i = this.lsH * getVideoDurationSec() / 100;
+      int i = this.lxg * getVideoDurationSec() / 100;
       AppMethodBeat.o(179023);
       return i;
     }
@@ -728,17 +730,17 @@ public final class MPExoVideoWrapper
     return 0;
   }
   
-  protected final av getCheckTimer()
+  protected final aw getCheckTimer()
   {
-    return this.lts;
+    return this.lxR;
   }
   
   public final ImageView getCoverIv()
   {
     AppMethodBeat.i(7430);
-    ImageView localImageView = this.lkQ;
+    ImageView localImageView = this.lpo;
     if (localImageView == null) {
-      p.gfZ();
+      p.gkB();
     }
     AppMethodBeat.o(7430);
     return localImageView;
@@ -747,11 +749,11 @@ public final class MPExoVideoWrapper
   public final int getCurrPosMs()
   {
     AppMethodBeat.i(7424);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = localc.getCurrentPosition();
       AppMethodBeat.o(7424);
@@ -764,11 +766,11 @@ public final class MPExoVideoWrapper
   public final int getCurrPosSec()
   {
     AppMethodBeat.i(7425);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = localc.getCurrentPosition() / 1000;
       AppMethodBeat.o(7425);
@@ -780,22 +782,22 @@ public final class MPExoVideoWrapper
   
   protected final int getERROR_CHECK_TIME()
   {
-    return this.osP;
+    return this.ozq;
   }
   
   protected final int getERROR_TRY_AGAIN_DELAY_TIME()
   {
-    return this.osQ;
+    return this.ozr;
   }
   
   protected final int getERROR_TRY_MAX_TIME()
   {
-    return this.osR;
+    return this.ozs;
   }
   
-  protected final av getErrorCheckTimer()
+  protected final aw getErrorCheckTimer()
   {
-    return this.ltu;
+    return this.lxT;
   }
   
   protected final int getErrorCount()
@@ -806,10 +808,10 @@ public final class MPExoVideoWrapper
   public final long getFirstRenderTime()
   {
     AppMethodBeat.i(177797);
-    if (this.oti != 0L)
+    if (this.ozJ != 0L)
     {
       long l1 = System.currentTimeMillis();
-      long l2 = this.oti;
+      long l2 = this.ozJ;
       AppMethodBeat.o(177797);
       return l1 - l2;
     }
@@ -819,43 +821,43 @@ public final class MPExoVideoWrapper
   
   protected final ProgressBar getLoading()
   {
-    return this.ltc;
+    return this.lxB;
   }
   
   protected final int getMVideoSource()
   {
-    return this.llm;
+    return this.lpK;
   }
   
   public final boolean getNeedShowSwitchTitleTextView()
   {
-    return this.otk;
+    return this.ozL;
   }
   
-  protected final av getShowLoadingTimer()
+  protected final aw getShowLoadingTimer()
   {
-    return this.otn;
+    return this.ozO;
   }
   
-  protected final ap getUiHandler()
+  protected final aq getUiHandler()
   {
-    return this.gIf;
+    return this.gKO;
   }
   
   public final int getVideoDurationMs()
   {
     AppMethodBeat.i(7423);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       i = localc.getDuration();
       AppMethodBeat.o(7423);
       return i;
     }
-    int i = this.llD;
+    int i = this.lqc;
     AppMethodBeat.o(7423);
     return i * 1000;
   }
@@ -863,17 +865,17 @@ public final class MPExoVideoWrapper
   public final int getVideoDurationSec()
   {
     AppMethodBeat.i(7422);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       i = localc.getDuration() / 1000;
       AppMethodBeat.o(7422);
       return i;
     }
-    int i = this.llD;
+    int i = this.lqc;
     AppMethodBeat.o(7422);
     return i;
   }
@@ -881,11 +883,11 @@ public final class MPExoVideoWrapper
   public final int getVideoHeight()
   {
     AppMethodBeat.i(7428);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = localc.getVideoHeight();
       AppMethodBeat.o(7428);
@@ -898,11 +900,11 @@ public final class MPExoVideoWrapper
   public final int getVideoWidth()
   {
     AppMethodBeat.i(7427);
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       int i = localc.getVideoWidth();
       AppMethodBeat.o(7427);
@@ -915,20 +917,20 @@ public final class MPExoVideoWrapper
   protected final void hideLoading()
   {
     AppMethodBeat.i(7453);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "hide loading %s", new Object[] { bt.flS() });
-    this.otn.stopTimer();
-    this.gIf.post((Runnable)new l(this));
+    ae.d(TAG, "hide loading %s", new Object[] { bu.fpN() });
+    this.ozO.stopTimer();
+    this.gKO.post((Runnable)new MPExoVideoWrapper.l(this));
     AppMethodBeat.o(7453);
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(7426);
-    if ((this.osY != null) && (this.cuI))
+    if ((this.ozz != null) && (this.cvl))
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       boolean bool = localc.isPlaying();
       AppMethodBeat.o(7426);
@@ -941,73 +943,73 @@ public final class MPExoVideoWrapper
   public final void onUIDestroy()
   {
     AppMethodBeat.i(7459);
-    this.ota.abe();
+    this.ozB.abn();
     setKeepScreenOn(false);
-    Gw();
+    GC();
     pause();
     if (this.mSurface != null)
     {
       Surface localSurface = this.mSurface;
       if (localSurface == null) {
-        p.gfZ();
+        p.gkB();
       }
       localSurface.release();
       this.mSurface = null;
     }
     stopTimer();
-    this.ltu.stopTimer();
-    this.gIf.removeCallbacksAndMessages(null);
+    this.lxT.stopTimer();
+    this.gKO.removeCallbacksAndMessages(null);
     AppMethodBeat.o(7459);
   }
   
   public final void onVideoPause()
   {
     AppMethodBeat.i(7460);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
-    this.gIf.post((Runnable)new t(this));
+    ae.d(TAG, "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
+    this.gKO.post((Runnable)new MPExoVideoWrapper.t(this));
     AppMethodBeat.o(7460);
   }
   
   public final void onVideoPlay()
   {
     AppMethodBeat.i(7461);
-    this.otf = true;
-    this.ltl = false;
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
-    this.gIf.post((Runnable)new u(this));
+    this.ozG = true;
+    this.lxK = false;
+    ae.d(TAG, "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
+    this.gKO.post((Runnable)new MPExoVideoWrapper.u(this));
     AppMethodBeat.o(7461);
   }
   
   public final boolean pause()
   {
     AppMethodBeat.i(7456);
-    this.otf = false;
+    this.ozG = false;
     gS(false);
     stopTimer();
-    if (this.osY != null)
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       if (!localc.isPlaying())
       {
-        com.tencent.mm.sdk.platformtools.ad.i(TAG, "video pause, video is not playing");
-        this.cuH = false;
+        ae.i(TAG, "video pause, video is not playing");
+        this.cvk = false;
         AppMethodBeat.o(7456);
         return true;
       }
-      if (!this.cuI)
+      if (!this.cvl)
       {
-        com.tencent.mm.sdk.platformtools.ad.i(TAG, "video pause, video not prepared yet, pause video when prepared");
-        this.cuH = false;
+        ae.i(TAG, "video pause, video not prepared yet, pause video when prepared");
+        this.cvk = false;
         AppMethodBeat.o(7456);
         return true;
       }
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "video pause");
-      localc = this.osY;
+      ae.i(TAG, "video pause");
+      localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
       localc.pause();
       onVideoPause();
@@ -1018,24 +1020,24 @@ public final class MPExoVideoWrapper
     return false;
   }
   
-  protected final void setCheckTimer(av paramav)
+  protected final void setCheckTimer(aw paramaw)
   {
     AppMethodBeat.i(7421);
-    p.h(paramav, "<set-?>");
-    this.lts = paramav;
+    p.h(paramaw, "<set-?>");
+    this.lxR = paramaw;
     AppMethodBeat.o(7421);
   }
   
   public final void setControllerBarShowing(boolean paramBoolean)
   {
-    this.otm = paramBoolean;
+    this.ozN = paramBoolean;
   }
   
-  protected final void setErrorCheckTimer(av paramav)
+  protected final void setErrorCheckTimer(aw paramaw)
   {
     AppMethodBeat.i(7465);
-    p.h(paramav, "<set-?>");
-    this.ltu = paramav;
+    p.h(paramaw, "<set-?>");
+    this.lxT = paramaw;
     AppMethodBeat.o(7465);
   }
   
@@ -1048,15 +1050,15 @@ public final class MPExoVideoWrapper
   {
     AppMethodBeat.i(7441);
     p.h(paramb, "_callback");
-    this.osZ = paramb;
+    this.ozA = paramb;
     AppMethodBeat.o(7441);
   }
   
-  public final void setKeepScreenOn(final boolean paramBoolean)
+  public final void setKeepScreenOn(boolean paramBoolean)
   {
     AppMethodBeat.i(7462);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "set keep screen on[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.gIf.post((Runnable)new x(this, paramBoolean));
+    ae.d(TAG, "set keep screen on[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.gKO.post((Runnable)new MPExoVideoWrapper.x(this, paramBoolean));
     AppMethodBeat.o(7462);
   }
   
@@ -1067,62 +1069,62 @@ public final class MPExoVideoWrapper
   
   protected final void setLoading(ProgressBar paramProgressBar)
   {
-    this.ltc = paramProgressBar;
+    this.lxB = paramProgressBar;
   }
   
   protected final void setMVideoSource(int paramInt)
   {
-    this.llm = paramInt;
+    this.lpK = paramInt;
   }
   
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(7458);
-    this.hvp = paramBoolean;
-    if (this.osY != null)
+    this.hyd = paramBoolean;
+    if (this.ozz != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.osY;
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c localc = this.ozz;
       if (localc == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localc.setMute(this.hvp);
+      localc.setMute(this.hyd);
     }
     AppMethodBeat.o(7458);
   }
   
   public final void setNeedShowSwitchTitleTextView(boolean paramBoolean)
   {
-    this.otk = paramBoolean;
+    this.ozL = paramBoolean;
   }
   
   protected final void setPlayOnUiPause(boolean paramBoolean)
   {
-    this.ltl = paramBoolean;
+    this.lxK = paramBoolean;
   }
   
-  protected final void setShowLoadingTimer(av paramav)
+  protected final void setShowLoadingTimer(aw paramaw)
   {
     AppMethodBeat.i(7451);
-    p.h(paramav, "<set-?>");
-    this.otn = paramav;
+    p.h(paramaw, "<set-?>");
+    this.ozO = paramaw;
     AppMethodBeat.o(7451);
   }
   
   public final void setSwitchingResolution(boolean paramBoolean)
   {
-    this.otl = paramBoolean;
+    this.ozM = paramBoolean;
   }
   
   protected final void setUIAvailable(boolean paramBoolean)
   {
-    this.lsZ = paramBoolean;
+    this.lxy = paramBoolean;
   }
   
-  protected final void setUiHandler(ap paramap)
+  protected final void setUiHandler(aq paramaq)
   {
     AppMethodBeat.i(7420);
-    p.h(paramap, "<set-?>");
-    this.gIf = paramap;
+    p.h(paramaq, "<set-?>");
+    this.gKO = paramaq;
     AppMethodBeat.o(7420);
   }
   
@@ -1130,126 +1132,126 @@ public final class MPExoVideoWrapper
   {
     AppMethodBeat.i(7442);
     p.h(paramh, "_footerView");
-    this.osV = paramh;
-    paramh = this.osS;
+    this.ozw = paramh;
+    paramh = this.ozt;
     if (paramh == null) {
-      p.gfZ();
+      p.gkB();
     }
     paramh.removeAllViews();
-    paramh = this.osS;
+    paramh = this.ozt;
     if (paramh == null) {
-      p.gfZ();
+      p.gkB();
     }
-    paramh.addView((View)this.osV);
+    paramh.addView((View)this.ozw);
     AppMethodBeat.o(7442);
   }
   
   public final void setVideoSource(int paramInt)
   {
-    this.llm = paramInt;
+    this.lpK = paramInt;
   }
   
   public final boolean start()
   {
     AppMethodBeat.i(7455);
-    if (!this.lsZ)
+    if (!this.lxy)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "ui on pause now, why u call me to play? [%s]", new Object[] { bt.flS() });
+      ae.w(TAG, "ui on pause now, why u call me to play? [%s]", new Object[] { bu.fpN() });
       AppMethodBeat.o(7455);
       return false;
     }
     if (this.mSurface == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "%d it surface not ready, do not start", new Object[] { Integer.valueOf(hashCode()) });
-      this.lsR = true;
-      this.cuH = true;
+      ae.w(TAG, "%d it surface not ready, do not start", new Object[] { Integer.valueOf(hashCode()) });
+      this.lxq = true;
+      this.cvk = true;
       AppMethodBeat.o(7455);
       return false;
     }
-    this.otf = true;
-    if (this.osY == null)
+    this.ozG = true;
+    if (this.ozz == null)
     {
-      bSt();
+      bTG();
       prepareAsync();
     }
-    if (this.osY != null)
+    if (this.ozz != null)
     {
       setKeepScreenOn(true);
-      this.ota.a((d.a)this);
+      this.ozB.a((d.a)this);
       Object localObject1;
-      if (this.cuI)
+      if (this.cvl)
       {
-        localObject1 = this.osY;
+        localObject1 = this.ozz;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         if (((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).isPlaying())
         {
-          com.tencent.mm.sdk.platformtools.ad.i(TAG, "video play, video is playing");
+          ae.i(TAG, "video play, video is playing");
           onVideoPlay();
           AppMethodBeat.o(7455);
           return true;
         }
       }
-      if ((this.osY != null) && (!this.cuI))
+      if ((this.ozz != null) && (!this.cvl))
       {
-        com.tencent.mm.sdk.platformtools.ad.i(TAG, "video play, video not prepared yet, start until prepared");
-        this.cuH = true;
+        ae.i(TAG, "video play, video not prepared yet, start until prepared");
+        this.cvk = true;
         AppMethodBeat.o(7455);
         return true;
       }
-      if (this.osY != null)
+      if (this.ozz != null)
       {
-        localObject1 = this.osY;
+        localObject1 = this.ozz;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         if (((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).getState() == 5)
         {
-          com.tencent.mm.sdk.platformtools.ad.i(TAG, "video play, video has stopped now, try prepare and start when prepared");
-          this.cuH = true;
-          com.tencent.mm.sdk.platformtools.ad.i(TAG, "video play, media player prepare async");
+          ae.i(TAG, "video play, video has stopped now, try prepare and start when prepared");
+          this.cvk = true;
+          ae.i(TAG, "video play, media player prepare async");
           prepareAsync();
           AppMethodBeat.o(7455);
           return true;
         }
       }
       Object localObject2;
-      if (this.cuQ)
+      if (this.cvt)
       {
-        com.tencent.mm.sdk.platformtools.ad.i(TAG, "video play, video has ended playing, clear surface and start again");
-        this.cuQ = false;
-        bSo();
-        bSt();
+        ae.i(TAG, "video play, video has ended playing, clear surface and start again");
+        this.cvt = false;
+        bTB();
+        bTG();
         prepareAsync();
-        if (this.osY != null)
+        if (this.ozz != null)
         {
-          this.cuH = true;
+          this.cvk = true;
           localObject1 = TAG;
-          localObject2 = this.osY;
+          localObject2 = this.ozz;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          com.tencent.mm.sdk.platformtools.ad.i((String)localObject1, "video play, media player state:%s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject2).getState()) });
+          ae.i((String)localObject1, "video play, media player state:%s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject2).getState()) });
           prepareAsync();
         }
         AppMethodBeat.o(7455);
         return true;
       }
-      if (this.osY != null)
+      if (this.ozz != null)
       {
-        localObject1 = this.osY;
+        localObject1 = this.ozz;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         ((com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c)localObject1).start();
         localObject1 = getBizVideoProfiler();
         if (localObject1 != null)
         {
-          localObject1 = ((j.a)localObject1).XX("15");
+          localObject1 = ((j.a)localObject1).YL("15");
           if (localObject1 != null)
           {
-            localObject2 = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.ork;
+            localObject2 = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.oxG;
             com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a((es)localObject1, getBizVideoProfiler());
           }
         }
@@ -1265,186 +1267,102 @@ public final class MPExoVideoWrapper
   protected final void startTimer()
   {
     AppMethodBeat.i(7446);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "start timer");
-    if (!this.lts.fkZ()) {
+    ae.d(TAG, "start timer");
+    if (!this.lxR.foU()) {
       stopTimer();
     }
-    this.lts.CX(oto);
+    this.lxR.Dv(ozP);
     AppMethodBeat.o(7446);
   }
   
-  protected final void tF(final int paramInt)
+  protected final void tK(int paramInt)
   {
     AppMethodBeat.i(7443);
-    this.gIf.post((Runnable)new ad(this, paramInt));
+    this.gKO.post((Runnable)new MPExoVideoWrapper.ad(this, paramInt));
     AppMethodBeat.o(7443);
   }
   
-  final void tx(long paramLong)
+  final void tO(long paramLong)
   {
     AppMethodBeat.i(7452);
-    this.otn.stopTimer();
-    this.otn.CX(paramLong);
+    this.ozO.stopTimer();
+    this.ozO.Dv(paramLong);
     AppMethodBeat.o(7452);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class aa
-    implements Runnable
-  {
-    aa(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7415);
-      if (this.otr.getLoading() != null)
-      {
-        Object localObject = this.otr.getLoading();
-        if (localObject == null) {
-          p.gfZ();
-        }
-        if (((ProgressBar)localObject).getVisibility() != 0)
-        {
-          com.tencent.mm.sdk.platformtools.ad.i(MPExoVideoWrapper.access$getTAG$cp(), "show loading");
-          localObject = this.otr.getLoading();
-          if (localObject != null) {
-            ((ProgressBar)localObject).setVisibility(0);
-          }
-          localObject = this.otr;
-          ((MPExoVideoWrapper)localObject).gIf.post((Runnable)new MPExoVideoWrapper.v((MPExoVideoWrapper)localObject));
-        }
-      }
-      AppMethodBeat.o(7415);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class ab
-    implements av.a
+    implements aw.a
   {
     ab(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(7416);
-      this.otr.getUiHandler().post(MPExoVideoWrapper.C(this.otr));
+      this.ozS.getUiHandler().post(MPExoVideoWrapper.C(this.ozS));
       AppMethodBeat.o(7416);
       return false;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class ac
-    implements Runnable
-  {
-    ac(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7417);
-      com.tencent.mm.sdk.platformtools.ad.i(MPExoVideoWrapper.access$getTAG$cp(), "video stop");
-      this.otr.tF(0);
-      MPExoVideoWrapper.b(this.otr, false);
-      MPExoVideoWrapper.f(this.otr);
-      this.otr.onVideoPause();
-      AppMethodBeat.o(7417);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class ad
-    implements Runnable
-  {
-    ad(MPExoVideoWrapper paramMPExoVideoWrapper, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7418);
-      com.tencent.mm.pluginsdk.ui.h localh = MPExoVideoWrapper.w(this.otr);
-      if (localh == null) {
-        p.gfZ();
-      }
-      localh.tt(paramInt);
-      AppMethodBeat.o(7418);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class ae
-    implements Runnable
-  {
-    ae(MPExoVideoWrapper paramMPExoVideoWrapper, boolean paramBoolean) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7419);
-      com.tencent.mm.pluginsdk.ui.h localh = MPExoVideoWrapper.w(this.otr);
-      if (localh == null) {
-        p.gfZ();
-      }
-      localh.gS(paramBoolean);
-      AppMethodBeat.o(7419);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class c
-    implements av.a
+    implements aw.a
   {
     c(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(7388);
-      this.otr.isPlaying();
-      if (this.otr.ltl)
+      this.ozS.isPlaying();
+      if (this.ozS.lxK)
       {
-        com.tencent.mm.sdk.platformtools.ad.d(MPExoVideoWrapper.access$getTAG$cp(), "checkTimer onVideoPlay");
-        this.otr.onVideoPlay();
-        this.otr.setPlayOnUiPause(false);
+        ae.d(MPExoVideoWrapper.access$getTAG$cp(), "checkTimer onVideoPlay");
+        this.ozS.onVideoPlay();
+        this.ozS.setPlayOnUiPause(false);
       }
       for (;;)
       {
         AppMethodBeat.o(7388);
         return true;
-        this.otr.tF(this.otr.getCurrPosSec());
-        MPExoVideoWrapper.b(this.otr, this.otr.isPlaying());
-        MPExoVideoWrapper.B(this.otr);
+        this.ozS.tK(this.ozS.getCurrPosSec());
+        MPExoVideoWrapper.b(this.ozS, this.ozS.isPlaying());
+        MPExoVideoWrapper.B(this.ozS);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "what", "", "extra", "onInfo"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "what", "", "extra", "onInfo"})
   static final class d
     implements b.e
   {
     d(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
-    public final boolean ca(int paramInt1, int paramInt2)
+    public final boolean cb(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(210132);
-      boolean bool = MPExoVideoWrapper.a(this.otr, paramInt1, paramInt2);
-      AppMethodBeat.o(210132);
+      AppMethodBeat.i(209169);
+      boolean bool = MPExoVideoWrapper.a(this.ozS, paramInt1, paramInt2);
+      AppMethodBeat.o(209169);
       return bool;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "what", "", "extra", "onError"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "what", "", "extra", "onError"})
   static final class e
     implements b.d
   {
     e(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
-    public final boolean cb(int paramInt1, int paramInt2)
+    public final boolean cc(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(210133);
-      MPExoVideoWrapper.b(this.otr, paramInt1, paramInt2);
-      AppMethodBeat.o(210133);
+      AppMethodBeat.i(209170);
+      MPExoVideoWrapper.b(this.ozS, paramInt1, paramInt2);
+      AppMethodBeat.o(209170);
       return false;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "onPrepared"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "onPrepared"})
   static final class f
     implements b.f
   {
@@ -1452,35 +1370,35 @@ public final class MPExoVideoWrapper
     
     public final void a(b paramb)
     {
-      AppMethodBeat.i(210134);
-      MPExoVideoWrapper.r(this.otr);
-      if (MPExoVideoWrapper.s(this.otr) != null)
+      AppMethodBeat.i(209171);
+      MPExoVideoWrapper.r(this.ozS);
+      if (MPExoVideoWrapper.s(this.ozS) != null)
       {
-        paramb = MPExoVideoWrapper.s(this.otr);
+        paramb = MPExoVideoWrapper.s(this.ozS);
         if (paramb == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramb.dq("", "");
+        paramb.ds("", "");
       }
-      AppMethodBeat.o(210134);
+      AppMethodBeat.o(209171);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "onCompletion"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "onCompletion"})
   static final class g
     implements b.b
   {
     g(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
-    public final void GB()
+    public final void GH()
     {
-      AppMethodBeat.i(210135);
-      MPExoVideoWrapper.t(this.otr);
-      AppMethodBeat.o(210135);
+      AppMethodBeat.i(209172);
+      MPExoVideoWrapper.t(this.ozS);
+      AppMethodBeat.o(209172);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "onSeekComplete"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "onSeekComplete"})
   static final class h
     implements b.g
   {
@@ -1488,13 +1406,13 @@ public final class MPExoVideoWrapper
     
     public final void b(b paramb)
     {
-      AppMethodBeat.i(210136);
-      MPExoVideoWrapper.u(this.otr);
-      AppMethodBeat.o(210136);
+      AppMethodBeat.i(209173);
+      MPExoVideoWrapper.u(this.ozS);
+      AppMethodBeat.o(209173);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "width", "", "height", "onVideoSizeChanged"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "width", "", "height", "onVideoSizeChanged"})
   static final class i
     implements b.h
   {
@@ -1502,40 +1420,40 @@ public final class MPExoVideoWrapper
     
     public final void a(b paramb, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(210137);
-      MPExoVideoWrapper.c(this.otr, paramInt1, paramInt2);
-      AppMethodBeat.o(210137);
+      AppMethodBeat.i(209174);
+      MPExoVideoWrapper.c(this.ozS, paramInt1, paramInt2);
+      AppMethodBeat.o(209174);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "percent", "", "onBufferingUpdate"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "mp", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "kotlin.jvm.PlatformType", "percent", "", "onBufferingUpdate"})
   static final class j
     implements b.a
   {
     j(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
-    public final void gM(int paramInt)
+    public final void gN(int paramInt)
     {
-      AppMethodBeat.i(210138);
-      MPExoVideoWrapper.b(this.otr, paramInt);
-      AppMethodBeat.o(210138);
+      AppMethodBeat.i(209175);
+      MPExoVideoWrapper.b(this.ozS, paramInt);
+      AppMethodBeat.o(209175);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class k
-    implements av.a
+    implements aw.a
   {
     k(MPExoVideoWrapper paramMPExoVideoWrapper) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(7396);
-      if (this.otr.getErrorCount() > 0)
+      if (this.ozS.getErrorCount() > 0)
       {
-        if (this.otr.isPlaying())
+        if (this.ozS.isPlaying())
         {
-          MPExoVideoWrapper.D(this.otr);
+          MPExoVideoWrapper.D(this.ozS);
           AppMethodBeat.o(7396);
           return false;
         }
@@ -1547,37 +1465,7 @@ public final class MPExoVideoWrapper
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class l
-    implements Runnable
-  {
-    l(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7397);
-      if (this.otr.getLoading() != null)
-      {
-        Object localObject = this.otr.getLoading();
-        if (localObject == null) {
-          p.gfZ();
-        }
-        if (((ProgressBar)localObject).getVisibility() != 8)
-        {
-          com.tencent.mm.sdk.platformtools.ad.i(MPExoVideoWrapper.access$getTAG$cp(), "hide loading");
-          localObject = this.otr.getLoading();
-          if (localObject != null) {
-            ((ProgressBar)localObject).setVisibility(8);
-          }
-          localObject = this.otr;
-          ((MPExoVideoWrapper)localObject).gIf.postDelayed((Runnable)new MPExoVideoWrapper.w((MPExoVideoWrapper)localObject), 500L);
-        }
-      }
-      AppMethodBeat.o(7397);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper$init$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper$init$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-brandservice_release"})
   public static final class m
     implements TextureView.SurfaceTextureListener
   {
@@ -1585,72 +1473,72 @@ public final class MPExoVideoWrapper
     {
       AppMethodBeat.i(7402);
       p.h(paramSurfaceTexture, "surface");
-      com.tencent.mm.sdk.platformtools.ad.i(MPExoVideoWrapper.access$getTAG$cp(), "on surface texture available, width %d height %d switching %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.otr.otl) });
-      Object localObject = MPExoVideoWrapper.g(this.otr);
+      ae.i(MPExoVideoWrapper.access$getTAG$cp(), "on surface texture available, width %d height %d switching %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.ozS.ozM) });
+      Object localObject = MPExoVideoWrapper.g(this.ozS);
       if (localObject != null)
       {
-        localObject = ((j.a)localObject).XX("9");
+        localObject = ((j.a)localObject).YL("9");
         if (localObject != null)
         {
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j localj = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.ork;
+          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j localj = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.oxG;
           com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a((es)localObject, "PlayerType", "3");
           if (localObject != null)
           {
-            localj = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.ork;
-            com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a((es)localObject, MPExoVideoWrapper.g(this.otr));
+            localj = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.oxG;
+            com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a((es)localObject, MPExoVideoWrapper.g(this.ozS));
           }
         }
       }
-      this.otr.startTimer();
-      localObject = MPExoVideoWrapper.h(this.otr);
+      this.ozS.startTimer();
+      localObject = MPExoVideoWrapper.h(this.ozS);
       if (localObject != null) {
-        ((MPExoVideoTextureView)localObject).fzf();
+        ((MPExoVideoTextureView)localObject).fDh();
       }
-      localObject = MPExoVideoWrapper.h(this.otr);
+      localObject = MPExoVideoWrapper.h(this.ozS);
       if (localObject != null) {
-        ((MPExoVideoTextureView)localObject).h(MPExoVideoWrapper.b(this.otr));
+        ((MPExoVideoTextureView)localObject).h(MPExoVideoWrapper.b(this.ozS));
       }
-      MPExoVideoWrapper.a(this.otr, new Surface(paramSurfaceTexture));
-      if ((MPExoVideoWrapper.c(this.otr) == null) || (!MPExoVideoWrapper.d(this.otr))) {
-        if (this.otr.otl) {
-          this.otr.T(MPExoVideoWrapper.i(this.otr), MPExoVideoWrapper.j(this.otr));
+      MPExoVideoWrapper.a(this.ozS, new Surface(paramSurfaceTexture));
+      if ((MPExoVideoWrapper.c(this.ozS) == null) || (!MPExoVideoWrapper.d(this.ozS))) {
+        if (this.ozS.ozM) {
+          this.ozS.V(MPExoVideoWrapper.i(this.ozS), MPExoVideoWrapper.j(this.ozS));
         }
       }
       for (;;)
       {
-        if ((!MPExoVideoWrapper.l(this.otr)) && (this.otr.otl)) {
-          MPExoVideoWrapper.m(this.otr);
+        if ((!MPExoVideoWrapper.l(this.ozS)) && (this.ozS.ozM)) {
+          MPExoVideoWrapper.m(this.ozS);
         }
         AppMethodBeat.o(7402);
         return;
-        this.otr.bSt();
-        MPExoVideoWrapper.k(this.otr);
+        this.ozS.bTG();
+        MPExoVideoWrapper.k(this.ozS);
         continue;
-        com.tencent.mm.sdk.platformtools.ad.i(MPExoVideoWrapper.access$getTAG$cp(), "init, setSurface");
-        paramSurfaceTexture = MPExoVideoWrapper.c(this.otr);
+        ae.i(MPExoVideoWrapper.access$getTAG$cp(), "init, setSurface");
+        paramSurfaceTexture = MPExoVideoWrapper.c(this.ozS);
         if (paramSurfaceTexture == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramSurfaceTexture.setSurface(MPExoVideoWrapper.b(this.otr));
-        if (MPExoVideoWrapper.e(this.otr))
+        paramSurfaceTexture.setSurface(MPExoVideoWrapper.b(this.ozS));
+        if (MPExoVideoWrapper.e(this.ozS))
         {
-          paramSurfaceTexture = MPExoVideoWrapper.g(this.otr);
+          paramSurfaceTexture = MPExoVideoWrapper.g(this.ozS);
           if (paramSurfaceTexture != null)
           {
-            paramSurfaceTexture = paramSurfaceTexture.XX("15");
+            paramSurfaceTexture = paramSurfaceTexture.YL("15");
             if (paramSurfaceTexture != null)
             {
-              localObject = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.ork;
-              com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a(paramSurfaceTexture, MPExoVideoWrapper.g(this.otr));
+              localObject = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.oxG;
+              com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j.a(paramSurfaceTexture, MPExoVideoWrapper.g(this.ozS));
             }
           }
-          paramSurfaceTexture = MPExoVideoWrapper.c(this.otr);
+          paramSurfaceTexture = MPExoVideoWrapper.c(this.ozS);
           if (paramSurfaceTexture == null) {
-            p.gfZ();
+            p.gkB();
           }
           paramSurfaceTexture.start();
         }
-        MPExoVideoWrapper.a(this.otr, false);
+        MPExoVideoWrapper.a(this.ozS, false);
       }
     }
     
@@ -1658,13 +1546,13 @@ public final class MPExoVideoWrapper
     {
       AppMethodBeat.i(7401);
       p.h(paramSurfaceTexture, "surface");
-      com.tencent.mm.sdk.platformtools.ad.i(MPExoVideoWrapper.access$getTAG$cp(), "on surface texture destroyed");
-      MPExoVideoWrapper.a(this.otr, null);
-      if ((MPExoVideoWrapper.c(this.otr) != null) && (MPExoVideoWrapper.d(this.otr))) {
-        if (this.otr.isPlaying())
+      ae.i(MPExoVideoWrapper.access$getTAG$cp(), "on surface texture destroyed");
+      MPExoVideoWrapper.a(this.ozS, null);
+      if ((MPExoVideoWrapper.c(this.ozS) != null) && (MPExoVideoWrapper.d(this.ozS))) {
+        if (this.ozS.isPlaying())
         {
-          MPExoVideoWrapper.a(this.otr, true);
-          paramSurfaceTexture = MPExoVideoWrapper.c(this.otr);
+          MPExoVideoWrapper.a(this.ozS, true);
+          paramSurfaceTexture = MPExoVideoWrapper.c(this.ozS);
           if (paramSurfaceTexture != null) {
             paramSurfaceTexture.pause();
           }
@@ -1674,8 +1562,8 @@ public final class MPExoVideoWrapper
       {
         AppMethodBeat.o(7401);
         return false;
-        MPExoVideoWrapper.f(this.otr);
-        MPExoVideoWrapper.a(this.otr, false);
+        MPExoVideoWrapper.f(this.ozS);
+        MPExoVideoWrapper.a(this.ozS, false);
       }
     }
     
@@ -1690,30 +1578,30 @@ public final class MPExoVideoWrapper
     {
       AppMethodBeat.i(7399);
       p.h(paramSurfaceTexture, "surface");
-      if (this.otr.getLoading() != null)
+      if (this.ozS.getLoading() != null)
       {
-        paramSurfaceTexture = this.otr.getLoading();
+        paramSurfaceTexture = this.ozS.getLoading();
         if (paramSurfaceTexture == null) {
-          p.gfZ();
+          p.gkB();
         }
         if (paramSurfaceTexture.getVisibility() == 0) {
-          this.otr.hideLoading();
+          this.ozS.hideLoading();
         }
       }
-      if (MPExoVideoWrapper.a(this.otr) != null)
+      if (MPExoVideoWrapper.a(this.ozS) != null)
       {
-        paramSurfaceTexture = MPExoVideoWrapper.a(this.otr);
+        paramSurfaceTexture = MPExoVideoWrapper.a(this.ozS);
         if (paramSurfaceTexture == null) {
-          p.gfZ();
+          p.gkB();
         }
-        if ((paramSurfaceTexture.getVisibility() == 0) && ((this.otr.isPlaying()) || (this.otr.getCurrPosSec() != 0))) {
-          this.otr.getUiHandler().post((Runnable)new a(this));
+        if ((paramSurfaceTexture.getVisibility() == 0) && ((this.ozS.isPlaying()) || (this.ozS.getCurrPosSec() != 0))) {
+          this.ozS.getUiHandler().post((Runnable)new a(this));
         }
       }
       AppMethodBeat.o(7399);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1722,37 +1610,14 @@ public final class MPExoVideoWrapper
       public final void run()
       {
         AppMethodBeat.i(7398);
-        com.tencent.mm.sdk.platformtools.ad.d(MPExoVideoWrapper.access$getTAG$cp(), "hide cover onSurfaceTextureUpdated");
-        this.ots.otr.bSs();
+        ae.d(MPExoVideoWrapper.access$getTAG$cp(), "hide cover onSurfaceTextureUpdated");
+        this.ozT.ozS.bTF();
         AppMethodBeat.o(7398);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class n
-    implements Runnable
-  {
-    n(MPExoVideoWrapper paramMPExoVideoWrapper, String paramString, int paramInt1, int paramInt2) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7403);
-      this.otr.Gv();
-      this.otr.hideLoading();
-      if (MPExoVideoWrapper.s(this.otr) != null)
-      {
-        i.b localb = MPExoVideoWrapper.s(this.otr);
-        if (localb == null) {
-          p.gfZ();
-        }
-        localb.c("", "", this.ott, paramInt1, paramInt2);
-      }
-      AppMethodBeat.o(7403);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class o
     implements Runnable
   {
@@ -1761,14 +1626,14 @@ public final class MPExoVideoWrapper
     public final void run()
     {
       AppMethodBeat.i(7404);
-      this.otr.tx(500L);
-      this.otr.tF(this.otr.getCurrPosSec());
-      MPExoVideoWrapper.A(this.otr);
+      this.ozS.tO(500L);
+      this.ozS.tK(this.ozS.getCurrPosSec());
+      MPExoVideoWrapper.A(this.ozS);
       AppMethodBeat.o(7404);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class p
     implements Runnable
   {
@@ -1776,15 +1641,15 @@ public final class MPExoVideoWrapper
     
     public final void run()
     {
-      AppMethodBeat.i(210139);
-      if (this.otr.otl) {
-        MPExoVideoWrapper.n(this.otr);
+      AppMethodBeat.i(209176);
+      if (this.ozS.ozM) {
+        MPExoVideoWrapper.n(this.ozS);
       }
-      AppMethodBeat.o(210139);
+      AppMethodBeat.o(209176);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class q
     implements Runnable
   {
@@ -1793,12 +1658,12 @@ public final class MPExoVideoWrapper
     public final void run()
     {
       AppMethodBeat.i(7405);
-      MPExoVideoWrapper.n(this.otr);
+      MPExoVideoWrapper.n(this.ozS);
       AppMethodBeat.o(7405);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class r
     implements Runnable
   {
@@ -1807,16 +1672,16 @@ public final class MPExoVideoWrapper
     public final void run()
     {
       AppMethodBeat.i(7406);
-      ImageView localImageView = MPExoVideoWrapper.o(this.otr);
+      ImageView localImageView = MPExoVideoWrapper.o(this.ozS);
       if (localImageView != null) {
         localImageView.setVisibility(8);
       }
-      MPExoVideoWrapper.p(this.otr);
+      MPExoVideoWrapper.p(this.ozS);
       AppMethodBeat.o(7406);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class s
     implements Runnable
   {
@@ -1825,7 +1690,7 @@ public final class MPExoVideoWrapper
     public final void run()
     {
       AppMethodBeat.i(7407);
-      TextView localTextView = MPExoVideoWrapper.q(this.otr);
+      TextView localTextView = MPExoVideoWrapper.q(this.ozS);
       if (localTextView != null)
       {
         localTextView.setVisibility(8);
@@ -1836,111 +1701,7 @@ public final class MPExoVideoWrapper
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class t
-    implements Runnable
-  {
-    t(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7408);
-      this.otr.setKeepScreenOn(false);
-      MPExoVideoWrapper.x(this.otr).abe();
-      if (MPExoVideoWrapper.s(this.otr) != null)
-      {
-        i.b localb = MPExoVideoWrapper.s(this.otr);
-        if (localb == null) {
-          p.gfZ();
-        }
-        localb.ds("", "");
-      }
-      AppMethodBeat.o(7408);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class u
-    implements Runnable
-  {
-    u(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7409);
-      this.otr.setKeepScreenOn(true);
-      MPExoVideoWrapper.x(this.otr).a((d.a)this.otr);
-      if (MPExoVideoWrapper.s(this.otr) != null)
-      {
-        i.b localb = MPExoVideoWrapper.s(this.otr);
-        if (localb == null) {
-          p.gfZ();
-        }
-        localb.dt("", "");
-      }
-      MPExoVideoWrapper.b(this.otr, true);
-      this.otr.startTimer();
-      AppMethodBeat.o(7409);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class v
-    implements Runnable
-  {
-    v(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7410);
-      if (MPExoVideoWrapper.s(this.otr) != null)
-      {
-        i.b localb = MPExoVideoWrapper.s(this.otr);
-        if (localb == null) {
-          p.gfZ();
-        }
-        localb.du("", "");
-      }
-      AppMethodBeat.o(7410);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class w
-    implements Runnable
-  {
-    w(MPExoVideoWrapper paramMPExoVideoWrapper) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7411);
-      if (MPExoVideoWrapper.s(this.otr) != null)
-      {
-        i.b localb = MPExoVideoWrapper.s(this.otr);
-        if (localb == null) {
-          p.gfZ();
-        }
-        localb.dv("", "");
-      }
-      AppMethodBeat.o(7411);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class x
-    implements Runnable
-  {
-    x(MPExoVideoWrapper paramMPExoVideoWrapper, boolean paramBoolean) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7412);
-      MPExoVideoWrapper.c(this.otr, paramBoolean);
-      AppMethodBeat.o(7412);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class y
     implements Runnable
   {
@@ -1949,42 +1710,14 @@ public final class MPExoVideoWrapper
     public final void run()
     {
       AppMethodBeat.i(7413);
-      MPExoVideoWrapper.v(this.otr);
+      MPExoVideoWrapper.v(this.ozS);
       AppMethodBeat.o(7413);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class z
-    implements Runnable
-  {
-    z(MPExoVideoWrapper paramMPExoVideoWrapper, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(7414);
-      if (MPExoVideoWrapper.w(this.otr) != null)
-      {
-        com.tencent.mm.pluginsdk.ui.h localh = MPExoVideoWrapper.w(this.otr);
-        if (localh == null) {
-          p.gfZ();
-        }
-        if (localh.getVideoTotalTime() != paramInt)
-        {
-          localh = MPExoVideoWrapper.w(this.otr);
-          if (localh == null) {
-            p.gfZ();
-          }
-          localh.setVideoTotalTime(paramInt);
-        }
-      }
-      AppMethodBeat.o(7414);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPExoVideoWrapper
  * JD-Core Version:    0.7.0.1
  */

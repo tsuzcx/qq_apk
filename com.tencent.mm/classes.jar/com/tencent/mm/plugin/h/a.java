@@ -1,50 +1,52 @@
 package com.tencent.mm.plugin.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.kernel.api.bucket.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  extends com.tencent.mm.model.t
+  extends u
   implements b
 {
-  private static a piP;
+  private static a ppu;
   
   private a()
   {
-    super(com.tencent.mm.bc.t.class);
+    super(t.class);
   }
   
-  public static String azH()
+  public static String azX()
   {
     AppMethodBeat.i(151486);
     Object localObject = new StringBuilder();
-    g.ajD();
-    localObject = g.ajC().gBm + "package/";
+    g.ajS();
+    localObject = g.ajR().gDT + "package/";
     AppMethodBeat.o(151486);
     return localObject;
   }
   
-  public static a cca()
+  public static a cdp()
   {
     try
     {
       AppMethodBeat.i(151484);
-      if (piP == null) {
-        piP = new a();
+      if (ppu == null) {
+        ppu = new a();
       }
-      a locala = piP;
+      a locala = ppu;
       AppMethodBeat.o(151484);
       return locala;
     }
     finally {}
   }
   
-  public final List<String> ajJ()
+  public final List<String> ajY()
   {
     AppMethodBeat.i(151485);
     LinkedList localLinkedList = new LinkedList();

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.protocal.protobuf.dai;
-import com.tencent.mm.protocal.protobuf.daj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.dbc;
+import com.tencent.mm.protocal.protobuf.dbd;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,23 +29,23 @@ public final class al
     AppMethodBeat.i(131139);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dai();
-    ((b.a)localObject).hNN = new daj();
+    ((b.a)localObject).hQF = new dbc();
+    ((b.a)localObject).hQG = new dbd();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendsmstomfriend";
     ((b.a)localObject).funcId = 432;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dai)this.rr.hNK.hNQ;
-    ((dai)localObject).xbo = paramString;
-    ((dai)localObject).GOu = new LinkedList();
-    ((dai)localObject).GOt = paramList.size();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dbc)this.rr.hQD.hQJ;
+    ((dbc)localObject).xrf = paramString;
+    ((dbc)localObject).HhU = new LinkedList();
+    ((dbc)localObject).HhT = paramList.size();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       paramList = (String)paramString.next();
-      if (!bt.isNullOrNil(paramList)) {
-        ((dai)localObject).GOu.add(new cwt().aPy(paramList));
+      if (!bu.isNullOrNil(paramList)) {
+        ((dbc)localObject).HhU.add(new cxn().aQV(paramList));
       }
     }
     AppMethodBeat.o(131139);

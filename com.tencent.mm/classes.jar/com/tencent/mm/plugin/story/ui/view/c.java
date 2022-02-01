@@ -9,19 +9,19 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/CommentInputDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentInputView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "getCommentInputView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "setCommentInputView", "(Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;)V", "params", "Landroid/view/ViewGroup$LayoutParams;", "getParams", "()Landroid/view/ViewGroup$LayoutParams;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/CommentInputDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentInputView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "getCommentInputView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "setCommentInputView", "(Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;)V", "params", "Landroid/view/ViewGroup$LayoutParams;", "getParams", "()Landroid/view/ViewGroup$LayoutParams;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "plugin-story_release"})
 public final class c
   extends e
 {
-  StoryCommentInputView AYu;
-  private final ViewGroup.LayoutParams vUi;
+  StoryCommentInputView BpS;
+  private final ViewGroup.LayoutParams wgm;
   
   public c(Context paramContext)
   {
     super(paramContext, 2131820846);
     AppMethodBeat.i(120021);
-    this.AYu = new StoryCommentInputView(paramContext);
-    this.vUi = new ViewGroup.LayoutParams(-1, -1);
+    this.BpS = new StoryCommentInputView(paramContext);
+    this.wgm = new ViewGroup.LayoutParams(-1, -1);
     gK();
     AppMethodBeat.o(120021);
   }
@@ -36,7 +36,7 @@ public final class c
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(120018);
-    setContentView((View)this.AYu, this.vUi);
+    setContentView((View)this.BpS, this.wgm);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null)
@@ -54,7 +54,7 @@ public final class c
   {
     AppMethodBeat.i(120019);
     super.onStart();
-    this.AYu.requestFocus();
+    this.BpS.requestFocus();
     AppMethodBeat.o(120019);
   }
 }

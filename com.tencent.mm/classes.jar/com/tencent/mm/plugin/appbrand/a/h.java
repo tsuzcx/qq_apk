@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.a;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.mm.sdk.d.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public abstract class h
   extends i
 {
-  private final String[] jLM = { "invokeEnterMethods", "invokeExitMethods", "handleMessage:", "quit" };
-  boolean jLN = false;
+  private final String[] jOY = { "invokeEnterMethods", "invokeExitMethods", "handleMessage:", "quit" };
+  boolean jOZ = false;
   
   public h(String paramString, Looper paramLooper)
   {
     super(paramString, paramLooper);
-    super.wM(true);
+    super.wU(true);
   }
   
   public abstract void a(g paramg);
@@ -24,7 +24,7 @@ public abstract class h
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    String[] arrayOfString = this.jLM;
+    String[] arrayOfString = this.jOY;
     int j = arrayOfString.length;
     int i = 0;
     label20:
@@ -34,28 +34,28 @@ public abstract class h
     for (i = 1;; i = 0)
     {
       if (i != 0) {
-        ad.i(this.mName, paramString);
+        ae.i(this.mName, paramString);
       }
       for (;;)
       {
         if (paramString.startsWith("handleMessage: E")) {
-          this.jLN = true;
+          this.jOZ = true;
         }
         if (!paramString.startsWith("handleMessage: X")) {
           break;
         }
-        this.jLN = false;
+        this.jOZ = false;
         return;
         i += 1;
         break label20;
-        ad.v(this.mName, paramString);
+        ae.v(this.mName, paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.h
  * JD-Core Version:    0.7.0.1
  */

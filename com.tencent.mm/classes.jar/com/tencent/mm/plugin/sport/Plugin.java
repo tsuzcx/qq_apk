@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.sport.model.m;
 import com.tencent.mm.plugin.sport.ui.a.b;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public class Plugin
     return localc;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(28810);
     m localm = new m();

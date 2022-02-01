@@ -10,7 +10,7 @@ final class e
   
   final float f(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214736);
+    AppMethodBeat.i(212967);
     int i3 = 0;
     int i2 = 0;
     long l1 = 0L;
@@ -22,7 +22,7 @@ final class e
     this.pos = paramInt1;
     if (this.pos >= paramInt2)
     {
-      AppMethodBeat.o(214736);
+      AppMethodBeat.o(212967);
       return (0.0F / 0.0F);
     }
     int k = i2;
@@ -63,7 +63,7 @@ final class e
         {
           if (l1 > 922337203685477580L)
           {
-            AppMethodBeat.o(214736);
+            AppMethodBeat.o(212967);
             return (0.0F / 0.0F);
           }
           l1 *= 10L;
@@ -71,7 +71,7 @@ final class e
         }
         if (l1 > 922337203685477580L)
         {
-          AppMethodBeat.o(214736);
+          AppMethodBeat.o(212967);
           return (0.0F / 0.0F);
         }
         long l2 = l1 * 10L + (i3 - 48);
@@ -80,7 +80,7 @@ final class e
         l1 = l2;
         if (l2 < 0L)
         {
-          AppMethodBeat.o(214736);
+          AppMethodBeat.o(212967);
           return (0.0F / 0.0F);
         }
       }
@@ -96,13 +96,13 @@ final class e
     label324:
     if ((n != 0) && (this.pos == i1 + 1))
     {
-      AppMethodBeat.o(214736);
+      AppMethodBeat.o(212967);
       return (0.0F / 0.0F);
     }
     if (i == 0) {
       if (m == 0)
       {
-        AppMethodBeat.o(214736);
+        AppMethodBeat.o(212967);
         return (0.0F / 0.0F);
       }
     }
@@ -121,7 +121,7 @@ final class e
           this.pos += 1;
           if (this.pos == paramInt2)
           {
-            AppMethodBeat.o(214736);
+            AppMethodBeat.o(212967);
             return (0.0F / 0.0F);
           }
           switch (paramString.charAt(this.pos))
@@ -162,7 +162,7 @@ final class e
               }
               if (m > 922337203685477580L)
               {
-                AppMethodBeat.o(214736);
+                AppMethodBeat.o(212967);
                 return (0.0F / 0.0F);
                 i = 1;
                 this.pos += 1;
@@ -176,7 +176,7 @@ final class e
             label656:
             if (this.pos == n)
             {
-              AppMethodBeat.o(214736);
+              AppMethodBeat.o(212967);
               return (0.0F / 0.0F);
             }
             if (i != 0) {
@@ -190,7 +190,7 @@ final class e
       {
         if ((paramInt1 + j > 39) || (paramInt1 + j < -44))
         {
-          AppMethodBeat.o(214736);
+          AppMethodBeat.o(212967);
           return (0.0F / 0.0F);
           paramInt1 += m;
         }
@@ -208,7 +208,7 @@ final class e
           while (k != 0)
           {
             f1 = -f1;
-            AppMethodBeat.o(214736);
+            AppMethodBeat.o(212967);
             return f1;
             label765:
             f1 = f2;
@@ -224,7 +224,7 @@ final class e
               f1 *= aPF[(-paramInt2)];
             }
           }
-          AppMethodBeat.o(214736);
+          AppMethodBeat.o(212967);
           return f1;
         }
       }
@@ -233,7 +233,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.fts.b;
 import android.database.Cursor;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.b;
 import com.tencent.mm.plugin.fts.a.m;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storagebase.h;
 import com.tencent.wcdb.database.SQLiteDatabaseCorruptException;
 import java.util.ArrayList;
@@ -30,17 +30,17 @@ import java.util.Random;
 public final class g
   extends b
 {
-  private m grs;
-  private f hPn;
-  String[] txF;
-  List<String> txG;
+  private f ghB;
+  private m gtT;
+  String[] tIw;
+  List<String> tIx;
   
   public g()
   {
     AppMethodBeat.i(52779);
-    this.hPn = new f()
+    this.ghB = new f()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
       {
         AppMethodBeat.i(52766);
         if ((paramAnonymousn instanceof g.c))
@@ -48,24 +48,24 @@ public final class g
           paramAnonymousn = (g.c)paramAnonymousn;
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
-            ad.e("MicroMsg.FTS.FTSSearchTestLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-            List localList = paramAnonymousn.ELU;
+            ae.e("MicroMsg.FTS.FTSSearchTestLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            List localList = paramAnonymousn.Fes;
             if (paramAnonymousInt2 == -44)
             {
               LinkedList localLinkedList = new LinkedList();
               localLinkedList.add(Integer.valueOf(1));
               HashMap localHashMap = new HashMap();
               localHashMap.put(localList.get(0), Integer.valueOf(0));
-              paramAnonymousn = new g.c(g.this, localList, localLinkedList, "你好，我是珍惜", paramAnonymousn.txJ, localHashMap, paramAnonymousn.txJ);
-              com.tencent.mm.kernel.g.aiU().a(paramAnonymousn, 0);
+              paramAnonymousn = new g.c(g.this, localList, localLinkedList, "你好，我是珍惜", paramAnonymousn.tIA, localHashMap, paramAnonymousn.tIA);
+              com.tencent.mm.kernel.g.ajj().a(paramAnonymousn, 0);
             }
-            if ((paramAnonymousInt1 == 4) && (paramAnonymousInt2 == -24) && (!bt.isNullOrNil(paramAnonymousString))) {
-              Toast.makeText(aj.getContext(), paramAnonymousString, 1).show();
+            if ((paramAnonymousInt1 == 4) && (paramAnonymousInt2 == -24) && (!bu.isNullOrNil(paramAnonymousString))) {
+              Toast.makeText(ak.getContext(), paramAnonymousString, 1).show();
             }
             AppMethodBeat.o(52766);
             return;
           }
-          ad.i("MicroMsg.FTS.FTSSearchTestLogic", "bind contact %s success", new Object[] { paramAnonymousn.ELU.toString() });
+          ae.i("MicroMsg.FTS.FTSSearchTestLogic", "bind contact %s success", new Object[] { paramAnonymousn.Fes.toString() });
         }
         AppMethodBeat.o(52766);
       }
@@ -76,7 +76,7 @@ public final class g
   public final a a(j paramj)
   {
     AppMethodBeat.i(52781);
-    switch (paramj.jQN)
+    switch (paramj.jUf)
     {
     case 65522: 
     default: 
@@ -84,10 +84,10 @@ public final class g
     }
     for (;;)
     {
-      paramj = this.grs.a(2147483647, paramj);
+      paramj = this.gtT.a(2147483647, paramj);
       AppMethodBeat.o(52781);
       return paramj;
-      paramj = new f(paramj.tvg, paramj.talker);
+      paramj = new f(paramj.tFX, paramj.talker);
       continue;
       paramj = new g((byte)0);
       continue;
@@ -99,10 +99,10 @@ public final class g
     }
   }
   
-  public final boolean agA()
+  public final boolean agO()
   {
     AppMethodBeat.i(52782);
-    com.tencent.mm.kernel.g.aiU().b(30, this.hPn);
+    com.tencent.mm.kernel.g.ajj().b(30, this.ghB);
     AppMethodBeat.o(52782);
     return false;
   }
@@ -117,12 +117,12 @@ public final class g
     AppMethodBeat.i(52780);
     if (!((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
     {
-      ad.i("MicroMsg.FTS.FTSSearchTestLogic", "Create Fail!");
+      ae.i("MicroMsg.FTS.FTSSearchTestLogic", "Create Fail!");
       AppMethodBeat.o(52780);
       return false;
     }
-    ad.i("MicroMsg.FTS.FTSSearchTestLogic", "Create Success!");
-    this.grs = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
+    ae.i("MicroMsg.FTS.FTSSearchTestLogic", "Create Success!");
+    this.gtT = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
     AppMethodBeat.o(52780);
     return true;
   }
@@ -142,9 +142,9 @@ public final class g
   }
   
   final class c
-    extends o
+    extends com.tencent.mm.pluginsdk.model.o
   {
-    public String txJ = "";
+    public String tIA = "";
     
     public c(List<Integer> paramList, String paramString1, String paramString2, Map<String, Integer> paramMap, String paramString3)
     {
@@ -160,7 +160,7 @@ public final class g
     public final boolean execute()
     {
       AppMethodBeat.i(52774);
-      com.tencent.mm.kernel.g.ajC().gBq.execSQL(null, "UPDATE rconversation SET unReadCount = 0;");
+      com.tencent.mm.kernel.g.ajR().gDX.execSQL(null, "UPDATE rconversation SET unReadCount = 0;");
       AppMethodBeat.o(52774);
       return true;
     }
@@ -174,11 +174,11 @@ public final class g
   final class e
     extends a
   {
-    j tuY;
+    j tFP;
     
     public e(j paramj)
     {
-      this.tuY = paramj;
+      this.tFP = paramj;
     }
     
     public final boolean execute()
@@ -196,12 +196,12 @@ public final class g
     extends a
   {
     private int count;
-    private String dmU;
+    private String dnW;
     
     public f(int paramInt, String paramString)
     {
       this.count = paramInt;
-      this.dmU = paramString;
+      this.dnW = paramString;
     }
     
     private static String I(String[] paramArrayOfString)
@@ -223,38 +223,38 @@ public final class g
     public final boolean execute()
     {
       AppMethodBeat.i(52775);
-      if (g.this.txF == null)
+      if (g.this.tIw == null)
       {
-        localObject = com.tencent.mm.vfs.i.aYq("/sdcard/test_insert_msg_words.txt");
-        g.this.txF = ((String)localObject).split(",");
+        localObject = com.tencent.mm.vfs.o.aZT("/sdcard/test_insert_msg_words.txt");
+        g.this.tIw = ((String)localObject).split(",");
       }
       int i;
       label97:
       String str;
-      bu localbu;
-      if (g.this.txG == null)
+      bv localbv;
+      if (g.this.tIx == null)
       {
-        g.this.txG = new ArrayList();
-        if (!bt.isNullOrNil(this.dmU)) {
-          g.this.txG.add(this.dmU);
+        g.this.tIx = new ArrayList();
+        if (!bu.isNullOrNil(this.dnW)) {
+          g.this.tIx.add(this.dnW);
         }
       }
       else
       {
-        if (g.this.txF == null) {
+        if (g.this.tIw == null) {
           break label364;
         }
         i = 0;
         if (i >= this.count) {
           break label364;
         }
-        str = I(g.this.txF);
-        localbu = new bu();
-        localbu.setType(1);
-        localbu.kr(1);
-        localbu.setStatus(4);
-        localbu.setContent(str);
-        localObject = g.this.txG;
+        str = I(g.this.tIw);
+        localbv = new bv();
+        localbv.setType(1);
+        localbv.kt(1);
+        localbv.setStatus(4);
+        localbv.setContent(str);
+        localObject = g.this.tIx;
         if (((List)localObject).size() <= 1) {
           break label350;
         }
@@ -262,15 +262,15 @@ public final class g
       label350:
       for (Object localObject = (String)((List)localObject).get(new Random().nextInt(((List)localObject).size() - 1));; localObject = (String)((List)localObject).get(0))
       {
-        localbu.tN((String)localObject);
-        localbu.qA(System.currentTimeMillis() - 250327040L);
-        ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().as(localbu);
-        ad.i("MicroMsg.FTS.FTSSearchTestLogic", "InsertMsgInfoTask %d %d %d %d", new Object[] { Integer.valueOf(this.count), Integer.valueOf(i), Integer.valueOf(str.length()), Long.valueOf(localbu.field_msgId) });
+        localbv.ui((String)localObject);
+        localbv.qN(System.currentTimeMillis() - 250327040L);
+        ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().ar(localbv);
+        ae.i("MicroMsg.FTS.FTSSearchTestLogic", "InsertMsgInfoTask %d %d %d %d", new Object[] { Integer.valueOf(this.count), Integer.valueOf(i), Integer.valueOf(str.length()), Long.valueOf(localbv.field_msgId) });
         i += 1;
         break label97;
-        localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().fqu();
+        localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().fuu();
         while (((Cursor)localObject).moveToNext()) {
-          g.this.txG.add(((Cursor)localObject).getString(0));
+          g.this.tIx.add(((Cursor)localObject).getString(0));
         }
         ((Cursor)localObject).close();
         break;
@@ -306,21 +306,21 @@ public final class g
     {
       AppMethodBeat.i(52777);
       Object localObject;
-      if (g.this.txF == null)
+      if (g.this.tIw == null)
       {
-        localObject = com.tencent.mm.vfs.i.aYq("/sdcard/test_insert_msg_words.txt");
-        g.this.txF = ((String)localObject).split(",");
+        localObject = com.tencent.mm.vfs.o.aZT("/sdcard/test_insert_msg_words.txt");
+        g.this.tIw = ((String)localObject).split(",");
       }
-      if (g.this.txG == null)
+      if (g.this.tIx == null)
       {
-        g.this.txG = new ArrayList();
-        localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().fqu();
+        g.this.tIx = new ArrayList();
+        localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().fuu();
         while (((Cursor)localObject).moveToNext()) {
-          g.this.txG.add(((Cursor)localObject).getString(0));
+          g.this.tIx.add(((Cursor)localObject).getString(0));
         }
         ((Cursor)localObject).close();
       }
-      if (g.this.txF != null)
+      if (g.this.tIw != null)
       {
         localObject = new int[7];
         Object tmp131_130 = localObject;
@@ -344,16 +344,16 @@ public final class g
           int j = 0;
           while (j < localObject[i])
           {
-            String str = I(g.this.txF);
-            bu localbu = new bu();
-            localbu.setType(1);
-            localbu.kr(1);
-            localbu.setStatus(4);
-            localbu.setContent(str);
-            localbu.tN((String)g.this.txG.get(i));
-            localbu.qA(System.currentTimeMillis());
-            ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().as(localbu);
-            ad.i("MicroMsg.FTS.FTSSearchTestLogic", "InsertMsgInfoTask %d %d %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(localObject[i]), Integer.valueOf(str.length()), Long.valueOf(localbu.field_msgId) });
+            String str = I(g.this.tIw);
+            bv localbv = new bv();
+            localbv.setType(1);
+            localbv.kt(1);
+            localbv.setStatus(4);
+            localbv.setContent(str);
+            localbv.ui((String)g.this.tIx.get(i));
+            localbv.qN(System.currentTimeMillis());
+            ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().ar(localbv);
+            ae.i("MicroMsg.FTS.FTSSearchTestLogic", "InsertMsgInfoTask %d %d %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(localObject[i]), Integer.valueOf(str.length()), Long.valueOf(localbv.field_msgId) });
             j += 1;
           }
           i += 1;

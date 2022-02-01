@@ -17,51 +17,51 @@ public final class ExportReportSession
   
   private void commit()
   {
-    AppMethodBeat.i(218726);
+    AppMethodBeat.i(215366);
     if ((this.beginTimeMs == 0L) || (this.exportStartTimeNs == 0L))
     {
       new StringBuilder("commit: 数据错误，beginTimeMs = ").append(this.beginTimeMs).append("， exportStartTimeNs = ").append(this.exportStartTimeNs);
-      AppMethodBeat.o(218726);
+      AppMethodBeat.o(215366);
       return;
     }
     if (this.successCount >= 10) {
       doCommit();
     }
     reset();
-    AppMethodBeat.o(218726);
+    AppMethodBeat.o(215366);
   }
   
   private void doCommit() {}
   
   public final void onExportError()
   {
-    AppMethodBeat.i(218725);
+    AppMethodBeat.i(215365);
     this.success = false;
     commit();
-    AppMethodBeat.o(218725);
+    AppMethodBeat.o(215365);
   }
   
   public final void onExportStart(long paramLong)
   {
-    AppMethodBeat.i(218723);
+    AppMethodBeat.i(215363);
     this.exportStartTimeNs = paramLong;
     this.beginTimeMs = System.currentTimeMillis();
-    AppMethodBeat.o(218723);
+    AppMethodBeat.o(215363);
   }
   
   public final void onExportSuccess()
   {
-    AppMethodBeat.i(218724);
+    AppMethodBeat.i(215364);
     if (this.exportStartTimeNs <= 0L)
     {
       new StringBuilder("onExportSuccess: 数据错误，exportStartTimeNs = ").append(this.exportStartTimeNs);
-      AppMethodBeat.o(218724);
+      AppMethodBeat.o(215364);
       return;
     }
     this.success = true;
     this.compositeTimeUs = ((System.nanoTime() - this.exportStartTimeNs) / 1000L);
     commit();
-    AppMethodBeat.o(218724);
+    AppMethodBeat.o(215364);
   }
   
   public final void reset()

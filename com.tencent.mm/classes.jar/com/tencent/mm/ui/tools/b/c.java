@@ -3,8 +3,8 @@ package com.tencent.mm.ui.tools.b;
 import android.text.InputFilter;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.tools.f.a;
 import java.lang.ref.WeakReference;
@@ -13,27 +13,27 @@ import java.util.ArrayList;
 public class c
   extends a
 {
-  public boolean KMn = true;
-  public WeakReference<EditText> KMo;
-  private int KMp;
-  private int KMq;
-  private ArrayList<InputFilter> KMr;
-  public a KMs;
+  public boolean LiL = true;
+  public WeakReference<EditText> LiM;
+  private int LiN;
+  private int LiO;
+  private ArrayList<InputFilter> LiP;
+  public a LiQ;
   private String mText;
-  public f.a neC;
+  public f.a njK;
   
   public c(String paramString)
   {
     this.mText = paramString;
-    this.neC = f.a.KIN;
-    this.KMn = false;
+    this.njK = f.a.Lfh;
+    this.LiL = false;
   }
   
   public c(WeakReference<EditText> paramWeakReference)
   {
-    this.KMo = paramWeakReference;
-    this.neC = f.a.KIN;
-    this.KMn = false;
+    this.LiM = paramWeakReference;
+    this.njK = f.a.Lfh;
+    this.LiL = false;
   }
   
   public static c d(EditText paramEditText)
@@ -46,7 +46,7 @@ public class c
   
   public final c a(f.a parama)
   {
-    this.neC = parama;
+    this.njK = parama;
     return this;
   }
   
@@ -61,44 +61,44 @@ public class c
   public final void a(a parama)
   {
     AppMethodBeat.i(133842);
-    this.KMs = parama;
-    cWs();
+    this.LiQ = parama;
+    cYX();
     AppMethodBeat.o(133842);
   }
   
-  public final c aeU(int paramInt)
+  public final c afD(int paramInt)
   {
-    this.KMq = 0;
-    this.KMp = paramInt;
+    this.LiO = 0;
+    this.LiN = paramInt;
     return this;
   }
   
-  protected final int bgi()
+  protected final int bgQ()
   {
     AppMethodBeat.i(133843);
-    if (bt.isNullOrNil(this.mText))
+    if (bu.isNullOrNil(this.mText))
     {
-      if (this.KMo == null)
+      if (this.LiM == null)
       {
         AppMethodBeat.o(133843);
         return 1;
       }
-      this.mText = ((EditText)this.KMo.get()).getText().toString().trim();
+      this.mText = ((EditText)this.LiM.get()).getText().toString().trim();
     }
-    int j = f.a(this.mText, this.neC);
+    int j = f.a(this.mText, this.njK);
     if (j < 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
+      ae.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
       AppMethodBeat.o(133843);
       return 2;
     }
-    if (j < this.KMq)
+    if (j < this.LiO)
     {
       AppMethodBeat.o(133843);
       return 1;
     }
-    if (j > this.KMp)
+    if (j > this.LiN)
     {
       AppMethodBeat.o(133843);
       return 2;
@@ -107,27 +107,27 @@ public class c
     return 0;
   }
   
-  protected final void cWs()
+  protected final void cYX()
   {
     AppMethodBeat.i(133844);
     Object localObject;
-    if (!this.KMn)
+    if (!this.LiL)
     {
-      if (this.KMo == null)
+      if (this.LiM == null)
       {
-        ad.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
+        ae.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
         AppMethodBeat.o(133844);
         return;
       }
-      if (bt.hj(this.KMr))
+      if (bu.ht(this.LiP))
       {
-        localObject = a(this.KMp, this.neC);
-        ((EditText)this.KMo.get()).setFilters(new InputFilter[] { localObject });
+        localObject = a(this.LiN, this.njK);
+        ((EditText)this.LiM.get()).setFilters(new InputFilter[] { localObject });
       }
     }
-    else if (this.KMs != null)
+    else if (this.LiQ != null)
     {
-      switch (bgi())
+      switch (bgQ())
       {
       }
     }
@@ -135,40 +135,40 @@ public class c
     {
       AppMethodBeat.o(133844);
       return;
-      this.KMr.add(a(this.KMp, this.neC));
-      localObject = (InputFilter[])this.KMr.toArray(new InputFilter[this.KMr.size()]);
-      ((EditText)this.KMo.get()).setFilters((InputFilter[])localObject);
+      this.LiP.add(a(this.LiN, this.njK));
+      localObject = (InputFilter[])this.LiP.toArray(new InputFilter[this.LiP.size()]);
+      ((EditText)this.LiM.get()).setFilters((InputFilter[])localObject);
       break;
-      this.KMs.JZ(this.mText);
+      this.LiQ.Ky(this.mText);
       AppMethodBeat.o(133844);
       return;
-      this.KMs.aUu();
+      this.LiQ.aUT();
       AppMethodBeat.o(133844);
       return;
-      this.KMs.cU(this.mText);
+      this.LiQ.cW(this.mText);
     }
   }
   
-  public final c fKP()
+  public final c fPi()
   {
-    this.KMn = true;
+    this.LiL = true;
     return this;
   }
   
-  public final c kc(int paramInt1, int paramInt2)
+  public final c kj(int paramInt1, int paramInt2)
   {
-    this.KMq = paramInt1;
-    this.KMp = paramInt2;
+    this.LiO = paramInt1;
+    this.LiN = paramInt2;
     return this;
   }
   
   public static abstract interface a
   {
-    public abstract void JZ(String paramString);
+    public abstract void Ky(String paramString);
     
-    public abstract void aUu();
+    public abstract void aUT();
     
-    public abstract void cU(String paramString);
+    public abstract void cW(String paramString);
   }
 }
 

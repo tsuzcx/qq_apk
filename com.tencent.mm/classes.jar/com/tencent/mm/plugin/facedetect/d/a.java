@@ -4,54 +4,52 @@ import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.audio.e.d;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.facedetect.model.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  private static final String rio;
-  public static final String ris;
-  com.tencent.mm.audio.b.c dgu;
-  private com.tencent.mm.audio.b.c.a dhh;
+  private static final String rqs;
+  public static final String rqw;
+  com.tencent.mm.audio.b.c dhw;
+  private com.tencent.mm.audio.b.c.a dij;
   ArrayList<com.tencent.mm.audio.b.c.a> eO;
-  private int ixX;
-  int ixY;
-  boolean iyT;
-  com.tencent.mm.audio.e.a iyd;
-  com.tencent.mm.modelvoiceaddr.a.c iyt;
-  private com.tencent.mm.modelvoiceaddr.a.c.a iyu;
-  b rip;
-  boolean riq;
-  String rir;
-  public com.tencent.mm.audio.b.c.a rit;
+  private int iAQ;
+  int iAR;
+  com.tencent.mm.audio.e.a iAW;
+  boolean iBM;
+  com.tencent.mm.modelvoiceaddr.a.c iBm;
+  private com.tencent.mm.modelvoiceaddr.a.c.a iBn;
+  b rqt;
+  boolean rqu;
+  String rqv;
+  public com.tencent.mm.audio.b.c.a rqx;
   
   static
   {
     AppMethodBeat.i(103814);
-    rio = p.ctl() + "/fdv_v_";
-    ris = g.getExternalStorageDirectory().getAbsolutePath() + "/temp_debug_raw.spx";
+    rqs = p.cuM() + "/fdv_v_";
+    rqw = g.getExternalStorageDirectory().getAbsolutePath() + "/temp_debug_raw.spx";
     AppMethodBeat.o(103814);
   }
   
   public a()
   {
     AppMethodBeat.i(103811);
-    this.rip = null;
-    this.iyT = true;
-    this.riq = false;
-    this.rir = "";
+    this.rqt = null;
+    this.iBM = true;
+    this.rqu = false;
+    this.rqv = "";
     this.eO = new ArrayList(5);
-    this.ixY = 0;
-    this.ixX = 0;
-    this.rit = new com.tencent.mm.audio.b.c.a()
+    this.iAR = 0;
+    this.iAQ = 0;
+    this.rqx = new com.tencent.mm.audio.b.c.a()
     {
       public final void ch(int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -87,14 +85,14 @@ public final class a
         AppMethodBeat.o(103802);
       }
     };
-    this.dhh = new com.tencent.mm.audio.b.c.a()
+    this.dij = new com.tencent.mm.audio.b.c.a()
     {
-      short[] iyv;
+      short[] iBo;
       
       public final void ch(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(103805);
-        ad.e("MicroMsg.FaceVoiceRecordLogic", "onRecError state = " + paramAnonymousInt1 + " detailState = " + paramAnonymousInt2);
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.FaceVoiceRecordLogic", "onRecError state = " + paramAnonymousInt1 + " detailState = " + paramAnonymousInt2);
         a.this.clearDiskCache();
         if (a.e(a.this) != null) {
           a.e(a.this).onError(2);
@@ -106,27 +104,27 @@ public final class a
       {
         int j = 0;
         AppMethodBeat.i(103804);
-        ad.d("MicroMsg.FaceVoiceRecordLogic", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.FaceVoiceRecordLogic", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         int i;
-        if (this.iyv != null)
+        if (this.iBo != null)
         {
           i = j;
-          if (this.iyv.length >= paramAnonymousInt / 2) {}
+          if (this.iBo.length >= paramAnonymousInt / 2) {}
         }
         else
         {
-          this.iyv = new short[paramAnonymousInt / 2];
+          this.iBo = new short[paramAnonymousInt / 2];
           i = j;
         }
         while (i < paramAnonymousInt / 2)
         {
-          this.iyv[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
+          this.iBo[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
           i += 1;
         }
-        a.a(a.this, this.iyv, paramAnonymousInt / 2);
+        a.a(a.this, this.iBo, paramAnonymousInt / 2);
         if (a.g(a.this) != null)
         {
-          a.g(a.this).e(this.iyv, paramAnonymousInt / 2);
+          a.g(a.this).e(this.iBo, paramAnonymousInt / 2);
           if (a.d(a.this) == null) {
             break label270;
           }
@@ -138,7 +136,7 @@ public final class a
           {
             a.e(a.this).onError(3);
             a.this.clearDiskCache();
-            ad.e("MicroMsg.FaceVoiceRecordLogic", "write to file failed");
+            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.FaceVoiceRecordLogic", "write to file failed");
             AppMethodBeat.o(103804);
             return;
           }
@@ -149,37 +147,37 @@ public final class a
             a.e(a.this).onError(1);
             a.this.clearDiskCache();
           }
-          ad.e("MicroMsg.FaceVoiceRecordLogic", "mVoiceSilentDetectAPI is null");
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.FaceVoiceRecordLogic", "mVoiceSilentDetectAPI is null");
           AppMethodBeat.o(103804);
           return;
         }
       }
     };
-    this.iyu = new com.tencent.mm.modelvoiceaddr.a.c.a()
+    this.iBn = new com.tencent.mm.modelvoiceaddr.a.c.a()
     {
-      public final void NX()
+      public final void NV()
       {
         AppMethodBeat.i(103809);
-        ad.d("MicroMsg.FaceVoiceRecordLogic", "Silent enough to finish");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.FaceVoiceRecordLogic", "Silent enough to finish");
         if (a.e(a.this) != null) {
           a.e(a.this).onError(11);
         }
         AppMethodBeat.o(103809);
       }
       
-      public final void aNS()
+      public final void aOq()
       {
         AppMethodBeat.i(103807);
-        ad.d("MicroMsg.FaceVoiceRecordLogic", "hy: onSpeakToSilent");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.FaceVoiceRecordLogic", "hy: onSpeakToSilent");
         AppMethodBeat.o(103807);
       }
       
-      public final void aNT()
+      public final void aOr()
       {
         AppMethodBeat.i(103808);
-        ad.d("MicroMsg.FaceVoiceRecordLogic", "hy: onSilentToSpeak");
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.FaceVoiceRecordLogic", "hy: onSilentToSpeak");
         if (a.e(a.this) != null) {
-          a.e(a.this).cts();
+          a.e(a.this).cuT();
         }
         AppMethodBeat.o(103808);
       }
@@ -187,7 +185,7 @@ public final class a
       public final void b(short[] paramAnonymousArrayOfShort, int paramAnonymousInt)
       {
         AppMethodBeat.i(103806);
-        ad.d("MicroMsg.FaceVoiceRecordLogic", "onFilteredSpeakVoice data %s size %d", new Object[] { paramAnonymousArrayOfShort, Integer.valueOf(paramAnonymousInt) });
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.FaceVoiceRecordLogic", "onFilteredSpeakVoice data %s size %d", new Object[] { paramAnonymousArrayOfShort, Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(103806);
       }
     };
@@ -204,18 +202,18 @@ public final class a
   public final void clearDiskCache()
   {
     AppMethodBeat.i(103812);
-    i.deleteFile(this.rir);
+    o.deleteFile(this.rqv);
     AppMethodBeat.o(103812);
   }
   
   final class a
     implements Runnable
   {
-    private Runnable riv = null;
+    private Runnable rqz = null;
     
     private a(Runnable paramRunnable)
     {
-      this.riv = paramRunnable;
+      this.rqz = paramRunnable;
     }
     
     public final void run()
@@ -228,19 +226,19 @@ public final class a
           if (a.a(a.this)) {
             break label551;
           }
-          ad.i("MicroMsg.FaceVoiceRecordLogic", "hy: initDeviceInLock");
-          a.a(a.this, a.rio + bt.HI() + ".spx");
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.FaceVoiceRecordLogic", "hy: initDeviceInLock");
+          a.a(a.this, a.rqs + bu.HQ() + ".spx");
           try
           {
-            i.deleteFile(a.b(a.this));
+            o.deleteFile(a.b(a.this));
             a.a(a.this, new com.tencent.mm.audio.b.c(16000, 1, 3));
-            a.c(a.this).dgW = -19;
+            a.c(a.this).dhY = -19;
             a.c(a.this).cu(false);
             a.a(a.this, new d());
-            if (!a.d(a.this).gC(a.b(a.this)))
+            if (!a.d(a.this).gI(a.b(a.this)))
             {
-              ad.e("MicroMsg.FaceVoiceRecordLogic", "hy: init speex writer failed");
-              a.d(a.this).Ry();
+              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.FaceVoiceRecordLogic", "hy: init speex writer failed");
+              a.d(a.this).Rx();
               a.a(a.this, null);
               if (a.e(a.this) != null) {
                 a.e(a.this).onError(5);
@@ -251,25 +249,25 @@ public final class a
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.FaceVoiceRecordLogic", localException, "hy: delete file failed", new Object[0]);
+            com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.FaceVoiceRecordLogic", localException, "hy: delete file failed", new Object[0]);
             continue;
           }
         }
-        if (ae.gcP.fZh > 0)
+        if (com.tencent.mm.compatible.deviceinfo.ae.geX.gbo > 0)
         {
-          a.c(a.this).t(ae.gcP.fZh, true);
-          a.c(a.this).hO(50);
+          a.c(a.this).t(com.tencent.mm.compatible.deviceinfo.ae.geX.gbo, true);
+          a.c(a.this).hQ(50);
           a.c(a.this).cv(false);
         }
         try
         {
           a.a(a.this, new com.tencent.mm.modelvoiceaddr.a.c(5000, com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("sil_time", 200), com.tencent.mm.modelvoiceaddr.a.c.sp.getFloat("s_n_ration", 2.5F), com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("s_window", 50), com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("s_length", 35), com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("s_delay_time", 20), false, false));
-          a.g(a.this).izb = a.f(a.this);
-          a.c(a.this).dhh = a.this.rit;
+          a.g(a.this).iBU = a.f(a.this);
+          a.c(a.this).dij = a.this.rqx;
           a.this.b(a.h(a.this));
-          if (!a.c(a.this).PP())
+          if (!a.c(a.this).PO())
           {
-            ad.e("MicroMsg.FaceVoiceRecordLogic", "hy: start record failed");
+            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.FaceVoiceRecordLogic", "hy: start record failed");
             if (a.e(a.this) == null) {
               continue;
             }
@@ -282,18 +280,18 @@ public final class a
         {
           for (;;)
           {
-            ad.e("MicroMsg.FaceVoiceRecordLogic", "hy: init VoiceDetectAPI failed :" + localThrowable.getMessage());
+            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.FaceVoiceRecordLogic", "hy: init VoiceDetectAPI failed :" + localThrowable.getMessage());
             if (a.e(a.this) != null) {
               a.e(a.this).onError(6);
             }
           }
         }
-        if (this.riv != null)
+        if (this.rqz != null)
         {
-          this.riv.run();
+          this.rqz.run();
           continue;
           label551:
-          ad.w("MicroMsg.FaceVoiceRecordLogic", "hy: already called stop. should not start record");
+          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.FaceVoiceRecordLogic", "hy: already called stop. should not start record");
         }
       }
     }
@@ -301,7 +299,7 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract void cts();
+    public abstract void cuT();
     
     public abstract void onError(int paramInt);
   }

@@ -11,18 +11,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class a
 {
-  protected static volatile AtomicInteger dfH = new AtomicInteger(0);
-  protected static volatile AtomicInteger dfI = new AtomicInteger(0);
+  protected static volatile AtomicInteger dgJ = new AtomicInteger(0);
+  protected static volatile AtomicInteger dgK = new AtomicInteger(0);
   protected volatile AudioTrack bfq;
   protected byte[] byteBuffer;
   protected long cfC = -1L;
   protected int channels = 0;
-  protected d dcN;
-  protected int dfC = 0;
-  protected int dfD = 0;
-  protected double dfE = 0.0D;
-  protected f dfF;
-  protected int dfG = 0;
+  protected d ddP;
+  protected int dgE = 0;
+  protected int dgF = 0;
+  protected double dgG = 0.0D;
+  protected f dgH;
+  protected int dgI = 0;
   protected int sampleRate = 0;
   protected float volume = 1.0F;
   
@@ -30,13 +30,13 @@ public abstract class a
   {
     this.sampleRate = paramInt1;
     this.channels = paramInt2;
-    this.dcN = paramd;
-    this.dfF = paramf;
+    this.ddP = paramd;
+    this.dgH = paramf;
   }
   
   public void K(byte[] paramArrayOfByte) {}
   
-  public void PB() {}
+  public void Pz() {}
   
   protected abstract boolean createAudioTrack();
   
@@ -71,7 +71,7 @@ public abstract class a
   
   public final void h(double paramDouble)
   {
-    this.dfE = paramDouble;
+    this.dgG = paramDouble;
   }
   
   public final void i(double paramDouble)
@@ -105,11 +105,11 @@ public abstract class a
   public final void release()
   {
     releaseAudioTrack();
-    this.dfF = null;
-    this.dcN = null;
+    this.dgH = null;
+    this.ddP = null;
     this.byteBuffer = null;
-    this.dfC = 0;
-    this.dfD = 0;
+    this.dgE = 0;
+    this.dgF = 0;
   }
   
   protected final void releaseAudioTrack()
@@ -136,8 +136,8 @@ public abstract class a
   
   public void reset()
   {
-    this.dfC = 0;
-    this.dfD = 0;
+    this.dgE = 0;
+    this.dgF = 0;
     if (this.byteBuffer != null) {
       Arrays.fill(this.byteBuffer, 0, this.byteBuffer.length, (byte)0);
     }
@@ -147,8 +147,8 @@ public abstract class a
   
   public final void seek(int paramInt)
   {
-    b.i("MicroMsg.Mix.AudioPcmBasePlayComponent", "seek startPos:%d", new Object[] { Integer.valueOf(this.dfG) });
-    this.dfG = paramInt;
+    b.i("MicroMsg.Mix.AudioPcmBasePlayComponent", "seek startPos:%d", new Object[] { Integer.valueOf(this.dgI) });
+    this.dgI = paramInt;
   }
   
   public final void setVolume(float paramFloat1, float paramFloat2)
@@ -178,7 +178,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.a.a
  * JD-Core Version:    0.7.0.1
  */

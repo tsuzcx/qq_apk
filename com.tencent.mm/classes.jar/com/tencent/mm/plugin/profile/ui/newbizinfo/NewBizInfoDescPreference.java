@@ -5,10 +5,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.mv;
-import com.tencent.mm.protocal.protobuf.oi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.mx;
+import com.tencent.mm.protocal.protobuf.ok;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -16,18 +16,18 @@ import com.tencent.mm.ui.widget.MMNeat7extView;
 public class NewBizInfoDescPreference
   extends Preference
 {
-  private MMActivity fLP;
-  private LinearLayout fUV;
-  private MMNeat7extView opC;
-  private boolean qhs;
-  private oi wVd;
+  private MMActivity fNT;
+  private LinearLayout fXb;
+  private MMNeat7extView ovu;
+  private boolean qnX;
+  private ok xkU;
   
   public NewBizInfoDescPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27495);
-    this.fLP = ((MMActivity)paramContext);
-    this.qhs = false;
+    this.fNT = ((MMActivity)paramContext);
+    this.qnX = false;
     AppMethodBeat.o(27495);
   }
   
@@ -35,20 +35,20 @@ public class NewBizInfoDescPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27496);
-    this.fLP = ((MMActivity)paramContext);
-    this.qhs = false;
+    this.fNT = ((MMActivity)paramContext);
+    this.qnX = false;
     AppMethodBeat.o(27496);
   }
   
-  private String pv(boolean paramBoolean)
+  private String pD(boolean paramBoolean)
   {
     AppMethodBeat.i(27498);
     Object localObject = new StringBuilder();
-    if (this.wVd.FJD != null)
+    if (this.xkU.Gcc != null)
     {
-      String str1 = this.wVd.FJD.FGK;
-      String str2 = this.wVd.FJD.FGL;
-      if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(str2)))
+      String str1 = this.xkU.Gcc.FZg;
+      String str2 = this.xkU.Gcc.FZh;
+      if ((!bu.isNullOrNil(str1)) && (!bu.isNullOrNil(str2)))
       {
         ((StringBuilder)localObject).append(str1);
         if (paramBoolean) {
@@ -63,14 +63,14 @@ public class NewBizInfoDescPreference
           ((StringBuilder)localObject).append("  ");
         }
       }
-      if (!bt.isNullOrNil(str1))
+      if (!bu.isNullOrNil(str1))
       {
         ((StringBuilder)localObject).append(str1);
         localObject = ((StringBuilder)localObject).toString();
         AppMethodBeat.o(27498);
         return localObject;
       }
-      if (!bt.isNullOrNil(str2))
+      if (!bu.isNullOrNil(str2))
       {
         ((StringBuilder)localObject).append(str2);
         localObject = ((StringBuilder)localObject).toString();
@@ -85,56 +85,56 @@ public class NewBizInfoDescPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27497);
-    this.fUV = ((LinearLayout)paramView.findViewById(2131297415));
-    this.opC = ((MMNeat7extView)paramView.findViewById(2131297414));
-    this.qhs = true;
-    if (!this.qhs)
+    this.fXb = ((LinearLayout)paramView.findViewById(2131297415));
+    this.ovu = ((MMNeat7extView)paramView.findViewById(2131297414));
+    this.qnX = true;
+    if (!this.qnX)
     {
-      ad.w("MicroMsg.NewBizInfoDescPreference", "bindView:%b or profileInfo is null, return", new Object[] { Boolean.valueOf(this.qhs) });
+      ae.w("MicroMsg.NewBizInfoDescPreference", "bindView:%b or profileInfo is null, return", new Object[] { Boolean.valueOf(this.qnX) });
       AppMethodBeat.o(27497);
       return;
     }
-    if (this.wVd == null)
+    if (this.xkU == null)
     {
-      this.fUV.setVisibility(4);
+      this.fXb.setVisibility(4);
       AppMethodBeat.o(27497);
       return;
     }
-    paramView = pv(false);
-    if (!bt.isNullOrNil(paramView))
+    paramView = pD(false);
+    if (!bu.isNullOrNil(paramView))
     {
-      this.fUV.setVisibility(0);
-      this.opC.ar(paramView);
-      int i = this.wVd.FJD.FGH;
-      int j = this.wVd.FJD.FGI;
+      this.fXb.setVisibility(0);
+      this.ovu.aq(paramView);
+      int i = this.xkU.Gcc.FZd;
+      int j = this.xkU.Gcc.FZe;
       if ((i > 0) && (j > 0))
       {
-        i = com.tencent.mm.cc.a.ip(this.fLP);
-        j = (int)(com.tencent.mm.cc.a.getDensity(this.fLP) * 24.0F);
-        paramView = this.opC.kK(i - j, 2147483647);
+        i = com.tencent.mm.cb.a.iu(this.fNT);
+        j = (int)(com.tencent.mm.cb.a.getDensity(this.fNT) * 24.0F);
+        paramView = this.ovu.kR(i - j, 2147483647);
         if (paramView == null) {
           break label223;
         }
       }
       label223:
-      for (i = paramView.fSB();; i = 0)
+      for (i = paramView.fXb();; i = 0)
       {
         if (i > 1)
         {
-          paramView = pv(true);
-          this.opC.ar(paramView);
+          paramView = pD(true);
+          this.ovu.aq(paramView);
         }
         AppMethodBeat.o(27497);
         return;
       }
     }
-    this.fUV.setVisibility(8);
+    this.fXb.setVisibility(8);
     AppMethodBeat.o(27497);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoDescPreference
  * JD-Core Version:    0.7.0.1
  */

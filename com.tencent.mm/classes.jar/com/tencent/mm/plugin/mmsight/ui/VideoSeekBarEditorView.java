@@ -16,10 +16,10 @@ import com.tencent.mm.ui.z;
 public class VideoSeekBarEditorView
   extends LinearLayout
 {
-  private Button rle;
-  public RecyclerThumbSeekBar vXu;
-  private Button vXv;
-  private LinearLayout vXw;
+  private Button rti;
+  private LinearLayout wjA;
+  public RecyclerThumbSeekBar wjy;
+  private Button wjz;
   
   public VideoSeekBarEditorView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,24 +40,24 @@ public class VideoSeekBarEditorView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(94756);
-    this.vXw = ((LinearLayout)z.jO(paramContext).inflate(2131495841, this, true));
-    this.vXu = ((RecyclerThumbSeekBar)findViewById(2131306400));
-    this.rle = ((Button)findViewById(2131299263));
-    this.vXv = ((Button)findViewById(2131299265));
+    this.wjA = ((LinearLayout)z.jV(paramContext).inflate(2131495841, this, true));
+    this.wjy = ((RecyclerThumbSeekBar)findViewById(2131306400));
+    this.rti = ((Button)findViewById(2131299263));
+    this.wjz = ((Button)findViewById(2131299265));
     AppMethodBeat.o(94756);
   }
   
-  public final void dom()
+  public final void drk()
   {
     AppMethodBeat.i(94760);
-    this.vXu.release();
-    ViewParent localViewParent = this.vXu.getParent();
+    this.wjy.release();
+    ViewParent localViewParent = this.wjy.getParent();
     if ((localViewParent instanceof LinearLayout))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.vXu.getLayoutParams();
-      ((LinearLayout)localViewParent).removeView(this.vXu);
-      this.vXu = new RecyclerThumbSeekBar(getContext());
-      ((LinearLayout)localViewParent).addView(this.vXu, 0, localLayoutParams);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.wjy.getLayoutParams();
+      ((LinearLayout)localViewParent).removeView(this.wjy);
+      this.wjy = new RecyclerThumbSeekBar(getContext());
+      ((LinearLayout)localViewParent).addView(this.wjy, 0, localLayoutParams);
     }
     AppMethodBeat.o(94760);
   }
@@ -65,14 +65,14 @@ public class VideoSeekBarEditorView
   public void setCancelButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(94759);
-    this.rle.setOnClickListener(paramOnClickListener);
+    this.rti.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(94759);
   }
   
   public void setFinishButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(94758);
-    this.vXv.setOnClickListener(paramOnClickListener);
+    this.wjz.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(94758);
   }
   
@@ -80,7 +80,7 @@ public class VideoSeekBarEditorView
   {
     AppMethodBeat.i(94757);
     if (paramString != null) {
-      this.vXv.setTextColor(Color.parseColor(paramString));
+      this.wjz.setTextColor(Color.parseColor(paramString));
     }
     AppMethodBeat.o(94757);
   }

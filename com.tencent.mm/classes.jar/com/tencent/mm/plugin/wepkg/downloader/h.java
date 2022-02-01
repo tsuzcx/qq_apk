@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wepkg.downloader;
 
 import com.tencent.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RunnableFuture;
@@ -21,13 +21,13 @@ public final class h
     if ((paramRunnable instanceof e))
     {
       e locale = (e)paramRunnable;
-      if ((locale.EEj != null) && (locale.EEj.EDK != null))
+      if ((locale.EWF != null) && (locale.EWF.EWg != null))
       {
-        d.eXT().aKG(locale.EEj.EDK.EEk);
-        ad.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
+        d.fbF().aMc(locale.EWF.EWg.EWG);
+        ae.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
       }
     }
-    ad.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
+    ae.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
     super.afterExecute(paramRunnable, paramThrowable);
     AppMethodBeat.o(110623);
   }
@@ -36,7 +36,7 @@ public final class h
   {
     AppMethodBeat.i(110622);
     super.beforeExecute(paramThread, paramRunnable);
-    ad.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
+    ae.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
     AppMethodBeat.o(110622);
   }
   
@@ -57,9 +57,9 @@ public final class h
   public final void terminated()
   {
     AppMethodBeat.i(110621);
-    d locald = d.eXT();
-    if (locald.EDU != null) {
-      locald.EDU.clear();
+    d locald = d.fbF();
+    if (locald.EWq != null) {
+      locald.EWq.clear();
     }
     super.terminated();
     AppMethodBeat.o(110621);

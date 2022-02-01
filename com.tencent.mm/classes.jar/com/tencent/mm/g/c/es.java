@@ -4,33 +4,33 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.protocal.protobuf.em;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class es
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFq = "updateTime".hashCode();
-  private static final int fnB = "appid".hashCode();
-  private static final int fnC;
-  private static final int fnw = "acctTypeId".hashCode();
-  private static final int fnx = "language".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int fpC = "appid".hashCode();
+  private static final int fpD;
+  private static final int fpx = "acctTypeId".hashCode();
+  private static final int fpy = "language".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFn = true;
+  private boolean eGW = true;
   public String field_acctTypeId;
   public em field_appRec;
   public String field_appid;
   public String field_language;
   public long field_updateTime;
-  private boolean fnA = true;
-  private boolean fnt = true;
-  private boolean fnu = true;
-  private boolean fnz = true;
+  private boolean fpA = true;
+  private boolean fpB = true;
+  private boolean fpu = true;
+  private boolean fpv = true;
   
   static
   {
-    fnC = "appRec".hashCode();
+    fpD = "appRec".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -46,7 +46,7 @@ public abstract class es
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fnB != k) {
+      if (fpC != k) {
         break label60;
       }
       this.field_appid = paramCursor.getString(i);
@@ -57,9 +57,9 @@ public abstract class es
       break label20;
       break;
       label60:
-      if (fnx == k) {
+      if (fpy == k) {
         this.field_language = paramCursor.getString(i);
-      } else if (fnC == k) {
+      } else if (fpD == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
@@ -70,11 +70,11 @@ public abstract class es
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseOpenIMAppIdInfo", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseOpenIMAppIdInfo", localIOException.getMessage());
         }
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (fnw == k) {
+      } else if (fpx == k) {
         this.field_acctTypeId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -85,20 +85,20 @@ public abstract class es
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fnz) {
+    if (this.fpA) {
       localContentValues.put("appid", this.field_appid);
     }
-    if (this.fnu) {
+    if (this.fpv) {
       localContentValues.put("language", this.field_language);
     }
-    if ((this.fnA) && (this.field_appRec != null)) {}
+    if ((this.fpB) && (this.field_appRec != null)) {}
     try
     {
       localContentValues.put("appRec", this.field_appRec.toByteArray());
-      if (this.eFn) {
+      if (this.eGW) {
         localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
       }
-      if (this.fnt) {
+      if (this.fpu) {
         localContentValues.put("acctTypeId", this.field_acctTypeId);
       }
       if (this.systemRowid > 0L) {
@@ -110,14 +110,14 @@ public abstract class es
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseOpenIMAppIdInfo", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseOpenIMAppIdInfo", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.es
  * JD-Core Version:    0.7.0.1
  */

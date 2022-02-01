@@ -1,16 +1,16 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 
 public final class r
 {
-  public static String a(e parame, boolean paramBoolean, String paramString)
+  public static String a(k paramk, boolean paramBoolean, String paramString)
   {
-    i.mC(q.B(parame.mUri), paramString);
+    o.mI(w.B(paramk.mUri), paramString);
     if (paramBoolean) {
-      i.cZ(q.B(parame.mUri), true);
+      o.dd(w.B(paramk.mUri), true);
     }
     return paramString;
   }

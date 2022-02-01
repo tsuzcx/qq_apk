@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.xweb_ext.video;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class b
 {
-  public static boolean bGo()
+  public static boolean bHk()
   {
     AppMethodBeat.i(50040);
-    int i = bGp();
+    int i = bHl();
     if (i >= 0)
     {
-      ad.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoProxy, command value:%s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoProxy, command value:%s", new Object[] { Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(50040);
@@ -25,10 +25,10 @@ public final class b
     }
     if (g.ab(com.tencent.mm.plugin.expt.b.b.class) != null)
     {
-      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qvA, 0) == 1) {}
+      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qCz, 0) == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoProxy, expt is %s", new Object[] { Boolean.valueOf(bool) });
+        ae.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoProxy, expt is %s", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(50040);
         return bool;
       }
@@ -37,21 +37,21 @@ public final class b
     return false;
   }
   
-  private static int bGp()
+  private static int bHl()
   {
     AppMethodBeat.i(50042);
-    int i = ax.aQz("xweb_abtest_command").decodeInt("xweb_video_proxy_command_value", -1);
+    int i = ay.aRW("xweb_abtest_command").decodeInt("xweb_video_proxy_command_value", -1);
     AppMethodBeat.o(50042);
     return i;
   }
   
-  public static boolean bGq()
+  public static boolean bHm()
   {
     AppMethodBeat.i(50043);
-    int i = bGr();
+    int i = bHn();
     if (i >= 0)
     {
-      ad.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoHlsProxy, command value:%s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoHlsProxy, command value:%s", new Object[] { Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(50043);
@@ -62,10 +62,10 @@ public final class b
     }
     if (g.ab(com.tencent.mm.plugin.expt.b.b.class) != null)
     {
-      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qvB, 0) == 1) {}
+      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qCA, 0) == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoHlsProxy, expt is %s", new Object[] { Boolean.valueOf(bool) });
+        ae.i("MicroMsg.SameLayer.AppBrandXWebVideoABTests", "openXWebVideoHlsProxy, expt is %s", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(50043);
         return bool;
       }
@@ -74,46 +74,46 @@ public final class b
     return false;
   }
   
-  private static int bGr()
+  private static int bHn()
   {
     AppMethodBeat.i(50045);
-    int i = ax.aQz("xweb_abtest_command").decodeInt("xweb_video_hls_proxy_command_value", -1);
+    int i = ay.aRW("xweb_abtest_command").decodeInt("xweb_video_hls_proxy_command_value", -1);
     AppMethodBeat.o(50045);
     return i;
   }
   
-  public static void xe(int paramInt)
+  public static void xj(int paramInt)
   {
     AppMethodBeat.i(50038);
-    ax.aQz("xweb_abtest_command").encode("xweb_video_preload_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_video_preload_command_value", paramInt);
     AppMethodBeat.o(50038);
   }
   
-  public static void xf(int paramInt)
+  public static void xk(int paramInt)
   {
     AppMethodBeat.i(50039);
-    ax.aQz("xweb_abtest_command").encode("xweb_video_player_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_video_player_command_value", paramInt);
     AppMethodBeat.o(50039);
   }
   
-  public static void xg(int paramInt)
+  public static void xl(int paramInt)
   {
     AppMethodBeat.i(175095);
-    ax.aQz("xweb_abtest_command").encode("xweb_hls_video_player_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_hls_video_player_command_value", paramInt);
     AppMethodBeat.o(175095);
   }
   
-  public static void xh(int paramInt)
+  public static void xm(int paramInt)
   {
     AppMethodBeat.i(50041);
-    ax.aQz("xweb_abtest_command").encode("xweb_video_proxy_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_video_proxy_command_value", paramInt);
     AppMethodBeat.o(50041);
   }
   
-  public static void xi(int paramInt)
+  public static void xn(int paramInt)
   {
     AppMethodBeat.i(50044);
-    ax.aQz("xweb_abtest_command").encode("xweb_video_hls_proxy_command_value", paramInt);
+    ay.aRW("xweb_abtest_command").encode("xweb_video_hls_proxy_command_value", paramInt);
     AppMethodBeat.o(50044);
   }
 }

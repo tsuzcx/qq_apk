@@ -12,15 +12,15 @@ public final class a
   extends w
 {
   private static final int VIEW_ID = 2131296720;
-  public a.a clT;
-  public WAGamePanelInputEditText clU;
-  private View.OnClickListener clV;
+  public a.a clV;
+  public WAGamePanelInputEditText clW;
+  private View.OnClickListener clX;
   
   private a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(130711);
-    wt(VIEW_ID);
+    wy(VIEW_ID);
     AppMethodBeat.o(130711);
   }
   
@@ -59,26 +59,26 @@ public final class a
     }
   }
   
-  public final void DQ()
+  public final void DT()
   {
     AppMethodBeat.i(130714);
     cp(this);
     AppMethodBeat.o(130714);
   }
   
-  public final void DR()
+  public final void DU()
   {
     AppMethodBeat.i(130715);
-    this.clT.setIsHide(false);
+    this.clV.setIsHide(false);
     AppMethodBeat.o(130715);
   }
   
-  public final void DS()
+  public final void DV()
   {
     int j = 0;
     AppMethodBeat.i(130716);
-    View localView = this.clT.getConfirmButton();
-    if ((this.clU.getInputType() & 0x20000) > 0)
+    View localView = this.clV.getConfirmButton();
+    if ((this.clW.getInputType() & 0x20000) > 0)
     {
       i = 1;
       if (i == 0) {
@@ -106,14 +106,14 @@ public final class a
   
   public final void setOnConfirmClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.clV = paramOnClickListener;
+    this.clX = paramOnClickListener;
   }
   
   public final void show()
   {
     AppMethodBeat.i(130718);
-    this.nfz = this.clU;
-    this.clU.requestFocus();
+    this.nkH = this.clW;
+    this.clW.requestFocus();
     super.show();
     AppMethodBeat.o(130718);
   }

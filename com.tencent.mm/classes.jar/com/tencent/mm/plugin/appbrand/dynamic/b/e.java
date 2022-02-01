@@ -8,17 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e kfZ;
-  private Map<String, SoftReference<WxaPkgWrappingInfo>> gxX;
+  private static volatile e kjp;
+  private Map<String, SoftReference<WxaPkgWrappingInfo>> gAE;
   
   private e()
   {
     AppMethodBeat.i(121271);
-    this.gxX = new ConcurrentHashMap();
+    this.gAE = new ConcurrentHashMap();
     AppMethodBeat.o(121271);
   }
   
-  public static WxaPkgWrappingInfo OB(String paramString)
+  public static WxaPkgWrappingInfo Pj(String paramString)
   {
     AppMethodBeat.i(121273);
     if ((paramString == null) || (paramString.length() == 0))
@@ -26,7 +26,7 @@ public class e
       AppMethodBeat.o(121273);
       return null;
     }
-    paramString = (SoftReference)bfX().gxX.get(paramString);
+    paramString = (SoftReference)bgF().gAE.get(paramString);
     if (paramString != null)
     {
       paramString = (WxaPkgWrappingInfo)paramString.get();
@@ -37,7 +37,7 @@ public class e
     return null;
   }
   
-  public static boolean a(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
+  public static boolean b(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
     AppMethodBeat.i(121272);
     if ((paramString == null) || (paramString.length() == 0) || (paramWxaPkgWrappingInfo == null))
@@ -45,21 +45,21 @@ public class e
       AppMethodBeat.o(121272);
       return false;
     }
-    bfX().gxX.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    bgF().gAE.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
     AppMethodBeat.o(121272);
     return true;
   }
   
-  private static e bfX()
+  private static e bgF()
   {
     AppMethodBeat.i(121270);
-    if (kfZ == null) {}
+    if (kjp == null) {}
     try
     {
-      if (kfZ == null) {
-        kfZ = new e();
+      if (kjp == null) {
+        kjp = new e();
       }
-      e locale = kfZ;
+      e locale = kjp;
       AppMethodBeat.o(121270);
       return locale;
     }
@@ -72,7 +72,7 @@ public class e
   public static void removeAll()
   {
     AppMethodBeat.i(121274);
-    bfX().gxX.clear();
+    bgF().gAE.clear();
     AppMethodBeat.o(121274);
   }
 }

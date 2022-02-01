@@ -3,16 +3,16 @@ package kotlinx.coroutines.internal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "", "E", "", "singleConsumer", "<init>", "(Z)V", "element", "addLast", "(Ljava/lang/Object;)Z", "", "close", "()V", "isClosed", "()Z", "R", "Lkotlin/Function1;", "transform", "", "map", "(Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "removeFirstOrNull", "()Ljava/lang/Object;", "isEmpty", "", "getSize", "()I", "size", "kotlinx-coroutines-core"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "", "E", "", "singleConsumer", "<init>", "(Z)V", "element", "addLast", "(Ljava/lang/Object;)Z", "", "close", "()V", "isClosed", "()Z", "R", "Lkotlin/Function1;", "transform", "", "map", "(Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "removeFirstOrNull", "()Ljava/lang/Object;", "isEmpty", "", "getSize", "()I", "size", "kotlinx-coroutines-core"})
 public class k<E>
 {
-  private static final AtomicReferenceFieldUpdater NJP;
+  private static final AtomicReferenceFieldUpdater OgV;
   private volatile Object _cur;
   
   static
   {
     AppMethodBeat.i(118130);
-    NJP = AtomicReferenceFieldUpdater.newUpdater(k.class, Object.class, "_cur");
+    OgV = AtomicReferenceFieldUpdater.newUpdater(k.class, Object.class, "_cur");
     AppMethodBeat.o(118130);
   }
   
@@ -34,17 +34,33 @@ public class k<E>
         AppMethodBeat.o(118126);
         return;
       }
-      NJP.compareAndSet(this, locall, locall.gwd());
+      OgV.compareAndSet(this, locall, locall.gAF());
     }
   }
   
-  public final boolean fY(E paramE)
+  public final E gAv()
+  {
+    AppMethodBeat.i(118128);
+    for (;;)
+    {
+      l locall = (l)this._cur;
+      Object localObject = locall.gAv();
+      if (localObject != l.OgZ)
+      {
+        AppMethodBeat.o(118128);
+        return localObject;
+      }
+      OgV.compareAndSet(this, locall, locall.gAF());
+    }
+  }
+  
+  public final boolean gb(E paramE)
   {
     AppMethodBeat.i(118127);
     for (;;)
     {
       l locall = (l)this._cur;
-      switch (locall.fZ(paramE))
+      switch (locall.gc(paramE))
       {
       default: 
         break;
@@ -55,7 +71,7 @@ public class k<E>
         AppMethodBeat.o(118127);
         return false;
       case 1: 
-        NJP.compareAndSet(this, locall, locall.gwd());
+        OgV.compareAndSet(this, locall, locall.gAF());
       }
     }
   }
@@ -65,22 +81,6 @@ public class k<E>
     long l = ((l)this._cur)._state;
     int i = (int)((0x3FFFFFFF & l) >> 0);
     return (int)((l & 0xC0000000) >> 30) - i & 0x3FFFFFFF;
-  }
-  
-  public final E gvT()
-  {
-    AppMethodBeat.i(118128);
-    for (;;)
-    {
-      l locall = (l)this._cur;
-      Object localObject = locall.gvT();
-      if (localObject != l.NJT)
-      {
-        AppMethodBeat.o(118128);
-        return localObject;
-      }
-      NJP.compareAndSet(this, locall, locall.gwd());
-    }
   }
 }
 

@@ -5,7 +5,7 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class log_13835
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int clientVersion_;
   public String currChatName_;
@@ -37,10 +37,10 @@ public class log_13835
       }
       paramVarArgs.aS(1, this.import_ds_);
       paramVarArgs.aS(2, this.ds_);
-      paramVarArgs.aY(3, this.uin_);
+      paramVarArgs.aZ(3, this.uin_);
       paramVarArgs.aS(4, this.device_);
       paramVarArgs.aS(5, this.clientVersion_);
-      paramVarArgs.aY(6, this.time_stamp_);
+      paramVarArgs.aZ(6, this.time_stamp_);
       if (this.currChatName_ != null) {
         paramVarArgs.d(7, this.currChatName_);
       }
@@ -65,9 +65,9 @@ public class log_13835
       paramVarArgs = (byte[])paramVarArgs[0];
       this.oplist_.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       if (this.currChatName_ == null)
@@ -90,35 +90,35 @@ public class log_13835
         AppMethodBeat.o(151546);
         return -1;
       case 1: 
-        locallog_13835.import_ds_ = ((f.a.a.a.a)localObject1).NPN.zc();
+        locallog_13835.import_ds_ = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(151546);
         return 0;
       case 2: 
-        locallog_13835.ds_ = ((f.a.a.a.a)localObject1).NPN.zc();
+        locallog_13835.ds_ = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(151546);
         return 0;
       case 3: 
-        locallog_13835.uin_ = ((f.a.a.a.a)localObject1).NPN.zd();
+        locallog_13835.uin_ = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(151546);
         return 0;
       case 4: 
-        locallog_13835.device_ = ((f.a.a.a.a)localObject1).NPN.zc();
+        locallog_13835.device_ = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(151546);
         return 0;
       case 5: 
-        locallog_13835.clientVersion_ = ((f.a.a.a.a)localObject1).NPN.zc();
+        locallog_13835.clientVersion_ = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(151546);
         return 0;
       case 6: 
-        locallog_13835.time_stamp_ = ((f.a.a.a.a)localObject1).NPN.zd();
+        locallog_13835.time_stamp_ = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(151546);
         return 0;
       case 7: 
-        locallog_13835.currChatName_ = ((f.a.a.a.a)localObject1).NPN.readString();
+        locallog_13835.currChatName_ = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(151546);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -126,7 +126,7 @@ public class log_13835
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new IMBehavior();
         localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((IMBehavior)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        for (boolean bool = true; bool; bool = ((IMBehavior)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
         locallog_13835.oplist_.add(localObject1);
         paramInt += 1;
       }

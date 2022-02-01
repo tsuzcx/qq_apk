@@ -2,38 +2,38 @@ package com.tencent.mm.pluginsdk.wallet;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.yu;
-import com.tencent.mm.g.a.yu.b;
-import com.tencent.mm.g.a.yv;
-import com.tencent.mm.g.a.yv.b;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.za;
+import com.tencent.mm.g.a.za.b;
+import com.tencent.mm.g.a.zb;
+import com.tencent.mm.g.a.zb.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
-  public static boolean aI(bu parambu)
+  public static boolean aH(bv parambv)
   {
     Object localObject1 = null;
     AppMethodBeat.i(116324);
-    if (parambu.getType() == 419430449)
+    if (parambv.getType() == 419430449)
     {
-      if (parambu.field_isSend != 0) {
+      if (parambv.field_isSend != 0) {
         break label330;
       }
-      localObject1 = parambu.field_content;
+      localObject1 = parambv.field_content;
       if (localObject1 == null) {
         break label344;
       }
@@ -41,56 +41,56 @@ public final class d
     label330:
     label337:
     label344:
-    for (parambu = k.b.aA((String)localObject1, parambu.field_reserved);; parambu = null)
+    for (parambv = k.b.aB((String)localObject1, parambv.field_reserved);; parambv = null)
     {
       int i;
-      if (parambu != null)
+      if (parambv != null)
       {
-        localObject1 = new yv();
-        ((yv)localObject1).dNP.dxv = parambu.hAX;
-        a.IbL.l((b)localObject1);
-        j = ((yv)localObject1).dNQ.status;
+        localObject1 = new zb();
+        ((zb)localObject1).dPf.dyA = parambv.hDL;
+        a.IvT.l((b)localObject1);
+        j = ((zb)localObject1).dPg.status;
         i = j;
         if (j <= 0) {
-          i = parambu.hAU;
+          i = parambv.hDI;
         }
         if ((i >= 0) && ((i == 1) || (i == 7)))
         {
           AppMethodBeat.o(116324);
           return true;
-          if ((parambu.getType() == 436207665) && (parambu.field_isSend == 0))
+          if ((parambv.getType() == 436207665) && (parambv.field_isSend == 0))
           {
-            Object localObject2 = parambu.field_content;
+            Object localObject2 = parambv.field_content;
             if (localObject2 != null) {
-              localObject1 = k.b.yr((String)localObject2);
+              localObject1 = k.b.zb((String)localObject2);
             }
             if (localObject1 != null) {
-              if ((!"1001".equals(((k.b)localObject1).hBw)) && (!w.vF(parambu.field_talker)))
+              if ((!"1001".equals(((k.b)localObject1).hEk)) && (!x.wb(parambv.field_talker)))
               {
-                parambu = new yu();
-                if (!bt.isNullOrNil(((k.b)localObject1).hBx))
+                parambv = new za();
+                if (!bu.isNullOrNil(((k.b)localObject1).hEl))
                 {
-                  parambu.dNJ.dNL = ((k.b)localObject1).hBx;
-                  a.IbL.l(parambu);
-                  if (parambu.dNK.dNO == 0)
+                  parambv.dOZ.dPb = ((k.b)localObject1).hEl;
+                  a.IvT.l(parambv);
+                  if (parambv.dPa.dPe == 0)
                   {
                     AppMethodBeat.o(116324);
                     return true;
                   }
                 }
               }
-              else if (w.vF(parambu.field_talker))
+              else if (x.wb(parambv.field_talker))
               {
-                parambu = u.aAm();
-                if (bt.hj(((k.b)localObject1).hBM)) {
+                parambv = v.aAC();
+                if (bu.ht(((k.b)localObject1).hEA)) {
                   break label337;
                 }
-                localObject1 = ((k.b)localObject1).hBM.iterator();
+                localObject1 = ((k.b)localObject1).hEA.iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
                   localObject2 = ((String)((Iterator)localObject1).next()).split(",");
-                  if ((localObject2.length == 3) && (localObject2[0].equals(parambu))) {
-                    i = bt.getInt(localObject2[2], -1);
+                  if ((localObject2.length == 3) && (localObject2[0].equals(parambv))) {
+                    i = bu.getInt(localObject2[2], -1);
                   }
                 }
               }
@@ -112,33 +112,33 @@ public final class d
     }
   }
   
-  public static String aNO(String paramString)
+  public static String aPl(String paramString)
   {
     AppMethodBeat.i(116323);
-    Object localObject = ((l)g.ab(l.class)).dlK().aqu(paramString);
+    Object localObject = ((l)g.ab(l.class)).doJ().arz(paramString);
     int k;
     int j;
     int i;
     if (localObject != null)
     {
-      ad.i("MicroMsg.WalletConvDelCheckLogic", "checkUnProcessWalletMsgCount, msgInfoList size: %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      ae.i("MicroMsg.WalletConvDelCheckLogic", "checkUnProcessWalletMsgCount, msgInfoList size: %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
       Iterator localIterator = ((List)localObject).iterator();
       k = 0;
       j = 0;
       i = 0;
       while (localIterator.hasNext())
       {
-        localObject = (bu)localIterator.next();
-        if (!aI((bu)localObject)) {
+        localObject = (bv)localIterator.next();
+        if (!aH((bv)localObject)) {
           break label343;
         }
-        if (((bu)localObject).getType() == 419430449)
+        if (((bv)localObject).getType() == 419430449)
         {
           k += 1;
         }
         else
         {
-          if (((bu)localObject).getType() != 436207665) {
+          if (((bv)localObject).getType() != 436207665) {
             break label343;
           }
           localObject = ((ei)localObject).field_content;
@@ -150,11 +150,11 @@ public final class d
     }
     label343:
     label346:
-    for (localObject = k.b.yr((String)localObject);; localObject = null)
+    for (localObject = k.b.zb((String)localObject);; localObject = null)
     {
       if (localObject != null)
       {
-        if ("1001".equals(((k.b)localObject).hBw))
+        if ("1001".equals(((k.b)localObject).hEk))
         {
           j += 1;
           break;
@@ -166,27 +166,27 @@ public final class d
         break;
         if ((i > 0) || (j > 0) || (k > 0))
         {
-          if (w.vF(paramString))
+          if (x.wb(paramString))
           {
-            paramString = aj.getContext().getString(2131765237, new Object[] { Integer.valueOf(j) });
+            paramString = ak.getContext().getString(2131765237, new Object[] { Integer.valueOf(j) });
             AppMethodBeat.o(116323);
             return paramString;
           }
           if ((i > 0) && (k <= 0))
           {
-            paramString = aj.getContext().getString(2131765239, new Object[] { Integer.valueOf(i) });
+            paramString = ak.getContext().getString(2131765239, new Object[] { Integer.valueOf(i) });
             AppMethodBeat.o(116323);
             return paramString;
           }
           if ((k > 0) && (i <= 0))
           {
-            paramString = aj.getContext().getString(2131765240, new Object[] { Integer.valueOf(k) });
+            paramString = ak.getContext().getString(2131765240, new Object[] { Integer.valueOf(k) });
             AppMethodBeat.o(116323);
             return paramString;
           }
           if ((k > 0) && (i > 0))
           {
-            paramString = aj.getContext().getString(2131765238, new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+            paramString = ak.getContext().getString(2131765238, new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
             AppMethodBeat.o(116323);
             return paramString;
           }

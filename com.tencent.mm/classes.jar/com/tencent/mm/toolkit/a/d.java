@@ -9,29 +9,29 @@ final class d
 {
   public static final class a
   {
-    private static final char[] fIY;
+    private static final char[] fLc;
     
     static
     {
-      AppMethodBeat.i(211577);
-      fIY = "0123456789ABCDEF".toCharArray();
-      AppMethodBeat.o(211577);
+      AppMethodBeat.i(189008);
+      fLc = "0123456789ABCDEF".toCharArray();
+      AppMethodBeat.o(189008);
     }
     
     public static String Z(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(211576);
+      AppMethodBeat.i(189007);
       char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
       int i = 0;
       while (i < paramArrayOfByte.length)
       {
         int j = paramArrayOfByte[i] & 0xFF;
-        arrayOfChar[(i * 2)] = fIY[(j >>> 4)];
-        arrayOfChar[(i * 2 + 1)] = fIY[(j & 0xF)];
+        arrayOfChar[(i * 2)] = fLc[(j >>> 4)];
+        arrayOfChar[(i * 2 + 1)] = fLc[(j & 0xF)];
         i += 1;
       }
       paramArrayOfByte = new String(arrayOfChar);
-      AppMethodBeat.o(211576);
+      AppMethodBeat.o(189007);
       return paramArrayOfByte;
     }
   }
@@ -40,11 +40,11 @@ final class d
   {
     public static void U(File paramFile)
     {
-      AppMethodBeat.i(211578);
+      AppMethodBeat.i(189009);
       if (paramFile != null) {
         paramFile.delete();
       }
-      AppMethodBeat.o(211578);
+      AppMethodBeat.o(189009);
     }
   }
   
@@ -52,20 +52,20 @@ final class d
   {
     public static void closeQuietly(Closeable paramCloseable)
     {
-      AppMethodBeat.i(211579);
+      AppMethodBeat.i(189010);
       if (paramCloseable != null) {
         try
         {
           paramCloseable.close();
-          AppMethodBeat.o(211579);
+          AppMethodBeat.o(189010);
           return;
         }
         catch (IOException paramCloseable)
         {
-          e.fuq();
+          e.fyr();
         }
       }
-      AppMethodBeat.o(211579);
+      AppMethodBeat.o(189010);
     }
   }
 }

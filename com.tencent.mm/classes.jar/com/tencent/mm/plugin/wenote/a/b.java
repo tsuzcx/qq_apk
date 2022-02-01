@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wenote.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oh;
+import com.tencent.mm.g.a.oi;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
-  extends c<oh>
+  extends c<oi>
 {
   public b()
   {
     AppMethodBeat.i(161477);
-    this.__eventId = oh.class.getName().hashCode();
+    this.__eventId = oi.class.getName().hashCode();
     AppMethodBeat.o(161477);
   }
 }

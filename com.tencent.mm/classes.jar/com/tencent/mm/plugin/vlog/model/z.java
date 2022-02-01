@@ -8,57 +8,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.plugin.mmsight.segment.d;
 import com.tencent.mm.plugin.mmsight.segment.n;
-import com.tencent.mm.protocal.protobuf.bpm;
-import com.tencent.mm.protocal.protobuf.byf;
-import com.tencent.mm.protocal.protobuf.dvw;
-import com.tencent.mm.protocal.protobuf.yz;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.a.j;
+import com.tencent.mm.protocal.protobuf.bqe;
+import com.tencent.mm.protocal.protobuf.byz;
+import com.tencent.mm.protocal.protobuf.dwr;
+import com.tencent.mm.protocal.protobuf.zc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.p;
-import d.k.e;
-import d.k.h;
+import d.k.i;
 import d.l;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator;", "", "()V", "TAG", "", "vLogConfig", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "cropBitmap", "Landroid/graphics/Bitmap;", "origin", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "maxWidth", "", "maxHeight", "imageTrackToMaterialReq", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setConfig", "", "config", "trackToMaterialReq", "trackToMaterials", "Ljava/util/LinkedList;", "trackList", "", "videoTrackToMaterialReq", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator;", "", "()V", "TAG", "", "vLogConfig", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "cropBitmap", "Landroid/graphics/Bitmap;", "origin", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "maxWidth", "", "maxHeight", "imageTrackToMaterialReq", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setConfig", "", "config", "trackToMaterialReq", "trackToMaterials", "Ljava/util/LinkedList;", "trackList", "", "videoTrackToMaterialReq", "Companion", "plugin-vlog_release"})
 public final class z
 {
-  public static final a BGK;
-  yz BGJ;
+  public static final a BYj;
+  zc BYi;
   private final String TAG = "MicroMsg.VLogGenerator";
   
   static
   {
-    AppMethodBeat.i(195825);
-    BGK = new a((byte)0);
-    AppMethodBeat.o(195825);
+    AppMethodBeat.i(191284);
+    BYj = new a((byte)0);
+    AppMethodBeat.o(191284);
   }
   
   private final Bitmap a(Bitmap paramBitmap, g paramg, int paramInt1, int paramInt2)
   {
     float f1 = 1.0F;
-    AppMethodBeat.i(195824);
-    if (!paramg.pZj.contains(paramg.hmm)) {
-      ad.i(this.TAG, "cropBitmap: cropInfo is Error?");
+    AppMethodBeat.i(191283);
+    if (!paramg.qfO.contains(paramg.hpa)) {
+      ae.i(this.TAG, "cropBitmap: cropInfo is Error?");
     }
-    float f2 = paramBitmap.getWidth() * 1.0F / paramg.pZj.width();
-    float f3 = paramInt1 * 1.0F / paramg.hmm.width();
-    float f4 = paramInt2 * 1.0F / paramg.hmm.height();
+    float f2 = paramBitmap.getWidth() * 1.0F / paramg.qfO.width();
+    float f3 = paramInt1 * 1.0F / paramg.hpa.width();
+    float f4 = paramInt2 * 1.0F / paramg.hpa.height();
     if ((f3 >= 1.0F) && (f4 >= 1.0F)) {}
     for (;;)
     {
-      paramInt1 = (int)((paramg.hmm.left - paramg.pZj.left) * f2);
-      paramInt2 = (int)((paramg.hmm.top - paramg.pZj.top) * f2);
-      int i = (int)(paramg.hmm.width() * f2);
-      int j = (int)(paramg.hmm.height() * f2);
+      paramInt1 = (int)((paramg.hpa.left - paramg.qfO.left) * f2);
+      paramInt2 = (int)((paramg.hpa.top - paramg.qfO.top) * f2);
+      int i = (int)(paramg.hpa.width() * f2);
+      int j = (int)(paramg.hpa.height() * f2);
       Matrix localMatrix = new Matrix();
       f3 = f1 / f2;
       f1 /= f2;
       localMatrix.setScale(f3, f1);
-      ad.i(this.TAG, "cropBitmap, left:" + paramInt1 + ", top:" + paramInt2 + ", width:" + i + ", height:" + j + ", scaleX:" + f3 + ", scaleY:" + f1 + ", bitmap size:[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + ']');
+      ae.i(this.TAG, "cropBitmap, left:" + paramInt1 + ", top:" + paramInt2 + ", width:" + i + ", height:" + j + ", scaleX:" + f3 + ", scaleY:" + f1 + ", bitmap size:[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + ']');
       paramg = paramBitmap;
       if (paramInt1 >= 0)
       {
@@ -77,17 +76,17 @@ public final class z
           }
         }
       }
-      AppMethodBeat.o(195824);
+      AppMethodBeat.o(191283);
       return paramg;
       f1 = Math.min(f3, f4);
     }
   }
   
-  private final byf b(w paramw)
+  private final byz b(w paramw)
   {
-    AppMethodBeat.i(195823);
-    long l4 = paramw.BGw.BMD;
-    Object localObject = this.BGJ;
+    AppMethodBeat.i(191282);
+    long l4 = paramw.BXV.Cec;
+    Object localObject = this.BYi;
     long l2;
     long l1;
     label75:
@@ -103,51 +102,51 @@ public final class z
     long l6;
     if (localObject != null)
     {
-      localObject = ((yz)localObject).FYE;
+      localObject = ((zc)localObject).Grd;
       if (localObject != null)
       {
-        l2 = ((dvw)localObject).HIg;
-        localObject = this.BGJ;
+        l2 = ((dwr)localObject).IbS;
+        localObject = this.BYi;
         if (localObject == null) {
           break label377;
         }
-        localObject = ((yz)localObject).FYE;
+        localObject = ((zc)localObject).Grd;
         if (localObject == null) {
           break label377;
         }
-        l1 = ((dvw)localObject).HIf;
-        i = Math.min(paramw.BGr, paramw.BGu.pZj.width());
-        j = Math.min(paramw.BGs, paramw.BGu.pZj.height());
+        l1 = ((dwr)localObject).IbR;
+        i = Math.min(paramw.BXQ, paramw.BXT.qfO.width());
+        j = Math.min(paramw.BXR, paramw.BXT.qfO.height());
         locald = n.m(paramw.path, 100, i, j);
         localLinkedList = new LinkedList();
-        localObject = this.BGJ;
+        localObject = this.BYi;
         if (localObject == null) {
           break label383;
         }
-        localObject = ((yz)localObject).FYD;
+        localObject = ((zc)localObject).Grc;
         if (localObject == null) {
           break label383;
         }
-        i = (int)((bpm)localObject).bbs;
-        localObject = this.BGJ;
+        i = (int)((bqe)localObject).bbs;
+        localObject = this.BYi;
         if (localObject == null) {
           break label389;
         }
-        localObject = ((yz)localObject).FYD;
+        localObject = ((zc)localObject).Grc;
         if (localObject == null) {
           break label389;
         }
-        j = (int)((bpm)localObject).bbt;
+        j = (int)((bqe)localObject).bbt;
         l3 = l4 - 100L;
         if (l3 > -9223372036854775808L) {
           break label395;
         }
-        localObject = d.k.g.MMu;
-        localObject = d.k.g.ggf();
-        localObject = h.a((e)localObject, l2);
-        l3 = ((e)localObject).first;
-        l5 = ((e)localObject).MMp;
-        l6 = ((e)localObject).xwe;
+        localObject = i.Njz;
+        localObject = i.gkH();
+        localObject = d.k.j.a((d.k.g)localObject, l2);
+        l3 = ((d.k.g)localObject).first;
+        l5 = ((d.k.g)localObject).Nju;
+        l6 = ((d.k.g)localObject).xMb;
         if (l6 < 0L) {
           break label414;
         }
@@ -167,10 +166,10 @@ public final class z
       {
         localObject = locald.getFrameAtTime(l2);
         p.g(localObject, "bitmap");
-        localObject = a((Bitmap)localObject, paramw.BGu, i, j);
+        localObject = a((Bitmap)localObject, paramw.BXT, i, j);
         m = ((Bitmap)localObject).getWidth();
         k = ((Bitmap)localObject).getHeight();
-        localLinkedList.add(new com.tencent.mm.bx.b(com.tencent.mm.sdk.platformtools.g.j((Bitmap)localObject, 20)));
+        localLinkedList.add(new com.tencent.mm.bw.b(h.j((Bitmap)localObject, 20)));
         if ((localLinkedList.size() >= l1) || (l2 == l5)) {
           break;
         }
@@ -184,7 +183,7 @@ public final class z
       break label163;
       j = 120;
       break label193;
-      localObject = new d.k.g(100L, l3 - 1L);
+      localObject = new i(100L, l3 - 1L);
       break label220;
       l2 = l3;
     } while (l3 >= l5);
@@ -195,25 +194,25 @@ public final class z
       label414:
       label426:
       locald.release();
-      localObject = new byf();
-      ((byf)localObject).id = paramw.id;
-      ((byf)localObject).GSq = localLinkedList;
-      paramw = new bpm();
+      localObject = new byz();
+      ((byz)localObject).id = paramw.id;
+      ((byz)localObject).HlR = localLinkedList;
+      paramw = new bqe();
       paramw.bbs = i;
       paramw.bbt = j;
-      ((byf)localObject).GSr = paramw;
-      ((byf)localObject).dle = 2L;
-      ((byf)localObject).GQY = l4;
-      AppMethodBeat.o(195823);
+      ((byz)localObject).HlS = paramw;
+      ((byz)localObject).dmg = 2L;
+      ((byz)localObject).Hkz = l4;
+      AppMethodBeat.o(191282);
       return localObject;
       i = m;
       j = k;
     }
   }
   
-  public final LinkedList<byf> gD(List<w> paramList)
+  public final LinkedList<byz> gM(List<w> paramList)
   {
-    AppMethodBeat.i(195822);
+    AppMethodBeat.i(191281);
     p.h(paramList, "trackList");
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = ((Iterable)paramList).iterator();
@@ -230,37 +229,37 @@ public final class z
       if (((w)localObject1).type == 1)
       {
         paramList = new BitmapFactory.Options();
-        paramList.inSampleSize = ((int)(((w)localObject1).BGr * ((w)localObject1).BGt / ((w)localObject1).BGu.pZj.width()));
+        paramList.inSampleSize = ((int)(((w)localObject1).BXQ * ((w)localObject1).BXS / ((w)localObject1).BXT.qfO.width()));
         paramList = MMBitmapFactory.decodeFile(((w)localObject1).path, paramList);
         if (paramList != null)
         {
-          Object localObject2 = this.BGJ;
+          Object localObject2 = this.BYi;
           if (localObject2 != null)
           {
-            localObject2 = ((yz)localObject2).FYD;
+            localObject2 = ((zc)localObject2).Grc;
             if (localObject2 != null)
             {
-              i = (int)((bpm)localObject2).bbs;
-              localObject2 = this.BGJ;
+              i = (int)((bqe)localObject2).bbs;
+              localObject2 = this.BYi;
               if (localObject2 == null) {
                 break label318;
               }
-              localObject2 = ((yz)localObject2).FYD;
+              localObject2 = ((zc)localObject2).Grc;
               if (localObject2 == null) {
                 break label318;
               }
-              j = (int)((bpm)localObject2).bbt;
-              localObject2 = a(paramList, ((w)localObject1).BGu, i, j);
-              byte[] arrayOfByte = com.tencent.mm.sdk.platformtools.g.j((Bitmap)localObject2, 20);
-              paramList = new byf();
+              j = (int)((bqe)localObject2).bbt;
+              localObject2 = a(paramList, ((w)localObject1).BXT, i, j);
+              byte[] arrayOfByte = h.j((Bitmap)localObject2, 20);
+              paramList = new byz();
               paramList.id = ((w)localObject1).id;
-              paramList.GSq = new LinkedList((Collection)j.listOf(new com.tencent.mm.bx.b(arrayOfByte)));
-              localObject1 = new bpm();
-              ((bpm)localObject1).bbs = ((Bitmap)localObject2).getWidth();
-              ((bpm)localObject1).bbt = ((Bitmap)localObject2).getHeight();
-              paramList.GSr = ((bpm)localObject1);
-              paramList.dle = 1L;
-              paramList.GQY = 0L;
+              paramList.HlR = new LinkedList((Collection)d.a.j.listOf(new com.tencent.mm.bw.b(arrayOfByte)));
+              localObject1 = new bqe();
+              ((bqe)localObject1).bbs = ((Bitmap)localObject2).getWidth();
+              ((bqe)localObject1).bbt = ((Bitmap)localObject2).getHeight();
+              paramList.HlS = ((bqe)localObject1);
+              paramList.dmg = 1L;
+              paramList.Hkz = 0L;
             }
           }
         }
@@ -285,11 +284,11 @@ public final class z
         }
       }
     }
-    AppMethodBeat.o(195822);
+    AppMethodBeat.o(191281);
     return localLinkedList;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator$Companion;", "", "()V", "DefaultImageHeight", "", "DefaultImageWidth", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator$Companion;", "", "()V", "DefaultImageHeight", "", "DefaultImageWidth", "plugin-vlog_release"})
   public static final class a {}
 }
 

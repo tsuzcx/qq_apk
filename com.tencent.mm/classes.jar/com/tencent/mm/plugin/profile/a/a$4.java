@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.openim.a.c.a;
-import com.tencent.mm.openim.a.c.b;
+import com.tencent.mm.openim.a.b.a;
+import com.tencent.mm.openim.a.b.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.Preference.b;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,15 +17,15 @@ import org.json.JSONObject;
 public final class a$4
   implements Preference.b
 {
-  public a$4(c.b paramb, am paramam, c.a parama, Context paramContext) {}
+  public a$4(b.b paramb, an paraman, b.a parama, Context paramContext) {}
   
-  public final boolean dAh()
+  public final boolean dDy()
   {
     AppMethodBeat.i(26869);
     localObject1 = "";
     try
     {
-      localObject2 = new JSONObject(this.wPq.iHz).optString("mailto");
+      localObject2 = new JSONObject(this.xfe.iKs).optString("mailto");
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
@@ -34,23 +34,23 @@ public final class a$4
       {
         localObject1 = this.val$context;
         Object localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/profile/logic/OpenIMProfileLogic$4", "onPreferenceClick", "(Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/profile/logic/OpenIMProfileLogic$4", "onPreferenceClick", "(Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/profile/logic/OpenIMProfileLogic$4", "onPreferenceClick", "(Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(26869);
         return true;
         localJSONException = localJSONException;
-        ad.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.Profile.OpenIMProfileLogic", "onPreferenceClick OPENIM_ACTION_OPEN_MAIL_BOX Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          ae.e("MicroMsg.Profile.OpenIMProfileLogic", "onPreferenceClick OPENIM_ACTION_OPEN_MAIL_BOX Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         }
       }
     }
-    g.yhR.f(15319, new Object[] { this.fSV.field_openImAppid, Integer.valueOf(this.wPq.action), this.wPr.title });
+    g.yxI.f(15319, new Object[] { this.fVb.field_openImAppid, Integer.valueOf(this.xfe.action), this.xff.title });
     localObject2 = new Intent("android.intent.action.SENDTO");
     ((Intent)localObject2).setData(Uri.parse("mailto:".concat(String.valueOf(localObject1))));
   }

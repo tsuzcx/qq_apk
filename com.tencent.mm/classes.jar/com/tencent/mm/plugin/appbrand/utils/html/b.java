@@ -8,13 +8,13 @@ import org.xml.sax.XMLReader;
 public final class b
   implements Html.TagHandler
 {
-  c.a mPN;
-  private boolean mPO;
+  c.a mUX;
+  private boolean mUY;
   
   public b(c.a parama, boolean paramBoolean)
   {
-    this.mPN = parama;
-    this.mPO = paramBoolean;
+    this.mUX = parama;
+    this.mUY = paramBoolean;
   }
   
   public final void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
@@ -27,7 +27,7 @@ public final class b
       if (paramBoolean)
       {
         i = paramEditable.length();
-        paramEditable.setSpan(new CustomURLSpan("", this.mPN, this.mPO), i, i, 17);
+        paramEditable.setSpan(new CustomURLSpan("", this.mUX, this.mUY), i, i, 17);
         AppMethodBeat.o(147729);
         return;
       }
@@ -53,7 +53,7 @@ public final class b
       paramXMLReader = paramEditable.subSequence(i, j).toString();
       paramEditable.removeSpan(paramString);
       if (i != j) {
-        paramEditable.setSpan(new CustomURLSpan(paramXMLReader, this.mPN, this.mPO), i, j, 33);
+        paramEditable.setSpan(new CustomURLSpan(paramXMLReader, this.mUX, this.mUY), i, j, 33);
       }
       AppMethodBeat.o(147729);
       return;

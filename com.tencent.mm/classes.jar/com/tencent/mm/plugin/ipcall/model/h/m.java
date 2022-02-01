@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.a;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,30 +23,30 @@ public final class m
       AppMethodBeat.o(25564);
       return null;
     }
-    ad.d("MicroMsg.IPCallRecordStorageLogic", "recordSelfShutdownCall, localId: %d, talkTime: %d", new Object[] { Long.valueOf(paramk.systemRowid), Long.valueOf(paramLong) });
+    ae.d("MicroMsg.IPCallRecordStorageLogic", "recordSelfShutdownCall, localId: %d, talkTime: %d", new Object[] { Long.valueOf(paramk.systemRowid), Long.valueOf(paramLong) });
     if (paramk.systemRowid != -1L)
     {
       paramk.field_status = 4;
       paramk.field_duration = paramLong;
-      i.ddN().a(paramk);
+      i.dgF().a(paramk);
     }
     AppMethodBeat.o(25564);
     return paramk;
   }
   
-  public static Cursor anF(String paramString)
+  public static Cursor aoH(String paramString)
   {
     AppMethodBeat.i(25565);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(25565);
       return null;
     }
-    paramString = i.ddM().anz(paramString);
+    paramString = i.dgE().aoB(paramString);
     if ((paramString != null) && (paramString.systemRowid != -1L))
     {
       long l = paramString.systemRowid;
-      paramString = i.ddN().db.query("IPCallRecord", l.uOz, "addressId=?", new String[] { String.valueOf(l) }, null, null, "calltime desc limit 4");
+      paramString = i.dgF().db.query("IPCallRecord", l.val, "addressId=?", new String[] { String.valueOf(l) }, null, null, "calltime desc limit 4");
       AppMethodBeat.o(25565);
       return paramString;
     }
@@ -62,33 +62,33 @@ public final class m
       AppMethodBeat.o(25563);
       return null;
     }
-    ad.d("MicroMsg.IPCallRecordStorageLogic", "recordCancelCall, localId: %d", new Object[] { Long.valueOf(paramk.systemRowid) });
+    ae.d("MicroMsg.IPCallRecordStorageLogic", "recordCancelCall, localId: %d", new Object[] { Long.valueOf(paramk.systemRowid) });
     if (paramk.systemRowid != -1L)
     {
       paramk.field_status = 7;
-      i.ddN().a(paramk);
+      i.dgF().a(paramk);
     }
     AppMethodBeat.o(25563);
     return paramk;
   }
   
-  public static ArrayList<k> dep()
+  public static ArrayList<k> dhh()
   {
     AppMethodBeat.i(25566);
     long l2 = System.currentTimeMillis();
-    Object localObject1 = i.ddN();
+    Object localObject1 = i.dgF();
     Object localObject2 = Calendar.getInstance();
     ((Calendar)localObject2).add(6, -30);
     long l1 = ((Calendar)localObject2).getTimeInMillis();
-    localObject1 = ((l)localObject1).db.query("IPCallRecord", l.uOz, "calltime>=?", new String[] { String.valueOf(l1) }, "addressId, phonenumber", null, "calltime desc");
+    localObject1 = ((l)localObject1).db.query("IPCallRecord", l.val, "calltime>=?", new String[] { String.valueOf(l1) }, "addressId, phonenumber", null, "calltime desc");
     if (((Cursor)localObject1).getCount() < 30)
     {
       ((Cursor)localObject1).close();
-      localObject1 = i.ddN().db.query("IPCallRecord", l.uOz, null, null, "addressId, phonenumber", null, "calltime desc");
+      localObject1 = i.dgF().db.query("IPCallRecord", l.val, null, null, "addressId, phonenumber", null, "calltime desc");
     }
     for (;;)
     {
-      ad.d("MicroMsg.IPCallRecordStorageLogic", "finish query used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+      ae.d("MicroMsg.IPCallRecordStorageLogic", "finish query used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
       HashMap localHashMap = new HashMap();
       localObject2 = new ArrayList();
       for (;;)
@@ -120,21 +120,21 @@ public final class m
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.IPCallRecordStorageLogic", "getRecentRecordGroupByUser error: %s", new Object[] { localException.getMessage() });
+          ae.e("MicroMsg.IPCallRecordStorageLogic", "getRecentRecordGroupByUser error: %s", new Object[] { localException.getMessage() });
           ((Cursor)localObject1).close();
-          ad.d("MicroMsg.IPCallRecordStorageLogic", "getRecentRecordGroupByUser, used: %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+          ae.d("MicroMsg.IPCallRecordStorageLogic", "getRecentRecordGroupByUser, used: %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
           AppMethodBeat.o(25566);
           return localObject2;
-          localObject4 = a.aM(aj.getContext(), localk1.field_phonenumber);
-          localObject4 = i.ddM().anA((String)localObject4);
+          localObject4 = a.aO(ak.getContext(), localk1.field_phonenumber);
+          localObject4 = i.dgE().aoC((String)localObject4);
           if (localObject4 == null) {
             break label604;
           }
-          localObject5 = i.ddN();
+          localObject5 = i.dgF();
           if ((((l)localObject5).db instanceof h))
           {
-            l1 = ((h)((l)localObject5).db).xO(-1L);
-            localObject5 = i.ddN().anE(localk1.field_phonenumber);
+            l1 = ((h)((l)localObject5).db).yi(-1L);
+            localObject5 = i.dgF().aoG(localk1.field_phonenumber);
             if (!((Cursor)localObject5).moveToFirst()) {
               break label504;
             }
@@ -144,7 +144,7 @@ public final class m
             localk2 = new k();
             localk2.convertFrom((Cursor)localObject5);
             localk2.field_addressId = ((c)localObject4).systemRowid;
-            i.ddN().a(localk2);
+            i.dgF().a(localk2);
             ((Cursor)localObject5).moveToNext();
             continue;
           }
@@ -156,9 +156,9 @@ public final class m
         }
         continue;
         label504:
-        Object localObject4 = i.ddN();
+        Object localObject4 = i.dgF();
         if (((((l)localObject4).db instanceof h)) && (l1 != -1L)) {
-          ((h)((l)localObject4).db).sJ(l1);
+          ((h)((l)localObject4).db).sW(l1);
         }
         label641:
         if (!localException.containsKey(localk1.field_addressId))

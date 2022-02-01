@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class yl
   extends b
 {
-  public a dNn;
-  public yl.b dNo;
+  public a dNP;
   
   public yl()
   {
@@ -17,23 +15,21 @@ public final class yl
   
   private yl(byte paramByte)
   {
-    AppMethodBeat.i(153020);
-    this.dNn = new a();
-    this.dNo = new yl.b();
-    this.IbR = false;
+    AppMethodBeat.i(91222);
+    this.dNP = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(153020);
+    AppMethodBeat.o(91222);
   }
   
   public static final class a
   {
-    public Activity activity;
-    public int dNp;
+    public int result = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.yl
  * JD-Core Version:    0.7.0.1
  */

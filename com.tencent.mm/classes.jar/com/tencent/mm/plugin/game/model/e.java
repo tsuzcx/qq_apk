@@ -13,20 +13,20 @@ import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.game.d.ag;
+import com.tencent.mm.plugin.game.d.am;
 import com.tencent.mm.plugin.game.f.a.a;
 import com.tencent.mm.plugin.game.ui.GameRegionPreference.a;
 import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.n;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
@@ -37,17 +37,17 @@ import java.util.Set;
 
 public final class e
 {
-  private static String uaZ = "";
+  private static String umb = "";
   
-  public static void HM(int paramInt)
+  public static void Ij(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(183850);
     String str1 = String.valueOf(paramInt);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("game_center_pref", 0);
-    String str2 = cYN();
+    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("game_center_pref", 0);
+    String str2 = dbx();
     Object localObject = str1;
-    if (!bt.isNullOrNil(str2))
+    if (!bu.isNullOrNil(str2))
     {
       localObject = str2.split(",");
       int j = localObject.length;
@@ -67,14 +67,14 @@ public final class e
     AppMethodBeat.o(183850);
   }
   
-  public static void HN(int paramInt)
+  public static void Ik(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(183851);
-    Object localObject = cYN();
-    if (!bt.isNullOrNil((String)localObject))
+    Object localObject = dbx();
+    if (!bu.isNullOrNil((String)localObject))
     {
-      SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("game_center_pref", 0);
+      SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("game_center_pref", 0);
       localObject = ((String)localObject).split(",");
       StringBuilder localStringBuilder = new StringBuilder();
       int j = localObject.length;
@@ -95,11 +95,11 @@ public final class e
     AppMethodBeat.o(183851);
   }
   
-  public static boolean HO(int paramInt)
+  public static boolean Il(int paramInt)
   {
     AppMethodBeat.i(183853);
-    Object localObject = cYN();
-    if (!bt.isNullOrNil((String)localObject))
+    Object localObject = dbx();
+    if (!bu.isNullOrNil((String)localObject))
     {
       localObject = ((String)localObject).split(",");
       int j = localObject.length;
@@ -125,11 +125,11 @@ public final class e
     String str;
     if (parama != null)
     {
-      str = bt.nullAsNil(ac.fks());
+      str = bu.nullAsNil(ad.fom());
       if (!"zh_CN".equalsIgnoreCase(str)) {
         break label54;
       }
-      localStringBuffer.append(parama.usn);
+      localStringBuffer.append(parama.uDG);
     }
     for (;;)
     {
@@ -138,9 +138,9 @@ public final class e
       return parama;
       label54:
       if (("zh_TW".equalsIgnoreCase(str)) || ("zh_HK".equalsIgnoreCase(str))) {
-        localStringBuffer.append(parama.uso);
+        localStringBuffer.append(parama.uDH);
       } else {
-        localStringBuffer.append(parama.usp);
+        localStringBuffer.append(parama.uDI);
       }
     }
   }
@@ -148,9 +148,9 @@ public final class e
   private static void a(Context paramContext, com.tencent.mm.pluginsdk.model.app.g paramg, String paramString1, String paramString2, al paramal)
   {
     AppMethodBeat.i(41364);
-    if ((paramg == null) || (bt.isNullOrNil(paramg.field_appId)))
+    if ((paramg == null) || (bu.isNullOrNil(paramg.field_appId)))
     {
-      ad.e("MicroMsg.GameCenterLogic", "appinfo is null or appid is null");
+      ae.e("MicroMsg.GameCenterLogic", "appinfo is null or appid is null");
       if (paramal != null) {
         paramal.v(false, false);
       }
@@ -159,7 +159,7 @@ public final class e
     }
     if (!q.b(paramContext, paramg))
     {
-      ad.e("MicroMsg.GameCenterLogic", "The app %s signature is incorrect.", new Object[] { paramg.field_appName });
+      ae.e("MicroMsg.GameCenterLogic", "The app %s signature is incorrect.", new Object[] { paramg.field_appName });
       Toast.makeText(paramContext, paramContext.getString(2131759894, new Object[] { h.a(paramContext, paramg, null) }), 1).show();
       if (paramal != null) {
         paramal.v(false, false);
@@ -171,22 +171,22 @@ public final class e
     localWXMediaMessage.sdkVer = 637928960;
     localWXMediaMessage.messageAction = paramString1;
     localWXMediaMessage.messageExt = paramString2;
-    ad.d("MicroMsg.GameCenterLogic", "launch game app from wx: appid: [%s], appname:[%s], openid:[%s]", new Object[] { paramg.field_appId, paramg.field_appName, paramg.field_openId });
-    if (bt.isNullOrNil(paramg.field_openId))
+    ae.d("MicroMsg.GameCenterLogic", "launch game app from wx: appid: [%s], appname:[%s], openid:[%s]", new Object[] { paramg.field_appId, paramg.field_appName, paramg.field_openId });
+    if (bu.isNullOrNil(paramg.field_openId))
     {
-      ad.i("MicroMsg.GameCenterLogic", "open id is null or nil, try to get from server:[%s]", new Object[] { paramg.field_appName });
-      com.tencent.mm.plugin.s.a.dxS().Ej(paramg.field_appId);
+      ae.i("MicroMsg.GameCenterLogic", "open id is null or nil, try to get from server:[%s]", new Object[] { paramg.field_appName });
+      com.tencent.mm.plugin.s.a.dBi().EL(paramg.field_appId);
     }
-    com.tencent.mm.ci.a.post(new e.2(paramContext, paramg, localWXMediaMessage, paramal));
+    com.tencent.mm.ch.a.post(new e.2(paramContext, paramg, localWXMediaMessage, paramal));
     AppMethodBeat.o(41364);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, al paramal)
   {
     AppMethodBeat.i(41363);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.GameCenterLogic", "null or nil appid");
+      ae.e("MicroMsg.GameCenterLogic", "null or nil appid");
       if (paramal != null) {
         paramal.v(false, false);
       }
@@ -209,14 +209,14 @@ public final class e
     AppMethodBeat.o(41388);
   }
   
-  public static void ai(Context paramContext, String paramString)
+  public static void ak(Context paramContext, String paramString)
   {
     AppMethodBeat.i(41362);
     a(paramContext, paramString, null, "WX_GameCenter", new e.1(paramString));
     AppMethodBeat.o(41362);
   }
   
-  private static String alR(String paramString)
+  private static String amR(String paramString)
   {
     AppMethodBeat.i(41371);
     Object localObject3 = null;
@@ -226,7 +226,7 @@ public final class e
     {
       try
       {
-        localInputStream = aj.getContext().getAssets().open("game_region_default.txt");
+        localInputStream = ak.getContext().getAssets().open("game_region_default.txt");
         localObject1 = localInputStream;
         localObject3 = localInputStream;
         localObject4 = new byte[localInputStream.available()];
@@ -247,7 +247,7 @@ public final class e
           Object localObject4;
           Object localObject2;
           localObject3 = localObject2;
-          ad.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bt.n(localIOException4) });
+          ae.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bu.o(localIOException4) });
           if (localObject2 == null) {
             break;
           }
@@ -258,7 +258,7 @@ public final class e
           }
           catch (IOException localIOException2)
           {
-            ad.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bt.n(localIOException2) });
+            ae.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bu.o(localIOException2) });
             String str1 = "";
           }
         }
@@ -276,7 +276,7 @@ public final class e
         }
         catch (IOException localIOException3)
         {
-          ad.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bt.n(localIOException3) });
+          ae.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bu.o(localIOException3) });
           continue;
         }
         if (!"zh_CN".equalsIgnoreCase(paramString)) {
@@ -302,28 +302,28 @@ public final class e
       }
       catch (IOException localIOException1)
       {
-        ad.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bt.n(localIOException1) });
+        ae.e("MicroMsg.GameCenterLogic", "exception:%s", new Object[] { bu.o(localIOException1) });
         localObject2 = localObject4;
         break label75;
       }
       localObject3 = localObject1.trim().split("\\|");
       if (localObject3.length < 3)
       {
-        ad.e("MicroMsg.GameCenterLogic", "this region default title has problem %s", new Object[] { localObject1 });
+        ae.e("MicroMsg.GameCenterLogic", "this region default title has problem %s", new Object[] { localObject1 });
         AppMethodBeat.o(41371);
         return "";
       }
     }
   }
   
-  public static void av(Context paramContext, String paramString)
+  public static void ax(Context paramContext, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(41377);
     String str2 = String.valueOf(System.currentTimeMillis() / 1000L);
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("game_center_pref", 0);
     Object localObject = localSharedPreferences.getString("download_app_id_time_map", "");
-    if (bt.isNullOrNil((String)localObject))
+    if (bu.isNullOrNil((String)localObject))
     {
       paramContext = paramString + "-" + str2;
       localSharedPreferences.edit().putString("download_app_id_time_map", paramContext).commit();
@@ -357,13 +357,13 @@ public final class e
     AppMethodBeat.o(41377);
   }
   
-  public static void aw(Context paramContext, String paramString)
+  public static void ay(Context paramContext, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(41378);
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("game_center_pref", 0);
     paramContext = localSharedPreferences.getString("download_app_id_time_map", "");
-    if (bt.isNullOrNil(paramContext))
+    if (bu.isNullOrNil(paramContext))
     {
       AppMethodBeat.o(41378);
       return;
@@ -394,187 +394,19 @@ public final class e
     AppMethodBeat.o(41378);
   }
   
-  public static void ax(Context paramContext, String paramString)
+  public static void az(Context paramContext, String paramString)
   {
     AppMethodBeat.i(41392);
     paramContext.getSharedPreferences("game_center_pref", 0).edit().putString("game_region_code", paramString).commit();
     AppMethodBeat.o(41392);
   }
   
-  public static LinkedList<String> cYA()
-  {
-    AppMethodBeat.i(41361);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().uay);
-    AppMethodBeat.o(41361);
-    return localLinkedList;
-  }
-  
-  public static String cYB()
-  {
-    AppMethodBeat.i(41365);
-    String str2 = bt.jg(aj.getContext());
-    String str1 = str2;
-    if (bt.isNullOrNil(str2)) {
-      str1 = "CN";
-    }
-    str1 = str1.toUpperCase();
-    AppMethodBeat.o(41365);
-    return str1;
-  }
-  
-  public static String cYC()
-  {
-    AppMethodBeat.i(41368);
-    Object localObject = cYB();
-    localObject = (GameRegionPreference.a)a.a.das().dar().get(localObject);
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (localObject != null)
-    {
-      localStringBuffer.append(((GameRegionPreference.a)localObject).usn);
-      localStringBuffer.append(alR("zh_CN"));
-    }
-    localObject = localStringBuffer.toString();
-    AppMethodBeat.o(41368);
-    return localObject;
-  }
-  
-  public static String cYD()
-  {
-    AppMethodBeat.i(41369);
-    Object localObject = cYB();
-    localObject = (GameRegionPreference.a)a.a.das().dar().get(localObject);
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (localObject != null)
-    {
-      localStringBuffer.append(((GameRegionPreference.a)localObject).uso);
-      localStringBuffer.append(alR("zh_TW"));
-    }
-    localObject = localStringBuffer.toString();
-    AppMethodBeat.o(41369);
-    return localObject;
-  }
-  
-  public static String cYE()
-  {
-    AppMethodBeat.i(41370);
-    Object localObject = cYB();
-    localObject = (GameRegionPreference.a)a.a.das().dar().get(localObject);
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (localObject != null)
-    {
-      localStringBuffer.append(((GameRegionPreference.a)localObject).usp);
-      localStringBuffer.append(alR("en"));
-    }
-    localObject = localStringBuffer.toString();
-    AppMethodBeat.o(41370);
-    return localObject;
-  }
-  
-  public static void cYF()
-  {
-    AppMethodBeat.i(41373);
-    String str = ac.fks();
-    aj.getContext().getSharedPreferences("game_center_pref", 0).edit().putString("game_center_pref_lang", str).commit();
-    AppMethodBeat.o(41373);
-  }
-  
-  public static String cYG()
-  {
-    AppMethodBeat.i(41374);
-    String str = aj.getContext().getSharedPreferences("game_center_pref", 0).getString("game_center_pref_lang", ac.fks());
-    AppMethodBeat.o(41374);
-    return str;
-  }
-  
-  public static boolean cYH()
-  {
-    AppMethodBeat.i(41375);
-    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Iqk, Long.valueOf(0L))).longValue();
-    if (System.currentTimeMillis() - l > 86400000L)
-    {
-      AppMethodBeat.o(41375);
-      return true;
-    }
-    AppMethodBeat.o(41375);
-    return false;
-  }
-  
-  public static void cYI()
-  {
-    AppMethodBeat.i(41376);
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Iqk, Long.valueOf(System.currentTimeMillis()));
-    AppMethodBeat.o(41376);
-  }
-  
-  public static String cYJ()
-  {
-    AppMethodBeat.i(41389);
-    Object localObject = com.tencent.mm.plugin.game.commlib.a.cWP();
-    if (localObject != null)
-    {
-      localObject = ((ag)localObject).ueY;
-      AppMethodBeat.o(41389);
-      return localObject;
-    }
-    AppMethodBeat.o(41389);
-    return "";
-  }
-  
-  public static int cYK()
-  {
-    AppMethodBeat.i(41390);
-    ag localag = com.tencent.mm.plugin.game.commlib.a.cWP();
-    if (localag != null)
-    {
-      int i = localag.ugz;
-      AppMethodBeat.o(41390);
-      return i;
-    }
-    AppMethodBeat.o(41390);
-    return 0;
-  }
-  
-  public static void cYL()
-  {
-    AppMethodBeat.i(41395);
-    aj.getContext().getSharedPreferences("game_center_pref", 0).edit().putLong("game_index_last_visit_time", System.currentTimeMillis()).commit();
-    AppMethodBeat.o(41395);
-  }
-  
-  public static long cYM()
-  {
-    AppMethodBeat.i(41396);
-    long l = aj.getContext().getSharedPreferences("game_center_pref", 0).getLong("game_index_last_visit_time", 0L);
-    AppMethodBeat.o(41396);
-    return l;
-  }
-  
-  public static String cYN()
-  {
-    AppMethodBeat.i(183852);
-    Object localObject = aj.getContext().getSharedPreferences("game_center_pref", 0);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).getString("game_ban_msg_type_array", "");
-      AppMethodBeat.o(183852);
-      return localObject;
-    }
-    AppMethodBeat.o(183852);
-    return null;
-  }
-  
-  public static String cYO()
-  {
-    return uaZ;
-  }
-  
-  public static LinkedList<com.tencent.mm.pluginsdk.model.app.g> cYz()
+  public static LinkedList<com.tencent.mm.pluginsdk.model.app.g> dbj()
   {
     AppMethodBeat.i(41360);
-    ad.d("MicroMsg.GameCenterLogic", "getShowInGameCenterGames");
+    ae.d("MicroMsg.GameCenterLogic", "getShowInGameCenterGames");
     LinkedList localLinkedList1 = new LinkedList();
-    localLinkedList1.addAll(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().uaz);
+    localLinkedList1.addAll(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cZj().ulB);
     LinkedList localLinkedList2 = new LinkedList();
     Iterator localIterator = localLinkedList1.iterator();
     label162:
@@ -583,7 +415,7 @@ public final class e
       com.tencent.mm.pluginsdk.model.app.g localg = (com.tencent.mm.pluginsdk.model.app.g)localIterator.next();
       if (localg != null)
       {
-        ad.i("MicroMsg.GameCenterLogic", "appinfo:[%s], appinfo flag:[%d]", new Object[] { localg.field_appId, Integer.valueOf(localg.field_appInfoFlag) });
+        ae.i("MicroMsg.GameCenterLogic", "appinfo:[%s], appinfo flag:[%d]", new Object[] { localg.field_appId, Integer.valueOf(localg.field_appInfoFlag) });
         if ((localg.field_appInfoFlag & 0x4) <= 0) {}
       }
       for (int i = 1;; i = 0)
@@ -591,7 +423,7 @@ public final class e
         if (i != 0) {
           break label162;
         }
-        ad.i("MicroMsg.GameCenterLogic", "app should not show in gamecenter:[%s]", new Object[] { localg.field_appName });
+        ae.i("MicroMsg.GameCenterLogic", "app should not show in gamecenter:[%s]", new Object[] { localg.field_appName });
         localLinkedList2.add(localg);
         break;
       }
@@ -603,7 +435,175 @@ public final class e
     return localLinkedList1;
   }
   
-  public static ShapeDrawable eU(int paramInt1, int paramInt2)
+  public static LinkedList<String> dbk()
+  {
+    AppMethodBeat.i(41361);
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.addAll(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cZj().ulA);
+    AppMethodBeat.o(41361);
+    return localLinkedList;
+  }
+  
+  public static String dbl()
+  {
+    AppMethodBeat.i(41365);
+    String str2 = bu.jm(ak.getContext());
+    String str1 = str2;
+    if (bu.isNullOrNil(str2)) {
+      str1 = "CN";
+    }
+    str1 = str1.toUpperCase();
+    AppMethodBeat.o(41365);
+    return str1;
+  }
+  
+  public static String dbm()
+  {
+    AppMethodBeat.i(41368);
+    Object localObject = dbl();
+    localObject = (GameRegionPreference.a)a.a.dde().ddd().get(localObject);
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (localObject != null)
+    {
+      localStringBuffer.append(((GameRegionPreference.a)localObject).uDG);
+      localStringBuffer.append(amR("zh_CN"));
+    }
+    localObject = localStringBuffer.toString();
+    AppMethodBeat.o(41368);
+    return localObject;
+  }
+  
+  public static String dbn()
+  {
+    AppMethodBeat.i(41369);
+    Object localObject = dbl();
+    localObject = (GameRegionPreference.a)a.a.dde().ddd().get(localObject);
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (localObject != null)
+    {
+      localStringBuffer.append(((GameRegionPreference.a)localObject).uDH);
+      localStringBuffer.append(amR("zh_TW"));
+    }
+    localObject = localStringBuffer.toString();
+    AppMethodBeat.o(41369);
+    return localObject;
+  }
+  
+  public static String dbo()
+  {
+    AppMethodBeat.i(41370);
+    Object localObject = dbl();
+    localObject = (GameRegionPreference.a)a.a.dde().ddd().get(localObject);
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (localObject != null)
+    {
+      localStringBuffer.append(((GameRegionPreference.a)localObject).uDI);
+      localStringBuffer.append(amR("en"));
+    }
+    localObject = localStringBuffer.toString();
+    AppMethodBeat.o(41370);
+    return localObject;
+  }
+  
+  public static void dbp()
+  {
+    AppMethodBeat.i(41373);
+    String str = ad.fom();
+    ak.getContext().getSharedPreferences("game_center_pref", 0).edit().putString("game_center_pref_lang", str).commit();
+    AppMethodBeat.o(41373);
+  }
+  
+  public static String dbq()
+  {
+    AppMethodBeat.i(41374);
+    String str = ak.getContext().getSharedPreferences("game_center_pref", 0).getString("game_center_pref_lang", ad.fom());
+    AppMethodBeat.o(41374);
+    return str;
+  }
+  
+  public static boolean dbr()
+  {
+    AppMethodBeat.i(41375);
+    long l = ((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IKE, Long.valueOf(0L))).longValue();
+    if (System.currentTimeMillis() - l > 86400000L)
+    {
+      AppMethodBeat.o(41375);
+      return true;
+    }
+    AppMethodBeat.o(41375);
+    return false;
+  }
+  
+  public static void dbs()
+  {
+    AppMethodBeat.i(41376);
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKE, Long.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(41376);
+  }
+  
+  public static String dbt()
+  {
+    AppMethodBeat.i(41389);
+    Object localObject = com.tencent.mm.plugin.game.commlib.a.cZt();
+    if (localObject != null)
+    {
+      localObject = ((am)localObject).uqf;
+      AppMethodBeat.o(41389);
+      return localObject;
+    }
+    AppMethodBeat.o(41389);
+    return "";
+  }
+  
+  public static int dbu()
+  {
+    AppMethodBeat.i(41390);
+    am localam = com.tencent.mm.plugin.game.commlib.a.cZt();
+    if (localam != null)
+    {
+      int i = localam.uqI;
+      AppMethodBeat.o(41390);
+      return i;
+    }
+    AppMethodBeat.o(41390);
+    return 0;
+  }
+  
+  public static void dbv()
+  {
+    AppMethodBeat.i(41395);
+    ak.getContext().getSharedPreferences("game_center_pref", 0).edit().putLong("game_index_last_visit_time", System.currentTimeMillis()).commit();
+    AppMethodBeat.o(41395);
+  }
+  
+  public static long dbw()
+  {
+    AppMethodBeat.i(41396);
+    long l = ak.getContext().getSharedPreferences("game_center_pref", 0).getLong("game_index_last_visit_time", 0L);
+    AppMethodBeat.o(41396);
+    return l;
+  }
+  
+  public static String dbx()
+  {
+    AppMethodBeat.i(183852);
+    Object localObject = ak.getContext().getSharedPreferences("game_center_pref", 0);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).getString("game_ban_msg_type_array", "");
+      AppMethodBeat.o(183852);
+      return localObject;
+    }
+    AppMethodBeat.o(183852);
+    return null;
+  }
+  
+  public static String dby()
+  {
+    return umb;
+  }
+  
+  public static ShapeDrawable eV(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41384);
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { paramInt2, paramInt2, paramInt2, paramInt2, paramInt2, paramInt2, paramInt2, paramInt2 }, null, null));
@@ -612,7 +612,26 @@ public final class e
     return localShapeDrawable;
   }
   
-  public static void fk(Context paramContext)
+  public static boolean fA(Context paramContext)
+  {
+    AppMethodBeat.i(41393);
+    if (paramContext.getSharedPreferences("game_center_pref", 0).getInt("game_region_confirm_mark", 0) == 1)
+    {
+      AppMethodBeat.o(41393);
+      return false;
+    }
+    AppMethodBeat.o(41393);
+    return true;
+  }
+  
+  public static void fB(Context paramContext)
+  {
+    AppMethodBeat.i(41394);
+    paramContext.getSharedPreferences("game_center_pref", 0).edit().putInt("game_region_confirm_mark", 1).commit();
+    AppMethodBeat.o(41394);
+  }
+  
+  public static void fo(Context paramContext)
   {
     AppMethodBeat.i(41372);
     if (paramContext != null)
@@ -624,26 +643,26 @@ public final class e
     AppMethodBeat.o(41372);
   }
   
-  public static GameRegionPreference.a fn(Context paramContext)
+  public static GameRegionPreference.a fr(Context paramContext)
   {
     AppMethodBeat.i(41366);
-    String str = fv(paramContext);
+    String str = fz(paramContext);
     paramContext = str;
-    if (bt.isNullOrNil(str)) {
-      paramContext = cYB();
+    if (bu.isNullOrNil(str)) {
+      paramContext = dbl();
     }
-    paramContext = (GameRegionPreference.a)a.a.das().dar().get(paramContext);
+    paramContext = (GameRegionPreference.a)a.a.dde().ddd().get(paramContext);
     AppMethodBeat.o(41366);
     return paramContext;
   }
   
-  public static void fo(Context paramContext)
+  public static void fs(Context paramContext)
   {
     AppMethodBeat.i(41379);
     long l = System.currentTimeMillis() / 1000L;
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("game_center_pref", 0);
     Object localObject1 = localSharedPreferences.getString("download_app_id_time_map", "");
-    if (bt.isNullOrNil((String)localObject1))
+    if (bu.isNullOrNil((String)localObject1))
     {
       AppMethodBeat.o(41379);
       return;
@@ -658,12 +677,12 @@ public final class e
       String[] arrayOfString2 = ((String)localObject3).split("-");
       String str = arrayOfString2[0];
       Object localObject2 = localObject1;
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
         localObject2 = localObject1;
         if (!h.s(paramContext, str))
         {
-          if (l - bt.getLong(arrayOfString2[1], 0L) >= 86400L) {
+          if (l - bu.getLong(arrayOfString2[1], 0L) >= 86400L) {
             break label183;
           }
           localObject2 = (String)localObject1 + (String)localObject3 + ",";
@@ -675,11 +694,11 @@ public final class e
         localObject1 = localObject2;
         break;
         label183:
-        localObject3 = f.ccl().aai(str);
-        ad.i("MicroMsg.GameCenterLogic", "checkGameDownloadTime, status = %d, id = %d", new Object[] { Integer.valueOf(((FileDownloadTaskInfo)localObject3).status), Long.valueOf(((FileDownloadTaskInfo)localObject3).id) });
+        localObject3 = f.cdA().aaZ(str);
+        ae.i("MicroMsg.GameCenterLogic", "checkGameDownloadTime, status = %d, id = %d", new Object[] { Integer.valueOf(((FileDownloadTaskInfo)localObject3).status), Long.valueOf(((FileDownloadTaskInfo)localObject3).id) });
         if (((FileDownloadTaskInfo)localObject3).status == 2)
         {
-          f.ccl().tR(((FileDownloadTaskInfo)localObject3).id);
+          f.cdA().ui(((FileDownloadTaskInfo)localObject3).id);
           localObject2 = localObject1;
         }
         else if (((FileDownloadTaskInfo)localObject3).status != 0)
@@ -690,15 +709,15 @@ public final class e
         else
         {
           localObject2 = localObject1;
-          if (i.fv(((FileDownloadTaskInfo)localObject3).path))
+          if (o.fB(((FileDownloadTaskInfo)localObject3).path))
           {
-            i.deleteFile(((FileDownloadTaskInfo)localObject3).path);
+            o.deleteFile(((FileDownloadTaskInfo)localObject3).path);
             localObject2 = localObject1;
           }
         }
       }
     }
-    if (bt.isNullOrNil((String)localObject1))
+    if (bu.isNullOrNil((String)localObject1))
     {
       AppMethodBeat.o(41379);
       return;
@@ -711,7 +730,7 @@ public final class e
     AppMethodBeat.o(41379);
   }
   
-  public static boolean fp(Context paramContext)
+  public static boolean ft(Context paramContext)
   {
     AppMethodBeat.i(41380);
     boolean bool = paramContext.getSharedPreferences("game_center_pref", 0).getBoolean("show_open_download_authority_tips", false);
@@ -719,14 +738,14 @@ public final class e
     return bool;
   }
   
-  public static void fq(Context paramContext)
+  public static void fu(Context paramContext)
   {
     AppMethodBeat.i(41381);
     paramContext.getSharedPreferences("game_center_pref", 0).edit().putBoolean("show_open_download_authority_tips", true).commit();
     AppMethodBeat.o(41381);
   }
   
-  public static Set<String> fr(Context paramContext)
+  public static Set<String> fv(Context paramContext)
   {
     AppMethodBeat.i(41382);
     paramContext = paramContext.getSharedPreferences("game_center_pref", 0).getStringSet("show_download_gift_tips", new HashSet());
@@ -734,7 +753,7 @@ public final class e
     return paramContext;
   }
   
-  public static boolean fs(Context paramContext)
+  public static boolean fw(Context paramContext)
   {
     AppMethodBeat.i(41385);
     boolean bool = paramContext.getSharedPreferences("game_center_pref", 0).getBoolean("show_message_tips", true);
@@ -742,14 +761,14 @@ public final class e
     return bool;
   }
   
-  public static void ft(Context paramContext)
+  public static void fx(Context paramContext)
   {
     AppMethodBeat.i(41386);
     paramContext.getSharedPreferences("game_center_pref", 0).edit().putBoolean("show_message_tips", false).apply();
     AppMethodBeat.o(41386);
   }
   
-  public static int fu(Context paramContext)
+  public static int fy(Context paramContext)
   {
     AppMethodBeat.i(41387);
     int i = paramContext.getSharedPreferences("game_center_pref", 0).getInt("game_top_banner_id", 0);
@@ -757,36 +776,17 @@ public final class e
     return i;
   }
   
-  public static String fv(Context paramContext)
+  public static String fz(Context paramContext)
   {
     AppMethodBeat.i(41391);
     paramContext = paramContext.getSharedPreferences("game_center_pref", 0).getString("game_region_code", "");
     AppMethodBeat.o(41391);
     return paramContext;
   }
-  
-  public static boolean fw(Context paramContext)
-  {
-    AppMethodBeat.i(41393);
-    if (paramContext.getSharedPreferences("game_center_pref", 0).getInt("game_region_confirm_mark", 0) == 1)
-    {
-      AppMethodBeat.o(41393);
-      return false;
-    }
-    AppMethodBeat.o(41393);
-    return true;
-  }
-  
-  public static void fx(Context paramContext)
-  {
-    AppMethodBeat.i(41394);
-    paramContext.getSharedPreferences("game_center_pref", 0).edit().putInt("game_region_confirm_mark", 1).commit();
-    AppMethodBeat.o(41394);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.e
  * JD-Core Version:    0.7.0.1
  */

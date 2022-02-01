@@ -42,7 +42,7 @@ public class SysWebFactory
     AppMethodBeat.i(153677);
     if (sInstance == null)
     {
-      ah.gbl();
+      ah.gfN();
       sInstance = new SysWebFactory();
     }
     SysWebFactory localSysWebFactory = sInstance;
@@ -114,7 +114,7 @@ public class SysWebFactory
       if ((str != null) && (str.contains("Calling View methods on another thread than the UI thread.")))
       {
         Log.e("XWEB.SysWebFactory", "setNeedEnforceMainLooper=true", paramWebView);
-        a.gbU();
+        a.ggw();
       }
       AppMethodBeat.o(153679);
       throw paramWebView;
@@ -147,7 +147,7 @@ public class SysWebFactory
   {
     AppMethodBeat.i(153685);
     Object localObject;
-    if (a.gbV())
+    if (a.ggx())
     {
       localObject = new a();
       AppMethodBeat.o(153685);
@@ -172,7 +172,7 @@ public class SysWebFactory
   {
     AppMethodBeat.i(153686);
     Object localObject;
-    if (a.gbV())
+    if (a.ggx())
     {
       localObject = new b();
       AppMethodBeat.o(153686);
@@ -200,9 +200,9 @@ public class SysWebFactory
   
   public IWebViewDatabase getWebViewDatabase()
   {
-    AppMethodBeat.i(195507);
+    AppMethodBeat.i(207523);
     f localf = new f();
-    AppMethodBeat.o(195507);
+    AppMethodBeat.o(207523);
     return localf;
   }
   
@@ -225,7 +225,7 @@ public class SysWebFactory
   public void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
   {
     AppMethodBeat.i(153681);
-    a.gbW();
+    a.ggy();
     AppMethodBeat.o(153681);
   }
   
@@ -236,7 +236,7 @@ public class SysWebFactory
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(153680);
-    ah.gbl();
+    ah.gfN();
     a.b(paramPreInitCallback);
     AppMethodBeat.o(153680);
     return true;
@@ -249,18 +249,18 @@ public class SysWebFactory
   
   static final class a
   {
-    private static boolean Mua;
-    private static Boolean Mub;
-    private static final AtomicBoolean Muc;
-    private static boolean qls;
+    private static boolean MRe;
+    private static Boolean MRf;
+    private static final AtomicBoolean MRg;
+    private static boolean qrX;
     
     static
     {
       AppMethodBeat.i(153676);
-      qls = false;
-      Mua = false;
-      Mub = null;
-      Muc = new AtomicBoolean(false);
+      qrX = false;
+      MRe = false;
+      MRf = null;
+      MRg = new AtomicBoolean(false);
       AppMethodBeat.o(153676);
     }
     
@@ -271,21 +271,21 @@ public class SysWebFactory
         try
         {
           AppMethodBeat.i(153674);
-          if (qls)
+          if (qrX)
           {
             AppMethodBeat.o(153674);
             return;
           }
-          if (!gbT())
+          if (!ggv())
           {
-            qls = true;
+            qrX = true;
             if (paramPreInitCallback != null) {
               paramPreInitCallback.onCoreInitFinished();
             }
             AppMethodBeat.o(153674);
             continue;
           }
-          if (!Muc.get()) {
+          if (!MRg.get()) {
             break label84;
           }
         }
@@ -304,9 +304,9 @@ public class SysWebFactory
               try
               {
                 SysWebFactory.a.access$000();
-                SysWebFactory.a.aZZ();
-                if (this.DFD != null) {
-                  this.DFD.onCoreInitFinished();
+                SysWebFactory.a.bay();
+                if (this.DXA != null) {
+                  this.DXA.onCoreInitFinished();
                 }
                 AppMethodBeat.o(153672);
                 return;
@@ -314,14 +314,14 @@ public class SysWebFactory
               catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
               {
                 Log.e("SysWebFactory.preIniter", "link error, may be abi not match, try xweb core");
-                com.tencent.xweb.WebView._initWebviewCore(XWalkEnvironment.getApplicationContext(), WebView.c.Mqu, this.DFD, true);
+                com.tencent.xweb.WebView._initWebviewCore(XWalkEnvironment.getApplicationContext(), WebView.c.MNy, this.DXA, true);
                 AppMethodBeat.o(153672);
                 return;
               }
               catch (Exception localException1) {}
               try
               {
-                Log.e("SysWebFactory.preIniter", "PathUtils.getDataDirectory = ".concat(String.valueOf(com.tencent.xweb.util.f.ni("org.chromium.base.PathUtils", "getDataDirectory").toString())));
+                Log.e("SysWebFactory.preIniter", "PathUtils.getDataDirectory = ".concat(String.valueOf(com.tencent.xweb.util.f.no("org.chromium.base.PathUtils", "getDataDirectory").toString())));
                 Log.e("SysWebFactory.preIniter", "ensureSystemWebViewGlobalLooper failed " + localException1.getMessage());
                 g.t(577L, 233L, 1L);
                 AppMethodBeat.o(153672);
@@ -353,50 +353,50 @@ public class SysWebFactory
       }
     }
     
-    private static boolean gbT()
+    private static boolean ggv()
     {
       AppMethodBeat.i(183736);
-      if (Mub == null) {
-        Mub = Boolean.valueOf(XWalkEnvironment.getMMKVSharedPreferences("SysWebFactory.preIniter").getBoolean("isEnforceMainLooper", false));
+      if (MRf == null) {
+        MRf = Boolean.valueOf(XWalkEnvironment.getMMKVSharedPreferences("SysWebFactory.preIniter").getBoolean("isEnforceMainLooper", false));
       }
-      boolean bool = Mub.booleanValue();
+      boolean bool = MRf.booleanValue();
       AppMethodBeat.o(183736);
       return bool;
     }
     
-    public static void gbU()
+    public static void ggw()
     {
       AppMethodBeat.i(183737);
       XWalkEnvironment.getMMKVSharedPreferences("SysWebFactory.preIniter").edit().putBoolean("isEnforceMainLooper", true).apply();
       AppMethodBeat.o(183737);
     }
     
-    public static boolean gbV()
+    public static boolean ggx()
     {
       AppMethodBeat.i(153673);
-      if (!gbT())
+      if (!ggv())
       {
         AppMethodBeat.o(153673);
         return true;
       }
-      boolean bool = Muc.get();
+      boolean bool = MRg.get();
       AppMethodBeat.o(153673);
       return bool;
     }
     
-    public static void gbW()
+    public static void ggy()
     {
-      Mua = true;
+      MRe = true;
     }
     
     public static boolean hasInited()
     {
-      return qls;
+      return qrX;
     }
     
     public static boolean hasInitedCallback()
     {
-      return Mua;
+      return MRe;
     }
   }
 }

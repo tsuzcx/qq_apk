@@ -1,92 +1,61 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 import java.util.LinkedList;
 
 public final class bha
-  extends cvc
+  extends cvw
 {
-  public String GCj;
-  public int Height;
-  public String URL;
-  public int Width;
+  public String Ghx;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82416);
+    AppMethodBeat.i(91506);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.URL == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: URL");
-        AppMethodBeat.o(82416);
-        throw paramVarArgs;
-      }
-      if (this.GCj == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: UserAgent");
-        AppMethodBeat.o(82416);
-        throw paramVarArgs;
-      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.URL != null) {
-        paramVarArgs.d(2, this.URL);
+      if (this.Ghx != null) {
+        paramVarArgs.d(2, this.Ghx);
       }
-      if (this.GCj != null) {
-        paramVarArgs.d(3, this.GCj);
+      if (this.Url != null) {
+        paramVarArgs.d(3, this.Url);
       }
-      paramVarArgs.aS(4, this.Width);
-      paramVarArgs.aS(5, this.Height);
-      AppMethodBeat.o(82416);
+      AppMethodBeat.o(91506);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label618;
+        break label430;
       }
     }
-    label618:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label430:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.URL != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.URL);
+      if (this.Ghx != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Ghx);
       }
       i = paramInt;
-      if (this.GCj != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GCj);
+      if (this.Url != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Url);
       }
-      paramInt = f.a.a.b.b.a.bz(4, this.Width);
-      int j = f.a.a.b.b.a.bz(5, this.Height);
-      AppMethodBeat.o(82416);
-      return i + paramInt + j;
+      AppMethodBeat.o(91506);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.URL == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: URL");
-          AppMethodBeat.o(82416);
-          throw paramVarArgs;
-        }
-        if (this.GCj == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: UserAgent");
-          AppMethodBeat.o(82416);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(82416);
+        AppMethodBeat.o(91506);
         return 0;
       }
       if (paramInt == 3)
@@ -97,10 +66,10 @@ public final class bha
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(82416);
+          AppMethodBeat.o(91506);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -108,30 +77,22 @@ public final class bha
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbha.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(82416);
+          AppMethodBeat.o(91506);
           return 0;
         case 2: 
-          localbha.URL = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(82416);
-          return 0;
-        case 3: 
-          localbha.GCj = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(82416);
-          return 0;
-        case 4: 
-          localbha.Width = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(82416);
+          localbha.Ghx = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(91506);
           return 0;
         }
-        localbha.Height = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(82416);
+        localbha.Url = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(91506);
         return 0;
       }
-      AppMethodBeat.o(82416);
+      AppMethodBeat.o(91506);
       return -1;
     }
   }

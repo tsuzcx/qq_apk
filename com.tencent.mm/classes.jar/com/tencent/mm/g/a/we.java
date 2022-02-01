@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class we
   extends b
 {
-  public a dKy;
-  
   public we()
   {
     this((byte)0);
@@ -15,17 +12,8 @@ public final class we
   
   private we(byte paramByte)
   {
-    AppMethodBeat.i(149890);
-    this.dKy = new a();
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149890);
-  }
-  
-  public static final class a
-  {
-    public String dKz;
-    public int drI = 0;
   }
 }
 

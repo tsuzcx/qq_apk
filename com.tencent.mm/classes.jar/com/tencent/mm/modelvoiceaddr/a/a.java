@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private int iyP;
-  private int iyQ;
-  int iyR;
-  private short[] iyS;
+  private int iBI;
+  private int iBJ;
+  int iBK;
+  private short[] iBL;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(148600);
-    this.iyP = 0;
-    this.iyQ = 0;
-    this.iyR = 0;
+    this.iBI = 0;
+    this.iBJ = 0;
+    this.iBK = 0;
     int i = paramInt;
     if (paramInt <= 1) {
       i = 512;
     }
-    this.iyS = new short[i];
+    this.iBL = new short[i];
     AppMethodBeat.o(148600);
   }
   
@@ -36,29 +36,29 @@ public final class a
         AppMethodBeat.o(148601);
         return 0;
       }
-      int i = this.iyS.length;
-      if (paramInt < this.iyR)
+      int i = this.iBL.length;
+      if (paramInt < this.iBK)
       {
-        if (paramInt > i - this.iyP) {
+        if (paramInt > i - this.iBI) {
           break label111;
         }
-        System.arraycopy(this.iyS, this.iyP, paramArrayOfShort, 0, paramInt);
-        this.iyP += paramInt;
-        if (this.iyP < i) {}
+        System.arraycopy(this.iBL, this.iBI, paramArrayOfShort, 0, paramInt);
+        this.iBI += paramInt;
+        if (this.iBI < i) {}
       }
       label111:
       int j;
-      for (this.iyP = 0;; this.iyP = j)
+      for (this.iBI = 0;; this.iBI = j)
       {
-        this.iyR -= paramInt;
+        this.iBK -= paramInt;
         AppMethodBeat.o(148601);
         return paramInt;
-        paramInt = this.iyR;
+        paramInt = this.iBK;
         break;
-        i -= this.iyP;
-        System.arraycopy(this.iyS, this.iyP, paramArrayOfShort, 0, i);
+        i -= this.iBI;
+        System.arraycopy(this.iBL, this.iBI, paramArrayOfShort, 0, i);
         j = paramInt - i;
-        System.arraycopy(this.iyS, 0, paramArrayOfShort, i, j);
+        System.arraycopy(this.iBL, 0, paramArrayOfShort, i, j);
       }
     }
   }
@@ -81,55 +81,55 @@ public final class a
         AppMethodBeat.o(148602);
         return 0;
       }
-      int i = this.iyS.length - this.iyR;
+      int i = this.iBL.length - this.iBK;
       if (paramInt > i)
       {
         i = paramInt - i;
         if (i != 0)
         {
-          if (i >= this.iyR) {
+          if (i >= this.iBK) {
             break label221;
           }
-          if (i > this.iyS.length - this.iyP) {
+          if (i > this.iBL.length - this.iBI) {
             break label229;
           }
-          this.iyP += i;
-          if (this.iyP >= this.iyS.length) {
-            this.iyP = 0;
+          this.iBI += i;
+          if (this.iBI >= this.iBL.length) {
+            this.iBI = 0;
           }
           label114:
-          this.iyR -= i;
+          this.iBK -= i;
         }
       }
-      if (paramInt > this.iyS.length)
+      if (paramInt > this.iBL.length)
       {
-        i = paramInt - this.iyS.length + 0;
-        paramInt = this.iyS.length;
+        i = paramInt - this.iBL.length + 0;
+        paramInt = this.iBL.length;
       }
       for (;;)
       {
-        if (paramInt <= this.iyS.length - this.iyQ)
+        if (paramInt <= this.iBL.length - this.iBJ)
         {
-          System.arraycopy(paramArrayOfShort, i, this.iyS, this.iyQ, paramInt);
-          this.iyQ += paramInt;
-          if (this.iyQ < this.iyS.length) {}
+          System.arraycopy(paramArrayOfShort, i, this.iBL, this.iBJ, paramInt);
+          this.iBJ += paramInt;
+          if (this.iBJ < this.iBL.length) {}
         }
         label221:
         label229:
         int k;
-        for (this.iyQ = 0;; this.iyQ = k)
+        for (this.iBJ = 0;; this.iBJ = k)
         {
-          this.iyR += paramInt;
+          this.iBK += paramInt;
           AppMethodBeat.o(148602);
           return paramInt;
-          i = this.iyR;
+          i = this.iBK;
           break;
-          this.iyP = (i - (this.iyS.length - this.iyP));
+          this.iBI = (i - (this.iBL.length - this.iBI));
           break label114;
-          int j = this.iyS.length - this.iyQ;
-          System.arraycopy(paramArrayOfShort, i, this.iyS, this.iyQ, j);
+          int j = this.iBL.length - this.iBJ;
+          System.arraycopy(paramArrayOfShort, i, this.iBL, this.iBJ, j);
           k = paramInt - j;
-          System.arraycopy(paramArrayOfShort, i + j, this.iyS, 0, k);
+          System.arraycopy(paramArrayOfShort, i + j, this.iBL, 0, k);
         }
         i = 0;
       }
@@ -138,7 +138,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.a.a
  * JD-Core Version:    0.7.0.1
  */

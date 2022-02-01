@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.record.a.e;
 import com.tencent.mm.plugin.record.a.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class v
-  implements ax
+  implements az
 {
   private static HashMap<Integer, h.b> baseDBFactories;
   

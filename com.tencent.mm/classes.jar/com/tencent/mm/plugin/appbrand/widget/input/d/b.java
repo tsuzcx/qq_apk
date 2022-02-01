@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public final int niM;
+  public final int nnU;
   
   static
   {
     AppMethodBeat.i(131524);
-    niG = new b("DONE", 0, 6);
-    niH = new b("SEARCH", 1, 3);
-    niI = new b("NEXT", 2, 5);
-    niJ = new b("GO", 3, 2);
-    niK = new b("SEND", 4, 4);
-    niL = new b("RETURN", 5, 0);
-    niN = new b[] { niG, niH, niI, niJ, niK, niL };
+    nnO = new b("DONE", 0, 6);
+    nnP = new b("SEARCH", 1, 3);
+    nnQ = new b("NEXT", 2, 5);
+    nnR = new b("GO", 3, 2);
+    nnS = new b("SEND", 4, 4);
+    nnT = new b("RETURN", 5, 0);
+    nnV = new b[] { nnO, nnP, nnQ, nnR, nnS, nnT };
     AppMethodBeat.o(131524);
   }
   
   private b(int paramInt)
   {
-    this.niM = paramInt;
+    this.nnU = paramInt;
   }
   
-  public static b Vs(String paramString)
+  public static b We(String paramString)
   {
     AppMethodBeat.i(131523);
     paramString = (b)d.h(paramString, b.class);
@@ -32,12 +32,12 @@ public enum b
     return paramString;
   }
   
-  public static b il(boolean paramBoolean)
+  public static b ij(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return niL;
+      return nnT;
     }
-    return niG;
+    return nnO;
   }
 }
 

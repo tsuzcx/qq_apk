@@ -6,7 +6,7 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,11 +18,11 @@ public class o
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78547);
-    ad.i("MicroMsg.JsApiDisableBounceScroll", "invoke");
+    ae.i("MicroMsg.JsApiDisableBounceScroll", "invoke");
     JSONArray localJSONArray = paramb.chh.cgn.optJSONArray("place");
     if (localJSONArray == null)
     {
-      ad.i("MicroMsg.JsApiDisableBounceScroll", "placeArray is null");
+      ae.i("MicroMsg.JsApiDisableBounceScroll", "placeArray is null");
       paramb.a("fail", null);
       AppMethodBeat.o(78547);
       return;
@@ -47,14 +47,14 @@ public class o
         AppMethodBeat.o(78547);
         return;
       }
-      ((g)paramb.chg).ePf();
+      ((g)paramb.chg).eSR();
       paramb.a("", null);
       AppMethodBeat.o(78547);
       return;
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

@@ -7,25 +7,25 @@ import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.wallet_core.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.h;
 import java.io.IOException;
 
 public final class c
   implements s
 {
-  private s.b oZP;
+  private s.b pgt;
   private String url;
   
   public c(String paramString)
   {
     AppMethodBeat.i(63773);
-    this.oZP = new s.b()
+    this.pgt = new s.b()
     {
-      public final Bitmap IR(String paramAnonymousString)
+      public final Bitmap Jq(String paramAnonymousString)
       {
         AppMethodBeat.i(63772);
-        paramAnonymousString = g.decodeFile(paramAnonymousString, null);
+        paramAnonymousString = h.decodeFile(paramAnonymousString, null);
         AppMethodBeat.o(63772);
         return paramAnonymousString;
       }
@@ -37,10 +37,10 @@ public final class c
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(63775);
-    if (s.a.iNr == parama) {}
+    if (s.a.iQl == parama) {}
     try
     {
-      g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.auC(this.url), false);
+      h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.avR(this.url), false);
       AppMethodBeat.o(63775);
       return paramBitmap;
     }
@@ -48,52 +48,52 @@ public final class c
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.WalletGetPicStrategy", parama, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.WalletGetPicStrategy", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final boolean aQA()
+  public final s.b aQU()
   {
-    return false;
+    return this.pgt;
   }
   
-  public final Bitmap aQB()
-  {
-    return null;
-  }
-  
-  public final void aQC() {}
-  
-  public final s.b aQv()
-  {
-    return this.oZP;
-  }
-  
-  public final String aQw()
+  public final String aQV()
   {
     AppMethodBeat.i(63774);
-    String str = b.auC(this.url);
+    String str = b.avR(this.url);
     AppMethodBeat.o(63774);
     return str;
   }
   
-  public final String aQx()
+  public final String aQW()
   {
     return this.url;
   }
   
-  public final String aQy()
+  public final String aQX()
   {
     return this.url;
   }
   
-  public final boolean aQz()
+  public final boolean aQY()
   {
     return true;
   }
+  
+  public final boolean aQZ()
+  {
+    return false;
+  }
+  
+  public final Bitmap aRa()
+  {
+    return null;
+  }
+  
+  public final void aRb() {}
   
   public final void aa(String paramString, boolean paramBoolean) {}
   

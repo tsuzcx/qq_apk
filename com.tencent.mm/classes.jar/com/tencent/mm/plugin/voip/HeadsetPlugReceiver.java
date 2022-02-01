@@ -4,21 +4,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class HeadsetPlugReceiver
   extends BroadcastReceiver
 {
-  private a BXk = null;
+  private a CoL = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(114794);
-    ad.d("MicroMsg.HeadsetPlugReceiver", "headset onReceive %s  %d", new Object[] { paramIntent.getAction(), Integer.valueOf(paramIntent.getIntExtra("state", 0)) });
+    ae.d("MicroMsg.HeadsetPlugReceiver", "headset onReceive %s  %d", new Object[] { paramIntent.getAction(), Integer.valueOf(paramIntent.getIntExtra("state", 0)) });
     if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"))) {
       if (paramIntent.getIntExtra("state", 0) == 0)
       {
-        if (this.BXk != null) {
+        if (this.CoL != null) {
           AppMethodBeat.o(114794);
         }
       }

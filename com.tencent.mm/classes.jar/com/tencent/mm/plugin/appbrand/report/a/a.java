@@ -1,32 +1,33 @@
 package com.tencent.mm.plugin.appbrand.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
 import com.tencent.mm.plugin.appbrand.keylogger.f;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.j;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/keystep/AppBrandKeyStepUtils;", "", "()V", "OPEN", "", "()Z", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/keystep/AppBrandKeyStepUtils;", "", "()V", "OPEN", "", "()Z", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a msd;
+  public static final a mxb;
   
   static
   {
-    AppMethodBeat.i(189587);
-    msd = new a();
-    AppMethodBeat.o(189587);
+    AppMethodBeat.i(223856);
+    mxb = new a();
+    AppMethodBeat.o(223856);
   }
   
-  public static final boolean bxr()
+  public static final boolean byk()
   {
-    AppMethodBeat.i(189586);
-    if ((f.RE("WeAppLaunch")) || (i.DEBUG) || (i.IS_FLAVOR_RED) || (bu.flY()))
+    AppMethodBeat.i(223855);
+    if ((f.Sn("WeAppLaunch")) || (j.DEBUG) || (j.IS_FLAVOR_RED) || (bv.fpT()) || (DebuggerShell.bfe()))
     {
-      AppMethodBeat.o(189586);
+      AppMethodBeat.o(223855);
       return true;
     }
-    AppMethodBeat.o(189586);
+    AppMethodBeat.o(223855);
     return false;
   }
 }

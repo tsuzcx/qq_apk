@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.gv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -38,17 +38,17 @@ public final class a
       }
       catch (Exception paramgv)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramgv, "AsyncBizDao._writeBizId crash: %s", new Object[] { paramgv.getMessage() });
+        ae.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramgv, "AsyncBizDao._writeBizId crash: %s", new Object[] { paramgv.getMessage() });
         AppMethodBeat.o(122126);
       }
       paramgv = paramgv;
-      ad.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramgv, "AsyncBizDao, putBizIdOfCloudConfig, crash: %s", new Object[] { paramgv.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramgv, "AsyncBizDao, putBizIdOfCloudConfig, crash: %s", new Object[] { paramgv.getMessage() });
       AppMethodBeat.o(122126);
       return;
     }
   }
   
-  public static void aeY(String paramString)
+  public static void afU(String paramString)
   {
     AppMethodBeat.i(122120);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -69,37 +69,12 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramString, "AsyncBizDao._write crash: %s", new Object[] { paramString.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramString, "AsyncBizDao._write crash: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(122120);
     }
   }
   
-  public static void cZ(List<String> paramList)
-  {
-    AppMethodBeat.i(122123);
-    int i = paramList.size() - 1;
-    if (i >= 0)
-    {
-      String str = (String)paramList.get(i);
-      if ((str == null) || (str.isEmpty())) {
-        paramList.remove(i);
-      }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        Long localLong = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeQ(str);
-        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() >= 43200000L))
-        {
-          ad.i("HABBYGE-MALI.AsyncBizDao", "AsyncBizDao, _clearHistory: %s", new Object[] { str });
-          paramList.remove(i);
-        }
-      }
-    }
-    AppMethodBeat.o(122123);
-  }
-  
-  public static String cpY()
+  public static String crA()
   {
     AppMethodBeat.i(122121);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -118,21 +93,21 @@ public final class a
     return str;
   }
   
-  public static List<String> cpZ()
+  public static List<String> crB()
   {
     AppMethodBeat.i(122125);
-    Object localObject = cqa();
+    Object localObject = crC();
     if (localObject == null)
     {
       AppMethodBeat.o(122125);
       return null;
     }
-    localObject = ((gv)localObject).FyN;
+    localObject = ((gv)localObject).FRl;
     AppMethodBeat.o(122125);
     return localObject;
   }
   
-  private static gv cqa()
+  private static gv crC()
   {
     AppMethodBeat.i(122127);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -156,13 +131,38 @@ public final class a
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", localIOException, "AsyncBizDao, _readBizId, crash: %s", new Object[] { localIOException.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", localIOException, "AsyncBizDao, _readBizId, crash: %s", new Object[] { localIOException.getMessage() });
       AppMethodBeat.o(122127);
     }
     return null;
   }
   
-  public static void da(List<String> paramList)
+  public static void dc(List<String> paramList)
+  {
+    AppMethodBeat.i(122123);
+    int i = paramList.size() - 1;
+    if (i >= 0)
+    {
+      String str = (String)paramList.get(i);
+      if ((str == null) || (str.isEmpty())) {
+        paramList.remove(i);
+      }
+      for (;;)
+      {
+        i -= 1;
+        break;
+        Long localLong = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afM(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() >= 43200000L))
+        {
+          ae.i("HABBYGE-MALI.AsyncBizDao", "AsyncBizDao, _clearHistory: %s", new Object[] { str });
+          paramList.remove(i);
+        }
+      }
+    }
+    AppMethodBeat.o(122123);
+  }
+  
+  public static void dd(List<String> paramList)
   {
     AppMethodBeat.i(122124);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -171,7 +171,7 @@ public final class a
       return;
     }
     gv localgv = new gv();
-    localgv.FyN.addAll(paramList);
+    localgv.FRl.addAll(paramList);
     a(localgv);
     AppMethodBeat.o(122124);
   }
@@ -184,13 +184,13 @@ public final class a
       AppMethodBeat.o(122122);
       return;
     }
-    Object localObject = cpZ();
+    Object localObject = crB();
     if ((localObject == null) || (((List)localObject).isEmpty()))
     {
       if (!paramSet.isEmpty())
       {
         localObject = new gv();
-        ((gv)localObject).FyN.addAll(paramSet);
+        ((gv)localObject).FRl.addAll(paramSet);
         a((gv)localObject);
         AppMethodBeat.o(122122);
       }
@@ -205,14 +205,14 @@ public final class a
           ((List)localObject).add(str);
         }
       }
-      da((List)localObject);
+      dd((List)localObject);
     }
     AppMethodBeat.o(122122);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.a
  * JD-Core Version:    0.7.0.1
  */

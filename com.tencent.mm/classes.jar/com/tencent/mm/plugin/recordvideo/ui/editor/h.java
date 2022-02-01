@@ -24,14 +24,14 @@ public final class h
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
-    AppMethodBeat.i(200269);
+    AppMethodBeat.i(206530);
     super.a(paramRect, paramView, paramRecyclerView, paramt);
     int i = paramRecyclerView.getWidth() / 2 - paramView.getLayoutParams().width / 2;
     if (RecyclerView.bw(paramView) == 0)
     {
       ((ViewGroup.MarginLayoutParams)paramView.getLayoutParams()).leftMargin = 0;
       a(paramRect, i, true);
-      AppMethodBeat.o(200269);
+      AppMethodBeat.o(206530);
       return;
     }
     if (RecyclerView.bw(paramView) == paramt.getItemCount() - 1)
@@ -39,7 +39,7 @@ public final class h
       ((ViewGroup.MarginLayoutParams)paramView.getLayoutParams()).rightMargin = 0;
       a(paramRect, i, false);
     }
-    AppMethodBeat.o(200269);
+    AppMethodBeat.o(206530);
   }
 }
 

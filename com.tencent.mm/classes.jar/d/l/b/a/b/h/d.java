@@ -10,7 +10,7 @@ import java.util.Iterator;
 public abstract class d
   implements Iterable<Byte>
 {
-  public static final d NqI;
+  public static final d NNO;
   
   static
   {
@@ -18,7 +18,7 @@ public abstract class d
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      NqI = new p(new byte[0]);
+      NNO = new p(new byte[0]);
       return;
     }
   }
@@ -35,12 +35,12 @@ public abstract class d
       }
     }
     for (paramIterable = localArrayList; paramIterable.isEmpty(); paramIterable = (Collection)paramIterable) {
-      return NqI;
+      return NNO;
     }
     return a(paramIterable.iterator(), paramIterable.size());
   }
   
-  public static d J(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static d K(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     byte[] arrayOfByte = new byte[paramInt2];
     System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
@@ -57,7 +57,7 @@ public abstract class d
     return a(paramIterator, i).a(a(paramIterator, paramInt - i));
   }
   
-  public static d bcJ(String paramString)
+  public static d ben(String paramString)
   {
     try
     {
@@ -70,12 +70,12 @@ public abstract class d
     }
   }
   
-  public static d cZ(byte[] paramArrayOfByte)
+  public static d dc(byte[] paramArrayOfByte)
   {
-    return J(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return K(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public static b grr()
+  public static b gvT()
   {
     return new b();
   }
@@ -108,11 +108,11 @@ public abstract class d
   
   abstract void b(OutputStream paramOutputStream, int paramInt1, int paramInt2);
   
-  protected abstract int bb(int paramInt1, int paramInt2, int paramInt3);
-  
   protected abstract int bc(int paramInt1, int paramInt2, int paramInt3);
   
-  public final String ffY()
+  protected abstract int bd(int paramInt1, int paramInt2, int paramInt3);
+  
+  public final String fjO()
   {
     try
     {
@@ -125,19 +125,19 @@ public abstract class d
     }
   }
   
-  public abstract a gro();
+  public abstract a gvQ();
   
-  public abstract boolean grp();
+  public abstract boolean gvR();
   
-  public abstract e grq();
+  public abstract e gvS();
   
-  protected abstract int grs();
+  protected abstract int gvU();
   
-  protected abstract boolean grt();
+  protected abstract boolean gvV();
   
-  protected abstract int gru();
+  protected abstract int gvW();
   
-  public final void i(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 < 0) {
       throw new IndexOutOfBoundsException(30 + "Source offset < 0: " + paramInt1);
@@ -155,11 +155,11 @@ public abstract class d
       throw new IndexOutOfBoundsException(34 + "Target end offset < 0: " + (paramInt2 + paramInt3));
     }
     if (paramInt3 > 0) {
-      j(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+      k(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
     }
   }
   
-  protected abstract void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  protected abstract void k(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
   
   public abstract int size();
   
@@ -170,7 +170,7 @@ public abstract class d
       return j.EMPTY_BYTE_ARRAY;
     }
     byte[] arrayOfByte = new byte[i];
-    j(arrayOfByte, 0, 0, i);
+    k(arrayOfByte, 0, 0, i);
     return arrayOfByte;
   }
   
@@ -191,27 +191,27 @@ public abstract class d
     extends OutputStream
   {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-    private final int NqJ;
-    private final ArrayList<d> NqK;
-    private int NqL;
+    private final int NNP;
+    private final ArrayList<d> NNQ;
+    private int NNR;
     private int bQH;
     private byte[] buffer;
     
     b()
     {
       AppMethodBeat.i(59370);
-      this.NqJ = 128;
-      this.NqK = new ArrayList();
+      this.NNP = 128;
+      this.NNQ = new ArrayList();
       this.buffer = new byte[''];
       AppMethodBeat.o(59370);
     }
     
-    private void akX(int paramInt)
+    private void alH(int paramInt)
     {
       AppMethodBeat.i(59375);
-      this.NqK.add(new p(this.buffer));
-      this.NqL += this.buffer.length;
-      this.buffer = new byte[Math.max(this.NqJ, Math.max(paramInt, this.NqL >>> 1))];
+      this.NNQ.add(new p(this.buffer));
+      this.NNR += this.buffer.length;
+      this.buffer = new byte[Math.max(this.NNP, Math.max(paramInt, this.NNR >>> 1))];
       this.bQH = 0;
       AppMethodBeat.o(59375);
     }
@@ -220,7 +220,7 @@ public abstract class d
     {
       try
       {
-        int i = this.NqL;
+        int i = this.NNR;
         int j = this.bQH;
         return i + j;
       }
@@ -232,7 +232,7 @@ public abstract class d
     }
     
     /* Error */
-    public final d grv()
+    public final d gvX()
     {
       // Byte code:
       //   0: aload_0
@@ -267,7 +267,7 @@ public abstract class d
       //   47: invokestatic 73	java/lang/Math:min	(II)I
       //   50: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   53: aload_0
-      //   54: getfield 39	d/l/b/a/b/h/d$b:NqK	Ljava/util/ArrayList;
+      //   54: getfield 39	d/l/b/a/b/h/d$b:NNQ	Ljava/util/ArrayList;
       //   57: new 48	d/l/b/a/b/h/p
       //   60: dup
       //   61: aload_3
@@ -276,16 +276,16 @@ public abstract class d
       //   68: pop
       //   69: aload_0
       //   70: aload_0
-      //   71: getfield 57	d/l/b/a/b/h/d$b:NqL	I
+      //   71: getfield 57	d/l/b/a/b/h/d$b:NNR	I
       //   74: aload_0
       //   75: getfield 65	d/l/b/a/b/h/d$b:bQH	I
       //   78: iadd
-      //   79: putfield 57	d/l/b/a/b/h/d$b:NqL	I
+      //   79: putfield 57	d/l/b/a/b/h/d$b:NNR	I
       //   82: aload_0
       //   83: iconst_0
       //   84: putfield 65	d/l/b/a/b/h/d$b:bQH	I
       //   87: aload_0
-      //   88: getfield 39	d/l/b/a/b/h/d$b:NqK	Ljava/util/ArrayList;
+      //   88: getfield 39	d/l/b/a/b/h/d$b:NNQ	Ljava/util/ArrayList;
       //   91: invokestatic 83	d/l/b/a/b/h/d:B	(Ljava/lang/Iterable;)Ld/l/b/a/b/h/d;
       //   94: astore_2
       //   95: ldc 70
@@ -295,7 +295,7 @@ public abstract class d
       //   102: aload_2
       //   103: areturn
       //   104: aload_0
-      //   105: getfield 39	d/l/b/a/b/h/d$b:NqK	Ljava/util/ArrayList;
+      //   105: getfield 39	d/l/b/a/b/h/d$b:NNQ	Ljava/util/ArrayList;
       //   108: new 48	d/l/b/a/b/h/p
       //   111: dup
       //   112: aload_0
@@ -340,7 +340,7 @@ public abstract class d
       {
         AppMethodBeat.i(59371);
         if (this.bQH == this.buffer.length) {
-          akX(1);
+          alH(1);
         }
         byte[] arrayOfByte = this.buffer;
         int i = this.bQH;
@@ -408,7 +408,7 @@ public abstract class d
       //   84: istore_3
       //   85: aload_0
       //   86: iload_3
-      //   87: invokespecial 116	d/l/b/a/b/h/d$b:akX	(I)V
+      //   87: invokespecial 116	d/l/b/a/b/h/d$b:alH	(I)V
       //   90: aload_1
       //   91: iload_2
       //   92: iload 4
@@ -446,7 +446,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.d
  * JD-Core Version:    0.7.0.1
  */

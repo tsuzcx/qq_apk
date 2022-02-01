@@ -5,10 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pj;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.network.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ar;
 
 @k
 public class MMReceivers$AlarmReceiver
@@ -17,17 +21,17 @@ public class MMReceivers$AlarmReceiver
   private static void a(long paramLong, Context paramContext)
   {
     AppMethodBeat.i(131885);
-    com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AlarmReceiver", "reset bumper, interval=".concat(String.valueOf(paramLong)));
+    ae.w("MicroMsg.AlarmReceiver", "reset bumper, interval=".concat(String.valueOf(paramLong)));
     com.tencent.mm.a.a.set(paramContext, 109, 0, System.currentTimeMillis() + paramLong, new Intent(paramContext, AlarmReceiver.class).putExtra("MMBoot_Bump", true), 268435456);
     AppMethodBeat.o(131885);
   }
   
-  public static void bK(Context paramContext)
+  public static void bM(Context paramContext)
   {
     long l1 = 30000L;
     AppMethodBeat.i(131884);
-    long l2 = ah.fkx();
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AlarmReceiver", "bumper comes, next=".concat(String.valueOf(l2)));
+    long l2 = ai.jdMethod_for();
+    ae.d("MicroMsg.AlarmReceiver", "bumper comes, next=".concat(String.valueOf(l2)));
     if (l2 > 1860000L)
     {
       AppMethodBeat.o(131884);
@@ -43,7 +47,7 @@ public class MMReceivers$AlarmReceiver
     }
   }
   
-  public static void bL(Context paramContext)
+  public static void bN(Context paramContext)
   {
     AppMethodBeat.i(131886);
     PendingIntent localPendingIntent = com.tencent.mm.a.a.b(paramContext, 109, new Intent(paramContext, AlarmReceiver.class).putExtra("MMBoot_Bump", true));
@@ -55,11 +59,11 @@ public class MMReceivers$AlarmReceiver
     AppMethodBeat.o(131886);
   }
   
-  public static void bM(Context paramContext)
+  public static void bO(Context paramContext)
   {
     AppMethodBeat.i(131887);
-    com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AlarmReceiver", "keep awaker");
-    if (com.tencent.mm.network.ad.aPh()) {}
+    ae.w("MicroMsg.AlarmReceiver", "keep awaker");
+    if (ad.aPF()) {}
     for (int i = 300000;; i = 900000)
     {
       com.tencent.mm.a.a.a(paramContext, 110, 0, System.currentTimeMillis() + i, i, new Intent(paramContext, AlarmReceiver.class));
@@ -68,10 +72,10 @@ public class MMReceivers$AlarmReceiver
     }
   }
   
-  public static void bN(Context paramContext)
+  public static void bP(Context paramContext)
   {
     AppMethodBeat.i(131888);
-    com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AlarmReceiver", "stop awaker");
+    ae.w("MicroMsg.AlarmReceiver", "stop awaker");
     PendingIntent localPendingIntent = com.tencent.mm.a.a.b(paramContext, 110, new Intent(paramContext, AlarmReceiver.class));
     if (localPendingIntent != null)
     {
@@ -89,23 +93,33 @@ public class MMReceivers$AlarmReceiver
       AppMethodBeat.o(131883);
       return;
     }
-    if (!com.tencent.mm.kernel.a.abC().getBoolean("keepaliveserviceswitch", false))
+    if (!com.tencent.mm.kernel.a.abL().getBoolean("keepaliveserviceswitch", false))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AlarmReceiver", "onReceive() MMHandlerThread() publish PushKeepAliveEvent");
-      aq.o(new MMReceivers.AlarmReceiver.1(this), 10000L);
+      ae.i("MicroMsg.AlarmReceiver", "onReceive() MMHandlerThread() publish PushKeepAliveEvent");
+      ar.o(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(131882);
+          pj localpj = new pj();
+          com.tencent.mm.sdk.b.a.IvT.a(localpj, Looper.getMainLooper());
+          ae.i("MicroMsg.AlarmReceiver", "onReceive() publish PushKeepAliveEvent");
+          AppMethodBeat.o(131882);
+        }
+      }, 10000L);
     }
     boolean bool = paramIntent.getBooleanExtra("MMBoot_Bump", false);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AlarmReceiver", "[ALARM NOTIFICATION] bump:".concat(String.valueOf(bool)));
+    ae.i("MicroMsg.AlarmReceiver", "[ALARM NOTIFICATION] bump:".concat(String.valueOf(bool)));
     if (bool)
     {
-      bK(paramContext);
+      bM(paramContext);
       AppMethodBeat.o(131883);
       return;
     }
     if (!b.c(paramContext, "alarm", true))
     {
-      bN(paramContext);
-      com.tencent.mm.sdk.platformtools.ad.fku();
+      bP(paramContext);
+      ae.foo();
     }
     AppMethodBeat.o(131883);
   }

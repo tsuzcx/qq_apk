@@ -4,17 +4,17 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.luckymoney.a.a;
-import com.tencent.mm.protocal.protobuf.csh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.ctb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.io.IOException;
 
 public final class k
 {
-  j vjG;
-  private e vob;
+  private e vAg;
+  j vvL;
   
   public k()
   {
@@ -26,62 +26,62 @@ public final class k
   private void init()
   {
     AppMethodBeat.i(65180);
-    this.vjG = new j();
-    g.ajD();
-    String str = (String)g.ajC().ajl().get(356355, null);
-    if (bt.isNullOrNil(str))
+    this.vvL = new j();
+    g.ajS();
+    String str = (String)g.ajR().ajA().get(356355, null);
+    if (bu.isNullOrNil(str))
     {
-      this.vjG.vjf = 2000.0D;
-      this.vjG.vjc = 100;
-      this.vjG.vjg = 200.0D;
-      this.vjG.vje = 0.01D;
-      this.vjG.vjd = 200.0D;
+      this.vvL.vvk = 2000.0D;
+      this.vvL.vvh = 100;
+      this.vvL.vvl = 200.0D;
+      this.vvL.vvj = 0.01D;
+      this.vvL.vvi = 200.0D;
     }
     for (;;)
     {
-      ad.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.vjG.vjf + " maxTotalNum:" + this.vjG.vjc + " perGroupMaxValue:" + this.vjG.vjg + " perMinValue:" + this.vjG.vje + " perPersonMaxValue:" + this.vjG.vjd);
+      ae.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.vvL.vvk + " maxTotalNum:" + this.vvL.vvh + " perGroupMaxValue:" + this.vvL.vvl + " perMinValue:" + this.vvL.vvj + " perPersonMaxValue:" + this.vvL.vvi);
       AppMethodBeat.o(65180);
       return;
       try
       {
-        this.vjG.parseFrom(str.getBytes("ISO-8859-1"));
-        dik();
+        this.vvL.parseFrom(str.getBytes("ISO-8859-1"));
+        dlj();
       }
       catch (Exception localException)
       {
-        ad.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-        this.vjG.vjf = 2000.0D;
-        this.vjG.vjc = 100;
-        this.vjG.vjg = 200.0D;
-        this.vjG.vje = 0.01D;
-        this.vjG.vjd = 200.0D;
+        ae.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
+        this.vvL.vvk = 2000.0D;
+        this.vvL.vvh = 100;
+        this.vvL.vvl = 200.0D;
+        this.vvL.vvj = 0.01D;
+        this.vvL.vvi = 200.0D;
       }
     }
   }
   
-  final void dik()
+  final void dlj()
   {
     AppMethodBeat.i(65181);
-    if (this.vjG != null)
+    if (this.vvL != null)
     {
-      this.vob = e.aoS(this.vjG.vnZ);
-      if ((this.vob != null) && (this.vob.vnI != null))
+      this.vAg = e.apX(this.vvL.vAe);
+      if ((this.vAg != null) && (this.vAg.vzN != null))
       {
-        ((a)g.ab(a.class)).a(this.vob.vnI);
-        g.ajC().ajl().set(al.a.ICu, Integer.valueOf(1));
-        if (!bt.isNullOrNil(this.vjG.voa))
+        ((a)g.ab(a.class)).a(this.vAg.vzN);
+        g.ajR().ajA().set(am.a.IWU, Integer.valueOf(1));
+        if (!bu.isNullOrNil(this.vvL.vAf))
         {
-          ad.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
+          ae.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
           try
           {
-            csh localcsh = (csh)new csh().parseFrom(Base64.decode(this.vjG.voa, 0));
-            this.vob.vnI.hzE = localcsh.hzE;
+            ctb localctb = (ctb)new ctb().parseFrom(Base64.decode(this.vvL.vAf, 0));
+            this.vAg.vzN.hCs = localctb.hCs;
             AppMethodBeat.o(65181);
             return;
           }
           catch (IOException localIOException)
           {
-            ad.printErrStackTrace("MicroMsg.LuckyMoneyConfigManager", localIOException, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.LuckyMoneyConfigManager", localIOException, "", new Object[0]);
           }
         }
       }
@@ -89,31 +89,31 @@ public final class k
     AppMethodBeat.o(65181);
   }
   
-  public final j dil()
+  public final j dlk()
   {
     AppMethodBeat.i(65182);
-    if (this.vjG == null) {
+    if (this.vvL == null) {
       init();
     }
-    j localj = this.vjG;
+    j localj = this.vvL;
     AppMethodBeat.o(65182);
     return localj;
   }
   
-  public final e dim()
+  public final e dll()
   {
     AppMethodBeat.i(65183);
-    if (this.vob == null) {
+    if (this.vAg == null) {
       init();
     }
-    e locale = this.vob;
+    e locale = this.vAg;
     AppMethodBeat.o(65183);
     return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.k
  * JD-Core Version:    0.7.0.1
  */

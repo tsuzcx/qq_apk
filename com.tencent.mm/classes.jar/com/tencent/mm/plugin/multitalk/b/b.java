@@ -1,64 +1,12 @@
 package com.tencent.mm.plugin.multitalk.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.el;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
-
-public final class b
-  extends el
+public abstract interface b<DataType>
 {
-  protected static c.a info;
-  
-  static
-  {
-    AppMethodBeat.i(114644);
-    c.a locala = new c.a();
-    locala.IhA = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "memberUuid";
-    locala.IhC.put("memberUuid", "LONG");
-    localStringBuilder.append(" memberUuid LONG");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "wxGroupId";
-    locala.IhC.put("wxGroupId", "TEXT");
-    localStringBuilder.append(" wxGroupId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "userName";
-    locala.IhC.put("userName", "TEXT");
-    localStringBuilder.append(" userName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "inviteUserName";
-    locala.IhC.put("inviteUserName", "TEXT");
-    localStringBuilder.append(" inviteUserName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "memberId";
-    locala.IhC.put("memberId", "LONG");
-    localStringBuilder.append(" memberId LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "status";
-    locala.IhC.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "createTime";
-    locala.IhC.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(114644);
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString, DataType paramDataType);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.b.b
  * JD-Core Version:    0.7.0.1
  */

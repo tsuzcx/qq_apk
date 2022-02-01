@@ -3,47 +3,48 @@ package com.tencent.mm.plugin.appbrand.jsruntime;
 import com.eclipsesource.v8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
+import com.tencent.mm.appbrand.v8.x.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
 import com.tencent.mm.plugin.appbrand.config.l;
 import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
 public final class w
 {
-  private static boolean khz;
+  private static boolean kkP;
   
   static
   {
     AppMethodBeat.i(107806);
-    bql();
-    khz = false;
+    bqV();
+    kkP = false;
     AppMethodBeat.o(107806);
   }
   
   public static i a(int paramInt, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, d paramd)
   {
-    AppMethodBeat.i(217129);
+    AppMethodBeat.i(217738);
     IJSRuntime.Config localConfig = new IJSRuntime.Config();
-    localConfig.cXH = paramString;
-    localConfig.cXI = paramArrayOfByte;
-    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qFa, false))
+    localConfig.cYF = paramString;
+    localConfig.cYG = paramArrayOfByte;
+    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qMG, false))
     {
       paramString = "1";
-      ad.i("MicroMsg.AppBrandJsRuntimeFactory", "hy: use native buffer type: %s", new Object[] { paramString });
-      localConfig.cXJ = paramString;
-      localConfig.cXK = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qxt, true);
-      localConfig.cXL = paramBoolean3;
-      localConfig.cXM = paramBoolean1;
-      localConfig.cXN = paramBoolean2;
-      localConfig.cXP = new WeakReference(paramd);
-      paramString = a.a.gyq;
-      paramString = a.wz("100377");
+      ae.i("MicroMsg.AppBrandJsRuntimeFactory", "hy: use native buffer type: %s", new Object[] { paramString });
+      localConfig.cYH = paramString;
+      localConfig.cYI = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qEz, true);
+      localConfig.cYJ = paramBoolean3;
+      localConfig.cYK = paramBoolean1;
+      localConfig.cYL = paramBoolean2;
+      localConfig.cYN = new WeakReference(paramd);
+      paramString = a.a.gAX;
+      paramString = a.xi("100377");
       if ((paramString == null) || (!paramString.isValid())) {
         break label420;
       }
@@ -51,14 +52,14 @@ public final class w
     label256:
     label389:
     label420:
-    for (int j = bt.getInt((String)paramString.foF().get("isolateContextLibVersion"), 0);; j = 0)
+    for (int j = bu.getInt((String)paramString.fsy().get("isolateContextLibVersion"), 0);; j = 0)
     {
-      paramString = a.a.gyq;
-      paramString = a.wz("100377");
+      paramString = a.a.gAX;
+      paramString = a.xi("100377");
       int i;
       if (paramString == null)
       {
-        ad.i("MicroMsg.AppBrand.JsRuntimeABTests", "getJsRuntimeControlVal item is null");
+        ae.i("MicroMsg.AppBrand.JsRuntimeABTests", "getJsRuntimeControlVal item is null");
         i = 2;
         label191:
         if ((i != 2) || ((paramInt < j) && (paramInt != 0))) {
@@ -66,7 +67,7 @@ public final class w
         }
         paramBoolean1 = true;
         label209:
-        ad.i("MicroMsg.AppBrand.JsRuntimeABTests", "supportLibVer:%d currentLibVer:%d userNodeJS:%b", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
+        ae.i("MicroMsg.AppBrand.JsRuntimeABTests", "supportLibVer:%d currentLibVer:%d userNodeJS:%b", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
         if (!paramBoolean1) {
           break label376;
         }
@@ -74,24 +75,24 @@ public final class w
         if (!(paramString instanceof c)) {
           break label389;
         }
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(434L, 5L, 1L, false);
-        ad.i("MicroMsg.AppBrandJsRuntimeFactory", "Using AppBrandJ2V8BasedJsEngine");
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(434L, 5L, 1L, false);
+        ae.i("MicroMsg.AppBrandJsRuntimeFactory", "Using AppBrandJ2V8BasedJsEngine");
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(434L, 0L, 1L, false);
-        AppMethodBeat.o(217129);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(434L, 0L, 1L, false);
+        AppMethodBeat.o(217738);
         return paramString;
         paramString = "0";
         break;
         if (!paramString.isValid())
         {
-          ad.i("MicroMsg.AppBrand.JsRuntimeABTests", "getJsRuntimeControlVal item not valid");
+          ae.i("MicroMsg.AppBrand.JsRuntimeABTests", "getJsRuntimeControlVal item not valid");
           i = 2;
           break label191;
         }
-        i = bt.getInt((String)paramString.foF().get("JsRuntime"), 2);
-        ad.i("MicroMsg.AppBrand.JsRuntimeABTests", "getJsRuntimeControlVal:%d", new Object[] { Integer.valueOf(i) });
+        i = bu.getInt((String)paramString.fsy().get("JsRuntime"), 2);
+        ae.i("MicroMsg.AppBrand.JsRuntimeABTests", "getJsRuntimeControlVal:%d", new Object[] { Integer.valueOf(i) });
         break label191;
         label371:
         paramBoolean1 = false;
@@ -101,35 +102,43 @@ public final class w
         break label256;
         if ((paramString instanceof x))
         {
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(434L, 6L, 1L, false);
-          ad.i("MicroMsg.AppBrandJsRuntimeFactory", "Using AppBrandNodeJSBasedJsEngine");
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(434L, 6L, 1L, false);
+          ae.i("MicroMsg.AppBrandJsRuntimeFactory", "Using AppBrandNodeJSBasedJsEngine");
         }
       }
     }
   }
   
-  public static void bql()
+  public static void bqV()
   {
     AppMethodBeat.i(107804);
-    if (khz)
+    if (kkP)
     {
       AppMethodBeat.o(107804);
       return;
     }
-    Object localObject = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qBV, "");
-    String str = l.bef();
-    if (bt.isNullOrNil((String)localObject)) {
+    Object localObject = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qJq, "");
+    String str = l.beL();
+    if (bu.isNullOrNil((String)localObject)) {
       localObject = str;
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandJsRuntimeFactory", "set v8 flag:%s", new Object[] { localObject });
+      ae.i("MicroMsg.AppBrandJsRuntimeFactory", "set v8 flag:%s", new Object[] { localObject });
       V8.setFlags((String)localObject);
-      khz = true;
-      com.tencent.mm.appbrand.v8.x.a(new w.1());
+      kkP = true;
+      com.tencent.mm.appbrand.v8.x.a(new x.a()
+      {
+        public final void fN(String paramAnonymousString)
+        {
+          AppMethodBeat.i(107803);
+          com.tencent.mm.plugin.report.service.g.yxI.kvStat(17693, paramAnonymousString);
+          AppMethodBeat.o(107803);
+        }
+      });
       AppMethodBeat.o(107804);
       return;
-      if (!bt.isNullOrNil(str)) {
+      if (!bu.isNullOrNil(str)) {
         localObject = (String)localObject + " " + str;
       }
     }
@@ -148,7 +157,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.w
  * JD-Core Version:    0.7.0.1
  */

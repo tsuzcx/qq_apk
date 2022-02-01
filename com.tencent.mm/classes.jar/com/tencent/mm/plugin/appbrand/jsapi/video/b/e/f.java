@@ -26,48 +26,48 @@ import java.util.regex.Pattern;
 public final class f
 {
   private static final Pattern RANGE_HEADER_PATTERN;
-  public static HashMap<String, Map<String, String>> loY;
+  public static HashMap<String, Map<String, String>> ltv;
   private BufferedReader bzC;
-  private LinkedHashMap<String, String> loT;
-  private LinkedHashMap<String, String> loU;
-  private int[] loV;
-  private ArrayList<String> loW;
-  private String loX;
-  public String loz;
+  public String lsW;
+  private LinkedHashMap<String, String> ltq;
+  private LinkedHashMap<String, String> ltr;
+  private int[] lts;
+  private ArrayList<String> ltt;
+  private String ltu;
   
   static
   {
-    AppMethodBeat.i(206152);
+    AppMethodBeat.i(211179);
     RANGE_HEADER_PATTERN = Pattern.compile("[R,r]ange:\\s*bytes=(\\d*)\\s*-\\s*(\\d*)");
-    loY = new HashMap();
-    AppMethodBeat.o(206152);
+    ltv = new HashMap();
+    AppMethodBeat.o(211179);
   }
   
   public f(InputStream paramInputStream, String paramString)
   {
-    AppMethodBeat.i(206142);
+    AppMethodBeat.i(211169);
     this.bzC = new BufferedReader(new InputStreamReader(paramInputStream));
-    this.loT = new LinkedHashMap();
-    this.loU = new LinkedHashMap();
-    this.loV = new int[2];
-    this.loW = new ArrayList();
-    this.loX = (paramString + "HttpParser");
+    this.ltq = new LinkedHashMap();
+    this.ltr = new LinkedHashMap();
+    this.lts = new int[2];
+    this.ltt = new ArrayList();
+    this.ltu = (paramString + "HttpParser");
     try
     {
-      bnN();
-      AppMethodBeat.o(206142);
+      box();
+      AppMethodBeat.o(211169);
       return;
     }
     catch (IOException paramInputStream)
     {
-      h.log(6, this.loX, "error parsing request " + h.h(paramInputStream));
-      AppMethodBeat.o(206142);
+      h.log(6, this.ltu, "error parsing request " + h.i(paramInputStream));
+      AppMethodBeat.o(211169);
     }
   }
   
-  private static String I(Map<String, String> paramMap)
+  private static String P(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(206146);
+    AppMethodBeat.i(211173);
     Object localObject = "";
     Iterator localIterator = paramMap.entrySet().iterator();
     for (paramMap = (Map<String, String>)localObject; localIterator.hasNext(); paramMap = paramMap + "\r\n")
@@ -81,13 +81,13 @@ public final class f
       }
       paramMap = (String)localObject + (String)localEntry.getValue();
     }
-    AppMethodBeat.o(206146);
+    AppMethodBeat.o(211173);
     return paramMap;
   }
   
-  public static String J(Map<String, List<String>> paramMap)
+  public static String Q(Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(206147);
+    AppMethodBeat.i(211174);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramMap = paramMap.entrySet().iterator();
     if (paramMap.hasNext())
@@ -113,19 +113,59 @@ public final class f
         localLinkedHashMap.put(str, ((List)localObject).get(i));
       }
     }
-    paramMap = I(localLinkedHashMap);
-    AppMethodBeat.o(206147);
+    paramMap = P(localLinkedHashMap);
+    AppMethodBeat.o(211174);
     return paramMap;
   }
   
-  public static Map<String, String> QQ(String paramString)
+  public static long[] RB(String paramString)
+  {
+    AppMethodBeat.i(211178);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = RANGE_HEADER_PATTERN.matcher(paramString);
+      if (((Matcher)localObject).find())
+      {
+        paramString = ((Matcher)localObject).group(1);
+        localObject = ((Matcher)localObject).group(2);
+        try
+        {
+          l1 = Long.parseLong(paramString);
+        }
+        catch (NumberFormatException paramString)
+        {
+          for (;;)
+          {
+            try
+            {
+              long l2 = Long.parseLong((String)localObject);
+              AppMethodBeat.o(211178);
+              return new long[] { l1, l2 };
+            }
+            catch (NumberFormatException paramString)
+            {
+              long l1;
+              AppMethodBeat.o(211178);
+              return new long[] { l1, -2L };
+            }
+            paramString = paramString;
+            l1 = 0L;
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(211178);
+    return new long[] { -1L, -1L };
+  }
+  
+  public static Map<String, String> Rz(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(206145);
-    if ((!TextUtils.isEmpty(paramString)) && (loY.containsKey(paramString)))
+    AppMethodBeat.i(211172);
+    if ((!TextUtils.isEmpty(paramString)) && (ltv.containsKey(paramString)))
     {
-      paramString = (Map)loY.get(paramString);
-      AppMethodBeat.o(206145);
+      paramString = (Map)ltv.get(paramString);
+      AppMethodBeat.o(211172);
       return paramString;
     }
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
@@ -153,61 +193,21 @@ public final class f
       }
       catch (IOException paramString)
       {
-        h.log(5, "HttpParser", h.h(paramString));
+        h.log(5, "HttpParser", h.i(paramString));
       }
       for (;;)
       {
-        AppMethodBeat.o(206145);
+        AppMethodBeat.o(211172);
         return localLinkedHashMap;
-        loY.put(paramString, localLinkedHashMap);
+        ltv.put(paramString, localLinkedHashMap);
       }
       i += 1;
     }
   }
   
-  public static long[] QS(String paramString)
-  {
-    AppMethodBeat.i(206151);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = RANGE_HEADER_PATTERN.matcher(paramString);
-      if (((Matcher)localObject).find())
-      {
-        paramString = ((Matcher)localObject).group(1);
-        localObject = ((Matcher)localObject).group(2);
-        try
-        {
-          l1 = Long.parseLong(paramString);
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            try
-            {
-              long l2 = Long.parseLong((String)localObject);
-              AppMethodBeat.o(206151);
-              return new long[] { l1, l2 };
-            }
-            catch (NumberFormatException paramString)
-            {
-              long l1;
-              AppMethodBeat.o(206151);
-              return new long[] { l1, -2L };
-            }
-            paramString = paramString;
-            l1 = 0L;
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(206151);
-    return new long[] { -1L, -1L };
-  }
-  
   public static String a(long paramLong1, long paramLong2, long paramLong3, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(206150);
+    AppMethodBeat.i(211177);
     int i;
     int j;
     label28:
@@ -297,9 +297,9 @@ public final class f
       localObject1 = (String)localObject1 + String.format("X-Server: %s\r\n", new Object[] { "VideoProxy 1.4.1" });
       localObject1 = (String)localObject1 + "\r\n";
       if ((i == 0) && (j != 0) && (paramString.equalsIgnoreCase("video/mp4"))) {
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bnx().lmj.sQ(paramLong3);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.boh().lqJ.td(paramLong3);
       }
-      AppMethodBeat.o(206150);
+      AppMethodBeat.o(211177);
       return localObject1;
       i = 0;
       break;
@@ -329,33 +329,33 @@ public final class f
     }
   }
   
-  private void bnN()
+  private void box()
   {
-    AppMethodBeat.i(206143);
+    AppMethodBeat.i(211170);
     String[] arrayOfString1 = null;
     Object localObject = this.bzC.readLine();
-    h.log(4, this.loX, "parseRequest:".concat(String.valueOf(localObject)));
+    h.log(4, this.ltu, "parseRequest:".concat(String.valueOf(localObject)));
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      h.log(6, this.loX, "initial is not valid");
-      AppMethodBeat.o(206143);
+      h.log(6, this.ltu, "initial is not valid");
+      AppMethodBeat.o(211170);
       return;
     }
     if (Character.isWhitespace(((String)localObject).charAt(0)))
     {
-      h.log(6, this.loX, "character first char is whitespace");
-      AppMethodBeat.o(206143);
+      h.log(6, this.ltu, "character first char is whitespace");
+      AppMethodBeat.o(211170);
       return;
     }
     String[] arrayOfString2 = ((String)localObject).split("\\s");
     if (arrayOfString2.length != 3)
     {
-      h.log(6, this.loX, "cmd.length is not 3");
-      AppMethodBeat.o(206143);
+      h.log(6, this.ltu, "cmd.length is not 3");
+      AppMethodBeat.o(211170);
       return;
     }
-    this.loW.add(localObject);
-    this.loz = arrayOfString2[0];
+    this.ltt.add(localObject);
+    this.lsW = arrayOfString2[0];
     if ((arrayOfString2[2].indexOf("HTTP/") == 0) && (arrayOfString2[2].indexOf('.') > 5))
     {
       localObject = arrayOfString2[2];
@@ -368,8 +368,8 @@ public final class f
       int i;
       try
       {
-        this.loV[0] = Integer.parseInt(localObject[0]);
-        this.loV[1] = Integer.parseInt(localObject[1]);
+        this.lts[0] = Integer.parseInt(localObject[0]);
+        this.lts[1] = Integer.parseInt(localObject[1]);
         if ((!arrayOfString2[0].equals("GET")) && (!arrayOfString2[0].equals("HEAD"))) {
           break label459;
         }
@@ -378,7 +378,7 @@ public final class f
           break label535;
         }
         localObject = arrayOfString2[1].substring(i + 1).split("&");
-        this.loU = new LinkedHashMap();
+        this.ltr = new LinkedHashMap();
         i = 0;
         if (i >= localObject.length) {
           break label535;
@@ -386,7 +386,7 @@ public final class f
         arrayOfString1 = localObject[i].split("=");
         if (arrayOfString1.length == 2)
         {
-          this.loU.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), URLDecoder.decode(arrayOfString1[1], "UTF-8"));
+          this.ltr.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), URLDecoder.decode(arrayOfString1[1], "UTF-8"));
           i += 1;
           continue;
           localObject = arrayOfString1;
@@ -402,12 +402,12 @@ public final class f
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        h.log(6, this.loX, "error parsing request NumberFormatException:" + h.h(localNumberFormatException));
-        AppMethodBeat.o(206143);
+        h.log(6, this.ltu, "error parsing request NumberFormatException:" + h.i(localNumberFormatException));
+        AppMethodBeat.o(211170);
         return;
       }
       if ((arrayOfString1.length == 1) && (localNumberFormatException[i].indexOf('=') == localNumberFormatException[i].length() - 1)) {
-        this.loU.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), "");
+        this.ltr.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), "");
       }
     }
     label459:
@@ -415,13 +415,13 @@ public final class f
       arrayOfString2[0].equals("CONNECT");
     }
     label535:
-    bnO();
-    AppMethodBeat.o(206143);
+    boy();
+    AppMethodBeat.o(211170);
   }
   
-  private void bnO()
+  private void boy()
   {
-    AppMethodBeat.i(206144);
+    AppMethodBeat.i(211171);
     StringBuilder localStringBuilder = new StringBuilder();
     String str = this.bzC.readLine();
     localStringBuilder.append(str).append("|");
@@ -432,42 +432,42 @@ public final class f
       {
         i = str.indexOf(':');
         if (i < 0) {
-          this.loT = null;
+          this.ltq = null;
         }
       }
       else
       {
-        h.log(4, this.loX, "parseHeaders:" + localStringBuilder.toString());
-        AppMethodBeat.o(206144);
+        h.log(4, this.ltu, "parseHeaders:" + localStringBuilder.toString());
+        AppMethodBeat.o(211171);
         return;
       }
-      this.loT.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
-      this.loW.add(str);
+      this.ltq.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
+      this.ltt.add(str);
       str = this.bzC.readLine();
       localStringBuilder.append(str).append("|");
     }
   }
   
-  public final String QR(String paramString)
+  public final String RA(String paramString)
   {
-    AppMethodBeat.i(206149);
-    paramString = (String)this.loU.get(paramString);
-    AppMethodBeat.o(206149);
+    AppMethodBeat.i(211176);
+    paramString = (String)this.ltr.get(paramString);
+    AppMethodBeat.o(211176);
     return paramString;
   }
   
-  public final String bnP()
+  public final String boz()
   {
-    AppMethodBeat.i(206148);
+    AppMethodBeat.i(211175);
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.loW.iterator();
+    Iterator localIterator = this.ltt.iterator();
     while (localIterator.hasNext())
     {
       ((StringBuilder)localObject).append((String)localIterator.next());
       ((StringBuilder)localObject).append("\n");
     }
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(206148);
+    AppMethodBeat.o(211175);
     return localObject;
   }
 }

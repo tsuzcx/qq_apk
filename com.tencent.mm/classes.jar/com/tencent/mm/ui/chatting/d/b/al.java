@@ -4,7 +4,13 @@ import com.tencent.mm.ui.chatting.d.ad;
 
 public abstract interface al
   extends ad
-{}
+{
+  public abstract void adU(int paramInt);
+  
+  public abstract void keepSignalling();
+  
+  public abstract void stopSignalling();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

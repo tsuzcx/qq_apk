@@ -4,21 +4,21 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.music.model.a.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private c kwD;
-  private View nAt;
-  private View nAu;
-  private TextView wmX;
+  private c kzS;
+  private View nFO;
+  private View nFP;
+  private TextView wCG;
   
   public a(Context paramContext)
   {
@@ -26,41 +26,41 @@ public final class a
     AppMethodBeat.i(63196);
     if (this.view != null)
     {
-      this.wmX = ((TextView)this.view.findViewById(2131302598));
-      this.nAt = this.view.findViewById(2131302599);
-      this.nAu = this.view.findViewById(2131297183);
-      this.wmX.setTextSize(0, com.tencent.mm.cc.a.ax(aj.getContext(), 2131165466));
+      this.wCG = ((TextView)this.view.findViewById(2131302598));
+      this.nFO = this.view.findViewById(2131302599);
+      this.nFP = this.view.findViewById(2131297183);
+      this.wCG.setTextSize(0, com.tencent.mm.cb.a.ax(ak.getContext(), 2131165466));
       this.view.setOnClickListener(new a.1(this));
     }
-    this.kwD = new a.2(this);
-    com.tencent.mm.sdk.b.a.IbL.c(this.kwD);
+    this.kzS = new a.2(this);
+    com.tencent.mm.sdk.b.a.IvT.c(this.kzS);
     AppMethodBeat.o(63196);
   }
   
-  private void asN(String paramString)
+  private void aua(String paramString)
   {
     AppMethodBeat.i(63200);
-    if (this.wmX != null) {
-      this.wmX.setText(paramString);
+    if (this.wCG != null) {
+      this.wCG.setText(paramString);
     }
     AppMethodBeat.o(63200);
   }
   
-  private boolean dtI()
+  private boolean dwX()
   {
     AppMethodBeat.i(63201);
     f localf;
-    if ((this.isFirst) && (this.hjE))
+    if ((this.isFirst) && (this.hms))
     {
-      this.nAu.setBackgroundResource(2131234377);
-      this.nAt.setBackground(null);
-      this.wmX.setBackground(null);
-      if (!com.tencent.mm.az.a.aJG()) {
+      this.nFP.setBackgroundResource(2131234377);
+      this.nFO.setBackground(null);
+      this.wCG.setBackground(null);
+      if (!com.tencent.mm.ay.a.aJZ()) {
         break label240;
       }
-      localf = com.tencent.mm.az.a.aJJ();
-      asN(aj.getContext().getString(2131761464) + aj.getContext().getString(2131761465) + localf.ihi);
-      if (!localf.ihC) {
+      localf = com.tencent.mm.ay.a.aKc();
+      aua(ak.getContext().getString(2131761464) + ak.getContext().getString(2131761465) + localf.ikb);
+      if (!localf.ikv) {
         break label228;
       }
     }
@@ -68,35 +68,35 @@ public final class a
     for (int i = 8;; i = 0)
     {
       setVisibility(i);
-      if (localf.ihC) {
+      if (localf.ikv) {
         break label233;
       }
       AppMethodBeat.o(63201);
       return true;
       if (this.isFirst)
       {
-        this.nAu.setBackgroundResource(2131232872);
-        this.nAt.setBackgroundResource(2131232870);
-        this.wmX.setBackgroundResource(2131232867);
+        this.nFP.setBackgroundResource(2131232872);
+        this.nFO.setBackgroundResource(2131232870);
+        this.wCG.setBackgroundResource(2131232867);
         break;
       }
-      if (this.hjE)
+      if (this.hms)
       {
-        this.nAu.setBackgroundResource(2131232872);
-        this.nAt.setBackgroundResource(2131232867);
-        this.wmX.setBackground(null);
+        this.nFP.setBackgroundResource(2131232872);
+        this.nFO.setBackgroundResource(2131232867);
+        this.wCG.setBackground(null);
         break;
       }
-      this.nAu.setBackgroundResource(2131232872);
-      this.nAt.setBackground(null);
-      this.wmX.setBackgroundResource(2131232867);
+      this.nFP.setBackgroundResource(2131232872);
+      this.nFO.setBackground(null);
+      this.wCG.setBackgroundResource(2131232867);
       break;
     }
     label233:
     AppMethodBeat.o(63201);
     return false;
     label240:
-    if (com.tencent.mm.az.a.aJH())
+    if (com.tencent.mm.ay.a.aKa())
     {
       setVisibility(0);
       AppMethodBeat.o(63201);
@@ -107,10 +107,10 @@ public final class a
     return false;
   }
   
-  public final boolean bAa()
+  public final boolean bAV()
   {
     AppMethodBeat.i(63198);
-    boolean bool = dtI();
+    boolean bool = dwX();
     AppMethodBeat.o(63198);
     return bool;
   }
@@ -118,7 +118,7 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(63199);
-    com.tencent.mm.sdk.b.a.IbL.d(this.kwD);
+    com.tencent.mm.sdk.b.a.IvT.d(this.kzS);
     AppMethodBeat.o(63199);
   }
   
@@ -140,34 +140,34 @@ public final class a
       Object localObject = this.view.findViewById(2131302599);
       if (paramInt == 0)
       {
-        if (com.tencent.mm.compatible.d.b.ca(aj.getContext()))
+        if (com.tencent.mm.compatible.d.b.cc(ak.getContext()))
         {
-          ad.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return true");
+          ae.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return true");
           ((View)localObject).setVisibility(8);
-          if (com.tencent.mm.az.a.aJG())
+          if (com.tencent.mm.ay.a.aJZ())
           {
-            ad.i("MicroMsg.MusicBanner", "resume music to float ball");
-            localObject = a.a.wkG;
-            if (!((com.tencent.mm.plugin.music.model.a)localObject).bKz())
+            ae.i("MicroMsg.MusicBanner", "resume music to float ball");
+            localObject = a.a.wAp;
+            if (!((com.tencent.mm.plugin.music.model.a)localObject).bLw())
             {
-              ((com.tencent.mm.plugin.music.model.a)localObject).iW(true);
-              f localf = com.tencent.mm.az.a.aJJ();
-              ((com.tencent.mm.plugin.music.model.a)localObject).Wm(localf.ihi);
-              ((com.tencent.mm.plugin.music.model.a)localObject).Wn(localf.ihj);
-              ((com.tencent.mm.plugin.music.model.a)localObject).eA("song_id", localf.ihg);
-              ((com.tencent.mm.plugin.music.model.a)localObject).eA("db_music_id", com.tencent.mm.plugin.music.h.b.O(localf));
-              ((com.tencent.mm.plugin.music.model.a)localObject).xY(d.eH(((com.tencent.mm.plugin.music.model.a)localObject).nGj.state, 2));
-              ((com.tencent.mm.plugin.music.model.a)localObject).bKG().nGb = localf.ihe;
-              ((com.tencent.mm.plugin.ball.service.a)localObject).bKC();
+              ((com.tencent.mm.plugin.music.model.a)localObject).iV(true);
+              f localf = com.tencent.mm.ay.a.aKc();
+              ((com.tencent.mm.plugin.music.model.a)localObject).WY(localf.ikb);
+              ((com.tencent.mm.plugin.music.model.a)localObject).WZ(localf.ikc);
+              ((com.tencent.mm.plugin.music.model.a)localObject).eD("song_id", localf.ijZ);
+              ((com.tencent.mm.plugin.music.model.a)localObject).eD("db_music_id", com.tencent.mm.plugin.music.h.b.O(localf));
+              ((com.tencent.mm.plugin.music.model.a)localObject).yc(d.eI(((com.tencent.mm.plugin.music.model.a)localObject).nLK.state, 2));
+              ((com.tencent.mm.plugin.music.model.a)localObject).bLD().nLB = localf.ijX;
+              ((com.tencent.mm.plugin.ball.service.a)localObject).bLz();
               ((com.tencent.mm.plugin.music.model.a)localObject).x(localf);
-              ((com.tencent.mm.plugin.music.model.a)localObject).bKB();
+              ((com.tencent.mm.plugin.music.model.a)localObject).bLy();
             }
             AppMethodBeat.o(63197);
           }
         }
         else
         {
-          ad.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return false");
+          ae.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return false");
         }
       }
       else {

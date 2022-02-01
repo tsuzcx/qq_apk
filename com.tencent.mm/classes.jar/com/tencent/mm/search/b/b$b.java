@@ -5,13 +5,13 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.t;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
 final class b$b
   implements DialogInterface.OnClickListener
 {
@@ -21,9 +21,9 @@ final class b$b
   {
     AppMethodBeat.i(105836);
     Intent localIntent = new Intent();
-    localIntent.putExtra("extra_id", this.gnq.field_groupId);
+    localIntent.putExtra("extra_id", this.gpM.field_groupId);
     localIntent.putExtra("preceding_scence", 20);
-    Context localContext = this.cqB;
+    Context localContext = this.crf;
     if (localContext == null)
     {
       paramDialogInterface = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMContextThemeWrapper");
@@ -37,7 +37,7 @@ final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.search.b.b.b
  * JD-Core Version:    0.7.0.1
  */

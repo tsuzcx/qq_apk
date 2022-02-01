@@ -4,19 +4,19 @@ import android.util.Base64;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.am.r;
-import com.tencent.mm.am.t;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.al.r;
+import com.tencent.mm.al.t;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.UrlExKt;
 import com.tencent.mm.protocal.protobuf.fn;
 import com.tencent.mm.protocal.protobuf.ft;
-import com.tencent.mm.protocal.protobuf.mp;
-import com.tencent.mm.protocal.protobuf.mq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.mr;
+import com.tencent.mm.protocal.protobuf.ms;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.a.m;
 import d.l;
 import d.v;
@@ -36,24 +36,24 @@ import kotlinx.coroutines.at;
 import kotlinx.coroutines.az;
 import kotlinx.coroutines.bk;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic;", "", "()V", "TAG", "", "doingGetAppMsgRelatedInfoMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "getUrl", "Ljava/util/Queue;", "", "lastGetId", "", "limiter", "Lcom/tencent/mm/modelbiz/MpDataLimiter;", "getAppMsgRelatedInfo", "", "items", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgUrlInfo;", "scene", "url", "itemShowType", "openScene", "reqType", "getAppMsgRelatedInfoForAppMsg", "Lcom/tencent/mm/message/AppMsgUrlReqInfo;", "getAppMsgRelatedInfoForBizMsg", "getAppMsgRelatedInfoId", "getFakeLongUrl", "bizUin", "mid", "idx", "getMaxUrlCount", "getRefreshIntervalSec", "isShortUrl", "", "processAppMsgRelatedInfo", "relatedInfoList", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "urlInfoList", "AppMsgRelatedInfoOp", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic;", "", "()V", "TAG", "", "defaultRefreshIntervalSec", "", "doingGetAppMsgRelatedInfoMap", "Ljava/util/concurrent/ConcurrentHashMap;", "getUrl", "Ljava/util/Queue;", "", "lastGetId", "", "limiter", "Lcom/tencent/mm/modelbiz/MpDataLimiter;", "getAppMsgRelatedInfo", "", "items", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgUrlInfo;", "scene", "url", "itemShowType", "openScene", "reqType", "getAppMsgRelatedInfoForAppMsg", "Lcom/tencent/mm/message/AppMsgUrlReqInfo;", "getAppMsgRelatedInfoForBizMsg", "getAppMsgRelatedInfoId", "getFakeLongUrl", "bizUin", "mid", "idx", "getMaxUrlCount", "getRefreshIntervalSec", "isShortUrl", "", "processAppMsgRelatedInfo", "relatedInfoList", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "urlInfoList", "AppMsgRelatedInfoOp", "plugin-brandservice_release"})
 public final class g
 {
   public static final String TAG = "MicroMsg.MPDataLogic";
-  private static final ConcurrentHashMap<String, Integer> nWK;
-  private static final r nWL;
-  public static long nWM;
-  public static Queue<List<Object>> nWN;
-  public static final g nWO;
+  private static final ConcurrentHashMap<String, Integer> oct;
+  private static final r ocu;
+  public static long ocv;
+  public static Queue<List<Object>> ocw;
+  public static final g ocx;
   
   static
   {
     AppMethodBeat.i(6512);
-    nWO = new g();
+    ocx = new g();
     TAG = "MicroMsg.MPDataLogic";
-    nWK = new ConcurrentHashMap();
-    nWL = new r();
-    nWN = (Queue)new LinkedList();
+    oct = new ConcurrentHashMap();
+    ocu = new r();
+    ocw = (Queue)new LinkedList();
     AppMethodBeat.o(6512);
   }
   
@@ -87,16 +87,16 @@ public final class g
     }
   }
   
-  public static String Xa(String paramString)
+  public static String XM(String paramString)
   {
     AppMethodBeat.i(6506);
     d.g.b.p.h(paramString, "url");
-    paramString = "_mpdata_" + com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Xt(paramString);
+    paramString = "_mpdata_" + com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Yg(paramString);
     AppMethodBeat.o(6506);
     return paramString;
   }
   
-  public static boolean Xb(String paramString)
+  public static boolean XN(String paramString)
   {
     AppMethodBeat.i(6507);
     d.g.b.p.h(paramString, "url");
@@ -118,14 +118,14 @@ public final class g
   {
     AppMethodBeat.i(6510);
     d.g.b.p.h(paramLinkedList, "items");
-    if (bt.hj((List)paramLinkedList))
+    if (bu.ht((List)paramLinkedList))
     {
       AppMethodBeat.o(6510);
       return;
     }
-    mp localmp = new mp();
-    int i = bNH();
-    nWL.duration = (i * 1000);
+    mr localmr = new mr();
+    int i = bOE();
+    ocu.duration = (i * 1000);
     Object localObject1 = (Iterable)paramLinkedList;
     paramLinkedList = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -135,7 +135,7 @@ public final class g
     {
       localObject2 = ((Iterator)localObject1).next();
       localObject3 = (ft)localObject2;
-      if (!nWK.contains(((ft)localObject3).hCW)) {
+      if (!oct.contains(((ft)localObject3).hFO)) {
         paramLinkedList.add(localObject2);
       }
     }
@@ -146,8 +146,8 @@ public final class g
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      localObject3 = ((ft)localObject2).hCW;
-      r localr = nWL;
+      localObject3 = ((ft)localObject2).hFO;
+      r localr = ocu;
       d.g.b.p.g(localObject3, "id");
       if (localr.contains((String)localObject3)) {}
       for (i = 0;; i = 1)
@@ -160,51 +160,57 @@ public final class g
       }
     }
     paramLinkedList = (Iterable)paramLinkedList;
-    i = ax.aQz(TAG).decodeInt("BizAppMsgRelatedInfoMaxUrlCount", 10);
-    ad.v(TAG, "maxUrlCount = ".concat(String.valueOf(i)));
+    i = ay.aRW(TAG).decodeInt("BizAppMsgRelatedInfoMaxUrlCount", 10);
+    ae.v(TAG, "maxUrlCount = ".concat(String.valueOf(i)));
     paramLinkedList = d.a.j.b(paramLinkedList, Math.max(i, 2));
-    localmp.FGv.addAll((Collection)paramLinkedList);
-    if (bt.hj((List)localmp.FGv))
+    localmr.FYR.addAll((Collection)paramLinkedList);
+    if (bu.ht((List)localmr.FYR))
     {
       AppMethodBeat.o(6510);
       return;
     }
-    ad.i(TAG, "getAppMsgRelatedInfo size=" + localmp.FGv.size());
-    localmp.Scene = paramInt;
-    paramLinkedList = localmp.FGv;
+    ae.i(TAG, "getAppMsgRelatedInfo size=" + localmr.FYR.size());
+    localmr.Scene = paramInt;
+    paramLinkedList = localmr.FYR;
     d.g.b.p.g(paramLinkedList, "req.UrlInfo");
     paramLinkedList = ((Iterable)paramLinkedList).iterator();
     while (paramLinkedList.hasNext())
     {
       localObject1 = (ft)paramLinkedList.next();
-      nWK.put(((ft)localObject1).hCW, Integer.valueOf(1));
-      localObject2 = nWL;
-      localObject3 = ((ft)localObject1).hCW;
+      oct.put(((ft)localObject1).hFO, Integer.valueOf(1));
+      localObject2 = ocu;
+      localObject3 = ((ft)localObject1).hFO;
       d.g.b.p.g(localObject3, "info.ClientId");
-      ((r)localObject2).Ej((String)localObject3);
-      if (ad.getLogLevel() == 0) {
-        ad.v(TAG, "getAppMsgRelatedInfo url=" + ((ft)localObject1).Url + ", clientId=" + ((ft)localObject1).hCW);
+      ((r)localObject2).EL((String)localObject3);
+      if (ae.getLogLevel() == 0) {
+        ae.v(TAG, "getAppMsgRelatedInfo url=" + ((ft)localObject1).Url + ", clientId=" + ((ft)localObject1).hFO);
       }
     }
     paramLinkedList = new b.a();
-    paramLinkedList.c((com.tencent.mm.bx.a)localmp);
-    paramLinkedList.d((com.tencent.mm.bx.a)new mq());
-    paramLinkedList.Dl("/cgi-bin/mmbiz-bin/timeline/bizappmsgrelatedinfo");
-    paramLinkedList.oP(2864);
-    paramLinkedList.oR(0);
-    paramLinkedList.oS(0);
-    IPCRunCgi.a(paramLinkedList.aDC(), (IPCRunCgi.a)new c(localmp, paramInt));
+    paramLinkedList.c((com.tencent.mm.bw.a)localmr);
+    paramLinkedList.d((com.tencent.mm.bw.a)new ms());
+    paramLinkedList.DN("/cgi-bin/mmbiz-bin/timeline/bizappmsgrelatedinfo");
+    paramLinkedList.oS(2864);
+    paramLinkedList.oU(0);
+    paramLinkedList.oV(0);
+    IPCRunCgi.a(paramLinkedList.aDS(), (IPCRunCgi.a)new c(localmr, paramInt));
     AppMethodBeat.o(6510);
   }
   
-  public static int bNH()
+  public static int bOE()
   {
+    int i = 300;
     AppMethodBeat.i(6511);
-    int i = ax.aQz(TAG).decodeInt("BizAppMsgRelatedInfoRefreshIntervalSec", 300);
-    ad.v(TAG, "refreshIntervalSec = ".concat(String.valueOf(i)));
-    i = Math.min(i, 86400);
-    AppMethodBeat.o(6511);
-    return i;
+    int j = ay.aRW(TAG).decodeInt("BizAppMsgRelatedInfoRefreshIntervalSec", 300);
+    ae.v(TAG, "refreshIntervalSec = ".concat(String.valueOf(j)));
+    j = Math.min(j, 86400);
+    if (j <= 0) {}
+    for (;;)
+    {
+      AppMethodBeat.o(6511);
+      return i;
+      i = j;
+    }
   }
   
   public static void j(String paramString, final int paramInt1, final int paramInt2, final int paramInt3)
@@ -212,23 +218,23 @@ public final class g
     AppMethodBeat.i(6509);
     d.g.b.p.h(paramString, "url");
     long l = System.currentTimeMillis();
-    kotlinx.coroutines.f.b((ah)bk.NII, (d.d.f)az.gvp(), (m)new b(l, paramString, paramInt1, paramInt3, 2, paramInt2, null), 2);
+    kotlinx.coroutines.f.b((ah)bk.OfO, (d.d.f)az.gzR(), (m)new b(l, paramString, paramInt1, paramInt3, 2, paramInt2, null), 2);
     AppMethodBeat.o(6509);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic$AppMsgRelatedInfoOp;", "", "()V", "get", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "url", "", "save", "", "relatedInfo", "plugin-brandservice_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic$AppMsgRelatedInfoOp;", "", "()V", "get", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "url", "", "save", "", "relatedInfo", "plugin-brandservice_release"})
   public static final class a
   {
-    public static final a nWP;
+    public static final a ocy;
     
     static
     {
       AppMethodBeat.i(6500);
-      nWP = new a();
+      ocy = new a();
       AppMethodBeat.o(6500);
     }
     
-    public static com.tencent.mm.ai.p Xc(String paramString)
+    public static com.tencent.mm.ah.p XO(String paramString)
     {
       AppMethodBeat.i(6498);
       if (paramString == null)
@@ -236,14 +242,14 @@ public final class g
         AppMethodBeat.o(6498);
         return null;
       }
-      Object localObject1 = g.nWO;
-      localObject1 = g.Xa(paramString);
-      Object localObject3 = (ax)t.hQL.aQb((String)localObject1);
+      Object localObject1 = g.ocx;
+      localObject1 = g.XM(paramString);
+      Object localObject3 = (ay)t.hTD.aRy((String)localObject1);
       if (localObject3 != null)
       {
         Object localObject2 = new fn();
-        localObject3 = ((ax)localObject3).decodeBytes((String)localObject1);
-        if (bt.cC((byte[])localObject3))
+        localObject3 = ((ay)localObject3).decodeBytes((String)localObject1);
+        if (bu.cF((byte[])localObject3))
         {
           AppMethodBeat.o(6498);
           return null;
@@ -251,43 +257,43 @@ public final class g
         try
         {
           ((fn)localObject2).parseFrom((byte[])localObject3);
-          localObject3 = ((fn)localObject2).FxK;
+          localObject3 = ((fn)localObject2).FQi;
           if (localObject3 != null) {
-            ((com.tencent.mm.ai.p)localObject3).Url = paramString;
+            ((com.tencent.mm.ah.p)localObject3).Url = paramString;
           }
-          if (ad.getLogLevel() == 0)
+          if (ae.getLogLevel() == 0)
           {
-            paramString = g.nWO;
-            ad.v(g.bNI(), "found:" + (String)localObject1 + " last modify:" + ((fn)localObject2).lastUpdateTime);
+            paramString = g.ocx;
+            ae.v(g.bOF(), "found:" + (String)localObject1 + " last modify:" + ((fn)localObject2).lastUpdateTime);
           }
-          paramString = ((fn)localObject2).FxK;
+          paramString = ((fn)localObject2).FQi;
           AppMethodBeat.o(6498);
           return paramString;
         }
         catch (IOException paramString)
         {
-          localObject2 = g.nWO;
-          ad.printErrStackTrace(g.bNI(), (Throwable)paramString, "get:".concat(String.valueOf(localObject1)), new Object[0]);
+          localObject2 = g.ocx;
+          ae.printErrStackTrace(g.bOF(), (Throwable)paramString, "get:".concat(String.valueOf(localObject1)), new Object[0]);
         }
       }
       AppMethodBeat.o(6498);
       return null;
     }
     
-    public static void a(com.tencent.mm.ai.p paramp)
+    public static void a(com.tencent.mm.ah.p paramp)
     {
       AppMethodBeat.i(6499);
       d.g.b.p.h(paramp, "relatedInfo");
       try
       {
         localObject = new fn();
-        ((fn)localObject).FxK = paramp;
+        ((fn)localObject).FQi = paramp;
         ((fn)localObject).lastUpdateTime = System.currentTimeMillis();
         paramp = ((fn)localObject).toByteArray();
-        ax localax = (ax)t.hQL.fjV();
-        if (localax != null)
+        ay localay = (ay)t.hTD.fnP();
+        if (localay != null)
         {
-          localax.encode(((fn)localObject).FxK.hCW, paramp);
+          localay.encode(((fn)localObject).FQi.hFO, paramp);
           AppMethodBeat.o(6499);
           return;
         }
@@ -296,22 +302,22 @@ public final class g
       }
       catch (Exception paramp)
       {
-        Object localObject = g.nWO;
-        ad.e(g.bNI(), "save ex " + paramp.getMessage());
+        Object localObject = g.ocx;
+        ae.e(g.bOF(), "save ex " + paramp.getMessage());
         AppMethodBeat.o(6499);
       }
     }
   }
   
-  @d.d.b.a.f(c="com.tencent.mm.plugin.brandservice.model.MPDataLogic$getAppMsgRelatedInfo$1", f="MPDataLogic.kt", gfL={187}, m="invokeSuspend")
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.d.b.a.f(c="com.tencent.mm.plugin.brandservice.model.MPDataLogic$getAppMsgRelatedInfo$1", f="MPDataLogic.kt", gkn={187}, m="invokeSuspend")
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class b
     extends d.d.b.a.j
     implements m<ah, d.d.d<? super z>, Object>
   {
     int label;
-    private ah nWQ;
-    Object nWR;
+    Object ocA;
+    private ah ocz;
     
     b(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, d.d.d paramd)
     {
@@ -322,16 +328,16 @@ public final class g
     {
       AppMethodBeat.i(6502);
       d.g.b.p.h(paramd, "completion");
-      paramd = new b(this.nWS, paramInt1, paramInt3, this.nVP, paramInt2, this.nVJ, paramd);
-      paramd.nWQ = ((ah)paramObject);
+      paramd = new b(this.ocB, paramInt1, paramInt3, this.obx, paramInt2, this.obr, paramd);
+      paramd.ocz = ((ah)paramObject);
       AppMethodBeat.o(6502);
       return paramd;
     }
     
-    public final Object cQ(Object arg1)
+    public final Object cR(Object arg1)
     {
       AppMethodBeat.i(6501);
-      ??? = d.d.a.a.MLc;
+      ??? = d.d.a.a.Nif;
       Object localObject1;
       Object localObject5;
       switch (this.label)
@@ -341,15 +347,15 @@ public final class g
         AppMethodBeat.o(6501);
         throw ???;
       case 0: 
-        localObject1 = this.nWQ;
-        ??? = g.nWO;
-        synchronized (g.bNJ())
+        localObject1 = this.ocz;
+        ??? = g.ocx;
+        synchronized (g.bOG())
         {
-          localObject5 = g.nWO;
-          g.tj(this.nWS);
-          localObject5 = g.nWO;
-          g.bNJ().add(d.a.j.ac(new Object[] { paramInt1, Integer.valueOf(paramInt3), Integer.valueOf(this.nVP) }));
-          this.nWR = localObject1;
+          localObject5 = g.ocx;
+          g.tx(this.ocB);
+          localObject5 = g.ocx;
+          g.bOG().add(d.a.j.ab(new Object[] { paramInt1, Integer.valueOf(paramInt3), Integer.valueOf(this.obx) }));
+          this.ocA = localObject1;
           this.label = 1;
           if (at.a(1000L, this) == ???)
           {
@@ -358,16 +364,16 @@ public final class g
           }
         }
       }
-      ??? = g.nWO;
+      ??? = g.ocx;
       for (;;)
       {
-        synchronized (g.bNJ())
+        synchronized (g.bOG())
         {
-          localObject1 = g.nWO;
-          if (g.bNK() == this.nWS)
+          localObject1 = g.ocx;
+          if (g.bOH() == this.ocB)
           {
-            localObject1 = g.nWO;
-            localObject1 = (Collection)g.bNJ();
+            localObject1 = g.ocx;
+            localObject1 = (Collection)g.bOG();
             if (localObject1 == null) {
               break label969;
             }
@@ -377,18 +383,18 @@ public final class g
           }
           else
           {
-            localObject1 = z.MKo;
+            localObject1 = z.Nhr;
             AppMethodBeat.o(6501);
             return localObject1;
           }
           i = 0;
           break label971;
-          localObject1 = g.nWO;
-          localObject1 = new ArrayList((Collection)g.bNJ());
-          ??? = g.nWO;
-          g.bNJ().clear();
-          ??? = g.nWO;
-          ad.v(g.bNI(), "getAppMsgRelatedInfo size:" + ((ArrayList)localObject1).size());
+          localObject1 = g.ocx;
+          localObject1 = new ArrayList((Collection)g.bOG());
+          ??? = g.ocx;
+          g.bOG().clear();
+          ??? = g.ocx;
+          ae.v(g.bOF(), "getAppMsgRelatedInfo size:" + ((ArrayList)localObject1).size());
           localObject1 = (Iterable)d.a.j.i((Iterable)localObject1);
           ??? = (Collection)new ArrayList();
           localObject1 = ((Iterable)localObject1).iterator();
@@ -424,7 +430,7 @@ public final class g
             AppMethodBeat.o(6501);
             throw ???;
           }
-          if (???.add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Xr((String)localObject6))) {
+          if (???.add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Yd((String)localObject6))) {
             ((ArrayList)localObject3).add(localObject5);
           }
         }
@@ -462,10 +468,10 @@ public final class g
               throw ???;
             }
             ((ft)???).Url = ((String)localObject6);
-            localObject6 = g.nWO;
+            localObject6 = g.ocx;
             localObject6 = ((ft)???).Url;
             d.g.b.p.g(localObject6, "appMsgUrlInfo.Url");
-            ((ft)???).hCW = g.Xa((String)localObject6);
+            ((ft)???).hFO = g.XM((String)localObject6);
             localObject6 = ((List)localObject5).get(1);
             if (localObject6 == null)
             {
@@ -473,7 +479,7 @@ public final class g
               AppMethodBeat.o(6501);
               throw ???;
             }
-            ((ft)???).hCZ = ((Integer)localObject6).intValue();
+            ((ft)???).hFR = ((Integer)localObject6).intValue();
             ((ft)???).ReqType = 1;
             if (((List)localObject5).size() > paramInt2)
             {
@@ -498,10 +504,10 @@ public final class g
             }
             ???.add(???);
           }
-          localObject3 = g.nWO;
-          g.b(???, this.nVJ);
+          localObject3 = g.ocx;
+          g.b(???, this.obr);
         }
-        ??? = z.MKo;
+        ??? = z.Nhr;
         AppMethodBeat.o(6501);
         return ???;
         label969:
@@ -514,31 +520,31 @@ public final class g
     public final Object p(Object paramObject1, Object paramObject2)
     {
       AppMethodBeat.i(6503);
-      paramObject1 = ((b)a(paramObject1, (d.d.d)paramObject2)).cQ(z.MKo);
+      paramObject1 = ((b)a(paramObject1, (d.d.d)paramObject2)).cR(z.Nhr);
       AppMethodBeat.o(6503);
       return paramObject1;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
   static final class c
     implements IPCRunCgi.a
   {
-    c(mp parammp, int paramInt) {}
+    c(mr parammr, int paramInt) {}
     
-    public final void a(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(6505);
-      Object localObject = g.nWO;
-      ad.i(g.bNI(), "getAppMsgRelatedInfo errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
-      paramString = this.nWU.FGv;
+      Object localObject = g.ocx;
+      ae.i(g.bOF(), "getAppMsgRelatedInfo errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+      paramString = this.ocD.FYR;
       d.g.b.p.g(paramString, "req.UrlInfo");
       paramString = ((Iterable)paramString).iterator();
       while (paramString.hasNext())
       {
         localObject = (ft)paramString.next();
-        g localg = g.nWO;
-        g.bNL().remove(((ft)localObject).hCW);
+        g localg = g.ocx;
+        g.bOI().remove(((ft)localObject).hFO);
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
@@ -546,37 +552,37 @@ public final class g
         return;
       }
       d.g.b.p.g(paramb, "rr");
-      paramString = paramb.aEF();
+      paramString = paramb.aEV();
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAppMsgRelatedInfoResp");
         AppMethodBeat.o(6505);
         throw paramString;
       }
-      paramString = (mq)paramString;
-      paramb = g.nWO;
-      paramb = ax.aQz(g.bNI());
-      paramb.encode("BizAppMsgRelatedInfoRefreshIntervalSec", paramString.FGx);
-      com.tencent.mm.plugin.brandservice.ui.b.a.osg = paramString.FGx;
-      paramb.encode("BizAppMsgRelatedInfoMaxUrlCount", paramString.FGy);
-      if (bt.hj((List)paramString.FGw))
+      paramString = (ms)paramString;
+      paramb = g.ocx;
+      paramb = ay.aRW(g.bOF());
+      paramb.encode("BizAppMsgRelatedInfoRefreshIntervalSec", paramString.FYT);
+      com.tencent.mm.plugin.brandservice.ui.b.a.oyH = paramString.FYT;
+      paramb.encode("BizAppMsgRelatedInfoMaxUrlCount", paramString.FYU);
+      if (bu.ht((List)paramString.FYS))
       {
-        paramString = g.nWO;
-        ad.w(g.bNI(), "getAppMsgRelatedInfo RelatedInfo is empty");
+        paramString = g.ocx;
+        ae.w(g.bOF(), "getAppMsgRelatedInfo RelatedInfo is empty");
         AppMethodBeat.o(6505);
         return;
       }
-      h.LTJ.f((Runnable)new Runnable()
+      h.MqF.f((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(6504);
-          Object localObject = g.nWO;
-          localObject = paramString.FGw;
+          Object localObject = g.ocx;
+          localObject = paramString.FYS;
           d.g.b.p.g(localObject, "response.RelatedInfo");
-          LinkedList localLinkedList = this.nWV.nWU.FGv;
+          LinkedList localLinkedList = this.ocE.ocD.FYR;
           d.g.b.p.g(localLinkedList, "req.UrlInfo");
-          g.a((LinkedList)localObject, localLinkedList, this.nWV.hST);
+          g.a((LinkedList)localObject, localLinkedList, this.ocE.hVL);
           AppMethodBeat.o(6504);
         }
       }, "getAppMsgRelatedInfo");

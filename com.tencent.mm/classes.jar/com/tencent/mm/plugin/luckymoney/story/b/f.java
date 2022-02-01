@@ -11,9 +11,9 @@ public final class f
   
   static
   {
-    AppMethodBeat.i(199016);
+    AppMethodBeat.i(189851);
     SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "LuckyMoneyDetailOpenRecord") };
-    AppMethodBeat.o(199016);
+    AppMethodBeat.o(189851);
   }
   
   public f(com.tencent.mm.sdk.e.e parame)

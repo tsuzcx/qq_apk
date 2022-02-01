@@ -2,7 +2,7 @@ package rx.b;
 
 public abstract interface f<T1, T2, R>
 {
-  public abstract R Z(T1 paramT1, T2 paramT2);
+  public abstract R Y(T1 paramT1, T2 paramT2);
 }
 
 

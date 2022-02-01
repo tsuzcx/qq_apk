@@ -16,7 +16,7 @@ import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPickerV2;
 import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPickerV3;
 import com.tencent.mm.plugin.appbrand.widget.picker.c.a;
 import com.tencent.mm.plugin.appbrand.widget.picker.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import org.json.JSONArray;
@@ -31,13 +31,13 @@ public final class g
   public final void b(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137590);
-    if (this.ldw)
+    if (this.lhh)
     {
-      new c((byte)0).a(this, parame, paramJSONObject, paramInt, this.ldw);
+      new c((byte)0).a(this, parame, paramJSONObject, paramInt, this.lhh);
       AppMethodBeat.o(137590);
       return;
     }
-    new b((byte)0).a(this, parame, paramJSONObject, paramInt, this.ldw);
+    new b((byte)0).a(this, parame, paramJSONObject, paramInt, this.lhh);
     AppMethodBeat.o(137590);
   }
   
@@ -45,41 +45,41 @@ public final class g
     extends e
     implements Runnable
   {
-    private final AtomicReference<AppBrandMultiOptionsPicker.a[]> ldO;
+    private final AtomicReference<AppBrandMultiOptionsPicker.a[]> lhA;
     
     private b()
     {
-      AppMethodBeat.i(195015);
-      this.ldO = new AtomicReference();
-      AppMethodBeat.o(195015);
+      AppMethodBeat.i(197240);
+      this.lhA = new AtomicReference();
+      AppMethodBeat.o(197240);
     }
     
     final void T(JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(195016);
+      AppMethodBeat.i(197241);
       super.T(paramJSONObject);
       JSONArray localJSONArray1 = paramJSONObject.optJSONArray("array");
       paramJSONObject = paramJSONObject.optJSONArray("current");
       if ((localJSONArray1 == null) || (paramJSONObject == null) || (localJSONArray1.length() != paramJSONObject.length()))
       {
-        p("fail:invalid data", null);
-        AppMethodBeat.o(195016);
+        q("fail:invalid data", null);
+        AppMethodBeat.o(197241);
         return;
       }
       if (localJSONArray1.length() <= 0)
       {
-        p("ok", null);
-        ad.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (one-dimensional)");
-        M(new Runnable()
+        q("ok", null);
+        ae.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (one-dimensional)");
+        K(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195011);
-            g.b.this.bmg();
-            AppMethodBeat.o(195011);
+            AppMethodBeat.i(197236);
+            g.b.this.bmP();
+            AppMethodBeat.o(197236);
           }
         });
-        AppMethodBeat.o(195016);
+        AppMethodBeat.o(197241);
         return;
       }
       AppBrandMultiOptionsPicker.a[] arrayOfa;
@@ -103,31 +103,31 @@ public final class g
         }
         if (j != 0)
         {
-          p("ok", null);
-          ad.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (multi-dimensional)");
-          M(new Runnable()
+          q("ok", null);
+          ae.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (multi-dimensional)");
+          K(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(195012);
+              AppMethodBeat.i(197237);
               g.b.a(g.b.this);
-              AppMethodBeat.o(195012);
+              AppMethodBeat.o(197237);
             }
           });
-          AppMethodBeat.o(195016);
+          AppMethodBeat.o(197241);
           return;
         }
       }
       catch (Exception paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiShowMultiPickerView", paramJSONObject, "opt params", new Object[0]);
-        p("fail:invalid data", null);
-        AppMethodBeat.o(195016);
+        ae.printErrStackTrace("MicroMsg.JsApiShowMultiPickerView", paramJSONObject, "opt params", new Object[0]);
+        q("fail:invalid data", null);
+        AppMethodBeat.o(197241);
         return;
       }
-      this.ldO.set(arrayOfa);
-      M(this);
-      AppMethodBeat.o(195016);
+      this.lhA.set(arrayOfa);
+      K(this);
+      AppMethodBeat.o(197241);
       return;
       for (;;)
       {
@@ -146,28 +146,28 @@ public final class g
     
     public final void run()
     {
-      AppMethodBeat.i(195017);
+      AppMethodBeat.i(197242);
       AppBrandMultiOptionsPicker localAppBrandMultiOptionsPicker = (AppBrandMultiOptionsPicker)aK(AppBrandMultiOptionsPicker.class);
       if (localAppBrandMultiOptionsPicker == null)
       {
-        p("fail cant init view", null);
-        AppMethodBeat.o(195017);
+        q("fail cant init view", null);
+        AppMethodBeat.o(197242);
         return;
       }
-      AppBrandMultiOptionsPicker.a[] arrayOfa = (AppBrandMultiOptionsPicker.a[])this.ldO.get();
+      AppBrandMultiOptionsPicker.a[] arrayOfa = (AppBrandMultiOptionsPicker.a[])this.lhA.get();
       if ((arrayOfa == null) || (arrayOfa.length <= 0))
       {
-        p("fail error data", null);
-        AppMethodBeat.o(195017);
+        q("fail error data", null);
+        AppMethodBeat.o(197242);
         return;
       }
       if ((arrayOfa == null) || (arrayOfa.length <= 0)) {}
       for (;;)
       {
-        this.nkl.setOnResultListener(new c.a() {});
-        this.nkl.setOnValueUpdateListener(new c.b() {});
-        this.nkl.show();
-        AppMethodBeat.o(195017);
+        this.npt.setOnResultListener(new c.a() {});
+        this.npt.setOnValueUpdateListener(new c.b() {});
+        this.npt.show();
+        AppMethodBeat.o(197242);
         return;
         int i = localAppBrandMultiOptionsPicker.getPickersCount();
         localAppBrandMultiOptionsPicker.setLayoutFrozen(true);
@@ -179,30 +179,30 @@ public final class g
             while (i > 0)
             {
               localObject = new AppBrandMultiOptionsPicker.2(localAppBrandMultiOptionsPicker, localAppBrandMultiOptionsPicker.getContext());
-              ((AppBrandOptionsPickerV2)localObject).setOnValueChangedListener(localAppBrandMultiOptionsPicker.nkF);
+              ((AppBrandOptionsPickerV2)localObject).setOnValueChangedListener(localAppBrandMultiOptionsPicker.npN);
               ((AppBrandOptionsPickerV2)localObject).setEllipsizeType("end");
-              ((AppBrandOptionsPickerV2)localObject).setDividerHeight(com.tencent.mm.cc.a.fromDPToPix(localAppBrandMultiOptionsPicker.getContext(), 1));
-              ((AppBrandOptionsPickerV2)localObject).setTag(2131296775, Integer.valueOf(localAppBrandMultiOptionsPicker.nkC.getChildCount()));
-              localAppBrandMultiOptionsPicker.nkC.addView((View)localObject, new LinearLayout.LayoutParams(0, -1, 1.0F));
+              ((AppBrandOptionsPickerV2)localObject).setDividerHeight(com.tencent.mm.cb.a.fromDPToPix(localAppBrandMultiOptionsPicker.getContext(), 1));
+              ((AppBrandOptionsPickerV2)localObject).setTag(2131296775, Integer.valueOf(localAppBrandMultiOptionsPicker.npK.getChildCount()));
+              localAppBrandMultiOptionsPicker.npK.addView((View)localObject, new LinearLayout.LayoutParams(0, -1, 1.0F));
               i -= 1;
             }
           }
         }
         else if (i > arrayOfa.length)
         {
-          localAppBrandMultiOptionsPicker.wH(i - arrayOfa.length);
+          localAppBrandMultiOptionsPicker.wM(i - arrayOfa.length);
         }
         i = 0;
         while (i < arrayOfa.length)
         {
-          localObject = localAppBrandMultiOptionsPicker.wG(i);
+          localObject = localAppBrandMultiOptionsPicker.wL(i);
           AppBrandMultiOptionsPicker.a locala = arrayOfa[i];
-          ((AppBrandOptionsPickerV2)localObject).setOptionsArray(locala.nkH);
+          ((AppBrandOptionsPickerV2)localObject).setOptionsArray(locala.npP);
           ((AppBrandOptionsPickerV2)localObject).setValue(locala.selected);
-          ((AppBrandOptionsPickerV2)localObject).setOnValueChangedListener(localAppBrandMultiOptionsPicker.nkF);
+          ((AppBrandOptionsPickerV2)localObject).setOnValueChangedListener(localAppBrandMultiOptionsPicker.npN);
           i += 1;
         }
-        localAppBrandMultiOptionsPicker.nkC.setWeightSum(localAppBrandMultiOptionsPicker.getPickersCount());
+        localAppBrandMultiOptionsPicker.npK.setWeightSum(localAppBrandMultiOptionsPicker.getPickersCount());
         localAppBrandMultiOptionsPicker.setLayoutFrozen(false);
       }
     }
@@ -212,12 +212,12 @@ public final class g
     extends e
     implements Runnable
   {
-    private final AtomicReference<AppBrandMultiOptionsPickerV2.a[]> ldO;
+    private final AtomicReference<AppBrandMultiOptionsPickerV2.a[]> lhA;
     
     private c()
     {
       AppMethodBeat.i(137586);
-      this.ldO = new AtomicReference();
+      this.lhA = new AtomicReference();
       AppMethodBeat.o(137586);
     }
     
@@ -229,20 +229,20 @@ public final class g
       paramJSONObject = paramJSONObject.optJSONArray("current");
       if ((localJSONArray1 == null) || (paramJSONObject == null) || (localJSONArray1.length() != paramJSONObject.length()))
       {
-        p("fail:invalid data", null);
+        q("fail:invalid data", null);
         AppMethodBeat.o(137587);
         return;
       }
       if (localJSONArray1.length() <= 0)
       {
-        p("ok", null);
-        ad.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (one-dimensional)");
-        M(new Runnable()
+        q("ok", null);
+        ae.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (one-dimensional)");
+        K(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(137582);
-            g.c.this.bmg();
+            g.c.this.bmP();
             AppMethodBeat.o(137582);
           }
         });
@@ -270,9 +270,9 @@ public final class g
         }
         if (j != 0)
         {
-          p("ok", null);
-          ad.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (multi-dimensional)");
-          M(new Runnable()
+          q("ok", null);
+          ae.i("MicroMsg.JsApiShowMultiPickerView", "showMultiPickerView , empty range (multi-dimensional)");
+          K(new Runnable()
           {
             public final void run()
             {
@@ -287,13 +287,13 @@ public final class g
       }
       catch (Exception paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiShowMultiPickerView", paramJSONObject, "opt params", new Object[0]);
-        p("fail:invalid data", null);
+        ae.printErrStackTrace("MicroMsg.JsApiShowMultiPickerView", paramJSONObject, "opt params", new Object[0]);
+        q("fail:invalid data", null);
         AppMethodBeat.o(137587);
         return;
       }
-      this.ldO.set(arrayOfa);
-      M(this);
+      this.lhA.set(arrayOfa);
+      K(this);
       AppMethodBeat.o(137587);
       return;
       for (;;)
@@ -317,24 +317,24 @@ public final class g
       AppBrandMultiOptionsPickerV2 localAppBrandMultiOptionsPickerV2 = (AppBrandMultiOptionsPickerV2)aK(AppBrandMultiOptionsPickerV2.class);
       if (localAppBrandMultiOptionsPickerV2 == null)
       {
-        p("fail cant init view", null);
+        q("fail cant init view", null);
         AppMethodBeat.o(137588);
         return;
       }
-      AppBrandMultiOptionsPickerV2.a[] arrayOfa = (AppBrandMultiOptionsPickerV2.a[])this.ldO.get();
+      AppBrandMultiOptionsPickerV2.a[] arrayOfa = (AppBrandMultiOptionsPickerV2.a[])this.lhA.get();
       if ((arrayOfa == null) || (arrayOfa.length <= 0))
       {
-        p("fail error data", null);
+        q("fail error data", null);
         AppMethodBeat.o(137588);
         return;
       }
       if ((arrayOfa == null) || (arrayOfa.length <= 0)) {}
       for (;;)
       {
-        this.nkl.setOnResultListener(new c.a() {});
-        this.nkl.setOnValueUpdateListener(new c.b() {});
-        this.nkl.setHeader(this.ldM);
-        this.nkl.show();
+        this.npt.setOnResultListener(new c.a() {});
+        this.npt.setOnValueUpdateListener(new c.b() {});
+        this.npt.setHeader(this.lhx);
+        this.npt.show();
         AppMethodBeat.o(137588);
         return;
         int i = localAppBrandMultiOptionsPickerV2.getPickersCount();
@@ -350,15 +350,15 @@ public final class g
             {
               int k = arrayOfa[i].selected;
               localAppBrandOptionsPickerV3 = new AppBrandOptionsPickerV3(localAppBrandMultiOptionsPickerV2.getContext());
-              localAppBrandOptionsPickerV3.nkQ = k;
+              localAppBrandOptionsPickerV3.npY = k;
               localAppBrandOptionsPickerV3.init();
               localAppBrandOptionsPickerV3.setDividerHeight(localAppBrandMultiOptionsPickerV2.getContext().getResources().getDimensionPixelSize(2131165923));
               localAppBrandMultiOptionsPickerV2.getContext().getResources().getDimensionPixelSize(2131166681);
-              localAppBrandMultiOptionsPickerV2.nkI.add(localAppBrandOptionsPickerV3);
-              localAppBrandMultiOptionsPickerV2.addView(localAppBrandOptionsPickerV3.nkO.aQd(), new LinearLayout.LayoutParams(-1, -2, 1.0F));
+              localAppBrandMultiOptionsPickerV2.npQ.add(localAppBrandOptionsPickerV3);
+              localAppBrandMultiOptionsPickerV2.addView(localAppBrandOptionsPickerV3.npW.aQC(), new LinearLayout.LayoutParams(-1, -2, 1.0F));
               i += 1;
             }
-            localAppBrandMultiOptionsPickerV2.bFj();
+            localAppBrandMultiOptionsPickerV2.bGb();
           }
         }
         for (;;)
@@ -366,16 +366,16 @@ public final class g
           i = 0;
           while (i < arrayOfa.length)
           {
-            localAppBrandOptionsPickerV3 = localAppBrandMultiOptionsPickerV2.wI(i);
+            localAppBrandOptionsPickerV3 = localAppBrandMultiOptionsPickerV2.wN(i);
             Object localObject = arrayOfa[i];
-            localAppBrandOptionsPickerV3.setOptionsArray(((AppBrandMultiOptionsPickerV2.a)localObject).nkH);
-            localAppBrandOptionsPickerV3.nkQ = ((AppBrandMultiOptionsPickerV2.a)localObject).selected;
+            localAppBrandOptionsPickerV3.setOptionsArray(((AppBrandMultiOptionsPickerV2.a)localObject).npP);
+            localAppBrandOptionsPickerV3.npY = ((AppBrandMultiOptionsPickerV2.a)localObject).selected;
             localObject = new AppBrandMultiOptionsPickerV2.1(localAppBrandMultiOptionsPickerV2, i);
-            localAppBrandOptionsPickerV3.nkO.a((com.tencent.mm.picker.d.b)localObject);
+            localAppBrandOptionsPickerV3.npW.a((com.tencent.mm.picker.d.b)localObject);
             i += 1;
           }
           if (i > arrayOfa.length) {
-            localAppBrandMultiOptionsPickerV2.wH(i - arrayOfa.length);
+            localAppBrandMultiOptionsPickerV2.wM(i - arrayOfa.length);
           }
         }
         localAppBrandMultiOptionsPickerV2.setWeightSum(localAppBrandMultiOptionsPickerV2.getPickersCount());

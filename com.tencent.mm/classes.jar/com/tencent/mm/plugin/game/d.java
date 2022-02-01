@@ -11,20 +11,20 @@ import com.tencent.mm.plugin.game.api.c.a;
 import com.tencent.mm.plugin.game.api.c.b;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.plugin.game.commlib.a;
-import com.tencent.mm.plugin.game.d.au;
-import com.tencent.mm.plugin.game.d.bu;
-import com.tencent.mm.plugin.game.d.bw;
+import com.tencent.mm.plugin.game.d.ba;
+import com.tencent.mm.plugin.game.d.cb;
 import com.tencent.mm.plugin.game.d.cd;
-import com.tencent.mm.plugin.game.d.cm;
+import com.tencent.mm.plugin.game.d.ck;
+import com.tencent.mm.plugin.game.d.cu;
 import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.d;
 import com.tencent.mm.plugin.game.model.o.e;
+import com.tencent.mm.plugin.game.model.o.f;
 import com.tencent.mm.plugin.game.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,48 +34,48 @@ public final class d
 {
   public final int A(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(206802);
-    ad.i("MicroMsg.GameExternalService", "fromUsername:%s, toUsername:%s", new Object[] { paramString1, paramString2 });
-    if ((paramContext == null) || (bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    AppMethodBeat.i(195610);
+    ae.i("MicroMsg.GameExternalService", "fromUsername:%s, toUsername:%s", new Object[] { paramString1, paramString2 });
+    if ((paramContext == null) || (bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(206802);
+      AppMethodBeat.o(195610);
       return -1;
     }
-    au localau = a.cWU();
-    if ((localau == null) || (localau.uhm == null) || (localau.uhm.uiH == null))
+    ba localba = a.cZy();
+    if ((localba == null) || (localba.usJ == null) || (localba.usJ.uuf == null))
     {
-      ad.i("MicroMsg.GameExternalService", "no Gift info");
-      AppMethodBeat.o(206802);
+      ae.i("MicroMsg.GameExternalService", "no Gift info");
+      AppMethodBeat.o(195610);
       return -1;
     }
-    ad.i("MicroMsg.GameExternalService", "GiftEntranceType:%d", new Object[] { Integer.valueOf(localau.uhm.uiH.nEf) });
-    switch (localau.uhm.uiH.nEf)
+    ae.i("MicroMsg.GameExternalService", "GiftEntranceType:%d", new Object[] { Integer.valueOf(localba.usJ.uuf.nJA) });
+    switch (localba.usJ.uuf.nJA)
     {
     }
     do
     {
       do
       {
-        AppMethodBeat.o(206802);
+        AppMethodBeat.o(195610);
         return -1;
-      } while (bt.isNullOrNil(localau.uhm.uiH.ueY));
+      } while (bu.isNullOrNil(localba.usJ.uuf.uqf));
       localObject = new HashMap();
       ((HashMap)localObject).put("from_username", paramString1);
       ((HashMap)localObject).put("to_username", paramString2);
-      paramString1 = com.tencent.mm.plugin.game.f.c.z(localau.uhm.uiH.ueY, (Map)localObject);
-      ad.i("MicroMsg.GameExternalService", "Gift jumpUrl:%s", new Object[] { paramString1 });
-      com.tencent.mm.plugin.game.f.c.aB(paramContext, paramString1);
-      AppMethodBeat.o(206802);
+      paramString1 = com.tencent.mm.plugin.game.f.c.A(localba.usJ.uuf.uqf, (Map)localObject);
+      ae.i("MicroMsg.GameExternalService", "Gift jumpUrl:%s", new Object[] { paramString1 });
+      com.tencent.mm.plugin.game.f.c.aD(paramContext, paramString1);
+      AppMethodBeat.o(195610);
       return 40;
-    } while ((localau.uhm.uiH.uiI == null) || (bt.isNullOrNil(localau.uhm.uiH.uiI.iht)));
-    Object localObject = localau.uhm.uiH.uiI.ujc;
-    if (bt.isNullOrNil((String)localObject)) {}
+    } while ((localba.usJ.uuf.uqJ == null) || (bu.isNullOrNil(localba.usJ.uuf.uqJ.ikm)));
+    Object localObject = localba.usJ.uuf.uqJ.uuA;
+    if (bu.isNullOrNil((String)localObject)) {}
     HashMap localHashMap;
-    for (paramString1 = "?from_username=" + URLEncoder.encode(paramString1) + "&to_username=" + URLEncoder.encode(paramString2);; paramString1 = com.tencent.mm.plugin.game.f.c.z((String)localObject, localHashMap))
+    for (paramString1 = "?from_username=" + URLEncoder.encode(paramString1) + "&to_username=" + URLEncoder.encode(paramString2);; paramString1 = com.tencent.mm.plugin.game.f.c.A((String)localObject, localHashMap))
     {
-      ad.i("MicroMsg.GameExternalService", "Gift Weapp, AppId:%s, Path:%s", new Object[] { localau.uhm.uiH.uiI.iht, paramString1 });
-      com.tencent.mm.plugin.game.f.c.b(paramContext, localau.uhm.uiH.uiI.iht, paramString1, localau.uhm.uiH.uiI.ujd);
-      AppMethodBeat.o(206802);
+      ae.i("MicroMsg.GameExternalService", "Gift Weapp, AppId:%s, Path:%s", new Object[] { localba.usJ.uuf.uqJ.ikm, paramString1 });
+      com.tencent.mm.plugin.game.f.c.b(paramContext, localba.usJ.uuf.uqJ.ikm, paramString1, localba.usJ.uuf.uqJ.uuB);
+      AppMethodBeat.o(195610);
       return 71;
       localHashMap = new HashMap();
       localHashMap.put("from_username", paramString1);
@@ -83,65 +83,65 @@ public final class d
     }
   }
   
-  public final int Hy(int paramInt)
+  public final int HV(int paramInt)
   {
     int i = 2;
-    AppMethodBeat.i(206796);
+    AppMethodBeat.i(195605);
     if (paramInt == 1) {
       i = 1;
     }
     while (paramInt == 2)
     {
-      paramInt = ((f)g.ab(f.class)).cWH().HR(i);
-      AppMethodBeat.o(206796);
+      paramInt = ((f)g.ab(f.class)).cZl().Io(i);
+      AppMethodBeat.o(195605);
       return paramInt;
     }
-    AppMethodBeat.o(206796);
+    AppMethodBeat.o(195605);
     return 0;
   }
   
-  public final String Hz(int paramInt)
+  public final String HW(int paramInt)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(206797);
+    AppMethodBeat.i(195606);
     Object localObject1;
     if (paramInt == 1) {
-      localObject1 = aj.getContext().getString(2131766875);
+      localObject1 = ak.getContext().getString(2131766875);
     }
     Object localObject3;
     for (paramInt = 1;; paramInt = 2)
     {
-      localObject3 = ((f)g.ab(f.class)).cWH().HP(paramInt);
+      localObject3 = ((f)g.ab(f.class)).cZl().Im(paramInt);
       if (localObject3 != null) {
         break label182;
       }
       if (localObject2 != null)
       {
-        ((o)localObject2).cYU();
-        localObject3 = ((o)localObject2).ubM.mText;
+        ((o)localObject2).dbE();
+        localObject3 = ((o)localObject2).umO.mText;
         localObject1 = localObject3;
-        if (bt.isNullOrNil((String)localObject3)) {
-          localObject1 = ((o)localObject2).ubO.mDesc;
+        if (bu.isNullOrNil((String)localObject3)) {
+          localObject1 = ((o)localObject2).umQ.mDesc;
         }
-        if (!bt.isNullOrNil((String)localObject1)) {
+        if (!bu.isNullOrNil((String)localObject1)) {
           break label216;
         }
-        localObject2 = aj.getContext().getString(2131766873);
+        localObject2 = ak.getContext().getString(2131766873);
         label99:
-        paramInt = ((f)g.ab(f.class)).cWH().HR(paramInt);
+        paramInt = ((f)g.ab(f.class)).cZl().Io(paramInt);
         localObject1 = localObject2;
         if (paramInt > 1) {
-          localObject1 = aj.getContext().getString(2131766889, new Object[] { Integer.valueOf(paramInt), localObject2 });
+          localObject1 = ak.getContext().getString(2131766889, new Object[] { Integer.valueOf(paramInt), localObject2 });
         }
       }
-      AppMethodBeat.o(206797);
+      AppMethodBeat.o(195606);
       return localObject1;
       if (paramInt != 2) {
         break;
       }
-      localObject1 = aj.getContext().getString(2131766891);
+      localObject1 = ak.getContext().getString(2131766891);
     }
-    AppMethodBeat.o(206797);
+    AppMethodBeat.o(195606);
     return "";
     label182:
     if (((Cursor)localObject3).moveToFirst())
@@ -162,79 +162,66 @@ public final class d
   
   public final void a(final c.a parama)
   {
-    AppMethodBeat.i(206798);
-    if (((Boolean)g.ajC().ajl().get(al.a.IAq, Boolean.FALSE)).booleanValue())
+    AppMethodBeat.i(195607);
+    if (((Boolean)g.ajR().ajA().get(am.a.IUP, Boolean.FALSE)).booleanValue())
     {
       parama.a(null);
-      AppMethodBeat.o(206798);
+      AppMethodBeat.o(195607);
       return;
     }
-    h.LTJ.aR(new Runnable()
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206794);
-        Object localObject = a.cWU();
-        if ((localObject == null) || (((au)localObject).uhj == null) || (bt.isNullOrNil(((au)localObject).uhj.uiT)))
+        AppMethodBeat.i(195603);
+        Object localObject = a.cZy();
+        if ((localObject == null) || (((ba)localObject).usG == null) || (bu.isNullOrNil(((ba)localObject).usG.uuq)))
         {
           if (parama != null) {
             parama.a(null);
           }
-          AppMethodBeat.o(206794);
+          AppMethodBeat.o(195603);
           return;
         }
-        localObject = ((f)g.ab(f.class)).cWH().cZj();
+        localObject = ((f)g.ab(f.class)).cZl().dbU();
         if (parama != null) {
           parama.a((c.b)localObject);
         }
-        AppMethodBeat.o(206794);
+        AppMethodBeat.o(195603);
       }
     });
-    AppMethodBeat.o(206798);
+    AppMethodBeat.o(195607);
   }
   
-  public final void cWD()
+  public final void cZi()
   {
-    AppMethodBeat.i(206800);
-    g.ajC().ajl().set(al.a.IAq, Boolean.TRUE);
-    h.LTJ.aR(new Runnable()
+    AppMethodBeat.i(195609);
+    g.ajR().ajA().set(am.a.IUP, Boolean.TRUE);
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206795);
-        ad.i("MicroMsg.GameMessageStorage", "deleteGameLifeChatMsg history ret:%s", new Object[] { Boolean.valueOf(((f)g.ab(f.class)).cWH().execSQL("GameRawMessage", "delete from GameRawMessage where rawXML like \"%<chatmsg%\"")) });
-        AppMethodBeat.o(206795);
+        AppMethodBeat.i(195604);
+        ae.i("MicroMsg.GameMessageStorage", "deleteGameLifeChatMsg history ret:%s", new Object[] { Boolean.valueOf(((f)g.ab(f.class)).cZl().execSQL("GameRawMessage", "delete from GameRawMessage where rawXML like \"%<chatmsg%\"")) });
+        AppMethodBeat.o(195604);
       }
     });
-    AppMethodBeat.o(206800);
+    AppMethodBeat.o(195609);
   }
   
-  public final boolean cWE()
+  public final void fp(Context paramContext)
   {
-    AppMethodBeat.i(206801);
-    au localau = a.cWU();
-    if ((localau != null) && (localau.uhm != null) && (localau.uhm.uiH != null) && (localau.uhm.uiH.nEf != 0))
-    {
-      AppMethodBeat.o(206801);
-      return true;
+    AppMethodBeat.i(195608);
+    ba localba = a.cZy();
+    if ((localba != null) && (localba.usG != null) && (!bu.isNullOrNil(localba.usG.uuq))) {
+      com.tencent.mm.plugin.game.f.c.aD(paramContext, localba.usG.uuq);
     }
-    AppMethodBeat.o(206801);
-    return false;
-  }
-  
-  public final void fl(Context paramContext)
-  {
-    AppMethodBeat.i(206799);
-    au localau = a.cWU();
-    if ((localau != null) && (localau.uhj != null) && (!bt.isNullOrNil(localau.uhj.uiT))) {
-      com.tencent.mm.plugin.game.f.c.aB(paramContext, localau.uhj.uiT);
-    }
-    AppMethodBeat.o(206799);
+    AppMethodBeat.o(195608);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import d.l;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderWxMsgUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderWxMsgUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderWxMsgUI
   extends MMFinderUI
 {
@@ -27,7 +27,7 @@ public final class FinderWxMsgUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204255);
+    AppMethodBeat.i(204873);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -38,20 +38,20 @@ public final class FinderWxMsgUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204255);
+    AppMethodBeat.o(204873);
     return localView1;
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
     return 5;
   }
   
-  public final Set<Class<? extends UIComponent>> cCu()
+  public final Set<Class<? extends UIComponent>> cEg()
   {
-    AppMethodBeat.i(204254);
+    AppMethodBeat.i(204872);
     Set localSet = ak.setOf(FinderWxMsgUIC.class);
-    AppMethodBeat.o(204254);
+    AppMethodBeat.o(204872);
     return localSet;
   }
   

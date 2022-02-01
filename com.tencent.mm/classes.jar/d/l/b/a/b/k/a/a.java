@@ -13,31 +13,31 @@ import java.util.List;
 public abstract class a
   implements ac
 {
-  protected final d.l.b.a.b.l.j MQa;
-  protected final y MTr;
-  protected l NiH;
-  private final d<d.l.b.a.b.f.b, ab> Nyn;
-  protected final u Nyo;
+  protected l NFN;
+  private final d<d.l.b.a.b.f.b, ab> NVu;
+  protected final u NVv;
+  protected final d.l.b.a.b.l.j Nnf;
+  protected final y Nqw;
   
   public a(d.l.b.a.b.l.j paramj, u paramu, y paramy)
   {
-    this.MQa = paramj;
-    this.Nyo = paramu;
-    this.MTr = paramy;
-    this.Nyn = this.MQa.J((d.g.a.b)new a(this));
+    this.Nnf = paramj;
+    this.NVv = paramu;
+    this.Nqw = paramy;
+    this.NVu = this.Nnf.M((d.g.a.b)new a(this));
   }
   
   public final Collection<d.l.b.a.b.f.b> a(d.l.b.a.b.f.b paramb, d.g.a.b<? super f, Boolean> paramb1)
   {
     d.g.b.p.h(paramb, "fqName");
     d.g.b.p.h(paramb1, "nameFilter");
-    return (Collection)x.MKG;
+    return (Collection)x.NhJ;
   }
   
   protected final void a(l paraml)
   {
     d.g.b.p.h(paraml, "<set-?>");
-    this.NiH = paraml;
+    this.NFN = paraml;
   }
   
   protected abstract p d(d.l.b.a.b.f.b paramb);
@@ -45,14 +45,14 @@ public abstract class a
   public final List<ab> f(d.l.b.a.b.f.b paramb)
   {
     d.g.b.p.h(paramb, "fqName");
-    return d.a.j.eM(this.Nyn.invoke(paramb));
+    return d.a.j.eP(this.NVu.invoke(paramb));
   }
   
-  protected final l gmd()
+  protected final l gqF()
   {
-    l locall = this.NiH;
+    l locall = this.NFN;
     if (locall == null) {
-      d.g.b.p.bcb("components");
+      d.g.b.p.bdF("components");
     }
     return locall;
   }
@@ -69,7 +69,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.a
  * JD-Core Version:    0.7.0.1
  */

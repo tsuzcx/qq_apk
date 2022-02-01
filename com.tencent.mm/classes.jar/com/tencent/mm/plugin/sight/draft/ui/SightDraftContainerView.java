@@ -14,9 +14,9 @@ import com.tencent.mm.modelvideo.j;
 public class SightDraftContainerView
   extends ListView
 {
-  private boolean yTG;
-  private a yTH;
-  b yTI;
+  private boolean zjQ;
+  private a zjR;
+  b zjS;
   
   public SightDraftContainerView(Context paramContext)
   {
@@ -51,7 +51,7 @@ public class SightDraftContainerView
     int j = getResources().getDimensionPixelSize(2131165480);
     TextView localTextView = new TextView(getContext());
     localTextView.setText(2131763702);
-    localTextView.setTextSize(0, com.tencent.mm.cc.a.ax(getContext(), 2131165466));
+    localTextView.setTextSize(0, com.tencent.mm.cb.a.ax(getContext(), 2131165466));
     localTextView.setGravity(17);
     localTextView.setTextColor(getResources().getColor(2131100491));
     localTextView.setTextSize(1, 11.0F);
@@ -65,13 +65,13 @@ public class SightDraftContainerView
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/draft/ui/SightDraftContainerView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/draft/ui/SightDraftContainerView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         paramAnonymousView = SightDraftContainerView.this;
-        if (paramAnonymousView.yTI != null)
+        if (paramAnonymousView.zjS != null)
         {
-          paramAnonymousView = paramAnonymousView.yTI;
+          paramAnonymousView = paramAnonymousView.zjS;
           paramAnonymousView.a(null);
-          paramAnonymousView.yTl.dQy();
+          paramAnonymousView.zjv.dTV();
         }
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/sight/draft/ui/SightDraftContainerView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(28685);
@@ -81,53 +81,53 @@ public class SightDraftContainerView
     AppMethodBeat.o(28689);
   }
   
-  public final void dQz()
+  public final void dTW()
   {
     AppMethodBeat.i(28690);
-    if (this.yTG)
+    if (this.zjQ)
     {
-      this.yTI.yTs = 12;
-      this.yTI.a(b.d.yTy, false);
-      this.yTI.a(null, null);
+      this.zjS.zjC = 12;
+      this.zjS.a(b.d.zjI, false);
+      this.zjS.a(null, null);
       setSelection(0);
       AppMethodBeat.o(28690);
       return;
     }
-    this.yTG = true;
-    this.yTI = new b(getContext(), this.yTH);
-    this.yTI.yTs = 12;
-    setAdapter(this.yTI);
+    this.zjQ = true;
+    this.zjS = new b(getContext(), this.zjR);
+    this.zjS.zjC = 12;
+    setAdapter(this.zjS);
     AppMethodBeat.o(28690);
   }
   
   public j getLastDrafInfo()
   {
-    b localb = this.yTI;
-    if (localb.yTw == null) {
+    b localb = this.zjS;
+    if (localb.zjG == null) {
       return null;
     }
-    return localb.yTw.yTE;
+    return localb.zjG.zjO;
   }
   
   public void setSightDraftCallback(a parama)
   {
-    this.yTH = parama;
-    if (this.yTI != null) {
-      this.yTI.yTq = parama;
+    this.zjR = parama;
+    if (this.zjS != null) {
+      this.zjS.zjA = parama;
     }
   }
   
   public void setTipsResId(int paramInt)
   {
-    if (this.yTI == null) {
+    if (this.zjS == null) {
       return;
     }
-    this.yTI.yTr = paramInt;
+    this.zjS.zjB = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftContainerView
  * JD-Core Version:    0.7.0.1
  */

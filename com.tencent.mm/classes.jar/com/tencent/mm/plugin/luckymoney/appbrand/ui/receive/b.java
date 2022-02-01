@@ -7,7 +7,7 @@ public abstract interface b
   
   public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void dhU();
+  public abstract void dkT();
 }
 
 

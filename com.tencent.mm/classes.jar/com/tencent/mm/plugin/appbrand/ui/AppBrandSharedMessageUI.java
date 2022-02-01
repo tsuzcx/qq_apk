@@ -21,7 +21,7 @@ import com.tencent.mm.ui.MMActivity;
 public class AppBrandSharedMessageUI
   extends MMActivity
 {
-  private MRecyclerView mED;
+  private MRecyclerView mJI;
   private ListView mListView;
   
   public int getLayoutId()
@@ -34,26 +34,26 @@ public class AppBrandSharedMessageUI
     AppMethodBeat.i(48788);
     super.onCreate(paramBundle);
     this.mListView = ((ListView)findViewById(2131301452));
-    this.mED = ((MRecyclerView)findViewById(2131298926));
+    this.mJI = ((MRecyclerView)findViewById(2131298926));
     this.mListView.setAdapter(new b(getLayoutInflater()));
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(188902);
+        AppMethodBeat.i(223135);
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(188902);
+        AppMethodBeat.o(223135);
       }
     });
-    this.mED.setLayoutManager(new LinearLayoutManager(1));
-    this.mED.setAdapter(new a());
-    this.mED.addHeaderView(getLayoutInflater().inflate(2131493057, null));
+    this.mJI.setLayoutManager(new LinearLayoutManager(1));
+    this.mJI.setAdapter(new a());
+    this.mJI.addHeaderView(getLayoutInflater().inflate(2131493057, null));
     AppMethodBeat.o(48788);
   }
   

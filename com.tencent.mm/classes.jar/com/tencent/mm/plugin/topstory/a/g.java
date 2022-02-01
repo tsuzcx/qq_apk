@@ -6,9 +6,9 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface g
   extends a
 {
-  public abstract void bk(Context paramContext, String paramString);
+  public abstract void bm(Context paramContext, String paramString);
   
-  public abstract boolean eoI();
+  public abstract boolean esp();
 }
 
 

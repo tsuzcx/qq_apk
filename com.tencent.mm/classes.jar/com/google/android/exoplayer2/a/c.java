@@ -38,7 +38,7 @@ public final class c
     }
   }
   
-  public static c ah(Context paramContext)
+  public static c ai(Context paramContext)
   {
     AppMethodBeat.i(91756);
     paramContext = paramContext.registerReceiver(null, new IntentFilter("android.media.action.HDMI_AUDIO_PLUG"));

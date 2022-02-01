@@ -28,21 +28,21 @@ public class TPSubtitleParser
   
   public String getSubtitleText(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(220717);
+    AppMethodBeat.i(197656);
     if (this.mInited)
     {
       String str = _subtitleGetText(paramLong, paramInt);
-      AppMethodBeat.o(220717);
+      AppMethodBeat.o(197656);
       return str;
     }
-    AppMethodBeat.o(220717);
+    AppMethodBeat.o(197656);
     return null;
   }
   
   public TPMediaTrackInfo[] getTrackInfo()
   {
     Object localObject = null;
-    AppMethodBeat.i(220716);
+    AppMethodBeat.i(197655);
     if (this.mInited)
     {
       int j = _subtitleGetTrackCount();
@@ -61,20 +61,20 @@ public class TPSubtitleParser
           i += 1;
         }
       }
-      AppMethodBeat.o(220716);
+      AppMethodBeat.o(197655);
       return localObject;
     }
-    AppMethodBeat.o(220716);
+    AppMethodBeat.o(197655);
     return null;
   }
   
   public void init()
   {
-    AppMethodBeat.i(220714);
+    AppMethodBeat.i(197653);
     if (this.mInited)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Failed to init due to invalid state.");
-      AppMethodBeat.o(220714);
+      AppMethodBeat.o(197653);
       throw localIllegalStateException;
     }
     if ((this.mUrl != null) && (this.mCallback != null))
@@ -82,7 +82,7 @@ public class TPSubtitleParser
       this.mInited = true;
       _subtitleCreate(this.mUrl, this.mCallback);
     }
-    AppMethodBeat.o(220714);
+    AppMethodBeat.o(197653);
   }
   
   public int selectTrackAsync(int paramInt, long paramLong)
@@ -97,14 +97,14 @@ public class TPSubtitleParser
   
   public void unInit()
   {
-    AppMethodBeat.i(220715);
+    AppMethodBeat.i(197654);
     if (!this.mInited)
     {
-      AppMethodBeat.o(220715);
+      AppMethodBeat.o(197654);
       return;
     }
     _subtitleDelete();
-    AppMethodBeat.o(220715);
+    AppMethodBeat.o(197654);
   }
 }
 

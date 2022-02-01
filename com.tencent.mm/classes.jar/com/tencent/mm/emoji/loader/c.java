@@ -7,16 +7,16 @@ import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/EmojiGroupDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "()V", "downloader", "Lcom/tencent/mm/loader/impr/DefaultImageDownloader;", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiGroupDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "()V", "downloader", "Lcom/tencent/mm/loader/impr/DefaultImageDownloader;", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-emojisdk_release"})
 public final class c
   extends com.tencent.mm.loader.d.b<a>
 {
-  private final com.tencent.mm.loader.e.b giq;
+  private final com.tencent.mm.loader.e.b gkI;
   
   public c()
   {
     AppMethodBeat.i(105385);
-    this.giq = new com.tencent.mm.loader.e.b();
+    this.gkI = new com.tencent.mm.loader.e.b();
     AppMethodBeat.o(105385);
   }
   
@@ -26,7 +26,7 @@ public final class c
     p.h(parama, "url");
     p.h(paramg, "fileNameCreator");
     p.h(paramb, "callback");
-    this.giq.a(new com.tencent.mm.loader.h.a.a(((a)parama.value()).gin.fIO()), paramg, paramb);
+    this.gkI.a(new com.tencent.mm.loader.h.a.a(((a)parama.value()).gkF.fxl()), paramg, paramb);
     AppMethodBeat.o(105384);
   }
 }

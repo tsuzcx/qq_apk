@@ -10,12 +10,12 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KCountryCallingCodeView;
 import com.tencent.kinda.gen.KCountryCallingCodeViewOnSelectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.ax.b.a;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.aw.b.a;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.framework.app.UIPageFragmentActivity.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class KCountryCallingCodeViewImpl
   private void initData(Activity paramActivity)
   {
     AppMethodBeat.i(18799);
-    paramActivity = b.FR(paramActivity.getString(2131757950));
+    paramActivity = b.Gt(paramActivity.getString(2131757950));
     this.mCountryCodeMap = new HashMap();
     this.mISOCountryCodeMap = new HashMap();
     paramActivity = paramActivity.iterator();
@@ -50,8 +50,8 @@ public class KCountryCallingCodeViewImpl
       b.a locala = (b.a)paramActivity.next();
       if (locala != null)
       {
-        this.mCountryCodeMap.put(locala.iel, locala);
-        this.mISOCountryCodeMap.put(locala.iek, locala);
+        this.mCountryCodeMap.put(locala.ihd, locala);
+        this.mISOCountryCodeMap.put(locala.ihc, locala);
       }
     }
     AppMethodBeat.o(18799);
@@ -99,7 +99,7 @@ public class KCountryCallingCodeViewImpl
       paramContext = this.mEditText;
       AppMethodBeat.o(18798);
       return paramContext;
-      ad.e("KCountryCallingCodeView", "没有找到UIPageFragmentActivity，却展示了KCountryCallingCodeView");
+      ae.e("KCountryCallingCodeView", "没有找到UIPageFragmentActivity，却展示了KCountryCallingCodeView");
     }
   }
   
@@ -149,8 +149,8 @@ public class KCountryCallingCodeViewImpl
       {
         paramString = (b.a)this.mCountryCodeMap.get(str);
         this.mCountryCode = str;
-        this.mCountryName = paramString.iem;
-        this.mCountryIsoCode = paramString.iek;
+        this.mCountryName = paramString.ihe;
+        this.mCountryIsoCode = paramString.ihc;
       }
     }
     for (;;)
@@ -160,7 +160,7 @@ public class KCountryCallingCodeViewImpl
       return;
       this.mCountryName = "";
       continue;
-      ad.e("KCountryCallingCodeView", "输入国家代码后无法找到国家名称，因为国家代码、名称映射表为空！");
+      ae.e("KCountryCallingCodeView", "输入国家代码后无法找到国家名称，因为国家代码、名称映射表为空！");
     }
   }
   
@@ -170,7 +170,7 @@ public class KCountryCallingCodeViewImpl
     Intent localIntent;
     if ((paramBoolean) && (this.mUIPageFragmentActivity != null))
     {
-      ad.d("KCountryCallingCodeView", "click area");
+      ae.d("KCountryCallingCodeView", "click area");
       localIntent = new Intent();
       if (this.mHideCode) {
         break label92;
@@ -202,11 +202,11 @@ public class KCountryCallingCodeViewImpl
       while (localIterator.hasNext())
       {
         b.a locala = (b.a)localIterator.next();
-        if (locala.iek.equals(paramString))
+        if (locala.ihc.equals(paramString))
         {
-          this.mCountryCode = locala.iel;
-          this.mCountryName = locala.iem;
-          this.mCountryIsoCode = locala.iek;
+          this.mCountryCode = locala.ihd;
+          this.mCountryName = locala.ihe;
+          this.mCountryIsoCode = locala.ihc;
         }
       }
     }
@@ -216,11 +216,11 @@ public class KCountryCallingCodeViewImpl
   
   public void setNationalityExcludeArray(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(199455);
+    AppMethodBeat.i(193168);
     if (paramArrayList != null) {
-      this.mBannedCountryIsoCodes = bt.hi(paramArrayList);
+      this.mBannedCountryIsoCodes = bu.hs(paramArrayList);
     }
-    AppMethodBeat.o(199455);
+    AppMethodBeat.o(193168);
   }
   
   public void setOnSelectCallback(KCountryCallingCodeViewOnSelectCallback paramKCountryCallingCodeViewOnSelectCallback)
@@ -235,8 +235,8 @@ public class KCountryCallingCodeViewImpl
         KCountryCallingCodeViewImpl.access$002(KCountryCallingCodeViewImpl.this, paramAnonymousIntent.getStringExtra("country_name"));
         KCountryCallingCodeViewImpl.access$102(KCountryCallingCodeViewImpl.this, paramAnonymousIntent.getStringExtra("couttry_code"));
         KCountryCallingCodeViewImpl.access$202(KCountryCallingCodeViewImpl.this, paramAnonymousIntent.getStringExtra("iso_code"));
-        ad.i("KCountryCallingCodeView", "handle back mCountryName:%s.mCountryCode:%s mCountryIsoCode:%s", new Object[] { KCountryCallingCodeViewImpl.this.mCountryName, KCountryCallingCodeViewImpl.this.mCountryCode, KCountryCallingCodeViewImpl.this.mCountryIsoCode });
-        if (!bt.isNullOrNil(KCountryCallingCodeViewImpl.this.mCountryName))
+        ae.i("KCountryCallingCodeView", "handle back mCountryName:%s.mCountryCode:%s mCountryIsoCode:%s", new Object[] { KCountryCallingCodeViewImpl.this.mCountryName, KCountryCallingCodeViewImpl.this.mCountryCode, KCountryCallingCodeViewImpl.this.mCountryIsoCode });
+        if (!bu.isNullOrNil(KCountryCallingCodeViewImpl.this.mCountryName))
         {
           KCountryCallingCodeViewImpl.access$300(KCountryCallingCodeViewImpl.this);
           KCountryCallingCodeViewImpl.this.mCallback.onSelect(KCountryCallingCodeViewImpl.this.mCountryCode, KCountryCallingCodeViewImpl.this.mCountryIsoCode);
@@ -259,7 +259,7 @@ public class KCountryCallingCodeViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KCountryCallingCodeViewImpl
  * JD-Core Version:    0.7.0.1
  */

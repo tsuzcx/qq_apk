@@ -1,194 +1,192 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.finder.storage.ab;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alh;
-import com.tencent.mm.protocal.protobuf.ang;
-import com.tencent.mm.protocal.protobuf.anh;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.protocal.protobuf.ant;
+import com.tencent.mm.protocal.protobuf.anu;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "feedId", "", "objectNonceId", "", "enterScene", "", "scene", "feedUsername", "needObject", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "rootComment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "refCommentId", "username", "down", "justUpdateObjectStatus", "encryptedObjectId", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "pullScene", "(JLjava/lang/String;IILjava/lang/String;ZLcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;JLjava/lang/String;ZZLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;I)V", "getDown", "()Z", "getEnterScene", "()I", "getFeedUsername", "()Ljava/lang/String;", "getJustUpdateObjectStatus", "getPullScene", "rootCommentId", "getScene", "filterDuplicate", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "svrComment", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "feedId", "", "objectNonceId", "", "enterScene", "", "scene", "feedUsername", "needObject", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "rootComment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "refCommentId", "username", "down", "justUpdateObjectStatus", "encryptedObjectId", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "pullScene", "(JLjava/lang/String;IILjava/lang/String;ZLcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;JLjava/lang/String;ZZLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;I)V", "getDown", "()Z", "getEnterScene", "()I", "getFeedUsername", "()Ljava/lang/String;", "getJustUpdateObjectStatus", "getPullScene", "rootCommentId", "getScene", "filterDuplicate", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "svrComment", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class q
-  extends w<anh>
+  extends w<anu>
 {
-  public static final a rIL;
-  private final long dtq;
+  public static final a rQV;
+  private final long duw;
   private final int enterScene;
   private final String objectNonceId;
-  private long rID;
-  private final String rIE;
-  private boolean rIF;
-  private ab rIG;
-  private final long rIH;
-  private final boolean rII;
-  private final boolean rIJ;
-  private final int rIK;
+  private long rQN;
+  private final String rQO;
+  private boolean rQP;
+  private ab rQQ;
+  private final long rQR;
+  private final boolean rQS;
+  private final boolean rQT;
+  private final int rQU;
   private final int scene;
   private String username;
   
   static
   {
     AppMethodBeat.i(165180);
-    rIL = new a((byte)0);
+    rQV = new a((byte)0);
     AppMethodBeat.o(165180);
   }
   
-  private q(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, com.tencent.mm.bx.b paramb, ab paramab, long paramLong2, String paramString3, boolean paramBoolean2, boolean paramBoolean3, String paramString4, aqy paramaqy, int paramInt3)
+  private q(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, com.tencent.mm.bw.b paramb, ab paramab, long paramLong2, String paramString3, boolean paramBoolean2, boolean paramBoolean3, String paramString4, arn paramarn, int paramInt3)
   {
-    super(paramaqy);
-    AppMethodBeat.i(201075);
-    this.dtq = paramLong1;
+    super(paramarn);
+    AppMethodBeat.i(201493);
+    this.duw = paramLong1;
     this.objectNonceId = paramString1;
     this.enterScene = paramInt1;
     this.scene = paramInt2;
-    this.rIE = paramString2;
-    this.rIF = paramBoolean1;
-    this.rIG = paramab;
-    this.rIH = paramLong2;
+    this.rQO = paramString2;
+    this.rQP = paramBoolean1;
+    this.rQQ = paramab;
+    this.rQR = paramLong2;
     this.username = paramString3;
-    this.rII = paramBoolean2;
-    this.rIJ = paramBoolean3;
-    this.rIK = paramInt3;
-    paramString1 = this.rIG;
+    this.rQS = paramBoolean2;
+    this.rQT = paramBoolean3;
+    this.rQU = paramInt3;
+    paramString1 = this.rQQ;
     if (paramString1 != null)
     {
-      paramLong1 = paramString1.field_actionInfo.Gla.commentId;
-      this.rID = paramLong1;
+      paramLong1 = paramString1.cLl().commentId;
+      this.rQN = paramLong1;
       paramString2 = new b.a();
-      paramString1 = new ang();
-      paramString1.rIZ = this.dtq;
+      paramString1 = new ant();
+      paramString1.rRn = this.duw;
       paramString1.objectNonceId = this.objectNonceId;
-      if (!i.DEBUG) {
-        break label273;
+      if (!j.DEBUG) {
+        break label270;
       }
       paramab = (CharSequence)this.objectNonceId;
       if ((paramab != null) && (paramab.length() != 0)) {
-        break label267;
+        break label264;
       }
     }
-    label267:
+    label264:
     for (paramInt1 = 1;; paramInt1 = 0)
     {
-      if ((paramInt1 == 0) && (!d.g.b.p.i(String.valueOf(this.dtq), this.objectNonceId))) {
-        break label273;
+      if ((paramInt1 == 0) && (!d.g.b.p.i(String.valueOf(this.duw), this.objectNonceId))) {
+        break label270;
       }
-      paramString1 = (Throwable)new RuntimeException(this.dtq + ' ' + this.objectNonceId);
-      AppMethodBeat.o(201075);
+      paramString1 = (Throwable)new RuntimeException(this.duw + ' ' + this.objectNonceId);
+      AppMethodBeat.o(201493);
       throw paramString1;
       paramLong1 = 0L;
       break;
     }
-    label273:
-    if (d.g.b.p.i(Boolean.valueOf(this.rIF), Boolean.TRUE))
+    label270:
+    if (d.g.b.p.i(Boolean.valueOf(this.rQP), Boolean.TRUE))
     {
       paramInt1 = 1;
-      paramString1.Gmq = paramInt1;
+      paramString1.GFy = paramInt1;
       paramString1.lastBuffer = paramb;
-      paramString1.Gmp = 0L;
-      paramString1.Gmr = paramString4;
-      if (bt.isNullOrNil(this.username)) {
-        break label734;
+      paramString1.GFx = 0L;
+      paramString1.GFz = paramString4;
+      if (bu.isNullOrNil(this.username)) {
+        break label730;
       }
-      paramString1.rTn = this.username;
-      label333:
-      if (this.rIH != 0L) {
-        paramString1.rIH = this.rIH;
+      paramString1.sbR = this.username;
+      label330:
+      if (this.rQR != 0L) {
+        paramString1.rQR = this.rQR;
       }
-      paramString1.rID = this.rID;
-      if (!this.rII) {
-        break label744;
+      paramString1.rQN = this.rQN;
+      if (!this.rQS) {
+        break label740;
       }
       paramInt1 = 2;
-      label368:
+      label365:
       paramString1.direction = paramInt1;
       paramString1.scene = this.enterScene;
-      paramab = v.rIR;
-      paramString1.Glv = v.a(paramaqy);
+      paramab = v.rRb;
+      paramString1.GDR = v.a(paramarn);
       paramInt1 = this.scene;
       paramInt2 = this.enterScene;
-      paramab = this.rIE;
+      paramab = this.rQO;
       d.g.b.p.h(paramab, "feedUsername");
-      ad.i("Finder.CgiGetFinderFeedComment", "getIdScene scene:" + paramInt1 + ", commentScene:" + paramInt2);
-      paramString3 = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cHb().value()).intValue() == 1) {
-        break label756;
+      ae.i("Finder.CgiGetFinderFeedComment", "getIdScene scene:" + paramInt1 + ", commentScene:" + paramInt2);
+      paramString3 = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cJa().value()).intValue() == 1) {
+        break label752;
       }
-      paramString3 = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (com.tencent.mm.plugin.finder.storage.b.cGm() != 1) {
-        break label756;
+      paramString3 = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (com.tencent.mm.plugin.finder.storage.b.cIj() != 1) {
+        break label752;
       }
-      paramString3 = com.tencent.mm.plugin.finder.utils.p.sMo;
-      if (!com.tencent.mm.plugin.finder.utils.p.aiX(paramab)) {
-        break label750;
+      paramString3 = com.tencent.mm.plugin.finder.utils.p.sXz;
+      if (!com.tencent.mm.plugin.finder.utils.p.ajU(paramab)) {
+        break label746;
       }
       paramInt1 = 1;
-      label504:
-      paramString1.Gms = paramInt1;
-      paramString1.rIK = this.rIK;
+      label500:
+      paramString1.GFA = paramInt1;
+      paramString1.rQU = this.rQU;
       paramString2.c((a)paramString1);
-      paramab = new anh();
+      paramab = new anu();
       paramab.setBaseResponse(new BaseResponse());
-      paramab.getBaseResponse().ErrMsg = new cwt();
+      paramab.getBaseResponse().ErrMsg = new cxn();
       paramString2.d((a)paramab);
-      paramString2.Dl("/cgi-bin/micromsg-bin/findergetcommentdetail");
-      paramString2.oP(3763);
-      c(paramString2.aDC());
-      paramString2 = new StringBuilder("CgiGetFinderFeedComment init identityScene:").append(paramString1.Gms).append(", feedId=").append(this.dtq).append(" lastBuffer=");
+      paramString2.DN("/cgi-bin/micromsg-bin/findergetcommentdetail");
+      paramString2.oS(3763);
+      c(paramString2.aDS());
+      paramString2 = new StringBuilder("CgiGetFinderFeedComment init identityScene:").append(paramString1.GFA).append(", feedId=").append(this.duw).append(" lastBuffer=");
       if (paramb == null) {
-        break label794;
+        break label790;
       }
       paramBoolean1 = true;
       paramString2 = paramString2.append(paramBoolean1).append(" isSecondCommentFetch=");
-      if (this.rIG == null) {
-        break label800;
+      if (this.rQQ == null) {
+        break label796;
       }
     }
-    label645:
-    label794:
-    label800:
+    label641:
+    label790:
+    label796:
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      ad.i("Finder.CgiGetFinderFeedComment", paramBoolean1 + " scene " + paramString1.scene + ", justUpdateObjectStatus:" + this.rIJ + ", encryptedObjectid:" + paramString4);
-      AppMethodBeat.o(201075);
+      ae.i("Finder.CgiGetFinderFeedComment", paramBoolean1 + " scene " + paramString1.scene + ", justUpdateObjectStatus:" + this.rQT + ", encryptedObjectid:" + paramString4);
+      AppMethodBeat.o(201493);
       return;
       paramInt1 = 0;
       break;
-      label734:
-      paramString1.rTn = u.aAu();
-      break label333;
-      label744:
+      label730:
+      paramString1.sbR = com.tencent.mm.model.v.aAK();
+      break label330;
+      label740:
       paramInt1 = 1;
-      break label368;
-      label750:
+      break label365;
+      label746:
       paramInt1 = 3;
-      break label504;
-      label756:
+      break label500;
+      label752:
       if (paramInt2 == 7)
       {
         paramInt1 = 1;
-        break label504;
+        break label500;
       }
       if ((paramInt2 == 8) && (paramInt1 == 1))
       {
         paramInt1 = 1;
-        break label504;
+        break label500;
       }
       paramInt1 = 2;
-      break label504;
+      break label500;
       paramBoolean1 = false;
-      break label645;
+      break label641;
     }
   }
   
@@ -229,13 +227,13 @@ public final class q
         paramLinkedList = null;
       }
       label119:
-      ad.w("Finder.CgiGetFinderFeedComment", "filterDuplicate " + localFinderCommentInfo.commentId + " content " + localFinderCommentInfo.content + " username " + localFinderCommentInfo.username);
+      ae.w("Finder.CgiGetFinderFeedComment", "filterDuplicate " + localFinderCommentInfo.commentId + " content " + localFinderCommentInfo.content + " username " + localFinderCommentInfo.username);
     }
     AppMethodBeat.o(165177);
     return localLinkedList;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment$Companion;", "", "()V", "getIdScene", "", "scene", "commentScene", "feedUsername", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment$Companion;", "", "()V", "getIdScene", "", "scene", "commentScene", "feedUsername", "", "plugin-finder_release"})
   public static final class a {}
 }
 

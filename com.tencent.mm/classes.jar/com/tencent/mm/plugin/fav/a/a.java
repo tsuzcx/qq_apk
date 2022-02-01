@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.fav.a;
 
 public final class a
 {
-  public static final int[] rrX = { 2, 3, 4, 8, 14, 16, 18 };
-  public static final int[] rrY = { 10, 8, 7 };
+  public static final int[] rAk = { 2, 3, 4, 8, 14, 16, 18 };
+  public static final int[] rAl = { 10, 8, 7 };
 }
 
 

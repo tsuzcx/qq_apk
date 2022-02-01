@@ -10,29 +10,29 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.ao;
 
 public class ButtonPreference
   extends Preference
 {
-  private int Jmc;
-  public boolean JrA;
-  public int JrB;
-  private ImageView Jry;
-  private String Jrz;
+  private int JGQ;
+  private ImageView JMn;
+  private String JMo;
+  public boolean JMp;
+  public int JMq;
   private TextView Wf;
   private Drawable icon;
   private Context mContext;
   private int textColor;
-  private View vET;
+  private View vQX;
   
   public ButtonPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142503);
-    this.JrA = true;
+    this.JMp = true;
     setLayoutResource(2131494804);
     c(paramContext, paramAttributeSet);
     AppMethodBeat.o(142503);
@@ -42,7 +42,7 @@ public class ButtonPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142502);
-    this.JrA = true;
+    this.JMp = true;
     setLayoutResource(2131494804);
     c(paramContext, paramAttributeSet);
     AppMethodBeat.o(142502);
@@ -53,24 +53,24 @@ public class ButtonPreference
     AppMethodBeat.i(142505);
     this.mContext = paramContext;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ButtonPreference);
-    this.Jmc = paramAttributeSet.getColor(2, 0);
+    this.JGQ = paramAttributeSet.getColor(2, 0);
     this.textColor = paramAttributeSet.getColor(3, 0);
-    this.Jrz = paramContext.getString(paramAttributeSet.getResourceId(1, 0));
+    this.JMo = paramContext.getString(paramAttributeSet.getResourceId(1, 0));
     this.icon = paramAttributeSet.getDrawable(0);
     paramAttributeSet.recycle();
     AppMethodBeat.o(142505);
   }
   
-  public final void gv(String paramString, int paramInt)
+  public final void gE(String paramString, int paramInt)
   {
     AppMethodBeat.i(142506);
-    this.Jrz = paramString;
+    this.JMo = paramString;
     this.textColor = paramInt;
     if (this.Wf != null)
     {
       this.Wf.setText(paramString);
       this.Wf.setTextColor(paramInt);
-      if (this.JrA) {
+      if (this.JMp) {
         al.a(this.Wf.getPaint(), 0.8F);
       }
     }
@@ -81,23 +81,23 @@ public class ButtonPreference
   {
     AppMethodBeat.i(142507);
     super.onBindView(paramView);
-    this.Jry = ((ImageView)paramView.findViewById(2131300874));
+    this.JMn = ((ImageView)paramView.findViewById(2131300874));
     this.Wf = ((TextView)paramView.findViewById(2131305710));
-    if ((this.Jry != null) && (this.icon != null))
+    if ((this.JMn != null) && (this.icon != null))
     {
-      this.Jry.setVisibility(0);
-      this.Jry.setImageDrawable(ao.e(this.icon, this.Jmc));
+      this.JMn.setVisibility(0);
+      this.JMn.setImageDrawable(ao.e(this.icon, this.JGQ));
     }
     if (this.Wf != null)
     {
-      this.Wf.setText(this.Jrz);
+      this.Wf.setText(this.JMo);
       this.Wf.setTextColor(this.textColor);
-      if (this.JrA) {
+      if (this.JMp) {
         al.a(this.Wf.getPaint(), 0.8F);
       }
     }
-    if ((this.vET != null) && (this.JrB != 0)) {
-      this.vET.setId(this.JrB);
+    if ((this.vQX != null) && (this.JMq != 0)) {
+      this.vQX.setId(this.JMq);
     }
     AppMethodBeat.o(142507);
   }
@@ -105,8 +105,8 @@ public class ButtonPreference
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142504);
-    this.vET = LayoutInflater.from(this.mContext).inflate(2131495104, null);
-    paramViewGroup = this.vET;
+    this.vQX = LayoutInflater.from(this.mContext).inflate(2131495104, null);
+    paramViewGroup = this.vQX;
     AppMethodBeat.o(142504);
     return paramViewGroup;
   }

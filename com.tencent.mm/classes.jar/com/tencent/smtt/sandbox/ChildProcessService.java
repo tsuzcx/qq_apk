@@ -19,7 +19,7 @@ import android.os.Process;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.smtt.sdk.g;
+import com.tencent.smtt.sdk.i;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -370,7 +370,7 @@ public abstract class ChildProcessService
       this.mLazilyLoadedLibraryFDs = new ParcelFileDescriptor[this.mLazilyLoadedLibraryNames.length];
       System.arraycopy(localObject, 0, this.mLazilyLoadedLibraryFDs, 0, this.mLazilyLoadedLibraryNames.length);
     }
-    g.c();
+    i.c();
     this.mDelegate.onConnectionSetup(paramBundle, paramList);
     this.mMainThread.notifyAll();
   }
@@ -410,7 +410,7 @@ public abstract class ChildProcessService
   {
     try
     {
-      g.a(paramString, getLazilyLoadedLibrary(paramString));
+      i.a(paramString, getLazilyLoadedLibrary(paramString));
       return true;
     }
     catch (Throwable paramString) {}
@@ -475,8 +475,8 @@ public abstract class ChildProcessService
         {
           if (ChildProcessService.use_isolated_process)
           {
-            g.d();
-            g.a(ChildProcessService.this);
+            i.d();
+            i.a(ChildProcessService.this);
             Log.i("ChildProcessService", "@mMainThread after prepareLinker", new Object[0]);
           }
           synchronized (ChildProcessService.this.mMainThread)
@@ -500,7 +500,7 @@ public abstract class ChildProcessService
         }
         boolean bool;
         if (ChildProcessService.use_isolated_process) {
-          bool = g.a(localContext, ChildProcessService.this.mFdsOfLibraryies);
+          bool = i.a(localContext, ChildProcessService.this.mFdsOfLibraryies);
         }
         for (;;)
         {
@@ -510,8 +510,8 @@ public abstract class ChildProcessService
             Log.e("ChildProcessService", "@mMainThread loadNativeLibrary failed!", new Object[0]);
             ??? = c.a(-1, new com.tencent.mm.hellhoundlib.b.a());
             Object localObject3 = new Object();
-            com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).ahp(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).mq(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).ahE(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).mt(0)).intValue());
             com.tencent.mm.hellhoundlib.a.a.a(localObject3, "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
             ChildProcessService.this.mDelegate.initCommandLine(ChildProcessService.this.mCommandLineParams);
           }
@@ -528,10 +528,10 @@ public abstract class ChildProcessService
               }
               ChildProcessService.this.mMainThread.wait();
             }
-            bool = g.a(localContext);
+            bool = i.a(localContext);
             continue;
             Log.i("ChildProcessService", "@mMainThread loadNativeLibrary successful!", new Object[0]);
-            g.e();
+            i.e();
           }
         }
         Log.d("ChildProcessService", "@mMainThread after mMainThread.wait");
@@ -605,8 +605,8 @@ public abstract class ChildProcessService
     {
       ??? = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
       Object localObject2 = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).ahp(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).ahE(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).mt(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
       return;
     }

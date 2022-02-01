@@ -7,19 +7,19 @@ public abstract interface n
 {
   public abstract boolean a(String paramString, n.a parama);
   
-  public abstract boolean aDL();
+  public abstract boolean aEb();
   
-  public abstract boolean aDM();
+  public abstract boolean aEc();
   
   public abstract boolean b(String paramString, n.a parama);
   
-  public abstract void cx(Context paramContext);
+  public abstract void cz(Context paramContext);
   
   public abstract void d(Context paramContext, Bundle paramBundle);
   
-  public abstract void eA(boolean paramBoolean);
+  public abstract void eC(boolean paramBoolean);
   
-  public abstract boolean oN(int paramInt);
+  public abstract boolean oQ(int paramInt);
 }
 
 

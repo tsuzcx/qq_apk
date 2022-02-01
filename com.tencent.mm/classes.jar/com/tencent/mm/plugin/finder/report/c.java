@@ -6,41 +6,33 @@ import android.util.LongSparseArray;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.b.a.ar;
-import com.tencent.mm.g.b.a.az;
 import com.tencent.mm.g.b.a.bc;
-import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.event.b.a;
 import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.model.y;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.utils.o;
 import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
+import com.tencent.mm.protocal.protobuf.FinderMediaReportObject;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.amx;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.asv;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.protocal.protobuf.dij;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.protocal.protobuf.ank;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.atl;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.protocal.protobuf.dje;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.recyclerview.f;
-import d.a.j;
+import com.tencent.mm.view.recyclerview.h;
 import d.g.b.q;
+import d.l;
 import d.n.n;
-import d.v;
-import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -48,35 +40,36 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import org.json.JSONObject;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "IDKEY_VIDEO_PLAY", "", "getIDKEY_VIDEO_PLAY", "()J", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "videoPlayReporter", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "getVideoPlayReporter", "()Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "visible", "", "getVisible", "()Z", "setVisible", "(Z)V", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "onInvisible", "onRelease", "onTabChange", "onVisible", "sendStatsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/Stats;", "Companion", "INPUT_RESULT", "ShareSceneType", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "IDKEY_VIDEO_PLAY", "", "getIDKEY_VIDEO_PLAY", "()J", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "videoPlayReporter", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "getVideoPlayReporter", "()Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "visible", "", "getVisible", "()Z", "setVisible", "(Z)V", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "onInvisible", "onRelease", "onTabChange", "onVisible", "sendStatsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/Stats;", "Companion", "INPUT_RESULT", "ShareSceneType", "plugin-finder_release"})
 public abstract class c
   extends com.tencent.mm.plugin.finder.event.base.d
 {
   private static final String TAG = "Finder.FinderFeedFlowReporter";
-  public static final a snN = new a((byte)0);
+  public static final a sxE = new a((byte)0);
   final MMActivity activity;
-  public aqy rIl;
-  private final long snL;
-  public final r snM;
+  public arn rQw;
+  private final long sxC;
+  public final s sxD;
   boolean visible;
   
-  public c(MMActivity paramMMActivity, aqy paramaqy)
+  public c(MMActivity paramMMActivity, arn paramarn)
   {
     this.activity = paramMMActivity;
-    this.rIl = paramaqy;
-    this.snL = 1277L;
-    this.snM = new r(this.rIl);
+    this.rQw = paramarn;
+    this.sxC = 1277L;
+    this.sxD = new s(this.rQw);
     this.visible = true;
   }
   
   public void a(b paramb)
   {
     d.g.b.p.h(paramb, "event");
-    if (this.rIl.rTD == 0) {
-      ad.i(TAG, "[onEventHappen] invalid scene");
+    if (this.rQw.sch == 0) {
+      ae.i(TAG, "[onEventHappen] invalid scene");
     }
     Object localObject1;
     label787:
@@ -87,6 +80,7 @@ public abstract class c
     {
       do
       {
+        Object localObject2;
         do
         {
           do
@@ -97,7 +91,6 @@ public abstract class c
               {
                 do
                 {
-                  int i;
                   do
                   {
                     do
@@ -127,66 +120,66 @@ public abstract class c
                                           do
                                           {
                                             return;
-                                          } while (!(paramb instanceof b.a));
-                                          switch (((b.a)paramb).type)
+                                          } while (!(paramb instanceof com.tencent.mm.plugin.finder.event.c.a));
+                                          switch (((com.tencent.mm.plugin.finder.event.c.a)paramb).type)
                                           {
                                           default: 
                                             return;
                                           case 1: 
-                                            com.tencent.mm.plugin.report.e.ygI.idkeyStat(this.snL, 1L, 1L, false);
-                                            localObject1 = this.snM;
-                                            paramb = (b.a)paramb;
+                                            com.tencent.mm.plugin.report.e.ywz.idkeyStat(this.sxC, 1L, 1L, false);
+                                            localObject1 = this.sxD;
+                                            paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                                             d.g.b.p.h(paramb, "event");
-                                            localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                                            localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                                           }
                                         } while (localObject1 == null);
-                                        ((r.b)localObject1).bfZ = true;
-                                        ((r.b)localObject1).spu = paramb.rQC;
-                                        if (((r.b)localObject1).srk > 0L)
+                                        ((s.b)localObject1).bfZ = true;
+                                        ((s.b)localObject1).szF = paramb.rZe;
+                                        if (((s.b)localObject1).sBu > 0L)
                                         {
-                                          ((r.b)localObject1).srj += paramb.rQC - ((r.b)localObject1).srk;
-                                          ((r.b)localObject1).srk = 0L;
+                                          ((s.b)localObject1).sBt += paramb.rZe - ((s.b)localObject1).sBu;
+                                          ((s.b)localObject1).sBu = 0L;
                                         }
                                         paramb = new StringBuilder();
                                         d.g.b.p.g(localObject1, "this");
-                                        ad.i("Finder.FinderVideoPlayReporter", r.a("onResume", (r.b)localObject1) + " onResume:" + ((r.b)localObject1).srj);
+                                        ae.i("Finder.FinderVideoPlayReporter", s.a("onResume", (s.b)localObject1) + " onResume:" + ((s.b)localObject1).sBt);
                                         return;
-                                        com.tencent.mm.plugin.report.e.ygI.idkeyStat(this.snL, 2L, 1L, false);
-                                        localObject1 = this.snM;
-                                        paramb = (b.a)paramb;
+                                        com.tencent.mm.plugin.report.e.ywz.idkeyStat(this.sxC, 2L, 1L, false);
+                                        localObject1 = this.sxD;
+                                        paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                                         d.g.b.p.h(paramb, "event");
-                                        paramb = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                                        paramb = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                                       } while (paramb == null);
-                                      paramb.srg += 1;
+                                      paramb.sBq += 1;
                                       return;
-                                      localObject1 = this.snM;
-                                      paramb = (b.a)paramb;
+                                      localObject1 = this.sxD;
+                                      paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                                       d.g.b.p.h(paramb, "event");
-                                      localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                                      localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                                     } while (localObject1 == null);
-                                    ((r.b)localObject1).srw.add(Integer.valueOf(paramb.offset));
-                                    localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
-                                    i = com.tencent.mm.plugin.finder.utils.p.fV(paramb.offset, paramb.ieH);
-                                  } while (i <= ((r.b)localObject1).sqW);
-                                  ((r.b)localObject1).sqW = i;
+                                    ((s.b)localObject1).sBG.add(Integer.valueOf(paramb.offset));
+                                    localObject2 = com.tencent.mm.plugin.finder.utils.p.sXz;
+                                    i = com.tencent.mm.plugin.finder.utils.p.fV(paramb.offset, paramb.ihz);
+                                  } while (i <= ((s.b)localObject1).sBh);
+                                  ((s.b)localObject1).sBh = i;
                                   return;
-                                  com.tencent.mm.plugin.report.e.ygI.idkeyStat(this.snL, 0L, 1L, false);
-                                  localObject2 = this.snM;
-                                  localObject3 = (b.a)paramb;
+                                  com.tencent.mm.plugin.report.e.ywz.idkeyStat(this.sxC, 0L, 1L, false);
+                                  localObject2 = this.sxD;
+                                  localObject3 = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                                   d.g.b.p.h(localObject3, "event");
-                                  localObject4 = new r.b();
-                                  localObject1 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.c.class)).cnc();
+                                  localObject4 = new s.b();
+                                  localObject1 = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
                                   paramb = (b)localObject1;
                                   if (localObject1 == null) {
                                     paramb = "";
                                   }
                                   d.g.b.p.h(paramb, "<set-?>");
-                                  ((r.b)localObject4).sessionId = paramb;
-                                  ((r.b)localObject4).sqO = ((b.a)localObject3).dtq;
-                                  paramb = ((b.a)localObject3).rQu;
+                                  ((s.b)localObject4).sessionId = paramb;
+                                  ((s.b)localObject4).sAZ = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).duw;
+                                  paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYW;
                                   if (paramb != null)
                                   {
-                                    localObject1 = paramb.aeA();
+                                    localObject1 = paramb.aeM();
                                     paramb = (b)localObject1;
                                     if (localObject1 != null) {}
                                   }
@@ -195,10 +188,10 @@ public abstract class c
                                     paramb = "";
                                   }
                                   d.g.b.p.h(paramb, "<set-?>");
-                                  ((r.b)localObject4).sqP = paramb;
-                                  ((r.b)localObject4).sqQ = ((b.a)localObject3).rQu;
-                                  ((r.b)localObject4).sqR = ((b.a)localObject3).rQt;
-                                  paramb = ((b.a)localObject3).rQu;
+                                  ((s.b)localObject4).sBa = paramb;
+                                  ((s.b)localObject4).sBb = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYW;
+                                  ((s.b)localObject4).sBc = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYV;
+                                  paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYW;
                                   if (paramb != null)
                                   {
                                     localObject1 = paramb.getPath();
@@ -210,23 +203,23 @@ public abstract class c
                                     paramb = "";
                                   }
                                   d.g.b.p.h(paramb, "<set-?>");
-                                  ((r.b)localObject4).mediaPath = paramb;
-                                  ((r.b)localObject4).lXf = ((b)localObject3).rQC;
-                                  ((r.b)localObject4).sqT = ((b.a)localObject3).position;
-                                  ((r.b)localObject4).sqU = 1;
-                                  ((r.b)localObject4).srh = true;
-                                  ((r.b)localObject4).rQx = ((b.a)localObject3).rQx;
-                                  ((r.b)localObject4).sri = CdnLogic.getRecentAverageSpeed(2);
-                                  paramb = aj.getContext().getSystemService("audio");
+                                  ((s.b)localObject4).mediaPath = paramb;
+                                  ((s.b)localObject4).mbM = ((b)localObject3).rZe;
+                                  ((s.b)localObject4).sBe = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).position;
+                                  ((s.b)localObject4).sBf = 1;
+                                  ((s.b)localObject4).sBr = true;
+                                  ((s.b)localObject4).rYZ = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYZ;
+                                  ((s.b)localObject4).sBs = CdnLogic.getRecentAverageSpeed(2);
+                                  paramb = ak.getContext().getSystemService("audio");
                                   if (paramb == null) {
-                                    throw new v("null cannot be cast to non-null type android.media.AudioManager");
+                                    throw new d.v("null cannot be cast to non-null type android.media.AudioManager");
                                   }
-                                  ((r.b)localObject4).spB = ((AudioManager)paramb).getStreamVolume(3);
-                                  paramb = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-                                  paramb = ((b.a)localObject3).rQu;
+                                  ((s.b)localObject4).szM = ((AudioManager)paramb).getStreamVolume(3);
+                                  paramb = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+                                  paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYW;
                                   if (paramb != null)
                                   {
-                                    localObject1 = paramb.aeA();
+                                    localObject1 = paramb.aeM();
                                     paramb = (b)localObject1;
                                     if (localObject1 != null) {}
                                   }
@@ -234,63 +227,63 @@ public abstract class c
                                   {
                                     paramb = "";
                                   }
-                                  paramb = com.tencent.mm.plugin.finder.storage.logic.c.aiD(paramb);
+                                  paramb = com.tencent.mm.plugin.finder.storage.logic.c.ajA(paramb);
                                   boolean bool;
-                                  if (((r.b)localObject4).rQx > 0)
+                                  if (((s.b)localObject4).rYZ > 0)
                                   {
-                                    i = ((r.b)localObject4).rQx + 1;
-                                    ((r.b)localObject4).sqX = i;
+                                    i = ((s.b)localObject4).rYZ + 1;
+                                    ((s.b)localObject4).sBi = i;
                                     if (!paramb.field_hasPlayed) {
                                       break label1081;
                                     }
                                     i = 0;
-                                    ((r.b)localObject4).srf = i;
-                                    ((r.b)localObject4).sqY = paramb.cCY();
+                                    ((s.b)localObject4).sBp = i;
+                                    ((s.b)localObject4).sBj = paramb.cEL();
                                     localObject1 = paramb.field_fileFormat;
                                     paramb = (b)localObject1;
                                     if (localObject1 == null) {
                                       paramb = "";
                                     }
-                                    ((r.b)localObject4).ahP(paramb);
-                                    if (((r.b)localObject4).sqY == 100) {
+                                    ((s.b)localObject4).aiN(paramb);
+                                    if (((s.b)localObject4).sBj == 100) {
                                       break label1086;
                                     }
                                     bool = true;
-                                    ((r.b)localObject4).srh = bool;
-                                    paramb = ay.getNetTypeString(aj.getContext());
+                                    ((s.b)localObject4).sBr = bool;
+                                    paramb = com.tencent.mm.sdk.platformtools.az.getNetTypeString(ak.getContext());
                                     d.g.b.p.g(paramb, "NetStatusUtil.getNetType…tionContext.getContext())");
                                     d.g.b.p.h(paramb, "<set-?>");
-                                    ((r.b)localObject4).srd = paramb;
-                                    paramb = h.soM;
-                                    ((r.b)localObject4).sre = h.cDz();
-                                    paramb = h.soM;
-                                    ((r.b)localObject4).srp = h.wt(((r.b)localObject4).sqO);
-                                    if (!com.tencent.mm.modelcontrol.d.pf(4)) {
+                                    ((s.b)localObject4).sBn = paramb;
+                                    paramb = i.syT;
+                                    ((s.b)localObject4).sBo = i.cFu();
+                                    paramb = i.syT;
+                                    ((s.b)localObject4).sBz = i.wK(((s.b)localObject4).sAZ);
+                                    if (!com.tencent.mm.modelcontrol.d.pi(4)) {
                                       break label1092;
                                     }
                                     paramb = "h265";
                                     d.g.b.p.h(paramb, "<set-?>");
-                                    ((r.b)localObject4).srB = paramb;
-                                    ((r.b)localObject4).sqS = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getMediaPreloadModel().slp;
-                                    paramb = ((b.a)localObject3).rQt;
+                                    ((s.b)localObject4).sBL = paramb;
+                                    ((s.b)localObject4).sBd = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getMediaPreloadModel().sun;
+                                    paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYV;
                                     if (paramb == null) {
                                       break label1099;
                                     }
                                     f = paramb.width;
-                                    ((r.b)localObject4).srC = f;
-                                    paramb = ((b.a)localObject3).rQt;
+                                    ((s.b)localObject4).sBM = f;
+                                    paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYV;
                                     if (paramb == null) {
                                       break label1104;
                                     }
                                   }
                                   for (float f = paramb.height;; f = 0.0F)
                                   {
-                                    ((r.b)localObject4).srD = f;
-                                    ((r.b)localObject4).rQx = ((b.a)localObject3).rQx;
-                                    ((Map)((r)localObject2).sqK).put(Long.valueOf(((b.a)localObject3).dtq), localObject4);
-                                    ad.i("Finder.FinderVideoPlayReporter", r.a("onStartPlay", (r.b)localObject4) + " firstplay:" + ((r.b)localObject4).srf);
+                                    ((s.b)localObject4).sBN = f;
+                                    ((s.b)localObject4).rYZ = ((com.tencent.mm.plugin.finder.event.c.a)localObject3).rYZ;
+                                    ((Map)((s)localObject2).DQY).put(Long.valueOf(((com.tencent.mm.plugin.finder.event.c.a)localObject3).duw), localObject4);
+                                    ae.i("Finder.FinderVideoPlayReporter", s.a("onStartPlay", (s.b)localObject4) + " firstplay:" + ((s.b)localObject4).sBp);
                                     return;
-                                    if (paramb.cCY() > 0)
+                                    if (paramb.cEL() > 0)
                                     {
                                       i = 1;
                                       break;
@@ -306,69 +299,69 @@ public abstract class c
                                     f = 0.0F;
                                     break label962;
                                   }
-                                  localObject1 = this.snM;
-                                  paramb = (b.a)paramb;
+                                  localObject1 = this.sxD;
+                                  paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                                   d.g.b.p.h(paramb, "event");
-                                  localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                                  localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                                 } while (localObject1 == null);
-                                ((r.b)localObject1).bfZ = false;
-                                ((r.b)localObject1).srk = paramb.rQC;
-                                if (((r.b)localObject1).spu > 0L)
+                                ((s.b)localObject1).bfZ = false;
+                                ((s.b)localObject1).sBu = paramb.rZe;
+                                if (((s.b)localObject1).szF > 0L)
                                 {
-                                  ((r.b)localObject1).spt += paramb.rQC - ((r.b)localObject1).spu;
-                                  ((r.b)localObject1).spu = 0L;
+                                  ((s.b)localObject1).szE += paramb.rZe - ((s.b)localObject1).szF;
+                                  ((s.b)localObject1).szF = 0L;
                                 }
                                 paramb = new StringBuilder();
                                 d.g.b.p.g(localObject1, "this");
-                                ad.i("Finder.FinderVideoPlayReporter", r.a("onPause", (r.b)localObject1) + " realPlayTime:" + ((r.b)localObject1).spt);
+                                ae.i("Finder.FinderVideoPlayReporter", s.a("onPause", (s.b)localObject1) + " realPlayTime:" + ((s.b)localObject1).szE);
                                 return;
-                                com.tencent.mm.plugin.report.e.ygI.idkeyStat(this.snL, 3L, 1L, false);
-                                localObject2 = this.snM;
-                                localObject4 = (b.a)paramb;
+                                com.tencent.mm.plugin.report.e.ywz.idkeyStat(this.sxC, 3L, 1L, false);
+                                localObject2 = this.sxD;
+                                localObject4 = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                                 d.g.b.p.h(localObject4, "event");
-                                localObject3 = (r.b)((r)localObject2).sqK.get(Long.valueOf(((b.a)localObject4).dtq));
-                              } while ((localObject3 == null) || (((r.b)localObject3).sqO != ((b.a)localObject4).dtq));
-                              localObject1 = ((r.b)localObject3).sqP;
-                              paramb = ((b.a)localObject4).rQu;
+                                localObject3 = (s.b)((s)localObject2).DQY.get(Long.valueOf(((com.tencent.mm.plugin.finder.event.c.a)localObject4).duw));
+                              } while ((localObject3 == null) || (((s.b)localObject3).sAZ != ((com.tencent.mm.plugin.finder.event.c.a)localObject4).duw));
+                              localObject1 = ((s.b)localObject3).sBa;
+                              paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject4).rYW;
                               if (paramb != null) {}
-                              for (paramb = paramb.aeA(); d.g.b.p.i(localObject1, paramb); paramb = null)
+                              for (paramb = paramb.aeM(); d.g.b.p.i(localObject1, paramb); paramb = null)
                               {
-                                ((r.b)localObject3).spv = (((b)localObject4).rQC - ((r.b)localObject3).lXf);
-                                if (((r.b)localObject3).srk > 0L)
+                                ((s.b)localObject3).szG = (((b)localObject4).rZe - ((s.b)localObject3).mbM);
+                                if (((s.b)localObject3).sBu > 0L)
                                 {
-                                  ((r.b)localObject3).srj += ((b)localObject4).rQC - ((r.b)localObject3).srk;
-                                  ((r.b)localObject3).srk = 0L;
+                                  ((s.b)localObject3).sBt += ((b)localObject4).rZe - ((s.b)localObject3).sBu;
+                                  ((s.b)localObject3).sBu = 0L;
                                 }
-                                if (((r.b)localObject3).spu > 0L)
+                                if (((s.b)localObject3).szF > 0L)
                                 {
-                                  ((r.b)localObject3).spt += ((b)localObject4).rQC - ((r.b)localObject3).spu;
-                                  ((r.b)localObject3).spu = 0L;
+                                  ((s.b)localObject3).szE += ((b)localObject4).rZe - ((s.b)localObject3).szF;
+                                  ((s.b)localObject3).szF = 0L;
                                 }
-                                if (((r.b)localObject3).srn > 0L)
+                                if (((s.b)localObject3).sBx > 0L)
                                 {
-                                  ((r.b)localObject3).sro += ((b)localObject4).rQC - ((r.b)localObject3).srn;
-                                  ((r.b)localObject3).srn = 0L;
-                                  paramb = new asv();
-                                  paramb.GqO = ((int)(((b)localObject4).rQC - ((r.b)localObject3).srn));
-                                  paramb.percent = ((r.b)localObject3).sqW;
+                                  ((s.b)localObject3).sBy += ((b)localObject4).rZe - ((s.b)localObject3).sBx;
+                                  ((s.b)localObject3).sBx = 0L;
+                                  paramb = new atl();
+                                  paramb.GKm = ((int)(((b)localObject4).rZe - ((s.b)localObject3).sBx));
+                                  paramb.percent = ((s.b)localObject3).sBh;
                                   paramb.type = 0;
-                                  ((r.b)localObject3).srv.add(paramb);
+                                  ((s.b)localObject3).sBF.add(paramb);
                                 }
-                                paramb = aj.getContext().getSystemService("audio");
+                                paramb = ak.getContext().getSystemService("audio");
                                 if (paramb != null) {
                                   break label1566;
                                 }
-                                throw new v("null cannot be cast to non-null type android.media.AudioManager");
+                                throw new d.v("null cannot be cast to non-null type android.media.AudioManager");
                               }
-                              ((r.b)localObject3).spC = ((AudioManager)paramb).getStreamVolume(3);
-                              if ((((r.b)localObject3).srl == 0L) && (((r.b)localObject3).srh) && (((r.b)localObject3).sqW < 5)) {
-                                ((r.b)localObject3).irQ = 1;
+                              ((s.b)localObject3).szN = ((AudioManager)paramb).getStreamVolume(3);
+                              if ((((s.b)localObject3).sBv == 0L) && (((s.b)localObject3).sBr) && (((s.b)localObject3).sBh < 5)) {
+                                ((s.b)localObject3).iuK = 1;
                               }
-                              paramb = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-                              paramb = ((b.a)localObject4).rQu;
+                              paramb = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+                              paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject4).rYW;
                               if (paramb != null)
                               {
-                                localObject1 = paramb.aeA();
+                                localObject1 = paramb.aeM();
                                 paramb = (b)localObject1;
                                 if (localObject1 != null) {}
                               }
@@ -376,13 +369,13 @@ public abstract class c
                               {
                                 paramb = "";
                               }
-                              localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.aiD(paramb).field_fileFormat;
+                              localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.ajA(paramb).field_fileFormat;
                               paramb = (b)localObject1;
                               if (localObject1 == null) {
                                 paramb = "";
                               }
-                              ((r.b)localObject3).ahP(paramb);
-                              paramb = ((b.a)localObject4).rQu;
+                              ((s.b)localObject3).aiN(paramb);
+                              paramb = ((com.tencent.mm.plugin.finder.event.c.a)localObject4).rYW;
                               if (paramb != null)
                               {
                                 localObject1 = paramb.getPath();
@@ -393,181 +386,191 @@ public abstract class c
                               {
                                 paramb = "";
                               }
-                              paramb = com.tencent.mm.plugin.sight.base.e.axx(paramb);
+                              paramb = com.tencent.mm.plugin.sight.base.e.ayN(paramb);
                               if (paramb != null)
                               {
-                                ((r.b)localObject3).srz = paramb.videoBitrate;
-                                ((r.b)localObject3).srA = paramb.audioBitrate;
-                                ((r.b)localObject3).frameRate = paramb.frameRate;
+                                ((s.b)localObject3).sBJ = paramb.videoBitrate;
+                                ((s.b)localObject3).sBK = paramb.audioBitrate;
+                                ((s.b)localObject3).frameRate = paramb.frameRate;
                               }
-                              if (!((r.b)localObject3).srt) {
-                                ((r)localObject2).a((r.b)localObject3);
+                              if (!((s.b)localObject3).sBD) {
+                                ((s)localObject2).a((s.b)localObject3);
                               }
                               for (;;)
                               {
-                                ((r)localObject2).sqK.remove(Long.valueOf(((b.a)localObject4).dtq));
+                                ((s)localObject2).DQY.remove(Long.valueOf(((com.tencent.mm.plugin.finder.event.c.a)localObject4).duw));
                                 paramb = new StringBuilder();
                                 d.g.b.p.g(localObject3, "this");
-                                ad.i("Finder.FinderVideoPlayReporter", r.a("onStopPlay", (r.b)localObject3) + " playTime:" + ((r.b)localObject3).spv + " pauseTotalTime:" + ((r.b)localObject3).srj + " realPlayTime:" + ((r.b)localObject3).spt + " playStatus:" + ((r.b)localObject3).irQ);
+                                ae.i("Finder.FinderVideoPlayReporter", s.a("onStopPlay", (s.b)localObject3) + " playTime:" + ((s.b)localObject3).szG + " pauseTotalTime:" + ((s.b)localObject3).sBt + " realPlayTime:" + ((s.b)localObject3).szE + " playStatus:" + ((s.b)localObject3).iuK);
                                 return;
-                                ((r)localObject2).sqJ.add(localObject3);
+                                ((s)localObject2).sAT.add(localObject3);
                               }
-                              localObject1 = this.snM;
-                              paramb = (b.a)paramb;
+                              localObject1 = this.sxD;
+                              paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                               d.g.b.p.h(paramb, "event");
-                              localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                              localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                             } while (localObject1 == null);
-                            ((r.b)localObject1).srh = true;
-                            ((r.b)localObject1).srn = paramb.rQC;
-                            ((r.b)localObject1).srm += 1;
-                            if (((r.b)localObject1).srl > 0L) {
-                              ((r.b)localObject1).sru += 1L;
+                            ((s.b)localObject1).sBr = true;
+                            ((s.b)localObject1).sBx = paramb.rZe;
+                            ((s.b)localObject1).sBw += 1;
+                            if (((s.b)localObject1).sBv > 0L) {
+                              ((s.b)localObject1).sBE += 1L;
                             }
                             d.g.b.p.g(localObject1, "this");
-                            ad.i("Finder.FinderVideoPlayReporter", String.valueOf(r.a("onWaiting", (r.b)localObject1)));
+                            ae.i("Finder.FinderVideoPlayReporter", String.valueOf(s.a("onWaiting", (s.b)localObject1)));
                             return;
-                            localObject1 = this.snM;
-                            localObject2 = (b.a)paramb;
+                            localObject1 = this.sxD;
+                            localObject2 = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                             d.g.b.p.h(localObject2, "event");
-                            paramb = (r.b)((r)localObject1).sqK.get(Long.valueOf(((b.a)localObject2).dtq));
+                            paramb = (s.b)((s)localObject1).DQY.get(Long.valueOf(((com.tencent.mm.plugin.finder.event.c.a)localObject2).duw));
                           } while (paramb == null);
-                          paramb.srh = false;
-                        } while (paramb.srn <= 0L);
-                        long l = ((b)localObject2).rQC - paramb.srn;
-                        paramb.sro += l;
-                        localObject1 = new asv();
-                        ((asv)localObject1).GqO = ((int)l);
-                        ((asv)localObject1).percent = paramb.sqW;
-                        if ((paramb.srm == 1) && (paramb.sru == 0L)) {}
-                        for (((asv)localObject1).type = 2;; ((asv)localObject1).type = 0)
+                          paramb.sBr = false;
+                        } while (paramb.sBx <= 0L);
+                        long l = ((b)localObject2).rZe - paramb.sBx;
+                        paramb.sBy += l;
+                        localObject1 = new atl();
+                        ((atl)localObject1).GKm = ((int)l);
+                        ((atl)localObject1).percent = paramb.sBh;
+                        if ((paramb.sBw == 1) && (paramb.sBE == 0L)) {}
+                        for (((atl)localObject1).type = 2;; ((atl)localObject1).type = 0)
                         {
-                          paramb.srv.add(localObject1);
-                          paramb.srn = 0L;
+                          paramb.sBF.add(localObject1);
+                          paramb.sBx = 0L;
                           localObject1 = new StringBuilder();
                           d.g.b.p.g(paramb, "this");
-                          ad.i("Finder.FinderVideoPlayReporter", r.a("onWaitingEnd", paramb) + " totalWaitingTime:" + paramb.sro);
+                          ae.i("Finder.FinderVideoPlayReporter", s.a("onWaitingEnd", paramb) + " totalWaitingTime:" + paramb.sBy);
                           return;
                         }
-                        localObject1 = this.snM;
-                        paramb = (b.a)paramb;
+                        localObject1 = this.sxD;
+                        paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                         d.g.b.p.h(paramb, "event");
-                        localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                        localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                       } while (localObject1 == null);
-                      if (((r.b)localObject1).sra == 0L) {
-                        ((r.b)localObject1).sra = (paramb.rQC - ((r.b)localObject1).lXf - ((r.b)localObject1).srj);
+                      if (((s.b)localObject1).sBl == 0L) {
+                        ((s.b)localObject1).sBl = (paramb.rZe - ((s.b)localObject1).mbM - ((s.b)localObject1).sBt);
                       }
-                      ((r.b)localObject1).srb = (paramb.offset + paramb.ieH);
-                      ((r.b)localObject1).srh = false;
+                      ((s.b)localObject1).sBm = (paramb.offset + paramb.ihz);
+                      ((s.b)localObject1).sBr = false;
                       paramb = new StringBuilder();
                       d.g.b.p.g(localObject1, "this");
-                      ad.i("Finder.FinderVideoPlayReporter", r.a("onMoovReady", (r.b)localObject1) + " moovReadyTime:" + ((r.b)localObject1).sra);
+                      ae.i("Finder.FinderVideoPlayReporter", s.a("onMoovReady", (s.b)localObject1) + " moovReadyTime:" + ((s.b)localObject1).sBl);
                       return;
-                      localObject1 = this.snM;
-                      paramb = (b.a)paramb;
+                      localObject1 = this.sxD;
+                      paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                       d.g.b.p.h(paramb, "event");
-                      localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                      localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
                     } while (localObject1 == null);
-                    Object localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
-                    i = com.tencent.mm.plugin.finder.utils.p.fV(paramb.offset, paramb.ieH);
-                  } while (i <= ((r.b)localObject1).lsH);
-                  ((r.b)localObject1).lsH = i;
+                    localObject2 = com.tencent.mm.plugin.finder.utils.p.sXz;
+                    i = com.tencent.mm.plugin.finder.utils.p.fV(paramb.offset, paramb.ihz);
+                  } while (i <= ((s.b)localObject1).lxg);
+                  ((s.b)localObject1).lxg = i;
                   return;
-                  localObject1 = this.snM;
-                  paramb = (b.a)paramb;
+                  localObject1 = this.sxD;
+                  paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                   d.g.b.p.h(paramb, "event");
-                  localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
-                } while ((localObject1 == null) || (((r.b)localObject1).srq != 0L));
-                ((r.b)localObject1).srq = (paramb.offset + paramb.ieH);
+                  localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
+                } while ((localObject1 == null) || (((s.b)localObject1).sBA != 0L));
+                ((s.b)localObject1).sBA = (paramb.offset + paramb.ihz);
                 return;
-                localObject1 = this.snM;
-                paramb = (b.a)paramb;
+                localObject1 = this.sxD;
+                paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
                 d.g.b.p.h(paramb, "event");
-                localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+                localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
               } while (localObject1 == null);
-              ((r.b)localObject1).sqZ = (paramb.rQC - ((r.b)localObject1).lXf);
-              paramb = paramb.gwW;
-              if ((paramb != null) && (((r.b)localObject1).srs == null)) {
-                ((r.b)localObject1).srs = r.b(paramb);
+              ((s.b)localObject1).sBk = (paramb.rZe - ((s.b)localObject1).mbM);
+              paramb = paramb.gzD;
+              if ((paramb != null) && (((s.b)localObject1).sBC == null)) {
+                ((s.b)localObject1).sBC = s.b(paramb);
               }
               d.g.b.p.g(localObject1, "this");
-              ad.i("Finder.FinderVideoPlayReporter", String.valueOf(r.a("onDownloadFinish", (r.b)localObject1)));
+              ae.i("Finder.FinderVideoPlayReporter", String.valueOf(s.a("onDownloadFinish", (s.b)localObject1)));
               return;
-              this.snM.a((b.a)paramb);
+              this.sxD.a((com.tencent.mm.plugin.finder.event.c.a)paramb);
               return;
-              localObject1 = this.snM;
-              paramb = (b.a)paramb;
+              localObject1 = this.sxD;
+              paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
               d.g.b.p.h(paramb, "event");
-              paramb = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+              paramb = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
             } while (paramb == null);
-            paramb.srt = true;
+            paramb.sBD = true;
             d.g.b.p.g(paramb, "this");
-            ad.i("Finder.FinderVideoPlayReporter", String.valueOf(r.a("onDownloadStart", paramb)));
+            ae.i("Finder.FinderVideoPlayReporter", String.valueOf(s.a("onDownloadStart", paramb)));
             return;
-            localObject1 = this.snM;
-            paramb = (b.a)paramb;
+            localObject1 = this.sxD;
+            paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
             d.g.b.p.h(paramb, "event");
-            paramb = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+            paramb = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
           } while (paramb == null);
-          paramb.spy = 1;
+          paramb.szJ = 1;
           return;
-          localObject1 = this.snM;
-          paramb = (b.a)paramb;
-          d.g.b.p.h(paramb, "event");
-          localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
-        } while (localObject1 == null);
-        if (((r.b)localObject1).srl == 0L)
+          localObject1 = this.sxD;
+          localObject2 = (com.tencent.mm.plugin.finder.event.c.a)paramb;
+          d.g.b.p.h(localObject2, "event");
+          paramb = (s.b)((s)localObject1).DQY.get(Long.valueOf(((com.tencent.mm.plugin.finder.event.c.a)localObject2).duw));
+        } while (paramb == null);
+        if (paramb.sBv == 0L)
         {
-          ((r.b)localObject1).srl = (paramb.rQC - ((r.b)localObject1).lXf);
-          if (((r.b)localObject1).srl > ((r.b)localObject1).srj) {
-            ((r.b)localObject1).srl -= ((r.b)localObject1).srj;
+          paramb.sBv = (((b)localObject2).rZe - paramb.mbM);
+          if (paramb.sBv > paramb.sBt) {
+            paramb.sBv -= paramb.sBt;
           }
         }
-        if (((r.b)localObject1).sqV == 0L) {
-          ((r.b)localObject1).sqV = paramb.rQy;
+        if (paramb.sBg == 0L) {
+          paramb.sBg = ((com.tencent.mm.plugin.finder.event.c.a)localObject2).rZa;
         }
-        paramb = new StringBuilder();
-        d.g.b.p.g(localObject1, "this");
-        ad.i("Finder.FinderVideoPlayReporter", r.a("onFirstFrameUpdate", (r.b)localObject1) + " firstFrameTime:" + ((r.b)localObject1).srl + " firstLoadTime:" + ((r.b)localObject1).sqV);
-        return;
-        localObject1 = this.snM;
-        paramb = (b.a)paramb;
+        localObject1 = ((com.tencent.mm.plugin.finder.event.c.a)localObject2).rYV;
+        if (localObject1 != null)
+        {
+          localObject1 = ((bvz)localObject1).HiY;
+          if (localObject1 == null) {}
+        }
+        for (int i = ((FinderMediaReportObject)localObject1).playDecoderType;; i = 0)
+        {
+          paramb.playDecoderType = i;
+          localObject1 = new StringBuilder();
+          d.g.b.p.g(paramb, "this");
+          ae.i("Finder.FinderVideoPlayReporter", s.a("onFirstFrameUpdate", paramb) + " firstFrameTime:" + paramb.sBv + " firstLoadTime:" + paramb.sBg + " playDecoderType=" + paramb.playDecoderType);
+          return;
+        }
+        localObject1 = this.sxD;
+        paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
         d.g.b.p.h(paramb, "event");
-        paramb = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+        paramb = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
       } while (paramb == null);
-      paramb.spx = 1;
+      paramb.szI = 1;
       return;
-      localObject1 = this.snM;
-      paramb = (b.a)paramb;
+      localObject1 = this.sxD;
+      paramb = (com.tencent.mm.plugin.finder.event.c.a)paramb;
       d.g.b.p.h(paramb, "event");
-      localObject1 = (r.b)((r)localObject1).sqK.get(Long.valueOf(paramb.dtq));
+      localObject1 = (s.b)((s)localObject1).DQY.get(Long.valueOf(paramb.duw));
     } while (localObject1 == null);
     label914:
     label962:
     label1092:
-    ((r.b)localObject1).srE = paramb.ret;
+    ((s.b)localObject1).sBO = paramb.ret;
     label1081:
     label1086:
     paramb = new StringBuilder();
     label1566:
     d.g.b.p.g(localObject1, "this");
-    ad.i("Finder.FinderVideoPlayReporter", r.a("onPlayError", (r.b)localObject1) + " playerErrCode:" + ((r.b)localObject1).srE);
+    ae.i("Finder.FinderVideoPlayReporter", s.a("onPlayError", (s.b)localObject1) + " playerErrCode:" + ((s.b)localObject1).sBO);
   }
   
   public boolean a(com.tencent.mm.plugin.finder.event.base.c paramc, b paramb)
   {
     d.g.b.p.h(paramc, "dispatcher");
     d.g.b.p.h(paramb, "event");
-    return (paramb instanceof b.a);
+    return (paramb instanceof com.tencent.mm.plugin.finder.event.c.a);
   }
   
-  public final void c(aqy paramaqy)
+  public final void c(arn paramarn)
   {
-    d.g.b.p.h(paramaqy, "contextObj");
-    this.rIl = paramaqy;
-    this.snM.c(paramaqy);
+    d.g.b.p.h(paramarn, "contextObj");
+    this.rQw = paramarn;
+    this.sxD.c(paramarn);
   }
   
-  public LinkedList<dij> cDp()
+  public LinkedList<dje> cFh()
   {
     return new LinkedList();
   }
@@ -579,8 +582,8 @@ public abstract class c
   
   public void onRelease()
   {
-    FinderReporterUIC.a locala = FinderReporterUIC.tcM;
-    com.tencent.mm.ad.c.c(FinderReporterUIC.cOy(), (d.g.a.a)new c(this));
+    FinderReporterUIC.a locala = FinderReporterUIC.tnG;
+    com.tencent.mm.ac.c.c(FinderReporterUIC.cRd(), (d.g.a.a)new c(this));
   }
   
   public void onVisible()
@@ -588,34 +591,12 @@ public abstract class c
     this.visible = true;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter$Companion;", "", "()V", "KV_VERSION", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "buildJson", "Lorg/json/JSONObject;", "actionType", "values", "", "(I[Ljava/lang/String;)Lorg/json/JSONObject;", "maps", "", "report18054", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feedId", "", "actionValue", "actionTime", "report19259", "record", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "exposeType", "report19997", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "report20027", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter$Companion;", "", "()V", "KV_VERSION", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "buildJson", "Lorg/json/JSONObject;", "actionType", "values", "", "(I[Ljava/lang/String;)Lorg/json/JSONObject;", "maps", "", "report18054", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feedId", "", "actionValue", "actionTime", "report19259", "record", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "exposeType", "report19997", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "report20027", "plugin-finder_release"})
   public static final class a
   {
-    public static String Y(Map<String, ? extends Object> paramMap)
-    {
-      AppMethodBeat.i(203203);
-      d.g.b.p.h(paramMap, "maps");
-      JSONObject localJSONObject = new JSONObject();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        try
-        {
-          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-        }
-        catch (Exception localException) {}
-      }
-      paramMap = localJSONObject.toString();
-      d.g.b.p.g(paramMap, "json.toString()");
-      paramMap = n.h(paramMap, ",", ";", false);
-      AppMethodBeat.o(203203);
-      return paramMap;
-    }
-    
     public static JSONObject a(int paramInt, String... paramVarArgs)
     {
-      AppMethodBeat.i(203202);
+      AppMethodBeat.i(203743);
       d.g.b.p.h(paramVarArgs, "values");
       JSONObject localJSONObject = new JSONObject();
       switch (paramInt)
@@ -623,7 +604,7 @@ public abstract class c
       }
       for (;;)
       {
-        AppMethodBeat.o(203202);
+        AppMethodBeat.o(203743);
         return localJSONObject;
         localJSONObject.put("len", paramVarArgs[0]);
         localJSONObject.put("idx_last", paramVarArgs[1]);
@@ -645,39 +626,39 @@ public abstract class c
       }
     }
     
-    public static void a(aqy paramaqy, long paramLong1, int paramInt, String paramString, long paramLong2)
+    public static void a(arn paramarn, long paramLong1, int paramInt, String paramString, long paramLong2)
     {
-      AppMethodBeat.i(203200);
-      d.g.b.p.h(paramaqy, "contextObj");
+      AppMethodBeat.i(203741);
+      d.g.b.p.h(paramarn, "contextObj");
       d.g.b.p.h(paramString, "actionValue");
       ar localar = new ar();
-      localar.hY(com.tencent.mm.ad.c.rc(paramLong1));
-      localar.dC(paramaqy.rTD);
-      localar.io(paramInt);
-      localar.hZ(n.h(paramString, ",", ";", false));
-      if (i.DEBUG)
+      localar.ih(com.tencent.mm.ac.c.rp(paramLong1));
+      localar.dD(paramarn.sch);
+      localar.iq(paramInt);
+      localar.ii(n.h(paramString, ",", ";", false));
+      if (com.tencent.mm.sdk.platformtools.j.DEBUG)
       {
         paramInt = 0;
-        localar.ip(paramInt);
-        localar.dA(paramLong2);
-        localar.ia(paramaqy.sessionId);
-        paramString = h.soM;
-        paramString = h.ws(paramLong1);
+        localar.ir(paramInt);
+        localar.dB(paramLong2);
+        localar.ij(paramarn.sessionId);
+        paramString = i.syT;
+        paramString = i.wJ(paramLong1);
         if (paramString != null)
         {
-          localar.iq(paramString.getMediaType());
-          paramString = (bvf)j.jd((List)paramString.getMediaList());
+          localar.is(paramString.getMediaType());
+          paramString = (bvz)d.a.j.jm((List)paramString.getMediaList());
           if (paramString == null) {
-            break label311;
+            break label393;
           }
         }
       }
-      label311:
+      label393:
       for (paramLong2 = paramString.videoDuration;; paramLong2 = 0L)
       {
-        localar.dB(paramLong2);
-        paramString = h.soM;
-        paramString = h.I(paramLong1, paramaqy.rTD);
+        localar.dC(paramLong2);
+        paramString = i.syT;
+        paramString = i.I(paramLong1, paramarn.sch);
         if (paramString != null)
         {
           str = n.h(paramString, ",", ";", false);
@@ -688,364 +669,410 @@ public abstract class c
         {
           paramString = "";
         }
-        localar.ib(paramString);
-        localar.ic(com.tencent.mm.ad.c.rc(paramaqy.tcj));
-        String str = paramaqy.tck;
+        localar.ik(paramString);
+        localar.il(com.tencent.mm.ac.c.rp(paramarn.tnd));
+        String str = paramarn.tne;
         paramString = str;
         if (str == null) {
           paramString = "";
         }
-        localar.ie(paramString);
-        localar.jdMethod_if(paramaqy.qXj);
-        localar.ig(paramaqy.qXu);
-        localar.dJX();
-        paramaqy = h.soM;
-        h.a((com.tencent.mm.plugin.report.a)localar);
-        AppMethodBeat.o(203200);
+        localar.im(paramString);
+        localar.in(paramarn.rfo);
+        localar.io(paramarn.rfA);
+        paramString = paramarn.extraInfo;
+        if (paramString != null)
+        {
+          str = n.h(paramString, ",", ";", false);
+          paramString = str;
+          if (str != null) {}
+        }
+        else
+        {
+          paramString = "";
+        }
+        localar.ip(paramString);
+        paramarn = paramarn.rfr;
+        if (paramarn != null)
+        {
+          paramString = n.h(paramarn, ",", ";", false);
+          paramarn = paramString;
+          if (paramString != null) {}
+        }
+        else
+        {
+          paramarn = "";
+        }
+        localar.iq(paramarn);
+        localar.dNp();
+        paramarn = i.syT;
+        i.a((com.tencent.mm.plugin.report.a)localar);
+        AppMethodBeat.o(203741);
         return;
         paramInt = 43;
         break;
       }
     }
     
-    public static void a(aqy paramaqy, l paraml)
+    public static void a(arn paramarn, m paramm)
     {
-      AppMethodBeat.i(203205);
-      d.g.b.p.h(paramaqy, "contextObj");
-      d.g.b.p.h(paraml, "record");
-      az localaz = new az();
-      localaz.iP(paramaqy.sessionId);
-      localaz.iQ(paramaqy.qXu);
-      localaz.iR(paramaqy.qXj);
-      localaz.en(paramaqy.rTD);
-      localaz.iS(com.tencent.mm.ad.c.rc(paraml.dtq));
-      paramaqy = paraml.feed;
+      AppMethodBeat.i(203746);
+      d.g.b.p.h(paramarn, "contextObj");
+      d.g.b.p.h(paramm, "record");
+      com.tencent.mm.g.b.a.az localaz = new com.tencent.mm.g.b.a.az();
+      localaz.iZ(paramarn.sessionId);
+      localaz.ja(paramarn.rfA);
+      localaz.jb(paramarn.rfo);
+      localaz.eo(paramarn.sch);
+      localaz.jc(com.tencent.mm.ac.c.rp(paramm.duw));
+      paramarn = paramm.feed;
       long l1;
       Object localObject1;
-      label150:
+      label148:
       long l2;
-      if (paramaqy != null)
+      if (paramarn != null)
       {
-        paramaqy = paramaqy.getFoldedLayout();
-        if (paramaqy != null)
+        paramarn = paramarn.getFoldedLayout();
+        if (paramarn != null)
         {
-          l1 = paramaqy.fTM;
-          localaz.eo(l1);
-          paramaqy = paraml.feed;
-          if (paramaqy != null)
+          l1 = paramarn.fVS;
+          localaz.ep(l1);
+          paramarn = paramm.feed;
+          if (paramarn != null)
           {
-            paramaqy = paramaqy.getFoldedLayout();
-            if (paramaqy != null)
+            paramarn = paramarn.getFoldedLayout();
+            if (paramarn != null)
             {
-              localObject1 = paramaqy.username;
-              paramaqy = (aqy)localObject1;
+              localObject1 = paramarn.username;
+              paramarn = (arn)localObject1;
               if (localObject1 != null) {
-                break label150;
+                break label148;
               }
             }
           }
-          paramaqy = "";
-          localaz.iT(paramaqy);
-          localaz.iU("");
+          paramarn = "";
+          localaz.jd(paramarn);
+          localaz.je("");
           l2 = 0L;
-          paramaqy = FinderFoldedScrollLayout.sUv;
-          if (FinderFoldedScrollLayout.cNp() == 0L) {
-            break label411;
+          paramarn = FinderFoldedScrollLayout.tfJ;
+          if (FinderFoldedScrollLayout.cPZ() == 0L) {
+            break label409;
           }
-          paramaqy = FinderFoldedScrollLayout.sUv;
-          localaz.eq(FinderFoldedScrollLayout.cNp());
+          paramarn = FinderFoldedScrollLayout.tfJ;
+          localaz.er(FinderFoldedScrollLayout.cPZ());
           l1 = 0L;
         }
       }
       for (;;)
       {
-        label196:
-        paramaqy = paraml.feed;
-        if (paramaqy != null)
+        label194:
+        paramarn = paramm.feed;
+        if (paramarn != null)
         {
-          paramaqy = paramaqy.getFoldedLayout();
-          if (paramaqy != null)
+          paramarn = paramarn.getFoldedLayout();
+          if (paramarn != null)
           {
-            paramaqy = paramaqy.Gmm;
-            if (paramaqy != null)
+            paramarn = paramarn.GFu;
+            if (paramarn != null)
             {
-              localObject1 = ((Iterable)paramaqy).iterator();
+              localObject1 = ((Iterable)paramarn).iterator();
               int i = 0;
               for (;;)
               {
-                label236:
+                label234:
                 if (!((Iterator)localObject1).hasNext()) {
-                  break label694;
+                  break label692;
                 }
-                paramaqy = ((Iterator)localObject1).next();
+                paramarn = ((Iterator)localObject1).next();
                 int j = i + 1;
                 if (i < 0) {
-                  j.gfB();
+                  d.a.j.gkd();
                 }
-                Object localObject2 = (FinderObject)paramaqy;
-                paramaqy = paraml.rRb;
-                if (paramaqy != null)
+                Object localObject2 = (FinderObject)paramarn;
+                paramarn = paramm.rZD;
+                if (paramarn != null)
                 {
-                  paramaqy = paramaqy.LvD;
-                  if (paramaqy != null) {
-                    paramaqy = (com.tencent.mm.view.recyclerview.h)paramaqy.get(((FinderObject)localObject2).id);
+                  paramarn = paramarn.LSq;
+                  if (paramarn != null) {
+                    paramarn = (h)paramarn.get(((FinderObject)localObject2).id);
                   }
                 }
                 for (;;)
                 {
-                  if (paramaqy != null)
+                  if (paramarn != null)
                   {
-                    if (l2 == paramaqy.LvK.lP())
+                    if (l2 == paramarn.LSx.lP())
                     {
-                      localObject2 = localaz.Sd();
-                      localaz.iU((String)localObject2 + com.tencent.mm.ad.c.rc(paramaqy.LvK.lP()) + ';' + i + ';' + paramaqy.LvL + ';' + l1 + '#');
+                      localObject2 = localaz.Sb();
+                      localaz.je((String)localObject2 + com.tencent.mm.ac.c.rp(paramarn.LSx.lP()) + ';' + i + ';' + paramarn.LSy + ';' + l1 + '#');
                       i = j;
-                      break label236;
+                      break label234;
                       l1 = 0L;
                       break;
-                      label411:
-                      paramaqy = FinderFoldedScrollLayout.sUv;
-                      if (FinderFoldedScrollLayout.cNq() != 0L)
+                      label409:
+                      paramarn = FinderFoldedScrollLayout.tfJ;
+                      if (FinderFoldedScrollLayout.cQa() != 0L)
                       {
-                        paramaqy = FinderFoldedScrollLayout.sUv;
-                        localaz.ep(FinderFoldedScrollLayout.cNq());
+                        paramarn = FinderFoldedScrollLayout.tfJ;
+                        localaz.eq(FinderFoldedScrollLayout.cQa());
                         l1 = 0L;
-                        break label196;
+                        break label194;
                       }
-                      paramaqy = FinderFoldedScrollLayout.sUv;
-                      if (FinderFoldedScrollLayout.cNs() == 0L) {
-                        break label751;
+                      paramarn = FinderFoldedScrollLayout.tfJ;
+                      if (FinderFoldedScrollLayout.cQc() == 0L) {
+                        break label748;
                       }
-                      paramaqy = FinderFoldedScrollLayout.sUv;
-                      l2 = FinderFoldedScrollLayout.cNr();
-                      paramaqy = FinderFoldedScrollLayout.sUv;
-                      l1 = FinderFoldedScrollLayout.cNs();
-                      break label196;
-                      paramaqy = null;
+                      paramarn = FinderFoldedScrollLayout.tfJ;
+                      l2 = FinderFoldedScrollLayout.cQb();
+                      paramarn = FinderFoldedScrollLayout.tfJ;
+                      l1 = FinderFoldedScrollLayout.cQc();
+                      break label194;
+                      paramarn = null;
                       continue;
                     }
-                    localObject2 = localaz.Sd();
-                    localaz.iU((String)localObject2 + com.tencent.mm.ad.c.rc(paramaqy.LvK.lP()) + ';' + i + ';' + paramaqy.LvL + ";0#");
+                    localObject2 = localaz.Sb();
+                    localaz.je((String)localObject2 + com.tencent.mm.ac.c.rp(paramarn.LSx.lP()) + ';' + i + ';' + paramarn.LSy + ";0#");
                     i = j;
-                    break label236;
+                    break label234;
                   }
                 }
-                paramaqy = c.snN;
+                paramarn = c.sxE;
                 if (l2 == ((FinderObject)localObject2).id)
                 {
-                  paramaqy = localaz.Sd();
-                  localaz.iU(paramaqy + com.tencent.mm.ad.c.rc(((FinderObject)localObject2).id) + ';' + i + ";0;" + l1 + '#');
+                  paramarn = localaz.Sb();
+                  localaz.je(paramarn + com.tencent.mm.ac.c.rp(((FinderObject)localObject2).id) + ';' + i + ";0;" + l1 + '#');
                   i = j;
                 }
                 else
                 {
-                  paramaqy = localaz.Sd();
-                  localaz.iU(paramaqy + com.tencent.mm.ad.c.rc(((FinderObject)localObject2).id) + ';' + i + ";0;0#");
+                  paramarn = localaz.Sb();
+                  localaz.je(paramarn + com.tencent.mm.ac.c.rp(((FinderObject)localObject2).id) + ';' + i + ";0;0#");
                   i = j;
                 }
               }
             }
           }
         }
-        label694:
-        paramaqy = FinderFoldedScrollLayout.sUv;
-        FinderFoldedScrollLayout.xs(0L);
-        paramaqy = FinderFoldedScrollLayout.sUv;
-        FinderFoldedScrollLayout.xv(0L);
-        paramaqy = FinderFoldedScrollLayout.sUv;
-        FinderFoldedScrollLayout.xu(0L);
-        paramaqy = FinderFoldedScrollLayout.sUv;
-        FinderFoldedScrollLayout.xt(0L);
-        localaz.dJX();
-        paramaqy = h.soM;
-        h.a((com.tencent.mm.plugin.report.a)localaz);
-        AppMethodBeat.o(203205);
+        label692:
+        paramarn = FinderFoldedScrollLayout.tfJ;
+        FinderFoldedScrollLayout.xM(0L);
+        paramarn = FinderFoldedScrollLayout.tfJ;
+        FinderFoldedScrollLayout.xP(0L);
+        paramarn = FinderFoldedScrollLayout.tfJ;
+        FinderFoldedScrollLayout.xO(0L);
+        paramarn = FinderFoldedScrollLayout.tfJ;
+        FinderFoldedScrollLayout.xN(0L);
+        localaz.dNp();
+        paramarn = i.syT;
+        i.a((com.tencent.mm.plugin.report.a)localaz);
+        AppMethodBeat.o(203746);
         return;
-        label751:
+        label748:
         l1 = 0L;
       }
     }
     
-    public static void a(aqy paramaqy, l paraml, int paramInt)
+    public static void a(arn paramarn, m paramm, int paramInt)
     {
       long l2 = 0L;
-      AppMethodBeat.i(203204);
-      d.g.b.p.h(paramaqy, "contextObj");
-      d.g.b.p.h(paraml, "record");
-      FinderItem localFinderItem = paraml.feed;
+      AppMethodBeat.i(203745);
+      d.g.b.p.h(paramarn, "contextObj");
+      d.g.b.p.h(paramm, "record");
+      FinderItem localFinderItem = paramm.feed;
       if (localFinderItem != null)
       {
         bc localbc = new bc();
-        localbc.ji(com.tencent.mm.ad.c.rc(localFinderItem.getId()));
-        localbc.eE(localFinderItem.getMediaType());
-        localbc.jj(paramaqy.sessionId);
-        localbc.eS(paramaqy.rTD);
-        localbc.eF(paraml.soX);
-        localbc.eG(localFinderItem.getLikeCount());
-        localbc.eH(localFinderItem.getCommentCount());
-        Object localObject1 = o.sMi;
-        localbc.jk(n.h(o.p(localFinderItem), ",", ";", false));
+        localbc.ju(com.tencent.mm.ac.c.rp(localFinderItem.getId()));
+        localbc.eF(localFinderItem.getMediaType());
+        localbc.jv(paramarn.sessionId);
+        localbc.eT(paramarn.sch);
+        localbc.eG(paramm.szi);
+        localbc.eH(localFinderItem.getLikeCount());
+        localbc.eI(localFinderItem.getCommentCount());
+        Object localObject1 = o.sXt;
+        localbc.jw(n.h(o.p(localFinderItem), ",", ";", false));
         Object localObject2 = localFinderItem.getFeedObject().recommendReason;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        localbc.jl((String)localObject1);
+        localbc.jx((String)localObject1);
         long l1;
-        if (d.g.b.p.i(localFinderItem.getUserName(), u.aAu()))
+        if (d.g.b.p.i(localFinderItem.getUserName(), com.tencent.mm.model.v.aAK()))
         {
           l1 = 1L;
-          localbc.eI(l1);
-          localbc.eJ(localFinderItem.getCreateTime());
+          localbc.eJ(l1);
+          localbc.eK(localFinderItem.getCreateTime());
           localObject1 = localFinderItem.getLocation();
-          if ((localObject1 != null) && (((aoy)localObject1).dyz > 0.0F) && (((aoy)localObject1).dAp > 0.0F)) {
-            localbc.Sf();
+          if ((localObject1 != null) && (((apl)localObject1).dzE > 0.0F) && (((apl)localObject1).dBu > 0.0F)) {
+            localbc.Sd();
           }
-          localbc.eK(localFinderItem.getMediaList().size());
+          localbc.eL(localFinderItem.getMediaList().size());
           if ((localFinderItem.getMediaType() == 4) && (localFinderItem.getMediaList().size() > 0)) {
-            localbc.eL(((bvf)localFinderItem.getMediaList().get(0)).videoDuration);
+            localbc.eM(((bvz)localFinderItem.getMediaList().get(0)).videoDuration);
           }
-          localbc.eM(paraml.endTime - paraml.startTime);
-          if (!i.DEBUG) {
-            break label723;
+          localbc.eN(paramm.endTime - paramm.startTime);
+          if (!com.tencent.mm.sdk.platformtools.j.DEBUG) {
+            break label722;
           }
           l1 = l2;
-          label332:
-          localbc.eN(l1);
-          localbc.eO(localFinderItem.getFeedObject().recommendType);
-          localbc.jm(localFinderItem.getUserName());
-          localbc.eP(localFinderItem.getFeedObject().orgRecommendType);
+          label331:
+          localbc.eO(l1);
+          localbc.eP(localFinderItem.getFeedObject().recommendType);
+          localbc.jy(localFinderItem.getUserName());
+          localbc.eQ(localFinderItem.getFeedObject().orgRecommendType);
           localObject2 = localFinderItem.getFeedObject().warnWording;
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = "";
           }
-          localbc.jn((String)localObject1);
-          localbc.eQ(localFinderItem.getFeedObject().warnFlag);
-          localbc.eR(paramInt);
-          localObject2 = paramaqy.qXu;
+          localbc.jz((String)localObject1);
+          localbc.eR(localFinderItem.getFeedObject().warnFlag);
+          localbc.eS(paramInt);
+          localObject2 = paramarn.rfA;
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = "";
           }
-          localbc.jo((String)localObject1);
-          localbc.jp(com.tencent.mm.ad.c.rc(paramaqy.tcj));
-          localObject2 = paramaqy.tck;
+          localbc.jA((String)localObject1);
+          localbc.jB(com.tencent.mm.ac.c.rp(paramarn.tnd));
+          localObject2 = paramarn.tne;
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = "";
           }
-          localbc.jq((String)localObject1);
-          localObject2 = paramaqy.qXj;
+          localbc.jC((String)localObject1);
+          localObject2 = paramarn.rfo;
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = "";
           }
-          localbc.jr((String)localObject1);
-          localbc.eT(paraml.soY);
-          paraml = h.soM;
-          localbc.eU(h.EX(paramaqy.rTD));
-          paraml = h.soM;
-          localbc.js(h.I(localFinderItem.getId(), paramaqy.rTD));
-          paramaqy = com.tencent.mm.plugin.finder.upload.action.g.sKi;
-          paramaqy = com.tencent.mm.plugin.finder.upload.action.g.cKV().n(localFinderItem.getFeedObject());
-          localbc.eV(paramaqy.size());
-          if (paramaqy.size() <= 3) {
-            break label730;
+          localbc.jD((String)localObject1);
+          localbc.eU(paramm.szj);
+          paramm = i.syT;
+          localbc.eV(i.Ft(paramarn.sch));
+          paramm = i.syT;
+          localbc.jE(i.I(localFinderItem.getId(), paramarn.sch));
+          paramarn = com.tencent.mm.plugin.finder.upload.action.g.sVv;
+          paramarn = com.tencent.mm.plugin.finder.upload.action.g.cNz().n(localFinderItem.getFeedObject());
+          localbc.eW(paramarn.size());
+          if (paramarn.size() <= 3) {
+            break label729;
           }
-          localbc.eW(3L);
+          localbc.eX(3L);
         }
         for (;;)
         {
-          localbc.jt("");
-          paramaqy = ((Iterable)paramaqy).iterator();
+          localbc.jF("");
+          paramarn = ((Iterable)paramarn).iterator();
           paramInt = 0;
-          while (paramaqy.hasNext())
+          while (paramarn.hasNext())
           {
-            paraml = paramaqy.next();
+            paramm = paramarn.next();
             if (paramInt < 0) {
-              j.gfB();
+              d.a.j.gkd();
             }
-            paraml = (FinderCommentInfo)paraml;
+            paramm = (FinderCommentInfo)paramm;
             if (paramInt <= 2) {
-              localbc.jt(localbc.Sg() + paraml.username + '|');
+              localbc.jF(localbc.Se() + paramm.username + '|');
             }
             paramInt += 1;
           }
           l1 = 0L;
           break;
-          label723:
+          label722:
           l1 = 5L;
-          break label332;
-          label730:
-          localbc.eW(paramaqy.size());
+          break label331;
+          label729:
+          localbc.eX(paramarn.size());
         }
-        localbc.eX(localFinderItem.getFeedObject().commentList.size());
-        paramaqy = localFinderItem.getFeedObject().commentList;
-        d.g.b.p.g(paramaqy, "it.feedObject.commentList");
-        paramaqy = (FinderCommentInfo)j.jd((List)paramaqy);
-        if (paramaqy != null)
+        localbc.eY(localFinderItem.getFeedObject().commentList.size());
+        paramarn = localFinderItem.getFeedObject().commentList;
+        d.g.b.p.g(paramarn, "it.feedObject.commentList");
+        paramarn = (FinderCommentInfo)d.a.j.jm((List)paramarn);
+        if (paramarn != null)
         {
-          paraml = paramaqy.username;
-          paramaqy = paraml;
-          if (paraml != null) {}
+          paramm = paramarn.username;
+          paramarn = paramm;
+          if (paramm != null) {}
         }
         else
         {
-          paramaqy = "";
+          paramarn = "";
         }
-        localbc.ju(paramaqy);
-        paramaqy = com.tencent.mm.plugin.finder.utils.p.sMo;
+        localbc.jG(paramarn);
+        paramarn = com.tencent.mm.plugin.finder.utils.p.sXz;
         if (com.tencent.mm.plugin.finder.utils.p.r(localFinderItem)) {
-          localbc.eY(localFinderItem.getFeedObject().incFriendLikeCount);
+          localbc.eZ(localFinderItem.getFeedObject().incFriendLikeCount);
         }
-        paramaqy = localFinderItem.getFeedObject().commentList;
-        d.g.b.p.g(paramaqy, "it.feedObject.commentList");
-        paraml = (Iterable)paramaqy;
-        paramaqy = (Collection)new ArrayList();
-        paraml = paraml.iterator();
-        while (paraml.hasNext())
+        paramarn = localFinderItem.getFeedObject().commentList;
+        d.g.b.p.g(paramarn, "it.feedObject.commentList");
+        paramm = (Iterable)paramarn;
+        paramarn = (Collection)new ArrayList();
+        paramm = paramm.iterator();
+        while (paramm.hasNext())
         {
-          localObject1 = paraml.next();
+          localObject1 = paramm.next();
           localObject2 = (FinderCommentInfo)localObject1;
           if (((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isFriend(((FinderCommentInfo)localObject2).username)) {
-            paramaqy.add(localObject1);
+            paramarn.add(localObject1);
           }
         }
-        localbc.yL(((List)paramaqy).size());
-        localbc.FR(localFinderItem.getFeedObject().commentList.size());
-        localbc.dJX();
-        paramaqy = h.soM;
-        h.a((com.tencent.mm.plugin.report.a)localbc);
-        AppMethodBeat.o(203204);
+        localbc.fa(((List)paramarn).size());
+        localbc.fb(localFinderItem.getFeedObject().commentList.size());
+        localbc.dNp();
+        paramarn = i.syT;
+        i.a((com.tencent.mm.plugin.report.a)localbc);
+        AppMethodBeat.o(203745);
         return;
       }
-      AppMethodBeat.o(203204);
+      AppMethodBeat.o(203745);
+    }
+    
+    public static String ae(Map<String, ? extends Object> paramMap)
+    {
+      AppMethodBeat.i(203744);
+      d.g.b.p.h(paramMap, "maps");
+      JSONObject localJSONObject = new JSONObject();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        try
+        {
+          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        }
+        catch (Exception localException) {}
+      }
+      paramMap = localJSONObject.toString();
+      d.g.b.p.g(paramMap, "json.toString()");
+      paramMap = n.h(paramMap, ",", ";", false);
+      AppMethodBeat.o(203744);
+      return paramMap;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter$INPUT_RESULT;", "", "()V", "Companion", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter$INPUT_RESULT;", "", "()V", "Companion", "plugin-finder_release"})
   public static final class b
   {
-    private static final String snO = "1";
-    public static final a snP;
+    private static final String sxF = "1";
+    public static final a sxG;
     
     static
     {
-      AppMethodBeat.i(203206);
-      snP = new a((byte)0);
-      snO = "1";
-      AppMethodBeat.o(203206);
+      AppMethodBeat.i(203747);
+      sxG = new a((byte)0);
+      sxF = "1";
+      AppMethodBeat.o(203747);
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter$INPUT_RESULT$Companion;", "", "()V", "CLICK", "", "getCLICK", "()Ljava/lang/String;", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter$INPUT_RESULT$Companion;", "", "()V", "CLICK", "", "getCLICK", "()Ljava/lang/String;", "plugin-finder_release"})
     public static final class a {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<z>
+    implements d.g.a.a<d.z>
   {
     c(c paramc)
     {

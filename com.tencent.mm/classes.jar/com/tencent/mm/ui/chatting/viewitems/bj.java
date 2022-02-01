@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 final class bj
 {
-  View Khn;
-  View Kho;
-  View Khp;
-  TextView Khq;
-  LinearLayout Khr;
-  View Khs;
-  TextView gnM;
-  View odh;
+  View KDI;
+  View KDJ;
+  View KDK;
+  TextView KDL;
+  LinearLayout KDM;
+  View KDN;
+  TextView gqi;
+  View oiV;
 }
 
 

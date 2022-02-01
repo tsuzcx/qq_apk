@@ -15,7 +15,7 @@ import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
 import com.tencent.kinda.gen.Visible;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class KViewAnimatorProxy
   implements KView
@@ -171,9 +171,9 @@ public class KViewAnimatorProxy
   
   public float getMarginBottom()
   {
-    AppMethodBeat.i(199461);
+    AppMethodBeat.i(193174);
     float f = this.mKView.getMarginBottom();
-    AppMethodBeat.o(199461);
+    AppMethodBeat.o(193174);
     return f;
   }
   
@@ -197,9 +197,9 @@ public class KViewAnimatorProxy
   
   public float getMarginRight()
   {
-    AppMethodBeat.i(199459);
+    AppMethodBeat.i(193172);
     float f = this.mKView.getMarginRight();
-    AppMethodBeat.o(199459);
+    AppMethodBeat.o(193172);
     return f;
   }
   
@@ -210,9 +210,9 @@ public class KViewAnimatorProxy
   
   public float getMarginTop()
   {
-    AppMethodBeat.i(199457);
+    AppMethodBeat.i(193170);
     float f = this.mKView.getMarginTop();
-    AppMethodBeat.o(199457);
+    AppMethodBeat.o(193170);
     return f;
   }
   
@@ -467,11 +467,11 @@ public class KViewAnimatorProxy
   
   public void setMarginBottom(float paramFloat)
   {
-    AppMethodBeat.i(199460);
+    AppMethodBeat.i(193173);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginBottom", new float[] { this.mKView.getMarginBottom(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(199460);
+    AppMethodBeat.o(193173);
   }
   
   public void setMarginBottomPercent(float paramFloat) {}
@@ -489,22 +489,22 @@ public class KViewAnimatorProxy
   
   public void setMarginRight(float paramFloat)
   {
-    AppMethodBeat.i(199458);
+    AppMethodBeat.i(193171);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginRight", new float[] { this.mKView.getMarginRight(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(199458);
+    AppMethodBeat.o(193171);
   }
   
   public void setMarginRightPercent(float paramFloat) {}
   
   public void setMarginTop(float paramFloat)
   {
-    AppMethodBeat.i(199456);
+    AppMethodBeat.i(193169);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginTop", new float[] { this.mKView.getMarginTop(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(199456);
+    AppMethodBeat.o(193169);
   }
   
   public void setMarginTopPercent(float paramFloat) {}
@@ -564,7 +564,7 @@ public class KViewAnimatorProxy
   public void setScaleX(float paramFloat)
   {
     AppMethodBeat.i(18820);
-    ad.d("base_MMKView", "setScaleX此时进入动画setter状态。");
+    ae.d("base_MMKView", "setScaleX此时进入动画setter状态。");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "scaleX", new float[] { this.mKView.getScaleX(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
@@ -574,7 +574,7 @@ public class KViewAnimatorProxy
   public void setScaleY(float paramFloat)
   {
     AppMethodBeat.i(18821);
-    ad.d("base_MMKView", "setScaleY此时进入动画setter状态。");
+    ae.d("base_MMKView", "setScaleY此时进入动画setter状态。");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "scaleY", new float[] { this.mKView.getScaleY(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
@@ -637,7 +637,7 @@ public class KViewAnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KViewAnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

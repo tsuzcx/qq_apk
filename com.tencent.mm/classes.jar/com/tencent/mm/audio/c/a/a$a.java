@@ -2,7 +2,7 @@ package com.tencent.mm.audio.c.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil$Companion;", "", "()V", "RMS_TYPE_HIGH", "", "RMS_TYPE_LOW", "RMS_TYPE_MIDDLE", "RMS_TYPE_SILENT", "TAG", "", "plugin-audiosdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil$Companion;", "", "()V", "RMS_TYPE_HIGH", "", "RMS_TYPE_LOW", "RMS_TYPE_MIDDLE", "RMS_TYPE_SILENT", "TAG", "", "plugin-audiosdk_release"})
 public final class a$a {}
 
 

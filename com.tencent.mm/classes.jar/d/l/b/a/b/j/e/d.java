@@ -11,12 +11,12 @@ import java.util.Set;
 
 public enum d
 {
-  private static final Set<b> Nxb;
-  private static final Map<String, d> Nxc;
-  private static final Map<h, d> Nxd;
-  private static final Map<String, d> Nxe;
-  private final h Nxf;
-  private final b Nxg;
+  private static final Set<b> NUh;
+  private static final Map<String, d> NUi;
+  private static final Map<h, d> NUj;
+  private static final Map<String, d> NUk;
+  private final h NUl;
+  private final b NUm;
   private final String desc;
   private final String name;
   
@@ -24,28 +24,28 @@ public enum d
   {
     int i = 0;
     AppMethodBeat.i(60184);
-    NwT = new d("BOOLEAN", 0, h.MRH, "boolean", "Z", "java.lang.Boolean");
-    NwU = new d("CHAR", 1, h.MRI, "char", "C", "java.lang.Character");
-    NwV = new d("BYTE", 2, h.MRJ, "byte", "B", "java.lang.Byte");
-    NwW = new d("SHORT", 3, h.MRK, "short", "S", "java.lang.Short");
-    NwX = new d("INT", 4, h.MRL, "int", "I", "java.lang.Integer");
-    NwY = new d("FLOAT", 5, h.MRM, "float", "F", "java.lang.Float");
-    NwZ = new d("LONG", 6, h.MRN, "long", "J", "java.lang.Long");
-    Nxa = new d("DOUBLE", 7, h.MRO, "double", "D", "java.lang.Double");
-    Nxh = new d[] { NwT, NwU, NwV, NwW, NwX, NwY, NwZ, Nxa };
-    Nxb = new HashSet();
-    Nxc = new HashMap();
-    Nxd = new EnumMap(h.class);
-    Nxe = new HashMap();
+    NTZ = new d("BOOLEAN", 0, h.NoM, "boolean", "Z", "java.lang.Boolean");
+    NUa = new d("CHAR", 1, h.NoN, "char", "C", "java.lang.Character");
+    NUb = new d("BYTE", 2, h.NoO, "byte", "B", "java.lang.Byte");
+    NUc = new d("SHORT", 3, h.NoP, "short", "S", "java.lang.Short");
+    NUd = new d("INT", 4, h.NoQ, "int", "I", "java.lang.Integer");
+    NUe = new d("FLOAT", 5, h.NoR, "float", "F", "java.lang.Float");
+    NUf = new d("LONG", 6, h.NoS, "long", "J", "java.lang.Long");
+    NUg = new d("DOUBLE", 7, h.NoT, "double", "D", "java.lang.Double");
+    NUn = new d[] { NTZ, NUa, NUb, NUc, NUd, NUe, NUf, NUg };
+    NUh = new HashSet();
+    NUi = new HashMap();
+    NUj = new EnumMap(h.class);
+    NUk = new HashMap();
     d[] arrayOfd = values();
     int j = arrayOfd.length;
     while (i < j)
     {
       d locald = arrayOfd[i];
-      Nxb.add(locald.gtg());
-      Nxc.put(locald.gtf(), locald);
-      Nxd.put(locald.gte(), locald);
-      Nxe.put(locald.getDesc(), locald);
+      NUh.add(locald.gxI());
+      NUi.put(locald.gxH(), locald);
+      NUj.put(locald.gxG(), locald);
+      NUk.put(locald.getDesc(), locald);
       i += 1;
     }
     AppMethodBeat.o(60184);
@@ -54,20 +54,20 @@ public enum d
   private d(h paramh, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(60179);
-    this.Nxf = paramh;
+    this.NUl = paramh;
     this.name = paramString1;
     this.desc = paramString2;
-    this.Nxg = new b(paramString3);
+    this.NUm = new b(paramString3);
     AppMethodBeat.o(60179);
   }
   
-  public static d bcR(String paramString)
+  public static d bev(String paramString)
   {
     AppMethodBeat.i(60177);
     if (paramString == null) {
-      ajm(1);
+      ajW(1);
     }
-    d locald = (d)Nxc.get(paramString);
+    d locald = (d)NUi.get(paramString);
     if (locald == null)
     {
       paramString = new AssertionError("Non-primitive type name passed: ".concat(String.valueOf(paramString)));
@@ -75,7 +75,7 @@ public enum d
       throw paramString;
     }
     if (locald == null) {
-      ajm(2);
+      ajW(2);
     }
     AppMethodBeat.o(60177);
     return locald;
@@ -85,11 +85,11 @@ public enum d
   {
     AppMethodBeat.i(60178);
     if (paramh == null) {
-      ajm(3);
+      ajW(3);
     }
-    paramh = (d)Nxd.get(paramh);
+    paramh = (d)NUj.get(paramh);
     if (paramh == null) {
-      ajm(4);
+      ajW(4);
     }
     AppMethodBeat.o(60178);
     return paramh;
@@ -100,40 +100,40 @@ public enum d
     AppMethodBeat.i(60182);
     String str = this.desc;
     if (str == null) {
-      ajm(12);
+      ajW(12);
     }
     AppMethodBeat.o(60182);
     return str;
   }
   
-  public final h gte()
+  public final h gxG()
   {
     AppMethodBeat.i(60180);
-    h localh = this.Nxf;
+    h localh = this.NUl;
     if (localh == null) {
-      ajm(10);
+      ajW(10);
     }
     AppMethodBeat.o(60180);
     return localh;
   }
   
-  public final String gtf()
+  public final String gxH()
   {
     AppMethodBeat.i(60181);
     String str = this.name;
     if (str == null) {
-      ajm(11);
+      ajW(11);
     }
     AppMethodBeat.o(60181);
     return str;
   }
   
-  public final b gtg()
+  public final b gxI()
   {
     AppMethodBeat.i(60183);
-    b localb = this.Nxg;
+    b localb = this.NUm;
     if (localb == null) {
-      ajm(13);
+      ajW(13);
     }
     AppMethodBeat.o(60183);
     return localb;
@@ -141,7 +141,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.e.d
  * JD-Core Version:    0.7.0.1
  */

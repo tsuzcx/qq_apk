@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -20,28 +20,28 @@ import junit.framework.Assert;
 public final class d
   implements com.tencent.mm.pluginsdk.b.a
 {
-  private am contact;
+  private an contact;
   private final Context context;
   private f screen;
-  com.tencent.mm.plugin.profile.a.b wOW;
+  com.tencent.mm.plugin.profile.a.b xeK;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(27115);
     boolean bool;
     label34:
     label46:
     Object localObject;
-    if (paramam != null)
+    if (paraman != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (bt.nullAsNil(paramam.field_username).length() <= 0) {
+      if (bu.nullAsNil(paraman.field_username).length() <= 0) {
         break label292;
       }
       bool = true;
@@ -51,45 +51,45 @@ public final class d
       }
       bool = true;
       Assert.assertTrue(bool);
-      this.contact = paramam;
+      this.contact = paraman;
       ((MMActivity)this.context).getIntent().putExtra("Contact_Scene", 25);
-      if (this.wOW == null) {
-        this.wOW = new com.tencent.mm.plugin.profile.a.b((MMActivity)this.context, paramam);
+      if (this.xeK == null) {
+        this.xeK = new com.tencent.mm.plugin.profile.a.b((MMActivity)this.context, paraman);
       }
-      cdn();
+      ceC();
       this.screen = paramf;
       paramf.removeAll();
       paramf.addPreferencesFromResource(2131951637);
-      localObject = (NormalProfileHeaderPreference)paramf.aVD("contact_info_header_normal");
+      localObject = (NormalProfileHeaderPreference)paramf.aXe("contact_info_header_normal");
       if (localObject != null)
       {
-        ((NormalProfileHeaderPreference)localObject).mzx = paramf;
-        ((NormalProfileHeaderPreference)localObject).a(paramam, 25, paramBoolean, null);
+        ((NormalProfileHeaderPreference)localObject).mEx = paramf;
+        ((NormalProfileHeaderPreference)localObject).a(paraman, 25, paramBoolean, null);
       }
-      localObject = (KeyValuePreference)paramf.aVD("contact_info_signature");
-      if ((paramam.signature == null) || (paramam.signature.trim().equals(""))) {
+      localObject = (KeyValuePreference)paramf.aXe("contact_info_signature");
+      if ((paraman.signature == null) || (paraman.signature.trim().equals(""))) {
         break label304;
       }
       if (localObject != null)
       {
-        ((KeyValuePreference)localObject).JsK = false;
+        ((KeyValuePreference)localObject).JNz = false;
         ((KeyValuePreference)localObject).setTitle(this.context.getString(2131757822));
-        ((KeyValuePreference)localObject).setSummary(k.c(this.context, paramam.signature));
-        ((KeyValuePreference)localObject).xG(false);
-        ((KeyValuePreference)localObject).acw(8);
+        ((KeyValuePreference)localObject).setSummary(k.c(this.context, paraman.signature));
+        ((KeyValuePreference)localObject).xN(false);
+        ((KeyValuePreference)localObject).ade(8);
       }
     }
     for (;;)
     {
-      ((MultiButtonPreference)paramf.aVD("contact_profile_multi_button")).a(this.context.getString(2131756596), new View.OnClickListener()
+      ((MultiButtonPreference)paramf.aXe("contact_profile_multi_button")).a(this.context.getString(2131756596), new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27113);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/ContactWidgetBottleContact$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          d.this.wOW.dAp();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/ContactWidgetBottleContact$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          d.this.xeK.dDG();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/ContactWidgetBottleContact$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27113);
         }
@@ -109,7 +109,7 @@ public final class d
     }
   }
   
-  public final boolean aaG(String paramString)
+  public final boolean abx(String paramString)
   {
     AppMethodBeat.i(27114);
     if (paramString.equals("contact_profile_say_hi"))
@@ -117,14 +117,14 @@ public final class d
       paramString = new Intent();
       paramString.putExtra("Contact_User", this.contact.field_username);
       paramString.putExtra("Contact_Scene", 25);
-      paramString.putExtra(e.c.IUp, this.contact.ePK);
-      com.tencent.mm.plugin.profile.b.iRG.a(paramString, this.context);
+      paramString.putExtra(e.c.JoX, this.contact.eRv);
+      com.tencent.mm.plugin.profile.b.iUz.a(paramString, this.context);
     }
     AppMethodBeat.o(27114);
     return true;
   }
   
-  public final boolean cdn()
+  public final boolean ceC()
   {
     AppMethodBeat.i(27116);
     if (this.screen == null)
@@ -132,12 +132,12 @@ public final class d
       AppMethodBeat.o(27116);
       return true;
     }
-    NormalProfileHeaderPreference localNormalProfileHeaderPreference = (NormalProfileHeaderPreference)this.screen.aVD("contact_info_header_normal");
+    NormalProfileHeaderPreference localNormalProfileHeaderPreference = (NormalProfileHeaderPreference)this.screen.aXe("contact_info_header_normal");
     if (localNormalProfileHeaderPreference != null) {
       localNormalProfileHeaderPreference.onDetach();
     }
-    if (this.wOW != null) {
-      this.wOW.destroy();
+    if (this.xeK != null) {
+      this.xeK.destroy();
     }
     AppMethodBeat.o(27116);
     return true;

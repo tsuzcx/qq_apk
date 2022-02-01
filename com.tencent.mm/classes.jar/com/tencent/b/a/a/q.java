@@ -11,27 +11,27 @@ public abstract class q
     this.context = paramContext;
   }
   
-  protected abstract boolean JB();
+  protected abstract boolean JJ();
   
-  protected abstract a JC();
+  protected abstract a JK();
   
-  public final g JI()
+  public final g JQ()
   {
     g localg = null;
-    if (JB()) {}
+    if (JJ()) {}
     for (String str = s.decode(read());; str = null)
     {
       if (str != null) {
-        localg = g.ej(str);
+        localg = g.eo(str);
       }
       return localg;
     }
   }
   
-  public final a JJ()
+  public final a JR()
   {
-    if (JB()) {
-      return JC();
+    if (JJ()) {
+      return JK();
     }
     return null;
   }
@@ -41,7 +41,7 @@ public abstract class q
   public final void b(a parama)
   {
     if (parama == null) {}
-    while (!JB()) {
+    while (!JJ()) {
       return;
     }
     a(parama);
@@ -54,7 +54,7 @@ public abstract class q
     {
       return;
       paramg = paramg.toString();
-    } while (!JB());
+    } while (!JJ());
     write(s.encode(paramg));
   }
   

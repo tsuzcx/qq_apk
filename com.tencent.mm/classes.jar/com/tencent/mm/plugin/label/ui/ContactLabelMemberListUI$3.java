@@ -12,7 +12,7 @@ final class ContactLabelMemberListUI$3
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(26263);
-    this.uXg.finish();
+    this.viU.finish();
     AppMethodBeat.o(26263);
     return false;
   }

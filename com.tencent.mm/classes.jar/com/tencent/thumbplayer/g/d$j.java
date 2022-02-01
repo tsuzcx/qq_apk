@@ -5,8 +5,8 @@ import com.tencent.thumbplayer.b.e;
 
 final class d$j
 {
-  e Mcj;
-  d Mck;
+  e Mze;
+  d Mzf;
 }
 
 

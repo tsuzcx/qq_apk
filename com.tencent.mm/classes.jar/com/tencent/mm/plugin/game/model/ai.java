@@ -5,13 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.k;
 import java.io.IOException;
 
 public final class ai
@@ -23,7 +25,7 @@ public final class ai
   {
     AppMethodBeat.i(41574);
     this.mPicUrl = paramString;
-    paramString = new e(b.arZ());
+    paramString = new k(b.aso());
     if (!paramString.exists()) {
       paramString.mkdirs();
     }
@@ -33,14 +35,14 @@ public final class ai
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(41579);
-    if (s.a.iNs == parama)
+    if (s.a.iQm == parama)
     {
       AppMethodBeat.o(41579);
       return paramBitmap;
     }
     try
     {
-      com.tencent.mm.sdk.platformtools.g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQw(), false);
+      h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQV(), false);
       AppMethodBeat.o(41579);
       return paramBitmap;
     }
@@ -48,47 +50,32 @@ public final class ai
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.GetGamePicStrategy", parama, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.GetGamePicStrategy", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final boolean aQA()
-  {
-    return false;
-  }
-  
-  public final Bitmap aQB()
-  {
-    AppMethodBeat.i(41578);
-    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
-    AppMethodBeat.o(41578);
-    return localBitmap;
-  }
-  
-  public final void aQC() {}
-  
-  public final s.b aQv()
+  public final s.b aQU()
   {
     return null;
   }
   
-  public final String aQw()
+  public final String aQV()
   {
     AppMethodBeat.i(41575);
-    String str = b.arZ() + com.tencent.mm.b.g.getMessageDigest(this.mPicUrl.getBytes());
+    String str = b.aso() + g.getMessageDigest(this.mPicUrl.getBytes());
     AppMethodBeat.o(41575);
     return str;
   }
   
-  public final String aQx()
+  public final String aQW()
   {
     return this.mPicUrl;
   }
   
-  public final String aQy()
+  public final String aQX()
   {
     AppMethodBeat.i(41576);
     String str = this.mPicUrl.hashCode();
@@ -96,10 +83,25 @@ public final class ai
     return str;
   }
   
-  public final boolean aQz()
+  public final boolean aQY()
   {
     return true;
   }
+  
+  public final boolean aQZ()
+  {
+    return false;
+  }
+  
+  public final Bitmap aRa()
+  {
+    AppMethodBeat.i(41578);
+    Bitmap localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233476);
+    AppMethodBeat.o(41578);
+    return localBitmap;
+  }
+  
+  public final void aRb() {}
   
   public final void aa(String paramString, boolean paramBoolean) {}
   

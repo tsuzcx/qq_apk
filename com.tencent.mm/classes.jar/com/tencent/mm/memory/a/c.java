@@ -18,7 +18,7 @@ public final class c<T, V>
     super(paramb);
   }
   
-  public final T ayL()
+  public final T aza()
   {
     return null;
   }
@@ -36,7 +36,7 @@ public final class c<T, V>
   public final Map<T, V> snapshot()
   {
     AppMethodBeat.i(156489);
-    Map localMap = this.hxA.snapshot();
+    Map localMap = this.hAo.snapshot();
     AppMethodBeat.o(156489);
     return localMap;
   }
@@ -48,7 +48,7 @@ public final class c<T, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.c
  * JD-Core Version:    0.7.0.1
  */

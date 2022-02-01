@@ -1,88 +1,90 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.pluginsdk.j.a.c.m;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ad
 {
-  private static final Set<b> jGT;
+  private static String[] jJS = { "__APP__", "__WITHOUT_PLUGINCODE__", "__WITHOUT_MULTI_PLUGINCODE__", "__PLUGINCODE__" };
+  private final String appId;
+  private final String coY;
+  private volatile String jJR;
   
-  static
+  public ad(String paramString)
   {
-    AppMethodBeat.i(90557);
-    jGT = new HashSet();
-    AppMethodBeat.o(90557);
+    this.appId = paramString;
+    this.coY = null;
   }
   
-  public static void a(b paramb)
+  public ad(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90555);
-    synchronized (jGT)
+    AppMethodBeat.i(146000);
+    this.appId = paramString1;
+    this.coY = LV(paramString2);
+    AppMethodBeat.o(146000);
+  }
+  
+  public ad(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(146002);
+    switch (paramInt)
     {
-      jGT.add(paramb);
-      AppMethodBeat.o(90555);
-      return;
+    default: 
+      this.coY = LV(paramString2);
     }
-  }
-  
-  static a b(a parama)
-  {
-    AppMethodBeat.i(90556);
     for (;;)
     {
-      int i;
-      synchronized (jGT)
-      {
-        Object[] arrayOfObject = jGT.toArray();
-        int j = arrayOfObject.length;
-        i = 0;
-        if (i >= j) {
-          break;
-        }
-        ??? = ((b)arrayOfObject[i]).b(parama);
-        if (??? != null)
-        {
-          AppMethodBeat.o(90556);
-          return ???;
-        }
-      }
-      i += 1;
+      this.appId = paramString1;
+      AppMethodBeat.o(146002);
+      return;
+      this.coY = "";
+      continue;
+      this.coY = (LV(paramString2) + '$' + "__WITHOUT_PLUGINCODE__");
+      continue;
+      this.coY = (LV(paramString2) + '$' + "__WITHOUT_MULTI_PLUGINCODE__");
+      continue;
+      this.coY = "__PLUGINCODE__";
+      continue;
+      this.coY = "__WITHOUT_PLUGINCODE__";
+      continue;
+      this.coY = "__WITHOUT_MULTI_PLUGINCODE__";
     }
-    AppMethodBeat.o(90556);
-    return null;
   }
   
-  public static abstract interface a
+  private static String LV(String paramString)
   {
-    public abstract void a(m paramm);
-    
-    public abstract void aZA();
-    
-    public abstract void aZB();
-    
-    public abstract void aZv();
-    
-    public abstract void aZw();
-    
-    public abstract void aZx();
-    
-    public abstract void aZy();
-    
-    public abstract void aZz();
-    
-    public abstract void fJ(boolean paramBoolean);
-    
-    public abstract void fK(boolean paramBoolean);
-    
-    public abstract void rR(int paramInt);
+    AppMethodBeat.i(146001);
+    if ((bu.isNullOrNil(paramString)) || (a.contains(jJS, paramString)))
+    {
+      AppMethodBeat.o(146001);
+      return paramString;
+    }
+    paramString = n.MV(paramString);
+    AppMethodBeat.o(146001);
+    return paramString;
   }
   
-  public static abstract interface b
+  public final String toString()
   {
-    public abstract ad.a b(a parama);
+    AppMethodBeat.i(146003);
+    StringBuilder localStringBuilder;
+    if (bu.isNullOrNil(this.jJR))
+    {
+      localStringBuilder = new StringBuilder().append(this.appId);
+      if (!bu.isNullOrNil(this.coY)) {
+        break label67;
+      }
+    }
+    label67:
+    for (String str = "";; str = "$" + this.coY)
+    {
+      this.jJR = str;
+      str = this.jJR;
+      AppMethodBeat.o(146003);
+      return str;
+    }
   }
 }
 

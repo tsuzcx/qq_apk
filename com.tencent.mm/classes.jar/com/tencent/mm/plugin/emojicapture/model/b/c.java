@@ -4,68 +4,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.model.e;
 import com.tencent.mm.plugin.gif.g;
 import com.tencent.mm.plugin.gif.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "", "outputPath", "", "width", "", "height", "frameDurationMs", "", "outputGif", "", "(Ljava/lang/String;IIJZ)V", "TAG", "encoder", "Lcom/tencent/mm/plugin/gif/IAnimFileEncoder;", "gifEncoderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "saveRgbFrameCount", "startEncodeTick", "encodeFrame", "", "data", "", "finishEncode", "callback", "Lkotlin/Function0;", "Companion", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "", "outputPath", "", "width", "", "height", "frameDurationMs", "", "outputGif", "", "(Ljava/lang/String;IIJZ)V", "TAG", "encoder", "Lcom/tencent/mm/plugin/gif/IAnimFileEncoder;", "gifEncoderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "saveRgbFrameCount", "startEncodeTick", "encodeFrame", "", "data", "", "finishEncode", "callback", "Lkotlin/Function0;", "Companion", "plugin-emojicapture_release"})
 public final class c
 {
-  public static final c.a pSd;
+  public static final c.a pYI;
   private final String TAG;
   private final int height;
-  ap pRY;
-  private com.tencent.mm.plugin.gif.a pRZ;
-  private long pSa;
-  private int pSb;
-  private final String pSc;
+  aq pYD;
+  private com.tencent.mm.plugin.gif.a pYE;
+  private long pYF;
+  private int pYG;
+  private final String pYH;
   private final int width;
   
   static
   {
     AppMethodBeat.i(269);
-    pSd = new c.a((byte)0);
+    pYI = new c.a((byte)0);
     AppMethodBeat.o(269);
   }
   
   public c(String paramString, int paramInt1, int paramInt2, long paramLong, final boolean paramBoolean)
   {
     AppMethodBeat.i(268);
-    this.pSc = paramString;
+    this.pYH = paramString;
     this.width = paramInt1;
     this.height = paramInt2;
     this.TAG = "MicroMsg.EmojiMixGifEncoder";
-    this.pSb = 30;
-    this.pRY = new ap("EmojiMixer_gifEncode");
+    this.pYG = 30;
+    this.pYD = new aq("EmojiMixer_gifEncode");
     if (paramBoolean) {}
-    for (paramString = (com.tencent.mm.plugin.gif.a)new g(this.pSc, this.width, this.height, paramLong);; paramString = (com.tencent.mm.plugin.gif.a)new j(this.pSc, this.width, this.height, paramLong))
+    for (paramString = (com.tencent.mm.plugin.gif.a)new g(this.pYH, this.width, this.height, paramLong);; paramString = (com.tencent.mm.plugin.gif.a)new j(this.pYH, this.width, this.height, paramLong))
     {
-      this.pRZ = paramString;
-      this.pRY.post((Runnable)new Runnable()
+      this.pYE = paramString;
+      this.pYD.post((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(264);
-          boolean bool = c.a(this.pSe).init();
-          ad.i(c.b(this.pSe), "init encoder, outputGif: " + paramBoolean + " ret: " + bool);
+          boolean bool = c.a(this.pYJ).init();
+          ae.i(c.b(this.pYJ), "init encoder, outputGif: " + paramBoolean + " ret: " + bool);
           e locale;
           if (!bool)
           {
             if (!paramBoolean) {
               break label92;
             }
-            locale = e.pQY;
-            e.cjM();
+            locale = e.pXD;
+            e.clc();
           }
           for (;;)
           {
-            c.a(this.pSe, bt.HI());
+            c.a(this.pYJ, bu.HQ());
             AppMethodBeat.o(264);
             return;
             label92:
-            locale = e.pQY;
-            e.cjL();
+            locale = e.pXD;
+            e.clb();
           }
         }
       });
@@ -74,7 +74,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -83,14 +83,14 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(265);
-      long l = bt.HI();
-      boolean bool = c.a(this.pSe).c(this.hlr, this.pSg);
-      ad.i(c.b(this.pSe), "encodeRgbaFrame used " + bt.aO(l) + ", ret:" + bool);
+      long l = bu.HQ();
+      boolean bool = c.a(this.pYJ).c(this.hog, this.pYL);
+      ae.i(c.b(this.pYJ), "encodeRgbaFrame used " + bu.aO(l) + ", ret:" + bool);
       AppMethodBeat.o(265);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -99,11 +99,11 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(266);
-      long l = bt.HI();
-      boolean bool = c.a(this.pSe).daW();
-      ad.i(c.b(this.pSe), "finishEncode used " + bt.aO(l) + ", ret:" + bool + ", totally used " + bt.aO(c.c(this.pSe)) + "ms");
-      c.d(this.pSe).quit();
-      d.g.a.a locala = this.hlv;
+      long l = bu.HQ();
+      boolean bool = c.a(this.pYJ).ddN();
+      ae.i(c.b(this.pYJ), "finishEncode used " + bu.aO(l) + ", ret:" + bool + ", totally used " + bu.aO(c.c(this.pYJ)) + "ms");
+      c.d(this.pYJ).quit();
+      d.g.a.a locala = this.hok;
       if (locala != null)
       {
         locala.invoke();
@@ -116,7 +116,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,108 +1,108 @@
 package com.tencent.mm.plugin.fav.ui.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gr;
-import com.tencent.mm.g.a.gr.a;
+import com.tencent.mm.g.a.gs;
+import com.tencent.mm.g.a.gs.a;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.o;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
-  extends c<gr>
+  extends c<gs>
 {
-  private ag<Long, com.tencent.mm.plugin.fav.a.g> rDe;
-  private o rvp;
+  private o rDB;
+  private ah<Long, com.tencent.mm.plugin.fav.a.g> rLp;
   
   public a()
   {
     AppMethodBeat.i(107443);
-    this.rDe = new ag(10);
-    this.__eventId = gr.class.getName().hashCode();
+    this.rLp = new ah(10);
+    this.__eventId = gs.class.getName().hashCode();
     AppMethodBeat.o(107443);
   }
   
-  private boolean a(gr paramgr)
+  private boolean a(gs paramgs)
   {
     AppMethodBeat.i(107444);
     com.tencent.mm.plugin.fav.a.g localg2;
     com.tencent.mm.plugin.fav.a.g localg1;
-    if (paramgr.dsA.dnC != 0L) {
-      if (paramgr.dsA.dsH)
+    if (paramgs.dtG.doH != 0L) {
+      if (paramgs.dtG.dtN)
       {
-        localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(paramgr.dsA.dnC);
+        localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgs.dtG.doH);
         localg1 = localg2;
         if (localg2 != null)
         {
-          this.rDe.put(Long.valueOf(paramgr.dsA.dnC), localg2);
+          this.rLp.put(Long.valueOf(paramgs.dtG.doH), localg2);
           localg1 = localg2;
         }
       }
     }
     for (;;)
     {
-      ad.d("MicroMsg.FavImageServiceListener", "image serivce callback type %d, localId %d", new Object[] { Integer.valueOf(paramgr.dsA.opType), Long.valueOf(paramgr.dsA.dnC) });
-      if ((localg1 == null) && (paramgr.dsA.opType != 3) && (paramgr.dsA.opType != 4))
+      ae.d("MicroMsg.FavImageServiceListener", "image serivce callback type %d, localId %d", new Object[] { Integer.valueOf(paramgs.dtG.opType), Long.valueOf(paramgs.dtG.doH) });
+      if ((localg1 == null) && (paramgs.dtG.opType != 3) && (paramgs.dtG.opType != 4))
       {
         AppMethodBeat.o(107444);
         return false;
-        localg1 = (com.tencent.mm.plugin.fav.a.g)this.rDe.get(Long.valueOf(paramgr.dsA.dnC));
+        localg1 = (com.tencent.mm.plugin.fav.a.g)this.rLp.get(Long.valueOf(paramgs.dtG.doH));
         if (localg1 == null) {}
         for (boolean bool = true;; bool = false)
         {
-          ad.d("MicroMsg.FavImageServiceListener", "get item from cache itemInfo is null? %B", new Object[] { Boolean.valueOf(bool) });
+          ae.d("MicroMsg.FavImageServiceListener", "get item from cache itemInfo is null? %B", new Object[] { Boolean.valueOf(bool) });
           if (localg1 != null) {
             break label558;
           }
-          localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(paramgr.dsA.dnC);
+          localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgs.dtG.doH);
           localg1 = localg2;
           if (localg2 == null) {
             break;
           }
-          this.rDe.put(Long.valueOf(paramgr.dsA.dnC), localg2);
+          this.rLp.put(Long.valueOf(paramgs.dtG.doH), localg2);
           localg1 = localg2;
           break;
         }
       }
-      switch (paramgr.dsA.opType)
+      switch (paramgs.dtG.opType)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(107444);
         return false;
-        paramgr.dsB.dsI = o.a(paramgr.dsA.dsC, localg1);
+        paramgs.dtH.dtO = o.a(paramgs.dtG.dtI, localg1);
         continue;
-        ad.d("MicroMsg.FavImageServiceListener", "get img from Cache %s", new Object[] { Boolean.valueOf(paramgr.dsA.dsF) });
-        if (paramgr.dsA.dsF)
+        ae.d("MicroMsg.FavImageServiceListener", "get img from Cache %s", new Object[] { Boolean.valueOf(paramgs.dtG.dtL) });
+        if (paramgs.dtG.dtL)
         {
-          paramgr.dsB.dsI = o.l(paramgr.dsA.dsC);
+          paramgs.dtH.dtO = o.l(paramgs.dtG.dtI);
         }
         else
         {
-          paramgr.dsB.dsI = o.b(paramgr.dsA.dsC, localg1, paramgr.dsA.maxWidth);
+          paramgs.dtH.dtO = o.b(paramgs.dtG.dtI, localg1, paramgs.dtG.maxWidth);
           continue;
-          if (this.rvp == null)
+          if (this.rDB == null)
           {
-            ad.w("MicroMsg.FavImageServiceListener", "imageServer is null");
+            ae.w("MicroMsg.FavImageServiceListener", "imageServer is null");
           }
           else
           {
-            this.rvp.b(paramgr.dsA.dsD, paramgr.dsA.dsC, localg1, paramgr.dsA.dsE, paramgr.dsA.width, paramgr.dsA.height);
+            this.rDB.b(paramgs.dtG.dtJ, paramgs.dtG.dtI, localg1, paramgs.dtG.dtK, paramgs.dtG.width, paramgs.dtG.height);
             continue;
-            ad.d("MicroMsg.FavImageServiceListener", "create image server");
-            if (this.rvp != null) {
-              this.rvp.destory();
+            ae.d("MicroMsg.FavImageServiceListener", "create image server");
+            if (this.rDB != null) {
+              this.rDB.destory();
             }
-            this.rvp = new o(paramgr.dsA.context, 16);
+            this.rDB = new o(paramgs.dtG.context, 16);
             continue;
-            ad.d("MicroMsg.FavImageServiceListener", "destroy image server");
-            if (this.rvp != null)
+            ae.d("MicroMsg.FavImageServiceListener", "destroy image server");
+            if (this.rDB != null)
             {
-              this.rvp.destory();
-              this.rvp = null;
+              this.rDB.destory();
+              this.rDB = null;
             }
           }
         }

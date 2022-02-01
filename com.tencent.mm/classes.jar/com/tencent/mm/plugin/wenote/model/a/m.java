@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.wenote.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class m
 {
-  public String EzE;
-  public String EzF;
-  public String EzG;
-  public long EzH;
-  public long dBy;
-  public String dEP;
+  public String ESa;
+  public String ESb;
+  public String ESc;
+  public long ESd;
+  public long dCD;
+  public String dFU;
   public int dataType;
   public long msgId;
-  public g prW;
-  public List<ajn> xrx;
+  public g pyC;
+  public List<ajx> xHu;
   
   public m()
   {
     AppMethodBeat.i(30376);
     this.msgId = -1L;
-    this.dBy = -1L;
-    this.dEP = "";
-    this.xrx = new ArrayList();
-    this.EzF = "";
-    this.EzG = "";
-    this.EzH = 0L;
+    this.dCD = -1L;
+    this.dFU = "";
+    this.xHu = new ArrayList();
+    this.ESb = "";
+    this.ESc = "";
+    this.ESd = 0L;
     AppMethodBeat.o(30376);
   }
 }

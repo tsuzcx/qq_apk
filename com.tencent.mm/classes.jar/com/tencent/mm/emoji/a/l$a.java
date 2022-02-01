@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/EmojiUploadLogic$Companion;", "", "()V", "CAPTURE_EMOJI_UPLOAD_MAX_COUNT", "", "TAG", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/EmojiUploadLogic$Companion;", "", "()V", "CAPTURE_EMOJI_UPLOAD_MAX_COUNT", "", "TAG", "", "plugin-emojisdk_release"})
 public final class l$a {}
 
 

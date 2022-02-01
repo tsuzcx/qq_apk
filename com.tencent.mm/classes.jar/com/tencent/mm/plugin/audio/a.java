@@ -8,9 +8,9 @@ import com.tencent.mm.booter.CoreService.a;
 import com.tencent.mm.plugin.audio.broadcast.base.BaseAudioReceiver;
 import com.tencent.mm.plugin.audio.broadcast.bluetooth.BluetoothReceiver;
 import com.tencent.mm.plugin.audio.broadcast.headset.HeadsetPlugReceiver;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -18,40 +18,40 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/AudioBroadcastHelper;", "Lcom/tencent/mm/booter/CoreService$BroadcastRegisterHelper;", "()V", "broadcastReceiverHashMap", "Ljava/util/HashMap;", "", "Landroid/content/BroadcastReceiver;", "registerBroadcast", "", "receiver", "actions", "", "(Landroid/content/BroadcastReceiver;[Ljava/lang/String;)V", "categories", "(Landroid/content/BroadcastReceiver;[Ljava/lang/String;[Ljava/lang/String;)V", "action", "registerBroadcasts", "unRegisterBroadcast", "unRegisterBroadcasts", "Companion", "plugin-audio_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/AudioBroadcastHelper;", "Lcom/tencent/mm/booter/CoreService$BroadcastRegisterHelper;", "()V", "broadcastReceiverHashMap", "Ljava/util/HashMap;", "", "Landroid/content/BroadcastReceiver;", "registerBroadcast", "", "receiver", "actions", "", "(Landroid/content/BroadcastReceiver;[Ljava/lang/String;)V", "categories", "(Landroid/content/BroadcastReceiver;[Ljava/lang/String;[Ljava/lang/String;)V", "action", "registerBroadcasts", "unRegisterBroadcast", "unRegisterBroadcasts", "Companion", "plugin-audio_release"})
 public final class a
   implements CoreService.a
 {
-  public static final a nrr;
+  public static final a nwK;
   private final HashMap<String, BroadcastReceiver> broadcastReceiverHashMap;
   
   static
   {
-    AppMethodBeat.i(199726);
-    nrr = new a((byte)0);
-    AppMethodBeat.o(199726);
+    AppMethodBeat.i(201038);
+    nwK = new a((byte)0);
+    AppMethodBeat.o(201038);
   }
   
   public a()
   {
-    AppMethodBeat.i(199725);
+    AppMethodBeat.i(201037);
     this.broadcastReceiverHashMap = new HashMap();
-    AppMethodBeat.o(199725);
+    AppMethodBeat.o(201037);
   }
   
   private static void registerBroadcast(BroadcastReceiver paramBroadcastReceiver, String paramString)
   {
-    AppMethodBeat.i(199722);
+    AppMethodBeat.i(201034);
     registerBroadcast(paramBroadcastReceiver, new String[] { paramString }, new String[0]);
-    AppMethodBeat.o(199722);
+    AppMethodBeat.o(201034);
   }
   
   private static void registerBroadcast(BroadcastReceiver paramBroadcastReceiver, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(199723);
-    ad.i("MicroMsg.AudioBroadcastHelper", "registerBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
+    AppMethodBeat.i(201035);
+    ae.i("MicroMsg.AudioBroadcastHelper", "registerBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
     IntentFilter localIntentFilter = new IntentFilter();
-    if (!bt.V((String[])Arrays.copyOf(paramArrayOfString1, paramArrayOfString1.length)))
+    if (!bu.V((String[])Arrays.copyOf(paramArrayOfString1, paramArrayOfString1.length)))
     {
       int j = paramArrayOfString1.length;
       int i = 0;
@@ -61,23 +61,23 @@ public final class a
         i += 1;
       }
     }
-    bt.V((String[])Arrays.copyOf(paramArrayOfString2, 0));
-    aj.getContext().registerReceiver(paramBroadcastReceiver, localIntentFilter);
-    AppMethodBeat.o(199723);
+    bu.V((String[])Arrays.copyOf(paramArrayOfString2, 0));
+    ak.getContext().registerReceiver(paramBroadcastReceiver, localIntentFilter);
+    AppMethodBeat.o(201035);
   }
   
   private static void unRegisterBroadcast(BroadcastReceiver paramBroadcastReceiver)
   {
-    AppMethodBeat.i(199724);
-    ad.i("MicroMsg.AudioBroadcastHelper", "unRegisterBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
-    aj.getContext().unregisterReceiver(paramBroadcastReceiver);
-    AppMethodBeat.o(199724);
+    AppMethodBeat.i(201036);
+    ae.i("MicroMsg.AudioBroadcastHelper", "unRegisterBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
+    ak.getContext().unregisterReceiver(paramBroadcastReceiver);
+    AppMethodBeat.o(201036);
   }
   
   public final void registerBroadcasts()
   {
-    AppMethodBeat.i(199720);
-    ad.i("MicroMsg.AudioBroadcastHelper", "registerBroadcasts()");
+    AppMethodBeat.i(201032);
+    ae.i("MicroMsg.AudioBroadcastHelper", "registerBroadcasts()");
     Object localObject = new BluetoothReceiver();
     Map localMap = (Map)this.broadcastReceiverHashMap;
     String str = BluetoothReceiver.class.getSimpleName();
@@ -96,27 +96,27 @@ public final class a
     p.g(str, "BaseAudioReceiver::class.java.simpleName");
     localMap.put(str, localObject);
     registerBroadcast((BroadcastReceiver)localObject, "android.media.AUDIO_BECOMING_NOISY");
-    AppMethodBeat.o(199720);
+    AppMethodBeat.o(201032);
   }
   
   public final void unRegisterBroadcasts()
   {
-    AppMethodBeat.i(199721);
-    ad.i("MicroMsg.AudioBroadcastHelper", "unRegisterBroadcasts()");
+    AppMethodBeat.i(201033);
+    ae.i("MicroMsg.AudioBroadcastHelper", "unRegisterBroadcasts()");
     try
     {
       Object localObject1 = this.broadcastReceiverHashMap.get(BluetoothReceiver.class.getSimpleName());
       if (localObject1 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.audio.broadcast.bluetooth.BluetoothReceiver");
-        AppMethodBeat.o(199721);
+        AppMethodBeat.o(201033);
         throw ((Throwable)localObject1);
       }
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AudioBroadcastHelper", "unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(199721);
+      ae.e("MicroMsg.AudioBroadcastHelper", "unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(201033);
       return;
     }
     unRegisterBroadcast((BroadcastReceiver)localException);
@@ -124,7 +124,7 @@ public final class a
     if (localObject2 == null)
     {
       localObject2 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.audio.broadcast.headset.HeadsetPlugReceiver");
-      AppMethodBeat.o(199721);
+      AppMethodBeat.o(201033);
       throw ((Throwable)localObject2);
     }
     unRegisterBroadcast((BroadcastReceiver)localObject2);
@@ -132,14 +132,14 @@ public final class a
     if (localObject2 == null)
     {
       localObject2 = new v("null cannot be cast to non-null type com.tencent.mm.plugin.audio.broadcast.base.BaseAudioReceiver");
-      AppMethodBeat.o(199721);
+      AppMethodBeat.o(201033);
       throw ((Throwable)localObject2);
     }
     unRegisterBroadcast((BroadcastReceiver)localObject2);
-    AppMethodBeat.o(199721);
+    AppMethodBeat.o(201033);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/AudioBroadcastHelper$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/AudioBroadcastHelper$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
   public static final class a {}
 }
 

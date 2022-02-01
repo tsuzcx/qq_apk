@@ -14,14 +14,14 @@ public class WxaLuckyMoneyCompleteUI
   extends WxaLuckyMoneyBaseUI
   implements b
 {
-  private Button mkr;
+  private Button mpo;
   
-  public final MMActivity dhO()
+  public final MMActivity dkN()
   {
     return this;
   }
   
-  public final void dhP() {}
+  public final void dkO() {}
   
   public final void error(String paramString) {}
   
@@ -33,15 +33,15 @@ public class WxaLuckyMoneyCompleteUI
   public void initView()
   {
     AppMethodBeat.i(64942);
-    this.mkr = ((Button)findViewById(2131307107));
-    this.mkr.setOnClickListener(new View.OnClickListener()
+    this.mpo = ((Button)findViewById(2131307107));
+    this.mpo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64940);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         WxaLuckyMoneyCompleteUI.this.setResult(0, null);
         WxaLuckyMoneyCompleteUI.this.finish();
         a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

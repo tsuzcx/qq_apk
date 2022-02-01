@@ -1,15 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.a;
-import com.tencent.mm.aj.b;
-import com.tencent.mm.aj.d;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.d;
 
 public final class v
 {
   public Runnable callback;
-  public a dky;
-  public b dkz;
+  public a dlA;
+  public b dlB;
   
   public v()
   {
@@ -20,8 +20,8 @@ public final class v
   {
     AppMethodBeat.i(136972);
     this.callback = null;
-    this.dky = new a();
-    this.dkz = new b();
+    this.dlA = new a();
+    this.dlB = new b();
     this.callback = null;
     AppMethodBeat.o(136972);
   }
@@ -30,23 +30,24 @@ public final class v
   {
     public int action;
     public String appId;
-    public String dce;
-    public int dkA;
-    public b dkB;
-    public a dkC;
+    public String ddg;
+    public int dlC;
+    public b dlD;
+    public a dlE;
     public String processName;
   }
   
   public static final class b
   {
     public int count;
-    public d dkD;
+    public a dlE;
+    public d dlF;
     public boolean result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.v
  * JD-Core Version:    0.7.0.1
  */

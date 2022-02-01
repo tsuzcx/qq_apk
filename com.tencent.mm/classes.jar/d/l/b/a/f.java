@@ -8,17 +8,17 @@ import d.l.b.a.c.b;
 import d.l.b.a.c.e;
 import java.lang.ref.WeakReference;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"K_CLASS_CACHE", "Lkotlin/reflect/jvm/internal/pcollections/HashPMap;", "", "kotlin.jvm.PlatformType", "", "clearKClassCache", "", "getOrCreateKotlinClass", "Lkotlin/reflect/jvm/internal/KClassImpl;", "T", "jClass", "Ljava/lang/Class;", "kotlin-reflection"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"K_CLASS_CACHE", "Lkotlin/reflect/jvm/internal/pcollections/HashPMap;", "", "kotlin.jvm.PlatformType", "", "clearKClassCache", "", "getOrCreateKotlinClass", "Lkotlin/reflect/jvm/internal/KClassImpl;", "T", "jClass", "Ljava/lang/Class;", "kotlin-reflection"})
 public final class f
 {
-  private static b<String, Object> MNh;
+  private static b<String, Object> Nkm;
   
   static
   {
     AppMethodBeat.i(56305);
-    b localb = b.guw();
+    b localb = b.gyY();
     p.g(localb, "HashPMap.empty<String, Any>()");
-    MNh = localb;
+    Nkm = localb;
     AppMethodBeat.o(56305);
   }
   
@@ -28,7 +28,7 @@ public final class f
     AppMethodBeat.i(56304);
     p.h(paramClass, "jClass");
     String str = paramClass.getName();
-    Object localObject1 = MNh.alx(str.hashCode());
+    Object localObject1 = Nkm.amh(str.hashCode());
     Object localObject3;
     if ((localObject1 != null) && (((a)localObject1).size > 0))
     {
@@ -43,14 +43,14 @@ public final class f
       localObject3 = (g)((WeakReference)localObject1).get();
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = ((g)localObject3).MLE;
+        localObject1 = ((g)localObject3).NiH;
       }
       if (!p.i(localObject1, paramClass)) {
         break label280;
       }
       AppMethodBeat.o(56304);
       return localObject3;
-      localObject1 = ((a)localObject1).NGj;
+      localObject1 = ((a)localObject1).Odp;
       break;
     }
     label133:
@@ -63,7 +63,7 @@ public final class f
       {
         g localg = (g)localObject3[i].get();
         if (localg != null) {}
-        for (localObject2 = localg.MLE; p.i(localObject2, paramClass); localObject2 = null)
+        for (localObject2 = localg.NiH; p.i(localObject2, paramClass); localObject2 = null)
         {
           AppMethodBeat.o(56304);
           return localg;
@@ -75,24 +75,24 @@ public final class f
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       paramClass = new g(paramClass);
       localObject2[i] = new WeakReference(paramClass);
-      localObject1 = MNh.V(str, localObject2);
+      localObject1 = Nkm.U(str, localObject2);
       p.g(localObject1, "K_CLASS_CACHE.plus(name, newArray)");
-      MNh = (b)localObject1;
+      Nkm = (b)localObject1;
       AppMethodBeat.o(56304);
       return paramClass;
     }
     label280:
     paramClass = new g(paramClass);
-    localObject1 = MNh.V(str, new WeakReference(paramClass));
+    localObject1 = Nkm.U(str, new WeakReference(paramClass));
     p.g(localObject1, "K_CLASS_CACHE.plus(name, WeakReference(newKClass))");
-    MNh = (b)localObject1;
+    Nkm = (b)localObject1;
     AppMethodBeat.o(56304);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.f
  * JD-Core Version:    0.7.0.1
  */

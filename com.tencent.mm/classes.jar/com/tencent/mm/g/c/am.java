@@ -4,57 +4,59 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.protocal.protobuf.fs;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public abstract class am
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCW = "msgId".hashCode();
-  private static final int eDc;
-  private static final int eEf;
-  private static final int eEm;
-  private static final int eJn = "bitFlag".hashCode();
-  private static final int eLe = "msgSvrId".hashCode();
-  private static final int eLf;
-  private static final int eLg;
-  private static final int eLh;
-  private static final int eLi;
-  private static final int eLj;
-  private static final int eLk;
-  private static final int eLl;
-  private static final int eLm;
-  private static final int eLn;
-  private static final int eLo;
-  private static final int eLp = "bizClientMsgId".hashCode();
-  private static final int eLq = "rankSessionId".hashCode();
+  private static final int eEF = "msgId".hashCode();
+  private static final int eEL;
+  private static final int eFO;
+  private static final int eFV;
+  private static final int eKW = "bitFlag".hashCode();
+  private static final int eMO = "msgSvrId".hashCode();
+  private static final int eMP;
+  private static final int eMQ;
+  private static final int eMR;
+  private static final int eMS;
+  private static final int eMT;
+  private static final int eMU;
+  private static final int eMV;
+  private static final int eMW;
+  private static final int eMX;
+  private static final int eMY;
+  private static final int eMZ = "bizClientMsgId".hashCode();
+  private static final int eNa = "rankSessionId".hashCode();
+  private static final int eNb = "recommendCardId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean eCS = true;
-  private boolean eCZ = true;
-  private boolean eDI = true;
-  private boolean eDP = true;
-  private boolean eJa = true;
-  private boolean eKR = true;
-  private boolean eKS = true;
-  private boolean eKT = true;
-  public boolean eKU = true;
-  private boolean eKV = true;
-  private boolean eKW = true;
-  private boolean eKX = true;
-  private boolean eKY = true;
-  private boolean eKZ = true;
-  private boolean eLa = true;
-  private boolean eLb = true;
-  private boolean eLc = true;
-  private boolean eLd = true;
-  private int eLr;
-  public String eLs;
-  protected byte[] eLt;
-  public long eLu;
+  private boolean eEB = true;
+  private boolean eEI = true;
+  private boolean eFr = true;
+  private boolean eFy = true;
+  private boolean eKJ = true;
+  private boolean eMA = true;
+  private boolean eMB = true;
+  private boolean eMC = true;
+  public boolean eMD = true;
+  private boolean eME = true;
+  private boolean eMF = true;
+  private boolean eMG = true;
+  private boolean eMH = true;
+  private boolean eMI = true;
+  private boolean eMJ = true;
+  private boolean eMK = true;
+  private boolean eML = true;
+  private boolean eMM = true;
+  private boolean eMN = true;
+  private int eNc;
+  public String eNd;
+  protected byte[] eNe;
+  public long eNf;
   public fs field_appMsgStatInfoProto;
   public int field_bitFlag;
   public String field_bizClientMsgId;
@@ -70,6 +72,7 @@ public abstract class am
   public long field_orderFlag;
   public int field_placeTop;
   public String field_rankSessionId;
+  public String field_recommendCardId;
   public int field_status;
   public String field_talker;
   public int field_talkerId;
@@ -77,25 +80,25 @@ public abstract class am
   
   static
   {
-    eDc = "status".hashCode();
-    eEf = "createTime".hashCode();
-    eLf = "talker".hashCode();
-    eEm = "content".hashCode();
-    eLg = "imgPath".hashCode();
-    eLh = "lvbuffer".hashCode();
-    eLi = "talkerId".hashCode();
-    eLj = "isExpand".hashCode();
-    eLk = "orderFlag".hashCode();
-    eLl = "hasShow".hashCode();
-    eLm = "placeTop".hashCode();
-    eLn = "appMsgStatInfoProto".hashCode();
-    eLo = "isRead".hashCode();
+    eEL = "status".hashCode();
+    eFO = "createTime".hashCode();
+    eMP = "talker".hashCode();
+    eFV = "content".hashCode();
+    eMQ = "imgPath".hashCode();
+    eMR = "lvbuffer".hashCode();
+    eMS = "talkerId".hashCode();
+    eMT = "isExpand".hashCode();
+    eMU = "orderFlag".hashCode();
+    eMV = "hasShow".hashCode();
+    eMW = "placeTop".hashCode();
+    eMX = "appMsgStatInfoProto".hashCode();
+    eMY = "isRead".hashCode();
   }
   
-  public final void Vz()
+  public final void VH()
   {
-    this.eLt = null;
-    this.eKU = true;
+    this.eNe = null;
+    this.eMD = true;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -112,16 +115,16 @@ public abstract class am
         if (i < j)
         {
           int k = arrayOfString[i].hashCode();
-          if (eCW == k)
+          if (eEF == k)
           {
             this.field_msgId = paramCursor.getLong(i);
-            this.eCS = true;
+            this.eEB = true;
           }
           for (;;)
           {
             i += 1;
             break;
-            if (eLe == k)
+            if (eMO == k)
             {
               this.field_msgSvrId = paramCursor.getLong(i);
             }
@@ -129,37 +132,37 @@ public abstract class am
             {
               this.field_type = paramCursor.getInt(i);
             }
-            else if (eDc == k)
+            else if (eEL == k)
             {
               this.field_status = paramCursor.getInt(i);
             }
-            else if (eEf == k)
+            else if (eFO == k)
             {
               this.field_createTime = paramCursor.getLong(i);
             }
-            else if (eLf == k)
+            else if (eMP == k)
             {
               this.field_talker = paramCursor.getString(i);
             }
-            else if (eEm == k)
+            else if (eFV == k)
             {
               this.field_content = paramCursor.getString(i);
             }
-            else if (eLg == k)
+            else if (eMQ == k)
             {
               this.field_imgPath = paramCursor.getString(i);
             }
-            else if (eLh == k)
+            else if (eMR == k)
             {
               this.field_lvbuffer = paramCursor.getBlob(i);
             }
-            else if (eLi == k)
+            else if (eMS == k)
             {
               this.field_talkerId = paramCursor.getInt(i);
             }
             else
             {
-              if (eLj == k)
+              if (eMT == k)
               {
                 if (paramCursor.getInt(i) != 0) {}
                 for (boolean bool = true;; bool = false)
@@ -168,13 +171,13 @@ public abstract class am
                   break;
                 }
               }
-              if (eLk == k) {
+              if (eMU == k) {
                 this.field_orderFlag = paramCursor.getLong(i);
-              } else if (eLl == k) {
+              } else if (eMV == k) {
                 this.field_hasShow = paramCursor.getInt(i);
-              } else if (eLm == k) {
+              } else if (eMW == k) {
                 this.field_placeTop = paramCursor.getInt(i);
-              } else if (eLn == k) {
+              } else if (eMX == k) {
                 try
                 {
                   byte[] arrayOfByte = paramCursor.getBlob(i);
@@ -185,16 +188,18 @@ public abstract class am
                 }
                 catch (IOException localIOException)
                 {
-                  ad.e("MicroMsg.SDK.BaseBizTimeLineInfo", localIOException.getMessage());
+                  ae.e("MicroMsg.SDK.BaseBizTimeLineInfo", localIOException.getMessage());
                 }
-              } else if (eLo == k) {
+              } else if (eMY == k) {
                 this.field_isRead = paramCursor.getInt(i);
-              } else if (eJn == k) {
+              } else if (eKW == k) {
                 this.field_bitFlag = paramCursor.getInt(i);
-              } else if (eLp == k) {
+              } else if (eMZ == k) {
                 this.field_bizClientMsgId = paramCursor.getString(i);
-              } else if (eLq == k) {
+              } else if (eNa == k) {
                 this.field_rankSessionId = paramCursor.getString(i);
+              } else if (eNb == k) {
+                this.field_recommendCardId = paramCursor.getString(i);
               } else if (rowid_HASHCODE == k) {
                 this.systemRowid = paramCursor.getLong(i);
               }
@@ -205,95 +210,95 @@ public abstract class am
         {
           if ((this.field_lvbuffer != null) && (this.field_lvbuffer.length != 0))
           {
-            paramCursor = new aa();
-            i = paramCursor.cy(this.field_lvbuffer);
+            paramCursor = new ab();
+            i = paramCursor.cB(this.field_lvbuffer);
             if (i != 0)
             {
-              ad.e("MicroMsg.SDK.BaseBizTimeLineInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
+              ae.e("MicroMsg.SDK.BaseBizTimeLineInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
               return;
             }
           }
         }
         catch (Exception paramCursor)
         {
-          ad.e("MicroMsg.SDK.BaseBizTimeLineInfo", "get value failed");
+          ae.e("MicroMsg.SDK.BaseBizTimeLineInfo", "get value failed");
           return;
         }
       }
-      if (!paramCursor.fki()) {
-        this.eLr = paramCursor.getInt();
+      if (!paramCursor.foc()) {
+        this.eNc = paramCursor.getInt();
       }
-      if (!paramCursor.fki()) {
-        this.eLs = paramCursor.getString();
+      if (!paramCursor.foc()) {
+        this.eNd = paramCursor.getString();
       }
-      if (!paramCursor.fki()) {
-        this.eLt = paramCursor.getBuffer();
+      if (!paramCursor.foc()) {
+        this.eNe = paramCursor.getBuffer();
       }
-    } while (paramCursor.fki());
-    this.eLu = paramCursor.getLong();
+    } while (paramCursor.foc());
+    this.eNf = paramCursor.getLong();
   }
   
   public ContentValues convertTo()
   {
     try
     {
-      if (this.eKU)
+      if (this.eMD)
       {
-        localObject = new aa();
-        ((aa)localObject).fkj();
-        ((aa)localObject).aaw(this.eLr);
-        ((aa)localObject).aQp(this.eLs);
-        ((aa)localObject).cz(this.eLt);
-        ((aa)localObject).CV(this.eLu);
-        this.field_lvbuffer = ((aa)localObject).fkk();
+        localObject = new ab();
+        ((ab)localObject).fod();
+        ((ab)localObject).abc(this.eNc);
+        ((ab)localObject).aRM(this.eNd);
+        ((ab)localObject).cC(this.eNe);
+        ((ab)localObject).Dt(this.eNf);
+        this.field_lvbuffer = ((ab)localObject).foe();
       }
       localObject = new ContentValues();
-      if (this.eCS) {
+      if (this.eEB) {
         ((ContentValues)localObject).put("msgId", Long.valueOf(this.field_msgId));
       }
-      if (this.eKR) {
+      if (this.eMA) {
         ((ContentValues)localObject).put("msgSvrId", Long.valueOf(this.field_msgSvrId));
       }
       if (this.__hadSettype) {
         ((ContentValues)localObject).put("type", Integer.valueOf(this.field_type));
       }
-      if (this.eCZ) {
+      if (this.eEI) {
         ((ContentValues)localObject).put("status", Integer.valueOf(this.field_status));
       }
-      if (this.eDI) {
+      if (this.eFr) {
         ((ContentValues)localObject).put("createTime", Long.valueOf(this.field_createTime));
       }
-      if (this.eKS) {
+      if (this.eMB) {
         ((ContentValues)localObject).put("talker", this.field_talker);
       }
       if (this.field_content == null) {
         this.field_content = "";
       }
-      if (this.eDP) {
+      if (this.eFy) {
         ((ContentValues)localObject).put("content", this.field_content);
       }
-      if (this.eKT) {
+      if (this.eMC) {
         ((ContentValues)localObject).put("imgPath", this.field_imgPath);
       }
-      if (this.eKU) {
+      if (this.eMD) {
         ((ContentValues)localObject).put("lvbuffer", this.field_lvbuffer);
       }
-      if (this.eKV) {
+      if (this.eME) {
         ((ContentValues)localObject).put("talkerId", Integer.valueOf(this.field_talkerId));
       }
-      if (this.eKW) {
+      if (this.eMF) {
         ((ContentValues)localObject).put("isExpand", Boolean.valueOf(this.field_isExpand));
       }
-      if (this.eKX) {
+      if (this.eMG) {
         ((ContentValues)localObject).put("orderFlag", Long.valueOf(this.field_orderFlag));
       }
-      if (this.eKY) {
+      if (this.eMH) {
         ((ContentValues)localObject).put("hasShow", Integer.valueOf(this.field_hasShow));
       }
-      if (this.eKZ) {
+      if (this.eMI) {
         ((ContentValues)localObject).put("placeTop", Integer.valueOf(this.field_placeTop));
       }
-      if ((!this.eLa) || (this.field_appMsgStatInfoProto == null)) {}
+      if ((!this.eMJ) || (this.field_appMsgStatInfoProto == null)) {}
     }
     catch (Exception localException)
     {
@@ -301,51 +306,57 @@ public abstract class am
       {
         Object localObject;
         ((ContentValues)localObject).put("appMsgStatInfoProto", this.field_appMsgStatInfoProto.toByteArray());
-        if (this.eLb) {
+        if (this.eMK) {
           ((ContentValues)localObject).put("isRead", Integer.valueOf(this.field_isRead));
         }
-        if (this.eJa) {
+        if (this.eKJ) {
           ((ContentValues)localObject).put("bitFlag", Integer.valueOf(this.field_bitFlag));
         }
         if (this.field_bizClientMsgId == null) {
           this.field_bizClientMsgId = "";
         }
-        if (this.eLc) {
+        if (this.eML) {
           ((ContentValues)localObject).put("bizClientMsgId", this.field_bizClientMsgId);
         }
         if (this.field_rankSessionId == null) {
           this.field_rankSessionId = "";
         }
-        if (this.eLd) {
+        if (this.eMM) {
           ((ContentValues)localObject).put("rankSessionId", this.field_rankSessionId);
+        }
+        if (this.field_recommendCardId == null) {
+          this.field_recommendCardId = "";
+        }
+        if (this.eMN) {
+          ((ContentValues)localObject).put("recommendCardId", this.field_recommendCardId);
         }
         if (this.systemRowid > 0L) {
           ((ContentValues)localObject).put("rowid", Long.valueOf(this.systemRowid));
         }
         return localObject;
         localException = localException;
-        ad.e("MicroMsg.SDK.BaseBizTimeLineInfo", "get value failed, %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.SDK.BaseBizTimeLineInfo", "get value failed, %s", new Object[] { localException.getMessage() });
       }
       catch (IOException localIOException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.SDK.BaseBizTimeLineInfo", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseBizTimeLineInfo", localIOException.getMessage());
         }
       }
     }
   }
   
-  public final void jY(int paramInt)
+  public final void ka(int paramInt)
   {
-    this.eLr = paramInt;
-    this.eKU = true;
+    this.eNc = paramInt;
+    this.eMD = true;
   }
   
-  public final void sP(String paramString)
+  public final void tk(String paramString)
   {
-    this.eLs = paramString;
-    this.eKU = true;
+    this.eNd = paramString;
+    this.eMD = true;
   }
 }
 

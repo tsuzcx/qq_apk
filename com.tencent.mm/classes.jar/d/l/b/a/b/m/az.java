@@ -14,15 +14,15 @@ public final class az
     p.h(paramab, "$this$replace");
     p.h(paramList, "newArguments");
     p.h(paramg, "newAnnotations");
-    if (((paramList.isEmpty()) || (paramList == paramab.gsW())) && (paramg == paramab.ghH()))
+    if (((paramList.isEmpty()) || (paramList == paramab.gxy())) && (paramg == paramab.gmj()))
     {
       AppMethodBeat.o(60843);
       return paramab;
     }
-    paramab = paramab.gua();
+    paramab = paramab.gyC();
     if ((paramab instanceof v))
     {
-      paramab = (ab)ac.a(a(((v)paramab).NBV, paramList, paramg), a(((v)paramab).NBW, paramList, paramg));
+      paramab = (ab)ac.a(a(((v)paramab).NZc, paramList, paramg), a(((v)paramab).NZd, paramList, paramg));
       AppMethodBeat.o(60843);
       return paramab;
     }
@@ -43,7 +43,7 @@ public final class az
     p.h(paramaj, "$this$replace");
     p.h(paramList, "newArguments");
     p.h(paramg, "newAnnotations");
-    if ((paramList.isEmpty()) && (paramg == paramaj.ghH()))
+    if ((paramList.isEmpty()) && (paramg == paramaj.gmj()))
     {
       AppMethodBeat.o(60844);
       return paramaj;
@@ -54,7 +54,7 @@ public final class az
       AppMethodBeat.o(60844);
       return paramaj;
     }
-    paramaj = ac.c(paramg, paramaj.gsZ(), paramList, paramaj.glW());
+    paramaj = ac.c(paramg, paramaj.gxB(), paramList, paramaj.gqy());
     AppMethodBeat.o(60844);
     return paramaj;
   }
@@ -63,7 +63,7 @@ public final class az
   {
     AppMethodBeat.i(60846);
     p.h(paramab, "$this$asSimpleType");
-    bg localbg = paramab.gua();
+    bg localbg = paramab.gyC();
     Object localObject = localbg;
     if (!(localbg instanceof aj)) {
       localObject = null;
@@ -81,7 +81,7 @@ public final class az
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.az
  * JD-Core Version:    0.7.0.1
  */

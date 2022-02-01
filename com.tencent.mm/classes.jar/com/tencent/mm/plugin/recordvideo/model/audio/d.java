@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.recordvideo.model.audio;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bxc;
+import com.tencent.mm.protocal.protobuf.bxw;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"dump", "", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicFeedback;", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"dump", "", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicFeedback;", "plugin-recordvideo_release"})
 public final class d
 {
-  public static final String a(bxc parambxc)
+  public static final String a(bxw parambxw)
   {
     AppMethodBeat.i(169931);
-    p.h(parambxc, "$this$dump");
-    parambxc = parambxc.GQZ + ' ' + parambxc.GRa + ' ' + parambxc.GRb + ' ' + parambxc.GRc;
+    p.h(parambxw, "$this$dump");
+    parambxw = parambxw.HkA + ' ' + parambxw.HkB + ' ' + parambxw.HkC + ' ' + parambxw.HkD;
     AppMethodBeat.o(169931);
-    return parambxc;
+    return parambxw;
   }
 }
 

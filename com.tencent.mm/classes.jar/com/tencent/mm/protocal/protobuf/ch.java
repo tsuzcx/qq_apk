@@ -5,15 +5,15 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ch
-  extends cvc
+  extends cvw
 {
-  public String FuL;
-  public LinkedList<String> FuM;
+  public String FNj;
+  public LinkedList<String> FNk;
   
   public ch()
   {
     AppMethodBeat.i(138165);
-    this.FuM = new LinkedList();
+    this.FNk = new LinkedList();
     AppMethodBeat.o(138165);
   }
   
@@ -23,7 +23,7 @@ public final class ch
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FuL == null)
+      if (this.FNj == null)
       {
         paramVarArgs = new b("Not all required fields were included: ChatRoomName");
         AppMethodBeat.o(138166);
@@ -31,13 +31,13 @@ public final class ch
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.FuL != null) {
-        paramVarArgs.d(2, this.FuL);
+      if (this.FNj != null) {
+        paramVarArgs.d(2, this.FNj);
       }
-      paramVarArgs.e(3, 1, this.FuM);
+      paramVarArgs.e(3, 1, this.FNk);
       AppMethodBeat.o(138166);
       return 0;
     }
@@ -47,26 +47,26 @@ public final class ch
       }
     }
     label478:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FuL != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FuL);
+      if (this.FNj != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FNj);
       }
-      paramInt = f.a.a.a.c(3, 1, this.FuM);
+      paramInt = f.a.a.a.c(3, 1, this.FNk);
       AppMethodBeat.o(138166);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.FuM.clear();
+        this.FNk.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.FuL == null)
+        if (this.FNj == null)
         {
           paramVarArgs = new b("Not all required fields were included: ChatRoomName");
           AppMethodBeat.o(138166);
@@ -86,7 +86,7 @@ public final class ch
           AppMethodBeat.o(138166);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -94,18 +94,18 @@ public final class ch
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localch.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(138166);
           return 0;
         case 2: 
-          localch.FuL = ((f.a.a.a.a)localObject1).NPN.readString();
+          localch.FNj = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(138166);
           return 0;
         }
-        localch.FuM.add(((f.a.a.a.a)localObject1).NPN.readString());
+        localch.FNk.add(((f.a.a.a.a)localObject1).OmT.readString());
         AppMethodBeat.o(138166);
         return 0;
       }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class t
   extends r
@@ -14,7 +14,7 @@ final class t
     super(paramContext);
   }
   
-  public final void bEs()
+  public final void bFk()
   {
     AppMethodBeat.i(136475);
     try
@@ -25,7 +25,7 @@ final class t
     }
     catch (RuntimeException localRuntimeException1)
     {
-      ad.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection restartInput re=%s", new Object[] { localRuntimeException1 });
+      ae.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection restartInput re=%s", new Object[] { localRuntimeException1 });
       try
       {
         aj.dp(this).showSoftInput(this, 0);
@@ -34,7 +34,7 @@ final class t
       }
       catch (RuntimeException localRuntimeException2)
       {
-        ad.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection showSoftInput re=%s", new Object[] { localRuntimeException2 });
+        ae.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection showSoftInput re=%s", new Object[] { localRuntimeException2 });
         AppMethodBeat.o(136475);
       }
     }
@@ -51,7 +51,7 @@ final class t
   public final void setPasswordMode(boolean paramBoolean)
   {
     AppMethodBeat.i(136474);
-    bEM();
+    bFE();
     int i = getInputType() | 0x1;
     if (paramBoolean) {
       i |= 0x80;
@@ -60,7 +60,7 @@ final class t
     {
       setInputType(i);
       super.setPasswordMode(paramBoolean);
-      bEN();
+      bFF();
       AppMethodBeat.o(136474);
       return;
       i &= 0xFFFFFF7F;

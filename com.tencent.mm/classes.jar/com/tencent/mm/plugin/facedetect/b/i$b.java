@@ -5,27 +5,27 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.axi;
+import com.tencent.mm.protocal.protobuf.axy;
 
 public final class i$b
   extends l.e
   implements l.c
 {
-  public axi rga;
+  public axy rod;
   
   public i$b()
   {
     AppMethodBeat.i(103593);
-    this.rga = new axi();
+    this.rod = new axy();
     AppMethodBeat.o(103593);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103594);
-    this.rga = ((axi)new axi().parseFrom(paramArrayOfByte));
-    l.a(this, this.rga.getBaseResponse());
-    int i = this.rga.getBaseResponse().Ret;
+    this.rod = ((axy)new axy().parseFrom(paramArrayOfByte));
+    l.a(this, this.rod.getBaseResponse());
+    int i = this.rod.getBaseResponse().Ret;
     AppMethodBeat.o(103594);
     return i;
   }

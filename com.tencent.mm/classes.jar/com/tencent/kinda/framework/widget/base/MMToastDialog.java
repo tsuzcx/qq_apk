@@ -5,8 +5,8 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.framework.widget.tools.ResourcesUtils;
 import com.tencent.kinda.gen.KToastDialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.t;
 
 public class MMToastDialog
@@ -16,23 +16,23 @@ public class MMToastDialog
   
   public void show(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(199535);
+    AppMethodBeat.i(193252);
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("MMToastDialog", "MMToastDialog showImpl() KindaContext.get() return null!");
-      AppMethodBeat.o(199535);
+      ae.e("MMToastDialog", "MMToastDialog showImpl() KindaContext.get() return null!");
+      AppMethodBeat.o(193252);
       return;
     }
-    int i = ResourcesUtils.getDrawableId(aj.getContext(), paramString2);
-    int j = ResourcesUtils.getResId(aj.getContext(), paramString2, "raw");
+    int i = ResourcesUtils.getDrawableId(ak.getContext(), paramString2);
+    int j = ResourcesUtils.getResId(ak.getContext(), paramString2, "raw");
     if (j != 0) {
       i = j;
     }
     for (;;)
     {
-      t.w(localContext, paramString1, i);
-      AppMethodBeat.o(199535);
+      t.v(localContext, paramString1, i);
+      AppMethodBeat.o(193252);
       return;
     }
   }

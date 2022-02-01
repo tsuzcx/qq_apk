@@ -21,7 +21,7 @@ public final class s<Data>
     this.aKF = paramn;
   }
   
-  private Uri a(Integer paramInteger)
+  private Uri b(Integer paramInteger)
   {
     AppMethodBeat.i(77299);
     try

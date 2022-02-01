@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.wallet_index.c.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ciy;
-import com.tencent.mm.protocal.protobuf.ciz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cjs;
+import com.tencent.mm.protocal.protobuf.cjt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class a
   extends w
 {
-  public String DpS;
-  public String Dqf;
+  public String DHL;
+  public String DHy;
   private f callback;
   public String jumpUrl;
   public String prepayId;
@@ -30,24 +30,24 @@ public final class a
   {
     AppMethodBeat.i(71846);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ciy();
-    ((b.a)localObject).hNN = new ciz();
+    ((b.a)localObject).hQF = new cjs();
+    ((b.a)localObject).hQG = new cjt();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payibggenprepay";
     ((b.a)localObject).funcId = 1563;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ciy)this.rr.hNK.hNQ;
-    ((ciy)localObject).iht = paramString1;
-    ((ciy)localObject).FXf = paramString4;
-    ((ciy)localObject).FXe = paramString2;
-    ((ciy)localObject).FXg = paramString5;
-    ((ciy)localObject).FXh = paramString6;
-    ((ciy)localObject).FDD = paramString3;
-    ((ciy)localObject).FWa = paramString7;
-    ((ciy)localObject).GsQ = paramString8;
-    ((ciy)localObject).FqH = paramInt;
-    ad.d("MicroMsg.NetSceneIbgPayGenPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,", new Object[] { paramString1, paramString4, paramString2, paramString5, paramString6, paramString3, paramString7, paramString8 }));
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cjs)this.rr.hQD.hQJ;
+    ((cjs)localObject).ikm = paramString1;
+    ((cjs)localObject).GpE = paramString4;
+    ((cjs)localObject).GpD = paramString2;
+    ((cjs)localObject).GpF = paramString5;
+    ((cjs)localObject).GpG = paramString6;
+    ((cjs)localObject).FVY = paramString3;
+    ((cjs)localObject).Goz = paramString7;
+    ((cjs)localObject).GMo = paramString8;
+    ((cjs)localObject).FJf = paramInt;
+    ae.d("MicroMsg.NetSceneIbgPayGenPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,", new Object[] { paramString1, paramString4, paramString2, paramString5, paramString6, paramString3, paramString7, paramString8 }));
     AppMethodBeat.o(71846);
   }
   
@@ -68,28 +68,28 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71847);
-    ad.i("MicroMsg.NetSceneIbgPayGenPrepay", "hy: gen ibg prepay raw net errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (ciz)((b)paramq).hNL.hNQ;
+    ae.i("MicroMsg.NetSceneIbgPayGenPrepay", "hy: gen ibg prepay raw net errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (cjt)((b)paramq).hQE.hQJ;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.i("MicroMsg.NetSceneIbgPayGenPrepay", "hy: gen ibg prepay jump url. biz_errcode: %d, biz_errmsg: %s", new Object[] { Integer.valueOf(paramq.qel), paramq.qem });
-      paramString = paramq.qem;
-      paramInt3 = paramq.qel;
-      this.jumpUrl = paramq.ueY;
-      this.prepayId = paramq.GsR;
-      this.DpS = paramq.GsS;
-      this.Dqf = paramq.HcL;
+      ae.i("MicroMsg.NetSceneIbgPayGenPrepay", "hy: gen ibg prepay jump url. biz_errcode: %d, biz_errmsg: %s", new Object[] { Integer.valueOf(paramq.qkQ), paramq.qkR });
+      paramString = paramq.qkR;
+      paramInt3 = paramq.qkQ;
+      this.jumpUrl = paramq.uqf;
+      this.prepayId = paramq.GMp;
+      this.DHy = paramq.GMq;
+      this.DHL = paramq.Hwl;
     }
     for (;;)
     {
       paramq = paramString;
-      if (bt.isNullOrNil(paramString)) {
-        paramq = aj.getContext().getString(2131765224);
+      if (bu.isNullOrNil(paramString)) {
+        paramq = ak.getContext().getString(2131765224);
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramq, this);
       AppMethodBeat.o(71847);
       return;
-      ad.e("MicroMsg.NetSceneIbgPayGenPrepay", "hy: gen ibg prepay jump url failed");
+      ae.e("MicroMsg.NetSceneIbgPayGenPrepay", "hy: gen ibg prepay jump url failed");
       this.jumpUrl = null;
     }
   }

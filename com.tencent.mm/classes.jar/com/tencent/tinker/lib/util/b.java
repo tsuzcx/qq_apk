@@ -17,7 +17,7 @@ import java.util.List;
 public final class b
   extends ShareTinkerInternals
 {
-  private static String Mhw = null;
+  private static String MEt = null;
   
   private static String f(Context paramContext, Class<? extends Service> paramClass)
   {
@@ -32,9 +32,9 @@ public final class b
     return null;
   }
   
-  public static void ll(Context paramContext)
+  public static void lr(Context paramContext)
   {
-    String str = ln(paramContext);
+    String str = lt(paramContext);
     if (str == null) {}
     for (;;)
     {
@@ -54,10 +54,10 @@ public final class b
     }
   }
   
-  public static boolean lm(Context paramContext)
+  public static boolean ls(Context paramContext)
   {
     Object localObject = (ActivityManager)paramContext.getSystemService("activity");
-    paramContext = ln(paramContext);
+    paramContext = lt(paramContext);
     if (paramContext == null) {
       return false;
     }
@@ -89,23 +89,23 @@ public final class b
     return false;
   }
   
-  private static String ln(Context paramContext)
+  private static String lt(Context paramContext)
   {
-    if (Mhw != null) {
-      return Mhw;
+    if (MEt != null) {
+      return MEt;
     }
     paramContext = f(paramContext, TinkerPatchService.class);
     if (paramContext == null) {
       return null;
     }
-    Mhw = paramContext;
+    MEt = paramContext;
     return paramContext;
   }
   
-  public static boolean lo(Context paramContext)
+  public static boolean lu(Context paramContext)
   {
     String str = getProcessName(paramContext);
-    paramContext = ln(paramContext);
+    paramContext = lt(paramContext);
     if ((paramContext == null) || (paramContext.length() == 0)) {
       return false;
     }

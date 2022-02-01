@@ -10,14 +10,14 @@ public abstract class v
   extends bg
   implements ar, d.l.b.a.b.m.c.g
 {
-  public final aj NBV;
-  public final aj NBW;
+  public final aj NZc;
+  public final aj NZd;
   
   public v(aj paramaj1, aj paramaj2)
   {
     super((byte)0);
-    this.NBV = paramaj1;
-    this.NBW = paramaj2;
+    this.NZc = paramaj1;
+    this.NZd = paramaj2;
   }
   
   public abstract String a(c paramc, i parami);
@@ -28,51 +28,51 @@ public abstract class v
     return false;
   }
   
-  public d.l.b.a.b.b.a.g ghH()
+  public h gmN()
   {
-    return glS().ghH();
+    return gqu().gmN();
   }
   
-  public h gil()
+  public d.l.b.a.b.b.a.g gmj()
   {
-    return glS().gil();
+    return gqu().gmj();
   }
   
-  public abstract aj glS();
+  public abstract aj gqu();
   
-  public boolean glW()
+  public boolean gqy()
   {
-    return glS().glW();
+    return gqu().gqy();
   }
   
-  public final List<av> gsW()
+  public final ab gxA()
   {
-    return glS().gsW();
+    return (ab)this.NZd;
   }
   
-  public final ab gsX()
+  public final at gxB()
   {
-    return (ab)this.NBV;
+    return gqu().gxB();
   }
   
-  public final ab gsY()
+  public final List<av> gxy()
   {
-    return (ab)this.NBW;
+    return gqu().gxy();
   }
   
-  public final at gsZ()
+  public final ab gxz()
   {
-    return glS().gsZ();
+    return (ab)this.NZc;
   }
   
   public String toString()
   {
-    return c.Ntf.b((ab)this);
+    return c.NQl.b((ab)this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.v
  * JD-Core Version:    0.7.0.1
  */

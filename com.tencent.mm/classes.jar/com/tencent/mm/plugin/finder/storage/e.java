@@ -5,15 +5,15 @@ import com.tencent.mm.plugin.finder.conv.c;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"print", "", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"print", "", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "plugin-finder_release"})
 public final class e
 {
   public static final String b(c paramc)
   {
-    AppMethodBeat.i(203653);
+    AppMethodBeat.i(204219);
     p.h(paramc, "$this$print");
     paramc = "sessionId=" + paramc.field_sessionId + " placedFlag=" + paramc.field_placedFlag + " unReadCount=" + paramc.field_unReadCount + " status=" + paramc.field_status + " updateTime=" + paramc.field_updateTime + ' ' + "digest=" + paramc.field_digest + " digestType=" + paramc.field_digestType + " lastMsgID=" + paramc.field_lastMsgID + " unReadCount=" + paramc.field_unReadCount + "content=" + paramc.field_content + " isSend=" + paramc.field_isSend + " editingMsg=" + paramc.field_editingMsg + " systemRowId=" + paramc.systemRowid + " type=" + paramc.field_type;
-    AppMethodBeat.o(203653);
+    AppMethodBeat.o(204219);
     return paramc;
   }
 }

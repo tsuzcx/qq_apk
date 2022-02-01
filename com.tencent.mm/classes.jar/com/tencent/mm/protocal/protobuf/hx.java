@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class hx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> FAs;
-  public int FAt;
-  public int FAu;
+  public LinkedList<String> FSP;
+  public int FSQ;
+  public int uqG;
   
   public hx()
   {
     AppMethodBeat.i(104747);
-    this.FAs = new LinkedList();
+    this.FSP = new LinkedList();
     AppMethodBeat.o(104747);
   }
   
@@ -23,28 +23,28 @@ public final class hx
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 1, this.FAs);
-      paramVarArgs.aS(2, this.FAt);
-      paramVarArgs.aS(3, this.FAu);
+      paramVarArgs.e(1, 1, this.FSP);
+      paramVarArgs.aS(2, this.FSQ);
+      paramVarArgs.aS(3, this.uqG);
       AppMethodBeat.o(104748);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 1, this.FAs);
-      int i = f.a.a.b.b.a.bz(2, this.FAt);
-      int j = f.a.a.b.b.a.bz(3, this.FAu);
+      paramInt = f.a.a.a.c(1, 1, this.FSP);
+      int i = f.a.a.b.b.a.bz(2, this.FSQ);
+      int j = f.a.a.b.b.a.bz(3, this.uqG);
       AppMethodBeat.o(104748);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.FAs.clear();
+      this.FSP.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(104748);
@@ -60,15 +60,15 @@ public final class hx
         AppMethodBeat.o(104748);
         return -1;
       case 1: 
-        localhx.FAs.add(locala.NPN.readString());
+        localhx.FSP.add(locala.OmT.readString());
         AppMethodBeat.o(104748);
         return 0;
       case 2: 
-        localhx.FAt = locala.NPN.zc();
+        localhx.FSQ = locala.OmT.zc();
         AppMethodBeat.o(104748);
         return 0;
       }
-      localhx.FAu = locala.NPN.zc();
+      localhx.uqG = locala.OmT.zc();
       AppMethodBeat.o(104748);
       return 0;
     }

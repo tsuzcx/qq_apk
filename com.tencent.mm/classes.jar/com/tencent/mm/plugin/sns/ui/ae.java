@@ -14,24 +14,23 @@ import com.tencent.mm.kiss.widget.textview.PLSysTextView;
 import com.tencent.mm.kiss.widget.textview.SysTextView;
 import com.tencent.mm.pluginsdk.ui.span.f;
 import com.tencent.mm.pluginsdk.ui.span.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class ae
   implements View.OnTouchListener
 {
-  private static p zSI;
-  private static TextView zSJ;
+  private static p AjP;
+  private static TextView AjQ;
   
-  public static void dZZ()
+  public static void edF()
   {
     AppMethodBeat.i(97958);
-    if (zSI != null)
+    if (AjP != null)
     {
-      zSI.setIsPressed(false);
-      zSJ.invalidate();
-      zSJ = null;
-      zSI = null;
+      AjP.setIsPressed(false);
+      AjQ.invalidate();
+      AjQ = null;
+      AjP = null;
     }
     AppMethodBeat.o(97958);
   }
@@ -42,7 +41,7 @@ public final class ae
     Object localObject = new b();
     ((b)localObject).bd(paramView);
     ((b)localObject).bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/ui/MMOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/MMOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahF());
     TextView localTextView = (TextView)paramView;
     localTextView.getTag();
     CharSequence localCharSequence = localTextView.getText();
@@ -130,7 +129,7 @@ public final class ae
             i = paramMotionEvent.getAction();
             paramView = (p[])((Spannable)localObject).getSpans(j, j, p.class);
             j = paramView.length - 1;
-            ad.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
+            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
             if ((localTextView.getLayout() == null) && ((localTextView instanceof SysTextView))) {
               ((SysTextView)localTextView).getTvLayout();
             }
@@ -141,12 +140,12 @@ public final class ae
               break label621;
             }
             paramView[j].onClick(localTextView);
-            new ap().postDelayed(new Runnable()
+            new aq().postDelayed(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97956);
-                ae.dZZ();
+                ae.edF();
                 AppMethodBeat.o(97956);
               }
             }, 300L);
@@ -171,14 +170,14 @@ public final class ae
             label621:
             if ((i == 0) || (i == 2) || (i == 3))
             {
-              dZZ();
-              zSI = paramView[j];
-              zSJ = localTextView;
+              edF();
+              AjP = paramView[j];
+              AjQ = localTextView;
               paramView[j].setIsPressed(true);
               localTextView.invalidate();
               i = 1;
               continue;
-              dZZ();
+              edF();
             }
             else
             {
@@ -188,7 +187,7 @@ public final class ae
         }
         else
         {
-          dZZ();
+          edF();
           bool = false;
         }
       }
@@ -200,7 +199,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ae
  * JD-Core Version:    0.7.0.1
  */

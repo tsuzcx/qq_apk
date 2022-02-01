@@ -1,40 +1,46 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dww
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int HJM;
-  public int HJN;
+  public LinkedList<Float> GKl;
+  
+  public dww()
+  {
+    AppMethodBeat.i(140932);
+    this.GKl = new LinkedList();
+    AppMethodBeat.o(140932);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115867);
+    AppMethodBeat.i(140933);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HJM);
-      paramVarArgs.aS(2, this.HJN);
-      AppMethodBeat.o(115867);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 5, this.GKl);
+      AppMethodBeat.o(140933);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.HJM);
-      int i = f.a.a.b.b.a.bz(2, this.HJN);
-      AppMethodBeat.o(115867);
-      return paramInt + 0 + i;
+      paramInt = f.a.a.a.c(1, 5, this.GKl);
+      AppMethodBeat.o(140933);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.GKl.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(115867);
+      AppMethodBeat.o(140933);
       return 0;
     }
     if (paramInt == 3)
@@ -44,24 +50,20 @@ public final class dww
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(115867);
+        AppMethodBeat.o(140933);
         return -1;
-      case 1: 
-        localdww.HJM = locala.NPN.zc();
-        AppMethodBeat.o(115867);
-        return 0;
       }
-      localdww.HJN = locala.NPN.zc();
-      AppMethodBeat.o(115867);
+      localdww.GKl.add(Float.valueOf(Float.intBitsToFloat(locala.OmT.gwb())));
+      AppMethodBeat.o(140933);
       return 0;
     }
-    AppMethodBeat.o(115867);
+    AppMethodBeat.o(140933);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dww
  * JD-Core Version:    0.7.0.1
  */

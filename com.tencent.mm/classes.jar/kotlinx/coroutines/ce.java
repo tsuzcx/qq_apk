@@ -6,33 +6,33 @@ import d.p;
 import d.p.a;
 import d.q;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/JobSupport;", "job", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/JobSupport;", "job", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
 final class ce<T>
   extends bu<bv>
 {
-  private final l<T> NJf;
+  private final l<T> Ogl;
   
   public ce(bv parambv, l<? super T> paraml)
   {
     super((br)parambv);
-    AppMethodBeat.i(190770);
-    this.NJf = paraml;
-    AppMethodBeat.o(190770);
+    AppMethodBeat.i(209261);
+    this.Ogl = paraml;
+    AppMethodBeat.o(209261);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(118268);
-    String str = "ResumeAwaitOnCompletion[" + this.NJf + ']';
+    String str = "ResumeAwaitOnCompletion[" + this.Ogl + ']';
     AppMethodBeat.o(118268);
     return str;
   }
   
-  public final void v(Throwable paramThrowable)
+  public final void x(Throwable paramThrowable)
   {
     AppMethodBeat.i(118266);
-    Object localObject = ((bv)this.NIO).gvE();
-    if (am.gvd())
+    Object localObject = ((bv)this.OfU).gAg();
+    if (am.gzF())
     {
       if (!(localObject instanceof bm)) {}
       for (int i = 1; i == 0; i = 0)
@@ -44,17 +44,17 @@ final class ce<T>
     }
     if ((localObject instanceof u))
     {
-      paramThrowable = (d)this.NJf;
+      paramThrowable = (d)this.Ogl;
       localObject = ((u)localObject).cause;
-      locala = p.MKe;
-      paramThrowable.eN(p.eL(q.o((Throwable)localObject)));
+      locala = p.Nhh;
+      paramThrowable.eQ(p.eO(q.p((Throwable)localObject)));
       AppMethodBeat.o(118266);
       return;
     }
-    paramThrowable = (d)this.NJf;
-    localObject = bw.fV(localObject);
-    p.a locala = p.MKe;
-    paramThrowable.eN(p.eL(localObject));
+    paramThrowable = (d)this.Ogl;
+    localObject = bw.fY(localObject);
+    p.a locala = p.Nhh;
+    paramThrowable.eQ(p.eO(localObject));
     AppMethodBeat.o(118266);
   }
 }

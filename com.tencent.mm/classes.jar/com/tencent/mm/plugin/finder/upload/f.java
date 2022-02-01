@@ -9,20 +9,21 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.finder.report.n.a;
+import com.tencent.mm.plugin.finder.report.o.a;
 import com.tencent.mm.plugin.finder.storage.b;
 import com.tencent.mm.plugin.finder.utils.r;
 import com.tencent.mm.plugin.mmsight.d;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.protocal.protobuf.dwe;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.protocal.protobuf.dwz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import d.z;
@@ -30,22 +31,22 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderPostFileManager;", "", "()V", "MARK_DEL_FILES", "", "TAG", "getTAG", "()Ljava/lang/String;", "fileLock", "Ljava/lang/Object;", "lastCheckPostingTime", "", "_genImageThumbFile", "originFilePath", "thumbFile", "thumbRect", "Lcom/tencent/mm/protocal/protobuf/ViewRect;", "canCheckPostingFolder", "", "checkPostingFolder", "", "unsentObjs", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "clearMarkFiles", "copyImageThumbToPost", "imagePath", "thumbOriginPath", "copyVideoThumbFileToPost", "videoFilePath", "genImageThumbFileForPost", "genImageThumbFileTmp", "genVideoOriginThumbFile", "Landroid/graphics/Bitmap;", "vfsPath", "genVideoThumbFile", "videoPath", "targetWidth", "", "targetHeight", "Landroid/graphics/Rect;", "dstPath", "genVideoThumbFileForPost", "input", "genVideoThumbFileTmp", "getTmpImageThumbPath", "getTmpVideoThumbPath", "suffix", "getVideoFirstBitmap", "markPostFileToDelete", "path", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/FinderPostFileManager;", "", "()V", "MARK_DEL_FILES", "", "TAG", "getTAG", "()Ljava/lang/String;", "fileLock", "Ljava/lang/Object;", "lastCheckPostingTime", "", "_genImageThumbFile", "originFilePath", "thumbFile", "thumbRect", "Lcom/tencent/mm/protocal/protobuf/ViewRect;", "canCheckPostingFolder", "", "checkPostingFolder", "", "unsentObjs", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "clearMarkFiles", "copyImageThumbToPost", "imagePath", "thumbOriginPath", "copyVideoThumbFileToPost", "videoFilePath", "genImageThumbFileForPost", "genImageThumbFileTmp", "genVideoOriginThumbFile", "Landroid/graphics/Bitmap;", "vfsPath", "genVideoThumbFile", "videoPath", "targetWidth", "", "targetHeight", "Landroid/graphics/Rect;", "dstPath", "genVideoThumbFileForPost", "input", "genVideoThumbFileTmp", "getTmpImageThumbPath", "getTmpVideoThumbPath", "suffix", "getVideoFirstBitmap", "markPostFileToDelete", "path", "plugin-finder_release"})
 public final class f
 {
   static final String TAG = "finder.FinderPostFileManager";
-  private static final String sIZ = "MARK_DEL_FILES";
-  private static final Object sJa;
-  static long sJb;
-  public static final f sJc;
+  private static final String sUm = "MARK_DEL_FILES";
+  private static final Object sUn;
+  static long sUo;
+  public static final f sUp;
   
   static
   {
     AppMethodBeat.i(167748);
-    sJc = new f();
+    sUp = new f();
     TAG = "finder.FinderPostFileManager";
-    sIZ = "MARK_DEL_FILES";
-    sJa = new Object();
+    sUm = "MARK_DEL_FILES";
+    sUn = new Object();
     AppMethodBeat.o(167748);
   }
   
@@ -53,7 +54,7 @@ public final class f
   {
     AppMethodBeat.i(167739);
     p.h(paramString, "input");
-    ad.i(TAG, "genVideoThumbFileTmp input:" + paramString + ", targetWidth:" + paramInt1 + ", targetHeight:" + paramInt2 + ", thumbRect:" + paramRect);
+    ae.i(TAG, "genVideoThumbFileTmp input:" + paramString + ", targetWidth:" + paramInt1 + ", targetHeight:" + paramInt2 + ", thumbRect:" + paramRect);
     paramString = a(paramString, paramInt1, paramInt2, paramRect, "");
     AppMethodBeat.o(167739);
     return paramString;
@@ -63,34 +64,34 @@ public final class f
   {
     AppMethodBeat.i(167742);
     String str = paramString2;
-    if (bt.isNullOrNil(paramString2)) {
-      str = gr(paramString1, String.valueOf(System.currentTimeMillis()));
+    if (bu.isNullOrNil(paramString2)) {
+      str = gw(paramString1, String.valueOf(System.currentTimeMillis()));
     }
-    paramString2 = com.tencent.mm.vfs.i.k(paramString1, false);
-    ad.i(TAG, "genVideoThumbFile savepath:" + str + ", input:" + paramString2);
-    paramString1 = d.Gq(paramString1);
+    paramString2 = o.k(paramString1, false);
+    ae.i(TAG, "genVideoThumbFile savepath:" + str + ", input:" + paramString2);
+    paramString1 = d.GS(paramString1);
     if (paramString1 == null)
     {
-      paramString1 = i.sJt;
-      if (i.aiP(str))
+      paramString1 = i.sUG;
+      if (i.ajM(str))
       {
-        ad.i(TAG, "genVideoThumbFile file exist");
+        ae.i(TAG, "genVideoThumbFile file exist");
         AppMethodBeat.o(167742);
         return str;
       }
-      if (e.axx(paramString2) != null)
+      if (e.ayN(paramString2) != null)
       {
-        paramString1 = i.sJt;
-        paramString1 = i.du(paramString2, 4);
+        paramString1 = i.sUG;
+        paramString1 = i.dz(paramString2, 4);
         paramInt1 = SightVideoJNI.getMp4RotateVFS(paramString2);
-        paramString1 = e.av(paramString2, paramString1.x, paramString1.y);
-        ad.i(TAG, "genVideoThumbFile file %s rotate %d", new Object[] { paramString2, Integer.valueOf(paramInt1) });
+        paramString1 = e.aw(paramString2, paramString1.x, paramString1.y);
+        ae.i(TAG, "genVideoThumbFile file %s rotate %d", new Object[] { paramString2, Integer.valueOf(paramInt1) });
         if (paramString1 != null) {
-          g.a(paramString1, 70, Bitmap.CompressFormat.JPEG, str, false);
+          h.a(paramString1, 70, Bitmap.CompressFormat.JPEG, str, false);
         }
       }
-      if (!com.tencent.mm.vfs.i.fv(str)) {
-        ad.e(TAG, "genVideoThumbFile failed.");
+      if (!o.fB(str)) {
+        ae.e(TAG, "genVideoThumbFile failed.");
       }
       AppMethodBeat.o(167742);
       return str;
@@ -99,103 +100,103 @@ public final class f
     Canvas localCanvas = new Canvas(paramString2);
     if (paramRect != null)
     {
-      ad.i(TAG, "genVideoThumbFile crop by rect");
+      ae.i(TAG, "genVideoThumbFile crop by rect");
       paramRect = new Rect(paramRect.left, paramRect.bottom, paramRect.right, paramRect.top);
       p.g(paramString2, "cropThumb");
       localCanvas.drawBitmap(paramString1, paramRect, new Rect(0, 0, paramString2.getWidth(), paramString2.getHeight()), new Paint());
     }
     for (;;)
     {
-      g.a(paramString2, 80, Bitmap.CompressFormat.JPEG, str, false);
+      h.a(paramString2, 80, Bitmap.CompressFormat.JPEG, str, false);
       break;
-      ad.i(TAG, "genVideoThumbFile no rect");
+      ae.i(TAG, "genVideoThumbFile no rect");
       p.g(paramString2, "cropThumb");
       localCanvas.drawBitmap(paramString1, null, new Rect(0, 0, paramString2.getWidth(), paramString2.getHeight()), new Paint());
     }
   }
   
-  public static String a(String paramString, dwe paramdwe)
+  public static String a(String paramString, dwz paramdwz)
   {
     AppMethodBeat.i(167741);
     p.h(paramString, "input");
-    p.h(paramdwe, "thumbRect");
-    b localb = b.sxa;
-    int i = b.cEX().hVp;
-    paramString = a(paramString, i, (int)((paramdwe.top - paramdwe.bottom) / (paramdwe.right - paramdwe.left) * i), new Rect(paramdwe.left, paramdwe.top, paramdwe.right, paramdwe.bottom));
+    p.h(paramdwz, "thumbRect");
+    b localb = b.sHP;
+    int i = b.cGT().hYh;
+    paramString = a(paramString, i, (int)((paramdwz.top - paramdwz.bottom) / (paramdwz.right - paramdwz.left) * i), new Rect(paramdwz.left, paramdwz.top, paramdwz.right, paramdwz.bottom));
     AppMethodBeat.o(167741);
     return paramString;
   }
   
-  public static String aiK(String paramString)
+  public static String ajH(String paramString)
   {
     AppMethodBeat.i(167740);
     p.h(paramString, "input");
-    Object localObject = i.sJt;
-    localObject = i.du(paramString, 4);
-    ad.i(TAG, "genVideoThumbFileTmp input:" + paramString + ", targetWidth:" + ((Point)localObject).x + ", targetHeight:" + ((Point)localObject).y);
+    Object localObject = i.sUG;
+    localObject = i.dz(paramString, 4);
+    ae.i(TAG, "genVideoThumbFileTmp input:" + paramString + ", targetWidth:" + ((Point)localObject).x + ", targetHeight:" + ((Point)localObject).y);
     paramString = a(paramString, ((Point)localObject).x, ((Point)localObject).y, null, "");
     AppMethodBeat.o(167740);
     return paramString;
   }
   
-  public static void aiM(String paramString)
+  public static void ajJ(String paramString)
   {
     AppMethodBeat.i(167745);
     p.h(paramString, "path");
-    synchronized (sJa)
+    synchronized (sUn)
     {
-      ad.i(TAG, "markPostFileToDelete ".concat(String.valueOf(paramString)));
-      ax localax = ax.flg();
-      Set localSet = localax.getStringSet(sIZ, (Set)new HashSet());
+      ae.i(TAG, "markPostFileToDelete ".concat(String.valueOf(paramString)));
+      ay localay = ay.fpb();
+      Set localSet = localay.getStringSet(sUm, (Set)new HashSet());
       if (localSet == null) {
-        p.gfZ();
+        p.gkB();
       }
       localSet.add(paramString);
-      localax.putStringSet(sIZ, localSet).commit();
+      localay.putStringSet(sUm, localSet).commit();
       AppMethodBeat.o(167745);
       return;
     }
   }
   
-  public static void cKH()
+  public static void cNl()
   {
     AppMethodBeat.i(167746);
     Set localSet;
-    synchronized (sJa)
+    synchronized (sUn)
     {
-      l = bt.HI();
-      ax localax = ax.flg();
-      localSet = localax.getStringSet(sIZ, (Set)new HashSet());
+      l = bu.HQ();
+      ay localay = ay.fpb();
+      localSet = localay.getStringSet(sUm, (Set)new HashSet());
       if (localSet != null)
       {
         Iterator localIterator = ((Iterable)localSet).iterator();
         if (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          ad.i(TAG, "clearMarkFiles ".concat(String.valueOf(str)));
-          com.tencent.mm.vfs.i.deleteFile(str);
+          ae.i(TAG, "clearMarkFiles ".concat(String.valueOf(str)));
+          o.deleteFile(str);
         }
       }
     }
-    localObject2.putStringSet(sIZ, (Set)new HashSet());
-    long l = bt.aO(l);
+    localObject2.putStringSet(sUm, (Set)new HashSet());
+    long l = bu.aO(l);
     if ((localSet != null) && (localSet.size() > 0))
     {
-      localObject3 = n.a.spN;
-      n.a.wx(l);
+      localObject3 = o.a.szY;
+      o.a.wO(l);
     }
-    ad.i(TAG, "clearMarkFolder cost:".concat(String.valueOf(l)));
-    Object localObject3 = z.MKo;
+    ae.i(TAG, "clearMarkFolder cost:".concat(String.valueOf(l)));
+    Object localObject3 = z.Nhr;
     AppMethodBeat.o(167746);
   }
   
-  public static boolean cKI()
+  public static boolean cNm()
   {
     AppMethodBeat.i(167747);
-    long l1 = cf.aCK();
-    long l2 = sJb;
-    b localb = b.sxa;
-    if (l1 - l2 > b.cFz())
+    long l1 = ch.aDa();
+    long l2 = sUo;
+    b localb = b.sHP;
+    if (l1 - l2 > b.cHw())
     {
       AppMethodBeat.o(167747);
       return true;
@@ -204,40 +205,40 @@ public final class f
     return false;
   }
   
-  private static String gr(String paramString1, String paramString2)
+  private static String gw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(167738);
     p.h(paramString1, "originFilePath");
     p.h(paramString2, "suffix");
     StringBuilder localStringBuilder = new StringBuilder();
-    r localr = r.sNc;
-    paramString1 = r.cLP() + "video_" + ai.ee(paramString1) + "_" + paramString2 + "_thumb";
+    r localr = r.sYn;
+    paramString1 = r.cOx() + "video_" + aj.ej(paramString1) + "_" + paramString2 + "_thumb";
     AppMethodBeat.o(167738);
     return paramString1;
   }
   
-  static String gs(String paramString1, String paramString2)
+  static String gx(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(204335);
-    Object localObject = i.sJt;
-    if (i.aiP(paramString2))
+    AppMethodBeat.i(204953);
+    Object localObject = i.sUG;
+    if (i.ajM(paramString2))
     {
-      AppMethodBeat.o(204335);
+      AppMethodBeat.o(204953);
       return paramString2;
     }
-    localObject = i.sJt;
-    localObject = i.du(paramString1, 2);
-    Bitmap localBitmap = g.aL(paramString1, ((Point)localObject).x, ((Point)localObject).y);
+    localObject = i.sUG;
+    localObject = i.dz(paramString1, 2);
+    Bitmap localBitmap = h.aN(paramString1, ((Point)localObject).x, ((Point)localObject).y);
     Exif localExif = Exif.fromFile(paramString1);
     p.g(localExif, "Exif.fromFile(originFilePath)");
     int i = localExif.getOrientationInDegree();
-    ad.i(TAG, "_genImageThumbFile, file %s rotate %d. originThumbWidth:%s, originThumbHeight:%s", new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(((Point)localObject).x), Integer.valueOf(((Point)localObject).y) });
+    ae.i(TAG, "_genImageThumbFile, file %s rotate %d. originThumbWidth:%s, originThumbHeight:%s", new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(((Point)localObject).x), Integer.valueOf(((Point)localObject).y) });
     if (localBitmap != null)
     {
-      ad.i(TAG, "_genImageThumbFile, file %s cropThumbWidth:%s, cropThumbHeight:%s", new Object[] { paramString1, Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) });
-      g.a(localBitmap, 70, Bitmap.CompressFormat.JPEG, paramString2, false);
+      ae.i(TAG, "_genImageThumbFile, file %s cropThumbWidth:%s, cropThumbHeight:%s", new Object[] { paramString1, Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) });
+      h.a(localBitmap, 70, Bitmap.CompressFormat.JPEG, paramString2, false);
     }
-    AppMethodBeat.o(204335);
+    AppMethodBeat.o(204953);
     return paramString2;
   }
 }

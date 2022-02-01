@@ -19,10 +19,10 @@ import com.tencent.toybrick.d.a.a;
 public abstract class VerticalToyUI<T extends com.tencent.toybrick.g.a>
   extends BaseToyUI<g>
 {
-  private a.a Min;
-  private b MjN;
-  private com.tencent.toybrick.d.a MjO;
-  protected T MjP = null;
+  private a.a MFk;
+  private b MGK;
+  private com.tencent.toybrick.d.a MGL;
+  protected T MGM = null;
   
   static
   {
@@ -40,24 +40,24 @@ public abstract class VerticalToyUI<T extends com.tencent.toybrick.g.a>
     try
     {
       throw new NullPointerException();
-      this.MjO = new com.tencent.toybrick.d.a(this);
-      this.Min = this.MjO.Min;
+      this.MGL = new com.tencent.toybrick.d.a(this);
+      this.MFk = this.MGL.MFk;
       paramBundle = (RecyclerView)findViewById(2131306297);
       getBaseContext();
       Object localObject = new LinearLayoutManager();
       ((LinearLayoutManager)localObject).aqs = 4;
       ((LinearLayoutManager)localObject).aw(true);
       paramBundle.setLayoutManager((RecyclerView.i)localObject);
-      localObject = new b(this, this.Min);
-      this.MjN = ((b)localObject);
+      localObject = new b(this, this.MFk);
+      this.MGK = ((b)localObject);
       paramBundle.setAdapter((RecyclerView.a)localObject);
-      paramBundle.setRecycledViewPool(com.tencent.toybrick.b.a.fYG());
+      paramBundle.setRecycledViewPool(com.tencent.toybrick.b.a.gdf());
       paramBundle.setViewCacheExtension(new RecyclerView.u() {});
       localObject = new c(this);
-      ((c)localObject).Min = this.Min;
+      ((c)localObject).MFk = this.MFk;
       paramBundle.a((RecyclerView.h)localObject);
-      if (this.MjN != null) {
-        this.MjN.asY.notifyChanged();
+      if (this.MGK != null) {
+        this.MGK.asY.notifyChanged();
       }
       return;
     }
@@ -85,7 +85,7 @@ public abstract class VerticalToyUI<T extends com.tencent.toybrick.g.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.toybrick.ui.VerticalToyUI
  * JD-Core Version:    0.7.0.1
  */

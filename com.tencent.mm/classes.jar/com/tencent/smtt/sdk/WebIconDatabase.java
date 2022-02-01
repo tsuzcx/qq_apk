@@ -9,7 +9,7 @@ import com.tencent.smtt.export.external.interfaces.IconListener;
 
 @Deprecated
 public class WebIconDatabase
-  extends x
+  extends z
 {
   private static WebIconDatabase a;
   

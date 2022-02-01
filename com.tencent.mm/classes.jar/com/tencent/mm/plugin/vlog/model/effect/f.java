@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.vlog.model.effect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListTitleItem;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "title", "", "(Ljava/lang/String;)V", "getTitle", "()Ljava/lang/String;", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListTitleItem;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "title", "", "(Ljava/lang/String;)V", "getTitle", "()Ljava/lang/String;", "plugin-vlog_release"})
 public final class f
   extends e
 {
@@ -12,9 +12,9 @@ public final class f
   public f(String paramString)
   {
     super(1);
-    AppMethodBeat.i(195832);
+    AppMethodBeat.i(191291);
     this.title = paramString;
-    AppMethodBeat.o(195832);
+    AppMethodBeat.o(191291);
   }
 }
 

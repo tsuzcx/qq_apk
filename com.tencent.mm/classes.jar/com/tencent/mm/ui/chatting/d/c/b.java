@@ -1,34 +1,34 @@
 package com.tencent.mm.ui.chatting.d.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.model.x;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
   extends com.tencent.mm.ui.chatting.d.a
   implements com.tencent.mm.ui.chatting.d.b.a
 {
-  private a JOL;
+  private a KjX;
   
   public b(a parama)
   {
-    this.JOL = parama;
+    this.KjX = parama;
   }
   
-  private boolean fDg()
+  private boolean fHi()
   {
     AppMethodBeat.i(35816);
-    if (bt.isNullOrNil(this.cWM.getTalkerUserName()))
+    if (bu.isNullOrNil(this.cXJ.getTalkerUserName()))
     {
       AppMethodBeat.o(35816);
       return false;
     }
-    if (w.Am(this.cWM.getTalkerUserName()))
+    if (x.AW(this.cXJ.getTalkerUserName()))
     {
       AppMethodBeat.o(35816);
       return false;
     }
-    if (this.JOL != null)
+    if (this.KjX != null)
     {
       AppMethodBeat.o(35816);
       return true;
@@ -41,114 +41,114 @@ public final class b
   {
     AppMethodBeat.i(35804);
     super.a(parama);
-    if (this.JOL != null) {
-      this.JOL.a(parama);
+    if (this.KjX != null) {
+      this.KjX.a(parama);
     }
     AppMethodBeat.o(35804);
   }
   
-  public final void fCC()
+  public final void fAs()
+  {
+    AppMethodBeat.i(35806);
+    if (fHi()) {
+      this.KjX.fAs();
+    }
+    AppMethodBeat.o(35806);
+  }
+  
+  public final void fAt()
+  {
+    AppMethodBeat.i(35807);
+    if (fHi()) {
+      this.KjX.fAt();
+    }
+    AppMethodBeat.o(35807);
+  }
+  
+  public final void fAu()
+  {
+    AppMethodBeat.i(35808);
+    if (fHi()) {
+      this.KjX.fAu();
+    }
+    AppMethodBeat.o(35808);
+  }
+  
+  public final void fAv()
+  {
+    AppMethodBeat.i(35809);
+    if (fHi()) {
+      this.KjX.fAv();
+    }
+    AppMethodBeat.o(35809);
+  }
+  
+  public final void fAw()
+  {
+    AppMethodBeat.i(35810);
+    if (fHi()) {
+      this.KjX.fAw();
+    }
+    AppMethodBeat.o(35810);
+  }
+  
+  public final void fAx()
+  {
+    AppMethodBeat.i(35811);
+    if (fHi()) {
+      this.KjX.fAx();
+    }
+    AppMethodBeat.o(35811);
+  }
+  
+  public final void fAy()
+  {
+    AppMethodBeat.i(35812);
+    if (fHi()) {
+      this.KjX.fAy();
+    }
+    AppMethodBeat.o(35812);
+  }
+  
+  public final void fGE()
   {
     AppMethodBeat.i(35805);
-    super.fCC();
-    if (this.JOL != null) {
-      this.JOL.fCC();
+    super.fGE();
+    if (this.KjX != null) {
+      this.KjX.fGE();
     }
     AppMethodBeat.o(35805);
   }
   
-  public final void fDo()
+  public final void fHr()
   {
     AppMethodBeat.i(35813);
-    if (fDg()) {
-      this.JOL.fDo();
+    if (fHi()) {
+      this.KjX.fHr();
     }
     AppMethodBeat.o(35813);
   }
   
-  public final void fFp()
+  public final void fJw()
   {
     AppMethodBeat.i(35814);
-    if (fDg()) {
-      this.JOL.fFp();
+    if (fHi()) {
+      this.KjX.fJw();
     }
     AppMethodBeat.o(35814);
   }
   
-  public final String fFq()
+  public final String fJx()
   {
     AppMethodBeat.i(35815);
-    if (fDg())
+    if (fHi())
     {
-      String str = this.JOL.fFq();
+      String str = this.KjX.fJx();
       AppMethodBeat.o(35815);
       return str;
     }
     AppMethodBeat.o(35815);
     return null;
-  }
-  
-  public final void fws()
-  {
-    AppMethodBeat.i(35806);
-    if (fDg()) {
-      this.JOL.fws();
-    }
-    AppMethodBeat.o(35806);
-  }
-  
-  public final void fwt()
-  {
-    AppMethodBeat.i(35807);
-    if (fDg()) {
-      this.JOL.fwt();
-    }
-    AppMethodBeat.o(35807);
-  }
-  
-  public final void fwu()
-  {
-    AppMethodBeat.i(35808);
-    if (fDg()) {
-      this.JOL.fwu();
-    }
-    AppMethodBeat.o(35808);
-  }
-  
-  public final void fwv()
-  {
-    AppMethodBeat.i(35809);
-    if (fDg()) {
-      this.JOL.fwv();
-    }
-    AppMethodBeat.o(35809);
-  }
-  
-  public final void fww()
-  {
-    AppMethodBeat.i(35810);
-    if (fDg()) {
-      this.JOL.fww();
-    }
-    AppMethodBeat.o(35810);
-  }
-  
-  public final void fwx()
-  {
-    AppMethodBeat.i(35811);
-    if (fDg()) {
-      this.JOL.fwx();
-    }
-    AppMethodBeat.o(35811);
-  }
-  
-  public final void fwy()
-  {
-    AppMethodBeat.i(35812);
-    if (fDg()) {
-      this.JOL.fwy();
-    }
-    AppMethodBeat.o(35812);
   }
 }
 

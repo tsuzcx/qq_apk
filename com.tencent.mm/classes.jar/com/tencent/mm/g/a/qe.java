@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qe
   extends b
 {
-  public a dEH;
+  public a dFL;
   
   public qe()
   {
@@ -15,23 +15,15 @@ public final class qe
   
   private qe(byte paramByte)
   {
-    AppMethodBeat.i(116042);
-    this.dEH = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116041);
+    this.dFL = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116042);
+    AppMethodBeat.o(116041);
   }
   
   public static final class a
   {
-    public String dDt;
-    public int dEF;
-    public int dEI;
-    public int dEJ;
-    public float dEK;
-    public float dEL;
-    public int dnt;
-    public int dnu;
     public String filePath;
     public String result;
   }

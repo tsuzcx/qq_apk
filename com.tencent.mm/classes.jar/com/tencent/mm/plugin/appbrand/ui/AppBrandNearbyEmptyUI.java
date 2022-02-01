@@ -67,8 +67,8 @@ public final class AppBrandNearbyEmptyUI
       return;
     case 0: 
       paramBundle = new l();
-      paramBundle.mtg = l.b.mtt;
-      paramBundle.mtk = l.a.mtm;
+      paramBundle.myd = l.b.myq;
+      paramBundle.myh = l.a.myj;
       paramBundle.report();
     }
     for (;;)
@@ -79,8 +79,8 @@ public final class AppBrandNearbyEmptyUI
       paramBundle.setText(2131755528);
       localTextView.setText(2131755527);
       paramBundle = new l();
-      paramBundle.mtg = l.b.mtt;
-      paramBundle.mtk = l.a.mtn;
+      paramBundle.myd = l.b.myq;
+      paramBundle.myh = l.a.myk;
       paramBundle.report();
     }
   }
@@ -93,7 +93,7 @@ public final class AppBrandNearbyEmptyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyEmptyUI
  * JD-Core Version:    0.7.0.1
  */

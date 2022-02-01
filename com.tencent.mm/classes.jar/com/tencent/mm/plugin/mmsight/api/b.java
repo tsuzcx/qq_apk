@@ -4,17 +4,17 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 
 public abstract class b
 {
-  public static a vMU = null;
+  public static a vYX = null;
   
   public abstract void a(com.tencent.mm.remoteservice.d paramd, VideoTransPara paramVideoTransPara);
   
-  public abstract com.tencent.mm.plugin.mmsight.model.a.d aVj();
+  public abstract com.tencent.mm.plugin.mmsight.model.a.d aVI();
   
   public abstract void b(com.tencent.mm.remoteservice.d paramd, VideoTransPara paramVideoTransPara);
   
   public static abstract interface a
   {
-    public abstract b aVk();
+    public abstract b aVJ();
   }
 }
 

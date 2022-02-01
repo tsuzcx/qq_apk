@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(136379);
-    ndN = new d("PANEL_HIDDEN", 0);
-    ndO = new d("CONFIRM_CLICKED", 1);
-    ndP = new d[] { ndN, ndO };
+    niW = new d("PANEL_HIDDEN", 0);
+    niX = new d("CONFIRM_CLICKED", 1);
+    niY = new d[] { niW, niX };
     AppMethodBeat.o(136379);
   }
   

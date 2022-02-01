@@ -7,11 +7,11 @@ import com.google.b.a.e;
 public final class a$az
   extends e
 {
-  private static volatile az[] LJd;
-  public int Fpp = 0;
-  public long LJe = 0L;
-  public String LJf = "";
-  public String LJg = "";
+  private static volatile az[] Mgh;
+  public int FHN = 0;
+  public long Mgi = 0L;
+  public String Mgj = "";
+  public String Mgk = "";
   public String headUrl = "";
   public String username = "";
   
@@ -20,22 +20,22 @@ public final class a$az
     this.bQO = -1;
   }
   
-  public static az[] fTg()
+  public static az[] fXG()
   {
-    if (LJd == null) {}
+    if (Mgh == null) {}
     synchronized (c.bQN)
     {
-      if (LJd == null) {
-        LJd = new az[0];
+      if (Mgh == null) {
+        Mgh = new az[0];
       }
-      return LJd;
+      return Mgh;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.Fpp != 0) {
-      paramb.by(1, this.Fpp);
+    if (this.FHN != 0) {
+      paramb.by(1, this.FHN);
     }
     if (!this.username.equals("")) {
       paramb.d(2, this.username);
@@ -43,14 +43,14 @@ public final class a$az
     if (!this.headUrl.equals("")) {
       paramb.d(3, this.headUrl);
     }
-    if (this.LJe != 0L) {
-      paramb.m(4, this.LJe);
+    if (this.Mgi != 0L) {
+      paramb.m(4, this.Mgi);
     }
-    if (!this.LJf.equals("")) {
-      paramb.d(5, this.LJf);
+    if (!this.Mgj.equals("")) {
+      paramb.d(5, this.Mgj);
     }
-    if (!this.LJg.equals("")) {
-      paramb.d(6, this.LJg);
+    if (!this.Mgk.equals("")) {
+      paramb.d(6, this.Mgk);
     }
     super.a(paramb);
   }
@@ -59,8 +59,8 @@ public final class a$az
   {
     int j = super.zq();
     int i = j;
-    if (this.Fpp != 0) {
-      i = j + b.bA(1, this.Fpp);
+    if (this.FHN != 0) {
+      i = j + b.bA(1, this.FHN);
     }
     j = i;
     if (!this.username.equals("")) {
@@ -71,16 +71,16 @@ public final class a$az
       i = j + b.e(3, this.headUrl);
     }
     j = i;
-    if (this.LJe != 0L) {
-      j = i + b.o(4, this.LJe);
+    if (this.Mgi != 0L) {
+      j = i + b.o(4, this.Mgi);
     }
     i = j;
-    if (!this.LJf.equals("")) {
-      i = j + b.e(5, this.LJf);
+    if (!this.Mgj.equals("")) {
+      i = j + b.e(5, this.Mgj);
     }
     j = i;
-    if (!this.LJg.equals("")) {
-      j = i + b.e(6, this.LJg);
+    if (!this.Mgk.equals("")) {
+      j = i + b.e(6, this.Mgk);
     }
     return j;
   }

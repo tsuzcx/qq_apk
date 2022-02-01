@@ -14,8 +14,8 @@ import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.fav.a.n;
 import com.tencent.mm.plugin.fav.a.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.t;
 
 public class FavChatVoiceView
@@ -23,13 +23,13 @@ public class FavChatVoiceView
   implements n.a
 {
   private Context context;
-  private int dtc;
+  private int dui;
   private int duration;
   private boolean isRunning;
+  private AlphaAnimation pEQ;
+  private AnimationDrawable pER;
   private String path;
-  private AlphaAnimation pym;
-  private AnimationDrawable pyn;
-  private n rtU;
+  private n rCg;
   
   public FavChatVoiceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,7 +39,7 @@ public class FavChatVoiceView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aPY();
+    aQx();
     AppMethodBeat.o(106623);
   }
   
@@ -51,33 +51,42 @@ public class FavChatVoiceView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aPY();
+    aQx();
     AppMethodBeat.o(106624);
   }
   
-  private void aPY()
+  private void aQx()
   {
     AppMethodBeat.i(106625);
-    this.pym = new AlphaAnimation(0.1F, 1.0F);
-    this.pym.setDuration(1000L);
-    this.pym.setRepeatCount(-1);
-    this.pym.setRepeatMode(2);
-    this.pyn = new com.tencent.mm.ui.e.a();
+    this.pEQ = new AlphaAnimation(0.1F, 1.0F);
+    this.pEQ.setDuration(1000L);
+    this.pEQ.setRepeatCount(-1);
+    this.pEQ.setRepeatMode(2);
+    this.pER = new com.tencent.mm.ui.e.a();
     Drawable localDrawable = getResources().getDrawable(2131689892);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pyn.addFrame(localDrawable, 300);
+    this.pER.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689893);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pyn.addFrame(localDrawable, 300);
+    this.pER.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689894);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pyn.addFrame(localDrawable, 300);
-    this.pyn.setOneShot(false);
-    this.pyn.setVisible(true, true);
+    this.pER.addFrame(localDrawable, 300);
+    this.pER.setOneShot(false);
+    this.pER.setVisible(true, true);
     AppMethodBeat.o(106625);
   }
   
-  public final void cx(String paramString, int paramInt)
+  public final void B(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(106627);
+    this.path = bu.bI(paramString1, "");
+    this.dui = paramInt;
+    setText(paramString2);
+    AppMethodBeat.o(106627);
+  }
+  
+  public final void cB(String paramString, int paramInt)
   {
     AppMethodBeat.i(106630);
     if (!this.path.equals(paramString)) {
@@ -104,27 +113,27 @@ public class FavChatVoiceView
         AppMethodBeat.i(106622);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         String str = FavChatVoiceView.a(FavChatVoiceView.this);
-        if (FavChatVoiceView.b(FavChatVoiceView.this).cfC()) {}
+        if (FavChatVoiceView.b(FavChatVoiceView.this).cgS()) {}
         for (localObject = "true";; localObject = "false")
         {
-          ad.i("MicroMsg.FavChatVoiceView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, FavChatVoiceView.b(FavChatVoiceView.this).path });
-          if ((!com.tencent.mm.s.a.cf(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.s.a.cd(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.s.a.ch(FavChatVoiceView.c(FavChatVoiceView.this)))) {
+          ae.i("MicroMsg.FavChatVoiceView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, FavChatVoiceView.b(FavChatVoiceView.this).path });
+          if ((!com.tencent.mm.r.a.ch(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.r.a.cf(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.r.a.cj(FavChatVoiceView.c(FavChatVoiceView.this)))) {
             break;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(106622);
           return;
         }
-        if ((!e.abf()) && (!bt.isNullOrNil(FavChatVoiceView.a(FavChatVoiceView.this))))
+        if ((!e.abo()) && (!bu.isNullOrNil(FavChatVoiceView.a(FavChatVoiceView.this))))
         {
           t.g(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(106622);
           return;
         }
-        if ((bt.bI(FavChatVoiceView.a(FavChatVoiceView.this), "").equals(FavChatVoiceView.b(FavChatVoiceView.this).path)) && (FavChatVoiceView.b(FavChatVoiceView.this).cfC())) {
+        if ((bu.bI(FavChatVoiceView.a(FavChatVoiceView.this), "").equals(FavChatVoiceView.b(FavChatVoiceView.this).path)) && (FavChatVoiceView.b(FavChatVoiceView.this).cgS())) {
           FavChatVoiceView.this.stopPlay();
         }
         for (;;)
@@ -149,32 +158,23 @@ public class FavChatVoiceView
   public void setVoiceHelper(n paramn)
   {
     AppMethodBeat.i(106629);
-    this.rtU = paramn;
-    this.rtU.a(this);
+    this.rCg = paramn;
+    this.rCg.a(this);
     AppMethodBeat.o(106629);
   }
   
   public final void stopPlay()
   {
     AppMethodBeat.i(106628);
-    ad.d("MicroMsg.FavChatVoiceView", "stop play");
-    if ((this.pym != null) && (this.pym.isInitialized())) {
+    ae.d("MicroMsg.FavChatVoiceView", "stop play");
+    if ((this.pEQ != null) && (this.pEQ.isInitialized())) {
       setAnimation(null);
     }
     this.isRunning = false;
     setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131689891), null, null, null);
-    this.pyn.stop();
-    this.rtU.stopPlay();
+    this.pER.stop();
+    this.rCg.stopPlay();
     AppMethodBeat.o(106628);
-  }
-  
-  public final void z(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(106627);
-    this.path = bt.bI(paramString1, "");
-    this.dtc = paramInt;
-    setText(paramString2);
-    AppMethodBeat.o(106627);
   }
 }
 

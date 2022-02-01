@@ -10,50 +10,50 @@ import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.n;
 import d.g.b.p;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoHide;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoHide;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class e
   extends a
 {
-  private static final int EkT = 347;
-  public static final e Epp;
+  private static final int ECX = 347;
+  public static final e EHx;
   private static final String TAG = "MicroMsg.JsApiCurrentMpInfoHide";
-  private static final String dKm = "currentMpInfoHide";
+  private static final String dLB = "currentMpInfoHide";
   
   static
   {
     AppMethodBeat.i(175680);
-    Epp = new e();
+    EHx = new e();
     TAG = "MicroMsg.JsApiCurrentMpInfoHide";
-    EkT = 347;
-    dKm = "currentMpInfoHide";
+    ECX = 347;
+    dLB = "currentMpInfoHide";
     AppMethodBeat.o(175680);
   }
   
   public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
   {
-    AppMethodBeat.i(207634);
+    AppMethodBeat.i(199393);
     p.h(paramd, "env");
     p.h(paraml, "msg");
     Context localContext = paramd.context;
-    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).EdY != null))
+    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).Ewa != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("key_current_info_show", false);
-      ((WebViewUI)localContext).EdY.aQ(localBundle);
+      ((WebViewUI)localContext).Ewa.aR(localBundle);
     }
-    paramd.Dyx.i(paraml.DNz, paraml.kYO + ":ok", null);
-    AppMethodBeat.o(207634);
+    paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
+    AppMethodBeat.o(199393);
     return true;
   }
   
-  public final int eOL()
+  public final int eSw()
   {
-    return EkT;
+    return ECX;
   }
   
-  public final String eOM()
+  public final String eSx()
   {
-    return dKm;
+    return dLB;
   }
 }
 

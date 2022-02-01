@@ -9,14 +9,14 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String DrM;
-  public String dyV;
+  public String DJr;
+  public String dAa;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(71977);
-    this.DrM = paramString1;
-    this.dyV = paramString2;
+    this.DJr = paramString1;
+    this.dAa = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bind_serial", paramString1);
     localHashMap.put("payu_reference", String.valueOf(paramString2));
@@ -24,7 +24,7 @@ public final class b
     AppMethodBeat.o(71977);
   }
   
-  public final int eEK()
+  public final int eIr()
   {
     return 6;
   }
@@ -33,7 +33,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.b
  * JD-Core Version:    0.7.0.1
  */

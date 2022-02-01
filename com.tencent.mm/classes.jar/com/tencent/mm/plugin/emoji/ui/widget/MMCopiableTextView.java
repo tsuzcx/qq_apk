@@ -11,17 +11,17 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class MMCopiableTextView
   extends EditText
   implements View.OnLongClickListener
 {
   private final String TAG;
-  private int nib;
-  private int pPQ;
+  private int nnj;
+  private int pWv;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -61,15 +61,15 @@ public class MMCopiableTextView
     AppMethodBeat.i(109432);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahF());
     paramView = getEditableText().toString();
-    if ((!bt.isNullOrNil(paramView)) && (this.nib > 0) && (this.pPQ > 0) && (this.pPQ > this.nib))
+    if ((!bu.isNullOrNil(paramView)) && (this.nnj > 0) && (this.pWv > 0) && (this.pWv > this.nnj))
     {
-      localObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+      localObject = (ClipboardManager)ak.getContext().getSystemService("clipboard");
       if (localObject != null)
       {
-        ((ClipboardManager)localObject).setText(paramView.substring(this.nib, this.pPQ).trim());
-        ad.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { ((ClipboardManager)localObject).getText() });
+        ((ClipboardManager)localObject).setText(paramView.substring(this.nnj, this.pWv).trim());
+        ae.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { ((ClipboardManager)localObject).getText() });
       }
       Toast.makeText(getContext(), 2131755702, 0).show();
     }
@@ -80,12 +80,12 @@ public class MMCopiableTextView
   
   public void setEndIndex(int paramInt)
   {
-    this.pPQ = paramInt;
+    this.pWv = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.nib = paramInt;
+    this.nnj = paramInt;
   }
 }
 

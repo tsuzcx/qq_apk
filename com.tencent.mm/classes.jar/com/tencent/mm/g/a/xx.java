@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
 
 public final class xx
   extends b
 {
-  public a dMh;
+  public a dNq;
   
   public xx()
   {
@@ -16,18 +15,19 @@ public final class xx
   
   private xx(byte paramByte)
   {
-    AppMethodBeat.i(19847);
-    this.dMh = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19844);
+    this.dNq = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19847);
+    AppMethodBeat.o(19844);
   }
   
   public static final class a
   {
-    public String dBS;
-    public String description;
-    public bu dku;
+    public int action;
+    public int dNr;
+    public String result;
+    public String userCode;
   }
 }
 

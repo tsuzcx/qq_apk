@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class j
 {
   ValueAnimator animator;
-  private int rZx;
+  private int nhY;
   View view;
   
   public j(View paramView)
@@ -28,12 +28,12 @@ final class j
       AppMethodBeat.o(131496);
       return;
     }
-    if ((isRunning()) && (this.rZx == paramInt))
+    if ((isRunning()) && (this.nhY == paramInt))
     {
       AppMethodBeat.o(131496);
       return;
     }
-    this.rZx = paramInt;
+    this.nhY = paramInt;
     if (((this.view.getBackground() instanceof ColorDrawable)) && (((ColorDrawable)this.view.getBackground()).getColor() == paramInt))
     {
       if (paramRunnable != null) {
@@ -62,7 +62,7 @@ final class j
         AppMethodBeat.o(131494);
       }
     };
-    if ((this.animator != null) && (this.animator.isStarted()) && (this.animator.isRunning()) && (this.rZx == paramInt))
+    if ((this.animator != null) && (this.animator.isStarted()) && (this.animator.isRunning()) && (this.nhY == paramInt))
     {
       this.animator.addListener(paramRunnable);
       AppMethodBeat.o(131496);
@@ -74,7 +74,7 @@ final class j
     if ((this.view.getBackground() instanceof ColorDrawable)) {}
     for (paramInt = ((ColorDrawable)this.view.getBackground()).getColor();; paramInt = 0)
     {
-      this.animator = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.rZx) });
+      this.animator = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.nhY) });
       this.animator.addListener(paramRunnable);
       this.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
@@ -116,7 +116,7 @@ final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.j
  * JD-Core Version:    0.7.0.1
  */

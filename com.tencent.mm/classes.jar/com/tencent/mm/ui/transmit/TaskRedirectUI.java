@@ -19,8 +19,8 @@ public class TaskRedirectUI
     paramBundle.addFlags(268435456);
     paramBundle.addFlags(67108864);
     paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramBundle.ahp(), "com/tencent/mm/ui/transmit/TaskRedirectUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramBundle.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramBundle.ahE(), "com/tencent/mm/ui/transmit/TaskRedirectUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramBundle.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/transmit/TaskRedirectUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(39486);

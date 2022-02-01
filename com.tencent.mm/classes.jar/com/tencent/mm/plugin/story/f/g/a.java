@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.story.f.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.g.d;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.p.a;
-import com.tencent.mm.protocal.protobuf.djm;
-import com.tencent.mm.protocal.protobuf.dkc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dkh;
+import com.tencent.mm.protocal.protobuf.dkx;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import d.v;
 import d.z;
 import java.util.HashSet;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/upload/PostTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "uploadQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/story/model/upload/UploadTask;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;Lcom/tencent/mm/loader/loader/LoaderCore;)V", "listeners", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/story/api/IStoryPostListener;", "getStoryInfo", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setStoryInfo", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "uploadCallback", "com/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1", "Lcom/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1;", "call", "", "notifyError", "errType", "", "errMsg", "", "mediaLocalId", "notifyEventUI", "localId", "isOk", "", "onSceneEnd", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "reLoadPostInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "startPost", "storyPost", "content", "clientId", "tryPost", "postInfo", "uniqueId", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/upload/PostTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "uploadQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/story/model/upload/UploadTask;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;Lcom/tencent/mm/loader/loader/LoaderCore;)V", "listeners", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/story/api/IStoryPostListener;", "getStoryInfo", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setStoryInfo", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "uploadCallback", "com/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1", "Lcom/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1;", "call", "", "notifyError", "errType", "", "errMsg", "", "mediaLocalId", "notifyEventUI", "localId", "isOk", "", "onSceneEnd", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "reLoadPostInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "startPost", "storyPost", "content", "clientId", "tryPost", "postInfo", "uniqueId", "Companion", "plugin-story_release"})
 public final class a
   extends com.tencent.mm.loader.g.c
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  public static final a.a AOa;
-  private final g ANY;
-  com.tencent.mm.plugin.story.i.j ANZ;
+  public static final a.a BfB;
+  com.tencent.mm.plugin.story.i.j BfA;
+  private final g Bfz;
   private final HashSet<com.tencent.mm.plugin.story.api.k> listeners;
-  private final d<e> sJd;
+  private final d<e> sUq;
   
   static
   {
     AppMethodBeat.i(119094);
-    AOa = new a.a((byte)0);
+    BfB = new a.a((byte)0);
     AppMethodBeat.o(119094);
   }
   
   public a(com.tencent.mm.plugin.story.i.j paramj, d<e> paramd)
   {
     AppMethodBeat.i(119093);
-    this.ANZ = paramj;
-    this.sJd = paramd;
-    this.ANY = new g();
+    this.BfA = paramj;
+    this.sUq = paramd;
+    this.Bfz = new g();
     this.listeners = new HashSet();
     AppMethodBeat.o(119093);
   }
@@ -46,37 +46,37 @@ public final class a
   private final void ch(int paramInt, String paramString)
   {
     AppMethodBeat.i(119091);
-    ad.i("MicroMsg.StoryPostTask", "processError localId " + (int)this.ANZ.systemRowid + " processError " + paramInt + " errMsg: " + paramString);
-    f localf = f.AOw;
-    f.a(this.ANZ, paramInt, paramString, (d.g.a.a)new c(this));
+    ae.i("MicroMsg.StoryPostTask", "processError localId " + (int)this.BfA.systemRowid + " processError " + paramInt + " errMsg: " + paramString);
+    f localf = f.BfX;
+    f.a(this.BfA, paramInt, paramString, (d.g.a.a)new c(this));
     AppMethodBeat.o(119091);
   }
   
-  private final djm ejj()
+  private final dkh emR()
   {
     AppMethodBeat.i(119087);
-    Object localObject1 = new djm().parseFrom(this.ANZ.field_postBuf);
+    Object localObject1 = new dkh().parseFrom(this.BfA.field_postBuf);
     if (localObject1 == null)
     {
       localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryMediaPostInfo");
       AppMethodBeat.o(119087);
       throw ((Throwable)localObject1);
     }
-    localObject1 = (djm)localObject1;
-    Object localObject2 = this.ANZ;
-    byte[] arrayOfByte = ((djm)localObject1).toByteArray();
+    localObject1 = (dkh)localObject1;
+    Object localObject2 = this.BfA;
+    byte[] arrayOfByte = ((dkh)localObject1).toByteArray();
     d.g.b.p.g(arrayOfByte, "postInfo.toByteArray()");
-    ((com.tencent.mm.plugin.story.i.j)localObject2).bK(arrayOfByte);
-    localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
-    j.b.ehT().a((int)this.ANZ.systemRowid, this.ANZ);
+    ((com.tencent.mm.plugin.story.i.j)localObject2).bN(arrayOfByte);
+    localObject2 = com.tencent.mm.plugin.story.f.j.BbE;
+    j.b.elB().a((int)this.BfA.systemRowid, this.BfA);
     AppMethodBeat.o(119087);
     return localObject1;
   }
   
-  public final String aeK()
+  public final String aeW()
   {
     AppMethodBeat.i(119090);
-    int i = (int)this.ANZ.systemRowid;
+    int i = (int)this.BfA.systemRowid;
     AppMethodBeat.o(119090);
     return String.valueOf(i);
   }
@@ -84,43 +84,43 @@ public final class a
   public final void call()
   {
     AppMethodBeat.i(119088);
-    Object localObject1 = (djm)com.tencent.mm.ad.c.a((com.tencent.mm.bx.a)new djm(), this.ANZ.field_postBuf, (d.g.a.b)new b(this));
+    Object localObject1 = (dkh)com.tencent.mm.ac.c.a((com.tencent.mm.bw.a)new dkh(), this.BfA.field_postBuf, (d.g.a.b)new b(this));
     Object localObject2;
     if (localObject1 != null)
     {
-      if (com.tencent.mm.plugin.story.i.j.aE(((djm)localObject1).hfV, ((djm)localObject1).GTk))
+      if (com.tencent.mm.plugin.story.i.j.aE(((dkh)localObject1).hiJ, ((dkh)localObject1).HmL))
       {
-        localObject2 = com.tencent.mm.plugin.story.i.a.ATp;
-        ch(com.tencent.mm.plugin.story.i.a.ekU(), "this item isTimeLimit");
-        ad.i("MicroMsg.StoryPostTask", "StoryInfo localId it time limit " + (int)this.ANZ.systemRowid + " is die count " + ((djm)localObject1).hfV + " time: " + ((djm)localObject1).GTk);
+        localObject2 = com.tencent.mm.plugin.story.i.a.BkN;
+        ch(com.tencent.mm.plugin.story.i.a.eoD(), "this item isTimeLimit");
+        ae.i("MicroMsg.StoryPostTask", "StoryInfo localId it time limit " + (int)this.BfA.systemRowid + " is die count " + ((dkh)localObject1).hiJ + " time: " + ((dkh)localObject1).HmL);
         AppMethodBeat.o(119088);
         return;
       }
-      int i = ((djm)localObject1).GPx;
-      localObject1 = com.tencent.mm.plugin.story.i.a.g.ATG;
-      if (i == com.tencent.mm.plugin.story.i.a.g.elj())
+      int i = ((dkh)localObject1).HiZ;
+      localObject1 = com.tencent.mm.plugin.story.i.a.g.Ble;
+      if (i == com.tencent.mm.plugin.story.i.a.g.eoS())
       {
-        localObject2 = ejj();
-        if (com.tencent.mm.plugin.story.i.j.aE(((djm)localObject2).hfV, ((djm)localObject2).GTk))
+        localObject2 = emR();
+        if (com.tencent.mm.plugin.story.i.j.aE(((dkh)localObject2).hiJ, ((dkh)localObject2).HmL))
         {
-          localObject1 = com.tencent.mm.plugin.story.i.a.ATp;
-          ch(com.tencent.mm.plugin.story.i.a.ekU(), "this item isTimeLimit");
-          ad.i("MicroMsg.StoryPostTask", "storyInfo localId it time limit " + (int)this.ANZ.systemRowid + " is die ");
+          localObject1 = com.tencent.mm.plugin.story.i.a.BkN;
+          ch(com.tencent.mm.plugin.story.i.a.eoD(), "this item isTimeLimit");
+          ae.i("MicroMsg.StoryPostTask", "storyInfo localId it time limit " + (int)this.BfA.systemRowid + " is die ");
           AppMethodBeat.o(119088);
           return;
         }
-        localObject1 = this.ANZ.elx();
-        p.a locala = com.tencent.mm.plugin.story.f.p.AKr;
-        localObject1 = p.a.a((dkc)localObject1, ((djm)localObject2).Hys);
-        ad.i("MicroMsg.StoryPostTask", "startPost content " + (String)localObject1 + "  testValue " + ac.iPU);
+        localObject1 = this.BfA.epg();
+        p.a locala = com.tencent.mm.plugin.story.f.p.BbU;
+        localObject1 = p.a.a((dkx)localObject1, ((dkh)localObject2).HSd);
+        ae.i("MicroMsg.StoryPostTask", "startPost content " + (String)localObject1 + "  testValue " + ac.iSN);
         if (d.g.b.p.i(localObject1, ""))
         {
-          localObject1 = com.tencent.mm.plugin.story.i.a.ATp;
-          ch(com.tencent.mm.plugin.story.i.a.ekT(), "content is error");
+          localObject1 = com.tencent.mm.plugin.story.i.a.BkN;
+          ch(com.tencent.mm.plugin.story.i.a.eoC(), "content is error");
           AppMethodBeat.o(119088);
           return;
         }
-        if (!ac.iPU) {
+        if (!ac.iSN) {
           break label395;
         }
         localObject1 = "<Test>Android Test Fail</Test>";
@@ -129,13 +129,13 @@ public final class a
     label395:
     for (;;)
     {
-      localObject2 = ((djm)localObject2).hCW;
+      localObject2 = ((dkh)localObject2).hFO;
       d.g.b.p.g(localObject2, "postInfo.ClientId");
-      com.tencent.mm.ad.c.g((d.g.a.a)new e(this, (String)localObject1, (String)localObject2));
+      com.tencent.mm.ac.c.h((d.g.a.a)new e(this, (String)localObject1, (String)localObject2));
       AppMethodBeat.o(119088);
       return;
-      localObject1 = com.tencent.mm.plugin.story.i.a.g.ATG;
-      this.sJd.a((com.tencent.mm.loader.g.c)new e(this.ANZ), (com.tencent.mm.loader.g.f)new f(this));
+      localObject1 = com.tencent.mm.plugin.story.i.a.g.Ble;
+      this.sUq.a((com.tencent.mm.loader.g.c)new e(this.BfA), (com.tencent.mm.loader.g.f)new f(this));
       AppMethodBeat.o(119088);
       return;
     }
@@ -144,14 +144,14 @@ public final class a
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(119089);
-    paramString = g.ajB();
+    paramString = g.ajQ();
     d.g.b.p.g(paramString, "MMKernel.network()");
-    paramString.aiU().b(351, (com.tencent.mm.al.f)this);
-    a(com.tencent.mm.loader.g.j.hfK);
+    paramString.ajj().b(351, (com.tencent.mm.ak.f)this);
+    a(com.tencent.mm.loader.g.j.hiy);
     AppMethodBeat.o(119089);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Ljava/lang/Exception;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Ljava/lang/Exception;", "invoke"})
   static final class b
     extends d.g.b.q
     implements d.g.a.b<Exception, z>
@@ -162,7 +162,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -173,7 +173,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -184,7 +184,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -195,12 +195,12 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/model/upload/PostTask$tryPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/story/model/upload/UploadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/model/upload/PostTask$tryPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/story/model/upload/UploadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-story_release"})
   public static final class f
     implements com.tencent.mm.loader.g.f<e>
   {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-story_release"})
   public static final class g
     implements com.tencent.mm.loader.g.f<com.tencent.mm.loader.g.c>
   {
@@ -215,7 +215,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.g.a
  * JD-Core Version:    0.7.0.1
  */

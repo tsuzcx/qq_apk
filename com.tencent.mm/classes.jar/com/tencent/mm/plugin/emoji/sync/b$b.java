@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji.sync;
 
 import com.tencent.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.c.j;
+import com.tencent.mm.av.a.c.j;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -11,20 +11,20 @@ public final class b$b
   extends b
   implements j
 {
-  private ReentrantLock hfX;
+  private ReentrantLock hiL;
   private boolean isPaused;
-  private Condition pGy;
+  private Condition pNc;
   
   public b$b(int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue)
   {
     super("bkg_loader_default", paramInt1, paramInt2, paramBlockingQueue);
     AppMethodBeat.i(108747);
-    this.hfX = new ReentrantLock();
-    this.pGy = this.hfX.newCondition();
+    this.hiL = new ReentrantLock();
+    this.pNc = this.hiL.newCondition();
     AppMethodBeat.o(108747);
   }
   
-  public final boolean OI()
+  public final boolean OG()
   {
     return this.isPaused;
   }
@@ -40,13 +40,13 @@ public final class b$b
     //   7: aload_2
     //   8: invokespecial 59	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
     //   11: aload_0
-    //   12: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   12: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   15: invokevirtual 62	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   18: aload_0
     //   19: getfield 52	com/tencent/mm/plugin/emoji/sync/b$b:isPaused	Z
     //   22: ifeq +51 -> 73
     //   25: aload_0
-    //   26: getfield 42	com/tencent/mm/plugin/emoji/sync/b$b:pGy	Ljava/util/concurrent/locks/Condition;
+    //   26: getfield 42	com/tencent/mm/plugin/emoji/sync/b$b:pNc	Ljava/util/concurrent/locks/Condition;
     //   29: invokeinterface 67 1 0
     //   34: goto -16 -> 18
     //   37: astore_2
@@ -61,22 +61,22 @@ public final class b$b
     //   52: aload_2
     //   53: invokevirtual 82	java/lang/Exception:toString	()Ljava/lang/String;
     //   56: aastore
-    //   57: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   57: invokestatic 88	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   60: aload_0
-    //   61: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   61: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   64: invokevirtual 91	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   67: ldc 57
     //   69: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: return
     //   73: aload_0
-    //   74: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   74: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   77: invokevirtual 91	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   80: ldc 57
     //   82: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   85: return
     //   86: astore_1
     //   87: aload_0
-    //   88: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   88: getfield 36	com/tencent/mm/plugin/emoji/sync/b$b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   91: invokevirtual 91	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   94: ldc 57
     //   96: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -112,7 +112,7 @@ public final class b$b
   public final void pause()
   {
     AppMethodBeat.i(108749);
-    this.hfX.lock();
+    this.hiL.lock();
     try
     {
       this.isPaused = true;
@@ -120,7 +120,7 @@ public final class b$b
     }
     finally
     {
-      this.hfX.unlock();
+      this.hiL.unlock();
       AppMethodBeat.o(108749);
     }
   }
@@ -130,16 +130,16 @@ public final class b$b
   public final void resume()
   {
     AppMethodBeat.i(108750);
-    this.hfX.lock();
+    this.hiL.lock();
     try
     {
       this.isPaused = false;
-      this.pGy.signalAll();
+      this.pNc.signalAll();
       return;
     }
     finally
     {
-      this.hfX.unlock();
+      this.hiL.unlock();
       AppMethodBeat.o(108750);
     }
   }

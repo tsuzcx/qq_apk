@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
 {
-  private static ap keH;
-  private static ap keI;
-  private static ap keJ;
+  private static aq khX;
+  private static aq khY;
+  private static aq khZ;
   
   static
   {
     AppMethodBeat.i(121140);
-    keH = new ap("DynamicPage#WorkerThread");
-    keI = new ap("DynamicPage#IPCThread");
-    keJ = new ap(Looper.getMainLooper());
+    khX = new aq("DynamicPage#WorkerThread");
+    khY = new aq("DynamicPage#IPCThread");
+    khZ = new aq(Looper.getMainLooper());
     AppMethodBeat.o(121140);
   }
   
-  public static boolean S(Runnable paramRunnable)
+  public static boolean Q(Runnable paramRunnable)
   {
     AppMethodBeat.i(121139);
-    boolean bool = keJ.post(paramRunnable);
+    boolean bool = khZ.post(paramRunnable);
     AppMethodBeat.o(121139);
     return bool;
   }
@@ -35,7 +35,7 @@ public final class b
       AppMethodBeat.o(121138);
       return false;
     }
-    boolean bool = keH.postDelayed(paramRunnable, paramLong);
+    boolean bool = khX.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(121138);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class b
       AppMethodBeat.o(121137);
       return false;
     }
-    boolean bool = keH.post(paramRunnable);
+    boolean bool = khX.post(paramRunnable);
     AppMethodBeat.o(121137);
     return bool;
   }

@@ -35,7 +35,7 @@ public class CaptureView
   private void init()
   {
     AppMethodBeat.i(115568);
-    if (j.eAI()) {
+    if (j.eEq()) {
       setNeedSetType(true);
     }
     AppMethodBeat.o(115568);

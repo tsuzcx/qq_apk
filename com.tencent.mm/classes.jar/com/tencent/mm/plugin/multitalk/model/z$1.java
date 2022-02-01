@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.multitalk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n.a;
+import com.tencent.mm.app.o.a;
 import com.tencent.mm.blink.b;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 
 final class z$1
-  extends n.a
+  extends o.a
 {
   z$1(z paramz) {}
   
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(114621);
-    if ((g.ajx()) && (g.ajA().gAD))
+    if ((g.ajM()) && (g.ajP().gDk))
     {
-      g.ajA();
-      a.aiE();
+      g.ajP();
+      a.aiT();
     }
     AppMethodBeat.o(114621);
   }
@@ -25,11 +25,11 @@ final class z$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(114620);
-    if ((g.ajx()) && (g.ajA().gAD))
+    if ((g.ajM()) && (g.ajP().gDk))
     {
-      g.ajA();
-      if (!a.aiE()) {
-        b.Wi().w(new z.1.1(this));
+      g.ajP();
+      if (!a.aiT()) {
+        b.Wq().u(new z.1.1(this));
       }
     }
     AppMethodBeat.o(114620);

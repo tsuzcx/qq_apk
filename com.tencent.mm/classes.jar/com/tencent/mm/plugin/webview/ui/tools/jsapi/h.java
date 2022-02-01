@@ -12,8 +12,8 @@ import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.pluginsdk.ui.tools.AppChooserUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.lang.ref.WeakReference;
@@ -23,43 +23,43 @@ import java.util.ArrayList;
 public final class h
   implements MMActivity.a
 {
-  int EnJ;
-  boolean EnK;
-  int EnL;
-  e EnM;
-  e EnN;
-  String EnO;
-  d EnP;
-  com.tencent.mm.modelgeo.c.a EnQ;
-  com.tencent.mm.modelgeo.c.a EnR;
-  b.a EnS;
-  final Runnable EnT;
+  int EFN;
+  boolean EFO;
+  int EFP;
+  e EFQ;
+  e EFR;
+  String EFS;
+  d EFT;
+  com.tencent.mm.modelgeo.c.a EFU;
+  com.tencent.mm.modelgeo.c.a EFV;
+  b.a EFW;
+  final Runnable EFX;
   WeakReference<Context> aWN;
-  d hQo;
-  c vfb;
+  d hTg;
+  c vri;
   
   h()
   {
     AppMethodBeat.i(82045);
-    this.EnK = false;
-    this.vfb = null;
-    this.EnQ = null;
-    this.EnR = null;
-    this.hQo = null;
-    this.EnS = null;
-    this.EnT = new Runnable()
+    this.EFO = false;
+    this.vri = null;
+    this.EFU = null;
+    this.EFV = null;
+    this.hTg = null;
+    this.EFW = null;
+    this.EFX = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(82029);
-        if ((h.this.EnS == null) || (h.this.hQo == null))
+        if ((h.this.EFW == null) || (h.this.hTg == null))
         {
           AppMethodBeat.o(82029);
           return;
         }
-        h.this.vfb.a(h.this.EnQ);
-        h.this.hQo.c(h.this.EnS);
-        h.this.EnS.a(false, 0.0F, 0.0F, 0, 0.0D, 0.0D);
+        h.this.vri.a(h.this.EFU);
+        h.this.hTg.c(h.this.EFW);
+        h.this.EFW.a(false, 0.0F, 0.0F, 0, 0.0D, 0.0D);
         AppMethodBeat.o(82029);
       }
     };
@@ -70,76 +70,76 @@ public final class h
   {
     AppMethodBeat.i(82044);
     Context localContext = (Context)this.aWN.get();
-    if ((this.EnP == null) || (localContext == null)) {}
+    if ((this.EFT == null) || (localContext == null)) {}
     for (;;)
     {
-      if ((this.EnK) && (this.EnP != null)) {
-        this.EnP.XM(this.EnJ);
+      if ((this.EFO) && (this.EFT != null)) {
+        this.EFT.Ys(this.EFN);
       }
-      this.EnK = false;
-      this.EnL = com.tencent.mm.pluginsdk.model.c.a.ELC.code;
-      this.EnM = null;
-      this.EnN = null;
+      this.EFO = false;
+      this.EFP = com.tencent.mm.pluginsdk.model.c.a.Fea.code;
+      this.EFQ = null;
+      this.EFR = null;
       this.aWN = null;
-      this.EnP = null;
-      this.EnO = null;
-      this.EnQ = null;
-      this.EnR = null;
-      if ((this.hQo != null) && (this.EnS != null)) {
-        this.hQo.c(this.EnS);
+      this.EFT = null;
+      this.EFS = null;
+      this.EFU = null;
+      this.EFV = null;
+      if ((this.hTg != null) && (this.EFW != null)) {
+        this.hTg.c(this.EFW);
       }
-      this.hQo = null;
-      this.EnS = null;
-      if (this.vfb != null)
+      this.hTg = null;
+      this.EFW = null;
+      if (this.vri != null)
       {
-        if (this.EnQ != null) {
-          this.vfb.a(this.EnQ);
+        if (this.EFU != null) {
+          this.vri.a(this.EFU);
         }
-        if (this.EnR != null) {
-          this.vfb.a(this.EnR);
+        if (this.EFV != null) {
+          this.vri.a(this.EFV);
         }
       }
-      this.vfb = null;
-      this.EnQ = null;
-      this.EnR = null;
+      this.vri = null;
+      this.EFU = null;
+      this.EFV = null;
       AppMethodBeat.o(82044);
       return;
-      if (!this.EnK)
+      if (!this.EFO)
       {
-        ad.e("MicroMsg.OpenMapNavigator", "onActivityResult called without msgId attached...");
+        ae.e("MicroMsg.OpenMapNavigator", "onActivityResult called without msgId attached...");
       }
       else if (paramInt1 != 33)
       {
-        ad.e("MicroMsg.OpenMapNavigator", "onActivityResult, mismatched request_code = %d", new Object[] { Integer.valueOf(paramInt1) });
-        this.EnP.onFail(this.EnJ);
+        ae.e("MicroMsg.OpenMapNavigator", "onActivityResult, mismatched request_code = %d", new Object[] { Integer.valueOf(paramInt1) });
+        this.EFT.onFail(this.EFN);
       }
       else if ((paramInt2 == 4097) || (paramInt2 == 0))
       {
-        this.EnP.XL(this.EnJ);
+        this.EFT.Yr(this.EFN);
       }
       else if (paramInt2 == -1)
       {
         paramIntent = paramIntent.getStringExtra("selectpkg");
-        if (bt.isNullOrNil(paramIntent))
+        if (bu.isNullOrNil(paramIntent))
         {
-          ad.e("MicroMsg.OpenMapNavigator", "onActivityResult, get null packageName");
-          this.EnP.onFail(this.EnJ);
+          ae.e("MicroMsg.OpenMapNavigator", "onActivityResult, get null packageName");
+          this.EFT.onFail(this.EFN);
         }
         else
         {
-          if (com.tencent.mm.pluginsdk.model.c.a.ELD.getPackage().equals(paramIntent)) {
+          if (com.tencent.mm.pluginsdk.model.c.a.Feb.getPackage().equals(paramIntent)) {
             paramIntent = new c((byte)0);
           }
           for (;;)
           {
-            paramIntent.a(localContext, this.EnM, this.EnN, this.EnO);
-            this.EnP.onSuccess(this.EnJ);
+            paramIntent.a(localContext, this.EFQ, this.EFR, this.EFS);
+            this.EFT.onSuccess(this.EFN);
             break;
-            if (com.tencent.mm.pluginsdk.model.c.a.ELF.getPackage().equals(paramIntent)) {
+            if (com.tencent.mm.pluginsdk.model.c.a.Fed.getPackage().equals(paramIntent)) {
               paramIntent = new a((byte)0);
-            } else if (com.tencent.mm.pluginsdk.model.c.a.ELE.getPackage().equals(paramIntent)) {
+            } else if (com.tencent.mm.pluginsdk.model.c.a.Fec.getPackage().equals(paramIntent)) {
               paramIntent = new g((byte)0);
-            } else if (com.tencent.mm.pluginsdk.model.c.a.ELG.getPackage().equals(paramIntent)) {
+            } else if (com.tencent.mm.pluginsdk.model.c.a.Fee.getPackage().equals(paramIntent)) {
               paramIntent = new b((byte)0);
             } else {
               paramIntent = new h((byte)0);
@@ -149,19 +149,19 @@ public final class h
       }
       else
       {
-        ad.e("MicroMsg.OpenMapNavigator", "onActivityResult, not support result_code = %d", new Object[] { Integer.valueOf(paramInt2) });
-        this.EnP.onFail(this.EnJ);
+        ae.e("MicroMsg.OpenMapNavigator", "onActivityResult, not support result_code = %d", new Object[] { Integer.valueOf(paramInt2) });
+        this.EFT.onFail(this.EFN);
       }
     }
   }
   
-  final void eUO()
+  final void eYB()
   {
     Context localContext = null;
     AppMethodBeat.i(82046);
-    this.EnS = null;
-    this.EnQ = null;
-    this.EnR = null;
+    this.EFW = null;
+    this.EFU = null;
+    this.EFV = null;
     if (this.aWN == null) {}
     while (localContext == null)
     {
@@ -171,16 +171,16 @@ public final class h
     }
     Intent localIntent = new Intent(localContext, AppChooserUI.class);
     Object localObject = new ArrayList(5);
-    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.ELC.getPackage());
-    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.ELD.getPackage());
-    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.ELE.getPackage());
-    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.ELF.getPackage());
-    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.ELG.getPackage());
+    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.Fea.getPackage());
+    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.Feb.getPackage());
+    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.Fec.getPackage());
+    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.Fed.getPackage());
+    ((ArrayList)localObject).add(com.tencent.mm.pluginsdk.model.c.a.Fee.getPackage());
     localIntent.putStringArrayListExtra("targetwhitelist", (ArrayList)localObject);
-    localObject = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Double.valueOf(this.EnN.latitude), Double.valueOf(this.EnN.longitude) })));
+    localObject = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Double.valueOf(this.EFR.latitude), Double.valueOf(this.EFR.longitude) })));
     localIntent.putExtra("targetintent", (Parcelable)localObject);
     Bundle localBundle = new Bundle(2);
-    localBundle.putInt("key_map_app", this.EnL);
+    localBundle.putInt("key_map_app", this.EFP);
     localBundle.putParcelable("key_target_intent", (Parcelable)localObject);
     localIntent.putExtra("key_recommend_params", localBundle);
     localIntent.putExtra("type", 2);
@@ -211,20 +211,20 @@ public final class h
       if (parame1 != null) {
         parame2 = paramString + String.format("origin=%f,%f", new Object[] { Double.valueOf(parame1.latitude), Double.valueOf(parame1.longitude) });
       }
-      ad.d("MicroMsg.OpenMapNavigator", "url ".concat(String.valueOf(parame2)));
+      ae.d("MicroMsg.OpenMapNavigator", "url ".concat(String.valueOf(parame2)));
       try
       {
         parame1 = new Intent("android.intent.action.VIEW", Uri.parse(parame2 + "&src=webapp.car.carroutelistmappg.weixindrivenav"));
         parame1 = new com.tencent.mm.hellhoundlib.b.a().bc(parame1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahp(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$BaiduNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)parame1.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahE(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$BaiduNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)parame1.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$BaiduNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(82034);
         return;
       }
       catch (Exception paramContext)
       {
-        ad.printErrStackTrace("MicroMsg.OpenMapNavigator", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.OpenMapNavigator", paramContext, "", new Object[0]);
         AppMethodBeat.o(82034);
       }
     }
@@ -232,7 +232,7 @@ public final class h
     protected final String getPackageName()
     {
       AppMethodBeat.i(82035);
-      String str = com.tencent.mm.pluginsdk.model.c.a.ELF.getPackage();
+      String str = com.tencent.mm.pluginsdk.model.c.a.Fed.getPackage();
       AppMethodBeat.o(82035);
       return str;
     }
@@ -257,19 +257,19 @@ public final class h
       }
       parame1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("androidamap://navi?sourceApplication=%s&lat=%f&lon=%f&dev=1&style=2", new Object[] { "MicroMessager", Double.valueOf(parame2.latitude), Double.valueOf(parame2.longitude) })));
       parame1.addCategory("android.intent.category.DEFAULT");
-      parame1.setPackage(com.tencent.mm.pluginsdk.model.c.a.ELG.getPackage());
+      parame1.setPackage(com.tencent.mm.pluginsdk.model.c.a.Fee.getPackage());
       parame1 = new com.tencent.mm.hellhoundlib.b.a().bc(parame1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahp(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$GaodeNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)parame1.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahE(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$GaodeNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)parame1.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$GaodeNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(82036);
     }
     
     protected final String getPackageName()
     {
-      AppMethodBeat.i(221661);
-      String str = com.tencent.mm.pluginsdk.model.c.a.ELG.getPackage();
-      AppMethodBeat.o(221661);
+      AppMethodBeat.i(224332);
+      String str = com.tencent.mm.pluginsdk.model.c.a.Fee.getPackage();
+      AppMethodBeat.o(224332);
       return str;
     }
   }
@@ -299,8 +299,8 @@ public final class h
       parame1 = new Intent("android.intent.action.VIEW", Uri.parse(parame2));
       parame1.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
       parame1 = new com.tencent.mm.hellhoundlib.b.a().bc(parame1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahp(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$GoogleNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)parame1.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahE(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$GoogleNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)parame1.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$GoogleNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(82038);
     }
@@ -308,7 +308,7 @@ public final class h
     protected final String getPackageName()
     {
       AppMethodBeat.i(82039);
-      String str = com.tencent.mm.pluginsdk.model.c.a.ELD.getPackage();
+      String str = com.tencent.mm.pluginsdk.model.c.a.Feb.getPackage();
       AppMethodBeat.o(82039);
       return str;
     }
@@ -316,9 +316,9 @@ public final class h
   
   static abstract interface d
   {
-    public abstract void XL(int paramInt);
+    public abstract void Yr(int paramInt);
     
-    public abstract void XM(int paramInt);
+    public abstract void Ys(int paramInt);
     
     public abstract void onFail(int paramInt);
     
@@ -327,7 +327,7 @@ public final class h
   
   static final class e
   {
-    String EnW;
+    String EGa;
     double latitude;
     double longitude;
     
@@ -335,7 +335,7 @@ public final class h
     {
       this.latitude = paramDouble1;
       this.longitude = paramDouble2;
-      this.EnW = null;
+      this.EGa = null;
     }
   }
   
@@ -350,8 +350,8 @@ public final class h
       parame1.setPackage(getPackageName());
       parame1.addFlags(268435456);
       parame1 = new com.tencent.mm.hellhoundlib.b.a().bc(parame1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahp(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$NavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)parame1.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahE(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$NavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)parame1.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$NavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     
@@ -380,24 +380,24 @@ public final class h
       {
         String str = (String)localObject + String.format("&fromcoord=%f,%f", new Object[] { Double.valueOf(parame1.latitude), Double.valueOf(parame1.longitude) });
         localObject = str;
-        if (!bt.isNullOrNil(parame1.EnW)) {
-          localObject = str + String.format("&from=%s", new Object[] { URLEncoder.encode(parame1.EnW) });
+        if (!bu.isNullOrNil(parame1.EGa)) {
+          localObject = str + String.format("&from=%s", new Object[] { URLEncoder.encode(parame1.EGa) });
         }
         parame1 = paramString;
-        if (bt.isNullOrNil(paramString)) {
-          if (bt.isNullOrNil(parame2.EnW)) {
+        if (bu.isNullOrNil(paramString)) {
+          if (bu.isNullOrNil(parame2.EGa)) {
             break label345;
           }
         }
       }
       label345:
-      for (parame1 = parame2.EnW;; parame1 = "目的地")
+      for (parame1 = parame2.EGa;; parame1 = "目的地")
       {
         parame1 = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject + String.format("&to=%s", new Object[] { parame1 })));
-        parame1.setPackage(com.tencent.mm.pluginsdk.model.c.a.ELE.getPackage());
+        parame1.setPackage(com.tencent.mm.pluginsdk.model.c.a.Fec.getPackage());
         parame1 = new com.tencent.mm.hellhoundlib.b.a().bc(parame1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahp(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$SogouNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)parame1.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahE(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$SogouNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)parame1.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$SogouNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(82040);
         return;
@@ -408,9 +408,9 @@ public final class h
     
     protected final String getPackageName()
     {
-      AppMethodBeat.i(221662);
-      String str = com.tencent.mm.pluginsdk.model.c.a.ELE.getPackage();
-      AppMethodBeat.o(221662);
+      AppMethodBeat.i(224333);
+      String str = com.tencent.mm.pluginsdk.model.c.a.Fec.getPackage();
+      AppMethodBeat.o(224333);
       return str;
     }
   }
@@ -438,25 +438,25 @@ public final class h
       {
         str2 = str2 + String.format("fromcoord=%f,%f", new Object[] { Double.valueOf(parame1.longitude), Double.valueOf(parame1.latitude) });
         str1 = str2;
-        if (!bt.isNullOrNil(parame1.EnW)) {
-          str1 = str2 + String.format("&from=%s", new Object[] { URLEncoder.encode(parame1.EnW) });
+        if (!bu.isNullOrNil(parame1.EGa)) {
+          str1 = str2 + String.format("&from=%s", new Object[] { URLEncoder.encode(parame1.EGa) });
         }
       }
       parame1 = paramString;
-      if (bt.isNullOrNil(paramString)) {
-        if (bt.isNullOrNil(parame2.EnW)) {
+      if (bu.isNullOrNil(paramString)) {
+        if (bu.isNullOrNil(parame2.EGa)) {
           break label335;
         }
       }
       label335:
-      for (parame1 = parame2.EnW;; parame1 = "地图选点")
+      for (parame1 = parame2.EGa;; parame1 = "地图选点")
       {
         parame1 = str1 + String.format("&to=%s", new Object[] { URLEncoder.encode(parame1) });
         parame1 = new Intent("android.intent.action.VIEW", Uri.parse(parame1 + "&referer=wx_client"));
-        parame1.setPackage(com.tencent.mm.pluginsdk.model.c.a.ELC.getPackage());
+        parame1.setPackage(com.tencent.mm.pluginsdk.model.c.a.Fea.getPackage());
         parame1 = new com.tencent.mm.hellhoundlib.b.a().bc(parame1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahp(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$TencentNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)parame1.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, parame1.ahE(), "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$TencentNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)parame1.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$TencentNavigateJumper", "goNavigate", "(Landroid/content/Context;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/OpenMapNavigator$Location;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(82042);
         return;
@@ -465,16 +465,16 @@ public final class h
     
     protected final String getPackageName()
     {
-      AppMethodBeat.i(221663);
-      String str = com.tencent.mm.pluginsdk.model.c.a.ELC.getPackage();
-      AppMethodBeat.o(221663);
+      AppMethodBeat.i(224334);
+      String str = com.tencent.mm.pluginsdk.model.c.a.Fea.getPackage();
+      AppMethodBeat.o(224334);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.h
  * JD-Core Version:    0.7.0.1
  */

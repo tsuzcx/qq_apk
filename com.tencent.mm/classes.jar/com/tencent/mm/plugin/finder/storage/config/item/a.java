@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.finder.storage.config.item;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/config/item/ConfigItem;", "T", "Lcom/tencent/mm/plugin/finder/storage/config/item/IConfigItem;", "defaultValue", "name", "", "(Ljava/lang/Object;Ljava/lang/String;)V", "getDefaultValue", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getName", "()Ljava/lang/String;", "value", "getItemName", "toString", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/item/ConfigItem;", "T", "Lcom/tencent/mm/plugin/finder/storage/config/item/IConfigItem;", "defaultValue", "name", "", "(Ljava/lang/Object;Ljava/lang/String;)V", "getDefaultValue", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getName", "()Ljava/lang/String;", "value", "getItemName", "toString", "plugin-finder_release"})
 public class a<T>
 {
   final T aFh;
@@ -12,17 +12,17 @@ public class a<T>
   
   public a(T paramT, String paramString)
   {
-    AppMethodBeat.i(203769);
+    AppMethodBeat.i(204352);
     this.aFh = paramT;
     this.name = paramString;
-    AppMethodBeat.o(203769);
+    AppMethodBeat.o(204352);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(203768);
+    AppMethodBeat.i(204351);
     String str = "name " + this.name + " value " + this.value + " dummyValue " + this.aFh;
-    AppMethodBeat.o(203768);
+    AppMethodBeat.o(204351);
     return str;
   }
   

@@ -8,68 +8,68 @@ import java.util.ArrayList;
 public class a
   implements j
 {
-  public int cmM;
-  public int cmN;
   public int cmO;
-  public boolean cmR;
-  public boolean cmS;
-  public ArrayList<String> cmV;
-  public ArrayList<String> cmW;
+  public int cmP;
+  public int cmQ;
+  public boolean cmT;
+  public boolean cmU;
   public ArrayList<String> cmX;
   public ArrayList<String> cmY;
   public ArrayList<String> cmZ;
-  public boolean cms;
-  public int jWu;
-  public boolean lVk;
-  public boolean lVl;
-  public int lVm;
-  public int lVn;
-  public int lVo;
-  public int lVp;
-  public int lVq;
-  public ArrayList<String> lVr;
-  public ArrayList<String> lVs;
-  public ArrayList<byte[]> lVt;
-  public String lVu;
-  public c lVv;
-  public boolean lVw;
+  public boolean cmu;
+  public ArrayList<String> cna;
+  public ArrayList<String> cnb;
+  public int jZJ;
+  public boolean lZN;
+  public boolean lZO;
+  public int lZP;
+  public int lZQ;
+  public int lZR;
+  public int lZS;
+  public int lZT;
+  public ArrayList<String> lZU;
+  public ArrayList<String> lZV;
+  public ArrayList<byte[]> lZW;
+  public String lZX;
+  public c lZY;
+  public boolean lZZ;
   public int mode;
   public String referer;
   
   public a()
   {
     AppMethodBeat.i(144294);
-    this.lVk = false;
-    this.lVl = false;
-    this.lVm = 60000;
-    this.lVn = 60000;
-    this.lVo = 60000;
-    this.lVp = 60000;
-    this.cmM = 2;
-    this.lVq = 2;
-    this.cmN = 2;
+    this.lZN = false;
+    this.lZO = false;
+    this.lZP = 60000;
+    this.lZQ = 60000;
+    this.lZR = 60000;
+    this.lZS = 60000;
     this.cmO = 2;
-    this.cmV = new ArrayList();
-    this.cmW = new ArrayList();
+    this.lZT = 2;
+    this.cmP = 2;
+    this.cmQ = 2;
     this.cmX = new ArrayList();
     this.cmY = new ArrayList();
     this.cmZ = new ArrayList();
-    this.lVr = new ArrayList();
-    this.lVs = new ArrayList();
-    this.lVt = new ArrayList();
-    this.jWu = 50;
-    this.cmR = false;
-    this.lVu = "Luggage Network Extension";
-    this.lVv = null;
+    this.cna = new ArrayList();
+    this.cnb = new ArrayList();
+    this.lZU = new ArrayList();
+    this.lZV = new ArrayList();
+    this.lZW = new ArrayList();
+    this.jZJ = 50;
+    this.cmT = false;
+    this.lZX = "Luggage Network Extension";
+    this.lZY = null;
     this.referer = "";
-    this.cmS = false;
-    this.lVw = false;
+    this.cmU = false;
+    this.lZZ = false;
     AppMethodBeat.o(144294);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.o.a
  * JD-Core Version:    0.7.0.1
  */

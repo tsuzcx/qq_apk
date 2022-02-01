@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.b.a;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.b.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.ao;
 import java.lang.ref.WeakReference;
@@ -22,42 +22,42 @@ public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
   private static String TAG = "MicroMsg.BackupChatBanner";
-  private View nAt;
-  private View nAu;
-  private int nAv;
-  private int nAw;
-  private b.a nAx;
+  private View nFO;
+  private View nFP;
+  private int nFQ;
+  private int nFR;
+  private b.a nFS;
   private TextView titleTv;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(21770);
-    this.nAt = null;
+    this.nFO = null;
     this.titleTv = null;
-    this.nAv = 100;
-    this.nAw = 100;
-    this.nAx = new a(this);
-    ad.i(TAG, "new BackupChatBanner.");
-    com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX().nsJ = -100;
-    com.tencent.mm.plugin.backup.d.b.bHG().bGX().nsJ = -100;
-    ad.i(TAG, "initialize");
+    this.nFQ = 100;
+    this.nFR = 100;
+    this.nFS = new a(this);
+    ae.i(TAG, "new BackupChatBanner.");
+    com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye = -100;
+    com.tencent.mm.plugin.backup.d.b.bIE().bHV().nye = -100;
+    ae.i(TAG, "initialize");
     this.titleTv = ((TextView)this.view.findViewById(2131297084));
-    this.nAt = this.view.findViewById(2131297082);
-    this.nAu = this.view.findViewById(2131297183);
+    this.nFO = this.view.findViewById(2131297082);
+    this.nFP = this.view.findViewById(2131297183);
     if (this.view != null)
     {
-      this.nAt = this.view.findViewById(2131297082);
-      this.nAt.setOnClickListener(new View.OnClickListener()
+      this.nFO = this.view.findViewById(2131297082);
+      this.nFO.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(21767);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupui/BackupChatBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          int i = d.bHa();
-          ad.i(a.TAG, "backupbanner onclick, backupMode[%d]", new Object[] { Integer.valueOf(i) });
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupui/BackupChatBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          int i = d.bHY();
+          ae.i(a.TAG, "backupbanner onclick, backupMode[%d]", new Object[] { Integer.valueOf(i) });
           switch (i)
           {
           }
@@ -66,12 +66,12 @@ public final class a
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupui/BackupChatBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(21767);
             return;
-            i = com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX().nsJ;
-            ad.i(a.TAG, "backupbanner onclick, backupPcState[%d]", new Object[] { Integer.valueOf(i) });
+            i = com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye;
+            ae.i(a.TAG, "backupbanner onclick, backupPcState[%d]", new Object[] { Integer.valueOf(i) });
             switch (i)
             {
             default: 
-              ad.i(a.TAG, "click backup banner, BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX().nsJ) });
+              ae.i(a.TAG, "click backup banner, BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye) });
               break;
             case -4: 
             case 4: 
@@ -82,20 +82,20 @@ public final class a
             case 22: 
             case 23: 
             case 28: 
-              ad.i(a.TAG, "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX().nsJ) });
+              ae.i(a.TAG, "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye) });
               a.a(a.this, false);
               break;
             case 24: 
             case 25: 
-              ad.i(a.TAG, "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX().nsJ) });
+              ae.i(a.TAG, "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye) });
               a.a(a.this, true);
               continue;
-              i = com.tencent.mm.plugin.backup.d.b.bHG().bGX().nsJ;
-              ad.i(a.TAG, "backupbanner onclick, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+              i = com.tencent.mm.plugin.backup.d.b.bIE().bHV().nye;
+              ae.i(a.TAG, "backupbanner onclick, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
               switch (i)
               {
               default: 
-                ad.i(a.TAG, "click backup banner,backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+                ae.i(a.TAG, "click backup banner,backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
                 break;
               case -4: 
               case 4: 
@@ -105,12 +105,12 @@ public final class a
               case 23: 
               case 28: 
               case 52: 
-                ad.i(a.TAG, "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+                ae.i(a.TAG, "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
                 a.b(a.this, false);
                 break;
               case 24: 
               case 25: 
-                ad.i(a.TAG, "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+                ae.i(a.TAG, "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
                 a.b(a.this, true);
               }
               break;
@@ -119,270 +119,270 @@ public final class a
         }
       });
     }
-    bAa();
-    com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIl().nyf = this.nAx;
-    com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIm().nyf = this.nAx;
-    com.tencent.mm.plugin.backup.d.b.bHG().bHJ().nvh = this.nAx;
+    bAV();
+    com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJj().nDA = this.nFS;
+    com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJk().nDA = this.nFS;
+    com.tencent.mm.plugin.backup.d.b.bIE().bIH().nAC = this.nFS;
     AppMethodBeat.o(21770);
   }
   
-  private void iG(boolean paramBoolean)
+  private void iE(boolean paramBoolean)
   {
     AppMethodBeat.i(21771);
-    ad.i(TAG, "jumpToBackupPcUI");
-    if (bt.jh((Context)this.EXg.get()))
+    ae.i(TAG, "jumpToBackupPcUI");
+    if (bu.jn((Context)this.FpA.get()))
     {
-      Intent localIntent = new Intent().setClassName((Context)this.EXg.get(), "com.tencent.mm.plugin.backup.backuppcui.BackupPcUI");
+      Intent localIntent = new Intent().setClassName((Context)this.FpA.get(), "com.tencent.mm.plugin.backup.backuppcui.BackupPcUI");
       localIntent.putExtra("isRecoverTransferFinishFromBanner", paramBoolean);
-      MMWizardActivity.al((Context)this.EXg.get(), localIntent);
+      MMWizardActivity.al((Context)this.FpA.get(), localIntent);
     }
     AppMethodBeat.o(21771);
   }
   
-  private void iH(boolean paramBoolean)
+  private void iF(boolean paramBoolean)
   {
     AppMethodBeat.i(21772);
-    ad.i(TAG, "jumpToBackupMoveRecoverUI, isRecoverTransferFinishFromBanner[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (bt.jh((Context)this.EXg.get()))
+    ae.i(TAG, "jumpToBackupMoveRecoverUI, isRecoverTransferFinishFromBanner[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (bu.jn((Context)this.FpA.get()))
     {
-      Intent localIntent = new Intent().setClassName((Context)this.EXg.get(), "com.tencent.mm.plugin.backup.backupmoveui.BackupMoveRecoverUI");
+      Intent localIntent = new Intent().setClassName((Context)this.FpA.get(), "com.tencent.mm.plugin.backup.backupmoveui.BackupMoveRecoverUI");
       localIntent.putExtra("isRecoverTransferFinishFromBanner", paramBoolean);
-      MMWizardActivity.al((Context)this.EXg.get(), localIntent);
+      MMWizardActivity.al((Context)this.FpA.get(), localIntent);
     }
     AppMethodBeat.o(21772);
   }
   
-  private boolean xH(int paramInt)
+  private boolean xL(int paramInt)
   {
     AppMethodBeat.i(21774);
-    if ((paramInt != -100) || (paramInt != this.nAv))
+    if ((paramInt != -100) || (paramInt != this.nFQ))
     {
-      ad.i(TAG, "refreshPcState backupMode[%d], backupPcState[%d]", new Object[] { Integer.valueOf(d.bHa()), Integer.valueOf(paramInt) });
-      this.nAv = paramInt;
+      ae.i(TAG, "refreshPcState backupMode[%d], backupPcState[%d]", new Object[] { Integer.valueOf(d.bHY()), Integer.valueOf(paramInt) });
+      this.nFQ = paramInt;
     }
-    e locale = com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX();
+    e locale = com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV();
     TextView localTextView;
     Context localContext;
     int i;
     switch (paramInt)
     {
     default: 
-      this.nAt.setVisibility(8);
+      this.nFO.setVisibility(8);
       AppMethodBeat.o(21774);
       return false;
     case 12: 
     case 22: 
-      this.nAt.setVisibility(0);
-      if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS)) {
-        ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+      this.nFO.setVisibility(0);
+      if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn)) {
+        ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
       }
       for (;;)
       {
-        ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756220));
+        ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756220));
         AppMethodBeat.o(21774);
         return true;
-        if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS)) {
-          ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+        if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn)) {
+          ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
         }
       }
     case 14: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
       localTextView = (TextView)this.view.findViewById(2131297084);
-      localContext = aj.getContext();
-      paramInt = locale.nsK;
-      i = locale.nsL;
-      com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk();
-      localTextView.setText(localContext.getString(2131756249, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bIp() }));
+      localContext = ak.getContext();
+      paramInt = locale.nyf;
+      i = locale.nyg;
+      com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi();
+      localTextView.setText(localContext.getString(2131756249, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bJn() }));
       AppMethodBeat.o(21774);
       return true;
     case 15: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-      ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756180));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+      ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756180));
       AppMethodBeat.o(21774);
       return true;
     case 23: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
       localTextView = (TextView)this.view.findViewById(2131297084);
-      localContext = aj.getContext();
-      paramInt = locale.nsK;
-      i = locale.nsL;
-      com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk();
-      localTextView.setText(localContext.getString(2131756232, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bIp() }));
+      localContext = ak.getContext();
+      paramInt = locale.nyf;
+      i = locale.nyg;
+      com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi();
+      localTextView.setText(localContext.getString(2131756232, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bJn() }));
       AppMethodBeat.o(21774);
       return true;
     case 25: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-      ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756234));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+      ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756234));
       AppMethodBeat.o(21774);
       return true;
     case 24: 
-      iG(true);
+      iE(true);
       AppMethodBeat.o(21774);
       return true;
     case 4: 
     case 5: 
-      this.nAt.setVisibility(0);
-      if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS))
+      this.nFO.setVisibility(0);
+      if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn))
       {
-        ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+        ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
         localTextView = (TextView)this.view.findViewById(2131297084);
-        localContext = aj.getContext();
-        paramInt = locale.nsK;
-        i = locale.nsL;
-        com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk();
-        localTextView.setText(localContext.getString(2131756249, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bIp() }));
+        localContext = ak.getContext();
+        paramInt = locale.nyf;
+        i = locale.nyg;
+        com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi();
+        localTextView.setText(localContext.getString(2131756249, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bJn() }));
       }
       for (;;)
       {
         AppMethodBeat.o(21774);
         return true;
-        if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS))
+        if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn))
         {
-          ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+          ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
           localTextView = (TextView)this.view.findViewById(2131297084);
-          localContext = aj.getContext();
-          paramInt = locale.nsK;
-          i = locale.nsL;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk();
-          localTextView.setText(localContext.getString(2131756232, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bIp() }));
+          localContext = ak.getContext();
+          paramInt = locale.nyf;
+          i = locale.nyg;
+          com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi();
+          localTextView.setText(localContext.getString(2131756232, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bJn() }));
         }
       }
     case -4: 
     case 28: 
-      this.nAt.setVisibility(0);
-      if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS))
+      this.nFO.setVisibility(0);
+      if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn))
       {
-        ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-        ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756196));
+        ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+        ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756196));
       }
       for (;;)
       {
         AppMethodBeat.o(21774);
         return true;
-        if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bIk().nxS))
+        if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bJi().nDn))
         {
-          ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690557, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-          ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756197));
+          ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690557, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+          ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756197));
         }
       }
     }
-    this.nAt.setVisibility(8);
-    if (bt.jh((Context)this.EXg.get())) {
-      iG(true);
+    this.nFO.setVisibility(8);
+    if (bu.jn((Context)this.FpA.get())) {
+      iE(true);
     }
     AppMethodBeat.o(21774);
     return true;
   }
   
-  private boolean xI(int paramInt)
+  private boolean xM(int paramInt)
   {
     AppMethodBeat.i(21775);
-    if ((paramInt != -100) || (paramInt != this.nAw))
+    if ((paramInt != -100) || (paramInt != this.nFR))
     {
-      ad.i(TAG, "refreshMoveRecoverState backupMode[%d], backupMoveState[%d]", new Object[] { Integer.valueOf(d.bHa()), Integer.valueOf(paramInt) });
-      this.nAw = paramInt;
+      ae.i(TAG, "refreshMoveRecoverState backupMode[%d], backupMoveState[%d]", new Object[] { Integer.valueOf(d.bHY()), Integer.valueOf(paramInt) });
+      this.nFR = paramInt;
     }
-    e locale = com.tencent.mm.plugin.backup.d.b.bHG().bGX();
+    e locale = com.tencent.mm.plugin.backup.d.b.bIE().bHV();
     switch (paramInt)
     {
     default: 
-      this.nAt.setVisibility(8);
+      this.nFO.setVisibility(8);
       AppMethodBeat.o(21775);
       return false;
     case 22: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690594, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-      ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756155));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690594, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+      ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756155));
       AppMethodBeat.o(21775);
       return true;
     case 4: 
     case 5: 
     case 23: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690594, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690594, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
       TextView localTextView = (TextView)this.view.findViewById(2131297084);
-      Context localContext = aj.getContext();
-      paramInt = locale.nsK;
-      int i = locale.nsL;
-      com.tencent.mm.plugin.backup.d.b.bHG().bHJ();
-      localTextView.setText(localContext.getString(2131756160, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.d.c.bHP() }));
+      Context localContext = ak.getContext();
+      paramInt = locale.nyf;
+      int i = locale.nyg;
+      com.tencent.mm.plugin.backup.d.b.bIE().bIH();
+      localTextView.setText(localContext.getString(2131756160, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.d.c.bIN() }));
       AppMethodBeat.o(21775);
       return true;
     case 25: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690594, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-      ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756162));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690594, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+      ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756162));
       AppMethodBeat.o(21775);
       return true;
     case 24: 
     case 52: 
-      if (bt.jh((Context)this.EXg.get())) {
-        iH(true);
+      if (bu.jn((Context)this.FpA.get())) {
+        iF(true);
       }
       AppMethodBeat.o(21775);
       return true;
     case -4: 
     case 28: 
-      this.nAt.setVisibility(0);
-      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.EXg.get(), 2131690594, ((Context)this.EXg.get()).getResources().getColor(2131099676)));
-      ((TextView)this.view.findViewById(2131297084)).setText(aj.getContext().getString(2131756112));
+      this.nFO.setVisibility(0);
+      ((ImageView)this.view.findViewById(2131297083)).setImageDrawable(ao.k((Context)this.FpA.get(), 2131690594, ((Context)this.FpA.get()).getResources().getColor(2131099676)));
+      ((TextView)this.view.findViewById(2131297084)).setText(ak.getContext().getString(2131756112));
       AppMethodBeat.o(21775);
       return true;
     }
-    this.nAt.setVisibility(8);
-    if (bt.jh((Context)this.EXg.get())) {
-      iH(true);
+    this.nFO.setVisibility(8);
+    if (bu.jn((Context)this.FpA.get())) {
+      iF(true);
     }
     AppMethodBeat.o(21775);
     return true;
   }
   
-  public final boolean bAa()
+  public final boolean bAV()
   {
     AppMethodBeat.i(21773);
-    if ((this.isFirst) && (this.hjE))
+    if ((this.isFirst) && (this.hms))
     {
-      this.nAu.setBackgroundResource(2131234377);
-      this.nAt.setBackground(null);
+      this.nFP.setBackgroundResource(2131234377);
+      this.nFO.setBackground(null);
       this.titleTv.setBackground(null);
     }
     for (;;)
     {
-      switch (d.bHa())
+      switch (d.bHY())
       {
       default: 
-        this.nAt.setVisibility(8);
+        this.nFO.setVisibility(8);
         AppMethodBeat.o(21773);
         return false;
         if (this.isFirst)
         {
-          this.nAu.setBackgroundResource(2131232872);
-          this.nAt.setBackgroundResource(2131232870);
+          this.nFP.setBackgroundResource(2131232872);
+          this.nFO.setBackgroundResource(2131232870);
           this.titleTv.setBackgroundResource(2131232867);
         }
-        else if (this.hjE)
+        else if (this.hms)
         {
-          this.nAu.setBackgroundResource(2131232872);
-          this.nAt.setBackgroundResource(2131232867);
+          this.nFP.setBackgroundResource(2131232872);
+          this.nFO.setBackgroundResource(2131232867);
           this.titleTv.setBackground(null);
         }
         else
         {
-          this.nAu.setBackgroundResource(2131232872);
-          this.nAt.setBackground(null);
+          this.nFP.setBackgroundResource(2131232872);
+          this.nFO.setBackground(null);
           this.titleTv.setBackgroundResource(2131232867);
         }
         break;
       }
     }
-    boolean bool = xH(com.tencent.mm.plugin.backup.backuppcmodel.b.bIj().bGX().nsJ);
+    boolean bool = xL(com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye);
     AppMethodBeat.o(21773);
     return bool;
-    bool = xI(com.tencent.mm.plugin.backup.d.b.bHG().bGX().nsJ);
+    bool = xM(com.tencent.mm.plugin.backup.d.b.bIE().bHV().nye);
     AppMethodBeat.o(21773);
     return bool;
   }
@@ -402,26 +402,26 @@ public final class a
   static final class a
     implements b.a
   {
-    private final WeakReference<a> nAz;
+    private final WeakReference<a> nFU;
     
     a(a parama)
     {
       AppMethodBeat.i(21768);
-      this.nAz = new WeakReference(parama);
+      this.nFU = new WeakReference(parama);
       AppMethodBeat.o(21768);
     }
     
-    public final void xo(int paramInt)
+    public final void xt(int paramInt)
     {
       AppMethodBeat.i(21769);
-      a locala = (a)this.nAz.get();
+      a locala = (a)this.nFU.get();
       if (locala != null)
       {
         a.a(locala, paramInt);
         AppMethodBeat.o(21769);
         return;
       }
-      ad.e(a.TAG, "BackupChatBanner WeakReference is null!");
+      ae.e(a.TAG, "BackupChatBanner WeakReference is null!");
       AppMethodBeat.o(21769);
     }
   }

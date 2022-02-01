@@ -13,17 +13,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements d
 {
-  private static int lpg;
-  private static int lph;
+  private static int ltD;
+  private static int ltE;
   private int agZ;
   private int ahh;
-  private StaticLayout gFm;
-  private SpannableString lpi;
-  private int lpj;
-  private int lpk;
-  private int lpl;
-  private int lpm;
-  private float lpn;
+  private StaticLayout gHT;
+  private SpannableString ltF;
+  private int ltG;
+  private int ltH;
+  private int ltI;
+  private int ltJ;
+  private float ltK;
   private Context mContext;
   private int mTextColor;
   private int mTextSize;
@@ -31,39 +31,39 @@ public final class a
   public a(Context paramContext, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137851);
-    this.lpl = -1;
+    this.ltI = -1;
     this.mTextColor = -1;
     this.mContext = paramContext;
-    this.lpi = paramSpannableString;
-    this.mTextSize = b.J(this.mContext, b.lpo);
+    this.ltF = paramSpannableString;
+    this.mTextSize = b.J(this.mContext, b.ltL);
     this.mTextColor = paramInt1;
-    this.lpn = 3.0F;
-    this.lpm = paramInt2;
+    this.ltK = 3.0F;
+    this.ltJ = paramInt2;
     paramContext = new TextPaint();
     paramContext.setAntiAlias(true);
     paramContext.setColor(this.mTextColor);
     paramContext.setTextSize(this.mTextSize);
     paramSpannableString = paramContext.getFontMetrics();
     this.ahh = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
-    this.gFm = new StaticLayout(this.lpi, paramContext, (int)Layout.getDesiredWidth(this.lpi, 0, this.lpi.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-    this.agZ = this.gFm.getWidth();
+    this.gHT = new StaticLayout(this.ltF, paramContext, (int)Layout.getDesiredWidth(this.ltF, 0, this.ltF.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
+    this.agZ = this.gHT.getWidth();
     AppMethodBeat.o(137851);
   }
   
   public final boolean a(d paramd)
   {
     AppMethodBeat.i(137854);
-    if (paramd.getWidth() + paramd.getCurrX() > lpg)
+    if (paramd.getWidth() + paramd.getCurrX() > ltD)
     {
       AppMethodBeat.o(137854);
       return true;
     }
-    if (this.lpl < 0) {
-      this.lpl = b.J(this.mContext, 20);
+    if (this.ltI < 0) {
+      this.ltI = b.J(this.mContext, 20);
     }
-    if (paramd.bnV() >= this.lpn)
+    if (paramd.boF() >= this.ltK)
     {
-      if ((paramd.bnV() == this.lpn) && (lpg - (paramd.getCurrX() + paramd.getWidth()) < this.lpl))
+      if ((paramd.boF() == this.ltK) && (ltD - (paramd.getCurrX() + paramd.getWidth()) < this.ltI))
       {
         AppMethodBeat.o(137854);
         return true;
@@ -71,7 +71,7 @@ public final class a
       AppMethodBeat.o(137854);
       return false;
     }
-    if ((paramd.getCurrX() + paramd.getWidth()) / (paramd.bnV() * b.bnY()) * this.lpn * b.bnY() > lpg - this.lpl * 1.5D)
+    if ((paramd.getCurrX() + paramd.getWidth()) / (paramd.boF() * b.boI()) * this.ltK * b.boI() > ltD - this.ltI * 1.5D)
     {
       AppMethodBeat.o(137854);
       return true;
@@ -85,30 +85,30 @@ public final class a
     AppMethodBeat.i(137852);
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
-    if ((i != lpg) || (j != lph))
+    if ((i != ltD) || (j != ltE))
     {
-      lpg = i;
-      lph = j;
+      ltD = i;
+      ltE = j;
     }
     paramCanvas.save();
-    paramCanvas.translate(this.lpj, this.lpk);
-    this.gFm.draw(paramCanvas);
+    paramCanvas.translate(this.ltG, this.ltH);
+    this.gHT.draw(paramCanvas);
     paramCanvas.restore();
     if (!paramBoolean) {
-      this.lpj = ((int)(this.lpj - b.bnY() * this.lpn));
+      this.ltG = ((int)(this.ltG - b.boI() * this.ltK));
     }
     AppMethodBeat.o(137852);
   }
   
-  public final float bnV()
+  public final float boF()
   {
-    return this.lpn;
+    return this.ltK;
   }
   
-  public final boolean bnW()
+  public final boolean boG()
   {
     AppMethodBeat.i(137853);
-    if ((this.lpj < 0) && (Math.abs(this.lpj) > this.agZ))
+    if ((this.ltG < 0) && (Math.abs(this.ltG) > this.agZ))
     {
       AppMethodBeat.o(137853);
       return true;
@@ -117,20 +117,20 @@ public final class a
     return false;
   }
   
-  public final int bnX()
+  public final int boH()
   {
-    return this.lpm;
+    return this.ltJ;
   }
   
   public final void dV(int paramInt1, int paramInt2)
   {
-    this.lpj = paramInt1;
-    this.lpk = paramInt2;
+    this.ltG = paramInt1;
+    this.ltH = paramInt2;
   }
   
   public final int getCurrX()
   {
-    return this.lpj;
+    return this.ltG;
   }
   
   public final int getWidth()
@@ -138,23 +138,23 @@ public final class a
     return this.agZ;
   }
   
-  public final boolean tA(int paramInt)
+  public final boolean tE(int paramInt)
   {
-    if (paramInt < this.lpm) {}
-    while (paramInt - this.lpm > b.lpp) {
+    if (paramInt < this.ltJ) {}
+    while (paramInt - this.ltJ > b.ltM) {
       return false;
     }
     return true;
   }
   
-  public final boolean tB(int paramInt)
+  public final boolean tF(int paramInt)
   {
-    return paramInt - this.lpm > b.lpp;
+    return paramInt - this.ltJ > b.ltM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.a
  * JD-Core Version:    0.7.0.1
  */

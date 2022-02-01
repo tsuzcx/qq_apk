@@ -11,38 +11,38 @@ import android.os.ResultReceiver;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.a;
-import com.tencent.mm.plugin.appbrand.z.m;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.m;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(19)
 public final class b
 {
-  private static final byte[] kYF;
-  public static b kYH;
+  private static final byte[] lco;
+  public static b lcq;
   private static long mStartTime;
   ResultReceiver MK;
-  private boolean kYA;
-  boolean kYB;
-  boolean kYC;
-  private a kYD;
-  private com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.b kYE;
-  HostApduService kYG;
-  int kYf;
-  ArrayList<String> kYy;
-  boolean kYz;
+  int lbO;
+  ArrayList<String> lch;
+  boolean lci;
+  private boolean lcj;
+  boolean lck;
+  boolean lcl;
+  private a lcm;
+  private com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.b lcn;
+  HostApduService lcp;
   String mAppId;
   
   static
   {
     AppMethodBeat.i(136176);
-    kYF = new byte[] { 0, 0 };
+    lco = new byte[] { 0, 0 };
     mStartTime = -1L;
-    kYH = null;
-    kYH = new b();
+    lcq = null;
+    lcq = new b();
     AppMethodBeat.o(136176);
   }
   
@@ -50,19 +50,19 @@ public final class b
   {
     AppMethodBeat.i(136167);
     this.mAppId = null;
-    this.kYz = false;
-    this.kYA = true;
-    this.kYB = false;
-    this.kYC = false;
-    this.kYD = new a((byte)0);
-    this.kYE = new b((byte)0);
+    this.lci = false;
+    this.lcj = true;
+    this.lck = false;
+    this.lcl = false;
+    this.lcm = new a((byte)0);
+    this.lcn = new b((byte)0);
     AppMethodBeat.o(136167);
   }
   
-  private void J(Bundle paramBundle)
+  private void K(Bundle paramBundle)
   {
     AppMethodBeat.i(136174);
-    ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCE EVENT mm to AppBrand");
+    ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCE EVENT mm to AppBrand");
     if (this.MK != null) {
       this.MK.send(10002, paramBundle);
     }
@@ -75,82 +75,82 @@ public final class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 111
+    //   2: ldc 112
     //   4: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 90
-    //   9: ldc 113
+    //   7: ldc 91
+    //   9: ldc 114
     //   11: iconst_2
     //   12: anewarray 4	java/lang/Object
     //   15: dup
     //   16: iconst_0
     //   17: iload_2
-    //   18: invokestatic 119	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   18: invokestatic 120	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   21: aastore
     //   22: dup
     //   23: iconst_1
     //   24: aload_0
-    //   25: getfield 74	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:kYA	Z
-    //   28: invokestatic 119	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   25: getfield 74	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:lcj	Z
+    //   28: invokestatic 120	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   31: aastore
-    //   32: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   32: invokestatic 123	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   35: aload_0
-    //   36: getfield 74	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:kYA	Z
+    //   36: getfield 74	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:lcj	Z
     //   39: ifeq +94 -> 133
     //   42: aload_0
     //   43: iconst_0
-    //   44: putfield 74	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:kYA	Z
-    //   47: invokestatic 128	java/lang/System:currentTimeMillis	()J
+    //   44: putfield 74	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:lcj	Z
+    //   47: invokestatic 129	java/lang/System:currentTimeMillis	()J
     //   50: lstore 4
-    //   52: ldc 90
-    //   54: ldc 130
+    //   52: ldc 91
+    //   54: ldc 131
     //   56: iconst_2
     //   57: anewarray 4	java/lang/Object
     //   60: dup
     //   61: iconst_0
     //   62: lload 4
-    //   64: invokestatic 135	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   64: invokestatic 136	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   67: aastore
     //   68: dup
     //   69: iconst_1
     //   70: lload 4
     //   72: getstatic 57	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:mStartTime	J
     //   75: lsub
-    //   76: invokestatic 135	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   76: invokestatic 136	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   79: aastore
-    //   80: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   80: invokestatic 123	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   83: aload_3
     //   84: ifnull +57 -> 141
     //   87: aload_3
     //   88: aload_1
-    //   89: invokevirtual 141	android/nfc/cardemulation/HostApduService:sendResponseApdu	([B)V
+    //   89: invokevirtual 142	android/nfc/cardemulation/HostApduService:sendResponseApdu	([B)V
     //   92: iload_2
     //   93: ifeq +40 -> 133
     //   96: aload_0
     //   97: getfield 70	com/tencent/mm/plugin/appbrand/jsapi/nfc/hce/b:mAppId	Ljava/lang/String;
     //   100: astore_1
-    //   101: ldc 143
-    //   103: ldc 145
+    //   101: ldc 144
+    //   103: ldc 146
     //   105: iconst_1
     //   106: anewarray 4	java/lang/Object
     //   109: dup
     //   110: iconst_0
     //   111: aload_1
     //   112: aastore
-    //   113: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   116: ldc 147
-    //   118: invokestatic 153	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
-    //   121: checkcast 147	com/tencent/mm/plugin/appbrand/t/b
+    //   113: invokestatic 123	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   116: ldc 148
+    //   118: invokestatic 154	com/tencent/luggage/a/e:L	(Ljava/lang/Class;)Lcom/tencent/luggage/a/d;
+    //   121: checkcast 148	com/tencent/mm/plugin/appbrand/s/b
     //   124: sipush 14838
     //   127: aload_1
-    //   128: invokeinterface 157 3 0
-    //   133: ldc 111
+    //   128: invokeinterface 158 3 0
+    //   133: ldc 112
     //   135: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aload_0
     //   139: monitorexit
     //   140: return
-    //   141: ldc 90
-    //   143: ldc 159
-    //   145: invokestatic 162	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   141: ldc 91
+    //   143: ldc 160
+    //   145: invokestatic 163	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   148: goto -56 -> 92
     //   151: astore_1
     //   152: aload_0
@@ -173,7 +173,7 @@ public final class b
     //   141	148	151	finally
   }
   
-  private void gN(boolean paramBoolean)
+  private void gM(boolean paramBoolean)
   {
     AppMethodBeat.i(136170);
     Bundle localBundle = new Bundle();
@@ -195,7 +195,7 @@ public final class b
   public final void a(int paramInt, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(136168);
-    ad.i("MicroMsg.HCEServiceMgr", "alvinluo genCallHCEService type = %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.HCEServiceMgr", "alvinluo genCallHCEService type = %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -203,41 +203,41 @@ public final class b
     {
       AppMethodBeat.o(136168);
       return;
-      if (this.kYD != null)
+      if (this.lcm != null)
       {
         paramBundle = paramBundle.getString("key_apdu_command");
-        this.kYD.dn(paramString, paramBundle);
+        this.lcm.dp(paramString, paramBundle);
         AppMethodBeat.o(136168);
         return;
-        if (this.kYD != null)
+        if (this.lcm != null)
         {
           paramBundle = paramBundle.getString("key_apdu_command");
-          this.kYD.dm(paramString, paramBundle);
+          this.lcm.jdMethod_do(paramString, paramBundle);
           AppMethodBeat.o(136168);
           return;
-          if (this.kYE != null)
+          if (this.lcn != null)
           {
-            this.kYE.onCreate();
+            this.lcn.onCreate();
             AppMethodBeat.o(136168);
             return;
-            if (this.kYE != null)
+            if (this.lcn != null)
             {
-              this.kYE.onResume();
+              this.lcn.onResume();
               AppMethodBeat.o(136168);
               return;
-              if (this.kYE != null)
+              if (this.lcn != null)
               {
-                this.kYE.onPause();
+                this.lcn.onPause();
                 AppMethodBeat.o(136168);
                 return;
-                if (this.kYE != null)
+                if (this.lcn != null)
                 {
-                  this.kYE.onDestroy();
+                  this.lcn.onDestroy();
                   AppMethodBeat.o(136168);
                   return;
-                  blL();
-                  if (this.kYG != null) {
-                    this.kYG.stopSelf();
+                  bmu();
+                  if (this.lcp != null) {
+                    this.lcp.stopSelf();
                   }
                 }
               }
@@ -253,30 +253,30 @@ public final class b
     AppMethodBeat.i(136171);
     paramBundle.putString("key_appid", paramString);
     paramBundle.putInt("key_event_type", paramInt);
-    J(paramBundle);
+    K(paramBundle);
     AppMethodBeat.o(136171);
   }
   
   @TargetApi(21)
-  public final void blK()
+  public final void bmt()
   {
     AppMethodBeat.i(136169);
-    if ((this.kYy == null) || (this.kYG == null))
+    if ((this.lch == null) || (this.lcp == null))
     {
-      ad.e("MicroMsg.HCEServiceMgr", "alvinluo mAidList is null, or mHceService is null fail to register");
+      ae.e("MicroMsg.HCEServiceMgr", "alvinluo mAidList is null, or mHceService is null fail to register");
       AppMethodBeat.o(136169);
       return;
     }
-    Object localObject = NfcAdapter.getDefaultAdapter(this.kYG);
+    Object localObject = NfcAdapter.getDefaultAdapter(this.lcp);
     if (localObject == null)
     {
-      ad.e("MicroMsg.HCEServiceMgr", "alvinluo NfcAdapter is null when register aids");
+      ae.e("MicroMsg.HCEServiceMgr", "alvinluo NfcAdapter is null when register aids");
       AppMethodBeat.o(136169);
       return;
     }
     if (Build.VERSION.SDK_INT < 21)
     {
-      ad.e("MicroMsg.HCEServiceMgr", "alvinluo android version: %d is not satisfied when register aids", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ae.e("MicroMsg.HCEServiceMgr", "alvinluo android version: %d is not satisfied when register aids", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(136169);
       return;
     }
@@ -285,20 +285,20 @@ public final class b
     {
       try
       {
-        ComponentName localComponentName = new ComponentName(this.kYG, this.kYG.getClass());
-        boolean bool = ((CardEmulation)localObject).registerAidsForService(localComponentName, "payment", this.kYy);
-        ad.i("MicroMsg.HCEServiceMgr", "alvinluo register aids result: %b", new Object[] { Boolean.valueOf(bool) });
+        ComponentName localComponentName = new ComponentName(this.lcp, this.lcp.getClass());
+        boolean bool = ((CardEmulation)localObject).registerAidsForService(localComponentName, "payment", this.lch);
+        ae.i("MicroMsg.HCEServiceMgr", "alvinluo register aids result: %b", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
           break label275;
         }
-        gN(true);
+        gM(true);
         localObject = ((CardEmulation)localObject).getAidsForService(localComponentName, "payment");
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           int i = 0;
           while (i < ((List)localObject).size())
           {
-            ad.e("MicroMsg.HCEServiceMgr", "dynamicAIDList aid=" + (String)((List)localObject).get(i));
+            ae.e("MicroMsg.HCEServiceMgr", "dynamicAIDList aid=" + (String)((List)localObject).get(i));
             i += 1;
           }
         }
@@ -307,8 +307,8 @@ public final class b
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.HCEServiceMgr", localException, "alvinluo HCEService register aid exception", new Object[0]);
-        gN(false);
+        ae.printErrStackTrace("MicroMsg.HCEServiceMgr", localException, "alvinluo HCEService register aid exception", new Object[0]);
+        gM(false);
       }
     }
     else
@@ -317,21 +317,21 @@ public final class b
       return;
     }
     label275:
-    gN(false);
+    gM(false);
     AppMethodBeat.o(136169);
   }
   
   @TargetApi(21)
-  public final void blL()
+  public final void bmu()
   {
     AppMethodBeat.i(136172);
-    if (this.kYG == null)
+    if (this.lcp == null)
     {
-      ad.e("MicroMsg.HCEServiceMgr", "alvinluo mHceService is null fail to unregisterAids");
+      ae.e("MicroMsg.HCEServiceMgr", "alvinluo mHceService is null fail to unregisterAids");
       AppMethodBeat.o(136172);
       return;
     }
-    Object localObject = NfcAdapter.getDefaultAdapter(this.kYG);
+    Object localObject = NfcAdapter.getDefaultAdapter(this.lcp);
     if (localObject == null)
     {
       AppMethodBeat.o(136172);
@@ -345,8 +345,8 @@ public final class b
     localObject = CardEmulation.getInstance((NfcAdapter)localObject);
     if (localObject != null)
     {
-      ComponentName localComponentName = new ComponentName(this.kYG, this.kYG.getClass());
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService unregister aids");
+      ComponentName localComponentName = new ComponentName(this.lcp, this.lcp.getClass());
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService unregister aids");
       ((CardEmulation)localObject).removeAidsForService(localComponentName, "payment");
     }
     AppMethodBeat.o(136172);
@@ -357,13 +357,13 @@ public final class b
   {
     private a() {}
     
-    public final void dm(String paramString1, String paramString2)
+    public final void jdMethod_do(String paramString1, String paramString2)
     {
       AppMethodBeat.i(136161);
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND send to AppBrand, appId: %s, command: %s", new Object[] { paramString1, paramString2 });
-      if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND send to AppBrand, appId: %s, command: %s", new Object[] { paramString1, paramString2 });
+      if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
       {
-        ad.e("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND invalid appId or command when send request command to AppBrand");
+        ae.e("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND invalid appId or command when send request command to AppBrand");
         AppMethodBeat.o(136161);
         return;
       }
@@ -376,14 +376,14 @@ public final class b
         b.c(b.this);
         b.a(b.this, false);
         b.access$502(System.currentTimeMillis());
-        m.bBp().k(new Runnable()
+        m.bCj().k(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(136160);
-            ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timer check, timeLimit: %d, hasCommandNotResponded: %b", new Object[] { Integer.valueOf(b.d(b.this)), Boolean.valueOf(b.e(b.this)) });
+            ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timer check, timeLimit: %d, hasCommandNotResponded: %b", new Object[] { Integer.valueOf(b.d(b.this)), Boolean.valueOf(b.e(b.this)) });
             b.a(b.this, true);
-            b.a(b.this, b.blM(), true, b.f(b.this));
+            b.a(b.this, b.bmv(), true, b.f(b.this));
             AppMethodBeat.o(136160);
           }
         }, b.d(b.this));
@@ -392,24 +392,24 @@ public final class b
       }
       if (b.g(b.this))
       {
-        ad.w("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND TimeExceeded, just return default command");
-        b.a(b.this, b.blM(), true, b.f(b.this));
+        ae.w("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND TimeExceeded, just return default command");
+        b.a(b.this, b.bmv(), true, b.f(b.this));
         b.a(b.this, false);
       }
       AppMethodBeat.o(136161);
     }
     
-    public final void dn(String paramString1, String paramString2)
+    public final void dp(String paramString1, String paramString2)
     {
       AppMethodBeat.i(136162);
-      if ((b.h(b.this) == null) || (!b.h(b.this).equals(paramString1)) || (bt.isNullOrNil(paramString2)))
+      if ((b.h(b.this) == null) || (!b.h(b.this).equals(paramString1)) || (bu.isNullOrNil(paramString2)))
       {
-        ad.e("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND not the same appId, or invalid response command, mAppId: %s, appId: %s, responseCommand: %s", new Object[] { b.h(b.this), paramString1, paramString2 });
+        ae.e("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND not the same appId, or invalid response command, mAppId: %s, appId: %s, responseCommand: %s", new Object[] { b.h(b.this), paramString1, paramString2 });
         AppMethodBeat.o(136162);
         return;
       }
       byte[] arrayOfByte = Base64.decode(paramString2, 2);
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND response from AppBrand, appId: %s, command in base64: %s, send to system: %s, hasCommandNotResponded: %b", new Object[] { paramString1, paramString2, c.au(arrayOfByte), Boolean.valueOf(b.e(b.this)) });
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCECOMMAND response from AppBrand, appId: %s, command in base64: %s, send to system: %s, hasCommandNotResponded: %b", new Object[] { paramString1, paramString2, c.au(arrayOfByte), Boolean.valueOf(b.e(b.this)) });
       b.a(b.this, arrayOfByte, false, b.f(b.this));
       AppMethodBeat.o(136162);
     }
@@ -423,22 +423,22 @@ public final class b
     public final void onCreate()
     {
       AppMethodBeat.i(136163);
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onCreate");
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onCreate");
       AppMethodBeat.o(136163);
     }
     
     public final void onDestroy()
     {
       AppMethodBeat.i(136166);
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onDestroy");
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onDestroy");
       AppMethodBeat.o(136166);
     }
     
     public final void onPause()
     {
       AppMethodBeat.i(136165);
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onPause");
-      b.this.blL();
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onPause");
+      b.this.bmu();
       b.b(b.this, true);
       AppMethodBeat.o(136165);
     }
@@ -446,10 +446,10 @@ public final class b
     public final void onResume()
     {
       AppMethodBeat.i(136164);
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onResume");
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCELifeCycle AppBrandUI onResume");
       if (b.i(b.this))
       {
-        b.this.blK();
+        b.this.bmt();
         b.b(b.this, false);
       }
       AppMethodBeat.o(136164);

@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.model.e;
+import com.tencent.mm.protocal.protobuf.byg;
 import com.tencent.mm.sdk.b.b;
 
 public final class vc
   extends b
 {
-  public a dJn;
+  public a dKu;
+  public b dKv;
   
   public vc()
   {
@@ -15,16 +18,26 @@ public final class vc
   
   private vc(byte paramByte)
   {
-    AppMethodBeat.i(131794);
-    this.dJn = new a();
-    this.IbR = false;
+    AppMethodBeat.i(148772);
+    this.dKu = new a();
+    this.dKv = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(131794);
+    AppMethodBeat.o(148772);
   }
   
   public static final class a
   {
-    public int sourceType = 0;
+    public String dKc;
+    public byg dKw;
+    public Runnable dKx;
+    public e dKy;
+    public int scene;
+  }
+  
+  public static final class b
+  {
+    public int result;
   }
 }
 

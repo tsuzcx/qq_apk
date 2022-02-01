@@ -8,12 +8,12 @@ public enum i
   {
     AppMethodBeat.i(59338);
     i locali1 = new i("BEGINNING", 0);
-    Nqx = locali1;
+    NND = locali1;
     i locali2 = new i("MIDDLE", 1);
-    Nqy = locali2;
+    NNE = locali2;
     i locali3 = new i("AFTER_DOT", 2);
-    Nqz = locali3;
-    NqA = new i[] { locali1, locali2, locali3 };
+    NNF = locali3;
+    NNG = new i[] { locali1, locali2, locali3 };
     AppMethodBeat.o(59338);
   }
   
@@ -21,7 +21,7 @@ public enum i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.f.i
  * JD-Core Version:    0.7.0.1
  */

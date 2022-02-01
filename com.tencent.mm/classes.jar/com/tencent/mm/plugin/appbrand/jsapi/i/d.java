@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,16 +23,16 @@ public final class d
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiAddMapControls", "data is null");
+      ae.e("MicroMsg.JsApiAddMapControls", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(143659);
       return;
     }
-    ad.d("MicroMsg.JsApiAddMapControls", "data:%s", new Object[] { paramJSONObject.toString() });
+    ae.d("MicroMsg.JsApiAddMapControls", "data:%s", new Object[] { paramJSONObject.toString() });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiAddMapControls", "mapView is null, return");
+      ae.e("MicroMsg.JsApiAddMapControls", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(143659);
       return;
@@ -44,15 +44,15 @@ public final class d
       {
         if (paramJSONObject.has("controls"))
         {
-          localb.bkU();
+          localb.blE();
           JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("controls"));
           i = 0;
           if (i < localJSONArray.length())
           {
             JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
             b.c localc = new b.c();
-            localc.kRE = ((com.tencent.mm.plugin.appbrand.f.b)paramc.K(com.tencent.mm.plugin.appbrand.f.b.class)).b(paramc, localJSONObject1.optString("iconPath"));
-            localc.kRF = localJSONObject1.optBoolean("clickable");
+            localc.kVn = ((com.tencent.mm.plugin.appbrand.f.b)paramc.K(com.tencent.mm.plugin.appbrand.f.b.class)).b(paramc, localJSONObject1.optString("iconPath"));
+            localc.kVo = localJSONObject1.optBoolean("clickable");
             localc.data = localJSONObject1.optString("data");
             JSONObject localJSONObject2 = localJSONObject1.getJSONObject("position");
             int j = g.a(localJSONObject2, "left", 0);
@@ -75,12 +75,12 @@ public final class d
       }
       catch (Exception paramJSONObject)
       {
-        ad.e("MicroMsg.JsApiAddMapControls", "parse controls error, exception : %s", new Object[] { paramJSONObject });
-        a(paramc, paramInt, e("fail:internal error", null), false, localb.bkR());
+        ae.e("MicroMsg.JsApiAddMapControls", "parse controls error, exception : %s", new Object[] { paramJSONObject });
+        a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
         AppMethodBeat.o(143659);
         return;
       }
-      a(paramc, paramInt, e("ok", null), true, localb.bkR());
+      a(paramc, paramInt, e("ok", null), true, localb.blB());
       AppMethodBeat.o(143659);
       return;
       i += 1;
@@ -89,7 +89,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.d
  * JD-Core Version:    0.7.0.1
  */

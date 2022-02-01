@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class yv
   extends b
 {
-  public a dNP;
-  public b dNQ;
+  public a dON;
   
   public yv()
   {
@@ -16,28 +16,26 @@ public final class yv
   
   private yv(byte paramByte)
   {
-    AppMethodBeat.i(116059);
-    this.dNP = new a();
-    this.dNQ = new b();
-    this.IbR = false;
+    AppMethodBeat.i(91227);
+    this.dON = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116059);
+    AppMethodBeat.o(91227);
   }
   
   public static final class a
   {
-    public String dxv;
-  }
-  
-  public static final class b
-  {
-    public boolean dNR;
-    public int status;
+    public int dOO = 0;
+    public boolean dOP = false;
+    public int dOQ = 0;
+    public String dmw;
+    public Intent intent;
+    public int result = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.yv
  * JD-Core Version:    0.7.0.1
  */

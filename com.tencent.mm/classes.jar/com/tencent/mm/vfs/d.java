@@ -1,10 +1,14 @@
 package com.tencent.mm.vfs;
 
-import java.util.Map;
-
-public abstract interface d
+final class d
 {
-  public abstract void a(String paramString, FileSystem paramFileSystem, int paramInt, Map<String, Object> paramMap);
+  FileSystem.b LGe;
+  final FileSystem LGg;
+  
+  d(FileSystem paramFileSystem)
+  {
+    this.LGg = paramFileSystem;
+  }
 }
 
 

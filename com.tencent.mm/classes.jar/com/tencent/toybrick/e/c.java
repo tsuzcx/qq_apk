@@ -13,13 +13,13 @@ import java.lang.ref.WeakReference;
 
 public final class c
 {
-  public static volatile c MjA;
+  public static volatile c MGx;
   private Handler mMainHandler;
   
   static
   {
     AppMethodBeat.i(159981);
-    MjA = new c();
+    MGx = new c();
     AppMethodBeat.o(159981);
   }
   
@@ -36,9 +36,9 @@ public final class c
         {
           paramAnonymousMessage = (c.c)paramAnonymousMessage.obj;
           com.tencent.toybrick.f.a locala = (com.tencent.toybrick.f.a)c.c.a(paramAnonymousMessage).get();
-          if ((locala != null) && (locala.MjI.hashCode() == c.c.b(paramAnonymousMessage)))
+          if ((locala != null) && (locala.MGF.hashCode() == c.c.b(paramAnonymousMessage)))
           {
-            c.c.d(paramAnonymousMessage).R(locala, c.c.c(paramAnonymousMessage));
+            c.c.d(paramAnonymousMessage).Q(locala, c.c.c(paramAnonymousMessage));
             AppMethodBeat.o(159971);
             return;
           }
@@ -59,30 +59,30 @@ public final class c
   
   public static void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(221681);
-    a.fYI().execute(paramRunnable);
-    AppMethodBeat.o(221681);
+    AppMethodBeat.i(224523);
+    a.gdh().execute(paramRunnable);
+    AppMethodBeat.o(224523);
   }
   
   public final void a(com.tencent.toybrick.f.a parama, b paramb, ImageView paramImageView)
   {
     AppMethodBeat.i(159979);
-    parama = new c(parama, paramb, new a() {}, parama.MjI.hashCode());
-    a.fYI().execute(parama);
+    parama = new c(parama, paramb, new a() {}, parama.MGF.hashCode());
+    a.gdh().execute(parama);
     AppMethodBeat.o(159979);
   }
   
   public final void a(com.tencent.toybrick.f.a parama, b paramb, a parama1)
   {
     AppMethodBeat.i(159978);
-    parama = new c(parama, paramb, parama1, parama.MjI.hashCode());
-    a.fYI().execute(parama);
+    parama = new c(parama, paramb, parama1, parama.MGF.hashCode());
+    a.gdh().execute(parama);
     AppMethodBeat.o(159978);
   }
   
   public static abstract interface a<H, T>
   {
-    public abstract void R(H paramH, T paramT);
+    public abstract void Q(H paramH, T paramT);
   }
   
   public static abstract interface b<T>
@@ -93,18 +93,18 @@ public final class c
   final class c
     implements Runnable
   {
-    private WeakReference<com.tencent.toybrick.f.a> MjD;
-    private WeakReference<b> MjE;
-    private c.a MjF;
+    private WeakReference<com.tencent.toybrick.f.a> MGA;
+    private WeakReference<b> MGB;
+    private c.a MGC;
     private int key;
     private Object object;
     
     public c(com.tencent.toybrick.f.a parama, b paramb, c.a parama1, int paramInt)
     {
       AppMethodBeat.i(159973);
-      this.MjD = new WeakReference(parama);
-      this.MjE = new WeakReference(paramb);
-      this.MjF = parama1;
+      this.MGA = new WeakReference(parama);
+      this.MGB = new WeakReference(paramb);
+      this.MGC = parama1;
       this.key = paramInt;
       AppMethodBeat.o(159973);
     }
@@ -112,11 +112,11 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(159974);
-      Object localObject = (com.tencent.toybrick.f.a)this.MjD.get();
-      b localb = (b)this.MjE.get();
+      Object localObject = (com.tencent.toybrick.f.a)this.MGA.get();
+      b localb = (b)this.MGB.get();
       if ((localObject != null) && (localb != null))
       {
-        this.object = localb.fYJ();
+        this.object = localb.gdi();
         localObject = new Message();
         ((Message)localObject).what = 2;
         ((Message)localObject).obj = this;
@@ -129,28 +129,28 @@ public final class c
   public final class d
     implements Runnable
   {
-    private WeakReference<b> MjE;
-    private WeakReference<f> MjG;
-    private c.b MjH;
+    private WeakReference<b> MGB;
+    private WeakReference<f> MGD;
+    private c.b MGE;
     private Object object;
     
     public d(f paramf, b paramb, c.b paramb1)
     {
       AppMethodBeat.i(159975);
-      this.MjG = new WeakReference(paramf);
-      this.MjE = new WeakReference(paramb);
-      this.MjH = paramb1;
+      this.MGD = new WeakReference(paramf);
+      this.MGB = new WeakReference(paramb);
+      this.MGE = paramb1;
       AppMethodBeat.o(159975);
     }
     
     public final void run()
     {
       AppMethodBeat.i(159976);
-      Object localObject = (b)this.MjE.get();
-      f localf = (f)this.MjG.get();
+      Object localObject = (b)this.MGB.get();
+      f localf = (f)this.MGD.get();
       if ((localObject != null) && (localf != null))
       {
-        this.object = ((b)localObject).fYJ();
+        this.object = ((b)localObject).gdi();
         localObject = new Message();
         ((Message)localObject).what = 3;
         ((Message)localObject).obj = this;

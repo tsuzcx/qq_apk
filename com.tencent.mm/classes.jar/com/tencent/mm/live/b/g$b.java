@@ -4,39 +4,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;", "", "needFaceVerify", "", "verifyUrl", "", "isFromAnchor", "(ZLjava/lang/String;Z)V", "()Z", "setFromAnchor", "(Z)V", "getNeedFaceVerify", "setNeedFaceVerify", "getVerifyUrl", "()Ljava/lang/String;", "setVerifyUrl", "(Ljava/lang/String;)V", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveDataManager$LiveFaceVerifyInfo;", "", "needFaceVerify", "", "verifyUrl", "", "isFromAnchor", "(ZLjava/lang/String;Z)V", "()Z", "setFromAnchor", "(Z)V", "getNeedFaceVerify", "setNeedFaceVerify", "getVerifyUrl", "()Ljava/lang/String;", "setVerifyUrl", "(Ljava/lang/String;)V", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "plugin-logic_release"})
 public final class g$b
 {
-  public boolean gOw;
-  public String gOx;
-  public boolean gOy;
+  public boolean gRe;
+  public String gRf;
+  public boolean gRg;
   
   private g$b(String paramString)
   {
-    AppMethodBeat.i(212052);
-    this.gOw = false;
-    this.gOx = paramString;
-    this.gOy = true;
-    AppMethodBeat.o(212052);
+    AppMethodBeat.i(215671);
+    this.gRe = false;
+    this.gRf = paramString;
+    this.gRg = true;
+    AppMethodBeat.o(215671);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(212056);
+    AppMethodBeat.i(215675);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.gOw != paramObject.gOw) || (!p.i(this.gOx, paramObject.gOx)) || (this.gOy != paramObject.gOy)) {}
+        if ((this.gRe != paramObject.gRe) || (!p.i(this.gRf, paramObject.gRf)) || (this.gRg != paramObject.gRg)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(212056);
+      AppMethodBeat.o(215675);
       return true;
     }
-    AppMethodBeat.o(212056);
+    AppMethodBeat.o(215675);
     return false;
   }
   
@@ -47,18 +47,18 @@ public final class g$b
   
   public final String toString()
   {
-    AppMethodBeat.i(212054);
-    String str = "LiveFaceVerifyInfo(needFaceVerify=" + this.gOw + ", verifyUrl=" + this.gOx + ", isFromAnchor=" + this.gOy + ")";
-    AppMethodBeat.o(212054);
+    AppMethodBeat.i(215673);
+    String str = "LiveFaceVerifyInfo(needFaceVerify=" + this.gRe + ", verifyUrl=" + this.gRf + ", isFromAnchor=" + this.gRg + ")";
+    AppMethodBeat.o(215673);
     return str;
   }
   
-  public final void xK(String paramString)
+  public final void yt(String paramString)
   {
-    AppMethodBeat.i(212051);
+    AppMethodBeat.i(215670);
     p.h(paramString, "<set-?>");
-    this.gOx = paramString;
-    AppMethodBeat.o(212051);
+    this.gRf = paramString;
+    AppMethodBeat.o(215670);
   }
 }
 

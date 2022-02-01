@@ -1,239 +1,232 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.protocal.protobuf.ejc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.b.a.ag;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import d.a.ak;
+import d.g.b.p;
 import d.l;
-import d.z;
+import d.n.n;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderHotspotChangeReporter;", "", "()V", "TAG", "", "isChangeTab", "", "reportedData", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/finder/report/FinderHotspotChangeReporter$RecordData;", "Lkotlin/collections/HashSet;", "getReportedData", "()Ljava/util/HashSet;", "videoDataMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "getData", "feedId", "getStatsReportFluencyInfo", "", "Lcom/tencent/mm/protocal/protobuf/FinderFluencyInfo;", "notifyChangeTab", "", "notifyDecodeStart", "(Ljava/lang/Long;)V", "notifyVideoDownload", "notifyVideoFirstFrame", "notifyVideoPause", "notifyVideoPlay", "RecordData", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/RecordFinderChatList;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "chatExposeMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "chatListRecord", "Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$ChatListRecord;", "getChatListRecord", "()Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$ChatListRecord;", "clickChatExposeMap", "clickChatExposeSet", "", "currentChatExposeSet", "delClickCountL", "", "dotClickCountL", "isOnProcess", "", "()Z", "setOnProcess", "(Z)V", "copySet", "", "src", "", "dst", "getExposePv", "type", "getExposeUV", "getMapContainer", "getSessionId", "getSetContainer", "incChatExpose", "key", "incDelClickCount", "incDotClickCount", "onEnterChatList", "accountType", "isGreetSession", "onExitChatList", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "recordChatClickExpose", "curRecordSet", "recordChatExpose", "exposeSet", "report20688", "resetChatListRecord", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "plugin-finder_release"})
 public final class y
 {
-  public static final ConcurrentHashMap<Long, a> LjS;
-  public static final HashSet<a> LjT;
-  private static boolean LjU;
-  public static final y LjV;
+  private final String TAG;
+  public boolean sCH;
+  public final b.a sCI;
+  private final Set<String> sCJ;
+  private final HashMap<String, Integer> sCK;
+  private final Set<String> sCL;
+  private final HashMap<String, Integer> sCM;
+  public long sCN;
+  private long sCO;
   
-  static
+  public y()
   {
-    AppMethodBeat.i(221526);
-    LjV = new y();
-    LjS = new ConcurrentHashMap();
-    LjT = new HashSet();
-    AppMethodBeat.o(221526);
+    AppMethodBeat.i(203961);
+    this.TAG = "RecordFinderChatList";
+    this.sCI = new b.a();
+    this.sCJ = ((Set)new HashSet());
+    this.sCK = new HashMap();
+    this.sCL = ((Set)new HashSet());
+    this.sCM = new HashMap();
+    AppMethodBeat.o(203961);
   }
   
-  public static a FS(long paramLong)
+  private final long FA(int paramInt)
   {
-    AppMethodBeat.i(221524);
-    a locala2 = (a)LjS.get(Long.valueOf(paramLong));
-    a locala1 = locala2;
-    if (locala2 == null)
+    AppMethodBeat.i(203955);
+    long l = 0L;
+    Object localObject = Fz(paramInt).values();
+    p.g(localObject, "getMapContainer(type).values");
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      locala1 = new a();
-      ((Map)LjS).put(Long.valueOf(paramLong), locala1);
+      Integer localInteger = (Integer)((Iterator)localObject).next();
+      p.g(localInteger, "it");
+      l = localInteger.intValue() + l;
     }
-    AppMethodBeat.o(221524);
-    return locala1;
+    AppMethodBeat.o(203955);
+    return l;
   }
   
-  public static void bFl()
+  private final long FB(int paramInt)
   {
-    LjU = true;
+    AppMethodBeat.i(203956);
+    long l = Fz(paramInt).size();
+    AppMethodBeat.o(203956);
+    return l;
   }
   
-  public static List<ejc> bMX()
+  private final HashMap<String, Integer> Fz(int paramInt)
   {
-    AppMethodBeat.i(221525);
-    Object localObject = new LinkedList();
-    Iterator localIterator = ((Iterable)LjT).iterator();
-    a locala;
-    ejc localejc;
-    long l1;
-    if (localIterator.hasNext())
-    {
-      locala = (a)localIterator.next();
-      localejc = new ejc();
-      localejc.scene = 1;
-      localejc.Oet = locala.LjZ;
-      if (locala.LjY > 0L) {
-        l1 = locala.LjY;
-      }
+    if (paramInt == 1) {
+      return this.sCK;
     }
-    for (;;)
-    {
-      label90:
-      int i;
-      if ((l1 > 0L) && (locala.soj > 0L))
-      {
-        i = (int)(l1 - locala.soj);
-        label115:
-        localejc.Oex = i;
-        if (locala.LjY <= 0L) {
-          break label280;
-        }
-        l1 = locala.LjY;
-      }
-      for (;;)
-      {
-        label137:
-        long l2;
-        if (locala.sok > 0L) {
-          l2 = locala.sok;
-        }
-        for (;;)
-        {
-          label153:
-          if ((l1 > 0L) && (l2 > 0L)) {}
-          for (i = (int)(l2 - l1);; i = 0)
-          {
-            localejc.Oey = i;
-            ((LinkedList)localObject).add(localejc);
-            ad.i("FinderHotspotChangeReporter", "finderFluencyInfo: scene = " + localejc.scene + ", hot = " + localejc.Oet + ", downloadToDecodeMs = " + localejc.Oex + ',' + " decodeToFirstFrameMs = " + localejc.Oey);
-            break;
-            if (locala.LjX <= 0L) {
-              break label354;
-            }
-            l1 = locala.LjX;
-            break label90;
-            i = 0;
-            break label115;
-            label280:
-            if (locala.LjW <= 0L) {
-              break label349;
-            }
-            l1 = locala.LjW;
-            break label137;
-            if (locala.LjX <= 0L) {
-              break label344;
-            }
-            l2 = locala.LjX;
-            break label153;
-          }
-          LjT.clear();
-          localObject = (List)localObject;
-          AppMethodBeat.o(221525);
-          return localObject;
-          label344:
-          l2 = 0L;
-        }
-        label349:
-        l1 = 0L;
-      }
-      label354:
-      l1 = 0L;
-    }
+    return this.sCM;
   }
   
-  public final void i(Long paramLong)
+  private static void a(a parama)
   {
-    AppMethodBeat.i(221522);
-    Object localObject;
-    int i;
-    if (paramLong != null)
+    AppMethodBeat.i(203959);
+    Object localObject = b.sxb;
+    localObject = b.getTAG();
+    StringBuilder localStringBuilder = new StringBuilder("report").append(parama.getId()).append(' ');
+    parama = parama.RD();
+    p.g(parama, "struct.toShowString()");
+    ae.i((String)localObject, n.h(parama, "\r\n", " ", false));
+    AppMethodBeat.o(203959);
+  }
+  
+  private final void a(Set<String> paramSet1, Set<String> paramSet2)
+  {
+    AppMethodBeat.i(203953);
+    if (!this.sCH)
     {
-      paramLong.longValue();
-      localObject = FS(paramLong.longValue());
-      if (((a)localObject).soj != 0L) {
-        break label86;
-      }
-      i = 1;
-      if (i == 0) {
-        break label91;
-      }
-    }
-    for (;;)
-    {
-      if (localObject != null)
-      {
-        ((a)localObject).soj = cf.aCM();
-        if (localObject != null) {}
-      }
-      else
-      {
-        localObject = (y)this;
-        LjS.remove(paramLong);
-        ((y)localObject).i(paramLong);
-        paramLong = z.MKo;
-      }
-      AppMethodBeat.o(221522);
+      AppMethodBeat.o(203953);
       return;
-      AppMethodBeat.o(221522);
-      return;
-      label86:
-      i = 0;
-      break;
-      label91:
-      localObject = null;
     }
+    paramSet1 = ak.a(paramSet2, (Iterable)paramSet1);
+    ae.i(this.TAG, "latestExposeRecords" + paramSet1 + "，size:" + paramSet1.size());
+    if (!((Collection)paramSet1).isEmpty()) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      paramSet1 = ((Iterable)paramSet1).iterator();
+      while (paramSet1.hasNext()) {
+        ds((String)paramSet1.next(), 1);
+      }
+    }
+    b(paramSet2, this.sCJ);
+    ae.i(this.TAG, "pvCount:" + FA(1) + ": uvCount:" + FB(1));
+    AppMethodBeat.o(203953);
   }
   
-  public final void j(Long paramLong)
+  private static void b(Set<String> paramSet1, Set<String> paramSet2)
   {
-    int j = 1;
-    AppMethodBeat.i(221523);
-    Object localObject;
-    if (paramLong != null)
-    {
-      paramLong.longValue();
-      localObject = FS(paramLong.longValue());
-      if (((a)localObject).LjW != 0L) {
-        break label113;
-      }
-      i = 1;
-      if (i == 0) {
-        break label118;
-      }
-      label41:
-      if (localObject != null)
-      {
-        ((a)localObject).LjW = cf.aCM();
-        if (!LjU) {
-          break label124;
-        }
-      }
+    AppMethodBeat.i(203954);
+    paramSet2.clear();
+    paramSet1 = ((Iterable)paramSet1).iterator();
+    while (paramSet1.hasNext()) {
+      paramSet2.add((String)paramSet1.next());
     }
-    label113:
-    label118:
-    label124:
-    for (int i = j;; i = 2)
-    {
-      ((a)localObject).LjZ = i;
-      LjU = false;
-      if (localObject == null)
-      {
-        localObject = (y)this;
-        LjS.remove(paramLong);
-        ((y)localObject).j(paramLong);
-        paramLong = z.MKo;
-      }
-      AppMethodBeat.o(221523);
-      return;
-      AppMethodBeat.o(221523);
-      return;
-      i = 0;
-      break;
-      localObject = null;
-      break label41;
-    }
+    AppMethodBeat.o(203954);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderHotspotChangeReporter$RecordData;", "", "()V", "changeHotpotType", "", "getChangeHotpotType", "()I", "setChangeHotpotType", "(I)V", "videoDecodeStart", "", "getVideoDecodeStart", "()J", "setVideoDecodeStart", "(J)V", "videoDownloadStart", "getVideoDownloadStart", "setVideoDownloadStart", "videoFirstFrame", "getVideoFirstFrame", "setVideoFirstFrame", "videoPause", "getVideoPause", "setVideoPause", "videoPlay", "getVideoPlay", "setVideoPlay", "plugin-finder_release"})
-  public static final class a
+  private final void cGy()
   {
-    public long LjW;
-    public long LjX;
-    public long LjY;
-    int LjZ = 2;
-    public long soj;
-    public long sok;
+    AppMethodBeat.i(203960);
+    b.a locala = this.sCI;
+    locala.sxc = 0L;
+    locala.aiI("");
+    locala.sxe = 0L;
+    locala.sxf = 0L;
+    this.sCH = false;
+    this.sCN = 0L;
+    this.sCO = 0L;
+    this.sCJ.clear();
+    this.sCL.clear();
+    this.sCK.clear();
+    this.sCM.clear();
+    AppMethodBeat.o(203960);
+  }
+  
+  private final void ds(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(203957);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(203957);
+      return;
+    }
+    HashMap localHashMap = Fz(paramInt);
+    if (((Map)localHashMap).containsKey(paramString))
+    {
+      Integer localInteger = (Integer)localHashMap.get(paramString);
+      if (localInteger != null)
+      {
+        localHashMap.put(paramString, Integer.valueOf(localInteger.intValue() + 1));
+        AppMethodBeat.o(203957);
+        return;
+      }
+      AppMethodBeat.o(203957);
+      return;
+    }
+    localHashMap.put(paramString, Integer.valueOf(1));
+    AppMethodBeat.o(203957);
+  }
+  
+  private final void f(arn paramarn)
+  {
+    AppMethodBeat.i(203958);
+    ag localag = new ag();
+    localag.cw(this.sCI.sxc);
+    localag.cx(this.sCI.sxf);
+    localag.hl(this.sCI.sxd);
+    localag.cz(FB(1));
+    localag.cA(FA(1));
+    localag.cB(FA(2));
+    localag.cC(FB(2));
+    localag.cD(this.sCN);
+    localag.cF(this.sCO);
+    localag.cE(System.currentTimeMillis() - this.sCI.sxe);
+    if (paramarn != null) {
+      localag.cy(paramarn.tnf);
+    }
+    localag.aLH();
+    a((a)localag);
+    AppMethodBeat.o(203958);
+  }
+  
+  public final void M(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(203949);
+    cGy();
+    b.a locala = this.sCI;
+    locala.sxc = paramLong1;
+    locala.sxf = paramLong2;
+    locala.sxe = ch.aDc();
+    locala.aiI(String.valueOf(locala.sxe));
+    this.sCH = true;
+    AppMethodBeat.o(203949);
+  }
+  
+  public final void aiH(String paramString)
+  {
+    AppMethodBeat.i(203952);
+    p.h(paramString, "key");
+    if (!this.sCH)
+    {
+      AppMethodBeat.o(203952);
+      return;
+    }
+    ds(paramString, 2);
+    AppMethodBeat.o(203952);
+  }
+  
+  public final void e(arn paramarn)
+  {
+    AppMethodBeat.i(203950);
+    f(paramarn);
+    this.sCH = false;
+    AppMethodBeat.o(203950);
+  }
+  
+  public final void l(Set<String> paramSet)
+  {
+    AppMethodBeat.i(203951);
+    p.h(paramSet, "curRecordSet");
+    a(this.sCJ, paramSet);
+    AppMethodBeat.o(203951);
   }
 }
 

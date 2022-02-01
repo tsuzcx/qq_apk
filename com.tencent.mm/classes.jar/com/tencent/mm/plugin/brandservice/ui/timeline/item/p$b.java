@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ly;
+import com.tencent.mm.g.a.lz;
 import com.tencent.mm.sdk.b.c;
 import d.l;
 import java.lang.ref.WeakReference;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem$IListenerImpl;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ModNewContactEvent;", "ref", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem;)V", "value", "", "username", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "weakRef", "Ljava/lang/ref/WeakReference;", "callback", "", "event", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem$IListenerImpl;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ModNewContactEvent;", "ref", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem;)V", "value", "", "username", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "weakRef", "Ljava/lang/ref/WeakReference;", "callback", "", "event", "plugin-brandservice_release"})
 final class p$b
-  extends c<ly>
+  extends c<lz>
 {
-  private final WeakReference<p> oeg;
+  private final WeakReference<p> ojW;
   private String username;
   
   public p$b(p paramp)
   {
-    AppMethodBeat.i(209769);
-    this.oeg = new WeakReference(paramp);
+    AppMethodBeat.i(208743);
+    this.ojW = new WeakReference(paramp);
     this.username = "";
-    AppMethodBeat.o(209769);
+    AppMethodBeat.o(208743);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.ag;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.mm.storagebase.h;
 
 final class y$5
@@ -12,13 +12,13 @@ final class y$5
   public final void run()
   {
     AppMethodBeat.i(124661);
-    x localx = ag.aGf();
+    x localx = ag.aGv();
     long l = System.currentTimeMillis();
-    int j = localx.fpw();
+    int j = localx.ftv();
     int i;
     if (j <= 2000)
     {
-      if ((ad.getLogLevel() > 0) || (j < 500))
+      if ((ae.getLogLevel() > 0) || (j < 500))
       {
         i = 0;
         if (i == 0) {
@@ -29,15 +29,15 @@ final class y$5
     else
     {
       String str = String.format("DELETE FROM %s WHERE %s IN ( SELECT %s FROM %s ORDER BY %s LIMIT %d )", new Object[] { "BizTimeLineInfo", "orderFlag", "orderFlag", "BizTimeLineInfo", "orderFlag", Integer.valueOf(100) });
-      localx.hHS.execSQL("BizTimeLineInfo", str);
-      ad.i("MicroMsg.BizTimeLineInfoStorage", "deleteTooOldData delete cost: %d, count: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(j) });
+      localx.hKK.execSQL("BizTimeLineInfo", str);
+      ae.i("MicroMsg.BizTimeLineInfoStorage", "deleteTooOldData delete cost: %d, count: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(j) });
     }
     for (;;)
     {
-      y.bzA();
+      y.bAv();
       AppMethodBeat.o(124661);
       return;
-      if (ax.aQA("brandService").decodeInt("BizTimeLineDeleteOldData", 0) == 1)
+      if (ay.aRX("brandService").decodeInt("BizTimeLineDeleteOldData", 0) == 1)
       {
         i = 1;
         break;
@@ -45,7 +45,7 @@ final class y$5
       i = 0;
       break;
       label168:
-      ad.i("MicroMsg.BizTimeLineInfoStorage", "deleteTooOldData count: %d", new Object[] { Integer.valueOf(j) });
+      ae.i("MicroMsg.BizTimeLineInfoStorage", "deleteTooOldData count: %d", new Object[] { Integer.valueOf(j) });
     }
   }
 }

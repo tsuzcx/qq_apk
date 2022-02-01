@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import org.json.JSONObject;
 
 public final class d
@@ -18,46 +18,46 @@ public final class d
   
   public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(206234);
+    AppMethodBeat.i(211262);
     int i = paramJSONObject.optInt("videoPlayerId", 0);
-    AppMethodBeat.o(206234);
+    AppMethodBeat.o(211262);
     return i;
   }
   
   public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(206235);
-    ad.i("MicroMsg.JsApiRemoveVideoPlayer", "onRemoveView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(211263);
+    ae.i("MicroMsg.JsApiRemoveVideoPlayer", "onRemoveView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiRemoveVideoPlayer", "view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(206235);
+      ae.w("MicroMsg.JsApiRemoveVideoPlayer", "view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(211263);
       return false;
     }
     final AppBrandVideoView localAppBrandVideoView = (AppBrandVideoView)((CoverViewContainer)paramView).ax(AppBrandVideoView.class);
     if (localAppBrandVideoView == null)
     {
-      ad.w("MicroMsg.JsApiRemoveVideoPlayer", "view not AppBrandVideoView");
-      AppMethodBeat.o(206235);
+      ae.w("MicroMsg.JsApiRemoveVideoPlayer", "view not AppBrandVideoView");
+      AppMethodBeat.o(211263);
       return false;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206233);
+        AppMethodBeat.i(211261);
         localAppBrandVideoView.clean();
-        AppMethodBeat.o(206233);
+        AppMethodBeat.o(211261);
       }
     });
     super.b(parame, paramInt, paramView, paramJSONObject);
-    AppMethodBeat.o(206235);
+    AppMethodBeat.o(211263);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.d
  * JD-Core Version:    0.7.0.1
  */

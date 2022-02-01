@@ -15,12 +15,12 @@ import java.util.List;
 public final class i
   implements ac
 {
-  private final List<ac> MXI;
+  private final List<ac> NuO;
   
   public i(List<? extends ac> paramList)
   {
     AppMethodBeat.i(57060);
-    this.MXI = paramList;
+    this.NuO = paramList;
     AppMethodBeat.o(57060);
   }
   
@@ -30,7 +30,7 @@ public final class i
     p.h(paramb, "fqName");
     p.h(paramb1, "nameFilter");
     HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.MXI.iterator();
+    Iterator localIterator = this.NuO.iterator();
     while (localIterator.hasNext()) {
       localHashSet.addAll(((ac)localIterator.next()).a(paramb, paramb1));
     }
@@ -44,7 +44,7 @@ public final class i
     AppMethodBeat.i(57058);
     p.h(paramb, "fqName");
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.MXI.iterator();
+    Iterator localIterator = this.NuO.iterator();
     while (localIterator.hasNext()) {
       localArrayList.addAll((Collection)((ac)localIterator.next()).f(paramb));
     }

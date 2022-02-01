@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.audio.c;
 
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.audio.b.b;
 import com.tencent.mm.plugin.audio.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h.b;
 import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/model/SubCoreAudio;", "Lcom/tencent/mm/model/ISubCore;", "()V", "mAudioManager", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "getMAudioManager", "()Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "setMAudioManager", "(Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;)V", "mBroadCastHelper", "Lcom/tencent/mm/plugin/audio/AudioBroadcastHelper;", "mRequestAudioManagerQueue", "", "", "getMRequestAudioManagerQueue", "()[Ljava/lang/String;", "setMRequestAudioManagerQueue", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "requesterType", "getRequesterType", "()Ljava/lang/String;", "setRequesterType", "(Ljava/lang/String;)V", "clearPluginData", "", "p0", "", "getBaseDBFactories", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "onAccountPostReset", "", "onAccountRelease", "onSdcardMount", "registerBroadcast", "unRegisterBroadcast", "Companion", "plugin-audio_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/model/SubCoreAudio;", "Lcom/tencent/mm/model/ISubCore;", "()V", "mAudioManager", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "getMAudioManager", "()Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "setMAudioManager", "(Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;)V", "mBroadCastHelper", "Lcom/tencent/mm/plugin/audio/AudioBroadcastHelper;", "mRequestAudioManagerQueue", "", "", "getMRequestAudioManagerQueue", "()[Ljava/lang/String;", "setMRequestAudioManagerQueue", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "requesterType", "getRequesterType", "()Ljava/lang/String;", "setRequesterType", "(Ljava/lang/String;)V", "clearPluginData", "", "p0", "", "getBaseDBFactories", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "onAccountPostReset", "", "onAccountRelease", "onSdcardMount", "registerBroadcast", "unRegisterBroadcast", "Companion", "plugin-audio_release"})
 public final class a
-  implements ax
+  implements az
 {
-  public static final a nrV;
-  public com.tencent.mm.plugin.audio.a nrR;
-  com.tencent.mm.plugin.audio.b.a nrS;
-  String nrT;
-  String[] nrU;
+  public static final a nxo;
+  public com.tencent.mm.plugin.audio.a nxk;
+  com.tencent.mm.plugin.audio.b.a nxl;
+  String nxm;
+  String[] nxn;
   
   static
   {
-    AppMethodBeat.i(199768);
-    nrV = new a((byte)0);
-    AppMethodBeat.o(199768);
+    AppMethodBeat.i(201080);
+    nxo = new a((byte)0);
+    AppMethodBeat.o(201080);
   }
   
   public a()
   {
-    AppMethodBeat.i(199767);
-    this.nrR = new com.tencent.mm.plugin.audio.a();
-    this.nrS = ((com.tencent.mm.plugin.audio.b.a)new c());
-    this.nrT = "music";
+    AppMethodBeat.i(201079);
+    this.nxk = new com.tencent.mm.plugin.audio.a();
+    this.nxl = ((com.tencent.mm.plugin.audio.b.a)new c());
+    this.nxm = "music";
     String[] arrayOfString = new String[2];
     int i = 0;
     while (i < 2)
@@ -42,18 +42,18 @@ public final class a
       arrayOfString[i] = "";
       i += 1;
     }
-    this.nrU = arrayOfString;
-    AppMethodBeat.o(199767);
+    this.nxn = arrayOfString;
+    AppMethodBeat.o(201079);
   }
   
-  public static final com.tencent.mm.plugin.audio.b.a VK(String paramString)
+  public static final com.tencent.mm.plugin.audio.b.a Ww(String paramString)
   {
-    AppMethodBeat.i(199770);
+    AppMethodBeat.i(201082);
     p.h(paramString, "type");
-    if (p.i(a.bGK().nrT, paramString))
+    if (p.i(a.bHG().nxm, paramString))
     {
-      paramString = a.bGC();
-      AppMethodBeat.o(199770);
+      paramString = a.bHy();
+      AppMethodBeat.o(201082);
       return paramString;
     }
     com.tencent.mm.plugin.audio.b.a locala;
@@ -65,11 +65,11 @@ public final class a
       do
       {
         locala = (com.tencent.mm.plugin.audio.b.a)new c();
-        a.bGK().nrS = locala;
-        a locala1 = a.bGK();
+        a.bHG().nxl = locala;
+        a locala1 = a.bHG();
         p.h(paramString, "<set-?>");
-        locala1.nrT = paramString;
-        AppMethodBeat.o(199770);
+        locala1.nxm = paramString;
+        AppMethodBeat.o(201082);
         return locala;
       } while (!paramString.equals("ipcall"));
     }
@@ -94,156 +94,156 @@ public final class a
     }
   }
   
-  public static final void aJC()
+  public static final void aJV()
   {
-    AppMethodBeat.i(199784);
-    a.bGC().audioManager.setStreamMute(3, true);
-    AppMethodBeat.o(199784);
+    AppMethodBeat.i(201096);
+    a.bHy().audioManager.setStreamMute(3, true);
+    AppMethodBeat.o(201096);
   }
   
-  public static final void aJD()
+  public static final void aJW()
   {
-    AppMethodBeat.i(199785);
-    a.bGC().audioManager.setStreamMute(3, false);
-    AppMethodBeat.o(199785);
+    AppMethodBeat.i(201097);
+    a.bHy().audioManager.setStreamMute(3, false);
+    AppMethodBeat.o(201097);
   }
   
-  public static final com.tencent.mm.plugin.audio.b.a bGC()
+  public static final boolean bHA()
   {
-    AppMethodBeat.i(199769);
-    com.tencent.mm.plugin.audio.b.a locala = a.bGC();
-    AppMethodBeat.o(199769);
+    AppMethodBeat.i(201084);
+    boolean bool = a.bHA();
+    AppMethodBeat.o(201084);
+    return bool;
+  }
+  
+  public static final int bHB()
+  {
+    AppMethodBeat.i(201090);
+    com.tencent.mm.plugin.audio.b.a locala = a.bHy();
+    int i = locala.fXT;
+    locala.fXT = 0;
+    AppMethodBeat.o(201090);
+    return i;
+  }
+  
+  public static final boolean bHC()
+  {
+    AppMethodBeat.i(201091);
+    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.nxr;
+    boolean bool = com.tencent.mm.plugin.audio.d.a.bHC();
+    AppMethodBeat.o(201091);
+    return bool;
+  }
+  
+  public static final boolean bHD()
+  {
+    AppMethodBeat.i(201100);
+    boolean bool = a.bHy().audioManager.isStreamMute(3);
+    AppMethodBeat.o(201100);
+    return bool;
+  }
+  
+  public static final void bHE()
+  {
+    AppMethodBeat.i(201102);
+    a.bHG().nxk.registerBroadcasts();
+    AppMethodBeat.o(201102);
+  }
+  
+  public static final void bHF()
+  {
+    AppMethodBeat.i(201103);
+    a.bHG().nxk.unRegisterBroadcasts();
+    AppMethodBeat.o(201103);
+  }
+  
+  public static final void bHs()
+  {
+    AppMethodBeat.i(201092);
+    a.bHy().bHs();
+    AppMethodBeat.o(201092);
+  }
+  
+  public static final boolean bHt()
+  {
+    AppMethodBeat.i(201093);
+    boolean bool = a.bHy().bHt();
+    AppMethodBeat.o(201093);
+    return bool;
+  }
+  
+  public static final int bHu()
+  {
+    AppMethodBeat.i(201089);
+    int i = a.bHy().bHu();
+    AppMethodBeat.o(201089);
+    return i;
+  }
+  
+  public static final com.tencent.mm.plugin.audio.b.a bHy()
+  {
+    AppMethodBeat.i(201081);
+    com.tencent.mm.plugin.audio.b.a locala = a.bHy();
+    AppMethodBeat.o(201081);
     return locala;
   }
   
-  public static final boolean bGD()
+  public static final boolean bHz()
   {
-    AppMethodBeat.i(199771);
-    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.nrY;
-    boolean bool = com.tencent.mm.plugin.audio.d.a.bGD();
-    AppMethodBeat.o(199771);
+    AppMethodBeat.i(201083);
+    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.nxr;
+    boolean bool = com.tencent.mm.plugin.audio.d.a.bHz();
+    AppMethodBeat.o(201083);
     return bool;
-  }
-  
-  public static final boolean bGE()
-  {
-    AppMethodBeat.i(199772);
-    boolean bool = a.bGE();
-    AppMethodBeat.o(199772);
-    return bool;
-  }
-  
-  public static final int bGF()
-  {
-    AppMethodBeat.i(199778);
-    com.tencent.mm.plugin.audio.b.a locala = a.bGC();
-    int i = locala.fVN;
-    locala.fVN = 0;
-    AppMethodBeat.o(199778);
-    return i;
-  }
-  
-  public static final boolean bGG()
-  {
-    AppMethodBeat.i(199779);
-    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.nrY;
-    boolean bool = com.tencent.mm.plugin.audio.d.a.bGG();
-    AppMethodBeat.o(199779);
-    return bool;
-  }
-  
-  public static final boolean bGH()
-  {
-    AppMethodBeat.i(199788);
-    boolean bool = a.bGC().audioManager.isStreamMute(3);
-    AppMethodBeat.o(199788);
-    return bool;
-  }
-  
-  public static final void bGI()
-  {
-    AppMethodBeat.i(199790);
-    a.bGK().nrR.registerBroadcasts();
-    AppMethodBeat.o(199790);
-  }
-  
-  public static final void bGJ()
-  {
-    AppMethodBeat.i(199791);
-    a.bGK().nrR.unRegisterBroadcasts();
-    AppMethodBeat.o(199791);
-  }
-  
-  public static final void bGw()
-  {
-    AppMethodBeat.i(199780);
-    a.bGC().bGw();
-    AppMethodBeat.o(199780);
-  }
-  
-  public static final boolean bGx()
-  {
-    AppMethodBeat.i(199781);
-    boolean bool = a.bGC().bGx();
-    AppMethodBeat.o(199781);
-    return bool;
-  }
-  
-  public static final int bGy()
-  {
-    AppMethodBeat.i(199777);
-    int i = a.bGC().bGy();
-    AppMethodBeat.o(199777);
-    return i;
   }
   
   public static final void eD(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199776);
-    a.bGC().eD(paramInt1, paramInt2);
-    AppMethodBeat.o(199776);
+    AppMethodBeat.i(201088);
+    a.bHy().eD(paramInt1, paramInt2);
+    AppMethodBeat.o(201088);
   }
   
   public static final int getMode()
   {
-    AppMethodBeat.i(199787);
+    AppMethodBeat.i(201099);
     int i = a.getMode();
-    AppMethodBeat.o(199787);
+    AppMethodBeat.o(201099);
     return i;
   }
   
   public static final int getStreamMaxVolume(int paramInt)
   {
-    AppMethodBeat.i(199774);
-    paramInt = a.bGC().getStreamMaxVolume(paramInt);
-    AppMethodBeat.o(199774);
+    AppMethodBeat.i(201086);
+    paramInt = a.bHy().getStreamMaxVolume(paramInt);
+    AppMethodBeat.o(201086);
     return paramInt;
   }
   
   public static final int getStreamVolume(int paramInt)
   {
-    AppMethodBeat.i(199775);
-    paramInt = a.bGC().getStreamVolume(paramInt);
-    AppMethodBeat.o(199775);
+    AppMethodBeat.i(201087);
+    paramInt = a.bHy().getStreamVolume(paramInt);
+    AppMethodBeat.o(201087);
     return paramInt;
   }
   
   public static final boolean isSpeakerphoneOn()
   {
-    AppMethodBeat.i(199773);
-    boolean bool = a.bGC().isSpeakerphoneOn();
-    AppMethodBeat.o(199773);
+    AppMethodBeat.i(201085);
+    boolean bool = a.bHy().isSpeakerphoneOn();
+    AppMethodBeat.o(201085);
     return bool;
   }
   
-  public static final int ix(boolean paramBoolean)
+  public static final int iv(boolean paramBoolean)
   {
     int k = 0;
-    AppMethodBeat.i(199789);
-    com.tencent.mm.plugin.audio.b.a locala = a.bGC();
+    AppMethodBeat.i(201101);
+    com.tencent.mm.plugin.audio.b.a locala = a.bHy();
     int j;
     int i;
-    if ((locala.audioManager.isBluetoothScoOn()) || (locala.fVK))
+    if ((locala.audioManager.isBluetoothScoOn()) || (locala.fXQ))
     {
       j = 1;
       if (!paramBoolean) {
@@ -260,7 +260,7 @@ public final class a
     label62:
     for (;;)
     {
-      AppMethodBeat.o(199789);
+      AppMethodBeat.o(201101);
       return i;
       j = 0;
       break;
@@ -271,23 +271,23 @@ public final class a
   
   public static final void setMode(int paramInt)
   {
-    AppMethodBeat.i(199786);
-    com.tencent.mm.plugin.audio.b.a.a(a.bGC(), paramInt);
-    AppMethodBeat.o(199786);
+    AppMethodBeat.i(201098);
+    com.tencent.mm.plugin.audio.b.a.a(a.bHy(), paramInt);
+    AppMethodBeat.o(201098);
   }
   
-  public static final void xl(int paramInt)
+  public static final void xq(int paramInt)
   {
-    AppMethodBeat.i(199782);
-    a.bGC().xl(paramInt);
-    AppMethodBeat.o(199782);
+    AppMethodBeat.i(201094);
+    a.bHy().xq(paramInt);
+    AppMethodBeat.o(201094);
   }
   
-  public static final void xm(int paramInt)
+  public static final void xr(int paramInt)
   {
-    AppMethodBeat.i(199783);
-    a.bGC().xm(paramInt);
-    AppMethodBeat.o(199783);
+    AppMethodBeat.i(201095);
+    a.bHy().xr(paramInt);
+    AppMethodBeat.o(201095);
   }
   
   public final void clearPluginData(int paramInt) {}
@@ -299,115 +299,115 @@ public final class a
   
   public final void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(199766);
-    ad.i("MicroMsg.SubCoreAudio", "onAccountPostReset");
-    this.nrR.registerBroadcasts();
-    AppMethodBeat.o(199766);
+    AppMethodBeat.i(201078);
+    ae.i("MicroMsg.SubCoreAudio", "onAccountPostReset");
+    this.nxk.registerBroadcasts();
+    AppMethodBeat.o(201078);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(199765);
-    ad.i("MicroMsg.SubCoreAudio", "onAccountRelease");
-    this.nrR.unRegisterBroadcasts();
-    AppMethodBeat.o(199765);
+    AppMethodBeat.i(201077);
+    ae.i("MicroMsg.SubCoreAudio", "onAccountRelease");
+    this.nxk.unRegisterBroadcasts();
+    AppMethodBeat.o(201077);
   }
   
   public final void onSdcardMount(boolean paramBoolean) {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/model/SubCoreAudio$Companion;", "", "()V", "TAG", "", "bindBroadcast", "", "checkAndSetRequestPriority", "", "current", "request", "getAudioManager", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "type", "getBluetoothScoStreamType", "", "getCore", "Lcom/tencent/mm/plugin/audio/model/SubCoreAudio;", "getCurrentAudioManagerType", "getMode", "getSetModeErrorCodeAndReset", "getStatsString", "getStreamMaxVolume", "streamType", "getStreamMode", "speakerOn", "getStreamVolume", "initAudioManager", "audioManager", "isBluetoothCanUse", "isBluetoothOn", "isBluetoothScoAvailable", "isHeadsetPlugged", "isSpeakerphoneOn", "isStreamMute", "onAudioDeviceStateChanged", "status", "pauseMusic", "resetSpeaker", "resumeMusic", "setMode", "mode", "setStreamVolume", "index", "flags", "unBindBroadcast", "unInitAudioManager", "volumeDown", "volumeUp", "plugin-audio_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/model/SubCoreAudio$Companion;", "", "()V", "TAG", "", "bindBroadcast", "", "checkAndSetRequestPriority", "", "current", "request", "getAudioManager", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "type", "getBluetoothScoStreamType", "", "getCore", "Lcom/tencent/mm/plugin/audio/model/SubCoreAudio;", "getCurrentAudioManagerType", "getMode", "getSetModeErrorCodeAndReset", "getStatsString", "getStreamMaxVolume", "streamType", "getStreamMode", "speakerOn", "getStreamVolume", "initAudioManager", "audioManager", "isBluetoothCanUse", "isBluetoothOn", "isBluetoothScoAvailable", "isHeadsetPlugged", "isSpeakerphoneOn", "isStreamMute", "onAudioDeviceStateChanged", "status", "pauseMusic", "resetSpeaker", "resumeMusic", "setMode", "mode", "setStreamVolume", "index", "flags", "unBindBroadcast", "unInitAudioManager", "volumeDown", "volumeUp", "plugin-audio_release"})
   public static final class a
   {
-    public static boolean VL(String paramString)
+    public static boolean Wx(String paramString)
     {
-      AppMethodBeat.i(199762);
+      AppMethodBeat.i(201074);
       p.h(paramString, "type");
-      if ((p.i(paramString, bGK().nrU[0])) || (p.i(bGK().nrU[0], "")))
+      if ((p.i(paramString, bHG().nxn[0])) || (p.i(bHG().nxn[0], "")))
       {
-        AppMethodBeat.o(199762);
+        AppMethodBeat.o(201074);
         return true;
       }
-      AppMethodBeat.o(199762);
+      AppMethodBeat.o(201074);
       return false;
     }
     
-    public static void VM(String paramString)
+    public static void Wy(String paramString)
     {
-      AppMethodBeat.i(199763);
+      AppMethodBeat.i(201075);
       p.h(paramString, "type");
-      if (p.i(paramString, (String)d.a.e.Q(bGK().nrU)))
+      if (p.i(paramString, (String)d.a.e.P(bHG().nxn)))
       {
-        ad.i("MicroMsg.SubCoreAudio", "current do unInit audio manager and clear the queue");
-        bGK().nrU[0] = "";
-        bGK().nrS = null;
+        ae.i("MicroMsg.SubCoreAudio", "current do unInit audio manager and clear the queue");
+        bHG().nxn[0] = "";
+        bHG().nxl = null;
       }
-      AppMethodBeat.o(199763);
+      AppMethodBeat.o(201075);
     }
     
     public static void a(com.tencent.mm.plugin.audio.b.a parama, String paramString)
     {
-      AppMethodBeat.i(199761);
+      AppMethodBeat.i(201073);
       p.h(parama, "audioManager");
       p.h(paramString, "type");
-      ad.m("MicroMsg.SubCoreAudio", "init audio manager from ".concat(String.valueOf(paramString)), new Object[0]);
-      String str = (String)d.a.e.Q(bGK().nrU);
+      ae.m("MicroMsg.SubCoreAudio", "init audio manager from ".concat(String.valueOf(paramString)), new Object[0]);
+      String str = (String)d.a.e.P(bHG().nxn);
       if (p.i(str, ""))
       {
-        bGK().nrU[0] = paramString;
-        bGK().nrS = parama;
-        AppMethodBeat.o(199761);
+        bHG().nxn[0] = paramString;
+        bHG().nxl = parama;
+        AppMethodBeat.o(201073);
         return;
       }
-      if (eu(str, paramString))
+      if (ex(str, paramString))
       {
-        ad.i("MicroMsg.SubCoreAudio", "success set the audio manager is: ".concat(String.valueOf(paramString)));
-        paramString = a.nrV;
-        bGK().nrS = parama;
-        AppMethodBeat.o(199761);
+        ae.i("MicroMsg.SubCoreAudio", "success set the audio manager is: ".concat(String.valueOf(paramString)));
+        paramString = a.nxo;
+        bHG().nxl = parama;
+        AppMethodBeat.o(201073);
         return;
       }
-      ad.i("MicroMsg.SubCoreAudio", "current is running a priority higher than request: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(199761);
+      ae.i("MicroMsg.SubCoreAudio", "current is running a priority higher than request: ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(201073);
     }
     
-    public static com.tencent.mm.plugin.audio.b.a bGC()
+    public static boolean bHA()
     {
-      AppMethodBeat.i(199758);
-      Object localObject2 = bGK().nrS;
+      AppMethodBeat.i(201071);
+      boolean bool = com.tencent.mm.plugin.audio.d.a.a(bHy().audioManager);
+      AppMethodBeat.o(201071);
+      return bool;
+    }
+    
+    public static a bHG()
+    {
+      AppMethodBeat.i(201069);
+      Object localObject = u.ap(a.class);
+      p.g(localObject, "CompatSubCore.theCore(SubCoreAudio::class.java)");
+      localObject = (a)localObject;
+      AppMethodBeat.o(201069);
+      return localObject;
+    }
+    
+    public static com.tencent.mm.plugin.audio.b.a bHy()
+    {
+      AppMethodBeat.i(201070);
+      Object localObject2 = bHG().nxl;
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new c();
-        localObject2 = a.nrV;
-        bGK().nrU[0] = "music";
+        localObject2 = a.nxo;
+        bHG().nxn[0] = "music";
         localObject1 = (com.tencent.mm.plugin.audio.b.a)localObject1;
       }
-      AppMethodBeat.o(199758);
+      AppMethodBeat.o(201070);
       return localObject1;
     }
     
-    public static boolean bGE()
-    {
-      AppMethodBeat.i(199759);
-      boolean bool = com.tencent.mm.plugin.audio.d.a.a(bGC().audioManager);
-      AppMethodBeat.o(199759);
-      return bool;
-    }
-    
-    public static a bGK()
-    {
-      AppMethodBeat.i(199757);
-      Object localObject = t.ap(a.class);
-      p.g(localObject, "CompatSubCore.theCore(SubCoreAudio::class.java)");
-      localObject = (a)localObject;
-      AppMethodBeat.o(199757);
-      return localObject;
-    }
-    
-    private static boolean eu(String paramString1, String paramString2)
+    private static boolean ex(String paramString1, String paramString2)
     {
       int j = 2;
-      AppMethodBeat.i(199764);
+      AppMethodBeat.i(201076);
       int i;
       switch (paramString1.hashCode())
       {
@@ -427,8 +427,8 @@ public final class a
         if (i <= j) {
           break label221;
         }
-        bGK().nrU[1] = paramString2;
-        AppMethodBeat.o(199764);
+        bHG().nxn[1] = paramString2;
+        AppMethodBeat.o(201076);
         return false;
         if (!paramString1.equals("ipcall")) {
           break;
@@ -466,23 +466,23 @@ public final class a
         }
       }
       label221:
-      bGK().nrU[0] = paramString2;
-      AppMethodBeat.o(199764);
+      bHG().nxn[0] = paramString2;
+      AppMethodBeat.o(201076);
       return true;
     }
     
     public static int getMode()
     {
-      AppMethodBeat.i(199760);
-      int i = bGC().audioManager.getMode();
-      AppMethodBeat.o(199760);
+      AppMethodBeat.i(201072);
+      int i = bHy().audioManager.getMode();
+      AppMethodBeat.o(201072);
       return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.c.a
  * JD-Core Version:    0.7.0.1
  */

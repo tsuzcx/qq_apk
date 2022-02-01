@@ -1,89 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dls
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GfL;
-  public aky HAc;
+  public String GYJ;
+  public String HTv;
+  public int HhE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124562);
+    AppMethodBeat.i(152708);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GfL != null) {
-        paramVarArgs.d(1, this.GfL);
+      paramVarArgs.aS(1, this.HhE);
+      if (this.GYJ != null) {
+        paramVarArgs.d(2, this.GYJ);
       }
-      if (this.HAc != null)
-      {
-        paramVarArgs.lC(2, this.HAc.computeSize());
-        this.HAc.writeFields(paramVarArgs);
+      if (this.HTv != null) {
+        paramVarArgs.d(3, this.HTv);
       }
-      AppMethodBeat.o(124562);
+      AppMethodBeat.o(152708);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.GfL == null) {
-        break label370;
-      }
-    }
-    label370:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GfL) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.HAc != null) {
-        i = paramInt + f.a.a.a.lB(2, this.HAc.computeSize());
+      int i = f.a.a.b.b.a.bz(1, this.HhE) + 0;
+      paramInt = i;
+      if (this.GYJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GYJ);
       }
-      AppMethodBeat.o(124562);
+      i = paramInt;
+      if (this.HTv != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.HTv);
+      }
+      AppMethodBeat.o(152708);
       return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(124562);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        dls localdls = (dls)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(124562);
-          return -1;
-        case 1: 
-          localdls.GfL = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(124562);
-          return 0;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aky();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((aky)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localdls.HAc = ((aky)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(124562);
-        return 0;
-      }
-      AppMethodBeat.o(124562);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(152708);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      dls localdls = (dls)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(152708);
+        return -1;
+      case 1: 
+        localdls.HhE = locala.OmT.zc();
+        AppMethodBeat.o(152708);
+        return 0;
+      case 2: 
+        localdls.GYJ = locala.OmT.readString();
+        AppMethodBeat.o(152708);
+        return 0;
+      }
+      localdls.HTv = locala.OmT.readString();
+      AppMethodBeat.o(152708);
+      return 0;
+    }
+    AppMethodBeat.o(152708);
+    return -1;
   }
 }
 

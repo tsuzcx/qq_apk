@@ -1,14 +1,14 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 
 public final class bx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Fuv;
-  public b Fuw;
-  public long tSD;
+  public int FMT;
+  public b FMU;
+  public long udu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,31 +16,31 @@ public final class bx
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Fuv);
-      if (this.Fuw != null) {
-        paramVarArgs.c(2, this.Fuw);
+      paramVarArgs.aS(1, this.FMT);
+      if (this.FMU != null) {
+        paramVarArgs.c(2, this.FMU);
       }
-      paramVarArgs.aY(3, this.tSD);
+      paramVarArgs.aZ(3, this.udu);
       AppMethodBeat.o(125702);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.Fuv) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.FMT) + 0;
       paramInt = i;
-      if (this.Fuw != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.Fuw);
+      if (this.FMU != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.FMU);
       }
-      i = f.a.a.b.b.a.p(3, this.tSD);
+      i = f.a.a.b.b.a.p(3, this.udu);
       AppMethodBeat.o(125702);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(125702);
@@ -56,15 +56,15 @@ public final class bx
         AppMethodBeat.o(125702);
         return -1;
       case 1: 
-        localbx.Fuv = locala.NPN.zc();
+        localbx.FMT = locala.OmT.zc();
         AppMethodBeat.o(125702);
         return 0;
       case 2: 
-        localbx.Fuw = locala.NPN.gxI();
+        localbx.FMU = locala.OmT.gCk();
         AppMethodBeat.o(125702);
         return 0;
       }
-      localbx.tSD = locala.NPN.zd();
+      localbx.udu = locala.OmT.zd();
       AppMethodBeat.o(125702);
       return 0;
     }

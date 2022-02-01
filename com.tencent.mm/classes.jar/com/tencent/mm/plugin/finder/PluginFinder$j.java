@@ -5,25 +5,25 @@ import com.tencent.mm.plugin.finder.storage.p;
 import com.tencent.mm.storagebase.h.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
 final class PluginFinder$j
   implements h.b
 {
-  public static final j rGQ;
+  public static final j rPb;
   
   static
   {
-    AppMethodBeat.i(200943);
-    rGQ = new j();
-    AppMethodBeat.o(200943);
+    AppMethodBeat.i(201365);
+    rPb = new j();
+    AppMethodBeat.o(201365);
   }
   
   public final String[] getSQLs()
   {
-    AppMethodBeat.i(200942);
-    Object localObject = p.syB;
-    localObject = p.czG();
-    AppMethodBeat.o(200942);
+    AppMethodBeat.i(201364);
+    Object localObject = p.sJs;
+    localObject = p.cBk();
+    AppMethodBeat.o(201364);
     return localObject;
   }
 }

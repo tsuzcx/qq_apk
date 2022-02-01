@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.ad;
 import com.tencent.mm.plugin.fingerprint.b.c;
 import java.util.Map;
 
@@ -18,64 +18,64 @@ public final class g
   
   public final void b(Context paramContext, f paramf, b paramb) {}
   
-  public final boolean cPP()
+  public final boolean cRV()
   {
     return false;
   }
   
-  public final boolean cPQ()
+  public final com.tencent.mm.plugin.fingerprint.d.d cSA()
+  {
+    return null;
+  }
+  
+  public final boolean cSB()
   {
     return false;
   }
   
-  public final boolean cPR()
+  public final Map<String, String> cSd()
+  {
+    return null;
+  }
+  
+  public final boolean cSu()
   {
     return false;
   }
   
-  public final boolean cPS()
+  public final boolean cSv()
   {
     return false;
   }
   
-  public final boolean cPT()
+  public final boolean cSw()
   {
     return false;
   }
   
-  public final int cPU()
+  public final boolean cSx()
+  {
+    return false;
+  }
+  
+  public final boolean cSy()
+  {
+    return false;
+  }
+  
+  public final int cSz()
   {
     return 0;
   }
   
-  public final com.tencent.mm.plugin.fingerprint.d.d cPV()
-  {
-    return null;
-  }
-  
-  public final boolean cPW()
-  {
-    return false;
-  }
-  
-  public final boolean cPq()
-  {
-    return false;
-  }
-  
-  public final Map<String, String> cPy()
-  {
-    return null;
-  }
-  
   public final void cancel() {}
   
-  public final boolean fe(Context paramContext)
+  public final boolean fi(Context paramContext)
   {
     return false;
   }
   
-  public final boolean ff(Context paramContext)
+  public final boolean fj(Context paramContext)
   {
     return false;
   }
@@ -89,26 +89,26 @@ public final class g
       localc.a(this);
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.fingerprint.d.a.class, localc);
     }
-    if ((ae.gcK.dKx) && (com.tencent.mm.plugin.soter.e.b.efO()))
+    if ((com.tencent.mm.compatible.deviceinfo.ae.geS.dLM) && (com.tencent.mm.plugin.soter.e.b.ejw()))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DummyBiometricPayManager", "maybe soter init fail, reinit");
-      com.tencent.mm.plugin.report.service.g.yhR.dD(1104, 42);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.DummyBiometricPayManager", "maybe soter init fail, reinit");
+      com.tencent.mm.plugin.report.service.g.yxI.dD(1104, 42);
       com.tencent.mm.plugin.soter.e.b.a(true, new com.tencent.mm.plugin.soter.d.g()
       {
-        public final void bc(int paramAnonymousInt, String paramAnonymousString)
+        public final void bb(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(64403);
-          if (com.tencent.soter.a.a.fUS())
+          if (com.tencent.soter.a.a.fZr())
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DummyBiometricPayManager", "init success: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.DummyBiometricPayManager", "init success: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
             paramAnonymousString = new j();
             paramAnonymousString.prepare();
             com.tencent.mm.kernel.g.b(i.class, paramAnonymousString);
             AppMethodBeat.o(64403);
             return;
           }
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DummyBiometricPayManager", "init failed: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          com.tencent.mm.plugin.report.service.g.yhR.dD(1104, 43);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.DummyBiometricPayManager", "init failed: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          com.tencent.mm.plugin.report.service.g.yxI.dD(1104, 43);
           AppMethodBeat.o(64403);
         }
       });
@@ -116,11 +116,11 @@ public final class g
     AppMethodBeat.o(64404);
   }
   
-  public final void r(Object... paramVarArgs) {}
+  public final void q(Object... paramVarArgs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.a.g
  * JD-Core Version:    0.7.0.1
  */

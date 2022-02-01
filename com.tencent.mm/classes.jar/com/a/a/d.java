@@ -15,11 +15,11 @@ final class d
   
   static d e(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214734);
+    AppMethodBeat.i(212965);
     long l = 0L;
     if (paramInt1 >= paramInt2)
     {
-      AppMethodBeat.o(214734);
+      AppMethodBeat.o(212965);
       return null;
     }
     int i = paramInt1;
@@ -32,29 +32,29 @@ final class d
       l = l * 10L + (j - 48);
       if (l > 2147483647L)
       {
-        AppMethodBeat.o(214734);
+        AppMethodBeat.o(212965);
         return null;
       }
       i += 1;
     }
     if (i == paramInt1)
     {
-      AppMethodBeat.o(214734);
+      AppMethodBeat.o(212965);
       return null;
     }
     paramString = new d(l, i);
-    AppMethodBeat.o(214734);
+    AppMethodBeat.o(212965);
     return paramString;
   }
   
   static d f(String paramString, int paramInt)
   {
-    AppMethodBeat.i(214735);
+    AppMethodBeat.i(212966);
     long l = 0L;
     int i;
     if (1 >= paramInt)
     {
-      AppMethodBeat.o(214735);
+      AppMethodBeat.o(212966);
       return null;
       i += 1;
     }
@@ -68,7 +68,7 @@ final class d
         }
         while (l > 4294967295L)
         {
-          AppMethodBeat.o(214735);
+          AppMethodBeat.o(212966);
           return null;
           if ((j >= 65) && (j <= 70))
           {
@@ -87,11 +87,11 @@ final class d
       label143:
       if (i == 1)
       {
-        AppMethodBeat.o(214735);
+        AppMethodBeat.o(212966);
         return null;
       }
       paramString = new d(l, i);
-      AppMethodBeat.o(214735);
+      AppMethodBeat.o(212966);
       return paramString;
       i = 1;
     }
@@ -99,7 +99,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.d
  * JD-Core Version:    0.7.0.1
  */

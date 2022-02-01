@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oe;
+import com.tencent.mm.g.a.of;
 
 final class c$18
-  extends com.tencent.mm.sdk.b.c<oe>
+  extends com.tencent.mm.sdk.b.c<of>
 {
   c$18(c paramc)
   {
     AppMethodBeat.i(161126);
-    this.__eventId = oe.class.getName().hashCode();
+    this.__eventId = of.class.getName().hashCode();
     AppMethodBeat.o(161126);
   }
   
   /* Error */
-  private static boolean a(oe paramoe)
+  private static boolean a(of paramof)
   {
     // Byte code:
     //   0: ldc 52
@@ -30,8 +30,8 @@ final class c$18
     //   21: new 56	org/json/JSONObject
     //   24: dup
     //   25: aload_0
-    //   26: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   29: getfield 66	com/tencent/mm/g/a/oe$a:extraInfo	Ljava/lang/String;
+    //   26: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   29: getfield 66	com/tencent/mm/g/a/of$a:extraInfo	Ljava/lang/String;
     //   32: invokespecial 69	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   35: astore 8
     //   37: aload 4
@@ -50,7 +50,7 @@ final class c$18
     //   64: ldc 77
     //   66: invokevirtual 75	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   69: iconst_0
-    //   70: invokestatic 83	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   70: invokestatic 83	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   73: istore_1
     //   74: aload 7
     //   76: astore 5
@@ -76,8 +76,8 @@ final class c$18
     //   112: invokespecial 93	android/content/Intent:<init>	()V
     //   115: astore 5
     //   117: aload_0
-    //   118: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   121: getfield 96	com/tencent/mm/g/a/oe$a:dCe	I
+    //   118: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   121: getfield 96	com/tencent/mm/g/a/of$a:dDj	I
     //   124: tableswitch	default:+32 -> 156, 0:+135->259, 1:+276->400, 2:+417->541, 3:+576->700
     //   157: caload
     //   158: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -101,7 +101,7 @@ final class c$18
     //   189: aload 6
     //   191: invokevirtual 105	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   194: aastore
-    //   195: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   195: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   198: iconst_0
     //   199: istore_3
     //   200: iload_1
@@ -129,7 +129,7 @@ final class c$18
     //   237: aload 6
     //   239: invokevirtual 112	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   242: aastore
-    //   243: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   243: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   246: iconst_0
     //   247: istore_3
     //   248: iload_1
@@ -141,14 +141,14 @@ final class c$18
     //   256: goto -148 -> 108
     //   259: aload 5
     //   261: aload_0
-    //   262: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   265: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   262: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   265: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   268: ldc 118
     //   270: invokevirtual 122	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
     //   273: pop
     //   274: aload_0
-    //   275: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   278: getfield 125	com/tencent/mm/g/a/oe$a:jumpType	I
+    //   275: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   278: getfield 125	com/tencent/mm/g/a/of$a:jumpType	I
     //   281: iconst_1
     //   282: if_icmpne +13 -> 295
     //   285: aload 5
@@ -162,8 +162,8 @@ final class c$18
     //   300: invokevirtual 136	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   303: pop
     //   304: aload_0
-    //   305: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   308: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   305: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   308: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   311: astore 4
     //   313: new 138	com/tencent/mm/hellhoundlib/b/a
     //   316: dup
@@ -173,7 +173,7 @@ final class c$18
     //   325: astore 5
     //   327: aload 4
     //   329: aload 5
-    //   331: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
+    //   331: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
     //   334: ldc 149
     //   336: ldc 151
     //   338: ldc 153
@@ -184,7 +184,7 @@ final class c$18
     //   349: aload 4
     //   351: aload 5
     //   353: iconst_0
-    //   354: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
+    //   354: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
     //   357: checkcast 92	android/content/Intent
     //   360: invokevirtual 172	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   363: aload 4
@@ -196,8 +196,8 @@ final class c$18
     //   375: ldc 159
     //   377: invokestatic 175	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   380: aload_0
-    //   381: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   384: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   381: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   384: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   387: iconst_5
     //   388: iconst_5
     //   389: iconst_1
@@ -208,14 +208,14 @@ final class c$18
     //   397: goto -241 -> 156
     //   400: aload 5
     //   402: aload_0
-    //   403: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   406: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   403: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   406: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   409: ldc 182
     //   411: invokevirtual 122	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
     //   414: pop
     //   415: aload_0
-    //   416: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   419: getfield 125	com/tencent/mm/g/a/oe$a:jumpType	I
+    //   416: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   419: getfield 125	com/tencent/mm/g/a/of$a:jumpType	I
     //   422: iconst_1
     //   423: if_icmpne +13 -> 436
     //   426: aload 5
@@ -229,8 +229,8 @@ final class c$18
     //   441: invokevirtual 136	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   444: pop
     //   445: aload_0
-    //   446: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   449: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   446: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   449: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   452: astore 4
     //   454: new 138	com/tencent/mm/hellhoundlib/b/a
     //   457: dup
@@ -240,7 +240,7 @@ final class c$18
     //   466: astore 5
     //   468: aload 4
     //   470: aload 5
-    //   472: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
+    //   472: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
     //   475: ldc 149
     //   477: ldc 151
     //   479: ldc 153
@@ -251,7 +251,7 @@ final class c$18
     //   490: aload 4
     //   492: aload 5
     //   494: iconst_0
-    //   495: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
+    //   495: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
     //   498: checkcast 92	android/content/Intent
     //   501: invokevirtual 172	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   504: aload 4
@@ -263,8 +263,8 @@ final class c$18
     //   516: ldc 159
     //   518: invokestatic 175	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   521: aload_0
-    //   522: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   525: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   522: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   525: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   528: iconst_5
     //   529: iconst_5
     //   530: iconst_1
@@ -274,12 +274,12 @@ final class c$18
     //   535: invokestatic 180	com/tencent/mm/game/report/f:a	(Landroid/content/Context;IIIIILjava/lang/String;)V
     //   538: goto -382 -> 156
     //   541: aload 4
-    //   543: invokestatic 188	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   543: invokestatic 188	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   546: ifne -390 -> 156
     //   549: aload 5
     //   551: aload_0
-    //   552: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   555: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   552: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   555: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   558: ldc 190
     //   560: invokevirtual 122	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
     //   563: pop
@@ -289,8 +289,8 @@ final class c$18
     //   570: invokevirtual 131	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   573: pop
     //   574: aload_0
-    //   575: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   578: getfield 125	com/tencent/mm/g/a/oe$a:jumpType	I
+    //   575: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   578: getfield 125	com/tencent/mm/g/a/of$a:jumpType	I
     //   581: iconst_1
     //   582: if_icmpne +13 -> 595
     //   585: aload 5
@@ -304,8 +304,8 @@ final class c$18
     //   600: invokevirtual 136	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   603: pop
     //   604: aload_0
-    //   605: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   608: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   605: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   608: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   611: astore 4
     //   613: new 138	com/tencent/mm/hellhoundlib/b/a
     //   616: dup
@@ -315,7 +315,7 @@ final class c$18
     //   625: astore 5
     //   627: aload 4
     //   629: aload 5
-    //   631: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
+    //   631: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
     //   634: ldc 149
     //   636: ldc 151
     //   638: ldc 153
@@ -326,7 +326,7 @@ final class c$18
     //   649: aload 4
     //   651: aload 5
     //   653: iconst_0
-    //   654: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
+    //   654: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
     //   657: checkcast 92	android/content/Intent
     //   660: invokevirtual 172	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   663: aload 4
@@ -338,8 +338,8 @@ final class c$18
     //   675: ldc 159
     //   677: invokestatic 175	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   680: aload_0
-    //   681: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   684: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   681: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   684: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   687: iconst_5
     //   688: iconst_5
     //   689: iconst_1
@@ -351,7 +351,7 @@ final class c$18
     //   700: ldc 194
     //   702: invokestatic 200	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   705: checkcast 194	com/tencent/mm/game/report/a/b
-    //   708: getstatic 206	com/tencent/mm/plugin/expt/b/b$a:qqu	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   708: getstatic 206	com/tencent/mm/plugin/expt/b/b$a:qxc	Lcom/tencent/mm/plugin/expt/b/b$a;
     //   711: iconst_1
     //   712: invokeinterface 209 3 0
     //   717: iconst_1
@@ -362,8 +362,8 @@ final class c$18
     //   724: ifeq +147 -> 871
     //   727: aload 5
     //   729: aload_0
-    //   730: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   733: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   730: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   733: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   736: ldc 211
     //   738: invokevirtual 122	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
     //   741: pop
@@ -383,8 +383,8 @@ final class c$18
     //   766: invokevirtual 136	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   769: pop
     //   770: aload_0
-    //   771: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   774: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   771: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   774: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   777: astore 4
     //   779: new 138	com/tencent/mm/hellhoundlib/b/a
     //   782: dup
@@ -394,7 +394,7 @@ final class c$18
     //   791: astore 5
     //   793: aload 4
     //   795: aload 5
-    //   797: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
+    //   797: invokevirtual 147	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
     //   800: ldc 149
     //   802: ldc 151
     //   804: ldc 153
@@ -405,7 +405,7 @@ final class c$18
     //   815: aload 4
     //   817: aload 5
     //   819: iconst_0
-    //   820: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
+    //   820: invokevirtual 168	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
     //   823: checkcast 92	android/content/Intent
     //   826: invokevirtual 172	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   829: aload 4
@@ -417,8 +417,8 @@ final class c$18
     //   841: ldc 159
     //   843: invokestatic 175	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   846: aload_0
-    //   847: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   850: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   847: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   850: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   853: iconst_5
     //   854: iconst_5
     //   855: iconst_1
@@ -432,8 +432,8 @@ final class c$18
     //   868: goto -145 -> 723
     //   871: aload 5
     //   873: aload_0
-    //   874: getfield 60	com/tencent/mm/g/a/oe:dCd	Lcom/tencent/mm/g/a/oe$a;
-    //   877: getfield 116	com/tencent/mm/g/a/oe$a:context	Landroid/content/Context;
+    //   874: getfield 60	com/tencent/mm/g/a/of:dDi	Lcom/tencent/mm/g/a/of$a;
+    //   877: getfield 116	com/tencent/mm/g/a/of$a:context	Landroid/content/Context;
     //   880: ldc 217
     //   882: invokevirtual 122	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
     //   885: pop
@@ -446,7 +446,7 @@ final class c$18
     //   900: goto -721 -> 179
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	903	0	paramoe	oe
+    //   0	903	0	paramof	of
     //   73	693	1	i	int
     //   105	754	2	j	int
     //   103	765	3	k	int

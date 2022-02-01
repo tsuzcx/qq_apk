@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FpC;
-  public String FpD;
+  public String FIa;
+  public String FIb;
   public int actionType;
   public int id;
   
@@ -17,7 +17,7 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FpC == null)
+      if (this.FIa == null)
       {
         paramVarArgs = new b("Not all required fields were included: btnStr");
         AppMethodBeat.o(123716);
@@ -25,11 +25,11 @@ public final class a
       }
       paramVarArgs.aS(1, this.id);
       paramVarArgs.aS(2, this.actionType);
-      if (this.FpC != null) {
-        paramVarArgs.d(3, this.FpC);
+      if (this.FIa != null) {
+        paramVarArgs.d(3, this.FIa);
       }
-      if (this.FpD != null) {
-        paramVarArgs.d(4, this.FpD);
+      if (this.FIb != null) {
+        paramVarArgs.d(4, this.FIb);
       }
       AppMethodBeat.o(123716);
       return 0;
@@ -38,12 +38,12 @@ public final class a
     {
       int i = f.a.a.b.b.a.bz(1, this.id) + 0 + f.a.a.b.b.a.bz(2, this.actionType);
       paramInt = i;
-      if (this.FpC != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.FpC);
+      if (this.FIa != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.FIa);
       }
       i = paramInt;
-      if (this.FpD != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.FpD);
+      if (this.FIb != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.FIb);
       }
       AppMethodBeat.o(123716);
       return i;
@@ -51,12 +51,12 @@ public final class a
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      if (this.FpC == null)
+      if (this.FIa == null)
       {
         paramVarArgs = new b("Not all required fields were included: btnStr");
         AppMethodBeat.o(123716);
@@ -75,19 +75,19 @@ public final class a
         AppMethodBeat.o(123716);
         return -1;
       case 1: 
-        locala1.id = locala.NPN.zc();
+        locala1.id = locala.OmT.zc();
         AppMethodBeat.o(123716);
         return 0;
       case 2: 
-        locala1.actionType = locala.NPN.zc();
+        locala1.actionType = locala.OmT.zc();
         AppMethodBeat.o(123716);
         return 0;
       case 3: 
-        locala1.FpC = locala.NPN.readString();
+        locala1.FIa = locala.OmT.readString();
         AppMethodBeat.o(123716);
         return 0;
       }
-      locala1.FpD = locala.NPN.readString();
+      locala1.FIb = locala.OmT.readString();
       AppMethodBeat.o(123716);
       return 0;
     }

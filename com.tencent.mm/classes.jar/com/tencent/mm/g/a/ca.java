@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ca
   extends b
 {
-  public a dmS;
+  public a dnU;
   
   public ca()
   {
@@ -16,17 +16,17 @@ public final class ca
   private ca(byte paramByte)
   {
     AppMethodBeat.i(91199);
-    this.dmS = new a();
-    this.IbR = false;
+    this.dnU = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(91199);
   }
   
   public static final class a
   {
-    public String dmT;
-    public String dmU;
-    public long dmV;
+    public String dnV;
+    public String dnW;
+    public long dnX;
   }
 }
 

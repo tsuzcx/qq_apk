@@ -12,18 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.ui.tools.j;
-import com.tencent.mm.protocal.protobuf.cev;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.protocal.protobuf.cfp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.a.d;
@@ -35,62 +35,62 @@ import junit.framework.Assert;
 public final class aa
   implements f
 {
-  private String ApH;
-  private String ApI;
-  private LinkedList<String> EUO;
-  String EUP;
-  boolean EUU;
-  a EWU;
-  LinkedList<String> EWV;
-  public Map<String, Integer> EWW;
-  private boolean EWX;
-  private com.tencent.mm.pluginsdk.model.o EWY;
-  private boolean EWZ;
+  private String AGU;
+  private String AGV;
+  private LinkedList<String> Fnj;
+  String Fnk;
+  boolean Fnp;
+  a Fpo;
+  LinkedList<String> Fpp;
+  public Map<String, Integer> Fpq;
+  private boolean Fpr;
+  private com.tencent.mm.pluginsdk.model.o Fps;
+  private boolean Fpt;
   public String chatroomName;
   public String content;
   Context context;
-  View jcq;
-  d jcs;
-  EditText mlU;
+  View jfj;
+  d jfl;
+  EditText mqR;
   p tipDialog;
-  private LinkedList<Integer> xin;
-  TextView xjM;
+  private LinkedList<Integer> xyj;
+  TextView xzJ;
   
   public aa(Context paramContext, a parama)
   {
     AppMethodBeat.i(152244);
-    this.jcs = null;
+    this.jfl = null;
     this.content = "";
-    this.EUU = true;
-    this.EWX = true;
-    this.EWZ = false;
+    this.Fnp = true;
+    this.Fpr = true;
+    this.Fpt = false;
     this.context = paramContext;
-    this.EWU = parama;
+    this.Fpo = parama;
     AppMethodBeat.o(152244);
   }
   
   private void onStart()
   {
     AppMethodBeat.i(152245);
-    g.ajB().gAO.a(30, this);
-    g.ajB().gAO.a(243, this);
+    g.ajQ().gDv.a(30, this);
+    g.ajQ().gDv.a(243, this);
     AppMethodBeat.o(152245);
   }
   
-  public final void E(List<String> paramList, List<Integer> paramList1)
+  public final void D(List<String> paramList, List<Integer> paramList1)
   {
     AppMethodBeat.i(152249);
-    this.EWX = false;
+    this.Fpr = false;
     onStart();
-    this.EWV = new LinkedList(paramList);
-    this.xin = new LinkedList(paramList1);
-    if ((paramList.size() == 1) && (am.aSQ((String)this.EWV.getFirst())))
+    this.Fpp = new LinkedList(paramList);
+    this.xyj = new LinkedList(paramList1);
+    if ((paramList.size() == 1) && (an.aUq((String)this.Fpp.getFirst())))
     {
-      fcM();
+      fgA();
       AppMethodBeat.o(152249);
       return;
     }
-    fci();
+    ffW();
     AppMethodBeat.o(152249);
   }
   
@@ -109,35 +109,35 @@ public final class aa
       label30:
       Assert.assertTrue(bool);
       onStart();
-      this.EWV = paramLinkedList1;
-      this.xin = paramLinkedList;
-      this.EUO = paramLinkedList2;
-      this.jcq = View.inflate(this.context, 2131495371, null);
-      if (this.EUP != null) {
+      this.Fpp = paramLinkedList1;
+      this.xyj = paramLinkedList;
+      this.Fnj = paramLinkedList2;
+      this.jfj = View.inflate(this.context, 2131495371, null);
+      if (this.Fnk != null) {
         break label322;
       }
       bool = true;
       label78:
-      if (this.EUP != null) {
+      if (this.Fnk != null) {
         break label328;
       }
     }
     label316:
     label322:
     label328:
-    for (int i = 0;; i = this.EUP.length())
+    for (int i = 0;; i = this.Fnk.length())
     {
-      ad.i("MicroMsg.SendVerifyRequest", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), this.EUP });
-      if (!bt.isNullOrNil(this.EUP)) {
-        ((TextView)this.jcq.findViewById(2131304591)).setText(this.EUP);
+      ae.i("MicroMsg.SendVerifyRequest", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), this.Fnk });
+      if (!bu.isNullOrNil(this.Fnk)) {
+        ((TextView)this.jfj.findViewById(2131304591)).setText(this.Fnk);
       }
-      this.mlU = ((EditText)this.jcq.findViewById(2131304590));
-      this.xjM = ((TextView)this.jcq.findViewById(2131307005));
-      this.xjM.setVisibility(0);
-      this.mlU.setText(null);
-      this.xjM.setText("50");
-      this.mlU.setFilters(j.Fku);
-      this.mlU.addTextChangedListener(new TextWatcher()
+      this.mqR = ((EditText)this.jfj.findViewById(2131304590));
+      this.xzJ = ((TextView)this.jfj.findViewById(2131307005));
+      this.xzJ.setVisibility(0);
+      this.mqR.setText(null);
+      this.xzJ.setText("50");
+      this.mqR.setFilters(j.FCS);
+      this.mqR.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -147,8 +147,8 @@ public final class aa
           if (j < 0) {
             i = 0;
           }
-          if (aa.this.xjM != null) {
-            aa.this.xjM.setText(String.valueOf(i));
+          if (aa.this.xzJ != null) {
+            aa.this.xzJ.setText(String.valueOf(i));
           }
           AppMethodBeat.o(152237);
         }
@@ -162,39 +162,39 @@ public final class aa
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(152239);
-          if (aa.this.jcs != null)
+          if (aa.this.jfl != null)
           {
-            aa.this.jcs.dismiss();
-            aa.this.jcs = null;
+            aa.this.jfl.dismiss();
+            aa.this.jfl = null;
           }
-          new av(new av.a()
+          new aw(new aw.a()
           {
             public final boolean onTimerExpired()
             {
               AppMethodBeat.i(152238);
               aa localaa;
-              if (aa.this.jcq != null)
+              if (aa.this.jfj != null)
               {
                 localaa = aa.this;
-                String str = aa.this.mlU.getText().toString().trim();
+                String str = aa.this.mqR.getText().toString().trim();
                 Context localContext = localaa.context;
                 localaa.context.getString(2131755906);
                 localaa.tipDialog = com.tencent.mm.ui.base.h.b(localContext, localaa.context.getString(2131763077), true, new aa.5(localaa));
                 localaa.content = str;
-                if ((localaa.EWV.size() != 1) || (!am.aSQ((String)localaa.EWV.getFirst()))) {
+                if ((localaa.Fpp.size() != 1) || (!an.aUq((String)localaa.Fpp.getFirst()))) {
                   break label130;
                 }
-                localaa.fcM();
+                localaa.fgA();
               }
               for (;;)
               {
                 AppMethodBeat.o(152238);
                 return false;
                 label130:
-                localaa.fci();
+                localaa.ffW();
               }
             }
-          }, false).az(500L, 500L);
+          }, false).ay(500L, 500L);
           AppMethodBeat.o(152239);
         }
       };
@@ -203,23 +203,23 @@ public final class aa
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(152240);
-          if (aa.this.jcs != null)
+          if (aa.this.jfl != null)
           {
-            aa.this.jcs.dismiss();
-            aa.this.jcs = null;
+            aa.this.jfl.dismiss();
+            aa.this.jfl = null;
           }
           aa.this.onStop();
-          if (aa.this.EWU != null) {
-            aa.this.EWU.cF(false);
+          if (aa.this.Fpo != null) {
+            aa.this.Fpo.cF(false);
           }
           AppMethodBeat.o(152240);
         }
       };
-      this.jcs = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(2131763081), this.jcq, paramLinkedList1, paramLinkedList);
-      if (this.jcs == null) {
+      this.jfl = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(2131763081), this.jfj, paramLinkedList1, paramLinkedList);
+      if (this.jfl == null) {
         onStop();
       }
-      this.mlU.post(new Runnable()
+      this.mqR.post(new Runnable()
       {
         public final void run()
         {
@@ -241,44 +241,44 @@ public final class aa
     }
   }
   
-  public final void fcL()
+  final void ffW()
+  {
+    AppMethodBeat.i(152250);
+    this.Fps = new com.tencent.mm.pluginsdk.model.o(this.Fpp, this.xyj, this.content, "", this.Fpq, this.chatroomName);
+    this.Fps.vM(this.Fnp);
+    this.Fps.ly(this.AGU, this.AGV);
+    g.ajQ().gDv.a(this.Fps, 0);
+    AppMethodBeat.o(152250);
+  }
+  
+  final void fgA()
+  {
+    AppMethodBeat.i(152251);
+    if ((this.Fnj == null) || (this.Fnj.isEmpty()))
+    {
+      this.Fpt = true;
+      g.ajQ().gDv.a(881, this);
+      g.ajQ().gDv.a(new com.tencent.mm.openim.b.h((String)this.Fpp.getFirst(), "", ""), 0);
+      AppMethodBeat.o(152251);
+      return;
+    }
+    g.ajQ().gDv.a(new com.tencent.mm.openim.b.o((String)this.Fpp.getFirst(), this.content, (String)this.Fnj.getFirst(), 0), 0);
+    AppMethodBeat.o(152251);
+  }
+  
+  public final void fgz()
   {
     AppMethodBeat.i(152247);
-    if (this.EWY != null) {
-      g.aiU().a(this.EWY);
+    if (this.Fps != null) {
+      g.ajj().a(this.Fps);
     }
     AppMethodBeat.o(152247);
   }
   
-  final void fcM()
+  public final void ly(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(152251);
-    if ((this.EUO == null) || (this.EUO.isEmpty()))
-    {
-      this.EWZ = true;
-      g.ajB().gAO.a(881, this);
-      g.ajB().gAO.a(new com.tencent.mm.openim.b.h((String)this.EWV.getFirst(), "", ""), 0);
-      AppMethodBeat.o(152251);
-      return;
-    }
-    g.ajB().gAO.a(new com.tencent.mm.openim.b.o((String)this.EWV.getFirst(), this.content, (String)this.EUO.getFirst(), 0), 0);
-    AppMethodBeat.o(152251);
-  }
-  
-  final void fci()
-  {
-    AppMethodBeat.i(152250);
-    this.EWY = new com.tencent.mm.pluginsdk.model.o(this.EWV, this.xin, this.content, "", this.EWW, this.chatroomName);
-    this.EWY.vE(this.EUU);
-    this.EWY.lr(this.ApH, this.ApI);
-    g.ajB().gAO.a(this.EWY, 0);
-    AppMethodBeat.o(152250);
-  }
-  
-  public final void lr(String paramString1, String paramString2)
-  {
-    this.ApH = paramString1;
-    this.ApI = paramString2;
+    this.AGU = paramString1;
+    this.AGV = paramString2;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -286,17 +286,17 @@ public final class aa
     AppMethodBeat.i(152252);
     if (paramn.getType() == 881)
     {
-      g.ajB().gAO.b(881, this);
+      g.ajQ().gDv.b(881, this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        if (this.EWZ)
+        if (this.Fpt)
         {
-          paramString = ((com.tencent.mm.openim.b.h)paramn).iHC.Fvw;
-          g.ajB().gAO.a(new com.tencent.mm.openim.b.o((String)this.EWV.getFirst(), this.content, paramString, 0), 0);
+          paramString = ((com.tencent.mm.openim.b.h)paramn).iKv.FNU;
+          g.ajQ().gDv.a(new com.tencent.mm.openim.b.o((String)this.Fpp.getFirst(), this.content, paramString, 0), 0);
         }
       }
       for (;;)
       {
-        this.EWZ = false;
+        this.Fpt = false;
         AppMethodBeat.o(152252);
         return;
         Toast.makeText(this.context, this.context.getString(2131763075), 1).show();
@@ -304,17 +304,17 @@ public final class aa
     }
     if ((paramn.getType() != 30) && (paramn.getType() != 243))
     {
-      ad.w("MicroMsg.SendVerifyRequest", "not expected scene,  type = " + paramn.getType());
+      ae.w("MicroMsg.SendVerifyRequest", "not expected scene,  type = " + paramn.getType());
       AppMethodBeat.o(152252);
       return;
     }
-    if (((paramn instanceof com.tencent.mm.pluginsdk.model.o)) && (((com.tencent.mm.pluginsdk.model.o)paramn).dsi != 2))
+    if (((paramn instanceof com.tencent.mm.pluginsdk.model.o)) && (((com.tencent.mm.pluginsdk.model.o)paramn).dto != 2))
     {
-      ad.e("MicroMsg.SendVerifyRequest", "not opcode sendrequest!");
+      ae.e("MicroMsg.SendVerifyRequest", "not opcode sendrequest!");
       AppMethodBeat.o(152252);
       return;
     }
-    ad.d("MicroMsg.SendVerifyRequest", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ae.d("MicroMsg.SendVerifyRequest", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
@@ -323,12 +323,12 @@ public final class aa
     onStop();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.EWX) {
-        com.tencent.mm.ui.base.h.cl(this.context, this.context.getString(2131763076));
+      if (this.Fpr) {
+        com.tencent.mm.ui.base.h.cm(this.context, this.context.getString(2131763076));
       }
-      if (this.EWU != null)
+      if (this.Fpo != null)
       {
-        this.EWU.cF(true);
+        this.Fpo.cF(true);
         AppMethodBeat.o(152252);
       }
     }
@@ -341,11 +341,11 @@ public final class aa
     }
     for (;;)
     {
-      if ((this.EWX) && (!bt.isNullOrNil(paramn))) {
+      if ((this.Fpr) && (!bu.isNullOrNil(paramn))) {
         Toast.makeText(this.context, paramn, 1).show();
       }
-      if (this.EWU != null) {
-        this.EWU.cF(false);
+      if (this.Fpo != null) {
+        this.Fpo.cF(false);
       }
       AppMethodBeat.o(152252);
       return;
@@ -357,21 +357,21 @@ public final class aa
       else if ((paramInt1 == 4) && (paramInt2 == -24))
       {
         paramn = paramString;
-        if (!bt.isNullOrNil(paramString)) {}
+        if (!bu.isNullOrNil(paramString)) {}
       }
       else
       {
         if (paramInt2 == -160)
         {
-          if (!bt.isNullOrNil(paramString))
+          if (!bu.isNullOrNil(paramString))
           {
             com.tencent.mm.ui.base.h.e(this.context, paramString, "", this.context.getResources().getString(2131755700), this.context.getResources().getString(2131755691), new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(152243);
-                aa.this.EUU = false;
-                aa.this.fci();
+                aa.this.Fnp = false;
+                aa.this.ffW();
                 AppMethodBeat.o(152243);
               }
             }, null);
@@ -383,7 +383,7 @@ public final class aa
           if (paramInt1 == 4)
           {
             paramn = paramString;
-            if (!bt.isNullOrNil(paramString)) {
+            if (!bu.isNullOrNil(paramString)) {
               continue;
             }
           }
@@ -398,12 +398,12 @@ public final class aa
   final void onStop()
   {
     AppMethodBeat.i(152246);
-    g.ajB().gAO.b(30, this);
-    g.ajB().gAO.b(243, this);
-    if (this.jcs != null)
+    g.ajQ().gDv.b(30, this);
+    g.ajQ().gDv.b(243, this);
+    if (this.jfl != null)
     {
-      this.jcs.dismiss();
-      this.jcs = null;
+      this.jfl.dismiss();
+      this.jfl = null;
     }
     AppMethodBeat.o(152246);
   }

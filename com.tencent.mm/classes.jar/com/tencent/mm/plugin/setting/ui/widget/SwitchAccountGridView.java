@@ -20,15 +20,15 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
+import com.tencent.mm.aj.e;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.setting.model.SwitchAccountModel;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,69 +37,69 @@ import java.util.Map;
 public class SwitchAccountGridView
   extends GridLayout
 {
-  private static int yKY;
-  public boolean iUN;
-  private String jku;
-  private boolean yKZ;
-  private boolean yLa;
-  private boolean yLb;
-  public String yLc;
-  public AnimatorSet yLd;
-  public List<String> yLe;
-  public List<d> yLf;
-  public List<View> yLg;
-  private b yLh;
-  private a yLi;
-  private c yLj;
+  private static int zbi;
+  public boolean iXG;
+  private String jno;
+  private boolean zbj;
+  private boolean zbk;
+  private boolean zbl;
+  public String zbm;
+  public AnimatorSet zbn;
+  public List<String> zbo;
+  public List<d> zbp;
+  public List<View> zbq;
+  private b zbr;
+  private a zbs;
+  private c zbt;
   
   public SwitchAccountGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(74644);
-    this.yLe = new ArrayList();
-    this.yLf = new ArrayList();
-    this.yLg = new ArrayList();
-    yKY = getResources().getDimensionPixelOffset(2131165188) * 2;
+    this.zbo = new ArrayList();
+    this.zbp = new ArrayList();
+    this.zbq = new ArrayList();
+    zbi = getResources().getDimensionPixelOffset(2131165188) * 2;
     AppMethodBeat.o(74644);
   }
   
-  public final void aB(Map<String, SwitchAccountModel> paramMap)
+  public final void aH(Map<String, SwitchAccountModel> paramMap)
   {
     AppMethodBeat.i(74645);
     if ((paramMap != null) && (!paramMap.isEmpty()))
     {
-      this.yLe.addAll(paramMap.keySet());
-      Collections.sort(this.yLe);
+      this.zbo.addAll(paramMap.keySet());
+      Collections.sort(this.zbo);
     }
-    ad.i("MicroMsg.SwitchAccountGridView", "account count %d", new Object[] { Integer.valueOf(this.yLe.size()) });
+    ae.i("MicroMsg.SwitchAccountGridView", "account count %d", new Object[] { Integer.valueOf(this.zbo.size()) });
     int i = 0;
     d locald;
-    if (i < this.yLe.size())
+    if (i < this.zbo.size())
     {
       localObject1 = ((Activity)getContext()).getLayoutInflater().inflate(2131495407, null);
       localImageView = (ImageView)((View)localObject1).findViewById(2131296329);
       localObject2 = (ImageView)((View)localObject1).findViewById(2131296332);
       Object localObject4 = ((View)localObject1).findViewById(2131298894);
-      localObject3 = (String)this.yLe.get(i);
+      localObject3 = (String)this.zbo.get(i);
       TextView localTextView = (TextView)((View)localObject1).findViewById(2131296338);
       locald = new d((byte)0);
-      locald.iWu = localImageView;
-      locald.yJy = ((ImageView)localObject2);
-      locald.usF = localTextView;
-      locald.yLn = ((View)localObject4);
+      locald.iZn = localImageView;
+      locald.yZI = ((ImageView)localObject2);
+      locald.uDY = localTextView;
+      locald.zbx = ((View)localObject4);
       localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localObject4 = ((SwitchAccountModel)paramMap.get(localObject3)).rBN;
+      localObject4 = ((SwitchAccountModel)paramMap.get(localObject3)).rJY;
       for (;;)
       {
         try
         {
-          if (!bt.isNullOrNil((String)localObject4))
+          if (!bu.isNullOrNil((String)localObject4))
           {
-            if (!this.yLb) {
+            if (!this.zbl) {
               continue;
             }
-            ad.i("MicroMsg.SwitchAccountGridView", "use system decoder!");
-            localObject4 = i.aY((String)localObject4, 0, (int)i.aYo((String)localObject4));
+            ae.i("MicroMsg.SwitchAccountGridView", "use system decoder!");
+            localObject4 = o.bb((String)localObject4, 0, (int)o.aZR((String)localObject4));
             if (localObject4 != null)
             {
               localObject4 = BitmapFactory.decodeByteArray((byte[])localObject4, 0, localObject4.length);
@@ -111,9 +111,9 @@ public class SwitchAccountGridView
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.SwitchAccountGridView", localException, "get avatar error", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.SwitchAccountGridView", localException, "get avatar error", new Object[0]);
           continue;
-          a.b.c(locald.iWu, (String)localObject3);
+          a.b.c(locald.iZn, (String)localObject3);
           continue;
         }
         localTextView.setText(k.b(getContext(), ((SwitchAccountModel)paramMap.get(localObject3)).username, localTextView.getTextSize()));
@@ -124,10 +124,10 @@ public class SwitchAccountGridView
             AppMethodBeat.i(74638);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            ad.i("MicroMsg.SwitchAccountGridView", "click %s", new Object[] { this.yLk });
+            a.b("com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            ae.i("MicroMsg.SwitchAccountGridView", "click %s", new Object[] { this.zbu });
             if ((!SwitchAccountGridView.a(SwitchAccountGridView.this)) && (SwitchAccountGridView.b(SwitchAccountGridView.this) != null)) {
-              SwitchAccountGridView.b(SwitchAccountGridView.this).axg(this.yLk);
+              SwitchAccountGridView.b(SwitchAccountGridView.this).ayw(this.zbu);
             }
             a.a(this, "com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(74638);
@@ -140,19 +140,19 @@ public class SwitchAccountGridView
             AppMethodBeat.i(74639);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            a.b("com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             if (SwitchAccountGridView.c(SwitchAccountGridView.this) != null) {
-              SwitchAccountGridView.c(SwitchAccountGridView.this).axh(this.yLk);
+              SwitchAccountGridView.c(SwitchAccountGridView.this).ayx(this.zbu);
             }
             a.a(this, "com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(74639);
           }
         });
-        this.yLf.add(locald);
-        this.yLg.add(localObject1);
+        this.zbp.add(locald);
+        this.zbq.add(localObject1);
         i += 1;
         break;
-        localObject4 = e.Dd((String)localObject4);
+        localObject4 = e.DF((String)localObject4);
         if (localObject4 == null) {
           continue;
         }
@@ -164,9 +164,9 @@ public class SwitchAccountGridView
     ImageView localImageView = (ImageView)paramMap.findViewById(2131296332);
     Object localObject2 = (TextView)paramMap.findViewById(2131296338);
     Object localObject3 = new d((byte)0);
-    ((d)localObject3).iWu = ((ImageView)localObject1);
-    ((d)localObject3).yJy = localImageView;
-    ((d)localObject3).usF = ((TextView)localObject2);
+    ((d)localObject3).iZn = ((ImageView)localObject1);
+    ((d)localObject3).yZI = localImageView;
+    ((d)localObject3).uDY = ((TextView)localObject2);
     ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
     ((ImageView)localObject1).setImageResource(2131231164);
     ((TextView)localObject2).setText(getContext().getResources().getString(2131763439));
@@ -177,85 +177,85 @@ public class SwitchAccountGridView
         AppMethodBeat.i(74640);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.i("MicroMsg.SwitchAccountGridView", "click addBtn");
+        a.b("com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ae.i("MicroMsg.SwitchAccountGridView", "click addBtn");
         if (SwitchAccountGridView.b(SwitchAccountGridView.this) != null) {
-          SwitchAccountGridView.b(SwitchAccountGridView.this).axg(null);
+          SwitchAccountGridView.b(SwitchAccountGridView.this).ayw(null);
         }
         a.a(this, "com/tencent/mm/plugin/setting/ui/widget/SwitchAccountGridView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(74640);
       }
     });
-    this.yLf.add(localObject3);
-    this.yLg.add(paramMap);
+    this.zbp.add(localObject3);
+    this.zbq.add(paramMap);
     AppMethodBeat.o(74645);
   }
   
-  public final void dOp()
+  public final void dRM()
   {
     AppMethodBeat.i(74646);
-    if (this.iUN)
+    if (this.iXG)
     {
-      ad.i("MicroMsg.SwitchAccountGridView", "playing animation");
+      ae.i("MicroMsg.SwitchAccountGridView", "playing animation");
       AppMethodBeat.o(74646);
       return;
     }
     removeAllViews();
-    int j = Math.min(2, this.yLe.size());
+    int j = Math.min(2, this.zbo.size());
     int i = 0;
     label103:
     GridLayout.LayoutParams localLayoutParams;
     if (i < j)
     {
-      if ((this.yKZ) && (!((String)this.yLe.get(i)).equals(this.jku)))
+      if ((this.zbj) && (!((String)this.zbo.get(i)).equals(this.jno)))
       {
-        ((d)this.yLf.get(i)).yJy.setVisibility(0);
-        ((d)this.yLf.get(i)).yLn.setVisibility(4);
-        if ((!bt.isNullOrNil(this.jku)) && (((String)this.yLe.get(i)).equals(this.jku)))
+        ((d)this.zbp.get(i)).yZI.setVisibility(0);
+        ((d)this.zbp.get(i)).zbx.setVisibility(4);
+        if ((!bu.isNullOrNil(this.jno)) && (((String)this.zbo.get(i)).equals(this.jno)))
         {
-          if (!this.yLa) {
+          if (!this.zbk) {
             break label525;
           }
-          ((ImageView)((d)this.yLf.get(i)).yLn.findViewById(2131298895)).setImageResource(2131232610);
+          ((ImageView)((d)this.zbp.get(i)).zbx.findViewById(2131298895)).setImageResource(2131232610);
           label194:
-          if (!this.yLa) {
+          if (!this.zbk) {
             break label559;
           }
-          ((TextView)((d)this.yLf.get(i)).yLn.findViewById(2131298897)).setText(getContext().getResources().getString(2131766297));
+          ((TextView)((d)this.zbp.get(i)).zbx.findViewById(2131298897)).setText(getContext().getResources().getString(2131766297));
         }
       }
       for (;;)
       {
-        ((d)this.yLf.get(i)).yLn.findViewById(2131296335).setVisibility(8);
-        ((d)this.yLf.get(i)).yLn.findViewById(2131298895).setVisibility(0);
-        ((d)this.yLf.get(i)).yLn.setVisibility(0);
-        if ((!bt.isNullOrNil(this.yLc)) && (((String)this.yLe.get(i)).equals(this.yLc)))
+        ((d)this.zbp.get(i)).zbx.findViewById(2131296335).setVisibility(8);
+        ((d)this.zbp.get(i)).zbx.findViewById(2131298895).setVisibility(0);
+        ((d)this.zbp.get(i)).zbx.setVisibility(0);
+        if ((!bu.isNullOrNil(this.zbm)) && (((String)this.zbo.get(i)).equals(this.zbm)))
         {
-          ((TextView)((d)this.yLf.get(i)).yLn.findViewById(2131298897)).setText(getContext().getResources().getString(2131760781));
-          ((d)this.yLf.get(i)).yLn.findViewById(2131298895).setVisibility(8);
-          ((d)this.yLf.get(i)).yLn.findViewById(2131296335).setVisibility(0);
-          ((d)this.yLf.get(i)).yLn.setVisibility(0);
+          ((TextView)((d)this.zbp.get(i)).zbx.findViewById(2131298897)).setText(getContext().getResources().getString(2131760781));
+          ((d)this.zbp.get(i)).zbx.findViewById(2131298895).setVisibility(8);
+          ((d)this.zbp.get(i)).zbx.findViewById(2131296335).setVisibility(0);
+          ((d)this.zbp.get(i)).zbx.setVisibility(0);
         }
         localLayoutParams = new GridLayout.LayoutParams();
-        localLayoutParams.width = yKY;
-        addView((View)this.yLg.get(i), localLayoutParams);
+        localLayoutParams.width = zbi;
+        addView((View)this.zbq.get(i), localLayoutParams);
         i += 1;
         break;
-        ((d)this.yLf.get(i)).yJy.setVisibility(4);
+        ((d)this.zbp.get(i)).yZI.setVisibility(4);
         break label103;
         label525:
-        ((ImageView)((d)this.yLf.get(i)).yLn.findViewById(2131298895)).setImageResource(2131232608);
+        ((ImageView)((d)this.zbp.get(i)).zbx.findViewById(2131298895)).setImageResource(2131232608);
         break label194;
         label559:
-        ((TextView)((d)this.yLf.get(i)).yLn.findViewById(2131298897)).setText(getContext().getResources().getString(2131763442));
+        ((TextView)((d)this.zbp.get(i)).zbx.findViewById(2131298897)).setText(getContext().getResources().getString(2131763442));
       }
     }
     if (getChildCount() < 2)
     {
-      ((d)this.yLf.get(this.yLf.size() - 1)).yJy.setVisibility(4);
+      ((d)this.zbp.get(this.zbp.size() - 1)).yZI.setVisibility(4);
       localLayoutParams = new GridLayout.LayoutParams();
-      localLayoutParams.width = yKY;
-      addView((View)this.yLg.get(this.yLg.size() - 1), localLayoutParams);
+      localLayoutParams.width = zbi;
+      addView((View)this.zbq.get(this.zbq.size() - 1), localLayoutParams);
     }
     AppMethodBeat.o(74646);
   }
@@ -263,72 +263,72 @@ public class SwitchAccountGridView
   public int getAccountCount()
   {
     AppMethodBeat.i(74647);
-    int i = this.yLe.size();
+    int i = this.zbo.size();
     AppMethodBeat.o(74647);
     return i;
   }
   
   public void setDeleteState(boolean paramBoolean)
   {
-    this.yKZ = paramBoolean;
+    this.zbj = paramBoolean;
   }
   
   public void setLastLoginWxUsername(String paramString)
   {
-    this.jku = paramString;
+    this.jno = paramString;
   }
   
   public void setLogoutState(boolean paramBoolean)
   {
-    this.yLa = paramBoolean;
+    this.zbk = paramBoolean;
   }
   
   public void setOnAnimatorEndListener(a parama)
   {
-    this.yLi = parama;
+    this.zbs = parama;
   }
   
   public void setOnClickAvatarListener(b paramb)
   {
-    this.yLh = paramb;
+    this.zbr = paramb;
   }
   
   public void setOnDeleteAvatarListener(c paramc)
   {
-    this.yLj = paramc;
+    this.zbt = paramc;
   }
   
   public void setSwitchToWxUsername(String paramString)
   {
-    this.yLc = paramString;
+    this.zbm = paramString;
   }
   
   public void setUseSystemDecoder(boolean paramBoolean)
   {
-    this.yLb = paramBoolean;
+    this.zbl = paramBoolean;
   }
   
   public static abstract interface a
   {
-    public abstract void dOb();
+    public abstract void dRy();
   }
   
   public static abstract interface b
   {
-    public abstract void axg(String paramString);
+    public abstract void ayw(String paramString);
   }
   
   public static abstract interface c
   {
-    public abstract void axh(String paramString);
+    public abstract void ayx(String paramString);
   }
   
   final class d
   {
-    public ImageView iWu;
-    public TextView usF;
-    public ImageView yJy;
-    public View yLn;
+    public ImageView iZn;
+    public TextView uDY;
+    public ImageView yZI;
+    public View zbx;
     
     private d() {}
   }

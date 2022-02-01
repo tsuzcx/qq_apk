@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.mini;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/mini/LiveForegroundService$Companion;", "", "()V", "PARAM_ACTIVITY_NAME", "", "PARAM_CONTENT", "PARAM_TICKER", "PARAM_TITLE", "TAG", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/mini/LiveForegroundService$Companion;", "", "()V", "PARAM_ACTIVITY_NAME", "", "PARAM_CONTENT", "PARAM_TICKER", "PARAM_TITLE", "TAG", "plugin-core_release"})
 public final class LiveForegroundService$a {}
 
 

@@ -11,16 +11,16 @@ public class Md5FileNameGenerator
   
   private String getExtension(String paramString)
   {
-    AppMethodBeat.i(215902);
+    AppMethodBeat.i(195186);
     int i = paramString.lastIndexOf('.');
     int j = paramString.lastIndexOf('/');
     if ((i != -1) && (i > j) && (i + 2 + 4 > paramString.length()))
     {
       paramString = paramString.substring(i + 1, paramString.length());
-      AppMethodBeat.o(215902);
+      AppMethodBeat.o(195186);
       return paramString;
     }
-    AppMethodBeat.o(215902);
+    AppMethodBeat.o(195186);
     return "";
   }
   

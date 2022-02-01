@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.t;
 import junit.framework.Assert;
@@ -17,13 +17,13 @@ import junit.framework.Assert;
 public class HelperHeaderPreference
   extends Preference
 {
-  private am contact;
-  private ImageView fRd;
-  private TextView fUR;
-  private boolean iZg = false;
-  private TextView jhg;
-  private TextView jtn;
-  private a wSy;
+  private an contact;
+  private ImageView fTj;
+  private TextView fWX;
+  private boolean jbZ = false;
+  private TextView jjZ;
+  private TextView jwg;
+  private a xip;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,12 +35,12 @@ public class HelperHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void CU(String paramString)
+  private void Dw(String paramString)
   {
     AppMethodBeat.i(27252);
-    ad.d("MicroMsg.HelperHeaderPreference", "updateAvatar : user = ".concat(String.valueOf(paramString)));
-    if ((this.fRd != null) && (this.contact.field_username.equals(paramString))) {
-      a.b.c(this.fRd, paramString);
+    ae.d("MicroMsg.HelperHeaderPreference", "updateAvatar : user = ".concat(String.valueOf(paramString)));
+    if ((this.fTj != null) && (this.contact.field_username.equals(paramString))) {
+      a.b.c(this.fTj, paramString);
     }
     AppMethodBeat.o(27252);
   }
@@ -48,41 +48,41 @@ public class HelperHeaderPreference
   private void initView()
   {
     AppMethodBeat.i(27254);
-    if ((!this.iZg) || (this.contact == null))
+    if ((!this.jbZ) || (this.contact == null))
     {
-      ad.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.iZg + "contact = " + this.contact);
+      ae.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.jbZ + "contact = " + this.contact);
       AppMethodBeat.o(27254);
       return;
     }
-    CU(this.contact.field_username);
-    if (this.jhg != null) {
-      this.jhg.setText(this.contact.adu());
+    Dw(this.contact.field_username);
+    if (this.jjZ != null) {
+      this.jjZ.setText(this.contact.adF());
     }
-    if (this.wSy != null)
+    if (this.xip != null)
     {
-      this.wSy.a(this);
-      CharSequence localCharSequence = this.wSy.getHint();
+      this.xip.a(this);
+      CharSequence localCharSequence = this.xip.getHint();
       if (localCharSequence != null)
       {
-        this.jtn.setText(localCharSequence);
-        this.jtn.setVisibility(0);
+        this.jwg.setText(localCharSequence);
+        this.jwg.setVisibility(0);
         AppMethodBeat.o(27254);
         return;
       }
-      this.jtn.setVisibility(8);
+      this.jwg.setVisibility(8);
     }
     AppMethodBeat.o(27254);
   }
   
-  public final void a(am paramam, a parama)
+  public final void a(an paraman, a parama)
   {
     AppMethodBeat.i(27255);
-    if (paramam != null) {}
+    if (paraman != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.contact = paramam;
-      this.wSy = parama;
+      this.contact = paraman;
+      this.xip = parama;
       initView();
       AppMethodBeat.o(27255);
       return;
@@ -92,35 +92,35 @@ public class HelperHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27251);
-    this.fRd = ((ImageView)paramView.findViewById(2131298597));
-    this.fUR = ((TextView)paramView.findViewById(2131298647));
-    this.jhg = ((TextView)paramView.findViewById(2131298631));
-    this.jtn = ((TextView)paramView.findViewById(2131298617));
-    this.iZg = true;
+    this.fTj = ((ImageView)paramView.findViewById(2131298597));
+    this.fWX = ((TextView)paramView.findViewById(2131298647));
+    this.jjZ = ((TextView)paramView.findViewById(2131298631));
+    this.jwg = ((TextView)paramView.findViewById(2131298617));
+    this.jbZ = true;
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(27251);
   }
   
-  public final void pt(boolean paramBoolean)
+  public final void pB(boolean paramBoolean)
   {
     AppMethodBeat.i(27253);
-    if (this.wSy == null)
+    if (this.xip == null)
     {
       AppMethodBeat.o(27253);
       return;
     }
     if (paramBoolean)
     {
-      this.fUR.setTextColor(t.kC(this.mContext));
-      this.fUR.setText(2131763360);
-      this.fUR.setCompoundDrawablesWithIntrinsicBounds(2131234178, 0, 0, 0);
+      this.fWX.setTextColor(t.kJ(this.mContext));
+      this.fWX.setText(2131763360);
+      this.fWX.setCompoundDrawablesWithIntrinsicBounds(2131234178, 0, 0, 0);
       AppMethodBeat.o(27253);
       return;
     }
-    this.fUR.setTextColor(t.kD(this.mContext));
-    this.fUR.setText(2131763368);
-    this.fUR.setCompoundDrawablesWithIntrinsicBounds(2131234177, 0, 0, 0);
+    this.fWX.setTextColor(t.kK(this.mContext));
+    this.fWX.setText(2131763368);
+    this.fWX.setCompoundDrawablesWithIntrinsicBounds(2131234177, 0, 0, 0);
     AppMethodBeat.o(27253);
   }
   

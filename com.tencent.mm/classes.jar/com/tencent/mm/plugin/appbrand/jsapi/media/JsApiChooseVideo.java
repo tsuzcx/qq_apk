@@ -7,18 +7,18 @@ import android.os.Parcelable.Creator;
 import android.support.v4.app.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalVideoObject;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.permission.p;
+import com.tencent.mm.plugin.appbrand.permission.r;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,12 +27,12 @@ public final class JsApiChooseVideo
 {
   public static final int CTRL_INDEX = 36;
   public static final String NAME = "chooseVideo";
-  private static volatile boolean kUw = false;
+  private static volatile boolean kYf = false;
   
   public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46571);
-    if (kUw)
+    if (kYf)
     {
       paramc.h(paramInt, e("cancel", null));
       AppMethodBeat.o(46571);
@@ -48,17 +48,17 @@ public final class JsApiChooseVideo
     ChooseRequest localChooseRequest = new ChooseRequest();
     JSONArray localJSONArray = paramJSONObject.optJSONArray("sourceType");
     String str = paramJSONObject.optString("maxDuration");
-    ad.i("MicroMsg.JsApiChooseVideo", "doChooseVideo sourceType = %s, maxDuration = %s", new Object[] { localJSONArray, str });
+    ae.i("MicroMsg.JsApiChooseVideo", "doChooseVideo sourceType = %s, maxDuration = %s", new Object[] { localJSONArray, str });
     int i;
     if ((localJSONArray == null) || (localJSONArray.length() == 0))
     {
-      localChooseRequest.kTo = true;
-      localChooseRequest.kTp = true;
-      localChooseRequest.kUy = paramJSONObject.optBoolean("compressed", true);
-      if (!localChooseRequest.kTo) {
+      localChooseRequest.kWX = true;
+      localChooseRequest.kWY = true;
+      localChooseRequest.kYh = paramJSONObject.optBoolean("compressed", true);
+      if (!localChooseRequest.kWX) {
         break label304;
       }
-      p.a(paramc.getAppId(), new a.a()
+      r.a(paramc.getAppId(), new a.a()
       {
         public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
         {
@@ -92,31 +92,31 @@ public final class JsApiChooseVideo
       }
       AppMethodBeat.o(46571);
       return;
-      localChooseRequest.kTo = localJSONArray.toString().contains("camera");
-      localChooseRequest.kTp = localJSONArray.toString().contains("album");
+      localChooseRequest.kWX = localJSONArray.toString().contains("camera");
+      localChooseRequest.kWY = localJSONArray.toString().contains("album");
       break;
       label262:
       boolean bool = b.a((Activity)paramJSONObject, "android.permission.CAMERA", 115, "", "");
       i = bool;
       if (bool)
       {
-        p.TS(paramc.getAppId());
+        r.UC(paramc.getAppId());
         i = bool;
       }
     }
     label304:
-    kUw = true;
-    g.a(paramc.getAppId(), new g.c()
+    kYf = true;
+    h.a(paramc.getAppId(), new h.c()
     {
       public final void onResume()
       {
         AppMethodBeat.i(46544);
-        JsApiChooseVideo.Jy();
-        g.b(paramc.getAppId(), this);
+        JsApiChooseVideo.JG();
+        h.b(paramc.getAppId(), this);
         AppMethodBeat.o(46544);
       }
     });
-    localChooseRequest.maxDuration = bt.getInt(str, 60);
+    localChooseRequest.maxDuration = bu.getInt(str, 60);
     localChooseRequest.appId = paramc.getAppId();
     com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, localChooseRequest, new AppBrandProxyUIProcessTask.b() {});
     AppMethodBeat.o(46571);
@@ -127,9 +127,9 @@ public final class JsApiChooseVideo
   {
     public static final Parcelable.Creator<ChooseRequest> CREATOR;
     String appId;
-    boolean kTo;
-    boolean kTp;
-    boolean kUy;
+    boolean kWX;
+    boolean kWY;
+    boolean kYh;
     int maxDuration;
     
     static
@@ -148,17 +148,17 @@ public final class JsApiChooseVideo
       AppMethodBeat.o(46550);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+    public final Class<? extends AppBrandProxyUIProcessTask> bhv()
     {
       return JsApiChooseVideo.a.class;
     }
     
-    public final boolean bhR()
+    public final boolean biA()
     {
       return true;
     }
     
-    public final String bhS()
+    public final String biB()
     {
       return "GalleryChooseVideo";
     }
@@ -177,13 +177,13 @@ public final class JsApiChooseVideo
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.kTo = bool1;
+        this.kWX = bool1;
         if (paramParcel.readByte() == 0) {
           break label76;
         }
         bool1 = true;
         label46:
-        this.kTp = bool1;
+        this.kWY = bool1;
         if (paramParcel.readByte() == 0) {
           break label81;
         }
@@ -192,7 +192,7 @@ public final class JsApiChooseVideo
       label81:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.kUy = bool1;
+        this.kYh = bool1;
         AppMethodBeat.o(46548);
         return;
         bool1 = false;
@@ -208,17 +208,17 @@ public final class JsApiChooseVideo
       AppMethodBeat.i(46549);
       paramParcel.writeString(this.appId);
       paramParcel.writeInt(this.maxDuration);
-      if (this.kTo)
+      if (this.kWX)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.kTp) {
+        if (!this.kWY) {
           break label78;
         }
         b1 = 1;
         label47:
         paramParcel.writeByte(b1);
-        if (!this.kUy) {
+        if (!this.kYh) {
           break label83;
         }
       }
@@ -242,7 +242,7 @@ public final class JsApiChooseVideo
   {
     public static final Parcelable.Creator<ChooseResult> CREATOR;
     int bZU;
-    AppBrandLocalVideoObject kUz;
+    AppBrandLocalVideoObject kYi;
     
     static
     {
@@ -269,7 +269,7 @@ public final class JsApiChooseVideo
     {
       AppMethodBeat.i(46553);
       this.bZU = paramParcel.readInt();
-      this.kUz = ((AppBrandLocalVideoObject)paramParcel.readParcelable(AppBrandLocalVideoObject.class.getClassLoader()));
+      this.kYi = ((AppBrandLocalVideoObject)paramParcel.readParcelable(AppBrandLocalVideoObject.class.getClassLoader()));
       AppMethodBeat.o(46553);
     }
     
@@ -277,7 +277,7 @@ public final class JsApiChooseVideo
     {
       AppMethodBeat.i(46554);
       paramParcel.writeInt(this.bZU);
-      paramParcel.writeParcelable(this.kUz, paramInt);
+      paramParcel.writeParcelable(this.kYi, paramInt);
       AppMethodBeat.o(46554);
     }
   }

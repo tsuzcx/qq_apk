@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,53 +11,53 @@ import org.json.JSONObject;
 public final class p
   extends m
 {
-  public boolean CIk;
+  public boolean CZQ;
   private String token;
-  private Map<String, String> wyE;
+  private Map<String, String> wOp;
   
   public p(Authen paramAuthen, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(69567);
     this.token = null;
-    this.wyE = new HashMap();
-    this.wyE.put("flag", paramAuthen.dDp);
-    if (!bt.isNullOrNil(paramAuthen.CTW))
+    this.wOp = new HashMap();
+    this.wOp.put("flag", paramAuthen.dEu);
+    if (!bu.isNullOrNil(paramAuthen.DlC))
     {
-      this.wyE.put("first_name", paramAuthen.CTW);
-      this.wyE.put("last_name", paramAuthen.CTX);
-      this.wyE.put("country", paramAuthen.country);
-      this.wyE.put("area", paramAuthen.ePu);
-      this.wyE.put("city", paramAuthen.ePv);
-      this.wyE.put("address", paramAuthen.hWY);
-      this.wyE.put("phone_number", paramAuthen.uJH);
-      this.wyE.put("zip_code", paramAuthen.jrN);
-      this.wyE.put("email", paramAuthen.ePn);
+      this.wOp.put("first_name", paramAuthen.DlC);
+      this.wOp.put("last_name", paramAuthen.DlD);
+      this.wOp.put("country", paramAuthen.country);
+      this.wOp.put("area", paramAuthen.eRf);
+      this.wOp.put("city", paramAuthen.eRg);
+      this.wOp.put("address", paramAuthen.hZQ);
+      this.wOp.put("phone_number", paramAuthen.uVu);
+      this.wOp.put("zip_code", paramAuthen.juG);
+      this.wOp.put("email", paramAuthen.eQY);
     }
-    this.wyE.put("business_source", String.valueOf(paramInt));
-    this.wyE.put("bank_type", paramAuthen.dkR);
-    if (paramAuthen.CTR > 0) {
-      this.wyE.put("cre_type", paramAuthen.CTR);
+    this.wOp.put("business_source", String.valueOf(paramInt));
+    this.wOp.put("bank_type", paramAuthen.dlT);
+    if (paramAuthen.Dlx > 0) {
+      this.wOp.put("cre_type", paramAuthen.Dlx);
     }
-    if (!bt.isNullOrNil(paramAuthen.CTa)) {
-      this.wyE.put("true_name", paramAuthen.CTa);
+    if (!bu.isNullOrNil(paramAuthen.DkG)) {
+      this.wOp.put("true_name", paramAuthen.DkG);
     }
-    if (!bt.isNullOrNil(paramAuthen.CTQ)) {
-      this.wyE.put("identify_card", paramAuthen.CTQ);
+    if (!bu.isNullOrNil(paramAuthen.Dlw)) {
+      this.wOp.put("identify_card", paramAuthen.Dlw);
     }
-    this.wyE.put("mobile_no", paramAuthen.CPf);
-    this.wyE.put("bank_card_id", paramAuthen.CTS);
-    if (!bt.isNullOrNil(paramAuthen.CTT)) {
-      this.wyE.put("cvv2", paramAuthen.CTT);
+    this.wOp.put("mobile_no", paramAuthen.DgJ);
+    this.wOp.put("bank_card_id", paramAuthen.Dly);
+    if (!bu.isNullOrNil(paramAuthen.Dlz)) {
+      this.wOp.put("cvv2", paramAuthen.Dlz);
     }
-    if (!bt.isNullOrNil(paramAuthen.CTU)) {
-      this.wyE.put("valid_thru", paramAuthen.CTU);
+    if (!bu.isNullOrNil(paramAuthen.DlA)) {
+      this.wOp.put("valid_thru", paramAuthen.DlA);
     }
-    Map localMap = this.wyE;
+    Map localMap = this.wOp;
     if (paramBoolean) {}
     for (paramAuthen = "1";; paramAuthen = "0")
     {
       localMap.put("new_card_reset_pwd", paramAuthen);
-      setRequestData(this.wyE);
+      setRequestData(this.wOp);
       AppMethodBeat.o(69567);
       return;
     }
@@ -96,16 +96,16 @@ public final class p
   {
     AppMethodBeat.i(69568);
     super.resend();
-    this.wyE.put("is_repeat_send", "1");
-    setRequestData(this.wyE);
-    this.CIk = true;
+    this.wOp.put("is_repeat_send", "1");
+    setRequestData(this.wOp);
+    this.CZQ = true;
     AppMethodBeat.o(69568);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.p
  * JD-Core Version:    0.7.0.1
  */

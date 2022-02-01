@@ -10,41 +10,39 @@ import java.util.HashMap;
 
 public class d
 {
-  public volatile c IgU;
-  volatile HandlerThread IgV;
+  public volatile c IBf;
+  volatile HandlerThread IBg;
   public String mName;
   
   protected d(String paramString, Looper paramLooper)
   {
     AppMethodBeat.i(158037);
     this.mName = paramString;
-    this.IgU = new c(paramLooper, this, (byte)0);
+    this.IBf = new c(paramLooper, this, (byte)0);
     AppMethodBeat.o(158037);
   }
   
   private Message obtainMessage(int paramInt)
   {
     AppMethodBeat.i(158044);
-    Message localMessage = Message.obtain(this.IgU, paramInt);
+    Message localMessage = Message.obtain(this.IBf, paramInt);
     AppMethodBeat.o(158044);
     return localMessage;
   }
   
-  protected void LT(String paramString) {}
+  protected void Mx(String paramString) {}
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(158038);
-    c.a(this.IgU, paramc);
+    c.a(this.IBf, paramc);
     AppMethodBeat.o(158038);
   }
   
-  protected void aZP() {}
-  
-  public final void aaA(int paramInt)
+  public final void abg(int paramInt)
   {
     AppMethodBeat.i(158046);
-    c localc = this.IgU;
+    c localc = this.IBf;
     if (localc == null)
     {
       AppMethodBeat.o(158046);
@@ -57,21 +55,23 @@ public class d
   public final void b(a parama)
   {
     AppMethodBeat.i(158042);
-    c.a(this.IgU, parama);
+    c.a(this.IBf, parama);
     AppMethodBeat.o(158042);
   }
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(158039);
-    c.b(this.IgU, paramc);
+    c.b(this.IBf, paramc);
     AppMethodBeat.o(158039);
   }
   
-  protected final Message fme()
+  protected void bao() {}
+  
+  protected final Message fpZ()
   {
     AppMethodBeat.i(158040);
-    Object localObject = this.IgU;
+    Object localObject = this.IBf;
     if (localObject == null)
     {
       AppMethodBeat.o(158040);
@@ -82,10 +82,10 @@ public class d
     return localObject;
   }
   
-  public final a fmf()
+  public final a fqa()
   {
     AppMethodBeat.i(158041);
-    Object localObject = this.IgU;
+    Object localObject = this.IBf;
     if (localObject == null)
     {
       AppMethodBeat.o(158041);
@@ -104,8 +104,8 @@ public class d
   protected void j(Message paramMessage)
   {
     AppMethodBeat.i(158043);
-    if (c.d(this.IgU)) {
-      LT(" - unhandledMessage: msg.what=" + paramMessage.what);
+    if (c.d(this.IBf)) {
+      Mx(" - unhandledMessage: msg.what=" + paramMessage.what);
     }
     AppMethodBeat.o(158043);
   }
@@ -115,7 +115,7 @@ public class d
   public final Message obtainMessage(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(158045);
-    paramObject = Message.obtain(this.IgU, paramInt, paramObject);
+    paramObject = Message.obtain(this.IBf, paramInt, paramObject);
     AppMethodBeat.o(158045);
     return paramObject;
   }
@@ -123,7 +123,7 @@ public class d
   public final void quit()
   {
     AppMethodBeat.i(158048);
-    c localc = this.IgU;
+    c localc = this.IBf;
     if (localc == null)
     {
       AppMethodBeat.o(158048);
@@ -135,21 +135,21 @@ public class d
   
   public final void r(Message paramMessage)
   {
-    AppMethodBeat.i(194962);
-    c localc = this.IgU;
+    AppMethodBeat.i(200311);
+    c localc = this.IBf;
     if (localc == null)
     {
-      AppMethodBeat.o(194962);
+      AppMethodBeat.o(200311);
       return;
     }
     localc.sendMessage(paramMessage);
-    AppMethodBeat.o(194962);
+    AppMethodBeat.o(200311);
   }
   
   public void start()
   {
     AppMethodBeat.i(158051);
-    c localc = this.IgU;
+    c localc = this.IBf;
     if (localc == null)
     {
       AppMethodBeat.o(158051);
@@ -159,10 +159,10 @@ public class d
     AppMethodBeat.o(158051);
   }
   
-  public final void wM(boolean paramBoolean)
+  public final void wU(boolean paramBoolean)
   {
     AppMethodBeat.i(158050);
-    c localc = this.IgU;
+    c localc = this.IBf;
     if (localc == null)
     {
       AppMethodBeat.o(158050);
@@ -175,28 +175,28 @@ public class d
   public static final class c
     extends Handler
   {
-    private static final Object Ihi;
-    private d IgW;
-    private boolean Ihg;
-    private boolean Ihh;
-    private Message Ihj;
-    private d.b Ihk;
-    private boolean Ihl;
-    private c[] Ihm;
-    private int Ihn;
-    private c[] Iho;
-    private int Ihp;
-    private a Ihq;
-    private b Ihr;
-    private HashMap<c, c> Ihs;
-    private c Iht;
-    private c Ihu;
-    private ArrayList<Message> Ihv;
+    private static final Object IBt;
+    private int IBA;
+    private a IBB;
+    private b IBC;
+    private HashMap<c, c> IBD;
+    private c IBE;
+    private c IBF;
+    private ArrayList<Message> IBG;
+    private d IBh;
+    private boolean IBr;
+    private boolean IBs;
+    private Message IBu;
+    private d.b IBv;
+    private boolean IBw;
+    private c[] IBx;
+    private int IBy;
+    private c[] IBz;
     
     static
     {
       AppMethodBeat.i(158036);
-      Ihi = new Object();
+      IBt = new Object();
       AppMethodBeat.o(158036);
     }
     
@@ -204,101 +204,101 @@ public class d
     {
       super();
       AppMethodBeat.i(158027);
-      this.Ihg = false;
-      this.Ihh = false;
-      this.Ihk = new d.b((byte)0);
-      this.Ihn = -1;
-      this.Ihq = new a((byte)0);
-      this.Ihr = new b((byte)0);
-      this.Ihs = new HashMap();
-      this.Ihv = new ArrayList();
-      this.IgW = paramd;
-      c(this.Ihq);
-      c(this.Ihr);
+      this.IBr = false;
+      this.IBs = false;
+      this.IBv = new d.b((byte)0);
+      this.IBy = -1;
+      this.IBB = new a((byte)0);
+      this.IBC = new b((byte)0);
+      this.IBD = new HashMap();
+      this.IBG = new ArrayList();
+      this.IBh = paramd;
+      c(this.IBB);
+      c(this.IBC);
       AppMethodBeat.o(158027);
     }
     
     private void a(c paramc, Message paramMessage)
     {
       AppMethodBeat.i(158020);
-      Object localObject = this.Ihm[this.Ihn].Ihx;
+      Object localObject = this.IBx[this.IBy].IBI;
       int i;
-      if ((this.IgW.i(this.Ihj)) && (paramMessage.obj != Ihi))
+      if ((this.IBh.i(this.IBu)) && (paramMessage.obj != IBt))
       {
         i = 1;
-        if (!this.Ihk.fmg()) {
+        if (!this.IBv.fqb()) {
           break label255;
         }
-        if (this.Ihu != null) {
-          this.Ihk.b(this.IgW, this.Ihj, "", paramc, (a)localObject, this.Ihu);
+        if (this.IBF != null) {
+          this.IBv.b(this.IBh, this.IBu, "", paramc, (a)localObject, this.IBF);
         }
       }
       for (;;)
       {
-        paramc = this.Ihu;
+        paramc = this.IBF;
         if (paramc == null) {
           break label405;
         }
         for (;;)
         {
-          if (this.Ihh) {
-            this.IgW.log("handleMessage: new destination call exit/enter");
+          if (this.IBs) {
+            this.IBh.log("handleMessage: new destination call exit/enter");
           }
-          this.Ihp = 0;
-          paramMessage = (c)this.Ihs.get(paramc);
+          this.IBA = 0;
+          paramMessage = (c)this.IBD.get(paramc);
           do
           {
-            localObject = this.Iho;
-            i = this.Ihp;
-            this.Ihp = (i + 1);
+            localObject = this.IBz;
+            i = this.IBA;
+            this.IBA = (i + 1);
             localObject[i] = paramMessage;
-            localObject = paramMessage.Ihy;
+            localObject = paramMessage.IBJ;
             if (localObject == null) {
               break;
             }
             paramMessage = (Message)localObject;
           } while (!((c)localObject).active);
-          if (this.Ihh) {
-            this.IgW.log("setupTempStateStackWithStatesToEnter: X mTempStateStackCount=" + this.Ihp + ",curStateInfo: " + localObject);
+          if (this.IBs) {
+            this.IBh.log("setupTempStateStackWithStatesToEnter: X mTempStateStackCount=" + this.IBA + ",curStateInfo: " + localObject);
           }
           a((c)localObject);
-          aaB(fmi());
-          fmh();
-          if (paramc == this.Ihu) {
+          abh(fqd());
+          fqc();
+          if (paramc == this.IBF) {
             break;
           }
-          paramc = this.Ihu;
+          paramc = this.IBF;
         }
         i = 0;
         break;
         label255:
         if (i != 0) {
-          this.Ihk.b(this.IgW, this.Ihj, "", paramc, (a)localObject, this.Ihu);
+          this.IBv.b(this.IBh, this.IBu, "", paramc, (a)localObject, this.IBF);
         }
       }
-      this.Ihu = null;
+      this.IBF = null;
       label405:
       for (;;)
       {
-        if ((paramc != null) && (paramc == this.Ihr))
+        if ((paramc != null) && (paramc == this.IBC))
         {
-          this.IgW.aZP();
-          if (this.IgW.IgV != null)
+          this.IBh.bao();
+          if (this.IBh.IBg != null)
           {
             getLooper().quit();
-            this.IgW.IgV = null;
+            this.IBh.IBg = null;
           }
-          this.IgW.IgU = null;
-          this.IgW = null;
-          this.Ihj = null;
-          this.Ihk.cleanup();
-          this.Ihm = null;
-          this.Iho = null;
-          this.Ihs.clear();
-          this.Iht = null;
-          this.Ihu = null;
-          this.Ihv.clear();
-          this.Ihg = true;
+          this.IBh.IBf = null;
+          this.IBh = null;
+          this.IBu = null;
+          this.IBv.cleanup();
+          this.IBx = null;
+          this.IBz = null;
+          this.IBD.clear();
+          this.IBE = null;
+          this.IBF = null;
+          this.IBG.clear();
+          this.IBr = true;
         }
         AppMethodBeat.o(158020);
         return;
@@ -308,29 +308,29 @@ public class d
     private final void a(c paramc)
     {
       AppMethodBeat.i(158022);
-      while ((this.Ihn >= 0) && (this.Ihm[this.Ihn] != paramc))
+      while ((this.IBy >= 0) && (this.IBx[this.IBy] != paramc))
       {
-        c localc = this.Ihm[this.Ihn].Ihx;
-        if (this.Ihh) {
-          this.IgW.log("invokeExitMethods: " + localc.getName());
+        c localc = this.IBx[this.IBy].IBI;
+        if (this.IBs) {
+          this.IBh.log("invokeExitMethods: " + localc.getName());
         }
         localc.exit();
-        this.Ihm[this.Ihn].active = false;
-        this.Ihn -= 1;
+        this.IBx[this.IBy].active = false;
+        this.IBy -= 1;
       }
       AppMethodBeat.o(158022);
     }
     
-    private final void aaB(int paramInt)
+    private final void abh(int paramInt)
     {
       AppMethodBeat.i(158023);
-      while (paramInt <= this.Ihn)
+      while (paramInt <= this.IBy)
       {
-        if (this.Ihh) {
-          this.IgW.log("invokeEnterMethods: " + this.Ihm[paramInt].Ihx.getName());
+        if (this.IBs) {
+          this.IBh.log("invokeEnterMethods: " + this.IBx[paramInt].IBI.getName());
         }
-        this.Ihm[paramInt].Ihx.enter();
-        this.Ihm[paramInt].active = true;
+        this.IBx[paramInt].IBI.enter();
+        this.IBx[paramInt].active = true;
         paramInt += 1;
       }
       AppMethodBeat.o(158023);
@@ -339,9 +339,9 @@ public class d
     private final void b(a parama)
     {
       AppMethodBeat.i(158028);
-      this.Ihu = ((c)parama);
-      if (this.Ihh) {
-        this.IgW.log("transitionTo: destState=" + this.Ihu.getName());
+      this.IBF = ((c)parama);
+      if (this.IBs) {
+        this.IBh.log("transitionTo: destState=" + this.IBF.getName());
       }
       AppMethodBeat.o(158028);
     }
@@ -349,67 +349,67 @@ public class d
     private final c c(c paramc)
     {
       AppMethodBeat.i(158026);
-      if (this.Ihh) {
-        this.IgW.log("addStateInternal: E state=" + paramc.getName() + ",parent=");
+      if (this.IBs) {
+        this.IBh.log("addStateInternal: E state=" + paramc.getName() + ",parent=");
       }
-      c localc2 = (c)this.Ihs.get(paramc);
+      c localc2 = (c)this.IBD.get(paramc);
       c localc1 = localc2;
       if (localc2 == null)
       {
         localc1 = new c((byte)0);
-        this.Ihs.put(paramc, localc1);
+        this.IBD.put(paramc, localc1);
       }
-      if ((localc1.Ihy != null) && (localc1.Ihy != null))
+      if ((localc1.IBJ != null) && (localc1.IBJ != null))
       {
         paramc = new RuntimeException("state already added");
         AppMethodBeat.o(158026);
         throw paramc;
       }
-      localc1.Ihx = paramc;
-      localc1.Ihy = null;
+      localc1.IBI = paramc;
+      localc1.IBJ = null;
       localc1.active = false;
-      if (this.Ihh) {
-        this.IgW.log("addStateInternal: X stateInfo: ".concat(String.valueOf(localc1)));
+      if (this.IBs) {
+        this.IBh.log("addStateInternal: X stateInfo: ".concat(String.valueOf(localc1)));
       }
       AppMethodBeat.o(158026);
       return localc1;
     }
     
-    private final void fmh()
+    private final void fqc()
     {
       AppMethodBeat.i(158024);
-      int i = this.Ihv.size() - 1;
+      int i = this.IBG.size() - 1;
       while (i >= 0)
       {
-        Message localMessage = (Message)this.Ihv.get(i);
-        if (this.Ihh) {
-          this.IgW.log("moveDeferredMessageAtFrontOfQueue; what=" + localMessage.what);
+        Message localMessage = (Message)this.IBG.get(i);
+        if (this.IBs) {
+          this.IBh.log("moveDeferredMessageAtFrontOfQueue; what=" + localMessage.what);
         }
         sendMessageAtFrontOfQueue(localMessage);
         i -= 1;
       }
-      this.Ihv.clear();
+      this.IBG.clear();
       AppMethodBeat.o(158024);
     }
     
-    private final int fmi()
+    private final int fqd()
     {
       AppMethodBeat.i(158025);
-      int k = this.Ihn + 1;
-      int i = this.Ihp - 1;
+      int k = this.IBy + 1;
+      int i = this.IBA - 1;
       int j = k;
       while (i >= 0)
       {
-        if (this.Ihh) {
-          this.IgW.log("moveTempStackToStateStack: i=" + i + ",j=" + j);
+        if (this.IBs) {
+          this.IBh.log("moveTempStackToStateStack: i=" + i + ",j=" + j);
         }
-        this.Ihm[j] = this.Iho[i];
+        this.IBx[j] = this.IBz[i];
         j += 1;
         i -= 1;
       }
-      this.Ihn = (j - 1);
-      if (this.Ihh) {
-        this.IgW.log("moveTempStackToStateStack: X mStateStackTop=" + this.Ihn + ",startingIndex=" + k + ",Top=" + this.Ihm[this.Ihn].Ihx.getName());
+      this.IBy = (j - 1);
+      if (this.IBs) {
+        this.IBh.log("moveTempStackToStateStack: X mStateStackTop=" + this.IBy + ",startingIndex=" + k + ",Top=" + this.IBx[this.IBy].IBI.getName());
       }
       AppMethodBeat.o(158025);
       return k;
@@ -418,27 +418,27 @@ public class d
     private final c s(Message paramMessage)
     {
       AppMethodBeat.i(158021);
-      Object localObject2 = this.Ihm[this.Ihn];
-      if (this.Ihh) {
-        this.IgW.log("processMsg: " + ((c)localObject2).Ihx.getName());
+      Object localObject2 = this.IBx[this.IBy];
+      if (this.IBs) {
+        this.IBh.log("processMsg: " + ((c)localObject2).IBI.getName());
       }
       int i;
       Object localObject1;
-      if ((paramMessage.what == -1) && (paramMessage.obj == Ihi))
+      if ((paramMessage.what == -1) && (paramMessage.obj == IBt))
       {
         i = 1;
         localObject1 = localObject2;
         if (i == 0) {
           break label158;
         }
-        b(this.Ihr);
+        b(this.IBC);
       }
       for (;;)
       {
         if (localObject2 == null) {
           break label194;
         }
-        paramMessage = ((c)localObject2).Ihx;
+        paramMessage = ((c)localObject2).IBI;
         AppMethodBeat.o(158021);
         return paramMessage;
         i = 0;
@@ -447,18 +447,18 @@ public class d
         do
         {
           localObject1 = localObject2;
-          if (this.Ihh)
+          if (this.IBs)
           {
-            this.IgW.log("processMsg: " + ((c)localObject2).Ihx.getName());
+            this.IBh.log("processMsg: " + ((c)localObject2).IBI.getName());
             localObject1 = localObject2;
           }
           localObject2 = localObject1;
-          if (localObject1.Ihx.k(paramMessage)) {
+          if (localObject1.IBI.k(paramMessage)) {
             break;
           }
-          localObject2 = localObject1.Ihy;
+          localObject2 = localObject1.IBJ;
         } while (localObject2 != null);
-        this.IgW.j(paramMessage);
+        this.IBh.j(paramMessage);
       }
       label194:
       AppMethodBeat.o(158021);
@@ -469,14 +469,14 @@ public class d
     {
       AppMethodBeat.i(158019);
       c localc;
-      if (!this.Ihg)
+      if (!this.IBr)
       {
-        if (this.Ihh) {
-          this.IgW.log("handleMessage: E msg.what=" + paramMessage.what);
+        if (this.IBs) {
+          this.IBh.log("handleMessage: E msg.what=" + paramMessage.what);
         }
-        this.Ihj = paramMessage;
+        this.IBu = paramMessage;
         localc = null;
-        if (!this.Ihl) {
+        if (!this.IBw) {
           break label104;
         }
         localc = s(paramMessage);
@@ -484,17 +484,17 @@ public class d
       for (;;)
       {
         a(localc, paramMessage);
-        if ((this.Ihh) && (this.IgW != null)) {
-          this.IgW.log("handleMessage: X");
+        if ((this.IBs) && (this.IBh != null)) {
+          this.IBh.log("handleMessage: X");
         }
         AppMethodBeat.o(158019);
         return;
         label104:
-        if ((this.Ihl) || (this.Ihj.what != -2) || (this.Ihj.obj != Ihi)) {
+        if ((this.IBw) || (this.IBu.what != -2) || (this.IBu.obj != IBt)) {
           break;
         }
-        this.Ihl = true;
-        aaB(0);
+        this.IBw = true;
+        abh(0);
       }
       paramMessage = new RuntimeException("StateMachine.handleMessage: The start method not called, received msg: ".concat(String.valueOf(paramMessage)));
       AppMethodBeat.o(158019);
@@ -527,8 +527,8 @@ public class d
     
     final class c
     {
-      c Ihx;
-      c Ihy;
+      c IBI;
+      c IBJ;
       boolean active;
       
       private c() {}
@@ -536,9 +536,9 @@ public class d
       public final String toString()
       {
         AppMethodBeat.i(158018);
-        StringBuilder localStringBuilder = new StringBuilder("state=").append(this.Ihx.getName()).append(",active=").append(this.active).append(",parent=");
-        if (this.Ihy == null) {}
-        for (String str = "null";; str = this.Ihy.Ihx.getName())
+        StringBuilder localStringBuilder = new StringBuilder("state=").append(this.IBI.getName()).append(",active=").append(this.active).append(",parent=");
+        if (this.IBJ == null) {}
+        for (String str = "null";; str = this.IBJ.IBI.getName())
         {
           str = str;
           AppMethodBeat.o(158018);
@@ -550,7 +550,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.d.d
  * JD-Core Version:    0.7.0.1
  */

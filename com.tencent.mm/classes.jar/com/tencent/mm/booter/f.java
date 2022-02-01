@@ -5,27 +5,29 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.network.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 
 public final class f
 {
-  NetworkInfo fEn = null;
-  String fEo = "";
-  String fEp = "";
-  int fEq = -1;
+  NetworkInfo fGr = null;
+  String fGs = "";
+  String fGt = "";
+  int fGu = -1;
   
-  final boolean WG()
+  final boolean WO()
   {
     Object localObject1 = null;
     AppMethodBeat.i(131895);
     try
     {
-      Object localObject2 = (ConnectivityManager)com.tencent.mm.network.ad.getContext().getSystemService("connectivity");
+      Object localObject2 = (ConnectivityManager)ad.getContext().getSystemService("connectivity");
       if (localObject2 == null)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetworkChangeMgr", "can't get ConnectivityManager");
-        this.fEn = null;
+        ae.w("MicroMsg.NetworkChangeMgr", "can't get ConnectivityManager");
+        this.fGr = null;
         AppMethodBeat.o(131895);
         return false;
       }
@@ -38,20 +40,20 @@ public final class f
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetworkChangeMgr", "getActiveNetworkInfo failed.");
+          ae.e("MicroMsg.NetworkChangeMgr", "getActiveNetworkInfo failed.");
         }
       }
       if (localObject1 == null)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetworkChangeMgr", "ActiveNetwork is null, has no network");
-        this.fEn = null;
+        ae.w("MicroMsg.NetworkChangeMgr", "ActiveNetwork is null, has no network");
+        this.fGr = null;
         AppMethodBeat.o(131895);
         return false;
       }
     }
     catch (Exception localException1)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetworkChangeMgr", localException1, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.NetworkChangeMgr", localException1, "", new Object[0]);
       AppMethodBeat.o(131895);
       return true;
     }
@@ -63,22 +65,22 @@ public final class f
     {
       if (i != 0)
       {
-        WifiInfo localWifiInfo = ay.getWifiInfo(aj.getContext());
+        WifiInfo localWifiInfo = az.getWifiInfo(ak.getContext());
         if (localWifiInfo != null)
         {
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetworkChangeMgr", "New Wifi Info:[%s][%s][%s]", new Object[] { localWifiInfo.getBSSID(), ay.iV(aj.getContext()), Integer.valueOf(localWifiInfo.getNetworkId()) });
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetworkChangeMgr", "OldWifi Info:[%s][%s][%s]", new Object[] { this.fEp, this.fEo, Integer.valueOf(this.fEq) });
-          if ((this.fEp.equals(localWifiInfo.getBSSID())) && (this.fEo.equals(ay.iV(aj.getContext()))) && (this.fEq == localWifiInfo.getNetworkId()))
+          ae.d("MicroMsg.NetworkChangeMgr", "New Wifi Info:[%s][%s][%s]", new Object[] { localWifiInfo.getBSSID(), az.ja(ak.getContext()), Integer.valueOf(localWifiInfo.getNetworkId()) });
+          ae.d("MicroMsg.NetworkChangeMgr", "OldWifi Info:[%s][%s][%s]", new Object[] { this.fGt, this.fGs, Integer.valueOf(this.fGu) });
+          if ((this.fGt.equals(localWifiInfo.getBSSID())) && (this.fGs.equals(az.ja(ak.getContext()))) && (this.fGu == localWifiInfo.getNetworkId()))
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetworkChangeMgr", "Same Wifi, do not NetworkChanged");
+            ae.w("MicroMsg.NetworkChangeMgr", "Same Wifi, do not NetworkChanged");
             AppMethodBeat.o(131895);
             return false;
             i = 0;
             continue;
           }
-          this.fEp = localWifiInfo.getBSSID();
-          this.fEo = ay.iV(aj.getContext());
-          this.fEq = localWifiInfo.getNetworkId();
+          this.fGt = localWifiInfo.getBSSID();
+          this.fGs = az.ja(ak.getContext());
+          this.fGu = localWifiInfo.getNetworkId();
         }
       }
     }
@@ -86,24 +88,24 @@ public final class f
     {
       if (i == 0)
       {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetworkChangeMgr", "New NetworkInfo:%s", new Object[] { localException1 });
-        if (this.fEn != null) {
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetworkChangeMgr", "Old NetworkInfo:%s", new Object[] { this.fEn });
+        ae.d("MicroMsg.NetworkChangeMgr", "New NetworkInfo:%s", new Object[] { localException1 });
+        if (this.fGr != null) {
+          ae.d("MicroMsg.NetworkChangeMgr", "Old NetworkInfo:%s", new Object[] { this.fGr });
         }
-        this.fEp = "";
-        this.fEo = "";
-        this.fEq = -1;
+        this.fGt = "";
+        this.fGs = "";
+        this.fGu = -1;
       }
-      this.fEn = localException1;
+      this.fGr = localException1;
       break;
-      if ((this.fEn != null) && (this.fEn.getExtraInfo() != null) && (localException1.getExtraInfo() != null) && (this.fEn.getExtraInfo().equals(localException1.getExtraInfo())) && (this.fEn.getSubtype() == localException1.getSubtype()) && (this.fEn.getType() == localException1.getType()))
+      if ((this.fGr != null) && (this.fGr.getExtraInfo() != null) && (localException1.getExtraInfo() != null) && (this.fGr.getExtraInfo().equals(localException1.getExtraInfo())) && (this.fGr.getSubtype() == localException1.getSubtype()) && (this.fGr.getType() == localException1.getType()))
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
+        ae.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
         AppMethodBeat.o(131895);
         return false;
       }
-    } while ((this.fEn == null) || (this.fEn.getExtraInfo() != null) || (localException1.getExtraInfo() != null) || (this.fEn.getSubtype() != localException1.getSubtype()) || (this.fEn.getType() != localException1.getType()));
-    com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
+    } while ((this.fGr == null) || (this.fGr.getExtraInfo() != null) || (localException1.getExtraInfo() != null) || (this.fGr.getSubtype() != localException1.getSubtype()) || (this.fGr.getType() != localException1.getType()));
+    ae.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
     AppMethodBeat.o(131895);
     return false;
   }

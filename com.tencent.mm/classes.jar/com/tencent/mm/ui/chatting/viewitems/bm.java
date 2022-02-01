@@ -2,11 +2,11 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 final class bm
 {
-  String KhF;
-  String KhG;
-  int KhH = -16777216;
-  int KhI = -16777216;
-  boolean KhJ = false;
+  String KDZ;
+  String KEa;
+  int KEb = -16777216;
+  int KEc = -16777216;
+  boolean KEd = false;
 }
 
 

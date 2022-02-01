@@ -34,7 +34,7 @@ public class CustomTabActivity
     {
       paramIntent = new Intent(CUSTOM_TAB_REDIRECT_ACTION);
       paramIntent.putExtra(CustomTabMainActivity.EXTRA_URL, getIntent().getDataString());
-      d.U(this).b(paramIntent);
+      d.V(this).b(paramIntent);
       this.closeReceiver = new BroadcastReceiver()
       {
         public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -44,7 +44,7 @@ public class CustomTabActivity
           AppMethodBeat.o(7600);
         }
       };
-      d.U(this).a(this.closeReceiver, new IntentFilter(DESTROY_ACTION));
+      d.V(this).a(this.closeReceiver, new IntentFilter(DESTROY_ACTION));
     }
     AppMethodBeat.o(7602);
   }
@@ -64,7 +64,7 @@ public class CustomTabActivity
   public void onDestroy()
   {
     AppMethodBeat.i(7603);
-    d.U(this).unregisterReceiver(this.closeReceiver);
+    d.V(this).unregisterReceiver(this.closeReceiver);
     super.onDestroy();
     AppMethodBeat.o(7603);
   }

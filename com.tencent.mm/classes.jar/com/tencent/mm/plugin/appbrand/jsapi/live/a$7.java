@@ -10,7 +10,7 @@ final class a$7
 {
   a$7(a parama, int paramInt, e parame) {}
   
-  public final void o(boolean paramBoolean, int paramInt)
+  public final void p(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(145852);
     a.b localb = new a.b((byte)0);
@@ -19,9 +19,9 @@ final class a$7
     {
       localJSONObject.put("fullScreen", paramBoolean);
       localJSONObject.put("direction", paramInt);
-      localJSONObject.put("livePlayerId", this.kCh);
+      localJSONObject.put("livePlayerId", this.kFw);
       label53:
-      this.kCd.b(localb.Pi(localJSONObject.toString()));
+      this.kFs.b(localb.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145852);
       return;
     }

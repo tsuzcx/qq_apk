@@ -5,17 +5,17 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class n
-  extends cvp
+  extends cwj
 {
-  public int dlw = 268513600;
-  public int iTC;
-  public int iTD;
-  public int iTE;
-  public long iTF;
-  public long iTG;
-  public String iTH;
-  public String iTI;
-  public String paA = "请求不成功，请稍候再试";
+  public int dmy = 268513600;
+  public String iWA;
+  public String iWB;
+  public int iWv;
+  public int iWw;
+  public int iWx;
+  public long iWy;
+  public long iWz;
+  public String phe = "请求不成功，请稍候再试";
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -31,23 +31,23 @@ public final class n
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.dlw);
-      if (this.paA != null) {
-        paramVarArgs.d(3, this.paA);
+      paramVarArgs.aS(2, this.dmy);
+      if (this.phe != null) {
+        paramVarArgs.d(3, this.phe);
       }
-      paramVarArgs.aS(4, this.iTC);
-      paramVarArgs.aS(5, this.iTD);
-      paramVarArgs.aS(6, this.iTE);
-      paramVarArgs.aY(7, this.iTF);
-      paramVarArgs.aY(8, this.iTG);
-      if (this.iTH != null) {
-        paramVarArgs.d(9, this.iTH);
+      paramVarArgs.aS(4, this.iWv);
+      paramVarArgs.aS(5, this.iWw);
+      paramVarArgs.aS(6, this.iWx);
+      paramVarArgs.aZ(7, this.iWy);
+      paramVarArgs.aZ(8, this.iWz);
+      if (this.iWA != null) {
+        paramVarArgs.d(9, this.iWA);
       }
-      if (this.iTI != null) {
-        paramVarArgs.d(10, this.iTI);
+      if (this.iWB != null) {
+        paramVarArgs.d(10, this.iWB);
       }
       AppMethodBeat.o(91325);
       return 0;
@@ -58,30 +58,30 @@ public final class n
       }
     }
     label806:
-    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.dlw);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.dmy);
       paramInt = i;
-      if (this.paA != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.paA);
+      if (this.phe != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.phe);
       }
-      i = paramInt + f.a.a.b.b.a.bz(4, this.iTC) + f.a.a.b.b.a.bz(5, this.iTD) + f.a.a.b.b.a.bz(6, this.iTE) + f.a.a.b.b.a.p(7, this.iTF) + f.a.a.b.b.a.p(8, this.iTG);
+      i = paramInt + f.a.a.b.b.a.bz(4, this.iWv) + f.a.a.b.b.a.bz(5, this.iWw) + f.a.a.b.b.a.bz(6, this.iWx) + f.a.a.b.b.a.p(7, this.iWy) + f.a.a.b.b.a.p(8, this.iWz);
       paramInt = i;
-      if (this.iTH != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.iTH);
+      if (this.iWA != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.iWA);
       }
       i = paramInt;
-      if (this.iTI != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.iTI);
+      if (this.iWB != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.iWB);
       }
       AppMethodBeat.o(91325);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.BaseResponse == null)
@@ -104,7 +104,7 @@ public final class n
           AppMethodBeat.o(91325);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -112,46 +112,46 @@ public final class n
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localn.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91325);
           return 0;
         case 2: 
-          localn.dlw = ((f.a.a.a.a)localObject1).NPN.zc();
+          localn.dmy = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91325);
           return 0;
         case 3: 
-          localn.paA = ((f.a.a.a.a)localObject1).NPN.readString();
+          localn.phe = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91325);
           return 0;
         case 4: 
-          localn.iTC = ((f.a.a.a.a)localObject1).NPN.zc();
+          localn.iWv = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91325);
           return 0;
         case 5: 
-          localn.iTD = ((f.a.a.a.a)localObject1).NPN.zc();
+          localn.iWw = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91325);
           return 0;
         case 6: 
-          localn.iTE = ((f.a.a.a.a)localObject1).NPN.zc();
+          localn.iWx = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91325);
           return 0;
         case 7: 
-          localn.iTF = ((f.a.a.a.a)localObject1).NPN.zd();
+          localn.iWy = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(91325);
           return 0;
         case 8: 
-          localn.iTG = ((f.a.a.a.a)localObject1).NPN.zd();
+          localn.iWz = ((f.a.a.a.a)localObject1).OmT.zd();
           AppMethodBeat.o(91325);
           return 0;
         case 9: 
-          localn.iTH = ((f.a.a.a.a)localObject1).NPN.readString();
+          localn.iWA = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91325);
           return 0;
         }
-        localn.iTI = ((f.a.a.a.a)localObject1).NPN.readString();
+        localn.iWB = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(91325);
         return 0;
       }

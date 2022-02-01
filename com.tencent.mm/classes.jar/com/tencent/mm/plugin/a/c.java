@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -20,7 +21,7 @@ public final class c
     return l;
   }
   
-  public static boolean Ja(String paramString)
+  public static boolean Jz(String paramString)
   {
     AppMethodBeat.i(133852);
     if (isNullOrNil(paramString))
@@ -32,7 +33,7 @@ public final class c
     String str = null;
     try
     {
-      paramString = com.tencent.mm.vfs.i.openRead(paramString);
+      paramString = o.openRead(paramString);
       str = paramString;
       localObject = paramString;
       byte[] arrayOfByte = new byte[8];
@@ -52,7 +53,7 @@ public final class c
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
           }
         }
       }
@@ -78,7 +79,7 @@ public final class c
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
           }
         }
       }
@@ -93,7 +94,7 @@ public final class c
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
         }
       }
       try
@@ -106,14 +107,14 @@ public final class c
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AtomUtil", localIOException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AtomUtil", localIOException, "", new Object[0]);
         }
       }
     }
     catch (Exception paramString)
     {
       localObject = str;
-      ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
       if (str != null) {}
       try
       {
@@ -125,7 +126,7 @@ public final class c
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
         }
       }
     }
@@ -160,8 +161,8 @@ public final class c
         int i;
         int j;
         int k;
-        ad.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
-        ad.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
+        ae.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
+        ae.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
         Object localObject1 = localObject2;
         continue;
       }
@@ -193,7 +194,7 @@ public final class c
     l += paramRandomAccessFile.skipBytes((int)paramLong);
     if (l != paramLong)
     {
-      ad.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
+      ae.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
       AppMethodBeat.o(133857);
       return false;
     }
@@ -243,7 +244,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.a.c
  * JD-Core Version:    0.7.0.1
  */

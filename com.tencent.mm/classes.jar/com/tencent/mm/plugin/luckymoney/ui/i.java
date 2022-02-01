@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.model.y;
 import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,33 +22,33 @@ public final class i
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  View.OnClickListener vBb;
-  b vBc;
-  private List<y> vjL;
-  String vjM;
-  boolean vjN;
-  int vjO;
+  View.OnClickListener vNf;
+  b vNg;
+  private List<y> vvQ;
+  String vvR;
+  boolean vvS;
+  int vvT;
   
   public i(Context paramContext)
   {
     AppMethodBeat.i(65925);
-    this.vjL = new LinkedList();
-    this.vjO = 1;
-    this.vBc = null;
+    this.vvQ = new LinkedList();
+    this.vvT = 1;
+    this.vNg = null;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(65925);
   }
   
-  private y JA(int paramInt)
+  private y JZ(int paramInt)
   {
     AppMethodBeat.i(65928);
-    y localy = (y)this.vjL.get(paramInt);
+    y localy = (y)this.vvQ.get(paramInt);
     AppMethodBeat.o(65928);
     return localy;
   }
   
-  public final void es(List<y> paramList)
+  public final void ew(List<y> paramList)
   {
     AppMethodBeat.i(65926);
     if (paramList == null) {
@@ -59,14 +59,14 @@ public final class i
       notifyDataSetChanged();
       AppMethodBeat.o(65926);
       return;
-      this.vjL = paramList;
+      this.vvQ = paramList;
     }
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(65927);
-    int i = this.vjL.size();
+    int i = this.vvQ.size();
     AppMethodBeat.o(65927);
     return i;
   }
@@ -83,67 +83,67 @@ public final class i
     {
       paramView = this.mInflater.inflate(2131494658, paramViewGroup, false);
       paramViewGroup = new c();
-      paramViewGroup.jCI = paramView.findViewById(2131304239);
-      paramViewGroup.pcD = ((ImageView)paramView.findViewById(2131301935));
-      paramViewGroup.upn = ((TextView)paramView.findViewById(2131301938));
-      paramViewGroup.vjQ = ((TextView)paramView.findViewById(2131301939));
-      paramViewGroup.vjR = ((TextView)paramView.findViewById(2131301933));
-      paramViewGroup.vjS = ((TextView)paramView.findViewById(2131301934));
-      paramViewGroup.vjT = ((TextView)paramView.findViewById(2131301940));
-      paramViewGroup.vjU = ((ImageView)paramView.findViewById(2131301936));
-      paramViewGroup.vjV = ((TextView)paramView.findViewById(2131301937));
-      if (this.vBc != null) {
-        this.vBc.a(paramViewGroup, this.mContext);
+      paramViewGroup.jFG = paramView.findViewById(2131304239);
+      paramViewGroup.pjj = ((ImageView)paramView.findViewById(2131301935));
+      paramViewGroup.uAJ = ((TextView)paramView.findViewById(2131301938));
+      paramViewGroup.vvV = ((TextView)paramView.findViewById(2131301939));
+      paramViewGroup.vvW = ((TextView)paramView.findViewById(2131301933));
+      paramViewGroup.vvX = ((TextView)paramView.findViewById(2131301934));
+      paramViewGroup.vvY = ((TextView)paramView.findViewById(2131301940));
+      paramViewGroup.vvZ = ((ImageView)paramView.findViewById(2131301936));
+      paramViewGroup.vwa = ((TextView)paramView.findViewById(2131301937));
+      if (this.vNg != null) {
+        this.vNg.a(paramViewGroup, this.mContext);
       }
       paramView.setTag(paramViewGroup);
     }
     y localy;
     for (;;)
     {
-      localy = JA(paramInt);
-      z.b(paramViewGroup.pcD, localy.vpB, localy.userName);
-      if ((!bt.nullAsNil(localy.vol).equals(this.vjM)) || (!this.vjN)) {
+      localy = JZ(paramInt);
+      z.b(paramViewGroup.pjj, localy.vBG, localy.userName);
+      if ((!bu.nullAsNil(localy.vAq).equals(this.vvR)) || (!this.vvS)) {
         break;
       }
-      paramViewGroup.vjT.setOnClickListener(this.vBb);
-      paramViewGroup.vjT.setVisibility(0);
-      paramViewGroup.vjS.setVisibility(8);
-      paramViewGroup.vjQ.setVisibility(8);
-      z.a(this.mContext, paramViewGroup.upn, localy.vpA);
-      String str = this.mContext.getString(2131760940, new Object[] { e.C(localy.vpn / 100.0D) });
-      paramViewGroup.vjR.setText(str);
-      if (!bt.isNullOrNil(localy.vpD)) {
+      paramViewGroup.vvY.setOnClickListener(this.vNf);
+      paramViewGroup.vvY.setVisibility(0);
+      paramViewGroup.vvX.setVisibility(8);
+      paramViewGroup.vvV.setVisibility(8);
+      z.a(this.mContext, paramViewGroup.uAJ, localy.vBF);
+      String str = this.mContext.getString(2131760940, new Object[] { f.C(localy.vBs / 100.0D) });
+      paramViewGroup.vvW.setText(str);
+      if (!bu.isNullOrNil(localy.vBI)) {
         break label453;
       }
-      paramViewGroup.vjU.setVisibility(8);
-      paramViewGroup.vjV.setVisibility(8);
+      paramViewGroup.vvZ.setVisibility(8);
+      paramViewGroup.vwa.setVisibility(8);
       AppMethodBeat.o(65929);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
     }
-    if (bt.isNullOrNil(localy.vpC)) {
-      paramViewGroup.vjS.setVisibility(8);
+    if (bu.isNullOrNil(localy.vBH)) {
+      paramViewGroup.vvX.setVisibility(8);
     }
     for (;;)
     {
-      paramViewGroup.vjQ.setText(z.n(this.mContext, bt.getLong(localy.vpo, 0L) * 1000L));
-      paramViewGroup.vjQ.setVisibility(0);
-      paramViewGroup.vjT.setVisibility(8);
+      paramViewGroup.vvV.setText(z.o(this.mContext, bu.getLong(localy.vBt, 0L) * 1000L));
+      paramViewGroup.vvV.setVisibility(0);
+      paramViewGroup.vvY.setVisibility(8);
       break;
-      z.a(this.mContext, paramViewGroup.vjS, localy.vpC);
-      paramViewGroup.vjS.setVisibility(0);
+      z.a(this.mContext, paramViewGroup.vvX, localy.vBH);
+      paramViewGroup.vvX.setVisibility(0);
     }
     label453:
-    paramViewGroup.vjV.setText(localy.vpD);
-    if (this.vjO == 2) {
-      paramViewGroup.vjU.setImageResource(2131233018);
+    paramViewGroup.vwa.setText(localy.vBI);
+    if (this.vvT == 2) {
+      paramViewGroup.vvZ.setImageResource(2131233018);
     }
     for (;;)
     {
-      paramViewGroup.vjU.setVisibility(0);
-      paramViewGroup.vjV.setVisibility(0);
+      paramViewGroup.vvZ.setVisibility(0);
+      paramViewGroup.vwa.setVisibility(0);
       break;
-      paramViewGroup.vjU.setImageResource(2131232964);
+      paramViewGroup.vvZ.setImageResource(2131232964);
     }
   }
   
@@ -158,13 +158,13 @@ public final class i
       int i = paramContext.getResources().getColor(2131100571);
       int j = paramContext.getResources().getColor(2131100572);
       int k = paramContext.getResources().getColor(2131100586);
-      paramc.jCI.setBackgroundResource(2131101053);
-      paramc.jCI.setPadding(0, paramContext.getResources().getDimensionPixelOffset(2131165500), 0, paramContext.getResources().getDimensionPixelOffset(2131165500));
-      paramc.upn.setTextColor(i);
-      paramc.vjQ.setTextColor(j);
-      paramc.vjR.setTextColor(i);
-      paramc.vjS.setTextColor(i);
-      paramc.vjT.setTextColor(k);
+      paramc.jFG.setBackgroundResource(2131101053);
+      paramc.jFG.setPadding(0, paramContext.getResources().getDimensionPixelOffset(2131165500), 0, paramContext.getResources().getDimensionPixelOffset(2131165500));
+      paramc.uAJ.setTextColor(i);
+      paramc.vvV.setTextColor(j);
+      paramc.vvW.setTextColor(i);
+      paramc.vvX.setTextColor(i);
+      paramc.vvY.setTextColor(k);
       AppMethodBeat.o(65924);
     }
   }
@@ -176,22 +176,22 @@ public final class i
   
   final class c
   {
-    View jCI;
-    ImageView pcD;
-    TextView upn;
-    TextView vjQ;
-    TextView vjR;
-    TextView vjS;
-    TextView vjT;
-    ImageView vjU;
-    TextView vjV;
+    View jFG;
+    ImageView pjj;
+    TextView uAJ;
+    TextView vvV;
+    TextView vvW;
+    TextView vvX;
+    TextView vvY;
+    ImageView vvZ;
+    TextView vwa;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.i
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ import com.tencent.mm.plugin.editor.model.nativenote.spans.l;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.o;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.p;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.s;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -41,14 +41,14 @@ public final class b
     if (!paramStack.isEmpty())
     {
       paramStack = (a)paramStack.pop();
-      String str = paramStack.pxc.pxy;
-      int j = paramStack.pxe;
+      String str = paramStack.pDG.pEc;
+      int j = paramStack.pDI;
       while (i < j)
       {
         paramStringBuilder.append(str);
         i += 1;
       }
-      i = paramStack.pxe;
+      i = paramStack.pDI;
       AppMethodBeat.o(181702);
       return i;
     }
@@ -59,7 +59,7 @@ public final class b
   public static String a(Spanned paramSpanned)
   {
     AppMethodBeat.i(181695);
-    if ((paramSpanned == null) || (bt.isNullOrNil(paramSpanned.toString())))
+    if ((paramSpanned == null) || (bu.isNullOrNil(paramSpanned.toString())))
     {
       AppMethodBeat.o(181695);
       return "";
@@ -94,7 +94,7 @@ public final class b
   private static void a(Spanned paramSpanned, StringBuilder paramStringBuilder)
   {
     AppMethodBeat.i(181696);
-    ArrayList localArrayList = new i(paramSpanned).pvN;
+    ArrayList localArrayList = new i(paramSpanned).pCr;
     Stack localStack = new Stack();
     int m = localArrayList.size();
     int i = 0;
@@ -111,10 +111,10 @@ public final class b
           break;
         }
         localObject1 = (p)((Iterator)localObject3).next();
-      } while (!((p)localObject1).pxc.pxz);
-      Object localObject1 = ((p)localObject1).pxc;
+      } while (!((p)localObject1).pDG.pEd);
+      Object localObject1 = ((p)localObject1).pDG;
       int j = 0;
-      localo = o.pxu;
+      localo = o.pDY;
       localObject2 = ((Set)localObject2).iterator();
       int k;
       label191:
@@ -123,20 +123,20 @@ public final class b
       {
         localObject3 = (p)((Iterator)localObject2).next();
         boolean bool;
-        if ((((p)localObject3).pxc.cft()) || (((p)localObject3).pxc.cfu()) || (((p)localObject3).pxc.cfv()))
+        if ((((p)localObject3).pDG.cgJ()) || (((p)localObject3).pDG.cgK()) || (((p)localObject3).pDG.cgL()))
         {
           k = 1;
           j += k;
-          localObject4 = ((p)localObject3).pxc;
-          if (!((p)localObject3).pxc.cft()) {
+          localObject4 = ((p)localObject3).pDG;
+          if (!((p)localObject3).pDG.cgJ()) {
             break label246;
           }
-          bool = ((d)((p)localObject3).pxF).pxi;
+          bool = ((d)((p)localObject3).pEj).pDM;
           label227:
           if (!bool) {
             break label306;
           }
-          localo = o.pxu;
+          localo = o.pDY;
         }
         for (;;)
         {
@@ -144,52 +144,52 @@ public final class b
           k = 0;
           break label191;
           label246:
-          if (((p)localObject3).pxc.cfu())
+          if (((p)localObject3).pDG.cgK())
           {
-            bool = ((k)((p)localObject3).pxF).pxi;
+            bool = ((k)((p)localObject3).pEj).pDM;
             break label227;
           }
-          if (((p)localObject3).pxc.cfv())
+          if (((p)localObject3).pDG.cgL())
           {
-            bool = ((s)((p)localObject3).pxF).pxi;
+            bool = ((s)((p)localObject3).pEj).pDM;
             break label227;
           }
           bool = true;
           break label227;
           label306:
-          if (((o)localObject4).cft()) {
-            localo = o.pxv;
-          } else if (((o)localObject4).cfu()) {
-            localo = o.pxw;
-          } else if (((o)localObject4).cfv()) {
-            localo = o.pxx;
+          if (((o)localObject4).cgJ()) {
+            localo = o.pDZ;
+          } else if (((o)localObject4).cgK()) {
+            localo = o.pEa;
+          } else if (((o)localObject4).cgL()) {
+            localo = o.pEb;
           }
         }
       }
       a(localStack, paramStringBuilder, new a(localo, j, 0));
-      if (localo.cfv())
+      if (localo.cgL())
       {
         localObject2 = (s[])paramSpanned.getSpans(locall.avj, locall.OQ, s.class);
         if (localObject2.length > 0)
         {
-          localo.pxD = localObject2[0].pxK;
-          j = localo.pxA.indexOf("\"") + 1;
-          k = localo.pxA.lastIndexOf("\"");
+          localo.pEh = localObject2[0].pEo;
+          j = localo.pEe.indexOf("\"") + 1;
+          k = localo.pEe.lastIndexOf("\"");
           if (j < k)
           {
-            localObject3 = localo.pxA.substring(j, k);
-            if (!bt.isNullOrNil((String)localObject3))
+            localObject3 = localo.pEe.substring(j, k);
+            if (!bu.isNullOrNil((String)localObject3))
             {
               localObject4 = ((String)localObject3).trim();
-              if (!localo.pxD) {
+              if (!localo.pEh) {
                 break label668;
               }
               localObject2 = "1";
               label494:
               if (!((String)localObject4).equals(localObject2))
               {
-                localObject4 = localo.pxA;
-                if (!localo.pxD) {
+                localObject4 = localo.pEe;
+                if (!localo.pEh) {
                   break label676;
                 }
               }
@@ -201,8 +201,8 @@ public final class b
       label676:
       for (localObject2 = "1";; localObject2 = "0")
       {
-        localo.pxA = ((String)localObject4).replaceAll((String)localObject3, (String)localObject2);
-        paramStringBuilder.append(localo.pxA);
+        localo.pEe = ((String)localObject4).replaceAll((String)localObject3, (String)localObject2);
+        paramStringBuilder.append(localo.pEe);
         if (localObject1 != null) {
           paramStringBuilder.append(((o)localObject1).mStartTag);
         }
@@ -214,10 +214,10 @@ public final class b
         if (localObject1 != null)
         {
           a(paramStringBuilder, (o)localObject1);
-          paramStringBuilder.append(((o)localObject1).pxy);
+          paramStringBuilder.append(((o)localObject1).pEc);
         }
         a(paramStringBuilder, localo);
-        paramStringBuilder.append(localo.pxB);
+        paramStringBuilder.append(localo.pEf);
         i += 1;
         break;
         localObject2 = "0";
@@ -299,14 +299,14 @@ public final class b
         if ((localCharacterStyle instanceof RelativeSizeSpan))
         {
           paramStringBuilder.append("<wx-font style=\"font-size:");
-          paramStringBuilder.append(f.BE((int)(((RelativeSizeSpan)localCharacterStyle).getSizeChange() * f.getTextSize())));
+          paramStringBuilder.append(f.BQ((int)(((RelativeSizeSpan)localCharacterStyle).getSizeChange() * f.getTextSize())));
           paramStringBuilder.append("px\">");
           break label135;
         }
         if ((localCharacterStyle instanceof AbsoluteSizeSpan))
         {
           paramStringBuilder.append("<wx-font style=\"font-size:");
-          paramStringBuilder.append(f.BE(((AbsoluteSizeSpan)localCharacterStyle).getSize()));
+          paramStringBuilder.append(f.BQ(((AbsoluteSizeSpan)localCharacterStyle).getSize()));
           paramStringBuilder.append("px\">");
           break label135;
         }
@@ -397,7 +397,7 @@ public final class b
   private static void a(StringBuilder paramStringBuilder, o paramo)
   {
     AppMethodBeat.i(181699);
-    if ((paramo.pxC) && (paramStringBuilder.length() >= 5))
+    if ((paramo.pEg) && (paramStringBuilder.length() >= 5))
     {
       int i = paramStringBuilder.length() - 5;
       int j = paramStringBuilder.length();
@@ -415,28 +415,28 @@ public final class b
     for (;;)
     {
       int i = 0;
-      localObject = o.pxu;
+      localObject = o.pDY;
       if (!paramStack.isEmpty())
       {
         localObject = (a)paramStack.peek();
-        i = ((a)localObject).pxd;
-        localObject = ((a)localObject).pxc;
+        i = ((a)localObject).pDH;
+        localObject = ((a)localObject).pDG;
       }
-      if (parama.pxd > i)
+      if (parama.pDH > i)
       {
-        parama.pxe = (parama.pxd - i);
+        parama.pDI = (parama.pDH - i);
         b(paramStack, paramStringBuilder, parama);
         AppMethodBeat.o(181701);
         return;
       }
-      if (parama.pxd >= i) {
+      if (parama.pDH >= i) {
         break;
       }
       a(paramStack, paramStringBuilder);
     }
-    if (parama.pxc != localObject)
+    if (parama.pDG != localObject)
     {
-      parama.pxe = a(paramStack, paramStringBuilder);
+      parama.pDI = a(paramStack, paramStringBuilder);
       b(paramStack, paramStringBuilder, parama);
     }
     AppMethodBeat.o(181701);
@@ -445,8 +445,8 @@ public final class b
   private static void b(Stack<a> paramStack, StringBuilder paramStringBuilder, a parama)
   {
     AppMethodBeat.i(181703);
-    String str = parama.pxc.mStartTag;
-    int j = parama.pxe;
+    String str = parama.pDG.mStartTag;
+    int j = parama.pDI;
     int i = 0;
     while (i < j)
     {

@@ -1,15 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.h.a;
-import com.tencent.mm.al.h.b;
 import com.tencent.mm.sdk.b.b;
 
 public final class fv
   extends b
 {
-  public a drj;
-  public b drk;
+  public a dsm;
+  public b dsn;
   
   public fv()
   {
@@ -18,27 +19,27 @@ public final class fv
   
   private fv(byte paramByte)
   {
-    AppMethodBeat.i(116019);
-    this.drj = new a();
-    this.drk = new b();
-    this.IbR = false;
+    AppMethodBeat.i(19807);
+    this.dsm = new a();
+    this.dsn = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116019);
+    AppMethodBeat.o(19807);
   }
   
   public static final class a
   {
-    public boolean dbL;
-    public boolean drl = false;
-    public h.a drm;
-    public h.b drn;
-    public String fileName;
-    public int op;
+    public String appId;
+    public Context context;
+    public String[] dkL;
+    public int drH = 0;
+    public String[] selectionArgs;
+    public Uri uri;
   }
   
   public static final class b
   {
-    public boolean dno = false;
+    public Cursor drI;
   }
 }
 

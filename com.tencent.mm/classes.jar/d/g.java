@@ -1,6 +1,6 @@
 package d;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={"kotlin/LazyKt__LazyJVMKt", "kotlin/LazyKt__LazyKt"})
+@l(gjZ={1, 1, 16}, gka={"kotlin/LazyKt__LazyJVMKt", "kotlin/LazyKt__LazyKt"}, gkc=1)
 public final class g
   extends j
 {}

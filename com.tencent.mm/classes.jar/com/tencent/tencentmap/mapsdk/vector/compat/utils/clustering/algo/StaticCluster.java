@@ -16,34 +16,34 @@ public class StaticCluster<T extends ClusterItem>
   
   public StaticCluster(LatLng paramLatLng)
   {
-    AppMethodBeat.i(192909);
+    AppMethodBeat.i(217579);
     this.b = new ArrayList();
     this.a = paramLatLng;
-    AppMethodBeat.o(192909);
+    AppMethodBeat.o(217579);
   }
   
   public boolean add(T paramT)
   {
-    AppMethodBeat.i(192910);
+    AppMethodBeat.i(217580);
     boolean bool = this.b.add(paramT);
-    AppMethodBeat.o(192910);
+    AppMethodBeat.o(217580);
     return bool;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(192914);
+    AppMethodBeat.i(217584);
     if (!(paramObject instanceof StaticCluster))
     {
-      AppMethodBeat.o(192914);
+      AppMethodBeat.o(217584);
       return false;
     }
     if ((((StaticCluster)paramObject).a.equals(this.a)) && (((StaticCluster)paramObject).b.equals(this.b)))
     {
-      AppMethodBeat.o(192914);
+      AppMethodBeat.o(217584);
       return true;
     }
-    AppMethodBeat.o(192914);
+    AppMethodBeat.o(217584);
     return false;
   }
   
@@ -59,25 +59,25 @@ public class StaticCluster<T extends ClusterItem>
   
   public int getSize()
   {
-    AppMethodBeat.i(192912);
+    AppMethodBeat.i(217582);
     int i = this.b.size();
-    AppMethodBeat.o(192912);
+    AppMethodBeat.o(217582);
     return i;
   }
   
   public boolean remove(T paramT)
   {
-    AppMethodBeat.i(192911);
+    AppMethodBeat.i(217581);
     boolean bool = this.b.remove(paramT);
-    AppMethodBeat.o(192911);
+    AppMethodBeat.o(217581);
     return bool;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(192913);
+    AppMethodBeat.i(217583);
     String str = "StaticCluster{mCenter=" + this.a + ", mItems.size=" + this.b.size() + '}';
-    AppMethodBeat.o(192913);
+    AppMethodBeat.o(217583);
     return str;
   }
 }

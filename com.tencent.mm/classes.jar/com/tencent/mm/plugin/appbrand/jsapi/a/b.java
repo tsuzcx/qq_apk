@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.e.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +69,7 @@ public final class b
       localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.base.g)paramc.K(com.tencent.mm.plugin.appbrand.jsapi.base.g.class)).c(paramc, paramJSONObject);
       if (localObject1 == null)
       {
-        ad.w("MicroMsg.JsApiCanvasGetImageData", "invoke JsApi canvasGetImageData failed, component view is null.");
+        ae.w("MicroMsg.JsApiCanvasGetImageData", "invoke JsApi canvasGetImageData failed, component view is null.");
         paramc.h(paramInt, e("fail:page is null", null));
         AppMethodBeat.o(145524);
         return;
@@ -77,22 +77,22 @@ public final class b
     }
     catch (JSONException paramJSONObject)
     {
-      ad.i("MicroMsg.JsApiCanvasGetImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
+      ae.i("MicroMsg.JsApiCanvasGetImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
       paramc.h(paramInt, e("fail:illegal canvasId", null));
       AppMethodBeat.o(145524);
       return;
     }
-    Object localObject1 = ((e)localObject1).fG(paramJSONObject.optBoolean("independent", false)).getViewById(i7);
+    Object localObject1 = ((e)localObject1).fF(paramJSONObject.optBoolean("independent", false)).getViewById(i7);
     if (localObject1 == null)
     {
-      ad.w("MicroMsg.JsApiCanvasGetImageData", "view(%s) is null.", new Object[] { Integer.valueOf(i7) });
+      ae.w("MicroMsg.JsApiCanvasGetImageData", "view(%s) is null.", new Object[] { Integer.valueOf(i7) });
       paramc.h(paramInt, e("fail:view is null", null));
       AppMethodBeat.o(145524);
       return;
     }
     if (!(localObject1 instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiCanvasGetImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(i7) });
+      ae.w("MicroMsg.JsApiCanvasGetImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(i7) });
       paramc.h(paramInt, e("fail:illegal view type", null));
       AppMethodBeat.o(145524);
       return;
@@ -100,19 +100,19 @@ public final class b
     localObject1 = (View)((CoverViewContainer)localObject1).ax(View.class);
     if (!(localObject1 instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
     {
-      ad.i("MicroMsg.JsApiCanvasGetImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(i7) });
+      ae.i("MicroMsg.JsApiCanvasGetImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(i7) });
       paramc.h(paramInt, e("fail:illegal view type", null));
       AppMethodBeat.o(145524);
       return;
     }
-    float f = com.tencent.mm.plugin.appbrand.z.g.bBm();
+    float f = com.tencent.mm.plugin.appbrand.y.g.bCg();
     int m = paramJSONObject.optInt("x");
     int n = paramJSONObject.optInt("y");
     int i = paramJSONObject.optInt("width");
     int i1 = paramJSONObject.optInt("height");
     if ((i == 0) || (i1 == 0))
     {
-      ad.i("MicroMsg.JsApiCanvasGetImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(i7) });
+      ae.i("MicroMsg.JsApiCanvasGetImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(i7) });
       paramc.h(paramInt, e("fail:width or height is 0", null));
       AppMethodBeat.o(145524);
       return;
@@ -174,7 +174,7 @@ public final class b
               catch (Exception paramJSONObject)
               {
                 Object localObject2;
-                ad.w("MicroMsg.JsApiCanvasGetImageData", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i7), paramJSONObject });
+                ae.w("MicroMsg.JsApiCanvasGetImageData", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i7), paramJSONObject });
                 paramc.h(paramInt, e("fail:create bitmap failed", null));
                 AppMethodBeat.o(145524);
                 return;
@@ -188,8 +188,8 @@ public final class b
               }
               catch (Exception localException)
               {
-                ad.w("MicroMsg.JsApiCanvasGetImageData", "getPixels failed, viewId(%s). Exception: %s", new Object[] { Integer.valueOf(i7), localException });
-                ad.w("MicroMsg.JsApiCanvasGetImageData", "getPixels failed. finalXDp:%f finalYDp:%f finalWidthDp:%f finalHeightDp:%f wDp:%f data:%s", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i8), Integer.valueOf(k), paramJSONObject });
+                ae.w("MicroMsg.JsApiCanvasGetImageData", "getPixels failed, viewId(%s). Exception: %s", new Object[] { Integer.valueOf(i7), localException });
+                ae.w("MicroMsg.JsApiCanvasGetImageData", "getPixels failed. finalXDp:%d finalYDp:%d finalWidthDp:%d finalHeightDp:%d wDp:%d data:%s", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i8), Integer.valueOf(k), paramJSONObject });
                 paramc.h(paramInt, e("fail: getPixels failed", null));
                 AppMethodBeat.o(145524);
                 return;
@@ -239,7 +239,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.b
  * JD-Core Version:    0.7.0.1
  */

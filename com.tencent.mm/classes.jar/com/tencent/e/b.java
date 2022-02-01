@@ -25,28 +25,28 @@ import java.util.concurrent.locks.ReentrantLock;
 public class b
   extends AbstractExecutorService
 {
-  public static ConcurrentLinkedQueue<WeakReference<b>> LTg;
-  private static final e LTr;
-  public final AtomicInteger LTf;
-  private final BlockingQueue<Runnable> LTh;
-  private final HashSet<b> LTi;
-  private final LinkedList<b> LTj;
-  private final Condition LTk;
-  private int LTl;
-  private long LTm;
-  private volatile ThreadFactory LTn;
-  private volatile e LTo;
-  private volatile long LTp;
-  private volatile int LTq;
-  private volatile int ddL;
+  public static ConcurrentLinkedQueue<WeakReference<b>> Mqd;
+  private static final e Mqo;
+  public final AtomicInteger Mqc;
+  private final BlockingQueue<Runnable> Mqe;
+  private final HashSet<b> Mqf;
+  private final LinkedList<b> Mqg;
+  private final Condition Mqh;
+  private int Mqi;
+  private long Mqj;
+  private volatile ThreadFactory Mqk;
+  private volatile e Mql;
+  private volatile long Mqm;
+  private volatile int Mqn;
+  private volatile int deN;
   private volatile String name;
-  private final ReentrantLock slB;
+  private final ReentrantLock svs;
   
   static
   {
     AppMethodBeat.i(183133);
-    LTg = new ConcurrentLinkedQueue();
-    LTr = new a();
+    Mqd = new ConcurrentLinkedQueue();
+    Mqo = new a();
     AppMethodBeat.o(183133);
   }
   
@@ -68,11 +68,11 @@ public class b
   private b(String paramString, int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue, ThreadFactory paramThreadFactory, e parame)
   {
     AppMethodBeat.i(183121);
-    this.LTf = new AtomicInteger(-536870912);
-    this.slB = new ReentrantLock();
-    this.LTi = new HashSet();
-    this.LTj = new LinkedList();
-    this.LTk = this.slB.newCondition();
+    this.Mqc = new AtomicInteger(-536870912);
+    this.svs = new ReentrantLock();
+    this.Mqf = new HashSet();
+    this.Mqg = new LinkedList();
+    this.Mqh = this.svs.newCondition();
     if ((paramInt1 < 0) || (paramInt2 <= 0) || (paramInt2 < paramInt1) || (9223372036854775807L < 0L))
     {
       paramString = new IllegalArgumentException();
@@ -85,12 +85,12 @@ public class b
       AppMethodBeat.o(183121);
       throw paramString;
     }
-    this.ddL = paramInt1;
-    this.LTq = paramInt2;
-    this.LTh = paramBlockingQueue;
-    this.LTp = paramTimeUnit.toNanos(9223372036854775807L);
-    this.LTn = paramThreadFactory;
-    this.LTo = parame;
+    this.deN = paramInt1;
+    this.Mqn = paramInt2;
+    this.Mqe = paramBlockingQueue;
+    this.Mqm = paramTimeUnit.toNanos(9223372036854775807L);
+    this.Mqk = paramThreadFactory;
+    this.Mql = parame;
     this.name = paramString;
     AppMethodBeat.o(183121);
   }
@@ -98,14 +98,14 @@ public class b
   private void a(b paramb)
   {
     AppMethodBeat.i(183115);
-    ReentrantLock localReentrantLock = this.slB;
+    ReentrantLock localReentrantLock = this.svs;
     localReentrantLock.lock();
     if (paramb != null) {}
     try
     {
-      this.LTi.remove(paramb);
-      fVp();
-      fVq();
+      this.Mqf.remove(paramb);
+      fZO();
+      fZP();
       return;
     }
     finally
@@ -120,62 +120,62 @@ public class b
     AppMethodBeat.i(183116);
     paramb.release(1);
     if (paramBoolean) {
-      fVp();
+      fZO();
     }
-    localReentrantLock = this.slB;
+    localReentrantLock = this.svs;
     localReentrantLock.lock();
     if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        this.LTm += paramb.LTt.get();
-        this.LTi.remove(paramb);
-        paramb.LTs = null;
-        paramb.djn = null;
+        this.Mqj += paramb.Mqq.get();
+        this.Mqf.remove(paramb);
+        paramb.Mqp = null;
+        paramb.dkp = null;
         return;
       }
       finally
       {
         localReentrantLock.unlock();
-        fVq();
+        fZP();
         AppMethodBeat.o(183116);
       }
-      if (paramb.LTu.compareAndSet(false, true))
+      if (paramb.Mqr.compareAndSet(false, true))
       {
-        this.LTj.add(paramb);
-        paramb = fVr();
+        this.Mqg.add(paramb);
+        paramb = fZQ();
         if (paramb != null) {
-          aN(paramb);
+          aK(paramb);
         }
       }
     }
   }
   
-  private void aM(Runnable paramRunnable)
+  private void aJ(Runnable paramRunnable)
   {
     AppMethodBeat.i(183113);
-    this.LTo.a(paramRunnable, this);
+    this.Mql.a(paramRunnable, this);
     AppMethodBeat.o(183113);
   }
   
-  private boolean aN(Runnable paramRunnable)
+  private boolean aK(Runnable paramRunnable)
   {
     AppMethodBeat.i(183123);
-    if ((this.LTf.get() & 0xE0000000) >= 0)
+    if ((this.Mqc.get() & 0xE0000000) >= 0)
     {
       AppMethodBeat.o(183123);
       return false;
     }
-    ReentrantLock localReentrantLock = this.slB;
+    ReentrantLock localReentrantLock = this.svs;
     localReentrantLock.lock();
     try
     {
-      if (this.LTj.isEmpty()) {}
-      for (b localb = null; localb != null; localb = (b)this.LTj.remove())
+      if (this.Mqg.isEmpty()) {}
+      for (b localb = null; localb != null; localb = (b)this.Mqg.remove())
       {
-        localb.LTu.compareAndSet(true, false);
-        localb.aO(paramRunnable);
+        localb.Mqr.compareAndSet(true, false);
+        localb.aL(paramRunnable);
         localb.start();
         return true;
       }
@@ -188,23 +188,23 @@ public class b
     }
   }
   
-  public static boolean agT(int paramInt)
+  public static boolean ahC(int paramInt)
   {
     return paramInt < 0;
   }
   
-  private void agU(int paramInt)
+  private void ahD(int paramInt)
   {
     AppMethodBeat.i(183110);
     int i;
     do
     {
-      i = this.LTf.get();
-    } while ((!kR(i, paramInt)) && (!this.LTf.compareAndSet(i, 0x1FFFFFFF & i | paramInt)));
+      i = this.Mqc.get();
+    } while ((!kY(i, paramInt)) && (!this.Mqc.compareAndSet(i, 0x1FFFFFFF & i | paramInt)));
     AppMethodBeat.o(183110);
   }
   
-  private boolean b(Runnable paramRunnable, boolean paramBoolean)
+  private boolean d(Runnable paramRunnable, boolean paramBoolean)
   {
     boolean bool = false;
     AppMethodBeat.i(183114);
@@ -212,34 +212,34 @@ public class b
     int k;
     do
     {
-      i = this.LTf.get();
+      i = this.Mqc.get();
       k = i & 0xE0000000;
-      if (h.LTJ.isShutdown())
+      if (h.MqF.isShutdown())
       {
         AppMethodBeat.o(183114);
         return false;
       }
-      if ((k < 0) || ((k == 0) && (paramRunnable == null) && (!this.LTh.isEmpty()))) {
-        break label303;
+      if ((k < 0) || ((k == 0) && (paramRunnable == null) && (!this.Mqe.isEmpty()))) {
+        break label310;
       }
       AppMethodBeat.o(183114);
       return false;
-      if (this.LTf.compareAndSet(i, i + 1)) {
+      if (this.Mqc.compareAndSet(i, i + 1)) {
         break;
       }
-      i = this.LTf.get();
+      i = this.Mqc.get();
     } while ((i & 0xE0000000) != k);
-    label141:
-    label303:
+    label145:
+    label310:
     for (;;)
     {
       int m = i & 0x1FFFFFFF;
       if (m < 536870911) {
         if (!paramBoolean) {
-          break label141;
+          break label145;
         }
       }
-      for (int j = this.ddL; m >= j; j = this.LTq)
+      for (int j = this.deN; m >= j; j = this.Mqn)
       {
         AppMethodBeat.o(183114);
         return false;
@@ -260,18 +260,18 @@ public class b
         }
         try
         {
-          localReentrantLock = this.slB;
+          localReentrantLock = this.svs;
           localReentrantLock.lock();
           try
           {
-            i = this.LTf.get() & 0xE0000000;
+            i = this.Mqc.get() & 0xE0000000;
             if ((i >= 0) && ((i != 0) || (paramRunnable != null))) {
               continue;
             }
-            this.LTi.add(localb);
-            i = this.LTi.size();
-            if (i > this.LTl) {
-              this.LTl = i;
+            this.Mqf.add(localb);
+            i = this.Mqf.size();
+            if (i > this.Mqi) {
+              this.Mqi = i;
             }
             i = 1;
             localReentrantLock.unlock();
@@ -300,53 +300,53 @@ public class b
     }
   }
   
-  private void fVp()
+  private void fZO()
   {
     AppMethodBeat.i(183109);
     int i;
     do
     {
-      i = this.LTf.get();
-    } while (!this.LTf.compareAndSet(i, i - 1));
+      i = this.Mqc.get();
+    } while (!this.Mqc.compareAndSet(i, i - 1));
     AppMethodBeat.o(183109);
   }
   
-  private void fVq()
+  private void fZP()
   {
     AppMethodBeat.i(183111);
     ReentrantLock localReentrantLock;
     for (;;)
     {
-      int j = this.LTf.get();
+      int j = this.Mqc.get();
       if (j < 0) {}
-      for (int i = 1; (i != 0) || (kR(j, 1073741824)) || (((0xE0000000 & j) == 0) && (!this.LTh.isEmpty())); i = 0)
+      for (int i = 1; (i != 0) || (kY(j, 1073741824)) || (((0xE0000000 & j) == 0) && (!this.Mqe.isEmpty())); i = 0)
       {
         AppMethodBeat.o(183111);
         return;
       }
       if ((0x1FFFFFFF & j) != 0)
       {
-        zu(true);
+        zI(true);
         AppMethodBeat.o(183111);
         return;
       }
-      localReentrantLock = this.slB;
+      localReentrantLock = this.svs;
       localReentrantLock.lock();
       try
       {
-        boolean bool = this.LTf.compareAndSet(j, 1073741824);
+        boolean bool = this.Mqc.compareAndSet(j, 1073741824);
         if (bool) {
           try
           {
             terminated();
-            this.LTf.set(1610612736);
-            this.LTk.signalAll();
+            this.Mqc.set(1610612736);
+            this.Mqh.signalAll();
             return;
           }
           finally
           {
-            this.LTf.set(1610612736);
-            this.LTk.signalAll();
+            this.Mqc.set(1610612736);
+            this.Mqh.signalAll();
             AppMethodBeat.o(183111);
           }
         }
@@ -360,45 +360,45 @@ public class b
     }
   }
   
-  private Runnable fVr()
+  private Runnable fZQ()
   {
     AppMethodBeat.i(183117);
-    int i = this.LTf.get() & 0xE0000000;
-    if ((i >= 0) && ((i >= 536870912) || (this.LTh.isEmpty())))
+    int i = this.Mqc.get() & 0xE0000000;
+    if ((i >= 0) && ((i >= 536870912) || (this.Mqe.isEmpty())))
     {
-      fVp();
+      fZO();
       AppMethodBeat.o(183117);
       return null;
     }
-    Runnable localRunnable = (Runnable)this.LTh.poll();
+    Runnable localRunnable = (Runnable)this.Mqe.poll();
     AppMethodBeat.o(183117);
     return localRunnable;
   }
   
-  public static boolean kQ(int paramInt1, int paramInt2)
+  public static boolean kX(int paramInt1, int paramInt2)
   {
     return paramInt1 < paramInt2;
   }
   
-  private static boolean kR(int paramInt1, int paramInt2)
+  private static boolean kY(int paramInt1, int paramInt2)
   {
     return paramInt1 >= paramInt2;
   }
   
-  private void zu(boolean paramBoolean)
+  private void zI(boolean paramBoolean)
   {
     AppMethodBeat.i(183112);
-    ReentrantLock localReentrantLock = this.slB;
+    ReentrantLock localReentrantLock = this.svs;
     localReentrantLock.lock();
     try
     {
-      Iterator localIterator = this.LTi.iterator();
+      Iterator localIterator = this.Mqf.iterator();
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        ((b)localIterator.next()).fVs();
+        ((b)localIterator.next()).fZR();
       } while (!paramBoolean);
       return;
     }
@@ -415,20 +415,20 @@ public class b
   {
     AppMethodBeat.i(183128);
     paramLong = paramTimeUnit.toNanos(paramLong);
-    paramTimeUnit = this.slB;
+    paramTimeUnit = this.svs;
     paramTimeUnit.lock();
     try
     {
       for (;;)
       {
-        boolean bool = kR(this.LTf.get(), 1610612736);
+        boolean bool = kY(this.Mqc.get(), 1610612736);
         if (bool) {
           break;
         }
         if (paramLong <= 0L) {
           return false;
         }
-        paramLong = this.LTk.awaitNanos(paramLong);
+        paramLong = this.Mqh.awaitNanos(paramLong);
       }
       return true;
     }
@@ -447,16 +447,16 @@ public class b
     //   1: astore 4
     //   3: iconst_1
     //   4: istore_2
-    //   5: ldc_w 338
+    //   5: ldc_w 339
     //   8: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   11: invokestatic 344	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   11: invokestatic 345	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   14: astore 7
     //   16: aload_1
-    //   17: getfield 193	com/tencent/e/b$b:LTs	Ljava/lang/Runnable;
+    //   17: getfield 193	com/tencent/e/b$b:Mqp	Ljava/lang/Runnable;
     //   20: astore 6
     //   22: aload_1
     //   23: aconst_null
-    //   24: putfield 193	com/tencent/e/b$b:LTs	Ljava/lang/Runnable;
+    //   24: putfield 193	com/tencent/e/b$b:Mqp	Ljava/lang/Runnable;
     //   27: aload_1
     //   28: iconst_1
     //   29: invokevirtual 177	com/tencent/e/b$b:release	(I)Z
@@ -466,58 +466,58 @@ public class b
     //   37: aload 6
     //   39: ifnonnull +14 -> 53
     //   42: aload_0
-    //   43: invokespecial 214	com/tencent/e/b:fVr	()Ljava/lang/Runnable;
+    //   43: invokespecial 214	com/tencent/e/b:fZQ	()Ljava/lang/Runnable;
     //   46: astore 5
     //   48: aload 5
     //   50: ifnull +119 -> 169
     //   53: aload_1
     //   54: iconst_1
-    //   55: invokevirtual 347	com/tencent/e/b$b:acquire	(I)V
+    //   55: invokevirtual 348	com/tencent/e/b$b:acquire	(I)V
     //   58: aload_0
-    //   59: getfield 104	com/tencent/e/b:LTf	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   59: getfield 104	com/tencent/e/b:Mqc	Ljava/util/concurrent/atomic/AtomicInteger;
     //   62: invokevirtual 230	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   65: ldc_w 301
-    //   68: invokestatic 250	com/tencent/e/b:kR	(II)Z
+    //   65: ldc_w 302
+    //   68: invokestatic 250	com/tencent/e/b:kY	(II)Z
     //   71: ifeq +28 -> 99
     //   74: aload 7
-    //   76: invokevirtual 350	java/lang/Thread:isInterrupted	()Z
+    //   76: invokevirtual 351	java/lang/Thread:isInterrupted	()Z
     //   79: ifne +20 -> 99
     //   82: aload_1
-    //   83: invokevirtual 323	com/tencent/e/b$b:fVs	()V
+    //   83: invokevirtual 324	com/tencent/e/b$b:fZR	()V
     //   86: aload_0
     //   87: aload_1
     //   88: iconst_1
-    //   89: invokespecial 352	com/tencent/e/b:a	(Lcom/tencent/e/b$b;Z)V
-    //   92: ldc_w 338
+    //   89: invokespecial 353	com/tencent/e/b:a	(Lcom/tencent/e/b$b;Z)V
+    //   92: ldc_w 339
     //   95: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   98: return
     //   99: aload_0
     //   100: aload 7
     //   102: aload 5
-    //   104: invokevirtual 356	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
+    //   104: invokevirtual 357	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
     //   107: aload 5
-    //   109: invokeinterface 359 1 0
+    //   109: invokeinterface 360 1 0
     //   114: aload_0
     //   115: aload 5
     //   117: aconst_null
-    //   118: invokevirtual 361	com/tencent/e/b:afterExecute	(Ljava/lang/Runnable;Ljava/lang/Throwable;)V
+    //   118: invokevirtual 362	com/tencent/e/b:afterExecute	(Ljava/lang/Runnable;Ljava/lang/Throwable;)V
     //   121: aload_1
-    //   122: getfield 183	com/tencent/e/b$b:LTt	Ljava/util/concurrent/atomic/AtomicLong;
-    //   125: invokevirtual 364	java/util/concurrent/atomic/AtomicLong:getAndIncrement	()J
+    //   122: getfield 183	com/tencent/e/b$b:Mqq	Ljava/util/concurrent/atomic/AtomicLong;
+    //   125: invokevirtual 365	java/util/concurrent/atomic/AtomicLong:getAndIncrement	()J
     //   128: pop2
     //   129: aload_0
-    //   130: invokespecial 214	com/tencent/e/b:fVr	()Ljava/lang/Runnable;
+    //   130: invokespecial 214	com/tencent/e/b:fZQ	()Ljava/lang/Runnable;
     //   133: astore 4
     //   135: aload 4
     //   137: ifnull +250 -> 387
     //   140: aload_1
     //   141: aload 4
-    //   143: invokevirtual 237	com/tencent/e/b$b:aO	(Ljava/lang/Runnable;)V
+    //   143: invokevirtual 237	com/tencent/e/b$b:aL	(Ljava/lang/Runnable;)V
     //   146: aload_1
-    //   147: getstatic 261	com/tencent/e/h:LTJ	Lcom/tencent/e/i;
+    //   147: getstatic 262	com/tencent/e/h:MqF	Lcom/tencent/e/i;
     //   150: aload_1
-    //   151: invokeinterface 368 2 0
-    //   156: putfield 197	com/tencent/e/b$b:djn	Ljava/util/concurrent/Future;
+    //   151: invokeinterface 369 2 0
+    //   156: putfield 197	com/tencent/e/b$b:dkp	Ljava/util/concurrent/Future;
     //   159: iconst_0
     //   160: istore_2
     //   161: iload_2
@@ -531,14 +531,14 @@ public class b
     //   173: aload_0
     //   174: aload_1
     //   175: iconst_0
-    //   176: invokespecial 352	com/tencent/e/b:a	(Lcom/tencent/e/b$b;Z)V
-    //   179: ldc_w 338
+    //   176: invokespecial 353	com/tencent/e/b:a	(Lcom/tencent/e/b$b;Z)V
+    //   179: ldc_w 339
     //   182: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: return
     //   186: astore 6
     //   188: aload 6
     //   190: astore 4
-    //   192: ldc_w 338
+    //   192: ldc_w 339
     //   195: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   198: aload 6
     //   200: astore 4
@@ -548,29 +548,29 @@ public class b
     //   207: aload_0
     //   208: aload 5
     //   210: aload 4
-    //   212: invokevirtual 361	com/tencent/e/b:afterExecute	(Ljava/lang/Runnable;Ljava/lang/Throwable;)V
-    //   215: ldc_w 338
+    //   212: invokevirtual 362	com/tencent/e/b:afterExecute	(Ljava/lang/Runnable;Ljava/lang/Throwable;)V
+    //   215: ldc_w 339
     //   218: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   221: aload 6
     //   223: athrow
     //   224: astore 4
     //   226: aload_1
-    //   227: getfield 183	com/tencent/e/b$b:LTt	Ljava/util/concurrent/atomic/AtomicLong;
-    //   230: invokevirtual 364	java/util/concurrent/atomic/AtomicLong:getAndIncrement	()J
+    //   227: getfield 183	com/tencent/e/b$b:Mqq	Ljava/util/concurrent/atomic/AtomicLong;
+    //   230: invokevirtual 365	java/util/concurrent/atomic/AtomicLong:getAndIncrement	()J
     //   233: pop2
     //   234: aload_0
-    //   235: invokespecial 214	com/tencent/e/b:fVr	()Ljava/lang/Runnable;
+    //   235: invokespecial 214	com/tencent/e/b:fZQ	()Ljava/lang/Runnable;
     //   238: astore 5
     //   240: aload 5
     //   242: ifnull +140 -> 382
     //   245: aload_1
     //   246: aload 5
-    //   248: invokevirtual 237	com/tencent/e/b$b:aO	(Ljava/lang/Runnable;)V
+    //   248: invokevirtual 237	com/tencent/e/b$b:aL	(Ljava/lang/Runnable;)V
     //   251: aload_1
-    //   252: getstatic 261	com/tencent/e/h:LTJ	Lcom/tencent/e/i;
+    //   252: getstatic 262	com/tencent/e/h:MqF	Lcom/tencent/e/i;
     //   255: aload_1
-    //   256: invokeinterface 368 2 0
-    //   261: putfield 197	com/tencent/e/b$b:djn	Ljava/util/concurrent/Future;
+    //   256: invokeinterface 369 2 0
+    //   261: putfield 197	com/tencent/e/b$b:dkp	Ljava/util/concurrent/Future;
     //   264: iconst_0
     //   265: istore_2
     //   266: iload_2
@@ -581,7 +581,7 @@ public class b
     //   273: pop
     //   274: iload_2
     //   275: istore_3
-    //   276: ldc_w 338
+    //   276: ldc_w 339
     //   279: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   282: iload_2
     //   283: istore_3
@@ -593,15 +593,15 @@ public class b
     //   293: aload_0
     //   294: aload_1
     //   295: iconst_1
-    //   296: invokespecial 352	com/tencent/e/b:a	(Lcom/tencent/e/b$b;Z)V
-    //   299: ldc_w 338
+    //   296: invokespecial 353	com/tencent/e/b:a	(Lcom/tencent/e/b$b;Z)V
+    //   299: ldc_w 339
     //   302: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   305: aload 4
     //   307: athrow
     //   308: astore 6
     //   310: aload 6
     //   312: astore 4
-    //   314: ldc_w 338
+    //   314: ldc_w 339
     //   317: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   320: aload 6
     //   322: astore 4
@@ -610,20 +610,20 @@ public class b
     //   327: astore 6
     //   329: aload 6
     //   331: astore 4
-    //   333: new 335	java/lang/Error
+    //   333: new 336	java/lang/Error
     //   336: dup
     //   337: aload 6
-    //   339: invokespecial 371	java/lang/Error:<init>	(Ljava/lang/Throwable;)V
+    //   339: invokespecial 372	java/lang/Error:<init>	(Ljava/lang/Throwable;)V
     //   342: astore 7
     //   344: aload 6
     //   346: astore 4
-    //   348: ldc_w 338
+    //   348: ldc_w 339
     //   351: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   354: aload 6
     //   356: astore 4
     //   358: aload 7
     //   360: athrow
-    //   361: ldc_w 338
+    //   361: ldc_w 339
     //   364: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   367: return
     //   368: astore 4
@@ -699,24 +699,24 @@ public class b
       AppMethodBeat.o(183122);
       throw paramRunnable;
     }
-    int k = this.LTf.get();
+    int k = this.Mqc.get();
     int i = k;
-    if ((k & 0x1FFFFFFF) < this.ddL)
+    if ((k & 0x1FFFFFFF) < this.deN)
     {
-      if (b(paramRunnable, true))
+      if (d(paramRunnable, true))
       {
         AppMethodBeat.o(183122);
         return;
       }
-      i = this.LTf.get();
+      i = this.Mqc.get();
     }
     if (i < 0)
     {
       i = 1;
-      if ((i == 0) || (!this.LTh.offer(paramRunnable))) {
+      if ((i == 0) || (!this.Mqe.offer(paramRunnable))) {
         break label197;
       }
-      k = this.LTf.get();
+      k = this.Mqc.get();
       if (k >= 0) {
         break label157;
       }
@@ -727,12 +727,12 @@ public class b
       if (i != 0) {
         break label162;
       }
-      boolean bool = this.LTh.remove(paramRunnable);
-      fVq();
+      boolean bool = this.Mqe.remove(paramRunnable);
+      fZP();
       if (!bool) {
         break label162;
       }
-      aM(paramRunnable);
+      aJ(paramRunnable);
       AppMethodBeat.o(183122);
       return;
       i = 0;
@@ -741,16 +741,16 @@ public class b
     label162:
     if ((k & 0x1FFFFFFF) == 0)
     {
-      b(null, false);
+      d(null, false);
       AppMethodBeat.o(183122);
       return;
     }
-    aN(null);
+    aK(null);
     AppMethodBeat.o(183122);
     return;
     label197:
-    if (!b(paramRunnable, false)) {
-      aM(paramRunnable);
+    if (!d(paramRunnable, false)) {
+      aJ(paramRunnable);
     }
     AppMethodBeat.o(183122);
   }
@@ -765,15 +765,15 @@ public class b
   public final long getCompletedTaskCount()
   {
     AppMethodBeat.i(183130);
-    ReentrantLock localReentrantLock = this.slB;
+    ReentrantLock localReentrantLock = this.svs;
     localReentrantLock.lock();
     try
     {
-      long l1 = this.LTm;
-      Iterator localIterator = this.LTi.iterator();
+      long l1 = this.Mqj;
+      Iterator localIterator = this.Mqf.iterator();
       while (localIterator.hasNext())
       {
-        long l2 = ((b)localIterator.next()).LTt.get();
+        long l2 = ((b)localIterator.next()).Mqq.get();
         l1 = l2 + l1;
       }
       return l1;
@@ -792,13 +792,13 @@ public class b
   
   public final BlockingQueue<Runnable> getQueue()
   {
-    return this.LTh;
+    return this.Mqe;
   }
   
   public boolean isShutdown()
   {
     AppMethodBeat.i(183126);
-    if (this.LTf.get() < 0) {}
+    if (this.Mqc.get() < 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(183126);
@@ -811,7 +811,7 @@ public class b
   public boolean isTerminated()
   {
     AppMethodBeat.i(183127);
-    boolean bool = kR(this.LTf.get(), 1610612736);
+    boolean bool = kY(this.Mqc.get(), 1610612736);
     AppMethodBeat.o(183127);
     return bool;
   }
@@ -819,14 +819,14 @@ public class b
   public void shutdown()
   {
     AppMethodBeat.i(183124);
-    ReentrantLock localReentrantLock = this.slB;
+    ReentrantLock localReentrantLock = this.svs;
     localReentrantLock.lock();
     try
     {
-      agU(0);
-      zu(false);
+      ahD(0);
+      zI(false);
       localReentrantLock.unlock();
-      fVq();
+      fZP();
       AppMethodBeat.o(183124);
       return;
     }
@@ -841,19 +841,19 @@ public class b
   {
     int i = 0;
     AppMethodBeat.i(183125);
-    ReentrantLock localReentrantLock1 = this.slB;
+    ReentrantLock localReentrantLock1 = this.svs;
     localReentrantLock1.lock();
     try
     {
-      agU(536870912);
-      ReentrantLock localReentrantLock2 = this.slB;
+      ahD(536870912);
+      ReentrantLock localReentrantLock2 = this.svs;
       localReentrantLock2.lock();
       try
       {
-        Iterator localIterator = this.LTi.iterator();
+        Iterator localIterator = this.Mqf.iterator();
         while (localIterator.hasNext())
         {
-          ((b)localIterator.next()).fVs();
+          ((b)localIterator.next()).fZR();
           continue;
           localObject1 = finally;
         }
@@ -866,7 +866,7 @@ public class b
       localReentrantLock1.unlock();
       AppMethodBeat.o(183125);
     }
-    BlockingQueue localBlockingQueue = this.LTh;
+    BlockingQueue localBlockingQueue = this.Mqe;
     ArrayList localArrayList = new ArrayList();
     localBlockingQueue.drainTo(localArrayList);
     if (!localBlockingQueue.isEmpty())
@@ -883,7 +883,7 @@ public class b
       }
     }
     localReentrantLock1.unlock();
-    fVq();
+    fZP();
     AppMethodBeat.o(183125);
     return localArrayList;
   }
@@ -891,7 +891,7 @@ public class b
   protected void terminated()
   {
     AppMethodBeat.i(183132);
-    Iterator localIterator = LTg.iterator();
+    Iterator localIterator = Mqd.iterator();
     while (localIterator.hasNext()) {
       if (this == (b)((WeakReference)localIterator.next()).get()) {
         localIterator.remove();
@@ -903,7 +903,7 @@ public class b
   public String toString()
   {
     AppMethodBeat.i(183131);
-    Object localObject1 = this.slB;
+    Object localObject1 = this.svs;
     StringBuilder localStringBuilder = new StringBuilder();
     ((ReentrantLock)localObject1).lock();
     for (;;)
@@ -911,29 +911,29 @@ public class b
       int j;
       try
       {
-        long l = this.LTm;
-        int k = this.LTi.size();
-        Iterator localIterator = this.LTi.iterator();
+        long l = this.Mqj;
+        int k = this.Mqf.size();
+        Iterator localIterator = this.Mqf.iterator();
         int i = 0;
         if (localIterator.hasNext())
         {
           b localb = (b)localIterator.next();
-          l += localb.LTt.get();
+          l += localb.Mqq.get();
           j = i;
           if (localb.isLocked())
           {
             j = i + 1;
-            localStringBuilder.append(localb.gjB);
+            localStringBuilder.append(localb.glT);
           }
           i = j;
           continue;
         }
         ((ReentrantLock)localObject1).unlock();
-        j = this.LTf.get();
-        if (kQ(j, 0))
+        j = this.Mqc.get();
+        if (kX(j, 0))
         {
           localObject1 = "Running";
-          localObject1 = super.toString() + "[" + (String)localObject1 + ", pool size = " + k + ", active threads = " + i + ", queued tasks = " + this.LTh.size() + ", completed tasks = " + l + ", running tasks = " + localStringBuilder + "]";
+          localObject1 = super.toString() + "[" + (String)localObject1 + ", pool size = " + k + ", active threads = " + i + ", queued tasks = " + this.Mqe.size() + ", completed tasks = " + l + ", running tasks = " + localStringBuilder + "]";
           AppMethodBeat.o(183131);
           return localObject1;
         }
@@ -943,7 +943,7 @@ public class b
         ((ReentrantLock)localObject1).unlock();
         AppMethodBeat.o(183131);
       }
-      if (kR(j, 1610612736)) {
+      if (kY(j, 1610612736)) {
         localObject1 = "Terminated";
       } else {
         localObject1 = "Shutting down";
@@ -967,55 +967,55 @@ public class b
     extends AbstractQueuedSynchronizer
     implements com.tencent.e.i.h
   {
-    Runnable LTs;
-    AtomicLong LTt;
-    AtomicBoolean LTu;
-    Future djn;
-    String gjB;
+    Runnable Mqp;
+    AtomicLong Mqq;
+    AtomicBoolean Mqr;
+    Future dkp;
+    String glT;
     
     b(Runnable paramRunnable)
     {
       AppMethodBeat.i(183100);
-      this.LTt = new AtomicLong(0L);
-      this.LTu = new AtomicBoolean(false);
+      this.Mqq = new AtomicLong(0L);
+      this.Mqr = new AtomicBoolean(false);
       setState(-1);
-      aO(paramRunnable);
+      aL(paramRunnable);
       AppMethodBeat.o(183100);
     }
     
-    final void aO(Runnable paramRunnable)
+    final void aL(Runnable paramRunnable)
     {
       AppMethodBeat.i(183101);
-      this.LTs = paramRunnable;
+      this.Mqp = paramRunnable;
       if (paramRunnable == null)
       {
-        this.gjB = (b.a(b.this) + "#Worker");
+        this.glT = (b.a(b.this) + "#Worker");
         AppMethodBeat.o(183101);
         return;
       }
       if ((paramRunnable instanceof com.tencent.e.i.h))
       {
-        this.gjB = ((com.tencent.e.i.h)paramRunnable).getKey();
+        this.glT = ((com.tencent.e.i.h)paramRunnable).getKey();
         AppMethodBeat.o(183101);
         return;
       }
-      this.gjB = (b.a(b.this) + "#" + paramRunnable.getClass().getName());
+      this.glT = (b.a(b.this) + "#" + paramRunnable.getClass().getName());
       AppMethodBeat.o(183101);
     }
     
-    final void fVs()
+    final void fZR()
     {
       AppMethodBeat.i(183103);
-      d.LTy.i("ForkThreadPoolExecutor", "[releaseWork] name=" + b.a(b.this), new Object[0]);
-      if ((this.djn != null) && (!this.djn.isDone())) {
-        this.djn.cancel(true);
+      d.Mqv.i("ForkThreadPoolExecutor", "[releaseWork] name=" + b.a(b.this), new Object[0]);
+      if ((this.dkp != null) && (!this.dkp.isDone())) {
+        this.dkp.cancel(true);
       }
       AppMethodBeat.o(183103);
     }
     
     public final String getKey()
     {
-      return this.gjB;
+      return this.glT;
     }
     
     protected final boolean isHeldExclusively()
@@ -1048,7 +1048,7 @@ public class b
     final void start()
     {
       AppMethodBeat.i(183102);
-      this.djn = h.LTJ.aR(this);
+      this.dkp = h.MqF.aO(this);
       AppMethodBeat.o(183102);
     }
     

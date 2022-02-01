@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.g;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ab.g;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ByRuntimeQrcodeResult
   implements Parcelable
 {
   public static final Parcelable.Creator<ByRuntimeQrcodeResult> CREATOR;
   public String data;
-  public String jXV;
+  public String kbk;
   
   static
   {
@@ -26,28 +26,28 @@ public class ByRuntimeQrcodeResult
   {
     AppMethodBeat.i(47499);
     this.data = paramParcel.readString();
-    this.jXV = paramParcel.readString();
+    this.kbk = paramParcel.readString();
     AppMethodBeat.o(47499);
   }
   
   public ByRuntimeQrcodeResult(String paramString1, String paramString2)
   {
     this.data = paramString1;
-    this.jXV = paramString2;
+    this.kbk = paramString2;
   }
   
-  public final String aYt()
+  public final String aYO()
   {
     AppMethodBeat.i(47497);
     try
     {
-      String str = new i().h("transitiveData", this.jXV).h("data", this.data).toString();
+      String str = new i().h("transitiveData", this.kbk).h("data", this.data).toString();
       AppMethodBeat.o(47497);
       return str;
     }
     catch (g localg)
     {
-      ad.e("MicroMsg.AppBrand.Functional.ByRuntimeQrcodeResult", "toJsonString e = %s", new Object[] { localg });
+      ae.e("MicroMsg.AppBrand.Functional.ByRuntimeQrcodeResult", "toJsonString e = %s", new Object[] { localg });
       AppMethodBeat.o(47497);
     }
     return "{}";
@@ -62,7 +62,7 @@ public class ByRuntimeQrcodeResult
   {
     AppMethodBeat.i(47498);
     paramParcel.writeString(this.data);
-    paramParcel.writeString(this.jXV);
+    paramParcel.writeString(this.kbk);
     AppMethodBeat.o(47498);
   }
 }

@@ -4,7 +4,7 @@ import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 @TargetApi(18)
@@ -17,21 +17,21 @@ public final class b
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144495);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(116);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(116);
     paramJSONObject = paramc.getAppId();
-    ad.i("MicroMsg.JsApiCloseBluetoothAdapter", "appId:%s closeBluetoothAdapter!", new Object[] { paramJSONObject });
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Pu(paramJSONObject);
-    ad.i("MicroMsg.JsApiCloseBluetoothAdapter", "result:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiCloseBluetoothAdapter", "appId:%s closeBluetoothAdapter!", new Object[] { paramJSONObject });
+    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Qc(paramJSONObject);
+    ae.i("MicroMsg.JsApiCloseBluetoothAdapter", "result:%s", new Object[] { paramJSONObject });
     switch (paramJSONObject.errCode)
     {
     default: 
       paramc.h(paramInt, e(paramJSONObject.errMsg, null));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(118);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(118);
       AppMethodBeat.o(144495);
       return;
     }
     paramc.h(paramInt, e("ok", null));
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(117);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(117);
     AppMethodBeat.o(144495);
   }
 }

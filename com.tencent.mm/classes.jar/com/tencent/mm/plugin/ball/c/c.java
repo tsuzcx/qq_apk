@@ -19,7 +19,7 @@ public abstract interface c
   
   public abstract void a(ResultReceiver paramResultReceiver);
   
-  public abstract void a(h paramh);
+  public abstract void a(i parami);
   
   public abstract void a(BallInfo paramBallInfo, float paramFloat);
   
@@ -29,29 +29,27 @@ public abstract interface c
   
   public abstract void b(int paramInt, f paramf);
   
-  public abstract void bJV();
+  public abstract void bKT();
   
-  public abstract boolean bJW();
+  public abstract boolean bKU();
   
-  public abstract boolean bJX();
+  public abstract boolean bKV();
   
-  public abstract long bJY();
+  public abstract long bKW();
   
-  public abstract void bJZ();
+  public abstract void bKX();
   
-  public abstract void bKa();
+  public abstract void bKY();
   
-  public abstract List<BallInfo> bKb();
+  public abstract List<BallInfo> bKZ();
   
-  public abstract void bKc();
+  public abstract void bLa();
   
-  public abstract boolean bKd();
+  public abstract boolean bLb();
   
-  public abstract void bKe();
+  public abstract void bLc();
   
-  public abstract void bKf();
-  
-  public abstract void bKg();
+  public abstract void bLd();
   
   public abstract boolean c(AnimatorListenerAdapter paramAnimatorListenerAdapter);
   
@@ -60,6 +58,8 @@ public abstract interface c
   public abstract Point getBallPosition();
   
   public abstract BallInfo i(BallInfo paramBallInfo);
+  
+  public abstract void iM(boolean paramBoolean);
   
   public abstract void iN(boolean paramBoolean);
   
@@ -76,8 +76,6 @@ public abstract interface c
   public abstract void iT(boolean paramBoolean);
   
   public abstract void iU(boolean paramBoolean);
-  
-  public abstract void iV(boolean paramBoolean);
   
   public abstract boolean j(BallInfo paramBallInfo);
   
@@ -105,22 +103,26 @@ public abstract interface c
   
   public abstract void t(BallInfo paramBallInfo);
   
-  public abstract void te(long paramLong);
+  public abstract void ts(long paramLong);
   
-  public abstract boolean xS(int paramInt);
+  public abstract void u(BallInfo paramBallInfo);
   
-  public abstract void xT(int paramInt);
+  public abstract void v(BallInfo paramBallInfo);
   
-  public abstract void xU(int paramInt);
+  public abstract boolean xW(int paramInt);
+  
+  public abstract void xX(int paramInt);
+  
+  public abstract void xY(int paramInt);
   
   public static abstract interface a
   {
-    public abstract void xV(int paramInt);
+    public abstract void xZ(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.c.c
  * JD-Core Version:    0.7.0.1
  */

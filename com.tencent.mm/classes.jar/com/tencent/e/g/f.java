@@ -7,8 +7,8 @@ import java.util.concurrent.TimeUnit;
 public final class f
   extends b
 {
-  private final long LUJ = 1000L;
-  private final float deH = 500.0F;
+  private final long MrE = 1000L;
+  private final float dfJ = 500.0F;
   
   public f(int paramInt1, int paramInt2)
   {
@@ -18,12 +18,12 @@ public final class f
   public final long a(g paramg, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(183327);
-    Object localObject = paramg.cDF.get("incrementCount");
+    Object localObject = paramg.cEm.get("incrementCount");
     if (localObject == null) {}
     for (int i = 1;; i = ((Integer)localObject).intValue())
     {
-      long l = ((float)this.LUJ + i * this.deH);
-      paramg.cDF.put("incrementCount", Integer.valueOf(i + 1));
+      long l = ((float)this.MrE + i * this.dfJ);
+      paramg.cEm.put("incrementCount", Integer.valueOf(i + 1));
       l = paramTimeUnit.convert(l, TimeUnit.MILLISECONDS);
       AppMethodBeat.o(183327);
       return l;

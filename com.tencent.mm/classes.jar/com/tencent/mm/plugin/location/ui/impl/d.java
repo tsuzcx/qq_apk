@@ -8,12 +8,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.a;
 import com.tencent.mm.plugin.location_soso.SoSoProxyUI;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   implements com.tencent.mm.plugin.k.c
 {
-  public static Intent ar(Activity paramActivity)
+  public static Intent as(Activity paramActivity)
   {
     AppMethodBeat.i(56077);
     paramActivity = new Intent(paramActivity, SoSoProxyUI.class);
@@ -21,7 +21,7 @@ public final class d
     return paramActivity;
   }
   
-  public static View fG(Context paramContext)
+  public static View fM(Context paramContext)
   {
     AppMethodBeat.i(56078);
     paramContext = new SoSoMapView(paramContext);
@@ -48,7 +48,7 @@ public final class d
       return paramActivity;
       paramActivity = new j(paramActivity);
       continue;
-      ad.i("MicroMsg.MapFactoryImp", "share map");
+      ae.i("MicroMsg.MapFactoryImp", "share map");
       paramActivity = new h(paramActivity);
     }
   }

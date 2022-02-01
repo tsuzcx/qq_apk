@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.vfs.o;
 
 public class ScanGoodsRequest
   extends BaseScanRequest
@@ -14,58 +14,58 @@ public class ScanGoodsRequest
 {
   public static final Parcelable.Creator<ScanGoodsRequest> CREATOR;
   public String extInfo;
-  public int jbe;
+  public int jdX;
   public int mode;
   public int requestType;
-  public int yjK;
-  public String yjL;
-  public String yjM;
-  public String yjN;
-  public String yjO;
-  public boolean yjP;
-  public boolean yjQ;
+  public int yzG;
+  public String yzH;
+  public String yzI;
+  public String yzJ;
+  public String yzK;
+  public boolean yzL;
+  public boolean yzM;
   
   static
   {
-    AppMethodBeat.i(191534);
+    AppMethodBeat.i(210676);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(191534);
+    AppMethodBeat.o(210676);
   }
   
   public ScanGoodsRequest()
   {
-    this.jbe = 0;
-    this.yjP = true;
-    this.yjQ = false;
-    this.yjE = true;
-    this.yjF = true;
-    this.yjG = true;
-    this.yjH = true;
-    this.yjI = true;
-    this.yjP = true;
-    this.yjQ = false;
-    this.yjK = 0;
+    this.jdX = 0;
+    this.yzL = true;
+    this.yzM = false;
+    this.yzA = true;
+    this.yzB = true;
+    this.yzC = true;
+    this.yzD = true;
+    this.yzE = true;
+    this.yzL = true;
+    this.yzM = false;
+    this.yzG = 0;
   }
   
   public ScanGoodsRequest(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(191530);
-    this.jbe = 0;
-    this.yjP = true;
-    this.yjQ = false;
+    AppMethodBeat.i(210672);
+    this.jdX = 0;
+    this.yzL = true;
+    this.yzM = false;
     this.mode = paramParcel.readInt();
     this.requestType = paramParcel.readInt();
-    this.yjK = paramParcel.readInt();
-    this.yjL = paramParcel.readString();
-    this.yjM = paramParcel.readString();
-    this.yjN = paramParcel.readString();
-    this.yjO = paramParcel.readString();
-    this.jbe = paramParcel.readInt();
+    this.yzG = paramParcel.readInt();
+    this.yzH = paramParcel.readString();
+    this.yzI = paramParcel.readString();
+    this.yzJ = paramParcel.readString();
+    this.yzK = paramParcel.readString();
+    this.jdX = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.yjP = bool1;
+      this.yzL = bool1;
       if (paramParcel.readByte() == 0) {
         break label138;
       }
@@ -73,29 +73,29 @@ public class ScanGoodsRequest
     label138:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.yjQ = bool1;
+      this.yzM = bool1;
       this.extInfo = paramParcel.readString();
-      AppMethodBeat.o(191530);
+      AppMethodBeat.o(210672);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public static ScanGoodsRequest dKA()
+  public static ScanGoodsRequest dNS()
   {
-    AppMethodBeat.i(191533);
+    AppMethodBeat.i(210675);
     ScanGoodsRequest localScanGoodsRequest = new ScanGoodsRequest();
     localScanGoodsRequest.mode = 5;
-    localScanGoodsRequest.yjE = true;
-    localScanGoodsRequest.yjF = true;
-    localScanGoodsRequest.yjG = true;
-    localScanGoodsRequest.yjH = true;
-    localScanGoodsRequest.yjI = true;
-    localScanGoodsRequest.yjP = false;
-    localScanGoodsRequest.yjQ = true;
-    localScanGoodsRequest.jbe = a.fromDPToPix(aj.getContext(), 450);
-    AppMethodBeat.o(191533);
+    localScanGoodsRequest.yzA = true;
+    localScanGoodsRequest.yzB = true;
+    localScanGoodsRequest.yzC = true;
+    localScanGoodsRequest.yzD = true;
+    localScanGoodsRequest.yzE = true;
+    localScanGoodsRequest.yzL = false;
+    localScanGoodsRequest.yzM = true;
+    localScanGoodsRequest.jdX = a.fromDPToPix(ak.getContext(), 450);
+    AppMethodBeat.o(210675);
     return localScanGoodsRequest;
   }
   
@@ -106,34 +106,34 @@ public class ScanGoodsRequest
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(191531);
-    if ((i.fv(this.yjL)) && (i.fv(this.yjM)) && (i.fv(this.yjN)))
+    AppMethodBeat.i(210673);
+    if ((o.fB(this.yzH)) && (o.fB(this.yzI)) && (o.fB(this.yzJ)))
     {
-      AppMethodBeat.o(191531);
+      AppMethodBeat.o(210673);
       return true;
     }
-    AppMethodBeat.o(191531);
+    AppMethodBeat.o(210673);
     return false;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
-    AppMethodBeat.i(191532);
+    AppMethodBeat.i(210674);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.mode);
     paramParcel.writeInt(this.requestType);
-    paramParcel.writeInt(this.yjK);
-    paramParcel.writeString(this.yjL);
-    paramParcel.writeString(this.yjM);
-    paramParcel.writeString(this.yjN);
-    paramParcel.writeString(this.yjO);
-    paramParcel.writeInt(this.jbe);
-    if (this.yjP)
+    paramParcel.writeInt(this.yzG);
+    paramParcel.writeString(this.yzH);
+    paramParcel.writeString(this.yzI);
+    paramParcel.writeString(this.yzJ);
+    paramParcel.writeString(this.yzK);
+    paramParcel.writeInt(this.jdX);
+    if (this.yzL)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.yjQ) {
+      if (!this.yzM) {
         break label126;
       }
     }
@@ -142,7 +142,7 @@ public class ScanGoodsRequest
     {
       paramParcel.writeByte(b1);
       paramParcel.writeString(this.extInfo);
-      AppMethodBeat.o(191532);
+      AppMethodBeat.o(210674);
       return;
       b1 = 0;
       break;

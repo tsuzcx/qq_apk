@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.report.e;
+import com.tencent.mm.plugin.finder.report.f;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class ai
   implements Runnable
 {
-  public static final ai rYI;
+  public static final ai shu;
   
   static
   {
-    AppMethodBeat.i(202107);
-    rYI = new ai();
-    AppMethodBeat.o(202107);
+    AppMethodBeat.i(202571);
+    shu = new ai();
+    AppMethodBeat.o(202571);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(202106);
-    e locale = e.snY;
-    e.cDt();
-    AppMethodBeat.o(202106);
+    AppMethodBeat.i(202570);
+    f localf = f.syc;
+    f.cFo();
+    AppMethodBeat.o(202570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ai
  * JD-Core Version:    0.7.0.1
  */

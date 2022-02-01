@@ -4,30 +4,30 @@ import android.os.Looper;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashSet;
 
 public final class c
   extends d
   implements e.b
 {
-  private com.tencent.mm.plugin.fts.ui.d.a tyl;
-  protected boolean tym;
-  private ap tyn;
+  private com.tencent.mm.plugin.fts.ui.d.a tJc;
+  protected boolean tJd;
+  private aq tJe;
   
   public c(e parame)
   {
     super(parame);
     AppMethodBeat.i(111813);
-    this.tyn = new ap(Looper.getMainLooper());
-    this.tyl = new com.tencent.mm.plugin.fts.ui.d.a(parame.getContext(), this, 0);
+    this.tJe = new aq(Looper.getMainLooper());
+    this.tJc = new com.tencent.mm.plugin.fts.ui.d.a(parame.getContext(), this, 0);
     AppMethodBeat.o(111813);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a GR(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a Ho(int paramInt)
   {
     AppMethodBeat.i(111814);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tyl.GR(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tJc.Ho(paramInt);
     AppMethodBeat.o(111814);
     return locala;
   }
@@ -35,10 +35,10 @@ public final class c
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
     AppMethodBeat.i(111816);
-    int i = this.tyl.GQ(0);
+    int i = this.tJc.Hn(0);
     setCount(i);
     notifyDataSetChanged();
-    al(i, true);
+    ao(i, true);
     AppMethodBeat.o(111816);
   }
   
@@ -47,25 +47,25 @@ public final class c
     return false;
   }
   
-  protected final int cSU()
-  {
-    AppMethodBeat.i(111817);
-    int i = this.tyl.cTm();
-    AppMethodBeat.o(111817);
-    return i;
-  }
-  
-  protected final void cTn()
+  protected final void cVS()
   {
     AppMethodBeat.i(111815);
-    this.tym = false;
-    this.tyl.a(this.query, this.tyn, new HashSet(), 0L);
+    this.tJd = false;
+    this.tJc.a(this.query, this.tJe, new HashSet(), 0L);
     AppMethodBeat.o(111815);
+  }
+  
+  protected final int cVz()
+  {
+    AppMethodBeat.i(111817);
+    int i = this.tJc.cVR();
+    AppMethodBeat.o(111817);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.c
  * JD-Core Version:    0.7.0.1
  */

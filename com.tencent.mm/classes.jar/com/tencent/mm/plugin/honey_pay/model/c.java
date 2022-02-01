@@ -11,19 +11,21 @@ import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.honey_pay.ui.HoneyPayCheckPwdUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.protocal.protobuf.bnc;
-import com.tencent.mm.protocal.protobuf.bxo;
-import com.tencent.mm.protocal.protobuf.byx;
-import com.tencent.mm.protocal.protobuf.cwb;
-import com.tencent.mm.protocal.protobuf.dnn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.bnu;
+import com.tencent.mm.protocal.protobuf.byi;
+import com.tencent.mm.protocal.protobuf.bzr;
+import com.tencent.mm.protocal.protobuf.cwv;
+import com.tencent.mm.protocal.protobuf.dok;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.wallet_core.ui.f;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -34,7 +36,7 @@ import java.util.LinkedList;
 
 public final class c
 {
-  public static int Il(int paramInt)
+  public static int IJ(int paramInt)
   {
     AppMethodBeat.i(182450);
     int i = -1;
@@ -71,67 +73,67 @@ public final class c
     AppMethodBeat.i(64656);
     if (paramInt >= 0)
     {
-      paramString1 = paramString1.replace("$" + paramString2 + "$", com.tencent.mm.wallet_core.ui.e.gO(com.tencent.mm.wallet_core.ui.e.zf(paramString2), paramInt));
+      paramString1 = paramString1.replace("$" + paramString2 + "$", f.gX(f.zP(paramString2), paramInt));
       AppMethodBeat.o(64656);
       return paramString1;
     }
-    paramString1 = paramString1.replace("$" + paramString2 + "$", com.tencent.mm.wallet_core.ui.e.zf(paramString2));
+    paramString1 = paramString1.replace("$" + paramString2 + "$", f.zP(paramString2));
     AppMethodBeat.o(64656);
     return paramString1;
   }
   
-  public static void a(Context paramContext, bxo parambxo, DialogInterface.OnClickListener paramOnClickListener)
+  public static void a(Context paramContext, byi parambyi, DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(64655);
-    h.a(paramContext, parambxo.dxD, "", parambxo.kzL, parambxo.kzK, false, paramOnClickListener, null);
+    h.a(paramContext, parambyi.dyI, "", parambyi.kDa, parambyi.kCZ, false, paramOnClickListener, null);
     AppMethodBeat.o(64655);
   }
   
-  public static void a(MMActivity paramMMActivity, Bundle paramBundle, bnc parambnc, boolean paramBoolean)
+  public static void a(MMActivity paramMMActivity, Bundle paramBundle, bnu parambnu, boolean paramBoolean)
   {
     AppMethodBeat.i(64652);
     RealnameGuideHelper localRealnameGuideHelper = new RealnameGuideHelper();
-    localRealnameGuideHelper.b(parambnc.Fqw, parambnc.vqB, parambnc.kzK, parambnc.kzL, parambnc.vqC, 0);
+    localRealnameGuideHelper.b(parambnu.FIU, parambnu.vCG, parambnu.kCZ, parambnu.kDa, parambnu.vCH, 0);
     paramBundle.putString("realname_verify_process_jump_plugin", "honey_pay");
     localRealnameGuideHelper.a(paramMMActivity, paramBundle, null, new c.1(paramBoolean), false);
     if (paramBoolean)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
       AppMethodBeat.o(64652);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
     AppMethodBeat.o(64652);
   }
   
-  public static void a(MMActivity paramMMActivity, final cwb paramcwb, final String paramString, final int paramInt, final dnn paramdnn)
+  public static void a(MMActivity paramMMActivity, final cwv paramcwv, final String paramString, final int paramInt, final dok paramdok)
   {
     AppMethodBeat.i(64653);
-    if ((paramcwb != null) && (paramcwb.Hod != null) && (!paramcwb.Hod.isEmpty()))
+    if ((paramcwv != null) && (paramcwv.HHD != null) && (!paramcwv.HHD.isEmpty()))
     {
       paramString = new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(64650);
-          paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(this.val$activity, 1, false);
-          paramAnonymousMenuItem.KJy = new n.d()
+          paramAnonymousMenuItem = new e(this.val$activity, 1, false);
+          paramAnonymousMenuItem.LfS = new n.d()
           {
             public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
             {
               AppMethodBeat.i(64648);
-              Iterator localIterator = c.2.this.uFw.Hod.iterator();
+              Iterator localIterator = c.2.this.uRj.HHD.iterator();
               int i = 0;
-              byx localbyx;
+              bzr localbzr;
               if (localIterator.hasNext())
               {
-                localbyx = (byx)localIterator.next();
-                if (bt.isNullOrNil(localbyx.nZO)) {
+                localbzr = (bzr)localIterator.next();
+                if (bu.isNullOrNil(localbzr.ofy)) {
                   break label110;
                 }
-                if (!bt.isNullOrNil(localbyx.hAD))
+                if (!bu.isNullOrNil(localbzr.hDr))
                 {
-                  paramAnonymous2l.a(i, com.tencent.mm.plugin.wallet_core.utils.g.cl(localbyx.hAD, true), localbyx.nZO);
+                  paramAnonymous2l.a(i, com.tencent.mm.plugin.wallet_core.utils.g.cp(localbzr.hDr, true), localbzr.ofy);
                   label83:
                   i += 1;
                 }
@@ -140,31 +142,31 @@ public final class c
               for (;;)
               {
                 break;
-                paramAnonymous2l.c(i, localbyx.nZO);
+                paramAnonymous2l.d(i, localbzr.ofy);
                 break label83;
                 AppMethodBeat.o(64648);
                 return;
               }
             }
           };
-          paramAnonymousMenuItem.KJz = new n.e()
+          paramAnonymousMenuItem.LfT = new n.e()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
               AppMethodBeat.i(64649);
-              paramAnonymous2MenuItem = (byx)c.2.this.uFw.Hod.get(paramAnonymous2Int);
-              if (!bt.isNullOrNil(paramAnonymous2MenuItem.url))
+              paramAnonymous2MenuItem = (bzr)c.2.this.uRj.HHD.get(paramAnonymous2Int);
+              if (!bu.isNullOrNil(paramAnonymous2MenuItem.url))
               {
-                if ((paramAnonymous2MenuItem.url.equals("weixin://wcpay/honeypay/unbind")) && (!bt.isNullOrNil(c.2.this.uFx)) && (c.2.this.uFy != null))
+                if ((paramAnonymous2MenuItem.url.equals("weixin://wcpay/honeypay/unbind")) && (!bu.isNullOrNil(c.2.this.uRk)) && (c.2.this.uRl != null))
                 {
-                  ad.i("MicroMsg.HoneyPayUtil", "go to unbind");
+                  ae.i("MicroMsg.HoneyPayUtil", "go to unbind");
                   paramAnonymous2MenuItem = new Intent(c.2.this.val$activity, HoneyPayCheckPwdUI.class);
                   paramAnonymous2MenuItem.putExtra("key_scene", 3);
-                  paramAnonymous2MenuItem.putExtra("key_card_no", c.2.this.uFx);
+                  paramAnonymous2MenuItem.putExtra("key_card_no", c.2.this.uRk);
                   try
                   {
-                    paramAnonymous2MenuItem.putExtra("key_toke_mess", c.2.this.uFy.toByteArray());
-                    c.2.this.val$activity.startActivityForResult(paramAnonymous2MenuItem, c.2.this.uFz);
+                    paramAnonymous2MenuItem.putExtra("key_toke_mess", c.2.this.uRl.toByteArray());
+                    c.2.this.val$activity.startActivityForResult(paramAnonymous2MenuItem, c.2.this.uRm);
                     AppMethodBeat.o(64649);
                     return;
                   }
@@ -172,23 +174,23 @@ public final class c
                   {
                     for (;;)
                     {
-                      ad.printErrStackTrace("MicroMsg.HoneyPayUtil", localIOException, "", new Object[0]);
+                      ae.printErrStackTrace("MicroMsg.HoneyPayUtil", localIOException, "", new Object[0]);
                     }
                   }
                 }
-                com.tencent.mm.wallet_core.ui.e.o(c.2.this.val$activity, paramAnonymous2MenuItem.url, false);
+                f.p(c.2.this.val$activity, paramAnonymous2MenuItem.url, false);
               }
               AppMethodBeat.o(64649);
             }
           };
-          paramAnonymousMenuItem.cMW();
+          paramAnonymousMenuItem.cPF();
           AppMethodBeat.o(64650);
           return false;
         }
       };
-      if (!bt.isNullOrNil(paramcwb.title))
+      if (!bu.isNullOrNil(paramcwv.title))
       {
-        paramMMActivity.addTextOptionMenu(0, paramcwb.title, 2131101179, paramString);
+        paramMMActivity.addTextOptionMenu(0, paramcwv.title, 2131101179, paramString);
         AppMethodBeat.o(64653);
         return;
       }
@@ -197,7 +199,7 @@ public final class c
     AppMethodBeat.o(64653);
   }
   
-  public static int ao(int paramInt, boolean paramBoolean)
+  public static int ar(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(64657);
     if (paramBoolean)
@@ -230,19 +232,19 @@ public final class c
         }
       }
     }
-    paramInt = Il(paramInt);
+    paramInt = IJ(paramInt);
     AppMethodBeat.o(64657);
     return paramInt;
   }
   
-  public static void b(MMActivity paramMMActivity, cwb paramcwb, String paramString, int paramInt, dnn paramdnn)
+  public static void b(MMActivity paramMMActivity, cwv paramcwv, String paramString, int paramInt, dok paramdok)
   {
     AppMethodBeat.i(64654);
-    a(paramMMActivity, paramcwb, paramString, paramInt, paramdnn);
+    a(paramMMActivity, paramcwv, paramString, paramInt, paramdok);
     AppMethodBeat.o(64654);
   }
   
-  public static int dcc()
+  public static int deU()
   {
     AppMethodBeat.i(182451);
     if (!al.isDarkMode())
@@ -257,11 +259,11 @@ public final class c
   public static void o(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(64658);
-    ad.i("MicroMsg.HoneyPayUtil", "update msg: %s, %s", new Object[] { paramString1, Boolean.valueOf(bt.isNullOrNil(paramString2)) });
-    if ((!bt.isNullOrNil(paramString2)) && (!bt.isNullOrNil(paramString1)))
+    ae.i("MicroMsg.HoneyPayUtil", "update msg: %s, %s", new Object[] { paramString1, Boolean.valueOf(bu.isNullOrNil(paramString2)) });
+    if ((!bu.isNullOrNil(paramString2)) && (!bu.isNullOrNil(paramString1)))
     {
       paramString2 = U(paramString2, paramString3, 6);
-      if (bt.isNullOrNil(paramString4)) {
+      if (bu.isNullOrNil(paramString4)) {
         break label222;
       }
       paramString2 = U(paramString2, paramString4, 6);
@@ -271,34 +273,34 @@ public final class c
     {
       paramString3 = new a();
       paramString3.field_payMsgId = paramString1;
-      com.tencent.mm.plugin.honey_pay.a.dca().dcb().get(paramString3, new String[0]);
+      com.tencent.mm.plugin.honey_pay.a.deS().deT().get(paramString3, new String[0]);
       if (paramString3.field_msgId > 0L)
       {
-        ad.i("MicroMsg.HoneyPayUtil", "find msg: %s", new Object[] { Long.valueOf(paramString3.field_msgId) });
-        paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(paramString3.field_msgId);
+        ae.i("MicroMsg.HoneyPayUtil", "find msg: %s", new Object[] { Long.valueOf(paramString3.field_msgId) });
+        paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramString3.field_msgId);
         if (paramString1.field_msgId > 0L)
         {
           paramString1.setContent(paramString2);
-          ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().a(paramString1.field_msgId, paramString1);
+          ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(paramString1.field_msgId, paramString1);
           AppMethodBeat.o(64658);
           return;
         }
-        ad.w("MicroMsg.HoneyPayUtil", "can't find msg: %s, may be deleted", new Object[] { Long.valueOf(paramString3.field_msgId) });
+        ae.w("MicroMsg.HoneyPayUtil", "can't find msg: %s, may be deleted", new Object[] { Long.valueOf(paramString3.field_msgId) });
       }
       AppMethodBeat.o(64658);
       return;
     }
   }
   
-  public static String xK(long paramLong)
+  public static String ye(long paramLong)
   {
     AppMethodBeat.i(64651);
-    String str = com.tencent.mm.wallet_core.ui.e.b(String.valueOf(paramLong), "100", 2, RoundingMode.HALF_UP).toString();
+    String str = f.b(String.valueOf(paramLong), "100", 2, RoundingMode.HALF_UP).toString();
     AppMethodBeat.o(64651);
     return str;
   }
   
-  public static String xL(long paramLong)
+  public static String yf(long paramLong)
   {
     AppMethodBeat.i(64659);
     String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(1000L * paramLong));
@@ -308,7 +310,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.c
  * JD-Core Version:    0.7.0.1
  */

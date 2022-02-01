@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "", "duration", "", "startBase", "", "(JZ)V", "end", "getEnd", "()J", "endPoint", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimePoint;", "getEndPoint", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimePoint;", "start", "getStart", "startPoint", "getStartPoint", "after", "", "target", "align", "alignStart", "alignEnd", "before", "finalize", "isIntersect", "tr", "pivotEnd", "pivotStart", "setDuration", "setEndOffset", "endOffset", "setOffset", "startOffset", "setStartOffset", "setTime", "toString", "", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "", "duration", "", "startBase", "", "(JZ)V", "end", "getEnd", "()J", "endPoint", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimePoint;", "getEndPoint", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimePoint;", "start", "getStart", "startPoint", "getStartPoint", "after", "", "target", "align", "alignStart", "alignEnd", "before", "finalize", "isIntersect", "tr", "pivotEnd", "pivotStart", "setDuration", "setEndOffset", "endOffset", "setOffset", "startOffset", "setStartOffset", "setTime", "toString", "", "Companion", "plugin-recordvideo_release"})
 public final class d
 {
-  public static final d.a xPH;
-  public final c xPF;
-  public final c xPG;
+  public static final d.a yfA;
+  public final c yfy;
+  public final c yfz;
   
   static
   {
-    AppMethodBeat.i(200795);
-    xPH = new d.a((byte)0);
-    AppMethodBeat.o(200795);
+    AppMethodBeat.i(207053);
+    yfA = new d.a((byte)0);
+    AppMethodBeat.o(207053);
   }
   
   public d()
@@ -24,66 +24,66 @@ public final class d
   
   private d(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(200793);
-    this.xPF = new c((byte)0);
-    this.xPG = new c((byte)0);
+    AppMethodBeat.i(207051);
+    this.yfy = new c((byte)0);
+    this.yfz = new c((byte)0);
     if (paramBoolean)
     {
-      this.xPG.a(this.xPF);
-      this.xPG.yP(paramLong);
-      AppMethodBeat.o(200793);
+      this.yfz.a(this.yfy);
+      this.yfz.zn(paramLong);
+      AppMethodBeat.o(207051);
       return;
     }
-    this.xPF.a(this.xPG);
-    this.xPF.yP(-paramLong);
-    AppMethodBeat.o(200793);
+    this.yfy.a(this.yfz);
+    this.yfy.zn(-paramLong);
+    AppMethodBeat.o(207051);
   }
   
-  public final void af(long paramLong1, long paramLong2)
+  public final void ae(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(200790);
-    c localc = this.xPF;
-    localc.yP(localc.offset + (paramLong1 - this.xPF.getTime()));
-    localc = this.xPG;
-    localc.yP(localc.offset + (paramLong2 - this.xPG.getTime()));
-    AppMethodBeat.o(200790);
+    AppMethodBeat.i(207048);
+    c localc = this.yfy;
+    localc.zn(localc.offset + (paramLong1 - this.yfy.getTime()));
+    localc = this.yfz;
+    localc.zn(localc.offset + (paramLong2 - this.yfz.getTime()));
+    AppMethodBeat.o(207048);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(200791);
-    this.xPF.a(null);
-    this.xPG.a(null);
-    AppMethodBeat.o(200791);
+    AppMethodBeat.i(207049);
+    this.yfy.a(null);
+    this.yfz.a(null);
+    AppMethodBeat.o(207049);
   }
   
   public final long getEnd()
   {
-    AppMethodBeat.i(221443);
-    long l = this.xPG.getTime();
-    AppMethodBeat.o(221443);
+    AppMethodBeat.i(224255);
+    long l = this.yfz.getTime();
+    AppMethodBeat.o(224255);
     return l;
   }
   
   public final long getStart()
   {
-    AppMethodBeat.i(221442);
-    long l = this.xPF.getTime();
-    AppMethodBeat.o(221442);
+    AppMethodBeat.i(224254);
+    long l = this.yfy.getTime();
+    AppMethodBeat.o(224254);
     return l;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(200792);
+    AppMethodBeat.i(207050);
     String str = "start:" + getStart() + "  end:" + getEnd();
-    AppMethodBeat.o(200792);
+    AppMethodBeat.o(207050);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d
  * JD-Core Version:    0.7.0.1
  */

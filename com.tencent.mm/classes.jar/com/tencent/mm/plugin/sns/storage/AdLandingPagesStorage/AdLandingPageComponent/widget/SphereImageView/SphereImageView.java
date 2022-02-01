@@ -25,54 +25,54 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SphereImageView
   extends GLTextureView
 {
-  protected String kul;
-  protected TextureView.SurfaceTextureListener lsU;
-  private GestureDetector lsn;
+  private float AbF;
+  private float AbG;
+  private float AbH;
+  private float AbI;
+  private b AbJ;
+  private Sensor AbK;
+  private float[] AbL;
+  private float AbM;
+  private long AbN;
+  private float AbO;
+  private boolean AbP;
+  private a AbQ;
+  private int AbR;
+  private int AbS;
+  private boolean AbT;
+  private boolean AbU;
+  private boolean AbV;
+  protected GestureDetector.OnGestureListener AbW;
+  protected View.OnClickListener AbX;
+  protected View.OnLongClickListener AbY;
+  protected Bitmap AbZ;
+  protected boolean Aca;
+  protected b Acb;
+  protected String kxB;
+  private GestureDetector lwM;
+  protected TextureView.SurfaceTextureListener lxt;
   private Context mContext;
   Handler mHandler;
   private SensorManager mSensorManager;
   private int mTouchSlop;
-  private boolean nLg;
-  private float zKA;
-  private float zKB;
-  private b zKC;
-  private Sensor zKD;
-  private float[] zKE;
-  private float zKF;
-  private long zKG;
-  private float zKH;
-  private boolean zKI;
-  private a zKJ;
-  private int zKK;
-  private int zKL;
-  private boolean zKM;
-  private boolean zKN;
-  private boolean zKO;
-  protected GestureDetector.OnGestureListener zKP;
-  protected View.OnClickListener zKQ;
-  protected View.OnLongClickListener zKR;
-  protected Bitmap zKS;
-  protected boolean zKT;
-  protected b zKU;
-  private float zKy;
-  private float zKz;
+  private boolean nQJ;
   
   public SphereImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97258);
-    this.zKE = new float[3];
-    this.zKF = 0.4F;
-    this.zKG = 0L;
-    this.nLg = true;
-    this.zKI = false;
+    this.AbL = new float[3];
+    this.AbM = 0.4F;
+    this.AbN = 0L;
+    this.nQJ = true;
+    this.AbP = false;
     this.mHandler = new Handler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -85,16 +85,16 @@ public class SphereImageView
           return;
         }
         paramAnonymousMessage = (SphereImageView.c)paramAnonymousMessage.obj;
-        float f1 = paramAnonymousMessage.zLa;
-        float f2 = paramAnonymousMessage.zKZ;
+        float f1 = paramAnonymousMessage.Ach;
+        float f2 = paramAnonymousMessage.Acg;
         float f3 = f1 - SphereImageView.b(SphereImageView.this);
         float f4 = f2 - SphereImageView.c(SphereImageView.this);
         paramAnonymousMessage = SphereImageView.d(SphereImageView.this);
-        paramAnonymousMessage.zLk += f4 * 1.5F;
+        paramAnonymousMessage.Acr += f4 * 1.5F;
         paramAnonymousMessage = SphereImageView.d(SphereImageView.this);
-        paramAnonymousMessage.zLj += f3 * 1.5F / 2.0F;
-        if (SphereImageView.d(SphereImageView.this).zLj < -50.0F) {
-          SphereImageView.d(SphereImageView.this).zLj = -50.0F;
+        paramAnonymousMessage.Acq += f3 * 1.5F / 2.0F;
+        if (SphereImageView.d(SphereImageView.this).Acq < -50.0F) {
+          SphereImageView.d(SphereImageView.this).Acq = -50.0F;
         }
         for (;;)
         {
@@ -104,38 +104,38 @@ public class SphereImageView
             break;
           }
           long l = System.currentTimeMillis();
-          SphereImageView.this.zJF.requestRender();
-          if (((Math.abs(f4) <= 0.1F) && (Math.abs(f3) <= 0.1F)) || (l - SphereImageView.e(SphereImageView.this) <= 500L) || (SphereImageView.this.zKU == null)) {
+          SphereImageView.this.AaM.requestRender();
+          if (((Math.abs(f4) <= 0.1F) && (Math.abs(f3) <= 0.1F)) || (l - SphereImageView.e(SphereImageView.this) <= 500L) || (SphereImageView.this.Acb == null)) {
             break;
           }
-          SphereImageView.this.zKU.dXr();
+          SphereImageView.this.Acb.eaU();
           SphereImageView.a(SphereImageView.this, l);
           break;
-          if (SphereImageView.d(SphereImageView.this).zLj > 50.0F) {
-            SphereImageView.d(SphereImageView.this).zLj = 50.0F;
+          if (SphereImageView.d(SphereImageView.this).Acq > 50.0F) {
+            SphereImageView.d(SphereImageView.this).Acq = 50.0F;
           }
         }
       }
     };
-    this.zKM = true;
-    this.zKN = false;
-    this.zKO = false;
-    this.zKP = new SphereImageView.2(this);
-    this.zKS = null;
-    this.zKT = false;
-    this.kul = "";
-    this.lsU = new TextureView.SurfaceTextureListener()
+    this.AbT = true;
+    this.AbU = false;
+    this.AbV = false;
+    this.AbW = new SphereImageView.2(this);
+    this.AbZ = null;
+    this.Aca = false;
+    this.kxB = "";
+    this.lxt = new TextureView.SurfaceTextureListener()
     {
       public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(97255);
-        ad.i("SphereImageView.SphereView", "onSurfaceTextureAvailable, hasPendingImage=" + SphereImageView.this.zKT);
-        if (SphereImageView.this.zKT)
+        ae.i("SphereImageView.SphereView", "onSurfaceTextureAvailable, hasPendingImage=" + SphereImageView.this.Aca);
+        if (SphereImageView.this.Aca)
         {
-          SphereImageView.this.queueEvent(SphereImageView.this.h(SphereImageView.this.zKS, SphereImageView.this.kul));
-          SphereImageView.this.zKS = null;
-          SphereImageView.this.zKT = false;
-          SphereImageView.this.kul = "";
+          SphereImageView.this.queueEvent(SphereImageView.this.h(SphereImageView.this.AbZ, SphereImageView.this.kxB));
+          SphereImageView.this.AbZ = null;
+          SphereImageView.this.Aca = false;
+          SphereImageView.this.kxB = "";
         }
         AppMethodBeat.o(97255);
       }
@@ -151,42 +151,42 @@ public class SphereImageView
     };
     this.mContext = paramContext;
     setEGLContextClientVersion(2);
-    paramAttributeSet = this.lsU;
-    this.zJO.add(paramAttributeSet);
-    this.zKC = new b(this.mContext);
-    setRenderer(this.zKC);
+    paramAttributeSet = this.lxt;
+    this.AaV.add(paramAttributeSet);
+    this.AbJ = new b(this.mContext);
+    setRenderer(this.AbJ);
     setRenderMode(0);
     this.mSensorManager = ((SensorManager)this.mContext.getSystemService("sensor"));
-    this.zKD = this.mSensorManager.getDefaultSensor(4);
-    if (this.zKD == null) {
-      ad.e("SphereImageView.SphereView", "device has no Gyroscope sensor, model=" + Build.MODEL + ", brand=" + Build.BRAND);
+    this.AbK = this.mSensorManager.getDefaultSensor(4);
+    if (this.AbK == null) {
+      ae.e("SphereImageView.SphereView", "device has no Gyroscope sensor, model=" + Build.MODEL + ", brand=" + Build.BRAND);
     }
     for (;;)
     {
-      this.zKJ = new a(this);
+      this.AbQ = new a(this);
       this.mTouchSlop = (ViewConfiguration.get(paramContext).getScaledTouchSlop() / 4);
       if (this.mTouchSlop < 4) {
         this.mTouchSlop = 4;
       }
-      this.lsn = new GestureDetector(paramContext, this.zKP);
-      this.zKH = paramContext.getResources().getDisplayMetrics().density;
-      ad.i("SphereImageView.SphereView", "init, displayDensity=" + this.zKH + ", apiLevel=" + Build.VERSION.SDK_INT + ", touchSlop=" + this.mTouchSlop);
+      this.lwM = new GestureDetector(paramContext, this.AbW);
+      this.AbO = paramContext.getResources().getDisplayMetrics().density;
+      ae.i("SphereImageView.SphereView", "init, displayDensity=" + this.AbO + ", apiLevel=" + Build.VERSION.SDK_INT + ", touchSlop=" + this.mTouchSlop);
       AppMethodBeat.o(97258);
       return;
-      ad.i("SphereImageView.SphereView", "has Gyroscope sensor, model=" + Build.MODEL + ", brand=" + Build.BRAND + ", sensor=" + this.zKD);
+      ae.i("SphereImageView.SphereView", "has Gyroscope sensor, model=" + Build.MODEL + ", brand=" + Build.BRAND + ", sensor=" + this.AbK);
     }
   }
   
-  private float bE(float paramFloat)
+  private float bC(float paramFloat)
   {
     AppMethodBeat.i(97261);
-    if (this.zKH == 0.0F)
+    if (this.AbO == 0.0F)
     {
-      this.zKH = 3.0F;
-      ad.e("SphereImageView.SphereView", "px2Angle , mDisplayDensity==0");
+      this.AbO = 3.0F;
+      ae.e("SphereImageView.SphereView", "px2Angle , mDisplayDensity==0");
     }
-    paramFloat /= this.zKH;
-    float f = this.zKF;
+    paramFloat /= this.AbO;
+    float f = this.AbM;
     AppMethodBeat.o(97261);
     return paramFloat * f;
   }
@@ -194,16 +194,16 @@ public class SphereImageView
   public final void ag(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(97259);
-    this.zKC.ag(paramFloat1, paramFloat2);
+    this.AbJ.ag(paramFloat1, paramFloat2);
     AppMethodBeat.o(97259);
   }
   
-  public final void dXZ()
+  public final void ebD()
   {
     AppMethodBeat.i(97270);
-    ad.i("SphereImageView.SphereView", "zero, hash=" + hashCode());
-    this.zKC.zLk = 90.0F;
-    this.zKC.zLj = 0.0F;
+    ae.i("SphereImageView.SphereView", "zero, hash=" + hashCode());
+    this.AbJ.Acr = 90.0F;
+    this.AbJ.Acq = 0.0F;
     AppMethodBeat.o(97270);
   }
   
@@ -211,19 +211,19 @@ public class SphereImageView
   {
     AppMethodBeat.i(97262);
     boolean bool = isAvailable();
-    ad.i("SphereImageView.SphereView", "updateImage, isAvailable=" + bool + ", hasPendingImage=" + this.zKT);
+    ae.i("SphereImageView.SphereView", "updateImage, isAvailable=" + bool + ", hasPendingImage=" + this.Aca);
     if (bool)
     {
-      this.zKS = null;
-      this.zKT = false;
-      this.kul = "";
+      this.AbZ = null;
+      this.Aca = false;
+      this.kxB = "";
       queueEvent(h(paramBitmap, paramString));
       AppMethodBeat.o(97262);
       return;
     }
-    this.zKS = paramBitmap;
-    this.zKT = true;
-    this.kul = paramString;
+    this.AbZ = paramBitmap;
+    this.Aca = true;
+    this.kxB = paramString;
     AppMethodBeat.o(97262);
   }
   
@@ -231,8 +231,8 @@ public class SphereImageView
   {
     AppMethodBeat.i(97271);
     PointF localPointF = new PointF();
-    localPointF.x = this.zKC.zLj;
-    localPointF.y = this.zKC.zLk;
+    localPointF.x = this.AbJ.Acq;
+    localPointF.y = this.AbJ.Acr;
     AppMethodBeat.o(97271);
     return localPointF;
   }
@@ -258,37 +258,37 @@ public class SphereImageView
         label228:
         for (int i = j;; i = paramBitmap.getHeight())
         {
-          ad.i("SphereImageView.SphereView", i);
+          ae.i("SphereImageView.SphereView", i);
           localObject = SphereImageView.d(SphereImageView.this);
           Bitmap localBitmap = paramBitmap;
           try
           {
             long l = System.currentTimeMillis();
-            if (((b)localObject).zLi != 0)
+            if (((b)localObject).Acp != 0)
             {
-              GLES20.glDeleteTextures(1, new int[] { ((b)localObject).zLi }, 0);
-              ad.i("SphereImageView.SphereRender", "delete old texture");
+              GLES20.glDeleteTextures(1, new int[] { ((b)localObject).Acp }, 0);
+              ae.i("SphereImageView.SphereRender", "delete old texture");
             }
-            i = c.ao(localBitmap);
-            ad.i("SphereImageView.SphereRender", "updateImage, oldId=" + ((b)localObject).zLi + ", newId=" + i + ", timeCost=" + (System.currentTimeMillis() - l));
-            ((b)localObject).zLi = i;
+            i = c.ap(localBitmap);
+            ae.i("SphereImageView.SphereRender", "updateImage, oldId=" + ((b)localObject).Acp + ", newId=" + i + ", timeCost=" + (System.currentTimeMillis() - l));
+            ((b)localObject).Acp = i;
           }
           catch (Throwable localThrowable)
           {
             for (;;)
             {
-              ad.e("SphereImageView.SphereRender", "updateImage, exp:" + localThrowable.toString());
+              ae.e("SphereImageView.SphereRender", "updateImage, exp:" + localThrowable.toString());
             }
           }
-          SphereImageView.this.zJF.requestRender();
-          if (SphereImageView.this.zKU != null) {
+          SphereImageView.this.AaM.requestRender();
+          if (SphereImageView.this.Acb != null) {
             SphereImageView.this.mHandler.post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97253);
-                SphereImageView.this.zKU.azP(SphereImageView.3.this.val$url);
-                ad.i("SphereImageView.SphereView", "onUpdateImage, isAvailable=" + SphereImageView.this.isAvailable());
+                SphereImageView.this.Acb.aBg(SphereImageView.3.this.val$url);
+                ae.i("SphereImageView.SphereView", "onUpdateImage, isAvailable=" + SphereImageView.this.isAvailable());
                 AppMethodBeat.o(97253);
               }
             });
@@ -308,9 +308,9 @@ public class SphereImageView
   {
     AppMethodBeat.i(97264);
     super.onAttachedToWindow();
-    this.zKI = false;
-    ad.i("SphereImageView.SphereView", "onAttachedToWindow, hash=" + hashCode() + ", apiLevel=" + Build.VERSION.SDK_INT);
-    dXZ();
+    this.AbP = false;
+    ae.i("SphereImageView.SphereView", "onAttachedToWindow, hash=" + hashCode() + ", apiLevel=" + Build.VERSION.SDK_INT);
+    ebD();
     AppMethodBeat.o(97264);
   }
   
@@ -318,16 +318,16 @@ public class SphereImageView
   {
     AppMethodBeat.i(97265);
     super.onDetachedFromWindow();
-    this.zKI = true;
-    ad.i("SphereImageView.SphereView", "onDetachedFromWindow, hash=" + hashCode());
-    this.zKS = null;
-    this.zKT = false;
-    this.kul = "";
+    this.AbP = true;
+    ae.i("SphereImageView.SphereView", "onDetachedFromWindow, hash=" + hashCode());
+    this.AbZ = null;
+    this.Aca = false;
+    this.kxB = "";
     setSensorEnabled(false);
     queueEvent(h(null, ""));
-    dXZ();
-    if (this.zKU != null) {
-      this.zKU.onDetachedFromWindow();
+    ebD();
+    if (this.Acb != null) {
+      this.Acb.onDetachedFromWindow();
     }
     AppMethodBeat.o(97265);
   }
@@ -337,10 +337,10 @@ public class SphereImageView
     AppMethodBeat.i(97266);
     if (Build.VERSION.SDK_INT < 24)
     {
-      ad.i("SphereImageView.SphereView", "onFinishTemporaryDetach, hash=" + hashCode() + ", isAttach2Window=" + isAttachedToWindow());
-      dXZ();
-      this.zKJ.timestamp = 0L;
-      this.zKJ.zKX = true;
+      ae.i("SphereImageView.SphereView", "onFinishTemporaryDetach, hash=" + hashCode() + ", isAttach2Window=" + isAttachedToWindow());
+      ebD();
+      this.AbQ.timestamp = 0L;
+      this.AbQ.Ace = true;
     }
     AppMethodBeat.o(97266);
   }
@@ -350,10 +350,10 @@ public class SphereImageView
     AppMethodBeat.i(97267);
     if (Build.VERSION.SDK_INT < 24)
     {
-      ad.i("SphereImageView.SphereView", "onStartTemporaryDetach, hash=" + hashCode() + ", isAttach2Window=" + isAttachedToWindow());
-      dXZ();
-      this.zKJ.timestamp = 0L;
-      this.zKJ.zKX = false;
+      ae.i("SphereImageView.SphereView", "onStartTemporaryDetach, hash=" + hashCode() + ", isAttach2Window=" + isAttachedToWindow());
+      ebD();
+      this.AbQ.timestamp = 0L;
+      this.AbQ.Ace = false;
     }
     AppMethodBeat.o(97267);
   }
@@ -361,13 +361,13 @@ public class SphereImageView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(97260);
-    GestureDetector localGestureDetector = this.lsn;
+    GestureDetector localGestureDetector = this.lwM;
     com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahp(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahE(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mt(0)), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     float f1;
     float f2;
-    if (this.nLg)
+    if (this.nQJ)
     {
       f1 = paramMotionEvent.getY();
       f2 = paramMotionEvent.getX();
@@ -378,66 +378,66 @@ public class SphereImageView
     }
     for (;;)
     {
-      this.zKz = f1;
-      this.zKB = f2;
-      this.zJF.requestRender();
+      this.AbG = f1;
+      this.AbI = f2;
+      this.AaM.requestRender();
       AppMethodBeat.o(97260);
       return true;
-      this.zKK = ((int)f2);
-      this.zKL = ((int)f1);
-      if (this.zKO)
+      this.AbR = ((int)f2);
+      this.AbS = ((int)f1);
+      if (this.AbV)
       {
-        this.zKN = false;
-        this.zKM = true;
+        this.AbU = false;
+        this.AbT = true;
       }
-      if (this.zKU != null)
+      if (this.Acb != null)
       {
-        this.zKU.dXs();
+        this.Acb.eaV();
         continue;
-        float f3 = this.zKz;
-        float f4 = this.zKB;
-        if (this.zKO)
+        float f3 = this.AbG;
+        float f4 = this.AbI;
+        if (this.AbV)
         {
-          if ((!this.zKM) && (this.zKN))
+          if ((!this.AbT) && (this.AbU))
           {
             getParent().requestDisallowInterceptTouchEvent(false);
             AppMethodBeat.o(97260);
             return false;
           }
-          if ((!this.zKN) && ((int)Math.sqrt((f1 - this.zKL) * (f1 - this.zKL) + (f2 - this.zKK) * (f2 - this.zKK)) >= this.mTouchSlop))
+          if ((!this.AbU) && ((int)Math.sqrt((f1 - this.AbS) * (f1 - this.AbS) + (f2 - this.AbR) * (f2 - this.AbR)) >= this.mTouchSlop))
           {
-            this.zKN = true;
-            if (Math.abs(f1 - this.zKL) > Math.abs(f2 - this.zKK))
+            this.AbU = true;
+            if (Math.abs(f1 - this.AbS) > Math.abs(f2 - this.AbR))
             {
-              this.zKM = false;
+              this.AbT = false;
               getParent().requestDisallowInterceptTouchEvent(false);
               AppMethodBeat.o(97260);
               return false;
             }
-            this.zKM = true;
+            this.AbT = true;
           }
         }
-        paramMotionEvent = this.zKC;
-        float f5 = paramMotionEvent.zLk;
-        paramMotionEvent.zLk = (bE(f2 - f4) + f5);
-        paramMotionEvent = this.zKC;
-        f4 = paramMotionEvent.zLj;
-        paramMotionEvent.zLj = (bE(f1 - f3) + f4);
-        if (this.zKC.zLj < -50.0F)
+        paramMotionEvent = this.AbJ;
+        float f5 = paramMotionEvent.Acr;
+        paramMotionEvent.Acr = (bC(f2 - f4) + f5);
+        paramMotionEvent = this.AbJ;
+        f4 = paramMotionEvent.Acq;
+        paramMotionEvent.Acq = (bC(f1 - f3) + f4);
+        if (this.AbJ.Acq < -50.0F)
         {
-          this.zKC.zLj = -50.0F;
+          this.AbJ.Acq = -50.0F;
         }
-        else if (this.zKC.zLj > 50.0F)
+        else if (this.AbJ.Acq > 50.0F)
         {
-          this.zKC.zLj = 50.0F;
+          this.AbJ.Acq = 50.0F;
           continue;
-          if (this.zKO)
+          if (this.AbV)
           {
-            this.zKN = false;
-            this.zKM = true;
+            this.AbU = false;
+            this.AbT = true;
           }
-          if (this.zKU != null) {
-            this.zKU.dXt();
+          if (this.Acb != null) {
+            this.Acb.eaW();
           }
         }
       }
@@ -446,60 +446,60 @@ public class SphereImageView
   
   public void setEventListener(b paramb)
   {
-    this.zKU = paramb;
+    this.Acb = paramb;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.zKQ = paramOnClickListener;
+    this.AbX = paramOnClickListener;
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.zKR = paramOnLongClickListener;
+    this.AbY = paramOnLongClickListener;
   }
   
   public void setOnlyHorizontalScroll(boolean paramBoolean)
   {
-    this.zKO = paramBoolean;
+    this.AbV = paramBoolean;
   }
   
   public void setSensorEnabled(boolean paramBoolean)
   {
     boolean bool = false;
     AppMethodBeat.i(97268);
-    if ((paramBoolean) && (this.zKI))
+    if ((paramBoolean) && (this.AbP))
     {
-      ad.e("SphereImageView.SphereView", "setSensorEnabled when isDetachedFromWindow");
+      ae.e("SphereImageView.SphereView", "setSensorEnabled when isDetachedFromWindow");
       AppMethodBeat.o(97268);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("enableSensor, enabled=").append(paramBoolean).append(", hash=").append(hashCode()).append(", hasSensor=");
-    if (this.zKD != null) {
+    if (this.AbK != null) {
       bool = true;
     }
-    ad.i("SphereImageView.SphereView", bool);
+    ae.i("SphereImageView.SphereView", bool);
     try
     {
-      if (this.zKD == null) {
+      if (this.AbK == null) {
         break label185;
       }
       if (paramBoolean)
       {
-        this.zKJ.timestamp = 0L;
-        this.mSensorManager.registerListener(this.zKJ, this.zKD, 0);
+        this.AbQ.timestamp = 0L;
+        this.mSensorManager.registerListener(this.AbQ, this.AbK, 0);
         AppMethodBeat.o(97268);
         return;
       }
     }
     catch (Exception localException)
     {
-      ad.e("SphereImageView.SphereView", "setSensorEnabled exp:" + localException.toString());
+      ae.e("SphereImageView.SphereView", "setSensorEnabled exp:" + localException.toString());
       AppMethodBeat.o(97268);
       return;
     }
-    this.mSensorManager.unregisterListener(this.zKJ);
-    this.zKJ.timestamp = 0L;
+    this.mSensorManager.unregisterListener(this.AbQ);
+    this.AbQ.timestamp = 0L;
     label185:
     AppMethodBeat.o(97268);
   }
@@ -507,31 +507,31 @@ public class SphereImageView
   public void setTouchEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(97269);
-    ad.i("SphereImageView.SphereView", "setTouchEnabled：" + paramBoolean + ", hash=" + hashCode());
-    this.nLg = paramBoolean;
+    ae.i("SphereImageView.SphereView", "setTouchEnabled：" + paramBoolean + ", hash=" + hashCode());
+    this.nQJ = paramBoolean;
     AppMethodBeat.o(97269);
   }
   
   public void setTouchSensitivity(float paramFloat)
   {
     if (paramFloat > 0.0F) {
-      this.zKF = paramFloat;
+      this.AbM = paramFloat;
     }
   }
   
   public static final class a
     implements SensorEventListener
   {
+    public boolean Ace;
+    WeakReference<SphereImageView> Acf;
     public long timestamp;
-    public boolean zKX;
-    WeakReference<SphereImageView> zKY;
     
     public a(SphereImageView paramSphereImageView)
     {
       AppMethodBeat.i(97256);
       this.timestamp = 0L;
-      this.zKX = true;
-      this.zKY = new WeakReference(paramSphereImageView);
+      this.Ace = true;
+      this.Acf = new WeakReference(paramSphereImageView);
       AppMethodBeat.o(97256);
     }
     
@@ -540,13 +540,13 @@ public class SphereImageView
     public final void onSensorChanged(SensorEvent paramSensorEvent)
     {
       AppMethodBeat.i(97257);
-      SphereImageView localSphereImageView = (SphereImageView)this.zKY.get();
+      SphereImageView localSphereImageView = (SphereImageView)this.Acf.get();
       if (localSphereImageView == null)
       {
         AppMethodBeat.o(97257);
         return;
       }
-      if ((Build.VERSION.SDK_INT < 24) && (!this.zKX))
+      if ((Build.VERSION.SDK_INT < 24) && (!this.Ace))
       {
         AppMethodBeat.o(97257);
         return;
@@ -574,9 +574,9 @@ public class SphereImageView
           f2 = (float)Math.toDegrees(SphereImageView.a(localSphereImageView)[1]);
           float f3 = (float)Math.toDegrees(SphereImageView.a(localSphereImageView)[2]);
           paramSensorEvent = new SphereImageView.c();
-          paramSensorEvent.zKZ = f2;
-          paramSensorEvent.zLa = f1;
-          paramSensorEvent.zLb = f3;
+          paramSensorEvent.Acg = f2;
+          paramSensorEvent.Ach = f1;
+          paramSensorEvent.Aci = f3;
           localObject = Message.obtain();
           ((Message)localObject).what = 1;
           ((Message)localObject).obj = paramSensorEvent;
@@ -592,22 +592,22 @@ public class SphereImageView
   
   public static abstract interface b
   {
-    public abstract void azP(String paramString);
+    public abstract void aBg(String paramString);
     
-    public abstract void dXr();
+    public abstract void eaU();
     
-    public abstract void dXs();
+    public abstract void eaV();
     
-    public abstract void dXt();
+    public abstract void eaW();
     
     public abstract void onDetachedFromWindow();
   }
   
   protected static final class c
   {
-    float zKZ;
-    float zLa;
-    float zLb;
+    float Acg;
+    float Ach;
+    float Aci;
   }
 }
 

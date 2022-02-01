@@ -9,7 +9,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 public final class MediaItemView$f
   implements View.OnClickListener
 {
@@ -20,10 +20,10 @@ public final class MediaItemView$f
     AppMethodBeat.i(164952);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/gallery/picker/view/MediaItemView$onCreateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-    paramView = this.tKP;
+    a.b("com/tencent/mm/plugin/gallery/picker/view/MediaItemView$onCreateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    paramView = this.tVG;
     p.g(paramView, "mediaSelectBox");
-    localObject = this.tKP;
+    localObject = this.tVG;
     p.g(localObject, "mediaSelectBox");
     if (!((CheckBox)localObject).isChecked()) {}
     for (boolean bool = true;; bool = false)

@@ -16,8 +16,8 @@ final class CheckInLifeUI$2
     AppMethodBeat.i(26578);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    CheckInLifeUI.a(this.wri, paramView, true);
+    a.b("com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    CheckInLifeUI.a(this.wGR, paramView, true);
     a.a(this, "com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(26578);
   }

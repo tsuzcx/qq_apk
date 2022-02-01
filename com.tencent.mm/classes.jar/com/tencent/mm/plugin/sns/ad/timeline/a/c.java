@@ -1,140 +1,139 @@
 package com.tencent.mm.plugin.sns.ad.timeline.a;
 
-import android.app.Activity;
-import android.widget.ImageView.ScaleType;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.sns.model.f;
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.sns.storage.a;
+import com.tencent.mm.protocal.protobuf.bjh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  public static void a(SnsAdTimelineVideoView paramSnsAdTimelineVideoView)
+  private static Map<String, Long> zrM;
+  
+  static
   {
-    AppMethodBeat.i(197671);
-    if (paramSnsAdTimelineVideoView != null)
+    AppMethodBeat.i(219127);
+    zrM = new ConcurrentHashMap();
+    AppMethodBeat.o(219127);
+  }
+  
+  public static void a(String paramString, a parama)
+  {
+    AppMethodBeat.i(219126);
+    if ((parama == null) || (bu.isNullOrNil(paramString)))
     {
-      paramSnsAdTimelineVideoView.setThumpViewScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramSnsAdTimelineVideoView.setMute(true);
-    }
-    AppMethodBeat.o(197671);
-  }
-  
-  public static void a(SnsAdTimelineVideoView paramSnsAdTimelineVideoView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(197672);
-    if (paramSnsAdTimelineVideoView != null)
-    {
-      paramSnsAdTimelineVideoView = paramSnsAdTimelineVideoView.getLayoutParams();
-      paramSnsAdTimelineVideoView.width = paramInt1;
-      paramSnsAdTimelineVideoView.height = paramInt2;
-    }
-    AppMethodBeat.o(197672);
-  }
-  
-  public static void a(SnsAdTimelineVideoView paramSnsAdTimelineVideoView, f paramf, Activity paramActivity, int paramInt)
-  {
-    AppMethodBeat.i(197676);
-    ad.d("NormalVideoAdHelper", "cleanPlayerSnsSight is called, the position is ".concat(String.valueOf(paramInt)));
-    if ((paramSnsAdTimelineVideoView != null) && (paramf != null) && (paramActivity != null)) {
-      paramf.a(paramSnsAdTimelineVideoView, paramActivity.hashCode());
-    }
-    AppMethodBeat.o(197676);
-  }
-  
-  public static void a(SnsAdTimelineVideoView paramSnsAdTimelineVideoView, f paramf, p paramp, Activity paramActivity, byn parambyn, int paramInt, bj parambj)
-  {
-    AppMethodBeat.i(197677);
-    ad.d("NormalVideoAdHelper", "setPlayerSnsSight is called, the position is ".concat(String.valueOf(paramInt)));
-    if ((paramSnsAdTimelineVideoView != null) && (paramf != null) && (paramp != null) && (paramActivity != null) && (parambyn != null)) {
-      paramf.a(paramp, parambyn, paramSnsAdTimelineVideoView, paramActivity.hashCode(), parambj, paramp.QM(32));
-    }
-    AppMethodBeat.o(197677);
-  }
-  
-  public static void a(SnsAdTimelineVideoView paramSnsAdTimelineVideoView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(197673);
-    ad.d("NormalVideoAdHelper", "setPlayerVisibility is called, the  isNewPlayerVisible is ".concat(String.valueOf(paramBoolean)));
-    if (paramSnsAdTimelineVideoView != null) {
-      if (!paramBoolean) {
-        break label40;
-      }
-    }
-    label40:
-    for (int i = 0;; i = 8)
-    {
-      paramSnsAdTimelineVideoView.setVisibility(i);
-      AppMethodBeat.o(197673);
+      ae.e("DynamicDataReqHelper", "adInfo or snsId is null, snsId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(219126);
       return;
     }
+    if (parama.zMg != 1)
+    {
+      ae.i("DynamicDataReqHelper", "adChainType is not 1, snsId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(219126);
+      return;
+    }
+    int i;
+    long l2;
+    Long localLong;
+    if (parama.zMh == 0)
+    {
+      i = 60000;
+      l2 = System.currentTimeMillis();
+      localLong = (Long)zrM.get(paramString);
+      if (localLong != null) {
+        break label128;
+      }
+    }
+    label128:
+    for (long l1 = 0L;; l1 = localLong.longValue())
+    {
+      if (l2 - l1 >= i) {
+        break label137;
+      }
+      AppMethodBeat.o(219126);
+      return;
+      i = parama.zMh * 1000;
+      break;
+    }
+    label137:
+    parama = new com.tencent.mm.plugin.sns.ad.e.h("", parama.zMk, paramString, parama.dGD);
+    com.tencent.mm.kernel.g.ajj().a(4342, new a(paramString, (byte)0));
+    com.tencent.mm.kernel.g.ajQ().gDv.a(parama, 0);
+    zrM.put(paramString, Long.valueOf(l2));
+    AppMethodBeat.o(219126);
   }
   
-  public static void b(SnsAdTimelineVideoView paramSnsAdTimelineVideoView)
+  public static boolean a(a parama, String paramString)
   {
-    AppMethodBeat.i(197674);
-    ad.d("NormalVideoAdHelper", "play is called");
-    if (paramSnsAdTimelineVideoView != null)
+    AppMethodBeat.i(219125);
+    if (((parama.zMa == a.zLN) && (!bu.isNullOrNil(parama.zMb)) && (parama.zMd.size() > 0)) || ((parama.zMa == a.zLM) && (!bu.isNullOrNil(parama.zMb))))
     {
-      paramSnsAdTimelineVideoView.setShouldPlayWhenPrepared(true);
-      long l1 = paramSnsAdTimelineVideoView.getDurationMs();
-      long l2 = paramSnsAdTimelineVideoView.getCurrentPositionMs();
-      ad.d("NormalVideoAdHelper", "the duration is " + l1 + ", the current is " + l2);
-      if ((l2 >= l1) && (l2 > 0L))
-      {
-        ad.e("NormalVideoAdHelper", "the current is more than duration, do restart!");
-        if (paramSnsAdTimelineVideoView.zGF)
+      ae.i("DynamicDataReqHelper", "use init adChainData");
+      zrM.put(paramString, Long.valueOf(System.currentTimeMillis()));
+      AppMethodBeat.o(219125);
+      return true;
+    }
+    AppMethodBeat.o(219125);
+    return false;
+  }
+  
+  static final class a
+    implements f
+  {
+    private int actionType = 1;
+    private String dAg;
+    a zrN;
+    
+    private a(String paramString)
+    {
+      this.dAg = paramString;
+    }
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    {
+      AppMethodBeat.i(219124);
+      if ((paramn instanceof com.tencent.mm.plugin.sns.ad.e.h)) {
+        try
         {
-          paramSnsAdTimelineVideoView.restart();
-          AppMethodBeat.o(197674);
+          Object localObject = (bjh)((com.tencent.mm.ak.b)paramn.getReqResp()).hQE.hQJ;
+          StringBuilder localStringBuilder = new StringBuilder("errType = ").append(paramInt1).append(", errCode = ").append(paramInt2).append(", snsId = ").append(this.dAg).append(", rsp.sns_ad_id = ");
+          if (localObject == null) {}
+          for (paramString = "";; paramString = ((bjh)localObject).GWR)
+          {
+            ae.i("DynamicDataReqHelper", paramString);
+            if ((paramInt1 == 0) && (paramInt2 == 0) && (localObject != null))
+            {
+              paramInt1 = ((bjh)localObject).oGc;
+              paramString = ((bjh)localObject).GWR;
+              localObject = ((bjh)localObject).GWS;
+              if ((this.actionType == 1) && (this.actionType == paramInt1)) {
+                if ((!bu.V(new String[] { this.dAg, localObject })) && (this.dAg.equals(paramString)))
+                {
+                  paramString = this.dAg;
+                  com.tencent.e.h.MqF.aO(new c.a.2(this, paramString, (String)localObject));
+                }
+              }
+            }
+            com.tencent.mm.kernel.g.ajj().b(paramn.getType(), this);
+            AppMethodBeat.o(219124);
+            return;
+          }
+          AppMethodBeat.o(219124);
+        }
+        catch (Throwable paramString)
+        {
+          ae.e("DynamicDataReqHelper", "NetSceneDynamicAdDataUpdate onSceneEnd exp=" + paramString.toString() + ", snsId = " + this.dAg);
         }
       }
-      else
-      {
-        paramSnsAdTimelineVideoView.start();
-      }
     }
-    AppMethodBeat.o(197674);
-  }
-  
-  public static void c(SnsAdTimelineVideoView paramSnsAdTimelineVideoView)
-  {
-    AppMethodBeat.i(197675);
-    ad.d("NormalVideoAdHelper", "pause is called");
-    if (paramSnsAdTimelineVideoView != null)
-    {
-      paramSnsAdTimelineVideoView.pause();
-      paramSnsAdTimelineVideoView.setShouldPlayWhenPrepared(false);
-    }
-    AppMethodBeat.o(197675);
-  }
-  
-  public static boolean dRY()
-  {
-    AppMethodBeat.i(197670);
-    try
-    {
-      int i = ((b)g.ab(b.class)).a(b.a.qqz, 0);
-      ad.i("NormalVideoAdHelper", "the sns ad new player is ".concat(String.valueOf(i)));
-      if (i > 0)
-      {
-        AppMethodBeat.o(197670);
-        return true;
-      }
-      AppMethodBeat.o(197670);
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(197670);
-    }
-    return false;
   }
 }
 

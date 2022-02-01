@@ -16,44 +16,44 @@ import com.tencent.mm.plugin.emoji.a.a.e;
 import com.tencent.mm.plugin.emoji.a.a.f;
 import com.tencent.mm.plugin.emoji.model.j.a;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public abstract class a
 {
   private final String TAG = "MicroMsg.emoji.BaseEmojiItemHolder";
-  protected View jCI;
-  protected TextView lCL;
+  protected View jFG;
+  protected TextView lHk;
   Context mContext;
   private LayoutInflater mLayoutInflater;
   public int mPosition;
-  protected TextView pAA;
-  protected ProgressBar pAB;
-  protected ViewGroup pAC;
-  protected View pAD;
-  protected TextView pAE;
-  protected ImageView pAF;
-  protected View pAG;
-  protected ProgressBar pAH;
-  protected TextView pAI;
-  protected TextView pAJ;
-  protected FrameLayout pAK;
-  private View pAo;
-  private final int pAp = 2131493771;
-  private final int pAq = 2131493808;
-  private final int pAr = 2131493809;
-  private int[] pAs = { -1, -1 };
-  private int pAt = -1;
-  public f pAu;
-  protected View pAv;
-  protected ImageView pAw;
-  protected ImageView pAx;
-  protected View pAy;
-  protected TextView pAz;
+  private View pGS;
+  private final int pGT = 2131493771;
+  private final int pGU = 2131493808;
+  private final int pGV = 2131493809;
+  private int[] pGW = { -1, -1 };
+  private int pGX = -1;
+  public f pGY;
+  protected View pGZ;
+  protected ImageView pHa;
+  protected ImageView pHb;
+  protected View pHc;
+  protected TextView pHd;
+  protected TextView pHe;
+  protected ProgressBar pHf;
+  protected ViewGroup pHg;
+  protected View pHh;
+  protected TextView pHi;
+  protected ImageView pHj;
+  protected View pHk;
+  protected ProgressBar pHl;
+  protected TextView pHm;
+  protected TextView pHn;
+  protected FrameLayout pHo;
   
   public a(Context paramContext, View paramView)
   {
-    this(paramContext, paramView, a.pAO);
+    this(paramContext, paramView, a.pHs);
   }
   
   private a(Context paramContext, View paramView, a parama)
@@ -64,41 +64,41 @@ public abstract class a
     if (paramView == null) {}
     label446:
     int i;
-    switch (2.pAN[parama.ordinal()])
+    switch (2.pHr[parama.ordinal()])
     {
     default: 
-      paramContext = BM(this.pAp);
-      this.jCI = paramContext;
+      paramContext = BY(this.pGT);
+      this.jFG = paramContext;
       if (paramContext != null)
       {
-        this.pAo = paramContext;
-        this.pAv = this.pAo.findViewById(2131301144);
-        this.pAx = ((ImageView)this.pAo.findViewById(2131301197));
-        this.pAw = ((ImageView)this.pAo.findViewById(2131301154));
-        this.lCL = ((TextView)this.pAo.findViewById(2131301169));
-        this.pAy = this.pAo.findViewById(2131301171);
-        this.pAz = ((TextView)this.pAo.findViewById(2131301146));
-        this.pAA = ((TextView)this.pAo.findViewById(2131301157));
-        this.pAB = ((ProgressBar)this.pAo.findViewById(2131303403));
-        this.pAD = this.pAo.findViewById(2131301174);
-        this.pAC = ((ViewGroup)this.pAo.findViewById(2131301185));
-        this.pAE = ((TextView)this.pAo.findViewById(2131301192));
-        this.pAF = ((ImageView)this.pAo.findViewById(2131301194));
-        this.pAG = this.pAo.findViewById(2131301183);
-        this.pAH = ((ProgressBar)this.pAo.findViewById(2131301151));
-        this.pAI = ((TextView)this.pAo.findViewById(2131301142));
-        this.pAJ = ((TextView)this.pAo.findViewById(2131301172));
-        this.pAK = ((FrameLayout)this.pAo.findViewById(2131301166));
+        this.pGS = paramContext;
+        this.pGZ = this.pGS.findViewById(2131301144);
+        this.pHb = ((ImageView)this.pGS.findViewById(2131301197));
+        this.pHa = ((ImageView)this.pGS.findViewById(2131301154));
+        this.lHk = ((TextView)this.pGS.findViewById(2131301169));
+        this.pHc = this.pGS.findViewById(2131301171);
+        this.pHd = ((TextView)this.pGS.findViewById(2131301146));
+        this.pHe = ((TextView)this.pGS.findViewById(2131301157));
+        this.pHf = ((ProgressBar)this.pGS.findViewById(2131303403));
+        this.pHh = this.pGS.findViewById(2131301174);
+        this.pHg = ((ViewGroup)this.pGS.findViewById(2131301185));
+        this.pHi = ((TextView)this.pGS.findViewById(2131301192));
+        this.pHj = ((ImageView)this.pGS.findViewById(2131301194));
+        this.pHk = this.pGS.findViewById(2131301183);
+        this.pHl = ((ProgressBar)this.pGS.findViewById(2131301151));
+        this.pHm = ((TextView)this.pGS.findViewById(2131301142));
+        this.pHn = ((TextView)this.pGS.findViewById(2131301172));
+        this.pHo = ((FrameLayout)this.pGS.findViewById(2131301166));
       }
-      cfR();
-      if (parama == a.pAO)
+      chh();
+      if (parama == a.pHs)
       {
-        paramView = cfS();
-        if ((this.pAw != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.pAs[0]) || (paramView[1] != this.pAs[1]))) {
+        paramView = chi();
+        if ((this.pHa != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.pGW[0]) || (paramView[1] != this.pGW[1]))) {
           break label515;
         }
-        i = cfT();
-        if ((this.pAo != null) && (i >= 0) && (this.pAt != i)) {
+        i = chj();
+        if ((this.pGS != null) && (i >= 0) && (this.pGX != i)) {
           break label553;
         }
       }
@@ -108,28 +108,28 @@ public abstract class a
     {
       paramContext.setTag(this);
       return;
-      paramContext = BM(this.pAp);
+      paramContext = BY(this.pGT);
       break;
-      paramContext = BM(this.pAr);
+      paramContext = BY(this.pGV);
       break;
-      paramContext = BM(this.pAq);
+      paramContext = BY(this.pGU);
       break;
       label515:
-      parama = this.pAw.getLayoutParams();
+      parama = this.pHa.getLayoutParams();
       parama.width = paramView[0];
       parama.height = paramView[1];
-      this.pAw.setLayoutParams(parama);
-      this.pAs = paramView;
+      this.pHa.setLayoutParams(parama);
+      this.pGW = paramView;
       break label446;
       label553:
-      this.pAo.setMinimumHeight(i);
-      if (this.pAv != null) {
-        this.pAv.setMinimumHeight(i);
+      this.pGS.setMinimumHeight(i);
+      if (this.pGZ != null) {
+        this.pGZ.setMinimumHeight(i);
       }
     }
   }
   
-  private View BM(int paramInt)
+  private View BY(int paramInt)
   {
     if ((this.mLayoutInflater == null) || (paramInt <= 0)) {
       return null;
@@ -137,48 +137,48 @@ public abstract class a
     return this.mLayoutInflater.inflate(paramInt, null);
   }
   
-  private void cge()
+  private void chu()
   {
-    this.pAB.setVisibility(8);
-    this.pAC.setBackgroundResource(2131231365);
-    this.pAC.setVisibility(0);
-    this.pAD.setEnabled(true);
-    this.pAE.setText("");
-    if (this.pAG == null) {
-      this.pAH.setVisibility(4);
+    this.pHf.setVisibility(8);
+    this.pHg.setBackgroundResource(2131231365);
+    this.pHg.setVisibility(0);
+    this.pHh.setEnabled(true);
+    this.pHi.setText("");
+    if (this.pHk == null) {
+      this.pHl.setVisibility(4);
     }
     for (;;)
     {
-      this.pAE.setVisibility(0);
-      this.pAE.setText(2131758319);
-      this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-      this.pAF.setVisibility(8);
+      this.pHi.setVisibility(0);
+      this.pHi.setText(2131758319);
+      this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+      this.pHj.setVisibility(8);
       return;
-      this.pAG.setVisibility(4);
+      this.pHk.setVisibility(4);
     }
   }
   
-  public final void BN(int paramInt)
+  public final void BZ(int paramInt)
   {
-    this.pAx.setVisibility(paramInt);
+    this.pHb.setVisibility(paramInt);
   }
   
-  public final void BO(int paramInt)
+  public final void Ca(int paramInt)
   {
-    this.pAD.setVisibility(paramInt);
+    this.pHh.setVisibility(paramInt);
   }
   
   public final void a(final j.a parama)
   {
-    if (this.pAD != null) {
-      this.pAD.setOnClickListener(new View.OnClickListener()
+    if (this.pHh != null) {
+      this.pHh.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(108290);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/adapter/BaseEmojiItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/adapter/BaseEmojiItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (a.this.a(parama, paramAnonymousView)) {
             a.this.b(parama, paramAnonymousView);
           }
@@ -194,20 +194,20 @@ public abstract class a
     return true;
   }
   
-  public final void abf(String paramString)
+  public final void abW(String paramString)
   {
-    this.pAz.setText(paramString);
+    this.pHd.setText(paramString);
   }
   
-  public final void abg(String paramString)
+  public final void abX(String paramString)
   {
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      this.pAA.setVisibility(8);
+      this.pHe.setVisibility(8);
       return;
     }
-    this.pAA.setVisibility(0);
-    this.pAA.setText(paramString);
+    this.pHe.setVisibility(0);
+    this.pHe.setText(paramString);
   }
   
   protected void b(j.a parama, View paramView)
@@ -217,248 +217,248 @@ public abstract class a
     }
   }
   
-  protected abstract void cfR();
+  protected abstract void chh();
   
-  protected abstract int[] cfS();
+  protected abstract int[] chi();
   
-  protected abstract int cfT();
+  protected abstract int chj();
   
-  public final void cfU()
+  public final void chk()
   {
-    this.lCL.setText(2131758385);
+    this.lHk.setText(2131758385);
   }
   
-  public final ImageView cfV()
+  public final ImageView chl()
   {
-    return this.pAw;
+    return this.pHa;
   }
   
-  public final void cfW()
+  public final void chm()
   {
-    this.pAw.setImageResource(2131232662);
+    this.pHa.setImageResource(2131232662);
   }
   
-  public final ImageView cfX()
+  public final ImageView chn()
   {
-    return this.pAx;
+    return this.pHb;
   }
   
-  public final void cfY()
+  public final void cho()
   {
-    this.pAx.setImageResource(2131232094);
+    this.pHb.setImageResource(2131232094);
   }
   
-  public final void cfZ()
+  public final void chp()
   {
-    this.pAz.setVisibility(8);
-    this.pAA.setVisibility(8);
+    this.pHd.setVisibility(8);
+    this.pHe.setVisibility(8);
   }
   
-  public final int cga()
+  public final int chq()
   {
-    if (this.pAu == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.pAu.mStatus)) {
+    if (this.pGY == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.pGY.mStatus)) {
       return localInteger.intValue();
     }
   }
   
-  public final String cgb()
+  public final String chr()
   {
-    if (this.pAu == null) {}
-    while (this.pAu.pBV == null) {
+    if (this.pGY == null) {}
+    while (this.pGY.pIz == null) {
       return null;
     }
-    return this.pAu.pBV.PackPrice;
+    return this.pGY.pIz.PackPrice;
   }
   
-  protected abstract boolean cgc();
+  protected abstract boolean chs();
   
-  protected final void cgd()
+  protected final void cht()
   {
-    this.pAB.setVisibility(8);
-    this.pAC.setVisibility(8);
-    this.pAD.setEnabled(false);
-    this.pAF.setVisibility(8);
-    this.pAH.setVisibility(0);
-    this.pAH.setProgress(getProgress());
-    if (this.pAG == null)
+    this.pHf.setVisibility(8);
+    this.pHg.setVisibility(8);
+    this.pHh.setEnabled(false);
+    this.pHj.setVisibility(8);
+    this.pHl.setVisibility(0);
+    this.pHl.setProgress(getProgress());
+    if (this.pHk == null)
     {
-      this.pAH.setVisibility(0);
+      this.pHl.setVisibility(0);
       return;
     }
-    this.pAG.setVisibility(0);
+    this.pHk.setVisibility(0);
   }
   
-  public void cgf()
+  public void chv()
   {
-    if (this.pAu == null) {}
-    while (!cgc()) {
+    if (this.pGY == null) {}
+    while (!chs()) {
       return;
     }
-    this.pAE.setVisibility(8);
-    this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
-    switch (cga())
+    this.pHi.setVisibility(8);
+    this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+    switch (chq())
     {
     case 1: 
     case 2: 
     case 5: 
     case 9: 
     default: 
-      ad.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(cga()) });
+      ae.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(chq()) });
       return;
     case 8: 
-      this.pAB.setVisibility(8);
-      this.pAC.setBackgroundDrawable(null);
-      this.pAC.setVisibility(0);
-      this.pAD.setEnabled(false);
-      this.pAE.setVisibility(0);
-      this.pAE.setText(2131758322);
-      this.pAF.setVisibility(4);
-      if (this.pAG == null)
+      this.pHf.setVisibility(8);
+      this.pHg.setBackgroundDrawable(null);
+      this.pHg.setVisibility(0);
+      this.pHh.setEnabled(false);
+      this.pHi.setVisibility(0);
+      this.pHi.setText(2131758322);
+      this.pHj.setVisibility(4);
+      if (this.pHk == null)
       {
-        this.pAH.setVisibility(4);
+        this.pHl.setVisibility(4);
         return;
       }
-      this.pAG.setVisibility(4);
+      this.pHk.setVisibility(4);
       return;
     case 0: 
-      cge();
+      chu();
       return;
     case 6: 
-      cgd();
+      cht();
       return;
     case 7: 
-      if (this.pAu.pBZ)
+      if (this.pGY.pID)
       {
-        ad.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
-        this.pAB.setVisibility(8);
-        this.pAC.setBackgroundResource(2131231365);
-        this.pAC.setVisibility(0);
-        this.pAC.setTag(getProductId());
-        this.pAD.setEnabled(true);
-        this.pAE.setVisibility(0);
-        this.pAE.setText(2131758387);
-        this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-        this.pAF.setVisibility(4);
-        if (this.pAG == null)
+        ae.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
+        this.pHf.setVisibility(8);
+        this.pHg.setBackgroundResource(2131231365);
+        this.pHg.setVisibility(0);
+        this.pHg.setTag(getProductId());
+        this.pHh.setEnabled(true);
+        this.pHi.setVisibility(0);
+        this.pHi.setText(2131758387);
+        this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.pHj.setVisibility(4);
+        if (this.pHk == null)
         {
-          this.pAH.setVisibility(4);
+          this.pHl.setVisibility(4);
           return;
         }
-        this.pAG.setVisibility(4);
+        this.pHk.setVisibility(4);
         return;
       }
-      if ((this.pAu.pCb) && (e.fk(this.pAu.pBV.PackFlag, 64)))
+      if ((this.pGY.pIF) && (e.fl(this.pGY.pIz.PackFlag, 64)))
       {
-        this.pAC.setVisibility(0);
-        this.pAC.setBackgroundResource(2131231370);
-        this.pAE.setVisibility(0);
-        this.pAE.setText(2131758352);
-        this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-        this.pAF.setVisibility(4);
-        this.pAD.setEnabled(true);
-        if (this.pAG == null)
+        this.pHg.setVisibility(0);
+        this.pHg.setBackgroundResource(2131231370);
+        this.pHi.setVisibility(0);
+        this.pHi.setText(2131758352);
+        this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.pHj.setVisibility(4);
+        this.pHh.setEnabled(true);
+        if (this.pHk == null)
         {
-          this.pAH.setVisibility(4);
+          this.pHl.setVisibility(4);
           return;
         }
-        this.pAG.setVisibility(4);
+        this.pHk.setVisibility(4);
         return;
       }
-      this.pAB.setVisibility(8);
-      this.pAC.setVisibility(0);
-      this.pAC.setBackgroundResource(2131231372);
-      this.pAE.setVisibility(0);
-      this.pAE.setText(2131758321);
-      this.pAE.setTextColor(this.mContext.getResources().getColorStateList(2131100022));
-      this.pAF.setVisibility(4);
-      this.pAD.setEnabled(false);
-      if (this.pAG == null)
+      this.pHf.setVisibility(8);
+      this.pHg.setVisibility(0);
+      this.pHg.setBackgroundResource(2131231372);
+      this.pHi.setVisibility(0);
+      this.pHi.setText(2131758321);
+      this.pHi.setTextColor(this.mContext.getResources().getColorStateList(2131100022));
+      this.pHj.setVisibility(4);
+      this.pHh.setEnabled(false);
+      if (this.pHk == null)
       {
-        this.pAH.setVisibility(4);
+        this.pHl.setVisibility(4);
         return;
       }
-      this.pAG.setVisibility(4);
+      this.pHk.setVisibility(4);
       return;
     case 3: 
-      cge();
+      chu();
       return;
     case 4: 
     case 12: 
-      this.pAB.setVisibility(8);
-      this.pAC.setBackgroundResource(2131231372);
-      this.pAC.setVisibility(0);
-      if (this.pAG == null) {
-        this.pAH.setVisibility(4);
+      this.pHf.setVisibility(8);
+      this.pHg.setBackgroundResource(2131231372);
+      this.pHg.setVisibility(0);
+      if (this.pHk == null) {
+        this.pHl.setVisibility(4);
       }
       for (;;)
       {
-        this.pAD.setEnabled(true);
-        this.pAF.setVisibility(4);
-        this.pAE.setVisibility(0);
-        if (this.pAu.pBV == null) {
+        this.pHh.setEnabled(true);
+        this.pHj.setVisibility(4);
+        this.pHi.setVisibility(0);
+        if (this.pGY.pIz == null) {
           break;
         }
-        this.pAE.setText(this.pAu.pBV.PackPrice);
+        this.pHi.setText(this.pGY.pIz.PackPrice);
         return;
-        this.pAG.setVisibility(4);
+        this.pHk.setVisibility(4);
       }
     case 10: 
-      this.pAB.setVisibility(8);
-      this.pAC.setBackgroundResource(2131231372);
-      this.pAC.setVisibility(0);
-      this.pAE.setVisibility(0);
-      this.pAE.setText(2131758343);
-      this.pAF.setVisibility(4);
-      this.pAD.setEnabled(true);
-      if (this.pAG == null)
+      this.pHf.setVisibility(8);
+      this.pHg.setBackgroundResource(2131231372);
+      this.pHg.setVisibility(0);
+      this.pHi.setVisibility(0);
+      this.pHi.setText(2131758343);
+      this.pHj.setVisibility(4);
+      this.pHh.setEnabled(true);
+      if (this.pHk == null)
       {
-        this.pAH.setVisibility(4);
+        this.pHl.setVisibility(4);
         return;
       }
-      this.pAG.setVisibility(4);
+      this.pHk.setVisibility(4);
       return;
     }
-    this.pAB.setVisibility(0);
-    this.pAC.setBackgroundResource(2131231372);
-    this.pAC.setVisibility(0);
-    this.pAE.setVisibility(0);
-    this.pAE.setText("");
-    this.pAD.setEnabled(false);
-    this.pAF.setVisibility(4);
-    if (this.pAG == null)
+    this.pHf.setVisibility(0);
+    this.pHg.setBackgroundResource(2131231372);
+    this.pHg.setVisibility(0);
+    this.pHi.setVisibility(0);
+    this.pHi.setText("");
+    this.pHh.setEnabled(false);
+    this.pHj.setVisibility(4);
+    if (this.pHk == null)
     {
-      this.pAH.setVisibility(4);
+      this.pHl.setVisibility(4);
       return;
     }
-    this.pAG.setVisibility(4);
+    this.pHk.setVisibility(4);
   }
   
   public final String getProductId()
   {
-    if (this.pAu == null) {}
-    while (this.pAu.pBV == null) {
+    if (this.pGY == null) {}
+    while (this.pGY.pIz == null) {
       return null;
     }
-    return this.pAu.pBV.ProductID;
+    return this.pGY.pIz.ProductID;
   }
   
   public final int getProgress()
   {
-    if (this.pAu == null) {
+    if (this.pGY == null) {
       return 0;
     }
-    return this.pAu.Hx;
+    return this.pGY.Hx;
   }
   
   public final View getRoot()
   {
-    return this.jCI;
+    return this.jFG;
   }
   
   public final void setTitle(String paramString)
   {
-    this.lCL.setText(paramString);
+    this.lHk.setText(paramString);
   }
   
   public static enum a
@@ -466,10 +466,10 @@ public abstract class a
     static
     {
       AppMethodBeat.i(108294);
-      pAO = new a("LIST", 0);
-      pAP = new a("GRID_MAIN", 1);
-      pAQ = new a("GRID_RECOMMEND", 2);
-      pAR = new a[] { pAO, pAP, pAQ };
+      pHs = new a("LIST", 0);
+      pHt = new a("GRID_MAIN", 1);
+      pHu = new a("GRID_RECOMMEND", 2);
+      pHv = new a[] { pHs, pHt, pHu };
       AppMethodBeat.o(108294);
     }
     
@@ -478,7 +478,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a
  * JD-Core Version:    0.7.0.1
  */

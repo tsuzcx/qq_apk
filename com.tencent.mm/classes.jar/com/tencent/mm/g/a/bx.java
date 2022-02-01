@@ -12,7 +12,7 @@ public final class bx
   
   private bx(byte paramByte)
   {
-    this.IbR = false;
+    this.IvZ = false;
     this.callback = null;
   }
 }

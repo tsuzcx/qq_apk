@@ -11,7 +11,7 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class GameSmallAvatarList
@@ -25,7 +25,7 @@ public class GameSmallAvatarList
   public void setData(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(42620);
-    if (bt.hj(paramLinkedList))
+    if (bu.ht(paramLinkedList))
     {
       setVisibility(8);
       AppMethodBeat.o(42620);
@@ -51,8 +51,8 @@ public class GameSmallAvatarList
         break;
       }
       localObject = new e.a.a();
-      ((e.a.a)localObject).hfi = true;
-      e.dav().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).daw());
+      ((e.a.a)localObject).hhW = true;
+      e.ddh().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).ddi());
       getChildAt(i).setVisibility(0);
       i += 1;
     }
@@ -66,7 +66,7 @@ public class GameSmallAvatarList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameSmallAvatarList
  * JD-Core Version:    0.7.0.1
  */

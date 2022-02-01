@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelvoice.q;
 import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.edb;
-import com.tencent.mm.protocal.protobuf.edc;
-import com.tencent.mm.protocal.protobuf.edg;
-import com.tencent.mm.protocal.protobuf.edh;
-import com.tencent.mm.protocal.protobuf.edj;
-import com.tencent.mm.protocal.protobuf.edk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.ees;
+import com.tencent.mm.protocal.protobuf.eet;
+import com.tencent.mm.protocal.protobuf.eex;
+import com.tencent.mm.protocal.protobuf.eey;
+import com.tencent.mm.protocal.protobuf.efa;
+import com.tencent.mm.protocal.protobuf.efb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -25,9 +27,9 @@ import java.util.List;
 public final class j
   extends a
 {
-  public String DxA = "";
+  public String DPf = "";
   
-  protected final boolean VT(int paramInt)
+  protected final boolean WA(int paramInt)
   {
     switch (paramInt)
     {
@@ -37,7 +39,7 @@ public final class j
     return false;
   }
   
-  protected final boolean VU(int paramInt)
+  protected final boolean WB(int paramInt)
   {
     switch (paramInt)
     {
@@ -47,7 +49,7 @@ public final class j
     return false;
   }
   
-  public final List<Integer> eKN()
+  public final List<Integer> eOv()
   {
     AppMethodBeat.i(30087);
     ArrayList localArrayList = new ArrayList();
@@ -70,51 +72,51 @@ public final class j
     {
       AppMethodBeat.o(30088);
       return null;
-      Object localObject2 = new edb();
+      Object localObject2 = new ees();
       try
       {
-        ((edb)localObject2).parseFrom(paramArrayOfByte);
-        localObject1 = new edc();
-        ((edc)localObject1).HOR = ((edb)localObject2).HOR;
-        if (((edc)localObject1).HOR) {
-          ba.aBQ();
+        ((ees)localObject2).parseFrom(paramArrayOfByte);
+        localObject1 = new eet();
+        ((eet)localObject1).IiY = ((ees)localObject2).IiY;
+        if (((eet)localObject1).IiY) {
+          bc.aCg();
         }
-        for (paramArrayOfByte = c.azs().g(((edb)localObject2).Username, ((edb)localObject2).HfW, 11);; paramArrayOfByte = c.azs().f(((edb)localObject2).Username, ((edb)localObject2).HfW, 11))
+        for (paramArrayOfByte = c.azI().g(((ees)localObject2).Username, ((ees)localObject2).Hzw, 11);; paramArrayOfByte = c.azI().f(((ees)localObject2).Username, ((ees)localObject2).Hzw, 11))
         {
           paramInt = 0;
           while ((paramInt < 10) && (paramInt < paramArrayOfByte.size()))
           {
-            localObject2 = (bu)paramArrayOfByte.get(paramInt);
-            ((edc)localObject1).GDO.add(h.aE((bu)localObject2));
+            localObject2 = (bv)paramArrayOfByte.get(paramInt);
+            ((eet)localObject1).GXr.add(h.aD((bv)localObject2));
             paramInt += 1;
           }
-          ba.aBQ();
+          bc.aCg();
         }
         if (paramArrayOfByte.size() > 10) {}
         for (bool = true;; bool = false)
         {
-          ((edc)localObject1).GAQ = bool;
+          ((eet)localObject1).GUq = bool;
           try
           {
-            paramArrayOfByte = ((edc)localObject1).toByteArray();
+            paramArrayOfByte = ((eet)localObject1).toByteArray();
             AppMethodBeat.o(30088);
             return paramArrayOfByte;
           }
           catch (IOException paramArrayOfByte)
           {
-            ad.printErrStackTrace("MicroMsg.Wear.HttpMessageServer", paramArrayOfByte, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.Wear.HttpMessageServer", paramArrayOfByte, "", new Object[0]);
           }
         }
         continue;
-        this.DxA = "";
+        this.DPf = "";
         continue;
-        com.tencent.mm.plugin.wear.model.c.a.iP(9, 0);
-        com.tencent.mm.plugin.wear.model.c.a.VS(8);
-        localObject1 = new edg();
+        com.tencent.mm.plugin.wear.model.c.a.iT(9, 0);
+        com.tencent.mm.plugin.wear.model.c.a.Wz(8);
+        localObject1 = new eex();
         try
         {
-          ((edg)localObject1).parseFrom(paramArrayOfByte);
-          if (bt.isNullOrNil(((edg)localObject1).Username))
+          ((eex)localObject1).parseFrom(paramArrayOfByte);
+          if (bu.isNullOrNil(((eex)localObject1).Username))
           {
             AppMethodBeat.o(30088);
             return null;
@@ -125,21 +127,21 @@ public final class j
           AppMethodBeat.o(30088);
           return null;
         }
-        this.DxA = ((edg)localObject1).Username;
-        paramArrayOfByte = new edh();
-        ba.aBQ();
-        localObject1 = c.azs().f(((edg)localObject1).Username, ((edg)localObject1).HfW, 11);
+        this.DPf = ((eex)localObject1).Username;
+        paramArrayOfByte = new eey();
+        bc.aCg();
+        localObject1 = c.azI().f(((eex)localObject1).Username, ((eex)localObject1).Hzw, 11);
         paramInt = 0;
         while ((paramInt < 10) && (paramInt < ((List)localObject1).size()))
         {
-          localObject2 = (bu)((List)localObject1).get(paramInt);
-          paramArrayOfByte.GDO.add(h.aE((bu)localObject2));
+          localObject2 = (bv)((List)localObject1).get(paramInt);
+          paramArrayOfByte.GXr.add(h.aD((bv)localObject2));
           paramInt += 1;
         }
         if (((List)localObject1).size() > 10) {}
         for (;;)
         {
-          paramArrayOfByte.GAQ = bool;
+          paramArrayOfByte.GUq = bool;
           try
           {
             paramArrayOfByte = paramArrayOfByte.toByteArray();
@@ -148,33 +150,33 @@ public final class j
           }
           catch (IOException paramArrayOfByte)
           {
-            ad.printErrStackTrace("MicroMsg.Wear.HttpMessageServer", paramArrayOfByte, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.Wear.HttpMessageServer", paramArrayOfByte, "", new Object[0]);
           }
           bool = false;
         }
         continue;
-        com.tencent.mm.plugin.wear.model.c.a.iP(12, 0);
-        com.tencent.mm.plugin.wear.model.c.a.VS(14);
-        localObject1 = new edj();
+        com.tencent.mm.plugin.wear.model.c.a.iT(12, 0);
+        com.tencent.mm.plugin.wear.model.c.a.Wz(14);
+        localObject1 = new efa();
       }
       catch (IOException paramArrayOfByte)
       {
         try
         {
           Object localObject1;
-          ((edj)localObject1).parseFrom(paramArrayOfByte);
+          ((efa)localObject1).parseFrom(paramArrayOfByte);
           label498:
-          ba.aBQ();
-          paramArrayOfByte = c.azs().xY(((edj)localObject1).FAf);
-          localObject2 = new edk();
+          bc.aCg();
+          paramArrayOfByte = c.azI().ys(((efa)localObject1).FSD);
+          localObject2 = new efb();
           String str = s.getFullPath(paramArrayOfByte.field_imgPath);
-          ((edk)localObject2).HPb = q.f(str, 0, true);
-          ((edk)localObject2).FAf = ((edj)localObject1).FAf;
-          ((edk)localObject2).Fyu = new b(com.tencent.mm.vfs.i.aY(str, 0, -1));
-          s.ab(paramArrayOfByte);
+          ((efb)localObject2).Iji = q.f(str, 0, true);
+          ((efb)localObject2).FSD = ((efa)localObject1).FSD;
+          ((efb)localObject2).FQS = new b(o.bb(str, 0, -1));
+          s.aa(paramArrayOfByte);
           try
           {
-            paramArrayOfByte = ((edk)localObject2).toByteArray();
+            paramArrayOfByte = ((efb)localObject2).toByteArray();
             AppMethodBeat.o(30088);
             return paramArrayOfByte;
           }

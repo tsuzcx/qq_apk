@@ -2,107 +2,107 @@ package com.tencent.mm.plugin.multitalk.model;
 
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.c.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.multitalk.d.e;
 import com.tencent.pb.common.b.a.a.a.ap;
-import d.a.ae;
 import d.g.a.b;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
+import d.u;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkScreenCastManager;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastEventHandler;", "()V", "canReceiveScreenCast", "", "dispatchToPauseEvent", "Lkotlin/Function1;", "", "", "dispatchToStartEvent", "dispatchToStopEvent", "dispatcher", "", "", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "close", "getUserState", "wxUserName", "onSwitchVideoScreenSharingRsp", "rsp", "onVideoGroupMemberChange", "memberList", "", "Lcom/tencent/pb/common/network/protocol/nano/ProtocolContacts$VideoGroupMember;", "pauseScreenCast", "registerUiCallback", "callback", "restartScreenCast", "resumeScreenCast", "startScreenCast", "stopScreenCast", "switchScreenCastState", "state", "Companion", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkScreenCastManager;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastEventHandler;", "()V", "canReceiveScreenCast", "", "dispatchToPauseEvent", "Lkotlin/Function1;", "", "", "dispatchToStartEvent", "dispatchToStopEvent", "dispatcher", "", "", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "close", "getUserState", "wxUserName", "onSwitchVideoScreenSharingRsp", "rsp", "onVideoGroupMemberChange", "memberList", "", "Lcom/tencent/pb/common/network/protocol/nano/ProtocolContacts$VideoGroupMember;", "pauseScreenCast", "registerUiCallback", "callback", "restartScreenCast", "resumeScreenCast", "startScreenCast", "stopScreenCast", "switchScreenCastState", "state", "Companion", "plugin-multitalk_release"})
 public final class r
   implements h
 {
-  public static final r.a wct;
-  private final ArrayMap<String, Integer> wai;
-  private i wcn;
-  private final boolean wco;
-  private final b<String, d.z> wcp;
-  private final b<String, d.z> wcq;
-  private final b<String, d.z> wcr;
-  private final Map<Integer, b<String, d.z>> wcs;
+  public static final r.a wrV;
+  private final ArrayMap<String, Integer> wpH;
+  private i wrP;
+  private final boolean wrQ;
+  private final b<String, d.z> wrR;
+  private final b<String, d.z> wrS;
+  private final b<String, d.z> wrT;
+  private final Map<Integer, b<String, d.z>> wrU;
   
   static
   {
-    AppMethodBeat.i(206668);
-    wct = new r.a((byte)0);
-    AppMethodBeat.o(206668);
+    AppMethodBeat.i(190938);
+    wrV = new r.a((byte)0);
+    AppMethodBeat.o(190938);
   }
   
   public r()
   {
-    AppMethodBeat.i(206667);
-    this.wai = new ArrayMap();
-    e locale = e.whJ;
-    this.wco = e.drq();
-    this.wcp = ((b)new c(this));
-    this.wcq = ((b)new b(this));
-    this.wcr = ((b)new d(this));
-    this.wcs = ae.a(new d.o[] { d.u.S(Integer.valueOf(101), this.wcp), d.u.S(Integer.valueOf(102), this.wcq), d.u.S(Integer.valueOf(103), this.wcr) });
-    AppMethodBeat.o(206667);
+    AppMethodBeat.i(190937);
+    this.wpH = new ArrayMap();
+    e locale = e.wxn;
+    this.wrQ = e.duC();
+    this.wrR = ((b)new c(this));
+    this.wrS = ((b)new b(this));
+    this.wrT = ((b)new d(this));
+    this.wrU = d.a.ae.a(new d.o[] { u.R(Integer.valueOf(101), this.wrR), u.R(Integer.valueOf(102), this.wrS), u.R(Integer.valueOf(103), this.wrT) });
+    AppMethodBeat.o(190937);
   }
   
-  public static void KG(int paramInt)
+  public static void Ll(int paramInt)
   {
-    AppMethodBeat.i(206662);
-    if (z.dqx() != null) {
-      o.KF(paramInt);
+    AppMethodBeat.i(190932);
+    if (z.dtK() != null) {
+      o.Lk(paramInt);
     }
-    AppMethodBeat.o(206662);
+    AppMethodBeat.o(190932);
   }
   
-  public final void Ky(int paramInt)
+  public final void Ld(int paramInt)
   {
-    AppMethodBeat.i(206663);
-    ad.i("MicroMsg.MultiTalkScreenCastManager", String.valueOf(paramInt));
-    AppMethodBeat.o(206663);
+    AppMethodBeat.i(190933);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MultiTalkScreenCastManager", String.valueOf(paramInt));
+    AppMethodBeat.o(190933);
   }
   
   public final void a(i parami)
   {
-    if (!this.wco) {
+    if (!this.wrQ) {
       return;
     }
-    this.wcn = parami;
+    this.wrP = parami;
   }
   
-  public final int arA(String paramString)
+  public final int asL(String paramString)
   {
-    AppMethodBeat.i(206665);
+    AppMethodBeat.i(190935);
     p.h(paramString, "wxUserName");
-    paramString = (Integer)this.wai.get(paramString);
+    paramString = (Integer)this.wpH.get(paramString);
     if (paramString != null)
     {
       int i = paramString.intValue();
-      AppMethodBeat.o(206665);
+      AppMethodBeat.o(190935);
       return i;
     }
-    AppMethodBeat.o(206665);
+    AppMethodBeat.o(190935);
     return 100;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(206666);
-    this.wai.clear();
-    this.wcn = null;
-    AppMethodBeat.o(206666);
+    AppMethodBeat.i(190936);
+    this.wpH.clear();
+    this.wrP = null;
+    AppMethodBeat.o(190936);
   }
   
-  public final void ez(List<a.ap> paramList)
+  public final void eE(List<a.ap> paramList)
   {
-    AppMethodBeat.i(206664);
+    AppMethodBeat.i(190934);
     p.h(paramList, "memberList");
-    if (!this.wco)
+    if (!this.wrQ)
     {
-      AppMethodBeat.o(206664);
+      AppMethodBeat.o(190934);
       return;
     }
     Object localObject1 = (Iterable)paramList;
@@ -112,7 +112,7 @@ public final class r
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      if ((p.i(((a.ap)localObject2).dtx, com.tencent.mm.model.u.aAm()) ^ true)) {
+      if ((p.i(((a.ap)localObject2).duC, v.aAC()) ^ true)) {
         paramList.add(localObject2);
       }
     }
@@ -120,18 +120,18 @@ public final class r
     while (paramList.hasNext())
     {
       localObject2 = (a.ap)paramList.next();
-      localObject1 = (b)this.wcs.get(Integer.valueOf(((a.ap)localObject2).LHQ));
+      localObject1 = (b)this.wrU.get(Integer.valueOf(((a.ap)localObject2).MeU));
       if (localObject1 != null)
       {
-        localObject2 = ((a.ap)localObject2).dtx;
+        localObject2 = ((a.ap)localObject2).duC;
         p.g(localObject2, "it.wxUserName");
         ((b)localObject1).invoke(localObject2);
       }
     }
-    AppMethodBeat.o(206664);
+    AppMethodBeat.o(190934);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class b
     extends q
     implements b<String, d.z>
@@ -142,7 +142,7 @@ public final class r
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class c
     extends q
     implements b<String, d.z>
@@ -153,7 +153,7 @@ public final class r
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class d
     extends q
     implements b<String, d.z>
@@ -166,7 +166,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.r
  * JD-Core Version:    0.7.0.1
  */

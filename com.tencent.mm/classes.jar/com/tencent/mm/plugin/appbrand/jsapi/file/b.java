@@ -1,110 +1,115 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hr;
+import com.tencent.mm.g.b.a.ht;
+import com.tencent.mm.plugin.appbrand.ad.e;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.appstorage.x;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.z;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
-import com.tencent.mm.plugin.appbrand.z.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import d.o;
+import com.tencent.mm.plugin.appbrand.y.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import d.g.b.p;
+import d.l;
+import d.n.n;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandRuntimeFileSystemRegistry;", "Lcom/tencent/mm/plugin/appbrand/jsapi/file/LuggageFileSystemRegistryWC;", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "config", "Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandStorageConfig;", "(Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandStorageConfig;)V", "appId", "", "kotlin.jvm.PlatformType", "createTempFileFrom", "Lcom/tencent/mm/plugin/appbrand/appstorage/FileOpResult;", "scrFile", "Lcom/tencent/mm/vfs/VFSFile;", "suffix", "deleteSrc", "", "pResultPath", "Lcom/tencent/mm/plugin/appbrand/util/Pointer;", "TempFileSystemProfilerImpl", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandRuntimeFileSystemRegistry;", "Lcom/tencent/mm/plugin/appbrand/jsapi/file/LuggageFileSystemRegistryWC;", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "config", "Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandStorageConfig;", "(Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandStorageConfig;)V", "appId", "", "kotlin.jvm.PlatformType", "createTempFileFrom", "Lcom/tencent/mm/plugin/appbrand/appstorage/FileOpResult;", "scrFile", "Lcom/tencent/mm/vfs/VFSFile;", "suffix", "deleteSrc", "", "pResultPath", "Lcom/tencent/mm/plugin/appbrand/util/Pointer;", "TempFileSystemProfilerImpl", "plugin-appbrand-integration_release"})
 public final class b
-  extends ar
+  extends at
 {
   private final String appId;
-  private final d kMt;
+  private final d kPJ;
   
-  public b(com.tencent.luggage.sdk.d.c paramc, d paramd)
+  public b(com.tencent.luggage.sdk.d.d paramd, d paramd1)
   {
-    super(paramc, paramd);
+    super(paramd, paramd1);
     AppMethodBeat.i(50510);
-    this.kMt = paramd;
-    this.appId = paramc.getAppId();
-    bbB().addFirst(com.tencent.mm.plugin.appbrand.ad.d.aYb());
-    paramc = a.kMq;
-    paramc = bbB();
-    d.g.b.p.g(paramc, "orderedFileSystemList");
-    paramd = this.appId;
-    d.g.b.p.g(paramd, "appId");
-    d.g.b.p.h(paramc, "fileSystems");
-    d.g.b.p.h(paramd, "appId");
-    QualitySessionRuntime localQualitySessionRuntime = com.tencent.mm.plugin.appbrand.report.quality.a.Ut(paramd);
+    this.kPJ = paramd1;
+    this.appId = paramd.getAppId();
+    bcg().addFirst(e.aYv());
+    paramd = a.kPG;
+    paramd = bcg();
+    p.g(paramd, "orderedFileSystemList");
+    paramd1 = this.appId;
+    p.g(paramd1, "appId");
+    p.h(paramd, "fileSystems");
+    p.h(paramd1, "appId");
+    QualitySessionRuntime localQualitySessionRuntime = com.tencent.mm.plugin.appbrand.report.quality.a.Ve(paramd1);
     if (localQualitySessionRuntime == null)
     {
       AppMethodBeat.o(50510);
       return;
     }
-    d.g.b.p.g(localQualitySessionRuntime, "AppBrandQualitySystem.getSession(appId) ?: return");
-    paramc = (Iterable)paramc;
+    p.g(localQualitySessionRuntime, "AppBrandQualitySystem.getSession(appId) ?: return");
+    paramd = (Iterable)paramd;
     Collection localCollection = (Collection)new ArrayList();
-    Iterator localIterator = paramc.iterator();
+    Iterator localIterator = paramd.iterator();
     label271:
     while (localIterator.hasNext())
     {
-      paramc = (com.tencent.mm.plugin.appbrand.appstorage.p)localIterator.next();
-      if ((paramc instanceof com.tencent.mm.plugin.appbrand.appstorage.n)) {
-        paramc = new o(((com.tencent.mm.plugin.appbrand.appstorage.n)paramc).jMR, ((com.tencent.mm.plugin.appbrand.appstorage.n)paramc).getRootPath());
+      paramd = (q)localIterator.next();
+      if ((paramd instanceof com.tencent.mm.plugin.appbrand.appstorage.o)) {
+        paramd = new d.o(((com.tencent.mm.plugin.appbrand.appstorage.o)paramd).jQf, ((com.tencent.mm.plugin.appbrand.appstorage.o)paramd).getRootPath());
       }
       for (;;)
       {
-        if (paramc == null) {
+        if (paramd == null) {
           break label271;
         }
-        localCollection.add(paramc);
+        localCollection.add(paramd);
         break;
-        if ((paramc instanceof x))
+        if ((paramd instanceof z))
         {
-          String str = ((x)paramc).bbI();
-          d.g.b.p.g(str, "fs.pathPrefix");
-          paramc = new o(d.n.n.h(str, "wxfile://", "", false), ((x)paramc).getRootPath());
+          String str = ((z)paramd).bcm();
+          p.g(str, "fs.pathPrefix");
+          paramd = new d.o(n.h(str, "wxfile://", "", false), ((z)paramd).getRootPath());
         }
         else
         {
-          ad.w("MicroMsg.AppBrand.AppBrandFileOccupationReporter", "unknown type: %s", new Object[] { paramc.getClass().getSimpleName() });
-          paramc = null;
+          ae.w("MicroMsg.AppBrand.AppBrandFileOccupationReporter", "unknown type: %s", new Object[] { paramd.getClass().getSimpleName() });
+          paramd = null;
         }
       }
     }
-    com.tencent.mm.ad.c.b(null, (d.g.a.a)new a.a.a((List)localCollection, paramd, localQualitySessionRuntime));
+    com.tencent.mm.ac.c.b(null, (d.g.a.a)new a.a.a((List)localCollection, paramd1, localQualitySessionRuntime));
     AppMethodBeat.o(50510);
   }
   
-  public final com.tencent.mm.plugin.appbrand.appstorage.l a(e parame, String paramString, boolean paramBoolean, i<String> parami)
+  public final m a(k paramk, String paramString, boolean paramBoolean, i<String> parami)
   {
     AppMethodBeat.i(175167);
-    if (parame != null) {}
-    for (long l = c.x(parame);; l = -1L)
+    if (paramk != null) {}
+    for (long l = c.x(paramk);; l = -1L)
     {
-      parame = super.a(parame, paramString, paramBoolean, parami);
-      if (parame == com.tencent.mm.plugin.appbrand.appstorage.l.jMv)
+      paramk = super.a(paramk, paramString, paramBoolean, parami);
+      if (paramk == m.jPM)
       {
-        paramString = com.tencent.mm.plugin.appbrand.report.quality.a.Ut(this.appId);
+        paramString = com.tencent.mm.plugin.appbrand.report.quality.a.Ve(this.appId);
         if (paramString != null)
         {
           paramString = c.a(paramString);
-          paramString.nk(l);
-          paramString.aLk();
+          paramString.nw(l);
+          paramString.aLH();
         }
       }
-      d.g.b.p.g(parame, "super.createTempFileFrom…}\n            }\n        }");
+      p.g(paramk, "super.createTempFileFrom…}\n            }\n        }");
       AppMethodBeat.o(175167);
-      return parame;
+      return paramk;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandRuntimeFileSystemRegistry$TempFileSystemProfilerImpl;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IFileSystemProfiler;", "()V", "reportTempFileAlloc", "", "appId", "", "file", "Lcom/tencent/mm/vfs/VFSFile;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/AppBrandRuntimeFileSystemRegistry$TempFileSystemProfilerImpl;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IFileSystemProfiler;", "()V", "reportTempFileAlloc", "", "appId", "", "file", "Lcom/tencent/mm/vfs/VFSFile;", "plugin-appbrand-integration_release"})
   public static final class a
-    implements q
+    implements r
   {
-    public final void b(String paramString, e parame)
+    public final void b(String paramString, k paramk)
     {
       AppMethodBeat.i(175166);
       if (paramString == null)
@@ -112,22 +117,22 @@ public final class b
         AppMethodBeat.o(175166);
         return;
       }
-      paramString = com.tencent.mm.plugin.appbrand.report.quality.a.Ut(paramString);
+      paramString = com.tencent.mm.plugin.appbrand.report.quality.a.Ve(paramString);
       if (paramString == null)
       {
         AppMethodBeat.o(175166);
         return;
       }
       paramString = c.a(paramString);
-      paramString.nk(c.x(parame));
-      paramString.aLk();
+      paramString.nw(c.x(paramk));
+      paramString.aLH();
       AppMethodBeat.o(175166);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.b
  * JD-Core Version:    0.7.0.1
  */

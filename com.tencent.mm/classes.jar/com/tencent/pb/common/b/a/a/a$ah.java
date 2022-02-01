@@ -6,17 +6,17 @@ import com.google.b.a.e;
 public final class a$ah
   extends e
 {
-  public int GnD = 0;
-  public int LHE = 0;
-  public int LHF = 0;
-  public int LHG = 0;
-  public int LHH = 0;
-  public int LHI = 0;
-  public int LHJ = -1;
-  public int LHK = 0;
-  public int LHL = 0;
+  public int GGJ = 0;
+  public int MeI = 0;
+  public int MeJ = 0;
+  public int MeK = 0;
+  public int MeL = 0;
+  public int MeM = 0;
+  public int MeN = -1;
+  public int MeO = 0;
+  public int MeP = 0;
   public int roomId = 0;
-  public long uLt = 0L;
+  public long uXg = 0L;
   
   public a$ah()
   {
@@ -25,38 +25,38 @@ public final class a$ah
   
   public final void a(b paramb)
   {
-    if (this.GnD != 0) {
-      paramb.by(1, this.GnD);
+    if (this.GGJ != 0) {
+      paramb.by(1, this.GGJ);
     }
     if (this.roomId != 0) {
       paramb.bx(2, this.roomId);
     }
-    if (this.uLt != 0L) {
-      paramb.n(3, this.uLt);
+    if (this.uXg != 0L) {
+      paramb.n(3, this.uXg);
     }
-    if (this.LHE != 0) {
-      paramb.by(4, this.LHE);
+    if (this.MeI != 0) {
+      paramb.by(4, this.MeI);
     }
-    if (this.LHF != 0) {
-      paramb.by(5, this.LHF);
+    if (this.MeJ != 0) {
+      paramb.by(5, this.MeJ);
     }
-    if (this.LHG != 0) {
-      paramb.by(6, this.LHG);
+    if (this.MeK != 0) {
+      paramb.by(6, this.MeK);
     }
-    if (this.LHH != 0) {
-      paramb.by(7, this.LHH);
+    if (this.MeL != 0) {
+      paramb.by(7, this.MeL);
     }
-    if (this.LHI != 0) {
-      paramb.by(8, this.LHI);
+    if (this.MeM != 0) {
+      paramb.by(8, this.MeM);
     }
-    if (this.LHJ != -1) {
-      paramb.bx(9, this.LHJ);
+    if (this.MeN != -1) {
+      paramb.bx(9, this.MeN);
     }
-    if (this.LHK != 0) {
-      paramb.bx(10, this.LHK);
+    if (this.MeO != 0) {
+      paramb.bx(10, this.MeO);
     }
-    if (this.LHL != 0) {
-      paramb.bx(11, this.LHL);
+    if (this.MeP != 0) {
+      paramb.bx(11, this.MeP);
     }
     super.a(paramb);
   }
@@ -65,48 +65,48 @@ public final class a$ah
   {
     int j = super.zq();
     int i = j;
-    if (this.GnD != 0) {
-      i = j + b.bA(1, this.GnD);
+    if (this.GGJ != 0) {
+      i = j + b.bA(1, this.GGJ);
     }
     j = i;
     if (this.roomId != 0) {
       j = i + b.bz(2, this.roomId);
     }
     i = j;
-    if (this.uLt != 0L) {
-      i = j + b.p(3, this.uLt);
+    if (this.uXg != 0L) {
+      i = j + b.p(3, this.uXg);
     }
     j = i;
-    if (this.LHE != 0) {
-      j = i + b.bA(4, this.LHE);
+    if (this.MeI != 0) {
+      j = i + b.bA(4, this.MeI);
     }
     i = j;
-    if (this.LHF != 0) {
-      i = j + b.bA(5, this.LHF);
+    if (this.MeJ != 0) {
+      i = j + b.bA(5, this.MeJ);
     }
     j = i;
-    if (this.LHG != 0) {
-      j = i + b.bA(6, this.LHG);
+    if (this.MeK != 0) {
+      j = i + b.bA(6, this.MeK);
     }
     i = j;
-    if (this.LHH != 0) {
-      i = j + b.bA(7, this.LHH);
+    if (this.MeL != 0) {
+      i = j + b.bA(7, this.MeL);
     }
     j = i;
-    if (this.LHI != 0) {
-      j = i + b.bA(8, this.LHI);
+    if (this.MeM != 0) {
+      j = i + b.bA(8, this.MeM);
     }
     i = j;
-    if (this.LHJ != -1) {
-      i = j + b.bz(9, this.LHJ);
+    if (this.MeN != -1) {
+      i = j + b.bz(9, this.MeN);
     }
     j = i;
-    if (this.LHK != 0) {
-      j = i + b.bz(10, this.LHK);
+    if (this.MeO != 0) {
+      j = i + b.bz(10, this.MeO);
     }
     i = j;
-    if (this.LHL != 0) {
-      i = j + b.bz(11, this.LHL);
+    if (this.MeP != 0) {
+      i = j + b.bz(11, this.MeP);
     }
     return i;
   }

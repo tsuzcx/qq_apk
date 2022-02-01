@@ -13,7 +13,7 @@ public class VoiceReCreatePromptUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private View BWY = null;
+  private View Coz = null;
   
   public int getLayoutId()
   {
@@ -25,11 +25,11 @@ public class VoiceReCreatePromptUI
     AppMethodBeat.i(29904);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent(this, VoiceCreateUI.class);
     paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahp(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramView.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahE(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramView.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -41,8 +41,8 @@ public class VoiceReCreatePromptUI
     AppMethodBeat.i(29902);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.BWY = findViewById(2131303910);
-    this.BWY.setOnClickListener(this);
+    this.Coz = findViewById(2131303910);
+    this.Coz.setOnClickListener(this);
     AppMethodBeat.o(29902);
   }
   

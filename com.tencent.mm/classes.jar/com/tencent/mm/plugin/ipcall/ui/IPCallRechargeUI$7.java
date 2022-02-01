@@ -7,9 +7,9 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.ipcall.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 final class IPCallRechargeUI$7
@@ -20,10 +20,10 @@ final class IPCallRechargeUI$7
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(25877);
-    ((TextView)paramView).setHighlightColor(this.uTj.getResources().getColor(2131101053));
+    ((TextView)paramView).setHighlightColor(this.veW.getResources().getColor(2131101053));
     Intent localIntent = new Intent();
-    paramView = this.uTj.getString(2131760480) + "&usedcc=";
-    Object localObject = com.tencent.mm.plugin.ipcall.model.c.ddr().ddu();
+    paramView = this.veW.getString(2131760480) + "&usedcc=";
+    Object localObject = com.tencent.mm.plugin.ipcall.model.c.dgj().dgm();
     int j;
     if (((List)localObject).size() > 0)
     {
@@ -35,8 +35,8 @@ final class IPCallRechargeUI$7
       j = 0;
       if (j < i)
       {
-        String str = a.aoa(((Integer)((List)localObject).get(j)).toString());
-        if (bt.isNullOrNil(str)) {
+        String str = a.apc(((Integer)((List)localObject).get(j)).toString());
+        if (bu.isNullOrNil(str)) {
           break label255;
         }
         paramView = paramView + str + "|";
@@ -49,11 +49,11 @@ final class IPCallRechargeUI$7
       break;
       localObject = paramView;
       if (paramView.endsWith("|")) {}
-      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.aoa(com.tencent.mm.plugin.ipcall.a.c.dff()))
+      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.apc(com.tencent.mm.plugin.ipcall.a.c.dhX()))
       {
         localIntent.putExtra("rawUrl", (String)localObject);
         localIntent.putExtra("showShare", false);
-        d.b(this.uTj, "webview", ".ui.tools.WebViewUI", localIntent);
+        d.b(this.veW, "webview", ".ui.tools.WebViewUI", localIntent);
         AppMethodBeat.o(25877);
         return;
       }
@@ -63,7 +63,7 @@ final class IPCallRechargeUI$7
   public final void updateDrawState(TextPaint paramTextPaint)
   {
     AppMethodBeat.i(25878);
-    paramTextPaint.setColor(this.uTj.getResources().getColor(2131100547));
+    paramTextPaint.setColor(this.veW.getResources().getColor(2131100547));
     paramTextPaint.setUnderlineText(false);
     AppMethodBeat.o(25878);
   }

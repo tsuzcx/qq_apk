@@ -23,15 +23,13 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import java.util.List;
 
@@ -40,56 +38,56 @@ public class FTSChattingConvUI
   extends FTSBaseUI
   implements View.OnClickListener
 {
-  private am contact;
-  private String tvc;
-  private View tzt;
-  private g tzu;
+  private an contact;
+  private String tFT;
+  private View tKk;
+  private g tKl;
   
   private static void ah(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(111905);
     paramString = String.format("%s,%d,%d,%d,%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(5), Integer.valueOf(paramInt2), Integer.valueOf(0) });
-    ad.v("MicroMsg.FTS.FTSChattingConvUI", "reportClick: %s", new Object[] { paramString });
-    com.tencent.mm.plugin.report.service.g.yhR.kvStat(13234, paramString);
+    ae.v("MicroMsg.FTS.FTSChattingConvUI", "reportClick: %s", new Object[] { paramString });
+    com.tencent.mm.plugin.report.service.g.yxI.kvStat(13234, paramString);
     AppMethodBeat.o(111905);
   }
   
-  private void ma(int paramInt)
+  private void md(int paramInt)
   {
     AppMethodBeat.i(111901);
-    if (w.zj(this.tvc))
+    if (x.zT(this.tFT))
     {
-      ab localab = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AO(this.tvc);
-      if (localab.aGo() != null)
+      ac localac = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().By(this.tFT);
+      if (localac.aGE() != null)
       {
         if (paramInt == 0)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(localab.aGo().size()), Integer.valueOf(1) });
+          com.tencent.mm.plugin.report.service.g.yxI.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(localac.aGE().size()), Integer.valueOf(1) });
           AppMethodBeat.o(111901);
           return;
         }
-        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(localab.aGo().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yxI.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(localac.aGE().size()), Integer.valueOf(1) });
       }
       AppMethodBeat.o(111901);
       return;
     }
     if (paramInt == 0)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+      com.tencent.mm.plugin.report.service.g.yxI.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
       AppMethodBeat.o(111901);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
     AppMethodBeat.o(111901);
   }
   
   protected final d a(e parame)
   {
     AppMethodBeat.i(111895);
-    if (this.tzu == null) {
-      this.tzu = new g(parame, this.tvc);
+    if (this.tKl == null) {
+      this.tKl = new g(parame, this.tFT);
     }
-    parame = this.tzu;
+    parame = this.tKl;
     AppMethodBeat.o(111895);
     return parame;
   }
@@ -97,7 +95,7 @@ public class FTSChattingConvUI
   public final void a(com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(111896);
-    if (w.zj(this.tvc))
+    if (x.zT(this.tFT))
     {
       ah(this.query, 10, parama.position + 1);
       AppMethodBeat.o(111896);
@@ -107,13 +105,13 @@ public class FTSChattingConvUI
     AppMethodBeat.o(111896);
   }
   
-  protected final void akK(String paramString)
+  protected final void alI(String paramString)
   {
     int i = 1;
     AppMethodBeat.i(111902);
-    super.akK(paramString);
-    boolean bool = w.zj(this.tvc);
-    paramString = com.tencent.mm.plugin.report.service.g.yhR;
+    super.alI(paramString);
+    boolean bool = x.zT(this.tFT);
+    paramString = com.tencent.mm.plugin.report.service.g.yxI;
     if (bool) {}
     for (;;)
     {
@@ -124,44 +122,44 @@ public class FTSChattingConvUI
     }
   }
   
-  protected final void cTt()
+  protected final void cVY()
   {
     AppMethodBeat.i(111894);
-    this.tvc = getIntent().getStringExtra("detail_username");
-    this.contact = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(this.tvc);
-    ad.i("MicroMsg.FTS.FTSChattingConvUI", "initSearchData conversation=%s", new Object[] { this.tvc });
+    this.tFT = getIntent().getStringExtra("detail_username");
+    this.contact = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(this.tFT);
+    ae.i("MicroMsg.FTS.FTSChattingConvUI", "initSearchData conversation=%s", new Object[] { this.tFT });
     AppMethodBeat.o(111894);
   }
   
-  protected final void cTv()
+  protected final void cWa()
   {
     AppMethodBeat.i(111900);
-    super.cTv();
-    this.tzt.setVisibility(8);
+    super.cWa();
+    this.tKk.setVisibility(8);
     AppMethodBeat.o(111900);
   }
   
-  protected final void cTw()
+  protected final void cWb()
   {
     AppMethodBeat.i(111898);
-    super.cTw();
-    this.tzt.setVisibility(8);
+    super.cWb();
+    this.tKk.setVisibility(8);
     AppMethodBeat.o(111898);
   }
   
-  protected final void cTx()
+  protected final void cWc()
   {
     AppMethodBeat.i(111899);
-    super.cTx();
-    this.tzt.setVisibility(8);
+    super.cWc();
+    this.tKk.setVisibility(8);
     AppMethodBeat.o(111899);
   }
   
-  protected final void cTy()
+  protected final void cWd()
   {
     AppMethodBeat.i(111897);
-    super.cTy();
-    this.tzt.setVisibility(0);
+    super.cWd();
+    this.tKk.setVisibility(0);
     AppMethodBeat.o(111897);
   }
   
@@ -174,8 +172,8 @@ public class FTSChattingConvUI
   {
     AppMethodBeat.i(111892);
     super.initView();
-    this.tzt = findViewById(2131304441);
-    this.tzt.setVisibility(0);
+    this.tKk = findViewById(2131304441);
+    this.tKk.setVisibility(0);
     RecyclerView localRecyclerView = (RecyclerView)findViewById(2131300591);
     getContext();
     localRecyclerView.setLayoutManager(new GridLayoutManager(3));
@@ -234,7 +232,7 @@ public class FTSChattingConvUI
     AppMethodBeat.i(111904);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/FTSChattingConvUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/FTSChattingConvUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (!(paramView instanceof TextView))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fts/ui/FTSChattingConvUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -242,17 +240,17 @@ public class FTSChattingConvUI
       return;
     }
     int i = ((Integer)paramView.getTag()).intValue();
-    if (w.zj(this.tvc))
+    if (x.zT(this.tFT))
     {
       if (i != 0) {
         break label189;
       }
-      ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSearchMemberDetail");
+      ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSearchMemberDetail");
       paramView = new Intent();
       paramView.putExtra("from_scene", 1);
-      paramView.putExtra("RoomInfo_Id", this.tvc);
+      paramView.putExtra("RoomInfo_Id", this.tFT);
       paramView.putExtra("title", getResources().getString(2131762903));
-      com.tencent.mm.bs.d.f(this, "com.tencent.mm.chatroom.ui.SeeMemberRecordUI", paramView);
+      com.tencent.mm.br.d.f(this, "com.tencent.mm.chatroom.ui.SeeMemberRecordUI", paramView);
     }
     for (;;)
     {
@@ -264,108 +262,108 @@ public class FTSChattingConvUI
       label189:
       if (i == 1)
       {
-        ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSearchDateDetail");
+        ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSearchDateDetail");
         paramView = new Intent();
-        paramView.putExtra("detail_username", this.tvc);
-        com.tencent.mm.bs.d.f(this, "com.tencent.mm.chatroom.ui.SelectDateUI", paramView);
-        ma(0);
+        paramView.putExtra("detail_username", this.tFT);
+        com.tencent.mm.br.d.f(this, "com.tencent.mm.chatroom.ui.SelectDateUI", paramView);
+        md(0);
       }
       else
       {
         if (i != 2) {
           break label295;
         }
-        ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeImageVideoHistory");
+        ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeImageVideoHistory");
         paramView = new Intent();
-        paramView.putExtra("kintent_talker", this.tvc);
+        paramView.putExtra("kintent_talker", this.tFT);
         paramView.putExtra("key_media_type", 1);
-        com.tencent.mm.bs.d.f(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryGalleryUI", paramView);
-        ma(1);
+        com.tencent.mm.br.d.f(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryGalleryUI", paramView);
+        md(1);
       }
     }
     label295:
     if (i == 3)
     {
-      ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeFileHistory");
+      ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeFileHistory");
       localIntent1 = new Intent();
-      localIntent1.putExtra("kintent_talker", this.tvc);
+      localIntent1.putExtra("kintent_talker", this.tFT);
       localIntent1.putExtra("key_media_type", 2);
-      if ((Build.VERSION.SDK_INT < 21) || (al.isDarkMode())) {
+      if ((Build.VERSION.SDK_INT < 21) || (com.tencent.mm.ui.al.isDarkMode())) {
         break label724;
       }
     }
     label724:
     for (paramView = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();; paramView = null)
     {
-      com.tencent.mm.bs.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
+      com.tencent.mm.br.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
       break;
       if (i == 4)
       {
-        ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeUrlHistory");
+        ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeUrlHistory");
         localIntent2 = new Intent();
-        localIntent2.putExtra("kintent_talker", this.tvc);
+        localIntent2.putExtra("kintent_talker", this.tFT);
         localIntent2.putExtra("key_media_type", 3);
         paramView = localIntent1;
         if (Build.VERSION.SDK_INT >= 21)
         {
           paramView = localIntent1;
-          if (!al.isDarkMode()) {
+          if (!com.tencent.mm.ui.al.isDarkMode()) {
             paramView = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();
           }
         }
-        com.tencent.mm.bs.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent2, paramView);
+        com.tencent.mm.br.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent2, paramView);
         break;
       }
       if (i == 5)
       {
-        ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeUrlHistory");
+        ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeUrlHistory");
         localIntent1 = new Intent();
-        localIntent1.putExtra("kintent_talker", this.tvc);
+        localIntent1.putExtra("kintent_talker", this.tFT);
         localIntent1.putExtra("key_media_type", 4);
         paramView = localIntent2;
         if (Build.VERSION.SDK_INT >= 21)
         {
           paramView = localIntent2;
-          if (!al.isDarkMode()) {
+          if (!com.tencent.mm.ui.al.isDarkMode()) {
             paramView = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();
           }
         }
-        com.tencent.mm.bs.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
+        com.tencent.mm.br.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
         break;
       }
       if (i == 6)
       {
-        ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSeePayHistory");
+        ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSeePayHistory");
         localIntent1 = new Intent();
-        localIntent1.putExtra("kintent_talker", this.tvc);
+        localIntent1.putExtra("kintent_talker", this.tFT);
         localIntent1.putExtra("key_media_type", 5);
         paramView = localObject1;
         if (Build.VERSION.SDK_INT >= 21)
         {
           paramView = localObject1;
-          if (!al.isDarkMode()) {
+          if (!com.tencent.mm.ui.al.isDarkMode()) {
             paramView = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();
           }
         }
-        com.tencent.mm.bs.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
+        com.tencent.mm.br.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
         break;
       }
       if (i != 7) {
         break;
       }
-      ad.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeAppBrandHistory");
+      ae.i("MicroMsg.FTS.FTSChattingConvUI", "onSeeAppBrandHistory");
       localIntent1 = new Intent();
-      localIntent1.putExtra("kintent_talker", this.tvc);
+      localIntent1.putExtra("kintent_talker", this.tFT);
       localIntent1.putExtra("key_media_type", 6);
       paramView = localObject2;
       if (Build.VERSION.SDK_INT >= 21)
       {
         paramView = localObject2;
-        if (!al.isDarkMode()) {
+        if (!com.tencent.mm.ui.al.isDarkMode()) {
           paramView = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();
         }
       }
-      com.tencent.mm.bs.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
+      com.tencent.mm.br.d.c(this, "com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI", localIntent1, paramView);
       break;
     }
   }
@@ -377,7 +375,7 @@ public class FTSChattingConvUI
     initView();
     paramBundle = ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSImageLoader();
     if (paramBundle != null) {
-      paramBundle.cSz();
+      paramBundle.cVe();
     }
     AppMethodBeat.o(111891);
   }
@@ -386,10 +384,10 @@ public class FTSChattingConvUI
   {
     AppMethodBeat.i(111903);
     super.onDestroy();
-    this.tzu.finish();
+    this.tKl.finish();
     com.tencent.mm.plugin.fts.a.d.c localc = ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSImageLoader();
     if (localc != null) {
-      localc.cSx();
+      localc.cVc();
     }
     AppMethodBeat.o(111903);
   }
@@ -398,13 +396,13 @@ public class FTSChattingConvUI
   {
     AppMethodBeat.i(111893);
     super.onResume();
-    this.tzt.postDelayed(new Runnable()
+    this.tKk.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(111886);
-        FTSChattingConvUI.this.tyX.getFtsEditText().fJS();
-        FTSChattingConvUI.this.tyX.getFtsEditText().fJR();
+        FTSChattingConvUI.this.tJO.getFtsEditText().fOj();
+        FTSChattingConvUI.this.tJO.getFtsEditText().fOi();
         AppMethodBeat.o(111886);
       }
     }, 128L);
@@ -420,39 +418,39 @@ public class FTSChattingConvUI
   final class a
     extends RecyclerView.a<FTSChattingConvUI.b>
   {
-    String[] tzw;
+    String[] tKn;
     
     a()
     {
       AppMethodBeat.i(111887);
-      if (!w.zj(FTSChattingConvUI.a(FTSChattingConvUI.this)))
+      if (!x.zT(FTSChattingConvUI.a(FTSChattingConvUI.this)))
       {
-        this.tzw = new String[7];
-        this.tzw[0] = FTSChattingConvUI.this.getResources().getString(2131762907);
-        this.tzw[1] = FTSChattingConvUI.this.getResources().getString(2131762909);
-        this.tzw[2] = FTSChattingConvUI.this.getResources().getString(2131762908);
-        this.tzw[3] = FTSChattingConvUI.this.getResources().getString(2131762913);
-        this.tzw[4] = FTSChattingConvUI.this.getResources().getString(2131762911);
-        this.tzw[5] = FTSChattingConvUI.this.getResources().getString(2131762912);
-        this.tzw[6] = FTSChattingConvUI.this.getResources().getString(2131762906);
+        this.tKn = new String[7];
+        this.tKn[0] = FTSChattingConvUI.this.getResources().getString(2131762907);
+        this.tKn[1] = FTSChattingConvUI.this.getResources().getString(2131762909);
+        this.tKn[2] = FTSChattingConvUI.this.getResources().getString(2131762908);
+        this.tKn[3] = FTSChattingConvUI.this.getResources().getString(2131762913);
+        this.tKn[4] = FTSChattingConvUI.this.getResources().getString(2131762911);
+        this.tKn[5] = FTSChattingConvUI.this.getResources().getString(2131762912);
+        this.tKn[6] = FTSChattingConvUI.this.getResources().getString(2131762906);
         AppMethodBeat.o(111887);
         return;
       }
-      this.tzw = new String[8];
-      this.tzw[0] = FTSChattingConvUI.this.getResources().getString(2131762910);
-      this.tzw[1] = FTSChattingConvUI.this.getResources().getString(2131762907);
-      this.tzw[2] = FTSChattingConvUI.this.getResources().getString(2131762909);
-      this.tzw[3] = FTSChattingConvUI.this.getResources().getString(2131762908);
-      this.tzw[4] = FTSChattingConvUI.this.getResources().getString(2131762913);
-      this.tzw[5] = FTSChattingConvUI.this.getResources().getString(2131762911);
-      this.tzw[6] = FTSChattingConvUI.this.getResources().getString(2131762912);
-      this.tzw[7] = FTSChattingConvUI.this.getResources().getString(2131762906);
+      this.tKn = new String[8];
+      this.tKn[0] = FTSChattingConvUI.this.getResources().getString(2131762910);
+      this.tKn[1] = FTSChattingConvUI.this.getResources().getString(2131762907);
+      this.tKn[2] = FTSChattingConvUI.this.getResources().getString(2131762909);
+      this.tKn[3] = FTSChattingConvUI.this.getResources().getString(2131762908);
+      this.tKn[4] = FTSChattingConvUI.this.getResources().getString(2131762913);
+      this.tKn[5] = FTSChattingConvUI.this.getResources().getString(2131762911);
+      this.tKn[6] = FTSChattingConvUI.this.getResources().getString(2131762912);
+      this.tKn[7] = FTSChattingConvUI.this.getResources().getString(2131762906);
       AppMethodBeat.o(111887);
     }
     
     public final int getItemCount()
     {
-      return this.tzw.length;
+      return this.tKn.length;
     }
   }
   

@@ -6,8 +6,8 @@ import android.media.MediaFormat;
 import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 @TargetApi(16)
 public final class t
@@ -16,16 +16,16 @@ public final class t
   public MediaFormat audioFormat;
   public String path;
   public int position;
-  public GalleryItem.VideoMediaItem tHV;
-  public a tHW;
+  public GalleryItem.VideoMediaItem tSM;
+  public t.a tSN;
   public MediaFormat videoFormat;
   
-  public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, a parama)
+  public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, t.a parama)
   {
     this.path = paramString;
     this.position = paramInt;
-    this.tHV = paramVideoMediaItem;
-    this.tHW = parama;
+    this.tSM = paramVideoMediaItem;
+    this.tSN = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -54,19 +54,19 @@ public final class t
       int i;
       try
       {
-        localc.vx(this.path);
-        int j = localc.gdS.getTrackCount();
+        localc.vT(this.path);
+        int j = localc.gga.getTrackCount();
         i = 0;
         if (i < j)
         {
           localObject1 = localc.getTrackFormat(i);
           if (!((MediaFormat)localObject1).containsKey("mime"))
           {
-            ad.d("VideoAnalysisTask", "find video mime : not found.");
+            ae.d("VideoAnalysisTask", "find video mime : not found.");
             break label602;
           }
           localObject3 = ((MediaFormat)localObject1).getString("mime");
-          ad.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
+          ae.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
           if (localObject3 == null) {
             break label602;
           }
@@ -80,13 +80,13 @@ public final class t
             break label602;
           }
         }
-        if (this.tHV == null) {
+        if (this.tSM == null) {
           continue;
         }
         if (this.videoFormat == null) {
           continue;
         }
-        localObject1 = this.tHV;
+        localObject1 = this.tSM;
         if (this.videoFormat.containsKey("durationUs")) {
           continue;
         }
@@ -96,8 +96,8 @@ public final class t
       {
         Object localObject1;
         Object localObject3;
-        ad.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
-        localc.gdS.release();
+        ae.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
+        localc.gga.release();
         continue;
         i = (int)(this.videoFormat.getLong("durationUs") / 1000L);
         continue;
@@ -118,40 +118,40 @@ public final class t
       }
       finally
       {
-        localc.gdS.release();
+        localc.gga.release();
         AppMethodBeat.o(111378);
       }
-      ((GalleryItem.VideoMediaItem)localObject1).imR = i;
-      localObject1 = this.tHV;
+      ((GalleryItem.VideoMediaItem)localObject1).ipL = i;
+      localObject1 = this.tSM;
       if (!this.videoFormat.containsKey("height"))
       {
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-        localObject1 = this.tHV;
+        localObject1 = this.tSM;
         if (this.videoFormat.containsKey("width")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-        localObject3 = this.tHV;
+        localObject3 = this.tSM;
         if (this.videoFormat.containsKey("mime")) {
           continue;
         }
         localObject1 = "";
-        ((GalleryItem.VideoMediaItem)localObject3).imP = ((String)localObject1);
-        localObject1 = this.tHV;
+        ((GalleryItem.VideoMediaItem)localObject3).ipJ = ((String)localObject1);
+        localObject1 = this.tSM;
         if (this.videoFormat.containsKey("bitrate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-        localObject1 = this.tHV;
+        localObject1 = this.tSM;
         if (this.videoFormat.containsKey("i-frame-interval")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoIFrameInterval = i;
-        localObject1 = this.tHV;
+        localObject1 = this.tSM;
         if (this.videoFormat.containsKey("frame-rate")) {
           continue;
         }
@@ -159,18 +159,18 @@ public final class t
         ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
         if (this.audioFormat != null)
         {
-          localObject3 = this.tHV;
+          localObject3 = this.tSM;
           if (this.audioFormat.containsKey("mime")) {
             continue;
           }
           localObject1 = "";
-          ((GalleryItem.VideoMediaItem)localObject3).imQ = ((String)localObject1);
+          ((GalleryItem.VideoMediaItem)localObject3).ipK = ((String)localObject1);
         }
-        localc.gdS.release();
-        if (this.tHW != null) {
+        localc.gga.release();
+        if (this.tSN != null) {
           break label585;
         }
-        ad.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.tHV });
+        ae.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.tSM });
         AppMethodBeat.o(111378);
         return;
         if ((!((String)localObject3).startsWith("audio/")) || (this.audioFormat != null)) {
@@ -179,32 +179,17 @@ public final class t
         this.audioFormat = ((MediaFormat)localObject1);
       }
       label585:
-      aq.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(111377);
-          if (t.this.tHW != null) {
-            t.this.tHW.a(t.this);
-          }
-          AppMethodBeat.o(111377);
-        }
-      });
+      ar.f(new t.1(this));
       AppMethodBeat.o(111378);
       return;
       label602:
       i += 1;
     }
   }
-  
-  public static abstract interface a
-  {
-    public abstract void a(t paramt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.t
  * JD-Core Version:    0.7.0.1
  */

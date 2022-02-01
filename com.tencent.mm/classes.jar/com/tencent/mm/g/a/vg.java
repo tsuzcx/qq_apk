@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vg
   extends b
 {
-  public a dJt;
+  public a dKB;
   
   public vg()
   {
@@ -15,17 +15,16 @@ public final class vg
   
   private vg(byte paramByte)
   {
-    AppMethodBeat.i(125648);
-    this.dJt = new a();
-    this.IbR = false;
+    AppMethodBeat.i(131794);
+    this.dKB = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125648);
+    AppMethodBeat.o(131794);
   }
   
   public static final class a
   {
-    public String id;
-    public int type = 0;
+    public int sourceType = 0;
   }
 }
 

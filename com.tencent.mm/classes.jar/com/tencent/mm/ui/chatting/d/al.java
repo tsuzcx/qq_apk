@@ -1,49 +1,49 @@
 package com.tencent.mm.ui.chatting.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mf;
+import com.tencent.mm.g.a.mg;
 import com.tencent.mm.sdk.b.c;
 
 public class al
   extends a
   implements ad
 {
-  private c kwD;
+  private c kzS;
   
   public al()
   {
     AppMethodBeat.i(35502);
-    this.kwD = new c() {};
+    this.kzS = new c() {};
     AppMethodBeat.o(35502);
   }
   
-  private void fCD()
+  private void fGF()
   {
     AppMethodBeat.i(35503);
-    com.tencent.mm.sdk.b.a.IbL.d(this.kwD);
+    com.tencent.mm.sdk.b.a.IvT.d(this.kzS);
     AppMethodBeat.o(35503);
   }
   
-  public final void fCC()
-  {
-    AppMethodBeat.i(35506);
-    super.fCC();
-    fCD();
-    AppMethodBeat.o(35506);
-  }
-  
-  public final void fwu()
+  public final void fAu()
   {
     AppMethodBeat.i(35504);
-    com.tencent.mm.sdk.b.a.IbL.c(this.kwD);
+    com.tencent.mm.sdk.b.a.IvT.c(this.kzS);
     AppMethodBeat.o(35504);
   }
   
-  public final void fwx()
+  public final void fAx()
   {
     AppMethodBeat.i(35505);
-    fCD();
+    fGF();
     AppMethodBeat.o(35505);
+  }
+  
+  public final void fGE()
+  {
+    AppMethodBeat.i(35506);
+    super.fGE();
+    fGF();
+    AppMethodBeat.o(35506);
   }
 }
 

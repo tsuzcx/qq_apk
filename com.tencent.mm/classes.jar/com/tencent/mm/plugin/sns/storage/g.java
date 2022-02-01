@@ -4,11 +4,11 @@ public abstract interface g
 {
   public abstract boolean a(n paramn);
   
-  public abstract n ayW(String paramString);
+  public abstract n aAn(String paramString);
   
-  public abstract boolean dUy();
+  public abstract boolean dXY();
   
-  public abstract boolean dUz();
+  public abstract boolean dXZ();
 }
 
 

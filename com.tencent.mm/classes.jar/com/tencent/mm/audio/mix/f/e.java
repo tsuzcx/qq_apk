@@ -5,11 +5,11 @@ import com.tencent.mm.audio.mix.h.b;
 
 public final class e<T>
 {
-  private T dfB;
+  private T dgD;
   
   public e(T paramT)
   {
-    this.dfB = paramT;
+    this.dgD = paramT;
   }
   
   public final T aO(T paramT)
@@ -17,9 +17,9 @@ public final class e<T>
     try
     {
       AppMethodBeat.i(136943);
-      Object localObject = this.dfB;
-      this.dfB = paramT;
-      b.i("StateRunner", localObject.toString() + " -> " + this.dfB.toString());
+      Object localObject = this.dgD;
+      this.dgD = paramT;
+      b.i("StateRunner", localObject.toString() + " -> " + this.dgD.toString());
       AppMethodBeat.o(136943);
       return localObject;
     }
@@ -30,29 +30,15 @@ public final class e<T>
     }
   }
   
-  public final T get()
-  {
-    try
-    {
-      Object localObject1 = this.dfB;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
   /* Error */
-  public final boolean h(T... paramVarArgs)
+  public final boolean g(T... paramVarArgs)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 58
+    //   4: ldc 55
     //   6: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: iconst_0
     //   10: istore_2
@@ -63,13 +49,13 @@ public final class e<T>
     //   17: aaload
     //   18: astore 4
     //   20: aload_0
-    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:dfB	Ljava/lang/Object;
+    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:dgD	Ljava/lang/Object;
     //   24: aload 4
-    //   26: invokevirtual 62	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   26: invokevirtual 59	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   29: ifeq +14 -> 43
     //   32: iconst_1
     //   33: istore_3
-    //   34: ldc 58
+    //   34: ldc 55
     //   36: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_0
     //   40: monitorexit
@@ -80,7 +66,7 @@ public final class e<T>
     //   45: iadd
     //   46: istore_2
     //   47: goto -36 -> 11
-    //   50: ldc 58
+    //   50: ldc 55
     //   52: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: goto -16 -> 39
     //   58: astore_1
@@ -102,10 +88,24 @@ public final class e<T>
     //   34	39	58	finally
     //   50	55	58	finally
   }
+  
+  public final T get()
+  {
+    try
+    {
+      Object localObject1 = this.dgD;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.e
  * JD-Core Version:    0.7.0.1
  */

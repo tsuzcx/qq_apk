@@ -4,7 +4,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "run"})
 final class MediaItemView$c
   implements Runnable
 {
@@ -13,9 +13,9 @@ final class MediaItemView$c
   public final void run()
   {
     AppMethodBeat.i(164949);
-    this.gnh.setVisibility(0);
-    View localView = this.gnh;
-    if ((this.tKK == 4) || (this.tKK == 8)) {}
+    this.gpD.setVisibility(0);
+    View localView = this.gpD;
+    if ((this.tVB == 4) || (this.tVB == 8)) {}
     for (float f = 1.0F;; f = 0.0F)
     {
       localView.setAlpha(f);

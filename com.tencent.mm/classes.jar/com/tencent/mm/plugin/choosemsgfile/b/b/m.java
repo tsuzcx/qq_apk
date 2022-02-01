@@ -16,43 +16,43 @@ import com.tencent.mm.ui.widget.MMPinProgressBtn;
 public final class m
   extends RecyclerView.w
 {
-  public final CheckBox fQc;
-  public final ProgressBar jcf;
-  public final View oSA;
-  public final ImageView oSB;
-  public final MMPinProgressBtn oSC;
-  public final TextView oSD;
-  public final TextView oSE;
-  public final View oSF;
-  public final TextView oSG;
-  public final ImageView oSH;
-  public final View oSI;
-  public ImageView oSJ;
+  public final CheckBox fSi;
+  public final ProgressBar jeY;
+  public final View oZc;
+  public final ImageView oZd;
+  public final MMPinProgressBtn oZe;
+  public final TextView oZf;
+  public final TextView oZg;
+  public final View oZh;
+  public final TextView oZi;
+  public final ImageView oZj;
+  public final View oZk;
+  public ImageView oZl;
   
   private m(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(123301);
-    this.oSA = paramView.findViewById(2131298738);
-    this.oSB = ((ImageView)paramView.findViewById(2131298824));
-    this.oSC = ((MMPinProgressBtn)paramView.findViewById(2131299229));
-    this.jcf = ((ProgressBar)paramView.findViewById(2131301506));
-    this.oSF = paramView.findViewById(2131306391);
-    this.oSG = ((TextView)paramView.findViewById(2131306401));
-    this.oSD = ((TextView)paramView.findViewById(2131299933));
-    this.oSE = ((TextView)paramView.findViewById(2131299934));
-    this.oSH = ((ImageView)paramView.findViewById(2131302165));
-    this.fQc = ((CheckBox)paramView.findViewById(2131304502));
-    this.oSI = paramView.findViewById(2131304539);
-    this.oSJ = ((ImageView)paramView.findViewById(2131299520));
-    this.oSB.setOnClickListener(new View.OnClickListener()
+    this.oZc = paramView.findViewById(2131298738);
+    this.oZd = ((ImageView)paramView.findViewById(2131298824));
+    this.oZe = ((MMPinProgressBtn)paramView.findViewById(2131299229));
+    this.jeY = ((ProgressBar)paramView.findViewById(2131301506));
+    this.oZh = paramView.findViewById(2131306391);
+    this.oZi = ((TextView)paramView.findViewById(2131306401));
+    this.oZf = ((TextView)paramView.findViewById(2131299933));
+    this.oZg = ((TextView)paramView.findViewById(2131299934));
+    this.oZj = ((ImageView)paramView.findViewById(2131302165));
+    this.fSi = ((CheckBox)paramView.findViewById(2131304502));
+    this.oZk = paramView.findViewById(2131304539);
+    this.oZl = ((ImageView)paramView.findViewById(2131299520));
+    this.oZd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123299);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderGrid$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderGrid$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         localObject = (a)paramAnonymousView.getTag();
         if (localObject == null)
         {
@@ -65,14 +65,14 @@ public final class m
         AppMethodBeat.o(123299);
       }
     });
-    this.oSI.setOnClickListener(new View.OnClickListener()
+    this.oZk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123300);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderGrid$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderGrid$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = (a)paramAnonymousView.getTag();
         if (paramAnonymousView == null)
         {
@@ -81,17 +81,17 @@ public final class m
           return;
         }
         boolean bool;
-        if (!m.this.fQc.isChecked())
+        if (!m.this.fSi.isChecked())
         {
           bool = true;
           if (paramAnonymousView.isEnable())
           {
-            m.this.fQc.setChecked(bool);
+            m.this.fSi.setChecked(bool);
             paramAnonymousView.a(bool, paramAnonymousView, m.this);
             if (bool) {
               break label145;
             }
-            m.this.oSH.setVisibility(0);
+            m.this.oZj.setVisibility(0);
           }
         }
         for (;;)
@@ -102,7 +102,7 @@ public final class m
           bool = false;
           break;
           label145:
-          m.this.oSH.setVisibility(8);
+          m.this.oZj.setVisibility(8);
         }
       }
     });

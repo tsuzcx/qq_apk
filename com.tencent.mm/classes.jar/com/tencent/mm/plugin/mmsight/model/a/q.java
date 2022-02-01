@@ -2,59 +2,59 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class q
   implements f
 {
   public volatile int frameCount;
-  private boolean hwb;
-  public boolean hwc;
-  private long ptq;
+  private boolean hyP;
+  public boolean hyQ;
+  private long pzW;
   private int targetHeight;
   private int targetWidth;
-  private long vPj;
-  public int vQv;
-  private int vQw;
-  private int vQx;
-  private int vQy;
-  private int vQz;
+  private long wbm;
+  private int wcA;
+  private int wcB;
+  private int wcC;
+  private int wcD;
+  public int wcz;
   
   public q(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
     AppMethodBeat.i(89576);
-    this.vQv = -1;
+    this.wcz = -1;
     this.frameCount = 0;
-    this.ptq = 0L;
-    this.vPj = 0L;
-    this.vQw = -1;
-    this.vQx = -1;
-    this.vQy = -1;
-    this.vQz = -1;
-    this.hwb = paramBoolean1;
-    this.vQw = paramInt1;
+    this.pzW = 0L;
+    this.wbm = 0L;
+    this.wcA = -1;
+    this.wcB = -1;
+    this.wcC = -1;
+    this.wcD = -1;
+    this.hyP = paramBoolean1;
+    this.wcA = paramInt1;
     this.targetWidth = paramInt2;
     this.targetHeight = paramInt3;
-    this.hwc = paramBoolean2;
-    ad.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.vQw), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.hyQ = paramBoolean2;
+    ae.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.wcA), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(89576);
   }
   
-  public final int Kn(int paramInt)
+  public final int KN(int paramInt)
   {
     AppMethodBeat.i(89577);
     if (paramInt < 0)
     {
-      ad.e("MicroMsg.MMSightX264YUVRecorder", "init error, yuv buffer id error");
+      ae.e("MicroMsg.MMSightX264YUVRecorder", "init error, yuv buffer id error");
       AppMethodBeat.o(89577);
       return -1;
     }
-    this.vQv = paramInt;
+    this.wcz = paramInt;
     try
     {
       this.frameCount = 0;
-      this.ptq = 0L;
+      this.pzW = 0L;
       AppMethodBeat.o(89577);
       return 0;
     }
@@ -67,24 +67,24 @@ public class q
   public final void L(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89581);
-    ad.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.vQx = paramInt1;
-    this.vQy = paramInt2;
-    this.vQz = paramInt3;
+    ae.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.wcB = paramInt1;
+    this.wcC = paramInt2;
+    this.wcD = paramInt3;
     AppMethodBeat.o(89581);
   }
   
-  public final long atw()
+  public final long atL()
   {
     AppMethodBeat.i(89580);
-    if (0L == this.ptq)
+    if (0L == this.pzW)
     {
-      ad.w("MicroMsg.MMSightX264YUVRecorder", "do not start record");
+      ae.w("MicroMsg.MMSightX264YUVRecorder", "do not start record");
       AppMethodBeat.o(89580);
       return 0L;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.ptq;
+    long l2 = this.pzW;
     AppMethodBeat.o(89580);
     return l1 - l2;
   }
@@ -92,12 +92,12 @@ public class q
   public final void clear()
   {
     AppMethodBeat.i(89582);
-    SightVideoJNI.releaseBigSightDataBufferLock(this.vQv);
-    this.vQv = -1;
+    SightVideoJNI.releaseBigSightDataBufferLock(this.wcz);
+    this.wcz = -1;
     try
     {
       this.frameCount = 0;
-      this.ptq = 0L;
+      this.pzW = 0L;
       AppMethodBeat.o(89582);
       return;
     }
@@ -110,10 +110,10 @@ public class q
   public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89579);
-    this.vPj = bt.HI();
-    if (this.vQv < 0)
+    this.wbm = bu.HQ();
+    if (this.wcz < 0)
     {
-      ad.e("MicroMsg.MMSightX264YUVRecorder", "write data error, yuv buffer id error");
+      ae.e("MicroMsg.MMSightX264YUVRecorder", "write data error, yuv buffer id error");
       AppMethodBeat.o(89579);
       return;
     }
@@ -131,26 +131,26 @@ public class q
       try
       {
         this.frameCount += 1;
-        m = this.vQw;
-        bool1 = this.hwb;
+        m = this.wcA;
+        bool1 = this.hyP;
         if (bool1) {
           break label348;
         }
-        if ((this.vQx == -1) || (this.vQx == this.vQw)) {
+        if ((this.wcB == -1) || (this.wcB == this.wcA)) {
           break label342;
         }
         bool1 = true;
-        i = this.vQx;
-        if (this.vQw <= 180)
+        i = this.wcB;
+        if (this.wcA <= 180)
         {
-          i -= this.vQw;
+          i -= this.wcA;
           m = Math.max(0, i);
           if (m < 360) {
             break label518;
           }
           i = 0;
           m = i;
-          SightVideoJNI.setRotateForBufId(this.vQv, m);
+          SightVideoJNI.setRotateForBufId(this.wcz, m);
           if (!bool1) {
             break label383;
           }
@@ -183,11 +183,11 @@ public class q
             break label512;
           }
           bool2 = false;
-          if (this.hwc) {
+          if (this.hyQ) {
             SightVideoJNI.mirrorCameraData(paramArrayOfByte, k, paramInt2, true);
           }
-          SightVideoJNI.writeYuvDataForMMSight(this.vQv, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
-          ad.d("MicroMsg.MMSightX264YUVRecorder", "write data use %dms", new Object[] { Long.valueOf(bt.aO(this.vPj)) });
+          SightVideoJNI.writeYuvDataForMMSight(this.wcz, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
+          ae.d("MicroMsg.MMSightX264YUVRecorder", "write data use %dms", new Object[] { Long.valueOf(bu.aO(this.wbm)) });
           AppMethodBeat.o(89579);
           return;
         }
@@ -196,7 +196,7 @@ public class q
       {
         AppMethodBeat.o(89579);
       }
-      i += 360 - this.vQw;
+      i += 360 - this.wcA;
       continue;
       label342:
       boolean bool1 = false;
@@ -204,13 +204,13 @@ public class q
       label348:
       label487:
       label490:
-      if (this.vQx == -1)
+      if (this.wcB == -1)
       {
-        i = this.vQw;
+        i = this.wcA;
       }
       else
       {
-        i = this.vQx;
+        i = this.wcB;
         continue;
         label374:
         i = this.targetHeight;
@@ -263,8 +263,8 @@ public class q
   public final void start()
   {
     AppMethodBeat.i(89578);
-    if (0L == this.ptq) {
-      this.ptq = System.currentTimeMillis();
+    if (0L == this.pzW) {
+      this.pzW = System.currentTimeMillis();
     }
     AppMethodBeat.o(89578);
   }
@@ -274,7 +274,7 @@ public class q
     try
     {
       this.frameCount = 0;
-      this.ptq = 0L;
+      this.pzW = 0L;
       return;
     }
     finally {}

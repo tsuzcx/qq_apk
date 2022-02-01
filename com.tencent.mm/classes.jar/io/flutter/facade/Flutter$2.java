@@ -21,10 +21,10 @@ final class Flutter$2
   {
     AppMethodBeat.i(159071);
     b localb = new b();
-    localb.MJv = FlutterMain.findAppBundlePath(this.val$activity.getApplicationContext());
-    localb.MJw = "main";
-    this.MFG.a(localb);
-    a.registerWith(this.MFG.getPluginRegistry());
+    localb.Ngy = FlutterMain.findAppBundlePath(this.val$activity.getApplicationContext());
+    localb.Ngz = "main";
+    this.NcM.a(localb);
+    a.registerWith(this.NcM.getPluginRegistry());
     AppMethodBeat.o(159071);
   }
   
@@ -32,7 +32,7 @@ final class Flutter$2
   public final void onDestroy()
   {
     AppMethodBeat.i(159076);
-    this.MFG.destroy();
+    this.NcM.destroy();
     AppMethodBeat.o(159076);
   }
   
@@ -40,7 +40,7 @@ final class Flutter$2
   public final void onPause()
   {
     AppMethodBeat.i(159074);
-    this.MFG.MCk.geY();
+    this.NcM.MZp.gjA();
     AppMethodBeat.o(159074);
   }
   
@@ -48,7 +48,7 @@ final class Flutter$2
   public final void onResume()
   {
     AppMethodBeat.i(159073);
-    this.MFG.onPostResume();
+    this.NcM.onPostResume();
     AppMethodBeat.o(159073);
   }
   
@@ -56,7 +56,7 @@ final class Flutter$2
   public final void onStart()
   {
     AppMethodBeat.i(159072);
-    this.MFG.MCk.geY();
+    this.NcM.MZp.gjA();
     AppMethodBeat.o(159072);
   }
   
@@ -64,13 +64,13 @@ final class Flutter$2
   public final void onStop()
   {
     AppMethodBeat.i(159075);
-    this.MFG.MCk.gfa();
+    this.NcM.MZp.gjC();
     AppMethodBeat.o(159075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.facade.Flutter.2
  * JD-Core Version:    0.7.0.1
  */

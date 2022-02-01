@@ -7,52 +7,52 @@ import com.tencent.mm.plugin.backup.h.c;
 import com.tencent.mm.plugin.backup.h.d;
 import com.tencent.mm.plugin.backup.i.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.cxn;
 import com.tencent.mm.protocal.protobuf.if;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class e
   implements l
 {
-  public final int a(if paramif, boolean paramBoolean1, bu parambu, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
+  public final int a(if paramif, boolean paramBoolean1, bv parambv, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
   {
     AppMethodBeat.i(21516);
-    if (parambu.field_content == null)
+    if (parambv.field_content == null)
     {
       AppMethodBeat.o(21516);
       return 0;
     }
-    int i = parambu.field_content.getBytes().length;
+    int i = parambv.field_content.getBytes().length;
     AppMethodBeat.o(21516);
     return i;
   }
   
-  public final int a(String paramString, if paramif, bu parambu)
+  public final int a(String paramString, if paramif, bv parambv)
   {
     AppMethodBeat.i(21517);
-    paramString = paramif.Fvk.HoB;
+    paramString = paramif.FNI.HId;
     if (paramString != null) {
-      parambu.setContent(paramString);
+      parambv.setContent(paramString);
     }
-    if (paramif.nEf == 50) {
-      parambu.setStatus(6);
+    if (paramif.nJA == 50) {
+      parambv.setStatus(6);
     }
-    if (parambu.field_msgId == 0L) {
-      c.v(parambu);
+    if (parambv.field_msgId == 0L) {
+      c.v(parambv);
     }
     for (;;)
     {
       AppMethodBeat.o(21517);
       return 0;
-      d.bIY().bIZ().azs().b(paramif.xbt, parambu);
+      d.bJW().bJX().azI().b(paramif.xrk, parambv);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.e
  * JD-Core Version:    0.7.0.1
  */

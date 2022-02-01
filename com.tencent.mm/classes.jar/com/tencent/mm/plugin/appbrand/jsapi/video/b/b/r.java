@@ -11,52 +11,52 @@ import java.util.Map;
 public final class r
   implements e
 {
-  private String lmq;
-  private final e lnl;
-  private final d lnm;
-  private boolean lnn;
-  private boolean lno;
+  private String lqQ;
+  private final e lrK;
+  private final d lrL;
+  private boolean lrM;
+  private boolean lrN;
   
   public r(e parame, d paramd)
   {
-    AppMethodBeat.i(206077);
-    this.lmq = "";
-    this.lnl = ((e)a.checkNotNull(parame));
-    this.lnm = ((d)a.checkNotNull(paramd));
-    AppMethodBeat.o(206077);
+    AppMethodBeat.i(211104);
+    this.lqQ = "";
+    this.lrK = ((e)a.checkNotNull(parame));
+    this.lrL = ((d)a.checkNotNull(paramd));
+    AppMethodBeat.o(211104);
   }
   
   private String getLogTag()
   {
-    AppMethodBeat.i(206084);
-    String str = this.lmq + "TeeDataSource";
-    AppMethodBeat.o(206084);
+    AppMethodBeat.i(211111);
+    String str = this.lqQ + "TeeDataSource";
+    AppMethodBeat.o(211111);
     return str;
   }
   
-  public final void QL(String paramString)
+  public final void Ru(String paramString)
   {
-    this.lmq = paramString;
+    this.lqQ = paramString;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(206078);
-    long l3 = this.lnl.a(paramg);
+    AppMethodBeat.i(211105);
+    long l3 = this.lrK.a(paramg);
     long l1 = -1L;
-    c localc = c.lnp;
+    c localc = c.lrO;
     long l2;
     Object localObject;
-    if ((this.lnl instanceof l))
+    if ((this.lrK instanceof l))
     {
-      l2 = this.lnl.baK();
-      localObject = (List)((l)this.lnl).getResponseHeaders().get("Content-Type");
+      l2 = this.lrK.bbj();
+      localObject = (List)((l)this.lrK).getResponseHeaders().get("Content-Type");
       l1 = l2;
       if (localObject != null)
       {
         l1 = l2;
         if (!((List)localObject).isEmpty()) {
-          localc = c.QO((String)((List)localObject).get(0));
+          localc = c.Rx((String)((List)localObject).get(0));
         }
       }
     }
@@ -70,24 +70,24 @@ public final class r
           localObject = new g(paramg.uri, paramg.absoluteStreamPosition, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
         }
       }
-      this.lnn = false;
+      this.lrM = false;
       if (l2 != -1L) {}
       for (;;)
       {
         try
         {
-          this.lnm.a((g)localObject, l2, localc);
-          this.lno = true;
-          AppMethodBeat.o(206078);
+          this.lrL.a((g)localObject, l2, localc);
+          this.lrN = true;
+          AppMethodBeat.o(211105);
           return l3;
         }
         catch (b.a paramg)
         {
-          this.lnn = true;
+          this.lrM = true;
           h.a(5, getLogTag(), "error open dataSink " + paramg.toString(), paramg);
           continue;
         }
-        this.lnn = true;
+        this.lrM = true;
       }
       l2 = l1;
     }
@@ -95,54 +95,54 @@ public final class r
   
   public final long available()
   {
-    AppMethodBeat.i(206080);
-    long l = this.lnl.available();
-    AppMethodBeat.o(206080);
+    AppMethodBeat.i(211107);
+    long l = this.lrK.available();
+    AppMethodBeat.o(211107);
     return l;
   }
   
-  public final long baK()
+  public final long bbj()
   {
-    AppMethodBeat.i(206083);
-    long l = this.lnl.baK();
-    AppMethodBeat.o(206083);
+    AppMethodBeat.i(211110);
+    long l = this.lrK.bbj();
+    AppMethodBeat.o(211110);
     return l;
   }
   
-  public final c bnC()
+  public final c bom()
   {
-    AppMethodBeat.i(206082);
-    c localc = this.lnl.bnC();
-    AppMethodBeat.o(206082);
+    AppMethodBeat.i(211109);
+    c localc = this.lrK.bom();
+    AppMethodBeat.o(211109);
     return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(206081);
+    AppMethodBeat.i(211108);
     try
     {
-      this.lnl.close();
+      this.lrK.close();
       try
       {
-        if (this.lno) {
-          this.lnm.close();
+        if (this.lrN) {
+          this.lrL.close();
         }
-        AppMethodBeat.o(206081);
+        AppMethodBeat.o(211108);
         return;
       }
       catch (b.a locala1)
       {
         h.a(5, getLogTag(), "error close dataSink " + locala1.toString(), locala1);
-        AppMethodBeat.o(206081);
+        AppMethodBeat.o(211108);
         return;
       }
       try
       {
-        if (this.lno) {
-          this.lnm.close();
+        if (this.lrN) {
+          this.lrL.close();
         }
-        AppMethodBeat.o(206081);
+        AppMethodBeat.o(211108);
         throw localObject;
       }
       catch (b.a locala2)
@@ -158,28 +158,28 @@ public final class r
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206079);
-    paramInt2 = this.lnl.read(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(211106);
+    paramInt2 = this.lrK.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      if (this.lnn)
+      if (this.lrM)
       {
-        AppMethodBeat.o(206079);
+        AppMethodBeat.o(211106);
         return paramInt2;
       }
     }
     try
     {
-      if (this.lno) {
-        this.lnm.write(paramArrayOfByte, paramInt1, paramInt2);
+      if (this.lrN) {
+        this.lrL.write(paramArrayOfByte, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(206079);
+      AppMethodBeat.o(211106);
       return paramInt2;
     }
     catch (b.a paramArrayOfByte)
     {
       for (;;)
       {
-        this.lnn = true;
+        this.lrM = true;
         h.a(5, getLogTag(), "error write dataSink " + paramArrayOfByte.toString(), paramArrayOfByte);
       }
     }

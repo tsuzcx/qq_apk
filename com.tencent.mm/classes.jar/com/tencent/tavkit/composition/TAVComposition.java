@@ -32,63 +32,63 @@ public class TAVComposition
   
   public TAVComposition()
   {
-    AppMethodBeat.i(219788);
+    AppMethodBeat.i(200819);
     this.videoChannels = new ArrayList();
     this.audioChannels = new ArrayList();
     this.backgroundColor = -16777216;
-    AppMethodBeat.o(219788);
+    AppMethodBeat.o(200819);
   }
   
   public TAVComposition(List<TAVClip> paramList)
   {
     this(paramList, paramList);
-    AppMethodBeat.i(219786);
-    AppMethodBeat.o(219786);
+    AppMethodBeat.i(200817);
+    AppMethodBeat.o(200817);
   }
   
   public TAVComposition(List<? extends TAVTransitionableVideo> paramList, List<? extends TAVTransitionableAudio> paramList1)
   {
     this();
-    AppMethodBeat.i(219787);
+    AppMethodBeat.i(200818);
     addVideoChannel(paramList);
     addAudioChannel(paramList1);
-    AppMethodBeat.o(219787);
+    AppMethodBeat.o(200818);
   }
   
   public TAVComposition(TAVClip... paramVarArgs)
   {
     this(ListUtils.listWithObjects(paramVarArgs));
-    AppMethodBeat.i(219785);
-    AppMethodBeat.o(219785);
+    AppMethodBeat.i(200816);
+    AppMethodBeat.o(200816);
   }
   
   public void addAudioChannel(List<? extends TAVTransitionableAudio> paramList)
   {
-    AppMethodBeat.i(219790);
+    AppMethodBeat.i(200821);
     if (this.audioChannels == null) {
       this.audioChannels = new ArrayList();
     }
     this.audioChannels.add(new ArrayList(paramList));
-    AppMethodBeat.o(219790);
+    AppMethodBeat.o(200821);
   }
   
   public void addVideoChannel(List<? extends TAVTransitionableVideo> paramList)
   {
-    AppMethodBeat.i(219789);
+    AppMethodBeat.i(200820);
     if (this.videoChannels == null) {
       this.videoChannels = new ArrayList();
     }
     this.videoChannels.add(new ArrayList(paramList));
-    AppMethodBeat.o(219789);
+    AppMethodBeat.o(200820);
   }
   
   public void attachVideoEffectChain(IVideoEffectContext paramIVideoEffectContext)
   {
-    AppMethodBeat.i(219791);
+    AppMethodBeat.i(200822);
     this.sourceVideoEffect = paramIVideoEffectContext.getSourceVideoEffect();
     this.videoMixEffect = paramIVideoEffectContext.getVideoMixEffect();
     this.globalVideoEffect = paramIVideoEffectContext.getGlobalVideoEffect();
-    AppMethodBeat.o(219791);
+    AppMethodBeat.o(200822);
   }
   
   public List<List<? extends TAVTransitionableAudio>> getAudioChannels()
@@ -108,11 +108,11 @@ public class TAVComposition
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(219792);
+    AppMethodBeat.i(200823);
     if (this.videoChannels == null)
     {
       localObject1 = CMTime.CMTimeZero;
-      AppMethodBeat.o(219792);
+      AppMethodBeat.o(200823);
       return localObject1;
     }
     int j = this.videoChannels.size();
@@ -150,7 +150,7 @@ public class TAVComposition
     {
       i += 1;
       break;
-      AppMethodBeat.o(219792);
+      AppMethodBeat.o(200823);
       return localObject2;
       localObject1 = localObject2;
       break label129;
@@ -255,9 +255,9 @@ public class TAVComposition
   
   public String toString()
   {
-    AppMethodBeat.i(219793);
+    AppMethodBeat.i(200824);
     String str = "TAVComposition{\nrenderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", backgroundColor=" + this.backgroundColor + ", frameDuration=" + this.frameDuration + "\nvideoChannels=" + this.videoChannels + "\naudioChannels=" + this.audioChannels + "\noverlays=" + this.overlays + "\naudios=" + this.audios + '}';
-    AppMethodBeat.o(219793);
+    AppMethodBeat.o(200824);
     return str;
   }
 }

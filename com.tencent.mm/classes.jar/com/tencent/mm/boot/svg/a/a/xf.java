@@ -45,7 +45,7 @@ public final class xf
       localPaint2.setPathEffect(null);
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-3355444);
+      localPaint1.setColor(-1);
       localCanvas.save();
       localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 31.0F, 0.0F, 1.0F, 19.0F);
       ((Matrix)localObject1).reset();

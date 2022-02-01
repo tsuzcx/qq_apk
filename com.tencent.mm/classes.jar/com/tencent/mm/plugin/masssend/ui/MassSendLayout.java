@@ -11,7 +11,7 @@ import java.util.List;
 public class MassSendLayout
   extends BasePanelKeybordLayout
 {
-  private View oIV;
+  private View oPx;
   
   public MassSendLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,14 +27,14 @@ public class MassSendLayout
   {
     AppMethodBeat.i(26445);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.oIV);
+    localArrayList.add(this.oPx);
     AppMethodBeat.o(26445);
     return localArrayList;
   }
   
   public void setPanel(View paramView)
   {
-    this.oIV = paramView;
+    this.oPx = paramView;
   }
 }
 

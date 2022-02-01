@@ -5,24 +5,24 @@ import kotlinx.a.h;
 import kotlinx.a.l.d;
 import kotlinx.a.n;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/DoubleSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Double;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/DoubleSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Double;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class q
   implements h<Double>
 {
-  private static final n NLm;
-  public static final q NMm;
+  private static final n Ois;
+  public static final q Ojs;
   
   static
   {
-    AppMethodBeat.i(191038);
-    NMm = new q();
-    NLm = (n)new ay("kotlin.Double", (kotlinx.a.l)l.d.NLs);
-    AppMethodBeat.o(191038);
+    AppMethodBeat.i(199626);
+    Ojs = new q();
+    Ois = (n)new ay("kotlin.Double", (kotlinx.a.l)l.d.Oiy);
+    AppMethodBeat.o(199626);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

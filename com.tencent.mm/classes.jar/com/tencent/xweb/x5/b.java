@@ -7,19 +7,19 @@ import com.tencent.smtt.sdk.WebChromeClient;
 public class b
   extends WebChromeClient
 {
-  public final void gcM()
-  {
-    AppMethodBeat.i(153831);
-    super.onHideCustomView();
-    AppMethodBeat.o(153831);
-  }
-  
   public View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(153832);
     View localView = super.getVideoLoadingProgressView();
     AppMethodBeat.o(153832);
     return localView;
+  }
+  
+  public final void gho()
+  {
+    AppMethodBeat.i(153831);
+    super.onHideCustomView();
+    AppMethodBeat.o(153831);
   }
 }
 

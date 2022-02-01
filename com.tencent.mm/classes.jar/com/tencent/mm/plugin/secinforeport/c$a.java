@@ -6,12 +6,12 @@ import java.util.Map;
 
 final class c$a
 {
-  private static final Map<Integer, Long> yBM;
+  private static final Map<Integer, Long> yRM;
   
   static
   {
     AppMethodBeat.i(89170);
-    yBM = new HashMap();
+    yRM = new HashMap();
     AppMethodBeat.o(89170);
   }
   
@@ -36,7 +36,7 @@ final class c$a
     //   24: lload_1
     //   25: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   28: aastore
-    //   29: invokestatic 49	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   29: invokestatic 49	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   32: ldc 33
     //   34: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: iconst_0
@@ -45,13 +45,13 @@ final class c$a
     //   42: monitorexit
     //   43: iload 5
     //   45: ireturn
-    //   46: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   46: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   49: iload_0
     //   50: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   53: invokeinterface 60 2 0
     //   58: ifne +6 -> 64
     //   61: invokestatic 63	com/tencent/mm/plugin/secinforeport/c$a:vw	()V
-    //   64: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   64: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   67: iload_0
     //   68: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   71: invokeinterface 67 2 0
@@ -66,7 +66,7 @@ final class c$a
     //   93: invokevirtual 76	java/lang/Long:longValue	()J
     //   96: lcmp
     //   97: ifge +50 -> 147
-    //   100: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   100: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   103: iload_0
     //   104: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   107: lload_3
@@ -93,7 +93,7 @@ final class c$a
     //   154: lload_1
     //   155: lcmp
     //   156: ifle +34 -> 190
-    //   159: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   159: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   162: iload_0
     //   163: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   166: lload_3
@@ -146,28 +146,28 @@ final class c$a
     //   2: monitorenter
     //   3: ldc 86
     //   5: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 88	com/tencent/mm/vfs/e
+    //   8: new 88	com/tencent/mm/vfs/k
     //   11: dup
-    //   12: invokestatic 94	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   12: invokestatic 94	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
     //   15: getfield 100	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
-    //   18: getstatic 106	com/tencent/mm/plugin/normsg/a/b:wtJ	Lcom/tencent/mm/plugin/normsg/a/b;
+    //   18: getstatic 106	com/tencent/mm/plugin/normsg/a/b:wJt	Lcom/tencent/mm/plugin/normsg/a/b;
     //   21: ldc 108
-    //   23: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:atn	(Ljava/lang/String;)Ljava/lang/String;
-    //   26: invokespecial 115	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:auA	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: astore_1
     //   30: aload_1
-    //   31: invokevirtual 119	com/tencent/mm/vfs/e:exists	()Z
+    //   31: invokevirtual 119	com/tencent/mm/vfs/k:exists	()Z
     //   34: ifne +11 -> 45
     //   37: aload_1
-    //   38: invokevirtual 123	com/tencent/mm/vfs/e:fOJ	()Lcom/tencent/mm/vfs/e;
-    //   41: invokevirtual 126	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   38: invokevirtual 123	com/tencent/mm/vfs/k:fTg	()Lcom/tencent/mm/vfs/k;
+    //   41: invokevirtual 126	com/tencent/mm/vfs/k:mkdirs	()Z
     //   44: pop
     //   45: aconst_null
     //   46: astore_0
     //   47: new 128	java/io/DataOutputStream
     //   50: dup
     //   51: aload_1
-    //   52: invokestatic 134	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   52: invokestatic 134	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
     //   55: invokespecial 137	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   58: astore_1
     //   59: aload_1
@@ -177,10 +177,10 @@ final class c$a
     //   67: iconst_1
     //   68: invokevirtual 140	java/io/DataOutputStream:writeShort	(I)V
     //   71: aload_1
-    //   72: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   72: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   75: invokeinterface 144 1 0
     //   80: invokevirtual 147	java/io/DataOutputStream:writeInt	(I)V
-    //   83: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   83: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   86: invokeinterface 151 1 0
     //   91: invokeinterface 157 1 0
     //   96: astore_0
@@ -209,7 +209,7 @@ final class c$a
     //   153: astore_0
     //   154: ldc 35
     //   156: ldc 183
-    //   158: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   158: invokestatic 186	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   161: aload_0
     //   162: ifnull +77 -> 239
     //   165: aload_0
@@ -221,7 +221,7 @@ final class c$a
     //   177: return
     //   178: ldc 35
     //   180: ldc 191
-    //   182: invokestatic 193	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: invokestatic 193	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   185: aload_1
     //   186: invokevirtual 189	java/io/DataOutputStream:close	()V
     //   189: ldc 86
@@ -319,19 +319,19 @@ final class c$a
     //   4: monitorenter
     //   5: ldc 194
     //   7: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: new 88	com/tencent/mm/vfs/e
+    //   10: new 88	com/tencent/mm/vfs/k
     //   13: dup
-    //   14: invokestatic 94	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   14: invokestatic 94	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
     //   17: getfield 100	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
-    //   20: getstatic 106	com/tencent/mm/plugin/normsg/a/b:wtJ	Lcom/tencent/mm/plugin/normsg/a/b;
+    //   20: getstatic 106	com/tencent/mm/plugin/normsg/a/b:wJt	Lcom/tencent/mm/plugin/normsg/a/b;
     //   23: ldc 108
-    //   25: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:atn	(Ljava/lang/String;)Ljava/lang/String;
-    //   28: invokespecial 115	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:auA	(Ljava/lang/String;)Ljava/lang/String;
+    //   28: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   31: astore 5
     //   33: new 196	java/io/DataInputStream
     //   36: dup
     //   37: aload 5
-    //   39: invokestatic 200	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   39: invokestatic 200	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   42: invokespecial 203	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   45: astore 6
     //   47: aload 6
@@ -366,7 +366,7 @@ final class c$a
     //   108: iconst_0
     //   109: aload 7
     //   111: aastore
-    //   112: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   112: invokestatic 218	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   115: aload 6
     //   117: ifnull +205 -> 322
     //   120: aload 6
@@ -436,7 +436,7 @@ final class c$a
     //   249: lstore_3
     //   250: aload 6
     //   252: astore 5
-    //   254: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yBM	Ljava/util/Map;
+    //   254: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:yRM	Ljava/util/Map;
     //   257: iload_2
     //   258: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   261: lload_3
@@ -452,7 +452,7 @@ final class c$a
     //   280: astore 5
     //   282: ldc 35
     //   284: ldc 229
-    //   286: invokestatic 193	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   286: invokestatic 193	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   289: aload 6
     //   291: invokevirtual 219	java/io/DataInputStream:close	()V
     //   294: ldc 194

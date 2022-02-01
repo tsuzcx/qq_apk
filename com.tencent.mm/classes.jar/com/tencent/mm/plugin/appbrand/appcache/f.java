@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.v4.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -20,44 +20,44 @@ public final class f
   implements p, Closeable
 {
   private volatile int cR;
-  private volatile boolean jFp;
-  private volatile AssetManager jFq;
-  private volatile ByteArrayOutputStream jFr;
-  private volatile int jFs;
-  private volatile int jFt;
-  private volatile int jFu;
-  private volatile Map<String, WxaPkg.Info> jFv;
+  private volatile boolean jIo;
+  private volatile AssetManager jIp;
+  private volatile ByteArrayOutputStream jIq;
+  private volatile int jIr;
+  private volatile int jIs;
+  private volatile int jIt;
+  private volatile Map<String, WxaPkg.Info> jIu;
   private volatile String mFilePath;
   
   public f(Context paramContext, String paramString)
   {
     AppMethodBeat.i(134261);
-    this.jFp = true;
+    this.jIo = true;
     this.cR = -1;
-    this.jFs = 0;
-    this.jFt = 0;
-    this.jFu = -1;
+    this.jIr = 0;
+    this.jIs = 0;
+    this.jIt = -1;
     this.mFilePath = null;
-    this.jFv = null;
-    this.jFq = paramContext.getAssets();
+    this.jIu = null;
+    this.jIp = paramContext.getAssets();
     this.mFilePath = paramString;
     try
     {
-      paramContext = this.jFq.open(paramString);
+      paramContext = this.jIp.open(paramString);
       C(paramContext);
       paramContext.close();
       label78:
       int i;
-      if (this.jFr != null)
+      if (this.jIq != null)
       {
-        if ((this.jFr == null) || (this.jFr.size() <= 0)) {
+        if ((this.jIq == null) || (this.jIq.size() <= 0)) {
           break label133;
         }
         i = 1;
         if (i == 0) {
           break label213;
         }
-        if (this.jFr != null) {
+        if (this.jIq != null) {
           break label138;
         }
         i = 0;
@@ -68,7 +68,7 @@ public final class f
       }
       for (;;)
       {
-        this.jFp = bool;
+        this.jIo = bool;
         AppMethodBeat.o(134261);
         return;
         label133:
@@ -76,15 +76,15 @@ public final class f
         break;
         label138:
         paramContext = new byte[14];
-        System.arraycopy(this.jFr.toByteArray(), 0, paramContext, 0, 14);
+        System.arraycopy(this.jIq.toByteArray(), 0, paramContext, 0, 14);
         if ((-66 != paramContext[0]) || (-19 != paramContext[13]))
         {
           i = 0;
           break label117;
         }
         this.cR = D(paramContext, 1);
-        this.jFs = D(paramContext, 5);
-        this.jFt = D(paramContext, 9);
+        this.jIr = D(paramContext, 5);
+        this.jIs = D(paramContext, 9);
         i = 1;
         break label117;
         label213:
@@ -105,7 +105,7 @@ public final class f
       AppMethodBeat.o(134267);
       return;
     }
-    this.jFr = new ByteArrayOutputStream();
+    this.jIq = new ByteArrayOutputStream();
     byte[] arrayOfByte = new byte[1024];
     for (;;)
     {
@@ -113,9 +113,9 @@ public final class f
       if (i < 0) {
         break;
       }
-      this.jFr.write(arrayOfByte, 0, i);
+      this.jIq.write(arrayOfByte, 0, i);
     }
-    this.jFr.flush();
+    this.jIq.flush();
     AppMethodBeat.o(134267);
   }
   
@@ -136,18 +136,18 @@ public final class f
     //   0: ldc 139
     //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 60	com/tencent/mm/plugin/appbrand/appcache/f:jFq	Landroid/content/res/AssetManager;
+    //   6: getfield 60	com/tencent/mm/plugin/appbrand/appcache/f:jIp	Landroid/content/res/AssetManager;
     //   9: ifnonnull +10 -> 19
     //   12: ldc 139
     //   14: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   17: aconst_null
     //   18: areturn
     //   19: aload_1
-    //   20: getfield 144	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jFP	I
+    //   20: getfield 144	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jIO	I
     //   23: newarray byte
     //   25: astore 6
     //   27: aload_0
-    //   28: getfield 60	com/tencent/mm/plugin/appbrand/appcache/f:jFq	Landroid/content/res/AssetManager;
+    //   28: getfield 60	com/tencent/mm/plugin/appbrand/appcache/f:jIp	Landroid/content/res/AssetManager;
     //   31: aload_0
     //   32: getfield 50	com/tencent/mm/plugin/appbrand/appcache/f:mFilePath	Ljava/lang/String;
     //   35: invokevirtual 66	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
@@ -157,21 +157,21 @@ public final class f
     //   44: aload 5
     //   46: aload 6
     //   48: aload_1
-    //   49: getfield 147	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jFO	I
+    //   49: getfield 147	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jIN	I
     //   52: aload_1
-    //   53: getfield 144	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jFP	I
+    //   53: getfield 144	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jIO	I
     //   56: invokevirtual 150	java/io/InputStream:read	([BII)I
     //   59: istore_2
     //   60: aload 5
     //   62: astore 4
     //   64: aload_1
-    //   65: getfield 144	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jFP	I
+    //   65: getfield 144	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jIO	I
     //   68: istore_3
     //   69: iload_2
     //   70: iload_3
     //   71: if_icmpeq +15 -> 86
     //   74: aload 5
-    //   76: invokestatic 156	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   76: invokestatic 156	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
     //   79: ldc 139
     //   81: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   84: aconst_null
@@ -184,7 +184,7 @@ public final class f
     //   96: invokespecial 161	java/io/ByteArrayInputStream:<init>	([B)V
     //   99: astore 6
     //   101: aload 5
-    //   103: invokestatic 156	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   103: invokestatic 156	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
     //   106: ldc 139
     //   108: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: aload 6
@@ -212,9 +212,9 @@ public final class f
     //   146: iconst_2
     //   147: aload 6
     //   149: aastore
-    //   150: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: invokestatic 174	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   153: aload 5
-    //   155: invokestatic 156	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   155: invokestatic 156	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
     //   158: ldc 139
     //   160: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: aconst_null
@@ -223,7 +223,7 @@ public final class f
     //   166: aconst_null
     //   167: astore 4
     //   169: aload 4
-    //   171: invokestatic 156	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   171: invokestatic 156	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
     //   174: ldc 139
     //   176: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload_1
@@ -256,26 +256,26 @@ public final class f
     //   90	101	185	java/lang/Exception
   }
   
-  public final InputStream Lh(String paramString)
+  public final InputStream LI(String paramString)
   {
     AppMethodBeat.i(134264);
-    if ((this.jFr == null) || (this.jFr.size() <= 0))
+    if ((this.jIq == null) || (this.jIq.size() <= 0))
     {
       AppMethodBeat.o(134264);
       return null;
     }
     boolean bool;
     int i;
-    if ((this.jFv == null) || (bt.isNullOrNil(paramString))) {
-      if (this.jFv == null)
+    if ((this.jIu == null) || (bu.isNullOrNil(paramString))) {
+      if (this.jIu == null)
       {
         bool = true;
-        if (this.jFv != null) {
+        if (this.jIu != null) {
           break label123;
         }
         i = 0;
         label61:
-        ad.e("MicroMsg.AssetsWxaPkgReader", "openReadFile, mFileMap null = %b, mFileMap size = %d, fileName = %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramString });
+        ae.e("MicroMsg.AssetsWxaPkgReader", "openReadFile, mFileMap null = %b, mFileMap size = %d, fileName = %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramString });
         paramString = null;
       }
     }
@@ -291,14 +291,14 @@ public final class f
           bool = false;
           break;
           label123:
-          i = this.jFv.size();
+          i = this.jIu.size();
           break label61;
-          paramString = m.Mp(paramString);
-          paramString = (WxaPkg.Info)this.jFv.get(paramString);
+          paramString = n.MV(paramString);
+          paramString = (WxaPkg.Info)this.jIu.get(paramString);
           continue;
         }
-        byte[] arrayOfByte = new byte[paramString.jFP];
-        System.arraycopy(this.jFr.toByteArray(), paramString.jFO, arrayOfByte, 0, paramString.jFP);
+        byte[] arrayOfByte = new byte[paramString.jIO];
+        System.arraycopy(this.jIq.toByteArray(), paramString.jIN, arrayOfByte, 0, paramString.jIO);
         paramString = new ByteArrayInputStream(arrayOfByte);
         AppMethodBeat.o(134264);
         return paramString;
@@ -308,28 +308,28 @@ public final class f
     return null;
   }
   
-  public final boolean aZr()
+  public final boolean aZO()
   {
     AppMethodBeat.i(134266);
-    if ((!this.jFp) || (this.jFr == null) || (this.jFs <= 4))
+    if ((!this.jIo) || (this.jIq == null) || (this.jIr <= 4))
     {
-      ad.e("MicroMsg.AssetsWxaPkgReader", "readInfo, valid = %b, (null == mInputStream) = %b, mBodyInfoLength = %d, skip", new Object[] { Boolean.valueOf(this.jFp), this.jFr, Integer.valueOf(this.jFt) });
+      ae.e("MicroMsg.AssetsWxaPkgReader", "readInfo, valid = %b, (null == mInputStream) = %b, mBodyInfoLength = %d, skip", new Object[] { Boolean.valueOf(this.jIo), this.jIq, Integer.valueOf(this.jIs) });
       AppMethodBeat.o(134266);
       return false;
     }
-    if ((this.jFv != null) && (this.jFu >= 0) && (this.jFu == this.jFv.size()))
+    if ((this.jIu != null) && (this.jIt >= 0) && (this.jIt == this.jIu.size()))
     {
       AppMethodBeat.o(134266);
       return true;
     }
-    byte[] arrayOfByte = new byte[this.jFs];
-    System.arraycopy(this.jFr.toByteArray(), 14, arrayOfByte, 0, this.jFs);
-    this.jFu = D(arrayOfByte, 0);
+    byte[] arrayOfByte = new byte[this.jIr];
+    System.arraycopy(this.jIq.toByteArray(), 14, arrayOfByte, 0, this.jIr);
+    this.jIt = D(arrayOfByte, 0);
     a locala = new a();
     WxaPkg.Info localInfo = null;
     int j = 4;
     int i = 0;
-    while (i < this.jFu)
+    while (i < this.jIt)
     {
       int k = D(arrayOfByte, j);
       j += 4;
@@ -343,11 +343,11 @@ public final class f
       locala.put(str, localInfo);
       i += 1;
     }
-    this.jFv = locala;
-    i = this.jFr.size();
-    if ((localInfo != null) && (localInfo.jFO + localInfo.jFP > i))
+    this.jIu = locala;
+    i = this.jIq.size();
+    if ((localInfo != null) && (localInfo.jIN + localInfo.jIO > i))
     {
-      ad.e("MicroMsg.AssetsWxaPkgReader", "readInfo, lastFileOffset(%d) + lastFileLength(%d) > totalFileLength(%d)", new Object[] { Integer.valueOf(localInfo.jFO), Integer.valueOf(localInfo.jFP), Integer.valueOf(i) });
+      ae.e("MicroMsg.AssetsWxaPkgReader", "readInfo, lastFileOffset(%d) + lastFileLength(%d) > totalFileLength(%d)", new Object[] { Integer.valueOf(localInfo.jIN), Integer.valueOf(localInfo.jIO), Integer.valueOf(i) });
       AppMethodBeat.o(134266);
       return false;
     }
@@ -358,11 +358,11 @@ public final class f
   public final void close()
   {
     AppMethodBeat.i(134263);
-    if ((this.jFr != null) && (this.jFr.size() > 0)) {
+    if ((this.jIq != null) && (this.jIq.size() > 0)) {
       try
       {
-        this.jFr.close();
-        this.jFr = null;
+        this.jIq.close();
+        this.jIq = null;
         AppMethodBeat.o(134263);
         return;
       }
@@ -388,7 +388,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.f
  * JD-Core Version:    0.7.0.1
  */

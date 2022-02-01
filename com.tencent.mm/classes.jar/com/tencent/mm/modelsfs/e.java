@@ -1,11 +1,11 @@
 package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class e
 {
-  public static boolean Gh(String paramString)
+  public static boolean GJ(String paramString)
   {
     AppMethodBeat.i(155997);
     if (paramString.lastIndexOf(";?enc=") > 0)
@@ -17,7 +17,7 @@ public final class e
     return false;
   }
   
-  public static String Gi(String paramString)
+  public static String GK(String paramString)
   {
     AppMethodBeat.i(155999);
     int i = paramString.lastIndexOf(";?enc=");
@@ -31,13 +31,13 @@ public final class e
     return paramString;
   }
   
-  public static long Gj(String paramString)
+  public static long GL(String paramString)
   {
     AppMethodBeat.i(156000);
     int i = paramString.lastIndexOf(";?enc=");
     if (i > 0)
     {
-      long l = bt.aRf(paramString.substring(i + 6));
+      long l = bu.aSC(paramString.substring(i + 6));
       AppMethodBeat.o(156000);
       return l;
     }

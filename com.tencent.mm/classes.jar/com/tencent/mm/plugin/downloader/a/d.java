@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.downloader.g.b;
 public abstract interface d
   extends a
 {
-  public abstract b azw();
+  public abstract b azM();
   
-  public abstract void jP(boolean paramBoolean);
+  public abstract void jO(boolean paramBoolean);
 }
 
 

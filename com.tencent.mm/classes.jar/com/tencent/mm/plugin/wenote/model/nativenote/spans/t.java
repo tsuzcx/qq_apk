@@ -33,14 +33,14 @@ public abstract class t<V, C extends g<V>>
   
   public abstract void a(WXRTEditText paramWXRTEditText, V paramV);
   
-  public abstract int cfm();
+  public abstract int cgC();
   
   protected abstract e r(WXRTEditText paramWXRTEditText);
   
   public final boolean s(WXRTEditText paramWXRTEditText)
   {
     e locale = r(paramWXRTEditText);
-    return !a(paramWXRTEditText.getText(), locale, s.EAV).isEmpty();
+    return !a(paramWXRTEditText.getText(), locale, s.ETr).isEmpty();
   }
 }
 

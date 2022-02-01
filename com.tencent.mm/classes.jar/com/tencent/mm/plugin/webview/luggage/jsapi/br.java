@@ -7,7 +7,7 @@ import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
 import com.tencent.mm.plugin.webview.e.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,32 +18,32 @@ public abstract class br<T extends g>
   {
     JSONObject localJSONObject = paramb.chh.cgn;
     String str = ((g)paramb.chg).getUrl();
-    Object localObject1 = ((g)paramb.chg).ePi();
+    Object localObject1 = ((g)paramb.chg).eSU();
     if (localObject1 != null) {}
     label160:
     Object localObject2;
-    for (localObject1 = ((c)localObject1).aHL(str);; localObject2 = null)
+    for (localObject1 = ((c)localObject1).aJe(str);; localObject2 = null)
     {
-      if (bt.isNullOrNil((String)localObject1)) {
+      if (bu.isNullOrNil((String)localObject1)) {
         localObject1 = str;
       }
       for (;;)
       {
-        GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.wg(((g)paramb.chg).bQm());
+        GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.wP(((g)paramb.chg).bRn());
         if (localGameWebPerformanceInfo != null) {
-          localGameWebPerformanceInfo.gsl = 1;
+          localGameWebPerformanceInfo.guM = 1;
         }
         try
         {
           localJSONObject.put("currentUrl", str);
           localJSONObject.put("shareUrl", localObject1);
-          if (((g)paramb.chg).DOL != null) {
-            localJSONObject.put("preVerifyAppId", ((g)paramb.chg).DOL.getAppId());
+          if (((g)paramb.chg).EgL != null) {
+            localJSONObject.put("preVerifyAppId", ((g)paramb.chg).EgL.getAppId());
           }
           if (getClass().getName().equals(ba.class.getName()))
           {
-            localJSONObject.put("sendAppMessageScene", ba.ePO());
-            ba.ePP();
+            localJSONObject.put("sendAppMessageScene", ba.eTA());
+            ba.eTB();
           }
         }
         catch (JSONException localJSONException)

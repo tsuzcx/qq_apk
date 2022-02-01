@@ -21,629 +21,524 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.u;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.api.c;
 import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.cgi.ax;
+import com.tencent.mm.plugin.finder.cgi.ay;
 import com.tencent.mm.plugin.finder.extension.reddot.a.b;
 import com.tencent.mm.plugin.finder.extension.reddot.d.a;
 import com.tencent.mm.plugin.finder.extension.reddot.g.a;
 import com.tencent.mm.plugin.finder.feed.ui.FinderNewUIA;
 import com.tencent.mm.plugin.finder.loader.i.a;
-import com.tencent.mm.plugin.finder.report.x;
+import com.tencent.mm.plugin.finder.report.y;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
 import com.tencent.mm.plugin.i.a.o;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.alo;
-import com.tencent.mm.protocal.protobuf.apx;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.protocal.protobuf.asp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.ama;
+import com.tencent.mm.protocal.protobuf.aqk;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.atf;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e.b;
-import d.v;
+import d.l;
 import java.util.HashMap;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "BANNER_TYPE_FAV", "", "getBANNER_TYPE_FAV", "()J", "BANNER_TYPE_FINDER_MSG", "getBANNER_TYPE_FINDER_MSG", "BANNER_TYPE_FINDER_PRIVATE_MESSAGE", "BANNER_TYPE_FINDER_PRIVATE_MESSAGE$annotations", "getBANNER_TYPE_FINDER_PRIVATE_MESSAGE", "BANNER_TYPE_FOLLOW", "getBANNER_TYPE_FOLLOW", "BANNER_TYPE_LIKE", "getBANNER_TYPE_LIKE", "BANNER_TYPE_WX_MSG", "getBANNER_TYPE_WX_MSG", "BANNER_TYPE_WX_PRIVATE_MESSAGE", "getBANNER_TYPE_WX_PRIVATE_MESSAGE", "TAG", "", "USER_STATE_ACCOUNT_FORBID", "", "getUSER_STATE_ACCOUNT_FORBID", "()I", "USER_STATE_ACCOUNT_REVIEW_ING", "getUSER_STATE_ACCOUNT_REVIEW_ING", "USER_STATE_ACCOUNT_SILIENT", "getUSER_STATE_ACCOUNT_SILIENT", "USER_STATE_HAS_POST_QUALITY_NO_ACCOUNT", "getUSER_STATE_HAS_POST_QUALITY_NO_ACCOUNT", "USER_STATE_NORMAL", "getUSER_STATE_NORMAL", "USER_STATE_NO_POST_QUALITY", "getUSER_STATE_NO_POST_QUALITY", "enterTimeStamp", "getEnterTimeStamp", "setEnterTimeStamp", "(J)V", "hasExposeFinderHiMsgTips", "getHasExposeFinderHiMsgTips", "()Ljava/lang/String;", "setHasExposeFinderHiMsgTips", "(Ljava/lang/String;)V", "hasExposeFinderMsgTips", "getHasExposeFinderMsgTips", "setHasExposeFinderMsgTips", "hasExposeWXMsgTips", "getHasExposeWXMsgTips", "setHasExposeWXMsgTips", "hasReportFinderMsg", "", "getHasReportFinderMsg", "()Z", "setHasReportFinderMsg", "(Z)V", "isEnableSendMsgEntrance", "isReportRedDotExpose", "lastFavTipsId", "myFinderUsername", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "progressBar", "Landroid/widget/ProgressBar;", "redDotExistOnEnter", "getRedDotExistOnEnter", "setRedDotExistOnEnter", "accountAbnormal", "", "hasContactContainer", "Landroid/view/View;", "noContactContainer", "canPostButNoAccountUi", "canPostButRevingUi", "checkUserState", "doClickPostAction", "doPrepareUser", "doReviewJump", "prepareResponse", "getLayoutId", "getWXMsgCount", "getWxFinderPrivateMsgRedDotCount", "handleCmd", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "initView", "noPostQualityUI", "normalOrAbNomalUi", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStop", "refreshSelf", "reportTabExposure", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "BANNER_TYPE_FAV", "", "getBANNER_TYPE_FAV", "()J", "BANNER_TYPE_FINDER_MSG", "getBANNER_TYPE_FINDER_MSG", "BANNER_TYPE_FINDER_PRIVATE_MESSAGE", "BANNER_TYPE_FINDER_PRIVATE_MESSAGE$annotations", "getBANNER_TYPE_FINDER_PRIVATE_MESSAGE", "BANNER_TYPE_FOLLOW", "getBANNER_TYPE_FOLLOW", "BANNER_TYPE_LIKE", "getBANNER_TYPE_LIKE", "BANNER_TYPE_WX_MSG", "getBANNER_TYPE_WX_MSG", "BANNER_TYPE_WX_PRIVATE_MESSAGE", "getBANNER_TYPE_WX_PRIVATE_MESSAGE", "TAG", "", "enterTimeStamp", "getEnterTimeStamp", "setEnterTimeStamp", "(J)V", "hasExposeFinderHiMsgTips", "getHasExposeFinderHiMsgTips", "()Ljava/lang/String;", "setHasExposeFinderHiMsgTips", "(Ljava/lang/String;)V", "hasExposeFinderMsgTips", "getHasExposeFinderMsgTips", "setHasExposeFinderMsgTips", "hasExposeProfileEntranceTips", "getHasExposeProfileEntranceTips", "setHasExposeProfileEntranceTips", "hasExposeWXMsgTips", "getHasExposeWXMsgTips", "setHasExposeWXMsgTips", "hasReportFinderMsg", "", "getHasReportFinderMsg", "()Z", "setHasReportFinderMsg", "(Z)V", "isEnableSendMsgEntrance", "isFromSnsPost", "isReportRedDotExpose", "lastFavTipsId", "myFinderUsername", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "progressBar", "Landroid/widget/ProgressBar;", "redDotExistOnEnter", "getRedDotExistOnEnter", "setRedDotExistOnEnter", "accountAbnormal", "", "hasContactContainer", "Landroid/view/View;", "noContactContainer", "canPostButNoAccountUi", "canPostButRevingUi", "doClickPostAction", "doPrepareUser", "doReviewJump", "prepareResponse", "getLayoutId", "", "getWXMsgCount", "getWxFinderPrivateMsgRedDotCount", "handleCmd", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "initView", "noPostQualityUI", "normalOrAbNomalUi", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStop", "refreshSelf", "reportTabExposure", "Companion", "plugin-finder_release"})
 public final class FinderSelfUI
   extends MMFinderUI
-  implements com.tencent.mm.al.f, com.tencent.mm.plugin.finder.api.f
+  implements com.tencent.mm.ak.f, com.tencent.mm.plugin.finder.api.f
 {
-  private static final int sGG = 1;
-  private static final int sGH = 2;
-  private static final String sGI = "INNER_ITEM_COUNT";
-  private static final String sGJ = "RED_DOT_EXIST_ON_ENTER";
-  private static final String sGK = "key_from_sns_post";
-  public static final a sGL;
+  private static final int sRB = 1;
+  private static final int sRC = 2;
+  private static final String sRD = "INNER_ITEM_COUNT";
+  private static final String sRE = "RED_DOT_EXIST_ON_ENTER";
+  private static final String sRF = "key_from_sns_post";
+  public static final FinderSelfUI.a sRG;
   private final String TAG;
   private HashMap _$_findViewCache;
   private ProgressBar progressBar;
-  private boolean sGA;
-  String sGB;
-  String sGC;
-  String sGD;
-  private final boolean sGE;
-  private String sGF;
-  private String sGk;
-  private boolean sGl;
-  private final int sGm;
-  private final int sGn;
-  private final int sGo;
-  private final int sGp;
-  private final int sGq;
-  private final int sGr;
-  final long sGs;
-  final long sGt;
-  final long sGu;
-  final long sGv;
-  final long sGw;
-  final long sGx;
-  final long sGy;
-  boolean sGz;
-  private asp shx;
-  long snn;
+  private String sRA;
+  private String sRj;
+  private boolean sRk;
+  final long sRl;
+  final long sRm;
+  final long sRn;
+  final long sRo;
+  final long sRp;
+  final long sRq;
+  final long sRr;
+  boolean sRs;
+  private boolean sRt;
+  String sRu;
+  String sRv;
+  String sRw;
+  String sRx;
+  private boolean sRy;
+  private final boolean sRz;
+  private atf sqs;
+  long sxe;
   
   static
   {
-    AppMethodBeat.i(204171);
-    sGL = new a((byte)0);
-    sGG = 1;
-    sGH = 2;
-    sGI = "INNER_ITEM_COUNT";
-    sGJ = "RED_DOT_EXIST_ON_ENTER";
-    sGK = "key_from_sns_post";
-    AppMethodBeat.o(204171);
+    AppMethodBeat.i(204772);
+    sRG = new FinderSelfUI.a((byte)0);
+    sRB = 1;
+    sRC = 2;
+    sRD = "INNER_ITEM_COUNT";
+    sRE = "RED_DOT_EXIST_ON_ENTER";
+    sRF = "key_from_sns_post";
+    AppMethodBeat.o(204772);
   }
   
   public FinderSelfUI()
   {
-    AppMethodBeat.i(204170);
+    AppMethodBeat.i(204771);
     this.TAG = "Finder.FinderSelfUI";
-    this.sGm = 1;
-    this.sGn = 2;
-    this.sGo = 3;
-    this.sGp = 4;
-    this.sGq = 5;
-    this.sGr = 6;
-    this.sGs = 1L;
-    this.sGt = 2L;
-    this.sGu = 3L;
-    this.sGv = 4L;
-    this.sGw = 5L;
-    this.sGx = 6L;
-    this.sGy = 7L;
-    this.sGB = "";
-    this.sGC = "";
-    this.sGD = "";
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cHS().value()).intValue() > 0) {}
+    this.sRl = 1L;
+    this.sRm = 2L;
+    this.sRn = 3L;
+    this.sRo = 4L;
+    this.sRp = 5L;
+    this.sRq = 6L;
+    this.sRr = 7L;
+    this.sRu = "";
+    this.sRv = "";
+    this.sRw = "";
+    this.sRx = "";
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
+    if (((Number)com.tencent.mm.plugin.finder.storage.b.cJP().value()).intValue() > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.sGE = bool;
-      this.sGF = "";
-      AppMethodBeat.o(204170);
+      this.sRz = bool;
+      this.sRA = "";
+      AppMethodBeat.o(204771);
       return;
     }
   }
   
-  private final void cKj()
+  private final void cMM()
   {
     AppMethodBeat.i(167591);
-    this.sGk = u.aAu();
-    ad.i(this.TAG, "myFinderUser " + this.sGk);
+    this.sRj = com.tencent.mm.model.v.aAK();
+    ae.i(this.TAG, "myFinderUser " + this.sRj);
     Object localObject1 = findViewById(2131300680);
     Object localObject2 = findViewById(2131302875);
-    Object localObject3 = com.tencent.mm.plugin.finder.storage.b.sxa;
-    int i = ((Number)com.tencent.mm.plugin.finder.storage.b.cHB().value()).intValue();
-    if (i != -1)
+    Object localObject3 = com.tencent.mm.plugin.finder.utils.p.sXz;
+    switch (com.tencent.mm.plugin.finder.utils.p.cOn())
     {
-      ad.d(this.TAG, "harcode user state = ".concat(String.valueOf(i)));
-      if (i != this.sGm) {
-        break label902;
-      }
-      d.g.b.p.g(localObject1, "hasContactContainer");
-      d.g.b.p.g(localObject2, "noContactContainer");
-      d.g.b.p.h(localObject1, "hasContactContainer");
-      d.g.b.p.h(localObject2, "noContactContainer");
-      ad.d(this.TAG, "账户无发表权限");
-      ((View)localObject2).setVisibility(0);
-      ((View)localObject1).setVisibility(8);
-      label161:
-      localObject1 = this.shx;
+    default: 
+      ae.d(this.TAG, "not one of six state");
+      localObject1 = this.sqs;
       if (localObject1 != null)
       {
-        if (((asp)localObject1).GqJ <= 0) {
-          break label3007;
+        if (((atf)localObject1).GKh <= 0) {
+          break label2703;
         }
         localObject2 = (TextView)_$_findCachedViewById(2131308142);
         d.g.b.p.g(localObject2, "like_feed_count");
-        ((TextView)localObject2).setText((CharSequence)com.tencent.mm.plugin.finder.utils.h.FH(((asp)localObject1).GqJ));
+        ((TextView)localObject2).setText((CharSequence)com.tencent.mm.plugin.finder.utils.h.Gf(((atf)localObject1).GKh));
         localObject2 = (TextView)_$_findCachedViewById(2131308142);
         d.g.b.p.g(localObject2, "like_feed_count");
         ((TextView)localObject2).setVisibility(0);
-        label242:
-        if (((asp)localObject1).GqK <= 0) {
-          break label3037;
+        label195:
+        if (((atf)localObject1).GKi <= 0) {
+          break label2733;
         }
         localObject2 = (TextView)_$_findCachedViewById(2131308103);
         d.g.b.p.g(localObject2, "fav_feed_count");
-        ((TextView)localObject2).setText((CharSequence)com.tencent.mm.plugin.finder.utils.h.FH(((asp)localObject1).GqK));
+        ((TextView)localObject2).setText((CharSequence)com.tencent.mm.plugin.finder.utils.h.Gf(((atf)localObject1).GKi));
         localObject2 = (TextView)_$_findCachedViewById(2131308103);
         d.g.b.p.g(localObject2, "fav_feed_count");
         ((TextView)localObject2).setVisibility(0);
       }
+      break;
     }
     for (;;)
     {
-      ad.i(this.TAG, "likeCount = " + ((asp)localObject1).GqJ + ",favCount = " + ((asp)localObject1).GqK);
+      ae.i(this.TAG, "likeCount = " + ((atf)localObject1).GKh + ",favCount = " + ((atf)localObject1).GKi);
       localObject1 = (TextView)_$_findCachedViewById(2131307415);
       d.g.b.p.g(localObject1, "finder_post_new_feed");
       al.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
       localObject1 = (LinearLayout)_$_findCachedViewById(2131307432);
       d.g.b.p.g(localObject1, "finder_self_account_state");
       ((LinearLayout)localObject1).setVisibility(0);
-      if (getIntent().getBooleanExtra(sGK, false))
-      {
-        localObject1 = findViewById(2131307912);
-        if (localObject1 != null) {
-          ((View)localObject1).post((Runnable)new w((View)localObject1));
-        }
-        getIntent().removeExtra(sGK);
-      }
       AppMethodBeat.o(167591);
       return;
-      localObject3 = com.tencent.mm.kernel.g.ajC();
-      d.g.b.p.g(localObject3, "MMKernel.storage()");
-      boolean bool1;
-      label510:
-      boolean bool2;
-      if ((((com.tencent.mm.kernel.e)localObject3).ajl().getInt(al.a.IGO, 0) & 0x2) != 0)
-      {
-        bool1 = true;
-        localObject3 = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if ((!com.tencent.mm.plugin.finder.storage.b.cFK()) || (!((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).showPostEntry())) {
-          break label648;
-        }
-        bool2 = true;
-        label539:
-        localObject3 = (CharSequence)this.sGk;
-        if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
-          break label654;
-        }
-        i = 1;
-        label565:
-        if (i != 0) {
-          break label659;
-        }
-      }
-      label648:
-      label654:
-      label659:
-      for (boolean bool3 = true;; bool3 = false)
-      {
-        ad.i(this.TAG, "[checkUserState] hasCreatedIdentity=" + bool3 + ", showPostEntry=" + bool2 + ", isReviewing=" + bool1);
-        if (bool2) {
-          break label665;
-        }
-        ad.i(this.TAG, "resultState = USER_STATE_NO_POST_QUALITY");
-        i = this.sGm;
-        break;
-        bool1 = false;
-        break label510;
-        bool2 = false;
-        break label539;
-        i = 0;
-        break label565;
-      }
-      label665:
-      if (bool3)
-      {
-        localObject3 = c.rHn;
-        localObject3 = u.aAu();
-        d.g.b.p.g(localObject3, "ConfigStorageLogic.getMyFinderUsername()");
-        localObject3 = c.a.agW((String)localObject3);
-        if (localObject3 == null) {
-          d.g.b.p.gfZ();
-        }
-        bool2 = ((com.tencent.mm.plugin.finder.api.g)localObject3).isBlock();
-        localObject3 = c.rHn;
-        localObject3 = u.aAu();
-        d.g.b.p.g(localObject3, "ConfigStorageLogic.getMyFinderUsername()");
-        localObject3 = c.a.agW((String)localObject3);
-        if (localObject3 == null) {
-          d.g.b.p.gfZ();
-        }
-        if (((com.tencent.mm.plugin.finder.api.g)localObject3).field_spamStatus == 2) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          ad.i(this.TAG, "[checkUserState] isAccountBlocked=" + bool2 + ", isAccountSilent=" + bool1);
-          if (!bool2) {
-            break label820;
-          }
-          ad.i(this.TAG, "resultState = USER_STATE_ACCOUNT_FORBID");
-          i = this.sGp;
-          break;
-        }
-        label820:
-        if (bool1)
-        {
-          ad.i(this.TAG, "resultState = USER_STATE_ACCOUNT_SILIENT");
-          i = this.sGr;
-          break;
-        }
-        ad.i(this.TAG, "resultState = USER_STATE_NORMAL");
-        i = this.sGo;
-        break;
-      }
-      if (bool1)
-      {
-        ad.i(this.TAG, "resultState = USER_STATE_ACCOUNT_REVIEW_ING");
-        i = this.sGq;
-        break;
-      }
-      ad.i(this.TAG, "resultState = USER_STATE_HAS_POST_QUALITY_NO_ACCOUNT");
-      i = this.sGn;
+      d.g.b.p.g(localObject1, "hasContactContainer");
+      d.g.b.p.g(localObject2, "noContactContainer");
+      d.g.b.p.h(localObject1, "hasContactContainer");
+      d.g.b.p.h(localObject2, "noContactContainer");
+      ae.d(this.TAG, "账户无发表权限");
+      ((View)localObject2).setVisibility(0);
+      ((View)localObject1).setVisibility(8);
       break;
-      label902:
-      if (i == this.sGn)
+      d.g.b.p.g(localObject1, "hasContactContainer");
+      d.g.b.p.g(localObject2, "noContactContainer");
+      d.g.b.p.h(localObject1, "hasContactContainer");
+      d.g.b.p.h(localObject2, "noContactContainer");
+      ae.d(this.TAG, "有发表权限但未创建账号");
+      ((View)localObject2).setVisibility(8);
+      ((View)localObject1).setVisibility(0);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131307876);
+      d.g.b.p.g(localObject1, "msg_ll");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131307388);
+      d.g.b.p.g(localObject1, "finder_account_area");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131308195);
+      d.g.b.p.g(localObject1, "sendMsgLayout");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = findViewById(2131307912);
+      ((View)localObject1).setOnClickListener((View.OnClickListener)new d(this));
+      if ((getIntent().getBooleanExtra(sRF, false)) && (this.sqs != null))
       {
-        d.g.b.p.g(localObject1, "hasContactContainer");
-        d.g.b.p.g(localObject2, "noContactContainer");
-        d.g.b.p.h(localObject1, "hasContactContainer");
-        d.g.b.p.h(localObject2, "noContactContainer");
-        ad.d(this.TAG, "有发表权限但未创建账号");
-        ((View)localObject2).setVisibility(8);
-        ((View)localObject1).setVisibility(0);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131307876);
-        d.g.b.p.g(localObject1, "msg_ll");
-        ((FrameLayout)localObject1).setVisibility(8);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131307388);
-        d.g.b.p.g(localObject1, "finder_account_area");
-        ((FrameLayout)localObject1).setVisibility(8);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131308195);
-        d.g.b.p.g(localObject1, "sendMsgLayout");
-        ((FrameLayout)localObject1).setVisibility(8);
-        findViewById(2131307912).setOnClickListener((View.OnClickListener)new c(this));
-        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-        localObject1 = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-        com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.czV(), (LifecycleOwner)this, (Observer)new d(this));
-        break label161;
+        ((View)localObject1).post((Runnable)new FinderSelfUI.e((View)localObject1));
+        getIntent().removeExtra(sRF);
       }
-      Object localObject4;
-      Object localObject5;
-      Object localObject6;
-      label1331:
-      label1844:
-      label2229:
-      label2235:
-      if ((i == this.sGo) || (i == this.sGr))
+      localObject1 = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      localObject1 = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBz(), (LifecycleOwner)this, (Observer)new f(this));
+      break;
+      d.g.b.p.g(localObject1, "hasContactContainer");
+      d.g.b.p.g(localObject2, "noContactContainer");
+      d.g.b.p.h(localObject1, "hasContactContainer");
+      d.g.b.p.h(localObject2, "noContactContainer");
+      ae.d(this.TAG, "账户正常");
+      localObject3 = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
+      d.g.b.p.g(localObject3, "MMKernel.plugin(IPluginFinder::class.java)");
+      ((com.tencent.mm.plugin.i.a.t)localObject3).getRedDotManager().aih("TLCamera");
+      ((View)localObject2).setVisibility(8);
+      ((View)localObject1).setVisibility(0);
+      localObject3 = findViewById(2131307388);
+      localObject1 = findViewById(2131307876);
+      Object localObject4 = (ImageView)findViewById(2131299973);
+      Object localObject5 = (TextView)findViewById(2131300016);
+      localObject2 = (TextView)findViewById(2131307414);
+      Object localObject6 = c.rPy;
+      localObject6 = this.sRj;
+      if (localObject6 == null) {
+        d.g.b.p.gkB();
+      }
+      localObject6 = c.a.ahT((String)localObject6);
+      ImageView localImageView = (ImageView)findViewById(2131296977);
+      Object localObject7;
+      label890:
+      int i;
+      label1135:
+      final int k;
+      final int m;
+      label1361:
+      label1403:
+      long l1;
+      label1438:
+      label1459:
+      label1500:
+      label1517:
+      boolean bool2;
+      long l2;
+      if (this.sRz)
       {
-        d.g.b.p.g(localObject1, "hasContactContainer");
-        d.g.b.p.g(localObject2, "noContactContainer");
-        d.g.b.p.h(localObject1, "hasContactContainer");
-        d.g.b.p.h(localObject2, "noContactContainer");
-        ad.d(this.TAG, "账户正常");
-        localObject3 = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
-        d.g.b.p.g(localObject3, "MMKernel.plugin(IPluginFinder::class.java)");
-        ((com.tencent.mm.plugin.i.a.t)localObject3).getRedDotManager().ahl("TLCamera");
-        ((View)localObject2).setVisibility(8);
-        ((View)localObject1).setVisibility(0);
-        localObject3 = findViewById(2131307388);
-        localObject1 = findViewById(2131307876);
-        localObject4 = (ImageView)findViewById(2131299973);
-        localObject5 = (TextView)findViewById(2131300016);
-        localObject2 = (TextView)findViewById(2131307414);
-        localObject6 = c.rHn;
-        localObject6 = this.sGk;
-        if (localObject6 == null) {
-          d.g.b.p.gfZ();
-        }
-        localObject6 = c.a.agW((String)localObject6);
-        ImageView localImageView = (ImageView)findViewById(2131296977);
-        Object localObject7;
-        final int k;
-        final int m;
-        label1879:
-        label1900:
-        long l1;
-        long l2;
-        if (this.sGE)
+        localObject7 = (FrameLayout)_$_findCachedViewById(2131308195);
+        d.g.b.p.g(localObject7, "sendMsgLayout");
+        ((FrameLayout)localObject7).setVisibility(0);
+        if (localObject6 != null)
         {
-          localObject7 = (FrameLayout)_$_findCachedViewById(2131308195);
-          d.g.b.p.g(localObject7, "sendMsgLayout");
-          ((FrameLayout)localObject7).setVisibility(0);
-          if (localObject6 != null)
-          {
-            localObject7 = com.tencent.mm.plugin.finder.loader.i.sja;
-            localObject7 = com.tencent.mm.plugin.finder.loader.i.cCC();
-            com.tencent.mm.plugin.finder.loader.a locala = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject6).cxL());
-            d.g.b.p.g(localObject4, "finderAvatar");
-            com.tencent.mm.plugin.finder.loader.i locali = com.tencent.mm.plugin.finder.loader.i.sja;
-            ((com.tencent.mm.loader.d)localObject7).a(locala, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjd));
-            d.g.b.p.g(localObject5, "finderNickname");
-            ((TextView)localObject5).setText((CharSequence)k.c((Context)this, (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject6).VC()));
-            al.a((Paint)((TextView)localObject5).getPaint(), 0.8F);
-            localObject4 = com.tencent.mm.plugin.finder.utils.p.sMo;
-            d.g.b.p.g(localImageView, "authIcon");
-            com.tencent.mm.plugin.finder.utils.p.a(localImageView, ((com.tencent.mm.plugin.finder.api.g)localObject6).field_authInfo);
-            localObject4 = com.tencent.mm.kernel.g.ajC();
-            d.g.b.p.g(localObject4, "MMKernel.storage()");
-            i = ((com.tencent.mm.kernel.e)localObject4).ajl().getInt(al.a.IHV, 0);
-            if (i <= 0) {
-              break label2110;
-            }
-            localObject4 = (TextView)_$_findCachedViewById(2131307400);
-            d.g.b.p.g(localObject4, "finder_follow_count");
-            ((TextView)localObject4).setVisibility(0);
-            localObject4 = (TextView)_$_findCachedViewById(2131307400);
-            d.g.b.p.g(localObject4, "finder_follow_count");
-            localObject5 = getContext();
-            d.g.b.p.g(localObject5, "context");
-            ((TextView)localObject4).setText((CharSequence)((AppCompatActivity)localObject5).getResources().getString(2131759206, new Object[] { com.tencent.mm.plugin.finder.utils.h.FG(i) }));
+          localObject7 = com.tencent.mm.plugin.finder.loader.i.srW;
+          localObject7 = com.tencent.mm.plugin.finder.loader.i.cEo();
+          com.tencent.mm.plugin.finder.loader.a locala = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject6).czm());
+          d.g.b.p.g(localObject4, "finderAvatar");
+          com.tencent.mm.plugin.finder.loader.i locali = com.tencent.mm.plugin.finder.loader.i.srW;
+          ((com.tencent.mm.loader.d)localObject7).a(locala, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.i.a(i.a.srZ));
+          d.g.b.p.g(localObject5, "finderNickname");
+          ((TextView)localObject5).setText((CharSequence)k.c((Context)this, (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject6).VK()));
+          al.a((Paint)((TextView)localObject5).getPaint(), 0.8F);
+          localObject4 = com.tencent.mm.plugin.finder.utils.p.sXz;
+          d.g.b.p.g(localImageView, "authIcon");
+          com.tencent.mm.plugin.finder.utils.p.a(localImageView, ((com.tencent.mm.plugin.finder.api.g)localObject6).field_authInfo);
+          localObject4 = com.tencent.mm.kernel.g.ajR();
+          d.g.b.p.g(localObject4, "MMKernel.storage()");
+          i = ((com.tencent.mm.kernel.e)localObject4).ajA().getInt(am.a.Jcy, 0);
+          if (i <= 0) {
+            break label1730;
           }
-          d.g.b.p.g(localObject3, "finderAccountArea");
-          ((View)localObject3).setVisibility(0);
-          d.g.b.p.g(localObject1, "finderMsgArea");
-          ((View)localObject1).setVisibility(0);
-          localObject4 = com.tencent.mm.plugin.finder.extension.reddot.d.rRT;
-          localObject4 = d.a.czL();
-          final int j = localObject4[0];
-          k = localObject4[1];
-          m = j + k;
-          ad.i(this.TAG, "redDot check normalCount :" + j + " systemCount " + k);
-          ((View)localObject3).setOnClickListener((View.OnClickListener)new s(this));
-          localObject3 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-          d.g.b.p.g(localObject3, "MMKernel.plugin(PluginFinder::class.java)");
-          localObject3 = ((PluginFinder)localObject3).getRedDotManager().ahn("AuthorProfileNotify");
-          localObject4 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-          d.g.b.p.g(localObject4, "MMKernel.plugin(PluginFinder::class.java)");
-          localObject4 = ((PluginFinder)localObject4).getRedDotManager().ahm("AuthorProfileNotify");
-          ((View)localObject1).setOnClickListener((View.OnClickListener)new t(this, m, j, k, (com.tencent.mm.plugin.finder.extension.reddot.i)localObject3, (ase)localObject4));
-          if (m <= 0) {
-            break label2235;
-          }
-          d.g.b.p.g(localObject2, "finderMsg");
-          ((TextView)localObject2).setVisibility(0);
-          if (m <= 999) {
-            break label2140;
-          }
-          localObject1 = (CharSequence)"999+";
-          ((TextView)localObject2).setText((CharSequence)localObject1);
-          if (!this.sGl)
-          {
-            this.sGl = true;
-            localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-            if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() != 1) {
-              break label2153;
-            }
-            i = 0;
-            if (j <= 0) {
-              break label2164;
-            }
-            localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
-            localObject1 = FinderReporterUIC.tcM;
-            localObject1 = FinderReporterUIC.a.eY((Context)this);
-            if (localObject1 == null) {
-              break label2158;
-            }
-            localObject1 = ((FinderReporterUIC)localObject1).cOu();
-            com.tencent.mm.plugin.finder.report.h.a("4", 1, 1, 5, i, j, null, null, 0L, (aqy)localObject1, 0, 0, 3520);
-            if ((localObject3 != null) && (localObject4 != null))
-            {
-              localObject1 = com.tencent.mm.plugin.finder.report.g.soH;
-              localObject1 = FinderReporterUIC.tcM;
-              localObject1 = FinderReporterUIC.a.eY((Context)this);
-              if (localObject1 == null) {
-                break label2229;
-              }
-              localObject1 = ((FinderReporterUIC)localObject1).cOu();
-              com.tencent.mm.plugin.finder.report.g.b("4", (com.tencent.mm.plugin.finder.extension.reddot.i)localObject3, (ase)localObject4, 1, (aqy)localObject1, 0, 96);
-            }
-          }
-          findViewById(2131307912).setOnClickListener((View.OnClickListener)new u(this));
-          if (!this.sGA)
-          {
-            localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
-            localObject1 = getContext();
-            d.g.b.p.g(localObject1, "context");
-            localObject1 = (Context)localObject1;
-            l1 = this.snn;
-            bool2 = this.sGz;
-            l2 = this.sGw;
-            if (m <= 0) {
-              break label2253;
-            }
-          }
-        }
-        label2110:
-        label2253:
-        for (bool1 = true;; bool1 = false)
-        {
-          com.tencent.mm.plugin.finder.report.h.a((Context)localObject1, l1, bool2, 1L, l2, bool1, m);
-          this.sGA = true;
-          ad.i(this.TAG, "show finder msg red, totalCount:".concat(String.valueOf(m)));
-          break;
-          localObject7 = (FrameLayout)_$_findCachedViewById(2131308195);
-          d.g.b.p.g(localObject7, "sendMsgLayout");
-          ((FrameLayout)localObject7).setVisibility(8);
-          break label1331;
           localObject4 = (TextView)_$_findCachedViewById(2131307400);
           d.g.b.p.g(localObject4, "finder_follow_count");
-          ((TextView)localObject4).setVisibility(8);
-          break label1576;
-          label2140:
-          localObject1 = (CharSequence)String.valueOf(m);
-          break label1802;
-          label2153:
-          i = 2;
-          break label1844;
-          label2158:
-          localObject1 = null;
-          break label1879;
-          label2164:
-          if (k <= 0) {
-            break label1900;
+          ((TextView)localObject4).setVisibility(0);
+          localObject4 = (TextView)_$_findCachedViewById(2131307400);
+          d.g.b.p.g(localObject4, "finder_follow_count");
+          localObject5 = getContext();
+          d.g.b.p.g(localObject5, "context");
+          ((TextView)localObject4).setText((CharSequence)((AppCompatActivity)localObject5).getResources().getString(2131759206, new Object[] { String.valueOf(i) }));
+        }
+        d.g.b.p.g(localObject3, "finderAccountArea");
+        ((View)localObject3).setVisibility(0);
+        d.g.b.p.g(localObject1, "finderMsgArea");
+        ((View)localObject1).setVisibility(0);
+        localObject4 = com.tencent.mm.plugin.finder.extension.reddot.d.sav;
+        localObject4 = d.a.cBp();
+        final int j = localObject4[0];
+        k = localObject4[1];
+        m = j + k;
+        ae.i(this.TAG, "redDot check normalCount :" + j + " systemCount " + k);
+        ((View)localObject3).setOnClickListener((View.OnClickListener)new w(this));
+        localObject3 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(localObject3, "MMKernel.plugin(PluginFinder::class.java)");
+        localObject3 = ((PluginFinder)localObject3).getRedDotManager().aij("AuthorProfileNotify");
+        localObject4 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(localObject4, "MMKernel.plugin(PluginFinder::class.java)");
+        localObject4 = ((PluginFinder)localObject4).getRedDotManager().aii("AuthorProfileNotify");
+        ((View)localObject1).setOnClickListener((View.OnClickListener)new x(this, m, j, k, (com.tencent.mm.plugin.finder.extension.reddot.i)localObject3, (ast)localObject4));
+        if (m <= 0) {
+          break label1855;
+        }
+        d.g.b.p.g(localObject2, "finderMsg");
+        ((TextView)localObject2).setVisibility(0);
+        if (m <= 999) {
+          break label1760;
+        }
+        localObject1 = (CharSequence)"999+";
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+        if (!this.sRk)
+        {
+          this.sRk = true;
+          localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+          if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() != 1) {
+            break label1773;
           }
-          localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
-          localObject1 = FinderReporterUIC.tcM;
-          localObject1 = FinderReporterUIC.a.eY((Context)this);
-          if (localObject1 != null) {}
-          for (localObject1 = ((FinderReporterUIC)localObject1).cOu();; localObject1 = null)
+          i = 0;
+          if (j <= 0) {
+            break label1784;
+          }
+          localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
+          localObject1 = FinderReporterUIC.tnG;
+          localObject1 = FinderReporterUIC.a.fc((Context)this);
+          if (localObject1 == null) {
+            break label1778;
+          }
+          localObject1 = ((FinderReporterUIC)localObject1).cQZ();
+          com.tencent.mm.plugin.finder.report.i.a("4", 1, 1, 5, i, j, null, null, 0L, (arn)localObject1, 0, 0, 3520);
+          if ((localObject3 != null) && (localObject4 != null))
           {
-            com.tencent.mm.plugin.finder.report.h.a("4", 4, 1, 5, i, k, null, null, 0L, (aqy)localObject1, 0, 0, 3520);
-            break;
+            localObject1 = com.tencent.mm.plugin.finder.report.h.syO;
+            localObject1 = FinderReporterUIC.tnG;
+            localObject1 = FinderReporterUIC.a.fc((Context)this);
+            if (localObject1 == null) {
+              break label1849;
+            }
+            localObject1 = ((FinderReporterUIC)localObject1).cQZ();
+            com.tencent.mm.plugin.finder.report.h.a("4", (com.tencent.mm.plugin.finder.extension.reddot.i)localObject3, (ast)localObject4, 1, (arn)localObject1, 0, 0, 96);
           }
-          localObject1 = null;
-          break label1941;
-          d.g.b.p.g(localObject2, "finderMsg");
-          ((TextView)localObject2).setVisibility(8);
-          break label1957;
+        }
+        localObject1 = findViewById(2131307912);
+        ((View)localObject1).setOnClickListener((View.OnClickListener)new FinderSelfUI.y(this));
+        d.g.b.p.g(localObject1, "postBtn");
+        ((View)localObject1).setVisibility(0);
+        if (getIntent().getBooleanExtra(sRF, false))
+        {
+          ((View)localObject1).post((Runnable)new FinderSelfUI.z((View)localObject1));
+          getIntent().removeExtra(sRF);
+        }
+        if (!this.sRt)
+        {
+          localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
+          localObject1 = getContext();
+          d.g.b.p.g(localObject1, "context");
+          localObject1 = (Context)localObject1;
+          l1 = this.sxe;
+          bool2 = this.sRs;
+          l2 = this.sRp;
+          if (m <= 0) {
+            break label1873;
+          }
         }
       }
-      label1576:
-      if (i == this.sGp)
+      label1730:
+      label1873:
+      for (boolean bool1 = true;; bool1 = false)
       {
-        d.g.b.p.g(localObject1, "hasContactContainer");
-        d.g.b.p.g(localObject2, "noContactContainer");
-        d.g.b.p.h(localObject1, "hasContactContainer");
-        d.g.b.p.h(localObject2, "noContactContainer");
-        ad.d(this.TAG, "账户封禁");
-        ((View)localObject2).setVisibility(8);
-        ((View)localObject1).setVisibility(0);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131307876);
-        d.g.b.p.g(localObject1, "msg_ll");
-        ((FrameLayout)localObject1).setVisibility(8);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131307912);
-        d.g.b.p.g(localObject1, "postBtn");
-        ((FrameLayout)localObject1).setVisibility(8);
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.sja;
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.cCC();
-        localObject2 = new com.tencent.mm.plugin.finder.loader.a("");
-        localObject3 = (ImageView)_$_findCachedViewById(2131299973);
-        d.g.b.p.g(localObject3, "finder_avatar_iv");
-        localObject4 = com.tencent.mm.plugin.finder.loader.i.sja;
-        ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjd));
-        localObject1 = (TextView)_$_findCachedViewById(2131300016);
-        d.g.b.p.g(localObject1, "finder_nick_tv");
-        ((TextView)localObject1).setText((CharSequence)getResources().getString(2131764440));
-        localObject1 = (TextView)_$_findCachedViewById(2131300067);
-        d.g.b.p.g(localObject1, "finder_self_msg_tv");
-        ((TextView)localObject1).setVisibility(0);
-        ((FrameLayout)_$_findCachedViewById(2131307388)).setOnClickListener((View.OnClickListener)new b(this));
+        com.tencent.mm.plugin.finder.report.i.a((Context)localObject1, l1, bool2, 1L, l2, bool1, m);
+        this.sRt = true;
+        ae.i(this.TAG, "show finder msg red, totalCount:".concat(String.valueOf(m)));
+        break;
+        localObject7 = (FrameLayout)_$_findCachedViewById(2131308195);
+        d.g.b.p.g(localObject7, "sendMsgLayout");
+        ((FrameLayout)localObject7).setVisibility(8);
+        break label890;
+        localObject4 = (TextView)_$_findCachedViewById(2131307400);
+        d.g.b.p.g(localObject4, "finder_follow_count");
+        ((TextView)localObject4).setVisibility(8);
+        break label1135;
+        label1760:
+        localObject1 = (CharSequence)String.valueOf(m);
+        break label1361;
+        label1773:
+        i = 2;
+        break label1403;
+        label1778:
+        localObject1 = null;
+        break label1438;
+        label1784:
+        if (k <= 0) {
+          break label1459;
+        }
+        localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
+        localObject1 = FinderReporterUIC.tnG;
+        localObject1 = FinderReporterUIC.a.fc((Context)this);
+        if (localObject1 != null) {}
+        for (localObject1 = ((FinderReporterUIC)localObject1).cQZ();; localObject1 = null)
+        {
+          com.tencent.mm.plugin.finder.report.i.a("4", 4, 1, 5, i, k, null, null, 0L, (arn)localObject1, 0, 0, 3520);
+          break;
+        }
+        localObject1 = null;
+        break label1500;
+        d.g.b.p.g(localObject2, "finderMsg");
+        ((TextView)localObject2).setVisibility(8);
+        break label1517;
+      }
+      label1849:
+      label1855:
+      d.g.b.p.g(localObject1, "hasContactContainer");
+      d.g.b.p.g(localObject2, "noContactContainer");
+      d.g.b.p.h(localObject1, "hasContactContainer");
+      d.g.b.p.h(localObject2, "noContactContainer");
+      ae.d(this.TAG, "账户封禁");
+      ((View)localObject2).setVisibility(8);
+      ((View)localObject1).setVisibility(0);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131307876);
+      d.g.b.p.g(localObject1, "msg_ll");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131307912);
+      d.g.b.p.g(localObject1, "postBtn");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = com.tencent.mm.plugin.finder.loader.i.srW;
+      localObject1 = com.tencent.mm.plugin.finder.loader.i.cEo();
+      localObject2 = new com.tencent.mm.plugin.finder.loader.a("");
+      localObject3 = (ImageView)_$_findCachedViewById(2131299973);
+      d.g.b.p.g(localObject3, "finder_avatar_iv");
+      localObject4 = com.tencent.mm.plugin.finder.loader.i.srW;
+      ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.i.a(i.a.srZ));
+      localObject1 = (TextView)_$_findCachedViewById(2131300016);
+      d.g.b.p.g(localObject1, "finder_nick_tv");
+      ((TextView)localObject1).setText((CharSequence)getResources().getString(2131764440));
+      localObject1 = (TextView)_$_findCachedViewById(2131300067);
+      d.g.b.p.g(localObject1, "finder_self_msg_tv");
+      ((TextView)localObject1).setVisibility(0);
+      ((FrameLayout)_$_findCachedViewById(2131307388)).setOnClickListener((View.OnClickListener)new FinderSelfUI.b(this));
+      if (getIntent().getBooleanExtra(sRF, false))
+      {
+        ((FrameLayout)_$_findCachedViewById(2131307388)).post((Runnable)new c(this));
+        getIntent().removeExtra(sRF);
+      }
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131308195);
+      d.g.b.p.g(localObject1, "sendMsgLayout");
+      ((FrameLayout)localObject1).setVisibility(8);
+      break;
+      d.g.b.p.g(localObject1, "hasContactContainer");
+      d.g.b.p.g(localObject2, "noContactContainer");
+      d.g.b.p.h(localObject1, "hasContactContainer");
+      d.g.b.p.h(localObject2, "noContactContainer");
+      ae.d(this.TAG, "账户审核中");
+      ((View)localObject2).setVisibility(8);
+      ((View)localObject1).setVisibility(0);
+      localObject5 = (ImageView)findViewById(2131299973);
+      localObject3 = (TextView)findViewById(2131300016);
+      localObject4 = (TextView)findViewById(2131300073);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131307876);
+      d.g.b.p.g(localObject1, "msg_ll");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = (FrameLayout)_$_findCachedViewById(2131307912);
+      d.g.b.p.g(localObject1, "postBtn");
+      ((FrameLayout)localObject1).setVisibility(8);
+      localObject1 = com.tencent.mm.plugin.finder.loader.i.srW;
+      localObject6 = com.tencent.mm.plugin.finder.loader.i.cEo();
+      localObject1 = this.sqs;
+      if (localObject1 != null)
+      {
+        localObject1 = ((atf)localObject1).verifyInfo;
+        if (localObject1 != null)
+        {
+          localObject2 = ((aqk)localObject1).jpU;
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            break label2416;
+          }
+        }
+      }
+      localObject1 = "";
+      label2416:
+      localObject1 = new com.tencent.mm.plugin.finder.loader.a((String)localObject1);
+      d.g.b.p.g(localObject5, "finderAvatar");
+      localObject2 = com.tencent.mm.plugin.finder.loader.i.srW;
+      ((com.tencent.mm.loader.d)localObject6).a(localObject1, (ImageView)localObject5, com.tencent.mm.plugin.finder.loader.i.a(i.a.srZ));
+      d.g.b.p.g(localObject3, "finderNickname");
+      localObject2 = (Context)this;
+      localObject1 = this.sqs;
+      if (localObject1 != null)
+      {
+        localObject1 = ((atf)localObject1).verifyInfo;
+        if (localObject1 == null) {}
+      }
+      for (localObject1 = ((aqk)localObject1).GHl;; localObject1 = null)
+      {
+        ((TextView)localObject3).setText((CharSequence)k.c((Context)localObject2, (CharSequence)localObject1));
+        al.a((Paint)((TextView)localObject3).getPaint(), 0.8F);
+        d.g.b.p.g(localObject4, "finderState");
+        ((TextView)localObject4).setVisibility(0);
+        ((TextView)localObject4).setText((CharSequence)getResources().getString(2131759342));
+        localObject1 = findViewById(2131307876);
+        d.g.b.p.g(localObject1, "findViewById<View>(R.id.msg_ll)");
+        ((View)localObject1).setVisibility(8);
+        ((FrameLayout)_$_findCachedViewById(2131307388)).setOnClickListener((View.OnClickListener)new g(this));
+        if ((getIntent().getBooleanExtra(sRF, false)) && (this.sqs != null))
+        {
+          ((FrameLayout)_$_findCachedViewById(2131307388)).post((Runnable)new h(this));
+          getIntent().removeExtra(sRF);
+        }
         localObject1 = (FrameLayout)_$_findCachedViewById(2131308195);
         d.g.b.p.g(localObject1, "sendMsgLayout");
         ((FrameLayout)localObject1).setVisibility(8);
-        break label161;
+        break;
       }
-      label1802:
-      label1941:
-      label1957:
-      if (i == this.sGq)
-      {
-        d.g.b.p.g(localObject1, "hasContactContainer");
-        d.g.b.p.g(localObject2, "noContactContainer");
-        d.g.b.p.h(localObject1, "hasContactContainer");
-        d.g.b.p.h(localObject2, "noContactContainer");
-        ad.d(this.TAG, "账户审核中");
-        ((View)localObject2).setVisibility(8);
-        ((View)localObject1).setVisibility(0);
-        localObject5 = (ImageView)findViewById(2131299973);
-        localObject3 = (TextView)findViewById(2131300016);
-        localObject4 = (TextView)findViewById(2131300073);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131307876);
-        d.g.b.p.g(localObject1, "msg_ll");
-        ((FrameLayout)localObject1).setVisibility(8);
-        localObject1 = (FrameLayout)_$_findCachedViewById(2131307912);
-        d.g.b.p.g(localObject1, "postBtn");
-        ((FrameLayout)localObject1).setVisibility(8);
-        localObject1 = com.tencent.mm.plugin.finder.loader.i.sja;
-        localObject6 = com.tencent.mm.plugin.finder.loader.i.cCC();
-        localObject1 = this.shx;
-        if (localObject1 != null)
-        {
-          localObject1 = ((asp)localObject1).verifyInfo;
-          if (localObject1 != null)
-          {
-            localObject2 = ((apx)localObject1).jna;
-            localObject1 = localObject2;
-            if (localObject2 != null) {
-              break label2763;
-            }
-          }
-        }
-        localObject1 = "";
-        label2763:
-        localObject1 = new com.tencent.mm.plugin.finder.loader.a((String)localObject1);
-        d.g.b.p.g(localObject5, "finderAvatar");
-        localObject2 = com.tencent.mm.plugin.finder.loader.i.sja;
-        ((com.tencent.mm.loader.d)localObject6).a(localObject1, (ImageView)localObject5, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjd));
-        d.g.b.p.g(localObject3, "finderNickname");
-        localObject2 = (Context)this;
-        localObject1 = this.shx;
-        if (localObject1 != null)
-        {
-          localObject1 = ((asp)localObject1).verifyInfo;
-          if (localObject1 == null) {}
-        }
-        for (localObject1 = ((apx)localObject1).Gof;; localObject1 = null)
-        {
-          ((TextView)localObject3).setText((CharSequence)k.c((Context)localObject2, (CharSequence)localObject1));
-          al.a((Paint)((TextView)localObject3).getPaint(), 0.8F);
-          d.g.b.p.g(localObject4, "finderState");
-          ((TextView)localObject4).setVisibility(0);
-          ((TextView)localObject4).setText((CharSequence)getResources().getString(2131759342));
-          localObject1 = findViewById(2131307876);
-          d.g.b.p.g(localObject1, "findViewById<View>(R.id.msg_ll)");
-          ((View)localObject1).setVisibility(8);
-          ((FrameLayout)_$_findCachedViewById(2131307388)).setOnClickListener((View.OnClickListener)new e(this));
-          localObject1 = (FrameLayout)_$_findCachedViewById(2131308195);
-          d.g.b.p.g(localObject1, "sendMsgLayout");
-          ((FrameLayout)localObject1).setVisibility(8);
-          break;
-        }
-      }
-      ad.d(this.TAG, "not one of six state");
-      break label161;
-      label3007:
+      label2703:
       localObject2 = (TextView)_$_findCachedViewById(2131308142);
       d.g.b.p.g(localObject2, "like_feed_count");
       ((TextView)localObject2).setVisibility(8);
-      break label242;
-      label3037:
+      break label195;
+      label2733:
       localObject2 = (TextView)_$_findCachedViewById(2131308103);
       d.g.b.p.g(localObject2, "fav_feed_count");
       ((TextView)localObject2).setVisibility(8);
     }
   }
   
-  private final void cKk()
+  private final void cMN()
   {
-    AppMethodBeat.i(204168);
-    Object localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
+    AppMethodBeat.i(204769);
+    Object localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
     localObject1 = getContext();
     d.g.b.p.g(localObject1, "context");
-    com.tencent.mm.plugin.finder.report.h.a((Context)localObject1, this.snn, this.sGz, 1L, this.sGs);
-    localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
+    com.tencent.mm.plugin.finder.report.i.a((Context)localObject1, this.sxe, this.sRs, 1L, this.sRl);
+    localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
     localObject1 = getContext();
     d.g.b.p.g(localObject1, "context");
     localObject1 = (Context)localObject1;
-    long l2 = this.snn;
-    boolean bool1 = this.sGz;
-    long l3 = this.sGt;
-    Object localObject2 = this.shx;
+    long l2 = this.sxe;
+    boolean bool1 = this.sRs;
+    long l3 = this.sRm;
+    Object localObject2 = this.sqs;
     long l1;
     label184:
     boolean bool2;
@@ -652,39 +547,39 @@ public final class FinderSelfUI
     int i;
     if (localObject2 != null)
     {
-      l1 = ((asp)localObject2).GqJ;
-      com.tencent.mm.plugin.finder.report.h.a((Context)localObject1, l2, bool1, 1L, l3, false, l1);
-      localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
+      l1 = ((atf)localObject2).GKh;
+      com.tencent.mm.plugin.finder.report.i.a((Context)localObject1, l2, bool1, 1L, l3, false, l1);
+      localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
       localObject1 = getContext();
       d.g.b.p.g(localObject1, "context");
       localObject1 = (Context)localObject1;
-      l2 = this.snn;
-      bool1 = this.sGz;
-      l3 = this.sGu;
-      localObject2 = this.shx;
+      l2 = this.sxe;
+      bool1 = this.sRs;
+      l3 = this.sRn;
+      localObject2 = this.sqs;
       if (localObject2 == null) {
         break label446;
       }
-      l1 = ((asp)localObject2).GqK;
-      com.tencent.mm.plugin.finder.report.h.a((Context)localObject1, l2, bool1, 1L, l3, false, l1);
-      localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
+      l1 = ((atf)localObject2).GKi;
+      com.tencent.mm.plugin.finder.report.i.a((Context)localObject1, l2, bool1, 1L, l3, false, l1);
+      localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
       localObject1 = getContext();
       d.g.b.p.g(localObject1, "context");
-      com.tencent.mm.plugin.finder.report.h.a((Context)localObject1, this.snn, this.sGz, 1L, this.sGv);
+      com.tencent.mm.plugin.finder.report.i.a((Context)localObject1, this.sxe, this.sRs, 1L, this.sRo);
       localObject1 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject1 = ((PluginFinder)localObject1).getRedDotManager().ahn("finder_private_msg_entrance");
+      localObject1 = ((PluginFinder)localObject1).getRedDotManager().aij("finder_private_msg_entrance");
       if (localObject1 == null) {
         break label451;
       }
-      localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.i)localObject1).ahq("finder_private_msg_entrance");
-      localObject2 = com.tencent.mm.plugin.finder.report.h.soM;
+      localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.i)localObject1).aim("finder_private_msg_entrance");
+      localObject2 = com.tencent.mm.plugin.finder.report.i.syT;
       localObject2 = getContext();
       d.g.b.p.g(localObject2, "context");
       localObject2 = (Context)localObject2;
-      l1 = this.snn;
-      bool2 = this.sGz;
-      l2 = this.sGx;
+      l1 = this.sxe;
+      bool2 = this.sRs;
+      l2 = this.sRq;
       if (localObject1 == null) {
         break label457;
       }
@@ -692,17 +587,17 @@ public final class FinderSelfUI
       if (localObject1 == null) {
         break label463;
       }
-      i = ((ase)localObject1).count;
+      i = ((ast)localObject1).count;
       label347:
-      com.tencent.mm.plugin.finder.report.h.a((Context)localObject2, l1, bool2, 1L, l2, bool1, i);
-      l1 = cKl();
-      localObject1 = com.tencent.mm.plugin.finder.report.h.soM;
+      com.tencent.mm.plugin.finder.report.i.a((Context)localObject2, l1, bool2, 1L, l2, bool1, i);
+      l1 = cMO();
+      localObject1 = com.tencent.mm.plugin.finder.report.i.syT;
       localObject1 = getContext();
       d.g.b.p.g(localObject1, "context");
       localObject1 = (Context)localObject1;
-      l2 = this.snn;
-      bool2 = this.sGz;
-      l3 = this.sGy;
+      l2 = this.sxe;
+      bool2 = this.sRs;
+      l3 = this.sRr;
       if (l1 <= 0L) {
         break label468;
       }
@@ -714,8 +609,8 @@ public final class FinderSelfUI
     label468:
     for (bool1 = true;; bool1 = false)
     {
-      com.tencent.mm.plugin.finder.report.h.a((Context)localObject1, l2, bool2, 1L, l3, bool1, l1);
-      AppMethodBeat.o(204168);
+      com.tencent.mm.plugin.finder.report.i.a((Context)localObject1, l2, bool2, 1L, l3, bool1, l1);
+      AppMethodBeat.o(204769);
       return;
       l1 = 0L;
       break;
@@ -730,33 +625,33 @@ public final class FinderSelfUI
     }
   }
   
-  private static long cKl()
+  private static long cMO()
   {
-    AppMethodBeat.i(204169);
+    AppMethodBeat.i(204770);
     Object localObject = com.tencent.mm.kernel.g.ad(PluginFinder.class);
     d.g.b.p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    localObject = ((PluginFinder)localObject).getRedDotManager().ahm("finder_wx_private_msg_entrance");
+    localObject = ((PluginFinder)localObject).getRedDotManager().aii("finder_wx_private_msg_entrance");
     if (localObject != null)
     {
-      long l = ((ase)localObject).count;
-      AppMethodBeat.o(204169);
+      long l = ((ast)localObject).count;
+      AppMethodBeat.o(204770);
       return l;
     }
-    AppMethodBeat.o(204169);
+    AppMethodBeat.o(204770);
     return 0L;
   }
   
   private static void doPrepareUser()
   {
-    AppMethodBeat.i(204167);
-    ax localax = new ax(8);
-    com.tencent.mm.kernel.g.aiU().b((n)localax);
-    AppMethodBeat.o(204167);
+    AppMethodBeat.i(204768);
+    ay localay = new ay(8);
+    com.tencent.mm.kernel.g.ajj().b((n)localay);
+    AppMethodBeat.o(204768);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204175);
+    AppMethodBeat.i(204776);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -767,23 +662,23 @@ public final class FinderSelfUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204175);
+    AppMethodBeat.o(204776);
     return localView1;
   }
   
-  public final void a(alo paramalo)
+  public final void a(ama paramama)
   {
     AppMethodBeat.i(167593);
-    d.g.b.p.h(paramalo, "cmdItem");
-    ad.i(this.TAG, "cmdId " + paramalo.cmdId);
-    switch (paramalo.cmdId)
+    d.g.b.p.h(paramama, "cmdItem");
+    ae.i(this.TAG, "cmdId " + paramama.cmdId);
+    switch (paramama.cmdId)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(167593);
       return;
-      cKj();
+      cMM();
     }
   }
   
@@ -795,73 +690,78 @@ public final class FinderSelfUI
   public final void initView()
   {
     AppMethodBeat.i(167590);
-    findViewById(2131301238).setOnClickListener((View.OnClickListener)new i(this));
-    findViewById(2131301239).setOnClickListener((View.OnClickListener)new k(this));
-    findViewById(2131307484).setOnClickListener((View.OnClickListener)new l(this));
-    if (this.sGE)
+    findViewById(2131301238).setOnClickListener((View.OnClickListener)new l(this));
+    findViewById(2131301239).setOnClickListener((View.OnClickListener)new o(this));
+    findViewById(2131307484).setOnClickListener((View.OnClickListener)new p(this));
+    Object localObject;
+    if (this.sRz)
     {
       localObject = (LinearLayout)_$_findCachedViewById(2131308138);
       d.g.b.p.g(localObject, "jump_finder_private_msg");
       ((LinearLayout)localObject).setVisibility(0);
-      ((LinearLayout)_$_findCachedViewById(2131308138)).setOnClickListener((View.OnClickListener)new m(this));
-    }
-    for (;;)
-    {
+      ((LinearLayout)_$_findCachedViewById(2131308138)).setOnClickListener((View.OnClickListener)new q(this));
       localObject = findViewById(2131301509);
       d.g.b.p.g(localObject, "findViewById(R.id.loading_progress_bar)");
       this.progressBar = ((ProgressBar)localObject);
-      findViewById(2131307912).setOnClickListener((View.OnClickListener)new n(this));
-      findViewById(2131307485).setOnClickListener((View.OnClickListener)new o(this));
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cAa(), (LifecycleOwner)this, (Observer)new p(this));
+      findViewById(2131307912).setOnClickListener((View.OnClickListener)new FinderSelfUI.r(this));
+      findViewById(2131307485).setOnClickListener((View.OnClickListener)new s(this));
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBG(), (LifecycleOwner)this, (Observer)new t(this));
       localObject = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject = ((PluginFinder)localObject).getRedDotManager().rRV;
+      localObject = ((PluginFinder)localObject).getRedDotManager().sax;
       ((com.tencent.mm.plugin.finder.extension.reddot.a)localObject).handler.post((Runnable)new a.b((com.tencent.mm.plugin.finder.extension.reddot.a)localObject));
-      if (!this.sGE) {
-        break;
+      if (!this.sRz) {
+        break label436;
       }
-      ((FrameLayout)_$_findCachedViewById(2131308195)).setOnClickListener((View.OnClickListener)new q(this));
+      ((FrameLayout)_$_findCachedViewById(2131308195)).setOnClickListener((View.OnClickListener)new u(this));
       localObject = (FrameLayout)_$_findCachedViewById(2131308195);
       d.g.b.p.g(localObject, "sendMsgLayout");
       ((FrameLayout)localObject).setVisibility(0);
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cAd(), (LifecycleOwner)this, (Observer)new r(this));
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
-      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cAe(), (LifecycleOwner)this, (Observer)new j(this));
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBJ(), (LifecycleOwner)this, (Observer)new v(this));
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBK(), (LifecycleOwner)this, (Observer)new m(this));
+    }
+    for (;;)
+    {
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
+      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBA(), (LifecycleOwner)this, (Observer)new n(this));
       AppMethodBeat.o(167590);
       return;
       localObject = (LinearLayout)_$_findCachedViewById(2131308138);
       d.g.b.p.g(localObject, "jump_finder_private_msg");
       ((LinearLayout)localObject).setVisibility(8);
+      break;
+      label436:
+      localObject = (FrameLayout)_$_findCachedViewById(2131308195);
+      d.g.b.p.g(localObject, "sendMsgLayout");
+      ((FrameLayout)localObject).setVisibility(8);
     }
-    Object localObject = (FrameLayout)_$_findCachedViewById(2131308195);
-    d.g.b.p.g(localObject, "sendMsgLayout");
-    ((FrameLayout)localObject).setVisibility(8);
-    AppMethodBeat.o(167590);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     boolean bool3 = false;
     boolean bool2 = false;
-    AppMethodBeat.i(204165);
+    AppMethodBeat.i(204766);
     boolean bool1;
     if (paramIntent != null)
     {
-      paramInt2 = paramIntent.getIntExtra(sGI, 0);
-      if (paramInt1 != sGG) {
+      paramInt2 = paramIntent.getIntExtra(sRD, 0);
+      if (paramInt1 != sRB) {
         break label132;
       }
-      paramIntent = this.shx;
+      paramIntent = this.sqs;
       bool1 = bool2;
       if (paramIntent != null)
       {
         bool1 = bool2;
-        if (paramIntent.GqK == paramInt2) {
+        if (paramIntent.GKi == paramInt2) {
           bool1 = true;
         }
       }
@@ -873,22 +773,22 @@ public final class FinderSelfUI
     {
       if ((!bool2) || (!bool1))
       {
-        ad.i(this.TAG, "ifFavCountEquals = " + bool2 + ",ifLikeCountEquals = " + bool1);
+        ae.i(this.TAG, "ifFavCountEquals = " + bool2 + ",ifLikeCountEquals = " + bool1);
         doPrepareUser();
       }
-      AppMethodBeat.o(204165);
+      AppMethodBeat.o(204766);
       return;
       paramInt2 = 0;
       break;
       label132:
-      if (paramInt1 == sGH)
+      if (paramInt1 == sRC)
       {
-        paramIntent = this.shx;
+        paramIntent = this.sqs;
         bool1 = bool3;
         if (paramIntent != null)
         {
           bool1 = bool3;
-          if (paramIntent.GqJ == paramInt2) {
+          if (paramIntent.GKh == paramInt2) {
             bool1 = true;
           }
         }
@@ -907,52 +807,53 @@ public final class FinderSelfUI
     AppMethodBeat.i(167589);
     super.onCreate(paramBundle);
     setMMTitle("");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new v(this));
-    this.sGz = getIntent().getBooleanExtra(sGJ, false);
-    this.snn = System.currentTimeMillis();
+    setBackBtn((MenuItem.OnMenuItemClickListener)new FinderSelfUI.aa(this));
+    this.sRs = getIntent().getBooleanExtra(sRE, false);
+    this.sxe = System.currentTimeMillis();
     paramBundle = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
     d.g.b.p.g(paramBundle, "MMKernel.plugin(IPluginFinder::class.java)");
-    ((com.tencent.mm.plugin.i.a.t)paramBundle).getRedDotManager().ahl("TLPersonalCenter");
+    ((com.tencent.mm.plugin.i.a.t)paramBundle).getRedDotManager().aih("TLPersonalCenter");
     initView();
     ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().a(101, (com.tencent.mm.plugin.finder.api.f)this);
-    com.tencent.mm.kernel.g.aiU().a(3761, (com.tencent.mm.al.f)this);
+    com.tencent.mm.kernel.g.ajj().a(3761, (com.tencent.mm.ak.f)this);
     paramBundle = com.tencent.mm.kernel.g.ad(PluginFinder.class);
     d.g.b.p.g(paramBundle, "MMKernel.plugin(PluginFinder::class.java)");
-    ase localase = ((PluginFinder)paramBundle).getRedDotManager().ahm("TLCamera");
+    ast localast = ((PluginFinder)paramBundle).getRedDotManager().aii("TLCamera");
     paramBundle = com.tencent.mm.kernel.g.ad(PluginFinder.class);
     d.g.b.p.g(paramBundle, "MMKernel.plugin(PluginFinder::class.java)");
-    com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramBundle).getRedDotManager().ahn("TLCamera");
-    paramBundle = com.tencent.mm.plugin.finder.utils.p.sMo;
+    com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramBundle).getRedDotManager().aij("TLCamera");
+    paramBundle = com.tencent.mm.plugin.finder.utils.p.sXz;
     int i;
-    if ((localase != null) && (locali != null))
+    if ((localast != null) && (locali != null))
     {
-      paramBundle = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() != 1) {
-        break label309;
+      paramBundle = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() != 1) {
+        break label325;
       }
       i = 0;
-      paramBundle = com.tencent.mm.plugin.finder.report.h.soM;
-      paramBundle = FinderReporterUIC.tcM;
-      paramBundle = FinderReporterUIC.a.eY((Context)this);
+      paramBundle = com.tencent.mm.plugin.finder.report.i.syT;
+      paramBundle = FinderReporterUIC.tnG;
+      paramBundle = FinderReporterUIC.a.fc((Context)this);
       if (paramBundle == null) {
-        break label314;
+        break label330;
       }
-      paramBundle = paramBundle.cOu();
+      paramBundle = paramBundle.cQZ();
       label243:
-      com.tencent.mm.plugin.finder.report.h.a("4", 2, 1, 1, i, 0, null, null, 0L, paramBundle, 0, 0, 3520);
-      paramBundle = com.tencent.mm.plugin.finder.report.g.soH;
-      paramBundle = FinderReporterUIC.tcM;
-      paramBundle = FinderReporterUIC.a.eY((Context)this);
+      com.tencent.mm.plugin.finder.report.i.a("4", 2, 1, 1, i, 0, null, null, 0L, paramBundle, 0, 0, 3520);
+      paramBundle = com.tencent.mm.plugin.finder.report.h.syO;
+      paramBundle = FinderReporterUIC.tnG;
+      paramBundle = FinderReporterUIC.a.fc((Context)this);
       if (paramBundle == null) {
-        break label319;
+        break label335;
       }
     }
-    label309:
-    label314:
-    label319:
-    for (paramBundle = paramBundle.cOu();; paramBundle = null)
+    label325:
+    label330:
+    label335:
+    for (paramBundle = paramBundle.cQZ();; paramBundle = null)
     {
-      com.tencent.mm.plugin.finder.report.g.b("4", locali, localase, 1, paramBundle, 0, 96);
+      com.tencent.mm.plugin.finder.report.h.a("4", locali, localast, 1, paramBundle, 0, 0, 96);
+      this.sRy = getIntent().getBooleanExtra(sRF, false);
       AppMethodBeat.o(167589);
       return;
       i = 1;
@@ -966,17 +867,17 @@ public final class FinderSelfUI
   {
     AppMethodBeat.i(167595);
     super.onDestroy();
-    com.tencent.mm.kernel.g.aiU().b(3761, (com.tencent.mm.al.f)this);
+    com.tencent.mm.kernel.g.ajj().b(3761, (com.tencent.mm.ak.f)this);
     ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension().b(101, (com.tencent.mm.plugin.finder.api.f)this);
-    Object localObject = com.tencent.mm.kernel.g.ajC();
+    Object localObject = com.tencent.mm.kernel.g.ajR();
     d.g.b.p.g(localObject, "MMKernel.storage()");
-    int i = ((com.tencent.mm.kernel.e)localObject).ajl().getInt(al.a.IIB, 0);
-    localObject = com.tencent.mm.kernel.g.ajC();
+    int i = ((com.tencent.mm.kernel.e)localObject).ajA().getInt(am.a.Jde, 0);
+    localObject = com.tencent.mm.kernel.g.ajR();
     d.g.b.p.g(localObject, "MMKernel.storage()");
-    int j = ((com.tencent.mm.kernel.e)localObject).ajl().getInt(al.a.IIC, 0);
-    localObject = com.tencent.mm.kernel.g.ajC();
+    int j = ((com.tencent.mm.kernel.e)localObject).ajA().getInt(am.a.Jdf, 0);
+    localObject = com.tencent.mm.kernel.g.ajR();
     d.g.b.p.g(localObject, "MMKernel.storage()");
-    if (i + j + ((com.tencent.mm.kernel.e)localObject).ajl().getInt(al.a.IHW, 0) <= 0)
+    if (i + j + ((com.tencent.mm.kernel.e)localObject).ajA().getInt(am.a.Jcz, 0) <= 0)
     {
       localObject = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
@@ -984,10 +885,10 @@ public final class FinderSelfUI
     }
     localObject = com.tencent.mm.kernel.g.ad(PluginFinder.class);
     d.g.b.p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)localObject).getRedDotManager().rRV.czE();
+    ((PluginFinder)localObject).getRedDotManager().sax.cBi();
     localObject = com.tencent.mm.kernel.g.ad(PluginFinder.class);
     d.g.b.p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)localObject).getRedDotManager().rRV.czD();
+    ((PluginFinder)localObject).getRedDotManager().sax.cBh();
     AppMethodBeat.o(167595);
   }
   
@@ -998,89 +899,99 @@ public final class FinderSelfUI
     Object localObject = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFinderSyncExtension();
     if (localObject == null)
     {
-      localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.extension.FinderSyncExtension");
+      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.extension.FinderSyncExtension");
       AppMethodBeat.o(167592);
       throw ((Throwable)localObject);
     }
-    ((com.tencent.mm.plugin.finder.extension.a)localObject).fI(12329, 1);
-    this.sGk = u.aAu();
-    if (this.shx != null)
+    ((com.tencent.mm.plugin.finder.extension.a)localObject).fG(12329, 1);
+    this.sRj = com.tencent.mm.model.v.aAK();
+    if (this.sqs != null)
     {
-      cKj();
-      cKk();
+      cMM();
+      cMN();
       localObject = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject = ((PluginFinder)localObject).getRedDotManager().rRV;
+      localObject = ((PluginFinder)localObject).getRedDotManager().sax;
       ((com.tencent.mm.plugin.finder.extension.reddot.a)localObject).handler.removeMessages(4);
       ((com.tencent.mm.plugin.finder.extension.reddot.a)localObject).handler.sendEmptyMessage(4);
       ((com.tencent.mm.plugin.finder.extension.reddot.a)localObject).handler.removeMessages(6);
       ((com.tencent.mm.plugin.finder.extension.reddot.a)localObject).handler.sendEmptyMessage(6);
+      localObject = com.tencent.mm.plugin.finder.report.g.syJ;
+      if (!this.sRy) {
+        break label208;
+      }
+    }
+    label208:
+    for (int i = 4;; i = 3)
+    {
+      com.tencent.mm.plugin.finder.report.g.G(true, i);
       AppMethodBeat.o(167592);
       return;
-    }
-    if (bt.isNullOrNil(this.sGk))
-    {
-      localObject = this.progressBar;
-      if (localObject == null) {
-        d.g.b.p.bcb("progressBar");
+      if (bu.isNullOrNil(this.sRj))
+      {
+        localObject = this.progressBar;
+        if (localObject == null) {
+          d.g.b.p.bdF("progressBar");
+        }
+        ((ProgressBar)localObject).setVisibility(0);
       }
-      ((ProgressBar)localObject).setVisibility(0);
-    }
-    for (;;)
-    {
-      doPrepareUser();
-      break;
-      cKj();
+      for (;;)
+      {
+        doPrepareUser();
+        break;
+        cMM();
+      }
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(167594);
-    ad.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+    ae.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
     paramString = this.progressBar;
     if (paramString == null) {
-      d.g.b.p.bcb("progressBar");
+      d.g.b.p.bdF("progressBar");
     }
     paramString.setVisibility(8);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.shx == null)
+      if (this.sqs == null)
       {
         if (paramn == null)
         {
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
+          paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
           AppMethodBeat.o(167594);
           throw paramString;
         }
-        this.shx = ((ax)paramn).cyJ();
-        cKk();
+        this.sqs = ((ay)paramn).cAk();
+        cMN();
       }
       if (paramn == null)
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
+        paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
         AppMethodBeat.o(167594);
         throw paramString;
       }
-      this.shx = ((ax)paramn).cyJ();
-      cKj();
+      this.sqs = ((ay)paramn).cAk();
+      cMM();
       AppMethodBeat.o(167594);
       return;
     }
-    cKk();
+    cMN();
     com.tencent.mm.ui.base.t.makeText((Context)this, 2131759307, 1).show();
     AppMethodBeat.o(167594);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(204166);
+    AppMethodBeat.i(204767);
     super.onStop();
-    this.sGA = false;
-    this.sGB = "";
-    this.sGC = "";
-    this.sGD = "";
-    AppMethodBeat.o(204166);
+    this.sRt = false;
+    this.sRu = "";
+    this.sRv = "";
+    this.sRw = "";
+    this.sRx = "";
+    AppMethodBeat.o(204767);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -1089,179 +1000,174 @@ public final class FinderSelfUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI$Companion;", "", "()V", "ENTER_FAV_UI_REQ_CODE", "", "getENTER_FAV_UI_REQ_CODE", "()I", "ENTER_LIKE_UI_REQ_CODE", "getENTER_LIKE_UI_REQ_CODE", "INNER_ITEM_COUNT", "", "getINNER_ITEM_COUNT", "()Ljava/lang/String;", "KEY_FROM_SNS_POST", "getKEY_FROM_SNS_POST", "RED_DOT_EXIST_ON_ENTER", "getRED_DOT_EXIST_ON_ENTER", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(204144);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$accountAbnormal$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      this.sGM.getIntent().putExtra("finder_username", FinderSelfUI.e(this.sGM));
-      this.sGM.getIntent().putExtra("KEY_FINDER_SELF_FLAG", true);
-      paramView = FinderReporterUIC.tcM;
-      paramView = (Context)this.sGM;
-      localObject = this.sGM.getIntent();
-      d.g.b.p.g(localObject, "intent");
-      FinderReporterUIC.a.a(paramView, (Intent)localObject, 0L, 0, false, 124);
-      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-      com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)this.sGM, this.sGM.getIntent());
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$accountAbnormal$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204144);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
-    implements View.OnClickListener
+    implements Runnable
   {
     c(FinderSelfUI paramFinderSelfUI) {}
     
+    public final void run()
+    {
+      AppMethodBeat.i(204742);
+      ((FrameLayout)this.sRH._$_findCachedViewById(2131307388)).performClick();
+      AppMethodBeat.o(204742);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class d
+    implements View.OnClickListener
+  {
+    d(FinderSelfUI paramFinderSelfUI) {}
+    
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204145);
+      AppMethodBeat.i(204743);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$canPostButNoAccountUi$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = com.tencent.mm.plugin.finder.report.f.soC;
-      com.tencent.mm.plugin.finder.report.f.ai(3, false);
-      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject = ((PluginFinder)paramView).getRedDotManager().ahm("TLCamera");
-      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-      com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramView).getRedDotManager().ahn("TLCamera");
-      paramView = com.tencent.mm.plugin.finder.utils.p.sMo;
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$canPostButNoAccountUi$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = com.tencent.mm.plugin.finder.report.g.syJ;
       int i;
-      if ((localObject != null) && (locali != null))
+      label71:
+      com.tencent.mm.plugin.finder.extension.reddot.i locali;
+      if (FinderSelfUI.e(this.sRH))
       {
-        paramView = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() != 1) {
-          break label334;
+        i = 4;
+        com.tencent.mm.plugin.finder.report.g.G(false, i);
+        paramView = com.tencent.mm.plugin.finder.report.g.syJ;
+        if (!FinderSelfUI.e(this.sRH)) {
+          break label417;
         }
-        i = 0;
-        paramView = com.tencent.mm.plugin.finder.report.h.soM;
-        paramView = FinderReporterUIC.tcM;
-        paramView = FinderReporterUIC.a.eY((Context)this.sGM);
-        if (paramView == null) {
-          break label339;
-        }
-        paramView = paramView.cOu();
-        label157:
-        com.tencent.mm.plugin.finder.report.h.a("4", 2, 2, 1, i, 0, null, null, 0L, paramView, 0, 0, 3520);
-        paramView = com.tencent.mm.plugin.finder.report.g.soH;
-        paramView = FinderReporterUIC.tcM;
-        paramView = FinderReporterUIC.a.eY((Context)this.sGM);
-        if (paramView == null) {
-          break label344;
+        i = 4;
+        com.tencent.mm.plugin.finder.report.g.am(i, false);
+        paramView = com.tencent.mm.plugin.finder.report.g.syJ;
+        paramView = new StringBuilder();
+        d.g.b.p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
+        com.tencent.mm.plugin.finder.report.g.aiK(com.tencent.mm.kernel.a.aiF() + '_' + bu.fpO());
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        localObject = ((PluginFinder)paramView).getRedDotManager().aii("TLCamera");
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        locali = ((PluginFinder)paramView).getRedDotManager().aij("TLCamera");
+        paramView = com.tencent.mm.plugin.finder.utils.p.sXz;
+        if ((localObject != null) && (locali != null))
+        {
+          paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
+          if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() != 1) {
+            break label422;
+          }
+          i = 0;
+          label206:
+          paramView = com.tencent.mm.plugin.finder.report.i.syT;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+          if (paramView == null) {
+            break label427;
+          }
+          paramView = paramView.cQZ();
+          label234:
+          com.tencent.mm.plugin.finder.report.i.a("4", 2, 2, 1, i, 0, null, null, 0L, paramView, 0, 0, 3520);
+          paramView = com.tencent.mm.plugin.finder.report.h.syO;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+          if (paramView == null) {
+            break label432;
+          }
         }
       }
-      label334:
-      label339:
-      label344:
-      for (paramView = paramView.cOu();; paramView = null)
+      label417:
+      label422:
+      label427:
+      label432:
+      for (paramView = paramView.cQZ();; paramView = null)
       {
-        com.tencent.mm.plugin.finder.report.g.b("4", locali, (ase)localObject, 2, paramView, 0, 96);
+        com.tencent.mm.plugin.finder.report.h.a("4", locali, (ast)localObject, 2, paramView, 0, 0, 96);
         paramView = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
         d.g.b.p.g(paramView, "MMKernel.plugin(IPluginFinder::class.java)");
-        ((com.tencent.mm.plugin.i.a.t)paramView).getRedDotManager().ahl("TLCamera");
-        paramView = com.tencent.mm.plugin.finder.utils.p.sMo;
-        if (com.tencent.mm.plugin.finder.utils.p.ap((Activity)this.sGM))
+        ((com.tencent.mm.plugin.i.a.t)paramView).getRedDotManager().aih("TLCamera");
+        paramView = com.tencent.mm.plugin.finder.utils.p.sXz;
+        if (com.tencent.mm.plugin.finder.utils.p.aq((Activity)this.sRH))
         {
           paramView = new Intent();
           paramView.putExtra("scene", 2);
-          localObject = FinderSelfUI.a(this.sGM);
+          localObject = FinderSelfUI.a(this.sRH);
           if (localObject != null) {
-            paramView.putExtra("key_prepare_resp", ((asp)localObject).toByteArray());
+            paramView.putExtra("key_prepare_resp", ((atf)localObject).toByteArray());
           }
-          localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
-          com.tencent.mm.plugin.finder.utils.a.w((Context)this.sGM, paramView);
+          localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
+          com.tencent.mm.plugin.finder.utils.a.w((Context)this.sRH, paramView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$canPostButNoAccountUi$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204145);
+        AppMethodBeat.o(204743);
         return;
-        i = 1;
+        i = 3;
         break;
+        i = 3;
+        break label71;
+        i = 1;
+        break label206;
         paramView = null;
-        break label157;
+        break label234;
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
-  static final class d<T>
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  static final class f<T>
     implements Observer<g.a>
   {
-    d(FinderSelfUI paramFinderSelfUI) {}
+    f(FinderSelfUI paramFinderSelfUI) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class g
     implements View.OnClickListener
   {
-    e(FinderSelfUI paramFinderSelfUI) {}
+    g(FinderSelfUI paramFinderSelfUI) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204147);
+      AppMethodBeat.i(204746);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$canPostButRevingUi$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = FinderSelfUI.a(this.sGM);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$canPostButRevingUi$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = FinderSelfUI.a(this.sRH);
       if (paramView != null)
       {
-        localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
-        if (com.tencent.mm.plugin.finder.utils.p.ap((Activity)this.sGM)) {
-          FinderSelfUI.a(this.sGM, paramView);
+        localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
+        if (com.tencent.mm.plugin.finder.utils.p.aq((Activity)this.sRH)) {
+          FinderSelfUI.a(this.sRH, paramView);
         }
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$canPostButRevingUi$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204147);
+      AppMethodBeat.o(204746);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class f
-    implements n.d
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class h
+    implements Runnable
   {
-    public static final f sGN;
+    h(FinderSelfUI paramFinderSelfUI) {}
     
-    static
+    public final void run()
     {
-      AppMethodBeat.i(204149);
-      sGN = new f();
-      AppMethodBeat.o(204149);
-    }
-    
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
-    {
-      AppMethodBeat.i(204148);
-      d.g.b.p.g(paraml, "it");
-      if (paraml.fyP())
-      {
-        paraml.jI(1001, 2131755747);
-        paraml.jI(1002, 2131755754);
-      }
-      AppMethodBeat.o(204148);
+      AppMethodBeat.i(204747);
+      ((FrameLayout)this.sRH._$_findCachedViewById(2131307388)).performClick();
+      AppMethodBeat.o(204747);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class g
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  static final class j
     implements n.e
   {
-    g(FinderSelfUI paramFinderSelfUI, String paramString) {}
+    j(FinderSelfUI paramFinderSelfUI, String paramString) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(204150);
+      AppMethodBeat.i(204750);
       Intent localIntent = new Intent();
       d.g.b.p.g(paramMenuItem, "menuItem");
       if (paramMenuItem.getItemId() == 1001) {
@@ -1270,10 +1176,10 @@ public final class FinderSelfUI
       for (;;)
       {
         localIntent.putExtra("key_finder_post_from", 5);
-        localIntent.putExtra("key_finder_post_id", this.sgR);
-        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.sKD;
-        com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)this.sGM, localIntent);
-        AppMethodBeat.o(204150);
+        localIntent.putExtra("key_finder_post_id", this.spL);
+        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)this.sRH, localIntent);
+        AppMethodBeat.o(204750);
         return;
         if (paramMenuItem.getItemId() == 1002) {
           localIntent.putExtra("key_finder_post_router", 3);
@@ -1282,99 +1188,29 @@ public final class FinderSelfUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss"})
-  static final class h
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss"})
+  static final class k
     implements e.b
   {
-    public static final h sGO;
+    public static final k sRK;
     
     static
     {
-      AppMethodBeat.i(204152);
-      sGO = new h();
-      AppMethodBeat.o(204152);
+      AppMethodBeat.i(204752);
+      sRK = new k();
+      AppMethodBeat.o(204752);
     }
     
     public final void onDismiss()
     {
-      AppMethodBeat.i(204151);
-      com.tencent.mm.plugin.finder.report.f localf = com.tencent.mm.plugin.finder.report.f.soC;
-      com.tencent.mm.plugin.finder.report.f.EW(6);
-      AppMethodBeat.o(204151);
+      AppMethodBeat.i(204751);
+      com.tencent.mm.plugin.finder.report.g localg = com.tencent.mm.plugin.finder.report.g.syJ;
+      com.tencent.mm.plugin.finder.report.g.Fs(6);
+      AppMethodBeat.o(204751);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
-  {
-    i(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(167583);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = new Intent();
-      localObject = FinderReporterUIC.tcM;
-      FinderReporterUIC.a.a((Context)this.sGM, paramView, 0L, 0, false, 124);
-      FinderSelfUI.a(this.sGM, FinderFollowListUI.class, paramView);
-      paramView = com.tencent.mm.plugin.finder.report.h.soM;
-      paramView = this.sGM.getContext();
-      d.g.b.p.g(paramView, "context");
-      com.tencent.mm.plugin.finder.report.h.a((Context)paramView, this.sGM.snn, this.sGM.sGz, 2L, this.sGM.sGs);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(167583);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
-  static final class j<T>
-    implements Observer<g.a>
-  {
-    j(FinderSelfUI paramFinderSelfUI) {}
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class k
-    implements View.OnClickListener
-  {
-    k(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      long l1 = 0L;
-      AppMethodBeat.i(167584);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = new Intent();
-      localObject = FinderReporterUIC.tcM;
-      FinderReporterUIC.a.a((Context)this.sGM, paramView, 0L, 0, false, 124);
-      paramView.setClass((Context)this.sGM, FinderNewUIA.class);
-      paramView.putExtra("finder_username", u.aAu());
-      localObject = this.sGM;
-      FinderSelfUI.a locala = FinderSelfUI.sGL;
-      ((FinderSelfUI)localObject).startActivityForResult(paramView, FinderSelfUI.cKo());
-      paramView = com.tencent.mm.plugin.finder.report.h.soM;
-      paramView = this.sGM.getContext();
-      d.g.b.p.g(paramView, "context");
-      paramView = (Context)paramView;
-      long l2 = this.sGM.snn;
-      boolean bool = this.sGM.sGz;
-      long l3 = this.sGM.sGt;
-      localObject = FinderSelfUI.a(this.sGM);
-      if (localObject != null) {
-        l1 = ((asp)localObject).GqJ;
-      }
-      com.tencent.mm.plugin.finder.report.h.a(paramView, l2, bool, 2L, l3, false, l1);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(167584);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class l
     implements View.OnClickListener
   {
@@ -1382,71 +1218,148 @@ public final class FinderSelfUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204154);
+      AppMethodBeat.i(167583);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = new Intent();
+      localObject = FinderReporterUIC.tnG;
+      FinderReporterUIC.a.a((Context)this.sRH, paramView, 0L, 0, false, 124);
+      FinderSelfUI.a(this.sRH, FinderFollowListUI.class, paramView);
+      paramView = com.tencent.mm.plugin.finder.report.i.syT;
+      paramView = this.sRH.getContext();
+      d.g.b.p.g(paramView, "context");
+      com.tencent.mm.plugin.finder.report.i.a((Context)paramView, this.sRH.sxe, this.sRH.sRs, 2L, this.sRH.sRl);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(167583);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  static final class m<T>
+    implements Observer<g.a>
+  {
+    m(FinderSelfUI paramFinderSelfUI) {}
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  static final class n<T>
+    implements Observer<g.a>
+  {
+    n(FinderSelfUI paramFinderSelfUI) {}
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class o
+    implements View.OnClickListener
+  {
+    o(FinderSelfUI paramFinderSelfUI) {}
+    
+    public final void onClick(View paramView)
+    {
+      long l1 = 0L;
+      AppMethodBeat.i(167584);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = new Intent();
+      localObject = FinderReporterUIC.tnG;
+      FinderReporterUIC.a.a((Context)this.sRH, paramView, 0L, 0, false, 124);
+      paramView.setClass((Context)this.sRH, FinderNewUIA.class);
+      paramView.putExtra("finder_username", com.tencent.mm.model.v.aAK());
+      localObject = this.sRH;
+      FinderSelfUI.a locala = FinderSelfUI.sRG;
+      ((FinderSelfUI)localObject).startActivityForResult(paramView, FinderSelfUI.cMR());
+      paramView = com.tencent.mm.plugin.finder.report.i.syT;
+      paramView = this.sRH.getContext();
+      d.g.b.p.g(paramView, "context");
+      paramView = (Context)paramView;
+      long l2 = this.sRH.sxe;
+      boolean bool = this.sRH.sRs;
+      long l3 = this.sRH.sRm;
+      localObject = FinderSelfUI.a(this.sRH);
+      if (localObject != null) {
+        l1 = ((atf)localObject).GKh;
+      }
+      com.tencent.mm.plugin.finder.report.i.a(paramView, l2, bool, 2L, l3, false, l1);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(167584);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class p
+    implements View.OnClickListener
+  {
+    p(FinderSelfUI paramFinderSelfUI) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(204755);
       Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
       paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-      localObject1 = ((PluginFinder)paramView).getRedDotManager().ahm("FinderFirstFav");
+      localObject1 = ((PluginFinder)paramView).getRedDotManager().aii("FinderFirstFav");
       paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
       d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-      Object localObject2 = ((PluginFinder)paramView).getRedDotManager().ahn("FinderFirstFav");
-      paramView = com.tencent.mm.plugin.finder.utils.p.sMo;
+      Object localObject2 = ((PluginFinder)paramView).getRedDotManager().aij("FinderFirstFav");
+      paramView = com.tencent.mm.plugin.finder.utils.p.sXz;
       label179:
       long l2;
       boolean bool;
       long l3;
       if ((localObject1 != null) && (localObject2 != null))
       {
-        paramView = com.tencent.mm.plugin.finder.report.h.soM;
-        paramView = FinderReporterUIC.tcM;
-        paramView = FinderReporterUIC.a.eY((Context)this.sGM);
+        paramView = com.tencent.mm.plugin.finder.report.i.syT;
+        paramView = FinderReporterUIC.tnG;
+        paramView = FinderReporterUIC.a.fc((Context)this.sRH);
         if (paramView != null)
         {
-          paramView = paramView.cOu();
-          com.tencent.mm.plugin.finder.report.h.a("4", 6, 2, 0, 0, 0, null, null, 0L, paramView, 0, 0, 3520);
-          paramView = com.tencent.mm.plugin.finder.report.g.soH;
-          paramView = FinderReporterUIC.tcM;
-          paramView = FinderReporterUIC.a.eY((Context)this.sGM);
+          paramView = paramView.cQZ();
+          com.tencent.mm.plugin.finder.report.i.a("4", 6, 2, 0, 0, 0, null, null, 0L, paramView, 0, 0, 3520);
+          paramView = com.tencent.mm.plugin.finder.report.h.syO;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.sRH);
           if (paramView == null) {
-            break label387;
+            break label388;
           }
-          paramView = paramView.cOu();
-          com.tencent.mm.plugin.finder.report.g.b("4", (com.tencent.mm.plugin.finder.extension.reddot.i)localObject2, (ase)localObject1, 2, paramView, 0, 96);
+          paramView = paramView.cQZ();
+          com.tencent.mm.plugin.finder.report.h.a("4", (com.tencent.mm.plugin.finder.extension.reddot.i)localObject2, (ast)localObject1, 2, paramView, 0, 0, 96);
         }
       }
       else
       {
         paramView = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
         d.g.b.p.g(paramView, "MMKernel.plugin(IPluginFinder::class.java)");
-        ((com.tencent.mm.plugin.i.a.t)paramView).getRedDotManager().ahl("FinderFirstFav");
+        ((com.tencent.mm.plugin.i.a.t)paramView).getRedDotManager().aih("FinderFirstFav");
         paramView = new Intent();
-        localObject1 = FinderReporterUIC.tcM;
-        FinderReporterUIC.a.a((Context)this.sGM, paramView, 0L, 0, false, 124);
-        localObject1 = com.tencent.mm.plugin.finder.utils.a.sKD;
-        localObject1 = (MMActivity)this.sGM;
-        localObject2 = FinderSelfUI.sGL;
-        com.tencent.mm.plugin.finder.utils.a.c((MMActivity)localObject1, paramView, FinderSelfUI.cKn());
-        paramView = com.tencent.mm.plugin.finder.report.h.soM;
-        paramView = this.sGM.getContext();
+        localObject1 = FinderReporterUIC.tnG;
+        FinderReporterUIC.a.a((Context)this.sRH, paramView, 0L, 0, false, 124);
+        localObject1 = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        localObject1 = (MMActivity)this.sRH;
+        localObject2 = FinderSelfUI.sRG;
+        com.tencent.mm.plugin.finder.utils.a.c((MMActivity)localObject1, paramView, FinderSelfUI.cMQ());
+        paramView = com.tencent.mm.plugin.finder.report.i.syT;
+        paramView = this.sRH.getContext();
         d.g.b.p.g(paramView, "context");
         paramView = (Context)paramView;
-        l2 = this.sGM.snn;
-        bool = this.sGM.sGz;
-        l3 = this.sGM.sGu;
-        localObject1 = FinderSelfUI.a(this.sGM);
+        l2 = this.sRH.sxe;
+        bool = this.sRH.sRs;
+        l3 = this.sRH.sRn;
+        localObject1 = FinderSelfUI.a(this.sRH);
         if (localObject1 == null) {
-          break label392;
+          break label393;
         }
       }
-      label387:
-      label392:
-      for (long l1 = ((asp)localObject1).GqK;; l1 = 0L)
+      label388:
+      label393:
+      for (long l1 = ((atf)localObject1).GKi;; l1 = 0L)
       {
-        com.tencent.mm.plugin.finder.report.h.a(paramView, l2, bool, 2L, l3, false, l1);
+        com.tencent.mm.plugin.finder.report.i.a(paramView, l2, bool, 2L, l3, false, l1);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204154);
+        AppMethodBeat.o(204755);
         return;
         paramView = null;
         break;
@@ -1456,116 +1369,7 @@ public final class FinderSelfUI
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class m
-    implements View.OnClickListener
-  {
-    m(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(204155);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-      com.tencent.mm.plugin.finder.utils.a.eW((Context)this.sGM);
-      long l1 = FinderSelfUI.cKm();
-      paramView = com.tencent.mm.plugin.finder.report.h.soM;
-      paramView = this.sGM.getContext();
-      d.g.b.p.g(paramView, "context");
-      paramView = (Context)paramView;
-      long l2 = this.sGM.snn;
-      boolean bool2 = this.sGM.sGz;
-      long l3 = this.sGM.sGy;
-      boolean bool1;
-      com.tencent.mm.plugin.finder.extension.reddot.i locali;
-      if (l1 > 0L)
-      {
-        bool1 = true;
-        com.tencent.mm.plugin.finder.report.h.a(paramView, l2, bool2, 2L, l3, bool1, l1);
-        paramView = com.tencent.mm.plugin.finder.report.b.snk;
-        com.tencent.mm.plugin.finder.report.b.cDj().N(2L, 0L);
-        paramView = com.tencent.mm.plugin.finder.report.b.snk;
-        com.tencent.mm.plugin.finder.report.b.cDn().snA = FinderSelfUI.cKm();
-        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        localObject = ((PluginFinder)paramView).getRedDotManager().ahm("finder_wx_private_msg_entrance");
-        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        locali = ((PluginFinder)paramView).getRedDotManager().ahn("finder_wx_private_msg_entrance");
-        if ((localObject != null) && (locali != null))
-        {
-          paramView = com.tencent.mm.plugin.finder.report.g.soH;
-          paramView = FinderReporterUIC.tcM;
-          paramView = FinderReporterUIC.a.eY((Context)this.sGM);
-          if (paramView == null) {
-            break label285;
-          }
-        }
-      }
-      label285:
-      for (paramView = paramView.cOu();; paramView = null)
-      {
-        com.tencent.mm.plugin.finder.report.g.b("4", locali, (ase)localObject, 3, paramView, 0, 96);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204155);
-        return;
-        bool1 = false;
-        break;
-      }
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class n
-    implements View.OnClickListener
-  {
-    n(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(204156);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      FinderSelfUI.b(this.sGM);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204156);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class o
-    implements View.OnClickListener
-  {
-    o(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(204157);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-      com.tencent.mm.plugin.finder.utils.a.eQ((Context)this.sGM);
-      paramView = com.tencent.mm.plugin.finder.report.h.soM;
-      paramView = this.sGM.getContext();
-      d.g.b.p.g(paramView, "context");
-      com.tencent.mm.plugin.finder.report.h.a((Context)paramView, this.sGM.snn, this.sGM.sGz, 2L, this.sGM.sGv);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204157);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
-  static final class p<T>
-    implements Observer<g.a>
-  {
-    p(FinderSelfUI paramFinderSelfUI) {}
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class q
     implements View.OnClickListener
   {
@@ -1573,102 +1377,60 @@ public final class FinderSelfUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204159);
+      AppMethodBeat.i(204756);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-      com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramView).getRedDotManager().ahn("finder_private_msg_entrance");
-      if (locali != null)
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+      com.tencent.mm.plugin.finder.utils.a.fa((Context)this.sRH);
+      long l1 = FinderSelfUI.cMP();
+      paramView = com.tencent.mm.plugin.finder.report.i.syT;
+      paramView = this.sRH.getContext();
+      d.g.b.p.g(paramView, "context");
+      paramView = (Context)paramView;
+      long l2 = this.sRH.sxe;
+      boolean bool2 = this.sRH.sRs;
+      long l3 = this.sRH.sRr;
+      boolean bool1;
+      com.tencent.mm.plugin.finder.extension.reddot.i locali;
+      if (l1 > 0L)
       {
-        paramView = locali.ahq("finder_private_msg_entrance");
-        if ((locali == null) || (locali.field_ctrInfo.type != 1007)) {
-          break label276;
-        }
-        localObject = com.tencent.mm.plugin.finder.report.h.soM;
-        localObject = this.sGM.getContext();
-        d.g.b.p.g(localObject, "context");
-        com.tencent.mm.plugin.finder.report.h.a((Context)localObject, this.sGM.snn, this.sGM.sGz, 2L, this.sGM.sGx, true, 0L);
-        if (paramView != null)
+        bool1 = true;
+        com.tencent.mm.plugin.finder.report.i.a(paramView, l2, bool2, 2L, l3, bool1, l1);
+        paramView = com.tencent.mm.plugin.finder.report.b.sxb;
+        com.tencent.mm.plugin.finder.report.b.cFb().M(2L, 0L);
+        paramView = com.tencent.mm.plugin.finder.report.b.sxb;
+        com.tencent.mm.plugin.finder.report.b.cFf().sxr = FinderSelfUI.cMP();
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        localObject = ((PluginFinder)paramView).getRedDotManager().aii("finder_wx_private_msg_entrance");
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        locali = ((PluginFinder)paramView).getRedDotManager().aij("finder_wx_private_msg_entrance");
+        if ((localObject != null) && (locali != null))
         {
-          localObject = com.tencent.mm.plugin.finder.report.g.soH;
-          localObject = FinderReporterUIC.tcM;
-          localObject = FinderReporterUIC.a.eY((Context)this.sGM);
-          if (localObject == null) {
-            break label271;
+          paramView = com.tencent.mm.plugin.finder.report.h.syO;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+          if (paramView == null) {
+            break label286;
           }
-          localObject = ((FinderReporterUIC)localObject).cOu();
-          label175:
-          com.tencent.mm.plugin.finder.report.g.b("4", locali, paramView, 2, (aqy)localObject, 0, 96);
         }
       }
-      for (;;)
+      label286:
+      for (paramView = paramView.cQZ();; paramView = null)
       {
-        paramView = com.tencent.mm.plugin.finder.report.b.snk;
-        com.tencent.mm.plugin.finder.report.b.cDj().N(1L, 0L);
-        paramView = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
-        d.g.b.p.g(paramView, "MMKernel.plugin(IPluginFinder::class.java)");
-        ((com.tencent.mm.plugin.i.a.t)paramView).getRedDotManager().ahl("finder_private_msg_entrance");
-        ((com.tencent.mm.plugin.i.a.t)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class)).enterFinderConversationUI((Context)this.sGM);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204159);
+        com.tencent.mm.plugin.finder.report.h.a("4", locali, (ast)localObject, 3, paramView, 0, 0, 96);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(204756);
         return;
-        paramView = null;
+        bool1 = false;
         break;
-        label271:
-        localObject = null;
-        break label175;
-        label276:
-        if ((locali != null) && (locali.field_ctrInfo.type == 1006))
-        {
-          int i;
-          if (paramView != null)
-          {
-            i = paramView.count;
-            label304:
-            localObject = com.tencent.mm.plugin.finder.report.h.soM;
-            localObject = this.sGM.getContext();
-            d.g.b.p.g(localObject, "context");
-            com.tencent.mm.plugin.finder.report.h.a((Context)localObject, this.sGM.snn, this.sGM.sGz, 2L, this.sGM.sGx, true, i);
-            if (paramView == null) {
-              continue;
-            }
-            localObject = com.tencent.mm.plugin.finder.report.g.soH;
-            localObject = FinderReporterUIC.tcM;
-            localObject = FinderReporterUIC.a.eY((Context)this.sGM);
-            if (localObject == null) {
-              break label409;
-            }
-          }
-          label409:
-          for (localObject = ((FinderReporterUIC)localObject).cOu();; localObject = null)
-          {
-            com.tencent.mm.plugin.finder.report.g.b("4", locali, paramView, 3, (aqy)localObject, 0, 96);
-            break;
-            i = 0;
-            break label304;
-          }
-        }
-        else
-        {
-          paramView = com.tencent.mm.plugin.finder.report.h.soM;
-          paramView = this.sGM.getContext();
-          d.g.b.p.g(paramView, "context");
-          com.tencent.mm.plugin.finder.report.h.a((Context)paramView, this.sGM.snn, this.sGM.sGz, 2L, this.sGM.sGx, false, 0L);
-        }
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
-  static final class r<T>
-    implements Observer<g.a>
-  {
-    r(FinderSelfUI paramFinderSelfUI) {}
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class s
     implements View.OnClickListener
   {
@@ -1676,182 +1438,29 @@ public final class FinderSelfUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204161);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      paramView = new Intent();
-      localObject = c.rHn;
-      localObject = u.aAu();
-      d.g.b.p.g(localObject, "ConfigStorageLogic.getMyFinderUsername()");
-      localObject = c.a.agW((String)localObject);
-      if (localObject == null) {
-        d.g.b.p.gfZ();
-      }
-      if (((com.tencent.mm.plugin.finder.api.g)localObject).isBlock())
-      {
-        paramView.setClass((Context)this.sGM.getContext(), FinderExposeUI.class);
-        localObject = this.sGM;
-        paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahp(), "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((FinderSelfUI)localObject).startActivity((Intent)paramView.mq(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204161);
-        return;
-        paramView.putExtra("finder_username", FinderSelfUI.e(this.sGM));
-        paramView.putExtra("KEY_FINDER_SELF_FLAG", true);
-        localObject = FinderReporterUIC.tcM;
-        FinderReporterUIC.a.a((Context)this.sGM, paramView, 0L, 0, false, 124);
-        localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
-        com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)this.sGM, paramView);
-      }
+      AppMethodBeat.i(204758);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+      com.tencent.mm.plugin.finder.utils.a.eU((Context)this.sRH);
+      paramView = com.tencent.mm.plugin.finder.report.i.syT;
+      paramView = this.sRH.getContext();
+      d.g.b.p.g(paramView, "context");
+      com.tencent.mm.plugin.finder.report.i.a((Context)paramView, this.sRH.sxe, this.sRH.sRs, 2L, this.sRH.sRo);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(204758);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class t
-    implements View.OnClickListener
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  static final class t<T>
+    implements Observer<g.a>
   {
-    t(FinderSelfUI paramFinderSelfUI, int paramInt1, int paramInt2, int paramInt3, com.tencent.mm.plugin.finder.extension.reddot.i parami, ase paramase) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(204162);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      int i;
-      int j;
-      label106:
-      label125:
-      boolean bool1;
-      if (m > 0)
-      {
-        paramView = com.tencent.mm.plugin.finder.storage.b.sxa;
-        if (((Number)com.tencent.mm.plugin.finder.storage.b.cGS().value()).intValue() == 1)
-        {
-          i = 0;
-          if (j <= 0) {
-            break label493;
-          }
-          paramView = com.tencent.mm.plugin.finder.report.h.soM;
-          j = j;
-          paramView = FinderReporterUIC.tcM;
-          paramView = FinderReporterUIC.a.eY((Context)this.sGM);
-          if (paramView == null) {
-            break label488;
-          }
-          paramView = paramView.cOu();
-          com.tencent.mm.plugin.finder.report.h.a("4", 1, 2, 5, i, j, null, null, 0L, paramView, 0, 0, 3520);
-        }
-      }
-      else
-      {
-        com.tencent.mm.plugin.finder.extension.reddot.i locali = this.sGS;
-        localObject = this.sGT;
-        if ((locali != null) && (localObject != null))
-        {
-          paramView = com.tencent.mm.plugin.finder.report.g.soH;
-          paramView = FinderReporterUIC.tcM;
-          paramView = FinderReporterUIC.a.eY((Context)this.sGM);
-          if (paramView == null) {
-            break label560;
-          }
-          paramView = paramView.cOu();
-          label175:
-          com.tencent.mm.plugin.finder.report.g.b("4", locali, (ase)localObject, 2, paramView, 0, 96);
-          paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-          d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-          paramView = ((PluginFinder)paramView).getRedDotManager().ahm("NotificitionCenterNotify");
-          if (paramView == null) {
-            break label565;
-          }
-          ((ase)localObject).count = paramView.count;
-        }
-        label227:
-        paramView = com.tencent.mm.plugin.finder.report.h.soM;
-        paramView = this.sGM.getContext();
-        d.g.b.p.g(paramView, "context");
-        paramView = (Context)paramView;
-        long l1 = this.sGM.snn;
-        boolean bool2 = this.sGM.sGz;
-        long l2 = this.sGM.sGw;
-        if (m <= 0) {
-          break label593;
-        }
-        bool1 = true;
-        label287:
-        com.tencent.mm.plugin.finder.report.h.a(paramView, l1, bool2, 2L, l2, bool1, m);
-        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)paramView).getRedDotManager().ahl("ProfileEntrance");
-        paramView = new Intent();
-        localObject = c.rHn;
-        localObject = u.aAu();
-        d.g.b.p.g(localObject, "ConfigStorageLogic.getMyFinderUsername()");
-        localObject = c.a.agW((String)localObject);
-        if (localObject == null) {
-          d.g.b.p.gfZ();
-        }
-        if (!((com.tencent.mm.plugin.finder.api.g)localObject).isBlock()) {
-          break label599;
-        }
-        paramView.setClass((Context)this.sGM.getContext(), FinderExposeUI.class);
-        localObject = this.sGM;
-        paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahp(), "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((FinderSelfUI)localObject).startActivity((Intent)paramView.mq(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(204162);
-        return;
-        i = 2;
-        break;
-        label488:
-        paramView = null;
-        break label106;
-        label493:
-        if (k <= 0) {
-          break label125;
-        }
-        paramView = com.tencent.mm.plugin.finder.report.h.soM;
-        j = k;
-        paramView = FinderReporterUIC.tcM;
-        paramView = FinderReporterUIC.a.eY((Context)this.sGM);
-        if (paramView != null) {}
-        for (paramView = paramView.cOu();; paramView = null)
-        {
-          com.tencent.mm.plugin.finder.report.h.a("4", 4, 2, 5, i, j, null, null, 0L, paramView, 0, 0, 3520);
-          break;
-        }
-        label560:
-        paramView = null;
-        break label175;
-        label565:
-        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
-        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)paramView).getRedDotManager().ahl("AuthorProfileNotify");
-        break label227;
-        label593:
-        bool1 = false;
-        break label287;
-        label599:
-        localObject = FinderReporterUIC.tcM;
-        FinderReporterUIC.a.a((Context)this.sGM, paramView, 0L, 0, false, 124);
-        localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
-        com.tencent.mm.plugin.finder.utils.a.U((Context)this.sGM, paramView);
-      }
-    }
+    t(FinderSelfUI paramFinderSelfUI) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class u
     implements View.OnClickListener
   {
@@ -1859,48 +1468,306 @@ public final class FinderSelfUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204163);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      FinderSelfUI.b(this.sGM);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204163);
+      AppMethodBeat.i(204760);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+      com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramView).getRedDotManager().aij("finder_private_msg_entrance");
+      if (locali != null)
+      {
+        paramView = locali.aim("finder_private_msg_entrance");
+        if ((locali == null) || (locali.field_ctrInfo.type != 1007)) {
+          break label277;
+        }
+        localObject = com.tencent.mm.plugin.finder.report.i.syT;
+        localObject = this.sRH.getContext();
+        d.g.b.p.g(localObject, "context");
+        com.tencent.mm.plugin.finder.report.i.a((Context)localObject, this.sRH.sxe, this.sRH.sRs, 2L, this.sRH.sRq, true, 0L);
+        if (paramView != null)
+        {
+          localObject = com.tencent.mm.plugin.finder.report.h.syO;
+          localObject = FinderReporterUIC.tnG;
+          localObject = FinderReporterUIC.a.fc((Context)this.sRH);
+          if (localObject == null) {
+            break label272;
+          }
+          localObject = ((FinderReporterUIC)localObject).cQZ();
+          label175:
+          com.tencent.mm.plugin.finder.report.h.a("4", locali, paramView, 2, (arn)localObject, 0, 0, 96);
+        }
+      }
+      for (;;)
+      {
+        paramView = com.tencent.mm.plugin.finder.report.b.sxb;
+        com.tencent.mm.plugin.finder.report.b.cFb().M(1L, 0L);
+        paramView = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(IPluginFinder::class.java)");
+        ((com.tencent.mm.plugin.i.a.t)paramView).getRedDotManager().aih("finder_private_msg_entrance");
+        ((com.tencent.mm.plugin.i.a.t)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.i.a.t.class)).enterFinderConversationUI((Context)this.sRH);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$initView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(204760);
+        return;
+        paramView = null;
+        break;
+        label272:
+        localObject = null;
+        break label175;
+        label277:
+        if ((locali != null) && (locali.field_ctrInfo.type == 1006))
+        {
+          int i;
+          if (paramView != null)
+          {
+            i = paramView.count;
+            label305:
+            localObject = com.tencent.mm.plugin.finder.report.i.syT;
+            localObject = this.sRH.getContext();
+            d.g.b.p.g(localObject, "context");
+            com.tencent.mm.plugin.finder.report.i.a((Context)localObject, this.sRH.sxe, this.sRH.sRs, 2L, this.sRH.sRq, true, i);
+            if (paramView == null) {
+              continue;
+            }
+            localObject = com.tencent.mm.plugin.finder.report.h.syO;
+            localObject = FinderReporterUIC.tnG;
+            localObject = FinderReporterUIC.a.fc((Context)this.sRH);
+            if (localObject == null) {
+              break label411;
+            }
+          }
+          label411:
+          for (localObject = ((FinderReporterUIC)localObject).cQZ();; localObject = null)
+          {
+            com.tencent.mm.plugin.finder.report.h.a("4", locali, paramView, 3, (arn)localObject, 0, 0, 96);
+            break;
+            i = 0;
+            break label305;
+          }
+        }
+        else
+        {
+          paramView = com.tencent.mm.plugin.finder.report.i.syT;
+          paramView = this.sRH.getContext();
+          d.g.b.p.g(paramView, "context");
+          com.tencent.mm.plugin.finder.report.i.a((Context)paramView, this.sRH.sxe, this.sRH.sRs, 2L, this.sRH.sRq, false, 0L);
+        }
+      }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class v
-    implements MenuItem.OnMenuItemClickListener
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  static final class v<T>
+    implements Observer<g.a>
   {
     v(FinderSelfUI paramFinderSelfUI) {}
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class w
+    implements View.OnClickListener
+  {
+    w(FinderSelfUI paramFinderSelfUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    public final void onClick(View paramView)
     {
-      AppMethodBeat.i(167585);
-      this.sGM.onBackPressed();
-      AppMethodBeat.o(167585);
-      return true;
+      AppMethodBeat.i(204762);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject = ((PluginFinder)paramView).getRedDotManager().aii("ProfileEntrance");
+      paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+      com.tencent.mm.plugin.finder.extension.reddot.i locali = ((PluginFinder)paramView).getRedDotManager().aij("ProfileEntrance");
+      if ((locali != null) && (localObject != null))
+      {
+        paramView = com.tencent.mm.plugin.finder.report.h.syO;
+        paramView = FinderReporterUIC.tnG;
+        paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+        if (paramView != null)
+        {
+          paramView = paramView.cQZ();
+          com.tencent.mm.plugin.finder.report.h.a("4", locali, (ast)localObject, 2, paramView, 0, 0, 96);
+        }
+      }
+      else
+      {
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        ((PluginFinder)paramView).getRedDotManager().aih("ProfileEntrance");
+        paramView = new Intent();
+        localObject = c.rPy;
+        localObject = c.a.ahT(com.tencent.mm.model.v.aAK());
+        if (localObject == null) {
+          d.g.b.p.gkB();
+        }
+        if (!((com.tencent.mm.plugin.finder.api.g)localObject).isBlock()) {
+          break label295;
+        }
+        paramView.setClass((Context)this.sRH.getContext(), FinderExposeUI.class);
+        localObject = this.sRH;
+        paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahE(), "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((FinderSelfUI)localObject).startActivity((Intent)paramView.mt(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      }
+      for (;;)
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(204762);
+        return;
+        paramView = null;
+        break;
+        label295:
+        paramView.putExtra("finder_username", FinderSelfUI.f(this.sRH));
+        paramView.putExtra("KEY_FINDER_SELF_FLAG", true);
+        localObject = FinderReporterUIC.tnG;
+        FinderReporterUIC.a.a((Context)this.sRH, paramView, 0L, 0, false, 124);
+        localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)this.sRH, paramView);
+      }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class w
-    implements Runnable
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class x
+    implements View.OnClickListener
   {
-    w(View paramView) {}
+    x(FinderSelfUI paramFinderSelfUI, int paramInt1, int paramInt2, int paramInt3, com.tencent.mm.plugin.finder.extension.reddot.i parami, ast paramast) {}
     
-    public final void run()
+    public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204164);
-      this.rMp.performClick();
-      AppMethodBeat.o(204164);
+      AppMethodBeat.i(204763);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      int i;
+      int j;
+      label106:
+      label125:
+      boolean bool1;
+      if (m > 0)
+      {
+        paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
+        if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() == 1)
+        {
+          i = 0;
+          if (j <= 0) {
+            break label459;
+          }
+          paramView = com.tencent.mm.plugin.finder.report.i.syT;
+          j = j;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+          if (paramView == null) {
+            break label454;
+          }
+          paramView = paramView.cQZ();
+          com.tencent.mm.plugin.finder.report.i.a("4", 1, 2, 5, i, j, null, null, 0L, paramView, 0, 0, 3520);
+        }
+      }
+      else
+      {
+        com.tencent.mm.plugin.finder.extension.reddot.i locali = this.sRO;
+        localObject = this.sRP;
+        if ((locali != null) && (localObject != null))
+        {
+          paramView = com.tencent.mm.plugin.finder.report.h.syO;
+          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+          if (paramView == null) {
+            break label526;
+          }
+          paramView = paramView.cQZ();
+          label175:
+          com.tencent.mm.plugin.finder.report.h.a("4", locali, (ast)localObject, 2, paramView, 0, 0, 96);
+          paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+          d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+          paramView = ((PluginFinder)paramView).getRedDotManager().aii("NotificitionCenterNotify");
+          if (paramView == null) {
+            break label531;
+          }
+          ((ast)localObject).count = paramView.count;
+        }
+        label228:
+        paramView = com.tencent.mm.plugin.finder.report.i.syT;
+        paramView = this.sRH.getContext();
+        d.g.b.p.g(paramView, "context");
+        paramView = (Context)paramView;
+        long l1 = this.sRH.sxe;
+        boolean bool2 = this.sRH.sRs;
+        long l2 = this.sRH.sRp;
+        if (m <= 0) {
+          break label559;
+        }
+        bool1 = true;
+        label288:
+        com.tencent.mm.plugin.finder.report.i.a(paramView, l1, bool2, 2L, l2, bool1, m);
+        paramView = new Intent();
+        localObject = c.rPy;
+        localObject = c.a.ahT(com.tencent.mm.model.v.aAK());
+        if (localObject == null) {
+          d.g.b.p.gkB();
+        }
+        if (!((com.tencent.mm.plugin.finder.api.g)localObject).isBlock()) {
+          break label565;
+        }
+        paramView.setClass((Context)this.sRH.getContext(), FinderExposeUI.class);
+        localObject = this.sRH;
+        paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.ahE(), "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((FinderSelfUI)localObject).startActivity((Intent)paramView.mt(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      }
+      for (;;)
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelfUI$normalOrAbNomalUi$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(204763);
+        return;
+        i = 2;
+        break;
+        label454:
+        paramView = null;
+        break label106;
+        label459:
+        if (k <= 0) {
+          break label125;
+        }
+        paramView = com.tencent.mm.plugin.finder.report.i.syT;
+        j = k;
+        paramView = FinderReporterUIC.tnG;
+        paramView = FinderReporterUIC.a.fc((Context)this.sRH);
+        if (paramView != null) {}
+        for (paramView = paramView.cQZ();; paramView = null)
+        {
+          com.tencent.mm.plugin.finder.report.i.a("4", 4, 2, 5, i, j, null, null, 0L, paramView, 0, 0, 3520);
+          break;
+        }
+        label526:
+        paramView = null;
+        break label175;
+        label531:
+        paramView = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+        d.g.b.p.g(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+        ((PluginFinder)paramView).getRedDotManager().aih("AuthorProfileNotify");
+        break label228;
+        label559:
+        bool1 = false;
+        break label288;
+        label565:
+        localObject = FinderReporterUIC.tnG;
+        FinderReporterUIC.a.a((Context)this.sRH, paramView, 0L, 0, false, 124);
+        localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        com.tencent.mm.plugin.finder.utils.a.U((Context)this.sRH, paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSelfUI
  * JD-Core Version:    0.7.0.1
  */

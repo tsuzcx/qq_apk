@@ -10,20 +10,20 @@ import java.util.Iterator;
 
 public class e
 {
-  private static e MkO;
-  public com.tencent.wax.a.a MkP;
-  HashSet<a> MkQ;
-  private final k.c MkR;
+  private static e MHM;
+  public com.tencent.wax.a.a MHN;
+  private HashSet<a> MHO;
+  private final k.c MHP;
   
   public e()
   {
-    AppMethodBeat.i(217485);
-    this.MkQ = new HashSet();
-    this.MkR = new k.c()
+    AppMethodBeat.i(195492);
+    this.MHO = new HashSet();
+    this.MHP = new k.c()
     {
       public final void a(j paramAnonymousj, k.d paramAnonymousd)
       {
-        AppMethodBeat.i(217484);
+        AppMethodBeat.i(195491);
         HashSet localHashSet = new HashSet();
         localHashSet.addAll(e.a(e.this));
         String str = paramAnonymousj.method;
@@ -41,8 +41,8 @@ public class e
               if (((a.a)localObject).result)
               {
                 com.tencent.wax.c.a.i("WxaRouter.WxaRouterPlugin", "method call %s success ", new Object[] { str });
-                paramAnonymousd.de(((a.a)localObject).MkB);
-                AppMethodBeat.o(217484);
+                paramAnonymousd.df(((a.a)localObject).MHy);
+                AppMethodBeat.o(195491);
               }
             }
             else
@@ -53,52 +53,65 @@ public class e
           if (!bool)
           {
             com.tencent.wax.c.a.i("WxaRouter.WxaRouterPlugin", "method call %s had no ", new Object[] { str });
-            paramAnonymousd.djR();
+            paramAnonymousd.dmQ();
           }
           localHashSet.clear();
         }
-        AppMethodBeat.o(217484);
+        AppMethodBeat.o(195491);
       }
     };
-    AppMethodBeat.o(217485);
+    AppMethodBeat.o(195492);
   }
   
   public static void a(m.c paramc)
   {
-    AppMethodBeat.i(217488);
-    e locale = fYT();
-    locale.MkP = new com.tencent.wax.a.a(paramc.JS(), "com.tencent.wxa/wxa_router");
-    locale.MkP.MkT = locale.MkR;
-    AppMethodBeat.o(217488);
+    AppMethodBeat.i(195496);
+    e locale = gdt();
+    locale.MHN = new com.tencent.wax.a.a(paramc.Ka(), "com.tencent.wxa/wxa_router");
+    locale.MHN.MHR = locale.MHP;
+    AppMethodBeat.o(195496);
   }
   
-  public static e fYT()
+  public static e gdt()
   {
-    AppMethodBeat.i(217486);
-    if (MkO == null) {}
+    AppMethodBeat.i(195493);
+    if (MHM == null) {}
     try
     {
-      MkO = new e();
-      e locale = MkO;
-      AppMethodBeat.o(217486);
+      MHM = new e();
+      e locale = MHM;
+      AppMethodBeat.o(195493);
       return locale;
     }
     finally
     {
-      AppMethodBeat.o(217486);
+      AppMethodBeat.o(195493);
     }
   }
   
   public final void A(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(217487);
-    this.MkP.a(paramString, paramObject, null);
-    AppMethodBeat.o(217487);
+    AppMethodBeat.i(195495);
+    this.MHN.a(paramString, paramObject, null);
+    AppMethodBeat.o(195495);
+  }
+  
+  public final void b(a parama)
+  {
+    AppMethodBeat.i(195494);
+    if (!this.MHO.contains(parama))
+    {
+      this.MHO.add(parama);
+      AppMethodBeat.o(195494);
+      return;
+    }
+    com.tencent.wax.c.a.i("WxaRouter.WxaRouterPlugin", "had add method call handler %s", new Object[] { Integer.valueOf(parama.hashCode()) });
+    AppMethodBeat.o(195494);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wax.e
  * JD-Core Version:    0.7.0.1
  */

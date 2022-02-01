@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xk
   extends b
 {
-  public a dLJ;
+  public a dMQ;
   
   public xk()
   {
@@ -15,19 +15,17 @@ public final class xk
   
   private xk(byte paramByte)
   {
-    AppMethodBeat.i(153188);
-    this.dLJ = new a();
-    this.IbR = false;
+    AppMethodBeat.i(94801);
+    this.dMQ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(153188);
+    AppMethodBeat.o(94801);
   }
   
   public static final class a
   {
-    public int dLK;
-    public boolean dLL = false;
-    public boolean dLM = false;
-    public String title;
+    public long dMR = -1L;
+    public long dMS = -1L;
   }
 }
 

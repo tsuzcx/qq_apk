@@ -896,7 +896,7 @@ public class XWalkLibraryLoader
       this.mDownloadInfo.mIsRuntime = paramBoolean;
       this.mDownloadInfo.mBizType = paramInt;
       this.mWXFileDownloaderBridge = new WXFileDownloaderBridge();
-      this.mWXFileDownloaderBridge.MqY = this;
+      this.mWXFileDownloaderBridge.MOc = this;
       AppMethodBeat.o(154777);
     }
     
@@ -917,8 +917,8 @@ public class XWalkLibraryLoader
       ??? = this.mWXFileDownloaderBridge;
       String str1 = this.mDownloadInfo.mUrl;
       String str2 = this.mDownloadInfo.mSavePath;
-      if (WXFileDownloaderBridge.MqX != null) {}
-      for (int i = WXFileDownloaderBridge.MqX.a(str1, str2, ???);; i = -1)
+      if (WXFileDownloaderBridge.MOb != null) {}
+      for (int i = WXFileDownloaderBridge.MOb.a(str1, str2, ???);; i = -1)
       {
         if (i != 0)
         {

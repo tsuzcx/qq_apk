@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.crashfix.jni;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class BinderProxyTransactNativeHook$b
   implements Runnable
@@ -10,17 +10,17 @@ final class BinderProxyTransactNativeHook$b
   
   BinderProxyTransactNativeHook$b()
   {
-    AppMethodBeat.i(186995);
+    AppMethodBeat.i(190268);
     this.startTime = 0L;
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(186995);
+    AppMethodBeat.o(190268);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(186996);
-    ad.e("MicroMsg.BadBinder", hashCode() + "#send_bad#");
-    AppMethodBeat.o(186996);
+    AppMethodBeat.i(190269);
+    ae.e("MicroMsg.BadBinder", hashCode() + "#send_bad#");
+    AppMethodBeat.o(190269);
   }
 }
 

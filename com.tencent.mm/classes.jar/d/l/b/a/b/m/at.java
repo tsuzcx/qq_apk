@@ -12,17 +12,17 @@ public abstract interface at
 {
   public abstract List<as> getParameters();
   
-  public abstract h ghO();
+  public abstract h gmq();
   
-  public abstract boolean ghQ();
+  public abstract boolean gms();
   
-  public abstract Collection<ab> gjR();
+  public abstract g gnF();
   
-  public abstract g gjd();
+  public abstract Collection<ab> got();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.at
  * JD-Core Version:    0.7.0.1
  */

@@ -1,130 +1,304 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zt;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.xweb.WebView;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
-import org.xwalk.core.XWalkCoreWrapper;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig;", "", "()V", "KEY_XWEB_INSTALLED", "", "PERSISTENT_UI_CLASS", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPluginUI;", "[Ljava/lang/Class;", "TAG", "canKeepPersistent", "", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "isPersistentConfigOpen", "isPersistentXWebConfigOpen", "watchApp", "", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
 public final class h
 {
-  private static final Class<AppBrandPluginUI>[] jwu;
-  public static final h jwv;
+  private static final Iterator<c> jyV;
+  private static final Map<String, b> jyW;
+  private static final Map<String, h.d> jyX;
+  private static final com.tencent.mm.plugin.appbrand.y.h<String, c> jyY;
+  private static final com.tencent.mm.plugin.appbrand.y.h<String, h.a> jyZ;
   
   static
   {
-    AppMethodBeat.i(50136);
-    jwv = new h();
-    jwu = new Class[] { AppBrandPluginUI.class };
-    AppMethodBeat.o(50136);
+    AppMethodBeat.i(140582);
+    jyV = new Iterator()
+    {
+      public final boolean hasNext()
+      {
+        return false;
+      }
+    };
+    jyW = new HashMap();
+    jyX = new HashMap();
+    jyY = new com.tencent.mm.plugin.appbrand.y.h();
+    jyZ = new com.tencent.mm.plugin.appbrand.y.h();
+    AppMethodBeat.o(140582);
   }
   
-  public static final boolean a(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  private static Iterator<c> KL(String paramString)
   {
-    AppMethodBeat.i(50133);
-    p.h(paramAppBrandRuntimeContainerWC, "container");
-    paramAppBrandRuntimeContainerWC = paramAppBrandRuntimeContainerWC.getActivity();
-    Boolean[] arrayOfBoolean = new Boolean[2];
-    arrayOfBoolean[0] = Boolean.valueOf(WebView.isX5());
-    if ((WebView.isXWalk()) && (XWalkCoreWrapper.getInstance().hasFeature(2003))) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(140568);
+    paramString = jyY.cF(paramString);
+    if (paramString != null)
     {
-      arrayOfBoolean[1] = Boolean.valueOf(bool);
-      ad.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, containerUI[" + paramAppBrandRuntimeContainerWC.getClass().getSimpleName() + "], kernelConditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
-      if ((!org.apache.commons.b.a.contains(jwu, paramAppBrandRuntimeContainerWC.getClass())) || (!org.apache.commons.b.a.contains(arrayOfBoolean, Boolean.TRUE))) {
-        break;
-      }
-      AppMethodBeat.o(50133);
-      return true;
+      paramString = paramString.iterator();
+      AppMethodBeat.o(140568);
+      return paramString;
     }
-    AppMethodBeat.o(50133);
+    paramString = jyV;
+    AppMethodBeat.o(140568);
+    return paramString;
+  }
+  
+  public static void KM(String paramString)
+  {
+    AppMethodBeat.i(140569);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140569);
+      return;
+    }
+    paramString = KL(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).onCreate();
+    }
+    AppMethodBeat.o(140569);
+  }
+  
+  public static void KN(String paramString)
+  {
+    AppMethodBeat.i(140570);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140570);
+      return;
+    }
+    paramString = KL(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).onDestroy();
+    }
+    AppMethodBeat.o(140570);
+  }
+  
+  public static void KO(String paramString)
+  {
+    AppMethodBeat.i(201173);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(201173);
+      return;
+    }
+    paramString = KL(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).aWf();
+    }
+    AppMethodBeat.o(201173);
+  }
+  
+  public static void KP(String paramString)
+  {
+    AppMethodBeat.i(140571);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140571);
+      return;
+    }
+    Iterator localIterator = KL(paramString);
+    while (localIterator.hasNext()) {
+      ((c)localIterator.next()).a(KU(paramString));
+    }
+    AppMethodBeat.o(140571);
+  }
+  
+  public static void KQ(String paramString)
+  {
+    AppMethodBeat.i(140572);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140572);
+      return;
+    }
+    paramString = KL(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).onResume();
+    }
+    AppMethodBeat.o(140572);
+  }
+  
+  public static void KR(String paramString)
+  {
+    AppMethodBeat.i(140573);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140573);
+      return;
+    }
+    paramString = KL(paramString);
+    while (paramString.hasNext()) {
+      paramString.next();
+    }
+    AppMethodBeat.o(140573);
+  }
+  
+  public static void KS(String paramString)
+  {
+    AppMethodBeat.i(140576);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140576);
+      return;
+    }
+    jyY.cG(paramString);
+    jyZ.cG(paramString);
+    AppMethodBeat.o(140576);
+  }
+  
+  public static void KT(String paramString)
+  {
+    AppMethodBeat.i(140577);
+    a(paramString, h.d.jzj);
+    AppMethodBeat.o(140577);
+  }
+  
+  public static h.d KU(String paramString)
+  {
+    AppMethodBeat.i(140578);
+    paramString = (h.d)jyX.get(paramString);
+    if (paramString == null)
+    {
+      paramString = h.d.jzj;
+      AppMethodBeat.o(140578);
+      return paramString;
+    }
+    AppMethodBeat.o(140578);
+    return paramString;
+  }
+  
+  public static b KV(String paramString)
+  {
+    AppMethodBeat.i(140581);
+    b localb = (b)jyW.get(paramString);
+    paramString = localb;
+    if (localb == null) {
+      paramString = b.jza;
+    }
+    AppMethodBeat.o(140581);
+    return paramString;
+  }
+  
+  public static void a(String paramString, h.a parama)
+  {
+    AppMethodBeat.i(182832);
+    jyZ.j(paramString, parama);
+    AppMethodBeat.o(182832);
+  }
+  
+  public static void a(String paramString, b paramb)
+  {
+    AppMethodBeat.i(140580);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140580);
+      return;
+    }
+    jyW.put(paramString, paramb);
+    AppMethodBeat.o(140580);
+  }
+  
+  public static void a(String paramString, c paramc)
+  {
+    AppMethodBeat.i(140567);
+    if ((TextUtils.isEmpty(paramString)) || (paramc == null))
+    {
+      AppMethodBeat.o(140567);
+      return;
+    }
+    jyY.j(paramString, paramc);
+    AppMethodBeat.o(140567);
+  }
+  
+  public static void a(String paramString, h.d paramd)
+  {
+    AppMethodBeat.i(140579);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140579);
+      return;
+    }
+    jyX.put(paramString, paramd);
+    AppMethodBeat.o(140579);
+  }
+  
+  public static void b(String paramString, h.a parama)
+  {
+    AppMethodBeat.i(182833);
+    jyZ.D(paramString, parama);
+    AppMethodBeat.o(182833);
+  }
+  
+  public static void b(String paramString, c paramc)
+  {
+    AppMethodBeat.i(140574);
+    if ((paramc == null) || (TextUtils.isEmpty(paramString)))
+    {
+      AppMethodBeat.o(140574);
+      return;
+    }
+    jyY.D(paramString, paramc);
+    AppMethodBeat.o(140574);
+  }
+  
+  public static boolean b(String paramString, Intent paramIntent)
+  {
+    AppMethodBeat.i(182834);
+    paramString = jyZ.cF(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        if (((h.a)paramString.next()).onNewIntent(paramIntent))
+        {
+          AppMethodBeat.o(182834);
+          return true;
+        }
+      }
+    }
+    AppMethodBeat.o(182834);
     return false;
   }
   
-  public static final boolean aVH()
+  public static enum b
   {
-    AppMethodBeat.i(50135);
-    boolean bool = ax.aQz("MicroMsg.AppBrandPersistentRuntimeConfig").getBoolean("KEY_XWEB_INSTALLED", false);
-    AppMethodBeat.o(50135);
-    return bool;
-  }
-  
-  public static final void i(Application paramApplication)
-  {
-    AppMethodBeat.i(50134);
-    p.h(paramApplication, "app");
-    a locala = a.jww;
-    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new b());
-    new c().alive();
-    AppMethodBeat.o(50134);
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"checkSaveXWebInstallState", "", "invoke"})
-  static final class a
-    extends q
-    implements d.g.a.a<z>
-  {
-    public static final a jww;
-    
     static
     {
-      AppMethodBeat.i(50130);
-      jww = new a();
-      AppMethodBeat.o(50130);
+      AppMethodBeat.i(140563);
+      jza = new b("INIT", 0);
+      jzb = new b("ON_CREATE", 1);
+      jzc = new b("ON_RESUME", 2);
+      jzd = new b("ON_PAUSE", 3);
+      jze = new b("ON_STOP", 4);
+      jzf = new b("ON_DESTROY", 5);
+      jzg = new b[] { jza, jzb, jzc, jzd, jze, jzf };
+      AppMethodBeat.o(140563);
     }
     
-    a()
-    {
-      super();
-    }
-    
-    public static void invoke()
-    {
-      AppMethodBeat.i(50129);
-      if (WebView.isXWalk()) {
-        ax.aQz("MicroMsg.AppBrandPersistentRuntimeConfig").putBoolean("KEY_XWEB_INSTALLED", XWalkCoreWrapper.getInstance().hasFeature(2003)).commit();
-      }
-      AppMethodBeat.o(50129);
-    }
+    private b() {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$2", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "onActivityStarted", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
-  public static final class b
-    extends com.tencent.mm.plugin.appbrand.z.a
+  public static abstract class c
   {
-    public final void onActivityStarted(Activity paramActivity)
-    {
-      AppMethodBeat.i(50131);
-      if ((paramActivity instanceof AppBrandUI))
-      {
-        paramActivity = h.a.jww;
-        h.a.invoke();
-      }
-      AppMethodBeat.o(50131);
-    }
+    public void a(h.d paramd) {}
+    
+    public void aWf() {}
+    
+    public void onCreate() {}
+    
+    public void onDestroy() {}
+    
+    public void onResume() {}
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$3", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/XWebViewInitCompleteEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class c
-    extends c<zt>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h
  * JD-Core Version:    0.7.0.1
  */

@@ -9,38 +9,38 @@ import java.util.Arrays;
 public final class a$o
   extends e
 {
-  private static volatile o[] LGv;
-  public int LGw = 0;
-  public int LGx = 0;
-  public byte[] dxo = g.bQV;
+  private static volatile o[] Mdz;
+  public int MdA = 0;
+  public int MdB = 0;
+  public byte[] dyt = g.bQV;
   
   public a$o()
   {
     this.bQO = -1;
   }
   
-  public static o[] fSX()
+  public static o[] fXx()
   {
-    if (LGv == null) {}
+    if (Mdz == null) {}
     synchronized (c.bQN)
     {
-      if (LGv == null) {
-        LGv = new o[0];
+      if (Mdz == null) {
+        Mdz = new o[0];
       }
-      return LGv;
+      return Mdz;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.LGw != 0) {
-      paramb.bx(1, this.LGw);
+    if (this.MdA != 0) {
+      paramb.bx(1, this.MdA);
     }
-    if (!Arrays.equals(this.dxo, g.bQV)) {
-      paramb.b(2, this.dxo);
+    if (!Arrays.equals(this.dyt, g.bQV)) {
+      paramb.b(2, this.dyt);
     }
-    if (this.LGx != 0) {
-      paramb.by(3, this.LGx);
+    if (this.MdB != 0) {
+      paramb.by(3, this.MdB);
     }
     super.a(paramb);
   }
@@ -49,16 +49,16 @@ public final class a$o
   {
     int j = super.zq();
     int i = j;
-    if (this.LGw != 0) {
-      i = j + b.bz(1, this.LGw);
+    if (this.MdA != 0) {
+      i = j + b.bz(1, this.MdA);
     }
     j = i;
-    if (!Arrays.equals(this.dxo, g.bQV)) {
-      j = i + b.c(2, this.dxo);
+    if (!Arrays.equals(this.dyt, g.bQV)) {
+      j = i + b.c(2, this.dyt);
     }
     i = j;
-    if (this.LGx != 0) {
-      i = j + b.bA(3, this.LGx);
+    if (this.MdB != 0) {
+      i = j + b.bA(3, this.MdB);
     }
     return i;
   }

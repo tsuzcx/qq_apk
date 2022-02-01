@@ -8,19 +8,19 @@ import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.sandbox.updater.l.a;
 import com.tencent.mm.sdk.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class SandBoxProfile
   extends com.tencent.mm.compatible.loader.d
 {
-  public static final String cTJ;
+  public static final String cUu;
   
   static
   {
     AppMethodBeat.i(19474);
-    cTJ = aj.getPackageName() + ":sandbox";
+    cUu = ak.getPackageName() + ":sandbox";
     AppMethodBeat.o(19474);
   }
   
@@ -29,22 +29,22 @@ public final class SandBoxProfile
   public final void onCreate()
   {
     AppMethodBeat.i(19473);
-    Object localObject1 = com.tencent.mm.booter.d.bJ(aj.getContext());
+    Object localObject1 = com.tencent.mm.booter.d.bL(ak.getContext());
     SandBoxProfile.class.getClassLoader();
-    j.vr("MMProtocalJni");
+    j.vN("MMProtocalJni");
     SandBoxProfile.class.getClassLoader();
-    j.vr("wechatbase");
-    Object localObject2 = a.IbC;
+    j.vN("wechatbase");
+    Object localObject2 = a.IvK;
     SandBoxProfile.class.getClassLoader();
-    j.vr((String)localObject2);
+    j.vN((String)localObject2);
     SandBoxProfile.class.getClassLoader();
-    j.vr("wechatmm");
+    j.vN("wechatmm");
     localObject2 = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(19472);
-        MMProtocalJni.setClientPackVersion(com.tencent.mm.protocal.d.Fnj);
+        MMProtocalJni.setClientPackVersion(com.tencent.mm.protocal.d.FFH);
         AppMethodBeat.o(19472);
       }
     };
@@ -57,12 +57,12 @@ public final class SandBoxProfile
     {
       try
       {
-        ((u)localObject1).uc("SANDBOX");
-        ac.iOC = bt.a(((u)localObject1).ud(".com.tencent.mm.debug.test.network.simulate_down_fault"), false);
-        ad.i("MicroMsg.SandboxDebugger", "Test.simulateDownFault = " + ac.iOC);
+        ((u)localObject1).ux("SANDBOX");
+        ac.iRw = bu.a(((u)localObject1).uy(".com.tencent.mm.debug.test.network.simulate_down_fault"), false);
+        ae.i("MicroMsg.SandboxDebugger", "Test.simulateDownFault = " + ac.iRw);
         label126:
-        localObject1 = l.a.HYA;
-        ab.MA();
+        localObject1 = l.a.IsH;
+        ab.Mv();
         AppMethodBeat.o(19473);
         return;
         localThrowable = localThrowable;
@@ -77,7 +77,7 @@ public final class SandBoxProfile
   
   public final String toString()
   {
-    return cTJ;
+    return cUu;
   }
 }
 

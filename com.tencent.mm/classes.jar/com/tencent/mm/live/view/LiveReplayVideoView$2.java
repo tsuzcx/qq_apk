@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class LiveReplayVideoView$2
   implements View.OnClickListener
 {
@@ -15,13 +15,13 @@ final class LiveReplayVideoView$2
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(212971);
+    AppMethodBeat.i(216601);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/live/view/LiveReplayVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    LiveReplayVideoView.f(this.hbu);
+    a.b("com/tencent/mm/live/view/LiveReplayVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    LiveReplayVideoView.f(this.hei);
     a.a(this, "com/tencent/mm/live/view/LiveReplayVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(212971);
+    AppMethodBeat.o(216601);
   }
 }
 

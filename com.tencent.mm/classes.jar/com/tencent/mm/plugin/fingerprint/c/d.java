@@ -6,7 +6,7 @@ import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
 import com.tencent.mm.plugin.fingerprint.d.a;
 import com.tencent.mm.plugin.soter.d.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +20,9 @@ public final class d
   {
     AppMethodBeat.i(64469);
     HashMap localHashMap = new HashMap();
-    Object localObject = com.tencent.mm.plugin.soter.d.d.efE();
-    String str = ((e)localObject).AFy;
-    localObject = ((e)localObject).AFz;
+    Object localObject = com.tencent.mm.plugin.soter.d.d.ejm();
+    String str = ((e)localObject).AXb;
+    localObject = ((e)localObject).AXc;
     localHashMap.put("cpu_id", str);
     localHashMap.put("uid", localObject);
     localHashMap.put("soter_type", String.valueOf(paramInt));
@@ -50,21 +50,21 @@ public final class d
     AppMethodBeat.i(64471);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
     paramString = (a)com.tencent.mm.kernel.g.ab(a.class);
-    if (paramString.cPo()) {
-      com.tencent.mm.plugin.report.service.g.yhR.f(13686, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (paramString.cRT()) {
+      com.tencent.mm.plugin.report.service.g.yxI.f(13686, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
     while ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramString.my(false);
-      paramString.mz(false);
-      ad.e("MicroMsg.NetSceneTenpayCloseTouchPay", "hy: do close fingerprint cgi success!");
+      paramString.mC(false);
+      paramString.mD(false);
+      ae.e("MicroMsg.NetSceneTenpayCloseTouchPay", "hy: do close fingerprint cgi success!");
       AppMethodBeat.o(64471);
       return;
-      if (paramString.cPr()) {
-        com.tencent.mm.plugin.report.service.g.yhR.f(16994, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      if (paramString.cRW()) {
+        com.tencent.mm.plugin.report.service.g.yxI.f(16994, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       }
     }
-    ad.e("MicroMsg.NetSceneTenpayCloseTouchPay", "hy: do close fingerprint cgi failed!");
+    ae.e("MicroMsg.NetSceneTenpayCloseTouchPay", "hy: do close fingerprint cgi failed!");
     AppMethodBeat.o(64471);
   }
   
@@ -79,10 +79,10 @@ public final class d
     label64:
     for (paramInt = paramJSONObject.optInt("clear_rsa_key_level", 0);; paramInt = 0)
     {
-      ((i)com.tencent.mm.kernel.g.ab(i.class)).r(new Object[] { Integer.valueOf(paramInt) });
+      ((i)com.tencent.mm.kernel.g.ab(i.class)).q(new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(64470);
       return;
-      ad.e("MicroMsg.NetSceneTenpayCloseTouchPay", "do close fingerprint cgi failed!");
+      ae.e("MicroMsg.NetSceneTenpayCloseTouchPay", "do close fingerprint cgi failed!");
       AppMethodBeat.o(64470);
       return;
     }
@@ -90,7 +90,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.d
  * JD-Core Version:    0.7.0.1
  */

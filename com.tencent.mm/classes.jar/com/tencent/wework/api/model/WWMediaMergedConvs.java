@@ -9,12 +9,12 @@ import java.util.List;
 public class WWMediaMergedConvs
   extends WWMediaMessage.WWMediaObject
 {
-  public List<WWMediaConversation> Mow;
+  public List<WWMediaConversation> MLs;
   
   public WWMediaMergedConvs()
   {
     AppMethodBeat.i(106546);
-    this.Mow = new ArrayList();
+    this.MLs = new ArrayList();
     AppMethodBeat.o(106546);
   }
   
@@ -23,7 +23,7 @@ public class WWMediaMergedConvs
     AppMethodBeat.i(106547);
     if (paramWWMediaConversation.checkArgs())
     {
-      this.Mow.add(paramWWMediaConversation);
+      this.MLs.add(paramWWMediaConversation);
       AppMethodBeat.o(106547);
       return true;
     }
@@ -39,12 +39,12 @@ public class WWMediaMergedConvs
       AppMethodBeat.o(106548);
       return false;
     }
-    if ((this.Mow == null) || (this.Mow.size() == 0))
+    if ((this.MLs == null) || (this.MLs.size() == 0))
     {
       AppMethodBeat.o(106548);
       return false;
     }
-    Iterator localIterator = this.Mow.iterator();
+    Iterator localIterator = this.MLs.iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -60,14 +60,14 @@ public class WWMediaMergedConvs
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(190360);
+    AppMethodBeat.i(193332);
     int j = paramBundle.getInt("_wwmergedconvobject_messageslen");
     int i = 0;
     if (i < j)
     {
-      BaseMessage localBaseMessage = BaseMessage.bn(paramBundle.getBundle("_wwmergedconvobject_messages".concat(String.valueOf(i))));
+      BaseMessage localBaseMessage = BaseMessage.bo(paramBundle.getBundle("_wwmergedconvobject_messages".concat(String.valueOf(i))));
       if ((localBaseMessage != null) && ((localBaseMessage instanceof WWMediaConversation))) {
-        this.Mow.add((WWMediaConversation)localBaseMessage);
+        this.MLs.add((WWMediaConversation)localBaseMessage);
       }
       for (;;)
       {
@@ -82,17 +82,17 @@ public class WWMediaMergedConvs
       }
     }
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(190360);
+    AppMethodBeat.o(193332);
   }
   
   public final void toBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(106549);
-    paramBundle.putInt("_wwmergedconvobject_messageslen", this.Mow.size());
+    paramBundle.putInt("_wwmergedconvobject_messageslen", this.MLs.size());
     int i = 0;
-    while (i < this.Mow.size())
+    while (i < this.MLs.size())
     {
-      paramBundle.putBundle("_wwmergedconvobject_messages".concat(String.valueOf(i)), BaseMessage.b((BaseMessage)this.Mow.get(i)));
+      paramBundle.putBundle("_wwmergedconvobject_messages".concat(String.valueOf(i)), BaseMessage.b((BaseMessage)this.MLs.get(i)));
       i += 1;
     }
     super.toBundle(paramBundle);

@@ -7,7 +7,7 @@ public class t
   
   public t()
   {
-    this.ptS = "-1";
+    this.pAw = "-1";
     this.type = 1;
   }
 }

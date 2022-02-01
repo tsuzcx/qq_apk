@@ -17,7 +17,7 @@ public final class a
     //   5: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokestatic 17	com/tencent/tbs/a/a/a:mM	(Ljava/lang/String;Ljava/lang/String;)[B
+    //   10: invokestatic 17	com/tencent/tbs/a/a/a:mS	(Ljava/lang/String;Ljava/lang/String;)[B
     //   13: astore 5
     //   15: aload 5
     //   17: ifnull +77 -> 94
@@ -101,7 +101,7 @@ public final class a
     //   94	104	107	finally
   }
   
-  private static byte[] mM(String paramString1, String paramString2)
+  private static byte[] mS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174274);
     try
@@ -120,7 +120,7 @@ public final class a
     return null;
   }
   
-  private static byte[] mN(String paramString1, String paramString2)
+  private static byte[] mT(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174275);
     try
@@ -139,12 +139,12 @@ public final class a
     return null;
   }
   
-  public static byte[] mO(String paramString1, String paramString2)
+  public static byte[] mU(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174276);
     try
     {
-      paramString1 = mN(paramString1, paramString2);
+      paramString1 = mT(paramString1, paramString2);
       if (paramString1 == null)
       {
         AppMethodBeat.o(174276);

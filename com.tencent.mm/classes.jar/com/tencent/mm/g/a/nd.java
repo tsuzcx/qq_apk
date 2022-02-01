@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bu;
 
 public final class nd
   extends b
 {
-  public a dBc;
+  public a dCg;
   
   public nd()
   {
@@ -16,16 +15,16 @@ public final class nd
   
   private nd(byte paramByte)
   {
-    AppMethodBeat.i(185944);
-    this.dBc = new a();
-    this.IbR = false;
+    AppMethodBeat.i(181500);
+    this.dCg = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(185944);
+    AppMethodBeat.o(181500);
   }
   
   public static final class a
   {
-    public bu dBd;
+    public String dwx;
   }
 }
 

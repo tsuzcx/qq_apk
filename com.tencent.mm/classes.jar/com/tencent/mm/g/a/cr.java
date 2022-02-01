@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cr
   extends b
 {
-  public a dnD;
+  public a doF;
+  public b doG;
   
   public cr()
   {
@@ -15,18 +16,22 @@ public final class cr
   
   private cr(byte paramByte)
   {
-    AppMethodBeat.i(42652);
-    this.dnD = new a();
-    this.IbR = false;
+    AppMethodBeat.i(127401);
+    this.doF = new a();
+    this.doG = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(42652);
+    AppMethodBeat.o(127401);
   }
   
   public static final class a
   {
-    public long msgId;
-    public int msgType;
-    public String talker;
+    public long doH = 0L;
+  }
+  
+  public static final class b
+  {
+    public boolean doq = false;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.remittance.mobile.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bry;
-import com.tencent.mm.protocal.protobuf.dpk;
-import com.tencent.mm.protocal.protobuf.dpl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bss;
+import com.tencent.mm.protocal.protobuf.dqh;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.l;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,46 +20,46 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public dpl xUZ;
+  public dqi ykS;
   
   public d()
   {
     AppMethodBeat.i(67630);
     b.a locala = new b.a();
-    locala.hNM = new dpk();
-    locala.hNN = new dpl();
+    locala.hQF = new dqh();
+    locala.hQG = new dqi();
     locala.funcId = 2952;
     locala.uri = "/cgi-bin/mmpay-bin/transferphonehomepage";
-    this.rr = locala.aDC();
-    ad.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "do scene NetSceneMobileRemitGetHomePage");
+    this.rr = locala.aDS();
+    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "do scene NetSceneMobileRemitGetHomePage");
     AppMethodBeat.o(67630);
   }
   
-  public static String a(dpl paramdpl)
+  public static String a(dqi paramdqi)
   {
     AppMethodBeat.i(67632);
-    if (paramdpl == null)
+    if (paramdqi == null)
     {
       AppMethodBeat.o(67632);
       return "TransferPhoneHomePageResp{null}";
     }
-    paramdpl = "TransferPhoneHomePageResp{ret_code=" + paramdpl.ozR + ", ret_msg='" + paramdpl.ozS + '\'' + ", title='" + paramdpl.title + '\'' + ", subtitle='" + paramdpl.subtitle + '\'' + ", has_his_rcvr=" + paramdpl.HDx + ", menu=" + l.bs(paramdpl.HDy) + ", announcement=" + l.a(paramdpl.HDz) + ", homepage_ext='" + paramdpl.HDq + '\'' + '}';
+    paramdqi = "TransferPhoneHomePageResp{ret_code=" + paramdqi.oGt + ", ret_msg='" + paramdqi.oGu + '\'' + ", title='" + paramdqi.title + '\'' + ", subtitle='" + paramdqi.subtitle + '\'' + ", has_his_rcvr=" + paramdqi.HXk + ", menu=" + l.bt(paramdqi.HXl) + ", announcement=" + l.a(paramdqi.HXm) + ", homepage_ext='" + paramdqi.HXd + '\'' + '}';
     AppMethodBeat.o(67632);
-    return paramdpl;
+    return paramdqi;
   }
   
-  public static dpl awk(String paramString)
+  public static dqi axz(String paramString)
   {
     AppMethodBeat.i(67634);
-    dpl localdpl = new dpl();
+    dqi localdqi = new dqi();
     try
     {
       paramString = new JSONObject(paramString);
-      localdpl.ozR = paramString.optInt("ret_code");
-      localdpl.ozS = paramString.optString("ret_msg");
-      localdpl.title = paramString.optString("title");
-      localdpl.subtitle = paramString.optString("subtitle");
-      localdpl.HDx = paramString.optInt("has_his_rcvr");
+      localdqi.oGt = paramString.optInt("ret_code");
+      localdqi.oGu = paramString.optString("ret_msg");
+      localdqi.title = paramString.optString("title");
+      localdqi.subtitle = paramString.optString("subtitle");
+      localdqi.HXk = paramString.optInt("has_his_rcvr");
       JSONArray localJSONArray = paramString.optJSONArray("menu");
       if (localJSONArray != null)
       {
@@ -67,63 +67,63 @@ public final class d
         int i = 0;
         while (i < j)
         {
-          localdpl.HDy.add(l.bI(localJSONArray.getJSONObject(i)));
+          localdqi.HXl.add(l.bI(localJSONArray.getJSONObject(i)));
           i += 1;
         }
       }
-      localdpl.HDz = l.aYB(paramString.optString("announcement"));
-      localdpl.HDq = paramString.optString("homepage_ext");
+      localdqi.HXm = l.bae(paramString.optString("announcement"));
+      localdqi.HXd = paramString.optString("homepage_ext");
       AppMethodBeat.o(67634);
-      return localdpl;
+      return localdqi;
     }
     catch (JSONException paramString)
     {
-      ad.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "createFromJson() Exception:%s", new Object[] { paramString.getMessage() });
+      ae.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "createFromJson() Exception:%s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(67634);
     }
     return null;
   }
   
-  public static String b(dpl paramdpl)
+  public static String b(dqi paramdqi)
   {
     AppMethodBeat.i(67633);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("ret_code", paramdpl.ozR);
-      localJSONObject.put("ret_msg", paramdpl.ozS);
-      localJSONObject.put("title", paramdpl.title);
-      localJSONObject.put("subtitle", paramdpl.subtitle);
-      localJSONObject.put("has_his_rcvr", paramdpl.HDx);
-      if (paramdpl.HDy != null)
+      localJSONObject.put("ret_code", paramdqi.oGt);
+      localJSONObject.put("ret_msg", paramdqi.oGu);
+      localJSONObject.put("title", paramdqi.title);
+      localJSONObject.put("subtitle", paramdqi.subtitle);
+      localJSONObject.put("has_his_rcvr", paramdqi.HXk);
+      if (paramdqi.HXl != null)
       {
         JSONArray localJSONArray = new JSONArray();
-        Iterator localIterator = paramdpl.HDy.iterator();
+        Iterator localIterator = paramdqi.HXl.iterator();
         while (localIterator.hasNext()) {
-          localJSONArray.put(l.b((bry)localIterator.next()));
+          localJSONArray.put(l.b((bss)localIterator.next()));
         }
         localJSONObject.put("menu", localJSONArray);
       }
     }
-    catch (JSONException paramdpl)
+    catch (JSONException paramdqi)
     {
-      ad.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "getJsonStrFromHomePageInfo() Exception: %s", new Object[] { paramdpl.getMessage() });
+      ae.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "getJsonStrFromHomePageInfo() Exception: %s", new Object[] { paramdqi.getMessage() });
       AppMethodBeat.o(67633);
       return "";
     }
-    localJSONObject.put("announcement", paramdpl.HDz);
-    localJSONObject.put("homepage_ext", paramdpl.HDq);
-    paramdpl = localJSONObject.toString();
+    localJSONObject.put("announcement", paramdqi.HXm);
+    localJSONObject.put("homepage_ext", paramdqi.HXd);
+    paramdqi = localJSONObject.toString();
     AppMethodBeat.o(67633);
-    return paramdpl;
+    return paramdqi;
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67631);
-    ad.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.xUZ = ((dpl)((b)paramq).hNL.hNQ);
-    ad.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.xUZ.ozR), this.xUZ.ozS });
+    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.ykS = ((dqi)((b)paramq).hQE.hQJ);
+    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.ykS.oGt), this.ykS.oGu });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -132,9 +132,9 @@ public final class d
   
   public final void e(q paramq)
   {
-    paramq = (dpl)((b)paramq).hNL.hNQ;
-    this.Lyu = paramq.ozR;
-    this.Lyv = paramq.ozS;
+    paramq = (dqi)((b)paramq).hQE.hQJ;
+    this.LVj = paramq.oGt;
+    this.LVk = paramq.oGu;
   }
   
   public final int getType()

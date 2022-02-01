@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.bct;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bdi;
+import com.tencent.mm.protocal.protobuf.bdj;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends n
@@ -24,17 +24,17 @@ public final class c
   {
     AppMethodBeat.i(97137);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bcs();
-    ((b.a)localObject).hNN = new bct();
+    ((b.a)localObject).hQF = new bdi();
+    ((b.a)localObject).hQG = new bdj();
     ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/get_landpage_smartphone";
     ((b.a)localObject).funcId = 2605;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bcs)this.rr.hNK.hNQ;
-    ((bcs)localObject).zyP = paramLong;
-    ((bcs)localObject).Gzk = paramInt1;
-    ((bcs)localObject).GxL = paramString1;
-    ((bcs)localObject).yXS = paramString2;
-    ((bcs)localObject).zyN = paramInt2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bdi)this.rr.hQD.hQJ;
+    ((bdi)localObject).zQo = paramLong;
+    ((bdi)localObject).GSK = paramInt1;
+    ((bdi)localObject).GRl = paramString1;
+    ((bdi)localObject).zot = paramString2;
+    ((bdi)localObject).zQm = paramInt2;
     AppMethodBeat.o(97137);
   }
   
@@ -58,7 +58,7 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97138);
-    ad.i("NetSceneAdGetSmartPhoneNumber", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
+    ae.i("NetSceneAdGetSmartPhoneNumber", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

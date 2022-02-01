@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.protocal.protobuf.dxw;
-import com.tencent.mm.protocal.protobuf.dxx;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.protocal.protobuf.dzn;
+import com.tencent.mm.protocal.protobuf.dzo;
 
 public final class f
-  extends n<dxw, dxx>
+  extends n<dzn, dzo>
 {
   String TAG;
   
@@ -17,22 +17,22 @@ public final class f
     AppMethodBeat.i(115234);
     this.TAG = "MicroMsg.NetSceneVoipHeartBeat";
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dxw();
-    ((b.a)localObject).hNN = new dxx();
+    ((b.a)localObject).hQF = new dzn();
+    ((b.a)localObject).hQG = new dzo();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipheartbeat";
     ((b.a)localObject).funcId = 178;
-    ((b.a)localObject).hNO = 81;
+    ((b.a)localObject).hQH = 81;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dxw)this.rr.hNK.hNQ;
-    ((dxw)localObject).GeI = paramInt1;
-    ((dxw)localObject).GeJ = paramLong;
-    ((dxw)localObject).HJh = System.currentTimeMillis();
-    ((dxw)localObject).HKo = paramInt2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dzn)this.rr.hQD.hQJ;
+    ((dzn)localObject).Gxq = paramInt1;
+    ((dzn)localObject).Gxr = paramLong;
+    ((dzn)localObject).Idp = System.currentTimeMillis();
+    ((dzn)localObject).Iew = paramInt2;
     AppMethodBeat.o(115234);
   }
   
-  public final com.tencent.mm.al.f eyd()
+  public final com.tencent.mm.ak.f eBL()
   {
     AppMethodBeat.i(115235);
     f.1 local1 = new f.1(this);

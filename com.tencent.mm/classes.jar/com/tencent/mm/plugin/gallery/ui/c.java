@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -21,16 +19,16 @@ public final class c
   extends RecyclerView.h
 {
   private Drawable amC;
-  private boolean tNr;
-  private int tNs;
-  private int tNt;
+  private boolean tYi;
+  private int tYj;
+  private int tYk;
   
   private c(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(111507);
-    this.tNs = paramInt1;
-    this.tNr = paramBoolean;
-    this.tNt = paramInt2;
+    this.tYj = paramInt1;
+    this.tYi = paramBoolean;
+    this.tYk = paramInt2;
     this.amC = new ColorDrawable(paramInt3);
     AppMethodBeat.o(111507);
   }
@@ -110,11 +108,11 @@ public final class c
       return;
     }
     int m = i1 % i;
-    int j = this.tNt * m / i;
-    int k = this.tNt;
-    m = (m + 1) * this.tNt / i;
-    if ((c(paramRecyclerView, i1, i, n)) && (!this.tNr)) {}
-    for (i = 0;; i = this.tNs)
+    int j = this.tYk * m / i;
+    int k = this.tYk;
+    m = (m + 1) * this.tYk / i;
+    if ((c(paramRecyclerView, i1, i, n)) && (!this.tYi)) {}
+    for (i = 0;; i = this.tYj)
     {
       paramRect.set(j, 0, k - m, i);
       AppMethodBeat.o(111509);
@@ -137,7 +135,7 @@ public final class c
     while (i < k)
     {
       paramt = paramRecyclerView.getChildAt(i);
-      if ((!c(paramRecyclerView, i, z(paramRecyclerView), k)) || (this.tNr))
+      if ((!c(paramRecyclerView, i, z(paramRecyclerView), k)) || (this.tYi))
       {
         localLayoutParams = (RecyclerView.LayoutParams)paramt.getLayoutParams();
         m = paramt.getLeft();
@@ -146,7 +144,7 @@ public final class c
         i2 = localLayoutParams.rightMargin;
         i3 = paramt.getBottom();
         i3 = localLayoutParams.bottomMargin + i3;
-        i4 = this.tNs;
+        i4 = this.tYj;
         this.amC.setBounds(m - n, i3, i1 + i2, i4 + i3);
         this.amC.draw(paramCanvas);
       }
@@ -164,12 +162,12 @@ public final class c
         i1 = localLayoutParams.topMargin;
         i2 = paramt.getBottom();
         i3 = localLayoutParams.bottomMargin;
-        i4 = this.tNs;
+        i4 = this.tYj;
         int i5 = paramt.getRight() + localLayoutParams.rightMargin;
-        k = this.tNt + i5;
+        k = this.tYk + i5;
         j = k;
         if (i == m - 1) {
-          j = k - this.tNt;
+          j = k - this.tYk;
         }
         this.amC.setBounds(i5, n - i1, j, i2 + i3 + i4);
         this.amC.draw(paramCanvas);
@@ -177,28 +175,6 @@ public final class c
       i += 1;
     }
     AppMethodBeat.o(164809);
-  }
-  
-  public static final class a
-  {
-    int mColor;
-    Context mContext;
-    Resources mResources;
-    boolean tNr;
-    int tNs;
-    int tNt;
-    
-    public a(Context paramContext)
-    {
-      AppMethodBeat.i(111506);
-      this.mContext = paramContext;
-      this.mResources = paramContext.getResources();
-      this.tNr = true;
-      this.tNs = 0;
-      this.tNt = 0;
-      this.mColor = -1;
-      AppMethodBeat.o(111506);
-    }
   }
 }
 

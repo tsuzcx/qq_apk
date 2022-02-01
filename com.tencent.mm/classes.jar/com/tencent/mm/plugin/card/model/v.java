@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.card.d.u;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.protocal.protobuf.tm;
 import com.tencent.mm.protocal.protobuf.tn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.to;
+import com.tencent.mm.protocal.protobuf.tp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 
 public final class v
@@ -24,37 +24,37 @@ public final class v
   implements k
 {
   private f callback;
-  public String ozX;
-  public ArrayList<tl> ozY;
+  public ArrayList<tn> oGA;
+  public String oGz;
   private final b rr;
   
   public v(String paramString1, float paramFloat1, float paramFloat2, String paramString2)
   {
     AppMethodBeat.i(112821);
-    this.ozX = paramString1;
+    this.oGz = paramString1;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new tm();
-    ((b.a)localObject).hNN = new tn();
+    ((b.a)localObject).hQF = new to();
+    ((b.a)localObject).hQG = new tp();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/cardshoplbs";
     ((b.a)localObject).funcId = 1058;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (tm)this.rr.hNK.hNQ;
-    ((tm)localObject).oxM = paramString1;
-    ((tm)localObject).dAp = paramFloat1;
-    ((tm)localObject).dyz = paramFloat2;
-    ((tm)localObject).dHX = paramString2;
-    ad.d("MicroMsg.NetSceneCardShopLBS", "<init>, cardId = %s, longtitude = %f, latitude = %f, card_id = %s", new Object[] { paramString1, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), paramString2 });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (to)this.rr.hQD.hQJ;
+    ((to)localObject).oEo = paramString1;
+    ((to)localObject).dBu = paramFloat1;
+    ((to)localObject).dzE = paramFloat2;
+    ((to)localObject).dJb = paramString2;
+    ae.d("MicroMsg.NetSceneCardShopLBS", "<init>, cardId = %s, longtitude = %f, latitude = %f, card_id = %s", new Object[] { paramString1, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), paramString2 });
     AppMethodBeat.o(112821);
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(112822);
-    if (bt.isNullOrNil(((tm)this.rr.hNK.hNQ).oxM))
+    if (bu.isNullOrNil(((to)this.rr.hQD.hQJ).oEo))
     {
-      ad.e("MicroMsg.NetSceneCardShopLBS", "doScene fail, cardId is null");
+      ae.e("MicroMsg.NetSceneCardShopLBS", "doScene fail, cardId is null");
       AppMethodBeat.o(112822);
       return -1;
     }
@@ -72,16 +72,16 @@ public final class v
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112823);
-    ad.i("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = ((tn)this.rr.hNL.hNQ).ozQ;
+      paramq = ((tp)this.rr.hQE.hQJ).oGs;
       if (TextUtils.isEmpty(paramq)) {
-        ad.e("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd fail, json_ret is empty");
+        ae.e("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd fail, json_ret is empty");
       }
-      this.ozY = u.Zt(paramq);
-      if (this.ozY != null) {
-        ad.d("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, respList size = %d", new Object[] { Integer.valueOf(this.ozY.size()) });
+      this.oGA = u.aak(paramq);
+      if (this.oGA != null) {
+        ae.d("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, respList size = %d", new Object[] { Integer.valueOf(this.oGA.size()) });
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -2,48 +2,46 @@ package com.tencent.mm.plugin.audio.b;
 
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bc;
+import com.tencent.mm.sdk.platformtools.bd;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/mgr/BaseIPCallAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "()V", "shiftSpeaker", "", "beSpeakerphoneOn", "ignoreBluetooth", "StreamType", "", "Companion", "plugin-audio_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/mgr/BaseIPCallAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "()V", "shiftSpeaker", "", "beSpeakerphoneOn", "ignoreBluetooth", "StreamType", "", "Companion", "plugin-audio_release"})
 public class b
   extends a
 {
-  public static final b.a nrL;
+  public static final b.a nxe;
   
   static
   {
-    AppMethodBeat.i(199746);
-    nrL = new b.a((byte)0);
-    AppMethodBeat.o(199746);
+    AppMethodBeat.i(201058);
+    nxe = new b.a((byte)0);
+    AppMethodBeat.o(201058);
   }
   
-  public final boolean iq(boolean paramBoolean)
+  public final boolean io(boolean paramBoolean)
   {
     int i = 3;
-    AppMethodBeat.i(199745);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-    boolean bool = a.a.bGC().isSpeakerphoneOn();
-    localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-    ad.d("MicroMsg.IPCallAudioManager", "IPCall dkbt shiftSpeaker:%b -> %b  %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), a.a.bGC().bGB() });
-    if (bc.PD())
+    AppMethodBeat.i(201057);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+    boolean bool = a.a.bHy().isSpeakerphoneOn();
+    localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.IPCallAudioManager", "IPCall dkbt shiftSpeaker:%b -> %b  %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), a.a.bHy().bHx() });
+    if (bd.PC())
     {
-      ad.v("MicroMsg.IPCallAudioManager", "shiftSpeaker return when calling");
-      AppMethodBeat.o(199745);
+      com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.IPCallAudioManager", "shiftSpeaker return when calling");
+      AppMethodBeat.o(201057);
       return false;
     }
-    if (ae.gcF.fXv)
+    if (com.tencent.mm.compatible.deviceinfo.ae.geN.fZB)
     {
       if (paramBoolean)
       {
-        if (ae.gcF.fXw >= 0) {
-          i = ae.gcF.fXw;
+        if (com.tencent.mm.compatible.deviceinfo.ae.geN.fZC >= 0) {
+          i = com.tencent.mm.compatible.deviceinfo.ae.geN.fZC;
         }
-        ad.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker useSpeakerMode:".concat(String.valueOf(i)));
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker useSpeakerMode:".concat(String.valueOf(i)));
         if (i != this.audioManager.getMode()) {
           b(i, null);
         }
@@ -53,38 +51,38 @@ public class b
       }
       for (;;)
       {
-        AppMethodBeat.o(199745);
+        AppMethodBeat.o(201057);
         return paramBoolean;
-        if (ae.gcF.fXx >= 0) {
-          i = ae.gcF.fXx;
+        if (com.tencent.mm.compatible.deviceinfo.ae.geN.fZD >= 0) {
+          i = com.tencent.mm.compatible.deviceinfo.ae.geN.fZD;
         }
-        ad.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker usePhoneMode:".concat(String.valueOf(i)));
-        localObject = com.tencent.mm.plugin.audio.c.a.nrV;
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker usePhoneMode:".concat(String.valueOf(i)));
+        localObject = com.tencent.mm.plugin.audio.c.a.nxo;
         if (i != a.a.getMode())
         {
-          localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-          a.a.bGC().b(i, null);
+          localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+          a.a.bHy().b(i, null);
         }
         if (this.audioManager.isSpeakerphoneOn()) {
           super.cn(false);
         }
       }
     }
-    if (ae.gcF.fWh)
+    if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYn)
     {
-      if (ae.gcF.ZN())
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.ZW())
       {
-        if (ae.gcF.fWj >= 0) {
-          b(ae.gcF.fWj, null);
+        if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYp >= 0) {
+          b(com.tencent.mm.compatible.deviceinfo.ae.geN.fYp, null);
         }
         for (;;)
         {
-          if (ae.gcF.fWl > 0) {
+          if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYr > 0) {
             super.cn(paramBoolean);
           }
-          AppMethodBeat.o(199745);
+          AppMethodBeat.o(201057);
           return paramBoolean;
-          if (ae.gcF.fWk >= 0) {
+          if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYq >= 0) {
             if (paramBoolean) {
               b(0, null);
             } else {
@@ -93,75 +91,75 @@ public class b
           }
         }
       }
-      if (ae.gcF.ZO())
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.ZX())
       {
         if (paramBoolean)
         {
-          if (ae.gcF.ZR()) {
+          if (com.tencent.mm.compatible.deviceinfo.ae.geN.aaa()) {
             super.cn(true);
           }
-          localObject = ae.gcF;
+          localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
           p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-          if (((com.tencent.mm.compatible.deviceinfo.b)localObject).ZQ() >= 0)
+          if (((com.tencent.mm.compatible.deviceinfo.b)localObject).ZZ() >= 0)
           {
-            localObject = ae.gcF;
+            localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
             p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-            b(((com.tencent.mm.compatible.deviceinfo.b)localObject).ZQ(), null);
+            b(((com.tencent.mm.compatible.deviceinfo.b)localObject).ZZ(), null);
           }
         }
         for (;;)
         {
-          AppMethodBeat.o(199745);
+          AppMethodBeat.o(201057);
           return paramBoolean;
-          if (ae.gcF.ZT()) {
-            super.it(true);
+          if (com.tencent.mm.compatible.deviceinfo.ae.geN.aac()) {
+            super.ir(true);
           }
-          localObject = ae.gcF;
+          localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
           p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-          if (((com.tencent.mm.compatible.deviceinfo.b)localObject).ZS() >= 0)
+          if (((com.tencent.mm.compatible.deviceinfo.b)localObject).aab() >= 0)
           {
-            localObject = ae.gcF;
+            localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
             p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-            b(((com.tencent.mm.compatible.deviceinfo.b)localObject).ZS(), null);
+            b(((com.tencent.mm.compatible.deviceinfo.b)localObject).aab(), null);
           }
         }
       }
     }
     if (paramBoolean)
     {
-      if (ae.gcF.fWH >= 0) {
-        i = ae.gcF.fWH;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYN >= 0) {
+        i = com.tencent.mm.compatible.deviceinfo.ae.geN.fYN;
       }
-      ad.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker useSpeakerMode:".concat(String.valueOf(i)));
-      localObject = com.tencent.mm.plugin.audio.c.a.nrV;
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker useSpeakerMode:".concat(String.valueOf(i)));
+      localObject = com.tencent.mm.plugin.audio.c.a.nxo;
       if (i != a.a.getMode())
       {
-        localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-        a.a.bGC().b(i, null);
+        localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+        a.a.bHy().b(i, null);
       }
       super.cn(true);
     }
     for (;;)
     {
-      AppMethodBeat.o(199745);
+      AppMethodBeat.o(201057);
       return paramBoolean;
       int j = i;
-      if (com.tencent.mm.compatible.util.k.Xm())
+      if (com.tencent.mm.compatible.util.k.Xu())
       {
         j = i;
-        if (2 == ae.gcP.fZg) {
+        if (2 == com.tencent.mm.compatible.deviceinfo.ae.geX.gbn) {
           j = 2;
         }
       }
-      if (ae.gcF.fWI >= 0) {
-        j = ae.gcF.fWI;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYO >= 0) {
+        j = com.tencent.mm.compatible.deviceinfo.ae.geN.fYO;
       }
-      ad.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker usePhoneMode:".concat(String.valueOf(j)));
-      localObject = com.tencent.mm.plugin.audio.c.a.nrV;
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.IPCallAudioManager", "IPCall doShiftSpeaker usePhoneMode:".concat(String.valueOf(j)));
+      localObject = com.tencent.mm.plugin.audio.c.a.nxo;
       if (j != a.a.getMode())
       {
-        localObject = com.tencent.mm.plugin.audio.c.a.nrV;
-        a.a.bGC().b(j, null);
+        localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+        a.a.bHy().b(j, null);
       }
       super.cn(paramBoolean);
     }
@@ -169,7 +167,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ public abstract interface c
   
   public static final class b
   {
-    public String thf;
+    public String trY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.f.c
  * JD-Core Version:    0.7.0.1
  */

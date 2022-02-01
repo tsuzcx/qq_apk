@@ -12,10 +12,10 @@ public class NearLifeErrorContent
   extends FrameLayout
 {
   private View contentView;
-  private ListView gZb;
+  private ListView hbO;
   private Context mContext;
-  private TextView wrD;
-  private View wrE;
+  private TextView wHm;
+  private View wHn;
   
   public NearLifeErrorContent(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,12 +39,12 @@ public class NearLifeErrorContent
   {
     AppMethodBeat.i(26618);
     this.contentView = View.inflate(this.mContext, 2131494996, this);
-    this.wrD = ((TextView)this.contentView.findViewById(2131302681));
-    this.wrE = this.contentView.findViewById(2131302702);
+    this.wHm = ((TextView)this.contentView.findViewById(2131302681));
+    this.wHn = this.contentView.findViewById(2131302702);
     AppMethodBeat.o(26618);
   }
   
-  public final void LL(int paramInt)
+  public final void Mq(int paramInt)
   {
     AppMethodBeat.i(26619);
     switch (paramInt)
@@ -54,25 +54,25 @@ public class NearLifeErrorContent
     {
       AppMethodBeat.o(26619);
       return;
-      this.wrD.setVisibility(8);
-      this.wrE.setVisibility(8);
-      this.gZb.setVisibility(0);
+      this.wHm.setVisibility(8);
+      this.wHn.setVisibility(8);
+      this.hbO.setVisibility(0);
       AppMethodBeat.o(26619);
       return;
-      this.wrD.setVisibility(0);
-      this.wrE.setVisibility(8);
-      this.gZb.setVisibility(8);
+      this.wHm.setVisibility(0);
+      this.wHn.setVisibility(8);
+      this.hbO.setVisibility(8);
       AppMethodBeat.o(26619);
       return;
-      this.wrD.setVisibility(8);
-      this.wrE.setVisibility(0);
-      this.gZb.setVisibility(8);
+      this.wHm.setVisibility(8);
+      this.wHn.setVisibility(0);
+      this.hbO.setVisibility(8);
     }
   }
   
   public void setListView(ListView paramListView)
   {
-    this.gZb = paramListView;
+    this.hbO = paramListView;
   }
 }
 

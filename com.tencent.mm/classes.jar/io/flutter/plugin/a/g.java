@@ -9,12 +9,12 @@ import org.json.JSONObject;
 public final class g
   implements l
 {
-  public static final g MFU;
+  public static final g Nda;
   
   static
   {
     AppMethodBeat.i(9879);
-    MFU = new g();
+    Nda = new g();
     AppMethodBeat.o(9879);
   }
   
@@ -32,7 +32,7 @@ public final class g
     AppMethodBeat.i(9875);
     try
     {
-      paramByteBuffer = f.MFT.J(paramByteBuffer);
+      paramByteBuffer = f.NcZ.J(paramByteBuffer);
       if ((paramByteBuffer instanceof JSONObject))
       {
         Object localObject2 = (JSONObject)paramByteBuffer;
@@ -62,7 +62,7 @@ public final class g
     AppMethodBeat.i(9878);
     try
     {
-      paramByteBuffer = f.MFT.J(paramByteBuffer);
+      paramByteBuffer = f.NcZ.J(paramByteBuffer);
       if ((paramByteBuffer instanceof JSONArray))
       {
         Object localObject3 = (JSONArray)paramByteBuffer;
@@ -104,8 +104,8 @@ public final class g
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("method", paramj.method);
-      localJSONObject.put("args", h.wrap(paramj.grf));
-      paramj = f.MFT.eG(localJSONObject);
+      localJSONObject.put("args", h.wrap(paramj.gtF));
+      paramj = f.NcZ.eJ(localJSONObject);
       AppMethodBeat.o(9874);
       return paramj;
     }
@@ -117,10 +117,10 @@ public final class g
     }
   }
   
-  public final ByteBuffer eH(Object paramObject)
+  public final ByteBuffer eK(Object paramObject)
   {
     AppMethodBeat.i(9876);
-    paramObject = f.MFT.eG(new JSONArray().put(h.wrap(paramObject)));
+    paramObject = f.NcZ.eJ(new JSONArray().put(h.wrap(paramObject)));
     AppMethodBeat.o(9876);
     return paramObject;
   }
@@ -128,7 +128,7 @@ public final class g
   public final ByteBuffer k(String paramString1, String paramString2, Object paramObject)
   {
     AppMethodBeat.i(9877);
-    paramString1 = f.MFT.eG(new JSONArray().put(paramString1).put(h.wrap(paramString2)).put(h.wrap(paramObject)));
+    paramString1 = f.NcZ.eJ(new JSONArray().put(paramString1).put(h.wrap(paramString2)).put(h.wrap(paramObject)));
     AppMethodBeat.o(9877);
     return paramString1;
   }

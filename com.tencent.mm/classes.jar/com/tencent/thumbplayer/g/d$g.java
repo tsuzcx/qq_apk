@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.g;
 
 final class d$g
 {
-  long Mce;
-  Object Mcf;
-  long dKn;
+  long MyZ;
+  Object Mza;
+  long dLC;
 }
 
 

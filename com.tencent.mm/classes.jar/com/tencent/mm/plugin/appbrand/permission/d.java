@@ -4,11 +4,11 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.n.w;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.permission.a.a.c;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,55 +21,55 @@ import org.a.a;
 
 public class d
 {
-  private static final Map<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>, Integer> mhP;
-  private static final Map<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>, String> mhQ;
-  public static final String[] mhZ;
-  public final AppBrandRuntime jzY;
-  public final int mhR;
-  private final boolean mhS;
-  public final LinkedList<b> mhT;
-  public final Object mhU;
-  private AppRuntimeApiPermissionBundle mhV;
-  private final byte[] mhW;
-  private HashMap<String, AppRuntimeApiPermissionBundle> mhX;
-  public List<c> mhY;
+  private static final Map<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>, Integer> mmN;
+  private static final Map<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>, String> mmO;
+  public static final String[] mmX;
+  public final AppBrandRuntime jDb;
+  public final int mmP;
+  private final boolean mmQ;
+  public final LinkedList<b> mmR;
+  public final Object mmS;
+  private AppRuntimeApiPermissionBundle mmT;
+  private final byte[] mmU;
+  private HashMap<String, AppRuntimeApiPermissionBundle> mmV;
+  public List<c> mmW;
   
   static
   {
     AppMethodBeat.i(147660);
-    mhP = new ConcurrentHashMap();
-    mhQ = new ConcurrentHashMap();
-    mhZ = new String[] { "createSocketTask", "createDownloadTask", "createRequestTask", "createUploadTask", "createUploadTaskAsync", "createRequestTaskAsync", "createUploadTaskAsync" };
+    mmN = new ConcurrentHashMap();
+    mmO = new ConcurrentHashMap();
+    mmX = new String[] { "createSocketTask", "createDownloadTask", "createRequestTask", "createUploadTask", "createUploadTaskAsync", "createRequestTaskAsync", "createUploadTaskAsync" };
     AppMethodBeat.o(147660);
   }
   
   public d(AppBrandRuntime paramAppBrandRuntime, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(147654);
-    this.mhT = new LinkedList();
-    this.mhX = new HashMap();
-    this.mhY = new ArrayList();
-    this.jzY = paramAppBrandRuntime;
-    this.mhU = new byte[0];
-    this.mhW = new byte[0];
-    this.mhR = paramInt;
-    this.mhS = paramBoolean;
+    this.mmR = new LinkedList();
+    this.mmV = new HashMap();
+    this.mmW = new ArrayList();
+    this.jDb = paramAppBrandRuntime;
+    this.mmS = new byte[0];
+    this.mmU = new byte[0];
+    this.mmP = paramInt;
+    this.mmQ = paramBoolean;
     AppRuntimeApiPermissionBundle localAppRuntimeApiPermissionBundle = (AppRuntimeApiPermissionBundle)paramAppBrandRuntime.c(AppRuntimeApiPermissionBundle.class, false);
     if (localAppRuntimeApiPermissionBundle == null) {
-      ad.e("MicroMsg.AppRuntimeApiPermissionController[permission]", "<init> get NULL permission from runtime");
+      ae.e("MicroMsg.AppRuntimeApiPermissionController[permission]", "<init> get NULL permission from runtime");
     }
     a(localAppRuntimeApiPermissionBundle);
     if ((e)paramAppBrandRuntime.c(e.class, false) != null)
     {
-      this.mhX = ((e)paramAppBrandRuntime.c(e.class, false)).mih;
-      if (this.mhX != null) {
+      this.mmV = ((e)paramAppBrandRuntime.c(e.class, false)).mnf;
+      if (this.mmV != null) {
         break label164;
       }
     }
     label164:
-    for (paramInt = 0;; paramInt = this.mhX.size())
+    for (paramInt = 0;; paramInt = this.mmV.size())
     {
-      ad.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "mPluginPermission size:%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "mPluginPermission size:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(147654);
       return;
     }
@@ -78,21 +78,21 @@ public class d
   private int a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b> paramClass, String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(147648);
-    int i = this.mhR;
+    int i = this.mmP;
     String str1 = paramc.getAppId();
     if (i == -1)
     {
-      ad.d("MicroMsg.AppRuntimeApiPermissionController[permission]", "getCtrlByte, appId = %s, ctrlIndex = %d, hard code perm on", new Object[] { str1, Integer.valueOf(paramInt) });
+      ae.d("MicroMsg.AppRuntimeApiPermissionController[permission]", "getCtrlByte, appId = %s, ctrlIndex = %d, hard code perm on", new Object[] { str1, Integer.valueOf(paramInt) });
       AppMethodBeat.o(147648);
       return 1;
     }
     if (i == -2)
     {
-      ad.d("MicroMsg.AppRuntimeApiPermissionController[permission]", "getCtrlByte, appId = %s, ctrlIndex = %d, hard code perm off", new Object[] { str1, Integer.valueOf(paramInt) });
+      ae.d("MicroMsg.AppRuntimeApiPermissionController[permission]", "getCtrlByte, appId = %s, ctrlIndex = %d, hard code perm off", new Object[] { str1, Integer.valueOf(paramInt) });
       AppMethodBeat.o(147648);
       return 0;
     }
-    if ((paramClass.isAssignableFrom(w.class)) && ((paramc instanceof aa)))
+    if ((paramClass.isAssignableFrom(w.class)) && ((paramc instanceof z)))
     {
       AppMethodBeat.o(147648);
       return 1;
@@ -109,7 +109,7 @@ public class d
     int j = F(arrayOfByte, paramInt);
     if (paramBoolean)
     {
-      paramc = (i)paramc.K(i.class);
+      paramc = (k)paramc.K(k.class);
       if ((paramc != null) && (paramc.aG(paramClass))) {
         break label270;
       }
@@ -118,7 +118,7 @@ public class d
     for (i = 1;; i = 0)
     {
       if (i != 0) {
-        ad.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "getCtrlByte, appId = %s, apiName = %s, state = %s, ctrlIndex = %d, ctrlIndexLength %d, checkRet %d", new Object[] { str1, str2, paramString[0], Integer.valueOf(paramInt), Integer.valueOf(arrayOfByte.length), Integer.valueOf(j) });
+        ae.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "getCtrlByte, appId = %s, apiName = %s, state = %s, ctrlIndex = %d, ctrlIndexLength %d, checkRet %d", new Object[] { str1, str2, paramString[0], Integer.valueOf(paramInt), Integer.valueOf(arrayOfByte.length), Integer.valueOf(j) });
       }
       AppMethodBeat.o(147648);
       return j;
@@ -128,7 +128,7 @@ public class d
   private static int aE(Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b> paramClass)
   {
     AppMethodBeat.i(147652);
-    Integer localInteger = (Integer)mhP.get(paramClass);
+    Integer localInteger = (Integer)mmN.get(paramClass);
     int i;
     if (localInteger != null)
     {
@@ -139,7 +139,7 @@ public class d
     try
     {
       i = ((Integer)a.bF(paramClass).get("CTRL_INDEX")).intValue();
-      mhP.put(paramClass, Integer.valueOf(i));
+      mmN.put(paramClass, Integer.valueOf(i));
       AppMethodBeat.o(147652);
       return i;
     }
@@ -156,8 +156,8 @@ public class d
   private static String aF(Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b> paramClass)
   {
     AppMethodBeat.i(147653);
-    String str = (String)mhQ.get(paramClass);
-    if (!bt.isNullOrNil(str))
+    String str = (String)mmO.get(paramClass);
+    if (!bu.isNullOrNil(str))
     {
       AppMethodBeat.o(147653);
       return str;
@@ -165,7 +165,7 @@ public class d
     try
     {
       str = (String)a.bF(paramClass).get("NAME");
-      mhQ.put(paramClass, str);
+      mmO.put(paramClass, str);
       AppMethodBeat.o(147653);
       return str;
     }
@@ -181,43 +181,43 @@ public class d
   private void b(AppRuntimeApiPermissionBundle paramAppRuntimeApiPermissionBundle)
   {
     AppMethodBeat.i(147656);
-    byte[] arrayOfByte = paramAppRuntimeApiPermissionBundle.mhM;
-    paramAppRuntimeApiPermissionBundle = paramAppRuntimeApiPermissionBundle.mhN;
+    byte[] arrayOfByte = paramAppRuntimeApiPermissionBundle.mmK;
+    paramAppRuntimeApiPermissionBundle = paramAppRuntimeApiPermissionBundle.mmL;
     int i = 0;
-    while (i < this.mhY.size())
+    while (i < this.mmW.size())
     {
-      ((c)this.mhY.get(i)).g(arrayOfByte, paramAppRuntimeApiPermissionBundle);
+      ((c)this.mmW.get(i)).g(arrayOfByte, paramAppRuntimeApiPermissionBundle);
       i += 1;
     }
     AppMethodBeat.o(147656);
   }
   
-  private AppRuntimeApiPermissionBundle bvX()
+  private AppRuntimeApiPermissionBundle bwO()
   {
-    synchronized (this.mhU)
+    synchronized (this.mmS)
     {
-      AppRuntimeApiPermissionBundle localAppRuntimeApiPermissionBundle = this.mhV;
+      AppRuntimeApiPermissionBundle localAppRuntimeApiPermissionBundle = this.mmT;
       return localAppRuntimeApiPermissionBundle;
     }
   }
   
   public static void k(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString)
   {
-    AppMethodBeat.i(192286);
+    AppMethodBeat.i(220861);
     if (paramc == null) {}
-    for (paramc = null;; paramc = (h)paramc.K(h.class))
+    for (paramc = null;; paramc = (j)paramc.K(j.class))
     {
       if (paramc != null) {
-        paramc.TR(paramString);
+        paramc.UB(paramString);
       }
-      AppMethodBeat.o(192286);
+      AppMethodBeat.o(220861);
       return;
     }
   }
   
   public final int F(byte[] paramArrayOfByte, int paramInt)
   {
-    int i = this.mhR;
+    int i = this.mmP;
     if (i == -1) {}
     do
     {
@@ -231,7 +231,7 @@ public class d
       if (paramInt != -1) {
         break;
       }
-    } while (this.mhS);
+    } while (this.mmQ);
     return 0;
     if ((paramInt >= paramArrayOfByte.length) || (paramInt < 0)) {
       return 0;
@@ -239,18 +239,18 @@ public class d
     return paramArrayOfByte[paramInt];
   }
   
-  public final AppRuntimeApiPermissionBundle TQ(String paramString)
+  public final AppRuntimeApiPermissionBundle Uz(String paramString)
   {
-    AppMethodBeat.i(192285);
-    synchronized (this.mhW)
+    AppMethodBeat.i(220860);
+    synchronized (this.mmU)
     {
-      if (this.mhX == null)
+      if (this.mmV == null)
       {
-        AppMethodBeat.o(192285);
+        AppMethodBeat.o(220860);
         return null;
       }
-      paramString = (AppRuntimeApiPermissionBundle)this.mhX.get(paramString);
-      AppMethodBeat.o(192285);
+      paramString = (AppRuntimeApiPermissionBundle)this.mmV.get(paramString);
+      AppMethodBeat.o(220860);
       return paramString;
     }
   }
@@ -271,18 +271,18 @@ public class d
       AppMethodBeat.o(147655);
       return;
     }
-    synchronized (this.mhU)
+    synchronized (this.mmS)
     {
-      AppRuntimeApiPermissionBundle localAppRuntimeApiPermissionBundle = this.mhV;
-      if ((localAppRuntimeApiPermissionBundle != null) && (localAppRuntimeApiPermissionBundle.mhM.length > paramAppRuntimeApiPermissionBundle.mhM.length))
+      AppRuntimeApiPermissionBundle localAppRuntimeApiPermissionBundle = this.mmT;
+      if ((localAppRuntimeApiPermissionBundle != null) && (localAppRuntimeApiPermissionBundle.mmK.length > paramAppRuntimeApiPermissionBundle.mmK.length))
       {
-        ad.e("MicroMsg.AppRuntimeApiPermissionController[permission]", "updatePermission, old %s, new %s, ignore", new Object[] { localAppRuntimeApiPermissionBundle, paramAppRuntimeApiPermissionBundle });
+        ae.e("MicroMsg.AppRuntimeApiPermissionController[permission]", "updatePermission, old %s, new %s, ignore", new Object[] { localAppRuntimeApiPermissionBundle, paramAppRuntimeApiPermissionBundle });
         AppMethodBeat.o(147655);
         return;
       }
-      this.mhV = paramAppRuntimeApiPermissionBundle;
-      b(this.mhV);
-      ad.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "updatePermission old %s, updated %s", new Object[] { localAppRuntimeApiPermissionBundle, paramAppRuntimeApiPermissionBundle });
+      this.mmT = paramAppRuntimeApiPermissionBundle;
+      b(this.mmT);
+      ae.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "updatePermission old %s, updated %s", new Object[] { localAppRuntimeApiPermissionBundle, paramAppRuntimeApiPermissionBundle });
       AppMethodBeat.o(147655);
       return;
     }
@@ -313,7 +313,7 @@ public class d
       AppMethodBeat.o(147650);
       return false;
     case 7: 
-      boolean bool = this.jzY.jwS.jKT.bbh();
+      boolean bool = this.jDb.jzQ.jOf.bbJ();
       AppMethodBeat.o(147650);
       return bool;
     }
@@ -323,27 +323,27 @@ public class d
   
   public final byte[] a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, com.tencent.mm.plugin.appbrand.a.b[] paramArrayOfb)
   {
-    AppMethodBeat.i(192283);
-    int i = this.mhR;
+    AppMethodBeat.i(220858);
+    int i = this.mmP;
     if (i == -1)
     {
-      AppMethodBeat.o(192283);
+      AppMethodBeat.o(220858);
       return new byte[] { 1 };
     }
     if (i == -2)
     {
-      AppMethodBeat.o(192283);
+      AppMethodBeat.o(220858);
       return new byte[] { 0 };
     }
-    Object localObject = bvX();
-    if ((paramc instanceof q))
+    Object localObject = bwO();
+    if ((paramc instanceof r))
     {
-      paramc = 2.jLm;
-      com.tencent.mm.plugin.appbrand.a.b localb = this.jzY.jwS.jKT.bbg();
+      paramc = 2.jOy;
+      com.tencent.mm.plugin.appbrand.a.b localb = this.jDb.jzQ.jOf.bbI();
       switch (paramc[localb.ordinal()])
       {
       default: 
-        paramc = ((AppRuntimeApiPermissionBundle)localObject).mhM;
+        paramc = ((AppRuntimeApiPermissionBundle)localObject).mmK;
         localObject = paramc;
         if (paramArrayOfb != null)
         {
@@ -355,28 +355,28 @@ public class d
         break;
       }
     }
-    for (localObject = paramc;; localObject = ((AppRuntimeApiPermissionBundle)localObject).mhM)
+    for (localObject = paramc;; localObject = ((AppRuntimeApiPermissionBundle)localObject).mmK)
     {
-      AppMethodBeat.o(192283);
+      AppMethodBeat.o(220858);
       return localObject;
-      paramc = ((AppRuntimeApiPermissionBundle)localObject).mhN;
+      paramc = ((AppRuntimeApiPermissionBundle)localObject).mmL;
       break;
     }
   }
   
-  public final Vector<byte[]> bvW()
+  public final Vector<byte[]> bwN()
   {
     AppMethodBeat.i(147657);
-    synchronized (this.mhU)
+    synchronized (this.mmS)
     {
-      if (this.mhV == null)
+      if (this.mmT == null)
       {
         AppMethodBeat.o(147657);
         return null;
       }
-      byte[] arrayOfByte1 = this.mhV.mhM;
-      byte[] arrayOfByte2 = this.mhV.mhN;
-      byte[] arrayOfByte3 = this.mhV.mhO;
+      byte[] arrayOfByte1 = this.mmT.mmK;
+      byte[] arrayOfByte2 = this.mmT.mmL;
+      byte[] arrayOfByte3 = this.mmT.mmM;
       ??? = new Vector(3);
       ((Vector)???).addElement(arrayOfByte1);
       ((Vector)???).addElement(arrayOfByte2);
@@ -389,20 +389,20 @@ public class d
   public final void f(HashMap<String, AppRuntimeApiPermissionBundle> paramHashMap)
   {
     int i = 0;
-    AppMethodBeat.i(192284);
-    arrayOfByte = this.mhW;
+    AppMethodBeat.i(220859);
+    arrayOfByte = this.mmU;
     if (paramHashMap == null) {}
     for (;;)
     {
       try
       {
-        ad.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "updatePluginPermission size:%d", new Object[] { Integer.valueOf(i) });
-        this.mhX = paramHashMap;
+        ae.i("MicroMsg.AppRuntimeApiPermissionController[permission]", "updatePluginPermission size:%d", new Object[] { Integer.valueOf(i) });
+        this.mmV = paramHashMap;
         return;
       }
       finally
       {
-        AppMethodBeat.o(192284);
+        AppMethodBeat.o(220859);
       }
       i = paramHashMap.size();
     }
@@ -410,22 +410,22 @@ public class d
   
   public static final class a
   {
-    private static final a mic;
-    private static final a mid;
-    private static final a mie;
-    private static final a mif;
-    private static final a mig;
+    private static final a mna;
+    private static final a mnb;
+    private static final a mnc;
+    private static final a mnd;
+    private static final a mne;
     public final String msg;
     public final int ret;
     
     static
     {
       AppMethodBeat.i(147644);
-      mic = new a(-1, "fail:auth canceled");
-      mid = new a(-1, "fail:auth denied");
-      mie = new a(-2, "");
-      mif = new a(-1, "fail:access denied");
-      mig = new a(0, "");
+      mna = new a(-1, "fail:auth canceled");
+      mnb = new a(-1, "fail:auth denied");
+      mnc = new a(-2, "");
+      mnd = new a(-1, "fail:access denied");
+      mne = new a(0, "");
       AppMethodBeat.o(147644);
     }
     
@@ -448,7 +448,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.d
  * JD-Core Version:    0.7.0.1
  */

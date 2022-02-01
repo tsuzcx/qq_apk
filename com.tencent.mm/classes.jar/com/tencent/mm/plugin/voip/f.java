@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.voip;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.s.a;
+import com.tencent.mm.r.a;
 
 public final class f
 {
-  public static boolean cf(Context paramContext)
+  public static boolean ch(Context paramContext)
   {
-    AppMethodBeat.i(221734);
-    boolean bool = a.cf(paramContext);
-    AppMethodBeat.o(221734);
+    AppMethodBeat.i(224495);
+    boolean bool = a.ch(paramContext);
+    AppMethodBeat.o(224495);
     return bool;
   }
   
-  public static boolean gA(Context paramContext)
+  public static boolean gF(Context paramContext)
   {
-    AppMethodBeat.i(221733);
+    AppMethodBeat.i(224494);
     boolean bool = a.n(paramContext, true);
-    AppMethodBeat.o(221733);
+    AppMethodBeat.o(224494);
     return bool;
   }
 }

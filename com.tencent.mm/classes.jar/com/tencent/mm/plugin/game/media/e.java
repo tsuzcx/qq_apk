@@ -15,56 +15,56 @@ public final class e
   {
     AppMethodBeat.i(40951);
     c.a locala = new c.a();
-    locala.IhA = new Field[12];
+    locala.IBL = new Field[12];
     locala.columns = new String[13];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "taskId";
-    locala.IhC.put("taskId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("taskId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" taskId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "taskId";
+    locala.IBM = "taskId";
     locala.columns[1] = "createTime";
-    locala.IhC.put("createTime", "LONG");
+    locala.IBN.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "publishSource";
-    locala.IhC.put("publishSource", "INTEGER");
+    locala.IBN.put("publishSource", "INTEGER");
     localStringBuilder.append(" publishSource INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "mediaType";
-    locala.IhC.put("mediaType", "INTEGER");
+    locala.IBN.put("mediaType", "INTEGER");
     localStringBuilder.append(" mediaType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "localIdList";
-    locala.IhC.put("localIdList", "TEXT");
+    locala.IBN.put("localIdList", "TEXT");
     localStringBuilder.append(" localIdList TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "mediaList";
-    locala.IhC.put("mediaList", "TEXT");
+    locala.IBN.put("mediaList", "TEXT");
     localStringBuilder.append(" mediaList TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "BusinessData";
-    locala.IhC.put("BusinessData", "TEXT");
+    locala.IBN.put("BusinessData", "TEXT");
     localStringBuilder.append(" BusinessData TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "uploadState";
-    locala.IhC.put("uploadState", "INTEGER default '0' ");
+    locala.IBN.put("uploadState", "INTEGER default '0' ");
     localStringBuilder.append(" uploadState INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "publishState";
-    locala.IhC.put("publishState", "INTEGER default '0' ");
+    locala.IBN.put("publishState", "INTEGER default '0' ");
     localStringBuilder.append(" publishState INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "compressImg";
-    locala.IhC.put("compressImg", "INTEGER default 'true' ");
+    locala.IBN.put("compressImg", "INTEGER default 'true' ");
     localStringBuilder.append(" compressImg INTEGER default 'true' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "mixState";
-    locala.IhC.put("mixState", "INTEGER default '0' ");
+    locala.IBN.put("mixState", "INTEGER default '0' ");
     localStringBuilder.append(" mixState INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "bgMixTaskId";
-    locala.IhC.put("bgMixTaskId", "TEXT");
+    locala.IBN.put("bgMixTaskId", "TEXT");
     localStringBuilder.append(" bgMixTaskId TEXT");
     locala.columns[12] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -79,7 +79,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.e
  * JD-Core Version:    0.7.0.1
  */

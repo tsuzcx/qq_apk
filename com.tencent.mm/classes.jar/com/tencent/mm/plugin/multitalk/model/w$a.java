@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitalk.model;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$Companion;", "", "()V", "SCREEN_BUFFER_SIZE", "", "SLEEP_DURATION", "", "TAG", "", "VIDEO_BUFFER_SIZE", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$Companion;", "", "()V", "SCREEN_BUFFER_SIZE", "", "SLEEP_DURATION", "", "TAG", "", "VIDEO_BUFFER_SIZE", "plugin-multitalk_release"})
 public final class w$a {}
 
 

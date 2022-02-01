@@ -1,31 +1,70 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.l;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import org.json.JSONObject;
+import com.tencent.tbs.reader.ITbsReaderCallback;
+import com.tencent.tbs.reader.ReaderEngine;
+import com.tencent.tbs.reader.ReaderMixerMode;
+import com.tencent.tbs.reader.TbsReaderManager;
 
-final class av
-  extends bg
+public final class av
 {
-  final i.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  public static av kQG;
+  private TbsReaderManager kQH;
+  
+  private av(Context paramContext)
   {
-    AppMethodBeat.i(128908);
+    AppMethodBeat.i(222526);
+    this.kQH = null;
+    ReaderEngine.getInstance().initReaderEntry(paramContext);
+    this.kQH = new TbsReaderManager();
+    AppMethodBeat.o(222526);
+  }
+  
+  public static boolean canOpenFile(String paramString)
+  {
+    AppMethodBeat.i(222528);
+    boolean bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
+    AppMethodBeat.o(222528);
+    return bool;
+  }
+  
+  public static av du(Context paramContext)
+  {
     try
     {
-      paramJSONObject.put("append", true);
-      paramc = super.a(paramc, paramString, paramJSONObject);
-      AppMethodBeat.o(128908);
-      return paramc;
+      AppMethodBeat.i(222525);
+      if (kQG == null) {
+        kQG = new av(paramContext);
+      }
+      paramContext = kQG;
+      AppMethodBeat.o(222525);
+      return paramContext;
     }
-    catch (Exception paramc)
+    finally {}
+  }
+  
+  public final int a(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback)
+  {
+    AppMethodBeat.i(222527);
+    if (this.kQH == null)
     {
-      ad.e("MicroMsg.AppBrand.UnitAppendFile", "call with path(%s), put append fail ex = %s", new Object[] { paramString, paramc });
-      paramc = new i.a("fail " + l.jMw.name(), new Object[0]);
-      AppMethodBeat.o(128908);
+      AppMethodBeat.o(222527);
+      return -1;
     }
-    return paramc;
+    int i = this.kQH.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
+    AppMethodBeat.o(222527);
+    return i;
+  }
+  
+  public final void closeFileReader()
+  {
+    AppMethodBeat.i(222529);
+    if (this.kQH != null) {
+      this.kQH.destroy();
+    }
+    AppMethodBeat.o(222529);
   }
 }
 

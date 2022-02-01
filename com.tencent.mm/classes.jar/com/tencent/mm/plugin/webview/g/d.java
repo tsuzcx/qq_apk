@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.webview.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 
 public final class d
 {
-  public int DXx = 0;
-  public int DXy = 0;
-  public int DXz = 0;
+  public int EpA = 0;
+  public int EpB = 0;
+  public int Epz = 0;
   public long endTime;
-  public int giC = 0;
+  public int gkU = 0;
   public int scene;
   public long startTime;
   
-  public final void WV(int paramInt)
+  public final void XB(int paramInt)
   {
-    this.DXz += paramInt;
+    this.EpB += paramInt;
   }
   
-  public final void eRj()
+  public final void eUV()
   {
-    this.DXx += 1;
+    this.Epz += 1;
   }
   
-  public final void eRk()
+  public final void eUW()
   {
-    this.DXy += 1;
+    this.EpA += 1;
   }
   
   public final void report()
@@ -36,22 +36,22 @@ public final class d
     AppMethodBeat.i(103135);
     long l = this.endTime - this.startTime;
     String str;
-    if (ay.isWifi(aj.getContext())) {
+    if (az.isWifi(ak.getContext())) {
       str = "wifi";
     }
     for (;;)
     {
-      ad.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.giC), Integer.valueOf(this.DXx), Integer.valueOf(this.DXy), Long.valueOf(l), Integer.valueOf(this.DXz), str });
-      g.yhR.f(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.giC), Integer.valueOf(this.DXx), Integer.valueOf(this.DXy), Long.valueOf(l), Integer.valueOf(this.DXz), str });
+      ae.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.gkU), Integer.valueOf(this.Epz), Integer.valueOf(this.EpA), Long.valueOf(l), Integer.valueOf(this.EpB), str });
+      g.yxI.f(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.gkU), Integer.valueOf(this.Epz), Integer.valueOf(this.EpA), Long.valueOf(l), Integer.valueOf(this.EpB), str });
       AppMethodBeat.o(103135);
       return;
-      if (ay.is5G(aj.getContext())) {
+      if (az.is5G(ak.getContext())) {
         str = "5g";
-      } else if (ay.is4G(aj.getContext())) {
+      } else if (az.is4G(ak.getContext())) {
         str = "4g";
-      } else if (ay.is3G(aj.getContext())) {
+      } else if (az.is3G(ak.getContext())) {
         str = "3g";
-      } else if (ay.is2G(aj.getContext())) {
+      } else if (az.is2G(ak.getContext())) {
         str = "2g";
       } else {
         str = "none";

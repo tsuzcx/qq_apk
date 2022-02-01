@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryHorizontalControlView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter;", "galleryItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "recycler", "Landroid/support/v7/widget/RecyclerView;", "setSelection", "", "position", "update", "items", "", "updateView", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryHorizontalControlView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter;", "galleryItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "recycler", "Landroid/support/v7/widget/RecyclerView;", "setSelection", "", "position", "update", "items", "", "updateView", "plugin-story_release"})
 public final class GalleryHorizontalControlView
   extends FrameLayout
 {
-  private final ArrayList<h> APS;
-  private final com.tencent.mm.plugin.story.ui.a.a BcM;
-  private final RecyclerView ghz;
+  private final ArrayList<h> Bhq;
+  private final com.tencent.mm.plugin.story.ui.a.a Buk;
+  private final RecyclerView gjR;
   
   public GalleryHorizontalControlView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,63 +38,63 @@ public final class GalleryHorizontalControlView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120347);
-    this.APS = new ArrayList();
+    this.Bhq = new ArrayList();
     View.inflate(paramContext, 2131495691, (ViewGroup)this);
     paramAttributeSet = findViewById(2131305423);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_control_recycler)");
-    this.ghz = ((RecyclerView)paramAttributeSet);
-    this.ghz.setLayoutManager((RecyclerView.i)new IndicatorLayoutManager(paramContext));
-    this.BcM = new com.tencent.mm.plugin.story.ui.a.a();
-    this.ghz.setAdapter((RecyclerView.a)this.BcM);
-    this.ghz.setFocusable(false);
-    this.ghz.setVisibility(8);
-    setPadding(0, 0, 0, ar.ej(paramContext));
+    this.gjR = ((RecyclerView)paramAttributeSet);
+    this.gjR.setLayoutManager((RecyclerView.i)new IndicatorLayoutManager(paramContext));
+    this.Buk = new com.tencent.mm.plugin.story.ui.a.a();
+    this.gjR.setAdapter((RecyclerView.a)this.Buk);
+    this.gjR.setFocusable(false);
+    this.gjR.setVisibility(8);
+    setPadding(0, 0, 0, ar.en(paramContext));
     AppMethodBeat.o(120347);
   }
   
-  public final void gq(List<h> paramList)
+  public final void gz(List<h> paramList)
   {
     AppMethodBeat.i(120345);
     p.h(paramList, "items");
-    this.APS.clear();
-    this.APS.addAll((Collection)paramList);
-    paramList = this.BcM;
-    List localList = (List)this.APS;
+    this.Bhq.clear();
+    this.Bhq.addAll((Collection)paramList);
+    paramList = this.Buk;
+    List localList = (List)this.Bhq;
     p.h(localList, "items");
-    paramList.APS.clear();
-    paramList.APS.addAll((Collection)localList);
-    this.BcM.notifyDataSetChanged();
-    if (this.APS.size() <= 1)
+    paramList.Bhq.clear();
+    paramList.Bhq.addAll((Collection)localList);
+    this.Buk.notifyDataSetChanged();
+    if (this.Bhq.size() <= 1)
     {
-      this.ghz.setVisibility(8);
+      this.gjR.setVisibility(8);
       AppMethodBeat.o(120345);
       return;
     }
-    this.ghz.setVisibility(0);
+    this.gjR.setVisibility(0);
     AppMethodBeat.o(120345);
   }
   
   public final void setSelection(int paramInt)
   {
     AppMethodBeat.i(120346);
-    Object localObject = this.BcM;
+    Object localObject = this.Buk;
     if (((com.tencent.mm.plugin.story.ui.a.a)localObject).uT != paramInt)
     {
       ((com.tencent.mm.plugin.story.ui.a.a)localObject).cj(((com.tencent.mm.plugin.story.ui.a.a)localObject).uT);
       ((com.tencent.mm.plugin.story.ui.a.a)localObject).uT = paramInt;
       ((com.tencent.mm.plugin.story.ui.a.a)localObject).cj(((com.tencent.mm.plugin.story.ui.a.a)localObject).uT);
     }
-    localObject = this.ghz;
+    localObject = this.gjR;
     com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/plugin/story/ui/view/gallery/GalleryHorizontalControlView", "setSelection", "(I)V", "Undefined", "scrollToPosition", "(I)V");
-    ((RecyclerView)localObject).ca(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/plugin/story/ui/view/gallery/GalleryHorizontalControlView", "setSelection", "(I)V", "Undefined", "scrollToPosition", "(I)V");
+    ((RecyclerView)localObject).ca(((Integer)locala.mt(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryHorizontalControlView", "setSelection", "(I)V", "Undefined", "scrollToPosition", "(I)V");
     AppMethodBeat.o(120346);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.GalleryHorizontalControlView
  * JD-Core Version:    0.7.0.1
  */

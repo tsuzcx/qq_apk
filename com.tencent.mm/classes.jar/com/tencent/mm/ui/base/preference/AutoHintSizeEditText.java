@@ -9,25 +9,25 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class AutoHintSizeEditText
   extends EditText
 {
-  private float Jrs;
-  private Paint Jrt;
-  private String Jru;
-  private int Jrv;
-  private float Jrw;
+  private float JMh;
+  private Paint JMi;
+  private String JMj;
+  private int JMk;
+  private float JMl;
   
   public AutoHintSizeEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142495);
-    this.Jru = "";
-    this.Jrv = -2147483648;
+    this.JMj = "";
+    this.JMk = -2147483648;
     init();
     AppMethodBeat.o(142495);
   }
@@ -36,8 +36,8 @@ public class AutoHintSizeEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142494);
-    this.Jru = "";
-    this.Jrv = -2147483648;
+    this.JMj = "";
+    this.JMk = -2147483648;
     init();
     AppMethodBeat.o(142494);
   }
@@ -45,51 +45,51 @@ public class AutoHintSizeEditText
   private void a(Editable paramEditable, CharSequence paramCharSequence, int paramInt)
   {
     AppMethodBeat.i(142497);
-    if ((paramEditable != null) && (!bt.isNullOrNil(paramEditable.toString())))
+    if ((paramEditable != null) && (!bu.isNullOrNil(paramEditable.toString())))
     {
-      if (getTextSize() != this.Jrs)
+      if (getTextSize() != this.JMh)
       {
-        ad.v("MicroMsg.AutoHintSizeEdittext", "content not null, reset text size %f", new Object[] { Float.valueOf(this.Jrs) });
-        setTextSize(0, this.Jrs);
+        ae.v("MicroMsg.AutoHintSizeEdittext", "content not null, reset text size %f", new Object[] { Float.valueOf(this.JMh) });
+        setTextSize(0, this.JMh);
       }
       AppMethodBeat.o(142497);
       return;
     }
-    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
+    if ((paramCharSequence == null) || (bu.isNullOrNil(paramCharSequence.toString())))
     {
-      if (getTextSize() != this.Jrs)
+      if (getTextSize() != this.JMh)
       {
-        ad.v("MicroMsg.AutoHintSizeEdittext", "hint is null, reset text size %f", new Object[] { Float.valueOf(this.Jrs) });
-        setTextSize(0, this.Jrs);
+        ae.v("MicroMsg.AutoHintSizeEdittext", "hint is null, reset text size %f", new Object[] { Float.valueOf(this.JMh) });
+        setTextSize(0, this.JMh);
       }
       AppMethodBeat.o(142497);
       return;
     }
     paramEditable = paramCharSequence.toString();
-    if ((this.Jru.equals(paramEditable)) && (this.Jrv == paramInt))
+    if ((this.JMj.equals(paramEditable)) && (this.JMk == paramInt))
     {
-      if (getTextSize() != this.Jrw)
+      if (getTextSize() != this.JMl)
       {
-        ad.v("MicroMsg.AutoHintSizeEdittext", "use last hint text size %f", new Object[] { Float.valueOf(this.Jrw) });
-        setTextSize(0, this.Jrw);
+        ae.v("MicroMsg.AutoHintSizeEdittext", "use last hint text size %f", new Object[] { Float.valueOf(this.JMl) });
+        setTextSize(0, this.JMl);
       }
       AppMethodBeat.o(142497);
       return;
     }
-    this.Jru = paramEditable;
-    this.Jrv = paramInt;
+    this.JMj = paramEditable;
+    this.JMk = paramInt;
     if (getPaint().measureText(paramEditable) > paramInt)
     {
       int j = getResources().getDimensionPixelSize(2131165576);
       int k = a.fromDPToPix(getContext(), 1);
-      int i = (int)this.Jrs - k;
+      int i = (int)this.JMh - k;
       while (i > j)
       {
-        this.Jrt.setTextSize(i);
-        if (this.Jrt.measureText(paramEditable) < paramInt)
+        this.JMi.setTextSize(i);
+        if (this.JMi.measureText(paramEditable) < paramInt)
         {
-          ad.v("MicroMsg.AutoHintSizeEdittext", "get new hint text size %d", new Object[] { Integer.valueOf(i) });
-          this.Jrw = i;
+          ae.v("MicroMsg.AutoHintSizeEdittext", "get new hint text size %d", new Object[] { Integer.valueOf(i) });
+          this.JMl = i;
           setTextSize(0, i);
           AppMethodBeat.o(142497);
           return;
@@ -103,9 +103,9 @@ public class AutoHintSizeEditText
   private void init()
   {
     AppMethodBeat.i(142496);
-    this.Jrs = getTextSize();
-    this.Jrw = this.Jrs;
-    this.Jrt = new Paint(getPaint());
+    this.JMh = getTextSize();
+    this.JMl = this.JMh;
+    this.JMi = new Paint(getPaint());
     addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
@@ -125,7 +125,7 @@ public class AutoHintSizeEditText
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(142498);
-    ad.d("MicroMsg.AutoHintSizeEdittext", "on layout, changed %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.d("MicroMsg.AutoHintSizeEdittext", "on layout, changed %B", new Object[] { Boolean.valueOf(paramBoolean) });
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
       a(getText(), getHint(), paramInt3 - paramInt1 - getPaddingLeft() - getPaddingRight());
@@ -135,7 +135,7 @@ public class AutoHintSizeEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.AutoHintSizeEditText
  * JD-Core Version:    0.7.0.1
  */

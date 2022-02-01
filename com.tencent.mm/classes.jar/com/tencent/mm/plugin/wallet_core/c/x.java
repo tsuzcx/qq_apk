@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +10,10 @@ import org.json.JSONObject;
 public final class x
   extends m
 {
-  public String CPd;
-  public int CPe;
-  public String CPf;
-  public String CPg;
+  public String DgH;
+  public int DgI;
+  public String DgJ;
+  public String DgK;
   
   public x(String paramString1, String paramString2)
   {
@@ -51,9 +51,9 @@ public final class x
     AppMethodBeat.o(69941);
   }
   
-  public final boolean eEH()
+  public final boolean eIo()
   {
-    return this.CPe == 0;
+    return this.DgI == 0;
   }
   
   public final int getFuncId()
@@ -74,17 +74,17 @@ public final class x
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69942);
-    ad.d("Micromsg.NetSceneTenpayCheckPwdByToken", "errCode " + paramInt + " errMsg: " + paramString);
-    this.CPd = paramJSONObject.optString("usertoken");
-    this.CPe = paramJSONObject.optInt("is_free_sms");
-    this.CPf = paramJSONObject.optString("mobile_no");
-    this.CPg = paramJSONObject.optString("relation_key");
+    ae.d("Micromsg.NetSceneTenpayCheckPwdByToken", "errCode " + paramInt + " errMsg: " + paramString);
+    this.DgH = paramJSONObject.optString("usertoken");
+    this.DgI = paramJSONObject.optInt("is_free_sms");
+    this.DgJ = paramJSONObject.optString("mobile_no");
+    this.DgK = paramJSONObject.optString("relation_key");
     AppMethodBeat.o(69942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.x
  * JD-Core Version:    0.7.0.1
  */

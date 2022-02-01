@@ -2,22 +2,21 @@ package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ae
 {
-  private static String Cyu = "";
+  private static String CPZ = "";
   
-  public static void aDQ(String paramString)
+  public static void aFj(String paramString)
   {
     AppMethodBeat.i(68547);
-    ad.i("MicroMsg.LqtTraceInfoStore", "trace info: %s", new Object[] { paramString });
-    Cyu = paramString;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LqtTraceInfoStore", "trace info: %s", new Object[] { paramString });
+    CPZ = paramString;
     AppMethodBeat.o(68547);
   }
   
-  public static String aDR(String paramString)
+  public static String aFk(String paramString)
   {
     AppMethodBeat.i(68549);
     paramString = Uri.parse(paramString).getQueryParameter("operate_id");
@@ -25,17 +24,17 @@ public final class ae
     return paramString;
   }
   
-  public static String eCl()
+  public static String eFT()
   {
-    return Cyu;
+    return CPZ;
   }
   
   public static void parseUrl(String paramString)
   {
     AppMethodBeat.i(68548);
     paramString = Uri.parse(paramString).getQueryParameter("trace_info");
-    if (!bt.isNullOrNil(paramString)) {
-      aDQ(paramString);
+    if (!bu.isNullOrNil(paramString)) {
+      aFj(paramString);
     }
     AppMethodBeat.o(68548);
   }

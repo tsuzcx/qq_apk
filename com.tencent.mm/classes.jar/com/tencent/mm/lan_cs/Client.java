@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class Client
 {
-  public static a gFU;
+  public static a gIB;
   
   public static class C2Java
   {
     public static void onDisconnect(String paramString, int paramInt)
     {
       AppMethodBeat.i(133658);
-      if (Client.gFU != null) {
-        Client.gFU.akQ();
+      if (Client.gIB != null) {
+        Client.gIB.alf();
       }
       AppMethodBeat.o(133658);
     }
@@ -20,8 +20,8 @@ public final class Client
     public static void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133657);
-      if (Client.gFU != null) {
-        Client.gFU.onRecv(paramString, paramInt, paramArrayOfByte);
+      if (Client.gIB != null) {
+        Client.gIB.onRecv(paramString, paramInt, paramArrayOfByte);
       }
       AppMethodBeat.o(133657);
     }
@@ -36,7 +36,7 @@ public final class Client
   
   public static abstract interface a
   {
-    public abstract void akQ();
+    public abstract void alf();
     
     public abstract void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte);
   }

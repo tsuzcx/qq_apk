@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model;
 
 public abstract interface l$a
 {
-  public abstract void eZC();
+  public abstract void fdq();
 }
 
 

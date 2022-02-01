@@ -6,20 +6,20 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dvh;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bld;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class bg$a
   extends l.d
   implements l.b
 {
-  public dvh hGu;
+  public bld hJi;
   
   public bg$a()
   {
-    AppMethodBeat.i(20369);
-    this.hGu = new dvh();
-    AppMethodBeat.o(20369);
+    AppMethodBeat.i(20361);
+    this.hJi = new bld();
+    AppMethodBeat.o(20361);
   }
   
   public final int getCmdId()
@@ -29,17 +29,17 @@ public final class bg$a
   
   public final int getFuncId()
   {
-    return 617;
+    return 616;
   }
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(20370);
-    setRsaInfo(ac.fgx());
-    this.hGu.FDQ = new SKBuiltinBuffer_t().setBuffer(bt.flL());
-    this.hGu.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.hGu.toByteArray();
-    AppMethodBeat.o(20370);
+    AppMethodBeat.i(20362);
+    setRsaInfo(ac.fkn());
+    this.hJi.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
+    this.hJi.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.hJi.toByteArray();
+    AppMethodBeat.o(20362);
     return arrayOfByte;
   }
 }

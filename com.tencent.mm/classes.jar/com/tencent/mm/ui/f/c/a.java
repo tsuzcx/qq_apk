@@ -6,7 +6,7 @@ public abstract interface a
 {
   public abstract CharSequence c(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract int cR(String paramString, int paramInt);
+  public abstract int cV(String paramString, int paramInt);
   
   public abstract CharSequence i(CharSequence paramCharSequence, int paramInt);
 }

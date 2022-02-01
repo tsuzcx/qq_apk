@@ -9,25 +9,25 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class x
   extends t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
     AppMethodBeat.i(140160);
-    cxK = new x();
+    cyr = new x();
     AppMethodBeat.o(140160);
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return "getFile_system_()Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;";
   }
   
-  public final d Hv()
+  public final d HD()
   {
     AppMethodBeat.i(140161);
     b localb = z.bp(MBRuntime.MBParams.class);
@@ -52,7 +52,7 @@ final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.x
  * JD-Core Version:    0.7.0.1
  */

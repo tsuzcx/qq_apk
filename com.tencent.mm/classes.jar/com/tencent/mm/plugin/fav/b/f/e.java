@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.fav.b.f;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,10 +22,10 @@ public final class e
     this.db = parame;
   }
   
-  private static List<Integer> jdMethod_do(List<Integer> paramList)
+  private static List<Integer> dr(List<Integer> paramList)
   {
     AppMethodBeat.i(101721);
-    if (bt.hj(paramList))
+    if (bu.ht(paramList))
     {
       AppMethodBeat.o(101721);
       return null;
@@ -105,10 +105,10 @@ public final class e
     return localArrayList;
   }
   
-  private static List<Integer> dp(List<Integer> paramList)
+  private static List<Integer> ds(List<Integer> paramList)
   {
     AppMethodBeat.i(101722);
-    if (bt.hj(paramList))
+    if (bu.ht(paramList))
     {
       AppMethodBeat.o(101722);
       return null;
@@ -186,16 +186,16 @@ public final class e
     return localArrayList;
   }
   
-  public final boolean agx(String paramString)
+  public final boolean ahu(String paramString)
   {
     AppMethodBeat.i(101723);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(101723);
       return false;
     }
     paramString = "select count(localId) from FavSearchInfo where tagContent like '%" + paramString + "%'";
-    ad.d("MicroMsg.FavSearchStorage", "is tag exist sql {%s}", new Object[] { paramString });
+    ae.d("MicroMsg.FavSearchStorage", "is tag exist sql {%s}", new Object[] { paramString });
     paramString = this.db.a(paramString, null, 2);
     if ((paramString != null) && (paramString.moveToFirst())) {}
     for (int i = paramString.getInt(0);; i = 0)
@@ -244,12 +244,12 @@ public final class e
       }
     }
     paramList2 = "select localId from FavSearchInfo" + " where " + paramList1;
-    localObject = jdMethod_do(paramList);
-    paramList = dp(paramList);
-    if (bt.hj((List)localObject))
+    localObject = dr(paramList);
+    paramList = ds(paramList);
+    if (bu.ht((List)localObject))
     {
       paramList1 = paramList2;
-      if (bt.hj(paramList)) {}
+      if (bu.ht(paramList)) {}
     }
     else
     {
@@ -257,7 +257,7 @@ public final class e
       paramList1 = paramList2;
       int i;
       int j;
-      if (!bt.hj((List)localObject))
+      if (!bu.ht((List)localObject))
       {
         paramList2 = paramList2 + "type = " + ((List)localObject).get(0);
         i = 1;
@@ -273,13 +273,13 @@ public final class e
         }
       }
       paramList2 = paramList1;
-      if (!bt.hj(paramList))
+      if (!bu.ht(paramList))
       {
         paramList2 = paramList1;
-        if (!bt.hj((List)localObject)) {
+        if (!bu.ht((List)localObject)) {
           paramList2 = paramList1 + " or ";
         }
-        paramList1 = paramList2 + "subtype & " + com.tencent.mm.plugin.fav.a.j.DX(((Integer)paramList.get(0)).intValue()) + " != 0";
+        paramList1 = paramList2 + "subtype & " + com.tencent.mm.plugin.fav.a.j.Ek(((Integer)paramList.get(0)).intValue()) + " != 0";
         i = 1;
         for (;;)
         {
@@ -288,14 +288,14 @@ public final class e
             break;
           }
           j = ((Integer)paramList.get(i)).intValue();
-          paramList1 = paramList1 + " or subtype & " + com.tencent.mm.plugin.fav.a.j.DX(j) + " != 0";
+          paramList1 = paramList1 + " or subtype & " + com.tencent.mm.plugin.fav.a.j.Ek(j) + " != 0";
           i += 1;
         }
       }
       paramList1 = paramList2 + ")";
     }
     paramList1 = paramList1 + " order by time desc";
-    ad.d("MicroMsg.FavSearchStorage", "search id sql {%s}", new Object[] { paramList1 });
+    ae.d("MicroMsg.FavSearchStorage", "search id sql {%s}", new Object[] { paramList1 });
     paramList1 = this.db.a(paramList1, null, 2);
     if (paramList1 == null)
     {
@@ -310,7 +310,7 @@ public final class e
     return localArrayList;
   }
   
-  public final void vG(long paramLong)
+  public final void vW(long paramLong)
   {
     AppMethodBeat.i(101724);
     String str = "delete from FavSearchInfo where localId = ".concat(String.valueOf(paramLong));
@@ -318,7 +318,7 @@ public final class e
     AppMethodBeat.o(101724);
   }
   
-  public final com.tencent.mm.plugin.fav.a.j vH(long paramLong)
+  public final com.tencent.mm.plugin.fav.a.j vX(long paramLong)
   {
     com.tencent.mm.plugin.fav.a.j localj = null;
     AppMethodBeat.i(101725);

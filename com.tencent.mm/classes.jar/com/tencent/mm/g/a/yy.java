@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class yy
   extends b
 {
-  public a dNU;
+  public a dOU;
+  public b dOV;
   
   public yy()
   {
@@ -15,21 +16,21 @@ public final class yy
   
   private yy(byte paramByte)
   {
-    AppMethodBeat.i(117552);
-    this.dNU = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91230);
+    this.dOU = new a();
+    this.dOV = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(117552);
+    AppMethodBeat.o(91230);
   }
   
-  public static final class a
-  {
-    public String dDP;
-  }
+  public static final class a {}
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.yy
  * JD-Core Version:    0.7.0.1
  */

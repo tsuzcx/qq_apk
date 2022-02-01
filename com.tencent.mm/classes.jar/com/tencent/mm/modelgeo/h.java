@@ -14,23 +14,23 @@ import com.tencent.map.geolocation.sapp.internal.TencentExtraKeys;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class h
 {
-  private static h hXY = null;
+  private static h iaQ = null;
   private static Context mContext;
-  private ap hXZ;
+  private aq iaR;
   
   private h()
   {
     AppMethodBeat.i(150507);
-    HandlerThread localHandlerThread = d.aZC("SLocationManager");
+    HandlerThread localHandlerThread = d.bbf("SLocationManager");
     localHandlerThread.start();
-    this.hXZ = new ap(localHandlerThread.getLooper());
-    TencentExtraKeys.setContext(aj.getContext());
+    this.iaR = new aq(localHandlerThread.getLooper());
+    TencentExtraKeys.setContext(ak.getContext());
     try
     {
       TencentExtraKeys.setTencentLogCallback(new LocationLogCallback()
@@ -44,26 +44,26 @@ public final class h
             AppMethodBeat.o(150504);
             return;
           case 2: 
-            ad.v("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ae.v("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           case 3: 
-            ad.d("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ae.d("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           case 4: 
-            ad.i("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ae.i("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           case 5: 
-            ad.w("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ae.w("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           }
           if (paramAnonymousThrowable != null) {}
           for (paramAnonymousThrowable = paramAnonymousThrowable.getMessage();; paramAnonymousThrowable = "")
           {
-            ad.e("MicroMsg.SLocationManager", "tag:%s msg:%s th:%s", new Object[] { paramAnonymousString1, paramAnonymousString2, paramAnonymousThrowable });
+            ae.e("MicroMsg.SLocationManager", "tag:%s msg:%s th:%s", new Object[] { paramAnonymousString1, paramAnonymousString2, paramAnonymousThrowable });
             break;
           }
         }
@@ -73,19 +73,19 @@ public final class h
     }
     catch (Exception localException)
     {
-      ad.m("MicroMsg.SLocationManager", "", new Object[] { localException });
+      ae.m("MicroMsg.SLocationManager", "", new Object[] { localException });
       AppMethodBeat.o(150507);
     }
   }
   
-  public static h cC(Context paramContext)
+  public static h cE(Context paramContext)
   {
     AppMethodBeat.i(150508);
-    if (hXY == null) {
-      hXY = new h();
+    if (iaQ == null) {
+      iaQ = new h();
     }
     mContext = paramContext;
-    paramContext = hXY;
+    paramContext = iaQ;
     AppMethodBeat.o(150508);
     return paramContext;
   }
@@ -93,31 +93,31 @@ public final class h
   private void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(150509);
-    this.hXZ.post(paramRunnable);
+    this.iaR.post(paramRunnable);
     AppMethodBeat.o(150509);
   }
   
   public final void a(final TencentLocationListener paramTencentLocationListener, final int paramInt, final Looper paramLooper)
   {
-    AppMethodBeat.i(195237);
+    AppMethodBeat.i(218688);
     execute(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(150506);
-        ad.d("MicroMsg.SLocationManager", "requestLocationUpdate %s, isLoaded %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(TencentLocationManagerOptions.isLoadLibraryEnabled()) });
-        g.yhR.idkeyStat(584L, 0L, 1L, true);
-        TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.aaC())).setCoordinateType(paramInt);
+        ae.d("MicroMsg.SLocationManager", "requestLocationUpdate %s, isLoaded %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(TencentLocationManagerOptions.isLoadLibraryEnabled()) });
+        g.yxI.idkeyStat(584L, 0L, 1L, true);
+        TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.aaL())).setCoordinateType(paramInt);
         TencentLocationRequest localTencentLocationRequest = TencentLocationRequest.create();
         localTencentLocationRequest.setInterval(2000L);
-        ad.i("MicroMsg.SLocationManager", "requestCode %d", new Object[] { Integer.valueOf(TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.aaC())).requestLocationUpdates(localTencentLocationRequest, paramTencentLocationListener, paramLooper)) });
+        ae.i("MicroMsg.SLocationManager", "requestCode %d", new Object[] { Integer.valueOf(TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.aaL())).requestLocationUpdates(localTencentLocationRequest, paramTencentLocationListener, paramLooper)) });
         AppMethodBeat.o(150506);
       }
     });
-    AppMethodBeat.o(195237);
+    AppMethodBeat.o(218688);
   }
   
-  public final void aHU()
+  public final void aIl()
   {
     AppMethodBeat.i(150510);
     execute(new Runnable()
@@ -125,17 +125,13 @@ public final class h
       public final void run()
       {
         AppMethodBeat.i(150505);
-        ad.d("MicroMsg.SLocationManager", "removeUpdate");
-        TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.aaC())).removeUpdates(null);
+        ae.d("MicroMsg.SLocationManager", "removeUpdate");
+        TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.aaL())).removeUpdates(null);
         AppMethodBeat.o(150505);
       }
     });
     AppMethodBeat.o(150510);
   }
-  
-  public static final class a
-    extends Exception
-  {}
 }
 
 

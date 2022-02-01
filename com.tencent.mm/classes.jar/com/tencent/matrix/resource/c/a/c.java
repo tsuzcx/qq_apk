@@ -12,16 +12,16 @@ public enum c
   static
   {
     int i = 0;
-    cIk = new c("OBJECT", 0, 2, 0);
-    cIl = new c("BOOLEAN", 1, 4, 1);
-    cIm = new c("CHAR", 2, 5, 2);
-    cIn = new c("FLOAT", 3, 6, 4);
-    cIo = new c("DOUBLE", 4, 7, 8);
-    cIp = new c("BYTE", 5, 8, 1);
-    cIq = new c("SHORT", 6, 9, 2);
-    cIr = new c("INT", 7, 10, 4);
-    cIs = new c("LONG", 8, 11, 8);
-    cIt = new c[] { cIk, cIl, cIm, cIn, cIo, cIp, cIq, cIr, cIs };
+    cIT = new c("OBJECT", 0, 2, 0);
+    cIU = new c("BOOLEAN", 1, 4, 1);
+    cIV = new c("CHAR", 2, 5, 2);
+    cIW = new c("FLOAT", 3, 6, 4);
+    cIX = new c("DOUBLE", 4, 7, 8);
+    cIY = new c("BYTE", 5, 8, 1);
+    cIZ = new c("SHORT", 6, 9, 2);
+    cJa = new c("INT", 7, 10, 4);
+    cJb = new c("LONG", 8, 11, 8);
+    cJc = new c[] { cIT, cIU, cIV, cIW, cIX, cIY, cIZ, cJa, cJb };
     cfw = new HashMap();
     c[] arrayOfc = values();
     int j = arrayOfc.length;
@@ -39,7 +39,7 @@ public enum c
     this.mSize = paramInt2;
   }
   
-  public static c gZ(int paramInt)
+  public static c ha(int paramInt)
   {
     return (c)cfw.get(Integer.valueOf(paramInt));
   }
@@ -54,7 +54,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.c.a.c
  * JD-Core Version:    0.7.0.1
  */

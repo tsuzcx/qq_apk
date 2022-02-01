@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.sns.ad.timeline.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.d.i;
-import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.ad.e.j;
+import com.tencent.mm.plugin.sns.data.r;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 public final class a
   implements OnlineVideoView.a
 {
-  private int oHD;
-  private p yVM;
-  private Reference<OnlineVideoView> zbq;
-  private Reference<i> zbr;
+  private int oOf;
+  private p zlW;
+  private Reference<OnlineVideoView> zrU;
+  private Reference<j> zrV;
   
-  public a(p paramp, OnlineVideoView paramOnlineVideoView, i parami, int paramInt)
+  public a(p paramp, OnlineVideoView paramOnlineVideoView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(197685);
-    this.yVM = paramp;
-    this.zbq = new WeakReference(paramOnlineVideoView);
-    this.zbr = new WeakReference(parami);
-    this.oHD = paramInt;
-    AppMethodBeat.o(197685);
+    AppMethodBeat.i(219157);
+    this.zlW = paramp;
+    this.zrU = new WeakReference(paramOnlineVideoView);
+    this.zrV = new WeakReference(paramj);
+    this.oOf = paramInt;
+    AppMethodBeat.o(219157);
   }
   
-  private static String PB(int paramInt)
+  private static String Qi(int paramInt)
   {
     switch (paramInt)
     {
@@ -44,75 +44,75 @@ public final class a
   
   public final void onCompletion()
   {
-    AppMethodBeat.i(197687);
-    ad.d("SnsAd.OnlineAdVideoCallback", "online player onCompletion is called , the item is " + PB(this.oHD));
-    p localp = this.yVM;
-    i locali = (i)this.zbr.get();
-    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.zbq.get();
+    AppMethodBeat.i(219159);
+    ae.d("SnsAd.OnlineAdVideoCallback", "online player onCompletion is called , the item is " + Qi(this.oOf));
+    p localp = this.zlW;
+    j localj = (j)this.zrV.get();
+    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.zrU.get();
     long l;
-    if ((localp != null) && (locali != null))
+    if ((localp != null) && (localj != null))
     {
       l = localp.field_snsId;
-      ad.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerCompletion is called, snsId=" + q.zw(l));
-      if (localp.QM(32)) {
+      ae.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerCompletion is called, snsId=" + r.zV(l));
+      if (localp.Rt(32)) {
         break label150;
       }
-      ad.e("SnsAd.OnlineAdVideoCallback", "online player completion, !isAd,  snsId=" + q.zw(l));
+      ae.e("SnsAd.OnlineAdVideoCallback", "online player completion, !isAd,  snsId=" + r.zV(l));
     }
     for (;;)
     {
       if (localOnlineVideoView != null) {
-        localOnlineVideoView.aB(0, true);
+        localOnlineVideoView.aE(0, true);
       }
-      AppMethodBeat.o(197687);
+      AppMethodBeat.o(219159);
       return;
       label150:
-      locali.A(l, false);
+      localj.C(l, false);
     }
   }
   
   public final void onStart(int paramInt)
   {
-    AppMethodBeat.i(197686);
-    ad.d("SnsAd.OnlineAdVideoCallback", "online player onStart is called, durationSecond=" + paramInt + ", the item is " + PB(this.oHD));
-    AppMethodBeat.o(197686);
+    AppMethodBeat.i(219158);
+    ae.d("SnsAd.OnlineAdVideoCallback", "online player onStart is called, durationSecond=" + paramInt + ", the item is " + Qi(this.oOf));
+    AppMethodBeat.o(219158);
   }
   
-  public final void tt(int paramInt)
+  public final void tx(int paramInt)
   {
-    AppMethodBeat.i(197688);
-    p localp = this.yVM;
-    i locali = (i)this.zbr.get();
-    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.zbq.get();
-    if ((localOnlineVideoView != null) && (localp != null) && (locali != null))
+    AppMethodBeat.i(219160);
+    p localp = this.zlW;
+    j localj = (j)this.zrV.get();
+    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.zrU.get();
+    if ((localOnlineVideoView != null) && (localp != null) && (localj != null))
     {
       long l1 = paramInt * 1000;
       long l2 = localOnlineVideoView.getDuration();
-      ad.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying is called , the second  is " + l1 + " the duration is " + l2);
-      if ((localp == null) || (locali == null))
+      ae.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying is called , the second  is " + l1 + " the duration is " + l2);
+      if ((localp == null) || (localj == null))
       {
-        ad.e("SnsAd.OnlineAdVideoCallback", "doOnNewPlayerPlaying is called , the holder or sns info is null");
-        AppMethodBeat.o(197688);
+        ae.e("SnsAd.OnlineAdVideoCallback", "doOnNewPlayerPlaying is called , the holder or sns info is null");
+        AppMethodBeat.o(219160);
         return;
       }
       long l3 = localp.field_snsId;
-      if (!localp.QM(32))
+      if (!localp.Rt(32))
       {
-        ad.w("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, the info is not Ad, snsId=" + q.zw(l3));
-        AppMethodBeat.o(197688);
+        ae.w("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, the info is not Ad, snsId=" + r.zV(l3));
+        AppMethodBeat.o(219160);
         return;
       }
-      locali.zp(localp.field_snsId);
-      locali.ak(localp.field_snsId, l1);
-      if (!locali.zm(l3))
+      localj.zO(localp.field_snsId);
+      localj.aj(localp.field_snsId, l1);
+      if (!localj.zL(l3))
       {
-        locali.d(l3, bt.HI(), false);
-        locali.e(l3, (int)(l2 / 1000L), false);
-        locali.aj(l3, l3);
-        ad.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, addPlay3s, snsId=" + q.zw(l3));
+        localj.d(l3, bu.HQ(), false);
+        localj.e(l3, (int)(l2 / 1000L), false);
+        localj.ai(l3, l3);
+        ae.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, addPlay3s, snsId=" + r.zV(l3));
       }
     }
-    AppMethodBeat.o(197688);
+    AppMethodBeat.o(219160);
   }
 }
 

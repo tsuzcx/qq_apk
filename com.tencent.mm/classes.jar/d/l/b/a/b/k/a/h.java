@@ -9,18 +9,18 @@ import d.l.b.a.b.e.b.c;
 
 public final class h
 {
-  final c MMU;
-  final a.b Nyx;
-  final a Nyy;
-  final an Nyz;
+  final a.b NVE;
+  final a NVF;
+  final an NVG;
+  final c NjZ;
   
   public h(c paramc, a.b paramb, a parama, an paraman)
   {
     AppMethodBeat.i(60288);
-    this.MMU = paramc;
-    this.Nyx = paramb;
-    this.Nyy = parama;
-    this.Nyz = paraman;
+    this.NjZ = paramc;
+    this.NVE = paramb;
+    this.NVF = parama;
+    this.NVG = paraman;
     AppMethodBeat.o(60288);
   }
   
@@ -32,7 +32,7 @@ public final class h
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!p.i(this.MMU, paramObject.MMU)) || (!p.i(this.Nyx, paramObject.Nyx)) || (!p.i(this.Nyy, paramObject.Nyy)) || (!p.i(this.Nyz, paramObject.Nyz))) {}
+        if ((!p.i(this.NjZ, paramObject.NjZ)) || (!p.i(this.NVE, paramObject.NVE)) || (!p.i(this.NVF, paramObject.NVF)) || (!p.i(this.NVG, paramObject.NVG))) {}
       }
     }
     else
@@ -48,19 +48,19 @@ public final class h
   {
     int m = 0;
     AppMethodBeat.i(60290);
-    Object localObject = this.MMU;
+    Object localObject = this.NjZ;
     int i;
     int j;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.Nyx;
+      localObject = this.NVE;
       if (localObject == null) {
         break label105;
       }
       j = localObject.hashCode();
       label42:
-      localObject = this.Nyy;
+      localObject = this.NVF;
       if (localObject == null) {
         break label110;
       }
@@ -69,7 +69,7 @@ public final class h
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.Nyz;
+      localObject = this.NVG;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -85,14 +85,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(60289);
-    String str = "ClassData(nameResolver=" + this.MMU + ", classProto=" + this.Nyx + ", metadataVersion=" + this.Nyy + ", sourceElement=" + this.Nyz + ")";
+    String str = "ClassData(nameResolver=" + this.NjZ + ", classProto=" + this.NVE + ", metadataVersion=" + this.NVF + ", sourceElement=" + this.NVG + ")";
     AppMethodBeat.o(60289);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.h
  * JD-Core Version:    0.7.0.1
  */

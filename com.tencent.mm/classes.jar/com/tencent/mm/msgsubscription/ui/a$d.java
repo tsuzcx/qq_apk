@@ -13,7 +13,7 @@ import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class a$d
   implements View.OnClickListener
 {
@@ -24,27 +24,27 @@ final class a$d
     AppMethodBeat.i(149728);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter$fillInfoIcon$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = com.tencent.mm.msgsubscription.util.b.iEe;
-    paramView = com.tencent.mm.msgsubscription.util.b.a(a.b(this.iCN), this.iCO.iAr, a.b(this.iCN).getResources().getDimensionPixelSize(2131165568));
-    paramView = h.a(a.b(this.iCN), this.iCN.iAY, a.b(this.iCN).getString(2131755793), paramView, (DialogInterface.OnClickListener)a.iCP);
-    paramView.aaq(Color.parseColor("#07C160"));
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter$fillInfoIcon$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = com.tencent.mm.msgsubscription.util.b.iGX;
+    paramView = com.tencent.mm.msgsubscription.util.b.a(a.b(this.iFG), this.iFH.iDk, a.b(this.iFG).getResources().getDimensionPixelSize(2131165568));
+    paramView = h.a(a.b(this.iFG), this.iFG.iDR, a.b(this.iFG).getString(2131755793), paramView, (DialogInterface.OnClickListener)a.iFI);
+    paramView.aaW(Color.parseColor("#07C160"));
     paramView.setCancelable(false);
     paramView.setCanceledOnTouchOutside(false);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter$fillInfoIcon$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(149728);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class a
     implements DialogInterface.OnClickListener
   {
-    public static final a iCP;
+    public static final a iFI;
     
     static
     {
       AppMethodBeat.i(149727);
-      iCP = new a();
+      iFI = new a();
       AppMethodBeat.o(149727);
     }
     

@@ -5,7 +5,7 @@ import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,10 +14,10 @@ public final class c
   @JavascriptInterface
   public final void postMessage(String paramString)
   {
-    AppMethodBeat.i(211712);
+    AppMethodBeat.i(193111);
     if (paramString == null)
     {
-      AppMethodBeat.o(211712);
+      AppMethodBeat.o(193111);
       return;
     }
     try
@@ -25,16 +25,16 @@ public final class c
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("pageId");
       localObject = ((JSONObject)localObject).optJSONObject("params");
-      paramString = j.aGW(paramString);
+      paramString = j.aIq(paramString);
       localObject = String.format("javascript:WxGameJsCoreBridge.invokeEvent(%s)", new Object[] { ((JSONObject)localObject).toString() });
-      ad.i("MicroMsg.GameV8JsInterface", "postMessage, js = %s", new Object[] { localObject });
-      paramString.chX.cB((String)localObject);
-      AppMethodBeat.o(211712);
+      ae.i("MicroMsg.GameV8JsInterface", "postMessage, js = %s", new Object[] { localObject });
+      paramString.chX.cC((String)localObject);
+      AppMethodBeat.o(193111);
       return;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(211712);
+      AppMethodBeat.o(193111);
     }
   }
 }

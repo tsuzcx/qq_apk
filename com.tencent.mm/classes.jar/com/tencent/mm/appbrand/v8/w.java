@@ -4,11 +4,11 @@ import java.nio.ByteBuffer;
 
 public abstract class w
 {
-  public abstract int NE();
+  public abstract int NC();
   
   public abstract void bufferStoreBindTo(long paramLong1, long paramLong2);
   
-  public abstract ByteBuffer getBuffer(int paramInt);
+  public abstract ByteBuffer hA(int paramInt);
   
   public abstract void n(int paramInt, String paramString);
   
@@ -18,7 +18,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.w
  * JD-Core Version:    0.7.0.1
  */

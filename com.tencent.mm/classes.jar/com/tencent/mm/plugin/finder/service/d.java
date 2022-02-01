@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.finder.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.cgi.ba;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.finder.cgi.bb;
 import com.tencent.mm.plugin.finder.cgi.t;
 import com.tencent.mm.plugin.finder.conv.j;
 import com.tencent.mm.plugin.finder.storage.w;
 import com.tencent.mm.plugin.finder.storage.w.b;
 import com.tencent.mm.plugin.i.a.p.a;
 import com.tencent.mm.plugin.i.a.p.b;
-import com.tencent.mm.protocal.protobuf.apu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.protocal.protobuf.aqh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
 import d.g.a.r;
 import d.l;
 import d.z;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/service/FinderSessionInfoService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "getSessionId", "", "scene", "", "username", "", "callable", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService$SessionIdCallback;", "getSessionIdByComment", "sessionId", "objectId", "", "commentId", "getSessionIdByFansId", "fansId", "getSessionIdFromLocal", "talker", "getSessionIdFromServer", "feedId", "source", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "result", "errType", "errCode", "errMsg", "getSessionSender", "getTalkerFromLocal", "isFinderSession", "", "toUsername", "requestSessionStatus", "reqItems", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderMsgGetSessionReqItem;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService$SessionStatusCallback;", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/service/FinderSessionInfoService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "getSessionId", "", "scene", "", "username", "", "callable", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService$SessionIdCallback;", "getSessionIdByComment", "sessionId", "objectId", "", "commentId", "getSessionIdByFansId", "fansId", "getSessionIdFromLocal", "talker", "getSessionIdFromServer", "feedId", "source", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "result", "errType", "errCode", "errMsg", "getSessionSender", "getTalkerFromLocal", "isFinderSession", "", "toUsername", "requestSessionStatus", "reqItems", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderMsgGetSessionReqItem;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService$SessionStatusCallback;", "Companion", "plugin-finder_release"})
 public final class d
   implements com.tencent.mm.plugin.i.a.p
 {
-  public static final a suo;
-  private final d.f rLJ;
+  public static final a sEy;
+  private final d.f rTW;
   
   static
   {
-    AppMethodBeat.i(203541);
-    suo = new a((byte)0);
-    AppMethodBeat.o(203541);
+    AppMethodBeat.i(204101);
+    sEy = new a((byte)0);
+    AppMethodBeat.o(204101);
   }
   
   public d()
   {
-    AppMethodBeat.i(203540);
-    this.rLJ = d.g.O((d.g.a.a)f.suu);
-    AppMethodBeat.o(203540);
+    AppMethodBeat.i(204100);
+    this.rTW = d.g.O((d.g.a.a)f.sEE);
+    AppMethodBeat.o(204100);
   }
   
   private void a(int paramInt, final String paramString1, final String paramString2, final long paramLong1, long paramLong2, final w.b paramb, r<? super String, ? super Integer, ? super Integer, ? super String, z> paramr)
   {
-    AppMethodBeat.i(203536);
+    AppMethodBeat.i(204096);
     d.g.b.p.h(paramString1, "username");
     d.g.b.p.h(paramb, "source");
     d.g.b.p.h(paramr, "callback");
@@ -50,8 +50,8 @@ public final class d
     }
     for (;;)
     {
-      localt.aED().j((com.tencent.mm.vending.c.a)new e(this, paramString1, paramString2, paramLong1, paramLong2, paramb, paramr));
-      AppMethodBeat.o(203536);
+      localt.aET().j((com.tencent.mm.vending.c.a)new e(this, paramString1, paramString2, paramLong1, paramLong2, paramb, paramr));
+      AppMethodBeat.o(204096);
       return;
       if ((paramLong1 != 0L) && (paramLong2 != 0L)) {
         localt = new t(paramInt, paramString1, paramLong1, paramLong2);
@@ -63,126 +63,126 @@ public final class d
   
   private final w getSessionInfoStorage()
   {
-    AppMethodBeat.i(203529);
-    w localw = (w)this.rLJ.getValue();
-    AppMethodBeat.o(203529);
+    AppMethodBeat.i(204089);
+    w localw = (w)this.rTW.getValue();
+    AppMethodBeat.o(204089);
     return localw;
   }
   
   public final void a(String paramString, p.a parama)
   {
-    AppMethodBeat.i(203530);
+    AppMethodBeat.i(204090);
     d.g.b.p.h(parama, "callable");
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       parama.j("", 0, 0, "");
-      ad.e("Finder.SessionInfoService", "[getSessionId] username=" + paramString + " is invalid, just return.");
-      AppMethodBeat.o(203530);
+      ae.e("Finder.SessionInfoService", "[getSessionId] username=" + paramString + " is invalid, just return.");
+      AppMethodBeat.o(204090);
       return;
     }
-    localObject = aij(paramString);
+    localObject = ajg(paramString);
     CharSequence localCharSequence = (CharSequence)localObject;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (i = 1; i != 0; i = 0)
     {
       a(this, 2, paramString, null, 0L, 0L, null, (r)new b(parama), 60);
-      AppMethodBeat.o(203530);
+      AppMethodBeat.o(204090);
       return;
     }
     parama.j((String)localObject, 0, 0, "");
-    AppMethodBeat.o(203530);
+    AppMethodBeat.o(204090);
   }
   
   public final void a(String paramString1, String paramString2, p.a parama)
   {
-    AppMethodBeat.i(203532);
+    AppMethodBeat.i(204092);
     d.g.b.p.h(parama, "callable");
     CharSequence localCharSequence = (CharSequence)paramString2;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       parama.j("", 0, 0, "");
-      ad.e("Finder.SessionInfoService", "[getSessionId] fansId=" + paramString2 + " is invalid, just return.");
-      AppMethodBeat.o(203532);
+      ae.e("Finder.SessionInfoService", "[getSessionId] fansId=" + paramString2 + " is invalid, just return.");
+      AppMethodBeat.o(204092);
       return;
     }
-    paramString1 = getSessionInfoStorage().aiw(paramString1).field_sessionId;
+    paramString1 = getSessionInfoStorage().ajt(paramString1).field_sessionId;
     localCharSequence = (CharSequence)paramString1;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (i = 1; i != 0; i = 0)
     {
       a(this, 1, "", paramString2, 0L, 0L, null, (r)new d(parama), 56);
-      AppMethodBeat.o(203532);
+      AppMethodBeat.o(204092);
       return;
     }
     parama.j(paramString1, 0, 0, "");
-    AppMethodBeat.o(203532);
+    AppMethodBeat.o(204092);
   }
   
-  public final void a(LinkedList<apu> paramLinkedList, p.b paramb)
+  public final void a(LinkedList<aqh> paramLinkedList, p.b paramb)
   {
-    AppMethodBeat.i(203538);
+    AppMethodBeat.i(204098);
     d.g.b.p.h(paramLinkedList, "reqItems");
-    e locale = e.suw;
+    e locale = e.sEG;
     d.g.b.p.h(paramLinkedList, "reqItems");
-    e.suv = paramb;
-    com.tencent.mm.kernel.g.aiU().a(6218, (com.tencent.mm.al.f)locale);
-    paramLinkedList = new ba(paramLinkedList);
-    com.tencent.mm.kernel.g.aiU().b((com.tencent.mm.al.n)paramLinkedList);
-    AppMethodBeat.o(203538);
+    e.sEF = paramb;
+    com.tencent.mm.kernel.g.ajj().a(6218, (com.tencent.mm.ak.f)locale);
+    paramLinkedList = new bb(paramLinkedList);
+    com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)paramLinkedList);
+    AppMethodBeat.o(204098);
   }
   
-  public final String aii(String paramString)
+  public final String ajf(String paramString)
   {
-    AppMethodBeat.i(203533);
-    paramString = getSessionInfoStorage().aiy(paramString);
-    AppMethodBeat.o(203533);
+    AppMethodBeat.i(204093);
+    paramString = getSessionInfoStorage().ajv(paramString);
+    AppMethodBeat.o(204093);
     return paramString;
   }
   
-  public final String aij(String paramString)
+  public final String ajg(String paramString)
   {
-    AppMethodBeat.i(203534);
-    paramString = getSessionInfoStorage().aix(paramString);
-    AppMethodBeat.o(203534);
+    AppMethodBeat.i(204094);
+    paramString = getSessionInfoStorage().aju(paramString);
+    AppMethodBeat.o(204094);
     return paramString;
   }
   
-  public final String aik(String paramString)
+  public final String ajh(String paramString)
   {
-    AppMethodBeat.i(203535);
-    if (am.aSU(getSessionInfoStorage().aiy(paramString)))
+    AppMethodBeat.i(204095);
+    if (an.aUu(getSessionInfoStorage().ajv(paramString)))
     {
-      paramString = u.aAm();
+      paramString = v.aAC();
       d.g.b.p.g(paramString, "ConfigStorageLogic.getUsernameFromUserInfo()");
-      AppMethodBeat.o(203535);
+      AppMethodBeat.o(204095);
       return paramString;
     }
-    paramString = u.aAu();
+    paramString = v.aAK();
     d.g.b.p.g(paramString, "ConfigStorageLogic.getMyFinderUsername()");
-    AppMethodBeat.o(203535);
+    AppMethodBeat.o(204095);
     return paramString;
   }
   
-  public final boolean ail(String paramString)
+  public final boolean aji(String paramString)
   {
-    AppMethodBeat.i(203539);
+    AppMethodBeat.i(204099);
     if (paramString != null)
     {
-      boolean bool = d.n.n.nA(paramString, "@findermsg");
-      AppMethodBeat.o(203539);
+      boolean bool = d.n.n.nG(paramString, "@findermsg");
+      AppMethodBeat.o(204099);
       return bool;
     }
-    AppMethodBeat.o(203539);
+    AppMethodBeat.o(204099);
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/service/FinderSessionInfoService$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/service/FinderSessionInfoService$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
   static final class b
     extends d.g.b.q
     implements r<String, Integer, Integer, String, z>
@@ -193,7 +193,7 @@ public final class d
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
   static final class c
     extends d.g.b.q
     implements r<String, Integer, Integer, String, z>
@@ -204,7 +204,7 @@ public final class d
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
   static final class d
     extends d.g.b.q
     implements r<String, Integer, Integer, String, z>
@@ -215,25 +215,25 @@ public final class d
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetMsgSessionIdResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetMsgSessionIdResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class e<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     e(d paramd, String paramString1, String paramString2, long paramLong1, long paramLong2, w.b paramb, r paramr) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
   static final class f
     extends d.g.b.q
     implements d.g.a.a<w>
   {
-    public static final f suu;
+    public static final f sEE;
     
     static
     {
-      AppMethodBeat.i(203528);
-      suu = new f();
-      AppMethodBeat.o(203528);
+      AppMethodBeat.i(204088);
+      sEE = new f();
+      AppMethodBeat.o(204088);
     }
     
     f()

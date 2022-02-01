@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Context;
 import android.os.Handler;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.o;
 import java.util.Map;
 
 public abstract interface c
 {
-  public abstract i EK();
+  public abstract i EM();
   
-  public abstract Map<String, m> EL();
+  public abstract Map<String, m> EN();
   
-  public abstract p Fg();
+  public abstract q Fl();
   
   public abstract <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass);
   
-  public abstract void M(Runnable paramRunnable);
+  public abstract void K(Runnable paramRunnable);
   
   public abstract void a(at paramat);
   
@@ -25,17 +25,17 @@ public abstract interface c
   
   public abstract boolean a(k paramk);
   
-  public abstract com.tencent.mm.plugin.appbrand.a.b aVD();
+  public abstract com.tencent.mm.plugin.appbrand.a.b aWc();
   
-  public abstract com.tencent.mm.plugin.appbrand.widget.dialog.m aVE();
+  public abstract com.tencent.mm.plugin.appbrand.widget.dialog.m aWd();
   
-  public abstract int aXC();
+  public abstract boolean aXO();
   
-  public abstract boolean aXt();
+  public abstract int aXX();
   
-  public abstract Handler aYg();
+  public abstract Handler aYA();
   
-  public abstract i aYh();
+  public abstract i aYB();
   
   public abstract <T extends j> T ar(Class<T> paramClass);
   
@@ -59,7 +59,7 @@ public abstract interface c
   
   public static abstract interface a
   {
-    public abstract void Pd(String paramString);
+    public abstract void PL(String paramString);
     
     public abstract void proceed();
   }
@@ -77,7 +77,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c
  * JD-Core Version:    0.7.0.1
  */

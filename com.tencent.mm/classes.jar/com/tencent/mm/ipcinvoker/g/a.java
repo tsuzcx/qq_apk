@@ -6,8 +6,8 @@ import java.lang.reflect.Field;
 
 public final class a<FieldType>
 {
-  private Class<?> cNV;
-  private String cNW;
+  private Class<?> cOF;
+  private String cOG;
   private Field mField;
   private boolean mInited;
   
@@ -20,12 +20,12 @@ public final class a<FieldType>
       AppMethodBeat.o(158827);
       throw paramClass;
     }
-    this.cNV = paramClass;
-    this.cNW = paramString;
+    this.cOF = paramClass;
+    this.cOG = paramString;
     AppMethodBeat.o(158827);
   }
   
-  private FieldType ahG()
+  private FieldType ahV()
   {
     Object localObject1 = null;
     try
@@ -34,7 +34,7 @@ public final class a<FieldType>
       prepare();
       if (this.mField == null)
       {
-        b.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.cNW });
+        b.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.cOG });
         AppMethodBeat.o(158829);
         return localObject1;
       }
@@ -68,7 +68,7 @@ public final class a<FieldType>
           AppMethodBeat.o(158828);
           return;
         }
-        localClass1 = this.cNV;
+        localClass1 = this.cOF;
         if (localClass1 == null) {}
       }
       finally
@@ -76,7 +76,7 @@ public final class a<FieldType>
         try
         {
           Class localClass1;
-          Field localField = localClass1.getDeclaredField(this.cNW);
+          Field localField = localClass1.getDeclaredField(this.cOG);
           localField.setAccessible(true);
           this.mField = localField;
           this.mInited = true;
@@ -92,7 +92,7 @@ public final class a<FieldType>
   }
   
   /* Error */
-  public final FieldType ahH()
+  public final FieldType ahW()
   {
     // Byte code:
     //   0: aload_0
@@ -102,7 +102,7 @@ public final class a<FieldType>
     //   7: aconst_null
     //   8: astore_1
     //   9: aload_0
-    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:ahG	()Ljava/lang/Object;
+    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:ahV	()Ljava/lang/Object;
     //   13: astore_2
     //   14: aload_2
     //   15: astore_1

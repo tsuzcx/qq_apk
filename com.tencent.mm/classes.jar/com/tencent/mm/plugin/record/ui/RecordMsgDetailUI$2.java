@@ -11,9 +11,9 @@ final class RecordMsgDetailUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(193329);
-    this.xsh.finish();
-    AppMethodBeat.o(193329);
+    AppMethodBeat.i(186604);
+    this.xIe.finish();
+    AppMethodBeat.o(186604);
     return true;
   }
 }

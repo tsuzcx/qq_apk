@@ -6,11 +6,11 @@ public abstract interface i
 {
   public abstract LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, c paramc, long paramLong);
   
-  public abstract LinkedList<GalleryItem.AlbumItem> cUw();
+  public abstract LinkedList<GalleryItem.AlbumItem> cXb();
   
-  public abstract void cUy();
+  public abstract void cXd();
   
-  public abstract void cUz();
+  public abstract void cXe();
   
   public static abstract interface b
   {
@@ -24,7 +24,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.i
  * JD-Core Version:    0.7.0.1
  */

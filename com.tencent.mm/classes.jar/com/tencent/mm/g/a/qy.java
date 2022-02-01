@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
 
 public final class qy
   extends b
 {
-  public a dFz;
+  public a dGB;
   
   public qy()
   {
@@ -15,21 +16,26 @@ public final class qy
   
   private qy(byte paramByte)
   {
-    AppMethodBeat.i(197157);
-    this.dFz = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125627);
+    this.dGB = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(197157);
+    AppMethodBeat.o(125627);
   }
   
   public static final class a
   {
-    public int dFA = 0;
+    public SnsAdClick dGA;
+    public int dGC;
+    public String dGD;
+    public int errorCode;
+    public long timestamp;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.qy
  * JD-Core Version:    0.7.0.1
  */

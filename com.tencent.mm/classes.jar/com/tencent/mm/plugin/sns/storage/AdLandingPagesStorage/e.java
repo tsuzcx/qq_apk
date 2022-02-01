@@ -1,70 +1,70 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public final class e
 {
   public static void a(final String paramString1, String paramString2, String paramString3, int paramInt, f.a parama)
   {
-    AppMethodBeat.i(198108);
+    AppMethodBeat.i(219622);
     final String str = paramString2 + paramString3;
-    if (!bt.isNullOrNil(str))
+    if (!bu.isNullOrNil(str))
     {
-      if (i.fv(str))
+      if (o.fB(str))
       {
-        ad.i("MicroMsg.AdLandingPageDownloadFileHelper", "cdn file %s is already exists", new Object[] { str });
-        aq.f(new Runnable()
+        ae.i("MicroMsg.AdLandingPageDownloadFileHelper", "cdn file %s is already exists", new Object[] { str });
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97307);
-            this.zLA.axG(str);
+            this.AcH.ayY(str);
             AppMethodBeat.o(97307);
           }
         });
-        AppMethodBeat.o(198108);
+        AppMethodBeat.o(219622);
         return;
       }
       new d(paramString1, paramString2, paramString3, paramInt, new d.a()
       {
-        public final void axG(String paramAnonymousString)
+        public final void ayY(String paramAnonymousString)
         {
           AppMethodBeat.i(97311);
-          ad.i("MicroMsg.AdLandingPageDownloadFileHelper", " download success for cdn file %s, path %s", new Object[] { paramString1, paramAnonymousString });
-          this.zLA.axG(str);
+          ae.i("MicroMsg.AdLandingPageDownloadFileHelper", " download success for cdn file %s, path %s", new Object[] { paramString1, paramAnonymousString });
+          this.AcH.ayY(str);
           AppMethodBeat.o(97311);
         }
         
-        public final void dRX()
+        public final void dVv()
         {
           AppMethodBeat.i(97310);
-          ad.i("MicroMsg.AdLandingPageDownloadFileHelper", " download error for cdn file %s", new Object[] { paramString1 });
-          this.zLA.dRX();
+          ae.i("MicroMsg.AdLandingPageDownloadFileHelper", " download error for cdn file %s", new Object[] { paramString1 });
+          this.AcH.dVv();
           AppMethodBeat.o(97310);
         }
       }).execute(new Void[0]);
     }
-    AppMethodBeat.o(198108);
+    AppMethodBeat.o(219622);
   }
   
   public static void a(final String paramString1, final String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
     AppMethodBeat.i(97312);
-    if (!bt.isNullOrNil(paramString2))
+    if (!bu.isNullOrNil(paramString2))
     {
-      if (i.fv(paramString2))
+      if (o.fB(paramString2))
       {
-        ad.i("MicroMsg.AdLandingPageDownloadFileHelper", "small file %s is already exists", new Object[] { paramString2 });
-        aq.f(new Runnable()
+        ae.i("MicroMsg.AdLandingPageDownloadFileHelper", "small file %s is already exists", new Object[] { paramString2 });
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97291);
-            this.zLA.axG(paramString2);
+            this.AcH.ayY(paramString2);
             AppMethodBeat.o(97291);
           }
         });
@@ -73,47 +73,47 @@ public final class e
       }
       new f(paramString1, paramString2, paramBoolean, paramInt, 0, new f.a()
       {
-        public final void axG(final String paramAnonymousString)
+        public final void ayY(final String paramAnonymousString)
         {
           AppMethodBeat.i(97297);
-          ad.i("MicroMsg.AdLandingPageDownloadFileHelper", " download success for small file %s", new Object[] { paramString1 });
-          aq.f(new Runnable()
+          ae.i("MicroMsg.AdLandingPageDownloadFileHelper", " download success for small file %s", new Object[] { paramString1 });
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(97294);
-              e.2.this.zLA.axG(paramAnonymousString);
+              e.2.this.AcH.ayY(paramAnonymousString);
               AppMethodBeat.o(97294);
             }
           });
           AppMethodBeat.o(97297);
         }
         
-        public final void dRW()
+        public final void dVu()
         {
           AppMethodBeat.i(97295);
-          aq.f(new Runnable()
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(97292);
-              e.2.this.zLA.dRW();
+              e.2.this.AcH.dVu();
               AppMethodBeat.o(97292);
             }
           });
           AppMethodBeat.o(97295);
         }
         
-        public final void dRX()
+        public final void dVv()
         {
           AppMethodBeat.i(97296);
-          ad.e("MicroMsg.AdLandingPageDownloadFileHelper", " download error for small file %s", new Object[] { paramString1 });
-          aq.f(new Runnable()
+          ae.e("MicroMsg.AdLandingPageDownloadFileHelper", " download error for small file %s", new Object[] { paramString1 });
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(97293);
-              e.2.this.zLA.dRX();
+              e.2.this.AcH.dVv();
               AppMethodBeat.o(97293);
             }
           });
@@ -123,12 +123,12 @@ public final class e
       AppMethodBeat.o(97312);
       return;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(97298);
-        this.zLA.dRX();
+        this.AcH.dVv();
         AppMethodBeat.o(97298);
       }
     });

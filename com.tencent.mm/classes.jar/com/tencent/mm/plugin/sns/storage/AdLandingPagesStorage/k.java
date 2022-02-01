@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import org.json.JSONArray;
 
 public final class k
 {
-  public String dFy;
-  public String dzb;
+  public int Adp;
+  public int Adq;
+  public int Adr;
+  public int Ads;
+  public int Adt;
+  public int Adu;
+  private String Adv;
+  public String Adw;
+  public JSONArray Adx;
+  public String dAg;
+  public String dGD;
   public long enterTime;
   public String extra;
-  public int fFu;
+  public int fHy;
   public int favCount;
-  public int glr;
-  public String ktn;
-  public int pPw;
-  public int rsA;
-  public int rsz;
-  public int zAN;
-  public int zMi;
-  public int zMj;
-  public int zMk;
-  public int zMl;
-  public int zMm;
-  public int zMn;
-  private String zMo;
-  public String zMp;
-  public JSONArray zMq;
-  public String zpD;
+  public int gnM;
+  public String kwD;
+  public int pWb;
+  public int rAM;
+  public int rAN;
+  public String zGS;
+  public int zRN;
   
   public k()
   {
     AppMethodBeat.i(97392);
     this.extra = "";
-    this.zMq = new JSONArray();
+    this.Adx = new JSONArray();
     AppMethodBeat.o(97392);
   }
   
-  public final String dYf()
+  public final String ebJ()
   {
     AppMethodBeat.i(97393);
-    this.zMo = this.zMq.toString();
-    ad.d("MicroMsg.AdLandingPagesReportInfo", "componentsStatStr:%s", new Object[] { this.zMo });
-    if (!bt.isNullOrNil(this.zMo)) {}
+    this.Adv = this.Adx.toString();
+    ae.d("MicroMsg.AdLandingPagesReportInfo", "componentsStatStr:%s", new Object[] { this.Adv });
+    if (!bu.isNullOrNil(this.Adv)) {}
     try
     {
-      this.zMo = URLEncoder.encode(this.zMo, "UTF-8");
+      this.Adv = URLEncoder.encode(this.Adv, "UTF-8");
       long l1 = 0L;
       try
       {
-        long l2 = q.ayi(this.dzb);
+        long l2 = r.azz(this.dAg);
         l1 = l2;
       }
       catch (Exception localException)
@@ -62,16 +62,16 @@ public final class k
         {
           StringBuilder localStringBuilder;
           String str1;
-          ad.e("AdLandingPagesReportInfo", "", new Object[] { localException });
+          ae.e("AdLandingPagesReportInfo", "", new Object[] { localException });
           continue;
-          String str2 = this.zpD;
+          String str2 = this.zGS;
         }
       }
-      localStringBuilder = new StringBuilder().append(q.zw(l1)).append(",").append(this.dFy).append(",").append(this.glr).append(",").append(this.fFu).append(",").append(this.pPw).append(",").append(this.zMi).append(",").append(this.zMj).append(",").append(this.zMk).append(",").append(this.zMl).append(",").append(this.zMm).append(",").append(this.zMn).append(",").append(this.rsA).append(",").append(this.rsz).append(",").append(this.favCount).append(",").append(this.zMo).append(",").append(this.enterTime).append(",").append(this.zMp).append(",");
-      if (this.zpD == null)
+      localStringBuilder = new StringBuilder().append(r.zV(l1)).append(",").append(this.dGD).append(",").append(this.gnM).append(",").append(this.fHy).append(",").append(this.pWb).append(",").append(this.Adp).append(",").append(this.Adq).append(",").append(this.Adr).append(",").append(this.Ads).append(",").append(this.Adt).append(",").append(this.Adu).append(",").append(this.rAN).append(",").append(this.rAM).append(",").append(this.favCount).append(",").append(this.Adv).append(",").append(this.enterTime).append(",").append(this.Adw).append(",");
+      if (this.zGS == null)
       {
         str1 = "";
-        str1 = str1 + "," + this.extra + "," + this.zAN + "," + this.ktn;
+        str1 = str1 + "," + this.extra + "," + this.zRN + "," + this.kwD;
         AppMethodBeat.o(97393);
         return str1;
       }
@@ -80,14 +80,14 @@ public final class k
     {
       for (;;)
       {
-        ad.e("MicroMsg.AdLandingPagesReportInfo", "not support encode " + localUnsupportedEncodingException.toString());
+        ae.e("MicroMsg.AdLandingPagesReportInfo", "not support encode " + localUnsupportedEncodingException.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k
  * JD-Core Version:    0.7.0.1
  */

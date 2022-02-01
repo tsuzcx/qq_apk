@@ -1,63 +1,106 @@
 package com.tencent.mm.plugin.lite.d;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mm.sdk.e.c;
 
-public final class b
-  extends a
+public abstract class b
+  extends c
 {
-  protected static c.a info;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eGD = "appId".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int eHV;
+  private static final int fkK;
+  private static final int rowid_HASHCODE = "rowid".hashCode();
+  private static final int vkS = "signatureKey".hashCode();
+  private static final int vkT;
+  private boolean eGW = true;
+  private boolean eGm = true;
+  private boolean eHQ = true;
+  public String field_appId;
+  public String field_patchId;
+  public String field_pkgPath;
+  public String field_pkgType;
+  public String field_signatureKey;
+  public long field_updateTime;
+  private boolean fkF = true;
+  private boolean vkQ = true;
+  private boolean vkR = true;
   
   static
   {
-    AppMethodBeat.i(214624);
-    c.a locala = new c.a();
-    locala.IhA = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.IhC.put("appId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IhB = "appId";
-    locala.columns[1] = "signatureKey";
-    locala.IhC.put("signatureKey", "TEXT");
-    localStringBuilder.append(" signatureKey TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "pkgPath";
-    locala.IhC.put("pkgPath", "TEXT");
-    localStringBuilder.append(" pkgPath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "pkgType";
-    locala.IhC.put("pkgType", "TEXT");
-    localStringBuilder.append(" pkgType TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "patchId";
-    locala.IhC.put("patchId", "TEXT");
-    localStringBuilder.append(" patchId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "updateTime";
-    locala.IhC.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(214624);
+    eHV = "pkgPath".hashCode();
+    fkK = "pkgType".hashCode();
+    vkT = "patchId".hashCode();
   }
   
-  public final boolean dfH()
+  public void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(214623);
-    boolean bool = "debug".equals(this.field_pkgType);
-    AppMethodBeat.o(214623);
-    return bool;
+    String[] arrayOfString = paramCursor.getColumnNames();
+    if (arrayOfString == null) {
+      return;
+    }
+    int i = 0;
+    int j = arrayOfString.length;
+    label20:
+    int k;
+    if (i < j)
+    {
+      k = arrayOfString[i].hashCode();
+      if (eGD != k) {
+        break label65;
+      }
+      this.field_appId = paramCursor.getString(i);
+      this.eGm = true;
+    }
+    for (;;)
+    {
+      i += 1;
+      break label20;
+      break;
+      label65:
+      if (vkS == k) {
+        this.field_signatureKey = paramCursor.getString(i);
+      } else if (eHV == k) {
+        this.field_pkgPath = paramCursor.getString(i);
+      } else if (fkK == k) {
+        this.field_pkgType = paramCursor.getString(i);
+      } else if (vkT == k) {
+        this.field_patchId = paramCursor.getString(i);
+      } else if (eGZ == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
+      }
+    }
   }
   
-  public final c.a getDBInfo()
+  public ContentValues convertTo()
   {
-    return null;
+    ContentValues localContentValues = new ContentValues();
+    if (this.eGm) {
+      localContentValues.put("appId", this.field_appId);
+    }
+    if (this.vkQ) {
+      localContentValues.put("signatureKey", this.field_signatureKey);
+    }
+    if (this.eHQ) {
+      localContentValues.put("pkgPath", this.field_pkgPath);
+    }
+    if (this.fkF) {
+      localContentValues.put("pkgType", this.field_pkgType);
+    }
+    if (this.vkR) {
+      localContentValues.put("patchId", this.field_patchId);
+    }
+    if (this.eGW) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 

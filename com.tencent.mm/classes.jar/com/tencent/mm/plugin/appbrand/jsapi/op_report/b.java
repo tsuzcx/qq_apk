@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 import com.tencent.luggage.sdk.b.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.protocal.protobuf.cuz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.vending.g.d.a;
 
 public final class b

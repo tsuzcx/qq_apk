@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.music.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
+import com.tencent.mm.ai.e;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSourceFactory;
 import com.tencent.qqmusic.mediaplayer.upstream.INativeDataSource;
@@ -9,17 +9,17 @@ import com.tencent.qqmusic.mediaplayer.upstream.INativeDataSource;
 public final class b
   implements IDataSourceFactory
 {
-  public e hLS;
+  public e hOL;
   
   public b(e parame)
   {
-    this.hLS = parame;
+    this.hOL = parame;
   }
   
   public final IDataSource createDataSource()
   {
     AppMethodBeat.i(137426);
-    a locala = new a(this.hLS);
+    a locala = new a(this.hOL);
     AppMethodBeat.o(137426);
     return locala;
   }

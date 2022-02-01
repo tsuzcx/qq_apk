@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.finder.utils;
 
 import android.media.ExifInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.n.k;
 import d.v;
 import java.util.Collection;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "", "exif", "Landroid/media/ExifInterface;", "(Landroid/media/ExifInterface;)V", "Latitude", "", "getLatitude", "()Ljava/lang/Float;", "setLatitude", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "Longitude", "getLongitude", "setLongitude", "TAG", "", "isValid", "", "()Z", "setValid", "(Z)V", "convertToDegree", "stringDMS", "(Ljava/lang/String;)Ljava/lang/Float;", "toString", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "", "exif", "Landroid/media/ExifInterface;", "(Landroid/media/ExifInterface;)V", "Latitude", "", "getLatitude", "()Ljava/lang/Float;", "setLatitude", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "Longitude", "getLongitude", "setLongitude", "TAG", "", "isValid", "", "()Z", "setValid", "(Z)V", "convertToDegree", "stringDMS", "(Ljava/lang/String;)Ljava/lang/Float;", "toString", "plugin-finder_release"})
 public final class q
 {
   private final String TAG;
-  private boolean cJS;
-  Float sMM;
-  Float sMN;
+  private boolean cKB;
+  Float sXX;
+  Float sXY;
   
   public q(ExifInterface paramExifInterface)
   {
@@ -27,28 +27,28 @@ public final class q
     paramExifInterface = paramExifInterface.getAttribute("GPSLongitudeRef");
     if ((localObject != null) && (str2 != null) && (str1 != null) && (paramExifInterface != null))
     {
-      this.cJS = true;
+      this.cKB = true;
       if (p.i(str2, "N")) {}
-      for (this.sMM = ajc((String)localObject); p.i(paramExifInterface, "E"); this.sMM = Float.valueOf(0.0F - ((Float)localObject).floatValue()))
+      for (this.sXX = ajZ((String)localObject); p.i(paramExifInterface, "E"); this.sXX = Float.valueOf(0.0F - ((Float)localObject).floatValue()))
       {
-        this.sMN = ajc(str1);
+        this.sXY = ajZ(str1);
         AppMethodBeat.o(167973);
         return;
-        localObject = ajc((String)localObject);
+        localObject = ajZ((String)localObject);
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
       }
-      paramExifInterface = ajc(str1);
+      paramExifInterface = ajZ(str1);
       if (paramExifInterface == null) {
-        p.gfZ();
+        p.gkB();
       }
-      this.sMN = Float.valueOf(0.0F - paramExifInterface.floatValue());
+      this.sXY = Float.valueOf(0.0F - paramExifInterface.floatValue());
     }
     AppMethodBeat.o(167973);
   }
   
-  private final Float ajc(String paramString)
+  private final Float ajZ(String paramString)
   {
     AppMethodBeat.i(167971);
     try
@@ -64,7 +64,7 @@ public final class q
     }
     catch (Throwable paramString)
     {
-      ad.printErrStackTrace(this.TAG, paramString, "convertToDegree", new Object[0]);
+      ae.printErrStackTrace(this.TAG, paramString, "convertToDegree", new Object[0]);
       AppMethodBeat.o(167971);
       return null;
     }
@@ -108,7 +108,7 @@ public final class q
   public final String toString()
   {
     AppMethodBeat.i(167972);
-    String str = String.valueOf(this.sMM) + ", " + String.valueOf(this.sMN);
+    String str = String.valueOf(this.sXX) + ", " + String.valueOf(this.sXY);
     AppMethodBeat.o(167972);
     return str;
   }

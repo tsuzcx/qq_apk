@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "", "path", "", "durationMs", "", "(Ljava/lang/String;J)V", "getDurationMs", "()J", "setDurationMs", "(J)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "", "path", "", "durationMs", "", "(Ljava/lang/String;J)V", "getDurationMs", "()J", "setDurationMs", "(J)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-recordvideo_release"})
 public final class b
 {
   public long bup;
@@ -12,15 +12,15 @@ public final class b
   
   private b(String paramString)
   {
-    AppMethodBeat.i(200777);
+    AppMethodBeat.i(207035);
     this.path = paramString;
     this.bup = 0L;
-    AppMethodBeat.o(200777);
+    AppMethodBeat.o(207035);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(200781);
+    AppMethodBeat.i(207039);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
@@ -31,40 +31,40 @@ public final class b
     }
     else
     {
-      AppMethodBeat.o(200781);
+      AppMethodBeat.o(207039);
       return true;
     }
-    AppMethodBeat.o(200781);
+    AppMethodBeat.o(207039);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(200780);
+    AppMethodBeat.i(207038);
     String str = this.path;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
       long l = this.bup;
       int j = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(200780);
+      AppMethodBeat.o(207038);
       return i * 31 + j;
     }
   }
   
   public final void setPath(String paramString)
   {
-    AppMethodBeat.i(200776);
+    AppMethodBeat.i(207034);
     p.h(paramString, "<set-?>");
     this.path = paramString;
-    AppMethodBeat.o(200776);
+    AppMethodBeat.o(207034);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(200779);
+    AppMethodBeat.i(207037);
     String str = "TTSInfo(path=" + this.path + ", durationMs=" + this.bup + ")";
-    AppMethodBeat.o(200779);
+    AppMethodBeat.o(207037);
     return str;
   }
 }

@@ -1,112 +1,70 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.c.cp;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bl
-  extends j<bk>
-  implements f
+  extends cp
 {
-  public static final String[] SQL_CREATE;
-  private final l<f.a, bk> Iou;
-  private e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(217615);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bk.info, "FriendUser") };
-    AppMethodBeat.o(217615);
+    AppMethodBeat.i(213448);
+    c.a locala = new c.a();
+    locala.IBL = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "encryptUsername";
+    locala.IBN.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "encryptUsername";
+    locala.columns[1] = "username";
+    locala.IBN.put("username", "TEXT default '' ");
+    localStringBuilder.append(" username TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "modifyTime";
+    locala.IBN.put("modifyTime", "LONG default '0' ");
+    localStringBuilder.append(" modifyTime LONG default '0' ");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(213448);
   }
   
-  public bl(e parame)
+  public bl()
   {
-    super(parame, bk.info, "FriendUser", null);
-    AppMethodBeat.i(217609);
-    this.Iou = new l() {};
-    this.db = parame;
-    AppMethodBeat.o(217609);
+    AppMethodBeat.i(213447);
+    this.field_encryptUsername = "";
+    this.field_username = "";
+    AppMethodBeat.o(213447);
   }
   
-  private void b(bk parambk)
+  public bl(String paramString)
   {
-    AppMethodBeat.i(217606);
-    if (this.Iou.dV(parambk)) {
-      this.Iou.doNotify();
+    this();
+    AppMethodBeat.i(213446);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    AppMethodBeat.o(217606);
+    this.field_encryptUsername = str;
+    this.field_modifyTime = System.currentTimeMillis();
+    AppMethodBeat.o(213446);
   }
   
-  public final void a(f.a parama)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(217607);
-    this.Iou.a(parama, null);
-    AppMethodBeat.o(217607);
-  }
-  
-  public final bk apO(String paramString)
-  {
-    AppMethodBeat.i(217610);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(217610);
-      return null;
-    }
-    bk localbk = new bk();
-    paramString = this.db.a("FriendUser", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localbk.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(217610);
-    return localbk;
-  }
-  
-  public final void b(f.a parama)
-  {
-    AppMethodBeat.i(217608);
-    this.Iou.remove(parama);
-    AppMethodBeat.o(217608);
-  }
-  
-  public final int dlQ()
-  {
-    AppMethodBeat.i(217611);
-    Object localObject = String.format("select count(rowid) from %s", new Object[] { "FriendUser" });
-    localObject = this.db.rawQuery((String)localObject, null);
-    if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
-    {
-      int i = ((Cursor)localObject).getInt(0);
-      ((Cursor)localObject).close();
-      ad.i("MicroMsg.FriendUserStorage", "#recordCnts#, count:".concat(String.valueOf(i)));
-      AppMethodBeat.o(217611);
-      return i;
-    }
-    AppMethodBeat.o(217611);
-    return 0;
-  }
-  
-  public final int dlR()
-  {
-    AppMethodBeat.i(217612);
-    long l = System.currentTimeMillis();
-    int i = this.db.delete("FriendUser", "(modifyTime< ?)", new String[] { String.valueOf(l - 604800000L) });
-    if (i > 0) {
-      doNotify();
-    }
-    ad.i("MicroMsg.FriendUserStorage", "#Clear Records#, result:".concat(String.valueOf(i)));
-    AppMethodBeat.o(217612);
-    return i;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bl
  * JD-Core Version:    0.7.0.1
  */

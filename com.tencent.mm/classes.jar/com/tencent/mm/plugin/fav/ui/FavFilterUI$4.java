@@ -11,7 +11,7 @@ final class FavFilterUI$4
   public final void run()
   {
     AppMethodBeat.i(106696);
-    this.rvc.dismiss();
+    this.rDo.dismiss();
     AppMethodBeat.o(106696);
   }
 }

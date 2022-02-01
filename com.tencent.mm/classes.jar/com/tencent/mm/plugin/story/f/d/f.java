@@ -5,7 +5,7 @@ import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"getGalleryFilterList", "", "", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "dataSeed", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "getGalleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "getGalleryUserList", "", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"getGalleryFilterList", "", "", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "dataSeed", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "getGalleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "getGalleryUserList", "", "plugin-story_release"})
 public final class f
 {
   public static final List<String> a(com.tencent.mm.plugin.story.api.p paramp)
@@ -14,25 +14,25 @@ public final class f
     d.g.b.p.h(paramp, "dataSeed");
     if ((paramp instanceof b))
     {
-      paramp = ((b)paramp).hRC;
+      paramp = ((b)paramp).hUu;
       AppMethodBeat.o(118915);
       return paramp;
     }
     if ((paramp instanceof a))
     {
-      paramp = ((a)paramp).hRC;
+      paramp = ((a)paramp).hUu;
       AppMethodBeat.o(118915);
       return paramp;
     }
     if ((paramp instanceof c))
     {
-      paramp = ((c)paramp).AMq;
+      paramp = ((c)paramp).BdS;
       AppMethodBeat.o(118915);
       return paramp;
     }
     if ((paramp instanceof d))
     {
-      paramp = ((d)paramp).hRC;
+      paramp = ((d)paramp).hUu;
       AppMethodBeat.o(118915);
       return paramp;
     }
@@ -43,7 +43,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.d.f
  * JD-Core Version:    0.7.0.1
  */

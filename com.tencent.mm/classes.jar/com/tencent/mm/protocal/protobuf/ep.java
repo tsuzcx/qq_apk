@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ep
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Fwq;
-  public String Fwr;
+  public String FOO;
+  public String FOP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,35 +14,35 @@ public final class ep
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Fwq != null) {
-        paramVarArgs.d(1, this.Fwq);
+      if (this.FOO != null) {
+        paramVarArgs.d(1, this.FOO);
       }
-      if (this.Fwr != null) {
-        paramVarArgs.d(2, this.Fwr);
+      if (this.FOP != null) {
+        paramVarArgs.d(2, this.FOP);
       }
       AppMethodBeat.o(125711);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Fwq == null) {
+      if (this.FOO == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Fwq) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.FOO) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Fwr != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Fwr);
+      if (this.FOP != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FOP);
       }
       AppMethodBeat.o(125711);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(125711);
@@ -58,11 +58,11 @@ public final class ep
           AppMethodBeat.o(125711);
           return -1;
         case 1: 
-          localep.Fwq = locala.NPN.readString();
+          localep.FOO = locala.OmT.readString();
           AppMethodBeat.o(125711);
           return 0;
         }
-        localep.Fwr = locala.NPN.readString();
+        localep.FOP = locala.OmT.readString();
         AppMethodBeat.o(125711);
         return 0;
       }

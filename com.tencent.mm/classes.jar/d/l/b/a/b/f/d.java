@@ -26,7 +26,7 @@ public final class d
     p.g(paramb1, "this.asString()");
     paramb2 = paramb2.sD();
     p.g(paramb2, "packageName.asString()");
-    if ((n.nz(paramb1, paramb2)) && (paramb1.charAt(paramb2.length()) == '.'))
+    if ((n.nF(paramb1, paramb2)) && (paramb1.charAt(paramb2.length()) == '.'))
     {
       AppMethodBeat.o(59318);
       return true;
@@ -47,7 +47,7 @@ public final class d
     }
     if (p.i(paramb1, paramb2))
     {
-      paramb1 = b.Nqf;
+      paramb1 = b.NNl;
       p.g(paramb1, "FqName.ROOT");
       AppMethodBeat.o(59319);
       return paramb1;
@@ -70,7 +70,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.f.d
  * JD-Core Version:    0.7.0.1
  */

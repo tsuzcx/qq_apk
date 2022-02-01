@@ -2,25 +2,25 @@ package com.tencent.mm.api;
 
 public abstract interface u
 {
-  public abstract int Lc();
+  public abstract int Lk();
   
-  public abstract int Ld();
+  public abstract int Ll();
   
-  public abstract int Le();
+  public abstract int Lm();
   
-  public abstract int Lf();
+  public abstract int Ln();
   
-  public abstract int Lg();
+  public abstract int Lo();
   
-  public abstract boolean Lh();
+  public abstract boolean Lp();
   
-  public abstract int Li();
+  public abstract int Lq();
   
-  public abstract boolean Lj();
+  public abstract boolean Lr();
   
-  public abstract String Lk();
+  public abstract String Ls();
   
-  public abstract String Ll();
+  public abstract String Lt();
   
   public abstract int getTextColor();
   

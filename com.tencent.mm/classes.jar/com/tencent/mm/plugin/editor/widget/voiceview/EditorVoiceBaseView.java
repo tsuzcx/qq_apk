@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.editor.model.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.t;
 
 public class EditorVoiceBaseView
@@ -22,12 +22,12 @@ public class EditorVoiceBaseView
   implements a.a
 {
   private Context context;
-  private int dtc;
+  private int dui;
   private int duration;
   private boolean isRunning;
+  private AlphaAnimation pEQ;
+  private AnimationDrawable pER;
   private String path;
-  private AlphaAnimation pym;
-  private AnimationDrawable pyn;
   
   public EditorVoiceBaseView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,7 +37,7 @@ public class EditorVoiceBaseView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aPY();
+    aQx();
     AppMethodBeat.o(181995);
   }
   
@@ -49,58 +49,58 @@ public class EditorVoiceBaseView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aPY();
+    aQx();
     AppMethodBeat.o(181996);
   }
   
-  private void aPY()
+  private void aQx()
   {
     AppMethodBeat.i(181997);
-    this.pym = new AlphaAnimation(0.1F, 1.0F);
-    this.pym.setDuration(1000L);
-    this.pym.setRepeatCount(-1);
-    this.pym.setRepeatMode(2);
-    this.pyn = new com.tencent.mm.ui.e.a();
+    this.pEQ = new AlphaAnimation(0.1F, 1.0F);
+    this.pEQ.setDuration(1000L);
+    this.pEQ.setRepeatCount(-1);
+    this.pEQ.setRepeatMode(2);
+    this.pER = new com.tencent.mm.ui.e.a();
     Drawable localDrawable = getResources().getDrawable(2131689892);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pyn.addFrame(localDrawable, 300);
+    this.pER.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689893);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pyn.addFrame(localDrawable, 300);
+    this.pER.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689894);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pyn.addFrame(localDrawable, 300);
-    this.pyn.setOneShot(false);
-    this.pyn.setVisible(true, true);
+    this.pER.addFrame(localDrawable, 300);
+    this.pER.setOneShot(false);
+    this.pER.setVisible(true, true);
     AppMethodBeat.o(181997);
   }
   
-  public final void aaY(String paramString)
+  public final void abP(String paramString)
   {
     AppMethodBeat.i(182000);
-    ad.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
-    if (!bt.bI(paramString, "").equals(this.path)) {
-      cfx();
+    ae.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
+    if (!bu.bI(paramString, "").equals(this.path)) {
+      cgN();
     }
     AppMethodBeat.o(182000);
   }
   
-  public final void cfx()
+  public final void cgN()
   {
     AppMethodBeat.i(181998);
-    if ((this.pym != null) && (this.pym.isInitialized())) {
+    if ((this.pEQ != null) && (this.pEQ.isInitialized())) {
       setAnimation(null);
     }
     this.isRunning = false;
     setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131689891), null, null, null);
-    this.pyn.stop();
+    this.pER.stop();
     AppMethodBeat.o(181998);
   }
   
-  public final void cfy()
+  public final void cgO()
   {
     AppMethodBeat.i(182001);
-    cfx();
+    cgN();
     AppMethodBeat.o(182001);
   }
   
@@ -115,38 +115,38 @@ public class EditorVoiceBaseView
         AppMethodBeat.i(181994);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         String str = EditorVoiceBaseView.a(EditorVoiceBaseView.this);
-        if (a.cfz().cfC()) {}
+        if (a.cgP().cgS()) {}
         for (localObject = "true";; localObject = "false")
         {
-          ad.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, a.cfz().path });
-          if ((!com.tencent.mm.s.a.cf(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.s.a.cd(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.s.a.ch(EditorVoiceBaseView.b(EditorVoiceBaseView.this)))) {
+          ae.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, a.cgP().path });
+          if ((!com.tencent.mm.r.a.ch(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.cf(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.cj(EditorVoiceBaseView.b(EditorVoiceBaseView.this)))) {
             break;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(181994);
           return;
         }
-        if ((!e.abf()) && (!bt.isNullOrNil(EditorVoiceBaseView.a(EditorVoiceBaseView.this))))
+        if ((!e.abo()) && (!bu.isNullOrNil(EditorVoiceBaseView.a(EditorVoiceBaseView.this))))
         {
           t.g(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(181994);
           return;
         }
-        if (c.cdU().ptn)
+        if (c.cfj().pzT)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(181994);
           return;
         }
-        if ((bt.bI(EditorVoiceBaseView.a(EditorVoiceBaseView.this), "").equals(a.cfz().path)) && (a.cfz().cfC()))
+        if ((bu.bI(EditorVoiceBaseView.a(EditorVoiceBaseView.this), "").equals(a.cgP().path)) && (a.cgP().cgS()))
         {
           paramAnonymousView = EditorVoiceBaseView.this;
-          ad.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
-          paramAnonymousView.cfx();
-          a.cfz().stopPlay();
+          ae.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
+          paramAnonymousView.cgN();
+          a.cgP().stopPlay();
         }
         for (;;)
         {

@@ -10,15 +10,15 @@ public class FileDownloadTaskInfo
 {
   public static Parcelable.Creator<FileDownloadTaskInfo> CREATOR;
   public String appId;
-  public int duJ;
+  public int dvO;
   public long id;
   public String md5;
-  public long nsQ;
+  public long nyl;
   public String path;
-  public long pmT;
-  public boolean pmU;
-  public boolean pmV;
-  public boolean pmW;
+  public long ptA;
+  public boolean ptB;
+  public boolean ptC;
+  public boolean ptD;
   public int status;
   public String url;
   
@@ -37,12 +37,12 @@ public class FileDownloadTaskInfo
     this.path = "";
     this.md5 = "";
     this.appId = "";
-    this.pmT = 0L;
-    this.nsQ = 0L;
-    this.pmU = false;
-    this.duJ = 2;
-    this.pmV = false;
-    this.pmW = false;
+    this.ptA = 0L;
+    this.nyl = 0L;
+    this.ptB = false;
+    this.dvO = 2;
+    this.ptC = false;
+    this.ptD = false;
   }
   
   private FileDownloadTaskInfo(Parcel paramParcel)
@@ -54,31 +54,31 @@ public class FileDownloadTaskInfo
     this.path = "";
     this.md5 = "";
     this.appId = "";
-    this.pmT = 0L;
-    this.nsQ = 0L;
-    this.pmU = false;
-    this.duJ = 2;
-    this.pmV = false;
-    this.pmW = false;
+    this.ptA = 0L;
+    this.nyl = 0L;
+    this.ptB = false;
+    this.dvO = 2;
+    this.ptC = false;
+    this.ptD = false;
     this.id = paramParcel.readLong();
     this.url = paramParcel.readString();
     this.status = paramParcel.readInt();
     this.path = paramParcel.readString();
     this.md5 = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.pmT = paramParcel.readLong();
-    this.nsQ = paramParcel.readLong();
+    this.ptA = paramParcel.readLong();
+    this.nyl = paramParcel.readLong();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.pmU = bool1;
-      this.duJ = paramParcel.readInt();
+      this.ptB = bool1;
+      this.dvO = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
         break label205;
       }
       bool1 = true;
       label174:
-      this.pmV = bool1;
+      this.ptC = bool1;
       if (paramParcel.readByte() != 1) {
         break label210;
       }
@@ -87,7 +87,7 @@ public class FileDownloadTaskInfo
     label210:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.pmW = bool1;
+      this.ptD = bool1;
       AppMethodBeat.o(89013);
       return;
       bool1 = false;
@@ -112,20 +112,20 @@ public class FileDownloadTaskInfo
     paramParcel.writeString(this.path);
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.appId);
-    paramParcel.writeLong(this.pmT);
-    paramParcel.writeLong(this.nsQ);
-    if (this.pmU)
+    paramParcel.writeLong(this.ptA);
+    paramParcel.writeLong(this.nyl);
+    if (this.ptB)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.duJ);
-      if (!this.pmV) {
+      paramParcel.writeInt(this.dvO);
+      if (!this.ptC) {
         break label135;
       }
       paramInt = 1;
       label103:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.pmW) {
+      if (!this.ptD) {
         break label140;
       }
     }

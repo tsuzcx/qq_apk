@@ -1,82 +1,58 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.gn;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ck
-  extends j<cj>
+  extends gn
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(32891);
-    SQL_CREATE = new String[] { j.getCreateSQLs(cj.info, "UserOpenIdInApp") };
-    AppMethodBeat.o(32891);
+    AppMethodBeat.i(32886);
+    c.a locala = new c.a();
+    locala.IBL = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "openId";
+    locala.IBN.put("openId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "openId";
+    locala.columns[1] = "appId";
+    locala.IBN.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "username";
+    locala.IBN.put("username", "TEXT");
+    localStringBuilder.append(" username TEXT");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(32886);
   }
   
-  public ck(e parame)
+  public ck() {}
+  
+  public ck(String paramString1, String paramString2, String paramString3)
   {
-    super(parame, cj.info, "UserOpenIdInApp", null);
-    AppMethodBeat.i(32887);
-    this.db = parame;
-    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
-    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
-    AppMethodBeat.o(32887);
+    this.field_appId = paramString1;
+    this.field_username = paramString2;
+    this.field_openId = paramString3;
   }
   
-  public final boolean a(cj paramcj)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(32889);
-    if ((paramcj == null) || (bt.isNullOrNil(paramcj.field_appId)) || (bt.isNullOrNil(paramcj.field_openId)) || (bt.isNullOrNil(paramcj.field_username)))
-    {
-      ad.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
-      AppMethodBeat.o(32889);
-      return false;
-    }
-    ContentValues localContentValues = paramcj.convertTo();
-    if (this.db.replace("UserOpenIdInApp", cj.info.IhB, localContentValues) > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ad.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { paramcj.field_appId, paramcj.field_username, Boolean.valueOf(bool) });
-      AppMethodBeat.o(32889);
-      return bool;
-    }
-  }
-  
-  public final cj aUy(String paramString)
-  {
-    AppMethodBeat.i(32888);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(32888);
-      return null;
-    }
-    Cursor localCursor = this.db.a("UserOpenIdInApp", null, "openId=?", new String[] { bt.aQN(paramString) }, null, null, null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      ad.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:".concat(String.valueOf(paramString)));
-      localCursor.close();
-      AppMethodBeat.o(32888);
-      return null;
-    }
-    paramString = new cj();
-    paramString.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(32888);
-    return paramString;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.ck
  * JD-Core Version:    0.7.0.1
  */

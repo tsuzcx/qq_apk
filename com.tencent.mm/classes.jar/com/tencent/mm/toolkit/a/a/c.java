@@ -6,7 +6,7 @@ public abstract interface c
 {
   public abstract void b(com.tencent.mm.toolkit.a.c paramc);
   
-  public abstract void gc(Context paramContext);
+  public abstract void gi(Context paramContext);
 }
 
 

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mb
   extends b
 {
-  public a dzu;
+  public a dAv;
   
   public mb()
   {
@@ -15,18 +15,18 @@ public final class mb
   
   private mb(byte paramByte)
   {
-    AppMethodBeat.i(19821);
-    this.dzu = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19820);
+    this.dAv = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19821);
+    AppMethodBeat.o(19820);
   }
   
   public static final class a
   {
-    public byte[] dzv;
-    public int dzw;
-    public boolean dzx;
+    public int dAw;
+    public int dAx;
+    public int dAy;
   }
 }
 

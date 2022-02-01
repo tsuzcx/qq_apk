@@ -18,7 +18,7 @@ final class k$1
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/location/ui/TrackPointViewMgrImpl$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/location/ui/TrackPointViewMgrImpl$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,17 +27,17 @@ final class k$1
       a.a(false, this, "com/tencent/mm/plugin/location/ui/TrackPointViewMgrImpl$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(55963);
       return false;
-      if ((Math.abs(paramMotionEvent.getX() - this.vep.aTL) > 10.0F) || (Math.abs(paramMotionEvent.getY() - this.vep.aTM) > 10.0F))
+      if ((Math.abs(paramMotionEvent.getX() - this.vqA.aTL) > 10.0F) || (Math.abs(paramMotionEvent.getY() - this.vqA.aTM) > 10.0F))
       {
-        k.a(this.vep, true);
+        k.a(this.vqA, true);
         continue;
-        this.vep.aTL = paramMotionEvent.getX();
-        this.vep.aTM = paramMotionEvent.getY();
-        k.a(this.vep, System.currentTimeMillis());
-        k.a(this.vep, false);
+        this.vqA.aTL = paramMotionEvent.getX();
+        this.vqA.aTM = paramMotionEvent.getY();
+        k.a(this.vqA, System.currentTimeMillis());
+        k.a(this.vqA, false);
         continue;
-        if ((!k.a(this.vep)) && (System.currentTimeMillis() - k.b(this.vep) < 200L)) {
-          k.c(this.vep);
+        if ((!k.a(this.vqA)) && (System.currentTimeMillis() - k.b(this.vqA) < 200L)) {
+          k.c(this.vqA);
         }
       }
     }

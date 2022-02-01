@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.vlog.model.panel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.emoji.a.b.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.ab;
 import d.a.j;
 import d.l;
@@ -11,25 +11,25 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "()V", "getReportCount", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "()V", "getReportCount", "", "plugin-vlog_release"})
 public final class f
   extends a
 {
   public f()
   {
-    super(b.esC());
-    AppMethodBeat.i(195876);
-    ad.i(b.aeD(), "create: pag group");
-    Iterator localIterator = ((Iterable)j.o((Collection)b.esD())).iterator();
+    super(b.ewj());
+    AppMethodBeat.i(191335);
+    ae.i(b.aeP(), "create: pag group");
+    Iterator localIterator = ((Iterable)j.o((Collection)b.ewk())).iterator();
     while (localIterator.hasNext())
     {
       int i = ((ab)localIterator).nextInt();
-      this.gkJ.add(new e(String.valueOf(i), "pag/text/" + (String)b.esD().get(i), "pag/text/" + (String)b.esE().get(i)));
+      this.gne.add(new e(String.valueOf(i), "pag/text/" + (String)b.ewk().get(i), "pag/text/" + (String)b.ewl().get(i)));
     }
-    AppMethodBeat.o(195876);
+    AppMethodBeat.o(191335);
   }
   
-  public final int afm()
+  public final int afA()
   {
     return 0;
   }

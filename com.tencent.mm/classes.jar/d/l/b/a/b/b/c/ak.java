@@ -19,7 +19,7 @@ public abstract class ak
   extends k
   implements ax
 {
-  protected ab MZN;
+  protected ab NwT;
   
   static
   {
@@ -34,13 +34,13 @@ public abstract class ak
   public ak(l paraml, g paramg, f paramf, ab paramab, an paraman)
   {
     super(paraml, paramg, paramf, paraman);
-    this.MZN = paramab;
+    this.NwT = paramab;
   }
   
   public final void N(ab paramab)
   {
-    assert (this.MZN == null);
-    this.MZN = paramab;
+    assert (this.NwT == null);
+    this.NwT = paramab;
   }
   
   public <V> V a(a.a<V> parama)
@@ -48,83 +48,83 @@ public abstract class ak
     return null;
   }
   
-  public d.l.b.a.b.b.ak gin()
+  public d.l.b.a.b.b.ak gmP()
   {
     return null;
   }
   
-  public d.l.b.a.b.b.ak gio()
+  public d.l.b.a.b.b.ak gmQ()
   {
     return null;
   }
   
-  public List<as> gip()
+  public List<as> gmR()
   {
     List localList = Collections.emptyList();
     if (localList == null) {
-      ajm(8);
+      ajW(8);
     }
     return localList;
   }
   
-  public ab giq()
+  public ab gmS()
   {
-    ab localab = gju();
+    ab localab = gnW();
     if (localab == null) {
-      ajm(9);
+      ajW(9);
     }
     return localab;
   }
   
-  public final List<av> gis()
+  public final List<av> gmU()
   {
     List localList = Collections.emptyList();
     if (localList == null) {
-      ajm(6);
+      ajW(6);
     }
     return localList;
   }
   
-  public boolean git()
+  public boolean gmV()
   {
     return false;
   }
   
-  public Collection<? extends a> giu()
+  public Collection<? extends a> gmW()
   {
     Set localSet = Collections.emptySet();
     if (localSet == null) {
-      ajm(7);
+      ajW(7);
     }
     return localSet;
   }
   
-  public boolean gjD()
+  public final ab gnW()
   {
-    return false;
-  }
-  
-  public final ab gju()
-  {
-    ab localab = this.MZN;
+    ab localab = this.NwT;
     if (localab == null) {
-      ajm(4);
+      ajW(4);
     }
     return localab;
   }
   
-  public ax gkm()
+  public ax goO()
   {
-    ax localax = (ax)super.gjP();
+    ax localax = (ax)super.gor();
     if (localax == null) {
-      ajm(5);
+      ajW(5);
     }
     return localax;
+  }
+  
+  public boolean gof()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.ak
  * JD-Core Version:    0.7.0.1
  */

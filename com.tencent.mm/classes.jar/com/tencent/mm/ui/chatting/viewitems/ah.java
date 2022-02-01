@@ -9,29 +9,29 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class ah
   extends RelativeLayout
 {
-  private int KdF;
-  private LayoutInflater jfG;
+  private int KzY;
+  private LayoutInflater jiz;
   
   public ah(LayoutInflater paramLayoutInflater, int paramInt)
   {
     super(paramLayoutInflater.getContext());
     AppMethodBeat.i(37191);
-    this.jfG = paramLayoutInflater;
-    this.KdF = paramInt;
+    this.jiz = paramLayoutInflater;
+    this.KzY = paramInt;
     setClipChildren(false);
-    paramLayoutInflater = this.jfG.inflate(2131496442, null);
+    paramLayoutInflater = this.jiz.inflate(2131496442, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     paramLayoutInflater.setId(2131308258);
     localLayoutParams.setMargins(0, getResources().getDimensionPixelSize(2131165516), 0, getResources().getDimensionPixelSize(2131165516));
     paramLayoutInflater.setVisibility(8);
     addView(paramLayoutInflater, localLayoutParams);
-    paramLayoutInflater = this.jfG.inflate(2131493407, null);
+    paramLayoutInflater = this.jiz.inflate(2131493407, null);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     paramLayoutInflater.setId(2131298104);
     localLayoutParams.setMargins(0, getResources().getDimensionPixelSize(2131165516), 0, getResources().getDimensionPixelSize(2131165516));
@@ -43,7 +43,7 @@ public final class ah
     paramInt = paramLayoutInflater.getResources().getDimensionPixelSize(2131165576);
     int i = a.ax(getContext(), 2131165576);
     if (i != paramInt) {
-      ad.e("MicroMsg.ChattingItemContainer", "warn!!! cacheSize:%s sysSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.ChattingItemContainer", "warn!!! cacheSize:%s sysSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
     }
     paramLayoutInflater.setTextSize(0, paramInt);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -61,12 +61,12 @@ public final class ah
     localLayoutParams.width = paramInt;
     localLayoutParams.height = paramInt;
     addView(paramLayoutInflater, localLayoutParams);
-    paramLayoutInflater = this.jfG.inflate(this.KdF, null);
+    paramLayoutInflater = this.jiz.inflate(this.KzY, null);
     i = paramLayoutInflater.getId();
     paramInt = i;
     if (-1 == i)
     {
-      ad.v("MicroMsg.ChattingItemContainer", "content view has no id, use defaul id");
+      ae.v("MicroMsg.ChattingItemContainer", "content view has no id, use defaul id");
       paramInt = 2131298071;
       paramLayoutInflater.setId(2131298071);
     }

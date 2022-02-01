@@ -6,7 +6,7 @@ import d.g.b.p;
 
 public class a
 {
-  private static final boolean NpL;
+  private static final boolean NMR;
   
   static
   {
@@ -21,7 +21,7 @@ public class a
       try
       {
         String str = System.getProperty("kotlin.jvm.serialization.use8to7");
-        NpL = "true".equals(str);
+        NMR = "true".equals(str);
         AppMethodBeat.o(59224);
         return;
         bool = false;
@@ -41,7 +41,7 @@ public class a
     int n = 0;
     AppMethodBeat.i(59220);
     if (paramArrayOfString == null) {
-      ajm(7);
+      ajW(7);
     }
     Object localObject = paramArrayOfString;
     if (paramArrayOfString.length > 0)
@@ -91,7 +91,7 @@ public class a
           if (i == localObject.length) {
             j = 1;
           }
-          if ((ac.MKp) && (j == 0))
+          if ((ac.Nhs) && (j == 0))
           {
             paramArrayOfString = (Throwable)new AssertionError("Should have reached the end");
             AppMethodBeat.o(59220);
@@ -107,8 +107,8 @@ public class a
       }
     }
     paramArrayOfString = ar((String[])localObject);
-    cX(paramArrayOfString);
-    paramArrayOfString = cY(paramArrayOfString);
+    da(paramArrayOfString);
+    paramArrayOfString = db(paramArrayOfString);
     AppMethodBeat.o(59220);
     return paramArrayOfString;
   }
@@ -117,12 +117,12 @@ public class a
   {
     AppMethodBeat.i(59221);
     if (paramArrayOfString == null) {
-      ajm(9);
+      ajW(9);
     }
     paramArrayOfString = (String[])paramArrayOfString.clone();
     paramArrayOfString[0] = paramArrayOfString[0].substring(1);
     if (paramArrayOfString == null) {
-      ajm(10);
+      ajW(10);
     }
     AppMethodBeat.o(59221);
     return paramArrayOfString;
@@ -132,7 +132,7 @@ public class a
   {
     AppMethodBeat.i(59222);
     if (paramArrayOfString == null) {
-      ajm(11);
+      ajW(11);
     }
     int k = paramArrayOfString.length;
     int i = 0;
@@ -170,11 +170,11 @@ public class a
     return localObject;
   }
   
-  private static void cX(byte[] paramArrayOfByte)
+  private static void da(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59219);
     if (paramArrayOfByte == null) {
-      ajm(4);
+      ajW(4);
     }
     int i = 0;
     int j = paramArrayOfByte.length;
@@ -186,11 +186,11 @@ public class a
     AppMethodBeat.o(59219);
   }
   
-  private static byte[] cY(byte[] paramArrayOfByte)
+  private static byte[] db(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59223);
     if (paramArrayOfByte == null) {
-      ajm(13);
+      ajW(13);
     }
     int m = paramArrayOfByte.length * 7 / 8;
     byte[] arrayOfByte = new byte[m];

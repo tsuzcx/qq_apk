@@ -16,13 +16,13 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class InputPreference
   extends Preference
 {
-  private String BkD;
-  private String JsD;
-  private EditText JsE;
-  private Button JsF;
-  private a JsG;
-  private View.OnClickListener JsH;
-  private TextView.OnEditorActionListener JsI;
+  private String BCc;
+  private String JNs;
+  private EditText JNt;
+  private Button JNu;
+  private a JNv;
+  private View.OnClickListener JNw;
+  private TextView.OnEditorActionListener JNx;
   
   public InputPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,14 +33,14 @@ public class InputPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142574);
-    this.JsH = new View.OnClickListener()
+    this.JNw = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(142572);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/base/preference/InputPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/ui/base/preference/InputPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if ((InputPreference.a(InputPreference.this) != null) && (InputPreference.b(InputPreference.this) != null))
         {
           if (InputPreference.b(InputPreference.this).getText() != null) {
@@ -59,7 +59,7 @@ public class InputPreference
         }
       }
     };
-    this.JsI = new TextView.OnEditorActionListener()
+    this.JNx = new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -88,12 +88,12 @@ public class InputPreference
   {
     AppMethodBeat.i(142575);
     super.onBindView(paramView);
-    this.JsE = ((EditText)paramView.findViewById(2131299306));
-    this.JsE.setHint(this.BkD);
-    this.JsE.setOnEditorActionListener(this.JsI);
-    this.JsF = ((Button)paramView.findViewById(2131297631));
-    this.JsF.setText(this.JsD);
-    this.JsF.setOnClickListener(this.JsH);
+    this.JNt = ((EditText)paramView.findViewById(2131299306));
+    this.JNt.setHint(this.BCc);
+    this.JNt.setOnEditorActionListener(this.JNx);
+    this.JNu = ((Button)paramView.findViewById(2131297631));
+    this.JNu.setText(this.JNs);
+    this.JNu.setOnClickListener(this.JNw);
     AppMethodBeat.o(142575);
   }
   
@@ -101,7 +101,7 @@ public class InputPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.InputPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.music.f.a;
 
-import com.tencent.mm.az.c;
+import com.tencent.mm.ay.c;
 
 public abstract interface d
 {
   public abstract void a(a parama);
   
-  public abstract boolean aJG();
+  public abstract boolean aJZ();
   
-  public abstract boolean aJH();
+  public abstract boolean aKa();
   
-  public abstract boolean aJI();
+  public abstract boolean aKb();
   
   public abstract void b(a parama);
   
-  public abstract void drJ();
+  public abstract void duX();
   
-  public abstract boolean drK();
+  public abstract boolean duY();
   
-  public abstract c drL();
+  public abstract c duZ();
   
-  public abstract void drX();
+  public abstract void dvl();
   
-  public abstract int dsc();
+  public abstract int dvr();
   
   public abstract int getDuration();
   
-  public abstract boolean pO(int paramInt);
+  public abstract boolean pR(int paramInt);
   
   public abstract void pause();
   
@@ -36,7 +36,7 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void eZ(int paramInt1, int paramInt2);
+    public abstract void fa(int paramInt1, int paramInt2);
   }
 }
 

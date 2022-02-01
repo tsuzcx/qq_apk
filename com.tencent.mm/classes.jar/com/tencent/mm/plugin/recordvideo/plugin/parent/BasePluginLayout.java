@@ -14,13 +14,13 @@ import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "pluginList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "registerPlugin", "plugin", "release", "reset", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "pluginList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "registerPlugin", "plugin", "release", "reset", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
 public abstract class BasePluginLayout
   extends RelativeLayout
   implements t
 {
-  public static final BasePluginLayout.a xDK = new BasePluginLayout.a((byte)0);
-  private final ArrayList<t> hab = new ArrayList();
+  public static final BasePluginLayout.a xTF = new BasePluginLayout.a((byte)0);
+  private final ArrayList<t> hcO = new ArrayList();
   
   public BasePluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,35 +29,35 @@ public abstract class BasePluginLayout
   
   public void a(b paramb)
   {
-    ayX();
+    azm();
     reset();
     setVisibility(0);
   }
   
   public abstract void a(a parama, RecordConfigProvider paramRecordConfigProvider);
   
-  public boolean aoB()
+  public boolean aoQ()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
-      if (((t)localIterator.next()).aoB()) {
+      if (((t)localIterator.next()).aoQ()) {
         return true;
       }
     }
     return false;
   }
   
-  public final void ayX()
+  public final void azm()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
-      ((t)localIterator.next()).ayX();
+      ((t)localIterator.next()).azm();
     }
   }
   
   protected final ArrayList<t> getPluginList()
   {
-    return this.hab;
+    return this.hcO;
   }
   
   public final String name()
@@ -67,7 +67,7 @@ public abstract class BasePluginLayout
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -75,7 +75,7 @@ public abstract class BasePluginLayout
   
   public void onDetach()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).onDetach();
     }
@@ -83,7 +83,7 @@ public abstract class BasePluginLayout
   
   public void onPause()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).onPause();
     }
@@ -94,7 +94,7 @@ public abstract class BasePluginLayout
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
@@ -102,7 +102,7 @@ public abstract class BasePluginLayout
   
   public void onResume()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).onResume();
     }
@@ -110,7 +110,7 @@ public abstract class BasePluginLayout
   
   public void release()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).release();
     }
@@ -118,7 +118,7 @@ public abstract class BasePluginLayout
   
   public void reset()
   {
-    Iterator localIterator = ((Iterable)this.hab).iterator();
+    Iterator localIterator = ((Iterable)this.hcO).iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).reset();
     }
@@ -137,7 +137,7 @@ public abstract class BasePluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.parent.BasePluginLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.d.a;
 
 final class WalletLqtSaveFetchUI$7
@@ -13,9 +13,9 @@ final class WalletLqtSaveFetchUI$7
   
   public final Intent s(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(199235);
-    ad.i("MicroMsg.WalletLqtSaveFetchUI", "feedbackData: %s", new Object[] { paramBundle });
-    AppMethodBeat.o(199235);
+    AppMethodBeat.i(190093);
+    ae.i("MicroMsg.WalletLqtSaveFetchUI", "feedbackData: %s", new Object[] { paramBundle });
+    AppMethodBeat.o(190093);
     return null;
   }
 }

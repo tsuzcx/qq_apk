@@ -22,28 +22,28 @@ public class Transform
   
   public static Transform instanceFromScale(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(219475);
+    AppMethodBeat.i(200268);
     Transform localTransform = new Transform(paramFloat1, paramFloat2, 0.0F, 0.0F, 0.0F);
-    AppMethodBeat.o(219475);
+    AppMethodBeat.o(200268);
     return localTransform;
   }
   
   public static Transform instanceFromTranslate(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(219476);
+    AppMethodBeat.i(200269);
     Transform localTransform = new Transform(1.0F, 1.0F, paramFloat1, paramFloat2, 0.0F);
-    AppMethodBeat.o(219476);
+    AppMethodBeat.o(200269);
     return localTransform;
   }
   
   public Matrix toMatrix()
   {
-    AppMethodBeat.i(219477);
+    AppMethodBeat.i(200270);
     Matrix localMatrix = new Matrix();
     localMatrix.postRotate(this.degrees);
     localMatrix.postScale(this.scaleX, this.scaleY);
     localMatrix.postTranslate(this.translateX, this.translateY);
-    AppMethodBeat.o(219477);
+    AppMethodBeat.o(200270);
     return localMatrix;
   }
 }

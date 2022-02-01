@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class je
   extends b
 {
-  public a dvW;
+  public a dwX;
+  public b dwY;
   
   public je()
   {
@@ -15,19 +16,22 @@ public final class je
   
   private je(byte paramByte)
   {
-    AppMethodBeat.i(149863);
-    this.dvW = new a();
-    this.IbR = false;
+    AppMethodBeat.i(130778);
+    this.dwX = new a();
+    this.dwY = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149863);
+    AppMethodBeat.o(130778);
   }
   
   public static final class a
   {
-    public boolean dvX;
-    public int dvY;
-    public String dvZ;
-    public int dwa;
+    public int dwZ = -1;
+  }
+  
+  public static final class b
+  {
+    public int dxa = 0;
   }
 }
 

@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "posInfo", "", "webviewId", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "posInfo", "", "webviewId", "", "invoke"})
 final class BizVideoDetailUI$f
   extends q
   implements m<String, Integer, z>
 {
-  public static final f opi;
+  public static final f ova;
   
   static
   {
     AppMethodBeat.i(7089);
-    opi = new f();
+    ova = new f();
     AppMethodBeat.o(7089);
   }
   

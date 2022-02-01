@@ -6,12 +6,12 @@ import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/DataCallbackHolder;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "()V", "dataCallback", "dataList", "", "Lcom/tencent/mm/sticker/LensItem;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setDataCallback", "callback", "updateData", "lensList", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/capture/DataCallbackHolder;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "()V", "dataCallback", "dataList", "", "Lcom/tencent/mm/sticker/LensItem;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setDataCallback", "callback", "updateData", "lensList", "plugin-emojicapture_release"})
 public final class a
   implements c
 {
   public List<com.tencent.mm.sticker.c> dataList;
-  public c pRh;
+  public c pXM;
   
   public a()
   {
@@ -25,7 +25,7 @@ public final class a
     AppMethodBeat.i(204);
     p.h(paramList, "lensList");
     this.dataList = paramList;
-    c localc = this.pRh;
+    c localc = this.pXM;
     if (localc != null)
     {
       localc.V(paramList);
@@ -35,52 +35,52 @@ public final class a
     AppMethodBeat.o(204);
   }
   
-  public final void fq(int paramInt1, int paramInt2)
+  public final void fr(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(205);
-    c localc = this.pRh;
+    c localc = this.pXM;
     if (localc != null)
     {
-      localc.fq(paramInt1, paramInt2);
+      localc.fr(paramInt1, paramInt2);
       AppMethodBeat.o(205);
       return;
     }
     AppMethodBeat.o(205);
   }
   
-  public final void fr(int paramInt1, int paramInt2)
+  public final void fs(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(206);
-    c localc = this.pRh;
+    c localc = this.pXM;
     if (localc != null)
     {
-      localc.fr(paramInt1, paramInt2);
+      localc.fs(paramInt1, paramInt2);
       AppMethodBeat.o(206);
       return;
     }
     AppMethodBeat.o(206);
   }
   
-  public final void fs(int paramInt1, int paramInt2)
+  public final void ft(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(207);
-    c localc = this.pRh;
+    c localc = this.pXM;
     if (localc != null)
     {
-      localc.fs(paramInt1, paramInt2);
+      localc.ft(paramInt1, paramInt2);
       AppMethodBeat.o(207);
       return;
     }
     AppMethodBeat.o(207);
   }
   
-  public final void ft(int paramInt1, int paramInt2)
+  public final void fu(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(208);
-    c localc = this.pRh;
+    c localc = this.pXM;
     if (localc != null)
     {
-      localc.ft(paramInt1, paramInt2);
+      localc.fu(paramInt1, paramInt2);
       AppMethodBeat.o(208);
       return;
     }
@@ -89,7 +89,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.a
  * JD-Core Version:    0.7.0.1
  */

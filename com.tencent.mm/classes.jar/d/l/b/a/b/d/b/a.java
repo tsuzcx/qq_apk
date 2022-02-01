@@ -30,32 +30,32 @@ import java.util.Set;
 public abstract class a<A, C>
   implements d.l.b.a.b.k.a.c<A, C>
 {
-  private static final Set<d.l.b.a.b.f.a> Nik;
-  public static final a Nil = new a((byte)0);
-  private final n Nee;
-  private final d.l.b.a.b.l.c<p, a.c<A, C>> Nij;
+  private static final Set<d.l.b.a.b.f.a> NFq;
+  public static final a NFr = new a((byte)0);
+  private final n NBj;
+  private final d.l.b.a.b.l.c<p, c<A, C>> NFp;
   
   static
   {
-    Object localObject = (Iterable)d.a.j.listOf(new d.l.b.a.b.f.b[] { d.l.b.a.b.d.a.p.Ncw, d.l.b.a.b.d.a.p.Ncz, d.l.b.a.b.d.a.p.NcA, new d.l.b.a.b.f.b("java.lang.annotation.Target"), new d.l.b.a.b.f.b("java.lang.annotation.Retention"), new d.l.b.a.b.f.b("java.lang.annotation.Documented") });
+    Object localObject = (Iterable)d.a.j.listOf(new d.l.b.a.b.f.b[] { d.l.b.a.b.d.a.p.NzB, d.l.b.a.b.d.a.p.NzE, d.l.b.a.b.d.a.p.NzF, new d.l.b.a.b.f.b("java.lang.annotation.Target"), new d.l.b.a.b.f.b("java.lang.annotation.Retention"), new d.l.b.a.b.f.b("java.lang.annotation.Documented") });
     Collection localCollection = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       localCollection.add(d.l.b.a.b.f.a.p((d.l.b.a.b.f.b)((Iterator)localObject).next()));
     }
-    Nik = d.a.j.n((Iterable)localCollection);
+    NFq = d.a.j.n((Iterable)localCollection);
   }
   
   public a(d.l.b.a.b.l.j paramj, n paramn)
   {
-    this.Nee = paramn;
-    this.Nij = paramj.I((d.g.a.b)new f(this));
+    this.NBj = paramn;
+    this.NFp = paramj.L((d.g.a.b)new f(this));
   }
   
   private static p a(z.a parama)
   {
     Object localObject1 = null;
-    Object localObject2 = parama.MVx;
+    Object localObject2 = parama.NsC;
     parama = (z.a)localObject2;
     if (!(localObject2 instanceof r)) {
       parama = null;
@@ -63,7 +63,7 @@ public abstract class a<A, C>
     localObject2 = (r)parama;
     parama = localObject1;
     if (localObject2 != null) {
-      parama = ((r)localObject2).Njd;
+      parama = ((r)localObject2).NGj;
     }
     return parama;
   }
@@ -86,26 +86,26 @@ public abstract class a<A, C>
       if (paramBoolean == null) {
         throw ((Throwable)new IllegalStateException(("isConst should not be null for property (container=" + paramz + ')').toString()));
       }
-      if (((paramz instanceof z.a)) && (((z.a)paramz).Nzx == a.b.b.Nld))
+      if (((paramz instanceof z.a)) && (((z.a)paramz).NWE == a.b.b.NIj))
       {
-        paramBoolean = this.Nee;
-        paramz = ((z.a)paramz).MSw.o(d.l.b.a.b.f.f.bcE("DefaultImpls"));
+        paramBoolean = this.NBj;
+        paramz = ((z.a)paramz).NpB.o(d.l.b.a.b.f.f.bei("DefaultImpls"));
         d.g.b.p.g(paramz, "container.classId.create…EFAULT_IMPLS_CLASS_NAME))");
         return o.a(paramBoolean, paramz);
       }
       if ((paramBoolean.booleanValue()) && ((paramz instanceof z.b)))
       {
-        an localan = paramz.MVx;
+        an localan = paramz.NsC;
         paramBoolean = localan;
         if (!(localan instanceof j)) {
           paramBoolean = null;
         }
         paramBoolean = (j)paramBoolean;
         if (paramBoolean != null) {}
-        for (paramBoolean = paramBoolean.NiU; paramBoolean != null; paramBoolean = null)
+        for (paramBoolean = paramBoolean.NGa; paramBoolean != null; paramBoolean = null)
         {
-          paramz = this.Nee;
-          paramBoolean = paramBoolean.gtd();
+          paramz = this.NBj;
+          paramBoolean = paramBoolean.gxF();
           d.g.b.p.g(paramBoolean, "facadeClassName.internalName");
           paramBoolean = d.l.b.a.b.f.a.p(new d.l.b.a.b.f.b(d.n.n.a(paramBoolean, '/', '.')));
           d.g.b.p.g(paramBoolean, "ClassId.topLevel(FqName(…lName.replace('/', '.')))");
@@ -113,23 +113,23 @@ public abstract class a<A, C>
         }
       }
     }
-    if ((paramBoolean2) && ((paramz instanceof z.a)) && (((z.a)paramz).Nzx == a.b.b.Nli))
+    if ((paramBoolean2) && ((paramz instanceof z.a)) && (((z.a)paramz).NWE == a.b.b.NIo))
     {
-      paramBoolean = ((z.a)paramz).Nzy;
-      if ((paramBoolean != null) && ((paramBoolean.Nzx == a.b.b.Nlc) || (paramBoolean.Nzx == a.b.b.Nle) || ((paramBoolean3) && ((paramBoolean.Nzx == a.b.b.Nld) || (paramBoolean.Nzx == a.b.b.Nlg))))) {
+      paramBoolean = ((z.a)paramz).NWF;
+      if ((paramBoolean != null) && ((paramBoolean.NWE == a.b.b.NIi) || (paramBoolean.NWE == a.b.b.NIk) || ((paramBoolean3) && ((paramBoolean.NWE == a.b.b.NIj) || (paramBoolean.NWE == a.b.b.NIm))))) {
         return a(paramBoolean);
       }
     }
-    if (((paramz instanceof z.b)) && ((paramz.MVx instanceof j)))
+    if (((paramz instanceof z.b)) && ((paramz.NsC instanceof j)))
     {
-      paramz = paramz.MVx;
+      paramz = paramz.NsC;
       if (paramz == null) {
         throw new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.load.kotlin.JvmPackagePartSource");
       }
       paramz = (j)paramz;
-      paramBoolean = paramz.NiX;
+      paramBoolean = paramz.NGd;
       if (paramBoolean == null) {
-        return o.a(this.Nee, paramz.ggt());
+        return o.a(this.NBj, paramz.gkV());
       }
     }
     else
@@ -142,7 +142,7 @@ public abstract class a<A, C>
   private static s a(a.m paramm, d.l.b.a.b.e.b.c paramc, h paramh, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     Object localObject = (i.c)paramm;
-    i.f localf = d.l.b.a.b.e.c.a.Npe;
+    i.f localf = d.l.b.a.b.e.c.a.NMk;
     d.g.b.p.g(localf, "propertySignature");
     localObject = (d.l.b.a.b.e.c.a.c)d.l.b.a.b.e.b.f.a((i.c)localObject, localf);
     if (localObject == null) {
@@ -150,18 +150,18 @@ public abstract class a<A, C>
     }
     if (paramBoolean1)
     {
-      localObject = i.Nqd;
+      localObject = i.NNj;
       paramm = i.a(paramm, paramc, paramh, paramBoolean3);
       if (paramm == null) {
         return null;
       }
-      paramc = s.Nje;
+      paramc = s.NGk;
       return s.a.a((d.l.b.a.b.e.c.a.e)paramm);
     }
-    if ((paramBoolean2) && (((d.l.b.a.b.e.c.a.c)localObject).gqA()))
+    if ((paramBoolean2) && (((d.l.b.a.b.e.c.a.c)localObject).gvc()))
     {
-      paramm = s.Nje;
-      paramm = ((d.l.b.a.b.e.c.a.c)localObject).Npr;
+      paramm = s.NGk;
+      paramm = ((d.l.b.a.b.e.c.a.c)localObject).NMx;
       d.g.b.p.g(paramm, "signature.syntheticMethod");
       return s.a.a(paramc, paramm);
     }
@@ -172,8 +172,8 @@ public abstract class a<A, C>
   {
     if ((paramq instanceof d.l.b.a.b.e.a.c))
     {
-      paramb = s.Nje;
-      paramb = i.Nqd;
+      paramb = s.NGk;
+      paramb = i.NNj;
       paramq = i.a((d.l.b.a.b.e.a.c)paramq, paramc, paramh);
       if (paramq != null) {
         return s.a.a((d.l.b.a.b.e.c.a.e)paramq);
@@ -182,8 +182,8 @@ public abstract class a<A, C>
     }
     if ((paramq instanceof a.h))
     {
-      paramb = s.Nje;
-      paramb = i.Nqd;
+      paramb = s.NGk;
+      paramb = i.NNj;
       paramq = i.a((a.h)paramq, paramc, paramh);
       if (paramq != null) {
         return s.a.a((d.l.b.a.b.e.c.a.e)paramq);
@@ -193,30 +193,30 @@ public abstract class a<A, C>
     if ((paramq instanceof a.m))
     {
       Object localObject = (i.c)paramq;
-      i.f localf = d.l.b.a.b.e.c.a.Npe;
+      i.f localf = d.l.b.a.b.e.c.a.NMk;
       d.g.b.p.g(localf, "propertySignature");
       localObject = (d.l.b.a.b.e.c.a.c)d.l.b.a.b.e.b.f.a((i.c)localObject, localf);
       if (localObject == null) {
         return null;
       }
-      switch (b.cpQ[paramb.ordinal()])
+      switch (b.cqt[paramb.ordinal()])
       {
       default: 
         return null;
       case 1: 
-        if (((d.l.b.a.b.e.c.a.c)localObject).gqB())
+        if (((d.l.b.a.b.e.c.a.c)localObject).gvd())
         {
-          paramq = s.Nje;
-          paramq = ((d.l.b.a.b.e.c.a.c)localObject).Nps;
+          paramq = s.NGk;
+          paramq = ((d.l.b.a.b.e.c.a.c)localObject).NMy;
           d.g.b.p.g(paramq, "signature.getter");
           return s.a.a(paramc, paramq);
         }
         return null;
       case 2: 
-        if (((d.l.b.a.b.e.c.a.c)localObject).gqC())
+        if (((d.l.b.a.b.e.c.a.c)localObject).gve())
         {
-          paramq = s.Nje;
-          paramq = ((d.l.b.a.b.e.c.a.c)localObject).Npt;
+          paramq = s.NGk;
+          paramq = ((d.l.b.a.b.e.c.a.c)localObject).NMz;
           d.g.b.p.g(paramq, "signature.setter");
           return s.a.a(paramc, paramq);
         }
@@ -231,39 +231,39 @@ public abstract class a<A, C>
   {
     paramz = a(paramz, a(paramz, paramBoolean1, paramBoolean2, paramBoolean, paramBoolean3));
     if (paramz == null) {
-      paramz = (List)d.a.v.MKE;
+      paramz = (List)d.a.v.NhH;
     }
     do
     {
       return paramz;
-      params = (List)((a.c)this.Nij.invoke(paramz)).Niq.get(params);
+      params = (List)((c)this.NFp.invoke(paramz)).NFw.get(params);
       paramz = params;
     } while (params != null);
-    return (List)d.a.v.MKE;
+    return (List)d.a.v.NhH;
   }
   
-  private final List<A> a(z paramz, a.m paramm, a.b paramb)
+  private final List<A> a(z paramz, a.m paramm, b paramb)
   {
-    Boolean localBoolean = d.l.b.a.b.e.b.b.NoG.akK(paramm.Nkt);
+    Boolean localBoolean = d.l.b.a.b.e.b.b.NLM.alu(paramm.NHz);
     d.g.b.p.g(localBoolean, "Flags.IS_CONST.get(proto.flags)");
     boolean bool2 = localBoolean.booleanValue();
     boolean bool3 = i.f(paramm);
-    if (paramb == a.b.Nim)
+    if (paramb == b.NFs)
     {
-      paramm = a(paramm, paramz.MMU, paramz.MMV, false, true, false, 40);
+      paramm = a(paramm, paramz.NjZ, paramz.Nka, false, true, false, 40);
       if (paramm == null) {
-        return (List)d.a.v.MKE;
+        return (List)d.a.v.NhH;
       }
       return a(this, paramz, paramm, true, Boolean.valueOf(bool2), bool3, 8);
     }
-    paramm = a(paramm, paramz.MMU, paramz.MMV, true, false, false, 48);
+    paramm = a(paramm, paramz.NjZ, paramz.Nka, true, false, false, 48);
     if (paramm == null) {
-      return (List)d.a.v.MKE;
+      return (List)d.a.v.NhH;
     }
     boolean bool4 = d.n.n.a((CharSequence)paramm.signature, (CharSequence)"$delegate", false);
-    if (paramb == a.b.Nio) {}
+    if (paramb == b.NFu) {}
     for (boolean bool1 = true; bool4 != bool1; bool1 = false) {
-      return (List)d.a.v.MKE;
+      return (List)d.a.v.NhH;
     }
     return a(paramz, paramm, true, true, Boolean.valueOf(bool2), bool3);
   }
@@ -278,27 +278,27 @@ public abstract class a<A, C>
     d.g.b.p.h(paramz, "container");
     d.g.b.p.h(paramm, "proto");
     d.g.b.p.h(paramab, "expectedType");
-    p localp = a(paramz, a(paramz, true, true, d.l.b.a.b.e.b.b.NoG.akK(paramm.Nkt), i.f(paramm)));
+    p localp = a(paramz, a(paramz, true, true, d.l.b.a.b.e.b.b.NLM.alu(paramm.NHz), i.f(paramm)));
     if (localp == null) {
       paramz = null;
     }
     do
     {
       return paramz;
-      d.l.b.a.b.e.c.a.f localf = localp.gkw().NjA;
-      Object localObject = e.NiN;
-      localObject = (d.l.b.a.b.e.b.a)e.gmf();
+      d.l.b.a.b.e.c.a.f localf = localp.goY().NGG;
+      Object localObject = e.NFT;
+      localObject = (d.l.b.a.b.e.b.a)e.gqH();
       d.g.b.p.h(localObject, "version");
       int i = ((d.l.b.a.b.e.b.a)localObject).major;
       int j = ((d.l.b.a.b.e.b.a)localObject).minor;
-      int k = ((d.l.b.a.b.e.b.a)localObject).Nog;
+      int k = ((d.l.b.a.b.e.b.a)localObject).NLm;
       boolean bool1;
       if (localf.major > i) {
         bool1 = bool2;
       }
       for (;;)
       {
-        paramz = a((d.l.b.a.b.h.q)paramm, paramz.MMU, paramz.MMV, d.l.b.a.b.k.a.b.Nyr, bool1);
+        paramz = a((d.l.b.a.b.h.q)paramm, paramz.NjZ, paramz.Nka, d.l.b.a.b.k.a.b.NVy, bool1);
         if (paramz != null) {
           break;
         }
@@ -312,28 +312,28 @@ public abstract class a<A, C>
           if (localf.minor >= j)
           {
             bool1 = bool2;
-            if (localf.Nog >= k) {
+            if (localf.NLm >= k) {
               continue;
             }
           }
         }
         bool1 = false;
       }
-      paramm = ((a.c)this.Nij.invoke(localp)).Nir.get(paramz);
+      paramm = ((c)this.NFp.invoke(localp)).NFx.get(paramz);
       if (paramm == null) {
         return null;
       }
-      paramz = m.MSB;
+      paramz = m.NpG;
       paramz = paramm;
     } while (!m.F(paramab));
-    return fi(paramm);
+    return fl(paramm);
   }
   
   public final List<A> a(a.p paramp, d.l.b.a.b.e.b.c paramc)
   {
     d.g.b.p.h(paramp, "proto");
     d.g.b.p.h(paramc, "nameResolver");
-    paramp = paramp.e(d.l.b.a.b.e.c.a.Noe);
+    paramp = paramp.e(d.l.b.a.b.e.c.a.NLk);
     d.g.b.p.g(paramp, "proto.getExtension(JvmProtoBuf.typeAnnotation)");
     Object localObject = (Iterable)paramp;
     paramp = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
@@ -351,7 +351,7 @@ public abstract class a<A, C>
   {
     d.g.b.p.h(paramr, "proto");
     d.g.b.p.h(paramc, "nameResolver");
-    paramr = paramr.e(d.l.b.a.b.e.c.a.Nof);
+    paramr = paramr.e(d.l.b.a.b.e.c.a.NLl);
     d.g.b.p.g(paramr, "proto.getExtension(JvmPr….typeParameterAnnotation)");
     Object localObject = (Iterable)paramr;
     paramr = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
@@ -369,18 +369,18 @@ public abstract class a<A, C>
   {
     d.g.b.p.h(paramz, "container");
     d.g.b.p.h(paramf, "proto");
-    Object localObject = s.Nje;
-    paramf = paramz.MMU.getString(paramf.NlC);
-    localObject = ((z.a)paramz).MSw.sD();
+    Object localObject = s.NGk;
+    paramf = paramz.NjZ.getString(paramf.NII);
+    localObject = ((z.a)paramz).NpB.sD();
     d.g.b.p.g(localObject, "(container as ProtoConta…Class).classId.asString()");
-    return a(this, paramz, s.a.nu(paramf, d.l.b.a.b.e.c.a.b.bcC((String)localObject)), false, null, false, 60);
+    return a(this, paramz, s.a.nA(paramf, d.l.b.a.b.e.c.a.b.beg((String)localObject)), false, null, false, 60);
   }
   
   public final List<A> a(z paramz, a.m paramm)
   {
     d.g.b.p.h(paramz, "container");
     d.g.b.p.h(paramm, "proto");
-    return a(paramz, paramm, a.b.Nin);
+    return a(paramz, paramm, b.NFt);
   }
   
   public final List<A> a(z paramz, d.l.b.a.b.h.q paramq, d.l.b.a.b.k.a.b paramb)
@@ -388,12 +388,12 @@ public abstract class a<A, C>
     d.g.b.p.h(paramz, "container");
     d.g.b.p.h(paramq, "proto");
     d.g.b.p.h(paramb, "kind");
-    if (paramb == d.l.b.a.b.k.a.b.Nyr) {
-      return a(paramz, (a.m)paramq, a.b.Nim);
+    if (paramb == d.l.b.a.b.k.a.b.NVy) {
+      return a(paramz, (a.m)paramq, b.NFs);
     }
-    paramq = a(paramq, paramz.MMU, paramz.MMV, paramb);
+    paramq = a(paramq, paramz.NjZ, paramz.Nka, paramb);
     if (paramq == null) {
-      return (List)d.a.v.MKE;
+      return (List)d.a.v.NhH;
     }
     return a(this, paramz, paramq, false, null, false, 60);
   }
@@ -404,7 +404,7 @@ public abstract class a<A, C>
     d.g.b.p.h(paramq, "callableProto");
     d.g.b.p.h(paramb, "kind");
     d.g.b.p.h(paramt, "proto");
-    paramb = a(paramq, paramz.MMU, paramz.MMV, paramb);
+    paramb = a(paramq, paramz.NjZ, paramz.Nka, paramb);
     if (paramb != null)
     {
       int i;
@@ -415,7 +415,7 @@ public abstract class a<A, C>
       }
       for (;;)
       {
-        paramq = s.Nje;
+        paramq = s.NGk;
         return a(this, paramz, s.a.a(paramb, i + paramInt), false, null, false, 60);
         i = 0;
         continue;
@@ -435,9 +435,9 @@ public abstract class a<A, C>
           if (paramz == null) {
             throw new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.serialization.deserialization.ProtoContainer.Class");
           }
-          if (((z.a)paramz).Nzx == a.b.b.Nle) {
+          if (((z.a)paramz).NWE == a.b.b.NIk) {
             i = 2;
-          } else if (((z.a)paramz).MUM) {
+          } else if (((z.a)paramz).NrR) {
             i = 1;
           } else {
             i = 0;
@@ -446,7 +446,7 @@ public abstract class a<A, C>
       }
       throw ((Throwable)new UnsupportedOperationException("Unsupported message: " + paramq.getClass()));
     }
-    return (List)d.a.v.MKE;
+    return (List)d.a.v.NhH;
   }
   
   public final List<A> b(final z.a parama)
@@ -454,7 +454,7 @@ public abstract class a<A, C>
     d.g.b.p.h(parama, "container");
     p localp = a(parama);
     if (localp == null) {
-      throw ((Throwable)new IllegalStateException(("Class for loading annotations is not found: " + parama.gtA()).toString()));
+      throw ((Throwable)new IllegalStateException(("Class for loading annotations is not found: " + parama.gyc()).toString()));
     }
     parama = new ArrayList(1);
     p.c localc = (p.c)new e(this, parama);
@@ -467,7 +467,7 @@ public abstract class a<A, C>
   {
     d.g.b.p.h(paramz, "container");
     d.g.b.p.h(paramm, "proto");
-    return a(paramz, paramm, a.b.Nio);
+    return a(paramz, paramm, b.NFu);
   }
   
   public final List<A> b(z paramz, d.l.b.a.b.h.q paramq, d.l.b.a.b.k.a.b paramb)
@@ -475,18 +475,50 @@ public abstract class a<A, C>
     d.g.b.p.h(paramz, "container");
     d.g.b.p.h(paramq, "proto");
     d.g.b.p.h(paramb, "kind");
-    paramq = a(paramq, paramz.MMU, paramz.MMV, paramb);
+    paramq = a(paramq, paramz.NjZ, paramz.Nka, paramb);
     if (paramq != null)
     {
-      paramb = s.Nje;
+      paramb = s.NGk;
       return a(this, paramz, s.a.a(paramq, 0), false, null, false, 60);
     }
-    return (List)d.a.v.MKE;
+    return (List)d.a.v.NhH;
   }
   
-  protected abstract C fi(C paramC);
+  protected abstract C fl(C paramC);
   
   public static final class a {}
+  
+  static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(58144);
+      b localb1 = new b("PROPERTY", 0);
+      NFs = localb1;
+      b localb2 = new b("BACKING_FIELD", 1);
+      NFt = localb2;
+      b localb3 = new b("DELEGATE_FIELD", 2);
+      NFu = localb3;
+      NFv = new b[] { localb1, localb2, localb3 };
+      AppMethodBeat.o(58144);
+    }
+    
+    private b() {}
+  }
+  
+  static final class c<A, C>
+  {
+    final Map<s, List<A>> NFw;
+    final Map<s, C> NFx;
+    
+    public c(Map<s, ? extends List<? extends A>> paramMap, Map<s, ? extends C> paramMap1)
+    {
+      AppMethodBeat.i(58147);
+      this.NFw = paramMap;
+      this.NFx = paramMap1;
+      AppMethodBeat.o(58147);
+    }
+  }
   
   public static final class d
     implements p.d
@@ -498,10 +530,10 @@ public abstract class a<A, C>
       AppMethodBeat.i(58154);
       d.g.b.p.h(paramf, "name");
       d.g.b.p.h(paramString, "desc");
-      s.a locala = s.Nje;
+      s.a locala = s.NGk;
       paramf = paramf.sD();
       d.g.b.p.g(paramf, "name.asString()");
-      paramf = (p.e)new a(s.a.nt(paramf, paramString));
+      paramf = (p.e)new a(s.a.nz(paramf, paramString));
       AppMethodBeat.o(58154);
       return paramf;
     }
@@ -511,10 +543,10 @@ public abstract class a<A, C>
       AppMethodBeat.i(58155);
       d.g.b.p.h(paramf, "name");
       d.g.b.p.h(paramString, "desc");
-      s.a locala = s.Nje;
+      s.a locala = s.NGk;
       paramf = paramf.sD();
       d.g.b.p.g(paramf, "name.asString()");
-      paramf = (p.c)new b(s.a.nu(paramf, paramString));
+      paramf = (p.c)new b(s.a.nA(paramf, paramString));
       AppMethodBeat.o(58155);
       return paramf;
     }
@@ -535,16 +567,16 @@ public abstract class a<A, C>
         AppMethodBeat.i(58149);
         d.g.b.p.h(parama, "classId");
         d.g.b.p.h(paraman, "source");
-        Object localObject = s.Nje;
-        s locals = s.a.a(this.Nix, paramInt);
-        List localList = (List)a.d.this.Nit.get(locals);
+        Object localObject = s.NGk;
+        s locals = s.a.a(this.NFD, paramInt);
+        List localList = (List)a.d.this.NFz.get(locals);
         localObject = localList;
         if (localList == null)
         {
           localObject = (List)new ArrayList();
-          ((Map)a.d.this.Nit).put(locals, localObject);
+          ((Map)a.d.this.NFz).put(locals, localObject);
         }
-        parama = a.a(a.d.this.Nis, parama, paraman, (List)localObject);
+        parama = a.a(a.d.this.NFy, parama, paraman, (List)localObject);
         AppMethodBeat.o(58149);
         return parama;
       }
@@ -553,25 +585,25 @@ public abstract class a<A, C>
     public class b
       implements p.c
     {
-      private final ArrayList<A> Niw;
-      final s Nix;
+      private final ArrayList<A> NFC;
+      final s NFD;
       
       public b()
       {
         AppMethodBeat.i(58153);
-        this.Nix = localObject;
-        this.Niw = new ArrayList();
+        this.NFD = localObject;
+        this.NFC = new ArrayList();
         AppMethodBeat.o(58153);
       }
       
-      public final void IH()
+      public final void IP()
       {
         AppMethodBeat.i(58152);
-        if (!((Collection)this.Niw).isEmpty()) {}
+        if (!((Collection)this.NFC).isEmpty()) {}
         for (int i = 1;; i = 0)
         {
           if (i != 0) {
-            ((Map)a.d.this.Nit).put(this.Nix, this.Niw);
+            ((Map)a.d.this.NFz).put(this.NFD, this.NFC);
           }
           AppMethodBeat.o(58152);
           return;
@@ -583,7 +615,7 @@ public abstract class a<A, C>
         AppMethodBeat.i(58151);
         d.g.b.p.h(parama, "classId");
         d.g.b.p.h(paraman, "source");
-        parama = a.a(a.d.this.Nis, parama, paraman, (List)this.Niw);
+        parama = a.a(a.d.this.NFy, parama, paraman, (List)this.NFC);
         AppMethodBeat.o(58151);
         return parama;
       }
@@ -595,14 +627,14 @@ public abstract class a<A, C>
   {
     e(ArrayList paramArrayList) {}
     
-    public final void IH() {}
+    public final void IP() {}
     
     public final p.a a(d.l.b.a.b.f.a parama, an paraman)
     {
       AppMethodBeat.i(58156);
       d.g.b.p.h(parama, "classId");
       d.g.b.p.h(paraman, "source");
-      parama = a.a(this.Nis, parama, paraman, (List)parama);
+      parama = a.a(this.NFy, parama, paraman, (List)parama);
       AppMethodBeat.o(58156);
       return parama;
     }
@@ -620,7 +652,7 @@ public abstract class a<A, C>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.a
  * JD-Core Version:    0.7.0.1
  */

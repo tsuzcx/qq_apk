@@ -1,85 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class efg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FKM;
-  public int HQC;
-  public String md5;
-  public String url;
+  public String FZl;
+  public String HGP;
+  public int Scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123680);
+    AppMethodBeat.i(32558);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HQC);
-      paramVarArgs.aS(2, this.FKM);
-      if (this.url != null) {
-        paramVarArgs.d(3, this.url);
-      }
-      if (this.md5 != null) {
-        paramVarArgs.d(4, this.md5);
-      }
-      AppMethodBeat.o(123680);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.HQC) + 0 + f.a.a.b.b.a.bz(2, this.FKM);
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.url);
-      }
-      i = paramInt;
-      if (this.md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.md5);
-      }
-      AppMethodBeat.o(123680);
-      return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
-      }
-      AppMethodBeat.o(123680);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      efg localefg = (efg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.HGP == null)
       {
-      default: 
-        AppMethodBeat.o(123680);
-        return -1;
-      case 1: 
-        localefg.HQC = locala.NPN.zc();
-        AppMethodBeat.o(123680);
-        return 0;
-      case 2: 
-        localefg.FKM = locala.NPN.zc();
-        AppMethodBeat.o(123680);
-        return 0;
-      case 3: 
-        localefg.url = locala.NPN.readString();
-        AppMethodBeat.o(123680);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: Talker");
+        AppMethodBeat.o(32558);
+        throw paramVarArgs;
       }
-      localefg.md5 = locala.NPN.readString();
-      AppMethodBeat.o(123680);
+      if (this.FZl == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Text");
+        AppMethodBeat.o(32558);
+        throw paramVarArgs;
+      }
+      if (this.HGP != null) {
+        paramVarArgs.d(1, this.HGP);
+      }
+      if (this.FZl != null) {
+        paramVarArgs.d(2, this.FZl);
+      }
+      paramVarArgs.aS(3, this.Scene);
+      AppMethodBeat.o(32558);
       return 0;
     }
-    AppMethodBeat.o(123680);
-    return -1;
+    if (paramInt == 1) {
+      if (this.HGP == null) {
+        break label427;
+      }
+    }
+    label427:
+    for (paramInt = f.a.a.b.b.a.e(1, this.HGP) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.FZl != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FZl);
+      }
+      paramInt = f.a.a.b.b.a.bz(3, this.Scene);
+      AppMethodBeat.o(32558);
+      return i + paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        if (this.HGP == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Talker");
+          AppMethodBeat.o(32558);
+          throw paramVarArgs;
+        }
+        if (this.FZl == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Text");
+          AppMethodBeat.o(32558);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32558);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        efg localefg = (efg)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32558);
+          return -1;
+        case 1: 
+          localefg.HGP = locala.OmT.readString();
+          AppMethodBeat.o(32558);
+          return 0;
+        case 2: 
+          localefg.FZl = locala.OmT.readString();
+          AppMethodBeat.o(32558);
+          return 0;
+        }
+        localefg.Scene = locala.OmT.zc();
+        AppMethodBeat.o(32558);
+        return 0;
+      }
+      AppMethodBeat.o(32558);
+      return -1;
+    }
   }
 }
 

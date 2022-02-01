@@ -2,48 +2,48 @@ package com.tencent.mm.plugin.priority.model.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.priority.model.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.wcdb.database.SQLiteStatement;
 
 public final class c
 {
-  public b wKA;
-  private SQLiteStatement wLh;
-  SQLiteStatement wLi;
-  SQLiteStatement wLj;
-  private SQLiteStatement wLk;
+  private SQLiteStatement xaV;
+  SQLiteStatement xaW;
+  SQLiteStatement xaX;
+  private SQLiteStatement xaY;
+  public b xao;
   
   public c(b paramb)
   {
     AppMethodBeat.i(87823);
-    this.wKA = paramb;
-    if (this.wKA.ad(49L, 0L) != 5L)
+    this.xao = paramb;
+    if (this.xao.ac(49L, 0L) != 5L)
     {
-      if (this.wKA.akg("C2CChatUsage")) {
-        this.wKA.auw("C2CChatUsage");
+      if (this.xao.ale("C2CChatUsage")) {
+        this.xao.avL("C2CChatUsage");
       }
-      this.wKA.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (chat TEXT, date INTEGER, chattype INTEGER DEFAULT 0, opencount INTEGER DEFAULT 0, sendmsgcount INTEGER DEFAULT 0, staytime INTEGER DEFAULT 0, consumemsgcount INTEGER DEFAULT 0, PRIMARY KEY(chat, date));", new Object[] { "C2CChatUsage" }));
-      this.wKA.ae(49L, 5L);
+      this.xao.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (chat TEXT, date INTEGER, chattype INTEGER DEFAULT 0, opencount INTEGER DEFAULT 0, sendmsgcount INTEGER DEFAULT 0, staytime INTEGER DEFAULT 0, consumemsgcount INTEGER DEFAULT 0, PRIMARY KEY(chat, date));", new Object[] { "C2CChatUsage" }));
+      this.xao.ad(49L, 5L);
     }
     for (;;)
     {
-      this.wLh = this.wKA.compileStatement(String.format("INSERT OR IGNORE INTO %s (chat, date, chattype) VALUES (?,?,?)", new Object[] { "C2CChatUsage" }));
-      this.wLi = this.wKA.compileStatement(String.format("UPDATE %s SET opencount = opencount + 1, staytime = staytime + ? WHERE chat = ? AND date = ?", new Object[] { "C2CChatUsage" }));
-      this.wLj = this.wKA.compileStatement(String.format("UPDATE %s SET sendmsgcount = sendmsgcount + 1 WHERE chat = ? AND date = ?", new Object[] { "C2CChatUsage" }));
-      this.wLk = this.wKA.compileStatement(String.format("UPDATE %s SET consumemsgcount = consumemsgcount + 1 WHERE chat = ? AND date = ?", new Object[] { "C2CChatUsage" }));
+      this.xaV = this.xao.compileStatement(String.format("INSERT OR IGNORE INTO %s (chat, date, chattype) VALUES (?,?,?)", new Object[] { "C2CChatUsage" }));
+      this.xaW = this.xao.compileStatement(String.format("UPDATE %s SET opencount = opencount + 1, staytime = staytime + ? WHERE chat = ? AND date = ?", new Object[] { "C2CChatUsage" }));
+      this.xaX = this.xao.compileStatement(String.format("UPDATE %s SET sendmsgcount = sendmsgcount + 1 WHERE chat = ? AND date = ?", new Object[] { "C2CChatUsage" }));
+      this.xaY = this.xao.compileStatement(String.format("UPDATE %s SET consumemsgcount = consumemsgcount + 1 WHERE chat = ? AND date = ?", new Object[] { "C2CChatUsage" }));
       AppMethodBeat.o(87823);
       return;
-      ad.i("MicroMsg.Priority.C2CChatUsageStorage", "Exist Table %s Count %d", new Object[] { "C2CChatUsage", Integer.valueOf(this.wKA.auv("C2CChatUsage")) });
+      ae.i("MicroMsg.Priority.C2CChatUsageStorage", "Exist Table %s Count %d", new Object[] { "C2CChatUsage", Integer.valueOf(this.xao.avK("C2CChatUsage")) });
     }
   }
   
   public final boolean J(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(87824);
-    this.wLh.bindString(1, paramString);
-    this.wLh.bindLong(2, paramLong1);
-    this.wLh.bindLong(3, paramLong2);
-    if (this.wLh.executeInsert() >= 0L)
+    this.xaV.bindString(1, paramString);
+    this.xaV.bindLong(2, paramLong1);
+    this.xaV.bindLong(3, paramLong2);
+    if (this.xaV.executeInsert() >= 0L)
     {
       AppMethodBeat.o(87824);
       return true;
@@ -54,7 +54,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.a.a.c
  * JD-Core Version:    0.7.0.1
  */

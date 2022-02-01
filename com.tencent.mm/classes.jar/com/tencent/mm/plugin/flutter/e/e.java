@@ -3,74 +3,74 @@ package com.tencent.mm.plugin.flutter.e;
 import android.content.Context;
 import com.tencent.map.tools.net.NetUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayerMgr;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "downloadMgr", "Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;", "getDownloadMgr", "()Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;", "setDownloadMgr", "(Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;)V", "isEnablePlayInMobileNet", "", "videoService", "Lcom/tencent/mm/plugin/flutter/video/FlutterCdnService;", "getVideoService", "()Lcom/tencent/mm/plugin/flutter/video/FlutterCdnService;", "setVideoService", "(Lcom/tencent/mm/plugin/flutter/video/FlutterCdnService;)V", "isNetworkEnable", "isWifi", "setEnablePlayInMobileNet", "", "enable", "Companion", "plugin-flutter_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayerMgr;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "downloadMgr", "Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;", "getDownloadMgr", "()Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;", "setDownloadMgr", "(Lcom/tencent/mm/plugin/flutter/video/FlutterCdnDownloadMgr;)V", "isEnablePlayInMobileNet", "", "videoService", "Lcom/tencent/mm/plugin/flutter/video/FlutterCdnService;", "getVideoService", "()Lcom/tencent/mm/plugin/flutter/video/FlutterCdnService;", "setVideoService", "(Lcom/tencent/mm/plugin/flutter/video/FlutterCdnService;)V", "isNetworkEnable", "isWifi", "setEnablePlayInMobileNet", "", "enable", "Companion", "plugin-flutter_release"})
 public final class e
 {
-  private static e tjl;
-  public static final a tjm;
+  private static e tud;
+  public static final a tue;
   private final String TAG;
-  boolean tji;
-  b tjj;
-  c tjk;
+  boolean tua;
+  b tub;
+  c tuc;
   
   static
   {
-    AppMethodBeat.i(219191);
-    tjm = new a((byte)0);
-    AppMethodBeat.o(219191);
+    AppMethodBeat.i(213520);
+    tue = new a((byte)0);
+    AppMethodBeat.o(213520);
   }
   
   public e()
   {
-    AppMethodBeat.i(219190);
+    AppMethodBeat.i(213519);
     this.TAG = "MicroMsg.FlutterVideoPlayerMgr";
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     p.g(localContext, "MMApplicationContext.getContext()");
-    this.tjj = new b(localContext);
-    this.tjk = new c();
-    AppMethodBeat.o(219190);
+    this.tub = new b(localContext);
+    this.tuc = new c();
+    AppMethodBeat.o(213519);
   }
   
-  public static boolean cQs()
+  public static boolean cSX()
   {
-    AppMethodBeat.i(219188);
-    if (aj.getContext() != null)
+    AppMethodBeat.i(213517);
+    if (ak.getContext() != null)
     {
-      boolean bool = NetUtil.isNetAvailable(aj.getContext());
-      AppMethodBeat.o(219188);
+      boolean bool = NetUtil.isNetAvailable(ak.getContext());
+      AppMethodBeat.o(213517);
       return bool;
     }
-    AppMethodBeat.o(219188);
+    AppMethodBeat.o(213517);
     return false;
   }
   
-  public static boolean chr()
+  public static boolean ciH()
   {
-    AppMethodBeat.i(219189);
-    if (aj.getContext() != null)
+    AppMethodBeat.i(213518);
+    if (ak.getContext() != null)
     {
-      boolean bool = NetUtil.isWifi(aj.getContext());
-      AppMethodBeat.o(219189);
+      boolean bool = NetUtil.isWifi(ak.getContext());
+      AppMethodBeat.o(213518);
       return bool;
     }
-    AppMethodBeat.o(219189);
+    AppMethodBeat.o(213518);
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayerMgr$Companion;", "", "()V", "instance", "Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayerMgr;", "getInstance", "plugin-flutter_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayerMgr$Companion;", "", "()V", "instance", "Lcom/tencent/mm/plugin/flutter/video/FlutterVideoPlayerMgr;", "getInstance", "plugin-flutter_release"})
   public static final class a
   {
     /* Error */
-    public final e cQu()
+    public final e cSZ()
     {
       // Byte code:
       //   0: ldc 30
       //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: invokestatic 39	com/tencent/mm/plugin/flutter/e/e:cQt	()Lcom/tencent/mm/plugin/flutter/e/e;
+      //   5: invokestatic 39	com/tencent/mm/plugin/flutter/e/e:cSY	()Lcom/tencent/mm/plugin/flutter/e/e;
       //   8: astore_1
       //   9: aload_1
       //   10: ifnull +10 -> 20
@@ -80,7 +80,7 @@ public final class e
       //   19: areturn
       //   20: aload_0
       //   21: monitorenter
-      //   22: invokestatic 39	com/tencent/mm/plugin/flutter/e/e:cQt	()Lcom/tencent/mm/plugin/flutter/e/e;
+      //   22: invokestatic 39	com/tencent/mm/plugin/flutter/e/e:cSY	()Lcom/tencent/mm/plugin/flutter/e/e;
       //   25: astore_1
       //   26: aload_1
       //   27: ifnull +12 -> 39
@@ -118,7 +118,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.e.e
  * JD-Core Version:    0.7.0.1
  */

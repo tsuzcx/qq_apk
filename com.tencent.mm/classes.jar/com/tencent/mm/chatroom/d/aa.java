@@ -1,24 +1,24 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.chatroom.storage.GroupToolItem;
 import com.tencent.mm.chatroom.storage.e;
 import com.tencent.mm.chatroom.storage.f;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelappbrand.a;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.ayz;
-import com.tencent.mm.protocal.protobuf.cwg;
-import com.tencent.mm.protocal.protobuf.cwo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.azp;
+import com.tencent.mm.protocal.protobuf.cxa;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.storage.bv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -26,39 +26,39 @@ import java.util.List;
 
 public final class aa
 {
-  private static Boolean fLr = null;
+  private static Boolean fNv = null;
   
-  public static boolean Yh()
+  public static boolean Yr()
   {
     AppMethodBeat.i(182109);
-    if ((i.DEBUG) || (i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE))
+    if ((j.DEBUG) || (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE))
     {
       AppMethodBeat.o(182109);
       return true;
     }
     boolean bool;
-    if (fLr != null)
+    if (fNv != null)
     {
-      bool = fLr.booleanValue();
+      bool = fNv.booleanValue();
       AppMethodBeat.o(182109);
       return bool;
     }
-    int i = ((b)g.ab(b.class)).a(b.a.qxZ, 1);
-    ad.i("MicroMsg.roomtools.RoomToolsHelp", "getRoomToolsSwt() swt:%s", new Object[] { Integer.valueOf(i) });
+    int i = ((b)g.ab(b.class)).a(b.a.qFf, 1);
+    ae.i("MicroMsg.roomtools.RoomToolsHelp", "getRoomToolsSwt() swt:%s", new Object[] { Integer.valueOf(i) });
     if (i == 1) {}
-    for (fLr = Boolean.TRUE;; fLr = Boolean.FALSE)
+    for (fNv = Boolean.TRUE;; fNv = Boolean.FALSE)
     {
-      bool = fLr.booleanValue();
+      bool = fNv.booleanValue();
       AppMethodBeat.o(182109);
       return bool;
     }
   }
   
-  public static void Yi()
+  public static void Ys()
   {
     AppMethodBeat.i(185967);
-    ad.i("MicroMsg.roomtools.RoomToolsHelp", "resetAllGroupToolsRecentUse");
-    Object localObject = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().Yt();
+    ae.i("MicroMsg.roomtools.RoomToolsHelp", "resetAllGroupToolsRecentUse");
+    Object localObject = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().YC();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -72,20 +72,20 @@ public final class aa
     AppMethodBeat.o(185967);
   }
   
-  public static void a(String paramString, ayz paramayz)
+  public static void a(String paramString, azp paramazp)
   {
     AppMethodBeat.i(182112);
-    if (!Yh())
+    if (!Yr())
     {
       AppMethodBeat.o(182112);
       return;
     }
-    if (paramayz == null)
+    if (paramazp == null)
     {
       AppMethodBeat.o(182112);
       return;
     }
-    e locale = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().uR(paramString);
+    e locale = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().vn(paramString);
     if (locale == null)
     {
       locale = new e();
@@ -94,8 +94,8 @@ public final class aa
     }
     for (int i = 0;; i = 1)
     {
-      paramayz = paramayz.Gwl;
-      if ((paramayz == null) || (paramayz.Hoj.size() == 0))
+      paramazp = paramazp.GPK;
+      if ((paramazp == null) || (paramazp.HHJ.size() == 0))
       {
         locale.field_stickToollist = "";
         if (i == 0) {
@@ -105,16 +105,16 @@ public final class aa
       label248:
       for (boolean bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale, new String[0]);; bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale))
       {
-        ad.i("MicroMsg.roomtools.RoomToolsHelp", "updateStickToolsByGetChatRoomInfoDetail roomName:%s result:%s", new Object[] { paramString, Boolean.valueOf(bool) });
+        ae.i("MicroMsg.roomtools.RoomToolsHelp", "updateStickToolsByGetChatRoomInfoDetail roomName:%s result:%s", new Object[] { paramString, Boolean.valueOf(bool) });
         AppMethodBeat.o(182112);
         return;
         ArrayList localArrayList = new ArrayList();
         int j = 0;
-        while (j < paramayz.Hoj.size())
+        while (j < paramazp.HHJ.size())
         {
-          cwo localcwo = (cwo)paramayz.Hoj.get(j);
-          if (localcwo != null) {
-            localArrayList.add(new GroupToolItem(bt.bI(localcwo.Username, ""), bt.bI(localcwo.ujc, "")));
+          cxi localcxi = (cxi)paramazp.HHJ.get(j);
+          if (localcxi != null) {
+            localArrayList.add(new GroupToolItem(bu.bI(localcxi.Username, ""), bu.bI(localcxi.uuA, "")));
           }
           j += 1;
         }
@@ -124,48 +124,48 @@ public final class aa
     }
   }
   
-  public static GroupToolItem g(bu parambu)
+  public static GroupToolItem g(bv parambv)
   {
     AppMethodBeat.i(182110);
     try
     {
-      k.b localb = k.b.yr(parambu.field_content);
+      k.b localb = k.b.zb(parambv.field_content);
       if (localb != null)
       {
         GroupToolItem localGroupToolItem = new GroupToolItem();
-        localGroupToolItem.username = bt.bI(localb.hCn, "");
-        localGroupToolItem.path = bt.bI(localb.hCm, "");
-        localGroupToolItem.fMf = parambu.field_createTime;
+        localGroupToolItem.username = bu.bI(localb.hFc, "");
+        localGroupToolItem.path = bu.bI(localb.hFb, "");
+        localGroupToolItem.fOl = parambv.field_createTime;
         AppMethodBeat.o(182110);
         return localGroupToolItem;
       }
       AppMethodBeat.o(182110);
       return null;
     }
-    catch (Exception parambu)
+    catch (Exception parambv)
     {
-      ad.e("MicroMsg.roomtools.RoomToolsHelp", "getGroupToolItemFromMsg Exception:%s %s", new Object[] { parambu.getClass().getSimpleName(), parambu.getMessage() });
+      ae.e("MicroMsg.roomtools.RoomToolsHelp", "getGroupToolItemFromMsg Exception:%s %s", new Object[] { parambv.getClass().getSimpleName(), parambv.getMessage() });
       AppMethodBeat.o(182110);
     }
     return null;
   }
   
-  public static boolean h(bu parambu)
+  public static boolean h(bv parambv)
   {
     AppMethodBeat.i(182111);
-    if (parambu == null)
+    if (parambv == null)
     {
       AppMethodBeat.o(182111);
       return false;
     }
-    if (parambu.getType() == 436207665)
+    if (parambv.getType() == 436207665)
     {
-      String str = parambu.field_content;
+      String str = parambv.field_content;
       k.b localb = null;
       if (str != null) {
-        localb = k.b.aA(str, parambu.field_reserved);
+        localb = k.b.aB(str, parambv.field_reserved);
       }
-      if ((localb != null) && ("1001".equals(localb.hBw)))
+      if ((localb != null) && ("1001".equals(localb.hEk)))
       {
         AppMethodBeat.o(182111);
         return true;
@@ -175,32 +175,32 @@ public final class aa
     return false;
   }
   
-  public static boolean i(bu parambu)
+  public static boolean i(bv parambv)
   {
     AppMethodBeat.i(185965);
-    if (parambu == null)
+    if (parambv == null)
     {
       AppMethodBeat.o(185965);
       return false;
     }
-    if (!w.zk(parambu.field_talker))
+    if (!x.zU(parambv.field_talker))
     {
       AppMethodBeat.o(185965);
       return false;
     }
-    if (!Yh())
+    if (!Yr())
     {
       AppMethodBeat.o(185965);
       return false;
     }
-    parambu = k.b.yr(parambu.field_content);
-    if (parambu == null)
+    parambv = k.b.zb(parambv.field_content);
+    if (parambv == null)
     {
-      ad.d("MicroMsg.roomtools.RoomToolsHelp", "content is null");
+      ae.d("MicroMsg.roomtools.RoomToolsHelp", "content is null");
       AppMethodBeat.o(185965);
       return false;
     }
-    if ((a.b(parambu)) || (a.c(parambu)) || ("1001".equals(parambu.hBw)))
+    if ((a.b(parambv)) || (a.c(parambv)) || ("1001".equals(parambv.hEk)))
     {
       AppMethodBeat.o(185965);
       return true;
@@ -209,18 +209,18 @@ public final class aa
     return false;
   }
   
-  public static void uM(String paramString)
+  public static void vh(String paramString)
   {
     AppMethodBeat.i(185966);
     e locale;
     boolean bool;
-    if ((Yh()) && (w.zk(paramString)))
+    if ((Yr()) && (x.zU(paramString)))
     {
       locale = null;
-      if (bt.isNullOrNil(paramString)) {
+      if (bu.isNullOrNil(paramString)) {
         break label141;
       }
-      locale = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().uR(paramString);
+      locale = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().vn(paramString);
       if ((locale == null) || (locale.field_queryState == 0)) {
         break label136;
       }
@@ -229,11 +229,11 @@ public final class aa
     }
     for (;;)
     {
-      String str = bt.bI(paramString, "");
+      String str = bu.bI(paramString, "");
       if (locale == null) {}
       for (paramString = "null";; paramString = "not_null")
       {
-        ad.i("MicroMsg.roomtools.RoomToolsHelp", "resetGroupToolsByTalker roomName:%s groupTools:%s result:%s", new Object[] { str, paramString, Boolean.valueOf(bool) });
+        ae.i("MicroMsg.roomtools.RoomToolsHelp", "resetGroupToolsByTalker roomName:%s groupTools:%s result:%s", new Object[] { str, paramString, Boolean.valueOf(bool) });
         AppMethodBeat.o(185966);
         return;
       }
@@ -245,29 +245,29 @@ public final class aa
     }
   }
   
-  public static e uN(String paramString)
+  public static e vi(String paramString)
   {
-    AppMethodBeat.i(213413);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(217126);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(213413);
+      AppMethodBeat.o(217126);
       return null;
     }
-    e locale = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().uR(paramString);
+    e locale = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().vn(paramString);
     if (locale != null)
     {
-      AppMethodBeat.o(213413);
+      AppMethodBeat.o(217126);
       return locale;
     }
     locale = new e();
     locale.field_chatroomname = paramString;
     if (((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale))
     {
-      paramString = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().uR(paramString);
-      AppMethodBeat.o(213413);
+      paramString = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().vn(paramString);
+      AppMethodBeat.o(217126);
       return paramString;
     }
-    AppMethodBeat.o(213413);
+    AppMethodBeat.o(217126);
     return null;
   }
 }

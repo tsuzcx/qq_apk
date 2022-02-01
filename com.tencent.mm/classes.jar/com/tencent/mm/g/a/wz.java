@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class wz
   extends b
 {
+  public a dMx;
+  
   public wz()
   {
     this((byte)0);
@@ -12,8 +15,21 @@ public final class wz
   
   private wz(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(116052);
+    this.dMx = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(116052);
+  }
+  
+  public static final class a
+  {
+    public byte[] dMA;
+    public String dMy;
+    public boolean dMz;
+    public String id;
+    public String source;
+    public int type;
   }
 }
 

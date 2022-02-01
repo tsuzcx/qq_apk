@@ -10,25 +10,25 @@ import d.l;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/programv2/RGB2YUVRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "(IIIII)V", "attributePosition", "attributeTextureCoord", "mInputTexture", "programId", "uniformMatrix", "uniformTexture", "uniformXOffset", "uniformYuvGap", "renderImpl", "", "setInputTexture", "texture", "updateDrawViewSize", "width", "height", "Companion", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/programv2/RGB2YUVRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "(IIIII)V", "attributePosition", "attributeTextureCoord", "mInputTexture", "programId", "uniformMatrix", "uniformTexture", "uniformXOffset", "uniformYuvGap", "renderImpl", "", "setInputTexture", "texture", "updateDrawViewSize", "width", "height", "Companion", "plugin-voip_release"})
 public final class b
   extends com.tencent.mm.media.j.b.a
 {
-  public static final b.a CqT;
-  private final int CqF;
-  public int CqL;
-  private final int CqS;
-  private final int gLM;
-  private final int gLN;
-  private final int gLO;
-  private final int gLP;
-  private final int hom;
+  public static final b.a CIx;
+  private final int CIj;
+  public int CIp;
+  private final int CIw;
+  private final int gOv;
+  private final int gOw;
+  private final int gOx;
+  private final int gOy;
+  private final int hra;
   
   static
   {
-    AppMethodBeat.i(216071);
-    CqT = new b.a((byte)0);
-    AppMethodBeat.o(216071);
+    AppMethodBeat.i(210492);
+    CIx = new b.a((byte)0);
+    AppMethodBeat.o(210492);
   }
   
   public b()
@@ -39,67 +39,67 @@ public final class b
   private b(int paramInt)
   {
     super(0, 0, 0, 0, paramInt, 1);
-    AppMethodBeat.i(216069);
-    this.CqL = -1;
-    Object localObject = c.hoP;
-    localObject = com.tencent.mm.media.c.a.hie;
-    localObject = com.tencent.mm.media.c.a.atg();
-    a.a locala = com.tencent.mm.media.c.a.hie;
-    this.gLM = c.a.ay((String)localObject, com.tencent.mm.media.c.a.ath());
-    this.CqF = GLES30.glGetUniformLocation(this.gLM, "xoffset");
-    this.CqS = GLES30.glGetUniformLocation(this.gLM, "yuvGap");
-    this.gLP = GLES30.glGetUniformLocation(this.gLM, "inTexture");
-    this.gLN = 0;
-    this.gLO = 1;
-    this.hom = GLES20.glGetUniformLocation(this.gLM, "uMatrix");
-    this.hny = true;
-    AppMethodBeat.o(216069);
+    AppMethodBeat.i(210490);
+    this.CIp = -1;
+    Object localObject = c.hrD;
+    localObject = com.tencent.mm.media.c.a.hkS;
+    localObject = com.tencent.mm.media.c.a.atv();
+    a.a locala = com.tencent.mm.media.c.a.hkS;
+    this.gOv = c.a.az((String)localObject, com.tencent.mm.media.c.a.atw());
+    this.CIj = GLES30.glGetUniformLocation(this.gOv, "xoffset");
+    this.CIw = GLES30.glGetUniformLocation(this.gOv, "yuvGap");
+    this.gOy = GLES30.glGetUniformLocation(this.gOv, "inTexture");
+    this.gOw = 0;
+    this.gOx = 1;
+    this.hra = GLES20.glGetUniformLocation(this.gOv, "uMatrix");
+    this.hqm = true;
+    AppMethodBeat.o(210490);
   }
   
-  public final void aue()
+  public final void aut()
   {
-    AppMethodBeat.i(216068);
-    if (this.CqL == -1)
+    AppMethodBeat.i(210489);
+    if (this.CIp == -1)
     {
-      AppMethodBeat.o(216068);
+      AppMethodBeat.o(210489);
       return;
     }
-    GLES30.glUseProgram(this.gLM);
+    GLES30.glUseProgram(this.gOv);
     GLES30.glActiveTexture(33984);
-    GLES30.glBindTexture(3553, this.CqL);
+    GLES30.glBindTexture(3553, this.CIp);
     GLES30.glTexParameteri(3553, 10241, 9729);
     GLES30.glTexParameteri(3553, 10240, 9729);
     GLES30.glTexParameteri(3553, 10242, 33071);
     GLES30.glTexParameteri(3553, 10243, 33071);
-    GLES30.glUniform1i(this.gLP, 0);
-    GLES30.glUniform1f(this.CqF, 1.0F / this.gLD / 4.0F);
-    GLES30.glUniform1f(this.CqS, 0.3333333F);
-    GLES30.glUniformMatrix4fv(this.hom, 1, false, this.hnx, 0);
-    this.gLm.position(0);
-    GLES30.glVertexAttribPointer(this.gLN, 2, 5126, false, 0, (Buffer)this.gLm);
-    GLES30.glEnableVertexAttribArray(this.gLN);
-    this.gLl.position(0);
-    GLES30.glVertexAttribPointer(this.gLO, 2, 5126, false, 0, (Buffer)this.gLl);
-    GLES30.glEnableVertexAttribArray(this.gLO);
+    GLES30.glUniform1i(this.gOy, 0);
+    GLES30.glUniform1f(this.CIj, 1.0F / this.gOm / 4.0F);
+    GLES30.glUniform1f(this.CIw, 0.3333333F);
+    GLES30.glUniformMatrix4fv(this.hra, 1, false, this.hql, 0);
+    this.gNV.position(0);
+    GLES30.glVertexAttribPointer(this.gOw, 2, 5126, false, 0, (Buffer)this.gNV);
+    GLES30.glEnableVertexAttribArray(this.gOw);
+    this.gNU.position(0);
+    GLES30.glVertexAttribPointer(this.gOx, 2, 5126, false, 0, (Buffer)this.gNU);
+    GLES30.glEnableVertexAttribArray(this.gOx);
     GLES30.glDrawArrays(5, 0, 4);
-    GLES30.glDisableVertexAttribArray(this.gLN);
-    GLES30.glDisableVertexAttribArray(this.gLO);
+    GLES30.glDisableVertexAttribArray(this.gOw);
+    GLES30.glDisableVertexAttribArray(this.gOx);
     GLES30.glBindTexture(3553, 0);
     GLES30.glBindTexture(36197, 0);
-    AppMethodBeat.o(216068);
+    AppMethodBeat.o(210489);
   }
   
   public final void cT(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216067);
+    AppMethodBeat.i(210488);
     super.cT(paramInt1 / 4, paramInt2 * 3 / 2);
     super.cW(paramInt1 / 4, paramInt2 * 3 / 2);
-    AppMethodBeat.o(216067);
+    AppMethodBeat.o(210488);
   }
   
-  public final void nN(int paramInt)
+  public final void nQ(int paramInt)
   {
-    this.CqL = paramInt;
+    this.CIp = paramInt;
   }
 }
 

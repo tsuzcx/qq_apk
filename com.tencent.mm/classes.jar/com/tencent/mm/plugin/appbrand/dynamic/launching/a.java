@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.appbrand.dynamic.launching;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.al.y;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.y;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.api.e;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.dynamic.g.a.1;
 import com.tencent.mm.plugin.appbrand.widget.j;
 import com.tencent.mm.plugin.appbrand.widget.k;
-import com.tencent.mm.protocal.protobuf.bti;
-import com.tencent.mm.protocal.protobuf.efh;
-import com.tencent.mm.protocal.protobuf.efj;
-import com.tencent.mm.protocal.protobuf.egj;
-import com.tencent.mm.protocal.protobuf.eiq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.buc;
+import com.tencent.mm.protocal.protobuf.egy;
+import com.tencent.mm.protocal.protobuf.eha;
+import com.tencent.mm.protocal.protobuf.eia;
+import com.tencent.mm.protocal.protobuf.ekh;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.Callable;
 
 public final class a
@@ -24,38 +24,38 @@ public final class a
 {
   final int aDD;
   final String appId;
-  final int dtF;
-  final int khF;
-  final String khG;
+  final int duK;
+  final int kkV;
+  final String kkW;
   final int scene;
   
   public a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
     this.appId = paramString1;
-    this.dtF = paramInt1;
+    this.duK = paramInt1;
     this.aDD = paramInt2;
     this.scene = paramInt3;
-    this.khF = paramInt4;
-    this.khG = paramString2;
+    this.kkV = paramInt4;
+    this.kkW = paramString2;
   }
   
-  public final k bgg()
+  public final k bgO()
   {
     AppMethodBeat.i(121398);
     Object localObject2 = new k();
     ((k)localObject2).field_appId = this.appId;
-    Object localObject3 = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aYR();
+    Object localObject3 = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aZn();
     if (localObject3 == null)
     {
       AppMethodBeat.o(121398);
       return null;
     }
-    Object localObject1 = new eiq();
-    ((eiq)localObject1).GLq = com.tencent.mm.plugin.appbrand.dynamic.k.b.sr(this.dtF);
-    ((eiq)localObject1).FFN = this.aDD;
-    ((eiq)localObject1).HTf = this.khF;
-    ((eiq)localObject1).Scene = this.scene;
-    ((eiq)localObject1).HTg = 0;
+    Object localObject1 = new ekh();
+    ((ekh)localObject1).HeR = com.tencent.mm.plugin.appbrand.dynamic.k.b.su(this.duK);
+    ((ekh)localObject1).FYj = this.aDD;
+    ((ekh)localObject1).Inm = this.kkV;
+    ((ekh)localObject1).Scene = this.scene;
+    ((ekh)localObject1).Inn = 0;
     int i;
     if (((j)localObject3).a((k)localObject2, new String[] { "appId", "pkgType", "widgetType" }))
     {
@@ -66,35 +66,35 @@ public final class a
     }
     for (;;)
     {
-      if ((i != 0) && (((k)localObject2).field_launchAction != null) && (1 == ((k)localObject2).field_launchAction.FqN) && (((k)localObject2).field_versionInfo != null) && (((k)localObject2).field_versionInfo.FFN >= this.aDD)) {
+      if ((i != 0) && (((k)localObject2).field_launchAction != null) && (1 == ((k)localObject2).field_launchAction.FJl) && (((k)localObject2).field_versionInfo != null) && (((k)localObject2).field_versionInfo.FYj >= this.aDD)) {
         break label561;
       }
-      if ((this.khG != null) && (this.khG.length() > 0))
+      if ((this.kkW != null) && (this.kkW.length() > 0))
       {
         u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetLaunchInfo", "has preloaded launch data", new Object[0]);
         try
         {
-          localObject2 = new bti();
-          ((bti)localObject2).parseFrom(Base64.decode(this.khG, 0));
+          localObject2 = new buc();
+          ((buc)localObject2).parseFrom(Base64.decode(this.kkW, 0));
           boolean bool;
           label245:
-          egj localegj;
-          if (((bti)localObject2).GNR == null)
+          eia localeia;
+          if (((buc)localObject2).Hhr == null)
           {
             bool = true;
             u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetLaunchInfo", "preload launch info versioninfo is null %b", new Object[] { Boolean.valueOf(bool) });
-            localObject3 = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aYR().a(this.appId, this.dtF, this.khF, (bti)localObject2);
-            if (((bti)localObject2).GNR != null)
+            localObject3 = ((com.tencent.mm.plugin.appbrand.widget.a.b)g.ab(com.tencent.mm.plugin.appbrand.widget.a.b.class)).aZn().a(this.appId, this.duK, this.kkV, (buc)localObject2);
+            if (((buc)localObject2).Hhr != null)
             {
-              String str = ((e)g.ab(e.class)).aYu().aP(this.appId, this.dtF);
-              localegj = new egj();
-              localegj.HRw = str;
-              localegj.FFN = ((bti)localObject2).GNR.FFN;
-              if (this.dtF != 10102) {
+              String str = ((e)g.ab(e.class)).aYP().aS(this.appId, this.duK);
+              localeia = new eia();
+              localeia.IlD = str;
+              localeia.FYj = ((buc)localObject2).Hhr.FYj;
+              if (this.duK != 10102) {
                 break label426;
               }
-              localegj.HRv = ((bti)localObject2).GNR.HQF;
-              ((e)g.ab(e.class)).aYu().a(this.appId, localegj, this.dtF);
+              localeia.IlC = ((buc)localObject2).Hhr.IkM;
+              ((e)g.ab(e.class)).aYP().a(this.appId, localeia, this.duK);
             }
           }
           for (;;)
@@ -107,27 +107,27 @@ public final class a
             bool = false;
             break label245;
             label426:
-            if (this.dtF == 10002)
+            if (this.duK == 10002)
             {
-              localegj.HRv = ((bti)localObject2).GNR.HQE;
-              ((e)g.ab(e.class)).aYu().a(this.appId, localegj, this.dtF);
+              localeia.IlC = ((buc)localObject2).Hhr.IkL;
+              ((e)g.ab(e.class)).aYP().a(this.appId, localeia, this.duK);
             }
           }
-          localObject1 = new com.tencent.mm.plugin.appbrand.dynamic.g.a(this.appId, true, (eiq)localObject1);
+          localObject1 = new com.tencent.mm.plugin.appbrand.dynamic.g.a(this.appId, true, (ekh)localObject1);
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.AppBrand.PrepareStepCheckWidgetLaunchInfo", "preload launch data parse fail[%s]", new Object[] { this.khG });
+          ae.e("MicroMsg.AppBrand.PrepareStepCheckWidgetLaunchInfo", "preload launch data parse fail[%s]", new Object[] { this.kkW });
         }
       }
     }
     a.a locala = y.e(((com.tencent.mm.plugin.appbrand.dynamic.g.a)localObject1).rr);
-    ((com.tencent.mm.plugin.appbrand.dynamic.g.a)localObject1).a(locala.errType, locala.errCode, locala.errMsg, (bti)locala.hNC);
-    localObject1 = ((com.tencent.mm.plugin.appbrand.dynamic.g.a)localObject1).khZ;
+    ((com.tencent.mm.plugin.appbrand.dynamic.g.a)localObject1).a(locala.errType, locala.errCode, locala.errMsg, (buc)locala.hQv);
+    localObject1 = ((com.tencent.mm.plugin.appbrand.dynamic.g.a)localObject1).klp;
     AppMethodBeat.o(121398);
     return localObject1;
     label561:
-    com.tencent.mm.ci.a.post(new a.1(new com.tencent.mm.plugin.appbrand.dynamic.g.a(this.appId, false, (eiq)localObject1)));
+    com.tencent.mm.ch.a.post(new a.1(new com.tencent.mm.plugin.appbrand.dynamic.g.a(this.appId, false, (ekh)localObject1)));
     AppMethodBeat.o(121398);
     return locala;
   }

@@ -3,40 +3,40 @@ package com.tencent.mm.modelvideo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class k
 {
-  public static final String GS(String paramString)
+  public static final String Hu(String paramString)
   {
     AppMethodBeat.i(126890);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(126890);
       return null;
     }
-    paramString = aMC() + paramString;
+    paramString = aNa() + paramString;
     AppMethodBeat.o(126890);
     return paramString;
   }
   
-  public static final String GT(String paramString)
+  public static final String Hv(String paramString)
   {
     AppMethodBeat.i(126891);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(126891);
       return null;
     }
-    paramString = aMC() + paramString + ".thumb";
+    paramString = aNa() + paramString + ".thumb";
     AppMethodBeat.o(126891);
     return paramString;
   }
   
-  public static final String aMC()
+  public static final String aNa()
   {
     AppMethodBeat.i(126889);
-    String str = g.ajC().gBm + "draft/";
+    String str = g.ajR().gDT + "draft/";
     AppMethodBeat.o(126889);
     return str;
   }

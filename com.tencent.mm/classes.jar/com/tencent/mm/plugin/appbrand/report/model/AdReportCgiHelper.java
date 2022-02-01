@@ -10,17 +10,17 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.b.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class AdReportCgiHelper
 {
   public static void a(int paramInt, String paramString, a parama)
   {
     AppMethodBeat.i(48080);
-    if (aj.cnC())
+    if (ak.cpe())
     {
-      as(paramInt, paramString);
+      ar(paramInt, paramString);
       if (parama != null)
       {
         parama.onDone();
@@ -37,11 +37,11 @@ public final class AdReportCgiHelper
     AppMethodBeat.o(48080);
   }
   
-  static void as(int paramInt, String paramString)
+  static void ar(int paramInt, String paramString)
   {
     AppMethodBeat.i(48081);
     if (g.ab(a.class) != null) {
-      ((a)g.ab(a.class)).p(paramInt, paramString, (int)bt.aQJ());
+      ((a)g.ab(a.class)).p(paramInt, paramString, (int)bu.aRi());
     }
     AppMethodBeat.o(48081);
   }
@@ -50,8 +50,8 @@ public final class AdReportCgiHelper
     implements Parcelable
   {
     public static final Parcelable.Creator<AdReportCgiParams> CREATOR;
-    private int gsc;
-    private String msf;
+    private int guD;
+    private String mxd;
     
     static
     {
@@ -65,8 +65,8 @@ public final class AdReportCgiHelper
     protected AdReportCgiParams(Parcel paramParcel)
     {
       AppMethodBeat.i(48076);
-      this.gsc = paramParcel.readInt();
-      this.msf = paramParcel.readString();
+      this.guD = paramParcel.readInt();
+      this.mxd = paramParcel.readString();
       AppMethodBeat.o(48076);
     }
     
@@ -78,8 +78,8 @@ public final class AdReportCgiHelper
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(48077);
-      paramParcel.writeInt(this.gsc);
-      paramParcel.writeString(this.msf);
+      paramParcel.writeInt(this.guD);
+      paramParcel.writeString(this.mxd);
       AppMethodBeat.o(48077);
     }
   }
@@ -95,7 +95,7 @@ public final class AdReportCgiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper
  * JD-Core Version:    0.7.0.1
  */

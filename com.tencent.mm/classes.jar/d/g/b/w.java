@@ -8,14 +8,14 @@ public abstract class w
   extends v
   implements m
 {
-  protected final a gfO()
+  public final m.a gkC()
   {
-    return z.a(this);
+    return ((m)gkE()).gkC();
   }
   
-  public final m.a gga()
+  protected final a gkq()
   {
-    return ((m)ggc()).gga();
+    return z.a(this);
   }
   
   public Object invoke(Object paramObject)

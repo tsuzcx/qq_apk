@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voip_cs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
 
@@ -13,7 +13,7 @@ public class Plugin
     return null;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(125335);
     com.tencent.mm.plugin.voip_cs.c.c localc = new com.tencent.mm.plugin.voip_cs.c.c();

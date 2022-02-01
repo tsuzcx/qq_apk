@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.plugin.appbrand.ui.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.ui.t;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.a;
 
 @i
@@ -22,16 +22,16 @@ public class SelectConversationDirectSelectUI
     AppMethodBeat.i(169902);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("Select_Conv_User");
-    if (!bt.isNullOrNil(paramBundle))
+    if (!bu.isNullOrNil(paramBundle))
     {
-      ad.d("MicroMsg.SelectConversationDirectSelectUI", "hy: request direct select username");
+      ae.d("MicroMsg.SelectConversationDirectSelectUI", "hy: request direct select username");
       setContentViewVisibility(8);
       overridePendingTransition(0, 0);
-      s.b(getWindow());
-      s.c(getWindow(), false);
+      t.b(getWindow());
+      t.c(getWindow(), false);
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
       setBackGroundColorResource(2131100464);
-      awy(paramBundle);
+      axN(paramBundle);
       AppMethodBeat.o(169902);
       return;
     }

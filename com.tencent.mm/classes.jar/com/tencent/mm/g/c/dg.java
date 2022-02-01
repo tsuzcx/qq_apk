@@ -8,15 +8,15 @@ public abstract class dg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNH = "chatroomname".hashCode();
-  private static final int feU = "stickToollist".hashCode();
-  private static final int feV = "recentUseToolList".hashCode();
-  private static final int feW = "queryState".hashCode();
+  private static final int ePs = "chatroomname".hashCode();
+  private static final int fgR = "stickToollist".hashCode();
+  private static final int fgS = "recentUseToolList".hashCode();
+  private static final int fgT = "queryState".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNh = true;
-  private boolean feR = true;
-  private boolean feS = true;
-  private boolean feT = true;
+  private boolean eOS = true;
+  private boolean fgO = true;
+  private boolean fgP = true;
+  private boolean fgQ = true;
   public String field_chatroomname;
   public int field_queryState;
   public String field_recentUseToolList;
@@ -35,11 +35,11 @@ public abstract class dg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eNH != k) {
+      if (ePs != k) {
         break label65;
       }
       this.field_chatroomname = paramCursor.getString(i);
-      this.eNh = true;
+      this.eOS = true;
     }
     for (;;)
     {
@@ -47,11 +47,11 @@ public abstract class dg
       break label20;
       break;
       label65:
-      if (feU == k) {
+      if (fgR == k) {
         this.field_stickToollist = paramCursor.getString(i);
-      } else if (feV == k) {
+      } else if (fgS == k) {
         this.field_recentUseToolList = paramCursor.getString(i);
-      } else if (feW == k) {
+      } else if (fgT == k) {
         this.field_queryState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -62,19 +62,16 @@ public abstract class dg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_chatroomname == null) {
-      this.field_chatroomname = "群username";
-    }
-    if (this.eNh) {
+    if (this.eOS) {
       localContentValues.put("chatroomname", this.field_chatroomname);
     }
-    if (this.feR) {
+    if (this.fgO) {
       localContentValues.put("stickToollist", this.field_stickToollist);
     }
-    if (this.feS) {
+    if (this.fgP) {
       localContentValues.put("recentUseToolList", this.field_recentUseToolList);
     }
-    if (this.feT) {
+    if (this.fgQ) {
       localContentValues.put("queryState", Integer.valueOf(this.field_queryState));
     }
     if (this.systemRowid > 0L) {
@@ -85,7 +82,7 @@ public abstract class dg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dg
  * JD-Core Version:    0.7.0.1
  */

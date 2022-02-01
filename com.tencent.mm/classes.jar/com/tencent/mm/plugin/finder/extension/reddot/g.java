@@ -7,57 +7,59 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier;", "", "()V", "TAG", "", "discoveryTab", "Landroid/arch/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "getDiscoveryTab", "()Landroid/arch/lifecycle/MutableLiveData;", "finderAuthorProfileFans", "getFinderAuthorProfileFans", "finderAuthorProfileNotify", "getFinderAuthorProfileNotify", "finderEntrance", "getFinderEntrance", "finderFirstFav", "getFinderFirstFav", "finderMessage", "getFinderMessage", "finderOriginalEntrance", "getFinderOriginalEntrance", "finderProfileEntrance", "getFinderProfileEntrance", "finderProfileSetting", "getFinderProfileSetting", "finderTlCamera", "getFinderTlCamera", "finderTlPersonalCenter", "getFinderTlPersonalCenter", "finderTlTabFollow", "getFinderTlTabFollow", "finderTlTabFriend", "getFinderTlTabFriend", "finderTlTabLbs", "getFinderTlTabLbs", "finderTlTabMachine", "getFinderTlTabMachine", "finderTlWxBubble", "getFinderTlWxBubble", "finderTlWxMessageBubble", "getFinderTlWxMessageBubble", "finderWxMessage", "getFinderWxMessage", "notify", "", "isShow", "", "path", "tipsInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "observeForeverWithNotify", "T", "observer", "Landroid/arch/lifecycle/Observer;", "observeWithNotify", "owner", "Landroid/arch/lifecycle/LifecycleOwner;", "Result", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier;", "", "()V", "TAG", "", "discoveryTab", "Landroid/arch/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "getDiscoveryTab", "()Landroid/arch/lifecycle/MutableLiveData;", "finderAuthorProfileFans", "getFinderAuthorProfileFans", "finderAuthorProfileNotify", "getFinderAuthorProfileNotify", "finderEntrance", "getFinderEntrance", "finderFirstFav", "getFinderFirstFav", "finderMessage", "getFinderMessage", "finderOriginalEntrance", "getFinderOriginalEntrance", "finderProfileEntrance", "getFinderProfileEntrance", "finderProfileSetting", "getFinderProfileSetting", "finderTlCamera", "getFinderTlCamera", "finderTlPersonalCenter", "getFinderTlPersonalCenter", "finderTlPostCamera", "getFinderTlPostCamera", "finderTlTabFollow", "getFinderTlTabFollow", "finderTlTabFriend", "getFinderTlTabFriend", "finderTlTabLbs", "getFinderTlTabLbs", "finderTlTabMachine", "getFinderTlTabMachine", "finderTlWxBubble", "getFinderTlWxBubble", "finderTlWxMessageBubble", "getFinderTlWxMessageBubble", "finderWxMessage", "getFinderWxMessage", "notify", "", "isShow", "", "path", "tipsInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "observeForeverWithNotify", "T", "observer", "Landroid/arch/lifecycle/Observer;", "observeWithNotify", "owner", "Landroid/arch/lifecycle/LifecycleOwner;", "Result", "plugin-finder_release"})
 public final class g
 {
-  private static final MutableLiveData<a> rSC;
-  private static final MutableLiveData<a> rSD;
-  private static final MutableLiveData<a> rSE;
-  private static final MutableLiveData<a> rSF;
-  private static final MutableLiveData<a> rSG;
-  private static final MutableLiveData<a> rSH;
-  private static final MutableLiveData<a> rSI;
-  private static final MutableLiveData<a> rSJ;
-  private static final MutableLiveData<a> rSK;
-  private static final MutableLiveData<a> rSL;
-  private static final MutableLiveData<a> rSM;
-  private static final MutableLiveData<a> rSN;
-  private static final MutableLiveData<a> rSO;
-  private static final MutableLiveData<a> rSP;
-  private static final MutableLiveData<a> rSQ;
-  private static final MutableLiveData<a> rSR;
-  private static final MutableLiveData<a> rSS;
-  private static final MutableLiveData<a> rST;
-  public static final g rSU;
+  private static final MutableLiveData<a> sbd;
+  private static final MutableLiveData<a> sbe;
+  private static final MutableLiveData<a> sbf;
+  private static final MutableLiveData<a> sbg;
+  private static final MutableLiveData<a> sbh;
+  private static final MutableLiveData<a> sbi;
+  private static final MutableLiveData<a> sbj;
+  private static final MutableLiveData<a> sbk;
+  private static final MutableLiveData<a> sbl;
+  private static final MutableLiveData<a> sbm;
+  private static final MutableLiveData<a> sbn;
+  private static final MutableLiveData<a> sbo;
+  private static final MutableLiveData<a> sbp;
+  private static final MutableLiveData<a> sbq;
+  private static final MutableLiveData<a> sbr;
+  private static final MutableLiveData<a> sbs;
+  private static final MutableLiveData<a> sbt;
+  private static final MutableLiveData<a> sbu;
+  private static final MutableLiveData<a> sbv;
+  public static final g sbw;
   
   static
   {
     AppMethodBeat.i(178190);
-    rSU = new g();
-    rSC = new MutableLiveData();
-    rSD = new MutableLiveData();
-    rSE = new MutableLiveData();
-    rSF = new MutableLiveData();
-    rSG = new MutableLiveData();
-    rSH = new MutableLiveData();
-    rSI = new MutableLiveData();
-    rSJ = new MutableLiveData();
-    rSK = new MutableLiveData();
-    rSL = new MutableLiveData();
-    rSM = new MutableLiveData();
-    rSN = new MutableLiveData();
-    rSO = new MutableLiveData();
-    rSP = new MutableLiveData();
-    rSQ = new MutableLiveData();
-    rSR = new MutableLiveData();
-    rSS = new MutableLiveData();
-    rST = new MutableLiveData();
+    sbw = new g();
+    sbd = new MutableLiveData();
+    sbe = new MutableLiveData();
+    sbf = new MutableLiveData();
+    sbg = new MutableLiveData();
+    sbh = new MutableLiveData();
+    sbi = new MutableLiveData();
+    sbj = new MutableLiveData();
+    sbk = new MutableLiveData();
+    sbl = new MutableLiveData();
+    sbm = new MutableLiveData();
+    sbn = new MutableLiveData();
+    sbo = new MutableLiveData();
+    sbp = new MutableLiveData();
+    sbq = new MutableLiveData();
+    sbr = new MutableLiveData();
+    sbs = new MutableLiveData();
+    sbt = new MutableLiveData();
+    sbu = new MutableLiveData();
+    sbv = new MutableLiveData();
     AppMethodBeat.o(178190);
   }
   
@@ -68,69 +70,69 @@ public final class g
     p.h(paramLifecycleOwner, "owner");
     p.h(paramObserver, "observer");
     paramMutableLiveData.observe(paramLifecycleOwner, paramObserver);
-    h.LTJ.aP((Runnable)new c(paramMutableLiveData, paramObserver, paramLifecycleOwner));
+    h.MqF.aM((Runnable)new c(paramMutableLiveData, paramObserver, paramLifecycleOwner));
     AppMethodBeat.o(178188);
   }
   
   public static <T> void a(MutableLiveData<T> paramMutableLiveData, final Observer<T> paramObserver)
   {
-    AppMethodBeat.i(201650);
+    AppMethodBeat.i(202099);
     p.h(paramMutableLiveData, "$this$observeForeverWithNotify");
     p.h(paramObserver, "observer");
     paramMutableLiveData.observeForever(paramObserver);
-    h.LTJ.aP((Runnable)new b(paramMutableLiveData, paramObserver));
-    AppMethodBeat.o(201650);
+    h.MqF.aM((Runnable)new b(paramMutableLiveData, paramObserver));
+    AppMethodBeat.o(202099);
   }
   
-  public static void a(boolean paramBoolean, String paramString, ase paramase, i parami)
+  public static void a(boolean paramBoolean, String paramString, ast paramast, i parami)
   {
     Object localObject2 = null;
     AppMethodBeat.i(178189);
     p.h(paramString, "path");
     StringBuilder localStringBuilder = new StringBuilder("[notify] isShow=").append(paramBoolean).append(" path=").append(paramString).append(" show_type=");
     Object localObject1;
-    if (paramase != null)
+    if (paramast != null)
     {
-      localObject1 = Integer.valueOf(paramase.uda);
+      localObject1 = Integer.valueOf(paramast.uoi);
       localStringBuilder = localStringBuilder.append(localObject1).append(" count=");
-      if (paramase == null) {
-        break label392;
+      if (paramast == null) {
+        break label400;
       }
-      localObject1 = Integer.valueOf(paramase.count);
+      localObject1 = Integer.valueOf(paramast.count);
       label83:
       localStringBuilder = localStringBuilder.append(localObject1).append(' ').append("title=");
-      if (paramase == null) {
-        break label398;
+      if (paramast == null) {
+        break label406;
       }
-      localObject1 = paramase.title;
+      localObject1 = paramast.title;
       label112:
       localStringBuilder = localStringBuilder.append((String)localObject1).append(" clear_type=");
-      if (paramase == null) {
-        break label404;
+      if (paramast == null) {
+        break label412;
       }
-      localObject1 = Integer.valueOf(paramase.Gqr);
-      label139:
+      localObject1 = Integer.valueOf(paramast.GJM);
+      label140:
       localStringBuilder = localStringBuilder.append(localObject1).append(" parent=");
-      if (paramase == null) {
-        break label410;
+      if (paramast == null) {
+        break label418;
       }
-      localObject1 = paramase.xfl;
-      label164:
+      localObject1 = paramast.xvd;
+      label165:
       localStringBuilder = localStringBuilder.append((String)localObject1).append(" icon=");
       localObject1 = localObject2;
-      if (paramase != null) {
-        localObject1 = paramase.pkr;
+      if (paramast != null) {
+        localObject1 = paramast.pqW;
       }
-      ad.i("Finder.RedDotNotifier", (String)localObject1);
-      paramase = new a(paramBoolean, paramase, parami);
+      ae.i("Finder.RedDotNotifier", (String)localObject1);
+      paramast = new a(paramBoolean, paramast, parami);
       switch (paramString.hashCode())
       {
       }
     }
-    label392:
-    label398:
-    label404:
-    label410:
+    label400:
+    label406:
+    label412:
+    label418:
     do
     {
       do
@@ -161,174 +163,190 @@ public final class g
                               {
                                 do
                                 {
-                                  for (;;)
+                                  do
                                   {
-                                    AppMethodBeat.o(178189);
-                                    return;
-                                    localObject1 = null;
-                                    break;
-                                    localObject1 = null;
-                                    break label83;
-                                    localObject1 = null;
-                                    break label112;
-                                    localObject1 = null;
-                                    break label139;
-                                    localObject1 = null;
-                                    break label164;
-                                    if (paramString.equals("finder_private_msg_entrance"))
+                                    for (;;)
                                     {
-                                      rSR.postValue(paramase);
                                       AppMethodBeat.o(178189);
                                       return;
-                                      if (paramString.equals("ProfileEntrance"))
+                                      localObject1 = null;
+                                      break;
+                                      localObject1 = null;
+                                      break label83;
+                                      localObject1 = null;
+                                      break label112;
+                                      localObject1 = null;
+                                      break label140;
+                                      localObject1 = null;
+                                      break label165;
+                                      if (paramString.equals("finder_private_msg_entrance"))
                                       {
-                                        rSG.postValue(paramase);
+                                        sbt.postValue(paramast);
                                         AppMethodBeat.o(178189);
                                         return;
-                                        if (paramString.equals("FinderFirstFav")) {
-                                          rSO.postValue(paramase);
+                                        if (paramString.equals("ProfileEntrance"))
+                                        {
+                                          sbi.postValue(paramast);
+                                          AppMethodBeat.o(178189);
+                                          return;
+                                          if (paramString.equals("FinderFirstFav")) {
+                                            sbq.postValue(paramast);
+                                          }
                                         }
                                       }
                                     }
-                                  }
-                                } while (!paramString.equals("OriginalEntrance"));
-                                rSK.postValue(paramase);
+                                  } while (!paramString.equals("OriginalEntrance"));
+                                  sbm.postValue(paramast);
+                                  AppMethodBeat.o(178189);
+                                  return;
+                                } while (!paramString.equals("TLCamera"));
+                                sbf.postValue(paramast);
                                 AppMethodBeat.o(178189);
                                 return;
-                              } while (!paramString.equals("TLCamera"));
-                              rSE.postValue(paramase);
+                              } while (!paramString.equals("Discovery"));
+                              sbd.postValue(paramast);
                               AppMethodBeat.o(178189);
                               return;
-                            } while (!paramString.equals("Discovery"));
-                            rSC.postValue(paramase);
+                            } while (!paramString.equals("AuthorProfileFans"));
+                            sbj.postValue(paramast);
                             AppMethodBeat.o(178189);
                             return;
-                          } while (!paramString.equals("AuthorProfileFans"));
-                          rSH.postValue(paramase);
+                          } while (!paramString.equals("FinderSetting"));
+                          sbn.postValue(paramast);
                           AppMethodBeat.o(178189);
                           return;
-                        } while (!paramString.equals("FinderSetting"));
-                        rSL.postValue(paramase);
+                        } while (!paramString.equals("finder_wx_private_msg_entrance"));
+                        sbu.postValue(paramast);
                         AppMethodBeat.o(178189);
                         return;
-                      } while (!paramString.equals("finder_wx_private_msg_entrance"));
-                      rSS.postValue(paramase);
+                      } while (!paramString.equals("TLPersonalCenter"));
+                      sbl.postValue(paramast);
                       AppMethodBeat.o(178189);
                       return;
-                    } while (!paramString.equals("TLPersonalCenter"));
-                    rSJ.postValue(paramase);
+                    } while (!paramString.equals("TLRecommendTab"));
+                    sbp.postValue(paramast);
                     AppMethodBeat.o(178189);
                     return;
-                  } while (!paramString.equals("TLRecommendTab"));
-                  rSN.postValue(paramase);
+                  } while (!paramString.equals("TLWxPrivateMsgBubble"));
+                  sbv.postValue(paramast);
                   AppMethodBeat.o(178189);
                   return;
-                } while (!paramString.equals("TLWxPrivateMsgBubble"));
-                rST.postValue(paramase);
+                } while (!paramString.equals("TLFollow"));
+                sbo.postValue(paramast);
                 AppMethodBeat.o(178189);
                 return;
-              } while (!paramString.equals("TLFollow"));
-              rSM.postValue(paramase);
+              } while (!paramString.equals("TLLbsTab"));
+              sbs.postValue(paramast);
               AppMethodBeat.o(178189);
               return;
-            } while (!paramString.equals("TLLbsTab"));
-            rSQ.postValue(paramase);
+            } while (!paramString.equals("FinderEntrance"));
+            sbe.postValue(paramast);
             AppMethodBeat.o(178189);
             return;
-          } while (!paramString.equals("FinderEntrance"));
-          rSD.postValue(paramase);
+          } while (!paramString.equals("TLPostCamera"));
+          sbg.postValue(paramast);
           AppMethodBeat.o(178189);
           return;
         } while (!paramString.equals("AuthorProfileNotify"));
-        rSI.postValue(paramase);
+        sbk.postValue(paramast);
         AppMethodBeat.o(178189);
         return;
       } while (!paramString.equals("TLMachineTab"));
-      rSP.postValue(paramase);
+      sbr.postValue(paramast);
       AppMethodBeat.o(178189);
       return;
     } while (!paramString.equals("TLWxBubble"));
-    rSF.postValue(paramase);
+    sbh.postValue(paramast);
     AppMethodBeat.o(178189);
   }
   
-  public static MutableLiveData<a> cAa()
+  public static MutableLiveData<a> cBA()
   {
-    return rSO;
+    return sbi;
   }
   
-  public static MutableLiveData<a> cAb()
+  public static MutableLiveData<a> cBB()
   {
-    return rSP;
+    return sbl;
   }
   
-  public static MutableLiveData<a> cAc()
+  public static MutableLiveData<a> cBC()
   {
-    return rSQ;
+    return sbm;
   }
   
-  public static MutableLiveData<a> cAd()
+  public static MutableLiveData<a> cBD()
   {
-    return rSR;
+    return sbn;
   }
   
-  public static MutableLiveData<a> cAe()
+  public static MutableLiveData<a> cBE()
   {
-    return rSS;
+    return sbo;
   }
   
-  public static MutableLiveData<a> cAf()
+  public static MutableLiveData<a> cBF()
   {
-    return rST;
+    return sbp;
   }
   
-  public static MutableLiveData<a> czT()
+  public static MutableLiveData<a> cBG()
   {
-    return rSC;
+    return sbq;
   }
   
-  public static MutableLiveData<a> czU()
+  public static MutableLiveData<a> cBH()
   {
-    return rSD;
+    return sbr;
   }
   
-  public static MutableLiveData<a> czV()
+  public static MutableLiveData<a> cBI()
   {
-    return rSE;
+    return sbs;
   }
   
-  public static MutableLiveData<a> czW()
+  public static MutableLiveData<a> cBJ()
   {
-    return rSJ;
+    return sbt;
   }
   
-  public static MutableLiveData<a> czX()
+  public static MutableLiveData<a> cBK()
   {
-    return rSL;
+    return sbu;
   }
   
-  public static MutableLiveData<a> czY()
+  public static MutableLiveData<a> cBL()
   {
-    return rSM;
+    return sbv;
   }
   
-  public static MutableLiveData<a> czZ()
+  public static MutableLiveData<a> cBx()
   {
-    return rSN;
+    return sbd;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "", "isShow", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "(ZLcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;)V", "getCtrInfo", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;)V", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+  public static MutableLiveData<a> cBy()
+  {
+    return sbe;
+  }
+  
+  public static MutableLiveData<a> cBz()
+  {
+    return sbf;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "", "isShow", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "(ZLcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;)V", "getCtrInfo", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;)V", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
   public static final class a
   {
-    public final boolean dmo;
-    public ase rSV;
-    public final i rSW;
+    public final boolean dnq;
+    public ast sbx;
+    public final i sby;
     
-    public a(boolean paramBoolean, ase paramase, i parami)
+    public a(boolean paramBoolean, ast paramast, i parami)
     {
-      this.dmo = paramBoolean;
-      this.rSV = paramase;
-      this.rSW = parami;
+      this.dnq = paramBoolean;
+      this.sbx = paramast;
+      this.sby = parami;
     }
     
     public final boolean equals(Object paramObject)
@@ -339,7 +357,7 @@ public final class g
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.dmo != paramObject.dmo) || (!p.i(this.rSV, paramObject.rSV)) || (!p.i(this.rSW, paramObject.rSW))) {}
+          if ((this.dnq != paramObject.dnq) || (!p.i(this.sbx, paramObject.sbx)) || (!p.i(this.sby, paramObject.sby))) {}
         }
       }
       else
@@ -361,12 +379,12 @@ public final class g
       Object localObject2 = null;
       AppMethodBeat.i(178185);
       StringBuilder localStringBuilder = new StringBuilder("tipId=");
-      Object localObject1 = this.rSW;
+      Object localObject1 = this.sby;
       if (localObject1 != null)
       {
         localObject1 = ((i)localObject1).field_tipsId;
         localStringBuilder = localStringBuilder.append((String)localObject1).append(" type=");
-        localObject1 = this.rSW;
+        localObject1 = this.sby;
         if (localObject1 == null) {
           break label184;
         }
@@ -374,17 +392,17 @@ public final class g
         if (localObject1 == null) {
           break label184;
         }
-        localObject1 = Integer.valueOf(((aqu)localObject1).type);
+        localObject1 = Integer.valueOf(((arj)localObject1).type);
         label68:
-        localStringBuilder = localStringBuilder.append(localObject1).append(" isShow=").append(this.dmo).append(" path=");
-        localObject1 = this.rSV;
+        localStringBuilder = localStringBuilder.append(localObject1).append(" isShow=").append(this.dnq).append(" path=");
+        localObject1 = this.sbx;
         if (localObject1 == null) {
           break label189;
         }
-        localObject1 = ((ase)localObject1).path;
+        localObject1 = ((ast)localObject1).path;
         label105:
         localStringBuilder = localStringBuilder.append((String)localObject1).append(" showType=");
-        localObject1 = this.rSV;
+        localObject1 = this.sbx;
         if (localObject1 == null) {
           break label194;
         }
@@ -392,13 +410,13 @@ public final class g
       label184:
       label189:
       label194:
-      for (localObject1 = Integer.valueOf(((ase)localObject1).uda);; localObject1 = null)
+      for (localObject1 = Integer.valueOf(((ast)localObject1).uoi);; localObject1 = null)
       {
         localStringBuilder = localStringBuilder.append(localObject1).append(" title=");
-        ase localase = this.rSV;
+        ast localast = this.sbx;
         localObject1 = localObject2;
-        if (localase != null) {
-          localObject1 = localase.title;
+        if (localast != null) {
+          localObject1 = localast.title;
         }
         localObject1 = (String)localObject1;
         AppMethodBeat.o(178185);
@@ -413,7 +431,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "run"})
   static final class b
     implements Runnable
   {
@@ -421,19 +439,19 @@ public final class g
     
     public final void run()
     {
-      AppMethodBeat.i(201648);
-      Object localObject = this.rSX.getValue();
+      AppMethodBeat.i(202097);
+      Object localObject = this.sbz.getValue();
       if (localObject != null)
       {
         paramObserver.onChanged(localObject);
-        AppMethodBeat.o(201648);
+        AppMethodBeat.o(202097);
         return;
       }
-      AppMethodBeat.o(201648);
+      AppMethodBeat.o(202097);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "run"})
   static final class c
     implements Runnable
   {
@@ -441,23 +459,23 @@ public final class g
     
     public final void run()
     {
-      AppMethodBeat.i(201649);
-      Object localObject1 = this.rSZ.getValue();
+      AppMethodBeat.i(202098);
+      Object localObject1 = this.sbB.getValue();
       if (localObject1 != null)
       {
-        Object localObject2 = new StringBuilder("value=").append(this.rSZ.getValue()).append(" observer=").append(paramObserver.getClass().getSimpleName()).append(" currentState=");
+        Object localObject2 = new StringBuilder("value=").append(this.sbB.getValue()).append(" observer=").append(paramObserver.getClass().getSimpleName()).append(" currentState=");
         Lifecycle localLifecycle = paramLifecycleOwner.getLifecycle();
         p.g(localLifecycle, "owner.lifecycle");
-        ad.i("Finder.RedDotNotifier", localLifecycle.getCurrentState());
+        ae.i("Finder.RedDotNotifier", localLifecycle.getCurrentState());
         localObject2 = paramLifecycleOwner.getLifecycle();
         p.g(localObject2, "owner.lifecycle");
         if (((Lifecycle)localObject2).getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
           paramObserver.onChanged(localObject1);
         }
-        AppMethodBeat.o(201649);
+        AppMethodBeat.o(202098);
         return;
       }
-      AppMethodBeat.o(201649);
+      AppMethodBeat.o(202098);
     }
   }
 }

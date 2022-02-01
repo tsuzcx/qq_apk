@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class bi
   extends b
 {
-  public a dmm;
-  public b dmn;
+  public a dno;
+  public b dnp;
   
   public bi()
   {
@@ -17,9 +17,9 @@ public final class bi
   private bi(byte paramByte)
   {
     AppMethodBeat.i(117354);
-    this.dmm = new a();
-    this.dmn = new b();
-    this.IbR = false;
+    this.dno = new a();
+    this.dnp = new b();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(117354);
   }
@@ -28,7 +28,7 @@ public final class bi
   
   public static final class b
   {
-    public boolean dmo;
+    public boolean dnq;
     public String msg;
   }
 }

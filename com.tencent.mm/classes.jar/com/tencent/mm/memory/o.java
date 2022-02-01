@@ -4,26 +4,26 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends e<Bitmap, b>
+  extends e<Bitmap, o.b>
 {
-  public static o hwR;
+  public static o hzF;
   
   static
   {
     AppMethodBeat.i(156463);
-    hwR = new o();
+    hzF = new o();
     AppMethodBeat.o(156463);
   }
   
-  private static Bitmap b(b paramb)
+  private static Bitmap b(o.b paramb)
   {
     AppMethodBeat.i(156456);
-    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.hwE);
+    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.hzs);
     AppMethodBeat.o(156456);
     return paramb;
   }
   
-  public final Bitmap a(b paramb)
+  public final Bitmap a(o.b paramb)
   {
     try
     {
@@ -45,12 +45,12 @@ public final class o
     finally {}
   }
   
-  protected final long ayu()
+  protected final long ayJ()
   {
     return 1228800L;
   }
   
-  protected final long ayv()
+  protected final long ayK()
   {
     return 307200L;
   }
@@ -75,47 +75,6 @@ public final class o
     public a(o.b paramb)
     {
       super();
-    }
-  }
-  
-  public static final class b
-    implements Comparable
-  {
-    public int height;
-    private String hwS;
-    public int width;
-    
-    public b(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(156453);
-      this.width = paramInt1;
-      this.height = paramInt2;
-      this.hwS = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(156453);
-    }
-    
-    public final int compareTo(Object paramObject)
-    {
-      if (paramObject == null) {
-        return 0;
-      }
-      if ((paramObject instanceof b))
-      {
-        if ((this.width == ((b)paramObject).width) && (this.height == ((b)paramObject).height)) {
-          return 0;
-        }
-        int i = this.width;
-        if (this.height * i > ((b)paramObject).width * ((b)paramObject).height) {
-          return 1;
-        }
-        return -1;
-      }
-      return 0;
-    }
-    
-    public final String toString()
-    {
-      return this.hwS;
     }
   }
 }

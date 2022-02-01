@@ -1,36 +1,36 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.mq;
+import com.tencent.mm.g.a.mr;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
 import java.util.ArrayList;
 
 public abstract class b
-  extends c<mq>
+  extends c<mr>
 {
-  protected ArrayList<String> EJP = new ArrayList(3);
+  protected ArrayList<String> Fcn = new ArrayList(3);
   
   public b()
   {
     super(0);
-    this.__eventId = mq.class.getName().hashCode();
+    this.__eventId = mr.class.getName().hashCode();
   }
   
   public static void a(String paramString, b paramb)
   {
-    if (!paramb.EJP.contains(paramString)) {
-      paramb.EJP.add(paramString);
+    if (!paramb.Fcn.contains(paramString)) {
+      paramb.Fcn.add(paramString);
     }
-    a.IbL.c(paramb);
-    e.aLp(paramString);
+    a.IvT.c(paramb);
+    e.aML(paramString);
   }
   
   public static void b(String paramString, b paramb)
   {
-    e.aLq(paramString);
-    a.IbL.d(paramb);
-    if (paramb.EJP.contains(paramString)) {
-      paramb.EJP.remove(paramString);
+    e.aMM(paramString);
+    a.IvT.d(paramb);
+    if (paramb.Fcn.contains(paramString)) {
+      paramb.Fcn.remove(paramString);
     }
   }
   

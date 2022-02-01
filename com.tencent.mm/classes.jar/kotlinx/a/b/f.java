@@ -2,36 +2,36 @@ package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
-import d.k.h;
+import d.k.j;
 import d.l;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/BooleanArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([Z)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/BooleanArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([Z)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
 public final class f
   extends av<boolean[]>
 {
-  boolean[] NMd;
+  boolean[] Ojj;
   int position;
   
   public f(boolean[] paramArrayOfBoolean)
   {
-    AppMethodBeat.i(191170);
-    this.NMd = paramArrayOfBoolean;
+    AppMethodBeat.i(199758);
+    this.Ojj = paramArrayOfBoolean;
     this.position = paramArrayOfBoolean.length;
     ensureCapacity(10);
-    AppMethodBeat.o(191170);
+    AppMethodBeat.o(199758);
   }
   
   public final void ensureCapacity(int paramInt)
   {
-    AppMethodBeat.i(191168);
-    if (this.NMd.length < paramInt)
+    AppMethodBeat.i(199756);
+    if (this.Ojj.length < paramInt)
     {
-      boolean[] arrayOfBoolean = Arrays.copyOf(this.NMd, h.lp(paramInt, this.NMd.length * 2));
+      boolean[] arrayOfBoolean = Arrays.copyOf(this.Ojj, j.lw(paramInt, this.Ojj.length * 2));
       p.g(arrayOfBoolean, "java.util.Arrays.copyOf(this, newSize)");
-      this.NMd = arrayOfBoolean;
+      this.Ojj = arrayOfBoolean;
     }
-    AppMethodBeat.o(191168);
+    AppMethodBeat.o(199756);
   }
   
   public final int getPosition()

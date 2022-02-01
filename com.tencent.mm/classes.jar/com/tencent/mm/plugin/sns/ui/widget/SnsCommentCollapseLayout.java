@@ -8,29 +8,29 @@ import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class SnsCommentCollapseLayout
   extends RelativeLayout
 {
-  private SnsComment2LinePreloadTextView ADb;
-  private SnsCommentPreloadTextView ADc;
-  private TextView ADd;
-  private CharSequence ADe;
-  private CharSequence ADf;
-  private int ADg;
+  private SnsComment2LinePreloadTextView AUC;
+  private SnsCommentPreloadTextView AUD;
+  private TextView AUE;
+  private CharSequence AUF;
+  private CharSequence AUG;
+  private int AUH;
   
   public SnsCommentCollapseLayout(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(100508);
-    this.ADb = null;
-    this.ADc = null;
-    this.ADd = null;
-    this.ADe = null;
-    this.ADf = null;
-    this.ADg = 0;
+    this.AUC = null;
+    this.AUD = null;
+    this.AUE = null;
+    this.AUF = null;
+    this.AUG = null;
+    this.AUH = 0;
     init();
     AppMethodBeat.o(100508);
   }
@@ -39,12 +39,12 @@ public class SnsCommentCollapseLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100509);
-    this.ADb = null;
-    this.ADc = null;
-    this.ADd = null;
-    this.ADe = null;
-    this.ADf = null;
-    this.ADg = 0;
+    this.AUC = null;
+    this.AUD = null;
+    this.AUE = null;
+    this.AUF = null;
+    this.AUG = null;
+    this.AUH = 0;
     init();
     AppMethodBeat.o(100509);
   }
@@ -53,12 +53,12 @@ public class SnsCommentCollapseLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100510);
-    this.ADb = null;
-    this.ADc = null;
-    this.ADd = null;
-    this.ADe = null;
-    this.ADf = null;
-    this.ADg = 0;
+    this.AUC = null;
+    this.AUD = null;
+    this.AUE = null;
+    this.AUF = null;
+    this.AUG = null;
+    this.AUH = 0;
     init();
     AppMethodBeat.o(100510);
   }
@@ -67,25 +67,25 @@ public class SnsCommentCollapseLayout
   {
     AppMethodBeat.i(100511);
     LayoutInflater.from(getContext()).inflate(2131495536, this, true);
-    this.ADb = ((SnsComment2LinePreloadTextView)findViewById(2131304956));
-    this.ADc = ((SnsCommentPreloadTextView)findViewById(2131304958));
-    this.ADb.setGravity(16);
-    this.ADc.setGravity(16);
-    this.ADd = ((TextView)findViewById(2131304957));
-    this.ADg = a.fromDPToPix(getContext(), 22);
+    this.AUC = ((SnsComment2LinePreloadTextView)findViewById(2131304956));
+    this.AUD = ((SnsCommentPreloadTextView)findViewById(2131304958));
+    this.AUC.setGravity(16);
+    this.AUD.setGravity(16);
+    this.AUE = ((TextView)findViewById(2131304957));
+    this.AUH = a.fromDPToPix(getContext(), 22);
     setOnTouchListener(new SnsCommentCollapseLayout.1(this));
     AppMethodBeat.o(100511);
   }
   
   public final void a(final CharSequence paramCharSequence1, final CharSequence paramCharSequence2, final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(198607);
+    AppMethodBeat.i(220154);
     post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(100507);
-        ad.d("MicroMsg.SnsCommentCollapseLayout", "setText text:%s, commentFlag:%s", new Object[] { paramCharSequence1, Integer.valueOf(paramInt1) });
+        ae.d("MicroMsg.SnsCommentCollapseLayout", "setText text:%s, commentFlag:%s", new Object[] { paramCharSequence1, Integer.valueOf(paramInt1) });
         SnsCommentCollapseLayout localSnsCommentCollapseLayout = SnsCommentCollapseLayout.this;
         if (paramCharSequence1 == null)
         {
@@ -100,7 +100,7 @@ public class SnsCommentCollapseLayout
         for (Object localObject = "";; localObject = paramCharSequence2)
         {
           SnsCommentCollapseLayout.b(localSnsCommentCollapseLayout, (CharSequence)localObject);
-          if ((paramInt2 > 0) || (!e.ia(paramInt1, 16))) {
+          if ((paramInt2 > 0) || (!e.id(paramInt1, 16))) {
             break label123;
           }
           SnsCommentCollapseLayout.c(SnsCommentCollapseLayout.this);
@@ -114,29 +114,29 @@ public class SnsCommentCollapseLayout
         AppMethodBeat.o(100507);
       }
     });
-    AppMethodBeat.o(198607);
+    AppMethodBeat.o(220154);
   }
   
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(100517);
-    this.ADb.setGravity(paramInt);
-    this.ADc.setGravity(paramInt);
+    this.AUC.setGravity(paramInt);
+    this.AUD.setGravity(paramInt);
     AppMethodBeat.o(100517);
   }
   
   public void setOpClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(100512);
-    this.ADd.setOnClickListener(paramOnClickListener);
+    this.AUE.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(100512);
   }
   
   public void setPressTouchListener(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(100513);
-    this.ADb.setOnTouchListener(paramOnTouchListener);
-    this.ADc.setOnTouchListener(paramOnTouchListener);
+    this.AUC.setOnTouchListener(paramOnTouchListener);
+    this.AUD.setOnTouchListener(paramOnTouchListener);
     AppMethodBeat.o(100513);
   }
   
@@ -144,11 +144,11 @@ public class SnsCommentCollapseLayout
   {
     AppMethodBeat.i(100519);
     super.setTag(paramObject);
-    if (this.ADb != null) {
-      this.ADb.setTag(paramObject);
+    if (this.AUC != null) {
+      this.AUC.setTag(paramObject);
     }
-    if (this.ADc != null) {
-      this.ADc.setTag(paramObject);
+    if (this.AUD != null) {
+      this.AUD.setTag(paramObject);
     }
     AppMethodBeat.o(100519);
   }
@@ -156,25 +156,25 @@ public class SnsCommentCollapseLayout
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(100516);
-    this.ADb.setTextColor(paramInt);
-    this.ADc.setTextColor(paramInt);
+    this.AUC.setTextColor(paramInt);
+    this.AUD.setTextColor(paramInt);
     AppMethodBeat.o(100516);
   }
   
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(100514);
-    this.ADb.setTextSize(paramFloat);
-    this.ADc.setTextSize(paramFloat);
+    this.AUC.setTextSize(paramFloat);
+    this.AUD.setTextSize(paramFloat);
     AppMethodBeat.o(100514);
   }
   
   public final void setTextSize$255e752(float paramFloat)
   {
     AppMethodBeat.i(100515);
-    this.ADb.setTextSize$255e752(paramFloat);
-    this.ADc.setTextSize$255e752(paramFloat);
-    this.ADd.setTextSize(1, paramFloat);
+    this.AUC.setTextSize$255e752(paramFloat);
+    this.AUD.setTextSize$255e752(paramFloat);
+    this.AUE.setTextSize(1, paramFloat);
     AppMethodBeat.o(100515);
   }
 }

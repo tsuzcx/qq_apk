@@ -8,18 +8,18 @@ import d.g.a.m;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mediaPath", "", "imageView", "Landroid/widget/ImageView;", "loadedCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "mediaPath", "", "imageView", "Landroid/widget/ImageView;", "loadedCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "invoke"})
 final class WxMediaCropLayout$d
   extends d.g.b.q
   implements d.g.a.q<String, ImageView, m<? super Integer, ? super Integer, ? extends Object>, z>
 {
-  public static final d tLf;
+  public static final d tVW;
   
   static
   {
-    AppMethodBeat.i(198881);
-    tLf = new d();
-    AppMethodBeat.o(198881);
+    AppMethodBeat.i(186291);
+    tVW = new d();
+    AppMethodBeat.o(186291);
   }
   
   WxMediaCropLayout$d()

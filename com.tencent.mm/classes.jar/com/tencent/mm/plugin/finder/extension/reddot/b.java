@@ -5,14 +5,14 @@ import com.tencent.mm.plugin.newtips.a.k;
 import com.tencent.mm.plugin.newtips.a.l.a;
 import com.tencent.mm.plugin.newtips.b.c;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.ary;
-import com.tencent.mm.protocal.protobuf.arz;
-import com.tencent.mm.protocal.protobuf.asd;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.asn;
+import com.tencent.mm.protocal.protobuf.aso;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import d.a.j;
 import d.g.b.p;
 import d.g.b.q;
@@ -23,43 +23,43 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "Lcom/tencent/mm/plugin/newtips/model/NewTipsXMLConsumer$NewTipsHandleCallback;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "changeNewTipsPathToCtrInfoPath", "", "pathId", "", "checkValidClientVersion", "", "tipsId", "", "values", "", "findCtrInfoType", "getFinderNewTips", "handleAdd", "uniqueId", "tipsList", "", "Lcom/tencent/mm/plugin/newtips/storage/NewTipsInfo;", "handleCancel", "parseFinderExtInfo", "prepare", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "Lcom/tencent/mm/plugin/newtips/model/NewTipsXMLConsumer$NewTipsHandleCallback;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "changeNewTipsPathToCtrInfoPath", "", "pathId", "", "checkValidClientVersion", "", "tipsId", "", "values", "", "findCtrInfoType", "getFinderNewTips", "handleAdd", "uniqueId", "tipsList", "", "Lcom/tencent/mm/plugin/newtips/storage/NewTipsInfo;", "handleCancel", "init", "", "parseFinderExtInfo", "Companion", "plugin-finder_release"})
 public final class b
   implements l.a
 {
-  public static final a rRJ;
-  private final e rGr;
+  public static final a sal;
+  private final e rOC;
   
   static
   {
-    AppMethodBeat.i(201597);
-    rRJ = new a((byte)0);
-    AppMethodBeat.o(201597);
+    AppMethodBeat.i(202045);
+    sal = new a((byte)0);
+    AppMethodBeat.o(202045);
   }
   
   public b(e parame)
   {
-    AppMethodBeat.i(201596);
-    this.rGr = parame;
-    AppMethodBeat.o(201596);
+    AppMethodBeat.i(202044);
+    this.rOC = parame;
+    AppMethodBeat.o(202044);
   }
   
   private static boolean a(long paramLong, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(201595);
+    AppMethodBeat.i(202043);
     if (paramMap.containsKey(".sysmsg.newtips.control.android_min_clientversion")) {}
-    for (int i = bt.getInt((String)paramMap.get(".sysmsg.newtips.control.android_min_clientversion"), 0);; i = 0)
+    for (int i = bu.getInt((String)paramMap.get(".sysmsg.newtips.control.android_min_clientversion"), 0);; i = 0)
     {
       if (paramMap.containsKey(".sysmsg.newtips.control.android_max_clientversion")) {}
-      for (int j = bt.getInt((String)paramMap.get(".sysmsg.newtips.control.android_max_clientversion"), 2147483647);; j = 0)
+      for (int j = bu.getInt((String)paramMap.get(".sysmsg.newtips.control.android_max_clientversion"), 2147483647);; j = 0)
       {
-        if ((d.Fnj < i) || (d.Fnj > j))
+        if ((d.FFH < i) || (d.FFH > j))
         {
-          ad.w("Finder.NewTipsTransform", "tipsId=%s, checkValidClientVersion client not match(%s, %s) %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(d.Fnj) });
-          AppMethodBeat.o(201595);
+          ae.w("Finder.NewTipsTransform", "tipsId=%s, checkValidClientVersion client not match(%s, %s) %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(d.FFH) });
+          AppMethodBeat.o(202043);
           return false;
         }
-        AppMethodBeat.o(201595);
+        AppMethodBeat.o(202043);
         return true;
       }
     }
@@ -67,7 +67,7 @@ public final class b
   
   private static Map<String, String> b(Map<String, String> paramMap, long paramLong)
   {
-    AppMethodBeat.i(201592);
+    AppMethodBeat.i(202040);
     paramMap = (String)paramMap.get(".sysmsg.newtips.ext_info");
     int i;
     label39:
@@ -84,7 +84,7 @@ public final class b
         if (paramMap == null) {
           break label127;
         }
-        paramMap = bw.M(paramMap, "finder");
+        paramMap = bx.M(paramMap, "finder");
         p.g(paramMap, "extValues");
         if (paramMap.isEmpty()) {
           break label122;
@@ -99,7 +99,7 @@ public final class b
           if (localObject == null) {
             break label132;
           }
-          localObject = n.bdh((String)localObject);
+          localObject = n.beL((String)localObject);
           label100:
           if (localObject != null) {
             break label138;
@@ -112,7 +112,7 @@ public final class b
     label127:
     while ((((Integer)localObject).intValue() != 1) || ((paramLong != 40001001L) && (paramLong != 40001002L)))
     {
-      AppMethodBeat.o(201592);
+      AppMethodBeat.o(202040);
       return null;
       i = 0;
       break;
@@ -127,22 +127,22 @@ public final class b
     }
     label132:
     label138:
-    AppMethodBeat.o(201592);
+    AppMethodBeat.o(202040);
     return paramMap;
   }
   
   public final boolean a(final long paramLong, final String paramString, List<c> paramList, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(201593);
+    AppMethodBeat.i(202041);
     p.h(paramList, "tipsList");
     p.h(paramMap, "values");
-    ad.w("Finder.NewTipsTransform", "[handleCancel] tipsId=" + paramLong + " uniqueId=" + paramString);
+    ae.w("Finder.NewTipsTransform", "[handleCancel] tipsId=" + paramLong + " uniqueId=" + paramString);
     int i;
     if (b(paramMap, paramLong) != null)
     {
       if (!a(paramLong, paramMap))
       {
-        AppMethodBeat.o(201593);
+        AppMethodBeat.o(202041);
         return true;
       }
       if (paramLong == 40001002L) {
@@ -151,16 +151,16 @@ public final class b
     }
     for (;;)
     {
-      if ((i != -1) && (this.rGr.a(i, (d.g.a.b)new b(this, paramLong, paramMap, paramString)))) {
-        ad.i("Finder.NewTipsTransform", "[handleCancel] successfully! tipsId=" + paramLong + " uniqueId=" + paramString);
+      if ((i != -1) && (this.rOC.a(i, (d.g.a.b)new b(this, paramLong, paramMap, paramString)))) {
+        ae.i("Finder.NewTipsTransform", "[handleCancel] successfully! tipsId=" + paramLong + " uniqueId=" + paramString);
       }
-      AppMethodBeat.o(201593);
+      AppMethodBeat.o(202041);
       return true;
       if (paramLong == 40001001L)
       {
         i = 1004;
         continue;
-        AppMethodBeat.o(201593);
+        AppMethodBeat.o(202041);
         return false;
       }
       else
@@ -172,23 +172,23 @@ public final class b
   
   public final boolean b(long paramLong, String paramString, List<c> paramList, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(201594);
+    AppMethodBeat.i(202042);
     p.h(paramList, "tipsList");
     p.h(paramMap, "values");
     if (b(paramMap, paramLong) != null)
     {
       if (!a(paramLong, paramMap))
       {
-        AppMethodBeat.o(201594);
+        AppMethodBeat.o(202042);
         return true;
       }
-      paramMap = (c)j.jd(paramList);
+      paramMap = (c)j.jm(paramList);
       int i;
       Iterator localIterator;
       if (paramMap != null)
       {
         i = paramMap.field_priority;
-        paramMap = new aqu();
+        paramMap = new arj();
         localIterator = ((Iterable)paramList).iterator();
       }
       for (;;)
@@ -198,15 +198,15 @@ public final class b
           break label491;
         }
         paramList = (c)localIterator.next();
-        ase localase = new ase();
-        if (paramList.field_showType != k.wsK.value)
+        ast localast = new ast();
+        if (paramList.field_showType != k.wIu.value)
         {
-          paramMap.GoP.add(localase);
+          paramMap.GIf.add(localast);
           int j = paramList.field_showType;
-          if (j == k.wsN.value)
+          if (j == k.wIx.value)
           {
-            localase.title = paramList.field_title;
-            localase.uda = 3;
+            localast.title = paramList.field_title;
+            localast.uoi = 3;
             label177:
             switch (paramList.field_path)
             {
@@ -216,40 +216,40 @@ public final class b
           }
           for (;;)
           {
-            localase.path = paramList;
-            localase.Gqr = 1;
+            localast.path = paramList;
+            localast.GJM = 1;
             if (paramLong != 40001002L) {
               break label434;
             }
-            paramList = new asd();
-            paramList.Glz = 2;
-            localase.Gqs = 1;
-            localase.Gqt = new com.tencent.mm.bx.b(paramList.toByteArray());
+            paramList = new ass();
+            paramList.GEB = 2;
+            localast.GJN = 1;
+            localast.GJO = new com.tencent.mm.bw.b(paramList.toByteArray());
             paramMap.type = 1003;
             break label87;
             i = 0;
             break;
-            if (j == k.wsQ.value)
+            if (j == k.wIA.value)
             {
-              localase.count = 1;
-              localase.uda = 2;
+              localast.count = 1;
+              localast.uoi = 2;
               break label177;
             }
-            if (j == k.wsO.value)
+            if (j == k.wIy.value)
             {
-              localase.pkr = paramList.field_icon_url;
-              localase.uda = 4;
+              localast.pqW = paramList.field_icon_url;
+              localast.uoi = 4;
               break label177;
             }
-            if (j == k.wsL.value)
+            if (j == k.wIv.value)
             {
-              localase.uda = 1;
+              localast.uoi = 1;
               break label177;
             }
-            if (j != k.wsM.value) {
+            if (j != k.wIw.value) {
               break label177;
             }
-            localase.uda = 100;
+            localast.uoi = 100;
             break label177;
             paramList = "Discovery";
             continue;
@@ -262,33 +262,33 @@ public final class b
           label434:
           if (paramLong == 40001001L)
           {
-            paramList = new asd();
-            paramList.Glz = 4;
-            localase.Gqs = 1;
-            localase.Gqt = new com.tencent.mm.bx.b(paramList.toByteArray());
+            paramList = new ass();
+            paramList.GEB = 4;
+            localast.GJN = 1;
+            localast.GJO = new com.tencent.mm.bw.b(paramList.toByteArray());
             paramMap.type = 1004;
           }
         }
       }
       label491:
-      paramMap.GoQ = paramString;
+      paramMap.GIg = paramString;
       paramMap.priority = i;
-      paramString = new ary();
-      paramList = new arz();
-      paramString.GoV.add(paramList);
-      paramList.Gqk = paramMap;
-      this.rGr.a(paramString, "FinderNewTipsTransform");
-      AppMethodBeat.o(201594);
+      paramString = new asn();
+      paramList = new aso();
+      paramString.GIl.add(paramList);
+      paramList.GJF = paramMap;
+      this.rOC.a(paramString, "FinderNewTipsTransform");
+      AppMethodBeat.o(202042);
       return true;
     }
-    AppMethodBeat.o(201594);
+    AppMethodBeat.o(202042);
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$Companion;", "", "()V", "NEW_TIPS_TIPS_ID_FINDER_TL_HOT_TAB", "", "NEW_TIPS_TIPS_ID_FINDER_TL_NEARBY_TAB", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER", "", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER_RED_DOT_TYPE", "TAG", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$Companion;", "", "()V", "NEW_TIPS_TIPS_ID_FINDER_TL_HOT_TAB", "", "NEW_TIPS_TIPS_ID_FINDER_TL_NEARBY_TAB", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER", "", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER_RED_DOT_TYPE", "TAG", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$handleCancel$1$ret$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$handleCancel$1$ret$1"})
   static final class b
     extends q
     implements d.g.a.b<i, Boolean>

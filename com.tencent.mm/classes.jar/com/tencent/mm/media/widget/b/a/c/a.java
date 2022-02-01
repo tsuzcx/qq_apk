@@ -9,25 +9,25 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "", "()V", "KEY_NAME", "", "getKEY_NAME", "()Ljava/lang/String;", "KEY_SUPPORTTAG", "getKEY_SUPPORTTAG", "KEY_VALUE", "getKEY_VALUE", "TAG", "getTAG", "sessionTypeName", "getSessionTypeName", "setSessionTypeName", "(Ljava/lang/String;)V", "sessionValue", "", "getSessionValue", "()I", "setSessionValue", "(I)V", "supportTag", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSupportTag", "()Ljava/util/ArrayList;", "setSupportTag", "(Ljava/util/ArrayList;)V", "checkVendorTagSupported", "", "vendorTags", "initSessionType", "", "params", "Lorg/json/JSONObject;", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "", "()V", "KEY_NAME", "", "getKEY_NAME", "()Ljava/lang/String;", "KEY_SUPPORTTAG", "getKEY_SUPPORTTAG", "KEY_VALUE", "getKEY_VALUE", "TAG", "getTAG", "sessionTypeName", "getSessionTypeName", "setSessionTypeName", "(Ljava/lang/String;)V", "sessionValue", "", "getSessionValue", "()I", "setSessionValue", "(I)V", "supportTag", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSupportTag", "()Ljava/util/ArrayList;", "setSupportTag", "(Ljava/util/ArrayList;)V", "checkVendorTagSupported", "", "vendorTags", "initSessionType", "", "params", "Lorg/json/JSONObject;", "plugin-mediaeditor_release"})
 public final class a
 {
   private final String KEY_NAME;
   private final String TAG;
-  private final String hsX;
-  private final String hsY;
-  private String hsZ;
-  public int hta;
-  private ArrayList<String> htb;
+  private final String hvL;
+  private final String hvM;
+  private String hvN;
+  public int hvO;
+  private ArrayList<String> hvP;
   
   public a()
   {
     AppMethodBeat.i(94213);
     this.TAG = "MicroMsg.WCCameraEffectSessionType";
     this.KEY_NAME = "name";
-    this.hsX = "value";
-    this.hsY = "supportTag";
-    this.htb = new ArrayList();
+    this.hvL = "value";
+    this.hvM = "supportTag";
+    this.hvP = new ArrayList();
     AppMethodBeat.o(94213);
   }
   
@@ -40,7 +40,7 @@ public final class a
     if (localIterator1.hasNext())
     {
       String str = (String)localIterator1.next();
-      Iterator localIterator2 = ((Iterable)this.htb).iterator();
+      Iterator localIterator2 = ((Iterable)this.hvP).iterator();
       while (localIterator2.hasNext())
       {
         paramArrayList = localIterator2.next();
@@ -83,13 +83,13 @@ public final class a
       Object localObject1 = (String)localIterator.next();
       if (p.i(localObject1, this.KEY_NAME))
       {
-        this.hsZ = paramJSONObject.optString((String)localObject1);
+        this.hvN = paramJSONObject.optString((String)localObject1);
       }
-      else if (p.i(localObject1, this.hsX))
+      else if (p.i(localObject1, this.hvL))
       {
-        this.hta = paramJSONObject.optInt((String)localObject1);
+        this.hvO = paramJSONObject.optInt((String)localObject1);
       }
-      else if (p.i(localObject1, this.hsY))
+      else if (p.i(localObject1, this.hvM))
       {
         localObject1 = paramJSONObject.optString((String)localObject1);
         p.g(localObject1, "params.optString(it)");
@@ -101,7 +101,7 @@ public final class a
         }
         for (;;)
         {
-          this.htb = ((ArrayList)localObject1);
+          this.hvP = ((ArrayList)localObject1);
           break;
           if (str.equals("array"))
           {
@@ -118,7 +118,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

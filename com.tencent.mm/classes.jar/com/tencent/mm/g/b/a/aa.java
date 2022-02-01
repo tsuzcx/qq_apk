@@ -6,36 +6,36 @@ import com.tencent.mm.plugin.report.a;
 public final class aa
   extends a
 {
-  public int dSI = 0;
-  public int dUH = 0;
-  public int dUI = 0;
+  public int dTY = 0;
+  public int dVX = 0;
+  public int dVY = 0;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(210149);
+    AppMethodBeat.i(195787);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUH);
+    ((StringBuffer)localObject).append(this.dVX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUI);
+    ((StringBuffer)localObject).append(this.dVY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSI);
+    ((StringBuffer)localObject).append(this.dTY);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(210149);
+    axO((String)localObject);
+    AppMethodBeat.o(195787);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(210150);
+    AppMethodBeat.i(195788);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ExptAppId:").append(this.dUH);
+    ((StringBuffer)localObject).append("ExptAppId:").append(this.dVX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExptSeq:").append(this.dUI);
+    ((StringBuffer)localObject).append("ExptSeq:").append(this.dVY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionType:").append(this.dSI);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dTY);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(210150);
+    AppMethodBeat.o(195788);
     return localObject;
   }
   

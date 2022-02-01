@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.finder.storage.FinderItem.a;
 import com.tencent.mm.plugin.finder.storage.i;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.amo;
+import com.tencent.mm.protocal.protobuf.ana;
 import d.g.a.b;
 import d.g.b.p;
 import d.g.b.q;
@@ -19,176 +19,183 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/data/FinderItemOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "remove", "svrId", "", "list", "Ljava/util/LinkedList;", "svrIds", "", "removeLocal", "localId", "targetDataType", "updateLocal", "item", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderItemOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "remove", "svrId", "", "list", "Ljava/util/LinkedList;", "svrIds", "", "removeLocal", "localId", "targetDataType", "updateLocal", "item", "plugin-finder_release"})
 public final class h
 {
-  public static final h szU;
+  public static final h sKR;
   
   static
   {
-    AppMethodBeat.i(203824);
-    szU = new h();
-    AppMethodBeat.o(203824);
+    AppMethodBeat.i(204415);
+    sKR = new h();
+    AppMethodBeat.o(204415);
   }
   
-  public static FinderItem a(amo paramamo)
+  public static FinderItem a(ana paramana)
   {
     int j = 1;
-    AppMethodBeat.i(203819);
-    p.h(paramamo, "data");
+    AppMethodBeat.i(204410);
+    p.h(paramana, "data");
+    Object localObject1 = paramana.GFh;
     int i;
-    Object localObject;
-    if (paramamo.dataType == 0)
+    Object localObject2;
+    if (paramana.dataType == 0)
     {
       i = 1;
-      if ((i == 0) || (paramamo.Gmf == null)) {
-        break label229;
+      if ((i == 0) || (localObject1 == null)) {
+        break label219;
       }
-      localObject = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage();
-      switch (paramamo.type)
+      localObject2 = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage();
+      switch (paramana.type)
       {
       default: 
-        localObject = FinderItem.syk;
-        localObject = paramamo.Gmf;
-        p.g(localObject, "data.`object`");
-        localObject = FinderItem.a.a((FinderObject)localObject, paramamo.Gmg);
-        paramamo = com.tencent.mm.plugin.finder.api.c.rHn;
-        paramamo = ((FinderItem)localObject).getFeedObject().contact.username;
-        p.g(paramamo, "item.feedObject.contact.username");
-        if (c.a.agW(paramamo) == null)
-        {
-          paramamo = com.tencent.mm.plugin.finder.api.c.rHn;
-          paramamo = ((FinderItem)localObject).getFeedObject().contact;
-          p.g(paramamo, "item.feedObject.contact");
-          c.a.b(paramamo);
-        }
-        paramamo = d.szI;
-        paramamo = (amo)localObject;
-        if (d.a.wT(((FinderItem)localObject).field_id) == null)
-        {
-          paramamo = d.szI;
-          d.a.f((FinderItem)localObject);
-          paramamo = (amo)localObject;
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      if (paramamo == null) {
-        break label229;
-      }
-      AppMethodBeat.o(203819);
-      return paramamo;
-      i = 0;
-      break;
-      paramamo = ((i)localObject).wP(paramamo.id);
-      if (paramamo != null)
-      {
-        if (paramamo.getLocalId() != 0L) {}
-        for (i = j;; i = 0)
-        {
-          if (i != 0) {
-            break label222;
-          }
-          paramamo = null;
+        localObject2 = FinderItem.sJb;
+        localObject1 = FinderItem.a.a((FinderObject)localObject1, paramana.GFi);
+        paramana = com.tencent.mm.plugin.finder.api.c.rPy;
+        paramana = ((FinderItem)localObject1).getFeedObject().contact;
+        if (paramana == null) {
           break;
         }
       }
-      else
+    }
+    for (paramana = paramana.username;; paramana = null)
+    {
+      if (c.a.ahT(paramana) == null)
       {
-        label222:
-        paramamo = null;
+        paramana = com.tencent.mm.plugin.finder.api.c.rPy;
+        c.a.b(((FinderItem)localObject1).getFeedObject().contact);
+      }
+      paramana = d.sKD;
+      if (d.a.xk(((FinderItem)localObject1).field_id) == null)
+      {
+        paramana = d.sKD;
+        d.a.f((FinderItem)localObject1);
+      }
+      paramana = (ana)localObject1;
+      for (;;)
+      {
+        if (paramana == null) {
+          break label219;
+        }
+        AppMethodBeat.o(204410);
+        return paramana;
+        i = 0;
+        break;
+        paramana = ((i)localObject2).xg(paramana.id);
+        if (paramana != null)
+        {
+          if (paramana.getLocalId() != 0L) {}
+          for (i = j;; i = 0)
+          {
+            if (i != 0) {
+              break label207;
+            }
+            paramana = null;
+            break;
+          }
+        }
+        else
+        {
+          label207:
+          paramana = null;
+        }
       }
     }
-    label229:
-    AppMethodBeat.o(203819);
+    label219:
+    AppMethodBeat.o(204410);
     return null;
   }
   
-  public static boolean a(long paramLong, FinderItem paramFinderItem, LinkedList<amo> paramLinkedList)
+  public static boolean a(long paramLong, FinderItem paramFinderItem, LinkedList<ana> paramLinkedList)
   {
-    AppMethodBeat.i(203820);
+    AppMethodBeat.i(204411);
     p.h(paramFinderItem, "item");
     p.h(paramLinkedList, "list");
-    Iterator localIterator = ((Iterable)paramLinkedList).iterator();
+    Object localObject1 = ((Iterable)paramLinkedList).iterator();
     int i;
-    if (localIterator.hasNext())
+    if (((Iterator)localObject1).hasNext())
     {
-      paramLinkedList = localIterator.next();
-      amo localamo = (amo)paramLinkedList;
-      if ((localamo.dataType == 0) && (localamo.type == 2) && (localamo.Gmf.id == paramLong))
+      paramLinkedList = ((Iterator)localObject1).next();
+      Object localObject2 = (ana)paramLinkedList;
+      if ((((ana)localObject2).dataType == 0) && (((ana)localObject2).type == 2))
       {
-        i = 1;
-        label85:
-        if (i == 0) {
-          break label134;
+        localObject2 = ((ana)localObject2).GFh;
+        if ((localObject2 != null) && (((FinderObject)localObject2).id == paramLong))
+        {
+          i = 1;
+          label94:
+          if (i == 0) {
+            break label152;
+          }
         }
       }
     }
     for (;;)
     {
-      paramLinkedList = (amo)paramLinkedList;
+      paramLinkedList = (ana)paramLinkedList;
       if (paramLinkedList == null) {
-        break label141;
+        break label159;
       }
       paramLinkedList.type = 1;
-      paramLinkedList.Gmf.id = paramFinderItem.field_id;
-      paramLinkedList.Gmf = paramFinderItem.getFeedObject();
-      AppMethodBeat.o(203820);
+      localObject1 = paramLinkedList.GFh;
+      if (localObject1 != null) {
+        ((FinderObject)localObject1).id = paramFinderItem.field_id;
+      }
+      paramLinkedList.GFh = paramFinderItem.getFeedObject();
+      AppMethodBeat.o(204411);
       return true;
       i = 0;
-      break label85;
-      label134:
+      break label94;
+      label152:
       break;
       paramLinkedList = null;
     }
-    label141:
-    AppMethodBeat.o(203820);
+    label159:
+    AppMethodBeat.o(204411);
     return false;
   }
   
-  public static boolean a(long paramLong, LinkedList<amo> paramLinkedList)
+  public static boolean a(long paramLong, LinkedList<ana> paramLinkedList)
   {
-    AppMethodBeat.i(203821);
+    AppMethodBeat.i(204412);
     p.h(paramLinkedList, "list");
     y.a locala = new y.a();
-    locala.MLQ = false;
-    com.tencent.mm.ad.c.a(paramLinkedList, (b)new a(paramLong, locala));
-    boolean bool = locala.MLQ;
-    AppMethodBeat.o(203821);
+    locala.NiT = false;
+    com.tencent.mm.ac.c.a(paramLinkedList, (b)new a(paramLong, locala));
+    boolean bool = locala.NiT;
+    AppMethodBeat.o(204412);
     return bool;
   }
   
-  public static boolean a(List<Long> paramList, LinkedList<amo> paramLinkedList)
+  public static boolean a(List<Long> paramList, LinkedList<ana> paramLinkedList)
   {
-    AppMethodBeat.i(203822);
+    AppMethodBeat.i(204413);
     p.h(paramList, "svrIds");
     p.h(paramLinkedList, "list");
     final y.a locala = new y.a();
-    locala.MLQ = false;
-    com.tencent.mm.ad.c.a(paramLinkedList, (b)new b(paramList, locala));
-    boolean bool = locala.MLQ;
-    AppMethodBeat.o(203822);
+    locala.NiT = false;
+    com.tencent.mm.ac.c.a(paramLinkedList, (b)new b(paramList, locala));
+    boolean bool = locala.NiT;
+    AppMethodBeat.o(204413);
     return bool;
   }
   
-  public static boolean b(long paramLong, LinkedList<amo> paramLinkedList)
+  public static boolean b(long paramLong, LinkedList<ana> paramLinkedList)
   {
-    AppMethodBeat.i(203823);
+    AppMethodBeat.i(204414);
     p.h(paramLinkedList, "list");
     y.a locala = new y.a();
-    locala.MLQ = false;
-    com.tencent.mm.ad.c.a(paramLinkedList, (b)new c(paramLong, locala));
-    boolean bool = locala.MLQ;
-    AppMethodBeat.o(203823);
+    locala.NiT = false;
+    com.tencent.mm.ac.c.a(paramLinkedList, (b)new c(paramLong, locala));
+    boolean bool = locala.NiT;
+    AppMethodBeat.o(204414);
     return bool;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
   static final class a
     extends q
-    implements b<amo, Boolean>
+    implements b<ana, Boolean>
   {
     a(long paramLong, y.a parama)
     {
@@ -196,10 +203,10 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
   static final class b
     extends q
-    implements b<amo, Boolean>
+    implements b<ana, Boolean>
   {
     b(List paramList, y.a parama)
     {
@@ -207,10 +214,10 @@ public final class h
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
   static final class c
     extends q
-    implements b<amo, Boolean>
+    implements b<ana, Boolean>
   {
     c(long paramLong, y.a parama)
     {

@@ -10,18 +10,18 @@ import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.ball.a.e;
 import com.tencent.mm.plugin.ipcall.c;
 import com.tencent.mm.plugin.ipcall.model.c.d;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bl;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -30,40 +30,40 @@ public class IPCallTalkUI
   extends MMActivity
   implements j.a
 {
-  private String jqQ;
+  private String jtJ;
   private String mCountryCode;
-  private String uRb;
-  private String uRc;
-  private String uRd;
-  private int uRe;
-  private int uRf;
-  private j uUK;
-  private com.tencent.mm.plugin.voip.a.b uUL;
+  private String vcN;
+  private String vcO;
+  private String vcP;
+  private int vcQ;
+  private int vcR;
+  private j vgx;
+  private com.tencent.mm.plugin.voip.a.b vgy;
   
-  private void deI()
+  private void dhA()
   {
     AppMethodBeat.i(185748);
-    this.uUL = new com.tencent.mm.plugin.voip.a.b(new e(this));
-    this.uUL.ac(9, "VOIPFloatBall");
+    this.vgy = new com.tencent.mm.plugin.voip.a.b(new e(this));
+    this.vgy.ac(9, "VOIPFloatBall");
     AppMethodBeat.o(185748);
   }
   
   private void init()
   {
     AppMethodBeat.i(25985);
-    i.ddE().ddF();
-    this.uUK = new j(this);
-    this.uUK.uVw = this;
-    this.uUK.b(this.jqQ, this.uRb, this.uRc, this.mCountryCode, this.uRd, this.uRe, this.uRf);
-    deI();
+    i.dgw().dgx();
+    this.vgx = new j(this);
+    this.vgx.vhj = this;
+    this.vgx.b(this.jtJ, this.vcN, this.vcO, this.mCountryCode, this.vcP, this.vcQ, this.vcR);
+    dhA();
     AppMethodBeat.o(25985);
   }
   
   public void finish()
   {
     AppMethodBeat.i(25991);
-    if (this.uUK != null) {
-      this.uUK.uVF = true;
+    if (this.vgx != null) {
+      this.vgx.vhs = true;
     }
     super.finish();
     AppMethodBeat.o(25991);
@@ -79,7 +79,7 @@ public class IPCallTalkUI
     return 2131494508;
   }
   
-  public final void nP(boolean paramBoolean)
+  public final void nT(boolean paramBoolean)
   {
     AppMethodBeat.i(25988);
     if (!paramBoolean)
@@ -87,7 +87,7 @@ public class IPCallTalkUI
       AppMethodBeat.o(25988);
       return;
     }
-    aq.o(new IPCallTalkUI.1(this), 3000L);
+    ar.o(new IPCallTalkUI.1(this), 3000L);
     AppMethodBeat.o(25988);
   }
   
@@ -99,16 +99,16 @@ public class IPCallTalkUI
     super.onCreate(paramBundle);
     getSupportActionBar().hide();
     getWindow().addFlags(6946944);
-    this.jqQ = getIntent().getStringExtra("IPCallTalkUI_nickname");
-    this.uRb = getIntent().getStringExtra("IPCallTalkUI_phoneNumber");
-    this.uRc = getIntent().getStringExtra("IPCallTalkUI_contactId");
+    this.jtJ = getIntent().getStringExtra("IPCallTalkUI_nickname");
+    this.vcN = getIntent().getStringExtra("IPCallTalkUI_phoneNumber");
+    this.vcO = getIntent().getStringExtra("IPCallTalkUI_contactId");
     this.mCountryCode = getIntent().getStringExtra("IPCallTalkUI_countryCode");
-    this.uRd = getIntent().getStringExtra("IPCallTalkUI_toWechatUsername");
-    this.uRe = getIntent().getIntExtra("IPCallTalkUI_dialScene", 0);
-    this.uRf = getIntent().getIntExtra("IPCallTalkUI_countryType", 0);
-    ad.i("MicroMsg.IPCallTalkUI", "onCreate, mNickname: %s, mPhoneNumber: %s, mContactId: %s, mCountryCode: %s, toUsername:%s, mDialScene:%d ,mCountryType:%d", new Object[] { this.jqQ, this.uRb, this.uRc, this.mCountryCode, this.uRd, Integer.valueOf(this.uRe), Integer.valueOf(this.uRf) });
+    this.vcP = getIntent().getStringExtra("IPCallTalkUI_toWechatUsername");
+    this.vcQ = getIntent().getIntExtra("IPCallTalkUI_dialScene", 0);
+    this.vcR = getIntent().getIntExtra("IPCallTalkUI_countryType", 0);
+    ae.i("MicroMsg.IPCallTalkUI", "onCreate, mNickname: %s, mPhoneNumber: %s, mContactId: %s, mCountryCode: %s, toUsername:%s, mDialScene:%d ,mCountryType:%d", new Object[] { this.jtJ, this.vcN, this.vcO, this.mCountryCode, this.vcP, Integer.valueOf(this.vcQ), Integer.valueOf(this.vcR) });
     boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.RECORD_AUDIO", 80, null, null);
-    ad.i("MicroMsg.IPCallTalkUI", "summerper checkPermission checkMicrophone[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bt.flS() });
+    ae.i("MicroMsg.IPCallTalkUI", "summerper checkPermission checkMicrophone[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bu.fpN() });
     if (!bool)
     {
       AppMethodBeat.o(25984);
@@ -123,24 +123,24 @@ public class IPCallTalkUI
     AppMethodBeat.i(25987);
     super.onDestroy();
     setScreenEnable(true);
-    if (this.uUK != null)
+    if (this.vgx != null)
     {
-      j localj = this.uUK;
-      ad.i("MicroMsg.TalkUIController", "onDestroy");
-      localj.uVv.uJR = null;
-      i.ddJ().fLP = null;
-      i.ddJ().a(null);
-      i.ddJ().a(null);
-      Object localObject = i.ddJ();
-      ((com.tencent.mm.plugin.ipcall.model.c.b)localObject).uMe.uMp = null;
-      localObject = ((com.tencent.mm.plugin.ipcall.model.c.b)localObject).uMe;
-      ((d)localObject).pyv.flC();
-      ((d)localObject).pyu.flD();
-      localj.uVu = null;
-      localj.uVw = null;
+      j localj = this.vgx;
+      ae.i("MicroMsg.TalkUIController", "onDestroy");
+      localj.vhi.uVE = null;
+      i.dgB().fNT = null;
+      i.dgB().a(null);
+      i.dgB().a(null);
+      Object localObject = i.dgB();
+      ((com.tencent.mm.plugin.ipcall.model.c.b)localObject).uXR.uYc = null;
+      localObject = ((com.tencent.mm.plugin.ipcall.model.c.b)localObject).uXR;
+      ((d)localObject).pEZ.fpx();
+      ((d)localObject).pEY.fpy();
+      localj.vhh = null;
+      localj.vhj = null;
     }
-    if (this.uUL != null) {
-      this.uUL.onDestroy();
+    if (this.vgy != null) {
+      this.vgy.onDestroy();
     }
     AppMethodBeat.o(25987);
   }
@@ -148,17 +148,17 @@ public class IPCallTalkUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(25989);
-    if (this.uUK != null)
+    if (this.vgx != null)
     {
       int i;
-      if (i.ddK().ddA()) {
+      if (i.dgC().dgs()) {
         if (paramInt == 25)
         {
-          i = i.ddJ().ddZ();
+          i = i.dgB().dgR();
           if (i == -1) {
             break label85;
           }
-          com.tencent.mm.plugin.audio.c.a.xm(i);
+          com.tencent.mm.plugin.audio.c.a.xr(i);
           i = 1;
         }
       }
@@ -168,10 +168,10 @@ public class IPCallTalkUI
         return true;
         if (paramInt == 24)
         {
-          i = i.ddJ().ddZ();
+          i = i.dgB().dgR();
           if (i != -1)
           {
-            com.tencent.mm.plugin.audio.c.a.xl(i);
+            com.tencent.mm.plugin.audio.c.a.xq(i);
             i = 1;
             continue;
           }
@@ -188,16 +188,16 @@ public class IPCallTalkUI
   public void onPause()
   {
     AppMethodBeat.i(25990);
-    ad.d("MicroMsg.IPCallTalkUI", "onPause");
+    ae.d("MicroMsg.IPCallTalkUI", "onPause");
     super.onPause();
     j localj;
-    if (this.uUK != null)
+    if (this.vgx != null)
     {
-      localj = this.uUK;
+      localj = this.vgx;
       bool1 = hasWindowFocus();
-      ad.d("MicroMsg.TalkUIController", "onPause");
-      KeyguardManager localKeyguardManager = (KeyguardManager)aj.getContext().getSystemService("keyguard");
-      PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
+      ae.d("MicroMsg.TalkUIController", "onPause");
+      KeyguardManager localKeyguardManager = (KeyguardManager)ak.getContext().getSystemService("keyguard");
+      PowerManager localPowerManager = (PowerManager)ak.getContext().getSystemService("power");
       boolean bool2 = localKeyguardManager.inKeyguardRestrictedInputMode();
       boolean bool3 = localPowerManager.isScreenOn();
       if (((!bool1) && (bool2)) || (!bool3)) {
@@ -207,10 +207,10 @@ public class IPCallTalkUI
     label131:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localj.uVG = bool1;
-      if (this.uUL != null)
+      localj.vht = bool1;
+      if (this.vgy != null)
       {
-        this.uUL.bgC();
+        this.vgy.bhk();
         com.tencent.mm.plugin.ball.f.f.e(false, true, true);
       }
       AppMethodBeat.o(25990);
@@ -223,11 +223,11 @@ public class IPCallTalkUI
     AppMethodBeat.i(25993);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ad.i("MicroMsg.IPCallTalkUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ae.i("MicroMsg.IPCallTalkUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(25993);
       return;
     }
-    ad.i("MicroMsg.IPCallTalkUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ae.i("MicroMsg.IPCallTalkUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -248,16 +248,16 @@ public class IPCallTalkUI
   public void onResume()
   {
     AppMethodBeat.i(25992);
-    ad.d("MicroMsg.IPCallTalkUI", "onResume");
+    ae.d("MicroMsg.IPCallTalkUI", "onResume");
     super.onResume();
-    if (this.uUK != null)
+    if (this.vgx != null)
     {
-      ad.d("MicroMsg.TalkUIController", "onResume");
-      ba.getNotification().cancel(42);
+      ae.d("MicroMsg.TalkUIController", "onResume");
+      bc.getNotification().cancel(42);
     }
-    if (this.uUL != null)
+    if (this.vgy != null)
     {
-      this.uUL.bKs();
+      this.vgy.bLp();
       com.tencent.mm.plugin.ball.f.f.e(true, false, true);
     }
     AppMethodBeat.o(25992);
@@ -267,12 +267,12 @@ public class IPCallTalkUI
   {
     AppMethodBeat.i(25986);
     super.onStop();
-    ad.i("MicroMsg.IPCallTalkUI", "onStop");
-    if (this.uUK != null)
+    ae.i("MicroMsg.IPCallTalkUI", "onStop");
+    if (this.vgx != null)
     {
-      j localj = this.uUK;
-      if ((localj.uVG) && (!localj.uVF)) {
-        i.ddL().ddg();
+      j localj = this.vgx;
+      if ((localj.vht) && (!localj.vhs)) {
+        i.dgD().dfY();
       }
     }
     AppMethodBeat.o(25986);
@@ -286,7 +286,7 @@ public class IPCallTalkUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallTalkUI
  * JD-Core Version:    0.7.0.1
  */

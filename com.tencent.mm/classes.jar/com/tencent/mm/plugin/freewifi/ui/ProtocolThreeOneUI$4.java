@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
@@ -18,12 +18,12 @@ final class ProtocolThreeOneUI$4
     AppMethodBeat.i(25184);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/ProtocolThreeOneUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/freewifi/ui/ProtocolThreeOneUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.trj.tpM);
+    paramView.putExtra("rawUrl", this.tCa.tAD);
     paramView.putExtra("showShare", false);
     paramView.putExtra("show_bottom", false);
-    d.b(this.trj.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    d.b(this.tCa.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/ProtocolThreeOneUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25184);
   }

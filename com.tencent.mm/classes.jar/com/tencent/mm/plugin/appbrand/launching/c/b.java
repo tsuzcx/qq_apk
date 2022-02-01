@@ -6,43 +6,43 @@ import com.tencent.mm.plugin.appbrand.api.WeAppOpenDeclarePromptBundle;
 
  enum b
 {
-  final String inP;
+  final String iqJ;
   final int scene;
   
   static
   {
     AppMethodBeat.i(47409);
-    lMF = new b("WALLET", 0, "weapp://wallet/", 1019);
-    lMG = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
-    lMH = new b[] { lMF, lMG };
+    lRf = new b("WALLET", 0, "weapp://wallet/", 1019);
+    lRg = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
+    lRh = new b[] { lRf, lRg };
     AppMethodBeat.o(47409);
   }
   
   private b(String paramString, int paramInt)
   {
-    this.inP = paramString;
+    this.iqJ = paramString;
     this.scene = paramInt;
   }
   
-  static WeAppOpenDeclarePromptBundle K(Bundle paramBundle)
+  static WeAppOpenDeclarePromptBundle L(Bundle paramBundle)
   {
-    AppMethodBeat.i(188646);
+    AppMethodBeat.i(222808);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(188646);
+      AppMethodBeat.o(222808);
       return null;
     }
     paramBundle = (WeAppOpenDeclarePromptBundle)paramBundle.getParcelable("weapp_open_declare_prompt_key");
-    AppMethodBeat.o(188646);
+    AppMethodBeat.o(222808);
     return paramBundle;
   }
   
-  static String brT()
+  static String bsE()
   {
     return "";
   }
   
-  static String brU()
+  static String bsF()
   {
     return "";
   }

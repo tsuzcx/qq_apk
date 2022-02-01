@@ -22,7 +22,7 @@ import com.tencent.mm.api.w;
 import com.tencent.mm.api.y;
 import com.tencent.mm.api.y.a.a;
 import com.tencent.mm.api.y.c;
-import com.tencent.mm.bu.a.c;
+import com.tencent.mm.bt.a.c;
 import com.tencent.mm.component.api.jumper.UICustomParam;
 import com.tencent.mm.e.b.a;
 import com.tencent.mm.plugin.recordvideo.activity.a.a;
@@ -42,39 +42,40 @@ import com.tencent.mm.plugin.recordvideo.plugin.m;
 import com.tencent.mm.plugin.recordvideo.plugin.n;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.v;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditPhotoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "addEmojiPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "backToRecordPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getConfigProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setConfigProvider", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;)V", "editAddTextPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "editCropPhotoPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoCropPlugin;", "editFilterPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/EditPhotoFilterPlugin;", "editFinishPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "editPencilPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin;", "editPhotoWrapper", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoContainerPlugin;", "getEditPhotoWrapper", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoContainerPlugin;", "editShadowPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "inputPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditInputPlugin;", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "photoControlUI", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoControlPlugin;", "initLogic", "", "loadCurrentPage", "info", "onBackPress", "", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-recordvideo_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditPhotoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "addEmojiPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "backToRecordPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getConfigProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setConfigProvider", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;)V", "editAddTextPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "editCropPhotoPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoCropPlugin;", "editFilterPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/EditPhotoFilterPlugin;", "editFinishPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "editPencilPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin;", "editPhotoWrapper", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoContainerPlugin;", "getEditPhotoWrapper", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoContainerPlugin;", "editShadowPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "inputPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditInputPlugin;", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "photoControlUI", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoControlPlugin;", "initLogic", "", "loadCurrentPage", "info", "onBackPress", "", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-recordvideo_release"})
 public class EditPhotoPluginLayout
   extends BasePluginLayout
   implements d
 {
-  public static final EditPhotoPluginLayout.a xDS;
-  private com.tencent.mm.plugin.recordvideo.activity.a sNH;
-  private RecordConfigProvider sNI;
-  private com.tencent.mm.media.widget.camerarecordview.b.b xAw;
-  private final f xDB;
-  private final com.tencent.mm.plugin.recordvideo.plugin.e xDC;
-  private final com.tencent.mm.plugin.recordvideo.plugin.g xDH;
-  private final m xDL;
-  private final com.tencent.mm.plugin.recordvideo.plugin.filter.a xDM;
-  private final com.tencent.mm.plugin.recordvideo.plugin.l xDN;
-  private final j xDO;
-  private final k xDP;
-  private final com.tencent.mm.plugin.recordvideo.plugin.c xDQ;
-  private final n xDR;
-  private final com.tencent.mm.plugin.recordvideo.plugin.a xDt;
+  public static final EditPhotoPluginLayout.a xTN;
+  private com.tencent.mm.plugin.recordvideo.activity.a sYS;
+  private RecordConfigProvider sYT;
+  private com.tencent.mm.media.widget.camerarecordview.b.b xQs;
+  private final com.tencent.mm.plugin.recordvideo.plugin.g xTC;
+  private final m xTG;
+  private final com.tencent.mm.plugin.recordvideo.plugin.filter.a xTH;
+  private final com.tencent.mm.plugin.recordvideo.plugin.l xTI;
+  private final j xTJ;
+  private final k xTK;
+  private final com.tencent.mm.plugin.recordvideo.plugin.c xTL;
+  private final n xTM;
+  private final com.tencent.mm.plugin.recordvideo.plugin.a xTo;
+  private final f xTw;
+  private final com.tencent.mm.plugin.recordvideo.plugin.e xTx;
   
   static
   {
     AppMethodBeat.i(75770);
-    xDS = new EditPhotoPluginLayout.a((byte)0);
+    xTN = new EditPhotoPluginLayout.a((byte)0);
     AppMethodBeat.o(75770);
   }
   
@@ -85,44 +86,44 @@ public class EditPhotoPluginLayout
     View.inflate(paramContext, 2131495086, (ViewGroup)this);
     paramContext = findViewById(2131297952);
     d.g.b.p.g(paramContext, "findViewById(R.id.change_text_root)");
-    this.xDH = new com.tencent.mm.plugin.recordvideo.plugin.g((EditorInputView)paramContext);
+    this.xTC = new com.tencent.mm.plugin.recordvideo.plugin.g((EditorInputView)paramContext);
     paramContext = findViewById(2131299285);
     d.g.b.p.g(paramContext, "findViewById(R.id.editor_close)");
-    this.xDC = new com.tencent.mm.plugin.recordvideo.plugin.e((ImageView)paramContext, (d)this);
-    this.xDL = new m((ViewGroup)this, (d)this);
-    this.xDM = new com.tencent.mm.plugin.recordvideo.plugin.filter.a((ViewGroup)this, (d)this);
+    this.xTx = new com.tencent.mm.plugin.recordvideo.plugin.e((ImageView)paramContext, (d)this);
+    this.xTG = new m((ViewGroup)this, (d)this);
+    this.xTH = new com.tencent.mm.plugin.recordvideo.plugin.filter.a((ViewGroup)this, (d)this);
     paramContext = (ViewGroup)this;
     paramAttributeSet = findViewById(2131299273);
     d.g.b.p.g(paramAttributeSet, "findViewById(R.id.editor_add_emoji)");
-    this.xDt = new com.tencent.mm.plugin.recordvideo.plugin.a(paramContext, (ImageView)paramAttributeSet, (d)this);
-    this.xDQ = new com.tencent.mm.plugin.recordvideo.plugin.c((ViewGroup)this, (d)this, this.xDH.xzZ);
+    this.xTo = new com.tencent.mm.plugin.recordvideo.plugin.a(paramContext, (ImageView)paramAttributeSet, (d)this);
+    this.xTL = new com.tencent.mm.plugin.recordvideo.plugin.c((ViewGroup)this, (d)this, this.xTC.xPV);
     paramContext = findViewById(2131299296);
     d.g.b.p.g(paramContext, "findViewById(R.id.editor_photo_crop)");
-    this.xDN = new com.tencent.mm.plugin.recordvideo.plugin.l((ImageView)paramContext, (d)this);
+    this.xTI = new com.tencent.mm.plugin.recordvideo.plugin.l((ImageView)paramContext, (d)this);
     paramContext = findViewById(2131299295);
     d.g.b.p.g(paramContext, "findViewById(R.id.editor_mix)");
-    this.xDB = new f(paramContext, (d)this);
+    this.xTw = new f(paramContext, (d)this);
     paramContext = findViewById(2131303249);
     d.g.b.p.g(paramContext, "findViewById(R.id.photo_preview_plugin)");
-    this.xDO = new j((FrameLayout)paramContext, (d)this);
+    this.xTJ = new j((FrameLayout)paramContext, (d)this);
     paramContext = findViewById(2131298784);
     d.g.b.p.g(paramContext, "findViewById(R.id.control_container)");
-    this.xDP = new k((ViewGroup)paramContext, (d)this);
+    this.xTK = new k((ViewGroup)paramContext, (d)this);
     paramContext = findViewById(2131304672);
     d.g.b.p.g(paramContext, "findViewById(R.id.shadow_bg)");
-    this.xDR = new n(paramContext, (d)this);
-    this.xDt.setVisibility(0);
-    this.xDQ.setVisibility(0);
-    this.xDL.setVisibility(0);
-    getPluginList().add(this.xDP);
-    getPluginList().add(this.xDL);
-    getPluginList().add(this.xDM);
-    getPluginList().add(this.xDN);
-    getPluginList().add(this.xDO);
-    getPluginList().add(this.xDC);
-    getPluginList().add(this.xDt);
-    getPluginList().add(this.xDB);
-    getPluginList().add(this.xDQ);
+    this.xTM = new n(paramContext, (d)this);
+    this.xTo.setVisibility(0);
+    this.xTL.setVisibility(0);
+    this.xTG.setVisibility(0);
+    getPluginList().add(this.xTK);
+    getPluginList().add(this.xTG);
+    getPluginList().add(this.xTH);
+    getPluginList().add(this.xTI);
+    getPluginList().add(this.xTJ);
+    getPluginList().add(this.xTx);
+    getPluginList().add(this.xTo);
+    getPluginList().add(this.xTw);
+    getPluginList().add(this.xTL);
     AppMethodBeat.o(75769);
   }
   
@@ -132,51 +133,51 @@ public class EditPhotoPluginLayout
     super.a(paramb);
     if (paramb != null)
     {
-      this.xAw = paramb;
-      Object localObject1 = this.xDO;
-      Object localObject2 = this.sNI;
+      this.xQs = paramb;
+      Object localObject1 = this.xTJ;
+      Object localObject2 = this.sYT;
       if (localObject2 == null) {
-        d.g.b.p.gfZ();
+        d.g.b.p.gkB();
       }
       d.g.b.p.h(localObject2, "configProvider");
       d.g.b.p.h(paramb, "captureInfo");
-      ((j)localObject1).sNI = ((RecordConfigProvider)localObject2);
-      ((j)localObject1).xAw = paramb;
-      localObject2 = this.xDO;
-      String str = paramb.htV;
+      ((j)localObject1).sYT = ((RecordConfigProvider)localObject2);
+      ((j)localObject1).xQs = paramb;
+      localObject2 = this.xTJ;
+      String str = paramb.hwJ;
       d.g.b.p.h(str, "path");
-      ((j)localObject2).xAB.setVisibility(0);
-      localObject1 = ((j)localObject2).xAw;
+      ((j)localObject2).xQw.setVisibility(0);
+      localObject1 = ((j)localObject2).xQs;
       Object localObject3;
       boolean bool;
-      if ((localObject1 != null) && (((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).htY == true))
+      if ((localObject1 != null) && (((com.tencent.mm.media.widget.camerarecordview.b.b)localObject1).hwM == true))
       {
-        localObject1 = ((j)localObject2).dGu();
-        ((j)localObject2).vVH = ((y)localObject1);
-        localObject1 = ((j)localObject2).vVH;
+        localObject1 = ((j)localObject2).dJL();
+        ((j)localObject2).whL = ((y)localObject1);
+        localObject1 = ((j)localObject2).whL;
         if (localObject1 != null)
         {
           localObject3 = new y.a.a();
-          Object localObject4 = ((j)localObject2).sNI;
+          Object localObject4 = ((j)localObject2).sYT;
           if ((localObject4 != null) && (((RecordConfigProvider)localObject4).scene == 291)) {
             break label360;
           }
-          localObject4 = ((j)localObject2).sNI;
+          localObject4 = ((j)localObject2).sYT;
           if ((localObject4 != null) && (((RecordConfigProvider)localObject4).scene == 293)) {
             break label360;
           }
           bool = true;
           label201:
-          localObject3 = ((y.a.a)localObject3).ca(bool).Lm().i(new Rect(((j)localObject2).xAB.getLeft(), ((j)localObject2).xAB.getTop(), ((j)localObject2).xAB.getRight(), ((j)localObject2).xAB.getBottom())).a(y.c.cRU);
-          localObject4 = ((j)localObject2).xAw;
-          if ((localObject4 == null) || (((com.tencent.mm.media.widget.camerarecordview.b.b)localObject4).htP != true)) {
+          localObject3 = ((y.a.a)localObject3).ca(bool).Lu().i(new Rect(((j)localObject2).xQw.getLeft(), ((j)localObject2).xQw.getTop(), ((j)localObject2).xQw.getRight(), ((j)localObject2).xQw.getBottom())).a(y.c.cSE);
+          localObject4 = ((j)localObject2).xQs;
+          if ((localObject4 == null) || (((com.tencent.mm.media.widget.camerarecordview.b.b)localObject4).hwD != true)) {
             break label365;
           }
           bool = true;
           label283:
-          ((y)localObject1).a(((y.a.a)localObject3).cb(bool).eU(str).Ln());
+          ((y)localObject1).a(((y.a.a)localObject3).cb(bool).eZ(str).Lv());
         }
-        localObject1 = ((j)localObject2).vVH;
+        localObject1 = ((j)localObject2).whL;
         if (localObject1 == null) {
           break label370;
         }
@@ -184,7 +185,7 @@ public class EditPhotoPluginLayout
       label360:
       label365:
       label370:
-      for (localObject1 = ((y)localObject1).bg(((j)localObject2).context);; localObject1 = null)
+      for (localObject1 = ((y)localObject1).bh(((j)localObject2).context);; localObject1 = null)
       {
         if (localObject1 != null) {
           break label376;
@@ -192,7 +193,7 @@ public class EditPhotoPluginLayout
         paramb = new v("null cannot be cast to non-null type com.tencent.mm.view.PhotoDrawingView");
         AppMethodBeat.o(75766);
         throw paramb;
-        localObject1 = ((j)localObject2).dGt();
+        localObject1 = ((j)localObject2).dJK();
         break;
         bool = false;
         break label201;
@@ -200,11 +201,11 @@ public class EditPhotoPluginLayout
         break label283;
       }
       label376:
-      ((j)localObject2).xAx = ((com.tencent.mm.view.e)localObject1);
-      localObject1 = ((j)localObject2).sNI;
+      ((j)localObject2).xQt = ((com.tencent.mm.view.e)localObject1);
+      localObject1 = ((j)localObject2).sYT;
       if (localObject1 != null)
       {
-        localObject1 = ((RecordConfigProvider)localObject1).ime;
+        localObject1 = ((RecordConfigProvider)localObject1).ioY;
         if (localObject1 != null)
         {
           localObject3 = ((Bundle)localObject1).getFloatArray("matrix");
@@ -212,7 +213,7 @@ public class EditPhotoPluginLayout
           {
             localObject1 = new Matrix();
             ((Matrix)localObject1).setValues((float[])localObject3);
-            localObject3 = ((j)localObject2).xAx;
+            localObject3 = ((j)localObject2).xQt;
             if (localObject3 != null)
             {
               localObject3 = ((com.tencent.mm.view.e)localObject3).getBaseBoardView();
@@ -223,7 +224,7 @@ public class EditPhotoPluginLayout
           }
         }
       }
-      localObject1 = ((j)localObject2).xAx;
+      localObject1 = ((j)localObject2).xQt;
       if (localObject1 != null)
       {
         localObject1 = (com.tencent.mm.view.footer.b)((com.tencent.mm.view.e)localObject1).getBaseFooterView();
@@ -231,61 +232,61 @@ public class EditPhotoPluginLayout
           ((com.tencent.mm.view.footer.b)localObject1).setHideFooter(true);
         }
       }
-      localObject1 = ((j)localObject2).xAx;
+      localObject1 = ((j)localObject2).xQt;
       if (localObject1 == null)
       {
         paramb = new v("null cannot be cast to non-null type com.tencent.mm.view.PhotoDrawingView");
         AppMethodBeat.o(75766);
         throw paramb;
       }
-      ((j)localObject2).xAy = ((com.tencent.mm.view.e)localObject1).getPresenter();
-      localObject1 = ((j)localObject2).xAy;
+      ((j)localObject2).xQu = ((com.tencent.mm.view.e)localObject1).getPresenter();
+      localObject1 = ((j)localObject2).xQu;
       if (localObject1 == null)
       {
         paramb = new v("null cannot be cast to non-null type com.tencent.mm.presenter.DrawingPresenter");
         AppMethodBeat.o(75766);
         throw paramb;
       }
-      ((com.tencent.mm.bu.a)localObject1).FmJ = ((a.c)new j.c((j)localObject2));
+      ((com.tencent.mm.bt.a)localObject1).FFh = ((a.c)new j.c((j)localObject2));
       localObject1 = new FrameLayout.LayoutParams(-1, -1);
-      ((j)localObject2).xAB.addView((View)((j)localObject2).xAx, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = ((j)localObject2).xAx;
+      ((j)localObject2).xQw.addView((View)((j)localObject2).xQt, (ViewGroup.LayoutParams)localObject1);
+      localObject1 = ((j)localObject2).xQt;
       if (localObject1 != null) {
         ((com.tencent.mm.view.e)localObject1).setSelectedFeatureListener((w)new j.d((j)localObject2));
       }
-      localObject1 = ((j)localObject2).xAy;
+      localObject1 = ((j)localObject2).xQu;
       if (localObject1 != null)
       {
-        localObject1 = (com.tencent.mm.e.d)((com.tencent.mm.bu.b)localObject1).c(com.tencent.mm.api.g.cRD);
+        localObject1 = (com.tencent.mm.e.d)((com.tencent.mm.bt.b)localObject1).c(com.tencent.mm.api.g.cSn);
         if (localObject1 != null) {
           ((com.tencent.mm.e.d)localObject1).a((b.a)new j.e((j)localObject2));
         }
       }
-      localObject1 = ((j)localObject2).xAy;
+      localObject1 = ((j)localObject2).xQu;
       if (localObject1 != null)
       {
-        localObject1 = (com.tencent.mm.e.g)((com.tencent.mm.bu.b)localObject1).c(com.tencent.mm.api.g.cRG);
+        localObject1 = (com.tencent.mm.e.g)((com.tencent.mm.bt.b)localObject1).c(com.tencent.mm.api.g.cSq);
         if (localObject1 != null) {
           ((com.tencent.mm.e.g)localObject1).a((b.a)new j.f((j)localObject2));
         }
       }
-      localObject1 = com.tencent.mm.sdk.platformtools.g.aQc(str);
+      localObject1 = h.aRz(str);
       if (localObject1 != null)
       {
-        localObject2 = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+        localObject2 = com.tencent.mm.plugin.recordvideo.d.c.xWV;
         com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ORIGIN_MEDIA_WIDTH_INT", Integer.valueOf(((BitmapFactory.Options)localObject1).outWidth));
-        localObject2 = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+        localObject2 = com.tencent.mm.plugin.recordvideo.d.c.xWV;
         com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ORIGIN_MEDIA_HEIGHT_INT", Integer.valueOf(((BitmapFactory.Options)localObject1).outHeight));
       }
-      localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+      localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xWV;
       com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ENTER_EDIT_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
-      localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+      localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xWV;
       com.tencent.mm.plugin.recordvideo.d.c.u("KEY_EDIT_PUBLISHID_INT", Long.valueOf(System.currentTimeMillis()));
-      localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+      localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xWV;
       com.tencent.mm.plugin.recordvideo.d.c.u("KEY_MEDIA_TYPE_INT", Integer.valueOf(1));
-      if (!paramb.htP)
+      if (!paramb.hwD)
       {
-        paramb = this.sNI;
+        paramb = this.sYT;
         if (paramb == null) {
           break label908;
         }
@@ -296,11 +297,11 @@ public class EditPhotoPluginLayout
     {
       if (i > 0)
       {
-        paramb = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+        paramb = com.tencent.mm.plugin.recordvideo.d.c.xWV;
         com.tencent.mm.plugin.recordvideo.d.c.u("KEY_MEDIA_SOURCE_INT", Integer.valueOf(0));
       }
-      paramb = com.tencent.mm.media.k.d.hoU;
-      com.tencent.mm.media.k.d.auK();
+      paramb = com.tencent.mm.media.k.d.hrI;
+      com.tencent.mm.media.k.d.auZ();
       AppMethodBeat.o(75766);
       return;
     }
@@ -311,20 +312,20 @@ public class EditPhotoPluginLayout
     AppMethodBeat.i(75765);
     d.g.b.p.h(parama, "navigator");
     d.g.b.p.h(paramRecordConfigProvider, "configProvider");
-    ad.i("MicroMsg.EditPhotoPluginLayout", "configProvider ".concat(String.valueOf(paramRecordConfigProvider)));
-    this.sNH = parama;
-    this.sNI = paramRecordConfigProvider;
-    parama = com.tencent.mm.plugin.recordvideo.e.b.xRl;
+    ae.i("MicroMsg.EditPhotoPluginLayout", "configProvider ".concat(String.valueOf(paramRecordConfigProvider)));
+    this.sYS = parama;
+    this.sYT = paramRecordConfigProvider;
+    parama = com.tencent.mm.plugin.recordvideo.e.b.yhe;
     com.tencent.mm.plugin.recordvideo.e.b.d(paramRecordConfigProvider);
     parama = ((Iterable)getPluginList()).iterator();
     if (parama.hasNext())
     {
       Object localObject1 = (t)parama.next();
-      Object localObject2 = paramRecordConfigProvider.xyk;
+      Object localObject2 = paramRecordConfigProvider.xOh;
       boolean bool;
       if (localObject2 != null)
       {
-        localObject2 = ((UICustomParam)localObject2).gdZ;
+        localObject2 = ((UICustomParam)localObject2).ggh;
         if (localObject2 != null)
         {
           localObject2 = (Boolean)((Map)localObject2).get(((t)localObject1).name());
@@ -351,9 +352,9 @@ public class EditPhotoPluginLayout
         if ((!(localObject1 instanceof com.tencent.mm.plugin.recordvideo.plugin.filter.a)) || (i != 0)) {
           break;
         }
-        localObject1 = this.xDL.xAS;
+        localObject1 = this.xTG.xQN;
         ((PhotoDoodlePlugin)localObject1).b(null, null);
-        ((PhotoDoodlePlugin)localObject1).xCI.deferNotifyDataSetChanged();
+        ((PhotoDoodlePlugin)localObject1).xSD.deferNotifyDataSetChanged();
         break;
         bool = false;
         break label141;
@@ -370,24 +371,24 @@ public class EditPhotoPluginLayout
     Object localObject = null;
     AppMethodBeat.i(75767);
     d.g.b.p.h(paramc, "status");
-    ad.i("MicroMsg.EditPhotoPluginLayout", "status :" + paramc + " , param :" + paramBundle);
-    switch (b.cpQ[paramc.ordinal()])
+    ae.i("MicroMsg.EditPhotoPluginLayout", "status :" + paramc + " , param :" + paramBundle);
+    switch (b.cqt[paramc.ordinal()])
     {
     default: 
       AppMethodBeat.o(75767);
       return;
     case 1: 
-      aoB();
+      aoQ();
       AppMethodBeat.o(75767);
       return;
     case 2: 
     case 3: 
     case 4: 
-      this.xDP.setVisibility(4);
+      this.xTK.setVisibility(4);
       AppMethodBeat.o(75767);
       return;
     case 5: 
-      this.xDP.setVisibility(0);
+      this.xTK.setVisibility(0);
       AppMethodBeat.o(75767);
       return;
     case 6: 
@@ -396,14 +397,14 @@ public class EditPhotoPluginLayout
         paramBundle = (EmojiInfo)paramBundle.getParcelable("PARAM_EDIT_EMOJI_INFO");
         if (paramBundle != null)
         {
-          paramc = this.xDO;
+          paramc = this.xTJ;
           paramBundle = (com.tencent.mm.api.p)paramBundle;
           d.g.b.p.h(paramBundle, "emojiInfo");
-          localObject = paramc.xAy;
+          localObject = paramc.xQu;
           if (localObject != null) {
-            ((com.tencent.mm.bu.b)localObject).getSelectedFeatureListener().a(com.tencent.mm.api.g.cRE);
+            ((com.tencent.mm.bt.b)localObject).getSelectedFeatureListener().a(com.tencent.mm.api.g.cSo);
           }
-          paramc = paramc.xAy;
+          paramc = paramc.xQu;
           if (paramc != null)
           {
             paramc.c(paramBundle);
@@ -417,65 +418,65 @@ public class EditPhotoPluginLayout
       AppMethodBeat.o(75767);
       return;
     case 7: 
-      this.xDP.dGw();
-      this.xDO.reset();
+      this.xTK.dJN();
+      this.xTJ.reset();
       AppMethodBeat.o(75767);
       return;
     case 8: 
       AppMethodBeat.o(75767);
       return;
     case 9: 
-      paramc = this.xDO;
-      paramc.xAA = com.tencent.mm.api.g.cRG;
-      paramc.rko = 0;
-      paramBundle = paramc.xAy;
+      paramc = this.xTJ;
+      paramc.xQv = com.tencent.mm.api.g.cSq;
+      paramc.rss = 0;
+      paramBundle = paramc.xQu;
       if (paramBundle != null) {
-        paramBundle.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRG);
+        paramBundle.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSq);
       }
-      paramc = paramc.xAy;
+      paramc = paramc.xQu;
       if (paramc != null) {
-        paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRG, 0, null);
+        paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSq, 0, null);
       }
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      com.tencent.mm.plugin.recordvideo.d.c.avN("KEY_CLICK_MOSAIC_COUNT_INT");
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      com.tencent.mm.plugin.recordvideo.d.c.NM(8);
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      com.tencent.mm.plugin.recordvideo.d.c.axc("KEY_CLICK_MOSAIC_COUNT_INT");
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      com.tencent.mm.plugin.recordvideo.d.c.Os(8);
       AppMethodBeat.o(75767);
       return;
     case 10: 
-      paramc = this.xDO;
-      paramc.xAA = com.tencent.mm.api.g.cRG;
-      paramc.rko = 1;
-      paramBundle = paramc.xAy;
+      paramc = this.xTJ;
+      paramc.xQv = com.tencent.mm.api.g.cSq;
+      paramc.rss = 1;
+      paramBundle = paramc.xQu;
       if (paramBundle != null) {
-        paramBundle.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRG);
+        paramBundle.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSq);
       }
-      paramc = paramc.xAy;
+      paramc = paramc.xQu;
       if (paramc != null) {
-        paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRG, 1, null);
+        paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSq, 1, null);
       }
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      com.tencent.mm.plugin.recordvideo.d.c.avN("KEY_CLICK_BRUSH_COUNT_INT");
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-      com.tencent.mm.plugin.recordvideo.d.c.NM(9);
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      com.tencent.mm.plugin.recordvideo.d.c.axc("KEY_CLICK_BRUSH_COUNT_INT");
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+      com.tencent.mm.plugin.recordvideo.d.c.Os(9);
       AppMethodBeat.o(75767);
       return;
     case 11: 
-      this.xDM.reset();
+      this.xTH.reset();
       if (paramBundle != null)
       {
-        paramc = this.xDO;
+        paramc = this.xTJ;
         i = paramBundle.getInt("EDIT_PHOTO_DOODLE_PENCIL_INDEX_INT");
-        paramc.xAA = com.tencent.mm.api.g.cRD;
-        paramc.rko = i;
-        paramBundle = paramc.xAy;
+        paramc.xQv = com.tencent.mm.api.g.cSn;
+        paramc.rss = i;
+        paramBundle = paramc.xQu;
         if (paramBundle != null) {
-          paramBundle.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRD);
+          paramBundle.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSn);
         }
-        paramc = paramc.xAy;
+        paramc = paramc.xQu;
         if (paramc != null)
         {
-          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRD, i, null);
+          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSn, i, null);
           AppMethodBeat.o(75767);
           return;
         }
@@ -485,31 +486,31 @@ public class EditPhotoPluginLayout
       AppMethodBeat.o(75767);
       return;
     case 12: 
-      this.xDL.reset();
-      com.tencent.mm.plugin.recordvideo.plugin.filter.a locala = this.xDM;
-      com.tencent.mm.bu.b localb = this.xDO.xAy;
+      this.xTG.reset();
+      com.tencent.mm.plugin.recordvideo.plugin.filter.a locala = this.xTH;
+      com.tencent.mm.bt.b localb = this.xTJ.xQu;
       paramc = (d.c)localObject;
       if (localb != null) {
-        paramc = localb.ffU();
+        paramc = localb.fjK();
       }
       if (paramc != null) {
-        locala.xCO.setPreImage(paramc);
+        locala.xSJ.setPreImage(paramc);
       }
       if (paramBundle != null)
       {
-        paramc = this.xDO;
+        paramc = this.xTJ;
         i = paramBundle.getInt("EDIT_FILTER_INDEX_INT");
         float f = paramBundle.getFloat("EDIT_FILTER_COLOR_WEIGHT_FLOAT");
-        paramc.xAA = com.tencent.mm.api.g.cRJ;
-        paramc.rko = i;
-        paramBundle = paramc.xAy;
+        paramc.xQv = com.tencent.mm.api.g.cSt;
+        paramc.rss = i;
+        paramBundle = paramc.xQu;
         if (paramBundle != null) {
-          paramBundle.getSelectedFeatureListener().a(paramc.xAA);
+          paramBundle.getSelectedFeatureListener().a(paramc.xQv);
         }
-        paramBundle = paramc.xAy;
+        paramBundle = paramc.xQu;
         if (paramBundle != null)
         {
-          paramBundle.getSelectedFeatureListener().a(paramc.xAA, paramc.rko, Float.valueOf(f));
+          paramBundle.getSelectedFeatureListener().a(paramc.xQv, paramc.rss, Float.valueOf(f));
           AppMethodBeat.o(75767);
           return;
         }
@@ -519,26 +520,26 @@ public class EditPhotoPluginLayout
       AppMethodBeat.o(75767);
       return;
     case 13: 
-      paramc = this.xDO;
-      paramBundle = paramc.xAy;
+      paramc = this.xTJ;
+      paramBundle = paramc.xQu;
       if (paramBundle != null) {
-        paramBundle.getSelectedFeatureListener().a(com.tencent.mm.cache.c.XI().XJ(), -1, null);
+        paramBundle.getSelectedFeatureListener().a(com.tencent.mm.cache.c.XS().XT(), -1, null);
       }
-      paramBundle = paramc.xAy;
+      paramBundle = paramc.xQu;
       if (paramBundle != null) {
-        paramBundle.getSelectedFeatureListener().a(paramc.xAA);
+        paramBundle.getSelectedFeatureListener().a(paramc.xQv);
       }
-      paramBundle = paramc.xAy;
+      paramBundle = paramc.xQu;
       if (paramBundle != null)
       {
-        paramBundle.getSelectedFeatureListener().a(paramc.xAA, paramc.rko, null);
+        paramBundle.getSelectedFeatureListener().a(paramc.xQv, paramc.rss, null);
         AppMethodBeat.o(75767);
         return;
       }
       AppMethodBeat.o(75767);
       return;
     case 14: 
-      this.xDC.setVisibility(0);
+      this.xTx.setVisibility(0);
     case 27: 
     case 15: 
     case 16: 
@@ -560,25 +561,25 @@ public class EditPhotoPluginLayout
       label1659:
       do
       {
-        this.xDP.setVisibility(0);
+        this.xTK.setVisibility(0);
         break;
-        this.xDC.setVisibility(4);
-        this.xDP.setVisibility(4);
-        paramc = this.xDO.xAy;
+        this.xTx.setVisibility(4);
+        this.xTK.setVisibility(4);
+        paramc = this.xTJ.xQu;
         if (paramc != null)
         {
-          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRF);
+          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSp);
           AppMethodBeat.o(75767);
           return;
         }
         AppMethodBeat.o(75767);
         return;
-        this.xDC.setVisibility(4);
-        this.xDP.setVisibility(4);
-        paramc = this.xDO.xAy;
+        this.xTx.setVisibility(4);
+        this.xTK.setVisibility(4);
+        paramc = this.xTJ.xQu;
         if (paramc != null)
         {
-          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRE);
+          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSo);
           AppMethodBeat.o(75767);
           return;
         }
@@ -590,18 +591,18 @@ public class EditPhotoPluginLayout
           localObject = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
           i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
           j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-          paramc = this.xDO;
+          paramc = this.xTJ;
           paramBundle = (Editable)localObject;
           if (paramBundle == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
           d.g.b.p.h(paramBundle, "text");
           paramBundle.clearSpans();
-          localObject = paramc.xAy;
+          localObject = paramc.xQu;
           if (localObject != null) {
-            ((com.tencent.mm.bu.b)localObject).getSelectedFeatureListener().a(com.tencent.mm.api.g.cRE);
+            ((com.tencent.mm.bt.b)localObject).getSelectedFeatureListener().a(com.tencent.mm.api.g.cSo);
           }
-          paramc = paramc.xAy;
+          paramc = paramc.xQu;
           if (paramc != null)
           {
             paramc.a(paramBundle, i, j);
@@ -618,104 +619,104 @@ public class EditPhotoPluginLayout
           paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
           i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
           j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-          com.tencent.mm.plugin.recordvideo.plugin.c.a(this.xDQ, paramc, i, j);
+          com.tencent.mm.plugin.recordvideo.plugin.c.a(this.xTL, paramc, i, j);
           AppMethodBeat.o(75767);
           return;
         }
         AppMethodBeat.o(75767);
         return;
-        this.xDC.setVisibility(0);
-        this.xDP.dGw();
-        this.xDL.dGx();
-        this.xDO.dGv();
+        this.xTx.setVisibility(0);
+        this.xTK.dJN();
+        this.xTG.dJO();
+        this.xTJ.dJM();
         AppMethodBeat.o(75767);
         return;
-        paramBundle = this.xDO;
-        paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-        paramc = paramBundle.vVH;
+        paramBundle = this.xTJ;
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+        paramc = paramBundle.whL;
         if (paramc != null)
         {
-          paramc = paramc.JV();
+          paramc = paramc.Kd();
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(paramc.Ld()));
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          paramc = paramBundle.vVH;
+          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(paramc.Ll()));
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          paramc = paramBundle.whL;
           if (paramc == null) {
             break label1639;
           }
-          paramc = paramc.JV();
+          paramc = paramc.Kd();
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(paramc.Lc()));
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          paramc = paramBundle.vVH;
+          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(paramc.Lk()));
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          paramc = paramBundle.whL;
           if (paramc == null) {
             break label1644;
           }
-          paramc = paramc.JV();
+          paramc = paramc.Kd();
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_DOODLE_COUNT_INT", Integer.valueOf(paramc.Lf()));
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          paramc = paramBundle.vVH;
+          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_DOODLE_COUNT_INT", Integer.valueOf(paramc.Ln()));
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          paramc = paramBundle.whL;
           if (paramc == null) {
             break label1649;
           }
-          paramc = paramc.JV();
+          paramc = paramc.Kd();
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_DOODLE_COLOR_COUNT_INT", Integer.valueOf(paramc.Li()));
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          paramc = paramBundle.vVH;
+          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_DOODLE_COLOR_COUNT_INT", Integer.valueOf(paramc.Lq()));
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          paramc = paramBundle.whL;
           if (paramc == null) {
             break label1654;
           }
-          paramc = paramc.JV();
+          paramc = paramc.Kd();
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_MOSAIC_COUNT_INT", Integer.valueOf(paramc.Le()));
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
-          paramc = paramBundle.vVH;
+          com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ADD_MOSAIC_COUNT_INT", Integer.valueOf(paramc.Lm()));
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
+          paramc = paramBundle.whL;
           if (paramc == null) {
             break label1659;
           }
-          paramc = paramc.JV();
+          paramc = paramc.Kd();
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          if (paramc.Lh()) {
+          if (paramc.Lp()) {
             i = 1;
           }
           com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ROTATE_INT", Integer.valueOf(i));
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
           com.tencent.mm.plugin.recordvideo.d.c.u("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
-          paramc = paramBundle.vVH;
+          paramc = paramBundle.whL;
           if (paramc == null) {
             break label1664;
           }
         }
         boolean bool;
-        for (paramc = paramc.JV();; paramc = null)
+        for (paramc = paramc.Kd();; paramc = null)
         {
           if (paramc == null) {
-            d.g.b.p.gfZ();
+            d.g.b.p.gkB();
           }
-          bool = paramc.Lj();
-          paramc = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+          bool = paramc.Lr();
+          paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
           com.tencent.mm.plugin.recordvideo.d.c.u("KEY_PHOTO_IS_EDITED_BOOLEAN", Boolean.valueOf(bool));
           if (bool)
           {
-            paramc = com.tencent.mm.media.k.d.hoU;
-            com.tencent.mm.media.k.d.auJ();
+            paramc = com.tencent.mm.media.k.d.hrI;
+            com.tencent.mm.media.k.d.auY();
           }
-          paramc = com.tencent.mm.media.k.d.hoU;
-          com.tencent.mm.media.k.d.auQ();
+          paramc = com.tencent.mm.media.k.d.hrI;
+          com.tencent.mm.media.k.d.avf();
           if (paramBundle.isFinishing) {
             break label1679;
           }
@@ -745,9 +746,9 @@ public class EditPhotoPluginLayout
           return;
         }
         paramBundle.isFinishing = true;
-        long l = bt.HI();
-        ad.i("MicroMsg.EditPhotoPluginLayout", "dofinish time: " + l + ' ' + bool);
-        paramc = paramBundle.vVH;
+        long l = bu.HQ();
+        ae.i("MicroMsg.EditPhotoPluginLayout", "dofinish time: " + l + ' ' + bool);
+        paramc = paramBundle.whL;
         if (paramc != null)
         {
           paramc.a((s)new j.b(paramBundle, l, bool));
@@ -756,68 +757,68 @@ public class EditPhotoPluginLayout
         }
         AppMethodBeat.o(75767);
         return;
-        this.xDL.xAS.setVisibility(4);
-        this.xDC.setVisibility(4);
-        paramc = this.xDP;
-        paramc.xAM = k.a.xAN;
-        paramBundle = paramc.xAI;
+        this.xTG.xQN.setVisibility(4);
+        this.xTx.setVisibility(4);
+        paramc = this.xTK;
+        paramc.xQH = k.a.xQI;
+        paramBundle = paramc.xQD;
         d.g.b.p.g(paramBundle, "normalFuncLayout");
         paramBundle.setVisibility(4);
-        paramc = paramc.xAJ;
+        paramc = paramc.xQE;
         d.g.b.p.g(paramc, "cropFuncLayout");
         paramc.setVisibility(0);
-        paramc = this.xDO;
-        if (paramc.xAA != com.tencent.mm.api.g.cRH)
+        paramc = this.xTJ;
+        if (paramc.xQv != com.tencent.mm.api.g.cSr)
         {
-          paramc.xAA = com.tencent.mm.api.g.cRH;
-          paramc = paramc.xAy;
+          paramc.xQv = com.tencent.mm.api.g.cSr;
+          paramc = paramc.xQu;
           if (paramc != null)
           {
-            paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRH);
+            paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSr);
             AppMethodBeat.o(75767);
             return;
           }
         }
         AppMethodBeat.o(75767);
         return;
-        this.xDC.setVisibility(0);
-        paramc = this.xDO;
-        paramc.xAA = com.tencent.mm.api.g.cRC;
-        paramc = paramc.xAy;
+        this.xTx.setVisibility(0);
+        paramc = this.xTJ;
+        paramc.xQv = com.tencent.mm.api.g.cSm;
+        paramc = paramc.xQu;
         if (paramc != null) {
-          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRH, 2, null);
+          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSr, 2, null);
         }
-        this.xDL.dGx();
+        this.xTG.dJO();
         AppMethodBeat.o(75767);
         return;
-        paramc = this.xDO;
-        paramc.xAA = com.tencent.mm.api.g.cRH;
-        paramc = paramc.xAy;
+        paramc = this.xTJ;
+        paramc.xQv = com.tencent.mm.api.g.cSr;
+        paramc = paramc.xQu;
         if (paramc != null)
         {
-          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRH, 0, null);
+          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSr, 0, null);
           AppMethodBeat.o(75767);
           return;
         }
         AppMethodBeat.o(75767);
         return;
-        paramc = this.xDO;
-        paramc.xAA = com.tencent.mm.api.g.cRH;
-        paramc = paramc.xAy;
+        paramc = this.xTJ;
+        paramc.xQv = com.tencent.mm.api.g.cSr;
+        paramc = paramc.xQu;
         if (paramc != null)
         {
-          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cRH, 3, null);
+          paramc.getSelectedFeatureListener().a(com.tencent.mm.api.g.cSr, 3, null);
           AppMethodBeat.o(75767);
           return;
         }
         AppMethodBeat.o(75767);
         return;
-      } while (this.xDP.sQD.getVisibility() == 4);
+      } while (this.xTK.tbO.getVisibility() == 4);
       label1412:
       label1452:
       label1492:
-      if (this.xDP.sQD.getVisibility() == 0) {
-        this.xDP.setVisibility(4);
+      if (this.xTK.tbO.getVisibility() == 0) {
+        this.xTK.setVisibility(4);
       }
       label1664:
       label1669:
@@ -825,20 +826,20 @@ public class EditPhotoPluginLayout
       AppMethodBeat.o(75767);
       return;
     }
-    this.xDP.setVisibility(4);
+    this.xTK.setVisibility(4);
     AppMethodBeat.o(75767);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     AppMethodBeat.i(75768);
-    if (!super.aoB())
+    if (!super.aoQ())
     {
-      Object localObject = com.tencent.mm.media.k.d.hoU;
-      com.tencent.mm.media.k.d.auN();
-      localObject = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+      Object localObject = com.tencent.mm.media.k.d.hrI;
+      com.tencent.mm.media.k.d.avc();
+      localObject = com.tencent.mm.plugin.recordvideo.d.c.xWV;
       com.tencent.mm.plugin.recordvideo.d.c.u("KEY_AFTER_EDIT_INT", Integer.valueOf(0));
-      localObject = this.sNH;
+      localObject = this.sYS;
       if (localObject != null) {
         a.a.a((com.tencent.mm.plugin.recordvideo.activity.a)localObject);
       }
@@ -849,27 +850,27 @@ public class EditPhotoPluginLayout
   
   protected final com.tencent.mm.media.widget.camerarecordview.b.b getCaptureInfo()
   {
-    return this.xAw;
+    return this.xQs;
   }
   
   protected final RecordConfigProvider getConfigProvider()
   {
-    return this.sNI;
+    return this.sYT;
   }
   
   protected final j getEditPhotoWrapper()
   {
-    return this.xDO;
+    return this.xTJ;
   }
   
   protected final void setCaptureInfo(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
-    this.xAw = paramb;
+    this.xQs = paramb;
   }
   
   protected final void setConfigProvider(RecordConfigProvider paramRecordConfigProvider)
   {
-    this.sNI = paramRecordConfigProvider;
+    this.sYT = paramRecordConfigProvider;
   }
 }
 

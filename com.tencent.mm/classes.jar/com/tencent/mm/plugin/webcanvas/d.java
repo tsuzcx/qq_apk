@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.webcanvas;
 
 public abstract interface d
 {
-  public abstract void a(c paramc);
+  public abstract void onDestroy();
   
-  public abstract void a(e parame);
+  public abstract void onPause();
   
-  public abstract void b(e parame);
+  public abstract void onResume();
 }
 
 

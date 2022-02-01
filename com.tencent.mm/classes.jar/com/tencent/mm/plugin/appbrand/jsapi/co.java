@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/WxaComponentAdapter;", "", "()V", "asPage", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "asService", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/WxaComponentAdapter;", "", "()V", "asPage", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "asService", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "luggage-wxa-app_release"})
 public final class co
 {
-  public static final co kvj;
+  public static final co kyy;
   
   static
   {
     AppMethodBeat.i(135576);
-    kvj = new co();
+    kyy = new co();
     AppMethodBeat.o(135576);
   }
   
-  public static final aa i(c paramc)
+  public static final z i(c paramc)
   {
     AppMethodBeat.i(135574);
     if (paramc == null)
@@ -25,15 +25,15 @@ public final class co
       AppMethodBeat.o(135574);
       return null;
     }
-    if ((paramc instanceof aa))
+    if ((paramc instanceof z))
     {
-      paramc = (aa)paramc;
+      paramc = (z)paramc;
       AppMethodBeat.o(135574);
       return paramc;
     }
-    if ((paramc instanceof q))
+    if ((paramc instanceof r))
     {
-      paramc = ((q)paramc).getCurrentPageView();
+      paramc = ((r)paramc).getCurrentPageView();
       AppMethodBeat.o(135574);
       return paramc;
     }
@@ -41,7 +41,7 @@ public final class co
     return null;
   }
   
-  public static final q j(c paramc)
+  public static final r j(c paramc)
   {
     AppMethodBeat.i(135575);
     if (paramc == null)
@@ -49,15 +49,15 @@ public final class co
       AppMethodBeat.o(135575);
       return null;
     }
-    if ((paramc instanceof aa))
+    if ((paramc instanceof z))
     {
-      paramc = ((aa)paramc).Ew();
+      paramc = ((z)paramc).Ey();
       AppMethodBeat.o(135575);
       return paramc;
     }
-    if ((paramc instanceof q))
+    if ((paramc instanceof r))
     {
-      paramc = (q)paramc;
+      paramc = (r)paramc;
       AppMethodBeat.o(135575);
       return paramc;
     }

@@ -8,23 +8,23 @@ import d.l;
 import d.n.n;
 import java.util.UUID;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "handOffType", "", "from", "", "to", "key", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "getFrom", "()Ljava/lang/String;", "setFrom", "(Ljava/lang/String;)V", "getHandOffType", "()I", "setHandOffType", "(I)V", "id", "getId", "setId", "getKey", "setKey", "getTo", "setTo", "body", "build", "copy", "getDataType", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "handOffType", "", "from", "", "to", "key", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "getFrom", "()Ljava/lang/String;", "setFrom", "(Ljava/lang/String;)V", "getHandOffType", "()I", "setHandOffType", "(I)V", "id", "getId", "setId", "getKey", "setKey", "getTo", "setTo", "body", "build", "copy", "getDataType", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
 public abstract class HandOff
   implements Parcelable
 {
-  public static final a uDK = new a((byte)0);
+  public static final a uPp = new a((byte)0);
   public long createTime;
-  String dET;
-  String hEw;
+  String dFY;
+  String hHo;
   public String id;
   public String key;
-  public int uDJ;
+  public int uPo;
   
   public HandOff(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.uDJ = paramInt;
-    this.dET = paramString1;
-    this.hEw = paramString2;
+    this.uPo = paramInt;
+    this.dFY = paramString1;
+    this.hHo = paramString2;
     this.key = paramString3;
     this.createTime = System.currentTimeMillis();
     paramString1 = UUID.randomUUID().toString();
@@ -37,23 +37,23 @@ public abstract class HandOff
     this(i, str1, str2, paramParcel);
   }
   
-  public static final String Ik(int paramInt)
+  public static final String II(int paramInt)
   {
     return a.go(1, paramInt);
   }
   
-  protected abstract String dbM();
+  protected abstract String deD();
   
-  public abstract HandOff dbN();
+  public abstract HandOff deE();
   
-  public final String dbO()
+  public final String deF()
   {
-    return n.bdc("\n    <handoff type=\"" + getDataType() + "\" id=\"" + this.id + "\" createtime=\"" + this.createTime + "\" from=\"" + this.dET + "\" to=\"" + this.hEw + "\">\n        <handofftype>" + a.dl(Integer.valueOf(this.uDJ)) + "</handofftype>\n        " + dbM() + "\n    </handoff>\n    ");
+    return n.beG("\n    <handoff type=\"" + getDataType() + "\" id=\"" + this.id + "\" createtime=\"" + this.createTime + "\" from=\"" + this.dFY + "\" to=\"" + this.hHo + "\">\n        <handofftype>" + a.dm(Integer.valueOf(this.uPo)) + "</handofftype>\n        " + deD() + "\n    </handoff>\n    ");
   }
   
   public abstract int getDataType();
   
-  public void j(HandOff paramHandOff)
+  public void k(HandOff paramHandOff)
   {
     p.h(paramHandOff, "newHandOff");
   }
@@ -73,13 +73,13 @@ public abstract class HandOff
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     p.h(paramParcel, "dest");
-    paramParcel.writeInt(this.uDJ);
-    paramParcel.writeString(this.dET);
-    paramParcel.writeString(this.hEw);
+    paramParcel.writeInt(this.uPo);
+    paramParcel.writeString(this.dFY);
+    paramParcel.writeString(this.hHo);
     paramParcel.writeString(this.key);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOff$Companion;", "", "()V", "generateKey", "", "dataType", "", "handOffType", "api-handoff_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/handoff/model/HandOff$Companion;", "", "()V", "generateKey", "", "dataType", "", "handOffType", "api-handoff_release"})
   public static final class a
   {
     public static String go(int paramInt1, int paramInt2)

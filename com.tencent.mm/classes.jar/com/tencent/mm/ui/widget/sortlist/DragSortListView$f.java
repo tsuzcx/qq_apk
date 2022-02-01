@@ -8,24 +8,24 @@ import java.io.IOException;
 
 final class DragSortListView$f
 {
-  File Iej;
-  int Lfa;
-  int Lfb;
-  boolean Lfc;
+  File Iyu;
+  int LBC;
+  int LBD;
+  boolean LBE;
   StringBuilder mBuilder;
   
   DragSortListView$f(DragSortListView paramDragSortListView)
   {
     AppMethodBeat.i(159774);
     this.mBuilder = new StringBuilder();
-    this.Lfa = 0;
-    this.Lfb = 0;
-    this.Lfc = false;
-    this.Iej = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
-    if (!this.Iej.exists()) {
+    this.LBC = 0;
+    this.LBD = 0;
+    this.LBE = false;
+    this.Iyu = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
+    if (!this.Iyu.exists()) {
       try
       {
-        if (!this.Iej.createNewFile()) {
+        if (!this.Iyu.createNewFile()) {
           ap.e("mobeta", "creat file fail!! file already exist", new Object[0]);
         }
         ap.d("mobeta", "file created", new Object[0]);
@@ -48,13 +48,13 @@ final class DragSortListView$f
     //   0: ldc 97
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 45	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:Lfc	Z
+    //   6: getfield 45	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:LBE	Z
     //   9: ifne +9 -> 18
     //   12: ldc 97
     //   14: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   17: return
     //   18: aload_0
-    //   19: getfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:Lfb	I
+    //   19: getfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:LBD	I
     //   22: ifne +190 -> 212
     //   25: iconst_0
     //   26: istore_1
@@ -65,7 +65,7 @@ final class DragSortListView$f
     //   35: new 103	java/io/FileOutputStream
     //   38: dup
     //   39: aload_0
-    //   40: getfield 60	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:Iej	Ljava/io/File;
+    //   40: getfield 60	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:Iyu	Ljava/io/File;
     //   43: iload_1
     //   44: invokespecial 106	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   47: ldc 108
@@ -89,10 +89,10 @@ final class DragSortListView$f
     //   84: invokevirtual 133	java/io/Writer:flush	()V
     //   87: aload_0
     //   88: aload_0
-    //   89: getfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:Lfb	I
+    //   89: getfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:LBD	I
     //   92: iconst_1
     //   93: iadd
-    //   94: putfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:Lfb	I
+    //   94: putfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:LBD	I
     //   97: aload_2
     //   98: invokevirtual 136	java/io/Writer:close	()V
     //   101: ldc 97
@@ -193,11 +193,11 @@ final class DragSortListView$f
   public final void stopTracking()
   {
     AppMethodBeat.i(159776);
-    if (this.Lfc)
+    if (this.LBE)
     {
       this.mBuilder.append("</DSLVStates>\n");
       flush();
-      this.Lfc = false;
+      this.LBE = false;
     }
     AppMethodBeat.o(159776);
   }

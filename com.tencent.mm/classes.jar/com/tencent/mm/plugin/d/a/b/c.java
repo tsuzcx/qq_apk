@@ -8,10 +8,10 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bp;
 import java.util.ArrayList;
 import junit.framework.Assert;
 
@@ -19,29 +19,29 @@ import junit.framework.Assert;
 public final class c
   implements BluetoothAdapter.LeScanCallback
 {
-  private static c nQm;
+  private static c nVS;
   private Context mContext;
-  private ap mHandler;
-  private BluetoothAdapter nPt;
-  private ArrayList<a> nQn;
-  private boolean nQo;
+  private aq mHandler;
+  private BluetoothAdapter nUZ;
+  private ArrayList<a> nVT;
+  private boolean nVU;
   
   private c(Context paramContext)
   {
     AppMethodBeat.i(22493);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.exdevice.BluetoothLEScaner", "no context for scaner");
+      ae.e("MicroMsg.exdevice.BluetoothLEScaner", "no context for scaner");
       AppMethodBeat.o(22493);
       return;
     }
     this.mContext = paramContext;
-    this.nQn = new ArrayList();
-    this.nQo = false;
-    this.nPt = null;
+    this.nVT = new ArrayList();
+    this.nVU = false;
+    this.nUZ = null;
     this.mHandler = null;
-    this.nPt = ((BluetoothManager)this.mContext.getSystemService("bluetooth")).getAdapter();
-    this.mHandler = new ap("BluetoothLEScanerThread");
+    this.nUZ = ((BluetoothManager)this.mContext.getSystemService("bluetooth")).getAdapter();
+    this.mHandler = new aq("BluetoothLEScanerThread");
     AppMethodBeat.o(22493);
   }
   
@@ -50,21 +50,21 @@ public final class c
     AppMethodBeat.i(22495);
     if (parama == null)
     {
-      ad.e("MicroMsg.exdevice.BluetoothLEScaner", "callback is null");
+      ae.e("MicroMsg.exdevice.BluetoothLEScaner", "callback is null");
       AppMethodBeat.o(22495);
       return false;
     }
     int i = 0;
     label53:
     boolean bool;
-    if (i < this.nQn.size()) {
-      if ((a)this.nQn.get(i) == parama)
+    if (i < this.nVT.size()) {
+      if ((a)this.nVT.get(i) == parama)
       {
         if (i >= 0) {
           break label100;
         }
-        bool = this.nQn.add(parama);
-        ad.d("MicroMsg.exdevice.BluetoothLEScaner", "add callback ".concat(String.valueOf(bool)));
+        bool = this.nVT.add(parama);
+        ae.d("MicroMsg.exdevice.BluetoothLEScaner", "add callback ".concat(String.valueOf(bool)));
       }
     }
     for (;;)
@@ -77,21 +77,21 @@ public final class c
       break label53;
       label100:
       bool = true;
-      ad.w("MicroMsg.exdevice.BluetoothLEScaner", "callback has in queue. pass");
+      ae.w("MicroMsg.exdevice.BluetoothLEScaner", "callback has in queue. pass");
     }
   }
   
-  public static c bMI()
+  public static c bNG()
   {
     AppMethodBeat.i(22492);
-    if (nQm != null)
+    if (nVS != null)
     {
-      localc = nQm;
+      localc = nVS;
       AppMethodBeat.o(22492);
       return localc;
     }
-    c localc = new c(aj.getContext());
-    nQm = localc;
+    c localc = new c(ak.getContext());
+    nVS = localc;
     AppMethodBeat.o(22492);
     return localc;
   }
@@ -99,7 +99,7 @@ public final class c
   public final boolean a(final boolean paramBoolean, final a parama)
   {
     AppMethodBeat.i(22494);
-    parama = (Boolean)new bo() {}.b(this.mHandler);
+    parama = (Boolean)new bp() {}.b(this.mHandler);
     if (parama != null) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
@@ -113,8 +113,8 @@ public final class c
   public final void onLeScan(final BluetoothDevice paramBluetoothDevice, final int paramInt, final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(22496);
-    ad.d("MicroMsg.exdevice.BluetoothLEScaner", "onLeScan. device addr = %s, name = %s, data = %s", new Object[] { paramBluetoothDevice.getAddress(), paramBluetoothDevice.getName(), b.bg(paramArrayOfByte) });
-    ad.d("MicroMsg.exdevice.BluetoothLEScaner", "callback size = %d", new Object[] { Integer.valueOf(this.nQn.size()) });
+    ae.d("MicroMsg.exdevice.BluetoothLEScaner", "onLeScan. device addr = %s, name = %s, data = %s", new Object[] { paramBluetoothDevice.getAddress(), paramBluetoothDevice.getName(), b.bf(paramArrayOfByte) });
+    ae.d("MicroMsg.exdevice.BluetoothLEScaner", "callback size = %d", new Object[] { Integer.valueOf(this.nVT.size()) });
     this.mHandler.post(new Runnable()
     {
       public final void run()
@@ -136,7 +136,7 @@ public final class c
   {
     public abstract void a(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte);
     
-    public abstract void bMH();
+    public abstract void bNF();
   }
 }
 

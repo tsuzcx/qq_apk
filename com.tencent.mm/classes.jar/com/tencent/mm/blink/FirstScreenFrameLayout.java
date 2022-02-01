@@ -6,12 +6,12 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class FirstScreenFrameLayout
   extends FrameLayout
 {
-  public a fDG;
+  public a fFK;
   
   public FirstScreenFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,15 +27,15 @@ public class FirstScreenFrameLayout
   {
     AppMethodBeat.i(131834);
     super.dispatchDraw(paramCanvas);
-    if (this.fDG != null) {
-      new ap(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
+    if (this.fFK != null) {
+      new aq(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(131833);
           if (FirstScreenFrameLayout.a(FirstScreenFrameLayout.this) != null)
           {
-            FirstScreenFrameLayout.a(FirstScreenFrameLayout.this).Ws();
+            FirstScreenFrameLayout.a(FirstScreenFrameLayout.this).WA();
             FirstScreenFrameLayout.b(FirstScreenFrameLayout.this);
           }
           AppMethodBeat.o(131833);
@@ -54,12 +54,12 @@ public class FirstScreenFrameLayout
   
   public static abstract interface a
   {
-    public abstract void Ws();
+    public abstract void WA();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.blink.FirstScreenFrameLayout
  * JD-Core Version:    0.7.0.1
  */

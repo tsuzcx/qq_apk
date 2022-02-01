@@ -3,15 +3,17 @@ package com.tencent.mm.chatroom.ui;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.chatroom.d.x;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ac;
 
 final class b$2
   implements f
@@ -21,9 +23,9 @@ final class b$2
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(12766);
-    g.ajB().gAO.b(482, this);
-    if (!this.fRu) {
-      this.fNl.cancel();
+    g.ajQ().gDv.b(482, this);
+    if (!this.fTA) {
+      this.fPt.cancel();
     }
     boolean bool2 = false;
     this.val$activity.getString(2131762726);
@@ -34,18 +36,18 @@ final class b$2
       bool1 = bool2;
       if (paramInt2 == 0)
       {
-        paramn = ((c)g.ab(c.class)).azz().AN(localx.chatroomName);
+        paramn = ((c)g.ab(c.class)).azP().Bx(localx.chatroomName);
         paramString = paramn;
         if (paramn == null) {
-          paramString = new ab();
+          paramString = new ac();
         }
-        paramString.lV(u.aAm(), localx.fLg);
-        com.tencent.mm.model.q.a(paramString);
+        paramString.mc(v.aAC(), localx.fNk);
+        r.a(paramString);
         bool1 = true;
       }
     }
-    if (this.fRv != null) {
-      this.fRv.h(bool1, localx.fLh);
+    if (this.fTB != null) {
+      this.fTB.h(bool1, localx.fNl);
     }
     AppMethodBeat.o(12766);
   }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public class DisasterUI
@@ -34,7 +34,7 @@ public class DisasterUI
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_disaster_content");
     final String str = getIntent().getStringExtra("key_disaster_url");
-    ad.i("MicroMsg.DisasterUI", "summerdiz onCreate :%d, content[%s], url[%s]", new Object[] { Integer.valueOf(hashCode()), paramBundle, str });
+    ae.i("MicroMsg.DisasterUI", "summerdiz onCreate :%d, content[%s], url[%s]", new Object[] { Integer.valueOf(hashCode()), paramBundle, str });
     ((TextView)findViewById(2131302969)).setText(paramBundle);
     findViewById(2131302968).setOnClickListener(new View.OnClickListener()
     {
@@ -43,15 +43,15 @@ public class DisasterUI
         AppMethodBeat.i(127906);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/DisasterUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-        ad.i("MicroMsg.DisasterUI", "summerdiz jump link");
-        g.yhR.f(13939, new Object[] { Integer.valueOf(1) });
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/DisasterUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        ae.i("MicroMsg.DisasterUI", "summerdiz jump link");
+        g.yxI.f(13939, new Object[] { Integer.valueOf(1) });
         localObject = new Intent("android.intent.action.VIEW");
         ((Intent)localObject).setData(Uri.parse(str));
         paramAnonymousView = DisasterUI.this;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/account/ui/DisasterUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/account/ui/DisasterUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/ui/DisasterUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/DisasterUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(127906);
@@ -63,8 +63,8 @@ public class DisasterUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(127907);
-        g.yhR.f(13939, new Object[] { Integer.valueOf(3) });
-        ad.i("MicroMsg.DisasterUI", "summerdiz back");
+        g.yxI.f(13939, new Object[] { Integer.valueOf(3) });
+        ae.i("MicroMsg.DisasterUI", "summerdiz back");
         DisasterUI.this.finish();
         AppMethodBeat.o(127907);
         return true;

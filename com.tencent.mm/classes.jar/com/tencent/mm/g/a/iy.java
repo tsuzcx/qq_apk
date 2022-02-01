@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iy
   extends b
 {
-  public a dvF;
+  public a dwJ;
   
   public iy()
   {
@@ -15,16 +15,16 @@ public final class iy
   
   private iy(byte paramByte)
   {
-    AppMethodBeat.i(110506);
-    this.dvF = new a();
-    this.IbR = false;
+    AppMethodBeat.i(140987);
+    this.dwJ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(110506);
+    AppMethodBeat.o(140987);
   }
   
   public static final class a
   {
-    public boolean dvG = false;
+    public int dpk = 0;
   }
 }
 

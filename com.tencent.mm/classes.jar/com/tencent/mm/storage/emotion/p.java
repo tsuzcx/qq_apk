@@ -15,36 +15,36 @@ public final class p
   {
     AppMethodBeat.i(105121);
     c.a locala = new c.a();
-    locala.IhA = new Field[7];
+    locala.IBL = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "prodcutID";
-    locala.IhC.put("prodcutID", "TEXT PRIMARY KEY ");
+    locala.IBN.put("prodcutID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" prodcutID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "prodcutID";
+    locala.IBM = "prodcutID";
     locala.columns[1] = "totalCount";
-    locala.IhC.put("totalCount", "INTEGER");
+    locala.IBN.put("totalCount", "INTEGER");
     localStringBuilder.append(" totalCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "continuCount";
-    locala.IhC.put("continuCount", "INTEGER");
+    locala.IBN.put("continuCount", "INTEGER");
     localStringBuilder.append(" continuCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "flag";
-    locala.IhC.put("flag", "INTEGER");
+    locala.IBN.put("flag", "INTEGER");
     localStringBuilder.append(" flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "modifyTime";
-    locala.IhC.put("modifyTime", "LONG");
+    locala.IBN.put("modifyTime", "LONG");
     localStringBuilder.append(" modifyTime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "showTipsTime";
-    locala.IhC.put("showTipsTime", "LONG");
+    locala.IBN.put("showTipsTime", "LONG");
     localStringBuilder.append(" showTipsTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "setFlagTime";
-    locala.IhC.put("setFlagTime", "LONG");
+    locala.IBN.put("setFlagTime", "LONG");
     localStringBuilder.append(" setFlagTime LONG");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -59,7 +59,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.p
  * JD-Core Version:    0.7.0.1
  */

@@ -4,90 +4,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bzu
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public int OpCode;
-  public String ProductID;
+  public LinkedList<String> HnG;
+  public String mime;
+  
+  public bzu()
+  {
+    AppMethodBeat.i(116473);
+    this.HnG = new LinkedList();
+    AppMethodBeat.o(116473);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104822);
+    AppMethodBeat.i(116474);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.mime != null) {
+        paramVarArgs.d(1, this.mime);
       }
-      if (this.ProductID != null) {
-        paramVarArgs.d(2, this.ProductID);
-      }
-      paramVarArgs.aS(3, this.OpCode);
-      AppMethodBeat.o(104822);
+      paramVarArgs.e(2, 1, this.HnG);
+      AppMethodBeat.o(116474);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label414;
+      if (this.mime == null) {
+        break label274;
       }
     }
-    label414:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.mime) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.ProductID != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ProductID);
-      }
-      paramInt = f.a.a.b.b.a.bz(3, this.OpCode);
-      AppMethodBeat.o(104822);
-      return i + paramInt;
+      int i = f.a.a.a.c(2, 1, this.HnG);
+      AppMethodBeat.o(116474);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.HnG.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(104822);
+        AppMethodBeat.o(116474);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         bzu localbzu = (bzu)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(104822);
+          AppMethodBeat.o(116474);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbzu.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(104822);
-          return 0;
-        case 2: 
-          localbzu.ProductID = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(104822);
+          localbzu.mime = locala.OmT.readString();
+          AppMethodBeat.o(116474);
           return 0;
         }
-        localbzu.OpCode = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(104822);
+        localbzu.HnG.add(locala.OmT.readString());
+        AppMethodBeat.o(116474);
         return 0;
       }
-      AppMethodBeat.o(104822);
+      AppMethodBeat.o(116474);
       return -1;
     }
   }

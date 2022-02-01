@@ -65,7 +65,7 @@ public class EncoderWriter
   
   public EncoderWriter(String paramString)
   {
-    AppMethodBeat.i(218189);
+    AppMethodBeat.i(214829);
     this.hasVideoTrack = false;
     this.hasAudioTrack = false;
     this.enOfVideoInputStream = false;
@@ -85,16 +85,16 @@ public class EncoderWriter
     this.audioEncoderStarted = false;
     this.released = false;
     this.muxer = MediaMuxerFactory.createMediaMuxer(paramString, 0);
-    AppMethodBeat.o(218189);
+    AppMethodBeat.o(214829);
   }
   
   private int dequeueInputBuffer(MediaCodec paramMediaCodec)
   {
-    AppMethodBeat.i(218210);
+    AppMethodBeat.i(214850);
     try
     {
       int i = paramMediaCodec.dequeueInputBuffer(1000L);
-      AppMethodBeat.o(218210);
+      AppMethodBeat.o(214850);
       return i;
     }
     catch (Exception localException)
@@ -113,7 +113,7 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(218210);
+      AppMethodBeat.o(214850);
       throw localException;
     }
     catch (Error localError)
@@ -125,11 +125,11 @@ public class EncoderWriter
   
   private int dequeueOutputBuffer(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(218209);
+    AppMethodBeat.i(214849);
     try
     {
       int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 1000L);
-      AppMethodBeat.o(218209);
+      AppMethodBeat.o(214849);
       return i;
     }
     catch (Exception localException)
@@ -148,14 +148,14 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(218209);
+      AppMethodBeat.o(214849);
       throw localException;
     }
   }
   
   private void drainEncoder(boolean paramBoolean)
   {
-    AppMethodBeat.i(218207);
+    AppMethodBeat.i(214847);
     int i = 0;
     int j = 0;
     boolean bool2 = false;
@@ -272,7 +272,7 @@ public class EncoderWriter
             }
             finally
             {
-              AppMethodBeat.o(218207);
+              AppMethodBeat.o(214847);
             }
           }
           signalEndOfVideoStream();
@@ -286,7 +286,7 @@ public class EncoderWriter
           break label145;
           bool1 = false;
           break label205;
-          AppMethodBeat.o(218207);
+          AppMethodBeat.o(214847);
           return;
           bool4 = bool3;
           i = j;
@@ -298,57 +298,57 @@ public class EncoderWriter
   
   private void fixAudioFormat(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218197);
+    AppMethodBeat.i(214837);
     fixStringKey(paramMediaFormat, "mime", "audio/mp4a-latm");
     fixIntegerKey(paramMediaFormat, "sample-rate", 44100);
     fixIntegerKey(paramMediaFormat, "channel-count", 1);
     fixIntegerKey(paramMediaFormat, "bitrate", 128000);
     fixIntegerKey(paramMediaFormat, "aac-profile", 2);
     Logger.d("EncoderWriter", "fixAudioFormat() called with: format = [" + paramMediaFormat + "]");
-    AppMethodBeat.o(218197);
+    AppMethodBeat.o(214837);
   }
   
   private void fixIntegerKey(MediaFormat paramMediaFormat, String paramString, int paramInt)
   {
-    AppMethodBeat.i(218198);
+    AppMethodBeat.i(214838);
     if ((!paramMediaFormat.containsKey(paramString)) || (paramMediaFormat.getInteger(paramString) <= 0))
     {
       Logger.w("EncoderWriter", "fixIntegerKey: 缺少关键配置：" + paramString + ", 使用默认值：" + paramInt);
       paramMediaFormat.setInteger(paramString, paramInt);
     }
-    AppMethodBeat.o(218198);
+    AppMethodBeat.o(214838);
   }
   
   private void fixStringKey(MediaFormat paramMediaFormat, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218199);
+    AppMethodBeat.i(214839);
     if ((!paramMediaFormat.containsKey(paramString1)) || (TextUtils.isEmpty(paramMediaFormat.getString(paramString1))))
     {
       Logger.w("EncoderWriter", "fixStringKey: 缺少关键配置：" + paramString1 + ", 使用默认值：" + paramString2);
       paramMediaFormat.setString(paramString1, paramString2);
     }
-    AppMethodBeat.o(218199);
+    AppMethodBeat.o(214839);
   }
   
   private void fixVideoFormat(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218196);
+    AppMethodBeat.i(214836);
     paramMediaFormat.setInteger("color-format", 2130708361);
     fixStringKey(paramMediaFormat, "mime", "video/avc");
     fixIntegerKey(paramMediaFormat, "bitrate", 8000000);
     fixIntegerKey(paramMediaFormat, "frame-rate", 30);
     fixIntegerKey(paramMediaFormat, "i-frame-interval", 1);
     Logger.d("EncoderWriter", "fixVideoFormat() called with: format = [" + paramMediaFormat + "]");
-    AppMethodBeat.o(218196);
+    AppMethodBeat.o(214836);
   }
   
   private ByteBuffer getInputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(218211);
+    AppMethodBeat.i(214851);
     try
     {
       ByteBuffer localByteBuffer = DecoderUtils.getInputBuffer(paramMediaCodec, paramInt);
-      AppMethodBeat.o(218211);
+      AppMethodBeat.o(214851);
       return localByteBuffer;
     }
     catch (Exception localException)
@@ -367,7 +367,7 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(218211);
+      AppMethodBeat.o(214851);
       throw localException;
     }
     catch (Error localError)
@@ -379,11 +379,11 @@ public class EncoderWriter
   
   private ByteBuffer getOutputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(218212);
+    AppMethodBeat.i(214852);
     try
     {
       ByteBuffer localByteBuffer = DecoderUtils.getOutputBuffer(paramMediaCodec, paramInt);
-      AppMethodBeat.o(218212);
+      AppMethodBeat.o(214852);
       return localByteBuffer;
     }
     catch (Exception localException)
@@ -402,7 +402,7 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(218212);
+      AppMethodBeat.o(214852);
       throw localException;
     }
     catch (Error localError)
@@ -414,7 +414,7 @@ public class EncoderWriter
   
   private void prepareAudioEncoder(ExportConfig paramExportConfig)
   {
-    AppMethodBeat.i(218195);
+    AppMethodBeat.i(214835);
     Logger.d("EncoderWriter", "AssetWriter prepareAudioEncoder ".concat(String.valueOf(this)));
     MediaFormat localMediaFormat = paramExportConfig.getAudioFormat();
     fixAudioFormat(localMediaFormat);
@@ -432,20 +432,20 @@ public class EncoderWriter
       Logger.i("EncoderWriter", "prepareAudioEncoder: format = ".concat(String.valueOf(localMediaFormat)));
       this.audioEncoder = MediaCodec.createEncoderByType("audio/mp4a-latm");
       this.audioEncoder.configure(localMediaFormat, null, null, 1);
-      AppMethodBeat.o(218195);
+      AppMethodBeat.o(214835);
       return;
     }
     catch (Exception paramExportConfig)
     {
       paramExportConfig = new ExportRuntimeException(new ExportErrorStatus(-104, paramExportConfig, localMediaFormat.toString()));
-      AppMethodBeat.o(218195);
+      AppMethodBeat.o(214835);
       throw paramExportConfig;
     }
   }
   
   private void prepareVideoEncoder(ExportConfig paramExportConfig)
   {
-    AppMethodBeat.i(218194);
+    AppMethodBeat.i(214834);
     CGSize localCGSize = CodecHelper.correctSupportSize(paramExportConfig.getOutputSize(), "video/avc");
     this.outHeight = ((int)localCGSize.height);
     this.outWidth = ((int)localCGSize.width);
@@ -456,7 +456,7 @@ public class EncoderWriter
       Logger.i("EncoderWriter", "prepareVideoEncoder: format = ".concat(String.valueOf(paramExportConfig)));
       this.videoEncoder = MediaCodec.createEncoderByType("video/avc");
       this.videoEncoder.configure(paramExportConfig, null, null, 1);
-      AppMethodBeat.o(218194);
+      AppMethodBeat.o(214834);
       return;
     }
     catch (Exception localException1)
@@ -468,14 +468,14 @@ public class EncoderWriter
       {
         this.videoEncoder = MediaCodec.createEncoderByType("video/avc");
         this.videoEncoder.configure(paramExportConfig, null, null, 1);
-        AppMethodBeat.o(218194);
+        AppMethodBeat.o(214834);
         return;
       }
       catch (Exception localException2)
       {
         Logger.e("EncoderWriter", "prepareVideoEncoder: retry 失败 format = ".concat(String.valueOf(paramExportConfig)), localException2);
         paramExportConfig = new ExportRuntimeException(new ExportErrorStatus(-103, localException2, paramExportConfig.toString()));
-        AppMethodBeat.o(218194);
+        AppMethodBeat.o(214834);
         throw paramExportConfig;
       }
     }
@@ -483,11 +483,11 @@ public class EncoderWriter
   
   private void queueInputBuffer(MediaCodec paramMediaCodec, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    AppMethodBeat.i(218214);
+    AppMethodBeat.i(214854);
     try
     {
       paramMediaCodec.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
-      AppMethodBeat.o(218214);
+      AppMethodBeat.o(214854);
       return;
     }
     catch (Exception localException)
@@ -504,7 +504,7 @@ public class EncoderWriter
           queueInputBuffer(paramMediaCodec, paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
         }
       }
-      AppMethodBeat.o(218214);
+      AppMethodBeat.o(214854);
       throw localException;
     }
     catch (Error localError)
@@ -679,11 +679,11 @@ public class EncoderWriter
   
   private void releaseOutputBuffer(MediaCodec paramMediaCodec, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(218213);
+    AppMethodBeat.i(214853);
     try
     {
       paramMediaCodec.releaseOutputBuffer(paramInt, paramBoolean);
-      AppMethodBeat.o(218213);
+      AppMethodBeat.o(214853);
       return;
     }
     catch (Exception localException)
@@ -700,7 +700,7 @@ public class EncoderWriter
           releaseOutputBuffer(paramMediaCodec, paramInt, paramBoolean);
         }
       }
-      AppMethodBeat.o(218213);
+      AppMethodBeat.o(214853);
       throw localException;
     }
     catch (Error localError)
@@ -712,13 +712,13 @@ public class EncoderWriter
   
   private void signalEndOfAudioStream()
   {
-    AppMethodBeat.i(218204);
+    AppMethodBeat.i(214844);
     try
     {
       boolean bool = this.enOfAudioInputStream;
       if (bool)
       {
-        AppMethodBeat.o(218204);
+        AppMethodBeat.o(214844);
         return;
       }
       Logger.d("EncoderWriter", "signalEndOfAudioStream: ");
@@ -728,36 +728,36 @@ public class EncoderWriter
         queueInputBuffer(this.audioEncoder, i, 0, 0, 0L, 4);
         this.enOfAudioInputStream = true;
       }
-      AppMethodBeat.o(218204);
+      AppMethodBeat.o(214844);
       return;
     }
     catch (Throwable localThrowable)
     {
       Logger.e("EncoderWriter", "signalEndOfAudioStream failed", localThrowable);
-      AppMethodBeat.o(218204);
+      AppMethodBeat.o(214844);
     }
   }
   
   private void signalEndOfVideoStream()
   {
-    AppMethodBeat.i(218202);
+    AppMethodBeat.i(214842);
     Logger.d("EncoderWriter", "signalEndOfVideoStream: ");
     if ((this._inputSurface == null) || (this.enOfVideoInputStream))
     {
-      AppMethodBeat.o(218202);
+      AppMethodBeat.o(214842);
       return;
     }
     try
     {
       this.videoEncoder.signalEndOfInputStream();
       this.enOfVideoInputStream = true;
-      AppMethodBeat.o(218202);
+      AppMethodBeat.o(214842);
       return;
     }
     catch (Throwable localThrowable)
     {
       Logger.e("EncoderWriter", "signalEndOfVideoStream failed", localThrowable);
-      AppMethodBeat.o(218202);
+      AppMethodBeat.o(214842);
     }
   }
   
@@ -773,23 +773,23 @@ public class EncoderWriter
   
   private void waitTime(long paramLong)
   {
-    AppMethodBeat.i(218215);
+    AppMethodBeat.i(214855);
     try
     {
       wait(paramLong);
-      AppMethodBeat.o(218215);
+      AppMethodBeat.o(214855);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(218215);
+      AppMethodBeat.o(214855);
     }
   }
   
   private boolean writeAudioFrame(boolean paramBoolean)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(218216);
+    AppMethodBeat.i(214856);
     for (;;)
     {
       int i;
@@ -820,7 +820,7 @@ public class EncoderWriter
       finally
       {
         this.audioEncoderLock.unlock();
-        AppMethodBeat.o(218216);
+        AppMethodBeat.o(214856);
       }
       if (i >= 0)
       {
@@ -874,7 +874,7 @@ public class EncoderWriter
   private boolean writeVideoFrame(boolean paramBoolean)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(218208);
+    AppMethodBeat.i(214848);
     for (;;)
     {
       int i;
@@ -906,13 +906,13 @@ public class EncoderWriter
       catch (Throwable localThrowable)
       {
         localExportRuntimeException = new ExportRuntimeException(-121, localThrowable);
-        AppMethodBeat.o(218208);
+        AppMethodBeat.o(214848);
         throw localExportRuntimeException;
       }
       finally
       {
         this.videoEncoderLock.unlock();
-        AppMethodBeat.o(218208);
+        AppMethodBeat.o(214848);
       }
       if (i >= 0)
       {
@@ -990,12 +990,12 @@ public class EncoderWriter
   {
     try
     {
-      AppMethodBeat.i(218190);
+      AppMethodBeat.i(214830);
       if ((this._inputSurface == null) && (this.hasVideoTrack)) {
         this._inputSurface = this.videoEncoder.createInputSurface();
       }
       Surface localSurface = this._inputSurface;
-      AppMethodBeat.o(218190);
+      AppMethodBeat.o(214830);
       return localSurface;
     }
     finally {}
@@ -1003,7 +1003,7 @@ public class EncoderWriter
   
   public void endWriteAudioSample()
   {
-    AppMethodBeat.i(218203);
+    AppMethodBeat.i(214843);
     Logger.d("EncoderWriter", "endWriteAudioSample:".concat(String.valueOf(this)));
     try
     {
@@ -1040,7 +1040,7 @@ public class EncoderWriter
     finally
     {
       this.lock.readLock().unlock();
-      AppMethodBeat.o(218203);
+      AppMethodBeat.o(214843);
     }
   }
   
@@ -1153,16 +1153,16 @@ public class EncoderWriter
   
   public void setEncodeOption(ExportConfig paramExportConfig)
   {
-    AppMethodBeat.i(218191);
+    AppMethodBeat.i(214831);
     if ((paramExportConfig.getOutputWidth() <= 0) || (paramExportConfig.getOutputHeight() <= 0))
     {
       paramExportConfig = new IllegalArgumentException("width and height must > 0");
-      AppMethodBeat.o(218191);
+      AppMethodBeat.o(214831);
       throw paramExportConfig;
     }
     this.encodeOption = paramExportConfig.clone();
     this.muxer.setExportConfig(paramExportConfig);
-    AppMethodBeat.o(218191);
+    AppMethodBeat.o(214831);
   }
   
   /* Error */
@@ -1298,23 +1298,23 @@ public class EncoderWriter
   
   public void stop()
   {
-    AppMethodBeat.i(218217);
+    AppMethodBeat.i(214857);
     Logger.d("EncoderWriter", "AssetWriter stop ".concat(String.valueOf(this)));
     if (this.released)
     {
-      AppMethodBeat.o(218217);
+      AppMethodBeat.o(214857);
       return;
     }
     if ((!this.videoEncoderStarted) && (!this.audioEncoderStarted))
     {
-      AppMethodBeat.o(218217);
+      AppMethodBeat.o(214857);
       return;
     }
     this.videoEncoderStarted = false;
     this.audioEncoderStarted = false;
     drainEncoder(true);
     release();
-    AppMethodBeat.o(218217);
+    AppMethodBeat.o(214857);
   }
   
   public boolean videoTrackWritable()
@@ -1348,7 +1348,7 @@ public class EncoderWriter
   
   public void writeAudioSample(long paramLong, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(218206);
+    AppMethodBeat.i(214846);
     Logger.e("EncoderWriter", "writeAudioSample: " + paramLong + "  " + paramByteBuffer.limit());
     long l2 = System.currentTimeMillis();
     label509:
@@ -1408,7 +1408,7 @@ public class EncoderWriter
             finally
             {
               this.audioEncoderLock.unlock();
-              AppMethodBeat.o(218206);
+              AppMethodBeat.o(214846);
             }
           }
         }
@@ -1417,26 +1417,26 @@ public class EncoderWriter
       catch (Throwable paramByteBuffer)
       {
         paramByteBuffer = new ExportRuntimeException(-122, paramByteBuffer);
-        AppMethodBeat.o(218206);
+        AppMethodBeat.o(214846);
         throw paramByteBuffer;
       }
       finally
       {
         this.lock.readLock().unlock();
         Logger.e("EncoderWriter", "writeAudioSample finish cost " + (System.currentTimeMillis() - l2));
-        AppMethodBeat.o(218206);
+        AppMethodBeat.o(214846);
       }
       paramByteBuffer.limit(j);
       this.lock.readLock().unlock();
       Logger.e("EncoderWriter", "writeAudioSample finish cost " + (System.currentTimeMillis() - l2));
-      AppMethodBeat.o(218206);
+      AppMethodBeat.o(214846);
       return;
     }
   }
   
   public void writeVideoSample()
   {
-    AppMethodBeat.i(218200);
+    AppMethodBeat.i(214840);
     Logger.i("EncoderWriter", "writeVideoSample");
     long l = System.currentTimeMillis();
     try
@@ -1453,16 +1453,16 @@ public class EncoderWriter
     {
       this.lock.readLock().unlock();
       Logger.i("EncoderWriter", "writeVideoSample finish cost " + (System.currentTimeMillis() - l));
-      AppMethodBeat.o(218200);
+      AppMethodBeat.o(214840);
     }
   }
   
   public void writeVideoSample(long paramLong, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(218205);
+    AppMethodBeat.i(214845);
     if (this._inputSurface != null)
     {
-      AppMethodBeat.o(218205);
+      AppMethodBeat.o(214845);
       return;
     }
     int i = 1;
@@ -1486,10 +1486,10 @@ public class EncoderWriter
       finally
       {
         this.videoEncoderLock.unlock();
-        AppMethodBeat.o(218205);
+        AppMethodBeat.o(214845);
       }
     }
-    AppMethodBeat.o(218205);
+    AppMethodBeat.o(214845);
   }
   
   @Deprecated

@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,40 +23,40 @@ public class RecentAppBrandView
   implements GestureDetector.OnGestureListener
 {
   private RecyclerView.a acW;
-  private GestureDetector lsn;
-  private int mWv;
-  private com.tencent.mm.plugin.appbrand.widget.recentview.b mXu;
-  List<AppBrandDesktopView.c> mYL;
-  List<AppBrandDesktopView.c> mYM;
-  private ArrayList<RecyclerView.w> mYN;
-  private GridLayoutManager mYO;
-  private int mYP;
-  private g mYQ;
-  int mYR;
-  boolean mYS;
-  private b mYT;
-  private int mYU;
-  private int mYV;
-  private boolean mYW;
-  private boolean mYz;
+  private GestureDetector lwM;
+  private int nbB;
+  private com.tencent.mm.plugin.appbrand.widget.recentview.b ncB;
+  private boolean ndG;
+  List<AppBrandDesktopView.c> ndS;
+  List<AppBrandDesktopView.c> ndT;
+  private ArrayList<RecyclerView.w> ndU;
+  private GridLayoutManager ndV;
+  private int ndW;
+  private g ndX;
+  int ndY;
+  boolean ndZ;
+  private b nea;
+  private int neb;
+  private int nec;
+  private boolean ned;
   
   public RecentAppBrandView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49684);
-    this.mYL = new ArrayList();
-    this.mYM = new ArrayList();
-    this.mYN = new ArrayList();
-    this.mWv = 0;
+    this.ndS = new ArrayList();
+    this.ndT = new ArrayList();
+    this.ndU = new ArrayList();
+    this.nbB = 0;
     this.acW = null;
-    this.mYO = null;
-    this.mYP = 0;
-    this.mYR = 10;
-    this.mYS = true;
-    this.mYU = 1;
-    this.mYV = 1;
-    this.mYz = false;
-    this.mYW = false;
+    this.ndV = null;
+    this.ndW = 0;
+    this.ndY = 10;
+    this.ndZ = true;
+    this.neb = 1;
+    this.nec = 1;
+    this.ndG = false;
+    this.ned = false;
     init(paramContext);
     AppMethodBeat.o(49684);
   }
@@ -65,19 +65,19 @@ public class RecentAppBrandView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49685);
-    this.mYL = new ArrayList();
-    this.mYM = new ArrayList();
-    this.mYN = new ArrayList();
-    this.mWv = 0;
+    this.ndS = new ArrayList();
+    this.ndT = new ArrayList();
+    this.ndU = new ArrayList();
+    this.nbB = 0;
     this.acW = null;
-    this.mYO = null;
-    this.mYP = 0;
-    this.mYR = 10;
-    this.mYS = true;
-    this.mYU = 1;
-    this.mYV = 1;
-    this.mYz = false;
-    this.mYW = false;
+    this.ndV = null;
+    this.ndW = 0;
+    this.ndY = 10;
+    this.ndZ = true;
+    this.neb = 1;
+    this.nec = 1;
+    this.ndG = false;
+    this.ned = false;
     init(paramContext);
     AppMethodBeat.o(49685);
   }
@@ -85,7 +85,7 @@ public class RecentAppBrandView
   private void a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
     AppMethodBeat.i(49691);
-    if (paramBoolean == this.mYW)
+    if (paramBoolean == this.ned)
     {
       AppMethodBeat.o(49691);
       return;
@@ -100,38 +100,38 @@ public class RecentAppBrandView
         if (!paramBoolean) {
           break label85;
         }
-        ad.i("MicroMsg.RecentAppBrandView", "alvinluo add pressed item");
-        this.mYN.add(paramMotionEvent);
+        ae.i("MicroMsg.RecentAppBrandView", "alvinluo add pressed item");
+        this.ndU.add(paramMotionEvent);
       }
     }
     for (;;)
     {
-      this.mYW = paramBoolean;
+      this.ned = paramBoolean;
       AppMethodBeat.o(49691);
       return;
       label85:
-      ad.i("MicroMsg.RecentAppBrandView", "alvinluo remove pressed item");
-      this.mYN.remove(paramMotionEvent);
+      ae.i("MicroMsg.RecentAppBrandView", "alvinluo remove pressed item");
+      this.ndU.remove(paramMotionEvent);
     }
   }
   
   private void init(Context paramContext)
   {
     AppMethodBeat.i(49689);
-    this.mYO = new GridLayoutManager(b.getCompletelyCountPerPage(), 1);
-    setLayoutManager(this.mYO);
+    this.ndV = new GridLayoutManager(b.getCompletelyCountPerPage(), 1);
+    setLayoutManager(this.ndV);
     this.acW = new a();
     setAdapter(this.acW);
-    this.lsn = new GestureDetector(paramContext, this);
-    this.mYQ = new g();
-    this.mYQ.acW = this.acW;
-    setItemAnimator(this.mYQ);
-    this.mYV = b.bCK();
-    this.mYR = (this.mYV * b.getCompletelyCountPerPage() + 2);
+    this.lwM = new GestureDetector(paramContext, this);
+    this.ndX = new g();
+    this.ndX.acW = this.acW;
+    setItemAnimator(this.ndX);
+    this.nec = b.bDC();
+    this.ndY = (this.nec * b.getCompletelyCountPerPage() + 2);
     AppMethodBeat.o(49689);
   }
   
-  public final void bDh()
+  public final void bDZ()
   {
     AppMethodBeat.i(49695);
     if (kW())
@@ -164,20 +164,20 @@ public class RecentAppBrandView
   public int getDataCount()
   {
     AppMethodBeat.i(49697);
-    int i = this.mYL.size();
+    int i = this.ndS.size();
     AppMethodBeat.o(49697);
     return i;
   }
   
   public List<AppBrandDesktopView.c> getDataList()
   {
-    return this.mYL;
+    return this.ndS;
   }
   
   public int getMaxShowItemCountIncludeMore()
   {
     AppMethodBeat.i(49687);
-    int i = this.mYU;
+    int i = this.neb;
     int j = b.getCompletelyCountPerPage();
     AppMethodBeat.o(49687);
     return i * j;
@@ -186,25 +186,25 @@ public class RecentAppBrandView
   public int getShowCount()
   {
     AppMethodBeat.i(49696);
-    int i = this.mYM.size();
+    int i = this.ndT.size();
     AppMethodBeat.o(49696);
     return i;
   }
   
   public int getShowLines()
   {
-    return this.mYU;
+    return this.neb;
   }
   
   public List<AppBrandDesktopView.c> getShowList()
   {
-    return this.mYM;
+    return this.ndT;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(49692);
-    ad.i("MicroMsg.RecentAppBrandView", "alvinluo RecentAppBrandView onDown");
+    ae.i("MicroMsg.RecentAppBrandView", "alvinluo RecentAppBrandView onDown");
     AppMethodBeat.o(49692);
     return false;
   }
@@ -224,8 +224,8 @@ public class RecentAppBrandView
     AppMethodBeat.i(49694);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
-    this.mYz = true;
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
+    this.ndG = true;
     a(paramMotionEvent, false);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
     AppMethodBeat.o(49694);
@@ -243,7 +243,7 @@ public class RecentAppBrandView
     AppMethodBeat.i(49693);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
     paramMotionEvent = o(paramMotionEvent.getX(), paramMotionEvent.getY());
     if (paramMotionEvent != null)
     {
@@ -262,27 +262,27 @@ public class RecentAppBrandView
     AppMethodBeat.i(49690);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.mYz = false;
+      this.ndG = false;
       a(paramMotionEvent, true);
     }
     for (;;)
     {
-      Object localObject = this.lsn;
+      Object localObject = this.lwM;
       paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramMotionEvent.ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      if (this.mYz) {
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramMotionEvent.ahE(), "com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)paramMotionEvent.mt(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      if (this.ndG) {
         break;
       }
       AppMethodBeat.o(49690);
       return true;
       if (paramMotionEvent.getAction() != 2)
       {
-        localObject = this.mYN.iterator();
+        localObject = this.ndU.iterator();
         while (((Iterator)localObject).hasNext()) {
           ((RecyclerView.w)((Iterator)localObject).next()).auu.setPressed(false);
         }
-        this.mYN.clear();
+        this.ndU.clear();
       }
     }
     AppMethodBeat.o(49690);
@@ -292,42 +292,42 @@ public class RecentAppBrandView
   public void setDataList(List<AppBrandDesktopView.c> paramList)
   {
     AppMethodBeat.i(49686);
-    this.mYL = paramList;
-    this.mYM.clear();
-    wf(this.mYL.size());
-    int i = this.mYU;
+    this.ndS = paramList;
+    this.ndT.clear();
+    wk(this.ndS.size());
+    int i = this.neb;
     int k = b.getCompletelyCountPerPage() * i;
-    if (this.mYL.size() == k) {}
+    if (this.ndS.size() == k) {}
     for (i = k;; i = k - 1)
     {
       int j = 0;
-      while ((j < this.mYL.size()) && (j < i))
+      while ((j < this.ndS.size()) && (j < i))
       {
-        this.mYM.add(this.mYL.get(j));
+        this.ndT.add(this.ndS.get(j));
         j += 1;
       }
     }
-    this.mYS = true;
-    ad.i("MicroMsg.RecentAppBrandView", "alvinluo RecentAppBrandView mDataList: %d, showCount: %d, maxShowCount: %d", new Object[] { Integer.valueOf(this.mYL.size()), Integer.valueOf(this.mYM.size()), Integer.valueOf(k) });
+    this.ndZ = true;
+    ae.i("MicroMsg.RecentAppBrandView", "alvinluo RecentAppBrandView mDataList: %d, showCount: %d, maxShowCount: %d", new Object[] { Integer.valueOf(this.ndS.size()), Integer.valueOf(this.ndT.size()), Integer.valueOf(k) });
     AppMethodBeat.o(49686);
   }
   
   public void setItemPadding(int paramInt)
   {
-    this.mWv = paramInt;
+    this.nbB = paramInt;
   }
   
   public void setOnItemClickListener(b paramb)
   {
-    this.mYT = paramb;
+    this.nea = paramb;
   }
   
   public void setReporter(com.tencent.mm.plugin.appbrand.widget.recentview.b paramb)
   {
-    this.mXu = paramb;
+    this.ncB = paramb;
   }
   
-  final void wf(int paramInt)
+  final void wk(int paramInt)
   {
     AppMethodBeat.i(49688);
     int k = b.getCompletelyCountPerPage();
@@ -336,15 +336,15 @@ public class RecentAppBrandView
     if (paramInt % k != 0) {
       i = j + 1;
     }
-    this.mYU = Math.min(this.mYV, i);
-    ad.i("MicroMsg.RecentAppBrandView", "alvinluo configShowLines dataCount: %d, countPerLine: %d, currentShowLine: %d, maxShowLine: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(k), Integer.valueOf(this.mYU), Integer.valueOf(this.mYV) });
+    this.neb = Math.min(this.nec, i);
+    ae.i("MicroMsg.RecentAppBrandView", "alvinluo configShowLines dataCount: %d, countPerLine: %d, currentShowLine: %d, maxShowLine: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(k), Integer.valueOf(this.neb), Integer.valueOf(this.nec) });
     AppMethodBeat.o(49688);
   }
   
-  public final AppBrandDesktopView.c wg(int paramInt)
+  public final AppBrandDesktopView.c wl(int paramInt)
   {
     AppMethodBeat.i(49698);
-    AppBrandDesktopView.c localc = (AppBrandDesktopView.c)this.mYL.get(paramInt);
+    AppBrandDesktopView.c localc = (AppBrandDesktopView.c)this.ndS.get(paramInt);
     AppMethodBeat.o(49698);
     return localc;
   }

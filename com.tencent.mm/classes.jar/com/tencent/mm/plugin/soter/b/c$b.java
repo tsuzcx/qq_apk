@@ -5,27 +5,27 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.drl;
+import com.tencent.mm.protocal.protobuf.dsi;
 
 public final class c$b
   extends l.e
   implements l.c
 {
-  public drl AEV;
+  public dsi AWy;
   
   public c$b()
   {
     AppMethodBeat.i(130807);
-    this.AEV = new drl();
+    this.AWy = new dsi();
     AppMethodBeat.o(130807);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130808);
-    this.AEV = ((drl)new drl().parseFrom(paramArrayOfByte));
-    l.a(this, this.AEV.getBaseResponse());
-    int i = this.AEV.getBaseResponse().Ret;
+    this.AWy = ((dsi)new dsi().parseFrom(paramArrayOfByte));
+    l.a(this, this.AWy.getBaseResponse());
+    int i = this.AWy.getBaseResponse().Ret;
     AppMethodBeat.o(130808);
     return i;
   }

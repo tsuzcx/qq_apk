@@ -3,91 +3,84 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bxi
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GDb;
-  public long GRq;
-  public long GRr;
-  public int GRs;
-  public int Scene;
+  public int FNv;
+  public String Hkk;
+  public String Title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117877);
+    AppMethodBeat.i(124528);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Scene);
-      if (this.GDb != null) {
-        paramVarArgs.d(2, this.GDb);
+      if (this.Hkk != null) {
+        paramVarArgs.d(1, this.Hkk);
       }
-      paramVarArgs.aY(3, this.GRr);
-      paramVarArgs.aY(4, this.GRq);
-      paramVarArgs.aS(5, this.GRs);
-      AppMethodBeat.o(117877);
+      if (this.Title != null) {
+        paramVarArgs.d(2, this.Title);
+      }
+      paramVarArgs.aS(3, this.FNv);
+      AppMethodBeat.o(124528);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.Scene) + 0;
-      paramInt = i;
-      if (this.GDb != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.GDb);
+    if (paramInt == 1) {
+      if (this.Hkk == null) {
+        break label318;
       }
-      i = f.a.a.b.b.a.p(3, this.GRr);
-      int j = f.a.a.b.b.a.p(4, this.GRq);
-      int k = f.a.a.b.b.a.bz(5, this.GRs);
-      AppMethodBeat.o(117877);
-      return paramInt + i + j + k;
     }
-    if (paramInt == 2)
+    label318:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Hkk) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
+      int i = paramInt;
+      if (this.Title != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Title);
       }
-      AppMethodBeat.o(117877);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bxi localbxi = (bxi)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = f.a.a.b.b.a.bz(3, this.FNv);
+      AppMethodBeat.o(124528);
+      return i + paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(117877);
-        return -1;
-      case 1: 
-        localbxi.Scene = locala.NPN.zc();
-        AppMethodBeat.o(117877);
-        return 0;
-      case 2: 
-        localbxi.GDb = locala.NPN.readString();
-        AppMethodBeat.o(117877);
-        return 0;
-      case 3: 
-        localbxi.GRr = locala.NPN.zd();
-        AppMethodBeat.o(117877);
-        return 0;
-      case 4: 
-        localbxi.GRq = locala.NPN.zd();
-        AppMethodBeat.o(117877);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(124528);
         return 0;
       }
-      localbxi.GRs = locala.NPN.zc();
-      AppMethodBeat.o(117877);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        bxi localbxi = (bxi)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(124528);
+          return -1;
+        case 1: 
+          localbxi.Hkk = locala.OmT.readString();
+          AppMethodBeat.o(124528);
+          return 0;
+        case 2: 
+          localbxi.Title = locala.OmT.readString();
+          AppMethodBeat.o(124528);
+          return 0;
+        }
+        localbxi.FNv = locala.OmT.zc();
+        AppMethodBeat.o(124528);
+        return 0;
+      }
+      AppMethodBeat.o(124528);
+      return -1;
     }
-    AppMethodBeat.o(117877);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bxi
  * JD-Core Version:    0.7.0.1
  */

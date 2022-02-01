@@ -13,58 +13,58 @@ import java.util.List;
 
 public final class d
 {
-  private static final int NxA;
-  public static final d NxB;
-  public static final d NxC;
-  public static final d NxD;
-  public static final d NxE;
-  public static final d NxF;
-  public static final d NxG;
-  public static final d NxH;
-  public static final d NxI;
-  public static final d NxJ;
-  public static final d NxK;
-  private static final List<d.a.a> NxL;
-  private static final List<d.a.a> NxM;
-  public static final a NxN;
-  private static int Nxq;
-  private static final int Nxr;
-  private static final int Nxs;
-  private static final int Nxt;
-  private static final int Nxu;
-  private static final int Nxv;
-  private static final int Nxw;
-  private static final int Nxx;
-  private static final int Nxy;
-  private static final int Nxz;
-  final int Nxo;
-  public final List<c> Nxp;
+  private static final int NUA;
+  private static final int NUB;
+  private static final int NUC;
+  private static final int NUD;
+  private static final int NUE;
+  private static final int NUF;
+  private static final int NUG;
+  public static final d NUH;
+  public static final d NUI;
+  public static final d NUJ;
+  public static final d NUK;
+  public static final d NUL;
+  public static final d NUN;
+  public static final d NUO;
+  public static final d NUP;
+  public static final d NUQ;
+  public static final d NUR;
+  private static final List<d.a.a> NUS;
+  private static final List<d.a.a> NUT;
+  public static final a NUU;
+  private static int NUw;
+  private static final int NUx;
+  private static final int NUy;
+  private static final int NUz;
+  final int NUu;
+  public final List<c> NUv;
   
   static
   {
     AppMethodBeat.i(60201);
-    NxN = new a((byte)0);
-    Nxq = 1;
-    Nxr = a.gts();
-    Nxs = a.gts();
-    Nxt = a.gts();
-    Nxu = a.gts();
-    Nxv = a.gts();
-    Nxw = a.gts();
-    Nxx = a.gts() - 1;
-    Nxy = Nxr | Nxs | Nxt;
-    Nxz = Nxs | Nxv | Nxw;
-    NxA = Nxv | Nxw;
-    NxB = new d(Nxx);
-    NxC = new d(NxA);
-    NxD = new d(Nxr);
-    NxE = new d(Nxs);
-    NxF = new d(Nxt);
-    NxG = new d(Nxy);
-    NxH = new d(Nxu);
-    NxI = new d(Nxv);
-    NxJ = new d(Nxw);
-    NxK = new d(Nxz);
+    NUU = new a((byte)0);
+    NUw = 1;
+    NUx = a.gxU();
+    NUy = a.gxU();
+    NUz = a.gxU();
+    NUA = a.gxU();
+    NUB = a.gxU();
+    NUC = a.gxU();
+    NUD = a.gxU() - 1;
+    NUE = NUx | NUy | NUz;
+    NUF = NUy | NUB | NUC;
+    NUG = NUB | NUC;
+    NUH = new d(NUD);
+    NUI = new d(NUG);
+    NUJ = new d(NUx);
+    NUK = new d(NUy);
+    NUL = new d(NUz);
+    NUN = new d(NUE);
+    NUO = new d(NUA);
+    NUP = new d(NUB);
+    NUQ = new d(NUC);
+    NUR = new d(NUF);
     Object localObject1 = d.class.getFields();
     p.g(localObject1, "T::class.java.fields");
     Object localObject2 = (Collection)new ArrayList();
@@ -94,7 +94,7 @@ public final class d
       localObject1 = (d)localObject1;
       if (localObject1 != null)
       {
-        i = ((d)localObject1).Nxo;
+        i = ((d)localObject1).NUu;
         p.g(localField, "field");
         localObject1 = localField.getName();
         p.g(localObject1, "field.name");
@@ -108,7 +108,7 @@ public final class d
         break;
       }
     }
-    NxL = j.l((Iterable)localObject3);
+    NUS = j.l((Iterable)localObject3);
     localObject1 = d.class.getFields();
     p.g(localObject1, "T::class.java.fields");
     localObject2 = (Collection)new ArrayList();
@@ -173,31 +173,31 @@ public final class d
         break label701;
       }
     }
-    NxM = j.l((Iterable)localObject2);
+    NUT = j.l((Iterable)localObject2);
     AppMethodBeat.o(60201);
   }
   
   public d(int paramInt, List<? extends c> paramList)
   {
     AppMethodBeat.i(60199);
-    this.Nxp = paramList;
-    paramList = ((Iterable)this.Nxp).iterator();
+    this.NUv = paramList;
+    paramList = ((Iterable)this.NUv).iterator();
     while (paramList.hasNext()) {
-      paramInt &= (((c)paramList.next()).gti() ^ 0xFFFFFFFF);
+      paramInt &= (((c)paramList.next()).gxK() ^ 0xFFFFFFFF);
     }
-    this.Nxo = paramInt;
+    this.NUu = paramInt;
     AppMethodBeat.o(60199);
   }
   
-  public final boolean alm(int paramInt)
+  public final boolean alW(int paramInt)
   {
-    return (this.Nxo & paramInt) != 0;
+    return (this.NUu & paramInt) != 0;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60198);
-    Object localObject2 = ((Iterable)NxL).iterator();
+    Object localObject2 = ((Iterable)NUS).iterator();
     int i;
     label49:
     label53:
@@ -206,7 +206,7 @@ public final class d
     if (((Iterator)localObject2).hasNext())
     {
       localObject1 = ((Iterator)localObject2).next();
-      if (((d.a.a)localObject1).mask == this.Nxo)
+      if (((d.a.a)localObject1).mask == this.NUu)
       {
         i = 1;
         if (i == 0) {
@@ -221,7 +221,7 @@ public final class d
         if (localObject1 != null) {
           break label195;
         }
-        localObject1 = (Iterable)NxM;
+        localObject1 = (Iterable)NUT;
         localObject2 = (Collection)new ArrayList();
         localIterator = ((Iterable)localObject1).iterator();
       }
@@ -236,7 +236,7 @@ public final class d
         break label171;
       }
       localObject1 = (d.a.a)localIterator.next();
-      if (alm(((d.a.a)localObject1).mask)) {}
+      if (alW(((d.a.a)localObject1).mask)) {}
       for (localObject1 = ((d.a.a)localObject1).name;; localObject1 = null)
       {
         if (localObject1 == null) {
@@ -256,26 +256,40 @@ public final class d
     label171:
     localObject2 = j.a((Iterable)localObject2, (CharSequence)" | ", null, null, 0, null, null, 62);
     label195:
-    Object localObject1 = "DescriptorKindFilter(" + (String)localObject2 + ", " + this.Nxp + ')';
+    Object localObject1 = "DescriptorKindFilter(" + (String)localObject2 + ", " + this.NUv + ')';
     AppMethodBeat.o(60198);
     return localObject1;
   }
   
   public static final class a
   {
-    static int gts()
+    static int gxU()
     {
       AppMethodBeat.i(60197);
-      int i = d.gtj();
-      d.aln(d.gtj() << 1);
+      int i = d.gxL();
+      d.alX(d.gxL() << 1);
       AppMethodBeat.o(60197);
       return i;
+    }
+    
+    static final class a
+    {
+      final int mask;
+      final String name;
+      
+      public a(int paramInt, String paramString)
+      {
+        AppMethodBeat.i(60196);
+        this.mask = paramInt;
+        this.name = paramString;
+        AppMethodBeat.o(60196);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.d
  * JD-Core Version:    0.7.0.1
  */

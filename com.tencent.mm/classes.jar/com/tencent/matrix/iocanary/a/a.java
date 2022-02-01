@@ -2,41 +2,41 @@ package com.tencent.matrix.iocanary.a;
 
 public final class a
 {
-  public final com.tencent.c.a.a cBC;
+  public final com.tencent.c.a.a cCj;
   
   private a(com.tencent.c.a.a parama)
   {
-    this.cBC = parama;
+    this.cCj = parama;
   }
   
-  public final boolean Io()
+  public final boolean Iw()
   {
-    return this.cBC.get(com.tencent.c.a.a.a.LCB.name(), true);
+    return this.cCj.get(com.tencent.c.a.a.a.LZF.name(), true);
   }
   
-  public final boolean Ip()
+  public final boolean Ix()
   {
-    return this.cBC.get(com.tencent.c.a.a.a.LCG.name(), true);
+    return this.cCj.get(com.tencent.c.a.a.a.LZK.name(), true);
   }
   
-  public final boolean Iq()
+  public final boolean Iy()
   {
-    return this.cBC.get(com.tencent.c.a.a.a.LCD.name(), true);
+    return this.cCj.get(com.tencent.c.a.a.a.LZH.name(), true);
   }
   
-  public final boolean Ir()
+  public final boolean Iz()
   {
-    return this.cBC.get(com.tencent.c.a.a.a.LCI.name(), true);
+    return this.cCj.get(com.tencent.c.a.a.a.LZM.name(), true);
   }
   
   public final String toString()
   {
-    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(Io()), Boolean.valueOf(Iq()), Boolean.valueOf(Ip()), Boolean.valueOf(Ir()) });
+    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(Iw()), Boolean.valueOf(Iy()), Boolean.valueOf(Ix()), Boolean.valueOf(Iz()) });
   }
   
   public static final class a
   {
-    public com.tencent.c.a.a cBC;
+    public com.tencent.c.a.a cCj;
   }
 }
 

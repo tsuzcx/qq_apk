@@ -99,6 +99,11 @@ public abstract class TRTCCloudListener
     public abstract void onPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString);
   }
   
+  public static abstract class TRTCLogListener
+  {
+    public abstract void onLog(String paramString1, int paramInt, String paramString2);
+  }
+  
   public static abstract interface TRTCSnapshotListener
   {
     public abstract void onSnapshotComplete(Bitmap paramBitmap);

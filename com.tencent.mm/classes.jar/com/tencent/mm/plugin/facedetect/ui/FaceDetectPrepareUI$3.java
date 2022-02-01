@@ -16,8 +16,8 @@ final class FaceDetectPrepareUI$3
     AppMethodBeat.i(103921);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectPrepareUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.rkL.a(this.val$errType, this.val$errCode, this.val$errMsg, null);
+    a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectPrepareUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.rsP.a(this.val$errType, this.val$errCode, this.val$errMsg, null);
     a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectPrepareUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(103921);
   }

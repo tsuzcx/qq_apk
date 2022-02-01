@@ -4,46 +4,46 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.AcousticEchoCanceler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
   implements h.a
 {
-  private AcousticEchoCanceler fVG;
+  private AcousticEchoCanceler fXM;
   
   @TargetApi(16)
   public f(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155557);
-    this.fVG = null;
+    this.fXM = null;
     boolean bool = AcousticEchoCanceler.isAvailable();
-    ad.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
+    ae.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.fVG = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
+      this.fXM = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155557);
   }
   
   @TargetApi(16)
-  public final boolean ZI()
+  public final boolean ZR()
   {
     AppMethodBeat.i(155559);
-    if (this.fVG != null) {}
+    if (this.fXM != null) {}
     try
     {
-      int i = this.fVG.setEnabled(true);
+      int i = this.fXM.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155559);
         return true;
       }
-      ad.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed ".concat(String.valueOf(i)));
+      ae.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(155559);

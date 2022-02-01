@@ -25,12 +25,12 @@ public final class w
   {
     AppMethodBeat.i(60117);
     p.h(paramy, "module");
-    a locala = g.MQb.MRw;
+    a locala = g.Nng.NoB;
     p.g(locala, "KotlinBuiltIns.FQ_NAMES.uByte");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.giC();
+      paramy = paramy.gne();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -38,7 +38,7 @@ public final class w
         return paramy;
       }
     }
-    paramy = u.bcU("Unsigned type UByte not found");
+    paramy = u.bey("Unsigned type UByte not found");
     p.g(paramy, "ErrorUtils.createErrorTy…ed type UByte not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60117);
@@ -55,7 +55,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.w
  * JD-Core Version:    0.7.0.1
  */

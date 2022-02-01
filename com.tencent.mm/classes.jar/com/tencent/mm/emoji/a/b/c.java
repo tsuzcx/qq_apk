@@ -1,58 +1,72 @@
 package com.tencent.mm.emoji.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bk;
+import com.tencent.mm.emoji.a.i;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.a.j;
+import d.a.v;
 import d.g.b.p;
 import d.l;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo;", "Lcom/tencent/mm/autogen/table/BaseEmojiSuggestCacheInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "isValid", "", "needUpdate", "Companion", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "hasEntrance", "", "(Z)V", "emojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "kotlin.jvm.PlatformType", "reportCount", "", "getReportCount", "plugin-emojisdk_release"})
 public final class c
-  extends bk
+  extends a
 {
-  static final String TAG = "MicroMsg.EmojiSuggestCacheInfo";
-  private static final long gmj = 86400L;
-  public static final a gmk;
-  private static final com.tencent.mm.sdk.e.c.a info;
+  private final List<EmojiInfo> gnf;
+  private int gng;
   
-  static
+  public c(boolean paramBoolean)
   {
-    AppMethodBeat.i(218962);
-    gmk = new a((byte)0);
-    TAG = "MicroMsg.EmojiSuggestCacheInfo";
-    info = bk.Vv();
-    gmj = 86400L;
-    AppMethodBeat.o(218962);
-  }
-  
-  public final com.tencent.mm.sdk.e.c.a getDBInfo()
-  {
-    AppMethodBeat.i(218961);
-    com.tencent.mm.sdk.e.c.a locala = info;
-    p.g(locala, "info");
-    AppMethodBeat.o(218961);
-    return locala;
-  }
-  
-  public final boolean isValid()
-  {
-    byte[] arrayOfByte = this.field_content;
-    if (arrayOfByte != null)
+    super(ad.afT());
+    AppMethodBeat.i(105526);
+    Object localObject1 = i.aeX().dk(true);
+    if (localObject1 != null) {}
+    for (localObject1 = (List)localObject1;; localObject1 = (List)v.NhH)
     {
-      if (arrayOfByte.length == 0) {}
-      for (int i = 1; i == 0; i = 0) {
-        return true;
+      this.gnf = ((List)localObject1);
+      this.gng = this.gnf.size();
+      if (!this.gnf.isEmpty()) {
+        break;
       }
-      return false;
+      if (!paramBoolean) {
+        break label228;
+      }
+      this.gne.add(new b());
+      AppMethodBeat.o(105526);
+      return;
     }
-    return false;
+    this.gne.add(this.gnd);
+    if (paramBoolean) {
+      this.gne.add(new m(1));
+    }
+    localObject1 = this.gne;
+    Object localObject2 = (Iterable)this.gnf;
+    Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject2).next();
+      p.g(localEmojiInfo, "it");
+      localCollection.add(new h(localEmojiInfo, 1));
+    }
+    ((LinkedList)localObject1).addAll((Collection)localCollection);
+    label228:
+    AppMethodBeat.o(105526);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo$Companion;", "", "()V", "TAG", "", "UpdateInterval", "", "getUpdateInterval", "()J", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-emojisdk_release"})
-  public static final class a {}
+  public final int afA()
+  {
+    return this.gng;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.b.c
  * JD-Core Version:    0.7.0.1
  */

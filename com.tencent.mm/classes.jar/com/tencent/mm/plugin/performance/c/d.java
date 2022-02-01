@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Debug.MemoryInfo;
+import android.os.Process;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.mars.smc.IDKey;
@@ -12,8 +13,8 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -22,37 +23,37 @@ import java.util.List;
 public final class d
   implements Runnable
 {
-  private static final d wKt;
-  public boolean cBJ;
-  private int wJs;
-  private final ActivityManager wKu;
+  private static final d xae;
+  public boolean cCq;
+  private int wZd;
+  private final ActivityManager xaf;
   
   static
   {
-    AppMethodBeat.i(211804);
-    wKt = new d();
-    AppMethodBeat.o(211804);
+    AppMethodBeat.i(215474);
+    xae = new d();
+    AppMethodBeat.o(215474);
   }
   
   private d()
   {
-    AppMethodBeat.i(211801);
-    this.cBJ = false;
-    this.wJs = 0;
-    this.wKu = ((ActivityManager)aj.getContext().getSystemService("activity"));
-    AppMethodBeat.o(211801);
+    AppMethodBeat.i(215471);
+    this.cCq = false;
+    this.wZd = 0;
+    this.xaf = ((ActivityManager)ak.getContext().getSystemService("activity"));
+    AppMethodBeat.o(215471);
   }
   
-  public static d dzd()
+  public static d dCu()
   {
-    return wKt;
+    return xae;
   }
   
-  public final List<a> dze()
+  public final List<a> dCv()
   {
-    AppMethodBeat.i(211803);
+    AppMethodBeat.i(215473);
     long l = System.currentTimeMillis();
-    Object localObject1 = this.wKu.getRunningAppProcesses();
+    Object localObject1 = this.xaf.getRunningAppProcesses();
     ArrayList localArrayList = new ArrayList();
     if (localObject1 != null)
     {
@@ -60,47 +61,54 @@ public final class d
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
-        Debug.MemoryInfo[] arrayOfMemoryInfo = this.wKu.getProcessMemoryInfo(new int[] { ((ActivityManager.RunningAppProcessInfo)localObject2).pid });
-        localObject2 = new a(((ActivityManager.RunningAppProcessInfo)localObject2).processName, ((ActivityManager.RunningAppProcessInfo)localObject2).pid);
-        if ((arrayOfMemoryInfo != null) && (arrayOfMemoryInfo.length == 1)) {
-          ((a)localObject2).wKv = arrayOfMemoryInfo[0].getTotalPss();
+        if (Process.myUid() != ((ActivityManager.RunningAppProcessInfo)localObject2).uid)
+        {
+          ae.e("MicroMsg.ProcessWatchDog", "info with uid [%s] & process name [%s] is not current app [%s]", new Object[] { Integer.valueOf(((ActivityManager.RunningAppProcessInfo)localObject2).uid), ((ActivityManager.RunningAppProcessInfo)localObject2).processName, Integer.valueOf(Process.myUid()) });
         }
-        localArrayList.add(localObject2);
+        else
+        {
+          Debug.MemoryInfo[] arrayOfMemoryInfo = this.xaf.getProcessMemoryInfo(new int[] { ((ActivityManager.RunningAppProcessInfo)localObject2).pid });
+          localObject2 = new a(((ActivityManager.RunningAppProcessInfo)localObject2).processName, ((ActivityManager.RunningAppProcessInfo)localObject2).pid);
+          if ((arrayOfMemoryInfo != null) && (arrayOfMemoryInfo.length == 1)) {
+            ((a)localObject2).xag = arrayOfMemoryInfo[0].getTotalPss();
+          }
+          localArrayList.add(localObject2);
+        }
       }
     }
-    ad.i("MicroMsg.ProcessWatchDog", "dumpProcess cost: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(211803);
+    ae.i("MicroMsg.ProcessWatchDog", "dumpProcess cost: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(215473);
     return localArrayList;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(211802);
-    Object localObject1 = dze();
+    AppMethodBeat.i(215472);
+    Object localObject1 = dCv();
     if (!((List)localObject1).isEmpty())
     {
       int i = ((List)localObject1).size();
       Object localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(new IDKey(1474, 0, 1));
       ((ArrayList)localObject2).add(new IDKey(1474, i, 1));
-      e.ygI.b((ArrayList)localObject2, false);
-      int j = ((b)g.ab(b.class)).a(b.a.qId, 11);
+      e.ywz.b((ArrayList)localObject2, false);
+      int j = ((b)g.ab(b.class)).a(b.a.qPJ, 12);
       localObject2 = ((List)localObject1).iterator();
-      for (l = 0L; ((Iterator)localObject2).hasNext(); l = ((a)((Iterator)localObject2).next()).wKv + l) {}
-      localObject1 = Arrays.toString(((List)localObject1).toArray());
-      if ((i >= j) && (i > this.wJs))
+      for (l = 0L; ((Iterator)localObject2).hasNext(); l = ((a)((Iterator)localObject2).next()).xag + l) {}
+      localObject1 = Arrays.toString(((List)localObject1).toArray()).replace(",", ";");
+      if ((i >= j) && (i > this.wZd))
       {
-        this.wJs = i;
-        e.ygI.f(20772, new Object[] { Integer.valueOf(i), localObject1, Long.valueOf(l) });
+        this.wZd = i;
+        e.ywz.f(20846, new Object[] { Integer.valueOf(i), localObject1, Long.valueOf(l) });
       }
-      ad.i("MicroMsg.ProcessWatchDog", "DumpProcesses: %s || pssSum : %s", new Object[] { localObject1, Long.valueOf(l) });
+      ae.i("MicroMsg.ProcessWatchDog", "DumpProcesses: %s || pssSum : %s", new Object[] { localObject1, Long.valueOf(l) });
     }
-    localObject1 = h.LTJ;
-    if (this.cBJ) {}
+    localObject1 = h.MqF;
+    if (this.cCq) {}
     for (long l = 300000L;; l = 1800000L)
     {
       ((i)localObject1).r(this, l);
-      AppMethodBeat.o(211802);
+      AppMethodBeat.o(215472);
       return;
     }
   }
@@ -109,7 +117,7 @@ public final class d
   {
     int pid;
     String processName;
-    long wKv;
+    long xag;
     
     public a(String paramString, int paramInt)
     {
@@ -119,9 +127,9 @@ public final class d
     
     public final String toString()
     {
-      AppMethodBeat.i(211800);
-      String str = this.processName + "|pid:" + this.pid + "|pss:" + this.wKv;
-      AppMethodBeat.o(211800);
+      AppMethodBeat.i(215470);
+      String str = this.processName + "|pid:" + this.pid + "|pss:" + this.xag;
+      AppMethodBeat.o(215470);
       return str;
     }
   }

@@ -29,7 +29,7 @@ public abstract class j
   public static final int INVALID_ID = -2147483648;
   private static final Rect INVALID_PARENT_BOUNDS = new Rect(2147483647, 2147483647, -2147483648, -2147483648);
   private static final k.a<c> NODE_ADAPTER = new k.a() {};
-  private static final k.b<o<c>, c> SPARSE_VALUES_ADAPTER = new k.b() {};
+  private static final k.b<o<c>, c> SPARSE_VALUES_ADAPTER = new j.2();
   int mAccessibilityFocusedVirtualViewId = -2147483648;
   private final View mHost;
   public int mHoveredVirtualViewId = -2147483648;

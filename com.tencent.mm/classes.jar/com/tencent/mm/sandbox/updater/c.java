@@ -7,11 +7,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.protocal.protobuf.cvp;
+import com.tencent.mm.protocal.protobuf.cwj;
 import com.tencent.mm.sandbox.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -28,38 +28,38 @@ import org.apache.http.params.HttpParams;
 public final class c
   extends com.tencent.mm.sandbox.monitor.c
 {
-  private b.a HXe;
-  private String[] HXl;
-  private a HXm;
-  private boolean HXn;
-  private ap HXo;
-  private b.a HXp;
-  private int giC;
-  private boolean ieP;
+  private b.a Irl;
+  private String[] Irs;
+  private a Irt;
+  private boolean Iru;
+  private aq Irv;
+  private b.a Irw;
+  private int gkU;
+  private boolean ihH;
   private String patchMd5;
-  private String uJh;
+  private String uUU;
   
   public c(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
     super(paramInt1, paramString1, paramInt2, paramBoolean);
     AppMethodBeat.i(32686);
-    this.HXm = null;
-    this.giC = 0;
-    this.HXn = false;
-    this.ieP = false;
-    this.HXo = new ap()
+    this.Irt = null;
+    this.gkU = 0;
+    this.Iru = false;
+    this.ihH = false;
+    this.Irv = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(32670);
         if ((1 == paramAnonymousMessage.what) && (!c.a(c.this)))
         {
-          new File(c.this.aNl()).delete();
+          new File(c.this.aNJ()).delete();
           if (paramAnonymousMessage.arg1 != 0) {
             break label91;
           }
-          ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "patch ok");
-          c.b(c.this).b(200, 0, (cvp)paramAnonymousMessage.obj);
+          ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "patch ok");
+          c.b(c.this).b(200, 0, (cwj)paramAnonymousMessage.obj);
         }
         for (;;)
         {
@@ -68,101 +68,101 @@ public final class c
           return;
           label91:
           if (paramAnonymousMessage.arg1 == 3) {
-            c.b(c.this).b(3, -1, (cvp)paramAnonymousMessage.obj);
+            c.b(c.this).b(3, -1, (cwj)paramAnonymousMessage.obj);
           } else if (paramAnonymousMessage.arg1 == 4) {
-            c.b(c.this).b(4, -1, (cvp)paramAnonymousMessage.obj);
+            c.b(c.this).b(4, -1, (cwj)paramAnonymousMessage.obj);
           }
         }
       }
     };
-    this.HXp = new b.a()
+    this.Irw = new b.a()
     {
-      public final void CO(long paramAnonymousLong)
+      public final void Dm(long paramAnonymousLong)
       {
         AppMethodBeat.i(32674);
-        c.b(c.this).CO(paramAnonymousLong);
+        c.b(c.this).Dm(paramAnonymousLong);
         AppMethodBeat.o(32674);
       }
       
-      public final void CP(long paramAnonymousLong)
+      public final void Dn(long paramAnonymousLong)
       {
         AppMethodBeat.i(32675);
-        c.b(c.this).CP(paramAnonymousLong);
+        c.b(c.this).Dn(paramAnonymousLong);
         AppMethodBeat.o(32675);
       }
       
-      public final void b(int paramAnonymousInt1, int paramAnonymousInt2, cvp paramAnonymouscvp)
+      public final void b(int paramAnonymousInt1, int paramAnonymousInt2, cwj paramAnonymouscwj)
       {
         AppMethodBeat.i(32673);
         if (paramAnonymousInt1 != 0)
         {
-          ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene error. netRet=".concat(String.valueOf(paramAnonymousInt1)));
+          ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene error. netRet=".concat(String.valueOf(paramAnonymousInt1)));
           if (paramAnonymousInt1 == -2) {
-            new File(c.this.aNl()).delete();
+            new File(c.this.aNJ()).delete();
           }
           c.e(c.this);
           c.this.a(c.b(c.this));
           AppMethodBeat.o(32673);
           return;
         }
-        ad.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene success");
+        ae.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene success");
         try
         {
-          if (d.aPI(c.this.aNl()) < c.f(c.this))
+          if (d.aRf(c.this.aNJ()) < c.f(c.this))
           {
-            ad.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene continue;");
+            ae.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene continue;");
             c.this.a(c.b(c.this));
             AppMethodBeat.o(32673);
             return;
           }
           if (c.g(c.this))
           {
-            if (!c.h(c.this).equalsIgnoreCase(d.aPK(c.this.aNl())))
+            if (!c.h(c.this).equalsIgnoreCase(d.aRh(c.this.aNJ())))
             {
-              ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "pack md5 check error");
-              new File(c.this.aNl()).delete();
-              c.b(c.this).b(2, -1, paramAnonymouscvp);
+              ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "pack md5 check error");
+              new File(c.this.aNJ()).delete();
+              c.b(c.this).b(2, -1, paramAnonymouscwj);
               AppMethodBeat.o(32673);
               return;
             }
-            c.a(c.this, paramAnonymouscvp);
+            c.a(c.this, paramAnonymouscwj);
             AppMethodBeat.o(32673);
             return;
           }
-          if (!c.i(c.this).equalsIgnoreCase(d.aPK(c.this.aNl())))
+          if (!c.i(c.this).equalsIgnoreCase(d.aRh(c.this.aNJ())))
           {
-            ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "update pack check error");
-            new File(c.this.aNl()).delete();
-            c.b(c.this).b(-1, -1, paramAnonymouscvp);
+            ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "update pack check error");
+            new File(c.this.aNJ()).delete();
+            c.b(c.this).b(-1, -1, paramAnonymouscwj);
             AppMethodBeat.o(32673);
             return;
           }
-          d.bb(com.tencent.mm.sandbox.monitor.c.HWI, c.j(c.this) + ".temp", c.k(c.this) + ".apk");
-          c.b(c.this).b(200, 0, paramAnonymouscvp);
+          d.bc(com.tencent.mm.sandbox.monitor.c.IqQ, c.j(c.this) + ".temp", c.k(c.this) + ".apk");
+          c.b(c.this).b(200, 0, paramAnonymouscwj);
           AppMethodBeat.o(32673);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "error occured during pack processing");
-          ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localException, "", new Object[0]);
-          c.b(c.this).b(-1, -1, paramAnonymouscvp);
+          ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "error occured during pack processing");
+          ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localException, "", new Object[0]);
+          c.b(c.this).b(-1, -1, paramAnonymouscwj);
           AppMethodBeat.o(32673);
         }
       }
       
-      public final void eZ(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void fa(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(32672);
-        ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "progress, total=" + paramAnonymousInt1 + ", offset=" + paramAnonymousInt2);
-        c.b(c.this).eZ(paramAnonymousInt1, paramAnonymousInt2);
+        ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "progress, total=" + paramAnonymousInt1 + ", offset=" + paramAnonymousInt2);
+        c.b(c.this).fa(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(32672);
       }
     };
-    this.HXl = new String[] { paramString2 };
-    this.HXn = true;
+    this.Irs = new String[] { paramString2 };
+    this.Iru = true;
     this.patchMd5 = paramString3;
-    this.uJh = paramString4;
+    this.uUU = paramString4;
     AppMethodBeat.o(32686);
   }
   
@@ -170,23 +170,23 @@ public final class c
   {
     super(paramInt1, paramString, paramInt2, paramBoolean);
     AppMethodBeat.i(32685);
-    this.HXm = null;
-    this.giC = 0;
-    this.HXn = false;
-    this.ieP = false;
-    this.HXo = new ap()
+    this.Irt = null;
+    this.gkU = 0;
+    this.Iru = false;
+    this.ihH = false;
+    this.Irv = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(32670);
         if ((1 == paramAnonymousMessage.what) && (!c.a(c.this)))
         {
-          new File(c.this.aNl()).delete();
+          new File(c.this.aNJ()).delete();
           if (paramAnonymousMessage.arg1 != 0) {
             break label91;
           }
-          ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "patch ok");
-          c.b(c.this).b(200, 0, (cvp)paramAnonymousMessage.obj);
+          ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "patch ok");
+          c.b(c.this).b(200, 0, (cwj)paramAnonymousMessage.obj);
         }
         for (;;)
         {
@@ -195,106 +195,106 @@ public final class c
           return;
           label91:
           if (paramAnonymousMessage.arg1 == 3) {
-            c.b(c.this).b(3, -1, (cvp)paramAnonymousMessage.obj);
+            c.b(c.this).b(3, -1, (cwj)paramAnonymousMessage.obj);
           } else if (paramAnonymousMessage.arg1 == 4) {
-            c.b(c.this).b(4, -1, (cvp)paramAnonymousMessage.obj);
+            c.b(c.this).b(4, -1, (cwj)paramAnonymousMessage.obj);
           }
         }
       }
     };
-    this.HXp = new b.a()
+    this.Irw = new b.a()
     {
-      public final void CO(long paramAnonymousLong)
+      public final void Dm(long paramAnonymousLong)
       {
         AppMethodBeat.i(32674);
-        c.b(c.this).CO(paramAnonymousLong);
+        c.b(c.this).Dm(paramAnonymousLong);
         AppMethodBeat.o(32674);
       }
       
-      public final void CP(long paramAnonymousLong)
+      public final void Dn(long paramAnonymousLong)
       {
         AppMethodBeat.i(32675);
-        c.b(c.this).CP(paramAnonymousLong);
+        c.b(c.this).Dn(paramAnonymousLong);
         AppMethodBeat.o(32675);
       }
       
-      public final void b(int paramAnonymousInt1, int paramAnonymousInt2, cvp paramAnonymouscvp)
+      public final void b(int paramAnonymousInt1, int paramAnonymousInt2, cwj paramAnonymouscwj)
       {
         AppMethodBeat.i(32673);
         if (paramAnonymousInt1 != 0)
         {
-          ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene error. netRet=".concat(String.valueOf(paramAnonymousInt1)));
+          ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene error. netRet=".concat(String.valueOf(paramAnonymousInt1)));
           if (paramAnonymousInt1 == -2) {
-            new File(c.this.aNl()).delete();
+            new File(c.this.aNJ()).delete();
           }
           c.e(c.this);
           c.this.a(c.b(c.this));
           AppMethodBeat.o(32673);
           return;
         }
-        ad.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene success");
+        ae.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene success");
         try
         {
-          if (d.aPI(c.this.aNl()) < c.f(c.this))
+          if (d.aRf(c.this.aNJ()) < c.f(c.this))
           {
-            ad.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene continue;");
+            ae.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene continue;");
             c.this.a(c.b(c.this));
             AppMethodBeat.o(32673);
             return;
           }
           if (c.g(c.this))
           {
-            if (!c.h(c.this).equalsIgnoreCase(d.aPK(c.this.aNl())))
+            if (!c.h(c.this).equalsIgnoreCase(d.aRh(c.this.aNJ())))
             {
-              ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "pack md5 check error");
-              new File(c.this.aNl()).delete();
-              c.b(c.this).b(2, -1, paramAnonymouscvp);
+              ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "pack md5 check error");
+              new File(c.this.aNJ()).delete();
+              c.b(c.this).b(2, -1, paramAnonymouscwj);
               AppMethodBeat.o(32673);
               return;
             }
-            c.a(c.this, paramAnonymouscvp);
+            c.a(c.this, paramAnonymouscwj);
             AppMethodBeat.o(32673);
             return;
           }
-          if (!c.i(c.this).equalsIgnoreCase(d.aPK(c.this.aNl())))
+          if (!c.i(c.this).equalsIgnoreCase(d.aRh(c.this.aNJ())))
           {
-            ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "update pack check error");
-            new File(c.this.aNl()).delete();
-            c.b(c.this).b(-1, -1, paramAnonymouscvp);
+            ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "update pack check error");
+            new File(c.this.aNJ()).delete();
+            c.b(c.this).b(-1, -1, paramAnonymouscwj);
             AppMethodBeat.o(32673);
             return;
           }
-          d.bb(com.tencent.mm.sandbox.monitor.c.HWI, c.j(c.this) + ".temp", c.k(c.this) + ".apk");
-          c.b(c.this).b(200, 0, paramAnonymouscvp);
+          d.bc(com.tencent.mm.sandbox.monitor.c.IqQ, c.j(c.this) + ".temp", c.k(c.this) + ".apk");
+          c.b(c.this).b(200, 0, paramAnonymouscwj);
           AppMethodBeat.o(32673);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "error occured during pack processing");
-          ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localException, "", new Object[0]);
-          c.b(c.this).b(-1, -1, paramAnonymouscvp);
+          ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "error occured during pack processing");
+          ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localException, "", new Object[0]);
+          c.b(c.this).b(-1, -1, paramAnonymouscwj);
           AppMethodBeat.o(32673);
         }
       }
       
-      public final void eZ(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void fa(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(32672);
-        ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "progress, total=" + paramAnonymousInt1 + ", offset=" + paramAnonymousInt2);
-        c.b(c.this).eZ(paramAnonymousInt1, paramAnonymousInt2);
+        ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "progress, total=" + paramAnonymousInt1 + ", offset=" + paramAnonymousInt2);
+        c.b(c.this).fa(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(32672);
       }
     };
-    this.HXl = paramArrayOfString;
+    this.Irs = paramArrayOfString;
     AppMethodBeat.o(32685);
   }
   
-  private int fiB()
+  private int fmt()
   {
     AppMethodBeat.i(32691);
-    ad.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "requestCount=" + this.giC + ", curLinkIdx = " + this.giC / 5);
-    int i = this.giC / 5;
+    ae.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "requestCount=" + this.gkU + ", curLinkIdx = " + this.gkU / 5);
+    int i = this.gkU / 5;
     AppMethodBeat.o(32691);
     return i;
   }
@@ -302,25 +302,25 @@ public final class c
   public final void a(b.a parama)
   {
     AppMethodBeat.i(32687);
-    this.HXe = parama;
+    this.Irl = parama;
     if (!g.getExternalStorageState().equals("mounted"))
     {
-      ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "SDCard not available.");
+      ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "SDCard not available.");
       parama.b(-1, -1, null);
       AppMethodBeat.o(32687);
       return;
     }
-    if (this.ieP)
+    if (this.ihH)
     {
-      ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "netscene had been canceled.");
+      ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "netscene had been canceled.");
       parama.b(-1, -1, null);
       AppMethodBeat.o(32687);
       return;
     }
-    if ((fiu()) || (fiB() >= this.HXl.length))
+    if ((fmm()) || (fmt() >= this.Irs.length))
     {
-      ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "exceed max download url. url count = " + this.HXl.length);
-      if (this.HXn)
+      ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "exceed max download url. url count = " + this.Irs.length);
+      if (this.Iru)
       {
         parama.b(1, -1, null);
         AppMethodBeat.o(32687);
@@ -330,10 +330,10 @@ public final class c
       AppMethodBeat.o(32687);
       return;
     }
-    if (!e.qR(this.HWK))
+    if (!e.re(this.IqS))
     {
-      ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "SDCard full");
-      if (this.HXn)
+      ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "SDCard full");
+      if (this.Iru)
       {
         parama.b(13, -1, null);
         AppMethodBeat.o(32687);
@@ -343,21 +343,21 @@ public final class c
       AppMethodBeat.o(32687);
       return;
     }
-    this.HXm = new a(this.HWK, d.aPI(aNl()), this.HXp);
-    this.HXm.execute(new String[] { this.HXl[fiB()] });
+    this.Irt = new a(this.IqS, d.aRf(aNJ()), this.Irw);
+    this.Irt.execute(new String[] { this.Irs[fmt()] });
     AppMethodBeat.o(32687);
   }
   
-  public final String aNl()
+  public final String aNJ()
   {
     AppMethodBeat.i(32688);
-    if (this.HXn)
+    if (this.Iru)
     {
-      str = HWI + this.patchMd5 + ".temp";
+      str = IqQ + this.patchMd5 + ".temp";
       AppMethodBeat.o(32688);
       return str;
     }
-    String str = super.aNl();
+    String str = super.aNJ();
     AppMethodBeat.o(32688);
     return str;
   }
@@ -365,24 +365,24 @@ public final class c
   public final void cancel()
   {
     AppMethodBeat.i(32690);
-    ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "cancel netscene");
-    this.ieP = true;
-    if ((this.HXm != null) && (!this.HXm.isCancelled())) {
-      this.HXm.cancel(true);
+    ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "cancel netscene");
+    this.ihH = true;
+    if ((this.Irt != null) && (!this.Irt.isCancelled())) {
+      this.Irt.cancel(true);
     }
     AppMethodBeat.o(32690);
   }
   
-  public final String fit()
+  public final String fml()
   {
     AppMethodBeat.i(32689);
-    if (this.HXn)
+    if (this.Iru)
     {
-      str = HWI + this.uJh + ".apk";
+      str = IqQ + this.uUU + ".apk";
       AppMethodBeat.o(32689);
       return str;
     }
-    String str = HWI + this.HWM + ".apk";
+    String str = IqQ + this.IqU + ".apk";
     AppMethodBeat.o(32689);
     return str;
   }
@@ -390,26 +390,26 @@ public final class c
   final class a
     extends AsyncTask<String, Integer, Integer>
   {
-    private OutputStream Caa;
-    private b.a HXe;
-    private HttpGet HXs;
-    private HttpResponse HXt;
-    private HttpEntity HXu;
+    private OutputStream CrB;
+    private HttpResponse IrA;
+    private HttpEntity IrB;
+    private b.a Irl;
+    private HttpGet Irz;
     private int ccA;
     private int size;
-    private HttpClient xaJ;
+    private HttpClient xqA;
     
     public a(int paramInt1, int paramInt2, b.a parama)
     {
       AppMethodBeat.i(32680);
-      this.xaJ = null;
-      this.HXs = null;
-      this.HXt = null;
-      this.HXu = null;
-      this.Caa = new OutputStream()
+      this.xqA = null;
+      this.Irz = null;
+      this.IrA = null;
+      this.IrB = null;
+      this.CrB = new OutputStream()
       {
-        private ByteArrayOutputStream HXv;
-        private ap handler;
+        private ByteArrayOutputStream IrC;
+        private aq handler;
         
         public final void write(int paramAnonymousInt)
         {
@@ -422,15 +422,15 @@ public final class c
         public final void write(byte[] paramAnonymousArrayOfByte, final int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(32678);
-          this.HXv.write(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
-          if ((this.HXv.size() < 131072) && (c.a.a(c.a.this) + this.HXv.size() < c.a.b(c.a.this)))
+          this.IrC.write(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
+          if ((this.IrC.size() < 131072) && (c.a.a(c.a.this) + this.IrC.size() < c.a.b(c.a.this)))
           {
             AppMethodBeat.o(32678);
             return;
           }
-          paramAnonymousInt1 = this.HXv.size();
-          paramAnonymousInt2 = d.e(c.this.aNl(), this.HXv.toByteArray(), paramAnonymousInt1);
-          this.HXv.reset();
+          paramAnonymousInt1 = this.IrC.size();
+          paramAnonymousInt2 = d.e(c.this.aNJ(), this.IrC.toByteArray(), paramAnonymousInt1);
+          this.IrC.reset();
           if (paramAnonymousInt2 != 0)
           {
             paramAnonymousArrayOfByte = new IOException("appendToFile failed :".concat(String.valueOf(paramAnonymousInt2)));
@@ -444,9 +444,9 @@ public final class c
             {
               AppMethodBeat.i(32676);
               if (c.a.a(c.a.this) <= c.a.b(c.a.this)) {
-                c.a.c(c.a.this).eZ(c.a.b(c.a.this), c.a.a(c.a.this));
+                c.a.c(c.a.this).fa(c.a.b(c.a.this), c.a.a(c.a.this));
               }
-              c.a.c(c.a.this).CP(paramAnonymousInt1);
+              c.a.c(c.a.this).Dn(paramAnonymousInt1);
               AppMethodBeat.o(32676);
             }
           });
@@ -461,7 +461,7 @@ public final class c
       };
       this.size = paramInt1;
       this.ccA = paramInt2;
-      this.HXe = parama;
+      this.Irl = parama;
       AppMethodBeat.o(32680);
     }
     
@@ -474,11 +474,11 @@ public final class c
         AppMethodBeat.o(32681);
         return Integer.valueOf(-1);
       }
-      ad.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "current download url=" + paramVarArgs + ", range=" + this.ccA);
-      this.xaJ = new DefaultHttpClient();
-      this.xaJ.getParams().setIntParameter("http.connection.timeout", 15000);
-      this.HXs = new HttpGet(paramVarArgs);
-      HttpGet localHttpGet = this.HXs;
+      ae.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "current download url=" + paramVarArgs + ", range=" + this.ccA);
+      this.xqA = new DefaultHttpClient();
+      this.xqA.getParams().setIntParameter("http.connection.timeout", 15000);
+      this.Irz = new HttpGet(paramVarArgs);
+      HttpGet localHttpGet = this.Irz;
       StringBuilder localStringBuilder = new StringBuilder("bytes=").append(this.ccA).append("-");
       if (this.size - this.ccA > 1048576) {
         paramVarArgs = Integer.valueOf(this.ccA + 1048576 - 1);
@@ -488,23 +488,23 @@ public final class c
         localHttpGet.addHeader("RANGE", paramVarArgs);
         try
         {
-          this.HXe.CO(50L);
-          this.HXt = this.xaJ.execute(this.HXs);
-          int i = this.HXt.getStatusLine().getStatusCode();
+          this.Irl.Dm(50L);
+          this.IrA = this.xqA.execute(this.Irz);
+          int i = this.IrA.getStatusLine().getStatusCode();
           if ((i != 200) && (i != 206))
           {
-            ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "HttpClient return code:".concat(String.valueOf(i)));
+            ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "HttpClient return code:".concat(String.valueOf(i)));
             if (i == 416)
             {
-              if (this.HXs != null) {
-                this.HXs.abort();
+              if (this.Irz != null) {
+                this.Irz.abort();
               }
-              if (this.HXu != null) {}
+              if (this.IrB != null) {}
               try
               {
-                this.HXu.consumeContent();
-                if (this.xaJ != null) {
-                  this.xaJ.getConnectionManager().shutdown();
+                this.IrB.consumeContent();
+                if (this.xqA != null) {
+                  this.xqA.getConnectionManager().shutdown();
                 }
                 AppMethodBeat.o(32681);
                 return Integer.valueOf(-2);
@@ -514,19 +514,19 @@ public final class c
               {
                 for (;;)
                 {
-                  ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+                  ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
                 }
               }
             }
-            if (this.HXs != null) {
-              this.HXs.abort();
+            if (this.Irz != null) {
+              this.Irz.abort();
             }
-            if (this.HXu != null) {}
+            if (this.IrB != null) {}
             try
             {
-              this.HXu.consumeContent();
-              if (this.xaJ != null) {
-                this.xaJ.getConnectionManager().shutdown();
+              this.IrB.consumeContent();
+              if (this.xqA != null) {
+                this.xqA.getConnectionManager().shutdown();
               }
               AppMethodBeat.o(32681);
               return Integer.valueOf(-1);
@@ -535,22 +535,22 @@ public final class c
             {
               for (;;)
               {
-                ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+                ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
               }
             }
           }
-          if ((c.g(c.this)) && (ac.iOC) && (Math.random() > 0.2D))
+          if ((c.g(c.this)) && (ac.iRw) && (Math.random() > 0.2D))
           {
-            ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "simulateNetworkFault");
-            if (this.HXs != null) {
-              this.HXs.abort();
+            ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "simulateNetworkFault");
+            if (this.Irz != null) {
+              this.Irz.abort();
             }
-            if (this.HXu != null) {}
+            if (this.IrB != null) {}
             try
             {
-              this.HXu.consumeContent();
-              if (this.xaJ != null) {
-                this.xaJ.getConnectionManager().shutdown();
+              this.IrB.consumeContent();
+              if (this.xqA != null) {
+                this.xqA.getConnectionManager().shutdown();
               }
               AppMethodBeat.o(32681);
               return Integer.valueOf(-1);
@@ -559,23 +559,23 @@ public final class c
             {
               for (;;)
               {
-                ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+                ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
               }
             }
           }
-          this.HXt.getHeaders("Content-Length");
+          this.IrA.getHeaders("Content-Length");
           if (this.ccA > this.size)
           {
-            ad.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "range out of size");
-            if (this.HXs != null) {
-              this.HXs.abort();
+            ae.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "range out of size");
+            if (this.Irz != null) {
+              this.Irz.abort();
             }
-            if (this.HXu != null) {}
+            if (this.IrB != null) {}
             try
             {
-              this.HXu.consumeContent();
-              if (this.xaJ != null) {
-                this.xaJ.getConnectionManager().shutdown();
+              this.IrB.consumeContent();
+              if (this.xqA != null) {
+                this.xqA.getConnectionManager().shutdown();
               }
               AppMethodBeat.o(32681);
               return Integer.valueOf(-2);
@@ -584,22 +584,22 @@ public final class c
             {
               for (;;)
               {
-                ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+                ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
               }
             }
           }
-          this.HXu = this.HXt.getEntity();
-          this.HXu.writeTo(this.Caa);
-          this.HXu.consumeContent();
-          if (this.HXs != null) {
-            this.HXs.abort();
+          this.IrB = this.IrA.getEntity();
+          this.IrB.writeTo(this.CrB);
+          this.IrB.consumeContent();
+          if (this.Irz != null) {
+            this.Irz.abort();
           }
-          if (this.HXu != null) {}
+          if (this.IrB != null) {}
           try
           {
-            this.HXu.consumeContent();
-            if (this.xaJ != null) {
-              this.xaJ.getConnectionManager().shutdown();
+            this.IrB.consumeContent();
+            if (this.xqA != null) {
+              this.xqA.getConnectionManager().shutdown();
             }
             AppMethodBeat.o(32681);
             return Integer.valueOf(0);
@@ -608,14 +608,14 @@ public final class c
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
             }
           }
           try
           {
-            this.HXu.consumeContent();
-            if (this.xaJ != null) {
-              this.xaJ.getConnectionManager().shutdown();
+            this.IrB.consumeContent();
+            if (this.xqA != null) {
+              this.xqA.getConnectionManager().shutdown();
             }
             AppMethodBeat.o(32681);
             throw paramVarArgs;
@@ -624,23 +624,23 @@ public final class c
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localIOException, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localIOException, "", new Object[0]);
             }
           }
         }
         catch (Exception paramVarArgs)
         {
-          ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
-          ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "exception current in download pack", new Object[0]);
-          if (this.HXs != null) {
-            this.HXs.abort();
+          ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "exception current in download pack", new Object[0]);
+          if (this.Irz != null) {
+            this.Irz.abort();
           }
-          if (this.HXu != null) {}
+          if (this.IrB != null) {}
           try
           {
-            this.HXu.consumeContent();
-            if (this.xaJ != null) {
-              this.xaJ.getConnectionManager().shutdown();
+            this.IrB.consumeContent();
+            if (this.xqA != null) {
+              this.xqA.getConnectionManager().shutdown();
             }
             AppMethodBeat.o(32681);
             return Integer.valueOf(-1);
@@ -649,16 +649,16 @@ public final class c
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", paramVarArgs, "", new Object[0]);
             }
           }
         }
         finally
         {
-          if (this.HXs != null) {
-            this.HXs.abort();
+          if (this.Irz != null) {
+            this.Irz.abort();
           }
-          if (this.HXu == null) {}
+          if (this.IrB == null) {}
         }
       }
     }
@@ -666,18 +666,18 @@ public final class c
     protected final void onCancelled()
     {
       AppMethodBeat.i(32682);
-      ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "AsyncTask had been canceled.");
-      if (this.HXs != null) {
-        this.HXs.abort();
+      ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "AsyncTask had been canceled.");
+      if (this.Irz != null) {
+        this.Irz.abort();
       }
-      if (this.HXu != null) {}
+      if (this.IrB != null) {}
       try
       {
-        this.HXu.consumeContent();
-        if (this.xaJ != null)
+        this.IrB.consumeContent();
+        if (this.xqA != null)
         {
-          ad.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "connection shutdown.");
-          this.xaJ.getConnectionManager().shutdown();
+          ae.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "connection shutdown.");
+          this.xqA.getConnectionManager().shutdown();
         }
         AppMethodBeat.o(32682);
         return;
@@ -686,7 +686,7 @@ public final class c
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localIOException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localIOException, "", new Object[0]);
         }
       }
     }

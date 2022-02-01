@@ -15,10 +15,10 @@ final class URISpanHandlerSet$AAUriSpanHandler$1
   {
     AppMethodBeat.i(19673);
     paramDialogInterface = new ca();
-    paramDialogInterface.dmS.dmT = this.cWz;
-    paramDialogInterface.dmS.dmU = this.cWA;
-    paramDialogInterface.dmS.dmV = this.cWB;
-    a.IbL.l(paramDialogInterface);
+    paramDialogInterface.dnU.dnV = this.cXw;
+    paramDialogInterface.dnU.dnW = this.cXx;
+    paramDialogInterface.dnU.dnX = this.cXy;
+    a.IvT.l(paramDialogInterface);
     AppMethodBeat.o(19673);
   }
 }

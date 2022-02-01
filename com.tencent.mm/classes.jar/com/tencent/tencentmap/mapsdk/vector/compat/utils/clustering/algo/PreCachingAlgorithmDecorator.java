@@ -19,16 +19,16 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
   
   public PreCachingAlgorithmDecorator(Algorithm<T> paramAlgorithm)
   {
-    AppMethodBeat.i(192936);
+    AppMethodBeat.i(217606);
     this.b = new h(5);
     this.c = new ReentrantReadWriteLock();
     this.a = paramAlgorithm;
-    AppMethodBeat.o(192936);
+    AppMethodBeat.o(217606);
   }
   
   private Set<? extends Cluster<T>> a(int paramInt)
   {
-    AppMethodBeat.i(192944);
+    AppMethodBeat.i(217614);
     this.c.readLock().lock();
     Set localSet2 = (Set)this.b.get(Integer.valueOf(paramInt));
     this.c.readLock().unlock();
@@ -45,39 +45,39 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
       }
       this.c.writeLock().unlock();
     }
-    AppMethodBeat.o(192944);
+    AppMethodBeat.o(217614);
     return localSet1;
   }
   
   private void a()
   {
-    AppMethodBeat.i(192941);
+    AppMethodBeat.i(217611);
     this.b.evictAll();
-    AppMethodBeat.o(192941);
+    AppMethodBeat.o(217611);
   }
   
   public void addItem(T paramT)
   {
-    AppMethodBeat.i(192937);
+    AppMethodBeat.i(217607);
     this.a.addItem(paramT);
     a();
-    AppMethodBeat.o(192937);
+    AppMethodBeat.o(217607);
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(192938);
+    AppMethodBeat.i(217608);
     this.a.addItems(paramCollection);
     a();
-    AppMethodBeat.o(192938);
+    AppMethodBeat.o(217608);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(192939);
+    AppMethodBeat.i(217609);
     this.a.clearItems();
     a();
-    AppMethodBeat.o(192939);
+    AppMethodBeat.o(217609);
   }
   
   public Algorithm getAlgorithm()
@@ -87,7 +87,7 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
   
   public Set<? extends Cluster<T>> getClusters(double paramDouble)
   {
-    AppMethodBeat.i(192942);
+    AppMethodBeat.i(217612);
     int i = (int)paramDouble;
     Set localSet = a(i);
     if (this.b.get(Integer.valueOf(i + 1)) == null) {
@@ -96,24 +96,24 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
     if (this.b.get(Integer.valueOf(i - 1)) == null) {
       new Thread(new PreCachingAlgorithmDecorator.PrecacheRunnable(this, i - 1)).start();
     }
-    AppMethodBeat.o(192942);
+    AppMethodBeat.o(217612);
     return localSet;
   }
   
   public Collection<T> getItems()
   {
-    AppMethodBeat.i(192943);
+    AppMethodBeat.i(217613);
     Collection localCollection = this.a.getItems();
-    AppMethodBeat.o(192943);
+    AppMethodBeat.o(217613);
     return localCollection;
   }
   
   public void removeItem(T paramT)
   {
-    AppMethodBeat.i(192940);
+    AppMethodBeat.i(217610);
     this.a.removeItem(paramT);
     a();
-    AppMethodBeat.o(192940);
+    AppMethodBeat.o(217610);
   }
 }
 

@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends ArrowKeyMovementMethod
 {
-  private static f pxj;
+  private static f pDN;
   
-  public static f cfr()
+  public static f cgH()
   {
     AppMethodBeat.i(181935);
-    if (pxj == null) {
-      pxj = new f();
+    if (pDN == null) {
+      pDN = new f();
     }
-    f localf = pxj;
+    f localf = pDN;
     AppMethodBeat.o(181935);
     return localf;
   }
@@ -38,7 +38,7 @@ public final class f
       Object localObject = paramTextView.getLayout();
       j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(n + (j - k)), m);
       localObject = (s[])paramSpannable.getSpans(j, j + 1, s.class);
-      if ((m < com.tencent.mm.plugin.editor.model.nativenote.manager.f.cez()) && (localObject.length != 0))
+      if ((m < com.tencent.mm.plugin.editor.model.nativenote.manager.f.cfO()) && (localObject.length != 0))
       {
         if (i == 0) {
           localObject[0].a(paramTextView, paramSpannable, paramMotionEvent, localObject[0]);

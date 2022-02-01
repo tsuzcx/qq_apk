@@ -8,36 +8,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.b.a.a.a;
 import com.tencent.mm.media.widget.b.a.a.c;
 import com.tencent.mm.media.widget.b.a.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectHelper;", "", "()V", "CAMERA_ID_BACK", "", "getCAMERA_ID_BACK", "()I", "CAMERA_ID_FRONT", "getCAMERA_ID_FRONT", "CAMERA_STREAM_IMAGE", "getCAMERA_STREAM_IMAGE", "CAMERA_STREAM_PREVIEW", "getCAMERA_STREAM_PREVIEW", "CAMERA_STREAM_RECORD", "getCAMERA_STREAM_RECORD", "TAG", "", "isUseCaptureKeyCreator", "", "autoConfig", "", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "effectTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "enable", "getVendorTagCaptureKey", "Landroid/hardware/camera2/CaptureRequest$Key;", "list", "", "getVendorTagCaptureKeyByCreator", "getVendorTagCaptureKeyByFinder", "manualConfig", "value", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectHelper;", "", "()V", "CAMERA_ID_BACK", "", "getCAMERA_ID_BACK", "()I", "CAMERA_ID_FRONT", "getCAMERA_ID_FRONT", "CAMERA_STREAM_IMAGE", "getCAMERA_STREAM_IMAGE", "CAMERA_STREAM_PREVIEW", "getCAMERA_STREAM_PREVIEW", "CAMERA_STREAM_RECORD", "getCAMERA_STREAM_RECORD", "TAG", "", "isUseCaptureKeyCreator", "", "autoConfig", "", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "effectTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "enable", "getVendorTagCaptureKey", "Landroid/hardware/camera2/CaptureRequest$Key;", "list", "", "getVendorTagCaptureKeyByCreator", "getVendorTagCaptureKeyByFinder", "manualConfig", "value", "plugin-mediaeditor_release"})
 public final class b
 {
   private static final String TAG = "MicroMsg.WCCameraEffectHelper";
-  private static boolean hrU = false;
-  private static final int hrV = 1;
-  private static final int hrW = 2;
-  private static final int hrX = 4;
-  private static final int hrY = 1;
-  private static final int hrZ = 2;
-  public static final b hsa;
+  private static boolean huI = false;
+  private static final int huJ = 1;
+  private static final int huK = 2;
+  private static final int huL = 4;
+  private static final int huM = 1;
+  private static final int huN = 2;
+  public static final b huO;
   
   static
   {
     AppMethodBeat.i(94185);
-    hsa = new b();
-    hrU = true;
+    huO = new b();
+    huI = true;
     TAG = "MicroMsg.WCCameraEffectHelper";
-    hrV = 1;
-    hrW = 2;
-    hrX = 4;
-    hrY = 1;
-    hrZ = 2;
+    huJ = 1;
+    huK = 2;
+    huL = 4;
+    huM = 1;
+    huN = 2;
     AppMethodBeat.o(94185);
   }
   
@@ -50,9 +50,9 @@ public final class b
       paramList = parama.aFh;
       if ((paramList instanceof Integer))
       {
-        parama = parama.hsy;
+        parama = parama.hvm;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
         parama = c.d(parama, Integer.TYPE);
         AppMethodBeat.o(94182);
@@ -60,9 +60,9 @@ public final class b
       }
       if ((paramList instanceof Boolean))
       {
-        parama = parama.hsy;
+        parama = parama.hvm;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
         parama = c.d(parama, Boolean.TYPE);
         AppMethodBeat.o(94182);
@@ -70,15 +70,15 @@ public final class b
       }
       if ((paramList instanceof String))
       {
-        parama = parama.hsy;
+        parama = parama.hvm;
         if (parama == null) {
-          p.gfZ();
+          p.gkB();
         }
         parama = c.d(parama, String.class);
         AppMethodBeat.o(94182);
         return parama;
       }
-      ad.e(TAG, "getVendorTagCaptureKeyByCreator: with unknow type value = " + parama.aFh + " key = " + parama.hsy);
+      ae.e(TAG, "getVendorTagCaptureKeyByCreator: with unknow type value = " + parama.aFh + " key = " + parama.hvm);
       AppMethodBeat.o(94182);
       return null;
     }
@@ -110,11 +110,11 @@ public final class b
     AppMethodBeat.i(94183);
     p.h(paramBuilder, "builder");
     if (parama == null) {
-      p.gfZ();
+      p.gkB();
     }
     Object localObject = parama.aFh;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     a(paramBuilder, parama, paramBoolean, localObject);
     AppMethodBeat.o(94183);
@@ -130,14 +130,14 @@ public final class b
       AppMethodBeat.o(94184);
       return;
     }
-    if (hrU) {}
+    if (huI) {}
     for (CaptureRequest.Key localKey = a(parama, null);; localKey = a(parama, ((CaptureRequest)localObject1).getKeys()))
     {
-      localObject1 = parama.hsx;
+      localObject1 = parama.hvl;
       if (!(localObject1 instanceof Range)) {
         break label180;
       }
-      localObject1 = parama.hsx;
+      localObject1 = parama.hvl;
       if (localObject1 != null) {
         break;
       }
@@ -150,7 +150,7 @@ public final class b
     Object localObject1 = ((Range)localObject1).getLower();
     for (;;)
     {
-      ad.i(TAG, parama.hsw + " has been set value is " + paramBoolean);
+      ae.i(TAG, parama.hvk + " has been set value is " + paramBoolean);
       if (!(paramObject instanceof Integer)) {
         break label433;
       }
@@ -163,7 +163,7 @@ public final class b
       label180:
       if ((localObject1 instanceof ArrayList))
       {
-        localObject1 = parama.hsx;
+        localObject1 = parama.hvl;
         if (localObject1 == null)
         {
           paramBuilder = new v("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
@@ -261,33 +261,33 @@ public final class b
       AppMethodBeat.o(94184);
       return;
     }
-    ad.i(TAG, "error set config");
+    ae.i(TAG, "error set config");
     AppMethodBeat.o(94184);
   }
   
-  public static int axd()
+  public static int axs()
   {
-    return hrV;
+    return huJ;
   }
   
-  public static int axe()
+  public static int axt()
   {
-    return hrW;
+    return huK;
   }
   
-  public static int axf()
+  public static int axu()
   {
-    return hrX;
+    return huL;
   }
   
-  public static int axg()
+  public static int axv()
   {
-    return hrY;
+    return huM;
   }
   
-  public static int axh()
+  public static int axw()
   {
-    return hrZ;
+    return huN;
   }
 }
 

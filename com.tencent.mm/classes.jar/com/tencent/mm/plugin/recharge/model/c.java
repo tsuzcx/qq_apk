@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ata;
-import com.tencent.mm.protocal.protobuf.atb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.atq;
+import com.tencent.mm.protocal.protobuf.atr;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends n
   implements k
 {
   private f callback;
-  public String dzn;
-  public String pLO;
+  public String dAs;
+  public String pSt;
   public b rr;
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(67101);
-    this.dzn = paramString2;
-    this.pLO = paramString3;
+    this.dAs = paramString2;
+    this.pSt = paramString3;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ata();
-    ((b.a)localObject).hNN = new atb();
+    ((b.a)localObject).hQF = new atq();
+    ((b.a)localObject).hQG = new atr();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/flowdatarechargepreinquery";
     ((b.a)localObject).funcId = 1555;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ata)this.rr.hNK.hNQ;
-    ((ata)localObject).Gra = paramString1;
-    ((ata)localObject).FDJ = paramString2;
-    ((ata)localObject).wDU = paramString3;
-    ((ata)localObject).Grb = paramString4;
-    ((ata)localObject).Grc = paramString5;
-    ((ata)localObject).xbo = com.tencent.mm.plugin.wallet_core.model.mall.c.eGT().aEB(paramString1);
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (atq)this.rr.hQD.hQJ;
+    ((atq)localObject).GKy = paramString1;
+    ((atq)localObject).FWe = paramString2;
+    ((atq)localObject).wTF = paramString3;
+    ((atq)localObject).GKz = paramString4;
+    ((atq)localObject).GKA = paramString5;
+    ((atq)localObject).xrf = com.tencent.mm.plugin.wallet_core.model.mall.c.eKB().aFV(paramString1);
     AppMethodBeat.o(67101);
   }
   
@@ -62,7 +62,7 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(67102);
-    ad.d("MicroMsg.NetSceneFlowDataRechargePreinQuery", "errCode " + paramInt3 + ", errMsg " + paramString);
+    ae.d("MicroMsg.NetSceneFlowDataRechargePreinQuery", "errCode " + paramInt3 + ", errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(67102);
   }

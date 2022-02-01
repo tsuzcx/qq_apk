@@ -6,28 +6,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public final class m
   extends b
 {
-  private HashSet<Long> rDW;
-  final int rDf;
+  final int rLq;
+  private HashSet<Long> rMh;
   
   public m(o paramo)
   {
     super(paramo);
     AppMethodBeat.i(107483);
-    this.rDf = a.ax(paramo.context, 2131165359);
-    this.rDW = new HashSet();
+    this.rLq = a.ax(paramo.context, 2131165359);
+    this.rMh = new HashSet();
     AppMethodBeat.o(107483);
   }
   
@@ -39,35 +39,35 @@ public final class m
     {
       paramViewGroup = new a();
       paramView = a(View.inflate((Context)localObject, 2131493963, null), paramViewGroup, paramg);
-      paramViewGroup.rDr = ((ImageView)paramView.findViewById(2131299801));
-      paramViewGroup.rDY = ((TextView)paramView.findViewById(2131299855));
-      LinkedList localLinkedList = paramg.field_favProto.nZa;
+      paramViewGroup.rLC = ((ImageView)paramView.findViewById(2131299801));
+      paramViewGroup.rMj = ((TextView)paramView.findViewById(2131299855));
+      LinkedList localLinkedList = paramg.field_favProto.oeJ;
       if (localLinkedList.size() <= 0) {
         break label231;
       }
-      int i = ((ajn)localLinkedList.getFirst()).duration;
-      paramViewGroup.rDY.setText(com.tencent.mm.plugin.fav.ui.m.G((Context)localObject, i));
+      int i = ((ajx)localLinkedList.getFirst()).duration;
+      paramViewGroup.rMj.setText(com.tencent.mm.plugin.fav.ui.m.G((Context)localObject, i));
       if ((paramg != null) && (i <= 1)) {
         break label180;
       }
       label118:
-      paramViewGroup.rDY.setVisibility(0);
+      paramViewGroup.rMj.setVisibility(0);
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
       localObject = com.tencent.mm.plugin.fav.a.b.c(paramg);
-      this.rvp.a(paramViewGroup.rDr, (ajn)localObject, paramg, 2131689581, this.rDf, this.rDf);
+      this.rDB.a(paramViewGroup.rLC, (ajx)localObject, paramg, 2131689581, this.rLq, this.rLq);
       AppMethodBeat.o(107484);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
       label180:
-      if (this.rDW.contains(Long.valueOf(paramg.field_localId))) {
+      if (this.rMh.contains(Long.valueOf(paramg.field_localId))) {
         break label118;
       }
-      this.rDW.add(Long.valueOf(paramg.field_localId));
-      com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+      this.rMh.add(Long.valueOf(paramg.field_localId));
+      com.tencent.mm.kernel.g.ajU().aw(new Runnable()
       {
         public final void run()
         {
@@ -78,24 +78,24 @@ public final class m
       });
       break label118;
       label231:
-      paramViewGroup.rDY.setVisibility(8);
+      paramViewGroup.rMj.setVisibility(8);
     }
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
     AppMethodBeat.i(107485);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rBM, paramakp);
     AppMethodBeat.o(107485);
   }
   
   public static final class a
     extends b.b
   {
-    TextView rDY;
-    ImageView rDr;
+    ImageView rLC;
+    TextView rMj;
   }
 }
 

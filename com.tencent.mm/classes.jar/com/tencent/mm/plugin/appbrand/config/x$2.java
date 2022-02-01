@@ -12,7 +12,7 @@ public final class x$2
   public final void run()
   {
     AppMethodBeat.i(44911);
-    Iterator localIterator = this.jZa.iterator();
+    Iterator localIterator = this.kcr.iterator();
     while (localIterator.hasNext()) {
       x.a((String)localIterator.next(), true, null);
     }

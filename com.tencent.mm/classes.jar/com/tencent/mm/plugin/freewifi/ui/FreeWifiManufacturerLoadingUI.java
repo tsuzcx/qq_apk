@@ -21,11 +21,11 @@ import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.c;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
@@ -33,26 +33,26 @@ public class FreeWifiManufacturerLoadingUI
   extends MMActivity
 {
   private String bssid;
-  private av cXg;
+  private aw cYd;
   private String ssid;
-  private ImageView tqj;
-  private TextView tqk;
-  private Button tql;
-  private final int tqm;
-  private final int tqn;
-  private final int tqo;
-  private int[] tqp;
-  ap tqq;
-  ap tqr;
+  private ImageView tBa;
+  private TextView tBb;
+  private Button tBc;
+  private final int tBd;
+  private final int tBe;
+  private final int tBf;
+  private int[] tBg;
+  aq tBh;
+  aq tBi;
   
   public FreeWifiManufacturerLoadingUI()
   {
     AppMethodBeat.i(25077);
-    this.tqm = 1;
-    this.tqn = 2;
-    this.tqo = 3;
-    this.tqp = new int[] { 2131232429, 2131232430, 2131232431, 2131232432, 2131232433 };
-    this.tqq = new ap()
+    this.tBd = 1;
+    this.tBe = 2;
+    this.tBf = 3;
+    this.tBg = new int[] { 2131232429, 2131232430, 2131232431, 2131232432, 2131232433 };
+    this.tBh = new aq()
     {
       int i = 0;
       
@@ -80,27 +80,27 @@ public class FreeWifiManufacturerLoadingUI
         }
       }
     };
-    this.tqr = new ap();
+    this.tBi = new aq();
     AppMethodBeat.o(25077);
   }
   
-  private void akb(final String paramString)
+  private void akZ(final String paramString)
   {
     AppMethodBeat.i(25082);
-    j.cRC().cRl().post(new Runnable()
+    j.cUh().cTQ().post(new Runnable()
     {
-      private int tqu = 0;
-      private final int tqv = 5;
+      private int tBl = 0;
+      private final int tBm = 5;
       
-      private void cSr()
+      private void cUW()
       {
         AppMethodBeat.i(25073);
-        ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "_httpRequestForPortalUrl retry.");
-        this.tqu += 1;
+        ae.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "_httpRequestForPortalUrl retry.");
+        this.tBl += 1;
         try
         {
           Thread.sleep(2000L);
-          cSs();
+          cUX();
           AppMethodBeat.o(25073);
           return;
         }
@@ -108,30 +108,30 @@ public class FreeWifiManufacturerLoadingUI
         {
           for (;;)
           {
-            ad.e("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "sleep exception. " + localInterruptedException.getMessage());
+            ae.e("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "sleep exception. " + localInterruptedException.getMessage());
           }
         }
       }
       
       /* Error */
-      private void cSs()
+      private void cUX()
       {
         // Byte code:
         //   0: sipush 25074
         //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   6: invokestatic 92	com/tencent/mm/plugin/freewifi/h$b:cQP	()Lcom/tencent/mm/plugin/freewifi/h;
-        //   9: invokevirtual 97	com/tencent/mm/plugin/freewifi/h:cQO	()Ljava/lang/String;
+        //   6: invokestatic 92	com/tencent/mm/plugin/freewifi/h$b:cTu	()Lcom/tencent/mm/plugin/freewifi/h;
+        //   9: invokevirtual 97	com/tencent/mm/plugin/freewifi/h:cTt	()Ljava/lang/String;
         //   12: astore 4
         //   14: ldc 43
         //   16: ldc 99
         //   18: aload 4
         //   20: invokestatic 105	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
         //   23: invokevirtual 109	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   26: invokestatic 50	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   26: invokestatic 50	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   29: aload_0
-        //   30: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   30: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   33: aload_0
-        //   34: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   34: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   37: ldc 110
         //   39: invokevirtual 114	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:getString	(I)Ljava/lang/String;
         //   42: invokestatic 117	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;Ljava/lang/String;)V
@@ -176,18 +176,18 @@ public class FreeWifiManufacturerLoadingUI
         //   119: iload_1
         //   120: invokestatic 156	java/lang/String:valueOf	(I)Ljava/lang/String;
         //   123: invokevirtual 109	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   126: invokestatic 50	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   126: invokestatic 50	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   129: sipush 200
         //   132: iload_1
         //   133: if_icmpne +328 -> 461
         //   136: ldc 43
-        //   138: invokestatic 161	com/tencent/mm/plugin/freewifi/m:ajK	(Ljava/lang/String;)Ljava/lang/String;
+        //   138: invokestatic 161	com/tencent/mm/plugin/freewifi/m:akI	(Ljava/lang/String;)Ljava/lang/String;
         //   141: aload_0
-        //   142: getfield 24	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tmh	Ljava/lang/String;
+        //   142: getfield 24	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:twZ	Ljava/lang/String;
         //   145: invokevirtual 165	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   148: ifne +37 -> 185
         //   151: aload_0
-        //   152: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   152: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   155: sipush 1150
         //   158: ldc 167
         //   160: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
@@ -210,14 +210,14 @@ public class FreeWifiManufacturerLoadingUI
         //   197: aload_2
         //   198: invokestatic 105	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
         //   201: invokevirtual 109	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   204: invokestatic 50	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   204: invokestatic 50	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   207: aload_2
         //   208: ldc 190
         //   210: invokevirtual 194	java/lang/String:indexOf	(Ljava/lang/String;)I
         //   213: iconst_m1
         //   214: if_icmpne +47 -> 261
         //   217: aload_0
-        //   218: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   218: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   221: aload 4
         //   223: invokestatic 197	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:b	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;Ljava/lang/String;)V
         //   226: aload_3
@@ -234,33 +234,33 @@ public class FreeWifiManufacturerLoadingUI
         //   249: ldc 43
         //   251: aload_2
         //   252: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   255: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   255: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   258: goto -21 -> 237
         //   261: aload_0
-        //   262: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   262: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   265: iconst_0
         //   266: ldc 200
         //   268: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
         //   271: ldc 43
         //   273: ldc 202
-        //   275: invokestatic 50	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   275: invokestatic 50	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   278: aload_0
-        //   279: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   279: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   282: iconst_0
         //   283: ldc 200
         //   285: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
         //   288: aload_0
-        //   289: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   289: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   292: aload_0
-        //   293: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   293: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   296: ldc 203
         //   298: invokevirtual 114	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:getString	(I)Ljava/lang/String;
         //   301: invokestatic 117	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;Ljava/lang/String;)V
         //   304: aload_0
-        //   305: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   305: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   308: invokestatic 206	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:e	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;)V
         //   311: aload_0
-        //   312: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   312: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   315: invokestatic 209	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:f	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;)V
         //   318: goto -155 -> 163
         //   321: astore 4
@@ -286,7 +286,7 @@ public class FreeWifiManufacturerLoadingUI
         //   358: invokevirtual 224	java/io/StringWriter:toString	()Ljava/lang/String;
         //   361: invokestatic 105	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
         //   364: invokevirtual 109	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   367: invokestatic 50	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   367: invokestatic 50	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   370: aload_3
         //   371: astore_2
         //   372: aload 4
@@ -301,7 +301,7 @@ public class FreeWifiManufacturerLoadingUI
         //   390: dup
         //   391: iconst_0
         //   392: aload_0
-        //   393: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqu	I
+        //   393: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBl	I
         //   396: invokestatic 233	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   399: aastore
         //   400: dup
@@ -309,17 +309,17 @@ public class FreeWifiManufacturerLoadingUI
         //   402: iconst_5
         //   403: invokestatic 233	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   406: aastore
-        //   407: invokestatic 236	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   407: invokestatic 236	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   410: aload_3
         //   411: astore_2
         //   412: aload_0
-        //   413: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqu	I
+        //   413: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBl	I
         //   416: iconst_5
         //   417: if_icmpge +358 -> 775
         //   420: aload_3
         //   421: astore_2
         //   422: aload_0
-        //   423: invokespecial 238	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:cSr	()V
+        //   423: invokespecial 238	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:cUW	()V
         //   426: aload_3
         //   427: ifnull +14 -> 441
         //   430: aload_3
@@ -334,7 +334,7 @@ public class FreeWifiManufacturerLoadingUI
         //   449: ldc 43
         //   451: aload_2
         //   452: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   455: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   455: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   458: goto -284 -> 174
         //   461: sipush 302
         //   464: iload_1
@@ -349,16 +349,16 @@ public class FreeWifiManufacturerLoadingUI
         //   479: ldc 242
         //   481: invokevirtual 245	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
         //   484: aastore
-        //   485: invokestatic 236	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   485: invokestatic 236	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   488: aload_3
         //   489: ldc 242
         //   491: invokevirtual 245	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
         //   494: astore_2
         //   495: aload_2
-        //   496: invokestatic 249	com/tencent/mm/plugin/freewifi/m:ea	(Ljava/lang/String;)Z
+        //   496: invokestatic 249	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
         //   499: ifne +46 -> 545
         //   502: aload_0
-        //   503: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   503: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   506: aload_2
         //   507: invokestatic 197	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:b	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;Ljava/lang/String;)V
         //   510: aload_3
@@ -375,10 +375,10 @@ public class FreeWifiManufacturerLoadingUI
         //   533: ldc 43
         //   535: aload_2
         //   536: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   539: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   539: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   542: goto -21 -> 521
         //   545: aload_0
-        //   546: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   546: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   549: sipush 1146
         //   552: ldc 251
         //   554: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
@@ -396,10 +396,10 @@ public class FreeWifiManufacturerLoadingUI
         //   580: ldc 43
         //   582: aload_2
         //   583: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   586: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   586: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   589: goto -21 -> 568
         //   592: aload_0
-        //   593: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   593: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   596: sipush 1149
         //   599: ldc 253
         //   601: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
@@ -417,7 +417,7 @@ public class FreeWifiManufacturerLoadingUI
         //   627: ldc 43
         //   629: aload_2
         //   630: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   633: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   633: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   636: goto -21 -> 615
         //   639: ldc 43
         //   641: ldc 255
@@ -426,7 +426,7 @@ public class FreeWifiManufacturerLoadingUI
         //   647: dup
         //   648: iconst_0
         //   649: aload_0
-        //   650: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqu	I
+        //   650: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBl	I
         //   653: invokestatic 233	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   656: aastore
         //   657: dup
@@ -434,13 +434,13 @@ public class FreeWifiManufacturerLoadingUI
         //   659: iconst_5
         //   660: invokestatic 233	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   663: aastore
-        //   664: invokestatic 236	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   664: invokestatic 236	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   667: aload_0
-        //   668: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqu	I
+        //   668: getfield 29	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBl	I
         //   671: iconst_5
         //   672: if_icmpge +42 -> 714
         //   675: aload_0
-        //   676: invokespecial 238	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:cSr	()V
+        //   676: invokespecial 238	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:cUW	()V
         //   679: aload_3
         //   680: ifnull +14 -> 694
         //   683: aload_3
@@ -455,10 +455,10 @@ public class FreeWifiManufacturerLoadingUI
         //   702: ldc 43
         //   704: aload_2
         //   705: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   708: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   708: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   711: goto -21 -> 690
         //   714: aload_0
-        //   715: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   715: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   718: sipush 1148
         //   721: ldc_w 257
         //   724: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
@@ -476,18 +476,18 @@ public class FreeWifiManufacturerLoadingUI
         //   750: ldc 43
         //   752: aload_2
         //   753: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   756: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   756: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   759: goto -21 -> 738
         //   762: astore_2
         //   763: ldc 43
         //   765: aload_2
         //   766: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   769: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   769: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   772: goto -335 -> 437
         //   775: aload_3
         //   776: astore_2
         //   777: aload_0
-        //   778: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tqs	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
+        //   778: getfield 22	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$5:tBj	Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;
         //   781: sipush 1153
         //   784: ldc_w 257
         //   787: invokestatic 170	com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI:a	(Lcom/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI;ILjava/lang/String;)V
@@ -505,7 +505,7 @@ public class FreeWifiManufacturerLoadingUI
         //   813: ldc 43
         //   815: aload_2
         //   816: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   819: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   819: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   822: goto -21 -> 801
         //   825: astore 4
         //   827: aload_2
@@ -527,7 +527,7 @@ public class FreeWifiManufacturerLoadingUI
         //   857: ldc 43
         //   859: aload 4
         //   861: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   864: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   864: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   867: goto -24 -> 843
         //   870: astore_2
         //   871: goto -39 -> 832
@@ -606,19 +606,19 @@ public class FreeWifiManufacturerLoadingUI
       public final void run()
       {
         AppMethodBeat.i(25072);
-        Context localContext = aj.getContext();
+        Context localContext = ak.getContext();
         if (localContext == null)
         {
           FreeWifiManufacturerLoadingUI.a(FreeWifiManufacturerLoadingUI.this, 1151, "Wechat hasn't started completely. Wait 5 seconds and retry.");
           AppMethodBeat.o(25072);
           return;
         }
-        if ((!m.cQX()) || (!m.ajK("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI").equals(paramString)))
+        if ((!m.cTC()) || (!m.akI("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI").equals(paramString)))
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "It starts to connect portal ssid " + paramString);
+          ae.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "It starts to connect portal ssid " + paramString);
           FreeWifiManufacturerLoadingUI.a(FreeWifiManufacturerLoadingUI.this, FreeWifiManufacturerLoadingUI.this.getString(2131759644));
-          int i = new com.tencent.mm.plugin.freewifi.b(paramString, localContext).cQH();
-          ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "connectRet=".concat(String.valueOf(i)));
+          int i = new com.tencent.mm.plugin.freewifi.b(paramString, localContext).cTm();
+          ae.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "connectRet=".concat(String.valueOf(i)));
           if (i != 0)
           {
             FreeWifiManufacturerLoadingUI.a(FreeWifiManufacturerLoadingUI.this, i, "An attempt to switch to special portal ap failed. connectRet=".concat(String.valueOf(i)));
@@ -626,38 +626,38 @@ public class FreeWifiManufacturerLoadingUI
             return;
           }
         }
-        cSs();
+        cUX();
         AppMethodBeat.o(25072);
       }
     });
     AppMethodBeat.o(25082);
   }
   
-  private void akc(String paramString)
+  private void ala(String paramString)
   {
     AppMethodBeat.i(25084);
     Message localMessage = Message.obtain();
     localMessage.what = 3;
     localMessage.obj = paramString;
-    this.tqq.sendMessage(localMessage);
+    this.tBh.sendMessage(localMessage);
     AppMethodBeat.o(25084);
   }
   
-  private void bk(int paramInt, String paramString)
+  private void bj(int paramInt, String paramString)
   {
     AppMethodBeat.i(25083);
-    ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "errcode=%d, errmsg=%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ae.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "errcode=%d, errmsg=%s", new Object[] { Integer.valueOf(paramInt), paramString });
     if (paramInt != 0)
     {
-      cSp();
+      cUU();
       if (paramInt == 1154)
       {
-        akc(getString(2131759642) + "(031" + k.b.tlQ.tlS + "-" + Math.abs(paramInt) + ")");
+        ala(getString(2131759642) + "(031" + k.b.twI.twK + "-" + Math.abs(paramInt) + ")");
         AppMethodBeat.o(25083);
         return;
       }
-      akc(getString(2131759641) + "(031" + k.b.tlQ.tlS + "-" + Math.abs(paramInt) + ")");
-      this.tqr.postDelayed(new Runnable()
+      ala(getString(2131759641) + "(031" + k.b.twI.twK + "-" + Math.abs(paramInt) + ")");
+      this.tBi.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -670,60 +670,60 @@ public class FreeWifiManufacturerLoadingUI
     AppMethodBeat.o(25083);
   }
   
-  private static String cI(Context paramContext)
+  private static String cK(Context paramContext)
   {
     AppMethodBeat.i(25085);
     try
     {
       paramContext = ((ActivityManager.RunningTaskInfo)((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1).get(0)).topActivity.getClassName();
-      ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "top activity name =".concat(String.valueOf(paramContext)));
+      ae.i("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", "top activity name =".concat(String.valueOf(paramContext)));
       AppMethodBeat.o(25085);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.FreeWifi.FreeWifiManufacturerLoadingUI", paramContext, "", new Object[0]);
       AppMethodBeat.o(25085);
     }
     return "(null)";
   }
   
-  private void cSp()
+  private void cUU()
   {
     AppMethodBeat.i(25078);
-    if (this.cXg != null) {
-      this.cXg.stopTimer();
+    if (this.cYd != null) {
+      this.cYd.stopTimer();
     }
-    this.tqq.sendEmptyMessage(2);
+    this.tBh.sendEmptyMessage(2);
     AppMethodBeat.o(25078);
   }
   
-  public final void cSq()
+  public final void cUV()
   {
     AppMethodBeat.i(25081);
-    this.tqq.sendEmptyMessage(1);
-    if (this.cXg != null) {
-      this.cXg.stopTimer();
+    this.tBh.sendEmptyMessage(1);
+    if (this.cYd != null) {
+      this.cYd.stopTimer();
     }
-    this.cXg = new av(new av.a()
+    this.cYd = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(25071);
-        FreeWifiManufacturerLoadingUI.this.tqq.sendEmptyMessage(1);
+        FreeWifiManufacturerLoadingUI.this.tBh.sendEmptyMessage(1);
         AppMethodBeat.o(25071);
         return true;
       }
     }, true);
-    this.cXg.az(200L, 200L);
-    akb(this.ssid);
+    this.cYd.ay(200L, 200L);
+    akZ(this.ssid);
     AppMethodBeat.o(25081);
   }
   
   public void finish()
   {
     AppMethodBeat.i(25079);
-    cSp();
+    cUU();
     super.finish();
     AppMethodBeat.o(25079);
   }
@@ -740,18 +740,18 @@ public class FreeWifiManufacturerLoadingUI
     setMMTitle(2131759653);
     this.ssid = getIntent().getStringExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid");
     this.bssid = getIntent().getStringExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid");
-    this.tqj = ((ImageView)findViewById(2131300264));
-    this.tqk = ((TextView)findViewById(2131300265));
-    this.tql = ((Button)findViewById(2131300266));
-    this.tql.setOnClickListener(new View.OnClickListener()
+    this.tBa = ((ImageView)findViewById(2131300264));
+    this.tBb = ((TextView)findViewById(2131300265));
+    this.tBc = ((Button)findViewById(2131300266));
+    this.tBc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25069);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        FreeWifiManufacturerLoadingUI.this.tqr.postDelayed(new Runnable()
+        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        FreeWifiManufacturerLoadingUI.this.tBi.postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -760,7 +760,7 @@ public class FreeWifiManufacturerLoadingUI
             AppMethodBeat.o(25068);
           }
         }, 0L);
-        FreeWifiManufacturerLoadingUI.this.cSq();
+        FreeWifiManufacturerLoadingUI.this.cUV();
         a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiManufacturerLoadingUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(25069);
       }
@@ -775,7 +775,7 @@ public class FreeWifiManufacturerLoadingUI
         return true;
       }
     });
-    cSq();
+    cUV();
     AppMethodBeat.o(25080);
   }
   
@@ -787,7 +787,7 @@ public class FreeWifiManufacturerLoadingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiManufacturerLoadingUI
  * JD-Core Version:    0.7.0.1
  */

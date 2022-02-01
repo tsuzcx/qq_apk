@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.product.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahk;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ahu;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
@@ -21,12 +21,12 @@ public final class b
     return paramString;
   }
   
-  public static String a(Context paramContext, ahk paramahk)
+  public static String a(Context paramContext, ahu paramahu)
   {
     AppMethodBeat.i(66856);
-    if (paramahk.FMH > 0)
+    if (paramahu.Gfg > 0)
     {
-      paramContext = paramahk.Name + " " + c(paramahk.FMH, paramahk.PriceType);
+      paramContext = paramahu.Name + " " + c(paramahu.Gfg, paramahu.PriceType);
       AppMethodBeat.o(66856);
       return paramContext;
     }
@@ -38,7 +38,7 @@ public final class b
   public static String c(double paramDouble, String paramString)
   {
     AppMethodBeat.i(66855);
-    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bt.isNullOrNil(paramString)))
+    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bu.isNullOrNil(paramString)))
     {
       paramString = String.format("¥%.2f", new Object[] { Double.valueOf(paramDouble / 100.0D) });
       AppMethodBeat.o(66855);
@@ -51,7 +51,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.b
  * JD-Core Version:    0.7.0.1
  */

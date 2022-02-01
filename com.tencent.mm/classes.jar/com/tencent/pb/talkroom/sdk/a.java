@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract void KD(int paramInt);
+  public abstract void Ld(int paramInt);
   
-  public abstract void Ky(int paramInt);
+  public abstract void Li(int paramInt);
   
   public abstract void b(MultiTalkGroup paramMultiTalkGroup);
   
@@ -15,23 +15,23 @@ public abstract interface a
   
   public abstract void d(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void dpX();
+  public abstract void dtj();
   
-  public abstract void dpY();
+  public abstract void dtk();
   
-  public abstract void dpZ();
+  public abstract void dtl();
   
-  public abstract void dqa();
+  public abstract void dtm();
   
   public abstract void e(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void ez(List<a.ap> paramList);
+  public abstract void eE(List<a.ap> paramList);
   
   public abstract void f(MultiTalkGroup paramMultiTalkGroup);
   
   public abstract void m(int paramInt, Object paramObject);
   
-  public abstract void oG(boolean paramBoolean);
+  public abstract void oN(boolean paramBoolean);
 }
 
 

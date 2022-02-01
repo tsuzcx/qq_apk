@@ -6,9 +6,9 @@ import com.google.b.a.e;
 public final class a$bb
   extends e
 {
-  public int CcE = 0;
-  public long CcF = 0L;
-  public int LJi = 0;
+  public int Cuf = 0;
+  public long Cug = 0L;
+  public int Mgm = 0;
   
   public a$bb()
   {
@@ -17,14 +17,14 @@ public final class a$bb
   
   public final void a(b paramb)
   {
-    if (this.CcE != 0) {
-      paramb.bx(1, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(1, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(2, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(2, this.Cug);
     }
-    if (this.LJi != 0) {
-      paramb.by(3, this.LJi);
+    if (this.Mgm != 0) {
+      paramb.by(3, this.Mgm);
     }
     super.a(paramb);
   }
@@ -33,16 +33,16 @@ public final class a$bb
   {
     int j = super.zq();
     int i = j;
-    if (this.CcE != 0) {
-      i = j + b.bz(1, this.CcE);
+    if (this.Cuf != 0) {
+      i = j + b.bz(1, this.Cuf);
     }
     j = i;
-    if (this.CcF != 0L) {
-      j = i + b.p(2, this.CcF);
+    if (this.Cug != 0L) {
+      j = i + b.p(2, this.Cug);
     }
     i = j;
-    if (this.LJi != 0) {
-      i = j + b.bA(3, this.LJi);
+    if (this.Mgm != 0) {
+      i = j + b.bA(3, this.Mgm);
     }
     return i;
   }

@@ -6,31 +6,31 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 
 public final class j
 {
-  private d kcp;
+  private d kfG;
   public Context mContext;
   public Resources mResources;
-  a vdU;
+  a vqf;
   
   public j(Context paramContext, a parama)
   {
     AppMethodBeat.i(55961);
-    this.kcp = null;
+    this.kfG = null;
     this.mContext = paramContext;
-    this.vdU = parama;
+    this.vqf = parama;
     this.mResources = this.mContext.getResources();
     AppMethodBeat.o(55961);
   }
   
-  public final void dgM()
+  public final void djL()
   {
     AppMethodBeat.i(55962);
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl().get(67590, null);
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA().get(67590, null);
     if (localObject == null) {}
     for (boolean bool = false; !bool; bool = ((Boolean)localObject).booleanValue())
     {
@@ -39,8 +39,8 @@ public final class j
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(55957);
-          if (j.this.vdU != null) {
-            j.this.vdU.dgN();
+          if (j.this.vqf != null) {
+            j.this.vqf.djM();
           }
           AppMethodBeat.o(55957);
         }
@@ -48,23 +48,23 @@ public final class j
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
       });
-      com.tencent.mm.kernel.g.ajC().ajl().set(67590, Boolean.TRUE);
+      com.tencent.mm.kernel.g.ajR().ajA().set(67590, Boolean.TRUE);
       AppMethodBeat.o(55962);
       return;
     }
-    if (this.vdU != null) {
-      this.vdU.dgN();
+    if (this.vqf != null) {
+      this.vqf.djM();
     }
     AppMethodBeat.o(55962);
   }
   
   public static abstract interface a
   {
-    public abstract void IX(int paramInt);
+    public abstract void Jw(int paramInt);
     
-    public abstract void dgN();
+    public abstract void djM();
     
-    public abstract void dgO();
+    public abstract void djN();
   }
 }
 

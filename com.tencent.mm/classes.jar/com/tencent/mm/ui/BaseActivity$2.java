@@ -17,8 +17,8 @@ final class BaseActivity$2
     AppMethodBeat.i(159087);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/BaseActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.ITv.onMenuItemClick(null);
+    a.b("com/tencent/mm/ui/BaseActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.Jod.onMenuItemClick(null);
     a.a(this, "com/tencent/mm/ui/BaseActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(159087);
   }

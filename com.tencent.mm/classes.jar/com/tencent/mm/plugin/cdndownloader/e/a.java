@@ -6,19 +6,19 @@ import java.util.HashSet;
 public final class a<E>
   extends HashSet<E>
 {
-  private b oRp;
+  private b oXR;
   
   public a(b paramb)
   {
-    this.oRp = paramb;
+    this.oXR = paramb;
   }
   
-  private void bYX()
+  private void cam()
   {
     try
     {
       AppMethodBeat.i(120764);
-      this.oRp.bYW();
+      this.oXR.cal();
       AppMethodBeat.o(120764);
       return;
     }
@@ -29,12 +29,12 @@ public final class a<E>
     }
   }
   
-  private void bYY()
+  private void can()
   {
     try
     {
       AppMethodBeat.i(120765);
-      this.oRp.remove();
+      this.oXR.remove();
       AppMethodBeat.o(120765);
       return;
     }
@@ -45,12 +45,12 @@ public final class a<E>
     }
   }
   
-  private void bYZ()
+  private void cao()
   {
     try
     {
       AppMethodBeat.i(120766);
-      this.oRp.clear();
+      this.oXR.clear();
       AppMethodBeat.o(120766);
       return;
     }
@@ -67,7 +67,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120767);
       boolean bool = super.add(paramE);
-      bYX();
+      cam();
       AppMethodBeat.o(120767);
       return bool;
     }
@@ -82,7 +82,7 @@ public final class a<E>
   {
     AppMethodBeat.i(120768);
     super.clear();
-    bYZ();
+    cao();
     AppMethodBeat.o(120768);
   }
   
@@ -92,7 +92,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120769);
       boolean bool = super.remove(paramObject);
-      bYY();
+      can();
       AppMethodBeat.o(120769);
       return bool;
     }

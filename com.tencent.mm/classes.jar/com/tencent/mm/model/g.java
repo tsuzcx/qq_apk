@@ -1,9 +1,9 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.c;
-import com.tencent.mm.am.a.d;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.al.a.c;
+import com.tencent.mm.al.a.d;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.api.j;
 
 public final class g
@@ -12,7 +12,7 @@ public final class g
   public final c bd(long paramLong)
   {
     AppMethodBeat.i(123953);
-    c localc = ag.aGb().bd(paramLong);
+    c localc = ag.aGr().bd(paramLong);
     AppMethodBeat.o(123953);
     return localc;
   }

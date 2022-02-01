@@ -20,23 +20,23 @@ import d.g.b.q;
 import d.l;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "decorView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getDecorView", "()Landroid/view/View;", "decorView$delegate", "Lkotlin/Lazy;", "sendScreen", "", "getLayoutId", "", "initButton", "", "noActionBar", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "persistentState", "Landroid/os/PersistableBundle;", "startCapture", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "decorView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getDecorView", "()Landroid/view/View;", "decorView$delegate", "Lkotlin/Lazy;", "sendScreen", "", "getLayoutId", "", "initButton", "", "noActionBar", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "persistentState", "Landroid/os/PersistableBundle;", "startCapture", "plugin-multitalk_release"})
 public final class MultiTalkScreenCastUI
   extends MMActivity
 {
   private HashMap _$_findViewCache;
-  private final f wdZ;
+  private final f wtC;
   
   public MultiTalkScreenCastUI()
   {
-    AppMethodBeat.i(206731);
-    this.wdZ = g.O((d.g.a.a)new a(this));
-    AppMethodBeat.o(206731);
+    AppMethodBeat.i(191005);
+    this.wtC = g.O((d.g.a.a)new a(this));
+    AppMethodBeat.o(191005);
   }
   
   private View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(206732);
+    AppMethodBeat.i(191006);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -47,7 +47,7 @@ public final class MultiTalkScreenCastUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(206732);
+    AppMethodBeat.o(191006);
     return localView1;
   }
   
@@ -63,12 +63,12 @@ public final class MultiTalkScreenCastUI
   
   public final void onCreate(Bundle paramBundle, PersistableBundle paramPersistableBundle)
   {
-    AppMethodBeat.i(206730);
+    AppMethodBeat.i(191004);
     super.onCreate(paramBundle, paramPersistableBundle);
-    ((Button)_$_findCachedViewById(2131301498)).setOnClickListener((View.OnClickListener)b.web);
-    ((Button)_$_findCachedViewById(2131302573)).setOnClickListener((View.OnClickListener)c.wec);
+    ((Button)_$_findCachedViewById(2131301498)).setOnClickListener((View.OnClickListener)b.wtE);
+    ((Button)_$_findCachedViewById(2131302573)).setOnClickListener((View.OnClickListener)c.wtF);
     ((Button)_$_findCachedViewById(2131301237)).setOnClickListener((View.OnClickListener)new d(this));
-    AppMethodBeat.o(206730);
+    AppMethodBeat.o(191004);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -77,7 +77,7 @@ public final class MultiTalkScreenCastUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
     implements d.g.a.a<View>
@@ -88,63 +88,63 @@ public final class MultiTalkScreenCastUI
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
-    public static final b web;
+    public static final b wtE;
     
     static
     {
-      AppMethodBeat.i(206726);
-      web = new b();
-      AppMethodBeat.o(206726);
+      AppMethodBeat.i(191000);
+      wtE = new b();
+      AppMethodBeat.o(191000);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(206725);
+      AppMethodBeat.i(190999);
       b localb = new b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = z.dqx();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = z.dtK();
       p.g(paramView, "SubCoreMultiTalk.getMultiTalkManager()");
-      paramView.dpP();
-      r.KG(102);
+      paramView.dtb();
+      r.Ll(102);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(206725);
+      AppMethodBeat.o(190999);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
-    public static final c wec;
+    public static final c wtF;
     
     static
     {
-      AppMethodBeat.i(206728);
-      wec = new c();
-      AppMethodBeat.o(206728);
+      AppMethodBeat.i(191002);
+      wtF = new c();
+      AppMethodBeat.o(191002);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(206727);
+      AppMethodBeat.i(191001);
       b localb = new b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = z.dqx();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = z.dtK();
       p.g(paramView, "SubCoreMultiTalk.getMultiTalkManager()");
-      paramView.dpP();
-      r.KG(103);
+      paramView.dtb();
+      r.Ll(103);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(206727);
+      AppMethodBeat.o(191001);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -152,23 +152,23 @@ public final class MultiTalkScreenCastUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(206729);
+      AppMethodBeat.i(191003);
       b localb = new b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = z.dqx();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      paramView = z.dtK();
       p.g(paramView, "SubCoreMultiTalk.getMultiTalkManager()");
-      paramView.dpP();
-      r.KG(102);
-      this.wea.finish();
+      paramView.dtb();
+      r.Ll(102);
+      this.wtD.finish();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/MultiTalkScreenCastUI$initButton$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(206729);
+      AppMethodBeat.o(191003);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkScreenCastUI
  * JD-Core Version:    0.7.0.1
  */

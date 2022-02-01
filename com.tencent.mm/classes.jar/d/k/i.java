@@ -1,35 +1,73 @@
 package d.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
+import d.l;
 
-@d.l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"checkStepIsPositive", "", "isPositive", "", "step", "", "contains", "T", "", "R", "", "Lkotlin/ranges/ClosedRange;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "rangeTo", "", "that", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lkotlin/ranges/ClosedRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "", "kotlin-stdlib"})
-public class i
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/LongRange;", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(JJ)V", "getEndInclusive", "()Ljava/lang/Long;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
+public final class i
+  extends g
+  implements c<Long>
 {
-  public static final l<Double> O(double paramDouble)
+  private static final i Njy;
+  public static final a Njz;
+  
+  static
   {
-    AppMethodBeat.i(221196);
-    l locall = (l)new k(paramDouble);
-    AppMethodBeat.o(221196);
-    return locall;
+    AppMethodBeat.i(129302);
+    Njz = new a((byte)0);
+    Njy = new i(1L, 0L);
+    AppMethodBeat.o(129302);
   }
   
-  public static final void a(boolean paramBoolean, Number paramNumber)
+  public i(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(129312);
-    p.h(paramNumber, "step");
-    if (!paramBoolean)
-    {
-      paramNumber = (Throwable)new IllegalArgumentException("Step must be positive, was: " + paramNumber + '.');
-      AppMethodBeat.o(129312);
-      throw paramNumber;
-    }
-    AppMethodBeat.o(129312);
+    super(paramLong1, paramLong2, 1L);
   }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(129299);
+    if (((paramObject instanceof i)) && (((isEmpty()) && (((i)paramObject).isEmpty())) || ((this.first == ((i)paramObject).first) && (this.Nju == ((i)paramObject).Nju))))
+    {
+      AppMethodBeat.o(129299);
+      return true;
+    }
+    AppMethodBeat.o(129299);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(129300);
+    if (isEmpty())
+    {
+      AppMethodBeat.o(129300);
+      return -1;
+    }
+    int i = (int)(31L * (this.first ^ this.first >>> 32) + (this.Nju ^ this.Nju >>> 32));
+    AppMethodBeat.o(129300);
+    return i;
+  }
+  
+  public final boolean isEmpty()
+  {
+    return this.first > this.Nju;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(129301);
+    String str = this.first + ".." + this.Nju;
+    AppMethodBeat.o(129301);
+    return str;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/LongRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/LongRange;", "getEMPTY", "()Lkotlin/ranges/LongRange;", "kotlin-stdlib"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.k.i
  * JD-Core Version:    0.7.0.1
  */

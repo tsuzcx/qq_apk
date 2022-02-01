@@ -4,15 +4,15 @@ import d.g.b.p;
 import d.l;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/NamedValueDecoder;", "Lkotlinx/serialization/internal/TaggedDecoder;", "", "rootName", "(Ljava/lang/String;)V", "getRootName", "()Ljava/lang/String;", "composeName", "parentName", "childName", "elementName", "desc", "Lkotlinx/serialization/SerialDescriptor;", "index", "", "nested", "nestedName", "getTag", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/NamedValueDecoder;", "Lkotlinx/serialization/internal/TaggedDecoder;", "", "rootName", "(Ljava/lang/String;)V", "getRootName", "()Ljava/lang/String;", "composeName", "parentName", "childName", "elementName", "desc", "Lkotlinx/serialization/SerialDescriptor;", "index", "", "nested", "nestedName", "getTag", "kotlinx-serialization-runtime"})
 public abstract class ar
   extends bg<String>
 {
-  private final String NMF;
+  private final String OjL;
   
   private ar(String paramString)
   {
-    this.NMF = paramString;
+    this.OjL = paramString;
   }
   
   protected final String k(n paramn, int paramInt)
@@ -20,21 +20,21 @@ public abstract class ar
     p.h(paramn, "$this$getTag");
     String str2 = m(paramn, paramInt);
     p.h(str2, "nestedName");
-    String str1 = (String)gxa();
+    String str1 = (String)gBC();
     paramn = str1;
     if (str1 == null) {
-      paramn = this.NMF;
+      paramn = this.OjL;
     }
-    return nG(paramn, str2);
+    return nM(paramn, str2);
   }
   
   public String m(n paramn, int paramInt)
   {
     p.h(paramn, "desc");
-    return paramn.alJ(paramInt);
+    return paramn.amt(paramInt);
   }
   
-  public String nG(String paramString1, String paramString2)
+  public String nM(String paramString1, String paramString2)
   {
     p.h(paramString1, "parentName");
     p.h(paramString2, "childName");

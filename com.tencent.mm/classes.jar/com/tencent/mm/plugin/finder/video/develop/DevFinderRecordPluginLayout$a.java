@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.video.develop;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/develop/DevFinderRecordPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/develop/DevFinderRecordPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
 public final class DevFinderRecordPluginLayout$a {}
 
 

@@ -153,6 +153,8 @@ public abstract interface TencentMap
   
   public abstract void setBlockRouteEnabled(boolean paramBoolean);
   
+  public abstract void setBuilding3dEffectEnable(boolean paramBoolean);
+  
   public abstract void setBuildingEnable(boolean paramBoolean);
   
   public abstract void setCameraCenterProportion(float paramFloat1, float paramFloat2);
@@ -222,6 +224,8 @@ public abstract interface TencentMap
   public abstract void setTencentMapGestureListener(TencentMapGestureListener paramTencentMapGestureListener);
   
   public abstract void setTrafficEnabled(boolean paramBoolean);
+  
+  public abstract void showBuilding(boolean paramBoolean);
   
   public abstract void snapshot(SnapshotReadyCallback paramSnapshotReadyCallback);
   

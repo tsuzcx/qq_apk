@@ -5,27 +5,27 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.csv;
+import com.tencent.mm.protocal.protobuf.ctp;
 
 public final class j$b
   extends l.e
   implements l.c
 {
-  public csv rgc;
+  public ctp rof;
   
   public j$b()
   {
     AppMethodBeat.i(103597);
-    this.rgc = new csv();
+    this.rof = new ctp();
     AppMethodBeat.o(103597);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103598);
-    this.rgc = ((csv)new csv().parseFrom(paramArrayOfByte));
-    l.a(this, this.rgc.getBaseResponse());
-    int i = this.rgc.getBaseResponse().Ret;
+    this.rof = ((ctp)new ctp().parseFrom(paramArrayOfByte));
+    l.a(this, this.rof.getBaseResponse());
+    int i = this.rof.getBaseResponse().Ret;
     AppMethodBeat.o(103598);
     return i;
   }

@@ -23,16 +23,16 @@ public class MediaEditReportInfo$EditItem
   
   static
   {
-    AppMethodBeat.i(209013);
+    AppMethodBeat.i(218360);
     CREATOR = new MediaEditReportInfo.EditItem.1();
-    AppMethodBeat.o(209013);
+    AppMethodBeat.o(218360);
   }
   
   public MediaEditReportInfo$EditItem() {}
   
   protected MediaEditReportInfo$EditItem(Parcel paramParcel)
   {
-    AppMethodBeat.i(209011);
+    AppMethodBeat.i(218358);
     this.type = paramParcel.readInt();
     if (paramParcel.readInt() != 0) {}
     for (boolean bool = true;; bool = false)
@@ -45,7 +45,7 @@ public class MediaEditReportInfo$EditItem
       this.durationScrollCount = paramParcel.readInt();
       this.dragCount = paramParcel.readInt();
       this.scaleCount = paramParcel.readInt();
-      AppMethodBeat.o(209011);
+      AppMethodBeat.o(218358);
       return;
     }
   }
@@ -57,7 +57,7 @@ public class MediaEditReportInfo$EditItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(209012);
+    AppMethodBeat.i(218359);
     paramParcel.writeInt(this.type);
     if (this.isBeauty) {}
     for (paramInt = 1;; paramInt = 0)
@@ -70,7 +70,7 @@ public class MediaEditReportInfo$EditItem
       paramParcel.writeInt(this.durationScrollCount);
       paramParcel.writeInt(this.dragCount);
       paramParcel.writeInt(this.scaleCount);
-      AppMethodBeat.o(209012);
+      AppMethodBeat.o(218359);
       return;
     }
   }

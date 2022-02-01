@@ -6,28 +6,28 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<b> lRS;
+  private static LinkedList<b> lWt;
   
   static
   {
     AppMethodBeat.i(89959);
-    lRS = new LinkedList();
+    lWt = new LinkedList();
     AppMethodBeat.o(89959);
   }
   
   public static void a(b paramb)
   {
     AppMethodBeat.i(89957);
-    lRS.add(paramb);
+    lWt.add(paramb);
     AppMethodBeat.o(89957);
   }
   
-  public static void cEN()
+  public static void cGJ()
   {
     AppMethodBeat.i(89958);
-    Iterator localIterator = lRS.iterator();
+    Iterator localIterator = lWt.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).agl();
+      ((b)localIterator.next()).agz();
     }
     AppMethodBeat.o(89958);
   }

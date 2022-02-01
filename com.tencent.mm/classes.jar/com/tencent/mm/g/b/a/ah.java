@@ -6,71 +6,71 @@ import com.tencent.mm.plugin.report.a;
 public final class ah
   extends a
 {
-  public String dQt;
-  public long dVA;
-  public long dVB;
-  public long dVg;
-  public String dVh;
-  public String dVi;
-  public String dVk;
-  public String dVm;
-  public long dVq;
-  public long dVz;
+  public String dRJ = "";
+  public String dWA = "";
+  public String dWC = "";
+  public long dWG;
+  public long dWP;
+  public long dWQ;
+  public long dWR;
+  public long dWw;
+  public String dWx = "";
+  public String dWy = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(209050);
+    AppMethodBeat.i(189078);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dQt);
+    ((StringBuffer)localObject).append(this.dRJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVi);
+    ((StringBuffer)localObject).append(this.dWy);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVk);
+    ((StringBuffer)localObject).append(this.dWA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVg);
+    ((StringBuffer)localObject).append(this.dWw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVm);
+    ((StringBuffer)localObject).append(this.dWC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVh);
+    ((StringBuffer)localObject).append(this.dWx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVz);
+    ((StringBuffer)localObject).append(this.dWP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVq);
+    ((StringBuffer)localObject).append(this.dWG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVA);
+    ((StringBuffer)localObject).append(this.dWQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVB);
+    ((StringBuffer)localObject).append(this.dWR);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(209050);
+    axO((String)localObject);
+    AppMethodBeat.o(189078);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(209051);
+    AppMethodBeat.i(189079);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("sessionid:").append(this.dQt);
+    ((StringBuffer)localObject).append("sessionid:").append(this.dRJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clicktabcontextid:").append(this.dVi);
+    ((StringBuffer)localObject).append("clicktabcontextid:").append(this.dWy);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("chatSessionid:").append(this.dVk);
+    ((StringBuffer)localObject).append("chatSessionid:").append(this.dWA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("myAccountType:").append(this.dVg);
+    ((StringBuffer)localObject).append("myAccountType:").append(this.dWw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("chatName:").append(this.dVm);
+    ((StringBuffer)localObject).append("chatName:").append(this.dWC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("talkerUsername:").append(this.dVh);
+    ((StringBuffer)localObject).append("talkerUsername:").append(this.dWx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RejectMsgStatus:").append(this.dVz);
+    ((StringBuffer)localObject).append("RejectMsgStatus:").append(this.dWP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("openChatInfoCount:").append(this.dVq);
+    ((StringBuffer)localObject).append("openChatInfoCount:").append(this.dWG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clearMsgHistoryClickCount:").append(this.dVA);
+    ((StringBuffer)localObject).append("clearMsgHistoryClickCount:").append(this.dWQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("complianClickCount:").append(this.dVB);
+    ((StringBuffer)localObject).append("complianClickCount:").append(this.dWR);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(209051);
+    AppMethodBeat.o(189079);
     return localObject;
   }
   
@@ -79,19 +79,19 @@ public final class ah
     return 20692;
   }
   
-  public final ah hg(String paramString)
+  public final ah hm(String paramString)
   {
-    AppMethodBeat.i(209048);
-    this.dQt = t("sessionid", paramString, true);
-    AppMethodBeat.o(209048);
+    AppMethodBeat.i(189076);
+    this.dRJ = t("sessionid", paramString, true);
+    AppMethodBeat.o(189076);
     return this;
   }
   
-  public final ah hh(String paramString)
+  public final ah hn(String paramString)
   {
-    AppMethodBeat.i(209049);
-    this.dVi = t("clicktabcontextid", paramString, true);
-    AppMethodBeat.o(209049);
+    AppMethodBeat.i(189077);
+    this.dWy = t("clicktabcontextid", paramString, true);
+    AppMethodBeat.o(189077);
     return this;
   }
 }

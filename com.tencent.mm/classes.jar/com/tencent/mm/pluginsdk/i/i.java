@@ -3,10 +3,10 @@ package com.tencent.mm.pluginsdk.i;
 import android.content.Context;
 import android.text.format.Time;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -14,8 +14,8 @@ import java.util.Locale;
 
 public final class i
 {
-  private static long EPb;
-  private static boolean EPc = false;
+  private static long Fhw;
+  private static boolean Fhx = false;
   
   public static String aq(Context paramContext, int paramInt)
   {
@@ -31,35 +31,35 @@ public final class i
     long l2 = l1 - ((GregorianCalendar)localObject2).getTimeInMillis();
     if ((l2 >= 0L) && (l2 < 86400000L))
     {
-      paramContext = u(paramContext, l2) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = v(paramContext, l2) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() - 86400000L);
     if ((l2 >= 0L) && (l2 < 86400000L))
     {
-      paramContext = paramContext.getString(2131759551) + " " + u(paramContext, l2) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = paramContext.getString(2131759551) + " " + v(paramContext, l2) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() - 172800000L);
     if ((l2 >= 0L) && (l2 < 86400000L))
     {
-      paramContext = paramContext.getString(2131759534) + " " + u(paramContext, l2) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = paramContext.getString(2131759534) + " " + v(paramContext, l2) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() + 86400000L);
     if ((l2 >= 0L) && (l2 < 86400000L))
     {
-      paramContext = paramContext.getString(2131759543) + " " + u(paramContext, l2) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = paramContext.getString(2131759543) + " " + v(paramContext, l2) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() + 172800000L);
     if ((l2 >= 0L) && (l2 < 86400000L))
     {
-      paramContext = paramContext.getString(2131759533) + " " + u(paramContext, l2) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = paramContext.getString(2131759533) + " " + v(paramContext, l2) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
@@ -70,7 +70,7 @@ public final class i
     if ((((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1)) && (((GregorianCalendar)localObject1).get(3) == ((GregorianCalendar)localObject2).get(3)))
     {
       i = ((GregorianCalendar)localObject2).get(7);
-      paramContext = ar(paramContext, i) + " " + as(paramContext, paramInt) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = ar(paramContext, i) + " " + as(paramContext, paramInt) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
@@ -85,7 +85,7 @@ public final class i
       }
       for (;;)
       {
-        paramContext = (String)localObject1 + " " + as(paramContext, paramInt) + ";" + bO(paramContext.getString(2131759528), l1);
+        paramContext = (String)localObject1 + " " + as(paramContext, paramInt) + ";" + bP(paramContext.getString(2131759528), l1);
         AppMethodBeat.o(151900);
         return paramContext;
         localObject1 = paramContext.getString(2131759538);
@@ -105,11 +105,11 @@ public final class i
     }
     if (((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1))
     {
-      paramContext = android.text.format.DateFormat.format(paramContext.getString(2131759498), l1) + " " + as(paramContext, paramInt) + ";" + bO(paramContext.getString(2131759528), l1);
+      paramContext = android.text.format.DateFormat.format(paramContext.getString(2131759498), l1) + " " + as(paramContext, paramInt) + ";" + bP(paramContext.getString(2131759528), l1);
       AppMethodBeat.o(151900);
       return paramContext;
     }
-    paramContext = android.text.format.DateFormat.format(paramContext.getString(2131759517), l1) + " " + as(paramContext, paramInt) + ";" + bO(paramContext.getString(2131759528), l1);
+    paramContext = android.text.format.DateFormat.format(paramContext.getString(2131759517), l1) + " " + as(paramContext, paramInt) + ";" + bP(paramContext.getString(2131759528), l1);
     AppMethodBeat.o(151900);
     return paramContext;
   }
@@ -189,11 +189,11 @@ public final class i
     return paramContext;
   }
   
-  public static String bO(String paramString, long paramLong)
+  public static String bP(String paramString, long paramLong)
   {
     AppMethodBeat.i(151901);
     paramString = android.text.format.DateFormat.format(paramString, paramLong).toString();
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151901);
       return "";
@@ -210,9 +210,9 @@ public final class i
   public static CharSequence c(Context paramContext, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(151908);
-    if (!ac.fkp())
+    if (!ad.foj())
     {
-      localObject1 = ac.aQq(ac.fks());
+      localObject1 = ad.aRN(ad.fom());
       localObject2 = new GregorianCalendar();
       if (paramLong < 3600000L)
       {
@@ -289,7 +289,7 @@ public final class i
     ((Time)localObject1).setToNow();
     if ((((Time)localObject2).year == ((Time)localObject1).year) && (((Time)localObject2).yearDay == ((Time)localObject1).yearDay))
     {
-      if (fau())
+      if (fei())
       {
         paramContext = h.a(paramContext.getString(2131759529), (Time)localObject2);
         AppMethodBeat.o(151908);
@@ -301,7 +301,7 @@ public final class i
     }
     if ((((Time)localObject2).year == ((Time)localObject1).year) && (((Time)localObject1).yearDay - ((Time)localObject2).yearDay == 1))
     {
-      boolean bool = fau();
+      boolean bool = fei();
       if (paramBoolean)
       {
         paramContext = paramContext.getString(2131759551);
@@ -337,7 +337,7 @@ public final class i
         AppMethodBeat.o(151908);
         return paramContext;
       }
-      paramContext = h.a(paramContext.getString(2131759500, new Object[] { u(paramContext, ((Time)localObject2).hour * 3600000L) }).toString(), (Time)localObject2);
+      paramContext = h.a(paramContext.getString(2131759500, new Object[] { v(paramContext, ((Time)localObject2).hour * 3600000L) }).toString(), (Time)localObject2);
       AppMethodBeat.o(151908);
       return paramContext;
     }
@@ -347,19 +347,19 @@ public final class i
       AppMethodBeat.o(151908);
       return paramContext;
     }
-    paramContext = h.a(paramContext.getString(2131759519, new Object[] { u(paramContext, ((Time)localObject2).hour * 3600000L) }).toString(), (Time)localObject2);
+    paramContext = h.a(paramContext.getString(2131759519, new Object[] { v(paramContext, ((Time)localObject2).hour * 3600000L) }).toString(), (Time)localObject2);
     AppMethodBeat.o(151908);
     return paramContext;
   }
   
-  public static boolean fau()
+  public static boolean fei()
   {
     AppMethodBeat.i(151907);
-    if (System.currentTimeMillis() - EPb > 30000L) {}
+    if (System.currentTimeMillis() - Fhw > 30000L) {}
     try
     {
-      EPc = android.text.format.DateFormat.is24HourFormat(aj.getContext());
-      boolean bool = EPc;
+      Fhx = android.text.format.DateFormat.is24HourFormat(ak.getContext());
+      boolean bool = Fhx;
       AppMethodBeat.o(151907);
       return bool;
     }
@@ -367,7 +367,7 @@ public final class i
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.TimeUtil", localException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.TimeUtil", localException, "", new Object[0]);
       }
     }
   }
@@ -380,7 +380,7 @@ public final class i
     return paramString;
   }
   
-  public static CharSequence s(Context paramContext, long paramLong)
+  public static CharSequence t(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(151903);
     paramContext = paramContext.getString(2131759576) + android.text.format.DateFormat.format(paramContext.getString(2131759575), paramLong);
@@ -388,7 +388,7 @@ public final class i
     return paramContext;
   }
   
-  public static CharSequence t(Context paramContext, long paramLong)
+  public static CharSequence u(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(151904);
     paramContext = paramContext.getString(2131759577) + android.text.format.DateFormat.format(paramContext.getString(2131759575), paramLong);
@@ -396,7 +396,7 @@ public final class i
     return paramContext;
   }
   
-  public static CharSequence u(Context paramContext, long paramLong)
+  public static CharSequence v(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(151906);
     if (paramLong < 0L)

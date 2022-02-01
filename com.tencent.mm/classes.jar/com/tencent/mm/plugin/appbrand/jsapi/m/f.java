@@ -14,8 +14,8 @@ import com.tencent.mm.plugin.appbrand.o.p.a;
 import com.tencent.mm.plugin.appbrand.o.p.b;
 import com.tencent.mm.plugin.appbrand.o.p.c;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -29,12 +29,12 @@ public final class f
 {
   public static final int CTRL_INDEX = 529;
   public static final String NAME = "operateLocalServicesScan";
-  final Map<String, a> kXr;
+  final Map<String, a> lba;
   
   public f()
   {
     AppMethodBeat.i(144239);
-    this.kXr = new ConcurrentHashMap();
+    this.lba = new ConcurrentHashMap();
     AppMethodBeat.o(144239);
   }
   
@@ -50,7 +50,7 @@ public final class f
   {
     AppMethodBeat.i(144240);
     ??? = ???.optString("action");
-    ad.i("MicroMsg.JsApiOperateLocalServicesScan", "action = ".concat(String.valueOf(???)));
+    ae.i("MicroMsg.JsApiOperateLocalServicesScan", "action = ".concat(String.valueOf(???)));
     Object localObject2;
     if (TextUtils.equals("start", (CharSequence)???))
     {
@@ -61,9 +61,9 @@ public final class f
         AppMethodBeat.o(144240);
         return;
       }
-      synchronized (this.kXr)
+      synchronized (this.lba)
       {
-        localObject2 = this.kXr.keySet().iterator();
+        localObject2 = this.lba.keySet().iterator();
         while (((Iterator)localObject2).hasNext()) {
           if (((String)((Iterator)localObject2).next()).contains(paramc.getAppId()))
           {
@@ -73,14 +73,14 @@ public final class f
           }
         }
         ??? = new a(paramc);
-        ((a)???).kXw.set(paramInt);
-        this.kXr.put(h(paramc, ???), ???);
-        localObject2 = p.lWJ;
-        NsdManager localNsdManager = p.bts();
+        ((a)???).lbf.set(paramInt);
+        this.lba.put(h(paramc, ???), ???);
+        localObject2 = p.mbp;
+        NsdManager localNsdManager = p.bud();
         p.1 local1 = new p.1((p)localObject2, (p.b)???);
-        ((p)localObject2).lWK.put(???, local1);
+        ((p)localObject2).mbq.put(???, local1);
         localNsdManager.discoverServices(???, 1, local1);
-        aq.o(new Runnable()
+        ar.o(new Runnable()
         {
           public final void run()
           {
@@ -90,16 +90,16 @@ public final class f
               public final void run()
               {
                 AppMethodBeat.i(144228);
-                synchronized (f.this.kXr)
+                synchronized (f.this.lba)
                 {
-                  if (!f.this.kXr.containsKey(f.h(f.1.this.kwd, f.1.this.kXs)))
+                  if (!f.this.lba.containsKey(f.h(f.1.this.kzs, f.1.this.lbb)))
                   {
-                    ad.i("MicroMsg.JsApiOperateLocalServicesScan", "scan task not exist, cancel auto stop");
+                    ae.i("MicroMsg.JsApiOperateLocalServicesScan", "scan task not exist, cancel auto stop");
                     AppMethodBeat.o(144228);
                     return;
                   }
-                  p.lWJ.a(f.1.this.kXt);
-                  f.this.kXr.remove(f.h(f.1.this.kwd, f.1.this.kXs));
+                  p.mbp.a(f.1.this.lbc);
+                  f.this.lba.remove(f.h(f.1.this.kzs, f.1.this.lbb));
                   AppMethodBeat.o(144228);
                   return;
                 }
@@ -113,19 +113,19 @@ public final class f
       }
     }
     if (TextUtils.equals("stop", (CharSequence)???)) {
-      synchronized (this.kXr)
+      synchronized (this.lba)
       {
-        ??? = this.kXr.values().iterator();
+        ??? = this.lba.values().iterator();
         for (int i = 1; ((Iterator)???).hasNext(); i = 0)
         {
           localObject2 = (a)((Iterator)???).next();
-          ((a)localObject2).kXx.set(paramInt);
-          p.lWJ.a((p.b)localObject2);
+          ((a)localObject2).lbg.set(paramInt);
+          p.mbp.a((p.b)localObject2);
         }
         if (i != 0) {
           paramc.h(paramInt, e("fail:task not found", null));
         }
-        this.kXr.clear();
+        this.lba.clear();
         AppMethodBeat.o(144240);
         return;
       }
@@ -137,83 +137,83 @@ public final class f
   final class a
     implements p.b
   {
-    c jvO;
-    AtomicInteger kXw;
-    AtomicInteger kXx;
+    c jyJ;
+    AtomicInteger lbf;
+    AtomicInteger lbg;
     
     a(c paramc)
     {
       AppMethodBeat.i(144232);
-      this.kXw = new AtomicInteger();
-      this.kXx = new AtomicInteger();
-      this.jvO = paramc;
+      this.lbf = new AtomicInteger();
+      this.lbg = new AtomicInteger();
+      this.jyJ = paramc;
       AppMethodBeat.o(144232);
     }
     
     public final void a(p.c paramc)
     {
       AppMethodBeat.i(144237);
-      ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onServiceFound");
-      p localp = p.lWJ;
+      ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onServiceFound");
+      p localp = p.mbp;
       p.a local1 = new p.a()
       {
         public final void c(p.c paramAnonymousc)
         {
           AppMethodBeat.i(144230);
-          ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onResolveFailed");
-          a.c(f.a.this.jvO, paramAnonymousc);
+          ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onResolveFailed");
+          a.c(f.a.this.jyJ, paramAnonymousc);
           AppMethodBeat.o(144230);
         }
         
         public final void d(p.c paramAnonymousc)
         {
           AppMethodBeat.i(144231);
-          ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onServiceResolved");
-          a.a(f.a.this.jvO, paramAnonymousc);
+          ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onServiceResolved");
+          a.a(f.a.this.jyJ, paramAnonymousc);
           AppMethodBeat.o(144231);
         }
       };
-      h.LTJ.f(new p.2(localp, paramc, local1), "LocalServiceMgr#resolveService");
+      h.MqF.f(new p.2(localp, paramc, local1), "LocalServiceMgr#resolveService");
       AppMethodBeat.o(144237);
     }
     
     public final void b(p.c paramc)
     {
       AppMethodBeat.i(144238);
-      a.b(this.jvO, paramc);
+      a.b(this.jyJ, paramc);
       AppMethodBeat.o(144238);
     }
     
-    public final void blw()
+    public final void bmf()
     {
       AppMethodBeat.i(144233);
-      this.jvO.h(this.kXw.get(), f.this.e("fail", null));
-      ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onStartDiscoveryFailed");
+      this.jyJ.h(this.lbf.get(), f.this.e("fail", null));
+      ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onStartDiscoveryFailed");
       AppMethodBeat.o(144233);
     }
     
-    public final void blx()
+    public final void bmg()
     {
       AppMethodBeat.i(144234);
-      this.jvO.h(this.kXx.get(), f.this.e("fail", null));
-      ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onStopDiscoveryFailed");
+      this.jyJ.h(this.lbg.get(), f.this.e("fail", null));
+      ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onStopDiscoveryFailed");
       AppMethodBeat.o(144234);
     }
     
-    public final void bly()
+    public final void bmh()
     {
       AppMethodBeat.i(144235);
-      this.jvO.h(this.kXw.get(), f.this.e("ok", null));
-      ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onDiscoveryStarted");
+      this.jyJ.h(this.lbf.get(), f.this.e("ok", null));
+      ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onDiscoveryStarted");
       AppMethodBeat.o(144235);
     }
     
-    public final void blz()
+    public final void bmi()
     {
       AppMethodBeat.i(144236);
-      ad.i("MicroMsg.JsApiOperateLocalServicesScan", "onDiscoveryStopped");
-      this.jvO.h(this.kXx.get(), f.this.e("ok", null));
-      a.t(this.jvO);
+      ae.i("MicroMsg.JsApiOperateLocalServicesScan", "onDiscoveryStopped");
+      this.jyJ.h(this.lbg.get(), f.this.e("ok", null));
+      a.t(this.jyJ);
       AppMethodBeat.o(144236);
     }
   }

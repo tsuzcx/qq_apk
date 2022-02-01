@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "cmd", "", "insList", "", "isNeedClear", "", "request", "(ILjava/util/List;ZLjava/lang/Object;)V", "getCmd", "()I", "getInsList", "()Ljava/util/List;", "()Z", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "Companion", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "cmd", "", "insList", "", "isNeedClear", "", "request", "(ILjava/util/List;ZLjava/lang/Object;)V", "getCmd", "()I", "getInsList", "()Ljava/util/List;", "()Z", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "Companion", "plugin-finder_release"})
 public final class l<T extends i>
 {
-  public static final a sdj;
+  public static final a sma;
   final int EN;
   final boolean isNeedClear;
   Object request;
-  final List<T> sdi;
+  final List<T> slZ;
   
   static
   {
     AppMethodBeat.i(166126);
-    sdj = new a((byte)0);
+    sma = new a((byte)0);
     AppMethodBeat.o(166126);
   }
   
   private l(int paramInt, List<? extends T> paramList, boolean paramBoolean)
   {
     this.EN = paramInt;
-    this.sdi = paramList;
+    this.slZ = paramList;
     this.isNeedClear = paramBoolean;
     this.request = null;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp$Companion;", "", "()V", "ADD_LOADMORE", "", "ADD_REFRESH", "ALL_REFRESH", "CLEAN_REFRESH", "INIT", "INSERT", "LOADMORE_THAT_ALL", "REFRESH_THAT_ALL", "cmd2String", "", "cmd", "plugin-finder_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp$Companion;", "", "()V", "ADD_LOADMORE", "", "ADD_REFRESH", "ALL_REFRESH", "CLEAN_REFRESH", "INIT", "INSERT", "LOADMORE_THAT_ALL", "REFRESH_THAT_ALL", "cmd2String", "", "cmd", "plugin-finder_release"})
   public static final class a
   {
-    public static String EF(int paramInt)
+    public static String ES(int paramInt)
     {
       switch (paramInt)
       {
@@ -56,7 +56,7 @@ public final class l<T extends i>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.l
  * JD-Core Version:    0.7.0.1
  */

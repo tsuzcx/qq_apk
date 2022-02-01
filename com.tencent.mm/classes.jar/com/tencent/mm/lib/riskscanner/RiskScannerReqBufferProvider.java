@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.tencent.d.a.c;
 import com.tencent.d.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class RiskScannerReqBufferProvider
   extends ContentProvider
@@ -23,20 +23,20 @@ public class RiskScannerReqBufferProvider
     AppMethodBeat.o(138303);
   }
   
-  private Bundle co(Context paramContext)
+  private Bundle cq(Context paramContext)
   {
     AppMethodBeat.i(138302);
     final Bundle[] arrayOfBundle = new Bundle[1];
     arrayOfBundle[0] = null;
     try
     {
-      a.akS();
+      a.alh();
       c.a(paramContext, new c.a()
       {
         public final void g(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(138299);
-          a.mW(paramAnonymousInt);
+          a.mZ(paramAnonymousInt);
           Bundle[] arrayOfBundle = arrayOfBundle;
           Bundle localBundle = new Bundle();
           arrayOfBundle[0] = localBundle;
@@ -66,12 +66,12 @@ public class RiskScannerReqBufferProvider
     AppMethodBeat.i(138301);
     if ("prepareReqBuffer".equals(paramString1))
     {
-      ad.i("MicroMsg.RiskScannerReqBufferProvider", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
-      paramString1 = co(getContext());
+      ae.i("MicroMsg.RiskScannerReqBufferProvider", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+      paramString1 = cq(getContext());
       AppMethodBeat.o(138301);
       return paramString1;
     }
-    ad.w("MicroMsg.RiskScannerReqBufferProvider", "unknown method: %s", new Object[] { paramString1 });
+    ae.w("MicroMsg.RiskScannerReqBufferProvider", "unknown method: %s", new Object[] { paramString1 });
     paramString1 = new Bundle[] { null }[0];
     AppMethodBeat.o(138301);
     return paramString1;
@@ -95,7 +95,7 @@ public class RiskScannerReqBufferProvider
   public boolean onCreate()
   {
     AppMethodBeat.i(138300);
-    ad.i("MicroMsg.RiskScannerReqBufferProvider", "onCreate called.");
+    ae.i("MicroMsg.RiskScannerReqBufferProvider", "onCreate called.");
     AppMethodBeat.o(138300);
     return true;
   }

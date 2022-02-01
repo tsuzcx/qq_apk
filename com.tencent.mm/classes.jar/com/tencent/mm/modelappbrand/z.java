@@ -3,7 +3,7 @@ package com.tencent.mm.modelappbrand;
 public abstract class z
   implements o
 {
-  public abstract void Cl(String paramString);
+  public abstract void CN(String paramString);
   
   public final String getName()
   {

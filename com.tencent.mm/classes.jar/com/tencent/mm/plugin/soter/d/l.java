@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public enum l
 {
@@ -13,8 +13,8 @@ public enum l
   static
   {
     AppMethodBeat.i(130853);
-    AFD = new l("INSTANCE");
-    AFE = new l[] { AFD };
+    AXg = new l("INSTANCE");
+    AXh = new l[] { AXg };
     AppMethodBeat.o(130853);
   }
   
@@ -23,7 +23,7 @@ public enum l
   public static void r(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130852);
-    ad.d("MicroMsg.SoterReportManager", "SoterReportManager functionName: %s, appId: %s, errType: %d, errCode: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.d("MicroMsg.SoterReportManager", "SoterReportManager functionName: %s, appId: %s, errType: %d, errCode: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     int i;
     switch (paramString1.hashCode())
     {
@@ -33,16 +33,16 @@ public enum l
       {
       default: 
         label71:
-        ad.e("MicroMsg.SoterReportManager", "unknown soter jsapi function name");
+        ae.e("MicroMsg.SoterReportManager", "unknown soter jsapi function name");
         i = -1;
       }
       break;
     }
     for (;;)
     {
-      ad.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
       if (i != -1) {
-        g.yhR.f(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        g.yxI.f(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       }
       AppMethodBeat.o(130852);
       return;

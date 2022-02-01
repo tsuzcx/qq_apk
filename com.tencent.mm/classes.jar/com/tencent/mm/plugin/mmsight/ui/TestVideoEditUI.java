@@ -15,14 +15,14 @@ import com.tencent.mm.api.y;
 import com.tencent.mm.api.y.a.a;
 import com.tencent.mm.api.y.b;
 import com.tencent.mm.api.y.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public class TestVideoEditUI
   extends MMActivity
   implements i
 {
-  private y vXs;
+  private y wjw;
   
   public int getLayoutId()
   {
@@ -32,7 +32,7 @@ public class TestVideoEditUI
   public void onBackPressed()
   {
     AppMethodBeat.i(94749);
-    if (!this.vXs.JU()) {
+    if (!this.wjw.Kc()) {
       finish();
     }
     AppMethodBeat.o(94749);
@@ -44,15 +44,15 @@ public class TestVideoEditUI
     super.onCreate(paramBundle);
     fullScreenNoTitleBar(true);
     paramBundle = (FrameLayout)findViewById(2131298739);
-    this.vXs = y.cRM.JX();
-    Object localObject = this.vXs;
+    this.wjw = y.cSw.Kf();
+    Object localObject = this.wjw;
     y.a.a locala = new y.a.a();
-    locala.cRO = false;
-    locala.cRR = true;
-    locala.cRS = new Rect(0, 0, 1080, 1080);
-    locala.cRN = y.c.cRT;
-    ((y)localObject).a(locala.Ln());
-    localObject = this.vXs.bg(getContext());
+    locala.cSy = false;
+    locala.cSB = true;
+    locala.cSC = new Rect(0, 0, 1080, 1080);
+    locala.cSx = y.c.cSD;
+    ((y)localObject).a(locala.Lv());
+    localObject = this.wjw.bh(getContext());
     ((e)localObject).setActionBarCallback(this);
     paramBundle.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
     ((e)localObject).setSelectedFeatureListener(new w()
@@ -60,14 +60,14 @@ public class TestVideoEditUI
       public final void a(g paramAnonymousg)
       {
         AppMethodBeat.i(94743);
-        ad.i("MicroMsg.TestVideoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+        ae.i("MicroMsg.TestVideoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
         AppMethodBeat.o(94743);
       }
       
       public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
       {
         AppMethodBeat.i(169420);
-        ad.i("MicroMsg.TestVideoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+        ae.i("MicroMsg.TestVideoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(169420);
       }
       
@@ -91,7 +91,7 @@ public class TestVideoEditUI
   {
     AppMethodBeat.i(94748);
     super.onDestroy();
-    this.vXs.onDestroy();
+    this.wjw.onDestroy();
     AppMethodBeat.o(94748);
   }
   
@@ -105,7 +105,7 @@ public class TestVideoEditUI
   public final void onFinish()
   {
     AppMethodBeat.i(94751);
-    this.vXs.a(new TestVideoEditUI.2(this));
+    this.wjw.a(new TestVideoEditUI.2(this));
     AppMethodBeat.o(94751);
   }
   

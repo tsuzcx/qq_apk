@@ -47,12 +47,12 @@ public abstract interface a
   
   public static abstract interface b
   {
-    public abstract void dv(Object paramObject);
+    public abstract void dw(Object paramObject);
   }
   
   public static abstract interface c
   {
-    public abstract void dw(Object paramObject);
+    public abstract void dx(Object paramObject);
   }
   
   public static abstract interface d

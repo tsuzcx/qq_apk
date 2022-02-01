@@ -9,8 +9,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.SystemClock;
-import androidx.annotation.Keep;
-import com.tencent.tinker.loader.AppInfoChangedBlocker;
+import com.tencent.tinker.anno.Keep;
 import com.tencent.tinker.loader.TinkerLoader;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.TinkerUncaughtHandler;
@@ -23,50 +22,39 @@ public abstract class TinkerApplication
   extends Application
 {
   private static final String INTENT_PATCH_EXCEPTION = "intent_patch_exception";
+  private static final TinkerApplication[] SELF_HOLDER = { null };
   private static final String TINKER_LOADER_METHOD = "tryLoad";
   private final String delegateClassName;
   private final String loaderClassName;
-  private ClassLoader mCurrentClassLoader = null;
+  protected ClassLoader mCurrentClassLoader = null;
   private Handler mInlineFence = null;
   private final int tinkerFlags;
   private final boolean tinkerLoadVerifyFlag;
-  private Intent tinkerResultIntent;
+  protected Intent tinkerResultIntent;
+  private final boolean useDelegateLastClassLoaderOnAPI29AndAbove;
   private boolean useSafeMode;
   
   protected TinkerApplication(int paramInt)
   {
-    this(paramInt, "com.tencent.tinker.entry.DefaultApplicationLike", TinkerLoader.class.getName(), false);
+    this(paramInt, "com.tencent.tinker.entry.DefaultApplicationLike", TinkerLoader.class.getName(), false, false);
   }
   
   protected TinkerApplication(int paramInt, String paramString)
   {
-    this(paramInt, paramString, TinkerLoader.class.getName(), false);
+    this(paramInt, paramString, TinkerLoader.class.getName(), false, false);
   }
   
-  protected TinkerApplication(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  protected TinkerApplication(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.tinkerFlags = paramInt;
-    this.delegateClassName = paramString1;
-    this.loaderClassName = paramString2;
-    this.tinkerLoadVerifyFlag = paramBoolean;
-  }
-  
-  protected TinkerApplication(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, String paramString3)
-  {
-    this(paramInt1, paramString1, paramString2, paramBoolean);
-  }
-  
-  private void bailLoaded()
-  {
-    try
+    synchronized (SELF_HOLDER)
     {
-      if ((this.tinkerResultIntent != null) && (ShareIntentUtil.getIntentReturnCode(this.tinkerResultIntent) == 0) && (!AppInfoChangedBlocker.tryStart(this))) {
-        throw new IllegalStateException("AppInfoChangedBlocker.tryStart return false.");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      throw new TinkerRuntimeException("Fail to do bail logic for load ensuring.", localThrowable);
+      SELF_HOLDER[0] = this;
+      this.tinkerFlags = paramInt;
+      this.delegateClassName = paramString1;
+      this.loaderClassName = paramString2;
+      this.tinkerLoadVerifyFlag = paramBoolean1;
+      this.useDelegateLastClassLoaderOnAPI29AndAbove = paramBoolean2;
+      return;
     }
   }
   
@@ -86,6 +74,18 @@ public abstract class TinkerApplication
     }
   }
   
+  public static TinkerApplication getInstance()
+  {
+    synchronized (SELF_HOLDER)
+    {
+      if (SELF_HOLDER[0] == null) {
+        throw new IllegalStateException("TinkerApplication is not initialized.");
+      }
+    }
+    TinkerApplication localTinkerApplication = SELF_HOLDER[0];
+    return localTinkerApplication;
+  }
+  
   private void loadTinker()
   {
     try
@@ -102,36 +102,13 @@ public abstract class TinkerApplication
     }
   }
   
-  private void onBaseContextAttached(Context paramContext)
-  {
-    try
-    {
-      long l1 = SystemClock.elapsedRealtime();
-      long l2 = System.currentTimeMillis();
-      loadTinker();
-      this.mCurrentClassLoader = paramContext.getClassLoader();
-      this.mInlineFence = createInlineFence(this, this.tinkerFlags, this.delegateClassName, this.tinkerLoadVerifyFlag, l1, l2, this.tinkerResultIntent);
-      TinkerInlineFenceAction.callOnBaseContextAttached(this.mInlineFence, paramContext);
-      if (this.useSafeMode) {
-        ShareTinkerInternals.setSafeModeCount(this, 0);
-      }
-      return;
-    }
-    catch (TinkerRuntimeException paramContext)
-    {
-      throw paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      throw new TinkerRuntimeException(paramContext.getMessage(), paramContext);
-    }
-  }
-  
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = System.currentTimeMillis();
     Thread.setDefaultUncaughtExceptionHandler(new TinkerUncaughtHandler(this));
-    onBaseContextAttached(paramContext);
+    onBaseContextAttached(paramContext, l1, l2);
   }
   
   public AssetManager getAssets()
@@ -189,6 +166,11 @@ public abstract class TinkerApplication
     return this.tinkerLoadVerifyFlag;
   }
   
+  public boolean isUseDelegateLastClassLoaderOnAPI29AndAbove()
+  {
+    return this.useDelegateLastClassLoaderOnAPI29AndAbove;
+  }
+  
   @Keep
   public int mzNightModeUseOf()
   {
@@ -196,6 +178,29 @@ public abstract class TinkerApplication
       return 1;
     }
     return TinkerInlineFenceAction.callMZNightModeUseOf(this.mInlineFence);
+  }
+  
+  protected void onBaseContextAttached(Context paramContext, long paramLong1, long paramLong2)
+  {
+    try
+    {
+      loadTinker();
+      this.mCurrentClassLoader = paramContext.getClassLoader();
+      this.mInlineFence = createInlineFence(this, this.tinkerFlags, this.delegateClassName, this.tinkerLoadVerifyFlag, paramLong1, paramLong2, this.tinkerResultIntent);
+      TinkerInlineFenceAction.callOnBaseContextAttached(this.mInlineFence, paramContext);
+      if (this.useSafeMode) {
+        ShareTinkerInternals.setSafeModeCount(this, 0);
+      }
+      return;
+    }
+    catch (TinkerRuntimeException paramContext)
+    {
+      throw paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      throw new TinkerRuntimeException(paramContext.getMessage(), paramContext);
+    }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)

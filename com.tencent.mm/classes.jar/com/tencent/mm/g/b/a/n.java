@@ -6,34 +6,34 @@ import com.tencent.mm.plugin.report.a;
 public final class n
   extends a
 {
-  public String dSm = "";
-  public String dSn = "";
-  public int dSo = 0;
+  public String dTC = "";
+  public String dTD = "";
+  public int dTE = 0;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(121744);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSm);
+    ((StringBuffer)localObject).append(this.dTC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSn);
+    ((StringBuffer)localObject).append(this.dTD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSo);
+    ((StringBuffer)localObject).append(this.dTE);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(121744);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(121745);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatroomName:").append(this.dSm);
+    ((StringBuffer)localObject).append("ChatroomName:").append(this.dTC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExptScore:").append(this.dSn);
+    ((StringBuffer)localObject).append("ExptScore:").append(this.dTD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExptFlag:").append(this.dSo);
+    ((StringBuffer)localObject).append("ExptFlag:").append(this.dTE);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(121745);
     return localObject;

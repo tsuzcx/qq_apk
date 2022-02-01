@@ -3,57 +3,57 @@ package com.tencent.mm.audio.b;
 import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvoice.e;
 import com.tencent.mm.modelvoice.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
 public final class i
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private static int diu = 0;
-  public static boolean div = true;
-  Queue<String> dim;
-  Queue<r> din;
-  Map<String, f.a> dio;
-  private boolean dip;
-  private boolean diq;
-  public int dis;
-  private long dit;
-  f.a diw;
-  private av dix;
+  private static int djw = 0;
+  public static boolean djx = true;
+  Queue<String> djp;
+  Queue<r> djq;
+  Map<String, f.a> djr;
+  private boolean djs;
+  private boolean djt;
+  public int dju;
+  private long djv;
+  f.a djy;
+  private aw djz;
   private boolean running;
   
   public i()
   {
     AppMethodBeat.i(148358);
-    this.dim = new LinkedList();
-    this.din = new LinkedList();
-    this.dio = new HashMap();
-    this.dip = false;
-    this.diq = false;
+    this.djp = new LinkedList();
+    this.djq = new LinkedList();
+    this.djr = new HashMap();
+    this.djs = false;
+    this.djt = false;
     this.running = false;
-    this.dis = 0;
-    this.dit = 0L;
-    this.diw = new f.a();
-    this.dix = new av(g.ajF().IdO.getLooper(), new av.a()
+    this.dju = 0;
+    this.djv = 0L;
+    this.djy = new f.a();
+    this.djz = new aw(g.ajU().IxZ.getLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(148356);
-        ad.i("MicroMsg.SceneVoiceService", "onTimerExpired[%s]", new Object[] { i.this.toString() });
+        ae.i("MicroMsg.SceneVoiceService", "onTimerExpired[%s]", new Object[] { i.this.toString() });
         i.h(i.this);
         AppMethodBeat.o(148356);
         return false;
@@ -67,30 +67,30 @@ public final class i
         return str;
       }
     }, false);
-    ad.i("MicroMsg.SceneVoiceService", "SceneVoiceService %s", new Object[] { bt.flS().toString() });
-    g.aiU().a(127, this);
-    g.aiU().a(128, this);
+    ae.i("MicroMsg.SceneVoiceService", "SceneVoiceService %s", new Object[] { bu.fpN().toString() });
+    g.ajj().a(127, this);
+    g.ajj().a(128, this);
     AppMethodBeat.o(148358);
   }
   
-  public static final i Qd()
+  public static final i Qc()
   {
-    AppMethodBeat.i(205869);
-    i locali = a.Qh();
-    AppMethodBeat.o(205869);
+    AppMethodBeat.i(200155);
+    i locali = a.Qg();
+    AppMethodBeat.o(200155);
     return locali;
   }
   
-  private void Qe()
+  private void Qd()
   {
     AppMethodBeat.i(148360);
-    this.dio.clear();
-    this.dim.clear();
-    this.din.clear();
-    this.diq = false;
-    this.dip = false;
+    this.djr.clear();
+    this.djp.clear();
+    this.djq.clear();
+    this.djt = false;
+    this.djs = false;
     this.running = false;
-    ad.i("MicroMsg.SceneVoiceService", "Finish service use time(ms):" + this.diw.abj() + "[" + toString() + "]");
+    ae.i("MicroMsg.SceneVoiceService", "Finish service use time(ms):" + this.djy.abs() + "[" + toString() + "]");
     AppMethodBeat.o(148360);
   }
   
@@ -98,17 +98,17 @@ public final class i
   {
     AppMethodBeat.i(148359);
     String str1 = toString();
-    String str2 = bt.bI(paramString, "");
+    String str2 = bu.bI(paramString, "");
     if (paramn != null) {}
     for (paramString = paramn.toString();; paramString = Integer.valueOf(0))
     {
-      ad.i("MicroMsg.SceneVoiceService", "[%s]errType:%s errCode:%s errMsg:%s scene:%s", new Object[] { str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, paramString });
-      g.ajF().ay(new Runnable()
+      ae.i("MicroMsg.SceneVoiceService", "[%s]errType:%s errCode:%s errMsg:%s scene:%s", new Object[] { str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, paramString });
+      g.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(148352);
-          i.Qf();
+          i.Qe();
           String str;
           int i;
           if (paramn.getType() == 128)
@@ -121,19 +121,19 @@ public final class i
             if (str != null)
             {
               l1 = l2;
-              if (i.this.dio.get(str) != null)
+              if (i.this.djr.get(str) != null)
               {
-                l1 = ((f.a)i.this.dio.get(str)).abj();
-                i.this.dio.remove(str);
+                l1 = ((f.a)i.this.djr.get(str)).abs();
+                i.this.djr.remove(str);
               }
             }
-            ad.i("MicroMsg.SceneVoiceService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
+            ae.i("MicroMsg.SceneVoiceService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
             if ((paramInt1 != 3) || (i == 0)) {
               break label412;
             }
             i.c(i.this);
             label219:
-            ad.i("MicroMsg.SceneVoiceService", "onSceneEnd  inCnt:" + i.diu + " stop:" + i.d(i.this) + " running:" + i.e(i.this) + " recving:" + i.f(i.this) + " sending:" + i.g(i.this));
+            ae.i("MicroMsg.SceneVoiceService", "onSceneEnd  inCnt:" + i.djw + " stop:" + i.d(i.this) + " running:" + i.e(i.this) + " recving:" + i.f(i.this) + " sending:" + i.g(i.this));
             if (i.d(i.this) <= 0) {
               break label431;
             }
@@ -141,7 +141,7 @@ public final class i
           }
           for (;;)
           {
-            i.Qg();
+            i.Qf();
             AppMethodBeat.o(148352);
             return;
             if (paramn.getType() == 127)
@@ -151,8 +151,8 @@ public final class i
               i = ((com.tencent.mm.modelvoice.f)paramn).retCode;
               break;
             }
-            ad.e("MicroMsg.SceneVoiceService", "onSceneEnd Error SceneType:" + paramn.getType());
-            i.Qg();
+            ae.e("MicroMsg.SceneVoiceService", "onSceneEnd Error SceneType:" + paramn.getType());
+            i.Qf();
             AppMethodBeat.o(148352);
             return;
             label412:
@@ -165,14 +165,14 @@ public final class i
             if ((!i.g(i.this)) && (!i.f(i.this)))
             {
               i.i(i.this);
-              ad.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try next delay 3s [%d, %d] [%b]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(i.div) });
-              if ((i.div) && (paramInt1 == 4)) {
-                g.ajF().n(new Runnable()
+              ae.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try next delay 3s [%d, %d] [%b]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(i.djx) });
+              if ((i.djx) && (paramInt1 == 4)) {
+                g.ajU().n(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(148351);
-                    ad.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try run");
+                    ae.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try run");
                     i.this.run();
                     AppMethodBeat.o(148351);
                   }
@@ -198,14 +198,14 @@ public final class i
   public final void run()
   {
     AppMethodBeat.i(148361);
-    ad.i("MicroMsg.SceneVoiceService", "run() %s", new Object[] { toString() });
-    g.ajF().ay(new Runnable()
+    ae.i("MicroMsg.SceneVoiceService", "run() %s", new Object[] { toString() });
+    g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(148354);
         long l = System.currentTimeMillis() - i.j(i.this);
-        ad.i("MicroMsg.SceneVoiceService", "Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + " sending:" + i.g(i.this) + " recving:" + i.f(i.this) + "[" + i.this.toString() + "]");
+        ae.i("MicroMsg.SceneVoiceService", "Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + " sending:" + i.g(i.this) + " recving:" + i.f(i.this) + "[" + i.this.toString() + "]");
         if (i.e(i.this))
         {
           if (l < 60000L)
@@ -213,14 +213,14 @@ public final class i
             AppMethodBeat.o(148354);
             return;
           }
-          ad.e("MicroMsg.SceneVoiceService", "ERR: Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + i.g(i.this) + " recving:" + i.f(i.this));
+          ae.e("MicroMsg.SceneVoiceService", "ERR: Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + i.g(i.this) + " recving:" + i.f(i.this));
         }
         i.k(i.this);
         i.b(i.this);
         i.a(i.this, 3);
         i.a(i.this);
-        i.this.diw.gdx = SystemClock.elapsedRealtime();
-        i.l(i.this).az(10L, 10L);
+        i.this.djy.gfF = SystemClock.elapsedRealtime();
+        i.l(i.this).ay(10L, 10L);
         AppMethodBeat.o(148354);
       }
       
@@ -237,13 +237,13 @@ public final class i
   
   static final class a
   {
-    private static final i diB;
+    private static final i djD;
     
     static
     {
-      AppMethodBeat.i(205868);
-      diB = new i();
-      AppMethodBeat.o(205868);
+      AppMethodBeat.i(200154);
+      djD = new i();
+      AppMethodBeat.o(200154);
     }
   }
 }

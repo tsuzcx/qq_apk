@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTransformActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -33,7 +33,7 @@ public final class ai
       AppMethodBeat.o(144984);
       return false;
     }
-    boolean bool = a(paramCanvas, paramd.scaleX, paramd.jTF, paramd.jTG, paramd.scaleY, paramd.translateX, paramd.translateY);
+    boolean bool = a(paramCanvas, paramd.scaleX, paramd.jWW, paramd.jWX, paramd.scaleY, paramd.translateX, paramd.translateY);
     AppMethodBeat.o(144984);
     return bool;
   }
@@ -59,7 +59,7 @@ public final class ai
     return false;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144981);
     SetTransformActionArg localSetTransformActionArg = new SetTransformActionArg();

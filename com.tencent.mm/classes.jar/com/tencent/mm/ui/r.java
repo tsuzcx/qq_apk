@@ -9,8 +9,8 @@ import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashMap;
 import java.util.Map;
 import junit.framework.Assert;
@@ -19,21 +19,21 @@ public abstract class r<T>
   extends BaseAdapter
   implements k.a, n.b
 {
-  protected T JaC;
-  private Cursor JaD = null;
-  protected Map<Integer, T> JaE = null;
-  protected r.a JaF;
-  private int JaG = 0;
-  private int JaH = 0;
-  private int JaI = 0;
-  private Runnable JaJ = new Runnable()
+  protected T Jvk;
+  private Cursor Jvl = null;
+  protected Map<Integer, T> Jvm = null;
+  protected a Jvn;
+  private int Jvo = 0;
+  private int Jvp = 0;
+  private int Jvq = 0;
+  private Runnable Jvr = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(141316);
       if (r.a(r.this) != 0)
       {
-        ad.v("MicroMsg.MListAdapter", "ashutest:: onResetCursorJobRun, current AbsListViewScrollType %d, post resetCursorJob, retryTimes %d", new Object[] { Integer.valueOf(r.a(r.this)), Integer.valueOf(r.b(r.this)) });
+        ae.v("MicroMsg.MListAdapter", "ashutest:: onResetCursorJobRun, current AbsListViewScrollType %d, post resetCursorJob, retryTimes %d", new Object[] { Integer.valueOf(r.a(r.this)), Integer.valueOf(r.b(r.this)) });
         r.d(r.this).removeCallbacks(r.c(r.this));
         if (20 > r.e(r.this))
         {
@@ -41,9 +41,9 @@ public abstract class r<T>
           AppMethodBeat.o(141316);
           return;
         }
-        ad.w("MicroMsg.MListAdapter", "ashutest:: onResetCursorJobRun, current AbsListViewScrollType %d, do resetCursorJob, retryTimes %d", new Object[] { Integer.valueOf(r.a(r.this)), Integer.valueOf(r.e(r.this)) });
+        ae.w("MicroMsg.MListAdapter", "ashutest:: onResetCursorJobRun, current AbsListViewScrollType %d, do resetCursorJob, retryTimes %d", new Object[] { Integer.valueOf(r.a(r.this)), Integer.valueOf(r.e(r.this)) });
       }
-      ad.d("MicroMsg.MListAdapter", "ashutest:: do resetCursorJob");
+      ae.d("MicroMsg.MListAdapter", "ashutest:: do resetCursorJob");
       r.f(r.this);
       r.g(r.this);
       AppMethodBeat.o(141316);
@@ -51,33 +51,33 @@ public abstract class r<T>
   };
   public Context context;
   protected int count;
-  private ap tkw = new ap(Looper.getMainLooper());
+  private aq tvo = new aq(Looper.getMainLooper());
   
   public r(Context paramContext, T paramT)
   {
-    this.JaC = paramT;
+    this.Jvk = paramT;
     this.context = paramContext;
     this.count = -1;
   }
   
-  private void fwP()
+  private void fAR()
   {
-    ad.v("MicroMsg.MListAdapter", "ashutest:: on UI, directly call resetCursor Job");
-    det();
-    Zu();
-    if (this.JaF != null) {
-      this.JaF.aSs();
+    ae.v("MicroMsg.MListAdapter", "ashutest:: on UI, directly call resetCursor Job");
+    dhl();
+    ZD();
+    if (this.Jvn != null) {
+      this.Jvn.aSR();
     }
   }
   
-  public boolean HY(int paramInt)
+  public boolean Iw(int paramInt)
   {
-    return (paramInt >= this.count) && (paramInt < this.count + dac());
+    return (paramInt >= this.count) && (paramInt < this.count + dcN());
   }
   
-  public abstract void Zu();
+  public abstract void ZD();
   
-  protected abstract void Zv();
+  protected abstract void ZE();
   
   public abstract T a(T paramT, Cursor paramCursor);
   
@@ -85,46 +85,46 @@ public abstract class r<T>
   {
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ad.d("MicroMsg.MListAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ae.d("MicroMsg.MListAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       return;
     }
     a((String)paramObject, null);
   }
   
-  public final void a(r.a parama)
+  public final void a(a parama)
   {
-    this.JaF = parama;
+    this.Jvn = parama;
   }
   
   public void a(String paramString, m paramm)
   {
-    fwP();
+    fAR();
   }
   
-  protected int dac()
+  protected int dcN()
   {
     return 0;
   }
   
-  protected T dae()
+  protected T dcP()
   {
-    return this.JaC;
+    return this.Jvk;
   }
   
-  public void det()
+  public void dhl()
   {
-    if (this.JaE != null) {
-      this.JaE.clear();
+    if (this.Jvm != null) {
+      this.Jvm.clear();
     }
-    if (this.JaD != null) {
-      this.JaD.close();
+    if (this.Jvl != null) {
+      this.Jvl.close();
     }
     this.count = -1;
   }
   
-  public final void fvg()
+  public final void fzh()
   {
-    this.JaF = null;
+    this.Jvn = null;
   }
   
   public int getCount()
@@ -132,42 +132,42 @@ public abstract class r<T>
     if (this.count < 0) {
       this.count = getCursor().getCount();
     }
-    return this.count + dac();
+    return this.count + dcN();
   }
   
   protected Cursor getCursor()
   {
-    if ((this.JaD == null) || (this.JaD.isClosed()))
+    if ((this.Jvl == null) || (this.Jvl.isClosed()))
     {
-      Zv();
-      Assert.assertNotNull(this.JaD);
+      ZE();
+      Assert.assertNotNull(this.Jvl);
     }
-    return this.JaD;
+    return this.Jvl;
   }
   
   public T getItem(int paramInt)
   {
-    if (HY(paramInt)) {
-      localObject1 = dae();
+    if (Iw(paramInt)) {
+      localObject1 = dcP();
     }
     Object localObject2;
     do
     {
       return localObject1;
-      if (this.JaE == null) {
+      if (this.Jvm == null) {
         break;
       }
-      localObject2 = this.JaE.get(Integer.valueOf(paramInt));
+      localObject2 = this.Jvm.get(Integer.valueOf(paramInt));
       localObject1 = localObject2;
     } while (localObject2 != null);
     if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
       return null;
     }
-    if (this.JaE == null) {
-      return a(this.JaC, getCursor());
+    if (this.Jvm == null) {
+      return a(this.Jvk, getCursor());
     }
     Object localObject1 = a(null, getCursor());
-    this.JaE.put(Integer.valueOf(paramInt), localObject1);
+    this.Jvm.put(Integer.valueOf(paramInt), localObject1);
     return localObject1;
   }
   
@@ -186,23 +186,28 @@ public abstract class r<T>
   
   public final void setCursor(Cursor paramCursor)
   {
-    this.JaD = paramCursor;
+    this.Jvl = paramCursor;
     this.count = -1;
   }
   
-  public void xk(boolean paramBoolean)
+  public void xs(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      if (this.JaE != null)
+      if (this.Jvm != null)
       {
-        this.JaE.clear();
-        this.JaE = null;
+        this.Jvm.clear();
+        this.Jvm = null;
       }
     }
-    while (this.JaE != null) {
+    while (this.Jvm != null) {
       return;
     }
-    this.JaE = new HashMap();
+    this.Jvm = new HashMap();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void aSR();
   }
 }
 

@@ -11,13 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.f;
-import com.tencent.mm.plugin.game.d.aj;
-import com.tencent.mm.plugin.game.d.dk;
+import com.tencent.mm.plugin.game.d.ap;
+import com.tencent.mm.plugin.game.d.ds;
+import com.tencent.mm.plugin.game.d.n;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e.a.a;
 import com.tencent.mm.plugin.game.widget.EllipsizingTextView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -28,7 +30,7 @@ public final class e
   private String mAppId;
   private Context mContext;
   private LayoutInflater mInflater;
-  private int udq;
+  private int uoy;
   
   public e(Context paramContext)
   {
@@ -45,28 +47,28 @@ public final class e
     AppMethodBeat.i(41903);
     ImageView localImageView = (ImageView)this.mInflater.inflate(2131494293, paramViewGroup, false);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localImageView.getLayoutParams();
-    localMarginLayoutParams.leftMargin = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 20);
+    localMarginLayoutParams.leftMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 20);
     localImageView.setLayoutParams(localMarginLayoutParams);
     paramViewGroup.addView(localImageView);
     AppMethodBeat.o(41903);
   }
   
-  public final void a(aj paramaj, String paramString, int paramInt1, int paramInt2)
+  public final void a(ap paramap, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41901);
-    if ((paramaj == null) || (bt.hj(paramaj.ugO)))
+    if ((paramap == null) || (bu.ht(paramap.usl)))
     {
       setVisibility(8);
       AppMethodBeat.o(41901);
       return;
     }
     this.mAppId = paramString;
-    this.udq = paramInt2;
-    paramaj = paramaj.ugO.iterator();
-    while (paramaj.hasNext())
+    this.uoy = paramInt2;
+    paramap = paramap.usl.iterator();
+    while (paramap.hasNext())
     {
-      com.tencent.mm.plugin.game.d.k localk = (com.tencent.mm.plugin.game.d.k)paramaj.next();
-      if (localk != null)
+      n localn = (n)paramap.next();
+      if (localn != null)
       {
         e.a.a locala = new e.a.a();
         label112:
@@ -74,15 +76,15 @@ public final class e
         TextView localTextView1;
         TextView localTextView2;
         Object localObject;
-        switch (localk.ufL)
+        switch (localn.urf)
         {
         default: 
           if (paramInt1 == 2) {
-            com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1002, localk.ufI, paramString, paramInt2, com.tencent.mm.plugin.game.e.a.wk(localk.ufG));
+            com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1002, localn.urc, paramString, paramInt2, com.tencent.mm.plugin.game.e.a.wT(localn.ura));
           }
           break;
         case 1: 
-          if (localk.ufJ != null)
+          if (localn.urd != null)
           {
             r(this);
             localView = this.mInflater.inflate(2131494248, this, false);
@@ -91,15 +93,15 @@ public final class e
             localObject = (EllipsizingTextView)localView.findViewById(2131302567);
             ((EllipsizingTextView)localObject).setMaxLines(2);
             ImageView localImageView = (ImageView)localView.findViewById(2131302569);
-            localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.ufH, localTextView1.getTextSize()));
-            localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.ufJ.Title, localTextView2.getTextSize()));
-            ((EllipsizingTextView)localObject).setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.ufJ.Desc, ((EllipsizingTextView)localObject).getTextSize()));
-            if (!bt.isNullOrNil(localk.ufJ.ueX)) {
-              com.tencent.mm.plugin.game.f.e.dav().a(localImageView, localk.ufJ.ueX, locala.daw());
+            localTextView1.setText(k.b(this.mContext, localn.urb, localTextView1.getTextSize()));
+            localTextView2.setText(k.b(this.mContext, localn.urd.Title, localTextView2.getTextSize()));
+            ((EllipsizingTextView)localObject).setText(k.b(this.mContext, localn.urd.Desc, ((EllipsizingTextView)localObject).getTextSize()));
+            if (!bu.isNullOrNil(localn.urd.uqe)) {
+              com.tencent.mm.plugin.game.f.e.ddh().a(localImageView, localn.urd.uqe, locala.ddi());
             }
             for (;;)
             {
-              localView.setTag(new a(localk.ufI, localk.ufJ.ueY, localk.ufG));
+              localView.setTag(new a(localn.urc, localn.urd.uqf, localn.ura));
               localView.setOnClickListener(this);
               addView(localView);
               break;
@@ -108,33 +110,33 @@ public final class e
           }
           break;
         case 2: 
-          if (localk.ufK != null)
+          if (localn.ure != null)
           {
             r(this);
             localView = this.mInflater.inflate(2131494249, this, false);
             localTextView1 = (TextView)localView.findViewById(2131304833);
             localTextView2 = (TextView)localView.findViewById(2131304835);
             localObject = (ImageView)localView.findViewById(2131304834);
-            localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.ufH, localTextView1.getTextSize()));
-            localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.ufK.Title, localTextView2.getTextSize()));
-            if (!bt.isNullOrNil(localk.ufK.ueX)) {
-              if (localk.ufK.ujO == 1)
+            localTextView1.setText(k.b(this.mContext, localn.urb, localTextView1.getTextSize()));
+            localTextView2.setText(k.b(this.mContext, localn.ure.Title, localTextView2.getTextSize()));
+            if (!bu.isNullOrNil(localn.ure.uqe)) {
+              if (localn.ure.uvm == 1)
               {
-                locala.uvI = true;
-                locala.hdT = 2131232501;
+                locala.uHh = true;
+                locala.hgH = 2131232501;
                 label538:
-                com.tencent.mm.plugin.game.f.e.dav().a((ImageView)localObject, localk.ufK.ueX, locala.daw());
+                com.tencent.mm.plugin.game.f.e.ddh().a((ImageView)localObject, localn.ure.uqe, locala.ddi());
               }
             }
             for (;;)
             {
-              localView.setTag(new a(localk.ufI, localk.ufK.ueY, localk.ufG));
+              localView.setTag(new a(localn.urc, localn.ure.uqf, localn.ura));
               localView.setOnClickListener(this);
               addView(localView);
               break label112;
               break;
-              locala.hfi = true;
-              locala.hdT = 2131232500;
+              locala.hhW = true;
+              locala.hgH = 2131232500;
               break label538;
               ((ImageView)localObject).setVisibility(8);
             }
@@ -151,24 +153,24 @@ public final class e
     AppMethodBeat.i(41902);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameBlockContentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameBlockContentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
-      ad.w("MicroMsg.GameBlockContentView", "getTag is null");
+      ae.w("MicroMsg.GameBlockContentView", "getTag is null");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBlockContentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(41902);
       return;
     }
     paramView = (a)paramView.getTag();
-    if (bt.isNullOrNil(paramView.jumpUrl))
+    if (bu.isNullOrNil(paramView.jumpUrl))
     {
-      ad.w("MicroMsg.GameBlockContentView", "jumpUrl is null");
+      ae.w("MicroMsg.GameBlockContentView", "jumpUrl is null");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBlockContentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(41902);
       return;
     }
     int i = c.B(this.mContext, paramView.jumpUrl, "game_center_mygame_comm");
-    f.a(this.mContext, 10, 1002, paramView.uek, i, this.mAppId, this.udq, com.tencent.mm.plugin.game.e.a.wk(paramView.uaR));
+    f.a(this.mContext, 10, 1002, paramView.upr, i, this.mAppId, this.uoy, com.tencent.mm.plugin.game.e.a.wT(paramView.ulT));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBlockContentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(41902);
   }
@@ -176,20 +178,20 @@ public final class e
   static final class a
   {
     public String jumpUrl;
-    public String uaR;
-    public int uek;
+    public String ulT;
+    public int upr;
     
     public a(int paramInt, String paramString1, String paramString2)
     {
-      this.uek = paramInt;
+      this.upr = paramInt;
       this.jumpUrl = paramString1;
-      this.uaR = paramString2;
+      this.ulT = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.e
  * JD-Core Version:    0.7.0.1
  */

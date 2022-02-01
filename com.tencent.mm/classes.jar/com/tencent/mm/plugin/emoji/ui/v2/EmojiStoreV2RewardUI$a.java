@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(109280);
-    pOc = new a("NORMAL", 0);
-    pOd = new a("CUSTOM", 1);
-    pOe = new a[] { pOc, pOd };
+    pUH = new a("NORMAL", 0);
+    pUI = new a("CUSTOM", 1);
+    pUJ = new a[] { pUH, pUI };
     AppMethodBeat.o(109280);
   }
   

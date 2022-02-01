@@ -237,17 +237,17 @@ public final class MultiContextNodeJS
   
   public final void nativeDispatch()
   {
-    AppMethodBeat.i(213632);
+    AppMethodBeat.i(196747);
     this.mv8.getV8().nativeDispatch();
-    AppMethodBeat.o(213632);
+    AppMethodBeat.o(196747);
   }
   
   public final void nativeMessageLoop()
   {
-    AppMethodBeat.i(213631);
+    AppMethodBeat.i(196746);
     this.mv8.getV8().checkThread();
     this.mv8.getV8().nativeMessageLoop();
-    AppMethodBeat.o(213631);
+    AppMethodBeat.o(196746);
   }
   
   public final void release()
@@ -280,7 +280,7 @@ public final class MultiContextNodeJS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.v8.MultiContextNodeJS
  * JD-Core Version:    0.7.0.1
  */

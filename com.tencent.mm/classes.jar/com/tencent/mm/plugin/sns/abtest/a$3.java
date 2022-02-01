@@ -14,7 +14,7 @@ final class a$3
     AppMethodBeat.i(94920);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     if ((paramView.getTag() instanceof p))
     {
       localObject = (p)paramView.getTag();

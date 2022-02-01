@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.face;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.je;
-import com.tencent.mm.g.a.je.a;
+import com.tencent.mm.g.a.jf;
+import com.tencent.mm.g.a.jf.a;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,15 +18,15 @@ public final class JsApiCheckIsSupportFaceDetect
 {
   public static final int CTRL_INDEX = 214;
   public static final String NAME = "checkIsSupportFacialRecognition";
-  private GetIsSupportFaceTask kCp = null;
+  private GetIsSupportFaceTask kFE = null;
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(106565);
-    ad.i("MicroMsg.JsApiCheckIsSupportFaceDetect", "hy: subapp start do check is support face detect");
-    this.kCp = new GetIsSupportFaceTask(paramc, paramInt, this);
-    this.kCp.bhN();
-    AppBrandMainProcessService.a(this.kCp);
+    ae.i("MicroMsg.JsApiCheckIsSupportFaceDetect", "hy: subapp start do check is support face detect");
+    this.kFE = new GetIsSupportFaceTask(paramc, paramInt, this);
+    this.kFE.biw();
+    AppBrandMainProcessService.a(this.kFE);
     AppMethodBeat.o(106565);
   }
   
@@ -35,12 +35,12 @@ public final class JsApiCheckIsSupportFaceDetect
   {
     public static final Parcelable.Creator<GetIsSupportFaceTask> CREATOR;
     private int cgA;
-    private boolean dKx;
+    private boolean dLM;
     private int errCode;
     private String errMsg;
-    private JsApiCheckIsSupportFaceDetect kCq;
-    private int kCr;
-    private c kuU;
+    private c jQp;
+    private JsApiCheckIsSupportFaceDetect kFF;
+    private int kFG;
     
     static
     {
@@ -52,60 +52,60 @@ public final class JsApiCheckIsSupportFaceDetect
     protected GetIsSupportFaceTask(Parcel paramParcel)
     {
       AppMethodBeat.i(106562);
-      this.kuU = null;
+      this.jQp = null;
       this.cgA = -1;
-      this.dKx = false;
+      this.dLM = false;
       this.errCode = -1;
       this.errMsg = "not returned";
-      this.kCr = -1;
+      this.kFG = -1;
       e(paramParcel);
       AppMethodBeat.o(106562);
     }
     
     public GetIsSupportFaceTask(c paramc, int paramInt, JsApiCheckIsSupportFaceDetect paramJsApiCheckIsSupportFaceDetect)
     {
-      this.kuU = null;
+      this.jQp = null;
       this.cgA = -1;
-      this.dKx = false;
+      this.dLM = false;
       this.errCode = -1;
       this.errMsg = "not returned";
-      this.kCr = -1;
-      this.kuU = paramc;
+      this.kFG = -1;
+      this.jQp = paramc;
       this.cgA = paramInt;
-      this.kCq = paramJsApiCheckIsSupportFaceDetect;
+      this.kFF = paramJsApiCheckIsSupportFaceDetect;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(106560);
-      je localje = new je();
-      com.tencent.mm.sdk.b.a.IbL.l(localje);
-      this.dKx = localje.dvW.dvX;
-      this.errCode = localje.dvW.dvY;
-      this.errMsg = localje.dvW.dvZ;
-      this.kCr = localje.dvW.dwa;
-      ad.i("MicroMsg.GetIsSupportFaceTask", "hy: is support: %b, errCode: %d, errMsg: %s, ilbVersion: %d", new Object[] { Boolean.valueOf(this.dKx), Integer.valueOf(this.errCode), this.errMsg, Integer.valueOf(this.kCr) });
-      bhX();
+      jf localjf = new jf();
+      com.tencent.mm.sdk.b.a.IvT.l(localjf);
+      this.dLM = localjf.dxb.dxc;
+      this.errCode = localjf.dxb.dxd;
+      this.errMsg = localjf.dxb.dxe;
+      this.kFG = localjf.dxb.dxf;
+      ae.i("MicroMsg.GetIsSupportFaceTask", "hy: is support: %b, errCode: %d, errMsg: %s, ilbVersion: %d", new Object[] { Boolean.valueOf(this.dLM), Integer.valueOf(this.errCode), this.errMsg, Integer.valueOf(this.kFG) });
+      biG();
       AppMethodBeat.o(106560);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(106559);
-      super.aOB();
-      ad.d("MicroMsg.GetIsSupportFaceTask", "hy: callback. isSupport: %b, errCode: %d, errMsg: %s, libVersion: %d", new Object[] { Boolean.valueOf(this.dKx), Integer.valueOf(this.errCode), this.errMsg, Integer.valueOf(this.kCr) });
+      super.aOY();
+      ae.d("MicroMsg.GetIsSupportFaceTask", "hy: callback. isSupport: %b, errCode: %d, errMsg: %s, libVersion: %d", new Object[] { Boolean.valueOf(this.dLM), Integer.valueOf(this.errCode), this.errMsg, Integer.valueOf(this.kFG) });
       HashMap localHashMap = new HashMap(3);
       localHashMap.put("errCode", Integer.valueOf(this.errCode));
-      localHashMap.put("libVersionCode", Integer.valueOf(this.kCr));
+      localHashMap.put("libVersionCode", Integer.valueOf(this.kFG));
       if (this.errCode == 0) {
-        this.kuU.h(this.cgA, this.kCq.m("ok", localHashMap));
+        this.jQp.h(this.cgA, this.kFF.n("ok", localHashMap));
       }
       for (;;)
       {
-        bhO();
+        bix();
         AppMethodBeat.o(106559);
         return;
-        this.kuU.h(this.cgA, this.kCq.m("fail " + this.errMsg, localHashMap));
+        this.jQp.h(this.cgA, this.kFF.n("fail " + this.errMsg, localHashMap));
       }
     }
     
@@ -121,10 +121,10 @@ public final class JsApiCheckIsSupportFaceDetect
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.dKx = bool;
+        this.dLM = bool;
         this.errCode = paramParcel.readInt();
         this.errMsg = paramParcel.readString();
-        this.kCr = paramParcel.readInt();
+        this.kFG = paramParcel.readInt();
         AppMethodBeat.o(106563);
         return;
       }
@@ -134,13 +134,13 @@ public final class JsApiCheckIsSupportFaceDetect
     {
       AppMethodBeat.i(106561);
       super.writeToParcel(paramParcel, paramInt);
-      if (this.dKx) {}
+      if (this.dLM) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
         paramParcel.writeInt(this.errCode);
         paramParcel.writeString(this.errMsg);
-        paramParcel.writeInt(this.kCr);
+        paramParcel.writeInt(this.kFG);
         AppMethodBeat.o(106561);
         return;
       }

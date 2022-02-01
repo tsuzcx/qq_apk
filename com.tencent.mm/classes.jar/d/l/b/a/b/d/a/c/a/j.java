@@ -21,19 +21,19 @@ import java.util.Set;
 public final class j
   extends m
 {
-  private final t NfJ;
-  private final d.l.b.a.b.l.g<Set<String>> NfL;
-  private final d.l.b.a.b.l.d<j.a, e> NfM;
-  final h NfN;
+  private final t NCO;
+  private final d.l.b.a.b.l.g<Set<String>> NCQ;
+  private final d.l.b.a.b.l.d<a, e> NCR;
+  final h NCS;
   
   public j(final d.l.b.a.b.d.a.c.h paramh, t paramt, h paramh1)
   {
     super(paramh);
     AppMethodBeat.i(57908);
-    this.NfJ = paramt;
-    this.NfN = paramh1;
-    this.NfL = paramh.NeI.MQa.T((d.g.a.a)new d(this, paramh));
-    this.NfM = paramh.NeI.MQa.J((d.g.a.b)new c(this, paramh));
+    this.NCO = paramt;
+    this.NCS = paramh1;
+    this.NCQ = paramh.NBN.Nnf.T((d.g.a.a)new d(this, paramh));
+    this.NCR = paramh.NBN.Nnf.M((d.g.a.b)new c(this, paramh));
     AppMethodBeat.o(57908);
   }
   
@@ -45,13 +45,13 @@ public final class j
       AppMethodBeat.o(57901);
       return null;
     }
-    Set localSet = (Set)this.NfL.invoke();
+    Set localSet = (Set)this.NCQ.invoke();
     if ((paramg == null) && (localSet != null) && (!localSet.contains(paramf.sD())))
     {
       AppMethodBeat.o(57901);
       return null;
     }
-    paramf = (e)this.NfM.invoke(new j.a(paramf, paramg));
+    paramf = (e)this.NCR.invoke(new a(paramf, paramg));
     AppMethodBeat.o(57901);
     return paramf;
   }
@@ -61,7 +61,7 @@ public final class j
     AppMethodBeat.i(57902);
     p.h(paramf, "name");
     p.h(parama, "location");
-    paramf = (Collection)v.MKE;
+    paramf = (Collection)v.NhH;
     AppMethodBeat.o(57902);
     return paramf;
   }
@@ -71,16 +71,16 @@ public final class j
     AppMethodBeat.i(57907);
     p.h(paramd, "kindFilter");
     p.h(paramb, "nameFilter");
-    Object localObject1 = d.l.b.a.b.j.f.d.NxN;
-    int i = d.l.b.a.b.j.f.d.gtr();
-    localObject1 = d.l.b.a.b.j.f.d.NxN;
-    if (!paramd.alm(i | d.l.b.a.b.j.f.d.gtk()))
+    Object localObject1 = d.l.b.a.b.j.f.d.NUU;
+    int i = d.l.b.a.b.j.f.d.gxT();
+    localObject1 = d.l.b.a.b.j.f.d.NUU;
+    if (!paramd.alW(i | d.l.b.a.b.j.f.d.gxM()))
     {
-      paramd = (Collection)v.MKE;
+      paramd = (Collection)v.NhH;
       AppMethodBeat.o(57907);
       return paramd;
     }
-    localObject1 = (Iterable)this.MXN.invoke();
+    localObject1 = (Iterable)this.NuT.invoke();
     paramd = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     label186:
@@ -90,7 +90,7 @@ public final class j
       Object localObject3 = (l)localObject2;
       if ((localObject3 instanceof e))
       {
-        localObject3 = ((e)localObject3).giD();
+        localObject3 = ((e)localObject3).gnf();
         p.g(localObject3, "it.name");
         if (!((Boolean)paramb.invoke(localObject3)).booleanValue()) {}
       }
@@ -112,7 +112,7 @@ public final class j
   {
     AppMethodBeat.i(57906);
     p.h(paramd, "kindFilter");
-    paramd = (Set)x.MKG;
+    paramd = (Set)x.NhJ;
     AppMethodBeat.o(57906);
     return paramd;
   }
@@ -129,7 +129,7 @@ public final class j
   {
     AppMethodBeat.i(57904);
     p.h(paramd, "kindFilter");
-    paramd = (Set)x.MKG;
+    paramd = (Set)x.NhJ;
     AppMethodBeat.o(57904);
     return paramd;
   }
@@ -138,40 +138,40 @@ public final class j
   {
     AppMethodBeat.i(57903);
     p.h(paramd, "kindFilter");
-    Object localObject = d.l.b.a.b.j.f.d.NxN;
-    if (!paramd.alm(d.l.b.a.b.j.f.d.gtk()))
+    Object localObject = d.l.b.a.b.j.f.d.NUU;
+    if (!paramd.alW(d.l.b.a.b.j.f.d.gxM()))
     {
-      paramd = (Set)x.MKG;
+      paramd = (Set)x.NhJ;
       AppMethodBeat.o(57903);
       return paramd;
     }
-    paramd = (Set)this.NfL.invoke();
+    paramd = (Set)this.NCQ.invoke();
     if (paramd != null)
     {
       paramb = (Iterable)paramd;
       paramd = (Collection)new HashSet();
       paramb = paramb.iterator();
       while (paramb.hasNext()) {
-        paramd.add(d.l.b.a.b.f.f.bcE((String)paramb.next()));
+        paramd.add(d.l.b.a.b.f.f.bei((String)paramb.next()));
       }
       paramd = (Set)paramd;
       AppMethodBeat.o(57903);
       return paramd;
     }
-    localObject = this.NfJ;
+    localObject = this.NCO;
     paramd = paramb;
     if (paramb == null) {
-      paramd = d.l.b.a.b.o.d.gum();
+      paramd = d.l.b.a.b.o.d.gyO();
     }
-    paramd = (Iterable)((t)localObject).G(paramd);
+    paramd = (Iterable)((t)localObject).J(paramd);
     paramb = (Collection)new LinkedHashSet();
     localObject = paramd.iterator();
     label219:
     while (((Iterator)localObject).hasNext())
     {
       paramd = (d.l.b.a.b.d.a.e.g)((Iterator)localObject).next();
-      if (aa.NgR == null) {}
-      for (paramd = null;; paramd = paramd.giD())
+      if (aa.NDW == null) {}
+      for (paramd = null;; paramd = paramd.gnf())
       {
         if (paramd == null) {
           break label219;
@@ -195,9 +195,43 @@ public final class j
     return paramf;
   }
   
-  protected final b glN()
+  protected final b gqp()
   {
-    return (b)b.a.NeZ;
+    return (b)b.a.NCe;
+  }
+  
+  static final class a
+  {
+    final d.l.b.a.b.d.a.e.g NCT;
+    final d.l.b.a.b.f.f Nul;
+    
+    public a(d.l.b.a.b.f.f paramf, d.l.b.a.b.d.a.e.g paramg)
+    {
+      AppMethodBeat.i(57893);
+      this.Nul = paramf;
+      this.NCT = paramg;
+      AppMethodBeat.o(57893);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(57891);
+      if (((paramObject instanceof a)) && (p.i(this.Nul, ((a)paramObject).Nul)))
+      {
+        AppMethodBeat.o(57891);
+        return true;
+      }
+      AppMethodBeat.o(57891);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(57892);
+      int i = this.Nul.hashCode();
+      AppMethodBeat.o(57892);
+      return i;
+    }
   }
   
   static abstract class b
@@ -205,13 +239,13 @@ public final class j
     public static final class a
       extends j.b
     {
-      final e MYH;
+      final e NvN;
       
       public a(e parame)
       {
         super();
         AppMethodBeat.i(57894);
-        this.MYH = parame;
+        this.NvN = parame;
         AppMethodBeat.o(57894);
       }
     }
@@ -219,12 +253,12 @@ public final class j
     public static final class b
       extends j.b
     {
-      public static final b NfP;
+      public static final b NCU;
       
       static
       {
         AppMethodBeat.i(57895);
-        NfP = new b();
+        NCU = new b();
         AppMethodBeat.o(57895);
       }
       
@@ -237,12 +271,12 @@ public final class j
     public static final class c
       extends j.b
     {
-      public static final c NfQ;
+      public static final c NCV;
       
       static
       {
         AppMethodBeat.i(57896);
-        NfQ = new c();
+        NCV = new c();
         AppMethodBeat.o(57896);
       }
       
@@ -275,7 +309,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,32 @@ import java.util.Arrays;
 
 public final class s
 {
-  public final a MdF = new a(0, true);
-  public final a MdG = new a(1, true);
-  public final a MdH = new a(2, true);
-  public final a MdI = new a(3, true);
-  public final a MdJ = new a(4, true);
-  public final a MdK = new a(5, true);
-  public final a MdL = new a(6, true);
-  public final a MdM = new a(4096, true);
-  public final a MdN = new a(4097, true);
-  public final a MdO = new a(4098, true);
-  public final a MdP = new a(4099, true);
-  public final a MdQ = new a(8192, false);
-  public final a MdR = new a(8193, true);
-  public final a MdS = new a(8194, false);
-  public final a MdT = new a(8195, false);
-  public final a MdU = new a(8196, false);
-  public final a MdV = new a(8197, false);
-  public final a MdW = new a(8198, true);
-  public final a[] MdX = { this.MdF, this.MdG, this.MdH, this.MdI, this.MdJ, this.MdK, this.MdL, this.MdM, this.MdN, this.MdO, this.MdP, this.MdQ, this.MdR, this.MdS, this.MdT, this.MdU, this.MdV, this.MdW };
-  public int MdY;
-  public int MdZ;
-  public int Mea;
+  public final a MAA = new a(0, true);
+  public final a MAB = new a(1, true);
+  public final a MAC = new a(2, true);
+  public final a MAD = new a(3, true);
+  public final a MAE = new a(4, true);
+  public final a MAF = new a(5, true);
+  public final a MAG = new a(6, true);
+  public final a MAH = new a(4096, true);
+  public final a MAI = new a(4097, true);
+  public final a MAJ = new a(4098, true);
+  public final a MAK = new a(4099, true);
+  public final a MAL = new a(8192, false);
+  public final a MAM = new a(8193, true);
+  public final a MAN = new a(8194, false);
+  public final a MAO = new a(8195, false);
+  public final a MAQ = new a(8196, false);
+  public final a MAR = new a(8197, false);
+  public final a MAS = new a(8198, true);
+  public final a[] MAT = { this.MAA, this.MAB, this.MAC, this.MAD, this.MAE, this.MAF, this.MAG, this.MAH, this.MAI, this.MAJ, this.MAK, this.MAL, this.MAM, this.MAN, this.MAO, this.MAQ, this.MAR, this.MAS };
+  public int MAU;
+  public int MAV;
+  public int MAW;
   public int dataSize;
   public int fileSize;
-  public int ixp;
-  public byte[] vkY = new byte[20];
+  public int iAi;
+  public byte[] vxd = new byte[20];
   
   final void a(i.e parame)
   {
@@ -42,13 +42,13 @@ public final class s
     {
       int m = parame.aKX.getShort();
       parame.aKX.getShort();
-      a[] arrayOfa = this.MdX;
+      a[] arrayOfa = this.MAT;
       int n = arrayOfa.length;
       int j = 0;
       while (j < n)
       {
         locala = arrayOfa[j];
-        if (locala.Meb == m)
+        if (locala.MAY == m)
         {
           j = parame.aKX.getInt();
           n = parame.aKX.getInt();
@@ -68,13 +68,13 @@ public final class s
       }
       i += 1;
     }
-    this.MdF.off = 0;
-    Arrays.sort(this.MdX);
+    this.MAA.off = 0;
+    Arrays.sort(this.MAT);
     i = 1;
-    while (i < this.MdX.length)
+    while (i < this.MAT.length)
     {
-      if (this.MdX[i].off == -1) {
-        this.MdX[i].off = this.MdX[(i - 1)].off;
+      if (this.MAT[i].off == -1) {
+        this.MAT[i].off = this.MAT[(i - 1)].off;
       }
       i += 1;
     }
@@ -82,7 +82,7 @@ public final class s
   
   public final void b(i.e parame)
   {
-    a[] arrayOfa = this.MdX;
+    a[] arrayOfa = this.MAT;
     int m = arrayOfa.length;
     int i = 0;
     int k;
@@ -95,7 +95,7 @@ public final class s
       i += 1;
     }
     parame.writeInt(j);
-    arrayOfa = this.MdX;
+    arrayOfa = this.MAT;
     j = arrayOfa.length;
     i = 0;
     while (i < j)
@@ -103,7 +103,7 @@ public final class s
       a locala = arrayOfa[i];
       if (locala.exists())
       {
-        parame.writeShort(locala.Meb);
+        parame.writeShort(locala.MAY);
         parame.writeShort((short)0);
         parame.writeInt(locala.size);
         parame.writeInt(locala.off);
@@ -112,13 +112,13 @@ public final class s
     }
   }
   
-  public final void fYk()
+  public final void gcJ()
   {
     int j = this.fileSize;
-    int i = this.MdX.length - 1;
+    int i = this.MAT.length - 1;
     while (i >= 0)
     {
-      a locala = this.MdX[i];
+      a locala = this.MAT[i];
       int k = j;
       if (locala.off != -1)
       {
@@ -131,23 +131,23 @@ public final class s
       i -= 1;
       j = k;
     }
-    this.Mea = (this.MdF.byteCount + this.MdG.byteCount + this.MdH.byteCount + this.MdI.byteCount + this.MdJ.byteCount + this.MdK.byteCount + this.MdL.byteCount);
-    this.dataSize = (this.fileSize - this.Mea);
+    this.MAW = (this.MAA.byteCount + this.MAB.byteCount + this.MAC.byteCount + this.MAD.byteCount + this.MAE.byteCount + this.MAF.byteCount + this.MAG.byteCount);
+    this.dataSize = (this.fileSize - this.MAW);
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public final short Meb;
-    public boolean Mec;
+    public final short MAY;
+    public boolean MAZ;
     public int byteCount = 0;
     public int off = -1;
     public int size = 0;
     
     public a(int paramInt, boolean paramBoolean)
     {
-      this.Meb = ((short)paramInt);
-      this.Mec = paramBoolean;
+      this.MAY = ((short)paramInt);
+      this.MAZ = paramBoolean;
       if (paramInt == 0)
       {
         this.off = 0;
@@ -160,7 +160,7 @@ public final class s
       this.size = 1;
     }
     
-    private static int ahB(int paramInt)
+    private static int aik(int paramInt)
     {
       switch (paramInt)
       {
@@ -211,7 +211,7 @@ public final class s
     
     public final String toString()
     {
-      return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.Meb), Integer.valueOf(this.off), Integer.valueOf(this.size) });
+      return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.MAY), Integer.valueOf(this.off), Integer.valueOf(this.size) });
     }
     
     public static abstract class a<T>

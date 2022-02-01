@@ -10,8 +10,8 @@ public class RcptItem
 {
   public static final Parcelable.Creator<RcptItem> CREATOR;
   public String code;
-  public String jrN;
-  public boolean jrO;
+  public String juG;
+  public boolean juH;
   public String name;
   
   static
@@ -25,8 +25,8 @@ public class RcptItem
   {
     this.name = "";
     this.code = "";
-    this.jrN = "";
-    this.jrO = false;
+    this.juG = "";
+    this.juH = false;
   }
   
   public RcptItem(Parcel paramParcel)
@@ -34,11 +34,11 @@ public class RcptItem
     AppMethodBeat.i(20798);
     this.name = "";
     this.code = "";
-    this.jrN = "";
-    this.jrO = false;
+    this.juG = "";
+    this.juH = false;
     this.name = paramParcel.readString();
     this.code = paramParcel.readString();
-    this.jrN = paramParcel.readString();
+    this.juG = paramParcel.readString();
     AppMethodBeat.o(20798);
   }
   
@@ -46,11 +46,11 @@ public class RcptItem
   {
     this.name = "";
     this.code = "";
-    this.jrN = "";
-    this.jrO = false;
+    this.juG = "";
+    this.juH = false;
     this.name = paramString1;
     this.code = paramString2;
-    this.jrN = paramString3;
+    this.juG = paramString3;
   }
   
   public int describeContents()
@@ -63,13 +63,13 @@ public class RcptItem
     AppMethodBeat.i(20799);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.code);
-    paramParcel.writeString(this.jrN);
+    paramParcel.writeString(this.juG);
     AppMethodBeat.o(20799);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.RcptItem
  * JD-Core Version:    0.7.0.1
  */

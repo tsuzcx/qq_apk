@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public class TextProgressBar
   extends ProgressBar

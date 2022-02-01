@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.scanner.box;
 import android.content.DialogInterface;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"})
 public abstract interface b
 {
   public abstract void a(DialogInterface paramDialogInterface, int paramInt);

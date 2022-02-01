@@ -6,141 +6,141 @@ import com.tencent.mm.plugin.report.a;
 public final class di
   extends a
 {
-  private String dXc;
-  private long dYD;
-  private String dZG;
-  private String dZH;
-  private long efA;
-  private String efB;
-  private String efC;
-  private String efD;
-  private String efE;
-  private String efF;
-  private String efG;
-  private String efn;
-  private String efo;
-  private String efp;
-  private String efq;
-  private String efr;
-  private String efs;
-  private String eft;
-  private String efu;
-  private String efv;
-  private String efw;
-  private long efx;
-  private long efy;
-  private long efz;
+  private String dXu = "";
+  private long dZW;
+  private String eaZ = "";
+  private String eba = "";
+  private String egO = "";
+  private String egP = "";
+  private String egQ = "";
+  private String egR = "";
+  private String egS = "";
+  private String egT = "";
+  private String egU = "";
+  private String egV = "";
+  private String egW = "";
+  private String egX = "";
+  private long egY;
+  private long egZ;
+  private long eha;
+  private long ehb;
+  private String ehc = "";
+  private String ehd = "";
+  private String ehe = "";
+  private String ehf = "";
+  private String ehg = "";
+  private String ehh = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(200232);
+    AppMethodBeat.i(206493);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZG);
+    ((StringBuffer)localObject).append(this.eaZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZH);
+    ((StringBuffer)localObject).append(this.eba);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXc);
+    ((StringBuffer)localObject).append(this.dXu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efn);
+    ((StringBuffer)localObject).append(this.egO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efo);
+    ((StringBuffer)localObject).append(this.egP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efp);
+    ((StringBuffer)localObject).append(this.egQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efq);
+    ((StringBuffer)localObject).append(this.egR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efr);
+    ((StringBuffer)localObject).append(this.egS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efs);
+    ((StringBuffer)localObject).append(this.egT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eft);
+    ((StringBuffer)localObject).append(this.egU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efu);
+    ((StringBuffer)localObject).append(this.egV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efv);
+    ((StringBuffer)localObject).append(this.egW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efw);
+    ((StringBuffer)localObject).append(this.egX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efx);
+    ((StringBuffer)localObject).append(this.egY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efy);
+    ((StringBuffer)localObject).append(this.egZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efz);
+    ((StringBuffer)localObject).append(this.eha);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYD);
+    ((StringBuffer)localObject).append(this.dZW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efA);
+    ((StringBuffer)localObject).append(this.ehb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efB);
+    ((StringBuffer)localObject).append(this.ehc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efC);
+    ((StringBuffer)localObject).append(this.ehd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efD);
+    ((StringBuffer)localObject).append(this.ehe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efE);
+    ((StringBuffer)localObject).append(this.ehf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efF);
+    ((StringBuffer)localObject).append(this.ehg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efG);
+    ((StringBuffer)localObject).append(this.ehh);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(200232);
+    axO((String)localObject);
+    AppMethodBeat.o(206493);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(200233);
+    AppMethodBeat.i(206494);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PostId:").append(this.dZG);
+    ((StringBuffer)localObject).append("PostId:").append(this.eaZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EditId:").append(this.dZH);
+    ((StringBuffer)localObject).append("EditId:").append(this.eba);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExtraInfo:").append(this.dXc);
+    ((StringBuffer)localObject).append("ExtraInfo:").append(this.dXu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isBeauty:").append(this.efn);
+    ((StringBuffer)localObject).append("isBeauty:").append(this.egO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("targetDuration:").append(this.efo);
+    ((StringBuffer)localObject).append("targetDuration:").append(this.egP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("originDuration:").append(this.efp);
+    ((StringBuffer)localObject).append("originDuration:").append(this.egQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isSlowMotion:").append(this.efq);
+    ((StringBuffer)localObject).append("isSlowMotion:").append(this.egR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("dragCount:").append(this.efr);
+    ((StringBuffer)localObject).append("dragCount:").append(this.egS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scaleCount:").append(this.efs);
+    ((StringBuffer)localObject).append("scaleCount:").append(this.egT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickEditCount:").append(this.eft);
+    ((StringBuffer)localObject).append("clickEditCount:").append(this.egU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("durationCutCount:").append(this.efu);
+    ((StringBuffer)localObject).append("durationCutCount:").append(this.egV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("durationScrollCount:").append(this.efv);
+    ((StringBuffer)localObject).append("durationScrollCount:").append(this.egW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isDurationCut:").append(this.efw);
+    ((StringBuffer)localObject).append("isDurationCut:").append(this.egX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cropRectChangeCount:").append(this.efx);
+    ((StringBuffer)localObject).append("cropRectChangeCount:").append(this.egY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("seekBarDragCount:").append(this.efy);
+    ((StringBuffer)localObject).append("seekBarDragCount:").append(this.egZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("is60sDurationCut:").append(this.efz);
+    ((StringBuffer)localObject).append("is60sDurationCut:").append(this.eha);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Type:").append(this.dYD);
+    ((StringBuffer)localObject).append("Type:").append(this.dZW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NextStep:").append(this.efA);
+    ((StringBuffer)localObject).append("NextStep:").append(this.ehb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoType:").append(this.efB);
+    ((StringBuffer)localObject).append("VideoType:").append(this.ehc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CaptionInfo:").append(this.efC);
+    ((StringBuffer)localObject).append("CaptionInfo:").append(this.ehd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TextInfo:").append(this.efD);
+    ((StringBuffer)localObject).append("TextInfo:").append(this.ehe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EmojiInfo:").append(this.efE);
+    ((StringBuffer)localObject).append("EmojiInfo:").append(this.ehf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransitionInfo:").append(this.efF);
+    ((StringBuffer)localObject).append("TransitionInfo:").append(this.ehg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TrSpeedInfo:").append(this.efG);
+    ((StringBuffer)localObject).append("TrSpeedInfo:").append(this.ehh);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(200233);
+    AppMethodBeat.o(206494);
     return localObject;
   }
   
@@ -149,179 +149,179 @@ public final class di
     return 19904;
   }
   
-  public final di jE(long paramLong)
+  public final di jO(long paramLong)
   {
-    this.efx = paramLong;
+    this.egY = paramLong;
     return this;
   }
   
-  public final di jF(long paramLong)
+  public final di jP(long paramLong)
   {
-    this.efy = paramLong;
+    this.egZ = paramLong;
     return this;
   }
   
-  public final di jG(long paramLong)
+  public final di jQ(long paramLong)
   {
-    this.efz = paramLong;
+    this.eha = paramLong;
     return this;
   }
   
-  public final di jH(long paramLong)
+  public final di jR(long paramLong)
   {
-    this.efA = paramLong;
-    return this;
-  }
-  
-  public final di mA(String paramString)
-  {
-    AppMethodBeat.i(200216);
-    this.efn = t("isBeauty", paramString, true);
-    AppMethodBeat.o(200216);
-    return this;
-  }
-  
-  public final di mB(String paramString)
-  {
-    AppMethodBeat.i(200217);
-    this.efo = t("targetDuration", paramString, true);
-    AppMethodBeat.o(200217);
-    return this;
-  }
-  
-  public final di mC(String paramString)
-  {
-    AppMethodBeat.i(200218);
-    this.efp = t("originDuration", paramString, true);
-    AppMethodBeat.o(200218);
-    return this;
-  }
-  
-  public final di mD(String paramString)
-  {
-    AppMethodBeat.i(200219);
-    this.efq = t("isSlowMotion", paramString, true);
-    AppMethodBeat.o(200219);
-    return this;
-  }
-  
-  public final di mE(String paramString)
-  {
-    AppMethodBeat.i(200220);
-    this.efr = t("dragCount", paramString, true);
-    AppMethodBeat.o(200220);
-    return this;
-  }
-  
-  public final di mF(String paramString)
-  {
-    AppMethodBeat.i(200221);
-    this.efs = t("scaleCount", paramString, true);
-    AppMethodBeat.o(200221);
-    return this;
-  }
-  
-  public final di mG(String paramString)
-  {
-    AppMethodBeat.i(200222);
-    this.eft = t("clickEditCount", paramString, true);
-    AppMethodBeat.o(200222);
-    return this;
-  }
-  
-  public final di mH(String paramString)
-  {
-    AppMethodBeat.i(200223);
-    this.efu = t("durationCutCount", paramString, true);
-    AppMethodBeat.o(200223);
-    return this;
-  }
-  
-  public final di mI(String paramString)
-  {
-    AppMethodBeat.i(200224);
-    this.efv = t("durationScrollCount", paramString, true);
-    AppMethodBeat.o(200224);
-    return this;
-  }
-  
-  public final di mJ(String paramString)
-  {
-    AppMethodBeat.i(200225);
-    this.efw = t("isDurationCut", paramString, true);
-    AppMethodBeat.o(200225);
-    return this;
-  }
-  
-  public final di mK(String paramString)
-  {
-    AppMethodBeat.i(200226);
-    this.efB = t("VideoType", paramString, true);
-    AppMethodBeat.o(200226);
-    return this;
-  }
-  
-  public final di mL(String paramString)
-  {
-    AppMethodBeat.i(200227);
-    this.efC = t("CaptionInfo", paramString, true);
-    AppMethodBeat.o(200227);
-    return this;
-  }
-  
-  public final di mM(String paramString)
-  {
-    AppMethodBeat.i(200228);
-    this.efD = t("TextInfo", paramString, true);
-    AppMethodBeat.o(200228);
-    return this;
-  }
-  
-  public final di mN(String paramString)
-  {
-    AppMethodBeat.i(200229);
-    this.efE = t("EmojiInfo", paramString, true);
-    AppMethodBeat.o(200229);
-    return this;
-  }
-  
-  public final di mO(String paramString)
-  {
-    AppMethodBeat.i(200230);
-    this.efF = t("TransitionInfo", paramString, true);
-    AppMethodBeat.o(200230);
+    this.ehb = paramLong;
     return this;
   }
   
   public final di mP(String paramString)
   {
-    AppMethodBeat.i(200231);
-    this.efG = t("TrSpeedInfo", paramString, true);
-    AppMethodBeat.o(200231);
+    AppMethodBeat.i(206474);
+    this.eaZ = t("PostId", paramString, true);
+    AppMethodBeat.o(206474);
     return this;
   }
   
-  public final di mx(String paramString)
+  public final di mQ(String paramString)
   {
-    AppMethodBeat.i(200213);
-    this.dZG = t("PostId", paramString, true);
-    AppMethodBeat.o(200213);
+    AppMethodBeat.i(206475);
+    this.eba = t("EditId", paramString, true);
+    AppMethodBeat.o(206475);
     return this;
   }
   
-  public final di my(String paramString)
+  public final di mR(String paramString)
   {
-    AppMethodBeat.i(200214);
-    this.dZH = t("EditId", paramString, true);
-    AppMethodBeat.o(200214);
+    AppMethodBeat.i(206476);
+    this.dXu = t("ExtraInfo", paramString, true);
+    AppMethodBeat.o(206476);
     return this;
   }
   
-  public final di mz(String paramString)
+  public final di mS(String paramString)
   {
-    AppMethodBeat.i(200215);
-    this.dXc = t("ExtraInfo", paramString, true);
-    AppMethodBeat.o(200215);
+    AppMethodBeat.i(206477);
+    this.egO = t("isBeauty", paramString, true);
+    AppMethodBeat.o(206477);
+    return this;
+  }
+  
+  public final di mT(String paramString)
+  {
+    AppMethodBeat.i(206478);
+    this.egP = t("targetDuration", paramString, true);
+    AppMethodBeat.o(206478);
+    return this;
+  }
+  
+  public final di mU(String paramString)
+  {
+    AppMethodBeat.i(206479);
+    this.egQ = t("originDuration", paramString, true);
+    AppMethodBeat.o(206479);
+    return this;
+  }
+  
+  public final di mV(String paramString)
+  {
+    AppMethodBeat.i(206480);
+    this.egR = t("isSlowMotion", paramString, true);
+    AppMethodBeat.o(206480);
+    return this;
+  }
+  
+  public final di mW(String paramString)
+  {
+    AppMethodBeat.i(206481);
+    this.egS = t("dragCount", paramString, true);
+    AppMethodBeat.o(206481);
+    return this;
+  }
+  
+  public final di mX(String paramString)
+  {
+    AppMethodBeat.i(206482);
+    this.egT = t("scaleCount", paramString, true);
+    AppMethodBeat.o(206482);
+    return this;
+  }
+  
+  public final di mY(String paramString)
+  {
+    AppMethodBeat.i(206483);
+    this.egU = t("clickEditCount", paramString, true);
+    AppMethodBeat.o(206483);
+    return this;
+  }
+  
+  public final di mZ(String paramString)
+  {
+    AppMethodBeat.i(206484);
+    this.egV = t("durationCutCount", paramString, true);
+    AppMethodBeat.o(206484);
+    return this;
+  }
+  
+  public final di na(String paramString)
+  {
+    AppMethodBeat.i(206485);
+    this.egW = t("durationScrollCount", paramString, true);
+    AppMethodBeat.o(206485);
+    return this;
+  }
+  
+  public final di nb(String paramString)
+  {
+    AppMethodBeat.i(206486);
+    this.egX = t("isDurationCut", paramString, true);
+    AppMethodBeat.o(206486);
+    return this;
+  }
+  
+  public final di nc(String paramString)
+  {
+    AppMethodBeat.i(206487);
+    this.ehc = t("VideoType", paramString, true);
+    AppMethodBeat.o(206487);
+    return this;
+  }
+  
+  public final di nd(String paramString)
+  {
+    AppMethodBeat.i(206488);
+    this.ehd = t("CaptionInfo", paramString, true);
+    AppMethodBeat.o(206488);
+    return this;
+  }
+  
+  public final di ne(String paramString)
+  {
+    AppMethodBeat.i(206489);
+    this.ehe = t("TextInfo", paramString, true);
+    AppMethodBeat.o(206489);
+    return this;
+  }
+  
+  public final di nf(String paramString)
+  {
+    AppMethodBeat.i(206490);
+    this.ehf = t("EmojiInfo", paramString, true);
+    AppMethodBeat.o(206490);
+    return this;
+  }
+  
+  public final di ng(String paramString)
+  {
+    AppMethodBeat.i(206491);
+    this.ehg = t("TransitionInfo", paramString, true);
+    AppMethodBeat.o(206491);
+    return this;
+  }
+  
+  public final di nh(String paramString)
+  {
+    AppMethodBeat.i(206492);
+    this.ehh = t("TrSpeedInfo", paramString, true);
+    AppMethodBeat.o(206492);
     return this;
   }
 }

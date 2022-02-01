@@ -16,7 +16,7 @@ abstract class i
     this.cfW = this.cfU.capacity();
   }
   
-  protected final void BD()
+  protected final void BE()
   {
     int i = nextIndex();
     this.cfW = i;
@@ -37,17 +37,17 @@ abstract class i
     if (this.cfV != this.cfU.size()) {
       throw new ConcurrentModificationException();
     }
-    this.cfU.By();
+    this.cfU.Bz();
     try
     {
       this.cfU.removeAt(this.cfW);
-      this.cfU.Bz();
+      this.cfU.BA();
       this.cfV -= 1;
       return;
     }
     finally
     {
-      this.cfU.Bz();
+      this.cfU.BA();
     }
   }
 }

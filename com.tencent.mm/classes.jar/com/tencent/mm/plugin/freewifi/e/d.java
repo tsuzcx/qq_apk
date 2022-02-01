@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.freewifi.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
 {
-  private String dmM;
-  private String dpf;
-  private int tnB;
+  private String dnO;
+  private String dqk;
+  private int tyt;
   
   public final boolean y(int paramInt, String paramString1, String paramString2)
   {
@@ -19,7 +19,7 @@ public final class d
       try
       {
         AppMethodBeat.i(24875);
-        ad.i("MicroMsg.FreeWifi.Protocol31Locker", "threeOneStartUpType=%d, apKey=%s, ticket=%s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
+        ae.i("MicroMsg.FreeWifi.Protocol31Locker", "threeOneStartUpType=%d, apKey=%s, ticket=%s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
         if ((paramInt != 1) && (paramInt != 2))
         {
           if (paramInt == 3)
@@ -36,21 +36,21 @@ public final class d
             i = 0;
             continue;
           }
-          if ((m.ea(paramString1)) || (m.ea(paramString2)))
+          if ((m.ef(paramString1)) || (m.ef(paramString2)))
           {
             AppMethodBeat.o(24875);
             bool = false;
             continue;
           }
-          if ((paramString1.equals(this.dmM)) && (paramString2.equals(this.dpf)) && (this.tnB != paramInt))
+          if ((paramString1.equals(this.dnO)) && (paramString2.equals(this.dqk)) && (this.tyt != paramInt))
           {
             AppMethodBeat.o(24875);
             bool = false;
             continue;
           }
-          this.tnB = paramInt;
-          this.dmM = paramString1;
-          this.dpf = paramString2;
+          this.tyt = paramInt;
+          this.dnO = paramString1;
+          this.dqk = paramString2;
           AppMethodBeat.o(24875);
           continue;
         }
@@ -62,12 +62,12 @@ public final class d
   
   static final class a
   {
-    private static d tnC;
+    private static d tyu;
     
     static
     {
       AppMethodBeat.i(24874);
-      tnC = new d((byte)0);
+      tyu = new d((byte)0);
       AppMethodBeat.o(24874);
     }
   }

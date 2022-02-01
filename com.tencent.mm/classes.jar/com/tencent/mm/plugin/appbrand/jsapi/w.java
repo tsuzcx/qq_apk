@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChangedFactory;", "", "createAppBrandOnVideoOrientationChanged", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChanged;", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChangedFactory;", "", "createAppBrandOnVideoOrientationChanged", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChanged;", "luggage-wxa-app_release"})
 public abstract interface w
 {
-  public abstract u Gh();
+  public abstract u Gn();
 }
 
 

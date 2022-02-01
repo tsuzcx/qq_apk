@@ -21,16 +21,16 @@ public final class a$6
     AppMethodBeat.i(181975);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/widget/EditorFooterPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-    paramView = RecordConfigProvider.dFI();
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/widget/EditorFooterPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+    paramView = RecordConfigProvider.dIZ();
     localObject = new UICustomParam.a();
-    ((UICustomParam.a)localObject).aby();
-    ((UICustomParam.a)localObject).abx();
+    ((UICustomParam.a)localObject).abH();
+    ((UICustomParam.a)localObject).abG();
     ((UICustomParam.a)localObject).cP(true);
-    paramView.xyk = ((UICustomParam.a)localObject).gei;
-    if (this.pyk.pyi)
+    paramView.xOh = ((UICustomParam.a)localObject).ggq;
+    if (this.pEO.pEM)
     {
-      localObject = com.tencent.mm.plugin.recordvideo.jumper.a.xyI;
+      localObject = com.tencent.mm.plugin.recordvideo.jumper.a.xOE;
       com.tencent.mm.plugin.recordvideo.jumper.a.a(this.val$context, 4097, paramView);
     }
     for (;;)
@@ -45,17 +45,17 @@ public final class a$6
         paramView = new SightParams(4, 0);
       }
       localObject = "micromsg_" + System.currentTimeMillis();
-      String str1 = com.tencent.mm.loader.j.b.asg() + (String)localObject + ".mp4";
-      String str2 = com.tencent.mm.loader.j.b.asg() + (String)localObject + ".jpeg";
+      String str1 = com.tencent.mm.loader.j.b.asv() + (String)localObject + ".mp4";
+      String str2 = com.tencent.mm.loader.j.b.asv() + (String)localObject + ".jpeg";
       int i = localIntent.getIntExtra("key_pick_local_media_duration", 60);
       SightParams localSightParams = new SightParams(4, 1);
-      localSightParams.vMB = 2;
+      localSightParams.vYF = 2;
       localSightParams.mode = 0;
-      if (localSightParams.hvh == null) {
-        localSightParams.hvh = new VideoTransPara();
+      if (localSightParams.hxV == null) {
+        localSightParams.hxV = new VideoTransPara();
       }
-      localSightParams.hvh.duration = i;
-      localSightParams.r((String)localObject, str1, str2, com.tencent.mm.loader.j.b.asg() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+      localSightParams.hxV.duration = i;
+      localSightParams.r((String)localObject, str1, str2, com.tencent.mm.loader.j.b.asv() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
       localIntent.putExtra("KEY_SIGHT_PARAMS", paramView);
       q.a(this.val$context, 4098, localIntent, 4, 1);
     }

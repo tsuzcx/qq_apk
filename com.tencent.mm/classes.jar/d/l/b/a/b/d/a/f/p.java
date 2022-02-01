@@ -5,14 +5,14 @@ import d.l.b.a.b.m.ab;
 
 final class p
 {
-  final ab MOF;
-  final d Nic;
+  final d NFi;
+  final ab NlK;
   
   public p(ab paramab, d paramd)
   {
     AppMethodBeat.i(58122);
-    this.MOF = paramab;
-    this.Nic = paramd;
+    this.NlK = paramab;
+    this.NFi = paramd;
     AppMethodBeat.o(58122);
   }
   
@@ -24,7 +24,7 @@ final class p
       if ((paramObject instanceof p))
       {
         paramObject = (p)paramObject;
-        if ((!d.g.b.p.i(this.MOF, paramObject.MOF)) || (!d.g.b.p.i(this.Nic, paramObject.Nic))) {}
+        if ((!d.g.b.p.i(this.NlK, paramObject.NlK)) || (!d.g.b.p.i(this.NFi, paramObject.NFi))) {}
       }
     }
     else
@@ -40,11 +40,11 @@ final class p
   {
     int j = 0;
     AppMethodBeat.i(58124);
-    Object localObject = this.MOF;
+    Object localObject = this.NlK;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.Nic;
+      localObject = this.NFi;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -56,7 +56,7 @@ final class p
   public final String toString()
   {
     AppMethodBeat.i(58123);
-    String str = "TypeAndDefaultQualifiers(type=" + this.MOF + ", defaultQualifiers=" + this.Nic + ")";
+    String str = "TypeAndDefaultQualifiers(type=" + this.NlK + ", defaultQualifiers=" + this.NFi + ")";
     AppMethodBeat.o(58123);
     return str;
   }

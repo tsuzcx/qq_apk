@@ -1,19 +1,39 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
-import android.view.View;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.g;
 
-public abstract interface d
+public final class d
+  implements a
 {
-  public abstract void a(int paramInt1, String paramString, long paramLong, int paramInt2);
+  public final int dHw()
+  {
+    return 13182;
+  }
   
-  public abstract void a(int paramInt1, String paramString, boolean paramBoolean, View paramView, long paramLong, SnsObject paramSnsObject, int paramInt2, int paramInt3);
+  public final void f(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(94971);
+    switch (paramInt)
+    {
+    default: 
+      g.yxI.f(13182, paramVarArgs);
+      AppMethodBeat.o(94971);
+      return;
+    }
+    AppMethodBeat.o(94971);
+  }
   
-  public abstract void clear();
+  public final void v(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(94970);
+    f(0, paramVarArgs);
+    AppMethodBeat.o(94970);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.d.d
  * JD-Core Version:    0.7.0.1
  */

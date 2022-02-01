@@ -18,7 +18,7 @@ import com.tencent.mm.plugin.finder.loader.i.a;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.c.a;
@@ -28,7 +28,7 @@ import d.n.n;
 import d.v;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderContactSortView;", "Lcom/tencent/mm/ui/base/sortview/BaseSortView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "getItemViewCreator", "Lcom/tencent/mm/ui/base/sortview/SortAdapter$IViewCreator;", "getListView", "Landroid/widget/ListView;", "getNoResultView", "Landroid/view/View;", "getScrollBar", "Lcom/tencent/mm/ui/base/VerticalScrollBar;", "inflate", "init", "", "isMatch", "", "word", "entity", "Lcom/tencent/mm/ui/base/sortview/SortEntity;", "ViewHolder", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderContactSortView;", "Lcom/tencent/mm/ui/base/sortview/BaseSortView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "getItemViewCreator", "Lcom/tencent/mm/ui/base/sortview/SortAdapter$IViewCreator;", "getListView", "Landroid/widget/ListView;", "getNoResultView", "Landroid/view/View;", "getScrollBar", "Lcom/tencent/mm/ui/base/VerticalScrollBar;", "inflate", "init", "", "isMatch", "", "word", "entity", "Lcom/tencent/mm/ui/base/sortview/SortEntity;", "ViewHolder", "plugin-finder_release"})
 public final class FinderContactSortView
   extends BaseSortView
 {
@@ -49,11 +49,11 @@ public final class FinderContactSortView
     if (paramString != null)
     {
       if (paramd != null) {}
-      for (paramd = paramd.fzO();; paramd = null)
+      for (paramd = paramd.fDQ();; paramd = null)
       {
-        paramd = bt.nullAsNil(paramd);
+        paramd = bu.nullAsNil(paramd);
         p.g(paramd, "Util.nullAsNil(entity?.alpha)");
-        boolean bool = n.nz(paramString, paramd);
+        boolean bool = n.nF(paramString, paramd);
         AppMethodBeat.o(168303);
         return bool;
       }
@@ -108,16 +108,16 @@ public final class FinderContactSortView
     return localView;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderContactSortView$ViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "catalogTv", "Landroid/widget/TextView;", "getCatalogTv", "()Landroid/widget/TextView;", "setCatalogTv", "(Landroid/widget/TextView;)V", "content", "Landroid/view/View;", "getContent", "()Landroid/view/View;", "setContent", "(Landroid/view/View;)V", "nickTv", "getNickTv", "setNickTv", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderContactSortView$ViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "catalogTv", "Landroid/widget/TextView;", "getCatalogTv", "()Landroid/widget/TextView;", "setCatalogTv", "(Landroid/widget/TextView;)V", "content", "Landroid/view/View;", "getContent", "()Landroid/view/View;", "setContent", "(Landroid/view/View;)V", "nickTv", "getNickTv", "setNickTv", "plugin-finder_release"})
   public static final class a
   {
-    ImageView fRd;
-    TextView jcc;
-    TextView jhg;
-    View oeQ;
+    ImageView fTj;
+    TextView jeV;
+    TextView jjZ;
+    View okQ;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "item", "Lcom/tencent/mm/ui/base/sortview/SortEntity;", "convertView", "parent", "Landroid/view/ViewGroup;", "position", "", "count", "isFirstOfPage", "", "isLastOfPage", "createView"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "item", "Lcom/tencent/mm/ui/base/sortview/SortEntity;", "convertView", "parent", "Landroid/view/ViewGroup;", "position", "", "count", "isFirstOfPage", "", "isLastOfPage", "createView"})
   static final class b
     implements c.a
   {
@@ -129,12 +129,12 @@ public final class FinderContactSortView
       Object localObject1;
       if (paramView == null)
       {
-        paramView = View.inflate(this.sTv.getContext(), 2131494021, null);
+        paramView = View.inflate(this.teH.getContext(), 2131494021, null);
         localObject1 = new FinderContactSortView.a();
-        ((FinderContactSortView.a)localObject1).fRd = ((ImageView)paramView.findViewById(2131297008));
-        ((FinderContactSortView.a)localObject1).jhg = ((TextView)paramView.findViewById(2131302867));
-        ((FinderContactSortView.a)localObject1).jcc = ((TextView)paramView.findViewById(2131297925));
-        ((FinderContactSortView.a)localObject1).oeQ = paramView.findViewById(2131301145);
+        ((FinderContactSortView.a)localObject1).fTj = ((ImageView)paramView.findViewById(2131297008));
+        ((FinderContactSortView.a)localObject1).jjZ = ((TextView)paramView.findViewById(2131302867));
+        ((FinderContactSortView.a)localObject1).jeV = ((TextView)paramView.findViewById(2131297925));
+        ((FinderContactSortView.a)localObject1).okQ = paramView.findViewById(2131301145);
         p.g(paramView, "itemView");
         paramView.setTag(localObject1);
       }
@@ -159,33 +159,33 @@ public final class FinderContactSortView
         localObject1 = (FinderContactSortView.a)localObject1;
       }
       Object localObject2 = (g)localObject2;
-      Object localObject3 = i.sja;
-      localObject3 = i.cCC();
-      com.tencent.mm.plugin.finder.loader.a locala = new com.tencent.mm.plugin.finder.loader.a(((g)localObject2).cxL());
-      ImageView localImageView = ((FinderContactSortView.a)localObject1).fRd;
+      Object localObject3 = i.srW;
+      localObject3 = i.cEo();
+      com.tencent.mm.plugin.finder.loader.a locala = new com.tencent.mm.plugin.finder.loader.a(((g)localObject2).czm());
+      ImageView localImageView = ((FinderContactSortView.a)localObject1).fTj;
       if (localImageView == null) {
-        p.gfZ();
+        p.gkB();
       }
-      i locali = i.sja;
-      ((com.tencent.mm.loader.d)localObject3).a(locala, localImageView, i.a(i.a.sjd));
-      localObject3 = ((FinderContactSortView.a)localObject1).jhg;
+      i locali = i.srW;
+      ((com.tencent.mm.loader.d)localObject3).a(locala, localImageView, i.a(i.a.srZ));
+      localObject3 = ((FinderContactSortView.a)localObject1).jjZ;
       if (localObject3 != null) {
-        ((TextView)localObject3).setText((CharSequence)k.c(this.sTv.getContext(), (CharSequence)((g)localObject2).VC()));
+        ((TextView)localObject3).setText((CharSequence)k.c(this.teH.getContext(), (CharSequence)((g)localObject2).VK()));
       }
-      if ((this.sTv.fzL()) && (paramBoolean1))
+      if ((this.teH.fDN()) && (paramBoolean1))
       {
-        localObject2 = ((FinderContactSortView.a)localObject1).jcc;
+        localObject2 = ((FinderContactSortView.a)localObject1).jeV;
         if (localObject2 != null) {
-          ((TextView)localObject2).setText((CharSequence)paramd.fzO());
+          ((TextView)localObject2).setText((CharSequence)paramd.fDQ());
         }
-        paramd = ((FinderContactSortView.a)localObject1).jcc;
+        paramd = ((FinderContactSortView.a)localObject1).jeV;
         if (paramd != null) {
           paramd.setVisibility(0);
         }
-        if ((this.sTv.getMode() != 0) || (!paramBoolean2)) {
+        if ((this.teH.getMode() != 0) || (!paramBoolean2)) {
           break label390;
         }
-        paramd = ((FinderContactSortView.a)localObject1).oeQ;
+        paramd = ((FinderContactSortView.a)localObject1).okQ;
         if (paramd != null) {
           paramd.setBackgroundResource(2131231820);
         }
@@ -194,14 +194,14 @@ public final class FinderContactSortView
       {
         AppMethodBeat.o(168297);
         return paramView;
-        paramd = ((FinderContactSortView.a)localObject1).jcc;
+        paramd = ((FinderContactSortView.a)localObject1).jeV;
         if (paramd == null) {
           break;
         }
         paramd.setVisibility(8);
         break;
         label390:
-        paramd = ((FinderContactSortView.a)localObject1).oeQ;
+        paramd = ((FinderContactSortView.a)localObject1).okQ;
         if (paramd != null) {
           paramd.setBackgroundResource(2131232867);
         }
@@ -209,7 +209,7 @@ public final class FinderContactSortView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "adapterView", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "adapterView", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
   static final class c
     implements AdapterView.OnItemClickListener
   {
@@ -221,13 +221,13 @@ public final class FinderContactSortView
       b localb = new b();
       localb.bd(paramAdapterView);
       localb.bd(paramView);
-      localb.mr(paramInt);
-      localb.qY(paramLong);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderContactSortView$init$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-      if ((paramLong >= 0L) && (paramLong < this.sTv.getDatas().size()))
+      localb.mu(paramInt);
+      localb.rl(paramLong);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderContactSortView$init$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+      if ((paramLong >= 0L) && (paramLong < this.teH.getDatas().size()))
       {
         paramAdapterView = new Intent();
-        paramView = this.sTv.getDatas().get((int)paramLong);
+        paramView = this.teH.getDatas().get((int)paramLong);
         p.g(paramView, "datas[id.toInt()]");
         paramView = ((com.tencent.mm.ui.base.sortview.d)paramView).getData();
         if (paramView == null)
@@ -237,12 +237,12 @@ public final class FinderContactSortView
           throw paramAdapterView;
         }
         paramAdapterView.putExtra("finder_username", ((g)paramView).getUsername());
-        paramView = FinderReporterUIC.tcM;
-        paramView = this.sTv.getContext();
+        paramView = FinderReporterUIC.tnG;
+        paramView = this.teH.getContext();
         p.g(paramView, "context");
         FinderReporterUIC.a.a(paramView, paramAdapterView, 0L, 0, false, 124);
-        paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
-        paramView = this.sTv.getContext();
+        paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+        paramView = this.teH.getContext();
         p.g(paramView, "context");
         com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI(paramView, paramAdapterView);
       }
@@ -253,7 +253,7 @@ public final class FinderContactSortView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderContactSortView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.g.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class d$t
   implements DialogInterface.OnCancelListener
 {
@@ -15,7 +15,7 @@ final class d$t
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(147929);
-    this.kxS.ee("user cancel");
+    this.kBh.ef("user cancel");
     AppMethodBeat.o(147929);
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bo.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bq.a;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.traceroute.b.a;
 import com.tencent.mm.plugin.traceroute.b.a.b;
@@ -12,13 +12,13 @@ import com.tencent.mm.plugin.traceroute.b.a.e;
 import com.tencent.mm.plugin.traceroute.b.a.j;
 import com.tencent.mm.plugin.traceroute.b.c;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
 import java.util.Map;
 
 final class NetworkDiagnoseUI$6
-  implements bo.a
+  implements bq.a
 {
   NetworkDiagnoseUI$6(NetworkDiagnoseUI paramNetworkDiagnoseUI) {}
   
@@ -30,57 +30,57 @@ final class NetworkDiagnoseUI$6
       AppMethodBeat.o(29715);
       return;
     }
-    String str = u.aAm();
-    NetworkDiagnoseUI.a(this.BAc, new a(str));
-    NetworkDiagnoseUI.d(this.BAc).c(parame.getIPsString(true), true);
-    NetworkDiagnoseUI.d(this.BAc).c(parame.getIPsString(false), false);
-    NetworkDiagnoseUI.d(this.BAc).Bzi = new a.d()
+    String str = v.aAC();
+    NetworkDiagnoseUI.a(this.BRA, new a(str));
+    NetworkDiagnoseUI.d(this.BRA).c(parame.getIPsString(true), true);
+    NetworkDiagnoseUI.d(this.BRA).c(parame.getIPsString(false), false);
+    NetworkDiagnoseUI.d(this.BRA).BQG = new a.d()
     {
-      public final void aUM()
+      public final void aVl()
       {
         AppMethodBeat.i(29711);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BAc).sendEmptyMessageDelayed(2, 500L);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BRA).sendEmptyMessageDelayed(2, 500L);
         AppMethodBeat.o(29711);
       }
     };
-    NetworkDiagnoseUI.d(this.BAc).Bzh = new a.e()
+    NetworkDiagnoseUI.d(this.BRA).BQF = new a.e()
     {
-      public final void erf()
+      public final void euM()
       {
         AppMethodBeat.i(29712);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BAc).sendEmptyMessageDelayed(1, 500L);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BRA).sendEmptyMessageDelayed(1, 500L);
         AppMethodBeat.o(29712);
       }
     };
-    NetworkDiagnoseUI.d(this.BAc).Bzk = new a.b()
+    NetworkDiagnoseUI.d(this.BRA).BQI = new a.b()
     {
-      public final void erd()
+      public final void euK()
       {
         AppMethodBeat.i(29713);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BAc).sendEmptyMessage(3);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BRA).sendEmptyMessage(3);
         AppMethodBeat.o(29713);
       }
     };
-    NetworkDiagnoseUI.d(this.BAc).Bzj = new a.c()
+    NetworkDiagnoseUI.d(this.BRA).BQH = new a.c()
     {
-      public final void ere()
+      public final void euL()
       {
         AppMethodBeat.i(29714);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BAc).sendEmptyMessage(4);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.BRA).sendEmptyMessage(4);
         AppMethodBeat.o(29714);
       }
     };
-    parame = NetworkDiagnoseUI.d(this.BAc);
-    if ((parame.Bzg == null) || (parame.Bzg.size() == 0)) {
-      ad.e("MicroMsg.MMTraceRoute", "no iplist");
+    parame = NetworkDiagnoseUI.d(this.BRA);
+    if ((parame.BQE == null) || (parame.BQE.size() == 0)) {
+      ae.e("MicroMsg.MMTraceRoute", "no iplist");
     }
     for (;;)
     {
-      NetworkDiagnoseUI.j(this.BAc).az(1200L, 1200L);
+      NetworkDiagnoseUI.j(this.BRA).ay(1200L, 1200L);
       AppMethodBeat.o(29715);
       return;
-      if (a.Bzc == null) {
-        a.Bzc = new c();
+      if (a.BQA == null) {
+        a.BQA = new c();
       }
       b.c(new a.j(parame, (byte)0), "MMTraceRoute_start");
     }

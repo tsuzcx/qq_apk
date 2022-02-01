@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.c;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cd.a;
+import com.tencent.mm.model.cf.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.Map;
 
 public final class d
-  implements cd.a
+  implements cf.a
 {
   public final void a(e.a parama)
   {
     AppMethodBeat.i(95177);
-    ad.i("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "receivemsg NewYearSNSAmountLevelCtrl2016NotifyLsn");
-    b.ma(67);
-    if ((parama == null) || (parama.gqE == null))
+    ae.i("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "receivemsg NewYearSNSAmountLevelCtrl2016NotifyLsn");
+    b.md(67);
+    if ((parama == null) || (parama.gte == null))
     {
-      ad.e("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "onPreAddMessage cmdAM is null");
+      ae.e("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(95177);
       return;
     }
     e locale = new e();
-    parama = z.a(parama.gqE.Fvk);
-    locale.nxl = new StringBuffer();
-    Map localMap = bw.M(parama, "sysmsg");
+    parama = z.a(parama.gte.FNI);
+    locale.nCG = new StringBuffer();
+    Map localMap = bx.M(parama, "sysmsg");
     locale.level = 0;
     if (localMap == null)
     {
-      ad.i("MicroMsg.NewYearSnsAmountLevel", "errr for paser %s", new Object[] { parama });
-      b.ma(68);
+      ae.i("MicroMsg.NewYearSnsAmountLevel", "errr for paser %s", new Object[] { parama });
+      b.md(68);
     }
     for (;;)
     {
-      ad.i("MicroMsg.NewYearSnsAmountLevel", "dump NewYearSnsAmountLevel " + locale.nxl.toString());
-      g.ajD();
-      g.ajC().ajl().set(al.a.Ius, parama);
-      g.ajD();
-      g.ajC().ajl().fqc();
+      ae.i("MicroMsg.NewYearSnsAmountLevel", "dump NewYearSnsAmountLevel " + locale.nCG.toString());
+      g.ajS();
+      g.ajR().ajA().set(am.a.IOP, parama);
+      g.ajS();
+      g.ajR().ajA().fuc();
       AppMethodBeat.o(95177);
       return;
-      locale.level = bt.aRe((String)localMap.get(".sysmsg.NewYearSNSAmountLevelCtrl2016.Level"));
-      ad.i("MicroMsg.NewYearSnsAmountLevel", "get level %d", new Object[] { Integer.valueOf(locale.level) });
+      locale.level = bu.aSB((String)localMap.get(".sysmsg.NewYearSNSAmountLevelCtrl2016.Level"));
+      ae.i("MicroMsg.NewYearSnsAmountLevel", "get level %d", new Object[] { Integer.valueOf(locale.level) });
       if (locale.level == 0) {
-        b.ma(69);
+        b.md(69);
       } else if (locale.level == 1) {
-        b.ma(70);
+        b.md(70);
       } else if (locale.level == 2) {
-        b.ma(71);
+        b.md(71);
       } else if (locale.level == 3) {
-        b.ma(72);
+        b.md(72);
       } else if (locale.level == 4) {
-        b.ma(73);
+        b.md(73);
       }
     }
   }

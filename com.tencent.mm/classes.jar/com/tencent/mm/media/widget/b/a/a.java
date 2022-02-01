@@ -3,98 +3,98 @@ package com.tencent.mm.media.widget.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.b.a.a.b;
 import com.tencent.mm.media.widget.b.a.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.a.m;
 import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/VendorFaceBeautyConfig;", "", "()V", "KEY_FB_LEVEL", "", "getKEY_FB_LEVEL", "()Ljava/lang/String;", "KEY_SKIN_RATE", "getKEY_SKIN_RATE", "KEY_SLIM_RATE", "getKEY_SLIM_RATE", "MMKV_NAME", "TAG", "getTAG", "fbLevel", "", "getFbLevel", "()I", "setFbLevel", "(I)V", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "skinLevel", "getSkinLevel", "setSkinLevel", "slimLevel", "getSlimLevel", "setSlimLevel", "setConfig", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/VendorFaceBeautyConfig;", "", "()V", "KEY_FB_LEVEL", "", "getKEY_FB_LEVEL", "()Ljava/lang/String;", "KEY_SKIN_RATE", "getKEY_SKIN_RATE", "KEY_SLIM_RATE", "getKEY_SLIM_RATE", "MMKV_NAME", "TAG", "getTAG", "fbLevel", "", "getFbLevel", "()I", "setFbLevel", "(I)V", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "skinLevel", "getSkinLevel", "setSkinLevel", "slimLevel", "getSlimLevel", "setSlimLevel", "setConfig", "plugin-mediaeditor_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.VendorConfig";
-  private static final String hrM = "vendor_skin_rate";
-  private static final String hrN = "vendor_fb_level";
-  private static final String hrO = "vendor_slim_rate";
-  private static int hrP;
-  private static int hrQ;
-  private static int hrR;
-  private static m<? super String, ? super Integer, z> hrS;
-  public static final a hrT;
+  private static final String huA = "vendor_skin_rate";
+  private static final String huB = "vendor_fb_level";
+  private static final String huC = "vendor_slim_rate";
+  private static int huD;
+  private static int huE;
+  private static int huF;
+  private static m<? super String, ? super Integer, z> huG;
+  public static final a huH;
   
   static
   {
     AppMethodBeat.i(94181);
-    hrT = new a();
+    huH = new a();
     TAG = "MicroMsg.VendorConfig";
-    hrM = "vendor_skin_rate";
-    hrN = "vendor_fb_level";
-    hrO = "vendor_slim_rate";
-    hrP = 3;
-    hrQ = 40;
-    hrR = 40;
+    huA = "vendor_skin_rate";
+    huB = "vendor_fb_level";
+    huC = "vendor_slim_rate";
+    huD = 3;
+    huE = 40;
+    huF = 40;
     AppMethodBeat.o(94181);
   }
   
-  public static void ab(String paramString, int paramInt)
+  public static void ac(String paramString, int paramInt)
   {
     AppMethodBeat.i(94180);
     p.h(paramString, "type");
-    ad.i(TAG, "setConfig: " + paramString + ", " + paramInt);
-    Object localObject = ax.aQz("vendor_effect_config");
-    b.a locala = b.hsL;
-    if (p.i(paramString, b.axk()))
+    ae.i(TAG, "setConfig: " + paramString + ", " + paramInt);
+    Object localObject = ay.aRW("vendor_effect_config");
+    b.a locala = b.hvz;
+    if (p.i(paramString, b.axz()))
     {
-      hrP = paramInt;
-      ((ax)localObject).putInt(hrN, hrP);
+      huD = paramInt;
+      ((ay)localObject).putInt(huB, huD);
     }
     for (;;)
     {
-      localObject = hrS;
+      localObject = huG;
       if (localObject == null) {
         break;
       }
       ((m)localObject).p(paramString, Integer.valueOf(paramInt));
       AppMethodBeat.o(94180);
       return;
-      locala = b.hsL;
-      if (p.i(paramString, b.axm()))
+      locala = b.hvz;
+      if (p.i(paramString, b.axB()))
       {
-        hrQ = paramInt;
-        ((ax)localObject).putInt(hrM, hrQ);
+        huE = paramInt;
+        ((ay)localObject).putInt(huA, huE);
       }
       else
       {
-        locala = b.hsL;
-        if (p.i(paramString, b.axl()))
+        locala = b.hvz;
+        if (p.i(paramString, b.axA()))
         {
-          hrR = paramInt;
-          ((ax)localObject).putInt(hrO, hrR);
+          huF = paramInt;
+          ((ay)localObject).putInt(huC, huF);
         }
       }
     }
     AppMethodBeat.o(94180);
   }
   
-  public static int axa()
+  public static int axp()
   {
-    return hrP;
+    return huD;
   }
   
-  public static int axb()
+  public static int axq()
   {
-    return hrQ;
+    return huE;
   }
   
-  public static int axc()
+  public static int axr()
   {
-    return hrR;
+    return huF;
   }
   
   public static void b(m<? super String, ? super Integer, z> paramm)
   {
-    hrS = paramm;
+    huG = paramm;
   }
 }
 

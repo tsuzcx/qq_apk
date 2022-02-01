@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -19,16 +19,16 @@ public final class cc
     try
     {
       localHashMap.put("result", "0");
-      paramc.h(paramInt, m("ok", localHashMap));
-      ad.i("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, data=" + paramJSONObject + ", waidNum=0");
+      paramc.h(paramInt, n("ok", localHashMap));
+      ae.i("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, data=" + paramJSONObject + ", waidNum=0");
       AppMethodBeat.o(45633);
       return;
     }
     catch (Exception paramJSONObject)
     {
       localHashMap.put("result", "0");
-      paramc.h(paramInt, m("fail", localHashMap));
-      ad.e("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, exp=" + paramJSONObject.toString());
+      paramc.h(paramInt, n("fail", localHashMap));
+      ae.e("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, exp=" + paramJSONObject.toString());
       AppMethodBeat.o(45633);
     }
   }

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 public abstract interface b
 {
-  public abstract void aqD();
+  public abstract void aqS();
   
-  public abstract void nM(int paramInt);
+  public abstract void nP(int paramInt);
 }
 
 

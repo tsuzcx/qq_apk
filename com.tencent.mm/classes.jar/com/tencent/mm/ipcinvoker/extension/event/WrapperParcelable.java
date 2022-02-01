@@ -11,7 +11,7 @@ class WrapperParcelable
   implements Parcelable
 {
   public static final Parcelable.Creator<WrapperParcelable> CREATOR;
-  Object gyb;
+  Object gAI;
   
   static
   {
@@ -28,14 +28,14 @@ class WrapperParcelable
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(158818);
-    if (this.gyb != null)
+    if (this.gAI != null)
     {
-      a locala = c.bh(this.gyb);
+      a locala = c.bh(this.gAI);
       if (locala != null)
       {
         paramParcel.writeInt(1);
         paramParcel.writeString(locala.getClass().getName());
-        locala.a(this.gyb, paramParcel);
+        locala.a(this.gAI, paramParcel);
         AppMethodBeat.o(158818);
         return;
       }

@@ -11,8 +11,8 @@ import com.tencent.mm.plugin.game.luggage.c.a.i;
 import com.tencent.mm.plugin.game.luggage.c.a.j;
 import com.tencent.mm.plugin.game.luggage.c.a.k;
 import com.tencent.mm.plugin.game.luggage.c.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -20,30 +20,30 @@ import org.json.JSONArray;
 public final class d
   implements com.tencent.mm.plugin.game.luggage.a.a
 {
-  private static void alr(String paramString)
+  private static void amp(String paramString)
   {
     AppMethodBeat.i(82990);
-    ad.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
+    ae.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(paramString);
-    com.tencent.mm.plugin.webview.b.b.eNT().b("wx62d9035fd4fd2059", localJSONArray);
+    com.tencent.mm.plugin.webview.b.b.eRE().b("wx62d9035fd4fd2059", localJSONArray);
     AppMethodBeat.o(82990);
   }
   
-  public final String alp(String paramString)
+  public final String amn(String paramString)
   {
     AppMethodBeat.i(82988);
-    com.tencent.mm.plugin.webview.b.b.eNT();
-    paramString = com.tencent.mm.plugin.webview.b.b.aGy(paramString);
+    com.tencent.mm.plugin.webview.b.b.eRE();
+    paramString = com.tencent.mm.plugin.webview.b.b.aHS(paramString);
     AppMethodBeat.o(82988);
     return paramString;
   }
   
-  public final boolean alq(String paramString)
+  public final boolean amo(String paramString)
   {
     AppMethodBeat.i(82989);
-    if (aj.cmR()) {
-      alr(paramString);
+    if (ak.coh()) {
+      amp(paramString);
     }
     for (;;)
     {
@@ -53,9 +53,9 @@ public final class d
     }
   }
   
-  public final Map<String, Class> cXb()
+  public final Map<String, Class> cZI()
   {
-    AppMethodBeat.i(211587);
+    AppMethodBeat.i(192972);
     HashMap localHashMap = new HashMap();
     localHashMap.put("addDownloadTaskStraight", com.tencent.mm.plugin.game.luggage.c.a.a.class);
     localHashMap.put("bookDownloadGame", com.tencent.mm.plugin.game.luggage.c.a.b.class);
@@ -70,7 +70,7 @@ public final class d
     localHashMap.put("resumeDownloadTask", k.class);
     localHashMap.put("startGameWebview", l.class);
     localHashMap.put("startGameWebView", l.class);
-    AppMethodBeat.o(211587);
+    AppMethodBeat.o(192972);
     return localHashMap;
   }
   

@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class WalletSecuritySettingUI$3
   implements View.OnClickListener
@@ -17,9 +17,9 @@ final class WalletSecuritySettingUI$3
     AppMethodBeat.i(69792);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletSecuritySettingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.v("MicroMsg.WalletSecuritySettingUI", "alvinluo click close");
-    this.CNK.finish();
+    a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletSecuritySettingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.v("MicroMsg.WalletSecuritySettingUI", "alvinluo click close");
+    this.Dfs.finish();
     a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletSecuritySettingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(69792);
   }

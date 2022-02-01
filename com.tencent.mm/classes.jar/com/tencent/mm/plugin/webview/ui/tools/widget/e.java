@@ -5,11 +5,11 @@ import com.tencent.mm.ui.widget.MMWebView;
 public abstract interface e
   extends d
 {
-  public abstract boolean BO(String paramString);
+  public abstract boolean Cq(String paramString);
   
-  public abstract boolean aDi();
+  public abstract boolean aDy();
   
-  public abstract void aDj();
+  public abstract void aDz();
   
   public abstract void c(MMWebView paramMMWebView);
 }

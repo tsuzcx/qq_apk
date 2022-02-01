@@ -6,18 +6,18 @@ import com.google.b.a.e;
 public final class a$t
   extends e
 {
-  public long FHC = 0L;
-  public long FHD = 0L;
-  public String Ifa = "";
-  public String LGN = "";
-  public String LGO = "";
-  public int LGP = 1;
-  public long LGQ = 0L;
-  public int LGR = 0;
-  public long LGS = 0L;
-  public int LGT = 0;
-  public String LGu = "";
-  public String hyX = "";
+  public long FZY = 0L;
+  public long FZZ = 0L;
+  public String Izl = "";
+  public String MdR = "";
+  public String MdS = "";
+  public int MdT = 1;
+  public long MdU = 0L;
+  public int MdV = 0;
+  public long MdW = 0L;
+  public int MdX = 0;
+  public String Mdy = "";
+  public String hBL = "";
   public String username = "";
   
   public a$t()
@@ -27,44 +27,44 @@ public final class a$t
   
   public final void a(b paramb)
   {
-    if (this.FHC != 0L) {
-      paramb.m(1, this.FHC);
+    if (this.FZY != 0L) {
+      paramb.m(1, this.FZY);
     }
-    if (!this.LGN.equals("")) {
-      paramb.d(2, this.LGN);
+    if (!this.MdR.equals("")) {
+      paramb.d(2, this.MdR);
     }
-    if (!this.LGO.equals("")) {
-      paramb.d(3, this.LGO);
+    if (!this.MdS.equals("")) {
+      paramb.d(3, this.MdS);
     }
-    if (this.LGP != 1) {
-      paramb.bx(4, this.LGP);
+    if (this.MdT != 1) {
+      paramb.bx(4, this.MdT);
     }
     if (!this.username.equals("")) {
       paramb.d(5, this.username);
     }
-    if (!this.hyX.equals("")) {
-      paramb.d(6, this.hyX);
+    if (!this.hBL.equals("")) {
+      paramb.d(6, this.hBL);
     }
-    if (!this.LGu.equals("")) {
-      paramb.d(7, this.LGu);
+    if (!this.Mdy.equals("")) {
+      paramb.d(7, this.Mdy);
     }
-    if (this.LGQ != 0L) {
-      paramb.m(8, this.LGQ);
+    if (this.MdU != 0L) {
+      paramb.m(8, this.MdU);
     }
-    if (this.LGR != 0) {
-      paramb.by(9, this.LGR);
+    if (this.MdV != 0) {
+      paramb.by(9, this.MdV);
     }
-    if (!this.Ifa.equals("")) {
-      paramb.d(10, this.Ifa);
+    if (!this.Izl.equals("")) {
+      paramb.d(10, this.Izl);
     }
-    if (this.LGS != 0L) {
-      paramb.m(11, this.LGS);
+    if (this.MdW != 0L) {
+      paramb.m(11, this.MdW);
     }
-    if (this.LGT != 0) {
-      paramb.by(12, this.LGT);
+    if (this.MdX != 0) {
+      paramb.by(12, this.MdX);
     }
-    if (this.FHD != 0L) {
-      paramb.m(13, this.FHD);
+    if (this.FZZ != 0L) {
+      paramb.m(13, this.FZZ);
     }
     super.a(paramb);
   }
@@ -73,56 +73,56 @@ public final class a$t
   {
     int j = super.zq();
     int i = j;
-    if (this.FHC != 0L) {
-      i = j + b.o(1, this.FHC);
+    if (this.FZY != 0L) {
+      i = j + b.o(1, this.FZY);
     }
     j = i;
-    if (!this.LGN.equals("")) {
-      j = i + b.e(2, this.LGN);
+    if (!this.MdR.equals("")) {
+      j = i + b.e(2, this.MdR);
     }
     i = j;
-    if (!this.LGO.equals("")) {
-      i = j + b.e(3, this.LGO);
+    if (!this.MdS.equals("")) {
+      i = j + b.e(3, this.MdS);
     }
     j = i;
-    if (this.LGP != 1) {
-      j = i + b.bz(4, this.LGP);
+    if (this.MdT != 1) {
+      j = i + b.bz(4, this.MdT);
     }
     i = j;
     if (!this.username.equals("")) {
       i = j + b.e(5, this.username);
     }
     j = i;
-    if (!this.hyX.equals("")) {
-      j = i + b.e(6, this.hyX);
+    if (!this.hBL.equals("")) {
+      j = i + b.e(6, this.hBL);
     }
     i = j;
-    if (!this.LGu.equals("")) {
-      i = j + b.e(7, this.LGu);
+    if (!this.Mdy.equals("")) {
+      i = j + b.e(7, this.Mdy);
     }
     j = i;
-    if (this.LGQ != 0L) {
-      j = i + b.o(8, this.LGQ);
+    if (this.MdU != 0L) {
+      j = i + b.o(8, this.MdU);
     }
     i = j;
-    if (this.LGR != 0) {
-      i = j + b.bA(9, this.LGR);
+    if (this.MdV != 0) {
+      i = j + b.bA(9, this.MdV);
     }
     j = i;
-    if (!this.Ifa.equals("")) {
-      j = i + b.e(10, this.Ifa);
+    if (!this.Izl.equals("")) {
+      j = i + b.e(10, this.Izl);
     }
     i = j;
-    if (this.LGS != 0L) {
-      i = j + b.o(11, this.LGS);
+    if (this.MdW != 0L) {
+      i = j + b.o(11, this.MdW);
     }
     j = i;
-    if (this.LGT != 0) {
-      j = i + b.bA(12, this.LGT);
+    if (this.MdX != 0) {
+      j = i + b.bA(12, this.MdX);
     }
     i = j;
-    if (this.FHD != 0L) {
-      i = j + b.o(13, this.FHD);
+    if (this.FZZ != 0L) {
+      i = j + b.o(13, this.FZZ);
     }
     return i;
   }

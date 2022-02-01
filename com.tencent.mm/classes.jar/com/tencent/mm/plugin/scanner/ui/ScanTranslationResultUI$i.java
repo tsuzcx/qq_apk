@@ -8,7 +8,7 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class ScanTranslationResultUI$i
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -27,15 +27,15 @@ final class ScanTranslationResultUI$i
     }
     float f = ((Float)paramValueAnimator).floatValue();
     if (f <= 0.1F) {
-      ScanTranslationResultUI.k(this.ytr).setAlpha(f * 10.0F);
+      ScanTranslationResultUI.k(this.yJr).setAlpha(f * 10.0F);
     }
     for (;;)
     {
-      ScanTranslationResultUI.k(this.ytr).setTranslationY(f * (ScanTranslationResultUI.l(this.ytr) - ScanTranslationResultUI.k(this.ytr).getHeight()));
+      ScanTranslationResultUI.k(this.yJr).setTranslationY(f * (ScanTranslationResultUI.l(this.yJr) - ScanTranslationResultUI.k(this.yJr).getHeight()));
       AppMethodBeat.o(162357);
       return;
       if (f >= 0.9F) {
-        ScanTranslationResultUI.k(this.ytr).setAlpha((1.0F - f) * 10.0F);
+        ScanTranslationResultUI.k(this.yJr).setAlpha((1.0F - f) * 10.0F);
       }
     }
   }

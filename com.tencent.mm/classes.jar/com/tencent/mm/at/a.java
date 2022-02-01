@@ -2,27 +2,55 @@ package com.tencent.mm.at;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class a
+public final class a
 {
-  private static a hYe;
+  int dEu;
+  int hKD;
+  String hKF;
+  String hKG;
+  long ibj;
+  int ibk;
+  int ibl;
+  int type;
+  String username;
   
-  public static a aHV()
+  public a()
   {
-    AppMethodBeat.i(20488);
-    if (hYe == null) {}
-    try
-    {
-      if (hYe == null) {
-        hYe = new a();
-      }
-      a locala = hYe;
-      AppMethodBeat.o(20488);
-      return locala;
+    AppMethodBeat.i(20513);
+    this.dEu = -1;
+    this.username = "";
+    this.ibj = 0L;
+    this.type = 0;
+    this.ibk = 0;
+    this.hKD = 0;
+    this.ibl = 0;
+    this.hKF = "";
+    this.hKG = "";
+    AppMethodBeat.o(20513);
+  }
+  
+  public final String aCG()
+  {
+    if (this.hKG == null) {
+      return "";
     }
-    finally
-    {
-      AppMethodBeat.o(20488);
+    return this.hKG;
+  }
+  
+  public final String aIo()
+  {
+    if (this.hKF == null) {
+      return "";
     }
+    return this.hKF;
+  }
+  
+  public final String getUsername()
+  {
+    if (this.username == null) {
+      return "";
+    }
+    return this.username;
   }
 }
 

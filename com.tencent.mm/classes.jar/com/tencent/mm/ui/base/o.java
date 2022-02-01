@@ -2,13 +2,9 @@ package com.tencent.mm.ui.base;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.KeyEvent;
-import android.view.KeyEvent.DispatcherState;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -17,7 +13,7 @@ import com.tencent.mm.ui.ap;
 public class o
   extends PopupWindow
 {
-  private View.OnTouchListener Jmh;
+  private View.OnTouchListener JGV;
   private Context mContext;
   
   public o(Context paramContext)
@@ -27,7 +23,7 @@ public class o
     this.mContext = null;
     this.mContext = paramContext;
     super.setBackgroundDrawable(null);
-    setContentView(new a(this.mContext));
+    setContentView(new o.a(this, this.mContext));
     AppMethodBeat.o(159247);
   }
   
@@ -83,7 +79,7 @@ public class o
       AppMethodBeat.o(159252);
       return null;
     }
-    if ((localObject instanceof a))
+    if ((localObject instanceof o.a))
     {
       localObject = ((View)localObject).getBackground();
       AppMethodBeat.o(159252);
@@ -104,7 +100,7 @@ public class o
       return;
     }
     Object localObject1 = localView.getContext();
-    if ((localView instanceof a))
+    if ((localView instanceof o.a))
     {
       localView.setBackgroundDrawable(paramDrawable);
       AppMethodBeat.o(159254);
@@ -114,10 +110,10 @@ public class o
     if ((localObject2 != null) && (((ViewGroup.LayoutParams)localObject2).height == -2)) {}
     for (;;)
     {
-      localObject1 = new a((Context)localObject1);
+      localObject1 = new o.a(this, (Context)localObject1);
       localObject2 = new FrameLayout.LayoutParams(-1, i);
-      ((a)localObject1).setBackgroundDrawable(paramDrawable);
-      ((a)localObject1).addView(localView, (ViewGroup.LayoutParams)localObject2);
+      ((o.a)localObject1).setBackgroundDrawable(paramDrawable);
+      ((o.a)localObject1).addView(localView, (ViewGroup.LayoutParams)localObject2);
       super.setContentView((View)localObject1);
       AppMethodBeat.o(159254);
       return;
@@ -133,14 +129,14 @@ public class o
     if (localObject == null) {
       super.setContentView(paramView);
     }
-    while (!(localObject instanceof a))
+    while (!(localObject instanceof o.a))
     {
       super.setContentView(paramView);
       AppMethodBeat.o(159253);
       return;
     }
-    localObject = (a)localObject;
-    ((a)localObject).removeAllViews();
+    localObject = (o.a)localObject;
+    ((o.a)localObject).removeAllViews();
     if (paramView == null)
     {
       super.setContentView((View)localObject);
@@ -151,7 +147,7 @@ public class o
     if ((localLayoutParams != null) && (localLayoutParams.height == -2)) {}
     for (;;)
     {
-      ((a)localObject).addView(paramView, new FrameLayout.LayoutParams(-1, i));
+      ((o.a)localObject).addView(paramView, new FrameLayout.LayoutParams(-1, i));
       super.setContentView((View)localObject);
       AppMethodBeat.o(159253);
       return;
@@ -161,114 +157,7 @@ public class o
   
   public void setTouchInterceptor(View.OnTouchListener paramOnTouchListener)
   {
-    this.Jmh = paramOnTouchListener;
-  }
-  
-  final class a
-    extends FrameLayout
-  {
-    a(Context paramContext)
-    {
-      super();
-    }
-    
-    public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
-    {
-      AppMethodBeat.i(159242);
-      if (paramKeyEvent.getKeyCode() == 4)
-      {
-        if (getKeyDispatcherState() == null)
-        {
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          AppMethodBeat.o(159242);
-          return bool;
-        }
-        KeyEvent.DispatcherState localDispatcherState;
-        if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
-        {
-          localDispatcherState = getKeyDispatcherState();
-          if (localDispatcherState != null) {
-            localDispatcherState.startTracking(paramKeyEvent, this);
-          }
-          AppMethodBeat.o(159242);
-          return true;
-        }
-        if (paramKeyEvent.getAction() == 1)
-        {
-          localDispatcherState = getKeyDispatcherState();
-          if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
-          {
-            o.this.dismiss();
-            AppMethodBeat.o(159242);
-            return true;
-          }
-        }
-        bool = super.dispatchKeyEvent(paramKeyEvent);
-        AppMethodBeat.o(159242);
-        return bool;
-      }
-      boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-      AppMethodBeat.o(159242);
-      return bool;
-    }
-    
-    public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(159243);
-      if ((o.a(o.this) != null) && (o.a(o.this).onTouch(this, paramMotionEvent)))
-      {
-        AppMethodBeat.o(159243);
-        return true;
-      }
-      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(159243);
-      return bool;
-    }
-    
-    protected final int[] onCreateDrawableState(int paramInt)
-    {
-      AppMethodBeat.i(159241);
-      int[] arrayOfInt = super.onCreateDrawableState(paramInt);
-      AppMethodBeat.o(159241);
-      return arrayOfInt;
-    }
-    
-    public final boolean onTouchEvent(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(159244);
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      if ((paramMotionEvent.getAction() == 0) && ((i < 0) || (i >= getWidth()) || (j < 0) || (j >= getHeight())))
-      {
-        o.this.dismiss();
-        AppMethodBeat.o(159244);
-        return true;
-      }
-      if (paramMotionEvent.getAction() == 4)
-      {
-        o.this.dismiss();
-        AppMethodBeat.o(159244);
-        return true;
-      }
-      boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(159244);
-      return bool;
-    }
-    
-    public final void sendAccessibilityEvent(int paramInt)
-    {
-      AppMethodBeat.i(159245);
-      if (getChildCount() == 1) {
-        getChildAt(0).sendAccessibilityEvent(paramInt);
-      }
-      for (;;)
-      {
-        super.sendAccessibilityEvent(paramInt);
-        AppMethodBeat.o(159245);
-        return;
-        super.sendAccessibilityEvent(paramInt);
-      }
-    }
+    this.JGV = paramOnTouchListener;
   }
 }
 

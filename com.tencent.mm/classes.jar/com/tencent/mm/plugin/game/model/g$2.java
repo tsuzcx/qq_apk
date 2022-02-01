@@ -8,9 +8,9 @@ public final class g$2
 {
   public final void run()
   {
-    AppMethodBeat.i(206816);
-    b.cWV().mW(true);
-    AppMethodBeat.o(206816);
+    AppMethodBeat.i(195631);
+    b.cZC().na(true);
+    AppMethodBeat.o(195631);
   }
 }
 

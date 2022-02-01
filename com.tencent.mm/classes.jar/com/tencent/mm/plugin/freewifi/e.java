@@ -6,8 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -17,22 +17,22 @@ public final class e
   Lock aIY;
   private Activity activity;
   private BroadcastReceiver broadcastReceiver;
-  Condition cPA;
+  Condition cQk;
   private WifiManager cde;
-  private int tkO;
+  private int tvG;
   
   public e(Activity paramActivity)
   {
     AppMethodBeat.i(24649);
     this.activity = paramActivity;
     this.aIY = new ReentrantLock();
-    this.cPA = this.aIY.newCondition();
-    this.cde = ((WifiManager)aj.getContext().getSystemService("wifi"));
-    this.tkO = 10;
+    this.cQk = this.aIY.newCondition();
+    this.cde = ((WifiManager)ak.getContext().getSystemService("wifi"));
+    this.tvG = 10;
     AppMethodBeat.o(24649);
   }
   
-  public final void cQG()
+  public final void cTl()
   {
     AppMethodBeat.i(24651);
     try
@@ -48,7 +48,7 @@ public final class e
   }
   
   /* Error */
-  public final int cQI()
+  public final int cTn()
   {
     // Byte code:
     //   0: sipush 24650
@@ -91,9 +91,9 @@ public final class e
     //   78: invokevirtual 109	android/net/wifi/WifiManager:setWifiEnabled	(Z)Z
     //   81: pop
     //   82: aload_0
-    //   83: getfield 44	com/tencent/mm/plugin/freewifi/e:cPA	Ljava/util/concurrent/locks/Condition;
+    //   83: getfield 44	com/tencent/mm/plugin/freewifi/e:cQk	Ljava/util/concurrent/locks/Condition;
     //   86: aload_0
-    //   87: getfield 64	com/tencent/mm/plugin/freewifi/e:tkO	I
+    //   87: getfield 64	com/tencent/mm/plugin/freewifi/e:tvG	I
     //   90: i2l
     //   91: getstatic 115	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
     //   94: invokeinterface 121 4 0
@@ -101,7 +101,7 @@ public final class e
     //   100: iload_1
     //   101: ifeq +24 -> 125
     //   104: aload_0
-    //   105: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cQG	()V
+    //   105: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cTl	()V
     //   108: aload_0
     //   109: getfield 36	com/tencent/mm/plugin/freewifi/e:aIY	Ljava/util/concurrent/locks/Lock;
     //   112: invokeinterface 126 1 0
@@ -110,7 +110,7 @@ public final class e
     //   123: iconst_0
     //   124: ireturn
     //   125: aload_0
-    //   126: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cQG	()V
+    //   126: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cTl	()V
     //   129: aload_0
     //   130: getfield 36	com/tencent/mm/plugin/freewifi/e:aIY	Ljava/util/concurrent/locks/Lock;
     //   133: invokeinterface 126 1 0
@@ -120,7 +120,7 @@ public final class e
     //   145: ireturn
     //   146: astore_2
     //   147: aload_0
-    //   148: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cQG	()V
+    //   148: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cTl	()V
     //   151: aload_0
     //   152: getfield 36	com/tencent/mm/plugin/freewifi/e:aIY	Ljava/util/concurrent/locks/Lock;
     //   155: invokeinterface 126 1 0
@@ -130,7 +130,7 @@ public final class e
     //   167: ireturn
     //   168: astore_2
     //   169: aload_0
-    //   170: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cQG	()V
+    //   170: invokevirtual 123	com/tencent/mm/plugin/freewifi/e:cTl	()V
     //   173: aload_0
     //   174: getfield 36	com/tencent/mm/plugin/freewifi/e:aIY	Ljava/util/concurrent/locks/Lock;
     //   177: invokeinterface 126 1 0
@@ -153,7 +153,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.e
  * JD-Core Version:    0.7.0.1
  */

@@ -18,11 +18,11 @@ public class VideoCompositionInstruction
   
   public VideoCompositionInstruction()
   {
-    AppMethodBeat.i(218077);
+    AppMethodBeat.i(214716);
     this.layerInstructions = new ArrayList();
     this.requiredSourceTrackIDs = new ArrayList();
     this.passthroughTrackID = -1;
-    AppMethodBeat.o(218077);
+    AppMethodBeat.o(214716);
   }
   
   public int getBackgroundColor()

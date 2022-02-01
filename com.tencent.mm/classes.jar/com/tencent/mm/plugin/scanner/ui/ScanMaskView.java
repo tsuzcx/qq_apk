@@ -19,83 +19,83 @@ public class ScanMaskView
   extends View
 {
   private Paint mPaint;
-  private Path pTt;
-  private float ysA;
-  private float ysB;
-  private float ysC;
-  private float ysD;
-  private Paint ysE;
-  private ValueAnimator ysF;
-  private a ysG;
-  private Bitmap ysf;
-  private Bitmap ysg;
-  private Bitmap ysh;
-  private Bitmap ysi;
-  int ysj;
-  int ysk;
-  private boolean ysl;
-  private Rect ysm;
-  private Rect ysn;
-  private Rect yso;
-  private Rect ysp;
-  private Rect ysq;
-  private Rect ysr;
-  private Rect yss;
-  private Rect yst;
-  private Rect ysu;
-  private Rect ysv;
-  private int ysw;
-  private long ysx;
-  private boolean ysy;
-  private int ysz;
+  private Path pZY;
+  private float yIA;
+  private float yIB;
+  private float yIC;
+  private float yID;
+  private Paint yIE;
+  private ValueAnimator yIF;
+  private a yIG;
+  private Bitmap yIf;
+  private Bitmap yIg;
+  private Bitmap yIh;
+  private Bitmap yIi;
+  int yIj;
+  int yIk;
+  private boolean yIl;
+  private Rect yIm;
+  private Rect yIn;
+  private Rect yIo;
+  private Rect yIp;
+  private Rect yIq;
+  private Rect yIr;
+  private Rect yIs;
+  private Rect yIt;
+  private Rect yIu;
+  private Rect yIv;
+  private int yIw;
+  private long yIx;
+  private boolean yIy;
+  private int yIz;
   
   public ScanMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51913);
-    this.ysf = null;
-    this.ysg = null;
-    this.ysh = null;
-    this.ysi = null;
-    this.ysj = 0;
-    this.ysk = 0;
-    this.ysl = false;
-    this.ysm = new Rect();
-    this.ysn = new Rect();
-    this.yso = new Rect();
-    this.ysp = new Rect();
-    this.ysq = new Rect();
-    this.ysr = new Rect();
-    this.yss = new Rect();
-    this.yst = new Rect();
-    this.ysu = new Rect();
-    this.pTt = new Path();
-    this.ysw = 2131100819;
-    this.ysx = 0L;
-    this.ysy = false;
-    this.ysz = 300;
-    this.ysA = 0.0F;
-    this.ysB = 0.0F;
-    this.ysC = 0.0F;
-    this.ysD = 0.0F;
-    this.ysF = null;
+    this.yIf = null;
+    this.yIg = null;
+    this.yIh = null;
+    this.yIi = null;
+    this.yIj = 0;
+    this.yIk = 0;
+    this.yIl = false;
+    this.yIm = new Rect();
+    this.yIn = new Rect();
+    this.yIo = new Rect();
+    this.yIp = new Rect();
+    this.yIq = new Rect();
+    this.yIr = new Rect();
+    this.yIs = new Rect();
+    this.yIt = new Rect();
+    this.yIu = new Rect();
+    this.pZY = new Path();
+    this.yIw = 2131100819;
+    this.yIx = 0L;
+    this.yIy = false;
+    this.yIz = 300;
+    this.yIA = 0.0F;
+    this.yIB = 0.0F;
+    this.yIC = 0.0F;
+    this.yID = 0.0F;
+    this.yIF = null;
     AppMethodBeat.o(51913);
   }
   
   public int getMaskAnimDuration()
   {
-    return this.ysz;
+    return this.yIz;
   }
   
   public Rect getMaskRect()
   {
-    return this.ysv;
+    return this.yIv;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(51914);
-    if ((this.ysv == null) || (this.ysl))
+    if ((this.yIv == null) || (this.yIl))
     {
       AppMethodBeat.o(51914);
       return;
@@ -104,71 +104,71 @@ public class ScanMaskView
     System.currentTimeMillis();
     int i = paramCanvas.save();
     this.mPaint.reset();
-    if (d.lz(18))
+    if (d.lB(18))
     {
-      this.ysr.left = 0;
-      this.ysr.top = this.ysv.top;
-      this.ysr.right = this.ysv.left;
-      this.ysr.bottom = this.ysv.bottom;
-      this.yss.left = this.ysv.left;
-      this.yss.top = 0;
-      this.yss.right = this.ysv.right;
-      this.yss.bottom = this.ysv.top;
-      this.yst.left = this.ysv.right;
-      this.yst.top = this.ysv.top;
-      this.yst.right = getWidth();
-      this.yst.bottom = this.ysv.bottom;
-      this.ysu.left = this.ysv.left;
-      this.ysu.top = this.ysv.bottom;
-      this.ysu.right = this.ysv.right;
-      this.ysu.bottom = getHeight();
-      this.ysn.left = 0;
-      this.ysn.top = 0;
-      this.ysn.right = this.ysv.left;
-      this.ysn.bottom = this.ysv.top;
-      this.yso.left = this.ysv.right;
-      this.yso.top = 0;
-      this.yso.right = getWidth();
-      this.yso.bottom = this.ysv.top;
-      this.ysp.left = 0;
-      this.ysp.top = this.ysv.bottom;
-      this.ysp.right = this.ysv.left;
-      this.ysp.bottom = getHeight();
-      this.ysq.left = this.ysv.right;
-      this.ysq.top = this.ysv.bottom;
-      this.ysq.right = getWidth();
-      this.ysq.bottom = getHeight();
+      this.yIr.left = 0;
+      this.yIr.top = this.yIv.top;
+      this.yIr.right = this.yIv.left;
+      this.yIr.bottom = this.yIv.bottom;
+      this.yIs.left = this.yIv.left;
+      this.yIs.top = 0;
+      this.yIs.right = this.yIv.right;
+      this.yIs.bottom = this.yIv.top;
+      this.yIt.left = this.yIv.right;
+      this.yIt.top = this.yIv.top;
+      this.yIt.right = getWidth();
+      this.yIt.bottom = this.yIv.bottom;
+      this.yIu.left = this.yIv.left;
+      this.yIu.top = this.yIv.bottom;
+      this.yIu.right = this.yIv.right;
+      this.yIu.bottom = getHeight();
+      this.yIn.left = 0;
+      this.yIn.top = 0;
+      this.yIn.right = this.yIv.left;
+      this.yIn.bottom = this.yIv.top;
+      this.yIo.left = this.yIv.right;
+      this.yIo.top = 0;
+      this.yIo.right = getWidth();
+      this.yIo.bottom = this.yIv.top;
+      this.yIp.left = 0;
+      this.yIp.top = this.yIv.bottom;
+      this.yIp.right = this.yIv.left;
+      this.yIp.bottom = getHeight();
+      this.yIq.left = this.yIv.right;
+      this.yIq.top = this.yIv.bottom;
+      this.yIq.right = getWidth();
+      this.yIq.bottom = getHeight();
       paramCanvas.save();
-      paramCanvas.clipRect(this.ysr, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIr, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.yss, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIs, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.yst, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIt, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.ysu, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIu, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.ysn, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIn, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.yso, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIo, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.ysp, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIp, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.ysq, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIq, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
       paramCanvas.restore();
     }
     for (;;)
@@ -181,36 +181,36 @@ public class ScanMaskView
       this.mPaint.setStrokeWidth(1.0F);
       this.mPaint.setColor(-3355444);
       this.mPaint.setAntiAlias(true);
-      paramCanvas.drawRect(this.ysv, this.mPaint);
+      paramCanvas.drawRect(this.yIv, this.mPaint);
       System.currentTimeMillis();
       System.currentTimeMillis();
-      paramCanvas.drawBitmap(this.ysf, this.ysv.left, this.ysv.top, this.ysE);
-      paramCanvas.drawBitmap(this.ysg, this.ysv.right - this.ysj, this.ysv.top, this.ysE);
-      paramCanvas.drawBitmap(this.ysh, this.ysv.left, this.ysv.bottom - this.ysk, this.ysE);
-      paramCanvas.drawBitmap(this.ysi, this.ysv.right - this.ysj, this.ysv.bottom - this.ysk, this.ysE);
+      paramCanvas.drawBitmap(this.yIf, this.yIv.left, this.yIv.top, this.yIE);
+      paramCanvas.drawBitmap(this.yIg, this.yIv.right - this.yIj, this.yIv.top, this.yIE);
+      paramCanvas.drawBitmap(this.yIh, this.yIv.left, this.yIv.bottom - this.yIk, this.yIE);
+      paramCanvas.drawBitmap(this.yIi, this.yIv.right - this.yIj, this.yIv.bottom - this.yIk, this.yIE);
       System.currentTimeMillis();
       super.onDraw(paramCanvas);
       System.currentTimeMillis();
       AppMethodBeat.o(51914);
       return;
-      paramCanvas.clipRect(this.ysv, Region.Op.DIFFERENCE);
-      paramCanvas.drawColor(getResources().getColor(this.ysw));
+      paramCanvas.clipRect(this.yIv, Region.Op.DIFFERENCE);
+      paramCanvas.drawColor(getResources().getColor(this.yIw));
     }
   }
   
   public void setMaskAnimaListener(a parama)
   {
-    this.ysG = parama;
+    this.yIG = parama;
   }
   
   public void setMaskColorRsid(int paramInt)
   {
-    this.ysw = paramInt;
+    this.yIw = paramInt;
   }
   
   public void setMastAnimaDuration(int paramInt)
   {
-    this.ysz = paramInt;
+    this.yIz = paramInt;
   }
   
   static abstract interface a {}

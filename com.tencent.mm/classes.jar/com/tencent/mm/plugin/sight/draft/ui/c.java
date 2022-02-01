@@ -3,52 +3,52 @@ package com.tencent.mm.plugin.sight.draft.ui;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import java.lang.ref.WeakReference;
 
 public abstract class c
 {
-  f<String, Bitmap> yTK = new com.tencent.mm.memory.a.c(24);
-  private Bitmap yTL;
+  f<String, Bitmap> zjU = new com.tencent.mm.memory.a.c(24);
+  private Bitmap zjV;
   
-  private Bitmap dQA()
+  private Bitmap dTX()
   {
-    if (this.yTL == null) {
-      this.yTL = g.aat(2131691012);
+    if (this.zjV == null) {
+      this.zjV = h.aaZ(2131691012);
     }
-    return this.yTL;
+    return this.zjV;
   }
   
   public abstract void s(String paramString, Bitmap paramBitmap);
   
   public final Bitmap x(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (bt.isNullOrNil(paramString1)) {
-      localObject = dQA();
+    if (bu.isNullOrNil(paramString1)) {
+      localObject = dTX();
     }
     Bitmap localBitmap;
     do
     {
       return localObject;
-      localBitmap = (Bitmap)this.yTK.get(paramString1);
+      localBitmap = (Bitmap)this.zjU.get(paramString1);
       localObject = localBitmap;
     } while (localBitmap != null);
     Object localObject = new a((byte)0);
     ((a)localObject).key = paramString1;
     ((a)localObject).path = paramString2;
-    ((a)localObject).yTM = paramBoolean;
-    ((a)localObject).yTN = new WeakReference(this);
+    ((a)localObject).zjW = paramBoolean;
+    ((a)localObject).zjX = new WeakReference(this);
     if (paramBoolean) {
-      ba.ajF().ay((Runnable)localObject);
+      bc.ajU().aw((Runnable)localObject);
     }
     do
     {
-      return dQA();
+      return dTX();
       ((a)localObject).run();
-      paramString1 = (Bitmap)this.yTK.get(paramString1);
+      paramString1 = (Bitmap)this.zjU.get(paramString1);
     } while (paramString1 == null);
     return paramString1;
   }
@@ -58,25 +58,25 @@ public abstract class c
   {
     String key;
     String path;
-    boolean yTM;
-    WeakReference<c> yTN;
+    boolean zjW;
+    WeakReference<c> zjX;
     
     public final void run()
     {
       AppMethodBeat.i(28693);
-      Bitmap localBitmap = g.aQf(this.path);
-      Object localObject = (c)this.yTN.get();
+      Bitmap localBitmap = h.aRC(this.path);
+      Object localObject = (c)this.zjX.get();
       if (localObject != null)
       {
-        if ((!bt.isNullOrNil(this.key)) && (localBitmap != null)) {
-          ((c)localObject).yTK.put(this.key, localBitmap);
+        if ((!bu.isNullOrNil(this.key)) && (localBitmap != null)) {
+          ((c)localObject).zjU.put(this.key, localBitmap);
         }
         localObject = new c.b((byte)0);
         ((c.b)localObject).key = this.key;
-        ((c.b)localObject).tOk = localBitmap;
-        ((c.b)localObject).yTN = this.yTN;
-        if (this.yTM) {
-          aq.f((Runnable)localObject);
+        ((c.b)localObject).tZb = localBitmap;
+        ((c.b)localObject).zjX = this.zjX;
+        if (this.zjW) {
+          ar.f((Runnable)localObject);
         }
       }
       AppMethodBeat.o(28693);
@@ -87,15 +87,15 @@ public abstract class c
     implements Runnable
   {
     String key;
-    Bitmap tOk;
-    WeakReference<c> yTN;
+    Bitmap tZb;
+    WeakReference<c> zjX;
     
     public final void run()
     {
       AppMethodBeat.i(28694);
-      c localc = (c)this.yTN.get();
+      c localc = (c)this.zjX.get();
       if (localc != null) {
-        localc.s(this.key, this.tOk);
+        localc.s(this.key, this.tZb);
       }
       AppMethodBeat.o(28694);
     }
@@ -103,7 +103,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.c
  * JD-Core Version:    0.7.0.1
  */

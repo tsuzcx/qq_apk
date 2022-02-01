@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rk;
-import com.tencent.mm.g.a.rk.b;
+import com.tencent.mm.g.a.rl;
+import com.tencent.mm.g.a.rl.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.model.v;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
@@ -24,7 +24,7 @@ public class FaceTransparentStubUI
   {
     AppMethodBeat.i(104034);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.FaceTransparentStubUI", "hy: on activity result in FaceTransparentStubUI");
+    ae.i("MicroMsg.FaceTransparentStubUI", "hy: on activity result in FaceTransparentStubUI");
     setResult(paramInt2, paramIntent);
     finish();
     AppMethodBeat.o(104034);
@@ -38,24 +38,24 @@ public class FaceTransparentStubUI
     Object localObject = getIntent().getBundleExtra("KEY_EXTRAS");
     if (!((Bundle)localObject).containsKey("k_user_name"))
     {
-      g.ajA();
-      if (com.tencent.mm.kernel.a.aiJ()) {
-        ((Bundle)localObject).putString("k_user_name", u.aAp());
+      g.ajP();
+      if (com.tencent.mm.kernel.a.aiY()) {
+        ((Bundle)localObject).putString("k_user_name", v.aAF());
       }
     }
-    paramBundle = new rk();
-    paramBundle.dGe.context = this;
-    paramBundle.dGe.dFY = i;
-    paramBundle.dGe.extras = ((Bundle)localObject);
-    com.tencent.mm.sdk.b.a.IbL.l(paramBundle);
-    ad.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dGf.dFV) });
-    if (!paramBundle.dGf.dFV)
+    paramBundle = new rl();
+    paramBundle.dHk.context = this;
+    paramBundle.dHk.dHe = i;
+    paramBundle.dHk.extras = ((Bundle)localObject);
+    com.tencent.mm.sdk.b.a.IvT.l(paramBundle);
+    ae.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dHl.dHb) });
+    if (!paramBundle.dHl.dHb)
     {
-      if (paramBundle.dGf.extras == null) {
+      if (paramBundle.dHl.extras == null) {
         break label181;
       }
       localObject = new Intent();
-      ((Intent)localObject).putExtras(paramBundle.dGf.extras);
+      ((Intent)localObject).putExtras(paramBundle.dHl.extras);
       setResult(1, (Intent)localObject);
     }
     for (;;)

@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.content.res.Resources;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.utils.f;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public enum bf
 {
-  public static void RO(String paramString)
+  public static void Sx(String paramString)
   {
     AppMethodBeat.i(47317);
-    ad.e("MicroMsg.AppBrand.PrepareQuickAccess", "toast: ".concat(String.valueOf(paramString)));
-    aq.f(new Runnable()
+    ae.e("MicroMsg.AppBrand.PrepareQuickAccess", "toast: ".concat(String.valueOf(paramString)));
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47313);
-        Toast.makeText(aj.getContext(), this.val$text, 0).show();
+        Toast.makeText(ak.getContext(), this.val$text, 0).show();
         AppMethodBeat.o(47313);
       }
     });
@@ -29,15 +29,15 @@ public enum bf
   public static String getMMString(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(47318);
-    paramVarArgs = e.getMMString(paramInt, paramVarArgs);
+    paramVarArgs = f.getMMString(paramInt, paramVarArgs);
     AppMethodBeat.o(47318);
     return paramVarArgs;
   }
   
-  public static void uk(int paramInt)
+  public static void uq(int paramInt)
   {
     AppMethodBeat.i(47316);
-    RO(aj.getResources().getString(paramInt));
+    Sx(ak.getResources().getString(paramInt));
     AppMethodBeat.o(47316);
   }
 }

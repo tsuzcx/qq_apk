@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class n$1
   implements View.OnClickListener
 {
@@ -18,8 +18,8 @@ final class n$1
     AppMethodBeat.i(82691);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    n.g(this.Erx);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    n.g(this.EJN);
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(82691);
   }

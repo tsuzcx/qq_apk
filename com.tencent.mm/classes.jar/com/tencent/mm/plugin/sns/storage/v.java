@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gc;
-import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.g.c.gd;
+import com.tencent.mm.protocal.protobuf.cxn;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -11,32 +11,32 @@ import java.util.List;
 import java.util.Map;
 
 public final class v
-  extends gc
+  extends gd
 {
   protected static c.a info;
-  public int zNs;
+  public int Aez;
   
   static
   {
     AppMethodBeat.i(97623);
     c.a locala = new c.a();
-    locala.IhA = new Field[4];
+    locala.IBL = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "tagId";
-    locala.IhC.put("tagId", "LONG default '0' ");
+    locala.IBN.put("tagId", "LONG default '0' ");
     localStringBuilder.append(" tagId LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "tagName";
-    locala.IhC.put("tagName", "TEXT default '' ");
+    locala.IBN.put("tagName", "TEXT default '' ");
     localStringBuilder.append(" tagName TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "count";
-    locala.IhC.put("count", "INTEGER default '0' ");
+    locala.IBN.put("count", "INTEGER default '0' ");
     localStringBuilder.append(" count INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "memberList";
-    locala.IhC.put("memberList", "TEXT default '' ");
+    locala.IBN.put("memberList", "TEXT default '' ");
     localStringBuilder.append(" memberList TEXT default '' ");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -48,19 +48,19 @@ public final class v
   {
     AppMethodBeat.i(97622);
     super.convertFrom(paramCursor);
-    this.zNs = ((int)this.systemRowid);
+    this.Aez = ((int)this.systemRowid);
     AppMethodBeat.o(97622);
   }
   
-  public final void fS(List<cwt> paramList)
+  public final void gb(List<cxn> paramList)
   {
     AppMethodBeat.i(97621);
     this.field_memberList = "";
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      cwt localcwt = (cwt)paramList.next();
-      this.field_memberList = (this.field_memberList + localcwt.HoB + ",");
+      cxn localcxn = (cxn)paramList.next();
+      this.field_memberList = (this.field_memberList + localcxn.HId + ",");
     }
     AppMethodBeat.o(97621);
   }

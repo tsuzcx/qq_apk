@@ -13,28 +13,28 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class b
   implements a
 {
-  private final Handler LUn;
-  private AtomicBoolean LUo;
+  private final Handler Mri;
+  private AtomicBoolean Mrj;
   
   public b(Handler paramHandler)
   {
     AppMethodBeat.i(183245);
-    this.LUo = new AtomicBoolean();
-    this.LUn = paramHandler;
+    this.Mrj = new AtomicBoolean();
+    this.Mri = paramHandler;
     AppMethodBeat.o(183245);
   }
   
   public final void dispatchMessage(Message paramMessage)
   {
     AppMethodBeat.i(183270);
-    this.LUn.dispatchMessage(paramMessage);
+    this.Mri.dispatchMessage(paramMessage);
     AppMethodBeat.o(183270);
   }
   
   public final void dump(Printer paramPrinter, String paramString)
   {
     AppMethodBeat.i(183276);
-    this.LUn.dump(paramPrinter, paramString);
+    this.Mri.dump(paramPrinter, paramString);
     AppMethodBeat.o(183276);
   }
   
@@ -48,7 +48,7 @@ public final class b
     }
     if (getLooper() == Looper.myLooper())
     {
-      this.LUn.dispatchMessage(paramMessage);
+      this.Mri.dispatchMessage(paramMessage);
       AppMethodBeat.o(183267);
       return true;
     }
@@ -60,7 +60,7 @@ public final class b
   public final Looper getLooper()
   {
     AppMethodBeat.i(183274);
-    Looper localLooper = this.LUn.getLooper();
+    Looper localLooper = this.Mri.getLooper();
     AppMethodBeat.o(183274);
     return localLooper;
   }
@@ -68,14 +68,14 @@ public final class b
   public final String getMessageName(Message paramMessage)
   {
     AppMethodBeat.i(183246);
-    paramMessage = this.LUn.getMessageName(paramMessage);
+    paramMessage = this.Mri.getMessageName(paramMessage);
     AppMethodBeat.o(183246);
     return paramMessage;
   }
   
   public final Handler getSelf()
   {
-    return this.LUn;
+    return this.Mri;
   }
   
   public final com.tencent.e.j.a getSerial()
@@ -91,7 +91,7 @@ public final class b
   public final boolean hasMessages(int paramInt)
   {
     AppMethodBeat.i(183272);
-    boolean bool = this.LUn.hasMessages(paramInt);
+    boolean bool = this.Mri.hasMessages(paramInt);
     AppMethodBeat.o(183272);
     return bool;
   }
@@ -99,7 +99,7 @@ public final class b
   public final boolean hasMessages(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(183273);
-    boolean bool = this.LUn.hasMessages(paramInt, paramObject);
+    boolean bool = this.Mri.hasMessages(paramInt, paramObject);
     AppMethodBeat.o(183273);
     return bool;
   }
@@ -107,7 +107,7 @@ public final class b
   public final boolean isQuit()
   {
     AppMethodBeat.i(183277);
-    boolean bool = this.LUo.get();
+    boolean bool = this.Mrj.get();
     AppMethodBeat.o(183277);
     return bool;
   }
@@ -115,7 +115,7 @@ public final class b
   public final Message obtainMessage()
   {
     AppMethodBeat.i(183247);
-    Message localMessage = this.LUn.obtainMessage();
+    Message localMessage = this.Mri.obtainMessage();
     AppMethodBeat.o(183247);
     return localMessage;
   }
@@ -123,7 +123,7 @@ public final class b
   public final Message obtainMessage(int paramInt)
   {
     AppMethodBeat.i(183248);
-    Message localMessage = this.LUn.obtainMessage(paramInt);
+    Message localMessage = this.Mri.obtainMessage(paramInt);
     AppMethodBeat.o(183248);
     return localMessage;
   }
@@ -131,7 +131,7 @@ public final class b
   public final Message obtainMessage(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(183250);
-    Message localMessage = this.LUn.obtainMessage(paramInt1, paramInt2, paramInt3);
+    Message localMessage = this.Mri.obtainMessage(paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(183250);
     return localMessage;
   }
@@ -139,7 +139,7 @@ public final class b
   public final Message obtainMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
     AppMethodBeat.i(183251);
-    paramObject = this.LUn.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject);
+    paramObject = this.Mri.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject);
     AppMethodBeat.o(183251);
     return paramObject;
   }
@@ -147,7 +147,7 @@ public final class b
   public final Message obtainMessage(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(183249);
-    paramObject = this.LUn.obtainMessage(paramInt, paramObject);
+    paramObject = this.Mri.obtainMessage(paramInt, paramObject);
     AppMethodBeat.o(183249);
     return paramObject;
   }
@@ -155,7 +155,7 @@ public final class b
   public final boolean post(Runnable paramRunnable)
   {
     AppMethodBeat.i(183252);
-    boolean bool = this.LUn.post(paramRunnable);
+    boolean bool = this.Mri.post(paramRunnable);
     AppMethodBeat.o(183252);
     return bool;
   }
@@ -163,7 +163,7 @@ public final class b
   public final boolean postAtFrontOfQueue(Runnable paramRunnable)
   {
     AppMethodBeat.i(183257);
-    boolean bool = this.LUn.postAtFrontOfQueue(paramRunnable);
+    boolean bool = this.Mri.postAtFrontOfQueue(paramRunnable);
     AppMethodBeat.o(183257);
     return bool;
   }
@@ -171,7 +171,7 @@ public final class b
   public final boolean postAtTime(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183253);
-    boolean bool = this.LUn.postAtTime(paramRunnable, paramLong);
+    boolean bool = this.Mri.postAtTime(paramRunnable, paramLong);
     AppMethodBeat.o(183253);
     return bool;
   }
@@ -179,7 +179,7 @@ public final class b
   public final boolean postAtTime(Runnable paramRunnable, Object paramObject, long paramLong)
   {
     AppMethodBeat.i(183254);
-    boolean bool = this.LUn.postAtTime(paramRunnable, paramObject, paramLong);
+    boolean bool = this.Mri.postAtTime(paramRunnable, paramObject, paramLong);
     AppMethodBeat.o(183254);
     return bool;
   }
@@ -187,7 +187,7 @@ public final class b
   public final boolean postDelayed(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183255);
-    boolean bool = this.LUn.postDelayed(paramRunnable, paramLong);
+    boolean bool = this.Mri.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(183255);
     return bool;
   }
@@ -197,7 +197,7 @@ public final class b
     AppMethodBeat.i(183256);
     if (Build.VERSION.SDK_INT >= 28)
     {
-      boolean bool = this.LUn.postDelayed(paramRunnable, paramObject, paramLong);
+      boolean bool = this.Mri.postDelayed(paramRunnable, paramObject, paramLong);
       AppMethodBeat.o(183256);
       return bool;
     }
@@ -209,11 +209,11 @@ public final class b
   public final boolean quit()
   {
     AppMethodBeat.i(183275);
-    if (this.LUo.compareAndSet(false, true))
+    if (this.Mrj.compareAndSet(false, true))
     {
       removeCallbacksAndMessages(null);
       if (getLooper() != null) {
-        d.LTy.w("WrapperHandler", "Do you want to quit this looper thread? You'd better get this Looper to quit.", new Object[0]);
+        d.Mqv.w("WrapperHandler", "Do you want to quit this looper thread? You'd better get this Looper to quit.", new Object[0]);
       }
       AppMethodBeat.o(183275);
       return true;
@@ -225,42 +225,42 @@ public final class b
   public final void removeCallbacks(Runnable paramRunnable)
   {
     AppMethodBeat.i(183258);
-    this.LUn.removeCallbacks(paramRunnable);
+    this.Mri.removeCallbacks(paramRunnable);
     AppMethodBeat.o(183258);
   }
   
   public final void removeCallbacks(Runnable paramRunnable, Object paramObject)
   {
     AppMethodBeat.i(183259);
-    this.LUn.removeCallbacks(paramRunnable, paramObject);
+    this.Mri.removeCallbacks(paramRunnable, paramObject);
     AppMethodBeat.o(183259);
   }
   
   public final void removeCallbacksAndMessages(Object paramObject)
   {
     AppMethodBeat.i(183271);
-    this.LUn.removeCallbacksAndMessages(paramObject);
+    this.Mri.removeCallbacksAndMessages(paramObject);
     AppMethodBeat.o(183271);
   }
   
   public final void removeMessages(int paramInt)
   {
     AppMethodBeat.i(183268);
-    this.LUn.removeMessages(paramInt);
+    this.Mri.removeMessages(paramInt);
     AppMethodBeat.o(183268);
   }
   
   public final void removeMessages(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(183269);
-    this.LUn.removeMessages(paramInt, paramObject);
+    this.Mri.removeMessages(paramInt, paramObject);
     AppMethodBeat.o(183269);
   }
   
   public final boolean sendEmptyMessage(int paramInt)
   {
     AppMethodBeat.i(183261);
-    boolean bool = this.LUn.sendEmptyMessage(paramInt);
+    boolean bool = this.Mri.sendEmptyMessage(paramInt);
     AppMethodBeat.o(183261);
     return bool;
   }
@@ -268,7 +268,7 @@ public final class b
   public final boolean sendEmptyMessageAtTime(int paramInt, long paramLong)
   {
     AppMethodBeat.i(183263);
-    boolean bool = this.LUn.sendEmptyMessageAtTime(paramInt, paramLong);
+    boolean bool = this.Mri.sendEmptyMessageAtTime(paramInt, paramLong);
     AppMethodBeat.o(183263);
     return bool;
   }
@@ -276,7 +276,7 @@ public final class b
   public final boolean sendEmptyMessageDelayed(int paramInt, long paramLong)
   {
     AppMethodBeat.i(183262);
-    boolean bool = this.LUn.sendEmptyMessageDelayed(paramInt, paramLong);
+    boolean bool = this.Mri.sendEmptyMessageDelayed(paramInt, paramLong);
     AppMethodBeat.o(183262);
     return bool;
   }
@@ -284,7 +284,7 @@ public final class b
   public final boolean sendMessage(Message paramMessage)
   {
     AppMethodBeat.i(183260);
-    boolean bool = this.LUn.sendMessage(paramMessage);
+    boolean bool = this.Mri.sendMessage(paramMessage);
     AppMethodBeat.o(183260);
     return bool;
   }
@@ -292,7 +292,7 @@ public final class b
   public final boolean sendMessageAtFrontOfQueue(Message paramMessage)
   {
     AppMethodBeat.i(183266);
-    boolean bool = this.LUn.sendMessageAtFrontOfQueue(paramMessage);
+    boolean bool = this.Mri.sendMessageAtFrontOfQueue(paramMessage);
     AppMethodBeat.o(183266);
     return bool;
   }
@@ -305,7 +305,7 @@ public final class b
       AppMethodBeat.o(183265);
       return false;
     }
-    boolean bool = this.LUn.sendMessageAtTime(paramMessage, paramLong);
+    boolean bool = this.Mri.sendMessageAtTime(paramMessage, paramLong);
     AppMethodBeat.o(183265);
     return bool;
   }
@@ -313,7 +313,7 @@ public final class b
   public final boolean sendMessageDelayed(Message paramMessage, long paramLong)
   {
     AppMethodBeat.i(183264);
-    boolean bool = this.LUn.sendMessageDelayed(paramMessage, paramLong);
+    boolean bool = this.Mri.sendMessageDelayed(paramMessage, paramLong);
     AppMethodBeat.o(183264);
     return bool;
   }
@@ -321,7 +321,7 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(183278);
-    String str = this.LUn.toString();
+    String str = this.Mri.toString();
     AppMethodBeat.o(183278);
     return str;
   }

@@ -80,10 +80,10 @@ public final class i
     MMProtocalJni.setClientPackVersion(-1);
     AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.qg(2);
+    WatchDogPushReceiver.qj(2);
     AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.qg(1);
+    WatchDogPushReceiver.qj(1);
     AppMethodBeat.o(20185);
     return true;
     try

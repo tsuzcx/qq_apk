@@ -1,54 +1,54 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ee;
-import com.tencent.mm.g.b.a.ef;
 import com.tencent.mm.g.b.a.eg;
-import com.tencent.mm.model.w;
+import com.tencent.mm.g.b.a.eh;
+import com.tencent.mm.g.b.a.ei;
+import com.tencent.mm.model.x;
 
 public final class z
 {
   public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(213410);
+    AppMethodBeat.i(217123);
     int i = 1;
-    if (w.Az(paramString1)) {
+    if (x.Bj(paramString1)) {
       i = 2;
     }
-    eg localeg = new eg();
-    localeg.nB(paramString1);
-    localeg.dSy = i;
-    localeg.ehJ = paramInt1;
-    localeg.ehm = paramInt2;
-    localeg.dPH = paramInt3;
-    localeg.ehM = paramInt4;
-    localeg.nC(paramString2);
-    localeg.nD(paramString3);
-    localeg.aLk();
-    AppMethodBeat.o(213410);
+    ei localei = new ei();
+    localei.nW(paramString1);
+    localei.dTO = i;
+    localei.ejt = paramInt1;
+    localei.eiW = paramInt2;
+    localei.dQX = paramInt3;
+    localei.ejw = paramInt4;
+    localei.nX(paramString2);
+    localei.nY(paramString3);
+    localei.aLH();
+    AppMethodBeat.o(217123);
   }
   
   public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(213412);
+    AppMethodBeat.i(217125);
     int i = 0;
-    if (w.Az(paramString1)) {
+    if (x.Bj(paramString1)) {
       i = 2;
     }
     for (;;)
     {
-      ef localef = new ef();
-      localef.ny(paramString1);
-      localef.dSy = i;
-      localef.ehm = paramInt1;
-      localef.dPH = paramInt2;
-      localef.ehJ = paramInt3;
-      localef.nz(paramString2);
-      localef.nA(paramString3);
-      localef.aLk();
-      AppMethodBeat.o(213412);
+      eh localeh = new eh();
+      localeh.nT(paramString1);
+      localeh.dTO = i;
+      localeh.eiW = paramInt1;
+      localeh.dQX = paramInt2;
+      localeh.ejt = paramInt3;
+      localeh.nU(paramString2);
+      localeh.nV(paramString3);
+      localeh.aLH();
+      AppMethodBeat.o(217125);
       return;
-      if (w.Ay(paramString1)) {
+      if (x.Bi(paramString1)) {
         i = 1;
       }
     }
@@ -56,25 +56,25 @@ public final class z
   
   public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(213411);
+    AppMethodBeat.i(217124);
     int i = 0;
-    if (w.Az(paramString1)) {
+    if (x.Bj(paramString1)) {
       i = 2;
     }
     for (;;)
     {
-      ee localee = new ee();
-      localee.nv(paramString1);
-      localee.dSy = i;
-      localee.ehm = paramInt1;
-      localee.dUW = paramInt2;
-      localee.Tj();
-      localee.nw(paramString2);
-      localee.nx(paramString3);
-      localee.aLk();
-      AppMethodBeat.o(213411);
+      eg localeg = new eg();
+      localeg.nQ(paramString1);
+      localeg.dTO = i;
+      localeg.eiW = paramInt1;
+      localeg.dWm = paramInt2;
+      localeg.Tp();
+      localeg.nR(paramString2);
+      localeg.nS(paramString3);
+      localeg.aLH();
+      AppMethodBeat.o(217124);
       return;
-      if (w.Ay(paramString1)) {
+      if (x.Bi(paramString1)) {
         i = 1;
       }
     }

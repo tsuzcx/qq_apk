@@ -4,31 +4,31 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
   extends j<c>
 {
-  public static final String[] hEf;
-  public final e jHa;
+  public static final String[] hGX;
+  public final e jKa;
   
   static
   {
     AppMethodBeat.i(146960);
-    hEf = new String[] { j.getCreateSQLs(c.hEe, "AppBrandCommonKVData") };
+    hGX = new String[] { j.getCreateSQLs(c.hGW, "AppBrandCommonKVData") };
     AppMethodBeat.o(146960);
   }
   
   public d(e parame)
   {
-    super(parame, c.hEe, "AppBrandCommonKVData", null);
-    this.jHa = parame;
+    super(parame, c.hGW, "AppBrandCommonKVData", null);
+    this.jKa = parame;
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(146958);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146958);
       return false;
@@ -45,17 +45,17 @@ public final class d
     return false;
   }
   
-  public final void Nj(String paramString)
+  public final void NQ(String paramString)
   {
     AppMethodBeat.i(146959);
     super.execSQL("AppBrandCommonKVData", String.format("delete from %s where %s like '%s%%'", new Object[] { "AppBrandCommonKVData", "key", paramString }));
     AppMethodBeat.o(146959);
   }
   
-  public final boolean cx(String paramString1, String paramString2)
+  public final boolean cz(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146956);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(146956);
       return false;
@@ -63,7 +63,7 @@ public final class d
     c localc = new c();
     localc.field_key = paramString1;
     localc.field_value = paramString2;
-    if (bt.isNullOrNil(localc.field_value))
+    if (bu.isNullOrNil(localc.field_value))
     {
       if (!super.delete(localc, new String[0]))
       {
@@ -81,7 +81,7 @@ public final class d
   public final String get(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146957);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(146957);
       return paramString2;

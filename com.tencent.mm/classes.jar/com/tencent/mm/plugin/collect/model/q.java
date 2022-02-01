@@ -9,16 +9,16 @@ import org.json.JSONObject;
 public final class q
   extends m
 {
-  public int dsd;
-  public String oZN;
-  public long paq;
-  public int par;
+  public int dtj;
+  public long pgU;
+  public int pgV;
+  public String pgr;
   public int type;
   
   public q(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(63841);
-    this.oZN = paramString;
+    this.pgr = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bill_id", paramString);
     localHashMap.put("type", String.valueOf(paramInt));
@@ -45,10 +45,10 @@ public final class q
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63842);
-    this.par = paramJSONObject.optInt("total_num", 0);
-    this.dsd = paramJSONObject.optInt("total_amt", 0);
+    this.pgV = paramJSONObject.optInt("total_num", 0);
+    this.dtj = paramJSONObject.optInt("total_amt", 0);
     this.type = paramJSONObject.optInt("type", 0);
-    this.paq = paramJSONObject.optLong("from_timestamp", 0L);
+    this.pgU = paramJSONObject.optLong("from_timestamp", 0L);
     AppMethodBeat.o(63842);
   }
 }

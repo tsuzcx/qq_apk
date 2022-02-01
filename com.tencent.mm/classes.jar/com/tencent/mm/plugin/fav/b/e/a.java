@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.fav.b.e;
 import android.database.Cursor;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.an.f;
+import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.network.n;
 import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.plugin.fav.a.o;
 import com.tencent.mm.plugin.fav.a.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -34,38 +34,38 @@ import java.util.Queue;
 import java.util.Set;
 
 public final class a
-  implements o
+  implements com.tencent.mm.plugin.fav.a.o
 {
-  private Queue<com.tencent.mm.plugin.fav.a.c> dim;
-  private Map<String, f.a> dio;
-  boolean diq;
-  public int dis;
-  long dit;
-  public av dix;
-  public n hTD;
-  private g.a ibn;
-  Map<String, a> rum;
-  Set<String> run;
+  private Queue<com.tencent.mm.plugin.fav.a.c> djp;
+  private Map<String, f.a> djr;
+  boolean djt;
+  public int dju;
+  long djv;
+  public aw djz;
+  public n hWv;
+  private g.a ieg;
+  boolean rCA;
+  int rCB;
+  boolean rCC;
+  private Runnable rCD;
+  Map<String, a> rCy;
+  Set<String> rCz;
   boolean running;
-  boolean ruo;
-  int rup;
-  boolean ruq;
-  private Runnable rur;
   
   public a()
   {
     AppMethodBeat.i(101592);
     this.running = false;
-    this.dis = 0;
-    this.dit = 0L;
-    this.diq = false;
-    this.dim = new LinkedList();
-    this.dio = new HashMap();
-    this.rum = new HashMap();
-    this.run = new HashSet();
-    this.rup = 0;
-    this.ruq = true;
-    this.hTD = new n.a()
+    this.dju = 0;
+    this.djv = 0L;
+    this.djt = false;
+    this.djp = new LinkedList();
+    this.djr = new HashMap();
+    this.rCy = new HashMap();
+    this.rCz = new HashSet();
+    this.rCB = 0;
+    this.rCC = true;
+    this.hWv = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -74,77 +74,77 @@ public final class a
         com.tencent.mm.plugin.fav.a.c localc;
         try
         {
-          bool = ay.isWifi(aj.getContext());
-          ad.i("MicroMsg.Fav.FavCdnService", "onNetworkChange st:%d isWifi:%B, lastIsWifi:%B", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool), Boolean.valueOf(a.this.ruo) });
+          bool = az.isWifi(ak.getContext());
+          ae.i("MicroMsg.Fav.FavCdnService", "onNetworkChange st:%d isWifi:%B, lastIsWifi:%B", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool), Boolean.valueOf(a.this.rCA) });
           if ((paramAnonymousInt != 4) && (paramAnonymousInt != 6))
           {
-            a.this.ruo = bool;
+            a.this.rCA = bool;
             AppMethodBeat.o(101584);
             return;
           }
-          if ((!a.this.ruo) || (bool)) {
+          if ((!a.this.rCA) || (bool)) {
             break label471;
           }
           a locala1 = a.this;
-          ad.i("MicroMsg.Fav.FavCdnService", "pauseAll");
-          localCursor = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().cvg();
+          ae.i("MicroMsg.Fav.FavCdnService", "pauseAll");
+          localCursor = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().cwH();
           if ((localCursor != null) && (localCursor.moveToFirst()))
           {
             while (localCursor.moveToNext())
             {
               localc = new com.tencent.mm.plugin.fav.a.c();
               localc.convertFrom(localCursor);
-              ad.i("MicroMsg.Fav.FavCdnService", "pauseAll, pauseUpload dataId:%s", new Object[] { localc.field_dataId });
+              ae.i("MicroMsg.Fav.FavCdnService", "pauseAll, pauseUpload dataId:%s", new Object[] { localc.field_dataId });
               localc.field_status = 4;
               ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().a(localc, new String[] { "dataId" });
-              f.aGI().EP(localc.field_dataId);
-              a.h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().agv(localc.field_dataId));
-              locala1.agz(localc.field_dataId);
+              f.aGZ().Fr(localc.field_dataId);
+              a.h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().ahs(localc.field_dataId));
+              locala1.ahw(localc.field_dataId);
             }
             localCursor.close();
           }
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", localException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", localException, "", new Object[0]);
           AppMethodBeat.o(101584);
           return;
         }
-        Cursor localCursor = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().cvh();
+        Cursor localCursor = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().cwI();
         if ((localCursor != null) && (localCursor.moveToFirst())) {
           while (localCursor.moveToNext())
           {
             localc = new com.tencent.mm.plugin.fav.a.c();
             localc.convertFrom(localCursor);
-            ad.i("MicroMsg.Fav.FavCdnService", "pauseAll, pauseDownload dataId:%s", new Object[] { localc.field_dataId });
+            ae.i("MicroMsg.Fav.FavCdnService", "pauseAll, pauseDownload dataId:%s", new Object[] { localc.field_dataId });
             localc.field_status = 4;
             ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().a(localc, new String[] { "dataId" });
-            f.aGI().EQ(localc.field_dataId);
-            a.h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().agv(localc.field_dataId));
-            localException.agz(localc.field_dataId);
+            f.aGZ().Fs(localc.field_dataId);
+            a.h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().ahs(localc.field_dataId));
+            localException.ahw(localc.field_dataId);
           }
         }
         if (localCursor != null) {
           localCursor.close();
         }
         label471:
-        if ((!a.this.ruo) && (bool))
+        if ((!a.this.rCA) && (bool))
         {
           a locala2 = a.this;
-          ad.i("MicroMsg.Fav.FavCdnService", "startAll");
+          ae.i("MicroMsg.Fav.FavCdnService", "startAll");
           ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().startAll();
           locala2.run();
         }
-        a.this.ruo = bool;
+        a.this.rCA = bool;
         AppMethodBeat.o(101584);
       }
     };
-    this.rur = new Runnable()
+    this.rCD = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(101587);
-        long l = System.currentTimeMillis() - a.this.dit;
+        long l = System.currentTimeMillis() - a.this.djv;
         if (a.this.running)
         {
           if (l < 300000L)
@@ -152,14 +152,14 @@ public final class a
             AppMethodBeat.o(101587);
             return;
           }
-          ad.e("MicroMsg.Fav.FavCdnService", "klem ERR: Try Run service runningFlag:" + a.this.running + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + a.this.running);
+          ae.e("MicroMsg.Fav.FavCdnService", "klem ERR: Try Run service runningFlag:" + a.this.running + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + a.this.running);
         }
-        ad.i("MicroMsg.Fav.FavCdnService", "do run cdn job, wait time %d", new Object[] { Long.valueOf(l) });
-        a.this.diq = false;
+        ae.i("MicroMsg.Fav.FavCdnService", "do run cdn job, wait time %d", new Object[] { Long.valueOf(l) });
+        a.this.djt = false;
         a.this.running = true;
-        a.this.rup = 0;
-        a.this.dis = 3;
-        a.this.dix.az(100L, 100L);
+        a.this.rCB = 0;
+        a.this.dju = 3;
+        a.this.djz.ay(100L, 100L);
         AppMethodBeat.o(101587);
       }
       
@@ -171,14 +171,14 @@ public final class a
         return str;
       }
     };
-    this.dix = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new av.a()
+    this.djz = new aw(com.tencent.mm.kernel.g.ajU().IxZ.getLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(101589);
         try
         {
-          a.this.aHZ();
+          a.this.aIq();
           AppMethodBeat.o(101589);
           return false;
         }
@@ -186,7 +186,7 @@ public final class a
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", localException, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", localException, "", new Object[0]);
           }
         }
       }
@@ -199,13 +199,13 @@ public final class a
         return str;
       }
     }, false);
-    this.ibn = new g.a()
+    this.ieg = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(101591);
         if (paramAnonymousc != null) {
-          ad.i("MicroMsg.Fav.FavCdnService", "cdn transfer callback, mediaid=%s, totallen=%d, offset=%d", new Object[] { paramAnonymousc.mediaId, Long.valueOf(paramAnonymousc.field_toltalLength), Long.valueOf(paramAnonymousc.field_finishedLength) });
+          ae.i("MicroMsg.Fav.FavCdnService", "cdn transfer callback, mediaid=%s, totallen=%d, offset=%d", new Object[] { paramAnonymousc.mediaId, Long.valueOf(paramAnonymousc.field_toltalLength), Long.valueOf(paramAnonymousc.field_finishedLength) });
         }
         Object localObject1 = "";
         if (paramAnonymousc != null) {
@@ -213,32 +213,32 @@ public final class a
         }
         while ((paramAnonymousInt == -21006) || (paramAnonymousInt == -21005))
         {
-          a.this.agz((String)localObject1);
+          a.this.ahw((String)localObject1);
           AppMethodBeat.o(101591);
           return 0;
           if (paramAnonymousd != null) {
             localObject1 = paramAnonymousd.mediaId;
           }
         }
-        if (bt.isNullOrNil((String)localObject1)) {}
+        if (bu.isNullOrNil((String)localObject1)) {}
         for (;;)
         {
-          localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().agv(paramAnonymousString);
+          localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().ahs(paramAnonymousString);
           if (localObject1 == null)
           {
-            ad.e("MicroMsg.Fav.FavCdnService", "klem onCdnCallback info null");
-            a.this.agz(paramAnonymousString);
+            ae.e("MicroMsg.Fav.FavCdnService", "klem onCdnCallback info null");
+            a.this.ahw(paramAnonymousString);
             AppMethodBeat.o(101591);
             return 0;
           }
           if (paramAnonymousInt != 0)
           {
-            ad.w("MicroMsg.Fav.FavCdnService", "cdn transfer callback, startRet=%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-            com.tencent.mm.plugin.report.service.g.yhR.f(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramAnonymousInt) });
+            ae.w("MicroMsg.Fav.FavCdnService", "cdn transfer callback, startRet=%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.plugin.report.service.g.yxI.f(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramAnonymousInt) });
             ((com.tencent.mm.plugin.fav.a.c)localObject1).field_status = 4;
             ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
             a.h((com.tencent.mm.plugin.fav.a.c)localObject1);
-            a.this.agz(paramAnonymousString);
+            a.this.ahw(paramAnonymousString);
           }
           do
           {
@@ -272,22 +272,22 @@ public final class a
               ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
               a.a((com.tencent.mm.plugin.fav.a.c)localObject1, paramAnonymousd);
               ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().b((com.tencent.mm.plugin.fav.a.c)localObject1, new String[] { "dataId" });
-              a.this.rum.remove(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
-              ad.i("MicroMsg.Fav.FavCdnService", "transfer done, mediaid=%s, md5=%s aeskey=%s completeInfo=%s", new Object[] { paramAnonymousd.mediaId, paramAnonymousString, paramAnonymousd.field_aesKey, paramAnonymousd.toString() });
+              a.this.rCy.remove(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
+              ae.i("MicroMsg.Fav.FavCdnService", "transfer done, mediaid=%s, md5=%s aeskey=%s completeInfo=%s", new Object[] { paramAnonymousd.mediaId, paramAnonymousString, paramAnonymousd.field_aesKey, paramAnonymousd.toString() });
               a.a(a.this, paramAnonymousString);
-              com.tencent.mm.plugin.report.service.g.yhR.f(10625, new Object[] { Integer.valueOf(1), paramAnonymousd.field_fileId, "", paramAnonymousd.field_transInfo });
+              com.tencent.mm.plugin.report.service.g.yxI.f(10625, new Object[] { Integer.valueOf(1), paramAnonymousd.field_fileId, "", paramAnonymousd.field_transInfo });
               break;
-              if ((paramAnonymousInt == -2) && (!a.aaK(paramAnonymousc)) && (a.fn(paramAnonymousc, (String)localObject3)))
+              if ((paramAnonymousInt == -2) && (!a.abB(paramAnonymousc)) && (a.fr(paramAnonymousc, (String)localObject3)))
               {
-                ad.i("MicroMsg.Fav.FavCdnService", "renameAndCopyFile write amr head ok!");
+                ae.i("MicroMsg.Fav.FavCdnService", "renameAndCopyFile write amr head ok!");
               }
               else
               {
-                localObject2 = new com.tencent.mm.vfs.e(paramAnonymousc);
-                localObject3 = new com.tencent.mm.vfs.e((String)localObject3);
-                if (((com.tencent.mm.vfs.e)localObject2).exists())
+                localObject2 = new k(paramAnonymousc);
+                localObject3 = new k((String)localObject3);
+                if (((k)localObject2).exists())
                 {
-                  ad.i("MicroMsg.Fav.FavCdnService", "rename file suc:%b, old:%s, new:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.vfs.e)localObject2).ag((com.tencent.mm.vfs.e)localObject3)), paramAnonymousc, localObject3 });
+                  ae.i("MicroMsg.Fav.FavCdnService", "rename file suc:%b, old:%s, new:%s", new Object[] { Boolean.valueOf(((k)localObject2).ag((k)localObject3)), paramAnonymousc, localObject3 });
                   continue;
                   ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnKey = paramAnonymousd.field_aesKey;
                   ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnUrl = paramAnonymousd.field_fileId;
@@ -295,27 +295,27 @@ public final class a
               }
             }
           }
-          ad.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:%d", new Object[] { paramAnonymousd.mediaId, Integer.valueOf(paramAnonymousd.field_retCode) });
-          paramAnonymousc = (a.a)a.this.rum.get(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
+          ae.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:%d", new Object[] { paramAnonymousd.mediaId, Integer.valueOf(paramAnonymousd.field_retCode) });
+          paramAnonymousc = (a.a)a.this.rCy.get(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
           if (paramAnonymousc != null) {
             paramAnonymousc.errCode = paramAnonymousd.field_retCode;
           }
           if (-6101 == paramAnonymousd.field_retCode)
           {
             ((com.tencent.mm.plugin.fav.a.c)localObject1).field_extFlag |= 0x1;
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 1L, 1L, true);
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 1L, 1L, true);
             localObject2 = paramAnonymousd.mediaId;
             if (paramAnonymousc != null)
             {
-              paramAnonymousInt = paramAnonymousc.iNG;
+              paramAnonymousInt = paramAnonymousc.iQA;
               label804:
-              ad.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:-6101,try time = %d,info.field_type: %d , info.field_dataType: %d", new Object[] { localObject2, Integer.valueOf(paramAnonymousInt), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataType) });
+              ae.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:-6101,try time = %d,info.field_type: %d , info.field_dataType: %d", new Object[] { localObject2, Integer.valueOf(paramAnonymousInt), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataType) });
             }
           }
           for (;;)
           {
             ((com.tencent.mm.plugin.fav.a.c)localObject1).field_status = 4;
-            com.tencent.mm.plugin.report.service.g.yhR.f(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramAnonymousd.field_retCode) });
+            com.tencent.mm.plugin.report.service.g.yxI.f(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramAnonymousd.field_retCode) });
             ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
             a.h((com.tencent.mm.plugin.fav.a.c)localObject1);
             break;
@@ -324,28 +324,28 @@ public final class a
             switch (paramAnonymousd.field_retCode)
             {
             default: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 0L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 0L, 1L, true);
               break;
             case -10003: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 2L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 2L, 1L, true);
               break;
             case -10005: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 3L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 3L, 1L, true);
               break;
             case -21000: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 4L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 4L, 1L, true);
               break;
             case -21009: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 5L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 5L, 1L, true);
               break;
             case -21014: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 6L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 6L, 1L, true);
               break;
             case -21020: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 7L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 7L, 1L, true);
               break;
             case -5103015: 
-              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(141L, 8L, 1L, true);
+              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(141L, 8L, 1L, true);
             }
           }
           paramAnonymousString = (String)localObject1;
@@ -359,9 +359,9 @@ public final class a
         return null;
       }
     };
-    this.ruo = ay.isWifi(aj.getContext());
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().a(this.hTD);
+    this.rCA = az.isWifi(ak.getContext());
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().a(this.hWv);
     AppMethodBeat.o(101592);
   }
   
@@ -370,7 +370,7 @@ public final class a
     AppMethodBeat.i(101601);
     if (paramc.field_totalLen > 26214400)
     {
-      paramInt = com.tencent.mm.i.a.fIB;
+      paramInt = com.tencent.mm.i.a.fKF;
       AppMethodBeat.o(101601);
       return paramInt;
     }
@@ -379,7 +379,7 @@ public final class a
       AppMethodBeat.o(101601);
       return paramInt;
     }
-    ad.w("MicroMsg.Fav.FavCdnService", "NEED To Exchange Type, defType %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.w("MicroMsg.Fav.FavCdnService", "NEED To Exchange Type, defType %d", new Object[] { Integer.valueOf(paramInt) });
     if (com.tencent.mm.i.a.MediaType_FAVORITE_VIDEO == paramInt)
     {
       paramInt = com.tencent.mm.i.a.MediaType_FAVORITE_FILE;
@@ -391,14 +391,14 @@ public final class a
     return paramInt;
   }
   
-  static boolean aaK(String paramString)
+  static boolean abB(String paramString)
   {
     AppMethodBeat.i(101603);
     localObject1 = null;
     String str = null;
     try
     {
-      paramString = i.dd(paramString, false);
+      paramString = com.tencent.mm.vfs.o.dg(paramString, false);
       str = paramString;
       localObject1 = paramString;
       Object localObject2 = new byte[6];
@@ -418,7 +418,7 @@ public final class a
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
           }
         }
       }
@@ -427,7 +427,7 @@ public final class a
       localObject2 = new String((byte[])localObject2);
       str = paramString;
       localObject1 = paramString;
-      ad.i("MicroMsg.Fav.FavCdnService", "head " + (String)localObject2 + "   AmrFileOperator.AMR_NB_HEAD #!AMR\n");
+      ae.i("MicroMsg.Fav.FavCdnService", "head " + (String)localObject2 + "   AmrFileOperator.AMR_NB_HEAD #!AMR\n");
       str = paramString;
       localObject1 = paramString;
       boolean bool = ((String)localObject2).endsWith("#!AMR\n");
@@ -442,7 +442,7 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
         }
       }
       try
@@ -455,14 +455,14 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", localIOException, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", localIOException, "", new Object[0]);
         }
       }
     }
     catch (Exception paramString)
     {
       localObject1 = str;
-      ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
       if (str != null) {}
       try
       {
@@ -474,7 +474,7 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Fav.FavCdnService", paramString, "", new Object[0]);
         }
       }
     }
@@ -485,17 +485,17 @@ public final class a
   }
   
   /* Error */
-  static boolean fn(String paramString1, String paramString2)
+  static boolean fr(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc_w 392
     //   3: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 396	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   7: invokestatic 396	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   10: astore_0
     //   11: aload_1
     //   12: iconst_0
-    //   13: invokestatic 400	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   13: invokestatic 400	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   16: astore_1
     //   17: aload_1
     //   18: astore 6
@@ -543,7 +543,7 @@ public final class a
     //   93: ldc_w 359
     //   96: iconst_0
     //   97: anewarray 4	java/lang/Object
-    //   100: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   100: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: aload_0
     //   104: ifnull +7 -> 111
     //   107: aload_0
@@ -583,7 +583,7 @@ public final class a
     //   166: ldc_w 359
     //   169: iconst_0
     //   170: anewarray 4	java/lang/Object
-    //   173: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   173: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   176: iconst_0
     //   177: istore_3
     //   178: goto -57 -> 121
@@ -593,7 +593,7 @@ public final class a
     //   185: ldc_w 359
     //   188: iconst_0
     //   189: anewarray 4	java/lang/Object
-    //   192: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   192: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   195: iconst_0
     //   196: istore 4
     //   198: goto -53 -> 145
@@ -603,7 +603,7 @@ public final class a
     //   205: ldc_w 359
     //   208: iconst_0
     //   209: anewarray 4	java/lang/Object
-    //   212: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   212: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   215: goto -104 -> 111
     //   218: astore_0
     //   219: ldc 176
@@ -611,7 +611,7 @@ public final class a
     //   222: ldc_w 359
     //   225: iconst_0
     //   226: anewarray 4	java/lang/Object
-    //   229: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: iconst_0
     //   233: istore_3
     //   234: goto -113 -> 121
@@ -638,7 +638,7 @@ public final class a
     //   273: ldc_w 359
     //   276: iconst_0
     //   277: anewarray 4	java/lang/Object
-    //   280: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   280: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   283: goto -32 -> 251
     //   286: astore_0
     //   287: ldc 176
@@ -646,7 +646,7 @@ public final class a
     //   290: ldc_w 359
     //   293: iconst_0
     //   294: anewarray 4	java/lang/Object
-    //   297: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   297: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   300: goto -39 -> 261
     //   303: astore_1
     //   304: aconst_null
@@ -736,113 +736,119 @@ public final class a
     AppMethodBeat.o(101605);
   }
   
-  public final void Qe()
+  public final void Qd()
   {
     AppMethodBeat.i(101600);
-    this.dim.clear();
-    this.dio.clear();
+    this.djp.clear();
+    this.djr.clear();
     this.running = false;
-    this.diq = false;
+    this.djt = false;
     AppMethodBeat.o(101600);
   }
   
-  final void aHZ()
+  final void aIq()
   {
+    boolean bool = true;
     AppMethodBeat.i(101596);
-    this.dit = System.currentTimeMillis();
-    if ((!this.diq) && (this.dim.size() == 0))
+    this.djv = System.currentTimeMillis();
+    if ((!this.djt) && (this.djp.size() == 0))
     {
-      if (com.tencent.mm.compatible.util.e.abf()) {
-        break label88;
+      if (e.abo()) {
+        break label90;
       }
-      ad.e("MicroMsg.Fav.FavCdnService", "klem getNeedRunInfo sdcard not available");
-      Qe();
+      ae.e("MicroMsg.Fav.FavCdnService", "klem getNeedRunInfo sdcard not available");
+      Qd();
     }
-    label88:
+    label90:
     Object localObject1;
     Object localObject2;
-    while ((!this.diq) && (this.dim.size() <= 0))
+    while ((!this.djt) && (this.djp.size() <= 0))
     {
-      Qe();
-      ad.i("MicroMsg.Fav.FavCdnService", "klem No Data Any More , Stop Service");
+      Qd();
+      ae.i("MicroMsg.Fav.FavCdnService", "klem No Data Any More , Stop Service");
       AppMethodBeat.o(101596);
       return;
       if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage() != null)
       {
-        localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().cvf();
+        localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().cwG();
         if ((localObject1 != null) && (((List)localObject1).size() != 0))
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (com.tencent.mm.plugin.fav.a.c)((Iterator)localObject1).next();
-            if (this.dio.containsKey(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId))
+            if (this.djr.containsKey(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId))
             {
-              ad.d("MicroMsg.Fav.FavCdnService", "File is Already running:" + ((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId);
+              ae.d("MicroMsg.Fav.FavCdnService", "File is Already running:" + ((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId);
             }
             else
             {
-              this.dim.add(localObject2);
-              this.dio.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, null);
+              this.djp.add(localObject2);
+              this.djr.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, null);
             }
           }
-          ad.i("MicroMsg.Fav.FavCdnService", "klem GetNeedRun procing:" + this.dio.size() + ",send:" + this.dim.size() + "]");
-          this.dim.size();
+          ae.i("MicroMsg.Fav.FavCdnService", "klem GetNeedRun procing:" + this.djr.size() + ",send:" + this.djp.size() + "]");
+          this.djp.size();
         }
       }
     }
-    if ((!this.diq) && (this.dim.size() > 0)) {
+    if ((!this.djt) && (this.djp.size() > 0)) {
       try
       {
-        localObject1 = (com.tencent.mm.plugin.fav.a.c)this.dim.poll();
-        if ((localObject1 != null) && (!bt.isNullOrNil(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId)))
+        localObject1 = (com.tencent.mm.plugin.fav.a.c)this.djp.poll();
+        if ((localObject1 != null) && (!bu.isNullOrNil(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId)))
         {
-          localObject2 = (a)this.rum.get(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
+          localObject2 = (a)this.rCy.get(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
           if (localObject2 == null)
           {
             localObject2 = new a((byte)0);
-            ((a)localObject2).iNG = 1;
-            ((a)localObject2).ruv = bt.flT();
-            this.rum.put(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, localObject2);
+            ((a)localObject2).iQA = 1;
+            ((a)localObject2).rCH = bu.fpO();
+            this.rCy.put(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, localObject2);
             if (((com.tencent.mm.plugin.fav.a.c)localObject1).field_type != 0) {
-              break label850;
+              break label915;
             }
-            ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:force job[can upload], localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_favLocalId), ((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataType) });
+            ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:force job[can upload], localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_favLocalId), ((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataType) });
             i = 1;
             if (i == 0) {
-              break label1402;
+              break label1514;
             }
-            this.diq = true;
+            this.djt = true;
             if (localObject1 == null) {
-              break label1381;
+              break label1487;
             }
-            ad.i("MicroMsg.Fav.FavCdnService", "doTransfer, md5:%s", new Object[] { ((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId });
+            ae.i("MicroMsg.Fav.FavCdnService", "doTransfer, md5:%s", new Object[] { ((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId });
             localObject2 = new com.tencent.mm.i.g();
-            ((com.tencent.mm.i.g)localObject2).fJi = "task_FavCdnService";
-            ((com.tencent.mm.i.g)localObject2).fJj = this.ibn;
+            ((com.tencent.mm.i.g)localObject2).fLl = "task_FavCdnService";
+            ((com.tencent.mm.i.g)localObject2).fLm = this.ieg;
             ((com.tencent.mm.i.g)localObject2).field_mediaId = ((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId;
             if (((com.tencent.mm.plugin.fav.a.c)localObject1).field_type != 0) {
-              break label1266;
+              break label1339;
             }
-            ((com.tencent.mm.i.g)localObject2).dNR = true;
-            ((com.tencent.mm.i.g)localObject2).field_priority = com.tencent.mm.i.a.fIv;
+            ((com.tencent.mm.i.g)localObject2).dPh = true;
+            ((com.tencent.mm.i.g)localObject2).field_priority = com.tencent.mm.i.a.fKz;
             ((com.tencent.mm.i.g)localObject2).field_needStorage = true;
             ((com.tencent.mm.i.g)localObject2).field_totalLen = ((com.tencent.mm.plugin.fav.a.c)localObject1).field_totalLen;
             ((com.tencent.mm.i.g)localObject2).field_aesKey = ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnKey;
             ((com.tencent.mm.i.g)localObject2).field_fileId = ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnUrl;
-            ((com.tencent.mm.i.g)localObject2).field_isStreamMedia = ((com.tencent.mm.plugin.fav.a.c)localObject1).cuN();
+            ((com.tencent.mm.i.g)localObject2).field_isStreamMedia = ((com.tencent.mm.plugin.fav.a.c)localObject1).cwo();
             ((com.tencent.mm.i.g)localObject2).field_fullpath = ((com.tencent.mm.plugin.fav.a.c)localObject1).field_path;
-            if (!i.fv(((com.tencent.mm.i.g)localObject2).field_fullpath)) {
-              ad.e("MicroMsg.Fav.FavCdnService", "favcdnservice upload, but file not exsit,filePath = %s ", new Object[] { ((com.tencent.mm.plugin.fav.a.c)localObject1).field_path });
+            if ((!com.tencent.mm.an.c.aGU()) || (((com.tencent.mm.i.g)localObject2).field_totalLen <= 26214400)) {
+              break label1319;
             }
-            if (!((com.tencent.mm.plugin.fav.a.c)localObject1).cuN()) {
-              break label1252;
+            bool = true;
+            ((com.tencent.mm.i.g)localObject2).field_use_multithread = bool;
+            if (!com.tencent.mm.vfs.o.fB(((com.tencent.mm.i.g)localObject2).field_fullpath)) {
+              ae.e("MicroMsg.Fav.FavCdnService", "favcdnservice upload, but file not exsit,filePath = %s ", new Object[] { ((com.tencent.mm.plugin.fav.a.c)localObject1).field_path });
+            }
+            if (!((com.tencent.mm.plugin.fav.a.c)localObject1).cwo()) {
+              break label1324;
             }
             ((com.tencent.mm.i.g)localObject2).field_fileType = a((com.tencent.mm.plugin.fav.a.c)localObject1, com.tencent.mm.i.a.MediaType_FAVORITE_VIDEO);
             ((com.tencent.mm.i.g)localObject2).field_force_aeskeycdn = true;
             ((com.tencent.mm.i.g)localObject2).field_trysafecdn = false;
-            ad.i("MicroMsg.Fav.FavCdnService", "summersafecdn send force_aeskeycdn[%b] trysafecdn[%b]", new Object[] { Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_force_aeskeycdn), Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_trysafecdn) });
-            f.aGI().f((com.tencent.mm.i.g)localObject2);
+            ae.i("MicroMsg.Fav.FavCdnService", "summersafecdn send force_aeskeycdn[%b] trysafecdn[%b]", new Object[] { Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_force_aeskeycdn), Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_trysafecdn) });
+            f.aGZ().f((com.tencent.mm.i.g)localObject2);
             AppMethodBeat.o(101596);
           }
         }
@@ -855,137 +861,149 @@ public final class a
           int i;
           localc = null;
           continue;
-          if ((bt.flT() - ((a)localObject2).ruv > 180000L) && (((a)localObject2).errCode != -6101))
+          if ((bu.fpO() - ((a)localObject2).rCH > 180000L) && (((a)localObject2).errCode != -6101))
           {
-            ((a)localObject2).iNG = 1;
-            ((a)localObject2).ruv = bt.flT();
-            this.rum.put(localc.field_dataId, localObject2);
+            ((a)localObject2).iQA = 1;
+            ((a)localObject2).rCH = bu.fpO();
+            this.rCy.put(localc.field_dataId, localObject2);
           }
-          else if (((a)localObject2).iNG <= 3)
+          else if (((a)localObject2).iQA <= 3)
           {
-            ((a)localObject2).iNG += 1;
-            this.rum.put(localc.field_dataId, localObject2);
+            ((a)localObject2).iQA += 1;
+            this.rCy.put(localc.field_dataId, localObject2);
           }
           else
           {
-            ad.e("MicroMsg.Fav.FavCdnService", "check favCDN:match transfer limit 3times , localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
+            ae.e("MicroMsg.Fav.FavCdnService", "check favCDN:match transfer limit 3times , localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
             g(localc);
             i = 0;
             continue;
-            label850:
-            if ((this.run.contains(localc.field_dataId)) || (com.tencent.mm.plugin.fav.a.b.age(localc.field_dataId)))
+            label915:
+            if ((this.rCz.contains(localc.field_dataId)) || (com.tencent.mm.plugin.fav.a.b.ahb(localc.field_dataId)))
             {
-              ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:force job[normal], localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
+              ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:force job[normal], localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
             }
-            else if (!ay.isWifi(aj.getContext()))
+            else if (!az.isWifi(ak.getContext()))
             {
-              ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, NOT WIFI, pause it, localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
+              ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, NOT WIFI, pause it, localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
               g(localc);
               i = 0;
             }
             else if (localc.field_type == 0)
             {
-              ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI & SENDING, not auto limit, localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
+              ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI & SENDING, not auto limit, localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
             }
-            else if (!this.ruq)
+            else if (!this.rCC)
             {
-              ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI, not auto limit, localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
-              this.rup = 0;
+              ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI, not auto limit, localid %d, dataid %s, type %d, dataType %d", new Object[] { Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
+              this.rCB = 0;
             }
-            else if (this.rup < 10)
+            else if (this.rCB < 10)
             {
-              ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI, auto limit %d, current index %d, retryTimes %dlocalid %d, dataid %s, type %d, dataType %d", new Object[] { Integer.valueOf(10), Integer.valueOf(this.rup), Integer.valueOf(((a)localObject2).iNG), Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
-              if (((a)localObject2).iNG == 1) {
-                this.rup += 1;
+              ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI, auto limit %d, current index %d, retryTimes %dlocalid %d, dataid %s, type %d, dataType %d", new Object[] { Integer.valueOf(10), Integer.valueOf(this.rCB), Integer.valueOf(((a)localObject2).iQA), Long.valueOf(localc.field_favLocalId), localc.field_dataId, Integer.valueOf(localc.field_type), Integer.valueOf(localc.field_dataType) });
+              if (((a)localObject2).iQA == 1) {
+                this.rCB += 1;
               }
             }
             else
             {
-              ad.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI, match auto limit %d", new Object[] { Integer.valueOf(10) });
+              ae.i("MicroMsg.Fav.FavCdnService", "check favCDN:not force job, IN WIFI, match auto limit %d", new Object[] { Integer.valueOf(10) });
               i = 0;
               continue;
-              label1252:
+              label1319:
+              bool = false;
+              continue;
+              label1324:
               ((com.tencent.mm.i.g)localObject2).field_fileType = a(localc, com.tencent.mm.i.a.MediaType_FAVORITE_FILE);
             }
           }
         }
-        label1266:
-        ((com.tencent.mm.i.g)localObject2).dNR = false;
+        label1339:
+        ((com.tencent.mm.i.g)localObject2).dPh = false;
         ((com.tencent.mm.i.g)localObject2).field_totalLen = localc.field_totalLen;
         ((com.tencent.mm.i.g)localObject2).field_aesKey = localc.field_cdnKey;
         ((com.tencent.mm.i.g)localObject2).field_fileId = localc.field_cdnUrl;
-        ((com.tencent.mm.i.g)localObject2).field_priority = com.tencent.mm.i.a.fIw;
-        ((com.tencent.mm.i.g)localObject2).fJj = this.ibn;
+        ((com.tencent.mm.i.g)localObject2).field_priority = com.tencent.mm.i.a.fKA;
+        ((com.tencent.mm.i.g)localObject2).fLm = this.ieg;
         ((com.tencent.mm.i.g)localObject2).field_fullpath = (localc.field_path + ".temp");
         ((com.tencent.mm.i.g)localObject2).field_needStorage = true;
-        ((com.tencent.mm.i.g)localObject2).field_isStreamMedia = localc.cuN();
-        if (localc.cuN()) {}
+        ((com.tencent.mm.i.g)localObject2).field_isStreamMedia = localc.cwo();
+        if ((com.tencent.mm.an.c.aGU()) && (((com.tencent.mm.i.g)localObject2).field_totalLen > 26214400))
+        {
+          ((com.tencent.mm.i.g)localObject2).field_use_multithread = bool;
+          if (!localc.cwo()) {
+            break label1499;
+          }
+        }
+        label1487:
+        label1499:
         for (((com.tencent.mm.i.g)localObject2).field_fileType = a(localc, com.tencent.mm.i.a.MediaType_FAVORITE_VIDEO);; ((com.tencent.mm.i.g)localObject2).field_fileType = a(localc, com.tencent.mm.i.a.MediaType_FAVORITE_FILE))
         {
-          f.aGI().b((com.tencent.mm.i.g)localObject2, -1);
+          f.aGZ().b((com.tencent.mm.i.g)localObject2, -1);
           h(localc);
-          label1381:
           AppMethodBeat.o(101596);
           return;
+          bool = false;
+          break;
         }
-        label1402:
-        if (this.rup >= 10)
+        label1514:
+        if (this.rCB >= 10)
         {
-          Qe();
+          Qd();
           AppMethodBeat.o(101596);
           return;
         }
-        this.dix.az(500L, 500L);
+        this.djz.ay(500L, 500L);
       }
     }
     AppMethodBeat.o(101596);
   }
   
-  public final void agt(final String paramString)
+  public final void ahq(final String paramString)
   {
     AppMethodBeat.i(101594);
-    ad.i("MicroMsg.Fav.FavCdnService", "add force job %s", new Object[] { paramString });
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    ae.i("MicroMsg.Fav.FavCdnService", "add force job %s", new Object[] { paramString });
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(101586);
-        a.this.run.add(paramString);
+        a.this.rCz.add(paramString);
         AppMethodBeat.o(101586);
       }
     });
     AppMethodBeat.o(101594);
   }
   
-  public final void agu(String paramString)
+  public final void ahr(String paramString)
   {
     AppMethodBeat.i(101599);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(101599);
       return;
     }
-    f.aGI().EP(paramString);
-    ad.i("MicroMsg.Fav.FavCdnService", "pause upload md5%s", new Object[] { paramString });
-    h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().agv(paramString));
-    agz(paramString);
+    f.aGZ().Fr(paramString);
+    ae.i("MicroMsg.Fav.FavCdnService", "pause upload md5%s", new Object[] { paramString });
+    h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().ahs(paramString));
+    ahw(paramString);
     AppMethodBeat.o(101599);
   }
   
-  final void agz(String paramString)
+  final void ahw(String paramString)
   {
     AppMethodBeat.i(101604);
-    this.diq = false;
-    this.dio.remove(paramString);
+    this.djt = false;
+    this.djr.remove(paramString);
     pauseDownload(paramString);
-    if (this.dis > 0)
+    if (this.dju > 0)
     {
-      aHZ();
+      aIq();
       AppMethodBeat.o(101604);
       return;
     }
-    ad.i("MicroMsg.Fav.FavCdnService", "klem stopFlag <= 0 , Stop Service");
-    Qe();
+    ae.i("MicroMsg.Fav.FavCdnService", "klem stopFlag <= 0 , Stop Service");
+    Qd();
     AppMethodBeat.o(101604);
   }
   
@@ -993,7 +1011,7 @@ public final class a
   {
     AppMethodBeat.i(101606);
     if (paramc != null) {
-      this.dim.add(paramc);
+      this.djp.add(paramc);
     }
     AppMethodBeat.o(101606);
   }
@@ -1001,13 +1019,13 @@ public final class a
   public final void lv(final boolean paramBoolean)
   {
     AppMethodBeat.i(101593);
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(101585);
-        a.this.ruq = paramBoolean;
-        a.this.rup = 0;
+        a.this.rCC = paramBoolean;
+        a.this.rCB = 0;
         AppMethodBeat.o(101585);
       }
     });
@@ -1017,17 +1035,17 @@ public final class a
   public final void pauseDownload(String paramString)
   {
     AppMethodBeat.i(101598);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(101598);
       return;
     }
-    if (this.dio.containsKey(paramString))
+    if (this.djr.containsKey(paramString))
     {
-      f.aGI().EQ(paramString);
-      ad.i("MicroMsg.Fav.FavCdnService", "pause download md5%s", new Object[] { paramString });
-      h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().agv(paramString));
-      agz(paramString);
+      f.aGZ().Fs(paramString);
+      ae.i("MicroMsg.Fav.FavCdnService", "pause download md5%s", new Object[] { paramString });
+      h(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().ahs(paramString));
+      ahw(paramString);
     }
     AppMethodBeat.o(101598);
   }
@@ -1035,17 +1053,17 @@ public final class a
   public final void run()
   {
     AppMethodBeat.i(101595);
-    ad.i("MicroMsg.Fav.FavCdnService", "run fav cdn server");
-    com.tencent.mm.kernel.g.ajF().cWY().removeCallbacks(this.rur);
-    com.tencent.mm.kernel.g.ajF().ay(this.rur);
+    ae.i("MicroMsg.Fav.FavCdnService", "run fav cdn server");
+    com.tencent.mm.kernel.g.ajU().cZF().removeCallbacks(this.rCD);
+    com.tencent.mm.kernel.g.ajU().aw(this.rCD);
     AppMethodBeat.o(101595);
   }
   
   final class a
   {
     int errCode = 0;
-    int iNG;
-    long ruv;
+    int iQA;
+    long rCH;
     
     private a() {}
   }

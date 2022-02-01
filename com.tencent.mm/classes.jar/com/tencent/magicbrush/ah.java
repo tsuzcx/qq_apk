@@ -1,88 +1,57 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
+import d.l.b;
+import d.l.d;
+import d.l.h;
 
-@l(gfx={1, 1, 13}, gfy={""}, gfz={"Lcom/tencent/magicbrush/V8RawPointer;", "", "isolatePtr", "", "contextPtr", "uvLoopPtr", "(JJJ)V", "getContextPtr", "()J", "getIsolatePtr", "getUvLoopPtr", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "", "lib-magicbrush-nano_release"})
-public final class ah
+@l(gjZ={1, 1, 13})
+final class ah
+  extends t
 {
-  final long cxL;
-  final long cxM;
-  final long cxN;
+  public static final h cyr;
   
-  public ah(long paramLong1, long paramLong2, long paramLong3)
+  static
   {
-    this.cxL = paramLong1;
-    this.cxM = paramLong2;
-    this.cxN = paramLong3;
+    AppMethodBeat.i(213350);
+    cyr = new ah();
+    AppMethodBeat.o(213350);
   }
   
-  public final boolean equals(Object paramObject)
+  public final String HC()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this != paramObject)
-    {
-      bool1 = bool2;
-      if (!(paramObject instanceof ah)) {
-        break label88;
-      }
-      paramObject = (ah)paramObject;
-      if (this.cxL != paramObject.cxL) {
-        break label90;
-      }
-      i = 1;
-      bool1 = bool2;
-      if (i == 0) {
-        break label88;
-      }
-      if (this.cxM != paramObject.cxM) {
-        break label95;
-      }
-      i = 1;
-      label58:
-      bool1 = bool2;
-      if (i == 0) {
-        break label88;
-      }
-      if (this.cxN != paramObject.cxN) {
-        break label100;
-      }
-    }
-    label88:
-    label90:
-    label95:
-    label100:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        bool1 = true;
-      }
-      return bool1;
-      i = 0;
-      break;
-      i = 0;
-      break label58;
-    }
+    return "getSync_surface_destroy()Z";
   }
   
-  public final int hashCode()
+  public final d HD()
   {
-    long l = this.cxL;
-    int i = (int)(l ^ l >>> 32);
-    l = this.cxM;
-    int j = (int)(l ^ l >>> 32);
-    l = this.cxN;
-    return (i * 31 + j) * 31 + (int)(l ^ l >>> 32);
+    AppMethodBeat.i(213351);
+    b localb = z.bp(MBRuntime.MBParams.class);
+    AppMethodBeat.o(213351);
+    return localb;
   }
   
-  public final String toString()
+  public final Object get(Object paramObject)
   {
-    AppMethodBeat.i(140187);
-    String str = "V8RawPointer(isolatePtr=" + this.cxL + ", contextPtr=" + this.cxM + ", uvLoopPtr=" + this.cxN + ")";
-    AppMethodBeat.o(140187);
-    return str;
+    AppMethodBeat.i(213352);
+    boolean bool = ((MBRuntime.MBParams)paramObject).sync_surface_destroy;
+    AppMethodBeat.o(213352);
+    return Boolean.valueOf(bool);
+  }
+  
+  public final String getName()
+  {
+    return "sync_surface_destroy";
+  }
+  
+  public final void set(Object paramObject1, Object paramObject2)
+  {
+    AppMethodBeat.i(213353);
+    ((MBRuntime.MBParams)paramObject1).sync_surface_destroy = ((Boolean)paramObject2).booleanValue();
+    AppMethodBeat.o(213353);
   }
 }
 

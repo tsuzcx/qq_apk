@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.d.a.b;
 import com.tencent.mm.plugin.fts.a.n;
@@ -17,26 +17,26 @@ public final class a
   {
     AppMethodBeat.i(28080);
     paramVarArgs = (j)paramVarArgs;
-    ((n)g.ad(n.class)).updateTopHitsRank(paramVarArgs.tun.tuL, paramVarArgs.kjY, 0);
-    if (((p)g.ab(p.class)).n(paramVarArgs.tBu.field_url, null))
+    ((n)g.ad(n.class)).updateTopHitsRank(paramVarArgs.tFe.tFC, paramVarArgs.kno, 0);
+    if (((q)g.ab(q.class)).n(paramVarArgs.tMl.field_url, null))
     {
       AppMethodBeat.o(28080);
       return true;
     }
     Intent localIntent;
-    if (paramVarArgs.tBu.field_actionType == 2)
+    if (paramVarArgs.tMl.field_actionType == 2)
     {
       localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramVarArgs.tBu.field_url);
-      com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("rawUrl", paramVarArgs.tMl.field_url);
+      com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
       AppMethodBeat.o(28080);
       return true;
     }
-    if (!com.tencent.mm.plugin.search.a.a.ah(paramContext, paramVarArgs.tBu.field_featureId))
+    if (!com.tencent.mm.plugin.search.a.a.ah(paramContext, paramVarArgs.tMl.field_featureId))
     {
       localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramVarArgs.tBu.field_updateUrl);
-      com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("rawUrl", paramVarArgs.tMl.field_updateUrl);
+      com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     }
     AppMethodBeat.o(28080);
     return true;

@@ -13,15 +13,15 @@ public abstract interface g
   
   public abstract void ao(float paramFloat1, float paramFloat2);
   
-  public abstract void fyA();
+  public abstract void fCA();
   
-  public abstract boolean fyw();
+  public abstract void fCB();
   
-  public abstract boolean fyx();
+  public abstract void fCC();
   
-  public abstract void fyy();
+  public abstract boolean fCy();
   
-  public abstract void fyz();
+  public abstract boolean fCz();
   
   public abstract float getDoubleTabScale();
   
@@ -41,7 +41,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.g
  * JD-Core Version:    0.7.0.1
  */

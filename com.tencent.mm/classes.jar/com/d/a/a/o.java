@@ -22,7 +22,7 @@ final class o
     AppMethodBeat.o(87919);
   }
   
-  protected static String Al()
+  protected static String Am()
   {
     AppMethodBeat.i(87921);
     String str = bZw.format(new Date());

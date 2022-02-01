@@ -5,36 +5,37 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.Cap;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cl.a.a;
+import com.tencent.mm.ck.a.a;
 import com.tencent.mm.ui.aq;
 
 public class RoundProgressBtn
   extends View
 {
-  private float Bwy;
-  private int LcP;
-  private int LcQ;
-  private int LcR;
-  private int LcS;
-  private int knF;
+  private float BNW;
+  private int Lzq;
+  private int Lzr;
+  private int Lzs;
+  private int Lzt;
+  private int kqV;
   private int max;
   private Paint paint;
   private int progress;
-  private int qjT;
-  private float tWs;
+  private int qqy;
+  private float uhq;
   
   public RoundProgressBtn(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159685);
-    this.LcQ = 0;
-    this.LcR = 0;
-    this.LcS = aq.ay(getContext(), 2131165274);
+    this.Lzr = 0;
+    this.Lzs = 0;
+    this.Lzt = aq.ay(getContext(), 2131165274);
     c(paramContext, paramAttributeSet, 0);
     AppMethodBeat.o(159685);
   }
@@ -43,9 +44,9 @@ public class RoundProgressBtn
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159686);
-    this.LcQ = 0;
-    this.LcR = 0;
-    this.LcS = aq.ay(getContext(), 2131165274);
+    this.Lzr = 0;
+    this.Lzs = 0;
+    this.Lzt = aq.ay(getContext(), 2131165274);
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(159686);
   }
@@ -57,13 +58,13 @@ public class RoundProgressBtn
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundProgressBtn, paramInt, 0);
-      this.LcP = paramContext.getColor(4, getContext().getResources().getColor(2131100813));
-      this.tWs = paramContext.getDimension(5, 0.0F);
-      this.knF = paramContext.getColor(2, getContext().getResources().getColor(2131101171));
-      this.Bwy = paramContext.getDimension(3, this.tWs);
+      this.Lzq = paramContext.getColor(4, getContext().getResources().getColor(2131100813));
+      this.uhq = paramContext.getDimension(5, 0.0F);
+      this.kqV = paramContext.getColor(2, getContext().getResources().getColor(2131101171));
+      this.BNW = paramContext.getDimension(3, this.uhq);
       this.max = paramContext.getInt(0, 100);
       this.progress = paramContext.getInt(1, 0);
-      this.qjT = paramContext.getInt(6, -90);
+      this.qqy = paramContext.getInt(6, -90);
       paramContext.recycle();
     }
     AppMethodBeat.o(159687);
@@ -79,31 +80,32 @@ public class RoundProgressBtn
     AppMethodBeat.i(159688);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    if (this.tWs == 0.0F) {
-      this.tWs = ((int)(getWidth() / 2 * 0.167D));
+    if (this.uhq == 0.0F) {
+      this.uhq = ((int)(getWidth() / 2 * 0.167D));
     }
-    this.Bwy = this.tWs;
-    this.LcQ = ((int)this.tWs);
-    this.LcR = ((int)(i * 0.667F));
-    int j = (int)(i - this.tWs / 2.0F);
-    this.paint.setStrokeWidth(this.tWs);
-    this.paint.setColor(this.LcP);
+    this.BNW = this.uhq;
+    this.Lzr = ((int)this.uhq);
+    this.Lzs = ((int)(i * 0.667F));
+    int j = (int)(i - this.uhq / 2.0F);
+    this.paint.setStrokeWidth(this.uhq);
+    this.paint.setColor(this.Lzq);
     this.paint.setAntiAlias(true);
     this.paint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawCircle(i, i, j, this.paint);
-    this.paint.setStrokeWidth(this.Bwy);
-    this.paint.setColor(this.knF);
+    this.paint.setStrokeWidth(this.BNW);
+    this.paint.setStrokeCap(Paint.Cap.ROUND);
+    this.paint.setColor(this.kqV);
     RectF localRectF = new RectF(i - j, i - j, i + j, j + i);
     j = this.progress * 360 / this.max;
-    paramCanvas.drawArc(localRectF, this.qjT, j, false, this.paint);
+    paramCanvas.drawArc(localRectF, this.qqy, j, false, this.paint);
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawRect(i - this.tWs * 1.5F, i - this.LcR / 2, i - this.tWs * 0.5F, this.LcR / 2 + i, this.paint);
+    paramCanvas.drawRect(i - this.uhq * 1.5F, i - this.Lzs / 2, i - this.uhq * 0.5F, this.Lzs / 2 + i, this.paint);
     float f1 = i;
-    float f2 = this.LcQ;
-    float f3 = i - this.LcR / 2;
+    float f2 = this.Lzr;
+    float f3 = i - this.Lzs / 2;
     float f4 = i;
-    paramCanvas.drawRect(f2 * 0.5F + f1, f3, this.LcQ * 1.5F + f4, this.LcR / 2 + i, this.paint);
+    paramCanvas.drawRect(f2 * 0.5F + f1, f3, this.Lzr * 1.5F + f4, this.Lzs / 2 + i, this.paint);
     AppMethodBeat.o(159688);
   }
   

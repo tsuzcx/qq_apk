@@ -11,7 +11,7 @@ public final class d
   extends BaseAdapter
   implements b
 {
-  private ListAdapter KBf;
+  private ListAdapter KXz;
   private DataSetObserver Tf;
   
   public d(ListAdapter paramListAdapter)
@@ -33,7 +33,7 @@ public final class d
         AppMethodBeat.o(142840);
       }
     };
-    this.KBf = paramListAdapter;
+    this.KXz = paramListAdapter;
     paramListAdapter.registerDataSetObserver(this.Tf);
     AppMethodBeat.o(142841);
   }
@@ -43,12 +43,12 @@ public final class d
     return null;
   }
   
-  public final int aeI(int paramInt)
+  public final int afr(int paramInt)
   {
     return 0;
   }
   
-  public final int fJH()
+  public final int fNY()
   {
     return 0;
   }
@@ -56,7 +56,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(142842);
-    int i = this.KBf.getCount();
+    int i = this.KXz.getCount();
     AppMethodBeat.o(142842);
     return i;
   }
@@ -64,7 +64,7 @@ public final class d
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142843);
-    Object localObject = this.KBf.getItem(paramInt);
+    Object localObject = this.KXz.getItem(paramInt);
     AppMethodBeat.o(142843);
     return localObject;
   }
@@ -72,7 +72,7 @@ public final class d
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142844);
-    long l = this.KBf.getItemId(paramInt);
+    long l = this.KXz.getItemId(paramInt);
     AppMethodBeat.o(142844);
     return l;
   }
@@ -80,14 +80,14 @@ public final class d
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142845);
-    paramView = this.KBf.getView(paramInt, paramView, paramViewGroup);
+    paramView = this.KXz.getView(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(142845);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.d
  * JD-Core Version:    0.7.0.1
  */

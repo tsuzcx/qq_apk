@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.webview.fts;
 
 public final class c$e
 {
-  public boolean BrA;
-  public boolean dlh;
-  public boolean fJh = true;
-  public int pLM;
+  public boolean BIZ;
+  public boolean dmj;
+  public boolean fLk = true;
+  public int pSr;
   public String query;
   public int scene;
   
@@ -15,10 +15,10 @@ public final class c$e
   {
     this.query = paramString;
     this.scene = paramInt1;
-    this.dlh = false;
-    this.pLM = paramInt2;
-    this.BrA = false;
-    this.fJh = false;
+    this.dmj = false;
+    this.pSr = paramInt2;
+    this.BIZ = false;
+    this.fLk = false;
   }
 }
 

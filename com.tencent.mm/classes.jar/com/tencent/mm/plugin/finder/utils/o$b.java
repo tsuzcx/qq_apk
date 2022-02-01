@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.finder.utils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$SmileySpanInfo;", "", "start", "", "count", "(II)V", "getCount", "()I", "getStart", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$SmileySpanInfo;", "", "start", "", "count", "(II)V", "getCount", "()I", "getStart", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
 public final class o$b
 {
   final int count;

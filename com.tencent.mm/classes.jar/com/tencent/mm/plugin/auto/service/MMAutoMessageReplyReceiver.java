@@ -10,11 +10,13 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
+import com.tencent.mm.plugin.auto.a.a;
+import com.tencent.mm.plugin.auto.a.b;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.z;
 
 public class MMAutoMessageReplyReceiver
   extends BroadcastReceiver
@@ -22,7 +24,7 @@ public class MMAutoMessageReplyReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(21162);
-    String str = y.getStringExtra(paramIntent, "key_username");
+    String str = z.getStringExtra(paramIntent, "key_username");
     if (str == null)
     {
       AppMethodBeat.o(21162);
@@ -42,7 +44,7 @@ public class MMAutoMessageReplyReceiver
       if (paramContext != null) {
         break label171;
       }
-      ad.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
+      ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
       AppMethodBeat.o(21162);
       return;
       if (Build.VERSION.SDK_INT >= 16)
@@ -72,8 +74,27 @@ public class MMAutoMessageReplyReceiver
       break;
     }
     label171:
-    ad.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    g.dlD().aa(str, paramContext.toString(), w.Ar(str));
+    if (!a.bHK())
+    {
+      AppMethodBeat.o(21162);
+      return;
+    }
+    if (!a.bHL())
+    {
+      ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not open car mode");
+      AppMethodBeat.o(21162);
+      return;
+    }
+    if (!a.bHM())
+    {
+      ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not install auto app");
+      AppMethodBeat.o(21162);
+      return;
+    }
+    paramIntent = b.nxI;
+    b.tn(1L);
+    ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
+    g.doC().aa(str, paramContext.toString(), x.Bb(str));
     AppMethodBeat.o(21162);
   }
 }

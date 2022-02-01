@@ -7,22 +7,20 @@ import com.tencent.mm.plugin.appbrand.a.c;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class a
-  extends p
+  extends com.tencent.mm.plugin.appbrand.jsapi.p
 {
   private static final int CTRL_INDEX = 460;
   private static final String NAME = "onH5Data";
   
-  public static void o(o paramo)
+  public static void p(com.tencent.mm.plugin.appbrand.p paramp)
   {
     AppMethodBeat.i(46352);
-    String str = paramo.mAppId;
+    String str = paramp.mAppId;
     MMToClientEvent.c local1 = new MMToClientEvent.c()
     {
       public final void ch(Object paramAnonymousObject)
@@ -31,12 +29,12 @@ public final class a
         if ((paramAnonymousObject instanceof SendDataToMiniProgramFromH5Event))
         {
           Object localObject1 = (SendDataToMiniProgramFromH5Event)paramAnonymousObject;
-          Object localObject2 = ((SendDataToMiniProgramFromH5Event)localObject1).kND;
+          Object localObject2 = ((SendDataToMiniProgramFromH5Event)localObject1).kRa;
           paramAnonymousObject = ((SendDataToMiniProgramFromH5Event)localObject1).data;
-          int i = ((SendDataToMiniProgramFromH5Event)localObject1).kNE;
-          if (!bt.isNullOrNil((String)localObject2))
+          int i = ((SendDataToMiniProgramFromH5Event)localObject1).kRb;
+          if (!bu.isNullOrNil((String)localObject2))
           {
-            localObject1 = com.tencent.mm.plugin.appbrand.a.Kj((String)localObject2);
+            localObject1 = com.tencent.mm.plugin.appbrand.a.KI((String)localObject2);
             if ((localObject1 == null) || (!((AppBrandRuntime)localObject1).mInitialized))
             {
               AppMethodBeat.o(46350);
@@ -46,14 +44,14 @@ public final class a
             {
               paramAnonymousObject = new JSONObject().put("data", paramAnonymousObject).put("webviewId", String.valueOf(i));
               localObject2 = new a();
-              ((a)localObject2).g(((o)localObject1).aXe()).Ph(paramAnonymousObject.toString());
-              ((a)localObject2).bir();
+              ((a)localObject2).g(((com.tencent.mm.plugin.appbrand.p)localObject1).aXz()).PP(paramAnonymousObject.toString());
+              ((a)localObject2).bja();
               AppMethodBeat.o(46350);
               return;
             }
             catch (Exception paramAnonymousObject)
             {
-              ad.e("MicroMsg.AppBrand.EventOnH5Data", "dispatch ex = %s", new Object[] { paramAnonymousObject });
+              ae.e("MicroMsg.AppBrand.EventOnH5Data", "dispatch ex = %s", new Object[] { paramAnonymousObject });
             }
           }
         }
@@ -61,13 +59,13 @@ public final class a
       }
     };
     MMToClientEvent.a(str, local1);
-    paramo.jwS.a(new c.a()
+    paramp.jzQ.a(new c.a()
     {
       public final void a(String paramAnonymousString, b paramAnonymousb)
       {
         AppMethodBeat.i(46351);
-        if (paramAnonymousb == b.jKR) {
-          MMToClientEvent.b(paramAnonymousString, this.jRG);
+        if (paramAnonymousb == b.jOd) {
+          MMToClientEvent.b(paramAnonymousString, this.jUY);
         }
         AppMethodBeat.o(46351);
       }

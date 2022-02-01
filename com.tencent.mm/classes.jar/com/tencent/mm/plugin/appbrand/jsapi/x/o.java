@@ -6,7 +6,7 @@ import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class o
@@ -18,24 +18,24 @@ public final class o
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137688);
-    ad.i("MicroMsg.JsApiSetVolume", "invoke JsApiSetVolume!");
+    ae.i("MicroMsg.JsApiSetVolume", "invoke JsApiSetVolume!");
     if (paramc == null)
     {
-      ad.e("MicroMsg.JsApiSetVolume", "fail:component is null");
+      ae.e("MicroMsg.JsApiSetVolume", "fail:component is null");
       AppMethodBeat.o(137688);
       return;
     }
     Object localObject = paramc.getContext();
     if (localObject == null)
     {
-      ad.e("MicroMsg.JsApiSetVolume", "fail:context is null");
+      ae.e("MicroMsg.JsApiSetVolume", "fail:context is null");
       paramc.h(paramInt, e("fail:context is null", null));
       AppMethodBeat.o(137688);
       return;
     }
     if (!(localObject instanceof Activity))
     {
-      ad.e("MicroMsg.JsApiSetVolume", "fail:context is not Activity");
+      ae.e("MicroMsg.JsApiSetVolume", "fail:context is not Activity");
       paramc.h(paramInt, e("fail:context is not Activity", null));
       AppMethodBeat.o(137688);
       return;
@@ -43,7 +43,7 @@ public final class o
     localObject = (AudioManager)((Context)localObject).getSystemService("audio");
     if (localObject == null)
     {
-      ad.e("MicroMsg.JsApiSetVolume", "fail:manager is null");
+      ae.e("MicroMsg.JsApiSetVolume", "fail:manager is null");
       paramc.h(paramInt, e("fail:manager is null", null));
       AppMethodBeat.o(137688);
       return;
@@ -51,7 +51,7 @@ public final class o
     int m = ((AudioManager)localObject).getStreamVolume(3);
     int j = ((AudioManager)localObject).getStreamMaxVolume(3);
     int k = paramJSONObject.optInt("value", m);
-    ad.i("MicroMsg.JsApiSetVolume", "JsApiSetVolume value:%d, current:%d, max:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
+    ae.i("MicroMsg.JsApiSetVolume", "JsApiSetVolume value:%d, current:%d, max:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
     int i;
     if (k < 0) {
       i = 0;

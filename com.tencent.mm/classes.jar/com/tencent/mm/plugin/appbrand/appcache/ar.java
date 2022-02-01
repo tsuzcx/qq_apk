@@ -1,89 +1,47 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import d.g.a.a;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibCodeCacheHelper;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibPreloadSessionInMM$ICommLibSessionDelegate;", "()V", "LAST_DEV_LIB_VERSION_CODE_KEY", "", "LAST_DEV_LIB_VERSION_NAME_KEY", "SP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "getSP", "()Landroid/content/SharedPreferences;", "TAG", "onUpdateUsingVersion", "", "reader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "plugin-appbrand-integration_release"})
 public final class ar
+  implements at.a
 {
-  private static final WxaCommLibRuntimeReader.a jHd;
+  public static final ar jKb;
   
   static
   {
-    AppMethodBeat.i(44336);
-    jHd = new WxaCommLibRuntimeReader.a();
-    AppMethodBeat.o(44336);
+    AppMethodBeat.i(50179);
+    jKb = new ar();
+    AppMethodBeat.o(50179);
   }
   
-  public static void bad()
+  @SuppressLint({"ApplySharedPref"})
+  public final void b(ICommLibReader paramICommLibReader)
   {
-    AppMethodBeat.i(44332);
-    doNotify();
-    AppMethodBeat.o(44332);
+    AppMethodBeat.i(50178);
+    p.h(paramICommLibReader, "reader");
+    c.b(null, (a)new a(paramICommLibReader));
+    AppMethodBeat.o(50178);
   }
   
-  public static void bae()
-  {
-    AppMethodBeat.i(44333);
-    doNotify();
-    AppMethodBeat.o(44333);
-  }
-  
-  public static void baf()
-  {
-    AppMethodBeat.i(44334);
-    try
-    {
-      WxaCommLibRuntimeReader.a locala = jHd;
-      IPCVoid localIPCVoid = IPCVoid.gyi;
-      locala.bam();
-      AppMethodBeat.o(44334);
-      return;
-    }
-    catch (WxaCommLibRuntimeReader.AccountNotReadyError localAccountNotReadyError)
-    {
-      com.tencent.mm.model.b localb = new com.tencent.mm.model.b();
-      AppMethodBeat.o(44334);
-      throw localb;
-    }
-  }
-  
-  private static void doNotify()
-  {
-    AppMethodBeat.i(44335);
-    Object localObject1 = jHd;
-    Object localObject2 = IPCVoid.gyi;
-    localObject2 = ((WxaCommLibRuntimeReader.a)localObject1).bam();
-    if ((localObject2 instanceof WxaPkgWrappingInfo))
-    {
-      localObject1 = (WxaPkgWrappingInfo)localObject2;
-      ad.i("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "doNotify check ok ret[%s]", new Object[] { localObject2 });
-      localObject2 = g.gBK;
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = localObject2[i];
-        str = aj.getPackageName() + str;
-        if (aj.aQt(str)) {
-          XIPCInvoker.a(str, localObject1, a.class, null);
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(44335);
-      return;
-    }
-    ad.e("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "doNotify check failed ret[%s]", new Object[] { localObject2 });
-    AppMethodBeat.o(44335);
-  }
-  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
-    implements com.tencent.mm.ipcinvoker.b<WxaPkgWrappingInfo, IPCVoid>
-  {}
+    extends q
+    implements a<z>
+  {
+    a(ICommLibReader paramICommLibReader)
+    {
+      super();
+    }
+  }
 }
 
 

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String hAD;
+  public String hDr;
   public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -14,8 +14,8 @@ public final class r
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.hAD != null) {
-        paramVarArgs.d(1, this.hAD);
+      if (this.hDr != null) {
+        paramVarArgs.d(1, this.hDr);
       }
       if (this.value != null) {
         paramVarArgs.d(2, this.value);
@@ -24,12 +24,12 @@ public final class r
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hAD == null) {
+      if (this.hDr == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.hAD) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.hDr) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.value != null) {
@@ -40,9 +40,9 @@ public final class r
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(153079);
@@ -58,11 +58,11 @@ public final class r
           AppMethodBeat.o(153079);
           return -1;
         case 1: 
-          localr.hAD = locala.NPN.readString();
+          localr.hDr = locala.OmT.readString();
           AppMethodBeat.o(153079);
           return 0;
         }
-        localr.value = locala.NPN.readString();
+        localr.value = locala.OmT.readString();
         AppMethodBeat.o(153079);
         return 0;
       }

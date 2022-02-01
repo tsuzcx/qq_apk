@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,33 +12,33 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<String, com.tencent.mm.sdk.b.c> lRl;
-  private static ArrayList<String> lRm;
-  private static boolean lRn;
+  private static Map<String, com.tencent.mm.sdk.b.c> lVM;
+  private static ArrayList<String> lVN;
+  private static boolean lVO;
   
   static
   {
     AppMethodBeat.i(146148);
-    lRl = new HashMap();
-    lRm = new ArrayList();
-    lRn = false;
+    lVM = new HashMap();
+    lVN = new ArrayList();
+    lVO = false;
     AppMethodBeat.o(146148);
   }
   
-  public static void Ss(String paramString)
+  public static void Tb(String paramString)
   {
     AppMethodBeat.i(146145);
-    if (!lRl.containsKey(paramString))
+    if (!lVM.containsKey(paramString))
     {
-      ad.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
+      ae.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
       AppMethodBeat.o(146145);
       return;
     }
-    ad.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
-    lRm.remove(paramString);
-    paramString = (com.tencent.mm.sdk.b.c)lRl.remove(paramString);
+    ae.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
+    lVN.remove(paramString);
+    paramString = (com.tencent.mm.sdk.b.c)lVM.remove(paramString);
     if (paramString != null) {
-      a.IbL.d(paramString);
+      a.IvT.d(paramString);
     }
     AppMethodBeat.o(146145);
   }
@@ -46,33 +46,33 @@ public final class c
   public static void b(String paramString, com.tencent.mm.sdk.b.c paramc)
   {
     AppMethodBeat.i(146144);
-    if (lRl.containsKey(paramString))
+    if (lVM.containsKey(paramString))
     {
-      ad.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
+      ae.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
       AppMethodBeat.o(146144);
       return;
     }
     if (paramc == null)
     {
-      ad.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
+      ae.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
       AppMethodBeat.o(146144);
       return;
     }
-    ad.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
-    lRl.put(paramString, paramc);
-    if (!lRm.contains(paramString)) {
-      lRm.add(paramString);
+    ae.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
+    lVM.put(paramString, paramc);
+    if (!lVN.contains(paramString)) {
+      lVN.add(paramString);
     }
-    a.IbL.b(paramc);
+    a.IvT.b(paramc);
     AppMethodBeat.o(146144);
   }
   
-  public static void bsE()
+  public static void btp()
   {
     AppMethodBeat.i(146146);
-    if (lRn)
+    if (lVO)
     {
-      ad.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
+      ae.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
       AppMethodBeat.o(146146);
       return;
     }
@@ -93,31 +93,31 @@ public final class c
   public static void onDestroy()
   {
     AppMethodBeat.i(146143);
-    ad.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
-    Object localObject1 = lRm.iterator();
+    ae.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
+    Object localObject1 = lVN.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (com.tencent.mm.sdk.b.c)lRl.remove(localObject2);
+      localObject2 = (com.tencent.mm.sdk.b.c)lVM.remove(localObject2);
       if (localObject2 != null) {
-        a.IbL.d((com.tencent.mm.sdk.b.c)localObject2);
+        a.IvT.d((com.tencent.mm.sdk.b.c)localObject2);
       }
     }
-    lRl.clear();
-    lRm.clear();
-    localObject1 = g.bsM();
-    ad.i("MicroMsg.Record.AudioRecordMgr", "destroy");
-    if ((((g)localObject1).lRs == g.a.lRH) || (((g)localObject1).lRs == g.a.lRI) || (((g)localObject1).lRs == g.a.lRL)) {
-      ((g)localObject1).PG();
+    lVM.clear();
+    lVN.clear();
+    localObject1 = g.btx();
+    ae.i("MicroMsg.Record.AudioRecordMgr", "destroy");
+    if ((((g)localObject1).lVT == g.a.lWi) || (((g)localObject1).lVT == g.a.lWj) || (((g)localObject1).lVT == g.a.lWm)) {
+      ((g)localObject1).PF();
     }
-    if (((g)localObject1).lRy)
+    if (((g)localObject1).lVZ)
     {
-      if ((((g)localObject1).lRr != null) && (((g)localObject1).lRr.lSr != null))
+      if ((((g)localObject1).lVS != null) && (((g)localObject1).lVS.lWS != null))
       {
-        ((g)localObject1).lRr.lSr.a(null);
-        ((g)localObject1).lRr.lSr.bsL();
+        ((g)localObject1).lVS.lWS.a(null);
+        ((g)localObject1).lVS.lWS.btw();
       }
-      ((g)localObject1).lRy = false;
+      ((g)localObject1).lVZ = false;
     }
     AppMethodBeat.o(146143);
   }

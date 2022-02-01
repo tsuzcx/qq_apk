@@ -19,10 +19,10 @@ import com.tencent.mm.plugin.webview.c.l.a;
 import com.tencent.mm.plugin.webview.core.h;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.r;
 import com.tencent.mm.ui.tools.r.b;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -34,14 +34,14 @@ public class BaseEmojiStoreSearchWebViewUI
   extends WebViewUI
   implements r.b
 {
-  private boolean EfM;
-  private boolean EfN = true;
+  private boolean ExP;
+  private boolean ExQ = true;
   private r mSearchViewHelper;
-  private int oTx;
+  private int oZZ;
   String query;
   private int type;
   
-  public final boolean Jp(String paramString)
+  public final boolean JO(String paramString)
   {
     AppMethodBeat.i(80473);
     String str = paramString;
@@ -49,7 +49,7 @@ public class BaseEmojiStoreSearchWebViewUI
       str = paramString.trim();
     }
     this.query = str;
-    if (!bt.isNullOrNil(str))
+    if (!bu.isNullOrNil(str))
     {
       this.query = str;
       this.handler.post(new Runnable()
@@ -57,8 +57,8 @@ public class BaseEmojiStoreSearchWebViewUI
         public final void run()
         {
           AppMethodBeat.i(80466);
-          if (BaseEmojiStoreSearchWebViewUI.this.DzP != null) {
-            BaseEmojiStoreSearchWebViewUI.this.DzP.eOG();
+          if (BaseEmojiStoreSearchWebViewUI.this.DRx != null) {
+            BaseEmojiStoreSearchWebViewUI.this.DRx.eSr();
           }
           AppMethodBeat.o(80466);
         }
@@ -68,44 +68,44 @@ public class BaseEmojiStoreSearchWebViewUI
       paramString.putString("nextPageBuffer", "");
       paramString.putString("keyword", this.query);
       paramString.putInt("webview_instance_id", hashCode());
-      paramString.putLong("searchID", this.DzP.eOI());
+      paramString.putLong("searchID", this.DRx.eSt());
     }
     try
     {
-      if (this.lvv != null) {
-        this.lvv.w(1, paramString);
+      if (this.lzT != null) {
+        this.lzT.w(1, paramString);
       }
       for (;;)
       {
         hideVKB();
         paramString = "";
-        if (!bt.isNullOrNil(str)) {
+        if (!bu.isNullOrNil(str)) {
           paramString = str.replace(",", " ");
         }
-        g.yhR.f(13054, new Object[] { Integer.valueOf(this.oTx), Integer.valueOf(1), paramString });
+        g.yxI.f(13054, new Object[] { Integer.valueOf(this.oZZ), Integer.valueOf(1), paramString });
         AppMethodBeat.o(80473);
         return false;
-        ad.e("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", "invoker should not be null");
+        ae.e("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", "invoker should not be null");
       }
     }
     catch (RemoteException paramString)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", paramString, "doSearch", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", paramString, "doSearch", new Object[0]);
       }
     }
   }
   
-  public final void Jq(String paramString)
+  public final void JP(String paramString)
   {
     AppMethodBeat.i(80472);
-    if ((this.EfN) && (bt.isNullOrNil(paramString)))
+    if ((this.ExQ) && (bu.isNullOrNil(paramString)))
     {
-      this.EfN = false;
-      if (!this.EfM)
+      this.ExQ = false;
+      if (!this.ExP)
       {
-        aq.o(new Runnable()
+        ar.o(new Runnable()
         {
           public final void run()
           {
@@ -118,56 +118,40 @@ public class BaseEmojiStoreSearchWebViewUI
         AppMethodBeat.o(80472);
         return;
       }
-      this.mSearchViewHelper.fKg();
+      this.mSearchViewHelper.fOx();
       showVKB();
     }
     AppMethodBeat.o(80472);
   }
   
-  public final void aSm()
+  public final void aSL()
   {
     AppMethodBeat.i(80471);
     finish();
     AppMethodBeat.o(80471);
   }
   
-  public final void aSn() {}
+  public final void aSM() {}
   
-  public final void aSo()
+  public final void aSN()
   {
     AppMethodBeat.i(80474);
-    this.mSearchViewHelper.fKg();
+    this.mSearchViewHelper.fOx();
     showVKB();
     AppMethodBeat.o(80474);
   }
   
-  public final void aSp() {}
+  public final void aSO() {}
   
-  public final boolean bQR()
-  {
-    return false;
-  }
-  
-  public final h bRd()
-  {
-    AppMethodBeat.i(208148);
-    h localh = super.bRd();
-    if (localh != null) {
-      localh.a(new a((byte)0));
-    }
-    AppMethodBeat.o(208148);
-    return localh;
-  }
-  
-  public final void bzn()
+  public final void bAi()
   {
     AppMethodBeat.i(80469);
-    super.bzn();
+    super.bAi();
     this.query = getIntent().getStringExtra("keyword");
     this.type = getIntent().getIntExtra("type", 0);
-    this.EfM = getIntent().getBooleanExtra("showkeyboard", false);
-    this.oTx = getIntent().getIntExtra("sence", 0);
-    this.omW.setOnTouchListener(new View.OnTouchListener()
+    this.ExP = getIntent().getBooleanExtra("showkeyboard", false);
+    this.oZZ = getIntent().getIntExtra("sence", 0);
+    this.osM.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -175,7 +159,7 @@ public class BaseEmojiStoreSearchWebViewUI
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/emojistore/BaseEmojiStoreSearchWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/webview/ui/tools/emojistore/BaseEmojiStoreSearchWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         BaseEmojiStoreSearchWebViewUI.this.hideVKB();
         a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/emojistore/BaseEmojiStoreSearchWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(80464);
@@ -184,36 +168,52 @@ public class BaseEmojiStoreSearchWebViewUI
     });
     this.mSearchViewHelper = new r();
     addSearchMenu(true, this.mSearchViewHelper);
-    this.mSearchViewHelper.yC(false);
-    this.mSearchViewHelper.KKQ = this;
+    this.mSearchViewHelper.yP(false);
+    this.mSearchViewHelper.Lhk = this;
     showOptionMenu(false);
-    if (this.Een != null) {
-      this.Een.ve(true);
+    if (this.Ewp != null) {
+      this.Ewp.vm(true);
     }
-    this.omW.setOnLongClickListener(new View.OnLongClickListener()
+    this.osM.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(208145);
+        AppMethodBeat.i(198324);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/emojistore/BaseEmojiStoreSearchWebViewUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/webview/ui/tools/emojistore/BaseEmojiStoreSearchWebViewUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
         a.a(true, this, "com/tencent/mm/plugin/webview/ui/tools/emojistore/BaseEmojiStoreSearchWebViewUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(208145);
+        AppMethodBeat.o(198324);
         return true;
       }
     });
     AppMethodBeat.o(80469);
   }
   
-  public final void eSO()
+  public final boolean bRS()
+  {
+    return false;
+  }
+  
+  public final h bSe()
+  {
+    AppMethodBeat.i(198327);
+    h localh = super.bSe();
+    if (localh != null) {
+      localh.a(new a((byte)0));
+    }
+    AppMethodBeat.o(198327);
+    return localh;
+  }
+  
+  public final void eWA()
   {
     AppMethodBeat.i(80476);
     finish();
     AppMethodBeat.o(80476);
   }
   
-  public final boolean eTe()
+  public final boolean eWR()
   {
     return true;
   }
@@ -251,7 +251,7 @@ public class BaseEmojiStoreSearchWebViewUI
   public void z(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(80475);
-    ad.i("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
@@ -263,27 +263,27 @@ public class BaseEmojiStoreSearchWebViewUI
       boolean bool = paramBundle.getBoolean("emoji_store_new_query", true);
       String str2 = paramBundle.getString("emoji_store_page_buf");
       long l = paramBundle.getLong("emoji_store_search_id");
-      paramBundle = this.DzP;
-      if (!paramBundle.BHY)
+      paramBundle = this.DRx;
+      if (!paramBundle.BZx)
       {
-        ad.e("MicroMsg.JsApiHandler", "onEmojiStoreGetSearchData fail, not ready");
+        ae.e("MicroMsg.JsApiHandler", "onEmojiStoreGetSearchData fail, not ready");
         AppMethodBeat.o(80475);
         return;
       }
-      ad.i("MicroMsg.JsApiHandler", "onEmojiStoreGetSearchData success, ready");
+      ae.i("MicroMsg.JsApiHandler", "onEmojiStoreGetSearchData success, ready");
       HashMap localHashMap = new HashMap();
       localHashMap.put("json", str1);
       localHashMap.put("newQuery", Boolean.valueOf(bool));
       localHashMap.put("nextPageBuffer", str2);
-      ad.d("MicroMsg.JsApiHandler", "cpan emoji set SearchID:%d", new Object[] { Long.valueOf(l) });
-      paramBundle.DMX = l;
-      str1 = l.a.b("getSearchEmotionDataCallBack", localHashMap, paramBundle.DMD, paramBundle.vJP);
-      ad.i("MicroMsg.JsApiHandler", "event:%s", new Object[] { str1 });
-      aq.f(new f.63(paramBundle, str1));
+      ae.d("MicroMsg.JsApiHandler", "cpan emoji set SearchID:%d", new Object[] { Long.valueOf(l) });
+      paramBundle.EeW = l;
+      str1 = l.a.b("getSearchEmotionDataCallBack", localHashMap, paramBundle.EeC, paramBundle.vVT);
+      ae.i("MicroMsg.JsApiHandler", "event:%s", new Object[] { str1 });
+      ar.f(new f.63(paramBundle, str1));
       AppMethodBeat.o(80475);
       return;
     }
-    this.DzP.eOG();
+    this.DRx.eSr();
     AppMethodBeat.o(80475);
   }
   
@@ -292,20 +292,20 @@ public class BaseEmojiStoreSearchWebViewUI
   {
     private a() {}
     
-    public final void aGk(String paramString)
+    public final void aHE(String paramString)
     {
-      AppMethodBeat.i(208147);
+      AppMethodBeat.i(198326);
       BaseEmojiStoreSearchWebViewUI.this.showOptionMenu(false);
-      AppMethodBeat.o(208147);
+      AppMethodBeat.o(198326);
     }
     
     public final void b(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(208146);
-      ad.i("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", "onPageFinished url:%s", new Object[] { paramString });
+      AppMethodBeat.i(198325);
+      ae.i("MicroMsg.emoji.BaseEmojiStoreSearchWebViewUI", "onPageFinished url:%s", new Object[] { paramString });
       BaseEmojiStoreSearchWebViewUI.this.showOptionMenu(false);
       BaseEmojiStoreSearchWebViewUI.a(BaseEmojiStoreSearchWebViewUI.this).setSearchContent(BaseEmojiStoreSearchWebViewUI.this.query);
-      AppMethodBeat.o(208146);
+      AppMethodBeat.o(198325);
     }
   }
 }

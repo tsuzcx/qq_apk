@@ -8,12 +8,12 @@ import java.util.Iterator;
 
 public final class p
 {
-  final ArrayList<a> pxq;
+  final ArrayList<a> pDU;
   
   public p()
   {
     AppMethodBeat.i(30655);
-    this.pxq = new ArrayList();
+    this.pDU = new ArrayList();
     AppMethodBeat.o(30655);
   }
   
@@ -21,7 +21,7 @@ public final class p
   {
     AppMethodBeat.i(30657);
     if ((paramObject instanceof f)) {
-      this.pxq.add(new a(paramObject, paramn, true));
+      this.pDU.add(new a(paramObject, paramn, true));
     }
     AppMethodBeat.o(30657);
   }
@@ -39,33 +39,33 @@ public final class p
   public final void b(Object paramObject, n paramn)
   {
     AppMethodBeat.i(30658);
-    this.pxq.add(new a(paramObject, paramn, false));
+    this.pDU.add(new a(paramObject, paramn, false));
     AppMethodBeat.o(30658);
   }
   
   public final void c(Spannable paramSpannable)
   {
     AppMethodBeat.i(30659);
-    Iterator localIterator = this.pxq.iterator();
+    Iterator localIterator = this.pDU.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      f localf = locala.EAN;
-      int m = locala.EAO.avj;
+      f localf = locala.ETj;
+      int m = locala.ETk.avj;
       int i;
-      if (locala.pxt)
+      if (locala.pDX)
       {
         i = paramSpannable.getSpanStart(localf);
         if ((i >= 0) && (i < m)) {
-          paramSpannable.setSpan(localf.eXi(), i, m, 34);
+          paramSpannable.setSpan(localf.faU(), i, m, 34);
         }
         paramSpannable.removeSpan(localf);
       }
       else
       {
-        n localn = locala.EAO;
-        int k = locala.EAO.OQ;
-        if ((localn.pxp) && (localn.isEmpty())) {
+        n localn = locala.ETk;
+        int k = locala.ETk.OQ;
+        if ((localn.pDT) && (localn.isEmpty())) {
           i = 34;
         }
         for (;;)
@@ -76,9 +76,9 @@ public final class p
           }
           paramSpannable.setSpan(localf, m, j, i);
           break;
-          if ((localn.pxp) && (localn.pxo)) {
+          if ((localn.pDT) && (localn.pDS)) {
             i = 18;
-          } else if (localn.pxp) {
+          } else if (localn.pDT) {
             i = 34;
           } else {
             i = 33;
@@ -91,16 +91,16 @@ public final class p
   
   static final class a
   {
-    final f EAN;
-    final n EAO;
-    final boolean pxt;
+    final f ETj;
+    final n ETk;
+    final boolean pDX;
     
     a(Object paramObject, n paramn, boolean paramBoolean)
     {
       AppMethodBeat.i(30654);
-      this.EAN = ((f)paramObject);
-      this.EAO = paramn;
-      this.pxt = paramBoolean;
+      this.ETj = ((f)paramObject);
+      this.ETk = paramn;
+      this.pDX = paramBoolean;
       AppMethodBeat.o(30654);
     }
   }

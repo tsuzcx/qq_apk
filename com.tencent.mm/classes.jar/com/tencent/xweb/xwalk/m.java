@@ -53,7 +53,7 @@ public class m
     return bool;
   }
   
-  public final void gcM()
+  public final void gho()
   {
     AppMethodBeat.i(154452);
     super.onHideCustomView();

@@ -7,15 +7,15 @@ import java.util.List;
 
 final class k
 {
-  static final k cyR;
-  float cyS;
-  float cyT;
-  float cyU;
-  float cyV;
-  float cyW;
-  float cyX;
-  boolean cyY;
-  int cyZ = 1;
+  static final k czy;
+  float czA;
+  float czB;
+  float czC;
+  float czD;
+  float czE;
+  boolean czF;
+  int czG = 1;
+  float czz;
   float height;
   float width;
   
@@ -23,7 +23,7 @@ final class k
   {
     AppMethodBeat.i(140056);
     k localk = new k();
-    cyR = localk;
+    czy = localk;
     localk.setEmpty();
     AppMethodBeat.o(140056);
   }
@@ -42,11 +42,11 @@ final class k
       k localk = (k)paramList.next();
       if (localk != null)
       {
-        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localk.cyS).put(localk.cyT).put(localk.width).put(localk.height).put(localk.cyU).put(localk.cyV).put(localk.cyW).put(localk.cyX);
-        if (localk.cyY) {}
+        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localk.czz).put(localk.czA).put(localk.width).put(localk.height).put(localk.czB).put(localk.czC).put(localk.czD).put(localk.czE);
+        if (localk.czF) {}
         for (float f = 1.0F;; f = 0.0F)
         {
-          localFloatBuffer.put(f).put(localk.cyZ);
+          localFloatBuffer.put(f).put(localk.czG);
           break;
         }
       }
@@ -56,24 +56,24 @@ final class k
   
   public final void k(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.cyU = paramFloat1;
-    this.cyV = paramFloat2;
-    this.cyW = paramFloat3;
-    this.cyX = paramFloat4;
+    this.czB = paramFloat1;
+    this.czC = paramFloat2;
+    this.czD = paramFloat3;
+    this.czE = paramFloat4;
   }
   
   public final void setEmpty()
   {
     this.height = 0.0F;
     this.width = 0.0F;
-    this.cyT = 0.0F;
-    this.cyS = 0.0F;
-    this.cyX = 0.0F;
-    this.cyW = 0.0F;
-    this.cyV = 0.0F;
-    this.cyU = 0.0F;
-    this.cyZ = 1;
-    this.cyY = false;
+    this.czA = 0.0F;
+    this.czz = 0.0F;
+    this.czE = 0.0F;
+    this.czD = 0.0F;
+    this.czC = 0.0F;
+    this.czB = 0.0F;
+    this.czG = 1;
+    this.czF = false;
   }
   
   public final void t(float paramFloat1, float paramFloat2)
@@ -85,14 +85,14 @@ final class k
   public final String toString()
   {
     AppMethodBeat.i(140055);
-    String str = "glyph(" + this.cyS + ", " + this.cyT + ", [" + this.width + ", " + this.height + "], [" + this.cyU + ", " + this.cyV + ", " + this.cyW + ", " + this.cyX + ", " + this.cyY + "])";
+    String str = "glyph(" + this.czz + ", " + this.czA + ", [" + this.width + ", " + this.height + "], [" + this.czB + ", " + this.czC + ", " + this.czD + ", " + this.czE + ", " + this.czF + "])";
     AppMethodBeat.o(140055);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.k
  * JD-Core Version:    0.7.0.1
  */

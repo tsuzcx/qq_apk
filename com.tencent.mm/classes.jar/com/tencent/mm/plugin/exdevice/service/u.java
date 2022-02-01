@@ -5,53 +5,53 @@ import com.tencent.mm.plugin.exdevice.model.c;
 
 public final class u
 {
-  private static u qgg = null;
-  private c qgh;
-  private f qgi;
+  private static u qmL = null;
+  private c qmM;
+  private f qmN;
   
   public static void a(m paramm)
   {
     AppMethodBeat.i(23696);
-    clV().qas = paramm;
+    cnl().qgX = paramm;
     AppMethodBeat.o(23696);
   }
   
-  private static u clT()
+  private static u cnj()
   {
     AppMethodBeat.i(23694);
-    if (qgg == null) {
-      qgg = new u();
+    if (qmL == null) {
+      qmL = new u();
     }
-    u localu = qgg;
+    u localu = qmL;
     AppMethodBeat.o(23694);
     return localu;
   }
   
-  public static f clU()
+  public static f cnk()
   {
     AppMethodBeat.i(23695);
-    if (clT().qgi == null) {
-      clT().qgi = new f();
+    if (cnj().qmN == null) {
+      cnj().qmN = new f();
     }
-    f localf = clT().qgi;
+    f localf = cnj().qmN;
     AppMethodBeat.o(23695);
     return localf;
   }
   
-  public static c clV()
+  public static c cnl()
   {
     AppMethodBeat.i(23697);
-    if (clT().qgh == null) {
-      clT().qgh = c.ckY();
+    if (cnj().qmM == null) {
+      cnj().qmM = c.cmo();
     }
-    c localc = clT().qgh;
+    c localc = cnj().qmM;
     AppMethodBeat.o(23697);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.u
  * JD-Core Version:    0.7.0.1
  */

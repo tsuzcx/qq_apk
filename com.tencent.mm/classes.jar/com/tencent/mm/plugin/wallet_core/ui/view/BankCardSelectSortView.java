@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.c.a;
@@ -17,7 +17,7 @@ import com.tencent.mm.ui.base.sortview.d;
 public class BankCardSelectSortView
   extends BaseSortView
 {
-  private ListView nZM;
+  private ListView ofw;
   
   public BankCardSelectSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,7 +27,7 @@ public class BankCardSelectSortView
   public final boolean a(String paramString, d paramd)
   {
     AppMethodBeat.i(71473);
-    boolean bool = ((a)paramd.data).wCD.toUpperCase().contains(paramString.toUpperCase());
+    boolean bool = ((a)paramd.data).wSo.toUpperCase().contains(paramString.toUpperCase());
     AppMethodBeat.o(71473);
     return bool;
   }
@@ -46,32 +46,32 @@ public class BankCardSelectSortView
         {
           localView = LayoutInflater.from(localContext).inflate(2131493166, null);
           paramAnonymousView = new BankCardSelectSortView.b((byte)0);
-          paramAnonymousView.xUV = ((TextView)localView.findViewById(2131297925));
-          paramAnonymousView.xSy = ((TextView)localView.findViewById(2131297564));
-          paramAnonymousView.xSw = ((CdnImageView)localView.findViewById(2131297563));
+          paramAnonymousView.ykO = ((TextView)localView.findViewById(2131297925));
+          paramAnonymousView.yir = ((TextView)localView.findViewById(2131297564));
+          paramAnonymousView.yip = ((CdnImageView)localView.findViewById(2131297563));
           localView.setTag(paramAnonymousView);
         }
         paramAnonymousView = (BankCardSelectSortView.b)localView.getTag();
-        if ((BankCardSelectSortView.this.Jub) && (paramAnonymousBoolean1))
+        if ((BankCardSelectSortView.this.JOQ) && (paramAnonymousBoolean1))
         {
-          paramAnonymousView.xUV.setText(paramAnonymousd.Juj);
-          paramAnonymousView.xUV.setVisibility(0);
+          paramAnonymousView.ykO.setText(paramAnonymousd.JOY);
+          paramAnonymousView.ykO.setVisibility(0);
           paramAnonymousd = (BankCardSelectSortView.a)paramAnonymousd.data;
-          paramAnonymousView.xSy.setText(paramAnonymousd.wCD);
-          if (bt.isNullOrNil(paramAnonymousd.dDH)) {
+          paramAnonymousView.yir.setText(paramAnonymousd.wSo);
+          if (bu.isNullOrNil(paramAnonymousd.dEM)) {
             break label206;
           }
-          paramAnonymousView.xSw.setUseSdcardCache(true);
-          paramAnonymousView.xSw.lw(paramAnonymousd.dDH, paramAnonymousd.DlV);
+          paramAnonymousView.yip.setUseSdcardCache(true);
+          paramAnonymousView.yip.lD(paramAnonymousd.dEM, paramAnonymousd.DDz);
         }
         for (;;)
         {
           AppMethodBeat.o(71468);
           return localView;
-          paramAnonymousView.xUV.setVisibility(8);
+          paramAnonymousView.ykO.setVisibility(8);
           break;
           label206:
-          paramAnonymousView.xSw.setImageBitmap(null);
+          paramAnonymousView.yip.setImageBitmap(null);
         }
       }
     };
@@ -82,8 +82,8 @@ public class BankCardSelectSortView
   public ListView getListView()
   {
     AppMethodBeat.i(71471);
-    this.nZM = ((ListView)findViewById(2131301457));
-    ListView localListView = this.nZM;
+    this.ofw = ((ListView)findViewById(2131301457));
+    ListView localListView = this.ofw;
     AppMethodBeat.o(71471);
     return localListView;
   }
@@ -114,17 +114,17 @@ public class BankCardSelectSortView
   
   public static final class a
   {
-    public String DlV;
-    public String dDH;
+    public String DDz;
+    public String dEM;
     public String pinyin;
-    public String wCD;
+    public String wSo;
   }
   
   static final class b
   {
-    CdnImageView xSw;
-    TextView xSy;
-    TextView xUV;
+    CdnImageView yip;
+    TextView yir;
+    TextView ykO;
   }
 }
 

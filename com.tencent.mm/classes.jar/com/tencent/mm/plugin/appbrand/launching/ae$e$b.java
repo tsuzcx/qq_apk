@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.g.b.a.hv;
+import com.tencent.mm.g.b.a.hx;
 import d.g.a.a;
 import d.g.a.b;
 import d.g.a.m;
@@ -8,7 +8,7 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class ae$e$b
   extends q
   implements a<z>

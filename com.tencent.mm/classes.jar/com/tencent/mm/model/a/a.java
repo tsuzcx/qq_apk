@@ -1,10 +1,10 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
-import com.tencent.mm.al.e.d;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.e.d;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
 import java.util.Map;
 

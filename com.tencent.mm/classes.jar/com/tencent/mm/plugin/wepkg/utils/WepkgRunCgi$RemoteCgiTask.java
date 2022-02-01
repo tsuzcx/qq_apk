@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wepkg.utils;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public final class WepkgRunCgi$RemoteCgiTask
@@ -14,13 +14,13 @@ public final class WepkgRunCgi$RemoteCgiTask
   implements x.a
 {
   public static final Parcelable.Creator<RemoteCgiTask> CREATOR;
-  public int EGa;
-  private b EGb;
-  public b EGc;
-  public WepkgRunCgi.a EGd;
-  private String ksX;
-  private int pZU;
-  private int qag;
+  public int EYw;
+  private b EYx;
+  public b EYy;
+  public WepkgRunCgi.a EYz;
+  private String kwn;
+  private int qgL;
+  private int qgz;
   
   static
   {
@@ -31,13 +31,13 @@ public final class WepkgRunCgi$RemoteCgiTask
   
   public WepkgRunCgi$RemoteCgiTask()
   {
-    this.EGa = 0;
+    this.EYw = 0;
   }
   
   WepkgRunCgi$RemoteCgiTask(Parcel paramParcel)
   {
     AppMethodBeat.i(110804);
-    this.EGa = 0;
+    this.EYw = 0;
     e(paramParcel);
     AppMethodBeat.o(110804);
   }
@@ -45,29 +45,29 @@ public final class WepkgRunCgi$RemoteCgiTask
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
   {
     AppMethodBeat.i(110800);
-    this.qag = paramInt1;
-    this.pZU = paramInt2;
-    this.ksX = paramString;
-    this.EGb = paramb;
-    this.EGa = 2;
-    bhX();
+    this.qgL = paramInt1;
+    this.qgz = paramInt2;
+    this.kwn = paramString;
+    this.EYx = paramb;
+    this.EYw = 2;
+    biG();
     AppMethodBeat.o(110800);
     return 0;
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(110799);
-    x.a(this.EGc, this, true);
+    x.a(this.EYy, this, true);
     AppMethodBeat.o(110799);
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(110801);
     d.bj(this);
-    if (this.EGd != null) {
-      this.EGd.a(this.qag, this.pZU, this.ksX, this.EGb);
+    if (this.EYz != null) {
+      this.EYz.a(this.qgL, this.qgz, this.kwn, this.EYx);
     }
     AppMethodBeat.o(110801);
   }
@@ -81,21 +81,21 @@ public final class WepkgRunCgi$RemoteCgiTask
   {
     AppMethodBeat.i(110803);
     super.e(paramParcel);
-    this.EGa = paramParcel.readInt();
-    switch (this.EGa)
+    this.EYw = paramParcel.readInt();
+    switch (this.EYw)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(110803);
       return;
-      this.EGc = WepkgRunCgi.o(paramParcel);
+      this.EYy = WepkgRunCgi.o(paramParcel);
       AppMethodBeat.o(110803);
       return;
-      this.qag = paramParcel.readInt();
-      this.pZU = paramParcel.readInt();
-      this.ksX = paramParcel.readString();
-      this.EGb = WepkgRunCgi.o(paramParcel);
+      this.qgL = paramParcel.readInt();
+      this.qgz = paramParcel.readInt();
+      this.kwn = paramParcel.readString();
+      this.EYx = WepkgRunCgi.o(paramParcel);
     }
   }
   
@@ -103,21 +103,21 @@ public final class WepkgRunCgi$RemoteCgiTask
   {
     AppMethodBeat.i(110802);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.EGa);
-    switch (this.EGa)
+    paramParcel.writeInt(this.EYw);
+    switch (this.EYw)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(110802);
       return;
-      WepkgRunCgi.a(this.EGc, paramParcel);
+      WepkgRunCgi.a(this.EYy, paramParcel);
       AppMethodBeat.o(110802);
       return;
-      paramParcel.writeInt(this.qag);
-      paramParcel.writeInt(this.pZU);
-      paramParcel.writeString(this.ksX);
-      WepkgRunCgi.a(this.EGb, paramParcel);
+      paramParcel.writeInt(this.qgL);
+      paramParcel.writeInt(this.qgz);
+      paramParcel.writeString(this.kwn);
+      WepkgRunCgi.a(this.EYx, paramParcel);
     }
   }
 }

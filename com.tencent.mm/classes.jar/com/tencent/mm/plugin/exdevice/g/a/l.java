@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.buc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.buv;
+import com.tencent.mm.protocal.protobuf.buw;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class l
   extends n
   implements k
 {
   private f callback;
-  public int dFJ;
-  public String hBg;
-  public String qfc;
+  public int dGO;
+  public String hDU;
+  public String qlH;
   private b rr;
   
   public l(String paramString1, String paramString2, int paramInt, String paramString3)
@@ -28,23 +28,23 @@ public final class l
     AppMethodBeat.i(23534);
     this.callback = null;
     this.rr = null;
-    this.qfc = paramString3;
-    this.hBg = paramString2;
-    this.dFJ = paramInt;
-    this.qfc = paramString3;
+    this.qlH = paramString3;
+    this.hDU = paramString2;
+    this.dGO = paramInt;
+    this.qlH = paramString3;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bub();
-    ((b.a)localObject).hNN = new buc();
+    ((b.a)localObject).hQF = new buv();
+    ((b.a)localObject).hQG = new buw();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/addlike";
     ((b.a)localObject).funcId = 1041;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bub)this.rr.hNK.hNQ;
-    ((bub)localObject).qmb = paramString2;
-    ((bub)localObject).username = paramString1;
-    ((bub)localObject).dFJ = paramInt;
-    ((bub)localObject).hAy = paramString3;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (buv)this.rr.hQD.hQJ;
+    ((buv)localObject).qsG = paramString2;
+    ((buv)localObject).username = paramString1;
+    ((buv)localObject).dGO = paramInt;
+    ((buv)localObject).hDm = paramString3;
     AppMethodBeat.o(23534);
   }
   
@@ -65,7 +65,7 @@ public final class l
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23536);
-    ad.d("MicroMsg.NetSceneUpdateLikeStatus", "hy: end. errType: %d, errCode: %d, errMsg: %s, ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.d("MicroMsg.NetSceneUpdateLikeStatus", "hy: end. errType: %d, errCode: %d, errMsg: %s, ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(23536);
   }

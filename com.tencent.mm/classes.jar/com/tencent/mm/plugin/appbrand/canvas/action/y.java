@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineDashActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -18,7 +18,7 @@ public final class y
   {
     AppMethodBeat.i(144947);
     if ((paramArrayOfFloat != null) && (paramFloat != 1.4E-45F)) {
-      paramd.jSY.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
+      paramd.jWp.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
     }
     AppMethodBeat.o(144947);
     return true;
@@ -33,7 +33,7 @@ public final class y
       AppMethodBeat.o(144948);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.jTy, paramCanvas.jTz);
+    boolean bool = a(paramd, paramCanvas.jWP, paramCanvas.jWQ);
     AppMethodBeat.o(144948);
     return bool;
   }
@@ -73,7 +73,7 @@ public final class y
     return false;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144945);
     SetLineDashActionArg localSetLineDashActionArg = new SetLineDashActionArg();

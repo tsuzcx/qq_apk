@@ -31,7 +31,7 @@ public class ae
     }
     for (;;)
     {
-      g.yhR.a(i, str, bool2, bool1);
+      g.yxI.a(i, str, bool2, bool1);
       parama.a("", null);
       AppMethodBeat.o(78570);
       return;
@@ -42,7 +42,7 @@ public class ae
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

@@ -13,7 +13,7 @@ public final class o
     paramn = paramn.c(parama);
     if (paramn != null)
     {
-      paramn = paramn.gmk();
+      paramn = paramn.gqM();
       AppMethodBeat.o(58224);
       return paramn;
     }

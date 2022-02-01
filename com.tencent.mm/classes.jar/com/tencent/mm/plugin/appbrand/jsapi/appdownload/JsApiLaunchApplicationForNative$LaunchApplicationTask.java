@@ -10,8 +10,8 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ky;
-import com.tencent.mm.g.a.ky.b;
+import com.tencent.mm.g.a.kz;
+import com.tencent.mm.g.a.kz.b;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask;
@@ -19,9 +19,9 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask.
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 
 class JsApiLaunchApplicationForNative$LaunchApplicationTask
@@ -29,11 +29,11 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
 {
   public static final Parcelable.Creator<LaunchApplicationTask> CREATOR;
   public String appId;
-  public int dlp;
-  public Bundle dnx;
+  public int dmr;
+  public Bundle doz;
   public String extInfo;
-  public Runnable krg;
-  public String ksB;
+  public Runnable kuv;
+  public String kvR;
   public boolean success;
   
   static
@@ -63,16 +63,16 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
       public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
         AppMethodBeat.i(45839);
-        ad.i("MicroMsg.JsApiLaunchApplicationForNative", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
+        ae.i("MicroMsg.JsApiLaunchApplicationForNative", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
         if (paramAnonymousBoolean1)
         {
           JsApiLaunchApplicationForNative.LaunchApplicationTask.this.success = true;
-          parama.bhL();
+          parama.biu();
           AppMethodBeat.o(45839);
           return;
         }
         JsApiLaunchApplicationForNative.LaunchApplicationTask.this.success = false;
-        parama.bhL();
+        parama.biu();
         AppMethodBeat.o(45839);
       }
     });
@@ -81,26 +81,26 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
     parama = new WXMediaMessage(parama);
     parama.sdkVer = 637928960;
     parama.messageExt = this.extInfo;
-    Object localObject = new ky();
-    ((ky)localObject).dyb.dtZ = parama;
-    ((ky)localObject).dyb.appId = this.appId;
-    ((ky)localObject).dyb.dlp = this.dlp;
-    ((ky)localObject).dyb.context = paramContext;
-    ((ky)localObject).dyb.dnx = this.dnx;
-    ((ky)localObject).dyb.dyd = locala;
-    a.IbL.l((b)localObject);
-    boolean bool1 = ((ky)localObject).dyc.dye;
+    Object localObject = new kz();
+    ((kz)localObject).dzg.dve = parama;
+    ((kz)localObject).dzg.appId = this.appId;
+    ((kz)localObject).dzg.dmr = this.dmr;
+    ((kz)localObject).dzg.context = paramContext;
+    ((kz)localObject).dzg.doz = this.doz;
+    ((kz)localObject).dzg.dzi = locala;
+    a.IvT.l((b)localObject);
+    boolean bool1 = ((kz)localObject).dzh.dzj;
     boolean bool2 = bool1;
     if (!bool1)
     {
-      if ((bt.isNullOrNil(this.appId)) || (bt.isNullOrNil(this.ksB))) {
+      if ((bu.isNullOrNil(this.appId)) || (bu.isNullOrNil(this.kvR))) {
         break label379;
       }
-      parama = this.appId + "://" + this.ksB;
+      parama = this.appId + "://" + this.kvR;
       localObject = new Intent("android.intent.action.VIEW", Uri.parse(parama));
-      ad.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
+      ae.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
       ((Intent)localObject).addFlags(268435456);
-      parama = bt.ac(paramContext, (Intent)localObject);
+      parama = bu.ac(paramContext, (Intent)localObject);
       if ((parama == null) || (parama.isEmpty())) {
         break label392;
       }
@@ -108,40 +108,40 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
         break label370;
       }
       parama = h.b((ResolveInfo)parama.get(0));
-      if (bt.nullAsNil(aj.getPackageName()).equals(parama)) {
+      if (bu.nullAsNil(ak.getPackageName()).equals(parama)) {
         break label392;
       }
-      locala.hOP = false;
-      locala.ksE = false;
-      locala.ksF = false;
-      locala.dye = false;
-      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.dnx);
+      locala.hRI = false;
+      locala.kvU = false;
+      locala.kvV = false;
+      locala.dzj = false;
+      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.doz);
     }
     label392:
     for (;;)
     {
       for (bool2 = bool1;; bool2 = bool1)
       {
-        locala.go(bool2);
+        locala.gm(bool2);
         AppMethodBeat.o(45841);
         return;
         label370:
         parama = ((Intent)localObject).getPackage();
         break;
         label379:
-        ad.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication nil appId or parameter.");
+        ae.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication nil appId or parameter.");
       }
     }
   }
   
-  public final void aOB()
+  public final void aOY()
   {
     AppMethodBeat.i(45842);
-    ad.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess");
-    if (this.krg != null)
+    ae.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess");
+    if (this.kuv != null)
     {
-      ad.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess asyncCallback != null");
-      this.krg.run();
+      ae.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess asyncCallback != null");
+      this.kuv.run();
     }
     AppMethodBeat.o(45842);
   }
@@ -150,11 +150,11 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
   {
     boolean bool = true;
     AppMethodBeat.i(45843);
-    this.dlp = paramParcel.readInt();
+    this.dmr = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.ksB = paramParcel.readString();
+    this.kvR = paramParcel.readString();
     this.extInfo = paramParcel.readString();
-    this.dnx = paramParcel.readBundle();
+    this.doz = paramParcel.readBundle();
     if (paramParcel.readByte() == 1) {}
     for (;;)
     {
@@ -168,11 +168,11 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(45844);
-    paramParcel.writeInt(this.dlp);
+    paramParcel.writeInt(this.dmr);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.ksB);
+    paramParcel.writeString(this.kvR);
     paramParcel.writeString(this.extInfo);
-    paramParcel.writeBundle(this.dnx);
+    paramParcel.writeBundle(this.doz);
     if (this.success) {}
     for (paramInt = 1;; paramInt = 0)
     {

@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.appbrand.page.web_renderingcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.g;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.m;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "f", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "accept"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "f", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "accept"})
 final class e
-  implements g
+  implements m
 {
-  public static final e mgP;
+  public static final e mlO;
   
   static
   {
     AppMethodBeat.i(50965);
-    mgP = new e();
+    mlO = new e();
     AppMethodBeat.o(50965);
   }
   
-  public final boolean accept(com.tencent.mm.vfs.e parame)
+  public final boolean accept(k paramk)
   {
     AppMethodBeat.i(50964);
-    if (parame.exists())
+    if (paramk.exists())
     {
-      p.g(parame, "f");
-      if (parame.isFile())
+      p.g(paramk, "f");
+      if (paramk.isFile())
       {
         AppMethodBeat.o(50964);
         return true;

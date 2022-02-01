@@ -28,7 +28,7 @@ public final class aa
     AppMethodBeat.i(58274);
     if (paramBoolean)
     {
-      paraml = paraml.fm(paramT);
+      paraml = paraml.fp(paramT);
       AppMethodBeat.o(58274);
       return paraml;
     }
@@ -54,7 +54,7 @@ public final class aa
       }
       else
       {
-        Object localObject1 = (bb)d.l.b.a.b.m.a.s.NDu;
+        Object localObject1 = (bb)d.l.b.a.b.m.a.s.OaB;
         localObject2 = (d.l.b.a.b.m.c.h)paramab;
         p.h(localObject1, "$this$mapBuiltInType");
         p.h(localObject2, "type");
@@ -71,7 +71,7 @@ public final class aa
             p.g(localObject3, "JvmPrimitiveType.get(primitiveType)");
             localObject3 = ((d.l.b.a.b.j.e.d)localObject3).getDesc();
             p.g(localObject3, "JvmPrimitiveType.get(primitiveType).desc");
-            localObject3 = paraml.bcs((String)localObject3);
+            localObject3 = paraml.bdW((String)localObject3);
             if ((((bb)localObject1).s((d.l.b.a.b.m.c.h)localObject2)) || (d.l.b.a.b.d.a.f.s.a((bb)localObject1, (d.l.b.a.b.m.c.h)localObject2)))
             {
               bool = true;
@@ -84,7 +84,7 @@ public final class aa
           if (localObject1 == null) {
             break label512;
           }
-          paraml = a(paraml, localObject1, paramy.Njj);
+          paraml = a(paraml, localObject1, paramy.NGp);
           paramq.d(paramab, paraml, paramy);
           AppMethodBeat.o(58275);
           return paraml;
@@ -96,7 +96,7 @@ public final class aa
             localObject1 = new StringBuilder("[");
             localObject2 = d.l.b.a.b.j.e.d.d((d.l.b.a.b.a.h)localObject2);
             p.g(localObject2, "JvmPrimitiveType.get(arrayElementType)");
-            localObject1 = paraml.bcs(((d.l.b.a.b.j.e.d)localObject2).getDesc());
+            localObject1 = paraml.bdW(((d.l.b.a.b.j.e.d)localObject2).getDesc());
           }
           else
           {
@@ -105,16 +105,16 @@ public final class aa
               localObject1 = ((bb)localObject1).f((d.l.b.a.b.m.c.n)localObject3);
               if (localObject1 != null)
               {
-                localObject2 = d.l.b.a.b.a.b.c.MTm;
+                localObject2 = d.l.b.a.b.a.b.c.Nqr;
                 localObject1 = d.l.b.a.b.a.b.c.c((d.l.b.a.b.f.c)localObject1);
                 label359:
                 if (localObject1 == null) {
                   break label506;
                 }
-                if (!paramy.Njo)
+                if (!paramy.NGu)
                 {
-                  localObject2 = d.l.b.a.b.a.b.c.MTm;
-                  localObject2 = (Iterable)d.l.b.a.b.a.b.c.ghX();
+                  localObject2 = d.l.b.a.b.a.b.c.Nqr;
+                  localObject2 = (Iterable)d.l.b.a.b.a.b.c.gmz();
                   if (((localObject2 instanceof Collection)) && (((Collection)localObject2).isEmpty())) {
                     break label500;
                   }
@@ -124,7 +124,7 @@ public final class aa
                     if (!((Iterator)localObject2).hasNext()) {
                       break;
                     }
-                  } while (!p.i(((c.a)((Iterator)localObject2).next()).MTn, localObject1));
+                  } while (!p.i(((c.a)((Iterator)localObject2).next()).Nqs, localObject1));
                 }
               }
               label500:
@@ -135,9 +135,9 @@ public final class aa
                 }
                 localObject1 = d.l.b.a.b.j.e.c.e((d.l.b.a.b.f.a)localObject1);
                 p.g(localObject1, "JvmClassName.byClassId(classId)");
-                localObject1 = ((d.l.b.a.b.j.e.c)localObject1).gtd();
+                localObject1 = ((d.l.b.a.b.j.e.c)localObject1).gxF();
                 p.g(localObject1, "JvmClassName.byClassId(classId).internalName");
-                localObject1 = paraml.bct((String)localObject1);
+                localObject1 = paraml.bdX((String)localObject1);
                 break;
                 localObject1 = null;
                 break label359;
@@ -148,14 +148,14 @@ public final class aa
           }
         }
         label512:
-        localObject1 = paramab.gsZ();
+        localObject1 = paramab.gxB();
         if ((localObject1 instanceof d.l.b.a.b.m.aa))
         {
-          paramab = d.l.b.a.b.m.d.a.aP(paramw.v((Collection)((d.l.b.a.b.m.aa)localObject1).NCe));
+          paramab = d.l.b.a.b.m.d.a.aP(paramw.v((Collection)((d.l.b.a.b.m.aa)localObject1).NZl));
         }
         else
         {
-          localObject2 = ((at)localObject1).ghO();
+          localObject2 = ((at)localObject1).gmq();
           if (localObject2 == null)
           {
             paramab = (Throwable)new UnsupportedOperationException("no descriptor for type constructor of ".concat(String.valueOf(paramab)));
@@ -165,7 +165,7 @@ public final class aa
           p.g(localObject2, "constructor.declarationD…structor of $kotlinType\")");
           if (u.L((d.l.b.a.b.b.l)localObject2))
           {
-            paraml = paraml.bct("error/NonExistentClass");
+            paraml = paraml.bdX("error/NonExistentClass");
             if (localObject2 == null)
             {
               paramab = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
@@ -174,46 +174,46 @@ public final class aa
             }
             paramw.a(paramab, (e)localObject2);
             if (parami != null) {
-              parami.fk(paraml);
+              parami.fn(paraml);
             }
             AppMethodBeat.o(58275);
             return paraml;
           }
           if (((localObject2 instanceof e)) && (g.m(paramab)))
           {
-            if (paramab.gsW().size() != 1)
+            if (paramab.gxy().size() != 1)
             {
               paramab = (Throwable)new UnsupportedOperationException("arrays must have one type argument");
               AppMethodBeat.o(58275);
               throw paramab;
             }
-            paramab = (av)paramab.gsW().get(0);
-            localObject2 = paramab.gju();
+            paramab = (av)paramab.gxy().get(0);
+            localObject2 = paramab.gnW();
             p.g(localObject2, "memberProjection.type");
-            if (paramab.gud() == bh.NCQ)
+            if (paramab.gyF() == bh.NZX)
             {
-              paramy = paraml.bct("java/lang/Object");
+              paramy = paraml.bdX("java/lang/Object");
               paramab = paramy;
               if (parami != null)
               {
-                parami.gmg();
-                parami.fk(paramy);
+                parami.gqI();
+                parami.fn(paramy);
                 paramab = paramy;
               }
-              paramab = paraml.bcs("[" + paraml.toString(paramab));
+              paramab = paraml.bdW("[" + paraml.toString(paramab));
               AppMethodBeat.o(58275);
               return paramab;
             }
             if (parami != null) {
-              parami.gmg();
+              parami.gqI();
             }
-            paramab = paramab.gud();
+            paramab = paramab.gyF();
             p.g(paramab, "memberProjection.projectionKind");
             p.h(paramab, "effectiveVariance");
-            switch (z.cpQ[paramab.ordinal()])
+            switch (z.cqt[paramab.ordinal()])
             {
             default: 
-              localObject1 = paramy.Njn;
+              localObject1 = paramy.NGt;
               paramab = (d.l.b.a.b.m.ab)localObject1;
               if (localObject1 == null) {
                 paramab = paramy;
@@ -224,13 +224,13 @@ public final class aa
             {
               paramab = a((d.l.b.a.b.m.ab)localObject2, paraml, paramab, paramw, parami, paramq);
               break;
-              localObject1 = paramy.Njp;
+              localObject1 = paramy.NGv;
               paramab = (d.l.b.a.b.m.ab)localObject1;
               if (localObject1 == null)
               {
                 paramab = paramy;
                 continue;
-                localObject1 = paramy.Njq;
+                localObject1 = paramy.NGw;
                 paramab = (d.l.b.a.b.m.ab)localObject1;
                 if (localObject1 == null) {
                   paramab = paramy;
@@ -241,10 +241,10 @@ public final class aa
           if (!(localObject2 instanceof e)) {
             break label1264;
           }
-          if ((!((e)localObject2).ghD()) || (paramy.Njk)) {
+          if ((!((e)localObject2).gmf()) || (paramy.NGq)) {
             break;
           }
-          localObject1 = (bb)d.l.b.a.b.m.a.s.NDu;
+          localObject1 = (bb)d.l.b.a.b.m.a.s.OaB;
           localObject3 = (d.l.b.a.b.m.c.h)paramab;
           p.h(localObject1, "$this$computeExpandedTypeForInlineClass");
           p.h(localObject3, "inlineClassType");
@@ -252,24 +252,24 @@ public final class aa
           if (localObject1 == null) {
             break;
           }
-          paramy = new y(paramy.Njj, true, paramy.Ngr, paramy.Njl, paramy.Njm, paramy.Njn, paramy.Njo, paramy.Njp, paramy.Njq);
+          paramy = new y(paramy.NGp, true, paramy.NDw, paramy.NGr, paramy.NGs, paramy.NGt, paramy.NGu, paramy.NGv, paramy.NGw);
           paramab = (d.l.b.a.b.m.ab)localObject1;
         }
       }
     }
-    if ((paramy.Ngr) && (g.g((e)localObject2)))
+    if ((paramy.NDw) && (g.g((e)localObject2)))
     {
-      paraml = paraml.gmj();
+      paraml = paraml.gqL();
       paramq.d(paramab, paraml, paramy);
       AppMethodBeat.o(58275);
       return paraml;
     }
-    parami = ((e)localObject2).giL();
+    parami = ((e)localObject2).gnn();
     p.g(parami, "descriptor.original");
     paramw.t(parami);
-    if (((e)localObject2).ghw() == d.l.b.a.b.b.f.MUu)
+    if (((e)localObject2).glY() == d.l.b.a.b.b.f.Nrz)
     {
-      parami = ((e)localObject2).ghs();
+      parami = ((e)localObject2).glU();
       if (parami == null)
       {
         paramab = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
@@ -279,22 +279,22 @@ public final class aa
     }
     for (parami = (e)parami;; parami = (e)localObject2)
     {
-      parami = parami.giL();
+      parami = parami.gnn();
       p.g(parami, "enumClassIfEnumEntry.original");
-      paraml = paraml.bct(a(parami, paramw));
+      paraml = paraml.bdX(a(parami, paramw));
       break;
     }
     label1264:
     if ((localObject2 instanceof as))
     {
-      paramab = a(d.l.b.a.b.m.d.a.e((as)localObject2), paraml, paramy, paramw, null, d.l.b.a.b.o.d.gun());
+      paramab = a(d.l.b.a.b.m.d.a.e((as)localObject2), paraml, paramy, paramw, null, d.l.b.a.b.o.d.gyP());
       if (parami != null)
       {
-        paraml = ((d.l.b.a.b.b.h)localObject2).giD();
+        paraml = ((d.l.b.a.b.b.h)localObject2).gnf();
         p.g(paraml, "descriptor.getName()");
         p.h(paraml, "name");
         p.h(paramab, "type");
-        parami.fl(paramab);
+        parami.fo(paramab);
       }
       AppMethodBeat.o(58275);
       return paramab;
@@ -310,16 +310,16 @@ public final class aa
     p.h(parame, "klass");
     p.h(paramw, "typeMappingConfiguration");
     paramw.v(parame);
-    d.l.b.a.b.b.l locall = parame.ghs();
+    d.l.b.a.b.b.l locall = parame.glU();
     p.g(locall, "klass.containingDeclaration");
-    Object localObject = d.l.b.a.b.f.h.v(parame.giD());
+    Object localObject = d.l.b.a.b.f.h.v(parame.gnf());
     p.g(localObject, "SpecialNames.safeIdentifier(klass.name)");
     String str = ((d.l.b.a.b.f.f)localObject).getIdentifier();
     p.g(str, "SpecialNames.safeIdentifier(klass.name).identifier");
     if ((locall instanceof d.l.b.a.b.b.ab))
     {
-      paramw = ((d.l.b.a.b.b.ab)locall).gjg();
-      if (paramw.Nqg.Nql.isEmpty())
+      paramw = ((d.l.b.a.b.b.ab)locall).gnI();
+      if (paramw.NNm.NNr.isEmpty())
       {
         AppMethodBeat.o(58277);
         return str;
@@ -351,7 +351,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.aa
  * JD-Core Version:    0.7.0.1
  */

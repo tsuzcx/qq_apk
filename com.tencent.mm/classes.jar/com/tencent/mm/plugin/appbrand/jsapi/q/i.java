@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.q;
 
 public abstract interface i
 {
-  public abstract void a(i.a parama);
+  public abstract void a(a parama);
   
-  public abstract Integer bml();
+  public abstract Integer bmU();
   
-  public abstract boolean bmm();
+  public abstract boolean bmV();
   
   public abstract String getKey();
   
@@ -19,6 +19,27 @@ public abstract interface i
   public abstract void release();
   
   public abstract void start();
+  
+  public static abstract interface a
+  {
+    public abstract void a(i parami);
+    
+    public abstract void a(i parami, float paramFloat);
+    
+    public abstract void a(i parami, boolean paramBoolean);
+    
+    public abstract void b(i parami);
+    
+    public abstract void c(i parami);
+    
+    public abstract void d(i parami);
+    
+    public abstract void e(i parami);
+    
+    public abstract void f(i parami);
+    
+    public abstract void g(i parami);
+  }
 }
 
 

@@ -69,7 +69,7 @@ public class b
   private static TypedValue IM;
   private static final Object sLock = new Object();
   
-  public static File[] Q(Context paramContext)
+  public static File[] R(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 19) {
       return paramContext.getExternalFilesDirs(null);
@@ -77,7 +77,7 @@ public class b
     return new File[] { paramContext.getExternalFilesDir(null) };
   }
   
-  public static File[] R(Context paramContext)
+  public static File[] S(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 19) {
       return paramContext.getExternalCacheDirs();
@@ -85,7 +85,7 @@ public class b
     return new File[] { paramContext.getExternalCacheDir() };
   }
   
-  public static File S(Context paramContext)
+  public static File T(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 21) {
       return paramContext.getNoBackupFilesDir();
@@ -93,7 +93,7 @@ public class b
     return n(new File(paramContext.getApplicationInfo().dataDir, "no_backup"));
   }
   
-  public static boolean T(Context paramContext)
+  public static boolean U(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 24) {
       return paramContext.isDeviceProtectedStorage();
@@ -118,14 +118,14 @@ public class b
     if (Build.VERSION.SDK_INT >= 16)
     {
       paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().bc(null).bc(paramArrayOfIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivities((Intent[])paramArrayOfIntent.mq(0), (Bundle)paramArrayOfIntent.mq(1));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.ahE(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
+      paramContext.startActivities((Intent[])paramArrayOfIntent.mt(0), (Bundle)paramArrayOfIntent.mt(1));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
       return true;
     }
     paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramArrayOfIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
-    paramContext.startActivities((Intent[])paramArrayOfIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.ahE(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
+    paramContext.startActivities((Intent[])paramArrayOfIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
     return true;
   }
@@ -233,14 +233,14 @@ public class b
     if (Build.VERSION.SDK_INT >= 16)
     {
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle).bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0), (Bundle)paramIntent.mq(1));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0), (Bundle)paramIntent.mt(1));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
       return;
     }
     paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   

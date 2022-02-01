@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper$Companion;", "", "()V", "SOURCE_TRY_DEFAULT", "", "getSOURCE_TRY_DEFAULT", "()I", "TAG", "", "TIMER_CHECK_TIME", "getTIMER_CHECK_TIME", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper$Companion;", "", "()V", "SOURCE_TRY_DEFAULT", "", "getSOURCE_TRY_DEFAULT", "()I", "TAG", "", "TIMER_CHECK_TIME", "getTIMER_CHECK_TIME", "plugin-brandservice_release"})
 public final class MPExoVideoWrapper$a {}
 
 

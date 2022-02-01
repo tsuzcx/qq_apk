@@ -1,40 +1,46 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 
 public final class edy
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int nDi;
-  public int nEf;
+  public long IiJ;
+  public b nIq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32567);
+    AppMethodBeat.i(32516);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.nEf);
-      paramVarArgs.aS(2, this.nDi);
-      AppMethodBeat.o(32567);
+      paramVarArgs.aZ(1, this.IiJ);
+      if (this.nIq != null) {
+        paramVarArgs.c(2, this.nIq);
+      }
+      AppMethodBeat.o(32516);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.nEf);
-      int i = f.a.a.b.b.a.bz(2, this.nDi);
-      AppMethodBeat.o(32567);
-      return paramInt + 0 + i;
+      int i = f.a.a.b.b.a.p(1, this.IiJ) + 0;
+      paramInt = i;
+      if (this.nIq != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.nIq);
+      }
+      AppMethodBeat.o(32516);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(32567);
+      AppMethodBeat.o(32516);
       return 0;
     }
     if (paramInt == 3)
@@ -44,18 +50,18 @@ public final class edy
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32567);
+        AppMethodBeat.o(32516);
         return -1;
       case 1: 
-        localedy.nEf = locala.NPN.zc();
-        AppMethodBeat.o(32567);
+        localedy.IiJ = locala.OmT.zd();
+        AppMethodBeat.o(32516);
         return 0;
       }
-      localedy.nDi = locala.NPN.zc();
-      AppMethodBeat.o(32567);
+      localedy.nIq = locala.OmT.gCk();
+      AppMethodBeat.o(32516);
       return 0;
     }
-    AppMethodBeat.o(32567);
+    AppMethodBeat.o(32516);
     return -1;
   }
 }

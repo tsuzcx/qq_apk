@@ -8,24 +8,24 @@ import kotlinx.a.p;
 import kotlinx.a.s;
 import kotlinx.a.x.c;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonNullSerializer;", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonNull;", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonNullSerializer;", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonNull;", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class r
   implements h<q>
 {
-  static final n NLm;
-  public static final r NNS;
+  static final n Ois;
+  public static final r OkY;
   
   static
   {
-    AppMethodBeat.i(191455);
-    NNS = new r();
-    NLm = p.a("kotlinx.serialization.json.JsonNull", (s)x.c.NLX);
-    AppMethodBeat.o(191455);
+    AppMethodBeat.i(200043);
+    OkY = new r();
+    Ois = p.a("kotlinx.serialization.json.JsonNull", (s)x.c.Ojd);
+    AppMethodBeat.o(200043);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
 }
 

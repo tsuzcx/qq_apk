@@ -13,7 +13,7 @@ class i
 {
   protected static Typeface a(Context paramContext, InputStream paramInputStream)
   {
-    paramContext = j.V(paramContext);
+    paramContext = j.W(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -95,7 +95,7 @@ class i
   
   public Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    paramContext = j.V(paramContext);
+    paramContext = j.W(paramContext);
     if (paramContext == null) {
       return null;
     }

@@ -18,11 +18,11 @@ public class TVThumbPreference
   extends Preference
   implements u.a
 {
-  f mzx;
-  private ImageView yQI;
-  private ImageView yQJ;
-  private ImageView yQK;
-  List<String> yQL;
+  f mEx;
+  private ImageView zgS;
+  private ImageView zgT;
+  private ImageView zgU;
+  List<String> zgV;
   
   public TVThumbPreference(Context paramContext)
   {
@@ -38,7 +38,7 @@ public class TVThumbPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(28608);
-    this.yQL = null;
+    this.zgV = null;
     setLayoutResource(2131495812);
     setWidgetLayoutResource(0);
     u.a(this);
@@ -53,9 +53,9 @@ public class TVThumbPreference
       AppMethodBeat.o(28611);
       return;
     }
-    if ((this.yQI != null) && (this.yQI.getTag() != null) && (paramString.equals((String)this.yQI.getTag())))
+    if ((this.zgS != null) && (this.zgS.getTag() != null) && (paramString.equals((String)this.zgS.getTag())))
     {
-      this.yQI.post(new Runnable()
+      this.zgS.post(new Runnable()
       {
         public final void run()
         {
@@ -70,9 +70,9 @@ public class TVThumbPreference
       AppMethodBeat.o(28611);
       return;
     }
-    if ((this.yQJ != null) && (this.yQJ.getTag() != null) && (paramString.equals((String)this.yQJ.getTag())))
+    if ((this.zgT != null) && (this.zgT.getTag() != null) && (paramString.equals((String)this.zgT.getTag())))
     {
-      this.yQJ.post(new Runnable()
+      this.zgT.post(new Runnable()
       {
         public final void run()
         {
@@ -87,8 +87,8 @@ public class TVThumbPreference
       AppMethodBeat.o(28611);
       return;
     }
-    if ((this.yQK != null) && (this.yQK.getTag() != null) && (paramString.equals((String)this.yQK.getTag()))) {
-      this.yQK.post(new Runnable()
+    if ((this.zgU != null) && (this.zgU.getTag() != null) && (paramString.equals((String)this.zgU.getTag()))) {
+      this.zgU.post(new Runnable()
       {
         public final void run()
         {
@@ -108,47 +108,47 @@ public class TVThumbPreference
   {
     AppMethodBeat.i(28610);
     super.onBindView(paramView);
-    this.yQI = ((ImageView)paramView.findViewById(2131305794));
-    this.yQJ = ((ImageView)paramView.findViewById(2131305795));
-    this.yQK = ((ImageView)paramView.findViewById(2131305796));
-    if (this.yQL != null)
+    this.zgS = ((ImageView)paramView.findViewById(2131305794));
+    this.zgT = ((ImageView)paramView.findViewById(2131305795));
+    this.zgU = ((ImageView)paramView.findViewById(2131305796));
+    if (this.zgV != null)
     {
-      if (this.yQL.size() <= 0)
+      if (this.zgV.size() <= 0)
       {
         AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.yQL.get(0));
-      this.yQI.setTag(paramView.aQy());
+      paramView = new b((String)this.zgV.get(0));
+      this.zgS.setTag(paramView.aQX());
       paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.yQI.setImageBitmap(paramView);
+        this.zgS.setImageBitmap(paramView);
       }
-      this.yQI.setVisibility(0);
-      if (1 >= this.yQL.size())
+      this.zgS.setVisibility(0);
+      if (1 >= this.zgV.size())
       {
         AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.yQL.get(1));
-      this.yQJ.setTag(paramView.aQy());
+      paramView = new b((String)this.zgV.get(1));
+      this.zgT.setTag(paramView.aQX());
       paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.yQJ.setImageBitmap(paramView);
+        this.zgT.setImageBitmap(paramView);
       }
-      this.yQJ.setVisibility(0);
-      if (2 >= this.yQL.size())
+      this.zgT.setVisibility(0);
+      if (2 >= this.zgV.size())
       {
         AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.yQL.get(2));
-      this.yQK.setTag(paramView.aQy());
+      paramView = new b((String)this.zgV.get(2));
+      this.zgU.setTag(paramView.aQX());
       paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.yQK.setImageBitmap(paramView);
+        this.zgU.setImageBitmap(paramView);
       }
-      this.yQK.setVisibility(0);
+      this.zgU.setVisibility(0);
     }
     AppMethodBeat.o(28610);
   }

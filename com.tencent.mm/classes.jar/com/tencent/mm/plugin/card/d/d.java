@@ -87,7 +87,7 @@ public final class d
       {
         AppMethodBeat.i(113757);
         paramAnonymousDialogInterface.dismiss();
-        this.oPB.bWX();
+        this.oWd.bYm();
         AppMethodBeat.o(113757);
       }
     }, new DialogInterface.OnClickListener()
@@ -116,7 +116,7 @@ public final class d
         {
           AppMethodBeat.i(113754);
           paramAnonymousDialogInterface.dismiss();
-          this.oPB.bTr();
+          this.oWd.bUG();
           AppMethodBeat.o(113754);
         }
       }, new DialogInterface.OnClickListener()
@@ -133,25 +133,14 @@ public final class d
     }
   }
   
-  public static void a(final MMActivity paramMMActivity, String paramString, boolean paramBoolean)
+  public static void a(MMActivity paramMMActivity, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(113767);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = paramMMActivity.getString(2131757027);
     }
-    h.a(paramMMActivity, str, null, false, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(113759);
-        paramAnonymousDialogInterface.dismiss();
-        if (this.oPC) {
-          paramMMActivity.finish();
-        }
-        AppMethodBeat.o(113759);
-      }
-    });
+    h.a(paramMMActivity, str, null, false, new d.6(paramBoolean, paramMMActivity));
     AppMethodBeat.o(113767);
   }
   
@@ -203,16 +192,24 @@ public final class d
     AppMethodBeat.o(113765);
   }
   
+  public static class a
+    implements d.b
+  {
+    public void bUG() {}
+    
+    public void bYm() {}
+  }
+  
   public static abstract interface b
   {
-    public abstract void bTr();
+    public abstract void bUG();
     
-    public abstract void bWX();
+    public abstract void bYm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d
  * JD-Core Version:    0.7.0.1
  */

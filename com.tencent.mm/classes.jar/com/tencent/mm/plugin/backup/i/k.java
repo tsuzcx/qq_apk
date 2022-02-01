@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class k
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int nDm;
-  public int nDn;
-  public String nDo;
+  public int nIH;
+  public int nII;
+  public String nIJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,26 +16,26 @@ public final class k
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nDo == null)
+      if (this.nIJ == null)
       {
         paramVarArgs = new b("Not all required fields were included: UserName");
         AppMethodBeat.o(22114);
         throw paramVarArgs;
       }
-      paramVarArgs.aS(1, this.nDm);
-      paramVarArgs.aS(2, this.nDn);
-      if (this.nDo != null) {
-        paramVarArgs.d(3, this.nDo);
+      paramVarArgs.aS(1, this.nIH);
+      paramVarArgs.aS(2, this.nII);
+      if (this.nIJ != null) {
+        paramVarArgs.d(3, this.nIJ);
       }
       AppMethodBeat.o(22114);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.nDm) + 0 + f.a.a.b.b.a.bz(2, this.nDn);
+      int i = f.a.a.b.b.a.bz(1, this.nIH) + 0 + f.a.a.b.b.a.bz(2, this.nII);
       paramInt = i;
-      if (this.nDo != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.nDo);
+      if (this.nIJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.nIJ);
       }
       AppMethodBeat.o(22114);
       return paramInt;
@@ -43,12 +43,12 @@ public final class k
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      if (this.nDo == null)
+      if (this.nIJ == null)
       {
         paramVarArgs = new b("Not all required fields were included: UserName");
         AppMethodBeat.o(22114);
@@ -67,15 +67,15 @@ public final class k
         AppMethodBeat.o(22114);
         return -1;
       case 1: 
-        localk.nDm = locala.NPN.zc();
+        localk.nIH = locala.OmT.zc();
         AppMethodBeat.o(22114);
         return 0;
       case 2: 
-        localk.nDn = locala.NPN.zc();
+        localk.nII = locala.OmT.zc();
         AppMethodBeat.o(22114);
         return 0;
       }
-      localk.nDo = locala.NPN.readString();
+      localk.nIJ = locala.OmT.readString();
       AppMethodBeat.o(22114);
       return 0;
     }

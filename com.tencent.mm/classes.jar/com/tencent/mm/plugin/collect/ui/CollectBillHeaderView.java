@@ -14,10 +14,10 @@ import com.tencent.mm.wallet_core.ui.WalletTextView;
 public class CollectBillHeaderView
   extends LinearLayout
 {
-  private TextView lDu;
-  private TextView oTF;
-  private WalletTextView pdC;
-  private TextView pdD;
+  private TextView lHT;
+  private TextView pah;
+  private WalletTextView pki;
+  private TextView pkj;
   
   public CollectBillHeaderView(Context paramContext)
   {
@@ -46,20 +46,20 @@ public class CollectBillHeaderView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(64037);
-    paramContext = z.jO(paramContext).inflate(2131493552, this);
-    this.oTF = ((TextView)paramContext.findViewById(2131298432));
-    this.pdD = ((TextView)paramContext.findViewById(2131298431));
-    this.pdC = ((WalletTextView)paramContext.findViewById(2131298434));
-    this.lDu = ((TextView)paramContext.findViewById(2131298433));
+    paramContext = z.jV(paramContext).inflate(2131493552, this);
+    this.pah = ((TextView)paramContext.findViewById(2131298432));
+    this.pkj = ((TextView)paramContext.findViewById(2131298431));
+    this.pki = ((WalletTextView)paramContext.findViewById(2131298434));
+    this.lHT = ((TextView)paramContext.findViewById(2131298433));
     AppMethodBeat.o(64037);
   }
   
   public final void b(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
     AppMethodBeat.i(64038);
-    this.oTF.setText(e.a(getContext(), paramLong, paramInt3));
-    this.pdC.setText(e.Bh(paramInt2));
-    this.lDu.setText(getContext().getString(2131757448, new Object[] { Integer.valueOf(paramInt1) }));
+    this.pah.setText(e.a(getContext(), paramLong, paramInt3));
+    this.pki.setText(e.Bt(paramInt2));
+    this.lHT.setText(getContext().getString(2131757448, new Object[] { Integer.valueOf(paramInt1) }));
     AppMethodBeat.o(64038);
   }
 }

@@ -10,98 +10,104 @@ import io.flutter.plugin.a.m.f;
 public final class b
   extends io.flutter.app.c
 {
-  private io.flutter.embedding.engine.a cOY;
+  private io.flutter.embedding.engine.a cPI;
   
   public b(io.flutter.embedding.engine.a parama, Context paramContext)
   {
     super(paramContext);
-    this.cOY = parama;
+    this.cPI = parama;
   }
   
-  public final m.c em(String paramString)
+  public final m.c er(String paramString)
   {
-    AppMethodBeat.i(217479);
-    paramString = new a(super.em(paramString));
-    AppMethodBeat.o(217479);
+    AppMethodBeat.i(195482);
+    paramString = new a(super.er(paramString));
+    AppMethodBeat.o(195482);
     return paramString;
   }
   
   public final class a
     implements m.c
   {
-    private m.c cOZ;
+    private m.c cPJ;
     
     public a(m.c paramc)
     {
-      this.cOZ = paramc;
+      this.cPJ = paramc;
     }
     
-    public final Activity JQ()
+    public final Activity JY()
     {
-      AppMethodBeat.i(217472);
-      if (this.cOZ.JQ() != null)
+      AppMethodBeat.i(195475);
+      Activity localActivity;
+      if (this.cPJ.JY() != null)
       {
-        localActivity = this.cOZ.JQ();
-        AppMethodBeat.o(217472);
+        localActivity = this.cPJ.JY();
+        AppMethodBeat.o(195475);
         return localActivity;
       }
-      Activity localActivity = d.fYR().MkG;
-      AppMethodBeat.o(217472);
-      return localActivity;
+      if (d.gdr().MHD != null)
+      {
+        localActivity = d.gdr().MHD.getActivity();
+        AppMethodBeat.o(195475);
+        return localActivity;
+      }
+      AppMethodBeat.o(195475);
+      return null;
     }
     
-    public final Context JR()
+    public final Context JZ()
     {
-      AppMethodBeat.i(217473);
-      Context localContext = this.cOZ.JR();
-      AppMethodBeat.o(217473);
+      AppMethodBeat.i(195476);
+      Context localContext = this.cPJ.JZ();
+      AppMethodBeat.o(195476);
       return localContext;
     }
     
-    public final io.flutter.plugin.a.c JS()
+    public final io.flutter.plugin.a.c Ka()
     {
-      AppMethodBeat.i(217474);
-      DartExecutor localDartExecutor = b.a(b.this).MCh;
-      AppMethodBeat.o(217474);
+      AppMethodBeat.i(195477);
+      DartExecutor localDartExecutor = b.a(b.this).MZm;
+      AppMethodBeat.o(195477);
       return localDartExecutor;
     }
     
-    public final io.flutter.view.c JT()
+    public final io.flutter.view.c Kb()
     {
-      AppMethodBeat.i(217475);
-      io.flutter.embedding.engine.b.a locala = b.a(b.this).MBc;
-      AppMethodBeat.o(217475);
+      AppMethodBeat.i(195478);
+      io.flutter.embedding.engine.b.a locala = b.a(b.this).MYh;
+      AppMethodBeat.o(195478);
       return locala;
     }
     
     public final String L(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(217477);
-      paramString1 = this.cOZ.L(paramString1, paramString2);
-      AppMethodBeat.o(217477);
+      AppMethodBeat.i(195480);
+      paramString1 = this.cPJ.L(paramString1, paramString2);
+      AppMethodBeat.o(195480);
       return paramString1;
     }
     
     public final m.c a(m.f paramf)
     {
-      AppMethodBeat.i(217478);
-      paramf = this.cOZ.a(paramf);
-      AppMethodBeat.o(217478);
+      AppMethodBeat.i(195481);
+      paramf = this.cPJ.a(paramf);
+      AppMethodBeat.o(195481);
       return paramf;
     }
     
-    public final String en(String paramString)
+    public final String es(String paramString)
     {
-      AppMethodBeat.i(217476);
-      paramString = this.cOZ.en(paramString);
-      AppMethodBeat.o(217476);
+      AppMethodBeat.i(195479);
+      paramString = this.cPJ.es(paramString);
+      AppMethodBeat.o(195479);
       return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wax.b
  * JD-Core Version:    0.7.0.1
  */

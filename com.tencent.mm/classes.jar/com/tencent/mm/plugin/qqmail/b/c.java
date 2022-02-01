@@ -10,19 +10,19 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(215177);
-    USER_AGENT = "weixin/" + d.hgH + "/0x" + Integer.toHexString(d.Fnj);
-    AppMethodBeat.o(215177);
+    AppMethodBeat.i(217923);
+    USER_AGENT = "weixin/" + d.hjv + "/0x" + Integer.toHexString(d.FFH);
+    AppMethodBeat.o(217923);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, a.a parama)
   {
-    AppMethodBeat.i(215176);
+    AppMethodBeat.i(217922);
     paramString1 = new b(paramString1, paramString2, parama);
     paramString2 = new Bundle();
     paramString2.putString("param_cookie", paramString3);
     paramString1.x(new Bundle[] { paramString2 });
-    AppMethodBeat.o(215176);
+    AppMethodBeat.o(217922);
   }
 }
 

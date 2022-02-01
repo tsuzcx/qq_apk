@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.aa.ui;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ak;
+import com.tencent.mm.model.al;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.e;
@@ -20,8 +20,8 @@ public final class g
   extends s
 {
   private String chatroomName;
-  private Cursor iVJ;
-  private String[] iVK;
+  private Cursor iYC;
+  private String[] iYD;
   private String query;
   
   public g(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
@@ -29,9 +29,9 @@ public final class g
     super(paramMMBaseSelectContactUI, null, true, 0);
     AppMethodBeat.i(63562);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)com.tencent.mm.kernel.g.ab(c.class)).azz().AR(this.chatroomName);
+    paramMMBaseSelectContactUI = ((c)com.tencent.mm.kernel.g.ab(c.class)).azP().BB(this.chatroomName);
     if (paramMMBaseSelectContactUI != null) {
-      this.iVK = bt.hi(paramMMBaseSelectContactUI);
+      this.iYD = bu.hs(paramMMBaseSelectContactUI);
     }
     AppMethodBeat.o(63562);
   }
@@ -39,21 +39,21 @@ public final class g
   public final void b(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(63563);
-    ad.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
+    ae.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
     clearCache();
     this.query = paramString;
-    if (this.iVJ != null)
+    if (this.iYC != null)
     {
-      this.iVJ.close();
-      this.iVJ = null;
+      this.iYC.close();
+      this.iYC = null;
     }
-    if ((!bt.isNullOrNil(this.query)) && (this.iVK != null))
+    if ((!bu.isNullOrNil(this.query)) && (this.iYD != null))
     {
-      com.tencent.mm.kernel.g.ajD();
-      this.iVJ = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().a(this.iVK, "@all.chatroom", this.query, new LinkedList(), null);
+      com.tencent.mm.kernel.g.ajS();
+      this.iYC = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().a(this.iYD, "@all.chatroom", this.query, new LinkedList(), null);
     }
     notifyDataSetChanged();
-    cT(paramString, true);
+    cX(paramString, true);
     AppMethodBeat.o(63563);
   }
   
@@ -61,10 +61,10 @@ public final class g
   {
     AppMethodBeat.i(63565);
     super.finish();
-    if (this.iVJ != null)
+    if (this.iYC != null)
     {
-      this.iVJ.close();
-      this.iVJ = null;
+      this.iYC.close();
+      this.iYC = null;
     }
     AppMethodBeat.o(63565);
   }
@@ -72,32 +72,32 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(63566);
-    if (this.iVJ == null)
+    if (this.iYC == null)
     {
       AppMethodBeat.o(63566);
       return 0;
     }
-    int i = this.iVJ.getCount();
+    int i = this.iYC.getCount();
     AppMethodBeat.o(63566);
     return i;
   }
   
-  public final a rh(int paramInt)
+  public final a rk(int paramInt)
   {
     AppMethodBeat.i(63564);
     Object localObject = null;
-    if (this.iVJ.moveToPosition(paramInt))
+    if (this.iYC.moveToPosition(paramInt))
     {
-      am localam = new am();
-      localam.convertFrom(this.iVJ);
+      an localan = new an();
+      localan.convertFrom(this.iYC);
       e locale = new e(paramInt);
-      locale.contact = localam;
-      locale.KmP = true;
-      locale.KqI = true;
+      locale.contact = localan;
+      locale.KJj = true;
+      locale.KNc = true;
       localObject = locale;
-      if (am.aSQ(localam.field_username))
+      if (an.aUq(localan.field_username))
       {
-        locale.KqH = true;
+        locale.KNb = true;
         localObject = locale;
       }
     }

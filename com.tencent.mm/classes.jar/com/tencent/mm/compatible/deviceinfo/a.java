@@ -2,17 +2,17 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class a
 {
-  public boolean fWf = false;
-  public String fWg = "";
+  public boolean fYl = false;
+  public String fYm = "";
   
   public final void cG(boolean paramBoolean)
   {
-    this.fWf = paramBoolean;
+    this.fYl = paramBoolean;
   }
   
-  public final void ve(String paramString)
+  public final void vA(String paramString)
   {
-    this.fWg = paramString;
+    this.fYm = paramString;
   }
 }
 

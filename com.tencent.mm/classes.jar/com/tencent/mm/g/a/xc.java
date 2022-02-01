@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xc
   extends b
 {
-  public a dLv;
+  public a dMG;
   
   public xc()
   {
@@ -15,24 +15,29 @@ public final class xc
   
   private xc(byte paramByte)
   {
-    AppMethodBeat.i(140992);
-    this.dLv = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116055);
+    this.dMG = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(140992);
+    AppMethodBeat.o(116055);
   }
   
   public static final class a
   {
-    public int dLw = 0;
-    public int dLx = 0;
-    public int dLy = 0;
-    public int type = 0;
+    public String dKF;
+    public byte[] dMA;
+    public String dMH;
+    public int dMI = 0;
+    public String dMy;
+    public String id;
+    public int ret;
+    public String source;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.xc
  * JD-Core Version:    0.7.0.1
  */

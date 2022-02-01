@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.appbrand.dynamic.j;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
-import com.tencent.mm.protocal.protobuf.efh;
-import com.tencent.mm.protocal.protobuf.efj;
-import com.tencent.mm.protocal.protobuf.xf;
+import com.tencent.mm.protocal.protobuf.egy;
+import com.tencent.mm.protocal.protobuf.eha;
+import com.tencent.mm.protocal.protobuf.xi;
 
 public final class d
 {
   public String appId;
-  public DebuggerInfo kir;
-  public WidgetSysConfig kis;
-  public WidgetRuntimeConfig kit;
-  public efh kiu;
-  public xf kiv;
-  public efj kiw;
+  public DebuggerInfo klH;
+  public WidgetSysConfig klI;
+  public WidgetRuntimeConfig klJ;
+  public egy klK;
+  public xi klL;
+  public eha klM;
 }
 
 

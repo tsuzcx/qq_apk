@@ -10,32 +10,32 @@ import d.l;
 import d.z;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wxa-app_release"})
 public final class d
   implements c.a
 {
-  private final ArrayMap<b, a<z>> cpO;
+  private final ArrayMap<b, a<z>> cqr;
   
   public d()
   {
     AppMethodBeat.i(147859);
-    this.cpO = new ArrayMap();
+    this.cqr = new ArrayMap();
     AppMethodBeat.o(147859);
   }
   
   public final void a(b paramb, a<z> parama)
   {
     AppMethodBeat.i(147857);
-    ((Map)this.cpO).put(paramb, parama);
+    ((Map)this.cqr).put(paramb, parama);
     AppMethodBeat.o(147857);
   }
   
   public final void a(a<z> parama)
   {
-    AppMethodBeat.i(192337);
+    AppMethodBeat.i(208035);
     p.h(parama, "callback");
-    a(b.jKP, parama);
-    AppMethodBeat.o(192337);
+    a(b.jOa, parama);
+    AppMethodBeat.o(208035);
   }
   
   public final void a(String paramString, b paramb)
@@ -53,7 +53,7 @@ public final class d
       AppMethodBeat.o(147856);
       return;
     }
-    paramString = (a)this.cpO.get(paramb);
+    paramString = (a)this.cqr.get(paramb);
     if (paramString != null)
     {
       paramString.invoke();
@@ -65,9 +65,17 @@ public final class d
   
   public final void b(a<z> parama)
   {
+    AppMethodBeat.i(208036);
+    p.h(parama, "callback");
+    a(b.jOb, parama);
+    AppMethodBeat.o(208036);
+  }
+  
+  public final void c(a<z> parama)
+  {
     AppMethodBeat.i(147858);
     p.h(parama, "callback");
-    a(b.jKR, parama);
+    a(b.jOd, parama);
     AppMethodBeat.o(147858);
   }
 }

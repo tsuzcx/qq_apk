@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.performance.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/performance/thread/ThreadPoolProfiler$TimeRecord;", "", "isMain", "", "time", "", "threadTime", "state", "", "(ZJJI)V", "()Z", "getState", "()I", "setState", "(I)V", "getThreadTime", "()J", "setThreadTime", "(J)V", "getTime", "setTime", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-performance_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/performance/thread/ThreadPoolProfiler$TimeRecord;", "", "isMain", "", "time", "", "threadTime", "state", "", "(ZJJI)V", "()Z", "getState", "()I", "setState", "(I)V", "getThreadTime", "()J", "setThreadTime", "(J)V", "getTime", "setTime", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-performance_release"})
 public final class a$f
 {
   private int state;
   long time;
-  long wIM;
-  private final boolean wJf;
+  private final boolean wYQ;
+  long wYx;
   
   private a$f(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    this.wJf = paramBoolean;
+    this.wYQ = paramBoolean;
     this.time = paramLong1;
-    this.wIM = paramLong2;
+    this.wYx = paramLong2;
     this.state = 0;
   }
   
@@ -26,7 +26,7 @@ public final class a$f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((this.wJf != paramObject.wJf) || (this.time != paramObject.time) || (this.wIM != paramObject.wIM) || (this.state != paramObject.state)) {}
+        if ((this.wYQ != paramObject.wYQ) || (this.time != paramObject.time) || (this.wYx != paramObject.wYx) || (this.state != paramObject.state)) {}
       }
     }
     else {
@@ -43,7 +43,7 @@ public final class a$f
   public final String toString()
   {
     AppMethodBeat.i(184660);
-    String str = "TimeRecord(isMain=" + this.wJf + ", time=" + this.time + ", threadTime=" + this.wIM + ", state=" + this.state + ")";
+    String str = "TimeRecord(isMain=" + this.wYQ + ", time=" + this.time + ", threadTime=" + this.wYx + ", state=" + this.state + ")";
     AppMethodBeat.o(184660);
     return str;
   }

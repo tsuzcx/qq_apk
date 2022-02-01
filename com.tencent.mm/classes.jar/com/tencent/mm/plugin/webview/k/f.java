@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.webview.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.a.b;
-import com.tencent.mm.protocal.protobuf.bqx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.brr;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
@@ -14,48 +14,48 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptCache;", "", "()V", "TAG", "", "jsapiWebComptMap", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "addJSAPIWebCompt", "", "url", "webCompts", "getJSAPIWebComptList", "list", "Lorg/json/JSONArray;", "getUrlKey", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptCache;", "", "()V", "TAG", "", "jsapiWebComptMap", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "addJSAPIWebCompt", "", "url", "webCompts", "getJSAPIWebComptList", "list", "Lorg/json/JSONArray;", "getUrlKey", "webview-sdk_release"})
 public final class f
 {
-  private static Map<String, LinkedList<bqx>> Ewt;
-  public static final f Ewu;
+  private static Map<String, LinkedList<brr>> EOP;
+  public static final f EOQ;
   
   static
   {
-    AppMethodBeat.i(214415);
-    Ewu = new f();
-    Ewt = (Map)new ConcurrentHashMap();
-    AppMethodBeat.o(214415);
+    AppMethodBeat.i(214256);
+    EOQ = new f();
+    EOP = (Map)new ConcurrentHashMap();
+    AppMethodBeat.o(214256);
   }
   
-  private static String WQ(String paramString)
+  private static String XC(String paramString)
   {
-    AppMethodBeat.i(214414);
+    AppMethodBeat.i(214255);
     if (!((b)g.ab(b.class)).isMpUrl(paramString))
     {
-      AppMethodBeat.o(214414);
+      AppMethodBeat.o(214255);
       return paramString;
     }
-    paramString = ((b)g.ab(b.class)).WQ(paramString);
-    AppMethodBeat.o(214414);
+    paramString = ((b)g.ab(b.class)).XC(paramString);
+    AppMethodBeat.o(214255);
     return paramString;
   }
   
-  public static LinkedList<bqx> c(String paramString, JSONArray paramJSONArray)
+  public static LinkedList<brr> c(String paramString, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(214413);
+    AppMethodBeat.i(214254);
     p.h(paramString, "url");
     p.h(paramJSONArray, "list");
-    Object localObject = WQ(paramString);
+    Object localObject = XC(paramString);
     paramString = new LinkedList();
-    localObject = (LinkedList)Ewt.get(localObject);
+    localObject = (LinkedList)EOP.get(localObject);
     if (localObject != null)
     {
       localObject = ((Iterable)localObject).iterator();
       label131:
       while (((Iterator)localObject).hasNext())
       {
-        bqx localbqx = (bqx)((Iterator)localObject).next();
+        brr localbrr = (brr)((Iterator)localObject).next();
         int j = paramJSONArray.length();
         int i = 0;
         for (;;)
@@ -63,34 +63,34 @@ public final class f
           if (i >= j) {
             break label131;
           }
-          if (bt.lQ((String)paramJSONArray.get(i), localbqx.name))
+          if (bu.lX((String)paramJSONArray.get(i), localbrr.name))
           {
-            paramString.add(localbqx);
+            paramString.add(localbrr);
             break;
           }
           i += 1;
         }
       }
     }
-    AppMethodBeat.o(214413);
+    AppMethodBeat.o(214254);
     return paramString;
   }
   
-  public static final void g(String paramString, LinkedList<bqx> paramLinkedList)
+  public static final void g(String paramString, LinkedList<brr> paramLinkedList)
   {
-    AppMethodBeat.i(214412);
+    AppMethodBeat.i(214253);
     p.h(paramString, "url");
     if (paramLinkedList != null)
     {
-      paramString = WQ(paramString);
-      ad.i("MicroMsg.WebComptCache", "addJSAPIWebCompt " + paramLinkedList.size());
+      paramString = XC(paramString);
+      ae.i("MicroMsg.WebComptCache", "addJSAPIWebCompt " + paramLinkedList.size());
       if (paramString != null) {
-        Ewt.put(paramString, paramLinkedList);
+        EOP.put(paramString, paramLinkedList);
       }
-      AppMethodBeat.o(214412);
+      AppMethodBeat.o(214253);
       return;
     }
-    AppMethodBeat.o(214412);
+    AppMethodBeat.o(214253);
   }
 }
 

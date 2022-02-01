@@ -6,27 +6,27 @@ import com.tencent.tinker.a.a.b.e;
 public final class n
   extends s.a.a<n>
 {
-  public int McN;
-  public int MdA;
-  public int Mdz;
+  public int MAu;
+  public int MAv;
+  public int MzI;
   
   public n(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.Mdz = paramInt2;
-    this.McN = paramInt3;
-    this.MdA = paramInt4;
+    this.MAu = paramInt2;
+    this.MzI = paramInt3;
+    this.MAv = paramInt4;
   }
   
   private int b(n paramn)
   {
-    if (this.Mdz != paramn.Mdz) {
-      return c.kY(this.Mdz, paramn.Mdz);
+    if (this.MAu != paramn.MAu) {
+      return c.lf(this.MAu, paramn.MAu);
     }
-    if (this.MdA != paramn.MdA) {
-      return c.kY(this.MdA, paramn.MdA);
+    if (this.MAv != paramn.MAv) {
+      return c.lf(this.MAv, paramn.MAv);
     }
-    return c.kY(this.McN, paramn.McN);
+    return c.lf(this.MzI, paramn.MzI);
   }
   
   public final boolean equals(Object paramObject)
@@ -40,7 +40,7 @@ public final class n
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.Mdz), Integer.valueOf(this.McN), Integer.valueOf(this.MdA) });
+    return e.hash(new Object[] { Integer.valueOf(this.MAu), Integer.valueOf(this.MzI), Integer.valueOf(this.MAv) });
   }
 }
 

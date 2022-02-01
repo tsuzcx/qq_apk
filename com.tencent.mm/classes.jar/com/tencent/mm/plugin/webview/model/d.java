@@ -7,18 +7,18 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.am.ag;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.al.ag;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -26,7 +26,7 @@ import java.util.Set;
 public final class d
   extends com.tencent.mm.plugin.y.a
 {
-  public static String DSx = "";
+  public static String Ekx = "";
   
   public final int getType()
   {
@@ -36,41 +36,41 @@ public final class d
   public final void k(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(78840);
-    final String str1 = com.tencent.mm.plugin.base.model.c.Wv(y.getStringExtra(paramIntent, "id"));
-    final String str2 = com.tencent.mm.plugin.base.model.c.Wv(y.getStringExtra(paramIntent, "ext_info"));
-    Object localObject1 = y.getStringExtra(paramIntent, "token");
+    final String str1 = com.tencent.mm.plugin.base.model.c.Xh(z.getStringExtra(paramIntent, "id"));
+    final String str2 = com.tencent.mm.plugin.base.model.c.Xh(z.getStringExtra(paramIntent, "ext_info"));
+    Object localObject1 = z.getStringExtra(paramIntent, "token");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      ad.e("MicroMsg.WebViewShortcutEntry", "jump to webview  failed, username or appId or token is null or nil.");
+      ae.e("MicroMsg.WebViewShortcutEntry", "jump to webview  failed, username or appId or token is null or nil.");
       AppMethodBeat.o(78840);
       return;
     }
     Object localObject2 = new StringBuilder();
-    com.tencent.mm.kernel.g.ajA();
-    if (!((String)localObject1).equals(e.eE(str2, com.tencent.mm.kernel.a.getUin())))
+    com.tencent.mm.kernel.g.ajP();
+    if (!((String)localObject1).equals(e.eH(str2, com.tencent.mm.kernel.a.getUin())))
     {
-      localObject2 = aj.getContext().getSharedPreferences("app_brand_global_sp", 0);
+      localObject2 = ak.getContext().getSharedPreferences("app_brand_global_sp", 0);
       if (localObject2 == null)
       {
-        ad.w("MicroMsg.WebViewShortcutEntry", "jump to webview failed, sp is null.");
+        ae.w("MicroMsg.WebViewShortcutEntry", "jump to webview failed, sp is null.");
         AppMethodBeat.o(78840);
         return;
       }
       localObject3 = ((SharedPreferences)localObject2).getStringSet("uin_set", new HashSet());
       if ((localObject3 == null) || (((Set)localObject3).isEmpty()))
       {
-        ad.w("MicroMsg.WebViewShortcutEntry", "jump to webview failed, uin set is null or nil.");
+        ae.w("MicroMsg.WebViewShortcutEntry", "jump to webview failed, uin set is null or nil.");
         AppMethodBeat.o(78840);
         return;
       }
       localObject2 = new HashSet();
       localObject3 = ((Set)localObject3).iterator();
       while (((Iterator)localObject3).hasNext()) {
-        ((Set)localObject2).add(com.tencent.mm.plugin.base.model.c.eE(str2, (String)((Iterator)localObject3).next()));
+        ((Set)localObject2).add(com.tencent.mm.plugin.base.model.c.eH(str2, (String)((Iterator)localObject3).next()));
       }
       if (!((Set)localObject2).contains(localObject1))
       {
-        ad.e("MicroMsg.WebViewShortcutEntry", "jump to webview failed, illegal token(%s).", new Object[] { localObject1 });
+        ae.e("MicroMsg.WebViewShortcutEntry", "jump to webview failed, illegal token(%s).", new Object[] { localObject1 });
         Toast.makeText(paramContext, paramContext.getString(2131766274), 1).show();
         AppMethodBeat.o(78840);
         return;
@@ -80,8 +80,8 @@ public final class d
     paramIntent.putExtra("id", "");
     localObject2 = "https://game.weixin.qq.com/cgi-bin/h5/static/gameloading/index.html?wegame_ssid=25&appid=".concat(String.valueOf(str2));
     localObject1 = localObject2;
-    if (!bt.isNullOrNil(DSx)) {
-      localObject1 = (String)localObject2 + "&" + DSx;
+    if (!bu.isNullOrNil(Ekx)) {
+      localObject1 = (String)localObject2 + "&" + Ekx;
     }
     localObject2 = new Intent();
     ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
@@ -89,51 +89,51 @@ public final class d
     ((Intent)localObject2).putExtra("game_hv_menu_appid", str2);
     ((Intent)localObject2).addFlags(67108864);
     ((Intent)localObject2).addFlags(268435456);
-    com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.game.H5GameWebViewUI", (Intent)localObject2);
-    ag.aGl().Dx(str1);
-    localObject1 = y.getStringExtra(paramIntent, "digest");
+    com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.game.H5GameWebViewUI", (Intent)localObject2);
+    ag.aGB().DZ(str1);
+    localObject1 = z.getStringExtra(paramIntent, "digest");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      ad.i("MicroMsg.WebViewShortcutEntry", "digest is null");
+      ae.i("MicroMsg.WebViewShortcutEntry", "digest is null");
       AppMethodBeat.o(78840);
       return;
     }
-    localObject2 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(str1);
-    if ((localObject2 == null) || (bt.isNullOrNil(((am)localObject2).adu())))
+    localObject2 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(str1);
+    if ((localObject2 == null) || (bu.isNullOrNil(((an)localObject2).adF())))
     {
-      ad.i("MicroMsg.WebViewShortcutEntry", "no need update, displayName is null");
+      ae.i("MicroMsg.WebViewShortcutEntry", "no need update, displayName is null");
       AppMethodBeat.o(78840);
       return;
     }
-    localObject2 = ((am)localObject2).adu();
-    Object localObject3 = p.aEx().Dj(str1);
-    if ((localObject3 == null) || (bt.isNullOrNil(((i)localObject3).aEr())))
+    localObject2 = ((an)localObject2).adF();
+    Object localObject3 = p.aEN().DL(str1);
+    if ((localObject3 == null) || (bu.isNullOrNil(((i)localObject3).aEH())))
     {
-      ad.i("MicroMsg.WebViewShortcutEntry", "no need update, imgFlag is null");
+      ae.i("MicroMsg.WebViewShortcutEntry", "no need update, imgFlag is null");
       AppMethodBeat.o(78840);
       return;
     }
-    if (((String)localObject1).equals(com.tencent.mm.b.g.getMessageDigest(((String)localObject2 + ((i)localObject3).aEr()).getBytes())))
+    if (((String)localObject1).equals(com.tencent.mm.b.g.getMessageDigest(((String)localObject2 + ((i)localObject3).aEH()).getBytes())))
     {
-      ad.i("MicroMsg.WebViewShortcutEntry", "no need update, digest is same");
+      ae.i("MicroMsg.WebViewShortcutEntry", "no need update, digest is same");
       AppMethodBeat.o(78840);
       return;
     }
-    localObject1 = com.tencent.mm.ak.c.a(str1, false, -1, null);
+    localObject1 = com.tencent.mm.aj.c.a(str1, false, -1, null);
     if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled()))
     {
-      ad.i("MicroMsg.WebViewShortcutEntry", "icon is not downloaded, next time update");
+      ae.i("MicroMsg.WebViewShortcutEntry", "icon is not downloaded, next time update");
       AppMethodBeat.o(78840);
       return;
     }
-    ad.i("MicroMsg.WebViewShortcutEntry", "update shortcut, displayName = %s", new Object[] { localObject2 });
-    e.d(paramContext, str1, str2, com.tencent.mm.plugin.base.model.c.Wv(y.getStringExtra(paramIntent, "ext_info_1")));
-    aq.o(new Runnable()
+    ae.i("MicroMsg.WebViewShortcutEntry", "update shortcut, displayName = %s", new Object[] { localObject2 });
+    e.d(paramContext, str1, str2, com.tencent.mm.plugin.base.model.c.Xh(z.getStringExtra(paramIntent, "ext_info_1")));
+    ar.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(78839);
-        e.a(aj.getContext(), str1, str2, null);
+        e.a(ak.getContext(), str1, str2, null);
         AppMethodBeat.o(78839);
       }
     }, 1000L);

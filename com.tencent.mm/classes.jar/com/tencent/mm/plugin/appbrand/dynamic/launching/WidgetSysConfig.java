@@ -9,9 +9,9 @@ public class WidgetSysConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<WidgetSysConfig> CREATOR;
-  public int jWG;
-  public int jWH;
-  public int jWI;
+  public int jZV;
+  public int jZW;
+  public int jZX;
   
   static
   {
@@ -28,9 +28,9 @@ public class WidgetSysConfig
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(121414);
-    paramParcel.writeInt(this.jWG);
-    paramParcel.writeInt(this.jWH);
-    paramParcel.writeInt(this.jWI);
+    paramParcel.writeInt(this.jZV);
+    paramParcel.writeInt(this.jZW);
+    paramParcel.writeInt(this.jZX);
     AppMethodBeat.o(121414);
   }
 }

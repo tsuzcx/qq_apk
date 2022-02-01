@@ -4,8 +4,8 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.qbar.QbarNative.QBarPoint;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,18 +16,18 @@ public final class j
 {
   private static final int CTRL_INDEX = 455;
   public static final String NAME = "onCameraScanCode";
-  public static j kId;
+  public static j kLs;
   
   static
   {
     AppMethodBeat.i(46221);
-    kId = new j();
+    kLs = new j();
     AppMethodBeat.o(46221);
   }
   
   public static void a(c paramc, int paramInt1, String paramString1, int paramInt2, String paramString2, byte[] paramArrayOfByte, QbarNative.QBarPoint paramQBarPoint)
   {
-    AppMethodBeat.i(188301);
+    AppMethodBeat.i(222427);
     HashMap localHashMap = new HashMap();
     localHashMap.put("cameraId", Integer.valueOf(paramInt1));
     localHashMap.put("type", paramString1);
@@ -43,14 +43,14 @@ public final class j
       localHashMap.put("rawData", paramString1);
     }
     paramString1 = new JSONObject(localHashMap).toString();
-    ad.d("MicroMsg.JsApiCameraScanCode", "onCameraScanCode:%s", new Object[] { paramString1 });
-    paramc.b(kId.getName(), paramString1, null);
-    AppMethodBeat.o(188301);
+    ae.d("MicroMsg.JsApiCameraScanCode", "onCameraScanCode:%s", new Object[] { paramString1 });
+    paramc.b(kLs.getName(), paramString1, null);
+    AppMethodBeat.o(222427);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.j
  * JD-Core Version:    0.7.0.1
  */

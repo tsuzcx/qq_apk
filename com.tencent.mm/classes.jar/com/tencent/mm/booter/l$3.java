@@ -1,16 +1,16 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ee;
+import com.tencent.mm.g.a.ef;
 import com.tencent.mm.sdk.b.c;
 
 final class l$3
-  extends c<ee>
+  extends c<ef>
 {
   l$3()
   {
     AppMethodBeat.i(161269);
-    this.__eventId = ee.class.getName().hashCode();
+    this.__eventId = ef.class.getName().hashCode();
     AppMethodBeat.o(161269);
   }
 }

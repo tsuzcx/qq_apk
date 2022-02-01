@@ -2,7 +2,7 @@ package com.tencent.tinker.a.b.b;
 
 public final class a
 {
-  public static String Fc(long paramLong)
+  public static String FE(long paramLong)
   {
     char[] arrayOfChar = new char[16];
     int i = 0;
@@ -15,22 +15,7 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String ahQ(int paramInt)
-  {
-    char[] arrayOfChar = new char[8];
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < 8)
-    {
-      arrayOfChar[(7 - paramInt)] = Character.forDigit(i & 0xF, 16);
-      i >>= 4;
-      paramInt += 1;
-    }
-    return new String(arrayOfChar);
-  }
-  
-  public static String ahR(int paramInt)
+  public static String aiA(int paramInt)
   {
     char[] arrayOfChar = new char[4];
     int j = 0;
@@ -45,15 +30,15 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String ahS(int paramInt)
+  public static String aiB(int paramInt)
   {
     if (paramInt == (char)paramInt) {
-      return ahR(paramInt);
+      return aiA(paramInt);
     }
-    return ahQ(paramInt);
+    return aiz(paramInt);
   }
   
-  public static String ahT(int paramInt)
+  public static String aiC(int paramInt)
   {
     int i = 0;
     char[] arrayOfChar = new char[9];
@@ -69,6 +54,21 @@ public final class a
       i += 1;
       continue;
       arrayOfChar[0] = '+';
+    }
+    return new String(arrayOfChar);
+  }
+  
+  public static String aiz(int paramInt)
+  {
+    char[] arrayOfChar = new char[8];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 8)
+    {
+      arrayOfChar[(7 - paramInt)] = Character.forDigit(i & 0xF, 16);
+      i >>= 4;
+      paramInt += 1;
     }
     return new String(arrayOfChar);
   }

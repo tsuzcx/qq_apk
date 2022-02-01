@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.plugin.game.d.ay;
-import com.tencent.mm.plugin.game.d.bl;
-import com.tencent.mm.plugin.game.d.r;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.game.d.be;
+import com.tencent.mm.plugin.game.d.bs;
+import com.tencent.mm.plugin.game.d.v;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public final class ab
   extends x
 {
-  private bl udE;
+  private bs uoM;
   
   public ab(a parama)
   {
     AppMethodBeat.i(41535);
     if (parama == null)
     {
-      this.udE = new bl();
+      this.uoM = new bs();
       AppMethodBeat.o(41535);
       return;
     }
-    this.udE = ((bl)parama);
+    this.uoM = ((bs)parama);
     AppMethodBeat.o(41535);
   }
   
   public ab(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41536);
-    this.udE = new bl();
+    this.uoM = new bs();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41536);
@@ -37,29 +37,29 @@ public final class ab
     }
     try
     {
-      this.udE.parseFrom(paramArrayOfByte);
+      this.uoM.parseFrom(paramArrayOfByte);
       AppMethodBeat.o(41536);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
-      ad.e("MicroMsg.GamePBDataDownloadGuidance", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+      ae.e("MicroMsg.GamePBDataDownloadGuidance", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       AppMethodBeat.o(41536);
     }
   }
   
-  public final r cZv()
+  public final v dcg()
   {
-    if (this.udE != null) {
-      return this.udE.uip;
+    if (this.uoM != null) {
+      return this.uoM.utN;
     }
     return null;
   }
   
-  public final ay cZw()
+  public final be dch()
   {
-    if (this.udE != null) {
-      return this.udE.uiq;
+    if (this.uoM != null) {
+      return this.uoM.utO;
     }
     return null;
   }

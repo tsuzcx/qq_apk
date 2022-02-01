@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class p
   implements ParagraphStyle
 {
-  public final ParagraphStyle pxF;
-  public final o pxc;
+  public final o pDG;
+  public final ParagraphStyle pEj;
   
   public p(o paramo, ParagraphStyle paramParagraphStyle)
   {
-    this.pxc = paramo;
-    this.pxF = paramParagraphStyle;
+    this.pDG = paramo;
+    this.pEj = paramParagraphStyle;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(181957);
-    String str = this.pxc.name() + " - " + this.pxF.getClass().getSimpleName();
+    String str = this.pDG.name() + " - " + this.pEj.getClass().getSimpleName();
     AppMethodBeat.o(181957);
     return str;
   }

@@ -17,49 +17,49 @@ import java.util.Set;
 
 public final class c
 {
-  private Map<String, d> LWh;
-  Map<String, a> LWi;
-  ArrayList<c> LWj;
-  private Map<Integer, com.tencent.thumbplayer.b.f> LWk;
-  public f LWl;
-  public b LWm;
-  public boolean LWn;
-  public float LWo;
-  public float LWp;
-  public Map<Integer, n> LWq;
-  ArrayList<n> LWr;
-  k LWs;
+  private Map<String, d> Mtc;
+  Map<String, a> Mtd;
+  ArrayList<c> Mte;
+  private Map<Integer, com.tencent.thumbplayer.b.f> Mtf;
+  public f Mtg;
+  public b Mth;
+  public boolean Mti;
+  public float Mtj;
+  public float Mtk;
+  public Map<Integer, n> Mtl;
+  ArrayList<n> Mtm;
+  k Mtn;
   public Surface mSurface;
   int trackId;
   
   public c()
   {
-    AppMethodBeat.i(191541);
+    AppMethodBeat.i(194219);
     this.trackId = -1;
-    this.LWh = new HashMap(0);
-    this.LWi = new HashMap(0);
-    this.LWl = new f();
-    this.LWk = new HashMap(0);
-    this.LWq = new HashMap(0);
-    this.LWr = new ArrayList();
-    this.LWj = new ArrayList();
-    AppMethodBeat.o(191541);
+    this.Mtc = new HashMap(0);
+    this.Mtd = new HashMap(0);
+    this.Mtg = new f();
+    this.Mtf = new HashMap(0);
+    this.Mtl = new HashMap(0);
+    this.Mtm = new ArrayList();
+    this.Mte = new ArrayList();
+    AppMethodBeat.o(194219);
   }
   
   public final void a(int paramInt, long paramLong, n paramn)
   {
-    AppMethodBeat.i(191549);
-    this.LWq.put(Integer.valueOf(paramn.trackType), paramn);
-    if ((paramInt < 0) || (paramInt >= this.LWr.size()))
+    AppMethodBeat.i(194227);
+    this.Mtl.put(Integer.valueOf(paramn.trackType), paramn);
+    if ((paramInt < 0) || (paramInt >= this.Mtm.size()))
     {
-      d.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.LWr.size());
-      AppMethodBeat.o(191549);
+      d.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.Mtm.size());
+      AppMethodBeat.o(194227);
       return;
     }
     c localc = new c();
     localc.trackIndex = paramInt;
-    localc.LWx = paramLong;
-    Iterator localIterator = this.LWr.iterator();
+    localc.Mts = paramLong;
+    Iterator localIterator = this.Mtm.iterator();
     while (localIterator.hasNext())
     {
       n localn = (n)localIterator.next();
@@ -67,7 +67,7 @@ public final class c
         if (((TextUtils.isEmpty(localn.name)) && (TextUtils.isEmpty(paramn.name))) || (localn.name.equals(paramn.name)))
         {
           localn.isSelected = true;
-          localc.LWy = localn;
+          localc.Mtt = localn;
         }
         else
         {
@@ -75,21 +75,21 @@ public final class c
         }
       }
     }
-    this.LWj.add(localc);
-    AppMethodBeat.o(191549);
+    this.Mte.add(localc);
+    AppMethodBeat.o(194227);
   }
   
   public final void a(int paramInt, n paramn)
   {
-    AppMethodBeat.i(191550);
-    this.LWq.remove(Integer.valueOf(paramn.trackType));
-    if ((paramInt < 0) || (paramInt >= this.LWr.size()))
+    AppMethodBeat.i(194228);
+    this.Mtl.remove(Integer.valueOf(paramn.trackType));
+    if ((paramInt < 0) || (paramInt >= this.Mtm.size()))
     {
-      d.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.LWr.size());
-      AppMethodBeat.o(191550);
+      d.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.Mtm.size());
+      AppMethodBeat.o(194228);
       return;
     }
-    Iterator localIterator = this.LWr.iterator();
+    Iterator localIterator = this.Mtm.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
@@ -98,66 +98,66 @@ public final class c
         ((n)localObject).isSelected = false;
       }
     }
-    localIterator = this.LWj.iterator();
+    localIterator = this.Mte.iterator();
     while (localIterator.hasNext())
     {
       localObject = (c)localIterator.next();
-      if ((((c)localObject).LWy != null) && (((c)localObject).LWy.equals(paramn)))
+      if ((((c)localObject).Mtt != null) && (((c)localObject).Mtt.equals(paramn)))
       {
-        this.LWj.remove(localObject);
-        AppMethodBeat.o(191550);
+        this.Mte.remove(localObject);
+        AppMethodBeat.o(194228);
         return;
       }
     }
-    AppMethodBeat.o(191550);
+    AppMethodBeat.o(194228);
   }
   
   public final void a(com.tencent.thumbplayer.b.f paramf)
   {
-    AppMethodBeat.i(191543);
+    AppMethodBeat.i(194221);
     if (paramf != null) {
-      this.LWk.put(Integer.valueOf(paramf.key), paramf);
+      this.Mtf.put(Integer.valueOf(paramf.key), paramf);
     }
-    AppMethodBeat.o(191543);
+    AppMethodBeat.o(194221);
   }
   
-  public final com.tencent.thumbplayer.b.f agV(int paramInt)
+  public final com.tencent.thumbplayer.b.f ahE(int paramInt)
   {
-    AppMethodBeat.i(191556);
-    com.tencent.thumbplayer.b.f localf = (com.tencent.thumbplayer.b.f)this.LWk.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(191556);
+    AppMethodBeat.i(194234);
+    com.tencent.thumbplayer.b.f localf = (com.tencent.thumbplayer.b.f)this.Mtf.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(194234);
     return localf;
   }
   
   public final void b(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(191548);
-    f localf = this.LWl;
+    AppMethodBeat.i(194226);
+    f localf = this.Mtg;
     localf.mUrl = null;
     localf.mType = 1;
     localf.mHttpHeaders.clear();
-    localf.LWV = paramParcelFileDescriptor;
-    AppMethodBeat.o(191548);
+    localf.MtQ = paramParcelFileDescriptor;
+    AppMethodBeat.o(194226);
   }
   
-  public final void bk(String paramString1, String paramString2, String paramString3)
+  public final void bl(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(191551);
+    AppMethodBeat.i(194229);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(191551);
+      AppMethodBeat.o(194229);
       return;
     }
     if (TextUtils.isEmpty(paramString3))
     {
-      AppMethodBeat.o(191551);
+      AppMethodBeat.o(194229);
       return;
     }
     d locald = new d();
     locald.url = paramString1;
     locald.mimeType = paramString2;
     locald.name = paramString3;
-    this.LWh.put(paramString1, locald);
+    this.Mtc.put(paramString1, locald);
     this.trackId += 1;
     paramString1 = new n();
     paramString1.trackType = 3;
@@ -165,107 +165,107 @@ public final class c
     paramString1.isSelected = false;
     paramString1.isExclusive = true;
     paramString1.isInternal = false;
-    this.LWr.add(paramString1);
-    AppMethodBeat.o(191551);
+    this.Mtm.add(paramString1);
+    AppMethodBeat.o(194229);
   }
   
   public final void c(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(191545);
-    if (this.LWm == null) {
-      this.LWm = new b();
+    AppMethodBeat.i(194223);
+    if (this.Mth == null) {
+      this.Mth = new b();
     }
-    this.LWm.LWu = paramBoolean;
-    this.LWm.LWv = paramLong1;
-    this.LWm.LWw = paramLong2;
-    AppMethodBeat.o(191545);
+    this.Mth.Mtp = paramBoolean;
+    this.Mth.Mtq = paramLong1;
+    this.Mth.Mtr = paramLong2;
+    AppMethodBeat.o(194223);
   }
   
-  public final boolean fWc()
+  public final boolean gaB()
   {
-    AppMethodBeat.i(191552);
-    if (this.LWl != null)
+    AppMethodBeat.i(194230);
+    if (this.Mtg != null)
     {
-      f localf = this.LWl;
-      if ((!TextUtils.isEmpty(localf.mUrl)) || (localf.LWV != null) || (localf.LWW != null)) {}
+      f localf = this.Mtg;
+      if ((!TextUtils.isEmpty(localf.mUrl)) || (localf.MtQ != null) || (localf.MtR != null)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(191552);
+        AppMethodBeat.o(194230);
         return true;
       }
     }
-    AppMethodBeat.o(191552);
+    AppMethodBeat.o(194230);
     return false;
   }
   
-  public final List<d> fWd()
+  public final List<d> gaC()
   {
-    AppMethodBeat.i(191553);
-    ArrayList localArrayList = new ArrayList(this.LWh.size());
-    Iterator localIterator = this.LWh.entrySet().iterator();
+    AppMethodBeat.i(194231);
+    ArrayList localArrayList = new ArrayList(this.Mtc.size());
+    Iterator localIterator = this.Mtc.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(191553);
+    AppMethodBeat.o(194231);
     return localArrayList;
   }
   
-  public final List<a> fWe()
+  public final List<a> gaD()
   {
-    AppMethodBeat.i(191554);
-    ArrayList localArrayList = new ArrayList(this.LWi.size());
-    Iterator localIterator = this.LWi.entrySet().iterator();
+    AppMethodBeat.i(194232);
+    ArrayList localArrayList = new ArrayList(this.Mtd.size());
+    Iterator localIterator = this.Mtd.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(191554);
+    AppMethodBeat.o(194232);
     return localArrayList;
   }
   
-  public final List<com.tencent.thumbplayer.b.f> fWf()
+  public final List<com.tencent.thumbplayer.b.f> gaE()
   {
-    AppMethodBeat.i(191555);
-    ArrayList localArrayList = new ArrayList(this.LWk.size());
-    Iterator localIterator = this.LWk.entrySet().iterator();
+    AppMethodBeat.i(194233);
+    ArrayList localArrayList = new ArrayList(this.Mtf.size());
+    Iterator localIterator = this.Mtf.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(191555);
+    AppMethodBeat.o(194233);
     return localArrayList;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(191542);
-    this.LWh.clear();
-    this.LWi.clear();
-    this.LWn = false;
-    this.LWo = 1.0F;
-    this.LWp = 1.0F;
-    this.LWq.clear();
+    AppMethodBeat.i(194220);
+    this.Mtc.clear();
+    this.Mtd.clear();
+    this.Mti = false;
+    this.Mtj = 1.0F;
+    this.Mtk = 1.0F;
+    this.Mtl.clear();
     this.mSurface = null;
-    this.LWk.clear();
-    this.LWl = new f();
-    this.LWm = null;
-    this.LWs = null;
+    this.Mtf.clear();
+    this.Mtg = new f();
+    this.Mth = null;
+    this.Mtn = null;
     this.trackId = -1;
-    this.LWr.clear();
-    this.LWj.clear();
-    AppMethodBeat.o(191542);
+    this.Mtm.clear();
+    this.Mte.clear();
+    AppMethodBeat.o(194220);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(191546);
-    this.LWl.setUrl(paramString);
-    AppMethodBeat.o(191546);
+    AppMethodBeat.i(194224);
+    this.Mtg.setUrl(paramString);
+    AppMethodBeat.o(194224);
   }
   
   public final void setDataSource(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(191547);
-    this.LWl.setUrl(paramString);
-    paramString = this.LWl;
+    AppMethodBeat.i(194225);
+    this.Mtg.setUrl(paramString);
+    paramString = this.Mtg;
     paramString.mHttpHeaders.clear();
     Map localMap = paramString.mHttpHeaders;
     paramString = paramMap;
@@ -273,39 +273,39 @@ public final class c
       paramString = new HashMap(0);
     }
     localMap.putAll(paramString);
-    AppMethodBeat.o(191547);
+    AppMethodBeat.o(194225);
   }
   
-  public final void zv(boolean paramBoolean)
+  public final void zJ(boolean paramBoolean)
   {
-    AppMethodBeat.i(191544);
-    if (this.LWm == null) {
-      this.LWm = new b();
+    AppMethodBeat.i(194222);
+    if (this.Mth == null) {
+      this.Mth = new b();
     }
-    this.LWm.LWu = paramBoolean;
-    this.LWm.LWv = 0L;
-    this.LWm.LWw = -1L;
-    AppMethodBeat.o(191544);
+    this.Mth.Mtp = paramBoolean;
+    this.Mth.Mtq = 0L;
+    this.Mth.Mtr = -1L;
+    AppMethodBeat.o(194222);
   }
   
   public static final class a
   {
-    public List<com.tencent.thumbplayer.b.f> LWt;
+    public List<com.tencent.thumbplayer.b.f> Mto;
     public String name;
     public String url;
   }
   
   public static final class b
   {
-    public boolean LWu;
-    public long LWv;
-    public long LWw;
+    public boolean Mtp;
+    public long Mtq;
+    public long Mtr;
   }
   
   public static final class c
   {
-    public long LWx;
-    public n LWy;
+    public long Mts;
+    public n Mtt;
     public int trackIndex;
   }
   

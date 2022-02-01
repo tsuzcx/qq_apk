@@ -21,101 +21,101 @@ import java.util.Set;
 
 public final class d
 {
-  private static final List<r> NbJ;
-  private static final List<String> NbK;
-  private static final List<String> NbL;
-  private static final Map<r, b> NbM;
-  private static final Map<String, b> NbN;
-  private static final Set<f> NbO;
-  private static final Set<String> NbP;
-  public static final d NbQ;
+  private static final List<r> NyO;
+  private static final List<String> NyP;
+  private static final List<String> NyQ;
+  private static final Map<r, b> NyR;
+  private static final Map<String, b> NyS;
+  private static final Set<f> NyT;
+  private static final Set<String> NyU;
+  public static final d NyV;
   
   static
   {
     AppMethodBeat.i(57565);
-    NbQ = new d();
+    NyV = new d();
     Object localObject2 = (Iterable)ak.setOf(new String[] { "containsAll", "removeAll", "retainAll" });
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
-      localObject4 = d.l.b.a.b.j.e.d.NwT.getDesc();
+      localObject4 = d.l.b.a.b.j.e.d.NTZ.getDesc();
       p.g(localObject4, "JvmPrimitiveType.BOOLEAN.desc");
       ((Collection)localObject1).add(t.B("java/util/Collection", (String)localObject3, "Ljava/util/Collection;", (String)localObject4));
     }
     localObject1 = (List)localObject1;
-    NbJ = (List)localObject1;
+    NyO = (List)localObject1;
     localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((Collection)localObject1).add(((r)((Iterator)localObject2).next()).signature);
     }
-    NbK = (List)localObject1;
-    localObject2 = (Iterable)NbJ;
+    NyP = (List)localObject1;
+    localObject2 = (Iterable)NyO;
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((r)((Iterator)localObject2).next()).MXf.sD());
+      ((Collection)localObject1).add(((r)((Iterator)localObject2).next()).Nul.sD());
     }
-    NbL = (List)localObject1;
-    localObject1 = v.Njg;
-    localObject1 = v.bcy("Collection");
-    localObject2 = d.l.b.a.b.j.e.d.NwT.getDesc();
+    NyQ = (List)localObject1;
+    localObject1 = v.NGm;
+    localObject1 = v.bec("Collection");
+    localObject2 = d.l.b.a.b.j.e.d.NTZ.getDesc();
     p.g(localObject2, "JvmPrimitiveType.BOOLEAN.desc");
-    localObject1 = u.S(t.B((String)localObject1, "contains", "Ljava/lang/Object;", (String)localObject2), b.NbZ);
-    localObject2 = v.bcy("Collection");
-    Object localObject3 = d.l.b.a.b.j.e.d.NwT.getDesc();
+    localObject1 = u.R(t.B((String)localObject1, "contains", "Ljava/lang/Object;", (String)localObject2), b.Nze);
+    localObject2 = v.bec("Collection");
+    Object localObject3 = d.l.b.a.b.j.e.d.NTZ.getDesc();
     p.g(localObject3, "JvmPrimitiveType.BOOLEAN.desc");
-    localObject2 = u.S(t.B((String)localObject2, "remove", "Ljava/lang/Object;", (String)localObject3), b.NbZ);
-    localObject3 = v.bcy("Map");
-    Object localObject4 = d.l.b.a.b.j.e.d.NwT.getDesc();
+    localObject2 = u.R(t.B((String)localObject2, "remove", "Ljava/lang/Object;", (String)localObject3), b.Nze);
+    localObject3 = v.bec("Map");
+    Object localObject4 = d.l.b.a.b.j.e.d.NTZ.getDesc();
     p.g(localObject4, "JvmPrimitiveType.BOOLEAN.desc");
-    localObject3 = u.S(t.B((String)localObject3, "containsKey", "Ljava/lang/Object;", (String)localObject4), b.NbZ);
-    localObject4 = v.bcy("Map");
-    Object localObject5 = d.l.b.a.b.j.e.d.NwT.getDesc();
+    localObject3 = u.R(t.B((String)localObject3, "containsKey", "Ljava/lang/Object;", (String)localObject4), b.Nze);
+    localObject4 = v.bec("Map");
+    Object localObject5 = d.l.b.a.b.j.e.d.NTZ.getDesc();
     p.g(localObject5, "JvmPrimitiveType.BOOLEAN.desc");
-    localObject4 = u.S(t.B((String)localObject4, "containsValue", "Ljava/lang/Object;", (String)localObject5), b.NbZ);
-    localObject5 = v.bcy("Map");
-    Object localObject6 = d.l.b.a.b.j.e.d.NwT.getDesc();
+    localObject4 = u.R(t.B((String)localObject4, "containsValue", "Ljava/lang/Object;", (String)localObject5), b.Nze);
+    localObject5 = v.bec("Map");
+    Object localObject6 = d.l.b.a.b.j.e.d.NTZ.getDesc();
     p.g(localObject6, "JvmPrimitiveType.BOOLEAN.desc");
-    localObject5 = u.S(t.B((String)localObject5, "remove", "Ljava/lang/Object;Ljava/lang/Object;", (String)localObject6), b.NbZ);
-    localObject6 = u.S(t.B(v.bcy("Map"), "getOrDefault", "Ljava/lang/Object;Ljava/lang/Object;", "Ljava/lang/Object;"), b.Nca);
-    o localo1 = u.S(t.B(v.bcy("Map"), "get", "Ljava/lang/Object;", "Ljava/lang/Object;"), b.NbX);
-    o localo2 = u.S(t.B(v.bcy("Map"), "remove", "Ljava/lang/Object;", "Ljava/lang/Object;"), b.NbX);
-    Object localObject7 = v.bcy("List");
-    String str1 = d.l.b.a.b.j.e.d.NwX.getDesc();
+    localObject5 = u.R(t.B((String)localObject5, "remove", "Ljava/lang/Object;Ljava/lang/Object;", (String)localObject6), b.Nze);
+    localObject6 = u.R(t.B(v.bec("Map"), "getOrDefault", "Ljava/lang/Object;Ljava/lang/Object;", "Ljava/lang/Object;"), b.Nzf);
+    o localo1 = u.R(t.B(v.bec("Map"), "get", "Ljava/lang/Object;", "Ljava/lang/Object;"), b.Nzc);
+    o localo2 = u.R(t.B(v.bec("Map"), "remove", "Ljava/lang/Object;", "Ljava/lang/Object;"), b.Nzc);
+    Object localObject7 = v.bec("List");
+    String str1 = d.l.b.a.b.j.e.d.NUd.getDesc();
     p.g(str1, "JvmPrimitiveType.INT.desc");
-    localObject7 = u.S(t.B((String)localObject7, "indexOf", "Ljava/lang/Object;", str1), b.NbY);
-    str1 = v.bcy("List");
-    String str2 = d.l.b.a.b.j.e.d.NwX.getDesc();
+    localObject7 = u.R(t.B((String)localObject7, "indexOf", "Ljava/lang/Object;", str1), b.Nzd);
+    str1 = v.bec("List");
+    String str2 = d.l.b.a.b.j.e.d.NUd.getDesc();
     p.g(str2, "JvmPrimitiveType.INT.desc");
-    localObject2 = ae.a(new o[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localo1, localo2, localObject7, u.S(t.B(str1, "lastIndexOf", "Ljava/lang/Object;", str2), b.NbY) });
-    NbM = (Map)localObject2;
-    localObject1 = (Map)new LinkedHashMap(ae.aji(((Map)localObject2).size()));
+    localObject2 = ae.a(new o[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localo1, localo2, localObject7, u.R(t.B(str1, "lastIndexOf", "Ljava/lang/Object;", str2), b.Nzd) });
+    NyR = (Map)localObject2;
+    localObject1 = (Map)new LinkedHashMap(ae.ajS(((Map)localObject2).size()));
     localObject2 = ((Iterable)((Map)localObject2).entrySet()).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = ((Iterator)localObject2).next();
       ((Map)localObject1).put(((r)((Map.Entry)localObject3).getKey()).signature, ((Map.Entry)localObject3).getValue());
     }
-    NbN = (Map)localObject1;
-    localObject1 = ak.b(NbM.keySet(), (Iterable)NbJ);
+    NyS = (Map)localObject1;
+    localObject1 = ak.b(NyR.keySet(), (Iterable)NyO);
     localObject3 = (Iterable)localObject1;
     localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
     localObject3 = ((Iterable)localObject3).iterator();
     while (((Iterator)localObject3).hasNext()) {
-      ((Collection)localObject2).add(((r)((Iterator)localObject3).next()).MXf);
+      ((Collection)localObject2).add(((r)((Iterator)localObject3).next()).Nul);
     }
-    NbO = j.n((Iterable)localObject2);
+    NyT = j.n((Iterable)localObject2);
     localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((Collection)localObject1).add(((r)((Iterator)localObject2).next()).signature);
     }
-    NbP = j.n((Iterable)localObject1);
+    NyU = j.n((Iterable)localObject1);
     AppMethodBeat.o(57565);
   }
   
@@ -123,14 +123,14 @@ public final class d
   {
     AppMethodBeat.i(57562);
     p.h(paramt, "functionDescriptor");
-    f localf = paramt.giD();
+    f localf = paramt.gnf();
     p.g(localf, "functionDescriptor.name");
     if (!g(localf))
     {
       AppMethodBeat.o(57562);
       return null;
     }
-    paramt = (d.l.b.a.b.b.t)d.l.b.a.b.j.d.a.b((d.l.b.a.b.b.b)paramt, (d.g.a.b)c.Ncc);
+    paramt = (d.l.b.a.b.b.t)d.l.b.a.b.j.d.a.b((d.l.b.a.b.b.b)paramt, (d.g.a.b)c.Nzh);
     AppMethodBeat.o(57562);
     return paramt;
   }
@@ -139,21 +139,21 @@ public final class d
   {
     AppMethodBeat.i(57563);
     p.h(paramf, "$this$sameAsBuiltinMethodWithErasedValueParameters");
-    boolean bool = NbO.contains(paramf);
+    boolean bool = NyT.contains(paramf);
     AppMethodBeat.o(57563);
     return bool;
   }
   
-  public static final d.a i(d.l.b.a.b.b.b paramb)
+  public static final a i(d.l.b.a.b.b.b paramb)
   {
     AppMethodBeat.i(57564);
     p.h(paramb, "$this$getSpecialSignatureInfo");
-    if (!NbO.contains(paramb.giD()))
+    if (!NyT.contains(paramb.gnf()))
     {
       AppMethodBeat.o(57564);
       return null;
     }
-    paramb = d.l.b.a.b.j.d.a.b(paramb, (d.g.a.b)d.Ncd);
+    paramb = d.l.b.a.b.j.d.a.b(paramb, (d.g.a.b)d.Nzi);
     if (paramb != null)
     {
       paramb = d.l.b.a.b.d.b.t.c((d.l.b.a.b.b.a)paramb);
@@ -164,21 +164,46 @@ public final class d
       AppMethodBeat.o(57564);
       return null;
     }
-    if (NbK.contains(paramb))
+    if (NyP.contains(paramb))
     {
-      paramb = d.a.NbR;
+      paramb = a.NyW;
       AppMethodBeat.o(57564);
       return paramb;
     }
-    if ((b)ae.e(NbN, paramb) == b.NbX)
+    if ((b)ae.e(NyS, paramb) == b.Nzc)
     {
-      paramb = d.a.NbT;
+      paramb = a.NyY;
       AppMethodBeat.o(57564);
       return paramb;
     }
-    paramb = d.a.NbS;
+    paramb = a.NyX;
     AppMethodBeat.o(57564);
     return paramb;
+  }
+  
+  public static enum a
+  {
+    private final String Nza;
+    private final boolean Nzb;
+    
+    static
+    {
+      AppMethodBeat.i(57552);
+      a locala1 = new a("ONE_COLLECTION_PARAMETER", 0, "Ljava/util/Collection<+Ljava/lang/Object;>;", false);
+      NyW = locala1;
+      a locala2 = new a("OBJECT_PARAMETER_NON_GENERIC", 1, null, true);
+      NyX = locala2;
+      a locala3 = new a("OBJECT_PARAMETER_GENERIC", 2, "Ljava/lang/Object;", true);
+      NyY = locala3;
+      NyZ = new a[] { locala1, locala2, locala3 };
+      AppMethodBeat.o(57552);
+    }
+    
+    private a(String paramString, boolean paramBoolean)
+    {
+      this.Nza = paramString;
+      this.Nzb = paramBoolean;
+    }
   }
   
   public static enum b
@@ -189,14 +214,14 @@ public final class d
     {
       AppMethodBeat.i(57555);
       b localb1 = new b("NULL", 0, null);
-      NbX = localb1;
+      Nzc = localb1;
       b localb2 = new b("INDEX", 1, Integer.valueOf(-1));
-      NbY = localb2;
+      Nzd = localb2;
       b localb3 = new b("FALSE", 2, Boolean.FALSE);
-      NbZ = localb3;
+      Nze = localb3;
       a locala = new a("MAP_GET_OR_DEFAULT");
-      Nca = locala;
-      Ncb = new b[] { localb1, localb2, localb3, locala };
+      Nzf = locala;
+      Nzg = new b[] { localb1, localb2, localb3, locala };
       AppMethodBeat.o(57555);
     }
     
@@ -219,12 +244,12 @@ public final class d
     extends q
     implements d.g.a.b<d.l.b.a.b.b.b, Boolean>
   {
-    public static final c Ncc;
+    public static final c Nzh;
     
     static
     {
       AppMethodBeat.i(57559);
-      Ncc = new c();
+      Nzh = new c();
       AppMethodBeat.o(57559);
     }
     
@@ -238,12 +263,12 @@ public final class d
     extends q
     implements d.g.a.b<d.l.b.a.b.b.b, Boolean>
   {
-    public static final d Ncd;
+    public static final d Nzi;
     
     static
     {
       AppMethodBeat.i(57561);
-      Ncd = new d();
+      Nzi = new d();
       AppMethodBeat.o(57561);
     }
     
@@ -255,7 +280,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.d
  * JD-Core Version:    0.7.0.1
  */

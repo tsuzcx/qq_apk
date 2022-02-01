@@ -54,10 +54,10 @@ public class TXScreenCapture$TXScreenCaptureAssistantActivity
   
   public void onDestroy()
   {
-    AppMethodBeat.i(187541);
+    AppMethodBeat.i(221670);
     super.onDestroy();
     TXCLog.i("TXScreenCaptureAssistantActivity", "onDestroy ".concat(String.valueOf(this)));
-    AppMethodBeat.o(187541);
+    AppMethodBeat.o(221670);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

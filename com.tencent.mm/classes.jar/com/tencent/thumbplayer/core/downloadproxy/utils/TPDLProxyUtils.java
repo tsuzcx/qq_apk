@@ -8,16 +8,16 @@ public class TPDLProxyUtils
   
   public static String byteArrayToString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190301);
+    AppMethodBeat.i(207514);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(190301);
+      AppMethodBeat.o(207514);
       return "";
     }
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-      AppMethodBeat.o(190301);
+      AppMethodBeat.o(207514);
       return paramArrayOfByte;
     }
     catch (Throwable paramArrayOfByte)
@@ -32,44 +32,44 @@ public class TPDLProxyUtils
   
   public static int objectToInt(Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(190302);
+    AppMethodBeat.i(207515);
     if (paramObject == null)
     {
-      AppMethodBeat.o(190302);
+      AppMethodBeat.o(207515);
       return paramInt;
     }
     try
     {
       int i = ((Integer)paramObject).intValue();
-      AppMethodBeat.o(190302);
+      AppMethodBeat.o(207515);
       return i;
     }
     catch (Throwable paramObject)
     {
       TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "object to int failed, error:" + paramObject.toString());
-      AppMethodBeat.o(190302);
+      AppMethodBeat.o(207515);
     }
     return paramInt;
   }
   
   public static long objectToLong(Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(190303);
+    AppMethodBeat.i(207516);
     if (paramObject == null)
     {
-      AppMethodBeat.o(190303);
+      AppMethodBeat.o(207516);
       return paramLong;
     }
     try
     {
       long l = ((Long)paramObject).longValue();
-      AppMethodBeat.o(190303);
+      AppMethodBeat.o(207516);
       return l;
     }
     catch (Throwable paramObject)
     {
       TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "object to long failed, error:" + paramObject.toString());
-      AppMethodBeat.o(190303);
+      AppMethodBeat.o(207516);
     }
     return paramLong;
   }

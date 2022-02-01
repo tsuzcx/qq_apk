@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ew
   extends b
 {
-  public a dqb;
-  public b dqc;
+  public a drd;
+  public b dre;
   
   public ew()
   {
@@ -16,29 +16,26 @@ public final class ew
   
   private ew(byte paramByte)
   {
-    AppMethodBeat.i(116010);
-    this.dqb = new a();
-    this.dqc = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116009);
+    this.drd = new a();
+    this.dre = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116010);
+    AppMethodBeat.o(116009);
   }
   
   public static final class a
   {
-    public String cUi;
-    public boolean clear;
-    public int direction;
+    public String cVh;
+    public String drf;
+    public int progress;
   }
   
-  public static final class b
-  {
-    public boolean doF;
-  }
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ew
  * JD-Core Version:    0.7.0.1
  */

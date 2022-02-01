@@ -10,7 +10,7 @@ public abstract interface i
   
   public abstract boolean a(i.a parama, int paramInt);
   
-  public abstract void axK(String paramString);
+  public abstract void azb(String paramString);
   
   public abstract Intent f(Intent paramIntent, String paramString);
 }

@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 class RecentsRecyclerView
   extends LoadMoreRecyclerView
 {
-  private View mMi;
+  private View mRl;
   
   public RecentsRecyclerView(Context paramContext)
   {
@@ -39,7 +39,7 @@ class RecentsRecyclerView
     AppMethodBeat.o(49274);
   }
   
-  final void cR(View paramView)
+  final void cS(View paramView)
   {
     AppMethodBeat.i(49279);
     if (paramView.getParent() != this)
@@ -53,11 +53,11 @@ class RecentsRecyclerView
       AppMethodBeat.o(49279);
       return;
     }
-    this.mMi = paramView;
+    this.mRl = paramView;
     AppMethodBeat.o(49279);
   }
   
-  final void cS(View paramView)
+  final void cT(View paramView)
   {
     AppMethodBeat.i(49280);
     if (paramView.getParent() != this)
@@ -71,8 +71,8 @@ class RecentsRecyclerView
       AppMethodBeat.o(49280);
       return;
     }
-    if (this.mMi == paramView) {
-      this.mMi = null;
+    if (this.mRl == paramView) {
+      this.mRl = null;
     }
     AppMethodBeat.o(49280);
   }
@@ -93,13 +93,13 @@ class RecentsRecyclerView
   public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49275);
-    if (this.mMi == null)
+    if (this.mRl == null)
     {
       paramInt1 = super.getChildDrawingOrder(paramInt1, paramInt2);
       AppMethodBeat.o(49275);
       return paramInt1;
     }
-    int i = indexOfChild(this.mMi);
+    int i = indexOfChild(this.mRl);
     if (i < 0)
     {
       paramInt1 = super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -162,7 +162,7 @@ class RecentsRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.RecentsRecyclerView
  * JD-Core Version:    0.7.0.1
  */

@@ -18,27 +18,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.b;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.b;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.x;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.fav.ui.m;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.chatting.a.c.a;
 import com.tencent.mm.ui.chatting.a.c.b;
@@ -52,9 +52,9 @@ import java.util.LinkedList;
 public final class f
   extends b
 {
-  int JVP = 0;
-  int fVc = -1;
-  private int rDa = 0;
+  int Ksh = 0;
+  int fXi = -1;
+  private int rLl = 0;
   
   public f(Context paramContext)
   {
@@ -86,7 +86,7 @@ public final class f
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.MusicHistoryListPresenter", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.MusicHistoryListPresenter", paramContext, "", new Object[0]);
       AppMethodBeat.o(36565);
     }
     return null;
@@ -104,9 +104,9 @@ public final class f
   {
     AppMethodBeat.i(36563);
     b localb = (b)parama;
-    a locala = (a)adg(paramInt);
-    localb.fTP.setText(m.h(this.mContext, locala.timestamp));
-    Bitmap localBitmap = com.tencent.mm.aw.q.aIF().a(locala.imagePath, com.tencent.mm.cc.a.getDensity(this.mContext), false);
+    a locala = (a)adN(paramInt);
+    localb.fVV.setText(m.h(this.mContext, locala.timestamp));
+    Bitmap localBitmap = com.tencent.mm.av.q.aIX().a(locala.imagePath, com.tencent.mm.cb.a.getDensity(this.mContext), false);
     if (localBitmap != null)
     {
       parama = localBitmap;
@@ -114,7 +114,7 @@ public final class f
     }
     else
     {
-      localBitmap = h.c(locala.appId, 1, com.tencent.mm.cc.a.getDensity(this.mContext));
+      localBitmap = h.c(locala.appId, 1, com.tencent.mm.cb.a.getDensity(this.mContext));
       if (localBitmap != null)
       {
         parama = localBitmap;
@@ -122,30 +122,30 @@ public final class f
       }
       else
       {
-        localb.lZa.setImageResource(2131689584);
+        localb.mdt.setImageResource(2131689584);
       }
     }
     for (;;)
     {
-      localb.rDq.setText(bt.bI(locala.source, ""));
-      b.d(localb.rDq, this.JVI.JFT);
+      localb.rLB.setText(bu.bI(locala.source, ""));
+      b.e(localb.rLB, this.Ksa.KaK);
       AppMethodBeat.o(36563);
       return;
-      localb.lZa.setImageBitmap(parama);
+      localb.mdt.setImageBitmap(parama);
     }
   }
   
-  protected final void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, long paramLong1, long paramLong2, bu parambu)
+  protected final void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, long paramLong1, long paramLong2, bv parambv)
   {
     AppMethodBeat.i(36564);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString2 == null) || (paramString2.length() == 0)))
     {
-      ad.e("MicroMsg.MusicHistoryListPresenter", "url, lowUrl both are empty");
+      ae.e("MicroMsg.MusicHistoryListPresenter", "url, lowUrl both are empty");
       AppMethodBeat.o(36564);
       return;
     }
     String str;
-    if (ay.isMobile(this.mContext))
+    if (az.isMobile(this.mContext))
     {
       str = paramString1;
       if (paramString2 != null)
@@ -164,17 +164,17 @@ public final class f
       paramString1.putExtra("version_name", paramString3);
       paramString1.putExtra("version_code", paramInt);
       paramString1.putExtra("usePlugin", true);
-      paramString1.putExtra("geta8key_username", this.fTa);
+      paramString1.putExtra("geta8key_username", this.fVg);
       paramString1.putExtra("KPublisherId", "msg_" + Long.toString(paramLong2));
       paramString1.putExtra("KAppId", paramString4);
-      paramString2 = b(parambu, w.vF(this.fTa));
+      paramString2 = b(parambv, x.wb(this.fVg));
       paramString1.putExtra("pre_username", paramString2);
       paramString1.putExtra("prePublishId", "msg_" + Long.toString(paramLong2));
-      if (parambu != null) {
+      if (parambv != null) {
         paramString1.putExtra("preUsername", paramString2);
       }
-      paramString1.putExtra("preChatName", this.fTa);
-      paramString1.putExtra("preChatTYPE", x.aG(paramString2, this.fTa));
+      paramString1.putExtra("preChatName", this.fVg);
+      paramString1.putExtra("preChatTYPE", y.aH(paramString2, this.fVg));
       paramString1.putExtra("preMsgIndex", 0);
       d.b(this.mContext, "webview", ".ui.tools.WebViewUI", paramString1);
       AppMethodBeat.o(36564);
@@ -192,7 +192,7 @@ public final class f
     }
   }
   
-  public final String aRw()
+  public final String aRV()
   {
     AppMethodBeat.i(36559);
     String str = this.mContext.getString(2131755256);
@@ -200,31 +200,31 @@ public final class f
     return str;
   }
   
-  public final void fFE()
+  public final void fJL()
   {
     AppMethodBeat.i(36558);
-    this.JVH.fFI();
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    this.KrZ.fJP();
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(36551);
         LinkedList localLinkedList = new LinkedList();
-        ba.aBQ();
-        Cursor localCursor = com.tencent.mm.model.c.azs().ee(f.this.fTa, f.this.fVc);
+        bc.aCg();
+        Cursor localCursor = com.tencent.mm.model.c.azI().el(f.this.fVg, f.this.fXi);
         if (localCursor == null)
         {
-          ad.e("MicroMsg.MusicHistoryListPresenter", "[loadData] cursor is null!");
+          ae.e("MicroMsg.MusicHistoryListPresenter", "[loadData] cursor is null!");
           AppMethodBeat.o(36551);
           return;
         }
-        ab localab;
+        ac localac;
         long l1;
-        if (w.vF(f.this.fTa))
+        if (x.wb(f.this.fVg))
         {
-          ba.aBQ();
-          localab = com.tencent.mm.model.c.azz().AN(f.this.fTa);
+          bc.aCg();
+          localac = com.tencent.mm.model.c.azP().Bx(f.this.fVg);
           l1 = 0L;
         }
         for (;;)
@@ -233,13 +233,13 @@ public final class f
           {
             if (localCursor.moveToNext())
             {
-              bu localbu = new bu();
-              localbu.convertFrom(localCursor);
-              Object localObject1 = localbu.field_content;
+              bv localbv = new bv();
+              localbv.convertFrom(localCursor);
+              Object localObject1 = localbv.field_content;
               if (localObject1 == null) {
                 continue;
               }
-              k.b localb = k.b.yr((String)localObject1);
+              k.b localb = k.b.zb((String)localObject1);
               if (localb == null) {
                 continue;
               }
@@ -250,34 +250,34 @@ public final class f
               if (i == 0) {
                 continue;
               }
-              localObject1 = new Date(localbu.field_createTime);
-              long l2 = com.tencent.mm.ui.gridviewheaders.a.fJG().b((Date)localObject1);
+              localObject1 = new Date(localbv.field_createTime);
+              long l2 = com.tencent.mm.ui.gridviewheaders.a.fNX().b((Date)localObject1);
               if (l1 != l2)
               {
-                localLinkedList.add(new c.c(localbu.field_createTime));
+                localLinkedList.add(new c.c(localbv.field_createTime));
                 localObject1 = f.this;
-                ((f)localObject1).JVP += 1;
+                ((f)localObject1).Ksh += 1;
               }
-              localObject1 = f.b(localbu, w.vF(f.this.fTa));
-              am localam1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf((String)localObject1);
+              localObject1 = f.b(localbv, x.wb(f.this.fVg));
+              an localan1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH((String)localObject1);
               Object localObject3 = "";
-              if (localab != null) {
-                localObject3 = localab.zf((String)localObject1);
+              if (localac != null) {
+                localObject3 = localac.zP((String)localObject1);
               }
-              i = e.agG(localb.hzP);
-              localObject1 = com.tencent.mm.plugin.fav.a.b.getAppName(f.this.mContext, localb.dHo);
-              ba.aBQ();
-              am localam2 = com.tencent.mm.model.c.azp().Bf(localb.dHo);
-              if ((localam2 == null) || (!localam2.field_username.equals(localb.dHo)))
+              i = e.ahD(localb.hCD);
+              localObject1 = com.tencent.mm.plugin.fav.a.b.getAppName(f.this.mContext, localb.dIt);
+              bc.aCg();
+              an localan2 = com.tencent.mm.model.c.azF().BH(localb.dIt);
+              if ((localan2 == null) || (!localan2.field_username.equals(localb.dIt)))
               {
-                as.a.hFO.a(localb.dHo, "", null);
-                localObject3 = new f.a(f.this, localbu.field_createTime, localb.type, localb.title, localbu.field_msgId, localam1.field_username, localam1.adu(), localam1.field_conRemark, (String)localObject3);
-                if (bt.isNullOrNil((String)localObject1))
+                au.a.hIG.a(localb.dIt, "", null);
+                localObject3 = new f.a(f.this, localbv.field_createTime, localb.type, localb.title, localbv.field_msgId, localan1.field_username, localan1.adF(), localan1.field_conRemark, (String)localObject3);
+                if (bu.isNullOrNil((String)localObject1))
                 {
                   localObject1 = localb.description;
                   ((f.a)localObject3).source = ((String)localObject1);
                   ((f.a)localObject3).appId = localb.appId;
-                  ((f.a)localObject3).imagePath = localbu.field_imgPath;
+                  ((f.a)localObject3).imagePath = localbv.field_imgPath;
                   ((f.a)localObject3).iconRes = i;
                   localLinkedList.add(localObject3);
                   l1 = l2;
@@ -285,22 +285,22 @@ public final class f
               }
               else
               {
-                localObject1 = localam2.adv();
+                localObject1 = localan2.adG();
                 continue;
               }
               continue;
             }
             localCursor.close();
             f.this.mDataList.addAll(localLinkedList);
-            f.this.JVJ = f.this.mDataList;
+            f.this.Ksb = f.this.mDataList;
             localLinkedList.clear();
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(36550);
-                if (f.this.JVH != null) {
-                  f.this.JVH.B(f.1.this.oSY, f.this.mDataList.size());
+                if (f.this.KrZ != null) {
+                  f.this.KrZ.C(f.1.this.oZA, f.this.mDataList.size());
                 }
                 AppMethodBeat.o(36550);
               }
@@ -313,7 +313,7 @@ public final class f
             localCursor.close();
             AppMethodBeat.o(36551);
           }
-          localab = null;
+          localac = null;
           break;
           label571:
           int i = 0;
@@ -323,7 +323,7 @@ public final class f
     AppMethodBeat.o(36558);
   }
   
-  public final c.e fFF()
+  public final c.e fJM()
   {
     AppMethodBeat.i(36561);
     c.e local2 = new c.e()
@@ -331,11 +331,11 @@ public final class f
       public final void a(View paramAnonymousView, int paramAnonymousInt, c.b paramAnonymousb)
       {
         AppMethodBeat.i(36554);
-        ba.aBQ();
-        paramAnonymousb = com.tencent.mm.model.c.azs().xY(paramAnonymousb.msgId);
-        k.b localb = k.b.yr(paramAnonymousb.field_content);
+        bc.aCg();
+        paramAnonymousb = com.tencent.mm.model.c.azI().ys(paramAnonymousb.msgId);
+        k.b localb = k.b.zb(paramAnonymousb.field_content);
         String str1 = com.tencent.mm.pluginsdk.model.app.q.Q(localb.url, "message");
-        String str2 = com.tencent.mm.pluginsdk.model.app.q.Q(localb.hzN, "message");
+        String str2 = com.tencent.mm.pluginsdk.model.app.q.Q(localb.hCB, "message");
         PackageInfo localPackageInfo = f.getPackageInfo(f.this.mContext, localb.appId);
         f localf = f.this;
         if (localPackageInfo == null)
@@ -359,7 +359,7 @@ public final class f
       public final void b(View paramAnonymousView, int paramAnonymousInt, final c.b paramAnonymousb)
       {
         AppMethodBeat.i(36555);
-        ad.i("MicroMsg.MusicHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.i("MicroMsg.MusicHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         new com.tencent.mm.ui.tools.l(paramAnonymousView.getContext()).b(paramAnonymousView, new View.OnCreateContextMenuListener()new n.e
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
@@ -375,9 +375,9 @@ public final class f
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
             AppMethodBeat.i(36553);
-            ba.aBQ();
-            bu localbu = com.tencent.mm.model.c.azs().xY(paramAnonymousb.msgId);
-            f.this.d(paramAnonymous2MenuItem.getItemId(), localbu);
+            bc.aCg();
+            bv localbv = com.tencent.mm.model.c.azI().ys(paramAnonymousb.msgId);
+            f.this.d(paramAnonymous2MenuItem.getItemId(), localbv);
             AppMethodBeat.o(36553);
           }
         });
@@ -388,7 +388,7 @@ public final class f
     return local2;
   }
   
-  public final String fFH()
+  public final String fJO()
   {
     AppMethodBeat.i(36560);
     String str = this.mContext.getString(2131755256);
@@ -414,26 +414,26 @@ public final class f
       super(paramInt, paramString1, paramLong2, paramString2, paramString3, paramString4, paramString5);
     }
     
-    public final boolean aVX(String paramString)
+    public final boolean aXy(String paramString)
     {
       AppMethodBeat.i(36556);
       if (paramString != null)
       {
         paramString = paramString.toLowerCase();
-        if (!aVY(paramString))
+        if (!aXz(paramString))
         {
-          if ((!bt.isNullOrNil(this.source)) && (ml(paramString, this.source.toLowerCase())))
+          if ((!bu.isNullOrNil(this.source)) && (ms(paramString, this.source.toLowerCase())))
           {
             AppMethodBeat.o(36556);
             return true;
           }
         }
-        else if ((!bt.isNullOrNil(this.source)) && (this.source.toLowerCase().contains(paramString)))
+        else if ((!bu.isNullOrNil(this.source)) && (this.source.toLowerCase().contains(paramString)))
         {
           AppMethodBeat.o(36556);
           return true;
         }
-        boolean bool = super.aVX(paramString);
+        boolean bool = super.aXy(paramString);
         AppMethodBeat.o(36556);
         return bool;
       }
@@ -450,22 +450,22 @@ public final class f
   final class b
     extends c.a
   {
-    TextView iCV;
-    ImageView lZa;
-    TextView rDq;
-    ImageView rDx;
+    TextView iFO;
+    ImageView mdt;
+    TextView rLB;
+    ImageView rLI;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(36557);
-      this.lZa = ((ImageView)paramView.findViewById(2131299794));
-      this.iCV = ((TextView)paramView.findViewById(2131299778));
-      this.iCV.setVisibility(8);
-      this.rDq = ((TextView)paramView.findViewById(2131299825));
-      this.rDx = ((ImageView)paramView.findViewById(2131299798));
-      this.rDx.setImageResource(2131233395);
-      this.rDx.setVisibility(0);
+      this.mdt = ((ImageView)paramView.findViewById(2131299794));
+      this.iFO = ((TextView)paramView.findViewById(2131299778));
+      this.iFO.setVisibility(8);
+      this.rLB = ((TextView)paramView.findViewById(2131299825));
+      this.rLI = ((ImageView)paramView.findViewById(2131299798));
+      this.rLI.setImageResource(2131233395);
+      this.rLI.setVisibility(0);
       AppMethodBeat.o(36557);
     }
   }

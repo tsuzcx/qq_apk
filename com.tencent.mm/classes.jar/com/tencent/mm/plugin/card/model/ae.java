@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bai;
-import com.tencent.mm.protocal.protobuf.baj;
-import com.tencent.mm.protocal.protobuf.coc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bay;
+import com.tencent.mm.protocal.protobuf.baz;
+import com.tencent.mm.protocal.protobuf.cow;
 import java.util.LinkedList;
 
 public final class ae
@@ -21,23 +20,23 @@ public final class ae
   implements k
 {
   private f callback;
-  public coc oAj;
+  public cow oGL;
   private final b rr;
   
   public ae(LinkedList<String> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(112849);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new bai();
-    ((b.a)localObject).hNN = new baj();
+    ((b.a)localObject).hQF = new bay();
+    ((b.a)localObject).hQG = new baz();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getdynamiccardcode";
     ((b.a)localObject).funcId = 1382;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (bai)this.rr.hNK.hNQ;
-    ((bai)localObject).Gxy = paramLinkedList;
-    ((bai)localObject).scene = paramInt;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bay)this.rr.hQD.hQJ;
+    ((bay)localObject).GQY = paramLinkedList;
+    ((bay)localObject).scene = paramInt;
     AppMethodBeat.o(112849);
   }
   
@@ -58,9 +57,9 @@ public final class ae
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112850);
-    ad.i("MicroMsg.NetSceneGetDynamicCardCode", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetSceneGetDynamicCardCode", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.oAj = ((baj)this.rr.hNL.hNQ).Gxz;
+      this.oGL = ((baz)this.rr.hQE.hQJ).GQZ;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112850);

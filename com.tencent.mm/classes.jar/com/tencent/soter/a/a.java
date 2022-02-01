@@ -17,19 +17,19 @@ public final class a
   {
     AppMethodBeat.i(4);
     com.tencent.soter.core.c.d.i("Soter.SoterWrapperApi", "soter: request authorize provide challenge. scene: %d", new Object[] { Integer.valueOf(paramb1.mScene) });
-    if ((paramb1.LRw == 1) || (paramb1.LRw == 2))
+    if ((paramb1.Mot == 1) || (paramb1.Mot == 2))
     {
       paramb1 = new i(paramb1);
-      paramb1.LRB = paramb;
-      if (!com.tencent.soter.a.g.f.fVe().a(paramb1, new com.tencent.soter.a.b.a())) {
+      paramb1.Moy = paramb;
+      if (!com.tencent.soter.a.g.f.fZD().a(paramb1, new com.tencent.soter.a.b.a())) {
         com.tencent.soter.core.c.d.d("Soter.SoterWrapperApi", "soter: add 2.0 requestAuthorizeAndSign task failed.", new Object[0]);
       }
       AppMethodBeat.o(4);
       return;
     }
     paramb1 = new h(paramb1);
-    paramb1.LRB = paramb;
-    if (!com.tencent.soter.a.g.f.fVe().a(paramb1, new com.tencent.soter.a.b.a())) {
+    paramb1.Moy = paramb;
+    if (!com.tencent.soter.a.g.f.fZD().a(paramb1, new com.tencent.soter.a.b.a())) {
       com.tencent.soter.core.c.d.d("Soter.SoterWrapperApi", "soter: add 1.0 requestAuthorizeAndSign task failed.", new Object[0]);
     }
     AppMethodBeat.o(4);
@@ -40,8 +40,8 @@ public final class a
     AppMethodBeat.i(3);
     com.tencent.soter.core.c.d.i("Soter.SoterWrapperApi", "soter: starting prepare auth key: %d", new Object[] { Integer.valueOf(paramInt) });
     parame1 = new l(paramInt, parame1, parame2, paramBoolean);
-    parame1.LRB = paramb;
-    if (!com.tencent.soter.a.g.f.fVe().a(parame1, new c())) {
+    parame1.Moy = paramb;
+    if (!com.tencent.soter.a.g.f.fZD().a(parame1, new c())) {
       com.tencent.soter.core.c.d.d("Soter.SoterWrapperApi", "soter: add prepareAuthKey task failed.", new Object[0]);
     }
     AppMethodBeat.o(3);
@@ -52,21 +52,21 @@ public final class a
     AppMethodBeat.i(2);
     com.tencent.soter.core.c.d.i("Soter.SoterWrapperApi", "soter: starting prepare ask key. ", new Object[0]);
     parame = new k(parame, paramBoolean);
-    parame.LRB = paramb;
-    if (!com.tencent.soter.a.g.f.fVe().a(parame, new c())) {
+    parame.Moy = paramb;
+    if (!com.tencent.soter.a.g.f.fZD().a(parame, new c())) {
       com.tencent.soter.core.c.d.d("Soter.SoterWrapperApi", "soter: add prepareAppSecureKey task failed.", new Object[0]);
     }
     AppMethodBeat.o(2);
   }
   
-  public static boolean agO(int paramInt)
+  public static boolean ahx(int paramInt)
   {
     AppMethodBeat.i(6);
-    boolean bool = com.tencent.soter.a.c.b.fUW().isInit();
-    String str = (String)com.tencent.soter.a.c.b.fUW().fUY().get(paramInt);
+    boolean bool = com.tencent.soter.a.c.b.fZv().isInit();
+    String str = (String)com.tencent.soter.a.c.b.fZv().fZx().get(paramInt);
     if ((bool) && (!g.isNullOrNil(str)))
     {
-      if (com.tencent.soter.core.a.dg(str, false).errCode == 0)
+      if (com.tencent.soter.core.a.dj(str, false).errCode == 0)
       {
         AppMethodBeat.o(6);
         return true;
@@ -85,10 +85,10 @@ public final class a
     return false;
   }
   
-  public static boolean fUS()
+  public static boolean fZr()
   {
     AppMethodBeat.i(5);
-    if ((com.tencent.soter.a.c.b.fUW().isInit()) && (com.tencent.soter.a.c.b.fUW().fUS()))
+    if ((com.tencent.soter.a.c.b.fZv().isInit()) && (com.tencent.soter.a.c.b.fZv().fZr()))
     {
       AppMethodBeat.o(5);
       return true;
@@ -97,33 +97,33 @@ public final class a
     return false;
   }
   
-  public static void fUT()
+  public static void fZs()
   {
     AppMethodBeat.i(175401);
-    if ((com.tencent.soter.a.c.b.fUW().isInit()) && (!com.tencent.soter.core.a.fUx())) {
-      com.tencent.soter.core.a.fUy();
+    if ((com.tencent.soter.a.c.b.fZv().isInit()) && (!com.tencent.soter.core.a.fYW())) {
+      com.tencent.soter.core.a.fYX();
     }
     AppMethodBeat.o(175401);
   }
   
-  public static void fUU()
+  public static void fZt()
   {
     AppMethodBeat.i(7);
-    SparseArray localSparseArray = com.tencent.soter.a.c.b.fUW().fUY();
+    SparseArray localSparseArray = com.tencent.soter.a.c.b.fZv().fZx();
     int j = localSparseArray.size();
     int i = 0;
     while (i < j)
     {
-      com.tencent.soter.core.a.dg((String)localSparseArray.valueAt(i), false);
+      com.tencent.soter.core.a.dj((String)localSparseArray.valueAt(i), false);
       i += 1;
     }
-    com.tencent.soter.core.a.fUB();
+    com.tencent.soter.core.a.fZa();
     AppMethodBeat.o(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.soter.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ import d.u;
 import java.util.Map;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class e
   extends a<c>
 {
   public static final int CTRL_INDEX = 788;
   public static final String NAME = "isSupportNFC";
-  public static final a kYa;
+  public static final a lbJ;
   
   static
   {
     AppMethodBeat.i(183639);
-    kYa = new a((byte)0);
+    lbJ = new a((byte)0);
     AppMethodBeat.o(183639);
   }
   
@@ -36,23 +36,23 @@ public final class e
       return;
     }
     paramJSONObject = (ad)com.tencent.luggage.a.e.K(ad.class);
-    if ((paramJSONObject != null) && (!paramJSONObject.bin()))
+    if ((paramJSONObject != null) && (!paramJSONObject.biW()))
     {
-      paramc.h(paramInt, m("fail:user is not authorized", (Map)ae.c(new o[] { u.S("errCode", Integer.valueOf(13019)) })));
+      paramc.h(paramInt, n("fail:user is not authorized", (Map)ae.c(new o[] { u.R("errCode", Integer.valueOf(13019)) })));
       AppMethodBeat.o(183638);
       return;
     }
-    if (d.blP())
+    if (d.bmy())
     {
-      paramc.h(paramInt, Pg("ok"));
+      paramc.h(paramInt, PO("ok"));
       AppMethodBeat.o(183638);
       return;
     }
-    paramc.h(paramInt, m("fail", (Map)ae.c(new o[] { u.S("errCode", Integer.valueOf(13000)) })));
+    paramc.h(paramInt, n("fail", (Map)ae.c(new o[] { u.R("errCode", Integer.valueOf(13000)) })));
     AppMethodBeat.o(183638);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
 }
 

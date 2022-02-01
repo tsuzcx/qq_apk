@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -10,24 +10,24 @@ import com.tencent.mm.pluginsdk.n;
 public class Plugin
   implements d
 {
-  b uKd;
+  b uVQ;
   
   public Plugin()
   {
     AppMethodBeat.i(25326);
-    this.uKd = new b();
+    this.uVQ = new b();
     AppMethodBeat.o(25326);
   }
   
   public n createApplication()
   {
-    return this.uKd;
+    return this.uVQ;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(25327);
-    i locali = i.ddE();
+    i locali = i.dgw();
     AppMethodBeat.o(25327);
     return locali;
   }

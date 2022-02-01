@@ -6,47 +6,47 @@ import java.util.Iterator;
 import kotlinx.a.c;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/AbstractCollectionSerializer;", "Element", "Collection", "Builder", "Lkotlinx/serialization/KSerializer;", "()V", "typeParams", "", "getTypeParams", "()[Lkotlinx/serialization/KSerializer;", "builder", "()Ljava/lang/Object;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "patch", "old", "(Lkotlinx/serialization/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "readAll", "", "Lkotlinx/serialization/CompositeDecoder;", "startIndex", "", "size", "(Lkotlinx/serialization/CompositeDecoder;Ljava/lang/Object;II)V", "readElement", "index", "checkIndex", "", "(Lkotlinx/serialization/CompositeDecoder;ILjava/lang/Object;Z)V", "readSize", "(Lkotlinx/serialization/CompositeDecoder;Ljava/lang/Object;)I", "serialize", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "builderSize", "(Ljava/lang/Object;)I", "checkCapacity", "(Ljava/lang/Object;I)V", "collectionIterator", "", "(Ljava/lang/Object;)Ljava/util/Iterator;", "collectionSize", "toBuilder", "(Ljava/lang/Object;)Ljava/lang/Object;", "toResult", "Lkotlinx/serialization/internal/ListLikeSerializer;", "Lkotlinx/serialization/internal/MapLikeSerializer;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/AbstractCollectionSerializer;", "Element", "Collection", "Builder", "Lkotlinx/serialization/KSerializer;", "()V", "typeParams", "", "getTypeParams", "()[Lkotlinx/serialization/KSerializer;", "builder", "()Ljava/lang/Object;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "patch", "old", "(Lkotlinx/serialization/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "readAll", "", "Lkotlinx/serialization/CompositeDecoder;", "startIndex", "", "size", "(Lkotlinx/serialization/CompositeDecoder;Ljava/lang/Object;II)V", "readElement", "index", "checkIndex", "", "(Lkotlinx/serialization/CompositeDecoder;ILjava/lang/Object;Z)V", "readSize", "(Lkotlinx/serialization/CompositeDecoder;Ljava/lang/Object;)I", "serialize", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "builderSize", "(Ljava/lang/Object;)I", "checkCapacity", "(Ljava/lang/Object;I)V", "collectionIterator", "", "(Ljava/lang/Object;)Ljava/util/Iterator;", "collectionSize", "toBuilder", "(Ljava/lang/Object;)Ljava/lang/Object;", "toResult", "Lkotlinx/serialization/internal/ListLikeSerializer;", "Lkotlinx/serialization/internal/MapLikeSerializer;", "kotlinx-serialization-runtime"})
 public abstract class a<Element, Collection, Builder>
   implements h<Collection>
 {
   public Collection a(c paramc)
   {
     p.h(paramc, "decoder");
-    return a(paramc, ge(gwV()));
+    return a(paramc, gh(gBx()));
   }
   
   public final Collection a(c paramc, Collection paramCollection)
   {
     p.h(paramc, "decoder");
-    paramCollection = gf(paramCollection);
-    int i = gd(paramCollection);
-    paramc = paramc.a(eLj(), new h[0]);
+    paramCollection = gi(paramCollection);
+    int i = gg(paramCollection);
+    paramc = paramc.a(eOR(), new h[0]);
     for (;;)
     {
-      int j = paramc.b(eLj());
+      int j = paramc.b(eOR());
       if (j == -1) {
         break;
       }
       a(paramc, j + i, paramCollection);
     }
-    paramc.a(eLj());
-    return ge(paramCollection);
+    paramc.a(eOR());
+    return gh(paramCollection);
   }
   
   protected abstract void a(kotlinx.a.a parama, int paramInt, Builder paramBuilder);
   
-  protected abstract int gb(Collection paramCollection);
+  protected abstract Builder gBx();
   
-  protected abstract Iterator<Element> gc(Collection paramCollection);
+  protected abstract int ge(Collection paramCollection);
   
-  protected abstract int gd(Builder paramBuilder);
+  protected abstract Iterator<Element> gf(Collection paramCollection);
   
-  protected abstract Collection ge(Builder paramBuilder);
+  protected abstract int gg(Builder paramBuilder);
   
-  protected abstract Builder gf(Collection paramCollection);
+  protected abstract Collection gh(Builder paramBuilder);
   
-  protected abstract Builder gwV();
+  protected abstract Builder gi(Collection paramCollection);
 }
 
 

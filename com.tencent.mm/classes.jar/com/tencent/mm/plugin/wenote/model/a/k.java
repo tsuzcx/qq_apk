@@ -4,13 +4,13 @@ public final class k
   extends o
 {
   public int duration;
-  public String ptU;
-  public boolean pub = false;
+  public boolean pAF = false;
+  public String pAy;
   public String thumbPath;
   
-  public final String ceb()
+  public final String cfq()
   {
-    return this.ptU;
+    return this.pAy;
   }
   
   public final int getType()

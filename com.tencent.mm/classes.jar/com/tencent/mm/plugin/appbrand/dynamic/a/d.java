@@ -10,10 +10,10 @@ import com.tencent.mm.modelappbrand.x;
 import com.tencent.mm.plugin.appbrand.api.e;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker.a;
-import com.tencent.mm.plugin.appbrand.appcache.bc;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
-import com.tencent.mm.plugin.appbrand.appcache.bi;
-import com.tencent.mm.plugin.appbrand.appcache.bi.a;
+import com.tencent.mm.plugin.appbrand.appcache.bd;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.appcache.bj;
+import com.tencent.mm.plugin.appbrand.appcache.bj.a;
 import com.tencent.mm.sdk.e.f;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,14 +26,14 @@ public final class d
   public final void a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     AppMethodBeat.i(121239);
-    ((e)g.ab(e.class)).aYu().d(paramString1, 10102, paramInt, paramString2, paramString3);
+    ((e)g.ab(e.class)).aYP().d(paramString1, 10102, paramInt, paramString2, paramString3);
     AppMethodBeat.o(121239);
   }
   
   public final boolean a(String paramString1, int paramInt, String paramString2, final j paramj)
   {
     AppMethodBeat.i(121240);
-    boolean bool = bi.b(paramString1, 10102, paramInt, paramString2, new bi.a()
+    boolean bool = bj.b(paramString1, 10102, paramInt, paramString2, new bj.a()
     {
       private long totalLen;
     });
@@ -41,11 +41,11 @@ public final class d
     return bool;
   }
   
-  public final List<x> aDG()
+  public final List<x> aDW()
   {
     Object localObject1 = null;
     AppMethodBeat.i(121242);
-    Object localObject2 = ((e)g.ab(e.class)).aYu();
+    Object localObject2 = ((e)g.ab(e.class)).aYP();
     if (localObject2 == null)
     {
       localObject1 = Collections.EMPTY_LIST;
@@ -55,7 +55,7 @@ public final class d
     Object localObject3 = new StringBuilder("debugType");
     ((StringBuilder)localObject3).append(" = 10102");
     localObject3 = ((StringBuilder)localObject3).toString();
-    localObject2 = ((bg)localObject2).jIJ.a("AppBrandWxaPkgManifestRecord", null, (String)localObject3, null, null, null, null, 2);
+    localObject2 = ((bh)localObject2).jLK.a("AppBrandWxaPkgManifestRecord", null, (String)localObject3, null, null, null, null, 2);
     if (localObject2 == null) {}
     while ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
@@ -71,8 +71,8 @@ public final class d
         localObject1 = new ArrayList();
         do
         {
-          localObject3 = new bc();
-          ((bc)localObject3).convertFrom((Cursor)localObject2);
+          localObject3 = new bd();
+          ((bd)localObject3).convertFrom((Cursor)localObject2);
           ((List)localObject1).add(localObject3);
         } while (((Cursor)localObject2).moveToNext());
         ((Cursor)localObject2).close();
@@ -82,22 +82,22 @@ public final class d
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (bc)((Iterator)localObject1).next();
+      localObject3 = (bd)((Iterator)localObject1).next();
       x localx = new x();
-      localx.duW = ((bc)localObject3).field_appId;
-      localx.version = ((bc)localObject3).field_version;
-      localx.md5 = ((bc)localObject3).field_versionMd5;
+      localx.dwb = ((bd)localObject3).field_appId;
+      localx.version = ((bd)localObject3).field_version;
+      localx.md5 = ((bd)localObject3).field_versionMd5;
       ((List)localObject2).add(localx);
     }
     AppMethodBeat.o(121242);
     return localObject2;
   }
   
-  public final boolean ai(String paramString, int paramInt)
+  public final boolean aj(String paramString, int paramInt)
   {
     AppMethodBeat.i(121241);
     paramString = WxaPkgIntegrityChecker.D(paramString, 10102, paramInt);
-    if ((paramString != null) && (paramString.first == WxaPkgIntegrityChecker.a.jIl))
+    if ((paramString != null) && (paramString.first == WxaPkgIntegrityChecker.a.jLm))
     {
       AppMethodBeat.o(121241);
       return true;

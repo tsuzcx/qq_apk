@@ -13,30 +13,30 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.b.b.b.a;
 import com.tencent.mm.plugin.sns.ui.c.a.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 
 public final class i
   extends a
 {
-  private ValueAnimator AsN;
-  private ValueAnimator AsO;
-  ViewGroup AsP;
-  FrameLayout.LayoutParams AsW;
-  e Atf;
-  LinearLayout.LayoutParams Atg;
-  int[] uCL;
-  private AnimatorSet yvH;
+  private ValueAnimator AKb;
+  private ValueAnimator AKc;
+  ViewGroup AKd;
+  FrameLayout.LayoutParams AKk;
+  e AKt;
+  LinearLayout.LayoutParams AKu;
+  int[] uOq;
+  private AnimatorSet yLH;
   
   public i(final MMActivity paramMMActivity, com.tencent.mm.plugin.sns.ui.c.a.a parama)
   {
     AppMethodBeat.i(99941);
-    this.uCL = new int[2];
+    this.uOq = new int[2];
     this.activity = paramMMActivity;
-    this.Atf = ((e)parama);
-    this.AsN = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.AKt = ((e)parama);
+    this.AKb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.AKb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -44,47 +44,47 @@ public final class i
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (f != 0.0F)
         {
-          i.this.Atf.contentView.setScaleX(f);
-          i.this.Atf.contentView.setScaleY(f);
-          i.this.Atf.contentView.setAlpha(f);
+          i.this.AKt.contentView.setScaleX(f);
+          i.this.AKt.contentView.setScaleY(f);
+          i.this.AKt.contentView.setAlpha(f);
         }
         AppMethodBeat.o(99937);
       }
     });
-    this.AsN.setDuration(400L);
-    this.AsO = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.AKb.setDuration(400L);
+    this.AKc = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.AKc.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(99938);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        i.this.Atf.AuE.setAlpha(f);
-        i.this.Atf.AuD.setAlpha(f);
+        i.this.AKt.ALU.setAlpha(f);
+        i.this.AKt.ALT.setAlpha(f);
         AppMethodBeat.o(99938);
       }
     });
-    this.AsO.setDuration(100L);
-    this.AsO.setStartDelay(300L);
-    this.Atg = ((LinearLayout.LayoutParams)this.Atf.contentView.getLayoutParams());
-    this.AsP = ((FrameLayout)this.activity.getBodyView().getParent());
-    this.yvH = new AnimatorSet();
-    this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
-    this.yvH.addListener(new AnimatorListenerAdapter()
+    this.AKc.setDuration(100L);
+    this.AKc.setStartDelay(300L);
+    this.AKu = ((LinearLayout.LayoutParams)this.AKt.contentView.getLayoutParams());
+    this.AKd = ((FrameLayout)this.activity.getBodyView().getParent());
+    this.yLH = new AnimatorSet();
+    this.yLH.playTogether(new Animator[] { this.AKb, this.AKc });
+    this.yLH.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99940);
-        ad.i("MicroMsg.TurnCardAdDetailBackAnimation", "onAnimation end");
-        ((ViewGroup)i.this.activity.getBodyView().getParent()).removeView(i.this.Atf.contentView);
-        ((ViewGroup)i.this.Atf.AaE).addView(i.this.Atf.contentView, i.this.Atg);
-        i.this.Atf.contentView.setScaleX(1.0F);
-        i.this.Atf.contentView.setScaleY(1.0F);
-        i.this.Atf.contentView.setAlpha(1.0F);
-        i.this.Atf.AuD.setAlpha(1.0F);
-        i.this.Atf.AuE.setAlpha(1.0F);
-        if (i.this.AsL != null) {
-          i.this.AsL.onAnimationEnd();
+        ae.i("MicroMsg.TurnCardAdDetailBackAnimation", "onAnimation end");
+        ((ViewGroup)i.this.activity.getBodyView().getParent()).removeView(i.this.AKt.contentView);
+        ((ViewGroup)i.this.AKt.ArR).addView(i.this.AKt.contentView, i.this.AKu);
+        i.this.AKt.contentView.setScaleX(1.0F);
+        i.this.AKt.contentView.setScaleY(1.0F);
+        i.this.AKt.contentView.setAlpha(1.0F);
+        i.this.AKt.ALT.setAlpha(1.0F);
+        i.this.AKt.ALU.setAlpha(1.0F);
+        if (i.this.AJZ != null) {
+          i.this.AJZ.onAnimationEnd();
         }
         AppMethodBeat.o(99940);
       }
@@ -92,35 +92,35 @@ public final class i
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99939);
-        ad.i("MicroMsg.TurnCardAdDetailBackAnimation", "onAnimation start");
-        i.this.Atf.AuE.setAlpha(0.0F);
-        i.this.Atf.AuD.setAlpha(0.0F);
-        i.this.Atf.contentView.getLocationInWindow(i.this.uCL);
-        ad.i("MicroMsg.TurnCardAdDetailBackAnimation", "location in window %s, %s", new Object[] { Integer.valueOf(i.this.uCL[0]), Integer.valueOf(i.this.uCL[1]) });
-        ((ViewGroup)i.this.Atf.AaE).removeView(i.this.Atf.contentView);
-        paramAnonymousAnimator = i.this.Atf.AaE.getLayoutParams();
-        paramAnonymousAnimator.width = i.this.Atf.contentView.getWidth();
-        paramAnonymousAnimator.height = (i.this.Atf.contentView.getHeight() + i.this.Atg.topMargin + i.this.Atg.bottomMargin);
-        i.this.Atf.AaE.setLayoutParams(paramAnonymousAnimator);
-        i.this.AsW = new FrameLayout.LayoutParams(-2, -2);
-        i.this.AsW.leftMargin = i.this.uCL[0];
-        i.this.AsW.rightMargin = (i.this.AsP.getWidth() - i.this.AsW.leftMargin - i.this.Atf.contentView.getWidth());
-        i.this.AsW.topMargin = (i.this.uCL[1] - al.jG(paramMMActivity));
-        i.this.AsW.bottomMargin = (i.this.AsP.getHeight() - i.this.AsW.topMargin - i.this.Atf.contentView.getHeight());
-        i.this.AsP.addView(i.this.Atf.contentView, i.this.AsW);
+        ae.i("MicroMsg.TurnCardAdDetailBackAnimation", "onAnimation start");
+        i.this.AKt.ALU.setAlpha(0.0F);
+        i.this.AKt.ALT.setAlpha(0.0F);
+        i.this.AKt.contentView.getLocationInWindow(i.this.uOq);
+        ae.i("MicroMsg.TurnCardAdDetailBackAnimation", "location in window %s, %s", new Object[] { Integer.valueOf(i.this.uOq[0]), Integer.valueOf(i.this.uOq[1]) });
+        ((ViewGroup)i.this.AKt.ArR).removeView(i.this.AKt.contentView);
+        paramAnonymousAnimator = i.this.AKt.ArR.getLayoutParams();
+        paramAnonymousAnimator.width = i.this.AKt.contentView.getWidth();
+        paramAnonymousAnimator.height = (i.this.AKt.contentView.getHeight() + i.this.AKu.topMargin + i.this.AKu.bottomMargin);
+        i.this.AKt.ArR.setLayoutParams(paramAnonymousAnimator);
+        i.this.AKk = new FrameLayout.LayoutParams(-2, -2);
+        i.this.AKk.leftMargin = i.this.uOq[0];
+        i.this.AKk.rightMargin = (i.this.AKd.getWidth() - i.this.AKk.leftMargin - i.this.AKt.contentView.getWidth());
+        i.this.AKk.topMargin = (i.this.uOq[1] - al.jN(paramMMActivity));
+        i.this.AKk.bottomMargin = (i.this.AKd.getHeight() - i.this.AKk.topMargin - i.this.AKt.contentView.getHeight());
+        i.this.AKd.addView(i.this.AKt.contentView, i.this.AKk);
         AppMethodBeat.o(99939);
       }
     });
     AppMethodBeat.o(99941);
   }
   
-  public final void At(long paramLong)
+  public final void AR(long paramLong)
   {
     AppMethodBeat.i(99942);
-    if (!this.yvH.isStarted())
+    if (!this.yLH.isStarted())
     {
-      this.yvH.setStartDelay(paramLong);
-      this.yvH.start();
+      this.yLH.setStartDelay(paramLong);
+      this.yLH.start();
     }
     AppMethodBeat.o(99942);
   }

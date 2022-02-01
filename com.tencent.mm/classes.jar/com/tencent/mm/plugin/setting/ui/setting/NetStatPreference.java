@@ -13,14 +13,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.k;
 import com.tencent.mm.modelstat.m;
 import com.tencent.mm.modelstat.q;
-import com.tencent.mm.plugin.setting.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.setting.b.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class NetStatPreference
   extends Preference
 {
-  boolean yEh;
+  boolean yUm;
   
   public NetStatPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,12 +31,12 @@ public class NetStatPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73895);
-    this.yEh = false;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.NetStatPreference, paramInt, 0);
+    this.yUm = false;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, b.a.NetStatPreference, paramInt, 0);
     if (paramAttributeSet.getInt(0, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.yEh = bool;
+      this.yUm = bool;
       paramAttributeSet.recycle();
       setSummary(paramContext.getString(2131763320, new Object[] { Integer.valueOf(15) }));
       AppMethodBeat.o(73895);
@@ -56,16 +56,16 @@ public class NetStatPreference
     {
       localNetStatGroup = new NetStatGroup(this.mContext);
       int m = k - i + 1;
-      bool = this.yEh;
+      bool = this.yUm;
       localObject = DateFormat.format(localNetStatGroup.getContext().getString(2131759498, new Object[] { "" }), m * 86400000L).toString();
-      localNetStatGroup.yEg.setText((CharSequence)localObject);
-      ad.d("MicroMsg.NetStatGroup", "NetStat dataTime = ".concat(String.valueOf(localObject)));
-      localNetStatGroup.yEf.removeAllViews();
+      localNetStatGroup.yUl.setText((CharSequence)localObject);
+      ae.d("MicroMsg.NetStatGroup", "NetStat dataTime = ".concat(String.valueOf(localObject)));
+      localNetStatGroup.yUk.removeAllViews();
       int j = 0;
       if (j < 5)
       {
         localObject = new NetStatUnit(localNetStatGroup.getContext());
-        k localk = q.aLQ().qb(m + j);
+        k localk = q.aMn().qe(m + j);
         long l1;
         long l2;
         long l3;
@@ -74,24 +74,24 @@ public class NetStatPreference
           if (!bool) {
             break label319;
           }
-          ad.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d wifi : %d %d %d %d", new Object[] { Integer.valueOf(localk.ipY), Long.valueOf(localk.iqu), Long.valueOf(localk.iqi), Long.valueOf(localk.iqw), Long.valueOf(localk.iqk) });
-          l1 = localk.iqu;
-          l2 = localk.iqi;
-          l3 = localk.iqw;
-          ((NetStatUnit)localObject).ah(l1 + l2, localk.iqk + l3);
+          ae.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d wifi : %d %d %d %d", new Object[] { Integer.valueOf(localk.isT), Long.valueOf(localk.itp), Long.valueOf(localk.itd), Long.valueOf(localk.itr), Long.valueOf(localk.itf) });
+          l1 = localk.itp;
+          l2 = localk.itd;
+          l3 = localk.itr;
+          ((NetStatUnit)localObject).ag(l1 + l2, localk.itf + l3);
         }
         for (;;)
         {
           ((NetStatUnit)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
-          localNetStatGroup.yEf.addView((View)localObject);
+          localNetStatGroup.yUk.addView((View)localObject);
           j += 1;
           break;
           label319:
-          ad.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d mobile : %d %d %d %d", new Object[] { Integer.valueOf(localk.ipY), Long.valueOf(localk.iqt), Long.valueOf(localk.iqh), Long.valueOf(localk.iqv), Long.valueOf(localk.iqj) });
-          l1 = localk.iqt;
-          l2 = localk.iqh;
-          l3 = localk.iqv;
-          ((NetStatUnit)localObject).ah(l1 + l2, localk.iqj + l3);
+          ae.i("MicroMsg.NetStatUnit", "dknetflow peroid:%d mobile : %d %d %d %d", new Object[] { Integer.valueOf(localk.isT), Long.valueOf(localk.ito), Long.valueOf(localk.itc), Long.valueOf(localk.itq), Long.valueOf(localk.ite) });
+          l1 = localk.ito;
+          l2 = localk.itc;
+          l3 = localk.itq;
+          ((NetStatUnit)localObject).ag(l1 + l2, localk.ite + l3);
         }
       }
       localLinearLayout.addView(localNetStatGroup, -2, -1);
@@ -100,19 +100,19 @@ public class NetStatPreference
     localLinearLayout = (LinearLayout)paramView.findViewById(2131304272);
     localLinearLayout.removeAllViews();
     NetStatGroup localNetStatGroup = new NetStatGroup(this.mContext);
-    boolean bool = this.yEh;
+    boolean bool = this.yUm;
     localNetStatGroup.removeAllViews();
     View.inflate(localNetStatGroup.getContext(), 2131495008, localNetStatGroup);
-    localNetStatGroup.yEf = ((LinearLayout)localNetStatGroup.findViewById(2131300621));
+    localNetStatGroup.yUk = ((LinearLayout)localNetStatGroup.findViewById(2131300621));
     Object localObject = new NetStatRuler(localNetStatGroup.getContext());
     if (bool) {}
     for (paramView = "wifi";; paramView = "mobile")
     {
       ((NetStatRuler)localObject).setTag(paramView);
       ((NetStatRuler)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
-      localNetStatGroup.yEf.addView((View)localObject);
+      localNetStatGroup.yUk.addView((View)localObject);
       localLinearLayout.addView(localNetStatGroup);
-      acw(8);
+      ade(8);
       AppMethodBeat.o(73897);
       return;
     }

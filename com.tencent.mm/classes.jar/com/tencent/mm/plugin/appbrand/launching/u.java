@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.protocal.protobuf.cvb;
+import com.tencent.mm.protocal.protobuf.cvv;
 
 public final class u
 {
-  cvb lHm;
-  int lHn;
-  int lHo;
-  String lHp;
-  String lHq;
-  String lHr;
+  cvv lLM;
+  int lLN;
+  int lLO;
+  String lLP;
+  String lLQ;
+  String lLR;
   String md5;
 }
 

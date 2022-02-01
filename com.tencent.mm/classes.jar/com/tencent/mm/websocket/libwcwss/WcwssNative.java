@@ -32,7 +32,7 @@ public class WcwssNative
   
   private native long initBindingWcwss(long paramLong1, long paramLong2, long paramLong3);
   
-  private native int initCallBack(long paramLong, IWcWssWebSocketListener paramIWcWssWebSocketListener, IWcWssReportListener paramIWcWssReportListener);
+  private native int initCallBack(long paramLong, IWcWssWebSocketListener paramIWcWssWebSocketListener, WcwssNative.IWcWssReportListener paramIWcWssReportListener);
   
   private native void initConfigWcwss(String paramString, long paramLong, HashMap<String, String> paramHashMap);
   
@@ -45,11 +45,11 @@ public class WcwssNative
   @Keep
   public void destoryWcwss()
   {
-    AppMethodBeat.i(219376);
+    AppMethodBeat.i(216721);
     new StringBuilder("WcwssNative MMWcWss destoryWcwss mNativeInst:").append(this.mNativeInst);
     if (this.mNativeInst <= 0L)
     {
-      AppMethodBeat.o(219376);
+      AppMethodBeat.o(216721);
       return;
     }
     if (this.initCallBackFlag)
@@ -58,53 +58,53 @@ public class WcwssNative
       destoryBindingWcwss(this.mNativeInst);
       this.mNativeInst = -1L;
     }
-    AppMethodBeat.o(219376);
+    AppMethodBeat.o(216721);
   }
   
   @Keep
   public void doOnRunningState()
   {
-    AppMethodBeat.i(219381);
+    AppMethodBeat.i(216726);
     doOnRunningStateWcwss(this.mStrNativeInst, this.mNativeInst);
-    AppMethodBeat.o(219381);
+    AppMethodBeat.o(216726);
   }
   
   @Keep
   public void initConfig(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(219378);
+    AppMethodBeat.i(216723);
     initConfigWcwss(this.mStrNativeInst, this.mNativeInst, paramHashMap);
-    AppMethodBeat.o(219378);
+    AppMethodBeat.o(216723);
   }
   
   @Keep
   public void initConfigWhiteBlack(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
-    AppMethodBeat.i(219379);
+    AppMethodBeat.i(216724);
     initConfigWhiteBlackList(this.mStrNativeInst, this.mNativeInst, paramArrayList1, paramArrayList2);
-    AppMethodBeat.o(219379);
+    AppMethodBeat.o(216724);
   }
   
   @Keep
   public String initWcwss(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(219375);
+    AppMethodBeat.i(216720);
     this.mNativeInst = initBindingWcwss(paramLong1, paramLong2, paramLong3);
     this.mStrNativeInst = String.valueOf(this.mNativeInst);
     new StringBuilder("WcwssNative MMWcWss initWcwss str_contextId:").append(this.mStrNativeInst);
     String str = this.mStrNativeInst;
-    AppMethodBeat.o(219375);
+    AppMethodBeat.o(216720);
     return str;
   }
   
   @Keep
-  public int setCallback(IWcWssWebSocketListener paramIWcWssWebSocketListener, IWcWssReportListener paramIWcWssReportListener)
+  public int setCallback(IWcWssWebSocketListener paramIWcWssWebSocketListener, WcwssNative.IWcWssReportListener paramIWcWssReportListener)
   {
-    AppMethodBeat.i(219377);
+    AppMethodBeat.i(216722);
     if (this.mNativeInst <= 0L)
     {
       i = NEW_WCWSS_ERROR;
-      AppMethodBeat.o(219377);
+      AppMethodBeat.o(216722);
       return i;
     }
     if (!this.initCallBackFlag)
@@ -113,15 +113,15 @@ public class WcwssNative
       if (i == 0)
       {
         this.initCallBackFlag = true;
-        AppMethodBeat.o(219377);
+        AppMethodBeat.o(216722);
         return i;
       }
       i = INIT_ERROR;
-      AppMethodBeat.o(219377);
+      AppMethodBeat.o(216722);
       return i;
     }
     int i = REPEAT_INIT_ERROR;
-    AppMethodBeat.o(219377);
+    AppMethodBeat.o(216722);
     return i;
   }
   
@@ -135,22 +135,9 @@ public class WcwssNative
   @Keep
   public void updateInterface(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(219380);
+    AppMethodBeat.i(216725);
     updateNativeInterface(this.mStrNativeInst, this.mNativeInst, paramLong, paramInt);
-    AppMethodBeat.o(219380);
-  }
-  
-  @Keep
-  public static abstract interface IWcWssReportListener
-  {
-    @Keep
-    public abstract int getNetworkType();
-    
-    @Keep
-    public abstract void onIdKeyStat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
-    
-    @Keep
-    public abstract void onKvStat(int paramInt, String paramString);
+    AppMethodBeat.o(216725);
   }
   
   @Keep

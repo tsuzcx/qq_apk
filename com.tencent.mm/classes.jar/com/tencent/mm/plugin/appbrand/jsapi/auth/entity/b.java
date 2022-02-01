@@ -16,10 +16,10 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.t;
@@ -34,25 +34,25 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController;", "context", "Landroid/content/Context;", "mUserAvatarInfo", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMUserAvatarInfo;", "scope", "", "mListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMUserAvatarInfo;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;)V", "START_CREATE_AVATAR_UI_REQUEST_CODE", "", "currentCheckedAvatarId", "Ljava/util/concurrent/atomic/AtomicInteger;", "deleteAvatarTaskCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "getDeleteAvatarTaskCallback", "()Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "setDeleteAvatarTaskCallback", "(Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;)V", "mCurrentItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "mmPopupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "getScope", "()Ljava/lang/String;", "deleteUser", "", "itemIndex", "callback", "dismissPopWindow", "genDialogItem", "", "mmUserAvatarInfo", "goAddUserPage", "activity", "Landroid/app/Activity;", "appId", "handleAfterCreateUser", "data", "Landroid/content/Intent;", "notifyUserInfoItemChanged", "item", "onItemChecked", "onItemLongClick", "view", "Landroid/view/View;", "index", "touchX", "touchY", "showPopWindow", "Companion", "DeleteUserTask", "WxaUserInfoEventListener", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController;", "context", "Landroid/content/Context;", "mUserAvatarInfo", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMUserAvatarInfo;", "scope", "", "mListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMUserAvatarInfo;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;)V", "START_CREATE_AVATAR_UI_REQUEST_CODE", "", "currentCheckedAvatarId", "Ljava/util/concurrent/atomic/AtomicInteger;", "deleteAvatarTaskCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "getDeleteAvatarTaskCallback", "()Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "setDeleteAvatarTaskCallback", "(Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;)V", "mCurrentItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "mmPopupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "getScope", "()Ljava/lang/String;", "deleteUser", "", "itemIndex", "callback", "dismissPopWindow", "genDialogItem", "", "mmUserAvatarInfo", "goAddUserPage", "activity", "Landroid/app/Activity;", "appId", "handleAfterCreateUser", "data", "Landroid/content/Intent;", "notifyUserInfoItemChanged", "item", "onItemChecked", "onItemLongClick", "view", "Landroid/view/View;", "index", "touchX", "touchY", "showPopWindow", "Companion", "DeleteUserTask", "WxaUserInfoEventListener", "plugin-appbrand-integration_release"})
 public final class b
   implements a
 {
-  public static final b.a kAe;
+  public static final b.a kDt;
   final Context context;
-  public a.a kAa;
-  public com.tencent.mm.ui.widget.b.a kAb;
-  private final MMUserAvatarInfo kAc;
-  private final c kAd;
-  final ArrayList<o.a> kzX;
-  final AtomicInteger kzY;
-  final int kzZ;
+  final ArrayList<o.a> kDm;
+  final AtomicInteger kDn;
+  final int kDo;
+  public a.a kDp;
+  public com.tencent.mm.ui.widget.b.a kDq;
+  private final MMUserAvatarInfo kDr;
+  private final c kDs;
   private final String scope;
   
   static
   {
     AppMethodBeat.i(180472);
-    kAe = new b.a((byte)0);
+    kDt = new b.a((byte)0);
     AppMethodBeat.o(180472);
   }
   
@@ -60,14 +60,14 @@ public final class b
   {
     AppMethodBeat.i(180471);
     this.context = paramContext;
-    this.kAc = paramMMUserAvatarInfo;
+    this.kDr = paramMMUserAvatarInfo;
     this.scope = paramString;
-    this.kAd = paramc;
-    this.kzX = new ArrayList();
-    this.kzY = new AtomicInteger(this.kAc.kzR);
-    this.kzZ = com.tencent.luggage.sdk.g.a.aC(this);
-    this.kzX.addAll((Collection)a(this.scope, this.kAc));
-    w(this.kzX);
+    this.kDs = paramc;
+    this.kDm = new ArrayList();
+    this.kDn = new AtomicInteger(this.kDr.kDg);
+    this.kDo = com.tencent.luggage.sdk.g.a.aC(this);
+    this.kDm.addAll((Collection)a(this.scope, this.kDr));
+    w(this.kDm);
     AppMethodBeat.o(180471);
   }
   
@@ -75,7 +75,7 @@ public final class b
   {
     AppMethodBeat.i(180470);
     ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = paramMMUserAvatarInfo.kzO;
+    ArrayList localArrayList2 = paramMMUserAvatarInfo.kDd;
     int j = localArrayList2.size();
     int i = 0;
     if (i < j)
@@ -85,10 +85,10 @@ public final class b
       localObject = (MMUserAvatarInfo.MMUserAvatarItem)localObject;
       String str1 = ((MMUserAvatarInfo.MMUserAvatarItem)localObject).nickname;
       String str2 = ((MMUserAvatarInfo.MMUserAvatarItem)localObject).desc;
-      if (paramMMUserAvatarInfo.kzR == ((MMUserAvatarInfo.MMUserAvatarItem)localObject).id) {}
+      if (paramMMUserAvatarInfo.kDg == ((MMUserAvatarInfo.MMUserAvatarItem)localObject).id) {}
       for (boolean bool = true;; bool = false)
       {
-        localArrayList1.add(new o.a(str1, str2, paramString, bool, ((MMUserAvatarInfo.MMUserAvatarItem)localObject).kzW, ((MMUserAvatarInfo.MMUserAvatarItem)localObject).id));
+        localArrayList1.add(new o.a(str1, str2, paramString, bool, ((MMUserAvatarInfo.MMUserAvatarItem)localObject).kDl, ((MMUserAvatarInfo.MMUserAvatarItem)localObject).id));
         i += 1;
         break;
       }
@@ -101,15 +101,15 @@ public final class b
   private final void b(View paramView, final int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(180469);
-    this.kAb = new com.tencent.mm.ui.widget.b.a(paramView.getContext());
+    this.kDq = new com.tencent.mm.ui.widget.b.a(paramView.getContext());
     if (paramInt1 == 0)
     {
       AppMethodBeat.o(180469);
       return;
     }
-    com.tencent.mm.ui.widget.b.a locala = this.kAb;
+    com.tencent.mm.ui.widget.b.a locala = this.kDq;
     if (locala == null) {
-      p.gfZ();
+      p.gkB();
     }
     locala.a(paramView, paramInt1, 0L, (View.OnCreateContextMenuListener)new b.i(paramView), (n.e)new j(this, paramInt1), paramInt2, paramInt3);
     AppMethodBeat.o(180469);
@@ -127,25 +127,25 @@ public final class b
   {
     AppMethodBeat.i(180468);
     p.h(parama, "item");
-    this.kzY.set(parama.kzo);
+    this.kDn.set(parama.kCD);
     AppMethodBeat.o(180468);
   }
   
   final void w(ArrayList<o.a> paramArrayList)
   {
     AppMethodBeat.i(180466);
-    this.kAd.bl((List)paramArrayList);
-    c localc = this.kAd;
-    boolean bool2 = this.kAc.kzP;
-    if (this.kAc.kzQ <= paramArrayList.size()) {}
+    this.kDs.bn((List)paramArrayList);
+    c localc = this.kDs;
+    boolean bool2 = this.kDr.kDe;
+    if (this.kDr.kDf <= paramArrayList.size()) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      Object localObject = this.kAc.kzV;
+      Object localObject = this.kDr.kDk;
       paramArrayList = (ArrayList<o.a>)localObject;
       if (localObject == null) {
         paramArrayList = "";
       }
-      String str = this.kAc.kzU;
+      String str = this.kDr.kDj;
       localObject = str;
       if (str == null) {
         localObject = "";
@@ -156,15 +156,15 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "", "onItemListChanged", "", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "updateAddNewAvatarEntry", "isBan", "", "reachMaxCount", "limitWording", "", "avatarWording", "goAddUserPage", "Lkotlin/Function2;", "Landroid/app/Activity;", "Lkotlin/ParameterName;", "name", "activity", "appId", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "", "onItemListChanged", "", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "updateAddNewAvatarEntry", "isBan", "", "reachMaxCount", "limitWording", "", "avatarWording", "goAddUserPage", "Lkotlin/Function2;", "Landroid/app/Activity;", "Lkotlin/ParameterName;", "name", "activity", "appId", "plugin-appbrand-integration_release"})
   public static abstract interface c
   {
     public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, m<? super Activity, ? super String, z> paramm);
     
-    public abstract void bl(List<o.a> paramList);
+    public abstract void bn(List<o.a> paramList);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -173,7 +173,7 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(180458);
-      a.a locala = this.kAh;
+      a.a locala = this.kDw;
       if (locala != null)
       {
         locala.onStart();
@@ -184,28 +184,28 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class e<T>
     implements d<ResultType>
   {
     e(b paramb, int paramInt, ArrayList paramArrayList, a.a parama) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$goAddUserPage$1", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$goAddUserPage$1", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
   public static final class f
     implements MMActivity.a
   {
     public final void c(int paramInt1, int paramInt2, Intent paramIntent)
     {
       AppMethodBeat.i(180461);
-      if (b.b(this.kAi) == paramInt1) {
-        b.a(this.kAi, paramIntent);
+      if (b.b(this.kDx) == paramInt1) {
+        b.a(this.kDx, paramIntent);
       }
       AppMethodBeat.o(180461);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
   static final class g
     implements e.c
   {
@@ -214,9 +214,9 @@ public final class b
     public final boolean b(int paramInt1, int paramInt2, Intent paramIntent)
     {
       AppMethodBeat.i(180462);
-      if (b.b(this.kAi) == paramInt1)
+      if (b.b(this.kDx) == paramInt1)
       {
-        b.a(this.kAi, paramIntent);
+        b.a(this.kDx, paramIntent);
         AppMethodBeat.o(180462);
         return true;
       }
@@ -225,7 +225,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "activity", "Landroid/app/Activity;", "appId", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "activity", "Landroid/app/Activity;", "appId", "", "invoke"})
   static final class h
     extends q
     implements m<Activity, String, z>
@@ -236,7 +236,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
   static final class j
     implements n.e
   {
@@ -245,11 +245,11 @@ public final class b
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(180465);
-      paramMenuItem = this.kAi;
+      paramMenuItem = this.kDx;
       paramInt = paramInt1;
-      a.a locala = this.kAi.kAa;
-      ad.i("WxaUserInfoListOperationController", "[deleteUser] index=".concat(String.valueOf(paramInt)));
-      if (!ay.isConnected(aj.getContext()))
+      a.a locala = this.kDx.kDp;
+      ae.i("WxaUserInfoListOperationController", "[deleteUser] index=".concat(String.valueOf(paramInt)));
+      if (!az.isConnected(ak.getContext()))
       {
         t.makeText(paramMenuItem.context, (CharSequence)paramMenuItem.context.getResources().getString(2131756043), 1).show();
         if (locala != null) {
@@ -257,32 +257,32 @@ public final class b
         }
         if (locala != null)
         {
-          locala.biU();
+          locala.bjD();
           AppMethodBeat.o(180465);
           return;
         }
         AppMethodBeat.o(180465);
         return;
       }
-      ArrayList localArrayList = new ArrayList((Collection)paramMenuItem.kzX);
+      ArrayList localArrayList = new ArrayList((Collection)paramMenuItem.kDm);
       localArrayList.remove(paramInt);
-      Object localObject = paramMenuItem.kzX.get(paramInt);
+      Object localObject = paramMenuItem.kDm.get(paramInt);
       p.g(localObject, "mCurrentItems[itemIndex]");
       localObject = (o.a)localObject;
-      if (((o.a)localObject).kzo == paramMenuItem.kzY.get()) {
-        ((o.a)localArrayList.get(0)).iDC = true;
+      if (((o.a)localObject).kCD == paramMenuItem.kDn.get()) {
+        ((o.a)localArrayList.get(0)).iGv = true;
       }
-      ((o.a)localObject).iDC = false;
+      ((o.a)localObject).iGv = false;
       paramMenuItem.w(localArrayList);
-      aq.f((Runnable)new b.d(locala));
-      h.a("com.tencent.mm", (Parcelable)new IPCInteger(((o.a)localObject).kzo), b.b.class, (d)new b.e(paramMenuItem, paramInt, localArrayList, locala));
+      ar.f((Runnable)new b.d(locala));
+      h.a("com.tencent.mm", (Parcelable)new IPCInteger(((o.a)localObject).kCD), b.b.class, (d)new b.e(paramMenuItem, paramInt, localArrayList, locala));
       AppMethodBeat.o(180465);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b
  * JD-Core Version:    0.7.0.1
  */

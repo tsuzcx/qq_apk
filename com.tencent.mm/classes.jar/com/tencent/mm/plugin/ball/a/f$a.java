@@ -6,7 +6,7 @@ public abstract interface f$a
 {
   public abstract void aR(float paramFloat);
   
-  public abstract int iL(boolean paramBoolean);
+  public abstract int iJ(boolean paramBoolean);
   
   public abstract void k(MotionEvent paramMotionEvent);
 }

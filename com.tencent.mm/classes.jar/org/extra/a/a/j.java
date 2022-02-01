@@ -9,14 +9,14 @@ public final class j
 {
   public j(f paramf, c.b paramb)
   {
-    AppMethodBeat.i(220094);
+    AppMethodBeat.i(216848);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
-    if (paramb.NVG) {}
+    if (paramb.OsL) {}
     for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
     {
       localByteBuffer.order(localByteOrder);
-      this.NVQ = paramf.e(localByteBuffer, paramb.NVI + paramb.NVL * 0 + 44L);
-      AppMethodBeat.o(220094);
+      this.OsV = paramf.e(localByteBuffer, paramb.OsN + paramb.OsQ * 0 + 44L);
+      AppMethodBeat.o(216848);
       return;
     }
   }

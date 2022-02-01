@@ -1,30 +1,30 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import com.tencent.mm.storage.y;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
 final class c$f$1
-  implements av.a
+  implements aw.a
 {
-  public static final 1 EJk;
+  public static final 1 FbI;
   
   static
   {
     AppMethodBeat.i(124772);
-    EJk = new 1();
+    FbI = new 1();
     AppMethodBeat.o(124772);
   }
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(124771);
-    if (!y.fpz())
+    if (!y.fty())
     {
-      c localc = c.EIZ;
-      c.eYO();
+      c localc = c.Fbx;
+      c.fcC();
     }
     AppMethodBeat.o(124771);
     return false;

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.launching.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cly;
+import com.tencent.mm.protocal.protobuf.cms;
 import java.io.IOException;
 
 public final class a$a
-  extends cly
+  extends cms
 {
-  public String lMs;
-  public String lMt;
-  public long lMu;
+  public String lQS;
+  public String lQT;
+  public long lQU;
   
   public final void ax(byte[] paramArrayOfByte)
   {
@@ -24,7 +24,7 @@ public final class a$a
     AppMethodBeat.o(153226);
   }
   
-  public final byte[] brQ()
+  public final byte[] bsB()
   {
     AppMethodBeat.i(153225);
     byte[] arrayOfByte = super.toByteArray();
@@ -35,7 +35,7 @@ public final class a$a
   public final String toString()
   {
     AppMethodBeat.i(153227);
-    String str = "PrefetchPkgDownloadInfo{packageMD5='" + this.lMs + '\'' + ", packageURL='" + this.lMt + '\'' + ", urlLifespan=" + this.lMu + ", appId='" + this.appId + '\'' + ", packageKey='" + this.Hfh + '\'' + ", packageType=" + this.dnF + ", packageVersion=" + this.Hfi + '}';
+    String str = "PrefetchPkgDownloadInfo{packageMD5='" + this.lQS + '\'' + ", packageURL='" + this.lQT + '\'' + ", urlLifespan=" + this.lQU + ", appId='" + this.appId + '\'' + ", packageKey='" + this.HyH + '\'' + ", packageType=" + this.doK + ", packageVersion=" + this.HyI + '}';
     AppMethodBeat.o(153227);
     return str;
   }

@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.record.b;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.record.a.f;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.bv;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,56 +16,56 @@ import java.util.Set;
 public final class l
   implements f
 {
-  private Map<Long, String> xrc;
+  private Map<Long, String> xGZ;
   
   public l()
   {
-    AppMethodBeat.i(213092);
-    this.xrc = Collections.synchronizedMap(new HashMap());
-    AppMethodBeat.o(213092);
+    AppMethodBeat.i(221832);
+    this.xGZ = Collections.synchronizedMap(new HashMap());
+    AppMethodBeat.o(221832);
   }
   
-  private static void iG(String paramString1, String paramString2)
+  private static void iM(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(213096);
-    bu localbu = new bu();
-    localbu.qA(bj.Bo(paramString1));
-    localbu.tN(paramString1);
-    localbu.setContent(paramString2);
-    localbu.setType(10000);
-    localbu.setStatus(6);
-    localbu.kr(0);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().as(localbu);
-    AppMethodBeat.o(213096);
-  }
-  
-  public final void w(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(213093);
-    this.xrc.put(Long.valueOf(paramLong), paramString);
-    AppMethodBeat.o(213093);
+    AppMethodBeat.i(221836);
+    bv localbv = new bv();
+    localbv.qN(bl.BQ(paramString1));
+    localbv.ui(paramString1);
+    localbv.setContent(paramString2);
+    localbv.setType(10000);
+    localbv.setStatus(6);
+    localbv.kt(0);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ar(localbv);
+    AppMethodBeat.o(221836);
   }
   
   public final void x(long paramLong, String paramString)
   {
-    AppMethodBeat.i(213095);
-    if (this.xrc.keySet().contains(Long.valueOf(paramLong)))
-    {
-      iG(paramString, aj.getContext().getString(2131761740));
-      this.xrc.remove(Long.valueOf(paramLong));
-    }
-    AppMethodBeat.o(213095);
+    AppMethodBeat.i(221833);
+    this.xGZ.put(Long.valueOf(paramLong), paramString);
+    AppMethodBeat.o(221833);
   }
   
-  public final void yB(long paramLong)
+  public final void y(long paramLong, String paramString)
   {
-    AppMethodBeat.i(213094);
-    if (this.xrc.keySet().contains(Long.valueOf(paramLong)))
+    AppMethodBeat.i(221835);
+    if (this.xGZ.keySet().contains(Long.valueOf(paramLong)))
     {
-      iG((String)this.xrc.get(Long.valueOf(paramLong)), aj.getContext().getString(2131761740));
-      this.xrc.remove(Long.valueOf(paramLong));
+      iM(paramString, ak.getContext().getString(2131761740));
+      this.xGZ.remove(Long.valueOf(paramLong));
     }
-    AppMethodBeat.o(213094);
+    AppMethodBeat.o(221835);
+  }
+  
+  public final void za(long paramLong)
+  {
+    AppMethodBeat.i(221834);
+    if (this.xGZ.keySet().contains(Long.valueOf(paramLong)))
+    {
+      iM((String)this.xGZ.get(Long.valueOf(paramLong)), ak.getContext().getString(2131761740));
+      this.xGZ.remove(Long.valueOf(paramLong));
+    }
+    AppMethodBeat.o(221834);
   }
 }
 

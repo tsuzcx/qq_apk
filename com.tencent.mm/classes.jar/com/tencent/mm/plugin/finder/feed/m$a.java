@@ -16,93 +16,93 @@ import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedId", "", "username", "", "scene", "", "(Lcom/tencent/mm/ui/MMActivity;JLjava/lang/String;I)V", "commentPreloader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentPreloader;", "getCommentPreloader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentPreloader;", "getFeedId", "()J", "getScene", "()I", "getUsername", "()Ljava/lang/String;", "loadMoreData", "", "onAttach", "model", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "callback", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "onDetach", "requestRefresh", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedId", "", "username", "", "scene", "", "(Lcom/tencent/mm/ui/MMActivity;JLjava/lang/String;I)V", "commentPreloader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentPreloader;", "getCommentPreloader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentPreloader;", "getFeedId", "()J", "getScene", "()I", "getUsername", "()Ljava/lang/String;", "loadMoreData", "", "onAttach", "model", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "callback", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "onDetach", "requestRefresh", "plugin-finder_release"})
 public final class m$a
   extends u.a
 {
-  private final long dtq;
-  private final com.tencent.mm.plugin.finder.feed.model.d rTq;
+  private final long duw;
+  private final com.tencent.mm.plugin.finder.feed.model.d sbU;
   private final int scene;
   private final String username;
   
   public m$a(MMActivity paramMMActivity, long paramLong, String paramString, int paramInt)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(201829);
-    this.dtq = paramLong;
+    AppMethodBeat.i(202289);
+    this.duw = paramLong;
     this.username = paramString;
     this.scene = paramInt;
-    paramString = a.KiD;
-    this.rTq = ((FinderCommentPreloaderUIC)a.s(paramMMActivity).get(FinderCommentPreloaderUIC.class)).rTq;
-    AppMethodBeat.o(201829);
+    paramString = a.KEX;
+    this.sbU = ((FinderCommentPreloaderUIC)a.s(paramMMActivity).get(FinderCommentPreloaderUIC.class)).sbU;
+    AppMethodBeat.o(202289);
   }
   
   public final void a(BaseFinderFeedLoader paramBaseFinderFeedLoader, u.b paramb)
   {
-    AppMethodBeat.i(201827);
+    AppMethodBeat.i(202287);
     p.h(paramBaseFinderFeedLoader, "model");
     p.h(paramb, "callback");
     super.a(paramBaseFinderFeedLoader, paramb);
-    this.rTq.a(this.scene, this.rTD, (b)new a(this));
-    paramBaseFinderFeedLoader = FinderReporterUIC.tcM;
-    paramBaseFinderFeedLoader = FinderReporterUIC.a.eY((Context)this.fLP);
+    this.sbU.a(this.scene, this.sch, (b)new a(this));
+    paramBaseFinderFeedLoader = FinderReporterUIC.tnG;
+    paramBaseFinderFeedLoader = FinderReporterUIC.a.fc((Context)this.fNT);
     if (paramBaseFinderFeedLoader != null)
     {
       paramBaseFinderFeedLoader = FinderReporterUIC.a(paramBaseFinderFeedLoader);
       if (paramBaseFinderFeedLoader != null)
       {
-        paramBaseFinderFeedLoader.a((com.tencent.mm.plugin.finder.event.base.d)this.rTq);
-        AppMethodBeat.o(201827);
+        paramBaseFinderFeedLoader.a((com.tencent.mm.plugin.finder.event.base.d)this.sbU);
+        AppMethodBeat.o(202287);
         return;
       }
     }
-    AppMethodBeat.o(201827);
+    AppMethodBeat.o(202287);
   }
   
-  public final void aTt()
+  public final void aTS()
   {
-    AppMethodBeat.i(201826);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    AppMethodBeat.i(202286);
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.scw;
     if (localBaseFinderFeedLoader != null)
     {
       localBaseFinderFeedLoader.requestLoadMore();
-      AppMethodBeat.o(201826);
+      AppMethodBeat.o(202286);
       return;
     }
-    AppMethodBeat.o(201826);
+    AppMethodBeat.o(202286);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(201828);
-    this.rTq.onDetach();
-    Object localObject = FinderReporterUIC.tcM;
-    localObject = FinderReporterUIC.a.eY((Context)this.fLP);
+    AppMethodBeat.i(202288);
+    this.sbU.onDetach();
+    Object localObject = FinderReporterUIC.tnG;
+    localObject = FinderReporterUIC.a.fc((Context)this.fNT);
     if (localObject != null)
     {
       localObject = FinderReporterUIC.a((FinderReporterUIC)localObject);
       if (localObject != null) {
-        ((c)localObject).b((com.tencent.mm.plugin.finder.event.base.d)this.rTq);
+        ((c)localObject).b((com.tencent.mm.plugin.finder.event.base.d)this.sbU);
       }
     }
     super.onDetach();
-    AppMethodBeat.o(201828);
+    AppMethodBeat.o(202288);
   }
   
   public final void requestRefresh()
   {
-    AppMethodBeat.i(201825);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    AppMethodBeat.i(202285);
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.scw;
     if (localBaseFinderFeedLoader != null)
     {
       localBaseFinderFeedLoader.requestRefresh();
-      AppMethodBeat.o(201825);
+      AppMethodBeat.o(202285);
       return;
     }
-    AppMethodBeat.o(201825);
+    AppMethodBeat.o(202285);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "pos", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "pos", "", "invoke"})
   static final class a
     extends q
     implements b<Integer, BaseFinderFeed>
@@ -115,7 +115,7 @@ public final class m$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.m.a
  * JD-Core Version:    0.7.0.1
  */

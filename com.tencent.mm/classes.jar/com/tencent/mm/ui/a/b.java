@@ -8,31 +8,31 @@ import java.util.List;
 
 public final class b
 {
-  private List<String> JgU;
+  private List<String> JBF;
   private final String TAG;
   
   public b()
   {
     AppMethodBeat.i(141500);
     this.TAG = "MicroMsg.Accessibility.Tool";
-    this.JgU = new ArrayList();
+    this.JBF = new ArrayList();
     AppMethodBeat.o(141500);
   }
   
-  public final b aVv(String paramString)
+  public final b aWW(String paramString)
   {
     AppMethodBeat.i(141501);
-    this.JgU.add(paramString);
+    this.JBF.add(paramString);
     AppMethodBeat.o(141501);
     return this;
   }
   
-  public final void gd(View paramView)
+  public final void gc(View paramView)
   {
     AppMethodBeat.i(141502);
-    if ((paramView != null) && (this.JgU.size() > 0))
+    if ((paramView != null) && (this.JBF.size() > 0))
     {
-      Iterator localIterator = this.JgU.iterator();
+      Iterator localIterator = this.JBF.iterator();
       String str2;
       for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + ",") {
         str2 = (String)localIterator.next();

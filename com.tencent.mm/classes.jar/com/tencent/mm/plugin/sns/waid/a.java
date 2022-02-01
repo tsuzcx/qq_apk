@@ -3,56 +3,56 @@ package com.tencent.mm.plugin.sns.waid;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 
 public final class a
 {
-  ArrayList<Runnable> AEk;
-  HandlerThread AEl;
-  Handler AEm;
-  private Runnable AEn;
+  ArrayList<Runnable> AVN;
+  HandlerThread AVO;
+  Handler AVP;
+  private Runnable AVQ;
   private final String TAG;
   
   public a()
   {
-    AppMethodBeat.i(198628);
+    AppMethodBeat.i(220177);
     this.TAG = "InitTaskMgr";
-    this.AEk = new ArrayList();
-    this.AEn = new Runnable()
+    this.AVN = new ArrayList();
+    this.AVQ = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(198627);
+        AppMethodBeat.i(220176);
         try
         {
           long l1 = System.currentTimeMillis();
-          com.tencent.mm.plugin.sns.ad.a.a.dRg();
+          com.tencent.mm.plugin.sns.ad.a.a.dUC();
           long l2 = System.currentTimeMillis();
-          ad.i("InitTaskMgr", "DeviceIdInitTask run, timeCost=" + (l2 - l1));
-          AppMethodBeat.o(198627);
+          ae.i("InitTaskMgr", "DeviceIdInitTask run, timeCost=" + (l2 - l1));
+          AppMethodBeat.o(220176);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("InitTaskMgr", "mDeviceIdInitTask exp=" + localException.toString());
-          AppMethodBeat.o(198627);
+          ae.e("InitTaskMgr", "mDeviceIdInitTask exp=" + localException.toString());
+          AppMethodBeat.o(220176);
         }
       }
     };
-    this.AEk.add(this.AEn);
+    this.AVN.add(this.AVQ);
     try
     {
-      this.AEl = new HandlerThread("waidproviderInitTask");
-      this.AEl.start();
-      this.AEm = new Handler(this.AEl.getLooper());
-      AppMethodBeat.o(198628);
+      this.AVO = new HandlerThread("waidproviderInitTask");
+      this.AVO.start();
+      this.AVP = new Handler(this.AVO.getLooper());
+      AppMethodBeat.o(220177);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("InitTaskMgr", "initWorkThread exp=" + localException.toString());
-      AppMethodBeat.o(198628);
+      ae.e("InitTaskMgr", "initWorkThread exp=" + localException.toString());
+      AppMethodBeat.o(220177);
     }
   }
 }

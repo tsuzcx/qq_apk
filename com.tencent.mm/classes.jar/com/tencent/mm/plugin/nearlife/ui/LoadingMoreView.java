@@ -15,8 +15,8 @@ public class LoadingMoreView
   extends LinearLayout
 {
   private Context context;
-  private ImageView dwy;
-  protected LinearLayout oDd;
+  private ImageView dxD;
+  protected LinearLayout oJF;
   
   public LoadingMoreView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,14 +24,14 @@ public class LoadingMoreView
     AppMethodBeat.i(26591);
     this.context = paramContext;
     paramContext = LayoutInflater.from(this.context).inflate(2131494582, this, true);
-    this.dwy = ((ImageView)findViewById(2131301409));
-    this.oDd = ((LinearLayout)paramContext.findViewById(2131301504));
-    this.oDd.setVisibility(0);
+    this.dxD = ((ImageView)findViewById(2131301409));
+    this.oJF = ((LinearLayout)paramContext.findViewById(2131301504));
+    this.oJF.setVisibility(0);
     paramContext = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     paramContext.setDuration(1000L);
     paramContext.setRepeatCount(-1);
     paramContext.setInterpolator(new LinearInterpolator());
-    this.dwy.startAnimation(paramContext);
+    this.dxD.startAnimation(paramContext);
     AppMethodBeat.o(26591);
   }
 }

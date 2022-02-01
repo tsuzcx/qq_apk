@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -16,7 +16,7 @@ public class RealnameDialogActivity
   extends WalletBaseUI
 {
   private int type = 1;
-  private RealnameGuideHelper vAu;
+  private RealnameGuideHelper vMy;
   
   public int getLayoutId()
   {
@@ -30,12 +30,12 @@ public class RealnameDialogActivity
     paramBundle = getIntent();
     if ((paramBundle != null) && (paramBundle.hasExtra("key_realname_guide_helper")))
     {
-      this.vAu = ((RealnameGuideHelper)paramBundle.getParcelableExtra("key_realname_guide_helper"));
+      this.vMy = ((RealnameGuideHelper)paramBundle.getParcelableExtra("key_realname_guide_helper"));
       paramBundle = new Bundle();
       paramBundle.putString("realname_verify_process_jump_plugin", "wallet_core");
       paramBundle.putString("realname_verify_process_jump_activity", ".id_verify.RealnameDialogActivity");
       paramBundle.putBoolean("process_finish_stay_orgpage", false);
-      boolean bool1 = this.vAu.a(this, paramBundle, new DialogInterface.OnClickListener()
+      boolean bool1 = this.vMy.a(this, paramBundle, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -45,7 +45,7 @@ public class RealnameDialogActivity
           AppMethodBeat.o(70015);
         }
       }, null, true);
-      boolean bool2 = this.vAu.a(this, paramBundle, new DialogInterface.OnClickListener()
+      boolean bool2 = this.vMy.a(this, paramBundle, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -78,7 +78,7 @@ public class RealnameDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.RealnameDialogActivity
  * JD-Core Version:    0.7.0.1
  */

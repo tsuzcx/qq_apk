@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,16 +20,16 @@ public final class aa
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiRemoveMapMarkers", "data is null");
+      ae.e("MicroMsg.JsApiRemoveMapMarkers", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(143690);
       return;
     }
-    ad.i("MicroMsg.JsApiRemoveMapMarkers", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiRemoveMapMarkers", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiRemoveMapMarkers", "mapView is null, return");
+      ae.e("MicroMsg.JsApiRemoveMapMarkers", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(143690);
       return;
@@ -41,14 +41,14 @@ public final class aa
         int i = 0;
         while (i < paramJSONObject.length())
         {
-          localb.PM(paramJSONObject.getString(i));
+          localb.Qu(paramJSONObject.getString(i));
           i += 1;
         }
-        a(paramc, paramInt, e("ok", null), true, localb.bkR());
+        a(paramc, paramInt, e("ok", null), true, localb.blB());
       }
       catch (JSONException paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiRemoveMapMarkers", paramJSONObject, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.JsApiRemoveMapMarkers", paramJSONObject, "", new Object[0]);
         paramc.h(paramInt, e("fail:internal error", null));
         AppMethodBeat.o(143690);
         return;
@@ -59,7 +59,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.aa
  * JD-Core Version:    0.7.0.1
  */

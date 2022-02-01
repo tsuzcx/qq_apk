@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.c.h;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.av.a.c.h;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -18,10 +18,10 @@ public final class at
   public static Intent a(Bitmap paramBitmap, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(79043);
-    ad.i("MicroMsg.WebViewShortcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.WebViewShortcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if ((paramBitmap == null) && (paramBoolean))
     {
-      ad.e("MicroMsg.WebViewShortcutManager", "no bmp");
+      ae.e("MicroMsg.WebViewShortcutManager", "no bmp");
       AppMethodBeat.o(79043);
       return null;
     }
@@ -40,7 +40,7 @@ public final class at
       {
         paramString2.putExtra("ext_info", URLEncoder.encode(paramString1, "utf-8"));
         label113:
-        paramString2.setPackage(aj.getPackageName());
+        paramString2.setPackage(ak.getPackageName());
         paramString2.addFlags(67108864);
         ((Intent)localObject).putExtra("android.intent.extra.shortcut.INTENT", paramString2);
         if (paramBitmap != null)
@@ -63,14 +63,14 @@ public final class at
   {
     AppMethodBeat.i(79042);
     if (parama != null) {
-      parama.vc(paramBoolean);
+      parama.vk(paramBoolean);
     }
     AppMethodBeat.o(79042);
   }
   
   public static abstract interface a
   {
-    public abstract void vc(boolean paramBoolean);
+    public abstract void vk(boolean paramBoolean);
   }
 }
 

@@ -8,10 +8,11 @@ public final class a
   public static String d;
   public static String e;
   public static String f;
-  public static String[] g = new String[0];
-  public static boolean h = false;
-  public static boolean i = true;
-  public static String j;
+  public static String g;
+  public static String[] h = new String[0];
+  public static boolean i = false;
+  public static boolean j = true;
+  public static String k;
 }
 
 

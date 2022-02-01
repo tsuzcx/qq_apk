@@ -8,7 +8,7 @@ import d.l;
 import d.z;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "url", "", "invoke", "com/tencent/mm/plugin/finder/ui/FinderCreateContactUI$spanLinks$1$1"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "url", "", "invoke", "com/tencent/mm/plugin/finder/ui/FinderCreateContactUI$spanLinks$1$1"})
 final class FinderCreateContactUI$j
   extends q
   implements b<String, z>

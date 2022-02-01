@@ -6,13 +6,13 @@ public enum Request$Priority
 {
   static
   {
-    AppMethodBeat.i(220645);
+    AppMethodBeat.i(197584);
     LOW = new Priority("LOW", 0);
     NORMAL = new Priority("NORMAL", 1);
     HIGH = new Priority("HIGH", 2);
     IMMEDIATE = new Priority("IMMEDIATE", 3);
     $VALUES = new Priority[] { LOW, NORMAL, HIGH, IMMEDIATE };
-    AppMethodBeat.o(220645);
+    AppMethodBeat.o(197584);
   }
   
   private Request$Priority() {}

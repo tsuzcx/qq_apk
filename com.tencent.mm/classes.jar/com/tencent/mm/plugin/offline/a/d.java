@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,16 +12,16 @@ import org.json.JSONObject;
 public final class d
   extends m
 {
-  public String wxT;
-  public int wxU;
-  public String wxV;
+  public String wNE;
+  public int wNF;
+  public String wNG;
   
   public d()
   {
     AppMethodBeat.i(66286);
     HashMap localHashMap = new HashMap();
-    com.tencent.mm.kernel.g.ajD();
-    Object localObject = com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Izy, null);
+    com.tencent.mm.kernel.g.ajS();
+    Object localObject = com.tencent.mm.kernel.g.ajR().ajA().get(am.a.ITX, null);
     if (localObject != null) {
       localHashMap.put("ack_key", (String)localObject);
     }
@@ -33,7 +33,7 @@ public final class d
   public final long getReturnTimeout()
   {
     AppMethodBeat.i(66288);
-    long l = com.tencent.mm.plugin.offline.g.dwm();
+    long l = com.tencent.mm.plugin.offline.g.dzC();
     AppMethodBeat.o(66288);
     return l;
   }
@@ -53,21 +53,21 @@ public final class d
     AppMethodBeat.i(66287);
     if (paramInt == 0)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 56L, 1L, true);
-      this.wxT = paramJSONObject.optString("appmsg");
-      this.wxU = (paramJSONObject.optInt("poll_time") * 1000);
-      this.wxV = paramJSONObject.optString("ack_key");
-      if (this.wxU > 0)
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 56L, 1L, true);
+      this.wNE = paramJSONObject.optString("appmsg");
+      this.wNF = (paramJSONObject.optInt("poll_time") * 1000);
+      this.wNG = paramJSONObject.optString("ack_key");
+      if (this.wNF > 0)
       {
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Izx, Integer.valueOf(this.wxU));
+        com.tencent.mm.kernel.g.ajS();
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.ITW, Integer.valueOf(this.wNF));
       }
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Izy, this.wxV);
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.ITX, this.wNG);
       AppMethodBeat.o(66287);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 57L, 1L, true);
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 57L, 1L, true);
     AppMethodBeat.o(66287);
   }
   
@@ -78,7 +78,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.d
  * JD-Core Version:    0.7.0.1
  */

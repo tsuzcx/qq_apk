@@ -9,9 +9,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
+import com.tencent.mm.av.a.a;
 import com.tencent.mm.plugin.game.b.b.l;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.aq;
 import java.util.LinkedList;
 
@@ -38,7 +38,7 @@ public class GameVideoTagContainer
   public void setData(LinkedList<l> paramLinkedList)
   {
     AppMethodBeat.i(41168);
-    if (bt.hj(paramLinkedList))
+    if (bu.ht(paramLinkedList))
     {
       setVisibility(8);
       AppMethodBeat.o(41168);
@@ -69,7 +69,7 @@ public class GameVideoTagContainer
       localObject1 = (l)paramLinkedList.get(i);
       localObject2 = (ImageView)getChildAt(i);
       ((LinearLayout.LayoutParams)((ImageView)localObject2).getLayoutParams()).width = aq.fromDPToPix(getContext(), ((l)localObject1).width);
-      a.aIP().loadImage(((l)localObject1).tSB, (ImageView)localObject2);
+      a.aJh().loadImage(((l)localObject1).uds, (ImageView)localObject2);
       ((ImageView)localObject2).setVisibility(0);
       i += 1;
     }
@@ -78,7 +78,7 @@ public class GameVideoTagContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameVideoTagContainer
  * JD-Core Version:    0.7.0.1
  */

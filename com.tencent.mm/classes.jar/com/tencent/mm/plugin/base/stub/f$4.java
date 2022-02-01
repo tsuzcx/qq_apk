@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.base.stub;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.vending.g.d.a;
 import java.util.concurrent.CountDownLatch;
 
@@ -12,10 +12,10 @@ final class f$4
   
   public final void ce(Object paramObject)
   {
-    AppMethodBeat.i(193149);
-    ad.e("MicroMsg.WXBizLogic", "onInterrupt error");
+    AppMethodBeat.i(186407);
+    ae.e("MicroMsg.WXBizLogic", "onInterrupt error");
     this.val$countDownLatch.countDown();
-    AppMethodBeat.o(193149);
+    AppMethodBeat.o(186407);
   }
 }
 

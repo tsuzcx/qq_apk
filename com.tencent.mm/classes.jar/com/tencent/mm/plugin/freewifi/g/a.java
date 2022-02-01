@@ -15,20 +15,20 @@ public final class a
   {
     AppMethodBeat.i(24943);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.IhC.put("key", "TEXT PRIMARY KEY ");
+    locala.IBN.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "key";
+    locala.IBM = "key";
     locala.columns[1] = "value";
-    locala.IhC.put("value", "TEXT");
+    locala.IBN.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "modifyTime";
-    locala.IhC.put("modifyTime", "LONG default '0' ");
+    locala.IBN.put("modifyTime", "LONG default '0' ");
     localStringBuilder.append(" modifyTime LONG default '0' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

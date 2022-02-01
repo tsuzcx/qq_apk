@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class e$c$a
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class e$c$a
   public final void run()
   {
     AppMethodBeat.i(165629);
-    this.oNe.invoke();
+    this.oTG.invoke();
     AppMethodBeat.o(165629);
   }
 }

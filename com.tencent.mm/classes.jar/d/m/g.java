@@ -8,18 +8,18 @@ import d.v;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 final class g<T>
   implements h<T>
 {
-  final d.g.a.a<T> NGF;
-  final b<T, T> NGG;
+  final d.g.a.a<T> OdL;
+  final b<T, T> OdM;
   
   public g(d.g.a.a<? extends T> parama, b<? super T, ? extends T> paramb)
   {
     AppMethodBeat.i(129487);
-    this.NGF = parama;
-    this.NGG = paramb;
+    this.OdL = parama;
+    this.OdM = paramb;
     AppMethodBeat.o(129487);
   }
   
@@ -31,35 +31,35 @@ final class g<T>
     return localIterator;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements d.g.b.a.a, Iterator<T>
   {
-    private int NGy = -2;
-    private T NGz;
+    private int OdE = -2;
+    private T OdF;
     
-    private final void guz()
+    private final void gzb()
     {
       AppMethodBeat.i(129501);
       Object localObject1;
-      if (this.NGy == -2)
+      if (this.OdE == -2)
       {
-        localObject1 = this.NGH.NGF.invoke();
-        this.NGz = localObject1;
-        if (this.NGz != null) {
+        localObject1 = this.OdN.OdL.invoke();
+        this.OdF = localObject1;
+        if (this.OdF != null) {
           break label83;
         }
       }
       label83:
       for (int i = 0;; i = 1)
       {
-        this.NGy = i;
+        this.OdE = i;
         AppMethodBeat.o(129501);
         return;
-        localObject1 = this.NGH.NGG;
-        Object localObject2 = this.NGz;
+        localObject1 = this.OdN.OdM;
+        Object localObject2 = this.OdF;
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localObject1 = ((b)localObject1).invoke(localObject2);
         break;
@@ -69,10 +69,10 @@ final class g<T>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129503);
-      if (this.NGy < 0) {
-        guz();
+      if (this.OdE < 0) {
+        gzb();
       }
-      if (this.NGy == 1)
+      if (this.OdE == 1)
       {
         AppMethodBeat.o(129503);
         return true;
@@ -84,23 +84,23 @@ final class g<T>
     public final T next()
     {
       AppMethodBeat.i(129502);
-      if (this.NGy < 0) {
-        guz();
+      if (this.OdE < 0) {
+        gzb();
       }
-      if (this.NGy == 0)
+      if (this.OdE == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.NGz;
+      Object localObject = this.OdF;
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type T");
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      this.NGy = -1;
+      this.OdE = -1;
       AppMethodBeat.o(129502);
       return localObject;
     }

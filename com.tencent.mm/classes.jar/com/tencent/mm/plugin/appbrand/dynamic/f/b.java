@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.c;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.aa.b.c;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -12,9 +12,9 @@ public final class b
   extends c
 {
   public String cacheKey;
-  public Map<String, String> khC;
-  public int khD;
-  public int khE;
+  public Map<String, String> kkS;
+  public int kkT;
+  public int kkU;
   public String path;
   public String title;
   
@@ -38,14 +38,14 @@ public final class b
       {
         localJSONObject.put("title", this.title);
         localJSONObject.put("path", this.path);
-        if (this.khC != null) {
+        if (this.kkS != null) {
           continue;
         }
         localObject = new HashMap();
         localJSONObject.put("query", new JSONObject((Map)localObject));
         localJSONObject.put("cacheKey", this.cacheKey);
-        localJSONObject.put("width", g.vI(this.khD));
-        localJSONObject.put("height", g.vI(this.khE));
+        localJSONObject.put("width", g.vN(this.kkT));
+        localJSONObject.put("height", g.vN(this.kkU));
       }
       catch (JSONException localJSONException)
       {
@@ -54,7 +54,7 @@ public final class b
       }
       AppMethodBeat.o(121392);
       return localJSONObject;
-      localObject = this.khC;
+      localObject = this.kkS;
     }
   }
 }

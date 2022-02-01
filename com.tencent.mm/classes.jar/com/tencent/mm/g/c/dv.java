@@ -8,35 +8,35 @@ public abstract class dv
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS lbsverifymessage_unread_index ON LBSVerifyMessage(status)", "CREATE INDEX IF NOT EXISTS lbsverifymessage_createtimeIndex ON LBSVerifyMessage(createtime)" };
-  private static final int eDc;
-  private static final int eEB;
-  private static final int eEC = "ticket".hashCode();
-  private static final int eEm;
-  private static final int eHX = "flag".hashCode();
-  private static final int eIP;
-  private static final int eLf;
-  private static final int eSQ = "svrid".hashCode();
-  private static final int feK;
-  private static final int fgJ;
-  private static final int fgK;
-  private static final int fgL;
-  private static final int fgM;
+  private static final int eEL;
+  private static final int eFV;
+  private static final int eGk;
+  private static final int eGl = "ticket".hashCode();
+  private static final int eJG = "flag".hashCode();
+  private static final int eKy;
+  private static final int eMP;
+  private static final int eUB = "svrid".hashCode();
+  private static final int fgF;
+  private static final int fiH;
+  private static final int fiI;
+  private static final int fiJ;
+  private static final int fiK;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eCZ = true;
-  private boolean eDP = true;
-  private boolean eEA = true;
-  private boolean eEz = true;
-  private boolean eHV = true;
-  private boolean eIA = true;
-  private boolean eKS = true;
-  private boolean eSe = true;
-  private boolean feB = true;
-  private boolean fgF = true;
-  private boolean fgG = true;
-  private boolean fgH = true;
-  private boolean fgI = true;
+  private boolean eEI = true;
+  private boolean eFy = true;
+  private boolean eGi = true;
+  private boolean eGj = true;
+  private boolean eJE = true;
+  private boolean eKj = true;
+  private boolean eMB = true;
+  private boolean eTP = true;
+  private boolean fgu = true;
+  private boolean fiD = true;
+  private boolean fiE = true;
+  private boolean fiF = true;
+  private boolean fiG = true;
   public String field_content;
   public long field_createtime;
   public int field_flag;
@@ -54,17 +54,17 @@ public abstract class dv
   
   static
   {
-    eDc = "status".hashCode();
+    eEL = "status".hashCode();
     type_HASHCODE = "type".hashCode();
-    eEB = "scene".hashCode();
-    feK = "createtime".hashCode();
-    eLf = "talker".hashCode();
-    eEm = "content".hashCode();
-    fgJ = "sayhiuser".hashCode();
-    fgK = "sayhicontent".hashCode();
-    fgL = "imgpath".hashCode();
-    eIP = "isSend".hashCode();
-    fgM = "sayhiencryptuser".hashCode();
+    eGk = "scene".hashCode();
+    fgF = "createtime".hashCode();
+    eMP = "talker".hashCode();
+    eFV = "content".hashCode();
+    fiH = "sayhiuser".hashCode();
+    fiI = "sayhicontent".hashCode();
+    fiJ = "imgpath".hashCode();
+    eKy = "isSend".hashCode();
+    fiK = "sayhiencryptuser".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -80,11 +80,11 @@ public abstract class dv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eSQ != k) {
+      if (eUB != k) {
         break label65;
       }
       this.field_svrid = paramCursor.getLong(i);
-      this.eSe = true;
+      this.eTP = true;
     }
     for (;;)
     {
@@ -92,31 +92,31 @@ public abstract class dv
       break label20;
       break;
       label65:
-      if (eDc == k) {
+      if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eEB == k) {
+      } else if (eGk == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (feK == k) {
+      } else if (fgF == k) {
         this.field_createtime = paramCursor.getLong(i);
-      } else if (eLf == k) {
+      } else if (eMP == k) {
         this.field_talker = paramCursor.getString(i);
-      } else if (eEm == k) {
+      } else if (eFV == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (fgJ == k) {
+      } else if (fiH == k) {
         this.field_sayhiuser = paramCursor.getString(i);
-      } else if (fgK == k) {
+      } else if (fiI == k) {
         this.field_sayhicontent = paramCursor.getString(i);
-      } else if (fgL == k) {
+      } else if (fiJ == k) {
         this.field_imgpath = paramCursor.getString(i);
-      } else if (eIP == k) {
+      } else if (eKy == k) {
         this.field_isSend = paramCursor.getInt(i);
-      } else if (fgM == k) {
+      } else if (fiK == k) {
         this.field_sayhiencryptuser = paramCursor.getString(i);
-      } else if (eEC == k) {
+      } else if (eGl == k) {
         this.field_ticket = paramCursor.getString(i);
-      } else if (eHX == k) {
+      } else if (eJG == k) {
         this.field_flag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -127,46 +127,46 @@ public abstract class dv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eSe) {
+    if (this.eTP) {
       localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.feB) {
+    if (this.fgu) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.eKS) {
+    if (this.eMB) {
       localContentValues.put("talker", this.field_talker);
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.fgF) {
+    if (this.fiD) {
       localContentValues.put("sayhiuser", this.field_sayhiuser);
     }
-    if (this.fgG) {
+    if (this.fiE) {
       localContentValues.put("sayhicontent", this.field_sayhicontent);
     }
-    if (this.fgH) {
+    if (this.fiF) {
       localContentValues.put("imgpath", this.field_imgpath);
     }
-    if (this.eIA) {
+    if (this.eKj) {
       localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
-    if (this.fgI) {
+    if (this.fiG) {
       localContentValues.put("sayhiencryptuser", this.field_sayhiencryptuser);
     }
-    if (this.eEA) {
+    if (this.eGj) {
       localContentValues.put("ticket", this.field_ticket);
     }
-    if (this.eHV) {
+    if (this.eJE) {
       localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
     if (this.systemRowid > 0L) {

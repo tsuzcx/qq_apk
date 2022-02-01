@@ -1,12 +1,38 @@
 package com.tencent.mm.aj;
 
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.f;
+import com.tencent.mm.cache.g.a;
+import com.tencent.mm.memory.a.c;
+
 public final class a
 {
-  public boolean hLD = true;
+  f<String, Bitmap> hOQ;
+  
+  public a(int paramInt)
+  {
+    AppMethodBeat.i(150193);
+    this.hOQ = new c(paramInt);
+    AppMethodBeat.o(150193);
+  }
+  
+  public final void c(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(150194);
+    if (this.hOQ != null)
+    {
+      this.hOQ.q(paramString, paramBitmap);
+      AppMethodBeat.o(150194);
+      return;
+    }
+    g.a.a("avatar_cache", paramString, paramBitmap);
+    AppMethodBeat.o(150194);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.a
  * JD-Core Version:    0.7.0.1
  */

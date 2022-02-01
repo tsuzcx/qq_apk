@@ -6,14 +6,14 @@ import java.io.IOException;
 public final class k
   extends IOException
 {
-  public q Nrq = null;
+  public q NOw = null;
   
   public k(String paramString)
   {
     super(paramString);
   }
   
-  static k grP()
+  static k gwr()
   {
     AppMethodBeat.i(59481);
     k localk = new k("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
@@ -21,7 +21,7 @@ public final class k
     return localk;
   }
   
-  static k grQ()
+  static k gws()
   {
     AppMethodBeat.i(59482);
     k localk = new k("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
@@ -29,7 +29,7 @@ public final class k
     return localk;
   }
   
-  static k grR()
+  static k gwt()
   {
     AppMethodBeat.i(59483);
     k localk = new k("CodedInputStream encountered a malformed varint.");
@@ -37,7 +37,7 @@ public final class k
     return localk;
   }
   
-  static k grS()
+  static k gwu()
   {
     AppMethodBeat.i(59484);
     k localk = new k("Protocol message contained an invalid tag (zero).");
@@ -45,7 +45,7 @@ public final class k
     return localk;
   }
   
-  static k grT()
+  static k gwv()
   {
     AppMethodBeat.i(59485);
     k localk = new k("Protocol message end-group tag did not match expected tag.");
@@ -53,7 +53,7 @@ public final class k
     return localk;
   }
   
-  static k grU()
+  static k gww()
   {
     AppMethodBeat.i(59486);
     k localk = new k("Protocol message tag had invalid wire type.");
@@ -61,7 +61,7 @@ public final class k
     return localk;
   }
   
-  static k grV()
+  static k gwx()
   {
     AppMethodBeat.i(59487);
     k localk = new k("Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit.");
@@ -69,7 +69,7 @@ public final class k
     return localk;
   }
   
-  static k grW()
+  static k gwy()
   {
     AppMethodBeat.i(59488);
     k localk = new k("Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");
@@ -79,7 +79,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.h.k
  * JD-Core Version:    0.7.0.1
  */

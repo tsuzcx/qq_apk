@@ -5,29 +5,29 @@ import java.util.List;
 
 public final class b
 {
-  public int qQb;
-  public int qQc;
-  public String qQf;
-  public String qQg;
-  public String qQh;
-  public int qQi;
-  public List<a> qQj;
-  public int qQk;
-  public int qQl;
-  public String qQm;
+  public String qXW;
+  public int qXZ;
+  public int qYa;
+  public int qYb;
+  public List<a> qYc;
+  public int qYd;
+  public int qYe;
+  public int qYf;
+  public int qYg;
+  public String qYh;
   public String script;
   
   public final String toString()
   {
-    AppMethodBeat.i(210270);
-    String str = "EdgeComputingScriptConfigModel{configID='" + this.qQf + '\'' + ", dataSourceType=" + this.qQb + ", dataSourceID=" + this.qQc + ", dataSourceDB='" + this.qQg + '\'' + ", dataSourceSQL='" + this.qQh + '\'' + ", reportID=" + this.qQi + ", fieldConfigModels=" + this.qQj + ", isInstantReport=" + this.qQk + ", dbExpireTime=" + this.qQl + ", script='" + this.script + '\'' + ", originalJson='" + this.qQm + '\'' + '}';
-    AppMethodBeat.o(210270);
+    AppMethodBeat.i(195923);
+    String str = "EdgeComputingScriptConfigModel{configID='" + this.qXW + '\'' + ", dataSourceType=" + this.qXZ + ", dataSourceID=" + this.qYa + ", reportID=" + this.qYb + ", fieldConfigModels=" + this.qYc + ", isInstantReport=" + this.qYd + ", isRepeat=" + this.qYe + ", runPeriod=" + this.qYf + ", dbExpireTime=" + this.qYg + ", script='" + this.script + '\'' + ", originalJson='" + this.qYh + '\'' + '}';
+    AppMethodBeat.o(195923);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.e.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,48 @@
 package com.tencent.mm.appbrand.v8;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class i
   extends z
 {
-  private static final ThreadLocal<i> cYb;
-  private final a cXZ;
-  private boolean cYa;
+  private static final ThreadLocal<i> cYZ;
+  private final a cYX;
+  private boolean cYY;
   
   static
   {
     AppMethodBeat.i(144034);
-    cYb = new ThreadLocal();
+    cYZ = new ThreadLocal();
     AppMethodBeat.o(144034);
   }
   
   private i(a parama, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.cXZ = parama;
-    this.cYa = true;
+    this.cYX = parama;
+    this.cYY = true;
   }
   
   public static i a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(198687);
-    if (cYb.get() != null)
+    AppMethodBeat.i(194168);
+    if (cYZ.get() != null)
     {
       parama = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(198687);
+      AppMethodBeat.o(194168);
       throw parama;
     }
     parama = new i(parama, paramBoolean);
-    cYb.set(parama);
-    AppMethodBeat.o(198687);
+    cYZ.set(parama);
+    AppMethodBeat.o(194168);
     return parama;
   }
   
-  protected final boolean Nv()
+  protected final boolean Nq()
   {
     AppMethodBeat.i(144028);
-    if ((!this.cYa) && (super.Nv()))
+    if ((!this.cYY) && (super.Nq()))
     {
       AppMethodBeat.o(144028);
       return true;
@@ -51,40 +51,48 @@ final class i
     return false;
   }
   
-  protected final void Nw()
+  protected final void Nr()
   {
     AppMethodBeat.i(144029);
-    super.Nw();
-    this.cYa = this.cXZ.Nu();
+    super.Nr();
+    this.cYY = this.cYX.Np();
     AppMethodBeat.o(144029);
   }
   
-  protected final void Nx()
+  protected final void Ns()
+  {
+    AppMethodBeat.i(194169);
+    super.Ns();
+    this.cYY = this.cYX.Np();
+    AppMethodBeat.o(194169);
+  }
+  
+  protected final void Nt()
   {
     AppMethodBeat.i(144030);
-    super.Nx();
-    if (this.cXZ != null) {
-      this.cXZ.closeUVLoop();
+    super.Nt();
+    if (this.cYX != null) {
+      this.cYX.closeUVLoop();
     }
     AppMethodBeat.o(144030);
   }
   
-  protected final void Ny()
+  protected final void Nu()
   {
     AppMethodBeat.i(144031);
-    if ((this.cXZ != null) && (!isPaused())) {
-      this.cXZ.wakeUpUVLoop();
+    if ((this.cYX != null) && (!isPaused())) {
+      this.cYX.wakeUpUVLoop();
     }
     AppMethodBeat.o(144031);
   }
   
-  protected final void Nz()
+  protected final void Nv()
   {
     AppMethodBeat.i(144033);
-    if (this.cXZ != null)
+    if (this.cYX != null)
     {
-      ad.i("MicroMsg.NodeJSRuntimeLooper", "onQuit wakeUpUVLoop");
-      this.cXZ.wakeUpUVLoop();
+      ae.i("MicroMsg.NodeJSRuntimeLooper", "onQuit wakeUpUVLoop");
+      this.cYX.wakeUpUVLoop();
     }
     AppMethodBeat.o(144033);
   }
@@ -92,15 +100,15 @@ final class i
   protected final void onResume()
   {
     AppMethodBeat.i(144032);
-    if (this.cXZ != null) {
-      this.cXZ.wakeUpUVLoop();
+    if (this.cYX != null) {
+      this.cYX.wakeUpUVLoop();
     }
     AppMethodBeat.o(144032);
   }
   
   static abstract interface a
   {
-    public abstract boolean Nu();
+    public abstract boolean Np();
     
     public abstract void closeUVLoop();
     
@@ -109,7 +117,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.i
  * JD-Core Version:    0.7.0.1
  */

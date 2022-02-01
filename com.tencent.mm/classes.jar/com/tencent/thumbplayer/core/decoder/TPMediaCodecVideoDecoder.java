@@ -31,7 +31,7 @@ public class TPMediaCodecVideoDecoder
   
   void configCodec(MediaCodec paramMediaCodec)
   {
-    AppMethodBeat.i(220560);
+    AppMethodBeat.i(197499);
     MediaFormat localMediaFormat = MediaFormat.createVideoFormat(this.mMimeType, this.mVideoWidth, this.mVideoHeight);
     if (Build.VERSION.SDK_INT > 22) {
       localMediaFormat.setInteger("rotation-degrees", this.mRotation);
@@ -41,7 +41,7 @@ public class TPMediaCodecVideoDecoder
     }
     paramMediaCodec.configure(localMediaFormat, this.mSurface, this.mMediaCrypto, 0);
     paramMediaCodec.setVideoScalingMode(1);
-    AppMethodBeat.o(220560);
+    AppMethodBeat.o(197499);
   }
   
   String getLogTag()
@@ -84,15 +84,15 @@ public class TPMediaCodecVideoDecoder
   
   void processOutputConfigData(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo)
   {
-    AppMethodBeat.i(220561);
+    AppMethodBeat.i(197500);
     paramTPFrameInfo.errCode = 0;
     processOutputBuffer(paramMediaCodec, paramInt, paramBufferInfo, paramTPFrameInfo);
-    AppMethodBeat.o(220561);
+    AppMethodBeat.o(197500);
   }
   
   void processOutputFormatChanged(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(220562);
+    AppMethodBeat.i(197501);
     if ((paramMediaFormat.containsKey("crop-right")) && (paramMediaFormat.containsKey("crop-left")) && (paramMediaFormat.containsKey("crop-bottom")) && (paramMediaFormat.containsKey("crop-top"))) {}
     for (int i = 1;; i = 0)
     {
@@ -106,30 +106,30 @@ public class TPMediaCodecVideoDecoder
         this.mCropBottom = paramMediaFormat.getInteger("crop-bottom");
       }
       TPNativeLog.printLog(2, "TPMediaCodecVideoDecode", "processOutputFormatChanged: mVideoWidth: " + this.mVideoWidth + ", mVideoHeight: " + this.mVideoHeight + ", mCropLeft: " + this.mCropLeft + ", mCropRight: " + this.mCropRight + ", mCropTop: " + this.mCropTop + ", mCropBottom: " + this.mCropBottom);
-      AppMethodBeat.o(220562);
+      AppMethodBeat.o(197501);
       return;
     }
   }
   
   public int setOutputSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(220563);
+    AppMethodBeat.i(197502);
     int i = super.setOutputSurface(paramSurface);
-    AppMethodBeat.o(220563);
+    AppMethodBeat.o(197502);
     return i;
   }
   
   public boolean setParamObject(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(220564);
+    AppMethodBeat.i(197503);
     if (paramInt == 300)
     {
       this.mMediaCrypto = ((MediaCrypto)paramObject);
-      AppMethodBeat.o(220564);
+      AppMethodBeat.o(197503);
       return true;
     }
     boolean bool = super.setParamObject(paramInt, paramObject);
-    AppMethodBeat.o(220564);
+    AppMethodBeat.o(197503);
     return bool;
   }
 }

@@ -12,19 +12,38 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class a
 {
-  private static volatile a kib;
-  public Map<String, List<IPCDynamicPageView>> kic;
-  public Map<String, a> kid;
+  private static volatile a klr;
+  public Map<String, List<IPCDynamicPageView>> kls;
+  public Map<String, a> klt;
   
   private a()
   {
     AppMethodBeat.i(121420);
-    this.kic = new ConcurrentHashMap();
-    this.kid = new ConcurrentHashMap();
+    this.kls = new ConcurrentHashMap();
+    this.klt = new ConcurrentHashMap();
     AppMethodBeat.o(121420);
   }
   
-  private static IPCDynamicPageView bf(List<IPCDynamicPageView> paramList)
+  public static a bgR()
+  {
+    AppMethodBeat.i(121421);
+    if (klr == null) {}
+    try
+    {
+      if (klr == null) {
+        klr = new a();
+      }
+      a locala = klr;
+      AppMethodBeat.o(121421);
+      return locala;
+    }
+    finally
+    {
+      AppMethodBeat.o(121421);
+    }
+  }
+  
+  private static IPCDynamicPageView bh(List<IPCDynamicPageView> paramList)
   {
     AppMethodBeat.i(121425);
     int i = 0;
@@ -42,26 +61,7 @@ public class a
     return null;
   }
   
-  public static a bgj()
-  {
-    AppMethodBeat.i(121421);
-    if (kib == null) {}
-    try
-    {
-      if (kib == null) {
-        kib = new a();
-      }
-      a locala = kib;
-      AppMethodBeat.o(121421);
-      return locala;
-    }
-    finally
-    {
-      AppMethodBeat.o(121421);
-    }
-  }
-  
-  public final IPCDynamicPageView OJ(String paramString)
+  public final IPCDynamicPageView Pr(String paramString)
   {
     AppMethodBeat.i(121422);
     if (paramString == null)
@@ -72,7 +72,7 @@ public class a
     IPCDynamicPageView localIPCDynamicPageView;
     do
     {
-      Iterator localIterator = this.kic.entrySet().iterator();
+      Iterator localIterator = this.kls.entrySet().iterator();
       Object localObject;
       while (!((Iterator)localObject).hasNext())
       {
@@ -101,7 +101,7 @@ public class a
       AppMethodBeat.o(121423);
       return false;
     }
-    List localList = (List)this.kic.get(paramString);
+    List localList = (List)this.kls.get(paramString);
     if (localList == null)
     {
       AppMethodBeat.o(121423);
@@ -111,7 +111,7 @@ public class a
     {
       boolean bool = localList.remove(paramIPCDynamicPageView);
       if (localList.isEmpty()) {
-        this.kic.remove(paramString);
+        this.kls.remove(paramString);
       }
       AppMethodBeat.o(121423);
       return bool;
@@ -130,11 +130,11 @@ public class a
       AppMethodBeat.o(121424);
       return false;
     }
-    Object localObject = (List)this.kic.get(paramString);
+    Object localObject = (List)this.kls.get(paramString);
     if (localObject == null)
     {
       localObject = new LinkedList();
-      this.kic.put(paramString, localObject);
+      this.kls.put(paramString, localObject);
     }
     for (;;)
     {
@@ -156,10 +156,10 @@ public class a
       {
         if (((List)localObject).size() > 4)
         {
-          paramIPCDynamicPageView = bf((List)localObject);
+          paramIPCDynamicPageView = bh((List)localObject);
           if (paramIPCDynamicPageView != null)
           {
-            a locala = (a)this.kid.get(paramString);
+            a locala = (a)this.klt.get(paramString);
             if (locala != null) {
               locala.a(paramString, paramIPCDynamicPageView);
             }

@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.address.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int id;
-  public String jrZ;
-  public String jsa;
-  public String jsb;
-  public String jsc;
-  public String jsd;
-  public String jse;
-  public String jsf;
-  public String jsg;
-  public String jsh;
+  public String juS;
+  public String juT;
+  public String juU;
+  public String juV;
+  public String juW;
+  public String juX;
+  public String juY;
+  public String juZ;
+  public String jva;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -23,32 +23,32 @@ public final class b
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.id);
-      if (this.jrZ != null) {
-        paramVarArgs.d(2, this.jrZ);
+      if (this.juS != null) {
+        paramVarArgs.d(2, this.juS);
       }
-      if (this.jsa != null) {
-        paramVarArgs.d(3, this.jsa);
+      if (this.juT != null) {
+        paramVarArgs.d(3, this.juT);
       }
-      if (this.jsb != null) {
-        paramVarArgs.d(4, this.jsb);
+      if (this.juU != null) {
+        paramVarArgs.d(4, this.juU);
       }
-      if (this.jsc != null) {
-        paramVarArgs.d(5, this.jsc);
+      if (this.juV != null) {
+        paramVarArgs.d(5, this.juV);
       }
-      if (this.jsd != null) {
-        paramVarArgs.d(6, this.jsd);
+      if (this.juW != null) {
+        paramVarArgs.d(6, this.juW);
       }
-      if (this.jse != null) {
-        paramVarArgs.d(7, this.jse);
+      if (this.juX != null) {
+        paramVarArgs.d(7, this.juX);
       }
-      if (this.jsf != null) {
-        paramVarArgs.d(8, this.jsf);
+      if (this.juY != null) {
+        paramVarArgs.d(8, this.juY);
       }
-      if (this.jsg != null) {
-        paramVarArgs.d(9, this.jsg);
+      if (this.juZ != null) {
+        paramVarArgs.d(9, this.juZ);
       }
-      if (this.jsh != null) {
-        paramVarArgs.d(10, this.jsh);
+      if (this.jva != null) {
+        paramVarArgs.d(10, this.jva);
       }
       AppMethodBeat.o(20827);
       return 0;
@@ -57,40 +57,40 @@ public final class b
     {
       int i = f.a.a.b.b.a.bz(1, this.id) + 0;
       paramInt = i;
-      if (this.jrZ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.jrZ);
+      if (this.juS != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.juS);
       }
       i = paramInt;
-      if (this.jsa != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.jsa);
+      if (this.juT != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.juT);
       }
       paramInt = i;
-      if (this.jsb != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.jsb);
+      if (this.juU != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.juU);
       }
       i = paramInt;
-      if (this.jsc != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.jsc);
+      if (this.juV != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.juV);
       }
       paramInt = i;
-      if (this.jsd != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.jsd);
+      if (this.juW != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.juW);
       }
       i = paramInt;
-      if (this.jse != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.jse);
+      if (this.juX != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.juX);
       }
       paramInt = i;
-      if (this.jsf != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.jsf);
+      if (this.juY != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.juY);
       }
       i = paramInt;
-      if (this.jsg != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.jsg);
+      if (this.juZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.juZ);
       }
       paramInt = i;
-      if (this.jsh != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.jsh);
+      if (this.jva != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.jva);
       }
       AppMethodBeat.o(20827);
       return paramInt;
@@ -98,9 +98,9 @@ public final class b
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(20827);
@@ -116,43 +116,43 @@ public final class b
         AppMethodBeat.o(20827);
         return -1;
       case 1: 
-        localb.id = locala.NPN.zc();
+        localb.id = locala.OmT.zc();
         AppMethodBeat.o(20827);
         return 0;
       case 2: 
-        localb.jrZ = locala.NPN.readString();
+        localb.juS = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 3: 
-        localb.jsa = locala.NPN.readString();
+        localb.juT = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 4: 
-        localb.jsb = locala.NPN.readString();
+        localb.juU = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 5: 
-        localb.jsc = locala.NPN.readString();
+        localb.juV = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 6: 
-        localb.jsd = locala.NPN.readString();
+        localb.juW = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 7: 
-        localb.jse = locala.NPN.readString();
+        localb.juX = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 8: 
-        localb.jsf = locala.NPN.readString();
+        localb.juY = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 9: 
-        localb.jsg = locala.NPN.readString();
+        localb.juZ = locala.OmT.readString();
         AppMethodBeat.o(20827);
         return 0;
       }
-      localb.jsh = locala.NPN.readString();
+      localb.jva = locala.OmT.readString();
       AppMethodBeat.o(20827);
       return 0;
     }
@@ -162,7 +162,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.d.b
  * JD-Core Version:    0.7.0.1
  */

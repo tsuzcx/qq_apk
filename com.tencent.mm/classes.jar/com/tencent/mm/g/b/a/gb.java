@@ -6,96 +6,114 @@ import com.tencent.mm.plugin.report.a;
 public final class gb
   extends a
 {
-  private long dUB = 0L;
-  private long elh = 0L;
-  private String emW = "";
-  private String emX = "";
-  private long emx = 0L;
+  public long eng = 0L;
+  public long eos = 0L;
+  public long eot = 0L;
+  public long eou = 0L;
+  private long eov = 0L;
+  private long eow = 0L;
+  private long eox = 0L;
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(118510);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.eos);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eot);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eou);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eov);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eow);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eng);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eox);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(118510);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(118514);
+    AppMethodBeat.i(118511);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.elh);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emX);
+    ((StringBuffer)localObject).append("ClickMyProfileTime:").append(this.eos);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickCameraTime:").append(this.eot);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickGuidePageTime:").append(this.eou);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isProfileRedPoint:").append(this.eov);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isCameraRedPoint:").append(this.eow);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoObjectId:").append(this.eng);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isStoryCommentRedDot:").append(this.eox);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(118514);
+    AppMethodBeat.o(118511);
     return localObject;
   }
   
-  public final String RE()
+  public final gb TR()
   {
-    AppMethodBeat.i(118515);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.elh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProfileSource:").append(this.emx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterTime:").append(this.dUB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryOwnerUserName:").append(this.emW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryTid:").append(this.emX);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118515);
-    return localObject;
+    this.eos = 0L;
+    return this;
   }
   
-  public final long TD()
+  public final gb TS()
   {
-    return this.dUB;
+    this.eot = 0L;
+    return this;
+  }
+  
+  public final gb TT()
+  {
+    this.eou = 0L;
+    return this;
+  }
+  
+  public final gb TU()
+  {
+    this.eng = 0L;
+    return this;
+  }
+  
+  public final long TV()
+  {
+    return this.eng;
   }
   
   public final int getId()
   {
-    return 16763;
+    return 16844;
   }
   
-  public final gb lA(long paramLong)
+  public final gb lw(long paramLong)
   {
-    this.emx = paramLong;
+    this.eov = paramLong;
     return this;
   }
   
-  public final gb lB(long paramLong)
+  public final gb lx(long paramLong)
   {
-    this.dUB = paramLong;
+    this.eow = paramLong;
     return this;
   }
   
-  public final gb lz(long paramLong)
+  public final gb ly(long paramLong)
   {
-    this.elh = paramLong;
-    return this;
-  }
-  
-  public final gb oT(String paramString)
-  {
-    AppMethodBeat.i(118512);
-    this.emW = t("StoryOwnerUserName", paramString, true);
-    AppMethodBeat.o(118512);
-    return this;
-  }
-  
-  public final gb oU(String paramString)
-  {
-    AppMethodBeat.i(118513);
-    this.emX = t("StoryTid", paramString, true);
-    AppMethodBeat.o(118513);
+    this.eox = paramLong;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gb
  * JD-Core Version:    0.7.0.1
  */

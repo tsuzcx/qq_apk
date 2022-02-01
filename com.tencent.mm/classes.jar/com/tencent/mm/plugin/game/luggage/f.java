@@ -4,47 +4,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.luggage.h.a;
 import com.tencent.mm.plugin.game.luggage.h.a.3;
 import com.tencent.mm.plugin.game.luggage.h.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  private static AtomicInteger tTo;
+  private static AtomicInteger uef;
   
   static
   {
-    AppMethodBeat.i(211590);
-    tTo = new AtomicInteger(0);
-    AppMethodBeat.o(211590);
+    AppMethodBeat.i(192975);
+    uef = new AtomicInteger(0);
+    AppMethodBeat.o(192975);
   }
   
-  public static void bYW()
+  public static void cal()
   {
-    AppMethodBeat.i(211588);
-    tTo.getAndIncrement();
-    AppMethodBeat.o(211588);
+    AppMethodBeat.i(192973);
+    uef.getAndIncrement();
+    AppMethodBeat.o(192973);
   }
   
   public static void remove()
   {
-    AppMethodBeat.i(211589);
-    int i = tTo.decrementAndGet();
-    ad.i("MicroMsg.LuggageGameWebViewActivityStack", "remove count = ".concat(String.valueOf(i)));
+    AppMethodBeat.i(192974);
+    int i = uef.decrementAndGet();
+    ae.i("MicroMsg.LuggageGameWebViewActivityStack", "remove count = ".concat(String.valueOf(i)));
     if (i <= 0)
     {
-      if (a.cXE() != null)
+      if (a.dao() != null)
       {
-        a locala = a.cXE();
-        ad.i("MicroMsg.GameJsCore", "stop");
-        locala.tVW = a.a.tWg;
-        locala.alD("onStop");
-        locala.cjg = new av(new a.3(locala), false);
-        locala.cjg.az(300000L, 300000L);
+        a locala = a.dao();
+        ae.i("MicroMsg.GameJsCore", "stop");
+        locala.ugU = a.a.uhe;
+        locala.amD("onStop");
+        locala.cji = new aw(new a.3(locala), false);
+        locala.cji.ay(300000L, 300000L);
       }
-      ad.i("MicroMsg.GameJsServerCommLibPkg", "load");
+      ae.i("MicroMsg.GameJsServerCommLibPkg", "load");
     }
-    AppMethodBeat.o(211589);
+    AppMethodBeat.o(192974);
   }
 }
 

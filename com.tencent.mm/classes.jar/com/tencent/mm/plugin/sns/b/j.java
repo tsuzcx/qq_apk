@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.sns.b;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.modelsns.g;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public abstract interface j
   extends a
 {
-  public abstract String X(bu parambu);
+  public abstract String W(bv parambv);
   
   public abstract String a(String paramString, PString paramPString);
   
-  public abstract void a(String paramString, y.b paramb, bu parambu);
+  public abstract void a(String paramString, z.b paramb, bv parambv);
   
-  public abstract void aD(bu parambu);
+  public abstract void aC(bv parambv);
   
   public abstract void b(String paramString, g paramg);
 }

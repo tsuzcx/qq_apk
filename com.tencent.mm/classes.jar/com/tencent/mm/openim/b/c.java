@@ -1,27 +1,27 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.aby;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.protocal.protobuf.cet;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.ach;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.cfm;
+import com.tencent.mm.protocal.protobuf.cfn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,19 +32,19 @@ public final class c
   implements k
 {
   private f callback;
-  private final com.tencent.mm.al.b rr;
+  private final com.tencent.mm.ak.b rr;
   
-  public c(LinkedList<ces> paramLinkedList)
+  public c(LinkedList<cfm> paramLinkedList)
   {
     AppMethodBeat.i(151183);
     b.a locala = new b.a();
-    locala.hNM = new aby();
-    locala.hNN = new abz();
+    locala.hQF = new ach();
+    locala.hQG = new aci();
     locala.uri = "/cgi-bin/micromsg-bin/createopenimchatroom";
     locala.funcId = 371;
-    this.rr = locala.aDC();
-    ((aby)this.rr.hNK.hNQ).Fvu = paramLinkedList;
-    ad.i("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "create size:%d", new Object[] { Integer.valueOf(paramLinkedList.size()) });
+    this.rr = locala.aDS();
+    ((ach)this.rr.hQD.hQJ).FNS = paramLinkedList;
+    ae.i("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "create size:%d", new Object[] { Integer.valueOf(paramLinkedList.size()) });
     AppMethodBeat.o(151183);
   }
   
@@ -53,21 +53,21 @@ public final class c
     AppMethodBeat.i(151186);
     if ((parama != null) && ((parama instanceof com.tencent.mm.roomsdk.a.b.c)))
     {
-      abz localabz = (abz)this.rr.hNL.hNQ;
-      if (localabz != null)
+      aci localaci = (aci)this.rr.hQE.hQJ;
+      if (localaci != null)
       {
         com.tencent.mm.openim.room.a.b.b localb = new com.tencent.mm.openim.room.a.b.b();
-        localb.q(localabz.Fvu);
+        localb.q(localaci.FNS);
         parama = (com.tencent.mm.roomsdk.a.b.c)parama;
-        parama.chatroomName = localabz.iHB;
-        parama.dyW = localb.fKI.size();
-        parama.dAa = localb.fKI;
-        parama.fKI = localb.fKI;
-        parama.dAd = localb.dAd;
-        parama.fKJ = localb.fKJ;
-        parama.dAf = localb.dAf;
-        parama.fKK = localb.fKK;
-        parama.dAg = localb.dAg;
+        parama.chatroomName = localaci.iKu;
+        parama.dAb = localb.fML.size();
+        parama.dBf = localb.fML;
+        parama.fML = localb.fML;
+        parama.dBi = localb.dBi;
+        parama.fMM = localb.fMM;
+        parama.dBk = localb.dBk;
+        parama.fMN = localb.fMN;
+        parama.dBl = localb.dBl;
         AppMethodBeat.o(151186);
         return parama;
       }
@@ -93,16 +93,16 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151184);
-    ad.i("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (paramq.getRespObj().getRetCode() == 0)
     {
-      paramq = (abz)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-      if (!bt.isNullOrNil(paramq.iHB))
+      paramq = (aci)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+      if (!bu.isNullOrNil(paramq.iKu))
       {
-        if (paramq.iHB.toLowerCase().endsWith("@im.chatroom")) {
+        if (paramq.iKu.toLowerCase().endsWith("@im.chatroom")) {
           break label151;
         }
-        ad.e("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "createChatroom: bad room:[" + paramq.iHB + "]");
+        ae.e("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "createChatroom: bad room:[" + paramq.iKu + "]");
       }
     }
     for (;;)
@@ -113,57 +113,57 @@ public final class c
       AppMethodBeat.o(151184);
       return;
       label151:
-      paramArrayOfByte = new am();
-      paramArrayOfByte.setUsername(paramq.iHB);
-      bp localbp = ((l)g.ab(l.class)).azp();
-      if (!localbp.aTn(paramArrayOfByte.field_username)) {
-        localbp.ag(paramArrayOfByte);
+      paramArrayOfByte = new an();
+      paramArrayOfByte.setUsername(paramq.iKu);
+      bq localbq = ((l)g.ab(l.class)).azF();
+      if (!localbq.aUO(paramArrayOfByte.field_username)) {
+        localbq.an(paramArrayOfByte);
       }
-      if ((!bt.isNullOrNil(paramArrayOfByte.field_username)) && (!bt.isNullOrNil(paramq.Gbz)))
+      if ((!bu.isNullOrNil(paramArrayOfByte.field_username)) && (!bu.isNullOrNil(paramq.Gug)))
       {
         localObject = new i();
         ((i)localObject).username = paramArrayOfByte.field_username;
-        ((i)localObject).hMX = paramq.Gby;
-        ((i)localObject).hMW = paramq.Gbz;
-        ((i)localObject).ePj = 3;
-        ((i)localObject).eB(false);
-        ((i)localObject).dDp = -1;
-        p.aEx().b((i)localObject);
+        ((i)localObject).hPQ = paramq.Guf;
+        ((i)localObject).hPP = paramq.Gug;
+        ((i)localObject).eQU = 3;
+        ((i)localObject).eD(false);
+        ((i)localObject).dEu = -1;
+        p.aEN().b((i)localObject);
       }
       Object localObject = new ArrayList();
-      Iterator localIterator = paramq.Fvu.iterator();
+      Iterator localIterator = paramq.FNS.iterator();
       while (localIterator.hasNext())
       {
-        cet localcet = (cet)localIterator.next();
-        if (localcet.status == 0)
+        cfn localcfn = (cfn)localIterator.next();
+        if (localcfn.status == 0)
         {
-          paramq = localbp.Bf(localcet.userName);
-          if ((int)paramq.gfj != 0)
+          paramq = localbq.BH(localcfn.userName);
+          if ((int)paramq.ght != 0)
           {
-            paramq.acG();
-            localbp.c(paramq.field_username, paramq);
+            paramq.acR();
+            localbq.c(paramq.field_username, paramq);
           }
           for (;;)
           {
             ((ArrayList)localObject).add(paramq.field_username);
             break;
-            paramq = com.tencent.mm.openim.room.a.b.c.a(paramq, localcet);
-            localbp.ag(paramq);
+            paramq = com.tencent.mm.openim.room.a.b.c.a(paramq, localcfn);
+            localbq.an(paramq);
           }
         }
       }
-      if (!((ArrayList)localObject).contains(u.aAm()))
+      if (!((ArrayList)localObject).contains(v.aAC()))
       {
-        ((ArrayList)localObject).add(u.aAm());
-        ad.d("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "respon has not self add one " + ((ArrayList)localObject).contains(u.aAm()));
+        ((ArrayList)localObject).add(v.aAC());
+        ae.d("MicroMsg.Openim.NetSceneCreateOpenIMChatRoom", "respon has not self add one " + ((ArrayList)localObject).contains(v.aAC()));
       }
-      ((com.tencent.mm.plugin.chatroom.a.b)g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).a(paramArrayOfByte.field_username, (ArrayList)localObject, u.aAm());
+      ((com.tencent.mm.plugin.chatroom.a.b)g.ab(com.tencent.mm.plugin.chatroom.a.b.class)).a(paramArrayOfByte.field_username, (ArrayList)localObject, v.aAC());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.b.c
  * JD-Core Version:    0.7.0.1
  */

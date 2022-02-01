@@ -79,13 +79,13 @@ public class FastParser<T extends FastJsonResponse>
     char c = zzj(paramBufferedReader);
     if (c == 0)
     {
-      paramBufferedReader = new FastParser.ParseException("Unexpected EOF");
+      paramBufferedReader = new ParseException("Unexpected EOF");
       AppMethodBeat.o(12033);
       throw paramBufferedReader;
     }
     if (c == ',')
     {
-      paramBufferedReader = new FastParser.ParseException("Missing value");
+      paramBufferedReader = new ParseException("Missing value");
       AppMethodBeat.o(12033);
       throw paramBufferedReader;
     }
@@ -111,7 +111,7 @@ public class FastParser<T extends FastJsonResponse>
           c = paramArrayOfChar[j];
           if (Character.isISOControl(c))
           {
-            paramBufferedReader = new FastParser.ParseException("Unexpected control character while reading string");
+            paramBufferedReader = new ParseException("Unexpected control character while reading string");
             AppMethodBeat.o(12033);
             throw paramBufferedReader;
           }
@@ -165,11 +165,11 @@ public class FastParser<T extends FastJsonResponse>
     }
     if (k == paramArrayOfChar.length)
     {
-      paramBufferedReader = new FastParser.ParseException("Absurdly long value");
+      paramBufferedReader = new ParseException("Absurdly long value");
       AppMethodBeat.o(12033);
       throw paramBufferedReader;
     }
-    paramBufferedReader = new FastParser.ParseException("Unexpected EOF");
+    paramBufferedReader = new ParseException("Unexpected EOF");
     AppMethodBeat.o(12033);
     throw paramBufferedReader;
   }
@@ -182,7 +182,7 @@ public class FastParser<T extends FastJsonResponse>
     switch (c)
     {
     default: 
-      paramBufferedReader = new FastParser.ParseException(19 + "Unexpected token: " + c);
+      paramBufferedReader = new ParseException(19 + "Unexpected token: " + c);
       AppMethodBeat.o(12018);
       throw paramBufferedReader;
     case '}': 
@@ -201,7 +201,7 @@ public class FastParser<T extends FastJsonResponse>
     zzk(3);
     if (zzj(paramBufferedReader) != ':')
     {
-      paramBufferedReader = new FastParser.ParseException("Expected key/value separator");
+      paramBufferedReader = new ParseException("Expected key/value separator");
       AppMethodBeat.o(12018);
       throw paramBufferedReader;
     }
@@ -215,7 +215,7 @@ public class FastParser<T extends FastJsonResponse>
     switch (zzj(paramBufferedReader))
     {
     default: 
-      paramBufferedReader = new FastParser.ParseException("Expected string");
+      paramBufferedReader = new ParseException("Expected string");
       AppMethodBeat.o(12022);
       throw paramBufferedReader;
     case '"': 
@@ -236,7 +236,7 @@ public class FastParser<T extends FastJsonResponse>
     switch (c)
     {
     default: 
-      paramBufferedReader = new FastParser.ParseException(19 + "Unexpected token: " + c);
+      paramBufferedReader = new ParseException(19 + "Unexpected token: " + c);
       AppMethodBeat.o(12031);
       throw paramBufferedReader;
     case ']': 
@@ -259,20 +259,20 @@ public class FastParser<T extends FastJsonResponse>
         switch (c)
         {
         default: 
-          paramBufferedReader = new FastParser.ParseException(19 + "Unexpected token: " + c);
+          paramBufferedReader = new ParseException(19 + "Unexpected token: " + c);
           AppMethodBeat.o(12031);
           throw paramBufferedReader;
         }
       }
       catch (InstantiationException paramBufferedReader)
       {
-        paramBufferedReader = new FastParser.ParseException("Error instantiating inner object", paramBufferedReader);
+        paramBufferedReader = new ParseException("Error instantiating inner object", paramBufferedReader);
         AppMethodBeat.o(12031);
         throw paramBufferedReader;
       }
       catch (IllegalAccessException paramBufferedReader)
       {
-        paramBufferedReader = new FastParser.ParseException("Error instantiating inner object", paramBufferedReader);
+        paramBufferedReader = new ParseException("Error instantiating inner object", paramBufferedReader);
         AppMethodBeat.o(12031);
         throw paramBufferedReader;
       }
@@ -282,7 +282,7 @@ public class FastParser<T extends FastJsonResponse>
       return null;
       if (zzj(paramBufferedReader) != '{')
       {
-        paramBufferedReader = new FastParser.ParseException("Expected start of next object in array");
+        paramBufferedReader = new ParseException("Expected start of next object in array");
         AppMethodBeat.o(12031);
         throw paramBufferedReader;
       }
@@ -308,7 +308,7 @@ public class FastParser<T extends FastJsonResponse>
     }
     if (i != 91)
     {
-      paramBufferedReader = new FastParser.ParseException("Expected start of array");
+      paramBufferedReader = new ParseException("Expected start of array");
       AppMethodBeat.o(12021);
       throw paramBufferedReader;
     }
@@ -328,7 +328,7 @@ public class FastParser<T extends FastJsonResponse>
     zzk(5);
     AppMethodBeat.o(12021);
     return localArrayList;
-    paramBufferedReader = new FastParser.ParseException("Unexpected EOF");
+    paramBufferedReader = new ParseException("Unexpected EOF");
     AppMethodBeat.o(12021);
     throw paramBufferedReader;
   }
@@ -361,7 +361,7 @@ public class FastParser<T extends FastJsonResponse>
         {
         default: 
           i = ((FastJsonResponse.Field)localObject2).getTypeIn();
-          paramBufferedReader = new FastParser.ParseException(30 + "Invalid field type " + i);
+          paramBufferedReader = new ParseException(30 + "Invalid field type " + i);
           AppMethodBeat.o(12017);
           throw paramBufferedReader;
         case 0: 
@@ -379,7 +379,7 @@ public class FastParser<T extends FastJsonResponse>
           {
           case '}': 
           default: 
-            paramBufferedReader = new FastParser.ParseException(55 + "Expected end of object or field separator, but found: " + c);
+            paramBufferedReader = new ParseException(55 + "Expected end of object or field separator, but found: " + c);
             AppMethodBeat.o(12017);
             throw paramBufferedReader;
             paramFastJsonResponse.setInteger((FastJsonResponse.Field)localObject2, zzd(paramBufferedReader));
@@ -456,7 +456,7 @@ public class FastParser<T extends FastJsonResponse>
                             break;
                             if (i != 123)
                             {
-                              paramBufferedReader = new FastParser.ParseException("Expected start of a map object");
+                              paramBufferedReader = new ParseException("Expected start of a map object");
                               AppMethodBeat.o(12017);
                               throw paramBufferedReader;
                             }
@@ -470,7 +470,7 @@ public class FastParser<T extends FastJsonResponse>
                                 {
                                 }
                               }
-                              paramBufferedReader = new FastParser.ParseException("Unexpected EOF");
+                              paramBufferedReader = new ParseException("Unexpected EOF");
                               AppMethodBeat.o(12017);
                               throw paramBufferedReader;
                               String str = zzb(paramBufferedReader, this.zzwr, this.zzwt, null);
@@ -480,7 +480,7 @@ public class FastParser<T extends FastJsonResponse>
                                 if (paramBufferedReader.length() != 0) {}
                                 for (paramBufferedReader = "No map value found for key ".concat(paramBufferedReader);; paramBufferedReader = new String("No map value found for key "))
                                 {
-                                  paramBufferedReader = new FastParser.ParseException(paramBufferedReader);
+                                  paramBufferedReader = new ParseException(paramBufferedReader);
                                   AppMethodBeat.o(12017);
                                   throw paramBufferedReader;
                                 }
@@ -491,7 +491,7 @@ public class FastParser<T extends FastJsonResponse>
                                 if (paramBufferedReader.length() != 0) {}
                                 for (paramBufferedReader = "Expected String value for key ".concat(paramBufferedReader);; paramBufferedReader = new String("Expected String value for key "))
                                 {
-                                  paramBufferedReader = new FastParser.ParseException(paramBufferedReader);
+                                  paramBufferedReader = new ParseException(paramBufferedReader);
                                   AppMethodBeat.o(12017);
                                   throw paramBufferedReader;
                                 }
@@ -505,7 +505,7 @@ public class FastParser<T extends FastJsonResponse>
                             }
                             else
                             {
-                              paramBufferedReader = new FastParser.ParseException(48 + "Unexpected character while parsing string map: " + c);
+                              paramBufferedReader = new ParseException(48 + "Unexpected character while parsing string map: " + c);
                               AppMethodBeat.o(12017);
                               throw paramBufferedReader;
                               zzk(1);
@@ -524,7 +524,7 @@ public class FastParser<T extends FastJsonResponse>
                               this.zzxb.push(Integer.valueOf(5));
                               if (i != 91)
                               {
-                                paramBufferedReader = new FastParser.ParseException("Expected array start");
+                                paramBufferedReader = new ParseException("Expected array start");
                                 AppMethodBeat.o(12017);
                                 throw paramBufferedReader;
                               }
@@ -544,7 +544,7 @@ public class FastParser<T extends FastJsonResponse>
                               this.zzxb.push(Integer.valueOf(1));
                               if (i != 123)
                               {
-                                paramBufferedReader = new FastParser.ParseException("Expected start of object");
+                                paramBufferedReader = new ParseException("Expected start of object");
                                 AppMethodBeat.o(12017);
                                 throw paramBufferedReader;
                               }
@@ -556,13 +556,13 @@ public class FastParser<T extends FastJsonResponse>
                               }
                               catch (InstantiationException paramBufferedReader)
                               {
-                                paramBufferedReader = new FastParser.ParseException("Error instantiating inner object", paramBufferedReader);
+                                paramBufferedReader = new ParseException("Error instantiating inner object", paramBufferedReader);
                                 AppMethodBeat.o(12017);
                                 throw paramBufferedReader;
                               }
                               catch (IllegalAccessException paramBufferedReader)
                               {
-                                paramBufferedReader = new FastParser.ParseException("Error instantiating inner object", paramBufferedReader);
+                                paramBufferedReader = new ParseException("Error instantiating inner object", paramBufferedReader);
                                 AppMethodBeat.o(12017);
                                 throw paramBufferedReader;
                               }
@@ -600,7 +600,7 @@ public class FastParser<T extends FastJsonResponse>
       switch (c)
       {
       default: 
-        paramBufferedReader = new FastParser.ParseException(19 + "Unexpected token: " + c);
+        paramBufferedReader = new ParseException(19 + "Unexpected token: " + c);
         AppMethodBeat.o(12027);
         throw paramBufferedReader;
       case 'n': 
@@ -626,7 +626,7 @@ public class FastParser<T extends FastJsonResponse>
       }
       if (paramBoolean)
       {
-        paramBufferedReader = new FastParser.ParseException("No boolean value found in string");
+        paramBufferedReader = new ParseException("No boolean value found in string");
         AppMethodBeat.o(12027);
         throw paramBufferedReader;
       }
@@ -650,14 +650,14 @@ public class FastParser<T extends FastJsonResponse>
       switch (i)
       {
       default: 
-        paramBufferedReader = new FastParser.ParseException(18 + "Unexpected token " + i);
+        paramBufferedReader = new ParseException(18 + "Unexpected token " + i);
         AppMethodBeat.o(12019);
         throw paramBufferedReader;
       }
     case '"': 
       if (paramBufferedReader.read(this.zzwq) == -1)
       {
-        paramBufferedReader = new FastParser.ParseException("Unexpected EOF while parsing string");
+        paramBufferedReader = new ParseException("Unexpected EOF while parsing string");
         AppMethodBeat.o(12019);
         throw paramBufferedReader;
       }
@@ -673,7 +673,7 @@ public class FastParser<T extends FastJsonResponse>
       }
       while (paramBufferedReader.read(this.zzwq) == -1)
       {
-        paramBufferedReader = new FastParser.ParseException("Unexpected EOF while parsing string");
+        paramBufferedReader = new ParseException("Unexpected EOF while parsing string");
         AppMethodBeat.o(12019);
         throw paramBufferedReader;
         j = 0;
@@ -683,7 +683,7 @@ public class FastParser<T extends FastJsonResponse>
       i = this.zzwq[0];
       if (Character.isISOControl(i))
       {
-        paramBufferedReader = new FastParser.ParseException("Unexpected control character while reading string");
+        paramBufferedReader = new ParseException("Unexpected control character while reading string");
         AppMethodBeat.o(12019);
         throw paramBufferedReader;
         this.zzxb.push(Integer.valueOf(1));
@@ -702,7 +702,7 @@ public class FastParser<T extends FastJsonResponse>
           zzk(1);
           break;
         }
-        paramBufferedReader = new FastParser.ParseException(18 + "Unexpected token " + i);
+        paramBufferedReader = new ParseException(18 + "Unexpected token " + i);
         AppMethodBeat.o(12019);
         throw paramBufferedReader;
         this.zzxb.push(Integer.valueOf(5));
@@ -723,13 +723,13 @@ public class FastParser<T extends FastJsonResponse>
           i = zzj(paramBufferedReader);
           if (i == 0)
           {
-            paramBufferedReader = new FastParser.ParseException("Unexpected EOF while parsing array");
+            paramBufferedReader = new ParseException("Unexpected EOF while parsing array");
             AppMethodBeat.o(12019);
             throw paramBufferedReader;
           }
           if (Character.isISOControl(i))
           {
-            paramBufferedReader = new FastParser.ParseException("Unexpected control character while reading array");
+            paramBufferedReader = new ParseException("Unexpected control character while reading array");
             AppMethodBeat.o(12019);
             throw paramBufferedReader;
           }
@@ -776,7 +776,7 @@ public class FastParser<T extends FastJsonResponse>
             break label440;
             zzk(5);
             break;
-            paramBufferedReader = new FastParser.ParseException("Missing value");
+            paramBufferedReader = new ParseException("Missing value");
             AppMethodBeat.o(12019);
             throw paramBufferedReader;
             zzk(2);
@@ -825,7 +825,7 @@ public class FastParser<T extends FastJsonResponse>
             if (m != 0) {
               break label124;
             }
-            paramBufferedReader = new FastParser.ParseException("Unexpected control character while reading string");
+            paramBufferedReader = new ParseException("Unexpected control character while reading string");
             AppMethodBeat.o(12023);
             throw paramBufferedReader;
             m += 1;
@@ -870,7 +870,7 @@ public class FastParser<T extends FastJsonResponse>
       paramStringBuilder.append(paramArrayOfChar1, 0, n);
       paramBufferedReader.mark(paramArrayOfChar1.length);
     }
-    paramBufferedReader = new FastParser.ParseException("Unexpected EOF while parsing string");
+    paramBufferedReader = new ParseException("Unexpected EOF while parsing string");
     AppMethodBeat.o(12023);
     throw paramBufferedReader;
   }
@@ -884,7 +884,7 @@ public class FastParser<T extends FastJsonResponse>
       int k = paramBufferedReader.read(this.zzwr, 0, paramArrayOfChar.length - i);
       if (k == -1)
       {
-        paramBufferedReader = new FastParser.ParseException("Unexpected EOF");
+        paramBufferedReader = new ParseException("Unexpected EOF");
         AppMethodBeat.o(12034);
         throw paramBufferedReader;
       }
@@ -893,7 +893,7 @@ public class FastParser<T extends FastJsonResponse>
       {
         if (paramArrayOfChar[(j + i)] != this.zzwr[j])
         {
-          paramBufferedReader = new FastParser.ParseException("Unexpected character");
+          paramBufferedReader = new ParseException("Unexpected character");
           AppMethodBeat.o(12034);
           throw paramBufferedReader;
         }
@@ -941,7 +941,7 @@ public class FastParser<T extends FastJsonResponse>
         i = Character.digit(paramBufferedReader[i], 10);
         if (i < 0)
         {
-          paramBufferedReader = new FastParser.ParseException("Unexpected non-digit character");
+          paramBufferedReader = new ParseException("Unexpected non-digit character");
           AppMethodBeat.o(12024);
           throw paramBufferedReader;
           k = -2147483647;
@@ -963,27 +963,27 @@ public class FastParser<T extends FastJsonResponse>
         n = Character.digit(paramBufferedReader[i], 10);
         if (n < 0)
         {
-          paramBufferedReader = new FastParser.ParseException("Unexpected non-digit character");
+          paramBufferedReader = new ParseException("Unexpected non-digit character");
           AppMethodBeat.o(12024);
           throw paramBufferedReader;
         }
         if (j < -214748364)
         {
-          paramBufferedReader = new FastParser.ParseException("Number too large");
+          paramBufferedReader = new ParseException("Number too large");
           AppMethodBeat.o(12024);
           throw paramBufferedReader;
         }
         j *= 10;
         if (j < k + n)
         {
-          paramBufferedReader = new FastParser.ParseException("Number too large");
+          paramBufferedReader = new ParseException("Number too large");
           AppMethodBeat.o(12024);
           throw paramBufferedReader;
         }
         j -= n;
         i += 1;
         continue;
-        paramBufferedReader = new FastParser.ParseException("No number to parse");
+        paramBufferedReader = new ParseException("No number to parse");
         AppMethodBeat.o(12024);
         throw paramBufferedReader;
       }
@@ -996,7 +996,7 @@ public class FastParser<T extends FastJsonResponse>
             AppMethodBeat.o(12024);
             return j;
           }
-          paramBufferedReader = new FastParser.ParseException("No digits to parse");
+          paramBufferedReader = new ParseException("No digits to parse");
           AppMethodBeat.o(12024);
           throw paramBufferedReader;
         }
@@ -1036,7 +1036,7 @@ public class FastParser<T extends FastJsonResponse>
         i = Character.digit(paramBufferedReader[i], 10);
         if (i < 0)
         {
-          paramBufferedReader = new FastParser.ParseException("Unexpected non-digit character");
+          paramBufferedReader = new ParseException("Unexpected non-digit character");
           AppMethodBeat.o(12025);
           throw paramBufferedReader;
           l2 = -9223372036854775807L;
@@ -1057,27 +1057,27 @@ public class FastParser<T extends FastJsonResponse>
         k = Character.digit(paramBufferedReader[i], 10);
         if (k < 0)
         {
-          paramBufferedReader = new FastParser.ParseException("Unexpected non-digit character");
+          paramBufferedReader = new ParseException("Unexpected non-digit character");
           AppMethodBeat.o(12025);
           throw paramBufferedReader;
         }
         if (l1 < -922337203685477580L)
         {
-          paramBufferedReader = new FastParser.ParseException("Number too large");
+          paramBufferedReader = new ParseException("Number too large");
           AppMethodBeat.o(12025);
           throw paramBufferedReader;
         }
         l1 *= 10L;
         if (l1 < k + l2)
         {
-          paramBufferedReader = new FastParser.ParseException("Number too large");
+          paramBufferedReader = new ParseException("Number too large");
           AppMethodBeat.o(12025);
           throw paramBufferedReader;
         }
         l1 -= k;
         i += 1;
         continue;
-        paramBufferedReader = new FastParser.ParseException("No number to parse");
+        paramBufferedReader = new ParseException("No number to parse");
         AppMethodBeat.o(12025);
         throw paramBufferedReader;
       }
@@ -1090,7 +1090,7 @@ public class FastParser<T extends FastJsonResponse>
             AppMethodBeat.o(12025);
             return l1;
           }
-          paramBufferedReader = new FastParser.ParseException("No digits to parse");
+          paramBufferedReader = new ParseException("No digits to parse");
           AppMethodBeat.o(12025);
           throw paramBufferedReader;
         }
@@ -1180,17 +1180,17 @@ public class FastParser<T extends FastJsonResponse>
   private final void zzk(int paramInt)
   {
     AppMethodBeat.i(12035);
-    FastParser.ParseException localParseException;
+    ParseException localParseException;
     if (this.zzxb.isEmpty())
     {
-      localParseException = new FastParser.ParseException(46 + "Expected state " + paramInt + " but had empty stack");
+      localParseException = new ParseException(46 + "Expected state " + paramInt + " but had empty stack");
       AppMethodBeat.o(12035);
       throw localParseException;
     }
     int i = ((Integer)this.zzxb.pop()).intValue();
     if (i != paramInt)
     {
-      localParseException = new FastParser.ParseException(46 + "Expected state " + paramInt + " but had " + i);
+      localParseException = new ParseException(46 + "Expected state " + paramInt + " but had " + i);
       AppMethodBeat.o(12035);
       throw localParseException;
     }
@@ -1212,7 +1212,7 @@ public class FastParser<T extends FastJsonResponse>
     catch (IOException paramT)
     {
       char c;
-      paramT = new FastParser.ParseException(paramT);
+      paramT = new ParseException(paramT);
       AppMethodBeat.o(12015);
       throw paramT;
     }
@@ -1245,7 +1245,7 @@ public class FastParser<T extends FastJsonResponse>
           localObject = paramT.getFieldMappings();
           if (((Map)localObject).size() != 1)
           {
-            paramT = new FastParser.ParseException("Object array response class must have a single Field");
+            paramT = new ParseException("Object array response class must have a single Field");
             AppMethodBeat.o(12015);
             throw paramT;
           }
@@ -1253,14 +1253,14 @@ public class FastParser<T extends FastJsonResponse>
           localArrayList = zza(paramInputStream, (FastJsonResponse.Field)localObject);
           paramT.addConcreteTypeArrayInternal((FastJsonResponse.Field)localObject, ((FastJsonResponse.Field)localObject).getOutputFieldName(), localArrayList);
           continue;
-          paramT = new FastParser.ParseException("No data to parse");
+          paramT = new ParseException("No data to parse");
           AppMethodBeat.o(12015);
           throw paramT;
         }
         catch (IOException paramInputStream) {}
       }
     }
-    paramT = new FastParser.ParseException(19 + "Unexpected token: " + c);
+    paramT = new ParseException(19 + "Unexpected token: " + c);
     AppMethodBeat.o(12015);
     throw paramT;
   }
@@ -1295,6 +1295,25 @@ public class FastParser<T extends FastJsonResponse>
       }
     }
     finally {}
+  }
+  
+  public static class ParseException
+    extends Exception
+  {
+    public ParseException(String paramString)
+    {
+      super();
+    }
+    
+    public ParseException(String paramString, Throwable paramThrowable)
+    {
+      super(paramThrowable);
+    }
+    
+    public ParseException(Throwable paramThrowable)
+    {
+      super();
+    }
   }
   
   static abstract interface zza<O>

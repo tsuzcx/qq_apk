@@ -5,27 +5,27 @@ import android.media.MediaCodec.BufferInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.h;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/recorder/AACMediaCodecBufIdRecorder;", "Lcom/tencent/mm/plugin/mmsight/model/encode/MMSightAACMediaCodecRecorder;", "sampleRate", "", "bitrate", "channelCount", "useFFMpegMuxer", "", "(IIIZ)V", "TAG", "", "bufIDs", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addShareBufID", "", "bufID", "init", "bufferId", "tempPath", "isIgnoreCodecConfig", "processOutPutBuffer", "outputBuffer", "Ljava/nio/ByteBuffer;", "info", "Landroid/media/MediaCodec$BufferInfo;", "processOutputBufferWithADTS", "profile", "freqIdx", "chanCfg", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/recorder/AACMediaCodecBufIdRecorder;", "Lcom/tencent/mm/plugin/mmsight/model/encode/MMSightAACMediaCodecRecorder;", "sampleRate", "", "bitrate", "channelCount", "useFFMpegMuxer", "", "(IIIZ)V", "TAG", "", "bufIDs", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addShareBufID", "", "bufID", "init", "bufferId", "tempPath", "isIgnoreCodecConfig", "processOutPutBuffer", "outputBuffer", "Ljava/nio/ByteBuffer;", "info", "Landroid/media/MediaCodec$BufferInfo;", "processOutputBufferWithADTS", "profile", "freqIdx", "chanCfg", "plugin-mediaeditor_release"})
 @TargetApi(16)
 public final class a
   extends h
 {
   private final String TAG;
-  private ArrayList<Integer> huK;
+  private ArrayList<Integer> hxy;
   
   public a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     super(paramInt1, paramInt2, paramInt3, null, paramBoolean);
     AppMethodBeat.i(94371);
     this.TAG = "MicroMsg.MMSightAACMediaCodecBufIdRecorder";
-    this.huK = new ArrayList();
+    this.hxy = new ArrayList();
     AppMethodBeat.o(94371);
   }
   
@@ -33,9 +33,9 @@ public final class a
   {
     AppMethodBeat.i(94367);
     p.h(paramString, "tempPath");
-    ad.d(this.TAG, "bufferId:" + paramInt + " ,tempPath:" + paramString);
-    this.huK.clear();
-    this.huK.add(Integer.valueOf(paramInt));
+    ae.d(this.TAG, "bufferId:" + paramInt + " ,tempPath:" + paramString);
+    this.hxy.clear();
+    this.hxy.add(Integer.valueOf(paramInt));
     paramInt = super.E(paramInt, paramString);
     AppMethodBeat.o(94367);
     return paramInt;
@@ -45,10 +45,10 @@ public final class a
   {
     AppMethodBeat.i(94370);
     p.h(paramBufferInfo, "info");
-    if ((this.huK.size() >= 0) && (paramByteBuffer != null) && (!this.vPO))
+    if ((this.hxy.size() >= 0) && (paramByteBuffer != null) && (!this.wbR))
     {
-      ad.d(this.TAG, "writeAACDataWithADTSLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
-      Iterator localIterator = ((Iterable)this.huK).iterator();
+      ae.d(this.TAG, "writeAACDataWithADTSLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
+      Iterator localIterator = ((Iterable)this.hxy).iterator();
       while (localIterator.hasNext()) {
         SightVideoJNI.writeAACDataWithADTSLock(((Number)localIterator.next()).intValue(), paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs, paramInt1, paramInt2, paramInt3);
       }
@@ -56,7 +56,7 @@ public final class a
     AppMethodBeat.o(94370);
   }
   
-  public final boolean axM()
+  public final boolean ayb()
   {
     return true;
   }
@@ -66,23 +66,23 @@ public final class a
     AppMethodBeat.i(94369);
     p.h(paramByteBuffer, "outputBuffer");
     p.h(paramBufferInfo, "info");
-    if ((this.huK.size() >= 0) && (!this.vPO))
+    if ((this.hxy.size() >= 0) && (!this.wbR))
     {
-      Iterator localIterator = ((Iterable)this.huK).iterator();
+      Iterator localIterator = ((Iterable)this.hxy).iterator();
       while (localIterator.hasNext())
       {
         int i = ((Number)localIterator.next()).intValue();
-        ad.d(this.TAG, "writeAACDataLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
+        ae.d(this.TAG, "writeAACDataLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
         SightVideoJNI.writeAACDataLock(i, paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs);
       }
     }
     AppMethodBeat.o(94369);
   }
   
-  public final void ob(int paramInt)
+  public final void oe(int paramInt)
   {
     AppMethodBeat.i(94368);
-    this.huK.add(Integer.valueOf(paramInt));
+    this.hxy.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(94368);
   }
 }

@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import kotlinx.a.t;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonException;", "Lkotlinx/serialization/SerializationException;", "message", "", "(Ljava/lang/String;)V", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonException;", "Lkotlinx/serialization/SerializationException;", "message", "", "(Ljava/lang/String;)V", "kotlinx-serialization-runtime"})
 public class k
   extends t
 {
   public k(String paramString)
   {
     super(paramString, (byte)0);
-    AppMethodBeat.i(191274);
-    AppMethodBeat.o(191274);
+    AppMethodBeat.i(199862);
+    AppMethodBeat.o(199862);
   }
 }
 

@@ -7,18 +7,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
 {
   String bVF;
-  int dDp;
-  int ePk;
-  public long ePm;
-  private String ePn;
-  int ePt;
-  String ePu;
-  String ePv;
-  String ffB;
-  String jcV;
-  String jcW;
-  String jdv;
-  int jdw;
+  int dEu;
+  int eQV;
+  public long eQX;
+  private String eQY;
+  int eRe;
+  String eRf;
+  String eRg;
+  String fhy;
+  String jfO;
+  String jfP;
+  String jgo;
+  int jgp;
   String signature;
   public int status;
   private int type;
@@ -27,53 +27,53 @@ public final class g
   public g()
   {
     AppMethodBeat.i(130993);
-    this.dDp = -1;
-    this.ePm = 0L;
-    this.jdv = "";
-    this.jdw = 0;
+    this.dEu = -1;
+    this.eQX = 0L;
+    this.jgo = "";
+    this.jgp = 0;
     this.status = 0;
     this.username = "";
     this.bVF = "";
-    this.jcV = "";
-    this.jcW = "";
-    this.ePk = 0;
-    this.ePt = 0;
-    this.ePu = "";
-    this.ePv = "";
+    this.jfO = "";
+    this.jfP = "";
+    this.eQV = 0;
+    this.eRe = 0;
+    this.eRf = "";
+    this.eRg = "";
     this.signature = "";
-    this.ffB = "";
+    this.fhy = "";
     this.type = 0;
-    this.ePn = "";
+    this.eQY = "";
     AppMethodBeat.o(130993);
   }
   
-  public final String aSI()
+  public final String aTh()
   {
-    if (this.jdv == null) {
+    if (this.jgo == null) {
       return "";
     }
-    return this.jdv;
+    return this.jgo;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(130994);
-    this.ePm = paramCursor.getLong(0);
-    this.jdv = paramCursor.getString(1);
-    this.jdw = paramCursor.getInt(2);
+    this.eQX = paramCursor.getLong(0);
+    this.jgo = paramCursor.getString(1);
+    this.jgp = paramCursor.getInt(2);
     this.status = paramCursor.getInt(3);
     this.username = paramCursor.getString(4);
     this.bVF = paramCursor.getString(5);
-    this.jcV = paramCursor.getString(6);
-    this.jcW = paramCursor.getString(7);
-    this.ePk = paramCursor.getInt(8);
-    this.ePt = paramCursor.getInt(9);
-    this.ePu = paramCursor.getString(10);
-    this.ePv = paramCursor.getString(11);
+    this.jfO = paramCursor.getString(6);
+    this.jfP = paramCursor.getString(7);
+    this.eQV = paramCursor.getInt(8);
+    this.eRe = paramCursor.getInt(9);
+    this.eRf = paramCursor.getString(10);
+    this.eRg = paramCursor.getString(11);
     this.signature = paramCursor.getString(12);
-    this.ffB = paramCursor.getString(13);
+    this.fhy = paramCursor.getString(13);
     this.type = paramCursor.getInt(14);
-    this.ePn = paramCursor.getString(15);
+    this.eQY = paramCursor.getString(15);
     AppMethodBeat.o(130994);
   }
   
@@ -81,27 +81,27 @@ public final class g
   {
     AppMethodBeat.i(130995);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dDp & 0x1) != 0) {
-      localContentValues.put("fbid", Long.valueOf(this.ePm));
+    if ((this.dEu & 0x1) != 0) {
+      localContentValues.put("fbid", Long.valueOf(this.eQX));
     }
-    if ((this.dDp & 0x2) != 0) {
-      localContentValues.put("fbname", aSI());
+    if ((this.dEu & 0x2) != 0) {
+      localContentValues.put("fbname", aTh());
     }
-    if ((this.dDp & 0x4) != 0) {
-      localContentValues.put("fbimgkey", Integer.valueOf(this.jdw));
+    if ((this.dEu & 0x4) != 0) {
+      localContentValues.put("fbimgkey", Integer.valueOf(this.jgp));
     }
-    if ((this.dDp & 0x8) != 0) {
+    if ((this.dEu & 0x8) != 0) {
       localContentValues.put("status", Integer.valueOf(this.status));
     }
-    if ((this.dDp & 0x10) != 0) {
+    if ((this.dEu & 0x10) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.dDp & 0x20) != 0) {
+    if ((this.dEu & 0x20) != 0) {
       localContentValues.put("nickname", getNickName());
     }
-    if ((this.dDp & 0x40) != 0)
+    if ((this.dEu & 0x40) != 0)
     {
-      if (this.jcV == null)
+      if (this.jfO == null)
       {
         str = "";
         localContentValues.put("nicknamepyinitial", str);
@@ -109,40 +109,40 @@ public final class g
     }
     else
     {
-      if ((this.dDp & 0x80) != 0)
+      if ((this.dEu & 0x80) != 0)
       {
-        if (this.jcW != null) {
+        if (this.jfP != null) {
           break label420;
         }
         str = "";
         label187:
         localContentValues.put("nicknamequanpin", str);
       }
-      if ((this.dDp & 0x100) != 0) {
-        localContentValues.put("sex", Integer.valueOf(this.ePk));
+      if ((this.dEu & 0x100) != 0) {
+        localContentValues.put("sex", Integer.valueOf(this.eQV));
       }
-      if ((this.dDp & 0x200) != 0) {
-        localContentValues.put("personalcard", Integer.valueOf(this.ePt));
+      if ((this.dEu & 0x200) != 0) {
+        localContentValues.put("personalcard", Integer.valueOf(this.eRe));
       }
-      if ((this.dDp & 0x400) != 0)
+      if ((this.dEu & 0x400) != 0)
       {
-        if (this.ePu != null) {
+        if (this.eRf != null) {
           break label428;
         }
         str = "";
         label263:
         localContentValues.put("province", str);
       }
-      if ((this.dDp & 0x800) != 0)
+      if ((this.dEu & 0x800) != 0)
       {
-        if (this.ePv != null) {
+        if (this.eRg != null) {
           break label436;
         }
         str = "";
         label291:
         localContentValues.put("city", str);
       }
-      if ((this.dDp & 0x1000) != 0)
+      if ((this.dEu & 0x1000) != 0)
       {
         if (this.signature != null) {
           break label444;
@@ -151,20 +151,20 @@ public final class g
         label319:
         localContentValues.put("signature", str);
       }
-      if ((this.dDp & 0x2000) != 0)
+      if ((this.dEu & 0x2000) != 0)
       {
-        if (this.ffB != null) {
+        if (this.fhy != null) {
           break label452;
         }
         str = "";
         label347:
         localContentValues.put("alias", str);
       }
-      if ((this.dDp & 0x4000) != 0) {
+      if ((this.dEu & 0x4000) != 0) {
         localContentValues.put("type", Integer.valueOf(this.type));
       }
-      if ((this.dDp & 0x8000) != 0) {
-        if (this.ePn != null) {
+      if ((this.dEu & 0x8000) != 0) {
+        if (this.eQY != null) {
           break label460;
         }
       }
@@ -175,22 +175,22 @@ public final class g
     label444:
     label452:
     label460:
-    for (String str = "";; str = this.ePn)
+    for (String str = "";; str = this.eQY)
     {
       localContentValues.put("email", str);
       AppMethodBeat.o(130995);
       return localContentValues;
-      str = this.jcV;
+      str = this.jfO;
       break;
-      str = this.jcW;
+      str = this.jfP;
       break label187;
-      str = this.ePu;
+      str = this.eRf;
       break label263;
-      str = this.ePv;
+      str = this.eRg;
       break label291;
       str = this.signature;
       break label319;
-      str = this.ffB;
+      str = this.fhy;
       break label347;
     }
   }

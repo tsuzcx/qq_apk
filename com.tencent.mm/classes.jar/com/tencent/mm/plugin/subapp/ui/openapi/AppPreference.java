@@ -22,15 +22,15 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class AppPreference
   extends Preference
 {
-  int Bke;
-  a Bkg;
-  AdapterView.OnItemClickListener Bkh;
-  AdapterView.OnItemClickListener Bki;
-  private View.OnClickListener Bkj;
-  private int Bkk;
-  private int Bkl;
+  int BBD;
+  a BBF;
+  AdapterView.OnItemClickListener BBG;
+  AdapterView.OnItemClickListener BBH;
+  private View.OnClickListener BBI;
+  private int BBJ;
+  private int BBK;
   private Context context;
-  private boolean vzz;
+  private boolean vLD;
   
   public AppPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,30 +41,30 @@ public class AppPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29137);
-    this.Bkh = null;
-    this.Bki = null;
-    this.Bkj = null;
-    this.Bke = 0;
-    this.vzz = false;
-    this.Bkl = 0;
+    this.BBG = null;
+    this.BBH = null;
+    this.BBI = null;
+    this.BBD = 0;
+    this.vLD = false;
+    this.BBK = 0;
     this.context = paramContext;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
-    this.Bkk = paramContext.getInt(0, 8);
-    this.vzz = paramContext.getBoolean(1, false);
-    this.Bkl = paramContext.getResourceId(2, 0);
+    this.BBJ = paramContext.getInt(0, 8);
+    this.vLD = paramContext.getBoolean(1, false);
+    this.BBK = paramContext.getResourceId(2, 0);
     paramContext.recycle();
     AppMethodBeat.o(29137);
   }
   
-  public final g SK(int paramInt)
+  public final g Tr(int paramInt)
   {
     AppMethodBeat.i(29139);
-    if ((paramInt < 0) || (paramInt >= this.Bkg.getCount()))
+    if ((paramInt < 0) || (paramInt >= this.BBF.getCount()))
     {
       AppMethodBeat.o(29139);
       return null;
     }
-    g localg = (g)this.Bkg.getItem(paramInt);
+    g localg = (g)this.BBF.getItem(paramInt);
     AppMethodBeat.o(29139);
     return localg;
   }
@@ -74,8 +74,8 @@ public class AppPreference
     AppMethodBeat.i(29138);
     super.onBindView(paramView);
     MMGridView localMMGridView = (MMGridView)paramView.findViewById(2131300620);
-    this.Bkg = new a(this.context, this.Bke);
-    localMMGridView.setAdapter(this.Bkg);
+    this.BBF = new a(this.context, this.BBD);
+    localMMGridView.setAdapter(this.BBF);
     localMMGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -84,17 +84,17 @@ public class AppPreference
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/openapi/AppPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-        if (AppPreference.a(AppPreference.this).HY(paramAnonymousInt))
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/openapi/AppPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        if (AppPreference.a(AppPreference.this).Iw(paramAnonymousInt))
         {
-          AppPreference.a(AppPreference.this).sD(false);
+          AppPreference.a(AppPreference.this).sK(false);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AppPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(29135);
           return;
         }
-        if (AppPreference.a(AppPreference.this).Bkd) {
+        if (AppPreference.a(AppPreference.this).BBC) {
           if (AppPreference.b(AppPreference.this) != null) {
             AppPreference.b(AppPreference.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           }
@@ -110,24 +110,24 @@ public class AppPreference
         }
       }
     });
-    if (this.vzz) {
+    if (this.vLD) {
       localMMGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(29136);
           paramAnonymousAdapterView = AppPreference.this;
-          if (paramAnonymousAdapterView.Bkg != null)
+          if (paramAnonymousAdapterView.BBF != null)
           {
-            paramAnonymousView = paramAnonymousAdapterView.Bkg;
-            if (paramAnonymousAdapterView.Bkg.Bkd) {
+            paramAnonymousView = paramAnonymousAdapterView.BBF;
+            if (paramAnonymousAdapterView.BBF.BBC) {
               break label50;
             }
           }
           label50:
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.sD(bool);
+            paramAnonymousView.sK(bool);
             AppMethodBeat.o(29136);
             return true;
           }
@@ -135,17 +135,17 @@ public class AppPreference
       });
     }
     TextView localTextView = (TextView)paramView.findViewById(2131299477);
-    if (this.Bkg.getCount() == 0)
+    if (this.BBF.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.Bkl);
+      localTextView.setText(this.BBK);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
       paramView = (Button)paramView.findViewById(2131297574);
-      paramView.setVisibility(this.Bkk);
-      paramView.setOnClickListener(this.Bkj);
+      paramView.setVisibility(this.BBJ);
+      paramView.setOnClickListener(this.BBI);
       AppMethodBeat.o(29138);
       return;
       localTextView.setVisibility(8);
@@ -156,8 +156,8 @@ public class AppPreference
   public final void onPause()
   {
     AppMethodBeat.i(29141);
-    if (this.Bkg != null) {
-      ao.dxQ().remove(this.Bkg);
+    if (this.BBF != null) {
+      ao.dBg().remove(this.BBF);
     }
     AppMethodBeat.o(29141);
   }
@@ -165,15 +165,15 @@ public class AppPreference
   public final void onResume()
   {
     AppMethodBeat.i(29140);
-    if (this.Bkg != null) {
-      ao.dxQ().add(this.Bkg);
+    if (this.BBF != null) {
+      ao.dBg().add(this.BBF);
     }
     AppMethodBeat.o(29140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.AppPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -2,75 +2,75 @@ package com.tencent.mm.plugin.gif;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.util.Arrays;
 
 public final class j
   implements a
 {
   private int height;
-  private String pSc;
-  private long uAI;
-  private long uAJ;
-  private int uAQ;
+  private String pYH;
+  private long uMn;
+  private long uMo;
+  private int uMv;
   private int width;
   
   public j(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(104683);
-    this.uAI = 0L;
-    this.uAQ = -1;
-    this.pSc = paramString;
+    this.uMn = 0L;
+    this.uMv = -1;
+    this.pYH = paramString;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.uAJ = paramLong;
-    this.uAQ = 20;
-    ad.i("MicroMsg.MMWxAMEncoder", "create MMWxAMEncoder, width: %s, height: %s, frameDurationMs: %s, qp: %s, outputPath: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(20), paramString });
+    this.uMo = paramLong;
+    this.uMv = 20;
+    ae.i("MicroMsg.MMWxAMEncoder", "create MMWxAMEncoder, width: %s, height: %s, frameDurationMs: %s, qp: %s, outputPath: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(20), paramString });
     AppMethodBeat.o(104683);
   }
   
   public final boolean c(byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(104685);
-    if ((this.uAI != 0L) && (!bt.cC(paramArrayOfByte)) && (paramArrayOfByte.length == this.width * this.height * 4))
+    if ((this.uMn != 0L) && (!bu.cF(paramArrayOfByte)) && (paramArrayOfByte.length == this.width * this.height * 4))
     {
-      long l = this.uAJ;
+      long l = this.uMo;
       if (paramLong >= 0L) {
         l = paramLong;
       }
-      int i = MMWXGFJNI.nativeAddWxAMEncodeRgbaFrame(this.uAI, this.width, this.height, paramArrayOfByte, l);
+      int i = MMWXGFJNI.nativeAddWxAMEncodeRgbaFrame(this.uMn, this.width, this.height, paramArrayOfByte, l);
       if (i < 0)
       {
-        ad.e("MicroMsg.MMWxAMEncoder", "add rgba frame failed: %s", new Object[] { Integer.valueOf(i) });
+        ae.e("MicroMsg.MMWxAMEncoder", "add rgba frame failed: %s", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(104685);
         return false;
       }
       AppMethodBeat.o(104685);
       return true;
     }
-    ad.i("MicroMsg.MMWxAMEncoder", "add rgba frame failed, frame size or encoder ptr is not match");
+    ae.i("MicroMsg.MMWxAMEncoder", "add rgba frame failed, frame size or encoder ptr is not match");
     AppMethodBeat.o(104685);
     return false;
   }
   
-  public final boolean daW()
+  public final boolean ddN()
   {
     AppMethodBeat.i(104686);
-    if (this.uAI != 0L)
+    if (this.uMn != 0L)
     {
-      byte[] arrayOfByte = MMWXGFJNI.nativeFinishWxAMEncode(this.uAI);
+      byte[] arrayOfByte = MMWXGFJNI.nativeFinishWxAMEncode(this.uMn);
       if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
       {
-        ad.i("MicroMsg.MMWxAMEncoder", "finish encode error, buf: %s", new Object[] { Arrays.toString(arrayOfByte) });
+        ae.i("MicroMsg.MMWxAMEncoder", "finish encode error, buf: %s", new Object[] { Arrays.toString(arrayOfByte) });
         AppMethodBeat.o(104686);
         return false;
       }
-      ad.i("MicroMsg.MMWxAMEncoder", "encoder buffer size: %s", new Object[] { Integer.valueOf(arrayOfByte.length) });
-      if (!bt.isNullOrNil(this.pSc))
+      ae.i("MicroMsg.MMWxAMEncoder", "encoder buffer size: %s", new Object[] { Integer.valueOf(arrayOfByte.length) });
+      if (!bu.isNullOrNil(this.pYH))
       {
-        i.f(this.pSc, arrayOfByte, arrayOfByte.length);
+        o.f(this.pYH, arrayOfByte, arrayOfByte.length);
         AppMethodBeat.o(104686);
         return true;
       }
@@ -82,22 +82,22 @@ public final class j
   public final boolean init()
   {
     AppMethodBeat.i(104684);
-    this.uAI = MMWXGFJNI.nativeInitWxAMEncoder(this.width, this.height, this.uAJ, this.uAQ);
-    if (this.uAI == 0L)
+    this.uMn = MMWXGFJNI.nativeInitWxAMEncoder(this.width, this.height, this.uMo, this.uMv);
+    if (this.uMn == 0L)
     {
-      g.yhR.dD(852, 12);
-      ad.e("MicroMsg.MMWxAMEncoder", "init wxam encoder failed! %s", new Object[] { Long.valueOf(this.uAI) });
+      g.yxI.dD(852, 12);
+      ae.e("MicroMsg.MMWxAMEncoder", "init wxam encoder failed! %s", new Object[] { Long.valueOf(this.uMn) });
       AppMethodBeat.o(104684);
       return false;
     }
-    ad.i("MicroMsg.MMWxAMEncoder", "successfully init wxam encoder: %s", new Object[] { Long.valueOf(this.uAI) });
+    ae.i("MicroMsg.MMWxAMEncoder", "successfully init wxam encoder: %s", new Object[] { Long.valueOf(this.uMn) });
     AppMethodBeat.o(104684);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.j
  * JD-Core Version:    0.7.0.1
  */

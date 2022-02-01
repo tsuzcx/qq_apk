@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
@@ -16,24 +16,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static final String[] pjr;
-  private static final Map<String, String> pjs;
+  private static final String[] ppW;
+  private static final Map<String, String> ppX;
   
   static
   {
     AppMethodBeat.i(123485);
-    pjr = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
-    pjs = new ConcurrentHashMap();
+    ppW = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
+    ppX = new ConcurrentHashMap();
     AppMethodBeat.o(123485);
   }
   
-  public static String ZZ(String paramString)
+  public static String aaQ(String paramString)
   {
     AppMethodBeat.i(123483);
-    if (bt.isNullOrNil(paramString)) {}
-    for (Object localObject = ""; (bt.isNullOrNil((String)localObject)) || (!Arrays.asList(pjr).contains(localObject)); localObject = Uri.parse(paramString).getHost())
+    if (bu.isNullOrNil(paramString)) {}
+    for (Object localObject = ""; (bu.isNullOrNil((String)localObject)) || (!Arrays.asList(ppW).contains(localObject)); localObject = Uri.parse(paramString).getHost())
     {
-      ad.i("MicroMsg.GameDownloadExtension", "domain is not dlied4/dlied5");
+      ae.i("MicroMsg.GameDownloadExtension", "domain is not dlied4/dlied5");
       AppMethodBeat.o(123483);
       return paramString;
     }
@@ -41,8 +41,8 @@ public final class c
     if (localObject != null) {}
     for (localObject = ((IPCString)localObject).value;; localObject = "")
     {
-      paramString = fl(fl(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
-      ad.i("MicroMsg.GameDownloadExtension", "after openid added, url: %s", new Object[] { paramString });
+      paramString = fp(fp(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
+      ae.i("MicroMsg.GameDownloadExtension", "after openid added, url: %s", new Object[] { paramString });
       AppMethodBeat.o(123483);
       return paramString;
     }
@@ -51,11 +51,11 @@ public final class c
   public static void clearCache()
   {
     AppMethodBeat.i(123482);
-    pjs.clear();
+    ppX.clear();
     AppMethodBeat.o(123482);
   }
   
-  private static String fl(String paramString1, String paramString2)
+  private static String fp(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123484);
     try
@@ -86,15 +86,15 @@ public final class c
       try
       {
         AppMethodBeat.i(123480);
-        if (!bt.isNullOrNil(paramString))
+        if (!bu.isNullOrNil(paramString))
         {
           i = 0;
           if (i < 2)
           {
-            if (bt.isNullOrNil(paramVarArgs[i])) {
+            if (bu.isNullOrNil(paramVarArgs[i])) {
               break label62;
             }
-            pjs.put(paramVarArgs[i], paramString);
+            ppX.put(paramVarArgs[i], paramString);
             break label62;
           }
         }
@@ -118,8 +118,8 @@ public final class c
         i = 0;
         if (i < 2)
         {
-          if (!bt.isNullOrNil(paramVarArgs[i])) {
-            pjs.remove(paramVarArgs[i]);
+          if (!bu.isNullOrNil(paramVarArgs[i])) {
+            ppX.remove(paramVarArgs[i]);
           }
         }
         else

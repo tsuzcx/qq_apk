@@ -7,39 +7,39 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class r
   implements i
 {
-  private Map<Class<? extends j>, j> cry;
+  private Map<Class<? extends j>, j> csb;
   
   public r()
   {
-    AppMethodBeat.i(186735);
-    this.cry = new ConcurrentHashMap();
-    AppMethodBeat.o(186735);
+    AppMethodBeat.i(220418);
+    this.csb = new ConcurrentHashMap();
+    AppMethodBeat.o(220418);
   }
   
   public final <AddOn extends j> AddOn U(Class<AddOn> paramClass)
   {
-    AppMethodBeat.i(186737);
-    j localj = (j)this.cry.get(paramClass);
+    AppMethodBeat.i(220420);
+    j localj = (j)this.csb.get(paramClass);
     if ((localj != null) && (paramClass.isInstance(localj)))
     {
-      AppMethodBeat.o(186737);
+      AppMethodBeat.o(220420);
       return localj;
     }
-    AppMethodBeat.o(186737);
+    AppMethodBeat.o(220420);
     return null;
   }
   
   public final <AddOn extends j> void a(Class<AddOn> paramClass, AddOn paramAddOn)
   {
-    AppMethodBeat.i(186736);
+    AppMethodBeat.i(220419);
     if (paramAddOn == null)
     {
-      this.cry.remove(paramClass);
-      AppMethodBeat.o(186736);
+      this.csb.remove(paramClass);
+      AppMethodBeat.o(220419);
       return;
     }
-    this.cry.put(paramClass, paramAddOn);
-    AppMethodBeat.o(186736);
+    this.csb.put(paramClass, paramAddOn);
+    AppMethodBeat.o(220419);
   }
   
   public final String getName()
@@ -49,7 +49,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.r
  * JD-Core Version:    0.7.0.1
  */

@@ -283,6 +283,7 @@
     <string name="i1">Never</string>
     <string name="i2">About: %s</string>
     <string name="i3">Exit</string>
+    <string name="hj8">This account is blocked from posting. Unable to post.</string>
     <string name="i4">Speaker</string>
     <string name="i5">\"%s\"</string>
     <string name="k4">[Large File]</string>
@@ -361,6 +362,8 @@ In a Mini Program, open the top-right menu to add."</string>
     <string name="hew">Tags</string>
     <string name="hex">Hide My Posts</string>
     <string name="hey">Hide Their Moments</string>
+    <string name="hj9">Alias is under review. Unable to post.</string>
+    <string name="ht4">Account suspended from use. Unable to post.</string>
     <string name="k9">"Tried to create shortcut. If you cannot find the Mini Program icon on your device's home screen, check if you have authorized \"Create Home Screen Shortcuts\" in your system settings."</string>
     <string name="k_">Make sure the other user has already been set as a tester for the Mini Program.</string>
     <string name="ka">Make sure the developer version has been previewed on the other device.</string>
@@ -1096,6 +1099,7 @@ Other device's network %s"</string>
     <string name="a3e">Transfer completed. Click to import</string>
     <string name="a3f">Keep WeChat running in foreground while importing chat histories</string>
     <string name="a3g">Only migrate text messages</string>
+    <string name="ht5">Navigate to %s</string>
     <string name="a3h">Select Items to Migrate</string>
     <string name="hfb">Wi-Fi disconnected</string>
     <string name="a3i">Select Date Range for Migration</string>
@@ -3306,7 +3310,7 @@ Retry?"</string>
     <string name="bq1">WeCom</string>
     <string name="bq2">New chat using WeCom</string>
     <string name="bq3">Get</string>
-    <string name="bq4">WeCom not installed. Download now</string>
+    <string name="bq4">WeCom not installed. Download now.</string>
     <string name="bq5">Downloading…...</string>
     <string name="bq6">Open with WeCom</string>
     <string name="bq7">WeCom</string>
@@ -3444,7 +3448,7 @@ Retry?"</string>
     <string name="btu">OK</string>
     <string name="btv">Recent Likes</string>
     <string name="btw">Record Fitness Data</string>
-    <string name="btx">Failed to get system step count</string>
+    <string name="btx">Unable to access system step count. Please check your settings.</string>
     <string name="bty">Unfollowed</string>
     <string name="btz">"If you didn't find available devices, click"</string>
     <string name="bu0">Searching %s</string>
@@ -4133,7 +4137,7 @@ Update changes to your contact information immediately"</string>
     <string name="cbv">Operation not completed. Try again later.</string>
     <string name="cbw">Post</string>
     <string name="cbx">Add description</string>
-    <string name="cby">Post new activity</string>
+    <string name="cby">Post Activity</string>
     <string name="cbz">Say something...</string>
     <string name="cc0">Not posted</string>
     <string name="cc1">Unable to post. Complete &lt;font color=#576B95>Identity Verification&lt;/font> first in order to post content.</string>
@@ -4780,7 +4784,7 @@ Your saved and shared gameplay
     <string name="csv">Control your message preferences in the settings screen</string>
     <string name="csw">%s new message(s)</string>
     <string name="csx">Send Heart</string>
-    <string name="csy">Interaction</string>
+    <string name="csy">Interactions</string>
     <string name="csz">Notifications</string>
     <string name="ct0">No messages</string>
     <string name="ct1">Topic received %s like(s)</string>
@@ -4947,9 +4951,11 @@ Your saved and shared gameplay
     <string name="cxh">Collecting information?</string>
     <string name="cxi">Group Note</string>
     <string name="cxj">Give the group note a title</string>
+    <string name="ht6">Log in on WeChat for Desktop</string>
     <string name="cxk">"Group note created by %1$s.
 %2$s group member(s) participating."</string>
     <string name="cxl">"You can set messages as group to-do's and notify all group members."</string>
+    <string name="hut">Update WeChat for Desktop</string>
     <string name="hfo">Follow</string>
     <string name="cxm">Set as Group To-Do</string>
     <string name="cxn">Set as Group To-Do</string>
@@ -5083,6 +5089,7 @@ Your saved and shared gameplay
     <string name="d12">OK</string>
     <string name="d13">Done</string>
     <string name="hfs">%s views</string>
+    <string name="hxf">Check on your computer</string>
     <string name="d14">Gift a Relative Card</string>
     <string name="d15">Edit Monthly Limit</string>
     <string name="d16">Enter payment password to verify</string>
@@ -5119,6 +5126,7 @@ Your saved and shared gameplay
     <string name="d1w">Mom</string>
     <string name="hfx">Remove</string>
     <string name="d1x">Not yet accepted</string>
+    <string name="i3_">Open on computer</string>
     <string name="hsr">Mini Program Shopping Experience Guarantee</string>
     <string name="d1y">[Relative Card] %s</string>
     <string name="d1z">Accept</string>
@@ -6084,7 +6092,7 @@ Open it using another app."</string>
     <string name="dqs">Send</string>
     <string name="dqt">Try again in %d seconds</string>
     <string name="dqu">Transfer to %1$s(%2$s)</string>
-    <string name="dqv">OK</string>
+    <string name="dqv">Got It</string>
     <string name="dqw">Communication problem with server. Try again later.</string>
     <string name="dqx">Select transfer time:</string>
     <string name="dqy">Transfer Time</string>
@@ -6108,7 +6116,7 @@ Open it using another app."</string>
     <string name="drf">Name verified</string>
     <string name="drg">Verified</string>
     <string name="drh">Verify Payee</string>
-    <string name="dri">Start Using</string>
+    <string name="dri">Use</string>
     <string name="drj">"Enter the payee's mobile number linked to WeChat to transfer to their WeChat Balance"</string>
     <string name="drk">Payee needs to enable this feature in \"Money\" > \"Transfer to Bank Card/Mobile No.\" > \"Mobile Number Transfer Settings\".</string>
     <string name="drl">No results found</string>
@@ -8458,7 +8466,6 @@ If you disable it here, you must reenable it from your computer"</string>
     <string name="fgq">Unable to Share on WeChat</string>
     <string name="fgr">Unable to share. Only photo files are supported</string>
     <string name="fgs">File is empty or does not exist</string>
-    <string name="fgt">Unable to share image exceeding 10M</string>
     <string name="fgu">Unable to load the resource</string>
     <string name="fgv">Unable to turn on camera</string>
     <string name="fgw">Failed to obtain data. Unable to share to Moments.</string>
@@ -11237,7 +11244,7 @@ There is a problem with this site's security certificate, perhaps due to an inco
     <string name="hh6">Location Authorization</string>
     <string name="hh7">Select</string>
     <string name="hjz">Please be patient while Channels is gradually opened to all users. Do not trust any claims to help you purchase a channel or speed up the activation process.</string>
-    <string name="hk0">Original Channel</string>
+    <string name="hk0">Original Channels</string>
     <string name="hk1">I have read and accept the %s</string>
     <string name="hk2">Weixin Channels Statement of Originality Feature Terms of Use</string>
     <string name="hk3">Declaration</string>
@@ -11670,7 +11677,7 @@ There is a problem with this site's security certificate, perhaps due to an inco
     <string name="hvo">Unable to load. Tap to retry.</string>
     <string name="hvp">Loading...</string>
     <string name="hvq">Failed to remove it from blacklist</string>
-    <string name="hvr">Service Notifications</string>
+    <string name="hvr">Notifications</string>
     <string name="hvs">Channel Messages</string>
     <string name="hvt">Channel Messages</string>
     <string name="hxs">No more messages</string>
@@ -11685,6 +11692,7 @@ There is a problem with this site's security certificate, perhaps due to an inco
     <string name="hy1">Contains multiple photos</string>
     <string name="hy2">Mark as Unread</string>
     <string name="f9s">\"WeChat Pay Faceprint Service Agreement\"</string>
+    <string name="i3a">Share a 60 sec video with Channels</string>
     <string name="f9y">Unlike</string>
     <string name="hhk">No more activity. View in \"%s\".</string>
     <string name="hjm">View in \"%s\".</string>
@@ -11704,6 +11712,7 @@ There is a problem with this site's security certificate, perhaps due to an inco
     <string name="hw2">Tickle</string>
     <string name="hw3">A tickle notification message will appear in the chat between the two of you.</string>
     <string name="hw4">The other user will be notified when you tickle their profile photo</string>
+    <string name="i3b">This sticker is no longer available. Unable to send.</string>
     <string name="hw6">"%s's Activity"</string>
     <string name="hw7">[Group Live] %s</string>
     <string name="hy9">Message download is not complete. Try again later.</string>
@@ -11735,7 +11744,7 @@ There is a problem with this site's security certificate, perhaps due to an inco
     <string name="hwi">Comment deleted</string>
     <string name="hyn">Video is being uploaded. You can post it on Moments later.</string>
     <string name="hwj">Deleted</string>
-    <string name="hyo">Forward to Moments</string>
+    <string name="hyo">Share on Moments</string>
     <string name="hyp">Follow</string>
     <string name="hyq">Unfollow</string>
     <string name="hwk">to</string>
@@ -11793,23 +11802,46 @@ Friends will not see it."</string>
     <string name="hzv">You have not posted channel activity</string>
     <string name="hzw">"You can choose to share a 60s video on Moments once it's posted in Channels."</string>
     <string name="hzx">Select My Channel Activity</string>
+    <string name="i3c">Agree</string>
+    <string name="i3d">You must agree to the following agreement before using faceprint service</string>
     <string name="hwy">Redirecting...</string>
     <string name="hwz">Authorization service error</string>
+    <string name="i3e">Disagree</string>
     <string name="hzy">Bold</string>
     <string name="hzz">Default</string>
     <string name="i00">Light</string>
     <string name="i01">Medium</string>
+    <string name="i3f">Unable to favorite files larger than %s</string>
+    <string name="i3g">Create a channel to post activity</string>
+    <string name="i3h">More Activity from Him</string>
+    <string name="i3i">Unfollow</string>
     <string name="i02">Game Card</string>
     <string name="i03">Shared name card: %s</string>
     <string name="i04">Shared name card: %s</string>
     <string name="i05">New Group Chat</string>
+    <string name="i3j">%s viewer(s)</string>
+    <string name="i3k">Channels Messages</string>
+    <string name="i3l">Comment and mention</string>
+    <string name="i3m">Follow</string>
+    <string name="i3n">Like</string>
+    <string name="i3o">Author of original Channels can only post original content. Publishing non-original content will be punished.</string>
+    <string name="i3p">WeChat Developer Version Features</string>
+    <string name="i3q">The current version does not support sending stickers</string>
+    <string name="i3r">Clear all interacted messages</string>
+    <string name="i3s">Clear all interacted messages?</string>
     <string name="ht3">Provided by Tencent Live and Tencent Cloud</string>
     <string name="i06">Go to image source</string>
+    <string name="i3t">Clear All Subscription Messages</string>
+    <string name="i3u">Clear all subscription messages?</string>
+    <string name="i3v">Manage Subscription Messages</string>
+    <string name="i3w">Not yet sent or received any greetings.</string>
+    <string name="i3x">The current version does not support sending stickers</string>
     <string name="i07">Remove Current Effect</string>
     <string name="i08">Effect Duration</string>
     <string name="i09">Effect Added</string>
     <string name="i0_">Add Effect</string>
     <string name="i0a">Failed to download attachment</string>
+    <string name="i3y">This feature is currently unavailable</string>
     <string name="i0e">%1$sSet nickname%2$s. After setting, the nickname will be displayed when friends tickle you.</string>
     <string name="i0f">Failed to access email data</string>
     <string name="i0g">Change Email</string>
@@ -11871,6 +11903,7 @@ Friends will not see it."</string>
     <string name="i1z">"%s's Video"</string>
     <string name="i20">Music</string>
     <string name="i21">Record</string>
+    <string name="i3z">Activity Nearby</string>
     <string name="i22">Captions</string>
     <string name="i23">Video-matched captions</string>
     <string name="i24">Create Captions</string>
@@ -11915,5 +11948,23 @@ Friends will not see it."</string>
     <string name="i36">No Transitions</string>
     <string name="i37">None</string>
     <string name="i38">Add Transitions</string>
+    <string name="i40">Live stream terminated by group admin.</string>
+    <string name="i41">Terminate Live Stream</string>
+    <string name="i42">Terminate Live Stream</string>
+    <string name="i43">Terminate the current live stream as group admin</string>
+    <string name="i44">Please agree to the relevant agreements</string>
+    <string name="i45">Unable to add to blacklist</string>
+    <string name="i46">Added to blacklist</string>
+    <string name="i47">Unable to remove from blacklist</string>
+    <string name="i48">Removed from blacklist</string>
+    <string name="i49">More Activity Recommended</string>
+    <string name="fgt">Once enabled, you need to send messages via the Send or Enter button in the keyboard.</string>
     <string name="i39">Image expired or was deleted. Unable to search.</string>
+    <string name="i4_">File size larger than %d MB is not supported</string>
+    <string name="i4a">Open with Browser</string>
+    <string name="i4b">Image not found</string>
+    <string name="i4c">"Too many messages selected and can't be sent"</string>
+    <string name="i4d">Auto-Deposit is renamed</string>
+    <string name="i4e">%d characters remaining</string>
+    <string name="i4f">Exceeded the maximum of %d characters</string>
 </resources>

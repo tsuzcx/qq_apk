@@ -5,85 +5,85 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.aj;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.dei;
-import com.tencent.mm.protocal.protobuf.doa;
-import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.protocal.protobuf.dox;
+import com.tencent.mm.protocal.protobuf.dpa;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract boolean Pf();
+  public abstract boolean Pd();
   
-  public abstract boolean SX(int paramInt);
+  public abstract boolean TE(int paramInt);
   
-  public abstract void SY(int paramInt);
+  public abstract void TF(int paramInt);
   
-  public abstract void SZ(int paramInt);
+  public abstract void TG(int paramInt);
   
-  public abstract void a(dei paramdei);
+  public abstract void a(dfc paramdfc);
   
-  public abstract void a(dod paramdod);
+  public abstract void a(dpa paramdpa);
   
-  public abstract void a(dod paramdod, int paramInt1, int paramInt2);
+  public abstract void a(dpa paramdpa, int paramInt1, int paramInt2);
   
-  public abstract void a(dod paramdod, View paramView);
+  public abstract void a(dpa paramdpa, View paramView);
   
-  public abstract void a(dod paramdod, f paramf, int paramInt);
+  public abstract void a(dpa paramdpa, f paramf, int paramInt);
   
-  public abstract void aCV(String paramString);
+  public abstract void aEo(String paramString);
   
-  public abstract void aCW(String paramString);
+  public abstract void aEp(String paramString);
   
   public abstract void at(View paramView, int paramInt);
   
-  public abstract void dfI();
+  public abstract void diF();
   
-  public abstract MMActivity dhO();
+  public abstract MMActivity dkN();
   
-  public abstract m epA();
+  public abstract void eta();
   
-  public abstract r epB();
+  public abstract void etb();
   
-  public abstract Point epC();
+  public abstract l etd();
   
-  public abstract aj epD();
+  public abstract o ete();
   
-  public abstract int epE();
+  public abstract String etf();
   
-  public abstract boolean epF();
+  public abstract dox etg();
   
-  public abstract boolean epG();
+  public abstract m eth();
   
-  public abstract e epH();
+  public abstract r eti();
   
-  public abstract boolean epI();
+  public abstract Point etj();
   
-  public abstract void epJ();
+  public abstract aj etk();
   
-  public abstract int epK();
+  public abstract int etl();
   
-  public abstract n epL();
+  public abstract boolean etm();
   
-  public abstract String epM();
+  public abstract boolean etn();
   
-  public abstract int epN();
+  public abstract e eto();
   
-  public abstract void epO();
+  public abstract boolean etp();
   
-  public abstract int epP();
+  public abstract void etq();
   
-  public abstract void ept();
+  public abstract int etr();
   
-  public abstract void epu();
+  public abstract n ets();
   
-  public abstract l epw();
+  public abstract String ett();
   
-  public abstract o epx();
+  public abstract int etu();
   
-  public abstract String epy();
+  public abstract void etv();
   
-  public abstract doa epz();
+  public abstract int etw();
   
   public abstract RecyclerView.i getLayoutManager();
   
@@ -95,11 +95,11 @@ public abstract interface b
   
   public abstract boolean isFullscreenMode();
   
-  public abstract void n(List<dod> paramList, boolean paramBoolean);
+  public abstract void n(List<dpa> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.b
  * JD-Core Version:    0.7.0.1
  */

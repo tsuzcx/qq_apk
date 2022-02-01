@@ -1,132 +1,127 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bvd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public FinderAuthInfo authInfo;
-  public int index;
-  public String jna;
-  public String nickname;
-  public long sMP;
-  public int type;
-  public String username;
+  public String GNI;
+  public String GnN;
+  public String GnO;
+  public String nIJ;
+  public String nJO;
+  public int nJb;
+  public String yxn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209379);
+    AppMethodBeat.i(155433);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+      if (this.yxn != null) {
+        paramVarArgs.d(1, this.yxn);
       }
-      if (this.jna != null) {
-        paramVarArgs.d(2, this.jna);
+      if (this.nIJ != null) {
+        paramVarArgs.d(2, this.nIJ);
       }
-      if (this.nickname != null) {
-        paramVarArgs.d(3, this.nickname);
+      paramVarArgs.aS(3, this.nJb);
+      if (this.GnN != null) {
+        paramVarArgs.d(4, this.GnN);
       }
-      if (this.authInfo != null)
-      {
-        paramVarArgs.lC(4, this.authInfo.computeSize());
-        this.authInfo.writeFields(paramVarArgs);
+      if (this.GnO != null) {
+        paramVarArgs.d(5, this.GnO);
       }
-      paramVarArgs.aY(5, this.sMP);
-      paramVarArgs.aS(6, this.type);
-      paramVarArgs.aS(7, this.index);
-      AppMethodBeat.o(209379);
+      if (this.nJO != null) {
+        paramVarArgs.d(6, this.nJO);
+      }
+      if (this.GNI != null) {
+        paramVarArgs.d(7, this.GNI);
+      }
+      AppMethodBeat.o(155433);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label630;
+      if (this.yxn == null) {
+        break label562;
       }
     }
-    label630:
-    for (int i = f.a.a.b.b.a.e(1, this.username) + 0;; i = 0)
+    label562:
+    for (paramInt = f.a.a.b.b.a.e(1, this.yxn) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.nIJ != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.nIJ);
+      }
+      i += f.a.a.b.b.a.bz(3, this.nJb);
       paramInt = i;
-      if (this.jna != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.jna);
+      if (this.GnN != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.GnN);
       }
       i = paramInt;
-      if (this.nickname != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.nickname);
+      if (this.GnO != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.GnO);
       }
       paramInt = i;
-      if (this.authInfo != null) {
-        paramInt = i + f.a.a.a.lB(4, this.authInfo.computeSize());
+      if (this.nJO != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.nJO);
       }
-      i = f.a.a.b.b.a.p(5, this.sMP);
-      int j = f.a.a.b.b.a.bz(6, this.type);
-      int k = f.a.a.b.b.a.bz(7, this.index);
-      AppMethodBeat.o(209379);
-      return paramInt + i + j + k;
+      i = paramInt;
+      if (this.GNI != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.GNI);
+      }
+      AppMethodBeat.o(155433);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(209379);
+        AppMethodBeat.o(155433);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         bvd localbvd = (bvd)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(209379);
+          AppMethodBeat.o(155433);
           return -1;
         case 1: 
-          localbvd.username = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(209379);
+          localbvd.yxn = locala.OmT.readString();
+          AppMethodBeat.o(155433);
           return 0;
         case 2: 
-          localbvd.jna = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(209379);
+          localbvd.nIJ = locala.OmT.readString();
+          AppMethodBeat.o(155433);
           return 0;
         case 3: 
-          localbvd.nickname = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(209379);
+          localbvd.nJb = locala.OmT.zc();
+          AppMethodBeat.o(155433);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderAuthInfo();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderAuthInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbvd.authInfo = ((FinderAuthInfo)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(209379);
+          localbvd.GnN = locala.OmT.readString();
+          AppMethodBeat.o(155433);
           return 0;
         case 5: 
-          localbvd.sMP = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(209379);
+          localbvd.GnO = locala.OmT.readString();
+          AppMethodBeat.o(155433);
           return 0;
         case 6: 
-          localbvd.type = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(209379);
+          localbvd.nJO = locala.OmT.readString();
+          AppMethodBeat.o(155433);
           return 0;
         }
-        localbvd.index = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(209379);
+        localbvd.GNI = locala.OmT.readString();
+        AppMethodBeat.o(155433);
         return 0;
       }
-      AppMethodBeat.o(209379);
+      AppMethodBeat.o(155433);
       return -1;
     }
   }

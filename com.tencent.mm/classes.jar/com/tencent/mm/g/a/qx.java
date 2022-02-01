@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qx
   extends b
 {
-  public a dFw;
+  public a dGz;
   
   public qx()
   {
@@ -16,21 +16,16 @@ public final class qx
   
   private qx(byte paramByte)
   {
-    AppMethodBeat.i(125627);
-    this.dFw = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125626);
+    this.dGz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125627);
+    AppMethodBeat.o(125626);
   }
   
   public static final class a
   {
-    public SnsAdClick dFv;
-    public int dFx;
-    public String dFy;
-    public int errorCode;
-    public long timestamp;
-    public String url;
+    public SnsAdClick dGA;
   }
 }
 

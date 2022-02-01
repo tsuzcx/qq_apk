@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui.widget.ad;
 
 public abstract interface ScrollableLayout$b
 {
-  public abstract void aA(int paramInt, boolean paramBoolean);
+  public abstract void aD(int paramInt, boolean paramBoolean);
 }
 
 

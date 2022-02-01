@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.facedetectlight.ui.a;
 
 public abstract interface b
 {
-  public abstract void aX(int paramInt, String paramString);
+  public abstract void aW(int paramInt, String paramString);
   
-  public abstract void agb(String paramString);
+  public abstract void agY(String paramString);
   
-  public abstract void cux();
+  public abstract void cvY();
   
-  public abstract void cuy();
+  public abstract void cvZ();
   
-  public abstract void cuz();
+  public abstract void cwa();
   
   public abstract void w(int paramInt, String paramString1, String paramString2);
 }

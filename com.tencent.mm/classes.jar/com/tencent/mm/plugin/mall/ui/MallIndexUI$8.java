@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.mall.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zn;
-import com.tencent.mm.g.a.zn.a;
+import com.tencent.mm.g.a.zt;
+import com.tencent.mm.g.a.zt.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class MallIndexUI$8
-  extends c<zn>
+  extends c<zt>
 {
   MallIndexUI$8(MallIndexUI paramMallIndexUI)
   {
     AppMethodBeat.i(160813);
-    this.__eventId = zn.class.getName().hashCode();
+    this.__eventId = zt.class.getName().hashCode();
     AppMethodBeat.o(160813);
   }
   
-  private static boolean a(zn paramzn)
+  private static boolean a(zt paramzt)
   {
     AppMethodBeat.i(66105);
-    paramzn = paramzn.dOT.duy;
-    ad.i("MicorMsg.MallIndexUI", "get result %s", new Object[] { paramzn });
-    if ("agree_privacy".equals(paramzn))
+    paramzt = paramzt.dQj.dvD;
+    ae.i("MicorMsg.MallIndexUI", "get result %s", new Object[] { paramzt });
+    if ("agree_privacy".equals(paramzt))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IEd, Boolean.TRUE);
+      g.ajS();
+      g.ajR().ajA().set(am.a.IYD, Boolean.TRUE);
     }
     AppMethodBeat.o(66105);
     return false;

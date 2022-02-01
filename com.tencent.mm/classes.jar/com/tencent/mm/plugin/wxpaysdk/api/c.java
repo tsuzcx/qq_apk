@@ -9,13 +9,13 @@ public abstract interface c
 {
   public abstract void g(Activity paramActivity, Bundle paramBundle);
   
-  public abstract com.tencent.mm.pluginsdk.b.a gJ(Context paramContext);
+  public abstract com.tencent.mm.pluginsdk.b.a gO(Context paramContext);
   
-  public abstract com.tencent.mm.pluginsdk.b.a gK(Context paramContext);
+  public abstract com.tencent.mm.pluginsdk.b.a gP(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wxpaysdk.api.c
  * JD-Core Version:    0.7.0.1
  */

@@ -12,45 +12,45 @@ import java.util.ArrayList;
 public final class b
   extends r<c>
 {
-  a KxR;
-  private ArrayList<c> jqc;
+  a KUl;
+  private ArrayList<c> jsV;
   
   public b(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(38763);
-    this.jqc = new ArrayList();
-    this.KxR = null;
-    Zv();
+    this.jsV = new ArrayList();
+    this.KUl = null;
+    ZE();
     AppMethodBeat.o(38763);
   }
   
-  public final void Zu()
+  public final void ZD()
   {
     AppMethodBeat.i(38765);
-    this.jqc.clear();
-    if (this.KxR == null)
+    this.jsV.clear();
+    if (this.KUl == null)
     {
       AppMethodBeat.o(38765);
       return;
     }
-    c localc = new c(this.KxR);
-    this.jqc.add(localc);
+    c localc = new c(this.KUl);
+    this.jsV.add(localc);
     notifyDataSetChanged();
     AppMethodBeat.o(38765);
   }
   
-  public final void Zv()
+  public final void ZE()
   {
     AppMethodBeat.i(38764);
-    Zu();
+    ZD();
     AppMethodBeat.o(38764);
   }
   
-  public final c aeH(int paramInt)
+  public final c afq(int paramInt)
   {
     AppMethodBeat.i(38767);
-    c localc = (c)this.jqc.get(paramInt);
+    c localc = (c)this.jsV.get(paramInt);
     AppMethodBeat.o(38767);
     return localc;
   }
@@ -58,7 +58,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(38766);
-    int i = this.jqc.size();
+    int i = this.jsV.size();
     AppMethodBeat.o(38766);
     return i;
   }
@@ -66,14 +66,14 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(38768);
-    c localc = (c)this.jqc.get(paramInt);
+    c localc = (c)this.jsV.get(paramInt);
     View localView;
     if (paramView == null)
     {
       localView = View.inflate(this.context, 2131492953, null);
       paramView = new d();
-      paramView.KxT = localView;
-      paramView.KxU = ((Button)localView.findViewById(2131296429));
+      paramView.KUn = localView;
+      paramView.KUo = ((Button)localView.findViewById(2131296429));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }

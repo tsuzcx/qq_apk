@@ -30,7 +30,7 @@ public final class AppBrandGuideUI
   extends MMActivity
   implements f
 {
-  public final void bB(String paramString, int paramInt)
+  public final void bE(String paramString, int paramInt)
   {
     AppMethodBeat.i(48618);
     finish();
@@ -48,7 +48,7 @@ public final class AppBrandGuideUI
     setTheme(2131821149);
     super.onCreate(paramBundle);
     al.b(getWindow());
-    paramBundle = j.aYO();
+    paramBundle = j.aZk();
     if (paramBundle == null)
     {
       super.finish();
@@ -57,7 +57,7 @@ public final class AppBrandGuideUI
     }
     AppBrandStickyBannerLogic.b.d(this);
     Object localObject = new d.a(this);
-    ((d.a)localObject).afe(2131755401);
+    ((d.a)localObject).afN(2131755401);
     ImageView localImageView = new ImageView(this);
     localImageView.setImageResource(2131230984);
     TextView localTextView = new TextView(this);
@@ -69,8 +69,8 @@ public final class AppBrandGuideUI
     localLinearLayout.setOrientation(1);
     localLinearLayout.addView(localImageView, new LinearLayout.LayoutParams(-1, -2));
     localLinearLayout.addView(localTextView, new LinearLayout.LayoutParams(-1, -2));
-    ((ViewGroup.MarginLayoutParams)localTextView.getLayoutParams()).topMargin = com.tencent.mm.cc.a.fromDPToPix(this, 16);
-    ((d.a)localObject).gY(localLinearLayout);
+    ((ViewGroup.MarginLayoutParams)localTextView.getLayoutParams()).topMargin = com.tencent.mm.cb.a.fromDPToPix(this, 16);
+    ((d.a)localObject).hd(localLinearLayout);
     ((d.a)localObject).a(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
@@ -80,18 +80,18 @@ public final class AppBrandGuideUI
         AppMethodBeat.o(48610);
       }
     });
-    ((d.a)localObject).afm(2131757429);
+    ((d.a)localObject).afV(2131757429);
     ((d.a)localObject).d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(48611);
-        o.a(o.a.mtX, "");
+        o.a(o.a.myU, "");
         AppBrandGuideUI.this.finish();
         AppMethodBeat.o(48611);
       }
     });
-    ((d.a)localObject).afl(2131755456);
+    ((d.a)localObject).afU(2131755456);
     ((d.a)localObject).a(false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -100,17 +100,17 @@ public final class AppBrandGuideUI
         paramAnonymousDialogInterface = AppBrandGuideUI.this;
         Object localObject = new Intent(AppBrandGuideUI.this, AppBrandLauncherUI.class).putExtra("extra_enter_scene", 11);
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        o.a(o.a.mtY, "");
+        o.a(o.a.myV, "");
         AppBrandGuideUI.this.finish();
         AppMethodBeat.o(48612);
       }
     });
-    ((d.a)localObject).yR(false);
-    ((d.a)localObject).yS(true);
-    localObject = ((d.a)localObject).fMb();
+    ((d.a)localObject).zf(false);
+    ((d.a)localObject).zg(true);
+    localObject = ((d.a)localObject).fQv();
     ((Dialog)localObject).setOnKeyListener(new DialogInterface.OnKeyListener()
     {
       public final boolean onKey(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
@@ -120,7 +120,7 @@ public final class AppBrandGuideUI
         {
           if (1 == paramAnonymousKeyEvent.getAction())
           {
-            o.a(o.a.mtZ, "");
+            o.a(o.a.myW, "");
             AppBrandGuideUI.this.finish();
           }
           AppMethodBeat.o(48613);
@@ -131,9 +131,9 @@ public final class AppBrandGuideUI
       }
     });
     ((Dialog)localObject).show();
-    o.a(o.a.mtW, paramBundle.mBC);
-    paramBundle.mBB = false;
-    paramBundle.mBC = null;
+    o.a(o.a.myT, paramBundle.mGH);
+    paramBundle.mGG = false;
+    paramBundle.mGH = null;
     AppMethodBeat.o(48616);
   }
   
@@ -153,7 +153,7 @@ public final class AppBrandGuideUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandGuideUI
  * JD-Core Version:    0.7.0.1
  */

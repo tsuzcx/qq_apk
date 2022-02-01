@@ -3,76 +3,90 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cic
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Desc;
-  public String HbR;
-  public String HbS;
-  public String IconUrl;
-  public String Title;
-  public int tSt;
+  public int FOD;
+  public int Huk;
+  public String dwb;
+  public String iaa;
+  public String mwf;
+  public String mwg;
+  public String mwk;
+  public int position;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117888);
+    AppMethodBeat.i(50096);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HbR != null) {
-        paramVarArgs.d(1, this.HbR);
+      if (this.username != null) {
+        paramVarArgs.d(1, this.username);
       }
-      if (this.Title != null) {
-        paramVarArgs.d(2, this.Title);
+      if (this.mwf != null) {
+        paramVarArgs.d(2, this.mwf);
       }
-      if (this.Desc != null) {
-        paramVarArgs.d(3, this.Desc);
+      if (this.iaa != null) {
+        paramVarArgs.d(3, this.iaa);
       }
-      if (this.IconUrl != null) {
-        paramVarArgs.d(4, this.IconUrl);
+      if (this.mwg != null) {
+        paramVarArgs.d(4, this.mwg);
       }
-      if (this.HbS != null) {
-        paramVarArgs.d(5, this.HbS);
+      if (this.dwb != null) {
+        paramVarArgs.d(5, this.dwb);
       }
-      paramVarArgs.aS(6, this.tSt);
-      AppMethodBeat.o(117888);
+      if (this.mwk != null) {
+        paramVarArgs.d(6, this.mwk);
+      }
+      paramVarArgs.aS(7, this.position);
+      paramVarArgs.aS(8, this.Huk);
+      paramVarArgs.aS(9, this.FOD);
+      AppMethodBeat.o(50096);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HbR == null) {
-        break label502;
+      if (this.username == null) {
+        break label658;
       }
     }
-    label502:
-    for (int i = f.a.a.b.b.a.e(1, this.HbR) + 0;; i = 0)
+    label658:
+    for (int i = f.a.a.b.b.a.e(1, this.username) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Title != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
+      if (this.mwf != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.mwf);
       }
       i = paramInt;
-      if (this.Desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Desc);
+      if (this.iaa != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.iaa);
       }
       paramInt = i;
-      if (this.IconUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.IconUrl);
+      if (this.mwg != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.mwg);
       }
       i = paramInt;
-      if (this.HbS != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.HbS);
+      if (this.dwb != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.dwb);
       }
-      paramInt = f.a.a.b.b.a.bz(6, this.tSt);
-      AppMethodBeat.o(117888);
-      return i + paramInt;
+      paramInt = i;
+      if (this.mwk != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.mwk);
+      }
+      i = f.a.a.b.b.a.bz(7, this.position);
+      int j = f.a.a.b.b.a.bz(8, this.Huk);
+      int k = f.a.a.b.b.a.bz(9, this.FOD);
+      AppMethodBeat.o(50096);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(117888);
+        AppMethodBeat.o(50096);
         return 0;
       }
       if (paramInt == 3)
@@ -82,34 +96,46 @@ public final class cic
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117888);
+          AppMethodBeat.o(50096);
           return -1;
         case 1: 
-          localcic.HbR = locala.NPN.readString();
-          AppMethodBeat.o(117888);
+          localcic.username = locala.OmT.readString();
+          AppMethodBeat.o(50096);
           return 0;
         case 2: 
-          localcic.Title = locala.NPN.readString();
-          AppMethodBeat.o(117888);
+          localcic.mwf = locala.OmT.readString();
+          AppMethodBeat.o(50096);
           return 0;
         case 3: 
-          localcic.Desc = locala.NPN.readString();
-          AppMethodBeat.o(117888);
+          localcic.iaa = locala.OmT.readString();
+          AppMethodBeat.o(50096);
           return 0;
         case 4: 
-          localcic.IconUrl = locala.NPN.readString();
-          AppMethodBeat.o(117888);
+          localcic.mwg = locala.OmT.readString();
+          AppMethodBeat.o(50096);
           return 0;
         case 5: 
-          localcic.HbS = locala.NPN.readString();
-          AppMethodBeat.o(117888);
+          localcic.dwb = locala.OmT.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 6: 
+          localcic.mwk = locala.OmT.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 7: 
+          localcic.position = locala.OmT.zc();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 8: 
+          localcic.Huk = locala.OmT.zc();
+          AppMethodBeat.o(50096);
           return 0;
         }
-        localcic.tSt = locala.NPN.zc();
-        AppMethodBeat.o(117888);
+        localcic.FOD = locala.OmT.zc();
+        AppMethodBeat.o(50096);
         return 0;
       }
-      AppMethodBeat.o(117888);
+      AppMethodBeat.o(50096);
       return -1;
     }
   }

@@ -1,7 +1,7 @@
 package com.tencent.tinker.loader;
 
 import android.annotation.SuppressLint;
-import androidx.annotation.Keep;
+import com.tencent.tinker.anno.Keep;
 import dalvik.system.BaseDexClassLoader;
 import java.io.File;
 import java.net.URL;
@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.NoSuchElementException;
 
 @SuppressLint({"NewApi"})
+@Keep
 public final class TinkerClassLoader
   extends BaseDexClassLoader
 {

@@ -10,10 +10,10 @@ import java.util.Set;
 public abstract class e<T, V, X, Y>
   implements f<T, V>
 {
-  public f<T, X> hxA = null;
-  public d<T, Y> hxB = null;
-  public f.b<T, V> hxC = null;
-  protected a hxv;
+  protected a hAj;
+  public f<T, X> hAo = null;
+  public d<T, Y> hAp = null;
+  public f.b<T, V> hAq = null;
   public int maxSize;
   
   public e(int paramInt)
@@ -24,15 +24,15 @@ public abstract class e<T, V, X, Y>
   
   public e(int paramInt, f.b<T, V> paramb, a parama)
   {
-    this.hxC = paramb;
+    this.hAq = paramb;
     this.maxSize = paramInt;
-    this.hxv = parama;
+    this.hAj = parama;
     init();
   }
   
   public e(f.b<T, V> paramb)
   {
-    this.hxC = paramb;
+    this.hAq = paramb;
     this.maxSize = 10;
     init();
   }
@@ -44,47 +44,47 @@ public abstract class e<T, V, X, Y>
   
   public final void a(final f.a<T, V> parama)
   {
-    this.hxA.a(new f.a() {});
+    this.hAo.a(new f.a() {});
   }
   
   public V aL(T paramT)
   {
-    Object localObject = bP(this.hxA.aL(paramT));
-    if (this.hxB != null) {
-      this.hxB.z(ayL(), paramT);
+    Object localObject = bP(this.hAo.aL(paramT));
+    if (this.hAp != null) {
+      this.hAp.z(aza(), paramT);
     }
     return localObject;
   }
   
   public final boolean aM(T paramT)
   {
-    boolean bool = this.hxA.aM(paramT);
-    if (this.hxB != null) {
-      this.hxB.v(ayL(), paramT);
+    boolean bool = this.hAo.aM(paramT);
+    if (this.hAp != null) {
+      this.hAp.v(aza(), paramT);
     }
     return bool;
   }
   
   public final boolean aN(T paramT)
   {
-    boolean bool = this.hxA.aN(paramT);
-    if (this.hxB != null) {
-      this.hxB.A(ayL(), paramT);
+    boolean bool = this.hAo.aN(paramT);
+    if (this.hAp != null) {
+      this.hAp.A(aza(), paramT);
     }
     return bool;
   }
   
-  protected abstract T ayL();
+  protected abstract T aza();
   
-  protected f<T, X> ayM()
+  protected f<T, X> azb()
   {
     new h(this.maxSize, new f.b()
     {
       public final void c(T paramAnonymousT, X paramAnonymousX1, X paramAnonymousX2)
       {
         AppMethodBeat.i(156513);
-        if (e.this.hxC != null) {
-          e.this.hxC.c(paramAnonymousT, e.this.bP(paramAnonymousX1), e.this.bP(paramAnonymousX2));
+        if (e.this.hAq != null) {
+          e.this.hAq.c(paramAnonymousT, e.this.bP(paramAnonymousX1), e.this.bP(paramAnonymousX2));
         }
         AppMethodBeat.o(156513);
       }
@@ -97,109 +97,109 @@ public abstract class e<T, V, X, Y>
   
   public final void clear()
   {
-    this.hxA.clear();
+    this.hAo.clear();
   }
   
   public final int createCount()
   {
-    return this.hxA.createCount();
+    return this.hAo.createCount();
   }
   
   public final int evictionCount()
   {
-    return this.hxA.evictionCount();
+    return this.hAo.evictionCount();
   }
   
   public V get(T paramT)
   {
-    Object localObject = bP(this.hxA.get(paramT));
-    if (this.hxB != null) {
-      this.hxB.y(ayL(), paramT);
+    Object localObject = bP(this.hAo.get(paramT));
+    if (this.hAp != null) {
+      this.hAp.y(aza(), paramT);
     }
     return localObject;
   }
   
   public final int hitCount()
   {
-    return this.hxA.hitCount();
+    return this.hAo.hitCount();
   }
   
   protected void init()
   {
-    this.hxA = ayM();
-    this.hxB = a(this.hxv);
+    this.hAo = azb();
+    this.hAp = a(this.hAj);
   }
   
   public final Set<T> keySet()
   {
-    return this.hxA.keySet();
+    return this.hAo.keySet();
   }
   
   public final int maxSize()
   {
-    return this.hxA.maxSize();
+    return this.hAo.maxSize();
   }
   
   public final int missCount()
   {
-    return this.hxA.missCount();
+    return this.hAo.missCount();
   }
   
   public V put(T paramT, V paramV)
   {
-    Object localObject1 = bP(this.hxA.put(paramT, bR(paramV)));
-    if (this.hxB != null)
+    Object localObject1 = bP(this.hAo.put(paramT, bR(paramV)));
+    if (this.hAp != null)
     {
-      Object localObject2 = ayL();
-      this.hxB.g(localObject2, paramT, t(paramT, paramV));
+      Object localObject2 = aza();
+      this.hAp.g(localObject2, paramT, t(paramT, paramV));
     }
     return localObject1;
   }
   
   public final int putCount()
   {
-    return this.hxA.putCount();
+    return this.hAo.putCount();
   }
   
   public void q(T paramT, V paramV)
   {
-    this.hxA.q(paramT, bR(paramV));
-    if (this.hxB != null)
+    this.hAo.q(paramT, bR(paramV));
+    if (this.hAp != null)
     {
-      Object localObject = ayL();
-      this.hxB.f(localObject, paramT, t(paramT, paramV));
+      Object localObject = aza();
+      this.hAp.f(localObject, paramT, t(paramT, paramV));
     }
   }
   
   public V remove(T paramT)
   {
-    Object localObject = bP(this.hxA.remove(paramT));
-    if (this.hxB != null) {
-      this.hxB.x(ayL(), paramT);
+    Object localObject = bP(this.hAo.remove(paramT));
+    if (this.hAp != null) {
+      this.hAp.x(aza(), paramT);
     }
     return localObject;
   }
   
   public final int size()
   {
-    return this.hxA.size();
+    return this.hAo.size();
   }
   
   public final int sizeOf(T paramT, V paramV)
   {
-    return this.hxA.sizeOf(paramT, bR(paramV));
+    return this.hAo.sizeOf(paramT, bR(paramV));
   }
   
   protected abstract Y t(T paramT, V paramV);
   
   public final void trimToSize(int paramInt)
   {
-    this.hxA.trimToSize(paramInt);
+    this.hAo.trimToSize(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.e
  * JD-Core Version:    0.7.0.1
  */

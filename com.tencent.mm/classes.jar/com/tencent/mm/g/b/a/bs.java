@@ -6,37 +6,54 @@ import com.tencent.mm.plugin.report.a;
 public final class bs
   extends a
 {
-  private long dPH = 0L;
-  private long eaw = 0L;
+  private long dQX = 0L;
+  private long ebQ = 0L;
+  private long ebR = 0L;
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(189266);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.ebQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQX);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebR);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(189266);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(209231);
+    AppMethodBeat.i(189267);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eaw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPH);
-    localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(209231);
-    return localObject;
-  }
-  
-  public final String RE()
-  {
-    AppMethodBeat.i(209232);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("type:").append(this.eaw);
+    ((StringBuffer)localObject).append("type:").append(this.ebQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dPH);
+    ((StringBuffer)localObject).append("action:").append(this.dQX);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("hasReddot:").append(this.ebR);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(209232);
+    AppMethodBeat.o(189267);
     return localObject;
   }
   
-  public final bs gA(long paramLong)
+  public final bs gC(long paramLong)
   {
-    this.dPH = paramLong;
+    this.ebQ = paramLong;
+    return this;
+  }
+  
+  public final bs gD(long paramLong)
+  {
+    this.dQX = paramLong;
+    return this;
+  }
+  
+  public final bs gE(long paramLong)
+  {
+    this.ebR = paramLong;
     return this;
   }
   
@@ -44,16 +61,10 @@ public final class bs
   {
     return 20673;
   }
-  
-  public final bs gz(long paramLong)
-  {
-    this.eaw = paramLong;
-    return this;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bs
  * JD-Core Version:    0.7.0.1
  */

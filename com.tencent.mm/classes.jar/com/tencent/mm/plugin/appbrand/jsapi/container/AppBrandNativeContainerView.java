@@ -9,7 +9,7 @@ public class AppBrandNativeContainerView
   extends FrameLayout
   implements s
 {
-  public boolean kKy;
+  public boolean kNN;
   
   public AppBrandNativeContainerView(Context paramContext)
   {
@@ -28,12 +28,12 @@ public class AppBrandNativeContainerView
   
   public void setFullscreenWithChild(boolean paramBoolean)
   {
-    this.kKy = paramBoolean;
+    this.kNN = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.AppBrandNativeContainerView
  * JD-Core Version:    0.7.0.1
  */

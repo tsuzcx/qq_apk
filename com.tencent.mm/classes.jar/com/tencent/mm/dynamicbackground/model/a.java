@@ -11,68 +11,68 @@ import d.l;
 import d.v;
 import java.lang.reflect.Method;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
 public final class a
   implements c
 {
-  public static final a.a gfv;
-  private boolean cMW = true;
+  public static final a.a ghN;
+  private boolean cNF = true;
   
   static
   {
     AppMethodBeat.i(103076);
-    gfv = new a.a((byte)0);
+    ghN = new a.a((byte)0);
     AppMethodBeat.o(103076);
   }
   
-  public final boolean adI()
+  public final boolean adU()
   {
-    return this.cMW;
+    return this.cNF;
   }
   
-  public final void adJ()
+  public final void adV()
   {
-    this.cMW = false;
+    this.cNF = false;
   }
   
-  public final void adK()
+  public final void adW()
   {
     AppMethodBeat.i(103075);
     System.loadLibrary("dynamicBg");
     AppMethodBeat.o(103075);
   }
   
-  public final boolean adL()
+  public final boolean adX()
   {
     return false;
   }
   
-  public final void adM() {}
+  public final void adY() {}
   
-  public final void adN() {}
+  public final void adZ() {}
   
-  public final void adO() {}
+  public final void aea() {}
   
-  public final boolean adP()
+  public final boolean aeb()
   {
     return false;
   }
   
-  public final boolean adQ()
+  public final boolean aec()
   {
     return false;
   }
   
-  public final void adR() {}
+  public final void aed() {}
   
-  public final void adS() {}
+  public final void aee() {}
   
-  public final float adT()
+  public final float aef()
   {
     return 16.0F;
   }
   
-  public final Point ci(Context paramContext)
+  public final Point ck(Context paramContext)
   {
     AppMethodBeat.i(103074);
     p.h(paramContext, "context");

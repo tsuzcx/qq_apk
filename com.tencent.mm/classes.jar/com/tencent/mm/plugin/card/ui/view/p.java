@@ -16,12 +16,12 @@ public final class p
   
   public final void b(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean bYs()
+  public final boolean bZH()
   {
     return true;
   }
   
-  public final boolean bYt()
+  public final boolean bZI()
   {
     return true;
   }

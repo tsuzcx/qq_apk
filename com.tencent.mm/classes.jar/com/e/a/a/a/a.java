@@ -26,7 +26,7 @@ public class a
     checkNotNull(paramCollection);
     Object localObject = paramCollection;
     if ((paramCollection instanceof m)) {
-      localObject = ((m)paramCollection).Be();
+      localObject = ((m)paramCollection).Bf();
     }
     if (((localObject instanceof Set)) && (((Collection)localObject).size() > paramSet.size())) {
       return h.a(paramSet.iterator(), (Collection)localObject);
@@ -107,7 +107,7 @@ public class a
   }
   
   @CheckReturnValue
-  public a cr(String paramString)
+  public a cs(String paramString)
   {
     checkNotNull(paramString);
     return new c(this, this, paramString);
@@ -115,7 +115,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

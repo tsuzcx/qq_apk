@@ -6,11 +6,11 @@ public enum VectorHeatOverlayOptions$VectorHeatOverlayType
 {
   static
   {
-    AppMethodBeat.i(195100);
+    AppMethodBeat.i(209875);
     HoneyComb = new VectorHeatOverlayType("HoneyComb", 0);
     Square = new VectorHeatOverlayType("Square", 1);
     $VALUES = new VectorHeatOverlayType[] { HoneyComb, Square };
-    AppMethodBeat.o(195100);
+    AppMethodBeat.o(209875);
   }
   
   private VectorHeatOverlayOptions$VectorHeatOverlayType() {}

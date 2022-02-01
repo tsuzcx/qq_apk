@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public enum ai$a
 {
   public final int value;
-  public final String wsR;
+  public final String wIB;
   
   static
   {
     AppMethodBeat.i(70449);
-    DaD = new a("GuideType_FQF_SWITCH", "切换分付");
-    DaE = new a[] { DaD };
+    Dsh = new a("GuideType_FQF_SWITCH", "切换分付");
+    Dsi = new a[] { Dsh };
     AppMethodBeat.o(70449);
   }
   
   private ai$a(String paramString)
   {
     Object localObject;
-    this.wsR = localObject;
+    this.wIB = localObject;
     this.value = 1;
   }
 }

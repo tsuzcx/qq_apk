@@ -16,12 +16,12 @@ final class b$a
     super(2);
   }
   
-  public final void nw(String paramString1, String paramString2)
+  public final void nC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(59227);
     p.h(paramString1, "kotlinSimpleName");
     p.h(paramString2, "javaInternalName");
-    this.NpN.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
+    this.NMT.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
     AppMethodBeat.o(59227);
   }
 }

@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface c
   extends IInterface
 {
-  public abstract boolean eRs();
+  public abstract boolean eVe();
   
   public abstract boolean getResult();
   
@@ -26,7 +26,7 @@ public abstract interface c
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
     }
     
-    public static c F(IBinder paramIBinder)
+    public static c G(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -57,7 +57,7 @@ public abstract interface c
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = eRs();
+        bool = eVe();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -105,7 +105,7 @@ public abstract interface c
       }
       
       /* Error */
-      public final boolean eRs()
+      public final boolean eVe()
       {
         // Byte code:
         //   0: iconst_1

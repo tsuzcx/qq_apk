@@ -15,44 +15,44 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class MallProductSelectAmountView
   extends LinearLayout
 {
-  private TextView iUX;
-  private ImageView wNT;
-  private ImageView wNU;
-  private int wNV;
-  private int wNW;
-  private int wNX;
-  private int wNY;
-  private a wNZ;
+  private TextView iXQ;
+  private ImageView xdH;
+  private ImageView xdI;
+  private int xdJ;
+  private int xdK;
+  private int xdL;
+  private int xdM;
+  private a xdN;
   
   public MallProductSelectAmountView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67003);
-    this.iUX = null;
-    this.wNT = null;
-    this.wNU = null;
-    this.wNV = 2147483647;
-    this.wNW = 1;
-    this.wNX = 1;
-    this.wNY = this.wNX;
-    this.wNZ = null;
+    this.iXQ = null;
+    this.xdH = null;
+    this.xdI = null;
+    this.xdJ = 2147483647;
+    this.xdK = 1;
+    this.xdL = 1;
+    this.xdM = this.xdL;
+    this.xdN = null;
     paramContext = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131495125, this, true);
-    this.iUX = ((TextView)paramContext.findViewById(2131302098));
-    this.wNT = ((ImageView)paramContext.findViewById(2131302097));
-    this.wNU = ((ImageView)paramContext.findViewById(2131302103));
-    this.iUX.setText(this.wNY);
-    this.wNT.setOnClickListener(new View.OnClickListener()
+    this.iXQ = ((TextView)paramContext.findViewById(2131302098));
+    this.xdH = ((ImageView)paramContext.findViewById(2131302097));
+    this.xdI = ((ImageView)paramContext.findViewById(2131302103));
+    this.iXQ.setText(this.xdM);
+    this.xdH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67001);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (MallProductSelectAmountView.a(MallProductSelectAmountView.this) + 1 > MallProductSelectAmountView.b(MallProductSelectAmountView.this))
         {
           if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-            MallProductSelectAmountView.c(MallProductSelectAmountView.this).hc(MallProductSelectAmountView.a(MallProductSelectAmountView.this), MallProductSelectAmountView.d(MallProductSelectAmountView.this));
+            MallProductSelectAmountView.c(MallProductSelectAmountView.this).he(MallProductSelectAmountView.a(MallProductSelectAmountView.this), MallProductSelectAmountView.d(MallProductSelectAmountView.this));
           }
           a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(67001);
@@ -63,24 +63,24 @@ public class MallProductSelectAmountView
           MallProductSelectAmountView.g(MallProductSelectAmountView.this).setText(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hD(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
+          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hF(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67001);
       }
     });
-    this.wNU.setOnClickListener(new View.OnClickListener()
+    this.xdI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67002);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (MallProductSelectAmountView.a(MallProductSelectAmountView.this) - 1 < MallProductSelectAmountView.h(MallProductSelectAmountView.this))
         {
           if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-            MallProductSelectAmountView.c(MallProductSelectAmountView.this).hc(MallProductSelectAmountView.a(MallProductSelectAmountView.this), 2);
+            MallProductSelectAmountView.c(MallProductSelectAmountView.this).he(MallProductSelectAmountView.a(MallProductSelectAmountView.this), 2);
           }
           a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(67002);
@@ -92,7 +92,7 @@ public class MallProductSelectAmountView
         }
         MallProductSelectAmountView.f(MallProductSelectAmountView.this);
         if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hD(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
+          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hF(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67002);
@@ -101,81 +101,81 @@ public class MallProductSelectAmountView
     AppMethodBeat.o(67003);
   }
   
-  private boolean dzV()
+  private boolean dDm()
   {
     AppMethodBeat.i(67005);
-    if (this.wNY > this.wNV)
+    if (this.xdM > this.xdJ)
     {
-      this.wNY = this.wNV;
-      if (this.wNZ != null) {
-        this.wNZ.hD(this.wNY);
+      this.xdM = this.xdJ;
+      if (this.xdN != null) {
+        this.xdN.hF(this.xdM);
       }
-      if (this.wNZ != null) {
-        this.wNZ.hc(this.wNY, this.wNW);
+      if (this.xdN != null) {
+        this.xdN.he(this.xdM, this.xdK);
       }
-      this.iUX.setText(this.wNY);
+      this.iXQ.setText(this.xdM);
       AppMethodBeat.o(67005);
       return false;
     }
-    if (this.wNY > this.wNX) {
-      this.wNU.setEnabled(true);
+    if (this.xdM > this.xdL) {
+      this.xdI.setEnabled(true);
     }
     for (;;)
     {
       AppMethodBeat.o(67005);
       return true;
-      if (this.wNY != this.wNX) {
+      if (this.xdM != this.xdL) {
         break;
       }
-      this.wNU.setEnabled(false);
+      this.xdI.setEnabled(false);
     }
-    this.wNU.setEnabled(false);
-    this.wNY = this.wNX;
-    if (this.wNZ != null) {
-      this.wNZ.hD(this.wNY);
+    this.xdI.setEnabled(false);
+    this.xdM = this.xdL;
+    if (this.xdN != null) {
+      this.xdN.hF(this.xdM);
     }
-    if (this.wNZ != null) {
-      this.wNZ.hc(this.wNY, 2);
+    if (this.xdN != null) {
+      this.xdN.he(this.xdM, 2);
     }
-    this.iUX.setText(this.wNY);
+    this.iXQ.setText(this.xdM);
     AppMethodBeat.o(67005);
     return false;
   }
   
-  public final void hb(int paramInt1, int paramInt2)
+  public final void hd(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(67008);
     if (paramInt1 > paramInt2) {
-      this.wNW = 3;
+      this.xdK = 3;
     }
-    for (this.wNV = paramInt2;; this.wNV = paramInt1)
+    for (this.xdJ = paramInt2;; this.xdJ = paramInt1)
     {
-      dzV();
-      if (this.wNZ != null) {
-        this.wNZ.hD(this.wNY);
+      dDm();
+      if (this.xdN != null) {
+        this.xdN.hF(this.xdM);
       }
       AppMethodBeat.o(67008);
       return;
-      this.wNW = 1;
+      this.xdK = 1;
     }
   }
   
   public void setAddEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(67006);
-    this.wNT.setEnabled(paramBoolean);
+    this.xdH.setEnabled(paramBoolean);
     AppMethodBeat.o(67006);
   }
   
   public void setAmount(int paramInt)
   {
     AppMethodBeat.i(67004);
-    this.wNY = paramInt;
-    if (dzV())
+    this.xdM = paramInt;
+    if (dDm())
     {
-      this.iUX.setText(this.wNY);
-      if (this.wNZ != null) {
-        this.wNZ.hD(this.wNY);
+      this.iXQ.setText(this.xdM);
+      if (this.xdN != null) {
+        this.xdN.hF(this.xdM);
       }
     }
     AppMethodBeat.o(67004);
@@ -184,28 +184,28 @@ public class MallProductSelectAmountView
   public void setMinAmount(int paramInt)
   {
     AppMethodBeat.i(67009);
-    this.wNX = paramInt;
-    dzV();
+    this.xdL = paramInt;
+    dDm();
     AppMethodBeat.o(67009);
   }
   
   public void setOnAmountChangeListener(a parama)
   {
-    this.wNZ = parama;
+    this.xdN = parama;
   }
   
   public void setRemoveEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(67007);
-    this.wNU.setEnabled(paramBoolean);
+    this.xdI.setEnabled(paramBoolean);
     AppMethodBeat.o(67007);
   }
   
   public static abstract interface a
   {
-    public abstract void hD(int paramInt);
+    public abstract void hF(int paramInt);
     
-    public abstract void hc(int paramInt1, int paramInt2);
+    public abstract void he(int paramInt1, int paramInt2);
   }
 }
 

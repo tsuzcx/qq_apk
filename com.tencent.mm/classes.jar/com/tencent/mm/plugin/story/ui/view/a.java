@@ -11,11 +11,11 @@ import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "avatarDrawable", "Landroid/graphics/drawable/LayerDrawable;", "(Landroid/graphics/drawable/LayerDrawable;)V", "TAG", "", "centerX", "", "centerY", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "avatarDrawable", "Landroid/graphics/drawable/LayerDrawable;", "(Landroid/graphics/drawable/LayerDrawable;)V", "TAG", "", "centerX", "", "centerY", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "plugin-story_release"})
 public final class a
   extends b
 {
-  private final LayerDrawable AYt;
+  private final LayerDrawable BpR;
   private final String TAG;
   private final int centerX;
   private final int centerY;
@@ -23,10 +23,10 @@ public final class a
   public a(LayerDrawable paramLayerDrawable)
   {
     AppMethodBeat.i(120006);
-    this.AYt = paramLayerDrawable;
+    this.BpR = paramLayerDrawable;
     this.TAG = "MicroMsg.CommentConfetti";
-    this.centerX = (this.AYt.getIntrinsicWidth() / 2);
-    this.centerY = (this.AYt.getIntrinsicHeight() / 2);
+    this.centerX = (this.BpR.getIntrinsicWidth() / 2);
+    this.centerY = (this.BpR.getIntrinsicHeight() / 2);
     AppMethodBeat.o(120006);
   }
   
@@ -42,15 +42,15 @@ public final class a
     paramCanvas.save();
     paramCanvas.translate(paramFloat1, paramFloat2);
     paramCanvas.scale(paramFloat3, paramFloat3);
-    paramMatrix = this.AYt.getDrawable(1);
+    paramMatrix = this.BpR.getDrawable(1);
     if (paramMatrix == null)
     {
       paramCanvas = new v("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.AvatarRoundDrawable");
       AppMethodBeat.o(120005);
       throw paramCanvas;
     }
-    ((c)paramMatrix).YJ((int)(paramFloat4 * 255.0F));
-    this.AYt.draw(paramCanvas);
+    ((c)paramMatrix).Zp((int)(paramFloat4 * 255.0F));
+    this.BpR.draw(paramCanvas);
     paramCanvas.restore();
     AppMethodBeat.o(120005);
   }
@@ -58,7 +58,7 @@ public final class a
   public final int getHeight()
   {
     AppMethodBeat.i(120004);
-    int i = this.AYt.getIntrinsicHeight();
+    int i = this.BpR.getIntrinsicHeight();
     AppMethodBeat.o(120004);
     return i;
   }
@@ -66,7 +66,7 @@ public final class a
   public final int getWidth()
   {
     AppMethodBeat.i(120003);
-    int i = this.AYt.getIntrinsicWidth();
+    int i = this.BpR.getIntrinsicWidth();
     AppMethodBeat.o(120003);
     return i;
   }

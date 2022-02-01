@@ -9,17 +9,17 @@ public abstract interface f
 {
   public abstract void a(String paramString, a parama);
   
+  public abstract void a(String paramString, Boolean paramBoolean);
+  
   public abstract void a(String paramString, Long paramLong1, Long paramLong2, a parama);
   
   public abstract void a(String paramString1, String paramString2, a parama);
   
-  public abstract r ahZ(String paramString);
+  public abstract r aiX(String paramString);
   
-  public abstract r aia(String paramString);
+  public abstract r aiY(String paramString);
   
-  public abstract boolean aib(String paramString);
-  
-  public abstract void b(String paramString, Boolean paramBoolean);
+  public abstract boolean aiZ(String paramString);
   
   public abstract void l(k.a parama);
   
@@ -32,7 +32,7 @@ public abstract interface f
   
   public static abstract interface b
   {
-    public abstract void dH(List<r> paramList);
+    public abstract void dK(List<r> paramList);
   }
 }
 

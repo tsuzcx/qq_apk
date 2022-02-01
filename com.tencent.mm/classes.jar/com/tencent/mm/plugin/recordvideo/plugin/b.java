@@ -14,68 +14,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.protocal.protobuf.csd;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.ar;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addPoiBtn", "Landroid/widget/ImageView;", "addPoiGroup", "Landroid/widget/RelativeLayout;", "addPoiTip", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "storyLocation", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "checkLocation", "", "getLocationResult", "data", "Landroid/content/Intent;", "initSafeArea", "name", "", "onActivityResult", "requestCode", "", "resultCode", "onBackPress", "", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addPoiBtn", "Landroid/widget/ImageView;", "addPoiGroup", "Landroid/widget/RelativeLayout;", "addPoiTip", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "storyLocation", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "checkLocation", "", "getLocationResult", "data", "Landroid/content/Intent;", "initSafeArea", "name", "", "onActivityResult", "requestCode", "", "resultCode", "onBackPress", "", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
 public final class b
   implements View.OnClickListener, t
 {
-  private ViewGroup gqv;
-  private com.tencent.mm.plugin.recordvideo.plugin.parent.d sQE;
-  private final RelativeLayout xzS;
-  private final ImageView xzT;
-  private final ImageView xzU;
-  private csd xzV;
+  private ViewGroup gsV;
+  private com.tencent.mm.plugin.recordvideo.plugin.parent.d tbP;
+  private final RelativeLayout xPO;
+  private final ImageView xPP;
+  private final ImageView xPQ;
+  private csx xPR;
   
   public b(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
     AppMethodBeat.i(75464);
-    this.gqv = paramViewGroup;
-    this.sQE = paramd;
-    paramViewGroup = this.gqv.findViewById(2131299279);
+    this.gsV = paramViewGroup;
+    this.tbP = paramd;
+    paramViewGroup = this.gsV.findViewById(2131299279);
     p.g(paramViewGroup, "parent.findViewById(R.id…ditor_add_location_group)");
-    this.xzS = ((RelativeLayout)paramViewGroup);
-    paramViewGroup = this.gqv.findViewById(2131299277);
+    this.xPO = ((RelativeLayout)paramViewGroup);
+    paramViewGroup = this.gsV.findViewById(2131299277);
     p.g(paramViewGroup, "parent.findViewById(R.id.editor_add_location)");
-    this.xzT = ((ImageView)paramViewGroup);
-    paramViewGroup = this.gqv.findViewById(2131299278);
+    this.xPP = ((ImageView)paramViewGroup);
+    paramViewGroup = this.gsV.findViewById(2131299278);
     p.g(paramViewGroup, "parent.findViewById(R.id…ditor_add_location_check)");
-    this.xzU = ((ImageView)paramViewGroup);
-    this.xzV = new csd();
-    this.xzT.setImageDrawable(ao.k(this.gqv.getContext(), 2131690422, -1));
-    paramViewGroup = this.xzU;
-    paramd = this.gqv.getContext();
+    this.xPQ = ((ImageView)paramViewGroup);
+    this.xPR = new csx();
+    this.xPP.setImageDrawable(ao.k(this.gsV.getContext(), 2131690422, -1));
+    paramViewGroup = this.xPQ;
+    paramd = this.gsV.getContext();
     p.g(paramd, "parent.context");
     paramViewGroup.setImageDrawable(paramd.getResources().getDrawable(2131691035));
-    this.xzS.setOnClickListener((View.OnClickListener)this);
-    paramViewGroup = ar.ci(this.gqv.getContext());
+    this.xPO.setOnClickListener((View.OnClickListener)this);
+    paramViewGroup = ar.ck(this.gsV.getContext());
     int i = paramViewGroup.y;
     i = paramViewGroup.x;
     AppMethodBeat.o(75464);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
-  public final void dGj()
+  public final void dJA()
   {
     AppMethodBeat.i(75459);
     Intent localIntent = new Intent();
-    localIntent.putExtra("get_poi_classify_id", this.xzV.Gnu);
+    localIntent.putExtra("get_poi_classify_id", this.xPR.GGA);
     localIntent.putExtra("get_poi_from_scene", "story");
-    localIntent.putExtra("get_city", this.xzV.jde);
+    localIntent.putExtra("get_city", this.xPR.jfX);
     localIntent.putExtra("poi_show_none", true);
     localIntent.putExtra("select_radio_icon_color", "#0E9CE6");
-    com.tencent.mm.bs.d.b(this.gqv.getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 2);
+    com.tencent.mm.br.d.b(this.gsV.getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 2);
     AppMethodBeat.o(75459);
   }
   
@@ -89,30 +89,30 @@ public final class b
     AppMethodBeat.i(75462);
     if ((2 == paramInt1) && (paramInt2 == -1) && (paramIntent != null))
     {
-      this.xzV.jDf = bt.bI(paramIntent.getStringExtra("get_poi_name"), "");
-      this.xzV.jde = bt.bI(paramIntent.getStringExtra("get_city"), "");
-      this.xzV.FOB = paramIntent.getFloatExtra("get_lat", -1000.0F);
-      this.xzV.FOA = paramIntent.getFloatExtra("get_lng", -1000.0F);
-      this.xzV.Gnu = paramIntent.getStringExtra("get_poi_classify_id");
-      if ((!bt.isNullOrNil(this.xzV.jDf)) || (!bt.isNullOrNil(this.xzV.jde)))
+      this.xPR.jGd = bu.bI(paramIntent.getStringExtra("get_poi_name"), "");
+      this.xPR.jfX = bu.bI(paramIntent.getStringExtra("get_city"), "");
+      this.xPR.Gha = paramIntent.getFloatExtra("get_lat", -1000.0F);
+      this.xPR.GgZ = paramIntent.getFloatExtra("get_lng", -1000.0F);
+      this.xPR.GGA = paramIntent.getStringExtra("get_poi_classify_id");
+      if ((!bu.isNullOrNil(this.xPR.jGd)) || (!bu.isNullOrNil(this.xPR.jfX)))
       {
         paramInt1 = 1;
         if (paramInt1 == 0) {
           break label184;
         }
-        this.xzU.setVisibility(0);
+        this.xPQ.setVisibility(0);
       }
       for (;;)
       {
         paramIntent = new Bundle();
-        paramIntent.putByteArray("PARAM_EDIT_POI_INFO", this.xzV.toByteArray());
-        this.sQE.a(d.c.xEE, paramIntent);
+        paramIntent.putByteArray("PARAM_EDIT_POI_INFO", this.xPR.toByteArray());
+        this.tbP.a(d.c.xUz, paramIntent);
         AppMethodBeat.o(75462);
         return;
         paramInt1 = 0;
         break;
         label184:
-        this.xzU.setVisibility(8);
+        this.xPQ.setVisibility(8);
       }
     }
     AppMethodBeat.o(75462);
@@ -123,10 +123,10 @@ public final class b
     AppMethodBeat.i(75460);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    dGj();
-    paramView = c.xHa;
-    c.NN(10);
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    dJA();
+    paramView = c.xWV;
+    c.Ot(10);
     a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(75460);
   }
@@ -137,11 +137,11 @@ public final class b
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200296);
+    AppMethodBeat.i(206557);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200296);
+    AppMethodBeat.o(206557);
   }
   
   public final void onResume() {}
@@ -151,15 +151,15 @@ public final class b
   public final void reset()
   {
     AppMethodBeat.i(75463);
-    this.xzV = new csd();
-    this.xzU.setVisibility(8);
+    this.xPR = new csx();
+    this.xPQ.setVisibility(8);
     AppMethodBeat.o(75463);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75461);
-    this.xzS.setVisibility(paramInt);
+    this.xPO.setVisibility(paramInt);
     AppMethodBeat.o(75461);
   }
 }

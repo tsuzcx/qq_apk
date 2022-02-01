@@ -13,11 +13,11 @@ public class MapPoi
   
   public MapPoi(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(195091);
+    AppMethodBeat.i(209864);
     this.latitude = paramDouble1;
     this.longitude = paramDouble2;
     this.position = new LatLng(paramDouble1, paramDouble2);
-    AppMethodBeat.o(195091);
+    AppMethodBeat.o(209864);
   }
   
   public MapPoi(double paramDouble1, double paramDouble2, String paramString)
@@ -53,11 +53,11 @@ public class MapPoi
   
   public void setPosition(LatLng paramLatLng)
   {
-    AppMethodBeat.i(195092);
+    AppMethodBeat.i(209865);
     this.position = paramLatLng;
     this.latitude = paramLatLng.getLatitude();
     this.longitude = paramLatLng.getLongitude();
-    AppMethodBeat.o(195092);
+    AppMethodBeat.o(209865);
   }
 }
 

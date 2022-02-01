@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(143710);
-    kSC = new a("GPS", 0);
-    kSD = new a("NETWORK", 1);
-    kSE = new a[] { kSC, kSD };
+    kWl = new a("GPS", 0);
+    kWm = new a("NETWORK", 1);
+    kWn = new a[] { kWl, kWm };
     AppMethodBeat.o(143710);
   }
   

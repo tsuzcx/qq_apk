@@ -10,7 +10,7 @@ final class RemittanceBusiResultUI$8
   public final void run()
   {
     AppMethodBeat.i(67997);
-    RemittanceBusiResultUI.n(this.ych);
+    RemittanceBusiResultUI.n(this.yrY);
     AppMethodBeat.o(67997);
   }
 }

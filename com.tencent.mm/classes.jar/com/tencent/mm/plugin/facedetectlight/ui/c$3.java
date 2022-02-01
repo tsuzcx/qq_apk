@@ -11,13 +11,13 @@ final class c$3
   public final void run()
   {
     AppMethodBeat.i(104312);
-    this.rrm.rpm.setText(2131758749);
+    this.rzB.rxq.setText(2131758749);
     AppMethodBeat.o(104312);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.c.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class FinderCommentDrawer$c
   implements f.c
 {
-  public static final c sSQ;
+  public static final c tec;
   
   static
   {
-    AppMethodBeat.i(205090);
-    sSQ = new c();
-    AppMethodBeat.o(205090);
+    AppMethodBeat.i(205720);
+    tec = new c();
+    AppMethodBeat.o(205720);
   }
   
   public final void d(boolean paramBoolean, String paramString) {}

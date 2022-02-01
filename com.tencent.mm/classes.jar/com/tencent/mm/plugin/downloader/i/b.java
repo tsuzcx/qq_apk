@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class b
 {
   public static void a(long paramLong, float paramFloat, int paramInt)
   {
     AppMethodBeat.i(89136);
-    ad.d("MicroMsg.FileDownloadSP", "speed = ".concat(String.valueOf(paramFloat)));
+    ae.d("MicroMsg.FileDownloadSP", "speed = ".concat(String.valueOf(paramFloat)));
     int i = Math.round(100.0F * paramFloat);
     String str = i + "_" + paramInt;
-    ad.d("MicroMsg.FileDownloadSP", "speedStr = ".concat(String.valueOf(str)));
+    ae.d("MicroMsg.FileDownloadSP", "speedStr = ".concat(String.valueOf(str)));
     n(paramLong, str);
     AppMethodBeat.o(89136);
   }
@@ -24,23 +24,23 @@ public final class b
   private static void n(long paramLong, String paramString)
   {
     AppMethodBeat.i(89137);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("download_pref", 0);
+    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("download_pref", 0);
     if (localSharedPreferences == null)
     {
       AppMethodBeat.o(89137);
       return;
     }
     String str = localSharedPreferences.getString(String.valueOf(paramLong), "");
-    if (bt.isNullOrNil(str)) {}
+    if (bu.isNullOrNil(str)) {}
     int i;
     for (paramString = "1_" + paramString + "|";; paramString = str + (i + 1) + "_" + paramString + "|")
     {
-      ad.d("MicroMsg.FileDownloadSP", "saveDownloadSpeed, speedStr = ".concat(String.valueOf(paramString)));
+      ae.d("MicroMsg.FileDownloadSP", "saveDownloadSpeed, speedStr = ".concat(String.valueOf(paramString)));
       localSharedPreferences.edit().putString(String.valueOf(paramLong), paramString).apply();
       AppMethodBeat.o(89137);
       return;
       String[] arrayOfString = str.split("\\|");
-      i = bt.getInt(arrayOfString[(arrayOfString.length - 1)].split("_")[0], 0);
+      i = bu.getInt(arrayOfString[(arrayOfString.length - 1)].split("_")[0], 0);
     }
   }
 }

@@ -15,26 +15,26 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 public final class l
   extends j
 {
-  private View psM;
+  private View pzs;
   
   public l(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30873);
-    this.psv.setVisibility(8);
-    this.dsD.setVisibility(8);
-    this.jld.setVisibility(8);
-    this.psv.setOnClickListener(null);
-    this.psA.setOnClickListener(new View.OnClickListener()
+    this.pzb.setVisibility(8);
+    this.dtJ.setVisibility(8);
+    this.jnX.setVisibility(8);
+    this.pzb.setOnClickListener(null);
+    this.pzg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30872);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteSplitItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        l.this.ECI.ceA();
-        l.this.ECI.requestFocus();
+        a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteSplitItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        l.this.EVe.cfP();
+        l.this.EVe.requestFocus();
         a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteSplitItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30872);
       }
@@ -51,16 +51,16 @@ public final class l
       AppMethodBeat.o(30874);
       return;
     }
-    paramc = (RelativeLayout.LayoutParams)this.psB.getLayoutParams();
+    paramc = (RelativeLayout.LayoutParams)this.pzh.getLayoutParams();
     paramc.bottomMargin = 0;
     paramc.topMargin = 0;
-    this.psB.setLayoutParams(paramc);
-    this.psA.setVisibility(0);
-    this.psM = this.auu.findViewById(2131302940);
+    this.pzh.setLayoutParams(paramc);
+    this.pzg.setVisibility(0);
+    this.pzs = this.auu.findViewById(2131302940);
     AppMethodBeat.o(30874);
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return -1;
   }

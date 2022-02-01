@@ -11,16 +11,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.protocal.protobuf.aig;
-import com.tencent.mm.protocal.protobuf.dlo;
-import com.tencent.mm.protocal.protobuf.dlt;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.ok;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.aiq;
+import com.tencent.mm.protocal.protobuf.dml;
+import com.tencent.mm.protocal.protobuf.dmq;
+import com.tencent.mm.protocal.protobuf.ol;
+import com.tencent.mm.protocal.protobuf.om;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.w;
 import com.tencent.mm.storage.y;
 import com.tencent.mm.ui.e.b;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -32,378 +32,378 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getContext", "()Landroid/content/Context;", "imgAvatar", "Landroid/widget/ImageView;", "imgClose", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "item", "Landroid/view/View;", "slotContainer", "Landroid/widget/LinearLayout;", "slotView", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot;", "txtNickname", "Landroid/widget/TextView;", "viewArticle", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowArticle;", "viewClose", "viewHead", "viewPool", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizSimpleViewPool;", "viewVideo", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowVideo;", "checkIllegal", "", "wrapper", "Lcom/tencent/mm/protocal/protobuf/TLRecCardWrapper;", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "", "convertView", "parent", "hide", "inflate", "refreshClose", "bizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "showPos", "refreshCommonSlot", "refreshHead", "BizRecCardCommonSlot", "plugin-brandservice_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getContext", "()Landroid/content/Context;", "imgAvatar", "Landroid/widget/ImageView;", "imgClose", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "item", "Landroid/view/View;", "slotContainer", "Landroid/widget/LinearLayout;", "slotView", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot;", "txtNickname", "Landroid/widget/TextView;", "viewArticle", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowArticle;", "viewClose", "viewHead", "viewPool", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizSimpleViewPool;", "viewVideo", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowVideo;", "checkIllegal", "", "wrapper", "Lcom/tencent/mm/protocal/protobuf/TLRecCardWrapper;", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "", "convertView", "parent", "hide", "inflate", "refreshClose", "bizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "showPos", "refreshCommonSlot", "refreshHead", "BizRecCardCommonSlot", "plugin-brandservice_release"})
 public final class m
-  extends u
+  extends v
 {
   final Context context;
-  final com.tencent.mm.plugin.brandservice.ui.timeline.b obC;
-  public c odA;
-  public View odh;
-  public LinearLayout odi;
-  private LinkedList<a> odj;
-  private final g<a> odk;
-  public View odu;
-  public ImageView odv;
-  public TextView odw;
-  public View odx;
-  public WeImageView ody;
-  public f odz;
+  final com.tencent.mm.plugin.brandservice.ui.timeline.b ohs;
+  public View oiV;
+  public LinearLayout oiW;
+  private LinkedList<a> oiX;
+  private final g<a> oiY;
+  public View oji;
+  public ImageView ojj;
+  public TextView ojk;
+  public View ojl;
+  public WeImageView ojm;
+  public f ojn;
+  public c ojo;
   
   public m(com.tencent.mm.plugin.brandservice.ui.timeline.b paramb, Context paramContext)
   {
-    AppMethodBeat.i(209757);
-    this.obC = paramb;
+    AppMethodBeat.i(208731);
+    this.ohs = paramb;
     this.context = paramContext;
-    this.odj = new LinkedList();
-    this.odk = new g((d.g.a.a)new g(this));
-    this.odz = new f(this.context, this.obC);
-    this.odA = new c(this.context, this.obC);
-    AppMethodBeat.o(209757);
+    this.oiX = new LinkedList();
+    this.oiY = new g((d.g.a.a)new g(this));
+    this.ojn = new f(this.context, this.ohs);
+    this.ojo = new c(this.context, this.ohs);
+    AppMethodBeat.o(208731);
   }
   
-  public static boolean a(dlt paramdlt)
+  public static boolean a(dmq paramdmq)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(209756);
-    Object localObject1 = m.c.odI;
-    d.g.a.b localb = (d.g.a.b)m.b.odH;
-    if (paramdlt != null) {}
-    for (localObject1 = paramdlt.HAd;; localObject1 = null)
+    AppMethodBeat.i(208730);
+    Object localObject1 = m.c.ojw;
+    d.g.a.b localb = (d.g.a.b)m.b.ojv;
+    if (paramdmq != null) {}
+    for (localObject1 = paramdmq.HTQ;; localObject1 = null)
     {
       if (localObject1 != null)
       {
         localObject1 = localObject2;
-        if (paramdlt != null)
+        if (paramdmq != null)
         {
-          dlo localdlo = paramdlt.HAd;
+          dml localdml = paramdmq.HTQ;
           localObject1 = localObject2;
-          if (localdlo != null) {
-            localObject1 = localdlo.HzY;
+          if (localdml != null) {
+            localObject1 = localdml.HTL;
           }
         }
-        if ((localObject1 != null) && (paramdlt.HAf != null)) {
+        if ((localObject1 != null) && (paramdmq.HTS != null)) {
           break;
         }
       }
-      AppMethodBeat.o(209756);
+      AppMethodBeat.o(208730);
       return false;
     }
-    if (bt.hj((List)paramdlt.HAf.FHP))
+    if (bu.ht((List)paramdmq.HTS.Gal))
     {
-      AppMethodBeat.o(209756);
+      AppMethodBeat.o(208730);
       return false;
     }
-    paramdlt = paramdlt.HAf.FHP;
-    p.g(paramdlt, "wrapper.extraInfo.BizInfo");
-    paramdlt = ((Iterable)paramdlt).iterator();
-    while (paramdlt.hasNext())
+    paramdmq = paramdmq.HTS.Gal;
+    p.g(paramdmq, "wrapper.extraInfo.BizInfo");
+    paramdmq = ((Iterable)paramdmq).iterator();
+    while (paramdmq.hasNext())
     {
-      localObject1 = (ok)paramdlt.next();
+      localObject1 = (om)paramdmq.next();
       p.g(localObject1, "info");
       if (!((Boolean)localb.invoke(localObject1)).booleanValue())
       {
-        AppMethodBeat.o(209756);
+        AppMethodBeat.o(208730);
         return false;
       }
     }
-    AppMethodBeat.o(209756);
+    AppMethodBeat.o(208730);
     return true;
   }
   
-  public final void a(com.tencent.mm.storage.w paramw, ok paramok)
+  public final void a(w paramw, om paramom)
   {
-    AppMethodBeat.i(209755);
-    Object localObject1 = ((Iterable)this.odj).iterator();
+    AppMethodBeat.i(208729);
+    Object localObject1 = ((Iterable)this.oiX).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       locala = (a)((Iterator)localObject1).next();
-      localObject2 = this.odi;
+      localObject2 = this.oiW;
       if (localObject2 != null) {
-        ((LinearLayout)localObject2).removeView(locala.odl);
+        ((LinearLayout)localObject2).removeView(locala.oiZ);
       }
-      this.odk.cS(locala);
+      this.oiY.cT(locala);
     }
-    this.odj.clear();
-    if (paramok.FJV.size() <= 1)
+    this.oiX.clear();
+    if (paramom.Gcu.size() <= 1)
     {
-      AppMethodBeat.o(209755);
+      AppMethodBeat.o(208729);
       return;
     }
-    a locala = (a)this.odk.get();
-    localObject1 = this.odi;
+    a locala = (a)this.oiY.get();
+    localObject1 = this.oiW;
     if (localObject1 != null) {
-      ((LinearLayout)localObject1).addView(locala.odl);
+      ((LinearLayout)localObject1).addView(locala.oiZ);
     }
-    this.odj.add(locala);
-    localObject1 = paramok.FJV.get(1);
+    this.oiX.add(locala);
+    localObject1 = paramom.Gcu.get(1);
     p.g(localObject1, "bizInfo.AppMsg[1]");
-    Object localObject2 = (oj)localObject1;
+    Object localObject2 = (ol)localObject1;
     p.h(paramw, "info");
-    p.h(paramok, "bizInfo");
+    p.h(paramom, "bizInfo");
     p.h(localObject2, "appMsg");
-    localObject1 = ((oj)localObject2).Title;
-    Object localObject3 = ((oj)localObject2).FFW;
-    int i = ((oj)localObject2).hCZ;
-    String str1 = ((oj)localObject2).FFY;
-    String str2 = ((oj)localObject2).FFZ;
-    locala.oeR.ar((CharSequence)localObject1);
-    locala.odl.setBackgroundResource(2131231256);
-    locala.odl.setOnClickListener((View.OnClickListener)new m.a.a(locala, paramw, paramok, (oj)localObject2));
-    if ((((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zc(1)) && (!bt.isNullOrNil((String)localObject3))) {
+    localObject1 = ((ol)localObject2).Title;
+    Object localObject3 = ((ol)localObject2).FYs;
+    int i = ((ol)localObject2).hFR;
+    String str1 = ((ol)localObject2).FYu;
+    String str2 = ((ol)localObject2).FYv;
+    locala.okR.aq((CharSequence)localObject1);
+    locala.oiZ.setBackgroundResource(2131231256);
+    locala.oiZ.setOnClickListener((View.OnClickListener)new m.a.a(locala, paramw, paramom, (ol)localObject2));
+    if ((((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zl(1)) && (!bu.isNullOrNil((String)localObject3))) {
       ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a((String)localObject3, i, 90, new Object[0]);
     }
-    locala.ocq.type = i;
-    locala.ocq.hDm = str1;
-    locala.ocq.hDD = str2;
-    locala.ocq.url = ((String)localObject3);
-    localObject1 = locala.ocG;
+    locala.oif.type = i;
+    locala.oif.hGe = str1;
+    locala.oif.hGv = str2;
+    locala.oif.url = ((String)localObject3);
+    localObject1 = locala.oiv;
     p.g(localObject1, "statLayout");
     ((View)localObject1).setVisibility(0);
-    localObject3 = locala.ocH;
+    localObject3 = locala.oiw;
     p.g(localObject3, "friendReadTv");
-    if (!bt.isNullOrNil(((oj)localObject2).uhr)) {}
-    for (localObject1 = (CharSequence)String.valueOf(((oj)localObject2).uhr);; localObject1 = (CharSequence)"")
+    if (!bu.isNullOrNil(((ol)localObject2).usP)) {}
+    for (localObject1 = (CharSequence)String.valueOf(((ol)localObject2).usP);; localObject1 = (CharSequence)"")
     {
       ((TextView)localObject3).setText((CharSequence)localObject1);
-      localObject1 = locala.oeW;
+      localObject1 = locala.okW;
       p.g(localObject1, "playIcon");
       ((ImageView)localObject1).setVisibility(8);
-      locala.oeW.setImageResource(2131231270);
-      localObject1 = locala.oeU;
+      locala.okW.setImageResource(2131231270);
+      localObject1 = locala.okU;
       p.g(localObject1, "voicePlayIconContainer");
       ((View)localObject1).setVisibility(8);
-      if (locala.ocq.type != 7) {
+      if (locala.oif.type != 7) {
         break label945;
       }
-      locala.ocn.setVisibility(8);
+      locala.oic.setVisibility(8);
       p.h(paramw, "info");
-      p.h(paramok, "appMsgBizInfo");
+      p.h(paramom, "appMsgBizInfo");
       p.h(localObject2, "appMsg");
-      paramok = locala.oeW;
-      p.g(paramok, "playIcon");
-      paramok.setVisibility(8);
-      paramok = locala.oeU;
-      p.g(paramok, "voicePlayIconContainer");
-      paramok.setVisibility(0);
-      paramok = locala.oeV;
-      p.g(paramok, "voicePlayIcon");
-      paramok = paramok.getDrawable();
-      if (((paramok instanceof AnimationDrawable)) && (((AnimationDrawable)paramok).isRunning())) {
-        ((AnimationDrawable)paramok).stop();
+      paramom = locala.okW;
+      p.g(paramom, "playIcon");
+      paramom.setVisibility(8);
+      paramom = locala.okU;
+      p.g(paramom, "voicePlayIconContainer");
+      paramom.setVisibility(0);
+      paramom = locala.okV;
+      p.g(paramom, "voicePlayIcon");
+      paramom = paramom.getDrawable();
+      if (((paramom instanceof AnimationDrawable)) && (((AnimationDrawable)paramom).isRunning())) {
+        ((AnimationDrawable)paramom).stop();
       }
-      if (!p.i(String.valueOf(paramw.field_msgId) + "_1", com.tencent.mm.plugin.brandservice.ui.b.c.bSj())) {
+      if (!p.i(String.valueOf(paramw.field_msgId) + "_1", com.tencent.mm.plugin.brandservice.ui.b.c.bTw())) {
         break label843;
       }
-      locala.oeV.setImageResource(2131231272);
-      paramok = locala.oeV;
-      p.g(paramok, "voicePlayIcon");
-      if (!(paramok.getDrawable() instanceof AnimationDrawable)) {
+      locala.okV.setImageResource(2131231272);
+      paramom = locala.okV;
+      p.g(paramom, "voicePlayIcon");
+      if (!(paramom.getDrawable() instanceof AnimationDrawable)) {
         break label730;
       }
-      paramok = locala.oeV;
-      p.g(paramok, "voicePlayIcon");
-      paramok = paramok.getDrawable();
-      if (paramok != null) {
+      paramom = locala.okV;
+      p.g(paramom, "voicePlayIcon");
+      paramom = paramom.getDrawable();
+      if (paramom != null) {
         break;
       }
       paramw = new d.v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
-      AppMethodBeat.o(209755);
+      AppMethodBeat.o(208729);
       throw paramw;
     }
-    ((AnimationDrawable)paramok).start();
+    ((AnimationDrawable)paramom).start();
     label730:
-    paramok = ((oj)localObject2).FJP;
-    if (bt.isNullOrNil(paramok)) {
-      ad.i("MicroMsg.BizTimeLineItem", "BizTLRecCardBizcontent playUrl null");
+    paramom = ((ol)localObject2).Gco;
+    if (bu.isNullOrNil(paramom)) {
+      ae.i("MicroMsg.BizTimeLineItem", "BizTLRecCardBizcontent playUrl null");
     }
     for (;;)
     {
-      paramw = (d.g.a.m)m.a.c.odF;
-      paramok = (s)m.a.d.odG;
-      localObject1 = locala.oeQ;
+      paramw = (d.g.a.m)m.a.c.ojt;
+      paramom = (s)m.a.d.oju;
+      localObject1 = locala.okQ;
       p.g(localObject1, "content");
-      paramok.a(localObject1, Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.oaj), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.oag));
-      paramok = locala.iCM;
-      p.g(paramok, "topLine");
-      paramw.p(paramok, Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.oak));
-      AppMethodBeat.o(209755);
+      paramom.a(localObject1, Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.ofZ), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.ofW));
+      paramom = locala.iFF;
+      p.g(paramom, "topLine");
+      paramw.p(paramom, Integer.valueOf(com.tencent.mm.plugin.brandservice.ui.timeline.b.oga));
+      AppMethodBeat.o(208729);
       return;
       label843:
-      locala.oeV.setImageResource(2131231271);
+      locala.okV.setImageResource(2131231271);
       break;
-      ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a((View)locala.oeV, String.valueOf(paramw.field_msgId) + "_1", ((oj)localObject2).Title, paramok, "", ((oj)localObject2).FFY);
-      locala.oeV.setOnClickListener((View.OnClickListener)new m.a.e(locala, paramw, (oj)localObject2));
+      ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a((View)locala.okV, String.valueOf(paramw.field_msgId) + "_1", ((ol)localObject2).Title, paramom, "", ((ol)localObject2).FYu);
+      locala.okV.setOnClickListener((View.OnClickListener)new m.a.e(locala, paramw, (ol)localObject2));
       continue;
       label945:
-      if (!bt.isNullOrNil(locala.ocq.hDm))
+      if (!bu.isNullOrNil(locala.oif.hGe))
       {
-        locala.ocn.setVisibility(0);
-        paramok = locala.ofm.oas;
+        locala.oic.setVisibility(0);
+        paramom = locala.oll.ogi;
         long l = paramw.field_msgId;
-        localObject1 = locala.ocq;
-        localObject2 = com.tencent.mm.ai.m.a(locala.ocq);
-        localObject3 = locala.ocn;
-        i = com.tencent.mm.plugin.brandservice.ui.timeline.b.oaf;
-        paramok.a(l, 1, (com.tencent.mm.ai.v)localObject1, (String)localObject2, (ImageView)localObject3, i, i, false, (com.tencent.mm.pluginsdk.ui.applet.m.a)new m.a.b(locala, paramw), paramw.ofe + 1, 2.0F);
-        if (locala.ocq.type == 5)
+        localObject1 = locala.oif;
+        localObject2 = com.tencent.mm.ah.m.a(locala.oif);
+        localObject3 = locala.oic;
+        i = com.tencent.mm.plugin.brandservice.ui.timeline.b.ofV;
+        paramom.a(l, 1, (com.tencent.mm.ah.v)localObject1, (String)localObject2, (ImageView)localObject3, i, i, false, (com.tencent.mm.pluginsdk.ui.applet.m.a)new m.a.b(locala, paramw), paramw.ole + 1, 2.0F);
+        if (locala.oif.type == 5)
         {
-          paramw = locala.oeW;
+          paramw = locala.okW;
           p.g(paramw, "playIcon");
           paramw.setVisibility(0);
         }
       }
-      else if ((locala.ocq.type == 5) || (locala.ocq.type == 6))
+      else if ((locala.oif.type == 5) || (locala.oif.type == 6))
       {
-        paramok = locala.oeW;
-        p.g(paramok, "playIcon");
-        paramok.setVisibility(0);
-        locala.ocn.setVisibility(0);
-        paramok = locala.ofm.oas;
-        localObject1 = locala.ocn;
-        i = com.tencent.mm.plugin.brandservice.ui.timeline.b.oaf;
-        paramok.a("2131231674", (ImageView)localObject1, i, i, paramw.ofe + 1);
+        paramom = locala.okW;
+        p.g(paramom, "playIcon");
+        paramom.setVisibility(0);
+        locala.oic.setVisibility(0);
+        paramom = locala.oll.ogi;
+        localObject1 = locala.oic;
+        i = com.tencent.mm.plugin.brandservice.ui.timeline.b.ofV;
+        paramom.a("2131231674", (ImageView)localObject1, i, i, paramw.ole + 1);
       }
       else
       {
-        locala.oeT.setVisibility(8);
+        locala.okT.setVisibility(8);
       }
     }
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(209754);
-    View localView = this.odh;
+    AppMethodBeat.i(208728);
+    View localView = this.oiV;
     if (localView != null)
     {
       localView.setVisibility(8);
-      AppMethodBeat.o(209754);
+      AppMethodBeat.o(208728);
       return;
     }
-    AppMethodBeat.o(209754);
+    AppMethodBeat.o(208728);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineCommSlot;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getContext", "()Landroid/content/Context;", "readerItem", "Lcom/tencent/mm/message/BizReaderItem;", "getReaderItem", "()Lcom/tencent/mm/message/BizReaderItem;", "slotView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getSlotView", "()Landroid/view/View;", "onAppMsgClick", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "appMsgBizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "appMsg", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "convertView", "order", "", "refreshUI", "bizInfo", "pos", "realIndex", "setPaddingAndMargin", "setPlayIcon", "position", "plugin-brandservice_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineCommSlot;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getContext", "()Landroid/content/Context;", "readerItem", "Lcom/tencent/mm/message/BizReaderItem;", "getReaderItem", "()Lcom/tencent/mm/message/BizReaderItem;", "slotView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getSlotView", "()Landroid/view/View;", "onAppMsgClick", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "appMsgBizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "appMsg", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "convertView", "order", "", "refreshUI", "bizInfo", "pos", "realIndex", "setPaddingAndMargin", "setPlayIcon", "position", "plugin-brandservice_release"})
   public final class a
-    extends w
+    extends x
   {
     final Context context;
-    final com.tencent.mm.plugin.brandservice.ui.timeline.b obC;
-    final com.tencent.mm.ai.v ocq;
-    final View odl;
+    final com.tencent.mm.plugin.brandservice.ui.timeline.b ohs;
+    final View oiZ;
+    final com.tencent.mm.ah.v oif;
     
     public a(Context paramContext)
     {
       super(localObject);
-      AppMethodBeat.i(209745);
-      this.obC = paramContext;
+      AppMethodBeat.i(208719);
+      this.ohs = paramContext;
       this.context = localObject;
-      this.odl = View.inflate(this.context, 2131496383, null);
-      this.ocq = new com.tencent.mm.ai.v();
-      this.iCM = this.odl.findViewById(2131306012);
-      this.oeQ = this.odl.findViewById(2131298764);
-      this$1 = this.odl.findViewById(2131305938);
+      this.oiZ = View.inflate(this.context, 2131496383, null);
+      this.oif = new com.tencent.mm.ah.v();
+      this.iFF = this.oiZ.findViewById(2131306012);
+      this.okQ = this.oiZ.findViewById(2131298764);
+      this$1 = this.oiZ.findViewById(2131305938);
       if (m.this == null)
       {
         this$1 = new d.v("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMNeat7extView");
-        AppMethodBeat.o(209745);
+        AppMethodBeat.o(208719);
         throw m.this;
       }
-      this.oeR = ((MMNeat7extView)m.this);
-      this.oeS = ((TextView)this.odl.findViewById(2131305546));
-      this.oeT = this.odl.findViewById(2131298814);
-      this.ocn = ((ImageView)this.odl.findViewById(2131298824));
-      this.oeU = this.odl.findViewById(2131297330);
-      this.oeV = ((ImageView)this.odl.findViewById(2131297370));
-      this.oeW = ((ImageView)this.odl.findViewById(2131303284));
-      this.ocG = this.odl.findViewById(2131305184);
-      this$1 = this.odl.findViewById(2131300305);
+      this.okR = ((MMNeat7extView)m.this);
+      this.okS = ((TextView)this.oiZ.findViewById(2131305546));
+      this.okT = this.oiZ.findViewById(2131298814);
+      this.oic = ((ImageView)this.oiZ.findViewById(2131298824));
+      this.okU = this.oiZ.findViewById(2131297330);
+      this.okV = ((ImageView)this.oiZ.findViewById(2131297370));
+      this.okW = ((ImageView)this.oiZ.findViewById(2131303284));
+      this.oiv = this.oiZ.findViewById(2131305184);
+      this$1 = this.oiZ.findViewById(2131300305);
       if (m.this == null)
       {
         this$1 = new d.v("null cannot be cast to non-null type android.widget.TextView");
-        AppMethodBeat.o(209745);
+        AppMethodBeat.o(208719);
         throw m.this;
       }
-      this.ocH = ((TextView)m.this);
-      this.oeX = this.odl.findViewById(2131303255);
-      this.oeY = this.odl.findViewById(2131303254);
-      this.oeZ = ((TextView)this.odl.findViewById(2131303263));
-      AppMethodBeat.o(209745);
+      this.oiw = ((TextView)m.this);
+      this.okX = this.oiZ.findViewById(2131303255);
+      this.okY = this.oiZ.findViewById(2131303254);
+      this.okZ = ((TextView)this.oiZ.findViewById(2131303263));
+      AppMethodBeat.o(208719);
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
-      a(m.a parama, com.tencent.mm.storage.w paramw, ok paramok, oj paramoj) {}
+      a(m.a parama, w paramw, om paramom, ol paramol) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(209738);
+        AppMethodBeat.i(208712);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$refreshUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-        localObject1 = this.odC;
-        com.tencent.mm.storage.w localw = this.ocJ;
-        ok localok = this.odD;
-        oj localoj = this.oct;
-        int k = this.odE;
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$refreshUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+        localObject1 = this.ojq;
+        w localw = this.oiy;
+        om localom = this.ojr;
+        ol localol = this.oii;
+        int k = this.ojs;
         p.h(localw, "info");
-        p.h(localok, "appMsgBizInfo");
-        if ((localoj != null) && (localw.fpl() != null))
+        p.h(localom, "appMsgBizInfo");
+        if ((localol != null) && (localw.ftj() != null))
         {
-          localObject2 = localw.fpl();
+          localObject2 = localw.ftj();
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          if (((dlo)localObject2).HzY != null) {}
+          if (((dml)localObject2).HTL != null) {}
         }
         else
         {
-          ad.w("MicroMsg.BizTimeLineItem", "onAppMsgClick appMsg is null");
+          ae.w("MicroMsg.BizTimeLineItem", "onAppMsgClick appMsg is null");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$refreshUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(209738);
+          AppMethodBeat.o(208712);
           return;
         }
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(1149L, 4L, 1L, false);
-        ad.i("MicroMsg.BizTimeLineItem", "onClick jump to url:%s", new Object[] { localoj.FFW });
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1149L, 4L, 1L, false);
+        ae.i("MicroMsg.BizTimeLineItem", "onClick jump to url:%s", new Object[] { localol.FYs });
         Intent localIntent = new Intent();
-        Object localObject2 = com.tencent.mm.ai.m.d(localoj.FFW, 169, 10000, 0);
+        Object localObject2 = com.tencent.mm.ah.m.d(localol.FYs, 169, 10000, 0);
         localIntent.putExtra("rawUrl", (String)localObject2);
         localIntent.putExtra("geta8key_scene", 56);
-        localIntent.putExtra("geta8key_username", localok.nDo);
-        localIntent.putExtra("srcUsername", localok.nDo);
-        localIntent.putExtra("srcDisplayname", localok.nEt);
+        localIntent.putExtra("geta8key_username", localom.nIJ);
+        localIntent.putExtra("srcUsername", localom.nIJ);
+        localIntent.putExtra("srcDisplayname", localom.nJO);
         localIntent.putExtra("prePublishId", "rec_card");
         localIntent.putExtra("KPublisherId", "rec_card");
         int i;
         int j;
-        if (localoj.hCZ == 5)
+        if (localol.hFR == 5)
         {
           Object localObject3 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class);
           p.g(localObject3, "MMKernel.service(IBrandService::class.java)");
-          if (((com.tencent.mm.plugin.brandservice.a.b)localObject3).bNg())
+          if (((com.tencent.mm.plugin.brandservice.a.b)localObject3).bOe())
           {
-            localIntent.putExtra(e.b.IUn, 169);
-            localIntent.putExtra(e.b.IUo, 10000);
+            localIntent.putExtra(e.b.JoV, 169);
+            localIntent.putExtra(e.b.JoW, 10000);
             localIntent.putExtra("biz_video_session_id", y.getSessionId());
-            localObject3 = new x();
-            ((x)localObject3).hDf = localIntent.getStringExtra("KPublisherId");
-            ((x)localObject3).doK = localok.nDo;
-            ((x)localObject3).hDe = localok.nEt;
-            ((x)localObject3).hDg.url = ((String)localObject2);
-            ((x)localObject3).hDg.title = localoj.Title;
-            ((x)localObject3).hDg.hDo = localoj.FFU;
-            ((x)localObject3).hDg.hDm = localoj.FFY;
-            ((x)localObject3).hDg.type = localoj.hCZ;
-            ((x)localObject3).hDg.time = localoj.CreateTime;
-            ((x)localObject3).hDg.hDq = localoj.FGk;
-            ((x)localObject3).hDg.videoWidth = localoj.FGi;
-            ((x)localObject3).hDg.videoHeight = localoj.FGj;
-            ((x)localObject3).hDg.hzm = localoj.FGh;
-            ((x)localObject3).t(localIntent);
-            ad.i("MicroMsg.BizTimeLineItem", "jump to native video");
+            localObject3 = new com.tencent.mm.ah.x();
+            ((com.tencent.mm.ah.x)localObject3).hFX = localIntent.getStringExtra("KPublisherId");
+            ((com.tencent.mm.ah.x)localObject3).dpP = localom.nIJ;
+            ((com.tencent.mm.ah.x)localObject3).hFW = localom.nJO;
+            ((com.tencent.mm.ah.x)localObject3).hFY.url = ((String)localObject2);
+            ((com.tencent.mm.ah.x)localObject3).hFY.title = localol.Title;
+            ((com.tencent.mm.ah.x)localObject3).hFY.hGg = localol.FYq;
+            ((com.tencent.mm.ah.x)localObject3).hFY.hGe = localol.FYu;
+            ((com.tencent.mm.ah.x)localObject3).hFY.type = localol.hFR;
+            ((com.tencent.mm.ah.x)localObject3).hFY.time = localol.CreateTime;
+            ((com.tencent.mm.ah.x)localObject3).hFY.hGi = localol.FYG;
+            ((com.tencent.mm.ah.x)localObject3).hFY.videoWidth = localol.FYE;
+            ((com.tencent.mm.ah.x)localObject3).hFY.videoHeight = localol.FYF;
+            ((com.tencent.mm.ah.x)localObject3).hFY.hCa = localol.FYD;
+            ((com.tencent.mm.ah.x)localObject3).t(localIntent);
+            ae.i("MicroMsg.BizTimeLineItem", "jump to native video");
             localObject3 = new int[2];
             if (paramView != null)
             {
@@ -415,12 +415,12 @@ public final class m
             localIntent.addFlags(268435456);
           }
         }
-        if ((((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zc(1)) && (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a(((m.a)localObject1).context, (String)localObject2, localoj.hCZ, 169, 10000, localIntent))) {
-          ad.i("MicroMsg.BizTimeLineItem", "jump to TmplWebview");
+        if ((((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zl(1)) && (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a(((m.a)localObject1).context, (String)localObject2, localol.hFR, 169, 10000, localIntent))) {
+          ae.i("MicroMsg.BizTimeLineItem", "jump to TmplWebview");
         }
         for (;;)
         {
-          paramView = localw.fpm();
+          paramView = localw.ftk();
           if (paramView != null)
           {
             j = 0;
@@ -430,9 +430,9 @@ public final class m
           {
             localObject2 = Uri.parse((String)localObject2);
             i = j;
-            j = bt.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
+            j = bu.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
             i = j;
-            l = bt.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
+            l = bu.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
             i = j;
           }
           catch (Exception localException)
@@ -442,53 +442,54 @@ public final class m
               long l = 0L;
             }
           }
-          ((m.a)localObject1).obC.oaB.a(localok.nDo, l, i, 15, paramView.Hki, "", k, paramView.HAf.FHY, paramView.dln, paramView.HAf.FHU, localoj.FJR, paramView.style, localoj.FJS);
-          ((m.a)localObject1).obC.b(localw, k);
+          com.tencent.mm.plugin.brandservice.ui.timeline.g.f(paramView);
+          ((m.a)localObject1).ohs.ogr.a(localom.nIJ, l, i, 15, paramView.HDI, "", k, paramView.HTS.Gau, paramView.dmp, paramView.HTS.Gaq, localol.Gcq, paramView.style, localol.Gcr);
+          ((m.a)localObject1).ohs.b(localw, k);
           break;
-          com.tencent.mm.bs.d.b(((m.a)localObject1).context, "webview", ".ui.tools.WebViewUI", localIntent);
+          com.tencent.mm.br.d.b(((m.a)localObject1).context, "webview", ".ui.tools.WebViewUI", localIntent);
         }
       }
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$refreshUI$2", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$refreshUI$2", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"})
     public static final class b
       implements com.tencent.mm.pluginsdk.ui.applet.m.a
     {
-      b(com.tencent.mm.storage.w paramw, int paramInt) {}
+      b(w paramw, int paramInt) {}
       
       public final void onFinish()
       {
-        AppMethodBeat.i(209739);
-        this.odC.a(this.odC.ocq, true);
-        this.odC.ofm.oas.p(this.ocJ.field_msgId, this.odq);
-        AppMethodBeat.o(209739);
+        AppMethodBeat.i(208713);
+        this.ojq.a(this.ojq.oif, true);
+        this.ojq.oll.ogi.p(this.oiy.field_msgId, this.oje);
+        AppMethodBeat.o(208713);
       }
       
       public final void onStart() {}
     }
     
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class e
       implements View.OnClickListener
     {
-      e(m.a parama, com.tencent.mm.storage.w paramw, oj paramoj) {}
+      e(m.a parama, w paramw, ol paramol) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(209744);
+        AppMethodBeat.i(208718);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$setPlayIcon$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).dz((View)this.odC.oeV);
-        if (this.ocJ.fpm() != null) {}
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$setPlayIcon$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ((com.tencent.mm.plugin.brandservice.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).dz((View)this.ojq.okV);
+        if (this.oiy.ftk() != null) {}
         try
         {
-          paramView = Uri.parse(this.oct.FFW);
-          bt.getInt(paramView.getQueryParameter("idx"), 0);
-          bt.getLong(paramView.getQueryParameter("mid"), 0L);
+          paramView = Uri.parse(this.oii.FYs);
+          bu.getInt(paramView.getQueryParameter("idx"), 0);
+          bu.getLong(paramView.getQueryParameter("mid"), 0L);
           label101:
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot$setPlayIcon$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(209744);
+          AppMethodBeat.o(208718);
           return;
         }
         catch (Exception paramView)
@@ -499,56 +500,81 @@ public final class m
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class d
     implements View.OnClickListener
   {
-    public d(m paramm, com.tencent.mm.storage.w paramw, ok paramok, int paramInt) {}
+    public d(m paramm, w paramw, om paramom, int paramInt) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(209750);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshClose$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      paramView = this.ocJ.fpm();
-      this.odB.obC.oaB.a(this.odD.nDo, 0L, 0, 16, paramView.Hki, "", 0, paramView.HAf.FHY, paramView.dln, paramView.HAf.FHU, 0, paramView.style, "");
-      ((d)new d(this.odB.context, this.ocJ, this.odB.obC, this.odD, this.odJ).hc((View)this.odB.ody)).show();
+      AppMethodBeat.i(208724);
+      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshClose$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+      paramView = this.oiy.ftk();
+      localObject1 = (ol)this.ojr.Gcu.get(0);
+      Object localObject2 = ((ol)localObject1).FYs;
+      int j = 0;
+      int i = 0;
+      l2 = 0L;
+      l1 = l2;
+      if (!bu.isNullOrNil((String)localObject2)) {
+        i = j;
+      }
+      try
+      {
+        localObject2 = Uri.parse((String)localObject2);
+        i = j;
+        j = bu.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
+        i = j;
+        l1 = bu.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
+        i = j;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          l1 = l2;
+        }
+      }
+      this.ojp.ohs.ogr.a(this.ojr.nIJ, l1, i, 16, paramView.HDI, "", 0, paramView.HTS.Gau, paramView.dmp, paramView.HTS.Gaq, ((ol)localObject1).Gcq, paramView.style, ((ol)localObject1).Gcr);
+      ((d)new d(this.ojp.context, this.oiy, this.ojp.ohs, this.ojr, this.ojx).hh((View)this.ojp.ojm)).show();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshClose$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(209750);
+      AppMethodBeat.o(208724);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class e
     implements View.OnClickListener
   {
-    public e(m paramm, com.tencent.mm.storage.w paramw) {}
+    public e(m paramm, w paramw) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(209751);
+      AppMethodBeat.i(208725);
       Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshHead$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
-      paramView = this.ocJ.field_talker;
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(this.ocJ.field_talker);
-      if ((localObject1 != null) && (!((am)localObject1).adh()))
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshHead$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+      paramView = this.oiy.field_talker;
+      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(this.oiy.field_talker);
+      if ((localObject1 != null) && (!((an)localObject1).ads()))
       {
-        localObject1 = this.odB;
+        localObject1 = this.ojp;
         Object localObject2 = new Intent();
         ((Intent)localObject2).putExtra("Contact_User", paramView);
         ((Intent)localObject2).putExtra("Contact_Scene", 174);
         ((Intent)localObject2).putExtra("force_get_contact", true);
         ((Intent)localObject2).putExtra("key_use_new_contact_profile", true);
-        com.tencent.mm.bs.d.b(((m)localObject1).context, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
-        localObject2 = this.ocJ.fpm();
-        ((m)localObject1).obC.oaB.a(paramView, 0L, 0, 13, ((dlt)localObject2).Hki, "", 0, ((dlt)localObject2).HAf.FHY, ((dlt)localObject2).dln, ((dlt)localObject2).HAf.FHU, 0, ((dlt)localObject2).style, "");
+        com.tencent.mm.br.d.b(((m)localObject1).context, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
+        localObject2 = this.oiy.ftk();
+        ((m)localObject1).ohs.ogr.a(paramView, 0L, 0, 13, ((dmq)localObject2).HDI, "", 0, ((dmq)localObject2).HTS.Gau, ((dmq)localObject2).dmp, ((dmq)localObject2).HTS.Gaq, 0, ((dmq)localObject2).style, "");
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshHead$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(209751);
+        AppMethodBeat.o(208725);
         return;
         localObject1 = new Intent();
         ((Intent)localObject1).putExtra("Chat_User", paramView);
@@ -556,44 +582,44 @@ public final class m
         ((Intent)localObject1).putExtra("KOpenArticleSceneFromScene", 90);
         ((Intent)localObject1).putExtra("specific_chat_from_scene", 2);
         ((Intent)localObject1).putExtra("preChatTYPE", 11);
-        com.tencent.mm.bs.d.f(this.odB.context, ".ui.chatting.ChattingUI", (Intent)localObject1);
-        localObject1 = com.tencent.mm.plugin.brandservice.b.c.nWy;
+        com.tencent.mm.br.d.f(this.ojp.context, ".ui.chatting.ChattingUI", (Intent)localObject1);
+        localObject1 = com.tencent.mm.plugin.brandservice.b.c.och;
         com.tencent.mm.plugin.brandservice.b.c.s(3, paramView, "");
       }
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
   public static final class f
     implements View.OnLongClickListener
   {
-    public f(m paramm, com.tencent.mm.storage.w paramw, ok paramok) {}
+    public f(m paramm, w paramw, om paramom) {}
     
     public final boolean onLongClick(View paramView)
     {
-      AppMethodBeat.i(209752);
+      AppMethodBeat.i(208726);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshHead$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      this.odB.obC.oap = this.ocJ;
-      paramView = this.ocJ.fpm();
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshHead$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      this.ojp.ohs.ogf = this.oiy;
+      paramView = this.oiy.ftk();
       int j;
       long l1;
       int i;
       if (paramView != null)
       {
-        localObject = (oj)this.odD.FJV.get(0);
+        localObject = (ol)this.ojr.Gcu.get(0);
         j = 0;
         l1 = 0L;
         i = j;
       }
       try
       {
-        Uri localUri = Uri.parse(((oj)localObject).FFW);
+        Uri localUri = Uri.parse(((ol)localObject).FYs);
         i = j;
-        j = bt.getInt(localUri.getQueryParameter("idx"), 0);
+        j = bu.getInt(localUri.getQueryParameter("idx"), 0);
         i = j;
-        long l2 = bt.getLong(localUri.getQueryParameter("mid"), 0L);
+        long l2 = bu.getLong(localUri.getQueryParameter("mid"), 0L);
         l1 = l2;
         i = j;
       }
@@ -602,15 +628,15 @@ public final class m
         label131:
         break label131;
       }
-      this.odB.obC.oaB.a(this.odD.nDo, l1, i, 15, paramView.Hki, "", 0, paramView.HAf.FHY, paramView.dln, paramView.HAf.FHU, ((oj)localObject).FJR, paramView.style, "");
-      this.odB.obC.bOj();
+      this.ojp.ohs.ogr.a(this.ojr.nIJ, l1, i, 15, paramView.HDI, "", 0, paramView.HTS.Gau, paramView.dmp, paramView.HTS.Gaq, ((ol)localObject).Gcq, paramView.style, "");
+      this.ojp.ohs.bPg();
       com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$refreshHead$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(209752);
+      AppMethodBeat.o(208726);
       return false;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow$BizRecCardCommonSlot;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardBizcontentUnfollow;", "invoke"})
   static final class g
     extends q
     implements d.g.a.a<m.a>

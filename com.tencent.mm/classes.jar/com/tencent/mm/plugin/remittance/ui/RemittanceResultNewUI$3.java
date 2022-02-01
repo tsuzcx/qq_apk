@@ -6,8 +6,8 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.e;
 
@@ -19,22 +19,22 @@ final class RemittanceResultNewUI$3
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
     AppMethodBeat.i(68281);
-    ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    ClipboardManager localClipboardManager = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     paramMenuItem = "";
-    if (bt.jx(RemittanceResultNewUI.c(this.ygq), 2131304016)) {
-      paramMenuItem = RemittanceResultNewUI.d(this.ygq).getText().toString().trim();
+    if (bu.jB(RemittanceResultNewUI.c(this.ywh), 2131304016)) {
+      paramMenuItem = RemittanceResultNewUI.d(this.ywh).getText().toString().trim();
     }
-    while (!bt.jx(RemittanceResultNewUI.c(this.ygq), 2131303988))
+    while (!bu.jB(RemittanceResultNewUI.c(this.ywh), 2131303988))
     {
       localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, paramMenuItem));
-      h.cl(this.ygq, this.ygq.getString(2131755702));
+      h.cm(this.ywh, this.ywh.getString(2131755702));
       AppMethodBeat.o(68281);
       return;
     }
     paramMenuItem = new StringBuilder();
-    paramMenuItem.append(RemittanceResultNewUI.e(this.ygq).getText().toString().trim() + " ");
-    String str = RemittanceResultNewUI.b(this.ygq).getText().toString().trim();
-    if (str.endsWith(this.ygq.getString(2131762446))) {
+    paramMenuItem.append(RemittanceResultNewUI.e(this.ywh).getText().toString().trim() + " ");
+    String str = RemittanceResultNewUI.b(this.ywh).getText().toString().trim();
+    if (str.endsWith(this.ywh.getString(2131762446))) {
       paramMenuItem.append(str.substring(0, str.length() - 4));
     }
     for (;;)

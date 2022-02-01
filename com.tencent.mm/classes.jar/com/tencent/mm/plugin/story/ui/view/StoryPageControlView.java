@@ -9,11 +9,11 @@ import d.g.b.p;
 import d.l;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView;", "Lcom/tencent/mm/ui/base/MMPageControlView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mPageIndicatorStatusInterface", "Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView$IPageIndicatorStatusInterface;", "generatePageControl", "", "currentIndex", "", "setPageIndicatorStatusInterface", "pageControlInterface", "IPageIndicatorStatusInterface", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView;", "Lcom/tencent/mm/ui/base/MMPageControlView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mPageIndicatorStatusInterface", "Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView$IPageIndicatorStatusInterface;", "generatePageControl", "", "currentIndex", "", "setPageIndicatorStatusInterface", "pageControlInterface", "IPageIndicatorStatusInterface", "plugin-story_release"})
 public final class StoryPageControlView
   extends MMPageControlView
 {
-  private StoryPageControlView.a BbJ;
+  private StoryPageControlView.a Bth;
   
   public StoryPageControlView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,16 +22,16 @@ public final class StoryPageControlView
     AppMethodBeat.o(120285);
   }
   
-  public final void Qv(int paramInt)
+  public final void Rc(int paramInt)
   {
     AppMethodBeat.i(120284);
-    super.Qv(paramInt);
+    super.Rc(paramInt);
     int j = this.count;
     int i = 0;
     if (i < j)
     {
-      this.dsD = ((ImageView)this.map.get(Integer.valueOf(i)));
-      ImageView localImageView = this.dsD;
+      this.dtJ = ((ImageView)this.map.get(Integer.valueOf(i)));
+      ImageView localImageView = this.dtJ;
       p.g(localImageView, "imageView");
       if (paramInt == i) {}
       for (boolean bool = true;; bool = false)
@@ -46,12 +46,12 @@ public final class StoryPageControlView
   
   public final void setPageIndicatorStatusInterface(StoryPageControlView.a parama)
   {
-    this.BbJ = parama;
+    this.Bth = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryPageControlView
  * JD-Core Version:    0.7.0.1
  */

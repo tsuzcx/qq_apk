@@ -29,16 +29,16 @@ public class MutableVideoComposition
   
   public MutableVideoComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(218052);
+    AppMethodBeat.i(214691);
     this.asset = paramAsset;
     this.instructions = new ArrayList();
     fillSourceProperty();
-    AppMethodBeat.o(218052);
+    AppMethodBeat.o(214691);
   }
   
   private void fillSourceProperty()
   {
-    AppMethodBeat.i(218053);
+    AppMethodBeat.i(214692);
     Object localObject2 = this.asset.tracksWithMediaType(1);
     this.frameDuration = null;
     this.renderSize = null;
@@ -73,7 +73,7 @@ public class MutableVideoComposition
     for (;;)
     {
       this.renderScale = 1.0F;
-      AppMethodBeat.o(218053);
+      AppMethodBeat.o(214692);
       return;
       if (localObject2 != null)
       {
@@ -93,12 +93,12 @@ public class MutableVideoComposition
   
   public VideoCompositing getCustomVideoCompositor()
   {
-    AppMethodBeat.i(218054);
+    AppMethodBeat.i(214693);
     if (this.customVideoCompositorClass != null) {}
     try
     {
       VideoCompositing localVideoCompositing = (VideoCompositing)this.customVideoCompositorClass.newInstance();
-      AppMethodBeat.o(218054);
+      AppMethodBeat.o(214693);
       return localVideoCompositing;
     }
     catch (InstantiationException localInstantiationException)
@@ -108,7 +108,7 @@ public class MutableVideoComposition
         localVideoCompositor = new VideoCompositor();
       }
       VideoCompositor localVideoCompositor = new VideoCompositor();
-      AppMethodBeat.o(218054);
+      AppMethodBeat.o(214693);
       return localVideoCompositor;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -190,9 +190,9 @@ public class MutableVideoComposition
   
   public String toString()
   {
-    AppMethodBeat.i(218055);
+    AppMethodBeat.i(214694);
     String str = "MutableVideoComposition{, frameDuration=" + this.frameDuration + ", renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", instructions=" + this.instructions + '}';
-    AppMethodBeat.o(218055);
+    AppMethodBeat.o(214694);
     return str;
   }
 }

@@ -1,77 +1,77 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kh;
-import com.tencent.mm.g.a.kh.a;
-import com.tencent.mm.protocal.protobuf.cmz;
-import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.g.a.ki.a;
+import com.tencent.mm.protocal.protobuf.cnt;
+import com.tencent.mm.protocal.protobuf.coc;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class h
-  extends c<kh>
+  extends c<ki>
 {
-  public a uKN;
+  public a uWA;
   
   public h()
   {
     AppMethodBeat.i(161381);
-    this.__eventId = kh.class.getName().hashCode();
+    this.__eventId = ki.class.getName().hashCode();
     AppMethodBeat.o(161381);
   }
   
-  private boolean a(kh paramkh)
+  private boolean a(ki paramki)
   {
     AppMethodBeat.i(25380);
-    if ((paramkh instanceof kh))
+    if ((paramki instanceof ki))
     {
-      paramkh = paramkh.dxn.dxo;
-      if ((paramkh == null) || (paramkh.length <= 0))
+      paramki = paramki.dys.dyt;
+      if ((paramki == null) || (paramki.length <= 0))
       {
         AppMethodBeat.o(25380);
         return false;
       }
-      if (paramkh[0] == 101)
+      if (paramki[0] == 101)
       {
-        Object localObject = new byte[paramkh.length - 1];
-        System.arraycopy(paramkh, 1, localObject, 0, localObject.length);
+        Object localObject = new byte[paramki.length - 1];
+        System.arraycopy(paramki, 1, localObject, 0, localObject.length);
         try
         {
-          paramkh = (cmz)new cmz().parseFrom((byte[])localObject);
-          ad.d("MicroMsg.IPCallSvrNotifyListener", "roomId: %d, roomKey: %d, DtmfPayloadType: %d", new Object[] { Integer.valueOf(paramkh.GeI), Long.valueOf(paramkh.GeJ), Integer.valueOf(paramkh.uLN) });
-          localObject = paramkh.Hgo;
+          paramki = (cnt)new cnt().parseFrom((byte[])localObject);
+          ae.d("MicroMsg.IPCallSvrNotifyListener", "roomId: %d, roomKey: %d, DtmfPayloadType: %d", new Object[] { Integer.valueOf(paramki.Gxq), Long.valueOf(paramki.Gxr), Integer.valueOf(paramki.uXA) });
+          localObject = paramki.HzO;
           if (localObject != null)
           {
             localObject = ((LinkedList)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
-              cni localcni = (cni)((Iterator)localObject).next();
-              ad.d("MicroMsg.IPCallSvrNotifyListener", "userstatus: %d, userstatusKey: %d, memberId: %d", new Object[] { Integer.valueOf(localcni.Hgy), Integer.valueOf(localcni.Hgz), Integer.valueOf(localcni.Hgx) });
+              coc localcoc = (coc)((Iterator)localObject).next();
+              ae.d("MicroMsg.IPCallSvrNotifyListener", "userstatus: %d, userstatusKey: %d, memberId: %d", new Object[] { Integer.valueOf(localcoc.HzY), Integer.valueOf(localcoc.HzZ), Integer.valueOf(localcoc.HzX) });
               continue;
               AppMethodBeat.o(25380);
             }
           }
         }
-        catch (Exception paramkh)
+        catch (Exception paramki)
         {
-          ad.e("MicroMsg.IPCallSvrNotifyListener", "parse PstnNotify error: %s", new Object[] { paramkh.getMessage() });
+          ae.e("MicroMsg.IPCallSvrNotifyListener", "parse PstnNotify error: %s", new Object[] { paramki.getMessage() });
         }
       }
     }
     for (;;)
     {
       return false;
-      if (this.uKN != null) {
-        this.uKN.a(paramkh);
+      if (this.uWA != null) {
+        this.uWA.a(paramki);
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void a(cmz paramcmz);
+    public abstract void a(cnt paramcnt);
   }
 }
 

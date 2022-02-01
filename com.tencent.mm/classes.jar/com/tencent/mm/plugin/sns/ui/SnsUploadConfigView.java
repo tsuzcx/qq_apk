@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -18,18 +17,17 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.go;
-import com.tencent.mm.g.a.go.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.gp;
+import com.tencent.mm.g.a.gp.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.model.v;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.k.a.a;
@@ -42,48 +40,48 @@ public class SnsUploadConfigView
   extends LinearLayout
   implements f, a.a, a.b
 {
-  private static String dFD = "com.tencent.mm";
-  private boolean AoA;
-  boolean AoB;
-  com.tencent.mm.ui.k.a AoC;
-  ImageView Aoq;
-  ImageView Aor;
-  ImageView Aos;
-  ImageView Aot;
-  private boolean Aou;
-  boolean Aov;
-  boolean Aow;
-  private boolean Aox;
-  private boolean Aoy;
-  private boolean Aoz;
+  private static String dGI = "com.tencent.mm";
+  ImageView AFD;
+  ImageView AFE;
+  ImageView AFF;
+  ImageView AFG;
+  private boolean AFH;
+  boolean AFI;
+  boolean AFJ;
+  private boolean AFK;
+  private boolean AFL;
+  private boolean AFM;
+  private boolean AFN;
+  boolean AFO;
+  com.tencent.mm.ui.k.a AFP;
+  bwk Aky;
   private Context context;
-  private ProgressDialog sBI;
-  boolean sKd;
-  bvq zTr;
+  private ProgressDialog sMH;
+  boolean sVq;
   
   public SnsUploadConfigView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99531);
-    this.sKd = false;
-    this.Aou = false;
-    this.Aov = false;
-    this.Aow = false;
-    this.Aox = false;
-    this.Aoy = false;
-    this.Aoz = true;
-    this.AoA = false;
-    this.AoB = false;
-    this.zTr = new bvq();
-    this.AoC = new com.tencent.mm.ui.k.a();
-    this.sBI = null;
+    this.sVq = false;
+    this.AFH = false;
+    this.AFI = false;
+    this.AFJ = false;
+    this.AFK = false;
+    this.AFL = false;
+    this.AFM = true;
+    this.AFN = false;
+    this.AFO = false;
+    this.Aky = new bwk();
+    this.AFP = new com.tencent.mm.ui.k.a();
+    this.sMH = null;
     this.context = paramContext;
     this.context = paramContext;
-    paramAttributeSet = z.jO(paramContext).inflate(2131495618, this, true);
-    this.Aoq = ((ImageView)paramAttributeSet.findViewById(2131305071));
-    this.Aor = ((ImageView)paramAttributeSet.findViewById(2131305073));
-    this.Aos = ((ImageView)paramAttributeSet.findViewById(2131305072));
-    this.Aot = ((ImageView)paramAttributeSet.findViewById(2131305074));
+    paramAttributeSet = z.jV(paramContext).inflate(2131495618, this, true);
+    this.AFD = ((ImageView)paramAttributeSet.findViewById(2131305071));
+    this.AFE = ((ImageView)paramAttributeSet.findViewById(2131305073));
+    this.AFF = ((ImageView)paramAttributeSet.findViewById(2131305072));
+    this.AFG = ((ImageView)paramAttributeSet.findViewById(2131305074));
     paramAttributeSet = new StateListDrawable();
     Drawable localDrawable1 = ao.k(paramContext, 2131689537, Color.parseColor("#FFC300"));
     Drawable localDrawable2 = ao.k(paramContext, 2131689537, paramContext.getResources().getColor(2131099982));
@@ -91,7 +89,7 @@ public class SnsUploadConfigView
     paramAttributeSet.addState(new int[] { 16842919, -16842908 }, localDrawable1);
     paramAttributeSet.addState(new int[] { -16842908 }, localDrawable2);
     paramAttributeSet.addState(new int[0], localDrawable2);
-    this.Aos.setImageDrawable(paramAttributeSet);
+    this.AFF.setImageDrawable(paramAttributeSet);
     paramAttributeSet = new StateListDrawable();
     localDrawable1 = ao.k(paramContext, 2131689527, Color.parseColor("#3C5998"));
     localDrawable2 = ao.k(paramContext, 2131689527, paramContext.getResources().getColor(2131099982));
@@ -99,7 +97,7 @@ public class SnsUploadConfigView
     paramAttributeSet.addState(new int[] { 16842919, -16842908 }, localDrawable1);
     paramAttributeSet.addState(new int[] { -16842908 }, localDrawable2);
     paramAttributeSet.addState(new int[0], localDrawable2);
-    this.Aoq.setImageDrawable(paramAttributeSet);
+    this.AFD.setImageDrawable(paramAttributeSet);
     paramAttributeSet = new StateListDrawable();
     localDrawable1 = ao.k(paramContext, 2131689543, Color.parseColor("#1DA1F2"));
     localDrawable2 = ao.k(paramContext, 2131689543, paramContext.getResources().getColor(2131099982));
@@ -107,7 +105,7 @@ public class SnsUploadConfigView
     paramAttributeSet.addState(new int[] { 16842919, -16842908 }, localDrawable1);
     paramAttributeSet.addState(new int[] { -16842908 }, localDrawable2);
     paramAttributeSet.addState(new int[0], localDrawable2);
-    this.Aor.setImageDrawable(paramAttributeSet);
+    this.AFE.setImageDrawable(paramAttributeSet);
     paramAttributeSet = new StateListDrawable();
     localDrawable1 = ao.k(paramContext, 2131689545, Color.parseColor("#FF0F80"));
     localDrawable2 = ao.k(paramContext, 2131689545, paramContext.getResources().getColor(2131099982));
@@ -115,28 +113,28 @@ public class SnsUploadConfigView
     paramAttributeSet.addState(new int[] { 16842919, -16842908 }, localDrawable1);
     paramAttributeSet.addState(new int[] { -16842908 }, localDrawable2);
     paramAttributeSet.addState(new int[0], localDrawable2);
-    this.Aot.setImageDrawable(paramAttributeSet);
-    if (!com.tencent.mm.ax.b.aJl()) {
-      this.Aos.setVisibility(8);
+    this.AFG.setImageDrawable(paramAttributeSet);
+    if (!com.tencent.mm.aw.b.aJD()) {
+      this.AFF.setVisibility(8);
     }
-    g.ajD();
-    if (!g.ajC().ajl().getBoolean(al.a.IsA, false)) {
-      this.Aot.setVisibility(8);
+    g.ajS();
+    if (!g.ajR().ajA().getBoolean(am.a.IMW, false)) {
+      this.AFG.setVisibility(8);
     }
-    if (!com.tencent.mm.ax.b.aJo()) {
-      this.Aor.setVisibility(8);
+    if (!com.tencent.mm.aw.b.aJG()) {
+      this.AFE.setVisibility(8);
     }
-    if (!u.aAP()) {
-      this.Aoq.setVisibility(8);
+    if (!v.aBf()) {
+      this.AFD.setVisibility(8);
     }
-    this.Aos.setOnClickListener(new View.OnClickListener()
+    this.AFF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99520);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if ((!SnsUploadConfigView.a(SnsUploadConfigView.this)) && (SnsUploadConfigView.b(SnsUploadConfigView.this)))
         {
           h.l(paramContext, 2131764008, 2131755906);
@@ -156,14 +154,14 @@ public class SnsUploadConfigView
         }
       }
     });
-    this.Aot.setOnClickListener(new View.OnClickListener()
+    this.AFG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99525);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if ((!SnsUploadConfigView.d(SnsUploadConfigView.this)) && (SnsUploadConfigView.b(SnsUploadConfigView.this)))
         {
           h.l(paramContext, 2131764010, 2131755906);
@@ -171,11 +169,11 @@ public class SnsUploadConfigView
           AppMethodBeat.o(99525);
           return;
         }
-        g.ajD();
-        if (g.ajC().ajl().getBoolean(al.a.IsB, true))
+        g.ajS();
+        if (g.ajR().ajA().getBoolean(am.a.IMX, true))
         {
-          g.ajD();
-          g.ajC().ajl().set(al.a.IsB, Boolean.FALSE);
+          g.ajS();
+          g.ajR().ajA().set(am.a.IMX, Boolean.FALSE);
           h.a(paramContext, 2131763995, 2131755906, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
@@ -208,14 +206,14 @@ public class SnsUploadConfigView
         }
       }
     });
-    this.Aoq.setOnClickListener(new View.OnClickListener()
+    this.AFD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99526);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = SnsUploadConfigView.this;
         if (SnsUploadConfigView.f(SnsUploadConfigView.this)) {}
         for (boolean bool = false;; bool = true)
@@ -231,14 +229,14 @@ public class SnsUploadConfigView
         }
       }
     });
-    this.Aor.setOnClickListener(new View.OnClickListener()
+    this.AFE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99527);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = SnsUploadConfigView.this;
         if (SnsUploadConfigView.i(SnsUploadConfigView.this)) {}
         for (boolean bool = false;; bool = true)
@@ -257,7 +255,7 @@ public class SnsUploadConfigView
     AppMethodBeat.o(99531);
   }
   
-  private void IN(int paramInt)
+  private void Jl(int paramInt)
   {
     AppMethodBeat.i(99538);
     h.a(getContext(), paramInt, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -273,64 +271,64 @@ public class SnsUploadConfigView
   public final void a(a.c paramc)
   {
     AppMethodBeat.i(99540);
-    if (this.sBI != null) {
-      this.sBI.cancel();
+    if (this.sMH != null) {
+      this.sMH.cancel();
     }
-    switch (SnsUploadConfigView.7.uTV[paramc.ordinal()])
+    switch (SnsUploadConfigView.7.vfI[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      edx();
+      ehe();
       AppMethodBeat.o(99540);
       return;
-      this.Aow = true;
-      IN(2131764543);
+      this.AFJ = true;
+      Jl(2131764543);
       continue;
-      this.Aow = false;
+      this.AFJ = false;
       continue;
-      this.Aow = false;
-      IN(2131764542);
+      this.AFJ = false;
+      Jl(2131764542);
     }
   }
   
   public final void b(a.c paramc)
   {
     AppMethodBeat.i(99541);
-    switch (SnsUploadConfigView.7.uTV[paramc.ordinal()])
+    switch (SnsUploadConfigView.7.vfI[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      edx();
+      ehe();
       AppMethodBeat.o(99541);
       return;
-      this.Aow = false;
+      this.AFJ = false;
     }
   }
   
-  public final void edu()
+  public final void ehb()
   {
     AppMethodBeat.i(99532);
-    this.Aou = false;
-    this.Aov = false;
-    this.Aow = false;
-    this.Aox = false;
-    this.Aoy = false;
-    this.Aos.setImageDrawable(ao.k(this.context, 2131689537, this.context.getResources().getColor(2131099982)));
-    this.Aot.setImageDrawable(ao.k(this.context, 2131689545, this.context.getResources().getColor(2131099982)));
-    this.Aoq.setImageDrawable(ao.k(this.context, 2131689527, this.context.getResources().getColor(2131099982)));
-    this.Aor.setImageDrawable(ao.k(this.context, 2131689543, this.context.getResources().getColor(2131099982)));
+    this.AFH = false;
+    this.AFI = false;
+    this.AFJ = false;
+    this.AFK = false;
+    this.AFL = false;
+    this.AFF.setImageDrawable(ao.k(this.context, 2131689537, this.context.getResources().getColor(2131099982)));
+    this.AFG.setImageDrawable(ao.k(this.context, 2131689545, this.context.getResources().getColor(2131099982)));
+    this.AFD.setImageDrawable(ao.k(this.context, 2131689527, this.context.getResources().getColor(2131099982)));
+    this.AFE.setImageDrawable(ao.k(this.context, 2131689543, this.context.getResources().getColor(2131099982)));
     AppMethodBeat.o(99532);
   }
   
-  final void edv()
+  final void ehc()
   {
     AppMethodBeat.i(99533);
-    if (this.Aox)
+    if (this.AFK)
     {
-      g.ajD();
-      int i = bt.n((Integer)g.ajC().ajl().get(9, null));
+      g.ajS();
+      int i = bu.o((Integer)g.ajR().ajA().get(9, null));
       if (i == 0) {
         h.a(getContext(), 2131763508, 2131755906, new SnsUploadConfigView.11(this), new DialogInterface.OnClickListener()
         {
@@ -342,7 +340,7 @@ public class SnsUploadConfigView
         if (i != 0) {
           break label97;
         }
-        this.Aox = false;
+        this.AFK = false;
         AppMethodBeat.o(99533);
         return;
         if (i == 0) {
@@ -350,51 +348,51 @@ public class SnsUploadConfigView
         }
       }
       label97:
-      this.Aos.setImageDrawable(ao.k(this.context, 2131689537, Color.parseColor("#FFC300")));
+      this.AFF.setImageDrawable(ao.k(this.context, 2131689537, Color.parseColor("#FFC300")));
       AppMethodBeat.o(99533);
       return;
     }
-    this.Aos.setImageDrawable(ao.k(this.context, 2131689537, this.context.getResources().getColor(2131099982)));
+    this.AFF.setImageDrawable(ao.k(this.context, 2131689537, this.context.getResources().getColor(2131099982)));
     AppMethodBeat.o(99533);
   }
   
-  final void edw()
+  final void ehd()
   {
     AppMethodBeat.i(99534);
-    if (this.Aot == null)
+    if (this.AFG == null)
     {
       AppMethodBeat.o(99534);
       return;
     }
-    if (this.AoB)
+    if (this.AFO)
     {
-      g.ajD();
-      if (g.ajC().ajl().getBoolean(al.a.IsA, false)) {}
+      g.ajS();
+      if (g.ajR().ajA().getBoolean(am.a.IMW, false)) {}
     }
     else
     {
-      this.Aoy = false;
-      this.Aot.setVisibility(8);
+      this.AFL = false;
+      this.AFG.setVisibility(8);
       AppMethodBeat.o(99534);
       return;
     }
-    this.Aot.setVisibility(0);
-    if (this.Aoy)
+    this.AFG.setVisibility(0);
+    if (this.AFL)
     {
-      this.Aot.setImageDrawable(ao.k(this.context, 2131689545, Color.parseColor("#FF0F80")));
+      this.AFG.setImageDrawable(ao.k(this.context, 2131689545, Color.parseColor("#FF0F80")));
       AppMethodBeat.o(99534);
       return;
     }
-    this.Aot.setImageDrawable(ao.k(this.context, 2131689545, this.context.getResources().getColor(2131099982)));
+    this.AFG.setImageDrawable(ao.k(this.context, 2131689545, this.context.getResources().getColor(2131099982)));
     AppMethodBeat.o(99534);
   }
   
-  final void edx()
+  final void ehe()
   {
     AppMethodBeat.i(99536);
-    if (this.Aow)
+    if (this.AFJ)
     {
-      if (!this.AoC.fLk()) {
+      if (!this.AFP.fPD()) {
         h.a(getContext(), 2131763475, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -417,22 +415,22 @@ public class SnsUploadConfigView
       }
       for (int i = 0; i == 0; i = 1)
       {
-        this.Aow = false;
+        this.AFJ = false;
         AppMethodBeat.o(99536);
         return;
       }
-      this.Aor.setImageDrawable(ao.k(this.context, 2131689543, Color.parseColor("#1DA1F2")));
+      this.AFE.setImageDrawable(ao.k(this.context, 2131689543, Color.parseColor("#1DA1F2")));
       AppMethodBeat.o(99536);
       return;
     }
-    this.Aor.setImageDrawable(ao.k(this.context, 2131689543, this.context.getResources().getColor(2131099982)));
+    this.AFE.setImageDrawable(ao.k(this.context, 2131689543, this.context.getResources().getColor(2131099982)));
     AppMethodBeat.o(99536);
   }
   
   public int getPrivated()
   {
     int i = 0;
-    if (this.sKd) {
+    if (this.sVq) {
       i = 1;
     }
     return i;
@@ -441,23 +439,23 @@ public class SnsUploadConfigView
   public int getSyncFlag()
   {
     int j = 0;
-    if (this.Aou) {
+    if (this.AFH) {
       j = 1;
     }
     int i = j;
-    if (this.Aov) {
+    if (this.AFI) {
       i = j | 0x2;
     }
     j = i;
-    if (this.Aow) {
+    if (this.AFJ) {
       j = i | 0x8;
     }
     i = j;
-    if (this.Aox) {
+    if (this.AFK) {
       i = j | 0x4;
     }
     j = i;
-    if (this.Aoy) {
+    if (this.AFL) {
       j = i | 0x10;
     }
     return j;
@@ -465,7 +463,7 @@ public class SnsUploadConfigView
   
   public i getTwitterAccessToken()
   {
-    return this.AoC.KPb;
+    return this.AFP.Llz;
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -476,16 +474,16 @@ public class SnsUploadConfigView
       AppMethodBeat.o(99539);
       return;
     }
-    edw();
+    ehd();
     AppMethodBeat.o(99539);
   }
   
   public void setPrivated(boolean paramBoolean)
   {
     AppMethodBeat.i(99537);
-    this.sKd = paramBoolean;
+    this.sVq = paramBoolean;
     if (paramBoolean) {
-      edu();
+      ehb();
     }
     AppMethodBeat.o(99537);
   }
@@ -493,49 +491,41 @@ public class SnsUploadConfigView
   void setSyncFacebook(boolean paramBoolean)
   {
     AppMethodBeat.i(99535);
-    if (this.Aov)
+    if (this.AFI)
     {
-      if (!u.aAS()) {
-        h.a(getContext(), 2131763220, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(99529);
-            d.b(SnsUploadConfigView.this.getContext(), "account", ".ui.FacebookAuthUI", new Intent().putExtra("shake_music", true));
-            AppMethodBeat.o(99529);
-          }
-        }, new DialogInterface.OnClickListener()
+      if (!v.aBi()) {
+        h.a(getContext(), 2131763220, 2131755906, new SnsUploadConfigView.13(this), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
       }
       for (int i = 0; i == 0; i = 1)
       {
-        this.Aov = false;
+        this.AFI = false;
         AppMethodBeat.o(99535);
         return;
       }
-      if ((!paramBoolean) && (!this.AoA) && (u.aAS()))
+      if ((!paramBoolean) && (!this.AFN) && (v.aBi()))
       {
-        final go localgo = new go();
-        localgo.callback = new Runnable()
+        final gp localgp = new gp();
+        localgp.callback = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(99521);
-            if (!localgo.dsx.dno) {
+            if (!localgp.dtD.doq) {
               SnsUploadConfigView.m(SnsUploadConfigView.this);
             }
             AppMethodBeat.o(99521);
           }
         };
-        com.tencent.mm.sdk.b.a.IbL.a(localgo, Looper.myLooper());
+        com.tencent.mm.sdk.b.a.IvT.a(localgp, Looper.myLooper());
       }
-      this.Aoq.setImageDrawable(ao.k(this.context, 2131689527, Color.parseColor("#3C5998")));
+      this.AFD.setImageDrawable(ao.k(this.context, 2131689527, Color.parseColor("#3C5998")));
       AppMethodBeat.o(99535);
       return;
     }
-    this.Aoq.setImageDrawable(ao.k(this.context, 2131689527, this.context.getResources().getColor(2131099982)));
+    this.AFD.setImageDrawable(ao.k(this.context, 2131689527, this.context.getResources().getColor(2131099982)));
     AppMethodBeat.o(99535);
   }
 }

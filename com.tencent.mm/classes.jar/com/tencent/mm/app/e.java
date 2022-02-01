@@ -3,30 +3,30 @@ package com.tencent.mm.app;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.compatible.e.a;
 import com.tencent.mm.pluginsdk.ui.j;
 import com.tencent.mm.pluginsdk.ui.j.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class e
   implements j.a
 {
-  private volatile Bitmap cTq = null;
-  com.tencent.mm.ak.e cTr;
+  private volatile Bitmap cUb = null;
+  com.tencent.mm.aj.e cUc;
   
-  public final Bitmap LL()
+  public final Bitmap LT()
   {
     AppMethodBeat.i(19433);
-    if (this.cTq == null) {}
+    if (this.cUb == null) {}
     try
     {
-      if (this.cTq == null) {
-        this.cTq = a.decodeResource(aj.getContext().getResources(), 2131690013);
+      if (this.cUb == null) {
+        this.cUb = a.decodeResource(ak.getContext().getResources(), 2131690013);
       }
-      Bitmap localBitmap = this.cTq;
+      Bitmap localBitmap = this.cUb;
       AppMethodBeat.o(19433);
       return localBitmap;
     }
@@ -48,12 +48,12 @@ final class e
   {
     AppMethodBeat.i(19431);
     if ((paramj instanceof e.a)) {
-      p.aEk().a((e.a)paramj);
+      p.aEA().a((e.a)paramj);
     }
     AppMethodBeat.o(19431);
   }
   
-  public final Bitmap fg(String paramString)
+  public final Bitmap fl(String paramString)
   {
     AppMethodBeat.i(19432);
     paramString = c.a(paramString, false, -1, null);
@@ -61,13 +61,13 @@ final class e
     return paramString;
   }
   
-  public final Bitmap fh(String paramString)
+  public final Bitmap fm(String paramString)
   {
     AppMethodBeat.i(19434);
-    if (this.cTr == null) {
-      this.cTr = p.aEk();
+    if (this.cUc == null) {
+      this.cUc = p.aEA();
     }
-    paramString = com.tencent.mm.ak.e.CY(paramString);
+    paramString = com.tencent.mm.aj.e.DA(paramString);
     AppMethodBeat.o(19434);
     return paramString;
   }

@@ -6,15 +6,15 @@ public abstract interface d
   
   public abstract void a(WidgetData paramWidgetData, String paramString, int paramInt1, int paramInt2);
   
-  public abstract void aFJ(String paramString);
+  public abstract void aHd(String paramString);
   
-  public abstract void aFK(String paramString);
+  public abstract void aHe(String paramString);
   
-  public abstract void eLQ();
+  public abstract void ePz();
   
   public abstract void h(int paramInt1, int paramInt2, String paramString1, String paramString2);
   
-  public abstract void kD(String paramString1, String paramString2);
+  public abstract void kK(String paramString1, String paramString2);
   
   public abstract void onDestroy();
   
@@ -22,11 +22,11 @@ public abstract interface d
   
   public abstract void onResume();
   
-  public abstract void t(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public abstract void s(String paramString1, String paramString2, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.d
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public class i<C extends c>
   public final String a(C paramC, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137670);
-    paramC = m("ok", a(paramC));
+    paramC = n("ok", a(paramC));
     AppMethodBeat.o(137670);
     return paramC;
   }
@@ -36,8 +36,8 @@ public class i<C extends c>
     localHashMap.put("system", "Android " + Build.VERSION.RELEASE);
     paramC = paramC.getContext().getResources().getDisplayMetrics();
     localHashMap.put("pixelRatio", Float.valueOf(paramC.density));
-    localHashMap.put("screenWidth", Integer.valueOf(g.vH(paramC.widthPixels)));
-    localHashMap.put("screenHeight", Integer.valueOf(g.vH(paramC.heightPixels)));
+    localHashMap.put("screenWidth", Integer.valueOf(g.vM(paramC.widthPixels)));
+    localHashMap.put("screenHeight", Integer.valueOf(g.vM(paramC.heightPixels)));
     AppMethodBeat.o(137671);
     return localHashMap;
   }

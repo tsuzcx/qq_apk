@@ -16,8 +16,8 @@ final class AppBrandVideoView$1
     AppMethodBeat.i(137698);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.llv.start();
+    a.b("com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.lpV.start();
     a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(137698);
   }

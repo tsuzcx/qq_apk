@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.honey_pay.a.l;
 import com.tencent.mm.plugin.honey_pay.a.m;
-import com.tencent.mm.protocal.protobuf.bom;
-import com.tencent.mm.protocal.protobuf.bon;
-import com.tencent.mm.protocal.protobuf.com;
-import com.tencent.mm.protocal.protobuf.coo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bpe;
+import com.tencent.mm.protocal.protobuf.bpf;
+import com.tencent.mm.protocal.protobuf.cpg;
+import com.tencent.mm.protocal.protobuf.cpi;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.c.r;
 import com.tencent.mm.wallet_core.c.r.a;
@@ -20,10 +20,10 @@ import com.tencent.mm.wallet_core.c.r.a;
 public class HoneyPayProxyUI
   extends HoneyPayBaseUI
 {
-  private String uFI;
-  private boolean uHs;
+  private String uRv;
+  private boolean uTf;
   
-  protected final void dcd() {}
+  protected final void deV() {}
   
   public int getLayoutId()
   {
@@ -36,19 +36,19 @@ public class HoneyPayProxyUI
     super.onCreate(paramBundle);
     addSceneEndListener(2876);
     addSceneEndListener(2613);
-    this.uHs = getIntent().getBooleanExtra("key_is_payer", false);
-    this.uFI = getIntent().getStringExtra("key_card_no");
-    ad.i(this.TAG, "is payer: %s", new Object[] { Boolean.valueOf(this.uHs) });
-    if (this.uHs)
+    this.uTf = getIntent().getBooleanExtra("key_is_payer", false);
+    this.uRv = getIntent().getStringExtra("key_card_no");
+    ae.i(this.TAG, "is payer: %s", new Object[] { Boolean.valueOf(this.uTf) });
+    if (this.uTf)
     {
-      ad.i(this.TAG, "do qry payer detail");
-      paramBundle = new l(this.uFI);
+      ae.i(this.TAG, "do qry payer detail");
+      paramBundle = new l(this.uRv);
       paramBundle.t(this);
       doSceneProgress(paramBundle, true);
       AppMethodBeat.o(64818);
       return;
     }
-    paramBundle = new m(this.uFI);
+    paramBundle = new m(this.uRv);
     paramBundle.t(this);
     doSceneProgress(paramBundle, true);
     AppMethodBeat.o(64818);
@@ -79,10 +79,10 @@ public class HoneyPayProxyUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(64815);
-          if (paramString.uFs.Gbv != null) {
-            ad.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.uFs.Gbv.state) });
+          if (paramString.uRf.Guc != null) {
+            ae.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.uRf.Guc.state) });
           }
-          HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.uFs);
+          HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.uRf);
           HoneyPayProxyUI.this.finish();
           AppMethodBeat.o(64815);
         }
@@ -111,16 +111,16 @@ public class HoneyPayProxyUI
           public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
           {
             AppMethodBeat.i(64817);
-            ad.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.uFt.Gzb.state) });
-            if (paramString.uFt.Gzb.state == 1) {
-              HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.uFt);
+            ae.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.uRg.GSB.state) });
+            if (paramString.uRg.GSB.state == 1) {
+              HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.uRg);
             }
             for (;;)
             {
               HoneyPayProxyUI.this.finish();
               AppMethodBeat.o(64817);
               return;
-              HoneyPayProxyUI.b(HoneyPayProxyUI.this, paramString.uFt);
+              HoneyPayProxyUI.b(HoneyPayProxyUI.this, paramString.uRg);
             }
           }
         }).b(new r.a()
@@ -147,7 +147,7 @@ public class HoneyPayProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayProxyUI
  * JD-Core Version:    0.7.0.1
  */

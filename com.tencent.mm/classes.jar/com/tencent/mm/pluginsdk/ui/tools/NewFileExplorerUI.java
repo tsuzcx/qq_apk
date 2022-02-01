@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -19,20 +22,27 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.f;
+import com.tencent.mm.pluginsdk.i.i;
 import com.tencent.mm.pluginsdk.ui.applet.o.a;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.s.b;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.m;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.w;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -42,34 +52,34 @@ import java.util.Set;
 public class NewFileExplorerUI
   extends MMActivity
 {
-  private a FkC;
-  private TextView FkD;
-  private FileSelectorFolderView FkE;
-  private o.a FkF;
-  private FileSelectorFolderView.a FkG;
-  private String drf;
-  private ListView jpT;
+  private a FDa;
+  private TextView FDb;
+  private FileSelectorFolderView FDc;
+  private o.a FDd;
+  private FileSelectorFolderView.a FDe;
+  private String dsk;
+  private ListView jsM;
   private int mode;
-  private TextView xfn;
+  private TextView xvf;
   
   public NewFileExplorerUI()
   {
     AppMethodBeat.i(32013);
     this.mode = 0;
-    this.FkG = new FileSelectorFolderView.a()
+    this.FDe = new FileSelectorFolderView.a()
     {
-      public final void Zv(int paramAnonymousInt)
+      public final void aab(int paramAnonymousInt)
       {
         AppMethodBeat.i(31985);
-        ad.i("MicroMsg.FileExplorerUI", "position: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.i("MicroMsg.FileExplorerUI", "position: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (paramAnonymousInt == 0)
         {
           NewFileExplorerUI.this.setMMTitle(2131759059);
           NewFileExplorerUI.this.setMMSubTitle(null);
           NewFileExplorerUI.a(NewFileExplorerUI.this, (TextView)NewFileExplorerUI.this.findViewById(2131299915));
           NewFileExplorerUI.g(NewFileExplorerUI.this).setText(2131759059);
-          NewFileExplorerUI.b(NewFileExplorerUI.this).c(new e(com.tencent.mm.loader.j.b.arX()), true);
-          NewFileExplorerUI.b(NewFileExplorerUI.this).a(new e(com.tencent.mm.loader.j.b.arX()), null);
+          NewFileExplorerUI.b(NewFileExplorerUI.this).c(new k(com.tencent.mm.loader.j.b.asm()), true);
+          NewFileExplorerUI.b(NewFileExplorerUI.this).a(new k(com.tencent.mm.loader.j.b.asm()), null);
         }
         for (;;)
         {
@@ -77,8 +87,8 @@ public class NewFileExplorerUI
           NewFileExplorerUI.c(NewFileExplorerUI.this);
           AppMethodBeat.o(31985);
           return;
-          NewFileExplorerUI.b(NewFileExplorerUI.this).c(new e(com.tencent.mm.loader.j.b.arP()), false);
-          NewFileExplorerUI.b(NewFileExplorerUI.this).a(new e(com.tencent.mm.loader.j.b.arP()), null);
+          NewFileExplorerUI.b(NewFileExplorerUI.this).c(new k(com.tencent.mm.loader.j.b.ase()), false);
+          NewFileExplorerUI.b(NewFileExplorerUI.this).a(new k(com.tencent.mm.loader.j.b.ase()), null);
           NewFileExplorerUI.this.setMMTitle(2131759060);
           NewFileExplorerUI.g(NewFileExplorerUI.this).setText(2131759060);
         }
@@ -87,10 +97,10 @@ public class NewFileExplorerUI
     AppMethodBeat.o(32013);
   }
   
-  private void dBh()
+  private void dEy()
   {
     AppMethodBeat.i(32019);
-    int i = a.a(this.FkC).size();
+    int i = a.a(this.FDa).size();
     if (i > 0)
     {
       if (this.mode == 0)
@@ -98,8 +108,8 @@ public class NewFileExplorerUI
         updateOptionMenuText(1, getString(2131755884) + "(" + i + "/9)");
         enableOptionMenu(1, true);
       }
-      this.xfn.setText(getString(2131759061, new Object[] { bt.sy(this.FkC.dCM()) }));
-      this.xfn.setVisibility(0);
+      this.xvf.setText(getString(2131759061, new Object[] { bu.sL(this.FDa.dGd()) }));
+      this.xvf.setVisibility(0);
       AppMethodBeat.o(32019);
       return;
     }
@@ -108,16 +118,16 @@ public class NewFileExplorerUI
       updateOptionMenuText(1, getString(2131755884));
       enableOptionMenu(1, false);
     }
-    this.xfn.setVisibility(8);
+    this.xvf.setVisibility(8);
     AppMethodBeat.o(32019);
   }
   
-  private void ffj()
+  private void fiZ()
   {
     AppMethodBeat.i(32020);
-    if ((a.b(this.FkC) != null) && (a.c(this.FkC) != null))
+    if ((a.b(this.FDa) != null) && (a.c(this.FDa) != null))
     {
-      Object localObject2 = q.B(a.c(this.FkC).mUri).replace(q.B(a.b(this.FkC).mUri), "");
+      Object localObject2 = w.B(a.c(this.FDa).mUri).replace(w.B(a.b(this.FDa).mUri), "");
       Object localObject1 = localObject2;
       if (((String)localObject2).startsWith("/")) {
         localObject1 = ((String)localObject2).substring(1);
@@ -131,16 +141,16 @@ public class NewFileExplorerUI
     AppMethodBeat.o(32020);
   }
   
-  private void wi(boolean paramBoolean)
+  private void wq(boolean paramBoolean)
   {
     AppMethodBeat.i(32018);
     if (this.mode == 0)
     {
-      if ((!paramBoolean) && (this.FkC.ffn() != null))
+      if ((!paramBoolean) && (this.FDa.fjd() != null))
       {
-        this.FkC.a(this.FkC.ffn(), null);
-        this.FkC.notifyDataSetChanged();
-        ffj();
+        this.FDa.a(this.FDa.fjd(), null);
+        this.FDa.notifyDataSetChanged();
+        fiZ();
         AppMethodBeat.o(32018);
         return;
       }
@@ -150,10 +160,10 @@ public class NewFileExplorerUI
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("selected_file_lst", this.FkC.ffk());
-    localIntent.putStringArrayListExtra("key_select_video_list", this.FkC.ffm());
-    localIntent.putStringArrayListExtra("CropImage_OutputPath_List", this.FkC.ffl());
-    localIntent.putExtra("GalleryUI_ToUser", this.drf);
+    localIntent.putStringArrayListExtra("selected_file_lst", this.FDa.fja());
+    localIntent.putStringArrayListExtra("key_select_video_list", this.FDa.fjc());
+    localIntent.putStringArrayListExtra("CropImage_OutputPath_List", this.FDa.fjb());
+    localIntent.putExtra("GalleryUI_ToUser", this.dsk);
     setResult(-1, localIntent);
     finish();
     AppMethodBeat.o(32018);
@@ -170,19 +180,19 @@ public class NewFileExplorerUI
     if ((paramInt1 == 0) && (paramInt2 == -1))
     {
       paramIntent = paramIntent.getStringArrayListExtra("selected_file_lst");
-      if ((paramIntent != null) && (a.a(this.FkC).size() != paramIntent.size()))
+      if ((paramIntent != null) && (a.a(this.FDa).size() != paramIntent.size()))
       {
-        this.FkF.jcs.dismiss();
-        a.a(this.FkC).clear();
+        this.FDd.jfl.dismiss();
+        a.a(this.FDa).clear();
         paramIntent = paramIntent.iterator();
         while (paramIntent.hasNext())
         {
           String str = (String)paramIntent.next();
-          a.a(this.FkC).add(new e(str));
+          a.a(this.FDa).add(new k(str));
         }
-        this.FkC.notifyDataSetChanged();
-        ffj();
-        dBh();
+        this.FDa.notifyDataSetChanged();
+        fiZ();
+        dEy();
       }
       AppMethodBeat.o(32017);
       return;
@@ -197,18 +207,18 @@ public class NewFileExplorerUI
   {
     AppMethodBeat.i(32014);
     super.onCreate(paramBundle);
-    this.drf = getIntent().getStringExtra("TO_USER");
-    this.jpT = ((ListView)findViewById(2131299917));
-    this.FkC = new a();
-    this.xfn = ((TextView)findViewById(2131304541));
+    this.dsk = getIntent().getStringExtra("TO_USER");
+    this.jsM = ((ListView)findViewById(2131299917));
+    this.FDa = new a();
+    this.xvf = ((TextView)findViewById(2131304541));
     this.mode = getIntent().getIntExtra("explorer_mode", 0);
     if (this.mode == 1)
     {
       setMMTitle(2131759062);
       setMMSubTitle(null);
-      this.FkC.a(null, getIntent().getStringArrayListExtra("selected_file_lst"));
-      this.jpT.setAdapter(this.FkC);
-      this.jpT.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.FDa.a(null, getIntent().getStringArrayListExtra("selected_file_lst"));
+      this.jsM.setAdapter(this.FDa);
+      this.jsM.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -216,10 +226,10 @@ public class NewFileExplorerUI
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-          paramAnonymousAdapterView = NewFileExplorerUI.b(NewFileExplorerUI.this).FjG[paramAnonymousInt];
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          paramAnonymousAdapterView = NewFileExplorerUI.b(NewFileExplorerUI.this).FCf[paramAnonymousInt];
           if (paramAnonymousAdapterView.isDirectory())
           {
             NewFileExplorerUI.b(NewFileExplorerUI.this).a(paramAnonymousAdapterView, null);
@@ -231,13 +241,22 @@ public class NewFileExplorerUI
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(31980);
             return;
-            paramAnonymousView = com.tencent.mm.vfs.i.ZF(q.B(paramAnonymousAdapterView.mUri));
-            a.b(NewFileExplorerUI.this, q.B(paramAnonymousAdapterView.mUri), paramAnonymousView, 1);
+            paramAnonymousView = o.aaw(w.B(paramAnonymousAdapterView.mUri));
+            a.b(NewFileExplorerUI.this, w.B(paramAnonymousAdapterView.mUri), paramAnonymousView, 1);
           }
         }
       });
-      this.jpT.setEmptyView(findViewById(2131299912));
-      paramBundle = new NewFileExplorerUI.3(this);
+      this.jsM.setEmptyView(findViewById(2131299912));
+      paramBundle = new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(31981);
+          NewFileExplorerUI.d(NewFileExplorerUI.this);
+          AppMethodBeat.o(31981);
+          return false;
+        }
+      };
       if (this.mode != 0) {
         break label417;
       }
@@ -247,28 +266,37 @@ public class NewFileExplorerUI
     {
       setBackBtn(paramBundle, i);
       if (this.mode == 0) {
-        addTextOptionMenu(1, getString(2131755884), new NewFileExplorerUI.4(this), null, s.b.JbS);
+        addTextOptionMenu(1, getString(2131755884), new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(31982);
+            NewFileExplorerUI.e(NewFileExplorerUI.this);
+            AppMethodBeat.o(31982);
+            return true;
+          }
+        }, null, s.b.JwA);
       }
-      dBh();
+      dEy();
       AppMethodBeat.o(32014);
       return;
       setMMTitle(2131759059);
       setMMSubTitle(null);
-      this.FkD = ((TextView)findViewById(2131299915));
-      this.FkD.setText(2131759059);
-      this.FkC.c(new e(com.tencent.mm.loader.j.b.arX()), true);
-      this.FkC.a(new e(com.tencent.mm.loader.j.b.arX()), null);
-      if (this.FkC.getCount() == 0)
+      this.FDb = ((TextView)findViewById(2131299915));
+      this.FDb.setText(2131759059);
+      this.FDa.c(new k(com.tencent.mm.loader.j.b.asm()), true);
+      this.FDa.a(new k(com.tencent.mm.loader.j.b.asm()), null);
+      if (this.FDa.getCount() == 0)
       {
-        this.FkC.c(new e(com.tencent.mm.loader.j.b.arP()), false);
-        this.FkC.a(new e(com.tencent.mm.loader.j.b.arP()), null);
+        this.FDa.c(new k(com.tencent.mm.loader.j.b.ase()), false);
+        this.FDa.a(new k(com.tencent.mm.loader.j.b.ase()), null);
         setMMTitle(2131759060);
-        this.FkD.setText(2131759060);
+        this.FDb.setText(2131759060);
       }
       findViewById(2131299913).setVisibility(0);
       findViewById(2131299913).setOnClickListener(new NewFileExplorerUI.1(this));
-      this.FkE = ((FileSelectorFolderView)findViewById(2131299914));
-      this.FkE.setListener(this.FkG);
+      this.FDc = ((FileSelectorFolderView)findViewById(2131299914));
+      this.FDc.setListener(this.FDe);
       break;
     }
   }
@@ -285,7 +313,7 @@ public class NewFileExplorerUI
     AppMethodBeat.i(32016);
     if (paramInt == 4)
     {
-      wi(false);
+      wq(false);
       AppMethodBeat.o(32016);
       return true;
     }
@@ -303,42 +331,42 @@ public class NewFileExplorerUI
   public final class a
     extends BaseAdapter
   {
-    private e FjF;
-    e[] FjG;
-    private e FkI;
-    private boolean FkJ;
-    private ArrayList<e> FkK;
+    private k FCe;
+    k[] FCf;
+    private k FDg;
+    private boolean FDh;
+    private ArrayList<k> FDi;
     
     public a()
     {
       AppMethodBeat.i(31990);
-      this.FjG = new e[0];
-      this.FkJ = false;
-      this.FkK = new ArrayList();
+      this.FCf = new k[0];
+      this.FDh = false;
+      this.FDi = new ArrayList();
       AppMethodBeat.o(31990);
     }
     
-    private void a(e[] paramArrayOfe)
+    private void a(k[] paramArrayOfk)
     {
       AppMethodBeat.i(169799);
-      if ((paramArrayOfe == null) || (paramArrayOfe.length == 0))
+      if ((paramArrayOfk == null) || (paramArrayOfk.length == 0))
       {
         AppMethodBeat.o(169799);
         return;
       }
       Object localObject2 = new ArrayList();
       Object localObject1 = new ArrayList();
-      int j = paramArrayOfe.length;
+      int j = paramArrayOfk.length;
       int i = 0;
       if (i < j)
       {
-        e locale = paramArrayOfe[i];
-        NewFileExplorerUI.a.a locala = new NewFileExplorerUI.a.a(this, (byte)0);
-        locala.aXd = locale;
-        locala.time = locale.lastModified();
-        if (locale.isDirectory())
+        k localk = paramArrayOfk[i];
+        a locala = new a((byte)0);
+        locala.aXd = localk;
+        locala.time = localk.lastModified();
+        if (localk.isDirectory())
         {
-          locala.FkM = f.IL(locale.getName()).toUpperCase();
+          locala.FDk = f.Jk(localk.getName()).toUpperCase();
           ((List)localObject2).add(locala);
         }
         for (;;)
@@ -348,83 +376,59 @@ public class NewFileExplorerUI
           ((List)localObject1).add(locala);
         }
       }
-      Collections.sort((List)localObject2, new NewFileExplorerUI.a.2(this));
-      Collections.sort((List)localObject1, new NewFileExplorerUI.a.3(this));
+      Collections.sort((List)localObject2, new Comparator() {});
+      Collections.sort((List)localObject1, new Comparator() {});
       localObject2 = ((List)localObject2).iterator();
       i = 0;
       while (((Iterator)localObject2).hasNext())
       {
-        paramArrayOfe[i] = ((NewFileExplorerUI.a.a)((Iterator)localObject2).next()).aXd;
+        paramArrayOfk[i] = ((a)((Iterator)localObject2).next()).aXd;
         i += 1;
       }
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        paramArrayOfe[i] = ((NewFileExplorerUI.a.a)((Iterator)localObject1).next()).aXd;
+        paramArrayOfk[i] = ((a)((Iterator)localObject1).next()).aXd;
         i += 1;
       }
       AppMethodBeat.o(169799);
     }
     
-    private static boolean aNA(String paramString)
-    {
-      AppMethodBeat.i(32009);
-      boolean bool = bt.nullAsNil(paramString).toLowerCase().endsWith(".key");
-      AppMethodBeat.o(32009);
-      return bool;
-    }
-    
-    private static boolean aNB(String paramString)
-    {
-      AppMethodBeat.i(32011);
-      boolean bool = bt.nullAsNil(paramString).toLowerCase().endsWith(".number");
-      AppMethodBeat.o(32011);
-      return bool;
-    }
-    
-    private static boolean aNC(String paramString)
-    {
-      AppMethodBeat.i(32012);
-      boolean bool = bt.nullAsNil(paramString).toLowerCase().endsWith(".pages");
-      AppMethodBeat.o(32012);
-      return bool;
-    }
-    
-    private static int aNp(String paramString)
+    private static int aOM(String paramString)
     {
       AppMethodBeat.i(31999);
       paramString = paramString.toLowerCase();
-      if (aNv(paramString))
+      if (aOS(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689585;
       }
-      if (aNq(paramString))
+      if (aON(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131230944;
       }
-      if (aNu(paramString))
+      if (aOR(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689573;
       }
-      if (aNz(paramString))
+      if (aOW(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689576;
       }
-      if (aNw(paramString))
+      if (aOT(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689568;
       }
-      if (aNx(paramString))
+      if (aOU(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689571;
       }
-      if (aNy(paramString))
+      if (aOV(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689557;
@@ -439,22 +443,22 @@ public class NewFileExplorerUI
         AppMethodBeat.o(31999);
         return 2131689581;
       }
-      if (cI(paramString))
+      if (cJ(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689584;
       }
-      if (aNA(paramString))
+      if (aOX(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689561;
       }
-      if (aNB(paramString))
+      if (aOY(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689566;
       }
-      if (aNC(paramString))
+      if (aOZ(paramString))
       {
         AppMethodBeat.o(31999);
         return 2131689567;
@@ -463,10 +467,10 @@ public class NewFileExplorerUI
       return 2131689577;
     }
     
-    private static boolean aNq(String paramString)
+    private static boolean aON(String paramString)
     {
       AppMethodBeat.i(32000);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((Build.VERSION.SDK_INT >= 28) && (paramString.endsWith(".heic")))
       {
         AppMethodBeat.o(32000);
@@ -481,10 +485,10 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static boolean aNu(String paramString)
+    private static boolean aOR(String paramString)
     {
       AppMethodBeat.i(32003);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".rar")) || (paramString.endsWith(".zip")) || (paramString.endsWith(".7z")) || (paramString.endsWith("tar")) || (paramString.endsWith(".iso")))
       {
         AppMethodBeat.o(32003);
@@ -494,10 +498,10 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static boolean aNv(String paramString)
+    private static boolean aOS(String paramString)
     {
       AppMethodBeat.i(32004);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".doc")) || (paramString.endsWith(".docx")) || (paramString.endsWith("wps")))
       {
         AppMethodBeat.o(32004);
@@ -507,18 +511,18 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static boolean aNw(String paramString)
+    private static boolean aOT(String paramString)
     {
       AppMethodBeat.i(32005);
-      boolean bool = bt.nullAsNil(paramString).toLowerCase().endsWith(".pdf");
+      boolean bool = bu.nullAsNil(paramString).toLowerCase().endsWith(".pdf");
       AppMethodBeat.o(32005);
       return bool;
     }
     
-    private static boolean aNx(String paramString)
+    private static boolean aOU(String paramString)
     {
       AppMethodBeat.i(32006);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".ppt")) || (paramString.endsWith(".pptx")))
       {
         AppMethodBeat.o(32006);
@@ -528,10 +532,10 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static boolean aNy(String paramString)
+    private static boolean aOV(String paramString)
     {
       AppMethodBeat.i(32007);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".xls")) || (paramString.endsWith(".xlsx")))
       {
         AppMethodBeat.o(32007);
@@ -541,10 +545,10 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static boolean aNz(String paramString)
+    private static boolean aOW(String paramString)
     {
       AppMethodBeat.i(32008);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".txt")) || (paramString.endsWith(".rtf")))
       {
         AppMethodBeat.o(32008);
@@ -554,44 +558,68 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static e[] b(e[] paramArrayOfe)
+    private static boolean aOX(String paramString)
     {
-      AppMethodBeat.i(193540);
-      if ((paramArrayOfe == null) || (paramArrayOfe.length == 0))
+      AppMethodBeat.i(32009);
+      boolean bool = bu.nullAsNil(paramString).toLowerCase().endsWith(".key");
+      AppMethodBeat.o(32009);
+      return bool;
+    }
+    
+    private static boolean aOY(String paramString)
+    {
+      AppMethodBeat.i(32011);
+      boolean bool = bu.nullAsNil(paramString).toLowerCase().endsWith(".number");
+      AppMethodBeat.o(32011);
+      return bool;
+    }
+    
+    private static boolean aOZ(String paramString)
+    {
+      AppMethodBeat.i(32012);
+      boolean bool = bu.nullAsNil(paramString).toLowerCase().endsWith(".pages");
+      AppMethodBeat.o(32012);
+      return bool;
+    }
+    
+    private static k[] b(k[] paramArrayOfk)
+    {
+      AppMethodBeat.i(186826);
+      if ((paramArrayOfk == null) || (paramArrayOfk.length == 0))
       {
-        AppMethodBeat.o(193540);
-        return paramArrayOfe;
+        AppMethodBeat.o(186826);
+        return paramArrayOfk;
       }
       HashSet localHashSet = new HashSet();
       ArrayList localArrayList = new ArrayList();
-      int j = paramArrayOfe.length;
+      int j = paramArrayOfk.length;
       int i = 0;
       if (i < j)
       {
-        e locale = paramArrayOfe[i];
-        if (!locale.isDirectory()) {
-          localArrayList.add(locale);
+        k localk = paramArrayOfk[i];
+        if (!localk.isDirectory()) {
+          localArrayList.add(localk);
         }
         for (;;)
         {
           i += 1;
           break;
-          if (!localHashSet.contains(q.B(locale.fOK())))
+          if (!localHashSet.contains(w.B(localk.fTh())))
           {
-            localHashSet.add(q.B(locale.fOK()));
-            localArrayList.add(locale);
+            localHashSet.add(w.B(localk.fTh()));
+            localArrayList.add(localk);
           }
         }
       }
-      paramArrayOfe = (e[])localArrayList.toArray(new e[0]);
-      AppMethodBeat.o(193540);
-      return paramArrayOfe;
+      paramArrayOfk = (k[])localArrayList.toArray(new k[0]);
+      AppMethodBeat.o(186826);
+      return paramArrayOfk;
     }
     
     private static boolean bx(String paramString)
     {
       AppMethodBeat.i(32001);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".mp3")) || (paramString.endsWith(".wma")))
       {
         AppMethodBeat.o(32001);
@@ -604,7 +632,7 @@ public class NewFileExplorerUI
     static boolean by(String paramString)
     {
       AppMethodBeat.i(32002);
-      paramString = bt.nullAsNil(paramString).toLowerCase();
+      paramString = bu.nullAsNil(paramString).toLowerCase();
       if ((paramString.endsWith(".mp4")) || (paramString.endsWith(".rm")))
       {
         AppMethodBeat.o(32002);
@@ -614,130 +642,148 @@ public class NewFileExplorerUI
       return false;
     }
     
-    private static boolean cI(String paramString)
+    private static boolean cJ(String paramString)
     {
       AppMethodBeat.i(32010);
-      boolean bool = bt.nullAsNil(paramString).toLowerCase().endsWith(".html");
+      boolean bool = bu.nullAsNil(paramString).toLowerCase().endsWith(".html");
       AppMethodBeat.o(32010);
       return bool;
     }
     
-    public final void a(e parame, List<String> paramList)
+    public final void a(k paramk, List<String> paramList)
     {
       AppMethodBeat.i(169797);
-      this.FjF = parame;
-      if ((this.FjF != null) && (this.FjF.canRead()) && (this.FjF.isDirectory()))
+      this.FCe = paramk;
+      if ((this.FCe != null) && (this.FCe.canRead()) && (this.FCe.isDirectory()))
       {
-        this.FjG = this.FjF.a(new NewFileExplorerUI.a.1(this));
-        if (this.FjG == null) {
-          this.FjG = new e[0];
-        }
-        if (this.FjG.length > 0)
+        this.FCf = this.FCe.a(new m()
         {
-          this.FjG = b(this.FjG);
-          a(this.FjG);
+          public final boolean accept(k paramAnonymousk)
+          {
+            AppMethodBeat.i(169795);
+            if (paramAnonymousk.isHidden())
+            {
+              AppMethodBeat.o(169795);
+              return false;
+            }
+            if ((NewFileExplorerUI.a.d(NewFileExplorerUI.a.this)) && (paramAnonymousk.isDirectory()))
+            {
+              AppMethodBeat.o(169795);
+              return false;
+            }
+            AppMethodBeat.o(169795);
+            return true;
+          }
+        });
+        if (this.FCf == null) {
+          this.FCf = new k[0];
+        }
+        if (this.FCf.length > 0)
+        {
+          this.FCf = b(this.FCf);
+          a(this.FCf);
           AppMethodBeat.o(169797);
         }
       }
       else if (paramList != null)
       {
-        this.FjG = new e[paramList.size()];
+        this.FCf = new k[paramList.size()];
         int i = 0;
         while (i < paramList.size())
         {
-          this.FjG[i] = new e((String)paramList.get(i));
-          this.FkK.add(this.FjG[i]);
+          this.FCf[i] = new k((String)paramList.get(i));
+          this.FDi.add(this.FCf[i]);
           i += 1;
         }
       }
       AppMethodBeat.o(169797);
     }
     
-    public final void c(e parame, boolean paramBoolean)
+    public final void c(k paramk, boolean paramBoolean)
     {
-      this.FkI = parame;
-      this.FkJ = paramBoolean;
+      this.FDg = paramk;
+      this.FDh = paramBoolean;
     }
     
-    public final int dCM()
+    public final int dGd()
     {
       AppMethodBeat.i(31992);
-      Iterator localIterator = this.FkK.iterator();
-      e locale;
+      Iterator localIterator = this.FDi.iterator();
+      k localk;
       long l;
-      for (int i = 0; localIterator.hasNext(); i = (int)(locale.length() + l))
+      for (int i = 0; localIterator.hasNext(); i = (int)(localk.length() + l))
       {
-        locale = (e)localIterator.next();
+        localk = (k)localIterator.next();
         l = i;
       }
       AppMethodBeat.o(31992);
       return i;
     }
     
-    public final ArrayList<String> ffk()
+    public final ArrayList<String> fja()
     {
       AppMethodBeat.i(31993);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.FkK.iterator();
+      Iterator localIterator = this.FDi.iterator();
       while (localIterator.hasNext())
       {
-        e locale = (e)localIterator.next();
-        if ((!aNq(locale.getName())) && (!by(locale.getName()))) {
-          localArrayList.add(q.B(locale.mUri));
+        k localk = (k)localIterator.next();
+        if ((!aON(localk.getName())) && (!by(localk.getName()))) {
+          localArrayList.add(w.B(localk.mUri));
         }
       }
       AppMethodBeat.o(31993);
       return localArrayList;
     }
     
-    public final ArrayList<String> ffl()
+    public final ArrayList<String> fjb()
     {
       AppMethodBeat.i(31994);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.FkK.iterator();
+      Iterator localIterator = this.FDi.iterator();
       while (localIterator.hasNext())
       {
-        e locale = (e)localIterator.next();
-        if (aNq(locale.getName())) {
-          localArrayList.add(q.B(locale.mUri));
+        k localk = (k)localIterator.next();
+        if (aON(localk.getName())) {
+          localArrayList.add(w.B(localk.mUri));
         }
       }
       AppMethodBeat.o(31994);
       return localArrayList;
     }
     
-    public final ArrayList<String> ffm()
+    public final ArrayList<String> fjc()
     {
       AppMethodBeat.i(31995);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.FkK.iterator();
+      Iterator localIterator = this.FDi.iterator();
       while (localIterator.hasNext())
       {
-        e locale = (e)localIterator.next();
-        if (by(locale.getName())) {
-          localArrayList.add(q.B(locale.mUri));
+        k localk = (k)localIterator.next();
+        if (by(localk.getName())) {
+          localArrayList.add(w.B(localk.mUri));
         }
       }
       AppMethodBeat.o(31995);
       return localArrayList;
     }
     
-    public final e ffn()
+    public final k fjd()
     {
       AppMethodBeat.i(169798);
-      if (this.FjF.hashCode() == this.FkI.hashCode())
+      if (this.FCe.hashCode() == this.FDg.hashCode())
       {
         AppMethodBeat.o(169798);
         return null;
       }
-      e locale = this.FjF.fOJ();
+      k localk = this.FCe.fTg();
       AppMethodBeat.o(169798);
-      return locale;
+      return localk;
     }
     
     public final int getCount()
     {
-      return this.FjG.length;
+      return this.FCf.length;
     }
     
     public final long getItemId(int paramInt)
@@ -753,49 +799,118 @@ public class NewFileExplorerUI
       if (paramView == null)
       {
         localView = View.inflate(paramViewGroup.getContext(), 2131494145, null);
-        paramView = new NewFileExplorerUI.a.b(this, (byte)0);
-        paramView.FkN = ((FrameLayout)localView.findViewById(2131301187));
-        paramView.FkO = ((CheckBox)paramView.FkN.findViewById(2131301186));
-        paramView.lZa = ((ImageView)localView.findViewById(2131301154));
-        paramView.iVq = ((TextView)localView.findViewById(2131301198));
-        paramView.xfn = ((TextView)localView.findViewById(2131301191));
-        paramView.fTP = ((TextView)localView.findViewById(2131301196));
-        paramView.FkN.setOnClickListener(new NewFileExplorerUI.a.4(this));
+        paramView = new b((byte)0);
+        paramView.FDl = ((FrameLayout)localView.findViewById(2131301187));
+        paramView.FDm = ((CheckBox)paramView.FDl.findViewById(2131301186));
+        paramView.mdt = ((ImageView)localView.findViewById(2131301154));
+        paramView.iYj = ((TextView)localView.findViewById(2131301198));
+        paramView.xvf = ((TextView)localView.findViewById(2131301191));
+        paramView.fVV = ((TextView)localView.findViewById(2131301196));
+        paramView.FDl.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(31988);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$FileExplorerAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+            int i = ((Integer)paramAnonymousView.getTag()).intValue();
+            localObject = NewFileExplorerUI.a.this.FCf[i];
+            paramAnonymousView = (CheckBox)paramAnonymousView.findViewById(2131301186);
+            if (NewFileExplorerUI.a.a(NewFileExplorerUI.a.this).contains(localObject))
+            {
+              NewFileExplorerUI.a.a(NewFileExplorerUI.a.this).remove(localObject);
+              paramAnonymousView.setChecked(false);
+            }
+            for (;;)
+            {
+              NewFileExplorerUI.h(NewFileExplorerUI.this);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$FileExplorerAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(31988);
+              return;
+              if (NewFileExplorerUI.a.a(NewFileExplorerUI.a.this).size() >= 9)
+              {
+                t.makeText(NewFileExplorerUI.this.getContext(), NewFileExplorerUI.this.getString(2131759077, new Object[] { Integer.valueOf(9) }), 0).show();
+                paramAnonymousView.setChecked(false);
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$FileExplorerAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(31988);
+                return;
+              }
+              long l = com.tencent.mm.n.b.acs();
+              if (((k)localObject).length() >= l)
+              {
+                t.makeText(NewFileExplorerUI.this.getContext(), NewFileExplorerUI.this.getString(2131759076, new Object[] { bu.sL(l) }), 0).show();
+                paramAnonymousView.setChecked(false);
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$FileExplorerAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(31988);
+                return;
+              }
+              if (NewFileExplorerUI.a.by(((k)localObject).getName()))
+              {
+                com.tencent.mm.plugin.gallery.ui.a.a locala = com.tencent.mm.plugin.gallery.ui.a.a.amc(w.B(((k)localObject).mUri));
+                locala.mSize = com.tencent.mm.n.b.acr();
+                if (locala.bgQ() == 1)
+                {
+                  t.makeText(NewFileExplorerUI.this.getContext(), NewFileExplorerUI.this.getString(2131764700, new Object[] { bu.sL(com.tencent.mm.n.b.acr()) }), 0).show();
+                  paramAnonymousView.setChecked(false);
+                  com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/NewFileExplorerUI$FileExplorerAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                  AppMethodBeat.o(31988);
+                  return;
+                }
+              }
+              paramAnonymousView.setChecked(true);
+              NewFileExplorerUI.a.a(NewFileExplorerUI.a.this).add(localObject);
+            }
+          }
+        });
         localView.setTag(paramView);
       }
-      paramViewGroup = (NewFileExplorerUI.a.b)localView.getTag();
-      e locale = this.FjG[paramInt];
-      paramViewGroup.iVq.setText(locale.getName());
+      paramViewGroup = (b)localView.getTag();
+      k localk = this.FCf[paramInt];
+      paramViewGroup.iYj.setText(localk.getName());
       int i;
-      if (locale.isDirectory())
+      if (localk.isDirectory())
       {
-        paramViewGroup.lZa.setImageResource(2131689560);
-        paramViewGroup.FkN.setVisibility(4);
-        paramViewGroup.xfn.setVisibility(0);
-        paramViewGroup.fTP.setVisibility(8);
-        paramView = locale.a(new NewFileExplorerUI.a.5(this));
+        paramViewGroup.mdt.setImageResource(2131689560);
+        paramViewGroup.FDl.setVisibility(4);
+        paramViewGroup.xvf.setVisibility(0);
+        paramViewGroup.fVV.setVisibility(8);
+        paramView = localk.a(new s()
+        {
+          public final boolean xH(String paramAnonymousString)
+          {
+            AppMethodBeat.i(169796);
+            if (!paramAnonymousString.startsWith("."))
+            {
+              AppMethodBeat.o(169796);
+              return true;
+            }
+            AppMethodBeat.o(169796);
+            return false;
+          }
+        });
         if (paramView != null)
         {
           i = paramView.length;
-          paramViewGroup.xfn.setText(NewFileExplorerUI.this.getString(2131759057, new Object[] { Integer.valueOf(i) }));
+          paramViewGroup.xvf.setText(NewFileExplorerUI.this.getString(2131759057, new Object[] { Integer.valueOf(i) }));
         }
       }
       for (;;)
       {
-        paramViewGroup.FkO.setChecked(this.FkK.contains(locale));
-        paramViewGroup.FkN.setTag(Integer.valueOf(paramInt));
+        paramViewGroup.FDm.setChecked(this.FDi.contains(localk));
+        paramViewGroup.FDl.setTag(Integer.valueOf(paramInt));
         AppMethodBeat.o(31998);
         return localView;
         i = 0;
         break;
-        paramViewGroup.FkN.setVisibility(0);
-        paramViewGroup.xfn.setVisibility(0);
-        paramViewGroup.fTP.setVisibility(0);
-        paramViewGroup.xfn.setText(bt.sy(locale.length()));
-        paramViewGroup.fTP.setText(com.tencent.mm.pluginsdk.i.i.c(NewFileExplorerUI.this, locale.lastModified(), true));
-        if (aNq(locale.getName()))
+        paramViewGroup.FDl.setVisibility(0);
+        paramViewGroup.xvf.setVisibility(0);
+        paramViewGroup.fVV.setVisibility(0);
+        paramViewGroup.xvf.setText(bu.sL(localk.length()));
+        paramViewGroup.fVV.setText(i.c(NewFileExplorerUI.this, localk.lastModified(), true));
+        if (aON(localk.getName()))
         {
-          paramView = q.B(locale.mUri);
+          paramView = w.B(localk.mUri);
           Cursor localCursor = NewFileExplorerUI.this.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, "_data=?", new String[] { paramView }, null);
           paramView = localObject;
           if (localCursor != null)
@@ -811,25 +926,46 @@ public class NewFileExplorerUI
             if (paramView == null) {
               break label521;
             }
-            paramViewGroup.lZa.setImageBitmap(paramView);
+            paramViewGroup.mdt.setImageBitmap(paramView);
             break;
             label508:
             localCursor.close();
           }
           label521:
-          paramViewGroup.lZa.setImageResource(aNp(locale.getName()));
+          paramViewGroup.mdt.setImageResource(aOM(localk.getName()));
         }
         else
         {
-          paramViewGroup.lZa.setImageResource(aNp(locale.getName()));
+          paramViewGroup.mdt.setImageResource(aOM(localk.getName()));
         }
       }
+    }
+    
+    final class a
+    {
+      String FDk;
+      k aXd;
+      long time;
+      
+      private a() {}
+    }
+    
+    final class b
+    {
+      public FrameLayout FDl;
+      public CheckBox FDm;
+      public TextView fVV;
+      public TextView iYj;
+      public ImageView mdt;
+      public TextView xvf;
+      
+      private b() {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.NewFileExplorerUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ import com.tencent.mm.hellhoundlib.a.a;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onModeSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "mode", "", "getOnModeSelected", "()Lkotlin/jvm/functions/Function1;", "setOnModeSelected", "(Lkotlin/jvm/functions/Function1;)V", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onModeSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "mode", "", "getOnModeSelected", "()Lkotlin/jvm/functions/Function1;", "setOnModeSelected", "(Lkotlin/jvm/functions/Function1;)V", "plugin-emojicapture_release"})
 public final class StickerPreviewChangeMode
   extends FrameLayout
 {
-  private d.g.a.b<? super Integer, z> pZu;
+  private d.g.a.b<? super Integer, z> qfZ;
   
   public StickerPreviewChangeMode(Context paramContext)
   {
@@ -43,8 +43,8 @@ public final class StickerPreviewChangeMode
         AppMethodBeat.i(895);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.pZv.getOnModeSelected();
+        a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.qga.getOnModeSelected();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke(Integer.valueOf(0));
         }
@@ -59,8 +59,8 @@ public final class StickerPreviewChangeMode
         AppMethodBeat.i(896);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.pZv.getOnModeSelected();
+        a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.qga.getOnModeSelected();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke(Integer.valueOf(1));
         }
@@ -75,8 +75,8 @@ public final class StickerPreviewChangeMode
         AppMethodBeat.i(897);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = this.pZv.getOnModeSelected();
+        a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = this.qga.getOnModeSelected();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke(Integer.valueOf(2));
         }
@@ -89,12 +89,12 @@ public final class StickerPreviewChangeMode
   
   public final d.g.a.b<Integer, z> getOnModeSelected()
   {
-    return this.pZu;
+    return this.qfZ;
   }
   
   public final void setOnModeSelected(d.g.a.b<? super Integer, z> paramb)
   {
-    this.pZu = paramb;
+    this.qfZ = paramb;
   }
 }
 

@@ -2,13 +2,13 @@ package com.tencent.mm.sandbox;
 
 public abstract interface a
 {
-  public abstract void CO(long paramLong);
+  public abstract void Dm(long paramLong);
   
-  public abstract void CP(long paramLong);
+  public abstract void Dn(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sandbox.a
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public abstract class h$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.cache.IMMCache_AIDL");
-      uk(paramParcel1.readString());
+      uF(paramParcel1.readString());
       paramParcel2.writeNoException();
       paramParcel2.writeInt(0);
       return true;
@@ -41,7 +41,7 @@ public abstract class h$a
       if (paramParcel1.readInt() != 0) {
         MCacheItem.CREATOR.createFromParcel(paramParcel1);
       }
-      ul(str);
+      uG(str);
       paramParcel2.writeNoException();
       return true;
     case 3: 

@@ -51,7 +51,7 @@ public class XWebCoreContentProvider
       AppMethodBeat.o(156930);
       return locald;
     }
-    locald.MqC = paramUri;
+    locald.MNG = paramUri;
     int j;
     try
     {
@@ -93,8 +93,8 @@ public class XWebCoreContentProvider
         if ((i != -1) && (paramUri != null) && (!paramUri.isEmpty()))
         {
           locald.opType = j;
-          locald.lHo = i;
-          locald.MqD = paramUri;
+          locald.lLO = i;
+          locald.MNH = paramUri;
           Log.d("XWebCoreContentProvider", "parseUri result: " + j + " " + i + " " + paramUri);
           AppMethodBeat.o(156930);
           return locald;
@@ -117,24 +117,24 @@ public class XWebCoreContentProvider
     AppMethodBeat.i(156928);
     String str1;
     Object localObject;
-    if (paramc.MqA.length() > 100)
+    if (paramc.MNE.length() > 100)
     {
-      str1 = paramc.MqA.substring(0, 99);
-      if (paramc.MqB.MqC.length() <= 100) {
+      str1 = paramc.MNE.substring(0, 99);
+      if (paramc.MNF.MNG.length() <= 100) {
         break label223;
       }
-      localObject = paramc.MqB.MqC.substring(0, 99);
+      localObject = paramc.MNF.MNG.substring(0, 99);
       label57:
-      if (paramc.MqB.MqD.length() <= 100) {
+      if (paramc.MNF.MNH.length() <= 100) {
         break label234;
       }
     }
     label223:
     label234:
-    for (String str2 = paramc.MqB.MqD.substring(0, 99);; str2 = paramc.MqB.MqD)
+    for (String str2 = paramc.MNF.MNH.substring(0, 99);; str2 = paramc.MNF.MNH)
     {
-      str1 = paramc.errCode + "," + str1 + "," + paramc.MqB.opType + "," + (String)localObject + "," + paramc.MqB.lHo + "," + str2;
-      if ((paramContext == null) || ("com.tencent.mm".equals(paramc.MqA))) {
+      str1 = paramc.errCode + "," + str1 + "," + paramc.MNF.opType + "," + (String)localObject + "," + paramc.MNF.lLO + "," + str2;
+      if ((paramContext == null) || ("com.tencent.mm".equals(paramc.MNE))) {
         break label300;
       }
       Log.d("XWebCoreContentProvider", "doReport need post to mm ".concat(String.valueOf(str1)));
@@ -145,9 +145,9 @@ public class XWebCoreContentProvider
       Log.e("XWebCoreContentProvider", "doReport content resolver is null");
       AppMethodBeat.o(156928);
       return;
-      str1 = paramc.MqA;
+      str1 = paramc.MNE;
       break;
-      localObject = paramc.MqB.MqC;
+      localObject = paramc.MNF.MNG;
       break label57;
     }
     try
@@ -155,7 +155,7 @@ public class XWebCoreContentProvider
       label246:
       localObject = new ContentValues();
       ((ContentValues)localObject).put("15625", str1);
-      paramContext.insert(d("com.tencent.mm", paramc.MqA, 3, 0, ""), (ContentValues)localObject);
+      paramContext.insert(d("com.tencent.mm", paramc.MNE, 3, 0, ""), (ContentValues)localObject);
       AppMethodBeat.o(156928);
       return;
     }
@@ -166,7 +166,7 @@ public class XWebCoreContentProvider
       return;
     }
     label300:
-    if (g.dAs())
+    if (g.dDJ())
     {
       Log.d("XWebCoreContentProvider", "doReport ".concat(String.valueOf(str1)));
       g.dc(15625, str1);
@@ -182,7 +182,7 @@ public class XWebCoreContentProvider
   }
   
   /* Error */
-  private static Map<String, String> ag(File paramFile)
+  private static Map<String, String> af(File paramFile)
   {
     // Byte code:
     //   0: ldc 223
@@ -360,10 +360,10 @@ public class XWebCoreContentProvider
     return paramString1;
   }
   
-  public static void gbh()
+  public static void gfJ()
   {
     AppMethodBeat.i(156932);
-    a.gbi();
+    a.gfK();
     AppMethodBeat.o(156932);
   }
   
@@ -415,10 +415,10 @@ public class XWebCoreContentProvider
       {
         i = Integer.parseInt((String)paramContentValues.getKey());
         paramContentValues = (String)paramContentValues.getValue();
-        if ((!g.aiC(i)) || (paramContentValues == null) || (paramContentValues.isEmpty())) {
+        if ((!g.ajl(i)) || (paramContentValues == null) || (paramContentValues.isEmpty())) {
           continue;
         }
-        if (!g.dAs()) {
+        if (!g.dDJ()) {
           break label248;
         }
         Log.d("XWebCoreContentProvider", "insert report " + i + " " + paramContentValues);
@@ -451,7 +451,7 @@ public class XWebCoreContentProvider
     d locald = D(paramUri);
     c localc = new c();
     localc.errCode = -1;
-    localc.MqB = locald;
+    localc.MNF = locald;
     Context localContext = getContext();
     if (localContext == null)
     {
@@ -476,7 +476,7 @@ public class XWebCoreContentProvider
         continue;
         paramUri = paramString.toString();
         if (!paramUri.isEmpty()) {
-          locald.MqC = paramUri;
+          locald.MNG = paramUri;
         }
       }
       switch (locald.opType)
@@ -490,7 +490,7 @@ public class XWebCoreContentProvider
       }
     }
     paramUri = localContext.getPackageName();
-    localc.MqA = paramUri;
+    localc.MNE = paramUri;
     Log.d("XWebCoreContentProvider", "openFile current package: ".concat(String.valueOf(paramUri)));
     label154:
     int i;
@@ -516,28 +516,28 @@ public class XWebCoreContentProvider
       }
       else
       {
-        Log.d("XWebCoreContentProvider", "openFile test msg from " + locald.MqC);
+        Log.d("XWebCoreContentProvider", "openFile test msg from " + locald.MNG);
         localc.errCode = 2;
         a(localContext, localc);
         AppMethodBeat.o(156927);
         return null;
-        Log.d("XWebCoreContentProvider", "openFile request from " + locald.MqC);
-        paramString = new File(XWalkEnvironment.getPatchFileListConfig(localContext, locald.lHo));
+        Log.d("XWebCoreContentProvider", "openFile request from " + locald.MNG);
+        paramString = new File(XWalkEnvironment.getPatchFileListConfig(localContext, locald.lLO));
         paramUri = paramString;
         if (!paramString.exists())
         {
-          paramString = new File(XWalkEnvironment.getDownloadZipFileListConfig(localContext, locald.lHo));
+          paramString = new File(XWalkEnvironment.getDownloadZipFileListConfig(localContext, locald.lLO));
           paramUri = paramString;
           if (!paramString.exists())
           {
-            Log.d("XWebCoreContentProvider", "openFile cannot find listConfigFile of ver " + locald.lHo);
+            Log.d("XWebCoreContentProvider", "openFile cannot find listConfigFile of ver " + locald.lLO);
             localc.errCode = -4;
             a(localContext, localc);
             AppMethodBeat.o(156927);
             return null;
           }
         }
-        if (locald.MqD.equals("filelist.config"))
+        if (locald.MNH.equals("filelist.config"))
         {
           if (XWalkEnvironment.readAvailableVersionFromSP(localContext) == -1)
           {
@@ -554,7 +554,7 @@ public class XWebCoreContentProvider
           AppMethodBeat.o(156927);
           return paramUri;
         }
-        paramUri = ag(paramUri);
+        paramUri = af(paramUri);
         if (paramUri.size() == 0)
         {
           Log.e("XWebCoreContentProvider", "openFile fileMap is null or empty");
@@ -563,25 +563,25 @@ public class XWebCoreContentProvider
           AppMethodBeat.o(156927);
           return null;
         }
-        if (paramUri.containsKey(locald.MqD))
+        if (paramUri.containsKey(locald.MNH))
         {
-          if (locald.MqD.equals("base.apk")) {}
-          for (paramUri = new File(XWalkEnvironment.getDownloadApkPath(localContext, locald.lHo)); paramUri.exists(); paramUri = new File(XWalkEnvironment.getExtractedCoreFile(localContext, locald.lHo, locald.MqD)))
+          if (locald.MNH.equals("base.apk")) {}
+          for (paramUri = new File(XWalkEnvironment.getDownloadApkPath(localContext, locald.lLO)); paramUri.exists(); paramUri = new File(XWalkEnvironment.getExtractedCoreFile(localContext, locald.lLO, locald.MNH)))
           {
-            Log.d("XWebCoreContentProvider", "openFile return file " + locald.MqD);
+            Log.d("XWebCoreContentProvider", "openFile return file " + locald.MNH);
             localc.errCode = 0;
             a(localContext, localc);
             paramUri = ParcelFileDescriptor.open(paramUri, 268435456);
             AppMethodBeat.o(156927);
             return paramUri;
           }
-          Log.d("XWebCoreContentProvider", "openFile file not exist " + locald.MqD);
+          Log.d("XWebCoreContentProvider", "openFile file not exist " + locald.MNH);
           localc.errCode = -6;
           a(localContext, localc);
           AppMethodBeat.o(156927);
           return null;
         }
-        Log.d("XWebCoreContentProvider", "openFile caller attempt to get file " + locald.MqD);
+        Log.d("XWebCoreContentProvider", "openFile caller attempt to get file " + locald.MNH);
         localc.errCode = -7;
         a(localContext, localc);
         AppMethodBeat.o(156927);
@@ -603,42 +603,42 @@ public class XWebCoreContentProvider
   
   public static final class a
   {
-    private static final Object Mpf;
-    private static List<XWebCoreContentProvider.b> Mqz;
+    private static final Object MMb;
+    private static List<XWebCoreContentProvider.b> MND;
     
     static
     {
       AppMethodBeat.i(156924);
-      Mqz = new ArrayList();
-      Mpf = new Object();
+      MND = new ArrayList();
+      MMb = new Object();
       AppMethodBeat.o(156924);
     }
     
     public static void a(XWebCoreContentProvider.b paramb)
     {
       AppMethodBeat.i(156922);
-      synchronized (Mpf)
+      synchronized (MMb)
       {
-        Mqz.add(paramb);
+        MND.add(paramb);
         AppMethodBeat.o(156922);
         return;
       }
     }
     
-    public static void gbi()
+    public static void gfK()
     {
       AppMethodBeat.i(156923);
       Log.i("XWebCoreContentProvider", "CachedInfoMgr process cached info");
-      synchronized (Mpf)
+      synchronized (MMb)
       {
-        Iterator localIterator = Mqz.iterator();
+        Iterator localIterator = MND.iterator();
         if (localIterator.hasNext())
         {
           XWebCoreContentProvider.b localb = (XWebCoreContentProvider.b)localIterator.next();
           g.dc(localb.key, localb.value);
         }
       }
-      Mqz.clear();
+      MND.clear();
       AppMethodBeat.o(156923);
     }
   }
@@ -651,25 +651,25 @@ public class XWebCoreContentProvider
   
   public static final class c
   {
-    public String MqA;
-    public XWebCoreContentProvider.d MqB;
+    public String MNE;
+    public XWebCoreContentProvider.d MNF;
     public int errCode;
     
     public c()
     {
       AppMethodBeat.i(156925);
       this.errCode = -1;
-      this.MqA = "";
-      this.MqB = new XWebCoreContentProvider.d();
+      this.MNE = "";
+      this.MNF = new XWebCoreContentProvider.d();
       AppMethodBeat.o(156925);
     }
   }
   
   public static final class d
   {
-    public String MqC = "";
-    public String MqD = "";
-    public int lHo = 0;
+    public String MNG = "";
+    public String MNH = "";
+    public int lLO = 0;
     public int opType = -1;
   }
 }

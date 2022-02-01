@@ -6,51 +6,51 @@ import com.tencent.mm.plugin.report.a;
 public final class ck
   extends a
 {
-  public long ecA = 0L;
-  public long ecB = 0L;
-  public long ecC = 0L;
-  public String ecD = "";
-  public String ecE = "";
-  public long ecz;
+  public long edU;
+  public long edV = 0L;
+  public long edW = 0L;
+  public long edX = 0L;
+  public String edY = "";
+  public String edZ = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(219238);
+    AppMethodBeat.i(209878);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecz);
+    ((StringBuffer)localObject).append(this.edU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecA);
+    ((StringBuffer)localObject).append(this.edV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecB);
+    ((StringBuffer)localObject).append(this.edW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecC);
+    ((StringBuffer)localObject).append(this.edX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecD);
+    ((StringBuffer)localObject).append(this.edY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecE);
+    ((StringBuffer)localObject).append(this.edZ);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(219238);
+    axO((String)localObject);
+    AppMethodBeat.o(209878);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(219239);
+    AppMethodBeat.i(209879);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("RecomdSuccess:").append(this.ecz);
+    ((StringBuffer)localObject).append("RecomdSuccess:").append(this.edU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RecomdFail:").append(this.ecA);
+    ((StringBuffer)localObject).append("RecomdFail:").append(this.edV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("otherSuccess:").append(this.ecB);
+    ((StringBuffer)localObject).append("otherSuccess:").append(this.edW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("otherFail:").append(this.ecC);
+    ((StringBuffer)localObject).append("otherFail:").append(this.edX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sucRoomList:").append(this.ecD);
+    ((StringBuffer)localObject).append("sucRoomList:").append(this.edY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ticketId:").append(this.ecE);
+    ((StringBuffer)localObject).append("ticketId:").append(this.edZ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(219239);
+    AppMethodBeat.o(209879);
     return localObject;
   }
   
@@ -61,7 +61,7 @@ public final class ck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ck
  * JD-Core Version:    0.7.0.1
  */

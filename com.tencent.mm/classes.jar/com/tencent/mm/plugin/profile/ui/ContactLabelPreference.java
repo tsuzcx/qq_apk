@@ -16,8 +16,8 @@ public class ContactLabelPreference
 {
   private String title;
   private TextView titleTv;
-  private MMSingelLinePanel wQv;
-  private ArrayList<String> wQw;
+  private MMSingelLinePanel xgm;
+  private ArrayList<String> xgn;
   
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +28,7 @@ public class ContactLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27012);
-    this.wQw = new ArrayList();
+    this.xgn = new ArrayList();
     setLayoutResource(2131494804);
     AppMethodBeat.o(27012);
   }
@@ -37,15 +37,15 @@ public class ContactLabelPreference
   {
     AppMethodBeat.i(27014);
     this.titleTv = ((TextView)paramView.findViewById(2131305902));
-    this.wQv = ((MMSingelLinePanel)paramView.findViewById(2131298672));
-    this.wQv.setSingleLine(true);
-    this.wQv.Jnv = false;
-    this.wQv.xC(false);
+    this.xgm = ((MMSingelLinePanel)paramView.findViewById(2131298672));
+    this.xgm.setSingleLine(true);
+    this.xgm.JIk = false;
+    this.xgm.xK(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.wQv != null) && (this.wQw != null) && (this.wQw.size() > 0)) {
-      this.wQv.a(this.wQw, this.wQw);
+    if ((this.xgm != null) && (this.xgn != null) && (this.xgn.size() > 0)) {
+      this.xgm.a(this.xgn, this.xgn);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27014);

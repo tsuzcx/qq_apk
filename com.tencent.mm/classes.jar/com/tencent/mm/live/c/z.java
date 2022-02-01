@@ -27,9 +27,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.api.SmileyPanel;
-import com.tencent.mm.api.aa;
 import com.tencent.mm.live.b.a.s;
 import com.tencent.mm.live.b.i;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
@@ -40,109 +40,109 @@ import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.widget.MMEditText;
 import d.g.b.p;
-import d.k.h;
+import d.k.j;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveInputPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "INPUT_MODE_DEFAULT", "", "INPUT_MODE_INPUT", "INPUT_MODE_SMILEY", "cancelView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "context", "Landroid/content/Context;", "curMode", "emojiLayout", "Landroid/widget/LinearLayout;", "inputEmoji", "Landroid/widget/ImageView;", "inputEt", "Lcom/tencent/mm/ui/widget/MMEditText;", "inputLayout", "inputParent", "Landroid/view/View;", "lastEditHeight", "replyBtnWidth", "sendBtn", "sendBtnEnabled", "", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "changeToInputMode", "", "changeToPreviewMode", "getEditPanel", "keyboardChange", "show", "height", "layoutInputView", "mount", "onBackPress", "onHideSmileyPanel", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "forceShowVKB", "setupEmojiPanel", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveInputPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "INPUT_MODE_DEFAULT", "", "INPUT_MODE_INPUT", "INPUT_MODE_SMILEY", "cancelView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "context", "Landroid/content/Context;", "curMode", "emojiLayout", "Landroid/widget/LinearLayout;", "inputEmoji", "Landroid/widget/ImageView;", "inputEt", "Lcom/tencent/mm/ui/widget/MMEditText;", "inputLayout", "inputParent", "Landroid/view/View;", "lastEditHeight", "replyBtnWidth", "sendBtn", "sendBtnEnabled", "", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "changeToInputMode", "", "changeToPreviewMode", "getEditPanel", "keyboardChange", "show", "height", "layoutInputView", "mount", "onBackPress", "onHideSmileyPanel", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "forceShowVKB", "setupEmojiPanel", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
 public final class z
   extends a
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  public static final z.a gVs;
+  public static final z.a gYb;
   private Context context;
-  private final b gSM;
-  private final int gVd;
-  private final int gVe;
-  private final int gVf;
-  private final LinearLayout gVg;
-  private final LinearLayout gVh;
-  private final View gVi;
-  private final MMEditText gVj;
-  private final TextView gVk;
-  private final ImageView gVl;
-  private final TextView gVm;
-  private SmileyPanel gVn;
-  private int gVo;
-  private boolean gVp;
-  private int gVq;
-  private int gVr;
+  private final b gVv;
+  private final int gXM;
+  private final int gXN;
+  private final int gXO;
+  private final LinearLayout gXP;
+  private final LinearLayout gXQ;
+  private final View gXR;
+  private final MMEditText gXS;
+  private final TextView gXT;
+  private final ImageView gXU;
+  private final TextView gXV;
+  private SmileyPanel gXW;
+  private int gXX;
+  private boolean gXY;
+  private int gXZ;
+  private int gYa;
   
   static
   {
-    AppMethodBeat.i(212488);
-    gVs = new z.a((byte)0);
-    AppMethodBeat.o(212488);
+    AppMethodBeat.i(216108);
+    gYb = new z.a((byte)0);
+    AppMethodBeat.o(216108);
   }
   
   public z(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(212487);
-    this.gSM = paramb;
-    this.gVe = 1;
-    this.gVf = 2;
-    this.gVg = ((LinearLayout)paramViewGroup.findViewById(2131307640));
-    this.gVh = ((LinearLayout)paramViewGroup.findViewById(2131307621));
-    this.gVi = paramViewGroup.findViewById(2131307641);
-    this.gVj = ((MMEditText)paramViewGroup.findViewById(2131307643));
-    this.gVk = ((TextView)paramViewGroup.findViewById(2131307769));
-    this.gVl = ((ImageView)paramViewGroup.findViewById(2131307637));
-    this.gVm = ((TextView)paramViewGroup.findViewById(2131307598));
-    paramb = aa.k(paramViewGroup.getContext(), false);
+    AppMethodBeat.i(216107);
+    this.gVv = paramb;
+    this.gXN = 1;
+    this.gXO = 2;
+    this.gXP = ((LinearLayout)paramViewGroup.findViewById(2131307640));
+    this.gXQ = ((LinearLayout)paramViewGroup.findViewById(2131307621));
+    this.gXR = paramViewGroup.findViewById(2131307641);
+    this.gXS = ((MMEditText)paramViewGroup.findViewById(2131307643));
+    this.gXT = ((TextView)paramViewGroup.findViewById(2131307769));
+    this.gXU = ((ImageView)paramViewGroup.findViewById(2131307637));
+    this.gXV = ((TextView)paramViewGroup.findViewById(2131307598));
+    paramb = com.tencent.mm.api.aa.k(paramViewGroup.getContext(), false);
     p.g(paramb, "SmileyPanelFactory.getSm…anel(root.context, false)");
-    this.gVn = paramb;
+    this.gXW = paramb;
     paramb = paramViewGroup.getContext();
     p.g(paramb, "root.context");
     this.context = paramb;
-    this.gVq = this.gVd;
-    this.gVq = this.gVd;
-    paramb = this.gVl;
+    this.gXZ = this.gXM;
+    this.gXZ = this.gXM;
+    paramb = this.gXU;
     Object localObject = paramViewGroup.getContext();
     p.g(localObject, "root.context");
     paramb.setImageDrawable(ao.e(((Context)localObject).getResources().getDrawable(2131690482), -1));
-    this.gVl.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gXU.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212453);
+        AppMethodBeat.i(216073);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveInputPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (z.e(this.gVt) != z.f(this.gVt)) {}
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveInputPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (z.e(this.gYc) != z.f(this.gYc)) {}
         for (boolean bool = true;; bool = false)
         {
-          z.a(this.gVt, bool);
+          z.a(this.gYc, bool);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveInputPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(212453);
+          AppMethodBeat.o(216073);
           return;
         }
       }
     });
     paramb = (InputFilter)new b(this);
-    localObject = (InputFilter)new c(com.tencent.mm.ui.tools.f.a.KIN);
-    MMEditText localMMEditText = this.gVj;
+    localObject = (InputFilter)new c(com.tencent.mm.ui.tools.f.a.Lfh);
+    MMEditText localMMEditText = this.gXS;
     p.g(localMMEditText, "inputEt");
     localMMEditText.setFilters(new InputFilter[] { paramb, localObject });
-    this.gVj.addTextChangedListener((TextWatcher)new TextWatcher()
+    this.gXS.addTextChangedListener((TextWatcher)new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(212462);
+        AppMethodBeat.i(216082);
         int i;
-        if ((z.g(this.gVt) == 0) || (z.g(this.gVt) != this.gVt.aoN().getHeight()))
+        if ((z.g(this.gYc) == 0) || (z.g(this.gYc) != this.gYc.apb().getHeight()))
         {
-          z.a(this.gVt, this.gVt.aoN().getHeight());
+          z.a(this.gYc, this.gYc.apb().getHeight());
           paramAnonymousEditable = new Bundle();
-          i = com.tencent.mm.sdk.platformtools.z.iF(z.d(this.gVt));
-          int j = this.gVt.aoN().getHeight();
-          int k = ar.ej(paramViewGroup.getContext());
-          LinearLayout localLinearLayout = z.h(this.gVt);
+          i = com.tencent.mm.sdk.platformtools.aa.iK(z.d(this.gYc));
+          int j = this.gYc.apb().getHeight();
+          int k = ar.en(paramViewGroup.getContext());
+          LinearLayout localLinearLayout = z.h(this.gYc);
           p.g(localLinearLayout, "inputLayout");
           paramAnonymousEditable.putInt("PARAM_LIVE_COMMENT_OFFSET_HEIGHT", i + j + k + localLinearLayout.getPaddingBottom());
-          z.c(this.gVt).a(b.c.gSv, paramAnonymousEditable);
+          z.c(this.gYc).a(b.c.gVd, paramAnonymousEditable);
         }
-        paramAnonymousEditable = z.b(this.gVt);
+        paramAnonymousEditable = z.b(this.gYc);
         p.g(paramAnonymousEditable, "inputEt");
         paramAnonymousEditable = paramAnonymousEditable.getText();
         if (paramAnonymousEditable != null) {
@@ -152,13 +152,13 @@ public final class z
             if (i == 0) {
               break label265;
             }
-            paramAnonymousEditable = z.b(this.gVt);
+            paramAnonymousEditable = z.b(this.gYc);
             p.g(paramAnonymousEditable, "inputEt");
             paramAnonymousEditable = paramAnonymousEditable.getText();
             if (paramAnonymousEditable == null) {
               break label260;
             }
-            if (d.n.n.aE((CharSequence)paramAnonymousEditable)) {
+            if (d.n.n.aD((CharSequence)paramAnonymousEditable)) {
               break label255;
             }
             i = 1;
@@ -172,10 +172,10 @@ public final class z
         label265:
         for (boolean bool = true;; bool = false)
         {
-          if (bool != z.i(this.gVt)) {
+          if (bool != z.i(this.gYc)) {
             break label271;
           }
-          AppMethodBeat.o(212462);
+          AppMethodBeat.o(216082);
           return;
           i = 0;
           break;
@@ -188,52 +188,52 @@ public final class z
           break label220;
         }
         label271:
-        z.b(this.gVt, bool);
-        if (z.i(this.gVt))
+        z.b(this.gYc, bool);
+        if (z.i(this.gYc))
         {
-          paramAnonymousEditable = z.j(this.gVt);
+          paramAnonymousEditable = z.j(this.gYc);
           p.g(paramAnonymousEditable, "inputEmoji");
           paramAnonymousEditable = paramAnonymousEditable.getLayoutParams();
           if (paramAnonymousEditable == null)
           {
             paramAnonymousEditable = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-            AppMethodBeat.o(212462);
+            AppMethodBeat.o(216082);
             throw paramAnonymousEditable;
           }
-          ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cc.a.ax(paramViewGroup.getContext(), 2131165284));
+          ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cb.a.ax(paramViewGroup.getContext(), 2131165284));
           paramAnonymousEditable = new ValueAnimator();
-          paramAnonymousEditable.setIntValues(new int[] { 0, z.k(this.gVt) });
+          paramAnonymousEditable.setIntValues(new int[] { 0, z.k(this.gYc) });
           paramAnonymousEditable.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(this));
           paramAnonymousEditable.setDuration(150L);
           paramAnonymousEditable.addListener((Animator.AnimatorListener)new b(this));
           paramAnonymousEditable.start();
-          AppMethodBeat.o(212462);
+          AppMethodBeat.o(216082);
           return;
         }
-        paramAnonymousEditable = z.j(this.gVt);
+        paramAnonymousEditable = z.j(this.gYc);
         p.g(paramAnonymousEditable, "inputEmoji");
         paramAnonymousEditable = paramAnonymousEditable.getLayoutParams();
         if (paramAnonymousEditable == null)
         {
           paramAnonymousEditable = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-          AppMethodBeat.o(212462);
+          AppMethodBeat.o(216082);
           throw paramAnonymousEditable;
         }
-        ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cc.a.ax(paramViewGroup.getContext(), 2131165289));
+        ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cb.a.ax(paramViewGroup.getContext(), 2131165289));
         paramAnonymousEditable = new ValueAnimator();
-        paramAnonymousEditable.setIntValues(new int[] { z.k(this.gVt), 0 });
+        paramAnonymousEditable.setIntValues(new int[] { z.k(this.gYc), 0 });
         paramAnonymousEditable.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this));
         paramAnonymousEditable.setDuration(150L);
         paramAnonymousEditable.addListener((Animator.AnimatorListener)new d(this));
         paramAnonymousEditable.start();
-        AppMethodBeat.o(212462);
+        AppMethodBeat.o(216082);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
-      @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+      @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
       static final class a
         implements ValueAnimator.AnimatorUpdateListener
       {
@@ -241,81 +241,81 @@ public final class z
         
         public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
         {
-          AppMethodBeat.i(212454);
+          AppMethodBeat.i(216074);
           if (paramValueAnimator != null) {}
           for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
           {
             paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-            AppMethodBeat.o(212454);
+            AppMethodBeat.o(216074);
             throw paramValueAnimator;
           }
           float f = ((Integer)paramValueAnimator).intValue();
-          paramValueAnimator = z.l(this.gVu.gVt);
+          paramValueAnimator = z.l(this.gYd.gYc);
           p.g(paramValueAnimator, "sendBtn");
           paramValueAnimator = paramValueAnimator.getLayoutParams();
-          paramValueAnimator.width = d.h.a.co(f);
-          TextView localTextView = z.l(this.gVu.gVt);
+          paramValueAnimator.width = d.h.a.cm(f);
+          TextView localTextView = z.l(this.gYd.gYc);
           p.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramValueAnimator);
-          paramValueAnimator = z.l(this.gVu.gVt);
+          paramValueAnimator = z.l(this.gYd.gYc);
           p.g(paramValueAnimator, "sendBtn");
-          paramValueAnimator.setAlpha(f / z.k(this.gVu.gVt));
-          AppMethodBeat.o(212454);
+          paramValueAnimator.setAlpha(f / z.k(this.gYd.gYc));
+          AppMethodBeat.o(216074);
         }
       }
       
-      @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveInputPlugin$2$afterTextChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
+      @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/plugin/LiveInputPlugin$2$afterTextChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
       public static final class b
         implements Animator.AnimatorListener
       {
         public final void onAnimationCancel(Animator paramAnimator)
         {
-          AppMethodBeat.i(212456);
-          paramAnimator = z.l(this.gVu.gVt);
+          AppMethodBeat.i(216076);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator = paramAnimator.getLayoutParams();
-          paramAnimator.width = z.k(this.gVu.gVt);
-          TextView localTextView = z.l(this.gVu.gVt);
+          paramAnimator.width = z.k(this.gYd.gYc);
+          TextView localTextView = z.l(this.gYd.gYc);
           p.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramAnimator);
-          paramAnimator = z.l(this.gVu.gVt);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setAlpha(1.0F);
-          AppMethodBeat.o(212456);
+          AppMethodBeat.o(216076);
         }
         
         public final void onAnimationEnd(Animator paramAnimator)
         {
-          AppMethodBeat.i(212455);
-          paramAnimator = z.l(this.gVu.gVt);
+          AppMethodBeat.i(216075);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(0);
-          paramAnimator = z.l(this.gVu.gVt);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator = paramAnimator.getLayoutParams();
-          paramAnimator.width = z.k(this.gVu.gVt);
-          TextView localTextView = z.l(this.gVu.gVt);
+          paramAnimator.width = z.k(this.gYd.gYc);
+          TextView localTextView = z.l(this.gYd.gYc);
           p.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramAnimator);
-          paramAnimator = z.l(this.gVu.gVt);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setAlpha(1.0F);
-          AppMethodBeat.o(212455);
+          AppMethodBeat.o(216075);
         }
         
         public final void onAnimationRepeat(Animator paramAnimator) {}
         
         public final void onAnimationStart(Animator paramAnimator)
         {
-          AppMethodBeat.i(212457);
-          paramAnimator = z.l(this.gVu.gVt);
+          AppMethodBeat.i(216077);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(0);
-          AppMethodBeat.o(212457);
+          AppMethodBeat.o(216077);
         }
       }
       
-      @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+      @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
       static final class c
         implements ValueAnimator.AnimatorUpdateListener
       {
@@ -323,390 +323,369 @@ public final class z
         
         public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
         {
-          AppMethodBeat.i(212458);
+          AppMethodBeat.i(216078);
           if (paramValueAnimator != null) {}
           for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
           {
             paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-            AppMethodBeat.o(212458);
+            AppMethodBeat.o(216078);
             throw paramValueAnimator;
           }
           float f = ((Integer)paramValueAnimator).intValue();
-          paramValueAnimator = z.l(this.gVu.gVt);
+          paramValueAnimator = z.l(this.gYd.gYc);
           p.g(paramValueAnimator, "sendBtn");
           paramValueAnimator = paramValueAnimator.getLayoutParams();
-          paramValueAnimator.width = d.h.a.co(f);
-          TextView localTextView = z.l(this.gVu.gVt);
+          paramValueAnimator.width = d.h.a.cm(f);
+          TextView localTextView = z.l(this.gYd.gYc);
           p.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramValueAnimator);
-          paramValueAnimator = z.l(this.gVu.gVt);
+          paramValueAnimator = z.l(this.gYd.gYc);
           p.g(paramValueAnimator, "sendBtn");
-          paramValueAnimator.setAlpha(f / z.k(this.gVu.gVt));
-          AppMethodBeat.o(212458);
+          paramValueAnimator.setAlpha(f / z.k(this.gYd.gYc));
+          AppMethodBeat.o(216078);
         }
       }
       
-      @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveInputPlugin$2$afterTextChanged$4", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
+      @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/plugin/LiveInputPlugin$2$afterTextChanged$4", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
       public static final class d
         implements Animator.AnimatorListener
       {
         public final void onAnimationCancel(Animator paramAnimator)
         {
-          AppMethodBeat.i(212460);
-          paramAnimator = z.l(this.gVu.gVt);
+          AppMethodBeat.i(216080);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(8);
-          AppMethodBeat.o(212460);
+          AppMethodBeat.o(216080);
         }
         
         public final void onAnimationEnd(Animator paramAnimator)
         {
-          AppMethodBeat.i(212459);
-          paramAnimator = z.l(this.gVu.gVt);
+          AppMethodBeat.i(216079);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(8);
-          AppMethodBeat.o(212459);
+          AppMethodBeat.o(216079);
         }
         
         public final void onAnimationRepeat(Animator paramAnimator) {}
         
         public final void onAnimationStart(Animator paramAnimator)
         {
-          AppMethodBeat.i(212461);
-          paramAnimator = z.l(this.gVu.gVt);
+          AppMethodBeat.i(216081);
+          paramAnimator = z.l(this.gYd.gYc);
           p.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(0);
-          AppMethodBeat.o(212461);
+          AppMethodBeat.o(216081);
         }
       }
     });
-    if (aol())
+    if (aoA())
     {
-      paramb = this.gVi;
+      paramb = this.gXR;
       p.g(paramb, "inputParent");
       paramb = paramb.getLayoutParams();
       if (paramb == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(212487);
+        AppMethodBeat.o(216107);
         throw paramViewGroup;
       }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ar.ej(paramViewGroup.getContext()));
+      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ar.en(paramViewGroup.getContext()));
     }
-    this.gVk.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gXT.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(212464);
+        AppMethodBeat.i(216084);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveInputPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-        paramAnonymousView = com.tencent.mm.live.b.g.gOr;
-        if (com.tencent.mm.live.b.g.anE()) {
-          new com.tencent.mm.ui.widget.a.f.a(z.d(this.gVt)).fMj().av((CharSequence)z.d(this.gVt).getResources().getString(2131766579)).afp(2131755792).b((com.tencent.mm.ui.widget.a.f.c)z.3.1.gVv).show();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveInputPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        paramAnonymousView = com.tencent.mm.live.b.g.gQZ;
+        if (com.tencent.mm.live.b.g.anT()) {
+          new com.tencent.mm.ui.widget.a.f.a(z.d(this.gYc)).fQD().au((CharSequence)z.d(this.gYc).getResources().getString(2131766579)).afY(2131755792).b((com.tencent.mm.ui.widget.a.f.c)z.3.1.gYe).show();
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveInputPlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(212464);
+          AppMethodBeat.o(216084);
           return;
-          paramAnonymousView = z.b(this.gVt);
+          paramAnonymousView = z.b(this.gYc);
           p.g(paramAnonymousView, "inputEt");
           if (paramAnonymousView.getText() != null)
           {
-            z.m(this.gVt);
-            paramAnonymousView = z.d(this.gVt);
+            z.m(this.gYc);
+            paramAnonymousView = z.d(this.gYc);
             if (paramAnonymousView == null)
             {
               paramAnonymousView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-              AppMethodBeat.o(212464);
+              AppMethodBeat.o(216084);
               throw paramAnonymousView;
             }
             ((MMActivity)paramAnonymousView).hideVKB();
-            z.n(this.gVt);
-            paramAnonymousView = z.b(this.gVt);
+            z.n(this.gYc);
+            paramAnonymousView = z.b(this.gYc);
             p.g(paramAnonymousView, "inputEt");
             paramAnonymousView = paramAnonymousView.getText();
-            localObject = z.b(this.gVt);
+            localObject = z.b(this.gYc);
             p.g(localObject, "inputEt");
             ((MMEditText)localObject).setText(null);
-            localObject = i.gPh;
+            localObject = i.gRP;
             paramAnonymousView = paramAnonymousView.toString();
-            localObject = com.tencent.mm.live.b.f.c.gNa;
-            i.X(paramAnonymousView, com.tencent.mm.live.b.f.c.amX());
-            b.b.a(z.c(this.gVt), b.c.gRU);
-            if (z.c(this.gVt).getLiveRole() == 0) {
-              com.tencent.mm.live.d.f.aqg();
+            localObject = com.tencent.mm.live.b.f.c.gPJ;
+            i.Y(paramAnonymousView, com.tencent.mm.live.b.f.c.anm());
+            b.b.a(z.c(this.gYc), b.c.gUC);
+            if (z.c(this.gYc).getLiveRole() == 0) {
+              com.tencent.mm.live.d.f.aqv();
             }
           }
         }
       }
     });
-    this.gVg.setOnClickListener((View.OnClickListener)z.4.gVw);
-    this.gVm.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(212467);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveInputPlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        z.m(this.gVt);
-        paramAnonymousView = z.d(this.gVt);
-        if (paramAnonymousView == null)
-        {
-          paramAnonymousView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(212467);
-          throw paramAnonymousView;
-        }
-        ((MMActivity)paramAnonymousView).hideVKB();
-        z.n(this.gVt);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveInputPlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212467);
-      }
-    });
-    this.gVn.setEntranceScene(ChatFooterPanel.ESB);
-    this.gVn.fbF();
-    this.gVn.fbH();
-    this.gVn.fbG();
-    this.gVn.setVisibility(4);
-    this.gVn.onResume();
-    this.gVn.setOnTextOperationListener((ChatFooterPanel.a)new f(this));
-    AppMethodBeat.o(212487);
+    this.gXP.setOnClickListener((View.OnClickListener)z.4.gYf);
+    this.gXV.setOnClickListener((View.OnClickListener)new z.5(this));
+    this.gXW.setEntranceScene(ChatFooterPanel.FkW);
+    this.gXW.fft();
+    this.gXW.ffv();
+    this.gXW.ffu();
+    this.gXW.setVisibility(4);
+    this.gXW.onResume();
+    this.gXW.setOnTextOperationListener((ChatFooterPanel.a)new f(this));
+    AppMethodBeat.o(216107);
   }
   
-  private final void aoL()
+  private final void aoZ()
   {
-    AppMethodBeat.i(212477);
-    if (this.gVq != this.gVf)
+    AppMethodBeat.i(216097);
+    if (this.gXZ != this.gXO)
     {
-      AppMethodBeat.o(212477);
+      AppMethodBeat.o(216097);
       return;
     }
-    ImageView localImageView = this.gVl;
-    Context localContext = this.gGK.getContext();
+    ImageView localImageView = this.gXU;
+    Context localContext = this.gJt.getContext();
     p.g(localContext, "root.context");
     localImageView.setImageDrawable(ao.e(localContext.getResources().getDrawable(2131690482), -1));
-    this.gVn.animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new d(this)).start();
-    AppMethodBeat.o(212477);
+    this.gXW.animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new d(this)).start();
+    AppMethodBeat.o(216097);
   }
   
-  private final void aoM()
+  private final void apa()
   {
-    AppMethodBeat.i(212478);
-    this.gVq = this.gVd;
-    this.gGK.setVisibility(4);
-    this.gVj.clearFocus();
-    Object localObject = this.gGK.getContext().getSystemService("input_method");
+    AppMethodBeat.i(216098);
+    this.gXZ = this.gXM;
+    this.gJt.setVisibility(4);
+    this.gXS.clearFocus();
+    Object localObject = this.gJt.getContext().getSystemService("input_method");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-      AppMethodBeat.o(212478);
+      AppMethodBeat.o(216098);
       throw ((Throwable)localObject);
     }
     localObject = (InputMethodManager)localObject;
-    MMEditText localMMEditText = this.gVj;
+    MMEditText localMMEditText = this.gXS;
     p.g(localMMEditText, "inputEt");
     ((InputMethodManager)localObject).hideSoftInputFromWindow(localMMEditText.getWindowToken(), 0);
     localObject = new Bundle();
     ((Bundle)localObject).putBoolean("PARAM_IS_ENTERING_COMMENT", false);
-    this.gSM.a(b.c.gRW, (Bundle)localObject);
-    AppMethodBeat.o(212478);
+    this.gVv.a(b.c.gUE, (Bundle)localObject);
+    AppMethodBeat.o(216098);
   }
   
-  private final void nK(int paramInt)
+  private final void nN(int paramInt)
   {
-    AppMethodBeat.i(212481);
+    AppMethodBeat.i(216101);
     Object localObject1;
     Object localObject2;
-    if ((this.gGK.getContext() instanceof Activity))
+    if ((this.gJt.getContext() instanceof Activity))
     {
-      localObject1 = this.gVi;
+      localObject1 = this.gXR;
       p.g(localObject1, "inputParent");
       localObject1 = ((View)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        AppMethodBeat.o(212481);
+        AppMethodBeat.o(216101);
         throw ((Throwable)localObject1);
       }
       localObject2 = (LinearLayout.LayoutParams)localObject1;
-      if (aol()) {
+      if (aoA()) {
         break label268;
       }
-      ((LinearLayout.LayoutParams)localObject2).bottomMargin = (ar.ej(this.context) + paramInt);
-      localObject2 = this.gVi;
+      ((LinearLayout.LayoutParams)localObject2).bottomMargin = (ar.en(this.context) + paramInt);
+      localObject2 = this.gXR;
       p.g(localObject2, "inputParent");
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
       localObject1 = new LinearLayout.LayoutParams(-1, paramInt);
-      if (aol()) {
+      if (aoA()) {
         break label277;
       }
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = ar.ej(this.context);
+      ((LinearLayout.LayoutParams)localObject1).bottomMargin = ar.en(this.context);
     }
     for (;;)
     {
-      this.gVn.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      if (this.gVn.getParent() == null) {
-        this.gVh.addView((View)this.gVn, (ViewGroup.LayoutParams)localObject1);
+      this.gXW.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (this.gXW.getParent() == null) {
+        this.gXQ.addView((View)this.gXW, (ViewGroup.LayoutParams)localObject1);
       }
       localObject1 = new Bundle();
-      int i = aoN().getHeight();
-      int j = ar.ej(this.gGK.getContext());
-      localObject2 = this.gVg;
+      int i = apb().getHeight();
+      int j = ar.en(this.gJt.getContext());
+      localObject2 = this.gXP;
       p.g(localObject2, "inputLayout");
       ((Bundle)localObject1).putInt("PARAM_LIVE_COMMENT_OFFSET_HEIGHT", i + paramInt + j + ((LinearLayout)localObject2).getPaddingBottom());
-      this.gSM.a(b.c.gSv, (Bundle)localObject1);
-      AppMethodBeat.o(212481);
+      this.gVv.a(b.c.gVd, (Bundle)localObject1);
+      AppMethodBeat.o(216101);
       return;
       label268:
       ((LinearLayout.LayoutParams)localObject2).bottomMargin = paramInt;
       break;
       label277:
-      ((LinearLayout.LayoutParams)localObject1).setMarginEnd(ar.ej(this.context));
+      ((LinearLayout.LayoutParams)localObject1).setMarginEnd(ar.en(this.context));
     }
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(212479);
+    AppMethodBeat.i(216099);
     p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (aa.cpQ[paramc.ordinal()])
+    switch (aa.cqt[paramc.ordinal()])
     {
     }
     do
     {
       do
       {
-        AppMethodBeat.o(212479);
+        AppMethodBeat.o(216099);
         return;
-        nI(8);
-        AppMethodBeat.o(212479);
+        nL(8);
+        AppMethodBeat.o(216099);
         return;
-        AppMethodBeat.o(212479);
+        AppMethodBeat.o(216099);
         return;
         if (paramBundle == null) {
           break;
         }
       } while (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") != true);
-      this.gGK.setVisibility(0);
-      paramc = this.gVl;
-      paramBundle = this.gGK.getContext();
+      this.gJt.setVisibility(0);
+      paramc = this.gXU;
+      paramBundle = this.gJt.getContext();
       p.g(paramBundle, "root.context");
       paramc.setImageDrawable(ao.e(paramBundle.getResources().getDrawable(2131690482), -1));
-      this.gVj.requestFocus();
-      paramc = (InputMethodManager)this.gGK.getContext().getSystemService("input_method");
+      this.gXS.requestFocus();
+      paramc = (InputMethodManager)this.gJt.getContext().getSystemService("input_method");
     } while (paramc == null);
-    paramc.showSoftInput((View)this.gVj, 0);
-    AppMethodBeat.o(212479);
+    paramc.showSoftInput((View)this.gXS, 0);
+    AppMethodBeat.o(216099);
     return;
-    AppMethodBeat.o(212479);
+    AppMethodBeat.o(216099);
   }
   
-  public final void aoA()
+  public final void aoO()
   {
-    AppMethodBeat.i(212484);
-    super.aoA();
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
-    p.g(localb, "MMKernel.network()");
-    localb.aiU().b(904, (com.tencent.mm.al.f)this);
-    AppMethodBeat.o(212484);
-  }
-  
-  public final boolean aoB()
-  {
-    AppMethodBeat.i(212485);
-    if (this.gGK.getVisibility() == 0)
-    {
-      if (this.gVq == this.gVf)
-      {
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
-        this.gVn.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-        this.gVq = this.gVd;
-        nK(0);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(212485);
-        return true;
-        aoM();
-      }
-    }
-    boolean bool = super.aoB();
-    AppMethodBeat.o(212485);
-    return bool;
-  }
-  
-  public final View aoN()
-  {
-    AppMethodBeat.i(212482);
-    View localView = this.gVi;
-    p.g(localView, "inputParent");
-    AppMethodBeat.o(212482);
-    return localView;
-  }
-  
-  public final void aoz()
-  {
-    AppMethodBeat.i(212483);
-    super.aoz();
-    Object localObject = this.gVk;
+    AppMethodBeat.i(216103);
+    super.aoO();
+    Object localObject = this.gXT;
     p.g(localObject, "sendBtn");
     localObject = ((TextView)localObject).getText();
-    TextView localTextView = this.gVk;
+    TextView localTextView = this.gXT;
     p.g(localTextView, "sendBtn");
     int i = (int)StaticLayout.getDesiredWidth((CharSequence)localObject, localTextView.getPaint());
     int j = aq.ay(this.context, 2131165299);
-    localObject = this.gVk;
+    localObject = this.gXT;
     p.g(localObject, "sendBtn");
     int k = ((TextView)localObject).getPaddingStart();
-    localObject = this.gVk;
+    localObject = this.gXT;
     p.g(localObject, "sendBtn");
-    this.gVo = h.lp(j, i + k + ((TextView)localObject).getPaddingEnd());
-    localObject = com.tencent.mm.kernel.g.ajB();
+    this.gXX = j.lw(j, i + k + ((TextView)localObject).getPaddingEnd());
+    localObject = com.tencent.mm.kernel.g.ajQ();
     p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).aiU().a(904, (com.tencent.mm.al.f)this);
-    AppMethodBeat.o(212483);
+    ((com.tencent.mm.kernel.b)localObject).ajj().a(904, (com.tencent.mm.ak.f)this);
+    AppMethodBeat.o(216103);
+  }
+  
+  public final void aoP()
+  {
+    AppMethodBeat.i(216104);
+    super.aoP();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajQ();
+    p.g(localb, "MMKernel.network()");
+    localb.ajj().b(904, (com.tencent.mm.ak.f)this);
+    AppMethodBeat.o(216104);
+  }
+  
+  public final boolean aoQ()
+  {
+    AppMethodBeat.i(216105);
+    if (this.gJt.getVisibility() == 0)
+    {
+      if (this.gXZ == this.gXO)
+      {
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
+        this.gXW.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
+        this.gXZ = this.gXM;
+        nN(0);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(216105);
+        return true;
+        apa();
+      }
+    }
+    boolean bool = super.aoQ();
+    AppMethodBeat.o(216105);
+    return bool;
+  }
+  
+  public final View apb()
+  {
+    AppMethodBeat.i(216102);
+    View localView = this.gXR;
+    p.g(localView, "inputParent");
+    AppMethodBeat.o(216102);
+    return localView;
   }
   
   public final void i(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(212480);
+    AppMethodBeat.i(216100);
     super.i(paramBoolean, paramInt);
     if (!paramBoolean)
     {
-      if (this.gVq == this.gVe)
+      if (this.gXZ == this.gXN)
       {
-        this.gVq = this.gVd;
+        this.gXZ = this.gXM;
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
-        this.gVn.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-        nK(0);
-        AppMethodBeat.o(212480);
+        this.gXW.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
+        nN(0);
+        AppMethodBeat.o(216100);
       }
     }
     else
     {
-      this.gVq = this.gVe;
-      aoL();
-      nK(paramInt);
+      this.gXZ = this.gXN;
+      aoZ();
+      nN(paramInt);
     }
-    AppMethodBeat.o(212480);
+    AppMethodBeat.o(216100);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
-    AppMethodBeat.i(212486);
+    AppMethodBeat.i(216106);
     if (((paramn instanceof s)) && (paramInt2 == -100065))
     {
-      paramString = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.anF();
-      c.g((d.g.a.a)new e(this));
+      paramString = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.anU();
+      c.h((d.g.a.a)new z.e(this));
     }
-    AppMethodBeat.o(212486);
+    AppMethodBeat.o(216106);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "kotlin.jvm.PlatformType", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "filter"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "kotlin.jvm.PlatformType", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "filter"})
   static final class b
     implements InputFilter
   {
@@ -714,8 +693,8 @@ public final class z
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(212469);
-      paramSpanned = z.b(this.gVt);
+      AppMethodBeat.i(216089);
+      paramSpanned = z.b(this.gYc);
       p.g(paramSpanned, "inputEt");
       paramSpanned.getText();
       paramCharSequence = paramCharSequence.toString();
@@ -723,21 +702,21 @@ public final class z
       if (paramCharSequence == null)
       {
         paramCharSequence = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(212469);
+        AppMethodBeat.o(216089);
         throw paramCharSequence;
       }
       if (paramCharSequence.contentEquals(paramSpanned))
       {
         paramCharSequence = (CharSequence)"";
-        AppMethodBeat.o(212469);
+        AppMethodBeat.o(216089);
         return paramCharSequence;
       }
-      AppMethodBeat.o(212469);
+      AppMethodBeat.o(216089);
       return null;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveInputPlugin$filters$2", "Lcom/tencent/mm/ui/tools/InputTextLengthFilter;", "filter", "", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "destStart", "destEnd", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/plugin/LiveInputPlugin$filters$2", "Lcom/tencent/mm/ui/tools/InputTextLengthFilter;", "filter", "", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "destStart", "destEnd", "plugin-logic_release"})
   public static final class c
     extends com.tencent.mm.ui.tools.f
   {
@@ -748,7 +727,7 @@ public final class z
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(212470);
+      AppMethodBeat.i(216090);
       CharSequence localCharSequence;
       if (paramSpanned != null)
       {
@@ -761,7 +740,7 @@ public final class z
         }
         localCharSequence = paramSpanned.subSequence(0, paramInt3);
         label41:
-        paramInt2 = com.tencent.mm.ui.tools.f.a(String.valueOf(localCharSequence), com.tencent.mm.ui.tools.f.a.KIN);
+        paramInt2 = com.tencent.mm.ui.tools.f.a(String.valueOf(localCharSequence), com.tencent.mm.ui.tools.f.a.Lfh);
         label53:
         if ((paramSpanned == null) || (paramSpanned.length() <= paramInt4)) {
           break label204;
@@ -770,30 +749,30 @@ public final class z
       label183:
       label189:
       label204:
-      for (paramInt3 = com.tencent.mm.ui.tools.f.a(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), com.tencent.mm.ui.tools.f.a.KIN);; paramInt3 = 0)
+      for (paramInt3 = com.tencent.mm.ui.tools.f.a(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), com.tencent.mm.ui.tools.f.a.Lfh);; paramInt3 = 0)
       {
-        paramInt4 = com.tencent.mm.ui.tools.f.a(String.valueOf(paramCharSequence), com.tencent.mm.ui.tools.f.a.KIN);
-        int i = com.tencent.mm.ui.tools.f.aXl(String.valueOf(paramCharSequence));
+        paramInt4 = com.tencent.mm.ui.tools.f.a(String.valueOf(paramCharSequence), com.tencent.mm.ui.tools.f.a.Lfh);
+        int i = com.tencent.mm.ui.tools.f.aYM(String.valueOf(paramCharSequence));
         if (paramInt3 + (paramInt2 + paramInt4) <= 120) {
           break label228;
         }
-        paramInt2 = h.lp(120 - paramInt2 - paramInt3 - i, 0);
+        paramInt2 = j.lw(120 - paramInt2 - paramInt3 - i, 0);
         if ((paramCharSequence != null) && (paramInt1 >= 0) && (paramCharSequence.length() >= paramInt1 + paramInt2)) {
           break label210;
         }
         paramCharSequence = (CharSequence)"";
-        AppMethodBeat.o(212470);
+        AppMethodBeat.o(216090);
         return paramCharSequence;
         paramInt2 = 0;
         break;
         localCharSequence = null;
         break label41;
-        paramInt2 = com.tencent.mm.ui.tools.f.a(String.valueOf(paramSpanned), com.tencent.mm.ui.tools.f.a.KIN);
+        paramInt2 = com.tencent.mm.ui.tools.f.a(String.valueOf(paramSpanned), com.tencent.mm.ui.tools.f.a.Lfh);
         break label53;
       }
       label210:
       paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2 + paramInt1);
-      AppMethodBeat.o(212470);
+      AppMethodBeat.o(216090);
       return paramCharSequence;
       label228:
       if (paramCharSequence == null) {
@@ -801,13 +780,13 @@ public final class z
       }
       for (;;)
       {
-        AppMethodBeat.o(212470);
+        AppMethodBeat.o(216090);
         return paramCharSequence;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveInputPlugin$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/plugin/LiveInputPlugin$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
@@ -815,10 +794,10 @@ public final class z
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(212471);
-      z.a(this.gVt).setAlpha(1.0F);
-      z.a(this.gVt).setVisibility(4);
-      AppMethodBeat.o(212471);
+      AppMethodBeat.i(216091);
+      z.a(this.gYc).setAlpha(1.0F);
+      z.a(this.gYc).setVisibility(4);
+      AppMethodBeat.o(216091);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -826,25 +805,14 @@ public final class z
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class e
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
-  {
-    e(z paramz)
-    {
-      super();
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveInputPlugin$setupEmojiPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-logic_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/plugin/LiveInputPlugin$setupEmojiPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-logic_release"})
   public static final class f
     implements ChatFooterPanel.a
   {
-    public final void aoO()
+    public final void apc()
     {
-      AppMethodBeat.i(212475);
-      Object localObject = z.b(this.gVt);
+      AppMethodBeat.i(216095);
+      Object localObject = z.b(this.gYc);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -852,41 +820,41 @@ public final class z
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
         }
       }
-      localObject = z.b(this.gVt);
+      localObject = z.b(this.gYc);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
         if (localObject != null)
         {
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(1, 67));
-          AppMethodBeat.o(212475);
+          AppMethodBeat.o(216095);
           return;
         }
       }
-      AppMethodBeat.o(212475);
+      AppMethodBeat.o(216095);
     }
     
-    public final void aoP() {}
+    public final void apd() {}
     
     public final void append(String paramString)
     {
-      AppMethodBeat.i(212474);
-      MMEditText localMMEditText = z.b(this.gVt);
+      AppMethodBeat.i(216094);
+      MMEditText localMMEditText = z.b(this.gYc);
       if (localMMEditText != null) {
-        localMMEditText.aXD(paramString);
+        localMMEditText.aZf(paramString);
       }
-      if (z.c(this.gVt).getLiveRole() == 0) {
-        com.tencent.mm.live.d.f.aqh();
+      if (z.c(this.gYc).getLiveRole() == 0) {
+        com.tencent.mm.live.d.f.aqw();
       }
-      AppMethodBeat.o(212474);
+      AppMethodBeat.o(216094);
     }
     
-    public final void dU(boolean paramBoolean) {}
+    public final void dW(boolean paramBoolean) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.c.z
  * JD-Core Version:    0.7.0.1
  */

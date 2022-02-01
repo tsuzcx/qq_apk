@@ -11,23 +11,23 @@ import com.tencent.mm.ui.widget.MMNeat7extView;
 final class aa$a
   extends c.a
 {
-  protected ImageView JYs;
-  protected TextView JZp;
-  protected MMNeat7extView KbY;
-  protected TextView rDq;
+  protected ImageView KuL;
+  protected TextView KvI;
+  protected MMNeat7extView Kyq;
+  protected TextView rLB;
   
-  public final a gF(View paramView)
+  public final a gK(View paramView)
   {
     AppMethodBeat.i(37056);
-    super.gn(paramView);
-    this.KbY = ((MMNeat7extView)paramView.findViewById(2131298073));
-    this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
-    this.JYs = ((ImageView)paramView.findViewById(2131298174));
-    this.rDq = ((TextView)paramView.findViewById(2131298044));
-    this.JZp = ((TextView)paramView.findViewById(2131298023));
-    this.yEk = ((TextView)paramView.findViewById(2131298185));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
+    super.gs(paramView);
+    this.Kyq = ((MMNeat7extView)paramView.findViewById(2131298073));
+    this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
+    this.KuL = ((ImageView)paramView.findViewById(2131298174));
+    this.rLB = ((TextView)paramView.findViewById(2131298044));
+    this.KvI = ((TextView)paramView.findViewById(2131298023));
+    this.yUp = ((TextView)paramView.findViewById(2131298185));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
     AppMethodBeat.o(37056);
     return this;
   }

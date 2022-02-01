@@ -12,7 +12,7 @@ public class ScriptPartObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.v8.ScriptPartObject
  * JD-Core Version:    0.7.0.1
  */

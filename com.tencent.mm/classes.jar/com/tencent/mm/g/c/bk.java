@@ -11,39 +11,39 @@ public abstract class bk
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEm = "content".hashCode();
-  private static final int eFq;
-  private static final int eTG = "desc".hashCode();
+  private static final int eFV = "content".hashCode();
+  private static final int eGZ;
+  private static final int eVr = "desc".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDP = true;
-  private boolean eFn = true;
-  private boolean eTC = true;
+  private boolean eFy = true;
+  private boolean eGW = true;
+  private boolean eVn = true;
   public byte[] field_content;
   public String field_desc;
   public int field_updateTime;
   
   static
   {
-    eFq = "updateTime".hashCode();
+    eGZ = "updateTime".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "desc";
-    locala.IhC.put("desc", "TEXT PRIMARY KEY ");
+    locala.IBN.put("desc", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" desc TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "desc";
+    locala.IBM = "desc";
     locala.columns[1] = "updateTime";
-    locala.IhC.put("updateTime", "INTEGER");
+    locala.IBN.put("updateTime", "INTEGER");
     localStringBuilder.append(" updateTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "content";
-    locala.IhC.put("content", "BLOB");
+    locala.IBN.put("content", "BLOB");
     localStringBuilder.append(" content BLOB");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -63,11 +63,11 @@ public abstract class bk
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eTG != k) {
+      if (eVr != k) {
         break label65;
       }
       this.field_desc = paramCursor.getString(i);
-      this.eTC = true;
+      this.eVn = true;
     }
     for (;;)
     {
@@ -75,9 +75,9 @@ public abstract class bk
       break label20;
       break;
       label65:
-      if (eFq == k) {
+      if (eGZ == k) {
         this.field_updateTime = paramCursor.getInt(i);
-      } else if (eEm == k) {
+      } else if (eFV == k) {
         this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -88,13 +88,13 @@ public abstract class bk
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTC) {
+    if (this.eVn) {
       localContentValues.put("desc", this.field_desc);
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Integer.valueOf(this.field_updateTime));
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {

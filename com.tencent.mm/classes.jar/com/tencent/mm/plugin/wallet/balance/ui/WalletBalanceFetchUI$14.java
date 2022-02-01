@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class WalletBalanceFetchUI$14
   implements DialogInterface.OnCancelListener
@@ -13,12 +13,12 @@ final class WalletBalanceFetchUI$14
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(199200);
-    ad.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog onCancel");
-    if ((this.Czp != null) && (this.Czp.isShowing())) {
-      this.Czp.dismiss();
+    AppMethodBeat.i(190057);
+    ae.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog onCancel");
+    if ((this.CQU != null) && (this.CQU.isShowing())) {
+      this.CQU.dismiss();
     }
-    AppMethodBeat.o(199200);
+    AppMethodBeat.o(190057);
   }
 }
 

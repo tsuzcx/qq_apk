@@ -13,16 +13,16 @@ import java.util.Map;
 final class a
   implements c
 {
-  public static final a NgU;
+  public static final a NDZ;
   
   static
   {
     AppMethodBeat.i(58015);
-    NgU = new a();
+    NDZ = new a();
     AppMethodBeat.o(58015);
   }
   
-  private static Void glT()
+  private static Void gqv()
   {
     AppMethodBeat.i(58011);
     Throwable localThrowable = (Throwable)new IllegalStateException("No methods should be called on this descriptor. Only its presence matters".toString());
@@ -30,23 +30,15 @@ final class a
     throw localThrowable;
   }
   
-  public final an ghI()
+  public final an gmk()
   {
     AppMethodBeat.i(58014);
-    glT();
+    gqv();
     AppMethodBeat.o(58014);
     throw null;
   }
   
-  public final Map<f, g<?>> gjK()
-  {
-    AppMethodBeat.i(58013);
-    glT();
-    AppMethodBeat.o(58013);
-    throw null;
-  }
-  
-  public final b gjg()
+  public final b gnI()
   {
     AppMethodBeat.i(58016);
     b localb = c.a.b(this);
@@ -54,11 +46,19 @@ final class a
     return localb;
   }
   
-  public final ab gju()
+  public final ab gnW()
   {
     AppMethodBeat.i(58012);
-    glT();
+    gqv();
     AppMethodBeat.o(58012);
+    throw null;
+  }
+  
+  public final Map<f, g<?>> gom()
+  {
+    AppMethodBeat.i(58013);
+    gqv();
+    AppMethodBeat.o(58013);
     throw null;
   }
   

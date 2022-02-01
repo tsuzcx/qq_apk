@@ -8,13 +8,13 @@ public abstract class bn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEm = "content".hashCode();
-  private static final int eRD = "productID".hashCode();
-  private static final int eTO = "lan".hashCode();
+  private static final int eFV = "content".hashCode();
+  private static final int eTo = "productID".hashCode();
+  private static final int eVz = "lan".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDP = true;
-  private boolean eRd = true;
-  private boolean eTN = true;
+  private boolean eFy = true;
+  private boolean eSO = true;
+  private boolean eVy = true;
   public byte[] field_content;
   public String field_lan;
   public String field_productID;
@@ -32,11 +32,11 @@ public abstract class bn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eRD != k) {
+      if (eTo != k) {
         break label65;
       }
       this.field_productID = paramCursor.getString(i);
-      this.eRd = true;
+      this.eSO = true;
     }
     for (;;)
     {
@@ -44,9 +44,9 @@ public abstract class bn
       break label20;
       break;
       label65:
-      if (eEm == k) {
+      if (eFV == k) {
         this.field_content = paramCursor.getBlob(i);
-      } else if (eTO == k) {
+      } else if (eVz == k) {
         this.field_lan = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -57,16 +57,16 @@ public abstract class bn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eRd) {
+    if (this.eSO) {
       localContentValues.put("productID", this.field_productID);
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
     if (this.field_lan == null) {
       this.field_lan = "";
     }
-    if (this.eTN) {
+    if (this.eVy) {
       localContentValues.put("lan", this.field_lan);
     }
     if (this.systemRowid > 0L) {

@@ -2,39 +2,41 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.i;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.vfs.o;
 
 public class g
   extends d
 {
-  private String oSg;
+  private String oYI;
   
-  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bu parambu)
+  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bv parambv)
   {
-    super(paramg, parambu);
+    super(paramg, parambv);
   }
   
   public final void a(View paramView, a parama)
   {
     AppMethodBeat.i(123275);
-    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.oSd.bZx().getContext(), paramView, parama);
+    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.oYF.caM().getContext(), paramView, parama);
     AppMethodBeat.o(123275);
   }
   
-  protected String aCp()
+  protected String aCF()
   {
     AppMethodBeat.i(123274);
-    if (this.oSg == null)
+    if (this.oYI == null)
     {
-      this.oSg = q.aIF().c(this.oRU.field_imgPath, false, false);
-      if ((!bt.isNullOrNil(this.oSg)) && (!this.oSg.endsWith("hd")) && (com.tencent.mm.vfs.i.fv(this.oSg + "hd"))) {
-        this.oSg += "hd";
+      this.oYI = q.aIX().c(this.oYw.field_imgPath, false, false);
+      if ((!bu.isNullOrNil(this.oYI)) && (!this.oYI.endsWith("hd")) && (o.fB(this.oYI + "hd"))) {
+        this.oYI += "hd";
       }
     }
-    String str = this.oSg;
+    String str = this.oYI;
     AppMethodBeat.o(123274);
     return str;
   }

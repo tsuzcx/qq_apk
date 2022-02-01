@@ -5,43 +5,43 @@ import com.tencent.mm.b.q;
 
 public class AdaptiveAdjustBitrate
 {
-  public int hVA;
-  public int hVq;
-  public int hVr;
-  public int hVs;
-  public int hVt;
-  public int hVu;
-  public int hVv;
-  public int hVx;
-  public int hVy;
-  public int hVz;
-  public int hhV;
-  public int hhW;
-  public String htN;
+  public int hYi;
+  public int hYj;
+  public int hYk;
+  public int hYl;
+  public int hYm;
+  public int hYn;
+  public int hYp;
+  public int hYq;
+  public int hYr;
+  public int hYs;
+  public int hkJ;
+  public int hkK;
+  public String hwB;
   public int targetHeight;
   public int targetWidth;
-  public int xxm;
-  public int xxn;
-  public int yQX;
-  public int yQY;
+  public int xNj;
+  public int xNk;
+  public int zhh;
+  public int zhi;
   
   public static native float GetAuQaLevel(String paramString, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean1, boolean paramBoolean2);
   
   private static native int[] GetBitrate(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, boolean paramBoolean);
   
-  public static int[] a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12)
+  public static int[] a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, boolean paramBoolean)
   {
-    AppMethodBeat.i(187800);
-    paramString = GetBitrate(q.k(paramString, false), paramInt1, paramInt2, paramInt3, paramInt4, paramFloat1, paramFloat2, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, paramInt11, paramInt12, false);
-    AppMethodBeat.o(187800);
+    AppMethodBeat.i(221728);
+    paramString = GetBitrate(q.k(paramString, false), paramInt1, paramInt2, paramInt3, paramInt4, paramFloat1, paramFloat2, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, paramInt11, paramInt12, paramBoolean);
+    AppMethodBeat.o(221728);
     return paramString;
   }
   
   public static float b(String paramString, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(187801);
+    AppMethodBeat.i(221729);
     paramFloat1 = GetAuQaLevel(q.k(paramString, false), paramFloat1, paramFloat2, paramInt, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(187801);
+    AppMethodBeat.o(221729);
     return paramFloat1;
   }
   
@@ -49,34 +49,34 @@ public class AdaptiveAdjustBitrate
   
   public static native int getVideoImageQuality(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat);
   
-  public final void dPU()
+  public final void dTr()
   {
-    this.hVq = 0;
-    this.hVr = 0;
-    this.hVs = 0;
-    this.hVt = 0;
-    this.hVu = 0;
-    this.hVv = 0;
-    this.yQY = 0;
-    this.hVx = 0;
-    this.hVy = 0;
-    this.hhV = 0;
-    this.hhW = 0;
-    this.hVz = 0;
-    this.hVA = 0;
+    this.hYi = 0;
+    this.hYj = 0;
+    this.hYk = 0;
+    this.hYl = 0;
+    this.hYm = 0;
+    this.hYn = 0;
+    this.zhi = 0;
+    this.hYp = 0;
+    this.hYq = 0;
+    this.hkJ = 0;
+    this.hkK = 0;
+    this.hYr = 0;
+    this.hYs = 0;
   }
   
   public String toString()
   {
     AppMethodBeat.i(133593);
-    String str = "[ sourceVideoPath " + this.htN + " targetHeight " + this.targetHeight + " targetWidth " + this.targetWidth + " targetvideoBitrate " + this.yQX + " reMuxStartTimeMs " + this.xxm + " reMuxEndTimeMs " + this.xxn + " remuxScene " + this.hVA + " abaSwitch " + this.hVq + " qpSwitch " + this.hVr + " abaUpgear " + this.hVs + " abaDowngear " + this.hVt + " ceilingVideoBR " + this.hVu + " flooringVideoBR " + this.hVv + " isEnableHEVC " + this.yQY + " isEnable720p " + this.hVx + " minQP " + this.hhV + " maxQP " + this.hhW + " takePhotosVideoBR " + this.hVz + " remuxScene " + this.hVA + "]";
+    String str = "[ sourceVideoPath " + this.hwB + " targetHeight " + this.targetHeight + " targetWidth " + this.targetWidth + " targetvideoBitrate " + this.zhh + " reMuxStartTimeMs " + this.xNj + " reMuxEndTimeMs " + this.xNk + " remuxScene " + this.hYs + " abaSwitch " + this.hYi + " qpSwitch " + this.hYj + " abaUpgear " + this.hYk + " abaDowngear " + this.hYl + " ceilingVideoBR " + this.hYm + " flooringVideoBR " + this.hYn + " isEnableHEVC " + this.zhi + " isEnable720p " + this.hYp + " minQP " + this.hkJ + " maxQP " + this.hkK + " takePhotosVideoBR " + this.hYr + " remuxScene " + this.hYs + "]";
     AppMethodBeat.o(133593);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate
  * JD-Core Version:    0.7.0.1
  */

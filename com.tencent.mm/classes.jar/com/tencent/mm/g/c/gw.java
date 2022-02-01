@@ -8,25 +8,25 @@ public abstract class gw
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fcV = "receiveTime".hashCode();
-  private static final int fpI = "receiveStatus".hashCode();
-  private static final int fyC = "mNativeUrl".hashCode();
-  private static final int fyD = "hbType".hashCode();
-  private static final int fyE = "receiveAmount".hashCode();
-  private static final int fyF = "hbStatus".hashCode();
+  private static final int fAs = "wallet_tpa_country".hashCode();
+  private static final int fAt = "wallet_type".hashCode();
+  private static final int fAu = "wallet_name".hashCode();
+  private static final int fAv = "wallet_selected".hashCode();
+  private static final int fAw = "wallet_balance".hashCode();
+  private static final int fAx = "wallet_tpa_country_mask".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fcK = true;
-  public int field_hbStatus;
-  public int field_hbType;
-  public String field_mNativeUrl;
-  public long field_receiveAmount;
-  public int field_receiveStatus;
-  public long field_receiveTime;
-  private boolean fpF = true;
-  private boolean fyA = true;
-  private boolean fyB = true;
-  private boolean fyy = true;
-  private boolean fyz = true;
+  private boolean fAm = true;
+  private boolean fAn = true;
+  private boolean fAo = true;
+  private boolean fAp = true;
+  private boolean fAq = true;
+  private boolean fAr = true;
+  public int field_wallet_balance;
+  public String field_wallet_name;
+  public int field_wallet_selected;
+  public String field_wallet_tpa_country;
+  public int field_wallet_tpa_country_mask;
+  public int field_wallet_type;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +41,11 @@ public abstract class gw
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fyC != k) {
+      if (fAs != k) {
         break label65;
       }
-      this.field_mNativeUrl = paramCursor.getString(i);
-      this.fyy = true;
+      this.field_wallet_tpa_country = paramCursor.getString(i);
+      this.fAm = true;
     }
     for (;;)
     {
@@ -53,16 +53,16 @@ public abstract class gw
       break label20;
       break;
       label65:
-      if (fyD == k) {
-        this.field_hbType = paramCursor.getInt(i);
-      } else if (fyE == k) {
-        this.field_receiveAmount = paramCursor.getLong(i);
-      } else if (fcV == k) {
-        this.field_receiveTime = paramCursor.getLong(i);
-      } else if (fpI == k) {
-        this.field_receiveStatus = paramCursor.getInt(i);
-      } else if (fyF == k) {
-        this.field_hbStatus = paramCursor.getInt(i);
+      if (fAt == k) {
+        this.field_wallet_type = paramCursor.getInt(i);
+      } else if (fAu == k) {
+        this.field_wallet_name = paramCursor.getString(i);
+      } else if (fAv == k) {
+        this.field_wallet_selected = paramCursor.getInt(i);
+      } else if (fAw == k) {
+        this.field_wallet_balance = paramCursor.getInt(i);
+      } else if (fAx == k) {
+        this.field_wallet_tpa_country_mask = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +72,23 @@ public abstract class gw
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fyy) {
-      localContentValues.put("mNativeUrl", this.field_mNativeUrl);
+    if (this.fAm) {
+      localContentValues.put("wallet_tpa_country", this.field_wallet_tpa_country);
     }
-    if (this.fyz) {
-      localContentValues.put("hbType", Integer.valueOf(this.field_hbType));
+    if (this.fAn) {
+      localContentValues.put("wallet_type", Integer.valueOf(this.field_wallet_type));
     }
-    if (this.fyA) {
-      localContentValues.put("receiveAmount", Long.valueOf(this.field_receiveAmount));
+    if (this.fAo) {
+      localContentValues.put("wallet_name", this.field_wallet_name);
     }
-    if (this.fcK) {
-      localContentValues.put("receiveTime", Long.valueOf(this.field_receiveTime));
+    if (this.fAp) {
+      localContentValues.put("wallet_selected", Integer.valueOf(this.field_wallet_selected));
     }
-    if (this.fpF) {
-      localContentValues.put("receiveStatus", Integer.valueOf(this.field_receiveStatus));
+    if (this.fAq) {
+      localContentValues.put("wallet_balance", Integer.valueOf(this.field_wallet_balance));
     }
-    if (this.fyB) {
-      localContentValues.put("hbStatus", Integer.valueOf(this.field_hbStatus));
+    if (this.fAr) {
+      localContentValues.put("wallet_tpa_country_mask", Integer.valueOf(this.field_wallet_tpa_country_mask));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +98,7 @@ public abstract class gw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gw
  * JD-Core Version:    0.7.0.1
  */

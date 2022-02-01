@@ -1,32 +1,32 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.e;
-import com.tencent.mm.am.a.k;
-import com.tencent.mm.am.a.l;
-import com.tencent.mm.am.ag;
-import com.tencent.mm.am.g;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.al.a.e;
+import com.tencent.mm.al.a.k;
+import com.tencent.mm.al.a.l;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.al.g;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
   implements x
 {
-  public final boolean aMG(String paramString)
+  public final boolean aOc(String paramString)
   {
     AppMethodBeat.i(124373);
-    boolean bool = g.vd(paramString);
+    boolean bool = g.vz(paramString);
     AppMethodBeat.o(124373);
     return bool;
   }
   
-  public final Object aMH(String paramString)
+  public final Object aOd(String paramString)
   {
     AppMethodBeat.i(124374);
-    k localk2 = ag.aGd().eK(paramString);
+    k localk2 = ag.aGt().eP(paramString);
     k localk1;
-    if ((localk2 != null) && (!bt.isNullOrNil(localk2.field_userId)))
+    if ((localk2 != null) && (!bu.isNullOrNil(localk2.field_userId)))
     {
       localk1 = localk2;
       if (localk2.field_userId.equals(paramString)) {}
@@ -40,30 +40,30 @@ public final class d
     return localk1;
   }
   
-  public final c aMI(String paramString)
+  public final c aOe(String paramString)
   {
     AppMethodBeat.i(124375);
     c.a locala = new c.a();
-    locala.prefixPath = e.Ex(paramString);
-    locala.idr = true;
-    locala.hdX = true;
-    locala.idD = 2131690013;
-    paramString = locala.aJc();
+    locala.prefixPath = e.EZ(paramString);
+    locala.igk = true;
+    locala.hgL = true;
+    locala.igv = 2131690013;
+    paramString = locala.aJu();
     AppMethodBeat.o(124375);
     return paramString;
   }
   
-  public final String dM(Object paramObject)
+  public final String dN(Object paramObject)
   {
     return ((k)paramObject).field_userName;
   }
   
-  public final String dN(Object paramObject)
+  public final String dO(Object paramObject)
   {
     return ((k)paramObject).field_headImageUrl;
   }
   
-  public final String dO(Object paramObject)
+  public final String dP(Object paramObject)
   {
     return ((k)paramObject).field_userId;
   }

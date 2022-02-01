@@ -33,8 +33,8 @@ public class f
   extends ae
   implements b
 {
-  public static final a.a<av> NdM;
-  private f.a NdN;
+  public static final a.a<av> NAR;
+  private a NAS;
   
   static
   {
@@ -43,7 +43,7 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      NdM = new a.a() {};
+      NAR = new a.a() {};
       AppMethodBeat.o(57721);
       return;
     }
@@ -53,7 +53,7 @@ public class f
   {
     super(paraml, paramam, paramg, paramf, parama, paraman);
     AppMethodBeat.i(57713);
-    this.NdN = null;
+    this.NAS = null;
     AppMethodBeat.o(57713);
   }
   
@@ -61,18 +61,18 @@ public class f
   {
     AppMethodBeat.i(57714);
     if (paraml == null) {
-      ajm(5);
+      ajW(5);
     }
     if (paramg == null) {
-      ajm(6);
+      ajW(6);
     }
     if (paramf == null) {
-      ajm(7);
+      ajW(7);
     }
     if (paraman == null) {
-      ajm(8);
+      ajW(8);
     }
-    paraml = new f(paraml, null, paramg, paramf, b.a.MUj, paraman);
+    paraml = new f(paraml, null, paramg, paramf, b.a.Nro, paraman);
     AppMethodBeat.o(57714);
     return paraml;
   }
@@ -81,24 +81,24 @@ public class f
   {
     AppMethodBeat.i(57715);
     if (paramList == null) {
-      ajm(9);
+      ajW(9);
     }
     if (paramList1 == null) {
-      ajm(10);
+      ajW(10);
     }
     if (paramba == null) {
-      ajm(11);
+      ajW(11);
     }
     paramak2 = super.a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba, paramMap);
-    paramak1 = i.NEt;
+    paramak1 = i.ObA;
     p.h(paramak2, "functionDescriptor");
-    paramList = paramak1.gul().iterator();
+    paramList = paramak1.gyN().iterator();
     int i;
     if (paramList.hasNext())
     {
       paramak1 = (d)paramList.next();
       p.h(paramak2, "functionDescriptor");
-      if ((paramak1.MXf != null) && ((p.i(paramak2.giD(), paramak1.MXf) ^ true)))
+      if ((paramak1.Nul != null) && ((p.i(paramak2.gnf(), paramak1.Nul) ^ true)))
       {
         i = 0;
         label125:
@@ -106,7 +106,7 @@ public class f
           break label294;
         }
         p.h(paramak2, "functionDescriptor");
-        paramList = paramak1.NEj;
+        paramList = paramak1.Obq;
         int j = paramList.length;
         i = 0;
         label148:
@@ -122,24 +122,24 @@ public class f
     }
     for (;;)
     {
-      this.MXY = paramak1.dpX;
+      this.Nve = paramak1.drc;
       if (paramak2 == null) {
-        ajm(12);
+        ajW(12);
       }
       AppMethodBeat.o(57715);
       return paramak2;
-      if (paramak1.NEg != null)
+      if (paramak1.Obn != null)
       {
-        paramList1 = paramak2.giD().sD();
+        paramList1 = paramak2.gnf().sD();
         p.g(paramList1, "functionDescriptor.name.asString()");
         paramList1 = (CharSequence)paramList1;
-        if (!paramak1.NEg.aC(paramList1))
+        if (!paramak1.Obn.aB(paramList1))
         {
           i = 0;
           break label125;
         }
       }
-      if ((paramak1.NEh != null) && (!paramak1.NEh.contains(paramak2.giD())))
+      if ((paramak1.Obo != null) && (!paramak1.Obo.contains(paramak2.gnf())))
       {
         i = 0;
         break label125;
@@ -152,58 +152,107 @@ public class f
       i += 1;
       break label148;
       label305:
-      paramak1 = (String)paramak1.NEi.invoke(paramak2);
+      paramak1 = (String)paramak1.Obp.invoke(paramak2);
       if (paramak1 != null)
       {
         paramak1 = (c)new c.b(paramak1);
       }
       else
       {
-        paramak1 = (c)c.c.NEf;
+        paramak1 = (c)c.c.Obm;
         continue;
-        paramak1 = (c)c.a.NEe;
+        paramak1 = (c)c.a.Obl;
       }
     }
   }
   
-  public final void bf(boolean paramBoolean1, boolean paramBoolean2)
+  public final void be(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(57718);
-    this.NdN = f.a.bg(paramBoolean1, paramBoolean2);
+    this.NAS = a.bf(paramBoolean1, paramBoolean2);
     AppMethodBeat.o(57718);
   }
   
-  public final boolean git()
+  public final boolean gmV()
   {
     AppMethodBeat.i(57717);
-    if ((!$assertionsDisabled) && (this.NdN == null))
+    if ((!$assertionsDisabled) && (this.NAS == null))
     {
       AssertionError localAssertionError = new AssertionError("Parameter names status was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57717);
       throw localAssertionError;
     }
-    boolean bool = this.NdN.NdT;
+    boolean bool = this.NAS.NAY;
     AppMethodBeat.o(57717);
     return bool;
   }
   
-  public final boolean gjY()
+  public final boolean goA()
   {
     AppMethodBeat.i(57716);
-    if ((!$assertionsDisabled) && (this.NdN == null))
+    if ((!$assertionsDisabled) && (this.NAS == null))
     {
       AssertionError localAssertionError = new AssertionError("Parameter names status was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57716);
       throw localAssertionError;
     }
-    boolean bool = this.NdN.NdS;
+    boolean bool = this.NAS.NAX;
     AppMethodBeat.o(57716);
     return bool;
+  }
+  
+  static enum a
+  {
+    public final boolean NAX;
+    public final boolean NAY;
+    
+    static
+    {
+      AppMethodBeat.i(57712);
+      NAT = new a("NON_STABLE_DECLARED", 0, false, false);
+      NAU = new a("STABLE_DECLARED", 1, true, false);
+      NAV = new a("NON_STABLE_SYNTHESIZED", 2, false, true);
+      NAW = new a("STABLE_SYNTHESIZED", 3, true, true);
+      NAZ = new a[] { NAT, NAU, NAV, NAW };
+      AppMethodBeat.o(57712);
+    }
+    
+    private a(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      this.NAX = paramBoolean1;
+      this.NAY = paramBoolean2;
+    }
+    
+    public static a bf(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      AppMethodBeat.i(57711);
+      Object localObject;
+      if (paramBoolean1) {
+        if (paramBoolean2) {
+          localObject = NAW;
+        }
+      }
+      while (localObject == null)
+      {
+        localObject = new IllegalStateException(String.format("@NotNull method %s.%s must not return null", new Object[] { "kotlin/reflect/jvm/internal/impl/load/java/descriptors/JavaMethodDescriptor$ParameterNamesStatus", "get" }));
+        AppMethodBeat.o(57711);
+        throw ((Throwable)localObject);
+        localObject = NAU;
+        continue;
+        if (paramBoolean2) {
+          localObject = NAV;
+        } else {
+          localObject = NAT;
+        }
+      }
+      AppMethodBeat.o(57711);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.b.f
  * JD-Core Version:    0.7.0.1
  */

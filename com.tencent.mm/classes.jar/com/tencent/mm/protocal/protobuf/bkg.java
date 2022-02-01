@@ -4,45 +4,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bkg
-  extends cvc
+  extends cvw
 {
-  public int Version;
+  public int FJf;
+  public int GXv;
+  public int xsB;
+  public int xsC;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32284);
+    AppMethodBeat.i(74659);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.Version);
-      AppMethodBeat.o(32284);
+      paramVarArgs.aS(2, this.GXv);
+      paramVarArgs.aS(3, this.xsB);
+      paramVarArgs.aS(4, this.xsC);
+      paramVarArgs.aS(5, this.FJf);
+      AppMethodBeat.o(74659);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label362;
+        break label494;
       }
     }
-    label362:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label494:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.Version);
-      AppMethodBeat.o(32284);
-      return paramInt + i;
+      int i = f.a.a.b.b.a.bz(2, this.GXv);
+      int j = f.a.a.b.b.a.bz(3, this.xsB);
+      int k = f.a.a.b.b.a.bz(4, this.xsC);
+      int m = f.a.a.b.b.a.bz(5, this.FJf);
+      AppMethodBeat.o(74659);
+      return paramInt + i + j + k + m;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(32284);
+        AppMethodBeat.o(74659);
         return 0;
       }
       if (paramInt == 3)
@@ -53,10 +62,10 @@ public final class bkg
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32284);
+          AppMethodBeat.o(74659);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -64,18 +73,30 @@ public final class bkg
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbkg.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(32284);
+          AppMethodBeat.o(74659);
+          return 0;
+        case 2: 
+          localbkg.GXv = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(74659);
+          return 0;
+        case 3: 
+          localbkg.xsB = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(74659);
+          return 0;
+        case 4: 
+          localbkg.xsC = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(74659);
           return 0;
         }
-        localbkg.Version = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(32284);
+        localbkg.FJf = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(74659);
         return 0;
       }
-      AppMethodBeat.o(32284);
+      AppMethodBeat.o(74659);
       return -1;
     }
   }

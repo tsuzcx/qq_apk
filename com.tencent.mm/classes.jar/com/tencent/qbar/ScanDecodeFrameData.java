@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/qbar/ScanDecodeFrameData;", "Landroid/os/Parcelable;", "frameData", "", "width", "", "height", "cameraRotation", "([BIII)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getCameraRotation", "()I", "setCameraRotation", "(I)V", "getHeight", "setHeight", "previewData", "getPreviewData", "()[B", "setPreviewData", "([B)V", "getWidth", "setWidth", "describeContents", "writeToParcel", "", "flags", "Companion", "scan-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/qbar/ScanDecodeFrameData;", "Landroid/os/Parcelable;", "frameData", "", "width", "", "height", "cameraRotation", "([BIII)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getCameraRotation", "()I", "setCameraRotation", "(I)V", "getHeight", "setHeight", "previewData", "getPreviewData", "()[B", "setPreviewData", "([B)V", "getWidth", "setWidth", "describeContents", "writeToParcel", "", "flags", "Companion", "scan-sdk_release"})
 public final class ScanDecodeFrameData
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanDecodeFrameData> CREATOR;
-  public static final a LKA;
+  public static final a Mhz;
   public int height;
-  public int rih;
+  public int rql;
   public int width;
-  public byte[] yly;
+  public byte[] yBx;
   
   static
   {
     AppMethodBeat.i(176216);
-    LKA = new a((byte)0);
+    Mhz = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(176216);
   }
@@ -29,8 +29,8 @@ public final class ScanDecodeFrameData
   public ScanDecodeFrameData(Parcel paramParcel)
   {
     AppMethodBeat.i(176215);
-    this.yly = paramParcel.createByteArray();
-    this.rih = paramParcel.readInt();
+    this.yBx = paramParcel.createByteArray();
+    this.rql = paramParcel.readInt();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
     AppMethodBeat.o(176215);
@@ -38,10 +38,10 @@ public final class ScanDecodeFrameData
   
   public ScanDecodeFrameData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.yly = paramArrayOfByte;
+    this.yBx = paramArrayOfByte;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.rih = paramInt3;
+    this.rql = paramInt3;
   }
   
   public final int describeContents()
@@ -53,17 +53,17 @@ public final class ScanDecodeFrameData
   {
     AppMethodBeat.i(176214);
     p.h(paramParcel, "parcel");
-    paramParcel.writeByteArray(this.yly);
-    paramParcel.writeInt(this.rih);
+    paramParcel.writeByteArray(this.yBx);
+    paramParcel.writeInt(this.rql);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
     AppMethodBeat.o(176214);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/qbar/ScanDecodeFrameData$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "TAG", "", "scan-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/qbar/ScanDecodeFrameData$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "TAG", "", "scan-sdk_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/qbar/ScanDecodeFrameData$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/qbar/ScanDecodeFrameData;", "scan-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/qbar/ScanDecodeFrameData$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/qbar/ScanDecodeFrameData;", "scan-sdk_release"})
   public static final class b
     implements Parcelable.Creator<ScanDecodeFrameData>
   {}

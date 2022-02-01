@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class q
   implements f
 {
-  public String BVF;
-  public int BVG;
-  public a BVW;
-  private String BVm;
-  private int BVs;
+  private String CmN;
+  private int CmT;
+  public String Cng;
+  public int Cnh;
+  public a Cnx;
   
   public q()
   {
     AppMethodBeat.i(29809);
-    this.BVW = null;
-    this.BVG = -1;
-    this.BVF = null;
-    this.BVm = null;
-    this.BVs = 0;
-    ba.aiU().a(611, this);
-    ba.aiU().a(613, this);
+    this.Cnx = null;
+    this.Cnh = -1;
+    this.Cng = null;
+    this.CmN = null;
+    this.CmT = 0;
+    bc.ajj().a(611, this);
+    bc.ajj().a(613, this);
     AppMethodBeat.o(29809);
   }
   
   public q(a parama)
   {
     this();
-    this.BVW = parama;
+    this.Cnx = parama;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(29810);
-    ad.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
       if (paramInt2 == -34)
       {
-        ad.d("MicroMsg.VoicePrintUnLockService", "blocked by limit");
-        if (this.BVW != null) {
-          this.BVW.eul();
+        ae.d("MicroMsg.VoicePrintUnLockService", "blocked by limit");
+        if (this.Cnx != null) {
+          this.Cnx.exR();
         }
         AppMethodBeat.o(29810);
         return;
       }
-      if (this.BVW != null) {
-        this.BVW.euj();
+      if (this.Cnx != null) {
+        this.Cnx.exP();
       }
       AppMethodBeat.o(29810);
       return;
@@ -59,29 +59,29 @@ public final class q
     if (paramn.getType() == 611)
     {
       paramString = (d)paramn;
-      this.BVG = paramString.BVl;
-      this.BVF = paramString.BVk;
-      this.BVm = paramString.BVm;
-      ad.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.BVG), this.BVm, Boolean.valueOf(bt.isNullOrNil(this.BVF)) });
-      if (this.BVW != null) {
-        this.BVW.aDC(this.BVF);
+      this.Cnh = paramString.CmM;
+      this.Cng = paramString.CmL;
+      this.CmN = paramString.CmN;
+      ae.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.Cnh), this.CmN, Boolean.valueOf(bu.isNullOrNil(this.Cng)) });
+      if (this.Cnx != null) {
+        this.Cnx.aEV(this.Cng);
       }
     }
     if (paramn.getType() == 613) {
       if (((j)paramn).Nv == 0)
       {
-        ad.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
-        if (this.BVW != null)
+        ae.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
+        if (this.Cnx != null)
         {
-          this.BVW.sZ(true);
+          this.Cnx.tg(true);
           AppMethodBeat.o(29810);
         }
       }
       else
       {
-        ad.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
-        if (this.BVW != null) {
-          this.BVW.sZ(false);
+        ae.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
+        if (this.Cnx != null) {
+          this.Cnx.tg(false);
         }
       }
     }
@@ -90,13 +90,13 @@ public final class q
   
   public static abstract interface a
   {
-    public abstract void aDC(String paramString);
+    public abstract void aEV(String paramString);
     
-    public abstract void euj();
+    public abstract void exP();
     
-    public abstract void eul();
+    public abstract void exR();
     
-    public abstract void sZ(boolean paramBoolean);
+    public abstract void tg(boolean paramBoolean);
   }
 }
 

@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.finder.utils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderObjectStatusRefresher$ObjectStatusReqState;", "", "lastReqTime", "", "waitTime", "(JJ)V", "getLastReqTime", "()J", "getWaitTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderObjectStatusRefresher$ObjectStatusReqState;", "", "lastReqTime", "", "waitTime", "(JJ)V", "getLastReqTime", "()J", "getWaitTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
 public final class j$a
 {
-  final long sLr;
+  final long sWC;
   final long waitTime;
   
   public j$a(long paramLong1, long paramLong2)
   {
-    this.sLr = paramLong1;
+    this.sWC = paramLong1;
     this.waitTime = paramLong2;
   }
   
@@ -22,7 +22,7 @@ public final class j$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.sLr != paramObject.sLr) || (this.waitTime != paramObject.waitTime)) {}
+        if ((this.sWC != paramObject.sWC) || (this.waitTime != paramObject.waitTime)) {}
       }
     }
     else {
@@ -33,7 +33,7 @@ public final class j$a
   
   public final int hashCode()
   {
-    long l = this.sLr;
+    long l = this.sWC;
     int i = (int)(l ^ l >>> 32);
     l = this.waitTime;
     return i * 31 + (int)(l ^ l >>> 32);
@@ -42,7 +42,7 @@ public final class j$a
   public final String toString()
   {
     AppMethodBeat.i(167890);
-    String str = "ObjectStatusReqState(lastReqTime=" + this.sLr + ", waitTime=" + this.waitTime + ")";
+    String str = "ObjectStatusReqState(lastReqTime=" + this.sWC + ", waitTime=" + this.waitTime + ")";
     AppMethodBeat.o(167890);
     return str;
   }

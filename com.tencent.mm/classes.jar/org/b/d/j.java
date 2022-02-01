@@ -7,15 +7,15 @@ public enum j
   static
   {
     AppMethodBeat.i(40514);
-    NWv = new j("GET", 0);
-    NWw = new j("POST", 1);
-    NWx = new j("PUT", 2);
-    NWy = new j("DELETE", 3);
-    NWz = new j("HEAD", 4);
-    NWA = new j("OPTIONS", 5);
-    NWB = new j("TRACE", 6);
-    NWC = new j("PATCH", 7);
-    NWD = new j[] { NWv, NWw, NWx, NWy, NWz, NWA, NWB, NWC };
+    OtA = new j("GET", 0);
+    OtB = new j("POST", 1);
+    OtC = new j("PUT", 2);
+    OtD = new j("DELETE", 3);
+    OtE = new j("HEAD", 4);
+    OtF = new j("OPTIONS", 5);
+    OtG = new j("TRACE", 6);
+    OtH = new j("PATCH", 7);
+    OtI = new j[] { OtA, OtB, OtC, OtD, OtE, OtF, OtG, OtH };
     AppMethodBeat.o(40514);
   }
 }

@@ -6,7 +6,7 @@ public abstract interface a<K>
   
   public abstract void cN(int paramInt, String paramString);
   
-  public abstract void foH();
+  public abstract void fsA();
   
   public abstract K getKey();
   

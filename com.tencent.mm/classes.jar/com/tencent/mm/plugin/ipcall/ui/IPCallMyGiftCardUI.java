@@ -18,16 +18,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.bku;
-import com.tencent.mm.protocal.protobuf.eak;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.blm;
+import com.tencent.mm.protocal.protobuf.ecb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
@@ -39,10 +39,10 @@ public class IPCallMyGiftCardUI
   implements f
 {
   private View GG;
-  private ProgressDialog iYL;
+  private ProgressDialog jbE;
   private ListView mListView;
-  private a uSn;
-  private com.tencent.mm.plugin.ipcall.model.e.d uSo;
+  private a vdZ;
+  private com.tencent.mm.plugin.ipcall.model.e.d vea;
   
   public int getForceOrientation()
   {
@@ -60,7 +60,7 @@ public class IPCallMyGiftCardUI
   {
     AppMethodBeat.i(25835);
     super.onCreate(paramBundle);
-    ba.aiU().a(288, this);
+    bc.ajj().a(288, this);
     setMMTitle(2131760528);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -80,18 +80,18 @@ public class IPCallMyGiftCardUI
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("rawUrl", IPCallMyGiftCardUI.this.getString(2131760445));
         paramAnonymousMenuItem.putExtra("showShare", false);
-        com.tencent.mm.bs.d.b(IPCallMyGiftCardUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
+        com.tencent.mm.br.d.b(IPCallMyGiftCardUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
         AppMethodBeat.o(25829);
         return true;
       }
     });
     this.GG = findViewById(2131301128);
     this.mListView = ((ListView)findViewById(2131301129));
-    this.uSn = new a(this);
-    this.mListView.setAdapter(this.uSn);
+    this.vdZ = new a(this);
+    this.mListView.setAdapter(this.vdZ);
     paramBundle = getContext();
     getString(2131755906);
-    this.iYL = h.b(paramBundle, getString(2131760457), true, new DialogInterface.OnCancelListener()
+    this.jbE = h.b(paramBundle, getString(2131760457), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -99,7 +99,7 @@ public class IPCallMyGiftCardUI
         try
         {
           if (IPCallMyGiftCardUI.a(IPCallMyGiftCardUI.this) != null) {
-            ba.aiU().a(IPCallMyGiftCardUI.a(IPCallMyGiftCardUI.this));
+            bc.ajj().a(IPCallMyGiftCardUI.a(IPCallMyGiftCardUI.this));
           }
           IPCallMyGiftCardUI.this.finish();
           AppMethodBeat.o(25830);
@@ -107,13 +107,13 @@ public class IPCallMyGiftCardUI
         }
         catch (Exception paramAnonymousDialogInterface)
         {
-          ad.e("MicroMsg.IPCallMyGiftCardUI", "cancel getProductListScene error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
+          ae.e("MicroMsg.IPCallMyGiftCardUI", "cancel getProductListScene error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
           AppMethodBeat.o(25830);
         }
       }
     });
-    this.uSo = new com.tencent.mm.plugin.ipcall.model.e.d();
-    ba.aiU().a(this.uSo, 0);
+    this.vea = new com.tencent.mm.plugin.ipcall.model.e.d();
+    bc.ajj().a(this.vea, 0);
     AppMethodBeat.o(25835);
   }
   
@@ -121,7 +121,7 @@ public class IPCallMyGiftCardUI
   {
     AppMethodBeat.i(25837);
     super.onDestroy();
-    ba.aiU().b(288, this);
+    bc.ajj().b(288, this);
     AppMethodBeat.o(25837);
   }
   
@@ -135,26 +135,26 @@ public class IPCallMyGiftCardUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(25838);
-    ad.i("MicroMsg.IPCallMyGiftCardUI", "onSceneEnd>errCode:%d,onSceneEnd>errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.IPCallMyGiftCardUI", "onSceneEnd>errCode:%d,onSceneEnd>errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
     if ((paramn instanceof com.tencent.mm.plugin.ipcall.model.e.d))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((com.tencent.mm.plugin.ipcall.model.e.d)paramn).uNh;
-        if ((this.iYL != null) && (this.iYL.isShowing())) {
-          this.iYL.dismiss();
+        paramString = ((com.tencent.mm.plugin.ipcall.model.e.d)paramn).uYU;
+        if ((this.jbE != null) && (this.jbE.isShowing())) {
+          this.jbE.dismiss();
         }
-        this.uSn.cje = paramString.GFb;
-        this.uSn.uSr = paramString;
-        this.uSn.notifyDataSetChanged();
-        if (paramString.GFb.size() == 0) {
+        this.vdZ.cjg = paramString.GYD;
+        this.vdZ.ved = paramString;
+        this.vdZ.notifyDataSetChanged();
+        if (paramString.GYD.size() == 0) {
           this.GG.setVisibility(0);
         }
         AppMethodBeat.o(25838);
         return;
       }
-      if ((this.iYL != null) && (this.iYL.isShowing())) {
-        this.iYL.dismiss();
+      if ((this.jbE != null) && (this.jbE.isShowing())) {
+        this.jbE.dismiss();
       }
       this.GG.setVisibility(0);
       Toast.makeText(getContext(), getString(2131760454), 0).show();
@@ -171,30 +171,30 @@ public class IPCallMyGiftCardUI
   static final class a
     extends BaseAdapter
   {
-    List<eak> cje;
-    private IPCallMyGiftCardUI uSq;
-    bku uSr;
+    List<ecb> cjg;
+    private IPCallMyGiftCardUI vec;
+    blm ved;
     
     public a(IPCallMyGiftCardUI paramIPCallMyGiftCardUI)
     {
       AppMethodBeat.i(25831);
-      this.cje = null;
-      this.uSq = null;
-      this.uSr = null;
+      this.cjg = null;
+      this.vec = null;
+      this.ved = null;
       Assert.assertTrue(true);
-      this.uSq = paramIPCallMyGiftCardUI;
+      this.vec = paramIPCallMyGiftCardUI;
       AppMethodBeat.o(25831);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(25832);
-      if (this.cje == null)
+      if (this.cjg == null)
       {
         AppMethodBeat.o(25832);
         return 0;
       }
-      int i = this.cje.size();
+      int i = this.cjg.size();
       AppMethodBeat.o(25832);
       return i;
     }
@@ -202,9 +202,9 @@ public class IPCallMyGiftCardUI
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(25833);
-      if (this.cje != null)
+      if (this.cjg != null)
       {
-        Object localObject = this.cje.get(paramInt);
+        Object localObject = this.cjg.get(paramInt);
         AppMethodBeat.o(25833);
         return localObject;
       }
@@ -222,53 +222,53 @@ public class IPCallMyGiftCardUI
       AppMethodBeat.i(25834);
       if (paramView == null)
       {
-        paramView = ((LayoutInflater)this.uSq.getSystemService("layout_inflater")).inflate(2131494518, paramViewGroup, false);
+        paramView = ((LayoutInflater)this.vec.getSystemService("layout_inflater")).inflate(2131494518, paramViewGroup, false);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.uSs = ((TextView)paramView.findViewById(2131298810));
-        paramViewGroup.uSt = ((TextView)paramView.findViewById(2131298927));
-        paramViewGroup.uSu = ((TextView)paramView.findViewById(2131299604));
-        paramViewGroup.uSv = ((CdnImageView)paramView.findViewById(2131300718));
-        paramViewGroup.uSw = ((ImageView)paramView.findViewById(2131298951));
+        paramViewGroup.vee = ((TextView)paramView.findViewById(2131298810));
+        paramViewGroup.vef = ((TextView)paramView.findViewById(2131298927));
+        paramViewGroup.veg = ((TextView)paramView.findViewById(2131299604));
+        paramViewGroup.veh = ((CdnImageView)paramView.findViewById(2131300718));
+        paramViewGroup.vei = ((ImageView)paramView.findViewById(2131298951));
         paramView.setTag(paramViewGroup);
       }
-      eak localeak;
+      ecb localecb;
       for (;;)
       {
-        localeak = (eak)getItem(paramInt);
-        if (localeak != null) {
+        localecb = (ecb)getItem(paramInt);
+        if (localecb != null) {
           break;
         }
         AppMethodBeat.o(25834);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
       }
-      if (bt.isNullOrNil(localeak.HNx))
+      if (bu.isNullOrNil(localecb.IhE))
       {
-        paramViewGroup.uSs.setVisibility(0);
-        paramViewGroup.uSt.setVisibility(0);
-        paramViewGroup.uSu.setVisibility(8);
-        paramViewGroup.uSs.setText(localeak.Hfq);
-        paramViewGroup.uSt.setText(localeak.HNw);
-        a.b.a(paramViewGroup.uSw, "", 0.5F, false);
-        if (bt.isNullOrNil(localeak.ufR)) {
+        paramViewGroup.vee.setVisibility(0);
+        paramViewGroup.vef.setVisibility(0);
+        paramViewGroup.veg.setVisibility(8);
+        paramViewGroup.vee.setText(localecb.HyQ);
+        paramViewGroup.vef.setText(localecb.IhD);
+        a.b.a(paramViewGroup.vei, "", 0.5F, false);
+        if (bu.isNullOrNil(localecb.urn)) {
           break label304;
         }
-        paramViewGroup.uSv.setVisibility(0);
-        paramViewGroup.uSv.setUrl(localeak.ufR);
-        paramViewGroup.uSw.setVisibility(4);
+        paramViewGroup.veh.setVisibility(0);
+        paramViewGroup.veh.setUrl(localecb.urn);
+        paramViewGroup.vei.setVisibility(4);
       }
       for (;;)
       {
         AppMethodBeat.o(25834);
         return paramView;
-        paramViewGroup.uSs.setVisibility(8);
-        paramViewGroup.uSt.setVisibility(8);
-        paramViewGroup.uSu.setVisibility(0);
-        paramViewGroup.uSu.setText(localeak.HNx);
+        paramViewGroup.vee.setVisibility(8);
+        paramViewGroup.vef.setVisibility(8);
+        paramViewGroup.veg.setVisibility(0);
+        paramViewGroup.veg.setText(localecb.IhE);
         break;
         label304:
-        paramViewGroup.uSw.setVisibility(0);
-        paramViewGroup.uSv.setVisibility(4);
+        paramViewGroup.vei.setVisibility(0);
+        paramViewGroup.veh.setVisibility(4);
       }
     }
     
@@ -279,11 +279,11 @@ public class IPCallMyGiftCardUI
     
     final class a
     {
-      TextView uSs;
-      TextView uSt;
-      TextView uSu;
-      CdnImageView uSv;
-      ImageView uSw;
+      TextView vee;
+      TextView vef;
+      TextView veg;
+      CdnImageView veh;
+      ImageView vei;
       
       private a() {}
     }

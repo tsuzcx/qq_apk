@@ -7,20 +7,20 @@ import d.l;
 import java.lang.reflect.Type;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/jvm/internal/calls/ThrowingCaller;", "Lkotlin/reflect/jvm/internal/calls/Caller;", "", "()V", "member", "getMember", "()Ljava/lang/Void;", "parameterTypes", "", "Ljava/lang/reflect/Type;", "getParameterTypes", "()Ljava/util/List;", "returnType", "getReturnType", "()Ljava/lang/reflect/Type;", "call", "", "args", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-reflection"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/reflect/jvm/internal/calls/ThrowingCaller;", "Lkotlin/reflect/jvm/internal/calls/Caller;", "", "()V", "member", "getMember", "()Ljava/lang/Void;", "parameterTypes", "", "Ljava/lang/reflect/Type;", "getParameterTypes", "()Ljava/util/List;", "returnType", "getReturnType", "()Ljava/lang/reflect/Type;", "call", "", "args", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-reflection"})
 public final class j
   implements d
 {
-  public static final j MPG;
+  public static final j NmL;
   
   static
   {
     AppMethodBeat.i(56646);
-    MPG = new j();
+    NmL = new j();
     AppMethodBeat.o(56646);
   }
   
-  public final Object af(Object[] paramArrayOfObject)
+  public final Object ae(Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(56645);
     p.h(paramArrayOfObject, "args");
@@ -29,7 +29,7 @@ public final class j
     throw paramArrayOfObject;
   }
   
-  public final Type ggR()
+  public final Type glt()
   {
     AppMethodBeat.i(56644);
     Object localObject = Void.TYPE;
@@ -39,14 +39,14 @@ public final class j
     return localObject;
   }
   
-  public final List<Type> ggS()
+  public final List<Type> glu()
   {
-    return (List)v.MKE;
+    return (List)v.NhH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.a.j
  * JD-Core Version:    0.7.0.1
  */

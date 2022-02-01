@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.d.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.protocal.protobuf.it;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.c.a;
@@ -20,7 +20,7 @@ public class BankRemitSortView
   extends BaseSortView
 {
   private final String TAG = "MicroMsg.BankcardSortView";
-  private ListView nZM;
+  private ListView ofw;
   
   public BankRemitSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,23 +46,23 @@ public class BankRemitSortView
         {
           localView = LayoutInflater.from((Context)localObject).inflate(2131493166, null);
           paramAnonymousView = new BankRemitSortView.a(BankRemitSortView.this, (byte)0);
-          paramAnonymousView.xUV = ((TextView)localView.findViewById(2131297925));
-          paramAnonymousView.xSy = ((TextView)localView.findViewById(2131297564));
-          paramAnonymousView.xSw = ((CdnImageView)localView.findViewById(2131297563));
+          paramAnonymousView.ykO = ((TextView)localView.findViewById(2131297925));
+          paramAnonymousView.yir = ((TextView)localView.findViewById(2131297564));
+          paramAnonymousView.yip = ((CdnImageView)localView.findViewById(2131297563));
           localView.setTag(paramAnonymousView);
         }
         paramAnonymousView = (BankRemitSortView.a)localView.getTag();
         localObject = (it)paramAnonymousd.data;
         if (localObject != null) {
-          if ((BankRemitSortView.this.Jub) && (paramAnonymousBoolean1)) {
-            if (paramAnonymousd.Juj.equals("☆"))
+          if ((BankRemitSortView.this.JOQ) && (paramAnonymousBoolean1)) {
+            if (paramAnonymousd.JOY.equals("☆"))
             {
-              paramAnonymousView.xUV.setText(2131756396);
-              paramAnonymousView.xUV.setVisibility(0);
+              paramAnonymousView.ykO.setText(2131756396);
+              paramAnonymousView.ykO.setVisibility(0);
               label162:
-              paramAnonymousView.xSw.setUseSdcardCache(true);
-              paramAnonymousView.xSw.lw(((it)localObject).xSd, b.auC(((it)localObject).xSd));
-              paramAnonymousView.xSy.setText(((it)localObject).uJF);
+              paramAnonymousView.yip.setUseSdcardCache(true);
+              paramAnonymousView.yip.lD(((it)localObject).yhW, b.avR(((it)localObject).yhW));
+              paramAnonymousView.yir.setText(((it)localObject).uVs);
             }
           }
         }
@@ -70,11 +70,11 @@ public class BankRemitSortView
         {
           AppMethodBeat.o(67611);
           return localView;
-          paramAnonymousView.xUV.setText(paramAnonymousd.Juj);
+          paramAnonymousView.ykO.setText(paramAnonymousd.JOY);
           break;
-          paramAnonymousView.xUV.setVisibility(8);
+          paramAnonymousView.ykO.setVisibility(8);
           break label162;
-          ad.w("MicroMsg.BankcardSortView", "elem is null: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ae.w("MicroMsg.BankcardSortView", "elem is null: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         }
       }
     };
@@ -85,8 +85,8 @@ public class BankRemitSortView
   public ListView getListView()
   {
     AppMethodBeat.i(67614);
-    this.nZM = ((ListView)findViewById(2131301457));
-    ListView localListView = this.nZM;
+    this.ofw = ((ListView)findViewById(2131301457));
+    ListView localListView = this.ofw;
     AppMethodBeat.o(67614);
     return localListView;
   }
@@ -114,9 +114,9 @@ public class BankRemitSortView
   
   final class a
   {
-    CdnImageView xSw;
-    TextView xSy;
-    TextView xUV;
+    CdnImageView yip;
+    TextView yir;
+    TextView ykO;
     
     private a() {}
   }

@@ -67,7 +67,10 @@ public final class f
       View localView = paramNumberPicker.getChildAt(i);
       if ((localView instanceof EditText))
       {
-        c(paramNumberPicker).setColor(paramInt);
+        Paint localPaint = c(paramNumberPicker);
+        if (localPaint != null) {
+          localPaint.setColor(paramInt);
+        }
         ((EditText)localView).setTextColor(paramInt);
         paramNumberPicker.invalidate();
       }

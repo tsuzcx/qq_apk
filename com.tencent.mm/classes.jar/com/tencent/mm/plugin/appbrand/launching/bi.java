@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.h;
+import com.tencent.mm.ab.h;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.aa;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.appcache.u;
-import com.tencent.mm.plugin.appbrand.appcache.z;
+import com.tencent.mm.plugin.appbrand.appcache.v;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
@@ -21,7 +21,8 @@ import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
@@ -29,61 +30,61 @@ import org.json.JSONObject;
 public class bi
   extends be<Pair<WxaPkgWrappingInfo, List<WxaAttributes.WxaPluginCodeInfo>>>
 {
-  public static volatile boolean lLl = false;
+  public static volatile boolean lPL = false;
   private final String appId;
-  private List<WxaAttributes.WxaPluginCodeInfo> cni;
-  private final int hQh;
-  private List<WxaAttributes.WxaWidgetInfo> kal;
-  final x lLm;
-  private PBool lLn;
-  private QualitySession lLo;
-  private boolean lLp;
+  private List<WxaAttributes.WxaPluginCodeInfo> cnk;
+  private final int hSZ;
+  private List<WxaAttributes.WxaWidgetInfo> kdC;
+  final x lPM;
+  private PBool lPN;
+  private QualitySession lPO;
+  private boolean lPP;
   
   bi(String paramString1, int paramInt1, String paramString2, int paramInt2, final WxaAttributes.WxaVersionInfo paramWxaVersionInfo, boolean paramBoolean, ICommLibReader paramICommLibReader, QualitySession paramQualitySession)
   {
     AppMethodBeat.i(180312);
-    this.cni = null;
-    this.kal = null;
-    this.lLn = new PBool();
-    this.lLp = false;
+    this.cnk = null;
+    this.kdC = null;
+    this.lPN = new PBool();
+    this.lPP = false;
     this.appId = paramString1;
-    this.hQh = paramInt1;
-    this.lLo = paramQualitySession;
-    this.lLn.value = false;
+    this.hSZ = paramInt1;
+    this.lPO = paramQualitySession;
+    this.lPN.value = false;
     Object localObject1;
     Object localObject5;
     Object localObject4;
     Object localObject3;
     int j;
-    if (j.a.rQ(paramInt1)) {
-      if ((paramWxaVersionInfo.kab) || ((lLl) && (!bt.hj(paramWxaVersionInfo.moduleList))))
+    if (j.a.rT(paramInt1)) {
+      if ((paramWxaVersionInfo.kds) || ((lPL) && (!bu.ht(paramWxaVersionInfo.moduleList))))
       {
         i = 1;
         localObject1 = paramWxaVersionInfo.moduleList;
-        localObject5 = paramWxaVersionInfo.kac;
-        localObject4 = paramWxaVersionInfo.jZZ;
-        localObject3 = paramWxaVersionInfo.ioH;
-        j = paramWxaVersionInfo.kaa;
+        localObject5 = paramWxaVersionInfo.kdt;
+        localObject4 = paramWxaVersionInfo.kdq;
+        localObject3 = paramWxaVersionInfo.irC;
+        j = paramWxaVersionInfo.kdr;
       }
     }
     Object localObject6;
     for (;;)
     {
-      localObject6 = w.a.lHw;
+      localObject6 = w.a.lLW;
       if (!w.a.a.gY(paramBoolean)) {
         break label401;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgHandlerSeparatedPluginsCompatible appId:%s,versionType:%d,isGame:%b", new Object[] { paramString1, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean) });
-      if (j.a.rQ(paramInt1)) {
-        j.aYX().a(paramString1, paramWxaVersionInfo);
+      ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgHandlerSeparatedPluginsCompatible appId:%s,versionType:%d,isGame:%b", new Object[] { paramString1, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean) });
+      if (j.a.rT(paramInt1)) {
+        j.aZu().a(paramString1, paramWxaVersionInfo);
       }
-      this.lLm = new ag(paramString1, paramInt1, paramBoolean, paramString2, paramWxaVersionInfo, paramICommLibReader, paramQualitySession)
+      this.lPM = new ag(paramString1, paramInt1, paramBoolean, paramString2, paramWxaVersionInfo, paramICommLibReader, paramQualitySession)
       {
-        public final void bqN()
+        public final void brx()
         {
           AppMethodBeat.i(47334);
-          super.bqN();
-          bi.this.bqN();
+          super.brx();
+          bi.this.brx();
           AppMethodBeat.o(47334);
         }
         
@@ -99,10 +100,10 @@ public class bi
       return;
       i = 0;
       break;
-      localObject1 = ((t)j.T(t.class)).bN(paramString1, paramInt1);
+      localObject1 = ((t)j.T(t.class)).bQ(paramString1, paramInt1);
       try
       {
-        localObject3 = h.wJ((String)localObject1);
+        localObject3 = h.xs((String)localObject1);
         if (localObject3 == null)
         {
           i = 0;
@@ -125,9 +126,9 @@ public class bi
         {
           localObject3 = null;
         }
-        localObject6 = WxaAttributes.WxaVersionModuleInfo.NS(((JSONObject)localObject3).optString("module_list"));
-        localObject5 = WxaAttributes.WxaWidgetInfo.NT(((JSONObject)localObject3).optString("widget_list"));
-        if (bt.hj((List)localObject6)) {
+        localObject6 = WxaAttributes.WxaVersionModuleInfo.Oz(((JSONObject)localObject3).optString("module_list"));
+        localObject5 = WxaAttributes.WxaWidgetInfo.OA(((JSONObject)localObject3).optString("widget_list"));
+        if (bu.ht((List)localObject6)) {
           break label388;
         }
       }
@@ -151,13 +152,13 @@ public class bi
     if (paramBoolean)
     {
       int k;
-      if (!bt.hj((List)localObject3))
+      if (!bu.ht((List)localObject3))
       {
-        boolean bool = ((b)g.ab(b.class)).a(b.a.qso, true);
+        boolean bool = ((b)g.ab(b.class)).a(b.a.qzd, true);
         if (bool)
         {
           k = 1;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PkgABTest", "openMultiPluginCodeDownload exp:%d", new Object[] { Integer.valueOf(k) });
+          ae.i("MicroMsg.PkgABTest", "openMultiPluginCodeDownload exp:%d", new Object[] { Integer.valueOf(k) });
           if (!bool) {
             break label664;
           }
@@ -165,7 +166,7 @@ public class bi
           while (paramICommLibReader.hasNext())
           {
             localObject6 = (WxaAttributes.WxaWidgetInfo)paramICommLibReader.next();
-            if ((((WxaAttributes.WxaWidgetInfo)localObject6).dnF == 23) || (((WxaAttributes.WxaWidgetInfo)localObject6).dnF == 22))
+            if ((((WxaAttributes.WxaWidgetInfo)localObject6).doK == 23) || (((WxaAttributes.WxaWidgetInfo)localObject6).doK == 22))
             {
               k = 1;
               if (k == 0) {
@@ -174,18 +175,18 @@ public class bi
               if (i == 0) {
                 break label754;
               }
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckMultiPkgInfoModuleHandler");
+              ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckMultiPkgInfoModuleHandler");
               paramICommLibReader = ((List)localObject2).iterator();
               while (paramICommLibReader.hasNext())
               {
                 paramString2 = (WxaAttributes.WxaVersionModuleInfo)paramICommLibReader.next();
-                if ((!bt.isNullOrNil(paramString2.name)) && (paramString2.name.equals("__APP__")))
+                if ((!bu.isNullOrNil(paramString2.name)) && (paramString2.name.equals("__APP__")))
                 {
-                  this.kal = paramString2.kal;
-                  if (this.kal != null) {
+                  this.kdC = paramString2.kdC;
+                  if (this.kdC != null) {
                     break label670;
                   }
-                  this.cni = paramString2.kak;
+                  this.cnk = paramString2.kdB;
                 }
               }
             }
@@ -194,22 +195,22 @@ public class bi
       }
       for (;;)
       {
-        this.lLm = new ad(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lEv, paramInt2, (List)localObject2, this.cni, this.kal, this.lLn)
+        this.lPM = new ad(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lIU, paramInt2, (List)localObject2, this.cnk, this.kdC, this.lPN)
         {
-          public final void bqN()
-          {
-            AppMethodBeat.i(47337);
-            super.bqN();
-            bi.this.bqN();
-            AppMethodBeat.o(47337);
-          }
-          
-          public final void bqW()
+          public final void brG()
           {
             AppMethodBeat.i(47338);
-            super.bqW();
-            bi.this.bqW();
+            super.brG();
+            bi.this.brG();
             AppMethodBeat.o(47338);
+          }
+          
+          public final void brx()
+          {
+            AppMethodBeat.i(47337);
+            super.brx();
+            bi.this.brx();
+            AppMethodBeat.o(47337);
           }
           
           public final void onDownloadProgress(int paramAnonymousInt)
@@ -227,40 +228,40 @@ public class bi
         k = 0;
         break label519;
         label670:
-        paramICommLibReader = this.kal.iterator();
+        paramICommLibReader = this.kdC.iterator();
         while (paramICommLibReader.hasNext())
         {
           localObject3 = (WxaAttributes.WxaWidgetInfo)paramICommLibReader.next();
-          if (((WxaAttributes.WxaWidgetInfo)localObject3).dnF == 23) {
-            this.cni = ((WxaAttributes.WxaWidgetInfo)localObject3).kao;
+          if (((WxaAttributes.WxaWidgetInfo)localObject3).doK == 23) {
+            this.cnk = ((WxaAttributes.WxaWidgetInfo)localObject3).kdF;
           }
         }
-        if (this.cni == null) {
-          this.cni = paramString2.kak;
+        if (this.cnk == null) {
+          this.cnk = paramString2.kdB;
         } else {
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "multiPkg module widgetInfo true");
+          ae.d("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "multiPkg module widgetInfo true");
         }
       }
       label754:
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckMultiPkgInfoHandler");
-      this.cni = ((List)localObject4);
-      this.kal = ((List)localObject3);
-      this.lLm = new ac(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lEv, paramInt2, this.cni, this.kal, this.lLn)
+      ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckMultiPkgInfoHandler");
+      this.cnk = ((List)localObject4);
+      this.kdC = ((List)localObject3);
+      this.lPM = new ac(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lIU, paramInt2, this.cnk, this.kdC, this.lPN)
       {
-        public final void bqN()
-        {
-          AppMethodBeat.i(47340);
-          super.bqN();
-          bi.this.bqN();
-          AppMethodBeat.o(47340);
-        }
-        
-        public final void bqW()
+        public final void brG()
         {
           AppMethodBeat.i(47341);
-          super.bqW();
-          bi.this.bqW();
+          super.brG();
+          bi.this.brG();
           AppMethodBeat.o(47341);
+        }
+        
+        public final void brx()
+        {
+          AppMethodBeat.i(47340);
+          super.brx();
+          bi.this.brx();
+          AppMethodBeat.o(47340);
         }
         
         public final void onDownloadProgress(int paramAnonymousInt)
@@ -275,35 +276,35 @@ public class bi
     }
     label519:
     label818:
-    if ((paramBoolean) && (u.aZT()) && (localObject4 != null) && (((List)localObject4).size() > 0))
+    if ((paramBoolean) && (v.bas()) && (localObject4 != null) && (((List)localObject4).size() > 0))
     {
-      if ((i != 0) && (!bt.hj((List)localObject2)))
+      if ((i != 0) && (!bu.ht((List)localObject2)))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgSplitPluginCodeModuleHandler");
+        ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgSplitPluginCodeModuleHandler");
         paramString2 = ((List)localObject2).iterator();
         while (paramString2.hasNext())
         {
           paramICommLibReader = (WxaAttributes.WxaVersionModuleInfo)paramString2.next();
-          if ((!bt.isNullOrNil(paramICommLibReader.name)) && (paramICommLibReader.name.equals("__APP__"))) {
-            this.cni = paramICommLibReader.kak;
+          if ((!bu.isNullOrNil(paramICommLibReader.name)) && (paramICommLibReader.name.equals("__APP__"))) {
+            this.cnk = paramICommLibReader.kdB;
           }
         }
-        this.lLm = new ak(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lEv, paramInt2, (List)localObject2, this.cni, this.lLn)
+        this.lPM = new ak(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lIU, paramInt2, (List)localObject2, this.cnk, this.lPN)
         {
-          public final void bqN()
-          {
-            AppMethodBeat.i(47343);
-            super.bqN();
-            bi.this.bqN();
-            AppMethodBeat.o(47343);
-          }
-          
-          public final void bqW()
+          public final void brG()
           {
             AppMethodBeat.i(47344);
-            super.bqW();
-            bi.this.bqW();
+            super.brG();
+            bi.this.brG();
             AppMethodBeat.o(47344);
+          }
+          
+          public final void brx()
+          {
+            AppMethodBeat.i(47343);
+            super.brx();
+            bi.this.brx();
+            AppMethodBeat.o(47343);
           }
           
           public final void onDownloadProgress(int paramAnonymousInt)
@@ -316,24 +317,24 @@ public class bi
         AppMethodBeat.o(180312);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgSplitPluginCodeHandler");
-      this.cni = ((List)localObject4);
-      this.lLm = new aj(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lEv, paramInt2, (List)localObject4, this.lLn)
+      ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgSplitPluginCodeHandler");
+      this.cnk = ((List)localObject4);
+      this.lPM = new aj(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramQualitySession.lIU, paramInt2, (List)localObject4, this.lPN)
       {
-        public final void bqN()
-        {
-          AppMethodBeat.i(174997);
-          super.bqN();
-          bi.this.bqN();
-          AppMethodBeat.o(174997);
-        }
-        
-        public final void bqW()
+        public final void brG()
         {
           AppMethodBeat.i(174998);
-          super.bqW();
-          bi.this.bqW();
+          super.brG();
+          bi.this.brG();
           AppMethodBeat.o(174998);
+        }
+        
+        public final void brx()
+        {
+          AppMethodBeat.i(174997);
+          super.brx();
+          bi.this.brx();
+          AppMethodBeat.o(174997);
         }
         
         public final void onDownloadProgress(int paramAnonymousInt)
@@ -346,37 +347,37 @@ public class bi
       AppMethodBeat.o(180312);
       return;
     }
-    if ((i != 0) && (!bt.hj((List)localObject2)) && (u.aZS()))
+    if ((i != 0) && (!bu.ht((List)localObject2)) && (v.bar()))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "<init> use LaunchCheckPkgModularizingHandler");
-      if (j.a.rQ(paramInt1)) {
-        j.aYX().a(paramString1, paramWxaVersionInfo);
+      ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "<init> use LaunchCheckPkgModularizingHandler");
+      if (j.a.rT(paramInt1)) {
+        j.aZu().a(paramString1, paramWxaVersionInfo);
       }
-      this.lLm = new ai(paramString1, paramInt1, paramString2, paramInt2, paramWxaVersionInfo.aDD, j, (String)localObject5, (List)localObject2, paramQualitySession.lEv)
+      this.lPM = new ai(paramString1, paramInt1, paramString2, paramInt2, paramWxaVersionInfo.aDD, j, (String)localObject5, (List)localObject2, paramQualitySession.lIU)
       {
-        public final WxaPkgWrappingInfo bgh()
+        public final WxaPkgWrappingInfo bgP()
         {
           AppMethodBeat.i(180310);
-          bi.R(this.appId, this.hQh, paramWxaVersionInfo.aDD);
-          WxaPkgWrappingInfo localWxaPkgWrappingInfo = super.bgh();
+          bi.R(this.appId, this.hSZ, paramWxaVersionInfo.aDD);
+          WxaPkgWrappingInfo localWxaPkgWrappingInfo = super.bgP();
           AppMethodBeat.o(180310);
           return localWxaPkgWrappingInfo;
         }
         
-        public final void bqN()
-        {
-          AppMethodBeat.i(175000);
-          super.bqN();
-          bi.this.bqN();
-          AppMethodBeat.o(175000);
-        }
-        
-        public final void bqW()
+        public final void brG()
         {
           AppMethodBeat.i(175001);
-          super.bqW();
-          bi.this.bqW();
+          super.brG();
+          bi.this.brG();
           AppMethodBeat.o(175001);
+        }
+        
+        public final void brx()
+        {
+          AppMethodBeat.i(175000);
+          super.brx();
+          bi.this.brx();
+          AppMethodBeat.o(175000);
         }
         
         public final void onDownloadProgress(int paramAnonymousInt)
@@ -389,64 +390,64 @@ public class bi
       AppMethodBeat.o(180312);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgIntegratedHandler");
-    this.lLm = new ah(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramInt2, paramWxaVersionInfo, paramQualitySession.lEv)
+    ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "LaunchCheckPkgIntegratedHandler");
+    this.lPM = new ah(paramString1, paramInt1, paramWxaVersionInfo.aDD, paramInt2, paramWxaVersionInfo, paramQualitySession.lIU)
     {
-      public final WxaPkgWrappingInfo bgh()
+      public final WxaPkgWrappingInfo bgP()
       {
-        AppMethodBeat.i(188630);
-        bi.R(this.appId, this.hQh, paramWxaVersionInfo.aDD);
-        WxaPkgWrappingInfo localWxaPkgWrappingInfo = super.bgh();
-        AppMethodBeat.o(188630);
+        AppMethodBeat.i(222789);
+        bi.R(this.appId, this.hSZ, paramWxaVersionInfo.aDD);
+        WxaPkgWrappingInfo localWxaPkgWrappingInfo = super.bgP();
+        AppMethodBeat.o(222789);
         return localWxaPkgWrappingInfo;
       }
       
-      public final void bqN()
+      public final void brG()
       {
-        AppMethodBeat.i(188631);
-        bi.this.bqN();
-        AppMethodBeat.o(188631);
+        AppMethodBeat.i(222791);
+        bi.this.brG();
+        AppMethodBeat.o(222791);
       }
       
-      public final void bqW()
+      public final void brx()
       {
-        AppMethodBeat.i(188632);
-        bi.this.bqW();
-        AppMethodBeat.o(188632);
+        AppMethodBeat.i(222790);
+        bi.this.brx();
+        AppMethodBeat.o(222790);
       }
       
       public final void onDownloadProgress(int paramAnonymousInt)
       {
-        AppMethodBeat.i(188633);
+        AppMethodBeat.i(222792);
         bi.this.onDownloadProgress(paramAnonymousInt);
-        AppMethodBeat.o(188633);
+        AppMethodBeat.o(222792);
       }
     };
     AppMethodBeat.o(180312);
   }
   
-  public void bqN()
+  public void brG() {}
+  
+  public void brx()
   {
-    AppMethodBeat.i(188635);
-    this.lLp = true;
-    if (j.a.rQ(this.hQh)) {
-      z.aZY();
+    AppMethodBeat.i(222794);
+    this.lPP = true;
+    if (j.a.rT(this.hSZ)) {
+      aa.bax();
     }
-    AppMethodBeat.o(188635);
+    AppMethodBeat.o(222794);
   }
   
-  public void bqW() {}
-  
-  public final Pair<WxaPkgWrappingInfo, List<WxaAttributes.WxaPluginCodeInfo>> brH()
+  public final Pair<WxaPkgWrappingInfo, List<WxaAttributes.WxaPluginCodeInfo>> bss()
   {
     AppMethodBeat.i(47348);
-    long l1 = bt.flT();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "call() before call real checkHandler");
-    Object localObject = (WxaPkgWrappingInfo)this.lLm.call();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "call() finished split usePluginCode boolean:%b", new Object[] { Boolean.valueOf(this.lLn.value) });
-    long l2 = bt.flT();
+    long l1 = bu.fpO();
+    ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "call() before call real checkHandler");
+    Object localObject = (WxaPkgWrappingInfo)this.lPM.call();
+    ae.i("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "call() finished split usePluginCode boolean:%b", new Object[] { Boolean.valueOf(this.lPN.value) });
+    long l2 = bu.fpO();
     if (localObject != null) {
-      if (this.lLp) {
+      if (this.lPP) {
         c.a(this.appId, KSProcessWeAppLaunch.stepPrepareResourceSubProcessCodePkg_Download, "", l1, l2);
       }
     }
@@ -454,7 +455,7 @@ public class bi
     {
       try
       {
-        String str = this.lLo.lEv;
+        String str = this.lPO.lIU;
         if (localObject == null) {
           continue;
         }
@@ -464,20 +465,20 @@ public class bi
       catch (Throwable localThrowable)
       {
         boolean bool;
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "call() reportUpdateResultAfterVersionFallbackIfNeed get exception %s", new Object[] { localThrowable });
+        ae.e("MicroMsg.AppBrand.PrepareStepCheckAppPkgWrapper", "call() reportUpdateResultAfterVersionFallbackIfNeed get exception %s", new Object[] { localThrowable });
         continue;
         localObject = Pair.create(localObject, null);
         AppMethodBeat.o(47348);
       }
-      if (!this.lLn.value) {
+      if (!this.lPN.value) {
         continue;
       }
-      localObject = Pair.create(localObject, this.cni);
+      localObject = Pair.create(localObject, this.cnk);
       AppMethodBeat.o(47348);
       return localObject;
       c.a(this.appId, KSProcessWeAppLaunch.stepPrepareResourceSubProcessCodePkg_DB, "", l1, l2);
       continue;
-      if (this.lLp)
+      if (this.lPP)
       {
         c.a(this.appId, KSProcessWeAppLaunch.stepPrepareResourceSubProcessCodePkg_Download, "", "", l1, l2);
       }
@@ -495,14 +496,14 @@ public class bi
   {
     AppMethodBeat.i(180313);
     super.gZ(paramBoolean);
-    if ((this.lLm instanceof x.b))
+    if ((this.lPM instanceof x.b))
     {
-      ((x.b)this.lLm).gZ(paramBoolean);
+      ((x.b)this.lPM).gZ(paramBoolean);
       AppMethodBeat.o(180313);
       return;
     }
-    if ((this.lLm instanceof be)) {
-      ((be)this.lLm).gZ(paramBoolean);
+    if ((this.lPM instanceof be)) {
+      ((be)this.lPM).gZ(paramBoolean);
     }
     AppMethodBeat.o(180313);
   }

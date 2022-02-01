@@ -5,18 +5,18 @@ import com.tencent.mm.plugin.sns.ui.bn;
 public final class b
 {
   public String aQj;
-  public long dJc;
-  public String doX;
+  public long dKq;
+  public String dqc;
   public int position;
-  public bn zcq;
-  public long zcr = 0L;
+  public bn ztd;
+  public long zte = 0L;
   
   public b(bn parambn, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    this.zcq = parambn;
+    this.ztd = parambn;
     this.position = paramInt;
-    this.doX = paramString1;
-    this.dJc = paramLong;
+    this.dqc = paramString1;
+    this.dKq = paramLong;
     this.aQj = paramString2;
   }
 }

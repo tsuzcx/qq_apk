@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xq
   extends b
 {
-  public a dLX;
-  public b dLY;
+  public a dNe;
   
   public xq()
   {
@@ -16,24 +15,16 @@ public final class xq
   
   private xq(byte paramByte)
   {
-    AppMethodBeat.i(121052);
-    this.dLX = new a();
-    this.dLY = new b();
-    this.IbR = false;
+    AppMethodBeat.i(131617);
+    this.dNe = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(121052);
+    AppMethodBeat.o(131617);
   }
   
   public static final class a
   {
-    public int action;
-    public String djX;
-    public int option;
-  }
-  
-  public static final class b
-  {
-    public boolean dLZ;
+    public long gW = 800L;
   }
 }
 

@@ -44,8 +44,7 @@ public final class vq
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-10658467);
-      localCanvas.saveLayerAlpha(null, 51, 31);
+      localPaint.setColor(-304293);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
@@ -64,7 +63,6 @@ public final class vq
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
-      localCanvas.restore();
       localCanvas.restore();
       c.l(paramVarArgs);
     }

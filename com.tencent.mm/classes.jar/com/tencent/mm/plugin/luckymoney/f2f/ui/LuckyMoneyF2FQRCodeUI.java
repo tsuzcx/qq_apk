@@ -27,31 +27,31 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.model.cd;
-import com.tencent.mm.model.cd.a;
-import com.tencent.mm.model.w;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.model.cf.a;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.luckymoney.f2f.a.1;
 import com.tencent.mm.plugin.luckymoney.f2f.a.2;
 import com.tencent.mm.plugin.luckymoney.model.ah;
 import com.tencent.mm.plugin.luckymoney.model.y;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bh;
-import com.tencent.mm.sdk.platformtools.bh.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bi;
+import com.tencent.mm.sdk.platformtools.bi.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import com.tencent.mm.ui.base.HorizontalListViewV2;
 import com.tencent.mm.ui.base.HorizontalListViewV2.d;
 import com.tencent.mm.ui.base.HorizontalListViewV2.d.a;
@@ -70,88 +70,88 @@ import java.util.Set;
 
 public class LuckyMoneyF2FQRCodeUI
   extends LuckyMoneyBaseUI
-  implements bh.a
+  implements bi.a
 {
   private View agn;
-  private DisplayMetrics iNB;
-  private av jkD;
-  private int[] jlo;
-  private String krz;
+  private DisplayMetrics iQv;
+  private aw jnx;
+  private int[] joi;
+  private String kuP;
   private Bitmap mBitmap;
-  private com.tencent.mm.ui.widget.a.e mDL;
+  private com.tencent.mm.ui.widget.a.e mIQ;
   private SensorManager mSensorManager;
-  private n.e pem;
-  private String qeQ;
+  private n.e pkS;
+  private String qlv;
   private int retCode;
-  private String vkl;
-  private Button vku;
-  private String vlG;
-  private String vlH;
-  private int vlI;
-  private View vlT;
-  private View vlU;
-  private ImageView vlV;
-  private TextView vlW;
-  private TextView vlX;
-  private ImageView vlY;
-  private TextView vlZ;
-  private Bitmap vmA;
-  private Bitmap vmB;
-  private Bitmap vmC;
-  private Bitmap vmD;
-  private Bitmap vmE;
-  private Bitmap vmF;
-  private Bitmap vmG;
-  private Bitmap vmH;
-  private com.tencent.mm.particles.b vmI;
-  private com.tencent.mm.particles.b vmJ;
-  final SensorEventListener vmK;
-  private TextView vma;
-  private HorizontalListViewV2 vmb;
-  private List<String> vmc;
-  private Map<String, String> vmd;
-  private Queue<Pair<String, Integer>> vme;
-  private a vmf;
-  private TextView vmg;
-  private ShuffleView vmh;
-  private ShuffleView.c vmi;
-  private List<View> vmj;
-  private ViewGroup vmk;
-  private ViewGroup vml;
-  private View vmm;
-  private com.tencent.mm.plugin.luckymoney.f2f.a vmn;
-  private long vmo;
-  private String vmp;
-  private ValueAnimator vmq;
-  private float vmr;
-  private float vms;
-  private float vmt;
-  private cd.a vmu;
-  private n.d vmv;
-  private Bitmap vmw;
-  private Bitmap vmx;
-  private Bitmap vmy;
-  private Bitmap vmz;
+  private String vwq;
+  private Button vwz;
+  private String vxL;
+  private String vxM;
+  private int vxN;
+  private View vxY;
+  private View vxZ;
+  private n.d vyA;
+  private Bitmap vyB;
+  private Bitmap vyC;
+  private Bitmap vyD;
+  private Bitmap vyE;
+  private Bitmap vyF;
+  private Bitmap vyG;
+  private Bitmap vyH;
+  private Bitmap vyI;
+  private Bitmap vyJ;
+  private Bitmap vyK;
+  private Bitmap vyL;
+  private Bitmap vyM;
+  private com.tencent.mm.particles.b vyN;
+  private com.tencent.mm.particles.b vyO;
+  final SensorEventListener vyP;
+  private ImageView vya;
+  private TextView vyb;
+  private TextView vyc;
+  private ImageView vyd;
+  private TextView vye;
+  private TextView vyf;
+  private HorizontalListViewV2 vyg;
+  private List<String> vyh;
+  private Map<String, String> vyi;
+  private Queue<Pair<String, Integer>> vyj;
+  private a vyk;
+  private TextView vyl;
+  private ShuffleView vym;
+  private ShuffleView.c vyn;
+  private List<View> vyo;
+  private ViewGroup vyp;
+  private ViewGroup vyq;
+  private View vyr;
+  private com.tencent.mm.plugin.luckymoney.f2f.a vys;
+  private long vyt;
+  private String vyu;
+  private ValueAnimator vyv;
+  private float vyw;
+  private float vyx;
+  private float vyy;
+  private cf.a vyz;
   
   public LuckyMoneyF2FQRCodeUI()
   {
     AppMethodBeat.i(65085);
-    this.vmu = new cd.a()
+    this.vyz = new cf.a()
     {
       public final void a(e.a paramAnonymousa)
       {
         AppMethodBeat.i(65061);
-        paramAnonymousa = bw.M(com.tencent.mm.platformtools.z.a(paramAnonymousa.gqE.Fvk), "sysmsg");
+        paramAnonymousa = bx.M(com.tencent.mm.platformtools.z.a(paramAnonymousa.gte.FNI), "sysmsg");
         if (paramAnonymousa != null)
         {
           String str1 = (String)paramAnonymousa.get(".sysmsg.sendId");
           final String str2 = (String)paramAnonymousa.get(".sysmsg.username");
           final String str3 = (String)paramAnonymousa.get(".sysmsg.amount");
           final String str4 = (String)paramAnonymousa.get(".sysmsg.receiveId");
-          if (bt.getInt((String)paramAnonymousa.get(".sysmsg.islucky"), 0) > 0) {
+          if (bu.getInt((String)paramAnonymousa.get(".sysmsg.islucky"), 0) > 0) {
             LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this, str2);
           }
-          if (!bt.V(new String[] { str1, str2, str3 })) {
+          if (!bu.V(new String[] { str1, str2, str3 })) {
             LuckyMoneyF2FQRCodeUI.this.runOnUiThread(new Runnable()
             {
               public final void run()
@@ -161,53 +161,53 @@ public class LuckyMoneyF2FQRCodeUI
                 if (!LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).contains(str4))
                 {
                   LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).add(0, str4);
-                  if (!w.zD(str2))
+                  if (!x.An(str2))
                   {
                     localObject = new i();
                     ((i)localObject).username = str2;
-                    p.aEx().b((i)localObject);
+                    p.aEN().b((i)localObject);
                   }
                   LuckyMoneyF2FQRCodeUI.b(LuckyMoneyF2FQRCodeUI.this).put(str4, str2);
                   localObject = LuckyMoneyF2FQRCodeUI.c(LuckyMoneyF2FQRCodeUI.this);
-                  if (((ShuffleView)localObject).vnf.size() > 0)
+                  if (((ShuffleView)localObject).vzk.size() > 0)
                   {
-                    if (((ShuffleView)localObject).vnh.isStarted()) {
-                      ((ShuffleView)localObject).vnh.end();
+                    if (((ShuffleView)localObject).vzm.isStarted()) {
+                      ((ShuffleView)localObject).vzm.end();
                     }
-                    if (((ShuffleView)localObject).pPY.isStarted()) {
-                      ((ShuffleView)localObject).pPY.end();
+                    if (((ShuffleView)localObject).pWD.isStarted()) {
+                      ((ShuffleView)localObject).pWD.end();
                     }
-                    if (((ShuffleView)localObject).jlI == null) {
+                    if (((ShuffleView)localObject).joC == null) {
                       break label351;
                     }
-                    ((ShuffleView)localObject).vnl = ((ShuffleView)localObject).jlI;
-                    ((ShuffleView)localObject).vnf.remove(((ShuffleView)localObject).vnl);
-                    if (((ShuffleView)localObject).rUu != null) {
-                      ((ShuffleView)localObject).rUu.start();
+                    ((ShuffleView)localObject).vzq = ((ShuffleView)localObject).joC;
+                    ((ShuffleView)localObject).vzk.remove(((ShuffleView)localObject).vzq);
+                    if (((ShuffleView)localObject).scY != null) {
+                      ((ShuffleView)localObject).scY.start();
                     }
-                    ((ShuffleView)localObject).Ji(((ShuffleView)localObject).vnn);
-                    if (((ShuffleView)localObject).vnq <= 0) {
+                    ((ShuffleView)localObject).JH(((ShuffleView)localObject).vzs);
+                    if (((ShuffleView)localObject).vzv <= 0) {
                       break label338;
                     }
-                    ((ShuffleView)localObject).vnn = ((ShuffleView)localObject).did();
-                    ((ShuffleView)localObject).jlI = ((View)((ShuffleView)localObject).vnf.get(((ShuffleView)localObject).vnn));
+                    ((ShuffleView)localObject).vzs = ((ShuffleView)localObject).dlc();
+                    ((ShuffleView)localObject).joC = ((View)((ShuffleView)localObject).vzk.get(((ShuffleView)localObject).vzs));
                   }
                 }
                 for (;;)
                 {
                   LuckyMoneyF2FQRCodeUI.d(LuckyMoneyF2FQRCodeUI.this).remove(LuckyMoneyF2FQRCodeUI.c(LuckyMoneyF2FQRCodeUI.this).getExitView());
-                  LuckyMoneyF2FQRCodeUI.e(LuckyMoneyF2FQRCodeUI.this).az(0L, 60000L);
-                  LuckyMoneyF2FQRCodeUI.f(LuckyMoneyF2FQRCodeUI.this).add(new Pair(str2, Integer.valueOf(bt.getInt(str3, 0))));
+                  LuckyMoneyF2FQRCodeUI.e(LuckyMoneyF2FQRCodeUI.this).ay(0L, 60000L);
+                  LuckyMoneyF2FQRCodeUI.f(LuckyMoneyF2FQRCodeUI.this).add(new Pair(str2, Integer.valueOf(bu.getInt(str3, 0))));
                   AppMethodBeat.o(65060);
                   return;
                   label338:
-                  ((ShuffleView)localObject).jlI = null;
-                  ((ShuffleView)localObject).vnn = 0;
+                  ((ShuffleView)localObject).joC = null;
+                  ((ShuffleView)localObject).vzs = 0;
                   continue;
                   label351:
-                  ((ShuffleView)localObject).Jg(((ShuffleView)localObject).did());
-                  ((ShuffleView)localObject).vnl = ((ShuffleView)localObject).jlI;
-                  ((ShuffleView)localObject).vnh.addListener(new ShuffleView.5((ShuffleView)localObject));
+                  ((ShuffleView)localObject).JF(((ShuffleView)localObject).dlc());
+                  ((ShuffleView)localObject).vzq = ((ShuffleView)localObject).joC;
+                  ((ShuffleView)localObject).vzm.addListener(new ShuffleView.5((ShuffleView)localObject));
                 }
               }
             });
@@ -218,14 +218,14 @@ public class LuckyMoneyF2FQRCodeUI
       
       public final void a(e.c paramAnonymousc) {}
     };
-    this.vmv = new n.d()
+    this.vyA = new n.d()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
         AppMethodBeat.i(65073);
-        if (bt.isNullOrNil(LuckyMoneyF2FQRCodeUI.g(LuckyMoneyF2FQRCodeUI.this)))
+        if (bu.isNullOrNil(LuckyMoneyF2FQRCodeUI.g(LuckyMoneyF2FQRCodeUI.this)))
         {
-          paramAnonymousl.jI(1, 2131760859);
+          paramAnonymousl.jM(1, 2131760859);
           AppMethodBeat.o(65073);
           return;
         }
@@ -233,7 +233,7 @@ public class LuckyMoneyF2FQRCodeUI
         AppMethodBeat.o(65073);
       }
     };
-    this.pem = new n.e()
+    this.pkS = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -251,11 +251,11 @@ public class LuckyMoneyF2FQRCodeUI
             AppMethodBeat.o(65074);
             return;
           }
-          com.tencent.mm.ui.base.h.cl(LuckyMoneyF2FQRCodeUI.this, LuckyMoneyF2FQRCodeUI.this.getString(2131760860));
+          com.tencent.mm.ui.base.h.cm(LuckyMoneyF2FQRCodeUI.this, LuckyMoneyF2FQRCodeUI.this.getString(2131760860));
         }
       }
     };
-    this.vmI = new com.tencent.mm.particles.b()
+    this.vyN = new com.tencent.mm.particles.b()
     {
       public final com.tencent.mm.particles.a.b a(Random paramAnonymousRandom)
       {
@@ -314,7 +314,7 @@ public class LuckyMoneyF2FQRCodeUI
         return paramAnonymousRandom;
       }
     };
-    this.vmJ = new com.tencent.mm.particles.b()
+    this.vyO = new com.tencent.mm.particles.b()
     {
       public final com.tencent.mm.particles.a.b a(Random paramAnonymousRandom)
       {
@@ -373,18 +373,18 @@ public class LuckyMoneyF2FQRCodeUI
         return paramAnonymousRandom;
       }
     };
-    this.vmK = new SensorEventListener()
+    this.vyP = new SensorEventListener()
     {
       float aTM;
-      final int vmP;
-      float vmQ;
-      int vmR;
-      ValueAnimator vmS;
+      final int vyU;
+      float vyV;
+      int vyW;
+      ValueAnimator vyX;
       
       public final void onAccuracyChanged(Sensor paramAnonymousSensor, int paramAnonymousInt)
       {
         AppMethodBeat.i(65072);
-        ad.i("LuckyMoneyF2FQRCodeUI", "onAccuracyChanged");
+        ae.i("LuckyMoneyF2FQRCodeUI", "onAccuracyChanged");
         AppMethodBeat.o(65072);
       }
       
@@ -400,8 +400,8 @@ public class LuckyMoneyF2FQRCodeUI
             AppMethodBeat.o(65071);
             return;
           }
-          if (this.vmR == 0) {
-            this.vmR = (com.tencent.mm.pluginsdk.h.dT(LuckyMoneyF2FQRCodeUI.this) + (int)this.vmQ);
+          if (this.vyW == 0) {
+            this.vyW = (com.tencent.mm.pluginsdk.h.dX(LuckyMoneyF2FQRCodeUI.this) + (int)this.vyV);
           }
           f2 = paramAnonymousSensorEvent.values[1];
           if (Math.abs(f2 - this.aTM) < 0.05D)
@@ -410,27 +410,27 @@ public class LuckyMoneyF2FQRCodeUI
             return;
           }
           this.aTM = f2;
-          ad.d("LuckyMoneyF2FQRCodeUI", "[onSensorChanged] y:%s ", new Object[] { Float.valueOf(f2) });
+          ae.d("LuckyMoneyF2FQRCodeUI", "[onSensorChanged] y:%s ", new Object[] { Float.valueOf(f2) });
           if (f2 >= -3.0F) {
             break label246;
           }
         }
         for (;;)
         {
-          f1 = f1 / 3.0F * this.vmR + this.vmR;
-          ad.d("LuckyMoneyF2FQRCodeUI", "paddingTop:%s nowPaddingTop:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingTop()) });
-          if (this.vmS != null) {
-            this.vmS.cancel();
+          f1 = f1 / 3.0F * this.vyW + this.vyW;
+          ae.d("LuckyMoneyF2FQRCodeUI", "paddingTop:%s nowPaddingTop:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingTop()) });
+          if (this.vyX != null) {
+            this.vyX.cancel();
           }
-          this.vmS = ValueAnimator.ofFloat(new float[] { LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingTop(), f1 }).setDuration(200L);
-          this.vmS.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+          this.vyX = ValueAnimator.ofFloat(new float[] { LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingTop(), f1 }).setDuration(200L);
+          this.vyX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
           {
             public final void onAnimationUpdate(ValueAnimator paramAnonymous2ValueAnimator)
             {
               AppMethodBeat.i(65069);
               float f = ((Float)paramAnonymous2ValueAnimator.getAnimatedValue()).floatValue();
               LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).setPadding(LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingLeft(), (int)f, LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingRight(), LuckyMoneyF2FQRCodeUI.O(LuckyMoneyF2FQRCodeUI.this).getPaddingBottom());
-              f /= LuckyMoneyF2FQRCodeUI.7.this.vmR;
+              f /= LuckyMoneyF2FQRCodeUI.7.this.vyW;
               if (f <= 1.0F)
               {
                 LuckyMoneyF2FQRCodeUI.Q(LuckyMoneyF2FQRCodeUI.this).setAlpha(1.0F - f + LuckyMoneyF2FQRCodeUI.P(LuckyMoneyF2FQRCodeUI.this));
@@ -443,7 +443,7 @@ public class LuckyMoneyF2FQRCodeUI
               AppMethodBeat.o(65069);
             }
           });
-          this.vmS.start();
+          this.vyX.start();
           AppMethodBeat.o(65071);
           return;
           label246:
@@ -458,43 +458,43 @@ public class LuckyMoneyF2FQRCodeUI
     AppMethodBeat.o(65085);
   }
   
-  private void dhY()
+  private void dkX()
   {
     AppMethodBeat.i(65087);
-    if (!bt.isNullOrNil(this.qeQ))
+    if (!bu.isNullOrNil(this.qlv))
     {
-      this.mBitmap = com.tencent.mm.bz.a.a.bY(this, this.qeQ);
-      this.vlY.setImageBitmap(this.mBitmap);
+      this.mBitmap = com.tencent.mm.by.a.a.bZ(this, this.qlv);
+      this.vyd.setImageBitmap(this.mBitmap);
     }
-    if (this.vlI <= 0)
+    if (this.vxN <= 0)
     {
-      this.vlY.setPadding(com.tencent.mm.cc.a.fromDPToPix(this, 5), com.tencent.mm.cc.a.fromDPToPix(this, 5), com.tencent.mm.cc.a.fromDPToPix(this, 5), com.tencent.mm.cc.a.fromDPToPix(this, 5));
-      this.vlY.setImageResource(2131233001);
-      this.vmg.setVisibility(8);
-      this.vku.setVisibility(0);
-      this.vlZ.setVisibility(4);
-      this.vlT.setPadding(this.vlT.getPaddingLeft(), com.tencent.mm.pluginsdk.h.dT(this), this.vlT.getPaddingRight(), this.vlT.getPaddingBottom());
-      if (this.vmc.size() > 0)
+      this.vyd.setPadding(com.tencent.mm.cb.a.fromDPToPix(this, 5), com.tencent.mm.cb.a.fromDPToPix(this, 5), com.tencent.mm.cb.a.fromDPToPix(this, 5), com.tencent.mm.cb.a.fromDPToPix(this, 5));
+      this.vyd.setImageResource(2131233001);
+      this.vyl.setVisibility(8);
+      this.vwz.setVisibility(0);
+      this.vye.setVisibility(4);
+      this.vxY.setPadding(this.vxY.getPaddingLeft(), com.tencent.mm.pluginsdk.h.dX(this), this.vxY.getPaddingRight(), this.vxY.getPaddingBottom());
+      if (this.vyh.size() > 0)
       {
-        this.vma.setText(getString(2131760864));
+        this.vyf.setText(getString(2131760864));
         AppMethodBeat.o(65087);
         return;
       }
-      this.vma.setText(getString(2131760865));
+      this.vyf.setText(getString(2131760865));
       AppMethodBeat.o(65087);
       return;
     }
-    this.vlY.setPadding(0, 0, 0, 0);
-    this.vlZ.setText(getString(2131760870));
-    this.vlZ.setVisibility(0);
-    this.vma.setText(getString(2131760870));
-    this.vmg.setText(getString(2131760869, new Object[] { Integer.valueOf(this.vlI) }));
-    this.vmg.setVisibility(0);
-    this.vku.setVisibility(8);
+    this.vyd.setPadding(0, 0, 0, 0);
+    this.vye.setText(getString(2131760870));
+    this.vye.setVisibility(0);
+    this.vyf.setText(getString(2131760870));
+    this.vyl.setText(getString(2131760869, new Object[] { Integer.valueOf(this.vxN) }));
+    this.vyl.setVisibility(0);
+    this.vwz.setVisibility(8);
     AppMethodBeat.o(65087);
   }
   
-  private void dhZ()
+  private void dkY()
   {
     AppMethodBeat.i(65088);
     HashSet localHashSet = new HashSet();
@@ -509,64 +509,64 @@ public class LuckyMoneyF2FQRCodeUI
     localHashSet.add("packet_received.m4a");
     localHashSet.add("most_lucky.m4a");
     localHashSet.add("whistle.m4a");
-    com.tencent.mm.plugin.luckymoney.f2f.a locala = this.vmn;
+    com.tencent.mm.plugin.luckymoney.f2f.a locala = this.vys;
     WeakReference localWeakReference = new WeakReference(this);
-    com.tencent.mm.kernel.g.ajF().ay(new a.1(locala, localHashSet, localWeakReference));
-    locala.vle.setOnLoadCompleteListener(new a.2(locala));
+    com.tencent.mm.kernel.g.ajU().aw(new a.1(locala, localHashSet, localWeakReference));
+    locala.vxj.setOnLoadCompleteListener(new a.2(locala));
     AppMethodBeat.o(65088);
   }
   
-  private void dia()
+  private void dkZ()
   {
     AppMethodBeat.i(65089);
-    int i = this.vmb.getWidth() - this.vmc.size() * getResources().getDimensionPixelSize(2131165188);
+    int i = this.vyg.getWidth() - this.vyh.size() * getResources().getDimensionPixelSize(2131165188);
     if (i > 0)
     {
-      this.vmb.setPadding(i / 2, 0, i / 2, 0);
+      this.vyg.setPadding(i / 2, 0, i / 2, 0);
       AppMethodBeat.o(65089);
       return;
     }
-    this.vmb.setPadding(0, 0, 0, 0);
+    this.vyg.setPadding(0, 0, 0, 0);
     AppMethodBeat.o(65089);
   }
   
-  private void dib()
+  private void dla()
   {
     AppMethodBeat.i(65090);
-    if (this.vmj.size() != this.vlI)
+    if (this.vyo.size() != this.vxN)
     {
-      ad.i("LuckyMoneyF2FQRCodeUI", "shuffle cards: %d", new Object[] { Integer.valueOf(this.vmj.size()), Integer.valueOf(this.vlI) });
-      this.vmj.clear();
+      ae.i("LuckyMoneyF2FQRCodeUI", "shuffle cards: %d", new Object[] { Integer.valueOf(this.vyo.size()), Integer.valueOf(this.vxN) });
+      this.vyo.clear();
       int i = 0;
-      while (i < this.vlI)
+      while (i < this.vxN)
       {
-        View localView = LayoutInflater.from(this).inflate(2131494641, this.vmh, false);
+        View localView = LayoutInflater.from(this).inflate(2131494641, this.vym, false);
         ((FrameLayout.LayoutParams)localView.getLayoutParams()).gravity = 81;
-        this.vmj.add(localView);
+        this.vyo.add(localView);
         i += 1;
       }
-      this.vmh.setAllShuffleCards(this.vmj);
+      this.vym.setAllShuffleCards(this.vyo);
     }
     AppMethodBeat.o(65090);
   }
   
   public final void X(String paramString, long paramLong)
   {
-    AppMethodBeat.i(199002);
-    ad.i("LuckyMoneyF2FQRCodeUI", "screenShot");
-    if (this.vlI > 0)
+    AppMethodBeat.i(189836);
+    ae.i("LuckyMoneyF2FQRCodeUI", "screenShot");
+    if (this.vxN > 0)
     {
-      paramString = this.qeQ;
-      ad.i("LuckyMoneyF2FQRCodeUI", "invalidQRCode");
+      paramString = this.qlv;
+      ae.i("LuckyMoneyF2FQRCodeUI", "invalidQRCode");
       doSceneProgress(new com.tencent.mm.plugin.luckymoney.f2f.a.b(paramString), false);
-      ad.i("LuckyMoneyF2FQRCodeUI", "getQRCode");
+      ae.i("LuckyMoneyF2FQRCodeUI", "getQRCode");
       doSceneProgress(new com.tencent.mm.plugin.luckymoney.f2f.a.e(), false);
-      dhY();
-      paramString = this.jlo;
+      dkX();
+      paramString = this.joi;
       paramString[1] += 1;
       com.tencent.mm.ui.base.h.c(this, getString(2131760871), null, true);
     }
-    AppMethodBeat.o(199002);
+    AppMethodBeat.o(189836);
   }
   
   public int getForceOrientation()
@@ -583,15 +583,15 @@ public class LuckyMoneyF2FQRCodeUI
   {
     AppMethodBeat.i(65086);
     super.onCreate(paramBundle);
-    this.iNB = getResources().getDisplayMetrics();
-    this.vmc = new ArrayList();
-    this.vmd = new HashMap();
-    this.vme = new LinkedList();
-    this.vmj = new ArrayList();
-    this.jlo = new int[6];
-    paramBundle = this.jlo;
+    this.iQv = getResources().getDisplayMetrics();
+    this.vyh = new ArrayList();
+    this.vyi = new HashMap();
+    this.vyj = new LinkedList();
+    this.vyo = new ArrayList();
+    this.joi = new int[6];
+    paramBundle = this.joi;
     paramBundle[0] += 1;
-    this.jkD = new av(new av.a()
+    this.jnx = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -603,21 +603,21 @@ public class LuckyMoneyF2FQRCodeUI
       }
     }, true);
     this.agn = findViewById(2131301823);
-    this.vlT = findViewById(2131306989);
-    this.vma = ((TextView)findViewById(2131301819));
-    this.vlZ = ((TextView)findViewById(2131301820));
-    this.vmt = this.vma.getAlpha();
-    this.vlY = ((ImageView)this.agn.findViewById(2131301818));
-    this.vmb = ((HorizontalListViewV2)findViewById(2131301821));
-    this.vmf = new a((byte)0);
-    this.vmb.setAdapter(this.vmf);
-    this.vmb.setOnItemClickListener(new LuckyMoneyF2FQRCodeUI.13(this));
-    this.vmb.setOnScrollStateChangedListener(new HorizontalListViewV2.d()
+    this.vxY = findViewById(2131306989);
+    this.vyf = ((TextView)findViewById(2131301819));
+    this.vye = ((TextView)findViewById(2131301820));
+    this.vyy = this.vyf.getAlpha();
+    this.vyd = ((ImageView)this.agn.findViewById(2131301818));
+    this.vyg = ((HorizontalListViewV2)findViewById(2131301821));
+    this.vyk = new a((byte)0);
+    this.vyg.setAdapter(this.vyk);
+    this.vyg.setOnItemClickListener(new LuckyMoneyF2FQRCodeUI.13(this));
+    this.vyg.setOnScrollStateChangedListener(new HorizontalListViewV2.d()
     {
       public final void a(HorizontalListViewV2.d.a paramAnonymousa)
       {
         AppMethodBeat.i(65079);
-        if ((paramAnonymousa == HorizontalListViewV2.d.a.Jjw) && (LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size() >= 5) && (LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size() < LuckyMoneyF2FQRCodeUI.w(LuckyMoneyF2FQRCodeUI.this)) && (LuckyMoneyF2FQRCodeUI.x(LuckyMoneyF2FQRCodeUI.this).getLastVisiblePosition() == LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size() - 1) && (!bt.isNullOrNil(LuckyMoneyF2FQRCodeUI.v(LuckyMoneyF2FQRCodeUI.this))))
+        if ((paramAnonymousa == HorizontalListViewV2.d.a.JEk) && (LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size() >= 5) && (LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size() < LuckyMoneyF2FQRCodeUI.w(LuckyMoneyF2FQRCodeUI.this)) && (LuckyMoneyF2FQRCodeUI.x(LuckyMoneyF2FQRCodeUI.this).getLastVisiblePosition() == LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size() - 1) && (!bu.isNullOrNil(LuckyMoneyF2FQRCodeUI.v(LuckyMoneyF2FQRCodeUI.this))))
         {
           paramAnonymousa = new ah(LuckyMoneyF2FQRCodeUI.v(LuckyMoneyF2FQRCodeUI.this), 5, LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this).size(), null, "v1.0");
           LuckyMoneyF2FQRCodeUI.this.doSceneProgress(paramAnonymousa);
@@ -625,10 +625,10 @@ public class LuckyMoneyF2FQRCodeUI
         AppMethodBeat.o(65079);
       }
     });
-    this.vku = ((Button)findViewById(2131301817));
-    this.vku.setOnClickListener(new LuckyMoneyF2FQRCodeUI.15(this));
-    this.vmg = ((TextView)findViewById(2131301825));
-    this.vlU = findViewById(2131301824);
+    this.vwz = ((Button)findViewById(2131301817));
+    this.vwz.setOnClickListener(new LuckyMoneyF2FQRCodeUI.15(this));
+    this.vyl = ((TextView)findViewById(2131301825));
+    this.vxZ = findViewById(2131301824);
     setBackBtn(new LuckyMoneyF2FQRCodeUI.2(this));
     setMMTitle(getString(2131760872));
     addIconOptionMenu(0, 2131689493, new MenuItem.OnMenuItemClickListener()
@@ -637,34 +637,34 @@ public class LuckyMoneyF2FQRCodeUI
       {
         AppMethodBeat.i(65063);
         LuckyMoneyF2FQRCodeUI.a(LuckyMoneyF2FQRCodeUI.this, new com.tencent.mm.ui.widget.a.e(LuckyMoneyF2FQRCodeUI.this, 1, false));
-        LuckyMoneyF2FQRCodeUI.z(LuckyMoneyF2FQRCodeUI.this).KJy = LuckyMoneyF2FQRCodeUI.y(LuckyMoneyF2FQRCodeUI.this);
-        LuckyMoneyF2FQRCodeUI.z(LuckyMoneyF2FQRCodeUI.this).KJz = LuckyMoneyF2FQRCodeUI.A(LuckyMoneyF2FQRCodeUI.this);
-        LuckyMoneyF2FQRCodeUI.z(LuckyMoneyF2FQRCodeUI.this).cMW();
+        LuckyMoneyF2FQRCodeUI.z(LuckyMoneyF2FQRCodeUI.this).LfS = LuckyMoneyF2FQRCodeUI.y(LuckyMoneyF2FQRCodeUI.this);
+        LuckyMoneyF2FQRCodeUI.z(LuckyMoneyF2FQRCodeUI.this).LfT = LuckyMoneyF2FQRCodeUI.A(LuckyMoneyF2FQRCodeUI.this);
+        LuckyMoneyF2FQRCodeUI.z(LuckyMoneyF2FQRCodeUI.this).cPF();
         AppMethodBeat.o(65063);
         return true;
       }
     });
     setActionbarColor(getResources().getColor(2131100568));
     hideActionbarLine();
-    this.vmk = ((ViewGroup)findViewById(2131301812));
-    this.vml = ((ViewGroup)findViewById(2131301811));
-    this.vmm = findViewById(2131301814);
-    this.vmm.setAlpha(0.0F);
-    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
-    this.mSensorManager.registerListener(this.vmK, this.mSensorManager.getDefaultSensor(1), 3);
-    this.vmn = new com.tencent.mm.plugin.luckymoney.f2f.a();
-    this.vmh = ((ShuffleView)findViewById(2131301826));
-    this.vmi = new ShuffleView.c();
-    this.vmi.vnF = 4;
-    this.vmi.vnD = 2;
-    this.vmi.vnE = 4;
-    this.vmi.vnG = 300;
-    this.vmi.scaleY = 0.0F;
-    this.vmh.setShuffleSetting(this.vmi);
-    ShuffleView.iNB = this.iNB;
+    this.vyp = ((ViewGroup)findViewById(2131301812));
+    this.vyq = ((ViewGroup)findViewById(2131301811));
+    this.vyr = findViewById(2131301814);
+    this.vyr.setAlpha(0.0F);
+    this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
+    this.mSensorManager.registerListener(this.vyP, this.mSensorManager.getDefaultSensor(1), 3);
+    this.vys = new com.tencent.mm.plugin.luckymoney.f2f.a();
+    this.vym = ((ShuffleView)findViewById(2131301826));
+    this.vyn = new ShuffleView.c();
+    this.vyn.vzK = 4;
+    this.vyn.vzI = 2;
+    this.vyn.vzJ = 4;
+    this.vyn.vzL = 300;
+    this.vyn.scaleY = 0.0F;
+    this.vym.setShuffleSetting(this.vyn);
+    ShuffleView.iQv = this.iQv;
     paramBundle = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(300L);
-    this.vmh.setExitAnimator(paramBundle);
-    this.vmh.setExitAnimatorListener(new ShuffleView.a()
+    this.vym.setExitAnimator(paramBundle);
+    this.vym.setExitAnimatorListener(new ShuffleView.a()
     {
       public final void a(ValueAnimator paramAnonymousValueAnimator, View paramAnonymousView)
       {
@@ -681,10 +681,10 @@ public class LuckyMoneyF2FQRCodeUI
         paramAnonymousView.setScaleX(0.5F * f + 1.0F);
         paramAnonymousView.setScaleY(0.5F * f + 1.0F);
         paramAnonymousValueAnimator = (Pair)LuckyMoneyF2FQRCodeUI.f(LuckyMoneyF2FQRCodeUI.this).peek();
-        if ((paramAnonymousValueAnimator != null) && (!bt.isNullOrNil(LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this))) && (LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this).equals(paramAnonymousValueAnimator.first))) {
+        if ((paramAnonymousValueAnimator != null) && (!bu.isNullOrNil(LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this))) && (LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this).equals(paramAnonymousValueAnimator.first))) {
           LuckyMoneyF2FQRCodeUI.E(LuckyMoneyF2FQRCodeUI.this).setAlpha(f);
         }
-        ad.i("LuckyMoneyF2FQRCodeUI", "fireworkBottomLayer %f", new Object[] { Float.valueOf(f) });
+        ae.i("LuckyMoneyF2FQRCodeUI", "fireworkBottomLayer %f", new Object[] { Float.valueOf(f) });
         if (f >= 0.9F)
         {
           paramAnonymousView.setAlpha((1.0F - f) * 10.0F);
@@ -695,7 +695,7 @@ public class LuckyMoneyF2FQRCodeUI
         }
         if (f == 1.0F)
         {
-          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uu("packet_received.m4a");
+          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uP("packet_received.m4a");
           LuckyMoneyF2FQRCodeUI.c(LuckyMoneyF2FQRCodeUI.this).removeView(LuckyMoneyF2FQRCodeUI.c(LuckyMoneyF2FQRCodeUI.this).getExitView());
           LuckyMoneyF2FQRCodeUI.H(LuckyMoneyF2FQRCodeUI.this);
           LuckyMoneyF2FQRCodeUI.I(LuckyMoneyF2FQRCodeUI.this).start();
@@ -703,15 +703,15 @@ public class LuckyMoneyF2FQRCodeUI
         AppMethodBeat.o(65064);
       }
     });
-    this.vmh.setCardListener(new ShuffleView.b()
+    this.vym.setCardListener(new ShuffleView.b()
     {
-      public final void Jd(int paramAnonymousInt)
+      public final void JC(int paramAnonymousInt)
       {
         AppMethodBeat.i(65066);
         LuckyMoneyF2FQRCodeUI.K(LuckyMoneyF2FQRCodeUI.this);
         if (paramAnonymousInt != 8)
         {
-          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uu("select_card.m4a");
+          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uP("select_card.m4a");
           arrayOfInt = LuckyMoneyF2FQRCodeUI.J(LuckyMoneyF2FQRCodeUI.this);
           arrayOfInt[3] += 1;
           AppMethodBeat.o(65066);
@@ -727,13 +727,13 @@ public class LuckyMoneyF2FQRCodeUI
         AppMethodBeat.i(65065);
         if (paramAnonymousInt2 == 8)
         {
-          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uu("music" + (paramAnonymousInt1 + 1) + ".m4a");
+          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uP("music" + (paramAnonymousInt1 + 1) + ".m4a");
           arrayOfInt = LuckyMoneyF2FQRCodeUI.J(LuckyMoneyF2FQRCodeUI.this);
           arrayOfInt[4] += 1;
           AppMethodBeat.o(65065);
           return;
         }
-        LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uu("touch_card.m4a");
+        LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uP("touch_card.m4a");
         int[] arrayOfInt = LuckyMoneyF2FQRCodeUI.J(LuckyMoneyF2FQRCodeUI.this);
         arrayOfInt[2] += 1;
         AppMethodBeat.o(65065);
@@ -744,19 +744,19 @@ public class LuckyMoneyF2FQRCodeUI
         AppMethodBeat.i(65067);
         if (paramAnonymousInt2 == 8)
         {
-          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uu("music" + (paramAnonymousInt1 + 1) + ".m4a");
+          LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uP("music" + (paramAnonymousInt1 + 1) + ".m4a");
           AppMethodBeat.o(65067);
           return;
         }
-        LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uu("select_card.m4a");
+        LuckyMoneyF2FQRCodeUI.G(LuckyMoneyF2FQRCodeUI.this).uP("select_card.m4a");
         AppMethodBeat.o(65067);
       }
     });
-    dhZ();
-    this.vmq = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.vmq.setDuration(300L);
-    this.vmq.setStartDelay(3000L);
-    this.vmq.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    dkY();
+    this.vyv = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.vyv.setDuration(300L);
+    this.vyv.setStartDelay(3000L);
+    this.vyv.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -770,12 +770,12 @@ public class LuckyMoneyF2FQRCodeUI
           LuckyMoneyF2FQRCodeUI.F(LuckyMoneyF2FQRCodeUI.this).setTranslationY(0.0F);
           LuckyMoneyF2FQRCodeUI.M(LuckyMoneyF2FQRCodeUI.this);
           LuckyMoneyF2FQRCodeUI.N(LuckyMoneyF2FQRCodeUI.this).notifyDataSetChanged();
-          LuckyMoneyF2FQRCodeUI.x(LuckyMoneyF2FQRCodeUI.this).fyt();
+          LuckyMoneyF2FQRCodeUI.x(LuckyMoneyF2FQRCodeUI.this).fCv();
         }
         AppMethodBeat.o(65068);
       }
     });
-    dhY();
+    dkX();
     getWindow().addFlags(128);
     AppMethodBeat.o(65086);
   }
@@ -783,10 +783,10 @@ public class LuckyMoneyF2FQRCodeUI
   public void onDestroy()
   {
     AppMethodBeat.i(65094);
-    com.tencent.mm.plugin.report.service.g.yhR.f(14007, new Object[] { Integer.valueOf(this.jlo[0]), Integer.valueOf(this.jlo[1]), Integer.valueOf(this.jlo[2]), Integer.valueOf(this.jlo[3]), Integer.valueOf(this.jlo[4]), Integer.valueOf(this.jlo[5]) });
-    com.tencent.mm.plugin.luckymoney.f2f.a locala = this.vmn;
+    com.tencent.mm.plugin.report.service.g.yxI.f(14007, new Object[] { Integer.valueOf(this.joi[0]), Integer.valueOf(this.joi[1]), Integer.valueOf(this.joi[2]), Integer.valueOf(this.joi[3]), Integer.valueOf(this.joi[4]), Integer.valueOf(this.joi[5]) });
+    com.tencent.mm.plugin.luckymoney.f2f.a locala = this.vys;
     locala.stopped = true;
-    locala.vle.release();
+    locala.vxj.release();
     getWindow().clearFlags(128);
     super.onDestroy();
     AppMethodBeat.o(65094);
@@ -797,7 +797,7 @@ public class LuckyMoneyF2FQRCodeUI
     AppMethodBeat.i(65093);
     super.onPause();
     if (this.mSensorManager != null) {
-      this.mSensorManager.unregisterListener(this.vmK);
+      this.mSensorManager.unregisterListener(this.vyP);
     }
     AppMethodBeat.o(65093);
   }
@@ -807,8 +807,8 @@ public class LuckyMoneyF2FQRCodeUI
     AppMethodBeat.i(65091);
     super.onResume();
     doSceneProgress(new com.tencent.mm.plugin.luckymoney.f2f.a.e(), true);
-    this.jkD.az(60000L, 60000L);
-    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("ffopenwxhb", this.vmu, true);
+    this.jnx.ay(60000L, 60000L);
+    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().a("ffopenwxhb", this.vyz, true);
     addSceneEndListener(1990);
     addSceneEndListener(1987);
     addSceneEndListener(1971);
@@ -818,9 +818,9 @@ public class LuckyMoneyF2FQRCodeUI
       localLayoutParams.screenBrightness = 0.85F;
       getWindow().setAttributes(localLayoutParams);
     }
-    bh.a(this, this);
+    bi.a(this, this);
     if (this.mSensorManager != null) {
-      this.mSensorManager.registerListener(this.vmK, this.mSensorManager.getDefaultSensor(1), 3);
+      this.mSensorManager.registerListener(this.vyP, this.mSensorManager.getDefaultSensor(1), 3);
     }
     AppMethodBeat.o(65091);
   }
@@ -829,33 +829,33 @@ public class LuckyMoneyF2FQRCodeUI
   {
     int i = 0;
     AppMethodBeat.i(65095);
-    ad.i("LuckyMoneyF2FQRCodeUI", "errType: %d,errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("LuckyMoneyF2FQRCodeUI", "errType: %d,errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
       if ((paramn instanceof com.tencent.mm.plugin.luckymoney.f2f.a.e))
       {
-        ad.d("LuckyMoneyF2FQRCodeUI", "sendId:" + this.vkl);
-        if ((!bt.V(new String[] { this.vkl, ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vkl })) && (!this.vkl.equals(((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vkl)))
+        ae.d("LuckyMoneyF2FQRCodeUI", "sendId:" + this.vwq);
+        if ((!bu.V(new String[] { this.vwq, ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vwq })) && (!this.vwq.equals(((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vwq)))
         {
-          this.vmc.clear();
-          this.vmd.clear();
-          this.vme.clear();
-          this.vmf.notifyDataSetChanged();
-          this.vmp = "";
+          this.vyh.clear();
+          this.vyi.clear();
+          this.vyj.clear();
+          this.vyk.notifyDataSetChanged();
+          this.vyu = "";
         }
-        if (!bt.isNullOrNil(((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vkl)) {
-          this.vkl = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vkl;
+        if (!bu.isNullOrNil(((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vwq)) {
+          this.vwq = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vwq;
         }
-        this.qeQ = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).qeQ;
-        this.vlI = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vlI;
-        this.vlH = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vlH;
-        this.vlG = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vlG;
-        dhY();
-        dib();
-        if (this.vlI == 0) {
-          this.jkD.stopTimer();
+        this.qlv = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).qlv;
+        this.vxN = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vxN;
+        this.vxM = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vxM;
+        this.vxL = ((com.tencent.mm.plugin.luckymoney.f2f.a.e)paramn).vxL;
+        dkX();
+        dla();
+        if (this.vxN == 0) {
+          this.jnx.stopTimer();
         }
-        if ((this.vmc.size() == 0) && (!bt.isNullOrNil(this.vkl))) {
-          doSceneProgress(new ah(this.vkl, 5, 0, null, "v1.0"), false);
+        if ((this.vyh.size() == 0) && (!bu.isNullOrNil(this.vwq))) {
+          doSceneProgress(new ah(this.vwq, 5, 0, null, "v1.0"), false);
         }
       }
     }
@@ -865,53 +865,53 @@ public class LuckyMoneyF2FQRCodeUI
       return true;
       if ((paramn instanceof com.tencent.mm.plugin.luckymoney.f2f.a.a))
       {
-        this.vkl = "";
-        this.qeQ = "";
-        this.vlI = 0;
-        this.vmc.clear();
-        this.vmp = "";
-        this.vmf.notifyDataSetChanged();
-        dhY();
-        dib();
-        this.jkD.stopTimer();
-        if (!bt.isNullOrNil(this.vlH)) {
-          com.tencent.mm.ui.base.h.cl(this, this.vlH);
+        this.vwq = "";
+        this.qlv = "";
+        this.vxN = 0;
+        this.vyh.clear();
+        this.vyu = "";
+        this.vyk.notifyDataSetChanged();
+        dkX();
+        dla();
+        this.jnx.stopTimer();
+        if (!bu.isNullOrNil(this.vxM)) {
+          com.tencent.mm.ui.base.h.cm(this, this.vxM);
         }
-        this.vlG = "";
+        this.vxL = "";
       }
       else if ((paramn instanceof ah))
       {
-        this.vmo = ((ah)paramn).vpO.voi;
-        paramString = ((ah)paramn).vpO.vox;
+        this.vyt = ((ah)paramn).vBT.vAn;
+        paramString = ((ah)paramn).vBT.vAC;
         if ((paramString != null) && (paramString.size() > 0))
         {
           paramInt1 = i;
           while (paramInt1 < paramString.size())
           {
             paramn = (y)paramString.get(paramInt1);
-            if ((!bt.isNullOrNil(paramn.vol)) && (!this.vmc.contains(paramn.vol)))
+            if ((!bu.isNullOrNil(paramn.vAq)) && (!this.vyh.contains(paramn.vAq)))
             {
-              this.vmc.add(paramn.vol);
+              this.vyh.add(paramn.vAq);
               String str = paramn.userName;
-              if (!bt.isNullOrNil(paramn.vpD)) {
-                this.vmp = str;
+              if (!bu.isNullOrNil(paramn.vBI)) {
+                this.vyu = str;
               }
-              this.vmd.put(paramn.vol, str);
+              this.vyi.put(paramn.vAq, str);
             }
             paramInt1 += 1;
           }
-          dia();
-          this.vmf.notifyDataSetChanged();
+          dkZ();
+          this.vyk.notifyDataSetChanged();
         }
       }
       else if ((paramn instanceof com.tencent.mm.plugin.luckymoney.f2f.a.b))
       {
-        ad.i("LuckyMoneyF2FQRCodeUI", "onSceneEnd NetSceneF2FLuckyMoneyInvalid");
-        this.retCode = ((com.tencent.mm.plugin.luckymoney.f2f.a.b)paramn).dlw;
-        this.krz = ((com.tencent.mm.plugin.luckymoney.f2f.a.b)paramn).paA;
-        ad.i("LuckyMoneyF2FQRCodeUI", "retcode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        ae.i("LuckyMoneyF2FQRCodeUI", "onSceneEnd NetSceneF2FLuckyMoneyInvalid");
+        this.retCode = ((com.tencent.mm.plugin.luckymoney.f2f.a.b)paramn).dmy;
+        this.kuP = ((com.tencent.mm.plugin.luckymoney.f2f.a.b)paramn).phe;
+        ae.i("LuckyMoneyF2FQRCodeUI", "retcode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
         continue;
-        if (!bt.isNullOrNil(paramString)) {
+        if (!bu.isNullOrNil(paramString)) {
           com.tencent.mm.ui.base.h.c(this, paramString, getString(2131755906), true);
         }
       }
@@ -922,12 +922,12 @@ public class LuckyMoneyF2FQRCodeUI
   {
     AppMethodBeat.i(65092);
     super.onStop();
-    this.jkD.stopTimer();
-    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("ffopenwxhb", this.vmu, true);
+    this.jnx.stopTimer();
+    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().b("ffopenwxhb", this.vyz, true);
     removeSceneEndListener(1990);
     removeSceneEndListener(1987);
     removeSceneEndListener(1971);
-    bh.a(this, null);
+    bi.a(this, null);
     AppMethodBeat.o(65092);
   }
   
@@ -972,15 +972,15 @@ public class LuckyMoneyF2FQRCodeUI
         Object localObject = (ImageView)paramView.findViewById(2131301822);
         ImageView localImageView = (ImageView)paramView.findViewById(2131301815);
         paramViewGroup = new a();
-        paramViewGroup.iWu = ((ImageView)localObject);
-        paramViewGroup.vmU = localImageView;
+        paramViewGroup.iZn = ((ImageView)localObject);
+        paramViewGroup.vyZ = localImageView;
         paramView.setTag(paramViewGroup);
         localObject = (String)LuckyMoneyF2FQRCodeUI.b(LuckyMoneyF2FQRCodeUI.this).get(getItem(paramInt));
-        com.tencent.mm.plugin.luckymoney.model.z.b(paramViewGroup.iWu, null, (String)localObject);
-        if ((bt.isNullOrNil(LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this))) || (!LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this).equals(localObject))) {
+        com.tencent.mm.plugin.luckymoney.model.z.b(paramViewGroup.iZn, null, (String)localObject);
+        if ((bu.isNullOrNil(LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this))) || (!LuckyMoneyF2FQRCodeUI.D(LuckyMoneyF2FQRCodeUI.this).equals(localObject))) {
           break label157;
         }
-        paramViewGroup.vmU.setVisibility(0);
+        paramViewGroup.vyZ.setVisibility(0);
       }
       for (;;)
       {
@@ -989,14 +989,14 @@ public class LuckyMoneyF2FQRCodeUI
         paramViewGroup = (a)paramView.getTag();
         break;
         label157:
-        paramViewGroup.vmU.setVisibility(4);
+        paramViewGroup.vyZ.setVisibility(4);
       }
     }
     
     final class a
     {
-      ImageView iWu;
-      ImageView vmU;
+      ImageView iZn;
+      ImageView vyZ;
       
       a() {}
     }
@@ -1004,7 +1004,7 @@ public class LuckyMoneyF2FQRCodeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FQRCodeUI
  * JD-Core Version:    0.7.0.1
  */

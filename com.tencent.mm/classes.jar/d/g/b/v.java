@@ -17,27 +17,27 @@ public abstract class v
         break;
       }
       paramObject = (v)paramObject;
-    } while ((Hv().equals(paramObject.Hv())) && (getName().equals(paramObject.getName())) && (Hu().equals(paramObject.Hu())) && (p.i(gfP(), paramObject.gfP())));
+    } while ((HD().equals(paramObject.HD())) && (getName().equals(paramObject.getName())) && (HC().equals(paramObject.HC())) && (p.i(gkr(), paramObject.gkr())));
     return false;
     if ((paramObject instanceof k)) {
-      return paramObject.equals(gfQ());
+      return paramObject.equals(gks());
     }
     return false;
   }
   
-  protected final k ggc()
+  protected final k gkE()
   {
-    return (k)super.gfR();
+    return (k)super.gkt();
   }
   
   public int hashCode()
   {
-    return (Hv().hashCode() * 31 + getName().hashCode()) * 31 + Hu().hashCode();
+    return (HD().hashCode() * 31 + getName().hashCode()) * 31 + HC().hashCode();
   }
   
   public String toString()
   {
-    a locala = gfQ();
+    a locala = gks();
     if (locala != this) {
       return locala.toString();
     }

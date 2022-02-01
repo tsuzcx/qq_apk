@@ -3,15 +3,15 @@ package kotlinx.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/MissingFieldException;", "Lkotlinx/serialization/SerializationException;", "fieldName", "", "(Ljava/lang/String;)V", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/MissingFieldException;", "Lkotlinx/serialization/SerializationException;", "fieldName", "", "(Ljava/lang/String;)V", "kotlinx-serialization-runtime"})
 public final class i
   extends t
 {
   public i(String paramString)
   {
     super("Field '" + paramString + "' is required, but it was missing", (byte)0);
-    AppMethodBeat.i(191495);
-    AppMethodBeat.o(191495);
+    AppMethodBeat.i(200083);
+    AppMethodBeat.o(200083);
   }
 }
 

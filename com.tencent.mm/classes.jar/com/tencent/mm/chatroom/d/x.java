@@ -1,23 +1,25 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.protocal.protobuf.dsb;
-import com.tencent.mm.protocal.protobuf.dsc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.protocal.protobuf.dsz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
 
 public final class x
   extends n
@@ -25,9 +27,9 @@ public final class x
 {
   private f callback;
   public String chatroomName;
-  public String fKQ;
-  public String fLg;
-  public int fLh;
+  public String fMT;
+  public String fNk;
+  public int fNl;
   public int maxCount;
   private final b rr;
   
@@ -36,20 +38,20 @@ public final class x
     AppMethodBeat.i(12498);
     this.callback = null;
     this.chatroomName = null;
-    this.fKQ = null;
-    this.fLg = null;
+    this.fMT = null;
+    this.fNk = null;
     this.maxCount = 0;
-    this.fLh = 0;
+    this.fNl = 0;
     b.a locala = new b.a();
-    locala.hNM = new dsb();
-    locala.hNN = new dsc();
+    locala.hQF = new dsy();
+    locala.hQG = new dsz();
     locala.uri = "/cgi-bin/micromsg-bin/upgradechatroom";
     locala.funcId = 482;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     this.chatroomName = paramString;
-    ((dsb)this.rr.hNK.hNQ).FuL = paramString;
+    ((dsy)this.rr.hQD.hQJ).FNj = paramString;
     AppMethodBeat.o(12498);
   }
   
@@ -67,25 +69,25 @@ public final class x
     return 482;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12500);
-    dsc localdsc = (dsc)this.rr.hNL.hNQ;
-    ad.d("MicroMsg.NetSceneUpgradeChatroom", "NetSceneUpgradeChatroom onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.fLg = localdsc.GUq;
-    if (!bt.isNullOrNil(this.fLg))
+    dsz localdsz = (dsz)this.rr.hQE.hQJ;
+    ae.d("MicroMsg.NetSceneUpgradeChatroom", "NetSceneUpgradeChatroom onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.fNk = localdsz.HnR;
+    if (!bu.isNullOrNil(this.fNk))
     {
-      paramArrayOfByte = ((c)g.ab(c.class)).azz().AN(this.chatroomName);
+      paramArrayOfByte = ((c)g.ab(c.class)).azP().Bx(this.chatroomName);
       paramq = paramArrayOfByte;
       if (paramArrayOfByte == null) {
-        paramq = new ab();
+        paramq = new ac();
       }
-      paramq.lV(u.aAm(), this.fLg);
-      com.tencent.mm.model.q.a(paramq);
+      paramq.mc(v.aAC(), this.fNk);
+      r.a(paramq);
     }
-    this.fKQ = localdsc.Gwy;
-    this.maxCount = localdsc.Gwx;
-    this.fLh = localdsc.Gwz;
+    this.fMT = localdsz.GPY;
+    this.maxCount = localdsz.GPX;
+    this.fNl = localdsz.GPZ;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12500);
   }

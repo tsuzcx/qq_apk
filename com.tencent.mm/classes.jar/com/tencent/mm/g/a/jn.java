@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.sdk.b.b;
 
 public final class jn
   extends b
 {
-  public a dwr;
+  public a dxt;
+  public b dxu;
   
   public jn()
   {
@@ -15,16 +17,22 @@ public final class jn
   
   private jn(byte paramByte)
   {
-    AppMethodBeat.i(125619);
-    this.dwr = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125618);
+    this.dxt = new a();
+    this.dxu = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125619);
+    AppMethodBeat.o(125618);
   }
   
   public static final class a
   {
-    public boolean isResume = false;
+    public int drW;
+  }
+  
+  public static final class b
+  {
+    public SnsObject dxv;
   }
 }
 

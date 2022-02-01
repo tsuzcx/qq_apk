@@ -5,55 +5,55 @@ import android.graphics.Paint.Style;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Stack;
 
 public final class d
   implements a
 {
-  public c cnl;
-  public final y.b gzS;
-  public com.tencent.mm.plugin.appbrand.canvas.a.a jSY;
-  public com.tencent.mm.plugin.appbrand.canvas.a.a jSZ;
-  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jTa;
-  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jTb;
-  public Paint jTc;
-  public Paint jTd;
-  public e jTe;
-  private a jTf;
-  boolean jTg;
+  public c cnn;
+  public final z.b gCz;
+  public com.tencent.mm.plugin.appbrand.canvas.a.a jWp;
+  public com.tencent.mm.plugin.appbrand.canvas.a.a jWq;
+  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jWr;
+  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jWs;
+  public Paint jWt;
+  public Paint jWu;
+  public e jWv;
+  private a jWw;
+  boolean jWx;
   
   public d(a parama)
   {
     AppMethodBeat.i(144848);
-    this.jTc = new Paint();
-    this.gzS = new y.b();
-    this.jTg = true;
-    this.jTf = parama;
-    if (this.jTg)
+    this.jWt = new Paint();
+    this.gCz = new z.b();
+    this.jWx = true;
+    this.jWw = parama;
+    if (this.jWx)
     {
-      parama = i.bdx().bdp();
-      this.jSY = parama;
-      if (!this.jTg) {
+      parama = i.bec().bdU();
+      this.jWp = parama;
+      if (!this.jWx) {
         break label196;
       }
     }
     label196:
-    for (parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdt().bdp();; parama = new com.tencent.mm.plugin.appbrand.canvas.a.a())
+    for (parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdY().bdU();; parama = new com.tencent.mm.plugin.appbrand.canvas.a.a())
     {
-      this.jSZ = parama;
-      this.jSY.setStyle(Paint.Style.STROKE);
-      this.jSZ.setStyle(Paint.Style.FILL);
-      this.jSY.setAntiAlias(true);
-      this.jSZ.setAntiAlias(true);
-      this.jSY.setStrokeWidth(g.vJ(1));
-      this.jSZ.setStrokeWidth(g.vJ(1));
-      this.jTa = new Stack();
-      this.jTb = new Stack();
-      this.jTc.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+      this.jWq = parama;
+      this.jWp.setStyle(Paint.Style.STROKE);
+      this.jWq.setStyle(Paint.Style.FILL);
+      this.jWp.setAntiAlias(true);
+      this.jWq.setAntiAlias(true);
+      this.jWp.setStrokeWidth(g.vO(1));
+      this.jWq.setStrokeWidth(g.vO(1));
+      this.jWr = new Stack();
+      this.jWs = new Stack();
+      this.jWt.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
       AppMethodBeat.o(144848);
       return;
       parama = new com.tencent.mm.plugin.appbrand.canvas.a.a();
@@ -64,45 +64,45 @@ public final class d
   public final void invalidate()
   {
     AppMethodBeat.i(144852);
-    this.jTf.invalidate();
+    this.jWw.invalidate();
     AppMethodBeat.o(144852);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(144849);
-    this.jTa.clear();
-    this.jTb.clear();
-    this.jSY.reset();
-    this.jSZ.reset();
-    this.jSY.setStyle(Paint.Style.STROKE);
-    this.jSZ.setStyle(Paint.Style.FILL);
-    this.jSY.setAntiAlias(true);
-    this.jSZ.setAntiAlias(true);
-    this.jSY.setStrokeWidth(g.vJ(1));
-    this.jSZ.setStrokeWidth(g.vJ(1));
+    this.jWr.clear();
+    this.jWs.clear();
+    this.jWp.reset();
+    this.jWq.reset();
+    this.jWp.setStyle(Paint.Style.STROKE);
+    this.jWq.setStyle(Paint.Style.FILL);
+    this.jWp.setAntiAlias(true);
+    this.jWq.setAntiAlias(true);
+    this.jWp.setStrokeWidth(g.vO(1));
+    this.jWq.setStrokeWidth(g.vO(1));
     AppMethodBeat.o(144849);
   }
   
   public final void restore()
   {
     AppMethodBeat.i(144851);
-    if (this.jTa.isEmpty())
+    if (this.jWr.isEmpty())
     {
       AppMethodBeat.o(144851);
       return;
     }
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala1 = this.jSY;
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala2 = this.jSZ;
-    this.jSY = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jTa.pop());
-    this.jSZ = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jTb.pop());
-    if (this.jTg)
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala1 = this.jWp;
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala2 = this.jWq;
+    this.jWp = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jWr.pop());
+    this.jWq = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jWs.pop());
+    if (this.jWx)
     {
-      if (this.jSY != locala1) {
-        i.bdx().a(locala1);
+      if (this.jWp != locala1) {
+        i.bec().a(locala1);
       }
-      if (this.jSZ != locala2) {
-        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdt().a(locala2);
+      if (this.jWq != locala2) {
+        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdY().a(locala2);
       }
     }
     AppMethodBeat.o(144851);
@@ -111,31 +111,31 @@ public final class d
   public final void save()
   {
     AppMethodBeat.i(144850);
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala = this.jSY;
-    this.jTa.push(this.jSY);
-    if (this.jTg)
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala = this.jWp;
+    this.jWr.push(this.jWp);
+    if (this.jWx)
     {
-      this.jSY = i.bdx().bdp();
-      locala.b(this.jSY);
-      if (this.jSY == null) {
-        this.jSY = locala;
+      this.jWp = i.bec().bdU();
+      locala.b(this.jWp);
+      if (this.jWp == null) {
+        this.jWp = locala;
       }
-      locala = this.jSZ;
-      this.jTb.push(this.jSZ);
-      if (!this.jTg) {
+      locala = this.jWq;
+      this.jWs.push(this.jWq);
+      if (!this.jWx) {
         break label132;
       }
     }
     label132:
-    for (this.jSZ = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdt().bdp();; this.jSZ = locala.bdy())
+    for (this.jWq = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdY().bdU();; this.jWq = locala.bed())
     {
-      locala.b(this.jSZ);
-      if (this.jSZ == null) {
-        this.jSZ = locala;
+      locala.b(this.jWq);
+      if (this.jWq == null) {
+        this.jWq = locala;
       }
       AppMethodBeat.o(144850);
       return;
-      this.jSY = locala.bdy();
+      this.jWp = locala.bed();
       break;
     }
   }

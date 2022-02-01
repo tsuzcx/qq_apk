@@ -9,9 +9,9 @@ public abstract interface e
 {
   public abstract boolean aE(float paramFloat);
   
-  public abstract boolean bhH();
+  public abstract boolean bip();
   
-  public abstract void bmJ();
+  public abstract void bns();
   
   public abstract void c(boolean paramBoolean, String paramString, int paramInt);
   
@@ -53,7 +53,7 @@ public abstract interface e
   
   public abstract void setScaleType(h paramh);
   
-  public abstract void setVideoFooterView(e.b paramb);
+  public abstract void setVideoFooterView(b paramb);
   
   public abstract void setVideoSource(int paramInt);
   
@@ -65,33 +65,33 @@ public abstract interface e
   {
     public abstract void a(e.f paramf);
     
-    public abstract void bkF();
+    public abstract void blp();
     
-    public abstract void bmL();
+    public abstract boolean bnP();
     
-    public abstract boolean bnf();
+    public abstract void bnQ();
     
-    public abstract void bng();
+    public abstract void bnR();
     
-    public abstract void bnh();
+    public abstract boolean bnS();
     
-    public abstract boolean bni();
+    public abstract void bnT();
     
-    public abstract void bnj();
+    public abstract boolean bnU();
     
-    public abstract boolean bnk();
+    public abstract boolean bnV();
     
-    public abstract boolean bnl();
+    public abstract void bnW();
     
-    public abstract void bnm();
+    public abstract void bnX();
     
-    public abstract void bnn();
+    public abstract void bnY();
     
-    public abstract void bno();
+    public abstract void bnZ();
     
-    public abstract void bnp();
+    public abstract void bnv();
     
-    public abstract boolean bnq();
+    public abstract boolean boa();
     
     public abstract void hide();
     
@@ -138,15 +138,22 @@ public abstract interface e
     public abstract void setTitle(String paramString);
   }
   
+  public static abstract interface b
+  {
+    public abstract void gS(boolean paramBoolean);
+    
+    public abstract int getVideoTotalTime();
+    
+    public abstract void setVideoTotalTime(int paramInt);
+    
+    public abstract void tx(int paramInt);
+  }
+  
   public static abstract interface c
   {
     public abstract void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
     
     public abstract void d(String paramString1, String paramString2, int paramInt1, int paramInt2);
-    
-    public abstract void dq(String paramString1, String paramString2);
-    
-    public abstract void dr(String paramString1, String paramString2);
     
     public abstract void ds(String paramString1, String paramString2);
     
@@ -155,13 +162,17 @@ public abstract interface e
     public abstract void du(String paramString1, String paramString2);
     
     public abstract void dv(String paramString1, String paramString2);
+    
+    public abstract void dw(String paramString1, String paramString2);
+    
+    public abstract void dx(String paramString1, String paramString2);
   }
   
   public static abstract interface d
   {
-    public abstract void aqD();
+    public abstract void aqS();
     
-    public abstract void nM(int paramInt);
+    public abstract void nP(int paramInt);
   }
   
   public static abstract interface e
@@ -184,11 +195,11 @@ public abstract interface e
     static
     {
       AppMethodBeat.i(137806);
-      llM = new h("DEFAULT", 0);
-      llN = new h("FILL", 1);
-      llO = new h("CONTAIN", 2);
-      llP = new h("COVER", 3);
-      llQ = new h[] { llM, llN, llO, llP };
+      lqm = new h("DEFAULT", 0);
+      lqn = new h("FILL", 1);
+      lqo = new h("CONTAIN", 2);
+      lqp = new h("COVER", 3);
+      lqq = new h[] { lqm, lqn, lqo, lqp };
       AppMethodBeat.o(137806);
     }
     
@@ -197,9 +208,9 @@ public abstract interface e
   
   public static abstract interface i
   {
-    public abstract int bmT();
+    public abstract int bnD();
     
-    public abstract int bmU();
+    public abstract int bnE();
   }
 }
 

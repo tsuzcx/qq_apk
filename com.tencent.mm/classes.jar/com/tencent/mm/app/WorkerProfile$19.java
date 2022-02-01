@@ -1,42 +1,42 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.nr;
-import com.tencent.mm.g.a.qn;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.ns;
+import com.tencent.mm.g.a.qo;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.modelappbrand.r;
-import com.tencent.mm.protocal.protobuf.bie;
-import com.tencent.mm.protocal.protobuf.bif;
+import com.tencent.mm.protocal.protobuf.biu;
+import com.tencent.mm.protocal.protobuf.biv;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class WorkerProfile$19
-  extends com.tencent.mm.sdk.b.c<nr>
+  extends com.tencent.mm.sdk.b.c<ns>
 {
   WorkerProfile$19(WorkerProfile paramWorkerProfile)
   {
     AppMethodBeat.i(161248);
-    this.__eventId = nr.class.getName().hashCode();
+    this.__eventId = ns.class.getName().hashCode();
     AppMethodBeat.o(161248);
   }
   
-  private boolean Nc()
+  private boolean MX()
   {
     AppMethodBeat.i(19564);
-    ba.aiU().a(1145, new f()
+    bc.ajj().a(1145, new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(19563);
-        ba.aiU().b(1145, this);
-        ad.i("MicroMsg.WorkerProfile", "onSceneEnd(GetServiceNotifyOptions), errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        bc.ajj().b(1145, this);
+        ae.i("MicroMsg.WorkerProfile", "onSceneEnd(GetServiceNotifyOptions), errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
           AppMethodBeat.o(19563);
@@ -48,33 +48,33 @@ final class WorkerProfile$19
           return;
         }
         paramAnonymousString = (r)paramAnonymousn;
-        if ((((bie)paramAnonymousString.hKw.hNK.hNQ).GDf & 0x1) == 0)
+        if ((((biu)paramAnonymousString.hNp.hQD.hQJ).GWF & 0x1) == 0)
         {
           AppMethodBeat.o(19563);
           return;
         }
-        boolean bool = paramAnonymousString.aDN().FCV;
-        ba.aBQ();
-        if (bool != com.tencent.mm.model.c.ajl().getBoolean(al.a.Iwg, true))
+        boolean bool = paramAnonymousString.aEd().FVq;
+        bc.aCg();
+        if (bool != com.tencent.mm.model.c.ajA().getBoolean(am.a.IQE, true))
         {
-          ad.i("MicroMsg.WorkerProfile", "service notify message notice switch changed(to : %b)", new Object[] { Boolean.valueOf(bool) });
-          ba.aBQ();
-          com.tencent.mm.model.c.ajl().set(al.a.Iwg, Boolean.valueOf(bool));
-          a.IbL.l(new qn());
+          ae.i("MicroMsg.WorkerProfile", "service notify message notice switch changed(to : %b)", new Object[] { Boolean.valueOf(bool) });
+          bc.aCg();
+          com.tencent.mm.model.c.ajA().set(am.a.IQE, Boolean.valueOf(bool));
+          a.IvT.l(new qo());
         }
-        bool = paramAnonymousString.aDN().GDg;
-        ba.aBQ();
-        if (bool != com.tencent.mm.model.c.ajl().getBoolean(al.a.Iwh, true))
+        bool = paramAnonymousString.aEd().GWG;
+        bc.aCg();
+        if (bool != com.tencent.mm.model.c.ajA().getBoolean(am.a.IQF, true))
         {
-          ad.i("MicroMsg.WorkerProfile", "wxa custom session notify message notice switch changed(to : %b)", new Object[] { Boolean.valueOf(bool) });
-          ba.aBQ();
-          com.tencent.mm.model.c.ajl().set(al.a.Iwh, Boolean.valueOf(bool));
-          a.IbL.l(new qn());
+          ae.i("MicroMsg.WorkerProfile", "wxa custom session notify message notice switch changed(to : %b)", new Object[] { Boolean.valueOf(bool) });
+          bc.aCg();
+          com.tencent.mm.model.c.ajA().set(am.a.IQF, Boolean.valueOf(bool));
+          a.IvT.l(new qo());
         }
         AppMethodBeat.o(19563);
       }
     });
-    ba.aiU().a(new r(5), 0);
+    bc.ajj().a(new r(5), 0);
     AppMethodBeat.o(19564);
     return true;
   }

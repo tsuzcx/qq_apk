@@ -1,84 +1,67 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.ns;
 import com.tencent.mm.protocal.protobuf.nt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.util.LinkedList;
 
 public final class i
   extends n
   implements k
 {
   private f callback;
-  private String dok;
-  private String pdi;
   public b rr;
-  private int scene;
   
-  public i(String paramString1, int paramInt, String paramString2)
+  public i(String paramString1, LinkedList<String> paramLinkedList, int paramInt, String paramString2, double paramDouble1, double paramDouble2)
   {
-    this.dok = paramString1;
-    this.scene = paramInt;
-    this.pdi = paramString2;
+    AppMethodBeat.i(51617);
+    Object localObject = new b.a();
+    ((b.a)localObject).hQF = new ns();
+    ((b.a)localObject).hQG = new nt();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
+    ((b.a)localObject).funcId = 1068;
+    ((b.a)localObject).hQH = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (ns)this.rr.hQD.hQJ;
+    ((ns)localObject).ProductID = paramString1;
+    ((ns)localObject).Scene = paramInt;
+    ((ns)localObject).Gaw = paramString2;
+    ((ns)localObject).Gav = paramLinkedList;
+    ((ns)localObject).Gay = paramDouble2;
+    ((ns)localObject).Gax = paramDouble1;
+    AppMethodBeat.o(51617);
   }
   
   public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(51620);
+    AppMethodBeat.i(51619);
     this.callback = paramf;
-    paramf = new b.a();
-    paramf.hNM = new ns();
-    paramf.hNN = new nt();
-    paramf.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetproductinfo";
-    paramf.funcId = 1063;
-    paramf.hNO = 0;
-    paramf.respCmdId = 0;
-    this.rr = paramf.aDC();
-    paramf = (ns)this.rr.hNK.hNQ;
-    paramf.ProductID = this.dok;
-    paramf.Scene = this.scene;
-    paramf.FIa = this.pdi;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(51620);
+    AppMethodBeat.o(51619);
     return i;
   }
   
   public final int getType()
   {
-    return 1063;
+    return 1068;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(51622);
-    ad.d("MicroMsg.scanner.NetSceneGetProductInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    AppMethodBeat.i(51618);
+    ae.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(51622);
-  }
-  
-  public final n.b securityVerificationChecked(q paramq)
-  {
-    AppMethodBeat.i(51621);
-    paramq = (ns)((b)paramq).hNK.hNQ;
-    if ((paramq.Scene < 0) || (paramq.ProductID == null) || (paramq.ProductID.length() <= 0))
-    {
-      ad.e("MicroMsg.scanner.NetSceneGetProductInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(paramq.Scene) });
-      paramq = n.b.hOq;
-      AppMethodBeat.o(51621);
-      return paramq;
-    }
-    paramq = n.b.hOp;
-    AppMethodBeat.o(51621);
-    return paramq;
+    AppMethodBeat.o(51618);
   }
 }
 

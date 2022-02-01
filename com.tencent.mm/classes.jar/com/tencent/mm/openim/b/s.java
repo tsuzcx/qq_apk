@@ -1,117 +1,117 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.openim.a.b;
+import com.tencent.mm.openim.a.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bfd;
-import com.tencent.mm.protocal.protobuf.cev;
-import com.tencent.mm.protocal.protobuf.cew;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.bft;
+import com.tencent.mm.protocal.protobuf.cfp;
+import com.tencent.mm.protocal.protobuf.cfq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 
 public final class s
 {
-  public static int a(bfd parambfd)
+  public static int a(bft parambft)
   {
     AppMethodBeat.i(151231);
-    int i = parambfd.ret;
-    parambfd = parambfd.GBa;
-    am localam = a(parambfd);
-    ad.i("MicroMsg.OpenIMContactLogic", "onGYNetEnd openim_processModContact user:%s nick:%s remark:%s, source:%d, sex%d, appId:%s, customDetail:%s, customDetailVisible:%d， type:%d, wordingId:%s", new Object[] { localam.field_username, localam.field_nickname, localam.field_conRemark, Integer.valueOf(localam.getSource()), Integer.valueOf(localam.ePk), localam.field_openImAppid, localam.ePN, Integer.valueOf(localam.ePM), Integer.valueOf(localam.field_type), localam.field_descWordingId });
-    ((l)g.ab(l.class)).azp().af(localam);
-    ((b)g.ab(b.class)).bB(parambfd.app_id, parambfd.GYR);
-    b(parambfd);
+    int i = parambft.ret;
+    parambft = parambft.GUA;
+    an localan = a(parambft);
+    ae.i("MicroMsg.OpenIMContactLogic", "onGYNetEnd openim_processModContact user:%s nick:%s remark:%s, source:%d, sex%d, appId:%s, customDetail:%s, customDetailVisible:%d， type:%d, wordingId:%s", new Object[] { localan.field_username, localan.field_nickname, localan.field_conRemark, Integer.valueOf(localan.getSource()), Integer.valueOf(localan.eQV), localan.field_openImAppid, localan.eRy, Integer.valueOf(localan.eRx), Integer.valueOf(localan.field_type), localan.field_descWordingId });
+    ((l)g.ab(l.class)).azF().am(localan);
+    ((a)g.ab(a.class)).bB(parambft.app_id, parambft.Hss);
+    b(parambft);
     AppMethodBeat.o(151231);
     return i;
   }
   
-  public static am a(cev paramcev)
+  public static an a(cfp paramcfp)
   {
     AppMethodBeat.i(151232);
-    Object localObject2 = ((l)g.ab(l.class)).azp().Bf(paramcev.iHA);
+    Object localObject2 = ((l)g.ab(l.class)).azF().BH(paramcfp.iKt);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new am();
+      localObject1 = new an();
     }
-    ((am)localObject1).setUsername(paramcev.iHA);
-    ((am)localObject1).sT(paramcev.nickname);
-    ((am)localObject1).setType(paramcev.type);
-    ((am)localObject1).sR(paramcev.iTM);
-    ((am)localObject1).setSource(paramcev.dnh);
-    ((am)localObject1).sU(paramcev.GYT);
-    ((am)localObject1).sV(paramcev.GYU);
-    ((am)localObject1).sY(paramcev.GYV);
-    ((am)localObject1).sX(paramcev.GYW);
-    if (paramcev.GYX == null)
+    ((an)localObject1).setUsername(paramcfp.iKt);
+    ((an)localObject1).to(paramcfp.nickname);
+    ((an)localObject1).setType(paramcfp.type);
+    ((an)localObject1).tm(paramcfp.iWF);
+    ((an)localObject1).setSource(paramcfp.doj);
+    ((an)localObject1).tp(paramcfp.Hsu);
+    ((an)localObject1).tq(paramcfp.Hsv);
+    ((an)localObject1).tt(paramcfp.Hsw);
+    ((an)localObject1).ts(paramcfp.Hsx);
+    if (paramcfp.Hsy == null)
     {
       localObject2 = "";
-      ((am)localObject1).tz((String)localObject2);
-      if (paramcev.GYX != null) {
+      ((an)localObject1).tU((String)localObject2);
+      if (paramcfp.Hsy != null) {
         break label201;
       }
     }
     label201:
-    for (int i = 0;; i = paramcev.GYX.GYY)
+    for (int i = 0;; i = paramcfp.Hsy.Hsz)
     {
-      ((am)localObject1).kn(i);
-      ((am)localObject1).ty(paramcev.Fvw);
-      ((am)localObject1).tc(paramcev.app_id);
-      ((am)localObject1).kf(paramcev.ePk);
-      ((am)localObject1).tb(paramcev.GYR);
-      ((am)localObject1).kk((int)bt.aQJ());
+      ((an)localObject1).kp(i);
+      ((an)localObject1).tT(paramcfp.FNU);
+      ((an)localObject1).tx(paramcfp.app_id);
+      ((an)localObject1).kh(paramcfp.eQV);
+      ((an)localObject1).tw(paramcfp.Hss);
+      ((an)localObject1).km((int)bu.aRi());
       AppMethodBeat.o(151232);
       return localObject1;
-      localObject2 = paramcev.GYX.ugo;
+      localObject2 = paramcfp.Hsy.urL;
       break;
     }
   }
   
-  public static void b(cev paramcev)
+  public static void b(cfp paramcfp)
   {
     int j = 1;
     AppMethodBeat.i(151233);
     String str2 = "";
     String str1 = "";
-    i locali = p.aEx().Dj(paramcev.iHA);
+    i locali = p.aEN().DL(paramcfp.iKt);
     if (locali != null)
     {
-      str2 = locali.aEq();
-      str1 = locali.aEr();
+      str2 = locali.aEG();
+      str1 = locali.aEH();
     }
     locali = new i();
-    locali.dDp = -1;
-    locali.username = paramcev.iHA;
-    locali.hMW = paramcev.GYG;
-    locali.hMX = paramcev.GYF;
-    ad.i("MicroMsg.OpenIMContactLogic", "dealwithAvatarFromModContact contact %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEq(), locali.aEr() });
-    if (!locali.aEq().equals(str2))
+    locali.dEu = -1;
+    locali.username = paramcfp.iKt;
+    locali.hPP = paramcfp.Hsh;
+    locali.hPQ = paramcfp.Hsg;
+    ae.i("MicroMsg.OpenIMContactLogic", "dealwithAvatarFromModContact contact %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEG(), locali.aEH() });
+    if (!locali.aEG().equals(str2))
     {
-      p.aEk();
-      e.L(paramcev.iHA, true);
+      p.aEA();
+      e.L(paramcfp.iKt, true);
     }
     for (int i = 1;; i = 0)
     {
-      if (!locali.aEr().equals(str1))
+      if (!locali.aEH().equals(str1))
       {
-        p.aEk();
-        e.L(paramcev.iHA, false);
+        p.aEA();
+        e.L(paramcfp.iKt, false);
         i = j;
       }
       for (;;)
       {
         if (i != 0)
         {
-          p.aEz().CU(paramcev.iHA);
-          p.aEx().b(locali);
+          p.aEP().Dw(paramcfp.iKt);
+          p.aEN().b(locali);
         }
         AppMethodBeat.o(151233);
         return;
@@ -121,7 +121,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.b.s
  * JD-Core Version:    0.7.0.1
  */

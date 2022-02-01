@@ -20,12 +20,12 @@ public class DeviceInterface
   
   public static DeviceInterface getInstance()
   {
-    AppMethodBeat.i(220348);
+    AppMethodBeat.i(188644);
     if (instance == null) {
       instance = new DeviceInterface();
     }
     DeviceInterface localDeviceInterface = instance;
-    AppMethodBeat.o(220348);
+    AppMethodBeat.o(188644);
     return localDeviceInterface;
   }
   
@@ -43,7 +43,7 @@ public class DeviceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ilink.network.DeviceInterface
  * JD-Core Version:    0.7.0.1
  */

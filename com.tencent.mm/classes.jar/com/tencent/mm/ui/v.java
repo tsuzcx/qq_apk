@@ -14,15 +14,15 @@ public final class v
   extends s
   implements b.a
 {
-  public MMFragment Jco = null;
-  public b Jcp;
+  public MMFragment JwY = null;
+  public b JwZ;
   private ActionBar mActionBar;
   
   public final boolean d(Menu paramMenu)
   {
     AppMethodBeat.i(141389);
-    if (this.Jco != null) {
-      this.Jco.onPrepareOptionsMenu(paramMenu);
+    if (this.JwY != null) {
+      this.JwY.onPrepareOptionsMenu(paramMenu);
     }
     AppMethodBeat.o(141389);
     return true;
@@ -31,8 +31,8 @@ public final class v
   protected final void dealContentView(View paramView)
   {
     AppMethodBeat.i(141381);
-    if (this.Jco != null) {
-      this.Jco.dealContentView(paramView);
+    if (this.JwY != null) {
+      this.JwY.dealContentView(paramView);
     }
     AppMethodBeat.o(141381);
   }
@@ -40,7 +40,7 @@ public final class v
   public final boolean e(Menu paramMenu)
   {
     AppMethodBeat.i(141390);
-    this.Jco.onCreateOptionsMenu(paramMenu, this.Jcp.getMenuInflater());
+    this.JwY.onCreateOptionsMenu(paramMenu, this.JwZ.getMenuInflater());
     AppMethodBeat.o(141390);
     return true;
   }
@@ -61,7 +61,7 @@ public final class v
   protected final String getClassName()
   {
     AppMethodBeat.i(141386);
-    String str = this.Jco.getClass().getName();
+    String str = this.JwY.getClass().getName();
     AppMethodBeat.o(141386);
     return str;
   }
@@ -69,9 +69,9 @@ public final class v
   protected final String getIdentString()
   {
     AppMethodBeat.i(141382);
-    if (this.Jco != null)
+    if (this.JwY != null)
     {
-      String str = this.Jco.getIdentityString();
+      String str = this.JwY.getIdentityString();
       AppMethodBeat.o(141382);
       return str;
     }
@@ -82,9 +82,9 @@ public final class v
   protected final int getLayoutId()
   {
     AppMethodBeat.i(141380);
-    if (this.Jco != null)
+    if (this.JwY != null)
     {
-      int i = this.Jco.getLayoutId();
+      int i = this.JwY.getLayoutId();
       AppMethodBeat.o(141380);
       return i;
     }
@@ -95,9 +95,9 @@ public final class v
   protected final View getLayoutView()
   {
     AppMethodBeat.i(141383);
-    if (this.Jco != null)
+    if (this.JwY != null)
     {
-      View localView = this.Jco.getLayoutView();
+      View localView = this.JwY.getLayoutView();
       AppMethodBeat.o(141383);
       return localView;
     }
@@ -109,7 +109,7 @@ public final class v
   {
     AppMethodBeat.i(141387);
     if (this.mActionBar == null) {
-      this.mActionBar = this.Jcp.fyg();
+      this.mActionBar = this.JwZ.fCi();
     }
     ActionBar localActionBar = this.mActionBar;
     AppMethodBeat.o(141387);
@@ -124,8 +124,8 @@ public final class v
   protected final void onCreateBeforeSetContentView()
   {
     AppMethodBeat.i(141385);
-    if (this.Jco != null) {
-      this.Jco.onCreateBeforeSetContentView();
+    if (this.JwY != null) {
+      this.JwY.onCreateBeforeSetContentView();
     }
     AppMethodBeat.o(141385);
   }
@@ -133,8 +133,8 @@ public final class v
   public final void onKeyboardStateChanged()
   {
     AppMethodBeat.i(141384);
-    if (this.Jco != null) {
-      this.Jco.onKeyboardStateChanged();
+    if (this.JwY != null) {
+      this.JwY.onKeyboardStateChanged();
     }
     AppMethodBeat.o(141384);
   }
@@ -142,7 +142,7 @@ public final class v
   public final ActionMode startActionMode(ActionMode.Callback paramCallback)
   {
     AppMethodBeat.i(141379);
-    paramCallback = this.Jcp.startActionMode(paramCallback);
+    paramCallback = this.JwZ.startActionMode(paramCallback);
     AppMethodBeat.o(141379);
     return paramCallback;
   }
@@ -150,7 +150,7 @@ public final class v
   public final void supportInvalidateOptionsMenu()
   {
     AppMethodBeat.i(141388);
-    this.Jcp.supportInvalidateOptionsMenu();
+    this.JwZ.supportInvalidateOptionsMenu();
     AppMethodBeat.o(141388);
   }
 }

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.bho;
-import com.tencent.mm.protocal.protobuf.bhp;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.bie;
+import com.tencent.mm.protocal.protobuf.bif;
 
 public final class d
-  extends a<bhp>
+  extends a<bif>
 {
   public d(String paramString)
   {
     AppMethodBeat.i(163540);
-    bho localbho = new bho();
+    bie localbie = new bie();
     b.a locala = new b.a();
-    locala.hNM = localbho;
-    locala.hNN = new bhp();
+    locala.hQF = localbie;
+    locala.hQG = new bif();
     locala.funcId = 3858;
     locala.uri = "/cgi-bin/micromsg-bin/getredpacketpreview";
-    localbho.url = paramString;
-    c(locala.aDC());
+    localbie.url = paramString;
+    c(locala.aDS());
     AppMethodBeat.o(163540);
   }
 }

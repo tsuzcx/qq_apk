@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.a;
-import com.tencent.mm.g.a.mf;
-import com.tencent.mm.g.a.mf.a;
+import com.tencent.mm.ay.a;
+import com.tencent.mm.g.a.mg;
+import com.tencent.mm.g.a.mg.a;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import java.util.Iterator;
 import java.util.Set;
 
 final class c$2
-  extends com.tencent.mm.sdk.b.c<mf>
+  extends com.tencent.mm.sdk.b.c<mg>
 {
   c$2(c paramc)
   {
     AppMethodBeat.i(160414);
-    this.__eventId = mf.class.getName().hashCode();
+    this.__eventId = mg.class.getName().hashCode();
     AppMethodBeat.o(160414);
   }
   
-  private boolean a(mf parammf)
+  private boolean a(mg parammg)
   {
     AppMethodBeat.i(77887);
-    com.tencent.mm.az.f localf = parammf.dzK.dzE;
+    com.tencent.mm.ay.f localf = parammg.dAP.dAJ;
     if ((localf != null) && (a.e(localf))) {
-      switch (parammf.dzK.action)
+      switch (parammg.dAP.action)
       {
       }
     }
@@ -31,13 +31,13 @@ final class c$2
     {
       AppMethodBeat.o(77887);
       return false;
-      parammf = this.DKa.DJQ.iterator();
-      while (parammf.hasNext()) {
-        g.XN(((Integer)parammf.next()).intValue()).fI(localf.ihg, 0);
+      parammg = this.EbY.EbO.iterator();
+      while (parammg.hasNext()) {
+        g.Yt(((Integer)parammg.next()).intValue()).fT(localf.ijZ, 0);
       }
-      parammf = this.DKa.DJQ.iterator();
-      while (parammf.hasNext()) {
-        g.XN(((Integer)parammf.next()).intValue()).fI(localf.ihg, 1);
+      parammg = this.EbY.EbO.iterator();
+      while (parammg.hasNext()) {
+        g.Yt(((Integer)parammg.next()).intValue()).fT(localf.ijZ, 1);
       }
     }
   }

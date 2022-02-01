@@ -11,18 +11,18 @@ import kotlinx.a.h;
 import kotlinx.a.n;
 import kotlinx.a.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/ListLikeSerializer;", "Element", "Collection", "Builder", "Lkotlinx/serialization/internal/AbstractCollectionSerializer;", "elementSerializer", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "getTypeParams", "()[Lkotlinx/serialization/KSerializer;", "[Lkotlinx/serialization/KSerializer;", "readAll", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "builder", "startIndex", "", "size", "(Lkotlinx/serialization/CompositeDecoder;Ljava/lang/Object;II)V", "readElement", "index", "checkIndex", "", "(Lkotlinx/serialization/CompositeDecoder;ILjava/lang/Object;Z)V", "serialize", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "insert", "element", "(Ljava/lang/Object;ILjava/lang/Object;)V", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "Lkotlinx/serialization/internal/ReferenceArraySerializer;", "Lkotlinx/serialization/internal/ArrayListSerializer;", "Lkotlinx/serialization/internal/LinkedHashSetSerializer;", "Lkotlinx/serialization/internal/HashSetSerializer;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ListLikeSerializer;", "Element", "Collection", "Builder", "Lkotlinx/serialization/internal/AbstractCollectionSerializer;", "elementSerializer", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "getTypeParams", "()[Lkotlinx/serialization/KSerializer;", "[Lkotlinx/serialization/KSerializer;", "readAll", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "builder", "startIndex", "", "size", "(Lkotlinx/serialization/CompositeDecoder;Ljava/lang/Object;II)V", "readElement", "index", "checkIndex", "", "(Lkotlinx/serialization/CompositeDecoder;ILjava/lang/Object;Z)V", "serialize", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "insert", "element", "(Ljava/lang/Object;ILjava/lang/Object;)V", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "Lkotlinx/serialization/internal/ReferenceArraySerializer;", "Lkotlinx/serialization/internal/ArrayListSerializer;", "Lkotlinx/serialization/internal/LinkedHashSetSerializer;", "Lkotlinx/serialization/internal/HashSetSerializer;", "kotlinx-serialization-runtime"})
 public abstract class ai<Element, Collection, Builder>
   extends a<Element, Collection, Builder>
 {
-  final h<?>[] NMw;
-  private final h<Element> NMx;
+  final h<?>[] OjC;
+  private final h<Element> OjD;
   
   private ai(h<Element> paramh)
   {
     super((byte)0);
-    this.NMx = paramh;
-    this.NMw = new h[] { this.NMx };
+    this.OjD = paramh;
+    this.OjC = new h[] { this.OjD };
   }
   
   public abstract void a(Builder paramBuilder, int paramInt, Element paramElement);
@@ -30,27 +30,27 @@ public abstract class ai<Element, Collection, Builder>
   protected void a(kotlinx.a.a parama, int paramInt, Builder paramBuilder)
   {
     p.h(parama, "decoder");
-    a(paramBuilder, paramInt, parama.a(eLj(), paramInt, (f)this.NMx));
+    a(paramBuilder, paramInt, parama.a(eOR(), paramInt, (f)this.OjD));
   }
   
   public void a(g paramg, Collection paramCollection)
   {
     p.h(paramg, "encoder");
-    int j = gb(paramCollection);
-    n localn = eLj();
-    h[] arrayOfh = this.NMw;
+    int j = ge(paramCollection);
+    n localn = eOR();
+    h[] arrayOfh = this.OjC;
     paramg = paramg.c(localn, (h[])Arrays.copyOf(arrayOfh, arrayOfh.length));
-    paramCollection = gc(paramCollection);
+    paramCollection = gf(paramCollection);
     int i = 0;
     while (i < j)
     {
-      paramg.a(eLj(), i, (v)this.NMx, paramCollection.next());
+      paramg.a(eOR(), i, (v)this.OjD, paramCollection.next());
       i += 1;
     }
-    paramg.a(eLj());
+    paramg.a(eOR());
   }
   
-  public abstract n eLj();
+  public abstract n eOR();
 }
 
 

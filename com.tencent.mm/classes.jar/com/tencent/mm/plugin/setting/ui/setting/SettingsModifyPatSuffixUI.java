@@ -21,15 +21,15 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.cae;
-import com.tencent.mm.protocal.protobuf.cgk;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cay;
+import com.tencent.mm.protocal.protobuf.che;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.MMClearEditText;
 import com.tencent.mm.ui.base.p;
@@ -42,49 +42,49 @@ public class SettingsModifyPatSuffixUI
   extends MMWizardActivity
   implements h.a, b.a
 {
-  private ScrollView fQj;
-  private InputPanelLinearLayout fQk;
-  private TextView jtn;
-  private Button sEg;
+  private ScrollView fSp;
+  private InputPanelLinearLayout fSq;
+  private TextView jwg;
+  private Button sPf;
   private p tipDialog;
-  private MMClearEditText yHA;
-  private av yHZ;
-  private int yIa = 16;
-  private int yIb = 1;
+  private MMClearEditText yXK;
+  private aw yYj;
+  private int yYk = 16;
+  private int yYl = 1;
   
-  public final void a(int paramInt, cgk paramcgk, k.b paramb)
+  public final void a(int paramInt, che paramche, k.b paramb)
   {
-    AppMethodBeat.i(221034);
-    ad.i("MicroMsg.SettingsModifyPatSuffixUI", "ret:%d, content:%s, title:%s", new Object[] { Integer.valueOf(paramInt), paramcgk.hDa, paramcgk.Title });
+    AppMethodBeat.i(190406);
+    ae.i("MicroMsg.SettingsModifyPatSuffixUI", "ret:%d, content:%s, title:%s", new Object[] { Integer.valueOf(paramInt), paramche.hFS, paramche.Title });
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
     if (paramInt == 0) {}
     try
     {
-      com.tencent.mm.ui.base.h.cl(this, getString(2131756261));
-      paramcgk = (cae)paramb.vKm;
-      if (!bt.nullAsNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IJN, null)).equals(paramcgk.GUX)) {
-        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IJS, Integer.valueOf(2));
+      com.tencent.mm.ui.base.h.cm(this, getString(2131756261));
+      paramche = (cay)paramb.vWq;
+      if (!bu.nullAsNil((String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.Jet, null)).equals(paramche.Hoy)) {
+        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.Jez, Integer.valueOf(2));
       }
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IJN, paramcgk.GUX);
-      abK(1);
-      com.tencent.mm.plugin.report.service.g.yhR.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(this.yIb) });
-      AppMethodBeat.o(221034);
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.Jet, paramche.Hoy);
+      acs(1);
+      com.tencent.mm.plugin.report.service.g.yxI.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(this.yYl) });
+      AppMethodBeat.o(190406);
       return;
     }
-    catch (Exception paramcgk)
+    catch (Exception paramche)
     {
-      ad.printErrStackTrace("MicroMsg.SettingsModifyPatSuffixUI", paramcgk, "", new Object[0]);
-      AppMethodBeat.o(221034);
+      ae.printErrStackTrace("MicroMsg.SettingsModifyPatSuffixUI", paramche, "", new Object[0]);
+      AppMethodBeat.o(190406);
     }
-    if (!bt.isNullOrNil(paramcgk.hDa)) {
-      com.tencent.mm.ui.base.h.c(this, paramcgk.hDa, getString(2131757998), true);
+    if (!bu.isNullOrNil(paramche.hFS)) {
+      com.tencent.mm.ui.base.h.c(this, paramche.hFS, getString(2131757998), true);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(2), Integer.valueOf(paramInt), Integer.valueOf(this.yIb) });
-      AppMethodBeat.o(221034);
+      com.tencent.mm.plugin.report.service.g.yxI.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(2), Integer.valueOf(paramInt), Integer.valueOf(this.yYl) });
+      AppMethodBeat.o(190406);
       return;
       com.tencent.mm.ui.base.h.l(getContext(), 2131755733, 2131757998);
     }
@@ -92,39 +92,39 @@ public class SettingsModifyPatSuffixUI
   
   public final void g(boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(221033);
-    ad.i("MicroMsg.SettingsModifyPatSuffixUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(190405);
+    ae.i("MicroMsg.SettingsModifyPatSuffixUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramBoolean)
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.sEg.getLayoutParams();
+      localLayoutParams = (LinearLayout.LayoutParams)this.sPf.getLayoutParams();
       localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165289);
       localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131165289);
-      this.sEg.setLayoutParams(localLayoutParams);
-      this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), paramInt);
-      paramInt = this.fQj.getHeight();
-      this.fQk.requestLayout();
-      this.fQk.post(new Runnable()
+      this.sPf.setLayoutParams(localLayoutParams);
+      this.fSq.setPadding(this.fSq.getPaddingLeft(), this.fSq.getPaddingTop(), this.fSq.getPaddingRight(), paramInt);
+      paramInt = this.fSp.getHeight();
+      this.fSq.requestLayout();
+      this.fSq.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(221676);
-          ad.i("MicroMsg.SettingsModifyPatSuffixUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(SettingsModifyPatSuffixUI.f(SettingsModifyPatSuffixUI.this).getHeight()), Integer.valueOf(paramInt) });
+          AppMethodBeat.i(190400);
+          ae.i("MicroMsg.SettingsModifyPatSuffixUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(SettingsModifyPatSuffixUI.f(SettingsModifyPatSuffixUI.this).getHeight()), Integer.valueOf(paramInt) });
           if (SettingsModifyPatSuffixUI.f(SettingsModifyPatSuffixUI.this).getHeight() > paramInt) {
             SettingsModifyPatSuffixUI.g(SettingsModifyPatSuffixUI.this).scrollBy(0, SettingsModifyPatSuffixUI.f(SettingsModifyPatSuffixUI.this).getHeight() - paramInt);
           }
-          AppMethodBeat.o(221676);
+          AppMethodBeat.o(190400);
         }
       });
-      AppMethodBeat.o(221033);
+      AppMethodBeat.o(190405);
       return;
     }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.sEg.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.sPf.getLayoutParams();
     localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165277);
     localLayoutParams.topMargin = 0;
-    this.sEg.setLayoutParams(localLayoutParams);
-    this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), 0);
-    this.fQj.scrollBy(0, 0);
-    AppMethodBeat.o(221033);
+    this.sPf.setLayoutParams(localLayoutParams);
+    this.fSq.setPadding(this.fSq.getPaddingLeft(), this.fSq.getPaddingTop(), this.fSq.getPaddingRight(), 0);
+    this.fSp.scrollBy(0, 0);
+    AppMethodBeat.o(190405);
   }
   
   public int getLayoutId()
@@ -134,68 +134,68 @@ public class SettingsModifyPatSuffixUI
   
   public void initView()
   {
-    AppMethodBeat.i(221031);
+    AppMethodBeat.i(190403);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(2131101179));
-    this.fQk = ((InputPanelLinearLayout)findViewById(2131301024));
-    this.fQk.setExternalListener(this);
-    this.sEg = ((Button)findViewById(2131302852));
-    this.yHA = ((MMClearEditText)findViewById(2131308172));
-    this.jtn = ((TextView)findViewById(2131308173));
-    this.fQj = ((ScrollView)findViewById(2131304376));
-    this.sEg.setOnClickListener(new View.OnClickListener()
+    this.fSq = ((InputPanelLinearLayout)findViewById(2131301024));
+    this.fSq.setExternalListener(this);
+    this.sPf = ((Button)findViewById(2131302852));
+    this.yXK = ((MMClearEditText)findViewById(2131308172));
+    this.jwg = ((TextView)findViewById(2131308173));
+    this.fSp = ((ScrollView)findViewById(2131304376));
+    this.sPf.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(221022);
+        AppMethodBeat.i(190397);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyPatSuffixUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyPatSuffixUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         SettingsModifyPatSuffixUI.this.hideVKB();
         SettingsModifyPatSuffixUI.a(SettingsModifyPatSuffixUI.this, SettingsModifyPatSuffixUI.b(SettingsModifyPatSuffixUI.this).getText());
         a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsModifyPatSuffixUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(221022);
+        AppMethodBeat.o(190397);
       }
     });
-    String str2 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IJN, null);
-    int i = com.tencent.mm.kernel.g.ajC().ajl().getInt(al.a.IJS, 0);
-    ad.i("MicroMsg.SettingsModifyPatSuffixUI", "curSuffix %s, suffixVersion %d", new Object[] { str2, Integer.valueOf(i) });
-    if (!bt.isNullOrNil(str2))
+    String str2 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.Jet, null);
+    int i = com.tencent.mm.kernel.g.ajR().ajA().getInt(am.a.Jez, 0);
+    ae.i("MicroMsg.SettingsModifyPatSuffixUI", "curSuffix %s, suffixVersion %d", new Object[] { str2, Integer.valueOf(i) });
+    if (!bu.isNullOrNil(str2))
     {
       String str1 = str2;
       if (i == 0)
       {
         str1 = str2;
-        if (ac.fko()) {
+        if (ad.foi()) {
           str1 = "的".concat(String.valueOf(str2));
         }
       }
-      this.yHA.setText(k.c(this, str1));
-      this.yHA.setSelection(str1.length());
+      this.yXK.setText(k.c(this, str1));
+      this.yXK.setSelection(str1.length());
     }
-    this.yHA.requestFocus();
-    this.yHA.addTextChangedListener(new TextWatcher()
+    this.yXK.requestFocus();
+    this.yXK.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(221025);
-        int i = f.a(paramAnonymousEditable.toString(), f.a.KIN);
+        AppMethodBeat.i(190398);
+        int i = f.a(paramAnonymousEditable.toString(), f.a.Lfh);
         if (i > SettingsModifyPatSuffixUI.c(SettingsModifyPatSuffixUI.this))
         {
           SettingsModifyPatSuffixUI.a(SettingsModifyPatSuffixUI.this).setText(SettingsModifyPatSuffixUI.this.getString(2131767173, new Object[] { Integer.valueOf(SettingsModifyPatSuffixUI.c(SettingsModifyPatSuffixUI.this) / 2) }));
           SettingsModifyPatSuffixUI.a(SettingsModifyPatSuffixUI.this).setTextColor(SettingsModifyPatSuffixUI.this.getResources().getColor(2131100800));
           SettingsModifyPatSuffixUI.a(SettingsModifyPatSuffixUI.this).performHapticFeedback(3, 2);
-          if (SettingsModifyPatSuffixUI.d(SettingsModifyPatSuffixUI.this).fkZ()) {
-            SettingsModifyPatSuffixUI.d(SettingsModifyPatSuffixUI.this).az(5000L, 5000L);
+          if (SettingsModifyPatSuffixUI.d(SettingsModifyPatSuffixUI.this).foU()) {
+            SettingsModifyPatSuffixUI.d(SettingsModifyPatSuffixUI.this).ay(5000L, 5000L);
           }
-          SettingsModifyPatSuffixUI.b(SettingsModifyPatSuffixUI.this).setText(f.hA(paramAnonymousEditable.toString(), SettingsModifyPatSuffixUI.c(SettingsModifyPatSuffixUI.this)));
+          SettingsModifyPatSuffixUI.b(SettingsModifyPatSuffixUI.this).setText(f.gT(paramAnonymousEditable.toString(), SettingsModifyPatSuffixUI.c(SettingsModifyPatSuffixUI.this)));
           SettingsModifyPatSuffixUI.b(SettingsModifyPatSuffixUI.this).setSelection(SettingsModifyPatSuffixUI.b(SettingsModifyPatSuffixUI.this).getText().length());
         }
         for (;;)
         {
           SettingsModifyPatSuffixUI.e(SettingsModifyPatSuffixUI.this).setEnabled(true);
-          AppMethodBeat.o(221025);
+          AppMethodBeat.o(190398);
           return;
           if (i < SettingsModifyPatSuffixUI.c(SettingsModifyPatSuffixUI.this))
           {
@@ -206,73 +206,65 @@ public class SettingsModifyPatSuffixUI
         }
       }
       
-      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        AppMethodBeat.i(221023);
-        AppMethodBeat.o(221023);
-      }
+      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
-      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        AppMethodBeat.i(221024);
-        AppMethodBeat.o(221024);
-      }
+      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).dlE().a(222, this);
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).doD().a(222, this);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(221675);
+        AppMethodBeat.i(190399);
         SettingsModifyPatSuffixUI.this.onBackPressed();
-        AppMethodBeat.o(221675);
+        AppMethodBeat.o(190399);
         return true;
       }
     });
-    AppMethodBeat.o(221031);
+    AppMethodBeat.o(190403);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(221032);
+    AppMethodBeat.i(190404);
     super.onBackPressed();
-    com.tencent.mm.plugin.report.service.g.yhR.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(this.yIb) });
-    AppMethodBeat.o(221032);
+    com.tencent.mm.plugin.report.service.g.yxI.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(this.yYl) });
+    AppMethodBeat.o(190404);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(221029);
+    AppMethodBeat.i(190401);
     super.onCreate(paramBundle);
     if (getIntent().getBooleanExtra("jumptoPat", false)) {
-      this.yIb = 2;
+      this.yYl = 2;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(this.yIb) });
-    this.yIa = com.tencent.mm.n.g.acA().getInt("PatSuffixMaxByte", 16);
+    com.tencent.mm.plugin.report.service.g.yxI.f(20379, new Object[] { System.currentTimeMillis(), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(this.yYl) });
+    this.yYk = com.tencent.mm.n.g.acL().getInt("PatSuffixMaxByte", 16);
     initView();
-    this.yHZ = new av(getMainLooper(), new av.a()
+    this.yYj = new aw(getMainLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(221021);
+        AppMethodBeat.i(190396);
         SettingsModifyPatSuffixUI.a(SettingsModifyPatSuffixUI.this).setText(SettingsModifyPatSuffixUI.this.getString(2131766976));
         SettingsModifyPatSuffixUI.a(SettingsModifyPatSuffixUI.this).setTextColor(SettingsModifyPatSuffixUI.this.getResources().getColor(2131100212));
-        AppMethodBeat.o(221021);
+        AppMethodBeat.o(190396);
         return false;
       }
     }, false);
-    AppMethodBeat.o(221029);
+    AppMethodBeat.o(190401);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(221030);
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).dlE().b(222, this);
-    if (this.yHZ != null) {
-      this.yHZ.stopTimer();
+    AppMethodBeat.i(190402);
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).doD().b(222, this);
+    if (this.yYj != null) {
+      this.yYj.stopTimer();
     }
     super.onDestroy();
-    AppMethodBeat.o(221030);
+    AppMethodBeat.o(190402);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

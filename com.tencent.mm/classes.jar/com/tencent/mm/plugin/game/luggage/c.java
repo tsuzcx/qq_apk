@@ -5,37 +5,37 @@ import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.luggage.f.f;
 import com.tencent.mm.plugin.wepkg.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   implements com.tencent.luggage.webview.a.c
 {
-  private f tTm;
+  private f ued;
   
   public c(f paramf)
   {
-    this.tTm = paramf;
+    this.ued = paramf;
   }
   
-  public final String Fw()
+  public final String FC()
   {
     return "weixin://game.js";
   }
   
-  public final WebResourceResponse cF(String paramString)
+  public final WebResourceResponse cG(String paramString)
   {
     boolean bool = false;
     AppMethodBeat.i(82986);
-    ad.i("MicroMsg.LuggageGameJsResourceProvider", "onResourceRequest, url = %s", new Object[] { paramString });
+    ae.i("MicroMsg.LuggageGameJsResourceProvider", "onResourceRequest, url = %s", new Object[] { paramString });
     if (Build.VERSION.SDK_INT < 21)
     {
       AppMethodBeat.o(82986);
       return null;
     }
-    if (this.tTm.getWePkgPlugin() != null) {
-      bool = this.tTm.getWePkgPlugin().EDm;
+    if (this.ued.getWePkgPlugin() != null) {
+      bool = this.ued.getWePkgPlugin().EVI;
     }
-    paramString = a.mX(bool);
+    paramString = a.nb(bool);
     AppMethodBeat.o(82986);
     return paramString;
   }

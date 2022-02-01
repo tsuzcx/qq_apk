@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class o
@@ -26,17 +26,17 @@ public final class o
   {
     AppMethodBeat.i(137482);
     super.b(parame, paramInt, paramView, paramJSONObject);
-    ad.i("MicroMsg.JsApiRemoveCamera", "onRemoveView cameraId=%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiRemoveCamera", "onRemoveView cameraId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiRemoveCamera", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiRemoveCamera", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137482);
       return false;
     }
     paramView = (View)((CoverViewContainer)paramView).ax(View.class);
     if ((paramView == null) || (!(paramView instanceof f)))
     {
-      ad.w("MicroMsg.JsApiRemoveCamera", "the camera view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
+      ae.w("MicroMsg.JsApiRemoveCamera", "the camera view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137482);
       return false;
     }
@@ -44,7 +44,7 @@ public final class o
     parame.b(paramView);
     parame.b(paramView);
     parame.b(paramView);
-    a.a.bjD().I(paramView.getCameraId(), true);
+    a.a.bkm().I(paramView.getCameraId(), true);
     paramView.release();
     AppMethodBeat.o(137482);
     return true;
@@ -52,7 +52,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.o
  * JD-Core Version:    0.7.0.1
  */

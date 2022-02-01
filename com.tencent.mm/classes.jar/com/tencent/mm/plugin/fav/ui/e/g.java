@@ -11,11 +11,11 @@ import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.n;
 import com.tencent.mm.plugin.fav.ui.o;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.aju;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ake;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
   extends b
@@ -25,32 +25,32 @@ public final class g
     super(paramo);
   }
   
-  private static String a(aju paramaju)
+  private static String a(ake paramake)
   {
     AppMethodBeat.i(107458);
-    if (paramaju == null)
+    if (paramake == null)
     {
-      ad.i("MicroMsg.FavBaseListItem", "getLabel but locItem is null");
+      ae.i("MicroMsg.FavBaseListItem", "getLabel but locItem is null");
       AppMethodBeat.o(107458);
       return "";
     }
-    paramaju = paramaju.label;
+    paramake = paramake.label;
     AppMethodBeat.o(107458);
-    return paramaju;
+    return paramake;
   }
   
-  private static String b(aju paramaju)
+  private static String b(ake paramake)
   {
     AppMethodBeat.i(107459);
-    if (paramaju == null)
+    if (paramake == null)
     {
-      ad.i("MicroMsg.FavBaseListItem", "getPoiname but locItem is null");
+      ae.i("MicroMsg.FavBaseListItem", "getPoiname but locItem is null");
       AppMethodBeat.o(107459);
       return "";
     }
-    paramaju = paramaju.dDq;
+    paramake = paramake.dEv;
     AppMethodBeat.o(107459);
-    return paramaju;
+    return paramake;
   }
   
   @SuppressLint({"ResourceType"})
@@ -62,22 +62,22 @@ public final class g
     {
       paramViewGroup = new a();
       paramView = a(View.inflate((Context)localObject, 2131493956, null), paramViewGroup, paramg);
-      paramViewGroup.lZa = ((ImageView)paramView.findViewById(2131299794));
-      paramViewGroup.iVq = ((TextView)paramView.findViewById(2131299848));
-      paramViewGroup.iCV = ((TextView)paramView.findViewById(2131299781));
+      paramViewGroup.mdt = ((ImageView)paramView.findViewById(2131299794));
+      paramViewGroup.iYj = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.iFO = ((TextView)paramView.findViewById(2131299781));
       a(paramViewGroup, paramg);
-      paramViewGroup.lZa.setImageResource(2131689562);
-      localObject = paramg.field_favProto.Giu;
-      paramg = paramg.field_favProto.iTM;
-      if (!bt.isNullOrNil(paramg)) {
+      paramViewGroup.mdt.setImageResource(2131689562);
+      localObject = paramg.field_favProto.GBd;
+      paramg = paramg.field_favProto.iWF;
+      if (!bu.isNullOrNil(paramg)) {
         break label193;
       }
-      if (!n.agM(b((aju)localObject))) {
+      if (!n.ahJ(b((ake)localObject))) {
         break label169;
       }
-      paramViewGroup.iVq.setText(b((aju)localObject));
+      paramViewGroup.iYj.setText(b((ake)localObject));
       label139:
-      paramViewGroup.iCV.setText(a((aju)localObject));
+      paramViewGroup.iFO.setText(a((ake)localObject));
     }
     for (;;)
     {
@@ -86,33 +86,33 @@ public final class g
       paramViewGroup = (a)paramView.getTag();
       break;
       label169:
-      paramViewGroup.iVq.setText(a((aju)localObject));
-      paramViewGroup.iCV.setVisibility(8);
+      paramViewGroup.iYj.setText(a((ake)localObject));
+      paramViewGroup.iFO.setVisibility(8);
       continue;
       label193:
-      paramViewGroup.iVq.setText(k.b(paramViewGroup.iVq.getContext(), paramg, paramViewGroup.iVq.getTextSize()));
-      if (!n.agM(b((aju)localObject))) {
+      paramViewGroup.iYj.setText(k.b(paramViewGroup.iYj.getContext(), paramg, paramViewGroup.iYj.getTextSize()));
+      if (!n.ahJ(b((ake)localObject))) {
         break label139;
       }
-      paramViewGroup.iCV.setText(b((aju)localObject));
+      paramViewGroup.iFO.setText(b((ake)localObject));
     }
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
     AppMethodBeat.i(107460);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rBM, paramakp);
     AppMethodBeat.o(107460);
   }
   
   public static final class a
     extends b.b
   {
-    TextView iCV;
-    TextView iVq;
-    ImageView lZa;
+    TextView iFO;
+    TextView iYj;
+    ImageView mdt;
   }
 }
 

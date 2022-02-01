@@ -1,94 +1,209 @@
 package com.tencent.wax;
 
-import android.app.Activity;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.wax.c.a.a;
+import io.flutter.embedding.android.FlutterView;
+import io.flutter.embedding.android.FlutterView.b;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.a;
 import io.flutter.plugin.a.m;
 import io.flutter.view.FlutterMain;
-import java.util.HashSet;
 
 public class d
 {
-  private static d MkD;
-  private d.a MkE;
-  private m MkF;
-  public Activity MkG;
-  public io.flutter.embedding.engine.a cOY;
+  private static d MHA;
+  private a MHB;
+  private m MHC;
+  public com.tencent.wax.b.b MHD;
+  private FlutterView MHE;
+  public io.flutter.embedding.engine.a cPI;
   
-  public static d fYR()
+  public static d gdr()
   {
-    AppMethodBeat.i(217482);
-    if (MkD == null) {}
+    AppMethodBeat.i(195485);
+    if (MHA == null) {}
     try
     {
-      MkD = new d();
-      d locald = MkD;
-      AppMethodBeat.o(217482);
+      MHA = new d();
+      d locald = MHA;
+      AppMethodBeat.o(195485);
       return locald;
     }
     finally
     {
-      AppMethodBeat.o(217482);
+      AppMethodBeat.o(195485);
     }
   }
   
-  public final void a(d.a parama)
+  public final void a(a parama)
   {
-    this.MkE = parama;
+    this.MHB = parama;
+  }
+  
+  public final void a(FlutterView paramFlutterView)
+  {
+    AppMethodBeat.i(195488);
+    if ((paramFlutterView == null) || (paramFlutterView != this.MHE))
+    {
+      AppMethodBeat.o(195488);
+      return;
+    }
+    paramFlutterView.giZ();
+    this.MHE = null;
+    AppMethodBeat.o(195488);
+  }
+  
+  public final void a(FlutterView paramFlutterView, io.flutter.embedding.engine.a parama)
+  {
+    AppMethodBeat.i(195487);
+    if (paramFlutterView == this.MHE)
+    {
+      AppMethodBeat.o(195487);
+      return;
+    }
+    if (this.MHE != null) {
+      this.MHE.giZ();
+    }
+    if (paramFlutterView != null) {
+      paramFlutterView.c(parama);
+    }
+    this.MHE = paramFlutterView;
+    AppMethodBeat.o(195487);
+  }
+  
+  public final void b(FlutterView paramFlutterView)
+  {
+    AppMethodBeat.i(195489);
+    if (paramFlutterView != this.MHE)
+    {
+      AppMethodBeat.o(195489);
+      return;
+    }
+    this.cPI.MZp.gjB();
+    AppMethodBeat.o(195489);
+  }
+  
+  public final void c(FlutterView paramFlutterView)
+  {
+    AppMethodBeat.i(195490);
+    if (paramFlutterView != this.MHE)
+    {
+      AppMethodBeat.o(195490);
+      return;
+    }
+    this.cPI.MZp.gjC();
+    AppMethodBeat.o(195490);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(217483);
-    if (this.MkE.MkN != null) {
-      com.tencent.wax.c.a.b(this.MkE.MkN);
+    AppMethodBeat.i(195486);
+    if (this.MHB.MHL != null) {
+      com.tencent.wax.c.a.b(this.MHB.MHL);
     }
-    Object localObject1;
-    Object localObject2;
-    if (this.cOY == null)
+    if (this.cPI == null)
     {
-      localObject1 = this.MkE;
-      FlutterMain.startInitialization(((d.a)localObject1).IR);
-      FlutterMain.ensureInitializationComplete(((d.a)localObject1).IR, ((d.a)localObject1).MkK.toArray());
-      this.cOY = new io.flutter.embedding.engine.a(((d.a)localObject1).IR);
-      localObject1 = this.cOY;
-      ((io.flutter.embedding.engine.a)localObject1).MCm.setInitialRoute(this.MkE.MkI);
-      if (!((io.flutter.embedding.engine.a)localObject1).MCh.MCS)
+      Object localObject = this.MHB;
+      FlutterMain.startInitialization(((a)localObject).IR);
+      FlutterMain.ensureInitializationComplete(((a)localObject).IR, ((a)localObject).MHI.toArray());
+      this.cPI = new io.flutter.embedding.engine.a(((a)localObject).IR);
+      localObject = this.cPI;
+      ((io.flutter.embedding.engine.a)localObject).MZr.setInitialRoute(this.MHB.MHG);
+      if (!((io.flutter.embedding.engine.a)localObject).MZm.MZX)
       {
-        localObject2 = new DartExecutor.a(FlutterMain.findAppBundlePath(), this.MkE.MkH);
-        ((io.flutter.embedding.engine.a)localObject1).MCh.a((DartExecutor.a)localObject2);
+        DartExecutor.a locala = new DartExecutor.a(FlutterMain.findAppBundlePath(), this.MHB.MHF);
+        ((io.flutter.embedding.engine.a)localObject).MZm.a(locala);
       }
     }
-    if (this.MkF == null) {
-      this.MkF = new b(this.cOY, this.MkE.IR);
+    if (this.MHC == null) {
+      this.MHC = new b(this.cPI, this.MHB.IR);
     }
-    if (!this.MkF.bbH("WxaRouterPlugin"))
+    if (!this.MHC.bdl("WxaRouterPlugin"))
     {
-      this.MkE.MkL.a(this.MkF);
-      this.MkF.em("WxaRouterPlugin");
+      this.MHB.MHJ.a(this.MHC);
+      this.MHC.er("WxaRouterPlugin");
     }
-    if (this.MkE.MkM != null)
+    e.gdt().b(new com.tencent.wax.a.c());
+    if (this.MHB.MHK != null)
     {
-      localObject1 = e.fYT();
-      localObject2 = this.MkE.MkM;
-      if (!((e)localObject1).MkQ.contains(localObject2))
-      {
-        ((e)localObject1).MkQ.add(localObject2);
-        AppMethodBeat.o(217483);
-        return;
-      }
-      com.tencent.wax.c.a.i("WxaRouter.WxaRouterPlugin", "had add method call handler %s", new Object[] { Integer.valueOf(localObject2.hashCode()) });
-      AppMethodBeat.o(217483);
+      e.gdt().b(this.MHB.MHK);
+      AppMethodBeat.o(195486);
       return;
     }
     com.tencent.wax.c.a.i("WxaRouter.WxaRouter", "no method call handler.", new Object[0]);
-    AppMethodBeat.o(217483);
+    AppMethodBeat.o(195486);
+  }
+  
+  public static final class a
+  {
+    public static final String vlc;
+    public Context IR;
+    public String MHF;
+    public String MHG;
+    public FlutterView.b MHH;
+    public io.flutter.embedding.engine.d MHI;
+    public c MHJ;
+    public a MHK;
+    public a.a MHL;
+    
+    static
+    {
+      AppMethodBeat.i(195484);
+      vlc = io.flutter.embedding.android.d.a.MYs.name();
+      AppMethodBeat.o(195484);
+    }
+    
+    public a(Context paramContext)
+    {
+      AppMethodBeat.i(195483);
+      this.MHF = "main";
+      this.MHG = "/";
+      this.MHH = FlutterView.b.MZa;
+      this.MHI = new io.flutter.embedding.engine.d(new String[0]);
+      this.IR = paramContext;
+      AppMethodBeat.o(195483);
+    }
+    
+    public final a a(a parama)
+    {
+      this.MHK = parama;
+      return this;
+    }
+    
+    public final a a(a.a parama)
+    {
+      this.MHL = parama;
+      return this;
+    }
+    
+    public final a a(c paramc)
+    {
+      this.MHJ = paramc;
+      return this;
+    }
+    
+    public final a a(FlutterView.b paramb)
+    {
+      this.MHH = paramb;
+      return this;
+    }
+    
+    public final a bbz(String paramString)
+    {
+      this.MHF = paramString;
+      return this;
+    }
+    
+    public final a gds()
+    {
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wax.d
  * JD-Core Version:    0.7.0.1
  */

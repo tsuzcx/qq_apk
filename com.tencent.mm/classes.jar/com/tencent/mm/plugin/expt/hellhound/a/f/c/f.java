@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
 {
-  public static String cqk()
+  public static String crM()
   {
     AppMethodBeat.i(122156);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -15,7 +15,7 @@ public final class f
     }
     for (;;)
     {
-      localObject = d.afc((String)localObject);
+      localObject = d.afY((String)localObject);
       AppMethodBeat.o(122156);
       return localObject;
       String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageFlRptChe_".concat(String.valueOf(i)));
@@ -31,7 +31,7 @@ public final class f
     }
   }
   
-  public static void va(long paramLong)
+  public static void vr(long paramLong)
   {
     AppMethodBeat.i(184375);
     String str2 = String.valueOf(paramLong);
@@ -50,7 +50,7 @@ public final class f
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.HellSessionPageDao", localException, "HellSessionReportCache.writeBackOfFlow", new Object[0]);
+        ae.printErrStackTrace("HABBYGE-MALI.HellSessionPageDao", localException, "HellSessionReportCache.writeBackOfFlow", new Object[0]);
       }
     }
     AppMethodBeat.o(184375);
@@ -58,7 +58,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.f
  * JD-Core Version:    0.7.0.1
  */

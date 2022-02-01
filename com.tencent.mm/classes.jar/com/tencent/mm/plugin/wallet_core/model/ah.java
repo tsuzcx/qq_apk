@@ -1,35 +1,39 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cd.a;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.model.cf.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.f.a;
+import com.tencent.mm.wallet_core.ui.f.c;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
 public final class ah
 {
-  private static ah Dau = null;
+  private static ah DrZ = null;
   static ArrayList<l> eO = null;
-  cd.a oZH;
+  cf.a pgl;
   
   private ah()
   {
     AppMethodBeat.i(70439);
-    this.oZH = new cd.a()
+    this.pgl = new cf.a()
     {
-      public final void a(com.tencent.mm.al.e.a paramAnonymousa)
+      public final void a(e.a paramAnonymousa)
       {
         AppMethodBeat.i(70436);
-        paramAnonymousa = z.a(paramAnonymousa.gqE.Fvk);
-        ad.d("MicroMsg.WalletPushNotifyManager", "PayMsg:".concat(String.valueOf(paramAnonymousa)));
-        Map localMap = bw.M(paramAnonymousa, "sysmsg");
-        int i = bt.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+        paramAnonymousa = z.a(paramAnonymousa.gte.FNI);
+        ae.d("MicroMsg.WalletPushNotifyManager", "PayMsg:".concat(String.valueOf(paramAnonymousa)));
+        Map localMap = bx.M(paramAnonymousa, "sysmsg");
+        int i = bu.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);
         Object[] arrayOfObject = new Object[1];
         if (!ah.a(ah.this, i, localMap, paramAnonymousa, arrayOfObject)) {
           ah.a(i, localMap, arrayOfObject);
@@ -37,7 +41,7 @@ public final class ah
         AppMethodBeat.o(70436);
       }
       
-      public final void a(com.tencent.mm.al.e.c paramAnonymousc) {}
+      public final void a(e.c paramAnonymousc) {}
     };
     AppMethodBeat.o(70439);
   }
@@ -47,53 +51,53 @@ public final class ah
     AppMethodBeat.i(70441);
     if (paramMap == null)
     {
-      ad.w("MicroMsg.WalletPushNotifyManager", "hy: log is null. handle failed");
+      ae.w("MicroMsg.WalletPushNotifyManager", "hy: log is null. handle failed");
       AppMethodBeat.o(70441);
       return true;
     }
     if (paramInt < 0)
     {
-      ad.w("MicroMsg.WalletPushNotifyManager", "hy: paymsgtype error. maybe not found in xml");
+      ae.w("MicroMsg.WalletPushNotifyManager", "hy: paymsgtype error. maybe not found in xml");
       AppMethodBeat.o(70441);
       return true;
     }
-    ad.i("MicroMsg.WalletPushNotifyManager", "handle paymsg type: %s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.WalletPushNotifyManager", "handle paymsg type: %s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 12)
     {
-      final int i = bt.getInt((String)paramMap.get(".sysmsg.paymsg.avail_balance"), -1);
-      long l = bt.getLong((String)paramMap.get(".sysmsg.paymsg.balance_version"), -1L);
-      paramMap = new com.tencent.mm.wallet_core.ui.e.a()
+      final int i = bu.getInt((String)paramMap.get(".sysmsg.paymsg.avail_balance"), -1);
+      long l = bu.getLong((String)paramMap.get(".sysmsg.paymsg.balance_version"), -1L);
+      paramMap = new f.a()
       {
-        public final void aW(Map<String, Object> paramAnonymousMap)
+        public final void bc(Map<String, Object> paramAnonymousMap)
         {
           AppMethodBeat.i(70438);
           if (paramAnonymousMap != null)
           {
-            long l1 = bt.a((Long)paramAnonymousMap.get("wallet_balance_version"), -1L);
-            long l2 = bt.a((Long)paramAnonymousMap.get("wallet_balance_last_update_time"), -1L);
-            if ((l2 < 0L) || (l1 < 0L) || (l2 + this.Day > bt.HI()) || (i >= l1))
+            long l1 = bu.a((Long)paramAnonymousMap.get("wallet_balance_version"), -1L);
+            long l2 = bu.a((Long)paramAnonymousMap.get("wallet_balance_last_update_time"), -1L);
+            if ((l2 < 0L) || (l1 < 0L) || (l2 + this.Dsc > bu.HQ()) || (i >= l1))
             {
-              e.a(new com.tencent.mm.wallet_core.ui.e.c[] { new com.tencent.mm.wallet_core.ui.e.c("wallet_balance_version", Long.valueOf(i)), new com.tencent.mm.wallet_core.ui.e.c("wallet_balance_last_update_time", Long.valueOf(bt.HI())), new com.tencent.mm.wallet_core.ui.e.c("wallet_balance", Double.valueOf(paramMap / 100.0D)) });
-              ah.a(this.DaA, this.Daw, null);
+              f.a(new f.c[] { new f.c("wallet_balance_version", Long.valueOf(i)), new f.c("wallet_balance_last_update_time", Long.valueOf(bu.HQ())), new f.c("wallet_balance", Double.valueOf(paramMap / 100.0D)) });
+              ah.a(this.Dse, this.mhV, null);
               AppMethodBeat.o(70438);
               return;
             }
-            ad.w("MicroMsg.WalletPushNotifyManager", "hy: new balance comes but last msg is not timeout and balance version is smaller than before");
+            ae.w("MicroMsg.WalletPushNotifyManager", "hy: new balance comes but last msg is not timeout and balance version is smaller than before");
           }
           AppMethodBeat.o(70438);
         }
       };
-      e.a(new String[] { "wallet_balance_version", "wallet_balance_last_update_time", "wallet_balance" }, paramMap);
+      f.a(new String[] { "wallet_balance_version", "wallet_balance_last_update_time", "wallet_balance" }, paramMap);
       AppMethodBeat.o(70441);
       return true;
     }
     if (paramInt == 43)
     {
-      paramMap = w.aV(paramMap);
+      paramMap = w.bb(paramMap);
       if (paramMap != null) {
         paramArrayOfObject[0] = paramMap;
       }
-      w.aEo(paramString);
+      w.aFI(paramString);
       AppMethodBeat.o(70441);
       return false;
     }
@@ -117,7 +121,7 @@ public final class ah
     AppMethodBeat.i(70443);
     if (eO == null)
     {
-      ad.e("MicroMsg.WalletPushNotifyManager", "hy: callback pool is null. release failed");
+      ae.e("MicroMsg.WalletPushNotifyManager", "hy: callback pool is null. release failed");
       AppMethodBeat.o(70443);
       return false;
     }
@@ -126,20 +130,20 @@ public final class ah
     return true;
   }
   
-  public static ah eFK()
+  public static ah eJr()
   {
     AppMethodBeat.i(70440);
-    if (Dau == null) {
-      Dau = new ah();
+    if (DrZ == null) {
+      DrZ = new ah();
     }
-    ah localah = Dau;
+    ah localah = DrZ;
     AppMethodBeat.o(70440);
     return localah;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ah
  * JD-Core Version:    0.7.0.1
  */

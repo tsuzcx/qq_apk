@@ -12,24 +12,24 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomCardPreference
   extends Preference
 {
-  public boolean dmo;
-  private TextView fUS;
-  public CharSequence fUT;
-  public CharSequence fUU;
-  private LinearLayout fUV;
+  public boolean dnq;
+  private TextView fWY;
+  public CharSequence fWZ;
+  public CharSequence fXa;
+  private LinearLayout fXb;
   private View mView;
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.dmo = false;
+    this.dnq = false;
   }
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13010);
-    this.dmo = false;
+    this.dnq = false;
     setLayoutResource(2131494804);
     AppMethodBeat.o(13010);
   }
@@ -39,26 +39,26 @@ public class RoomCardPreference
     AppMethodBeat.i(13012);
     super.onBindView(paramView);
     paramView = (ViewGroup)paramView.findViewById(2131298739).findViewById(2131305937);
-    if (this.fUV == null) {
-      this.fUV = ((LinearLayout)paramView.getChildAt(1));
+    if (this.fXb == null) {
+      this.fXb = ((LinearLayout)paramView.getChildAt(1));
     }
-    if (this.fUS == null) {
-      this.fUS = ((TextView)paramView.findViewById(2131304215));
+    if (this.fWY == null) {
+      this.fWY = ((TextView)paramView.findViewById(2131304215));
     }
-    if (this.dmo)
+    if (this.dnq)
     {
-      this.fUV.setVisibility(0);
-      this.fUS.setVisibility(0);
+      this.fXb.setVisibility(0);
+      this.fWY.setVisibility(0);
     }
     for (;;)
     {
-      if (this.fUU != null) {
-        this.fUS.setText(this.fUU);
+      if (this.fXa != null) {
+        this.fWY.setText(this.fXa);
       }
       AppMethodBeat.o(13012);
       return;
-      this.fUV.setVisibility(8);
-      this.fUS.setVisibility(8);
+      this.fXb.setVisibility(8);
+      this.fWY.setVisibility(8);
     }
   }
   

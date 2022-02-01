@@ -9,12 +9,12 @@ public enum a
   static
   {
     AppMethodBeat.i(121877);
-    qRd = new a("CREATE", 0, 0);
-    qRe = new a("RESUME", 1, 1);
-    qRf = new a("PAUSE", 2, 2);
-    qRg = new a("STOP", 3, 3);
-    qRh = new a("DESTROY", 4, 4);
-    qRi = new a[] { qRd, qRe, qRf, qRg, qRh };
+    qZb = new a("CREATE", 0, 0);
+    qZc = new a("RESUME", 1, 1);
+    qZd = new a("PAUSE", 2, 2);
+    qZe = new a("STOP", 3, 3);
+    qZf = new a("DESTROY", 4, 4);
+    qZg = new a[] { qZb, qZc, qZd, qZe, qZf };
     AppMethodBeat.o(121877);
   }
   
@@ -25,7 +25,7 @@ public enum a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.a
  * JD-Core Version:    0.7.0.1
  */

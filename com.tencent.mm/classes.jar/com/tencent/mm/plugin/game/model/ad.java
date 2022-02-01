@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.ab;
-import com.tencent.mm.plugin.game.d.ah;
-import com.tencent.mm.plugin.game.d.ax;
-import com.tencent.mm.plugin.game.d.az;
+import com.tencent.mm.plugin.game.d.ag;
+import com.tencent.mm.plugin.game.d.an;
+import com.tencent.mm.plugin.game.d.bd;
 import com.tencent.mm.plugin.game.d.bf;
-import com.tencent.mm.plugin.game.d.cz;
+import com.tencent.mm.plugin.game.d.bm;
+import com.tencent.mm.plugin.game.d.dh;
 import com.tencent.mm.plugin.game.f.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class ad
   extends x
 {
-  public static void a(bf parambf)
+  public static void a(bm parambm)
   {
     AppMethodBeat.i(41542);
-    if ((parambf == null) || (bt.hj(parambf.uia)))
+    if ((parambm == null) || (bu.ht(parambm.utA)))
     {
       AppMethodBeat.o(41542);
       return;
     }
-    parambf = parambf.uia.iterator();
-    while (parambf.hasNext())
+    parambm = parambm.utA.iterator();
+    while (parambm.hasNext())
     {
-      Object localObject = (ah)parambf.next();
-      if ((((ah)localObject).ugE != null) && (((ah)localObject).ugE.ueZ != null))
+      Object localObject = (an)parambm.next();
+      if ((((an)localObject).usb != null) && (((an)localObject).usb.uqg != null))
       {
-        d.c(a(((ah)localObject).ugE.ueZ));
+        d.c(a(((an)localObject).usb.uqg));
       }
-      else if ((((ah)localObject).ugG != null) && (!bt.hj(((ah)localObject).ugG.ufF)))
+      else if ((((an)localObject).usd != null) && (!bu.ht(((an)localObject).usd.uqZ)))
       {
-        localObject = ((ah)localObject).ugG.ufF.iterator();
+        localObject = ((an)localObject).usd.uqZ.iterator();
         while (((Iterator)localObject).hasNext()) {
-          d.c(a(((ab)((Iterator)localObject).next()).ueZ));
+          d.c(a(((ag)((Iterator)localObject).next()).uqg));
         }
       }
-      else if ((((ah)localObject).ugF != null) && (((ah)localObject).ugF.ueZ != null))
+      else if ((((an)localObject).usc != null) && (((an)localObject).usc.uqg != null))
       {
-        d.c(a(((ah)localObject).ugF.ueZ));
+        d.c(a(((an)localObject).usc.uqg));
       }
     }
     AppMethodBeat.o(41542);

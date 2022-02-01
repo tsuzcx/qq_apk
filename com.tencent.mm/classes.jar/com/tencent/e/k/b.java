@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 public final class b
 {
   private String Zw;
-  private Class<?> cNV;
+  private Class<?> cOF;
   private boolean mInit;
   private Method mMethod;
   private Class[] mParameterTypes;
@@ -20,7 +20,7 @@ public final class b
       AppMethodBeat.o(183491);
       throw paramClass;
     }
-    this.cNV = paramClass;
+    this.cOF = paramClass;
     this.Zw = paramString;
     this.mParameterTypes = paramVarArgs;
     AppMethodBeat.o(183491);
@@ -57,7 +57,7 @@ public final class b
           AppMethodBeat.o(183492);
           return;
         }
-        localClass1 = this.cNV;
+        localClass1 = this.cOF;
         if (localClass1 == null) {}
       }
       finally

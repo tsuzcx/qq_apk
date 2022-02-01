@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.y.b;
 import com.tencent.mm.plugin.y.c;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.z;
 
 public class WXShortcutEntryActivity
   extends AutoLoginActivity
@@ -20,17 +20,17 @@ public class WXShortcutEntryActivity
     AppMethodBeat.i(22327);
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.WXShortcutEntryActivity", "intent is null");
+      ae.e("MicroMsg.WXShortcutEntryActivity", "intent is null");
       finish();
       AppMethodBeat.o(22327);
       return;
     }
-    Object localObject = c.yQR;
-    int i = y.getIntExtra(paramIntent, "type", 0);
+    Object localObject = c.zhb;
+    int i = z.getIntExtra(paramIntent, "type", 0);
     parama = getContext();
     if (paramIntent != null)
     {
-      localObject = (b)((c)localObject).yQS.get(i);
+      localObject = (b)((c)localObject).zhc.get(i);
       if (localObject != null) {
         ((b)localObject).k(parama, paramIntent);
       }

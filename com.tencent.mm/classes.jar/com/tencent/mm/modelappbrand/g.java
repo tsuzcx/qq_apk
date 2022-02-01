@@ -8,19 +8,19 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface g
   extends a
 {
-  public abstract void Cc(String paramString);
+  public abstract void CE(String paramString);
   
   public abstract String a(String paramString, View paramView, Bundle paramBundle, ab paramab);
   
   public abstract void a(String paramString, View paramView);
   
-  public abstract f aDE();
+  public abstract f aDU();
   
-  public abstract n aDF();
+  public abstract n aDV();
   
   public abstract p cA(View paramView);
   
-  public abstract View cw(Context paramContext);
+  public abstract View cy(Context paramContext);
   
   public abstract void cz(View paramView);
   

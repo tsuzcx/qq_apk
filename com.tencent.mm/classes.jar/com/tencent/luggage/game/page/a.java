@@ -9,28 +9,29 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsruntime.h;
 import com.tencent.mm.plugin.appbrand.jsruntime.j;
+import com.tencent.mm.plugin.appbrand.page.am;
 import com.tencent.mm.plugin.appbrand.page.an;
-import com.tencent.mm.plugin.appbrand.page.ao;
-import com.tencent.mm.plugin.appbrand.page.aq;
-import com.tencent.mm.plugin.appbrand.page.as;
-import com.tencent.mm.plugin.appbrand.page.ay;
-import com.tencent.mm.plugin.appbrand.r.a.d;
+import com.tencent.mm.plugin.appbrand.page.ap;
+import com.tencent.mm.plugin.appbrand.page.ar;
+import com.tencent.mm.plugin.appbrand.page.ax;
+import com.tencent.mm.plugin.appbrand.platform.window.d;
 import java.net.URL;
+import java.util.Map;
 
 public final class a
-  implements ay
+  implements ax
 {
-  private ViewGroup ckK;
-  private ViewGroup ckL;
+  private ViewGroup ckM;
+  private ViewGroup ckN;
   
-  public final void Dn() {}
+  public final void Dq() {}
   
-  public final boolean Do()
+  public final boolean Dr()
   {
     return false;
   }
   
-  public final boolean Dp()
+  public final boolean Ds()
   {
     return false;
   }
@@ -46,14 +47,14 @@ public final class a
   
   public final void addJavascriptInterface(Object paramObject, String paramString) {}
   
-  public final void aw(Context paramContext)
+  public final void ax(Context paramContext)
   {
     AppMethodBeat.i(130625);
-    if (this.ckK == null) {
-      this.ckK = new FrameLayout(paramContext);
+    if (this.ckM == null) {
+      this.ckM = new FrameLayout(paramContext);
     }
-    if (this.ckL == null) {
-      this.ckL = new FrameLayout(paramContext);
+    if (this.ckN == null) {
+      this.ckN = new FrameLayout(paramContext);
     }
     AppMethodBeat.o(130625);
   }
@@ -65,8 +66,8 @@ public final class a
   
   public final void destroy()
   {
-    this.ckK = null;
-    this.ckL = null;
+    this.ckM = null;
+    this.ckN = null;
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
@@ -78,7 +79,7 @@ public final class a
   
   public final View getContentView()
   {
-    return this.ckL;
+    return this.ckN;
   }
   
   public final d getFullscreenImpl()
@@ -118,16 +119,16 @@ public final class a
   
   public final View getWrapperView()
   {
-    return this.ckK;
+    return this.ckM;
   }
   
   public final void j(Runnable paramRunnable)
   {
-    AppMethodBeat.i(190413);
+    AppMethodBeat.i(220730);
     if (paramRunnable != null) {
       paramRunnable.run();
     }
-    AppMethodBeat.o(190413);
+    AppMethodBeat.o(220730);
   }
   
   public final void onBackground() {}
@@ -136,21 +137,23 @@ public final class a
   
   public final void q(int paramInt, long paramLong) {}
   
+  public final void setAppBrandInfo(Map<String, String> paramMap) {}
+  
   public final void setBackgroundColor(int paramInt) {}
   
   public final void setFullscreenImpl(d paramd) {}
   
   public final void setJsExceptionHandler(h paramh) {}
   
-  public final void setOnScrollChangedListener(aq paramaq) {}
+  public final void setOnScrollChangedListener(ap paramap) {}
   
-  public final void setOnTrimListener(ao paramao) {}
+  public final void setOnTrimListener(an paraman) {}
   
   public final void setVerticalScrollBarEnabled(boolean paramBoolean) {}
   
-  public final void setWebViewLayoutListener(an paraman) {}
+  public final void setWebViewLayoutListener(am paramam) {}
   
-  public final void setXWebKeyboardImpl(as paramas) {}
+  public final void setXWebKeyboardImpl(ar paramar) {}
   
   public final void x(String paramString1, String paramString2) {}
 }

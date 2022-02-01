@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.widget.dialog.c.a;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.protocal.protobuf.brc;
-import com.tencent.mm.protocal.protobuf.brd;
-import com.tencent.mm.protocal.protobuf.bre;
-import com.tencent.mm.protocal.protobuf.brf;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.protocal.protobuf.egx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.brw;
+import com.tencent.mm.protocal.protobuf.brx;
+import com.tencent.mm.protocal.protobuf.bry;
+import com.tencent.mm.protocal.protobuf.brz;
+import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.protocal.protobuf.eio;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.vending.g.b;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.g.d.b;
@@ -26,7 +26,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/JsApiLoginLU;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "()V", "AuthInvoke", "", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "listener", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;", "invoke", "component", "cgiUrlStripForApiCallback", "", "Companion", "luggage-wechat-full-sdk_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/JsApiLoginLU;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "()V", "AuthInvoke", "", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "listener", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;", "invoke", "component", "cgiUrlStripForApiCallback", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class l
   extends i
   implements f
@@ -34,26 +34,26 @@ public final class l
   public static final int CTRL_INDEX = 52;
   public static final String NAME = "login";
   @Deprecated
-  public static final l.e kzc;
+  public static final l.e kCr;
   
   static
   {
     AppMethodBeat.i(169600);
-    kzc = new l.e((byte)0);
+    kCr = new l.e((byte)0);
     AppMethodBeat.o(169600);
   }
   
-  public static egx b(egx paramegx, h paramh)
+  public static eio b(eio parameio, h paramh)
   {
     AppMethodBeat.i(169602);
-    p.h(paramegx, "$this$fill");
+    p.h(parameio, "$this$fill");
     p.h(paramh, "service");
-    paramegx = f.c.a(paramegx, paramh);
+    parameio = f.c.a(parameio, paramh);
     AppMethodBeat.o(169602);
-    return paramegx;
+    return parameio;
   }
   
-  public static <R extends cvp> com.tencent.mm.vending.g.c<R> b(h paramh, String paramString, com.tencent.mm.bx.a parama, Class<R> paramClass)
+  public static <R extends cwj> com.tencent.mm.vending.g.c<R> b(h paramh, String paramString, com.tencent.mm.bw.a parama, Class<R> paramClass)
   {
     AppMethodBeat.i(169601);
     p.h(paramh, "$this$runCgi");
@@ -67,10 +67,10 @@ public final class l
   
   public final void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(192349);
+    AppMethodBeat.i(220950);
     if (paramJSONObject == null)
     {
-      AppMethodBeat.o(192349);
+      AppMethodBeat.o(220950);
       return;
     }
     try
@@ -79,57 +79,57 @@ public final class l
         paramJSONObject.put("requestInQueue", false);
       }
       super.a(paramd, paramJSONObject, paramInt);
-      AppMethodBeat.o(192349);
+      AppMethodBeat.o(220950);
       return;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        ad.e("Luggage.WXA.JsApiLoginLU", "invoke put KEY_IN_QUEUE e=" + localJSONException.getMessage());
+        ae.e("Luggage.WXA.JsApiLoginLU", "invoke put KEY_IN_QUEUE e=" + localJSONException.getMessage());
       }
     }
   }
   
   protected final void a(final com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, final int paramInt, final e parame)
   {
-    AppMethodBeat.i(192350);
+    AppMethodBeat.i(220951);
     if (paramd == null)
     {
-      AppMethodBeat.o(192350);
+      AppMethodBeat.o(220951);
       return;
     }
     if (paramJSONObject == null)
     {
-      AppMethodBeat.o(192350);
+      AppMethodBeat.o(220951);
       return;
     }
     paramJSONObject = (h)paramd;
-    bre localbre = new bre();
-    localbre.iht = paramd.getAppId();
+    bry localbry = new bry();
+    localbry.ikm = paramd.getAppId();
     AppBrandRuntime localAppBrandRuntime = paramd.getRuntime();
     p.g(localAppBrandRuntime, "service.runtime");
-    localbre.GLq = localAppBrandRuntime.aVL();
-    localbre.GLr = b(new egx(), (h)paramd);
-    b(paramJSONObject, "/cgi-bin/mmbiz-bin/js-login", (com.tencent.mm.bx.a)localbre, brf.class).d((com.tencent.mm.vending.c.a)new a(this, paramd, paramInt)).f((com.tencent.mm.vending.c.a)new b(this, paramd, paramInt)).a((d.b)new c(parame)).a((d.a)new d(this, parame, paramd, paramInt));
-    AppMethodBeat.o(192350);
+    localbry.HeR = localAppBrandRuntime.aWk();
+    localbry.HeS = b(new eio(), (h)paramd);
+    b(paramJSONObject, "/cgi-bin/mmbiz-bin/js-login", (com.tencent.mm.bw.a)localbry, brz.class).d((com.tencent.mm.vending.c.a)new a(this, paramd, paramInt)).f((com.tencent.mm.vending.c.a)new b(this, paramd, paramInt)).a((d.b)new c(parame)).a((d.a)new d(this, parame, paramd, paramInt));
+    AppMethodBeat.o(220951);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lkotlin/Triple;", "Lcom/tencent/mm/protocal/protobuf/JSAPIBaseResponse;", "", "response", "Lcom/tencent/mm/protocal/protobuf/JSLoginResponse;", "call"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lkotlin/Triple;", "Lcom/tencent/mm/protocal/protobuf/JSAPIBaseResponse;", "", "response", "Lcom/tencent/mm/protocal/protobuf/JSLoginResponse;", "call"})
   static final class a<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     a(l paraml, com.tencent.mm.plugin.appbrand.d paramd, int paramInt) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<name for destructuring parameter 0>", "Lkotlin/Triple;", "Lcom/tencent/mm/protocal/protobuf/JSAPIBaseResponse;", "", "kotlin.jvm.PlatformType", "call"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<name for destructuring parameter 0>", "Lkotlin/Triple;", "Lcom/tencent/mm/protocal/protobuf/JSAPIBaseResponse;", "", "kotlin.jvm.PlatformType", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     b(l paraml, com.tencent.mm.plugin.appbrand.d paramd, int paramInt) {}
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "onTerminate"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "onTerminate"})
   static final class c<T>
     implements d.b<Object>
   {
@@ -138,10 +138,10 @@ public final class l
     public final void bq(Object paramObject)
     {
       AppMethodBeat.i(169595);
-      paramObject = this.kyW;
+      paramObject = this.kCl;
       if (paramObject != null)
       {
-        paramObject.biH();
+        paramObject.bjq();
         AppMethodBeat.o(169595);
         return;
       }
@@ -149,7 +149,7 @@ public final class l
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "e", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "e", "", "kotlin.jvm.PlatformType", "onInterrupt"})
   static final class d<T>
     implements d.a<Object>
   {
@@ -160,14 +160,14 @@ public final class l
       AppMethodBeat.i(169596);
       Object localObject = parame;
       if (localObject != null) {
-        ((e)localObject).biH();
+        ((e)localObject).bjq();
       }
-      l.biP();
+      l.bjy();
       StringBuilder localStringBuilder = new StringBuilder("onInterrupt, appId[").append(paramd.getAppId()).append("], callbackId[").append(paramInt).append("], e[");
       if (paramObject != null) {}
       for (localObject = paramObject.toString();; localObject = null)
       {
-        ad.i("Luggage.WXA.JsApiLoginLU", (String)localObject + ']');
+        ae.i("Luggage.WXA.JsApiLoginLU", (String)localObject + ']');
         if (!(paramObject instanceof f.b)) {
           break;
         }
@@ -176,30 +176,30 @@ public final class l
       }
       if ((paramObject instanceof f.a))
       {
-        paramd.h(paramInt, this.kzd.Pg("fail " + ((f.a)paramObject).getMessage()));
+        paramd.h(paramInt, this.kCs.PO("fail " + ((f.a)paramObject).getMessage()));
         AppMethodBeat.o(169596);
         return;
       }
       if ((paramObject instanceof Throwable))
       {
-        paramd.h(paramInt, this.kzd.Pg("fail " + ((Throwable)paramObject).getMessage()));
+        paramd.h(paramInt, this.kCs.PO("fail " + ((Throwable)paramObject).getMessage()));
         AppMethodBeat.o(169596);
         return;
       }
       if (paramObject == null)
       {
-        paramd.h(paramInt, this.kzd.Pg("fail:internal error"));
+        paramd.h(paramInt, this.kCs.PO("fail:internal error"));
         AppMethodBeat.o(169596);
         return;
       }
-      paramd.h(paramInt, this.kzd.Pg("fail ".concat(String.valueOf(paramObject))));
+      paramd.h(paramInt, this.kCs.PO("fail ".concat(String.valueOf(paramObject))));
       AppMethodBeat.o(169596);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.l
  * JD-Core Version:    0.7.0.1
  */

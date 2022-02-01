@@ -1,16 +1,25 @@
 package com.tencent.mm.emoji.debug;
 
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
 final class EmojiDebugUI$k
   extends q
   implements a<String>
 {
-  EmojiDebugUI$k(ax paramax)
+  public static final k gki;
+  
+  static
+  {
+    AppMethodBeat.i(105348);
+    gki = new k();
+    AppMethodBeat.o(105348);
+  }
+  
+  EmojiDebugUI$k()
   {
     super(0);
   }

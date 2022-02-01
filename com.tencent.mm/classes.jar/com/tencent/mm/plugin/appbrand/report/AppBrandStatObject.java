@@ -10,15 +10,15 @@ public final class AppBrandStatObject
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandStatObject> CREATOR;
-  public int dJO;
-  public int dJQ;
-  public String dJR;
-  public String dkh;
-  public String kVU;
-  public Bundle mrA;
-  public int mrx;
-  public String mry;
-  public AppBrandRecommendStatObj mrz;
+  public int dLd;
+  public int dLf;
+  public String dLg;
+  public String dlj;
+  public String kZC;
+  public int mwv;
+  public String mww;
+  public AppBrandRecommendStatObj mwx;
+  public Bundle mwy;
   public int scene;
   
   static
@@ -33,16 +33,16 @@ public final class AppBrandStatObject
   protected AppBrandStatObject(Parcel paramParcel)
   {
     AppMethodBeat.i(123535);
-    this.dJQ = paramParcel.readInt();
-    this.dJR = paramParcel.readString();
+    this.dLf = paramParcel.readInt();
+    this.dLg = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.dkh = paramParcel.readString();
-    this.mrx = paramParcel.readInt();
-    this.dJO = paramParcel.readInt();
-    this.kVU = paramParcel.readString();
-    this.mrz = ((AppBrandRecommendStatObj)paramParcel.readParcelable(AppBrandRecommendStatObj.class.getClassLoader()));
-    this.mry = paramParcel.readString();
-    this.mrA = paramParcel.readBundle(getClass().getClassLoader());
+    this.dlj = paramParcel.readString();
+    this.mwv = paramParcel.readInt();
+    this.dLd = paramParcel.readInt();
+    this.kZC = paramParcel.readString();
+    this.mwx = ((AppBrandRecommendStatObj)paramParcel.readParcelable(AppBrandRecommendStatObj.class.getClassLoader()));
+    this.mww = paramParcel.readString();
+    this.mwy = paramParcel.readBundle(getClass().getClassLoader());
     AppMethodBeat.o(123535);
   }
   
@@ -54,7 +54,7 @@ public final class AppBrandStatObject
   public final String toString()
   {
     AppMethodBeat.i(123533);
-    String str = "AppBrandStatObject{preScene=" + this.dJQ + ", preSceneNote='" + this.dJR + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.dkh + '\'' + ", usedState=" + this.mrx + '}';
+    String str = "AppBrandStatObject{preScene=" + this.dLf + ", preSceneNote='" + this.dLg + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.dlj + '\'' + ", usedState=" + this.mwv + '}';
     AppMethodBeat.o(123533);
     return str;
   }
@@ -62,16 +62,16 @@ public final class AppBrandStatObject
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(123534);
-    paramParcel.writeInt(this.dJQ);
-    paramParcel.writeString(this.dJR);
+    paramParcel.writeInt(this.dLf);
+    paramParcel.writeString(this.dLg);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeString(this.dkh);
-    paramParcel.writeInt(this.mrx);
-    paramParcel.writeInt(this.dJO);
-    paramParcel.writeString(this.kVU);
-    paramParcel.writeParcelable(this.mrz, paramInt);
-    paramParcel.writeString(this.mry);
-    paramParcel.writeBundle(this.mrA);
+    paramParcel.writeString(this.dlj);
+    paramParcel.writeInt(this.mwv);
+    paramParcel.writeInt(this.dLd);
+    paramParcel.writeString(this.kZC);
+    paramParcel.writeParcelable(this.mwx, paramInt);
+    paramParcel.writeString(this.mww);
+    paramParcel.writeBundle(this.mwy);
     AppMethodBeat.o(123534);
   }
 }

@@ -1,22 +1,15 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
-import android.content.res.Configuration;
+import com.tencent.mm.plugin.appbrand.p;
+import d.l;
 
-public abstract interface b
-{
-  public abstract void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb);
-  
-  public abstract void onBackground();
-  
-  public abstract void onConfigurationChanged(Configuration paramConfiguration);
-  
-  public abstract void onDestroy();
-  
-  public abstract void onForeground();
-}
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageNavigateBackSilentInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageNavigateBackSilentInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onIntercepted", "", "runtime", "scene", "", "plugin-appbrand-integration_release"})
+public final class b
+  extends d<p>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.b
  * JD-Core Version:    0.7.0.1
  */

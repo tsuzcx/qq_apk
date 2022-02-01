@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.protocal.protobuf.cop;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.protocal.protobuf.cpj;
+import com.tencent.mm.protocal.protobuf.cpk;
 
 public final class n
-  extends a<coq>
+  extends a<cpk>
 {
   public n(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3)
   {
     AppMethodBeat.i(68450);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new cop();
-    ((b.a)localObject).hNN = new coq();
+    ((b.a)localObject).hQF = new cpj();
+    ((b.a)localObject).hQG = new cpk();
     ((b.a)localObject).funcId = 1283;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/qrypurchaseresult";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDC();
-    cop localcop = (cop)((b)localObject).hNK.hNQ;
-    localcop.Hhu = paramString1;
-    localcop.xZh = paramString2;
-    localcop.HgC = paramInt1;
-    localcop.uxm = paramInt2;
-    localcop.Hfb = paramString3;
-    localcop.Cyj = paramInt3;
-    localcop.Cyu = ae.eCl();
+    localObject = ((b.a)localObject).aDS();
+    cpj localcpj = (cpj)((b)localObject).hQD.hQJ;
+    localcpj.HAU = paramString1;
+    localcpj.yoZ = paramString2;
+    localcpj.HAc = paramInt1;
+    localcpj.uIM = paramInt2;
+    localcpj.HyB = paramString3;
+    localcpj.CPO = paramInt3;
+    localcpj.CPZ = ae.eFT();
     c((b)localObject);
     AppMethodBeat.o(68450);
   }

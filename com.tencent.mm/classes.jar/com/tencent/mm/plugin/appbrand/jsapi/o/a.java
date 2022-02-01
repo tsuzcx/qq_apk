@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric;", "", "()V", "endTime", "", "getEndTime", "()J", "setEndTime", "(J)V", "extraInfo", "Lorg/json/JSONObject;", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "startTime", "getStartTime", "setStartTime", "dispatch", "", "receiver", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "putExtraInfo", "value", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric;", "", "()V", "endTime", "", "getEndTime", "()J", "setEndTime", "(J)V", "extraInfo", "Lorg/json/JSONObject;", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "startTime", "getStartTime", "setStartTime", "dispatch", "", "receiver", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "putExtraInfo", "value", "Companion", "plugin-appbrand-integration_release"})
 public final class a
 {
   @Deprecated
-  public static final a ldu;
+  public static final a lhf;
   public long endTime;
-  private final JSONObject ldt;
+  private final JSONObject lhe;
   private String name;
   public long startTime;
   
   static
   {
     AppMethodBeat.i(162176);
-    ldu = new a((byte)0);
+    lhf = new a((byte)0);
     AppMethodBeat.o(162176);
   }
   
@@ -28,21 +28,21 @@ public final class a
   {
     AppMethodBeat.i(162175);
     this.name = "";
-    this.ldt = new JSONObject();
+    this.lhe = new JSONObject();
     AppMethodBeat.o(162175);
   }
   
-  public final void c(q paramq)
+  public final void c(r paramr)
   {
     AppMethodBeat.i(162174);
-    p.h(paramq, "receiver");
+    p.h(paramr, "receiver");
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("name", this.name);
     localJSONObject.put("startTime", this.startTime);
     localJSONObject.put("endTime", this.endTime);
-    localJSONObject.put("extraInfo", this.ldt);
-    ad.i("MicroMsg.AppBrand.EventOnNewPerformanceMetric", "dispatch ".concat(String.valueOf(localJSONObject)));
-    paramq.cb("onNewPerformanceMetric", localJSONObject.toString());
+    localJSONObject.put("extraInfo", this.lhe);
+    ae.i("MicroMsg.AppBrand.EventOnNewPerformanceMetric", "dispatch ".concat(String.valueOf(localJSONObject)));
+    paramr.cb("onNewPerformanceMetric", localJSONObject.toString());
     AppMethodBeat.o(162174);
   }
   
@@ -51,7 +51,7 @@ public final class a
     AppMethodBeat.i(162173);
     p.h(paramString, "name");
     p.h(paramObject, "value");
-    this.ldt.put(paramString, paramObject);
+    this.lhe.put(paramString, paramObject);
     AppMethodBeat.o(162173);
   }
   
@@ -63,7 +63,7 @@ public final class a
     AppMethodBeat.o(162172);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 

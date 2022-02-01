@@ -7,18 +7,18 @@ import java.io.InputStream;
 
 public final class a
 {
-  private static final byte[] LMS = { 127, 69, 76, 70 };
+  private static final byte[] MjR = { 127, 69, 76, 70 };
   
-  public static boolean aZh(String paramString)
+  public static boolean baK(String paramString)
   {
     AppMethodBeat.i(138356);
-    byte[] arrayOfByte = new byte[LMS.length];
+    byte[] arrayOfByte = new byte[MjR.length];
     try
     {
       localFileInputStream = new FileInputStream(paramString);
       try
       {
-        if (localFileInputStream.read(arrayOfByte, 0, LMS.length) == arrayOfByte.length) {
+        if (localFileInputStream.read(arrayOfByte, 0, MjR.length) == arrayOfByte.length) {
           break label87;
         }
         paramString = new IOException("Read bytes less than " + arrayOfByte.length);
@@ -40,9 +40,9 @@ public final class a
     throw paramString;
     label87:
     i = 0;
-    while (i < LMS.length)
+    while (i < MjR.length)
     {
-      int j = LMS[i];
+      int j = MjR[i];
       int k = arrayOfByte[i];
       if (j != k)
       {
@@ -58,7 +58,7 @@ public final class a
   }
   
   /* Error */
-  public static byte[] aZj(String paramString)
+  public static byte[] baM(String paramString)
   {
     // Byte code:
     //   0: ldc 64
@@ -128,7 +128,7 @@ public final class a
   }
   
   /* Error */
-  public static byte[] gS(String paramString, int paramInt)
+  public static byte[] hb(String paramString, int paramInt)
   {
     // Byte code:
     //   0: iconst_0

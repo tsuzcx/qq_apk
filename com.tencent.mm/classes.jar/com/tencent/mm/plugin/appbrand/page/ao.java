@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface ao
-{
-  public abstract boolean bvk();
-}
+  extends an
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

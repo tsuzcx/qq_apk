@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.handoff.a.a;
 import com.tencent.mm.plugin.handoff.model.HandOffURL;
 import com.tencent.mm.plugin.webview.luggage.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class n
@@ -23,27 +23,27 @@ public class n
     Object localObject = paramb.chh.cgn;
     String str = ((JSONObject)localObject).optString("brandIcon");
     localObject = ((JSONObject)localObject).optString("brandName");
-    ad.i("MicroMsg.JsApiCurrentMpInfo", "doCurrentMpInfo brandIcon:%s", new Object[] { str });
-    if (((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePl() != null)
+    ae.i("MicroMsg.JsApiCurrentMpInfo", "doCurrentMpInfo brandIcon:%s", new Object[] { str });
+    if (((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSX() != null)
     {
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePl().Wl(str);
-      if (!bt.isNullOrNil((String)localObject)) {
-        ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePl().Wm((String)localObject);
+      ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSX().WX(str);
+      if (!bu.isNullOrNil((String)localObject)) {
+        ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSX().WY((String)localObject);
       }
     }
-    if (((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePm() != null)
+    if (((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSY() != null)
     {
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePm().setIcon(bt.nullAsNil(str));
-      if (!bt.isNullOrNil((String)localObject)) {
-        ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePm().setTitle((String)localObject);
+      ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSY().setIcon(bu.nullAsNil(str));
+      if (!bu.isNullOrNil((String)localObject)) {
+        ((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSY().setTitle((String)localObject);
       }
-      ((a)com.tencent.mm.kernel.g.ab(a.class)).e(((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).ePm());
+      ((a)com.tencent.mm.kernel.g.ab(a.class)).e(((com.tencent.mm.plugin.webview.luggage.g)paramb.chg).eSY());
     }
     paramb.a("", null);
     AppMethodBeat.o(78546);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

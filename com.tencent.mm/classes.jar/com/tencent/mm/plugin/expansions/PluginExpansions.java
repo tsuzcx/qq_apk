@@ -4,8 +4,8 @@ import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 @Keep
 public final class PluginExpansions
@@ -17,23 +17,23 @@ public final class PluginExpansions
   public final void execute(g paramg)
   {
     AppMethodBeat.i(152980);
-    c.cmU();
-    c.cmV();
-    if (paramg.akw())
+    c.cok();
+    c.col();
+    if (paramg.akL())
     {
-      a.cmJ();
-      ad.i("MicroMsg.exp.PluginExpansions", "request Sync at MAIN process");
-      a.cmM();
+      a.cnZ();
+      ae.i("MicroMsg.exp.PluginExpansions", "request Sync at MAIN process");
+      a.coc();
       AppMethodBeat.o(152980);
       return;
     }
-    if (!paramg.xf(":push"))
+    if (!paramg.xO(":push"))
     {
-      a.cmJ();
-      ad.i("MicroMsg.exp.PluginExpansions", "request Sync at SUB process");
-      a.cmM();
+      a.cnZ();
+      ae.i("MicroMsg.exp.PluginExpansions", "request Sync at SUB process");
+      a.coc();
     }
-    ad.i("MicroMsg.exp.PluginExpansions", "execute done");
+    ae.i("MicroMsg.exp.PluginExpansions", "execute done");
     AppMethodBeat.o(152980);
   }
   
@@ -41,8 +41,8 @@ public final class PluginExpansions
   {
     AppMethodBeat.i(152979);
     alias(com.tencent.mm.plugin.expansions.a.a.class);
-    aj.getContext();
-    a.cmL();
+    ak.getContext();
+    a.cob();
     a.prepare();
     AppMethodBeat.o(152979);
   }

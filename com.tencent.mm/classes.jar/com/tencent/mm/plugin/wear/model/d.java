@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.wear.model.a.b.a;
 import com.tencent.mm.plugin.wear.model.e.i;
 import com.tencent.mm.plugin.wear.model.e.j;
 import com.tencent.mm.plugin.wear.model.e.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.security.Key;
 import java.util.HashSet;
 import javax.crypto.Cipher;
@@ -15,24 +15,24 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class d
 {
-  com.tencent.mm.plugin.wear.model.a.b DwL;
-  com.tencent.mm.plugin.wear.model.e.b DwM;
-  public i DwN;
-  j DwO;
-  p DwP;
+  com.tencent.mm.plugin.wear.model.a.b DOq;
+  com.tencent.mm.plugin.wear.model.e.b DOr;
+  public i DOs;
+  j DOt;
+  p DOu;
   
   public d()
   {
     AppMethodBeat.i(29980);
-    this.DwL = new com.tencent.mm.plugin.wear.model.a.a();
-    this.DwM = new com.tencent.mm.plugin.wear.model.e.b();
-    this.DwN = new i();
-    this.DwO = new j();
-    this.DwP = new p();
+    this.DOq = new com.tencent.mm.plugin.wear.model.a.a();
+    this.DOr = new com.tencent.mm.plugin.wear.model.e.b();
+    this.DOs = new i();
+    this.DOt = new j();
+    this.DOu = new p();
     AppMethodBeat.o(29980);
   }
   
-  public final boolean cb(byte[] paramArrayOfByte)
+  public final boolean ce(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29983);
     if (paramArrayOfByte == null)
@@ -40,14 +40,14 @@ public final class d
       AppMethodBeat.o(29983);
       return false;
     }
-    if (!eKF())
+    if (!eOn())
     {
       AppMethodBeat.o(29983);
       return false;
     }
-    aj.getContext();
+    ak.getContext();
     String str = String.format("/wechat/%s/%d", new Object[] { "phone", Long.valueOf(System.currentTimeMillis()) });
-    com.tencent.mm.plugin.wear.model.a.b localb = eKG();
+    com.tencent.mm.plugin.wear.model.a.b localb = eOo();
     if (localb == null)
     {
       AppMethodBeat.o(29983);
@@ -63,14 +63,14 @@ public final class d
     return false;
   }
   
-  public final byte[] cc(byte[] paramArrayOfByte)
+  public final byte[] cf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29984);
-    Object localObject = this.DwM.getSessionKey();
+    Object localObject = this.DOr.getSessionKey();
     if ((paramArrayOfByte != null) && (localObject != null)) {
       try
       {
-        ad.d("MicroMsg.Wear.WearConnectLogic", "sessionKey is not null %s", new Object[] { g.getMessageDigest((byte[])localObject) });
+        ae.d("MicroMsg.Wear.WearConnectLogic", "sessionKey is not null %s", new Object[] { g.getMessageDigest((byte[])localObject) });
         localObject = new SecretKeySpec((byte[])localObject, "AES");
         Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         localCipher.init(2, (Key)localObject);
@@ -80,7 +80,7 @@ public final class d
       }
       catch (Exception paramArrayOfByte)
       {
-        ad.printErrStackTrace("MicroMsg.Wear.WearConnectLogic", paramArrayOfByte, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Wear.WearConnectLogic", paramArrayOfByte, "", new Object[0]);
         AppMethodBeat.o(29984);
         return null;
       }
@@ -89,21 +89,21 @@ public final class d
     return null;
   }
   
-  public final byte[] cd(byte[] paramArrayOfByte)
+  public final byte[] cg(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29985);
-    byte[] arrayOfByte = this.DwM.getSessionKey();
+    byte[] arrayOfByte = this.DOr.getSessionKey();
     if ((paramArrayOfByte != null) && (arrayOfByte != null)) {
       try
       {
-        ad.d("MicroMsg.Wear.WearConnectLogic", "sessionKey is not null %s", new Object[] { g.getMessageDigest(arrayOfByte) });
+        ae.d("MicroMsg.Wear.WearConnectLogic", "sessionKey is not null %s", new Object[] { g.getMessageDigest(arrayOfByte) });
         paramArrayOfByte = com.tencent.mm.plugin.wear.a.a.j(paramArrayOfByte, arrayOfByte);
         AppMethodBeat.o(29985);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        ad.printErrStackTrace("MicroMsg.Wear.WearConnectLogic", paramArrayOfByte, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Wear.WearConnectLogic", paramArrayOfByte, "", new Object[0]);
         AppMethodBeat.o(29985);
         return null;
       }
@@ -112,10 +112,10 @@ public final class d
     return null;
   }
   
-  public final boolean eKF()
+  public final boolean eOn()
   {
     AppMethodBeat.i(29981);
-    if ((eKG() != null) && (eKG().eKK().size() > 0))
+    if ((eOo() != null) && (eOo().eOs().size() > 0))
     {
       AppMethodBeat.o(29981);
       return true;
@@ -124,12 +124,12 @@ public final class d
     return false;
   }
   
-  public final com.tencent.mm.plugin.wear.model.a.b eKG()
+  public final com.tencent.mm.plugin.wear.model.a.b eOo()
   {
     AppMethodBeat.i(29982);
-    if ((this.DwL.isAvailable()) && (this.DwL.eKL()))
+    if ((this.DOq.isAvailable()) && (this.DOq.eOt()))
     {
-      com.tencent.mm.plugin.wear.model.a.b localb = this.DwL;
+      com.tencent.mm.plugin.wear.model.a.b localb = this.DOq;
       AppMethodBeat.o(29982);
       return localb;
     }

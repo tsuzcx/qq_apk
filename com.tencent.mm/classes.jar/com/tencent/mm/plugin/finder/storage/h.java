@@ -1,11 +1,16 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.logic.b;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.amt;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.anf;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.a.j;
 import d.a.v;
 import d.g.b.p;
@@ -15,63 +20,28 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;)V", "continueFlag", "getContinueFlag", "()Ljava/lang/Object;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "setInfo", "innerList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "objectList", "", "getObjectList", "()Ljava/util/List;", "wording", "", "getWording", "()Ljava/lang/String;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;)V", "continueFlag", "getContinueFlag", "()Ljava/lang/Object;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "setInfo", "innerList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "objectList", "", "getObjectList", "()Ljava/util/List;", "wording", "", "getWording", "()Ljava/lang/String;", "plugin-finder_release"})
 public final class h
 {
-  public final String dxD;
-  public final com.tencent.mm.bx.b lastBuffer;
-  private final Object sxO;
-  private final List<BaseFinderFeed> sxP;
-  public amt sxQ;
+  private final List<BaseFinderFeed> sIG;
+  public anf sIH;
   
-  public h(amt paramamt)
+  public h(anf paramanf)
   {
-    AppMethodBeat.i(203658);
-    this.sxQ = paramamt;
-    paramamt = this.sxQ;
-    Object localObject;
-    if (paramamt != null)
-    {
-      localObject = paramamt.lastBuffer;
-      paramamt = (amt)localObject;
-      if (localObject != null) {}
-    }
-    else
-    {
-      paramamt = null;
-    }
-    this.lastBuffer = paramamt;
-    paramamt = this.sxQ;
-    if (paramamt != null) {}
-    for (paramamt = Integer.valueOf(paramamt.continueFlag);; paramamt = Boolean.FALSE)
-    {
-      this.sxO = paramamt;
-      paramamt = this.sxQ;
-      if (paramamt != null)
-      {
-        localObject = paramamt.dxD;
-        paramamt = (amt)localObject;
-        if (localObject != null) {}
-      }
-      else
-      {
-        paramamt = "";
-      }
-      this.dxD = paramamt;
-      this.sxP = ((List)new ArrayList());
-      AppMethodBeat.o(203658);
-      return;
-    }
+    AppMethodBeat.i(204225);
+    this.sIH = paramanf;
+    this.sIG = ((List)new ArrayList());
+    AppMethodBeat.o(204225);
   }
   
-  public final List<BaseFinderFeed> cIr()
+  public final List<BaseFinderFeed> cKW()
   {
-    AppMethodBeat.i(203657);
-    Object localObject1 = this.sxQ;
+    AppMethodBeat.i(204224);
+    Object localObject1 = this.sIH;
     Object localObject2;
-    if ((localObject1 != null) && (bt.hj(this.sxP)) && (!bt.hj((List)((amt)localObject1).rtM)))
+    if ((localObject1 != null) && (bu.ht(this.sIG)) && (!bu.ht((List)((anf)localObject1).rBY)))
     {
-      localObject1 = ((amt)localObject1).rtM;
+      localObject1 = ((anf)localObject1).rBY;
       Object localObject3;
       Object localObject4;
       if (localObject1 != null)
@@ -116,10 +86,10 @@ public final class h
           if (((Iterator)localObject2).hasNext())
           {
             localObject3 = (FinderObject)((Iterator)localObject2).next();
-            localObject4 = FinderItem.syk;
+            localObject4 = FinderItem.sJb;
             p.g(localObject3, "feed");
             localObject3 = FinderItem.a.a((FinderObject)localObject3, 1);
-            localObject4 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+            localObject4 = b.sLq;
             ((Collection)localObject1).add(b.a.j((FinderItem)localObject3));
             continue;
             localObject1 = null;
@@ -127,22 +97,48 @@ public final class h
           }
         }
         localObject1 = (List)localObject1;
-        localObject2 = this.sxP;
+        localObject2 = this.sIG;
         if (localObject1 == null) {
           break label283;
         }
       }
     }
     label283:
-    for (localObject1 = (Collection)localObject1;; localObject1 = (Collection)v.MKE)
+    for (localObject1 = (Collection)localObject1;; localObject1 = (Collection)v.NhH)
     {
       ((List)localObject2).addAll((Collection)localObject1);
-      localObject1 = this.sxP;
-      AppMethodBeat.o(203657);
+      localObject1 = this.sIG;
+      AppMethodBeat.o(204224);
       return localObject1;
       localObject1 = null;
       break;
     }
+  }
+  
+  public final String getWording()
+  {
+    AppMethodBeat.i(204223);
+    Object localObject = this.sIH;
+    String str;
+    if (localObject != null)
+    {
+      str = ((anf)localObject).dyI;
+      localObject = str;
+      if (str != null) {}
+    }
+    else
+    {
+      localObject = g.ajR();
+      p.g(localObject, "MMKernel.storage()");
+      str = ((e)localObject).ajA().a(am.a.JbE, "");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+    }
+    p.g(localObject, "info?.wording ?: (MMKern…G_STRING_SYNC, \"\") ?: \"\")");
+    AppMethodBeat.o(204223);
+    return localObject;
   }
 }
 

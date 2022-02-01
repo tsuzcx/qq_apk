@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends d
 {
-  private static final e Obi;
+  private static final e Oyn;
   
   static
   {
     AppMethodBeat.i(90487);
-    Obi = new e();
+    Oyn = new e();
     AppMethodBeat.o(90487);
   }
   
-  public static d gzl()
+  public static d gDN()
   {
-    return Obi;
+    return Oyn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.d.e
  * JD-Core Version:    0.7.0.1
  */

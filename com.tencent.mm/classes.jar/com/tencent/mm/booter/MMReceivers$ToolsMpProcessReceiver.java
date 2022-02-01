@@ -4,16 +4,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMReceivers$ToolsMpProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a fEk = null;
+  private static MMReceivers.a fGo = null;
   
   public static void a(MMReceivers.a parama)
   {
-    fEk = parama;
+    fGo = parama;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -21,15 +21,15 @@ public class MMReceivers$ToolsMpProcessReceiver
     AppMethodBeat.i(131893);
     try
     {
-      if (fEk != null) {
-        fEk.onReceive(paramContext, paramIntent);
+      if (fGo != null) {
+        fGo.onReceive(paramContext, paramIntent);
       }
       AppMethodBeat.o(131893);
       return;
     }
     catch (Throwable paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.ToolsMpProcessReceiver", paramContext, "onReceive error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ToolsMpProcessReceiver", paramContext, "onReceive error", new Object[0]);
       AppMethodBeat.o(131893);
     }
   }

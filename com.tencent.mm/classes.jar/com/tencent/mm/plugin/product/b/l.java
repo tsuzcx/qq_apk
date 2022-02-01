@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dex;
-import com.tencent.mm.protocal.protobuf.dko;
-import com.tencent.mm.protocal.protobuf.dkp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dfr;
+import com.tencent.mm.protocal.protobuf.dlj;
+import com.tencent.mm.protocal.protobuf.dlk;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class l
@@ -21,22 +21,22 @@ public final class l
 {
   private f callback;
   private b rr;
-  public String wMg;
+  public String xbU;
   
-  public l(dex paramdex, String paramString)
+  public l(dfr paramdfr, String paramString)
   {
     AppMethodBeat.i(66906);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dko();
-    ((b.a)localObject).hNN = new dkp();
+    ((b.a)localObject).hQF = new dlj();
+    ((b.a)localObject).hQG = new dlk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/submitmallorder";
     ((b.a)localObject).funcId = 556;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dko)this.rr.hNK.hNQ;
-    ((dko)localObject).Hzc = paramdex;
-    ((dko)localObject).Hze = paramString;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dlj)this.rr.hQD.hQJ;
+    ((dlj)localObject).HSN = paramdfr;
+    ((dlj)localObject).HSP = paramString;
     AppMethodBeat.o(66906);
   }
   
@@ -57,13 +57,13 @@ public final class l
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(66908);
-    paramq = (dkp)((b)paramq).hNL.hNQ;
+    paramq = (dlk)((b)paramq).hQE.hQJ;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetSceneMallSubmitMallOrder", "resp.ReqKey " + paramq.Hzd);
-      this.wMg = paramq.Hzd;
+      ae.d("MicroMsg.NetSceneMallSubmitMallOrder", "resp.ReqKey " + paramq.HSO);
+      this.xbU = paramq.HSO;
     }
-    ad.d("MicroMsg.NetSceneMallSubmitMallOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
+    ae.d("MicroMsg.NetSceneMallSubmitMallOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(66908);
   }

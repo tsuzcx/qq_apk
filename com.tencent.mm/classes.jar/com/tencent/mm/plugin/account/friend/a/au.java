@@ -7,19 +7,19 @@ import com.tencent.mm.plugin.account.a.a.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.e;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bi;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class au
 {
-  public static int JK(String paramString)
+  public static int Kj(String paramString)
   {
     AppMethodBeat.i(184430);
-    paramString = "SELECT COUNT(oldUsername) FROM OldAccountFriend WHERE oldUsername = " + h.wo(paramString);
+    paramString = "SELECT COUNT(oldUsername) FROM OldAccountFriend WHERE oldUsername = " + h.wX(paramString);
     paramString = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
     if (paramString != null) {}
     try
@@ -38,10 +38,10 @@ public final class au
     }
   }
   
-  public static int JL(String paramString)
+  public static int Kk(String paramString)
   {
     AppMethodBeat.i(184431);
-    paramString = "SELECT seq FROM OldAccountFriend WHERE oldUsername = " + h.wo(paramString) + "ORDER BY seq DESC";
+    paramString = "SELECT seq FROM OldAccountFriend WHERE oldUsername = " + h.wX(paramString) + "ORDER BY seq DESC";
     paramString = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
     if (paramString != null) {}
     try
@@ -60,14 +60,14 @@ public final class au
     }
   }
   
-  public static List<a> aC(String paramString, int paramInt)
+  public static List<a> aD(String paramString, int paramInt)
   {
     AppMethodBeat.i(184429);
     ArrayList localArrayList;
     Cursor localCursor;
     if (paramInt > 0)
     {
-      paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE showHead = " + paramInt + " AND oldUsername = " + h.wo(paramString) + " ORDER BY pinyinName";
+      paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE showHead = " + paramInt + " AND oldUsername = " + h.wX(paramString) + " ORDER BY pinyinName";
       localArrayList = new ArrayList();
       localCursor = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
       if (localCursor == null) {}
@@ -84,13 +84,13 @@ public final class au
           }
           localr = new r();
           localr.convertFrom(localCursor);
-          bh localbh = ((l)g.ab(l.class)).dlJ().apM(localr.field_encryptUsername);
-          if ((localbh == null) || (!localr.field_encryptUsername.equals(localbh.field_talker))) {
+          bi localbi = ((l)g.ab(l.class)).doI().aqR(localr.field_encryptUsername);
+          if ((localbi == null) || (!localr.field_encryptUsername.equals(localbi.field_talker))) {
             break label223;
           }
-          localArrayList.add(new a(localr, localbh));
+          localArrayList.add(new a(localr, localbi));
           continue;
-          paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE oldUsername = " + h.wo(paramString) + " ORDER BY showHead,pinyinName";
+          paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE oldUsername = " + h.wX(paramString) + " ORDER BY showHead,pinyinName";
         }
         finally
         {
@@ -104,18 +104,18 @@ public final class au
       label242:
       localCursor.close();
     }
-    ad.i("MicroMsg.RecoverFriendLogic", "get recover friend, sql %s, get %d data", new Object[] { paramString, Integer.valueOf(localArrayList.size()) });
+    ae.i("MicroMsg.RecoverFriendLogic", "get recover friend, sql %s, get %d data", new Object[] { paramString, Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(184429);
     return localArrayList;
   }
   
-  public static void aD(String paramString, int paramInt)
+  public static void aE(String paramString, int paramInt)
   {
     AppMethodBeat.i(184433);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      paramString = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.wo(paramString);
-      ad.i("MicroMsg.RecoverFriendLogic", "update old acct friend add state, sql %s", new Object[] { paramString });
+      paramString = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.wX(paramString);
+      ae.i("MicroMsg.RecoverFriendLogic", "update old acct friend add state, sql %s", new Object[] { paramString });
       paramString = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
       if (paramString != null) {
         try
@@ -142,8 +142,8 @@ public final class au
   public static r bR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(184432);
-    paramString1 = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.wo(paramString2) + " AND oldUsername = " + h.wo(paramString1);
-    ad.i("MicroMsg.RecoverFriendLogic", "get old acct friend, sql %s", new Object[] { paramString1 });
+    paramString1 = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.wX(paramString2) + " AND oldUsername = " + h.wX(paramString1);
+    ae.i("MicroMsg.RecoverFriendLogic", "get old acct friend, sql %s", new Object[] { paramString1 });
     paramString1 = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString1, null);
     if (paramString1 != null) {}
     try
@@ -165,18 +165,18 @@ public final class au
   
   public static final class a
   {
-    public r jfc;
-    public bh jfd;
+    public r jhV;
+    public bi jhW;
     
     public a(r paramr)
     {
-      this.jfc = paramr;
+      this.jhV = paramr;
     }
     
-    public a(r paramr, bh parambh)
+    public a(r paramr, bi parambi)
     {
-      this.jfc = paramr;
-      this.jfd = parambh;
+      this.jhV = paramr;
+      this.jhW = parambi;
     }
   }
 }

@@ -8,44 +8,44 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/LiveRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/LiveRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-logic_release"})
 public final class LiveRoundImageView
   extends ImageView
 {
-  private RectF ciQ;
-  private int hbv;
+  private RectF ciS;
+  private int hej;
   private final Path lP;
   
   public LiveRoundImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(212997);
-    AppMethodBeat.o(212997);
+    AppMethodBeat.i(216627);
+    AppMethodBeat.o(216627);
   }
   
   public LiveRoundImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(212998);
-    this.ciQ = new RectF();
+    AppMethodBeat.i(216628);
+    this.ciS = new RectF();
     this.lP = new Path();
-    this.hbv = a.fromDPToPix(getContext(), 8);
-    AppMethodBeat.o(212998);
+    this.hej = a.fromDPToPix(getContext(), 8);
+    AppMethodBeat.o(216628);
   }
   
   public final int getRound()
   {
-    return this.hbv;
+    return this.hej;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(212996);
-    this.ciQ.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-    this.lP.addRoundRect(this.ciQ, this.hbv, this.hbv, Path.Direction.CW);
+    AppMethodBeat.i(216626);
+    this.ciS.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    this.lP.addRoundRect(this.ciS, this.hej, this.hej, Path.Direction.CW);
     if (paramCanvas != null) {
       paramCanvas.save();
     }
@@ -56,15 +56,15 @@ public final class LiveRoundImageView
     if (paramCanvas != null)
     {
       paramCanvas.restore();
-      AppMethodBeat.o(212996);
+      AppMethodBeat.o(216626);
       return;
     }
-    AppMethodBeat.o(212996);
+    AppMethodBeat.o(216626);
   }
   
   public final void setRound(int paramInt)
   {
-    this.hbv = paramInt;
+    this.hej = paramInt;
   }
 }
 

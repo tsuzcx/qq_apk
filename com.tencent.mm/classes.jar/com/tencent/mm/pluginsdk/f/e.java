@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.f;
 
 public final class e
 {
-  public int EKJ;
-  public int EKK;
-  public int EKi;
+  public int FcG;
+  public int Fdh;
+  public int Fdi;
   public String filePath;
   public long fileSize;
 }

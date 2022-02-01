@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 import android.app.Activity;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.widget.dialog.c.c;
-import com.tencent.mm.protocal.protobuf.cxm;
+import com.tencent.mm.protocal.protobuf.cyg;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,11 +16,11 @@ public abstract class i
 {
   protected static Activity b(h paramh)
   {
-    if ((paramh instanceof q)) {}
-    for (paramh = ((q)paramh).au(Activity.class); paramh == null; paramh = paramh.getContext()) {
+    if ((paramh instanceof r)) {}
+    for (paramh = ((r)paramh).au(Activity.class); paramh == null; paramh = paramh.getContext()) {
       return null;
     }
-    return com.tencent.mm.sdk.f.a.jq(paramh);
+    return com.tencent.mm.sdk.f.a.jw(paramh);
   }
   
   protected static <T> LinkedList<T> v(ArrayList<T> paramArrayList)
@@ -33,17 +33,17 @@ public abstract class i
     return localLinkedList;
   }
   
-  protected static LinkedList<c.c> y(LinkedList<cxm> paramLinkedList)
+  protected static LinkedList<c.c> y(LinkedList<cyg> paramLinkedList)
   {
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      cxm localcxm = (cxm)paramLinkedList.next();
+      cyg localcyg = (cyg)paramLinkedList.next();
       c.c localc = new c.c();
-      localc.scope = localcxm.FKf;
-      localc.desc = localcxm.Desc;
-      localc.state = localcxm.HoV;
+      localc.scope = localcyg.GcE;
+      localc.desc = localcyg.Desc;
+      localc.state = localcyg.HIx;
       localLinkedList.add(localc);
     }
     return localLinkedList;
@@ -59,10 +59,10 @@ public abstract class i
     }
     if (!bool)
     {
-      b.U(paramd.getRuntime()).a(this, paramd, paramJSONObject, paramInt);
+      b.T(paramd.getRuntime()).a(this, paramd, paramJSONObject, paramInt);
       return;
     }
-    d.V(paramd.getRuntime()).a(this, paramd, paramJSONObject, paramInt);
+    d.U(paramd.getRuntime()).a(this, paramd, paramJSONObject, paramInt);
   }
   
   protected abstract void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt, e parame);
@@ -75,7 +75,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.i
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ import org.json.JSONObject;
 abstract class f<T extends g>
   extends y
 {
-  private final T kMu;
+  private final T kPK;
   
   public f(T paramT)
   {
-    this.kMu = paramT;
-    this.kMu.kMy = this;
+    this.kPK = paramT;
+    this.kPK.kPO = this;
   }
   
   public final String a(c paramc, JSONObject paramJSONObject)
   {
-    paramJSONObject = this.kMu.e(paramc, paramJSONObject);
+    paramJSONObject = this.kPK.e(paramc, paramJSONObject);
     return a(paramc, paramJSONObject.errMsg, paramJSONObject.values);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.f
  * JD-Core Version:    0.7.0.1
  */

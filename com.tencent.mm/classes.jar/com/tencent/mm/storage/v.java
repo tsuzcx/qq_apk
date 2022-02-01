@@ -2,13 +2,13 @@ package com.tencent.mm.storage;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/storage/BizPayAlbum;", "", "()V", "digest", "", "getDigest", "()Ljava/lang/String;", "setDigest", "(Ljava/lang/String;)V", "headImgUrl", "getHeadImgUrl", "setHeadImgUrl", "nickName", "getNickName", "setNickName", "title", "getTitle", "setTitle", "userName", "getUserName", "setUserName", "webUrl", "getWebUrl", "setWebUrl", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/storage/BizPayAlbum;", "", "()V", "digest", "", "getDigest", "()Ljava/lang/String;", "setDigest", "(Ljava/lang/String;)V", "headImgUrl", "getHeadImgUrl", "setHeadImgUrl", "nickName", "getNickName", "setNickName", "title", "getTitle", "setTitle", "userName", "getUserName", "setUserName", "webUrl", "getWebUrl", "setWebUrl", "plugin-biz_release"})
 public final class v
 {
   public String bVF = "";
-  public String hDQ = "";
-  public String hDo = "";
-  public String kwk = "";
+  public String hGI = "";
+  public String hGg = "";
+  public String kzz = "";
   public String title = "";
   public String userName = "";
 }

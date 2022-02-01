@@ -7,31 +7,31 @@ import d.l.m.a;
 public final class x
   extends w
 {
-  private final d MLP;
+  private final d NiS;
   private final String name;
   private final String signature;
   
   public x(d paramd, String paramString1, String paramString2)
   {
-    this.MLP = paramd;
+    this.NiS = paramd;
     this.name = paramString1;
     this.signature = paramString2;
   }
   
-  public final String Hu()
+  public final String HC()
   {
     return this.signature;
   }
   
-  public final d Hv()
+  public final d HD()
   {
-    return this.MLP;
+    return this.NiS;
   }
   
   public final Object get(Object paramObject)
   {
     AppMethodBeat.i(128971);
-    paramObject = gga().af(new Object[] { paramObject });
+    paramObject = gkC().ae(new Object[] { paramObject });
     AppMethodBeat.o(128971);
     return paramObject;
   }
@@ -43,7 +43,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.g.b.x
  * JD-Core Version:    0.7.0.1
  */

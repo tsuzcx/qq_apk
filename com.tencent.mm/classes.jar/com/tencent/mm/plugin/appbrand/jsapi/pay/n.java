@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import android.app.Activity;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
@@ -10,12 +11,14 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.base.ReportSubmitFormTask;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.c;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.o;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -27,30 +30,30 @@ public class n
   
   public void a(final h paramh, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(188505);
+    AppMethodBeat.i(222655);
     if (paramJSONObject == null)
     {
       paramh.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(188505);
+      AppMethodBeat.o(222655);
       return;
     }
-    com.tencent.mm.plugin.appbrand.o localo = (com.tencent.mm.plugin.appbrand.o)paramh.getRuntime();
-    Activity localActivity = com.tencent.mm.sdk.f.a.jq(localo.mContext);
+    com.tencent.mm.plugin.appbrand.p localp = (com.tencent.mm.plugin.appbrand.p)paramh.getRuntime();
+    Activity localActivity = com.tencent.mm.sdk.f.a.jw(localp.mContext);
     if (localActivity == null)
     {
       paramh.h(paramInt, e("fail:internal error invalid android context", null));
-      AppMethodBeat.o(188505);
+      AppMethodBeat.o(222655);
       return;
     }
-    Object localObject = localo.aXd().getCurrentUrl();
-    String str = localo.aXc().username;
+    Object localObject = localp.aXy().getCurrentUrl();
+    String str = localp.aXx().username;
     try
     {
       paramJSONObject.put("appId", paramh.getAppId());
       paramJSONObject.put("key_appbrand_from_path", localObject);
       paramJSONObject.put("key_appbrand_from_username", str);
       localObject = new PString();
-      if (!AppBrandJsApiPayService.lcw.startPay(localActivity, paramh, localo.Fb().cmC, paramJSONObject, new a.c()
+      if (!AppBrandJsApiPayService.lgh.startPay(localActivity, paramh, localp.Fg().cmE, paramJSONObject, new a.c()
       {
         public final void a(int paramAnonymousInt, String paramAnonymousString, Map<String, Object> paramAnonymousMap)
         {
@@ -74,7 +77,7 @@ public class n
         
         public final void b(int paramAnonymousInt, String paramAnonymousString, Map<String, Object> paramAnonymousMap)
         {
-          AppMethodBeat.i(188504);
+          AppMethodBeat.i(222654);
           Object localObject;
           if ((paramh.getRuntime() instanceof l))
           {
@@ -87,20 +90,20 @@ public class n
           }
           for (;;)
           {
-            paramAnonymousString = n.this.m(paramAnonymousString, paramAnonymousMap);
-            localObject = ((l)localObject).lOz;
+            paramAnonymousString = n.this.n(paramAnonymousString, paramAnonymousMap);
+            localObject = ((l)localObject).lTa;
             paramAnonymousMap = (com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.p)paramh;
             paramAnonymousInt = paramInt;
             d.g.b.p.h(paramAnonymousMap, "component");
             d.g.b.p.h(paramAnonymousString, "callbackStr");
-            localObject = ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.c)localObject).lOp;
+            localObject = ((c)localObject).lSQ;
             if (localObject == null) {
-              d.g.b.p.bcb("invokeProcess");
+              d.g.b.p.bdF("invokeProcess");
             }
-            ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.o)localObject).b(paramAnonymousMap, paramAnonymousInt, paramAnonymousString);
-            AppMethodBeat.o(188504);
+            ((o)localObject).b(paramAnonymousMap, paramAnonymousInt, paramAnonymousString);
+            AppMethodBeat.o(222654);
             return;
-            AppMethodBeat.o(188504);
+            AppMethodBeat.o(222654);
             return;
             paramAnonymousString = "ok";
             continue;
@@ -110,35 +113,35 @@ public class n
       }, (PString)localObject))
       {
         paramh.h(paramInt, e("fail", null));
-        AppMethodBeat.o(188505);
+        AppMethodBeat.o(222655);
         return;
       }
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiRequestPayment", paramJSONObject.getMessage());
+      ae.e("MicroMsg.JsApiRequestPayment", paramJSONObject.getMessage());
       paramh.h(paramInt, e("fail", null));
-      AppMethodBeat.o(188505);
+      AppMethodBeat.o(222655);
       return;
     }
     if (paramJSONObject.optBoolean("grantMessageQuota", true)) {
-      if (!(paramh instanceof aa)) {
+      if (!(paramh instanceof z)) {
         break label305;
       }
     }
     label305:
-    for (paramh = (aa)paramh;; paramh = ((q)paramh).getCurrentPageView())
+    for (paramh = (z)paramh;; paramh = ((r)paramh).getCurrentPageView())
     {
       paramJSONObject = ((PString)localObject).value;
       if (paramh != null)
       {
-        localObject = new ReportSubmitFormTask(paramh.getRuntime().Fh());
+        localObject = new ReportSubmitFormTask(paramh.getRuntime().Fm());
         ((ReportSubmitFormTask)localObject).type = 0;
-        ((ReportSubmitFormTask)localObject).kCm = paramJSONObject.replace("prepay_id=", "");
-        ((ReportSubmitFormTask)localObject).pageId = paramh.kuf;
+        ((ReportSubmitFormTask)localObject).kFB = paramJSONObject.replace("prepay_id=", "");
+        ((ReportSubmitFormTask)localObject).pageId = paramh.kxv;
         AppBrandMainProcessService.a((MainProcessTask)localObject);
       }
-      AppMethodBeat.o(188505);
+      AppMethodBeat.o(222655);
       return;
     }
   }

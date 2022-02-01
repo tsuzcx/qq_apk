@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.core.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/model/LiveStatus$Companion;", "", "()V", "LIVE_DEFAULT", "", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveStatus$Companion;", "", "()V", "LIVE_DEFAULT", "", "plugin-core_release"})
 public final class e$a {}
 
 

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ou
   extends b
 {
-  public a dCM;
+  public a dDQ;
   
   public ou()
   {
@@ -15,21 +15,21 @@ public final class ou
   
   private ou(byte paramByte)
   {
-    AppMethodBeat.i(91037);
-    this.dCM = new a();
-    this.IbR = false;
+    AppMethodBeat.i(148770);
+    this.dDQ = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91037);
+    AppMethodBeat.o(148770);
   }
   
   public static final class a
   {
-    public int action = 0;
+    public int dlO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ou
  * JD-Core Version:    0.7.0.1
  */

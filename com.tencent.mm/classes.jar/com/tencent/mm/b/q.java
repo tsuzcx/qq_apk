@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 
 public final class q
 {
@@ -9,18 +9,18 @@ public final class q
   {
     try
     {
-      String str2 = i.k(paramString, paramBoolean);
+      String str2 = o.k(paramString, paramBoolean);
       String str1 = paramString;
       if (str2 != null)
       {
-        ad.i("MicroMsg.VFSFileOpEx", "exportExternalPath:%s to realPath:%s", new Object[] { paramString, str2 });
+        ae.i("MicroMsg.VFSFileOpEx", "exportExternalPath:%s to realPath:%s", new Object[] { paramString, str2 });
         str1 = str2;
       }
       return str1;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.VFSFileOpEx", localThrowable, "exportExternalPath failed", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VFSFileOpEx", localThrowable, "exportExternalPath failed", new Object[0]);
     }
     return paramString;
   }

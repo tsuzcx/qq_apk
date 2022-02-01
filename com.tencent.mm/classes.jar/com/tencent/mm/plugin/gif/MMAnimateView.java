@@ -9,13 +9,12 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.g.a.js;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.g.a.jt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.mm.vfs.o;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,11 +24,11 @@ public class MMAnimateView
   extends AppCompatImageView
 {
   private float mDensity = 0.0F;
-  private String pAS;
-  private int uzN = 2131232025;
-  private int uzO = 2131231559;
-  private boolean uzP = true;
-  public boolean uzQ = false;
+  private String pHw;
+  private int uLs = 2131232025;
+  private int uLt = 2131231559;
+  private boolean uLu = true;
+  public boolean uLv = false;
   
   public MMAnimateView(Context paramContext)
   {
@@ -51,10 +50,10 @@ public class MMAnimateView
     AppMethodBeat.i(104598);
     try
     {
-      if (!bt.isNullOrNil(null)) {
+      if (!bu.isNullOrNil(null)) {
         setCacheKey(null);
       }
-      for (paramResources = c.daX().c(paramResources, paramInt); paramBoolean; paramResources = new d(paramResources, paramInt))
+      for (paramResources = c.ddO().c(paramResources, paramInt); paramBoolean; paramResources = new d(paramResources, paramInt))
       {
         setImageDrawable(paramResources);
         AppMethodBeat.o(104598);
@@ -64,7 +63,7 @@ public class MMAnimateView
     }
     catch (IOException paramResources)
     {
-      ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFResource failed. %s" + paramResources.toString());
+      ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFResource failed. %s" + paramResources.toString());
       if (paramBoolean)
       {
         super.setImageResource(paramInt);
@@ -82,9 +81,9 @@ public class MMAnimateView
   public static void a(MMGIFException paramMMGIFException)
   {
     AppMethodBeat.i(104610);
-    js localjs = new js();
-    localjs.dwG.errorCode = paramMMGIFException.getErrorCode();
-    com.tencent.mm.sdk.b.a.IbL.l(localjs);
+    jt localjt = new jt();
+    localjt.dxL.errorCode = paramMMGIFException.getErrorCode();
+    com.tencent.mm.sdk.b.a.IvT.l(localjt);
     AppMethodBeat.o(104610);
   }
   
@@ -95,8 +94,8 @@ public class MMAnimateView
     {
       localObject = new d(paramString);
       setImageDrawable((Drawable)localObject);
-      ((d)localObject).uAl = 2147483647;
-      ((d)localObject).uAn = paramk;
+      ((d)localObject).uLQ = 2147483647;
+      ((d)localObject).uLS = paramk;
       AppMethodBeat.o(104599);
       return;
     }
@@ -108,7 +107,7 @@ public class MMAnimateView
         a(paramk);
         if (paramk.getErrorCode() == 103)
         {
-          localObject = g.decodeStream(i.openRead(paramString));
+          localObject = com.tencent.mm.sdk.platformtools.h.decodeStream(o.openRead(paramString));
           if (localObject == null) {
             break label140;
           }
@@ -120,15 +119,15 @@ public class MMAnimateView
       }
       catch (FileNotFoundException paramString)
       {
-        ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed. %s" + paramString.toString());
-        ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed. %s" + paramk.toString());
+        ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed. %s" + paramString.toString());
+        ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed. %s" + paramk.toString());
       }
       init();
       AppMethodBeat.o(104599);
       return;
-      ad.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed bitmap is null. show default and delete file. path:%s", new Object[] { paramString });
+      ae.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed bitmap is null. show default and delete file. path:%s", new Object[] { paramString });
       init();
-      i.deleteFile(paramString);
+      o.deleteFile(paramString);
       AppMethodBeat.o(104599);
       return;
     }
@@ -137,7 +136,7 @@ public class MMAnimateView
       for (;;)
       {
         label140:
-        ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed. %s" + paramString.toString());
+        ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed. %s" + paramString.toString());
       }
     }
   }
@@ -148,10 +147,10 @@ public class MMAnimateView
     c localc;
     Context localContext;
     Object localObject;
-    if (!bt.isNullOrNil(paramString2))
+    if (!bu.isNullOrNil(paramString2))
     {
       setCacheKey(paramString2);
-      localc = c.daX();
+      localc = c.ddO();
       localContext = getContext();
       if (TextUtils.isEmpty(paramString1))
       {
@@ -159,7 +158,7 @@ public class MMAnimateView
         if (localObject == null) {
           break label215;
         }
-        ((e)localObject).uAD = paramBoolean2;
+        ((e)localObject).uMi = paramBoolean2;
         if (paramBoolean1 == ((e)localObject).mIsPlaying)
         {
           ((e)localObject).start();
@@ -170,28 +169,28 @@ public class MMAnimateView
       }
       else
       {
-        if ((localc.uzK.get(paramString2) == null) || (((WeakReference)localc.uzK.get(paramString2)).get() == null)) {
+        if ((localc.uLp.get(paramString2) == null) || (((WeakReference)localc.uLp.get(paramString2)).get() == null)) {
           break label266;
         }
       }
     }
     label266:
-    for (e locale = (e)((WeakReference)localc.uzK.get(paramString2)).get();; locale = null)
+    for (e locale = (e)((WeakReference)localc.uLp.get(paramString2)).get();; locale = null)
     {
       localObject = locale;
       if (locale != null) {
         break;
       }
       localObject = new e(localContext, paramBoolean1, paramBoolean2, paramInt, paramArrayOfInt, paramString1);
-      localc.uzK.put(paramString2, new WeakReference(localObject));
+      localc.uLp.put(paramString2, new WeakReference(localObject));
       break;
-      ((e)localObject).pPf = 0;
-      ((e)localObject).uAF = 0;
+      ((e)localObject).pVK = 0;
+      ((e)localObject).uMk = 0;
       ((e)localObject).mIsPlaying = true;
       ((e)localObject).start();
       break label66;
       label215:
-      ad.e("MicroMsg.GIF.MMGIFImageView", "can not get drawable.");
+      ae.e("MicroMsg.GIF.MMGIFImageView", "can not get drawable.");
       AppMethodBeat.o(104597);
       return;
       paramArrayOfInt = new e(getContext(), paramBoolean1, paramBoolean2, paramInt, paramArrayOfInt, paramString1);
@@ -211,11 +210,11 @@ public class MMAnimateView
     {
       try
       {
-        if (bt.isNullOrNil(paramString)) {
+        if (bu.isNullOrNil(paramString)) {
           continue;
         }
         setCacheKey(paramString);
-        localc = c.daX();
+        localc = c.ddO();
         str = getCacheKey();
         if (paramInputStream != null) {
           continue;
@@ -230,7 +229,7 @@ public class MMAnimateView
         if (paramString.getErrorCode() != 103) {
           break label254;
         }
-        paramInputStream = g.decodeStream(paramInputStream);
+        paramInputStream = com.tencent.mm.sdk.platformtools.h.decodeStream(paramInputStream);
         if (paramInputStream == null) {
           break label235;
         }
@@ -243,21 +242,21 @@ public class MMAnimateView
       }
       catch (IOException paramInputStream)
       {
-        ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failed. %s", new Object[] { paramInputStream.toString() });
+        ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failed. %s", new Object[] { paramInputStream.toString() });
       }
       setImageDrawable(paramString);
       AppMethodBeat.o(104595);
       return;
-      ad.d("MicroMsg.GIF.MMAnimateDrawableCacheMgr", "stream key:%s", new Object[] { str });
+      ae.d("MicroMsg.GIF.MMAnimateDrawableCacheMgr", "stream key:%s", new Object[] { str });
       localObject1 = localObject2;
-      if (localc.uzL.get(str) != null) {
-        localObject1 = (b)((WeakReference)localc.uzL.get(str)).get();
+      if (localc.uLq.get(str) != null) {
+        localObject1 = (b)((WeakReference)localc.uLq.get(str)).get();
       }
       paramString = (String)localObject1;
       if (localObject1 == null)
       {
         paramString = new d(paramInputStream);
-        localc.uzL.put(str, new WeakReference(paramString));
+        localc.uLq.put(str, new WeakReference(paramString));
       }
     }
     for (;;)
@@ -266,12 +265,12 @@ public class MMAnimateView
       AppMethodBeat.o(104595);
       return;
       label235:
-      ad.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failedbitmap is null. bytes %s");
+      ae.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failedbitmap is null. bytes %s");
       init();
       AppMethodBeat.o(104595);
       return;
       label254:
-      ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failed. %s", new Object[] { paramString.toString() });
+      ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failed. %s", new Object[] { paramString.toString() });
     }
   }
   
@@ -281,7 +280,7 @@ public class MMAnimateView
     if (paramArrayOfByte == null) {}
     try
     {
-      ad.e("MicroMsg.GIF.MMGIFImageView", "[setMMGIFFileByteArray] bytes is null! src:%s cacheKey:%s", new Object[] { Boolean.TRUE, paramString });
+      ae.e("MicroMsg.GIF.MMGIFImageView", "[setMMGIFFileByteArray] bytes is null! src:%s cacheKey:%s", new Object[] { Boolean.TRUE, paramString });
       AppMethodBeat.o(104601);
       return;
     }
@@ -293,7 +292,7 @@ public class MMAnimateView
         if (paramString.getErrorCode() != 103) {
           break label214;
         }
-        paramString = g.cr(paramArrayOfByte);
+        paramString = com.tencent.mm.sdk.platformtools.h.cu(paramArrayOfByte);
         if (paramString == null) {
           break;
         }
@@ -306,19 +305,19 @@ public class MMAnimateView
     }
     catch (IOException paramArrayOfByte)
     {
-      ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed. %s", new Object[] { paramArrayOfByte.toString() });
+      ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed. %s", new Object[] { paramArrayOfByte.toString() });
     }
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       setCacheKey(paramString);
-      paramString = c.daX().s(getCacheKey(), paramArrayOfByte);
+      paramString = c.ddO().s(getCacheKey(), paramArrayOfByte);
     }
     for (;;)
     {
       setImageDrawable(paramString);
       AppMethodBeat.o(104601);
       return;
-      if (!t.cv(paramArrayOfByte)) {
+      if (!u.cy(paramArrayOfByte)) {
         break;
       }
       paramString = new h(paramArrayOfByte);
@@ -329,18 +328,18 @@ public class MMAnimateView
       init();
       AppMethodBeat.o(104601);
       return;
-      ad.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed bitmap is null. bytes %s", new Object[] { paramArrayOfByte.toString() });
+      ae.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed bitmap is null. bytes %s", new Object[] { paramArrayOfByte.toString() });
       init();
       AppMethodBeat.o(104601);
       return;
       label214:
-      ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed. %s", new Object[] { paramString.toString() });
+      ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed. %s", new Object[] { paramString.toString() });
     }
   }
   
   public String getCacheKey()
   {
-    return this.pAS;
+    return this.pHw;
   }
   
   public int getEmojiDensity()
@@ -353,7 +352,7 @@ public class MMAnimateView
     AppMethodBeat.i(104596);
     if (this.mDensity == 0.0F)
     {
-      this.mDensity = (com.tencent.mm.cc.a.getDensity(aj.getContext()) / 2.0F);
+      this.mDensity = (com.tencent.mm.cb.a.getDensity(ak.getContext()) / 2.0F);
       if (this.mDensity >= 1.0F) {
         break label54;
       }
@@ -397,30 +396,30 @@ public class MMAnimateView
     return i;
   }
   
-  public final void hg(String paramString1, String paramString2)
+  public final void hn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104594);
-    hh(paramString1, paramString2);
+    ho(paramString1, paramString2);
     AppMethodBeat.o(104594);
   }
   
-  public final void hh(String paramString1, String paramString2)
+  public final void ho(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104600);
     try
     {
-      if (t.aQk(paramString1))
+      if (u.aRH(paramString1))
       {
-        paramString2 = new h(i.aY(paramString1, 0, -1));
+        paramString2 = new h(o.bb(paramString1, 0, -1));
         paramString2.start();
         setImageDrawable(paramString2);
         AppMethodBeat.o(104600);
         return;
       }
-      if (!bt.isNullOrNil(paramString2)) {
+      if (!bu.isNullOrNil(paramString2)) {
         setCacheKey(paramString2);
       }
-      for (paramString2 = c.daX().hf(getCacheKey(), paramString1);; paramString2 = new d(paramString1, this.uzQ))
+      for (paramString2 = c.ddO().hm(getCacheKey(), paramString1);; paramString2 = new d(paramString1, this.uLv))
       {
         setImageDrawable(paramString2);
         AppMethodBeat.o(104600);
@@ -440,7 +439,7 @@ public class MMAnimateView
         {
           try
           {
-            paramString2 = g.decodeFile(paramString1, null);
+            paramString2 = com.tencent.mm.sdk.platformtools.h.decodeFile(paramString1, null);
             if (paramString2 == null) {
               break label170;
             }
@@ -451,7 +450,7 @@ public class MMAnimateView
           }
           catch (OutOfMemoryError paramString2)
           {
-            ad.printErrStackTrace("MicroMsg.GIF.MMGIFImageView", paramString2, "setMMGIFFilePath failed, oom happened. show default. path %s", new Object[] { paramString1 });
+            ae.printErrStackTrace("MicroMsg.GIF.MMGIFImageView", paramString2, "setMMGIFFilePath failed, oom happened. show default. path %s", new Object[] { paramString1 });
             init();
           }
         }
@@ -463,20 +462,20 @@ public class MMAnimateView
       }
       catch (Exception paramString1)
       {
-        ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed1. %s", new Object[] { bt.n(paramString1) });
+        ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed1. %s", new Object[] { bu.o(paramString1) });
         AppMethodBeat.o(104600);
         return;
       }
-      ad.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failedbitmap is null. show default and delete file. path %s", new Object[] { paramString1 });
+      ae.w("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failedbitmap is null. show default and delete file. path %s", new Object[] { paramString1 });
       init();
-      i.deleteFile(paramString1);
+      o.deleteFile(paramString1);
       AppMethodBeat.o(104600);
       return;
     }
     catch (IOException paramString2)
     {
-      ad.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed3. %s", new Object[] { bt.n(paramString2) });
-      i.deleteFile(paramString1);
+      ae.e("MicroMsg.GIF.MMGIFImageView", "setMMGIFFilePath failed3. %s", new Object[] { bu.o(paramString2) });
+      o.deleteFile(paramString1);
       init();
       AppMethodBeat.o(104600);
       return;
@@ -491,17 +490,17 @@ public class MMAnimateView
   public final void init()
   {
     AppMethodBeat.i(104602);
-    this.uzP = com.tencent.mm.compatible.util.e.abf();
-    if (this.uzP)
+    this.uLu = com.tencent.mm.compatible.util.e.abo();
+    if (this.uLu)
     {
-      if (this.uzN > 0)
+      if (this.uLs > 0)
       {
-        super.setImageResource(this.uzN);
+        super.setImageResource(this.uLs);
         AppMethodBeat.o(104602);
       }
     }
-    else if (this.uzO > 0) {
-      super.setImageResource(this.uzO);
+    else if (this.uLt > 0) {
+      super.setImageResource(this.uLt);
     }
     AppMethodBeat.o(104602);
   }
@@ -555,23 +554,23 @@ public class MMAnimateView
   
   public void setCacheKey(String paramString)
   {
-    this.pAS = paramString;
+    this.pHw = paramString;
   }
   
   public void setDefaultBackgroundResource(int paramInt)
   {
-    this.uzN = paramInt;
+    this.uLs = paramInt;
   }
   
   public void setDefaultImageResource(int paramInt)
   {
-    this.uzN = paramInt;
+    this.uLs = paramInt;
   }
   
   public void setImageFilePath(String paramString)
   {
     AppMethodBeat.i(104593);
-    hh(paramString, null);
+    ho(paramString, null);
     AppMethodBeat.o(104593);
   }
   
@@ -602,7 +601,7 @@ public class MMAnimateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMAnimateView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,24 +10,24 @@ import java.util.Map;
 
 public final class i
 {
-  private final int LNG;
-  final int LNH;
+  private final int MkF;
+  final int MkG;
   Object[] OI;
   int abZ;
-  final int cYf;
+  final int cZd;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(138410);
-    this.LNG = paramInt1;
+    this.MkF = paramInt1;
     this.OI = new Object[(int)Math.ceil(1.0F * paramInt3 / paramInt2)];
     this.abZ = 0;
-    this.cYf = paramInt3;
-    this.LNH = paramInt2;
+    this.cZd = paramInt3;
+    this.MkG = paramInt2;
     AppMethodBeat.o(138410);
   }
   
-  private ArrayList<f> agF(int paramInt)
+  private ArrayList<f> aho(int paramInt)
   {
     AppMethodBeat.i(138411);
     ArrayList localArrayList = new ArrayList();
@@ -45,7 +45,7 @@ public final class i
       localf.x = localj.values[0];
       localf.y = localj.values[1];
       localf.z = localj.values[2];
-      localf.LOb = localj.timestamp;
+      localf.Mla = localj.timestamp;
       localArrayList.add(localf);
       paramInt += 1;
     }
@@ -53,7 +53,7 @@ public final class i
     return localArrayList;
   }
   
-  public final Object[] fUa()
+  public final Object[] fYA()
   {
     AppMethodBeat.i(138413);
     Object[] arrayOfObject = (Object[])this.OI.clone();
@@ -61,7 +61,7 @@ public final class i
     return arrayOfObject;
   }
   
-  public final ArrayList<g> iQ(List<k> paramList)
+  public final ArrayList<g> iZ(List<k> paramList)
   {
     AppMethodBeat.i(138412);
     ArrayList localArrayList1 = new ArrayList();
@@ -76,9 +76,9 @@ public final class i
       if ((localObject != null) && (((List)localObject).size() != 0))
       {
         localg = new g();
-        localArrayList2 = agF(j);
+        localArrayList2 = aho(j);
         localHashMap = new HashMap();
-        if (this.LNG != 1) {
+        if (this.MkF != 1) {
           break label217;
         }
         i = 0;
@@ -86,20 +86,20 @@ public final class i
       for (;;)
       {
         localHashMap.put(Integer.valueOf(i), localArrayList2);
-        localg.LOd = localHashMap;
+        localg.Mlc = localHashMap;
         localObject = (j)((List)localObject).get(0);
         if (localObject != null)
         {
-          localg.LOc = ((j)localObject).timestamp;
+          localg.Mlb = ((j)localObject).timestamp;
           if (paramList.size() > j)
           {
             localObject = (k)paramList.get(j);
             if (localObject != null)
             {
-              localg.LNJ = ((k)localObject).LNJ;
-              localg.LNK = ((k)localObject).LNK;
-              localg.LNL = ((k)localObject).LNL;
-              localg.LNM = ((k)localObject).LNM;
+              localg.MkI = ((k)localObject).MkI;
+              localg.MkJ = ((k)localObject).MkJ;
+              localg.MkK = ((k)localObject).MkK;
+              localg.MkL = ((k)localObject).MkL;
             }
           }
           localArrayList1.add(localg);
@@ -107,9 +107,9 @@ public final class i
         j += 1;
         break;
         label217:
-        if (this.LNG == 4) {
+        if (this.MkF == 4) {
           i = 2;
-        } else if (this.LNG == 9) {
+        } else if (this.MkF == 9) {
           i = 4;
         } else {
           i = -1;

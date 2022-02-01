@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.fts.ui;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashSet;
 
 public final class m
   extends d
   implements e.b
 {
-  private ap lRx;
-  private com.tencent.mm.plugin.fts.ui.d.l tAt;
-  private boolean tzy;
+  private aq lVY;
+  private boolean tKp;
+  private com.tencent.mm.plugin.fts.ui.d.l tLk;
   
   public m(e parame, String paramString, int paramInt)
   {
     super(parame);
     AppMethodBeat.i(112024);
-    this.lRx = new ap();
-    this.tAt = new com.tencent.mm.plugin.fts.ui.d.l(parame.getContext(), this, paramInt);
-    this.tAt.tvd = paramString;
+    this.lVY = new aq();
+    this.tLk = new com.tencent.mm.plugin.fts.ui.d.l(parame.getContext(), this, paramInt);
+    this.tLk.tFU = paramString;
     AppMethodBeat.o(112024);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a GR(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a Ho(int paramInt)
   {
     AppMethodBeat.i(112025);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tAt.GR(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tLk.Ho(paramInt);
     if (locala != null) {
       locala.pageType = 3;
     }
@@ -38,63 +38,63 @@ public final class m
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
     AppMethodBeat.i(112028);
-    setCount(parame.GQ(0));
+    setCount(parame.Hn(0));
     notifyDataSetChanged();
-    al(getCount(), true);
+    ao(getCount(), true);
     AppMethodBeat.o(112028);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(112027);
-    paramBoolean = this.tAt.a(paramView, parama, paramBoolean);
-    if ((parama.twd) && (!this.tzy))
+    paramBoolean = this.tLk.a(paramView, parama, paramBoolean);
+    if ((parama.tGU) && (!this.tKp))
     {
-      this.tzy = true;
-      l.c(this.query, true, this.tAt.cTm(), -2);
+      this.tKp = true;
+      l.c(this.query, true, this.tLk.cVR(), -2);
     }
     if (paramBoolean)
     {
       clearCache();
-      setCount(this.tAt.GQ(0));
+      setCount(this.tLk.Hn(0));
       notifyDataSetChanged();
-      al(getCount(), true);
+      ao(getCount(), true);
     }
     AppMethodBeat.o(112027);
     return paramBoolean;
   }
   
-  protected final int cSU()
-  {
-    AppMethodBeat.i(221188);
-    int i = this.tAt.cTm();
-    AppMethodBeat.o(221188);
-    return i;
-  }
-  
-  protected final void cTn()
+  protected final void cVS()
   {
     AppMethodBeat.i(112026);
-    this.tzy = false;
-    this.tAt.a(this.query, this.lRx, new HashSet(), 0L);
+    this.tKp = false;
+    this.tLk.a(this.query, this.lVY, new HashSet(), 0L);
     AppMethodBeat.o(112026);
+  }
+  
+  protected final int cVz()
+  {
+    AppMethodBeat.i(224512);
+    int i = this.tLk.cVR();
+    AppMethodBeat.o(224512);
+    return i;
   }
   
   public final void finish()
   {
     AppMethodBeat.i(112029);
     super.finish();
-    if (!this.tzy)
+    if (!this.tKp)
     {
-      this.tzy = true;
-      l.c(this.query, false, this.tAt.cTm(), -2);
+      this.tKp = true;
+      l.c(this.query, false, this.tLk.cVR(), -2);
     }
     AppMethodBeat.o(112029);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.m
  * JD-Core Version:    0.7.0.1
  */

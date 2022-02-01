@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class GalleryPickerFragment$f
   implements View.OnClickListener
 {
@@ -18,9 +18,9 @@ final class GalleryPickerFragment$f
     AppMethodBeat.i(164818);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$initGalleryView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.tIn;
-    if (!GalleryPickerFragment.d(this.tIn)) {}
+    a.b("com/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$initGalleryView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.tTe;
+    if (!GalleryPickerFragment.d(this.tTe)) {}
     for (boolean bool = true;; bool = false)
     {
       GalleryPickerFragment.a(paramView, bool);

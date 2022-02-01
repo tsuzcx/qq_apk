@@ -3,4 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hx" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
     <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/dm5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/ft0" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/shortvideo_play_btn" />
 </com.tencent.mm.plugin.sns.ui.PhotosContent>

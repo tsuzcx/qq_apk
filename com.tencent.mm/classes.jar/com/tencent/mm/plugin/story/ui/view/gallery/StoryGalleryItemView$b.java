@@ -5,7 +5,7 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "index", "", "isSelf", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "index", "", "isSelf", "", "invoke"})
 final class StoryGalleryItemView$b
   extends q
   implements m<Integer, Boolean, z>

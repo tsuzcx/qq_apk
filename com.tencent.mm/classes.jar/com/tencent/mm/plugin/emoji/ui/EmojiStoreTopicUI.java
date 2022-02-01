@@ -10,28 +10,30 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.plugin.emoji.e.j;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
 
 public class EmojiStoreTopicUI
   extends BaseEmojiStoreUI
 {
   private int mScene;
-  private int pKV;
-  private String pKW;
-  private String pKX;
-  private String pKY;
-  private String pKZ;
-  private String pLa;
+  private int pRA;
+  private String pRB;
+  private String pRC;
+  private String pRD;
+  private String pRE;
+  private String pRF;
   
   protected final void a(com.tencent.mm.plugin.emoji.model.f paramf, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -47,23 +49,23 @@ public class EmojiStoreTopicUI
     AppMethodBeat.o(109062);
   }
   
-  protected final void abX(String paramString)
+  protected final void acO(String paramString)
   {
     AppMethodBeat.i(109058);
-    if ((this.pHb != null) && (this.pHc != null) && (!bt.isNullOrNil(paramString)))
+    if ((this.pNF != null) && (this.pNG != null) && (!bu.isNullOrNil(paramString)))
     {
-      com.tencent.mm.cc.a.getDensity(this);
-      EmojiInfo localEmojiInfo = EmojiLogic.y("Toptic", 8, paramString);
+      com.tencent.mm.cb.a.getDensity(this);
+      EmojiInfo localEmojiInfo = EmojiLogic.A("Toptic", 8, paramString);
       if (localEmojiInfo == null)
       {
-        q.aIJ().a(paramString, null, e.h("Toptic", paramString, new Object[] { "Toptic", "BANNER" }), new com.tencent.mm.aw.a.c.k()
+        q.aJb().a(paramString, null, e.h("Toptic", paramString, new Object[] { "Toptic", "BANNER" }), new com.tencent.mm.av.a.c.k()
         {
           public final void a(String paramAnonymousString, View paramAnonymousView, Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
           {
             AppMethodBeat.i(109052);
             paramAnonymousString = EmojiStoreTopicUI.this;
-            if (paramAnonymousString.pIx != null) {
-              paramAnonymousString.pIx.sendEmptyMessage(1009);
+            if (paramAnonymousString.pPc != null) {
+              paramAnonymousString.pPc.sendEmptyMessage(1009);
             }
             AppMethodBeat.o(109052);
           }
@@ -71,15 +73,45 @@ public class EmojiStoreTopicUI
         AppMethodBeat.o(109058);
         return;
       }
-      this.pHc.setImageFilePath(localEmojiInfo.gzQ());
+      this.pNG.setImageFilePath(localEmojiInfo.fSQ());
     }
     AppMethodBeat.o(109058);
   }
   
-  protected final boolean chA()
+  protected final void ciI()
+  {
+    AppMethodBeat.i(109055);
+    super.ciI();
+    AppMethodBeat.o(109055);
+  }
+  
+  protected final int ciJ()
+  {
+    return 11;
+  }
+  
+  protected final int ciK()
+  {
+    return 14;
+  }
+  
+  protected final com.tencent.mm.plugin.emoji.a.a.a ciL()
+  {
+    AppMethodBeat.i(109063);
+    com.tencent.mm.plugin.emoji.a.f localf = new com.tencent.mm.plugin.emoji.a.f(getContext());
+    AppMethodBeat.o(109063);
+    return localf;
+  }
+  
+  protected final boolean ciP()
+  {
+    return false;
+  }
+  
+  protected final boolean ciQ()
   {
     AppMethodBeat.i(109064);
-    if (bt.isNullOrNil(this.pKZ))
+    if (bu.isNullOrNil(this.pRE))
     {
       AppMethodBeat.o(109064);
       return false;
@@ -88,47 +120,17 @@ public class EmojiStoreTopicUI
     return true;
   }
   
-  protected final int chC()
+  protected final int ciS()
   {
     return 7;
   }
   
-  public final int chD()
+  public final int ciT()
   {
-    return this.pKV;
+    return this.pRA;
   }
   
-  protected final boolean chJ()
-  {
-    return false;
-  }
-  
-  protected final void chs()
-  {
-    AppMethodBeat.i(109055);
-    super.chs();
-    AppMethodBeat.o(109055);
-  }
-  
-  protected final int cht()
-  {
-    return 11;
-  }
-  
-  protected final int chu()
-  {
-    return 14;
-  }
-  
-  protected final com.tencent.mm.plugin.emoji.a.a.a chv()
-  {
-    AppMethodBeat.i(109063);
-    com.tencent.mm.plugin.emoji.a.f localf = new com.tencent.mm.plugin.emoji.a.f(getContext());
-    AppMethodBeat.o(109063);
-    return localf;
-  }
-  
-  protected final boolean chz()
+  protected final boolean ciZ()
   {
     return false;
   }
@@ -141,42 +143,42 @@ public class EmojiStoreTopicUI
   public void initView()
   {
     AppMethodBeat.i(109057);
-    this.pKV = getIntent().getIntExtra("topic_id", -1);
-    this.pKW = getIntent().getStringExtra("topic_name");
-    this.pKZ = getIntent().getStringExtra("topic_ad_url");
-    this.pKX = getIntent().getStringExtra("topic_icon_url");
-    this.pKY = getIntent().getStringExtra("topic_desc");
-    this.pLa = getIntent().getStringExtra("sns_object_data");
+    this.pRA = getIntent().getIntExtra("topic_id", -1);
+    this.pRB = getIntent().getStringExtra("topic_name");
+    this.pRE = getIntent().getStringExtra("topic_ad_url");
+    this.pRC = getIntent().getStringExtra("topic_icon_url");
+    this.pRD = getIntent().getStringExtra("topic_desc");
+    this.pRF = getIntent().getStringExtra("sns_object_data");
     this.mScene = getIntent().getIntExtra("extra_scence", 0);
-    if (!bt.isNullOrNil(this.pLa))
+    if (!bu.isNullOrNil(this.pRF))
     {
-      this.pKV = EmojiLogic.abK(this.pLa);
-      this.pKW = EmojiLogic.abL(this.pLa);
-      this.pKX = EmojiLogic.abN(this.pLa);
-      this.pKY = EmojiLogic.abM(this.pLa);
-      this.pKZ = EmojiLogic.abO(this.pLa);
+      this.pRA = EmojiLogic.acB(this.pRF);
+      this.pRB = EmojiLogic.acC(this.pRF);
+      this.pRC = EmojiLogic.acE(this.pRF);
+      this.pRD = EmojiLogic.acD(this.pRF);
+      this.pRE = EmojiLogic.acF(this.pRF);
     }
-    setMMTitle(this.pKW);
+    setMMTitle(this.pRB);
     super.initView();
     addIconOptionMenu(0, 2131690655, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(109051);
-        ad.d("MicroMsg.emoji.EmojiStoreTopicUI", "on shard click.");
-        if ((!bt.isNullOrNil(EmojiStoreTopicUI.a(EmojiStoreTopicUI.this))) && (!bt.isNullOrNil(EmojiStoreTopicUI.b(EmojiStoreTopicUI.this)))) {
+        ae.d("MicroMsg.emoji.EmojiStoreTopicUI", "on shard click.");
+        if ((!bu.isNullOrNil(EmojiStoreTopicUI.a(EmojiStoreTopicUI.this))) && (!bu.isNullOrNil(EmojiStoreTopicUI.b(EmojiStoreTopicUI.this)))) {
           EmojiStoreTopicUI.c(EmojiStoreTopicUI.this);
         }
         for (;;)
         {
           AppMethodBeat.o(109051);
           return true;
-          ad.i("MicroMsg.emoji.EmojiStoreTopicUI", "name or url is null.");
+          ae.i("MicroMsg.emoji.EmojiStoreTopicUI", "name or url is null.");
         }
       }
     });
     showOptionMenu(0, false);
-    abX(this.pKZ);
+    acO(this.pRE);
     AppMethodBeat.o(109057);
   }
   
@@ -185,7 +187,7 @@ public class EmojiStoreTopicUI
     AppMethodBeat.i(109065);
     super.m(paramMessage);
     if (paramMessage.what == 1009) {
-      abX(this.pKZ);
+      acO(this.pRE);
     }
     AppMethodBeat.o(109065);
   }
@@ -193,19 +195,19 @@ public class EmojiStoreTopicUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(109061);
-    chI();
+    ciY();
     if ((paramInt1 == 2002) && (paramInt2 == -1))
     {
       String str1 = paramIntent.getStringExtra("Select_Conv_User");
-      if (!bt.isNullOrNil(str1))
+      if (!bu.isNullOrNil(str1))
       {
-        ad.d("MicroMsg.emoji.EmojiStoreTopicUI", "..".concat(String.valueOf(str1)));
-        int i = this.pKV;
-        String str2 = this.pKW;
-        String str3 = this.pKY;
-        String str4 = this.pKX;
-        String str5 = this.pKZ;
-        com.tencent.mm.plugin.emoji.model.k.cgQ();
+        ae.d("MicroMsg.emoji.EmojiStoreTopicUI", "..".concat(String.valueOf(str1)));
+        int i = this.pRA;
+        String str2 = this.pRB;
+        String str3 = this.pRD;
+        String str4 = this.pRC;
+        String str5 = this.pRE;
+        com.tencent.mm.plugin.emoji.model.k.cig();
         j.a(this, str1, 26, i, str2, str3, str4, str5, 0, "https://support.weixin.qq.com/cgi-bin/readtemplate?t=page/common_page__upgrade&text=text000&btn_text=btn_text_0&title=title_0");
       }
     }
@@ -217,7 +219,7 @@ public class EmojiStoreTopicUI
   {
     AppMethodBeat.i(109056);
     super.onCreate(paramBundle);
-    g.yhR.f(12740, new Object[] { Integer.valueOf(3), "", "", Integer.valueOf(this.pKV), Integer.valueOf(11), Integer.valueOf(11) });
+    g.yxI.f(12740, new Object[] { Integer.valueOf(3), "", "", Integer.valueOf(this.pRA), Integer.valueOf(11), Integer.valueOf(11) });
     AppMethodBeat.o(109056);
   }
   
@@ -232,7 +234,7 @@ public class EmojiStoreTopicUI
   {
     AppMethodBeat.i(109066);
     super.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
-    if (this.pHf)
+    if (this.pNJ)
     {
       showOptionMenu(0, false);
       AppMethodBeat.o(109066);
@@ -250,7 +252,7 @@ public class EmojiStoreTopicUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiStoreTopicUI
  * JD-Core Version:    0.7.0.1
  */

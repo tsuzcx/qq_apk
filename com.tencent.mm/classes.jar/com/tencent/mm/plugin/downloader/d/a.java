@@ -22,7 +22,7 @@ public final class a
   }
   
   /* Error */
-  public static boolean aaa(String paramString)
+  public static boolean aaR(String paramString)
   {
     // Byte code:
     //   0: ldc 46
@@ -31,7 +31,7 @@ public final class a
     //   6: astore 12
     //   8: aload_0
     //   9: iconst_0
-    //   10: invokestatic 52	com/tencent/mm/vfs/i:dd	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   10: invokestatic 52	com/tencent/mm/vfs/o:dg	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   13: astore_0
     //   14: aload_0
     //   15: invokestatic 56	com/tencent/mm/plugin/downloader/d/a:g	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;
@@ -440,19 +440,19 @@ public final class a
   
   static final class a
   {
-    private final ByteBuffer plk;
-    private final long pll;
-    private final long plm;
-    private final long pln;
-    private final ByteBuffer plo;
+    private final ByteBuffer prP;
+    private final long prQ;
+    private final long prR;
+    private final long prS;
+    private final ByteBuffer prT;
     
     private a(ByteBuffer paramByteBuffer1, long paramLong1, long paramLong2, long paramLong3, ByteBuffer paramByteBuffer2)
     {
-      this.plk = paramByteBuffer1;
-      this.pll = paramLong1;
-      this.plm = paramLong2;
-      this.pln = paramLong3;
-      this.plo = paramByteBuffer2;
+      this.prP = paramByteBuffer1;
+      this.prQ = paramLong1;
+      this.prR = paramLong2;
+      this.prS = paramLong3;
+      this.prT = paramByteBuffer2;
     }
   }
   

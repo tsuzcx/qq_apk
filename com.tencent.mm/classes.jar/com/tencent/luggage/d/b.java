@@ -27,7 +27,7 @@ public abstract class b<CONTEXT extends c>
       AppMethodBeat.o(140370);
     }
     
-    public final void d(String paramString, Map<String, Object> paramMap)
+    public final void e(String paramString, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(140369);
       k localk = this.chh;
@@ -41,7 +41,7 @@ public abstract class b<CONTEXT extends c>
       {
         localk.cgH = paramString;
         if (localk.cgA != 0) {
-          localk.BJ();
+          localk.BK();
         }
         AppMethodBeat.o(140369);
         return;

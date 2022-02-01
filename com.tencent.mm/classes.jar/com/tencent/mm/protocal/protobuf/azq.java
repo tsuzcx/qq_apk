@@ -1,44 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class azq
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
+  public int FNN;
+  public cxn GPN;
+  public int GPO;
+  public int GPP;
+  public int GPQ = 1;
+  public int GPR;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32229);
+    AppMethodBeat.i(101809);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.GPN == null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: ChatroomId");
+        AppMethodBeat.o(101809);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(32229);
+      if (this.GPN != null)
+      {
+        paramVarArgs.lJ(1, this.GPN.computeSize());
+        this.GPN.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aS(2, this.FNN);
+      paramVarArgs.aS(3, this.GPO);
+      paramVarArgs.aS(4, this.GPP);
+      paramVarArgs.aS(5, this.GPQ);
+      paramVarArgs.aS(6, this.GPR);
+      AppMethodBeat.o(101809);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label317;
+      if (this.GPN == null) {
+        break label590;
       }
     }
-    label317:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label590:
+    for (paramInt = f.a.a.a.lI(1, this.GPN.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(32229);
-      return paramInt;
+      int i = f.a.a.b.b.a.bz(2, this.FNN);
+      int j = f.a.a.b.b.a.bz(3, this.GPO);
+      int k = f.a.a.b.b.a.bz(4, this.GPP);
+      int m = f.a.a.b.b.a.bz(5, this.GPQ);
+      int n = f.a.a.b.b.a.bz(6, this.GPR);
+      AppMethodBeat.o(101809);
+      return paramInt + i + j + k + m + n;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(32229);
+        if (this.GPN == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ChatroomId");
+          AppMethodBeat.o(101809);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(101809);
         return 0;
       }
       if (paramInt == 3)
@@ -49,25 +79,45 @@ public final class azq
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32229);
+          AppMethodBeat.o(101809);
           return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new cxn();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((cxn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localazq.GPN = ((cxn)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(101809);
+          return 0;
+        case 2: 
+          localazq.FNN = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(101809);
+          return 0;
+        case 3: 
+          localazq.GPO = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(101809);
+          return 0;
+        case 4: 
+          localazq.GPP = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(101809);
+          return 0;
+        case 5: 
+          localazq.GPQ = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(101809);
+          return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new jc();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localazq.BaseRequest = ((jc)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(32229);
+        localazq.GPR = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(101809);
         return 0;
       }
-      AppMethodBeat.o(32229);
+      AppMethodBeat.o(101809);
       return -1;
     }
   }

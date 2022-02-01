@@ -7,9 +7,9 @@ public enum s$a
   static
   {
     AppMethodBeat.i(151381);
-    iNr = new a("NET", 0);
-    iNs = new a("DISK", 1);
-    iNt = new a[] { iNr, iNs };
+    iQl = new a("NET", 0);
+    iQm = new a("DISK", 1);
+    iQn = new a[] { iQl, iQm };
     AppMethodBeat.o(151381);
   }
   

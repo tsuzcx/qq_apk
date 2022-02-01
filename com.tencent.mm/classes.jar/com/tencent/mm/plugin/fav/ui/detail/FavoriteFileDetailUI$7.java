@@ -11,7 +11,7 @@ final class FavoriteFileDetailUI$7
   public final void run()
   {
     AppMethodBeat.i(107122);
-    this.rvc.dismiss();
+    this.rDo.dismiss();
     AppMethodBeat.o(107122);
   }
 }

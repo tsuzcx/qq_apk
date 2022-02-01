@@ -5,32 +5,32 @@ import java.util.Arrays;
 
 public final class a
 {
-  private static final char[] NWI;
-  private static final int[] NWJ;
+  private static final char[] OtN;
+  private static final int[] OtO;
   
   static
   {
     AppMethodBeat.i(40575);
-    NWI = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+    OtN = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
     int[] arrayOfInt = new int[256];
-    NWJ = arrayOfInt;
+    OtO = arrayOfInt;
     Arrays.fill(arrayOfInt, -1);
-    int j = NWI.length;
+    int j = OtN.length;
     int i = 0;
     for (;;)
     {
       if (i >= j)
       {
-        NWJ[61] = 0;
+        OtO[61] = 0;
         AppMethodBeat.o(40575);
         return;
       }
-      NWJ[NWI[i]] = i;
+      OtO[OtN[i]] = i;
       i += 1;
     }
   }
   
-  public static final char[] dt(byte[] paramArrayOfByte)
+  public static final char[] dw(byte[] paramArrayOfByte)
   {
     int i1 = 0;
     if (paramArrayOfByte != null) {}
@@ -55,15 +55,15 @@ public final class a
           j = (paramArrayOfByte[(m - 1)] & 0xFF) << 2;
         }
         j |= (n & 0xFF) << 10;
-        arrayOfChar[(i5 - 4)] = NWI[(j >> 12)];
-        arrayOfChar[(i5 - 3)] = NWI[(j >>> 6 & 0x3F)];
+        arrayOfChar[(i5 - 4)] = OtN[(j >> 12)];
+        arrayOfChar[(i5 - 3)] = OtN[(j >>> 6 & 0x3F)];
         if (k != 2) {
           break label409;
         }
       }
     }
     label409:
-    for (int i = NWI[(j & 0x3F)];; i = 61)
+    for (int i = OtN[(j & 0x3F)];; i = 61)
     {
       arrayOfChar[(i5 - 2)] = i;
       arrayOfChar[(i5 - 1)] = '=';
@@ -75,13 +75,13 @@ public final class a
       i2 = i3 + 1;
       n = (i4 & 0xFF) << 8 | (n & 0xFF) << 16 | paramArrayOfByte[i3] & 0xFF;
       i3 = k + 1;
-      arrayOfChar[k] = NWI[(n >>> 18 & 0x3F)];
+      arrayOfChar[k] = OtN[(n >>> 18 & 0x3F)];
       k = i3 + 1;
-      arrayOfChar[i3] = NWI[(n >>> 12 & 0x3F)];
+      arrayOfChar[i3] = OtN[(n >>> 12 & 0x3F)];
       i4 = k + 1;
-      arrayOfChar[k] = NWI[(n >>> 6 & 0x3F)];
+      arrayOfChar[k] = OtN[(n >>> 6 & 0x3F)];
       i3 = i4 + 1;
-      arrayOfChar[i4] = NWI[(n & 0x3F)];
+      arrayOfChar[i4] = OtN[(n & 0x3F)];
       i4 = j + 1;
       j = i4;
       k = i3;
@@ -107,7 +107,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.b.g.a
  * JD-Core Version:    0.7.0.1
  */

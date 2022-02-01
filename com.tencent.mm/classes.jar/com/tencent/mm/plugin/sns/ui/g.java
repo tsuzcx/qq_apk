@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.i.a;
-import com.tencent.mm.protocal.protobuf.bmq;
-import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.bni;
+import com.tencent.mm.protocal.protobuf.bzh;
 import com.tencent.mm.protocal.protobuf.dm;
 import com.tencent.mm.protocal.protobuf.gr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,82 +16,82 @@ import java.util.List;
 import java.util.Map;
 
 public final class g
-  extends d<byn>
+  extends d<bzh>
 {
-  private List<byn> list;
+  private int Afb;
+  private int Afc;
+  private gr Aft;
+  private dm Afu;
+  private a Afv;
+  private List<bzh> list;
   private String path;
-  private String uZv;
-  private int zNU;
-  private int zNV;
-  private gr zOm;
-  private dm zOn;
-  private a zOo;
+  private String vlG;
   
   public g(a parama)
   {
     AppMethodBeat.i(97712);
     this.list = new ArrayList();
-    this.zNU = 0;
-    this.zNV = 0;
-    this.uZv = "";
+    this.Afb = 0;
+    this.Afc = 0;
+    this.vlG = "";
     this.path = "";
-    this.zOo = parama;
+    this.Afv = parama;
     AppMethodBeat.o(97712);
   }
   
-  public final List<byn> Zq()
+  public final List<bzh> Zz()
   {
     AppMethodBeat.i(97714);
     ArrayList localArrayList = new ArrayList();
     try
     {
       localArrayList.clear();
-      this.zOn = null;
-      Object localObject1 = this.path + this.uZv + "_ARTISTF.mm";
+      this.Afu = null;
+      Object localObject1 = this.path + this.vlG + "_ARTISTF.mm";
       Object localObject2;
-      if (i.fv((String)localObject1))
+      if (o.fB((String)localObject1))
       {
-        localObject2 = i.aY((String)localObject1, 0, -1);
-        this.zOn = ((dm)new dm().parseFrom((byte[])localObject2));
+        localObject2 = o.bb((String)localObject1, 0, -1);
+        this.Afu = ((dm)new dm().parseFrom((byte[])localObject2));
       }
-      if (this.zOn == null)
+      if (this.Afu == null)
       {
-        localObject2 = this.path + this.uZv + "_ARTIST.mm";
-        this.zOn = a.azB(new String(i.aY((String)localObject2, 0, (int)i.aYo((String)localObject2))));
-        if (this.zOn == null)
+        localObject2 = this.path + this.vlG + "_ARTIST.mm";
+        this.Afu = a.aAS(new String(o.bb((String)localObject2, 0, (int)o.aZR((String)localObject2))));
+        if (this.Afu == null)
         {
-          i.deleteFile((String)localObject2);
+          o.deleteFile((String)localObject2);
           AppMethodBeat.o(97714);
           return null;
         }
-        i.deleteFile((String)localObject1);
-        localObject2 = this.zOn.toByteArray();
-        i.f((String)localObject1, (byte[])localObject2, localObject2.length);
+        o.deleteFile((String)localObject1);
+        localObject2 = this.Afu.toByteArray();
+        o.f((String)localObject1, (byte[])localObject2, localObject2.length);
       }
-      localObject1 = this.zOn;
+      localObject1 = this.Afu;
       if (localObject1 == null)
       {
         AppMethodBeat.o(97714);
         return null;
       }
-      localObject1 = this.zOn.GroupList.iterator();
+      localObject1 = this.Afu.GroupList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        Object localObject3 = (bmq)((Iterator)localObject1).next();
-        localObject2 = ((bmq)localObject3).Name;
-        localObject3 = ((bmq)localObject3).GaQ.iterator();
+        Object localObject3 = (bni)((Iterator)localObject1).next();
+        localObject2 = ((bni)localObject3).Name;
+        localObject3 = ((bni)localObject3).Gtx.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          byn localbyn = (byn)((Iterator)localObject3).next();
-          localbyn.Desc = ((String)localObject2);
-          localArrayList.add(localbyn);
+          bzh localbzh = (bzh)((Iterator)localObject3).next();
+          localbzh.Desc = ((String)localObject2);
+          localArrayList.add(localbzh);
         }
       }
-      this.zOm = this.zOn.FvO;
+      this.Aft = this.Afu.FOm;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ArtistAdapterHelper", localException, "loadData failed.", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ArtistAdapterHelper", localException, "loadData failed.", new Object[0]);
       AppMethodBeat.o(97714);
       return null;
     }
@@ -99,10 +99,10 @@ public final class g
     return localException;
   }
   
-  public final void fU(List<byn> paramList)
+  public final void gd(List<bzh> paramList)
   {
     AppMethodBeat.i(97713);
-    if (this.zOo != null)
+    if (this.Afv != null)
     {
       if (paramList != null)
       {
@@ -111,17 +111,17 @@ public final class g
         localHashMap1.clear();
         localHashMap2.clear();
         int n = paramList.size();
-        ad.d("MicroMsg.ArtistAdapterHelper", "initFixType ".concat(String.valueOf(n)));
+        ae.d("MicroMsg.ArtistAdapterHelper", "initFixType ".concat(String.valueOf(n)));
         int j = 0;
         int k = 0;
         int m = 0;
         if (j < n)
         {
-          String str = ((byn)paramList.get(j)).Desc;
+          String str = ((bzh)paramList.get(j)).Desc;
           int i;
           if (j + 1 < n)
           {
-            if (str.equals(((byn)paramList.get(j + 1)).Desc)) {
+            if (str.equals(((bzh)paramList.get(j + 1)).Desc)) {
               break label192;
             }
             i = 1;
@@ -139,7 +139,7 @@ public final class g
             label192:
             if (j + 2 < n)
             {
-              if (!str.equals(((byn)paramList.get(j + 2)).Desc)) {
+              if (!str.equals(((bzh)paramList.get(j + 2)).Desc)) {
                 i = 2;
               }
             }
@@ -151,33 +151,33 @@ public final class g
             i = 3;
           }
         }
-        this.zNU = (k + 1);
-        this.zNV = paramList.size();
-        ad.d("MicroMsg.ArtistAdapterHelper", "icount " + this.zNU);
+        this.Afb = (k + 1);
+        this.Afc = paramList.size();
+        ae.d("MicroMsg.ArtistAdapterHelper", "icount " + this.Afb);
         this.list = paramList;
-        this.zOo.a(this.list, localHashMap1, localHashMap2, this.zNV, this.zNU, this.zOm);
+        this.Afv.a(this.list, localHashMap1, localHashMap2, this.Afc, this.Afb, this.Aft);
         AppMethodBeat.o(97713);
         return;
       }
-      this.zOo.dZq();
+      this.Afv.ecV();
     }
     AppMethodBeat.o(97713);
   }
   
-  public final void jT(String paramString1, String paramString2)
+  public final void ka(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97715);
-    this.uZv = paramString1;
+    this.vlG = paramString1;
     this.path = paramString2;
-    nd(true);
+    nh(true);
     AppMethodBeat.o(97715);
   }
   
   public static abstract interface a
   {
-    public abstract void a(List<byn> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, int paramInt1, int paramInt2, gr paramgr);
+    public abstract void a(List<bzh> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, int paramInt1, int paramInt2, gr paramgr);
     
-    public abstract void dZq();
+    public abstract void ecV();
   }
 }
 

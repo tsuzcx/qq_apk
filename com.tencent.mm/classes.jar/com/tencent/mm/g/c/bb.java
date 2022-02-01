@@ -8,11 +8,11 @@ public abstract class bb
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCW = "msgId".hashCode();
-  private static final int eQM = "transferId".hashCode();
+  private static final int eEF = "msgId".hashCode();
+  private static final int eSx = "transferId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCS = true;
-  private boolean eQL = true;
+  private boolean eEB = true;
+  private boolean eSw = true;
   public long field_msgId;
   public String field_transferId;
   
@@ -29,11 +29,11 @@ public abstract class bb
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eCW != k) {
+      if (eEF != k) {
         break label65;
       }
       this.field_msgId = paramCursor.getLong(i);
-      this.eCS = true;
+      this.eEB = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class bb
       break label20;
       break;
       label65:
-      if (eQM == k) {
+      if (eSx == k) {
         this.field_transferId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class bb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCS) {
+    if (this.eEB) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eQL) {
+    if (this.eSw) {
       localContentValues.put("transferId", this.field_transferId);
     }
     if (this.systemRowid > 0L) {

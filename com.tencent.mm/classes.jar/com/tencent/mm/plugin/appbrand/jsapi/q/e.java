@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationMode;", "", "(Ljava/lang/String;I)V", "LANDSCAPE", "PORTRAIT", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationMode;", "", "(Ljava/lang/String;I)V", "LANDSCAPE", "PORTRAIT", "luggage-wxa-app_release"})
 public enum e
 {
   static
   {
-    AppMethodBeat.i(197501);
+    AppMethodBeat.i(208072);
     e locale1 = new e("LANDSCAPE", 0);
-    lel = locale1;
+    lhX = locale1;
     e locale2 = new e("PORTRAIT", 1);
-    lem = locale2;
-    leo = new e[] { locale1, locale2 };
-    AppMethodBeat.o(197501);
+    lhY = locale2;
+    lhZ = new e[] { locale1, locale2 };
+    AppMethodBeat.o(208072);
   }
   
   private e() {}

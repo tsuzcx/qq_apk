@@ -1,12 +1,12 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.e.a;
 
 abstract class be$a
   extends c
 {
-  public String b(a parama, bu parambu)
+  public String b(a parama, bv parambv)
   {
     return parama.getTalkerUserName();
   }
@@ -16,7 +16,7 @@ abstract class be$a
     return false;
   }
   
-  public boolean fHh()
+  public boolean fLz()
   {
     return false;
   }

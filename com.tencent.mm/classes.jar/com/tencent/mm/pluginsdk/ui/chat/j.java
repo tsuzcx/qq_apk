@@ -5,9 +5,9 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public abstract interface j
   extends f
 {
-  public abstract void B(EmojiInfo paramEmojiInfo);
+  public abstract void A(EmojiInfo paramEmojiInfo);
   
-  public abstract void dlA();
+  public abstract void ddB();
 }
 
 

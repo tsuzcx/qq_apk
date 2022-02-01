@@ -8,42 +8,25 @@ public abstract class hs
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf = "createTime".hashCode();
-  private static final int eGn;
-  private static final int fCI = "RecordId".hashCode();
-  private static final int fCJ = "AppId".hashCode();
-  private static final int fCK = "AppName".hashCode();
-  private static final int fCL;
-  private static final int fCM;
-  private static final int fCN;
-  private static final int faw = "UserName".hashCode();
+  private static final int eFV = "content".hashCode();
+  private static final int fEA = "shareKeyHash".hashCode();
+  private static final int fEB = "btnState".hashCode();
+  private static final int fEC = "contentColor".hashCode();
+  private static final int fED = "updatePeroid".hashCode();
+  private static final int fpR = "msgState".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI;
-  private boolean eGi;
-  private boolean fCC;
-  private boolean fCD;
-  private boolean fCE;
-  private boolean fCF;
-  private boolean fCG;
-  private boolean fCH;
-  private boolean fao;
-  public String field_AppId;
-  public String field_AppName;
-  public String field_BriefIntro;
-  public String field_IconUrl;
-  public String field_RecordId;
-  public String field_UserName;
-  public long field_createTime;
-  public int field_debugType;
-  public boolean field_isSync;
-  
-  static
-  {
-    fCL = "IconUrl".hashCode();
-    fCM = "BriefIntro".hashCode();
-    fCN = "isSync".hashCode();
-    eGn = "debugType".hashCode();
-  }
+  private boolean eFy = true;
+  private boolean fEw = true;
+  private boolean fEx = true;
+  private boolean fEy = true;
+  private boolean fEz = true;
+  public int field_btnState;
+  public String field_content;
+  public String field_contentColor;
+  public int field_msgState;
+  public int field_shareKeyHash;
+  public int field_updatePeroid;
+  private boolean fpO = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -51,18 +34,18 @@ public abstract class hs
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fCI != k) {
+      if (fEA != k) {
         break label65;
       }
-      this.field_RecordId = paramCursor.getString(i);
-      this.fCC = true;
+      this.field_shareKeyHash = paramCursor.getInt(i);
+      this.fEw = true;
     }
     for (;;)
     {
@@ -70,44 +53,18 @@ public abstract class hs
       break label20;
       break;
       label65:
-      if (fCJ == k)
-      {
-        this.field_AppId = paramCursor.getString(i);
-      }
-      else if (fCK == k)
-      {
-        this.field_AppName = paramCursor.getString(i);
-      }
-      else if (faw == k)
-      {
-        this.field_UserName = paramCursor.getString(i);
-      }
-      else if (fCL == k)
-      {
-        this.field_IconUrl = paramCursor.getString(i);
-      }
-      else if (fCM == k)
-      {
-        this.field_BriefIntro = paramCursor.getString(i);
-      }
-      else
-      {
-        if (fCN == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSync = bool;
-            break;
-          }
-        }
-        if (eGn == k) {
-          this.field_debugType = paramCursor.getInt(i);
-        } else if (eEf == k) {
-          this.field_createTime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (fEB == k) {
+        this.field_btnState = paramCursor.getInt(i);
+      } else if (fpR == k) {
+        this.field_msgState = paramCursor.getInt(i);
+      } else if (eFV == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fEC == k) {
+        this.field_contentColor = paramCursor.getString(i);
+      } else if (fED == k) {
+        this.field_updatePeroid = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -115,32 +72,23 @@ public abstract class hs
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fCC) {
-      localContentValues.put("RecordId", this.field_RecordId);
+    if (this.fEw) {
+      localContentValues.put("shareKeyHash", Integer.valueOf(this.field_shareKeyHash));
     }
-    if (this.fCD) {
-      localContentValues.put("AppId", this.field_AppId);
+    if (this.fEx) {
+      localContentValues.put("btnState", Integer.valueOf(this.field_btnState));
     }
-    if (this.fCE) {
-      localContentValues.put("AppName", this.field_AppName);
+    if (this.fpO) {
+      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
     }
-    if (this.fao) {
-      localContentValues.put("UserName", this.field_UserName);
+    if (this.eFy) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.fCF) {
-      localContentValues.put("IconUrl", this.field_IconUrl);
+    if (this.fEy) {
+      localContentValues.put("contentColor", this.field_contentColor);
     }
-    if (this.fCG) {
-      localContentValues.put("BriefIntro", this.field_BriefIntro);
-    }
-    if (this.fCH) {
-      localContentValues.put("isSync", Boolean.valueOf(this.field_isSync));
-    }
-    if (this.eGi) {
-      localContentValues.put("debugType", Integer.valueOf(this.field_debugType));
-    }
-    if (this.eDI) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.fEz) {
+      localContentValues.put("updatePeroid", Integer.valueOf(this.field_updatePeroid));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -150,7 +98,7 @@ public abstract class hs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.hs
  * JD-Core Version:    0.7.0.1
  */

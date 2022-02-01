@@ -16,14 +16,14 @@ public final class d
     this.context = paramContext;
   }
   
-  public final void B(EmojiInfo paramEmojiInfo)
+  public final void A(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(26512);
     Toast.makeText(this.context, this.context.getString(2131761174), 0).show();
     AppMethodBeat.o(26512);
   }
   
-  public final void dlA() {}
+  public final void ddB() {}
 }
 
 

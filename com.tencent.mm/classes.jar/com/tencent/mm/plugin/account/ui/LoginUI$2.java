@@ -16,8 +16,8 @@ final class LoginUI$2
     AppMethodBeat.i(128203);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    LoginUI.c(this.jlW);
+    a.b("com/tencent/mm/plugin/account/ui/LoginUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    LoginUI.c(this.joQ);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128203);
   }

@@ -5,17 +5,17 @@ import d.g.a.b;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
 final class bq
   extends bu<br>
 {
-  private final b<Throwable, z> kBU;
+  private final b<Throwable, z> kFj;
   
   public bq(br parambr, b<? super Throwable, z> paramb)
   {
     super(parambr);
     AppMethodBeat.i(118058);
-    this.kBU = paramb;
+    this.kFj = paramb;
     AppMethodBeat.o(118058);
   }
   
@@ -27,10 +27,10 @@ final class bq
     return str;
   }
   
-  public final void v(Throwable paramThrowable)
+  public final void x(Throwable paramThrowable)
   {
     AppMethodBeat.i(118055);
-    this.kBU.invoke(paramThrowable);
+    this.kFj.invoke(paramThrowable);
     AppMethodBeat.o(118055);
   }
 }

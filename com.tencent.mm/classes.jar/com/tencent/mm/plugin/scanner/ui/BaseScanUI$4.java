@@ -17,20 +17,20 @@ final class BaseScanUI$4
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(186167);
+    AppMethodBeat.i(189449);
     switch (paramMenuItem.getItemId())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(186167);
+      AppMethodBeat.o(189449);
       return;
       paramMenuItem = new Intent();
       paramMenuItem.putExtra("preview_ui_title", 2131762877);
-      q.c(this.yqg, 4660, paramMenuItem);
-      AppMethodBeat.o(186167);
+      q.c(this.yGg, 4660, paramMenuItem);
+      AppMethodBeat.o(189449);
       return;
-      paramMenuItem = this.yqg;
+      paramMenuItem = this.yGg;
       Intent localIntent1 = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
       localIntent1.putExtra("android.intent.extra.shortcut.NAME", paramMenuItem.getString(2131759095));
       localIntent1.putExtra("duplicate", false);
@@ -42,7 +42,7 @@ final class BaseScanUI$4
       localIntent1.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramMenuItem, 2131233901));
       localIntent1.putExtra("shortcut_icon_resource_id", 2131233901);
       b.o(paramMenuItem, localIntent1);
-      g.yhR.f(11410, new Object[0]);
+      g.yxI.f(11410, new Object[0]);
     }
   }
 }

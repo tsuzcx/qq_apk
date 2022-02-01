@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class el
   extends b
 {
-  public a dpF;
+  public a dqI;
   
   public el()
   {
@@ -15,22 +15,21 @@ public final class el
   
   private el(byte paramByte)
   {
-    AppMethodBeat.i(115999);
-    this.dpF = new a();
-    this.IbR = false;
+    AppMethodBeat.i(115998);
+    this.dqI = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(115999);
+    AppMethodBeat.o(115998);
   }
   
   public static final class a
   {
-    public String cUi;
-    public boolean doA;
+    public int dqJ = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.el
  * JD-Core Version:    0.7.0.1
  */

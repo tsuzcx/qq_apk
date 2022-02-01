@@ -1,105 +1,58 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bs;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import junit.framework.Assert;
 
 public final class bf
-  extends bs
+  extends e
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bottlemessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  bmessageSvrIdIndex ON bottlemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  bmessageTalkerIndex ON bottlemessage ( talker )", "CREATE INDEX IF NOT EXISTS  bmessageTalerStatusIndex ON bottlemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTimeIndex ON bottlemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTaklerTimeIndex ON bottlemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  bmessageSendCreateTimeIndex ON bottlemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  bottlemessageTalkerTypeIndex ON bottlemessage ( talker,type )", "CREATE TABLE IF NOT EXISTS qmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  qmessageSvrIdIndex ON qmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerIndex ON qmessage ( talker )", "CREATE INDEX IF NOT EXISTS  qmessageTalerStatusIndex ON qmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTimeIndex ON qmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTaklerTimeIndex ON qmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageSendCreateTimeIndex ON qmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerSvrIdIndex ON qmessage ( talker,msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerTypeIndex ON qmessage ( talker,type )", "CREATE TABLE IF NOT EXISTS tmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  tmessageSvrIdIndex ON tmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerIndex ON tmessage ( talker )", "CREATE INDEX IF NOT EXISTS  tmessageTalerStatusIndex ON tmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTimeIndex ON tmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTaklerTimeIndex ON tmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageSendCreateTimeIndex ON tmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerTypeIndex ON tmessage ( talker,type )" };
   
-  static
+  public bf(i parami)
   {
-    AppMethodBeat.i(43197);
-    c.a locala = new c.a();
-    locala.IhA = new Field[17];
-    locala.columns = new String[18];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "talker";
-    locala.IhC.put("talker", "TEXT default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" talker TEXT default '0'  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IhB = "talker";
-    locala.columns[1] = "encryptTalker";
-    locala.IhC.put("encryptTalker", "TEXT default '' ");
-    localStringBuilder.append(" encryptTalker TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "displayName";
-    locala.IhC.put("displayName", "TEXT default '' ");
-    localStringBuilder.append(" displayName TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "state";
-    locala.IhC.put("state", "INTEGER default '0' ");
-    localStringBuilder.append(" state INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "lastModifiedTime";
-    locala.IhC.put("lastModifiedTime", "LONG default '0' ");
-    localStringBuilder.append(" lastModifiedTime LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "isNew";
-    locala.IhC.put("isNew", "INTEGER default '0' ");
-    localStringBuilder.append(" isNew INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "addScene";
-    locala.IhC.put("addScene", "INTEGER default '0' ");
-    localStringBuilder.append(" addScene INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "fmsgSysRowId";
-    locala.IhC.put("fmsgSysRowId", "LONG default '0' ");
-    localStringBuilder.append(" fmsgSysRowId LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "fmsgIsSend";
-    locala.IhC.put("fmsgIsSend", "INTEGER default '0' ");
-    localStringBuilder.append(" fmsgIsSend INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "fmsgType";
-    locala.IhC.put("fmsgType", "INTEGER default '0' ");
-    localStringBuilder.append(" fmsgType INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "fmsgContent";
-    locala.IhC.put("fmsgContent", "TEXT default '' ");
-    localStringBuilder.append(" fmsgContent TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "recvFmsgType";
-    locala.IhC.put("recvFmsgType", "INTEGER default '0' ");
-    localStringBuilder.append(" recvFmsgType INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "contentFromUsername";
-    locala.IhC.put("contentFromUsername", "TEXT default '' ");
-    localStringBuilder.append(" contentFromUsername TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "contentNickname";
-    locala.IhC.put("contentNickname", "TEXT default '' ");
-    localStringBuilder.append(" contentNickname TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "contentPhoneNumMD5";
-    locala.IhC.put("contentPhoneNumMD5", "TEXT default '' ");
-    localStringBuilder.append(" contentPhoneNumMD5 TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "contentFullPhoneNumMD5";
-    locala.IhC.put("contentFullPhoneNumMD5", "TEXT default '' ");
-    localStringBuilder.append(" contentFullPhoneNumMD5 TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "contentVerifyContent";
-    locala.IhC.put("contentVerifyContent", "TEXT default '' ");
-    localStringBuilder.append(" contentVerifyContent TEXT default '' ");
-    locala.columns[17] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43197);
+    super(parami);
+    AppMethodBeat.i(32878);
+    d(getDB(), "bottlemessage");
+    d(getDB(), "qmessage");
+    d(getDB(), "tmessage");
+    a(new i.b(8, "bottlemessage", i.b.a(2000001L, 2500000L, 96000001L, 99000000L)));
+    a(new i.b(2, "qmessage", i.b.a(1000001L, 1500000L, 90000001L, 93000000L)));
+    a(new i.b(4, "tmessage", i.b.a(1500001L, 2000000L, 93000001L, 96000000L)));
+    AppMethodBeat.o(32878);
   }
   
-  public final c.a getDBInfo()
+  public final String ajr(String paramString)
   {
-    return info;
+    AppMethodBeat.i(32879);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      if (!paramString.endsWith("@t.qq.com")) {
+        break;
+      }
+      AppMethodBeat.o(32879);
+      return "tmessage";
+    }
+    if (paramString.endsWith("@qqim"))
+    {
+      AppMethodBeat.o(32879);
+      return "qmessage";
+    }
+    if (an.Ac(paramString))
+    {
+      AppMethodBeat.o(32879);
+      return "bottlemessage";
+    }
+    AppMethodBeat.o(32879);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.bf
  * JD-Core Version:    0.7.0.1
  */

@@ -61,6 +61,7 @@ public class KindaButtonImpl
     this.mKButtonTextView.setBackgroundResource(2131101053);
     this.mKButtonTextView.setGravity(17);
     addView(this.mKButtonTextView);
+    super.setId(2131308495);
     AppMethodBeat.o(18859);
   }
   
@@ -212,7 +213,7 @@ public class KindaButtonImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaButtonImpl
  * JD-Core Version:    0.7.0.1
  */

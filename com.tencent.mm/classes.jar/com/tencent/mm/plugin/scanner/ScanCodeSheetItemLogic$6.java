@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class ScanCodeSheetItemLogic$6
   implements View.OnClickListener
@@ -16,17 +16,17 @@ final class ScanCodeSheetItemLogic$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(195328);
+    AppMethodBeat.i(218781);
     Object localObject = new b();
     ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ScanCodeSheetItemLogic$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    a.b("com/tencent/mm/plugin/scanner/ScanCodeSheetItemLogic$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
     long l = System.currentTimeMillis();
-    localObject = bt.x("%d,%d", new Object[] { Integer.valueOf(this.yjv), Long.valueOf(l) });
-    ad.i("MicroMsg.ScanCodeSheetItemLogic", "18684 report:".concat(String.valueOf(localObject)));
-    g.yhR.kvStat(18684, (String)localObject);
-    this.yjw.onClick(paramView);
+    localObject = bu.x("%d,%d", new Object[] { Integer.valueOf(this.yzr), Long.valueOf(l) });
+    ae.i("MicroMsg.ScanCodeSheetItemLogic", "18684 report:".concat(String.valueOf(localObject)));
+    g.yxI.kvStat(18684, (String)localObject);
+    this.yzs.onClick(paramView);
     a.a(this, "com/tencent/mm/plugin/scanner/ScanCodeSheetItemLogic$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(195328);
+    AppMethodBeat.o(218781);
   }
 }
 

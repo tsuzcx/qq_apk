@@ -5,36 +5,36 @@ import d.l;
 import kotlinx.a.s;
 import kotlinx.a.w.b;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/ListLikeDescriptor;", "Lkotlinx/serialization/SerialDescriptor;", "elementDesc", "(Lkotlinx/serialization/SerialDescriptor;)V", "getElementDesc", "()Lkotlinx/serialization/SerialDescriptor;", "elementsCount", "", "getElementsCount", "()I", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "equals", "", "other", "", "getElementAnnotations", "", "", "index", "getElementDescriptor", "getElementIndex", "name", "", "getElementName", "hashCode", "isElementOptional", "Lkotlinx/serialization/internal/PrimitiveArrayDescriptor;", "Lkotlinx/serialization/internal/ArrayClassDesc;", "Lkotlinx/serialization/internal/ArrayListClassDesc;", "Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/LinkedHashSetClassDesc;", "Lkotlinx/serialization/internal/HashSetClassDesc;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ListLikeDescriptor;", "Lkotlinx/serialization/SerialDescriptor;", "elementDesc", "(Lkotlinx/serialization/SerialDescriptor;)V", "getElementDesc", "()Lkotlinx/serialization/SerialDescriptor;", "elementsCount", "", "getElementsCount", "()I", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "equals", "", "other", "", "getElementAnnotations", "", "", "index", "getElementDescriptor", "getElementIndex", "name", "", "getElementName", "hashCode", "isElementOptional", "Lkotlinx/serialization/internal/PrimitiveArrayDescriptor;", "Lkotlinx/serialization/internal/ArrayClassDesc;", "Lkotlinx/serialization/internal/ArrayListClassDesc;", "Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/LinkedHashSetClassDesc;", "Lkotlinx/serialization/internal/HashSetClassDesc;", "kotlinx-serialization-runtime"})
 public abstract class ah
   implements kotlinx.a.n
 {
-  private final int NLO;
-  private final kotlinx.a.n NMv;
+  private final int OiU;
+  private final kotlinx.a.n OjB;
   
   private ah(kotlinx.a.n paramn)
   {
-    this.NMv = paramn;
-    this.NLO = 1;
+    this.OjB = paramn;
+    this.OiU = 1;
   }
   
-  public final String alJ(int paramInt)
+  public final String amt(int paramInt)
   {
     return String.valueOf(paramInt);
   }
   
-  public final kotlinx.a.n alK(int paramInt)
+  public final kotlinx.a.n amu(int paramInt)
   {
     if (paramInt != 0) {
       throw ((Throwable)new IndexOutOfBoundsException("List descriptor has only one child element, index: ".concat(String.valueOf(paramInt))));
     }
-    return this.NMv;
+    return this.OjB;
   }
   
-  public final int bdm(String paramString)
+  public final int beQ(String paramString)
   {
     p.h(paramString, "name");
-    Integer localInteger = d.n.n.bdh(paramString);
+    Integer localInteger = d.n.n.beL(paramString);
     if (localInteger != null) {
       return localInteger.intValue();
     }
@@ -49,27 +49,27 @@ public abstract class ah
     if (!(paramObject instanceof ah)) {
       return false;
     }
-    return (p.i(this.NMv, ((ah)paramObject).NMv)) && (p.i(gwQ(), ((ah)paramObject).gwQ()));
+    return (p.i(this.OjB, ((ah)paramObject).OjB)) && (p.i(gBs(), ((ah)paramObject).gBs()));
   }
   
-  public final s gwR()
+  public final s gBt()
   {
-    return (s)w.b.NLR;
+    return (s)w.b.OiX;
   }
   
-  public final boolean gwS()
+  public final boolean gBu()
   {
     return false;
   }
   
-  public final int gwT()
+  public final int gBv()
   {
-    return this.NLO;
+    return this.OiU;
   }
   
   public int hashCode()
   {
-    return this.NMv.hashCode() * 31 + gwQ().hashCode();
+    return this.OjB.hashCode() * 31 + gBs().hashCode();
   }
 }
 

@@ -1,70 +1,119 @@
 package com.tencent.mm.plugin.appbrand.x;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
+  extends j<a>
 {
-  private final Map<String, List<Object>> kXr;
+  public static final String[] hGX;
   
-  private a()
+  static
   {
-    AppMethodBeat.i(140790);
-    this.kXr = new HashMap();
-    AppMethodBeat.o(140790);
+    AppMethodBeat.i(48359);
+    hGX = new String[] { j.getCreateSQLs(a.jJU, "AppBrandCommonKVBinaryData") };
+    AppMethodBeat.o(48359);
   }
   
-  private void Uv(String paramString)
+  public a(e parame)
   {
-    AppMethodBeat.i(192322);
-    paramString = (List)this.kXr.get(paramString);
-    if (paramString == null)
+    super(parame, a.jJU, "AppBrandCommonKVBinaryData", null);
+  }
+  
+  public final void clear(String paramString)
+  {
+    AppMethodBeat.i(48355);
+    a locala = new a();
+    locala.field_key = paramString;
+    locala.field_value = new byte[0];
+    super.replace(locala);
+    AppMethodBeat.o(48355);
+  }
+  
+  public final byte[] get(String paramString)
+  {
+    AppMethodBeat.i(48357);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(192322);
+      AppMethodBeat.o(48357);
+      return null;
+    }
+    a locala = new a();
+    locala.field_key = paramString;
+    if (super.get(locala, new String[0]))
+    {
+      paramString = locala.field_value;
+      AppMethodBeat.o(48357);
+      return paramString;
+    }
+    AppMethodBeat.o(48357);
+    return null;
+  }
+  
+  public final void l(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(48356);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(48356);
       return;
     }
-    int i = 0;
-    while (i < paramString.size())
-    {
-      paramString.get(i);
-      i += 1;
-    }
-    AppMethodBeat.o(192322);
-  }
-  
-  public final void J(String paramString1, final String paramString2, final String paramString3)
-  {
-    AppMethodBeat.i(140792);
-    new Object() {};
-    Uv(paramString1);
-    AppMethodBeat.o(140792);
-  }
-  
-  public final void a(String paramString1, final String paramString2, final b.b paramb)
-  {
-    AppMethodBeat.i(140791);
-    new Object() {};
-    Uv(paramString1);
-    AppMethodBeat.o(140791);
+    a locala = new a();
+    locala.field_key = paramString;
+    locala.field_value = paramArrayOfByte;
+    super.replace(locala);
+    AppMethodBeat.o(48356);
   }
   
   static final class a
+    extends c
   {
-    private static final a mwY;
+    static final c.a jJU;
+    @i(fqf="$$invalid", fqg=1)
+    public String field_key;
+    public byte[] field_value;
     
     static
     {
-      AppMethodBeat.i(140789);
-      mwY = new a((byte)0);
-      AppMethodBeat.o(140789);
+      AppMethodBeat.i(48354);
+      jJU = initAutoDBInfo(a.class);
+      AppMethodBeat.o(48354);
+    }
+    
+    public final void convertFrom(Cursor paramCursor)
+    {
+      AppMethodBeat.i(48352);
+      this.field_key = paramCursor.getString(0);
+      this.field_value = paramCursor.getBlob(1);
+      AppMethodBeat.o(48352);
+    }
+    
+    public final ContentValues convertTo()
+    {
+      AppMethodBeat.i(48353);
+      ContentValues localContentValues = new ContentValues(2);
+      localContentValues.put("key", this.field_key);
+      localContentValues.put("value", this.field_value);
+      AppMethodBeat.o(48353);
+      return localContentValues;
+    }
+    
+    public final c.a getDBInfo()
+    {
+      return jJU;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.x.a
  * JD-Core Version:    0.7.0.1
  */

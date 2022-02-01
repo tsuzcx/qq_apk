@@ -25,10 +25,10 @@ public class a
     this.cdT = paramLong2;
   }
   
-  public final Object[] Bf()
+  public final Object[] Bg()
   {
     Object[] arrayOfObject = new Object[this.mLength];
-    Bs().aG(this.cdT);
+    Bt().aG(this.cdT);
     int i = 0;
     while (i < this.mLength)
     {
@@ -38,21 +38,21 @@ public class a
     return arrayOfObject;
   }
   
-  public final c Bg()
+  public final c Bh()
   {
     if (this.cdS == p.cfn) {
-      return super.Bg();
+      return super.Bh();
     }
-    return this.cex.ceo.ct(p.c(this.cdS));
+    return this.cex.ceo.cu(p.c(this.cdS));
   }
   
   byte[] bR(int paramInt1, int paramInt2)
   {
-    Bs().aG(this.cdT);
+    Bt().aG(this.cdT);
     assert (this.cdS != p.cfn);
     assert (paramInt1 + paramInt2 <= this.mLength);
     byte[] arrayOfByte = new byte[this.cdS.mSize * paramInt2];
-    Bs().p(arrayOfByte, this.cdS.mSize * paramInt1, this.cdS.mSize * paramInt2);
+    Bt().p(arrayOfByte, this.cdS.mSize * paramInt1, this.cdS.mSize * paramInt2);
     return arrayOfByte;
   }
   
@@ -63,12 +63,12 @@ public class a
   
   public final String toString()
   {
-    String str2 = Bg().mClassName;
+    String str2 = Bh().mClassName;
     String str1 = str2;
     if (str2.endsWith("[]")) {
       str1 = str2.substring(0, str2.length() - 2);
     }
-    return String.format("%s[%d]@%d (0x%x)", new Object[] { str1, Integer.valueOf(this.mLength), Long.valueOf(Br()), Long.valueOf(Br()) });
+    return String.format("%s[%d]@%d (0x%x)", new Object[] { str1, Integer.valueOf(this.mLength), Long.valueOf(Bs()), Long.valueOf(Bs()) });
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.mm.pluginsdk.model.app;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
   extends j<c>
@@ -17,7 +17,7 @@ public final class d
   {
     AppMethodBeat.i(151657);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "appattach") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS msgInfoIdIndex ON appattach ( msgInfoId )", "CREATE INDEX IF NOT EXISTS statusIndex ON appattach ( status )" };
+    INDEX_CREATE = new String[] { "DROP INDEX IF EXISTS statusIndex", "CREATE INDEX IF NOT EXISTS msgInfoIdIndex ON appattach ( msgInfoId )", "CREATE INDEX IF NOT EXISTS appattach_statusIndex ON appattach ( status )" };
     AppMethodBeat.o(151657);
   }
   
@@ -27,16 +27,16 @@ public final class d
     this.db = parame;
   }
   
-  public final void CA(long paramLong)
+  public final void CY(long paramLong)
   {
     AppMethodBeat.i(151652);
-    String str = " update appattach set status = 198 , lastModifyTime = " + bt.aQJ() + " where rowid = " + paramLong;
+    String str = " update appattach set status = 198 , lastModifyTime = " + bu.aRi() + " where rowid = " + paramLong;
     this.db.execSQL("appattach", str);
     doNotify();
     AppMethodBeat.o(151652);
   }
   
-  public final c CB(long paramLong)
+  public final c CZ(long paramLong)
   {
     AppMethodBeat.i(151655);
     c localc = new c();
@@ -54,12 +54,12 @@ public final class d
   {
     AppMethodBeat.i(151654);
     boolean bool = super.update(paramc, paramVarArgs);
-    ad.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
+    ae.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
     AppMethodBeat.o(151654);
     return bool;
   }
   
-  public final c aLD(String paramString)
+  public final c aMZ(String paramString)
   {
     AppMethodBeat.i(151653);
     c localc = new c();

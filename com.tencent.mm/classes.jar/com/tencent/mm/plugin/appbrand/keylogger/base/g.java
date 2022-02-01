@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 public class g
   implements d
 {
-  private final int lDn = 0;
-  private final int lDo = 0;
+  private final int lHM = 0;
+  private final int lHN = 0;
   private final int mType = 2;
   
-  public final int bqD()
+  public final int brn()
   {
-    return this.lDo;
+    return this.lHN;
   }
   
-  public final int bqE()
+  public final int bro()
   {
-    return this.lDn;
+    return this.lHM;
   }
   
   public final int getType()
@@ -24,7 +24,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.g
  * JD-Core Version:    0.7.0.1
  */

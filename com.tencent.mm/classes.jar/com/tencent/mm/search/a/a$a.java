@@ -2,7 +2,7 @@ package com.tencent.mm.search.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/search/gesture/GallerySwipeBackConsumer$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/gesture/GallerySwipeBackConsumer$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
 public final class a$a {}
 
 

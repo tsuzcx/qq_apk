@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.finder.preload.worker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.loader.a.b;
 import com.tencent.mm.loader.d;
 import com.tencent.mm.plugin.finder.loader.g;
 import com.tencent.mm.plugin.finder.loader.i;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.r;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.a.j;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
-import d.k.h;
 import d.l;
 import d.o;
 import d.v;
@@ -25,26 +23,26 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/worker/IPreloadWorker;", "()V", "onClearAll", "", "onMediaFocus", "mediaId", "", "isFocused", "", "onPreloadStart", "onPreloadStop", "onRelease", "preload", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataList", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "source", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/worker/IPreloadWorker;", "()V", "onClearAll", "", "onMediaFocus", "mediaId", "", "isFocused", "", "onPreloadStart", "onPreloadStop", "onRelease", "preload", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataList", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "source", "", "Companion", "plugin-finder_release"})
 public final class a
 {
-  public static final a slA;
+  public static final a svr;
   
   static
   {
-    AppMethodBeat.i(203058);
-    slA = new a((byte)0);
-    AppMethodBeat.o(203058);
+    AppMethodBeat.i(203599);
+    svr = new a((byte)0);
+    AppMethodBeat.o(203599);
   }
   
-  public static void a(BaseFinderFeed paramBaseFinderFeed, List<o<al, List<bvf>>> paramList)
+  public static void a(BaseFinderFeed paramBaseFinderFeed, List<o<am, List<bvz>>> paramList)
   {
-    AppMethodBeat.i(203056);
+    AppMethodBeat.i(203597);
     p.h(paramBaseFinderFeed, "centerFeed");
     p.h(paramList, "dataList");
     if (paramList.isEmpty())
     {
-      AppMethodBeat.o(203056);
+      AppMethodBeat.o(203597);
       return;
     }
     Object localObject1 = paramList.iterator();
@@ -59,7 +57,7 @@ public final class a
         if (localObject2 == null)
         {
           paramBaseFinderFeed = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-          AppMethodBeat.o(203056);
+          AppMethodBeat.o(203597);
           throw paramBaseFinderFeed;
         }
         if (((BaseFinderFeed)localObject2).feedObject.getExpectId() == paramBaseFinderFeed.feedObject.getExpectId())
@@ -77,7 +75,7 @@ public final class a
       if (i >= 0) {
         break label159;
       }
-      AppMethodBeat.o(203056);
+      AppMethodBeat.o(203597);
       return;
       j = 0;
       break label128;
@@ -88,17 +86,17 @@ public final class a
     }
     label159:
     i = Math.max(0, i - 1);
-    paramBaseFinderFeed = new StringBuilder();
-    localObject1 = new LinkedList();
-    Object localObject2 = (Iterable)paramList.subList(i, paramList.size());
-    paramList = (Collection)new ArrayList();
-    localObject2 = ((Iterable)localObject2).iterator();
+    localObject1 = new StringBuilder();
+    Object localObject2 = new LinkedList();
+    paramList = (Iterable)paramList.subList(i, paramList.size());
+    paramBaseFinderFeed = (Collection)new ArrayList();
+    paramList = paramList.iterator();
     Object localObject3;
     Object localObject4;
-    label324:
-    while (((Iterator)localObject2).hasNext())
+    label320:
+    while (paramList.hasNext())
     {
-      localObject3 = ((Iterator)localObject2).next();
+      localObject3 = paramList.next();
       localObject4 = (o)localObject3;
       if ((((o)localObject4).first instanceof BaseFinderFeed))
       {
@@ -106,7 +104,7 @@ public final class a
         if (localObject4 == null)
         {
           paramBaseFinderFeed = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-          AppMethodBeat.o(203056);
+          AppMethodBeat.o(203597);
           throw paramBaseFinderFeed;
         }
         if (((BaseFinderFeed)localObject4).feedObject.getMediaType() != 2) {}
@@ -114,62 +112,77 @@ public final class a
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label324;
+          break label320;
         }
-        paramList.add(localObject3);
+        paramBaseFinderFeed.add(localObject3);
         break;
       }
     }
-    paramList = ((Iterable)paramList).iterator();
+    paramList = ((Iterable)paramBaseFinderFeed).iterator();
     i = 0;
     while (paramList.hasNext())
     {
-      localObject2 = paramList.next();
+      paramBaseFinderFeed = paramList.next();
       if (i < 0) {
-        j.gfB();
+        d.a.j.gkd();
       }
-      localObject2 = (o)localObject2;
+      paramBaseFinderFeed = (o)paramBaseFinderFeed;
       if (i < 4)
       {
         localObject3 = new StringBuilder("feed=");
-        localObject4 = ((o)localObject2).first;
+        localObject4 = paramBaseFinderFeed.first;
         if (localObject4 == null)
         {
           paramBaseFinderFeed = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-          AppMethodBeat.o(203056);
+          AppMethodBeat.o(203597);
           throw paramBaseFinderFeed;
         }
-        paramBaseFinderFeed.append(c.rc(((BaseFinderFeed)localObject4).feedObject.getFeedObject().id) + " mediaSize=" + ((List)((o)localObject2).second).size() + " | ");
-        localObject2 = ((Iterable)((List)((o)localObject2).second).subList(0, Math.min(2, ((List)((o)localObject2).second).size()))).iterator();
-        while (((Iterator)localObject2).hasNext())
+        ((StringBuilder)localObject1).append(c.rp(((BaseFinderFeed)localObject4).feedObject.getFeedObject().id) + " mediaSize=" + ((List)paramBaseFinderFeed.second).size() + " | ");
+        localObject3 = ((Iterable)((List)paramBaseFinderFeed.second).subList(0, Math.min(2, ((List)paramBaseFinderFeed.second).size()))).iterator();
+        if (((Iterator)localObject3).hasNext())
         {
-          localObject3 = (bvf)((Iterator)localObject2).next();
-          ((LinkedList)localObject1).add(new g((bvf)localObject3, r.syD));
-          paramBaseFinderFeed.append(((bvf)localObject3).mediaId.subSequence(0, h.lq(5, ((bvf)localObject3).mediaId.length()))).append(",");
+          localObject4 = (bvz)((Iterator)localObject3).next();
+          ((LinkedList)localObject2).add(new g((bvz)localObject4, r.sJu));
+          paramBaseFinderFeed = ((bvz)localObject4).mediaId;
+          if (paramBaseFinderFeed != null)
+          {
+            localObject4 = ((bvz)localObject4).mediaId;
+            if (localObject4 != null) {
+              j = ((String)localObject4).length();
+            }
+          }
+          label572:
+          for (paramBaseFinderFeed = paramBaseFinderFeed.subSequence(0, d.k.j.lx(5, j));; paramBaseFinderFeed = null)
+          {
+            ((StringBuilder)localObject1).append(paramBaseFinderFeed).append(",");
+            break;
+            j = 0;
+            break label572;
+          }
         }
-        paramBaseFinderFeed.append("\n");
+        ((StringBuilder)localObject1).append("\n");
       }
       i += 1;
     }
-    paramList = ((Iterable)localObject1).iterator();
-    while (paramList.hasNext())
+    paramBaseFinderFeed = ((Iterable)localObject2).iterator();
+    while (paramBaseFinderFeed.hasNext())
     {
-      localObject2 = (g)paramList.next();
-      localObject3 = i.sja;
-      i.cCB().bI(localObject2).aqI();
+      paramList = (g)paramBaseFinderFeed.next();
+      localObject3 = i.srW;
+      i.cEn().bI(paramList).aqX();
     }
-    ad.i("ImagePreloadWorker", "[preload] size=" + ((LinkedList)localObject1).size() + ' ' + paramBaseFinderFeed);
-    AppMethodBeat.o(203056);
+    ae.i("ImagePreloadWorker", "[preload] size=" + ((LinkedList)localObject2).size() + ' ' + localObject1);
+    AppMethodBeat.o(203597);
   }
   
-  public static void ahH(String paramString)
+  public static void aiF(String paramString)
   {
-    AppMethodBeat.i(203057);
+    AppMethodBeat.i(203598);
     p.h(paramString, "mediaId");
-    AppMethodBeat.o(203057);
+    AppMethodBeat.o(203598);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker$Companion;", "", "()V", "EVER_FEED_COUNT", "", "PRELOAD_FEED_COUNT", "PRELOAD_FEED_PRE_COUNT", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker$Companion;", "", "()V", "EVER_FEED_COUNT", "", "PRELOAD_FEED_COUNT", "PRELOAD_FEED_PRE_COUNT", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.fav.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class FavBaseUI$3
   implements k.a
 {
-  long rvy = 0L;
+  long rDK = 0L;
   
   FavBaseUI$3(FavBaseUI paramFavBaseUI) {}
   
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(106613);
-    ad.i("MicroMsg.FavoriteBaseUI", "[onNotifyChange] event=%s", new Object[] { paramString });
-    this.rvx.rpF.removeCallbacks(FavBaseUI.h(this.rvx));
-    if (bt.aO(this.rvy) > 200L)
+    ae.i("MicroMsg.FavoriteBaseUI", "[onNotifyChange] event=%s", new Object[] { paramString });
+    this.rDJ.rxJ.removeCallbacks(FavBaseUI.h(this.rDJ));
+    if (bu.aO(this.rDK) > 200L)
     {
-      this.rvy = bt.HI();
-      this.rvx.rpF.post(FavBaseUI.h(this.rvx));
+      this.rDK = bu.HQ();
+      this.rDJ.rxJ.post(FavBaseUI.h(this.rDJ));
       AppMethodBeat.o(106613);
       return;
     }
-    this.rvx.rpF.postDelayed(FavBaseUI.h(this.rvx), 200L);
+    this.rDJ.rxJ.postDelayed(FavBaseUI.h(this.rDJ), 200L);
     AppMethodBeat.o(106613);
   }
 }

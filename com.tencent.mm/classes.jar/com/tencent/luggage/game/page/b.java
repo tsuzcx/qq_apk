@@ -6,24 +6,24 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.page.aw;
-import com.tencent.mm.plugin.appbrand.page.ay;
-import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.plugin.appbrand.page.av;
+import com.tencent.mm.plugin.appbrand.page.ax;
+import com.tencent.mm.plugin.appbrand.page.bb;
 
 public final class b
   extends FrameLayout
-  implements bc
+  implements bb
 {
-  private b ckM = null;
+  private b ckO = null;
   
   public b(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void a(aw paramaw) {}
+  public final void a(av paramav) {}
   
-  public final void a(ay paramay) {}
+  public final void a(ax paramax) {}
   
   public final void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
@@ -43,18 +43,18 @@ public final class b
     if (((paramView instanceof CoverViewContainer)) && (!paramView.hasOnClickListeners())) {
       paramView.setOnTouchListener(new b.a((byte)0));
     }
-    if (this.ckM != null) {
-      this.ckM.cl(paramView);
+    if (this.ckO != null) {
+      this.ckO.cl(paramView);
     }
     AppMethodBeat.o(130626);
   }
   
   public final void setNativeWidgetAddedCallback(b paramb)
   {
-    this.ckM = paramb;
+    this.ckO = paramb;
   }
   
-  public final void setupWebViewTouchInterceptor(ay paramay) {}
+  public final void setupWebViewTouchInterceptor(ax paramax) {}
   
   public static abstract interface b
   {
@@ -63,7 +63,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.page.b
  * JD-Core Version:    0.7.0.1
  */

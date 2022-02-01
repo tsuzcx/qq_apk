@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.model.LocationInfo;
 import com.tencent.mm.plugin.location.model.e;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -27,18 +27,18 @@ public final class d
 {
   private ActivityManager aJm;
   public Context context;
-  public int dFx;
-  public int vbA;
-  public boolean vbB;
-  public int vbz;
+  public int dGC;
+  public int vnK;
+  public int vnL;
+  public boolean vnM;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(55816);
-    this.vbz = 0;
-    this.vbA = 0;
-    this.dFx = -1;
-    this.vbB = false;
+    this.vnK = 0;
+    this.vnL = 0;
+    this.dGC = -1;
+    this.vnM = false;
     this.context = paramContext;
     this.aJm = ((ActivityManager)paramContext.getSystemService("activity"));
     AppMethodBeat.o(55816);
@@ -47,42 +47,42 @@ public final class d
   private static Intent a(Context paramContext, LocationInfo paramLocationInfo1, LocationInfo paramLocationInfo2, boolean paramBoolean)
   {
     AppMethodBeat.i(55818);
-    if ((paramBoolean) || (!paramLocationInfo2.dfX()))
+    if ((paramBoolean) || (!paramLocationInfo2.diW()))
     {
-      paramContext = e.b(new double[] { paramLocationInfo1.uZs, paramLocationInfo1.uZr });
-      paramContext = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%s,%s?z=%s", new Object[] { Double.valueOf(paramContext[1]), Double.valueOf(paramContext[0]), Integer.valueOf(paramLocationInfo1.uZt) })));
+      paramContext = e.b(new double[] { paramLocationInfo1.vlD, paramLocationInfo1.vlC });
+      paramContext = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%s,%s?z=%s", new Object[] { Double.valueOf(paramContext[1]), Double.valueOf(paramContext[0]), Integer.valueOf(paramLocationInfo1.vlE) })));
       paramContext.setPackage("com.baidu.BaiduMap");
       AppMethodBeat.o(55818);
       return paramContext;
     }
     String str = a(paramContext, paramLocationInfo2);
-    if (!bt.isNullOrNil(str))
+    if (!bu.isNullOrNil(str))
     {
-      paramLocationInfo2 = String.format("name:%s|latlng:%f,%f", new Object[] { str, Double.valueOf(paramLocationInfo2.uZr), Double.valueOf(paramLocationInfo2.uZs) });
+      paramLocationInfo2 = String.format("name:%s|latlng:%f,%f", new Object[] { str, Double.valueOf(paramLocationInfo2.vlC), Double.valueOf(paramLocationInfo2.vlD) });
       paramContext = a(paramContext, paramLocationInfo1);
-      if (bt.isNullOrNil(paramContext)) {
+      if (bu.isNullOrNil(paramContext)) {
         break label309;
       }
     }
     label309:
-    for (paramContext = String.format("name:%s|latlng:%f,%f", new Object[] { paramContext, Double.valueOf(paramLocationInfo1.uZr), Double.valueOf(paramLocationInfo1.uZs) });; paramContext = String.format("%f,%f", new Object[] { Double.valueOf(paramLocationInfo1.uZr), Double.valueOf(paramLocationInfo1.uZs) }))
+    for (paramContext = String.format("name:%s|latlng:%f,%f", new Object[] { paramContext, Double.valueOf(paramLocationInfo1.vlC), Double.valueOf(paramLocationInfo1.vlD) });; paramContext = String.format("%f,%f", new Object[] { Double.valueOf(paramLocationInfo1.vlC), Double.valueOf(paramLocationInfo1.vlD) }))
     {
       paramContext = String.format("intent://map/direction?origin=%s&destination=%s&mode=driving&coord_type=gcj02", new Object[] { paramLocationInfo2, paramContext });
-      ad.d("MicroMsg.MapHelper", "url ".concat(String.valueOf(paramContext)));
+      ae.d("MicroMsg.MapHelper", "url ".concat(String.valueOf(paramContext)));
       try
       {
         paramContext = paramContext + "&referer=tencent|weixin#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
-        ad.d("MicroMsg.MapHelper", "all: ".concat(String.valueOf(paramContext)));
+        ae.d("MicroMsg.MapHelper", "all: ".concat(String.valueOf(paramContext)));
         paramContext = Intent.getIntent(paramContext);
         AppMethodBeat.o(55818);
         return paramContext;
       }
       catch (URISyntaxException paramContext)
       {
-        ad.printErrStackTrace("MicroMsg.MapHelper", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.MapHelper", paramContext, "", new Object[0]);
         AppMethodBeat.o(55818);
       }
-      paramLocationInfo2 = String.format("%f,%f", new Object[] { Double.valueOf(paramLocationInfo2.uZr), Double.valueOf(paramLocationInfo2.uZs) });
+      paramLocationInfo2 = String.format("%f,%f", new Object[] { Double.valueOf(paramLocationInfo2.vlC), Double.valueOf(paramLocationInfo2.vlD) });
       break;
     }
     return null;
@@ -91,31 +91,31 @@ public final class d
   private static Intent a(Context paramContext, LocationInfo paramLocationInfo1, LocationInfo paramLocationInfo2, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(55821);
-    if ((paramBoolean) || (!paramLocationInfo2.dfX()))
+    if ((paramBoolean) || (!paramLocationInfo2.diW()))
     {
-      paramContext = e.b(new double[] { paramLocationInfo1.uZs, paramLocationInfo1.uZr });
-      paramContext = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%s,%s?z=%s", new Object[] { Double.valueOf(paramContext[1]), Double.valueOf(paramContext[0]), Integer.valueOf(paramLocationInfo1.uZt) })));
+      paramContext = e.b(new double[] { paramLocationInfo1.vlD, paramLocationInfo1.vlC });
+      paramContext = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%s,%s?z=%s", new Object[] { Double.valueOf(paramContext[1]), Double.valueOf(paramContext[0]), Integer.valueOf(paramLocationInfo1.vlE) })));
       paramContext.setPackage(paramString);
       AppMethodBeat.o(55821);
       return paramContext;
     }
-    String str2 = String.format("wechatnav://type=nav&fromcoord=%f,%f&tocoord=%f,%f", new Object[] { Double.valueOf(paramLocationInfo2.uZr), Double.valueOf(paramLocationInfo2.uZs), Double.valueOf(paramLocationInfo1.uZr), Double.valueOf(paramLocationInfo1.uZs) });
+    String str2 = String.format("wechatnav://type=nav&fromcoord=%f,%f&tocoord=%f,%f", new Object[] { Double.valueOf(paramLocationInfo2.vlC), Double.valueOf(paramLocationInfo2.vlD), Double.valueOf(paramLocationInfo1.vlC), Double.valueOf(paramLocationInfo1.vlD) });
     String str1 = str2;
-    if (!bt.isNullOrNil(paramLocationInfo2.uZu))
+    if (!bu.isNullOrNil(paramLocationInfo2.vlF))
     {
       str1 = str2;
-      if (!bt.isNullOrNil(paramLocationInfo1.uZu)) {
-        str1 = str2 + String.format("&from=%s&to=%s", new Object[] { paramLocationInfo2.uZu, paramLocationInfo1.uZu });
+      if (!bu.isNullOrNil(paramLocationInfo1.vlF)) {
+        str1 = str2 + String.format("&from=%s&to=%s", new Object[] { paramLocationInfo2.vlF, paramLocationInfo1.vlF });
       }
     }
     paramLocationInfo2 = new Intent("android.intent.action.VIEW", Uri.parse(str1));
     paramLocationInfo2.setPackage(paramString);
-    if (bt.aj(paramContext, paramLocationInfo2))
+    if (bu.aj(paramContext, paramLocationInfo2))
     {
       AppMethodBeat.o(55821);
       return paramLocationInfo2;
     }
-    paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.uZr + "," + paramLocationInfo1.uZs));
+    paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.vlC + "," + paramLocationInfo1.vlD));
     paramContext.setPackage(paramString);
     AppMethodBeat.o(55821);
     return paramContext;
@@ -124,18 +124,18 @@ public final class d
   private static Intent a(LocationInfo paramLocationInfo1, LocationInfo paramLocationInfo2, boolean paramBoolean)
   {
     AppMethodBeat.i(55819);
-    if ((paramBoolean) || (!paramLocationInfo2.dfX()))
+    if ((paramBoolean) || (!paramLocationInfo2.diW()))
     {
-      paramLocationInfo2 = e.b(new double[] { paramLocationInfo1.uZs, paramLocationInfo1.uZr });
-      paramLocationInfo1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%s,%s?z=%s", new Object[] { Double.valueOf(paramLocationInfo2[1]), Double.valueOf(paramLocationInfo2[0]), Integer.valueOf(paramLocationInfo1.uZt) })));
+      paramLocationInfo2 = e.b(new double[] { paramLocationInfo1.vlD, paramLocationInfo1.vlC });
+      paramLocationInfo1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%s,%s?z=%s", new Object[] { Double.valueOf(paramLocationInfo2[1]), Double.valueOf(paramLocationInfo2[0]), Integer.valueOf(paramLocationInfo1.vlE) })));
       paramLocationInfo1.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
       AppMethodBeat.o(55819);
       return paramLocationInfo1;
     }
-    if (bt.isNullOrNil(paramLocationInfo1.uZv)) {}
-    for (String str = "zh-cn";; str = paramLocationInfo1.uZv)
+    if (bu.isNullOrNil(paramLocationInfo1.vlG)) {}
+    for (String str = "zh-cn";; str = paramLocationInfo1.vlG)
     {
-      paramLocationInfo1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("http://maps.google.com/maps?f=d&saddr=%f,%f&daddr=%f,%f&hl=".concat(String.valueOf(str)), new Object[] { Double.valueOf(paramLocationInfo2.uZr), Double.valueOf(paramLocationInfo2.uZs), Double.valueOf(paramLocationInfo1.uZr), Double.valueOf(paramLocationInfo1.uZs) })));
+      paramLocationInfo1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("http://maps.google.com/maps?f=d&saddr=%f,%f&daddr=%f,%f&hl=".concat(String.valueOf(str)), new Object[] { Double.valueOf(paramLocationInfo2.vlC), Double.valueOf(paramLocationInfo2.vlD), Double.valueOf(paramLocationInfo1.vlC), Double.valueOf(paramLocationInfo1.vlD) })));
       paramLocationInfo1.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
       AppMethodBeat.o(55819);
       return paramLocationInfo1;
@@ -146,15 +146,15 @@ public final class d
   {
     AppMethodBeat.i(55817);
     paramContext = paramContext.getString(2131760712);
-    if ((!bt.isNullOrNil(paramLocationInfo.dDq)) && (!paramLocationInfo.dDq.equals(paramContext)))
+    if ((!bu.isNullOrNil(paramLocationInfo.dEv)) && (!paramLocationInfo.dEv.equals(paramContext)))
     {
-      paramContext = paramLocationInfo.dDq;
+      paramContext = paramLocationInfo.dEv;
       AppMethodBeat.o(55817);
       return paramContext;
     }
-    if (!bt.isNullOrNil(paramLocationInfo.uZu))
+    if (!bu.isNullOrNil(paramLocationInfo.vlF))
     {
-      paramContext = paramLocationInfo.uZu;
+      paramContext = paramLocationInfo.vlF;
       AppMethodBeat.o(55817);
       return paramContext;
     }
@@ -165,34 +165,34 @@ public final class d
   private static Intent b(Context paramContext, LocationInfo paramLocationInfo1, LocationInfo paramLocationInfo2, boolean paramBoolean)
   {
     AppMethodBeat.i(55820);
-    if ((paramBoolean) || (!paramLocationInfo2.dfX()))
+    if ((paramBoolean) || (!paramLocationInfo2.diW()))
     {
-      paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.uZr + "," + paramLocationInfo1.uZs + "?z=" + paramLocationInfo1.uZt));
+      paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.vlC + "," + paramLocationInfo1.vlD + "?z=" + paramLocationInfo1.vlE));
       paramContext.setPackage("com.tencent.map");
       AppMethodBeat.o(55820);
       return paramContext;
     }
-    String str2 = paramLocationInfo1.uZy;
+    String str2 = paramLocationInfo1.vlJ;
     String str1 = str2;
-    if (!bt.isNullOrNil(paramLocationInfo1.uZy))
+    if (!bu.isNullOrNil(paramLocationInfo1.vlJ))
     {
       str1 = str2;
-      if (paramLocationInfo1.uZy.startsWith("qqmap_")) {
-        str1 = paramLocationInfo1.uZy.substring(6);
+      if (paramLocationInfo1.vlJ.startsWith("qqmap_")) {
+        str1 = paramLocationInfo1.vlJ.substring(6);
       }
     }
     paramLocationInfo2 = a(paramContext, paramLocationInfo2);
     str2 = a(paramContext, paramLocationInfo1);
-    paramLocationInfo2 = String.format("qqmap://map/routeplan/type=drive&touid=%s&tocoord=%f,%f&from=%s&to=%s&referer=wx_client", new Object[] { str1, Double.valueOf(paramLocationInfo1.uZr), Double.valueOf(paramLocationInfo1.uZs), URLEncoder.encode(paramLocationInfo2), URLEncoder.encode(str2) });
-    ad.d("MicroMsg.MapHelper", "tencentluxian, url=%s", new Object[] { paramLocationInfo2 });
+    paramLocationInfo2 = String.format("qqmap://map/routeplan/type=drive&touid=%s&tocoord=%f,%f&from=%s&to=%s&referer=wx_client", new Object[] { str1, Double.valueOf(paramLocationInfo1.vlC), Double.valueOf(paramLocationInfo1.vlD), URLEncoder.encode(paramLocationInfo2), URLEncoder.encode(str2) });
+    ae.d("MicroMsg.MapHelper", "tencentluxian, url=%s", new Object[] { paramLocationInfo2 });
     paramLocationInfo2 = new Intent("android.intent.action.VIEW", Uri.parse(paramLocationInfo2));
     paramLocationInfo2.setPackage("com.tencent.map");
-    if (bt.aj(paramContext, paramLocationInfo2))
+    if (bu.aj(paramContext, paramLocationInfo2))
     {
       AppMethodBeat.o(55820);
       return paramLocationInfo2;
     }
-    paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.uZr + "," + paramLocationInfo1.uZs));
+    paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.vlC + "," + paramLocationInfo1.vlD));
     paramContext.setPackage("com.tencent.map");
     AppMethodBeat.o(55820);
     return paramContext;
@@ -201,39 +201,39 @@ public final class d
   private static Intent b(Context paramContext, LocationInfo paramLocationInfo1, LocationInfo paramLocationInfo2, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(55822);
-    if ((paramBoolean) || (!paramLocationInfo2.dfX()))
+    if ((paramBoolean) || (!paramLocationInfo2.diW()))
     {
-      paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.uZr + "," + paramLocationInfo1.uZs + "?z=" + paramLocationInfo1.uZt));
+      paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.vlC + "," + paramLocationInfo1.vlD + "?z=" + paramLocationInfo1.vlE));
       paramContext.setPackage(paramString);
       AppMethodBeat.o(55822);
       return paramContext;
     }
-    String str2 = String.format("wechatnav://type=nav&fromcoord=%f,%f&tocoord=%f,%f", new Object[] { Double.valueOf(paramLocationInfo2.uZr), Double.valueOf(paramLocationInfo2.uZs), Double.valueOf(paramLocationInfo1.uZr), Double.valueOf(paramLocationInfo1.uZs) });
+    String str2 = String.format("wechatnav://type=nav&fromcoord=%f,%f&tocoord=%f,%f", new Object[] { Double.valueOf(paramLocationInfo2.vlC), Double.valueOf(paramLocationInfo2.vlD), Double.valueOf(paramLocationInfo1.vlC), Double.valueOf(paramLocationInfo1.vlD) });
     String str1 = str2;
-    if (!bt.isNullOrNil(paramLocationInfo2.uZu))
+    if (!bu.isNullOrNil(paramLocationInfo2.vlF))
     {
       str1 = str2;
-      if (!bt.isNullOrNil(paramLocationInfo1.uZu)) {
-        str1 = str2 + String.format("&from=%s&to=%s", new Object[] { paramLocationInfo2.uZu, paramLocationInfo1.uZu });
+      if (!bu.isNullOrNil(paramLocationInfo1.vlF)) {
+        str1 = str2 + String.format("&from=%s&to=%s", new Object[] { paramLocationInfo2.vlF, paramLocationInfo1.vlF });
       }
     }
     paramLocationInfo2 = new Intent("android.intent.action.VIEW", Uri.parse(str1));
     paramLocationInfo2.setPackage(paramString);
-    if (bt.aj(paramContext, paramLocationInfo2))
+    if (bu.aj(paramContext, paramLocationInfo2))
     {
       AppMethodBeat.o(55822);
       return paramLocationInfo2;
     }
-    paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.uZr + "," + paramLocationInfo1.uZs));
+    paramContext = new Intent("android.intent.action.VIEW", Uri.parse("geo:" + paramLocationInfo1.vlC + "," + paramLocationInfo1.vlD));
     paramContext.setPackage(paramString);
     AppMethodBeat.o(55822);
     return paramContext;
   }
   
-  public static int dgu()
+  public static int djt()
   {
     AppMethodBeat.i(55815);
-    ad.d("MicroMsg.MapHelper", "getDefaultZoom isGoogle : false");
+    ae.d("MicroMsg.MapHelper", "getDefaultZoom isGoogle : false");
     AppMethodBeat.o(55815);
     return 15;
   }
@@ -245,13 +245,13 @@ public final class d
     if ("com.tencent.map".equals(paramString)) {
       if (paramBoolean)
       {
-        g.yhR.f(11091, new Object[] { Integer.valueOf(4), Integer.valueOf(2) });
+        g.yxI.f(11091, new Object[] { Integer.valueOf(4), Integer.valueOf(2) });
         localPackageManager = this.context.getPackageManager();
         if (!"com.google.android.apps.maps".equals(paramString)) {
           break label307;
         }
         paramString = a(paramLocationInfo1, paramLocationInfo2, false);
-        if (bt.aj(this.context, paramString)) {
+        if (bu.aj(this.context, paramString)) {
           break label1077;
         }
       }
@@ -260,55 +260,55 @@ public final class d
     label1077:
     for (paramLocationInfo1 = a(paramLocationInfo1, paramLocationInfo2, true);; paramLocationInfo1 = paramString)
     {
-      g.yhR.f(10997, new Object[] { "4", "", Integer.valueOf(0), Integer.valueOf(0) });
+      g.yxI.f(10997, new Object[] { "4", "", Integer.valueOf(0), Integer.valueOf(0) });
       paramLocationInfo2 = this.context;
       paramLocationInfo1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramLocationInfo1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahp(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahE(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(55823);
       return;
-      g.yhR.f(11091, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+      g.yxI.f(11091, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
       break;
       if (paramBoolean)
       {
-        g.yhR.f(11091, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
+        g.yxI.f(11091, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
         break;
       }
-      g.yhR.f(11091, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
+      g.yxI.f(11091, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
       break;
       if ("com.baidu.BaiduMap".equals(paramString))
       {
         paramString = a(this.context, paramLocationInfo1, paramLocationInfo2, false);
-        if (bt.aj(this.context, paramString)) {
+        if (bu.aj(this.context, paramString)) {
           break label1072;
         }
       }
       for (paramLocationInfo1 = a(this.context, paramLocationInfo1, paramLocationInfo2, true);; paramLocationInfo1 = paramString)
       {
-        paramLocationInfo2 = e.aR(this.context, "com.baidu.BaiduMap").applicationInfo.loadLabel(localPackageManager).toString();
-        g.yhR.f(10997, new Object[] { "5", paramLocationInfo2, Integer.valueOf(0), Integer.valueOf(0) });
+        paramLocationInfo2 = e.aT(this.context, "com.baidu.BaiduMap").applicationInfo.loadLabel(localPackageManager).toString();
+        g.yxI.f(10997, new Object[] { "5", paramLocationInfo2, Integer.valueOf(0), Integer.valueOf(0) });
         paramLocationInfo2 = this.context;
         paramLocationInfo1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramLocationInfo1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahp(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahE(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55823);
         return;
         if ("com.tencent.map".equals(paramString))
         {
           paramString = b(this.context, paramLocationInfo1, paramLocationInfo2, false);
-          if (bt.aj(this.context, paramString)) {
+          if (bu.aj(this.context, paramString)) {
             break label1067;
           }
         }
         for (paramLocationInfo1 = b(this.context, paramLocationInfo1, paramLocationInfo2, true);; paramLocationInfo1 = paramString)
         {
-          g.yhR.f(10997, new Object[] { "2", "", Integer.valueOf(0), Integer.valueOf(0) });
+          g.yxI.f(10997, new Object[] { "2", "", Integer.valueOf(0), Integer.valueOf(0) });
           paramLocationInfo2 = this.context;
           paramLocationInfo1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramLocationInfo1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahp(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahE(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(55823);
           return;
@@ -316,11 +316,11 @@ public final class d
           Intent localIntent;
           if ("com.autonavi.minimap".equals(paramString))
           {
-            localPackageInfo = e.aR(this.context, paramString);
+            localPackageInfo = e.aT(this.context, paramString);
             if (localPackageInfo != null)
             {
               localIntent = a(this.context, paramLocationInfo1, paramLocationInfo2, false, paramString);
-              if (bt.aj(this.context, localIntent)) {
+              if (bu.aj(this.context, localIntent)) {
                 break label1061;
               }
             }
@@ -328,21 +328,21 @@ public final class d
           for (paramLocationInfo1 = a(this.context, paramLocationInfo1, paramLocationInfo2, true, paramString);; paramLocationInfo1 = localIntent)
           {
             paramLocationInfo2 = localPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
-            g.yhR.f(10997, new Object[] { "5", paramLocationInfo2, Integer.valueOf(0), Integer.valueOf(0) });
+            g.yxI.f(10997, new Object[] { "5", paramLocationInfo2, Integer.valueOf(0), Integer.valueOf(0) });
             paramLocationInfo2 = this.context;
             paramLocationInfo1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramLocationInfo1);
-            com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahp(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahE(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(55823);
             return;
             if ("com.sogou.map.android.maps".equals(paramString))
             {
-              localPackageInfo = e.aR(this.context, paramString);
+              localPackageInfo = e.aT(this.context, paramString);
               if (localPackageInfo != null)
               {
                 localIntent = b(this.context, paramLocationInfo1, paramLocationInfo2, false, paramString);
-                if (bt.aj(this.context, localIntent)) {
+                if (bu.aj(this.context, localIntent)) {
                   break label1055;
                 }
               }
@@ -350,11 +350,11 @@ public final class d
             for (paramLocationInfo1 = b(this.context, paramLocationInfo1, paramLocationInfo2, true, paramString);; paramLocationInfo1 = localIntent)
             {
               paramLocationInfo2 = localPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
-              g.yhR.f(10997, new Object[] { "5", paramLocationInfo2, Integer.valueOf(0), Integer.valueOf(0) });
+              g.yxI.f(10997, new Object[] { "5", paramLocationInfo2, Integer.valueOf(0), Integer.valueOf(0) });
               paramLocationInfo2 = this.context;
               paramLocationInfo1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramLocationInfo1);
-              com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahp(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, paramLocationInfo1.ahE(), "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramLocationInfo2.startActivity((Intent)paramLocationInfo1.mt(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramLocationInfo2, "com/tencent/mm/plugin/location/ui/MapHelper", "startNavigationActivity", "(Lcom/tencent/mm/plugin/location/model/LocationInfo;Lcom/tencent/mm/plugin/location/model/LocationInfo;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(55823);
               return;
@@ -374,7 +374,7 @@ public final class d
     localArrayList.add("com.baidu.BaiduMap");
     localArrayList.add("com.autonavi.minimap");
     localArrayList.add("com.sogou.map.android.maps");
-    Object localObject1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Double.valueOf(paramLocationInfo.uZr), Double.valueOf(paramLocationInfo.uZs) })));
+    Object localObject1 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Double.valueOf(paramLocationInfo.vlC), Double.valueOf(paramLocationInfo.vlD) })));
     Object localObject2 = this.context.getPackageManager();
     paramLocationInfo = new HashMap();
     localObject1 = ((PackageManager)localObject2).queryIntentActivities((Intent)localObject1, 65536).iterator();

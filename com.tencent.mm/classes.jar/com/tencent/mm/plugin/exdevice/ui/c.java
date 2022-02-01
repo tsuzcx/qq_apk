@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 public abstract interface c
 {
-  public abstract void cmp();
+  public abstract void cnF();
   
-  public abstract void cmq();
+  public abstract void cnG();
 }
 
 

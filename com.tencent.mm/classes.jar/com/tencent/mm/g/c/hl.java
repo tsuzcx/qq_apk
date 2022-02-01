@@ -7,17 +7,35 @@ import com.tencent.mm.sdk.e.c;
 public abstract class hl
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS WxaAttrVersionServerNotifyRecordAppVersionIndex ON WxaAttrVersionServerNotifyRecord(appVersion)" };
-  private static final int eFG = "appVersion".hashCode();
-  private static final int eFp = "username".hashCode();
-  private static final int eGy = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eGD = "appId".hashCode();
+  private static final int eGZ;
+  private static final int fDG = "commLibVersionId".hashCode();
+  private static final int fDH = "appVersionId".hashCode();
+  private static final int fDI = "pageURL".hashCode();
+  private static final int fDJ = "cacheFilePath".hashCode();
+  private static final int fDf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFC = true;
-  private boolean eFm = true;
-  private boolean eGt = true;
-  public int field_appVersion;
-  public int field_reportId;
-  public String field_username;
+  private boolean eGW = true;
+  private boolean eGm = true;
+  private boolean fCR = true;
+  private boolean fDC = true;
+  private boolean fDD = true;
+  private boolean fDE = true;
+  private boolean fDF = true;
+  public long field_accessTime;
+  public String field_appId;
+  public String field_appVersionId;
+  public String field_cacheFilePath;
+  public String field_commLibVersionId;
+  public String field_pageURL;
+  public long field_updateTime;
+  
+  static
+  {
+    eGZ = "updateTime".hashCode();
+    fDf = "accessTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,22 +50,29 @@ public abstract class hl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
-        break label65;
+      if (eGD != k) {
+        break label60;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eFG == k) {
-        this.field_appVersion = paramCursor.getInt(i);
-      } else if (eGy == k) {
-        this.field_reportId = paramCursor.getInt(i);
+      label60:
+      if (fDG == k) {
+        this.field_commLibVersionId = paramCursor.getString(i);
+      } else if (fDH == k) {
+        this.field_appVersionId = paramCursor.getString(i);
+      } else if (fDI == k) {
+        this.field_pageURL = paramCursor.getString(i);
+      } else if (eGZ == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (fDf == k) {
+        this.field_accessTime = paramCursor.getLong(i);
+      } else if (fDJ == k) {
+        this.field_cacheFilePath = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +82,26 @@ public abstract class hl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFm) {
-      localContentValues.put("username", this.field_username);
+    if (this.eGm) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eFC) {
-      localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
+    if (this.fDC) {
+      localContentValues.put("commLibVersionId", this.field_commLibVersionId);
     }
-    if (this.eGt) {
-      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
+    if (this.fDD) {
+      localContentValues.put("appVersionId", this.field_appVersionId);
+    }
+    if (this.fDE) {
+      localContentValues.put("pageURL", this.field_pageURL);
+    }
+    if (this.eGW) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.fCR) {
+      localContentValues.put("accessTime", Long.valueOf(this.field_accessTime));
+    }
+    if (this.fDF) {
+      localContentValues.put("cacheFilePath", this.field_cacheFilePath);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -74,7 +111,7 @@ public abstract class hl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.hl
  * JD-Core Version:    0.7.0.1
  */

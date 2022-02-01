@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.record.a.g;
 import com.tencent.mm.pluginsdk.model.app.an.a;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.protocal.b.a.c;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -16,19 +16,19 @@ public final class m
   public final boolean g(String paramString1, long paramLong, String paramString2)
   {
     AppMethodBeat.i(27805);
-    Object localObject = p.avr(paramString1);
+    Object localObject = p.awG(paramString1);
     if (localObject == null)
     {
-      ad.w("MicroMsg.RecordMsgHelpService", "get record msg data error, empty");
+      ae.w("MicroMsg.RecordMsgHelpService", "get record msg data error, empty");
       AppMethodBeat.o(27805);
       return false;
     }
     paramString1 = null;
-    Iterator localIterator = ((c)localObject).hDb.iterator();
+    Iterator localIterator = ((c)localObject).hFT.iterator();
     if (localIterator.hasNext())
     {
-      localObject = (ajn)localIterator.next();
-      if (!((ajn)localObject).dsU.equals(paramString2)) {
+      localObject = (ajx)localIterator.next();
+      if (!((ajx)localObject).dua.equals(paramString2)) {
         break label102;
       }
       paramString1 = (String)localObject;
@@ -43,11 +43,11 @@ public final class m
     }
   }
   
-  public final void yC(long paramLong)
+  public final void zb(long paramLong)
   {
     AppMethodBeat.i(27804);
-    ao.fai();
-    an.a.yC(paramLong);
+    ao.fdW();
+    an.a.zb(paramLong);
     AppMethodBeat.o(27804);
   }
 }

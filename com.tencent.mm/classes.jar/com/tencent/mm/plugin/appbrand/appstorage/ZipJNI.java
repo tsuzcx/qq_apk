@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 public class ZipJNI
 {
@@ -21,7 +21,7 @@ public class ZipJNI
   public static int vfsUnzip(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(175611);
-    int i = unzip(i.k(paramString1, false), i.k(paramString2, true), paramString3);
+    int i = unzip(o.k(paramString1, false), o.k(paramString2, true), paramString3);
     AppMethodBeat.o(175611);
     return i;
   }

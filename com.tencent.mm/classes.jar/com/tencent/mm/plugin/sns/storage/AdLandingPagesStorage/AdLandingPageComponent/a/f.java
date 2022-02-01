@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ajz;
-import com.tencent.mm.protocal.protobuf.aka;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.akj;
+import com.tencent.mm.protocal.protobuf.akk;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
   extends n
   implements k
 {
-  private com.tencent.mm.al.f callback;
+  public String AaB;
+  private com.tencent.mm.ak.f callback;
   private b rr;
-  public String zJu;
   
   public f(String paramString)
   {
     AppMethodBeat.i(97150);
-    this.zJu = "";
-    this.zJu = paramString;
+    this.AaB = "";
+    this.AaB = paramString;
     b.a locala = new b.a();
-    locala.hNM = new ajz();
-    locala.hNN = new aka();
+    locala.hQF = new akj();
+    locala.hQG = new akk();
     locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_favofficialitem";
     locala.funcId = 2874;
-    this.rr = locala.aDC();
-    ((ajz)this.rr.hNK.hNQ).Gjq = paramString;
-    ad.i("MicroMsg.NetSceneFavOfficialItem", "Req: item_buff[%s]", new Object[] { paramString });
+    this.rr = locala.aDS();
+    ((akj)this.rr.hQD.hQJ).GBZ = paramString;
+    ae.i("MicroMsg.NetSceneFavOfficialItem", "Req: item_buff[%s]", new Object[] { paramString });
     AppMethodBeat.o(97150);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(97151);
     this.callback = paramf;
@@ -53,7 +53,7 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97152);
-    ad.i("MicroMsg.NetSceneFavOfficialItem", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ae.i("MicroMsg.NetSceneFavOfficialItem", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(97152);
   }

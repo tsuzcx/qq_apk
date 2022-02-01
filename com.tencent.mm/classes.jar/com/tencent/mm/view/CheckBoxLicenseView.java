@@ -15,8 +15,8 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class CheckBoxLicenseView
   extends LinearLayout
 {
-  private CompoundButton.OnCheckedChangeListener Loa;
-  private View.OnClickListener Lob;
+  private CompoundButton.OnCheckedChangeListener LKL;
+  private View.OnClickListener LKM;
   
   public CheckBoxLicenseView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class CheckBoxLicenseView
   public CheckBoxLicenseView(Context paramContext, final AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(186550);
+    AppMethodBeat.i(193808);
     Object localObject = inflate(getContext(), 2131493578, this);
     paramContext = ((View)localObject).findViewById(2131305697);
     paramAttributeSet = (CheckBox)((View)localObject).findViewById(2131305698);
@@ -35,53 +35,53 @@ public class CheckBoxLicenseView
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(186549);
+        AppMethodBeat.i(193807);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAttributeSet.performClick();
         a.a(this, "com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(186549);
+        AppMethodBeat.o(193807);
       }
     });
-    if (this.Loa != null) {
-      paramAttributeSet.setOnCheckedChangeListener(this.Loa);
+    if (this.LKL != null) {
+      paramAttributeSet.setOnCheckedChangeListener(this.LKL);
     }
-    if (this.Lob != null) {
-      ((TextView)localObject).setOnClickListener(this.Lob);
+    if (this.LKM != null) {
+      ((TextView)localObject).setOnClickListener(this.LKM);
     }
-    AppMethodBeat.o(186550);
+    AppMethodBeat.o(193808);
   }
   
   public void setCheckStateChangeListener(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    AppMethodBeat.i(186551);
-    this.Loa = paramOnCheckedChangeListener;
+    AppMethodBeat.i(193809);
+    this.LKL = paramOnCheckedChangeListener;
     ((CheckBox)findViewById(2131305698)).setOnCheckedChangeListener(paramOnCheckedChangeListener);
-    AppMethodBeat.o(186551);
+    AppMethodBeat.o(193809);
   }
   
   public void setLicenseClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(186552);
+    AppMethodBeat.i(193810);
     TextView localTextView = (TextView)findViewById(2131305701);
-    this.Lob = paramOnClickListener;
+    this.LKM = paramOnClickListener;
     localTextView.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(186552);
+    AppMethodBeat.o(193810);
   }
   
   public void setTermText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(186553);
+    AppMethodBeat.i(193811);
     ((TextView)findViewById(2131305701)).setText(paramCharSequence);
-    AppMethodBeat.o(186553);
+    AppMethodBeat.o(193811);
   }
   
   public void setTermTip(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(186554);
+    AppMethodBeat.i(193812);
     ((TextView)findViewById(2131305700)).setText(paramCharSequence);
-    AppMethodBeat.o(186554);
+    AppMethodBeat.o(193812);
   }
 }
 

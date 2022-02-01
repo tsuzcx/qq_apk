@@ -1,68 +1,218 @@
 package com.tencent.mm.plugin.multitalk.c;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.util.LinkedList;
 
 public final class c
+  extends j<b>
 {
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString, int paramInt10)
+  public static final String[] SQL_CREATE;
+  
+  static
   {
-    AppMethodBeat.i(164089);
-    g.yhR.a(19192, true, true, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), paramString, Integer.valueOf(paramInt10) });
-    AppMethodBeat.o(164089);
+    AppMethodBeat.i(114650);
+    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "MultiTalkMember"), "CREATE INDEX IF NOT EXISTS idx_MultiTalkMember  on MultiTalkMember  (  wxGroupId )" };
+    AppMethodBeat.o(114650);
   }
   
-  public static void ar(int paramInt, boolean paramBoolean)
+  public c(e parame)
   {
-    AppMethodBeat.i(164087);
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    super(parame, b.info, "MultiTalkMember", null);
+  }
+  
+  public final boolean Dc(String paramString)
+  {
+    AppMethodBeat.i(114649);
+    ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete where wxGroupId = ".concat(String.valueOf(paramString)));
+    try
     {
-      a(paramInt, 0, 0, 0, 0, 0, i, 0, 0, "", 0);
-      AppMethodBeat.o(164087);
-      return;
+      super.execSQL("MultiTalkMember", "delete from MultiTalkMember where wxGroupId = \"" + paramString + "\"");
+      AppMethodBeat.o(114649);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ae.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete fail for wxGroupId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(114649);
+    }
+    return false;
+  }
+  
+  public final boolean a(b paramb)
+  {
+    AppMethodBeat.i(114647);
+    long l = paramb.field_memberUuid;
+    Cursor localCursor = rawQuery("select * from MultiTalkMember where memberUuid = '" + l + "' and wxGroupId = '" + paramb.field_wxGroupId + "'", new String[0]);
+    try
+    {
+      if (localCursor.getCount() == 0)
+      {
+        bool = insert(paramb);
+        ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "insert ret " + bool + " for memberUuid = " + l);
+        return bool;
+      }
+      boolean bool = update(paramb, new String[0]);
+      ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "update ret " + bool + " for memberUuid = " + l);
+      return bool;
+    }
+    catch (Exception paramb)
+    {
+      ae.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", paramb.toString());
+      return false;
+    }
+    finally
+    {
+      localCursor.close();
+      AppMethodBeat.o(114647);
     }
   }
   
-  public static void as(int paramInt, boolean paramBoolean)
+  public final LinkedList<b> asS(String paramString)
   {
-    AppMethodBeat.i(164088);
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    AppMethodBeat.i(114646);
+    paramString = rawQuery("select memberUuid, wxGroupId, userName, inviteUserName, memberId, status,createTime  from MultiTalkMember  where wxGroupId = '" + paramString + "'", new String[0]);
+    LinkedList localLinkedList = new LinkedList();
+    for (;;)
     {
-      a(paramInt, 0, 0, 0, 0, 0, 0, i, 0, "", 0);
-      AppMethodBeat.o(164088);
-      return;
+      if (paramString != null) {}
+      try
+      {
+        if (paramString.moveToNext())
+        {
+          b localb = new b();
+          localb.field_memberUuid = paramString.getInt(0);
+          localb.field_wxGroupId = paramString.getString(1);
+          localb.field_userName = paramString.getString(2);
+          localb.field_inviteUserName = paramString.getString(3);
+          localb.field_memberId = paramString.getLong(4);
+          localb.field_status = paramString.getInt(5);
+          localb.field_createTime = paramString.getLong(6);
+          ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "getMultiTalkMemberList get value for memberUuid = %s, wxGroupId = %s, userName = %s, inviteUserName = %s, memberId = %d, status = %d,createTime = %d", new Object[] { Long.valueOf(localb.field_memberUuid), localb.field_wxGroupId, localb.field_userName, localb.field_inviteUserName, Long.valueOf(localb.field_memberId), Integer.valueOf(localb.field_status), Long.valueOf(localb.field_createTime) });
+          localLinkedList.add(localb);
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        ae.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", localException.toString());
+        for (;;)
+        {
+          return localLinkedList;
+          if (paramString != null) {
+            paramString.close();
+          }
+        }
+      }
+      finally
+      {
+        if (paramString != null) {
+          paramString.close();
+        }
+        AppMethodBeat.o(114646);
+      }
     }
   }
   
-  public static void f(int paramInt, String paramString, boolean paramBoolean)
+  public final boolean b(b paramb)
   {
-    AppMethodBeat.i(164085);
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    AppMethodBeat.i(190813);
+    String str = paramb.field_userName;
+    Cursor localCursor = rawQuery("select * from MultiTalkMember where userName = '" + str + "' and wxGroupId = '" + paramb.field_wxGroupId + "'", new String[0]);
+    try
     {
-      a(paramInt, 0, 0, 0, i, 0, 0, 0, 0, paramString, 0);
-      AppMethodBeat.o(164085);
-      return;
+      if (localCursor.getCount() == 0)
+      {
+        bool = insert(paramb);
+        ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "insert ret " + bool + " for userName = " + str);
+        return bool;
+      }
+      boolean bool = update(paramb, new String[0]);
+      ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "update ret " + bool + " for userName = " + str);
+      return bool;
+    }
+    catch (Exception paramb)
+    {
+      ae.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", paramb.toString());
+      return false;
+    }
+    finally
+    {
+      localCursor.close();
+      AppMethodBeat.o(190813);
     }
   }
   
-  public static void g(int paramInt, String paramString, boolean paramBoolean)
+  public final boolean fa(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(164086);
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    AppMethodBeat.i(114648);
+    ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete where wxGroupId = " + paramString1 + ",member = " + paramString2);
+    try
     {
-      a(paramInt, 0, 0, 0, 0, i, 0, 0, 0, paramString, 0);
-      AppMethodBeat.o(164086);
-      return;
+      super.execSQL("MultiTalkMember", "delete from MultiTalkMember where wxGroupId = \"" + paramString1 + "\" and userName = \"" + paramString2 + "\"");
+      AppMethodBeat.o(114648);
+      return true;
     }
+    catch (Exception localException)
+    {
+      ae.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete fail for wxGroupId = " + paramString1 + ",member = " + paramString2);
+      AppMethodBeat.o(114648);
+    }
+    return false;
+  }
+  
+  public final b ig(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(114645);
+    paramString1 = rawQuery("select memberUuid, wxGroupId, userName, inviteUserName, memberId, status,createTime  from MultiTalkMember  where wxGroupId = '" + paramString1 + "' and userName ='" + paramString2 + "'", new String[0]);
+    if (paramString1 != null) {}
+    try
+    {
+      if (paramString1.moveToNext())
+      {
+        paramString2 = new b();
+        paramString2.field_memberUuid = paramString1.getInt(0);
+        paramString2.field_wxGroupId = paramString1.getString(1);
+        paramString2.field_userName = paramString1.getString(2);
+        paramString2.field_inviteUserName = paramString1.getString(3);
+        paramString2.field_memberId = paramString1.getLong(4);
+        paramString2.field_status = paramString1.getInt(5);
+        paramString2.field_createTime = paramString1.getLong(6);
+        ae.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "getMultiTalkMember get value for memberUuid = %s, wxGroupId = %s, userName = %s, inviteUserName = %s, memberId = %d, status = %d,createTime = %d", new Object[] { Long.valueOf(paramString2.field_memberUuid), paramString2.field_wxGroupId, paramString2.field_userName, paramString2.field_inviteUserName, Long.valueOf(paramString2.field_memberId), Integer.valueOf(paramString2.field_status), Long.valueOf(paramString2.field_createTime) });
+        return paramString2;
+      }
+      if (paramString1 != null) {
+        paramString1.close();
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", paramString2.toString());
+        if (paramString1 != null) {
+          paramString1.close();
+        }
+      }
+    }
+    finally
+    {
+      if (paramString1 == null) {
+        break label286;
+      }
+      paramString1.close();
+      AppMethodBeat.o(114645);
+    }
+    AppMethodBeat.o(114645);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.c.c
  * JD-Core Version:    0.7.0.1
  */

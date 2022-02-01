@@ -2,7 +2,7 @@ package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.ILog;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class WorkerProfile$24
   implements ILog
@@ -12,35 +12,35 @@ final class WorkerProfile$24
   public final void d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19572);
-    ad.d(paramString1, paramString2);
+    ae.d(paramString1, paramString2);
     AppMethodBeat.o(19572);
   }
   
   public final void e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19575);
-    ad.e(paramString1, paramString2);
+    ae.e(paramString1, paramString2);
     AppMethodBeat.o(19575);
   }
   
   public final void i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19573);
-    ad.i(paramString1, paramString2);
+    ae.i(paramString1, paramString2);
     AppMethodBeat.o(19573);
   }
   
   public final void v(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19571);
-    ad.v(paramString1, paramString2);
+    ae.v(paramString1, paramString2);
     AppMethodBeat.o(19571);
   }
   
   public final void w(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19574);
-    ad.w(paramString1, paramString2);
+    ae.w(paramString1, paramString2);
     AppMethodBeat.o(19574);
   }
 }

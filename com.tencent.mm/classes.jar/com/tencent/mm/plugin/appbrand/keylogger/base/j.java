@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 
 public final class j
 {
-  private final String lDr;
-  public final a lDs;
+  private final String lHQ;
+  public final a lHR;
   
   public j(a parama, String paramString)
   {
-    this.lDs = parama;
-    this.lDr = paramString;
+    this.lHR = parama;
+    this.lHQ = paramString;
   }
 }
 

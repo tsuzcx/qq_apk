@@ -3,62 +3,62 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.b;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class h
   implements b, l
 {
-  private g jRF;
+  private g jUX;
   
-  public final AppBrandBackgroundFetchDataTokenParcel MJ(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel Nq(String paramString)
   {
     AppMethodBeat.i(44755);
-    if (this.jRF == null)
+    if (this.jUX == null)
     {
       AppMethodBeat.o(44755);
       return null;
     }
-    AppBrandBackgroundFetchDataTokenParcel localAppBrandBackgroundFetchDataTokenParcel = this.jRF.MJ(paramString);
+    AppBrandBackgroundFetchDataTokenParcel localAppBrandBackgroundFetchDataTokenParcel = this.jUX.Nq(paramString);
     if (localAppBrandBackgroundFetchDataTokenParcel == null)
     {
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "get fail, app(%s)", new Object[] { paramString });
+      ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "get fail, app(%s)", new Object[] { paramString });
       AppMethodBeat.o(44755);
       return null;
     }
-    ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "get success, app(%s)", new Object[] { paramString });
+    ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "get success, app(%s)", new Object[] { paramString });
     AppMethodBeat.o(44755);
     return localAppBrandBackgroundFetchDataTokenParcel;
   }
   
-  public final void akx()
+  public final void akM()
   {
     AppMethodBeat.i(44754);
-    this.jRF = j.aZg();
+    this.jUX = j.aZD();
     AppMethodBeat.o(44754);
   }
   
-  public final void aky()
+  public final void akN()
   {
-    this.jRF = null;
+    this.jUX = null;
   }
   
-  public final boolean cx(String paramString1, String paramString2)
+  public final boolean cz(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44756);
-    if (this.jRF == null)
+    if (this.jUX == null)
     {
       AppMethodBeat.o(44756);
       return false;
     }
-    boolean bool = this.jRF.cx(paramString1, paramString2);
+    boolean bool = this.jUX.cz(paramString1, paramString2);
     if (bool) {
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "set success, app(%s)", new Object[] { paramString1 });
+      ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "set success, app(%s)", new Object[] { paramString1 });
     }
     for (;;)
     {
       AppMethodBeat.o(44756);
       return bool;
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "set fail, app(%s)", new Object[] { paramString1 });
+      ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "set fail, app(%s)", new Object[] { paramString1 });
     }
   }
 }

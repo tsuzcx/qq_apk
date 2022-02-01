@@ -10,34 +10,34 @@ import java.util.Map;
 public final class a
   extends ae
 {
-  public static c.a hEe;
+  public static c.a hGW;
   
   static
   {
     AppMethodBeat.i(6187);
     c.a locala = new c.a();
-    locala.IhA = new Field[4];
+    locala.IBL = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appMsgReportContextId";
-    locala.IhC.put("appMsgReportContextId", "LONG PRIMARY KEY ");
+    locala.IBN.put("appMsgReportContextId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" appMsgReportContextId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "appMsgReportContextId";
+    locala.IBM = "appMsgReportContextId";
     locala.columns[1] = "url";
-    locala.IhC.put("url", "TEXT");
+    locala.IBN.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "reportTime";
-    locala.IhC.put("reportTime", "LONG");
+    locala.IBN.put("reportTime", "LONG");
     localStringBuilder.append(" reportTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "aScene";
-    locala.IhC.put("aScene", "INTEGER");
+    locala.IBN.put("aScene", "INTEGER");
     localStringBuilder.append(" aScene INTEGER");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hEe = locala;
+    hGW = locala;
     AppMethodBeat.o(6187);
   }
   
@@ -46,12 +46,12 @@ public final class a
   public a(fo paramfo)
   {
     this.field_url = paramfo.Url;
-    this.field_reportTime = paramfo.FxL;
+    this.field_reportTime = paramfo.FQj;
   }
   
   public final c.a getDBInfo()
   {
-    return hEe;
+    return hGW;
   }
   
   public final String toString()

@@ -13,17 +13,17 @@ final class AppBrandProcessProxyUI$2
   public final void run()
   {
     AppMethodBeat.i(45386);
-    if ((AppBrandProcessProxyUI.class != this.kph) && ((this.kpi instanceof Activity)))
+    if ((AppBrandProcessProxyUI.class != this.ksx) && ((this.ksy instanceof Activity)))
     {
-      ((Activity)this.kpi).startActivityForResult(this.kpj, this.kpk.bhT());
+      ((Activity)this.ksy).startActivityForResult(this.ksz, this.ksA.biC());
       AppMethodBeat.o(45386);
       return;
     }
-    Context localContext = this.kpi;
-    Object localObject = this.kpj;
+    Context localContext = this.ksy;
+    Object localObject = this.ksz;
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(45386);
   }

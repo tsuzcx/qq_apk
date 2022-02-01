@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.finder.preload.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.apc;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.app;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"print", "", "Lcom/tencent/mm/protocal/protobuf/FinderMediaSpec;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"print", "", "Lcom/tencent/mm/protocal/protobuf/FinderMediaSpec;", "plugin-finder_release"})
 public final class b
 {
-  public static final String a(apc paramapc)
+  public static final String a(app paramapp)
   {
-    AppMethodBeat.i(203055);
-    p.h(paramapc, "$this$print");
-    paramapc = "Spec[" + paramapc.slv + ' ' + paramapc.dDf + ' ' + bt.sy(paramapc.GnC) + ' ' + bt.sy(paramapc.GnD) + ']';
-    AppMethodBeat.o(203055);
-    return paramapc;
+    AppMethodBeat.i(203540);
+    p.h(paramapp, "$this$print");
+    paramapp = "Spec[" + paramapp.suu + ' ' + paramapp.dEk + ' ' + bu.sL(paramapp.GGI) + ' ' + paramapp.GGJ + ']';
+    AppMethodBeat.o(203540);
+    return paramapp;
   }
 }
 

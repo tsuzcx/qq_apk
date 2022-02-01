@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.d;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class a$3
   implements f.b
@@ -15,23 +15,23 @@ final class a$3
   
   public final void onBackground()
   {
-    AppMethodBeat.i(206219);
-    g.d locald = g.Kv(this.kCd.getAppId());
-    ad.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
-    if (locald == g.d.jwr)
+    AppMethodBeat.i(211247);
+    h.d locald = h.KU(this.kFs.getAppId());
+    ae.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
+    if (locald == h.d.jzn)
     {
-      this.lpQ.tp(2);
-      AppMethodBeat.o(206219);
+      this.lun.tt(2);
+      AppMethodBeat.o(211247);
       return;
     }
-    if (locald == g.d.jwn)
+    if (locald == h.d.jzj)
     {
-      this.lpQ.tp(1);
-      AppMethodBeat.o(206219);
+      this.lun.tt(1);
+      AppMethodBeat.o(211247);
       return;
     }
-    this.lpQ.tp(3);
-    AppMethodBeat.o(206219);
+    this.lun.tt(3);
+    AppMethodBeat.o(211247);
   }
 }
 

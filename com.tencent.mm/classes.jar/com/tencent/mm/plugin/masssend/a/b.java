@@ -7,27 +7,27 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.b.g;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.sdk.e.k;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public final class b
   extends k
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS massendinfo ( clientid text  PRIMARY KEY , status int  , createtime long  , lastmodifytime long  , filename text  , thumbfilename text  , tolist text  , tolistcount int  , msgtype int  , mediatime int  , datanetoffset int  , datalen int  , thumbnetoffset int  , thumbtotallen int  , reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text  ) ", "CREATE INDEX IF NOT EXISTS  massendinfostatus_index ON massendinfo ( status )" };
-  public h hHS;
+  public com.tencent.mm.storagebase.h hKK;
   
-  public b(h paramh)
+  public b(com.tencent.mm.storagebase.h paramh)
   {
-    this.hHS = paramh;
+    this.hKK = paramh;
   }
   
   public static String a(a parama)
@@ -36,28 +36,28 @@ public final class b
     switch (parama.msgType)
     {
     default: 
-      parama = aj.getContext().getResources().getString(2131757722);
+      parama = ak.getContext().getResources().getString(2131757722);
       AppMethodBeat.o(26350);
       return parama;
     case 1: 
-      parama = parama.dkL();
+      parama = parama.dnL();
       AppMethodBeat.o(26350);
       return parama;
     case 3: 
-      parama = aj.getContext().getResources().getString(2131755853);
+      parama = ak.getContext().getResources().getString(2131755853);
       AppMethodBeat.o(26350);
       return parama;
     case 34: 
-      parama = aj.getContext().getResources().getString(2131755929);
+      parama = ak.getContext().getResources().getString(2131755929);
       AppMethodBeat.o(26350);
       return parama;
     }
-    parama = aj.getContext().getResources().getString(2131755926);
+    parama = ak.getContext().getResources().getString(2131755926);
     AppMethodBeat.o(26350);
     return parama;
   }
   
-  public static Bitmap apk(String paramString)
+  public static Bitmap aqp(String paramString)
   {
     AppMethodBeat.i(26348);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -67,13 +67,13 @@ public final class b
     }
     paramString = paramString.trim();
     Object localObject = new StringBuilder();
-    ba.aBQ();
-    paramString = c.azA() + paramString;
-    int i = BackwardSupportUtil.ExifHelper.cY(paramString);
-    localObject = u.IT(paramString);
+    bc.aCg();
+    paramString = c.azQ() + paramString;
+    int i = BackwardSupportUtil.ExifHelper.df(paramString);
+    localObject = u.Js(paramString);
     paramString = (String)localObject;
     if (i != 0) {
-      paramString = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, i);
+      paramString = com.tencent.mm.sdk.platformtools.h.a((Bitmap)localObject, i);
     }
     AppMethodBeat.o(26348);
     return paramString;
@@ -89,8 +89,8 @@ public final class b
     }
     paramString = paramString.trim();
     Object localObject = new StringBuilder();
-    ba.aBQ();
-    localObject = BackwardSupportUtil.b.o(c.azA() + paramString, paramFloat);
+    bc.aCg();
+    localObject = BackwardSupportUtil.b.p(c.azQ() + paramString, paramFloat);
     paramString = (String)localObject;
     if (localObject != null) {
       paramString = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * paramFloat), (int)(((Bitmap)localObject).getHeight() * paramFloat), true);
@@ -102,72 +102,72 @@ public final class b
   public static a l(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(26349);
-    if (!i.fv(paramString1))
+    if (!o.fB(paramString1))
     {
       AppMethodBeat.o(26349);
       return null;
     }
-    ba.aBQ();
-    Object localObject1 = c.azA();
-    int i = BackwardSupportUtil.ExifHelper.cY(paramString1);
-    String str = com.tencent.mm.b.g.getMessageDigest((paramString1 + System.currentTimeMillis()).getBytes());
-    ad.d("MicroMsg.MasSendInfoStorage", "insert : original img path = ".concat(String.valueOf(paramString1)));
-    Object localObject2 = com.tencent.mm.sdk.platformtools.g.aQc(paramString1);
-    if ((paramInt2 == 0) && ((i.aYo(paramString1) > 204800L) || ((localObject2 != null) && ((((BitmapFactory.Options)localObject2).outHeight > 960) || (((BitmapFactory.Options)localObject2).outWidth > 960)))))
+    bc.aCg();
+    Object localObject1 = c.azQ();
+    int i = BackwardSupportUtil.ExifHelper.df(paramString1);
+    String str = g.getMessageDigest((paramString1 + System.currentTimeMillis()).getBytes());
+    ae.d("MicroMsg.MasSendInfoStorage", "insert : original img path = ".concat(String.valueOf(paramString1)));
+    Object localObject2 = com.tencent.mm.sdk.platformtools.h.aRz(paramString1);
+    if ((paramInt2 == 0) && ((o.aZR(paramString1) > 204800L) || ((localObject2 != null) && ((((BitmapFactory.Options)localObject2).outHeight > 960) || (((BitmapFactory.Options)localObject2).outWidth > 960)))))
     {
-      if (!com.tencent.mm.sdk.platformtools.g.a(paramString1, 960, 960, Bitmap.CompressFormat.JPEG, 70, (String)localObject1, str))
+      if (!com.tencent.mm.sdk.platformtools.h.a(paramString1, 960, 960, Bitmap.CompressFormat.JPEG, 70, (String)localObject1, str))
       {
         AppMethodBeat.o(26349);
         return null;
       }
-      i.bb((String)localObject1, str, str + ".jpg");
+      o.bc((String)localObject1, str, str + ".jpg");
     }
     for (;;)
     {
       paramString1 = str + ".jpg";
-      ad.d("MicroMsg.MasSendInfoStorage", "insert: compressed bigImgPath = ".concat(String.valueOf(paramString1)));
-      if ((paramInt2 != 0) || (i == 0) || (com.tencent.mm.sdk.platformtools.g.a((String)localObject1 + paramString1, i, Bitmap.CompressFormat.JPEG, (String)localObject1, str + ".jpg"))) {
+      ae.d("MicroMsg.MasSendInfoStorage", "insert: compressed bigImgPath = ".concat(String.valueOf(paramString1)));
+      if ((paramInt2 != 0) || (i == 0) || (com.tencent.mm.sdk.platformtools.h.a((String)localObject1 + paramString1, i, Bitmap.CompressFormat.JPEG, (String)localObject1, str + ".jpg"))) {
         break;
       }
       AppMethodBeat.o(26349);
       return null;
       localObject2 = (String)localObject1 + str + ".jpg";
-      paramString1 = i.aY(paramString1, 0, -1);
-      i.e((String)localObject2, paramString1, paramString1.length);
+      paramString1 = o.bb(paramString1, 0, -1);
+      o.e((String)localObject2, paramString1, paramString1.length);
     }
-    str = com.tencent.mm.b.g.getMessageDigest((paramString1 + System.currentTimeMillis()).getBytes());
-    if (!com.tencent.mm.sdk.platformtools.g.a((String)localObject1 + paramString1, 120, 120, Bitmap.CompressFormat.JPEG, 90, (String)localObject1, str))
+    str = g.getMessageDigest((paramString1 + System.currentTimeMillis()).getBytes());
+    if (!com.tencent.mm.sdk.platformtools.h.a((String)localObject1 + paramString1, 120, 120, Bitmap.CompressFormat.JPEG, 90, (String)localObject1, str))
     {
       AppMethodBeat.o(26349);
       return null;
     }
-    ad.d("MicroMsg.MasSendInfoStorage", "insert: thumbName = ".concat(String.valueOf(str)));
+    ae.d("MicroMsg.MasSendInfoStorage", "insert: thumbName = ".concat(String.valueOf(str)));
     localObject1 = new a();
     ((a)localObject1).msgType = 3;
-    ((a)localObject1).vHc = paramString2;
-    ((a)localObject1).vHd = paramInt1;
-    ((a)localObject1).vHb = str;
+    ((a)localObject1).vTg = paramString2;
+    ((a)localObject1).vTh = paramInt1;
+    ((a)localObject1).vTf = str;
     ((a)localObject1).filename = paramString1;
     AppMethodBeat.o(26349);
     return localObject1;
   }
   
-  public final Cursor IE(int paramInt)
+  public final Cursor Jc(int paramInt)
   {
     AppMethodBeat.i(26345);
     Object localObject = "select massendinfo.clientid,massendinfo.status,massendinfo.createtime,massendinfo.lastmodifytime,massendinfo.filename,massendinfo.thumbfilename,massendinfo.tolist,massendinfo.tolistcount,massendinfo.msgtype,massendinfo.mediatime,massendinfo.datanetoffset,massendinfo.datalen,massendinfo.thumbnetoffset,massendinfo.thumbtotallen,massendinfo.reserved1,massendinfo.reserved2,massendinfo.reserved3,massendinfo.reserved4 from massendinfo   ORDER BY createtime ASC  LIMIT " + paramInt + " offset (SELECT count(*) FROM massendinfo ) -" + paramInt;
-    ad.v("MicroMsg.MasSendInfoStorage", "getCursor sql:".concat(String.valueOf(localObject)));
-    localObject = this.hHS.a((String)localObject, null, 0);
+    ae.v("MicroMsg.MasSendInfoStorage", "getCursor sql:".concat(String.valueOf(localObject)));
+    localObject = this.hKK.a((String)localObject, null, 0);
     AppMethodBeat.o(26345);
     return localObject;
   }
   
-  public final a apl(String paramString)
+  public final a aqq(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(26351);
-    paramString = "select massendinfo.clientid,massendinfo.status,massendinfo.createtime,massendinfo.lastmodifytime,massendinfo.filename,massendinfo.thumbfilename,massendinfo.tolist,massendinfo.tolistcount,massendinfo.msgtype,massendinfo.mediatime,massendinfo.datanetoffset,massendinfo.datalen,massendinfo.thumbnetoffset,massendinfo.thumbtotallen,massendinfo.reserved1,massendinfo.reserved2,massendinfo.reserved3,massendinfo.reserved4 from massendinfo   where massendinfo.clientid = \"" + bt.aQN(String.valueOf(paramString)) + "\"";
-    Cursor localCursor = this.hHS.a(paramString, null, 2);
+    paramString = "select massendinfo.clientid,massendinfo.status,massendinfo.createtime,massendinfo.lastmodifytime,massendinfo.filename,massendinfo.thumbfilename,massendinfo.tolist,massendinfo.tolistcount,massendinfo.msgtype,massendinfo.mediatime,massendinfo.datanetoffset,massendinfo.datalen,massendinfo.thumbnetoffset,massendinfo.thumbtotallen,massendinfo.reserved1,massendinfo.reserved2,massendinfo.reserved3,massendinfo.reserved4 from massendinfo   where massendinfo.clientid = \"" + bu.aSk(String.valueOf(paramString)) + "\"";
+    Cursor localCursor = this.hKK.a(paramString, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(26351);
@@ -184,11 +184,11 @@ public final class b
     return paramString;
   }
   
-  public final int dkO()
+  public final int dnO()
   {
     int i = 0;
     AppMethodBeat.i(26346);
-    Cursor localCursor = this.hHS.a("SELECT count(*) FROM massendinfo", null, 2);
+    Cursor localCursor = this.hKK.a("SELECT count(*) FROM massendinfo", null, 2);
     if (localCursor.moveToFirst()) {
       i = localCursor.getInt(0);
     }

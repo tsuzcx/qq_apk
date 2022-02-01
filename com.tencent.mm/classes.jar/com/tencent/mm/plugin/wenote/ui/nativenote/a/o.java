@@ -12,30 +12,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.pluginsdk.l.f;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
-import com.tencent.mm.vfs.i;
 
 public final class o
   extends j
 {
-  public ImageView psT;
-  public MMPinProgressBtn psU;
-  public ImageView psV;
-  private ImageView psW;
+  public MMPinProgressBtn pzA;
+  public ImageView pzB;
+  private ImageView pzC;
+  public ImageView pzz;
   
   public o(View paramView, com.tencent.mm.plugin.wenote.model.nativenote.manager.k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30883);
-    this.psT = ((ImageView)paramView.findViewById(2131305196));
-    this.psU = ((MMPinProgressBtn)paramView.findViewById(2131306379));
-    this.psV = ((ImageView)paramView.findViewById(2131306398));
-    this.psT.setImageResource(2131691166);
-    this.psW = ((ImageView)paramView.findViewById(2131306355));
-    this.jld.setVisibility(8);
-    this.psv.setVisibility(8);
-    this.psW.setVisibility(8);
-    this.psz.setTag(this);
-    this.psz.setOnClickListener(this.psK);
+    this.pzz = ((ImageView)paramView.findViewById(2131305196));
+    this.pzA = ((MMPinProgressBtn)paramView.findViewById(2131306379));
+    this.pzB = ((ImageView)paramView.findViewById(2131306398));
+    this.pzz.setImageResource(2131691166);
+    this.pzC = ((ImageView)paramView.findViewById(2131306355));
+    this.jnX.setVisibility(8);
+    this.pzb.setVisibility(8);
+    this.pzC.setVisibility(8);
+    this.pzf.setTag(this);
+    this.pzf.setOnClickListener(this.pzq);
     AppMethodBeat.o(30883);
   }
   
@@ -43,14 +42,14 @@ public final class o
   {
     AppMethodBeat.i(30884);
     com.tencent.mm.plugin.wenote.model.a.k localk = (com.tencent.mm.plugin.wenote.model.a.k)paramc;
-    Object localObject3 = com.tencent.mm.plugin.wenote.c.c.aaL(localk.thumbPath);
+    Object localObject3 = com.tencent.mm.plugin.wenote.c.c.abC(localk.thumbPath);
     Object localObject1 = localObject3;
     if (localObject3 == null)
     {
       localObject1 = localObject3;
-      if (i.fv(localk.dBx))
+      if (com.tencent.mm.vfs.o.fB(localk.dCC))
       {
-        localObject3 = e.agH(localk.dBx);
+        localObject3 = e.ahE(localk.dCC);
         localObject1 = localObject3;
         if (localObject3 == null) {}
       }
@@ -59,24 +58,24 @@ public final class o
     {
       try
       {
-        if (i.fv(localk.thumbPath)) {
-          i.deleteFile(localk.thumbPath);
+        if (com.tencent.mm.vfs.o.fB(localk.thumbPath)) {
+          com.tencent.mm.vfs.o.deleteFile(localk.thumbPath);
         }
         f.a((Bitmap)localObject3, Bitmap.CompressFormat.JPEG, localk.thumbPath, false);
         localObject1 = localObject3;
         if (localObject1 == null) {
           break label193;
         }
-        localObject3 = this.psV.getLayoutParams();
+        localObject3 = this.pzB.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject3).width = -1;
         ((ViewGroup.LayoutParams)localObject3).height = -1;
-        this.psV.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        this.psV.setImageBitmap(localObject1);
-        this.psV.setBackground(null);
-        if (!paramc.ptM) {
+        this.pzB.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        this.pzB.setImageBitmap(localObject1);
+        this.pzB.setBackground(null);
+        if (!paramc.pAq) {
           break label269;
         }
-        this.psW.setVisibility(0);
+        this.pzC.setVisibility(0);
         super.a(paramc, paramInt1, paramInt2);
         AppMethodBeat.o(30884);
         return;
@@ -87,19 +86,19 @@ public final class o
       }
       continue;
       label193:
-      Object localObject2 = this.psV.getResources().getDisplayMetrics();
+      Object localObject2 = this.pzB.getResources().getDisplayMetrics();
       float f = ((DisplayMetrics)localObject2).density;
-      localObject3 = this.psV.getLayoutParams();
+      localObject3 = this.pzB.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject3).width = (((DisplayMetrics)localObject2).widthPixels - (int)(f * 40.0F + 0.5F));
       ((ViewGroup.LayoutParams)localObject3).height = (((ViewGroup.LayoutParams)localObject3).width * 52 / 68);
-      this.psV.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      this.pzB.setLayoutParams((ViewGroup.LayoutParams)localObject3);
       continue;
       label269:
-      this.psW.setVisibility(8);
+      this.pzC.setVisibility(8);
     }
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return 6;
   }

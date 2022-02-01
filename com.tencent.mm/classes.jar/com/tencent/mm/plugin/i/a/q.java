@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.i.a;
 import com.tencent.mm.kernel.c.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/findersdk/api/IFinderWxMessageSessionMuteSetting;", "Lcom/tencent/mm/kernel/service/IService;", "modifyWxMsgSessionMuteSetting", "", "ifOpen", "", "session", "", "finder-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/findersdk/api/IFinderWxMessageSessionMuteSetting;", "Lcom/tencent/mm/kernel/service/IService;", "modifyWxMsgSessionMuteSetting", "", "ifOpen", "", "session", "", "finder-sdk_release"})
 public abstract interface q
   extends a
 {
-  public abstract void v(boolean paramBoolean, String paramString);
+  public abstract void w(boolean paramBoolean, String paramString);
 }
 
 

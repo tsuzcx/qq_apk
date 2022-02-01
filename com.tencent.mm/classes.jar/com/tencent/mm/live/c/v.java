@@ -16,12 +16,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.live.b.f.b;
 import com.tencent.mm.live.b.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.ar;
@@ -29,62 +29,62 @@ import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
 public final class v
   extends a
   implements View.OnClickListener, f
 {
-  public static final v.a gUK;
-  private final TextView gSC;
-  private final b gSM;
-  public final bi gUE;
-  private final ImageView gUF;
-  private final RelativeLayout gUG;
-  private boolean gUH;
-  private final Object gUI;
-  private final d.g.a.a<z> gUJ;
+  public static final v.a gXt;
+  private final TextView gVl;
+  private final b gVv;
+  public final bi gXn;
+  private final ImageView gXo;
+  private final RelativeLayout gXp;
+  private boolean gXq;
+  private final Object gXr;
+  private final d.g.a.a<z> gXs;
   private int likeCount;
   
   static
   {
-    AppMethodBeat.i(212442);
-    gUK = new v.a((byte)0);
-    AppMethodBeat.o(212442);
+    AppMethodBeat.i(216062);
+    gXt = new v.a((byte)0);
+    AppMethodBeat.o(216062);
   }
   
   public v(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(212441);
-    this.gSM = paramb;
+    AppMethodBeat.i(216061);
+    this.gVv = paramb;
     paramb = paramViewGroup.findViewById(2131307850);
     p.g(paramb, "root.findViewById(R.id.live_visitor_mic_parent)");
-    this.gUE = new bi((ViewGroup)paramb, this.gSM);
+    this.gXn = new bi((ViewGroup)paramb, this.gVv);
     paramb = paramViewGroup.findViewById(2131307762);
     p.g(paramb, "root.findViewById(R.id.live_right_panel_like)");
-    this.gUF = ((ImageView)paramb);
+    this.gXo = ((ImageView)paramb);
     paramb = paramViewGroup.findViewById(2131307763);
     p.g(paramb, "root.findViewById(R.id.l…ht_panel_like_click_area)");
-    this.gUG = ((RelativeLayout)paramb);
+    this.gXp = ((RelativeLayout)paramb);
     paramb = paramViewGroup.findViewById(2131307764);
     p.g(paramb, "root.findViewById(R.id.l…ight_panel_like_count_tv)");
-    this.gSC = ((TextView)paramb);
-    this.gUH = true;
-    this.gUI = paramViewGroup.getContext().getSystemService("vibrator");
-    this.gUJ = ((d.g.a.a)new b(this, paramViewGroup));
-    paramb = this.gUF;
+    this.gVl = ((TextView)paramb);
+    this.gXq = true;
+    this.gXr = paramViewGroup.getContext().getSystemService("vibrator");
+    this.gXs = ((d.g.a.a)new b(this, paramViewGroup));
+    paramb = this.gXo;
     Context localContext = paramViewGroup.getContext();
     p.g(localContext, "root.context");
-    paramb.setImageDrawable(ao.e(localContext.getResources().getDrawable(2131690419), -1));
-    this.gUG.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
+    paramb.setImageDrawable(ao.e(localContext.getResources().getDrawable(2131691626), -1));
+    this.gXp.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(212429);
+        AppMethodBeat.i(216049);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         p.g(paramAnonymousMotionEvent, "event");
         if (paramAnonymousMotionEvent.getActionMasked() == 0)
         {
@@ -95,109 +95,109 @@ public final class v
           MotionEvent tmp73_69 = tmp69_68;
           tmp73_69[1] = 0;
           tmp73_69;
-          v.c(this.gUL).getLocationOnScreen(paramAnonymousMotionEvent);
+          v.c(this.gXu).getLocationOnScreen(paramAnonymousMotionEvent);
           int i = paramAnonymousMotionEvent[0];
-          int j = v.c(this.gUL).getWidth() / 2;
-          localObject = f.b.gMX;
-          paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.amW() / 2);
+          int j = v.c(this.gXu).getWidth() / 2;
+          localObject = f.b.gPG;
+          paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.anl() / 2);
           paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", paramAnonymousMotionEvent[1] - aq.fromDPToPix(paramViewGroup.getContext(), 16));
-          v.d(this.gUL).a(b.c.gRT, paramAnonymousView);
-          paramAnonymousView = this.gUL;
+          v.d(this.gXu).a(b.c.gUB, paramAnonymousView);
+          paramAnonymousView = this.gXu;
           v.a(paramAnonymousView, v.e(paramAnonymousView) + 1);
-          if (v.f(this.gUL))
+          if (v.f(this.gXu))
           {
-            paramAnonymousView = i.gPh;
-            i.nG(v.e(this.gUL));
-            v.g(this.gUL);
-            v.a(this.gUL, 0);
+            paramAnonymousView = i.gRP;
+            i.nJ(v.e(this.gXu));
+            v.g(this.gXu);
+            v.a(this.gXu, 0);
           }
-          if ((v.h(this.gUL) instanceof Vibrator)) {
-            ((Vibrator)v.h(this.gUL)).vibrate(10L);
+          if ((v.h(this.gXu) instanceof Vibrator)) {
+            ((Vibrator)v.h(this.gXu)).vibrate(10L);
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(212429);
+        AppMethodBeat.o(216049);
         return true;
       }
     });
-    paramb = com.tencent.mm.live.b.c.gMO;
-    com.tencent.mm.live.b.c.d(name(), this.gUJ);
+    paramb = com.tencent.mm.live.b.c.gPx;
+    com.tencent.mm.live.b.c.d(name(), this.gXs);
     if (paramViewGroup.findViewById(2131298772) != null)
     {
       paramb = new LinearLayout.LayoutParams(-1, -1);
-      paramb.bottomMargin = ar.ej(paramViewGroup.getContext());
+      paramb.bottomMargin = ar.en(paramViewGroup.getContext());
       paramViewGroup = paramViewGroup.findViewById(2131298772);
       p.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
       ((LinearLayout)paramViewGroup).setLayoutParams((ViewGroup.LayoutParams)paramb);
     }
-    AppMethodBeat.o(212441);
+    AppMethodBeat.o(216061);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(212437);
+    AppMethodBeat.i(216057);
     p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (w.cpQ[paramc.ordinal()])
+    switch (w.cqt[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(212437);
+      AppMethodBeat.o(216057);
       return;
-      nI(8);
-      AppMethodBeat.o(212437);
+      nL(8);
+      AppMethodBeat.o(216057);
       return;
-      nI(0);
-      this.gGK.post((Runnable)new d(this));
-      AppMethodBeat.o(212437);
+      nL(0);
+      this.gJt.post((Runnable)new d(this));
+      AppMethodBeat.o(216057);
       return;
       if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
       {
-        nI(8);
-        AppMethodBeat.o(212437);
+        nL(8);
+        AppMethodBeat.o(216057);
         return;
       }
-      nI(0);
+      nL(0);
     }
   }
   
-  public final void aoA()
+  public final void aoO()
   {
-    AppMethodBeat.i(212439);
-    com.tencent.mm.kernel.b localb = g.ajB();
+    AppMethodBeat.i(216058);
+    com.tencent.mm.kernel.b localb = g.ajQ();
     p.g(localb, "MMKernel.network()");
-    localb.aiU().b(3957, (f)this);
-    AppMethodBeat.o(212439);
+    localb.ajj().a(3957, (f)this);
+    AppMethodBeat.o(216058);
   }
   
-  public final boolean aoB()
+  public final void aoP()
+  {
+    AppMethodBeat.i(216059);
+    com.tencent.mm.kernel.b localb = g.ajQ();
+    p.g(localb, "MMKernel.network()");
+    localb.ajj().b(3957, (f)this);
+    AppMethodBeat.o(216059);
+  }
+  
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void aoz()
+  public final void nL(int paramInt)
   {
-    AppMethodBeat.i(212438);
-    com.tencent.mm.kernel.b localb = g.ajB();
-    p.g(localb, "MMKernel.network()");
-    localb.aiU().a(3957, (f)this);
-    AppMethodBeat.o(212438);
-  }
-  
-  public final void nI(int paramInt)
-  {
-    AppMethodBeat.i(212436);
-    this.gGK.setVisibility(paramInt);
-    AppMethodBeat.o(212436);
+    AppMethodBeat.i(216056);
+    this.gJt.setVisibility(paramInt);
+    AppMethodBeat.o(216056);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(212435);
+    AppMethodBeat.i(216055);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
     if (paramView != null)
     {
       paramView = Integer.valueOf(paramView.getId());
@@ -208,7 +208,7 @@ public final class v
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212435);
+      AppMethodBeat.o(216055);
       return;
       paramView = null;
       break;
@@ -222,22 +222,22 @@ public final class v
         tmp114_110 = tmp110_108;
         tmp114_110[1] = 0;
         tmp114_110;
-        this.gUG.getLocationOnScreen((int[])localObject);
+        this.gXp.getLocationOnScreen((int[])localObject);
         int i = localObject[0];
-        int j = this.gUG.getWidth() / 2;
-        f.b localb = f.b.gMX;
-        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.amW() / 2);
+        int j = this.gXp.getWidth() / 2;
+        f.b localb = f.b.gPG;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.anl() / 2);
         i = localObject[1];
-        j = aq.fromDPToPix(this.gGK.getContext(), 16);
-        localObject = f.b.gMX;
-        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - f.b.amW());
-        this.gSM.a(b.c.gRT, paramView);
+        j = aq.fromDPToPix(this.gJt.getContext(), 16);
+        localObject = f.b.gPG;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - f.b.anl());
+        this.gVv.a(b.c.gUB, paramView);
         this.likeCount += 1;
-        if (this.gUH)
+        if (this.gXq)
         {
-          paramView = i.gPh;
-          i.nG(this.likeCount);
-          this.gUH = false;
+          paramView = i.gRP;
+          i.nJ(this.likeCount);
+          this.gXq = false;
           this.likeCount = 0;
         }
       }
@@ -246,29 +246,29 @@ public final class v
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(212440);
+    AppMethodBeat.i(216060);
     if ((paramn instanceof com.tencent.mm.live.b.a.q))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        com.tencent.mm.ad.c.g((d.g.a.a)new c(this));
+        com.tencent.mm.ac.c.h((d.g.a.a)new c(this));
       }
-      ad.i("MicroMsg.LiveGuestRightPanelPlugin", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " likeCount:" + this.likeCount);
+      ae.i("MicroMsg.LiveGuestRightPanelPlugin", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " likeCount:" + this.likeCount);
       if (this.likeCount > 0)
       {
-        paramString = i.gPh;
-        i.nG(this.likeCount);
-        this.gUH = false;
+        paramString = i.gRP;
+        i.nJ(this.likeCount);
+        this.gXq = false;
         this.likeCount = 0;
-        AppMethodBeat.o(212440);
+        AppMethodBeat.o(216060);
         return;
       }
-      this.gUH = true;
+      this.gXq = true;
       this.likeCount = 0;
     }
-    AppMethodBeat.o(212440);
+    AppMethodBeat.o(216060);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -279,7 +279,7 @@ public final class v
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.q
     implements d.g.a.a<z>
@@ -290,7 +290,7 @@ public final class v
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -298,15 +298,15 @@ public final class v
     
     public final void run()
     {
-      AppMethodBeat.i(212434);
-      v.a(this.gUL);
-      AppMethodBeat.o(212434);
+      AppMethodBeat.i(216054);
+      v.a(this.gXu);
+      AppMethodBeat.o(216054);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.c.v
  * JD-Core Version:    0.7.0.1
  */

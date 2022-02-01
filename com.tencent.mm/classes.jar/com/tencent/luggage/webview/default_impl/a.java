@@ -22,7 +22,7 @@ public class a
   implements com.tencent.luggage.webview.a
 {
   private p chX;
-  private DefaultWebView cqC;
+  private DefaultWebView crg;
   private Context mContext;
   private Handler mainThreadHandler;
   
@@ -31,7 +31,7 @@ public class a
     AppMethodBeat.i(140543);
     this.mainThreadHandler = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
-    this.cqC = new DefaultWebView(paramContext);
+    this.crg = new DefaultWebView(paramContext);
     AppMethodBeat.o(140543);
   }
   
@@ -82,7 +82,7 @@ public class a
   public boolean canGoBack()
   {
     AppMethodBeat.i(140551);
-    boolean bool = this.cqC.canGoBack();
+    boolean bool = this.crg.canGoBack();
     AppMethodBeat.o(140551);
     return bool;
   }
@@ -90,13 +90,13 @@ public class a
   public void destroy()
   {
     AppMethodBeat.i(140552);
-    this.cqC.destroy();
+    this.crg.destroy();
     AppMethodBeat.o(140552);
   }
   
   public void evaluateJavascript(final String paramString, final ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(187605);
+    AppMethodBeat.i(201172);
     paramString = new Runnable()
     {
       public final void run()
@@ -109,11 +109,11 @@ public class a
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       paramString.run();
-      AppMethodBeat.o(187605);
+      AppMethodBeat.o(201172);
       return;
     }
     this.mainThreadHandler.post(paramString);
-    AppMethodBeat.o(187605);
+    AppMethodBeat.o(201172);
   }
   
   public Context getContext()
@@ -128,20 +128,20 @@ public class a
   
   public View getView()
   {
-    return this.cqC;
+    return this.crg;
   }
   
   public void goBack()
   {
     AppMethodBeat.i(140550);
-    this.cqC.goBack();
+    this.crg.goBack();
     AppMethodBeat.o(140550);
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(140548);
-    this.cqC.loadData(paramString1, paramString2, paramString3);
+    this.crg.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(140548);
   }
   
@@ -170,7 +170,7 @@ public class a
   public void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(140547);
-    this.cqC.loadUrl(paramString, paramMap);
+    this.crg.loadUrl(paramString, paramMap);
     AppMethodBeat.o(140547);
   }
   
@@ -191,7 +191,7 @@ public class a
   public void stopLoading()
   {
     AppMethodBeat.i(140549);
-    this.cqC.stopLoading();
+    this.crg.stopLoading();
     AppMethodBeat.o(140549);
   }
 }

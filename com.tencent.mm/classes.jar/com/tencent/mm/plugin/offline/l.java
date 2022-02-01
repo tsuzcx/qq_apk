@@ -34,8 +34,8 @@ public class l
     paramBundle = new Intent(paramActivity, WalletOfflineCoinPurseUI.class);
     paramBundle.addFlags(67108864);
     paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramBundle.ahp(), "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramBundle.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramBundle.ahE(), "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramBundle.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(66274);
   }
@@ -45,7 +45,7 @@ public class l
     return false;
   }
   
-  public final String cQc()
+  public final String cSH()
   {
     return "VerifyProcess";
   }
@@ -54,7 +54,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.l
  * JD-Core Version:    0.7.0.1
  */

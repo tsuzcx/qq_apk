@@ -4,10 +4,10 @@ import android.content.Context;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.vfs.k;
 import java.io.File;
 import java.security.MessageDigest;
 
@@ -55,7 +55,7 @@ public class CertUtil
   private void checkDir(String paramString)
   {
     AppMethodBeat.i(73293);
-    paramString = new e(paramString);
+    paramString = new k(paramString);
     if (!paramString.exists())
     {
       paramString.mkdirs();
@@ -77,7 +77,7 @@ public class CertUtil
     {
       try
       {
-        paramString = new e(paramString);
+        paramString = new k(paramString);
         if (paramString.exists()) {
           continue;
         }
@@ -99,39 +99,39 @@ public class CertUtil
   private boolean del_all_files(String paramString)
   {
     AppMethodBeat.i(73295);
-    e locale = new e(paramString);
-    if (!locale.exists())
+    k localk = new k(paramString);
+    if (!localk.exists())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    if (!locale.isDirectory())
+    if (!localk.isDirectory())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    String[] arrayOfString = locale.list();
+    String[] arrayOfString = localk.list();
     int i = 0;
     boolean bool = false;
     if (i < arrayOfString.length) {
       if (paramString.endsWith("/"))
       {
-        locale = new e(paramString + arrayOfString[i]);
+        localk = new k(paramString + arrayOfString[i]);
         label102:
-        if (!locale.isFile()) {
+        if (!localk.isFile()) {
           break label161;
         }
-        locale.delete();
+        localk.delete();
       }
     }
     for (;;)
     {
       i += 1;
       break;
-      locale = new e(paramString + "/" + arrayOfString[i]);
+      localk = new k(paramString + "/" + arrayOfString[i]);
       break label102;
       label161:
-      if (locale.isDirectory())
+      if (localk.isDirectory())
       {
         del_all_files(paramString + "/" + arrayOfString[i]);
         del_dir(paramString + "/" + arrayOfString[i], true);
@@ -150,7 +150,7 @@ public class CertUtil
     {
       del_all_files(paramString);
       if (paramBoolean) {
-        new e(paramString.toString()).delete();
+        new k(paramString.toString()).delete();
       }
       AppMethodBeat.o(73296);
       return;
@@ -284,8 +284,8 @@ public class CertUtil
   {
     AppMethodBeat.i(73297);
     boolean bool = true;
-    paramString = new e(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.fOM() == null)) {
+    paramString = new k(paramString);
+    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.fTj() == null)) {
       bool = false;
     }
     AppMethodBeat.o(73297);
@@ -308,7 +308,7 @@ public class CertUtil
   {
     AppMethodBeat.i(73298);
     boolean bool = true;
-    paramString = new e(paramString);
+    paramString = new k(paramString);
     if ((!paramString.exists()) || (!paramString.isDirectory())) {
       bool = false;
     }
@@ -875,19 +875,19 @@ public class CertUtil
     this.eventListener = paramEventListener;
     this.mContext = paramContext.getApplicationContext();
     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-    if (i.IS_FLAVOR_RED) {}
+    if (j.IS_FLAVOR_RED) {}
     try
     {
-      ad.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bt.flS() });
+      ae.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bu.fpN() });
       this.imsi = localTelephonyManager.getSubscriberId();
-      ad.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { bt.flS() });
+      ae.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { bu.fpN() });
       this.iccid = localTelephonyManager.getSimSerialNumber();
-      ad.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bt.flS() });
+      ae.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bu.fpN() });
       this.imei = localTelephonyManager.getDeviceId();
       this.softid = Settings.System.getString(paramContext.getContentResolver(), "android_id");
       label131:
       this.deskey = paramEventListener.getUniqueID();
-      ad.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
+      ae.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
       for (;;)
       {
         this.imei = this.deskey;
@@ -999,7 +999,7 @@ public class CertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tenpay.ndk.CertUtil
  * JD-Core Version:    0.7.0.1
  */

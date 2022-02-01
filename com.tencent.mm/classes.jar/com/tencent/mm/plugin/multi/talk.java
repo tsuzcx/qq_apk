@@ -10,7 +10,7 @@ public class talk
 {
   public static int VOICE_FRAME_DURATION;
   public static int VOICE_SAMPLERATE;
-  public static int vZT;
+  public static int wlX;
   public byte[] field_capInfo = null;
   public int field_localImgHeight = 0;
   public int field_localImgWidth = 0;
@@ -30,10 +30,10 @@ public class talk
     AppMethodBeat.i(62794);
     VOICE_SAMPLERATE = 8000;
     VOICE_FRAME_DURATION = 20;
-    vZT = 9;
+    wlX = 9;
     try
     {
-      if ((a.LER) && (a.LFi))
+      if ((a.MbV) && (a.Mcm))
       {
         System.loadLibrary("stlport_shared");
         System.loadLibrary("wechatxlog");

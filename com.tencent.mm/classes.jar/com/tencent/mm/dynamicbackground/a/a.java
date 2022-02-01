@@ -5,18 +5,18 @@ import d.g.b.p;
 import d.l;
 import java.util.GregorianCalendar;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "", "()V", "bgSystemColorConfig", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$BgSystemColorConfig;", "color", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "getColor", "()Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "updateColor", "", "BgSystemColorConfig", "ColorConfig", "Companion", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "", "()V", "bgSystemColorConfig", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$BgSystemColorConfig;", "color", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "getColor", "()Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "updateColor", "", "BgSystemColorConfig", "ColorConfig", "Companion", "dynamicbg_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.DynamicBackgroundColorHelper";
-  public static final c gfC;
-  public final b gfA;
-  private final a gfB;
+  public static final c ghU;
+  public final b ghS;
+  private final a ghT;
   
   static
   {
     AppMethodBeat.i(103090);
-    gfC = new c((byte)0);
+    ghU = new c((byte)0);
     TAG = "MicroMsg.DynamicBackgroundColorHelper";
     AppMethodBeat.o(103090);
   }
@@ -24,20 +24,20 @@ public final class a
   public a()
   {
     AppMethodBeat.i(103089);
-    this.gfA = new b();
-    this.gfB = new a();
-    this.gfA.h(new float[] { 0.0F, 0.0F, 0.0F, 0.0F });
-    this.gfA.i(new float[] { 0.0F, 0.0F, 0.0F, 0.0F });
-    this.gfB.gfD.h(c.lR(11064532));
-    this.gfB.gfD.i(c.lR(2770276));
-    this.gfB.gfE.h(c.lR(8553090));
-    this.gfB.gfE.i(c.lR(0));
-    this.gfB.gfF.h(c.lR(5260629));
-    this.gfB.gfF.i(c.lR(0));
+    this.ghS = new b();
+    this.ghT = new a();
+    this.ghS.h(new float[] { 0.0F, 0.0F, 0.0F, 0.0F });
+    this.ghS.i(new float[] { 0.0F, 0.0F, 0.0F, 0.0F });
+    this.ghT.ghV.h(c.lT(11064532));
+    this.ghT.ghV.i(c.lT(2770276));
+    this.ghT.ghW.h(c.lT(8553090));
+    this.ghT.ghW.i(c.lT(0));
+    this.ghT.ghX.h(c.lT(5260629));
+    this.ghT.ghX.i(c.lT(0));
     AppMethodBeat.o(103089);
   }
   
-  public final void adV()
+  public final void aeh()
   {
     AppMethodBeat.i(103088);
     long l = System.currentTimeMillis() / 1000L;
@@ -54,57 +54,57 @@ public final class a
     if (f1 > 2.0F)
     {
       f1 -= 2.0F;
-      localb = this.gfB.gfF;
-      localObject = this.gfB.gfD;
+      localb = this.ghT.ghX;
+      localObject = this.ghT.ghV;
     }
     for (;;)
     {
-      c.b(this.gfA.gfH, localb, (b)localObject, 0, f1);
-      c.b(this.gfA.gfI, localb, (b)localObject, 1, f1);
+      c.b(this.ghS.ghZ, localb, (b)localObject, 0, f1);
+      c.b(this.ghS.gia, localb, (b)localObject, 1, f1);
       AppMethodBeat.o(103088);
       return;
       if (f1 > 1.0F)
       {
         f1 -= 1.0F;
-        localb = this.gfB.gfE;
-        localObject = this.gfB.gfF;
+        localb = this.ghT.ghW;
+        localObject = this.ghT.ghX;
       }
       else
       {
-        localb = this.gfB.gfD;
-        localObject = this.gfB.gfE;
+        localb = this.ghT.ghV;
+        localObject = this.ghT.ghW;
       }
     }
   }
   
-  @l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$BgSystemColorConfig;", "", "(Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;)V", "endColorConfig", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "getEndColorConfig", "()Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "setEndColorConfig", "(Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;)V", "middleColorConfig", "getMiddleColorConfig", "setMiddleColorConfig", "startColorConfig", "getStartColorConfig", "setStartColorConfig", "dynamicbg_release"})
+  @l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$BgSystemColorConfig;", "", "(Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;)V", "endColorConfig", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "getEndColorConfig", "()Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "setEndColorConfig", "(Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;)V", "middleColorConfig", "getMiddleColorConfig", "setMiddleColorConfig", "startColorConfig", "getStartColorConfig", "setStartColorConfig", "dynamicbg_release"})
   public final class a
   {
-    a.b gfD;
-    a.b gfE;
-    a.b gfF;
+    a.b ghV;
+    a.b ghW;
+    a.b ghX;
     
     public a()
     {
       AppMethodBeat.i(103081);
-      this.gfD = new a.b(this$1);
-      this.gfE = new a.b(this$1);
-      this.gfF = new a.b(this$1);
+      this.ghV = new a.b(this$1);
+      this.ghW = new a.b(this$1);
+      this.ghX = new a.b(this$1);
       AppMethodBeat.o(103081);
     }
   }
   
-  @l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "", "(Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;)V", "bgColor1", "", "getBgColor1", "()[F", "setBgColor1", "([F)V", "bgColor2", "getBgColor2", "setBgColor2", "dynamicbg_release"})
+  @l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "", "(Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;)V", "bgColor1", "", "getBgColor1", "()[F", "setBgColor1", "([F)V", "bgColor2", "getBgColor2", "setBgColor2", "dynamicbg_release"})
   public final class b
   {
-    public float[] gfH;
-    public float[] gfI;
+    public float[] ghZ;
+    public float[] gia;
     
     public b()
     {
       AppMethodBeat.i(103084);
-      this.gfH = new float[4];
-      this.gfI = new float[4];
+      this.ghZ = new float[4];
+      this.gia = new float[4];
       AppMethodBeat.o(103084);
     }
     
@@ -112,7 +112,7 @@ public final class a
     {
       AppMethodBeat.i(103082);
       p.h(paramArrayOfFloat, "<set-?>");
-      this.gfH = paramArrayOfFloat;
+      this.ghZ = paramArrayOfFloat;
       AppMethodBeat.o(103082);
     }
     
@@ -120,12 +120,12 @@ public final class a
     {
       AppMethodBeat.i(103083);
       p.h(paramArrayOfFloat, "<set-?>");
-      this.gfI = paramArrayOfFloat;
+      this.gia = paramArrayOfFloat;
       AppMethodBeat.o(103083);
     }
   }
   
-  @l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$Companion;", "", "()V", "TAG", "", "colorArrayToInt", "", "color", "", "getBGColorFromStartConfig", "", "result", "startConfig", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "endConfig", "colorIndex", "portion", "", "getVector4ColorFromHex", "hex", "alpha", "mixColorWithA", "aColor", "bColor", "dynamicbg_release"})
+  @l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$Companion;", "", "()V", "TAG", "", "colorArrayToInt", "", "color", "", "getBGColorFromStartConfig", "", "result", "startConfig", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper$ColorConfig;", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "endConfig", "colorIndex", "portion", "", "getVector4ColorFromHex", "hex", "alpha", "mixColorWithA", "aColor", "bColor", "dynamicbg_release"})
   public static final class c
   {
     private static void a(float[] paramArrayOfFloat, a.b paramb1, a.b paramb2, int paramInt, float paramFloat)
@@ -134,15 +134,15 @@ public final class a
       if (paramInt == 0)
       {
         if (paramArrayOfFloat == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramb1 = paramb1.gfH;
+        paramb1 = paramb1.ghZ;
         if (paramb1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramb2 = paramb2.gfH;
+        paramb2 = paramb2.ghZ;
         if (paramb2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         a(paramArrayOfFloat, paramb1, paramb2, paramFloat);
         AppMethodBeat.o(103086);
@@ -151,15 +151,15 @@ public final class a
       if (paramInt == 1)
       {
         if (paramArrayOfFloat == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramb1 = paramb1.gfI;
+        paramb1 = paramb1.gia;
         if (paramb1 == null) {
-          p.gfZ();
+          p.gkB();
         }
-        paramb2 = paramb2.gfI;
+        paramb2 = paramb2.gia;
         if (paramb2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         a(paramArrayOfFloat, paramb1, paramb2, paramFloat);
       }
@@ -186,7 +186,7 @@ public final class a
       return ((i & 0xFF) << 16) + ((m & 0xFF) << 24) + ((j & 0xFF) << 8) + (k & 0xFF);
     }
     
-    static float[] lR(int paramInt)
+    static float[] lT(int paramInt)
     {
       return new float[] { ((0xFF0000 & paramInt) >> 16) / 255.0F, ((0xFF00 & paramInt) >> 8) / 255.0F, ((paramInt & 0xFF) >> 0) / 255.0F, 1.0F };
     }

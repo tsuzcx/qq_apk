@@ -1,373 +1,326 @@
 package com.tencent.mm.plugin.ac;
 
-import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.appbrand.v8.IJSRuntime;
-import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
-import com.tencent.mm.plugin.appbrand.jsruntime.h;
-import com.tencent.mm.plugin.appbrand.jsruntime.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.g.b.q;
+import com.tencent.mm.plugin.report.service.g;
+import d.g.b.p;
 import d.l;
-import d.o;
-import d.u;
-import d.z;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import d.n.n;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webjsengine/WebJsEngine;", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandNodeJSBasedJsEngine;", "()V", "contextJson", "Lcom/tencent/mm/json/JSONObject;", "kotlin.jvm.PlatformType", "getContextJson", "()Lcom/tencent/mm/json/JSONObject;", "contextJson$delegate", "Lkotlin/Lazy;", "contextMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "engineMap", "engineReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineReporter;", "getEngineReporter", "()Lcom/tencent/mm/plugin/webjsengine/WebJsEngineReporter;", "meta", "getMeta", "meta$delegate", "version", "getVersion", "()I", "version$delegate", "wxaPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "getWxaPkg", "()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)Lcom/tencent/mm/json/JSONObject;", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)I", "config", "", "configClient", "context", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "name", "appId", "bizPkg", "type", "cb", "Lkotlin/Function1;", "createJSRuntime", "Lcom/tencent/mm/appbrand/v8/IJSRuntime;", "Lcom/tencent/mm/appbrand/v8/IJSRuntime$Config;", "getCacheCategory", "path", "onError", "contextId", "message", "stackTrace", "readFile", "setup", "clientReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineContextReporter;", "cache", "", "Companion", "webview-sdk_release"})
-public abstract class b
-  extends x
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter;", "", "reportId", "", "initStartTime", "appId", "", "(JJLjava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "baseReportId", "bindStartTimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter$BindInfo;", "configCost", "configStartTime", "getConfigStartTime", "()J", "setConfigStartTime", "(J)V", "createStartTimeMap", "Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter$CreateInfo;", "isMainContextStarted", "", "()Z", "setMainContextStarted", "(Z)V", "lastCreateStartTime", "magicBrushInitCost", "magicBrushInitStartTime", "getReportId", "addBindStartTime", "", "canvasId", "id", "addCreateStartTime", "elementId", "startTime", "onBasePkgRead", "duration", "onBizPkgRead", "onClientContextReady", "onConfigClientEnd", "onConfigEnd", "onConfigStart", "onJsInit", "info", "timeCost", "onMagicBrushInit", "onMagicBrushInitStart", "onMainContextReady", "onRafInit", "onScreen", "performance", "key", "report", "value", "reportWebCanvasRender", "resetBindStartTime", "canvasElementId", "BindInfo", "Companion", "CreateInfo", "webview-sdk_release"})
+public final class b
 {
-  public static final b.a DzW = new b.a((byte)0);
-  private static final String TAG = "MicroMsg.WebJsEngine";
-  private final d.f DzT = d.g.O((d.g.a.a)new d(this));
-  private final d.f DzU = d.g.O((d.g.a.a)new c(this));
-  private final HashMap<String, Integer> DzV = new HashMap();
-  private final d.f okr = d.g.O((d.g.a.a)new h(this));
-  private final HashMap<String, Integer> olL = new HashMap();
+  public static final b DRL;
+  private final long DRB;
+  public volatile boolean DRC;
+  public long DRD;
+  public final ConcurrentHashMap<String, c> DRE;
+  public final ConcurrentHashMap<Integer, a> DRF;
+  public long DRG;
+  public long DRH;
+  public long DRI;
+  public long DRJ;
+  private final long DRK;
+  public final String appId;
+  public final long gDi;
   
-  /* Error */
-  private static String a(com.tencent.mm.plugin.appbrand.appcache.p paramp, String paramString)
+  static
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokeinterface 146 2 0
-    //   9: checkcast 148	java/io/Closeable
-    //   12: astore_3
-    //   13: aload_3
-    //   14: checkcast 150	java/io/InputStream
-    //   17: astore_0
-    //   18: aload_0
-    //   19: ldc 152
-    //   21: invokestatic 158	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   24: new 160	java/lang/String
-    //   27: dup
-    //   28: aload_0
-    //   29: invokestatic 166	d/f/a:X	(Ljava/io/InputStream;)[B
-    //   32: getstatic 172	d/n/d:UTF_8	Ljava/nio/charset/Charset;
-    //   35: invokespecial 175	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
-    //   38: astore_0
-    //   39: aload_3
-    //   40: aconst_null
-    //   41: invokestatic 180	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   44: aload_0
-    //   45: areturn
-    //   46: astore_1
-    //   47: aload_1
-    //   48: athrow
-    //   49: astore_0
-    //   50: aload_3
-    //   51: aload_1
-    //   52: invokestatic 180	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   55: aload_0
-    //   56: athrow
-    //   57: astore_0
-    //   58: aload_2
-    //   59: astore_1
-    //   60: goto -10 -> 50
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	63	0	paramp	com.tencent.mm.plugin.appbrand.appcache.p
-    //   0	63	1	paramString	String
-    //   1	58	2	localObject	Object
-    //   12	39	3	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   13	39	46	java/lang/Throwable
-    //   47	49	49	finally
-    //   13	39	57	finally
+    AppMethodBeat.i(214013);
+    DRL = new b((byte)0);
+    AppMethodBeat.o(214013);
   }
   
-  public static int b(com.tencent.mm.plugin.appbrand.appcache.p paramp)
+  private b(long paramLong, String paramString)
   {
-    d.g.b.p.h(paramp, "$this$version");
-    return c(paramp).optInt("version");
+    AppMethodBeat.i(214011);
+    this.DRK = 1498L;
+    this.gDi = paramLong;
+    this.appId = paramString;
+    this.DRB = 1497L;
+    this.DRE = new ConcurrentHashMap();
+    this.DRF = new ConcurrentHashMap();
+    this.DRG = System.currentTimeMillis();
+    this.DRH = System.currentTimeMillis();
+    AppMethodBeat.o(214011);
   }
   
-  protected static i c(com.tencent.mm.plugin.appbrand.appcache.p paramp)
+  private final void fE(String paramString, int paramInt)
   {
-    d.g.b.p.h(paramp, "$this$meta");
-    return new i(a(paramp, "/meta.json"));
-  }
-  
-  private final i eLA()
-  {
-    return (i)this.DzU.getValue();
-  }
-  
-  private static String kB(String paramString1, String paramString2)
-  {
-    return paramString1 + ':' + URLEncoder.encode(paramString2);
-  }
-  
-  public final void a(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, String paramString1, String paramString2, com.tencent.mm.plugin.appbrand.appcache.p paramp, String paramString3, d.g.a.b<? super String, z> paramb)
-  {
-    d.g.b.p.h(paramg, "context");
-    d.g.b.p.h(paramString1, "name");
-    d.g.b.p.h(paramString2, "appId");
-    d.g.b.p.h(paramp, "bizPkg");
-    d.g.b.p.h(paramString3, "type");
-    try
+    AppMethodBeat.i(214007);
+    Map localMap = (Map)this.DRF;
+    a locala = new a(System.currentTimeMillis(), paramInt, paramString);
+    paramString = (c)this.DRE.get(paramString);
+    if (paramString != null) {}
+    for (boolean bool = paramString.DRP;; bool = false)
     {
-      eKW().a((g.o)new g.c());
-      bqi().b(paramg, "NativeGlobal");
-      Object localObject = eLA().wO("client");
-      paramString3 = c(paramp).wO("client").wO(paramString3);
-      paramString3 = u.S(Long.valueOf(paramString3.getLong("idKey")), paramString3.getString("path"));
-      long l = ((Number)paramString3.first).longValue();
-      String str = (String)paramString3.second;
-      paramString3 = new f(l, f.j.DAu);
-      try
+      locala.DRP = bool;
+      localMap.put(Integer.valueOf(paramInt), locala);
+      AppMethodBeat.o(214007);
+      return;
+    }
+  }
+  
+  public final void L(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(214010);
+    g.yxI.n(this.DRB, paramLong1, paramLong2);
+    g.yxI.n(this.DRK, paramLong1, paramLong2);
+    AppMethodBeat.o(214010);
+  }
+  
+  public final void a(a parama, String paramString, long paramLong)
+  {
+    AppMethodBeat.i(214009);
+    if (!n.nF(paramString, "__popup_canvas__"))
+    {
+      if (parama.DRM)
       {
-        paramString3.a((f.i)new f.g());
-        a(this, (i)localObject, paramg, paramString3, false, paramString1, paramString2, 36);
-        try
+        L(74L, 1L);
+        L(75L, paramLong);
+        if (paramLong < 50L)
         {
-          d.g.b.p.g(str, "path");
-          localObject = a(paramp, str);
-          paramg.a(new URL("https://ws/usr/" + paramString2 + '/' + str), kB(paramString2, str), String.valueOf(b(paramp)), 0, (String)localObject, (ValueCallback)new d(paramb));
-          ad.d(TAG, "biz loaded:" + str + " to " + paramString1);
-          paramString3.a((f.i)new f.h());
-          eKW().a((g.o)new g.d());
+          L(80L, 1L);
+          AppMethodBeat.o(214009);
           return;
         }
-        catch (Exception paramg)
+        if (50L > paramLong) {
+          if (101L <= paramLong) {
+            break label119;
+          }
+        }
+        for (;;)
         {
-          paramString3.a((f.i)new f.f());
-          paramp = com.tencent.mm.plugin.webcanvas.f.DyX;
-          com.tencent.mm.plugin.webcanvas.f.B(new Object[] { paramString2, paramString1, paramg.getMessage() });
-          ad.printErrStackTrace(TAG, (Throwable)paramg, "read client context script", new Object[0]);
-          throw ((Throwable)paramg);
+          if (paramLong > 300L)
+          {
+            L(83L, 1L);
+            AppMethodBeat.o(214009);
+            return;
+            if (100L < paramLong) {
+              break;
+            }
+            L(81L, 1L);
+            AppMethodBeat.o(214009);
+            return;
+            label119:
+            if (300L >= paramLong)
+            {
+              L(82L, 1L);
+              AppMethodBeat.o(214009);
+              return;
+            }
+          }
         }
-        eKW().a((g.o)new g.a());
-      }
-      catch (Exception paramg)
-      {
-        paramp = paramString3;
-      }
-    }
-    catch (Exception paramg)
-    {
-      for (;;)
-      {
-        paramp = null;
-      }
-    }
-    if (paramp != null) {
-      paramp.a((f.i)new f.b());
-    }
-    paramp = com.tencent.mm.plugin.webcanvas.f.DyX;
-    com.tencent.mm.plugin.webcanvas.f.B(new Object[] { paramString2, paramString1, paramg.getMessage() });
-    ad.printErrStackTrace(TAG, (Throwable)paramg, "config engineContext err", new Object[0]);
-  }
-  
-  public final void cxZ()
-  {
-    eKW().a((g.o)new g.i());
-    Object localObject1 = eLA();
-    try
-    {
-      eKW().a((g.o)new g.m());
-      Object localObject2 = ((i)localObject1).wO("main");
-      com.tencent.mm.plugin.appbrand.jsruntime.g localg = bqi();
-      d.g.b.p.g(localg, "mainJsContext");
-      a(this, (i)localObject2, localg, new f(((i)localObject2).getLong("idKey"), f.j.DAs), true, null, null, 56);
-      eKW().a((g.o)new g.n());
-      return;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        eKW().a((g.o)new g.g());
-        localObject1 = ((i)localObject1).wM("engine");
-        if (localObject1 != null) {
-          com.tencent.mm.plugin.webview.k.a.a((com.tencent.mm.ac.f)localObject1, (d.g.a.m)new b(this));
-        }
-        eKW().a((g.o)new g.h());
-        eKW().a((g.o)new g.j());
+        AppMethodBeat.o(214009);
         return;
       }
-      catch (Exception localException2)
-      {
-        eKW().a((g.o)new g.e());
-        ad.printErrStackTrace(TAG, (Throwable)localException2, "config engineContext err", new Object[0]);
-        localObject2 = com.tencent.mm.plugin.webcanvas.f.DyX;
-        com.tencent.mm.plugin.webcanvas.f.B(new Object[] { "wxfedb0854e2b1820d", "engine", localException2.getMessage() });
+      if (parama.DRP) {
+        break label252;
       }
-      localException1 = localException1;
-      eKW().a((g.o)new g.k());
-      ad.printErrStackTrace(TAG, (Throwable)localException1, "config mainContext err", new Object[0]);
-      localObject2 = com.tencent.mm.plugin.webcanvas.f.DyX;
-      com.tencent.mm.plugin.webcanvas.f.B(new Object[] { "wxfedb0854e2b1820d", "main", localException1.getMessage() });
+      L(47L, 1L);
+      L(48L, paramLong);
+      if (50L <= paramLong) {
+        break label214;
+      }
+      if (101L <= paramLong) {
+        break label233;
+      }
+      label186:
+      if (paramLong > 300L)
+      {
+        L(54L, 1L);
+        label201:
+        break label284;
+      }
+    }
+    for (;;)
+    {
+      parama.DRO = ((int)paramLong);
+      AppMethodBeat.o(214009);
       return;
-    }
-  }
-  
-  protected abstract g eKW();
-  
-  protected abstract com.tencent.mm.plugin.appbrand.appcache.p eKX();
-  
-  public final IJSRuntime g(IJSRuntime.Config paramConfig)
-  {
-    IJSRuntime.Config localConfig = paramConfig;
-    if (paramConfig == null)
-    {
-      localConfig = new IJSRuntime.Config();
-      paramConfig = new com.tencent.mm.vfs.e(com.tencent.mm.loader.j.b.arM() + "webservice/codecache");
-      if (!paramConfig.exists()) {
-        paramConfig.mkdirs();
+      label214:
+      if (100L < paramLong) {
+        break;
       }
-      localConfig.cXH = paramConfig.getPath();
-    }
-    return super.g(localConfig);
-  }
-  
-  protected abstract void g(int paramInt, String paramString1, String paramString2, String paramString3);
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "i", "", "jsonArray", "Lcom/tencent/mm/json/JSONArray;", "invoke", "com/tencent/mm/plugin/webjsengine/WebJsEngine$config$1$2"})
-  static final class b
-    extends q
-    implements d.g.a.m<Integer, com.tencent.mm.ac.f, z>
-  {
-    b(b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/json/JSONObject;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class c
-    extends q
-    implements d.g.a.a<i>
-  {
-    c(b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/json/JSONObject;", "invoke"})
-  static final class d
-    extends q
-    implements d.g.a.a<i>
-  {
-    d(b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "message", "", "kotlin.jvm.PlatformType", "stackTrace", "handleException", "com/tencent/mm/plugin/webjsengine/WebJsEngine$setup$1$1"})
-  static final class e
-    implements h
-  {
-    e(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, b paramb, String paramString1, f paramf, String paramString2, String paramString3) {}
-    
-    public final void u(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(214180);
-      ad.e(b.access$getTAG$cp(), "JsException[" + this.DzZ + "]:" + paramString1 + '\n' + paramString2);
-      this.DAa.a((f.i)new f.d());
-      g localg = this.DzX.eKW();
-      Object localObject = this.DAa.DAr;
-      com.tencent.mm.plugin.webcanvas.f localf;
-      switch (c.cpQ[localObject.ordinal()])
-      {
-      default: 
-        paramString1 = new d.m();
-        AppMethodBeat.o(214180);
-        throw paramString1;
-      case 1: 
-        localObject = new g.l();
-        localf = com.tencent.mm.plugin.webcanvas.f.DyX;
-        com.tencent.mm.plugin.webcanvas.f.B(new Object[] { this.mgK, this.laq, paramString1 });
-        localObject = (g.o)localObject;
+      L(52L, 1L);
+      continue;
+      label233:
+      if (300L < paramLong) {
+        break label186;
       }
+      L(53L, 1L);
+      continue;
+      label252:
+      L(71L, 1L);
+      L(72L, paramLong);
+      if (50L > paramLong) {}
       for (;;)
       {
-        localg.a((g.o)localObject);
-        this.DzX.g(this.DzY.bqh(), this.laq, paramString1, paramString2);
-        AppMethodBeat.o(214180);
+        if (101L > paramLong)
+        {
+          label284:
+          if (paramLong <= 300L) {
+            break;
+          }
+          L(79L, 1L);
+          break;
+          if (100L >= paramLong)
+          {
+            L(77L, 1L);
+            break;
+          }
+        }
+      }
+      if (300L < paramLong) {
+        break label201;
+      }
+      L(78L, 1L);
+    }
+  }
+  
+  public final void fF(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(214008);
+    p.h(paramString, "canvasId");
+    if (!this.DRF.containsKey(Integer.valueOf(paramInt))) {
+      fE(paramString, paramInt);
+    }
+    a locala = (a)this.DRF.get(Integer.valueOf(paramInt));
+    if (locala != null)
+    {
+      if (locala.DRM) {
+        locala.createTime = System.currentTimeMillis();
+      }
+      paramString = (c)this.DRE.get(paramString);
+      if (paramString != null) {}
+      for (boolean bool = paramString.DRP;; bool = false)
+      {
+        locala.DRP = bool;
+        AppMethodBeat.o(214008);
         return;
-        localObject = new g.f();
-        localf = com.tencent.mm.plugin.webcanvas.f.DyX;
-        com.tencent.mm.plugin.webcanvas.f.B(new Object[] { this.mgK, this.laq, paramString1 });
-        localObject = (g.o)localObject;
-        continue;
-        localObject = new g.b();
-        localf = com.tencent.mm.plugin.webcanvas.f.DyX;
-        com.tencent.mm.plugin.webcanvas.f.B(new Object[] { this.mgK, this.laq, paramString1 });
-        localObject = (g.o)localObject;
       }
     }
+    AppMethodBeat.o(214008);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webjsengine/WebJsEngine$setup$1$2", "", "error", "", "objects", "", "([Ljava/lang/Object;)V", "info", "log", "webview-sdk_release"})
-  public static final class f
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter$BindInfo;", "", "createTime", "", "elementId", "", "canvasId", "", "(JILjava/lang/String;)V", "getCanvasId", "()Ljava/lang/String;", "getCreateTime", "()J", "setCreateTime", "(J)V", "getElementId", "()I", "firstOnScreenCost", "getFirstOnScreenCost", "setFirstOnScreenCost", "(I)V", "hasRendered", "", "getHasRendered", "()Z", "setHasRendered", "(Z)V", "isClientContextStarted", "setClientContextStarted", "jsInitCost", "getJsInitCost", "setJsInitCost", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "webview-sdk_release"})
+  public static final class a
   {
-    f(b paramb, String paramString1, f paramf, String paramString2, String paramString3) {}
+    public boolean DRM;
+    public int DRN;
+    public int DRO;
+    public boolean DRP;
+    private final int biM;
+    public long createTime;
+    private final String kwD;
     
-    @JavascriptInterface
-    public final void error(Object... paramVarArgs)
+    public a(long paramLong, int paramInt, String paramString)
     {
-      AppMethodBeat.i(214183);
-      d.g.b.p.h(paramVarArgs, "objects");
-      ad.e(b.access$getTAG$cp(), "JsError[" + this.DzZ + "]:" + d.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
-      AppMethodBeat.o(214183);
+      AppMethodBeat.i(214002);
+      this.createTime = paramLong;
+      this.biM = paramInt;
+      this.kwD = paramString;
+      this.DRP = true;
+      AppMethodBeat.o(214002);
     }
     
-    @JavascriptInterface
-    public final void info(Object... paramVarArgs)
+    public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(214182);
-      d.g.b.p.h(paramVarArgs, "objects");
-      ad.i(b.access$getTAG$cp(), "JsInfo[" + this.DzZ + "]:" + d.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
-      AppMethodBeat.o(214182);
+      AppMethodBeat.i(214005);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((this.createTime != paramObject.createTime) || (this.biM != paramObject.biM) || (!p.i(this.kwD, paramObject.kwD))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(214005);
+        return true;
+      }
+      AppMethodBeat.o(214005);
+      return false;
     }
     
-    @JavascriptInterface
-    public final void log(Object... paramVarArgs)
+    public final int hashCode()
     {
-      AppMethodBeat.i(214181);
-      d.g.b.p.h(paramVarArgs, "objects");
-      ad.d(b.access$getTAG$cp(), "JsLog[" + this.DzZ + "]:" + d.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
-      AppMethodBeat.o(214181);
+      AppMethodBeat.i(214004);
+      long l = this.createTime;
+      int j = (int)(l ^ l >>> 32);
+      int k = this.biM;
+      String str = this.kwD;
+      if (str != null) {}
+      for (int i = str.hashCode();; i = 0)
+      {
+        AppMethodBeat.o(214004);
+        return i + (j * 31 + k) * 31;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(214003);
+      String str = "BindInfo(createTime=" + this.createTime + ", elementId=" + this.biM + ", canvasId=" + this.kwD + ")";
+      AppMethodBeat.o(214003);
+      return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "i", "", "jsonArray", "Lcom/tencent/mm/json/JSONArray;", "invoke"})
-  static final class g
-    extends q
-    implements d.g.a.m<Integer, com.tencent.mm.ac.f, z>
-  {
-    g(b paramb, com.tencent.mm.plugin.appbrand.jsruntime.g paramg, String paramString)
-    {
-      super();
-    }
-  }
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter$Companion;", "", "()V", "SPLITOR", "", "TAG", "kvWebCanvasCreate", "", "kvWebCanvasMainContextInit", "kvWebCanvasRender", "webview-sdk_release"})
+  public static final class b {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class h
-    extends q
-    implements d.g.a.a<Integer>
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter$CreateInfo;", "", "createTime", "", "isMainContextStarted", "", "elementId", "", "(JZI)V", "configClientCost", "getConfigClientCost", "()I", "setConfigClientCost", "(I)V", "getCreateTime", "()J", "setCreateTime", "(J)V", "getElementId", "isClientContextStarted", "()Z", "setClientContextStarted", "(Z)V", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "webview-sdk_release"})
+  public static final class c
   {
-    h(b paramb)
+    public final boolean DRC;
+    public boolean DRP;
+    public int DRQ;
+    private final int biM;
+    public long createTime;
+    
+    public c(long paramLong, boolean paramBoolean, int paramInt)
     {
-      super();
+      this.createTime = paramLong;
+      this.DRC = paramBoolean;
+      this.biM = paramInt;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof c))
+        {
+          paramObject = (c)paramObject;
+          if ((this.createTime != paramObject.createTime) || (this.DRC != paramObject.DRC) || (this.biM != paramObject.biM)) {}
+        }
+      }
+      else {
+        return true;
+      }
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(214006);
+      String str = "CreateInfo(createTime=" + this.createTime + ", isMainContextStarted=" + this.DRC + ", elementId=" + this.biM + ")";
+      AppMethodBeat.o(214006);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ac.b
  * JD-Core Version:    0.7.0.1
  */

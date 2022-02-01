@@ -5,36 +5,36 @@ import com.tencent.mm.plugin.report.service.g;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/storage/BizCardReport;", "", "()V", "report20800Insert", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "arriveType", "", "pos", "useServerTime", "cardType", "style", "recID", "", "cardId", "", "expType", "extraData", "report20800Receive", "weight", "plugin-biz_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/storage/BizCardReport;", "", "()V", "report20800Insert", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "arriveType", "", "pos", "useServerTime", "cardType", "style", "recID", "", "cardId", "", "expType", "extraData", "report20800Receive", "weight", "plugin-biz_release"})
 public final class q
 {
-  public static final q Ioe;
+  public static final q IIu;
   
   static
   {
-    AppMethodBeat.i(207348);
-    Ioe = new q();
-    AppMethodBeat.o(207348);
+    AppMethodBeat.i(188820);
+    IIu = new q();
+    AppMethodBeat.o(188820);
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(207346);
-    g.yhR.f(20800, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Long.valueOf(paramLong), paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(207346);
+    AppMethodBeat.i(188818);
+    g.yxI.f(20800, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Long.valueOf(paramLong), paramString1, paramString2, paramString3 });
+    AppMethodBeat.o(188818);
   }
   
   public static void a(w paramw, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(207347);
+    AppMethodBeat.i(188819);
     p.h(paramw, "info");
-    if (!paramw.fpe())
+    if (!paramw.ftb())
     {
-      AppMethodBeat.o(207347);
+      AppMethodBeat.o(188819);
       return;
     }
-    g.yhR.f(20800, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramw.fpc()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Long.valueOf(paramLong), paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(207347);
+    g.yxI.f(20800, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramw.fsZ()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Long.valueOf(paramLong), paramString1, paramString2, paramString3 });
+    AppMethodBeat.o(188819);
   }
 }
 

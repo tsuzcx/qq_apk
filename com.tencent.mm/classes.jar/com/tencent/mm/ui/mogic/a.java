@@ -12,13 +12,13 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Arrays;
 
 public final class a
 {
   private static final Interpolator sInterpolator;
-  public final a KCj;
+  public final a KYD;
   public final ViewGroup WA;
   public final Runnable WB;
   public int Wk;
@@ -39,7 +39,7 @@ public final class a
   public int mActivePointerId;
   private int mTouchSlop;
   public VelocityTracker mVelocityTracker;
-  public p nlZ;
+  public p nrj;
   
   static
   {
@@ -81,13 +81,13 @@ public final class a
       throw paramContext;
     }
     this.WA = paramViewGroup;
-    this.KCj = parama;
+    this.KYD = parama;
     paramViewGroup = ViewConfiguration.get(paramContext);
     this.Wv = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
     this.mTouchSlop = paramViewGroup.getScaledTouchSlop();
     this.Wt = paramViewGroup.getScaledMaximumFlingVelocity();
     this.Wu = paramViewGroup.getScaledMinimumFlingVelocity();
-    this.nlZ = p.a(paramContext, paramInterpolator);
+    this.nrj = p.a(paramContext, paramInterpolator);
     AppMethodBeat.o(142868);
   }
   
@@ -113,7 +113,7 @@ public final class a
     label162:
     for (float f2 = m / n;; f2 = j / i1)
     {
-      paramInt1 = h(paramInt1, paramInt3, this.KCj.fJQ());
+      paramInt1 = h(paramInt1, paramInt3, this.KYD.fOh());
       paramInt2 = h(paramInt2, paramInt4, 0);
       float f3 = paramInt1;
       paramInt1 = (int)(f2 * paramInt2 + f1 * f3);
@@ -348,7 +348,7 @@ public final class a
     paramInt2 -= j;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.nlZ.Ur.abortAnimation();
+      this.nrj.Ur.abortAnimation();
       be(0);
       AppMethodBeat.o(142870);
       return false;
@@ -357,8 +357,8 @@ public final class a
     if (paramLong == 0L) {
       l = Q(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    ad.d("WxViewDragHelper", "ashutest:: xvel %d, yvel %d, dx %d, dy %d duration %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l) });
-    this.nlZ.startScroll(i, j, paramInt1, paramInt2, (int)l);
+    ae.d("WxViewDragHelper", "ashutest:: xvel %d, yvel %d, dx %d, dy %d duration %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l) });
+    this.nrj.startScroll(i, j, paramInt1, paramInt2, (int)l);
     be(2);
     AppMethodBeat.o(142870);
     return true;
@@ -385,7 +385,7 @@ public final class a
     if (this.Wk != paramInt)
     {
       this.Wk = paramInt;
-      this.KCj.L(paramInt);
+      this.KYD.L(paramInt);
       if (paramInt == 0) {
         this.Wy = null;
       }
@@ -445,7 +445,7 @@ public final class a
   {
     AppMethodBeat.i(142876);
     this.Wz = true;
-    this.KCj.a(this.Wy, paramFloat1, paramFloat2);
+    this.KYD.a(this.Wy, paramFloat1, paramFloat2);
     this.Wz = false;
     if (this.Wk == 1) {
       be(0);
@@ -462,7 +462,7 @@ public final class a
       return false;
     }
     int i;
-    if (this.KCj.fJQ() > 0) {
+    if (this.KYD.fOh() > 0) {
       i = 1;
     }
     while (i != 0) {
@@ -490,7 +490,7 @@ public final class a
       AppMethodBeat.o(142880);
       return true;
     }
-    if ((paramView != null) && (this.KCj.aeQ(paramInt)))
+    if ((paramView != null) && (this.KYD.afz(paramInt)))
     {
       this.mActivePointerId = paramInt;
       if (paramView.getParent() != this.WA)
@@ -515,19 +515,19 @@ public final class a
     
     public void a(View paramView, float paramFloat1, float paramFloat2) {}
     
-    public abstract boolean aeQ(int paramInt);
+    public abstract boolean afz(int paramInt);
     
     public int e(View paramView, int paramInt)
     {
       return 0;
     }
     
-    public int fJQ()
+    public int fOh()
     {
       return 0;
     }
     
-    public void jW(int paramInt1, int paramInt2) {}
+    public void kd(int paramInt1, int paramInt2) {}
   }
 }
 

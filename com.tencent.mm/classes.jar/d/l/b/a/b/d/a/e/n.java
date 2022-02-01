@@ -3,13 +3,13 @@ package d.l.b.a.b.d.a.e;
 public abstract interface n
   extends p
 {
-  public abstract boolean gkW();
+  public abstract boolean gpy();
   
-  public abstract v gkX();
+  public abstract v gpz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.n
  * JD-Core Version:    0.7.0.1
  */

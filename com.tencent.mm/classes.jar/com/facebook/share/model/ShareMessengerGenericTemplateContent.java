@@ -9,7 +9,7 @@ public final class ShareMessengerGenericTemplateContent
 {
   public static final Parcelable.Creator<ShareMessengerGenericTemplateContent> CREATOR;
   private final ShareMessengerGenericTemplateElement genericTemplateElement;
-  private final ShareMessengerGenericTemplateContent.ImageAspectRatio imageAspectRatio;
+  private final ImageAspectRatio imageAspectRatio;
   private final boolean isSharable;
   
   static
@@ -41,7 +41,7 @@ public final class ShareMessengerGenericTemplateContent
     for (boolean bool = true;; bool = false)
     {
       this.isSharable = bool;
-      this.imageAspectRatio = ((ShareMessengerGenericTemplateContent.ImageAspectRatio)paramParcel.readSerializable());
+      this.imageAspectRatio = ((ImageAspectRatio)paramParcel.readSerializable());
       this.genericTemplateElement = ((ShareMessengerGenericTemplateElement)paramParcel.readParcelable(ShareMessengerGenericTemplateElement.class.getClassLoader()));
       AppMethodBeat.o(8486);
       return;
@@ -68,7 +68,7 @@ public final class ShareMessengerGenericTemplateContent
     return this.genericTemplateElement;
   }
   
-  public final ShareMessengerGenericTemplateContent.ImageAspectRatio getImageAspectRatio()
+  public final ImageAspectRatio getImageAspectRatio()
   {
     return this.imageAspectRatio;
   }
@@ -138,6 +138,20 @@ public final class ShareMessengerGenericTemplateContent
       this.isSharable = paramBoolean;
       return this;
     }
+  }
+  
+  public static enum ImageAspectRatio
+  {
+    static
+    {
+      AppMethodBeat.i(8484);
+      HORIZONTAL = new ImageAspectRatio("HORIZONTAL", 0);
+      SQUARE = new ImageAspectRatio("SQUARE", 1);
+      $VALUES = new ImageAspectRatio[] { HORIZONTAL, SQUARE };
+      AppMethodBeat.o(8484);
+    }
+    
+    private ImageAspectRatio() {}
   }
 }
 

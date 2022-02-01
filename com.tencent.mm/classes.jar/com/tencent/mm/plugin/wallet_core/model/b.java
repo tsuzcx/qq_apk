@@ -8,16 +8,16 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public String CUh;
-  public LinkedList<b.b> CUi;
-  public String CUj;
-  public String CUk;
-  public a CUl;
-  public int CyQ = 0;
-  public int CyR = 0;
-  public int CyS = 0;
-  public double CyT = 0.0D;
-  public double xYv = 0.0D;
+  public int CQv = 0;
+  public int CQw = 0;
+  public int CQx = 0;
+  public double CQy = 0.0D;
+  public String DlN;
+  public LinkedList<b> DlO;
+  public String DlP;
+  public String DlQ;
+  public a DlR;
+  public double yon = 0.0D;
   
   public static a aZ(JSONObject paramJSONObject)
   {
@@ -26,11 +26,11 @@ public final class b
     if (paramJSONObject != null) {
       try
       {
-        locala.CUm = paramJSONObject.optString("sector_title", "");
+        locala.DlS = paramJSONObject.optString("sector_title", "");
         paramJSONObject = paramJSONObject.optJSONArray("label");
         if (paramJSONObject != null)
         {
-          locala.CUn = new c[paramJSONObject.length()];
+          locala.DlT = new c[paramJSONObject.length()];
           int i = 0;
           while (i < paramJSONObject.length())
           {
@@ -38,12 +38,12 @@ public final class b
             c localc = new c();
             localc.title = localJSONObject.optString("title", "");
             localc.desc = localJSONObject.optString("desc", "");
-            localc.hzB = localJSONObject.optString("logo_url", "");
-            localc.uxt = localJSONObject.optInt("jump_type");
-            localc.ozD = localJSONObject.optString("jump_url", "");
+            localc.hCp = localJSONObject.optString("logo_url", "");
+            localc.uIW = localJSONObject.optInt("jump_type");
+            localc.oGf = localJSONObject.optString("jump_url", "");
             localc.username = localJSONObject.optString("username", "");
             localc.path = localJSONObject.optString("path", "");
-            locala.CUn[i] = localc;
+            locala.DlT[i] = localc;
             i += 1;
           }
         }
@@ -56,32 +56,38 @@ public final class b
   
   public static final class a
   {
-    public String CUm;
-    public b.c[] CUn;
+    public String DlS;
+    public b.c[] DlT;
     
     public a()
     {
       AppMethodBeat.i(70211);
-      this.CUm = "";
-      this.CUn = new b.c[0];
+      this.DlS = "";
+      this.DlT = new b.c[0];
       AppMethodBeat.o(70211);
     }
+  }
+  
+  public static final class b
+  {
+    public String key;
+    public String value;
   }
   
   public static final class c
   {
     public String desc;
-    public String hzB;
-    public String ozD;
+    public String hCp;
+    public String oGf;
     public String path;
     public String title;
+    public int uIW;
     public String username;
-    public int uxt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.b
  * JD-Core Version:    0.7.0.1
  */

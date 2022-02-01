@@ -130,11 +130,11 @@ public class RuntimeToSdkChannel
     }
     if (TextUtils.isEmpty(paramString[1]))
     {
-      paramString = a.baB(paramString[0]);
+      paramString = a.bce(paramString[0]);
       AppMethodBeat.o(154614);
       return paramString;
     }
-    paramString = a.mV(paramString[0], paramString[1]);
+    paramString = a.nb(paramString[0], paramString[1]);
     AppMethodBeat.o(154614);
     return paramString;
     if (!(paramObject instanceof String[]))
@@ -150,11 +150,11 @@ public class RuntimeToSdkChannel
     }
     if (TextUtils.isEmpty(paramString[1]))
     {
-      paramString = b.baB(paramString[0]);
+      paramString = b.bce(paramString[0]);
       AppMethodBeat.o(154614);
       return paramString;
     }
-    paramString = b.mV(paramString[0], paramString[1]);
+    paramString = b.nb(paramString[0], paramString[1]);
     AppMethodBeat.o(154614);
     return paramString;
     if (!(paramObject instanceof Object[]))
@@ -180,7 +180,7 @@ public class RuntimeToSdkChannel
     }
     paramString = paramObject[0];
     if ((paramObject[0] instanceof String)) {
-      paramString = f.bbq((String)paramObject[0]);
+      paramString = f.bcT((String)paramObject[0]);
     }
     for (;;)
     {
@@ -242,7 +242,7 @@ public class RuntimeToSdkChannel
       str = (String)paramString[1];
       if (2 == paramString.length)
       {
-        paramString = f.ni(paramObject, str);
+        paramString = f.no(paramObject, str);
         AppMethodBeat.o(154614);
         return paramString;
       }
@@ -250,13 +250,13 @@ public class RuntimeToSdkChannel
       {
         if (!(paramString[2] instanceof Class[]))
         {
-          paramString = f.ni(paramObject, str);
+          paramString = f.no(paramObject, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
         if (!(paramString[3] instanceof Object[]))
         {
-          paramString = f.ni(paramObject, str);
+          paramString = f.no(paramObject, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
@@ -287,8 +287,8 @@ public class RuntimeToSdkChannel
       Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), paramString);
       AppMethodBeat.o(154614);
       return null;
-      paramString = s.a.gdc();
-      if ((paramString.MxC == null) && ((paramObject instanceof Object[])))
+      paramString = s.a.ghE();
+      if ((paramString.MUG == null) && ((paramObject instanceof Object[])))
       {
         paramObject = (Object[])paramObject;
         if (((paramObject[0] instanceof String)) && (paramObject.length >= 2)) {
@@ -301,7 +301,7 @@ public class RuntimeToSdkChannel
         return null;
         label927:
         str = (String)paramObject[0];
-        if ((k)paramString.MxB.get(str) != null) {
+        if ((k)paramString.MUF.get(str) != null) {
           Arrays.copyOfRange(paramObject, 1, paramObject.length);
         }
       }

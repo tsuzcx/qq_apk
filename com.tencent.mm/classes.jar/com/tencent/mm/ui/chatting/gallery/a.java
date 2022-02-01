@@ -1,49 +1,49 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.view.View;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 
 public abstract class a
 {
-  protected b JPj;
+  protected b Kkv;
   
   public a(b paramb)
   {
-    this.JPj = paramb;
+    this.Kkv = paramb;
   }
   
-  public boolean a(k paramk, bu parambu, int paramInt)
+  public boolean a(k paramk, bv parambv, int paramInt)
   {
     return false;
   }
   
-  public final k adu(int paramInt)
+  public final k aeb(int paramInt)
   {
-    if (this.JPj == null) {
+    if (this.Kkv == null) {
       return null;
     }
-    View localView = this.JPj.SJ(paramInt);
+    View localView = this.Kkv.Tq(paramInt);
     if (localView == null) {
       return null;
     }
     return (k)((View)localView).getTag();
   }
   
-  public final void adv(int paramInt)
+  public final void aec(int paramInt)
   {
-    if (this.JPj == null) {}
+    if (this.Kkv == null) {}
     View localView;
     do
     {
       return;
-      localView = this.JPj.SJ(paramInt);
+      localView = this.Kkv.Tq(paramInt);
     } while ((localView == null) || (localView.getTag() == null));
-    a((k)localView.getTag(), this.JPj.ada(paramInt), paramInt);
+    a((k)localView.getTag(), this.Kkv.adI(paramInt), paramInt);
   }
   
   public void detach()
   {
-    this.JPj = null;
+    this.Kkv = null;
   }
 }
 

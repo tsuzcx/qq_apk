@@ -13,29 +13,29 @@ import org.libpag.PAGFont;
 
 public class VLogEffectMgr
 {
-  long LBd;
+  long LYd;
   
   static
   {
-    AppMethodBeat.i(220046);
+    AppMethodBeat.i(216797);
     e.load("xlabeffect");
     e.load("pag");
     PAGFont.loadSystemFonts();
-    AppMethodBeat.o(220046);
+    AppMethodBeat.o(216797);
   }
   
   public VLogEffectMgr()
   {
-    AppMethodBeat.i(220022);
-    this.LBd = nativeInit();
-    AppMethodBeat.o(220022);
+    AppMethodBeat.i(216773);
+    this.LYd = nativeInit();
+    AppMethodBeat.o(216773);
   }
   
   private VLogEffectMgr(long paramLong)
   {
-    AppMethodBeat.i(220023);
-    this.LBd = nativeCopy(paramLong);
-    AppMethodBeat.o(220023);
+    AppMethodBeat.i(216774);
+    this.LYd = nativeCopy(paramLong);
+    AppMethodBeat.o(216774);
   }
   
   private static native long addPAGSticker(long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2);
@@ -78,6 +78,10 @@ public class VLogEffectMgr
   
   private static native long nativeInit();
   
+  private static native boolean nativeSetImageEnhancementSceneFilterSettings(long paramLong1, long paramLong2, long paramLong3, int[] paramArrayOfInt1, float[] paramArrayOfFloat, String[] paramArrayOfString, int[] paramArrayOfInt2);
+  
+  private static native boolean nativeSetImageEnhancementSceneFilterSettingsByJsonConfig(long paramLong1, long paramLong2, String paramString);
+  
   private static native boolean removePAGSticker(long paramLong1, long paramLong2);
   
   private static native boolean removePAGText(long paramLong1, long paramLong2);
@@ -96,93 +100,93 @@ public class VLogEffectMgr
   
   private static native boolean updateVLogEffectRange(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long[] paramArrayOfLong);
   
-  public final boolean EJ(long paramLong)
+  public final boolean Fl(long paramLong)
   {
-    AppMethodBeat.i(220036);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216787);
+    if (this.LYd != 0L)
     {
-      boolean bool = removeVLogEffectRange(this.LBd, paramLong);
-      AppMethodBeat.o(220036);
+      boolean bool = removeVLogEffectRange(this.LYd, paramLong);
+      AppMethodBeat.o(216787);
       return bool;
     }
-    AppMethodBeat.o(220036);
+    AppMethodBeat.o(216787);
     return false;
   }
   
-  public final boolean EK(long paramLong)
+  public final boolean Fm(long paramLong)
   {
-    AppMethodBeat.i(220039);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216790);
+    if (this.LYd != 0L)
     {
-      boolean bool = removePAGText(this.LBd, paramLong);
-      AppMethodBeat.o(220039);
+      boolean bool = removePAGText(this.LYd, paramLong);
+      AppMethodBeat.o(216790);
       return bool;
     }
-    AppMethodBeat.o(220039);
+    AppMethodBeat.o(216790);
     return false;
   }
   
-  public final boolean EL(long paramLong)
+  public final boolean Fn(long paramLong)
   {
-    AppMethodBeat.i(220040);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216791);
+    if (this.LYd != 0L)
     {
-      boolean bool = bringToFront(this.LBd, paramLong);
-      AppMethodBeat.o(220040);
+      boolean bool = bringToFront(this.LYd, paramLong);
+      AppMethodBeat.o(216791);
       return bool;
     }
-    AppMethodBeat.o(220040);
+    AppMethodBeat.o(216791);
     return false;
   }
   
-  public final int EM(long paramLong)
+  public final int Fo(long paramLong)
   {
-    AppMethodBeat.i(220041);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216792);
+    if (this.LYd != 0L)
     {
-      int i = getVLogEffectReplacementImages(this.LBd, paramLong);
-      AppMethodBeat.o(220041);
+      int i = getVLogEffectReplacementImages(this.LYd, paramLong);
+      AppMethodBeat.o(216792);
       return i;
     }
-    AppMethodBeat.o(220041);
+    AppMethodBeat.o(216792);
     return -1;
   }
   
-  public final Size EN(long paramLong)
+  public final Size Fp(long paramLong)
   {
-    AppMethodBeat.i(220042);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216793);
+    if (this.LYd != 0L)
     {
-      Size localSize = new Size(getVLogEffectWidth(this.LBd, paramLong), getVLogEffectHeight(this.LBd, paramLong));
-      AppMethodBeat.o(220042);
+      Size localSize = new Size(getVLogEffectWidth(this.LYd, paramLong), getVLogEffectHeight(this.LYd, paramLong));
+      AppMethodBeat.o(216793);
       return localSize;
     }
-    AppMethodBeat.o(220042);
+    AppMethodBeat.o(216793);
     return null;
   }
   
-  public final long EO(long paramLong)
+  public final long Fq(long paramLong)
   {
-    AppMethodBeat.i(220043);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216794);
+    if (this.LYd != 0L)
     {
-      paramLong = getVLogEffectDuration(this.LBd, paramLong);
-      AppMethodBeat.o(220043);
+      paramLong = getVLogEffectDuration(this.LYd, paramLong);
+      AppMethodBeat.o(216794);
       return paramLong;
     }
-    AppMethodBeat.o(220043);
+    AppMethodBeat.o(216794);
     return 0L;
   }
   
-  public final List<Pair<Long, Long>> EP(long paramLong)
+  public final List<Pair<Long, Long>> Fr(long paramLong)
   {
-    AppMethodBeat.i(220044);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216795);
+    if (this.LYd != 0L)
     {
-      int j = EM(paramLong);
+      int j = Fo(paramLong);
       long[] arrayOfLong1 = new long[j];
       long[] arrayOfLong2 = new long[j];
-      getTemplateReplaceImageInfo(this.LBd, paramLong, arrayOfLong1, arrayOfLong2);
+      getTemplateReplaceImageInfo(this.LYd, paramLong, arrayOfLong1, arrayOfLong2);
       ArrayList localArrayList = new ArrayList();
       int i = 0;
       while (i < j)
@@ -190,82 +194,82 @@ public class VLogEffectMgr
         localArrayList.add(new Pair(Long.valueOf(arrayOfLong1[i]), Long.valueOf(arrayOfLong2[i])));
         i += 1;
       }
-      AppMethodBeat.o(220044);
+      AppMethodBeat.o(216795);
       return localArrayList;
     }
-    AppMethodBeat.o(220044);
+    AppMethodBeat.o(216795);
     return null;
   }
   
   public final long a(long paramLong1, long paramLong2, long paramLong3, b paramb, c paramc)
   {
-    AppMethodBeat.i(220037);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216788);
+    if (this.LYd != 0L)
     {
-      paramLong1 = addPAGText(this.LBd, paramLong1, paramLong2, paramLong3, paramb.translateX, paramb.translateY, paramb.scale, paramb.kRD, paramc.text, paramc.fontSize, paramc.fontFamily, paramc.LBk, paramc.sWe);
-      AppMethodBeat.o(220037);
+      paramLong1 = addPAGText(this.LYd, paramLong1, paramLong2, paramLong3, paramb.translateX, paramb.translateY, paramb.scale, paramb.kVl, paramc.text, paramc.fontSize, paramc.fontFamily, paramc.LYk, paramc.ryR);
+      AppMethodBeat.o(216788);
       return paramLong1;
     }
-    AppMethodBeat.o(220037);
+    AppMethodBeat.o(216788);
     return -1L;
   }
   
   public final long a(long paramLong1, long paramLong2, long paramLong3, long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(220034);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216785);
+    if (this.LYd != 0L)
     {
-      paramLong1 = addVLogEffectRangeAtTimeRange(this.LBd, paramLong1, paramLong2, paramLong3, paramArrayOfLong);
-      AppMethodBeat.o(220034);
+      paramLong1 = addVLogEffectRangeAtTimeRange(this.LYd, paramLong1, paramLong2, paramLong3, paramArrayOfLong);
+      AppMethodBeat.o(216785);
       return paramLong1;
     }
-    AppMethodBeat.o(220034);
+    AppMethodBeat.o(216785);
     return -1L;
   }
   
   public final long a(a parama)
   {
-    AppMethodBeat.i(220025);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216776);
+    if (this.LYd != 0L)
     {
-      long l = createVLogEffectFromType(this.LBd, parama.ordinal());
-      AppMethodBeat.o(220025);
+      long l = createVLogEffectFromType(this.LYd, parama.ordinal());
+      AppMethodBeat.o(216776);
       return l;
     }
-    AppMethodBeat.o(220025);
+    AppMethodBeat.o(216776);
     return -1L;
   }
   
   public final long a(a parama, AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(220026);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216777);
+    if (this.LYd != 0L)
     {
-      long l = createVLogEffectFromAssetPath(this.LBd, parama.ordinal(), paramAssetManager, paramString);
-      AppMethodBeat.o(220026);
+      long l = createVLogEffectFromAssetPath(this.LYd, parama.ordinal(), paramAssetManager, paramString);
+      AppMethodBeat.o(216777);
       return l;
     }
-    AppMethodBeat.o(220026);
+    AppMethodBeat.o(216777);
     return -1L;
   }
   
   public final long a(a parama, String paramString)
   {
-    AppMethodBeat.i(220027);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216778);
+    if (this.LYd != 0L)
     {
-      long l = createVLogEffectFromPath(this.LBd, parama.ordinal(), paramString);
-      AppMethodBeat.o(220027);
+      long l = createVLogEffectFromPath(this.LYd, parama.ordinal(), paramString);
+      AppMethodBeat.o(216778);
       return l;
     }
-    AppMethodBeat.o(220027);
+    AppMethodBeat.o(216778);
     return -1L;
   }
   
   public final void a(long paramLong, HashMap<Integer, Float> paramHashMap)
   {
-    AppMethodBeat.i(220031);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216782);
+    if (this.LYd != 0L)
     {
       int[] arrayOfInt = new int[paramHashMap.size()];
       float[] arrayOfFloat = new float[paramHashMap.size()];
@@ -278,41 +282,41 @@ public class VLogEffectMgr
         arrayOfFloat[i] = ((Float)paramHashMap.get(localInteger)).floatValue();
         i += 1;
       }
-      setEffectParams(this.LBd, paramLong, arrayOfInt, arrayOfFloat);
+      setEffectParams(this.LYd, paramLong, arrayOfInt, arrayOfFloat);
     }
-    AppMethodBeat.o(220031);
+    AppMethodBeat.o(216782);
   }
   
   public final boolean a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, b paramb, c paramc)
   {
-    AppMethodBeat.i(220038);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216789);
+    if (this.LYd != 0L)
     {
-      boolean bool = updatePAGText(this.LBd, paramLong1, paramLong2, paramLong3, paramLong4, paramb.translateX, paramb.translateY, paramb.scale, paramb.kRD, paramc.text, paramc.fontSize, paramc.fontFamily, paramc.LBk, paramc.sWe);
-      AppMethodBeat.o(220038);
+      boolean bool = updatePAGText(this.LYd, paramLong1, paramLong2, paramLong3, paramLong4, paramb.translateX, paramb.translateY, paramb.scale, paramb.kVl, paramc.text, paramc.fontSize, paramc.fontFamily, paramc.LYk, paramc.ryR);
+      AppMethodBeat.o(216789);
       return bool;
     }
-    AppMethodBeat.o(220038);
+    AppMethodBeat.o(216789);
     return false;
   }
   
   public final boolean a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(220035);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216786);
+    if (this.LYd != 0L)
     {
-      boolean bool = updateVLogEffectRange(this.LBd, paramLong1, paramLong2, paramLong3, paramLong4, paramArrayOfLong);
-      AppMethodBeat.o(220035);
+      boolean bool = updateVLogEffectRange(this.LYd, paramLong1, paramLong2, paramLong3, paramLong4, paramArrayOfLong);
+      AppMethodBeat.o(216786);
       return bool;
     }
-    AppMethodBeat.o(220035);
+    AppMethodBeat.o(216786);
     return false;
   }
   
   public final void b(long paramLong, HashMap<Integer, Float> paramHashMap)
   {
-    AppMethodBeat.i(220032);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216783);
+    if (this.LYd != 0L)
     {
       int[] arrayOfInt = new int[paramHashMap.size()];
       float[] arrayOfFloat = new float[paramHashMap.size()];
@@ -325,62 +329,62 @@ public class VLogEffectMgr
         arrayOfFloat[i] = ((Float)paramHashMap.get(localInteger)).floatValue();
         i += 1;
       }
-      setEffectRangeParams(this.LBd, paramLong, arrayOfInt, arrayOfFloat);
+      setEffectRangeParams(this.LYd, paramLong, arrayOfInt, arrayOfFloat);
     }
-    AppMethodBeat.o(220032);
+    AppMethodBeat.o(216783);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(220045);
-    if (this.LBd != 0L)
+    AppMethodBeat.i(216796);
+    if (this.LYd != 0L)
     {
-      nativeDestroy(this.LBd);
-      this.LBd = 0L;
+      nativeDestroy(this.LYd);
+      this.LYd = 0L;
     }
-    AppMethodBeat.o(220045);
+    AppMethodBeat.o(216796);
   }
   
-  public final VLogEffectMgr fSp()
+  public final VLogEffectMgr fWO()
   {
-    AppMethodBeat.i(220024);
-    VLogEffectMgr localVLogEffectMgr = new VLogEffectMgr(this.LBd);
-    AppMethodBeat.o(220024);
+    AppMethodBeat.i(216775);
+    VLogEffectMgr localVLogEffectMgr = new VLogEffectMgr(this.LYd);
+    AppMethodBeat.o(216775);
     return localVLogEffectMgr;
   }
   
-  public final void fSq()
+  public final void fWP()
   {
-    AppMethodBeat.i(220028);
-    if (this.LBd != 0L) {
-      clearVLogEffectRange(this.LBd);
+    AppMethodBeat.i(216779);
+    if (this.LYd != 0L) {
+      clearVLogEffectRange(this.LYd);
     }
-    AppMethodBeat.o(220028);
+    AppMethodBeat.o(216779);
   }
   
-  public final void fSr()
+  public final void fWQ()
   {
-    AppMethodBeat.i(220029);
-    if (this.LBd != 0L) {
-      clearTransEffectRange(this.LBd);
+    AppMethodBeat.i(216780);
+    if (this.LYd != 0L) {
+      clearTransEffectRange(this.LYd);
     }
-    AppMethodBeat.o(220029);
+    AppMethodBeat.o(216780);
   }
   
-  public final void fSs()
+  public final void fWR()
   {
-    AppMethodBeat.i(220030);
-    if (this.LBd != 0L) {
-      clearStickers(this.LBd);
+    AppMethodBeat.i(216781);
+    if (this.LYd != 0L) {
+      clearStickers(this.LYd);
     }
-    AppMethodBeat.o(220030);
+    AppMethodBeat.o(216781);
   }
   
   public final long s(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(220033);
+    AppMethodBeat.i(216784);
     paramLong1 = a(paramLong1, paramLong2, paramLong3, new long[0]);
-    AppMethodBeat.o(220033);
+    AppMethodBeat.o(216784);
     return paramLong1;
   }
   
@@ -388,23 +392,23 @@ public class VLogEffectMgr
   {
     static
     {
-      AppMethodBeat.i(220018);
-      LBm = new a("PAGTransitionEffect", 0);
-      LBn = new a("PAGStickerEffect", 1);
-      LBo = new a("PAGTextEffect", 2);
-      LBp = new a("PAGImageReplacementEffect", 3);
-      LBq = new a("PAGGlobalImageReplacementEffect", 4);
-      LBr = new a("PAGVideoTemplateEffect", 5);
-      LBs = new a("LutFilterEffect", 6);
-      LBt = new a("BrightnessFilterEffect", 7);
-      LBu = new a("ContrastFilterEffect", 8);
-      LBv = new a("SaturationFilterEffect", 9);
-      LBw = new a("HueFilterEffect", 10);
-      LBx = new a("WhiteBalanceEffect", 11);
-      LBy = new a("ImageEnhanceEffect", 12);
-      LBz = new a("Unknown", 13);
-      LBA = new a[] { LBm, LBn, LBo, LBp, LBq, LBr, LBs, LBt, LBu, LBv, LBw, LBx, LBy, LBz };
-      AppMethodBeat.o(220018);
+      AppMethodBeat.i(216769);
+      LYm = new a("PAGTransitionEffect", 0);
+      LYn = new a("PAGStickerEffect", 1);
+      LYo = new a("PAGTextEffect", 2);
+      LYp = new a("PAGImageReplacementEffect", 3);
+      LYq = new a("PAGGlobalImageReplacementEffect", 4);
+      LYr = new a("PAGVideoTemplateEffect", 5);
+      LYs = new a("LutFilterEffect", 6);
+      LYt = new a("BrightnessFilterEffect", 7);
+      LYu = new a("ContrastFilterEffect", 8);
+      LYv = new a("SaturationFilterEffect", 9);
+      LYw = new a("HueFilterEffect", 10);
+      LYx = new a("WhiteBalanceEffect", 11);
+      LYy = new a("ImageEnhanceEffect", 12);
+      LYz = new a("Unknown", 13);
+      LYA = new a[] { LYm, LYn, LYo, LYp, LYq, LYr, LYs, LYt, LYu, LYv, LYw, LYx, LYy, LYz };
+      AppMethodBeat.o(216769);
     }
     
     private a() {}
@@ -412,7 +416,7 @@ public class VLogEffectMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.xeffect.VLogEffectMgr
  * JD-Core Version:    0.7.0.1
  */

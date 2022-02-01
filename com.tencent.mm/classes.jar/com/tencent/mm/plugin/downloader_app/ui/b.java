@@ -10,31 +10,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
 import com.tencent.mm.plugin.downloader_app.a.i;
 import com.tencent.mm.plugin.game.commlib.c.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public final class b
   extends RecyclerView.a<a>
 {
   private Context mContext;
-  c<i> pra;
-  private boolean prb;
-  private boolean prc;
-  private boolean prd;
-  private boolean pre;
-  boolean prf;
-  boolean prg;
+  c<i> pxG;
+  private boolean pxH;
+  private boolean pxI;
+  private boolean pxJ;
+  private boolean pxK;
+  boolean pxL;
+  boolean pxM;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(9055);
-    this.pra = new c();
-    this.prb = true;
-    this.prc = false;
-    this.prd = false;
-    this.pre = false;
-    this.prf = false;
-    this.prg = true;
+    this.pxG = new c();
+    this.pxH = true;
+    this.pxI = false;
+    this.pxJ = false;
+    this.pxK = false;
+    this.pxL = false;
+    this.pxM = true;
     this.mContext = paramContext;
     AppMethodBeat.o(9055);
   }
@@ -42,16 +42,16 @@ public final class b
   public final void W(LinkedList<i> paramLinkedList)
   {
     AppMethodBeat.i(9058);
-    if (bt.hj(paramLinkedList))
+    if (bu.ht(paramLinkedList))
     {
       AppMethodBeat.o(9058);
       return;
     }
     if (paramLinkedList.size() == 1)
     {
-      final int i = this.pra.indexOf(paramLinkedList.get(0));
-      this.pra.remove(i);
-      p.z(new Runnable()
+      final int i = this.pxG.indexOf(paramLinkedList.get(0));
+      this.pxG.remove(i);
+      p.x(new Runnable()
       {
         public final void run()
         {
@@ -63,8 +63,8 @@ public final class b
       AppMethodBeat.o(9058);
       return;
     }
-    this.pra.removeAll(paramLinkedList);
-    p.z(new Runnable()
+    this.pxG.removeAll(paramLinkedList);
+    p.x(new Runnable()
     {
       public final void run()
       {
@@ -76,10 +76,10 @@ public final class b
     AppMethodBeat.o(9058);
   }
   
-  public final boolean ccW()
+  public final boolean cel()
   {
     AppMethodBeat.i(9059);
-    if (this.pra.size() <= 5)
+    if (this.pxG.size() <= 5)
     {
       AppMethodBeat.o(9059);
       return true;
@@ -91,7 +91,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(9057);
-    int i = this.pra.size();
+    int i = this.pxG.size();
     AppMethodBeat.o(9057);
     return i;
   }
@@ -99,7 +99,7 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(9056);
-    paramInt = ((i)this.pra.get(paramInt)).type;
+    paramInt = ((i)this.pxG.get(paramInt)).type;
     AppMethodBeat.o(9056);
     return paramInt;
   }

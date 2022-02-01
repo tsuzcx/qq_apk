@@ -1,35 +1,98 @@
 package com.tencent.smtt.sdk.a;
 
-import android.content.Context;
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface c
+public class c
 {
-  public abstract boolean canLoadVideo(Context paramContext);
+  private String a;
+  private String b;
+  private Integer c;
+  private String d;
+  private String e;
+  private Integer f;
+  private Integer g;
+  private List<Integer> h;
   
-  public abstract boolean canLoadX5(Context paramContext, boolean paramBoolean1, boolean paramBoolean2);
+  public String a()
+  {
+    AppMethodBeat.i(192477);
+    Object localObject1 = new JSONObject();
+    Object localObject2 = new JSONObject();
+    try
+    {
+      if (!TextUtils.isEmpty(this.a)) {
+        ((JSONObject)localObject2).put("PP", this.a);
+      }
+      if (!TextUtils.isEmpty(this.b)) {
+        ((JSONObject)localObject2).put("PPVN", this.b);
+      }
+      if (this.c != null) {
+        ((JSONObject)localObject2).put("ADRV", this.c);
+      }
+      if (!TextUtils.isEmpty(this.d)) {
+        ((JSONObject)localObject2).put("MODEL", this.d);
+      }
+      if (!TextUtils.isEmpty(this.e)) {
+        ((JSONObject)localObject2).put("NAME", this.e);
+      }
+      if (this.f != null) {
+        ((JSONObject)localObject2).put("SDKVC", this.f);
+      }
+      if (this.g != null) {
+        ((JSONObject)localObject2).put("COMPVC", this.g);
+      }
+      ((JSONObject)localObject1).put("terminal_params", localObject2);
+      if (this.h != null)
+      {
+        localObject2 = new JSONArray();
+        int i = 0;
+        while (i < this.h.size())
+        {
+          ((JSONArray)localObject2).put(this.h.get(i));
+          i += 1;
+        }
+        ((JSONObject)localObject1).put("ids", localObject2);
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      label227:
+      break label227;
+    }
+    localObject1 = ((JSONObject)localObject1).toString();
+    AppMethodBeat.o(192477);
+    return localObject1;
+  }
   
-  public abstract boolean canLoadX5FirstTimeThirdApp(Context paramContext);
+  public void a(Integer paramInteger)
+  {
+    this.c = paramInteger;
+  }
   
-  public abstract boolean canUseVideoFeatrue(Context paramContext, int paramInt);
+  public void a(String paramString)
+  {
+    this.a = paramString;
+  }
   
-  public abstract String[] getDexLoaderFileList(Context paramContext1, Context paramContext2, String paramString);
+  public void a(List<Integer> paramList)
+  {
+    this.h = paramList;
+  }
   
-  public abstract String getLibraryPath();
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
   
-  public abstract String getTbsCoreVersionString();
-  
-  public abstract Bundle incrUpdate(Context paramContext, Bundle paramBundle);
-  
-  public abstract boolean init(Context paramContext);
-  
-  public abstract boolean isX5Disabled(Context paramContext, int paramInt1, int paramInt2);
-  
-  public abstract boolean isX5DisabledSync(Context paramContext);
-  
-  public abstract Object onMiscCallExtension(Context paramContext, String paramString, Bundle paramBundle);
-  
-  public abstract boolean useSoftWare();
+  public void c(String paramString)
+  {
+    this.d = paramString;
+  }
 }
 
 

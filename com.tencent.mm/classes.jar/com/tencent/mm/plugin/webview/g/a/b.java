@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.webview.g.a;
 import android.os.Bundle;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/preload/api/IMPShareWebView;", "", "closeComment", "", "bundle", "Landroid/os/Bundle;", "initComment", "readArticle", "showToast", "writeComment", "writeCommentReply", "writeWowComment", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/preload/api/IMPShareWebView;", "", "closeComment", "", "bundle", "Landroid/os/Bundle;", "initComment", "readArticle", "showToast", "writeComment", "writeCommentReply", "writeWowComment", "webview-sdk_release"})
 public abstract interface b
 {
-  public abstract void aF(Bundle paramBundle);
-  
   public abstract void aG(Bundle paramBundle);
   
   public abstract void aH(Bundle paramBundle);
@@ -16,7 +14,9 @@ public abstract interface b
   
   public abstract void aJ(Bundle paramBundle);
   
-  public abstract void eRl();
+  public abstract void aK(Bundle paramBundle);
+  
+  public abstract void eUX();
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ctl;
-import com.tencent.mm.protocal.protobuf.ctm;
-import com.tencent.mm.protocal.protobuf.nx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cuf;
+import com.tencent.mm.protocal.protobuf.cug;
+import com.tencent.mm.protocal.protobuf.nz;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class k
@@ -21,23 +21,23 @@ public final class k
   private f callback;
   private b rr;
   
-  public k(LinkedList<nx> paramLinkedList, int paramInt1, int paramInt2, int paramInt3)
+  public k(LinkedList<nz> paramLinkedList, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(5584);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new ctl();
-    ((b.a)localObject).hNN = new ctm();
+    ((b.a)localObject).hQF = new cuf();
+    ((b.a)localObject).hQG = new cug();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/reportshow";
     ((b.a)localObject).funcId = 2645;
-    ((b.a)localObject).hNO = 176;
+    ((b.a)localObject).hQH = 176;
     ((b.a)localObject).respCmdId = 1000000176;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (ctl)this.rr.hNK.hNQ;
-    ((ctl)localObject).HlE = paramLinkedList;
-    ((ctl)localObject).HlF = paramInt1;
-    ((ctl)localObject).HlG = paramInt2;
-    ((ctl)localObject).FEY = paramInt3;
-    ad.i("MicroMsg.NetSceneReportBizListShowInfo", "reportshow report_list size %d,enter_pos %d,exit_pos %d", new Object[] { Integer.valueOf(((ctl)localObject).HlE.size()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cuf)this.rr.hQD.hQJ;
+    ((cuf)localObject).HFe = paramLinkedList;
+    ((cuf)localObject).HFf = paramInt1;
+    ((cuf)localObject).HFg = paramInt2;
+    ((cuf)localObject).FXt = paramInt3;
+    ae.i("MicroMsg.NetSceneReportBizListShowInfo", "reportshow report_list size %d,enter_pos %d,exit_pos %d", new Object[] { Integer.valueOf(((cuf)localObject).HFe.size()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(5584);
   }
   

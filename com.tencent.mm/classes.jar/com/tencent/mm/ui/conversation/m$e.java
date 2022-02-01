@@ -8,11 +8,11 @@ public enum m$e
   
   static
   {
-    AppMethodBeat.i(194729);
-    Kxd = new e("ASC", 0, 1);
-    Kxe = new e("DESC", 1, -1);
-    Kxf = new e[] { Kxd, Kxe };
-    AppMethodBeat.o(194729);
+    AppMethodBeat.i(188131);
+    KTx = new e("ASC", 0, 1);
+    KTy = new e("DESC", 1, -1);
+    KTz = new e[] { KTx, KTy };
+    AppMethodBeat.o(188131);
   }
   
   private m$e(int paramInt)

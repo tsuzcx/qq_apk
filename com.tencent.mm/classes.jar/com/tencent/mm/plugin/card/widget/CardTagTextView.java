@@ -8,27 +8,27 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public class CardTagTextView
   extends TextView
 {
   private int fillColor;
-  private int oDL;
-  private Paint oMa;
-  private RectF oPP;
-  private int oPQ;
-  private int oPR;
+  private int oKn;
+  private Paint oSC;
+  private RectF oWr;
+  private int oWs;
+  private int oWt;
   
   public CardTagTextView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(113879);
-    this.oPP = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.oMa = new Paint();
-    this.oDL = 3;
-    this.oPQ = 9;
-    this.oPR = 0;
+    this.oWr = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.oSC = new Paint();
+    this.oKn = 3;
+    this.oWs = 9;
+    this.oWt = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113879);
@@ -38,11 +38,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113880);
-    this.oPP = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.oMa = new Paint();
-    this.oDL = 3;
-    this.oPQ = 9;
-    this.oPR = 0;
+    this.oWr = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.oSC = new Paint();
+    this.oKn = 3;
+    this.oWs = 9;
+    this.oWt = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113880);
@@ -52,11 +52,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(113881);
-    this.oPP = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.oMa = new Paint();
-    this.oDL = 3;
-    this.oPQ = 9;
-    this.oPR = 0;
+    this.oWr = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.oSC = new Paint();
+    this.oKn = 3;
+    this.oWs = 9;
+    this.oWt = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113881);
@@ -65,30 +65,30 @@ public class CardTagTextView
   private void init()
   {
     AppMethodBeat.i(113882);
-    this.oDL = Math.round(a.getDensity(getContext()) * 0.5F);
-    this.oPQ = a.fromDPToPix(getContext(), 3);
-    this.oPR = getCurrentTextColor();
+    this.oKn = Math.round(a.getDensity(getContext()) * 0.5F);
+    this.oWs = a.fromDPToPix(getContext(), 3);
+    this.oWt = getCurrentTextColor();
     AppMethodBeat.o(113882);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(113884);
-    this.oPP.left = this.oPQ;
-    this.oPP.top = this.oDL;
-    this.oPP.right = (getWidth() - this.oPQ);
-    this.oPP.bottom = (getHeight() - this.oDL);
-    this.oMa.setAntiAlias(true);
+    this.oWr.left = this.oWs;
+    this.oWr.top = this.oKn;
+    this.oWr.right = (getWidth() - this.oWs);
+    this.oWr.bottom = (getHeight() - this.oKn);
+    this.oSC.setAntiAlias(true);
     if (this.fillColor != 0)
     {
-      this.oMa.setColor(this.fillColor);
-      this.oMa.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.oPP, getHeight() / 2 - this.oDL, getHeight() / 2 - this.oDL, this.oMa);
+      this.oSC.setColor(this.fillColor);
+      this.oSC.setStyle(Paint.Style.FILL);
+      paramCanvas.drawRoundRect(this.oWr, getHeight() / 2 - this.oKn, getHeight() / 2 - this.oKn, this.oSC);
     }
-    this.oMa.setColor(this.oPR);
-    this.oMa.setStrokeWidth(this.oDL);
-    this.oMa.setStyle(Paint.Style.STROKE);
-    paramCanvas.drawRoundRect(this.oPP, getHeight() / 2 - this.oDL, getHeight() / 2 - this.oDL, this.oMa);
+    this.oSC.setColor(this.oWt);
+    this.oSC.setStrokeWidth(this.oKn);
+    this.oSC.setStyle(Paint.Style.STROKE);
+    paramCanvas.drawRoundRect(this.oWr, getHeight() / 2 - this.oKn, getHeight() / 2 - this.oKn, this.oSC);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(113884);
   }
@@ -101,7 +101,7 @@ public class CardTagTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(113883);
-    this.oPR = paramInt;
+    this.oWt = paramInt;
     super.setTextColor(paramInt);
     AppMethodBeat.o(113883);
   }

@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e.b;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e.c;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e.d;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e.e;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e.f;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.z.e.b;
-import com.tencent.mm.plugin.appbrand.jsapi.z.e.c;
-import com.tencent.mm.plugin.appbrand.jsapi.z.e.d;
-import com.tencent.mm.plugin.appbrand.jsapi.z.e.e;
-import com.tencent.mm.plugin.appbrand.jsapi.z.e.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,27 +18,27 @@ import org.json.JSONObject;
 public final class b
 {
   private static int action = 0;
-  private static int dtK = 0;
-  private static long gLY = 0L;
-  private static long kLa = 0L;
+  private static int duP = 0;
+  private static long gOH = 0L;
+  private static long kOp = 0L;
   
   public static void a(e parame, int paramInt, MotionEvent paramMotionEvent, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(194999);
+    AppMethodBeat.i(197222);
     int i = paramMotionEvent.getActionIndex();
     int j = paramMotionEvent.getPointerId(i);
     float f1 = paramMotionEvent.getX(i);
     float f2 = paramMotionEvent.getY(i);
-    if ((action == paramMotionEvent.getAction()) && (dtK == j) && (kLa == paramMotionEvent.getEventTime()) && (gLY == paramMotionEvent.getDownTime()))
+    if ((action == paramMotionEvent.getAction()) && (duP == j) && (kOp == paramMotionEvent.getEventTime()) && (gOH == paramMotionEvent.getDownTime()))
     {
-      ad.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d, don't send Duplicate event", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(paramMotionEvent.getEventTime()), Long.valueOf(paramMotionEvent.getDownTime()) });
-      AppMethodBeat.o(194999);
+      ae.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d, don't send Duplicate event", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(paramMotionEvent.getEventTime()), Long.valueOf(paramMotionEvent.getDownTime()) });
+      AppMethodBeat.o(197222);
       return;
     }
     action = paramMotionEvent.getAction();
-    dtK = j;
-    kLa = paramMotionEvent.getEventTime();
-    gLY = paramMotionEvent.getDownTime();
+    duP = j;
+    kOp = paramMotionEvent.getEventTime();
+    gOH = paramMotionEvent.getDownTime();
     e.f localf = new e.f();
     localf.b(j, f1, f2);
     JSONObject localJSONObject = new JSONObject();
@@ -47,7 +47,7 @@ public final class b
       localJSONObject.put("data", paramString);
       localJSONObject.put("viewId", paramInt);
       label203:
-      ad.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(kLa), Long.valueOf(gLY) });
+      ae.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(kOp), Long.valueOf(gOH) });
       paramString = null;
       switch (paramMotionEvent.getAction())
       {
@@ -58,9 +58,9 @@ public final class b
       {
         if ((paramMotionEvent != null) && (paramBoolean))
         {
-          paramMotionEvent.Pi(localJSONObject.toString());
+          paramMotionEvent.PQ(localJSONObject.toString());
           parame.a(paramMotionEvent);
-          AppMethodBeat.o(194999);
+          AppMethodBeat.o(197222);
           return;
         }
         try
@@ -111,10 +111,10 @@ public final class b
                 continue;
                 if (paramMotionEvent != null)
                 {
-                  paramMotionEvent.Pi(localJSONObject.toString());
+                  paramMotionEvent.PQ(localJSONObject.toString());
                   parame.b(paramMotionEvent);
                 }
-                AppMethodBeat.o(194999);
+                AppMethodBeat.o(197222);
                 return;
               }
               catch (JSONException localJSONException1)
@@ -172,7 +172,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.b
  * JD-Core Version:    0.7.0.1
  */

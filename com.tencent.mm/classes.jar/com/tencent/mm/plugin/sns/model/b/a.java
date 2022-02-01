@@ -4,49 +4,49 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.az;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class a
 {
-  private static int zoK = 6;
-  private static int zoL = 3;
-  private static int zoM = 1000;
-  private static boolean zoN = true;
-  private static String zoO = "";
-  private static int zoP = 0;
-  private static int zoQ = 60;
-  private static int zoR = 1200;
-  private static float zoS = 4.0F;
-  private static float zoT = 8.0F;
-  private static int zoU = 1;
-  private static int zoV = 3;
-  private static String zoW = "20:00-23:59";
+  private static int zFZ = 6;
+  private static int zGa = 3;
+  private static int zGb = 1000;
+  private static boolean zGc = true;
+  private static String zGd = "";
+  private static int zGe = 0;
+  private static int zGf = 60;
+  private static int zGg = 1200;
+  private static float zGh = 4.0F;
+  private static float zGi = 8.0F;
+  private static int zGj = 1;
+  private static int zGk = 3;
+  private static String zGl = "20:00-23:59";
   
-  public static boolean Qk(int paramInt)
+  public static boolean QR(int paramInt)
   {
     AppMethodBeat.i(96080);
     String str1 = SimpleDateFormat.getDateInstance().format(new Date());
-    ax localax = ax.aQz("MicroMsg.SnsPreloadSwitch");
-    String str2 = localax.decodeString("SnsPreloadSwitch_KEY_DATE");
+    ay localay = ay.aRW("MicroMsg.SnsPreloadSwitch");
+    String str2 = localay.decodeString("SnsPreloadSwitch_KEY_DATE");
     if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1)))
     {
-      ad.i("MicroMsg.SnsPreloadSwitch", "yesterday preload count:%d", new Object[] { Integer.valueOf(localax.decodeInt("SnsPreloadSwitch_KEY_COUNT")) });
-      localax.encode("SnsPreloadSwitch_KEY_DATE", str1);
-      localax.encode("SnsPreloadSwitch_KEY_COUNT", paramInt);
+      ae.i("MicroMsg.SnsPreloadSwitch", "yesterday preload count:%d", new Object[] { Integer.valueOf(localay.decodeInt("SnsPreloadSwitch_KEY_COUNT")) });
+      localay.encode("SnsPreloadSwitch_KEY_DATE", str1);
+      localay.encode("SnsPreloadSwitch_KEY_COUNT", paramInt);
       AppMethodBeat.o(96080);
       return true;
     }
-    int i = localax.decodeInt("SnsPreloadSwitch_KEY_COUNT", 0);
-    if (paramInt + i < zoM)
+    int i = localay.decodeInt("SnsPreloadSwitch_KEY_COUNT", 0);
+    if (paramInt + i < zGb)
     {
-      localax.encode("SnsPreloadSwitch_KEY_COUNT", i + paramInt);
+      localay.encode("SnsPreloadSwitch_KEY_COUNT", i + paramInt);
       AppMethodBeat.o(96080);
       return true;
     }
@@ -54,21 +54,21 @@ public final class a
     return false;
   }
   
-  public static int a(byn parambyn, int paramInt)
+  public static int a(bzh parambzh, int paramInt)
   {
     AppMethodBeat.i(96082);
-    if (parambyn.GTe > 0.0F)
+    if (parambzh.HmF > 0.0F)
     {
-      float f = parambyn.GTe * paramInt / 100.0F;
-      if (f < zoS)
+      float f = parambzh.HmF * paramInt / 100.0F;
+      if (f < zGh)
       {
-        paramInt = (int)(Math.min(zoS, parambyn.GTe) * 100.0F / parambyn.GTe);
+        paramInt = (int)(Math.min(zGh, parambzh.HmF) * 100.0F / parambzh.HmF);
         AppMethodBeat.o(96082);
         return paramInt;
       }
-      if (f > zoT)
+      if (f > zGi)
       {
-        paramInt = (int)(zoT * 100.0F / parambyn.GTe);
+        paramInt = (int)(zGi * 100.0F / parambzh.HmF);
         AppMethodBeat.o(96082);
         return paramInt;
       }
@@ -77,40 +77,40 @@ public final class a
     return paramInt;
   }
   
-  public static void dVo()
+  public static void dYP()
   {
     AppMethodBeat.i(96078);
-    zoN = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyU, true);
-    zoO = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyV, "20:00-23:59");
-    zoP = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyW, 1);
-    zoK = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyX, 6);
-    zoL = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyY, 3);
-    zoM = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyZ, 1000);
-    zoQ = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qza, 60);
-    zoS = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzc, 4.0F);
-    zoT = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzd, 8.0F);
-    zoU = dVu();
-    zoV = dVv();
-    ad.m("MicroMsg.SnsPreloadSwitch", "TIMELINE_MAIN_SWITCH:%b\nTIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL:%s\nTIMELINE_PRELOAD_NET_TYPE:%d\nTIMELINE_MAX_PRELOAD_IN_QUEUE:%d\nTIMELINE_MAX_PARALLEL_IN_QUEUE:%d\n TIMELINE_MAX_PRELOAD_COUNT:%d\nTIMELINE_PRELOAD_PERCENT:%d\nTIMELINE_OUT_PRELOAD_INTERVAL:%d\nSNS_RED_DOT_PRELOAD:%d\n SNS_PRELOAD_VIDEO_EXPIRED_TIME:%d\nSNS_RED_DOT_PRELOAD_BUSY_TIME:%s", new Object[] { Boolean.valueOf(zoN), zoO, Integer.valueOf(zoP), Integer.valueOf(zoK), Integer.valueOf(zoL), Integer.valueOf(zoM), Integer.valueOf(zoQ), Integer.valueOf(zoR), Integer.valueOf(zoU), Integer.valueOf(zoV), zoW });
+    zGc = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGa, true);
+    zGd = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGb, "20:00-23:59");
+    zGe = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGc, 1);
+    zFZ = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGd, 6);
+    zGa = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGe, 3);
+    zGb = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGf, 1000);
+    zGf = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGg, 60);
+    zGh = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGi, 4.0F);
+    zGi = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGj, 8.0F);
+    zGj = dYV();
+    zGk = dYW();
+    ae.m("MicroMsg.SnsPreloadSwitch", "TIMELINE_MAIN_SWITCH:%b\nTIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL:%s\nTIMELINE_PRELOAD_NET_TYPE:%d\nTIMELINE_MAX_PRELOAD_IN_QUEUE:%d\nTIMELINE_MAX_PARALLEL_IN_QUEUE:%d\n TIMELINE_MAX_PRELOAD_COUNT:%d\nTIMELINE_PRELOAD_PERCENT:%d\nTIMELINE_OUT_PRELOAD_INTERVAL:%d\nSNS_RED_DOT_PRELOAD:%d\n SNS_PRELOAD_VIDEO_EXPIRED_TIME:%d\nSNS_RED_DOT_PRELOAD_BUSY_TIME:%s", new Object[] { Boolean.valueOf(zGc), zGd, Integer.valueOf(zGe), Integer.valueOf(zFZ), Integer.valueOf(zGa), Integer.valueOf(zGb), Integer.valueOf(zGf), Integer.valueOf(zGg), Integer.valueOf(zGj), Integer.valueOf(zGk), zGl });
     AppMethodBeat.o(96078);
   }
   
-  public static boolean dVp()
+  public static boolean dYQ()
   {
     AppMethodBeat.i(96079);
-    if (!zoN)
+    if (!zGc)
     {
-      ad.m("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_MAIN_SWITCH", new Object[0]);
+      ae.m("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_MAIN_SWITCH", new Object[0]);
       AppMethodBeat.o(96079);
       return false;
     }
-    int i = ay.iS(aj.getContext());
-    switch (zoP)
+    int i = az.iX(ak.getContext());
+    switch (zGe)
     {
     }
-    while ((!TextUtils.isEmpty(zoO)) && (com.tencent.mm.modelcontrol.b.ET(zoO)))
+    while ((!TextUtils.isEmpty(zGd)) && (com.tencent.mm.modelcontrol.b.Fv(zGd)))
     {
-      ad.m("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL %s", new Object[] { zoO });
+      ae.m("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_DAY_UNABLE_PRELOAD_TIME_INTERVAL %s", new Object[] { zGd });
       AppMethodBeat.o(96079);
       return false;
       if (i != 1)
@@ -134,9 +134,9 @@ public final class a
         }
       }
     }
-    if (!Qk(0))
+    if (!QR(0))
     {
-      ad.m("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_MAX_PRELOAD_COUNT", new Object[0]);
+      ae.m("MicroMsg.SnsPreloadSwitch", "disable by TIMELINE_MAX_PRELOAD_COUNT", new Object[0]);
       AppMethodBeat.o(96079);
       return false;
     }
@@ -144,44 +144,44 @@ public final class a
     return true;
   }
   
-  public static int dVq()
+  public static int dYR()
   {
-    return zoK;
+    return zFZ;
   }
   
-  public static int dVr()
+  public static int dYS()
   {
-    return zoL;
+    return zGa;
   }
   
-  public static int dVs()
+  public static int dYT()
   {
-    return zoQ;
+    return zGf;
   }
   
-  public static int dVt()
+  public static int dYU()
   {
     AppMethodBeat.i(96081);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzb, 1200);
-    zoR = i;
+    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGh, 1200);
+    zGg = i;
     AppMethodBeat.o(96081);
     return i;
   }
   
-  public static int dVu()
+  public static int dYV()
   {
     AppMethodBeat.i(96083);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qze, 1);
-    zoU = i;
+    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGk, 1);
+    zGj = i;
     AppMethodBeat.o(96083);
     return i;
   }
   
-  public static int dVv()
+  public static int dYW()
   {
     AppMethodBeat.i(96084);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzf, 3);
-    zoV = i;
+    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGl, 3);
+    zGk = i;
     AppMethodBeat.o(96084);
     return i;
   }

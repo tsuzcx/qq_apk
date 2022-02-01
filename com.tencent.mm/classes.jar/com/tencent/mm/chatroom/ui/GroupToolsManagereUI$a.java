@@ -9,22 +9,22 @@ import android.support.v7.widget.a.a.a;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Collections;
 import java.util.List;
 
 public final class GroupToolsManagereUI$a
   extends a.a
 {
-  private boolean dhP = false;
-  private boolean fOA = true;
-  private List fOy;
-  private GroupToolsManagereUI.b fOz;
+  private boolean diS = false;
+  private List fQE;
+  private GroupToolsManagereUI.b fQF;
+  private boolean fQG = true;
   
   public GroupToolsManagereUI$a(List paramList, GroupToolsManagereUI.b paramb)
   {
-    this.fOy = paramList;
-    this.fOz = paramb;
+    this.fQE = paramList;
+    this.fQF = paramb;
   }
   
   public final void L(RecyclerView.w paramw) {}
@@ -41,7 +41,7 @@ public final class GroupToolsManagereUI$a
   {
     AppMethodBeat.i(182179);
     ViewPropertyAnimator localViewPropertyAnimator;
-    if (this.fOA)
+    if (this.fQG)
     {
       localViewPropertyAnimator = paramw.auu.animate();
       if (Build.VERSION.SDK_INT >= 21)
@@ -49,9 +49,9 @@ public final class GroupToolsManagereUI$a
         paramw.auu.setTranslationZ(20.0F);
         localViewPropertyAnimator.start();
       }
-      this.fOA = false;
+      this.fQG = false;
     }
-    if (this.dhP)
+    if (this.diS)
     {
       localViewPropertyAnimator = paramw.auu.animate();
       if (Build.VERSION.SDK_INT >= 21)
@@ -59,8 +59,8 @@ public final class GroupToolsManagereUI$a
         paramw.auu.setTranslationZ(0.0F);
         localViewPropertyAnimator.start();
       }
-      this.dhP = false;
-      this.fOA = true;
+      this.diS = false;
+      this.fQG = true;
     }
     super.a(paramCanvas, paramRecyclerView, paramw, paramFloat1, paramFloat2, paramInt, paramBoolean);
     AppMethodBeat.o(182179);
@@ -71,25 +71,25 @@ public final class GroupToolsManagereUI$a
     AppMethodBeat.i(182176);
     int i = paramw1.lN();
     int k = paramw2.lN();
-    ad.d("MicroMsg.roomtools.GroupToolsManagereUI", "onMove fromIndex:%s toIndex:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+    ae.d("MicroMsg.roomtools.GroupToolsManagereUI", "onMove fromIndex:%s toIndex:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
     if (i < k)
     {
       j = i;
       while (j < k)
       {
-        Collections.swap(this.fOy, j, j + 1);
+        Collections.swap(this.fQE, j, j + 1);
         j += 1;
       }
     }
     int j = i;
     while (j > k)
     {
-      Collections.swap(this.fOy, j, j - 1);
+      Collections.swap(this.fQE, j, j - 1);
       j -= 1;
     }
     paramRecyclerView.getAdapter().aq(i, k);
-    if (this.fOz != null) {
-      this.fOz.YP();
+    if (this.fQF != null) {
+      this.fQF.YY();
     }
     paramw1.auu.performHapticFeedback(0, 2);
     AppMethodBeat.o(182176);
@@ -100,7 +100,7 @@ public final class GroupToolsManagereUI$a
   {
     AppMethodBeat.i(182178);
     super.d(paramRecyclerView, paramw);
-    this.dhP = true;
+    this.diS = true;
     AppMethodBeat.o(182178);
   }
   
@@ -118,7 +118,7 @@ public final class GroupToolsManagereUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.GroupToolsManagereUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,17 @@ import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/TouchToClick;", "Landroid/view/View$OnTouchListener;", "()V", "clickHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "clicked", "", "cancel", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/TouchToClick;", "Landroid/view/View$OnTouchListener;", "()V", "clickHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "clicked", "", "cancel", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-emojisdk_release"})
 public final class a
   implements View.OnTouchListener
 {
-  av gne;
-  private boolean gnf;
+  aw gpA;
+  private boolean gpB;
   
   public final boolean onTouch(final View paramView, MotionEvent paramMotionEvent)
   {
@@ -24,7 +24,7 @@ public final class a
     Object localObject = new b();
     ((b)localObject).bd(paramView);
     ((b)localObject).bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/emoji/panel/TouchToClick", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/emoji/panel/TouchToClick", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahF());
     p.h(paramView, "v");
     p.h(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
@@ -35,35 +35,35 @@ public final class a
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/emoji/panel/TouchToClick", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(105625);
       return true;
-      this.gnf = false;
-      this.gne = new av((av.a)new a(this, paramView), true);
-      paramView = this.gne;
+      this.gpB = false;
+      this.gpA = new aw((aw.a)new a(this, paramView), true);
+      paramView = this.gpA;
       if (paramView != null)
       {
-        paramView.az(ViewConfiguration.getKeyRepeatTimeout(), ViewConfiguration.getKeyRepeatDelay());
+        paramView.ay(ViewConfiguration.getKeyRepeatTimeout(), ViewConfiguration.getKeyRepeatDelay());
         continue;
-        localObject = this.gne;
+        localObject = this.gpA;
         if (localObject != null) {
-          ((av)localObject).stopTimer();
+          ((aw)localObject).stopTimer();
         }
-        this.gne = null;
-        if ((!this.gnf) && (paramMotionEvent.getActionMasked() == 1)) {
+        this.gpA = null;
+        if ((!this.gpB) && (paramMotionEvent.getActionMasked() == 1)) {
           paramView.performClick();
         }
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
   static final class a
-    implements av.a
+    implements aw.a
   {
     a(a parama, View paramView) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(105624);
-      a.a(this.gng);
+      a.a(this.gpC);
       boolean bool = paramView.performClick();
       AppMethodBeat.o(105624);
       return bool;

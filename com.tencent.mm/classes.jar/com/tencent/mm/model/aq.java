@@ -1,20 +1,19 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.storage.bq.b;
+import com.tencent.mm.kernel.c.a;
 
-@Deprecated
 public abstract interface aq
+  extends a
 {
-  public abstract bq.b Na();
+  public abstract void aBP();
   
-  public abstract ai Nb();
+  public abstract void rU(long paramLong);
   
-  @Deprecated
-  public abstract ar getNotification();
+  public abstract void z(String paramString, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.aq
  * JD-Core Version:    0.7.0.1
  */

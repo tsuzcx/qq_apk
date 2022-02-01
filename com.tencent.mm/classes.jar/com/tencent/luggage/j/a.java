@@ -2,9 +2,9 @@ package com.tencent.luggage.j;
 
 public final class a
 {
-  public static final String[] cqI = { "/WAService.js", "/WAWebview.js", "/WAVConsole.js", "/WAPerf.js", "/WAWidget.js", "/WAPageFrame.html", "/WAGame.js", "/WAGameSubContext.js", "/WAGameVConsole.html", "/WAWorker.js", "/WARemoteDebug.js", "/WASourceMap.js", "/WASubContext.js", "/WAServiceMainContext.js", "/WAVersion.json" };
-  public static final String[] cqJ = { "/WAService.js", "/WAWebview.js", "/WAVConsole.js", "/WAPerf.js", "/WAWidget.js", "/WAPageFrame.html", "/WAGame.js", "/WAGameSubContext.js", "/WAGameVConsole.html", "/WAWorker.js", "/WARemoteDebug.js", "/WASourceMap.js", "/WASubContext.js", "/WAServiceMainContext.js", "/WAVersion.json" };
-  public static final String[] cqK = { "/WAService.js", "/WAWebview.js", "/WAVConsole.js", "/WAPerf.js", "/WAWidget.js", "/WAPageFrame.html", "/WAGame.js", "/WAGameSubContext.js", "/WAGameVConsole.html", "/WAWorker.js", "/WARemoteDebug.js", "/WASourceMap.js", "/WASubContext.js", "/WAServiceMainContext.js", "/WAVersion.json" };
+  public static final String[] crm = { "/WAService.js", "/WAWebview.js", "/WAVConsole.js", "/WAPerf.js", "/WAWidget.js", "/WAPageFrame.html", "/WAGame.js", "/WAGameSubContext.js", "/WAGameVConsole.html", "/WAWorker.js", "/WARemoteDebug.js", "/WASourceMap.js", "/WASubContext.js", "/WAServiceMainContext.js", "/WAVersion.json" };
+  public static final String[] crn = { "/WAService.js", "/WAWebview.js", "/WAVConsole.js", "/WAPerf.js", "/WAWidget.js", "/WAPageFrame.html", "/WAGame.js", "/WAGameSubContext.js", "/WAGameVConsole.html", "/WAWorker.js", "/WARemoteDebug.js", "/WASourceMap.js", "/WASubContext.js", "/WAServiceMainContext.js", "/WAVersion.json" };
+  public static final String[] cro = { "/WAService.js", "/WAWebview.js", "/WAVConsole.js", "/WAPerf.js", "/WAWidget.js", "/WAPageFrame.html", "/WAGame.js", "/WAGameSubContext.js", "/WAGameVConsole.html", "/WAWorker.js", "/WARemoteDebug.js", "/WASourceMap.js", "/WASubContext.js", "/WAServiceMainContext.js", "/WAVersion.json" };
 }
 
 

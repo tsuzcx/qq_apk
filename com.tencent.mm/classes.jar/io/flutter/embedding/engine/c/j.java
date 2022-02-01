@@ -10,28 +10,28 @@ import java.util.Map;
 
 public final class j
 {
-  public final b<Object> MDR;
+  public final b<Object> NaX;
   
   public j(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10235);
-    this.MDR = new b(paramDartExecutor, "flutter/system", f.MFT);
+    this.NaX = new b(paramDartExecutor, "flutter/system", f.NcZ);
     AppMethodBeat.o(10235);
   }
   
-  public final void gfg()
+  public final void gjI()
   {
     AppMethodBeat.i(10236);
-    a.gea();
+    a.giD();
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("type", "memoryPressure");
-    this.MDR.eF(localHashMap);
+    this.NaX.eI(localHashMap);
     AppMethodBeat.o(10236);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.c.j
  * JD-Core Version:    0.7.0.1
  */

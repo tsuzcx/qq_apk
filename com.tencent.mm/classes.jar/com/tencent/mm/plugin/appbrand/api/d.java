@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.api;
 
 public abstract interface d
 {
-  public abstract String aYt();
+  public abstract String aYO();
 }
 
 

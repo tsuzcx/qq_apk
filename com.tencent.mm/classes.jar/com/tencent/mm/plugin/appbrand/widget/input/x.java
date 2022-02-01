@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.am;
+import com.tencent.mm.plugin.appbrand.page.al;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.widget.input.d.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 
 public abstract class x
@@ -13,48 +13,48 @@ public abstract class x
   {
     if (paramy == null)
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl failed, EditText is null");
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl failed, EditText is null");
       return;
     }
     int i = paramy.getInputId();
-    paramy.b(this.sZW);
-    if (this.tab == null) {}
-    for (paramy = null; paramy == null; paramy = (aa)this.tab.get())
+    paramy.b(this.niG);
+    if (this.niL == null) {}
+    for (paramy = null; paramy == null; paramy = (z)this.niL.get())
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl(viewId : %s) failed, pageView is null", new Object[] { Integer.valueOf(i) });
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl(viewId : %s) failed, pageView is null", new Object[] { Integer.valueOf(i) });
       return;
     }
-    paramy = paramy.mbW;
+    paramy = paramy.mgp;
     if (paramy == null)
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl(viewId : %s) failed, CustomViewContainer is null", new Object[] { Integer.valueOf(i) });
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl(viewId : %s) failed, CustomViewContainer is null", new Object[] { Integer.valueOf(i) });
       return;
     }
-    ad.i("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl(viewId : %s) success = %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramy.sG(i)) });
+    ae.i("MicroMsg.AppBrandTextAreaInvokeHandler", "removeInputImpl(viewId : %s) success = %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramy.sJ(i)) });
   }
   
   final boolean a(y paramy, e parame)
   {
     if (paramy == null)
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl failed, EditText is null");
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl failed, EditText is null");
       return false;
     }
-    int j = parame.ncO;
-    if (this.tab != null)
+    int j = parame.nhX;
+    if (this.niL != null)
     {
-      localObject = (aa)this.tab.get();
+      localObject = (z)this.niL.get();
       if (localObject != null) {}
     }
     else
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl(viewId : %s) failed, pageView is null", new Object[] { Integer.valueOf(j) });
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl(viewId : %s) failed, pageView is null", new Object[] { Integer.valueOf(j) });
       return false;
     }
-    Object localObject = ((aa)localObject).mbW;
+    Object localObject = ((z)localObject).mgp;
     if (localObject == null)
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl(viewId : %s) failed, CustomViewContainer is null", new Object[] { Integer.valueOf(j) });
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl(viewId : %s) failed, CustomViewContainer is null", new Object[] { Integer.valueOf(j) });
       return false;
     }
     int i;
@@ -63,23 +63,23 @@ public abstract class x
     float f2;
     float f3;
     float f4;
-    if ((parame.njl != null) && (parame.njl.booleanValue()))
+    if ((parame.not != null) && (parame.not.booleanValue()))
     {
       i = 4;
-      k = parame.niR;
-      f1 = parame.niZ.intValue();
-      f2 = parame.niY.intValue();
-      f3 = parame.niW.intValue();
-      f4 = parame.niX.intValue();
-      if ((parame.njp == null) || (!parame.njp.booleanValue())) {
+      k = parame.nnZ;
+      f1 = parame.noh.intValue();
+      f2 = parame.nog.intValue();
+      f3 = parame.noe.intValue();
+      f4 = parame.nof.intValue();
+      if ((parame.nox == null) || (!parame.nox.booleanValue())) {
         break label260;
       }
     }
     label260:
     for (boolean bool = true;; bool = false)
     {
-      bool = ((am)localObject).a(paramy, j, k, new float[] { f1, f2, f3, f4, 0.0F }, i, bool);
-      ad.i("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl(viewId : %s) success = %s, ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
+      bool = ((al)localObject).a(paramy, j, k, new float[] { f1, f2, f3, f4, 0.0F }, i, bool);
+      ae.i("MicroMsg.AppBrandTextAreaInvokeHandler", "addInputImpl(viewId : %s) success = %s, ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
       return bool;
       i = 0;
       break;
@@ -90,37 +90,37 @@ public abstract class x
   {
     if (paramy == null)
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition failed, EditText is null");
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition failed, EditText is null");
       return false;
     }
     int j = paramy.getInputId();
-    if (this.tab != null)
+    if (this.niL != null)
     {
-      paramy = (aa)this.tab.get();
+      paramy = (z)this.niL.get();
       if (paramy != null) {}
     }
     else
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition(viewId : %s) failed, pageView is null", new Object[] { Integer.valueOf(j) });
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition(viewId : %s) failed, pageView is null", new Object[] { Integer.valueOf(j) });
       return false;
     }
-    paramy = paramy.mbW;
+    paramy = paramy.mgp;
     if (paramy == null)
     {
-      ad.w("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition(viewId : %s) failed, CustomViewContainer is null", new Object[] { Integer.valueOf(j) });
+      ae.w("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition(viewId : %s) failed, CustomViewContainer is null", new Object[] { Integer.valueOf(j) });
       return false;
     }
-    if ((parame.njl != null) && (parame.njl.booleanValue())) {}
+    if ((parame.not != null) && (parame.not.booleanValue())) {}
     for (int i = 4;; i = 0)
     {
-      float f1 = parame.niZ.intValue();
-      float f2 = parame.niY.intValue();
-      float f3 = parame.niW.intValue();
-      float f4 = parame.niX.intValue();
-      parame = parame.njp;
+      float f1 = parame.noh.intValue();
+      float f2 = parame.nog.intValue();
+      float f3 = parame.noe.intValue();
+      float f4 = parame.nof.intValue();
+      parame = parame.nox;
       Boolean localBoolean = Boolean.FALSE;
       boolean bool = paramy.a(j, new float[] { f1, f2, f3, f4, 0.0F }, i, parame, localBoolean);
-      ad.i("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition(viewId : %s) success = %s", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
+      ae.i("MicroMsg.AppBrandTextAreaInvokeHandler", "updateInputPosition(viewId : %s) success = %s", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
       return bool;
     }
   }

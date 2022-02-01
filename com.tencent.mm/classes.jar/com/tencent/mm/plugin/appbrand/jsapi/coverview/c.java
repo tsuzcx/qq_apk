@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -16,8 +17,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.base.i;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +37,7 @@ public final class c
     return i;
   }
   
-  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject, final i parami)
+  public final boolean b(e parame, int paramInt, final View paramView, JSONObject paramJSONObject, final i parami)
   {
     AppMethodBeat.i(137520);
     int i = -1;
@@ -55,9 +56,9 @@ public final class c
         if (!parame.has("width")) {
           break label638;
         }
-        paramInt = g.a(parame, "width", g.vI(paramView.getWidth()));
+        paramInt = g.a(parame, "width", g.vN(paramView.getWidth()));
         if (parame.has("height")) {
-          i = g.a(parame, "height", g.vI(paramView.getWidth()));
+          i = g.a(parame, "height", g.vN(paramView.getWidth()));
         }
         int j = paramJSONObject.optInt("duration", 300);
         str = paramJSONObject.optString("easing", "linear");
@@ -89,7 +90,7 @@ public final class c
             public final void onAnimationEnd(Animator paramAnonymousAnimator)
             {
               AppMethodBeat.i(137518);
-              parami.Pr(c.this.e("ok", null));
+              parami.PZ(c.this.e("ok", null));
               AppMethodBeat.o(137518);
             }
           });
@@ -104,13 +105,33 @@ public final class c
           {
             paramJSONObject = ValueAnimator.ofInt(new int[] { paramView.getWidth(), paramInt });
             parame.add(paramJSONObject);
-            paramJSONObject.addUpdateListener(new c.2(this, paramView));
+            paramJSONObject.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+            {
+              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+              {
+                AppMethodBeat.i(197223);
+                paramAnonymousValueAnimator = (Integer)paramAnonymousValueAnimator.getAnimatedValue();
+                paramView.getLayoutParams().width = paramAnonymousValueAnimator.intValue();
+                paramView.requestLayout();
+                AppMethodBeat.o(197223);
+              }
+            });
           }
           if (i != -1)
           {
             paramJSONObject = ValueAnimator.ofInt(new int[] { paramView.getHeight(), i });
             parame.add(paramJSONObject);
-            paramJSONObject.addUpdateListener(new c.3(this, paramView));
+            paramJSONObject.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+            {
+              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+              {
+                AppMethodBeat.i(197224);
+                paramAnonymousValueAnimator = (Integer)paramAnonymousValueAnimator.getAnimatedValue();
+                paramView.getLayoutParams().height = paramAnonymousValueAnimator.intValue();
+                paramView.requestLayout();
+                AppMethodBeat.o(197224);
+              }
+            });
           }
           localAnimatorSet.playTogether(parame);
           localAnimatorSet.start();
@@ -120,8 +141,8 @@ public final class c
       }
       catch (JSONException parame)
       {
-        ad.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { Log.getStackTraceString(parame) });
-        parami.Pr(e("fail:missing finalStyle", null));
+        ae.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { Log.getStackTraceString(parame) });
+        parami.PZ(e("fail:missing finalStyle", null));
         AppMethodBeat.o(137520);
         return false;
       }
@@ -143,14 +164,14 @@ public final class c
     }
   }
   
-  public final boolean biW()
+  public final boolean bjF()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.c
  * JD-Core Version:    0.7.0.1
  */

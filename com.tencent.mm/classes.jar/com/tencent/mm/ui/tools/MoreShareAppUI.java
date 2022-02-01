@@ -21,9 +21,9 @@ import java.util.List;
 public class MoreShareAppUI
   extends MMActivity
 {
-  private List<g> JfQ;
-  private a KJW;
-  private DragSortListView pJC;
+  private List<g> JAB;
+  private a Lgq;
+  private DragSortListView pQh;
   
   public int getLayoutId()
   {
@@ -34,8 +34,8 @@ public class MoreShareAppUI
   {
     AppMethodBeat.i(39083);
     setMMTitle(2131756732);
-    this.pJC = ((DragSortListView)findViewById(2131301457));
-    this.pJC.setDropListener(new DragSortListView.h()
+    this.pQh = ((DragSortListView)findViewById(2131301457));
+    this.pQh.setDropListener(new DragSortListView.h()
     {
       public final void ek(int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -72,8 +72,8 @@ public class MoreShareAppUI
         return false;
       }
     });
-    this.KJW = new a(this, this.JfQ);
-    this.pJC.setAdapter(this.KJW);
+    this.Lgq = new a(this, this.JAB);
+    this.pQh.setAdapter(this.Lgq);
     AppMethodBeat.o(39082);
   }
   
@@ -87,13 +87,13 @@ public class MoreShareAppUI
     extends ArrayAdapter<g>
   {
     private Context mContext;
-    private List<g> pAZ;
+    private List<g> pHD;
     
     public a(Context paramContext, List<g> paramList)
     {
       super(2131494943, paramList);
       this.mContext = paramContext;
-      this.pAZ = paramList;
+      this.pHD = paramList;
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -108,7 +108,7 @@ public class MoreShareAppUI
       for (;;)
       {
         g localg = (g)getItem(paramInt);
-        paramViewGroup.iVq.setText(localg.field_appName);
+        paramViewGroup.iYj.setText(localg.field_appName);
         paramView.setVisibility(0);
         AppMethodBeat.o(39081);
         return paramView;
@@ -118,20 +118,20 @@ public class MoreShareAppUI
     
     static final class a
     {
-      TextView iVq;
-      ImageView lZa;
-      View pBa;
-      ImageView pBb;
-      MMSwitchBtn rck;
+      TextView iYj;
+      ImageView mdt;
+      View pHE;
+      ImageView pHF;
+      MMSwitchBtn rkq;
       
       public a(View paramView)
       {
         AppMethodBeat.i(39080);
-        this.pBb = ((ImageView)paramView.findViewById(2131300760));
-        this.lZa = ((ImageView)paramView.findViewById(2131300880));
-        this.iVq = ((TextView)paramView.findViewById(2131305905));
-        this.rck = ((MMSwitchBtn)paramView.findViewById(2131305590));
-        this.pBa = paramView.findViewById(2131298736);
+        this.pHF = ((ImageView)paramView.findViewById(2131300760));
+        this.mdt = ((ImageView)paramView.findViewById(2131300880));
+        this.iYj = ((TextView)paramView.findViewById(2131305905));
+        this.rkq = ((MMSwitchBtn)paramView.findViewById(2131305590));
+        this.pHE = paramView.findViewById(2131298736);
         AppMethodBeat.o(39080);
       }
     }

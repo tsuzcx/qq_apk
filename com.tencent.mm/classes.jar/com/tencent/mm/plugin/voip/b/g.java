@@ -1,175 +1,175 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/VoipPrevReportHelper;", "", "()V", "ID", "", "TAG", "", "markAddViewFullScreenToRendererCost", "", "data", "markAddViewFullScreenToRendererCostFirst", "markAddViewFullScreenToRendererCostInvite", "markAddViewMiniWindowToRendererCost", "markAddViewMiniWindowToRendererCostFirst", "markAddViewMiniWindowToRendererCostInvite", "markBatteryPropertyCurrentInHW", "markBatteryPropertyCurrentInSW", "markCameraRendererPerFrameMiniWindowCostWithFaceBeauty", "cost", "markCameraRendererPerFramePrevFullScreenCost", "markCameraRendererPerFramePrevFullScreenCostWithFaceBeauty", "markCameraRendererPerFramePrevMiniWindowCost", "markDecodeModeChangeToHW", "count", "markDecodeModeChangeToSW", "markHWRendererPerFrameFullScreenCost", "markHWRendererPerFrameMiniWindowCost", "markVoipRendererUsePrev", "markYuvRendererPerFrameFullScreenCost", "markYuvRendererPerFrameMiniWindowCost", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/VoipPrevReportHelper;", "", "()V", "ID", "", "TAG", "", "markAddViewFullScreenToRendererCost", "", "data", "markAddViewFullScreenToRendererCostFirst", "markAddViewFullScreenToRendererCostInvite", "markAddViewMiniWindowToRendererCost", "markAddViewMiniWindowToRendererCostFirst", "markAddViewMiniWindowToRendererCostInvite", "markBatteryPropertyCurrentInHW", "markBatteryPropertyCurrentInSW", "markCameraRendererPerFrameMiniWindowCostWithFaceBeauty", "cost", "markCameraRendererPerFramePrevFullScreenCost", "markCameraRendererPerFramePrevFullScreenCostWithFaceBeauty", "markCameraRendererPerFramePrevMiniWindowCost", "markDecodeModeChangeToHW", "count", "markDecodeModeChangeToSW", "markHWRendererPerFrameFullScreenCost", "markHWRendererPerFrameMiniWindowCost", "markVoipRendererUsePrev", "markYuvRendererPerFrameFullScreenCost", "markYuvRendererPerFrameMiniWindowCost", "plugin-voip_release"})
 public final class g
 {
-  public static final g Clr;
+  public static final g CCV;
   private static final String TAG = "MicroMsg.VoipPrevReportHelper";
-  private static final long pQX = 1303L;
+  private static final long pXC = 1303L;
   
   static
   {
-    AppMethodBeat.i(215990);
-    Clr = new g();
+    AppMethodBeat.i(210411);
+    CCV = new g();
     TAG = "MicroMsg.VoipPrevReportHelper";
-    pQX = 1303L;
-    AppMethodBeat.o(215990);
+    pXC = 1303L;
+    AppMethodBeat.o(210411);
   }
   
-  public static void BB(long paramLong)
+  public static void BZ(long paramLong)
   {
-    AppMethodBeat.i(215972);
-    ad.i(TAG, "markDecodeModeChangeToHW,count=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 1, 41, (int)paramLong, false);
-    AppMethodBeat.o(215972);
+    AppMethodBeat.i(210393);
+    ae.i(TAG, "markDecodeModeChangeToHW,count=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 1, 41, (int)paramLong, false);
+    AppMethodBeat.o(210393);
   }
   
-  public static void BC(long paramLong)
+  public static void Ca(long paramLong)
   {
-    AppMethodBeat.i(215973);
-    ad.i(TAG, "markDecodeModeChangeToSW,count=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 2, 42, (int)paramLong, false);
-    AppMethodBeat.o(215973);
+    AppMethodBeat.i(210394);
+    ae.i(TAG, "markDecodeModeChangeToSW,count=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 2, 42, (int)paramLong, false);
+    AppMethodBeat.o(210394);
   }
   
-  public static void BD(long paramLong)
+  public static void Cb(long paramLong)
   {
-    AppMethodBeat.i(215974);
-    ad.i(TAG, "markBatteryPropertyCurrentInHW,data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 3, 21, (int)paramLong, false);
-    AppMethodBeat.o(215974);
+    AppMethodBeat.i(210395);
+    ae.i(TAG, "markBatteryPropertyCurrentInHW,data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 3, 21, (int)paramLong, false);
+    AppMethodBeat.o(210395);
   }
   
-  public static void BE(long paramLong)
+  public static void Cc(long paramLong)
   {
-    AppMethodBeat.i(215975);
-    ad.i(TAG, "markBatteryPropertyCurrentInSW, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 4, 22, (int)paramLong, false);
-    AppMethodBeat.o(215975);
+    AppMethodBeat.i(210396);
+    ae.i(TAG, "markBatteryPropertyCurrentInSW, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 4, 22, (int)paramLong, false);
+    AppMethodBeat.o(210396);
   }
   
-  public static void BF(long paramLong)
+  public static void Cd(long paramLong)
   {
-    AppMethodBeat.i(215976);
-    ad.i(TAG, "markAddViewFullScreenToRendererCost, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 7, 5, (int)paramLong, false);
-    AppMethodBeat.o(215976);
+    AppMethodBeat.i(210397);
+    ae.i(TAG, "markAddViewFullScreenToRendererCost, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 7, 5, (int)paramLong, false);
+    AppMethodBeat.o(210397);
   }
   
-  public static void BG(long paramLong)
+  public static void Ce(long paramLong)
   {
-    AppMethodBeat.i(215977);
-    ad.i(TAG, "markAddViewMiniWindowToRendererCost, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 8, 6, (int)paramLong, false);
-    AppMethodBeat.o(215977);
+    AppMethodBeat.i(210398);
+    ae.i(TAG, "markAddViewMiniWindowToRendererCost, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 8, 6, (int)paramLong, false);
+    AppMethodBeat.o(210398);
   }
   
-  public static void BH(long paramLong)
+  public static void Cf(long paramLong)
   {
-    AppMethodBeat.i(215978);
-    ad.i(TAG, "markYuvRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 11, 9, (int)paramLong, false);
-    AppMethodBeat.o(215978);
+    AppMethodBeat.i(210399);
+    ae.i(TAG, "markYuvRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 11, 9, (int)paramLong, false);
+    AppMethodBeat.o(210399);
   }
   
-  public static void BI(long paramLong)
+  public static void Cg(long paramLong)
   {
-    AppMethodBeat.i(215979);
-    ad.i(TAG, "markYuvRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 12, 10, (int)paramLong, false);
-    AppMethodBeat.o(215979);
+    AppMethodBeat.i(210400);
+    ae.i(TAG, "markYuvRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 12, 10, (int)paramLong, false);
+    AppMethodBeat.o(210400);
   }
   
-  public static void BJ(long paramLong)
+  public static void Ch(long paramLong)
   {
-    AppMethodBeat.i(215980);
-    ad.i(TAG, "markHWRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 15, 13, (int)paramLong, false);
-    AppMethodBeat.o(215980);
+    AppMethodBeat.i(210401);
+    ae.i(TAG, "markHWRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 15, 13, (int)paramLong, false);
+    AppMethodBeat.o(210401);
   }
   
-  public static void BK(long paramLong)
+  public static void Ci(long paramLong)
   {
-    AppMethodBeat.i(215981);
-    ad.i(TAG, "markHWRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 16, 14, (int)paramLong, false);
-    AppMethodBeat.o(215981);
+    AppMethodBeat.i(210402);
+    ae.i(TAG, "markHWRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 16, 14, (int)paramLong, false);
+    AppMethodBeat.o(210402);
   }
   
-  public static void BL(long paramLong)
+  public static void Cj(long paramLong)
   {
-    AppMethodBeat.i(215982);
-    ad.i(TAG, "markCameraRendererPerFrameNewFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 19, 17, (int)paramLong, false);
-    AppMethodBeat.o(215982);
+    AppMethodBeat.i(210403);
+    ae.i(TAG, "markCameraRendererPerFrameNewFullScreenCost,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 19, 17, (int)paramLong, false);
+    AppMethodBeat.o(210403);
   }
   
-  public static void BM(long paramLong)
+  public static void Ck(long paramLong)
   {
-    AppMethodBeat.i(215983);
-    ad.i(TAG, "markCameraRendererPerFrameNewMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 20, 18, (int)paramLong, false);
-    AppMethodBeat.o(215983);
+    AppMethodBeat.i(210404);
+    ae.i(TAG, "markCameraRendererPerFrameNewMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 20, 18, (int)paramLong, false);
+    AppMethodBeat.o(210404);
   }
   
-  public static void BN(long paramLong)
+  public static void Cl(long paramLong)
   {
-    AppMethodBeat.i(215984);
-    ad.i(TAG, "markHWRendererPerFrameMiniWindowCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 49, 51, (int)paramLong, false);
-    AppMethodBeat.o(215984);
+    AppMethodBeat.i(210405);
+    ae.i(TAG, "markHWRendererPerFrameMiniWindowCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 49, 51, (int)paramLong, false);
+    AppMethodBeat.o(210405);
   }
   
-  public static void BO(long paramLong)
+  public static void Cm(long paramLong)
   {
-    AppMethodBeat.i(215985);
-    ad.i(TAG, "markCameraRendererPerFramePrevFullScreenCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 50, 52, (int)paramLong, false);
-    AppMethodBeat.o(215985);
+    AppMethodBeat.i(210406);
+    ae.i(TAG, "markCameraRendererPerFramePrevFullScreenCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 50, 52, (int)paramLong, false);
+    AppMethodBeat.o(210406);
   }
   
-  public static void BP(long paramLong)
+  public static void Cn(long paramLong)
   {
-    AppMethodBeat.i(215986);
-    ad.i(TAG, "markAddViewFullScreenToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 35, 33, (int)paramLong, false);
-    AppMethodBeat.o(215986);
+    AppMethodBeat.i(210407);
+    ae.i(TAG, "markAddViewFullScreenToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 35, 33, (int)paramLong, false);
+    AppMethodBeat.o(210407);
   }
   
-  public static void BQ(long paramLong)
+  public static void Co(long paramLong)
   {
-    AppMethodBeat.i(215987);
-    ad.i(TAG, "markAddViewMiniWindowToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 36, 34, (int)paramLong, false);
-    AppMethodBeat.o(215987);
+    AppMethodBeat.i(210408);
+    ae.i(TAG, "markAddViewMiniWindowToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 36, 34, (int)paramLong, false);
+    AppMethodBeat.o(210408);
   }
   
-  public static void BR(long paramLong)
+  public static void Cp(long paramLong)
   {
-    AppMethodBeat.i(215988);
-    ad.i(TAG, "markAddViewFullScreenToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 39, 43, (int)paramLong, false);
-    AppMethodBeat.o(215988);
+    AppMethodBeat.i(210409);
+    ae.i(TAG, "markAddViewFullScreenToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 39, 43, (int)paramLong, false);
+    AppMethodBeat.o(210409);
   }
   
-  public static void BS(long paramLong)
+  public static void Cq(long paramLong)
   {
-    AppMethodBeat.i(215989);
-    ad.i(TAG, "markAddViewMiniWindowToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yhR.c((int)pQX, 40, 44, (int)paramLong, false);
-    AppMethodBeat.o(215989);
+    AppMethodBeat.i(210410);
+    ae.i(TAG, "markAddViewMiniWindowToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
+    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 40, 44, (int)paramLong, false);
+    AppMethodBeat.o(210410);
   }
   
-  public static void ezE()
+  public static void eDm()
   {
-    AppMethodBeat.i(215971);
-    ad.i(TAG, "markVoipRendererUsePrev");
-    com.tencent.mm.plugin.report.service.g.yhR.n(pQX, 0L, 1L);
-    AppMethodBeat.o(215971);
+    AppMethodBeat.i(210392);
+    ae.i(TAG, "markVoipRendererUsePrev");
+    com.tencent.mm.plugin.report.service.g.yxI.n(pXC, 0L, 1L);
+    AppMethodBeat.o(210392);
   }
 }
 

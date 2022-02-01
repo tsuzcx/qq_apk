@@ -1,24 +1,43 @@
 package com.tencent.mm.plugin.sns.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.dgh;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class l
 {
-  public Map<String, Map<String, Long>> map;
-  public ArrayList<String> zdq;
-  public ArrayList<List<String>> zdr;
+  public ConcurrentHashMap<String, CharSequence> zud;
+  public ConcurrentHashMap<String, String> zue;
+  public ConcurrentHashMap<String, CharSequence> zuf;
   
   public l()
   {
-    AppMethodBeat.i(95085);
-    this.zdq = new ArrayList();
-    this.zdr = new ArrayList();
-    this.map = new HashMap();
-    AppMethodBeat.o(95085);
+    AppMethodBeat.i(95082);
+    this.zud = new ConcurrentHashMap();
+    this.zue = new ConcurrentHashMap();
+    this.zuf = new ConcurrentHashMap();
+    AppMethodBeat.o(95082);
+  }
+  
+  public final void a(dgh paramdgh, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(95083);
+    this.zud.put(paramdgh.HNk + "-" + paramdgh.HNm + "-" + paramdgh.hFS, paramCharSequence);
+    AppMethodBeat.o(95083);
+  }
+  
+  public final void a(dgh paramdgh, String paramString)
+  {
+    AppMethodBeat.i(95084);
+    this.zue.put(paramdgh.HNk + "-" + paramdgh.HNm + "-" + paramdgh.hFS, paramString);
+    AppMethodBeat.o(95084);
+  }
+  
+  public final void b(dgh paramdgh, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(219264);
+    this.zuf.put(paramdgh.HNk + "-" + paramdgh.HNm + "-" + paramdgh.hFS, paramCharSequence);
+    AppMethodBeat.o(219264);
   }
 }
 

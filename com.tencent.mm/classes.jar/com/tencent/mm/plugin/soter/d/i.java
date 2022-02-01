@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.t.a;
-import com.tencent.mm.plugin.appbrand.t.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.s.a;
+import com.tencent.mm.plugin.appbrand.s.b;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class i
 {
-  public static void ax(String paramString, int paramInt1, int paramInt2)
+  public static void ay(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145968);
     ((b)e.L(b.class)).f(13711, new Object[] { Integer.valueOf(0), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(145968);
   }
   
-  public static void id(int paramInt1, int paramInt2)
+  public static void ig(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145969);
     switch (paramInt2)
@@ -27,7 +27,7 @@ public final class i
     {
       if (paramInt1 != -1)
       {
-        ad.i("SoterLuggageReportManager", "luggage soter idkey report id: %d, key: %d, value: %d", new Object[] { Integer.valueOf(672), Integer.valueOf(paramInt1), Long.valueOf(1L) });
+        ae.i("SoterLuggageReportManager", "luggage soter idkey report id: %d, key: %d, value: %d", new Object[] { Integer.valueOf(672), Integer.valueOf(paramInt1), Long.valueOf(1L) });
         ((a)e.L(a.class)).idkeyStat(672L, paramInt1, 1L, false);
       }
       AppMethodBeat.o(145969);

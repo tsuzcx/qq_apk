@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 final class a
 {
-  LinearLayout Jay;
-  TextView gnM;
-  TextView jai;
+  LinearLayout Jvg;
+  TextView gqi;
+  TextView jdb;
   ImageView ka;
 }
 

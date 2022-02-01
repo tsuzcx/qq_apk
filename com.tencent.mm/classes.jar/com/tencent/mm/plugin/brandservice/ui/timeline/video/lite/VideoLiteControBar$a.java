@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video.lite;
 
 public abstract interface VideoLiteControBar$a
 {
-  public abstract void jq(boolean paramBoolean);
+  public abstract void jp(boolean paramBoolean);
 }
 
 

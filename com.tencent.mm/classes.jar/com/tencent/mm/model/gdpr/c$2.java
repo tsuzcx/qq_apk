@@ -1,12 +1,12 @@
 package com.tencent.mm.model.gdpr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.bbr;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.protocal.protobuf.egr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bch;
+import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.protocal.protobuf.eii;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class c$2
   implements com.tencent.mm.vending.c.a<Boolean, Void>

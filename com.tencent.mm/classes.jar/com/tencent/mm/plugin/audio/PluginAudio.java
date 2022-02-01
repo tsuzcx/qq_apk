@@ -4,33 +4,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
 public final class PluginAudio
   extends f
   implements com.tencent.mm.plugin.audio.a.a
 {
-  public static final a nrs;
+  public static final a nwL;
   
   static
   {
-    AppMethodBeat.i(199728);
-    nrs = new a((byte)0);
-    AppMethodBeat.o(199728);
+    AppMethodBeat.i(201040);
+    nwL = new a((byte)0);
+    AppMethodBeat.o(201040);
   }
   
   public final void configure(g paramg)
   {
-    AppMethodBeat.i(199727);
-    if ((paramg != null) && (paramg.akw()))
+    AppMethodBeat.i(201039);
+    if ((paramg != null) && (paramg.akL()))
     {
-      ad.i("MicroMsg.PluginAudio", "PluginAudio configure");
-      pin((c)new t(com.tencent.mm.plugin.audio.c.a.class));
+      ae.i("MicroMsg.PluginAudio", "PluginAudio configure");
+      pin((c)new u(com.tencent.mm.plugin.audio.c.a.class));
     }
-    AppMethodBeat.o(199727);
+    AppMethodBeat.o(201039);
   }
   
   public final void execute(g paramg) {}
@@ -40,7 +40,7 @@ public final class PluginAudio
     return "plugin-audio";
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
   public static final class a {}
 }
 

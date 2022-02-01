@@ -15,37 +15,37 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.g.a.dh;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.g.a.di;
 import com.tencent.mm.plugin.emoji.model.d;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMTabView;
 
 public class EmojiStoreV2TabView
   extends RelativeLayout
 {
   private Matrix mMatrix;
-  private int pPe;
-  private int pPf;
-  private Bitmap pPg;
-  private LinearLayout pPh;
-  private ImageView pPi;
-  private MMTabView pPj;
-  private MMTabView pPk;
-  private EmojiStoreV2TabView.a pPl;
-  protected View.OnClickListener pPm;
-  c<dh> pPn;
+  private int pVJ;
+  private int pVK;
+  private Bitmap pVL;
+  private LinearLayout pVM;
+  private ImageView pVN;
+  private MMTabView pVO;
+  private MMTabView pVP;
+  private EmojiStoreV2TabView.a pVQ;
+  protected View.OnClickListener pVR;
+  c<di> pVS;
   
   public EmojiStoreV2TabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109375);
-    this.pPf = 0;
+    this.pVK = 0;
     this.mMatrix = new Matrix();
-    this.pPm = new EmojiStoreV2TabView.1(this);
-    this.pPn = new c() {};
+    this.pVR = new EmojiStoreV2TabView.1(this);
+    this.pVS = new c() {};
     init();
     AppMethodBeat.o(109375);
   }
@@ -54,102 +54,102 @@ public class EmojiStoreV2TabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109374);
-    this.pPf = 0;
+    this.pVK = 0;
     this.mMatrix = new Matrix();
-    this.pPm = new EmojiStoreV2TabView.1(this);
-    this.pPn = new c() {};
+    this.pVR = new EmojiStoreV2TabView.1(this);
+    this.pVS = new c() {};
     init();
     AppMethodBeat.o(109374);
   }
   
-  private MMTabView Cg(int paramInt)
+  private MMTabView Cs(int paramInt)
   {
     AppMethodBeat.i(109382);
     MMTabView localMMTabView = new MMTabView(getContext(), paramInt);
     localMMTabView.setTag(Integer.valueOf(paramInt));
-    localMMTabView.setOnClickListener(this.pPm);
+    localMMTabView.setOnClickListener(this.pVR);
     AppMethodBeat.o(109382);
     return localMMTabView;
   }
   
-  private void ciU()
+  private void ckk()
   {
     AppMethodBeat.i(109378);
-    this.pPh = new LinearLayout(getContext());
-    this.pPh.setBackgroundResource(2131101179);
-    this.pPh.setId(2131299446);
-    this.pPh.setOrientation(0);
+    this.pVM = new LinearLayout(getContext());
+    this.pVM.setBackgroundResource(2131101179);
+    this.pVM.setId(2131299446);
+    this.pVM.setOrientation(0);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    addView(this.pPh, localLayoutParams);
+    addView(this.pVM, localLayoutParams);
     AppMethodBeat.o(109378);
   }
   
-  private void ciV()
+  private void ckl()
   {
     AppMethodBeat.i(109379);
-    this.pPi = new ImageView(getContext());
-    this.pPi.setImageMatrix(this.mMatrix);
-    this.pPi.setScaleType(ImageView.ScaleType.MATRIX);
-    this.pPi.setId(2131299447);
+    this.pVN = new ImageView(getContext());
+    this.pVN.setImageMatrix(this.mMatrix);
+    this.pVN.setScaleType(ImageView.ScaleType.MATRIX);
+    this.pVN.setId(2131299447);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
     localLayoutParams.addRule(8, 2131299446);
-    addView(this.pPi, localLayoutParams);
+    addView(this.pVN, localLayoutParams);
     AppMethodBeat.o(109379);
   }
   
-  private void ciW()
+  private void ckm()
   {
     AppMethodBeat.i(109380);
-    this.pPj = Cg(0);
-    if (!bt.isNullOrNil(d.cgI().pEe)) {
-      this.pPj.setText(d.cgI().pEe);
+    this.pVO = Cs(0);
+    if (!bu.isNullOrNil(d.chY().pKI)) {
+      this.pVO.setText(d.chY().pKI);
     }
     for (;;)
     {
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
       localLayoutParams.weight = 1.0F;
-      this.pPh.addView(this.pPj, localLayoutParams);
+      this.pVM.addView(this.pVO, localLayoutParams);
       AppMethodBeat.o(109380);
       return;
-      if (d.cgI().pEd) {
-        this.pPj.setText(2131758334);
+      if (d.chY().pKH) {
+        this.pVO.setText(2131758334);
       } else {
-        this.pPj.setText(2131758333);
+        this.pVO.setText(2131758333);
       }
     }
   }
   
-  private void ciX()
+  private void ckn()
   {
     AppMethodBeat.i(109381);
-    this.pPk = Cg(1);
-    this.pPk.setText(2131758341);
+    this.pVP = Cs(1);
+    this.pVP.setText(2131758341);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
     localLayoutParams.weight = 1.0F;
-    this.pPh.addView(this.pPk, localLayoutParams);
+    this.pVM.addView(this.pVP, localLayoutParams);
     AppMethodBeat.o(109381);
   }
   
   private void init()
   {
     AppMethodBeat.i(109377);
-    ciU();
-    ciV();
-    ciW();
-    ciX();
+    ckk();
+    ckl();
+    ckm();
+    ckn();
     AppMethodBeat.o(109377);
   }
   
   public int getCurentIndex()
   {
-    return this.pPf;
+    return this.pVK;
   }
   
-  public final void kB(boolean paramBoolean)
+  public final void kA(boolean paramBoolean)
   {
     AppMethodBeat.i(109386);
-    if (this.pPk != null) {
-      this.pPk.xn(paramBoolean);
+    if (this.pVP != null) {
+      this.pVP.xv(paramBoolean);
     }
     AppMethodBeat.o(109386);
   }
@@ -157,8 +157,8 @@ public class EmojiStoreV2TabView
   public final void o(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(109383);
-    this.mMatrix.setTranslate(this.pPe * (paramInt + paramFloat), 0.0F);
-    this.pPi.setImageMatrix(this.mMatrix);
+    this.mMatrix.setTranslate(this.pVJ * (paramInt + paramFloat), 0.0F);
+    this.pVN.setImageMatrix(this.mMatrix);
     AppMethodBeat.o(109383);
   }
   
@@ -166,22 +166,22 @@ public class EmojiStoreV2TabView
   {
     AppMethodBeat.i(109376);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.pPe = ((paramInt3 - paramInt1) / 2);
-    paramInt2 = this.pPe;
-    if (((this.pPg == null) || (this.pPg.getWidth() != paramInt2)) && (paramInt2 > 0)) {
-      if (this.pPg != null) {
+    this.pVJ = ((paramInt3 - paramInt1) / 2);
+    paramInt2 = this.pVJ;
+    if (((this.pVL == null) || (this.pVL.getWidth() != paramInt2)) && (paramInt2 > 0)) {
+      if (this.pVL != null) {
         break label166;
       }
     }
     label166:
-    for (paramInt1 = -1;; paramInt1 = this.pPg.getWidth())
+    for (paramInt1 = -1;; paramInt1 = this.pVL.getWidth())
     {
-      ad.w("MicroMsg.emoji.EmojiStoreV2TabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.pPg = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
-      new Canvas(this.pPg).drawColor(getResources().getColor(2131101171));
-      o(this.pPf, 0.0F);
-      this.pPi.setImageBitmap(this.pPg);
-      setTo(this.pPf);
+      ae.w("MicroMsg.emoji.EmojiStoreV2TabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.pVL = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
+      new Canvas(this.pVL).drawColor(getResources().getColor(2131101171));
+      o(this.pVK, 0.0F);
+      this.pVN.setImageBitmap(this.pVL);
+      setTo(this.pVK);
       AppMethodBeat.o(109376);
       return;
     }
@@ -189,14 +189,14 @@ public class EmojiStoreV2TabView
   
   public void setOnTabClickListener(EmojiStoreV2TabView.a parama)
   {
-    this.pPl = parama;
+    this.pVQ = parama;
   }
   
   public void setPersonTabUnReadCount(String paramString)
   {
     AppMethodBeat.i(109385);
-    if (this.pPk != null) {
-      this.pPk.setUnread(paramString);
+    if (this.pVP != null) {
+      this.pVP.setUnread(paramString);
     }
     AppMethodBeat.o(109385);
   }
@@ -204,14 +204,14 @@ public class EmojiStoreV2TabView
   public void setTo(int paramInt)
   {
     AppMethodBeat.i(109384);
-    this.pPf = paramInt;
-    MMTabView localMMTabView = this.pPj;
-    if (this.pPf == 0)
+    this.pVK = paramInt;
+    MMTabView localMMTabView = this.pVO;
+    if (this.pVK == 0)
     {
       paramInt = getResources().getColor(2131101171);
       localMMTabView.setTextColor(paramInt);
-      localMMTabView = this.pPk;
-      if (this.pPf != 1) {
+      localMMTabView = this.pVP;
+      if (this.pVK != 1) {
         break label92;
       }
     }
@@ -228,7 +228,7 @@ public class EmojiStoreV2TabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView
  * JD-Core Version:    0.7.0.1
  */

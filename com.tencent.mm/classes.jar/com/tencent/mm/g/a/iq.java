@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.ArrayList;
 
 public final class iq
   extends b
 {
-  public a dvm;
-  public b dvn;
+  public a dwp;
   
   public iq()
   {
@@ -16,27 +16,21 @@ public final class iq
   
   private iq(byte paramByte)
   {
-    AppMethodBeat.i(123477);
-    this.dvm = new a();
-    this.dvn = new b();
-    this.IbR = false;
+    AppMethodBeat.i(125617);
+    this.dwp = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(123477);
+    AppMethodBeat.o(125617);
   }
   
   public static final class a
   {
-    public String url;
-  }
-  
-  public static final class b
-  {
-    public String duW;
+    public ArrayList dwq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.iq
  * JD-Core Version:    0.7.0.1
  */

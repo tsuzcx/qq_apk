@@ -6,32 +6,32 @@ import com.tencent.thumbplayer.a.a.c.g;
 
 public final class j
 {
-  private static final SparseArray<String> LZh;
-  public c.g LZi;
-  private int LZj = 1;
+  private static final SparseArray<String> Mwc;
+  public c.g Mwd;
+  private int Mwe = 1;
   private int mCurState = 1;
-  private int mXO = 1;
+  private int ncV = 1;
   
   static
   {
-    AppMethodBeat.i(191857);
+    AppMethodBeat.i(194535);
     SparseArray localSparseArray = new SparseArray();
-    LZh = localSparseArray;
+    Mwc = localSparseArray;
     localSparseArray.put(1, "IDLE");
-    LZh.put(2, "INITIALIZED");
-    LZh.put(3, "PREPARING");
-    LZh.put(4, "PREPARED");
-    LZh.put(5, "START");
-    LZh.put(6, "PAUSE");
-    LZh.put(7, "COMPLETE");
-    LZh.put(8, "STOPPED");
-    LZh.put(9, "ERROR");
-    LZh.put(10, "RELEASED");
-    AppMethodBeat.o(191857);
+    Mwc.put(2, "INITIALIZED");
+    Mwc.put(3, "PREPARING");
+    Mwc.put(4, "PREPARED");
+    Mwc.put(5, "START");
+    Mwc.put(6, "PAUSE");
+    Mwc.put(7, "COMPLETE");
+    Mwc.put(8, "STOPPED");
+    Mwc.put(9, "ERROR");
+    Mwc.put(10, "RELEASED");
+    AppMethodBeat.o(194535);
   }
   
   /* Error */
-  public final boolean ahi(int paramInt)
+  public final boolean ahR(int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -72,22 +72,22 @@ public final class j
   {
     try
     {
-      AppMethodBeat.i(191855);
+      AppMethodBeat.i(194533);
       if (this.mCurState != paramInt)
       {
-        this.LZj = this.mCurState;
+        this.Mwe = this.mCurState;
         this.mCurState = paramInt;
-        if (this.LZi != null) {
-          this.LZi.fW(this.LZj, this.mCurState);
+        if (this.Mwd != null) {
+          this.Mwd.fW(this.Mwe, this.mCurState);
         }
       }
-      AppMethodBeat.o(191855);
+      AppMethodBeat.o(194533);
       return;
     }
     finally {}
   }
   
-  public final int fWx()
+  public final int gaW()
   {
     try
     {
@@ -105,12 +105,12 @@ public final class j
   {
     try
     {
-      AppMethodBeat.i(191856);
-      String str1 = (String)LZh.get(this.mCurState);
-      String str2 = (String)LZh.get(this.LZj);
-      String str3 = (String)LZh.get(this.mXO);
+      AppMethodBeat.i(194534);
+      String str1 = (String)Mwc.get(this.mCurState);
+      String str2 = (String)Mwc.get(this.Mwe);
+      String str3 = (String)Mwc.get(this.ncV);
       str1 = "state[ cur : " + str1 + " , pre : " + str2 + " , last : " + str3 + " ]";
-      AppMethodBeat.o(191856);
+      AppMethodBeat.o(194534);
       return str1;
     }
     finally

@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cc
-  extends cvc
+  extends cvw
 {
-  public String FuD;
-  public String duW;
+  public String FNb;
+  public String dwb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,14 +17,14 @@ public final class cc
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.FuD != null) {
-        paramVarArgs.d(2, this.FuD);
+      if (this.FNb != null) {
+        paramVarArgs.d(2, this.FNb);
       }
-      if (this.duW != null) {
-        paramVarArgs.d(3, this.duW);
+      if (this.dwb != null) {
+        paramVarArgs.d(3, this.dwb);
       }
       AppMethodBeat.o(152479);
       return 0;
@@ -35,24 +35,24 @@ public final class cc
       }
     }
     label430:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.FuD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FuD);
+      if (this.FNb != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FNb);
       }
       i = paramInt;
-      if (this.duW != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.duW);
+      if (this.dwb != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dwb);
       }
       AppMethodBeat.o(152479);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(152479);
@@ -69,7 +69,7 @@ public final class cc
           AppMethodBeat.o(152479);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -77,18 +77,18 @@ public final class cc
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localcc.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(152479);
           return 0;
         case 2: 
-          localcc.FuD = ((f.a.a.a.a)localObject1).NPN.readString();
+          localcc.FNb = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(152479);
           return 0;
         }
-        localcc.duW = ((f.a.a.a.a)localObject1).NPN.readString();
+        localcc.dwb = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(152479);
         return 0;
       }

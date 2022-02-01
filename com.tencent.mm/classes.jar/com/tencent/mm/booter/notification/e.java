@@ -13,9 +13,9 @@ import com.tencent.mm.booter.notification.a.g;
 import com.tencent.mm.booter.notification.queue.NotificationQueue;
 import com.tencent.mm.booter.notification.queue.NotificationQueue.ParcelNotificationQueue;
 import com.tencent.mm.n.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.LauncherUI;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -24,91 +24,91 @@ import org.json.JSONObject;
 
 public final class e
 {
-  private static int fGA;
-  private static boolean fGB;
-  private static String fGC;
-  public static boolean fGD;
-  public static boolean fGE;
-  private static int fGF;
-  private static boolean fGG;
-  private static Uri fGH;
-  private static boolean fGw;
-  private static boolean fGx;
-  private static boolean fGy;
-  private static int fGz;
+  private static boolean fIA;
+  private static boolean fIB;
+  private static boolean fIC;
+  private static int fID;
+  private static int fIE;
+  private static boolean fIF;
+  private static String fIG;
+  public static boolean fIH;
+  public static boolean fII;
+  private static int fIJ;
+  private static boolean fIK;
+  private static Uri fIL;
   
   static
   {
     AppMethodBeat.i(19982);
-    fGw = true;
-    fGx = true;
-    fGy = false;
-    fGz = -1;
-    fGA = -1;
-    fGB = true;
-    fGC = "samsung";
-    fGD = true;
-    fGE = false;
-    fGF = -1;
-    fGG = true;
-    fGH = Uri.parse("content://com.android.badge/badge");
+    fIA = true;
+    fIB = true;
+    fIC = false;
+    fID = -1;
+    fIE = -1;
+    fIF = true;
+    fIG = "samsung";
+    fIH = true;
+    fII = false;
+    fIJ = -1;
+    fIK = true;
+    fIL = Uri.parse("content://com.android.badge/badge");
     AppMethodBeat.o(19982);
   }
   
-  public static void B(String paramString, int paramInt)
+  public static void C(String paramString, int paramInt)
   {
     AppMethodBeat.i(19975);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.printErrStackTrace("MicroMsg.BusinessNotification", null, "syncUserBadge username is null", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.BusinessNotification", null, "syncUserBadge username is null", new Object[0]);
       AppMethodBeat.o(19975);
       return;
     }
-    paramString = com.tencent.mm.plugin.base.model.b.Wt(paramString);
-    if (bt.isNullOrNil(paramString))
+    paramString = com.tencent.mm.plugin.base.model.b.Xf(paramString);
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(19975);
       return;
     }
-    C(paramString, paramInt);
+    D(paramString, paramInt);
     AppMethodBeat.o(19975);
   }
   
-  private static void C(String paramString, int paramInt)
+  private static void D(String paramString, int paramInt)
   {
     AppMethodBeat.i(19979);
-    if (aj.getContext() == null)
+    if (ak.getContext() == null)
     {
-      ad.printErrStackTrace("MicroMsg.BusinessNotification", null, "normal badge context is null", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.BusinessNotification", null, "normal badge context is null", new Object[0]);
       AppMethodBeat.o(19979);
       return;
     }
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     int i = paramInt;
     if (paramInt < 0) {
-      i = f.acx();
+      i = f.acI();
     }
     c(localContext, paramString, i);
     AppMethodBeat.o(19979);
   }
   
-  private static boolean Xm()
+  private static boolean Xu()
   {
     AppMethodBeat.i(19978);
-    if (fGE)
+    if (fII)
     {
-      boolean bool = fGD;
+      boolean bool = fIH;
       AppMethodBeat.o(19978);
       return bool;
     }
-    fGE = true;
-    if (!Build.BRAND.equals(fGC))
+    fII = true;
+    if (!Build.BRAND.equals(fIG))
     {
-      fGD = false;
+      fIH = false;
       AppMethodBeat.o(19978);
       return false;
     }
-    fGD = true;
+    fIH = true;
     AppMethodBeat.o(19978);
     return true;
   }
@@ -116,7 +116,7 @@ public final class e
   public static int a(Notification paramNotification, g paramg)
   {
     AppMethodBeat.i(19977);
-    if ((paramNotification == null) || (!fGw))
+    if ((paramNotification == null) || (!fIA))
     {
       AppMethodBeat.o(19977);
       return 0;
@@ -134,16 +134,16 @@ public final class e
         localField.setAccessible(true);
         localField.set(paramg, Integer.valueOf(i));
         paramNotification.getClass().getField("extraNotification").set(paramNotification, paramg);
-        ad.i("MicroMsg.BusinessNotification", "miuiNotification: %d", new Object[] { Integer.valueOf(i) });
+        ae.i("MicroMsg.BusinessNotification", "miuiNotification: %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(19977);
         return i;
-        int j = paramg.Mo();
-        paramg = com.tencent.mm.booter.notification.queue.b.Xo().fGX;
-        if (paramg.fGW == null) {
+        int j = paramg.XJ();
+        paramg = com.tencent.mm.booter.notification.queue.b.Xw().fJb;
+        if (paramg.fJa == null) {
           paramg.restore();
         }
-        paramg = paramg.fGW.iterator();
-        for (i = 0; paramg.hasNext(); i = ((NotificationItem)paramg.next()).fGR + i) {}
+        paramg = paramg.fJa.iterator();
+        for (i = 0; paramg.hasNext(); i = ((NotificationItem)paramg.next()).fIV + i) {}
         i = j - i;
       }
     }
@@ -151,42 +151,42 @@ public final class e
     {
       for (;;)
       {
-        fGw = false;
+        fIA = false;
       }
     }
     catch (IllegalArgumentException paramNotification)
     {
       for (;;)
       {
-        fGw = false;
+        fIA = false;
       }
     }
     catch (IllegalAccessException paramNotification)
     {
       for (;;)
       {
-        fGw = false;
+        fIA = false;
       }
     }
     catch (ClassNotFoundException paramNotification)
     {
       for (;;)
       {
-        fGw = false;
+        fIA = false;
       }
     }
     catch (InstantiationException paramNotification)
     {
       for (;;)
       {
-        fGw = false;
+        fIA = false;
       }
     }
     catch (Exception paramNotification)
     {
       for (;;)
       {
-        fGw = false;
+        fIA = false;
       }
     }
   }
@@ -210,12 +210,12 @@ public final class e
   public static void cB(boolean paramBoolean)
   {
     AppMethodBeat.i(19976);
-    if (!fGG)
+    if (!fIK)
     {
       AppMethodBeat.o(19976);
       return;
     }
-    Object localObject = aj.getContext();
+    Object localObject = ak.getContext();
     if (localObject == null)
     {
       AppMethodBeat.o(19976);
@@ -232,11 +232,11 @@ public final class e
       int i;
       try
       {
-        ad.i("MicroMsg.BusinessNotification", "sync all user badge");
-        localObject = ((ContentResolver)localObject).call(fGH, "getShortcutList", null, null);
+        ae.i("MicroMsg.BusinessNotification", "sync all user badge");
+        localObject = ((ContentResolver)localObject).call(fIL, "getShortcutList", null, null);
         if (localObject == null)
         {
-          ad.i("MicroMsg.BusinessNotification", "getShortcutList return null");
+          ae.i("MicroMsg.BusinessNotification", "getShortcutList return null");
           AppMethodBeat.o(19976);
           return;
         }
@@ -249,16 +249,16 @@ public final class e
           {
             String str = ((JSONObject)((JSONArray)localObject).get(i)).getString("app_shortcut_custom_id");
             if ((str == null) || (str.equalsIgnoreCase("null"))) {
-              break label211;
+              break label212;
             }
-            str = com.tencent.mm.plugin.base.model.b.Ws(str);
+            str = com.tencent.mm.plugin.base.model.b.Xe(str);
             if (paramBoolean)
             {
               j = 0;
-              B(str, j);
-              break label211;
+              C(str, j);
+              break label212;
             }
-            int j = f.vD(str);
+            int j = f.vZ(str);
             continue;
           }
         }
@@ -267,92 +267,123 @@ public final class e
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.BusinessNotification", localException, "sync all user badge: no support getShortcutList", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.BusinessNotification", localException, "sync all user badge: no support getShortcutList", new Object[0]);
         AppMethodBeat.o(19976);
         return;
       }
-      label211:
+      label212:
       i += 1;
     }
   }
   
-  public static void kQ(int paramInt)
+  public static void kS(int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(19974);
     Object localObject;
     int i;
-    if ((aj.getContext() != null) && (Xm()))
+    if ((ak.getContext() != null) && (Xu()))
     {
-      localObject = aj.getContext();
+      localObject = ak.getContext();
       if (paramInt != -1) {
         break label256;
       }
-      i = f.acx();
+      i = f.acI();
     }
     for (;;)
     {
-      if ((localObject != null) && (Xm()) && (fGF != i))
+      if ((localObject != null) && (Xu()) && (fIJ != i))
       {
-        fGF = i;
+        fIJ = i;
         Intent localIntent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
         localIntent.putExtra("badge_count", i);
-        localIntent.putExtra("badge_count_package_name", aj.getPackageName());
+        localIntent.putExtra("badge_count_package_name", ak.getPackageName());
         localIntent.putExtra("badge_count_class_name", LauncherUI.class.getName());
-        ad.i("MicroMsg.BusinessNotification", "samsungNotification: %d, %s", new Object[] { Integer.valueOf(i), Build.BRAND });
+        ae.i("MicroMsg.BusinessNotification", "samsungNotification: %d, %s", new Object[] { Integer.valueOf(i), Build.BRAND });
         ((Context)localObject).sendBroadcast(localIntent);
       }
-      if (fGB)
+      if (fIF)
       {
         if (Build.VERSION.SDK_INT < 11) {
-          fGB = false;
+          fIF = false;
         }
       }
       else
       {
         label152:
-        if (!fGy) {
+        if (!fIC) {
           break label285;
         }
-        bool = fGx;
+        bool = fIB;
         label162:
-        if ((!bool) || (fGz == paramInt)) {}
+        if ((!bool) || (fID == paramInt)) {}
       }
       try
       {
         localObject = new Intent("launcher.action.CHANGE_APPLICATION_NOTIFICATION_NUM");
-        ((Intent)localObject).putExtra("packageName", aj.getPackageName());
+        ((Intent)localObject).putExtra("packageName", ak.getPackageName());
         ((Intent)localObject).putExtra("className", LauncherUI.class.getName());
         ((Intent)localObject).putExtra("notificationNum", paramInt);
-        aj.getContext().sendBroadcast((Intent)localObject);
-        ad.i("MicroMsg.BusinessNotification", "vivo badge: %d", new Object[] { Integer.valueOf(paramInt) });
-        C(null, paramInt);
+        ak.getContext().sendBroadcast((Intent)localObject);
+        ae.i("MicroMsg.BusinessNotification", "vivo badge: %d", new Object[] { Integer.valueOf(paramInt) });
+        D(null, paramInt);
         AppMethodBeat.o(19974);
         return;
         label256:
         i = paramInt;
         continue;
-        if (fGA == paramInt) {
+        if (fIE == paramInt) {
           break label152;
         }
-        com.tencent.mm.sdk.g.b.c(new e.1(paramInt), "huaweiNotification");
+        com.tencent.mm.sdk.g.b.c(new Runnable()
+        {
+          public final void run()
+          {
+            boolean bool = true;
+            AppMethodBeat.i(19973);
+            try
+            {
+              Bundle localBundle = new Bundle();
+              localBundle.putString("package", ak.getPackageName());
+              localBundle.putString("class", LauncherUI.class.getName());
+              localBundle.putInt("badgenumber", this.fIM);
+              if (ak.getContext().getContentResolver().call(Uri.parse("content://com.huawei.android.launcher.settings/badge/"), "change_badge", null, localBundle) != null) {}
+              for (;;)
+              {
+                e.access$002(bool);
+                ae.i("MicroMsg.BusinessNotification", "huawei badge: %d, %b", new Object[] { Integer.valueOf(this.fIM), Boolean.valueOf(e.fIF) });
+                AppMethodBeat.o(19973);
+                return;
+                bool = false;
+              }
+              return;
+            }
+            catch (Exception localException)
+            {
+              ae.i("MicroMsg.BusinessNotification", "no huawei badge");
+              ae.e("MicroMsg.BusinessNotification", "alvin: no badge" + localException.toString());
+              e.access$002(false);
+              AppMethodBeat.o(19973);
+            }
+          }
+        }, "huaweiNotification");
         break label152;
         label285:
-        fGy = true;
+        fIC = true;
         if (!Build.BRAND.equals("vivo"))
         {
-          fGx = false;
+          fIB = false;
           bool = false;
           break label162;
         }
-        fGx = true;
+        fIB = true;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          fGx = false;
-          ad.printErrStackTrace("MicroMsg.BusinessNotification", localException, "", new Object[0]);
+          fIB = false;
+          ae.printErrStackTrace("MicroMsg.BusinessNotification", localException, "", new Object[0]);
         }
       }
     }

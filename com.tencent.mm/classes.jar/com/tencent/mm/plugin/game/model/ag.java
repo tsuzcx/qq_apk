@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.plugin.game.d.do;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.game.d.dx;
 
 public final class ag
   extends x
 {
-  public do udW;
+  public dx upe;
   
   public ag(a parama)
   {
     AppMethodBeat.i(41554);
     if (parama == null)
     {
-      this.udW = new do();
+      this.upe = new dx();
       AppMethodBeat.o(41554);
       return;
     }
-    this.udW = ((do)parama);
+    this.upe = ((dx)parama);
     AppMethodBeat.o(41554);
   }
 }

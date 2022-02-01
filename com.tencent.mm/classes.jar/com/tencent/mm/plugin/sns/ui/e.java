@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static byte[] bJ(byte[] paramArrayOfByte)
+  public static byte[] bM(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97701);
     Object localObject = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONException;
 import org.json.JSONObject;
 

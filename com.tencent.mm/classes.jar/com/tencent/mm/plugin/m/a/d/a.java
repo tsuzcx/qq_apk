@@ -19,7 +19,7 @@ import com.tencent.mm.plugin.appbrand.widget.tabbar.a.a;
 import com.tencent.mm.plugin.appbrand.widget.tabbar.c;
 import com.tencent.mm.plugin.appbrand.widget.tabbar.d;
 import com.tencent.mm.plugin.appbrand.widget.tabbar.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public class a
@@ -40,37 +40,37 @@ public class a
     TextView localTextView2 = (TextView)paramView.findViewById(2131305710);
     View localView = paramView.findViewById(2131301001);
     int i;
-    if ("top".equals(this.npp))
+    if ("top".equals(this.nuz))
     {
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 40), 1.0F));
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 40), 1.0F));
       localImageView1.setVisibility(8);
       localTextView2.setTextSize(1, 14.0F);
-      if (parama.npK)
+      if (parama.nuU)
       {
-        localView.setBackgroundColor(this.npr);
+        localView.setBackgroundColor(this.nuB);
         localView.setVisibility(0);
         paramView = localTextView1.getBackground();
         if (paramView != null) {
-          paramView.setColorFilter(parama.npN, PorterDuff.Mode.SRC_ATOP);
+          paramView.setColorFilter(parama.nuX, PorterDuff.Mode.SRC_ATOP);
         }
-        if (!parama.npM.isEmpty()) {
+        if (!parama.nuW.isEmpty()) {
           break label512;
         }
         i = 4;
         label164:
         localTextView1.setVisibility(i);
-        localTextView1.setText(parama.npM);
-        localTextView1.setTextColor(parama.npO);
-        if (!parama.npL) {
+        localTextView1.setText(parama.nuW);
+        localTextView1.setTextColor(parama.nuY);
+        if (!parama.nuV) {
           break label517;
         }
         i = j;
         label198:
         localImageView2.setVisibility(i);
-        if ((!parama.npK) || (parama.npJ.bFM() == null)) {
+        if ((!parama.nuU) || (parama.nuT.bGH() == null)) {
           break label522;
         }
-        parama.npJ.a(new e()
+        parama.nuT.a(new e()
         {
           public final void a(Bitmap paramAnonymousBitmap, d paramAnonymousd)
           {
@@ -80,27 +80,27 @@ public class a
             AppMethodBeat.o(108232);
           }
         });
-        parama.npI.bFL();
+        parama.nuS.bGG();
       }
     }
     for (;;)
     {
       localTextView2.setText(parama.mText);
-      if (!parama.npK) {
+      if (!parama.nuU) {
         break label549;
       }
-      localTextView2.setTextColor(this.npr);
+      localTextView2.setTextColor(this.nuB);
       AppMethodBeat.o(108235);
       return;
       localView.setVisibility(4);
       break;
-      if (parama.npI.bFM() != null) {
+      if (parama.nuS.bGH() != null) {
         if (parama.mText != null)
         {
-          paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 54), 1.0F));
+          paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 54), 1.0F));
           localImageView1.setVisibility(0);
-          localImageView1.getLayoutParams().width = com.tencent.mm.cc.a.fromDPToPix(getContext(), 32);
-          localImageView1.getLayoutParams().height = com.tencent.mm.cc.a.fromDPToPix(getContext(), 28);
+          localImageView1.getLayoutParams().width = com.tencent.mm.cb.a.fromDPToPix(getContext(), 32);
+          localImageView1.getLayoutParams().height = com.tencent.mm.cb.a.fromDPToPix(getContext(), 28);
           localTextView2.setVisibility(0);
           localTextView2.setTextSize(1, 12.0F);
         }
@@ -109,15 +109,15 @@ public class a
       {
         localView.setVisibility(4);
         break;
-        paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 48), 1.0F));
+        paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 48), 1.0F));
         localImageView1.setVisibility(0);
-        localImageView1.getLayoutParams().width = com.tencent.mm.cc.a.fromDPToPix(getContext(), 36);
-        localImageView1.getLayoutParams().height = com.tencent.mm.cc.a.fromDPToPix(getContext(), 36);
+        localImageView1.getLayoutParams().width = com.tencent.mm.cb.a.fromDPToPix(getContext(), 36);
+        localImageView1.getLayoutParams().height = com.tencent.mm.cb.a.fromDPToPix(getContext(), 36);
         localTextView2.setVisibility(8);
         continue;
         if (parama.mText != null)
         {
-          paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 49), 1.0F));
+          paramView.setLayoutParams(new LinearLayout.LayoutParams(0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 49), 1.0F));
           localImageView1.setVisibility(8);
           localTextView2.setVisibility(0);
           localTextView2.setTextSize(1, 16.0F);
@@ -130,7 +130,7 @@ public class a
       i = 4;
       break label198;
       label522:
-      parama.npI.a(new e()
+      parama.nuS.a(new e()
       {
         public final void a(Bitmap paramAnonymousBitmap, d paramAnonymousd)
         {
@@ -140,47 +140,47 @@ public class a
           AppMethodBeat.o(108233);
         }
       });
-      parama.npI.bFL();
+      parama.nuS.bGG();
     }
     label549:
-    localTextView2.setTextColor(this.npq);
+    localTextView2.setTextColor(this.nuA);
     AppMethodBeat.o(108235);
   }
   
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, AppBrandTabBarItem paramAppBrandTabBarItem)
   {
-    AppMethodBeat.i(214514);
+    AppMethodBeat.i(214262);
     paramAppBrandTabBarItem = new a.a();
-    paramAppBrandTabBarItem.npJ = new com.tencent.mm.plugin.appbrand.widget.tabbar.b(paramString4, new c()
+    paramAppBrandTabBarItem.nuT = new com.tencent.mm.plugin.appbrand.widget.tabbar.b(paramString4, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(108229);
         super.a(paramAnonymousString, paramAnonymousd);
-        ad.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
+        ae.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(108229);
       }
     });
-    paramAppBrandTabBarItem.npI = new com.tencent.mm.plugin.appbrand.widget.tabbar.b(paramString3, new c()
+    paramAppBrandTabBarItem.nuS = new com.tencent.mm.plugin.appbrand.widget.tabbar.b(paramString3, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(108230);
         super.a(paramAnonymousString, paramAnonymousd);
-        ad.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
+        ae.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(108230);
       }
     });
     paramAppBrandTabBarItem.mText = paramString2;
     paramAppBrandTabBarItem.mUrl = paramString1;
-    this.npt.add(new Pair(paramAppBrandTabBarItem.npI, paramAppBrandTabBarItem.npJ));
-    if ((paramAppBrandTabBarItem.mText == null) && ((paramAppBrandTabBarItem.npI.bFM() == null) || (paramAppBrandTabBarItem.npJ.bFM() == null)))
+    this.nuD.add(new Pair(paramAppBrandTabBarItem.nuS, paramAppBrandTabBarItem.nuT));
+    if ((paramAppBrandTabBarItem.mText == null) && ((paramAppBrandTabBarItem.nuS.bGH() == null) || (paramAppBrandTabBarItem.nuT.bGH() == null)))
     {
-      ad.e("MicroMsg.AppBrandPageTabBarNV", "illegal data");
-      AppMethodBeat.o(214514);
+      ae.e("MicroMsg.AppBrandPageTabBarNV", "illegal data");
+      AppMethodBeat.o(214262);
       return;
     }
-    paramString1 = (ViewGroup)LayoutInflater.from(getContext()).inflate(2131494993, this.npo, false);
+    paramString1 = (ViewGroup)LayoutInflater.from(getContext()).inflate(2131494993, this.nuy, false);
     a(paramString1, paramAppBrandTabBarItem);
     paramString1.setOnClickListener(new View.OnClickListener()
     {
@@ -189,17 +189,17 @@ public class a
         AppMethodBeat.i(108231);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luggage/natives/widget/AppBrandPageTabBarNV$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luggage/natives/widget/AppBrandPageTabBarNV$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         int i = a.a(a.this).indexOfChild(paramAnonymousView);
-        a.this.wX(i);
+        a.this.xc(i);
         a.b(a.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luggage/natives/widget/AppBrandPageTabBarNV$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(108231);
       }
     });
-    this.nps.add(paramAppBrandTabBarItem);
-    this.npo.addView(paramString1);
-    AppMethodBeat.o(214514);
+    this.nuC.add(paramAppBrandTabBarItem);
+    this.nuy.addView(paramString1);
+    AppMethodBeat.o(214262);
   }
 }
 

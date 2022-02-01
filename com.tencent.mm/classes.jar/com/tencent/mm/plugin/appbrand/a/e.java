@@ -5,17 +5,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.ref.WeakReference;
 
 public abstract class e
 {
-  private final WeakReference<Activity> jLC;
+  private final WeakReference<Activity> jOO;
   public final BroadcastReceiver receiver = new BroadcastReceiver()
   {
-    final String jLD = "reason";
-    final String jLE = "homekey";
-    final String jLF = "recentapps";
+    final String jOP = "reason";
+    final String jOQ = "homekey";
+    final String jOR = "recentapps";
     
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
@@ -30,15 +30,15 @@ public abstract class e
         paramAnonymousContext = paramAnonymousIntent.getStringExtra("reason");
         if (paramAnonymousContext != null)
         {
-          ad.i("MicroMsg.BaseAppBrandUIHomePressReceiver", "[home_pressed] action: %s, reason: %s", new Object[] { paramAnonymousIntent.getAction(), paramAnonymousContext });
+          ae.i("MicroMsg.BaseAppBrandUIHomePressReceiver", "[home_pressed] action: %s, reason: %s", new Object[] { paramAnonymousIntent.getAction(), paramAnonymousContext });
           if (paramAnonymousContext.equals("homekey"))
           {
-            e.this.bbk();
+            e.this.bbM();
             AppMethodBeat.o(139837);
             return;
           }
           if (paramAnonymousContext.equals("recentapps")) {
-            e.this.bbl();
+            e.this.bbN();
           }
         }
       }
@@ -48,12 +48,12 @@ public abstract class e
   
   public e(Activity paramActivity)
   {
-    this.jLC = new WeakReference(paramActivity);
+    this.jOO = new WeakReference(paramActivity);
   }
   
-  protected abstract void bbk();
+  protected abstract void bbM();
   
-  protected abstract void bbl();
+  protected abstract void bbN();
 }
 
 

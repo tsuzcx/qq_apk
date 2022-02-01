@@ -4,7 +4,7 @@ import android.text.Spannable;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "start", "", "end", "nickname", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "start", "", "end", "nickname", "", "invoke"})
 final class a$b
   extends d.g.b.q
   implements d.g.a.q<Integer, Integer, String, z>

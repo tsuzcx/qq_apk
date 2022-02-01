@@ -2,13 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class yo
   extends b
 {
-  public a dNu;
-  public b dNv;
+  public a dNR;
+  public b dNS;
   
   public yo()
   {
@@ -17,24 +16,29 @@ public final class yo
   
   private yo(byte paramByte)
   {
-    AppMethodBeat.i(91226);
-    this.dNu = new a();
-    this.dNv = new b();
-    this.IbR = false;
+    AppMethodBeat.i(91223);
+    this.dNR = new a();
+    this.dNS = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91226);
+    AppMethodBeat.o(91223);
   }
   
   public static final class a
   {
-    public LinkedList<String> dNw;
+    public String scene;
   }
   
-  public static final class b {}
+  public static final class b
+  {
+    public String content;
+    public String dNT;
+    public String url;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.yo
  * JD-Core Version:    0.7.0.1
  */

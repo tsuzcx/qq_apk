@@ -10,11 +10,11 @@ public class r
   
   public r(String paramString)
   {
-    AppMethodBeat.i(190549);
+    AppMethodBeat.i(210814);
     this.a = "WriterAndReader";
     this.b = null;
     this.b = new File(paramString);
-    AppMethodBeat.o(190549);
+    AppMethodBeat.o(210814);
   }
   
   /* Error */

@@ -24,6 +24,7 @@ class TinkerResourcePatcher
 {
   private static final String TAG = "Tinker.ResourcePatcher";
   private static final String TEST_ASSETS_VALUE = "only_use_to_test_tinker_resource.txt";
+  private static Method addAssetPathAsSharedLibraryMethod;
   private static Method addAssetPathMethod;
   private static Field assetsFiled;
   private static Object currentActivityThread;
@@ -42,6 +43,7 @@ class TinkerResourcePatcher
     currentActivityThread = null;
     newAssetManager = null;
     addAssetPathMethod = null;
+    addAssetPathAsSharedLibraryMethod = null;
     ensureStringBlocksMethod = null;
     assetsFiled = null;
     resourcesImplFiled = null;
@@ -104,6 +106,9 @@ class TinkerResourcePatcher
       }
       localObject1 = paramContext.getAssets();
       addAssetPathMethod = ShareReflectUtil.findMethod(localObject1, "addAssetPath", new Class[] { String.class });
+      if (shouldAddSharedLibraryAssets(paramContext.getApplicationInfo())) {
+        addAssetPathAsSharedLibraryMethod = ShareReflectUtil.findMethod(localObject1, "addAssetPathAsSharedLibrary", new Class[] { String.class });
+      }
     }
     catch (ClassNotFoundException localThrowable1)
     {
@@ -112,7 +117,7 @@ class TinkerResourcePatcher
         Object localObject1;
         stringBlocksField = ShareReflectUtil.findField(localObject1, "mStringBlocks");
         ensureStringBlocksMethod = ShareReflectUtil.findMethod(localObject1, "ensureStringBlocks", new Class[0]);
-        label100:
+        label128:
         newAssetManager = (AssetManager)ShareReflectUtil.findConstructor(localObject1, new Class[0]).newInstance(new Object[0]);
         if (Build.VERSION.SDK_INT >= 19)
         {
@@ -125,7 +130,7 @@ class TinkerResourcePatcher
           {
             references = ((ArrayMap)ShareReflectUtil.findField((Class)localObject1, "mActiveResources").get(localObject2)).values();
             if (references != null) {
-              break label243;
+              break label271;
             }
             throw new IllegalStateException("resource references is null");
             localClassNotFoundException = localClassNotFoundException;
@@ -139,7 +144,7 @@ class TinkerResourcePatcher
           }
           references = ((HashMap)ShareReflectUtil.findField((Class)localObject2, "mActiveResources").get(currentActivityThread)).values();
         }
-        label243:
+        label271:
         paramContext = paramContext.getResources();
         if (Build.VERSION.SDK_INT >= 24) {}
         for (;;)
@@ -168,7 +173,7 @@ class TinkerResourcePatcher
       }
       catch (Throwable localThrowable2)
       {
-        break label100;
+        break label128;
       }
     }
   }
@@ -218,6 +223,22 @@ class TinkerResourcePatcher
       if (((Integer)addAssetPathMethod.invoke(newAssetManager, new Object[] { paramString })).intValue() == 0) {
         throw new IllegalStateException("Could not create new AssetManager");
       }
+      if (shouldAddSharedLibraryAssets((ApplicationInfo)localObject2))
+      {
+        localObject1 = ((ApplicationInfo)localObject2).sharedLibraryFiles;
+        j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = localObject1[i];
+          if (((String)localObject2).endsWith(".apk")) {
+            if (((Integer)addAssetPathAsSharedLibraryMethod.invoke(newAssetManager, new Object[] { localObject2 })).intValue() == 0) {
+              throw new IllegalStateException("AssetManager add SharedLibrary Fail");
+            }
+          }
+          i += 1;
+        }
+      }
       if ((stringBlocksField != null) && (ensureStringBlocksMethod != null))
       {
         stringBlocksField.set(newAssetManager, null);
@@ -254,7 +275,7 @@ class TinkerResourcePatcher
         if (publicSourceDirField != null) {
           publicSourceDirField.set(paramContext.getApplicationInfo(), paramString);
         }
-        label376:
+        label465:
         if (checkResUpdate(paramContext)) {
           continue;
         }
@@ -262,9 +283,14 @@ class TinkerResourcePatcher
       }
       catch (Throwable paramString)
       {
-        break label376;
+        break label465;
       }
     }
+  }
+  
+  private static boolean shouldAddSharedLibraryAssets(ApplicationInfo paramApplicationInfo)
+  {
+    return (Build.VERSION.SDK_INT >= 24) && (paramApplicationInfo != null) && (paramApplicationInfo.sharedLibraryFiles != null);
   }
 }
 

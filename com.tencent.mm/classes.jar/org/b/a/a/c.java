@@ -14,12 +14,12 @@ public class c
     return parami;
   }
   
-  public String gys()
+  public String gCU()
   {
     return "http://api.twitter.com/oauth/request_token";
   }
   
-  public String gyt()
+  public String gCV()
   {
     return "http://api.twitter.com/oauth/access_token";
   }
@@ -27,12 +27,12 @@ public class c
   public static class a
     extends c
   {
-    public final String gys()
+    public final String gCU()
     {
       return "https://api.twitter.com/oauth/request_token";
     }
     
-    public final String gyt()
+    public final String gCV()
     {
       return "https://api.twitter.com/oauth/access_token";
     }

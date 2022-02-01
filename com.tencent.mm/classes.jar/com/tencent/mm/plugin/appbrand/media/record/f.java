@@ -4,11 +4,11 @@ public abstract interface f
 {
   public abstract void a(e parame);
   
-  public abstract boolean bsJ();
+  public abstract boolean btu();
   
-  public abstract void bsK();
+  public abstract void btv();
   
-  public abstract void bsL();
+  public abstract void btw();
 }
 
 

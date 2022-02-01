@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uv
   extends b
 {
-  public a dIZ;
+  public a dKh;
   
   public uv()
   {
@@ -15,16 +15,18 @@ public final class uv
   
   private uv(byte paramByte)
   {
-    AppMethodBeat.i(125644);
-    this.dIZ = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125642);
+    this.dKh = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125644);
+    AppMethodBeat.o(125642);
   }
   
   public static final class a
   {
-    public long dJa = -1L;
+    public boolean dKi;
+    public int key;
+    public int value;
   }
 }
 

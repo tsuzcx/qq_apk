@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.music.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public static int Lq(int paramInt)
+  public static int LV(int paramInt)
   {
     AppMethodBeat.i(63137);
-    ad.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     case 2: 

@@ -10,9 +10,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.DexLoader;
 import com.tencent.smtt.export.external.interfaces.IX5CoreEntry;
 import com.tencent.smtt.sandbox.Log;
-import com.tencent.smtt.sdk.a.b;
-import com.tencent.smtt.sdk.a.c;
-import com.tencent.smtt.sdk.a.d;
+import com.tencent.smtt.sdk.b.b;
+import com.tencent.smtt.sdk.b.c;
+import com.tencent.smtt.sdk.b.d;
+import com.tencent.smtt.sdk.b.e;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.tbs.one.TBSOneComponent;
 import com.tencent.tbs.one.TBSOneManager;
@@ -20,6 +21,7 @@ import com.tencent.tbs.one.TBSOneManager.Policy;
 import com.tencent.tbs.one.impl.common.statistic.StatisticReport;
 import java.io.File;
 import java.lang.reflect.Method;
+import java.util.Map;
 import org.json.JSONObject;
 
 public class TbsOneGreyInfoHelper
@@ -36,28 +38,28 @@ public class TbsOneGreyInfoHelper
   
   static TBSOneManager a(Context paramContext)
   {
-    AppMethodBeat.i(190691);
+    AppMethodBeat.i(192684);
     String str = "default";
     if (is64BitImpl()) {
       str = "default_64";
     }
     paramContext = TBSOneManager.getInstance(paramContext, str);
-    AppMethodBeat.o(190691);
+    AppMethodBeat.o(192684);
     return paramContext;
   }
   
   private static int b(Context paramContext)
   {
-    AppMethodBeat.i(190692);
+    AppMethodBeat.i(192685);
     if (g != -1)
     {
       i = g;
-      AppMethodBeat.o(190692);
+      AppMethodBeat.o(192685);
       return i;
     }
     int i = paramContext.getSharedPreferences("one_config", 0).getInt("one_enable", 0);
     g = i;
-    AppMethodBeat.o(190692);
+    AppMethodBeat.o(192685);
     return i;
   }
   
@@ -184,7 +186,7 @@ public class TbsOneGreyInfoHelper
   
   public static d getTbsFileInterface(Context paramContext)
   {
-    AppMethodBeat.i(54350);
+    AppMethodBeat.i(192686);
     if (isOneModeAvailable(paramContext))
     {
       paramContext = new d()
@@ -205,11 +207,11 @@ public class TbsOneGreyInfoHelper
           return bool;
         }
       };
-      AppMethodBeat.o(54350);
+      AppMethodBeat.o(192686);
       return paramContext;
     }
     paramContext = d;
-    AppMethodBeat.o(54350);
+    AppMethodBeat.o(192686);
     return paramContext;
   }
   
@@ -278,7 +280,7 @@ public class TbsOneGreyInfoHelper
   {
     AppMethodBeat.i(54345);
     a = new b(paramDexLoader, paramContext1, paramContext2, paramString1, paramString2);
-    d = new com.tencent.smtt.sdk.a.e(paramDexLoader);
+    d = new e(paramDexLoader);
     AppMethodBeat.o(54345);
   }
   
@@ -318,6 +320,8 @@ public class TbsOneGreyInfoHelper
         return true;
       }
       
+      public final void dispatchX5EcCommands(Context paramAnonymousContext, Integer paramAnonymousInteger, Map<Integer, String> paramAnonymousMap) {}
+      
       public final String[] getDexLoaderFileList(Context paramAnonymousContext1, Context paramAnonymousContext2, String paramAnonymousString)
       {
         return new String[0];
@@ -331,7 +335,7 @@ public class TbsOneGreyInfoHelper
       public final String getTbsCoreVersionString()
       {
         AppMethodBeat.i(55104);
-        int i = o.a().i(this.a);
+        int i = q.a().j(this.a);
         AppMethodBeat.o(55104);
         return String.valueOf(i);
       }
@@ -371,50 +375,50 @@ public class TbsOneGreyInfoHelper
   
   public static boolean is64BitImpl()
   {
-    AppMethodBeat.i(190693);
+    AppMethodBeat.i(192687);
     try
     {
       int i = Build.VERSION.SDK_INT;
       if (i < 21)
       {
-        AppMethodBeat.o(190693);
+        AppMethodBeat.o(192687);
         return false;
       }
       Object localObject1 = Class.forName("dalvik.system.VMRuntime");
       if (localObject1 == null)
       {
-        AppMethodBeat.o(190693);
+        AppMethodBeat.o(192687);
         return false;
       }
       Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(190693);
+        AppMethodBeat.o(192687);
         return false;
       }
       localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(190693);
+        AppMethodBeat.o(192687);
         return false;
       }
       localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(190693);
+        AppMethodBeat.o(192687);
         return false;
       }
       localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
       if ((localObject1 instanceof Boolean))
       {
         boolean bool = ((Boolean)localObject1).booleanValue();
-        AppMethodBeat.o(190693);
+        AppMethodBeat.o(192687);
         return bool;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(190693);
+      AppMethodBeat.o(192687);
     }
     return false;
   }
@@ -463,9 +467,9 @@ public class TbsOneGreyInfoHelper
   public static boolean isTbsAvailable(Context paramContext)
   {
     AppMethodBeat.i(54348);
-    e locale = e.a(true);
-    locale.a(paramContext, false, false, null);
-    if ((locale != null) && (locale.b()))
+    g localg = g.a(true);
+    localg.a(paramContext, false, false, null);
+    if ((localg != null) && (localg.b()))
     {
       AppMethodBeat.o(54348);
       return true;

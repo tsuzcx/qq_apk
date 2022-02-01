@@ -5,12 +5,12 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class b$14
-  implements av.a
+  implements aw.a
 {
   b$14(b paramb) {}
   
@@ -22,12 +22,12 @@ final class b$14
       public final void run()
       {
         AppMethodBeat.i(163488);
-        g.ajC().ajl().set(al.a.IJf, "");
-        g.ajC().ajl().set(al.a.IJh, Boolean.FALSE);
+        g.ajR().ajA().set(am.a.JdL, "");
+        g.ajR().ajA().set(am.a.JdN, Boolean.FALSE);
         AppMethodBeat.o(163488);
       }
     };
-    h.LTJ.f(local1, "name_thread_get_newer_flavor_red");
+    h.MqF.f(local1, "name_thread_get_newer_flavor_red");
     AppMethodBeat.o(163489);
     return true;
   }

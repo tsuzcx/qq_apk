@@ -14,10 +14,10 @@ import com.tencent.mm.ui.MMActivity;
 public class FreeWifiErrorUI
   extends MMActivity
 {
-  private TextView tpA;
-  private TextView tpB;
-  private ImageView tpy;
-  private TextView tpz;
+  private ImageView tAp;
+  private TextView tAq;
+  private TextView tAr;
+  private TextView tAs;
   
   public int getForceOrientation()
   {
@@ -34,24 +34,24 @@ public class FreeWifiErrorUI
     AppMethodBeat.i(25017);
     super.onCreate(paramBundle);
     setMMTitle(2131759653);
-    this.tpy = ((ImageView)findViewById(2131300262));
+    this.tAp = ((ImageView)findViewById(2131300262));
     if (getIntent().getIntExtra("free_wifi_show_detail_error", 0) == 1) {
-      this.tpy.setImageResource(2131232426);
+      this.tAp.setImageResource(2131232426);
     }
-    this.tpz = ((TextView)findViewById(2131300261));
-    this.tpA = ((TextView)findViewById(2131300259));
-    this.tpB = ((TextView)findViewById(2131300260));
+    this.tAq = ((TextView)findViewById(2131300261));
+    this.tAr = ((TextView)findViewById(2131300259));
+    this.tAs = ((TextView)findViewById(2131300260));
     paramBundle = getIntent().getStringExtra("free_wifi_error_ui_error_msg");
     String str1 = getIntent().getStringExtra("free_wifi_error_ui_error_msg_detail1");
     String str2 = getIntent().getStringExtra("free_wifi_error_ui_error_msg_detail12");
-    if (!m.ea(paramBundle)) {
-      this.tpz.setText(paramBundle);
+    if (!m.ef(paramBundle)) {
+      this.tAq.setText(paramBundle);
     }
-    if (!m.ea(str1)) {
-      this.tpA.setText(str1);
+    if (!m.ef(str1)) {
+      this.tAr.setText(str1);
     }
-    if (!m.ea(str2)) {
-      this.tpB.setText(str2);
+    if (!m.ef(str2)) {
+      this.tAs.setText(str2);
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {

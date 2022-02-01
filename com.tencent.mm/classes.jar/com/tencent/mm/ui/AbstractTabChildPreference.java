@@ -2,90 +2,90 @@ package com.tencent.mm.ui;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.preference.MMPreferenceFragment;
 
 public abstract class AbstractTabChildPreference
   extends MMPreferenceFragment
   implements m
 {
-  private boolean IRT;
-  private boolean IRU;
-  private boolean IRV;
-  private boolean IRW;
-  protected boolean IRX = false;
-  protected boolean IRY = false;
-  protected boolean IRZ;
-  private Bundle zXB;
+  private Bundle AoM;
+  private boolean JmB;
+  private boolean JmC;
+  private boolean JmD;
+  private boolean JmE;
+  protected boolean JmF = false;
+  protected boolean JmG = false;
+  protected boolean JmH;
   
-  private void fuR()
+  private void fyS()
   {
-    if (this.IRU)
+    if (this.JmC)
     {
-      fuF();
-      this.IRU = false;
+      fyG();
+      this.JmC = false;
     }
-    while (!this.IRT) {
+    while (!this.JmB) {
       return;
     }
-    fuK();
-    fuF();
-    ad.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-    this.IRT = false;
+    fyL();
+    fyG();
+    ae.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
+    this.JmB = false;
   }
   
-  protected abstract void fuF();
+  protected abstract void fyG();
   
-  protected abstract void fuG();
+  protected abstract void fyH();
   
-  protected abstract void fuH();
+  protected abstract void fyI();
   
-  protected abstract void fuI();
+  protected abstract void fyJ();
   
-  protected abstract void fuJ();
+  protected abstract void fyK();
   
-  protected abstract void fuK();
+  protected abstract void fyL();
   
-  public final void fuO()
+  public final void fyP()
   {
-    fuM();
-    this.IRV = true;
+    fyN();
+    this.JmD = true;
   }
   
-  public final void fuQ()
+  public final void fyR()
   {
-    this.IRY = true;
+    this.JmG = true;
   }
   
-  public final void fuS()
+  public final void fyT()
   {
-    if (!this.IRX) {
+    if (!this.JmF) {
       return;
     }
-    fuR();
+    fyS();
     long l = System.currentTimeMillis();
-    if (this.IRV)
+    if (this.JmD)
     {
-      fuN();
-      this.IRV = false;
+      fyO();
+      this.JmD = false;
     }
-    fzG();
-    fuG();
-    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.IRW = true;
-    this.IRX = false;
+    fDI();
+    fyH();
+    ae.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
+    this.JmE = true;
+    this.JmF = false;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.zXB = paramBundle;
-    this.IRU = true;
+    this.AoM = paramBundle;
+    this.JmC = true;
   }
   
   public void onDestroy()
   {
-    fuK();
+    fyL();
     super.onDestroy();
   }
   
@@ -100,52 +100,52 @@ public abstract class AbstractTabChildPreference
   public void onPause()
   {
     super.onPause();
-    this.IRZ = true;
-    if (this.IRZ)
+    this.JmH = true;
+    if (this.JmH)
     {
-      if (!this.IRW) {
-        this.IRZ = false;
+      if (!this.JmE) {
+        this.JmH = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    fuI();
-    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.IRW = false;
-    this.IRZ = false;
+    fyJ();
+    ae.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
+    this.JmE = false;
+    this.JmH = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    fuP();
+    fyQ();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.IYT)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.JtB)) {}
     do
     {
       return;
-      this.IRX = true;
-    } while (!this.IRY);
-    fuS();
-    this.IRY = false;
+      this.JmF = true;
+    } while (!this.JmG);
+    fyT();
+    this.JmG = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.IYT)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.JtB)) {
       return;
     }
-    fuH();
+    fyI();
   }
   
   public void onStop()
   {
     super.onStop();
-    fuJ();
+    fyK();
   }
 }
 

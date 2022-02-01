@@ -21,25 +21,25 @@ public class AudioFocusHelper
   
   private void ensureAudioManager()
   {
-    AppMethodBeat.i(218540);
+    AppMethodBeat.i(215180);
     if (this.mAudioManager == null) {
       this.mAudioManager = ((AudioManager)this.mContext.getSystemService("audio"));
     }
-    AppMethodBeat.o(218540);
+    AppMethodBeat.o(215180);
   }
   
   private AudioManager.OnAudioFocusChangeListener getAudioFocusChangeListener()
   {
-    AppMethodBeat.i(218541);
+    AppMethodBeat.i(215181);
     if (this.mAudioFocusListener == null) {
       this.mAudioFocusListener = new AudioManager.OnAudioFocusChangeListener()
       {
         public void onAudioFocusChange(int paramAnonymousInt)
         {
-          AppMethodBeat.i(218537);
+          AppMethodBeat.i(215177);
           if (AudioFocusHelper.this.mPlayer == null)
           {
-            AppMethodBeat.o(218537);
+            AppMethodBeat.o(215177);
             return;
           }
           switch (paramAnonymousInt)
@@ -47,21 +47,21 @@ public class AudioFocusHelper
           }
           for (;;)
           {
-            AppMethodBeat.o(218537);
+            AppMethodBeat.o(215177);
             return;
             try
             {
               AudioFocusHelper.access$102(AudioFocusHelper.this, true);
-              AppMethodBeat.o(218537);
+              AppMethodBeat.o(215177);
               return;
             }
             catch (Exception localException)
             {
-              AppMethodBeat.o(218537);
+              AppMethodBeat.o(215177);
               return;
             }
             AudioFocusHelper.access$200(AudioFocusHelper.this, false);
-            AppMethodBeat.o(218537);
+            AppMethodBeat.o(215177);
             return;
             AudioFocusHelper.access$200(AudioFocusHelper.this, true);
           }
@@ -69,13 +69,13 @@ public class AudioFocusHelper
       };
     }
     AudioManager.OnAudioFocusChangeListener localOnAudioFocusChangeListener = this.mAudioFocusListener;
-    AppMethodBeat.o(218541);
+    AppMethodBeat.o(215181);
     return localOnAudioFocusChangeListener;
   }
   
   private void onAudioFocusLoss(boolean paramBoolean)
   {
-    AppMethodBeat.i(218542);
+    AppMethodBeat.i(215182);
     if (!paramBoolean)
     {
       this.mAudioManager.abandonAudioFocus(this.mAudioFocusListener);
@@ -84,12 +84,12 @@ public class AudioFocusHelper
     if ((this.mPlayer != null) && (this.mPlayer.isPlaying())) {
       this.mPlayer.pause();
     }
-    AppMethodBeat.o(218542);
+    AppMethodBeat.o(215182);
   }
   
   public void release()
   {
-    AppMethodBeat.i(218539);
+    AppMethodBeat.i(215179);
     if (this.mAudioManager != null)
     {
       this.mAudioManager.abandonAudioFocus(this.mAudioFocusListener);
@@ -100,13 +100,13 @@ public class AudioFocusHelper
     if (this.mPlayer != null) {
       this.mPlayer = null;
     }
-    AppMethodBeat.o(218539);
+    AppMethodBeat.o(215179);
   }
   
   public void requestFocus()
   {
     boolean bool = true;
-    AppMethodBeat.i(218538);
+    AppMethodBeat.i(215178);
     ensureAudioManager();
     if (!this.mIsAudioFocus) {
       if (this.mAudioManager.requestAudioFocus(getAudioFocusChangeListener(), 3, 1) != 1) {
@@ -116,7 +116,7 @@ public class AudioFocusHelper
     for (;;)
     {
       this.mIsAudioFocus = bool;
-      AppMethodBeat.o(218538);
+      AppMethodBeat.o(215178);
       return;
       label46:
       bool = false;

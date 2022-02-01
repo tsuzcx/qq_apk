@@ -6,11 +6,11 @@ import com.tencent.stubs.logger.Log;
 public final class b$j
   extends b.e
 {
-  private f LOR;
+  private f MlP;
   
   public b$j(f paramf)
   {
-    this.LOR = paramf;
+    this.MlP = paramf;
   }
   
   private Void call()
@@ -18,10 +18,10 @@ public final class b$j
     AppMethodBeat.i(174590);
     try
     {
-      if (this.LOR.cLT())
+      if (this.MlP.cOB())
       {
         Log.i("CameraTask.DefaultStopPreviewTask", "stop preview");
-        this.LOR.stopPreview();
+        this.MlP.stopPreview();
       }
       AppMethodBeat.o(174590);
       return null;

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ball.c;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onFloatBallInfoAdded", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onFloatBallInfoAdded", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"})
 public class g
   implements f
 {

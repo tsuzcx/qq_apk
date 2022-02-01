@@ -34,20 +34,20 @@ public abstract class d
   extends k
   implements ar
 {
-  protected List<? extends as> MXm;
-  private final c MXn;
-  protected final d.l.b.a.b.b.ba MXo;
+  protected List<? extends as> Nus;
+  private final c Nut;
+  protected final d.l.b.a.b.b.ba Nuu;
   
   public d(l paraml, d.l.b.a.b.b.a.g paramg, f paramf, an paraman, d.l.b.a.b.b.ba paramba)
   {
     super(paraml, paramg, paramf, paraman);
-    this.MXo = paramba;
-    this.MXn = new c(this);
+    this.Nuu = paramba;
+    this.Nut = new c(this);
   }
   
-  private ar gjO()
+  private ar goq()
   {
-    o localo = super.gjP();
+    o localo = super.gor();
     if (localo == null) {
       throw new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.TypeAliasDescriptor");
     }
@@ -60,59 +60,59 @@ public abstract class d
     return paramn.a((ar)this, paramD);
   }
   
-  public final boolean ghB()
+  public final at glW()
   {
-    return bc.b((ab)gjr(), (d.g.a.b)new b(this));
+    return (at)this.Nut;
   }
   
-  public final boolean ghE()
+  public final w glZ()
+  {
+    return w.NrG;
+  }
+  
+  public final d.l.b.a.b.b.ba gmb()
+  {
+    return this.Nuu;
+  }
+  
+  public final boolean gmd()
+  {
+    return bc.b((ab)gnT(), (d.g.a.b)new b(this));
+  }
+  
+  public final boolean gmg()
   {
     return false;
   }
   
-  public final boolean ghF()
+  public final boolean gmh()
   {
     return false;
   }
   
-  public final boolean ghG()
+  public final boolean gmi()
   {
     return false;
   }
   
-  public final List<as> ghK()
+  public final List<as> gmm()
   {
-    List localList = this.MXm;
+    List localList = this.Nus;
     if (localList == null) {
-      d.g.b.p.bcb("declaredTypeParametersImpl");
+      d.g.b.p.bdF("declaredTypeParametersImpl");
     }
     return localList;
   }
   
-  public final at ghu()
-  {
-    return (at)this.MXn;
-  }
+  protected abstract j gng();
   
-  public final w ghx()
+  public final Collection<ag> gop()
   {
-    return w.MUB;
-  }
-  
-  public final d.l.b.a.b.b.ba ghz()
-  {
-    return this.MXo;
-  }
-  
-  protected abstract j giE();
-  
-  public final Collection<ag> gjN()
-  {
-    Object localObject1 = gjt();
+    Object localObject1 = gnV();
     if (localObject1 == null) {
-      return (Collection)d.a.v.MKE;
+      return (Collection)d.a.v.NhH;
     }
-    localObject1 = ((e)localObject1).gfV();
+    localObject1 = ((e)localObject1).gkx();
     d.g.b.p.g(localObject1, "classDescriptor.constructors");
     localObject1 = (Iterable)localObject1;
     Collection localCollection = (Collection)new ArrayList();
@@ -120,8 +120,8 @@ public abstract class d
     if (localIterator.hasNext())
     {
       Object localObject3 = (d.l.b.a.b.b.d)localIterator.next();
-      localObject1 = ah.MZA;
-      Object localObject2 = giE();
+      localObject1 = ah.NwG;
+      Object localObject2 = gng();
       ar localar = (ar)this;
       d.g.b.p.g(localObject3, "it");
       d.g.b.p.h(localObject2, "storageManager");
@@ -147,19 +147,19 @@ public abstract class d
           }
           else
           {
-            localObject4 = ((d.l.b.a.b.b.d)localObject3).ghH();
-            Object localObject6 = ((d.l.b.a.b.b.d)localObject3).giw();
+            localObject4 = ((d.l.b.a.b.b.d)localObject3).gmj();
+            Object localObject6 = ((d.l.b.a.b.b.d)localObject3).gmY();
             d.g.b.p.g(localObject6, "constructor.kind");
-            an localan = localar.ghI();
+            an localan = localar.gmk();
             d.g.b.p.g(localan, "typeAliasDescriptor.source");
             localObject2 = new ah((j)localObject2, localar, (d.l.b.a.b.b.d)localObject5, null, (d.l.b.a.b.b.a.g)localObject4, (b.a)localObject6, localan, (byte)0);
             localObject4 = (t)localObject2;
-            localObject6 = ((d.l.b.a.b.b.d)localObject3).gis();
+            localObject6 = ((d.l.b.a.b.b.d)localObject3).gmU();
             if (localObject6 == null) {
-              p.ajm(26);
+              p.ajW(26);
             }
             if (localObject1 == null) {
-              p.ajm(27);
+              p.ajW(27);
             }
             localObject4 = p.a((t)localObject4, (List)localObject6, (d.l.b.a.b.m.ba)localObject1, false, false, null);
             if (localObject4 == null)
@@ -169,26 +169,26 @@ public abstract class d
             else
             {
               d.g.b.p.g(localObject4, "FunctionDescriptorImpl.g…         ) ?: return null");
-              localObject5 = y.ao((ab)((d.l.b.a.b.b.d)localObject5).giq().gua());
-              localObject6 = localar.giC();
+              localObject5 = y.ao((ab)((d.l.b.a.b.b.d)localObject5).gmS().gyC());
+              localObject6 = localar.gne();
               d.g.b.p.g(localObject6, "typeAliasDescriptor.defaultType");
               localObject5 = am.b((aj)localObject5, (aj)localObject6);
-              localObject6 = ((d.l.b.a.b.b.d)localObject3).gio();
+              localObject6 = ((d.l.b.a.b.b.d)localObject3).gmQ();
               if (localObject6 == null) {
                 break label438;
               }
               localObject3 = (d.l.b.a.b.b.a)localObject2;
               d.g.b.p.g(localObject6, "it");
-              localObject1 = ((d.l.b.a.b.m.ba)localObject1).b(((ak)localObject6).gju(), bh.NCP);
-              localObject6 = d.l.b.a.b.b.a.g.MVP;
+              localObject1 = ((d.l.b.a.b.m.ba)localObject1).b(((ak)localObject6).gnW(), bh.NZW);
+              localObject6 = d.l.b.a.b.b.a.g.NsU;
             }
           }
         }
       }
       label438:
-      for (localObject1 = d.l.b.a.b.j.b.a((d.l.b.a.b.b.a)localObject3, (ab)localObject1, g.a.gjL());; localObject1 = null)
+      for (localObject1 = d.l.b.a.b.j.b.a((d.l.b.a.b.b.a)localObject3, (ab)localObject1, g.a.gon());; localObject1 = null)
       {
-        ((ah)localObject2).a((ak)localObject1, null, localar.ghK(), (List)localObject4, (ab)localObject5, w.MUB, localar.ghz());
+        ((ah)localObject2).a((ak)localObject1, null, localar.gmm(), (List)localObject4, (ab)localObject5, w.NrG, localar.gmb());
         localObject1 = (ag)localObject2;
         break label131;
         break;
@@ -197,11 +197,11 @@ public abstract class d
     return (Collection)localCollection;
   }
   
-  protected abstract List<as> gjQ();
+  protected abstract List<as> gos();
   
   public String toString()
   {
-    return "typealias " + giD().sD();
+    return "typealias " + gnf().sD();
   }
   
   public static final class a
@@ -230,37 +230,37 @@ public abstract class d
     public final List<as> getParameters()
     {
       AppMethodBeat.i(56998);
-      List localList = this.MXp.gjQ();
+      List localList = this.Nuv.gos();
       AppMethodBeat.o(56998);
       return localList;
     }
     
-    public final boolean ghQ()
+    public final boolean gms()
     {
       return true;
     }
     
-    public final Collection<ab> gjR()
+    public final d.l.b.a.b.a.g gnF()
+    {
+      AppMethodBeat.i(57000);
+      d.l.b.a.b.a.g localg = d.l.b.a.b.j.d.a.G((l)this.Nuv);
+      AppMethodBeat.o(57000);
+      return localg;
+    }
+    
+    public final Collection<ab> got()
     {
       AppMethodBeat.i(56999);
-      Collection localCollection = ((ar)this.MXp).gjr().gsZ().gjR();
+      Collection localCollection = ((ar)this.Nuv).gnT().gxB().got();
       d.g.b.p.g(localCollection, "declarationDescriptor.un…pe.constructor.supertypes");
       AppMethodBeat.o(56999);
       return localCollection;
     }
     
-    public final d.l.b.a.b.a.g gjd()
-    {
-      AppMethodBeat.i(57000);
-      d.l.b.a.b.a.g localg = d.l.b.a.b.j.d.a.G((l)this.MXp);
-      AppMethodBeat.o(57000);
-      return localg;
-    }
-    
     public final String toString()
     {
       AppMethodBeat.i(57001);
-      String str = "[typealias " + ((ar)this.MXp).giD().sD() + ']';
+      String str = "[typealias " + ((ar)this.Nuv).gnf().sD() + ']';
       AppMethodBeat.o(57001);
       return str;
     }
@@ -268,7 +268,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.d
  * JD-Core Version:    0.7.0.1
  */

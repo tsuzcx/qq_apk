@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.luggage.bridge.o;
 import com.tencent.luggage.webview.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,8 +31,8 @@ public class r
     }
     paramInteger = (p)chW.remove(paramInteger);
     paramInteger.setContext(paramContext);
-    paramInteger.Cl();
-    ad.i(r.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(chW.size()) });
+    paramInteger.Co();
+    ae.i(r.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(chW.size()) });
     AppMethodBeat.o(140439);
     return paramInteger;
   }
@@ -53,24 +53,10 @@ public class r
     paramp.chG = null;
     paramp.chQ = true;
     chW.put(Integer.valueOf(paramp.hashCode()), paramp);
-    ad.i(r.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(chW.size()) });
+    ae.i(r.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(chW.size()) });
     int i = paramp.hashCode();
     AppMethodBeat.o(140438);
     return Integer.valueOf(i);
-  }
-  
-  public static p b(Integer paramInteger)
-  {
-    AppMethodBeat.i(140440);
-    if ((paramInteger == null) || (!chW.containsKey(paramInteger)))
-    {
-      AppMethodBeat.o(140440);
-      return null;
-    }
-    paramInteger = (p)chW.remove(paramInteger);
-    paramInteger.Cl();
-    AppMethodBeat.o(140440);
-    return paramInteger;
   }
   
   public static Integer b(Context paramContext, Class<? extends a> paramClass)
@@ -81,10 +67,24 @@ public class r
       paramContext.loadUrl(null);
     }
     chW.put(Integer.valueOf(paramContext.hashCode()), paramContext);
-    ad.i(r.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(chW.size()) });
+    ae.i(r.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(chW.size()) });
     int i = paramContext.hashCode();
     AppMethodBeat.o(140437);
     return Integer.valueOf(i);
+  }
+  
+  public static p c(Integer paramInteger)
+  {
+    AppMethodBeat.i(140440);
+    if ((paramInteger == null) || (!chW.containsKey(paramInteger)))
+    {
+      AppMethodBeat.o(140440);
+      return null;
+    }
+    paramInteger = (p)chW.remove(paramInteger);
+    paramInteger.Co();
+    AppMethodBeat.o(140440);
+    return paramInteger;
   }
 }
 

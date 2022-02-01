@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface aa
 {
-  public abstract br dZA();
+  public abstract am edc();
   
-  public abstract am dZx();
+  public abstract b edd();
   
-  public abstract b dZy();
+  public abstract bp ede();
   
-  public abstract bp dZz();
+  public abstract br edf();
 }
 
 

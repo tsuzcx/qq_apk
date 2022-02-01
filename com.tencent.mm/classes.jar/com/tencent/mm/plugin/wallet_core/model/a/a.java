@@ -8,15 +8,15 @@ import org.json.JSONObject;
 public final class a
   extends d
 {
-  private static a DbI = null;
+  private static a Dtm = null;
   
-  public static a eGY()
+  public static a eKG()
   {
     AppMethodBeat.i(70575);
-    if (DbI == null) {
-      DbI = new a();
+    if (Dtm == null) {
+      Dtm = new a();
     }
-    a locala = DbI;
+    a locala = Dtm;
     AppMethodBeat.o(70575);
     return locala;
   }
@@ -30,7 +30,7 @@ public final class a
     localBankcard.field_desc = paramJSONObject.optString("description");
     localBankcard.field_trueName = paramJSONObject.optString("name_on_card");
     if ("CREDITCARD_PAYU".equals(paramJSONObject.optString("bank_type"))) {}
-    for (localBankcard.field_cardType |= Bankcard.CUq;; localBankcard.field_cardType |= Bankcard.CUs)
+    for (localBankcard.field_cardType |= Bankcard.DlW;; localBankcard.field_cardType |= Bankcard.DlY)
     {
       AppMethodBeat.o(70576);
       return localBankcard;
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.a.a
  * JD-Core Version:    0.7.0.1
  */

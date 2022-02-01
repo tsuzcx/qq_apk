@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,20 +21,20 @@ public class AppBrandInitConfigLU
 {
   public static final Parcelable.Creator<AppBrandInitConfigLU> CREATOR;
   public int aDD;
-  public a<?> cmA;
-  public boolean cmB;
-  public transient AppBrandStatObject cmC;
-  protected String cmp;
-  public String cmq;
-  public int cmr;
-  public boolean cms;
-  public String cmt;
-  public String cmu;
-  public final AppBrandLaunchReferrer cmv;
-  public final AppBrandWeishiParams cmw;
-  public int cmx;
-  public WxaAttributes.WxaVersionInfo cmy;
-  public String cmz;
+  public WxaAttributes.WxaVersionInfo cmA;
+  public String cmB;
+  public a<?> cmC;
+  public boolean cmD;
+  public transient AppBrandStatObject cmE;
+  protected String cmr;
+  public String cms;
+  public int cmt;
+  public boolean cmu;
+  public String cmv;
+  public String cmw;
+  public final AppBrandLaunchReferrer cmx;
+  public final AppBrandWeishiParams cmy;
+  public int cmz;
   public String extInfo;
   public long startTime;
   public int uin;
@@ -50,9 +50,9 @@ public class AppBrandInitConfigLU
   public AppBrandInitConfigLU()
   {
     AppMethodBeat.i(169428);
-    this.cmB = false;
-    this.cmv = new AppBrandLaunchReferrer();
-    this.cmw = new AppBrandWeishiParams();
+    this.cmD = false;
+    this.cmx = new AppBrandLaunchReferrer();
+    this.cmy = new AppBrandWeishiParams();
     AppMethodBeat.o(169428);
   }
   
@@ -60,25 +60,25 @@ public class AppBrandInitConfigLU
   {
     super(paramParcel);
     AppMethodBeat.i(146697);
-    this.cmB = false;
-    this.cmp = paramParcel.readString();
-    this.cmq = paramParcel.readString();
+    this.cmD = false;
+    this.cmr = paramParcel.readString();
+    this.cms = paramParcel.readString();
     this.username = paramParcel.readString();
-    this.cmt = paramParcel.readString();
-    this.cmu = paramParcel.readString();
-    this.cmv = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
-    this.cmw = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
-    this.cmr = paramParcel.readInt();
+    this.cmv = paramParcel.readString();
+    this.cmw = paramParcel.readString();
+    this.cmx = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
+    this.cmy = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.cmt = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.cms = bool1;
+      this.cmu = bool1;
       this.extInfo = paramParcel.readString();
       this.startTime = paramParcel.readLong();
       this.aDD = paramParcel.readInt();
-      this.cmx = paramParcel.readInt();
-      this.cmy = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
-      this.cmz = paramParcel.readString();
+      this.cmz = paramParcel.readInt();
+      this.cmA = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
+      this.cmB = paramParcel.readString();
       this.uin = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label208;
@@ -87,8 +87,8 @@ public class AppBrandInitConfigLU
     label208:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.cmB = bool1;
-      this.cmA = OnWXAppResultXPCWrapper.a(paramParcel);
+      this.cmD = bool1;
+      this.cmC = OnWXAppResultXPCWrapper.a(paramParcel);
       AppMethodBeat.o(146697);
       return;
       bool1 = false;
@@ -96,60 +96,60 @@ public class AppBrandInitConfigLU
     }
   }
   
-  public final boolean DY()
+  public final boolean Eb()
   {
-    AppMethodBeat.i(192184);
-    if (bt.isNullOrNil(this.cmy.kad))
+    AppMethodBeat.i(220757);
+    if (bu.isNullOrNil(this.cmA.kdu))
     {
-      AppMethodBeat.o(192184);
+      AppMethodBeat.o(220757);
       return false;
     }
     try
     {
-      JSONArray localJSONArray = new JSONObject(this.cmy.kad).optJSONArray("call_plugin_info");
+      JSONArray localJSONArray = new JSONObject(this.cmA.kdu).optJSONArray("call_plugin_info");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        AppMethodBeat.o(192184);
+        AppMethodBeat.o(220757);
         return true;
       }
-      AppMethodBeat.o(192184);
+      AppMethodBeat.o(220757);
       return false;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(192184);
+      AppMethodBeat.o(220757);
     }
     return false;
   }
   
-  public final boolean DZ()
+  public final boolean Ec()
   {
-    return this.cmB;
+    return this.cmD;
   }
   
-  public final AppBrandStatObject Ea()
+  public final AppBrandStatObject Ed()
   {
-    return this.cmC;
+    return this.cmE;
   }
   
-  public boolean Eb()
+  public boolean Ee()
   {
-    return this.cmr == 4;
+    return this.cmt == 4;
   }
   
-  public final String Ec()
+  public final String Ef()
   {
-    return this.cmp;
+    return this.cmr;
   }
   
-  public final JSONObject Ed()
+  public final JSONObject Eg()
   {
     AppMethodBeat.i(146694);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("shareKey", this.cmu);
-      localJSONObject.put("shareName", this.cmt);
+      localJSONObject.put("shareKey", this.cmw);
+      localJSONObject.put("shareName", this.cmv);
       if (localJSONObject.length() == 0)
       {
         AppMethodBeat.o(146694);
@@ -165,14 +165,14 @@ public class AppBrandInitConfigLU
     return localJSONException;
   }
   
-  public final JSONObject Ee()
+  public final JSONObject Eh()
   {
     AppMethodBeat.i(146695);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("appId", this.appId);
-      localJSONObject.put("nickname", this.doD);
+      localJSONObject.put("nickname", this.dpI);
       localJSONObject.put("icon", this.iconUrl);
       if (localJSONObject.length() == 0)
       {
@@ -189,43 +189,43 @@ public class AppBrandInitConfigLU
     return localJSONException;
   }
   
-  public final JSONObject Ef()
+  public final JSONObject Ei()
   {
     AppMethodBeat.i(146696);
-    if ((this.cmv != null) && (2 == this.cmv.jXR) && (TextUtils.isEmpty(this.cmv.appId)))
+    if ((this.cmx != null) && (2 == this.cmx.kbg) && (TextUtils.isEmpty(this.cmx.appId)))
     {
       AppMethodBeat.o(146696);
       return null;
     }
-    JSONObject localJSONObject = this.cmv.bdY();
+    JSONObject localJSONObject = this.cmx.beE();
     AppMethodBeat.o(146696);
     return localJSONObject;
   }
   
-  public AppBrandInitConfigLU Eg()
+  public AppBrandInitConfigLU Ej()
   {
     AppMethodBeat.i(146699);
-    AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)super.Eh();
+    AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)super.Ek();
     AppMethodBeat.o(146699);
     return localAppBrandInitConfigLU;
   }
   
   public final void a(AppBrandStatObject paramAppBrandStatObject)
   {
-    this.cmC = paramAppBrandStatObject;
+    this.cmE = paramAppBrandStatObject;
   }
   
   public final void resetSession()
   {
     AppMethodBeat.i(146693);
-    this.cmp = ("SessionId@" + hashCode() + "#" + bt.flT());
+    this.cmr = ("SessionId@" + hashCode() + "#" + bu.fpO());
     AppMethodBeat.o(146693);
   }
   
   public String toString()
   {
     AppMethodBeat.i(146698);
-    String str = "AppBrandInitConfigLU {visitingSessionId='" + this.cmp + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.doD + '\'' + ", debugType=" + this.dPf + ", orientation='" + this.jVL + '\'' + ", enterPath='" + this.jCN + '\'' + ", shareName='" + this.cmt + '\'' + ", shareKey='" + this.cmu + '\'' + ", startTime=" + this.startTime + ", referrer=" + this.cmv + ", extInfo=" + this.extInfo + ", appVersion=" + this.aDD + '}';
+    String str = "AppBrandInitConfigLU {visitingSessionId='" + this.cmr + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.dpI + '\'' + ", debugType=" + this.dQv + ", orientation='" + this.cpm + '\'' + ", enterPath='" + this.jFL + '\'' + ", shareName='" + this.cmv + '\'' + ", shareKey='" + this.cmw + '\'' + ", startTime=" + this.startTime + ", referrer=" + this.cmx + ", extInfo=" + this.extInfo + ", appVersion=" + this.aDD + '}';
     AppMethodBeat.o(146698);
     return str;
   }
@@ -235,27 +235,27 @@ public class AppBrandInitConfigLU
     int i = 1;
     AppMethodBeat.i(146700);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.cmp);
-    paramParcel.writeString(this.cmq);
+    paramParcel.writeString(this.cmr);
+    paramParcel.writeString(this.cms);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.cmt);
-    paramParcel.writeString(this.cmu);
-    paramParcel.writeParcelable(this.cmv, paramInt);
-    paramParcel.writeParcelable(this.cmw, paramInt);
-    paramParcel.writeInt(this.cmr);
+    paramParcel.writeString(this.cmv);
+    paramParcel.writeString(this.cmw);
+    paramParcel.writeParcelable(this.cmx, paramInt);
+    paramParcel.writeParcelable(this.cmy, paramInt);
+    paramParcel.writeInt(this.cmt);
     byte b;
-    if (this.cms)
+    if (this.cmu)
     {
       b = 1;
       paramParcel.writeByte(b);
       paramParcel.writeString(this.extInfo);
       paramParcel.writeLong(this.startTime);
       paramParcel.writeInt(this.aDD);
-      paramParcel.writeInt(this.cmx);
-      paramParcel.writeParcelable(this.cmy, paramInt);
-      paramParcel.writeString(this.cmz);
+      paramParcel.writeInt(this.cmz);
+      paramParcel.writeParcelable(this.cmA, paramInt);
+      paramParcel.writeString(this.cmB);
       paramParcel.writeInt(this.uin);
-      if (!this.cmB) {
+      if (!this.cmD) {
         break label188;
       }
     }
@@ -263,7 +263,7 @@ public class AppBrandInitConfigLU
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      OnWXAppResultXPCWrapper.a(this.cmA, paramParcel);
+      OnWXAppResultXPCWrapper.a(this.cmC, paramParcel);
       AppMethodBeat.o(146700);
       return;
       b = 0;

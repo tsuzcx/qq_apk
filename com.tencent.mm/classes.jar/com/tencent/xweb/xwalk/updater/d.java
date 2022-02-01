@@ -10,53 +10,78 @@ import org.xwalk.core.XWebCoreInfo;
 
 public final class d
 {
-  public static SchedulerConfig a(a.b paramb, String paramString)
+  private static a.c a(a.f paramf, String paramString)
   {
-    AppMethodBeat.i(195600);
-    SchedulerConfig localSchedulerConfig = new SchedulerConfig();
-    com.tencent.xweb.internal.a.c.bbi(paramString);
+    AppMethodBeat.i(207622);
+    if (paramf.MVu != null)
+    {
+      paramf = paramf.MVu;
+      int j = paramf.length;
+      int i = 0;
+      while (i < j)
+      {
+        a.c localc = paramf[i];
+        if (localc.MVF == XWalkEnvironment.getInstalledNewstVersion(paramString))
+        {
+          XWalkInitializer.addXWalkInitializeLog("got matched patch to upgrade " + localc.MVF);
+          AppMethodBeat.o(207622);
+          return localc;
+        }
+        i += 1;
+      }
+    }
+    XWalkInitializer.addXWalkInitializeLog("no matched patch");
+    AppMethodBeat.o(207622);
+    return null;
+  }
+  
+  public static c a(a.b paramb, String paramString)
+  {
+    AppMethodBeat.i(207621);
+    c localc = new c();
+    com.tencent.xweb.internal.a.c.bcL(paramString);
     Object localObject;
-    if ((paramb == null) || (paramb.Myy == null) || (paramb.Myy.length == 0))
+    if ((paramb == null) || (paramb.MVD == null) || (paramb.MVD.length == 0))
     {
       localObject = null;
-      com.tencent.xweb.internal.a.c.bbi(null);
+      com.tencent.xweb.internal.a.c.bcL(null);
       if ((localObject == null) || (((a.f)localObject).version <= XWebCoreInfo.getBackupCoreInfo(paramString).ver)) {
-        break label587;
+        break label589;
       }
       XWalkInitializer.addXWalkInitializeLog("got matched version");
-      localSchedulerConfig.Myx = paramb.Myx;
-      localSchedulerConfig.Mys = ((a.f)localObject).Mys;
-      localSchedulerConfig.Myu = ((a.f)localObject).Myu;
-      localSchedulerConfig.Myv = ((a.f)localObject).Myv;
-      localSchedulerConfig.Myw = ((a.f)localObject).Myw;
-      localSchedulerConfig.version = ((a.f)localObject).version;
-      localSchedulerConfig.MyX = ((a.f)localObject).MyD.MyG;
-      localSchedulerConfig.Myt = ((a.f)localObject).Myt;
-      localSchedulerConfig.bUseCdn = ((a.f)localObject).bUseCdn;
-      localSchedulerConfig.bTryUseSharedCore = ((a.f)localObject).bTryUseSharedCore;
+      localc.MVC = paramb.MVC;
+      localc.MVw = ((a.f)localObject).MVw;
+      localc.MVz = ((a.f)localObject).MVz;
+      localc.MVA = ((a.f)localObject).MVA;
+      localc.MVB = ((a.f)localObject).MVB;
+      localc.version = ((a.f)localObject).version;
+      localc.MWc = ((a.f)localObject).MVI.MVL;
+      localc.MVx = ((a.f)localObject).MVx;
+      localc.bUseCdn = ((a.f)localObject).bUseCdn;
+      localc.bTryUseSharedCore = ((a.f)localObject).bTryUseSharedCore;
       paramb = a((a.f)localObject, paramString);
-      localSchedulerConfig.MyV = ((a.f)localObject).Myl;
-      localSchedulerConfig.strAbi = ((a.f)localObject).MsC.Mtg;
-      localSchedulerConfig.Myk = ((a.f)localObject).Myk;
-      localSchedulerConfig.Mza = ((a.f)localObject).Mym;
-      localSchedulerConfig.Mzb = ((a.f)localObject).Myn;
+      localc.MWa = ((a.f)localObject).MVp;
+      localc.strAbi = ((a.f)localObject).MPG.MQk;
+      localc.MVo = ((a.f)localObject).MVo;
+      localc.MWf = ((a.f)localObject).MVq;
+      localc.MWg = ((a.f)localObject).MVr;
       if (paramb == null) {
-        break label568;
+        break label570;
       }
-      localSchedulerConfig.MyT = true;
-      localSchedulerConfig.nPatchTargetVersion = paramb.MyA;
-      localSchedulerConfig.Myl = paramb.Myl;
-      localSchedulerConfig.patchMd5 = paramb.Mys;
-      localSchedulerConfig.Myt = paramb.Myt;
-      localSchedulerConfig.bUseCdn = paramb.bUseCdn;
+      localc.MVY = true;
+      localc.nPatchTargetVersion = paramb.MVF;
+      localc.MVp = paramb.MVp;
+      localc.patchMd5 = paramb.MVw;
+      localc.MVx = paramb.MVx;
+      localc.bUseCdn = paramb.bUseCdn;
     }
     for (;;)
     {
-      localSchedulerConfig.MyW = c.a((a.a)localObject, "XWebCore");
-      AppMethodBeat.o(195600);
-      return localSchedulerConfig;
+      localc.MWb = Scheduler.a((a.a)localObject, "XWebCore");
+      AppMethodBeat.o(207621);
+      return localc;
       int i = Build.VERSION.SDK_INT;
-      a.f[] arrayOff = paramb.Myy;
+      a.f[] arrayOff = paramb.MVD;
       int j = arrayOff.length;
       i = 0;
       label322:
@@ -70,35 +95,35 @@ public final class d
         {
           i += 1;
           break label322;
-          Log.i("VersionMatcher", "try match version = " + localf.version + " version runtime abi is " + localf.MsC.Mtg);
+          Log.i("VersionMatcher", "try match version = " + localf.version + " version runtime abi is " + localf.MPG.MQk);
           if (localf.version < 49)
           {
             Log.i("VersionMatcher", " apk is not support, below 49");
           }
           else
           {
-            int k = XWalkEnvironment.getInstalledNewstVersion(localf.MsC.Mtg);
+            int k = XWalkEnvironment.getInstalledNewstVersion(localf.MPG.MQk);
             if (localf.version <= k)
             {
               Log.i("VersionMatcher", " apk is too old, now installed version ".concat(String.valueOf(k)));
             }
-            else if (!localf.MsC.gbC())
+            else if (!localf.MPG.gge())
             {
               Log.i("VersionMatcher", " apk filter out ");
             }
             else
             {
-              localObject = localf.MsC.Mtg;
+              localObject = localf.MPG.MQk;
               XWalkUpdater.getLastTryInstallVer((String)localObject);
               if (!"arm64-v8a".equalsIgnoreCase((String)localObject)) {
                 "armeabi-v7a".equalsIgnoreCase((String)localObject);
               }
               localObject = localf;
-              if (!com.tencent.xweb.internal.a.c.gbF()) {
+              if (!com.tencent.xweb.internal.a.c.ggh()) {
                 break;
               }
               localObject = localf;
-              if (localf.MyE) {
+              if (localf.MVJ) {
                 break;
               }
               Log.i("VersionMatcher", " version.supportPredown is false, apkver = " + localf.version);
@@ -109,37 +134,12 @@ public final class d
       XWalkInitializer.addXWalkInitializeLog("no matched version");
       localObject = null;
       break;
-      label568:
-      localSchedulerConfig.MyT = false;
-      localSchedulerConfig.Myl = ((a.f)localObject).Myl;
+      label570:
+      localc.MVY = false;
+      localc.MVp = ((a.f)localObject).MVp;
     }
-    label587:
-    AppMethodBeat.o(195600);
-    return null;
-  }
-  
-  private static a.c a(a.f paramf, String paramString)
-  {
-    AppMethodBeat.i(195601);
-    if (paramf.Myq != null)
-    {
-      paramf = paramf.Myq;
-      int j = paramf.length;
-      int i = 0;
-      while (i < j)
-      {
-        a.c localc = paramf[i];
-        if (localc.MyA == XWalkEnvironment.getInstalledNewstVersion(paramString))
-        {
-          XWalkInitializer.addXWalkInitializeLog("got matched patch to upgrade " + localc.MyA);
-          AppMethodBeat.o(195601);
-          return localc;
-        }
-        i += 1;
-      }
-    }
-    XWalkInitializer.addXWalkInitializeLog("no matched patch");
-    AppMethodBeat.o(195601);
+    label589:
+    AppMethodBeat.o(207621);
     return null;
   }
 }

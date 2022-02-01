@@ -1,121 +1,159 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.view.View;
-import android.view.animation.Animation;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
-import com.tencent.mm.plugin.scanner.ui.widget.ScanNetworkMaskView;
-import com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView;
-import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
-import com.tencent.mm.plugin.scanner.view.b.a;
+import com.tencent.mm.av.q;
+import com.tencent.mm.plugin.scanner.api.ScanImagePHashInfo;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.vfs.o;
+import com.tencent.qbar.d;
 import d.g.b.p;
-import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/ScanNetworkViewHelper;", "", "()V", "isLoadingShow", "", "loadingCancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "networkMaskView", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView;", "scanMaskView", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "sharedMaskView", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView;", "cancelLoading", "", "setOnCancelListener", "cancelListener", "setScanMaskView", "showLoadingView", "show", "withAnimation", "showNetworkUnconnectedView", "showTips", "showNetworkWeakView", "Companion", "plugin-scan_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/ScanImageUtils;", "", "()V", "TAG", "", "computeImagePHash", "Lcom/tencent/mm/plugin/scanner/api/ScanImagePHashInfo;", "imagePath", "getScanImagePath", "msgId", "", "canUseThumb", "", "plugin-scan_release"})
 public final class aa
 {
-  public static final aa.a ynT;
-  public BaseScanMaskView<BaseScanRequest> ynO;
-  public ScanSharedMaskView ynP;
-  public ScanNetworkMaskView ynQ;
-  public boolean ynR;
-  public b.a ynS;
+  public static final aa yDM;
   
   static
   {
-    AppMethodBeat.i(170035);
-    ynT = new aa.a((byte)0);
-    AppMethodBeat.o(170035);
+    AppMethodBeat.i(189607);
+    yDM = new aa();
+    AppMethodBeat.o(189607);
   }
   
-  public final void a(BaseScanMaskView<BaseScanRequest> paramBaseScanMaskView, ScanSharedMaskView paramScanSharedMaskView, ScanNetworkMaskView paramScanNetworkMaskView)
+  public static String A(long paramLong, boolean paramBoolean)
   {
-    this.ynO = paramBaseScanMaskView;
-    this.ynP = paramScanSharedMaskView;
-    this.ynQ = paramScanNetworkMaskView;
-  }
-  
-  public final void ac(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(170034);
-    Object localObject1;
-    Object localObject2;
-    if (paramBoolean1)
+    AppMethodBeat.i(189606);
+    Object localObject1 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
+    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).doJ().ys(paramLong);
+    p.g(localObject1, "msg");
+    if ((!((bv)localObject1).ftg()) && (!((bv)localObject1).fvK()))
     {
-      localObject1 = this.ynO;
-      if (localObject1 == null) {
-        break label153;
+      AppMethodBeat.o(189606);
+      return null;
+    }
+    Object localObject2 = q.aIX().FP(((bv)localObject1).Wb()) + "hd";
+    ae.i("MicroMsg.ScanImageUtils", "alvinluo getImagePath hdThumbPath: %s", new Object[] { localObject2 });
+    if (o.fB((String)localObject2))
+    {
+      AppMethodBeat.o(189606);
+      return localObject2;
+    }
+    String str1;
+    String str2;
+    if (((bv)localObject1).VZ() == 1)
+    {
+      paramLong = ((bv)localObject1).VX();
+      localObject2 = q.aIX().G(((bv)localObject1).Wa(), paramLong);
+      p.g(localObject2, "SubCoreImage.getImgStg()…sgLocalId(msg.talker, id)");
+      str1 = ((com.tencent.mm.av.g)localObject2).aIx();
+      str2 = q.aIX().o(str1, "", "");
+      ae.d("MicroMsg.ScanImageUtils", "alvinluo getImagePath bigImagePath %s, %s", new Object[] { str1, str2 });
+      if (o.fB(str2))
+      {
+        AppMethodBeat.o(189606);
+        return str2;
       }
-      localObject1 = ((BaseScanMaskView)localObject1).getTargetSuccessMarkView();
-      localObject2 = this.ynQ;
-      if (localObject2 != null) {
-        ((ScanNetworkMaskView)localObject2).setSuccessMarkView((View)localObject1);
+      localObject1 = q.aIX().a(((bv)localObject1).Wa(), (com.tencent.mm.av.g)localObject2);
+      localObject2 = q.aIX().o((String)localObject1, "", "");
+      ae.d("MicroMsg.ScanImageUtils", "alvinluo getImagePath hdImagePath %s, %s", new Object[] { localObject1, localObject2 });
+      if (o.fB((String)localObject2))
+      {
+        AppMethodBeat.o(189606);
+        return localObject2;
       }
     }
-    if (this.ynR != paramBoolean1)
+    else
     {
-      this.ynR = paramBoolean1;
-      localObject1 = this.ynP;
-      boolean bool;
-      if (localObject1 != null)
+      paramLong = ((bv)localObject1).VY();
+      localObject2 = q.aIX().F(((bv)localObject1).Wa(), paramLong);
+      p.g(localObject2, "SubCoreImage.getImgStg()…yMsgSvrId(msg.talker, id)");
+      str1 = ((com.tencent.mm.av.g)localObject2).aIx();
+      str2 = q.aIX().o(str1, "", "");
+      ae.d("MicroMsg.ScanImageUtils", "alvinluo getImagePath receiver bigImagePath %s, %s", new Object[] { str1, str2 });
+      if (o.fB(str2))
       {
-        if (!paramBoolean1)
+        AppMethodBeat.o(189606);
+        return str2;
+      }
+      if (((com.tencent.mm.av.g)localObject2).aIB())
+      {
+        localObject1 = q.aIX().a(((bv)localObject1).Wa(), (com.tencent.mm.av.g)localObject2);
+        str1 = q.aIX().o((String)localObject1, "", "");
+        ae.d("MicroMsg.ScanImageUtils", "alvinluo getImagePath receiver hdImagePath %s, %s", new Object[] { localObject1, str1 });
+        if (o.fB(str1))
         {
-          bool = true;
-          label75:
-          ((ScanSharedMaskView)localObject1).qI(bool);
+          AppMethodBeat.o(189606);
+          return str1;
         }
       }
-      else
+      if (paramBoolean)
       {
-        localObject1 = this.ynQ;
-        if (localObject1 != null)
+        localObject1 = ((com.tencent.mm.av.g)localObject2).aIz();
+        localObject2 = q.aIX().FP((String)localObject1);
+        ae.d("MicroMsg.ScanImageUtils", "alvinluo getImagePath receiver thumbImagePath: %s, %s", new Object[] { localObject1, localObject2 });
+        AppMethodBeat.o(189606);
+        return localObject2;
+      }
+    }
+    AppMethodBeat.o(189606);
+    return null;
+  }
+  
+  public static ScanImagePHashInfo axW(String paramString)
+  {
+    AppMethodBeat.i(189605);
+    p.h(paramString, "imagePath");
+    for (;;)
+    {
+      try
+      {
+        localObject = h.decodeFile(paramString);
+        if (localObject != null)
         {
-          if (!paramBoolean1) {
-            break label173;
-          }
-          if (((ScanNetworkMaskView)localObject1).yyc != null)
+          int i = ((Bitmap)localObject).getWidth();
+          int j = ((Bitmap)localObject).getHeight();
+          ae.i("MicroMsg.ScanImageUtils", "computeImagePHash width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          paramString = new int[i * j];
+          ((Bitmap)localObject).getPixels(paramString, 0, ((Bitmap)localObject).getWidth(), 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+          ((Bitmap)localObject).recycle();
+          localObject = new byte[i * j];
+          int k = d.a(paramString, (byte[])localObject, i, j);
+          if (k != 0)
           {
-            if ((localObject1.yye[0] != 0) || (localObject1.yye[1] != 0)) {
-              break label164;
-            }
-            ((ScanNetworkMaskView)localObject1).yyn = true;
+            ae.e("MicroMsg.ScanImageUtils", "computeImagePHash transBytes failed result: %d", new Object[] { Integer.valueOf(k) });
+            AppMethodBeat.o(189605);
+            return null;
           }
+          ScanImagePHashInfo localScanImagePHashInfo = v.C((byte[])localObject, i, j);
+          if (localScanImagePHashInfo == null) {
+            break label219;
+          }
+          paramString = localScanImagePHashInfo.pHash;
+          if (localScanImagePHashInfo == null) {
+            break label224;
+          }
+          localObject = localScanImagePHashInfo.pHashVersion;
+          ae.d("MicroMsg.ScanImageUtils", "alvinluo computeImagePHash pHash: %s, pHashVersion: %s", new Object[] { paramString, localObject });
+          AppMethodBeat.o(189605);
+          return localScanImagePHashInfo;
         }
       }
-      for (;;)
+      catch (Throwable paramString)
       {
-        localObject1 = this.ynO;
-        if (localObject1 == null) {
-          break label230;
-        }
-        ((BaseScanMaskView)localObject1).qB(paramBoolean1);
-        AppMethodBeat.o(170034);
-        return;
-        label153:
-        localObject1 = null;
-        break;
-        bool = false;
-        break label75;
-        label164:
-        ((ScanNetworkMaskView)localObject1).qE(paramBoolean2);
-        continue;
-        label173:
-        ((ScanNetworkMaskView)localObject1).setVisibility(8);
-        ((ScanNetworkMaskView)localObject1).ynR = false;
-        localObject2 = ((ScanNetworkMaskView)localObject1).tAl;
-        if (localObject2 == null) {
-          p.bcb("loadingLayout");
-        }
-        ((View)localObject2).setVisibility(8);
-        localObject1 = ((ScanNetworkMaskView)localObject1).yyf;
-        if (localObject1 != null) {
-          ((Animation)localObject1).cancel();
-        }
+        ae.printErrStackTrace("MicroMsg.ScanImageUtils", paramString, "computeImagePHash exception", new Object[0]);
+        AppMethodBeat.o(189605);
+        return null;
       }
+      label219:
+      paramString = null;
+      continue;
+      label224:
+      Object localObject = null;
     }
-    label230:
-    AppMethodBeat.o(170034);
   }
 }
 

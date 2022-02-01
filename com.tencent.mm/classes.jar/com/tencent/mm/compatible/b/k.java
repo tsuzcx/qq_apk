@@ -5,7 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public final class k
@@ -14,7 +14,7 @@ public final class k
   public k()
   {
     AppMethodBeat.i(155617);
-    g.lo(hashCode());
+    g.lq(hashCode());
     AppMethodBeat.o(155617);
   }
   
@@ -31,7 +31,7 @@ public final class k
     }
     catch (IOException paramContext)
     {
-      ad.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+      ae.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
       AppMethodBeat.o(155618);
       return null;
     }
@@ -39,14 +39,14 @@ public final class k
     {
       for (;;)
       {
-        ad.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+        ae.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
       }
     }
     catch (SecurityException paramContext)
     {
       for (;;)
       {
-        ad.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+        ae.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
       }
     }
   }
@@ -55,14 +55,14 @@ public final class k
   {
     AppMethodBeat.i(155623);
     super.release();
-    g.lp(hashCode());
+    g.lr(hashCode());
     AppMethodBeat.o(155623);
   }
   
   public final void setDataSource(Context paramContext, Uri paramUri)
   {
     AppMethodBeat.i(155620);
-    if (d.ly(26))
+    if (d.lA(26))
     {
       setDataSource(paramContext, paramUri, null, null);
       AppMethodBeat.o(155620);
@@ -81,7 +81,7 @@ public final class k
     //   3: ldc 80
     //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: bipush 26
-    //   10: invokestatic 71	com/tencent/mm/compatible/util/d:ly	(I)Z
+    //   10: invokestatic 71	com/tencent/mm/compatible/util/d:lA	(I)Z
     //   13: ifeq +17 -> 30
     //   16: aload_0
     //   17: aload_1
@@ -112,7 +112,7 @@ public final class k
     //   71: aload_2
     //   72: aconst_null
     //   73: ldc 100
-    //   75: invokestatic 106	com/tencent/mm/vfs/i:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   75: invokestatic 106	com/tencent/mm/vfs/o:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/e$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   78: astore_3
     //   79: aload_0
     //   80: aload_3
@@ -208,7 +208,7 @@ public final class k
     //   49: aload_2
     //   50: aconst_null
     //   51: ldc 100
-    //   53: invokestatic 106	com/tencent/mm/vfs/i:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   53: invokestatic 106	com/tencent/mm/vfs/o:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/e$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   56: astore_3
     //   57: aload_0
     //   58: aload_3
@@ -286,7 +286,7 @@ public final class k
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: ldc 100
-    //   8: invokestatic 136	com/tencent/mm/vfs/i:my	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   8: invokestatic 136	com/tencent/mm/vfs/o:mE	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   11: astore 4
     //   13: aconst_null
     //   14: astore_3
@@ -331,7 +331,7 @@ public final class k
     //   92: invokevirtual 151	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   95: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 158	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: aload_0
     //   105: aload_1
     //   106: invokespecial 160	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V

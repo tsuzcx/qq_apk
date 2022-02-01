@@ -11,29 +11,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private int Fdw;
-  private boolean ISH;
-  private a ISI;
-  private View ISJ;
-  private int ISK;
-  private ViewGroup.LayoutParams ISL;
-  private int ISM;
+  private int FvU;
+  private boolean Jnp;
+  private a Jnq;
+  private View Jnr;
+  private int Jns;
+  private ViewGroup.LayoutParams Jnt;
+  private int Jnu;
   private Context mContext;
   
   private b(Activity paramActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(141275);
-    this.ISH = false;
+    this.Jnp = false;
     this.mContext = paramActivity;
-    this.ISH = paramBoolean;
+    this.Jnp = paramBoolean;
     paramActivity = (FrameLayout)paramActivity.findViewById(16908290);
     if (paramActivity == null)
     {
       AppMethodBeat.o(141275);
       return;
     }
-    this.ISJ = paramActivity.getChildAt(0);
-    this.ISJ.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.Jnr = paramActivity.getChildAt(0);
+    this.Jnr.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
@@ -42,19 +42,19 @@ public final class b
         AppMethodBeat.o(141271);
       }
     });
-    this.ISL = this.ISJ.getLayoutParams();
+    this.Jnt = this.Jnr.getLayoutParams();
     AppMethodBeat.o(141275);
   }
   
   private b(Activity paramActivity, boolean paramBoolean, View paramView, a parama)
   {
     AppMethodBeat.i(141276);
-    this.ISH = false;
+    this.Jnp = false;
     this.mContext = paramActivity;
-    this.ISH = paramBoolean;
-    this.ISJ = paramView;
-    this.ISI = parama;
-    this.ISJ.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.Jnp = paramBoolean;
+    this.Jnr = paramView;
+    this.Jnq = parama;
+    this.Jnr.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
@@ -63,7 +63,7 @@ public final class b
         AppMethodBeat.o(141272);
       }
     });
-    this.ISL = this.ISJ.getLayoutParams();
+    this.Jnt = this.Jnr.getLayoutParams();
     AppMethodBeat.o(141276);
   }
   
@@ -88,7 +88,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,36 +9,35 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.q;
-import com.tencent.mm.ar.c;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.aq.c;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.a.aa;
-import com.tencent.mm.g.a.io;
-import com.tencent.mm.g.a.io.b;
-import com.tencent.mm.g.a.nt;
-import com.tencent.mm.g.a.so;
-import com.tencent.mm.g.b.a.js;
+import com.tencent.mm.g.a.ip;
+import com.tencent.mm.g.a.ip.b;
+import com.tencent.mm.g.a.nu;
+import com.tencent.mm.g.a.sp;
+import com.tencent.mm.g.b.a.ju;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.modelsimple.k;
-import com.tencent.mm.plugin.appbrand.service.l;
-import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emojicapture.api.a.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.scanner.ui.ProductUI;
 import com.tencent.mm.plugin.scanner.ui.VcardContactUI;
 import com.tencent.mm.plugin.scanner.util.o;
 import com.tencent.mm.plugin.scanner.util.o.a;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.wallet.f;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.avi;
-import com.tencent.mm.protocal.protobuf.avj;
-import com.tencent.mm.protocal.protobuf.bos;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.avy;
+import com.tencent.mm.protocal.protobuf.avz;
+import com.tencent.mm.protocal.protobuf.bpk;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.e.m;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,14 +48,14 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class a
 {
-  private static final SparseIntArray xhR;
-  private static final SparseIntArray xhS;
-  private static final SparseIntArray xhT;
+  private static final SparseIntArray xxN;
+  private static final SparseIntArray xxO;
+  private static final SparseIntArray xxP;
   
   static
   {
     AppMethodBeat.i(51552);
-    xhR = new SparseIntArray()
+    xxN = new SparseIntArray()
     {
       public final int get(int paramAnonymousInt)
       {
@@ -66,7 +65,7 @@ public final class a
         return paramAnonymousInt;
       }
     };
-    xhS = new SparseIntArray()
+    xxO = new SparseIntArray()
     {
       public final int get(int paramAnonymousInt)
       {
@@ -76,7 +75,7 @@ public final class a
         return paramAnonymousInt;
       }
     };
-    xhT = new SparseIntArray()
+    xxP = new SparseIntArray()
     {
       public final int get(int paramAnonymousInt)
       {
@@ -89,7 +88,7 @@ public final class a
     AppMethodBeat.o(51552);
   }
   
-  protected static int Nq(int paramInt)
+  protected static int NW(int paramInt)
   {
     if ((paramInt == 30) || (paramInt == 37) || (paramInt == 38) || (paramInt == 40)) {
       return 13;
@@ -106,59 +105,59 @@ public final class a
   private static void a(a parama, int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(51551);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "actionCode = %s, url = %s", new Object[] { Integer.valueOf(paramInt1), paramString });
-    final io localio = new io();
-    localio.dvh.actionCode = paramInt1;
-    localio.dvh.result = paramString;
-    localio.dvh.context = parama.getContext();
+    ae.d("MicroMsg.scanner.GetA8KeyRedirect", "actionCode = %s, url = %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+    final ip localip = new ip();
+    localip.dwm.actionCode = paramInt1;
+    localip.dwm.result = paramString;
+    localip.dwm.context = parama.getContext();
     paramString = new Bundle();
     paramString.putInt("pay_channel", paramInt2);
-    localio.dvh.dvj = paramString;
-    localio.callback = new Runnable()
+    localip.dwm.dwo = paramString;
+    localip.callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(51543);
-        if ((this.xhW == null) || (localio == null) || (localio.dvi == null))
+        if ((this.xxS == null) || (localip == null) || (localip.dwn == null))
         {
           AppMethodBeat.o(51543);
           return;
         }
-        if (localio.dvi.ret == 1)
+        if (localip.dwn.ret == 1)
         {
-          this.xhW.pB(true);
+          this.xxS.pJ(true);
           AppMethodBeat.o(51543);
           return;
         }
-        if (localio.dvi.ret == 2) {
-          this.xhW.pB(false);
+        if (localip.dwn.ret == 2) {
+          this.xxS.pJ(false);
         }
         AppMethodBeat.o(51543);
       }
     };
-    com.tencent.mm.sdk.b.a.IbL.a(localio, Looper.myLooper());
+    com.tencent.mm.sdk.b.a.IvT.a(localip, Looper.myLooper());
     AppMethodBeat.o(51551);
   }
   
-  public static boolean a(final a parama, final k paramk, DialogInterface.OnClickListener paramOnClickListener, final String paramString, final int paramInt1, final int paramInt2, final Runnable paramRunnable, Bundle paramBundle)
+  public static boolean a(final a parama, final com.tencent.mm.modelsimple.l paraml, DialogInterface.OnClickListener paramOnClickListener, final String paramString, final int paramInt1, final int paramInt2, final Runnable paramRunnable, Bundle paramBundle)
   {
     AppMethodBeat.i(51550);
     if (parama.getContext() == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "handleGetA8KeyRedirect, null redirectContext");
+      ae.e("MicroMsg.scanner.GetA8KeyRedirect", "handleGetA8KeyRedirect, null redirectContext");
       AppMethodBeat.o(51550);
       return false;
     }
-    int i = paramk.aKt();
-    int j = ((avi)paramk.rr.hNK.hNQ).FVR;
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "actionCode : %s, codeType : %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "source=".concat(String.valueOf(paramInt1)));
+    int i = paraml.aKQ();
+    int j = ((avy)paraml.rr.hQD.hQJ).Goq;
+    ae.i("MicroMsg.scanner.GetA8KeyRedirect", "actionCode : %s, codeType : %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    ae.i("MicroMsg.scanner.GetA8KeyRedirect", "source=".concat(String.valueOf(paramInt1)));
     Intent localIntent = new Intent();
     localIntent.putExtra("geta8key_scene", paramInt1);
     localIntent.putExtra("KPublisherId", "qrcode");
     localIntent.putExtra("prePublishId", "qrcode");
-    com.tencent.mm.pluginsdk.wallet.h.Zx(Nq(paramInt1));
-    Object localObject1;
+    com.tencent.mm.pluginsdk.wallet.h.aad(NW(paramInt1));
+    boolean bool;
     switch (i)
     {
     case 5: 
@@ -174,23 +173,23 @@ public final class a
     case 38: 
     case 39: 
     default: 
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-not_catch: action code = " + paramk.aKt());
+      ae.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-not_catch: action code = " + paraml.aKQ());
       AppMethodBeat.o(51550);
       return false;
     case 1: 
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-text: " + paramk.getContent());
-      ((com.tencent.mm.plugin.expt.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.a.class)).add(paramk.getContent());
-      localIntent.putExtra("data", paramk.getContent());
+      ae.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-text: " + paraml.getContent());
+      ((com.tencent.mm.plugin.expt.b.a)g.ab(com.tencent.mm.plugin.expt.b.a.class)).adU(paraml.getContent());
+      localIntent.putExtra("data", paraml.getContent());
       localIntent.putExtra("showShare", false);
       if (paramInt2 == 2) {
         localIntent.putExtra("stastic_scene", 13);
       }
       for (;;)
       {
-        localIntent.putExtra("pay_channel", Nq(paramInt1));
-        localIntent.putExtra("geta8key_session_id", paramk.aKz());
-        com.tencent.mm.plugin.scanner.g.iRG.i(localIntent, parama.getContext());
-        new ap(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
+        localIntent.putExtra("pay_channel", NW(paramInt1));
+        localIntent.putExtra("geta8key_session_id", paraml.aKW());
+        com.tencent.mm.plugin.scanner.h.iUz.i(localIntent, parama.getContext());
+        new aq(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
         AppMethodBeat.o(51550);
         return true;
         if (paramInt2 == 1) {
@@ -200,10 +199,10 @@ public final class a
         }
       }
     case 2: 
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-webview: " + paramk.aKr());
+      ae.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-webview: " + paraml.aKO());
       paramRunnable = parama.getContext();
       paramBundle = parama.getContext();
-      if (!bt.isNullOrNil(paramString)) {}
+      if (!bu.isNullOrNil(paramString)) {}
       for (;;)
       {
         com.tencent.mm.ui.base.h.a(paramRunnable, paramBundle.getString(2131762117, new Object[] { paramString }), parama.getContext().getString(2131755906), new DialogInterface.OnClickListener()
@@ -211,17 +210,17 @@ public final class a
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(51538);
-            this.val$intent.putExtra("title", paramk.getTitle());
-            this.val$intent.putExtra("rawUrl", paramk.aKr());
+            this.val$intent.putExtra("title", paraml.getTitle());
+            this.val$intent.putExtra("rawUrl", paraml.aKO());
             if (paramInt2 == 2) {
               this.val$intent.putExtra("stastic_scene", 13);
             }
             for (;;)
             {
-              this.val$intent.putExtra("pay_channel", a.Nq(paramInt1));
-              this.val$intent.putExtra("geta8key_session_id", paramk.aKz());
-              this.val$intent.putExtra("geta8key_cookie", paramk.aKB());
-              com.tencent.mm.plugin.scanner.g.iRG.i(this.val$intent, parama.getContext());
+              this.val$intent.putExtra("pay_channel", a.NW(paramInt1));
+              this.val$intent.putExtra("geta8key_session_id", paraml.aKW());
+              this.val$intent.putExtra("geta8key_cookie", paraml.aKY());
+              com.tencent.mm.plugin.scanner.h.iUz.i(this.val$intent, parama.getContext());
               AppMethodBeat.o(51538);
               return;
               if (paramInt2 == 1) {
@@ -234,465 +233,485 @@ public final class a
         }, paramOnClickListener);
         AppMethodBeat.o(51550);
         return true;
-        paramString = paramk.aKr();
+        paramString = paraml.aKO();
       }
     case 7: 
     case 30: 
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-webview_no_notice: reqUrl : %s,  fullUrl : %s, shareUrl : %s", new Object[] { paramk.aKs(), paramk.aKr(), paramk.aKv() });
-      localIntent.putExtra("title", paramk.getTitle());
-      localIntent.putExtra("rawUrl", paramk.aKr());
-      localIntent.putExtra("k_share_url", paramk.aKv());
-      if (paramInt2 == 2)
-      {
-        localIntent.putExtra("stastic_scene", 13);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "start webview with channel : ".concat(String.valueOf(Nq(paramInt1))));
-        localIntent.putExtra("pay_channel", Nq(paramInt1));
-        localIntent.putExtra("geta8key_session_id", paramk.aKz());
-        localIntent.putExtra("geta8key_cookie", paramk.aKB());
-        paramk = paramk.aKy();
-        if (bt.hj(paramk)) {
-          break label1057;
-        }
-        paramOnClickListener = paramk.iterator();
-        while (paramOnClickListener.hasNext())
-        {
-          localObject1 = (bos)paramOnClickListener.next();
-          if ((localObject1 == null) || (bt.isNullOrNil(((bos)localObject1).ujy)) || (bt.isNullOrNil(((bos)localObject1).yhw))) {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "http header has null value");
-          }
-        }
+      ae.i("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-webview_no_notice: reqUrl : %s,  fullUrl : %s, shareUrl : %s", new Object[] { paraml.aKP(), paraml.aKO(), paraml.aKS() });
+      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qAT, 0) == 1) {
+        bool = true;
       }
       break;
     }
-    for (paramInt1 = 1;; paramInt1 = 0)
+    for (;;)
     {
-      if (paramInt1 == 0)
+      ae.i("MicroMsg.scanner.GetA8KeyRedirect", "webViewUseOuterGetA8key:%b", new Object[] { Boolean.valueOf(bool) });
+      if (bool) {}
+      try
       {
-        paramOnClickListener = new String[paramk.size()];
-        localObject1 = new String[paramk.size()];
-        paramInt1 = 0;
+        paramOnClickListener = (avz)paraml.rr.hQE.hQJ;
+        localIntent.putExtra("key_scan_qr_code_get_a8key_req", ((avy)paraml.rr.hQD.hQJ).toByteArray());
+        localIntent.putExtra("key_scan_qr_code_get_a8key_resp", paramOnClickListener.toByteArray());
+        localIntent.putExtra("title", paraml.getTitle());
+        localIntent.putExtra("rawUrl", paraml.aKO());
+        localIntent.putExtra("k_share_url", paraml.aKS());
+        if (paramInt2 == 2) {
+          localIntent.putExtra("stastic_scene", 13);
+        }
+        Object localObject1;
         for (;;)
         {
-          if (paramInt1 < paramk.size())
+          ae.i("MicroMsg.scanner.GetA8KeyRedirect", "start webview with channel : ".concat(String.valueOf(NW(paramInt1))));
+          localIntent.putExtra("pay_channel", NW(paramInt1));
+          localIntent.putExtra("geta8key_session_id", paraml.aKW());
+          localIntent.putExtra("geta8key_cookie", paraml.aKY());
+          paraml = paraml.aKV();
+          if (bu.ht(paraml)) {
+            break label1165;
+          }
+          paramOnClickListener = paraml.iterator();
+          do
           {
-            Object localObject2 = (bos)paramk.get(paramInt1);
-            String str = ((bos)localObject2).ujy;
-            localObject2 = ((bos)localObject2).yhw;
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "http header index = %d, key = %s, value = %s", new Object[] { Integer.valueOf(paramInt1), str, localObject2 });
+            if (!paramOnClickListener.hasNext()) {
+              break;
+            }
+            localObject1 = (bpk)paramOnClickListener.next();
+          } while ((localObject1 != null) && (!bu.isNullOrNil(((bpk)localObject1).uuW)) && (!bu.isNullOrNil(((bpk)localObject1).yxn)));
+          ae.e("MicroMsg.scanner.GetA8KeyRedirect", "http header has null value");
+          paramInt1 = 1;
+          if (paramInt1 != 0) {
+            break label1165;
+          }
+          paramOnClickListener = new String[paraml.size()];
+          localObject1 = new String[paraml.size()];
+          paramInt1 = 0;
+          while (paramInt1 < paraml.size())
+          {
+            Object localObject2 = (bpk)paraml.get(paramInt1);
+            String str = ((bpk)localObject2).uuW;
+            localObject2 = ((bpk)localObject2).yxn;
+            ae.i("MicroMsg.scanner.GetA8KeyRedirect", "http header index = %d, key = %s, value = %s", new Object[] { Integer.valueOf(paramInt1), str, localObject2 });
             paramOnClickListener[paramInt1] = str;
             localObject1[paramInt1] = localObject2;
             paramInt1 += 1;
-            continue;
-            if (paramInt2 == 1)
-            {
-              localIntent.putExtra("stastic_scene", 14);
-              break;
-            }
+          }
+          bool = false;
+          break;
+          if (paramInt2 == 1) {
+            localIntent.putExtra("stastic_scene", 14);
+          } else {
             localIntent.putExtra("stastic_scene", 11);
-            break;
           }
         }
         localIntent.putExtra("geta8key_result_http_header_key_list", paramOnClickListener);
         localIntent.putExtra("geta8key_result_http_header_value_list", (String[])localObject1);
         localIntent.putExtra("k_has_http_header", true);
-      }
-      label1057:
-      if ((i == 30) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qtv, 0) == 1))
-      {
-        localIntent.putExtra("auth_raw_url", paramString);
-        localIntent.putExtra("auth_from_scan", true);
-        d.b(parama.getContext(), "webview", ".ui.tools.SDKOAuthUI", localIntent);
-        new ap(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
-        AppMethodBeat.o(51550);
-        return true;
-      }
-      if ((paramBundle != null) && (paramBundle.getString("stat_send_msg_user") != null)) {
-        localIntent.putExtra(e.m.IUY, paramBundle.getString("stat_send_msg_user"));
-      }
-      com.tencent.mm.plugin.scanner.g.iRG.i(localIntent, parama.getContext());
-      new ap(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
-      AppMethodBeat.o(51550);
-      return true;
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-special_webview: " + paramk.aKr());
-      localIntent.putExtra("rawUrl", paramk.aKr());
-      localIntent.putExtra("pay_channel", Nq(paramInt1));
-      localIntent.putExtra("showShare", false);
-      localIntent.putExtra("show_bottom", false);
-      localIntent.putExtra("isWebwx", false);
-      localIntent.putExtra("geta8key_session_id", paramk.aKz());
-      localIntent.putExtra("geta8key_cookie", paramk.aKB());
-      com.tencent.mm.plugin.scanner.g.iRG.i(localIntent, parama.getContext());
-      AppMethodBeat.o(51550);
-      return true;
-      AppMethodBeat.o(51550);
-      return false;
-      paramString = paramk.aKr();
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-app: ".concat(String.valueOf(paramString)));
-      if ((paramString == null) || (paramString.length() == 0))
-      {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-app, fullUrl is null");
-        AppMethodBeat.o(51550);
-        return false;
-      }
-      paramk = parama.getContext().getString(2131762116);
-      if (paramString.startsWith("http")) {
-        paramk = parama.getContext().getString(2131762117, new Object[] { paramString });
-      }
-      paramString = Uri.parse(paramString);
-      if (paramString != null)
-      {
-        paramString = new Intent("android.intent.action.VIEW", paramString);
-        paramString.addFlags(268435456);
-        if (bt.aj(parama.getContext(), paramString))
+        label1165:
+        if ((i == 30) && (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qAk, 0) == 1))
         {
-          com.tencent.mm.ui.base.h.a(parama.getContext(), paramk, parama.getContext().getString(2131755906), false, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(51539);
-              paramAnonymousDialogInterface = this.xhW.getContext();
-              Object localObject = paramString;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              AppMethodBeat.o(51539);
-            }
-          }, paramOnClickListener);
+          localIntent.putExtra("auth_raw_url", paramString);
+          localIntent.putExtra("auth_from_scan", true);
+          d.b(parama.getContext(), "webview", ".ui.tools.SDKOAuthUI", localIntent);
+          new aq(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
           AppMethodBeat.o(51550);
           return true;
         }
-      }
-      AppMethodBeat.o(51550);
-      return false;
-      paramk = paramk.getContent();
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "get vcard from server: ".concat(String.valueOf(paramk)));
-      if (!bt.isNullOrNil(paramk)) {
-        paramString = new com.tencent.mm.plugin.scanner.model.ai();
-      }
-      try
-      {
-        paramString.awL(paramk);
-        paramRunnable = new Intent(parama.getContext(), VcardContactUI.class);
-        paramString = parama.getContext();
-        paramRunnable = new com.tencent.mm.hellhoundlib.b.a().bc(paramRunnable);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, paramRunnable.ahp(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)paramRunnable.mq(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        parama.pB(false);
+        if ((paramBundle != null) && (paramBundle.getString("stat_send_msg_user") != null)) {
+          localIntent.putExtra(e.m.JpG, paramBundle.getString("stat_send_msg_user"));
+        }
+        com.tencent.mm.plugin.scanner.h.iUz.i(localIntent, parama.getContext());
+        new aq(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
+        AppMethodBeat.o(51550);
+        return true;
+        ae.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-special_webview: " + paraml.aKO());
+        localIntent.putExtra("rawUrl", paraml.aKO());
+        localIntent.putExtra("pay_channel", NW(paramInt1));
+        localIntent.putExtra("showShare", false);
+        localIntent.putExtra("show_bottom", false);
+        localIntent.putExtra("isWebwx", false);
+        localIntent.putExtra("geta8key_session_id", paraml.aKW());
+        localIntent.putExtra("geta8key_cookie", paraml.aKY());
+        com.tencent.mm.plugin.scanner.h.iUz.i(localIntent, parama.getContext());
+        AppMethodBeat.o(51550);
+        return true;
+        AppMethodBeat.o(51550);
+        return false;
+        paramString = paraml.aKO();
+        ae.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-app: ".concat(String.valueOf(paramString)));
+        if ((paramString == null) || (paramString.length() == 0))
+        {
+          ae.e("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-app, fullUrl is null");
+          AppMethodBeat.o(51550);
+          return false;
+        }
+        paraml = parama.getContext().getString(2131762116);
+        if (paramString.startsWith("http")) {
+          paraml = parama.getContext().getString(2131762117, new Object[] { paramString });
+        }
+        paramString = Uri.parse(paramString);
+        if (paramString != null)
+        {
+          paramString = new Intent("android.intent.action.VIEW", paramString);
+          paramString.addFlags(268435456);
+          if (bu.aj(parama.getContext(), paramString))
+          {
+            com.tencent.mm.ui.base.h.a(parama.getContext(), paraml, parama.getContext().getString(2131755906), false, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                AppMethodBeat.i(51539);
+                paramAnonymousDialogInterface = this.xxS.getContext();
+                Object localObject = paramString;
+                localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                AppMethodBeat.o(51539);
+              }
+            }, paramOnClickListener);
+            AppMethodBeat.o(51550);
+            return true;
+          }
+        }
+        AppMethodBeat.o(51550);
+        return false;
+        paraml = paraml.getContent();
+        ae.d("MicroMsg.scanner.GetA8KeyRedirect", "get vcard from server: ".concat(String.valueOf(paraml)));
+        if (!bu.isNullOrNil(paraml)) {
+          paramString = new com.tencent.mm.plugin.scanner.model.aj();
+        }
+        try
+        {
+          paramString.aya(paraml);
+          paramRunnable = new Intent(parama.getContext(), VcardContactUI.class);
+          paramString = parama.getContext();
+          paramRunnable = new com.tencent.mm.hellhoundlib.b.a().bc(paramRunnable);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramRunnable.ahE(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramRunnable.mt(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          parama.pJ(false);
+          AppMethodBeat.o(51550);
+          return true;
+        }
+        catch (XmlPullParserException paramString)
+        {
+          ae.e("MicroMsg.scanner.GetA8KeyRedirect", "parser vcardxml err: " + paramString.getMessage() + " " + paraml);
+          ae.printErrStackTrace("MicroMsg.scanner.GetA8KeyRedirect", paramString, "", new Object[0]);
+          com.tencent.mm.ui.base.h.a(parama.getContext(), parama.getContext().getString(2131762127), parama.getContext().getString(2131755906), false, paramOnClickListener);
+          AppMethodBeat.o(51550);
+          return true;
+        }
+        catch (IOException paramString)
+        {
+          for (;;)
+          {
+            ae.e("MicroMsg.scanner.GetA8KeyRedirect", "parser vcardxml err: " + paramString.getMessage() + " " + paraml);
+            ae.printErrStackTrace("MicroMsg.scanner.GetA8KeyRedirect", paramString, "", new Object[0]);
+          }
+        }
+        ae.d("MicroMsg.scanner.GetA8KeyRedirect", "ftf pay url:" + paraml.aKO());
+        f.a(parama.getContext(), 1, paraml.aKO(), NW(paramInt1), null);
+        new aq(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
+        AppMethodBeat.o(51550);
+        return true;
+        paramOnClickListener = new Bundle();
+        paramOnClickListener.putInt("key_scene", 5);
+        bool = com.tencent.mm.plugin.scanner.h.iUz.b(parama.getContext(), paraml.aKO(), paramOnClickListener);
+        AppMethodBeat.o(51550);
+        return bool;
+        a(parama, i, paraml.aKO(), NW(paramInt1));
+        new aq(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
+        AppMethodBeat.o(51550);
+        return true;
+        a(parama, i, paraml.aKO(), NW(paramInt1));
+        AppMethodBeat.o(51550);
+        return true;
+        paramOnClickListener = paraml.aKO();
+        paraml = paramOnClickListener;
+        if (paramOnClickListener != null) {
+          paraml = paramOnClickListener.replace("wxpd://", "");
+        }
+        paramOnClickListener = new Intent();
+        paramOnClickListener.putExtra("key_product_id", paraml);
+        paramOnClickListener.putExtra("key_product_scene", 7);
+        d.b(parama.getContext(), "product", ".ui.MallProductUI", paramOnClickListener);
+        AppMethodBeat.o(51550);
+        return true;
+        paramOnClickListener = new Intent();
+        paramOnClickListener.setClass(parama.getContext(), ProductUI.class);
+        paramOnClickListener.putExtra("key_ProductUI_getProductInfoScene", 5);
+        paramOnClickListener.putExtra("key_Qrcode_Url", paraml.aKO());
+        parama = parama.getContext();
+        paraml = new com.tencent.mm.hellhoundlib.b.a().bc(paramOnClickListener);
+        com.tencent.mm.hellhoundlib.a.a.a(parama, paraml.ahE(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        parama.startActivity((Intent)paraml.mt(0));
+        com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(51550);
+        return true;
+        paramOnClickListener = paraml.aKO();
+        parama = new Intent().setClassName(ak.getContext(), "com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.BakchatPcUsbService");
+        paraml = bu.ak(ak.getContext(), parama);
+        if (paraml != null) {
+          parama = paraml;
+        }
+        for (;;)
+        {
+          d.bf(parama.putExtra("url", paramOnClickListener).putExtra("isFromWifi", true));
+          ae.d("MicroMsg.scanner.GetA8KeyRedirect", "GET_CONNECT_INFO start end");
+          AppMethodBeat.o(51550);
+          return true;
+        }
+        paraml = o.ayp(paraml.aKO());
+        if (paraml == null) {
+          ae.e("MicroMsg.scanner.GetA8KeyRedirect", "item == null");
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(51550);
+          return false;
+          if (o.AB(paraml.mwj)) {
+            break;
+          }
+          o.bd(parama.getContext(), parama.getContext().getString(2131756947));
+        }
+        paramOnClickListener = new Intent();
+        paramOnClickListener.putExtra("key_card_id", paraml.oEo);
+        paramOnClickListener.putExtra("key_card_ext", paraml.dJc);
+        paramOnClickListener.putExtra("key_from_scene", 0);
+        if (paramInt2 == 2) {
+          paramOnClickListener.putExtra("key_stastic_scene", 13);
+        }
+        for (;;)
+        {
+          d.b(parama.getContext(), "card", ".ui.CardDetailUI", paramOnClickListener);
+          ae.d("MicroMsg.scanner.GetA8KeyRedirect", "MMSCAN_QRCODE_CARD start end");
+          break;
+          if (paramInt2 == 1) {
+            paramOnClickListener.putExtra("key_stastic_scene", 14);
+          } else {
+            paramOnClickListener.putExtra("key_stastic_scene", 11);
+          }
+        }
+        paraml = paraml.aKO();
+        paramOnClickListener = o.ayq(paraml);
+        if ((paramOnClickListener == null) || (paramOnClickListener.size() == 0)) {
+          ae.e("MicroMsg.scanner.GetA8KeyRedirect", "list == null || list.size() == 0");
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(51550);
+          return false;
+          if (o.ax(paramOnClickListener)) {
+            break;
+          }
+          o.bd(parama.getContext(), parama.getContext().getString(2131756947));
+        }
+        paramOnClickListener = new Intent();
+        paramOnClickListener.putExtra("key_from_scene", 0);
+        paramOnClickListener.putExtra("src_username", "");
+        paramOnClickListener.putExtra("js_url", "");
+        paramOnClickListener.putExtra("key_in_card_list", paraml);
+        if (paramInt2 == 2) {
+          paramOnClickListener.putExtra("key_stastic_scene", 13);
+        }
+        for (;;)
+        {
+          d.b(parama.getContext(), "card", ".ui.CardAddEntranceUI", paramOnClickListener);
+          ae.d("MicroMsg.scanner.GetA8KeyRedirect", "MMSCAN_QRCODE_MULTIPLE_CARD start end");
+          break;
+          if (paramInt2 == 1) {
+            paramOnClickListener.putExtra("key_stastic_scene", 14);
+          } else {
+            paramOnClickListener.putExtra("key_stastic_scene", 11);
+          }
+        }
+        paramRunnable = new Intent();
+        paramRunnable.putExtra("free_wifi_url", paraml.aKO());
+        paramString = (avz)paraml.rr.hQE.hQJ;
+        if ((paramString == null) || (paramString.FJb == null))
+        {
+          ae.e("MicroMsg.NetSceneGetA8Key", "get mid failed");
+          paramString = null;
+          paramRunnable.putExtra("free_wifi_mid", paramString);
+          paramString = (avz)paraml.rr.hQE.hQJ;
+          if ((paramString != null) && (paramString.SSID != null)) {
+            break label2968;
+          }
+          ae.e("MicroMsg.NetSceneGetA8Key", "get ssid failed");
+          paramString = null;
+          label2871:
+          paramRunnable.putExtra("free_wifi_ssid", paramString);
+          paramRunnable.putExtra("free_wifi_source", 1);
+          paramRunnable.putExtra("free_wifi_ap_key", paraml.aKO());
+          if (g.ajR().ajA().get(303104, null) == null) {
+            break label2976;
+          }
+          com.tencent.mm.ui.base.h.a(parama.getContext(), 2131759617, 2131755906, 2131755700, 2131755691, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(51540);
+              d.b(this.xxS.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramRunnable);
+              this.xxS.pJ(false);
+              AppMethodBeat.o(51540);
+            }
+          }, paramOnClickListener);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(51550);
+          return true;
+          paramString = paramString.FJb;
+          break;
+          label2968:
+          paramString = paramString.SSID;
+          break label2871;
+          label2976:
+          d.b(parama.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramRunnable);
+          parama.pJ(false);
+        }
+        ae.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-emoticon full url: " + paraml.aKO());
+        parama = new c(paraml.aKO());
+        g.ajj().a(parama, 0);
+        AppMethodBeat.o(51550);
+        return true;
+        parama = new sp();
+        parama.dIj.dIk = paramString;
+        com.tencent.mm.sdk.b.a.IvT.l(parama);
+        AppMethodBeat.o(51550);
+        return true;
+        parama = paraml.aKO();
+        if (bu.isNullOrNil(parama))
+        {
+          ae.e("MicroMsg.scanner.GetA8KeyRedirect", "onStartCommand url is null");
+          AppMethodBeat.o(51550);
+          return true;
+        }
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "summerbak start url, url:%s", new Object[] { parama });
+        paraml = new aa();
+        paraml.dlK.url = parama;
+        com.tencent.mm.sdk.b.a.IvT.l(paraml);
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "publish BackupGetA8keyRedirectEvent");
+        AppMethodBeat.o(51550);
+        return true;
+        paramOnClickListener = paraml.aKO();
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "fullURL: ".concat(String.valueOf(paramOnClickListener)));
+        paramRunnable = paraml.iob;
+        paramRunnable.putLong("CgiSpeedOutSideStructResponseSize", ((avz)paraml.rr.hQE.hQJ).computeSize());
+        paramRunnable.putInt("CgiSpeedOutSideStructBizRet", ((avz)paraml.rr.hQE.hQJ).BaseResponse.Ret);
+        paramRunnable.putString("CgiSpeedOutSideStructNetworkType", ((com.tencent.mm.plugin.appbrand.service.l)g.ab(com.tencent.mm.plugin.appbrand.service.l.class)).bxT());
+        paramString = new Bundle();
+        paramString.putBundle("stat_get_a8_key_cgi_speed", paramRunnable);
+        paramRunnable = parama.getContext();
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "processAppBrandFullURL, fullURL: ".concat(String.valueOf(paramOnClickListener)));
+        paraml = Uri.parse(paramOnClickListener);
+        if ((paraml.getQueryParameter("search_query") != null) && (paraml.getQueryParameter("search_query").length() > 0))
+        {
+          paramString = paraml.getQueryParameter("search_query");
+          paramRunnable = paraml.getQueryParameter("appid");
+          paramBundle = paraml.getQueryParameter("search_extInfo");
+          paramInt1 = bu.getInt(paraml.getQueryParameter("debug"), 0);
+          paramInt2 = bu.getInt(paraml.getQueryParameter("version"), 0);
+          paraml = new nu();
+          paraml.dCJ.scene = 1;
+          paraml.dCJ.appId = paramRunnable;
+          paraml.dCJ.type = paramInt1;
+          paraml.dCJ.version = paramInt2;
+          paraml.dCJ.dCK = paramString;
+          paraml.dCJ.url = paramOnClickListener;
+          paraml.dCJ.dCL = paramBundle;
+          com.tencent.mm.sdk.b.a.IvT.l(paraml);
+          paraml = ad.ePM();
+          paraml.putExtra("ftsbizscene", 99999);
+          paraml.putExtra("ftsQuery", paramString);
+          paraml.putExtra("ftsqrcodestring", paramOnClickListener);
+          paramOnClickListener = ad.f(300, false, 262144);
+          paramOnClickListener.put("query", paramString);
+          paramString = ad.WI(bu.aSB((String)paramOnClickListener.get("scene")));
+          paramOnClickListener.put("sessionid", paramString);
+          paraml.putExtra("rawUrl", ad.be(paramOnClickListener));
+          paraml.putExtra("key_session_id", paramString);
+          d.b(ak.getContext(), "webview", ".ui.tools.fts.FTSWebViewUI", paraml);
+          parama.pJ(false);
+          AppMethodBeat.o(51550);
+          return true;
+        }
+        if (bu.getInt(paraml.getQueryParameter("qr_type4wxa"), 0) == 2) {
+          paraml = xxP;
+        }
+        for (;;)
+        {
+          paramInt1 = paraml.get(paramInt2);
+          ((com.tencent.mm.plugin.appbrand.service.q)g.ab(com.tencent.mm.plugin.appbrand.service.q.class)).b(paramRunnable, paramOnClickListener, paramInt1, paramBundle, paramString);
+          break;
+          switch (j)
+          {
+          default: 
+            paraml = xxN;
+            break;
+          case 22: 
+            paraml = xxO;
+          }
+        }
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "jump to forceNotify UI");
+        localIntent.putExtra("data", paraml.aKP());
+        localIntent.setClassName(parama.getContext(), "com.tencent.mm.plugin.forcenotify.ui.ForceNotifyAcceptUI");
+        parama.pJ(false);
+        parama = parama.getContext();
+        paraml = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(parama, paraml.ahE(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        parama.startActivity((Intent)paraml.mt(0));
+        com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(51550);
+        return true;
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "handleGetA8KeyRedirect: %s, %s", new Object[] { paramString, paraml.aKO() });
+        paraml = paraml.aKO();
+        ((com.tencent.mm.plugin.emojicapture.api.a)g.ad(com.tencent.mm.plugin.emojicapture.api.a.class)).prepareStickerPreview(parama.getContext(), paraml, new a.b()
+        {
+          public final void dg(boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(51541);
+            this.xxS.pJ(paramAnonymousBoolean);
+            AppMethodBeat.o(51541);
+          }
+        });
+        AppMethodBeat.o(51550);
+        return true;
+        ae.i("MicroMsg.scanner.GetA8KeyRedirect", "handleGetA8KeyRedirect: %s, %s", new Object[] { paramString, paraml.aKO() });
+        paraml = paraml.aKO();
+        ((com.tencent.mm.plugin.emojicapture.api.a)g.ad(com.tencent.mm.plugin.emojicapture.api.a.class)).prepareEmojiCapture(parama.getContext(), paraml, new a.b()
+        {
+          public final void dg(boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(51542);
+            this.xxS.pJ(paramAnonymousBoolean);
+            AppMethodBeat.o(51542);
+          }
+        });
+        AppMethodBeat.o(51550);
+        return true;
+        ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).gotoRedPacketPreviewUI(parama.getContext(), paramString);
+        parama.pJ(false);
+        AppMethodBeat.o(51550);
+        return true;
+        paramOnClickListener = new Intent();
+        paramOnClickListener.putExtra("key_qrcode_string", paraml.aKO());
+        d.b(parama.getContext(), "account", ".friend.ui.RecoverAccountUI1", paramOnClickListener);
+        new aq(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
+        parama = new ju();
+        parama.dVT = 1;
+        parama.aLH();
         AppMethodBeat.o(51550);
         return true;
       }
-      catch (XmlPullParserException paramString)
-      {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "parser vcardxml err: " + paramString.getMessage() + " " + paramk);
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.scanner.GetA8KeyRedirect", paramString, "", new Object[0]);
-        com.tencent.mm.ui.base.h.a(parama.getContext(), parama.getContext().getString(2131762127), parama.getContext().getString(2131755906), false, paramOnClickListener);
-        AppMethodBeat.o(51550);
-        return true;
-      }
-      catch (IOException paramString)
+      catch (IOException paramOnClickListener)
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "parser vcardxml err: " + paramString.getMessage() + " " + paramk);
-          com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.scanner.GetA8KeyRedirect", paramString, "", new Object[0]);
+          continue;
+          paramInt1 = 0;
         }
       }
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "ftf pay url:" + paramk.aKr());
-      f.a(parama.getContext(), 1, paramk.aKr(), Nq(paramInt1), null);
-      new ap(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
-      AppMethodBeat.o(51550);
-      return true;
-      paramOnClickListener = new Bundle();
-      paramOnClickListener.putInt("key_scene", 5);
-      boolean bool = com.tencent.mm.plugin.scanner.g.iRG.b(parama.getContext(), paramk.aKr(), paramOnClickListener);
-      AppMethodBeat.o(51550);
-      return bool;
-      a(parama, i, paramk.aKr(), Nq(paramInt1));
-      new ap(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
-      AppMethodBeat.o(51550);
-      return true;
-      a(parama, i, paramk.aKr(), Nq(paramInt1));
-      AppMethodBeat.o(51550);
-      return true;
-      paramOnClickListener = paramk.aKr();
-      paramk = paramOnClickListener;
-      if (paramOnClickListener != null) {
-        paramk = paramOnClickListener.replace("wxpd://", "");
-      }
-      paramOnClickListener = new Intent();
-      paramOnClickListener.putExtra("key_product_id", paramk);
-      paramOnClickListener.putExtra("key_product_scene", 7);
-      d.b(parama.getContext(), "product", ".ui.MallProductUI", paramOnClickListener);
-      AppMethodBeat.o(51550);
-      return true;
-      paramOnClickListener = new Intent();
-      paramOnClickListener.setClass(parama.getContext(), ProductUI.class);
-      paramOnClickListener.putExtra("key_ProductUI_getProductInfoScene", 5);
-      paramOnClickListener.putExtra("key_Qrcode_Url", paramk.aKr());
-      parama = parama.getContext();
-      paramk = new com.tencent.mm.hellhoundlib.b.a().bc(paramOnClickListener);
-      com.tencent.mm.hellhoundlib.a.a.a(parama, paramk.ahp(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      parama.startActivity((Intent)paramk.mq(0));
-      com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(51550);
-      return true;
-      paramOnClickListener = paramk.aKr();
-      parama = new Intent().setClassName(aj.getContext(), "com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.BakchatPcUsbService");
-      paramk = bt.ak(aj.getContext(), parama);
-      if (paramk != null) {
-        parama = paramk;
-      }
-      for (;;)
-      {
-        d.be(parama.putExtra("url", paramOnClickListener).putExtra("isFromWifi", true));
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "GET_CONNECT_INFO start end");
-        AppMethodBeat.o(51550);
-        return true;
-      }
-      paramk = o.axa(paramk.aKr());
-      if (paramk == null) {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "item == null");
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(51550);
-        return false;
-        if (o.Ap(paramk.mrl)) {
-          break;
-        }
-        o.bb(parama.getContext(), parama.getContext().getString(2131756947));
-      }
-      paramOnClickListener = new Intent();
-      paramOnClickListener.putExtra("key_card_id", paramk.oxM);
-      paramOnClickListener.putExtra("key_card_ext", paramk.dHY);
-      paramOnClickListener.putExtra("key_from_scene", 0);
-      if (paramInt2 == 2) {
-        paramOnClickListener.putExtra("key_stastic_scene", 13);
-      }
-      for (;;)
-      {
-        d.b(parama.getContext(), "card", ".ui.CardDetailUI", paramOnClickListener);
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "MMSCAN_QRCODE_CARD start end");
-        break;
-        if (paramInt2 == 1) {
-          paramOnClickListener.putExtra("key_stastic_scene", 14);
-        } else {
-          paramOnClickListener.putExtra("key_stastic_scene", 11);
-        }
-      }
-      paramk = paramk.aKr();
-      paramOnClickListener = o.axb(paramk);
-      if ((paramOnClickListener == null) || (paramOnClickListener.size() == 0)) {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "list == null || list.size() == 0");
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(51550);
-        return false;
-        if (o.aw(paramOnClickListener)) {
-          break;
-        }
-        o.bb(parama.getContext(), parama.getContext().getString(2131756947));
-      }
-      paramOnClickListener = new Intent();
-      paramOnClickListener.putExtra("key_from_scene", 0);
-      paramOnClickListener.putExtra("src_username", "");
-      paramOnClickListener.putExtra("js_url", "");
-      paramOnClickListener.putExtra("key_in_card_list", paramk);
-      if (paramInt2 == 2) {
-        paramOnClickListener.putExtra("key_stastic_scene", 13);
-      }
-      for (;;)
-      {
-        d.b(parama.getContext(), "card", ".ui.CardAddEntranceUI", paramOnClickListener);
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "MMSCAN_QRCODE_MULTIPLE_CARD start end");
-        break;
-        if (paramInt2 == 1) {
-          paramOnClickListener.putExtra("key_stastic_scene", 14);
-        } else {
-          paramOnClickListener.putExtra("key_stastic_scene", 11);
-        }
-      }
-      paramRunnable = new Intent();
-      paramRunnable.putExtra("free_wifi_url", paramk.aKr());
-      paramString = (avj)paramk.rr.hNL.hNQ;
-      if ((paramString == null) || (paramString.FqD == null))
-      {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetSceneGetA8Key", "get mid failed");
-        paramString = null;
-        paramRunnable.putExtra("free_wifi_mid", paramString);
-        paramString = (avj)paramk.rr.hNL.hNQ;
-        if ((paramString != null) && (paramString.SSID != null)) {
-          break label2860;
-        }
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetSceneGetA8Key", "get ssid failed");
-        paramString = null;
-        label2763:
-        paramRunnable.putExtra("free_wifi_ssid", paramString);
-        paramRunnable.putExtra("free_wifi_source", 1);
-        paramRunnable.putExtra("free_wifi_ap_key", paramk.aKr());
-        if (com.tencent.mm.kernel.g.ajC().ajl().get(303104, null) == null) {
-          break label2868;
-        }
-        com.tencent.mm.ui.base.h.a(parama.getContext(), 2131759617, 2131755906, 2131755700, 2131755691, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(51540);
-            d.b(this.xhW.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramRunnable);
-            this.xhW.pB(false);
-            AppMethodBeat.o(51540);
-          }
-        }, paramOnClickListener);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(51550);
-        return true;
-        paramString = paramString.FqD;
-        break;
-        label2860:
-        paramString = paramString.SSID;
-        break label2763;
-        label2868:
-        d.b(parama.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramRunnable);
-        parama.pB(false);
-      }
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.scanner.GetA8KeyRedirect", "getA8key-emoticon full url: " + paramk.aKr());
-      parama = new c(paramk.aKr());
-      com.tencent.mm.kernel.g.aiU().a(parama, 0);
-      AppMethodBeat.o(51550);
-      return true;
-      parama = new so();
-      parama.dHd.dHe = paramString;
-      com.tencent.mm.sdk.b.a.IbL.l(parama);
-      AppMethodBeat.o(51550);
-      return true;
-      parama = paramk.aKr();
-      if (bt.isNullOrNil(parama))
-      {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.scanner.GetA8KeyRedirect", "onStartCommand url is null");
-        AppMethodBeat.o(51550);
-        return true;
-      }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "summerbak start url, url:%s", new Object[] { parama });
-      paramk = new aa();
-      paramk.dkI.url = parama;
-      com.tencent.mm.sdk.b.a.IbL.l(paramk);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "publish BackupGetA8keyRedirectEvent");
-      AppMethodBeat.o(51550);
-      return true;
-      paramOnClickListener = paramk.aKr();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "fullURL: ".concat(String.valueOf(paramOnClickListener)));
-      paramRunnable = paramk.ili;
-      paramRunnable.putLong("CgiSpeedOutSideStructResponseSize", ((avj)paramk.rr.hNL.hNQ).computeSize());
-      paramRunnable.putInt("CgiSpeedOutSideStructBizRet", ((avj)paramk.rr.hNL.hNQ).BaseResponse.Ret);
-      paramRunnable.putString("CgiSpeedOutSideStructNetworkType", ((l)com.tencent.mm.kernel.g.ab(l.class)).bxa());
-      paramString = new Bundle();
-      paramString.putBundle("stat_get_a8_key_cgi_speed", paramRunnable);
-      paramRunnable = parama.getContext();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "processAppBrandFullURL, fullURL: ".concat(String.valueOf(paramOnClickListener)));
-      paramk = Uri.parse(paramOnClickListener);
-      if ((paramk.getQueryParameter("search_query") != null) && (paramk.getQueryParameter("search_query").length() > 0))
-      {
-        paramString = paramk.getQueryParameter("search_query");
-        paramRunnable = paramk.getQueryParameter("appid");
-        paramBundle = paramk.getQueryParameter("search_extInfo");
-        paramInt1 = bt.getInt(paramk.getQueryParameter("debug"), 0);
-        paramInt2 = bt.getInt(paramk.getQueryParameter("version"), 0);
-        paramk = new nt();
-        paramk.dBE.scene = 1;
-        paramk.dBE.appId = paramRunnable;
-        paramk.dBE.type = paramInt1;
-        paramk.dBE.version = paramInt2;
-        paramk.dBE.dBF = paramString;
-        paramk.dBE.url = paramOnClickListener;
-        paramk.dBE.dBG = paramBundle;
-        com.tencent.mm.sdk.b.a.IbL.l(paramk);
-        paramk = com.tencent.mm.plugin.websearch.api.ad.eMd();
-        paramk.putExtra("ftsbizscene", 99999);
-        paramk.putExtra("ftsQuery", paramString);
-        paramk.putExtra("ftsqrcodestring", paramOnClickListener);
-        paramOnClickListener = com.tencent.mm.plugin.websearch.api.ad.f(300, false, 262144);
-        paramOnClickListener.put("query", paramString);
-        paramString = com.tencent.mm.plugin.websearch.api.ad.Wb(bt.aRe((String)paramOnClickListener.get("scene")));
-        paramOnClickListener.put("sessionid", paramString);
-        paramk.putExtra("rawUrl", com.tencent.mm.plugin.websearch.api.ad.aY(paramOnClickListener));
-        paramk.putExtra("key_session_id", paramString);
-        d.b(aj.getContext(), "webview", ".ui.tools.fts.FTSWebViewUI", paramk);
-        parama.pB(false);
-        AppMethodBeat.o(51550);
-        return true;
-      }
-      if (bt.getInt(paramk.getQueryParameter("qr_type4wxa"), 0) == 2) {
-        paramk = xhT;
-      }
-      for (;;)
-      {
-        paramInt1 = paramk.get(paramInt2);
-        ((p)com.tencent.mm.kernel.g.ab(p.class)).b(paramRunnable, paramOnClickListener, paramInt1, paramBundle, paramString);
-        break;
-        switch (j)
-        {
-        default: 
-          paramk = xhR;
-          break;
-        case 22: 
-          paramk = xhS;
-        }
-      }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "jump to forceNotify UI");
-      localIntent.putExtra("data", paramk.aKs());
-      localIntent.setClassName(parama.getContext(), "com.tencent.mm.plugin.forcenotify.ui.ForceNotifyAcceptUI");
-      parama.pB(false);
-      parama = parama.getContext();
-      paramk = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(parama, paramk.ahp(), "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      parama.startActivity((Intent)paramk.mq(0));
-      com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect", "handleGetA8KeyRedirect", "(Lcom/tencent/mm/plugin/qrcode/model/GetA8KeyRedirect$IScanQRCodeGetA8KeyRedirect;Lcom/tencent/mm/modelsimple/NetSceneGetA8Key;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/String;IILjava/lang/Runnable;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(51550);
-      return true;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "handleGetA8KeyRedirect: %s, %s", new Object[] { paramString, paramk.aKr() });
-      paramk = paramk.aKr();
-      ((com.tencent.mm.plugin.emojicapture.api.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emojicapture.api.a.class)).prepareStickerPreview(parama.getContext(), paramk, new a.b()
-      {
-        public final void dg(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(51541);
-          this.xhW.pB(paramAnonymousBoolean);
-          AppMethodBeat.o(51541);
-        }
-      });
-      AppMethodBeat.o(51550);
-      return true;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.scanner.GetA8KeyRedirect", "handleGetA8KeyRedirect: %s, %s", new Object[] { paramString, paramk.aKr() });
-      paramk = paramk.aKr();
-      ((com.tencent.mm.plugin.emojicapture.api.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emojicapture.api.a.class)).prepareEmojiCapture(parama.getContext(), paramk, new a.b()
-      {
-        public final void dg(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(51542);
-          this.xhW.pB(paramAnonymousBoolean);
-          AppMethodBeat.o(51542);
-        }
-      });
-      AppMethodBeat.o(51550);
-      return true;
-      ((com.tencent.mm.plugin.wxpay.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).gotoRedPacketPreviewUI(parama.getContext(), paramString);
-      parama.pB(false);
-      AppMethodBeat.o(51550);
-      return true;
-      paramOnClickListener = new Intent();
-      paramOnClickListener.putExtra("key_qrcode_string", paramk.aKr());
-      d.b(parama.getContext(), "account", ".friend.ui.RecoverAccountUI1", paramOnClickListener);
-      new ap(Looper.getMainLooper()).postDelayed(paramRunnable, 200L);
-      parama = new js();
-      parama.dUD = 1;
-      parama.aLk();
-      AppMethodBeat.o(51550);
-      return true;
     }
   }
   
@@ -700,7 +719,7 @@ public final class a
   {
     public abstract Context getContext();
     
-    public abstract void pB(boolean paramBoolean);
+    public abstract void pJ(boolean paramBoolean);
   }
 }
 

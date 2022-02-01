@@ -7,17 +7,17 @@ import android.os.Environment;
 import android.os.ResultReceiver;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.a;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.bq.a;
+import com.tencent.mm.vfs.k;
 import java.io.File;
 
 public class DownloadFileService
   extends IntentService
 {
   private static final String TAG;
-  private ResultReceiver pls;
-  private int plt;
-  private int plu;
+  private ResultReceiver prX;
+  private int prY;
+  private int prZ;
   
   static
   {
@@ -32,13 +32,13 @@ public class DownloadFileService
   }
   
   /* Error */
-  private void d(String paramString, e parame)
+  private void d(String paramString, k paramk)
   {
     // Byte code:
     //   0: ldc 49
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_2
-    //   6: invokestatic 55	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   6: invokestatic 55	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
     //   9: astore 8
     //   11: new 57	java/net/URL
     //   14: dup
@@ -60,7 +60,7 @@ public class DownloadFileService
     //   47: ldc 77
     //   49: invokevirtual 81	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   52: iconst_0
-    //   53: invokestatic 87	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   53: invokestatic 87	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   56: istore_3
     //   57: aload_1
     //   58: invokevirtual 91	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
@@ -89,15 +89,15 @@ public class DownloadFileService
     //   107: aload_0
     //   108: iload 4
     //   110: aload_0
-    //   111: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:plt	I
+    //   111: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:prY	I
     //   114: iadd
-    //   115: putfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:plt	I
+    //   115: putfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:prY	I
     //   118: new 111	android/os/Bundle
     //   121: dup
     //   122: invokespecial 113	android/os/Bundle:<init>	()V
     //   125: astore 6
     //   127: aload_0
-    //   128: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:plt	I
+    //   128: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:prY	I
     //   131: i2l
     //   132: ldc2_w 114
     //   135: lmul
@@ -108,20 +108,20 @@ public class DownloadFileService
     //   140: istore 4
     //   142: iload 4
     //   144: aload_0
-    //   145: getfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:plu	I
+    //   145: getfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:prZ	I
     //   148: if_icmple -65 -> 83
     //   151: aload 6
     //   153: ldc 119
     //   155: iload 4
     //   157: invokevirtual 123	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   160: aload_0
-    //   161: getfield 125	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:pls	Landroid/os/ResultReceiver;
+    //   161: getfield 125	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:prX	Landroid/os/ResultReceiver;
     //   164: sipush 4657
     //   167: aload 6
     //   169: invokevirtual 131	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
     //   172: aload_0
     //   173: iload 4
-    //   175: putfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:plu	I
+    //   175: putfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:prZ	I
     //   178: goto -95 -> 83
     //   181: astore 7
     //   183: aload_2
@@ -137,7 +137,7 @@ public class DownloadFileService
     //   200: ldc 133
     //   202: iconst_0
     //   203: anewarray 135	java/lang/Object
-    //   206: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   209: aload 8
     //   211: ifnull +8 -> 219
     //   214: aload 8
@@ -154,13 +154,13 @@ public class DownloadFileService
     //   240: astore_1
     //   241: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
     //   244: ldc 150
-    //   246: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   246: invokestatic 154	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   249: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
     //   252: aload_1
     //   253: ldc 133
     //   255: iconst_0
     //   256: anewarray 135	java/lang/Object
-    //   259: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   259: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   262: ldc 49
     //   264: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   267: return
@@ -169,7 +169,7 @@ public class DownloadFileService
     //   273: iload 4
     //   275: invokestatic 162	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   278: invokevirtual 165	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   281: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   281: invokestatic 154	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   284: aload 8
     //   286: ifnull +8 -> 294
     //   289: aload 8
@@ -189,7 +189,7 @@ public class DownloadFileService
     //   317: ldc 133
     //   319: iconst_0
     //   320: anewarray 135	java/lang/Object
-    //   323: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   323: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   326: goto -24 -> 302
     //   329: astore_1
     //   330: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
@@ -197,7 +197,7 @@ public class DownloadFileService
     //   334: ldc 133
     //   336: iconst_0
     //   337: anewarray 135	java/lang/Object
-    //   340: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   340: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   343: goto -114 -> 229
     //   346: astore 7
     //   348: aconst_null
@@ -213,7 +213,7 @@ public class DownloadFileService
     //   365: ldc 133
     //   367: iconst_0
     //   368: anewarray 135	java/lang/Object
-    //   371: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   371: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   374: aload 8
     //   376: ifnull +8 -> 384
     //   379: aload 8
@@ -233,7 +233,7 @@ public class DownloadFileService
     //   410: ldc 133
     //   412: iconst_0
     //   413: anewarray 135	java/lang/Object
-    //   416: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   416: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   419: goto -25 -> 394
     //   422: astore 7
     //   424: aconst_null
@@ -249,7 +249,7 @@ public class DownloadFileService
     //   441: ldc 133
     //   443: iconst_0
     //   444: anewarray 135	java/lang/Object
-    //   447: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   447: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   450: aload 8
     //   452: ifnull +8 -> 460
     //   455: aload 8
@@ -269,7 +269,7 @@ public class DownloadFileService
     //   486: ldc 133
     //   488: iconst_0
     //   489: anewarray 135	java/lang/Object
-    //   492: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   492: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   495: goto -25 -> 470
     //   498: astore 5
     //   500: aconst_null
@@ -296,7 +296,7 @@ public class DownloadFileService
     //   539: ldc 133
     //   541: iconst_0
     //   542: anewarray 135	java/lang/Object
-    //   545: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   545: invokestatic 141	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   548: goto -26 -> 522
     //   551: astore 5
     //   553: aconst_null
@@ -356,7 +356,7 @@ public class DownloadFileService
     //   start	length	slot	name	signature
     //   0	648	0	this	DownloadFileService
     //   0	648	1	paramString	String
-    //   0	648	2	parame	e
+    //   0	648	2	paramk	k
     //   56	81	3	i	int
     //   66	208	4	j	int
     //   81	390	5	localObject1	java.lang.Object
@@ -426,7 +426,7 @@ public class DownloadFileService
   {
     AppMethodBeat.i(88882);
     super.onCreate();
-    s.c localc = a.bI(this, "reminder_channel_id");
+    s.c localc = a.bJ(this, "reminder_channel_id");
     localc.f("Something Download").g("Download in progress").as(2131232660);
     startForeground(4657, localc.build());
     AppMethodBeat.o(88882);
@@ -436,12 +436,12 @@ public class DownloadFileService
   {
     AppMethodBeat.i(88883);
     String str = paramIntent.getExtras().getString("url");
-    this.pls = ((ResultReceiver)paramIntent.getParcelableExtra("receiver"));
-    paramIntent = new e(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download");
+    this.prX = ((ResultReceiver)paramIntent.getParcelableExtra("receiver"));
+    paramIntent = new k(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download");
     if (!paramIntent.exists()) {
       paramIntent.mkdirs();
     }
-    d(str, new e(paramIntent, "file11.apk"));
+    d(str, new k(paramIntent, "file11.apk"));
     AppMethodBeat.o(88883);
   }
 }

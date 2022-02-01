@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/util/FullScreenIntentService$FullScreenOperationReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "p0", "Landroid/content/Context;", "p1", "Landroid/content/Intent;", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/util/FullScreenIntentService$FullScreenOperationReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "p0", "Landroid/content/Context;", "p1", "Landroid/content/Intent;", "plugin-comm_release"})
 public final class FullScreenIntentService$FullScreenOperationReceiver
   extends BroadcastReceiver
 {

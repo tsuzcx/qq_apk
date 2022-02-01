@@ -16,15 +16,15 @@ public final class q
     p.h(paramy, "$this$resolveClassByFqName");
     p.h(paramb, "fqName");
     p.h(parama, "lookupLocation");
-    if (paramb.Nqg.Nql.isEmpty())
+    if (paramb.NNm.NNr.isEmpty())
     {
       AppMethodBeat.o(56850);
       return null;
     }
-    Object localObject1 = paramb.grg();
+    Object localObject1 = paramb.gvI();
     p.g(localObject1, "fqName.parent()");
-    localObject1 = paramy.e((b)localObject1).gil();
-    Object localObject2 = paramb.grh();
+    localObject1 = paramy.e((b)localObject1).gmN();
+    Object localObject2 = paramb.gvJ();
     p.g(localObject2, "fqName.shortName()");
     localObject2 = ((h)localObject1).c((f)localObject2, parama);
     localObject1 = localObject2;
@@ -37,15 +37,15 @@ public final class q
       AppMethodBeat.o(56850);
       return localObject1;
     }
-    localObject1 = paramb.grg();
+    localObject1 = paramb.gvI();
     p.g(localObject1, "fqName.parent()");
     paramy = a(paramy, (b)localObject1, parama);
     if (paramy != null)
     {
-      paramy = paramy.giJ();
+      paramy = paramy.gnl();
       if (paramy != null)
       {
-        paramb = paramb.grh();
+        paramb = paramb.gvJ();
         p.g(paramb, "fqName.shortName()");
       }
     }
@@ -63,7 +63,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.q
  * JD-Core Version:    0.7.0.1
  */

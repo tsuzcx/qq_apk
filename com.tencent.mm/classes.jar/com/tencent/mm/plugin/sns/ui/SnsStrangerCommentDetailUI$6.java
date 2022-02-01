@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.h.c;
 
 final class SnsStrangerCommentDetailUI$6
@@ -12,7 +12,7 @@ final class SnsStrangerCommentDetailUI$6
 {
   SnsStrangerCommentDetailUI$6(SnsStrangerCommentDetailUI paramSnsStrangerCommentDetailUI) {}
   
-  public final void lf(int paramInt)
+  public final void lh(int paramInt)
   {
     AppMethodBeat.i(99144);
     switch (paramInt)
@@ -22,17 +22,17 @@ final class SnsStrangerCommentDetailUI$6
     {
       AppMethodBeat.o(99144);
       return;
-      if (SnsStrangerCommentDetailUI.c(this.Ajl).adk())
+      if (SnsStrangerCommentDetailUI.c(this.AAw).adv())
       {
-        w.n(SnsStrangerCommentDetailUI.c(this.Ajl));
-        SnsStrangerCommentDetailUI.c(this.Ajl).acK();
-        a.iRH.MR();
+        x.u(SnsStrangerCommentDetailUI.c(this.AAw));
+        SnsStrangerCommentDetailUI.c(this.AAw).acV();
+        a.iUA.MM();
         AppMethodBeat.o(99144);
         return;
       }
-      w.m(SnsStrangerCommentDetailUI.c(this.Ajl));
-      SnsStrangerCommentDetailUI.c(this.Ajl).acJ();
-      a.iRH.MR();
+      x.t(SnsStrangerCommentDetailUI.c(this.AAw));
+      SnsStrangerCommentDetailUI.c(this.AAw).acU();
+      a.iUA.MM();
     }
   }
 }

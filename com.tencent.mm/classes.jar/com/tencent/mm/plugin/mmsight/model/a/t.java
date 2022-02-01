@@ -4,22 +4,22 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 
 public final class t
 {
-  public d.c vQE;
-  SparseArray<WeakReference<d.b>> vQF;
-  private ap vQG;
+  public d.c wcI;
+  SparseArray<WeakReference<d.b>> wcJ;
+  private aq wcK;
   
   public t()
   {
     AppMethodBeat.i(89604);
-    this.vQE = d.c.vPs;
-    this.vQF = new SparseArray();
-    this.vQG = new ap(Looper.getMainLooper())
+    this.wcI = d.c.wbv;
+    this.wcJ = new SparseArray();
+    this.wcK = new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -28,11 +28,11 @@ public final class t
         {
           paramAnonymousMessage = (d.c)paramAnonymousMessage.obj;
           int i = 0;
-          while (i < t.this.vQF.size())
+          while (i < t.this.wcJ.size())
           {
-            if ((d.b)((WeakReference)t.this.vQF.valueAt(i)).get() != null)
+            if ((d.b)((WeakReference)t.this.wcJ.valueAt(i)).get() != null)
             {
-              int[] arrayOfInt = t.2.vQI;
+              int[] arrayOfInt = t.2.wcM;
               paramAnonymousMessage.ordinal();
             }
             i += 1;
@@ -48,7 +48,7 @@ public final class t
             AppMethodBeat.o(89602);
             return;
           }
-          t.this.vQF.put(paramAnonymousMessage.hashCode(), new WeakReference(paramAnonymousMessage));
+          t.this.wcJ.put(paramAnonymousMessage.hashCode(), new WeakReference(paramAnonymousMessage));
           AppMethodBeat.o(89602);
           return;
         }
@@ -60,7 +60,7 @@ public final class t
             AppMethodBeat.o(89602);
             return;
           }
-          t.this.vQF.remove(paramAnonymousMessage.hashCode());
+          t.this.wcJ.remove(paramAnonymousMessage.hashCode());
         }
         AppMethodBeat.o(89602);
       }
@@ -71,9 +71,9 @@ public final class t
   public final void a(d.c paramc)
   {
     AppMethodBeat.i(89605);
-    ad.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
-    this.vQE = paramc;
-    this.vQG.sendMessage(this.vQG.obtainMessage(257, paramc));
+    ae.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
+    this.wcI = paramc;
+    this.wcK.sendMessage(this.wcK.obtainMessage(257, paramc));
     AppMethodBeat.o(89605);
   }
 }

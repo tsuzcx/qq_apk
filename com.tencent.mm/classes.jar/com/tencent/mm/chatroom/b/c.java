@@ -7,43 +7,43 @@ import com.tencent.mm.chatroom.storage.GroupToolItem;
 import com.tencent.mm.chatroom.storage.e;
 import com.tencent.mm.chatroom.storage.f;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.x;
+import com.tencent.mm.plugin.messenger.foundation.a.u;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
-  implements t
+  implements u
 {
-  public final void Ye()
+  public final void Yo()
   {
     AppMethodBeat.i(185964);
-    aa.Yi();
+    aa.Ys();
     AppMethodBeat.o(185964);
   }
   
-  public final void uJ(String paramString)
+  public final void ve(String paramString)
   {
-    AppMethodBeat.i(213384);
-    if ((aa.Yh()) && (w.zk(paramString)))
+    AppMethodBeat.i(217096);
+    if ((aa.Yr()) && (x.zU(paramString)))
     {
-      e locale = aa.uN(paramString);
+      e locale = aa.vi(paramString);
       if (locale == null)
       {
-        ad.d("MicroMsg.roomtools.RoomTodoService", "handleGroupToolByLaunchAA(room:%s) groupTools is null", new Object[] { paramString });
-        AppMethodBeat.o(213384);
+        ae.d("MicroMsg.roomtools.RoomTodoService", "handleGroupToolByLaunchAA(room:%s) groupTools is null", new Object[] { paramString });
+        AppMethodBeat.o(217096);
         return;
       }
       if (locale.field_queryState == 0)
       {
-        ad.d("MicroMsg.roomtools.RoomTodoService", "handleGroupToolByLaunchAA(room:%s) groupTools is COL_STATE_NEED_QUERY", new Object[] { paramString });
-        AppMethodBeat.o(213384);
+        ae.d("MicroMsg.roomtools.RoomTodoService", "handleGroupToolByLaunchAA(room:%s) groupTools is COL_STATE_NEED_QUERY", new Object[] { paramString });
+        AppMethodBeat.o(217096);
         return;
       }
-      locale.a(new GroupToolItem("roomaa@app.origin", "", cf.aCK()));
-      ad.i("MicroMsg.roomtools.RoomTodoService", "handleGroupToolByLaunchAA room:%s result:%s", new Object[] { paramString, Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale, new String[0])) });
+      locale.a(new GroupToolItem("roomaa@app.origin", "", ch.aDa()));
+      ae.i("MicroMsg.roomtools.RoomTodoService", "handleGroupToolByLaunchAA room:%s result:%s", new Object[] { paramString, Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale, new String[0])) });
     }
-    AppMethodBeat.o(213384);
+    AppMethodBeat.o(217096);
   }
 }
 

@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.game.f.d;
 import com.tencent.mm.plugin.s.a;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -18,15 +18,15 @@ public final class i
     super(paramString);
   }
   
-  public final void cYQ()
+  public final void dbA()
   {
     AppMethodBeat.i(41408);
-    LinkedList localLinkedList = x(optJSONArray("items"));
+    LinkedList localLinkedList = y(optJSONArray("items"));
     Iterator localIterator = localLinkedList.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      localc.sA(localc.uaB);
+      localc.sV(localc.ulD);
     }
     d.aE(localLinkedList);
     AppMethodBeat.o(41408);

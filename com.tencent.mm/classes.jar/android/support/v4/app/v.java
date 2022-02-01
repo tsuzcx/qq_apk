@@ -30,12 +30,12 @@ public final class v
     this.Im = ((NotificationManager)this.mContext.getSystemService("notification"));
   }
   
-  public static v N(Context paramContext)
+  public static v O(Context paramContext)
   {
     return new v(paramContext);
   }
   
-  public static Set<String> O(Context paramContext)
+  public static Set<String> P(Context paramContext)
   {
     Object localObject1 = Settings.Secure.getString(paramContext.getContentResolver(), "enabled_notification_listeners");
     paramContext = Ij;

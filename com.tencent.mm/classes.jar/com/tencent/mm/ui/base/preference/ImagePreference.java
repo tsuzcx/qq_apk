@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 
 public final class ImagePreference
   extends Preference
 {
-  private e JsC;
-  private ImageView wSp;
+  private e JNr;
+  private ImageView xig;
   
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,18 +24,18 @@ public final class ImagePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142569);
-    this.wSp = null;
-    this.JsC = new e();
+    this.xig = null;
+    this.JNr = new e();
     setLayoutResource(2131494861);
     setWidgetLayoutResource(2131494884);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ImagePreference);
     paramInt = paramContext.getResourceId(0, 0);
     if (paramInt > 0)
     {
-      paramAttributeSet = this.JsC;
+      paramAttributeSet = this.JNr;
       paramAttributeSet.resId = paramInt;
       paramAttributeSet.bitmap = null;
-      this.JsC.n(this.wSp);
+      this.JNr.n(this.xig);
     }
     paramContext.recycle();
     AppMethodBeat.o(142569);
@@ -45,8 +45,8 @@ public final class ImagePreference
   {
     AppMethodBeat.i(142571);
     super.onBindView(paramView);
-    this.wSp = ((ImageView)paramView.findViewById(2131300943));
-    this.JsC.n(this.wSp);
+    this.xig = ((ImageView)paramView.findViewById(2131300943));
+    this.JNr.n(this.xig);
     AppMethodBeat.o(142571);
   }
   

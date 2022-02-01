@@ -14,10 +14,10 @@ public class ExtractorUtils
   
   public static void applyMirror(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(218516);
+    AppMethodBeat.i(215156);
     if (paramMatrix == null)
     {
-      AppMethodBeat.o(218516);
+      AppMethodBeat.o(215156);
       return;
     }
     Matrix localMatrix = new Matrix();
@@ -27,7 +27,7 @@ public class ExtractorUtils
     for (;;)
     {
       paramMatrix.postConcat(localMatrix);
-      AppMethodBeat.o(218516);
+      AppMethodBeat.o(215156);
       return;
       localMatrix.postScale(-1.0F, 1.0F);
       localMatrix.postTranslate(paramInt2, 0.0F);
@@ -42,20 +42,20 @@ public class ExtractorUtils
   
   public static int getFrameRate(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218517);
+    AppMethodBeat.i(215157);
     if (paramMediaFormat != null) {}
     try
     {
       if (paramMediaFormat.containsKey("frame-rate"))
       {
         int i = paramMediaFormat.getInteger("frame-rate");
-        AppMethodBeat.o(218517);
+        AppMethodBeat.o(215157);
         return i;
       }
     }
     catch (Exception paramMediaFormat)
     {
-      AppMethodBeat.o(218517);
+      AppMethodBeat.o(215157);
       return 0;
     }
     catch (Error paramMediaFormat)
@@ -67,20 +67,20 @@ public class ExtractorUtils
   
   public static int getPreferRotation(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(218515);
+    AppMethodBeat.i(215155);
     try
     {
       paramAssetExtractor = DecoderUtils.getFirstFormat(paramAssetExtractor, "video/");
       if ((paramAssetExtractor != null) && (paramAssetExtractor.containsKey("rotation-degrees")))
       {
         int i = paramAssetExtractor.getInteger("rotation-degrees") / 90;
-        AppMethodBeat.o(218515);
+        AppMethodBeat.o(215155);
         return i;
       }
     }
     catch (Exception paramAssetExtractor)
     {
-      AppMethodBeat.o(218515);
+      AppMethodBeat.o(215155);
       return 0;
     }
     catch (Error paramAssetExtractor)
@@ -92,7 +92,7 @@ public class ExtractorUtils
   
   public static CGSize getVideoSize(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(218514);
+    AppMethodBeat.i(215154);
     for (;;)
     {
       try
@@ -115,7 +115,7 @@ public class ExtractorUtils
       {
         CGSize localCGSize;
         paramAssetExtractor = new CGSize();
-        AppMethodBeat.o(218514);
+        AppMethodBeat.o(215154);
         return paramAssetExtractor;
         localCGSize.height = paramAssetExtractor.getInteger("height");
         continue;
@@ -124,7 +124,7 @@ public class ExtractorUtils
       {
         continue;
       }
-      AppMethodBeat.o(218514);
+      AppMethodBeat.o(215154);
       return localCGSize;
       localCGSize.width = paramAssetExtractor.getInteger("width");
     }
@@ -132,14 +132,14 @@ public class ExtractorUtils
   
   public static boolean isSameExtractor(DecoderAssetTrack paramDecoderAssetTrack1, DecoderAssetTrack paramDecoderAssetTrack2)
   {
-    AppMethodBeat.i(218518);
+    AppMethodBeat.i(215158);
     if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null)) {}
     for (int i = 1; (i != 0) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath)); i = 0)
     {
-      AppMethodBeat.o(218518);
+      AppMethodBeat.o(215158);
       return true;
     }
-    AppMethodBeat.o(218518);
+    AppMethodBeat.o(215158);
     return false;
   }
 }

@@ -4,14 +4,14 @@ import android.nfc.Tag;
 
 public abstract class b
 {
-  protected Tag wtj;
-  public byte[] wtk = null;
+  protected Tag wIT;
+  public byte[] wIU = null;
   
   public boolean a(Tag paramTag)
   {
-    this.wtj = paramTag;
+    this.wIT = paramTag;
     if (paramTag != null) {
-      this.wtk = paramTag.getId();
+      this.wIU = paramTag.getId();
     }
     return true;
   }

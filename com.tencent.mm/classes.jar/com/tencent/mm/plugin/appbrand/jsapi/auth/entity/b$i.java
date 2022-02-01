@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "<anonymous parameter 2>", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "<anonymous parameter 2>", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
 final class b$i
   implements View.OnCreateContextMenuListener
 {
@@ -19,7 +19,7 @@ final class b$i
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
     AppMethodBeat.i(180464);
-    paramView = this.kAn.getContext();
+    paramView = this.kDC.getContext();
     p.g(paramView, "view.context");
     paramContextMenu.add(0, 1, 0, (CharSequence)paramView.getResources().getString(2131755947));
     AppMethodBeat.o(180464);

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class LocalUsageInfo
   implements Parcelable
@@ -12,14 +12,14 @@ public class LocalUsageInfo
   public static final Parcelable.Creator<LocalUsageInfo> CREATOR;
   public final int aDD;
   public final String appId;
-  public final String cmD;
-  public final long cnh;
-  public final int hQh;
-  public final String jPZ;
-  public final boolean jQa;
-  public final long jQb;
-  public final boolean jQc;
-  public final String jQd;
+  public final String cmF;
+  public final long cnj;
+  public final int hSZ;
+  public final String jTr;
+  public final boolean jTs;
+  public final long jTt;
+  public final boolean jTu;
+  public final String jTv;
   public final String nickname;
   public final String username;
   
@@ -35,17 +35,17 @@ public class LocalUsageInfo
     AppMethodBeat.i(153200);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.hQh = paramParcel.readInt();
+    this.hSZ = paramParcel.readInt();
     this.aDD = paramParcel.readInt();
     this.nickname = paramParcel.readString();
-    this.cmD = paramParcel.readString();
-    this.jPZ = paramParcel.readString();
+    this.cmF = paramParcel.readString();
+    this.jTr = paramParcel.readString();
     if (paramParcel.readByte() > 0)
     {
       bool1 = true;
-      this.jQa = bool1;
-      this.cnh = paramParcel.readLong();
-      this.jQb = paramParcel.readLong();
+      this.jTs = bool1;
+      this.cnj = paramParcel.readLong();
+      this.jTt = paramParcel.readLong();
       if (paramParcel.readByte() <= 0) {
         break label130;
       }
@@ -53,8 +53,8 @@ public class LocalUsageInfo
     label130:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jQc = bool1;
-      this.jQd = paramParcel.readString();
+      this.jTu = bool1;
+      this.jTv = paramParcel.readString();
       AppMethodBeat.o(153200);
       return;
       bool1 = false;
@@ -71,16 +71,16 @@ public class LocalUsageInfo
   {
     this.username = paramString1;
     this.appId = paramString2;
-    this.hQh = paramInt1;
+    this.hSZ = paramInt1;
     this.aDD = paramInt2;
     this.nickname = paramString3;
-    this.cmD = paramString4;
-    this.jPZ = paramString5;
-    this.jQa = paramBoolean1;
-    this.cnh = paramLong1;
-    this.jQb = paramLong2;
-    this.jQc = paramBoolean2;
-    this.jQd = paramString6;
+    this.cmF = paramString4;
+    this.jTr = paramString5;
+    this.jTs = paramBoolean1;
+    this.cnj = paramLong1;
+    this.jTt = paramLong2;
+    this.jTu = paramBoolean2;
+    this.jTv = paramString6;
   }
   
   public int describeContents()
@@ -96,12 +96,12 @@ public class LocalUsageInfo
       AppMethodBeat.o(153198);
       return false;
     }
-    if (bt.isNullOrNil(paramLocalUsageInfo.username))
+    if (bu.isNullOrNil(paramLocalUsageInfo.username))
     {
       AppMethodBeat.o(153198);
       return false;
     }
-    if ((paramLocalUsageInfo.username.equals(this.username)) && (paramLocalUsageInfo.hQh == this.hQh))
+    if ((paramLocalUsageInfo.username.equals(this.username)) && (paramLocalUsageInfo.hSZ == this.hSZ))
     {
       AppMethodBeat.o(153198);
       return true;
@@ -116,18 +116,18 @@ public class LocalUsageInfo
     AppMethodBeat.i(153199);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hQh);
+    paramParcel.writeInt(this.hSZ);
     paramParcel.writeInt(this.aDD);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeString(this.cmD);
-    paramParcel.writeString(this.jPZ);
-    if (this.jQa)
+    paramParcel.writeString(this.cmF);
+    paramParcel.writeString(this.jTr);
+    if (this.jTs)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.cnh);
-      paramParcel.writeLong(this.jQb);
-      if (!this.jQc) {
+      paramParcel.writeLong(this.cnj);
+      paramParcel.writeLong(this.jTt);
+      if (!this.jTu) {
         break label128;
       }
     }
@@ -135,7 +135,7 @@ public class LocalUsageInfo
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jQd);
+      paramParcel.writeString(this.jTv);
       AppMethodBeat.o(153199);
       return;
       paramInt = 0;
@@ -145,7 +145,7 @@ public class LocalUsageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo
  * JD-Core Version:    0.7.0.1
  */

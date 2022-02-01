@@ -463,15 +463,15 @@ public class c
   
   private void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(187209);
+    AppMethodBeat.i(221338);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       this.c.a(paramRunnable);
-      AppMethodBeat.o(187209);
+      AppMethodBeat.o(221338);
       return;
     }
     paramRunnable.run();
-    AppMethodBeat.o(187209);
+    AppMethodBeat.o(221338);
   }
   
   private void b(int paramInt1, int paramInt2, Object paramObject)
@@ -706,7 +706,7 @@ public class c
         {
           public void a(int paramAnonymousInt)
           {
-            AppMethodBeat.i(187219);
+            AppMethodBeat.i(221348);
             com.tencent.liteav.basic.d.h localh = c.m(c.this);
             n localn = (n)this.a.get();
             if ((localh != null) && (localn != null))
@@ -718,7 +718,7 @@ public class c
               localn.onRenderVideoFrame(c.this.getID(), c.n(c.this), localTXSVideoFrame);
               c.a(c.this, localTXSVideoFrame.data);
             }
-            AppMethodBeat.o(187219);
+            AppMethodBeat.o(221348);
           }
         });
         this.L = ((com.tencent.liteav.basic.d.h)localObject1);
@@ -991,7 +991,7 @@ public class c
   
   public int a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(187202);
+    AppMethodBeat.i(221331);
     int i1;
     if ((this.l.width != paramInt1) || (this.l.height != paramInt2))
     {
@@ -1026,7 +1026,7 @@ public class c
     for (;;)
     {
       this.k = paramBoolean;
-      AppMethodBeat.o(187202);
+      AppMethodBeat.o(221331);
       return 0;
       i1 = 0;
       break;
@@ -1142,13 +1142,13 @@ public class c
         {
           public void run()
           {
-            AppMethodBeat.i(187218);
+            AppMethodBeat.i(221347);
             c.b(c.this, paramInt1);
             c.c(c.this, paramInt2);
             if ((c.i(c.this) != null) && (c.j(c.this) != null)) {
               c.a(c.this, c.i(c.this), true);
             }
-            AppMethodBeat.o(187218);
+            AppMethodBeat.o(221347);
           }
         });
         AppMethodBeat.o(16126);
@@ -1421,7 +1421,7 @@ public class c
   
   public void a(final com.tencent.liteav.basic.d.o paramo)
   {
-    AppMethodBeat.i(187203);
+    AppMethodBeat.i(221332);
     if (this.v != null)
     {
       TXCGLSurfaceView localTXCGLSurfaceView = this.v.getGLSurfaceView();
@@ -1438,13 +1438,13 @@ public class c
             AppMethodBeat.o(182273);
           }
         });
-        AppMethodBeat.o(187203);
+        AppMethodBeat.o(221332);
         return;
       }
       if (paramo != null) {
         paramo.onTakePhotoComplete(null);
       }
-      AppMethodBeat.o(187203);
+      AppMethodBeat.o(221332);
       return;
     }
     if (this.A != null)
@@ -1453,20 +1453,20 @@ public class c
       {
         public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
         {
-          AppMethodBeat.i(187538);
+          AppMethodBeat.i(221667);
           if (paramo != null) {
             paramo.onTakePhotoComplete(paramAnonymousBitmap);
           }
-          AppMethodBeat.o(187538);
+          AppMethodBeat.o(221667);
         }
       });
-      AppMethodBeat.o(187203);
+      AppMethodBeat.o(221332);
       return;
     }
     if (paramo != null) {
       paramo.onTakePhotoComplete(null);
     }
-    AppMethodBeat.o(187203);
+    AppMethodBeat.o(221332);
   }
   
   public void a(TXSNALPacket paramTXSNALPacket, int paramInt)
@@ -1591,14 +1591,14 @@ public class c
   
   public void a(a.a parama)
   {
-    AppMethodBeat.i(187204);
+    AppMethodBeat.i(221333);
     if (Build.VERSION.SDK_INT < 21)
     {
       parama = new Bundle();
       parama.putString("EVT_MSG", "录屏失败,不支持的Android系统版本,需要5.0以上的系统");
       onNotifyEvent(-1309, parama);
       TXLog.e("TXCCaptureAndEnc", "Screen capture need running on Android Lollipop or higher version, current:" + Build.VERSION.SDK_INT);
-      AppMethodBeat.o(187204);
+      AppMethodBeat.o(221333);
       return;
     }
     this.p = 1;
@@ -1614,7 +1614,7 @@ public class c
     this.d.a();
     this.d.a(getID());
     TXCDRApi.txReportDAU(this.n, com.tencent.liteav.basic.datareport.a.aG);
-    AppMethodBeat.o(187204);
+    AppMethodBeat.o(221333);
   }
   
   public void a(final com.tencent.liteav.videoencoder.b paramb)
@@ -1683,10 +1683,10 @@ public class c
       {
         public void run()
         {
-          AppMethodBeat.i(187017);
+          AppMethodBeat.i(221146);
           arrayOfTXCGLSurfaceView[0] = new TXCGLSurfaceView(paramTXCloudVideoView.getContext());
           paramTXCloudVideoView.addVideoView(arrayOfTXCGLSurfaceView[0]);
-          AppMethodBeat.o(187017);
+          AppMethodBeat.o(221146);
         }
       });
       localObject = arrayOfTXCGLSurfaceView[0];
@@ -1932,11 +1932,11 @@ public class c
     {
       public void run()
       {
-        AppMethodBeat.i(187059);
+        AppMethodBeat.i(221188);
         if (c.a(c.this) != null) {
           c.a(c.this).e(paramInt);
         }
-        AppMethodBeat.o(187059);
+        AppMethodBeat.o(221188);
       }
     });
     AppMethodBeat.o(16119);
@@ -2141,14 +2141,14 @@ public class c
   
   public boolean j(int paramInt)
   {
-    AppMethodBeat.i(187207);
+    AppMethodBeat.i(221336);
     if (this.d == null)
     {
-      AppMethodBeat.o(187207);
+      AppMethodBeat.o(221336);
       return false;
     }
     boolean bool = this.d.a(paramInt);
-    AppMethodBeat.o(187207);
+    AppMethodBeat.o(221336);
     return bool;
   }
   
@@ -2164,12 +2164,12 @@ public class c
     {
       public void run()
       {
-        AppMethodBeat.i(187398);
+        AppMethodBeat.i(221527);
         if (c.e(c.this) != null) {
           c.e(c.this).b(true);
         }
         c.a(c.this, c.c(c.this).width, c.c(c.this).height);
-        AppMethodBeat.o(187398);
+        AppMethodBeat.o(221527);
       }
     });
     AppMethodBeat.o(16120);
@@ -2200,14 +2200,14 @@ public class c
   
   public boolean m()
   {
-    AppMethodBeat.i(187205);
+    AppMethodBeat.i(221334);
     if (this.d != null)
     {
       boolean bool = this.d.h();
-      AppMethodBeat.o(187205);
+      AppMethodBeat.o(221334);
       return bool;
     }
-    AppMethodBeat.o(187205);
+    AppMethodBeat.o(221334);
     return false;
   }
   
@@ -2306,20 +2306,20 @@ public class c
   
   public int q()
   {
-    AppMethodBeat.i(187206);
+    AppMethodBeat.i(221335);
     if (this.d == null)
     {
-      AppMethodBeat.o(187206);
+      AppMethodBeat.o(221335);
       return 0;
     }
     int i1 = this.d.e();
-    AppMethodBeat.o(187206);
+    AppMethodBeat.o(221335);
     return i1;
   }
   
   public void r()
   {
-    AppMethodBeat.i(187208);
+    AppMethodBeat.i(221337);
     try
     {
       if (this.e != null) {
@@ -2342,12 +2342,12 @@ public class c
       }
       z();
       y();
-      AppMethodBeat.o(187208);
+      AppMethodBeat.o(221337);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(187208);
+      AppMethodBeat.o(221337);
     }
   }
   

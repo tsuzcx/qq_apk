@@ -1,39 +1,26 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import com.tencent.luggage.game.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.u.d;
-import com.tencent.mm.plugin.appbrand.jsapi.u.e;
-import com.tencent.mm.plugin.appbrand.jsapi.u.f;
-import com.tencent.mm.plugin.appbrand.jsapi.u.g;
-import java.util.Collection;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 
 public final class m
   extends l
 {
-  public static final m mil;
-  
-  static
+  public m(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(47997);
-    mil = new m();
-    AppMethodBeat.o(47997);
+    super(paramAppBrandRuntime);
   }
   
-  private m()
+  public final void UB(String paramString)
   {
-    AppMethodBeat.i(47996);
-    this.mik.add(e.class);
-    this.mik.add(f.class);
-    this.mik.add(g.class);
-    this.mik.add(d.class);
-    this.mik.add(b.class);
-    AppMethodBeat.o(47996);
+    AppMethodBeat.i(47995);
+    b.n(this.jDb, paramString);
+    AppMethodBeat.o(47995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.m
  * JD-Core Version:    0.7.0.1
  */

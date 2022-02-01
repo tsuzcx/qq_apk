@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 public abstract interface h$d
 {
-  public abstract void aMx();
+  public abstract void aMV();
 }
 
 

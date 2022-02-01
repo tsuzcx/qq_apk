@@ -9,120 +9,120 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final a lCT;
+  private static final a lHs;
   
   static
   {
-    AppMethodBeat.i(187696);
-    lCT = new a();
-    AppMethodBeat.o(187696);
+    AppMethodBeat.i(201263);
+    lHs = new a();
+    AppMethodBeat.o(201263);
   }
   
   static void a(String paramString, a parama)
   {
-    AppMethodBeat.i(187691);
-    Object localObject = lCT;
-    String str = a.b(parama.bqy(), paramString, parama);
-    ((a)localObject).lCU.put(str, Long.valueOf(System.currentTimeMillis()));
-    localObject = b.a.bqs();
-    ((b)localObject).a(parama.bqy(), new b.3((b)localObject, paramString, parama));
-    AppMethodBeat.o(187691);
+    AppMethodBeat.i(201258);
+    Object localObject = lHs;
+    String str = a.b(parama.bri(), paramString, parama);
+    ((a)localObject).lHt.put(str, Long.valueOf(System.currentTimeMillis()));
+    localObject = b.a.brc();
+    ((b)localObject).a(parama.bri(), new b.3((b)localObject, paramString, parama));
+    AppMethodBeat.o(201258);
   }
   
   static void a(String paramString, a parama, long paramLong)
   {
-    AppMethodBeat.i(187694);
-    b.a.bqs().a(parama.bqy(), paramString, parama, paramLong);
-    AppMethodBeat.o(187694);
+    AppMethodBeat.i(201261);
+    b.a.brc().a(parama.bri(), paramString, parama, paramLong);
+    AppMethodBeat.o(201261);
   }
   
   public static void a(String paramString, com.tencent.mm.plugin.appbrand.keylogger.base.b paramb)
   {
-    AppMethodBeat.i(187695);
-    b localb = b.a.bqs();
+    AppMethodBeat.i(201262);
+    b localb = b.a.brc();
     if (paramb != null)
     {
-      List localList = (List)localb.kXr.get(paramString);
+      List localList = (List)localb.lba.get(paramString);
       Object localObject = localList;
       if (localList == null)
       {
         localObject = new LinkedList();
-        localb.kXr.put(paramString, localObject);
+        localb.lba.put(paramString, localObject);
       }
       ((List)localObject).add(paramb);
     }
-    AppMethodBeat.o(187695);
+    AppMethodBeat.o(201262);
   }
   
   static void d(String paramString, a parama)
   {
-    AppMethodBeat.i(187692);
-    b localb = b.a.bqs();
-    localb.a(parama.bqy(), new b.5(localb, paramString, parama, lCT.a(parama.bqy(), paramString, parama)));
-    AppMethodBeat.o(187692);
+    AppMethodBeat.i(201259);
+    b localb = b.a.brc();
+    localb.a(parama.bri(), new b.5(localb, paramString, parama, lHs.a(parama.bri(), paramString, parama)));
+    AppMethodBeat.o(201259);
   }
   
-  static void dH(String paramString1, String paramString2)
+  static void dJ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187689);
-    b localb = b.a.bqs();
+    AppMethodBeat.i(201256);
+    b localb = b.a.brc();
     localb.a(paramString1, new b.1(localb, paramString2));
-    AppMethodBeat.o(187689);
+    AppMethodBeat.o(201256);
   }
   
-  static void dI(String paramString1, String paramString2)
+  static void dK(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187690);
-    b localb = b.a.bqs();
+    AppMethodBeat.i(201257);
+    b localb = b.a.brc();
     localb.a(paramString1, new b.2(localb, paramString2));
-    AppMethodBeat.o(187690);
+    AppMethodBeat.o(201257);
   }
   
   static void e(String paramString, a parama)
   {
-    AppMethodBeat.i(187693);
-    b.a.bqs().a(parama.bqy(), paramString, parama, lCT.a(parama.bqy(), paramString, parama));
-    AppMethodBeat.o(187693);
+    AppMethodBeat.i(201260);
+    b.a.brc().a(parama.bri(), paramString, parama, lHs.a(parama.bri(), paramString, parama));
+    AppMethodBeat.o(201260);
   }
   
   static final class a
   {
-    final Map<String, Long> lCU;
+    final Map<String, Long> lHt;
     
     a()
     {
-      AppMethodBeat.i(187686);
-      this.lCU = new ConcurrentHashMap();
-      AppMethodBeat.o(187686);
+      AppMethodBeat.i(201253);
+      this.lHt = new ConcurrentHashMap();
+      AppMethodBeat.o(201253);
     }
     
     static String b(String paramString1, String paramString2, a parama)
     {
-      AppMethodBeat.i(187688);
+      AppMethodBeat.i(201255);
       paramString1 = String.format("%s#%s#%s", new Object[] { paramString1, paramString2, parama.name() });
-      AppMethodBeat.o(187688);
+      AppMethodBeat.o(201255);
       return paramString1;
     }
     
     final long a(String paramString1, String paramString2, a parama)
     {
-      AppMethodBeat.i(187687);
+      AppMethodBeat.i(201254);
       paramString1 = b(paramString1, paramString2, parama);
-      if (this.lCU.containsKey(paramString1))
+      if (this.lHt.containsKey(paramString1))
       {
-        paramString2 = (Long)this.lCU.get(paramString1);
+        paramString2 = (Long)this.lHt.get(paramString1);
         if (paramString2 == null)
         {
-          AppMethodBeat.o(187687);
+          AppMethodBeat.o(201254);
           return -1L;
         }
         long l1 = System.currentTimeMillis();
         long l2 = paramString2.longValue();
-        this.lCU.remove(paramString1);
-        AppMethodBeat.o(187687);
+        this.lHt.remove(paramString1);
+        AppMethodBeat.o(201254);
         return l1 - l2;
       }
-      AppMethodBeat.o(187687);
+      AppMethodBeat.o(201254);
       return -1L;
     }
   }

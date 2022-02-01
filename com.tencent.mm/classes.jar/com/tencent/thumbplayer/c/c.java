@@ -18,47 +18,47 @@ import java.util.Map;
 public final class c
   implements a, ITPImageGeneratorCallback
 {
-  private Map<Long, d> EDW;
-  private long Maa;
-  private TPImageGenerator Mab;
+  private Map<Long, d> EWs;
+  private long MwV;
+  private TPImageGenerator MwW;
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(191873);
-    this.Maa = 0L;
-    this.Mab = new TPImageGenerator(paramInt, this);
-    this.EDW = new HashMap();
-    this.Mab.init();
-    AppMethodBeat.o(191873);
+    AppMethodBeat.i(194551);
+    this.MwV = 0L;
+    this.MwW = new TPImageGenerator(paramInt, this);
+    this.EWs = new HashMap();
+    this.MwW.init();
+    AppMethodBeat.o(194551);
   }
   
   public c(String paramString)
   {
-    AppMethodBeat.i(191872);
-    this.Maa = 0L;
-    this.Mab = new TPImageGenerator(paramString, this);
-    this.EDW = new HashMap();
-    this.Mab.init();
-    AppMethodBeat.o(191872);
+    AppMethodBeat.i(194550);
+    this.MwV = 0L;
+    this.MwW = new TPImageGenerator(paramString, this);
+    this.EWs = new HashMap();
+    this.MwW.init();
+    AppMethodBeat.o(194550);
   }
   
   public final void a(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, d paramd)
   {
-    AppMethodBeat.i(191874);
-    this.Maa += 1L;
-    this.EDW.put(Long.valueOf(this.Maa), paramd);
-    this.Mab.generateImageAsyncAtTime(paramLong, this.Maa, paramTPImageGeneratorParams);
-    AppMethodBeat.o(191874);
+    AppMethodBeat.i(194552);
+    this.MwV += 1L;
+    this.EWs.put(Long.valueOf(this.MwV), paramd);
+    this.MwW.generateImageAsyncAtTime(paramLong, this.MwV, paramTPImageGeneratorParams);
+    AppMethodBeat.o(194552);
   }
   
   public final void onImageGenerationCompleted(int paramInt, long paramLong1, long paramLong2, long paramLong3, TPVideoFrame paramTPVideoFrame)
   {
-    AppMethodBeat.i(191876);
-    if (((d)this.EDW.get(Long.valueOf(paramLong3)) == null) || (paramInt != 0) || (paramTPVideoFrame == null) || (paramTPVideoFrame.data.length <= 0) || (paramTPVideoFrame.height == 0) || (paramTPVideoFrame.width == 0)) {}
+    AppMethodBeat.i(194554);
+    if (((d)this.EWs.get(Long.valueOf(paramLong3)) == null) || (paramInt != 0) || (paramTPVideoFrame == null) || (paramTPVideoFrame.data.length <= 0) || (paramTPVideoFrame.height == 0) || (paramTPVideoFrame.width == 0)) {}
     for (;;)
     {
-      this.EDW.remove(Long.valueOf(paramLong3));
-      AppMethodBeat.o(191876);
+      this.EWs.remove(Long.valueOf(paramLong3));
+      AppMethodBeat.o(194554);
       return;
       Object localObject = paramTPVideoFrame.data[0];
       paramInt = paramTPVideoFrame.width;
@@ -78,12 +78,12 @@ public final class c
   
   public final void release()
   {
-    AppMethodBeat.i(191875);
-    this.Mab.cancelAllImageGenerations();
-    this.EDW.clear();
-    this.Mab.unInit();
-    this.Mab = null;
-    AppMethodBeat.o(191875);
+    AppMethodBeat.i(194553);
+    this.MwW.cancelAllImageGenerations();
+    this.EWs.clear();
+    this.MwW.unInit();
+    this.MwW = null;
+    AppMethodBeat.o(194553);
   }
 }
 

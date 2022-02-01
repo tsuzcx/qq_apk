@@ -6,68 +6,66 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.b.f;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.arj;
-import com.tencent.mm.protocal.protobuf.ark;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bu.a;
-import com.tencent.mm.storage.bu.b;
-import com.tencent.mm.storage.bu.d;
-import com.tencent.mm.storage.cf;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.protocal.protobuf.arz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bv.a;
+import com.tencent.mm.storage.bv.b;
+import com.tencent.mm.storage.bv.d;
+import com.tencent.mm.storage.cg;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
-import com.tencent.mm.ui.r;
 import java.util.Map;
 
 public class SelectedMemberChattingRecordUI
   extends MMActivity
 {
-  private static final f<Integer, com.tencent.mm.protocal.b.a.c> fTI;
-  private String fPi;
-  private MMLoadMoreListView fTE;
-  private a fTF;
-  private String fTG;
-  private int fTH = 0;
-  private View fTk;
+  private static final f<Integer, com.tencent.mm.protocal.b.a.c> fVO;
+  private String fRo;
+  private MMLoadMoreListView fVK;
+  private a fVL;
+  private String fVM;
+  private int fVN = 0;
+  private View fVq;
+  private View fVr;
   private String mTitle;
   
   static
   {
     AppMethodBeat.i(12991);
-    fTI = new com.tencent.mm.memory.a.c(32);
+    fVO = new com.tencent.mm.memory.a.c(32);
     AppMethodBeat.o(12991);
   }
   
@@ -75,7 +73,7 @@ public class SelectedMemberChattingRecordUI
   {
     AppMethodBeat.i(12989);
     String str = "";
-    k.b localb = k.b.yr(paramString1);
+    k.b localb = k.b.zb(paramString1);
     Object localObject;
     switch (paramInt1)
     {
@@ -101,7 +99,7 @@ public class SelectedMemberChattingRecordUI
           return localObject;
           localObject = paramString1.substring(paramString1.indexOf(":\n") + 1);
           continue;
-          localObject = paramContext.getString(2131762255, new Object[] { Integer.valueOf((int)s.sv(new p(paramString1).time)) });
+          localObject = paramContext.getString(2131762255, new Object[] { Integer.valueOf((int)s.sI(new p(paramString1).time)) });
           continue;
           localObject = paramContext.getString(2131755853);
           continue;
@@ -111,33 +109,33 @@ public class SelectedMemberChattingRecordUI
             localObject = paramContext.getString(paramInt1);
             break;
           }
-          localObject = paramContext.getString(2131762242, new Object[] { ((l)g.ab(l.class)).dlK().aql(paramString1).label });
+          localObject = paramContext.getString(2131762242, new Object[] { ((l)g.ab(l.class)).doJ().arq(paramString1).label });
         }
         localObject = str;
-      } while (bt.nullAsNil(paramString1).length() <= 0);
-      localObject = bj.Bk(paramString1);
+      } while (bu.nullAsNil(paramString1).length() <= 0);
+      localObject = bl.BM(paramString1);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break;
       }
     }
     for (;;)
     {
-      localObject = ((l)g.ab(l.class)).dlK().aqk(paramString1);
-      paramString2 = ((l)g.ab(l.class)).azp().Bf(paramString2).adv();
+      localObject = ((l)g.ab(l.class)).doJ().arp(paramString1);
+      paramString2 = ((l)g.ab(l.class)).azF().BH(paramString2).adG();
       paramString1 = paramString2;
-      if (w.vF(paramString2)) {
-        paramString1 = q.ae(q.yT(paramString2));
+      if (x.wb(paramString2)) {
+        paramString1 = com.tencent.mm.model.r.ae(com.tencent.mm.model.r.zD(paramString2));
       }
       if (paramInt2 == 1)
       {
-        localObject = paramContext.getString(2131759492, new Object[] { paramString1, ((bu.a)localObject).getDisplayName() });
+        localObject = paramContext.getString(2131759492, new Object[] { paramString1, ((bv.a)localObject).getDisplayName() });
         break;
       }
-      localObject = paramContext.getString(2131759493, new Object[] { paramString1, ((bu.a)localObject).getDisplayName() });
+      localObject = paramContext.getString(2131759493, new Object[] { paramString1, ((bv.a)localObject).getDisplayName() });
       break;
       if (localb == null)
       {
-        ad.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+        ae.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
         AppMethodBeat.o(12989);
         return "";
       }
@@ -172,10 +170,10 @@ public class SelectedMemberChattingRecordUI
         localObject = paramContext.getString(2131762245, new Object[] { localb.title });
         break;
       case 24: 
-        paramString2 = localb.hAs;
-        if (bt.isNullOrNil(paramString2))
+        paramString2 = localb.hDg;
+        if (bu.isNullOrNil(paramString2))
         {
-          ad.e("MicroMsg.SelectedMemberChattingRecordUI", "xml is null");
+          ae.e("MicroMsg.SelectedMemberChattingRecordUI", "xml is null");
           paramString1 = null;
           if (paramString1 != null) {
             break label1142;
@@ -183,30 +181,30 @@ public class SelectedMemberChattingRecordUI
         }
         for (paramString1 = "";; paramString1 = paramString1.desc)
         {
-          localObject = paramContext.getString(2131762244, new Object[] { bt.bI(paramString1, "") });
+          localObject = paramContext.getString(2131762244, new Object[] { bu.bI(paramString1, "") });
           break;
           paramInt1 = paramString2.hashCode();
-          paramString1 = (com.tencent.mm.protocal.b.a.c)fTI.get(Integer.valueOf(paramInt1));
+          paramString1 = (com.tencent.mm.protocal.b.a.c)fVO.get(Integer.valueOf(paramInt1));
           if (paramString1 != null)
           {
-            ad.d("MicroMsg.SelectedMemberChattingRecordUI", "get record msg data from cache");
+            ae.d("MicroMsg.SelectedMemberChattingRecordUI", "get record msg data from cache");
             break label922;
           }
           if (paramString2.trim().startsWith("<recordinfo>")) {}
-          for (paramString1 = bw.M(paramString2, "recordinfo");; paramString1 = bw.M("<recordinfo>" + paramString2 + "</recordinfo>", "recordinfo"))
+          for (paramString1 = bx.M(paramString2, "recordinfo");; paramString1 = bx.M("<recordinfo>" + paramString2 + "</recordinfo>", "recordinfo"))
           {
             if (paramString1 != null) {
               break label1067;
             }
-            ad.e("MicroMsg.SelectedMemberChattingRecordUI", "values is null: %s", new Object[] { paramString2 });
+            ae.e("MicroMsg.SelectedMemberChattingRecordUI", "values is null: %s", new Object[] { paramString2 });
             paramString1 = null;
             break;
           }
           paramString2 = new com.tencent.mm.protocal.b.a.c();
           paramString2.title = ((String)paramString1.get(".recordinfo.title"));
           paramString2.desc = ((String)paramString1.get(".recordinfo.desc"));
-          paramString2.xqw = ((String)paramString1.get(".recordinfo.favusername"));
-          fTI.put(Integer.valueOf(paramInt1), paramString2);
+          paramString2.xGt = ((String)paramString1.get(".recordinfo.favusername"));
+          fVO.put(Integer.valueOf(paramInt1), paramString2);
           paramString1 = paramString2;
           break label922;
         }
@@ -231,7 +229,7 @@ public class SelectedMemberChattingRecordUI
         label922:
         label1067:
         label1142:
-        if (bt.isNullOrNil(localb.title))
+        if (bu.isNullOrNil(localb.title))
         {
           localObject = paramContext.getString(2131766379, new Object[] { "" });
           break;
@@ -246,11 +244,11 @@ public class SelectedMemberChattingRecordUI
         }
         if (paramInt2 == 1) {}
         for (paramInt1 = 1;; paramInt1 = 0) {
-          switch (localb.hAU)
+          switch (localb.hDI)
           {
           case 2: 
           default: 
-            localObject = bt.nullAsNil(localb.title);
+            localObject = bu.nullAsNil(localb.title);
             break label272;
           }
         }
@@ -277,29 +275,29 @@ public class SelectedMemberChattingRecordUI
         break;
         if (localb == null)
         {
-          ad.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+          ae.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
           AppMethodBeat.o(12989);
           return "";
         }
         if (paramInt2 == 1)
         {
-          localObject = paramContext.getString(2131762234, new Object[] { localb.hBu, localb.hBr });
+          localObject = paramContext.getString(2131762234, new Object[] { localb.hEi, localb.hEf });
           break;
         }
-        localObject = paramContext.getString(2131762234, new Object[] { localb.hBu, localb.hBq });
+        localObject = paramContext.getString(2131762234, new Object[] { localb.hEi, localb.hEe });
         break;
         if (localb == null)
         {
-          ad.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+          ae.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
           AppMethodBeat.o(12989);
           return "";
         }
         if (paramInt2 == 1)
         {
-          localObject = paramContext.getString(2131762234, new Object[] { localb.hBu, localb.hBI });
+          localObject = paramContext.getString(2131762234, new Object[] { localb.hEi, localb.hEw });
           break;
         }
-        localObject = paramContext.getString(2131762234, new Object[] { localb.hBu, localb.hBH });
+        localObject = paramContext.getString(2131762234, new Object[] { localb.hEi, localb.hEv });
         break;
         localObject = paramContext.getString(2131762235, new Object[] { localb.title });
         break;
@@ -317,13 +315,13 @@ public class SelectedMemberChattingRecordUI
         if (paramString1.length() <= 0) {
           break;
         }
-        paramString1 = bu.d.aUe(paramString1);
+        paramString1 = bv.d.aVF(paramString1);
         localObject = str;
-        if (paramString1.dHm == null) {
+        if (paramString1.cUA == null) {
           break;
         }
         localObject = str;
-        if (paramString1.dHm.length() <= 0) {
+        if (paramString1.cUA.length() <= 0) {
           break;
         }
         switch (paramString1.scene)
@@ -357,12 +355,12 @@ public class SelectedMemberChattingRecordUI
           if (localObject != null)
           {
             paramString1 = paramString2;
-            if (((com.tencent.mm.plugin.i.a.b)localObject).inc != null)
+            if (((com.tencent.mm.plugin.i.a.b)localObject).ipW != null)
             {
               paramString1 = paramString2;
-              if (!bt.isNullOrNil(((com.tencent.mm.plugin.i.a.b)localObject).inc.nickname))
+              if (!bu.isNullOrNil(((com.tencent.mm.plugin.i.a.b)localObject).ipW.nickname))
               {
-                localObject = paramString2 + paramContext.getString(2131766954, new Object[] { ((com.tencent.mm.plugin.i.a.b)localObject).inc.nickname });
+                localObject = paramString2 + paramContext.getString(2131766954, new Object[] { ((com.tencent.mm.plugin.i.a.b)localObject).ipW.nickname });
                 break;
                 paramContext = paramContext.getString(2131755775);
                 paramString2 = (com.tencent.mm.plugin.i.a.c)localb.ao(com.tencent.mm.plugin.i.a.c.class);
@@ -370,17 +368,17 @@ public class SelectedMemberChattingRecordUI
                 if (paramString2 != null)
                 {
                   paramString1 = paramContext;
-                  if (paramString2.ind != null)
+                  if (paramString2.ipX != null)
                   {
                     paramString1 = paramContext;
-                    if (!bt.isNullOrNil(paramString2.ind.dzZ))
+                    if (!bu.isNullOrNil(paramString2.ipX.dBe))
                     {
-                      if (paramString2.ind.sMj == 1)
+                      if (paramString2.ipX.sXu == 1)
                       {
-                        localObject = paramContext + aj.getContext().getString(2131766953, new Object[] { paramString2.ind.dzZ });
+                        localObject = paramContext + ak.getContext().getString(2131766953, new Object[] { paramString2.ipX.dBe });
                         break;
                       }
-                      localObject = paramContext + paramString2.ind.dzZ;
+                      localObject = paramContext + paramString2.ipX.dBe;
                       break;
                     }
                   }
@@ -397,17 +395,17 @@ public class SelectedMemberChattingRecordUI
     }
   }
   
-  protected static String a(ab paramab, String paramString)
+  protected static String a(ac paramac, String paramString)
   {
     AppMethodBeat.i(12988);
-    if (paramab == null)
+    if (paramac == null)
     {
       AppMethodBeat.o(12988);
       return null;
     }
-    paramab = paramab.zf(paramString);
+    paramac = paramac.zP(paramString);
     AppMethodBeat.o(12988);
-    return paramab;
+    return paramac;
   }
   
   public int getLayoutId()
@@ -419,77 +417,67 @@ public class SelectedMemberChattingRecordUI
   {
     AppMethodBeat.i(12987);
     super.initView();
-    setMMTitle(bt.nullAsNil(this.mTitle));
-    this.fTE = ((MMLoadMoreListView)findViewById(2131302228));
-    this.fTE.fyL();
-    this.fTF = new a(this, this.fPi, this.fTG, this.fTH);
-    this.fTE.setAdapter(this.fTF);
-    this.fTk = findViewById(2131304525);
-    if (this.fTH == 0) {}
+    this.fVr.setVisibility(8);
+    this.fVK = ((MMLoadMoreListView)findViewById(2131302228));
+    this.fVK.fCN();
+    this.fVL = new a(this, this.fRo, this.fVM, this.fVN);
+    this.fVK.setAdapter(this.fVL);
+    this.fVq = findViewById(2131304525);
+    if (this.fVN == 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.fTk.setVisibility(0);
-        this.fTE.setVisibility(8);
+        this.fVq.setVisibility(0);
+        this.fVK.setVisibility(8);
       }
-      this.fTE.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.fVK.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(12977);
+          AppMethodBeat.i(224393);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          a.b("com/tencent/mm/chatroom/ui/SelectedMemberChattingRecordUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-          paramAnonymousAdapterView = (bu)SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this).getItem(paramAnonymousInt);
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          a.b("com/tencent/mm/chatroom/ui/SelectedMemberChattingRecordUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          paramAnonymousAdapterView = (bv)SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this).getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView != null) {
             SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this, paramAnonymousAdapterView.field_msgId);
           }
-          a.a(this, "com/tencent/mm/chatroom/ui/SelectedMemberChattingRecordUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(12977);
+          a.a(this, "com/tencent/mm/chatroom/ui/SelectedMemberChattingRecordUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+          AppMethodBeat.o(224393);
         }
       });
-      this.fTE.setOnLoadMoreListener(new MMLoadMoreListView.a()
+      this.fVK.setOnLoadMoreListener(new MMLoadMoreListView.a()
       {
-        public final void Zt()
+        public final void ZC()
         {
-          AppMethodBeat.i(12978);
+          AppMethodBeat.i(224394);
           SelectedMemberChattingRecordUI.a locala;
-          if (SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this) != null)
+          if (SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this) != null)
           {
-            locala = SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this);
-            locala.fTL -= 16;
-            if ((bt.isNullOrNil(SelectedMemberChattingRecordUI.c(locala.fTJ))) || (!u.za(SelectedMemberChattingRecordUI.c(locala.fTJ)))) {
-              break label113;
+            locala = SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this);
+            locala.fVR -= 16;
+            if ((bu.isNullOrNil(SelectedMemberChattingRecordUI.a(locala.fVP))) || (!v.zK(SelectedMemberChattingRecordUI.a(locala.fVP)))) {
+              break label111;
             }
-            locala.setCursor(((l)g.ab(l.class)).dlK().el(locala.fTa, locala.fTM - locala.fTL));
+            locala.setCursor(((l)g.ab(l.class)).doJ().es(locala.fVg, locala.fVS - locala.fVR));
           }
           for (;;)
           {
-            SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this).notifyDataSetChanged();
-            AppMethodBeat.o(12978);
+            SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this).notifyDataSetChanged();
+            AppMethodBeat.o(224394);
             return;
-            label113:
-            if (!u.za(SelectedMemberChattingRecordUI.c(locala.fTJ))) {
-              locala.setCursor(((l)g.ab(l.class)).dlK().ab(locala.fTa, locala.fTK, locala.fTM - locala.fTL));
+            label111:
+            if (!v.zK(SelectedMemberChattingRecordUI.a(locala.fVP))) {
+              locala.setCursor(((l)g.ab(l.class)).doJ().ab(locala.fVg, locala.fVQ, locala.fVS - locala.fVR));
             }
           }
         }
       });
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(12979);
-          SelectedMemberChattingRecordUI.this.setResult(0);
-          SelectedMemberChattingRecordUI.this.finish();
-          AppMethodBeat.o(12979);
-          return true;
-        }
-      });
+      setBackBtn(new SelectedMemberChattingRecordUI.4(this));
       AppMethodBeat.o(12987);
       return;
     }
@@ -499,23 +487,34 @@ public class SelectedMemberChattingRecordUI
   {
     AppMethodBeat.i(12986);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.SelectedMemberChattingRecordUI", "[onCreate]");
-    this.fPi = getIntent().getStringExtra("RoomInfo_Id");
-    this.fTG = getIntent().getStringExtra("room_member");
-    ad.i("MicroMsg.SelectedMemberChattingRecordUI", "roomId:%s", new Object[] { this.fPi });
+    ae.i("MicroMsg.SelectedMemberChattingRecordUI", "[onCreate]");
+    this.fRo = getIntent().getStringExtra("RoomInfo_Id");
+    this.fVM = getIntent().getStringExtra("room_member");
+    ae.i("MicroMsg.SelectedMemberChattingRecordUI", "roomId:%s", new Object[] { this.fRo });
     this.mTitle = getIntent().getStringExtra("title");
-    if ((!bt.isNullOrNil(this.fTG)) && (u.za(this.fTG))) {
-      this.fTH = ((l)g.ab(l.class)).dlK().aqt(this.fPi);
-    }
-    for (;;)
+    setMMTitle(bu.nullAsNil(this.mTitle));
+    this.fVr = findViewById(2131308107);
+    h.MqF.aP(new Runnable()
     {
-      initView();
-      AppMethodBeat.o(12986);
-      return;
-      if (!u.za(this.fTG)) {
-        this.fTH = ((l)g.ab(l.class)).dlK().hS(this.fPi, this.fTG);
+      public final void run()
+      {
+        AppMethodBeat.i(224392);
+        if ((!bu.isNullOrNil(SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this))) && (v.zK(SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this)))) {
+          SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this, ((l)g.ab(l.class)).doJ().ary(SelectedMemberChattingRecordUI.b(SelectedMemberChattingRecordUI.this)));
+        }
+        while ((SelectedMemberChattingRecordUI.this.isFinishing()) || (SelectedMemberChattingRecordUI.this.isDestroyed()))
+        {
+          AppMethodBeat.o(224392);
+          return;
+          if (!v.zK(SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this))) {
+            SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this, ((l)g.ab(l.class)).doJ().hZ(SelectedMemberChattingRecordUI.b(SelectedMemberChattingRecordUI.this), SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this)));
+          }
+        }
+        SelectedMemberChattingRecordUI.this.runOnUiThread(new SelectedMemberChattingRecordUI.1.1(this));
+        AppMethodBeat.o(224392);
       }
-    }
+    });
+    AppMethodBeat.o(12986);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -525,26 +524,26 @@ public class SelectedMemberChattingRecordUI
   }
   
   public final class a
-    extends r<bu>
+    extends com.tencent.mm.ui.r<bv>
   {
-    String fTK;
-    int fTL;
-    int fTM;
-    private ab fTN;
-    String fTa;
+    String fVQ;
+    int fVR;
+    int fVS;
+    private ac fVT;
+    String fVg;
     Context mContext;
     
     public a(Context paramContext, String paramString1, String paramString2, int paramInt)
     {
-      super(new bu());
+      super(new bv());
       AppMethodBeat.i(12980);
-      this.fTL = -1;
-      this.fTM = -1;
+      this.fVR = -1;
+      this.fVS = -1;
       this.mContext = paramContext;
-      this.fTM = paramInt;
-      this.fTa = paramString1;
-      this.fTK = paramString2;
-      this.fTN = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AO(SelectedMemberChattingRecordUI.b(SelectedMemberChattingRecordUI.this));
+      this.fVS = paramInt;
+      this.fVg = paramString1;
+      this.fVQ = paramString2;
+      this.fVT = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().By(SelectedMemberChattingRecordUI.b(SelectedMemberChattingRecordUI.this));
       AppMethodBeat.o(12980);
     }
     
@@ -563,28 +562,28 @@ public class SelectedMemberChattingRecordUI
       return false;
     }
     
-    public final void Zu()
+    public final void ZD()
     {
       AppMethodBeat.i(12981);
-      if ((this.fTL < 0) || (this.fTL > this.fTM)) {
-        this.fTL = (this.fTM - 16);
+      if ((this.fVR < 0) || (this.fVR > this.fVS)) {
+        this.fVR = (this.fVS - 16);
       }
-      if ((!bt.isNullOrNil(SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this))) && (u.za(SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this))))
+      if ((!bu.isNullOrNil(SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this))) && (v.zK(SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this))))
       {
-        setCursor(((l)g.ab(l.class)).dlK().el(this.fTa, this.fTM - this.fTL));
+        setCursor(((l)g.ab(l.class)).doJ().es(this.fVg, this.fVS - this.fVR));
         AppMethodBeat.o(12981);
         return;
       }
-      if (!u.za(SelectedMemberChattingRecordUI.c(SelectedMemberChattingRecordUI.this))) {
-        setCursor(((l)g.ab(l.class)).dlK().ab(this.fTa, this.fTK, this.fTM - this.fTL));
+      if (!v.zK(SelectedMemberChattingRecordUI.a(SelectedMemberChattingRecordUI.this))) {
+        setCursor(((l)g.ab(l.class)).doJ().ab(this.fVg, this.fVQ, this.fVS - this.fVR));
       }
       AppMethodBeat.o(12981);
     }
     
-    public final void Zv()
+    public final void ZE()
     {
       AppMethodBeat.i(12982);
-      Zu();
+      ZD();
       AppMethodBeat.o(12982);
     }
     
@@ -596,48 +595,48 @@ public class SelectedMemberChattingRecordUI
       {
         paramViewGroup = LayoutInflater.from(this.context).inflate(2131494753, null, false);
         paramView = new SelectedMemberChattingRecordUI.b((byte)0);
-        paramView.fOf = ((ImageView)paramViewGroup.findViewById(2131297008));
-        paramView.fOg = ((TextView)paramViewGroup.findViewById(2131302867));
-        paramView.fTO = ((TextView)paramViewGroup.findViewById(2131302555));
-        paramView.fTP = ((TextView)paramViewGroup.findViewById(2131306207));
+        paramView.fQl = ((ImageView)paramViewGroup.findViewById(2131297008));
+        paramView.fQm = ((TextView)paramViewGroup.findViewById(2131302867));
+        paramView.fVU = ((TextView)paramViewGroup.findViewById(2131302555));
+        paramView.fVV = ((TextView)paramViewGroup.findViewById(2131306207));
         paramViewGroup.setTag(paramView);
       }
-      bu localbu = (bu)getItem(paramInt);
+      bv localbv = (bv)getItem(paramInt);
       SelectedMemberChattingRecordUI.b localb = (SelectedMemberChattingRecordUI.b)paramViewGroup.getTag();
-      a.b.c(localb.fOf, this.fTK);
-      paramView = this.fTK;
-      Object localObject2 = ((l)g.ab(l.class)).azp().Bf(paramView);
-      if (!bt.isNullOrNil(((aw)localObject2).field_conRemark))
+      a.b.c(localb.fQl, this.fVQ);
+      paramView = this.fVQ;
+      Object localObject2 = ((l)g.ab(l.class)).azF().BH(paramView);
+      if (!bu.isNullOrNil(((aw)localObject2).field_conRemark))
       {
         paramView = ((aw)localObject2).field_conRemark;
-        if (!bt.isNullOrNil(paramView)) {
+        if (!bu.isNullOrNil(paramView)) {
           break label344;
         }
-        paramView = ((am)localObject2).adu();
+        paramView = ((an)localObject2).adF();
       }
       label344:
       for (;;)
       {
         Object localObject1 = paramView;
-        if (!com.tencent.mm.o.b.lM(((aw)localObject2).field_type))
+        if (!com.tencent.mm.contact.c.lO(((aw)localObject2).field_type))
         {
-          localObject2 = ((l)g.ab(l.class)).azq().aqz(((aw)localObject2).field_username);
+          localObject2 = ((l)g.ab(l.class)).azG().arE(((aw)localObject2).field_username);
           localObject1 = paramView;
           if (localObject2 != null)
           {
             localObject1 = paramView;
-            if (!bt.isNullOrNil(((cf)localObject2).field_conRemark)) {
-              localObject1 = ((cf)localObject2).field_conRemark;
+            if (!bu.isNullOrNil(((cg)localObject2).field_conRemark)) {
+              localObject1 = ((cg)localObject2).field_conRemark;
             }
           }
         }
-        a((CharSequence)localObject1, localb.fOg);
-        paramView = this.fTK;
-        a(SelectedMemberChattingRecordUI.a(aj.getContext(), localbu.getType(), localbu.field_content, paramView, localbu.field_isSend).trim(), localb.fTO);
-        a(com.tencent.mm.pluginsdk.i.i.c(SelectedMemberChattingRecordUI.this, localbu.field_createTime, true), localb.fTP);
+        a((CharSequence)localObject1, localb.fQm);
+        paramView = this.fVQ;
+        a(SelectedMemberChattingRecordUI.a(ak.getContext(), localbv.getType(), localbv.field_content, paramView, localbv.field_isSend).trim(), localb.fVU);
+        a(com.tencent.mm.pluginsdk.i.i.c(SelectedMemberChattingRecordUI.this, localbv.field_createTime, true), localb.fVV);
         AppMethodBeat.o(12983);
         return paramViewGroup;
-        paramView = SelectedMemberChattingRecordUI.a(this.fTN, ((aw)localObject2).field_username);
+        paramView = SelectedMemberChattingRecordUI.a(this.fVT, ((aw)localObject2).field_username);
         break;
       }
     }
@@ -645,10 +644,10 @@ public class SelectedMemberChattingRecordUI
   
   static final class b
   {
-    public ImageView fOf;
-    public TextView fOg;
-    public TextView fTO;
-    public TextView fTP;
+    public ImageView fQl;
+    public TextView fQm;
+    public TextView fVU;
+    public TextView fVV;
   }
 }
 

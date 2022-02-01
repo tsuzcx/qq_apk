@@ -13,23 +13,23 @@ public final class a
 {
   protected final void finalize()
   {
-    AppMethodBeat.i(191656);
+    AppMethodBeat.i(194334);
     try
     {
       super.finalize();
-      AppMethodBeat.o(191656);
+      AppMethodBeat.o(194334);
       return;
     }
     catch (Exception localException)
     {
       d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(191656);
+      AppMethodBeat.o(194334);
     }
   }
   
   public final int getVideoHeight()
   {
-    AppMethodBeat.i(191660);
+    AppMethodBeat.i(194338);
     int i = 0;
     try
     {
@@ -43,13 +43,13 @@ public final class a
         d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
       }
     }
-    AppMethodBeat.o(191660);
+    AppMethodBeat.o(194338);
     return i;
   }
   
   public final int getVideoWidth()
   {
-    AppMethodBeat.i(191659);
+    AppMethodBeat.i(194337);
     int i = 0;
     try
     {
@@ -63,13 +63,13 @@ public final class a
         d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
       }
     }
-    AppMethodBeat.o(191659);
+    AppMethodBeat.o(194337);
     return i;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(191657);
+    AppMethodBeat.i(194335);
     try
     {
       if (("N1W".equalsIgnoreCase(Build.MODEL)) || ("X909T".equalsIgnoreCase(Build.MODEL)) || ("X909".equalsIgnoreCase(Build.MODEL)) || ("N1T".equalsIgnoreCase(Build.MODEL)))
@@ -92,13 +92,13 @@ public final class a
         try
         {
           super.release();
-          AppMethodBeat.o(191657);
+          AppMethodBeat.o(194335);
           return;
         }
         catch (Exception localException)
         {
           d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-          AppMethodBeat.o(191657);
+          AppMethodBeat.o(194335);
         }
         localNoSuchFieldException = localNoSuchFieldException;
         d.e("TPThumbPlayer[TPMediaPlayer.java]", localNoSuchFieldException);
@@ -115,23 +115,23 @@ public final class a
   
   public final void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
-    AppMethodBeat.i(191658);
+    AppMethodBeat.i(194336);
     try
     {
       super.setDisplay(paramSurfaceHolder);
-      AppMethodBeat.o(191658);
+      AppMethodBeat.o(194336);
       return;
     }
     catch (Exception paramSurfaceHolder)
     {
       d.e("TPThumbPlayer[TPMediaPlayer.java]", paramSurfaceHolder);
-      AppMethodBeat.o(191658);
+      AppMethodBeat.o(194336);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

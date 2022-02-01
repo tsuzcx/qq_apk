@@ -14,98 +14,98 @@ import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.protocal.protobuf.tu;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
   extends i
 {
-  private TextView oCI;
-  private View oOq;
-  private TextView oOr;
-  private TextView oOs;
+  private TextView oJk;
+  private View oUS;
+  private TextView oUT;
+  private TextView oUU;
   
-  public final void YX(String paramString)
+  public final void ZO(String paramString)
   {
     AppMethodBeat.i(113668);
-    this.oOs.setText(paramString);
+    this.oUU.setText(paramString);
     AppMethodBeat.o(113668);
   }
   
-  public final void bYr()
+  public final void bZG()
   {
     AppMethodBeat.i(113667);
-    this.oOq.setVisibility(8);
+    this.oUS.setVisibility(8);
     AppMethodBeat.o(113667);
   }
   
   public final void initView()
   {
     AppMethodBeat.i(113665);
-    this.oOq = findViewById(2131296509);
-    this.oOr = ((TextView)findViewById(2131296510));
-    this.oCI = ((TextView)findViewById(2131304741));
-    this.oOs = ((TextView)findViewById(2131297880));
-    this.oOr.setOnClickListener(this.oOB.bWp());
-    this.oOq.setVisibility(8);
+    this.oUS = findViewById(2131296509);
+    this.oUT = ((TextView)findViewById(2131296510));
+    this.oJk = ((TextView)findViewById(2131304741));
+    this.oUU = ((TextView)findViewById(2131297880));
+    this.oUT.setOnClickListener(this.oVd.bXE());
+    this.oUS.setVisibility(8);
     AppMethodBeat.o(113665);
   }
   
   public final void update()
   {
     AppMethodBeat.i(113666);
-    b localb = this.oOB.bWl();
-    Object localObject1 = this.oOB.bWo();
-    this.oOq.setVisibility(0);
-    if (!TextUtils.isEmpty(localb.bTN().FRJ))
+    b localb = this.oVd.bXA();
+    Object localObject1 = this.oVd.bXD();
+    this.oUS.setVisibility(0);
+    if (!TextUtils.isEmpty(localb.bVc().Gki))
     {
-      this.oOr.setVisibility(0);
-      this.oOr.setText(localb.bTN().FRJ);
-      if ((localb.bTt()) || ((localb.bTs()) && (localb.bTv()))) {
-        this.oOr.setTextColor(((MMActivity)localObject1).getResources().getColor(2131101182));
+      this.oUT.setVisibility(0);
+      this.oUT.setText(localb.bVc().Gki);
+      if ((localb.bUI()) || ((localb.bUH()) && (localb.bUK()))) {
+        this.oUT.setTextColor(((MMActivity)localObject1).getResources().getColor(2131101182));
       }
     }
     Object localObject2;
     for (;;)
     {
-      localObject2 = this.oOq.findViewById(2131297895);
-      if (!this.oOB.bWq().bXP()) {
+      localObject2 = this.oUS.findViewById(2131297895);
+      if (!this.oVd.bXF().bZe()) {
         break label529;
       }
       ((View)localObject2).setVisibility(0);
-      this.oOs.setText(((MMActivity)localObject1).getString(2131756980));
-      this.oOs.setTextColor(((MMActivity)localObject1).getResources().getColor(2131101182));
+      this.oUU.setText(((MMActivity)localObject1).getString(2131756980));
+      this.oUU.setTextColor(((MMActivity)localObject1).getResources().getColor(2131101182));
       int i = ((MMActivity)localObject1).getResources().getDimensionPixelOffset(2131165516);
-      localObject2 = (Button)this.oOq.findViewById(2131297878);
+      localObject2 = (Button)this.oUS.findViewById(2131297878);
       ShapeDrawable localShapeDrawable1 = l.f((Context)localObject1, ((MMActivity)localObject1).getResources().getColor(2131101179), i);
-      ShapeDrawable localShapeDrawable2 = l.eU(((MMActivity)localObject1).getResources().getColor(2131101179), i);
+      ShapeDrawable localShapeDrawable2 = l.eV(((MMActivity)localObject1).getResources().getColor(2131101179), i);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, localShapeDrawable2);
       localStateListDrawable.addState(new int[0], localShapeDrawable1);
       ((Button)localObject2).setBackgroundDrawable(localStateListDrawable);
-      i = l.Zh(localb.bTN().hAD);
+      i = l.ZY(localb.bVc().hDr);
       int j = ((MMActivity)localObject1).getResources().getColor(2131101179);
       ((Button)localObject2).setTextColor(new ColorStateList(new int[][] { { 16842919, 16842910 }, new int[0] }, new int[] { i, j }));
-      ((Button)localObject2).setOnClickListener(this.oOB.bWp());
-      localObject1 = this.oOq.findViewById(2131302274);
-      localObject2 = this.oOq.findViewById(2131297822);
-      if (localb.bTN().FRX != 1) {
+      ((Button)localObject2).setOnClickListener(this.oVd.bXE());
+      localObject1 = this.oUS.findViewById(2131302274);
+      localObject2 = this.oUS.findViewById(2131297822);
+      if (localb.bVc().Gkw != 1) {
         break;
       }
       ((View)localObject1).setVisibility(0);
       ((View)localObject2).setVisibility(0);
       AppMethodBeat.o(113666);
       return;
-      if ((localb.bTs()) && (localb.bTu()))
+      if ((localb.bUH()) && (localb.bUJ()))
       {
-        this.oOr.setTextColor(((MMActivity)localObject1).getResources().getColor(2131100082));
-        this.oOq.setBackgroundColor(((MMActivity)localObject1).getResources().getColor(2131101179));
+        this.oUT.setTextColor(((MMActivity)localObject1).getResources().getColor(2131100082));
+        this.oUS.setBackgroundColor(((MMActivity)localObject1).getResources().getColor(2131101179));
       }
       else
       {
-        this.oOr.setTextColor(((MMActivity)localObject1).getResources().getColor(2131101182));
+        this.oUT.setTextColor(((MMActivity)localObject1).getResources().getColor(2131101182));
         continue;
-        this.oOr.setVisibility(8);
+        this.oUT.setVisibility(8);
       }
     }
     ((View)localObject1).setVisibility(8);

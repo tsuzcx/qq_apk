@@ -10,11 +10,11 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void eNa();
+    public abstract void eQL();
     
-    public abstract void eNb();
+    public abstract void eQM();
     
-    public abstract void eNc();
+    public abstract void eQN();
     
     public abstract int getItemCount();
     

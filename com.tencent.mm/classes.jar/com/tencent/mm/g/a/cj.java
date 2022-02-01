@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cj
   extends b
 {
-  public a dnp;
+  public a dor;
   
   public cj()
   {
@@ -16,8 +16,8 @@ public final class cj
   private cj(byte paramByte)
   {
     AppMethodBeat.i(91202);
-    this.dnp = new a();
-    this.IbR = false;
+    this.dor = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(91202);
   }
@@ -29,7 +29,7 @@ public final class cj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.cj
  * JD-Core Version:    0.7.0.1
  */

@@ -9,20 +9,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.kernel.k;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.service.MMService;
 
 @k
 public class ExDeviceService
   extends MMService
 {
-  private h.a qfV = null;
+  private h.a qmA = null;
   
-  private static boolean clK()
+  private static boolean cna()
   {
     AppMethodBeat.i(23637);
-    PackageManager localPackageManager = aj.getContext().getPackageManager();
+    PackageManager localPackageManager = ak.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
@@ -36,19 +36,19 @@ public class ExDeviceService
         boolean bool = false;
       }
     }
-    ad.i("MicroMsg.exdevice.ExDeviceService", "isInstallWearApp %b", new Object[] { Boolean.valueOf(bool) });
+    ae.i("MicroMsg.exdevice.ExDeviceService", "isInstallWearApp %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(23637);
     return bool;
   }
   
-  public final IBinder WQ()
+  public final IBinder WY()
   {
     AppMethodBeat.i(23638);
-    ad.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
-    if (this.qfV == null) {
-      this.qfV = new y();
+    ae.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
+    if (this.qmA == null) {
+      this.qmA = new y();
     }
-    h.a locala = this.qfV;
+    h.a locala = this.qmA;
     AppMethodBeat.o(23638);
     return locala;
   }
@@ -61,7 +61,7 @@ public class ExDeviceService
   public final void onCreate()
   {
     AppMethodBeat.i(23635);
-    ad.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onCreate");
+    ae.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onCreate");
     super.onCreate();
     AppMethodBeat.o(23635);
   }
@@ -69,16 +69,16 @@ public class ExDeviceService
   public final void onDestroy()
   {
     AppMethodBeat.i(23636);
-    ad.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
+    ae.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
     Java2CExDevice.closeBluetoothAccessoryLib();
     super.onDestroy();
-    if (!clK())
+    if (!cna())
     {
-      ad.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
+      ae.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
       com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
       Object localObject = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)locala.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)locala.mt(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     }
     AppMethodBeat.o(23636);

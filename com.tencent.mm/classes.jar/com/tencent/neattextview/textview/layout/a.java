@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract int fSB();
+  public abstract int fXb();
   
-  public abstract List<c> fSC();
+  public abstract List<c> fXc();
   
   public abstract int getEllipsisCount(int paramInt);
   
@@ -31,7 +31,7 @@ public abstract interface a
   
   public abstract float getPrimaryHorizontal(int paramInt);
   
-  public abstract int kH(int paramInt1, int paramInt2);
+  public abstract int kO(int paramInt1, int paramInt2);
 }
 
 

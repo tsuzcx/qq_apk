@@ -8,11 +8,11 @@ public class PAGMovie
 {
   static
   {
-    AppMethodBeat.i(220179);
+    AppMethodBeat.i(216933);
     b.loadLibrary("libpag");
     nativeInit();
     PAGFont.loadSystemFonts();
-    AppMethodBeat.o(220179);
+    AppMethodBeat.o(216933);
   }
   
   private PAGMovie(long paramLong)
@@ -22,43 +22,43 @@ public class PAGMovie
   
   public static PAGMovie FromComposition(PAGComposition paramPAGComposition)
   {
-    AppMethodBeat.i(220176);
+    AppMethodBeat.i(216930);
     long l = MakeFromComposition(paramPAGComposition);
     if (l == 0L)
     {
-      AppMethodBeat.o(220176);
+      AppMethodBeat.o(216930);
       return null;
     }
     paramPAGComposition = new PAGMovie(l);
-    AppMethodBeat.o(220176);
+    AppMethodBeat.o(216930);
     return paramPAGComposition;
   }
   
   public static PAGMovie FromVideoPath(String paramString)
   {
-    AppMethodBeat.i(220177);
+    AppMethodBeat.i(216931);
     long l = MakeFromVideoPath(paramString);
     if (l == 0L)
     {
-      AppMethodBeat.o(220177);
+      AppMethodBeat.o(216931);
       return null;
     }
     paramString = new PAGMovie(l);
-    AppMethodBeat.o(220177);
+    AppMethodBeat.o(216931);
     return paramString;
   }
   
   public static PAGMovie FromVideoPath(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(220178);
+    AppMethodBeat.i(216932);
     paramLong1 = MakeFromVideoPath(paramString, paramLong1, paramLong2);
     if (paramLong1 == 0L)
     {
-      AppMethodBeat.o(220178);
+      AppMethodBeat.o(216932);
       return null;
     }
     paramString = new PAGMovie(paramLong1);
-    AppMethodBeat.o(220178);
+    AppMethodBeat.o(216932);
     return paramString;
   }
   

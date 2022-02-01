@@ -10,39 +10,39 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.box.webview.BoxWebView;
 import com.tencent.mm.plugin.box.webview.b;
 import com.tencent.mm.plugin.box.webview.d;
-import com.tencent.mm.protocal.protobuf.pq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.ps;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
   extends android.support.v7.app.e
   implements c
 {
-  private pq nVk;
-  private FrameLayout nVl;
-  private d nVm;
-  private BoxWebView nVn;
-  private b nVo;
+  private ps oaR;
+  private FrameLayout oaS;
+  private d oaT;
+  private BoxWebView oaU;
+  private b oaV;
   
-  public a(Context paramContext, pq parampq)
+  public a(Context paramContext, ps paramps)
   {
     super(paramContext, 2131820791);
-    this.nVk = parampq;
+    this.oaR = paramps;
   }
   
-  public final com.tencent.mm.plugin.box.webview.e bNa()
+  public final com.tencent.mm.plugin.box.webview.e bNY()
   {
-    return this.nVo;
+    return this.oaV;
   }
   
-  public final d bNb()
+  public final d bNZ()
   {
-    return this.nVm;
+    return this.oaT;
   }
   
   public final Context getActivityContext()
@@ -55,7 +55,7 @@ public final class a
   
   public final BoxWebView getBoxWebView()
   {
-    return this.nVn;
+    return this.oaU;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -68,32 +68,32 @@ public final class a
     paramBundle = LayoutInflater.from(getContext()).inflate(2131493237, null, false);
     paramBundle.setOnTouchListener(new a.1(this));
     setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-    this.nVl = ((FrameLayout)paramBundle.findViewById(2131306912));
-    this.nVl.setLayoutParams(this.nVl.getLayoutParams());
-    this.nVo = new b(this);
-    this.nVn = new BoxWebView(aj.getContext());
-    this.nVm = new d(this);
+    this.oaS = ((FrameLayout)paramBundle.findViewById(2131306912));
+    this.oaS.setLayoutParams(this.oaS.getLayoutParams());
+    this.oaV = new b(this);
+    this.oaU = new BoxWebView(ak.getContext());
+    this.oaT = new d(this);
     paramBundle = new com.tencent.mm.plugin.box.webview.a();
-    com.tencent.mm.plugin.box.webview.c localc = new com.tencent.mm.plugin.box.webview.c(this.nVk, this.nVo);
-    this.nVn.a(paramBundle, localc);
-    this.nVn.addJavascriptInterface(this.nVm, "boxJSApi");
-    ad.i("MicroMsg.Box.BoxHomeUI", "start to load url %s", new Object[] { this.nVk.Url });
-    this.nVn.loadUrl(this.nVk.Url);
-    this.nVl.addView(this.nVn);
+    com.tencent.mm.plugin.box.webview.c localc = new com.tencent.mm.plugin.box.webview.c(this.oaR, this.oaV);
+    this.oaU.a(paramBundle, localc);
+    this.oaU.addJavascriptInterface(this.oaT, "boxJSApi");
+    ae.i("MicroMsg.Box.BoxHomeUI", "start to load url %s", new Object[] { this.oaR.Url });
+    this.oaU.loadUrl(this.oaR.Url);
+    this.oaS.addView(this.oaU);
     setCancelable(true);
     setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(76332);
-        ad.i("MicroMsg.Box.BoxHomeUI", "dismiss dialog");
+        ae.i("MicroMsg.Box.BoxHomeUI", "dismiss dialog");
         if (a.a(a.this) != null)
         {
           paramAnonymousDialogInterface = a.a(a.this);
-          if (paramAnonymousDialogInterface.nVr != null) {
-            g.aiU().a(paramAnonymousDialogInterface.nVr);
+          if (paramAnonymousDialogInterface.oaY != null) {
+            g.ajj().a(paramAnonymousDialogInterface.oaY);
           }
-          g.aiU().b(1869, paramAnonymousDialogInterface);
+          g.ajj().b(1869, paramAnonymousDialogInterface);
         }
         if (a.b(a.this) != null)
         {
@@ -105,7 +105,7 @@ public final class a
       }
     });
     getWindow().setWindowAnimations(2131820790);
-    com.tencent.mm.plugin.box.a.a.ma(1);
+    com.tencent.mm.plugin.box.a.a.md(1);
     AppMethodBeat.o(76333);
   }
 }

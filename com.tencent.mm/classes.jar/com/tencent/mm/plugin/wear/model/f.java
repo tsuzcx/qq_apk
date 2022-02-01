@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public int Dxd = 0;
-  a Dxe;
+  public int DOI = 0;
+  a DOJ;
   public int id = 0;
   public String md5 = "";
   public String talker = "";
@@ -17,8 +17,8 @@ public final class f
     localf.id = this.id;
     localf.talker = this.talker;
     localf.md5 = this.md5;
-    localf.Dxd = this.Dxd;
-    localf.Dxe = this.Dxe;
+    localf.DOI = this.DOI;
+    localf.DOJ = this.DOJ;
     AppMethodBeat.o(30012);
     return localf;
   }
@@ -26,7 +26,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(30013);
-    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.md5 + ", ignoreInWatch=" + this.Dxd + ", status=" + this.Dxe + "]";
+    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.md5 + ", ignoreInWatch=" + this.DOI + ", status=" + this.DOJ + "]";
     AppMethodBeat.o(30013);
     return str;
   }
@@ -36,11 +36,11 @@ public final class f
     static
     {
       AppMethodBeat.i(30011);
-      Dxf = new a("INIT", 0);
-      Dxg = new a("SHOWING", 1);
-      Dxh = new a("IGNORE", 2);
-      Dxi = new a("REPLY", 3);
-      Dxj = new a[] { Dxf, Dxg, Dxh, Dxi };
+      DOK = new a("INIT", 0);
+      DOL = new a("SHOWING", 1);
+      DOM = new a("IGNORE", 2);
+      DON = new a("REPLY", 3);
+      DOO = new a[] { DOK, DOL, DOM, DON };
       AppMethodBeat.o(30011);
     }
     

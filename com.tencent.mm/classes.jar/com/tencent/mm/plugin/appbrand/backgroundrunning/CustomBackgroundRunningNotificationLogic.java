@@ -10,11 +10,11 @@ public abstract class CustomBackgroundRunningNotificationLogic
   @Keep
   public CustomBackgroundRunningNotificationLogic(String paramString) {}
   
-  public abstract Notification bcS();
+  public abstract Notification bdx();
   
-  public abstract int bcT();
+  public abstract int bdy();
   
-  public abstract void bcU();
+  public abstract void bdz();
 }
 
 

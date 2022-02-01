@@ -25,7 +25,7 @@ public class ReaderWizard
   private static DexLoader a()
   {
     AppMethodBeat.i(55122);
-    TbsWizard localTbsWizard = e.a(true).c();
+    TbsWizard localTbsWizard = g.a(true).c();
     DexLoader localDexLoader = null;
     if (localTbsWizard != null) {
       localDexLoader = localTbsWizard.dexLoader();

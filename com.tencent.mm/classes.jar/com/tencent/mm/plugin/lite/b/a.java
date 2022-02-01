@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.lite.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.al;
 import com.tencent.wax.a.a;
+import com.tencent.wax.b.b;
 import com.tencent.wax.d;
 import io.flutter.plugin.a.j;
 import java.util.Map;
@@ -21,148 +22,150 @@ public final class a
   
   public final a.a a(j paramj)
   {
-    AppMethodBeat.i(214608);
+    int i = 0;
+    AppMethodBeat.i(212361);
     Object localObject = paramj.method;
-    paramj = paramj.grf;
-    ad.d("MicroMsg.LiteApp.WxaLiteAppUI", "consume method:%s", new Object[] { localObject });
-    int i = -1;
+    paramj = paramj.gtF;
+    ae.d("MicroMsg.LiteApp.WxaLiteAppUI", "consume method:%s", new Object[] { localObject });
     switch (((String)localObject).hashCode())
     {
+    default: 
+      label152:
+      i = -1;
     }
     for (;;)
     {
       switch (i)
       {
       default: 
-        paramj = new a.a(false, null);
-        AppMethodBeat.o(214608);
+        paramj = gdq();
+        AppMethodBeat.o(212361);
         return paramj;
-        if (((String)localObject).equals("publishEvent"))
-        {
-          i = 0;
-          continue;
-          if (((String)localObject).equals("setCanOverScroll"))
-          {
-            i = 1;
-            continue;
-            if (((String)localObject).equals("generateInputEventData"))
-            {
-              i = 2;
-              continue;
-              if (((String)localObject).equals("inputOnKeyboardValueChange"))
-              {
-                i = 3;
-                continue;
-                if (((String)localObject).equals("inputLocationChange"))
-                {
-                  i = 4;
-                  continue;
-                  if (((String)localObject).equals("hideKeyboard"))
-                  {
-                    i = 5;
-                    continue;
-                    if (((String)localObject).equals("showPicker"))
-                    {
-                      i = 6;
-                      continue;
-                      if (((String)localObject).equals("getLocalFileData"))
-                      {
-                        i = 7;
-                        continue;
-                        if (((String)localObject).equals("onRenderCallback"))
-                        {
-                          i = 8;
-                          continue;
-                          if (((String)localObject).equals("exitFullScreen"))
-                          {
-                            i = 9;
-                            continue;
-                            if (((String)localObject).equals("enterFullScreen"))
-                            {
-                              i = 10;
-                              continue;
-                              if (((String)localObject).equals("hasCutOut"))
-                              {
-                                i = 11;
-                                continue;
-                                if (((String)localObject).equals("getCutOutHeight")) {
-                                  i = 12;
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+        if (!((String)localObject).equals("publishEvent")) {
+          break label152;
         }
-        break;
+        continue;
+        if (!((String)localObject).equals("setCanOverScroll")) {
+          break label152;
+        }
+        i = 1;
+        continue;
+        if (!((String)localObject).equals("generateInputEventData")) {
+          break label152;
+        }
+        i = 2;
+        continue;
+        if (!((String)localObject).equals("inputOnKeyboardValueChange")) {
+          break label152;
+        }
+        i = 3;
+        continue;
+        if (!((String)localObject).equals("inputLocationChange")) {
+          break label152;
+        }
+        i = 4;
+        continue;
+        if (!((String)localObject).equals("hideKeyboard")) {
+          break label152;
+        }
+        i = 5;
+        continue;
+        if (!((String)localObject).equals("showPicker")) {
+          break label152;
+        }
+        i = 6;
+        continue;
+        if (!((String)localObject).equals("getLocalFileData")) {
+          break label152;
+        }
+        i = 7;
+        continue;
+        if (!((String)localObject).equals("onRenderCallback")) {
+          break label152;
+        }
+        i = 8;
+        continue;
+        if (!((String)localObject).equals("exitFullScreen")) {
+          break label152;
+        }
+        i = 9;
+        continue;
+        if (!((String)localObject).equals("enterFullScreen")) {
+          break label152;
+        }
+        i = 10;
+        continue;
+        if (!((String)localObject).equals("hasCutOut")) {
+          break label152;
+        }
+        i = 11;
+        continue;
+        if (!((String)localObject).equals("getCutOutHeight")) {
+          break label152;
+        }
+        i = 12;
       }
     }
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    localObject = d.fYR().MkG;
+    localObject = d.gdr().MHD.getActivity();
     if ((localObject != null) && ((localObject instanceof com.tencent.mm.plugin.lite.ui.a)) && ((paramj instanceof Map))) {
-      ((com.tencent.mm.plugin.lite.ui.a)localObject).IV(((Integer)((Map)paramj).get("offset")).intValue());
+      ((com.tencent.mm.plugin.lite.ui.a)localObject).Jt(((Integer)((Map)paramj).get("offset")).intValue());
     }
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = d.fYR().MkG;
+    paramj = d.gdr().MHD.getActivity();
     if ((paramj != null) && ((paramj instanceof com.tencent.mm.plugin.lite.ui.a))) {
-      ((com.tencent.mm.plugin.lite.ui.a)paramj).dfJ();
+      ((com.tencent.mm.plugin.lite.ui.a)paramj).diG();
     }
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = d.fYR().MkG;
+    paramj = d.gdr().MHD.getActivity();
     if ((paramj != null) && ((paramj instanceof com.tencent.mm.plugin.lite.ui.a))) {
-      ((com.tencent.mm.plugin.lite.ui.a)paramj).dfI();
+      ((com.tencent.mm.plugin.lite.ui.a)paramj).diF();
     }
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = d.fYR().MkG;
+    paramj = d.gdr().MHD.getActivity();
     if ((paramj != null) && ((paramj instanceof com.tencent.mm.plugin.lite.ui.a))) {
-      ((com.tencent.mm.plugin.lite.ui.a)paramj).bnj();
+      ((com.tencent.mm.plugin.lite.ui.a)paramj).bnT();
     }
-    paramj = ez(Boolean.TRUE);
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.TRUE);
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Boolean.valueOf(al.G(d.fYR().MkG, true)));
-    AppMethodBeat.o(214608);
+    paramj = eC(Boolean.valueOf(al.G(d.gdr().MHD.getActivity(), true)));
+    AppMethodBeat.o(212361);
     return paramj;
-    paramj = ez(Double.valueOf(com.tencent.mm.cc.a.aA(this.mContext, al.aF(this.mContext))));
-    AppMethodBeat.o(214608);
+    paramj = eC(Double.valueOf(com.tencent.mm.cb.a.aA(this.mContext, al.aG(this.mContext))));
+    AppMethodBeat.o(212361);
     return paramj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.lite.b.a
  * JD-Core Version:    0.7.0.1
  */

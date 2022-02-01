@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.brandservice.a;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.ai.q;
-import com.tencent.mm.ai.y;
+import com.tencent.mm.ah.p;
+import com.tencent.mm.ah.q;
+import com.tencent.mm.ah.y;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.protocal.protobuf.jb;
@@ -19,19 +19,19 @@ public abstract interface b
 {
   public abstract boolean F(Object paramObject1, Object paramObject2);
   
-  public abstract void L(String paramString1, String paramString2, String paramString3);
+  public abstract void M(String paramString1, String paramString2, String paramString3);
   
-  public abstract boolean WM(String paramString);
+  public abstract void XA(String paramString);
   
-  public abstract p WN(String paramString);
+  public abstract long XB(String paramString);
   
-  public abstract void WO(String paramString);
+  public abstract String XC(String paramString);
   
-  public abstract long WP(String paramString);
+  public abstract void XD(String paramString);
   
-  public abstract String WQ(String paramString);
+  public abstract boolean Xy(String paramString);
   
-  public abstract void WR(String paramString);
+  public abstract p Xz(String paramString);
   
   public abstract void a(Context paramContext, JSONObject paramJSONObject, HashMap<String, Object> paramHashMap);
   
@@ -47,29 +47,29 @@ public abstract interface b
   
   public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, Intent paramIntent, int paramInt4, a parama);
   
-  public abstract boolean bNf();
+  public abstract boolean bOd();
   
-  public abstract boolean bNg();
+  public abstract boolean bOe();
   
-  public abstract boolean bNh();
+  public abstract boolean bOf();
   
-  public abstract String bNi();
+  public abstract String bOg();
   
-  public abstract void bNj();
+  public abstract void bOh();
   
-  public abstract int bNk();
+  public abstract int bOi();
   
-  public abstract String bNl();
+  public abstract String bOj();
   
-  public abstract void bNm();
+  public abstract void bOk();
   
   public abstract void c(jb paramjb);
   
-  public abstract void cc(List<q> paramList);
+  public abstract void ce(List<q> paramList);
   
-  public abstract void cs(String paramString, int paramInt);
+  public abstract void cw(String paramString, int paramInt);
   
-  public abstract void ct(String paramString, int paramInt);
+  public abstract void cx(String paramString, int paramInt);
   
   public abstract String d(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
@@ -81,13 +81,13 @@ public abstract interface b
   
   public abstract void l(List<q> paramList, int paramInt);
   
-  public abstract boolean zb(int paramInt);
+  public abstract boolean zk(int paramInt);
   
-  public abstract boolean zc(int paramInt);
+  public abstract boolean zl(int paramInt);
   
-  public abstract void zd(int paramInt);
+  public abstract void zm(int paramInt);
   
-  public abstract boolean ze(int paramInt);
+  public abstract boolean zn(int paramInt);
   
   public static final class a
   {

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.h.a;
-import com.tencent.mm.al.h.b;
-import com.tencent.mm.g.a.fv;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.g.a.fw;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class f$115
   implements Runnable
@@ -16,55 +16,55 @@ final class f$115
   
   public final void run()
   {
-    AppMethodBeat.i(208330);
-    fv localfv = new fv();
-    localfv.drj.op = 1;
-    localfv.drj.fileName = this.Enn.fileName;
-    localfv.drj.dbL = true;
-    localfv.drj.drm = new h.a()
+    AppMethodBeat.i(198512);
+    fw localfw = new fw();
+    localfw.dso.op = 1;
+    localfw.dso.fileName = this.EFr.fileName;
+    localfw.dso.dcN = true;
+    localfw.dso.dsr = new h.a()
     {
       public final void onCompletion()
       {
-        AppMethodBeat.i(208328);
+        AppMethodBeat.i(198510);
         try
         {
           Bundle localBundle = new Bundle();
           localBundle.putString("playResult", "onVoicePlayEnd:ok");
-          localBundle.putString("localId", f.115.this.tYG);
-          f.k(f.115.this.Ema).g(2002, localBundle);
-          AppMethodBeat.o(208328);
+          localBundle.putString("localId", f.115.this.ujI);
+          f.k(f.115.this.EEe).g(2002, localBundle);
+          AppMethodBeat.o(198510);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.MsgHandler", "notify voice play end failed : %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(208328);
+          ae.e("MicroMsg.MsgHandler", "notify voice play end failed : %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(198510);
         }
       }
     };
-    localfv.drj.drn = new h.b()
+    localfw.dso.dss = new h.b()
     {
       public final void onError()
       {
-        AppMethodBeat.i(208329);
+        AppMethodBeat.i(198511);
         try
         {
           Bundle localBundle = new Bundle();
           localBundle.putString("playResult", "onVoicePlayEnd:fail");
-          localBundle.putString("localId", f.115.this.tYG);
-          f.k(f.115.this.Ema).g(2002, localBundle);
-          AppMethodBeat.o(208329);
+          localBundle.putString("localId", f.115.this.ujI);
+          f.k(f.115.this.EEe).g(2002, localBundle);
+          AppMethodBeat.o(198511);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.MsgHandler", "notify voice play end failed : %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(208329);
+          ae.e("MicroMsg.MsgHandler", "notify voice play end failed : %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(198511);
         }
       }
     };
-    a.IbL.l(localfv);
-    AppMethodBeat.o(208330);
+    a.IvT.l(localfw);
+    AppMethodBeat.o(198512);
   }
 }
 

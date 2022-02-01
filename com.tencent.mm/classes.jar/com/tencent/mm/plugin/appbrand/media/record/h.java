@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.appbrand.media.record;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.io.IOException;
 
 public class h
 {
-  private static a lRN;
+  private static a lWo;
   
   static
   {
     AppMethodBeat.i(175889);
-    lRN = new a()
+    lWo = new a()
     {
-      public final void dH(String paramAnonymousString)
+      public final void dK(String paramAnonymousString)
       {
         AppMethodBeat.i(175888);
         System.loadLibrary(paramAnonymousString);
@@ -40,7 +40,7 @@ public class h
     return arrayOfShort;
   }
   
-  public static String St(String paramString)
+  public static String Tc(String paramString)
   {
     AppMethodBeat.i(146325);
     if (TextUtils.isEmpty(paramString))
@@ -72,7 +72,7 @@ public class h
     return "";
   }
   
-  public static boolean Su(String paramString)
+  public static boolean Td(String paramString)
   {
     AppMethodBeat.i(146326);
     if (TextUtils.isEmpty(paramString))
@@ -104,34 +104,34 @@ public class h
     return false;
   }
   
-  public static boolean Sv(String paramString)
+  public static boolean Te(String paramString)
   {
     boolean bool1 = false;
     AppMethodBeat.i(146327);
-    paramString = new e(paramString);
+    paramString = new k(paramString);
     if (!paramString.exists()) {}
     for (;;)
     {
       boolean bool2;
       try
       {
-        ad.i("MicroMsg.Record.AudioRecordUtil", "new audio file");
+        ae.i("MicroMsg.Record.AudioRecordUtil", "new audio file");
         bool2 = paramString.createNewFile();
         bool1 = bool2;
       }
       catch (IOException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
         continue;
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
         continue;
       }
       AppMethodBeat.o(146327);
       return bool1;
-      ad.i("MicroMsg.Record.AudioRecordUtil", "delete audio file");
+      ae.i("MicroMsg.Record.AudioRecordUtil", "delete audio file");
       paramString.delete();
       try
       {
@@ -140,30 +140,30 @@ public class h
       }
       catch (IOException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Record.AudioRecordUtil", paramString, "prepareCacheFile", new Object[0]);
       }
     }
   }
   
-  public static long Sw(String paramString)
+  public static long Tf(String paramString)
   {
     AppMethodBeat.i(146328);
-    e locale = new e(paramString);
+    k localk = new k(paramString);
     long l = -1L;
-    if (locale.exists())
+    if (localk.exists())
     {
-      ad.i("MicroMsg.Record.AudioRecordUtil", "exist audio file");
-      l = locale.length();
+      ae.i("MicroMsg.Record.AudioRecordUtil", "exist audio file");
+      l = localk.length();
     }
     for (;;)
     {
       AppMethodBeat.o(146328);
       return l;
-      ad.i("MicroMsg.Record.AudioRecordUtil", "audio file not exit, path:%s", new Object[] { paramString });
+      ae.i("MicroMsg.Record.AudioRecordUtil", "audio file not exit, path:%s", new Object[] { paramString });
     }
   }
   
@@ -171,30 +171,30 @@ public class h
   {
     try
     {
-      lRN = parama;
+      lWo = parama;
       return;
     }
     finally {}
   }
   
-  public static a bsS()
+  public static a btD()
   {
     try
     {
-      a locala = lRN;
+      a locala = lWo;
       return locala;
     }
     finally {}
   }
   
-  public static String ea(String paramString1, String paramString2)
+  public static String ec(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146324);
-    e locale = new e(b.arU(), "AudioRecord");
-    if (!locale.exists()) {
-      locale.mkdirs();
+    k localk = new k(b.asj(), "AudioRecord");
+    if (!localk.exists()) {
+      localk.mkdirs();
     }
-    paramString2 = new StringBuilder("audio").append(ai.ee(String.valueOf(paramString2)));
+    paramString2 = new StringBuilder("audio").append(aj.ej(String.valueOf(paramString2)));
     if (!TextUtils.isEmpty(paramString1)) {
       if ("aac".equalsIgnoreCase(paramString1)) {
         paramString1 = ".m4a";
@@ -203,9 +203,9 @@ public class h
     for (;;)
     {
       paramString1 = paramString1;
-      paramString2 = new e(locale, paramString1);
-      ad.d("MicroMsg.Record.AudioRecordUtil", "getAudioFilePath audio name %s path %s", new Object[] { paramString1, paramString2.fOL() });
-      paramString1 = q.B(paramString2.fOK());
+      paramString2 = new k(localk, paramString1);
+      ae.d("MicroMsg.Record.AudioRecordUtil", "getAudioFilePath audio name %s path %s", new Object[] { paramString1, paramString2.fTi() });
+      paramString1 = w.B(paramString2.fTh());
       AppMethodBeat.o(146324);
       return paramString1;
       if ("mp3".equalsIgnoreCase(paramString1)) {
@@ -220,7 +220,7 @@ public class h
   
   public static abstract interface a
   {
-    public abstract void dH(String paramString);
+    public abstract void dK(String paramString);
   }
 }
 

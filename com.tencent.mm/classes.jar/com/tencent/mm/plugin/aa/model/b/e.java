@@ -8,10 +8,10 @@ import java.util.Map;
 public class e
   implements b<d>
 {
-  protected d iUk;
-  public final b iUl;
-  public final c iUm;
-  public final a iUn;
+  protected d iXd;
+  public final b iXe;
+  public final c iXf;
+  public final a iXg;
   
   public e()
   {
@@ -23,10 +23,10 @@ public class e
   private e(d paramd)
   {
     AppMethodBeat.i(63452);
-    this.iUl = new b();
-    this.iUm = new c();
-    this.iUn = new a();
-    this.iUk = paramd;
+    this.iXe = new b();
+    this.iXf = new c();
+    this.iXg = new a();
+    this.iXd = paramd;
     AppMethodBeat.o(63452);
   }
   
@@ -35,7 +35,7 @@ public class e
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -46,12 +46,12 @@ public class e
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<Boolean> c(int paramInt, Map<String, Object> paramMap)
+    public final com.tencent.mm.vending.g.c<Boolean> d(int paramInt, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63447);
       paramMap = g.L(Integer.valueOf(paramInt), paramMap).c(this);
@@ -65,17 +65,17 @@ public class e
   {
     public c() {}
     
-    public final String Wr()
-    {
-      return "Vending.LOGIC";
-    }
-    
-    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> x(Map<String, Object> paramMap)
+    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> E(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63449);
-      paramMap = g.ei(paramMap).c(this);
+      paramMap = g.ej(paramMap).c(this);
       AppMethodBeat.o(63449);
       return paramMap;
+    }
+    
+    public final String Wz()
+    {
+      return "Vending.LOGIC";
     }
   }
 }

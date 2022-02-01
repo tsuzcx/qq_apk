@@ -7,18 +7,18 @@ import com.tencent.mm.compatible.deviceinfo.d;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.v;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera/OpenCameraThread;", "", "()V", "TAG", "", "isTimeouted", "", "lock", "Ljava/lang/Object;", "res", "Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "openCamera", "context", "Landroid/content/Context;", "nowCameraId", "", "looper", "Landroid/os/Looper;", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera/OpenCameraThread;", "", "()V", "TAG", "", "isTimeouted", "", "lock", "Ljava/lang/Object;", "res", "Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "openCamera", "context", "Landroid/content/Context;", "nowCameraId", "", "looper", "Landroid/os/Looper;", "plugin-mediaeditor_release"})
 public final class f
 {
   final String TAG;
-  boolean hqj;
-  d.a.a hqk;
+  boolean hsX;
+  d.a.a hsY;
   final Object lock;
   
   public f()
@@ -37,34 +37,34 @@ public final class f
       AppMethodBeat.o(94062);
       return null;
     }
-    long l1 = bt.flT();
+    long l1 = bu.fpO();
     ??? = Thread.currentThread();
     p.g(???, "Thread.currentThread()");
     final long l2 = ((Thread)???).getId();
     synchronized (this.lock)
     {
-      this.hqj = false;
-      this.hqk = null;
+      this.hsX = false;
+      this.hsY = null;
       b.c((Runnable)new a(this, l2, l1, paramContext, paramInt, paramLooper), "SightCamera_openCamera");
       try
       {
         this.lock.wait(30000L);
-        if (this.hqk != null)
+        if (this.hsY != null)
         {
-          paramContext = this.hqk;
+          paramContext = this.hsY;
           if (paramContext == null) {
-            p.gfZ();
+            p.gkB();
           }
-          if (paramContext.fYS != null)
+          if (paramContext.gaZ != null)
           {
             paramContext = this.TAG;
-            long l3 = bt.flT();
-            paramLooper = this.hqk;
+            long l3 = bu.fpO();
+            paramLooper = this.hsY;
             if (paramLooper == null) {
-              p.gfZ();
+              p.gkB();
             }
-            ad.i(paramContext, "Open Camera Succ thread:%d Time:%d camera:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3 - l1), paramLooper.fYS });
-            paramContext = this.hqk;
+            ae.i(paramContext, "Open Camera Succ thread:%d Time:%d camera:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3 - l1), paramLooper.gaZ });
+            paramContext = this.hsY;
             AppMethodBeat.o(94062);
             return paramContext;
           }
@@ -74,17 +74,17 @@ public final class f
       {
         for (;;)
         {
-          ad.e(this.TAG, "Lock wait failed e:%s", new Object[] { paramContext.getMessage() });
+          ae.e(this.TAG, "Lock wait failed e:%s", new Object[] { paramContext.getMessage() });
         }
       }
     }
-    this.hqj = true;
-    ad.e(this.TAG, "Open Camera Timeout:%d", new Object[] { Long.valueOf(bt.flT() - l1) });
+    this.hsX = true;
+    ae.e(this.TAG, "Open Camera Timeout:%d", new Object[] { Long.valueOf(bu.fpO() - l1) });
     AppMethodBeat.o(94062);
     return null;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/media/widget/camera/OpenCameraThread$openCamera$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/media/widget/camera/OpenCameraThread$openCamera$1$1"})
   static final class a
     implements Runnable
   {
@@ -93,40 +93,40 @@ public final class f
     public final void run()
     {
       AppMethodBeat.i(94061);
-      ??? = this.hql.TAG;
+      ??? = this.hsZ.TAG;
       long l = l2;
       Object localObject2 = Thread.currentThread();
       p.g(localObject2, "Thread.currentThread()");
-      ad.i((String)???, "Start Open Camera thread[parent:%d this:%d] time:%d", new Object[] { Long.valueOf(l), Long.valueOf(((Thread)localObject2).getId()), Long.valueOf(bt.flT() - paramContext) });
-      synchronized (this.hql.lock)
+      ae.i((String)???, "Start Open Camera thread[parent:%d this:%d] time:%d", new Object[] { Long.valueOf(l), Long.valueOf(((Thread)localObject2).getId()), Long.valueOf(bu.fpO() - paramContext) });
+      synchronized (this.hsZ.lock)
       {
         try
         {
-          this.hql.hqk = d.a(paramLooper, this.hqp, this.hqq);
-          if ((this.hql.hqj) && (this.hql.hqk != null)) {
-            ad.e(this.hql.TAG, "thread time out now, release camera :%d ", new Object[] { Long.valueOf(bt.flT() - paramContext) });
+          this.hsZ.hsY = d.a(paramLooper, this.htd, this.hte);
+          if ((this.hsZ.hsX) && (this.hsZ.hsY != null)) {
+            ae.e(this.hsZ.TAG, "thread time out now, release camera :%d ", new Object[] { Long.valueOf(bu.fpO() - paramContext) });
           }
           try
           {
-            localObject2 = this.hql.hqk;
+            localObject2 = this.hsZ.hsY;
             if (localObject2 == null) {
-              p.gfZ();
+              p.gkB();
             }
-            localObject2 = ((d.a.a)localObject2).fYS;
+            localObject2 = ((d.a.a)localObject2).gaZ;
             ((v)localObject2).setPreviewCallback(null);
             ((v)localObject2).stopPreview();
             ((v)localObject2).release();
-            this.hql.hqk = null;
+            this.hsZ.hsY = null;
           }
           catch (Exception localException2)
           {
             for (;;)
             {
-              ad.e(this.hql.TAG, "realease Camera failed e:%s", new Object[] { localException2.getMessage() });
+              ae.e(this.hsZ.TAG, "realease Camera failed e:%s", new Object[] { localException2.getMessage() });
             }
           }
-          this.hql.lock.notify();
-          localObject2 = z.MKo;
+          this.hsZ.lock.notify();
+          localObject2 = z.Nhr;
           AppMethodBeat.o(94061);
           return;
         }
@@ -134,8 +134,8 @@ public final class f
         {
           for (;;)
           {
-            ad.e(this.hql.TAG, "openCamera failed e:%s", new Object[] { localException1.getMessage() });
-            this.hql.hqk = null;
+            ae.e(this.hsZ.TAG, "openCamera failed e:%s", new Object[] { localException1.getMessage() });
+            this.hsZ.hsY = null;
           }
         }
       }

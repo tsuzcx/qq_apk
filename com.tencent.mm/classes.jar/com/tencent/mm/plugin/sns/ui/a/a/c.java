@@ -7,17 +7,17 @@ import com.tencent.mm.vending.g.g;
 
 public final class c
 {
-  public int Alv;
-  public c.a ArA;
-  public b Arz;
+  public int ACH;
+  public b AIN;
+  public c.a AIO;
   public boolean hasInit;
   
   public c()
   {
     AppMethodBeat.i(99838);
-    this.Arz = new b();
-    this.ArA = null;
-    this.Alv = 0;
+    this.AIN = new b();
+    this.AIO = null;
+    this.ACH = 0;
     this.hasInit = false;
     AppMethodBeat.o(99838);
   }
@@ -25,10 +25,10 @@ public final class c
   private void b(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(99839);
-    Object localObject = this.Arz;
-    if (((b)localObject).Akg != null)
+    Object localObject = this.AIN;
+    if (((b)localObject).ABs != null)
     {
-      localObject = ((b)localObject).Akg.AEe;
+      localObject = ((b)localObject).ABs.AVH;
       g.b(paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt)).c((a)localObject);
     }
     AppMethodBeat.o(99839);
@@ -37,10 +37,10 @@ public final class c
   private void c(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(99840);
-    Object localObject = this.Arz;
-    if (((b)localObject).Akg != null)
+    Object localObject = this.AIN;
+    if (((b)localObject).ABs != null)
     {
-      localObject = ((b)localObject).Akg.AEf;
+      localObject = ((b)localObject).ABs.AVI;
       g.b(paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt)).c((a)localObject);
     }
     AppMethodBeat.o(99840);
@@ -54,7 +54,7 @@ public final class c
       AppMethodBeat.o(99841);
       return;
     }
-    if (this.Alv == 0) {
+    if (this.ACH == 0) {
       b(paramString, paramBoolean1, paramBoolean2, paramInt);
     }
     AppMethodBeat.o(99841);
@@ -68,7 +68,7 @@ public final class c
       AppMethodBeat.o(99842);
       return;
     }
-    if (this.Alv == 0) {
+    if (this.ACH == 0) {
       c(paramString, paramBoolean1, paramBoolean2, paramInt);
     }
     AppMethodBeat.o(99842);

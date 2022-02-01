@@ -5,7 +5,7 @@ import com.tencent.mm.vending.c.a;
 public abstract class f<T>
   implements a<Void, T>
 {
-  public abstract void dm(T paramT);
+  public abstract void dn(T paramT);
 }
 
 

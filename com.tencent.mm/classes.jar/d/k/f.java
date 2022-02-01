@@ -1,76 +1,75 @@
 package d.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.ac;
 import d.l;
-import java.util.NoSuchElementException;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongProgressionIterator;", "Lkotlin/collections/LongIterator;", "first", "", "last", "step", "(JJJ)V", "finalElement", "hasNext", "", "next", "getStep", "()J", "nextLong", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/IntRange;", "Lkotlin/ranges/IntProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(II)V", "getEndInclusive", "()Ljava/lang/Integer;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
 public final class f
-  extends ac
+  extends d
+  implements c<Integer>
 {
-  private boolean MMl;
-  private final long MMr;
-  private long MMs;
-  private final long xwe;
+  private static final f Njs;
+  public static final a Njt;
   
-  public f(long paramLong1, long paramLong2, long paramLong3)
+  static
   {
-    AppMethodBeat.i(129314);
-    this.xwe = paramLong3;
-    this.MMr = paramLong2;
-    if (this.xwe > 0L) {
-      if (paramLong1 <= paramLong2)
-      {
-        this.MMl = bool;
-        if (!this.MMl) {
-          break label80;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.MMs = paramLong1;
-      AppMethodBeat.o(129314);
-      return;
-      bool = false;
-      break;
-      if (paramLong1 >= paramLong2) {
-        break;
-      }
-      bool = false;
-      break;
-      label80:
-      paramLong1 = this.MMr;
-    }
+    AppMethodBeat.i(129326);
+    Njt = new a((byte)0);
+    Njs = new f(1, 0);
+    AppMethodBeat.o(129326);
   }
   
-  public final boolean hasNext()
+  public f(int paramInt1, int paramInt2)
   {
-    return this.MMl;
+    super(paramInt1, paramInt2, 1);
   }
   
-  public final long nextLong()
+  public final boolean contains(int paramInt)
   {
-    AppMethodBeat.i(129313);
-    long l = this.MMs;
-    if (l == this.MMr)
-    {
-      if (!this.MMl)
-      {
-        Throwable localThrowable = (Throwable)new NoSuchElementException();
-        AppMethodBeat.o(129313);
-        throw localThrowable;
-      }
-      this.MMl = false;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(129313);
-      return l;
-      this.MMs += this.xwe;
-    }
+    return (this.Njm <= paramInt) && (paramInt <= this.Njn);
   }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(129323);
+    if (((paramObject instanceof f)) && (((isEmpty()) && (((f)paramObject).isEmpty())) || ((this.Njm == ((f)paramObject).Njm) && (this.Njn == ((f)paramObject).Njn))))
+    {
+      AppMethodBeat.o(129323);
+      return true;
+    }
+    AppMethodBeat.o(129323);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(129324);
+    if (isEmpty())
+    {
+      AppMethodBeat.o(129324);
+      return -1;
+    }
+    int i = this.Njm;
+    int j = this.Njn;
+    AppMethodBeat.o(129324);
+    return i * 31 + j;
+  }
+  
+  public final boolean isEmpty()
+  {
+    return this.Njm > this.Njn;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(129325);
+    String str = this.Njm + ".." + this.Njn;
+    AppMethodBeat.o(129325);
+    return str;
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/IntRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/IntRange;", "getEMPTY", "()Lkotlin/ranges/IntRange;", "kotlin-stdlib"})
+  public static final class a {}
 }
 
 

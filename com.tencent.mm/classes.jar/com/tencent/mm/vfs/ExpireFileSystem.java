@@ -6,14 +6,15 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class ExpireFileSystem
-  extends DelegateFileSystem
+  extends AbstractFileSystem
 {
   public static final Parcelable.Creator<ExpireFileSystem> CREATOR;
-  private final FileSystem Ljf;
-  private final Iterable<FileSystem> Ljg;
-  private final long lTw;
+  protected final FileSystem LFX;
+  protected final long lXY;
   
   static
   {
@@ -25,88 +26,43 @@ public class ExpireFileSystem
   protected ExpireFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13094);
-    q.a(paramParcel, ExpireFileSystem.class, 1);
-    this.Ljf = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.Ljf == null)
+    w.a(paramParcel, ExpireFileSystem.class, 1);
+    this.LFX = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.LFX == null)
     {
       paramParcel = new IllegalArgumentException("Wrong wrapped filesystem.");
       AppMethodBeat.o(13094);
       throw paramParcel;
     }
-    this.Ljg = Collections.singletonList(this.Ljf);
-    this.lTw = paramParcel.readLong();
+    this.lXY = paramParcel.readLong();
     AppMethodBeat.o(13094);
   }
   
   public ExpireFileSystem(FileSystem paramFileSystem, long paramLong)
   {
     AppMethodBeat.i(170151);
-    this.Ljf = paramFileSystem;
-    this.Ljg = Collections.singletonList(this.Ljf);
-    this.lTw = paramLong;
+    this.LFX = paramFileSystem;
+    this.lXY = paramLong;
     AppMethodBeat.o(170151);
   }
   
-  public final void a(CancellationSignal paramCancellationSignal)
+  public FileSystem.b cd(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(13095);
-    long l3 = System.currentTimeMillis();
-    long l4 = this.lTw;
-    Object localObject = this.Ljf.cY("", true);
-    long l1;
-    FileSystem.a locala;
-    long l2;
-    if (localObject != null)
-    {
-      localObject = ((Iterable)localObject).iterator();
-      label120:
-      for (l1 = 0L;; l1 = l2 + l1) {
-        for (;;)
-        {
-          if (((Iterator)localObject).hasNext())
-          {
-            locala = (FileSystem.a)((Iterator)localObject).next();
-            paramCancellationSignal.throwIfCanceled();
-            if ((!locala.LjL) && (locala.LjK <= l3 - l4))
-            {
-              if (!locala.delete()) {
-                break label171;
-              }
-              if (locala.LjJ < 0L) {
-                l2 = locala.size;
-              }
-            }
-          }
-        }
-      }
-    }
-    label171:
-    for (;;)
-    {
-      break;
-      l2 = locala.LjJ;
-      break label120;
-      k(3, new Object[] { "deleteSize", Long.valueOf(l1) });
-      super.a(paramCancellationSignal);
-      AppMethodBeat.o(13095);
-      return;
-    }
+    AppMethodBeat.i(193367);
+    paramMap = new a(this.LFX.cd(paramMap));
+    AppMethodBeat.o(193367);
+    return paramMap;
   }
   
-  protected final Iterable<FileSystem> fOq()
+  public int describeContents()
   {
-    return this.Ljg;
-  }
-  
-  protected final FileSystem gK(String paramString, int paramInt)
-  {
-    return this.Ljf;
+    return 0;
   }
   
   public String toString()
   {
     AppMethodBeat.i(170152);
-    String str = "Expire [" + this.Ljf.toString() + "]";
+    String str = "Expire [" + this.LFX.toString() + "]";
     AppMethodBeat.o(170152);
     return str;
   }
@@ -114,10 +70,86 @@ public class ExpireFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13096);
-    q.b(paramParcel, ExpireFileSystem.class, 1);
-    paramParcel.writeParcelable(this.Ljf, paramInt);
-    paramParcel.writeLong(this.lTw);
+    w.b(paramParcel, ExpireFileSystem.class, 1);
+    paramParcel.writeParcelable(this.LFX, paramInt);
+    paramParcel.writeLong(this.lXY);
     AppMethodBeat.o(13096);
+  }
+  
+  protected class a
+    extends b
+  {
+    protected final FileSystem.b LFY;
+    protected final List<FileSystem.b> LFZ;
+    
+    public a(FileSystem.b paramb)
+    {
+      AppMethodBeat.i(193365);
+      this.LFY = paramb;
+      this.LFZ = Collections.singletonList(paramb);
+      AppMethodBeat.o(193365);
+    }
+    
+    public void a(CancellationSignal paramCancellationSignal)
+    {
+      AppMethodBeat.i(193366);
+      long l3 = System.currentTimeMillis();
+      long l4 = ExpireFileSystem.this.lXY;
+      Object localObject = this.LFY.dc("", true);
+      long l1;
+      c localc;
+      long l2;
+      if (localObject != null)
+      {
+        localObject = ((Iterable)localObject).iterator();
+        label122:
+        for (l1 = 0L;; l1 = l2 + l1) {
+          for (;;)
+          {
+            if (((Iterator)localObject).hasNext())
+            {
+              localc = (c)((Iterator)localObject).next();
+              paramCancellationSignal.throwIfCanceled();
+              if ((!localc.LGd) && (localc.LGc <= l3 - l4))
+              {
+                if (!localc.delete()) {
+                  break label175;
+                }
+                if (localc.LGb < 0L) {
+                  l2 = localc.size;
+                }
+              }
+            }
+          }
+        }
+      }
+      label175:
+      for (;;)
+      {
+        break;
+        l2 = localc.LGb;
+        break label122;
+        ExpireFileSystem.this.k(3, new Object[] { "deleteSize", Long.valueOf(l1) });
+        super.a(paramCancellationSignal);
+        AppMethodBeat.o(193366);
+        return;
+      }
+    }
+    
+    public final FileSystem fSK()
+    {
+      return ExpireFileSystem.this;
+    }
+    
+    public final List<FileSystem.b> fSM()
+    {
+      return this.LFZ;
+    }
+    
+    public final FileSystem.b gU(String paramString, int paramInt)
+    {
+      return this.LFY;
+    }
   }
 }
 

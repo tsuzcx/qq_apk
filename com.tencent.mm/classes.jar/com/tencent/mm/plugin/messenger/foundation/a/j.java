@@ -11,9 +11,9 @@ public abstract interface j
   
   public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
   
-  public abstract boolean amL(String paramString);
+  public abstract boolean anM(String paramString);
   
-  public abstract boolean amM(String paramString);
+  public abstract boolean anN(String paramString);
   
   public abstract void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
 }

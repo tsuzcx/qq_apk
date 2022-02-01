@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.gamelife.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.plugin.gamelife.b.c;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.plugin.gamelife.b.d;
+import com.tencent.mm.plugin.gamelife.b.e;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetBlackList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetBlackListResponse;", "userName", "", "(Ljava/lang/String;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetBlackList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetBlackListResponse;", "userName", "", "(Ljava/lang/String;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
 public final class a
-  extends com.tencent.mm.al.a<d>
+  extends com.tencent.mm.ak.a<e>
 {
   private static final String TAG = "MicroMsg.CgiGetBlackList";
-  public static final a uxz;
+  public static final a uJc;
   
   static
   {
-    AppMethodBeat.i(211266);
-    uxz = new a((byte)0);
+    AppMethodBeat.i(212033);
+    uJc = new a((byte)0);
     TAG = "MicroMsg.CgiGetBlackList";
-    AppMethodBeat.o(211266);
+    AppMethodBeat.o(212033);
   }
   
   public a(String paramString)
   {
-    AppMethodBeat.i(211265);
+    AppMethodBeat.i(212032);
     b.a locala = new b.a();
-    c localc = new c();
-    localc.username = paramString;
-    locala.c((com.tencent.mm.bx.a)localc);
-    locala.d((com.tencent.mm.bx.a)new d());
-    locala.Dl("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getblacklist");
-    locala.oP(2982);
-    c(locala.aDC());
-    AppMethodBeat.o(211265);
+    d locald = new d();
+    locald.username = paramString;
+    locala.c((com.tencent.mm.bw.a)locald);
+    locala.d((com.tencent.mm.bw.a)new e());
+    locala.DN("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getblacklist");
+    locala.oS(2982);
+    c(locala.aDS());
+    AppMethodBeat.o(212032);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetBlackList$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-gamelife_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetBlackList$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-gamelife_release"})
   public static final class a {}
 }
 

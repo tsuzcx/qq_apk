@@ -3,49 +3,68 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bss
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String key;
-  public String value;
+  public int action;
+  public String dyI;
+  public String url;
+  public String username;
+  public String ypt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122517);
+    AppMethodBeat.i(72510);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.key != null) {
-        paramVarArgs.d(1, this.key);
+      if (this.dyI != null) {
+        paramVarArgs.d(1, this.dyI);
       }
-      if (this.value != null) {
-        paramVarArgs.d(2, this.value);
+      paramVarArgs.aS(2, this.action);
+      if (this.url != null) {
+        paramVarArgs.d(3, this.url);
       }
-      AppMethodBeat.o(122517);
+      if (this.username != null) {
+        paramVarArgs.d(4, this.username);
+      }
+      if (this.ypt != null) {
+        paramVarArgs.d(5, this.ypt);
+      }
+      AppMethodBeat.o(72510);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.key == null) {
-        break label274;
+      if (this.dyI == null) {
+        break label438;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.key) + 0;; paramInt = 0)
+    label438:
+    for (paramInt = f.a.a.b.b.a.e(1, this.dyI) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.value != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.value);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.action);
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.url);
       }
-      AppMethodBeat.o(122517);
-      return i;
+      i = paramInt;
+      if (this.username != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.username);
+      }
+      paramInt = i;
+      if (this.ypt != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.ypt);
+      }
+      AppMethodBeat.o(72510);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(122517);
+        AppMethodBeat.o(72510);
         return 0;
       }
       if (paramInt == 3)
@@ -55,25 +74,37 @@ public final class bss
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122517);
+          AppMethodBeat.o(72510);
           return -1;
         case 1: 
-          localbss.key = locala.NPN.readString();
-          AppMethodBeat.o(122517);
+          localbss.dyI = locala.OmT.readString();
+          AppMethodBeat.o(72510);
+          return 0;
+        case 2: 
+          localbss.action = locala.OmT.zc();
+          AppMethodBeat.o(72510);
+          return 0;
+        case 3: 
+          localbss.url = locala.OmT.readString();
+          AppMethodBeat.o(72510);
+          return 0;
+        case 4: 
+          localbss.username = locala.OmT.readString();
+          AppMethodBeat.o(72510);
           return 0;
         }
-        localbss.value = locala.NPN.readString();
-        AppMethodBeat.o(122517);
+        localbss.ypt = locala.OmT.readString();
+        AppMethodBeat.o(72510);
         return 0;
       }
-      AppMethodBeat.o(122517);
+      AppMethodBeat.o(72510);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bss
  * JD-Core Version:    0.7.0.1
  */

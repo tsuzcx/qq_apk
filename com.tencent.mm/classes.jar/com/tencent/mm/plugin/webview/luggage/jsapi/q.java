@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.webview.model.WebViewJSSDKImageItem;
 import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.model.ao;
 import com.tencent.mm.plugin.webview.model.f.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,26 +19,26 @@ import org.json.JSONObject;
 public class q
   extends br<com.tencent.mm.plugin.webview.luggage.g>
 {
-  private ProgressDialog fMu = null;
+  private ProgressDialog fOC = null;
   
   public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(78551);
-    Object localObject = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    Object localObject = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
     if (localObject == null)
     {
-      ad.i("MicroMsg.JsApiDownLoadImage", "data is null");
+      ae.i("MicroMsg.JsApiDownLoadImage", "data is null");
       parama.f("invalid_data", null);
       AppMethodBeat.o(78551);
       return;
     }
     paramString = ((JSONObject)localObject).optString("preVerifyAppId");
     final String str = ((JSONObject)localObject).optString("serverId");
-    if (bt.getInt(((JSONObject)localObject).optString("isShowProgressTips", "0"), 0) == 1) {}
+    if (bu.getInt(((JSONObject)localObject).optString("isShowProgressTips", "0"), 0) == 1) {}
     for (int i = 1;; i = 0)
     {
-      ad.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, appid is : %s, media id is : %s", new Object[] { paramString, str });
-      if ((!bt.isNullOrNil(paramString)) && (!bt.isNullOrNil(str))) {
+      ae.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, appid is : %s, media id is : %s", new Object[] { paramString, str });
+      if ((!bu.isNullOrNil(paramString)) && (!bu.isNullOrNil(str))) {
         break;
       }
       parama.f("missing arguments", null);
@@ -50,10 +50,10 @@ public class q
       public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4)
       {
         AppMethodBeat.i(78549);
-        ad.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, on cdn finish, is success : %b, local id : %s, media id is : %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
-        if ((!bt.isNullOrNil(paramAnonymousString2)) && (paramAnonymousString2.equals(str)))
+        ae.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, on cdn finish, is success : %b, local id : %s, media id is : %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
+        if ((!bu.isNullOrNil(paramAnonymousString2)) && (paramAnonymousString2.equals(str)))
         {
-          com.tencent.mm.plugin.webview.modeltools.g.eQT().b(this);
+          com.tencent.mm.plugin.webview.modeltools.g.eUF().b(this);
           if (q.a(q.this) != null)
           {
             q.a(q.this).dismiss();
@@ -65,9 +65,9 @@ public class q
             AppMethodBeat.o(78549);
             return;
           }
-          paramAnonymousString2 = com.tencent.mm.plugin.webview.modeltools.g.eQU().aHu(paramAnonymousString1);
-          if (((paramAnonymousString2 instanceof WebViewJSSDKImageItem)) && (bt.isNullOrNil(paramAnonymousString2.kHB))) {
-            ((WebViewJSSDKImageItem)paramAnonymousString2).ftv();
+          paramAnonymousString2 = com.tencent.mm.plugin.webview.modeltools.g.eUG().aIN(paramAnonymousString1);
+          if (((paramAnonymousString2 instanceof WebViewJSSDKImageItem)) && (bu.isNullOrNil(paramAnonymousString2.kKQ))) {
+            ((WebViewJSSDKImageItem)paramAnonymousString2).fwO();
           }
           paramAnonymousString2 = new JSONObject();
         }
@@ -85,19 +85,19 @@ public class q
         }
       }
     };
-    com.tencent.mm.plugin.webview.modeltools.g.eQT().a(paramString, str, (f.b)localObject);
-    ad.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, add cdn download task result : %b", new Object[] { Boolean.TRUE });
+    com.tencent.mm.plugin.webview.modeltools.g.eUF().a(paramString, str, (f.b)localObject);
+    ae.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, add cdn download task result : %b", new Object[] { Boolean.TRUE });
     if (i != 0)
     {
       paramContext.getString(2131755906);
-      this.fMu = h.b(paramContext, paramContext.getString(2131766263), true, new DialogInterface.OnCancelListener()
+      this.fOC = h.b(paramContext, paramContext.getString(2131766263), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(78550);
-          com.tencent.mm.plugin.webview.modeltools.g.eQT().b(this.DQV);
-          com.tencent.mm.plugin.webview.modeltools.g.eQT();
-          an.aHo(str);
+          com.tencent.mm.plugin.webview.modeltools.g.eUF().b(this.EiV);
+          com.tencent.mm.plugin.webview.modeltools.g.eUF();
+          an.aIH(str);
           parama.f("downloadImage:fail", null);
           AppMethodBeat.o(78550);
         }
@@ -108,7 +108,7 @@ public class q
   
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

@@ -16,28 +16,28 @@ public class AudioSourceComposition
   
   public AudioSourceComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(218024);
+    AppMethodBeat.i(214663);
     this.mAudioInfo = new AudioInfo(44100, 1, 2);
     this.mAsset = paramAsset;
-    AppMethodBeat.o(218024);
+    AppMethodBeat.o(214663);
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(218026);
+    AppMethodBeat.i(214665);
     CMTime localCMTime = this.mAsset.getDuration();
-    AppMethodBeat.o(218026);
+    AppMethodBeat.o(214665);
     return localCMTime;
   }
   
   public AudioCompositionDecoderTrack getSourceAudioDecoder(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218025);
+    AppMethodBeat.i(214664);
     paramCMTimeRange = new AudioCompositionDecoderTrack(this.mAsset.getTracks(), -1);
     paramCMTimeRange.setAudioInfo(this.mAudioInfo);
     paramCMTimeRange.setDecodeType(IDecoder.DecodeType.Audio);
     paramCMTimeRange.setFrameRate(44);
-    AppMethodBeat.o(218025);
+    AppMethodBeat.o(214664);
     return paramCMTimeRange;
   }
 }

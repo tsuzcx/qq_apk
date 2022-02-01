@@ -18,39 +18,39 @@ import android.view.View.OnTouchListener;
 import android.view.animation.DecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class EnvelopeStoryBehavior
   extends AppBarLayout.Behavior
   implements View.OnTouchListener
 {
-  private Vibrator mUw;
-  private boolean tIL;
-  private boolean tIM;
-  boolean vsE;
-  private EnvelopeAppBarLayout vtm;
-  private int vtn;
-  private RecyclerView vto;
-  private float vtp;
-  private float vtq;
-  private boolean vtr;
-  private boolean vts;
-  private int vtt;
-  boolean vtu;
-  AppBarLayout.b vtv;
-  private boolean vtw;
+  private Vibrator mZD;
+  private boolean tTC;
+  private boolean tTD;
+  boolean vEJ;
+  AppBarLayout.b vFA;
+  private boolean vFB;
+  private EnvelopeAppBarLayout vFr;
+  private int vFs;
+  private RecyclerView vFt;
+  private float vFu;
+  private float vFv;
+  private boolean vFw;
+  private boolean vFx;
+  private int vFy;
+  boolean vFz;
   
   public EnvelopeStoryBehavior()
   {
     AppMethodBeat.i(163614);
-    this.vtn = 0;
-    this.mUw = ((Vibrator)aj.getContext().getSystemService("vibrator"));
-    this.vtt = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 300);
-    this.vtu = false;
-    this.vsE = false;
-    this.tIL = false;
-    this.tIM = false;
+    this.vFs = 0;
+    this.mZD = ((Vibrator)ak.getContext().getSystemService("vibrator"));
+    this.vFy = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 300);
+    this.vFz = false;
+    this.vEJ = false;
+    this.tTC = false;
+    this.tTD = false;
     AppMethodBeat.o(163614);
   }
   
@@ -58,21 +58,21 @@ public class EnvelopeStoryBehavior
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163615);
-    this.vtn = 0;
-    this.mUw = ((Vibrator)aj.getContext().getSystemService("vibrator"));
-    this.vtt = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 300);
-    this.vtu = false;
-    this.vsE = false;
-    this.tIL = false;
-    this.tIM = false;
+    this.vFs = 0;
+    this.mZD = ((Vibrator)ak.getContext().getSystemService("vibrator"));
+    this.vFy = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 300);
+    this.vFz = false;
+    this.vEJ = false;
+    this.tTC = false;
+    this.tTD = false;
     AppMethodBeat.o(163615);
   }
   
-  private boolean diQ()
+  private boolean dlP()
   {
     AppMethodBeat.i(163620);
     int i = bR();
-    if (this.vtm.getTotalScrollRange() == Math.abs(i))
+    if (this.vFr.getTotalScrollRange() == Math.abs(i))
     {
       AppMethodBeat.o(163620);
       return true;
@@ -81,7 +81,7 @@ public class EnvelopeStoryBehavior
     return false;
   }
   
-  private boolean diR()
+  private boolean dlQ()
   {
     AppMethodBeat.i(163621);
     if (Math.abs(bR()) <= 0)
@@ -93,56 +93,56 @@ public class EnvelopeStoryBehavior
     return false;
   }
   
-  private void diS()
+  private void dlR()
   {
     AppMethodBeat.i(163623);
-    if (((this.tIM) && (bR() + this.vtm.getTotalScrollRange() <= this.vtn)) || ((this.tIL) && (Math.abs(bR()) >= this.vtn)))
+    if (((this.tTD) && (bR() + this.vFr.getTotalScrollRange() <= this.vFs)) || ((this.tTC) && (Math.abs(bR()) >= this.vFs)))
     {
-      this.vtm.b(false, true, true);
+      this.vFr.b(false, true, true);
       AppMethodBeat.o(163623);
       return;
     }
-    this.vtm.b(true, true, true);
+    this.vFr.b(true, true, true);
     AppMethodBeat.o(163623);
   }
   
-  private void diT()
+  private void dlS()
   {
     AppMethodBeat.i(174342);
     int i = bR();
-    int j = this.vtm.getTotalScrollRange();
-    if (this.vtw)
+    int j = this.vFr.getTotalScrollRange();
+    if (this.vFB)
     {
-      if (j - Math.abs(i) < this.vtt)
+      if (j - Math.abs(i) < this.vFy)
       {
-        this.vtm.b(false, true, true);
+        this.vFr.b(false, true, true);
         AppMethodBeat.o(174342);
         return;
       }
-      diU();
+      dlT();
       AppMethodBeat.o(174342);
       return;
     }
-    if (this.tIM)
+    if (this.tTD)
     {
-      if (bR() + this.vtm.getTotalScrollRange() <= this.vtn)
+      if (bR() + this.vFr.getTotalScrollRange() <= this.vFs)
       {
-        this.vtm.b(false, true, true);
+        this.vFr.b(false, true, true);
         AppMethodBeat.o(174342);
         return;
       }
-      diU();
+      dlT();
     }
     AppMethodBeat.o(174342);
   }
   
-  private void diU()
+  private void dlT()
   {
     AppMethodBeat.i(174343);
     ValueAnimator localValueAnimator = new ValueAnimator();
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
     localValueAnimator.setDuration(200L);
-    localValueAnimator.setIntValues(new int[] { bR(), -(this.vtm.getTotalScrollRange() - this.vtt) });
+    localValueAnimator.setIntValues(new int[] { bR(), -(this.vFr.getTotalScrollRange() - this.vFy) });
     localValueAnimator.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -160,14 +160,14 @@ public class EnvelopeStoryBehavior
     });
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
-      int vtf;
+      int vFk;
       
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(174341);
         int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-        this.vtf = i;
-        ad.d("MicroMsg.EnvelopeStoryBehavior", "animate middle: %s", new Object[] { Integer.valueOf(i) });
+        this.vFk = i;
+        ae.d("MicroMsg.EnvelopeStoryBehavior", "animate middle: %s", new Object[] { Integer.valueOf(i) });
         EnvelopeStoryBehavior.this.G(i);
         if (EnvelopeStoryBehavior.c(EnvelopeStoryBehavior.this) != null) {
           EnvelopeStoryBehavior.c(EnvelopeStoryBehavior.this).c(EnvelopeStoryBehavior.a(EnvelopeStoryBehavior.this), i);
@@ -182,21 +182,21 @@ public class EnvelopeStoryBehavior
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(163619);
-    if ((paramInt5 == 1) && (this.tIM))
+    if ((paramInt5 == 1) && (this.tTD))
     {
       if (paramInt2 == 0)
       {
-        ad.i("MicroMsg.EnvelopeStoryBehavior", "stop verticalRecyclerView scroll!");
-        this.vto.kJ();
+        ae.i("MicroMsg.EnvelopeStoryBehavior", "stop verticalRecyclerView scroll!");
+        this.vFt.kJ();
       }
       AppMethodBeat.o(163619);
       return;
     }
     int i = Math.abs(paramInt4);
-    i = this.vtm.getTotalScrollRange() - Math.abs(bR()) + i;
-    ad.d("MicroMsg.EnvelopeStoryBehavior", "distance: ".concat(String.valueOf(i)));
+    i = this.vFr.getTotalScrollRange() - Math.abs(bR()) + i;
+    ae.d("MicroMsg.EnvelopeStoryBehavior", "distance: ".concat(String.valueOf(i)));
     float f1 = 0.7F;
-    float f2 = this.vtm.getTotalScrollRange();
+    float f2 = this.vFr.getTotalScrollRange();
     if (f2 != 0.0F)
     {
       if (i > f2) {
@@ -241,9 +241,9 @@ public class EnvelopeStoryBehavior
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, int paramInt)
   {
     AppMethodBeat.i(163616);
-    this.vtm = ((EnvelopeAppBarLayout)paramAppBarLayout);
-    this.vto = ((RecyclerView)paramCoordinatorLayout.findViewById(2131301770));
-    this.vtn = ((int)(paramCoordinatorLayout.getHeight() / 10.0F));
+    this.vFr = ((EnvelopeAppBarLayout)paramAppBarLayout);
+    this.vFt = ((RecyclerView)paramCoordinatorLayout.findViewById(2131301770));
+    this.vFs = ((int)(paramCoordinatorLayout.getHeight() / 10.0F));
     if ((paramCoordinatorLayout instanceof TouchCoordinatorLayout)) {
       ((TouchCoordinatorLayout)paramCoordinatorLayout).a(this);
     }
@@ -258,27 +258,27 @@ public class EnvelopeStoryBehavior
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeStoryBehavior", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeStoryBehavior", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     int i;
     boolean bool;
     if (paramMotionEvent.getAction() == 0)
     {
-      this.vtp = paramMotionEvent.getX();
-      this.vtq = paramMotionEvent.getY();
-      this.vtr = false;
-      this.vts = false;
-      this.tIL = diR();
-      this.tIM = diQ();
+      this.vFu = paramMotionEvent.getX();
+      this.vFv = paramMotionEvent.getY();
+      this.vFw = false;
+      this.vFx = false;
+      this.tTC = dlQ();
+      this.tTD = dlP();
       i = bR();
-      if (this.vtm.getTotalScrollRange() - Math.abs(i) == this.vtt)
+      if (this.vFr.getTotalScrollRange() - Math.abs(i) == this.vFy)
       {
         i = 1;
-        if ((i == 0) && ((this.tIM) || (this.tIL))) {
+        if ((i == 0) && ((this.tTD) || (this.tTC))) {
           break label185;
         }
         bool = true;
         label148:
-        this.vtw = bool;
+        this.vFB = bool;
       }
     }
     for (;;)
@@ -293,27 +293,27 @@ public class EnvelopeStoryBehavior
       break label148;
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        if (this.vtu) {
-          diT();
-        } else if ((this.vtm != null) && (this.vsE)) {
-          this.vtm.b(false, true, true);
-        } else if ((!diR()) && (!diQ())) {
-          diS();
+        if (this.vFz) {
+          dlS();
+        } else if ((this.vFr != null) && (this.vEJ)) {
+          this.vFr.b(false, true, true);
+        } else if ((!dlQ()) && (!dlP())) {
+          dlR();
         }
       }
       else if (paramMotionEvent.getAction() == 2)
       {
         float f1 = paramMotionEvent.getY();
-        float f2 = this.vtq;
-        if ((this.vtm != null) && (!this.vsE) && (f1 - f2 > 0.0F) && (!this.vtr) && (bR() != 0)) {
-          if (bR() + this.vtm.getTotalScrollRange() < this.vtn)
+        float f2 = this.vFv;
+        if ((this.vFr != null) && (!this.vEJ) && (f1 - f2 > 0.0F) && (!this.vFw) && (bR() != 0)) {
+          if (bR() + this.vFr.getTotalScrollRange() < this.vFs)
           {
-            this.vts = true;
+            this.vFx = true;
           }
-          else if ((this.vts) && (bR() + this.vtm.getTotalScrollRange() >= this.vtn))
+          else if ((this.vFx) && (bR() + this.vFr.getTotalScrollRange() >= this.vFs))
           {
-            this.vtr = true;
-            this.mUw.vibrate(10L);
+            this.vFw = true;
+            this.mZD.vibrate(10L);
           }
         }
       }
@@ -322,7 +322,7 @@ public class EnvelopeStoryBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryBehavior
  * JD-Core Version:    0.7.0.1
  */

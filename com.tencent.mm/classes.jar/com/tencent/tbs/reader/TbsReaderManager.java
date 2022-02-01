@@ -10,11 +10,11 @@ public class TbsReaderManager
   
   public ReaderMixerMode createReaderMode(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(190633);
+    AppMethodBeat.i(192403);
     destroy();
     this.a = ReaderEngine.getInstance().createTbsReader(paramContext.getApplicationContext(), Integer.valueOf(3), paramITbsReaderCallback);
     paramContext = new ReaderMixerMode(paramContext, this.a);
-    AppMethodBeat.o(190633);
+    AppMethodBeat.o(192403);
     return paramContext;
   }
   

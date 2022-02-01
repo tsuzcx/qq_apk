@@ -5,7 +5,7 @@ import com.tencent.mm.ui.base.preference.Preference.b;
 public final class a$1
   implements Preference.b
 {
-  public final boolean dAh()
+  public final boolean dDy()
   {
     return false;
   }

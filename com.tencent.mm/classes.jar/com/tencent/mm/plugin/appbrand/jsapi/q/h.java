@@ -5,9 +5,9 @@ import android.view.View;
 
 public abstract interface h<PipVideoContainer extends View>
 {
-  public abstract d FK();
+  public abstract d FQ();
   
-  public abstract PipVideoContainer aI(Context paramContext);
+  public abstract PipVideoContainer aJ(Context paramContext);
   
   public abstract void cq(PipVideoContainer paramPipVideoContainer);
   
@@ -24,7 +24,7 @@ public abstract interface h<PipVideoContainer extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.q.h
  * JD-Core Version:    0.7.0.1
  */

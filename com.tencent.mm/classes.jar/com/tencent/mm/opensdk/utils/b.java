@@ -18,13 +18,13 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(196927);
+    AppMethodBeat.i(194039);
     int i = Runtime.getRuntime().availableProcessors();
     b = i;
     c = i + 1;
     d = i * 2 + 1;
     e = new ThreadPoolExecutor(c, d, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-    AppMethodBeat.o(196927);
+    AppMethodBeat.o(194039);
   }
   
   /* Error */
@@ -138,7 +138,7 @@ public final class b
   
   public static int a(String paramString)
   {
-    AppMethodBeat.i(196925);
+    AppMethodBeat.i(194037);
     if ((paramString != null) && (paramString.length() != 0))
     {
       File localFile = new File(paramString);
@@ -148,29 +148,29 @@ public final class b
           try
           {
             i = a(a.getContentResolver(), Uri.parse(paramString));
-            AppMethodBeat.o(196925);
+            AppMethodBeat.o(194037);
             return i;
           }
           catch (Exception paramString)
           {
-            AppMethodBeat.o(196925);
+            AppMethodBeat.o(194037);
             return 0;
           }
         }
-        AppMethodBeat.o(196925);
+        AppMethodBeat.o(194037);
         return 0;
       }
       int i = (int)localFile.length();
-      AppMethodBeat.o(196925);
+      AppMethodBeat.o(194037);
       return i;
     }
-    AppMethodBeat.o(196925);
+    AppMethodBeat.o(194037);
     return 0;
   }
   
   public static int a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(196924);
+    AppMethodBeat.i(194036);
     int i = paramInt;
     if (paramString != null) {
       i = paramInt;
@@ -180,12 +180,12 @@ public final class b
       if (paramString.length() > 0) {
         i = Integer.parseInt(paramString);
       }
-      AppMethodBeat.o(196924);
+      AppMethodBeat.o(194036);
       return i;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(196924);
+      AppMethodBeat.o(194036);
     }
     return paramInt;
   }
@@ -197,19 +197,19 @@ public final class b
   
   public static boolean b(String paramString)
   {
-    AppMethodBeat.i(196923);
+    AppMethodBeat.i(194035);
     if ((paramString != null) && (paramString.length() > 0))
     {
-      AppMethodBeat.o(196923);
+      AppMethodBeat.o(194035);
       return false;
     }
-    AppMethodBeat.o(196923);
+    AppMethodBeat.o(194035);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.utils.b
  * JD-Core Version:    0.7.0.1
  */

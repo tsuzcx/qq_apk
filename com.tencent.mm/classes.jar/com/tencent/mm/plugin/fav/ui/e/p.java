@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.protocal.protobuf.akp;
 
 public final class p
   extends b
@@ -24,7 +24,7 @@ public final class p
     return paramView;
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
     AppMethodBeat.i(107492);
     if (paramView != null) {

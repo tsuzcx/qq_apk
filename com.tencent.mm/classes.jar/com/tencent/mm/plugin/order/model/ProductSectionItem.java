@@ -16,9 +16,9 @@ public class ProductSectionItem
   public String jumpUrl;
   public String name;
   public int scene;
-  public List<Skus> wDR;
-  public String wDS;
-  public String wDT;
+  public List<Skus> wTC;
+  public String wTD;
+  public String wTE;
   
   static
   {
@@ -37,21 +37,21 @@ public class ProductSectionItem
     int j = paramParcel.readInt();
     if (j > 0)
     {
-      this.wDR = new ArrayList();
+      this.wTC = new ArrayList();
       int i = 0;
       while (i < j)
       {
         Skus localSkus = new Skus();
         localSkus.key = paramParcel.readString();
         localSkus.value = paramParcel.readString();
-        this.wDR.add(localSkus);
+        this.wTC.add(localSkus);
         i += 1;
       }
     }
     this.count = paramParcel.readInt();
-    this.wDS = paramParcel.readString();
+    this.wTD = paramParcel.readString();
     this.jumpUrl = paramParcel.readString();
-    this.wDT = paramParcel.readString();
+    this.wTE = paramParcel.readString();
     this.scene = paramParcel.readInt();
     AppMethodBeat.o(66697);
   }
@@ -66,13 +66,13 @@ public class ProductSectionItem
     AppMethodBeat.i(66698);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeString(this.name);
-    if (this.wDR != null)
+    if (this.wTC != null)
     {
-      paramParcel.writeInt(this.wDR.size());
+      paramParcel.writeInt(this.wTC.size());
       paramInt = 0;
-      while (paramInt < this.wDR.size())
+      while (paramInt < this.wTC.size())
       {
-        Skus localSkus = (Skus)this.wDR.get(paramInt);
+        Skus localSkus = (Skus)this.wTC.get(paramInt);
         paramParcel.writeString(localSkus.key);
         paramParcel.writeString(localSkus.value);
         paramInt += 1;
@@ -80,9 +80,9 @@ public class ProductSectionItem
     }
     paramParcel.writeInt(0);
     paramParcel.writeInt(this.count);
-    paramParcel.writeString(this.wDS);
+    paramParcel.writeString(this.wTD);
     paramParcel.writeString(this.jumpUrl);
-    paramParcel.writeString(this.wDT);
+    paramParcel.writeString(this.wTE);
     paramParcel.writeInt(this.scene);
     AppMethodBeat.o(66698);
   }
@@ -111,7 +111,7 @@ public class ProductSectionItem
       AppMethodBeat.o(66693);
     }
     
-    public static String eF(List<Skus> paramList)
+    public static String eM(List<Skus> paramList)
     {
       AppMethodBeat.i(66695);
       if ((paramList == null) || (paramList.size() == 0))
@@ -151,7 +151,7 @@ public class ProductSectionItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.ProductSectionItem
  * JD-Core Version:    0.7.0.1
  */

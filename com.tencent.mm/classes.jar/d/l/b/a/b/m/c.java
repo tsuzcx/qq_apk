@@ -11,12 +11,12 @@ import java.util.Set;
 
 public final class c
 {
-  public static final c NBi;
+  public static final c NYp;
   
   static
   {
     AppMethodBeat.i(60571);
-    NBi = new c();
+    NYp = new c();
     AppMethodBeat.o(60571);
   }
   
@@ -32,13 +32,13 @@ public final class c
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.NBp;
+    ArrayDeque localArrayDeque = paramg.NYw;
     if (localArrayDeque == null) {
-      p.gfZ();
+      p.gkB();
     }
-    Set localSet = paramg.NBq;
+    Set localSet = paramg.NYx;
     if (localSet == null) {
-      p.gfZ();
+      p.gkB();
     }
     localArrayDeque.push(paramj);
     label316:
@@ -66,9 +66,9 @@ public final class c
         g.b localb;
         if (paramg.h((d.l.b.a.b.m.c.j)localObject))
         {
-          localb = (g.b)g.b.c.NBw;
+          localb = (g.b)g.b.c.NYD;
           label221:
-          if (!(p.i(localb, g.b.c.NBw) ^ true)) {
+          if (!(p.i(localb, g.b.c.NYD) ^ true)) {
             break label316;
           }
           label234:
@@ -88,7 +88,7 @@ public final class c
             paramg.clear();
             AppMethodBeat.o(60570);
             return true;
-            localb = (g.b)g.b.b.NBv;
+            localb = (g.b)g.b.b.NYC;
             break label221;
             localb = null;
             break label234;
@@ -117,13 +117,13 @@ public final class c
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.NBp;
+    ArrayDeque localArrayDeque = paramg.NYw;
     if (localArrayDeque == null) {
-      p.gfZ();
+      p.gkB();
     }
-    Set localSet = paramg.NBq;
+    Set localSet = paramg.NYx;
     if (localSet == null) {
-      p.gfZ();
+      p.gkB();
     }
     localArrayDeque.push(paramj);
     label386:
@@ -149,9 +149,9 @@ public final class c
         g.b localb;
         if (paramg.h((d.l.b.a.b.m.c.j)localObject))
         {
-          localb = (g.b)g.b.c.NBw;
+          localb = (g.b)g.b.c.NYD;
           label250:
-          if (!(p.i(localb, g.b.c.NBw) ^ true)) {
+          if (!(p.i(localb, g.b.c.NYD) ^ true)) {
             break label366;
           }
           label263:
@@ -196,30 +196,30 @@ public final class c
   
   private static boolean b(g paramg, d.l.b.a.b.m.c.j paramj, n paramn)
   {
-    AppMethodBeat.i(187789);
+    AppMethodBeat.i(193313);
     if (paramg.j((h)paramj))
     {
-      AppMethodBeat.o(187789);
+      AppMethodBeat.o(193313);
       return true;
     }
     if (paramg.h(paramj))
     {
-      AppMethodBeat.o(187789);
+      AppMethodBeat.o(193313);
       return false;
     }
-    if ((paramg.gtR()) && (paramg.e(paramj)))
+    if ((paramg.gyt()) && (paramg.e(paramj)))
     {
-      AppMethodBeat.o(187789);
+      AppMethodBeat.o(193313);
       return true;
     }
     boolean bool = paramg.b(paramg.i(paramj), paramn);
-    AppMethodBeat.o(187789);
+    AppMethodBeat.o(193313);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.c
  * JD-Core Version:    0.7.0.1
  */

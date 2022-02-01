@@ -11,23 +11,23 @@ import java.util.Map;
 
 public final class cn
 {
-  static final Map<String, c.a> kvg;
+  static final Map<String, c.a> kyv;
   
   static
   {
     AppMethodBeat.i(134878);
-    kvg = new HashMap();
+    kyv = new HashMap();
     AppMethodBeat.o(134878);
   }
   
-  public static void biy()
+  public static void bjh()
   {
     AppMethodBeat.i(134877);
     e.a(new k.a()
     {
       public final void a(final c paramAnonymousc, final String paramAnonymousString, final e paramAnonymouse)
       {
-        AppMethodBeat.i(197275);
+        AppMethodBeat.i(207755);
         paramAnonymouse = new c.a()
         {
           public final void a(String paramAnonymous2String, b paramAnonymous2b)
@@ -37,23 +37,23 @@ public final class cn
             AppMethodBeat.o(134874);
           }
         };
-        cn.kvg.put(paramAnonymousString, paramAnonymouse);
-        ((h)paramAnonymousc).getRuntime().jwS.a(paramAnonymouse);
-        AppMethodBeat.o(197275);
+        cn.kyv.put(paramAnonymousString, paramAnonymouse);
+        ((h)paramAnonymousc).getRuntime().jzQ.a(paramAnonymouse);
+        AppMethodBeat.o(207755);
       }
       
       public final void d(c paramAnonymousc, String paramAnonymousString)
       {
-        AppMethodBeat.i(197276);
-        paramAnonymousString = (c.a)cn.kvg.get(paramAnonymousString);
+        AppMethodBeat.i(207756);
+        paramAnonymousString = (c.a)cn.kyv.get(paramAnonymousString);
         if (paramAnonymousString != null)
         {
           paramAnonymousc = ((h)paramAnonymousc).getRuntime();
           if (paramAnonymousc != null) {
-            paramAnonymousc.jwS.b(paramAnonymousString);
+            paramAnonymousc.jzQ.b(paramAnonymousString);
           }
         }
-        AppMethodBeat.o(197276);
+        AppMethodBeat.o(207756);
       }
     });
     AppMethodBeat.o(134877);

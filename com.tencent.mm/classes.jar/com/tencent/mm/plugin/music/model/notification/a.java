@@ -16,41 +16,43 @@ import android.view.ViewGroup;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.i;
-import com.tencent.mm.aw.q;
-import com.tencent.mm.g.a.mf;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.i;
+import com.tencent.mm.av.q;
+import com.tencent.mm.g.a.mg;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.ui.MusicMainUI;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
 {
-  boolean cAX;
-  MMMusicPlayerService wlj;
-  NotificationManager wlk;
-  Runnable wll;
-  BroadcastReceiver wlm;
+  boolean cBE;
+  MMMusicPlayerService wAS;
+  NotificationManager wAT;
+  Runnable wAU;
+  BroadcastReceiver wAV;
   
   public a()
   {
     AppMethodBeat.i(63105);
-    this.cAX = false;
-    this.wll = new Runnable()
+    this.cBE = false;
+    this.wAU = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(63102);
-        ad.i("MicroMsg.Music.MMMusicNotification", "close");
-        aq.aA(a.this.wll);
-        a.this.wlj.stopForeground(true);
+        ae.i("MicroMsg.Music.MMMusicNotification", "close");
+        ar.ay(a.this.wAU);
+        a.this.wAS.stopForeground(true);
         AppMethodBeat.o(63102);
       }
     };
@@ -63,9 +65,9 @@ public final class a
     Object localObject = new Intent(paramContext, MusicMainUI.class);
     ((Intent)localObject).putExtra("key_scene", 5);
     localObject = PendingIntent.getActivity(paramContext, 0, (Intent)localObject, 134217728);
-    s.c localc = com.tencent.mm.br.a.bI(paramContext, "reminder_channel_id");
+    s.c localc = com.tencent.mm.bq.a.bJ(paramContext, "reminder_channel_id");
     localc.Hl = ((PendingIntent)localObject);
-    paramContext = localc.as(com.tencent.mm.br.a.dwe()).a(b(paramContext, parama, paramBoolean)).build();
+    paramContext = localc.as(com.tencent.mm.bq.a.dzu()).a(b(paramContext, parama, paramBoolean)).build();
     AppMethodBeat.o(63110);
     return paramContext;
   }
@@ -94,14 +96,14 @@ public final class a
   public static void a(com.tencent.mm.plugin.music.model.e.a parama, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(63106);
-    ad.i("MicroMsg.Music.MMMusicNotification", "sendMusicPlayerEvent action:%d", new Object[] { Integer.valueOf(paramInt) });
-    mf localmf = new mf();
-    localmf.dzK.action = paramInt;
-    localmf.dzK.state = "";
-    localmf.dzK.dzE = parama.dtr();
-    localmf.dzK.appId = "not from app brand appid";
-    localmf.dzK.dzM = paramBoolean;
-    com.tencent.mm.sdk.b.a.IbL.a(localmf, Looper.getMainLooper());
+    ae.i("MicroMsg.Music.MMMusicNotification", "sendMusicPlayerEvent action:%d", new Object[] { Integer.valueOf(paramInt) });
+    mg localmg = new mg();
+    localmg.dAP.action = paramInt;
+    localmg.dAP.state = "";
+    localmg.dAP.dAJ = parama.dwG();
+    localmg.dAP.appId = "not from app brand appid";
+    localmg.dAP.dAR = paramBoolean;
+    com.tencent.mm.sdk.b.a.IvT.a(localmg, Looper.getMainLooper());
     AppMethodBeat.o(63106);
   }
   
@@ -111,7 +113,7 @@ public final class a
     String str = parama.field_songName;
     Object localObject2 = parama.field_songSinger;
     Object localObject1 = localObject2;
-    if (!bt.isNullOrNil(parama.field_songAlbum)) {
+    if (!bu.isNullOrNil(parama.field_songAlbum)) {
       localObject1 = (String)localObject2 + parama.field_songAlbum;
     }
     localObject2 = e(parama);
@@ -121,22 +123,22 @@ public final class a
     if (localObject2 != null)
     {
       parama.setImageViewBitmap(2131302607, (Bitmap)localObject2);
-      if (bt.isNullOrNil(str)) {
+      if (bu.isNullOrNil(str)) {
         break label393;
       }
       parama.setViewVisibility(2131302613, 0);
       parama.setTextViewText(2131302613, str);
-      if (bt.isNullOrNil((String)localObject1)) {
+      if (bu.isNullOrNil((String)localObject1)) {
         break label404;
       }
       parama.setViewVisibility(2131302609, 0);
       parama.setTextViewText(2131302609, (CharSequence)localObject1);
       label135:
-      bool = sd(dk(this.wlj));
+      bool = sg(dm(this.wAS));
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("mm_music_notification_action_key", "mm_music_notification_action_pre");
       localObject1 = PendingIntent.getBroadcast(paramContext, 0, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(2131302612, fT(bool));
+      parama.setImageViewResource(2131302612, fS(bool));
       parama.setOnClickPendingIntent(2131302612, (PendingIntent)localObject1);
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       if (!paramBoolean) {
@@ -152,12 +154,12 @@ public final class a
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("mm_music_notification_action_key", "mm_music_notification_action_next");
       localObject1 = PendingIntent.getBroadcast(paramContext, 2, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(2131302610, fV(bool));
+      parama.setImageViewResource(2131302610, fU(bool));
       parama.setOnClickPendingIntent(2131302610, (PendingIntent)localObject1);
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("mm_music_notification_action_key", "mm_music_notification_action_close");
       paramContext = PendingIntent.getBroadcast(paramContext, 3, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(2131302608, fW(bool));
+      parama.setImageViewResource(2131302608, fV(bool));
       parama.setOnClickPendingIntent(2131302608, paramContext);
       AppMethodBeat.o(63111);
       return parama;
@@ -174,10 +176,10 @@ public final class a
     }
   }
   
-  private static int dk(Context paramContext)
+  private static int dm(Context paramContext)
   {
     AppMethodBeat.i(63113);
-    Object localObject = com.tencent.mm.br.a.bI(paramContext, "reminder_channel_id").build().contentView;
+    Object localObject = com.tencent.mm.bq.a.bJ(paramContext, "reminder_channel_id").build().contentView;
     if (localObject == null)
     {
       AppMethodBeat.o(63113);
@@ -203,11 +205,11 @@ public final class a
     AppMethodBeat.i(63112);
     if (parama == null)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "music is null, return");
+      ae.e("MicroMsg.Music.MMMusicNotification", "music is null, return");
       AppMethodBeat.o(63112);
       return null;
     }
-    ad.i("MicroMsg.Music.MMMusicNotification", "music.field_musicType %d", new Object[] { Integer.valueOf(parama.field_musicType) });
+    ae.i("MicroMsg.Music.MMMusicNotification", "music.field_musicType %d", new Object[] { Integer.valueOf(parama.field_musicType) });
     for (;;)
     {
       try
@@ -223,67 +225,67 @@ public final class a
       catch (Exception localException)
       {
         Object localObject1;
-        ad.printErrStackTrace("MicroMsg.Music.MMMusicNotification", localException, "get bitmap", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Music.MMMusicNotification", localException, "get bitmap", new Object[0]);
         Object localObject2 = str;
         continue;
-        localObject2 = q.aIJ().FD(parama.field_songAlbumUrl);
+        localObject2 = q.aJb().Gf(parama.field_songAlbumUrl);
         if (localObject2 != null) {
           continue;
         }
-        str = com.tencent.mm.plugin.music.h.b.bB(parama.field_musicId, false);
+        str = com.tencent.mm.plugin.music.h.b.bF(parama.field_musicId, false);
         Object localObject3 = new c.a();
-        ((c.a)localObject3).hdP = com.tencent.mm.plugin.music.h.b.bB(parama.field_musicId, false);
-        ((c.a)localObject3).idr = true;
-        ((c.a)localObject3).dh(com.tencent.mm.cc.a.ax(this.wlj, 2131166662), com.tencent.mm.cc.a.ax(this.wlj, 2131166661));
-        ((c.a)localObject3).idp = true;
-        q.aIJ().a(parama.field_songAlbumUrl, ((c.a)localObject3).aJc(), new com.tencent.mm.aw.a.c.d()
+        ((c.a)localObject3).hgD = com.tencent.mm.plugin.music.h.b.bF(parama.field_musicId, false);
+        ((c.a)localObject3).igk = true;
+        ((c.a)localObject3).dh(com.tencent.mm.cb.a.ax(this.wAS, 2131166662), com.tencent.mm.cb.a.ax(this.wAS, 2131166661));
+        ((c.a)localObject3).igi = true;
+        q.aJb().a(parama.field_songAlbumUrl, ((c.a)localObject3).aJu(), new com.tencent.mm.av.a.c.d()
         {
-          public final void eK(boolean paramAnonymousVarArgs)
+          public final void eM(boolean paramAnonymousVarArgs)
           {
             AppMethodBeat.i(63104);
-            ad.i("MicroMsg.Music.MMMusicNotification", "music.field_songAlbumUrl:%s, success:%b", new Object[] { parama.field_songAlbumUrl, Boolean.valueOf(paramAnonymousVarArgs) });
+            ae.i("MicroMsg.Music.MMMusicNotification", "music.field_songAlbumUrl:%s, success:%b", new Object[] { parama.field_songAlbumUrl, Boolean.valueOf(paramAnonymousVarArgs) });
             if (paramAnonymousVarArgs)
             {
-              Bitmap localBitmap = com.tencent.mm.sdk.platformtools.g.decodeFile(str, null);
+              Bitmap localBitmap = h.decodeFile(str, null);
               if (localBitmap == null)
               {
-                ad.e("MicroMsg.Music.MMMusicNotification", "bitmap is null, return");
+                ae.e("MicroMsg.Music.MMMusicNotification", "bitmap is null, return");
                 AppMethodBeat.o(63104);
                 return;
               }
-              q.aIJ().h(parama.field_songAlbumUrl, localBitmap);
-              a.this.wlj.refresh();
+              q.aJb().h(parama.field_songAlbumUrl, localBitmap);
+              a.this.wAS.refresh();
             }
             AppMethodBeat.o(63104);
           }
         });
-        parama = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject2, false, 12.0F, false);
+        parama = h.a((Bitmap)localObject2, false, 12.0F, false);
         AppMethodBeat.o(63112);
       }
       if (localObject1 == null) {
         continue;
       }
-      parama = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject1, false, 12.0F, false);
+      parama = h.a((Bitmap)localObject1, false, 12.0F, false);
       AppMethodBeat.o(63112);
       return parama;
-      localObject1 = q.aIF().b(parama.field_songAlbumLocalPath, com.tencent.mm.cc.a.getDensity(this.wlj), true);
+      localObject1 = q.aIX().b(parama.field_songAlbumLocalPath, com.tencent.mm.cb.a.getDensity(this.wAS), true);
       continue;
-      localObject1 = q.aIF().a(parama.field_songAlbumLocalPath, com.tencent.mm.cc.a.getDensity(this.wlj), true);
+      localObject1 = q.aIX().a(parama.field_songAlbumLocalPath, com.tencent.mm.cb.a.getDensity(this.wAS), true);
       continue;
-      localObject3 = new byn();
-      ((byn)localObject3).Id = parama.field_songMediaId;
-      ((byn)localObject3).GSI = parama.field_songAlbumUrl;
-      ((byn)localObject3).GSJ = parama.field_songAlbumType;
-      ((byn)localObject3).Url = ((byn)localObject3).GSI;
+      localObject3 = new bzh();
+      ((bzh)localObject3).Id = parama.field_songMediaId;
+      ((bzh)localObject3).Hmj = parama.field_songAlbumUrl;
+      ((bzh)localObject3).Hmk = parama.field_songAlbumType;
+      ((bzh)localObject3).Url = ((bzh)localObject3).Hmj;
       localObject1 = str;
-      if (o.zbS != null) {
-        localObject1 = o.zbS.a((byn)localObject3);
+      if (o.zsv != null) {
+        localObject1 = o.zsv.a((bzh)localObject3);
       }
     }
     return parama;
   }
   
-  private static int fT(boolean paramBoolean)
+  private static int fS(boolean paramBoolean)
   {
     if (paramBoolean) {
       return 2131233852;
@@ -291,7 +293,7 @@ public final class a
     return 2131233854;
   }
   
-  private static int fV(boolean paramBoolean)
+  private static int fU(boolean paramBoolean)
   {
     if (paramBoolean) {
       return 2131233841;
@@ -299,7 +301,7 @@ public final class a
     return 2131233843;
   }
   
-  private static int fW(boolean paramBoolean)
+  private static int fV(boolean paramBoolean)
   {
     if (paramBoolean) {
       return 2131233838;
@@ -337,7 +339,7 @@ public final class a
     }
   }
   
-  private static boolean sd(int paramInt)
+  private static boolean sg(int paramInt)
   {
     AppMethodBeat.i(63116);
     int j = paramInt | 0xFF000000;
@@ -371,29 +373,29 @@ public final class a
   public final void c(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63107);
-    if (!this.cAX)
+    if (!this.cBE)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "MMMusicNotification not init, play err");
+      ae.e("MicroMsg.Music.MMMusicNotification", "MMMusicNotification not init, play err");
       AppMethodBeat.o(63107);
       return;
     }
-    if (this.wlj == null)
+    if (this.wAS == null)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
+      ae.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
       AppMethodBeat.o(63107);
       return;
     }
-    ad.i("MicroMsg.Music.MMMusicNotification", "play");
-    aq.aA(this.wll);
+    ae.i("MicroMsg.Music.MMMusicNotification", "play");
+    ar.ay(this.wAU);
     try
     {
-      this.wlj.startForeground(291, a(this.wlj, parama, true));
+      this.wAS.startForeground(291, a(this.wAS, parama, true));
       AppMethodBeat.o(63107);
       return;
     }
     catch (Exception parama)
     {
-      ad.printErrStackTrace("MicroMsg.Music.MMMusicNotification", parama, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Music.MMMusicNotification", parama, "", new Object[0]);
       AppMethodBeat.o(63107);
     }
   }
@@ -401,42 +403,42 @@ public final class a
   public final void close()
   {
     AppMethodBeat.i(63109);
-    if (!this.cAX)
+    if (!this.cBE)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "MMMusicNotification not init, close err");
+      ae.e("MicroMsg.Music.MMMusicNotification", "MMMusicNotification not init, close err");
       AppMethodBeat.o(63109);
       return;
     }
-    if (this.wlj == null)
+    if (this.wAS == null)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
+      ae.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
       AppMethodBeat.o(63109);
       return;
     }
-    ad.i("MicroMsg.Music.MMMusicNotification", "close");
-    aq.aA(this.wll);
-    aq.o(this.wll, 1000L);
+    ae.i("MicroMsg.Music.MMMusicNotification", "close");
+    ar.ay(this.wAU);
+    ar.o(this.wAU, 1000L);
     AppMethodBeat.o(63109);
   }
   
   public final void d(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63108);
-    if (!this.cAX)
+    if (!this.cBE)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "MMMusicNotification not init, pause err");
+      ae.e("MicroMsg.Music.MMMusicNotification", "MMMusicNotification not init, pause err");
       AppMethodBeat.o(63108);
       return;
     }
-    if (this.wlj == null)
+    if (this.wAS == null)
     {
-      ad.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
+      ae.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
       AppMethodBeat.o(63108);
       return;
     }
-    ad.i("MicroMsg.Music.MMMusicNotification", "pause");
-    aq.aA(this.wll);
-    this.wlk.notify(291, a(this.wlj, parama, false));
+    ae.i("MicroMsg.Music.MMMusicNotification", "pause");
+    ar.ay(this.wAU);
+    this.wAT.notify(291, a(this.wAS, parama, false));
     AppMethodBeat.o(63108);
   }
 }

@@ -34,7 +34,7 @@ public class YTAGReflectLiveCheckInterface
   public static YTAGReflectSettings mAGSettings;
   public static String mAppId;
   private static ArrayList mCanceledList;
-  private static YTAGReflectLiveCheckInterface.LightLiveCheckResult mCheckResult;
+  private static LightLiveCheckResult mCheckResult;
   private static long mCurrentTag;
   private static TimerWorker mGetValueTimer;
   private static boolean mInitModel;
@@ -391,7 +391,7 @@ public class YTAGReflectLiveCheckInterface
     AppMethodBeat.o(43317);
   }
   
-  public static void start(Context paramContext, Camera paramCamera, int paramInt, YTReflectLayout paramYTReflectLayout, YTAGReflectLiveCheckInterface.LightLiveCheckResult paramLightLiveCheckResult)
+  public static void start(Context paramContext, Camera paramCamera, int paramInt, YTReflectLayout paramYTReflectLayout, LightLiveCheckResult paramLightLiveCheckResult)
   {
     AppMethodBeat.i(43320);
     YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.start] ---");
@@ -427,6 +427,23 @@ public class YTAGReflectLiveCheckInterface
     public abstract void onFailed(int paramInt, String paramString1, String paramString2);
     
     public abstract void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse);
+  }
+  
+  public static abstract interface LightLiveCheckResult
+  {
+    public static final int AUTH_FAILED = 1;
+    public static final int FINISH_ERRORBASE = 300;
+    public static final int INIT_ERRORBASE = 100;
+    public static final int NOT_INIT_MODEL = 2;
+    public static final int NOT_SET_RGBREQUEST = 4;
+    public static final int NOT_SET_UPLOADREQUEST = 5;
+    public static final int REFLECT_ERRORBASE = 200;
+    public static final int SUCCESS = 0;
+    public static final int USER_CANCEL = 3;
+    
+    public abstract void onFailed(int paramInt, String paramString1, String paramString2);
+    
+    public abstract void onSuccess(boolean paramBoolean, LightDiffResponse paramLightDiffResponse, String paramString);
   }
 }
 

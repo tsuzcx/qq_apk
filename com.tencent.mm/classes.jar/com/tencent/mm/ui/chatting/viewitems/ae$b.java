@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 class ae$b
 {
-  TextView gnM;
-  ImageView ocp;
-  View odh;
+  TextView gqi;
+  View oiV;
+  ImageView oie;
   
   public void dD(View paramView) {}
 }

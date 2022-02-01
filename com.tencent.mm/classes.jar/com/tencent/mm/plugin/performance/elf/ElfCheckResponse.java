@@ -7,21 +7,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class ElfCheckResponse
   implements Parcelable
 {
   public static final Parcelable.Creator<ElfCheckResponse> CREATOR;
   Bundle En;
-  public long cJi;
-  public boolean cMW;
+  public long cJR;
+  public boolean cNF;
   String processName;
-  boolean wHE;
-  boolean wHF;
-  private String wHG;
-  private long wHH;
-  long wHI;
+  boolean wXp;
+  boolean wXq;
+  private String wXr;
+  private long wXs;
+  long wXt;
   
   static
   {
@@ -36,14 +36,14 @@ public class ElfCheckResponse
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.wHE = bool1;
+      this.wXp = bool1;
       if (paramParcel.readByte() == 0) {
         break label112;
       }
       bool1 = true;
       label34:
-      this.cMW = bool1;
-      this.cJi = paramParcel.readLong();
+      this.cNF = bool1;
+      this.cJR = paramParcel.readLong();
       if (paramParcel.readByte() == 0) {
         break label117;
       }
@@ -52,11 +52,11 @@ public class ElfCheckResponse
     label117:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.wHF = bool1;
-      this.wHG = paramParcel.readString();
+      this.wXq = bool1;
+      this.wXr = paramParcel.readString();
       this.processName = paramParcel.readString();
-      this.wHH = paramParcel.readLong();
-      this.wHI = paramParcel.readLong();
+      this.wXs = paramParcel.readLong();
+      this.wXt = paramParcel.readLong();
       this.En = paramParcel.readBundle();
       AppMethodBeat.o(124982);
       return;
@@ -69,13 +69,13 @@ public class ElfCheckResponse
   
   public ElfCheckResponse(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2)
   {
-    this.wHF = paramBoolean3;
-    this.wHE = paramBoolean2;
+    this.wXq = paramBoolean3;
+    this.wXp = paramBoolean2;
     this.processName = paramString1;
-    this.wHG = paramString2;
-    this.wHI = 1000L;
-    this.cJi = paramLong;
-    this.cMW = paramBoolean1;
+    this.wXr = paramString2;
+    this.wXt = 1000L;
+    this.cJR = paramLong;
+    this.cNF = paramBoolean1;
   }
   
   public int describeContents()
@@ -86,7 +86,7 @@ public class ElfCheckResponse
   public String toString()
   {
     AppMethodBeat.i(124980);
-    String str = this.wHE + "," + this.wHF + "," + this.wHH + "," + this.processName + "," + this.wHG + "," + this.wHI;
+    String str = this.wXp + "," + this.wXq + "," + this.wXs + "," + this.processName + "," + this.wXr + "," + this.wXt;
     AppMethodBeat.o(124980);
     return str;
   }
@@ -95,18 +95,18 @@ public class ElfCheckResponse
   {
     byte b2 = 1;
     AppMethodBeat.i(124981);
-    if (this.wHE)
+    if (this.wXp)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.cMW) {
+      if (!this.cNF) {
         break label110;
       }
       b1 = 1;
       label31:
       paramParcel.writeByte(b1);
-      paramParcel.writeLong(this.cJi);
-      if (!this.wHF) {
+      paramParcel.writeLong(this.cJR);
+      if (!this.wXq) {
         break label115;
       }
     }
@@ -115,10 +115,10 @@ public class ElfCheckResponse
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      paramParcel.writeString(this.wHG);
+      paramParcel.writeString(this.wXr);
       paramParcel.writeString(this.processName);
-      paramParcel.writeLong(this.wHH);
-      paramParcel.writeLong(this.wHI);
+      paramParcel.writeLong(this.wXs);
+      paramParcel.writeLong(this.wXt);
       paramParcel.writeBundle(this.En);
       AppMethodBeat.o(124981);
       return;

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,38 +13,38 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static volatile Set<String> mhL;
+  private static volatile Set<String> mmJ;
   
   static
   {
     AppMethodBeat.i(147598);
     HashSet localHashSet = new HashSet();
-    mhL = localHashSet;
+    mmJ = localHashSet;
     localHashSet.add("operateLivePlayer");
-    mhL.add("operateLivePusher");
-    mhL.add("operateXWebLivePlayer");
-    mhL.add("operateXWebLivePusher");
-    Collections.addAll(mhL, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
+    mmJ.add("operateLivePusher");
+    mmJ.add("operateXWebLivePlayer");
+    mmJ.add("operateXWebLivePusher");
+    Collections.addAll(mmJ, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
     AppMethodBeat.o(147598);
   }
   
-  public static void TP(String paramString)
+  public static void Uy(String paramString)
   {
     AppMethodBeat.i(169512);
-    mhL.add(paramString);
+    mmJ.add(paramString);
     AppMethodBeat.o(169512);
   }
   
   static int c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147597);
-    if ((paramc instanceof aa)) {}
-    for (boolean bool = true; !bool; bool = mhL.contains(paramString1))
+    if ((paramc instanceof z)) {}
+    for (boolean bool = true; !bool; bool = mmJ.contains(paramString1))
     {
       AppMethodBeat.o(147597);
       return -2147483648;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bu.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(147597);
       return -2147483648;
@@ -61,20 +61,20 @@ public final class c
       paramString2 = paramString2.getJSONArray("permissionBytes");
       if (paramString2.length() < 3)
       {
-        ad.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
+        ae.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
         AppMethodBeat.o(147597);
         return -2147483648;
       }
     }
     catch (Exception paramc)
     {
-      ad.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
+      ae.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
       AppMethodBeat.o(147597);
       return -2147483648;
     }
     int i;
-    if ((paramc instanceof q)) {
-      switch (1.jLm[((q)paramc).getRuntime().jwS.jKT.bbg().ordinal()])
+    if ((paramc instanceof r)) {
+      switch (1.jOy[((r)paramc).getRuntime().jzQ.jOf.bbI().ordinal()])
       {
       default: 
         i = paramString2.optInt(0, -2147483648);
@@ -82,7 +82,7 @@ public final class c
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
+      ae.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
       AppMethodBeat.o(147597);
       return i;
       i = paramString2.optInt(2, -2147483648);
@@ -95,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.c
  * JD-Core Version:    0.7.0.1
  */

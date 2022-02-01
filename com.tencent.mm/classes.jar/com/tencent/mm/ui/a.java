@@ -9,27 +9,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public final class a
 {
-  private ImageView Buu;
-  private View EhE;
-  private ImageView ISc;
-  public ViewGroup ISd;
-  public WeImageView ISe;
-  public TextView ISf;
-  public ViewGroup ISg;
-  public WeImageView ISh;
-  public ImageView ISi;
-  public ImageView ISj;
-  private ImageView ISk;
-  public ImageView ISl;
-  private View ISm;
-  private ImageView gSx;
-  public TextView iVq;
+  private ImageView BLS;
+  private View EzI;
+  private ImageView JmK;
+  public ViewGroup JmL;
+  public WeImageView JmM;
+  public TextView JmN;
+  public ViewGroup JmO;
+  public WeImageView JmP;
+  public ImageView JmQ;
+  public ImageView JmR;
+  private ImageView JmS;
+  public ImageView JmT;
+  private View JmU;
+  private ImageView gVf;
+  public TextView iYj;
   
   public a(View paramView)
   {
@@ -41,21 +41,21 @@ public final class a
     for (;;)
     {
       paramView.setLayoutParams(localLayoutParams);
-      this.iVq = ((TextView)paramView.findViewById(2131305908));
-      this.ISc = ((ImageView)paramView.findViewById(2131305936));
-      this.ISd = ((ViewGroup)paramView.findViewById(2131308035));
-      this.ISe = ((WeImageView)paramView.findViewById(2131308034));
-      this.ISf = ((TextView)paramView.findViewById(2131305509));
-      this.ISg = ((ViewGroup)paramView.findViewById(2131308013));
-      this.ISh = ((WeImageView)paramView.findViewById(2131308012));
-      this.Buu = ((ImageView)paramView.findViewById(2131302623));
-      this.ISi = ((ImageView)paramView.findViewById(2131300216));
-      this.ISj = ((ImageView)paramView.findViewById(2131303211));
-      this.ISk = ((ImageView)paramView.findViewById(2131303553));
-      this.EhE = paramView.findViewById(2131296939);
-      this.gSx = ((ImageView)paramView.findViewById(2131296940));
-      this.ISl = ((ImageView)paramView.findViewById(2131303966));
-      this.ISm = paramView;
+      this.iYj = ((TextView)paramView.findViewById(2131305908));
+      this.JmK = ((ImageView)paramView.findViewById(2131305936));
+      this.JmL = ((ViewGroup)paramView.findViewById(2131308035));
+      this.JmM = ((WeImageView)paramView.findViewById(2131308034));
+      this.JmN = ((TextView)paramView.findViewById(2131305509));
+      this.JmO = ((ViewGroup)paramView.findViewById(2131308013));
+      this.JmP = ((WeImageView)paramView.findViewById(2131308012));
+      this.BLS = ((ImageView)paramView.findViewById(2131302623));
+      this.JmQ = ((ImageView)paramView.findViewById(2131300216));
+      this.JmR = ((ImageView)paramView.findViewById(2131303211));
+      this.JmS = ((ImageView)paramView.findViewById(2131303553));
+      this.EzI = paramView.findViewById(2131296939);
+      this.gVf = ((ImageView)paramView.findViewById(2131296940));
+      this.JmT = ((ImageView)paramView.findViewById(2131303966));
+      this.JmU = paramView;
       AppMethodBeat.o(141266);
       return;
       localLayoutParams.width = -2;
@@ -63,55 +63,55 @@ public final class a
     }
   }
   
-  public final void al(CharSequence paramCharSequence)
+  public final void ak(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(186435);
-    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
+    AppMethodBeat.i(193688);
+    if ((paramCharSequence == null) || (bu.isNullOrNil(paramCharSequence.toString())))
     {
-      this.ISf.setVisibility(8);
-      AppMethodBeat.o(186435);
+      this.JmN.setVisibility(8);
+      AppMethodBeat.o(193688);
       return;
     }
-    this.ISf.setVisibility(0);
-    this.ISf.setText(paramCharSequence);
-    if (com.tencent.mm.cc.a.im(this.ISf.getContext()))
+    this.JmN.setVisibility(0);
+    this.JmN.setText(paramCharSequence);
+    if (com.tencent.mm.cb.a.ir(this.JmN.getContext()))
     {
-      this.ISf.setTextSize(1, 14.0F);
-      this.iVq.setTextSize(1, 18.0F);
+      this.JmN.setTextSize(1, 14.0F);
+      this.iYj.setTextSize(1, 18.0F);
     }
-    AppMethodBeat.o(186435);
+    AppMethodBeat.o(193688);
   }
   
-  public final void fuT()
+  public final void fyU()
   {
-    AppMethodBeat.i(186436);
-    if (this.gSx != null) {
-      this.gSx.setImageResource(2131689490);
+    AppMethodBeat.i(193689);
+    if (this.gVf != null) {
+      this.gVf.setImageResource(2131689490);
     }
-    AppMethodBeat.o(186436);
+    AppMethodBeat.o(193689);
   }
   
   public final void setClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(141270);
-    this.EhE.setOnClickListener(paramOnClickListener);
+    this.EzI.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(141270);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141267);
-    this.iVq.setText(paramCharSequence);
-    if (com.tencent.mm.cc.a.im(this.iVq.getContext())) {
-      this.iVq.setTextSize(0, com.tencent.mm.cc.a.ay(this.iVq.getContext(), 2131165184) * com.tencent.mm.cc.a.ik(this.iVq.getContext()));
+    this.iYj.setText(paramCharSequence);
+    if (com.tencent.mm.cb.a.ir(this.iYj.getContext())) {
+      this.iYj.setTextSize(0, com.tencent.mm.cb.a.ay(this.iYj.getContext(), 2131165184) * com.tencent.mm.cb.a.ip(this.iYj.getContext()));
     }
     AppMethodBeat.o(141267);
   }
   
-  public final void wV(boolean paramBoolean)
+  public final void xd(boolean paramBoolean)
   {
     AppMethodBeat.i(141268);
-    ImageView localImageView = this.Buu;
+    ImageView localImageView = this.BLS;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -121,10 +121,10 @@ public final class a
     }
   }
   
-  public final void wW(boolean paramBoolean)
+  public final void xe(boolean paramBoolean)
   {
     AppMethodBeat.i(141269);
-    ImageView localImageView = this.ISk;
+    ImageView localImageView = this.JmS;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {

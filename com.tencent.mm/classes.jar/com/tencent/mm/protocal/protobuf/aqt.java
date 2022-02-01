@@ -1,82 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aqt
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int GoM;
-  public aqu GoN;
+  public int GHB;
+  public int GHC;
+  public int GHD;
+  public int GHE;
+  public int GHF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169043);
+    AppMethodBeat.i(189389);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.GoM);
-      if (this.GoN != null)
-      {
-        paramVarArgs.lC(2, this.GoN.computeSize());
-        this.GoN.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(169043);
+      paramVarArgs.aS(1, this.GHB);
+      paramVarArgs.aS(2, this.GHC);
+      paramVarArgs.aS(3, this.GHD);
+      paramVarArgs.aS(4, this.GHE);
+      paramVarArgs.aS(5, this.GHF);
+      AppMethodBeat.o(189389);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bz(1, this.GoM) + 0;
-      paramInt = i;
-      if (this.GoN != null) {
-        paramInt = i + f.a.a.a.lB(2, this.GoN.computeSize());
-      }
-      AppMethodBeat.o(169043);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.GHB);
+      int i = f.a.a.b.b.a.bz(2, this.GHC);
+      int j = f.a.a.b.b.a.bz(3, this.GHD);
+      int k = f.a.a.b.b.a.bz(4, this.GHE);
+      int m = f.a.a.b.b.a.bz(5, this.GHF);
+      AppMethodBeat.o(189389);
+      return paramInt + 0 + i + j + k + m;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(169043);
+      AppMethodBeat.o(189389);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       aqt localaqt = (aqt)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(169043);
+        AppMethodBeat.o(189389);
         return -1;
       case 1: 
-        localaqt.GoM = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(169043);
+        localaqt.GHB = locala.OmT.zc();
+        AppMethodBeat.o(189389);
+        return 0;
+      case 2: 
+        localaqt.GHC = locala.OmT.zc();
+        AppMethodBeat.o(189389);
+        return 0;
+      case 3: 
+        localaqt.GHD = locala.OmT.zc();
+        AppMethodBeat.o(189389);
+        return 0;
+      case 4: 
+        localaqt.GHE = locala.OmT.zc();
+        AppMethodBeat.o(189389);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new aqu();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((aqu)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localaqt.GoN = ((aqu)localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(169043);
+      localaqt.GHF = locala.OmT.zc();
+      AppMethodBeat.o(189389);
       return 0;
     }
-    AppMethodBeat.o(169043);
+    AppMethodBeat.o(189389);
     return -1;
   }
 }

@@ -14,12 +14,13 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.ByteChannel;
+import java.util.Map;
 
 public final class ContentsSchemeResolver
-  extends SchemeResolver.Base
+  extends SingletonSchemeResolver
 {
   public static final a CREATOR;
-  private final ContentProviderFileSystem Ljw;
+  private final ContentProviderFileSystem LFS;
   
   static
   {
@@ -31,53 +32,54 @@ public final class ContentsSchemeResolver
   private ContentsSchemeResolver()
   {
     AppMethodBeat.i(13059);
-    this.Ljw = new ContentProviderFileSystem(a.gzU().mContext);
+    this.LFS = new ContentProviderFileSystem(e.fSU().mContext);
     AppMethodBeat.o(13059);
   }
   
-  public static ContentsSchemeResolver fOr()
+  public static SchemeResolver fSN()
   {
-    return a.Ljy;
+    return a.LFU.LHE;
   }
   
-  public final Pair<FileSystem, String> a(SchemeResolver.b paramb, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(g paramg, Uri paramUri)
   {
-    AppMethodBeat.i(13060);
-    paramb = new StringBuilder();
+    AppMethodBeat.i(193360);
+    paramg = new StringBuilder();
     String str = paramUri.getScheme();
     if (str != null) {
-      paramb.append(str).append(':');
+      paramg.append(str).append(':');
     }
     str = paramUri.getAuthority();
     if (str != null) {
-      paramb.append("//").append(str);
+      paramg.append("//").append(str);
     }
     paramUri = paramUri.getPath();
     if (paramUri != null) {
-      paramb.append(paramUri);
+      paramg.append(paramUri);
     }
-    paramb = new Pair(this.Ljw, paramb.toString());
-    AppMethodBeat.o(13060);
-    return paramb;
+    paramg = Pair.create(this.LFS, paramg.toString());
+    AppMethodBeat.o(193360);
+    return paramg;
   }
   
   static final class ContentProviderFileSystem
-    extends AbstractFileSystem
+    extends a
+    implements FileSystem
   {
     public static final Parcelable.Creator<ContentProviderFileSystem> CREATOR = null;
-    private final ContentResolver Ljx;
+    private final ContentResolver LFT;
     
     ContentProviderFileSystem(Context paramContext)
     {
       AppMethodBeat.i(13048);
-      this.Ljx = paramContext.getContentResolver();
+      this.LFT = paramContext.getContentResolver();
       AppMethodBeat.o(13048);
     }
     
-    public final boolean CA(String paramString)
+    public final boolean Dc(String paramString)
     {
       AppMethodBeat.i(13056);
-      if (this.Ljx.delete(Uri.parse(paramString), null, null) > 0)
+      if (this.LFT.delete(Uri.parse(paramString), null, null) > 0)
       {
         AppMethodBeat.o(13056);
         return true;
@@ -86,7 +88,7 @@ public final class ContentsSchemeResolver
       return false;
     }
     
-    public final ByteChannel aYc(String paramString)
+    public final ByteChannel aZE(String paramString)
     {
       AppMethodBeat.i(13052);
       paramString = new FileNotFoundException("Not supported.");
@@ -94,18 +96,18 @@ public final class ContentsSchemeResolver
       throw paramString;
     }
     
-    public final FileSystem.b aYd(String paramString)
+    public final FileSystem.a aZF(String paramString)
     {
       AppMethodBeat.i(13049);
-      paramString = new FileSystem.b();
+      paramString = new FileSystem.a();
       AppMethodBeat.o(13049);
       return paramString;
     }
     
-    public final boolean aYe(String paramString)
+    public final boolean aZG(String paramString)
     {
       AppMethodBeat.i(13054);
-      if (aYf(paramString) != null)
+      if (aZH(paramString) != null)
       {
         AppMethodBeat.o(13054);
         return true;
@@ -114,23 +116,23 @@ public final class ContentsSchemeResolver
       return false;
     }
     
-    public final FileSystem.a aYf(String paramString)
+    public final c aZH(String paramString)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(13055);
+      AppMethodBeat.i(193359);
       try
       {
-        Object localObject1 = this.Ljx.query(Uri.parse(paramString), null, null, null, null);
+        Object localObject1 = this.LFT.query(Uri.parse(paramString), null, null, null, null);
         if (localObject1 == null)
         {
-          q.closeQuietly((Closeable)localObject1);
-          AppMethodBeat.o(13055);
+          w.closeQuietly((Closeable)localObject1);
+          AppMethodBeat.o(193359);
           return null;
         }
         int i;
         int j;
         boolean bool;
-        q.closeQuietly((Closeable)localObject1);
+        w.closeQuietly((Closeable)localObject1);
       }
       finally
       {
@@ -141,36 +143,46 @@ public final class ContentsSchemeResolver
           bool = ((Cursor)localObject1).moveToFirst();
           if (!bool)
           {
-            q.closeQuietly((Closeable)localObject1);
-            AppMethodBeat.o(13055);
+            w.closeQuietly((Closeable)localObject1);
+            AppMethodBeat.o(193359);
             return null;
           }
-          paramString = new FileSystem.a(this, paramString, ((Cursor)localObject1).getString(i), ((Cursor)localObject1).getLong(j), 0L, 0L, false);
-          q.closeQuietly((Closeable)localObject1);
-          AppMethodBeat.o(13055);
+          paramString = new c(this, paramString, ((Cursor)localObject1).getString(i), ((Cursor)localObject1).getLong(j), 0L, 0L, false);
+          w.closeQuietly((Closeable)localObject1);
+          AppMethodBeat.o(193359);
           return paramString;
         }
         finally
         {
-          break label138;
+          break label134;
         }
         paramString = finally;
         localObject1 = localObject2;
       }
-      label138:
-      AppMethodBeat.o(13055);
+      label134:
+      AppMethodBeat.o(193359);
       throw paramString;
     }
     
-    public final boolean aYg(String paramString)
+    public final boolean aZI(String paramString)
     {
       return false;
     }
     
-    public final OutputStream cX(String paramString, boolean paramBoolean)
+    public final FileSystem.b cd(Map<String, String> paramMap)
+    {
+      return this;
+    }
+    
+    public final boolean cp(String paramString, long paramLong)
+    {
+      return false;
+    }
+    
+    public final OutputStream db(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(13051);
-      ContentResolver localContentResolver = this.Ljx;
+      ContentResolver localContentResolver = this.LFT;
       Uri localUri = Uri.parse(paramString);
       if (paramBoolean) {}
       for (paramString = "wa";; paramString = "w")
@@ -181,35 +193,40 @@ public final class ContentsSchemeResolver
       }
     }
     
-    public final Iterable<FileSystem.a> cY(String paramString, boolean paramBoolean)
+    public final Iterable<c> dc(String paramString, boolean paramBoolean)
     {
       return null;
     }
     
-    public final boolean cZ(String paramString, boolean paramBoolean)
+    public final boolean dd(String paramString, boolean paramBoolean)
     {
       return false;
     }
     
-    public final boolean cn(String paramString, long paramLong)
-    {
-      return false;
-    }
-    
-    public final String da(String paramString, boolean paramBoolean)
+    public final String de(String paramString, boolean paramBoolean)
     {
       return null;
     }
     
-    public final int fOp()
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final FileSystem fSK()
+    {
+      return this;
+    }
+    
+    public final int fSL()
     {
       return 1;
     }
     
-    public final ParcelFileDescriptor mt(String paramString1, String paramString2)
+    public final ParcelFileDescriptor mA(String paramString1, String paramString2)
     {
       AppMethodBeat.i(13053);
-      paramString1 = this.Ljx.openFileDescriptor(Uri.parse(paramString1), paramString2);
+      paramString1 = this.LFT.openFileDescriptor(Uri.parse(paramString1), paramString2);
       AppMethodBeat.o(13053);
       return paramString1;
     }
@@ -217,7 +234,7 @@ public final class ContentsSchemeResolver
     public final InputStream openRead(String paramString)
     {
       AppMethodBeat.i(13050);
-      paramString = this.Ljx.openInputStream(Uri.parse(paramString));
+      paramString = this.LFT.openInputStream(Uri.parse(paramString));
       AppMethodBeat.o(13050);
       return paramString;
     }
@@ -234,12 +251,12 @@ public final class ContentsSchemeResolver
   static final class a
     implements Parcelable.Creator<ContentsSchemeResolver>
   {
-    static final ContentsSchemeResolver Ljy;
+    static final i LFU;
     
     static
     {
       AppMethodBeat.i(13058);
-      Ljy = new ContentsSchemeResolver((byte)0);
+      LFU = new i(new ContentsSchemeResolver((byte)0));
       AppMethodBeat.o(13058);
     }
   }

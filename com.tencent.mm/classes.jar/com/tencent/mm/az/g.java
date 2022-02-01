@@ -1,36 +1,40 @@
 package com.tencent.mm.az;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
+import java.util.Map;
 
-public class g
+public final class g
+  extends a
 {
-  public static f a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public g(Map<String, String> paramMap, bv parambv)
   {
-    AppMethodBeat.i(137009);
-    f localf = new f();
-    localf.ihe = paramInt;
-    localf.ihl = paramString1;
-    localf.ihi = paramString2;
-    localf.ihj = paramString3;
-    localf.iho = paramString4;
-    localf.ihn = paramString5;
-    localf.ihm = paramString6;
-    localf.ihr = paramString8;
-    localf.iht = paramString11;
-    localf.ihq = paramString9;
-    localf.ihg = paramString7;
-    localf.ihh = 0.0F;
-    localf.ihk = paramString10;
-    localf.ihf = 1;
-    localf.ihp = null;
-    localf.ihw = paramString7;
-    AppMethodBeat.o(137009);
-    return localf;
+    super(paramMap, parambv);
+  }
+  
+  protected final boolean aAs()
+  {
+    AppMethodBeat.i(209891);
+    if (this.values == null)
+    {
+      ae.e("MicroMsg.FinderChatSystemaNewXmlMsg", "[parseXml] values == null ");
+      AppMethodBeat.o(209891);
+      return false;
+    }
+    ae.i("MicroMsg.FinderChatSystemaNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bu.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
+    if (this.values.containsKey(".sysmsg.SysMsgContent")) {
+      this.ikH = bu.nullAsNil((String)this.values.get(".sysmsg.SysMsgContent"));
+    }
+    ae.i("MicroMsg.FinderChatSystemaNewXmlMsg", "appText = " + this.ikH);
+    AppMethodBeat.o(209891);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.az.g
  * JD-Core Version:    0.7.0.1
  */

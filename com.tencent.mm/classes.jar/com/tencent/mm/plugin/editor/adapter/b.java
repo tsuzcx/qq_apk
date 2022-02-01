@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.editor.adapter;
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends RecyclerView.a<com.tencent.mm.plugin.editor.adapter.a.a>
 {
   private final String TAG;
-  private j prJ;
-  private com.tencent.mm.plugin.editor.adapter.a.c pso;
+  private com.tencent.mm.plugin.editor.adapter.a.c pyU;
+  private j pyp;
   
   public b(j paramj)
   {
     AppMethodBeat.i(181638);
     this.TAG = "MicroMsg.EditorAdapter";
-    this.prJ = paramj;
-    this.pso = new com.tencent.mm.plugin.editor.adapter.a.c();
+    this.pyp = paramj;
+    this.pyU = new com.tencent.mm.plugin.editor.adapter.a.c();
     AppMethodBeat.o(181638);
   }
   
@@ -29,8 +29,8 @@ public final class b
       try
       {
         AppMethodBeat.i(181641);
-        com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().BA(paramInt);
-        if ((locala != null) && (locala.getType() == parama.cdT()))
+        com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().BM(paramInt);
+        if ((locala != null) && (locala.getType() == parama.cfi()))
         {
           parama.a(locala, paramInt, locala.getType());
           AppMethodBeat.o(181641);
@@ -38,7 +38,7 @@ public final class b
         }
         if (locala == null)
         {
-          ad.e("MicroMsg.EditorAdapter", "onBindViewHolder, item is null %b, position is %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+          ae.e("MicroMsg.EditorAdapter", "onBindViewHolder, item is null %b, position is %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) });
           AppMethodBeat.o(181641);
         }
         else
@@ -53,7 +53,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(181639);
-    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().size();
+    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().size();
     AppMethodBeat.o(181639);
     return i;
   }
@@ -61,14 +61,14 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(181640);
-    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().BA(paramInt);
+    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().BM(paramInt);
     if (locala != null)
     {
       paramInt = locala.getType();
       AppMethodBeat.o(181640);
       return paramInt;
     }
-    ad.e("MicroMsg.EditorAdapter", "getItemViewType, item is null, position is %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.e("MicroMsg.EditorAdapter", "getItemViewType, item is null, position is %d", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(181640);
     return 0;
   }

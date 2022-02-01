@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class h$a
 {
-  public String CKD;
-  public boolean CKR;
-  public String dxD;
-  public int ozR;
-  public String ozS;
-  public boolean ozk;
+  public String Dcj;
+  public boolean Dcx;
+  public String dyI;
+  public boolean oFM;
+  public int oGt;
+  public String oGu;
   
-  public static a aEj(String paramString)
+  public static a aFC(String paramString)
   {
     AppMethodBeat.i(69543);
     a locala = new a();
     try
     {
       paramString = new JSONObject(paramString);
-      locala.ozR = paramString.optInt("ret_code");
-      locala.ozS = paramString.optString("ret_msg");
-      locala.ozk = paramString.optBoolean("is_show");
-      locala.CKR = paramString.optBoolean("is_open");
-      locala.CKD = paramString.optString("entrance_name");
-      locala.dxD = paramString.optString("wording");
+      locala.oGt = paramString.optInt("ret_code");
+      locala.oGu = paramString.optString("ret_msg");
+      locala.oFM = paramString.optBoolean("is_show");
+      locala.Dcx = paramString.optBoolean("is_open");
+      locala.Dcj = paramString.optString("entrance_name");
+      locala.dyI = paramString.optString("wording");
       AppMethodBeat.o(69543);
       return locala;
     }
@@ -34,30 +34,30 @@ public final class h$a
     {
       for (;;)
       {
-        ad.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "createFromJSONObject() Exception:%s", new Object[] { paramString.getMessage() });
+        ae.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "createFromJSONObject() Exception:%s", new Object[] { paramString.getMessage() });
       }
     }
   }
   
-  public final String eDW()
+  public final String eHD()
   {
     AppMethodBeat.i(69542);
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("ret_code", this.ozR);
-      ((JSONObject)localObject).put("ret_msg", this.ozS);
-      ((JSONObject)localObject).put("is_show", this.ozk);
-      ((JSONObject)localObject).put("is_open", this.CKR);
-      ((JSONObject)localObject).put("entrance_name", this.CKD);
-      ((JSONObject)localObject).put("wording", this.dxD);
+      ((JSONObject)localObject).put("ret_code", this.oGt);
+      ((JSONObject)localObject).put("ret_msg", this.oGu);
+      ((JSONObject)localObject).put("is_show", this.oFM);
+      ((JSONObject)localObject).put("is_open", this.Dcx);
+      ((JSONObject)localObject).put("entrance_name", this.Dcj);
+      ((JSONObject)localObject).put("wording", this.dyI);
       localObject = ((JSONObject)localObject).toString();
       AppMethodBeat.o(69542);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      ad.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "MobileRemitSwitchConfig getJSONObjectString() Exception: %s", new Object[] { localJSONException.getMessage() });
+      ae.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "MobileRemitSwitchConfig getJSONObjectString() Exception: %s", new Object[] { localJSONException.getMessage() });
       AppMethodBeat.o(69542);
     }
     return "";
@@ -66,14 +66,14 @@ public final class h$a
   public final String toString()
   {
     AppMethodBeat.i(69541);
-    String str = "MobileRemitSwitchConfig{ret_code=" + this.ozR + ", ret_msg='" + this.ozS + '\'' + ", is_show=" + this.ozk + ", is_open=" + this.CKR + ", entrance_name='" + this.CKD + '\'' + ", wording='" + this.dxD + '\'' + '}';
+    String str = "MobileRemitSwitchConfig{ret_code=" + this.oGt + ", ret_msg='" + this.oGu + '\'' + ", is_show=" + this.oFM + ", is_open=" + this.Dcx + ", entrance_name='" + this.Dcj + '\'' + ", wording='" + this.dyI + '\'' + '}';
     AppMethodBeat.o(69541);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.h.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,61 +4,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bsv
-  extends cvc
+  extends cvw
 {
-  public long Fsa;
-  public String Fsb;
-  public String username;
+  public String Hgv;
+  public String Hgw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(211955);
+    AppMethodBeat.i(124519);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.Fsa);
-      if (this.Fsb != null) {
-        paramVarArgs.d(3, this.Fsb);
+      if (this.Hgv != null) {
+        paramVarArgs.d(2, this.Hgv);
       }
-      if (this.username != null) {
-        paramVarArgs.d(4, this.username);
+      if (this.Hgw != null) {
+        paramVarArgs.d(3, this.Hgw);
       }
-      AppMethodBeat.o(211955);
+      AppMethodBeat.o(124519);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label474;
+        break label430;
       }
     }
-    label474:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label430:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.Fsa);
       paramInt = i;
-      if (this.Fsb != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.Fsb);
+      if (this.Hgv != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Hgv);
       }
       i = paramInt;
-      if (this.username != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.username);
+      if (this.Hgw != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Hgw);
       }
-      AppMethodBeat.o(211955);
+      AppMethodBeat.o(124519);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(211955);
+        AppMethodBeat.o(124519);
         return 0;
       }
       if (paramInt == 3)
@@ -69,10 +66,10 @@ public final class bsv
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(211955);
+          AppMethodBeat.o(124519);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -80,26 +77,22 @@ public final class bsv
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbsv.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(211955);
+          AppMethodBeat.o(124519);
           return 0;
         case 2: 
-          localbsv.Fsa = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(211955);
-          return 0;
-        case 3: 
-          localbsv.Fsb = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(211955);
+          localbsv.Hgv = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(124519);
           return 0;
         }
-        localbsv.username = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(211955);
+        localbsv.Hgw = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(124519);
         return 0;
       }
-      AppMethodBeat.o(211955);
+      AppMethodBeat.o(124519);
       return -1;
     }
   }

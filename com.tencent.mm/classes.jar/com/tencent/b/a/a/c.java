@@ -9,7 +9,7 @@ import java.util.List;
 
 final class c
 {
-  static File eh(String paramString)
+  static File em(String paramString)
   {
     AppMethodBeat.i(87625);
     paramString = new File(paramString);
@@ -19,7 +19,7 @@ final class c
       return paramString;
     }
     if (!paramString.getParentFile().exists()) {
-      eh(paramString.getParentFile().getAbsolutePath());
+      em(paramString.getParentFile().getAbsolutePath());
     }
     paramString.mkdir();
     AppMethodBeat.o(87625);

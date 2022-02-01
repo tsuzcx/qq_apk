@@ -9,7 +9,7 @@ import android.os.AsyncTask;
 import com.davemorrissey.labs.subscaleview.a.d;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.FileNotFoundException;
 import java.lang.ref.WeakReference;
 
@@ -60,7 +60,7 @@ public final class b
     private int[] rH()
     {
       AppMethodBeat.i(157357);
-      ad.d("MicroMsg.LegacyTileInitLoaderFactory", "alvinluo TileInitTask doInBackground");
+      ae.d("MicroMsg.LegacyTileInitLoaderFactory", "alvinluo TileInitTask doInBackground");
       this.aWS = System.currentTimeMillis();
       try
       {
@@ -94,7 +94,7 @@ public final class b
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        ad.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
         this.exception = localFileNotFoundException;
         this.aWR = new com.davemorrissey.labs.subscaleview.a.c(1, "tile init file not found");
         a((SubsamplingScaleImageView)this.og.get());
@@ -105,7 +105,7 @@ public final class b
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
           this.exception = localException;
           this.aWR = new com.davemorrissey.labs.subscaleview.a.c(4, "tile init failed");
         }

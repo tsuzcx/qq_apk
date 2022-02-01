@@ -1,46 +1,66 @@
 package com.tencent.mm.app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.splash.a;
-import com.tencent.mm.splash.h;
-import com.tencent.mm.splash.o.a;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.sdcard_migrate.ExtStorageMigrateMonitor;
+import com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine;
+import com.tencent.mm.sdcard_migrate.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.v;
 
 final class WeChatSplashStartup$6
   implements com.tencent.mm.kernel.api.g
 {
-  WeChatSplashStartup$6(WeChatSplashStartup paramWeChatSplashStartup, boolean paramBoolean, o.a parama) {}
+  WeChatSplashStartup$6(WeChatSplashStartup paramWeChatSplashStartup) {}
   
-  public final void MP()
+  public final void ML()
   {
-    AppMethodBeat.i(160049);
-    com.tencent.mm.kernel.g.ajD().b(this);
-    if (!this.cVw)
+    AppMethodBeat.i(160075);
+    com.tencent.mm.kernel.g.ajS().b(this);
+    com.tencent.mm.blink.a.MH();
+    WeChatSplashStartup.a(this.cWm);
+    v.byD();
+    ExtStorageMigrateMonitor.fmY();
+    b.fnv();
+    ExtStorageMigrateRoutine.triggerMediaRescanOnDemand();
+    if (this.cWm.profile.akL()) {}
+    try
     {
-      this.cVs.done();
-      AppMethodBeat.o(160049);
+      ak.getContext().getSharedPreferences("system_config_prefs", 0).edit().putInt("launch_last_status", 2).commit();
+      if (this.cWm.profile.akL())
+      {
+        com.tencent.mm.kernel.a locala = com.tencent.mm.kernel.g.ajP();
+        ae.i("MMKernel.CoreAccount", "summerhardcoder hasInitialized[%b] mHardCoderStartPerformance[%d] stack[%s]", new Object[] { Boolean.valueOf(locala.aiZ()), Integer.valueOf(locala.gDb), bu.fpN() });
+        if ((locala.aiZ()) && (locala.gDb != 0))
+        {
+          WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcBootEnable, locala.gDb);
+          ae.i("MMKernel.CoreAccount", "summerhardcoder stopPerformance[%s] stack[%s]", new Object[] { Integer.valueOf(locala.gDb), bu.fpN() });
+          locala.gDb = 0;
+        }
+      }
+      AppMethodBeat.o(160075);
       return;
     }
-    h.b("MicroMsg.FigLeaf", "deleteRequest ", new Object[0]);
-    Object localObject = a.fnh();
-    if (!new e((String)localObject).exists())
+    catch (Exception localException)
     {
-      h.b("MicroMsg.FigLeaf", "deleteRequest dex opt dir not exists.", new Object[0]);
-      AppMethodBeat.o(160049);
-      return;
+      for (;;)
+      {
+        ae.printErrStackTrace("MicroMsg.WeChatSplashStartup", localException, "%s", new Object[] { localException.getMessage() });
+      }
     }
-    localObject = new e((String)localObject + "/main-process-blocking");
-    if (((e)localObject).exists()) {
-      h.b("MicroMsg.FigLeaf", "deleteRequest result %s.", new Object[] { Boolean.valueOf(((e)localObject).delete()) });
-    }
-    AppMethodBeat.o(160049);
   }
   
-  public final void cg(boolean paramBoolean) {}
+  public final void ch(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.WeChatSplashStartup.6
  * JD-Core Version:    0.7.0.1
  */

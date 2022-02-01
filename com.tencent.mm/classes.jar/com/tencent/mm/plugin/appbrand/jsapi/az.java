@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.luggage.sdk.b.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
-import com.tencent.mm.plugin.appbrand.permission.d;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class az
-  extends y<com.tencent.luggage.sdk.b.a.c.c>
+  extends y<c>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "getPluginPermissionBytes";
   
-  private String a(com.tencent.luggage.sdk.b.a.c.c paramc, JSONObject paramJSONObject)
+  private String a(c paramc, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(192209);
-    ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "invoke jsapi: %s", new Object[] { "getPluginPermissionBytes" });
+    AppMethodBeat.i(220781);
+    ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "invoke jsapi: %s", new Object[] { "getPluginPermissionBytes" });
     if (paramc == null)
     {
-      ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:service is nil");
+      ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:service is nil");
       paramc = e("fail:service is nil", null);
-      AppMethodBeat.o(192209);
+      AppMethodBeat.o(220781);
       return paramc;
     }
     if (paramJSONObject == null)
     {
-      ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:data is nil");
+      ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:data is nil");
       paramc = e("fail:data is nil", null);
-      AppMethodBeat.o(192209);
+      AppMethodBeat.o(220781);
       return paramc;
     }
-    Object localObject = paramc.En();
+    Object localObject = paramc.Eq();
     if (localObject == null)
     {
-      ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:runtime is nil");
+      ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:runtime is nil");
       paramc = e("fail:runtime is nil", null);
-      AppMethodBeat.o(192209);
+      AppMethodBeat.o(220781);
       return paramc;
     }
-    d locald = ((com.tencent.luggage.sdk.d.c)localObject).cpr;
+    com.tencent.mm.plugin.appbrand.permission.d locald = ((com.tencent.luggage.sdk.d.d)localObject).cpU;
     if (locald == null)
     {
-      ad.e("MicroMsg.JsApiGetPluginPermissionBytes", "invoke failed, NULL permissionController with appId:%s", new Object[] { ((AppBrandRuntime)localObject).mAppId });
+      ae.e("MicroMsg.JsApiGetPluginPermissionBytes", "invoke failed, NULL permissionController with appId:%s", new Object[] { ((AppBrandRuntime)localObject).mAppId });
       paramc = e("fail:internal error", null);
-      AppMethodBeat.o(192209);
+      AppMethodBeat.o(220781);
       return paramc;
     }
     for (;;)
@@ -68,21 +68,21 @@ public final class az
           paramJSONObject = ((JSONArray)localObject).optJSONObject(i);
           String str = paramJSONObject.optString("pluginId");
           JSONArray localJSONArray1 = paramJSONObject.optJSONArray("indexes");
-          ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "pluginId:%s,indexes:%s", new Object[] { str, localJSONArray1 });
+          ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "pluginId:%s,indexes:%s", new Object[] { str, localJSONArray1 });
           if (localJSONArray1 == null)
           {
-            ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:indexes is nil");
+            ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:indexes is nil");
             paramc = e("fail:indexes is nil", null);
-            AppMethodBeat.o(192209);
+            AppMethodBeat.o(220781);
             return paramc;
           }
-          j = locald.mhR;
+          j = locald.mmP;
           if (j == -1)
           {
             paramJSONObject = new byte[] { 1 };
             if ((paramJSONObject == null) || (paramJSONObject.length <= 0))
             {
-              ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:pluginId:%s ctrlBytes is empty", new Object[] { str });
+              ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "fail:pluginId:%s ctrlBytes is empty", new Object[] { str });
               break label638;
             }
           }
@@ -93,31 +93,31 @@ public final class az
               paramJSONObject = new byte[] { 0 };
               continue;
             }
-            if (bt.isNullOrNil(str))
+            if (bu.isNullOrNil(str))
             {
               paramJSONObject = null;
               continue;
             }
-            paramJSONObject = locald.TQ(str);
+            paramJSONObject = locald.Uz(str);
             if (paramJSONObject == null)
             {
               paramJSONObject = null;
               continue;
             }
-            if (!(paramc instanceof q)) {}
+            if (!(paramc instanceof r)) {}
           }
-          switch (com.tencent.mm.plugin.appbrand.permission.d.2.jLm[locald.jzY.jwS.jKT.bbg().ordinal()])
+          switch (com.tencent.mm.plugin.appbrand.permission.d.2.jOy[locald.jDb.jzQ.jOf.bbI().ordinal()])
           {
           case 1: 
-            paramJSONObject = paramJSONObject.mhM;
+            paramJSONObject = paramJSONObject.mmK;
             break;
           case 2: 
           case 3: 
-            paramJSONObject = paramJSONObject.mhN;
+            paramJSONObject = paramJSONObject.mmL;
             break;
-            paramJSONObject = paramJSONObject.mhM;
+            paramJSONObject = paramJSONObject.mmK;
             break;
-            ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "pluginId:%s ctrlBytes:%d", new Object[] { str, Integer.valueOf(paramJSONObject.length) });
+            ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "pluginId:%s ctrlBytes:%d", new Object[] { str, Integer.valueOf(paramJSONObject.length) });
             JSONArray localJSONArray2 = new JSONArray();
             if (localJSONArray1.length() != 0) {
               break label651;
@@ -141,15 +141,15 @@ public final class az
       }
       catch (Exception paramc)
       {
-        ad.e("MicroMsg.JsApiGetPluginPermissionBytes", "parse pluginList error:%s", new Object[] { paramc });
+        ae.e("MicroMsg.JsApiGetPluginPermissionBytes", "parse pluginList error:%s", new Object[] { paramc });
         paramc = e("fail:parse pluginList error", null);
-        AppMethodBeat.o(192209);
+        AppMethodBeat.o(220781);
         return paramc;
       }
       localHashMap1.put("pluginPermissionMap", localHashMap2);
-      ad.i("MicroMsg.JsApiGetPluginPermissionBytes", "invoke JsApiGetPluginPermissionBytes ok");
-      paramc = m("ok", localHashMap1);
-      AppMethodBeat.o(192209);
+      ae.i("MicroMsg.JsApiGetPluginPermissionBytes", "invoke JsApiGetPluginPermissionBytes ok");
+      paramc = n("ok", localHashMap1);
+      AppMethodBeat.o(220781);
       return paramc;
       label638:
       i += 1;
@@ -163,7 +163,7 @@ public final class az
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.az
  * JD-Core Version:    0.7.0.1
  */

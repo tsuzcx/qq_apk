@@ -11,11 +11,11 @@ import java.io.EOFException;
 
 public final class b
 {
-  final a MfW;
+  final a MCT;
   
   public b(a parama)
   {
-    this.MfW = parama;
+    this.MCT = parama;
   }
   
   public final short[] a(short[] paramArrayOfShort)
@@ -30,8 +30,8 @@ public final class b
       paramArrayOfShort.a(new a(localc));
       paramArrayOfShort.a(new a(localf));
       i = localh.aoY;
-      if (i == localh.Met.length) {
-        return localh.Met;
+      if (i == localh.MBq.length) {
+        return localh.MBq;
       }
     }
     catch (EOFException paramArrayOfShort)
@@ -39,7 +39,7 @@ public final class b
       throw new j(paramArrayOfShort);
     }
     paramArrayOfShort = new short[i];
-    System.arraycopy(localh.Met, 0, paramArrayOfShort, 0, i);
+    System.arraycopy(localh.MBq, 0, paramArrayOfShort, 0, i);
     return paramArrayOfShort;
   }
   
@@ -51,55 +51,55 @@ public final class b
       super();
     }
     
-    private int lf(int paramInt1, int paramInt2)
+    private int lm(int paramInt1, int paramInt2)
     {
       switch (paramInt2)
       {
       default: 
         return paramInt1;
       case 3: 
-        return b.this.MfW.ahX(paramInt1);
+        return b.this.MCT.aiG(paramInt1);
       case 2: 
-        return b.this.MfW.ahY(paramInt1);
+        return b.this.MCT.aiH(paramInt1);
       case 5: 
-        return b.this.MfW.aia(paramInt1);
+        return b.this.MCT.aiJ(paramInt1);
       }
-      return b.this.MfW.aib(paramInt1);
+      return b.this.MCT.aiK(paramInt1);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
     {
-      super.a(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong);
+      super.a(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
     {
-      super.a(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6);
+      super.a(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
     {
-      super.a(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
+      super.a(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
     {
-      super.a(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8);
+      super.a(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
     {
-      super.a(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9);
+      super.a(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
     {
-      super.a(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+      super.a(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
     }
     
     public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
     {
-      super.b(paramInt1, paramInt2, lf(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
+      super.b(paramInt1, paramInt2, lm(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
     }
   }
 }

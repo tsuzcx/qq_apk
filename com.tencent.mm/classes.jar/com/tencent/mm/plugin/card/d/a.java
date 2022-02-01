@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.card.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.b;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.an.b;
+import com.tencent.mm.an.f;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -20,51 +20,51 @@ import java.util.List;
 
 public final class a
 {
-  private static List<WeakReference<a>> owv;
+  private static List<WeakReference<a>> oCX;
   
   static
   {
     AppMethodBeat.i(113736);
-    owv = new ArrayList();
+    oCX = new ArrayList();
     AppMethodBeat.o(113736);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(113733);
-    if (owv == null) {
-      owv = new ArrayList();
+    if (oCX == null) {
+      oCX = new ArrayList();
     }
     if (parama == null)
     {
-      ad.e("MicroMsg.CDNDownloadHelpper", "ICDNDownloadCallback is null");
+      ae.e("MicroMsg.CDNDownloadHelpper", "ICDNDownloadCallback is null");
       AppMethodBeat.o(113733);
       return;
     }
-    ad.i("MicroMsg.CDNDownloadHelpper", "register:%d", new Object[] { Integer.valueOf(parama.hashCode()) });
-    owv.add(new WeakReference(parama));
+    ae.i("MicroMsg.CDNDownloadHelpper", "register:%d", new Object[] { Integer.valueOf(parama.hashCode()) });
+    oCX.add(new WeakReference(parama));
     AppMethodBeat.o(113733);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(113734);
-    if ((owv == null) || (parama == null))
+    if ((oCX == null) || (parama == null))
     {
       AppMethodBeat.o(113734);
       return;
     }
-    ad.i("MicroMsg.CDNDownloadHelpper", "unregister:%d", new Object[] { Integer.valueOf(parama.hashCode()) });
+    ae.i("MicroMsg.CDNDownloadHelpper", "unregister:%d", new Object[] { Integer.valueOf(parama.hashCode()) });
     int i = 0;
-    while (i < owv.size())
+    while (i < oCX.size())
     {
-      WeakReference localWeakReference = (WeakReference)owv.get(i);
+      WeakReference localWeakReference = (WeakReference)oCX.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          owv.remove(localWeakReference);
+          oCX.remove(localWeakReference);
           AppMethodBeat.o(113734);
           return;
         }
@@ -81,40 +81,40 @@ public final class a
     AppMethodBeat.i(113735);
     if ((paramString1 == null) || (paramString2 == null) || (paramInt1 == 0))
     {
-      ad.e("MicroMsg.CDNDownloadHelpper", "the params is wrongful");
+      ae.e("MicroMsg.CDNDownloadHelpper", "the params is wrongful");
       AppMethodBeat.o(113735);
       return;
     }
-    Object localObject = ai.ee(paramString1);
-    e locale = new e(m.ozG);
-    if (!locale.mkdirs()) {
-      ad.i("MicroMsg.CDNDownloadHelpper", "mkdirs failed.File is exist = " + locale.exists());
+    Object localObject = aj.ej(paramString1);
+    k localk = new k(m.oGi);
+    if (!localk.mkdirs()) {
+      ae.i("MicroMsg.CDNDownloadHelpper", "mkdirs failed.File is exist = " + localk.exists());
     }
     if (paramInt2 == 2)
     {
       str = ".jpeg";
-      if (!q.B(locale.fOK()).endsWith("/")) {
+      if (!w.B(localk.fTh()).endsWith("/")) {
         break label315;
       }
     }
     label315:
-    for (final String str = q.B(locale.fOK()) + (String)localObject + str;; str = q.B(locale.fOK()) + "/" + (String)localObject + str)
+    for (final String str = w.B(localk.fTh()) + (String)localObject + str;; str = w.B(localk.fTh()) + "/" + (String)localObject + str)
     {
-      ad.i("MicroMsg.CDNDownloadHelpper", "get file path from capture file name : %s == %s", new Object[] { localObject, str });
-      ad.i("MicroMsg.CDNDownloadHelpper", "before downloadVideoFromCDN fieldId:%s, aseKey:%s, dataLength:%d, type:%d, filePath:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
-      ad.i("MicroMsg.CDNDownloadHelpper", "read file length = " + i.aYo(str));
-      if ((!i.fv(str)) || (i.aYo(str) != paramInt1)) {
+      ae.i("MicroMsg.CDNDownloadHelpper", "get file path from capture file name : %s == %s", new Object[] { localObject, str });
+      ae.i("MicroMsg.CDNDownloadHelpper", "before downloadVideoFromCDN fieldId:%s, aseKey:%s, dataLength:%d, type:%d, filePath:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+      ae.i("MicroMsg.CDNDownloadHelpper", "read file length = " + o.aZR(str));
+      if ((!o.fB(str)) || (o.aZR(str) != paramInt1)) {
         break label362;
       }
       paramInt1 = i;
-      while (paramInt1 < owv.size())
+      while (paramInt1 < oCX.size())
       {
-        paramString2 = (WeakReference)owv.get(paramInt1);
+        paramString2 = (WeakReference)oCX.get(paramInt1);
         if (paramString2 != null)
         {
           paramString2 = (a)paramString2.get();
           if (paramString2 != null) {
-            paramString2.fb(paramString1, str);
+            paramString2.ff(paramString1, str);
           }
         }
         paramInt1 += 1;
@@ -125,32 +125,32 @@ public final class a
     AppMethodBeat.o(113735);
     return;
     label362:
-    ad.i("MicroMsg.CDNDownloadHelpper", "filePath:%s is't exist, so download from CDN", new Object[] { str });
+    ae.i("MicroMsg.CDNDownloadHelpper", "filePath:%s is't exist, so download from CDN", new Object[] { str });
     localObject = new g();
-    ((g)localObject).fJi = "task_CDNDownloadHelpper";
-    ((g)localObject).fJj = new g.a()
+    ((g)localObject).fLl = "task_CDNDownloadHelpper";
+    ((g)localObject).fLm = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(113730);
         if (paramAnonymousInt == -21005)
         {
-          ad.i("MicroMsg.CDNDownloadHelpper", "duplicate request, ignore this request, media id is %s", new Object[] { paramAnonymousString });
+          ae.i("MicroMsg.CDNDownloadHelpper", "duplicate request, ignore this request, media id is %s", new Object[] { paramAnonymousString });
           AppMethodBeat.o(113730);
           return 0;
         }
         if (paramAnonymousInt != 0)
         {
-          ad.e("MicroMsg.CDNDownloadHelpper", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          ae.e("MicroMsg.CDNDownloadHelpper", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
           paramAnonymousInt = 0;
-          while (paramAnonymousInt < a.owv.size())
+          while (paramAnonymousInt < a.oCX.size())
           {
-            paramAnonymousString = (WeakReference)a.owv.get(paramAnonymousInt);
+            paramAnonymousString = (WeakReference)a.oCX.get(paramAnonymousInt);
             if (paramAnonymousString != null)
             {
               paramAnonymousString = (a.a)paramAnonymousString.get();
               if (paramAnonymousString != null) {
-                paramAnonymousString.YL(this.itv);
+                paramAnonymousString.ZC(this.iwp);
               }
             }
             paramAnonymousInt += 1;
@@ -161,7 +161,7 @@ public final class a
         long l;
         if (paramAnonymousc != null)
         {
-          ad.i("MicroMsg.CDNDownloadHelpper", "progressInfo : %s", new Object[] { paramAnonymousc.toString() });
+          ae.i("MicroMsg.CDNDownloadHelpper", "progressInfo : %s", new Object[] { paramAnonymousc.toString() });
           l = 0L;
           if (paramAnonymousc.field_toltalLength > 0L) {
             l = paramAnonymousc.field_finishedLength * 100L / paramAnonymousc.field_toltalLength;
@@ -176,14 +176,14 @@ public final class a
           paramAnonymousInt = 0;
           for (;;)
           {
-            if (paramAnonymousInt < a.owv.size())
+            if (paramAnonymousInt < a.oCX.size())
             {
-              paramAnonymousString = (WeakReference)a.owv.get(paramAnonymousInt);
+              paramAnonymousString = (WeakReference)a.oCX.get(paramAnonymousInt);
               if (paramAnonymousString != null)
               {
                 paramAnonymousString = (a.a)paramAnonymousString.get();
                 if (paramAnonymousString != null) {
-                  paramAnonymousString.cF(this.itv, (int)l);
+                  paramAnonymousString.cJ(this.iwp, (int)l);
                 }
               }
               paramAnonymousInt += 1;
@@ -201,31 +201,31 @@ public final class a
           {
             if (paramAnonymousd.field_retCode != 0)
             {
-              ad.e("MicroMsg.CDNDownloadHelpper", "cdntra clientid:%s , sceneResult.retCode:%d , sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
+              ae.e("MicroMsg.CDNDownloadHelpper", "cdntra clientid:%s , sceneResult.retCode:%d , sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
               paramAnonymousInt = 0;
-              while (paramAnonymousInt < a.owv.size())
+              while (paramAnonymousInt < a.oCX.size())
               {
-                paramAnonymousString = (WeakReference)a.owv.get(paramAnonymousInt);
+                paramAnonymousString = (WeakReference)a.oCX.get(paramAnonymousInt);
                 if (paramAnonymousString != null)
                 {
                   paramAnonymousString = (a.a)paramAnonymousString.get();
                   if (paramAnonymousString != null) {
-                    paramAnonymousString.YL(this.itv);
+                    paramAnonymousString.ZC(this.iwp);
                   }
                 }
                 paramAnonymousInt += 1;
               }
             }
-            ad.i("MicroMsg.CDNDownloadHelpper", "cdn trans suceess, sceneResult[%s]", new Object[] { paramAnonymousd });
+            ae.i("MicroMsg.CDNDownloadHelpper", "cdn trans suceess, sceneResult[%s]", new Object[] { paramAnonymousd });
             paramAnonymousInt = 0;
-            while (paramAnonymousInt < a.owv.size())
+            while (paramAnonymousInt < a.oCX.size())
             {
-              paramAnonymousString = (WeakReference)a.owv.get(paramAnonymousInt);
+              paramAnonymousString = (WeakReference)a.oCX.get(paramAnonymousInt);
               if (paramAnonymousString != null)
               {
                 paramAnonymousString = (a.a)paramAnonymousString.get();
                 if (paramAnonymousString != null) {
-                  paramAnonymousString.fb(this.itv, str);
+                  paramAnonymousString.ff(this.iwp, str);
                 }
               }
               paramAnonymousInt += 1;
@@ -239,56 +239,56 @@ public final class a
       public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream)
       {
         AppMethodBeat.i(113731);
-        ad.i("MicroMsg.CDNDownloadHelpper", "getCdnAuthInfo, mediaId = %s", new Object[] { paramAnonymousString });
+        ae.i("MicroMsg.CDNDownloadHelpper", "getCdnAuthInfo, mediaId = %s", new Object[] { paramAnonymousString });
         AppMethodBeat.o(113731);
       }
       
       public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(113732);
-        ad.i("MicroMsg.CDNDownloadHelpper", "decodePrepareResponse, mediaId = %s", new Object[] { paramAnonymousString });
+        ae.i("MicroMsg.CDNDownloadHelpper", "decodePrepareResponse, mediaId = %s", new Object[] { paramAnonymousString });
         AppMethodBeat.o(113732);
         return null;
       }
     };
-    ((g)localObject).dNR = false;
-    ((g)localObject).field_mediaId = com.tencent.mm.ao.c.a("cardgiftfile", bt.flT(), paramString1, paramString1);
+    ((g)localObject).dPh = false;
+    ((g)localObject).field_mediaId = com.tencent.mm.an.c.a("cardgiftfile", bu.fpO(), paramString1, paramString1);
     ((g)localObject).field_fullpath = str;
     ((g)localObject).field_totalLen = paramInt1;
-    ((g)localObject).field_fileType = com.tencent.mm.i.a.fIC;
+    ((g)localObject).field_fileType = com.tencent.mm.i.a.fKG;
     ((g)localObject).field_fileId = paramString1;
     ((g)localObject).field_aesKey = paramString2;
-    ((g)localObject).field_priority = com.tencent.mm.i.a.fIw;
+    ((g)localObject).field_priority = com.tencent.mm.i.a.fKA;
     ((g)localObject).field_needStorage = true;
-    boolean bool = f.aGI().b((g)localObject, -1);
-    ad.i("MicroMsg.CDNDownloadHelpper", "add download cdn task : %b, fileId : %s", new Object[] { Boolean.valueOf(bool), ((g)localObject).field_fileId });
+    boolean bool = f.aGZ().b((g)localObject, -1);
+    ae.i("MicroMsg.CDNDownloadHelpper", "add download cdn task : %b, fileId : %s", new Object[] { Boolean.valueOf(bool), ((g)localObject).field_fileId });
     if (!bool)
     {
       paramInt1 = j;
-      while (paramInt1 < owv.size())
+      while (paramInt1 < oCX.size())
       {
-        paramString2 = (WeakReference)owv.get(paramInt1);
+        paramString2 = (WeakReference)oCX.get(paramInt1);
         if (paramString2 != null)
         {
           paramString2 = (a)paramString2.get();
           if (paramString2 != null) {
-            paramString2.YL(paramString1);
+            paramString2.ZC(paramString1);
           }
         }
         paramInt1 += 1;
       }
-      ad.e("MicroMsg.CDNDownloadHelpper", "can't download from cdn!!!");
+      ae.e("MicroMsg.CDNDownloadHelpper", "can't download from cdn!!!");
     }
     AppMethodBeat.o(113735);
   }
   
   public static abstract interface a
   {
-    public abstract void YL(String paramString);
+    public abstract void ZC(String paramString);
     
-    public abstract void cF(String paramString, int paramInt);
+    public abstract void cJ(String paramString, int paramInt);
     
-    public abstract void fb(String paramString1, String paramString2);
+    public abstract void ff(String paramString1, String paramString2);
   }
 }
 

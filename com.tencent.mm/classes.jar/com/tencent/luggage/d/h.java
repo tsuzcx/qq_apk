@@ -22,31 +22,31 @@ public abstract class h
     this.chm = paramj;
   }
   
-  protected abstract View BQ();
+  protected abstract View BR();
   
-  final void BR()
+  final void BS()
   {
     this.chl.O(l.e.class);
   }
   
-  public final void BS()
+  public final void BT()
   {
     onForeground();
     this.chl.O(l.d.class);
   }
   
-  public final void BT()
+  public final void BU()
   {
     onBackground();
     this.chl.O(l.b.class);
   }
   
-  final boolean BU()
+  final boolean BV()
   {
     return (this.chl.O(l.a.class)) || (onBackPressed());
   }
   
-  final void BV()
+  final void BW()
   {
     onDestroy();
     this.chl.O(l.c.class);

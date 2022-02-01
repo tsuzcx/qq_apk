@@ -16,11 +16,11 @@ public final class a
     super(paramContext);
   }
   
-  public final b boL()
+  public final b bpv()
   {
-    AppMethodBeat.i(206481);
+    AppMethodBeat.i(211511);
     c localc = new c(new Handler(Looper.getMainLooper()));
-    AppMethodBeat.o(206481);
+    AppMethodBeat.o(211511);
     return localc;
   }
 }

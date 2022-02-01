@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.appbrand.xweb_ext;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-appbrand-integration_release"})
 public final class b
   implements a
 {
-  public static final a nqR;
+  public static final a nwk;
   
   static
   {
     AppMethodBeat.i(51458);
-    nqR = new a((byte)0);
+    nwk = new a((byte)0);
     AppMethodBeat.o(51458);
   }
   
-  public static final void Cx()
+  public static final void CA()
   {
     AppMethodBeat.i(51459);
     com.tencent.mm.pluginsdk.cmd.b.a((a)new b(), new String[] { "//skia" });
@@ -44,8 +44,8 @@ public final class b
       switch (paramContext.hashCode())
       {
       default: 
-        a.bFO().clear();
-        a.bFO().commit();
+        a.bGK().clear();
+        a.bGK().commit();
       }
       for (;;)
       {
@@ -54,30 +54,30 @@ public final class b
         if (!paramContext.equals("true")) {
           break;
         }
-        a.bFO().putBoolean("use_skia_canvas", true);
-        a.bFO().commit();
+        a.bGK().putBoolean("use_skia_canvas", true);
+        a.bGK().commit();
         continue;
         if (!paramContext.equals("false")) {
           break;
         }
-        a.bFO().putBoolean("use_skia_canvas", false);
-        a.bFO().commit();
+        a.bGK().putBoolean("use_skia_canvas", false);
+        a.bGK().commit();
       }
     }
     AppMethodBeat.o(51457);
     return false;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas$Companion;", "", "()V", "COMMAND_USE_XWEB_CANVAS", "", "TAG", "USE_SKIA_CANVAS", "kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "register", "", "useSkiaCanvas", "", "()Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas$Companion;", "", "()V", "COMMAND_USE_XWEB_CANVAS", "", "TAG", "USE_SKIA_CANVAS", "kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "register", "", "useSkiaCanvas", "", "()Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    static ax bFO()
+    static ay bGK()
     {
       AppMethodBeat.i(51455);
-      ax localax = ax.aQz("MicroMsg.UseXWebCanvas");
-      p.g(localax, "MultiProcessMMKV.getMMKV(TAG)");
+      ay localay = ay.aRW("MicroMsg.UseXWebCanvas");
+      p.g(localay, "MultiProcessMMKV.getMMKV(TAG)");
       AppMethodBeat.o(51455);
-      return localax;
+      return localay;
     }
   }
 }

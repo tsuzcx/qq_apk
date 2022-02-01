@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(78072);
-    DLV = new b("AUTO", 0);
-    DLW = new b("LANDSCAPE", 1);
-    DLX = new b("PORTRAIT", 2);
-    DLY = new b[] { DLV, DLW, DLX };
+    EdT = new b("AUTO", 0);
+    EdU = new b("LANDSCAPE", 1);
+    EdV = new b("PORTRAIT", 2);
+    EdW = new b[] { EdT, EdU, EdV };
     AppMethodBeat.o(78072);
   }
   

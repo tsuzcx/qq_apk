@@ -7,22 +7,22 @@ import android.renderscript.Allocation.MipmapControl;
 import android.renderscript.RenderScript;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "rs", "Landroid/renderscript/RenderScript;", "script", "Lcom/tencent/mm/ScriptC_ImageRenderScriptUtil;", "flipBitmap", "Landroid/graphics/Bitmap;", "bitmap", "isVertical", "", "newHeight", "", "angle", "newWidth", "release", "", "rotateBitmap", "yuv2Rgb", "data", "", "width", "height", "yuv2RgbWithCrop", "planes", "", "Landroid/media/Image$Plane;", "yuvBytes", "xOffset", "yOffset", "([Landroid/media/Image$Plane;[[BIIII)Landroid/graphics/Bitmap;", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "rs", "Landroid/renderscript/RenderScript;", "script", "Lcom/tencent/mm/ScriptC_ImageRenderScriptUtil;", "flipBitmap", "Landroid/graphics/Bitmap;", "bitmap", "isVertical", "", "newHeight", "", "angle", "newWidth", "release", "", "rotateBitmap", "yuv2Rgb", "data", "", "width", "height", "yuv2RgbWithCrop", "planes", "", "Landroid/media/Image$Plane;", "yuvBytes", "xOffset", "yOffset", "([Landroid/media/Image$Plane;[[BIIII)Landroid/graphics/Bitmap;", "Companion", "plugin-mediaeditor_release"})
 public final class f
 {
-  public static final f.a hrL;
-  d hrJ;
-  RenderScript hrK;
+  public static final f.a huz;
+  d hux;
+  RenderScript huy;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(94179);
-    hrL = new f.a((byte)0);
+    huz = new f.a((byte)0);
     AppMethodBeat.o(94179);
   }
   
@@ -30,8 +30,8 @@ public final class f
   {
     AppMethodBeat.i(94178);
     this.mContext = paramContext;
-    this.hrK = RenderScript.create(this.mContext);
-    this.hrJ = new d(this.hrK);
+    this.huy = RenderScript.create(this.mContext);
+    this.hux = new d(this.huy);
     AppMethodBeat.o(94178);
   }
   
@@ -74,23 +74,23 @@ public final class f
       AppMethodBeat.o(94177);
       return paramBitmap;
     }
-    Object localObject1 = this.hrJ;
+    Object localObject1 = this.hux;
     if (localObject1 != null) {
-      ((d)localObject1).hf(paramBitmap.getWidth());
+      ((d)localObject1).hg(paramBitmap.getWidth());
     }
-    localObject1 = this.hrJ;
+    localObject1 = this.hux;
     if (localObject1 != null) {
-      ((d)localObject1).hg(paramBitmap.getHeight());
+      ((d)localObject1).hh(paramBitmap.getHeight());
     }
-    localObject1 = Allocation.createFromBitmap(this.hrK, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
+    localObject1 = Allocation.createFromBitmap(this.huy, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
     paramBitmap.recycle();
-    Object localObject2 = this.hrJ;
+    Object localObject2 = this.hux;
     if (localObject2 != null) {
       ((d)localObject2).a((Allocation)localObject1);
     }
     int i = c(paramBitmap, paramInt);
     paramBitmap = Bitmap.createBitmap(d(paramBitmap, paramInt), i, paramBitmap.getConfig());
-    localObject2 = Allocation.createFromBitmap(this.hrK, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
+    localObject2 = Allocation.createFromBitmap(this.huy, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
     switch (paramInt)
     {
     }
@@ -102,17 +102,17 @@ public final class f
       p.g(paramBitmap, "target");
       AppMethodBeat.o(94177);
       return paramBitmap;
-      d locald = this.hrJ;
+      d locald = this.hux;
       if (locald != null)
       {
         locald.a((Allocation)localObject2, (Allocation)localObject2);
         continue;
-        locald = this.hrJ;
+        locald = this.hux;
         if (locald != null)
         {
           locald.d((Allocation)localObject2, (Allocation)localObject2);
           continue;
-          locald = this.hrJ;
+          locald = this.hux;
           if (locald != null) {
             locald.b((Allocation)localObject2, (Allocation)localObject2);
           }
@@ -124,12 +124,12 @@ public final class f
   public final void release()
   {
     AppMethodBeat.i(94174);
-    ad.i("MicroMsg.RenderScriptImageHelper", "release rs script ");
-    Object localObject = this.hrJ;
+    ae.i("MicroMsg.RenderScriptImageHelper", "release rs script ");
+    Object localObject = this.hux;
     if (localObject != null) {
       ((d)localObject).destroy();
     }
-    localObject = this.hrK;
+    localObject = this.huy;
     if (localObject != null)
     {
       ((RenderScript)localObject).destroy();

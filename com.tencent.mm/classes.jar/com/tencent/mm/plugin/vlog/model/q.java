@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/PlayRange;", "", "start", "", "end", "(JJ)V", "getEnd", "()J", "setEnd", "(J)V", "getStart", "setStart", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/PlayRange;", "", "start", "", "end", "(JJ)V", "getEnd", "()J", "setEnd", "(J)V", "getStart", "setStart", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
 public final class q
 {
   long bpc = 0L;
@@ -35,9 +35,9 @@ public final class q
   
   public final String toString()
   {
-    AppMethodBeat.i(195748);
+    AppMethodBeat.i(191205);
     String str = "PlayRange(start=" + this.start + ", end=" + this.bpc + ")";
-    AppMethodBeat.o(195748);
+    AppMethodBeat.o(191205);
     return str;
   }
 }

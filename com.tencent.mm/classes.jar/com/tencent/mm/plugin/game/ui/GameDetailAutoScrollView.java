@@ -10,33 +10,33 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameDetailAutoScrollView
   extends LinearLayout
 {
-  private int pPf;
-  private av ulh;
-  private TextView umA;
-  private ViewGroup umB;
-  private TextView umC;
-  private TextView umD;
-  private Animation umE;
-  private Animation umF;
-  private ArrayList<String> umx;
-  private ViewGroup umy;
-  private TextView umz;
+  private int pVK;
+  private aw uwE;
+  private ArrayList<String> uxU;
+  private ViewGroup uxV;
+  private TextView uxW;
+  private TextView uxX;
+  private ViewGroup uxY;
+  private TextView uxZ;
+  private TextView uya;
+  private Animation uyb;
+  private Animation uyc;
   
   public GameDetailAutoScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(41975);
-    this.umx = new ArrayList();
-    this.pPf = 0;
-    this.ulh = new av(new av.a()
+    this.uxU = new ArrayList();
+    this.pVK = 0;
+    this.uwE = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -46,18 +46,18 @@ public class GameDetailAutoScrollView
         return true;
       }
     }, true);
-    this.umy = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494280, this, false));
-    this.umz = ((TextView)this.umy.findViewById(2131300376));
-    this.umA = ((TextView)this.umy.findViewById(2131300377));
-    addView(this.umy);
-    this.umy.setVisibility(8);
-    this.umB = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494280, this, false));
-    this.umC = ((TextView)this.umB.findViewById(2131300376));
-    this.umD = ((TextView)this.umB.findViewById(2131300377));
-    addView(this.umB);
-    this.umB.setVisibility(8);
-    this.umE = AnimationUtils.loadAnimation(paramContext, 2130772139);
-    this.umF = AnimationUtils.loadAnimation(paramContext, 2130772147);
+    this.uxV = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494280, this, false));
+    this.uxW = ((TextView)this.uxV.findViewById(2131300376));
+    this.uxX = ((TextView)this.uxV.findViewById(2131300377));
+    addView(this.uxV);
+    this.uxV.setVisibility(8);
+    this.uxY = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494280, this, false));
+    this.uxZ = ((TextView)this.uxY.findViewById(2131300376));
+    this.uya = ((TextView)this.uxY.findViewById(2131300377));
+    addView(this.uxY);
+    this.uxY.setVisibility(8);
+    this.uyb = AnimationUtils.loadAnimation(paramContext, 2130772139);
+    this.uyc = AnimationUtils.loadAnimation(paramContext, 2130772147);
     AppMethodBeat.o(41975);
   }
   
@@ -65,35 +65,35 @@ public class GameDetailAutoScrollView
   {
     AppMethodBeat.i(41977);
     super.onDetachedFromWindow();
-    this.ulh.stopTimer();
+    this.uwE.stopTimer();
     AppMethodBeat.o(41977);
   }
   
   public void setText(List<String> paramList)
   {
     AppMethodBeat.i(41976);
-    this.umx.clear();
-    this.ulh.stopTimer();
+    this.uxU.clear();
+    this.uwE.stopTimer();
     if ((paramList == null) || (paramList.size() == 0) || (paramList.size() % 2 != 0))
     {
-      this.umy.setVisibility(8);
-      this.umB.setVisibility(8);
+      this.uxV.setVisibility(8);
+      this.uxY.setVisibility(8);
       AppMethodBeat.o(41976);
       return;
     }
-    this.umx.addAll(paramList);
-    this.pPf = 0;
-    paramList = k.b(getContext(), (CharSequence)this.umx.get(0), this.umz.getTextSize());
-    this.umz.setText(paramList);
-    this.umA.setText((CharSequence)this.umx.get(1));
-    this.umy.setVisibility(0);
-    this.umB.setVisibility(8);
-    if (this.umx.size() / 2 == 1)
+    this.uxU.addAll(paramList);
+    this.pVK = 0;
+    paramList = k.b(getContext(), (CharSequence)this.uxU.get(0), this.uxW.getTextSize());
+    this.uxW.setText(paramList);
+    this.uxX.setText((CharSequence)this.uxU.get(1));
+    this.uxV.setVisibility(0);
+    this.uxY.setVisibility(8);
+    if (this.uxU.size() / 2 == 1)
     {
       AppMethodBeat.o(41976);
       return;
     }
-    this.ulh.az(5000L, 5000L);
+    this.uwE.ay(5000L, 5000L);
     AppMethodBeat.o(41976);
   }
 }

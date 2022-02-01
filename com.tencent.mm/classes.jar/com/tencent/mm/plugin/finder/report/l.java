@@ -1,778 +1,1838 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
-import android.media.AudioManager;
+import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.cgi.ac;
+import com.tencent.mm.plugin.finder.convert.ab.a;
+import com.tencent.mm.plugin.finder.event.a.a;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.model.y;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.data.d;
-import com.tencent.mm.plugin.finder.storage.data.d.a;
-import com.tencent.mm.plugin.finder.storage.data.g;
-import com.tencent.mm.plugin.sight.base.a;
-import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.protocal.protobuf.cgq;
-import com.tencent.mm.protocal.protobuf.dij;
-import com.tencent.mm.protocal.protobuf.duh;
+import com.tencent.mm.plugin.finder.viewmodel.FinderStreamCardVM;
+import com.tencent.mm.plugin.finder.viewmodel.FinderStreamCardVM.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aio;
+import com.tencent.mm.protocal.protobuf.ank;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.asd;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.protocal.protobuf.dje;
 import com.tencent.mm.protocal.protobuf.ly;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.view.recyclerview.f;
-import d.a.j;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import d.g.b.p;
-import d.v;
-import java.util.BitSet;
+import d.u;
+import d.z;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "", "feedId", "", "startTime", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "isCenterFeed", "", "videoPlayReporter", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "(JJLcom/tencent/mm/plugin/finder/storage/FinderItem;Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;ZLcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;)V", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getBaseFinderFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setBaseFinderFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "changePageTime", "", "getChangePageTime", "()[J", "setChangePageTime", "([J)V", "clickAvatar", "", "getClickAvatar", "()I", "setClickAvatar", "(I)V", "clickComment", "getClickComment", "setClickComment", "clickExpandText", "getClickExpandText", "setClickExpandText", "clickFav", "getClickFav", "setClickFav", "clickFeedMenu", "getClickFeedMenu", "setClickFeedMenu", "clickPoiTimes", "getClickPoiTimes", "setClickPoiTimes", "clickShareMoments", "getClickShareMoments", "setClickShareMoments", "collapseTextTimes", "getCollapseTextTimes", "setCollapseTextTimes", "commentLikeTimes", "getCommentLikeTimes", "setCommentLikeTimes", "complainTimes", "getComplainTimes", "setComplainTimes", "createTimestamp", "getCreateTimestamp", "()J", "setCreateTimestamp", "(J)V", "endTime", "getEndTime", "setEndTime", "endVolume", "getEndVolume", "setEndVolume", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedDataPos", "getFeedDataPos", "setFeedDataPos", "getFeedId", "()Z", "setCenterFeed", "(Z)V", "isPause", "setPause", "isSeek", "setSeek", "lastPageIndex", "getLastPageIndex", "setLastPageIndex", "maxPageIndex", "getMaxPageIndex", "setMaxPageIndex", "maxPlayLength", "getMaxPlayLength", "setMaxPlayLength", "maxPlayPercent", "getMaxPlayPercent", "setMaxPlayPercent", "maxReplayCount", "getMaxReplayCount", "setMaxReplayCount", "netType", "getNetType", "setNetType", "notInterest", "getNotInterest", "setNotInterest", "pageVideoPlayPercent", "", "getPageVideoPlayPercent", "()[I", "setPageVideoPlayPercent", "([I)V", "pageVideoReplayCount", "getPageVideoReplayCount", "setPageVideoReplayCount", "playFormat", "", "getPlayFormat", "()Ljava/lang/String;", "setPlayFormat", "(Ljava/lang/String;)V", "playProgressInfo", "getPlayProgressInfo", "setPlayProgressInfo", "playProgressSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "getPlayProgressSet", "()Ljava/util/HashSet;", "setPlayProgressSet", "(Ljava/util/HashSet;)V", "playTime", "getPlayTime", "setPlayTime", "playTimestamp", "getPlayTimestamp", "setPlayTimestamp", "realPlayTime", "getRealPlayTime", "setRealPlayTime", "realPlayTimestamp", "getRealPlayTimestamp", "setRealPlayTimestamp", "shareCount", "getShareCount", "setShareCount", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "getStartTime", "startVolume", "getStartVolume", "setStartVolume", "stayTime", "getStayTime", "setStayTime", "videoDuration", "getVideoDuration", "setVideoDuration", "getVideoPlayReporter", "()Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "setVideoPlayReporter", "(Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;)V", "viewPageDuration", "getViewPageDuration", "setViewPageDuration", "voiceInfo", "getVoiceInfo", "setVoiceInfo", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "copyRecord", "equals", "other", "hashCode", "onRelease", "", "toString", "Companion", "plugin-finder_release"})
-public final class l
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "lastCenterFeed", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "getLastCenterFeed", "()Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "setLastCenterFeed", "(Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;)V", "lastVisibleFeedMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getLastVisibleFeedMap", "()Ljava/util/HashMap;", "setLastVisibleFeedMap", "(Ljava/util/HashMap;)V", "lastVisibleNotFeedSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "getLastVisibleNotFeedSet", "()Ljava/util/HashSet;", "setLastVisibleNotFeedSet", "(Ljava/util/HashSet;)V", "waitForReportStatsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/Stats;", "checkEmptyToHotTabExpose", "", "messageType", "", "index", "checkRedDotExpose", "isCareEvent", "", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "onExit", "onInvisible", "onRelease", "onVisible", "reportCenterRecord", "record", "stats", "reportExpose", "across", "reportFavSimilarExpose", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "resumeDataAdapter", "sendExtStatsReport", "feedActionValue", "", "sendStatsLimit", "list", "hasTryTime", "sendStatsList", "Companion", "plugin-finder_release"})
+public class l
+  extends c
 {
-  private static final String TAG = "Finder.FinderSingleFeedRecord";
-  private static final int spG = 1;
-  private static final int spH = 2;
-  public static final a spI;
-  public long dBD;
-  public final long dtq;
-  public long endTime;
-  public final FinderItem feed;
-  public int liA;
-  public int netType;
-  public f rRb;
-  BaseFinderFeed sjQ;
-  public r snM;
-  public long soX;
-  public int soY;
-  public long[] soZ;
-  public HashSet<Integer> spA;
-  public int spB;
-  public int spC;
-  public String spD;
-  String spE;
-  public boolean spF;
-  public long[] spa;
-  public int[] spb;
-  public int[] spc;
-  public int spd;
-  public int spe;
-  public int spf;
-  public int spg;
-  public int sph;
-  public int spi;
-  public int spj;
-  public int spk;
-  public int spl;
-  public int spm;
-  public int spn;
-  public int spo;
-  public int spp;
-  public int spq;
-  public int spr;
-  public int sps;
-  public long spt;
-  public long spu;
-  public long spv;
-  public long spw;
-  public int spx;
-  public int spy;
-  public String spz;
-  public final long startTime;
-  public int videoDuration;
+  private static final String TAG = "Finder.FinderSingleFeedFlowReporter";
+  private static final int syZ = 20;
+  private static final int sza = 1;
+  private static m szb;
+  public static final a szc;
+  private LinkedList<dje> syV;
+  m syW;
+  HashSet<Long> syX;
+  public HashMap<Long, m> syY;
   
   static
   {
-    AppMethodBeat.i(203331);
-    spI = new a((byte)0);
-    TAG = "Finder.FinderSingleFeedRecord";
-    spG = 1;
-    spH = 2;
-    AppMethodBeat.o(203331);
+    AppMethodBeat.i(203878);
+    szc = new a((byte)0);
+    TAG = "Finder.FinderSingleFeedFlowReporter";
+    syZ = 20;
+    sza = 1;
+    AppMethodBeat.o(203878);
   }
   
-  public l(long paramLong1, long paramLong2, FinderItem paramFinderItem, f paramf, boolean paramBoolean, r paramr)
+  public l(MMActivity paramMMActivity, arn paramarn)
   {
-    AppMethodBeat.i(203329);
-    this.dtq = paramLong1;
-    this.startTime = paramLong2;
-    this.feed = paramFinderItem;
-    this.rRb = paramf;
-    this.spF = paramBoolean;
-    this.snM = paramr;
-    this.soX = cf.aCM();
-    paramFinderItem = new long[9];
-    int i = 0;
-    while (i < 9)
+    super(paramMMActivity, paramarn);
+    AppMethodBeat.i(203877);
+    this.syV = new LinkedList();
+    this.syX = new HashSet();
+    this.syY = new HashMap();
+    AppMethodBeat.o(203877);
+  }
+  
+  private final dje a(m paramm, boolean paramBoolean)
+  {
+    AppMethodBeat.i(203870);
+    m.a(paramm);
+    Object localObject1 = m.szT;
+    dje localdje = m.a.a(paramm, this.rQw);
+    c.a.a(this.rQw, paramm.duw, 14, String.valueOf(paramm.endTime - paramm.startTime));
+    c.a.a(this.rQw, paramm, 2);
+    Object localObject3;
+    Object localObject2;
+    int i;
+    Object localObject4;
+    if (paramBoolean)
     {
-      paramFinderItem[i] = 0L;
-      i += 1;
-    }
-    this.soZ = paramFinderItem;
-    paramFinderItem = new long[9];
-    i = 0;
-    while (i < 9)
-    {
-      paramFinderItem[i] = 0L;
-      i += 1;
-    }
-    this.spa = paramFinderItem;
-    paramFinderItem = new int[9];
-    i = 0;
-    while (i < 9)
-    {
-      paramFinderItem[i] = 0;
-      i += 1;
-    }
-    this.spb = paramFinderItem;
-    paramFinderItem = new int[9];
-    i = 0;
-    while (i < 9)
-    {
-      paramFinderItem[i] = 0;
-      i += 1;
-    }
-    this.spc = paramFinderItem;
-    this.spf = 1;
-    this.spz = "";
-    this.spA = new HashSet();
-    this.spD = "";
-    this.spE = "";
-    this.soZ[0] = this.startTime;
-    paramFinderItem = this.snM;
-    if (paramFinderItem != null)
-    {
-      paramFinderItem = paramFinderItem.sqK;
-      if (paramFinderItem != null)
+      if (paramm != null)
       {
-        paramFinderItem = (r.b)paramFinderItem.get(Long.valueOf(this.dtq));
-        if (paramFinderItem != null)
+        localObject1 = paramm.feed;
+        if (localObject1 != null)
         {
-          this.spw = this.startTime;
-          if (paramFinderItem.bfZ) {
-            this.spu = this.startTime;
-          }
-          paramFinderItem = aj.getContext().getSystemService("audio");
-          if (paramFinderItem == null)
+          localObject3 = ((FinderItem)localObject1).getFoldedLayout();
+          if ((localObject3 != null) && (((ank)localObject3).fVS > 0))
           {
-            paramFinderItem = new v("null cannot be cast to non-null type android.media.AudioManager");
-            AppMethodBeat.o(203329);
-            throw paramFinderItem;
+            localObject1 = paramm.rZD;
+            if (localObject1 != null) {
+              localObject1 = ((com.tencent.mm.view.recyclerview.f)localObject1).LSq;
+            }
+            while (localObject1 == null)
+            {
+              localObject1 = paramm.rZD;
+              if (localObject1 != null)
+              {
+                localObject2 = new LongSparseArray();
+                localObject3 = ((ank)localObject3).GFu;
+                p.g(localObject3, "it.objects");
+                localObject3 = ((Iterable)localObject3).iterator();
+                i = 0;
+                for (;;)
+                {
+                  if (((Iterator)localObject3).hasNext())
+                  {
+                    localObject4 = ((Iterator)localObject3).next();
+                    if (i < 0) {
+                      d.a.j.gkd();
+                    }
+                    localObject4 = (FinderObject)localObject4;
+                    if (i <= 2)
+                    {
+                      com.tencent.mm.view.recyclerview.h localh = new com.tencent.mm.view.recyclerview.h((com.tencent.mm.view.recyclerview.a)new d((FinderObject)localObject4));
+                      localh.rZC = i;
+                      ((LongSparseArray)localObject2).put(((FinderObject)localObject4).id, localh);
+                    }
+                    i += 1;
+                    continue;
+                    localObject1 = null;
+                    break;
+                  }
+                }
+                ((com.tencent.mm.view.recyclerview.f)localObject1).LSq = ((LongSparseArray)localObject2);
+              }
+            }
+            c.a.a(this.rQw, paramm);
+            localObject1 = paramm.rZD;
+            if (localObject1 != null)
+            {
+              localObject1 = ((com.tencent.mm.view.recyclerview.f)localObject1).LSr;
+              if (localObject1 != null)
+              {
+                localObject1 = (WxRecyclerAdapter)((WeakReference)localObject1).get();
+                if (localObject1 != null) {
+                  ((WxRecyclerAdapter)localObject1).onPause();
+                }
+              }
+            }
           }
-          this.spB = ((AudioManager)paramFinderItem).getStreamVolume(3);
-          AppMethodBeat.o(203329);
-          return;
+        }
+      }
+      if (paramm != null)
+      {
+        localObject1 = paramm.ssN;
+        if (localObject1 != null) {
+          if (localObject1 == null) {
+            break label511;
+          }
         }
       }
     }
-    AppMethodBeat.o(203329);
-  }
-  
-  public final void a(r paramr)
-  {
-    AppMethodBeat.i(203327);
-    if (this.endTime == 0L) {
-      this.endTime = cf.aCM();
-    }
-    Object localObject = this.feed;
-    if (localObject != null)
+    label511:
+    for (paramm = ((BaseFinderFeed)localObject1).attachFavInfo;; paramm = null)
     {
-      localObject = ((FinderItem)localObject).getMediaList();
-      if (localObject != null)
+      if (paramm != null)
       {
-        localObject = (bvf)j.jd((List)localObject);
-        if (localObject == null) {}
+        paramm = i.syT;
+        long l = ((BaseFinderFeed)localObject1).lP();
+        i = this.rQw.sch;
+        paramm = this.rQw.rfo;
+        localObject2 = this.rQw.rfA;
+        localObject3 = this.rQw.sessionId;
+        localObject4 = i.syT;
+        i.a(l, 2, i, paramm, (String)localObject2, (String)localObject3, i.I(((BaseFinderFeed)localObject1).lP(), this.rQw.sch));
       }
-    }
-    r.b localb;
-    for (int i = ((bvf)localObject).videoDuration;; i = 0)
-    {
-      this.videoDuration = i;
-      if (this.spF) {
-        this.dBD = (this.endTime - this.startTime);
-      }
-      if (paramr == null) {
-        break label625;
-      }
-      paramr = paramr.sqK;
-      if (paramr == null) {
-        break label625;
-      }
-      localb = (r.b)paramr.get(Long.valueOf(this.dtq));
-      if (localb == null) {
-        break label625;
-      }
-      if (this.spw != 0L) {
-        this.spv += this.endTime - this.spw;
-      }
-      if (this.spu != 0L) {
-        this.spt += this.endTime - this.spu;
-      }
-      paramr = aj.getContext().getSystemService("audio");
-      if (paramr != null) {
+      AppMethodBeat.o(203870);
+      return localdje;
+      if (paramm == null) {
         break;
       }
-      paramr = new v("null cannot be cast to non-null type android.media.AudioManager");
-      AppMethodBeat.o(203327);
-      throw paramr;
-    }
-    this.spC = ((AudioManager)paramr).getStreamVolume(3);
-    paramr = aj.getContext().getSystemService("audio");
-    if (paramr == null)
-    {
-      paramr = new v("null cannot be cast to non-null type android.media.AudioManager");
-      AppMethodBeat.o(203327);
-      throw paramr;
-    }
-    int j = ((AudioManager)paramr).getStreamMaxVolume(3);
-    i = 0;
-    if (this.spB != this.spC) {
-      i = 1;
-    }
-    this.spD = (this.spB * 100 / j + '#' + this.spC * 100 / j + '#' + i);
-    paramr = h.soM;
-    this.netType = h.cDz();
-    paramr = ((Iterable)this.spA).iterator();
-    while (paramr.hasNext())
-    {
-      i = ((Number)paramr.next()).intValue();
-      localObject = this.spz;
-      this.spz = ((String)localObject + i + '#');
-    }
-    paramr = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-    localObject = com.tencent.mm.plugin.finder.storage.logic.c.aiD(localb.sqP).field_fileFormat;
-    paramr = (r)localObject;
-    if (localObject == null) {
-      paramr = "";
-    }
-    int m = 0;
-    int n = 0;
-    int i1 = 0;
-    localObject = localb.sqQ;
-    int k = i1;
-    j = n;
-    i = m;
-    if (localObject != null)
-    {
-      localObject = e.axx(((m)localObject).getPath());
-      k = i1;
-      j = n;
-      i = m;
-      if (localObject != null)
-      {
-        j = ((a)localObject).videoBitrate;
-        i = ((a)localObject).audioBitrate;
-        k = ((a)localObject).frameRate;
+      localObject1 = paramm.rZD;
+      if ((localObject1 == null) || ((!((com.tencent.mm.view.recyclerview.f)localObject1).LSo) && (!((com.tencent.mm.view.recyclerview.f)localObject1).LSp))) {
+        break;
       }
+      c.a.a(this.rQw, paramm);
+      ((com.tencent.mm.view.recyclerview.f)localObject1).LSp = false;
+      localObject1 = ((com.tencent.mm.view.recyclerview.f)localObject1).LSr;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject1 = (WxRecyclerAdapter)((WeakReference)localObject1).get();
+      if (localObject1 == null) {
+        break;
+      }
+      ((WxRecyclerAdapter)localObject1).onPause();
+      break;
     }
-    this.spE = (localb.srB + ';' + j + ';' + paramr + ';' + i + ';' + k + ';' + localb.srC + ';' + localb.srD + ';');
-    AppMethodBeat.o(203327);
-    return;
-    label625:
-    AppMethodBeat.o(203327);
   }
   
-  public final boolean equals(Object paramObject)
+  private final void a(m paramm, dje paramdje)
   {
-    AppMethodBeat.i(203334);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof l))
-      {
-        paramObject = (l)paramObject;
-        if ((this.dtq != paramObject.dtq) || (this.startTime != paramObject.startTime) || (!p.i(this.feed, paramObject.feed)) || (!p.i(this.rRb, paramObject.rRb)) || (this.spF != paramObject.spF) || (!p.i(this.snM, paramObject.snM))) {}
-      }
+    AppMethodBeat.i(203868);
+    if (paramm.szp > 0) {
+      c.a.a(this.rQw, paramm.duw, 5, String.valueOf(paramm.szp), paramm.szi);
     }
-    else
-    {
-      AppMethodBeat.o(203334);
-      return true;
+    long l1 = paramm.endTime;
+    long l2 = paramm.startTime;
+    c.a.a(this.rQw, paramm.duw, 2, String.valueOf(l1 - l2), paramm.szi);
+    if (paramm.szs > 0) {
+      c.a.a(this.rQw, paramm.duw, 11, String.valueOf(paramm.szs), paramm.szi);
     }
-    AppMethodBeat.o(203334);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(203332);
-    String str = "FinderSingleFeedRecord(feedId=" + this.dtq + ", startTime=" + this.startTime + ", feed=" + this.feed + ", showInfo=" + this.rRb + ", isCenterFeed=" + this.spF + ", videoPlayReporter=" + this.snM + ")";
-    AppMethodBeat.o(203332);
-    return str;
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord$Companion;", "", "()V", "FinderStatsReportFeedTypeRelated", "", "getFinderStatsReportFeedTypeRelated", "()I", "FinderStatsReportFeedTypeStream", "getFinderStatsReportFeedTypeStream", "TAG", "", "getTAG", "()Ljava/lang/String;", "expandNotZeroValue", "", "sb", "Ljava/lang/StringBuffer;", "key", "value", "(Ljava/lang/StringBuffer;Ljava/lang/String;Ljava/lang/Integer;)V", "", "(Ljava/lang/StringBuffer;Ljava/lang/String;Ljava/lang/Long;)V", "printStats", "stats", "Lcom/tencent/mm/protocal/protobuf/Stats;", "tag", "trans2Stats", "record", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "plugin-finder_release"})
-  public static final class a
-  {
-    public static dij a(l paraml, aqy paramaqy)
+    Object localObject = this.rQw;
+    l1 = paramm.duw;
+    paramdje = paramdje.HQO;
+    if (paramdje != null) {}
+    for (paramdje = Long.valueOf(paramdje.FXh);; paramdje = "")
     {
-      int k = 1;
-      AppMethodBeat.i(203323);
-      p.h(paraml, "record");
-      p.h(paramaqy, "contextObj");
-      dij localdij = new dij();
-      BitSet localBitSet = new BitSet(64);
-      localdij.rIZ = paraml.dtq;
-      Object localObject1 = paraml.feed;
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject2 = ((FinderItem)localObject1).getObjectNonceId();
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
+      c.a.a((arn)localObject, l1, 3, String.valueOf(paramdje), paramm.szi);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("netType", paramm.netType);
+      ((JSONObject)localObject).put("isPause", paramm.szI);
+      ((JSONObject)localObject).put("isSeek", paramm.szJ);
+      ((JSONObject)localObject).put("playProgressInfo", paramm.szK);
+      ((JSONObject)localObject).put("maxPlayPercent", paramm.szs);
+      ((JSONObject)localObject).put("maxPlayLength", paramm.szr);
+      ((JSONObject)localObject).put("videoDuration", paramm.videoDuration);
+      ((JSONObject)localObject).put("playTime", paramm.szG);
+      ((JSONObject)localObject).put("realPlayTime", paramm.szE);
+      ((JSONObject)localObject).put("voiceInfo", paramm.szO);
+      ((JSONObject)localObject).put("playFormat", paramm.szP);
+      paramdje = this.rQw;
+      l1 = paramm.duw;
+      localObject = ((JSONObject)localObject).toString();
+      p.g(localObject, "playInfoObj.toString()");
+      c.a.a(paramdje, l1, 17, d.n.n.h((String)localObject, ",", ";", false), paramm.szi);
+      paramdje = a.swO;
+      paramdje = a.wF(paramm.duw);
+      if (!bu.isNullOrNil(paramdje)) {
+        c.a.a(this.rQw, paramm.duw, 18, paramdje, paramm.szi);
       }
-      else
+      c.a.a(this.rQw, paramm, 1);
+      AppMethodBeat.o(203868);
+      return;
+    }
+  }
+  
+  private final void f(LinkedList<dje> paramLinkedList, final int paramInt)
+  {
+    AppMethodBeat.i(203872);
+    if ((paramInt > sza) || (paramLinkedList.size() <= 0))
+    {
+      AppMethodBeat.o(203872);
+      return;
+    }
+    final LinkedList localLinkedList1 = new LinkedList();
+    final LinkedList localLinkedList2 = new LinkedList();
+    if (paramLinkedList.size() > syZ)
+    {
+      localLinkedList2.addAll((Collection)paramLinkedList.subList(0, syZ));
+      localLinkedList1.addAll((Collection)paramLinkedList.subList(syZ, paramLinkedList.size()));
+    }
+    for (;;)
+    {
+      com.tencent.mm.sdk.platformtools.ae.i(TAG, "[sendStatsLimit] list=" + paramLinkedList.size() + " tryCount=" + paramInt);
+      new com.tencent.mm.plugin.finder.cgi.l((List)localLinkedList2, this.rQw).aES().aET().j((com.tencent.mm.vending.c.a)new e(this, localLinkedList2, localLinkedList1, paramInt));
+      AppMethodBeat.o(203872);
+      return;
+      localLinkedList2.addAll((Collection)paramLinkedList);
+    }
+  }
+  
+  private final void fL(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(203873);
+    i locali = i.syT;
+    i.a(1, paramInt1, paramInt2, this.rQw);
+    AppMethodBeat.o(203873);
+  }
+  
+  private final void onExit()
+  {
+    AppMethodBeat.i(203867);
+    FinderReporterUIC.a locala = FinderReporterUIC.tnG;
+    com.tencent.mm.ac.c.c(FinderReporterUIC.cRd(), (d.g.a.a)new c(this));
+    AppMethodBeat.o(203867);
+  }
+  
+  public void a(com.tencent.mm.plugin.finder.event.base.b paramb)
+  {
+    AppMethodBeat.i(203869);
+    p.h(paramb, "event");
+    super.a(paramb);
+    Object localObject1;
+    Object localObject3;
+    Object localObject4;
+    label574:
+    label581:
+    Object localObject5;
+    m localm;
+    label1310:
+    label1628:
+    int m;
+    int n;
+    int i1;
+    int i2;
+    int k;
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.j))
+    {
+      if (!this.visible)
       {
-        localObject1 = "";
+        com.tencent.mm.sdk.platformtools.ae.i(TAG, this.rQw.sch + " not visible");
+        AppMethodBeat.o(203869);
+        return;
       }
-      localdij.objectNonceId = ((String)localObject1);
-      localdij.Hxf = new ly();
-      localdij.Hxg = new duh();
-      localdij.Hxh = new cgq();
-      localObject1 = paraml.feed;
-      if (localObject1 != null)
+      localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (com.tencent.mm.plugin.finder.storage.b.cJO())
       {
-        localObject2 = ((FinderItem)localObject1).field_username;
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
-      }
-      else
-      {
-        localObject1 = "";
-      }
-      localdij.rTn = ((String)localObject1);
-      localdij.Hxi = paraml.soX;
-      if (paramaqy.rTD == 20)
-      {
-        localObject1 = g.szT;
-        localObject1 = g.wW(paraml.dtq);
-        if ((localObject1 == null) || (((FinderItem)localObject1).isRelatedItem() != true)) {
-          break label266;
-        }
-      }
-      int j;
-      label266:
-      for (int i = l.cDD();; i = l.cDC())
-      {
-        localdij.Hxj = i;
-        localObject1 = h.soM;
-        localdij.sessionBuffer = h.I(paraml.dtq, paramaqy.rTD);
-        j = paraml.spf;
-        i = 0;
-        while (i < j)
+        localObject1 = y.stw;
+        localObject1 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZR;
+        if (localObject1 != null)
         {
-          localBitSet.set(i, true);
-          i += 1;
+          ??? = (Iterable)localObject1;
+          localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)???, 10));
+          ??? = ((Iterable)???).iterator();
+          while (((Iterator)???).hasNext()) {
+            ((Collection)localObject1).add(((com.tencent.mm.plugin.finder.event.base.g)((Iterator)???).next()).rZB);
+          }
+          localObject1 = (List)localObject1;
+          y.a((List)localObject1, this.rQw);
         }
       }
-      float f;
-      label313:
-      label327:
-      int m;
-      if (paraml.sph < 5)
+      else
       {
-        localBitSet.set(9, true);
-        f = (float)paraml.dBD / 1000.0F;
-        if (f >= 0.5F) {
-          break label569;
+        if ((((com.tencent.mm.plugin.finder.event.base.j)paramb).rVz == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZL) && (((com.tencent.mm.plugin.finder.event.base.j)paramb).ohB == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZF) && (((com.tencent.mm.plugin.finder.event.base.j)paramb).ohC == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZH)) {
+          break label1310;
         }
-        localBitSet.set(21, true);
-        paramaqy = paraml.spc;
-        int n = paramaqy.length;
-        j = 0;
-        i = 0;
-        if (j >= n) {
-          break label740;
+        localObject1 = new LinkedList();
+        if (((com.tencent.mm.plugin.finder.event.base.j)paramb).rVz == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZL) {
+          break label581;
         }
-        m = paramaqy[j];
-        if (m <= i) {
-          break label1304;
+        ??? = this.syW;
+        if (??? != null)
+        {
+          ((m)???).a(this.sxD);
+          localObject3 = m.szT;
+          localObject3 = m.a.a((m)???, this.rQw);
+          ((LinkedList)localObject1).add(localObject3);
+          a((m)???, (dje)localObject3);
+          switch (((com.tencent.mm.plugin.finder.event.base.j)paramb).type)
+          {
+          case 4: 
+          case 5: 
+          case 7: 
+          default: 
+            com.tencent.mm.sdk.platformtools.ae.d(TAG, "centerFeedChange " + ((com.tencent.mm.plugin.finder.event.base.j)paramb).type);
+          }
         }
-        i = m;
       }
-      label1289:
-      label1294:
-      label1299:
-      label1304:
       for (;;)
       {
-        j += 1;
-        break label327;
-        if (paraml.sph < 10)
-        {
-          localBitSet.set(10, true);
-          break;
+        ??? = z.Nhr;
+        ??? = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZS;
+        if (??? == null) {
+          break label574;
         }
-        if (paraml.sph < 20)
+        ??? = ((Iterable)???).iterator();
+        while (((Iterator)???).hasNext())
         {
-          localBitSet.set(11, true);
-          break;
+          localObject4 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)???).next();
+          if (((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.lP() == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZL)
+          {
+            localObject3 = new m(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.lP(), paramb.rZe, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.feedObject, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZD, true, this.sxD);
+            ((m)localObject3).szj = ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZC;
+            localObject4 = z.Nhr;
+            this.syW = ((m)localObject3);
+          }
         }
-        if (paraml.sph < 30)
-        {
-          localBitSet.set(12, true);
-          break;
-        }
-        if (paraml.sph < 40)
-        {
-          localBitSet.set(13, true);
-          break;
-        }
-        if (paraml.sph < 50)
-        {
-          localBitSet.set(14, true);
-          break;
-        }
-        if (paraml.sph < 60)
-        {
-          localBitSet.set(15, true);
-          break;
-        }
-        if (paraml.sph < 70)
-        {
-          localBitSet.set(16, true);
-          break;
-        }
-        if (paraml.sph < 80)
-        {
-          localBitSet.set(17, true);
-          break;
-        }
-        if (paraml.sph < 90)
-        {
-          localBitSet.set(18, true);
-          break;
-        }
-        if (paraml.sph < 100)
-        {
-          localBitSet.set(19, true);
-          break;
-        }
-        localBitSet.set(20, true);
+        localObject1 = null;
         break;
-        label569:
-        if (f < 1.0F)
+        aiM(c.a.ae(d.a.ae.c(u.R("feedActionType", Integer.valueOf(1)))));
+      }
+      ??? = z.Nhr;
+      szb = this.syW;
+      localObject3 = new HashSet();
+      ??? = new HashSet();
+      ((HashSet)localObject3).addAll((Collection)this.syY.keySet());
+      localObject4 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZS;
+      if (localObject4 != null)
+      {
+        localObject4 = ((Iterable)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          localBitSet.set(22, true);
-          break label313;
+          localObject5 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject4).next();
+          ((HashSet)localObject3).add(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZB.lP()));
+          ((HashSet)???).add(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZB.lP()));
         }
-        if (f < 2.0F)
+        localObject4 = z.Nhr;
+      }
+      localObject4 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZR;
+      if (localObject4 != null)
+      {
+        localObject4 = ((Iterable)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          localBitSet.set(23, true);
-          break label313;
+          localObject5 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject4).next();
+          if (!((HashSet)localObject3).contains(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZB.lP())))
+          {
+            localm = new m(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZB.lP(), paramb.rZe, ((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZB.feedObject, ((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZD, 48);
+            localm.ssN = ((com.tencent.mm.plugin.finder.event.base.g)localObject5).rZB;
+            ((LinkedList)localObject1).add(a(localm, true));
+            localObject5 = z.Nhr;
+          }
         }
-        if (f < 3.0F)
+        localObject3 = z.Nhr;
+      }
+      localObject3 = ((Map)this.syY).entrySet().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (Map.Entry)((Iterator)localObject3).next();
+        if (!((HashSet)???).contains(((Map.Entry)localObject4).getKey())) {
+          ((LinkedList)localObject1).add(a((m)((Map.Entry)localObject4).getValue(), false));
+        }
+      }
+      ??? = new HashMap();
+      localObject3 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZS;
+      if (localObject3 != null)
+      {
+        localObject3 = ((Iterable)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localBitSet.set(24, true);
-          break label313;
+          localObject4 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject3).next();
+          localObject5 = (m)this.syY.get(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.lP()));
+          if (localObject5 != null)
+          {
+            ((m)localObject5).ssN = ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB;
+            ((HashMap)???).put(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.lP()), localObject5);
+          }
+          else
+          {
+            localObject5 = new m(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.lP(), paramb.rZe, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.feedObject, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZD, 48);
+            ((m)localObject5).ssN = ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB;
+            ((m)localObject5).szj = ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZC;
+            ((HashMap)???).put(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rZB.lP()), localObject5);
+          }
         }
-        if (f < 5.0F)
+        localObject3 = z.Nhr;
+      }
+      this.syY = ((HashMap)???);
+      synchronized (this.syV)
+      {
+        this.syV.addAll((Collection)localObject1);
+        if (this.syV.size() > 20)
         {
-          localBitSet.set(25, true);
-          break label313;
+          localObject1 = FinderReporterUIC.tnG;
+          com.tencent.mm.ac.c.c(FinderReporterUIC.cRd(), (d.g.a.a)new b(this));
         }
-        if (f < 10.0F)
+        localObject1 = TAG;
+        ??? = new StringBuilder("waitForReportStatsList ");
+        localObject4 = (Iterable)this.syV;
+        localObject3 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject4, 10));
+        localObject4 = ((Iterable)localObject4).iterator();
+        if (((Iterator)localObject4).hasNext()) {
+          ((Collection)localObject3).add(Long.valueOf(((dje)((Iterator)localObject4).next()).rRn));
+        }
+      }
+      if (((com.tencent.mm.plugin.finder.event.base.j)paramb).ohC != ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZH)
+      {
+        localObject1 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZT;
+        if (localObject1 != null)
         {
-          localBitSet.set(26, true);
-          break label313;
+          ??? = ((Iterable)localObject1).iterator();
+          for (;;)
+          {
+            if (((Iterator)???).hasNext())
+            {
+              localObject3 = (com.tencent.mm.view.recyclerview.a)((Iterator)???).next();
+              if (!this.syX.contains(Long.valueOf(((com.tencent.mm.view.recyclerview.a)localObject3).lP()))) {
+                switch (((com.tencent.mm.view.recyclerview.a)localObject3).bZz())
+                {
+                default: 
+                  break;
+                case -7: 
+                case -1: 
+                  if ((this.rQw.sch == 17) || (this.rQw.sch == 18)) {
+                    fL(1, 0);
+                  }
+                  break;
+                case 2011: 
+                  if (this.rQw.sch == 17)
+                  {
+                    localObject1 = com.tencent.mm.plugin.finder.convert.ab.rXp;
+                    fL(2, ab.a.Ey(3));
+                  }
+                  else if (this.rQw.sch == 18)
+                  {
+                    localObject1 = com.tencent.mm.plugin.finder.convert.ab.rXp;
+                    fL(2, ab.a.Ey(1));
+                  }
+                  break;
+                case -5: 
+                  if ((this.rQw.sch == 17) || (this.rQw.sch == 18) || (this.rQw.sch == 20))
+                  {
+                    localObject1 = FinderReporterUIC.tnG;
+                    localObject1 = FinderReporterUIC.a.fc((Context)this.activity);
+                    if (localObject1 != null) {
+                      if (((FinderReporterUIC)localObject1).cQW())
+                      {
+                        if (localObject1 == null) {
+                          continue;
+                        }
+                        localObject1 = FinderReporterUIC.d((FinderReporterUIC)localObject1);
+                        if ((localObject1 == null) || (((com.tencent.mm.plugin.finder.event.base.f)localObject1).ohB > 1)) {
+                          continue;
+                        }
+                        localObject1 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+                        p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+                        localObject3 = ((PluginFinder)localObject1).getRedDotManager().aij("TLWxBubble");
+                        localObject1 = "";
+                        if (localObject3 != null)
+                        {
+                          localObject1 = com.tencent.mm.kernel.g.ajR();
+                          p.g(localObject1, "MMKernel.storage()");
+                          m = ((com.tencent.mm.kernel.e)localObject1).ajA().getInt(am.a.Jcf, 0);
+                          localObject1 = com.tencent.mm.kernel.g.ajR();
+                          p.g(localObject1, "MMKernel.storage()");
+                          n = ((com.tencent.mm.kernel.e)localObject1).ajA().getInt(am.a.Jcg, 0);
+                          localObject1 = com.tencent.mm.kernel.g.ajR();
+                          p.g(localObject1, "MMKernel.storage()");
+                          i1 = ((com.tencent.mm.kernel.e)localObject1).ajA().getInt(am.a.Jch, 0);
+                          localObject1 = com.tencent.mm.kernel.g.ajR();
+                          p.g(localObject1, "MMKernel.storage()");
+                          i2 = ((com.tencent.mm.kernel.e)localObject1).ajA().getInt(am.a.Jci, 0);
+                          localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+                          if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() != 1) {
+                            break label2004;
+                          }
+                          k = 5;
+                          if (n <= 0) {
+                            break label6783;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  break;
+                }
+              }
+            }
+          }
         }
-        if (f < 20.0F)
+      }
+    }
+    label2004:
+    label2649:
+    label2684:
+    label6652:
+    label6783:
+    for (int j = 1;; j = 0)
+    {
+      int i = j;
+      if (m > 0) {
+        i = j | 0x8;
+      }
+      j = i;
+      if (i1 > 0) {
+        j = i | 0x2;
+      }
+      if (i2 > 0) {}
+      for (i = j | 0x4;; i = j)
+      {
+        localObject1 = i.syT;
+        localObject1 = i.eR((Context)this.activity);
+        j = i;
+        i = k;
+        for (;;)
         {
-          localBitSet.set(27, true);
-          break label313;
+          localObject4 = i.syT;
+          i.a((String)localObject1, i, 1, 2, j, m + n + i1 + i2, ((com.tencent.mm.plugin.finder.extension.reddot.i)localObject3).field_tipsId, null, 0L, this.rQw, 0, 0, 3456);
+          localObject4 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+          p.g(localObject4, "MMKernel.plugin(PluginFinder::class.java)");
+          localObject4 = ((PluginFinder)localObject4).getRedDotManager().aii("TLWxBubble");
+          if ((localObject3 == null) || (localObject4 == null)) {
+            break;
+          }
+          localObject5 = h.syO;
+          h.a((String)localObject1, (com.tencent.mm.plugin.finder.extension.reddot.i)localObject3, (ast)localObject4, 1, this.rQw, 0, 0, 96);
+          break;
+          localObject1 = null;
+          break label1628;
+          localObject1 = "2";
+          i = 1;
+          j = 1;
         }
-        if (f < 30.0F)
+        if (((this.rQw.sch != 17) && (this.rQw.sch != 18)) || (!(localObject3 instanceof com.tencent.mm.plugin.finder.feed.ab)) || (((com.tencent.mm.plugin.finder.feed.ab)localObject3).sgH != 0)) {
+          break;
+        }
+        localObject1 = "";
+        localObject4 = ((com.tencent.mm.plugin.finder.feed.ab)localObject3).sgG.object.subList(0, Math.min(3, ((com.tencent.mm.plugin.finder.feed.ab)localObject3).sgG.object.size()));
+        p.g(localObject4, "it.card.`object`.subList…, it.card.`object`.size))");
+        localObject4 = ((Iterable)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          localBitSet.set(28, true);
-          break label313;
+          localObject5 = (FinderObject)((Iterator)localObject4).next();
+          localObject1 = (String)localObject1 + com.tencent.mm.ac.c.rp(((FinderObject)localObject5).id) + '|';
         }
-        if (f < 40.0F)
+        localObject4 = com.tencent.mm.ui.component.a.KEX;
+        localObject4 = (FinderStreamCardVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderStreamCardVM.class);
+        localObject3 = (com.tencent.mm.plugin.finder.feed.ab)localObject3;
+        p.h(localObject3, "item");
+        localObject3 = (Integer)((FinderStreamCardVM)localObject4).tkZ.get(FinderStreamCardVM.a.a((com.tencent.mm.plugin.finder.feed.ab)localObject3));
+        if (localObject3 != null) {}
+        for (i = ((Integer)localObject3).intValue();; i = -1)
         {
-          localBitSet.set(29, true);
-          break label313;
+          localObject3 = i.syT;
+          i.a((String)localObject1, i, this.rQw);
+          break;
         }
-        if (f < 50.0F)
+        localObject1 = z.Nhr;
+        this.syX = new HashSet();
+        ??? = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZT;
+        if (??? != null)
         {
-          localBitSet.set(30, true);
-          break label313;
+          localObject1 = this.syX;
+          localObject3 = (Iterable)???;
+          ??? = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
+          localObject3 = ((Iterable)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext()) {
+            ((Collection)???).add(Long.valueOf(((com.tencent.mm.view.recyclerview.a)((Iterator)localObject3).next()).lP()));
+          }
+          ((HashSet)localObject1).addAll((Collection)???);
         }
-        localBitSet.set(31, true);
-        break label313;
-        label740:
-        if (i == 0) {
-          localBitSet.set(32, true);
+        localObject1 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rZS;
+        if (localObject1 != null)
+        {
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            ??? = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject1).next();
+            localObject3 = ((com.tencent.mm.plugin.finder.event.base.g)???).rZD;
+            if (localObject3 != null)
+            {
+              if (((com.tencent.mm.view.recyclerview.f)localObject3).LSp)
+              {
+                c.a.a(this.rQw, new m(((com.tencent.mm.plugin.finder.event.base.g)???).rZB.lP(), paramb.rZe, ((com.tencent.mm.plugin.finder.event.base.g)???).rZB.feedObject, (com.tencent.mm.view.recyclerview.f)localObject3, 48));
+                ((com.tencent.mm.view.recyclerview.f)localObject3).LSp = false;
+                ??? = ((com.tencent.mm.view.recyclerview.f)localObject3).LSr;
+                if (??? != null)
+                {
+                  ??? = (WxRecyclerAdapter)((WeakReference)???).get();
+                  if (??? != null)
+                  {
+                    ((WxRecyclerAdapter)???).onPause();
+                    ??? = z.Nhr;
+                  }
+                }
+              }
+              ??? = z.Nhr;
+            }
+          }
+          paramb = z.Nhr;
+          AppMethodBeat.o(203869);
+          return;
+        }
+        AppMethodBeat.o(203869);
+        return;
+        long l1;
+        long l2;
+        if ((paramb instanceof a.a))
+        {
+          ??? = null;
+          Object localObject7 = null;
+          Object localObject6 = null;
+          localm = null;
+          localObject5 = null;
+          localObject4 = null;
+          localObject3 = null;
+          Object localObject8 = null;
+          i = ((a.a)paramb).type;
+          localObject1 = a.a.rYT;
+          if (i == a.a.cAK())
+          {
+            localObject1 = this.syW;
+            if (localObject1 != null) {
+              if (((m)localObject1).duw == ((a.a)paramb).duw)
+              {
+                i = 1;
+                if (i == 0) {
+                  break label2826;
+                }
+                if (localObject1 == null) {
+                  break label2838;
+                }
+                ((m)localObject1).lmm += 1;
+                i = ((m)localObject1).szx;
+                ((m)localObject1).szx = (i + 1);
+                localObject1 = localObject8;
+                ??? = this.rQw;
+                l1 = ((a.a)paramb).duw;
+                localObject3 = c.b.sxG;
+                c.a.a((arn)???, l1, 1, c.b.cFi());
+                ??? = this.rQw;
+                l1 = ((a.a)paramb).duw;
+                paramb = v.aAC();
+                p.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                paramb = c.a.a(10, new String[] { "1", paramb }).toString();
+                p.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+                c.a.a((arn)???, l1, 10, paramb);
+              }
+            }
+          }
+          for (;;)
+          {
+            if (localObject1 != null)
+            {
+              m.a((m)localObject1);
+              paramb = m.szT;
+              paramb = m.a.a((m)localObject1, this.rQw);
+              this.syV.add(paramb);
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+              break label2649;
+              localObject1 = null;
+              break label2649;
+              l1 = ((a.a)paramb).duw;
+              l2 = paramb.rZe;
+              localObject1 = i.syT;
+              localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+              ((m)localObject1).lmm += 1;
+              ((m)localObject1).szx += 1;
+              ??? = z.Nhr;
+              ??? = z.Nhr;
+              break label2684;
+              localObject1 = a.a.rYT;
+              if (i == a.a.cAJ())
+              {
+                localObject1 = this.syW;
+                if (localObject1 != null) {
+                  if (((m)localObject1).duw == ((a.a)paramb).duw)
+                  {
+                    i = 1;
+                    if (i == 0) {
+                      break label3094;
+                    }
+                    if (localObject1 == null) {
+                      break label3106;
+                    }
+                    i = ((m)localObject1).lmm;
+                    ((m)localObject1).lmm = (i + 1);
+                    localObject1 = localObject7;
+                  }
+                }
+                for (;;)
+                {
+                  ??? = this.rQw;
+                  l1 = ((a.a)paramb).duw;
+                  localObject3 = c.b.sxG;
+                  c.a.a((arn)???, l1, 1, c.b.cFi());
+                  ??? = this.rQw;
+                  l1 = ((a.a)paramb).duw;
+                  paramb = v.aAC();
+                  p.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                  paramb = c.a.a(10, new String[] { "2", paramb }).toString();
+                  p.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+                  c.a.a((arn)???, l1, 10, paramb);
+                  break;
+                  i = 0;
+                  break label2962;
+                  localObject1 = null;
+                  break label2966;
+                  localObject1 = null;
+                  break label2966;
+                  l1 = ((a.a)paramb).duw;
+                  l2 = paramb.rZe;
+                  localObject1 = i.syT;
+                  localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                  ((m)localObject1).lmm += 1;
+                  ??? = z.Nhr;
+                  ??? = z.Nhr;
+                }
+              }
+              localObject1 = a.a.rYT;
+              if (i == a.a.cAM())
+              {
+                localObject1 = this.rQw;
+                l1 = ((a.a)paramb).duw;
+                paramb = v.aAC();
+                p.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                paramb = c.a.a(13, new String[] { "1", paramb }).toString();
+                p.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+                c.a.a((arn)localObject1, l1, 13, paramb);
+                localObject1 = ???;
+              }
+              else
+              {
+                localObject1 = a.a.rYT;
+                if (i == a.a.cAL())
+                {
+                  localObject1 = this.rQw;
+                  l1 = ((a.a)paramb).duw;
+                  paramb = v.aAC();
+                  p.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                  paramb = c.a.a(13, new String[] { "2", paramb }).toString();
+                  p.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+                  c.a.a((arn)localObject1, l1, 13, paramb);
+                  localObject1 = ???;
+                }
+                else
+                {
+                  localObject1 = a.a.rYT;
+                  if (i == a.a.cAO())
+                  {
+                    localObject1 = this.syW;
+                    if (localObject1 != null) {
+                      if (((m)localObject1).duw == ((a.a)paramb).duw)
+                      {
+                        i = 1;
+                        if (i == 0) {
+                          break label3456;
+                        }
+                        if (localObject1 == null) {
+                          break label3468;
+                        }
+                        ((m)localObject1).szt += 1;
+                        localObject1 = localObject6;
+                      }
+                    }
+                    for (;;)
+                    {
+                      ??? = this.rQw;
+                      l1 = ((a.a)paramb).duw;
+                      paramb = c.b.sxG;
+                      c.a.a((arn)???, l1, 6, c.b.cFi());
+                      paramb = z.Nhr;
+                      break;
+                      i = 0;
+                      break label3388;
+                      localObject1 = null;
+                      break label3392;
+                      localObject1 = null;
+                      break label3392;
+                      l1 = ((a.a)paramb).duw;
+                      l2 = paramb.rZe;
+                      localObject1 = i.syT;
+                      localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                      ((m)localObject1).szt += 1;
+                      ??? = z.Nhr;
+                    }
+                  }
+                  localObject1 = a.a.rYT;
+                  if (i == a.a.cAR())
+                  {
+                    localObject1 = this.syW;
+                    if (localObject1 != null) {
+                      if (((m)localObject1).duw == ((a.a)paramb).duw)
+                      {
+                        i = 1;
+                        if (i == 0) {
+                          break label3721;
+                        }
+                        if (localObject1 == null) {
+                          break label3733;
+                        }
+                        ((m)localObject1).szu += 1;
+                        ??? = localm;
+                        localObject1 = this.rQw;
+                        l1 = ((a.a)paramb).duw;
+                        localObject3 = c.b.sxG;
+                        c.a.a((arn)localObject1, l1, 7, c.b.cFi());
+                        localObject1 = z.Nhr;
+                        localObject3 = this.syW;
+                        localObject1 = ???;
+                        if (localObject3 == null) {
+                          continue;
+                        }
+                        if (((m)localObject3).duw != ((a.a)paramb).duw) {
+                          break label3799;
+                        }
+                        i = 1;
+                        if (i == 0) {
+                          break label3804;
+                        }
+                      }
+                    }
+                    for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject3;; paramb = null)
+                    {
+                      localObject1 = ???;
+                      if (paramb == null) {
+                        break;
+                      }
+                      aiM(c.a.ae(d.a.ae.c(u.R("feedActionType", Integer.valueOf(4)))));
+                      paramb = z.Nhr;
+                      localObject1 = ???;
+                      break;
+                      i = 0;
+                      break label3575;
+                      localObject1 = null;
+                      break label3579;
+                      localObject1 = null;
+                      break label3579;
+                      l1 = ((a.a)paramb).duw;
+                      l2 = paramb.rZe;
+                      localObject1 = i.syT;
+                      ??? = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                      ((m)???).szu += 1;
+                      localObject1 = z.Nhr;
+                      break label3600;
+                      i = 0;
+                      break label3670;
+                    }
+                  }
+                  else
+                  {
+                    localObject1 = a.a.rYT;
+                    if (i == a.a.cAS())
+                    {
+                      localObject1 = this.syW;
+                      if (localObject1 != null) {
+                        if (((m)localObject1).duw == ((a.a)paramb).duw)
+                        {
+                          i = 1;
+                          if (i == 0) {
+                            break label3918;
+                          }
+                          if (localObject1 == null) {
+                            break label3930;
+                          }
+                          ((m)localObject1).szv += 1;
+                          localObject1 = localObject5;
+                        }
+                      }
+                      for (;;)
+                      {
+                        ??? = this.rQw;
+                        l1 = ((a.a)paramb).duw;
+                        paramb = c.b.sxG;
+                        c.a.a((arn)???, l1, 16, c.b.cFi());
+                        paramb = z.Nhr;
+                        break;
+                        i = 0;
+                        break label3850;
+                        localObject1 = null;
+                        break label3854;
+                        localObject1 = null;
+                        break label3854;
+                        l1 = ((a.a)paramb).duw;
+                        l2 = paramb.rZe;
+                        localObject1 = i.syT;
+                        localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                        ((m)localObject1).szv += 1;
+                        ??? = z.Nhr;
+                      }
+                    }
+                    localObject1 = a.a.rYT;
+                    if (i == a.a.cAU())
+                    {
+                      localObject1 = this.syW;
+                      if (localObject1 != null) {
+                        if (((m)localObject1).duw == ((a.a)paramb).duw)
+                        {
+                          i = 1;
+                          if (i == 0) {
+                            break label4072;
+                          }
+                        }
+                      }
+                      for (;;)
+                      {
+                        if (localObject1 == null) {
+                          break label4084;
+                        }
+                        i = ((m)localObject1).szD;
+                        ((m)localObject1).szD = (i + 1);
+                        localObject1 = ???;
+                        break;
+                        i = 0;
+                        break label4037;
+                        localObject1 = null;
+                        continue;
+                        localObject1 = null;
+                      }
+                      l1 = ((a.a)paramb).duw;
+                      l2 = paramb.rZe;
+                      localObject1 = i.syT;
+                      localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                      ((m)localObject1).szD += 1;
+                      paramb = z.Nhr;
+                      paramb = z.Nhr;
+                    }
+                    else
+                    {
+                      localObject1 = a.a.rYT;
+                      if (i == a.a.cAN())
+                      {
+                        localObject1 = this.syW;
+                        if (localObject1 != null) {
+                          if (((m)localObject1).duw == ((a.a)paramb).duw)
+                          {
+                            i = 1;
+                            if (i == 0) {
+                              break label4260;
+                            }
+                            if (localObject1 == null) {
+                              break label4272;
+                            }
+                            i = ((m)localObject1).szw;
+                            ((m)localObject1).szw = (i + 1);
+                            localObject1 = localObject4;
+                          }
+                        }
+                        for (;;)
+                        {
+                          ??? = this.rQw;
+                          l1 = ((a.a)paramb).duw;
+                          paramb = c.b.sxG;
+                          c.a.a((arn)???, l1, 12, c.b.cFi());
+                          break;
+                          i = 0;
+                          break label4194;
+                          localObject1 = null;
+                          break label4198;
+                          localObject1 = null;
+                          break label4198;
+                          l1 = ((a.a)paramb).duw;
+                          l2 = paramb.rZe;
+                          localObject1 = i.syT;
+                          localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                          ((m)localObject1).szw += 1;
+                          ??? = z.Nhr;
+                          ??? = z.Nhr;
+                        }
+                      }
+                      localObject1 = a.a.rYT;
+                      if (i == a.a.cAV())
+                      {
+                        localObject1 = this.syW;
+                        if (localObject1 != null) {
+                          if (((m)localObject1).duw == ((a.a)paramb).duw)
+                          {
+                            i = 1;
+                            if (i == 0) {
+                              break label4419;
+                            }
+                          }
+                        }
+                        for (;;)
+                        {
+                          if (localObject1 == null) {
+                            break label4431;
+                          }
+                          i = ((m)localObject1).szz;
+                          ((m)localObject1).szz = (i + 1);
+                          localObject1 = ???;
+                          break;
+                          i = 0;
+                          break label4384;
+                          localObject1 = null;
+                          continue;
+                          localObject1 = null;
+                        }
+                        l1 = ((a.a)paramb).duw;
+                        l2 = paramb.rZe;
+                        localObject1 = i.syT;
+                        localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                        ((m)localObject1).szz += 1;
+                        paramb = z.Nhr;
+                        paramb = z.Nhr;
+                      }
+                      else
+                      {
+                        localObject1 = a.a.rYT;
+                        if (i == a.a.cAW())
+                        {
+                          localObject1 = this.syW;
+                          if (localObject1 != null) {
+                            if (((m)localObject1).duw == ((a.a)paramb).duw)
+                            {
+                              i = 1;
+                              if (i == 0) {
+                                break label4653;
+                              }
+                              if (localObject1 == null) {
+                                break label4665;
+                              }
+                              i = ((m)localObject1).szy;
+                              ((m)localObject1).szy = (i + 1);
+                              ??? = localObject3;
+                              localObject3 = this.syW;
+                              localObject1 = ???;
+                              if (localObject3 == null) {
+                                continue;
+                              }
+                              if (((m)localObject3).duw != ((a.a)paramb).duw) {
+                                break label4736;
+                              }
+                              i = 1;
+                              if (i == 0) {
+                                break label4741;
+                              }
+                            }
+                          }
+                          for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject3;; paramb = null)
+                          {
+                            localObject1 = ???;
+                            if (paramb == null) {
+                              break;
+                            }
+                            aiM(c.a.ae(d.a.ae.c(u.R("feedActionType", Integer.valueOf(7)))));
+                            paramb = z.Nhr;
+                            localObject1 = ???;
+                            break;
+                            i = 0;
+                            break label4541;
+                            localObject1 = null;
+                            break label4545;
+                            localObject1 = null;
+                            break label4545;
+                            l1 = ((a.a)paramb).duw;
+                            l2 = paramb.rZe;
+                            localObject1 = i.syT;
+                            ??? = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                            ((m)???).szy += 1;
+                            localObject1 = z.Nhr;
+                            localObject1 = z.Nhr;
+                            break label4568;
+                            i = 0;
+                            break label4601;
+                          }
+                        }
+                        else
+                        {
+                          localObject1 = a.a.rYT;
+                          if (i == a.a.cAX())
+                          {
+                            localObject1 = this.syW;
+                            if (localObject1 != null) {
+                              if (((m)localObject1).duw == ((a.a)paramb).duw)
+                              {
+                                i = 1;
+                                if (i == 0) {
+                                  break label4822;
+                                }
+                              }
+                            }
+                            for (;;)
+                            {
+                              if (localObject1 == null) {
+                                break label4834;
+                              }
+                              i = ((m)localObject1).szA;
+                              ((m)localObject1).szA = (i + 1);
+                              localObject1 = ???;
+                              break;
+                              i = 0;
+                              break label4787;
+                              localObject1 = null;
+                              continue;
+                              localObject1 = null;
+                            }
+                            l1 = ((a.a)paramb).duw;
+                            l2 = paramb.rZe;
+                            localObject1 = i.syT;
+                            localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                            ((m)localObject1).szA += 1;
+                            paramb = z.Nhr;
+                            paramb = z.Nhr;
+                          }
+                          else
+                          {
+                            localObject1 = a.a.rYT;
+                            if (i == a.a.cAY())
+                            {
+                              localObject1 = this.syW;
+                              if (localObject1 != null) {
+                                if (((m)localObject1).duw == ((a.a)paramb).duw)
+                                {
+                                  i = 1;
+                                  if (i == 0) {
+                                    break label4979;
+                                  }
+                                }
+                              }
+                              for (;;)
+                              {
+                                if (localObject1 == null) {
+                                  break label4991;
+                                }
+                                i = ((m)localObject1).szB;
+                                ((m)localObject1).szB = (i + 1);
+                                localObject1 = ???;
+                                break;
+                                i = 0;
+                                break label4944;
+                                localObject1 = null;
+                                continue;
+                                localObject1 = null;
+                              }
+                              label4991:
+                              l1 = ((a.a)paramb).duw;
+                              l2 = paramb.rZe;
+                              localObject1 = i.syT;
+                              localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                              ((m)localObject1).szB += 1;
+                              paramb = z.Nhr;
+                              paramb = z.Nhr;
+                            }
+                            else
+                            {
+                              localObject1 = a.a.rYT;
+                              if (i == a.a.cAZ())
+                              {
+                                localObject1 = this.syW;
+                                if (localObject1 != null) {
+                                  if (((m)localObject1).duw == ((a.a)paramb).duw)
+                                  {
+                                    i = 1;
+                                    if (i == 0) {
+                                      break label5136;
+                                    }
+                                  }
+                                }
+                                for (;;)
+                                {
+                                  if (localObject1 == null) {
+                                    break label5148;
+                                  }
+                                  i = ((m)localObject1).szC;
+                                  ((m)localObject1).szC = (i + 1);
+                                  localObject1 = ???;
+                                  break;
+                                  i = 0;
+                                  break label5101;
+                                  localObject1 = null;
+                                  continue;
+                                  localObject1 = null;
+                                }
+                                l1 = ((a.a)paramb).duw;
+                                l2 = paramb.rZe;
+                                localObject1 = i.syT;
+                                localObject1 = new m(l1, l2, i.wJ(((a.a)paramb).duw), null, 56);
+                                ((m)localObject1).szC += 1;
+                                paramb = z.Nhr;
+                                paramb = z.Nhr;
+                              }
+                              else
+                              {
+                                localObject1 = a.a.rYT;
+                                if (i == a.a.cBa())
+                                {
+                                  localObject3 = this.syW;
+                                  localObject1 = ???;
+                                  if (localObject3 != null)
+                                  {
+                                    if (((m)localObject3).duw == ((a.a)paramb).duw)
+                                    {
+                                      i = 1;
+                                      if (i == 0) {
+                                        break label5314;
+                                      }
+                                    }
+                                    for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject3;; paramb = null)
+                                    {
+                                      localObject1 = ???;
+                                      if (paramb == null) {
+                                        break;
+                                      }
+                                      aiM(c.a.ae(d.a.ae.c(u.R("feedActionType", Integer.valueOf(6)))));
+                                      paramb = z.Nhr;
+                                      localObject1 = ???;
+                                      break;
+                                      i = 0;
+                                      break label5262;
+                                    }
+                                  }
+                                }
+                                else
+                                {
+                                  localObject1 = a.a.rYT;
+                                  if (i == a.a.cBb())
+                                  {
+                                    localObject3 = this.syW;
+                                    localObject1 = ???;
+                                    if (localObject3 != null)
+                                    {
+                                      if (((m)localObject3).duw == ((a.a)paramb).duw)
+                                      {
+                                        i = 1;
+                                        if (i == 0) {
+                                          break label5416;
+                                        }
+                                      }
+                                      for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject3;; paramb = null)
+                                      {
+                                        localObject1 = ???;
+                                        if (paramb == null) {
+                                          break;
+                                        }
+                                        aiM(c.a.ae(d.a.ae.c(u.R("feedActionType", Integer.valueOf(8)))));
+                                        paramb = z.Nhr;
+                                        localObject1 = ???;
+                                        break;
+                                        i = 0;
+                                        break label5364;
+                                      }
+                                    }
+                                  }
+                                  else
+                                  {
+                                    localObject1 = a.a.rYT;
+                                    if (i == a.a.cBc())
+                                    {
+                                      localObject3 = this.syW;
+                                      localObject1 = ???;
+                                      if (localObject3 != null)
+                                      {
+                                        if (((m)localObject3).duw == ((a.a)paramb).duw)
+                                        {
+                                          i = 1;
+                                          if (i == 0) {
+                                            break label5518;
+                                          }
+                                        }
+                                        for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject3;; paramb = null)
+                                        {
+                                          localObject1 = ???;
+                                          if (paramb == null) {
+                                            break;
+                                          }
+                                          aiM(c.a.ae(d.a.ae.c(u.R("feedActionType", Integer.valueOf(9)))));
+                                          paramb = z.Nhr;
+                                          localObject1 = ???;
+                                          break;
+                                          i = 0;
+                                          break label5466;
+                                        }
+                                      }
+                                    }
+                                    else
+                                    {
+                                      AppMethodBeat.o(203869);
+                                      return;
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+        }
+        if ((paramb instanceof w.b))
+        {
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw == ((w.b)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label5797;
+              }
+              if (localObject1 == null) {
+                break label5808;
+              }
+              if (((w.b)paramb).rYV.mediaType != 2) {
+                break label5803;
+              }
+            }
+            for (i = 0;; i = 1)
+            {
+              j = ((w.b)paramb).index;
+              if (j + 1 > ((m)localObject1).szq) {
+                ((m)localObject1).szq = (j + 1);
+              }
+              k = ((m)localObject1).szo;
+              if (k != j)
+              {
+                l1 = ch.aDc();
+                l2 = l1 - localObject1.szk[localObject1.szo];
+                m = localObject1.szm[localObject1.szo];
+                n = localObject1.szn[localObject1.szo];
+                ((m)localObject1).szl[k] = l2;
+                ((m)localObject1).szk[j] = l1;
+                ((m)localObject1).szo = j;
+                c.a.a(this.rQw, ((m)localObject1).duw, 4, String.valueOf(c.a.a(4, new String[] { String.valueOf(l2), String.valueOf(k), String.valueOf(j), String.valueOf(i), String.valueOf(m), String.valueOf(n) })));
+              }
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+              break label5577;
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+        }
+        if ((paramb instanceof com.tencent.mm.plugin.finder.event.c.a)) {
+          switch (((com.tencent.mm.plugin.finder.event.c.a)paramb).type)
+          {
+          }
         }
         for (;;)
         {
-          long l = localBitSet.toLongArray()[0];
-          localdij.Hxf.FEM = l;
-          localdij.Hxg.zMn = ((int)f);
-          localdij.Hxg.HHd = paraml.videoDuration;
-          localdij.Hxg.qXg = paraml.dBD;
-          localdij.Hxg.HHe = paraml.spv;
-          localdij.Hxg.HHf = paraml.spt;
-          localdij.Hxh.GZJ = ((int)f);
-          localdij.Hxh.GZK = i;
-          localdij.Hxh.GZI = paraml.sph;
-          paramaqy = paraml.soZ;
-          m = paramaqy.length;
-          j = 0;
-          i = 0;
-          while (j < m)
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
           {
-            if (paramaqy[j] > 0L) {
-              localdij.Hxh.GZH = i;
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label5982;
+              }
             }
-            j += 1;
-            i += 1;
+            for (;;)
+            {
+              if (localObject1 == null) {
+                break label5988;
+              }
+              ((m)localObject1).szH = paramb.rZe;
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+            }
           }
-          if (i == 1) {
-            localBitSet.set(33, true);
-          } else if (i == 2) {
-            localBitSet.set(34, true);
-          } else if (i == 3) {
-            localBitSet.set(35, true);
-          } else if (i == 4) {
-            localBitSet.set(36, true);
-          } else if (i == 5) {
-            localBitSet.set(37, true);
-          } else {
-            localBitSet.set(38, true);
-          }
-        }
-        localdij.Hxh.GZL = paraml.liA;
-        paramaqy = localdij.Hxh;
-        if (paraml.liA > 0)
-        {
-          i = 1;
-          paramaqy.GZN = i;
-          localdij.Hxh.spi = paraml.spi;
-          localdij.Hxh.GZM = paraml.spj;
-          localdij.Hxh.GZV = paraml.sps;
-          localdij.Hxh.GZT = paraml.soY;
-          localdij.Hxh.GZW = paraml.spn;
-          localdij.Hxh.GZX = paraml.spl;
-          localdij.Hxh.GZY = paraml.spm;
-          localdij.Hxh.spn = paraml.spn;
-          localdij.Hxh.spo = paraml.spo;
-          localdij.Hxh.spp = paraml.spp;
-          localdij.Hxh.spq = paraml.spq;
-          localdij.Hxh.spr = paraml.spr;
-          paramaqy = paraml.feed;
-          if (paramaqy != null)
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
           {
-            localObject1 = localdij.Hxh;
-            if (paramaqy.getLikeFlag() == 0) {
-              break label1289;
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label6074;
+              }
+            }
+            for (;;)
+            {
+              if (localObject1 == null) {
+                break label6080;
+              }
+              if (((m)localObject1).szH != 0L) {
+                ((m)localObject1).szG = (paramb.rZe - ((m)localObject1).szH);
+              }
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label6150;
+              }
+            }
+            for (;;)
+            {
+              if (localObject1 == null) {
+                break label6156;
+              }
+              ((m)localObject1).szF = paramb.rZe;
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label6247;
+              }
+            }
+            for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;; paramb = null)
+            {
+              if (paramb == null) {
+                break label6252;
+              }
+              paramb.szn[paramb.szo] += 1;
+              i = paramb.szp;
+              paramb.szp = (i + 1);
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label6409;
+              }
+            }
+            for (;;)
+            {
+              if (localObject1 == null) {
+                break label6415;
+              }
+              ((m)localObject1).szL.add(Integer.valueOf(((com.tencent.mm.plugin.finder.event.c.a)paramb).offset));
+              i = (int)(100.0F * ((com.tencent.mm.plugin.finder.event.c.a)paramb).offset / ((com.tencent.mm.plugin.finder.event.c.a)paramb).ihz);
+              if (i > localObject1.szm[localObject1.szo]) {
+                ((m)localObject1).szm[localObject1.szo] = i;
+              }
+              if (i > ((m)localObject1).szs)
+              {
+                ((m)localObject1).szr = ((com.tencent.mm.plugin.finder.event.c.a)paramb).offset;
+                ((m)localObject1).szs = i;
+              }
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label6513;
+              }
+            }
+            for (;;)
+            {
+              if (localObject1 == null) {
+                break label6519;
+              }
+              if (((m)localObject1).szF != 0L)
+              {
+                ((m)localObject1).szE += paramb.rZe - ((m)localObject1).szF;
+                ((m)localObject1).szF = 0L;
+              }
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+              localObject1 = null;
+            }
+          }
+          AppMethodBeat.o(203869);
+          return;
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw != ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw) {
+              break label6647;
             }
             i = 1;
-            label1204:
-            ((cgq)localObject1).GZP = i;
-            localObject1 = localdij.Hxh;
-            localObject2 = com.tencent.mm.plugin.finder.api.c.rHn;
-            if (!c.a.agZ(paramaqy.getUserName())) {
-              break label1294;
+            if (i == 0) {
+              break label6652;
             }
-            i = 1;
-            label1234:
-            ((cgq)localObject1).GZO = i;
-            localObject1 = localdij.Hxh;
-            if (paramaqy.getFavFlag() != 1) {
-              break label1299;
+            if (localObject1 != null)
+            {
+              ((m)localObject1).szJ = 1;
+              localObject1 = z.Nhr;
             }
           }
-        }
-        for (i = k;; i = 0)
-        {
-          ((cgq)localObject1).GZR = i;
-          localdij.Hxh.GZU = paraml.spg;
-          AppMethodBeat.o(203323);
-          return localdij;
-          i = 0;
-          break;
-          i = 0;
-          break label1204;
-          i = 0;
-          break label1234;
+          if (((com.tencent.mm.plugin.finder.event.c.a)paramb).rYV != null)
+          {
+            if (((com.tencent.mm.plugin.finder.event.c.a)paramb).rYX <= ((com.tencent.mm.plugin.finder.event.c.a)paramb).rYY) {
+              break label6658;
+            }
+            c.a.a(this.rQw, ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw, 15, String.valueOf(c.a.a(15, new String[] { "-1" })));
+          }
+          for (;;)
+          {
+            paramb = z.Nhr;
+            AppMethodBeat.o(203869);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+            break label6559;
+            if (((com.tencent.mm.plugin.finder.event.c.a)paramb).rYX < ((com.tencent.mm.plugin.finder.event.c.a)paramb).rYY) {
+              c.a.a(this.rQw, ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw, 15, String.valueOf(c.a.a(15, new String[] { "1" })));
+            }
+          }
+          localObject1 = this.syW;
+          if (localObject1 != null)
+          {
+            if (((m)localObject1).duw == ((com.tencent.mm.plugin.finder.event.c.a)paramb).duw)
+            {
+              i = 1;
+              if (i == 0) {
+                break label6773;
+              }
+            }
+            for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;; paramb = null)
+            {
+              if (paramb == null) {
+                break label6776;
+              }
+              paramb.szI = 1;
+              paramb = z.Nhr;
+              AppMethodBeat.o(203869);
+              return;
+              i = 0;
+              break;
+            }
+          }
         }
       }
     }
-    
-    public static void a(dij paramdij, String paramString)
+  }
+  
+  public final boolean a(com.tencent.mm.plugin.finder.event.base.c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
+  {
+    AppMethodBeat.i(203865);
+    p.h(paramc, "dispatcher");
+    p.h(paramb, "event");
+    if (super.a(paramc, paramb))
     {
-      Object localObject2 = null;
-      AppMethodBeat.i(203324);
-      p.h(paramdij, "stats");
-      p.h(paramString, "tag");
-      StringBuffer localStringBuffer = new StringBuffer("[Stats]\n");
-      Object localObject1 = l.spI;
-      a(localStringBuffer, "feedId", Long.valueOf(paramdij.rIZ));
-      if (i.DEBUG)
-      {
-        localStringBuffer.append("strfeedId=" + com.tencent.mm.ad.c.rc(paramdij.rIZ) + '\n');
-        localObject1 = d.szI;
-        localObject1 = d.a.wT(paramdij.rIZ);
-        if (localObject1 != null) {
-          localStringBuffer.append("nick=" + ((FinderItem)localObject1).getNickName() + ", desc=" + ((FinderItem)localObject1).getDebugDescription() + '\n');
-        }
+      AppMethodBeat.o(203865);
+      return true;
+    }
+    if ((paramb instanceof w.b))
+    {
+      AppMethodBeat.o(203865);
+      return true;
+    }
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.j))
+    {
+      AppMethodBeat.o(203865);
+      return true;
+    }
+    if ((paramb instanceof a.a))
+    {
+      AppMethodBeat.o(203865);
+      return true;
+    }
+    AppMethodBeat.o(203865);
+    return false;
+  }
+  
+  public final void aiM(String paramString)
+  {
+    AppMethodBeat.i(203876);
+    p.h(paramString, "feedActionValue");
+    m localm = this.syW;
+    if (localm != null)
+    {
+      com.tencent.mm.sdk.platformtools.ae.i(TAG, "sendExtStatsReport ".concat(String.valueOf(paramString)));
+      aio localaio = new aio();
+      localaio.rRn = localm.duw;
+      Object localObject = localm.feed;
+      if (localObject != null) {
+        localaio.sbR = ((FinderItem)localObject).getUserName();
       }
-      localObject1 = l.spI;
-      localObject1 = paramdij.Hxg;
-      if (localObject1 != null)
+      localObject = i.syT;
+      localaio.sessionBuffer = i.I(localm.duw, this.rQw.sch);
+      localaio.Gyn = paramString;
+      localaio.videoDuration = localm.videoDuration;
+      paramString = localm.feed;
+      if (paramString != null) {}
+      for (int i = paramString.getMediaType();; i = 0)
       {
-        localObject1 = Integer.valueOf(((duh)localObject1).HHd);
-        a(localStringBuffer, "vidPlayLen", (Integer)localObject1);
-        localObject1 = l.spI;
-        localObject1 = paramdij.Hxg;
-        if (localObject1 == null) {
-          break label900;
-        }
-        localObject1 = Integer.valueOf(((duh)localObject1).zMn);
-        label204:
-        a(localStringBuffer, "stayTime", (Integer)localObject1);
-        localObject1 = l.spI;
-        localObject1 = paramdij.Hxg;
-        if (localObject1 == null) {
-          break label905;
-        }
-        localObject1 = Long.valueOf(((duh)localObject1).qXg);
-        label234:
-        a(localStringBuffer, "stayTimeMs", (Long)localObject1);
-        localObject1 = l.spI;
-        localObject1 = paramdij.Hxg;
-        if (localObject1 == null) {
-          break label910;
-        }
-        localObject1 = Long.valueOf(((duh)localObject1).HHe);
-        label264:
-        a(localStringBuffer, "vidPlayTimeMs", (Long)localObject1);
-        localObject1 = l.spI;
-        localObject1 = paramdij.Hxg;
-        if (localObject1 == null) {
-          break label915;
-        }
-      }
-      label900:
-      label905:
-      label910:
-      label915:
-      for (localObject1 = Long.valueOf(((duh)localObject1).HHf);; localObject1 = null)
-      {
-        a(localStringBuffer, "vidPlayingTimeMs", (Long)localObject1);
-        localObject1 = l.spI;
-        a(localStringBuffer, "share", Integer.valueOf(paramdij.Hxh.GZN));
-        localObject1 = l.spI;
-        a(localStringBuffer, "forward_times", Integer.valueOf(paramdij.Hxh.GZL));
-        localObject1 = l.spI;
-        a(localStringBuffer, "feed_stay_time", Integer.valueOf(paramdij.Hxh.GZJ));
-        localObject1 = l.spI;
-        a(localStringBuffer, "vid_replay_times", Integer.valueOf(paramdij.Hxh.GZK));
-        localObject1 = l.spI;
-        a(localStringBuffer, "max_vid_play_progress", Integer.valueOf(paramdij.Hxh.GZI));
-        localObject1 = l.spI;
-        a(localStringBuffer, "pageTurn", Integer.valueOf(paramdij.Hxh.GZH));
-        localObject1 = l.spI;
-        a(localStringBuffer, "clickComment", Integer.valueOf(paramdij.Hxh.spi));
-        localObject1 = l.spI;
-        a(localStringBuffer, "clickHead", Integer.valueOf(paramdij.Hxh.GZM));
-        localObject1 = l.spI;
-        a(localStringBuffer, "likeStatus", Integer.valueOf(paramdij.Hxh.GZP));
-        localObject1 = l.spI;
-        a(localStringBuffer, "followStatus", Integer.valueOf(paramdij.Hxh.GZO));
-        localObject1 = l.spI;
-        a(localStringBuffer, "favStatus", Integer.valueOf(paramdij.Hxh.GZR));
-        localObject1 = l.spI;
-        a(localStringBuffer, "notInterestAction", Integer.valueOf(paramdij.Hxh.GZV));
-        localObject1 = l.spI;
-        a(localStringBuffer, "fastSlip", Integer.valueOf(paramdij.Hxh.GZS));
-        localObject1 = l.spI;
-        a(localStringBuffer, "sortId", Integer.valueOf(paramdij.Hxh.GZT));
-        localObject1 = l.spI;
-        a(localStringBuffer, "maxVidPlayLen", Integer.valueOf(paramdij.Hxh.GZU));
-        localObject1 = l.spI;
-        a(localStringBuffer, "clickTopicTimes", Integer.valueOf(paramdij.Hxh.GZW));
-        localObject1 = l.spI;
-        a(localStringBuffer, "expandTextTimes", Integer.valueOf(paramdij.Hxh.GZX));
-        localObject1 = l.spI;
-        a(localStringBuffer, "shareMomentTimes", Integer.valueOf(paramdij.Hxh.GZY));
-        localObject1 = l.spI;
-        a(localStringBuffer, "clickPoiTimes", Integer.valueOf(paramdij.Hxh.spn));
-        localObject1 = l.spI;
-        a(localStringBuffer, "collapseTextTimes", Integer.valueOf(paramdij.Hxh.spo));
-        localObject1 = l.spI;
-        a(localStringBuffer, "commentLikeTimes", Integer.valueOf(paramdij.Hxh.spp));
-        localObject1 = l.spI;
-        a(localStringBuffer, "clickFeedMenu", Integer.valueOf(paramdij.Hxh.spq));
-        localObject1 = l.spI;
-        a(localStringBuffer, "complainTimes", Integer.valueOf(paramdij.Hxh.spr));
-        localObject1 = l.spI;
-        a(localStringBuffer, "actionTimeMs", Long.valueOf(paramdij.Hxi));
-        localObject1 = l.spI;
-        a(localStringBuffer, "feedScene", Integer.valueOf(paramdij.Hxj));
-        localObject1 = l.spI;
-        localObject1 = paramdij.sessionBuffer;
-        paramdij = localObject2;
-        if (localObject1 != null) {
-          paramdij = Integer.valueOf(((String)localObject1).length());
-        }
-        a(localStringBuffer, "sessionBuffer", paramdij);
-        ad.i(paramString, localStringBuffer.toString());
-        AppMethodBeat.o(203324);
+        localaio.mediaType = i;
+        a.a(this.rQw, localaio);
+        AppMethodBeat.o(203876);
         return;
-        localObject1 = null;
-        break;
-        localObject1 = null;
-        break label204;
-        localObject1 = null;
-        break label234;
-        localObject1 = null;
-        break label264;
       }
+    }
+    AppMethodBeat.o(203876);
+  }
+  
+  public final LinkedList<dje> cFh()
+  {
+    AppMethodBeat.i(203871);
+    if (this.syV.size() > 0)
+    {
+      localLinkedList = this.syV;
+      this.syV = new LinkedList();
+      f(localLinkedList, 0);
+      AppMethodBeat.o(203871);
+      return localLinkedList;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    AppMethodBeat.o(203871);
+    return localLinkedList;
+  }
+  
+  public final void onInvisible()
+  {
+    AppMethodBeat.i(203875);
+    super.onInvisible();
+    onExit();
+    AppMethodBeat.o(203875);
+  }
+  
+  public final void onRelease()
+  {
+    AppMethodBeat.i(203866);
+    onExit();
+    super.onRelease();
+    AppMethodBeat.o(203866);
+  }
+  
+  public final void onVisible()
+  {
+    AppMethodBeat.i(203874);
+    super.onVisible();
+    Object localObject = FinderReporterUIC.tnG;
+    localObject = FinderReporterUIC.a.fc((Context)this.activity);
+    if (localObject != null)
+    {
+      localObject = ((FinderReporterUIC)localObject).tnC;
+      if (localObject != null)
+      {
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          WxRecyclerAdapter localWxRecyclerAdapter = (WxRecyclerAdapter)((WeakReference)((Iterator)localObject).next()).get();
+          if (localWxRecyclerAdapter != null) {
+            localWxRecyclerAdapter.onResume();
+          }
+        }
+        AppMethodBeat.o(203874);
+        return;
+      }
+    }
+    AppMethodBeat.o(203874);
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter$Companion;", "", "()V", "LIMIT_PER_COUNT", "", "getLIMIT_PER_COUNT", "()I", "RETRY_COUNT", "getRETRY_COUNT", "TAG", "", "getTAG", "()Ljava/lang/String;", "hotStreamCenterFeed", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "getHotStreamCenterFeed", "()Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "setHotStreamCenterFeed", "(Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;)V", "sendExtStatsReport", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "extStats", "Lcom/tencent/mm/protocal/protobuf/ExtStats;", "plugin-finder_release"})
+  public static final class a
+  {
+    public static void a(arn paramarn, aio paramaio)
+    {
+      AppMethodBeat.i(203861);
+      p.h(paramaio, "extStats");
+      com.tencent.mm.sdk.platformtools.ae.i(l.access$getTAG$cp(), "sendExtStatsReport " + paramaio.rRn);
+      com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)new ac(paramarn, paramaio));
+      AppMethodBeat.o(203861);
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class b
+    extends d.g.b.q
+    implements d.g.a.a<z>
+  {
+    b(l paraml)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class c
+    extends d.g.b.q
+    implements d.g.a.a<z>
+  {
+    c(l paraml)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter$reportExpose$1$1$1$convertData$1", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+  public static final class d
+    implements com.tencent.mm.view.recyclerview.a
+  {
+    d(FinderObject paramFinderObject) {}
+    
+    public final int bZz()
+    {
+      return 0;
     }
     
-    private static void a(StringBuffer paramStringBuffer, String paramString, Integer paramInteger)
+    public final long lP()
     {
-      AppMethodBeat.i(203326);
-      p.h(paramStringBuffer, "sb");
-      p.h(paramString, "key");
-      if (paramInteger == null) {}
-      for (;;)
-      {
-        paramStringBuffer.append(paramString + '=' + paramInteger + '\n');
-        do
-        {
-          AppMethodBeat.o(203326);
-          return;
-        } while (paramInteger.intValue() == 0);
-      }
+      return this.sze.id;
     }
-    
-    private static void a(StringBuffer paramStringBuffer, String paramString, Long paramLong)
-    {
-      AppMethodBeat.i(203325);
-      p.h(paramStringBuffer, "sb");
-      p.h(paramString, "key");
-      if (paramLong == null) {}
-      for (;;)
-      {
-        paramStringBuffer.append(paramString + '=' + paramLong + '\n');
-        do
-        {
-          AppMethodBeat.o(203325);
-          return;
-        } while (paramLong.longValue() == 0L);
-      }
-    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderStatsReportResponse;", "kotlin.jvm.PlatformType", "call"})
+  static final class e<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    e(l paraml, LinkedList paramLinkedList1, LinkedList paramLinkedList2, int paramInt) {}
   }
 }
 

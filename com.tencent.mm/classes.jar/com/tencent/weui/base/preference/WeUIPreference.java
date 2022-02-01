@@ -29,7 +29,7 @@ import com.tencent.mm.ui.ap;
 public abstract class WeUIPreference
   extends BaseActivity
 {
-  private b Mof;
+  private b MLb;
   protected ImageView bannerCloseBtn;
   protected TextView bannerTv;
   protected RelativeLayout bannerView;
@@ -49,13 +49,13 @@ public abstract class WeUIPreference
   {
     super.onCreate(paramBundle);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.Mof = new b(this, this.sp);
+    this.MLb = new b(this, this.sp);
     this.list = ((ListView)findViewById(16908298));
     this.bannerView = ((RelativeLayout)findViewById(2131303382));
     this.bannerTv = ((TextView)findViewById(2131303381));
     this.bannerCloseBtn = ((ImageView)findViewById(2131303380));
-    paramBundle = this.Mof;
-    paramBundle.Moj = new Preference.OnPreferenceChangeListener()
+    paramBundle = this.MLb;
+    paramBundle.MLf = new Preference.OnPreferenceChangeListener()
     {
       public final boolean onPreferenceChange(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
@@ -99,9 +99,9 @@ public abstract class WeUIPreference
     c localc;
     if (i != -1)
     {
-      localb = this.Mof;
-      localb.Moi = true;
-      localc = localb.Moh;
+      localb = this.MLb;
+      localb.MLe = true;
+      localc = localb.MLd;
       paramBundle = localc.mContext.getResources().getXml(i);
       if (paramBundle == null) {}
     }
@@ -109,9 +109,9 @@ public abstract class WeUIPreference
     {
       localc.a(paramBundle, localb);
       paramBundle.close();
-      localb.Moi = false;
+      localb.MLe = false;
       localb.notifyDataSetChanged();
-      this.list.setAdapter(this.Mof);
+      this.list.setAdapter(this.MLb);
       this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -120,9 +120,9 @@ public abstract class WeUIPreference
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          a.b("com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          a.b("com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
           paramAnonymousAdapterView = (Preference)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
@@ -197,7 +197,7 @@ public abstract class WeUIPreference
   
   public void onResume()
   {
-    this.Mof.notifyDataSetChanged();
+    this.MLb.notifyDataSetChanged();
     super.onResume();
   }
   
@@ -209,7 +209,7 @@ public abstract class WeUIPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.weui.base.preference.WeUIPreference
  * JD-Core Version:    0.7.0.1
  */

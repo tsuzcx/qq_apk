@@ -5,14 +5,14 @@ import d.g.b.p;
 
 public final class h
 {
-  public final g Nhl;
-  public final boolean Nhm;
+  public final g NEq;
+  public final boolean NEr;
   
   public h(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(58040);
-    this.Nhl = paramg;
-    this.Nhm = paramBoolean;
+    this.NEq = paramg;
+    this.NEr = paramBoolean;
     AppMethodBeat.o(58040);
   }
   
@@ -33,7 +33,7 @@ public final class h
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!p.i(this.Nhl, paramObject.Nhl)) || (this.Nhm != paramObject.Nhm)) {}
+        if ((!p.i(this.NEq, paramObject.NEq)) || (this.NEr != paramObject.NEr)) {}
       }
     }
     else
@@ -53,7 +53,7 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(58043);
-    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.Nhl + ", isForWarningOnly=" + this.Nhm + ")";
+    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.NEq + ", isForWarningOnly=" + this.NEr + ")";
     AppMethodBeat.o(58043);
     return str;
   }

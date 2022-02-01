@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.fav.a;
 
 import android.content.Context;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.protocal.protobuf.akp;
 
 public abstract interface y
   extends a
 {
-  public abstract boolean a(Context paramContext, g paramg, akf paramakf);
+  public abstract boolean a(Context paramContext, g paramg, akp paramakp);
 }
 
 

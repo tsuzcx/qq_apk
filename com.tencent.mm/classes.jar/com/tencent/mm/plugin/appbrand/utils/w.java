@@ -1,47 +1,22 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Method;
 
 public final class w
 {
-  public static boolean C(String paramString1, String paramString2)
+  public static boolean FB()
   {
-    AppMethodBeat.i(140860);
-    if ((paramString1 == null) || (paramString1.length() < 0) || (paramString2.length() < 0))
-    {
-      AppMethodBeat.o(140860);
-      return false;
-    }
-    if (paramString2.length() > paramString1.length())
-    {
-      AppMethodBeat.o(140860);
-      return false;
-    }
-    if (paramString2.equalsIgnoreCase(paramString1.substring(0, paramString2.length())))
-    {
-      AppMethodBeat.o(140860);
-      return true;
-    }
-    AppMethodBeat.o(140860);
-    return false;
-  }
-  
-  public static String Vb(String paramString)
-  {
-    AppMethodBeat.i(140859);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(140859);
-      return null;
-    }
-    paramString = paramString.replace(" ", "\\n").replace(" ", "\\n");
-    AppMethodBeat.o(140859);
-    return paramString;
+    AppMethodBeat.i(217745);
+    Class localClass = Class.forName("com.huawei.android.os.SystemPropertiesEx");
+    boolean bool = ((Boolean)localClass.getMethod("getBoolean", new Class[] { String.class, Boolean.TYPE }).invoke(localClass.newInstance(), new Object[] { "ro.config.hw_magic_window_enable", Boolean.FALSE })).booleanValue();
+    AppMethodBeat.o(217745);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.w
  * JD-Core Version:    0.7.0.1
  */

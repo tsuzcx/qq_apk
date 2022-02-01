@@ -7,22 +7,22 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class f
 {
-  private static volatile f.a Mcw;
+  private static volatile f.a Mzr;
   public static ExecutorService THREAD_POOL_EXECUTOR;
   private static volatile ScheduledExecutorService mScheduler;
   
   static
   {
-    AppMethodBeat.i(192182);
+    AppMethodBeat.i(194860);
     THREAD_POOL_EXECUTOR = Executors.newCachedThreadPool();
     mScheduler = null;
-    Mcw = null;
-    AppMethodBeat.o(192182);
+    Mzr = null;
+    AppMethodBeat.o(194860);
   }
   
   public static ScheduledExecutorService getScheduledExecutorServiceInstance()
   {
-    AppMethodBeat.i(192181);
+    AppMethodBeat.i(194859);
     if (mScheduler == null) {}
     try
     {
@@ -30,12 +30,12 @@ public class f
         mScheduler = Executors.newScheduledThreadPool(4);
       }
       ScheduledExecutorService localScheduledExecutorService = mScheduler;
-      AppMethodBeat.o(192181);
+      AppMethodBeat.o(194859);
       return localScheduledExecutorService;
     }
     finally
     {
-      AppMethodBeat.o(192181);
+      AppMethodBeat.o(194859);
     }
   }
 }

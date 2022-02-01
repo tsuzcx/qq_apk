@@ -20,8 +20,8 @@ public class CustomTimePicker
   private int mMaxTimeMinute;
   private int mMinTimeHour;
   private int mMinTimeMinute;
-  private NumberPicker nlc;
-  private NumberPicker nld;
+  private NumberPicker nqm;
+  private NumberPicker nqn;
   
   public CustomTimePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,21 +47,21 @@ public class CustomTimePicker
     AppMethodBeat.o(159510);
   }
   
-  private NumberPicker Vv(String paramString)
+  private NumberPicker Wh(String paramString)
   {
     AppMethodBeat.i(159517);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramString = Vx(paramString);
+      paramString = Wj(paramString);
       AppMethodBeat.o(159517);
       return paramString;
     }
-    paramString = Vw(paramString);
+    paramString = Wi(paramString);
     AppMethodBeat.o(159517);
     return paramString;
   }
   
-  private NumberPicker Vw(String paramString)
+  private NumberPicker Wi(String paramString)
   {
     AppMethodBeat.i(159518);
     try
@@ -77,7 +77,7 @@ public class CustomTimePicker
     return null;
   }
   
-  private NumberPicker Vx(String paramString)
+  private NumberPicker Wj(String paramString)
   {
     AppMethodBeat.i(159519);
     try
@@ -105,12 +105,12 @@ public class CustomTimePicker
     }
   }
   
-  private void fMJ()
+  private void fRd()
   {
     AppMethodBeat.i(159520);
     Drawable localDrawable = getResources().getDrawable(2131233617);
-    f.a(this.nlc, localDrawable);
-    f.a(this.nld, localDrawable);
+    f.a(this.nqm, localDrawable);
+    f.a(this.nqn, localDrawable);
     AppMethodBeat.o(159520);
   }
   
@@ -118,13 +118,13 @@ public class CustomTimePicker
   {
     AppMethodBeat.i(159511);
     setIs24HourView(Boolean.TRUE);
-    this.nlc = Vv("mHourSpinner");
-    this.nld = Vv("mMinuteSpinner");
-    f.d(this.nlc);
-    f.d(this.nld);
-    fMJ();
-    if (this.nlc != null) {
-      this.nlc.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    this.nqm = Wh("mHourSpinner");
+    this.nqn = Wh("mMinuteSpinner");
+    f.d(this.nqm);
+    f.d(this.nqn);
+    fRd();
+    if (this.nqm != null) {
+      this.nqm.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -134,14 +134,14 @@ public class CustomTimePicker
         }
       });
     }
-    if ((this.nld != null) && (Build.VERSION.SDK_INT >= 21)) {
-      this.nld.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    if ((this.nqn != null) && (Build.VERSION.SDK_INT >= 21)) {
+      this.nqn.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2) {}
       });
     }
-    f.f(this.nlc);
-    f.f(this.nld);
+    f.f(this.nqm);
+    f.f(this.nqn);
     AppMethodBeat.o(159511);
   }
   
@@ -149,8 +149,8 @@ public class CustomTimePicker
   {
     AppMethodBeat.i(159513);
     super.onAttachedToWindow();
-    f.e(this.nlc);
-    f.e(this.nld);
+    f.e(this.nqm);
+    f.e(this.nqn);
     AppMethodBeat.o(159513);
   }
 }

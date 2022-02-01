@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public final class a$a
 {
-  public int niC;
-  public int niD;
-  public String niE;
-  public ArrayList<a.b> niF;
+  public int nnK;
+  public int nnL;
+  public String nnM;
+  public ArrayList<a.b> nnN;
 }
 
 

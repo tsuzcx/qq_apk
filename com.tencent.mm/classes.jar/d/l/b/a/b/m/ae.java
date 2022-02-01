@@ -10,33 +10,33 @@ import d.l.b.a.b.m.a.i;
 public final class ae
   extends bi
 {
-  private final j MQa;
-  final a<ab> NAV;
-  private final f<ab> NCp;
+  final a<ab> NYc;
+  private final f<ab> NZw;
+  private final j Nnf;
   
   public ae(j paramj, a<? extends ab> parama)
   {
     AppMethodBeat.i(60778);
-    this.MQa = paramj;
-    this.NAV = parama;
-    this.NCp = this.MQa.S(this.NAV);
+    this.Nnf = paramj;
+    this.NYc = parama;
+    this.NZw = this.Nnf.S(this.NYc);
     AppMethodBeat.o(60778);
   }
   
-  public final boolean gtO()
-  {
-    AppMethodBeat.i(60776);
-    boolean bool = this.NCp.gtO();
-    AppMethodBeat.o(60776);
-    return bool;
-  }
-  
-  protected final ab gub()
+  protected final ab gyD()
   {
     AppMethodBeat.i(60775);
-    ab localab = (ab)this.NCp.invoke();
+    ab localab = (ab)this.NZw.invoke();
     AppMethodBeat.o(60775);
     return localab;
+  }
+  
+  public final boolean gyq()
+  {
+    AppMethodBeat.i(60776);
+    boolean bool = this.NZw.gyq();
+    AppMethodBeat.o(60776);
+    return bool;
   }
   
   static final class a
@@ -51,7 +51,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ae
  * JD-Core Version:    0.7.0.1
  */

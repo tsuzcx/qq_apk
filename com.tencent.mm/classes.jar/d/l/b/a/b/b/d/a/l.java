@@ -9,12 +9,12 @@ import java.lang.reflect.Method;
 
 final class l
 {
-  public static final l Naf;
+  public static final l Nxl;
   
   static
   {
     AppMethodBeat.i(57391);
-    Naf = new l();
+    Nxl = new l();
     AppMethodBeat.o(57391);
   }
   
@@ -80,7 +80,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.l
  * JD-Core Version:    0.7.0.1
  */

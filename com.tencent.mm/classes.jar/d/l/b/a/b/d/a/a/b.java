@@ -19,51 +19,56 @@ import java.util.Map;
 public class b
   implements c, i
 {
-  final d.l.b.a.b.f.b MVU;
-  private final an MVx;
-  private final d.l.b.a.b.l.f Ndc;
-  final d.l.b.a.b.d.a.e.b Ndd;
-  private final boolean Nde;
+  private final d.l.b.a.b.l.f NAh;
+  final d.l.b.a.b.d.a.e.b NAi;
+  private final boolean NAj;
+  private final an NsC;
+  final d.l.b.a.b.f.b Nta;
   
   static
   {
     AppMethodBeat.i(57654);
-    cwV = new k[] { (k)z.a(new x(z.bp(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
+    cxA = new k[] { (k)z.a(new x(z.bp(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
     AppMethodBeat.o(57654);
   }
   
   public b(final h paramh, d.l.b.a.b.d.a.e.a parama, d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57657);
-    this.MVU = paramb;
+    this.Nta = paramb;
     if (parama != null)
     {
-      paramb = (an)paramh.NeI.Nel.a((l)parama);
-      this.MVx = paramb;
-      this.Ndc = paramh.NeI.MQa.S((d.g.a.a)new a(this, paramh));
+      paramb = (an)paramh.NBN.NBq.a((l)parama);
+      this.NsC = paramb;
+      this.NAh = paramh.NBN.Nnf.S((d.g.a.a)new a(this, paramh));
       if (parama == null) {
         break label132;
       }
     }
     label132:
-    for (paramh = (d.l.b.a.b.d.a.e.b)d.a.j.d((Iterable)parama.gkz());; paramh = null)
+    for (paramh = (d.l.b.a.b.d.a.e.b)d.a.j.d((Iterable)parama.gpb());; paramh = null)
     {
-      this.Ndd = paramh;
-      this.Nde = false;
+      this.NAi = paramh;
+      this.NAj = false;
       AppMethodBeat.o(57657);
       return;
-      paramb = an.MUX;
+      paramb = an.Nsc;
       p.g(paramb, "SourceElement.NO_SOURCE");
       break;
     }
   }
   
-  public final an ghI()
+  public final an gmk()
   {
-    return this.MVx;
+    return this.NsC;
   }
   
-  public Map<d.l.b.a.b.f.f, g<?>> gjK()
+  public final d.l.b.a.b.f.b gnI()
+  {
+    return this.Nta;
+  }
+  
+  public Map<d.l.b.a.b.f.f, g<?>> gom()
   {
     AppMethodBeat.i(57656);
     Map localMap = ae.emptyMap();
@@ -71,14 +76,9 @@ public class b
     return localMap;
   }
   
-  public final d.l.b.a.b.f.b gjg()
+  public final boolean gqd()
   {
-    return this.MVU;
-  }
-  
-  public final boolean glB()
-  {
-    return this.Nde;
+    return this.NAj;
   }
   
   static final class a
@@ -93,7 +93,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.b
  * JD-Core Version:    0.7.0.1
  */

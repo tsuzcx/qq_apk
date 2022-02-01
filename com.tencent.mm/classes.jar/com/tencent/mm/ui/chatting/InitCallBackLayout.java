@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class InitCallBackLayout
   extends FrameLayout
 {
-  private ap JfV;
+  private aq JAG;
   private boolean hasDrawed;
   
   public InitCallBackLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,16 +24,16 @@ public class InitCallBackLayout
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.JfV != null) {
-        this.JfV.cWa();
+      if (this.JAG != null) {
+        this.JAG.cYF();
       }
     }
     AppMethodBeat.o(34834);
   }
   
-  public void setListener(ap paramap)
+  public void setListener(aq paramaq)
   {
-    this.JfV = paramap;
+    this.JAG = paramaq;
   }
 }
 

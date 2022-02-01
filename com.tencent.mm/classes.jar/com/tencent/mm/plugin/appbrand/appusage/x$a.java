@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.c;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cd;
-import com.tencent.mm.model.cd.a;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.model.cf.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.appbrand.utils.e;
-import com.tencent.mm.plugin.appbrand.z.m.a;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.appbrand.utils.f;
+import com.tencent.mm.plugin.appbrand.y.m.a;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class x$a
-  implements cd.a
+  implements cf.a
 {
-  private static final a jPy;
+  private static final a jSQ;
   
   static
   {
     AppMethodBeat.i(44605);
-    jPy = new a();
+    jSQ = new a();
     AppMethodBeat.o(44605);
   }
   
-  public static void Cx()
+  public static void CA()
   {
     AppMethodBeat.i(44601);
-    ((r)g.ad(r.class)).getSysCmdMsgExtension().a("UpdateWxaUsageListNotify", jPy, true);
+    ((s)g.ad(s.class)).getSysCmdMsgExtension().a("UpdateWxaUsageListNotify", jSQ, true);
     AppMethodBeat.o(44601);
   }
   
   public static void unregister()
   {
     AppMethodBeat.i(44602);
-    ((r)g.ad(r.class)).getSysCmdMsgExtension().b("UpdateWxaUsageListNotify", jPy, true);
+    ((s)g.ad(s.class)).getSysCmdMsgExtension().b("UpdateWxaUsageListNotify", jSQ, true);
     AppMethodBeat.o(44602);
   }
   
   public final void a(final e.a parama)
   {
     AppMethodBeat.i(44603);
-    parama = z.a(parama.gqE.Fvk);
-    if (bt.isNullOrNil(parama))
+    parama = z.a(parama.gte.FNI);
+    if (bu.isNullOrNil(parama))
     {
       AppMethodBeat.o(44603);
       return;
     }
-    e.bBp().postToWorker(new Runnable()
+    f.bCj().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(44600);
-        x.a.MH(parama);
+        x.a.No(parama);
         AppMethodBeat.o(44600);
       }
     });

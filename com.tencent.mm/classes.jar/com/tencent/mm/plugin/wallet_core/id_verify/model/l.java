@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,19 +12,19 @@ import org.json.JSONObject;
 public final class l
   extends m
 {
-  public int CPk;
-  public int CPl;
-  public String[] CRD;
-  public Profession[] CSW;
-  public int CSX;
+  public int DgO;
+  public int DgP;
+  public String[] Djh;
+  public Profession[] DkC;
+  public int DkD;
   
   public l()
   {
     AppMethodBeat.i(70156);
-    this.CSW = null;
-    this.CRD = null;
+    this.DkC = null;
+    this.Djh = null;
     HashMap localHashMap = new HashMap();
-    if (!bt.isNullOrNil(null)) {
+    if (!bu.isNullOrNil(null)) {
       localHashMap.put("scene", null);
     }
     setRequestData(localHashMap);
@@ -50,14 +50,14 @@ public final class l
   {
     int i = 0;
     AppMethodBeat.i(70157);
-    ad.i("MicroMsg.NetSceneTenpayGetUserExInfo", "errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    ad.d("MicroMsg.NetSceneTenpayGetUserExInfo", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.CPk = paramJSONObject.optInt("need_area");
-    this.CPl = paramJSONObject.optInt("need_profession");
+    ae.i("MicroMsg.NetSceneTenpayGetUserExInfo", "errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ae.d("MicroMsg.NetSceneTenpayGetUserExInfo", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.DgO = paramJSONObject.optInt("need_area");
+    this.DgP = paramJSONObject.optInt("need_profession");
     paramString = paramJSONObject.optJSONArray("array");
     if (paramString != null)
     {
-      this.CSW = new Profession[paramString.length()];
+      this.DkC = new Profession[paramString.length()];
       paramInt = 0;
       if (paramInt < paramString.length())
       {
@@ -66,30 +66,30 @@ public final class l
         {
           String str = ((JSONObject)localObject).optString("profession_name");
           int j = ((JSONObject)localObject).optInt("profession_type");
-          if (bt.isNullOrNil(str)) {
+          if (bu.isNullOrNil(str)) {
             break label166;
           }
           localObject = new Profession(str, j);
-          this.CSW[paramInt] = localObject;
+          this.DkC[paramInt] = localObject;
         }
         for (;;)
         {
           paramInt += 1;
           break;
           label166:
-          ad.i("MicroMsg.NetSceneTenpayGetUserExInfo", "empty profession_name!");
+          ae.i("MicroMsg.NetSceneTenpayGetUserExInfo", "empty profession_name!");
         }
       }
     }
-    this.CSX = paramJSONObject.optInt("need_nationality");
+    this.DkD = paramJSONObject.optInt("need_nationality");
     paramString = paramJSONObject.optJSONArray("nationality_exclude_array");
     if (paramString != null)
     {
-      this.CRD = new String[paramString.length()];
+      this.Djh = new String[paramString.length()];
       paramInt = i;
       while (paramInt < paramString.length())
       {
-        this.CRD[paramInt] = paramString.optString(paramInt);
+        this.Djh[paramInt] = paramString.optString(paramInt);
         paramInt += 1;
       }
     }
@@ -98,7 +98,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.l
  * JD-Core Version:    0.7.0.1
  */

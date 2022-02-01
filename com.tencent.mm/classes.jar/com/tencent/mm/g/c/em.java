@@ -11,49 +11,49 @@ public abstract class em
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDo = "startTime".hashCode();
-  private static final int eEU;
-  private static final int eFq;
-  private static final int flH = "musicId".hashCode();
-  private static final int flI = "originMusicId".hashCode();
-  private static final int flJ = "musicType".hashCode();
-  private static final int flK = "downloadedLength".hashCode();
-  private static final int flL = "wifiDownloadedLength".hashCode();
-  private static final int flM = "endFlag".hashCode();
-  private static final int flN = "wifiEndFlag".hashCode();
-  private static final int flO;
-  private static final int flP;
-  private static final int flQ;
-  private static final int flR;
-  private static final int flS;
-  private static final int flT;
-  private static final int flU;
-  private static final int flV;
-  private static final int flW;
-  private static final int flX;
-  private static final int flY;
-  private static final int flZ;
-  private static final int fma;
-  private static final int fmb;
-  private static final int fmc;
-  private static final int fmd;
-  private static final int fme;
-  private static final int fmf;
-  private static final int fmg;
-  private static final int fmh;
-  private static final int fmi;
-  private static final int fmj;
-  private static final int fmk = "mimetype".hashCode();
-  private static final int fml = "protocol".hashCode();
-  private static final int fmm = "barBackToWebView".hashCode();
-  private static final int fmn = "musicbar_url".hashCode();
-  private static final int fmo = "srcUsername".hashCode();
-  private static final int fmp = "playbackRate".hashCode();
-  private static final int fmq = "songMId".hashCode();
+  private static final int eEX = "startTime".hashCode();
+  private static final int eGD;
+  private static final int eGZ;
+  private static final int fnH = "musicId".hashCode();
+  private static final int fnI = "originMusicId".hashCode();
+  private static final int fnJ = "musicType".hashCode();
+  private static final int fnK = "downloadedLength".hashCode();
+  private static final int fnL = "wifiDownloadedLength".hashCode();
+  private static final int fnM = "endFlag".hashCode();
+  private static final int fnN = "wifiEndFlag".hashCode();
+  private static final int fnO;
+  private static final int fnP;
+  private static final int fnQ;
+  private static final int fnR;
+  private static final int fnS;
+  private static final int fnT;
+  private static final int fnU;
+  private static final int fnV;
+  private static final int fnW;
+  private static final int fnX;
+  private static final int fnY;
+  private static final int fnZ;
+  private static final int foa;
+  private static final int fob;
+  private static final int foc;
+  private static final int fod;
+  private static final int foe;
+  private static final int fof;
+  private static final int fog;
+  private static final int foh;
+  private static final int foi;
+  private static final int foj;
+  private static final int fok = "mimetype".hashCode();
+  private static final int fol = "protocol".hashCode();
+  private static final int fom = "barBackToWebView".hashCode();
+  private static final int fon = "musicbar_url".hashCode();
+  private static final int foo = "srcUsername".hashCode();
+  private static final int fop = "playbackRate".hashCode();
+  private static final int foq = "songMId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDh = true;
-  private boolean eED = true;
-  private boolean eFn = true;
+  private boolean eEQ = true;
+  private boolean eGW = true;
+  private boolean eGm = true;
   public String field_appId;
   public boolean field_barBackToWebView;
   public long field_downloadedLength;
@@ -93,232 +93,232 @@ public abstract class em
   public long field_updateTime;
   public long field_wifiDownloadedLength;
   public int field_wifiEndFlag;
-  private boolean fkX = true;
-  private boolean fkY = true;
-  private boolean fkZ = true;
-  private boolean flA = true;
-  private boolean flB = true;
-  private boolean flC = true;
-  private boolean flD = true;
-  private boolean flE = true;
-  private boolean flF = true;
-  private boolean flG = true;
-  private boolean fla = true;
-  private boolean flb = true;
-  private boolean flc = true;
-  private boolean fld = true;
-  private boolean fle = true;
-  private boolean flf = true;
-  private boolean flg = true;
-  private boolean flh = true;
-  private boolean fli = true;
-  private boolean flj = true;
-  private boolean flk = true;
-  private boolean fll = true;
-  private boolean flm = true;
-  private boolean fln = true;
-  private boolean flo = true;
-  private boolean flp = true;
-  private boolean flq = true;
-  private boolean flr = true;
-  private boolean fls = true;
-  private boolean flt = true;
-  private boolean flu = true;
-  private boolean flv = true;
-  private boolean flw = true;
-  private boolean flx = true;
-  private boolean fly = true;
-  private boolean flz = true;
+  private boolean fmX = true;
+  private boolean fmY = true;
+  private boolean fmZ = true;
+  private boolean fnA = true;
+  private boolean fnB = true;
+  private boolean fnC = true;
+  private boolean fnD = true;
+  private boolean fnE = true;
+  private boolean fnF = true;
+  private boolean fnG = true;
+  private boolean fna = true;
+  private boolean fnb = true;
+  private boolean fnc = true;
+  private boolean fnd = true;
+  private boolean fne = true;
+  private boolean fnf = true;
+  private boolean fng = true;
+  private boolean fnh = true;
+  private boolean fni = true;
+  private boolean fnj = true;
+  private boolean fnk = true;
+  private boolean fnl = true;
+  private boolean fnm = true;
+  private boolean fnn = true;
+  private boolean fno = true;
+  private boolean fnp = true;
+  private boolean fnq = true;
+  private boolean fnr = true;
+  private boolean fns = true;
+  private boolean fnt = true;
+  private boolean fnu = true;
+  private boolean fnv = true;
+  private boolean fnw = true;
+  private boolean fnx = true;
+  private boolean fny = true;
+  private boolean fnz = true;
   
   static
   {
-    eFq = "updateTime".hashCode();
-    flO = "songId".hashCode();
-    flP = "songName".hashCode();
-    flQ = "songSinger".hashCode();
-    flR = "songAlbum".hashCode();
-    flS = "songAlbumType".hashCode();
-    flT = "songAlbumUrl".hashCode();
-    flU = "songHAlbumUrl".hashCode();
-    flV = "songAlbumLocalPath".hashCode();
-    flW = "songWifiUrl".hashCode();
-    flX = "songWapLinkUrl".hashCode();
-    flY = "songWebUrl".hashCode();
-    eEU = "appId".hashCode();
-    flZ = "songMediaId".hashCode();
-    fma = "songSnsAlbumUser".hashCode();
-    fmb = "songSnsShareUser".hashCode();
-    fmc = "songLyric".hashCode();
-    fmd = "songBgColor".hashCode();
-    fme = "songLyricColor".hashCode();
-    fmf = "songFileLength".hashCode();
-    fmg = "songWifiFileLength".hashCode();
-    fmh = "hideBanner".hashCode();
-    fmi = "jsWebUrlDomain".hashCode();
-    fmj = "isBlock".hashCode();
+    eGZ = "updateTime".hashCode();
+    fnO = "songId".hashCode();
+    fnP = "songName".hashCode();
+    fnQ = "songSinger".hashCode();
+    fnR = "songAlbum".hashCode();
+    fnS = "songAlbumType".hashCode();
+    fnT = "songAlbumUrl".hashCode();
+    fnU = "songHAlbumUrl".hashCode();
+    fnV = "songAlbumLocalPath".hashCode();
+    fnW = "songWifiUrl".hashCode();
+    fnX = "songWapLinkUrl".hashCode();
+    fnY = "songWebUrl".hashCode();
+    eGD = "appId".hashCode();
+    fnZ = "songMediaId".hashCode();
+    foa = "songSnsAlbumUser".hashCode();
+    fob = "songSnsShareUser".hashCode();
+    foc = "songLyric".hashCode();
+    fod = "songBgColor".hashCode();
+    foe = "songLyricColor".hashCode();
+    fof = "songFileLength".hashCode();
+    fog = "songWifiFileLength".hashCode();
+    foh = "hideBanner".hashCode();
+    foi = "jsWebUrlDomain".hashCode();
+    foj = "isBlock".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[39];
+    locala.IBL = new Field[39];
     locala.columns = new String[40];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "musicId";
-    locala.IhC.put("musicId", "TEXT PRIMARY KEY ");
+    locala.IBN.put("musicId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "musicId";
+    locala.IBM = "musicId";
     locala.columns[1] = "originMusicId";
-    locala.IhC.put("originMusicId", "TEXT");
+    locala.IBN.put("originMusicId", "TEXT");
     localStringBuilder.append(" originMusicId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "musicType";
-    locala.IhC.put("musicType", "INTEGER");
+    locala.IBN.put("musicType", "INTEGER");
     localStringBuilder.append(" musicType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "downloadedLength";
-    locala.IhC.put("downloadedLength", "LONG");
+    locala.IBN.put("downloadedLength", "LONG");
     localStringBuilder.append(" downloadedLength LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "wifiDownloadedLength";
-    locala.IhC.put("wifiDownloadedLength", "LONG");
+    locala.IBN.put("wifiDownloadedLength", "LONG");
     localStringBuilder.append(" wifiDownloadedLength LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "endFlag";
-    locala.IhC.put("endFlag", "INTEGER");
+    locala.IBN.put("endFlag", "INTEGER");
     localStringBuilder.append(" endFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "wifiEndFlag";
-    locala.IhC.put("wifiEndFlag", "INTEGER");
+    locala.IBN.put("wifiEndFlag", "INTEGER");
     localStringBuilder.append(" wifiEndFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "updateTime";
-    locala.IhC.put("updateTime", "LONG");
+    locala.IBN.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "songId";
-    locala.IhC.put("songId", "INTEGER");
+    locala.IBN.put("songId", "INTEGER");
     localStringBuilder.append(" songId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "songName";
-    locala.IhC.put("songName", "TEXT");
+    locala.IBN.put("songName", "TEXT");
     localStringBuilder.append(" songName TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "songSinger";
-    locala.IhC.put("songSinger", "TEXT");
+    locala.IBN.put("songSinger", "TEXT");
     localStringBuilder.append(" songSinger TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "songAlbum";
-    locala.IhC.put("songAlbum", "TEXT");
+    locala.IBN.put("songAlbum", "TEXT");
     localStringBuilder.append(" songAlbum TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "songAlbumType";
-    locala.IhC.put("songAlbumType", "INTEGER");
+    locala.IBN.put("songAlbumType", "INTEGER");
     localStringBuilder.append(" songAlbumType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[13] = "songAlbumUrl";
-    locala.IhC.put("songAlbumUrl", "TEXT");
+    locala.IBN.put("songAlbumUrl", "TEXT");
     localStringBuilder.append(" songAlbumUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "songHAlbumUrl";
-    locala.IhC.put("songHAlbumUrl", "TEXT");
+    locala.IBN.put("songHAlbumUrl", "TEXT");
     localStringBuilder.append(" songHAlbumUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "songAlbumLocalPath";
-    locala.IhC.put("songAlbumLocalPath", "TEXT");
+    locala.IBN.put("songAlbumLocalPath", "TEXT");
     localStringBuilder.append(" songAlbumLocalPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "songWifiUrl";
-    locala.IhC.put("songWifiUrl", "TEXT");
+    locala.IBN.put("songWifiUrl", "TEXT");
     localStringBuilder.append(" songWifiUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "songWapLinkUrl";
-    locala.IhC.put("songWapLinkUrl", "TEXT");
+    locala.IBN.put("songWapLinkUrl", "TEXT");
     localStringBuilder.append(" songWapLinkUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[18] = "songWebUrl";
-    locala.IhC.put("songWebUrl", "TEXT");
+    locala.IBN.put("songWebUrl", "TEXT");
     localStringBuilder.append(" songWebUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[19] = "appId";
-    locala.IhC.put("appId", "TEXT");
+    locala.IBN.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[20] = "songMediaId";
-    locala.IhC.put("songMediaId", "TEXT");
+    locala.IBN.put("songMediaId", "TEXT");
     localStringBuilder.append(" songMediaId TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "songSnsAlbumUser";
-    locala.IhC.put("songSnsAlbumUser", "TEXT");
+    locala.IBN.put("songSnsAlbumUser", "TEXT");
     localStringBuilder.append(" songSnsAlbumUser TEXT");
     localStringBuilder.append(", ");
     locala.columns[22] = "songSnsShareUser";
-    locala.IhC.put("songSnsShareUser", "TEXT");
+    locala.IBN.put("songSnsShareUser", "TEXT");
     localStringBuilder.append(" songSnsShareUser TEXT");
     localStringBuilder.append(", ");
     locala.columns[23] = "songLyric";
-    locala.IhC.put("songLyric", "TEXT");
+    locala.IBN.put("songLyric", "TEXT");
     localStringBuilder.append(" songLyric TEXT");
     localStringBuilder.append(", ");
     locala.columns[24] = "songBgColor";
-    locala.IhC.put("songBgColor", "INTEGER");
+    locala.IBN.put("songBgColor", "INTEGER");
     localStringBuilder.append(" songBgColor INTEGER");
     localStringBuilder.append(", ");
     locala.columns[25] = "songLyricColor";
-    locala.IhC.put("songLyricColor", "INTEGER");
+    locala.IBN.put("songLyricColor", "INTEGER");
     localStringBuilder.append(" songLyricColor INTEGER");
     localStringBuilder.append(", ");
     locala.columns[26] = "songFileLength";
-    locala.IhC.put("songFileLength", "LONG");
+    locala.IBN.put("songFileLength", "LONG");
     localStringBuilder.append(" songFileLength LONG");
     localStringBuilder.append(", ");
     locala.columns[27] = "songWifiFileLength";
-    locala.IhC.put("songWifiFileLength", "LONG");
+    locala.IBN.put("songWifiFileLength", "LONG");
     localStringBuilder.append(" songWifiFileLength LONG");
     localStringBuilder.append(", ");
     locala.columns[28] = "hideBanner";
-    locala.IhC.put("hideBanner", "INTEGER");
+    locala.IBN.put("hideBanner", "INTEGER");
     localStringBuilder.append(" hideBanner INTEGER");
     localStringBuilder.append(", ");
     locala.columns[29] = "jsWebUrlDomain";
-    locala.IhC.put("jsWebUrlDomain", "TEXT");
+    locala.IBN.put("jsWebUrlDomain", "TEXT");
     localStringBuilder.append(" jsWebUrlDomain TEXT");
     localStringBuilder.append(", ");
     locala.columns[30] = "isBlock";
-    locala.IhC.put("isBlock", "INTEGER");
+    locala.IBN.put("isBlock", "INTEGER");
     localStringBuilder.append(" isBlock INTEGER");
     localStringBuilder.append(", ");
     locala.columns[31] = "startTime";
-    locala.IhC.put("startTime", "INTEGER");
+    locala.IBN.put("startTime", "INTEGER");
     localStringBuilder.append(" startTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[32] = "mimetype";
-    locala.IhC.put("mimetype", "TEXT");
+    locala.IBN.put("mimetype", "TEXT");
     localStringBuilder.append(" mimetype TEXT");
     localStringBuilder.append(", ");
     locala.columns[33] = "protocol";
-    locala.IhC.put("protocol", "TEXT");
+    locala.IBN.put("protocol", "TEXT");
     localStringBuilder.append(" protocol TEXT");
     localStringBuilder.append(", ");
     locala.columns[34] = "barBackToWebView";
-    locala.IhC.put("barBackToWebView", "INTEGER");
+    locala.IBN.put("barBackToWebView", "INTEGER");
     localStringBuilder.append(" barBackToWebView INTEGER");
     localStringBuilder.append(", ");
     locala.columns[35] = "musicbar_url";
-    locala.IhC.put("musicbar_url", "TEXT");
+    locala.IBN.put("musicbar_url", "TEXT");
     localStringBuilder.append(" musicbar_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[36] = "srcUsername";
-    locala.IhC.put("srcUsername", "TEXT");
+    locala.IBN.put("srcUsername", "TEXT");
     localStringBuilder.append(" srcUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[37] = "playbackRate";
-    locala.IhC.put("playbackRate", "DOUBLE");
+    locala.IBN.put("playbackRate", "DOUBLE");
     localStringBuilder.append(" playbackRate DOUBLE");
     localStringBuilder.append(", ");
     locala.columns[38] = "songMId";
-    locala.IhC.put("songMId", "TEXT");
+    locala.IBN.put("songMId", "TEXT");
     localStringBuilder.append(" songMId TEXT");
     locala.columns[39] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -338,11 +338,11 @@ public abstract class em
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (flH != k) {
+      if (fnH != k) {
         break label65;
       }
       this.field_musicId = paramCursor.getString(i);
-      this.fkX = true;
+      this.fmX = true;
     }
     for (;;)
     {
@@ -350,118 +350,118 @@ public abstract class em
       break label20;
       break;
       label65:
-      if (flI == k)
+      if (fnI == k)
       {
         this.field_originMusicId = paramCursor.getString(i);
       }
-      else if (flJ == k)
+      else if (fnJ == k)
       {
         this.field_musicType = paramCursor.getInt(i);
       }
-      else if (flK == k)
+      else if (fnK == k)
       {
         this.field_downloadedLength = paramCursor.getLong(i);
       }
-      else if (flL == k)
+      else if (fnL == k)
       {
         this.field_wifiDownloadedLength = paramCursor.getLong(i);
       }
-      else if (flM == k)
+      else if (fnM == k)
       {
         this.field_endFlag = paramCursor.getInt(i);
       }
-      else if (flN == k)
+      else if (fnN == k)
       {
         this.field_wifiEndFlag = paramCursor.getInt(i);
       }
-      else if (eFq == k)
+      else if (eGZ == k)
       {
         this.field_updateTime = paramCursor.getLong(i);
       }
-      else if (flO == k)
+      else if (fnO == k)
       {
         this.field_songId = paramCursor.getInt(i);
       }
-      else if (flP == k)
+      else if (fnP == k)
       {
         this.field_songName = paramCursor.getString(i);
       }
-      else if (flQ == k)
+      else if (fnQ == k)
       {
         this.field_songSinger = paramCursor.getString(i);
       }
-      else if (flR == k)
+      else if (fnR == k)
       {
         this.field_songAlbum = paramCursor.getString(i);
       }
-      else if (flS == k)
+      else if (fnS == k)
       {
         this.field_songAlbumType = paramCursor.getInt(i);
       }
-      else if (flT == k)
+      else if (fnT == k)
       {
         this.field_songAlbumUrl = paramCursor.getString(i);
       }
-      else if (flU == k)
+      else if (fnU == k)
       {
         this.field_songHAlbumUrl = paramCursor.getString(i);
       }
-      else if (flV == k)
+      else if (fnV == k)
       {
         this.field_songAlbumLocalPath = paramCursor.getString(i);
       }
-      else if (flW == k)
+      else if (fnW == k)
       {
         this.field_songWifiUrl = paramCursor.getString(i);
       }
-      else if (flX == k)
+      else if (fnX == k)
       {
         this.field_songWapLinkUrl = paramCursor.getString(i);
       }
-      else if (flY == k)
+      else if (fnY == k)
       {
         this.field_songWebUrl = paramCursor.getString(i);
       }
-      else if (eEU == k)
+      else if (eGD == k)
       {
         this.field_appId = paramCursor.getString(i);
       }
-      else if (flZ == k)
+      else if (fnZ == k)
       {
         this.field_songMediaId = paramCursor.getString(i);
       }
-      else if (fma == k)
+      else if (foa == k)
       {
         this.field_songSnsAlbumUser = paramCursor.getString(i);
       }
-      else if (fmb == k)
+      else if (fob == k)
       {
         this.field_songSnsShareUser = paramCursor.getString(i);
       }
-      else if (fmc == k)
+      else if (foc == k)
       {
         this.field_songLyric = paramCursor.getString(i);
       }
-      else if (fmd == k)
+      else if (fod == k)
       {
         this.field_songBgColor = paramCursor.getInt(i);
       }
-      else if (fme == k)
+      else if (foe == k)
       {
         this.field_songLyricColor = paramCursor.getInt(i);
       }
-      else if (fmf == k)
+      else if (fof == k)
       {
         this.field_songFileLength = paramCursor.getLong(i);
       }
-      else if (fmg == k)
+      else if (fog == k)
       {
         this.field_songWifiFileLength = paramCursor.getLong(i);
       }
       else
       {
         boolean bool;
-        if (fmh == k)
+        if (foh == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -470,29 +470,29 @@ public abstract class em
             break;
           }
         }
-        if (fmi == k)
+        if (foi == k)
         {
           this.field_jsWebUrlDomain = paramCursor.getString(i);
         }
-        else if (fmj == k)
+        else if (foj == k)
         {
           this.field_isBlock = paramCursor.getInt(i);
         }
-        else if (eDo == k)
+        else if (eEX == k)
         {
           this.field_startTime = paramCursor.getInt(i);
         }
-        else if (fmk == k)
+        else if (fok == k)
         {
           this.field_mimetype = paramCursor.getString(i);
         }
-        else if (fml == k)
+        else if (fol == k)
         {
           this.field_protocol = paramCursor.getString(i);
         }
         else
         {
-          if (fmm == k)
+          if (fom == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -501,13 +501,13 @@ public abstract class em
               break;
             }
           }
-          if (fmn == k) {
+          if (fon == k) {
             this.field_musicbar_url = paramCursor.getString(i);
-          } else if (fmo == k) {
+          } else if (foo == k) {
             this.field_srcUsername = paramCursor.getString(i);
-          } else if (fmp == k) {
+          } else if (fop == k) {
             this.field_playbackRate = paramCursor.getDouble(i);
-          } else if (fmq == k) {
+          } else if (foq == k) {
             this.field_songMId = paramCursor.getString(i);
           } else if (rowid_HASHCODE == k) {
             this.systemRowid = paramCursor.getLong(i);
@@ -520,121 +520,121 @@ public abstract class em
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fkX) {
+    if (this.fmX) {
       localContentValues.put("musicId", this.field_musicId);
     }
-    if (this.fkY) {
+    if (this.fmY) {
       localContentValues.put("originMusicId", this.field_originMusicId);
     }
-    if (this.fkZ) {
+    if (this.fmZ) {
       localContentValues.put("musicType", Integer.valueOf(this.field_musicType));
     }
-    if (this.fla) {
+    if (this.fna) {
       localContentValues.put("downloadedLength", Long.valueOf(this.field_downloadedLength));
     }
-    if (this.flb) {
+    if (this.fnb) {
       localContentValues.put("wifiDownloadedLength", Long.valueOf(this.field_wifiDownloadedLength));
     }
-    if (this.flc) {
+    if (this.fnc) {
       localContentValues.put("endFlag", Integer.valueOf(this.field_endFlag));
     }
-    if (this.fld) {
+    if (this.fnd) {
       localContentValues.put("wifiEndFlag", Integer.valueOf(this.field_wifiEndFlag));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.fle) {
+    if (this.fne) {
       localContentValues.put("songId", Integer.valueOf(this.field_songId));
     }
-    if (this.flf) {
+    if (this.fnf) {
       localContentValues.put("songName", this.field_songName);
     }
-    if (this.flg) {
+    if (this.fng) {
       localContentValues.put("songSinger", this.field_songSinger);
     }
-    if (this.flh) {
+    if (this.fnh) {
       localContentValues.put("songAlbum", this.field_songAlbum);
     }
-    if (this.fli) {
+    if (this.fni) {
       localContentValues.put("songAlbumType", Integer.valueOf(this.field_songAlbumType));
     }
-    if (this.flj) {
+    if (this.fnj) {
       localContentValues.put("songAlbumUrl", this.field_songAlbumUrl);
     }
-    if (this.flk) {
+    if (this.fnk) {
       localContentValues.put("songHAlbumUrl", this.field_songHAlbumUrl);
     }
-    if (this.fll) {
+    if (this.fnl) {
       localContentValues.put("songAlbumLocalPath", this.field_songAlbumLocalPath);
     }
-    if (this.flm) {
+    if (this.fnm) {
       localContentValues.put("songWifiUrl", this.field_songWifiUrl);
     }
-    if (this.fln) {
+    if (this.fnn) {
       localContentValues.put("songWapLinkUrl", this.field_songWapLinkUrl);
     }
-    if (this.flo) {
+    if (this.fno) {
       localContentValues.put("songWebUrl", this.field_songWebUrl);
     }
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.flp) {
+    if (this.fnp) {
       localContentValues.put("songMediaId", this.field_songMediaId);
     }
-    if (this.flq) {
+    if (this.fnq) {
       localContentValues.put("songSnsAlbumUser", this.field_songSnsAlbumUser);
     }
-    if (this.flr) {
+    if (this.fnr) {
       localContentValues.put("songSnsShareUser", this.field_songSnsShareUser);
     }
-    if (this.fls) {
+    if (this.fns) {
       localContentValues.put("songLyric", this.field_songLyric);
     }
-    if (this.flt) {
+    if (this.fnt) {
       localContentValues.put("songBgColor", Integer.valueOf(this.field_songBgColor));
     }
-    if (this.flu) {
+    if (this.fnu) {
       localContentValues.put("songLyricColor", Integer.valueOf(this.field_songLyricColor));
     }
-    if (this.flv) {
+    if (this.fnv) {
       localContentValues.put("songFileLength", Long.valueOf(this.field_songFileLength));
     }
-    if (this.flw) {
+    if (this.fnw) {
       localContentValues.put("songWifiFileLength", Long.valueOf(this.field_songWifiFileLength));
     }
-    if (this.flx) {
+    if (this.fnx) {
       localContentValues.put("hideBanner", Boolean.valueOf(this.field_hideBanner));
     }
-    if (this.fly) {
+    if (this.fny) {
       localContentValues.put("jsWebUrlDomain", this.field_jsWebUrlDomain);
     }
-    if (this.flz) {
+    if (this.fnz) {
       localContentValues.put("isBlock", Integer.valueOf(this.field_isBlock));
     }
-    if (this.eDh) {
+    if (this.eEQ) {
       localContentValues.put("startTime", Integer.valueOf(this.field_startTime));
     }
-    if (this.flA) {
+    if (this.fnA) {
       localContentValues.put("mimetype", this.field_mimetype);
     }
-    if (this.flB) {
+    if (this.fnB) {
       localContentValues.put("protocol", this.field_protocol);
     }
-    if (this.flC) {
+    if (this.fnC) {
       localContentValues.put("barBackToWebView", Boolean.valueOf(this.field_barBackToWebView));
     }
-    if (this.flD) {
+    if (this.fnD) {
       localContentValues.put("musicbar_url", this.field_musicbar_url);
     }
-    if (this.flE) {
+    if (this.fnE) {
       localContentValues.put("srcUsername", this.field_srcUsername);
     }
-    if (this.flF) {
+    if (this.fnF) {
       localContentValues.put("playbackRate", Double.valueOf(this.field_playbackRate));
     }
-    if (this.flG) {
+    if (this.fnG) {
       localContentValues.put("songMId", this.field_songMId);
     }
     if (this.systemRowid > 0L) {
@@ -645,7 +645,7 @@ public abstract class em
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.em
  * JD-Core Version:    0.7.0.1
  */

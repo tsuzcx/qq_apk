@@ -3,22 +3,22 @@ package com.tencent.matrix.resource.analyzer.model;
 import com.e.a.b.h;
 import com.e.a.b.l;
 import com.tencent.matrix.resource.analyzer.a.a;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.File;
 
 public final class g
 {
-  private final e cGP;
+  private final k cHy;
   public final l ceo;
   
-  public g(e parame)
+  public g(k paramk)
   {
-    this.cGP = ((e)com.tencent.matrix.resource.analyzer.a.b.checkNotNull(parame, "hprofFile"));
-    parame = new h(new com.e.a.b.a.b(new File(i.k(q.B(parame.mUri), true)), (byte)0)).Bn();
-    a.a(parame);
-    this.ceo = parame;
+    this.cHy = ((k)com.tencent.matrix.resource.analyzer.a.b.checkNotNull(paramk, "hprofFile"));
+    paramk = new h(new com.e.a.b.a.b(new File(o.k(w.B(paramk.mUri), true)), (byte)0)).Bo();
+    a.a(paramk);
+    this.ceo = paramk;
   }
 }
 

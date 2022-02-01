@@ -8,9 +8,9 @@ public abstract interface s
 {
   public static final String[] SQL_CREATE = { j.getCreateSQLs(e.info, "FavConfigInfo") };
   
-  public abstract void bo(byte[] paramArrayOfByte);
+  public abstract void bn(byte[] paramArrayOfByte);
   
-  public abstract byte[] cvi();
+  public abstract byte[] cwJ();
 }
 
 

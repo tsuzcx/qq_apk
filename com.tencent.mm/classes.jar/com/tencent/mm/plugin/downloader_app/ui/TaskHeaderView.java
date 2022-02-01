@@ -12,9 +12,9 @@ import com.tencent.mm.plugin.downloader_app.a.i;
 public class TaskHeaderView
   extends LinearLayout
 {
-  private TextView pqG;
-  private TextView pqH;
-  private View pqI;
+  private TextView pxm;
+  private TextView pxn;
+  private View pxo;
   
   public TaskHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,41 +26,41 @@ public class TaskHeaderView
     AppMethodBeat.i(9023);
     if (parami.type == 1)
     {
-      this.pqG.setText(getResources().getString(2131758122));
-      this.pqH.setVisibility(8);
+      this.pxm.setText(getResources().getString(2131758122));
+      this.pxn.setVisibility(8);
       if (!paramBoolean) {
         break label194;
       }
-      this.pqI.setVisibility(0);
+      this.pxo.setVisibility(0);
     }
     for (;;)
     {
-      if (!parami.oxZ) {
+      if (!parami.oEB) {
         break label206;
       }
-      this.pqG.setTextColor(getContext().getResources().getColor(2131100250));
-      this.pqH.setVisibility(8);
+      this.pxm.setTextColor(getContext().getResources().getColor(2131100250));
+      this.pxn.setVisibility(8);
       AppMethodBeat.o(9023);
       return;
       if (parami.type == 3)
       {
-        this.pqG.setText(getResources().getString(2131764586));
-        this.pqH.setText(getResources().getString(2131764585, new Object[] { Integer.valueOf(parami.ppk) }));
-        this.pqH.setVisibility(0);
+        this.pxm.setText(getResources().getString(2131764586));
+        this.pxn.setText(getResources().getString(2131764585, new Object[] { Integer.valueOf(parami.pvQ) }));
+        this.pxn.setVisibility(0);
         break;
       }
       if (parami.type != 5) {
         break;
       }
-      this.pqG.setText(getResources().getString(2131758109));
-      this.pqH.setVisibility(8);
+      this.pxm.setText(getResources().getString(2131758109));
+      this.pxn.setVisibility(8);
       break;
       label194:
-      this.pqI.setVisibility(8);
+      this.pxo.setVisibility(8);
     }
     label206:
-    this.pqG.setTextColor(getContext().getResources().getColor(2131100523));
-    this.pqH.setVisibility(0);
+    this.pxm.setTextColor(getContext().getResources().getColor(2131100523));
+    this.pxn.setVisibility(0);
     AppMethodBeat.o(9023);
   }
   
@@ -68,9 +68,9 @@ public class TaskHeaderView
   {
     AppMethodBeat.i(9022);
     super.onFinishInflate();
-    this.pqI = findViewById(2131299153);
-    this.pqG = ((TextView)findViewById(2131301392));
-    this.pqH = ((TextView)findViewById(2131304200));
+    this.pxo = findViewById(2131299153);
+    this.pxm = ((TextView)findViewById(2131301392));
+    this.pxn = ((TextView)findViewById(2131304200));
     AppMethodBeat.o(9022);
   }
 }

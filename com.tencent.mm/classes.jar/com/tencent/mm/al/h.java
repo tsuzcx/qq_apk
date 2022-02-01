@@ -1,53 +1,97 @@
 package com.tencent.mm.al;
 
-public abstract interface h
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.al;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
+import java.lang.reflect.Field;
+import java.util.Map;
+
+public final class h
+  extends al
 {
-  public abstract boolean OI();
+  protected static c.a info;
   
-  public abstract boolean PD();
-  
-  public abstract double PF();
-  
-  public abstract void a(h.a parama);
-  
-  public abstract void a(h.b paramb);
-  
-  public abstract void a(c paramc);
-  
-  public abstract void a(d paramd);
-  
-  public abstract boolean a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt);
-  
-  public abstract void cm(boolean paramBoolean);
-  
-  public abstract void cq(boolean paramBoolean);
-  
-  public abstract void cr(boolean paramBoolean);
-  
-  public abstract void ct(boolean paramBoolean);
-  
-  public abstract boolean isPlaying();
-  
-  public abstract boolean pause();
-  
-  public abstract boolean resume();
-  
-  public abstract void stop();
-  
-  public abstract void stop(boolean paramBoolean);
-  
-  public abstract void unInit();
-  
-  public static abstract interface c
+  static
   {
-    public abstract void eC(boolean paramBoolean);
+    AppMethodBeat.i(124069);
+    c.a locala = new c.a();
+    locala.IBL = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "openId";
+    locala.IBN.put("openId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "openId";
+    locala.columns[1] = "brandUsername";
+    locala.IBN.put("brandUsername", "TEXT default '' ");
+    localStringBuilder.append(" brandUsername TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "headImgUrl";
+    locala.IBN.put("headImgUrl", "TEXT");
+    localStringBuilder.append(" headImgUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "nickname";
+    locala.IBN.put("nickname", "TEXT");
+    localStringBuilder.append(" nickname TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "kfType";
+    locala.IBN.put("kfType", "INTEGER");
+    localStringBuilder.append(" kfType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "updateTime";
+    locala.IBN.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(124069);
   }
   
-  public static abstract interface d
+  public h() {}
+  
+  public h(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, long paramLong)
   {
-    public abstract void onStop();
+    this.field_openId = paramString1;
+    this.field_brandUsername = paramString2;
+    this.field_headImgUrl = paramString3;
+    this.field_nickname = paramString4;
+    this.field_kfType = paramInt;
+    this.field_updateTime = paramLong;
+  }
+  
+  public static boolean H(bv parambv)
+  {
+    AppMethodBeat.i(176137);
+    if ((parambv == null) || (bu.isNullOrNil(parambv.field_talker)))
+    {
+      AppMethodBeat.o(176137);
+      return false;
+    }
+    if (parambv.fmB == 2)
+    {
+      AppMethodBeat.o(176137);
+      return true;
+    }
+    if ((!bu.isNullOrNil(parambv.fmv)) && (g.En(parambv.field_talker)))
+    {
+      parambv = ag.aGo().Ey(parambv.fmv);
+      if ((parambv != null) && (parambv.field_kfType == 2))
+      {
+        AppMethodBeat.o(176137);
+        return true;
+      }
+    }
+    AppMethodBeat.o(176137);
+    return false;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 

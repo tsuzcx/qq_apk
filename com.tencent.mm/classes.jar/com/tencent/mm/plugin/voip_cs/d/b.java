@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.voip_cs.d;
 
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
 
 public final class b
 {
-  public int[] Cjq;
-  public int Cjr;
-  public int Cjs;
+  public int[] CAU;
+  public int CAV;
+  public int CAW;
   public TextView Wf;
-  public av cjg;
+  public aw cji;
   
   public b()
   {
     AppMethodBeat.i(125489);
-    this.cjg = new av(new av.a()
+    this.cji = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(125488);
-        int i = b.this.Cjq[(b.this.Cjs % b.this.Cjq.length)];
+        int i = b.this.CAU[(b.this.CAW % b.this.CAU.length)];
         if (b.this.Wf != null)
         {
           if (-1 != i) {
@@ -33,7 +33,7 @@ public final class b
         for (;;)
         {
           b localb = b.this;
-          localb.Cjs += 1;
+          localb.CAW += 1;
           AppMethodBeat.o(125488);
           return true;
           label78:
@@ -44,20 +44,20 @@ public final class b
     AppMethodBeat.o(125489);
   }
   
-  public final void eyY()
+  public final void eCG()
   {
     AppMethodBeat.i(125490);
-    if (this.cjg != null) {
-      this.cjg.stopTimer();
+    if (this.cji != null) {
+      this.cji.stopTimer();
     }
-    ad.l("MicroMsg.DynamicTextWrap", "stop textview: " + this.Wf, new Object[0]);
+    ae.l("MicroMsg.DynamicTextWrap", "stop textview: " + this.Wf, new Object[0]);
     this.Wf = null;
     AppMethodBeat.o(125490);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.d.b
  * JD-Core Version:    0.7.0.1
  */

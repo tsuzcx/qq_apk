@@ -1,67 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dua
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public int errCode;
-  public String errMsg;
+  public String HZE;
+  public String HZF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147780);
+    AppMethodBeat.i(130923);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.errCode);
-      if (this.errMsg != null) {
-        paramVarArgs.d(2, this.errMsg);
-      }
-      AppMethodBeat.o(147780);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.errCode) + 0;
-      paramInt = i;
-      if (this.errMsg != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.errMsg);
-      }
-      AppMethodBeat.o(147780);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
-      }
-      AppMethodBeat.o(147780);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dua localdua = (dua)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(147780);
-        return -1;
-      case 1: 
-        localdua.errCode = locala.NPN.zc();
-        AppMethodBeat.o(147780);
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.HZE != null) {
+        paramVarArgs.d(2, this.HZE);
+      }
+      if (this.HZF != null) {
+        paramVarArgs.d(3, this.HZF);
+      }
+      AppMethodBeat.o(130923);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label430;
+      }
+    }
+    label430:
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.HZE != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.HZE);
+      }
+      i = paramInt;
+      if (this.HZF != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.HZF);
+      }
+      AppMethodBeat.o(130923);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(130923);
         return 0;
       }
-      localdua.errMsg = locala.NPN.readString();
-      AppMethodBeat.o(147780);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        dua localdua = (dua)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(130923);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdua.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(130923);
+          return 0;
+        case 2: 
+          localdua.HZE = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(130923);
+          return 0;
+        }
+        localdua.HZF = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(130923);
+        return 0;
+      }
+      AppMethodBeat.o(130923);
+      return -1;
     }
-    AppMethodBeat.o(147780);
-    return -1;
   }
 }
 

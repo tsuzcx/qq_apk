@@ -13,12 +13,12 @@ public abstract interface c
   public static final class a
     implements c
   {
-    public static final a MXc;
+    public static final a Nui;
     
     static
     {
       AppMethodBeat.i(56988);
-      MXc = new a();
+      Nui = new a();
       AppMethodBeat.o(56988);
     }
     
@@ -35,12 +35,12 @@ public abstract interface c
   public static final class b
     implements c
   {
-    public static final b MXd;
+    public static final b Nuj;
     
     static
     {
       AppMethodBeat.i(56990);
-      MXd = new b();
+      Nuj = new b();
       AppMethodBeat.o(56990);
     }
     
@@ -49,7 +49,7 @@ public abstract interface c
       AppMethodBeat.i(56989);
       p.h(parame, "classDescriptor");
       p.h(paramam, "functionDescriptor");
-      if (!paramam.ghH().h(d.gjM()))
+      if (!paramam.gmj().h(d.goo()))
       {
         AppMethodBeat.o(56989);
         return true;
@@ -61,7 +61,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.b.c
  * JD-Core Version:    0.7.0.1
  */

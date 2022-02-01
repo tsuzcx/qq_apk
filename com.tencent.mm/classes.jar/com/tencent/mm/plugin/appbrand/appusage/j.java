@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.x.c;
-import com.tencent.mm.plugin.appbrand.z.m;
-import com.tencent.mm.plugin.appbrand.z.m.a;
+import com.tencent.mm.plugin.appbrand.y.m;
+import com.tencent.mm.plugin.appbrand.y.m.a;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class j
   extends k
 {
-  private static volatile j jOs = null;
+  private static volatile j jRK = null;
   
-  public static j bbX()
+  public static j bcB()
   {
     AppMethodBeat.i(44482);
-    if (jOs == null) {}
+    if (jRK == null) {}
     try
     {
-      if (jOs == null) {
-        jOs = new j();
+      if (jRK == null) {
+        jRK = new j();
       }
-      j localj = jOs;
+      j localj = jRK;
       AppMethodBeat.o(44482);
       return localj;
     }
@@ -35,22 +35,22 @@ public final class j
     }
   }
   
-  public static boolean bbZ()
+  public static boolean bcD()
   {
     AppMethodBeat.i(44485);
-    if (!g.ajx())
+    if (!g.ajM())
     {
       AppMethodBeat.o(44485);
       return false;
     }
-    boolean bool = ((Boolean)g.ajC().ajl().get(al.a.Ivs, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)g.ajR().ajA().get(am.a.IPQ, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(44485);
     return bool;
   }
   
   public static void release()
   {
-    jOs = null;
+    jRK = null;
   }
   
   public final void a(long paramLong, boolean paramBoolean, Bundle paramBundle, int paramInt1, int paramInt2)
@@ -62,8 +62,8 @@ public final class j
   
   public final void a(final long paramLong1, final boolean paramBoolean, Bundle paramBundle, final int paramInt1, final int paramInt2, final int paramInt3, final long paramLong2, final a parama)
   {
-    AppMethodBeat.i(188027);
-    m.bBp().postToWorker(new Runnable()
+    AppMethodBeat.i(222145);
+    m.bCj().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -71,22 +71,22 @@ public final class j
         j localj = j.this;
         int j = paramInt1;
         int k = paramInt2;
-        if ((paramBoolean & v.bcs())) {}
+        if ((paramBoolean & v.bcX())) {}
         for (int i = 2;; i = 0)
         {
-          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.jOz);
+          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.jRR);
           AppMethodBeat.o(44480);
           return;
         }
       }
     });
-    AppMethodBeat.o(188027);
+    AppMethodBeat.o(222145);
   }
   
-  public final void bbY()
+  public final void bcC()
   {
     AppMethodBeat.i(44483);
-    m.bBp().postToWorker(new Runnable()
+    m.bCj().postToWorker(new Runnable()
     {
       public final void run()
       {

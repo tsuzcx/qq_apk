@@ -10,19 +10,19 @@ import com.tencent.mm.ui.widget.MMNeat7extView;
 final class ae$f
   extends ae.b
 {
-  TextView Kdr;
-  View jlR;
-  MMNeat7extView ocA;
-  ImageView ocB;
-  View ocL;
-  ImageView ocn;
-  MMNeat7extView xmO;
-  ImageView xmP;
+  TextView KzJ;
+  View joL;
+  View oiA;
+  ImageView oic;
+  MMNeat7extView oip;
+  ImageView oiq;
+  MMNeat7extView xCL;
+  ImageView xCM;
   
   public final void dD(View paramView)
   {
     AppMethodBeat.i(37137);
-    if (this.odh != null)
+    if (this.oiV != null)
     {
       AppMethodBeat.o(37137);
       return;
@@ -34,15 +34,15 @@ final class ae$f
       return;
     }
     localViewStub.inflate();
-    this.odh = paramView.findViewById(2131305992);
-    this.ocA = ((MMNeat7extView)this.odh.findViewById(2131305902));
-    this.ocn = ((ImageView)this.odh.findViewById(2131298813));
-    this.ocL = this.odh.findViewById(2131298818);
-    this.jlR = this.odh.findViewById(2131297444);
-    this.xmO = ((MMNeat7extView)this.odh.findViewById(2131305946));
-    this.Kdr = ((TextView)this.odh.findViewById(2131299135));
-    this.ocB = ((ImageView)this.odh.findViewById(2131303387));
-    this.xmP = ((ImageView)this.odh.findViewById(2131298831));
+    this.oiV = paramView.findViewById(2131305992);
+    this.oip = ((MMNeat7extView)this.oiV.findViewById(2131305902));
+    this.oic = ((ImageView)this.oiV.findViewById(2131298813));
+    this.oiA = this.oiV.findViewById(2131298818);
+    this.joL = this.oiV.findViewById(2131297444);
+    this.xCL = ((MMNeat7extView)this.oiV.findViewById(2131305946));
+    this.KzJ = ((TextView)this.oiV.findViewById(2131299135));
+    this.oiq = ((ImageView)this.oiV.findViewById(2131303387));
+    this.xCM = ((ImageView)this.oiV.findViewById(2131298831));
     AppMethodBeat.o(37137);
   }
 }

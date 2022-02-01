@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.report.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.k;
-import com.tencent.mm.g.a.kw;
+import com.tencent.mm.g.a.kx;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.report.a.b;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class j
-  implements ax
+  implements az
 {
-  private static HashMap<Integer, h.b> ovv;
-  private c obZ;
-  private r.a ovx;
+  private static HashMap<Integer, h.b> oBW;
+  private r.a oBY;
+  private c ohN;
   
   static
   {
     AppMethodBeat.i(143938);
     HashMap localHashMap = new HashMap();
-    ovv = localHashMap;
+    oBW = localHashMap;
     localHashMap.put(Integer.valueOf("DUPLICATEKVLOG_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -42,26 +42,26 @@ public class j
   public j()
   {
     AppMethodBeat.i(143932);
-    this.obZ = new c() {};
+    this.ohN = new c() {};
     AppMethodBeat.o(143932);
   }
   
-  public static j dKs()
-  {
-    AppMethodBeat.i(143935);
-    j localj = (j)t.ap(j.class);
-    AppMethodBeat.o(143935);
-    return localj;
-  }
-  
-  public static void z(long paramLong, String paramString)
+  public static void A(long paramLong, String paramString)
   {
     AppMethodBeat.i(143936);
-    kw localkw = new kw();
-    localkw.dxY.dxZ = paramLong;
-    localkw.dxY.content = paramString;
-    a.IbL.l(localkw);
+    kx localkx = new kx();
+    localkx.dzd.dze = paramLong;
+    localkx.dzd.content = paramString;
+    a.IvT.l(localkx);
     AppMethodBeat.o(143936);
+  }
+  
+  public static j dNK()
+  {
+    AppMethodBeat.i(143935);
+    j localj = (j)u.ap(j.class);
+    AppMethodBeat.o(143935);
+    return localj;
   }
   
   public void clearPluginData(int paramInt) {}
@@ -75,26 +75,26 @@ public class j
   {
     AppMethodBeat.i(143934);
     long l = System.currentTimeMillis();
-    String str = g.ajC().cachePath + "CommonOneMicroMsg.db";
-    this.ovx = r.a(hashCode(), str, ovv, false);
-    ad.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), bt.flS() });
-    a.IbL.c(this.obZ);
+    String str = g.ajR().cachePath + "CommonOneMicroMsg.db";
+    this.oBY = r.a(hashCode(), str, oBW, false);
+    ae.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), bu.fpN() });
+    a.IvT.c(this.ohN);
     AppMethodBeat.o(143934);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(143933);
-    if (dKs() != null)
+    if (dNK() != null)
     {
-      j localj = dKs();
-      if (localj.ovx != null)
+      j localj = dNK();
+      if (localj.oBY != null)
       {
-        localj.ovx.qX(localj.hashCode());
-        localj.ovx = null;
+        localj.oBY.ra(localj.hashCode());
+        localj.oBY = null;
       }
     }
-    a.IbL.d(this.obZ);
+    a.IvT.d(this.ohN);
     AppMethodBeat.o(143933);
   }
   

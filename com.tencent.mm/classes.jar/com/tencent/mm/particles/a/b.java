@@ -11,37 +11,37 @@ public abstract class b
 {
   public int alpha;
   private final Matrix gR = new Matrix();
-  public Interpolator iIR;
-  public Rect iIS;
-  public float iIX;
-  public float iIZ;
-  private final Paint iJB = new Paint(1);
-  public long iJC;
-  public float iJD;
-  public float iJE;
-  public float iJF;
-  public float iJG;
-  public Long iJH;
-  public Long iJI;
-  public float iJJ;
-  public float iJK;
-  public Long iJL;
-  public float iJM;
-  public float iJN;
-  public float iJO;
-  public float iJP;
-  public float iJQ;
-  public boolean iJR;
-  public boolean iJS;
-  public float iJT;
-  public float iJU;
-  public float iJV;
-  public float iJW;
-  public Float iJb;
-  public Float iJd;
-  public float iJj;
-  public Float iJl;
-  public long iJn;
+  public Interpolator iLK;
+  public Rect iLL;
+  public float iLQ;
+  public float iLS;
+  public Float iLU;
+  public Float iLW;
+  public Long iMA;
+  public Long iMB;
+  public float iMC;
+  public float iMD;
+  public Long iME;
+  public float iMF;
+  public float iMG;
+  public float iMH;
+  public float iMI;
+  public float iMJ;
+  public boolean iMK;
+  public boolean iML;
+  public float iMM;
+  public float iMN;
+  public float iMO;
+  public float iMP;
+  public float iMc;
+  public Float iMe;
+  public long iMg;
+  private final Paint iMu = new Paint(1);
+  public long iMv;
+  public float iMw;
+  public float iMx;
+  public float iMy;
+  public float iMz;
   public VelocityTracker oj;
   public boolean terminated;
   
@@ -139,10 +139,10 @@ public abstract class b
   public final void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramCanvas.save();
-    paramCanvas.clipRect(this.iIS);
+    paramCanvas.clipRect(this.iLL);
     this.gR.reset();
-    this.iJB.setAlpha(this.alpha);
-    a(paramCanvas, this.gR, this.iJB, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    this.iMu.setAlpha(this.alpha);
+    a(paramCanvas, this.gR, this.iMu, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     paramCanvas.restore();
   }
   
@@ -154,59 +154,59 @@ public abstract class b
   
   public final void j(Rect paramRect)
   {
-    this.iIS = paramRect;
-    this.iJH = a(this.iJb, this.iJF, this.iIX);
-    this.iJI = a(this.iJd, this.iJG, this.iIZ);
-    this.iJL = a(this.iJl, this.iJK, this.iJj);
-    if (this.iJM == 0.0F) {
-      if (this.iJn < 0L) {
+    this.iLL = paramRect;
+    this.iMA = a(this.iLU, this.iMy, this.iLQ);
+    this.iMB = a(this.iLW, this.iMz, this.iLS);
+    this.iME = a(this.iMe, this.iMD, this.iMc);
+    if (this.iMF == 0.0F) {
+      if (this.iMg < 0L) {
         break label199;
       }
     }
     label199:
-    for (float f = (float)this.iJn;; f = 9.223372E+018F)
+    for (float f = (float)this.iMg;; f = 9.223372E+018F)
     {
-      this.iJM = f;
-      this.iJM = Math.min((float)a(this.iJD, this.iJF, this.iIX, this.iJH, this.iJb, paramRect.left - getWidth(), paramRect.right), this.iJM);
-      this.iJM = Math.min((float)a(this.iJE, this.iJG, this.iIZ, this.iJI, this.iJd, paramRect.top - getHeight(), paramRect.bottom), this.iJM);
-      this.iJB.setAlpha(this.alpha);
+      this.iMF = f;
+      this.iMF = Math.min((float)a(this.iMw, this.iMy, this.iLQ, this.iMA, this.iLU, paramRect.left - getWidth(), paramRect.right), this.iMF);
+      this.iMF = Math.min((float)a(this.iMx, this.iMz, this.iLS, this.iMB, this.iLW, paramRect.top - getHeight(), paramRect.bottom), this.iMF);
+      this.iMu.setAlpha(this.alpha);
       return;
     }
   }
   
   public void reset()
   {
-    this.iJC = 0L;
-    this.iJE = 0.0F;
-    this.iJD = 0.0F;
-    this.iJG = 0.0F;
-    this.iJF = 0.0F;
-    this.iIZ = 0.0F;
-    this.iIX = 0.0F;
-    this.iJd = null;
-    this.iJb = null;
-    this.iJI = null;
-    this.iJH = null;
-    this.iJJ = 0.0F;
-    this.iJK = 0.0F;
-    this.iJj = 0.0F;
-    this.iJl = null;
-    this.iJL = null;
-    this.iJn = 0L;
-    this.iJM = 0.0F;
-    this.iJN = 0.0F;
-    this.iIR = null;
-    this.iJP = 0.0F;
-    this.iJO = 0.0F;
-    this.iJQ = 0.0F;
+    this.iMv = 0L;
+    this.iMx = 0.0F;
+    this.iMw = 0.0F;
+    this.iMz = 0.0F;
+    this.iMy = 0.0F;
+    this.iLS = 0.0F;
+    this.iLQ = 0.0F;
+    this.iLW = null;
+    this.iLU = null;
+    this.iMB = null;
+    this.iMA = null;
+    this.iMC = 0.0F;
+    this.iMD = 0.0F;
+    this.iMc = 0.0F;
+    this.iMe = null;
+    this.iME = null;
+    this.iMg = 0L;
+    this.iMF = 0.0F;
+    this.iMG = 0.0F;
+    this.iLK = null;
+    this.iMI = 0.0F;
+    this.iMH = 0.0F;
+    this.iMJ = 0.0F;
     this.alpha = 255;
-    this.iJR = false;
+    this.iMK = false;
     this.terminated = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.particles.a.b
  * JD-Core Version:    0.7.0.1
  */

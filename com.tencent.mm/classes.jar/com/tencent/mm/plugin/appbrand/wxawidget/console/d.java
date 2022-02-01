@@ -15,23 +15,23 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final Map<String, List<a>> gxT;
-  private static List<a> nqk;
-  private static final e nql;
+  private static final Map<String, List<a>> gAA;
+  private static List<a> nvD;
+  private static final e nvE;
   
   static
   {
     AppMethodBeat.i(121621);
-    gxT = new ConcurrentHashMap();
-    nqk = new LinkedList();
-    nql = new e() {};
+    gAA = new ConcurrentHashMap();
+    nvD = new LinkedList();
+    nvE = new e() {};
     AppMethodBeat.o(121621);
   }
   
   public static boolean a(a parama)
   {
     AppMethodBeat.i(121618);
-    if (nqk.contains(parama))
+    if (nvD.contains(parama))
     {
       AppMethodBeat.o(121618);
       return false;
@@ -39,41 +39,41 @@ public final class d
     Object localObject;
     e locale;
     f localf;
-    if ((gxT.isEmpty()) && (nqk.isEmpty()))
+    if ((gAA.isEmpty()) && (nvD.isEmpty()))
     {
-      localObject = c.nqj;
-      locale = nql;
-      localf = ((com.tencent.mm.ipcinvoker.d.d)localObject).gxY;
-      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).dln;
+      localObject = c.nvC;
+      locale = nvE;
+      localf = ((com.tencent.mm.ipcinvoker.d.d)localObject).gAF;
+      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).dmp;
       if ((localObject != null) && (((String)localObject).length() != 0) && (locale != null)) {
         break label102;
       }
     }
     for (;;)
     {
-      boolean bool = nqk.add(parama);
+      boolean bool = nvD.add(parama);
       AppMethodBeat.o(121618);
       return bool;
       label102:
       Bundle localBundle = new Bundle();
       localBundle.putString("Token", f.bf(locale));
       localBundle.putString("Event", (String)localObject);
-      h.a(localf.gxB, localBundle, f.a.class, locale);
+      h.a(localf.gAi, localBundle, f.a.class, locale);
     }
   }
   
   public static boolean b(a parama)
   {
     AppMethodBeat.i(121619);
-    boolean bool = nqk.remove(parama);
+    boolean bool = nvD.remove(parama);
     Object localObject;
     f localf;
-    if ((gxT.isEmpty()) && (nqk.isEmpty()))
+    if ((gAA.isEmpty()) && (nvD.isEmpty()))
     {
-      localObject = c.nqj;
-      parama = nql;
-      localf = ((com.tencent.mm.ipcinvoker.d.d)localObject).gxY;
-      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).dln;
+      localObject = c.nvC;
+      parama = nvE;
+      localf = ((com.tencent.mm.ipcinvoker.d.d)localObject).gAF;
+      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).dmp;
       if ((localObject != null) && (((String)localObject).length() != 0) && (parama != null)) {
         break label77;
       }
@@ -86,7 +86,7 @@ public final class d
       Bundle localBundle = new Bundle();
       localBundle.putString("Token", f.bf(parama));
       localBundle.putString("Event", (String)localObject);
-      h.a(localf.gxB, localBundle, f.b.class, null);
+      h.a(localf.gAi, localBundle, f.b.class, null);
     }
   }
 }

@@ -7,50 +7,50 @@ import com.google.b.a.e;
 public final class a$ap
   extends e
 {
-  private static volatile ap[] LHO;
-  public int Fpp = 0;
-  public int LHP = 0;
-  public int LHQ = 0;
-  public int LHR = 0;
-  public String dtx = "";
-  public int oWb = 0;
+  private static volatile ap[] MeS;
+  public int FHN = 0;
+  public int MeT = 0;
+  public int MeU = 0;
+  public int MeV = 0;
+  public String duC = "";
+  public int pcE = 0;
   
   public a$ap()
   {
     this.bQO = -1;
   }
   
-  public static ap[] fTb()
+  public static ap[] fXB()
   {
-    if (LHO == null) {}
+    if (MeS == null) {}
     synchronized (c.bQN)
     {
-      if (LHO == null) {
-        LHO = new ap[0];
+      if (MeS == null) {
+        MeS = new ap[0];
       }
-      return LHO;
+      return MeS;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.oWb != 0) {
-      paramb.by(1, this.oWb);
+    if (this.pcE != 0) {
+      paramb.by(1, this.pcE);
     }
-    if (!this.dtx.equals("")) {
-      paramb.d(2, this.dtx);
+    if (!this.duC.equals("")) {
+      paramb.d(2, this.duC);
     }
-    if (this.Fpp != 0) {
-      paramb.by(3, this.Fpp);
+    if (this.FHN != 0) {
+      paramb.by(3, this.FHN);
     }
-    if (this.LHP != 0) {
-      paramb.by(4, this.LHP);
+    if (this.MeT != 0) {
+      paramb.by(4, this.MeT);
     }
-    if (this.LHQ != 0) {
-      paramb.by(5, this.LHQ);
+    if (this.MeU != 0) {
+      paramb.by(5, this.MeU);
     }
-    if (this.LHR != 0) {
-      paramb.by(6, this.LHR);
+    if (this.MeV != 0) {
+      paramb.by(6, this.MeV);
     }
     super.a(paramb);
   }
@@ -59,28 +59,28 @@ public final class a$ap
   {
     int j = super.zq();
     int i = j;
-    if (this.oWb != 0) {
-      i = j + b.bA(1, this.oWb);
+    if (this.pcE != 0) {
+      i = j + b.bA(1, this.pcE);
     }
     j = i;
-    if (!this.dtx.equals("")) {
-      j = i + b.e(2, this.dtx);
+    if (!this.duC.equals("")) {
+      j = i + b.e(2, this.duC);
     }
     i = j;
-    if (this.Fpp != 0) {
-      i = j + b.bA(3, this.Fpp);
+    if (this.FHN != 0) {
+      i = j + b.bA(3, this.FHN);
     }
     j = i;
-    if (this.LHP != 0) {
-      j = i + b.bA(4, this.LHP);
+    if (this.MeT != 0) {
+      j = i + b.bA(4, this.MeT);
     }
     i = j;
-    if (this.LHQ != 0) {
-      i = j + b.bA(5, this.LHQ);
+    if (this.MeU != 0) {
+      i = j + b.bA(5, this.MeU);
     }
     j = i;
-    if (this.LHR != 0) {
-      j = i + b.bA(6, this.LHR);
+    if (this.MeV != 0) {
+      j = i + b.bA(6, this.MeV);
     }
     return j;
   }

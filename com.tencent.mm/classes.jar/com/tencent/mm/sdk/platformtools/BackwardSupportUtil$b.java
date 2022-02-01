@@ -21,7 +21,7 @@ public final class BackwardSupportUtil$b
   public static Bitmap b(InputStream paramInputStream, float paramFloat)
   {
     AppMethodBeat.i(156065);
-    paramInputStream = g.a(paramInputStream, paramFloat, 0, 0);
+    paramInputStream = h.a(paramInputStream, paramFloat, 0, 0);
     if (paramInputStream != null) {
       paramInputStream.setDensity((int)(160.0F * paramFloat));
     }
@@ -29,7 +29,7 @@ public final class BackwardSupportUtil$b
     return paramInputStream;
   }
   
-  public static int g(Context paramContext, float paramFloat)
+  public static int h(Context paramContext, float paramFloat)
   {
     AppMethodBeat.i(156063);
     int i = Math.round(paramContext.getResources().getDisplayMetrics().densityDpi * paramFloat / 160.0F);
@@ -37,7 +37,7 @@ public final class BackwardSupportUtil$b
     return i;
   }
   
-  public static String ix(Context paramContext)
+  public static String iC(Context paramContext)
   {
     AppMethodBeat.i(156066);
     Object localObject = paramContext.getResources().getDisplayMetrics();
@@ -66,7 +66,7 @@ public final class BackwardSupportUtil$b
     }
   }
   
-  public static String iy(Context paramContext)
+  public static String iD(Context paramContext)
   {
     AppMethodBeat.i(175899);
     paramContext = paramContext.getResources().getDisplayMetrics();
@@ -75,10 +75,10 @@ public final class BackwardSupportUtil$b
     return paramContext;
   }
   
-  public static Bitmap o(String paramString, float paramFloat)
+  public static Bitmap p(String paramString, float paramFloat)
   {
     AppMethodBeat.i(156062);
-    paramString = g.p(paramString, paramFloat);
+    paramString = h.q(paramString, paramFloat);
     if (paramString != null) {
       paramString.setDensity((int)(160.0F * paramFloat));
     }

@@ -16,10 +16,10 @@ public class MMDatePickerView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private Button KRb;
-  private Button KRc;
-  private Button KRd;
-  private MMSpinnerDatePicker pgm;
+  private Button LnA;
+  private Button LnB;
+  private Button Lnz;
+  private MMSpinnerDatePicker pmS;
   
   public MMDatePickerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,14 +40,14 @@ public class MMDatePickerView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(143349);
-    paramContext = z.jO(paramContext).inflate(2131494784, this);
-    this.KRb = ((Button)paramContext.findViewById(2131307139));
-    this.KRc = ((Button)paramContext.findViewById(2131302451));
-    this.KRd = ((Button)paramContext.findViewById(2131298936));
-    this.pgm = ((MMSpinnerDatePicker)paramContext.findViewById(2131302321));
-    this.KRb.setOnClickListener(this);
-    this.KRc.setOnClickListener(this);
-    this.KRd.setOnClickListener(this);
+    paramContext = z.jV(paramContext).inflate(2131494784, this);
+    this.Lnz = ((Button)paramContext.findViewById(2131307139));
+    this.LnA = ((Button)paramContext.findViewById(2131302451));
+    this.LnB = ((Button)paramContext.findViewById(2131298936));
+    this.pmS = ((MMSpinnerDatePicker)paramContext.findViewById(2131302321));
+    this.Lnz.setOnClickListener(this);
+    this.LnA.setOnClickListener(this);
+    this.LnB.setOnClickListener(this);
     AppMethodBeat.o(143349);
   }
   
@@ -56,10 +56,10 @@ public class MMDatePickerView
     AppMethodBeat.i(143350);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/widget/MMDatePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/ui/widget/MMDatePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     int i = paramView.getId();
     if (i == 2131307139) {
-      this.pgm.setPickerMode(0);
+      this.pmS.setPickerMode(0);
     }
     for (;;)
     {
@@ -67,9 +67,9 @@ public class MMDatePickerView
       AppMethodBeat.o(143350);
       return;
       if (i == 2131302451) {
-        this.pgm.setPickerMode(1);
+        this.pmS.setPickerMode(1);
       } else {
-        this.pgm.setPickerMode(2);
+        this.pmS.setPickerMode(2);
       }
     }
   }

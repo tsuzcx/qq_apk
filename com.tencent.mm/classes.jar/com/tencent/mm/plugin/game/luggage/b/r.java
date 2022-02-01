@@ -9,8 +9,8 @@ import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONArray;
@@ -28,7 +28,7 @@ public class r
     String str1 = paramb.chh.cgn.optString("videoUrl");
     String str2 = paramb.chh.cgn.optString("thumbUrl");
     String str3 = paramb.chh.cgn.optString("appId");
-    if (bt.isNullOrNil(str1))
+    if (bu.isNullOrNil(str1))
     {
       paramb.a("invalid_videoUrl", null);
       AppMethodBeat.o(83078);
@@ -65,7 +65,7 @@ public class r
           {
             for (;;)
             {
-              ad.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
+              ae.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
             }
           }
           paramb.a("cancel", null);
@@ -80,7 +80,7 @@ public class r
     AppMethodBeat.o(83078);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

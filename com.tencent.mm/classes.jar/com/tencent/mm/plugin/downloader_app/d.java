@@ -10,11 +10,11 @@ import java.util.HashMap;
 public final class d
   implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader_app.api.d
 {
-  private c pnT;
+  private c puA;
   
-  public final c ccJ()
+  public final c cdY()
   {
-    return this.pnT;
+    return this.puA;
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
@@ -37,7 +37,7 @@ public final class d
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(8781);
-    this.pnT = new c(paramh1);
+    this.puA = new c(paramh1);
     AppMethodBeat.o(8781);
   }
 }

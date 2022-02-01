@@ -1,16 +1,16 @@
 package com.tencent.mars.xlog;
 
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ad.a;
 import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bq;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.g;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae.a;
+import com.tencent.mm.sdk.platformtools.af;
+import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.m;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 
 public class Xlog
-  implements ad.a
+  implements ae.a
 {
   public static final int AppednerModeAsync = 0;
   public static final int AppednerModeSync = 1;
@@ -33,7 +33,7 @@ public class Xlog
   public static final int ZSTD_COMPRESS_LEVEL8 = 8;
   public static final int ZSTD_COMPRESS_LEVEL9 = 9;
   public static final int ZSTD_MODE = 1;
-  public static ae logDecryptor;
+  public static af logDecryptor;
   private static String mCacheDir = null;
   private static String mLogDir = null;
   private static String xlog_pubkey = "1dac3876bd566b60c7dcbffd219ca6af2d2c07f045711bf2a6d111a2b1fc27c4df31c1f568879708c5159e370ab141e6627ea028b47f8a5cf4d39ca30d501f81";
@@ -42,10 +42,10 @@ public class Xlog
   
   private static String decryptTag(String paramString)
   {
-    ae localae;
+    af localaf;
     if (logDecryptor != null)
     {
-      localae = logDecryptor;
+      localaf = logDecryptor;
       if ((paramString != null) && (paramString.length() != 0)) {}
     }
     else
@@ -57,9 +57,9 @@ public class Xlog
     default: 
       return paramString;
     case '⍆': 
-      return localae.gg(paramString, paramString.length());
+      return localaf.gp(paramString, paramString.length());
     }
-    return localae.Ids.decryptTag(paramString);
+    return localaf.IxD.decryptTag(paramString);
   }
   
   public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
@@ -76,7 +76,7 @@ public class Xlog
     if (paramBoolean) {
       System.loadLibrary("tencentxlog");
     }
-    ad.appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3);
+    ae.appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3);
   }
   
   public native void appenderClose();
@@ -139,17 +139,17 @@ public class Xlog
     for (;;)
     {
       return;
-      Object localObject1 = new e(mCacheDir);
-      if (((e)localObject1).exists())
+      Object localObject1 = new k(mCacheDir);
+      if (((k)localObject1).exists())
       {
-        localObject1 = ((e)localObject1).a(new g()
+        localObject1 = ((k)localObject1).a(new m()
         {
-          public boolean accept(e paramAnonymouse)
+          public boolean accept(k paramAnonymousk)
           {
-            if (paramAnonymouse.isDirectory()) {
+            if (paramAnonymousk.isDirectory()) {
               return false;
             }
-            return paramAnonymouse.getName().toLowerCase().endsWith(".xlog");
+            return paramAnonymousk.getName().toLowerCase().endsWith(".xlog");
           }
         });
         if (localObject1.length != 0)
@@ -159,7 +159,7 @@ public class Xlog
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            i.mA(q.B(localObject2.mUri), mLogDir + "/" + localObject2.getName());
+            o.mG(w.B(localObject2.mUri), mLogDir + "/" + localObject2.getName());
             i += 1;
           }
         }

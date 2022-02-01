@@ -7,16 +7,16 @@ import com.tencent.mm.hellhoundlib.b.b;
 public abstract class a
   extends RecyclerView.m
 {
-  private int psn;
+  private int pyT;
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     b localb = new b();
     localb.bd(paramRecyclerView);
-    localb.mr(paramInt1);
-    localb.mr(paramInt2);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/adapter/NoteRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
-    if (Math.abs(paramInt2) > this.psn)
+    localb.mu(paramInt1);
+    localb.mu(paramInt2);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/adapter/NoteRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
+    if (Math.abs(paramInt2) > this.pyT)
     {
       paramInt1 = 1;
       if (paramInt1 != 0)
@@ -24,7 +24,7 @@ public abstract class a
         if (paramRecyclerView.canScrollVertically(-1)) {
           break label91;
         }
-        cdS();
+        cfh();
       }
     }
     for (;;)
@@ -35,11 +35,11 @@ public abstract class a
       break;
       label91:
       if (!paramRecyclerView.canScrollVertically(1)) {
-        eXs();
+        fbe();
       } else if (paramInt2 < 0) {
-        cdQ();
+        cff();
       } else if (paramInt2 > 0) {
-        cdR();
+        cfg();
       }
     }
   }
@@ -48,19 +48,19 @@ public abstract class a
   {
     b localb = new b();
     localb.bd(paramRecyclerView);
-    localb.mr(paramInt);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/adapter/NoteRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+    localb.mu(paramInt);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/adapter/NoteRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
     super.b(paramRecyclerView, paramInt);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/adapter/NoteRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
   }
   
-  public abstract void cdQ();
+  public abstract void cff();
   
-  public abstract void cdR();
+  public abstract void cfg();
   
-  public abstract void cdS();
+  public abstract void cfh();
   
-  public abstract void eXs();
+  public abstract void fbe();
 }
 
 

@@ -7,22 +7,22 @@ import com.tencent.xweb.WebView;
 public final class j
   extends i
 {
-  private final b Eqr;
+  private final b EIH;
   
   public j(MMWebView paramMMWebView, b paramb)
   {
     super((MMWebViewWithJsApi)paramMMWebView);
     AppMethodBeat.i(82128);
-    this.Eqr = paramb;
+    this.EIH = paramb;
     AppMethodBeat.o(82128);
   }
   
   public final void d(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(82129);
-    if (this.Eqr != null)
+    if (this.EIH != null)
     {
-      this.Eqr.BP(paramString);
+      this.EIH.Cr(paramString);
       AppMethodBeat.o(82129);
       return;
     }

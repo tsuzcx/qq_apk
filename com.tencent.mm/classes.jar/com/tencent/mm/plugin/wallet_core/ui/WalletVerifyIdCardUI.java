@@ -14,10 +14,10 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.c.p;
@@ -29,20 +29,20 @@ import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 public class WalletVerifyIdCardUI
   extends WalletBaseUI
 {
-  private boolean DjN;
-  private i DjP;
-  private p.a DjQ;
-  private EditHintPasswdView DjW;
-  private TextView lCL;
+  private EditHintPasswdView DBA;
+  private boolean DBr;
+  private i DBt;
+  private p.a DBu;
+  private TextView lHk;
   
   public WalletVerifyIdCardUI()
   {
     AppMethodBeat.i(71293);
-    this.DjP = new i();
-    this.DjN = false;
-    this.DjQ = new p.a()
+    this.DBt = new i();
+    this.DBr = false;
+    this.DBu = new p.a()
     {
-      public final void eHZ()
+      public final void eLH()
       {
         AppMethodBeat.i(71292);
         WalletVerifyIdCardUI.b(WalletVerifyIdCardUI.this);
@@ -52,7 +52,7 @@ public class WalletVerifyIdCardUI
     AppMethodBeat.o(71293);
   }
   
-  private boolean eIa()
+  private boolean eLI()
   {
     AppMethodBeat.i(71297);
     boolean bool = getInput().getBoolean("key_is_oversea", false);
@@ -68,15 +68,15 @@ public class WalletVerifyIdCardUI
   public void initView()
   {
     AppMethodBeat.i(71295);
-    this.lCL = ((TextView)findViewById(2131307103));
-    this.DjW = ((EditHintPasswdView)findViewById(2131307102));
+    this.lHk = ((TextView)findViewById(2131307103));
+    this.DBA = ((EditHintPasswdView)findViewById(2131307102));
     String str1 = getInput().getString("key_true_name");
     String str2 = getInput().getString("key_cre_name");
     String str3 = getInput().getString("key_cre_type");
-    this.lCL.setText(getString(2131765294, new Object[] { str1, str2 }));
-    this.DjW.setEditTextMaxLength(4);
-    this.DjW.setEditTextSize(34.0F);
-    this.DjW.setOnInputValidListener(new EditHintPasswdView.a()
+    this.lHk.setText(getString(2131765294, new Object[] { str1, str2 }));
+    this.DBA.setEditTextMaxLength(4);
+    this.DBA.setEditTextSize(34.0F);
+    this.DBA.setOnInputValidListener(new EditHintPasswdView.a()
     {
       public final void onInputValidChange(final boolean paramAnonymousBoolean)
       {
@@ -103,11 +103,11 @@ public class WalletVerifyIdCardUI
     });
     if ("1".equals(str3))
     {
-      setEditFocusListener(this.DjW, 1, false);
+      setEditFocusListener(this.DBA, 1, false);
       AppMethodBeat.o(71295);
       return;
     }
-    setEditFocusListener(this.DjW, 1, true);
+    setEditFocusListener(this.DBA, 1, true);
     AppMethodBeat.o(71295);
   }
   
@@ -115,7 +115,7 @@ public class WalletVerifyIdCardUI
   {
     AppMethodBeat.i(71294);
     super.onCreate(paramBundle);
-    this.DjP = new i(getInput());
+    this.DBt = new i(getInput());
     initView();
     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131101179)));
     paramBundle = getSupportActionBar().getCustomView();
@@ -126,9 +126,9 @@ public class WalletVerifyIdCardUI
         paramBundle.setBackgroundColor(getResources().getColor(2131101053));
       }
     }
-    if (d.ly(21))
+    if (d.lA(21))
     {
-      if (!d.ly(23)) {
+      if (!d.lA(23)) {
         break label153;
       }
       getWindow().setStatusBarColor(getResources().getColor(2131101179));
@@ -156,12 +156,12 @@ public class WalletVerifyIdCardUI
   public boolean onPreSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(71298);
-    ad.i("MicroMsg.WalletVerifyIdCardUI", "onPreSceneEnd %s %s", new Object[] { Integer.valueOf(paramInt2), paramn });
+    ae.i("MicroMsg.WalletVerifyIdCardUI", "onPreSceneEnd %s %s", new Object[] { Integer.valueOf(paramInt2), paramn });
     if (((paramn instanceof p)) && (paramInt2 == 0))
     {
-      this.DjN = true;
+      this.DBr = true;
       t.makeText(this, 2131765617, 0).show();
-      ad.i("MicroMsg.WalletVerifyIdCardUI", "tag it isCertInstalled ok");
+      ae.i("MicroMsg.WalletVerifyIdCardUI", "tag it isCertInstalled ok");
     }
     AppMethodBeat.o(71298);
     return true;
@@ -182,7 +182,7 @@ public class WalletVerifyIdCardUI
       {
         AppMethodBeat.o(71296);
         return true;
-        this.DjW.dEe();
+        this.DBA.dHv();
       }
     }
     AppMethodBeat.o(71296);
@@ -197,7 +197,7 @@ public class WalletVerifyIdCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletVerifyIdCardUI
  * JD-Core Version:    0.7.0.1
  */

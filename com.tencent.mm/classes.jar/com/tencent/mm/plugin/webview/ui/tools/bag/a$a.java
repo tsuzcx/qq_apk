@@ -14,20 +14,20 @@ final class a$a
   extends FrameLayout
 {
   View mContentView;
-  Vibrator mUw;
-  ImageView qll;
+  Vibrator mZD;
+  ImageView qrQ;
   
   public a$a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(80409);
-    this.mUw = ((Vibrator)paramContext.getSystemService("vibrator"));
+    this.mZD = ((Vibrator)paramContext.getSystemService("vibrator"));
     LayoutInflater.from(paramContext).inflate(2131496081, this);
-    this.qll = ((ImageView)findViewById(2131297203));
-    paramContext = (RelativeLayout.LayoutParams)this.qll.getLayoutParams();
-    paramContext.height = b.Efg;
-    paramContext.width = b.Efg;
-    this.qll.setLayoutParams(paramContext);
+    this.qrQ = ((ImageView)findViewById(2131297203));
+    paramContext = (RelativeLayout.LayoutParams)this.qrQ.getLayoutParams();
+    paramContext.height = b.Exj;
+    paramContext.width = b.Exj;
+    this.qrQ.setLayoutParams(paramContext);
     this.mContentView = findViewById(2131298739);
     AppMethodBeat.o(80409);
   }
@@ -38,7 +38,7 @@ final class a$a
     ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 1.0F, 1, 1.0F);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setDuration(50L);
-    this.qll.startAnimation(localScaleAnimation);
+    this.qrQ.startAnimation(localScaleAnimation);
     AppMethodBeat.o(80410);
   }
 }

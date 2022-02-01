@@ -19,19 +19,19 @@ import d.g.b.p;
 import d.v;
 import java.util.List;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView;", "context", "Landroid/content/Context;", "recyclerView", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;)V", "mFloatViewHolder", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionViewHolder;", "getRecyclerView", "()Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "animateFloatViewHolderAppearance", "", "floatHolder", "attachDragCallback", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/ItemDragCallback;", "viewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "createFloatViewForCallback", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "holder", "getOffsetOfFloatAnimation", "", "onBindFloatViewHolder", "originHolder", "onCreateFloatViewHolder", "Landroid/view/ViewGroup;", "onListMayChanged", "onListMayChanged$plugin_appbrand_integration_release", "onViewAdded", "child", "resetFloatViewHolder", "setRubbishViewVisible", "visibility", "", "plugin-appbrand-integration_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView;", "context", "Landroid/content/Context;", "recyclerView", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;)V", "mFloatViewHolder", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionViewHolder;", "getRecyclerView", "()Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "animateFloatViewHolderAppearance", "", "floatHolder", "attachDragCallback", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/ItemDragCallback;", "viewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "createFloatViewForCallback", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "holder", "getOffsetOfFloatAnimation", "", "onBindFloatViewHolder", "originHolder", "onCreateFloatViewHolder", "Landroid/view/ViewGroup;", "onListMayChanged", "onListMayChanged$plugin_appbrand_integration_release", "onViewAdded", "child", "resetFloatViewHolder", "setRubbishViewVisible", "visibility", "", "plugin-appbrand-integration_release"})
 @SuppressLint({"ViewConstructor"})
 public class c
   extends DragFeatureView
 {
-  private n mIQ;
-  private final i mIR;
+  private n mNS;
+  private final i mNT;
   
   public c(Context paramContext, i parami)
   {
     super(paramContext);
     AppMethodBeat.i(51250);
-    this.mIR = parami;
+    this.mNT = parami;
     AppMethodBeat.o(51250);
   }
   
@@ -41,14 +41,14 @@ public class c
     if ((paramw != null) && (paramw.lQ() == 1))
     {
       paramw = (FrameLayout)this;
-      RecyclerView.a locala = this.mIR.getAdapter();
+      RecyclerView.a locala = this.mNT.getAdapter();
       if (locala == null)
       {
         paramw = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.collection.CollectionAdapter");
         AppMethodBeat.o(51247);
         throw paramw;
       }
-      paramw = new com.tencent.mm.plugin.appbrand.widget.desktop.b.l(paramw, (List)((b)locala).jfg, (m)new b());
+      paramw = new com.tencent.mm.plugin.appbrand.widget.desktop.b.l(paramw, (List)((b)locala).jhZ, (m)new b());
       paramw.a((g)new a(this));
       paramw = (j)paramw;
       AppMethodBeat.o(51247);
@@ -58,18 +58,18 @@ public class c
     return null;
   }
   
-  public void bAm() {}
+  public void bBh() {}
   
   public final i getRecyclerView()
   {
-    return this.mIR;
+    return this.mNT;
   }
   
   public final void onViewAdded(View paramView)
   {
     AppMethodBeat.i(51249);
     super.onViewAdded(paramView);
-    Object localObject = this.mIQ;
+    Object localObject = this.mNS;
     n localn;
     ViewPropertyAnimator localViewPropertyAnimator;
     float f2;
@@ -79,15 +79,15 @@ public class c
       localObject = ((n)localObject).auu;
       if (p.i(paramView, localObject))
       {
-        localn = this.mIQ;
+        localn = this.mNS;
         if (localn == null) {
-          p.gfZ();
+          p.gkB();
         }
         localViewPropertyAnimator = localn.auu.animate();
         paramView = localn.auu;
         p.g(paramView, "floatHolder.itemView");
         f2 = paramView.getTranslationY();
-        TextView localTextView = localn.mJc;
+        TextView localTextView = localn.mOe;
         localObject = localTextView.getLayoutParams();
         paramView = (View)localObject;
         if (!(localObject instanceof RelativeLayout.LayoutParams)) {
@@ -122,7 +122,7 @@ public class c
     AppMethodBeat.o(51248);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView$attachDragCallback$2$1", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/IItemDragResultCallback;", "isCanCancel", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "target", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "isCanMove", "holder", "from", "", "to", "itemContent", "", "isDragEnable", "onCreateFloatView", "Landroid/view/View;", "onDelete", "", "dragObject", "onDrag", "floatView", "area", "onDragEnd", "startPos", "endPos", "isInserted", "onDragRelease", "plugin-appbrand-integration_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView$attachDragCallback$2$1", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/IItemDragResultCallback;", "isCanCancel", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "target", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "isCanMove", "holder", "from", "", "to", "itemContent", "", "isDragEnable", "onCreateFloatView", "Landroid/view/View;", "onDelete", "", "dragObject", "onDrag", "floatView", "area", "onDragEnd", "startPos", "endPos", "isInserted", "onDragRelease", "plugin-appbrand-integration_release"})
   public static final class a
     implements g
   {
@@ -148,18 +148,18 @@ public class c
     public final void b(int paramInt1, int paramInt2, Object paramObject, boolean paramBoolean)
     {
       AppMethodBeat.i(51242);
-      this.mIS.bAm();
+      this.mNU.bBh();
       AppMethodBeat.o(51242);
     }
     
-    public final void cB(Object paramObject)
+    public final void cC(Object paramObject)
     {
       AppMethodBeat.i(51243);
-      this.mIS.bAm();
+      this.mNU.bBh();
       AppMethodBeat.o(51243);
     }
     
-    public final void cP(View paramView)
+    public final void cQ(View paramView)
     {
       AppMethodBeat.i(51245);
       p.h(paramView, "floatView");
@@ -169,9 +169,9 @@ public class c
     public final View e(RecyclerView paramRecyclerView, RecyclerView.w paramw)
     {
       AppMethodBeat.i(51244);
-      c localc = this.mIS;
+      c localc = this.mNU;
       if (paramRecyclerView == null) {
-        p.gfZ();
+        p.gkB();
       }
       if (paramw == null)
       {
@@ -185,31 +185,31 @@ public class c
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView$attachDragCallback$1", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/OnDragCallback;", "getDragViewTransX", "", "getDragViewTransY", "getScaleView", "Landroid/view/View;", "floatView", "onDragObject", "", "o", "onPositionChanged", "", "dragObject", "targetPosition", "", "plugin-appbrand-integration_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView$attachDragCallback$1", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/OnDragCallback;", "getDragViewTransX", "", "getDragViewTransY", "getScaleView", "Landroid/view/View;", "floatView", "onDragObject", "", "o", "onPositionChanged", "", "dragObject", "targetPosition", "", "plugin-appbrand-integration_release"})
   public static final class b
     implements m
   {
-    public final float bAn()
+    public final float bBi()
     {
       return 0.0F;
     }
     
-    public final float bAo()
+    public final float bBj()
     {
       return 0.0F;
     }
     
-    public final Object cC(Object paramObject)
+    public final Object cD(Object paramObject)
     {
       AppMethodBeat.i(51246);
       if (paramObject == null) {
-        p.gfZ();
+        p.gkB();
       }
       AppMethodBeat.o(51246);
       return paramObject;
     }
     
-    public final View cQ(View paramView)
+    public final View cR(View paramView)
     {
       return null;
     }
@@ -219,7 +219,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.c
  * JD-Core Version:    0.7.0.1
  */

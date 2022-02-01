@@ -866,6 +866,7 @@ public final class a
     public static final int get_location_failed_icon = 2131690293;
     public static final int get_location_icon = 2131690294;
     public static final int grid_item_video_pic = 2131690295;
+    public static final int group_tool_live = 2131691624;
     public static final int hide_emoji_panel = 2131690296;
     public static final int honey_pay_add_friend = 2131690297;
     public static final int honey_pay_bank_logo = 2131690298;
@@ -892,6 +893,7 @@ public final class a
     public static final int honey_pay_watermask = 2131690319;
     public static final int ic_appbrand_actionbar_more_black = 2131690320;
     public static final int ic_appbrand_star_mark = 2131690321;
+    public static final int ic_chat_list_empty = 2131691625;
     public static final int ic_filled_bell = 2131689656;
     public static final int ic_filled_bell_dark = 2131691591;
     public static final int ic_filled_loading_fail = 2131691570;
@@ -971,6 +973,7 @@ public final class a
     public static final int icons_filled_chat_alert = 2131690367;
     public static final int icons_filled_chats = 2131690368;
     public static final int icons_filled_chats_hl = 2131690369;
+    public static final int icons_filled_cheer = 2131691626;
     public static final int icons_filled_clip = 2131690370;
     public static final int icons_filled_close = 2131690371;
     public static final int icons_filled_close2 = 2131690372;
@@ -1173,6 +1176,7 @@ public final class a
     public static final int icons_outlined_chat_alert = 2131690531;
     public static final int icons_outlined_chats = 2131690532;
     public static final int icons_outlined_chats_middle = 2131690533;
+    public static final int icons_outlined_cheer = 2131691627;
     public static final int icons_outlined_clip = 2131690534;
     public static final int icons_outlined_close = 2131690535;
     public static final int icons_outlined_close2 = 2131690536;
@@ -1184,6 +1188,8 @@ public final class a
     public static final int icons_outlined_colorful_favorites_dark = 2131690542;
     public static final int icons_outlined_colorful_game = 2131690543;
     public static final int icons_outlined_colorful_game_dark = 2131690544;
+    public static final int icons_outlined_colorful_handoff = 2131691628;
+    public static final int icons_outlined_colorful_handoff_success = 2131691629;
     public static final int icons_outlined_colorful_moment = 2131690545;
     public static final int icons_outlined_colorful_moment_dark = 2131690546;
     public static final int icons_outlined_comment = 2131690547;
@@ -1337,6 +1343,7 @@ public final class a
     public static final int image_download_fail_icon = 2131690686;
     public static final int image_gallery_image_download_done_icon = 2131690687;
     public static final int image_gallery_load_hd_cancel_icon = 2131690688;
+    public static final int image_gallery_search_image_bubble_triangle = 2131691630;
     public static final int image_gallery_video_pause_normal = 2131690689;
     public static final int image_gallery_video_pause_pressed = 2131690690;
     public static final int image_gallery_video_play_normal = 2131690691;
@@ -1937,7 +1944,9 @@ public final class a
     public static final int spinner_16_outer_holo = 2131691472;
     public static final int spinner_48_outer_holo = 2131691588;
     public static final int spinner_76_outer_holo = 2131691589;
+    public static final int spinner_white_16_outer_holo = 2131691631;
     public static final int spinner_white_48_outer_holo = 2131691590;
+    public static final int spinner_white_76_outer_holo = 2131691632;
     public static final int star_mark = 2131691253;
     public static final int status_accountkey = 2131691254;
     public static final int status_accountkey_off = 2131691255;

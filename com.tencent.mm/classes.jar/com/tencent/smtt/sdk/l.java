@@ -1,424 +1,616 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.utils.TbsLog;
+import com.tencent.smtt.utils.f;
 import java.io.File;
-import java.io.IOException;
-import java.util.Properties;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class l
+public class l
 {
-  private static l a = null;
-  private static Context b = null;
+  public static final String a = CookieManager.LOGTAG;
+  static File b;
   
-  static l a(Context paramContext)
+  public static File a(Context paramContext)
   {
-    AppMethodBeat.i(54095);
-    if (a == null) {}
+    AppMethodBeat.i(192925);
+    if ((b == null) && (paramContext != null)) {
+      b = new File(paramContext.getDir("webview", 0), "Cookies");
+    }
+    if (b == null) {
+      b = new File("/data/data/" + paramContext.getPackageName() + File.separator + "app_webview" + File.separator + "Cookies");
+    }
+    paramContext = b;
+    AppMethodBeat.o(192925);
+    return paramContext;
+  }
+  
+  private static String a(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  {
+    AppMethodBeat.i(192929);
+    paramSQLiteDatabase = paramSQLiteDatabase.rawQuery("select * from ".concat(String.valueOf(paramString)), null);
+    int i = paramSQLiteDatabase.getCount();
+    int j = paramSQLiteDatabase.getColumnCount();
+    paramString = new StringBuilder();
+    paramString.append("raws:" + i + ",columns:" + j + "\n");
+    if ((i > 0) && (paramSQLiteDatabase.moveToFirst()))
+    {
+      label125:
+      do
+      {
+        paramString.append("\n");
+        i = 0;
+        while (i < j)
+        {
+          try
+          {
+            String str = paramSQLiteDatabase.getString(i);
+            paramString.append(str).append(",");
+          }
+          catch (Exception localException)
+          {
+            break label125;
+          }
+          i += 1;
+        }
+        paramString.append("\n");
+      } while (paramSQLiteDatabase.moveToNext());
+    }
+    else
+    {
+      paramSQLiteDatabase = paramString.toString();
+      AppMethodBeat.o(192929);
+      return paramSQLiteDatabase;
+    }
+  }
+  
+  public static ArrayList<String> a(SQLiteDatabase paramSQLiteDatabase)
+  {
+    Object localObject3 = null;
+    localObject1 = null;
+    AppMethodBeat.i(192928);
+    if (paramSQLiteDatabase == null)
+    {
+      AppMethodBeat.o(192928);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
     try
     {
-      if (a == null) {
-        a = new l();
+      Cursor localCursor = paramSQLiteDatabase.rawQuery("select * from sqlite_master where type='table'", null);
+      localObject1 = localCursor;
+      localObject3 = localCursor;
+      new StringBuilder("db version:").append(paramSQLiteDatabase.getVersion());
+      localObject1 = localCursor;
+      localObject3 = localCursor;
+      if (localCursor.moveToFirst())
+      {
+        boolean bool;
+        do
+        {
+          localObject1 = localCursor;
+          localObject3 = localCursor;
+          String str1 = localCursor.getString(1);
+          localObject1 = localCursor;
+          localObject3 = localCursor;
+          String str2 = localCursor.getString(4);
+          localObject1 = localCursor;
+          localObject3 = localCursor;
+          localArrayList.add(str1);
+          localObject1 = localCursor;
+          localObject3 = localCursor;
+          new StringBuilder("tablename:").append(str1).append("->").append(str2);
+          localObject1 = localCursor;
+          localObject3 = localCursor;
+          a(paramSQLiteDatabase, str1);
+          localObject1 = localCursor;
+          localObject3 = localCursor;
+          bool = localCursor.moveToNext();
+        } while (bool);
       }
-      b = paramContext.getApplicationContext();
-      paramContext = a;
-      AppMethodBeat.o(54095);
-      return paramContext;
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      if ((paramSQLiteDatabase != null) && (paramSQLiteDatabase.isOpen())) {
+        paramSQLiteDatabase.close();
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        if (localObject1 != null) {
+          localObject1.close();
+        }
+        if ((paramSQLiteDatabase != null) && (paramSQLiteDatabase.isOpen())) {
+          paramSQLiteDatabase.close();
+        }
+      }
     }
     finally
     {
-      AppMethodBeat.o(54095);
+      if (localThrowable == null) {
+        break label260;
+      }
+      localThrowable.close();
+      if ((paramSQLiteDatabase == null) || (!paramSQLiteDatabase.isOpen())) {
+        break label275;
+      }
+      paramSQLiteDatabase.close();
+      AppMethodBeat.o(192928);
+    }
+    AppMethodBeat.o(192928);
+    return localArrayList;
+  }
+  
+  public static void a(Context paramContext, CookieManager.a parama, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(192931);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(192931);
+      return;
+    }
+    new StringBuilder("transformCookies:").append(paramString).append(", mode:").append(parama.ordinal());
+    long l = System.currentTimeMillis();
+    if ((parama == CookieManager.a.b) && (TextUtils.isEmpty(paramString)))
+    {
+      AppMethodBeat.o(192931);
+      return;
+    }
+    String[] arrayOfString = paramString.split(",");
+    if ((arrayOfString == null) || (arrayOfString.length <= 0))
+    {
+      AppMethodBeat.o(192931);
+      return;
+    }
+    SQLiteDatabase localSQLiteDatabase = c(paramContext);
+    if (localSQLiteDatabase == null)
+    {
+      AppMethodBeat.o(192931);
+      return;
+    }
+    Object localObject1 = null;
+    paramString = null;
+    HashMap localHashMap = new HashMap();
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        Cursor localCursor = localSQLiteDatabase.rawQuery("select * from cookies", null);
+        paramString = localCursor;
+        localObject1 = localCursor;
+        int m = localCursor.getCount();
+        if (m > 0)
+        {
+          paramString = localCursor;
+          localObject1 = localCursor;
+          if (localCursor.moveToFirst())
+          {
+            paramString = localCursor;
+            localObject1 = localCursor;
+            String str = localCursor.getString(localCursor.getColumnIndex("host_key"));
+            paramString = localCursor;
+            localObject1 = localCursor;
+            if (parama == CookieManager.a.b)
+            {
+              int k = 0;
+              paramString = localCursor;
+              localObject1 = localCursor;
+              int n = arrayOfString.length;
+              i = 0;
+              j = k;
+              if (i >= n) {
+                break label849;
+              }
+              paramString = localCursor;
+              localObject1 = localCursor;
+              if (!str.equals(arrayOfString[i])) {
+                continue;
+              }
+              j = 1;
+              break label849;
+            }
+            paramString = localCursor;
+            localObject1 = localCursor;
+            Object localObject2 = new StringBuilder();
+            paramString = localCursor;
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(localCursor.getString(localCursor.getColumnIndex("value")));
+            paramString = localCursor;
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(";").append(localCursor.getString(localCursor.getColumnIndex("name")));
+            paramString = localCursor;
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(";").append(localCursor.getInt(localCursor.getColumnIndex("expires_utc")));
+            paramString = localCursor;
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(";").append(localCursor.getInt(localCursor.getColumnIndex("priority")));
+            paramString = localCursor;
+            localObject1 = localCursor;
+            localObject2 = ((StringBuilder)localObject2).toString();
+            paramString = localCursor;
+            localObject1 = localCursor;
+            localHashMap.put(str, localObject2);
+            paramString = localCursor;
+            localObject1 = localCursor;
+            new StringBuilder("key : value -> ").append(str).append(":").append((String)localObject2);
+            paramString = localCursor;
+            localObject1 = localCursor;
+            if (localCursor.moveToNext()) {
+              continue;
+            }
+          }
+        }
+        paramString = localCursor;
+        localObject1 = localCursor;
+        new StringBuilder("transformCookies,nums - > num : ").append(m).append(",count:").append(localHashMap.size());
+        if (localCursor != null) {
+          localCursor.close();
+        }
+        if ((localSQLiteDatabase != null) && (localSQLiteDatabase.isOpen())) {
+          localSQLiteDatabase.close();
+        }
+      }
+      catch (Throwable parama)
+      {
+        localObject1 = paramString;
+        new StringBuilder("getCookieDBVersion exception:").append(parama.toString());
+        if (paramString == null) {
+          continue;
+        }
+        paramString.close();
+        if ((localSQLiteDatabase == null) || (!localSQLiteDatabase.isOpen())) {
+          continue;
+        }
+        localSQLiteDatabase.close();
+        continue;
+      }
+      finally
+      {
+        if (localObject1 == null) {
+          continue;
+        }
+        ((Cursor)localObject1).close();
+        if ((localSQLiteDatabase == null) || (!localSQLiteDatabase.isOpen())) {
+          continue;
+        }
+        localSQLiteDatabase.close();
+        AppMethodBeat.o(192931);
+      }
+      if (localHashMap.isEmpty())
+      {
+        AppMethodBeat.o(192931);
+        return;
+        i += 1;
+      }
+      else
+      {
+        b(paramContext);
+        parama = localHashMap.entrySet().iterator();
+        while (parama.hasNext())
+        {
+          localObject1 = (Map.Entry)parama.next();
+          paramString = (String)((Map.Entry)localObject1).getKey();
+          localObject1 = (String)((Map.Entry)localObject1).getValue();
+          new StringBuilder("set cookie:").append(paramString).append(",").append((String)localObject1);
+          CookieManager.getInstance().setCookie(paramString, (String)localObject1, true);
+        }
+        if (Build.VERSION.SDK_INT >= 21) {
+          CookieManager.getInstance().flush();
+        }
+        for (;;)
+        {
+          if (paramBoolean1)
+          {
+            a(c(paramContext));
+            i = d(paramContext);
+            if (i != -1)
+            {
+              CookieManager.getInstance();
+              CookieManager.setROMCookieDBVersion(paramContext, i);
+            }
+          }
+          new StringBuilder("transformCookies,timeused:").append(System.currentTimeMillis() - l);
+          AppMethodBeat.o(192931);
+          return;
+          CookieSyncManager.getInstance().sync();
+        }
+        label849:
+        if (j == 0) {}
+      }
     }
   }
   
-  /* Error */
-  private Properties e()
+  public static boolean b(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 43
-    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: invokevirtual 46	com/tencent/smtt/sdk/l:a	()Ljava/io/File;
-    //   9: astore_1
-    //   10: new 48	java/util/Properties
-    //   13: dup
-    //   14: invokespecial 49	java/util/Properties:<init>	()V
-    //   17: astore_2
-    //   18: aload_1
-    //   19: ifnull +109 -> 128
-    //   22: new 51	java/io/BufferedInputStream
-    //   25: dup
-    //   26: new 53	java/io/FileInputStream
-    //   29: dup
-    //   30: aload_1
-    //   31: invokespecial 56	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   34: invokespecial 59	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   37: astore_1
-    //   38: aload_2
-    //   39: aload_1
-    //   40: invokevirtual 62	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   43: aload_1
-    //   44: ifnull +7 -> 51
-    //   47: aload_1
-    //   48: invokevirtual 65	java/io/BufferedInputStream:close	()V
-    //   51: ldc 43
-    //   53: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   56: aload_2
-    //   57: areturn
-    //   58: astore_1
-    //   59: aconst_null
-    //   60: astore_2
-    //   61: aconst_null
-    //   62: astore_1
-    //   63: aload_1
-    //   64: ifnull +7 -> 71
-    //   67: aload_1
-    //   68: invokevirtual 65	java/io/BufferedInputStream:close	()V
-    //   71: ldc 43
-    //   73: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   76: aload_2
-    //   77: areturn
-    //   78: astore_1
-    //   79: aconst_null
-    //   80: astore_2
-    //   81: aload_2
-    //   82: ifnull +7 -> 89
-    //   85: aload_2
-    //   86: invokevirtual 65	java/io/BufferedInputStream:close	()V
-    //   89: ldc 43
-    //   91: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: aload_1
-    //   95: athrow
-    //   96: astore_1
-    //   97: goto -46 -> 51
-    //   100: astore_1
-    //   101: goto -30 -> 71
-    //   104: astore_2
-    //   105: goto -16 -> 89
-    //   108: astore_2
-    //   109: aload_1
-    //   110: astore_3
-    //   111: aload_2
-    //   112: astore_1
-    //   113: aload_3
-    //   114: astore_2
-    //   115: goto -34 -> 81
-    //   118: astore_1
-    //   119: aconst_null
-    //   120: astore_1
-    //   121: goto -58 -> 63
-    //   124: astore_3
-    //   125: goto -62 -> 63
-    //   128: aconst_null
-    //   129: astore_1
-    //   130: goto -87 -> 43
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	133	0	this	l
-    //   9	39	1	localObject1	Object
-    //   58	1	1	localException1	java.lang.Exception
-    //   62	6	1	localObject2	Object
-    //   78	17	1	localObject3	Object
-    //   96	1	1	localIOException1	IOException
-    //   100	10	1	localIOException2	IOException
-    //   112	1	1	localObject4	Object
-    //   118	1	1	localException2	java.lang.Exception
-    //   120	10	1	localObject5	Object
-    //   17	69	2	localProperties	Properties
-    //   104	1	2	localIOException3	IOException
-    //   108	4	2	localObject6	Object
-    //   114	1	2	localObject7	Object
-    //   110	4	3	localIOException4	IOException
-    //   124	1	3	localException3	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   5	18	58	java/lang/Exception
-    //   5	18	78	finally
-    //   22	38	78	finally
-    //   47	51	96	java/io/IOException
-    //   67	71	100	java/io/IOException
-    //   85	89	104	java/io/IOException
-    //   38	43	108	finally
-    //   22	38	118	java/lang/Exception
-    //   38	43	124	java/lang/Exception
+    AppMethodBeat.i(192926);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(192926);
+      return false;
+    }
+    f.a(a(paramContext), false);
+    AppMethodBeat.o(192926);
+    return true;
   }
   
-  File a()
+  public static SQLiteDatabase c(Context paramContext)
   {
-    AppMethodBeat.i(54098);
-    o.a();
-    File localFile = new File(o.s(b), "tbscoreinstall.txt");
-    if (!localFile.exists()) {}
+    Object localObject = null;
+    AppMethodBeat.i(192927);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(192927);
+      return null;
+    }
+    paramContext = a(paramContext);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(192927);
+      return null;
+    }
     try
     {
-      localFile.createNewFile();
-      AppMethodBeat.o(54098);
-      return localFile;
+      paramContext = SQLiteDatabase.openDatabase(paramContext.getAbsolutePath(), null, 0);
+      if (paramContext == null) {
+        TbsLog.i(a, "dbPath is not exist!");
+      }
+      AppMethodBeat.o(192927);
+      return paramContext;
     }
-    catch (IOException localIOException)
+    catch (Exception paramContext)
     {
-      AppMethodBeat.o(54098);
+      for (;;)
+      {
+        paramContext = localObject;
+      }
     }
-    return null;
-  }
-  
-  void a(int paramInt)
-  {
-    AppMethodBeat.i(54102);
-    a("dexopt_retry_num", paramInt);
-    AppMethodBeat.o(54102);
-  }
-  
-  void a(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(54096);
-    a("copy_core_ver", paramInt1);
-    a("copy_status", paramInt2);
-    AppMethodBeat.o(54096);
-  }
-  
-  void a(String paramString)
-  {
-    AppMethodBeat.i(54104);
-    a("install_apk_path", paramString);
-    AppMethodBeat.o(54104);
-  }
-  
-  void a(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(54111);
-    a(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(54111);
   }
   
   /* Error */
-  void a(String paramString1, String paramString2)
+  public static int d(Context paramContext)
   {
     // Byte code:
-    //   0: ldc 116
-    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 118
-    //   7: new 120	java/lang/StringBuilder
-    //   10: dup
-    //   11: ldc 122
-    //   13: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   16: aload_1
-    //   17: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: ldc 130
-    //   22: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_2
-    //   26: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 139	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: aconst_null
-    //   36: astore 4
-    //   38: aload_0
-    //   39: invokespecial 141	com/tencent/smtt/sdk/l:e	()Ljava/util/Properties;
-    //   42: astore 5
-    //   44: aload 4
-    //   46: astore_3
-    //   47: aload 5
-    //   49: ifnull +61 -> 110
-    //   52: aload 5
-    //   54: aload_1
-    //   55: aload_2
-    //   56: invokevirtual 145	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   59: pop
-    //   60: aload_0
-    //   61: invokevirtual 46	com/tencent/smtt/sdk/l:a	()Ljava/io/File;
-    //   64: astore_2
-    //   65: aload 4
-    //   67: astore_3
-    //   68: aload_2
-    //   69: ifnull +41 -> 110
-    //   72: new 147	java/io/FileOutputStream
-    //   75: dup
-    //   76: aload_2
-    //   77: invokespecial 148	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   80: astore_2
-    //   81: aload 5
-    //   83: aload_2
-    //   84: new 120	java/lang/StringBuilder
-    //   87: dup
-    //   88: ldc 150
-    //   90: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   93: aload_1
-    //   94: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: ldc 152
-    //   99: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokevirtual 156	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   108: aload_2
-    //   109: astore_3
-    //   110: aload_3
-    //   111: ifnull +62 -> 173
-    //   114: aload_3
-    //   115: invokevirtual 157	java/io/FileOutputStream:close	()V
-    //   118: ldc 116
-    //   120: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   123: return
-    //   124: astore_1
-    //   125: ldc 116
-    //   127: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   130: return
-    //   131: astore_1
-    //   132: aconst_null
-    //   133: astore_2
-    //   134: aload_2
-    //   135: ifnull +38 -> 173
-    //   138: aload_2
-    //   139: invokevirtual 157	java/io/FileOutputStream:close	()V
-    //   142: ldc 116
-    //   144: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   147: return
-    //   148: astore_1
-    //   149: ldc 116
-    //   151: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   154: return
-    //   155: astore_1
-    //   156: aconst_null
-    //   157: astore_2
-    //   158: aload_2
-    //   159: ifnull +7 -> 166
-    //   162: aload_2
-    //   163: invokevirtual 157	java/io/FileOutputStream:close	()V
-    //   166: ldc 116
-    //   168: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   171: aload_1
-    //   172: athrow
-    //   173: ldc 116
-    //   175: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   178: return
-    //   179: astore_2
-    //   180: goto -14 -> 166
-    //   183: astore_1
-    //   184: goto -26 -> 158
-    //   187: astore_1
-    //   188: goto -54 -> 134
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: iconst_0
+    //   3: istore_2
+    //   4: ldc_w 337
+    //   7: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: invokestatic 176	java/lang/System:currentTimeMillis	()J
+    //   13: lstore 5
+    //   15: aload_0
+    //   16: invokestatic 193	com/tencent/smtt/sdk/l:c	(Landroid/content/Context;)Landroid/database/sqlite/SQLiteDatabase;
+    //   19: astore_0
+    //   20: aload_0
+    //   21: ifnonnull +26 -> 47
+    //   24: aload_0
+    //   25: ifnull +14 -> 39
+    //   28: aload_0
+    //   29: invokevirtual 156	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   32: ifeq +7 -> 39
+    //   35: aload_0
+    //   36: invokevirtual 157	android/database/sqlite/SQLiteDatabase:close	()V
+    //   39: ldc_w 337
+    //   42: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: iconst_m1
+    //   46: ireturn
+    //   47: aload_0
+    //   48: ldc_w 339
+    //   51: aconst_null
+    //   52: invokevirtual 93	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   55: astore 8
+    //   57: aload 8
+    //   59: astore 10
+    //   61: aload_0
+    //   62: astore 9
+    //   64: aload 8
+    //   66: invokeinterface 99 1 0
+    //   71: istore 4
+    //   73: aload 8
+    //   75: astore 10
+    //   77: aload_0
+    //   78: astore 9
+    //   80: aload 8
+    //   82: invokeinterface 102 1 0
+    //   87: pop
+    //   88: iload_2
+    //   89: istore_1
+    //   90: iload 4
+    //   92: ifle +65 -> 157
+    //   95: iload_2
+    //   96: istore_1
+    //   97: aload 8
+    //   99: astore 10
+    //   101: aload_0
+    //   102: astore 9
+    //   104: aload 8
+    //   106: invokeinterface 117 1 0
+    //   111: ifeq +46 -> 157
+    //   114: aload 8
+    //   116: astore 10
+    //   118: aload_0
+    //   119: astore 9
+    //   121: aload 8
+    //   123: iconst_0
+    //   124: invokeinterface 121 2 0
+    //   129: ldc_w 341
+    //   132: invokevirtual 207	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   135: ifeq +93 -> 228
+    //   138: aload 8
+    //   140: astore 10
+    //   142: aload_0
+    //   143: astore 9
+    //   145: aload 8
+    //   147: iconst_1
+    //   148: invokeinterface 121 2 0
+    //   153: invokestatic 346	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   156: istore_1
+    //   157: aload 8
+    //   159: ifnull +10 -> 169
+    //   162: aload 8
+    //   164: invokeinterface 153 1 0
+    //   169: iload_1
+    //   170: istore_2
+    //   171: aload_0
+    //   172: ifnull +18 -> 190
+    //   175: iload_1
+    //   176: istore_2
+    //   177: aload_0
+    //   178: invokevirtual 156	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   181: ifeq +9 -> 190
+    //   184: aload_0
+    //   185: invokevirtual 157	android/database/sqlite/SQLiteDatabase:close	()V
+    //   188: iload_1
+    //   189: istore_2
+    //   190: new 46	java/lang/StringBuilder
+    //   193: dup
+    //   194: ldc_w 348
+    //   197: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   200: iload_2
+    //   201: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   204: ldc_w 350
+    //   207: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: invokestatic 176	java/lang/System:currentTimeMillis	()J
+    //   213: lload 5
+    //   215: lsub
+    //   216: invokevirtual 305	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: ldc_w 337
+    //   223: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   226: iload_2
+    //   227: ireturn
+    //   228: aload 8
+    //   230: astore 10
+    //   232: aload_0
+    //   233: astore 9
+    //   235: aload 8
+    //   237: invokeinterface 126 1 0
+    //   242: istore 7
+    //   244: iload 7
+    //   246: ifne -132 -> 114
+    //   249: iload_2
+    //   250: istore_1
+    //   251: goto -94 -> 157
+    //   254: astore 11
+    //   256: aconst_null
+    //   257: astore 8
+    //   259: aconst_null
+    //   260: astore_0
+    //   261: aload 8
+    //   263: astore 10
+    //   265: aload_0
+    //   266: astore 9
+    //   268: new 46	java/lang/StringBuilder
+    //   271: dup
+    //   272: ldc 240
+    //   274: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   277: aload 11
+    //   279: invokevirtual 241	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   282: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: pop
+    //   286: aload 8
+    //   288: ifnull +10 -> 298
+    //   291: aload 8
+    //   293: invokeinterface 153 1 0
+    //   298: iload_3
+    //   299: istore_2
+    //   300: aload_0
+    //   301: ifnull -111 -> 190
+    //   304: iload_3
+    //   305: istore_2
+    //   306: aload_0
+    //   307: invokevirtual 156	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   310: ifeq -120 -> 190
+    //   313: aload_0
+    //   314: invokevirtual 157	android/database/sqlite/SQLiteDatabase:close	()V
+    //   317: iload_3
+    //   318: istore_2
+    //   319: goto -129 -> 190
+    //   322: astore 8
+    //   324: aconst_null
+    //   325: astore 10
+    //   327: aconst_null
+    //   328: astore_0
+    //   329: aload 10
+    //   331: ifnull +10 -> 341
+    //   334: aload 10
+    //   336: invokeinterface 153 1 0
+    //   341: aload_0
+    //   342: ifnull +14 -> 356
+    //   345: aload_0
+    //   346: invokevirtual 156	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   349: ifeq +7 -> 356
+    //   352: aload_0
+    //   353: invokevirtual 157	android/database/sqlite/SQLiteDatabase:close	()V
+    //   356: ldc_w 337
+    //   359: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   362: aload 8
+    //   364: athrow
+    //   365: astore 8
+    //   367: aconst_null
+    //   368: astore 10
+    //   370: goto -41 -> 329
+    //   373: astore 8
+    //   375: aload 9
+    //   377: astore_0
+    //   378: goto -49 -> 329
+    //   381: astore 11
+    //   383: aconst_null
+    //   384: astore 8
+    //   386: goto -125 -> 261
+    //   389: astore 11
+    //   391: goto -130 -> 261
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	191	0	this	l
-    //   0	191	1	paramString1	String
-    //   0	191	2	paramString2	String
-    //   46	69	3	localObject1	Object
-    //   36	30	4	localObject2	Object
-    //   42	40	5	localProperties	Properties
+    //   0	394	0	paramContext	Context
+    //   89	162	1	i	int
+    //   3	316	2	j	int
+    //   1	317	3	k	int
+    //   71	20	4	m	int
+    //   13	201	5	l	long
+    //   242	3	7	bool	boolean
+    //   55	237	8	localCursor1	Cursor
+    //   322	41	8	localObject1	Object
+    //   365	1	8	localObject2	Object
+    //   373	1	8	localObject3	Object
+    //   384	1	8	localObject4	Object
+    //   62	314	9	localContext	Context
+    //   59	310	10	localCursor2	Cursor
+    //   254	24	11	localThrowable1	Throwable
+    //   381	1	11	localThrowable2	Throwable
+    //   389	1	11	localThrowable3	Throwable
     // Exception table:
     //   from	to	target	type
-    //   114	118	124	java/io/IOException
-    //   38	44	131	java/lang/Exception
-    //   52	65	131	java/lang/Exception
-    //   72	81	131	java/lang/Exception
-    //   138	142	148	java/io/IOException
-    //   38	44	155	finally
-    //   52	65	155	finally
-    //   72	81	155	finally
-    //   162	166	179	java/io/IOException
-    //   81	108	183	finally
-    //   81	108	187	java/lang/Exception
-  }
-  
-  int b()
-  {
-    AppMethodBeat.i(54100);
-    int i = c("install_core_ver");
-    AppMethodBeat.o(54100);
-    return i;
-  }
-  
-  int b(String paramString)
-  {
-    AppMethodBeat.i(54109);
-    Properties localProperties = e();
-    if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
-    {
-      int i = Integer.parseInt(localProperties.getProperty(paramString));
-      AppMethodBeat.o(54109);
-      return i;
-    }
-    AppMethodBeat.o(54109);
-    return -1;
-  }
-  
-  void b(int paramInt)
-  {
-    AppMethodBeat.i(54103);
-    a("unzip_retry_num", paramInt);
-    AppMethodBeat.o(54103);
-  }
-  
-  void b(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(54097);
-    a("tpatch_ver", paramInt1);
-    a("tpatch_status", paramInt2);
-    AppMethodBeat.o(54097);
-  }
-  
-  int c()
-  {
-    AppMethodBeat.i(54101);
-    int i = b("install_status");
-    AppMethodBeat.o(54101);
-    return i;
-  }
-  
-  int c(String paramString)
-  {
-    AppMethodBeat.i(54112);
-    Properties localProperties = e();
-    if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
-    {
-      int i = Integer.parseInt(localProperties.getProperty(paramString));
-      AppMethodBeat.o(54112);
-      return i;
-    }
-    AppMethodBeat.o(54112);
-    return 0;
-  }
-  
-  void c(int paramInt)
-  {
-    AppMethodBeat.i(54106);
-    a("incrupdate_status", paramInt);
-    AppMethodBeat.o(54106);
-  }
-  
-  void c(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(54105);
-    a("install_core_ver", paramInt1);
-    a("install_status", paramInt2);
-    AppMethodBeat.o(54105);
-  }
-  
-  int d()
-  {
-    AppMethodBeat.i(54107);
-    int i = b("incrupdate_status");
-    AppMethodBeat.o(54107);
-    return i;
-  }
-  
-  String d(String paramString)
-  {
-    AppMethodBeat.i(54113);
-    Properties localProperties = e();
-    if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
-    {
-      paramString = localProperties.getProperty(paramString);
-      AppMethodBeat.o(54113);
-      return paramString;
-    }
-    AppMethodBeat.o(54113);
-    return null;
-  }
-  
-  void d(int paramInt)
-  {
-    AppMethodBeat.i(54108);
-    a("unlzma_status", paramInt);
-    AppMethodBeat.o(54108);
+    //   15	20	254	java/lang/Throwable
+    //   15	20	322	finally
+    //   47	57	365	finally
+    //   64	73	373	finally
+    //   80	88	373	finally
+    //   104	114	373	finally
+    //   121	138	373	finally
+    //   145	157	373	finally
+    //   235	244	373	finally
+    //   268	286	373	finally
+    //   47	57	381	java/lang/Throwable
+    //   64	73	389	java/lang/Throwable
+    //   80	88	389	java/lang/Throwable
+    //   104	114	389	java/lang/Throwable
+    //   121	138	389	java/lang/Throwable
+    //   145	157	389	java/lang/Throwable
+    //   235	244	389	java/lang/Throwable
   }
 }
 

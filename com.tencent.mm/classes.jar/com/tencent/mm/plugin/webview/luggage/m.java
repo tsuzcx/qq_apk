@@ -22,13 +22,11 @@ import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.b.n;
 import com.tencent.mm.plugin.webview.ui.tools.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.z;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,59 +34,59 @@ import org.json.JSONObject;
 public class m
   extends FrameLayout
 {
-  private g DOl;
-  private TextView DPA;
-  private o DPB;
-  protected n DPC;
-  private v DPD;
-  public com.tencent.mm.ui.widget.a.d DPE;
-  private boolean DPF;
-  private int DPG;
-  private boolean DPH;
-  private boolean DPI;
-  private boolean DPJ;
-  private View.OnClickListener DPK;
-  private com.tencent.mm.ui.statusbar.b DPv;
-  private View DPw;
-  private ImageView DPx;
-  protected LinearLayout DPy;
-  private ImageView DPz;
-  private TextView lCL;
+  private g Egl;
+  private TextView EhA;
+  private o EhB;
+  protected n EhC;
+  private v EhD;
+  public com.tencent.mm.ui.widget.a.d EhE;
+  private boolean EhF;
+  private int EhG;
+  private boolean EhH;
+  private boolean EhI;
+  private boolean EhJ;
+  private View.OnClickListener EhK;
+  private com.tencent.mm.ui.statusbar.b Ehv;
+  private View Ehw;
+  private ImageView Ehx;
+  protected LinearLayout Ehy;
+  private ImageView Ehz;
+  private TextView lHk;
   protected Context mContext;
-  private ImageView mGO;
+  private ImageView mLS;
   private String mTitle;
-  private int vBn;
-  private View yXP;
+  private int vNr;
+  private View zoq;
   
   public m(g paramg)
   {
     super(paramg.mContext);
     AppMethodBeat.i(78384);
-    this.DPE = null;
-    this.DPF = false;
-    this.vBn = 2131689508;
-    this.DPJ = false;
-    this.DPK = new View.OnClickListener()
+    this.EhE = null;
+    this.EhF = false;
+    this.vNr = 2131689508;
+    this.EhJ = false;
+    this.EhK = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207888);
+        AppMethodBeat.i(198068);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (m.a(m.this) == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(207888);
+          AppMethodBeat.o(198068);
           return;
         }
         m.a(m.this).chX.a(new com.tencent.luggage.d.d()
         {
-          public final JSONObject BO()
+          public final JSONObject BP()
           {
-            AppMethodBeat.i(207887);
+            AppMethodBeat.i(198067);
             JSONObject localJSONObject = new JSONObject();
-            AppMethodBeat.o(207887);
+            AppMethodBeat.o(198067);
             return localJSONObject;
           }
           
@@ -98,130 +96,84 @@ public class m
           }
         });
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(207888);
+        AppMethodBeat.o(198068);
       }
     };
     setId(2131308150);
     this.mContext = paramg.mContext;
-    this.DOl = paramg;
+    this.Egl = paramg;
     setBackgroundColor(0);
-    this.DPv = new c(this.mContext);
-    addView(this.DPv, -1, -1);
-    this.DPG = android.support.v4.content.b.n(this.mContext, 2131099873);
-    this.yXP = z.jO(getContext()).inflate(2131496079, this, false);
-    this.yXP.setBackgroundColor(this.DPG);
-    this.DPv.addView(this.yXP, new FrameLayout.LayoutParams(-1, getActionBarHeight()));
-    this.DPw = this.yXP.findViewById(2131308352);
-    this.DPx = ((ImageView)this.yXP.findViewById(2131299154));
-    this.mGO = ((ImageView)this.yXP.findViewById(2131296396));
-    this.mGO.setOnClickListener(new View.OnClickListener()
+    this.Ehv = new c(this.mContext);
+    addView(this.Ehv, -1, -1);
+    this.EhG = android.support.v4.content.b.n(this.mContext, 2131099873);
+    this.zoq = z.jV(getContext()).inflate(2131496079, this, false);
+    this.zoq.setBackgroundColor(this.EhG);
+    this.Ehv.addView(this.zoq, new FrameLayout.LayoutParams(-1, getActionBarHeight()));
+    this.Ehw = this.zoq.findViewById(2131308352);
+    this.Ehx = ((ImageView)this.zoq.findViewById(2131299154));
+    this.mLS = ((ImageView)this.zoq.findViewById(2131296396));
+    this.mLS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78375);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (!m.this.ePd()) {
-          m.this.cXo();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (!m.this.eSP()) {
+          m.this.cZY();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78375);
       }
     });
-    this.lCL = ((TextView)this.yXP.findViewById(2131305902));
-    this.DPy = ((LinearLayout)this.yXP.findViewById(2131296410));
-    this.DPz = ((ImageView)this.yXP.findViewById(2131296409));
-    this.DPz.setOnClickListener(new View.OnClickListener()
+    this.lHk = ((TextView)this.zoq.findViewById(2131305902));
+    this.Ehy = ((LinearLayout)this.zoq.findViewById(2131296410));
+    this.Ehz = ((ImageView)this.zoq.findViewById(2131296409));
+    this.Ehz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78376);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        m.this.cXp();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        m.this.cZZ();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78376);
       }
     });
-    this.DPz.setClickable(false);
-    this.DPA = ((TextView)this.yXP.findViewById(2131296411));
-    this.DPA.setOnClickListener(new View.OnClickListener()
+    this.Ehz.setClickable(false);
+    this.EhA = ((TextView)this.zoq.findViewById(2131296411));
+    this.EhA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78377);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        m.this.cXp();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        m.this.cZZ();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageWebActionBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78377);
       }
     });
-    this.DPA.setClickable(false);
+    this.EhA.setClickable(false);
+    if (com.tencent.mm.cb.a.ir(getContext())) {
+      this.lHk.setTextSize(0, com.tencent.mm.cb.a.ay(getContext(), 2131165200) * com.tencent.mm.cb.a.ip(getContext()));
+    }
     AppMethodBeat.o(78384);
   }
   
   private int getActionBarHeight()
   {
     AppMethodBeat.i(78391);
-    int i = ar.dT(aj.getContext());
+    int i = com.tencent.mm.ui.ar.dX(ak.getContext());
     AppMethodBeat.o(78391);
     return i;
   }
   
-  private void setImmersiveStyle(boolean paramBoolean)
-  {
-    AppMethodBeat.i(207893);
-    ad.i("MicroMsg.GameWebViewActionBar", "setImmersiveStyle");
-    com.tencent.mm.ui.statusbar.b localb = this.DPv;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      com.tencent.mm.ui.statusbar.a.e(localb, 0, bool);
-      this.yXP.setBackgroundColor(0);
-      this.lCL.setVisibility(8);
-      this.DPx.setVisibility(8);
-      this.mGO.setImageAlpha(255);
-      this.DPz.setImageAlpha(255);
-      if (!paramBoolean) {
-        break;
-      }
-      this.mGO.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(207885);
-          m.c(m.this).setColorFilter(-1);
-          AppMethodBeat.o(207885);
-        }
-      });
-      if (this.DPF) {
-        break label156;
-      }
-      this.DPz.setImageResource(2131689500);
-      AppMethodBeat.o(207893);
-      return;
-    }
-    this.mGO.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(207886);
-        m.c(m.this).setColorFilter(-16777216);
-        AppMethodBeat.o(207886);
-      }
-    });
-    if (!this.DPF) {
-      this.DPz.setImageResource(2131689493);
-    }
-    label156:
-    AppMethodBeat.o(207893);
-  }
-  
-  public final void N(JSONArray paramJSONArray)
+  public final void O(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(78395);
     if (paramJSONArray != null)
@@ -229,14 +181,14 @@ public class m
       int i = 0;
       while (i < paramJSONArray.length())
       {
-        getMenuHelp().aHf(paramJSONArray.optString(i));
+        getMenuHelp().aIz(paramJSONArray.optString(i));
         i += 1;
       }
     }
     AppMethodBeat.o(78395);
   }
   
-  public final void O(JSONArray paramJSONArray)
+  public final void P(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(78396);
     if (paramJSONArray != null)
@@ -244,21 +196,21 @@ public class m
       int i = 0;
       while (i < paramJSONArray.length())
       {
-        getMenuHelp().aHg(paramJSONArray.optString(i));
+        getMenuHelp().aIA(paramJSONArray.optString(i));
         i += 1;
       }
     }
     AppMethodBeat.o(78396);
   }
   
-  public void cXo()
+  public void cZY()
   {
     AppMethodBeat.i(78392);
-    this.DOl.gg(true);
+    this.Egl.ge(true);
     AppMethodBeat.o(78392);
   }
   
-  public void cXp()
+  public void cZZ()
   {
     AppMethodBeat.i(78389);
     boolean bool = false;
@@ -277,37 +229,30 @@ public class m
     if (bool) {}
     for (long l = 100L;; l = 0L)
     {
-      aq.o(local7, l);
+      com.tencent.mm.sdk.platformtools.ar.o(local7, l);
       AppMethodBeat.o(78389);
       return;
     }
   }
   
-  public void cXq()
+  public void daa()
   {
     AppMethodBeat.i(78390);
-    if (this.DPB != null) {
-      this.DPB.ePB();
+    if (this.EhB != null) {
+      this.EhB.eTn();
     }
     AppMethodBeat.o(78390);
   }
   
-  public final void ePA()
-  {
-    AppMethodBeat.i(207894);
-    setImmersiveStyle(this.DPI);
-    AppMethodBeat.o(207894);
-  }
-  
-  public final boolean ePd()
+  public final boolean eSP()
   {
     AppMethodBeat.i(78398);
-    if ((this.DPD != null) && (this.DPD.ePK()))
+    if ((this.EhD != null) && (this.EhD.eTw()))
     {
-      Object localObject1 = this.DPD.ePL();
-      String str1 = this.DPD.ePM();
-      String str2 = this.DPD.ePN();
-      ad.i("MicroMsg.GameWebViewActionBar", "use js api close window confirm info : %s, %s, %s", new Object[] { localObject1, str1, str2 });
+      Object localObject1 = this.EhD.eTx();
+      String str1 = this.EhD.eTy();
+      String str2 = this.EhD.eTz();
+      ae.i("MicroMsg.GameWebViewActionBar", "use js api close window confirm info : %s, %s, %s", new Object[] { localObject1, str1, str2 });
       View localView = View.inflate(getContext(), 2131494763, null);
       Object localObject2 = (CheckBox)localView.findViewById(2131302304);
       ((CheckBox)localObject2).setChecked(false);
@@ -318,13 +263,13 @@ public class m
       localObject1 = (TextView)localView.findViewById(2131302305);
       ((TextView)localObject1).setTextColor(getResources().getColor(2131100711));
       ((TextView)localObject1).setVisibility(8);
-      this.DPE = com.tencent.mm.ui.base.h.a(getContext(), true, "", localView, str1, str2, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.EhE = com.tencent.mm.ui.base.h.a(getContext(), true, "", localView, str1, str2, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(78379);
           m.b(m.this);
-          m.this.cXo();
+          m.this.cZY();
           AppMethodBeat.o(78379);
         }
       }, new DialogInterface.OnClickListener()
@@ -343,40 +288,47 @@ public class m
     return false;
   }
   
-  public final void ePx()
+  public final void eTj()
   {
-    AppMethodBeat.i(207891);
-    this.DPJ = true;
-    if (this.DPx != null) {
-      this.DPx.setVisibility(8);
+    AppMethodBeat.i(198071);
+    this.EhJ = true;
+    if (this.Ehx != null) {
+      this.Ehx.setVisibility(8);
     }
-    if (this.DPw != null) {
-      this.DPw.setVisibility(8);
+    if (this.Ehw != null) {
+      this.Ehw.setVisibility(8);
     }
-    AppMethodBeat.o(207891);
+    AppMethodBeat.o(198071);
   }
   
-  public final void ePy()
+  public final void eTk()
   {
     AppMethodBeat.i(78393);
-    getMenuHelp().ePy();
+    getMenuHelp().eTk();
     AppMethodBeat.o(78393);
   }
   
-  public final void ePz()
+  public final void eTl()
   {
     AppMethodBeat.i(78394);
-    getMenuHelp().ePz();
+    getMenuHelp().eTl();
     AppMethodBeat.o(78394);
+  }
+  
+  public final void eTm()
+  {
+    AppMethodBeat.i(198074);
+    setImmersiveStyle(this.EhI);
+    AppMethodBeat.o(198074);
   }
   
   protected n getMenuHelp()
   {
     AppMethodBeat.i(78388);
-    if (this.DPC == null) {
-      this.DPC = new n();
+    if (this.EhC == null) {
+      this.EhC = new n();
     }
-    n localn = this.DPC;
+    n localn = this.EhC;
     AppMethodBeat.o(78388);
     return localn;
   }
@@ -388,45 +340,45 @@ public class m
   
   public final void i(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(207892);
-    this.DPG = paramInt;
-    this.DPH = paramBoolean1;
-    this.DPI = paramBoolean2;
-    if (this.DPH)
+    AppMethodBeat.i(198072);
+    this.EhG = paramInt;
+    this.EhH = paramBoolean1;
+    this.EhI = paramBoolean2;
+    if (this.EhH)
     {
       setImmersiveStyle(paramBoolean2);
-      AppMethodBeat.o(207892);
+      AppMethodBeat.o(198072);
       return;
     }
     setActionBarColor(paramInt);
-    AppMethodBeat.o(207892);
+    AppMethodBeat.o(198072);
   }
   
   public void onDestroy() {}
   
   public void onForeground() {}
   
-  public void setActionBarColor(int paramInt)
+  protected void setActionBarColor(int paramInt)
   {
     boolean bool1 = true;
     AppMethodBeat.i(78399);
-    ad.i("MicroMsg.GameWebViewActionBar", "setActionBarColor, color : %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.GameWebViewActionBar", "setActionBarColor, color : %d", new Object[] { Integer.valueOf(paramInt) });
     int i = paramInt;
     if (paramInt == 0) {
       i = getResources().getColor(2131101179);
     }
-    boolean bool2 = ao.abX(i);
-    com.tencent.mm.ui.statusbar.b localb = this.DPv;
+    boolean bool2 = ao.acF(i);
+    com.tencent.mm.ui.statusbar.b localb = this.Ehv;
     if (!bool2) {}
     for (;;)
     {
       com.tencent.mm.ui.statusbar.a.e(localb, i, bool1);
-      this.yXP.setBackgroundColor(i);
+      this.zoq.setBackgroundColor(i);
       if (bool2) {
         break;
       }
-      this.lCL.setTextColor(-16777216);
-      this.mGO.post(new Runnable()
+      this.lHk.setTextColor(-16777216);
+      this.mLS.post(new Runnable()
       {
         public final void run()
         {
@@ -435,68 +387,73 @@ public class m
           AppMethodBeat.o(78381);
         }
       });
-      if (this.DPF) {
-        break label177;
+      if (this.EhF) {
+        break label178;
       }
-      this.DPz.setImageResource(2131689493);
+      this.Ehz.setImageResource(2131689493);
       AppMethodBeat.o(78399);
       return;
       bool1 = false;
     }
-    this.lCL.setTextColor(-1);
-    this.mGO.post(new Runnable()
+    this.lHk.setTextColor(-1);
+    this.mLS.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207889);
+        AppMethodBeat.i(198069);
         m.c(m.this).setColorFilter(-1);
-        AppMethodBeat.o(207889);
+        AppMethodBeat.o(198069);
       }
     });
-    if (!this.DPF) {
-      this.DPz.setImageResource(2131689500);
+    if (!this.EhF) {
+      this.Ehz.setImageResource(2131689500);
     }
-    label177:
+    label178:
     AppMethodBeat.o(78399);
+  }
+  
+  public void setActionBarColorValue(int paramInt)
+  {
+    this.EhG = paramInt;
   }
   
   public void setAlpha(float paramFloat)
   {
-    AppMethodBeat.i(207895);
+    AppMethodBeat.i(198075);
     if ((paramFloat < 0.0F) || (paramFloat > 1.0F))
     {
-      AppMethodBeat.o(207895);
+      AppMethodBeat.o(198075);
       return;
     }
     if (paramFloat == 0.0F)
     {
-      ePA();
-      AppMethodBeat.o(207895);
+      eTm();
+      AppMethodBeat.o(198075);
       return;
     }
     int i = (int)(255.0F * paramFloat);
-    this.lCL.setVisibility(0);
-    if (this.DPJ) {
-      this.DPx.setVisibility(8);
+    this.lHk.setVisibility(0);
+    if (this.EhJ) {
+      this.Ehx.setVisibility(8);
     }
     for (;;)
     {
-      setActionBarColor((this.DPG >> 16 & 0xFF) << 16 | i << 24 | (this.DPG >> 8 & 0xFF) << 8 | this.DPG & 0xFF);
-      this.lCL.setAlpha(paramFloat);
-      this.DPx.setImageAlpha(i);
-      this.mGO.setImageAlpha(i);
-      this.DPz.setImageAlpha(i);
-      AppMethodBeat.o(207895);
+      setActionBarColor((this.EhG >> 16 & 0xFF) << 16 | i << 24 | (this.EhG >> 8 & 0xFF) << 8 | this.EhG & 0xFF);
+      this.lHk.setAlpha(paramFloat);
+      this.Ehx.setImageAlpha(i);
+      this.mLS.setImageAlpha(i);
+      this.Ehz.setImageAlpha(i);
+      AppMethodBeat.o(198075);
       return;
-      this.DPx.setVisibility(0);
+      this.Ehx.setVisibility(0);
     }
   }
   
   protected void setBackBtn(int paramInt)
   {
     AppMethodBeat.i(182686);
-    this.vBn = paramInt;
-    this.mGO.setImageResource(paramInt);
+    this.vNr = paramInt;
+    this.mLS.setImageResource(paramInt);
     AppMethodBeat.o(182686);
   }
   
@@ -506,10 +463,59 @@ public class m
     if (paramBundle == null) {}
     for (paramBundle = null;; paramBundle = new v(paramBundle))
     {
-      this.DPD = paramBundle;
+      this.EhD = paramBundle;
       AppMethodBeat.o(78397);
       return;
     }
+  }
+  
+  protected void setImmersiveStyle(boolean paramBoolean)
+  {
+    AppMethodBeat.i(198073);
+    ae.i("MicroMsg.GameWebViewActionBar", "setImmersiveStyle");
+    com.tencent.mm.ui.statusbar.b localb = this.Ehv;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      com.tencent.mm.ui.statusbar.a.e(localb, 0, bool);
+      this.zoq.setBackgroundColor(0);
+      this.lHk.setVisibility(8);
+      this.Ehx.setVisibility(8);
+      this.mLS.setImageAlpha(255);
+      this.Ehz.setImageAlpha(255);
+      if (!paramBoolean) {
+        break;
+      }
+      this.mLS.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(198065);
+          m.c(m.this).setColorFilter(-1);
+          AppMethodBeat.o(198065);
+        }
+      });
+      if (this.EhF) {
+        break label160;
+      }
+      this.Ehz.setImageResource(2131689500);
+      AppMethodBeat.o(198073);
+      return;
+    }
+    this.mLS.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(198066);
+        m.c(m.this).setColorFilter(-16777216);
+        AppMethodBeat.o(198066);
+      }
+    });
+    if (!this.EhF) {
+      this.Ehz.setImageResource(2131689493);
+    }
+    label160:
+    AppMethodBeat.o(198073);
   }
   
   public void setNavigationBarButtons(final Bundle paramBundle)
@@ -527,21 +533,21 @@ public class m
     String str2 = paramBundle.getString("set_navigation_bar_buttons_icon_data");
     String str4 = paramBundle.getString("set_navigation_bar_buttons_text_color");
     final boolean bool2 = paramBundle.getBoolean("set_navigation_bar_buttons_need_click_event", false);
-    final int i = e.fO(str3, -16777216);
-    final int j = (int)e.aIG(str4);
+    final int i = e.ee(str3, -16777216);
+    final int j = (int)e.aJZ(str4);
     paramBundle = localObject;
-    if (!bt.isNullOrNil(str2)) {}
+    if (!bu.isNullOrNil(str2)) {}
     try
     {
-      paramBundle = e.aIH(str2);
-      aq.f(new Runnable()
+      paramBundle = e.aKa(str2);
+      com.tencent.mm.sdk.platformtools.ar.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(207890);
+          AppMethodBeat.i(198070);
           if ((m.this == null) || (m.a(m.this) == null))
           {
-            AppMethodBeat.o(207890);
+            AppMethodBeat.o(198070);
             return;
           }
           if (bool1) {
@@ -555,12 +561,12 @@ public class m
             if (m.c(m.this) != null) {
               m.c(m.this).setImageDrawable(localDrawable);
             }
-            AppMethodBeat.o(207890);
+            AppMethodBeat.o(198070);
             return;
             m.a(m.this, false);
             if ((m.d(m.this) == null) || (m.e(m.this) == null))
             {
-              AppMethodBeat.o(207890);
+              AppMethodBeat.o(198070);
               return;
             }
             m.b(m.this, false);
@@ -579,7 +585,7 @@ public class m
               m.d(m.this).setOnClickListener(m.f(m.this));
               m.e(m.this).setOnClickListener(m.f(m.this));
               break;
-              if (!bt.isNullOrNil(str1))
+              if (!bu.isNullOrNil(str1))
               {
                 m.d(m.this).setVisibility(8);
                 m.e(m.this).setVisibility(0);
@@ -599,7 +605,7 @@ public class m
     {
       for (;;)
       {
-        ad.e("MicroMsg.GameWebViewActionBar", "setNavigationBarButtons, decode base64 image, exception = %s", new Object[] { paramBundle });
+        ae.e("MicroMsg.GameWebViewActionBar", "setNavigationBarButtons, decode base64 image, exception = %s", new Object[] { paramBundle });
         paramBundle = localObject;
       }
     }
@@ -610,29 +616,29 @@ public class m
     AppMethodBeat.i(78385);
     if (paramBoolean)
     {
-      this.DPz.setClickable(true);
-      this.DPA.setClickable(true);
+      this.Ehz.setClickable(true);
+      this.EhA.setClickable(true);
       AppMethodBeat.o(78385);
       return;
     }
-    this.DPz.setClickable(false);
-    this.DPA.setClickable(false);
+    this.Ehz.setClickable(false);
+    this.EhA.setClickable(false);
     AppMethodBeat.o(78385);
   }
   
   public void setTitleColor(int paramInt)
   {
     AppMethodBeat.i(78387);
-    this.lCL.setTextColor(paramInt);
+    this.lHk.setTextColor(paramInt);
     AppMethodBeat.o(78387);
   }
   
   public void setTitleText(String paramString)
   {
     AppMethodBeat.i(78386);
-    ad.d("MicroMsg.GameWebViewActionBar", "setTitleText, title: %s", new Object[] { paramString });
+    ae.d("MicroMsg.GameWebViewActionBar", "setTitleText, title: %s", new Object[] { paramString });
     this.mTitle = paramString;
-    this.lCL.setText(paramString);
+    this.lHk.setText(paramString);
     AppMethodBeat.o(78386);
   }
 }

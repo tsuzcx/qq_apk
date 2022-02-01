@@ -9,9 +9,9 @@ public enum b$a
   static
   {
     AppMethodBeat.i(150979);
-    ioe = new a("OP_Chatting", 0, 1);
-    iof = new a("OP_Msg", 1, 2);
-    iog = new a[] { ioe, iof };
+    iqY = new a("OP_Chatting", 0, 1);
+    iqZ = new a("OP_Msg", 1, 2);
+    ira = new a[] { iqY, iqZ };
     AppMethodBeat.o(150979);
   }
   

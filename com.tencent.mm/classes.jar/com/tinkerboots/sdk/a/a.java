@@ -11,37 +11,37 @@ import com.tinkerboots.sdk.b.c;
 
 public final class a
 {
-  private static volatile a MAp;
-  public b MAo;
-  public final com.tinkerboots.sdk.a.b.a MAq;
-  public boolean cFj;
-  public long jXi;
+  private static volatile a MXw;
+  public b MXv;
+  public final com.tinkerboots.sdk.a.b.a MXx;
+  public boolean cFS;
+  public long kax;
   
   private a(b paramb)
   {
     AppMethodBeat.i(3432);
-    this.jXi = 10800000L;
-    this.MAq = com.tinkerboots.sdk.a.b.a.gdX();
-    this.MAo = paramb;
+    this.kax = 10800000L;
+    this.MXx = com.tinkerboots.sdk.a.b.a.giA();
+    this.MXv = paramb;
     AppMethodBeat.o(3432);
   }
   
   public static a a(b paramb)
   {
     AppMethodBeat.i(3433);
-    if (MAp != null)
+    if (MXw != null)
     {
       paramb = new RuntimeException("tinker server client is already init");
       AppMethodBeat.o(3433);
       throw paramb;
     }
-    if (MAp == null) {}
+    if (MXw == null) {}
     try
     {
-      if (MAp == null) {
-        MAp = new a(paramb);
+      if (MXw == null) {
+        MXw = new a(paramb);
       }
-      paramb = MAp;
+      paramb = MXw;
       AppMethodBeat.o(3433);
       return paramb;
     }
@@ -51,7 +51,7 @@ public final class a
     }
   }
   
-  private static boolean gdW()
+  private static boolean giz()
   {
     AppMethodBeat.i(3436);
     ShareTinkerLog.v("Tinker.ServerClient", "Warning, disableFetchPatchUpdate", new Object[0]);
@@ -60,12 +60,12 @@ public final class a
     return bool;
   }
   
-  public final void aiT(int paramInt)
+  public final void ajD(int paramInt)
   {
     AppMethodBeat.i(3435);
     if (paramInt == -1L)
     {
-      gdW();
+      giz();
       AppMethodBeat.o(3435);
       return;
     }
@@ -75,14 +75,14 @@ public final class a
       AppMethodBeat.o(3435);
       throw localTinkerRuntimeException;
     }
-    this.jXi = (paramInt * 3600L * 1000L);
+    this.kax = (paramInt * 3600L * 1000L);
     AppMethodBeat.o(3435);
   }
   
-  public final void nn(String paramString1, String paramString2)
+  public final void nt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(3434);
-    this.MAq.no(paramString1, paramString2);
+    this.MXx.nu(paramString1, paramString2);
     AppMethodBeat.o(3434);
   }
 }

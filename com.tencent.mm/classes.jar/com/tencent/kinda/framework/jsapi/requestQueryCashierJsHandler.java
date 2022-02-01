@@ -9,10 +9,10 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.KindaJSEventType;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ku;
-import com.tencent.mm.g.a.ku.a;
-import com.tencent.mm.g.a.ku.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.kv;
+import com.tencent.mm.g.a.kv.a;
+import com.tencent.mm.g.a.kv.b;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 
 public class requestQueryCashierJsHandler
@@ -20,37 +20,37 @@ public class requestQueryCashierJsHandler
 {
   public int type;
   
-  public void handle(final ku paramku)
+  public void handle(final kv paramkv)
   {
-    AppMethodBeat.i(199448);
+    AppMethodBeat.i(193158);
     KindaJSEvent localKindaJSEvent = new KindaJSEvent();
     localKindaJSEvent.setDelegate(new KindaJSEvent.KindaJsEventDelegate()
     {
       public void kindaCloseWebViewImpl(boolean paramAnonymousBoolean, VoidCallback paramAnonymousVoidCallback)
       {
-        AppMethodBeat.i(199447);
-        if (paramku.dxS.dxV == null) {
-          paramku.dxS.dxV = new Bundle();
+        AppMethodBeat.i(193157);
+        if (paramkv.dyX.dza == null) {
+          paramkv.dyX.dza = new Bundle();
         }
-        paramku.dxS.dxV.putInt("closeWindow", 1);
-        AppMethodBeat.o(199447);
+        paramkv.dyX.dza.putInt("closeWindow", 1);
+        AppMethodBeat.o(193157);
       }
       
       public void kindaEndWithResult(String paramAnonymousString, HashMap<String, String> paramAnonymousHashMap)
       {
-        AppMethodBeat.i(199446);
-        ad.i("requestQueryCashier", "callback: %s", new Object[] { paramAnonymousString });
-        if (paramku.dxS.dxV == null) {
-          paramku.dxS.dxV = new Bundle();
+        AppMethodBeat.i(193156);
+        ae.i("requestQueryCashier", "callback: %s", new Object[] { paramAnonymousString });
+        if (paramkv.dyX.dza == null) {
+          paramkv.dyX.dza = new Bundle();
         }
-        paramku.dxS.dxV.putString("ret", paramAnonymousString);
-        paramku.dxR.cDO.run();
-        AppMethodBeat.o(199446);
+        paramkv.dyX.dza.putString("ret", paramAnonymousString);
+        paramkv.dyW.cEv.run();
+        AppMethodBeat.o(193156);
       }
       
       public KindaJSEventType kindaGetType()
       {
-        if (paramku.dxR.type == 1) {
+        if (paramkv.dyW.type == 1) {
           return KindaJSEventType.WEB;
         }
         return KindaJSEventType.TINYAPP;
@@ -58,25 +58,25 @@ public class requestQueryCashierJsHandler
     });
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
     localITransmitKvData.putJSEvent("jsEvent", localKindaJSEvent);
-    localITransmitKvData.putString("notifyType", paramku.dxR.dxT.getString("notifyType"));
-    localITransmitKvData.putString("appId", paramku.dxR.dxT.getString("appId"));
-    localITransmitKvData.putString("nonceStr", paramku.dxR.dxT.getString("nonceStr"));
-    localITransmitKvData.putString("timeStamp", paramku.dxR.dxT.getString("timeStamp"));
-    localITransmitKvData.putString("package", paramku.dxR.dxT.getString("package"));
-    localITransmitKvData.putString("paySign", paramku.dxR.dxT.getString("paySign"));
-    localITransmitKvData.putString("signType", paramku.dxR.dxT.getString("signType"));
-    if (paramku.dxR.type == 1) {
+    localITransmitKvData.putString("notifyType", paramkv.dyW.dyY.getString("notifyType"));
+    localITransmitKvData.putString("appId", paramkv.dyW.dyY.getString("appId"));
+    localITransmitKvData.putString("nonceStr", paramkv.dyW.dyY.getString("nonceStr"));
+    localITransmitKvData.putString("timeStamp", paramkv.dyW.dyY.getString("timeStamp"));
+    localITransmitKvData.putString("package", paramkv.dyW.dyY.getString("package"));
+    localITransmitKvData.putString("paySign", paramkv.dyW.dyY.getString("paySign"));
+    localITransmitKvData.putString("signType", paramkv.dyW.dyY.getString("signType"));
+    if (paramkv.dyW.type == 1) {
       localITransmitKvData.putInt("jsApiScene", 1);
     }
     for (;;)
     {
-      ad.d("requestQueryCashierJsHandler", "data: %s", new Object[] { paramku.dxR.dxT.toString() });
+      ae.d("requestQueryCashierJsHandler", "data: %s", new Object[] { paramkv.dyW.dyY.toString() });
       KindaApp.appKinda().notifyAllUseCases(localITransmitKvData);
-      paramku.dxS.dxV.putString("ret", "fail");
-      paramku.dxR.cDO.run();
-      AppMethodBeat.o(199448);
+      paramkv.dyX.dza.putString("ret", "fail");
+      paramkv.dyW.cEv.run();
+      AppMethodBeat.o(193158);
       return;
-      if (paramku.dxR.type == 0) {
+      if (paramkv.dyW.type == 0) {
         localITransmitKvData.putInt("jsApiScene", 2);
       }
     }
@@ -94,7 +94,7 @@ public class requestQueryCashierJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.jsapi.requestQueryCashierJsHandler
  * JD-Core Version:    0.7.0.1
  */

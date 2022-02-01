@@ -73,14 +73,14 @@ public class KindaActionSheetImpl
       this.sheet = new e(localActivity, 1, bool);
       if (bool)
       {
-        View localView = z.jO(localActivity).inflate(2131494775, null);
+        View localView = z.jV(localActivity).inflate(2131494775, null);
         TextView localTextView = (TextView)localView.findViewById(2131305945);
         localTextView.setText(this.title);
         localTextView.setTextSize(14.0F);
         localTextView.setGravity(17);
-        this.sheet.K(localView, false);
+        this.sheet.P(localView, false);
       }
-      this.sheet.KJy = new n.d()
+      this.sheet.LfS = new n.d()
       {
         public void onCreateMMMenu(l paramAnonymousl)
         {
@@ -103,7 +103,7 @@ public class KindaActionSheetImpl
           AppMethodBeat.o(18830);
         }
       };
-      this.sheet.KJz = new n.e()
+      this.sheet.LfT = new n.e()
       {
         public void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -114,7 +114,7 @@ public class KindaActionSheetImpl
           AppMethodBeat.o(18831);
         }
       };
-      this.sheet.cMW();
+      this.sheet.cPF();
       AppMethodBeat.o(18834);
       return;
     }

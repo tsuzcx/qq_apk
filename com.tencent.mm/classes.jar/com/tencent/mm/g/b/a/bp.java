@@ -6,133 +6,127 @@ import com.tencent.mm.plugin.report.a;
 public final class bp
   extends a
 {
-  private String dXk;
-  private long dZT;
-  private long dZW;
-  private String dZX;
-  private String dZY;
-  private String dZZ;
-  private long eaa;
-  private long eab;
-  private String eac;
-  private String ead;
-  private long eae;
-  private String eaf;
-  private String eag;
-  private long eah;
-  private long eai;
-  private long eaj;
-  private String eak;
-  private long eal;
-  private String eam;
-  private long ean;
+  private String dYB = "";
+  private String ebA = "";
+  private long ebB;
+  private long ebC;
+  private long ebD;
+  private String ebE = "";
+  private long ebF;
+  private String ebG = "";
+  private long ebH;
+  private long ebn;
+  private long ebq;
+  private String ebr = "";
+  private String ebs = "";
+  private String ebt = "";
+  private long ebu;
+  private long ebv;
+  private String ebw = "";
+  private String ebx = "";
+  private long eby;
+  private String ebz = "";
+  
+  public final String RC()
+  {
+    AppMethodBeat.i(189258);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.ebq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebr);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebs);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebt);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebv);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebw);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebx);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eby);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebz);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dYB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebA);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebn);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebC);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebD);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebE);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebH);
+    localObject = ((StringBuffer)localObject).toString();
+    axO((String)localObject);
+    AppMethodBeat.o(189258);
+    return localObject;
+  }
   
   public final String RD()
   {
-    AppMethodBeat.i(209223);
+    AppMethodBeat.i(189259);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaa);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eab);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eac);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ead);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eae);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXk);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eag);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eah);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eai);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaj);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eak);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eal);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eam);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ean);
+    ((StringBuffer)localObject).append("RedDotCtrlType:").append(this.ebq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotTipsID:").append(this.ebr);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoPath:").append(this.ebs);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoParentPath:").append(this.ebt);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoType:").append(this.ebu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoCountNum:").append(this.ebv);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoTitle:").append(this.ebw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoExt:").append(this.ebx);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotAction:").append(this.eby);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CurrUI:").append(this.ebz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ContextID:").append(this.dYB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickTabContextID:").append(this.ebA);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TabType:").append(this.ebn);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsOpenRedDotButton:").append(this.ebB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsTriggerByUser:").append(this.ebC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("InnverVersion:").append(this.ebD);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SessionID:").append(this.ebE);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RecTimeStamp:").append(this.ebF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoIconUrl:").append(this.ebG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CurrentTabType:").append(this.ebH);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(209223);
+    AppMethodBeat.o(189259);
     return localObject;
   }
   
-  public final String RE()
+  public final bp Ss()
   {
-    AppMethodBeat.i(209224);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("RedDotCtrlType:").append(this.dZW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotTipsID:").append(this.dZX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoPath:").append(this.dZY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoParentPath:").append(this.dZZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoType:").append(this.eaa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoCountNum:").append(this.eab);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoTitle:").append(this.eac);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoExt:").append(this.ead);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotAction:").append(this.eae);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrUI:").append(this.eaf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ContextID:").append(this.dXk);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTabContextID:").append(this.eag);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TabType:").append(this.dZT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsOpenRedDotButton:").append(this.eah);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsTriggerByUser:").append(this.eai);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InnverVersion:").append(this.eaj);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionID:").append(this.eak);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RecTimeStamp:").append(this.eal);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RedDotShowInfoIconUrl:").append(this.eam);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentTabType:").append(this.ean);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(209224);
-    return localObject;
-  }
-  
-  public final bp Su()
-  {
-    this.eaj = 1L;
-    return this;
-  }
-  
-  public final bp ge(long paramLong)
-  {
-    this.dZW = paramLong;
+    this.ebD = 1L;
     return this;
   }
   
@@ -141,137 +135,143 @@ public final class bp
     return 20411;
   }
   
-  public final bp gf(long paramLong)
-  {
-    this.eaa = paramLong;
-    return this;
-  }
-  
-  public final bp gg(long paramLong)
-  {
-    this.eab = paramLong;
-    return this;
-  }
-  
   public final bp gh(long paramLong)
   {
-    this.eae = paramLong;
+    this.ebq = paramLong;
     return this;
   }
   
   public final bp gi(long paramLong)
   {
-    this.dZT = paramLong;
+    this.ebu = paramLong;
     return this;
   }
   
   public final bp gj(long paramLong)
   {
-    this.eah = paramLong;
+    this.ebv = paramLong;
     return this;
   }
   
   public final bp gk(long paramLong)
   {
-    this.eai = paramLong;
+    this.eby = paramLong;
     return this;
   }
   
   public final bp gl(long paramLong)
   {
-    this.eal = paramLong;
+    this.ebn = paramLong;
     return this;
   }
   
   public final bp gm(long paramLong)
   {
-    this.ean = paramLong;
+    this.ebB = paramLong;
     return this;
   }
   
-  public final bp kq(String paramString)
+  public final bp gn(long paramLong)
   {
-    AppMethodBeat.i(209213);
-    this.dZX = t("RedDotTipsID", paramString, true);
-    AppMethodBeat.o(209213);
+    this.ebC = paramLong;
     return this;
   }
   
-  public final bp kr(String paramString)
+  public final bp go(long paramLong)
   {
-    AppMethodBeat.i(209214);
-    this.dZY = t("RedDotShowInfoPath", paramString, true);
-    AppMethodBeat.o(209214);
+    this.ebF = paramLong;
     return this;
   }
   
-  public final bp ks(String paramString)
+  public final bp gp(long paramLong)
   {
-    AppMethodBeat.i(209215);
-    this.dZZ = t("RedDotShowInfoParentPath", paramString, true);
-    AppMethodBeat.o(209215);
+    this.ebH = paramLong;
     return this;
   }
   
-  public final bp kt(String paramString)
+  public final bp kD(String paramString)
   {
-    AppMethodBeat.i(209216);
-    this.eac = t("RedDotShowInfoTitle", paramString, true);
-    AppMethodBeat.o(209216);
+    AppMethodBeat.i(189248);
+    this.ebr = t("RedDotTipsID", paramString, true);
+    AppMethodBeat.o(189248);
     return this;
   }
   
-  public final bp ku(String paramString)
+  public final bp kE(String paramString)
   {
-    AppMethodBeat.i(209217);
-    this.ead = t("RedDotShowInfoExt", paramString, true);
-    AppMethodBeat.o(209217);
+    AppMethodBeat.i(189249);
+    this.ebs = t("RedDotShowInfoPath", paramString, true);
+    AppMethodBeat.o(189249);
     return this;
   }
   
-  public final bp kv(String paramString)
+  public final bp kF(String paramString)
   {
-    AppMethodBeat.i(209218);
-    this.eaf = t("CurrUI", paramString, true);
-    AppMethodBeat.o(209218);
+    AppMethodBeat.i(189250);
+    this.ebt = t("RedDotShowInfoParentPath", paramString, true);
+    AppMethodBeat.o(189250);
     return this;
   }
   
-  public final bp kw(String paramString)
+  public final bp kG(String paramString)
   {
-    AppMethodBeat.i(209219);
-    this.dXk = t("ContextID", paramString, true);
-    AppMethodBeat.o(209219);
+    AppMethodBeat.i(189251);
+    this.ebw = t("RedDotShowInfoTitle", paramString, true);
+    AppMethodBeat.o(189251);
     return this;
   }
   
-  public final bp kx(String paramString)
+  public final bp kH(String paramString)
   {
-    AppMethodBeat.i(209220);
-    this.eag = t("ClickTabContextID", paramString, true);
-    AppMethodBeat.o(209220);
+    AppMethodBeat.i(189252);
+    this.ebx = t("RedDotShowInfoExt", paramString, true);
+    AppMethodBeat.o(189252);
     return this;
   }
   
-  public final bp ky(String paramString)
+  public final bp kI(String paramString)
   {
-    AppMethodBeat.i(209221);
-    this.eak = t("SessionID", paramString, true);
-    AppMethodBeat.o(209221);
+    AppMethodBeat.i(189253);
+    this.ebz = t("CurrUI", paramString, true);
+    AppMethodBeat.o(189253);
     return this;
   }
   
-  public final bp kz(String paramString)
+  public final bp kJ(String paramString)
   {
-    AppMethodBeat.i(209222);
-    this.eam = t("RedDotShowInfoIconUrl", paramString, true);
-    AppMethodBeat.o(209222);
+    AppMethodBeat.i(189254);
+    this.dYB = t("ContextID", paramString, true);
+    AppMethodBeat.o(189254);
+    return this;
+  }
+  
+  public final bp kK(String paramString)
+  {
+    AppMethodBeat.i(189255);
+    this.ebA = t("ClickTabContextID", paramString, true);
+    AppMethodBeat.o(189255);
+    return this;
+  }
+  
+  public final bp kL(String paramString)
+  {
+    AppMethodBeat.i(189256);
+    this.ebE = t("SessionID", paramString, true);
+    AppMethodBeat.o(189256);
+    return this;
+  }
+  
+  public final bp kM(String paramString)
+  {
+    AppMethodBeat.i(189257);
+    this.ebG = t("RedDotShowInfoIconUrl", paramString, true);
+    AppMethodBeat.o(189257);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bp
  * JD-Core Version:    0.7.0.1
  */

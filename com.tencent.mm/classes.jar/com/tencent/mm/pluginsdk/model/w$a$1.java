@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.xweb.util.IXWebLogClient;
 
 final class w$a$1
@@ -10,35 +10,35 @@ final class w$a$1
   public final void d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133674);
-    ad.d(paramString1, paramString2);
+    ae.d(paramString1, paramString2);
     AppMethodBeat.o(133674);
   }
   
   public final void e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133672);
-    ad.e(paramString1, paramString2);
+    ae.e(paramString1, paramString2);
     AppMethodBeat.o(133672);
   }
   
   public final void i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133671);
-    ad.i(paramString1, paramString2);
+    ae.i(paramString1, paramString2);
     AppMethodBeat.o(133671);
   }
   
   public final void v(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133675);
-    ad.v(paramString1, paramString2);
+    ae.v(paramString1, paramString2);
     AppMethodBeat.o(133675);
   }
   
   public final void w(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133673);
-    ad.w(paramString1, paramString2);
+    ae.w(paramString1, paramString2);
     AppMethodBeat.o(133673);
   }
 }

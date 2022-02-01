@@ -1,51 +1,40 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gk;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.storagebase.h;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.g.c.gl;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ci
-  extends j<gk>
+  extends gl
 {
-  public static final String[] SQL_CREATE;
-  public h hHS;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(133310);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ch.info, "TablesVersion") };
-    AppMethodBeat.o(133310);
+    AppMethodBeat.i(133308);
+    c.a locala = new c.a();
+    locala.IBL = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "tableHash";
+    locala.IBN.put("tableHash", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" tableHash INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IBM = "tableHash";
+    locala.columns[1] = "tableSQLMD5";
+    locala.IBN.put("tableSQLMD5", "TEXT");
+    localStringBuilder.append(" tableSQLMD5 TEXT");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(133308);
   }
   
-  public ci(h paramh)
+  public final c.a getDBInfo()
   {
-    super(paramh, ch.info, "TablesVersion", gk.INDEX_CREATE);
-    this.hHS = paramh;
-  }
-  
-  public final ConcurrentHashMap<Integer, String> fsL()
-  {
-    AppMethodBeat.i(133309);
-    Cursor localCursor = this.hHS.a("select * from TablesVersion", new String[0], 0);
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(133309);
-      return localConcurrentHashMap;
-    }
-    try
-    {
-      if (localCursor.moveToNext()) {}
-      return localConcurrentHashMap1;
-    }
-    finally
-    {
-      localCursor.close();
-      AppMethodBeat.o(133309);
-    }
+    return info;
   }
 }
 

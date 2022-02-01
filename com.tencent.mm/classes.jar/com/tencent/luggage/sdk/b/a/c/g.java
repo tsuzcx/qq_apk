@@ -1,57 +1,25 @@
 package com.tencent.luggage.sdk.b.a.c;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.ap;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.jsruntime.t;
+import d.l;
 
-public class g<SERVICE extends c>
-  extends a<SERVICE>
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/jsapi/component/service/JSContextInterfaceUtils;", "", "()V", "LOAD_JS_FILES_PORT_SCRIPT", "", "luggage-wechat-full-sdk_release"})
+public final class g
 {
-  protected g(SERVICE paramSERVICE, t paramt)
-  {
-    super(paramSERVICE, paramt);
-  }
+  public static final String coZ;
+  public static final g cpa;
   
-  protected final String Dl()
+  static
   {
-    return "WASubContext.js";
-  }
-  
-  protected String c(SERVICE paramSERVICE)
-  {
-    AppMethodBeat.i(146851);
-    boolean bool;
-    if (paramSERVICE.getRuntime() == null)
-    {
-      bool = false;
-      if (!bool) {
-        break label62;
-      }
-    }
-    label62:
-    for (paramSERVICE = com.tencent.mm.plugin.appbrand.z.d.UT("wxa_library/native/WASubContext.js");; paramSERVICE = paramSERVICE.aVF().Ld("WASubContext.js"))
-    {
-      if (!TextUtils.isEmpty(paramSERVICE)) {
-        break label77;
-      }
-      paramSERVICE = new ap("WASubContext.js");
-      AppMethodBeat.o(146851);
-      throw paramSERVICE;
-      bool = paramSERVICE.getRuntime().Fi().jXr;
-      break;
-    }
-    label77:
-    AppMethodBeat.o(146851);
-    return paramSERVICE;
+    AppMethodBeat.i(220904);
+    cpa = new g();
+    coZ = "(function(global) {\n    let loadJsFilesWithOptions = global.WeixinJSContext.loadJsFilesWithOptions\n    global.WeixinJSContext.loadJsFiles = function(contextId, paths, options) {\n        if (!options) {\n            options = '{}'\n        } else if (typeof options !== 'string') {\n            options = JSON.stringify(options)\n        }\n        loadJsFilesWithOptions(contextId, paths, options)\n    }\n})(this);";
+    AppMethodBeat.o(220904);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.g
  * JD-Core Version:    0.7.0.1
  */

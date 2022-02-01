@@ -3,29 +3,29 @@ package kotlinx.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/UnionKind;", "Lkotlinx/serialization/SerialKind;", "()V", "CONTEXTUAL", "Companion", "ENUM_KIND", "Lkotlinx/serialization/UnionKind$ENUM_KIND;", "Lkotlinx/serialization/UnionKind$CONTEXTUAL;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/UnionKind;", "Lkotlinx/serialization/SerialKind;", "()V", "CONTEXTUAL", "Companion", "ENUM_KIND", "Lkotlinx/serialization/UnionKind$ENUM_KIND;", "Lkotlinx/serialization/UnionKind$CONTEXTUAL;", "kotlinx-serialization-runtime"})
 public abstract class x
   extends s
 {
-  private static final w.d NLU = w.d.NLT;
-  public static final b NLV = new b((byte)0);
+  private static final w.d Oja = w.d.OiZ;
+  public static final b Ojb = new b((byte)0);
   
   private x()
   {
     super((byte)0);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/UnionKind$CONTEXTUAL;", "Lkotlinx/serialization/UnionKind;", "()V", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/UnionKind$CONTEXTUAL;", "Lkotlinx/serialization/UnionKind;", "()V", "kotlinx-serialization-runtime"})
   public static final class a
     extends x
   {
-    public static final a NLW;
+    public static final a Ojc;
     
     static
     {
-      AppMethodBeat.i(191494);
-      NLW = new a();
-      AppMethodBeat.o(191494);
+      AppMethodBeat.i(200082);
+      Ojc = new a();
+      AppMethodBeat.o(200082);
     }
     
     private a()
@@ -34,20 +34,20 @@ public abstract class x
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/UnionKind$Companion;", "", "()V", "OBJECT", "Lkotlinx/serialization/StructureKind$OBJECT;", "OBJECT$annotations", "getOBJECT", "()Lkotlinx/serialization/StructureKind$OBJECT;", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/UnionKind$Companion;", "", "()V", "OBJECT", "Lkotlinx/serialization/StructureKind$OBJECT;", "OBJECT$annotations", "getOBJECT", "()Lkotlinx/serialization/StructureKind$OBJECT;", "kotlinx-serialization-runtime"})
   public static final class b {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/UnionKind$ENUM_KIND;", "Lkotlinx/serialization/UnionKind;", "()V", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/UnionKind$ENUM_KIND;", "Lkotlinx/serialization/UnionKind;", "()V", "kotlinx-serialization-runtime"})
   public static final class c
     extends x
   {
-    public static final c NLX;
+    public static final c Ojd;
     
     static
     {
-      AppMethodBeat.i(190999);
-      NLX = new c();
-      AppMethodBeat.o(190999);
+      AppMethodBeat.i(199587);
+      Ojd = new c();
+      AppMethodBeat.o(199587);
     }
     
     private c()

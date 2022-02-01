@@ -2,7 +2,7 @@ package com.tencent.mm.b;
 
 public final class i
 {
-  public static int ce(int paramInt1, int paramInt2)
+  public static int cf(int paramInt1, int paramInt2)
   {
     int i = 0;
     if ((paramInt2 < 0) || (paramInt2 >= 2147483647)) {

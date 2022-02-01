@@ -8,31 +8,31 @@ import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.a;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil;", "", "()V", "TAG", "", "checkConfigProviderParam", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getVideoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "path", "VideoInfo", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil;", "", "()V", "TAG", "", "checkConfigProviderParam", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getVideoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "path", "VideoInfo", "plugin-recordvideo_release"})
 public final class c
 {
-  public static final c xRv;
+  public static final c yho;
   
   static
   {
     AppMethodBeat.i(76222);
-    xRv = new c();
+    yho = new c();
     AppMethodBeat.o(76222);
   }
   
-  public static c.a awc(String paramString)
+  public static c.a axr(String paramString)
   {
     boolean bool = true;
     AppMethodBeat.i(76221);
     p.h(paramString, "path");
-    a locala = e.axx(paramString);
+    a locala = e.ayN(paramString);
     if (locala == null)
     {
       AppMethodBeat.o(76221);
@@ -43,13 +43,13 @@ public final class c
     {
       MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
       localMediaMetadataRetriever.setDataSource(paramString);
-      locala.width = bt.getInt(localMediaMetadataRetriever.extractMetadata(18), 0);
-      locala.height = bt.getInt(localMediaMetadataRetriever.extractMetadata(19), 0);
-      locala.videoBitrate = bt.getInt(localMediaMetadataRetriever.extractMetadata(20), 0);
+      locala.width = bu.getInt(localMediaMetadataRetriever.extractMetadata(18), 0);
+      locala.height = bu.getInt(localMediaMetadataRetriever.extractMetadata(19), 0);
+      locala.videoBitrate = bu.getInt(localMediaMetadataRetriever.extractMetadata(20), 0);
       localMediaMetadataRetriever.release();
       label116:
       int k = SightVideoJNI.getMp4RotateVFS(paramString);
-      paramString = al.ci(aj.getContext());
+      paramString = al.ck(ak.getContext());
       int j;
       int i;
       if ((k == 270) || (k == 90))
@@ -71,7 +71,7 @@ public final class c
       }
       for (;;)
       {
-        paramString = new c.a(locala.width, locala.height, locala.videoDuration, k, locala.videoBitrate, locala.frameRate, bool, locala.xRx, locala.xRy, locala.xRz);
+        paramString = new c.a(locala.width, locala.height, locala.videoDuration, k, locala.videoBitrate, locala.frameRate, bool, locala.yhq, locala.yhr, locala.yhs);
         AppMethodBeat.o(76221);
         return paramString;
         j = 0;
@@ -96,19 +96,19 @@ public final class c
   {
     AppMethodBeat.i(76220);
     p.h(paramRecordConfigProvider, "configProvider");
-    if (paramRecordConfigProvider.xyj == null) {
+    if (paramRecordConfigProvider.xOg == null) {
       switch (paramRecordConfigProvider.scene)
       {
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.MediaRecordParamUtil", "checkConfigProviderParam " + paramRecordConfigProvider.xyj);
+      ae.i("MicroMsg.MediaRecordParamUtil", "checkConfigProviderParam " + paramRecordConfigProvider.xOg);
       AppMethodBeat.o(76220);
       return;
-      d locald = d.aGQ();
+      d locald = d.aHh();
       p.g(locald, "SubCoreVideoControl.getCore()");
-      paramRecordConfigProvider.xyj = locald.aGT();
+      paramRecordConfigProvider.xOg = locald.aHk();
     }
   }
 }

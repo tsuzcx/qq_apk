@@ -1,158 +1,129 @@
 package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
-import android.content.Context;
+import android.app.Notification;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.a;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningApp;>;
 
-public enum d
+public final class d
 {
-  public int beO;
-  public int jSh;
-  
-  static
+  public static Class<? extends CustomBackgroundRunningNotificationLogic> Nt(String paramString)
   {
-    AppMethodBeat.i(44790);
-    jSc = new d("LOCATION", 0, 2, 2131755346);
-    jSd = new d("APPBRAND_VOIP", 1, 4, 2131755351);
-    jSe = new d("AUDIO_OF_VIDEO_BACKGROUND_PLAY", 2, 8, 2131755342);
-    jSf = new d("APPBRAND_VOIP_1v1", 3, 16, 2131755351);
-    jSg = new d("ALL", 4, 65535, -1);
-    jSi = new d[] { jSc, jSd, jSe, jSf, jSg };
-    AppMethodBeat.o(44790);
-  }
-  
-  private d(int paramInt1, int paramInt2)
-  {
-    this.beO = paramInt1;
-    this.jSh = paramInt2;
-  }
-  
-  public static String aZ(List<AppBrandBackgroundRunningApp> paramList)
-  {
-    AppMethodBeat.i(44788);
-    AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = null;
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    paramList = localAppBrandBackgroundRunningApp;
-    for (;;)
+    AppMethodBeat.i(222206);
+    try
     {
-      if (localIterator.hasNext())
+      paramString = Class.forName(paramString);
+      AppMethodBeat.o(222206);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "getCustomNotificationLogicClass fail since " + paramString.toString());
+      AppMethodBeat.o(222206);
+    }
+    return null;
+  }
+  
+  public static List<b> be(List<AppBrandBackgroundRunningApp> paramList)
+  {
+    AppMethodBeat.i(222205);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      ae.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, apps is null");
+      AppMethodBeat.o(222205);
+      return null;
+    }
+    ae.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, apps:%s", new Object[] { paramList });
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
+      if ((bu.isNullOrNil(localAppBrandBackgroundRunningApp.jVj)) || (bu.isNullOrNil(localAppBrandBackgroundRunningApp.appId)))
       {
-        localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
-        if (contains(localAppBrandBackgroundRunningApp.beO, jSd.beO))
-        {
-          if (localAppBrandBackgroundRunningApp.beO != jSd.beO) {
-            localArrayList.add(localAppBrandBackgroundRunningApp);
-          }
-          paramList = localAppBrandBackgroundRunningApp;
-        }
-        if (contains(localAppBrandBackgroundRunningApp.beO, jSf.beO))
-        {
-          if (localAppBrandBackgroundRunningApp.beO != jSf.beO)
-          {
-            localArrayList.add(localAppBrandBackgroundRunningApp);
-            paramList = localAppBrandBackgroundRunningApp;
-          }
-        }
-        else {
-          localArrayList.add(localAppBrandBackgroundRunningApp);
-        }
+        ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogicClassName:%s, appId: %s", new Object[] { localAppBrandBackgroundRunningApp.jVj, localAppBrandBackgroundRunningApp.appId });
       }
       else
       {
-        if (paramList != null)
+        p localp = a.KI(localAppBrandBackgroundRunningApp.appId);
+        if (localp == null)
         {
-          paramList = String.format("%s %s", new Object[] { String.format("%s %s", new Object[] { String.format(aj.getContext().getString(2131755348), new Object[] { paramList.name }), aj.getContext().getString(2131755351) }), ba(localArrayList) });
-          AppMethodBeat.o(44788);
-          return paramList;
+          ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, runtime of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
         }
-        paramList = ba(localArrayList);
-        AppMethodBeat.o(44788);
-        return paramList;
-      }
-      paramList = localAppBrandBackgroundRunningApp;
-    }
-  }
-  
-  private static String ba(List<AppBrandBackgroundRunningApp> paramList)
-  {
-    AppMethodBeat.i(188084);
-    String str = "";
-    if (!paramList.isEmpty())
-    {
-      if (paramList.size() != 1) {
-        break label91;
-      }
-      paramList = (AppBrandBackgroundRunningApp)paramList.get(0);
-    }
-    label91:
-    for (str = String.format("%s %s", new Object[] { String.format(aj.getContext().getString(2131755348), new Object[] { paramList.name }), aj.getContext().getString(2131755345) });; str = String.format("%s %s", new Object[] { String.format(aj.getContext().getString(2131755347), new Object[] { Integer.valueOf(paramList.size()) }), aj.getContext().getString(2131755345) }))
-    {
-      AppMethodBeat.o(188084);
-      return str;
-    }
-  }
-  
-  public static String bb(List<AppBrandBackgroundRunningApp> paramList)
-  {
-    AppMethodBeat.i(44789);
-    paramList = paramList.iterator();
-    for (int i = 0; paramList.hasNext(); i = ((AppBrandBackgroundRunningApp)paramList.next()).beO | i) {}
-    Object localObject = null;
-    d[] arrayOfd = values();
-    int k = arrayOfd.length;
-    int j = 0;
-    if (j < k)
-    {
-      d locald = arrayOfd[j];
-      paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-      if (locald.beO != jSg.beO)
-      {
-        paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-        if (locald.beO != jSd.beO)
+        else
         {
-          paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-          if (locald.beO != jSf.beO)
+          paramList = Nt(localAppBrandBackgroundRunningApp.jVj);
+          if (paramList == null)
           {
-            paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-            if (contains(i, locald.beO)) {
-              if (!bt.isNullOrNil((String)localObject)) {
-                break label162;
+            ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogicClass of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
+          }
+          else
+          {
+            CustomBackgroundRunningNotificationLogic localCustomBackgroundRunningNotificationLogic = (CustomBackgroundRunningNotificationLogic)localp.as(paramList);
+            paramList = localCustomBackgroundRunningNotificationLogic;
+            if (localCustomBackgroundRunningNotificationLogic == null)
+            {
+              paramList = cA(localAppBrandBackgroundRunningApp.jVj, localAppBrandBackgroundRunningApp.appId);
+              if (paramList == null) {
+                ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogic of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
+              } else {
+                localp.a(paramList);
               }
+            }
+            else
+            {
+              paramList.bdz();
+              localArrayList.add(new b(paramList.bdx(), paramList.bdy()));
             }
           }
         }
       }
-      label162:
-      for (paramList = aj.getContext().getString(locald.jSh);; paramList = String.format("%s、%s", new Object[] { localObject, aj.getContext().getString(locald.jSh) }))
-      {
-        j += 1;
-        localObject = paramList;
-        break;
-      }
     }
-    AppMethodBeat.o(44789);
-    return localObject;
+    AppMethodBeat.o(222205);
+    return localArrayList;
   }
   
-  public static boolean contains(int paramInt1, int paramInt2)
+  private static CustomBackgroundRunningNotificationLogic cA(String paramString1, String paramString2)
   {
-    return (paramInt1 & paramInt2) > 0;
+    AppMethodBeat.i(222207);
+    ae.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "createCustomNotificationLogic, customNotificationLogicClassName:%s, appId: %s", new Object[] { paramString1, paramString2 });
+    try
+    {
+      paramString1 = (CustomBackgroundRunningNotificationLogic)Nt(paramString1).getConstructor(new Class[] { String.class }).newInstance(new Object[] { paramString2 });
+      AppMethodBeat.o(222207);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "createCustomNotificationLogic fail since " + paramString1.toString());
+      AppMethodBeat.o(222207);
+    }
+    return null;
   }
   
-  public static int dF(int paramInt1, int paramInt2)
+  public static final class a
   {
-    return paramInt1 | paramInt2;
+    public List<AppBrandBackgroundRunningApp> jVA;
+    public List<AppBrandBackgroundRunningApp> jVB;
   }
   
-  public static int dG(int paramInt1, int paramInt2)
+  public static final class b
   {
-    return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
+    public final Notification jVC;
+    public final int notificationId;
+    
+    public b(Notification paramNotification, int paramInt)
+    {
+      this.jVC = paramNotification;
+      this.notificationId = paramInt;
+    }
   }
 }
 

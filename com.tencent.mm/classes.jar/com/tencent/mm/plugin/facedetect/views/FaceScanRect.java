@@ -12,30 +12,30 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class FaceScanRect
   extends RelativeLayout
 {
-  public View roH;
-  private ImageView roI;
-  private ImageView roJ;
-  private ImageView roK;
-  private ImageView roL;
-  private ImageView roM;
-  private ImageView roN;
-  private ImageView roO;
-  private ImageView roP;
-  public ImageView[] roQ;
-  private ScaleAnimation roR;
-  private ScaleAnimation roS;
-  private ScaleAnimation roT;
-  private ScaleAnimation roU;
-  public TranslateAnimation roV;
-  private b roW;
-  private ViewGroup roX;
-  public View roY;
-  public FaceScanRect.a roZ;
+  public View rwL;
+  private ImageView rwM;
+  private ImageView rwN;
+  private ImageView rwO;
+  private ImageView rwP;
+  private ImageView rwQ;
+  private ImageView rwR;
+  private ImageView rwS;
+  private ImageView rwT;
+  public ImageView[] rwU;
+  private ScaleAnimation rwV;
+  private ScaleAnimation rwW;
+  private ScaleAnimation rwX;
+  private ScaleAnimation rwY;
+  public TranslateAnimation rwZ;
+  private FaceScanRect.b rxa;
+  private ViewGroup rxb;
+  public View rxc;
+  public a rxd;
   
   public FaceScanRect(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,42 +46,42 @@ public class FaceScanRect
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104189);
-    this.roH = null;
-    this.roI = null;
-    this.roJ = null;
-    this.roK = null;
-    this.roL = null;
-    this.roM = null;
-    this.roN = null;
-    this.roO = null;
-    this.roP = null;
-    this.roQ = null;
-    this.roR = null;
-    this.roS = null;
-    this.roT = null;
-    this.roU = null;
-    this.roV = null;
-    this.roW = null;
-    this.roX = null;
-    this.roY = null;
+    this.rwL = null;
+    this.rwM = null;
+    this.rwN = null;
+    this.rwO = null;
+    this.rwP = null;
+    this.rwQ = null;
+    this.rwR = null;
+    this.rwS = null;
+    this.rwT = null;
+    this.rwU = null;
+    this.rwV = null;
+    this.rwW = null;
+    this.rwX = null;
+    this.rwY = null;
+    this.rwZ = null;
+    this.rxa = null;
+    this.rxb = null;
+    this.rxc = null;
     LayoutInflater.from(paramContext).inflate(2131493923, this, true);
-    this.roH = findViewById(2131299716);
-    this.roI = ((ImageView)findViewById(2131299714));
-    this.roJ = ((ImageView)findViewById(2131299715));
-    this.roK = ((ImageView)findViewById(2131299711));
-    this.roL = ((ImageView)findViewById(2131299710));
-    this.roM = ((ImageView)findViewById(2131299713));
-    this.roN = ((ImageView)findViewById(2131299712));
-    this.roO = ((ImageView)findViewById(2131299708));
-    this.roP = ((ImageView)findViewById(2131299709));
-    this.roY = findViewById(2131299671);
-    this.roX = ((ViewGroup)findViewById(2131299661));
-    this.roQ = new ImageView[] { this.roI, this.roJ, this.roK, this.roL, this.roM, this.roN, this.roO, this.roP };
-    this.roZ = FaceScanRect.a.rpc;
-    this.roV = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-    this.roV.setRepeatCount(-1);
-    this.roV.setRepeatMode(1);
-    this.roV.setDuration(1000L);
+    this.rwL = findViewById(2131299716);
+    this.rwM = ((ImageView)findViewById(2131299714));
+    this.rwN = ((ImageView)findViewById(2131299715));
+    this.rwO = ((ImageView)findViewById(2131299711));
+    this.rwP = ((ImageView)findViewById(2131299710));
+    this.rwQ = ((ImageView)findViewById(2131299713));
+    this.rwR = ((ImageView)findViewById(2131299712));
+    this.rwS = ((ImageView)findViewById(2131299708));
+    this.rwT = ((ImageView)findViewById(2131299709));
+    this.rxc = findViewById(2131299671);
+    this.rxb = ((ViewGroup)findViewById(2131299661));
+    this.rwU = new ImageView[] { this.rwM, this.rwN, this.rwO, this.rwP, this.rwQ, this.rwR, this.rwS, this.rwT };
+    this.rxd = a.rxg;
+    this.rwZ = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
+    this.rwZ.setRepeatCount(-1);
+    this.rwZ.setRepeatMode(1);
+    this.rwZ.setDuration(1000L);
     AppMethodBeat.o(104189);
   }
   
@@ -94,56 +94,56 @@ public class FaceScanRect
     int m = getResources().getDimensionPixelSize(2131166281);
     float f1 = (i - k * 2 - m * 2 + m) / m;
     float f2 = (j - k * 2 - m * 2 + m) / m;
-    ad.i("MicroMsg.FaceScanRect", "hy: horizontalScale : %f, verticalScale : %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
-    this.roR = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 0.0F, 1, 0.0F);
-    this.roR.setFillAfter(true);
-    this.roR.setDuration(1500L);
-    this.roR.setInterpolator(getContext(), 17563654);
-    this.roR.setAnimationListener(paramAnimationListener);
-    this.roS = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 1.0F, 1, 0.0F);
-    this.roS.setFillAfter(true);
-    this.roS.setDuration(1500L);
-    this.roS.setInterpolator(getContext(), 17563654);
-    this.roT = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 0.0F);
-    this.roT.setFillAfter(true);
-    this.roT.setDuration(1500L);
-    this.roT.setInterpolator(getContext(), 17563654);
-    this.roU = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 1.0F);
-    this.roU.setFillAfter(true);
-    this.roU.setDuration(1500L);
-    this.roU.setInterpolator(getContext(), 17563654);
+    ae.i("MicroMsg.FaceScanRect", "hy: horizontalScale : %f, verticalScale : %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
+    this.rwV = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 0.0F, 1, 0.0F);
+    this.rwV.setFillAfter(true);
+    this.rwV.setDuration(1500L);
+    this.rwV.setInterpolator(getContext(), 17563654);
+    this.rwV.setAnimationListener(paramAnimationListener);
+    this.rwW = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.rwW.setFillAfter(true);
+    this.rwW.setDuration(1500L);
+    this.rwW.setInterpolator(getContext(), 17563654);
+    this.rwX = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 0.0F);
+    this.rwX.setFillAfter(true);
+    this.rwX.setDuration(1500L);
+    this.rwX.setInterpolator(getContext(), 17563654);
+    this.rwY = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 1.0F);
+    this.rwY.setFillAfter(true);
+    this.rwY.setDuration(1500L);
+    this.rwY.setInterpolator(getContext(), 17563654);
     AppMethodBeat.o(104192);
   }
   
-  private void cul()
+  private void cvM()
   {
     AppMethodBeat.i(104190);
-    this.roY.setVisibility(8);
-    this.roH.setBackground(null);
-    this.roY.clearAnimation();
+    this.rxc.setVisibility(8);
+    this.rwL.setBackground(null);
+    this.rxc.clearAnimation();
     AppMethodBeat.o(104190);
   }
   
   public final void b(Animation.AnimationListener paramAnimationListener)
   {
     AppMethodBeat.i(104191);
-    if (this.roZ == FaceScanRect.a.rpb)
+    if (this.rxd == a.rxf)
     {
-      ad.w("MicroMsg.FaceScanRect", "hy: already closed");
+      ae.w("MicroMsg.FaceScanRect", "hy: already closed");
       if (paramAnimationListener != null) {
         paramAnimationListener.onAnimationEnd(null);
       }
       AppMethodBeat.o(104191);
       return;
     }
-    this.roZ = FaceScanRect.a.rpb;
+    this.rxd = a.rxf;
     c(paramAnimationListener);
-    this.roI.startAnimation(this.roR);
-    this.roL.startAnimation(this.roU);
-    this.roM.startAnimation(this.roT);
-    this.roP.startAnimation(this.roS);
-    cul();
-    paramAnimationListener = this.roQ;
+    this.rwM.startAnimation(this.rwV);
+    this.rwP.startAnimation(this.rwY);
+    this.rwQ.startAnimation(this.rwX);
+    this.rwT.startAnimation(this.rwW);
+    cvM();
+    paramAnimationListener = this.rwU;
     int j = paramAnimationListener.length;
     int i = 0;
     while (i < j)
@@ -156,27 +156,37 @@ public class FaceScanRect
   
   public ViewGroup getCenterHintHolder()
   {
-    return this.roX;
+    return this.rxb;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104193);
     super.onMeasure(paramInt1, paramInt2);
-    if (this.roW != null) {
-      this.roW.ctS();
+    if (this.rxa != null) {
+      this.rxa.cvt();
     }
     AppMethodBeat.o(104193);
   }
   
-  public void setOnRefreshRectListener(b paramb)
+  public void setOnRefreshRectListener(FaceScanRect.b paramb)
   {
-    this.roW = paramb;
+    this.rxa = paramb;
   }
   
-  public static abstract interface b
+  public static enum a
   {
-    public abstract void ctS();
+    static
+    {
+      AppMethodBeat.i(104188);
+      rxe = new a("OPENED", 0);
+      rxf = new a("CLOSED", 1);
+      rxg = new a("INIT", 2);
+      rxh = new a[] { rxe, rxf, rxg };
+      AppMethodBeat.o(104188);
+    }
+    
+    private a() {}
   }
 }
 

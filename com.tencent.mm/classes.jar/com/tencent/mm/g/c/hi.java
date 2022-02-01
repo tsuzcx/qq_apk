@@ -3,27 +3,39 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class hi
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fBu = "jsExceptionCount".hashCode();
-  private static final int fBv = "crashCount".hashCode();
-  private static final int fBw = "beginTimestamp".hashCode();
-  private static final int fBx = "pkgVersion".hashCode();
-  private static final int fnB = "appid".hashCode();
+  private static final int eNV = "time".hashCode();
+  private static final int fDp = "weSeeUri".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fBq = true;
-  private boolean fBr = true;
-  private boolean fBs = true;
-  private boolean fBt = true;
-  public String field_appid;
-  public long field_beginTimestamp;
-  public int field_crashCount;
-  public int field_jsExceptionCount;
-  public int field_pkgVersion;
-  private boolean fnz = true;
+  private boolean eNC = true;
+  private boolean fDo = true;
+  public long field_time;
+  public String field_weSeeUri;
+  
+  public static c.a VD()
+  {
+    c.a locala = new c.a();
+    locala.IBL = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "weSeeUri";
+    locala.IBN.put("weSeeUri", "TEXT");
+    localStringBuilder.append(" weSeeUri TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "time";
+    locala.IBN.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,26 +50,19 @@ public abstract class hi
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fnB != k) {
-        break label65;
+      if (fDp != k) {
+        break label60;
       }
-      this.field_appid = paramCursor.getString(i);
-      this.fnz = true;
+      this.field_weSeeUri = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fBu == k) {
-        this.field_jsExceptionCount = paramCursor.getInt(i);
-      } else if (fBv == k) {
-        this.field_crashCount = paramCursor.getInt(i);
-      } else if (fBw == k) {
-        this.field_beginTimestamp = paramCursor.getLong(i);
-      } else if (fBx == k) {
-        this.field_pkgVersion = paramCursor.getInt(i);
+      label60:
+      if (eNV == k) {
+        this.field_time = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,20 +72,11 @@ public abstract class hi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fnz) {
-      localContentValues.put("appid", this.field_appid);
+    if (this.fDo) {
+      localContentValues.put("weSeeUri", this.field_weSeeUri);
     }
-    if (this.fBq) {
-      localContentValues.put("jsExceptionCount", Integer.valueOf(this.field_jsExceptionCount));
-    }
-    if (this.fBr) {
-      localContentValues.put("crashCount", Integer.valueOf(this.field_crashCount));
-    }
-    if (this.fBs) {
-      localContentValues.put("beginTimestamp", Long.valueOf(this.field_beginTimestamp));
-    }
-    if (this.fBt) {
-      localContentValues.put("pkgVersion", Integer.valueOf(this.field_pkgVersion));
+    if (this.eNC) {
+      localContentValues.put("time", Long.valueOf(this.field_time));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -90,7 +86,7 @@ public abstract class hi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.hi
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ public final class a
   private static final Set<String> zy = new HashSet();
   private static final boolean zz = o(System.getProperty("java.vm.version"));
   
-  public static void J(Context paramContext)
+  public static void K(Context paramContext)
   {
     if (zz) {}
     ApplicationInfo localApplicationInfo;
@@ -39,7 +39,7 @@ public final class a
       }
       try
       {
-        localApplicationInfo = K(paramContext);
+        localApplicationInfo = L(paramContext);
         if (localApplicationInfo != null)
         {
           synchronized (zy)
@@ -73,7 +73,7 @@ public final class a
     }
     try
     {
-      L(paramContext);
+      M(paramContext);
       label190:
       File localFile = new File(localApplicationInfo.dataDir, zx);
       List localList = b.a(paramContext, localApplicationInfo, localFile, false);
@@ -97,7 +97,7 @@ public final class a
     }
   }
   
-  private static ApplicationInfo K(Context paramContext)
+  private static ApplicationInfo L(Context paramContext)
   {
     try
     {
@@ -112,7 +112,7 @@ public final class a
     return null;
   }
   
-  private static void L(Context paramContext)
+  private static void M(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir(), "secondary-dexes");
     File[] arrayOfFile;

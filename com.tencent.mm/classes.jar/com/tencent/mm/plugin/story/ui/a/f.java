@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.i.g;
 import com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.z;
@@ -26,22 +26,22 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder;", "commentDatas", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "TAG", "", "hasStoryStateMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "hostStory", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "getHostStory", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setHostStory", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "onItemClick", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "commentItem", "", "getOnItemClick", "()Lkotlin/jvm/functions/Function1;", "setOnItemClick", "(Lkotlin/jvm/functions/Function1;)V", "filterFavItem", "filterValidItem", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateComments", "newComments", "", "CommentViewHolder", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder;", "commentDatas", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "TAG", "", "hasStoryStateMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "hostStory", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "getHostStory", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setHostStory", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "onItemClick", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "commentItem", "", "getOnItemClick", "()Lkotlin/jvm/functions/Function1;", "setOnItemClick", "(Lkotlin/jvm/functions/Function1;)V", "filterFavItem", "filterValidItem", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateComments", "newComments", "", "CommentViewHolder", "plugin-story_release"})
 public final class f
   extends RecyclerView.a<a>
 {
-  private final HashMap<String, Boolean> AVJ;
-  public d.g.a.b<? super com.tencent.mm.plugin.story.f.b.a, z> AVK;
-  private final ArrayList<com.tencent.mm.plugin.story.f.b.a> AVL;
-  public com.tencent.mm.plugin.story.i.j AVy;
+  public com.tencent.mm.plugin.story.i.j BmW;
+  private final HashMap<String, Boolean> Bnh;
+  public d.g.a.b<? super com.tencent.mm.plugin.story.f.b.a, z> Bni;
+  private final ArrayList<com.tencent.mm.plugin.story.f.b.a> Bnj;
   private final String TAG;
   
   public f(ArrayList<com.tencent.mm.plugin.story.f.b.a> paramArrayList)
   {
     AppMethodBeat.i(119765);
-    this.AVL = paramArrayList;
+    this.Bnj = paramArrayList;
     this.TAG = "MicroMsg.StoryCommentListAdapter";
-    this.AVJ = new HashMap();
+    this.Bnh = new HashMap();
     AppMethodBeat.o(119765);
   }
   
@@ -50,25 +50,25 @@ public final class f
     int i = 1;
     AppMethodBeat.i(119764);
     p.h(paramList, "newComments");
-    ad.d(this.TAG, "updateComments");
-    Object localObject1 = this.AVJ.entrySet().iterator();
+    ae.d(this.TAG, "updateComments");
+    Object localObject1 = this.Bnh.entrySet().iterator();
     boolean bool;
     if (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
       p.g(localObject2, "it.next()");
       localObject2 = (Map.Entry)localObject2;
-      Object localObject3 = com.tencent.mm.plugin.story.f.j.AKb;
-      if (!bt.lQ(j.b.dTJ(), (String)((Map.Entry)localObject2).getKey()))
+      Object localObject3 = com.tencent.mm.plugin.story.f.j.BbE;
+      if (!bu.lX(j.b.dXj(), (String)((Map.Entry)localObject2).getKey()))
       {
-        localObject3 = com.tencent.mm.plugin.story.f.j.AKb;
-        localObject3 = j.b.ehU();
+        localObject3 = com.tencent.mm.plugin.story.f.j.BbE;
+        localObject3 = j.b.elC();
         Object localObject4 = ((Map.Entry)localObject2).getKey();
         p.g(localObject4, "entry.key");
-        localObject3 = ((g)localObject3).aCi((String)localObject4);
+        localObject3 = ((g)localObject3).aDB((String)localObject4);
         if (localObject3 != null)
         {
-          bool = ((com.tencent.mm.plugin.story.i.f)localObject3).elr();
+          bool = ((com.tencent.mm.plugin.story.i.f)localObject3).epa();
           label147:
           if (!bool) {
             break label214;
@@ -85,8 +85,8 @@ public final class f
     {
       if (i != 0)
       {
-        this.AVL.clear();
-        this.AVL.addAll((Collection)paramList);
+        this.Bnj.clear();
+        this.Bnj.addAll((Collection)paramList);
         notifyDataSetChanged();
         AppMethodBeat.o(119764);
         return;
@@ -110,39 +110,39 @@ public final class f
   public final int getItemCount()
   {
     AppMethodBeat.i(119762);
-    int i = this.AVL.size();
+    int i = this.Bnj.size();
     AppMethodBeat.o(119762);
     return i;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "unreadPadding", "", "(Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter;Landroid/view/View;I)V", "avatar", "Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "getAvatar", "()Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "content", "Landroid/widget/TextView;", "getContent", "()Landroid/widget/TextView;", "fromUser", "getFromUser", "onBindAvatar", "", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "position", "onBindContent", "onBindUsername", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "unreadPadding", "", "(Lcom/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter;Landroid/view/View;I)V", "avatar", "Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "getAvatar", "()Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "content", "Landroid/widget/TextView;", "getContent", "()Landroid/widget/TextView;", "fromUser", "getFromUser", "onBindAvatar", "", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "position", "onBindContent", "onBindUsername", "plugin-story_release"})
   public final class a
     extends RecyclerView.w
   {
-    final TextView AUN;
-    final CommentAvatarImageView AVE;
-    final int AVM;
-    final TextView vHM;
+    final TextView Bml;
+    final CommentAvatarImageView Bnc;
+    final int Bnk;
+    final TextView vTQ;
     
     private a(int paramInt)
     {
       super();
       AppMethodBeat.i(119750);
       int i;
-      this.AVM = i;
+      this.Bnk = i;
       this$1 = paramInt.findViewById(2131305470);
       p.g(f.this, "itemView.findViewById(R.…ry_msg_comment_avatar_iv)");
-      this.AVE = ((CommentAvatarImageView)f.this);
+      this.Bnc = ((CommentAvatarImageView)f.this);
       this$1 = paramInt.findViewById(2131305473);
       p.g(f.this, "itemView.findViewById(R.…comment_content_username)");
-      this.AUN = ((TextView)f.this);
+      this.Bml = ((TextView)f.this);
       this$1 = paramInt.findViewById(2131305472);
       p.g(f.this, "itemView.findViewById(R.…_msg_comment_content_msg)");
-      this.vHM = ((TextView)f.this);
+      this.vTQ = ((TextView)f.this);
       AppMethodBeat.o(119750);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -153,18 +153,18 @@ public final class f
         AppMethodBeat.i(119749);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder$onBindAvatar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder$onBindAvatar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramView = new Intent();
-        paramView.putExtra("Contact_User", this.AVH.dyU);
+        paramView.putExtra("Contact_User", this.Bnf.dzZ);
         paramView.putExtra("CONTACT_INFO_UI_SOURCE", 12);
-        com.tencent.mm.bs.d.b(this.AVO.AVE.getContext(), "profile", ".ui.ContactInfoUI", paramView);
+        com.tencent.mm.br.d.b(this.Bnm.Bnc.getContext(), "profile", ".ui.ContactInfoUI", paramView);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$CommentViewHolder$onBindAvatar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(119749);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -175,12 +175,12 @@ public final class f
       AppMethodBeat.i(119752);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      if ((f.a(this.AVN)) || (f.b(this.AVN)))
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      if ((f.a(this.Bnl)) || (f.b(this.Bnl)))
       {
-        paramView = this.AVN.AVK;
+        paramView = this.Bnl.Bni;
         if (paramView != null) {
-          paramView.invoke(this.AVH);
+          paramView.invoke(this.Bnf);
         }
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -188,7 +188,7 @@ public final class f
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$updateComments$1", "Landroid/support/v7/util/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$updateComments$1", "Landroid/support/v7/util/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-story_release"})
   public static final class c
     implements android.support.v7.h.d
   {
@@ -197,42 +197,42 @@ public final class f
     public final void c(int paramInt1, int paramInt2, Object paramObject)
     {
       AppMethodBeat.i(119753);
-      ad.d(f.d(this.AVN), "onChanged position:" + paramInt1 + ", count:" + paramInt2);
-      f.c(this.AVN).clear();
-      f.c(this.AVN).addAll((Collection)paramList);
-      this.AVN.ap(paramInt1, paramInt2);
+      ae.d(f.d(this.Bnl), "onChanged position:" + paramInt1 + ", count:" + paramInt2);
+      f.c(this.Bnl).clear();
+      f.c(this.Bnl).addAll((Collection)paramList);
+      this.Bnl.ap(paramInt1, paramInt2);
       AppMethodBeat.o(119753);
     }
     
     public final void f(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119755);
-      ad.d(f.d(this.AVN), "onInserted position:" + paramInt1 + ", count:" + paramInt2);
-      f.c(this.AVN).clear();
-      f.c(this.AVN).addAll((Collection)paramList);
-      this.AVN.ar(paramInt1, paramInt2);
+      ae.d(f.d(this.Bnl), "onInserted position:" + paramInt1 + ", count:" + paramInt2);
+      f.c(this.Bnl).clear();
+      f.c(this.Bnl).addAll((Collection)paramList);
+      this.Bnl.ar(paramInt1, paramInt2);
       AppMethodBeat.o(119755);
     }
     
     public final void k(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119756);
-      ad.d(f.d(this.AVN), "onRemoved position:" + paramInt1 + ", count:" + paramInt2);
-      f.c(this.AVN).clear();
-      f.c(this.AVN).addAll((Collection)paramList);
-      this.AVN.as(paramInt1, paramInt2);
+      ae.d(f.d(this.Bnl), "onRemoved position:" + paramInt1 + ", count:" + paramInt2);
+      f.c(this.Bnl).clear();
+      f.c(this.Bnl).addAll((Collection)paramList);
+      this.Bnl.as(paramInt1, paramInt2);
       AppMethodBeat.o(119756);
     }
     
     public final void l(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119754);
-      ad.d(f.d(this.AVN), "onMoved fromPosition:" + paramInt1 + ", toPosition:" + paramInt2);
+      ae.d(f.d(this.Bnl), "onMoved fromPosition:" + paramInt1 + ", toPosition:" + paramInt2);
       AppMethodBeat.o(119754);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$updateComments$result$1", "Landroid/support/v7/util/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-story_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/adapter/StoryCommentListAdapter$updateComments$result$1", "Landroid/support/v7/util/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-story_release"})
   public static final class d
     extends c.a
   {
@@ -249,7 +249,7 @@ public final class f
     public final int az()
     {
       AppMethodBeat.i(119757);
-      int i = f.c(this.AVN).size();
+      int i = f.c(this.Bnl).size();
       AppMethodBeat.o(119757);
       return i;
     }
@@ -257,7 +257,7 @@ public final class f
     public final boolean i(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119759);
-      if ((((com.tencent.mm.plugin.story.f.b.a)f.c(this.AVN).get(paramInt1)).dKt == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).dKt) && (((com.tencent.mm.plugin.story.f.b.a)f.c(this.AVN).get(paramInt1)).ALy == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).ALy))
+      if ((((com.tencent.mm.plugin.story.f.b.a)f.c(this.Bnl).get(paramInt1)).dLI == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).dLI) && (((com.tencent.mm.plugin.story.f.b.a)f.c(this.Bnl).get(paramInt1)).Bdb == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).Bdb))
       {
         AppMethodBeat.o(119759);
         return true;
@@ -269,7 +269,7 @@ public final class f
     public final boolean j(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(119760);
-      if ((((com.tencent.mm.plugin.story.f.b.a)f.c(this.AVN).get(paramInt1)).ALC == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).ALC) && (bt.lQ(((com.tencent.mm.plugin.story.f.b.a)f.c(this.AVN).get(paramInt1)).content, ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).content)))
+      if ((((com.tencent.mm.plugin.story.f.b.a)f.c(this.Bnl).get(paramInt1)).Bdf == ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).Bdf) && (bu.lX(((com.tencent.mm.plugin.story.f.b.a)f.c(this.Bnl).get(paramInt1)).content, ((com.tencent.mm.plugin.story.f.b.a)paramList.get(paramInt2)).content)))
       {
         AppMethodBeat.o(119760);
         return true;

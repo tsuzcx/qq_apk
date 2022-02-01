@@ -4,53 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dvs;
-  public LinkedList<String> uxr;
+  public String dwx;
+  public LinkedList<String> uIU;
   
   public cx()
   {
-    AppMethodBeat.i(186963);
-    this.uxr = new LinkedList();
-    AppMethodBeat.o(186963);
+    AppMethodBeat.i(221736);
+    this.uIU = new LinkedList();
+    AppMethodBeat.o(221736);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(186964);
+    AppMethodBeat.i(221737);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dvs != null) {
-        paramVarArgs.d(1, this.dvs);
+      if (this.dwx != null) {
+        paramVarArgs.d(1, this.dwx);
       }
-      paramVarArgs.e(2, 1, this.uxr);
-      AppMethodBeat.o(186964);
+      paramVarArgs.e(2, 1, this.uIU);
+      AppMethodBeat.o(221737);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dvs == null) {
+      if (this.dwx == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dvs) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.dwx) + 0;; paramInt = 0)
     {
-      int i = f.a.a.a.c(2, 1, this.uxr);
-      AppMethodBeat.o(186964);
+      int i = f.a.a.a.c(2, 1, this.uIU);
+      AppMethodBeat.o(221737);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.uxr.clear();
+        this.uIU.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(186964);
+        AppMethodBeat.o(221737);
         return 0;
       }
       if (paramInt == 3)
@@ -60,18 +60,18 @@ public final class cx
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(186964);
+          AppMethodBeat.o(221737);
           return -1;
         case 1: 
-          localcx.dvs = locala.NPN.readString();
-          AppMethodBeat.o(186964);
+          localcx.dwx = locala.OmT.readString();
+          AppMethodBeat.o(221737);
           return 0;
         }
-        localcx.uxr.add(locala.NPN.readString());
-        AppMethodBeat.o(186964);
+        localcx.uIU.add(locala.OmT.readString());
+        AppMethodBeat.o(221737);
         return 0;
       }
-      AppMethodBeat.o(186964);
+      AppMethodBeat.o(221737);
       return -1;
     }
   }

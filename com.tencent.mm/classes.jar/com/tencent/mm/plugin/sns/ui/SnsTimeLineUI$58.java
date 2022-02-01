@@ -14,12 +14,13 @@ final class SnsTimeLineUI$58
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(198449);
-    Iterator localIterator = this.jlt.iterator();
+    AppMethodBeat.i(219991);
+    paraml.clear();
+    Iterator localIterator = this.jon.iterator();
     while (localIterator.hasNext()) {
       paraml.g((m)localIterator.next());
     }
-    AppMethodBeat.o(198449);
+    AppMethodBeat.o(219991);
   }
 }
 

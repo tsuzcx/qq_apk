@@ -16,30 +16,7 @@ final class i$1
     super(parami1);
   }
   
-  public final void gyM()
-  {
-    AppMethodBeat.i(90264);
-    if (this.done)
-    {
-      AppMethodBeat.o(90264);
-      return;
-    }
-    try
-    {
-      this.NYc.NYa.gyM();
-      this.done = true;
-      this.NYb.gyM();
-      AppMethodBeat.o(90264);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      b.a(localThrowable, this);
-      AppMethodBeat.o(90264);
-    }
-  }
-  
-  public final void gz(T paramT)
+  public final void gC(T paramT)
   {
     AppMethodBeat.i(90266);
     if (this.done)
@@ -49,8 +26,8 @@ final class i$1
     }
     try
     {
-      this.NYc.NYa.gz(paramT);
-      this.NYb.gz(paramT);
+      this.Ovh.Ovf.gC(paramT);
+      this.Ovg.gC(paramT);
       AppMethodBeat.o(90266);
       return;
     }
@@ -61,10 +38,33 @@ final class i$1
     }
   }
   
+  public final void gDo()
+  {
+    AppMethodBeat.i(90264);
+    if (this.done)
+    {
+      AppMethodBeat.o(90264);
+      return;
+    }
+    try
+    {
+      this.Ovh.Ovf.gDo();
+      this.done = true;
+      this.Ovg.gDo();
+      AppMethodBeat.o(90264);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      b.a(localThrowable, this);
+      AppMethodBeat.o(90264);
+    }
+  }
+  
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90265);
-    b.K(paramThrowable);
+    b.L(paramThrowable);
     if (this.done)
     {
       AppMethodBeat.o(90265);
@@ -73,22 +73,22 @@ final class i$1
     this.done = true;
     try
     {
-      this.NYc.NYa.onError(paramThrowable);
-      this.NYb.onError(paramThrowable);
+      this.Ovh.Ovf.onError(paramThrowable);
+      this.Ovg.onError(paramThrowable);
       AppMethodBeat.o(90265);
       return;
     }
     catch (Throwable localThrowable)
     {
-      b.K(localThrowable);
-      this.NYb.onError(new a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable }), (byte)0));
+      b.L(localThrowable);
+      this.Ovg.onError(new a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable }), (byte)0));
       AppMethodBeat.o(90265);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.a.i.1
  * JD-Core Version:    0.7.0.1
  */

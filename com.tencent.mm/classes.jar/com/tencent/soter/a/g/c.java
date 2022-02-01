@@ -8,13 +8,13 @@ import com.tencent.soter.a.c.b;
 abstract class c
   extends d
 {
-  protected static void gU(String paramString, int paramInt)
+  protected static void hd(String paramString, int paramInt)
   {
     com.tencent.soter.core.c.d.d("Soter.BaseSoterPrepareKeyTask", "soter: marking preference. key: %s, status: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     try
     {
-      if (b.fUW().fUZ() != null) {
-        b.fUW().fUZ().edit().putInt(paramString, paramInt).commit();
+      if (b.fZv().fZy() != null) {
+        b.fZv().fZy().edit().putInt(paramString, paramInt).commit();
       }
       return;
     }
@@ -25,7 +25,7 @@ abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.g.c
  * JD-Core Version:    0.7.0.1
  */

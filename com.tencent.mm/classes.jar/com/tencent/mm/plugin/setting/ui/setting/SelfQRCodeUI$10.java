@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
@@ -17,8 +17,8 @@ final class SelfQRCodeUI$10
     AppMethodBeat.i(73957);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/setting/ui/setting/SelfQRCodeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    d.Q(this.yEJ, "setting", ".ui.setting.SettingsAddMeUI");
+    a.b("com/tencent/mm/plugin/setting/ui/setting/SelfQRCodeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    d.Q(this.yUO, "setting", ".ui.setting.SettingsAddMeUI");
     a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SelfQRCodeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(73957);
   }

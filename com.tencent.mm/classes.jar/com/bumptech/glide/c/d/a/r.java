@@ -24,7 +24,7 @@ public final class r<T>
   public static final i<Integer> aLJ;
   private static final b aLK;
   private final e aCk;
-  private final c<T> aLL;
+  private final r.c<T> aLL;
   private final b aLM;
   
   static
@@ -42,12 +42,12 @@ public final class r<T>
     AppMethodBeat.o(77449);
   }
   
-  private r(e parame, c<T> paramc)
+  private r(e parame, r.c<T> paramc)
   {
     this(parame, paramc, aLK);
   }
   
-  private r(e parame, c<T> paramc, b paramb)
+  private r(e parame, r.c<T> paramc, b paramb)
   {
     this.aCk = parame;
     this.aLL = paramc;
@@ -94,7 +94,7 @@ public final class r<T>
   public static k<AssetFileDescriptor, Bitmap> a(e parame)
   {
     AppMethodBeat.i(77445);
-    parame = new r(parame, new a((byte)0));
+    parame = new r(parame, new r.a((byte)0));
     AppMethodBeat.o(77445);
     return parame;
   }
@@ -180,16 +180,7 @@ public final class r<T>
     return true;
   }
   
-  static final class a
-    implements r.c<AssetFileDescriptor>
-  {}
-  
   static final class b {}
-  
-  static abstract interface c<T>
-  {
-    public abstract void a(MediaMetadataRetriever paramMediaMetadataRetriever, T paramT);
-  }
   
   static final class d
     implements r.c<ParcelFileDescriptor>

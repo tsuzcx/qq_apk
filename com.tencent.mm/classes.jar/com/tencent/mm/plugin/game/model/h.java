@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,23 +9,23 @@ import org.json.JSONObject;
 
 public abstract class h
 {
-  JSONObject ubn = new JSONObject();
+  JSONObject ump = new JSONObject();
   
   protected h(String paramString)
   {
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.GameServerData", "Null or nil json string");
+      ae.e("MicroMsg.GameServerData", "Null or nil json string");
       return;
     }
     try
     {
-      this.ubn = new JSONObject(paramString);
+      this.ump = new JSONObject(paramString);
       return;
     }
     catch (JSONException paramString)
     {
-      ad.e("MicroMsg.GameServerData", "Json parsing error");
+      ae.e("MicroMsg.GameServerData", "Json parsing error");
     }
   }
   
@@ -38,22 +38,22 @@ public abstract class h
     return paramJSONObject.optString(paramString);
   }
   
-  protected static LinkedList<c> x(JSONArray paramJSONArray)
+  protected static LinkedList<c> y(JSONArray paramJSONArray)
   {
     LinkedList localLinkedList = new LinkedList();
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
-      ad.i("MicroMsg.GameServerData", "Null or empty json array");
+      ae.i("MicroMsg.GameServerData", "Null or empty json array");
       return localLinkedList;
     }
-    ad.i("MicroMsg.GameServerData", "Parsing json AppInfo, size: %d", new Object[] { Integer.valueOf(paramJSONArray.length()) });
+    ae.i("MicroMsg.GameServerData", "Parsing json AppInfo, size: %d", new Object[] { Integer.valueOf(paramJSONArray.length()) });
     int i = 0;
     if (i < paramJSONArray.length())
     {
       Object localObject = paramJSONArray.optJSONObject(i);
       if (localObject == null)
       {
-        ad.e("MicroMsg.GameServerData", "Invalid json object");
+        ae.e("MicroMsg.GameServerData", "Invalid json object");
         localObject = null;
       }
       for (;;)
@@ -65,56 +65,56 @@ public abstract class h
         break;
         JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("YYB");
         String str = i((JSONObject)localObject, "appID");
-        if (bt.isNullOrNil(str))
+        if (bu.isNullOrNil(str))
         {
-          ad.e("MicroMsg.GameServerData", "No AppID field, abort");
+          ae.e("MicroMsg.GameServerData", "No AppID field, abort");
           localObject = null;
         }
         else
         {
-          ad.i("MicroMsg.GameServerData", "Parsing AppID: %s", new Object[] { str });
+          ae.i("MicroMsg.GameServerData", "Parsing AppID: %s", new Object[] { str });
           c localc = new c();
           localc.field_appId = str;
           localc.field_appName = i((JSONObject)localObject, "name");
           localc.field_appIconUrl = i((JSONObject)localObject, "iconURL");
           localc.field_appType = ",1,";
           localc.field_packageName = i((JSONObject)localObject, "AndroidPackageName");
-          localc.sz(i((JSONObject)localObject, "downloadURL"));
-          localc.sC(i((JSONObject)localObject, "AndroidApkMd5"));
+          localc.sU(i((JSONObject)localObject, "downloadURL"));
+          localc.sX(i((JSONObject)localObject, "AndroidApkMd5"));
           str = i((JSONObject)localObject, "GooglePlayDownloadUrl");
           int j = ((JSONObject)localObject).optInt("GooglePlayDownloadFlag");
-          localc.sD(str);
-          if (!bt.isNullOrNil(str))
+          localc.sY(str);
+          if (!bu.isNullOrNil(str))
           {
-            ad.i("MicroMsg.GameServerData", "GooglePlay URL: %s, Download Flag: %d", new Object[] { str, Integer.valueOf(j) });
-            localc.jV(j);
+            ae.i("MicroMsg.GameServerData", "GooglePlay URL: %s, Download Flag: %d", new Object[] { str, Integer.valueOf(j) });
+            localc.jX(j);
           }
           if (localJSONObject != null) {
-            localc.jV(localJSONObject.optInt("AndroidDownloadFlag"));
+            localc.jX(localJSONObject.optInt("AndroidDownloadFlag"));
           }
           if (localJSONObject != null)
           {
-            localc.sI(i(localJSONObject, "DownloadUrl"));
-            localc.sJ(i(localJSONObject, "ApkMd5"));
-            localc.sG(i(localJSONObject, "PreemptiveUrl"));
-            localc.sH(i(localJSONObject, "ExtInfo"));
-            localc.jW(localJSONObject.optInt("SupportedVersionCode"));
+            localc.td(i(localJSONObject, "DownloadUrl"));
+            localc.te(i(localJSONObject, "ApkMd5"));
+            localc.tb(i(localJSONObject, "PreemptiveUrl"));
+            localc.tc(i(localJSONObject, "ExtInfo"));
+            localc.jY(localJSONObject.optInt("SupportedVersionCode"));
           }
-          localc.uaB = i((JSONObject)localObject, "desc");
-          localc.uaA = i((JSONObject)localObject, "brief");
+          localc.ulD = i((JSONObject)localObject, "desc");
+          localc.ulC = i((JSONObject)localObject, "brief");
           localc.type = ((JSONObject)localObject).optInt("type", 0);
           localc.status = ((JSONObject)localObject).optInt("status");
-          localc.uaD = i((JSONObject)localObject, "webURL");
-          localc.uaE = i((JSONObject)localObject, "adUrl");
-          localc.dls = i((JSONObject)localObject, "noticeid");
-          localc.iBM = ((JSONObject)localObject).optBoolean("isSubscribed");
+          localc.ulF = i((JSONObject)localObject, "webURL");
+          localc.ulG = i((JSONObject)localObject, "adUrl");
+          localc.dmu = i((JSONObject)localObject, "noticeid");
+          localc.iEF = ((JSONObject)localObject).optBoolean("isSubscribed");
           localc.versionCode = ((JSONObject)localObject).optInt("versionCode");
           localObject = localc;
           if (localJSONObject != null)
           {
-            localc.uaF = i(localJSONObject, "DownloadTipsWording");
-            localc.uaG = i(localJSONObject, "BackBtnWording");
-            localc.uaH = i(localJSONObject, "DownloadBtnWording");
+            localc.ulH = i(localJSONObject, "DownloadTipsWording");
+            localc.ulI = i(localJSONObject, "BackBtnWording");
+            localc.ulJ = i(localJSONObject, "DownloadBtnWording");
             localObject = localc;
           }
         }
@@ -125,7 +125,7 @@ public abstract class h
   
   protected final JSONArray optJSONArray(String paramString)
   {
-    return this.ubn.optJSONArray(paramString);
+    return this.ump.optJSONArray(paramString);
   }
 }
 

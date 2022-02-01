@@ -8,45 +8,45 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
 {
-  public Button jis;
-  public TextView oVg;
-  public long rEo;
-  public boolean rEq;
-  public View rEr;
-  public a rEs;
+  public Button jll;
+  public TextView pbJ;
+  public boolean rMB;
+  public View rMC;
+  public a rMD;
+  public long rMz;
   
   public a()
   {
     AppMethodBeat.i(107507);
-    this.rEq = false;
-    this.rEo = com.tencent.mm.plugin.fav.a.b.cuD();
+    this.rMB = false;
+    this.rMz = com.tencent.mm.plugin.fav.a.b.cwe();
     AppMethodBeat.o(107507);
   }
   
-  public final void cxm()
+  public final void cyN()
   {
     AppMethodBeat.i(107510);
-    this.oVg.setText(this.oVg.getContext().getString(2131758821, new Object[] { com.tencent.mm.plugin.fav.a.b.vv(this.rEo) }));
-    this.jis.setEnabled(false);
+    this.pbJ.setText(this.pbJ.getContext().getString(2131758821, new Object[] { com.tencent.mm.plugin.fav.a.b.vL(this.rMz) }));
+    this.jll.setEnabled(false);
     AppMethodBeat.o(107510);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(107509);
-    if (!this.rEq)
+    if (!this.rMB)
     {
       AppMethodBeat.o(107509);
       return;
     }
-    if (this.rEr.getVisibility() != 8)
+    if (this.rMC.getVisibility() != 8)
     {
-      this.rEr.setVisibility(8);
-      this.rEr.startAnimation(AnimationUtils.loadAnimation(this.rEr.getContext(), 2130772048));
+      this.rMC.setVisibility(8);
+      this.rMC.startAnimation(AnimationUtils.loadAnimation(this.rMC.getContext(), 2130772048));
     }
     AppMethodBeat.o(107509);
   }
@@ -54,54 +54,54 @@ public final class a
   public final void show()
   {
     AppMethodBeat.i(107508);
-    if (!this.rEq)
+    if (!this.rMB)
     {
-      if (this.rEr == null)
+      if (this.rMC == null)
       {
         AppMethodBeat.o(107508);
         return;
       }
-      if ((this.rEr instanceof ViewStub)) {
-        this.rEr = ((ViewStub)this.rEr).inflate();
+      if ((this.rMC instanceof ViewStub)) {
+        this.rMC = ((ViewStub)this.rMC).inflate();
       }
-      this.oVg = ((TextView)this.rEr.findViewById(2131299773));
-      if (!ac.fko()) {
-        this.oVg.setTextSize(1, 14.0F);
+      this.pbJ = ((TextView)this.rMC.findViewById(2131299773));
+      if (!ad.foi()) {
+        this.pbJ.setTextSize(1, 14.0F);
       }
-      this.jis = ((Button)this.rEr.findViewById(2131299772));
-      cxm();
-      this.jis.setOnClickListener(new View.OnClickListener()
+      this.jll = ((Button)this.rMC.findViewById(2131299772));
+      cyN();
+      this.jll.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107506);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/widget/FavCleanFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (a.this.rEs == null)
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fav/ui/widget/FavCleanFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (a.this.rMD == null)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavCleanFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107506);
             return;
           }
-          a.this.rEs.cwa();
+          a.this.rMD.cxB();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavCleanFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107506);
         }
       });
-      this.rEq = true;
+      this.rMB = true;
     }
-    if (this.rEr.getVisibility() != 0)
+    if (this.rMC.getVisibility() != 0)
     {
-      this.rEr.setVisibility(0);
-      this.rEr.startAnimation(AnimationUtils.loadAnimation(this.rEr.getContext(), 2130772047));
+      this.rMC.setVisibility(0);
+      this.rMC.startAnimation(AnimationUtils.loadAnimation(this.rMC.getContext(), 2130772047));
     }
     AppMethodBeat.o(107508);
   }
   
   public static abstract interface a
   {
-    public abstract void cwa();
+    public abstract void cxB();
   }
 }
 

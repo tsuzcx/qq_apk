@@ -20,7 +20,7 @@ import com.tencent.mm.plugin.appbrand.ui.collection.CollectionFolderActivityCont
 import com.tencent.mm.plugin.appbrand.ui.launcher.FolderActivityContextWithLifecycle;
 import com.tencent.mm.plugin.appbrand.ui.launcher.a;
 import com.tencent.mm.plugin.appbrand.ui.recents.RecentsFolderActivityContext;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import com.tencent.mm.ui.base.b;
@@ -28,18 +28,18 @@ import d.g.b.p;
 import d.l;
 
 @i
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherFolderUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/IFolderActivityContext;", "()V", "mFolderContextImpl", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "showListPage", "showList", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherFolderUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/IFolderActivityContext;", "()V", "mFolderContextImpl", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "showListPage", "showList", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandLauncherFolderUI
   extends MMActivity
   implements a
 {
-  public static final AppBrandLauncherFolderUI.a mBE;
-  private FolderActivityContextWithLifecycle mBD;
+  public static final AppBrandLauncherFolderUI.a mGJ;
+  private FolderActivityContextWithLifecycle mGI;
   
   static
   {
     AppMethodBeat.i(51114);
-    mBE = new AppBrandLauncherFolderUI.a((byte)0);
+    mGJ = new AppBrandLauncherFolderUI.a((byte)0);
     AppMethodBeat.o(51114);
   }
   
@@ -87,13 +87,13 @@ public final class AppBrandLauncherFolderUI
     return -1;
   }
   
-  public final void hE(boolean paramBoolean)
+  public final void hF(boolean paramBoolean)
   {
     AppMethodBeat.i(51111);
-    FolderActivityContextWithLifecycle localFolderActivityContextWithLifecycle = this.mBD;
+    FolderActivityContextWithLifecycle localFolderActivityContextWithLifecycle = this.mGI;
     if (localFolderActivityContextWithLifecycle != null)
     {
-      localFolderActivityContextWithLifecycle.hE(paramBoolean);
+      localFolderActivityContextWithLifecycle.hF(paramBoolean);
       AppMethodBeat.o(51111);
       return;
     }
@@ -111,22 +111,22 @@ public final class AppBrandLauncherFolderUI
       return;
     }
     if (b.bg(getClass())) {
-      super.overridePendingTransition(MMFragmentActivity.a.mOe, MMFragmentActivity.a.mOf);
+      super.overridePendingTransition(MMFragmentActivity.a.mTi, MMFragmentActivity.a.mTj);
     }
     int i = getIntent().getIntExtra("KEY_MODE", 0);
     switch (i)
     {
     default: 
-      ad.e("MicroMsg.AppBrandLauncherFolderUI", "onCreate with invalid mode(" + i + ')');
+      ae.e("MicroMsg.AppBrandLauncherFolderUI", "onCreate with invalid mode(" + i + ')');
       finish();
       setActionbarColor(getContext().getResources().getColor(2131100705));
       getContentView().setBackgroundColor(getActionbarColor());
       setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
       setTitleBarDoubleClickListener((Runnable)new c(this));
       paramBundle = getLifecycle();
-      FolderActivityContextWithLifecycle localFolderActivityContextWithLifecycle = this.mBD;
+      FolderActivityContextWithLifecycle localFolderActivityContextWithLifecycle = this.mGI;
       if (localFolderActivityContextWithLifecycle == null) {
-        p.gfZ();
+        p.gkB();
       }
       paramBundle.addObserver((LifecycleObserver)localFolderActivityContextWithLifecycle);
       AppMethodBeat.o(51110);
@@ -134,7 +134,7 @@ public final class AppBrandLauncherFolderUI
     }
     for (paramBundle = (FolderActivityContextWithLifecycle)new RecentsFolderActivityContext((MMActivity)this);; paramBundle = (FolderActivityContextWithLifecycle)new CollectionFolderActivityContext((MMActivity)this))
     {
-      this.mBD = paramBundle;
+      this.mGI = paramBundle;
       break;
     }
   }
@@ -145,7 +145,7 @@ public final class AppBrandLauncherFolderUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -154,13 +154,13 @@ public final class AppBrandLauncherFolderUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(51108);
-      this.mBF.finish();
+      this.mGK.finish();
       AppMethodBeat.o(51108);
       return true;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -169,7 +169,7 @@ public final class AppBrandLauncherFolderUI
     public final void run()
     {
       AppMethodBeat.i(51109);
-      Fragment localFragment = this.mBF.getSupportFragmentManager().findFragmentById(16908290);
+      Fragment localFragment = this.mGK.getSupportFragmentManager().findFragmentById(16908290);
       Object localObject = localFragment;
       if (!(localFragment instanceof AppBrandLauncherUI.Fragment)) {
         localObject = null;
@@ -177,7 +177,7 @@ public final class AppBrandLauncherFolderUI
       localObject = (AppBrandLauncherUI.Fragment)localObject;
       if (localObject != null)
       {
-        ((AppBrandLauncherUI.Fragment)localObject).bzi();
+        ((AppBrandLauncherUI.Fragment)localObject).bAd();
         AppMethodBeat.o(51109);
         return;
       }
@@ -187,7 +187,7 @@ public final class AppBrandLauncherFolderUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI
  * JD-Core Version:    0.7.0.1
  */

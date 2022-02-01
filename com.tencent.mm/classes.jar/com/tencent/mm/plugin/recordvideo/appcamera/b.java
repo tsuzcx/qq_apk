@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.appcamera;
 
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 public final class b {}
 
 

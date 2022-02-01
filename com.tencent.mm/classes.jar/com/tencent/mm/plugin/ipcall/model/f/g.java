@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.ipcall.model.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
   extends a
 {
-  private long uNF;
-  public long uNG;
-  public long uNU = 0L;
-  public String uNV = "";
-  public String uNW = "";
-  public long uNX = 0L;
-  public long uNY = 0L;
-  public long uNZ = 0L;
-  public String uOa = "";
+  public long uZH = 0L;
+  public String uZI = "";
+  public String uZJ = "";
+  public long uZK = 0L;
+  public long uZL = 0L;
+  public long uZM = 0L;
+  public String uZN = "";
+  private long uZs;
+  public long uZt;
   
-  protected final void bxK()
+  protected final void byD()
   {
     AppMethodBeat.i(25506);
-    com.tencent.mm.plugin.report.service.g.yhR.f(12933, new Object[] { Long.valueOf(this.uNF), Long.valueOf(this.uNG), Long.valueOf(this.uNU), this.uNV, this.uNW, Long.valueOf(this.uNX), Long.valueOf(this.uNY), Long.valueOf(this.uNZ), this.uOa });
+    com.tencent.mm.plugin.report.service.g.yxI.f(12933, new Object[] { Long.valueOf(this.uZs), Long.valueOf(this.uZt), Long.valueOf(this.uZH), this.uZI, this.uZJ, Long.valueOf(this.uZK), Long.valueOf(this.uZL), Long.valueOf(this.uZM), this.uZN });
     AppMethodBeat.o(25506);
   }
   
   public final void reset()
   {
-    this.uNF = 0L;
-    this.uNG = 0L;
-    this.uNU = 0L;
-    this.uNV = "";
-    this.uNW = "";
-    this.uNX = 0L;
-    this.uNY = 0L;
-    this.uNZ = 0L;
-    this.uOa = "";
+    this.uZs = 0L;
+    this.uZt = 0L;
+    this.uZH = 0L;
+    this.uZI = "";
+    this.uZJ = "";
+    this.uZK = 0L;
+    this.uZL = 0L;
+    this.uZM = 0L;
+    this.uZN = "";
   }
   
   public final void start()
   {
     AppMethodBeat.i(25505);
     super.start();
-    this.uNF = bt.flT();
+    this.uZs = bu.fpO();
     AppMethodBeat.o(25505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.g
  * JD-Core Version:    0.7.0.1
  */

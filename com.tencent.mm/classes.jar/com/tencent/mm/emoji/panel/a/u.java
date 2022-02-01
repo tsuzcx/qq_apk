@@ -9,44 +9,44 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
-import com.tencent.mm.emoji.a.a.ac;
-import com.tencent.mm.emoji.a.a.h;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.emoji.a.b.ac;
+import com.tencent.mm.emoji.a.b.h;
 import com.tencent.mm.emoji.loader.e;
 import com.tencent.mm.emoji.view.CoverEmojiStatusView;
 import com.tencent.mm.emoji.view.CoverEmojiStatusView.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.a.a;
 import d.g.b.p;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SimilarEmojiNormalViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "gifAutoPlay", "", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;ZLcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "getGifAutoPlay", "()Z", "setGifAutoPlay", "(Z)V", "icon", "Lcom/tencent/mm/emoji/view/CoverEmojiStatusView;", "getIcon", "()Lcom/tencent/mm/emoji/view/CoverEmojiStatusView;", "loadingView", "Landroid/widget/ProgressBar;", "getLoadingView", "()Landroid/widget/ProgressBar;", "payTip", "Landroid/widget/TextView;", "title", "getTitle", "()Landroid/widget/TextView;", "loadGif", "", "onBind", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "pauseGif", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/SimilarEmojiNormalViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "gifAutoPlay", "", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;ZLcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "getGifAutoPlay", "()Z", "setGifAutoPlay", "(Z)V", "icon", "Lcom/tencent/mm/emoji/view/CoverEmojiStatusView;", "getIcon", "()Lcom/tencent/mm/emoji/view/CoverEmojiStatusView;", "loadingView", "Landroid/widget/ProgressBar;", "getLoadingView", "()Landroid/widget/ProgressBar;", "payTip", "Landroid/widget/TextView;", "title", "getTitle", "()Landroid/widget/TextView;", "loadGif", "", "onBind", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "pauseGif", "plugin-emojisdk_release"})
 public final class u
   extends q<h>
 {
-  private final TextView gnM;
-  public final CoverEmojiStatusView gnY;
-  final ProgressBar gnZ;
-  private final TextView goa;
-  public boolean gob;
+  private final TextView gqi;
+  public final CoverEmojiStatusView gqu;
+  final ProgressBar gqv;
+  private final TextView gqw;
+  public boolean gqx;
   
   public u(View paramView, boolean paramBoolean, n paramn)
   {
     super(paramView, paramn);
     AppMethodBeat.i(105688);
-    this.gob = paramBoolean;
+    this.gqx = paramBoolean;
     paramn = paramView.findViewById(2131296943);
     p.g(paramn, "itemView.findViewById(R.id.art_emoji_icon_iv)");
-    this.gnY = ((CoverEmojiStatusView)paramn);
-    this.gnZ = ((ProgressBar)paramView.findViewById(2131299127));
+    this.gqu = ((CoverEmojiStatusView)paramn);
+    this.gqv = ((ProgressBar)paramView.findViewById(2131299127));
     paramn = paramView.findViewById(2131296944);
     p.g(paramn, "itemView.findViewById(R.id.art_emoji_icon_text)");
-    this.gnM = ((TextView)paramn);
+    this.gqi = ((TextView)paramn);
     paramView = paramView.findViewById(2131303159);
     p.g(paramView, "itemView.findViewById(R.id.pay_tip)");
-    this.goa = ((TextView)paramView);
+    this.gqw = ((TextView)paramView);
     AppMethodBeat.o(105688);
   }
   
@@ -55,28 +55,28 @@ public final class u
     AppMethodBeat.i(105687);
     p.h(paramac, "item");
     super.a(paramac);
-    h localh = (h)this.gnS;
+    h localh = (h)this.gqo;
     if (localh != null)
     {
-      if (this.gnZ != null)
+      if (this.gqv != null)
       {
-        this.gnY.setStatusListener((CoverEmojiStatusView.b)new a(this));
-        this.gnY.setImageDrawable(null);
-        paramac = this.gnY.getStatusListener();
+        this.gqu.setStatusListener((CoverEmojiStatusView.b)new a(this));
+        this.gqu.setImageDrawable(null);
+        paramac = this.gqu.getStatusListener();
         if (paramac != null) {
-          paramac.md(0);
+          paramac.mg(0);
         }
       }
-      paramac = this.goa;
+      paramac = this.gqw;
       int i;
-      if (localh.gjb.Ofk == 1)
+      if (localh.glt.OAr == 1)
       {
         i = 0;
         paramac.setVisibility(i);
-        this.gnY.stop();
-        if (this.gnZ == null)
+        this.gqu.stop();
+        if (this.gqv == null)
         {
-          paramac = this.gnY.getEmojiInfo();
+          paramac = this.gqu.getEmojiInfo();
           if (paramac == null) {
             break label225;
           }
@@ -85,75 +85,75 @@ public final class u
       label225:
       for (paramac = paramac.field_md5;; paramac = null)
       {
-        if ((p.i(paramac, localh.gjb.field_md5) ^ true))
+        if ((p.i(paramac, localh.glt.field_md5) ^ true))
         {
-          paramac = this.gnY;
-          Context localContext = this.gnY.getContext();
+          paramac = this.gqu;
+          Context localContext = this.gqu.getContext();
           p.g(localContext, "icon.context");
           paramac.setImageDrawable((Drawable)new ColorDrawable(localContext.getResources().getColor(2131099651)));
         }
-        if (!this.gob) {
+        if (!this.gqx) {
           break label230;
         }
-        this.gnY.setEmojiInfo(localh.gjb);
+        this.gqu.setEmojiInfo(localh.glt);
         AppMethodBeat.o(105687);
         return;
         i = 8;
         break;
       }
       label230:
-      paramac = e.giz;
-      e.a(localh.gjb, (ImageView)this.gnY);
+      paramac = e.gkR;
+      e.a(localh.glt, (ImageView)this.gqu);
       AppMethodBeat.o(105687);
       return;
     }
     AppMethodBeat.o(105687);
   }
   
-  public final void afT()
+  public final void agh()
   {
-    AppMethodBeat.i(218990);
-    ad.i("MicroMsg.SimilarEmoji", "loadGif");
-    h localh = (h)this.gnS;
+    AppMethodBeat.i(188604);
+    ae.i("MicroMsg.SimilarEmoji", "loadGif");
+    h localh = (h)this.gqo;
     if (localh != null)
     {
-      Object localObject = this.gnY.getEmojiInfo();
+      Object localObject = this.gqu.getEmojiInfo();
       if (localObject != null)
       {
-        localObject = ((EmojiInfo)localObject).Lb();
-        if ((localObject != null) && (((String)localObject).equals(localh.gjb.Lb()) == true))
+        localObject = ((EmojiInfo)localObject).Lj();
+        if ((localObject != null) && (((String)localObject).equals(localh.glt.Lj()) == true))
         {
-          if (!this.gnY.isRunning()) {
-            this.gnY.resume();
+          if (!this.gqu.isRunning()) {
+            this.gqu.resume();
           }
-          AppMethodBeat.o(218990);
+          AppMethodBeat.o(188604);
           return;
         }
       }
-      this.gnY.setEmojiInfo(localh.gjb);
-      AppMethodBeat.o(218990);
+      this.gqu.setEmojiInfo(localh.glt);
+      AppMethodBeat.o(188604);
       return;
     }
-    AppMethodBeat.o(218990);
+    AppMethodBeat.o(188604);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/emoji/panel/adapter/SimilarEmojiNormalViewHolder$onBind$1$1$1", "Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "onStatus", "", "status", "", "plugin-emojisdk_release", "com/tencent/mm/emoji/panel/adapter/SimilarEmojiNormalViewHolder$$special$$inlined$apply$lambda$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/emoji/panel/adapter/SimilarEmojiNormalViewHolder$onBind$1$1$1", "Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "onStatus", "", "status", "", "plugin-emojisdk_release", "com/tencent/mm/emoji/panel/adapter/SimilarEmojiNormalViewHolder$$special$$inlined$apply$lambda$1"})
   public static final class a
     implements CoverEmojiStatusView.b
   {
     a(u paramu) {}
     
-    public final void md(final int paramInt)
+    public final void mg(final int paramInt)
     {
       AppMethodBeat.i(105686);
-      c.g((a)new d.g.b.q(paramInt) {});
+      c.h((a)new d.g.b.q(paramInt) {});
       AppMethodBeat.o(105686);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.u
  * JD-Core Version:    0.7.0.1
  */

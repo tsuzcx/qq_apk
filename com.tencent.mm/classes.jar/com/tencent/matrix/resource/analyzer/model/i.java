@@ -2,19 +2,19 @@ package com.tencent.matrix.resource.analyzer.model;
 
 public final class i
 {
-  public final e cGQ;
-  public final com.e.a.b.i cGR;
-  public final i cGS;
-  public final String cGT;
-  public final j.b cGU;
+  public final com.e.a.b.i cHA;
+  public final i cHB;
+  public final String cHC;
+  public final j.b cHD;
+  public final e cHz;
   
   public i(e parame, com.e.a.b.i parami, i parami1, String paramString, j.b paramb)
   {
-    this.cGQ = parame;
-    this.cGR = parami;
-    this.cGS = parami1;
-    this.cGT = paramString;
-    this.cGU = paramb;
+    this.cHz = parame;
+    this.cHA = parami;
+    this.cHB = parami1;
+    this.cHC = paramString;
+    this.cHD = paramb;
   }
 }
 

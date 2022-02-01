@@ -16,12 +16,12 @@ public final class a
   {
     AppMethodBeat.i(60160);
     p.h(paramab, "$this$isInlineClassThatRequiresMangling");
-    paramab = paramab.gsZ().ghO();
+    paramab = paramab.gxB().gmq();
     if (paramab != null)
     {
       paramab = (l)paramab;
       p.h(paramab, "$this$isInlineClassThatRequiresMangling");
-      if ((e.D(paramab)) && (!p.i(d.l.b.a.b.j.d.a.o((l)paramab), c.Nvy))) {}
+      if ((e.D(paramab)) && (!p.i(d.l.b.a.b.j.d.a.o((l)paramab), c.NSE))) {}
       for (int i = 1; i == 1; i = 0)
       {
         AppMethodBeat.o(60160);
@@ -47,7 +47,7 @@ public final class a
   private static final boolean ai(ab paramab)
   {
     AppMethodBeat.i(60162);
-    h localh = paramab.gsZ().ghO();
+    h localh = paramab.gxB().gmq();
     paramab = localh;
     if (!(localh instanceof as)) {
       paramab = null;
@@ -65,7 +65,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.e.a
  * JD-Core Version:    0.7.0.1
  */

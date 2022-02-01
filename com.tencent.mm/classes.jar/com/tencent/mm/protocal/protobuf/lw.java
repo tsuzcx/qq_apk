@@ -1,13 +1,13 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 
 public final class lw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public b FEB;
-  public b FEC;
+  public b FWW;
+  public b FWX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,35 +15,35 @@ public final class lw
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FEB != null) {
-        paramVarArgs.c(1, this.FEB);
+      if (this.FWW != null) {
+        paramVarArgs.c(1, this.FWW);
       }
-      if (this.FEC != null) {
-        paramVarArgs.c(2, this.FEC);
+      if (this.FWX != null) {
+        paramVarArgs.c(2, this.FWX);
       }
       AppMethodBeat.o(104358);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FEB == null) {
+      if (this.FWW == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.b(1, this.FEB) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.b(1, this.FWW) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FEC != null) {
-        i = paramInt + f.a.a.b.b.a.b(2, this.FEC);
+      if (this.FWX != null) {
+        i = paramInt + f.a.a.b.b.a.b(2, this.FWX);
       }
       AppMethodBeat.o(104358);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(104358);
@@ -59,11 +59,11 @@ public final class lw
           AppMethodBeat.o(104358);
           return -1;
         case 1: 
-          locallw.FEB = locala.NPN.gxI();
+          locallw.FWW = locala.OmT.gCk();
           AppMethodBeat.o(104358);
           return 0;
         }
-        locallw.FEC = locala.NPN.gxI();
+        locallw.FWX = locala.OmT.gCk();
         AppMethodBeat.o(104358);
         return 0;
       }

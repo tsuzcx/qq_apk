@@ -5,62 +5,62 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  LinearLayout yKI;
-  LinearLayout yKJ;
-  LinearLayout yKK;
-  LinearLayout yKL;
-  LinearLayout yKM;
+  LinearLayout zaS;
+  LinearLayout zaT;
+  LinearLayout zaU;
+  LinearLayout zaV;
+  LinearLayout zaW;
   
-  public final void axi(String paramString)
+  public final void ayy(String paramString)
   {
     AppMethodBeat.i(74625);
     if (paramString.equals("downloading"))
     {
-      this.yKI.setVisibility(0);
-      this.yKJ.setVisibility(8);
-      this.yKK.setVisibility(8);
-      this.yKL.setVisibility(8);
-      this.yKM.setVisibility(8);
+      this.zaS.setVisibility(0);
+      this.zaT.setVisibility(8);
+      this.zaU.setVisibility(8);
+      this.zaV.setVisibility(8);
+      this.zaW.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("downloaded"))
     {
-      this.yKI.setVisibility(8);
-      this.yKJ.setVisibility(0);
-      this.yKK.setVisibility(8);
-      this.yKL.setVisibility(8);
-      this.yKM.setVisibility(8);
+      this.zaS.setVisibility(8);
+      this.zaT.setVisibility(0);
+      this.zaU.setVisibility(8);
+      this.zaV.setVisibility(8);
+      this.zaW.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("undownloaded"))
     {
-      this.yKI.setVisibility(8);
-      this.yKJ.setVisibility(8);
-      this.yKK.setVisibility(0);
-      this.yKL.setVisibility(8);
-      this.yKM.setVisibility(8);
+      this.zaS.setVisibility(8);
+      this.zaT.setVisibility(8);
+      this.zaU.setVisibility(0);
+      this.zaV.setVisibility(8);
+      this.zaW.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("using"))
     {
-      this.yKI.setVisibility(8);
-      this.yKJ.setVisibility(8);
-      this.yKK.setVisibility(8);
-      this.yKL.setVisibility(0);
-      this.yKM.setVisibility(8);
+      this.zaS.setVisibility(8);
+      this.zaT.setVisibility(8);
+      this.zaU.setVisibility(8);
+      this.zaV.setVisibility(0);
+      this.zaW.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("canceling"))
     {
-      this.yKI.setVisibility(8);
-      this.yKJ.setVisibility(8);
-      this.yKK.setVisibility(8);
-      this.yKL.setVisibility(8);
-      this.yKM.setVisibility(0);
+      this.zaS.setVisibility(8);
+      this.zaT.setVisibility(8);
+      this.zaU.setVisibility(8);
+      this.zaV.setVisibility(8);
+      this.zaW.setVisibility(0);
       AppMethodBeat.o(74625);
       return;
     }

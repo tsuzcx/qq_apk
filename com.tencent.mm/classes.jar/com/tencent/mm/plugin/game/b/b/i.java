@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.game.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int Height;
   public int Width;
-  public int tSp;
-  public String tSq;
-  public String tSr;
-  public boolean tSs;
-  public int tSt;
-  public long tSu;
-  public int tSv;
+  public int udg;
+  public String udh;
+  public String udi;
+  public boolean udj;
+  public int udk;
+  public long udl;
+  public int udm;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,48 +21,48 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.tSp);
-      if (this.tSq != null) {
-        paramVarArgs.d(2, this.tSq);
+      paramVarArgs.aS(1, this.udg);
+      if (this.udh != null) {
+        paramVarArgs.d(2, this.udh);
       }
-      if (this.tSr != null) {
-        paramVarArgs.d(3, this.tSr);
+      if (this.udi != null) {
+        paramVarArgs.d(3, this.udi);
       }
       paramVarArgs.aS(4, this.Width);
       paramVarArgs.aS(5, this.Height);
-      paramVarArgs.bt(6, this.tSs);
-      paramVarArgs.aS(7, this.tSt);
-      paramVarArgs.aY(8, this.tSu);
-      paramVarArgs.aS(9, this.tSv);
+      paramVarArgs.bC(6, this.udj);
+      paramVarArgs.aS(7, this.udk);
+      paramVarArgs.aZ(8, this.udl);
+      paramVarArgs.aS(9, this.udm);
       AppMethodBeat.o(40875);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.tSp) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.udg) + 0;
       paramInt = i;
-      if (this.tSq != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.tSq);
+      if (this.udh != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.udh);
       }
       i = paramInt;
-      if (this.tSr != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.tSr);
+      if (this.udi != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.udi);
       }
       paramInt = f.a.a.b.b.a.bz(4, this.Width);
       int j = f.a.a.b.b.a.bz(5, this.Height);
-      int k = f.a.a.b.b.a.alV(6);
-      int m = f.a.a.b.b.a.bz(7, this.tSt);
-      int n = f.a.a.b.b.a.p(8, this.tSu);
-      int i1 = f.a.a.b.b.a.bz(9, this.tSv);
+      int k = f.a.a.b.b.a.amF(6);
+      int m = f.a.a.b.b.a.bz(7, this.udk);
+      int n = f.a.a.b.b.a.p(8, this.udl);
+      int i1 = f.a.a.b.b.a.bz(9, this.udm);
       AppMethodBeat.o(40875);
       return i + paramInt + j + k + m + n + i1;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(40875);
@@ -78,39 +78,39 @@ public final class i
         AppMethodBeat.o(40875);
         return -1;
       case 1: 
-        locali.tSp = locala.NPN.zc();
+        locali.udg = locala.OmT.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 2: 
-        locali.tSq = locala.NPN.readString();
+        locali.udh = locala.OmT.readString();
         AppMethodBeat.o(40875);
         return 0;
       case 3: 
-        locali.tSr = locala.NPN.readString();
+        locali.udi = locala.OmT.readString();
         AppMethodBeat.o(40875);
         return 0;
       case 4: 
-        locali.Width = locala.NPN.zc();
+        locali.Width = locala.OmT.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 5: 
-        locali.Height = locala.NPN.zc();
+        locali.Height = locala.OmT.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 6: 
-        locali.tSs = locala.NPN.grw();
+        locali.udj = locala.OmT.gvY();
         AppMethodBeat.o(40875);
         return 0;
       case 7: 
-        locali.tSt = locala.NPN.zc();
+        locali.udk = locala.OmT.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 8: 
-        locali.tSu = locala.NPN.zd();
+        locali.udl = locala.OmT.zd();
         AppMethodBeat.o(40875);
         return 0;
       }
-      locali.tSv = locala.NPN.zc();
+      locali.udm = locala.OmT.zc();
       AppMethodBeat.o(40875);
       return 0;
     }

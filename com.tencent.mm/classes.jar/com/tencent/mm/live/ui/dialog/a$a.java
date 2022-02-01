@@ -2,7 +2,7 @@ package com.tencent.mm.live.ui.dialog;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/dialog/LiveMicDialog$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/dialog/LiveMicDialog$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
 public final class a$a {}
 
 

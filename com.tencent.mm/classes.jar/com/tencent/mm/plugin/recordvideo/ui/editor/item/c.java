@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.protocal.protobuf.dwb;
-import com.tencent.mm.protocal.protobuf.rt;
-import com.tencent.mm.protocal.protobuf.so;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.protocal.protobuf.dww;
+import com.tencent.mm.protocal.protobuf.rv;
+import com.tencent.mm.protocal.protobuf.sq;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.io.IOException;
@@ -15,67 +15,67 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "type", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "matrix", "Landroid/graphics/Matrix;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;Ljava/util/ArrayList;Landroid/graphics/Matrix;)V", "byteArray", "", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;[B)V", "bgColor", "", "getBgColor", "()I", "setBgColor", "(I)V", "captionList", "getCaptionList", "()Ljava/util/ArrayList;", "setCaptionList", "(Ljava/util/ArrayList;)V", "font", "", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textColor", "getTextColor", "setTextColor", "getCurrentTransResult", "timeMs", "", "getShowCaptionAtTime", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/CaptionItemData;", "toString", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "type", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "matrix", "Landroid/graphics/Matrix;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;Ljava/util/ArrayList;Landroid/graphics/Matrix;)V", "byteArray", "", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;[B)V", "bgColor", "", "getBgColor", "()I", "setBgColor", "(I)V", "captionList", "getCaptionList", "()Ljava/util/ArrayList;", "setCaptionList", "(Ljava/util/ArrayList;)V", "font", "", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textColor", "getTextColor", "setTextColor", "getCurrentTransResult", "timeMs", "", "getShowCaptionAtTime", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/CaptionItemData;", "toString", "Companion", "plugin-recordvideo_release"})
 public final class c
   extends a
 {
-  public static final c.a xNO;
+  public static final c.a ydH;
   public int bgColor;
   public int textColor;
-  public ArrayList<rt> xNM;
-  public String xNN;
+  public ArrayList<rv> ydF;
+  public String ydG;
   
   static
   {
-    AppMethodBeat.i(200655);
-    xNO = new c.a((byte)0);
-    AppMethodBeat.o(200655);
+    AppMethodBeat.i(206913);
+    ydH = new c.a((byte)0);
+    AppMethodBeat.o(206913);
   }
   
   public c(d paramd)
   {
     super(paramd);
-    AppMethodBeat.i(200652);
-    this.xNM = new ArrayList();
-    AppMethodBeat.o(200652);
+    AppMethodBeat.i(206910);
+    this.ydF = new ArrayList();
+    AppMethodBeat.o(206910);
   }
   
-  public c(d paramd, ArrayList<rt> paramArrayList, Matrix paramMatrix)
+  public c(d paramd, ArrayList<rv> paramArrayList, Matrix paramMatrix)
   {
     super(paramd);
-    AppMethodBeat.i(200653);
-    this.xNM = new ArrayList();
-    this.xNM.clear();
-    this.xNM.addAll((Collection)paramArrayList);
+    AppMethodBeat.i(206911);
+    this.ydF = new ArrayList();
+    this.ydF.clear();
+    this.ydF.addAll((Collection)paramArrayList);
     this.gR.set(paramMatrix);
-    AppMethodBeat.o(200653);
+    AppMethodBeat.o(206911);
   }
   
   public c(d paramd, byte[] paramArrayOfByte)
   {
     super(paramd);
-    AppMethodBeat.i(200654);
-    this.xNM = new ArrayList();
+    AppMethodBeat.i(206912);
+    this.ydF = new ArrayList();
     try
     {
-      paramd = (com.tencent.mm.bx.a)new so();
+      paramd = (com.tencent.mm.bw.a)new sq();
       try
       {
         paramd.parseFrom(paramArrayOfByte);
-        paramd = (so)paramd;
+        paramd = (sq)paramd;
         if (paramd != null)
         {
-          this.xNM.clear();
-          this.xNM.addAll((Collection)paramd.FNZ);
+          this.ydF.clear();
+          this.ydF.addAll((Collection)paramd.Ggy);
           paramArrayOfByte = this.gR;
-          dwb localdwb = paramd.FPc;
-          p.g(localdwb, "captionData.matrix");
-          paramArrayOfByte.setValues(a(localdwb));
-          this.bgColor = paramd.FPe;
-          this.textColor = paramd.FPd;
-          this.xNN = paramd.xNN;
-          ad.i("MicroMsg.CaptionItem", toString());
-          AppMethodBeat.o(200654);
+          dww localdww = paramd.GhB;
+          p.g(localdww, "captionData.matrix");
+          paramArrayOfByte.setValues(a(localdww));
+          this.bgColor = paramd.GhD;
+          this.textColor = paramd.GhC;
+          this.ydG = paramd.ydG;
+          ae.i("MicroMsg.CaptionItem", toString());
+          AppMethodBeat.o(206912);
           return;
         }
       }
@@ -83,61 +83,61 @@ public final class c
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { paramd });
+          ae.l("safeParser", "", new Object[] { paramd });
           paramd = null;
         }
-        AppMethodBeat.o(200654);
+        AppMethodBeat.o(206912);
         return;
       }
       return;
     }
     catch (IOException paramd)
     {
-      ad.printErrStackTrace("MicroMsg.CaptionItem", (Throwable)paramd, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(200654);
+      ae.printErrStackTrace("MicroMsg.CaptionItem", (Throwable)paramd, "LocationItem parse error", new Object[0]);
+      AppMethodBeat.o(206912);
     }
   }
   
-  public final so dHS()
+  public final sq dLj()
   {
-    AppMethodBeat.i(200649);
-    so localso = new so();
-    localso.FNZ.addAll((Collection)this.xNM);
-    localso.FPc = f(this.gR);
-    localso.FPe = this.bgColor;
-    localso.FPd = this.textColor;
-    localso.xNN = this.xNN;
-    AppMethodBeat.o(200649);
-    return localso;
+    AppMethodBeat.i(206907);
+    sq localsq = new sq();
+    localsq.Ggy.addAll((Collection)this.ydF);
+    localsq.GhB = f(this.gR);
+    localsq.GhD = this.bgColor;
+    localsq.GhC = this.textColor;
+    localsq.ydG = this.ydG;
+    AppMethodBeat.o(206907);
+    return localsq;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(200651);
-    Iterator localIterator = this.xNM.iterator();
+    AppMethodBeat.i(206909);
+    Iterator localIterator = this.ydF.iterator();
     while (localIterator.hasNext())
     {
-      rt localrt = (rt)localIterator.next();
-      new StringBuilder().append("").append("start:").append(localrt.FNR).append(" end:").append(localrt.FNS).append(" text:").append(localrt.FNQ.toString("UTF-8")).append('\n');
+      rv localrv = (rv)localIterator.next();
+      new StringBuilder().append("").append("start:").append(localrv.Ggq).append(" end:").append(localrv.Ggr).append(" text:").append(localrv.Ggp.toString("UTF-8")).append('\n');
     }
-    AppMethodBeat.o(200651);
+    AppMethodBeat.o(206909);
     return "";
   }
   
-  public final rt yM(long paramLong)
+  public final rv zk(long paramLong)
   {
-    AppMethodBeat.i(200648);
-    Iterator localIterator = ((Iterable)this.xNM).iterator();
+    AppMethodBeat.i(206906);
+    Iterator localIterator = ((Iterable)this.ydF).iterator();
     while (localIterator.hasNext())
     {
-      rt localrt = (rt)localIterator.next();
-      if ((localrt.FNR <= paramLong) && (localrt.FNS >= paramLong))
+      rv localrv = (rv)localIterator.next();
+      if ((localrv.Ggq <= paramLong) && (localrv.Ggr >= paramLong))
       {
-        AppMethodBeat.o(200648);
-        return localrt;
+        AppMethodBeat.o(206906);
+        return localrv;
       }
     }
-    AppMethodBeat.o(200648);
+    AppMethodBeat.o(206906);
     return null;
   }
 }

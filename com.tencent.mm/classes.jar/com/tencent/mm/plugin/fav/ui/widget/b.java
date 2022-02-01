@@ -11,34 +11,34 @@ import com.tencent.mm.hellhoundlib.a.a;
 
 public final class b
 {
-  private View rEA;
-  public a rEB;
-  private boolean rEq = false;
-  private View rEr;
-  private ImageButton rEv;
-  private ImageButton rEw;
-  private ImageButton rEx;
-  private View rEy;
-  private View rEz;
+  private boolean rMB = false;
+  private View rMC;
+  private ImageButton rMG;
+  private ImageButton rMH;
+  private ImageButton rMI;
+  private View rMJ;
+  private View rMK;
+  private View rML;
+  public a rMM;
   
   public final void dY(View paramView)
   {
-    this.rEq = false;
-    this.rEr = paramView;
+    this.rMB = false;
+    this.rMC = paramView;
   }
   
   public final void hide()
   {
     AppMethodBeat.i(107518);
-    if (!this.rEq)
+    if (!this.rMB)
     {
       AppMethodBeat.o(107518);
       return;
     }
-    if (this.rEr.getVisibility() != 8)
+    if (this.rMC.getVisibility() != 8)
     {
-      this.rEr.setVisibility(8);
-      this.rEr.startAnimation(AnimationUtils.loadAnimation(this.rEr.getContext(), 2130772048));
+      this.rMC.setVisibility(8);
+      this.rMC.startAnimation(AnimationUtils.loadAnimation(this.rMC.getContext(), 2130772048));
     }
     AppMethodBeat.o(107518);
   }
@@ -46,96 +46,96 @@ public final class b
   public final void lF(boolean paramBoolean)
   {
     AppMethodBeat.i(107517);
-    if (!this.rEq)
+    if (!this.rMB)
     {
-      if (this.rEr == null)
+      if (this.rMC == null)
       {
         AppMethodBeat.o(107517);
         return;
       }
-      if ((this.rEr instanceof ViewStub)) {
-        this.rEr = ((ViewStub)this.rEr).inflate();
+      if ((this.rMC instanceof ViewStub)) {
+        this.rMC = ((ViewStub)this.rMC).inflate();
       }
-      this.rEy = this.rEr.findViewById(2131299826);
-      this.rEz = this.rEr.findViewById(2131299827);
-      this.rEA = this.rEr.findViewById(2131299828);
-      this.rEv = ((ImageButton)this.rEr.findViewById(2131299787));
-      this.rEv.setEnabled(false);
-      this.rEv.setContentDescription(this.rEv.getContext().getString(2131764539));
-      this.rEv.setOnClickListener(new View.OnClickListener()
+      this.rMJ = this.rMC.findViewById(2131299826);
+      this.rMK = this.rMC.findViewById(2131299827);
+      this.rML = this.rMC.findViewById(2131299828);
+      this.rMG = ((ImageButton)this.rMC.findViewById(2131299787));
+      this.rMG.setEnabled(false);
+      this.rMG.setContentDescription(this.rMG.getContext().getString(2131764539));
+      this.rMG.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107514);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (b.this.rEB == null)
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (b.this.rMM == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107514);
             return;
           }
-          b.this.rEB.cwn();
+          b.this.rMM.cxO();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107514);
         }
       });
-      this.rEw = ((ImageButton)this.rEr.findViewById(2131299784));
-      this.rEw.setEnabled(false);
-      this.rEw.setContentDescription(this.rEw.getContext().getString(2131758179));
-      this.rEw.setOnClickListener(new View.OnClickListener()
+      this.rMH = ((ImageButton)this.rMC.findViewById(2131299784));
+      this.rMH.setEnabled(false);
+      this.rMH.setContentDescription(this.rMH.getContext().getString(2131758179));
+      this.rMH.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107515);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (b.this.rEB == null)
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (b.this.rMM == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107515);
             return;
           }
-          b.this.rEB.cwo();
+          b.this.rMM.cxP();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107515);
         }
       });
       if (paramBoolean)
       {
-        this.rEz.setVisibility(8);
-        this.rEw.setVisibility(8);
+        this.rMK.setVisibility(8);
+        this.rMH.setVisibility(8);
       }
-      this.rEx = ((ImageButton)this.rEr.findViewById(2131299785));
-      this.rEx.setEnabled(false);
-      this.rEx.setContentDescription(this.rEx.getContext().getString(2131758030));
-      this.rEx.setOnClickListener(new View.OnClickListener()
+      this.rMI = ((ImageButton)this.rMC.findViewById(2131299785));
+      this.rMI.setEnabled(false);
+      this.rMI.setContentDescription(this.rMI.getContext().getString(2131758030));
+      this.rMI.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107516);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (b.this.rEB == null)
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (b.this.rMM == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107516);
             return;
           }
-          b.this.rEB.cwa();
+          b.this.rMM.cxB();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107516);
         }
       });
-      this.rEq = true;
+      this.rMB = true;
     }
-    if (this.rEr.getVisibility() != 0)
+    if (this.rMC.getVisibility() != 0)
     {
-      this.rEr.setVisibility(0);
-      this.rEr.startAnimation(AnimationUtils.loadAnimation(this.rEr.getContext(), 2130772047));
+      this.rMC.setVisibility(0);
+      this.rMC.startAnimation(AnimationUtils.loadAnimation(this.rMC.getContext(), 2130772047));
     }
     AppMethodBeat.o(107517);
   }
@@ -143,24 +143,24 @@ public final class b
   public final void lG(boolean paramBoolean)
   {
     AppMethodBeat.i(107519);
-    if (!this.rEq)
+    if (!this.rMB)
     {
       AppMethodBeat.o(107519);
       return;
     }
-    this.rEv.setEnabled(paramBoolean);
-    this.rEw.setEnabled(paramBoolean);
-    this.rEx.setEnabled(paramBoolean);
+    this.rMG.setEnabled(paramBoolean);
+    this.rMH.setEnabled(paramBoolean);
+    this.rMI.setEnabled(paramBoolean);
     AppMethodBeat.o(107519);
   }
   
   public static abstract interface a
   {
-    public abstract void cwa();
+    public abstract void cxB();
     
-    public abstract void cwn();
+    public abstract void cxO();
     
-    public abstract void cwo();
+    public abstract void cxP();
   }
 }
 

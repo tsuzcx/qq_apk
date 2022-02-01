@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class bm
-  extends a<aa>
+  extends a<z>
 {
   public static final int CTRL_INDEX = 0;
   public static final String NAME = "openLink";

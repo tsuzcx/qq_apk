@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
-  public static boolean kw(String paramString1, String paramString2)
+  public static boolean kD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(71809);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(71809);
       return false;
@@ -29,7 +29,7 @@ public final class a
       }
       else
       {
-        if (!bt.isNullOrNil(paramString1)) {
+        if (!bu.isNullOrNil(paramString1)) {
           break;
         }
         AppMethodBeat.o(71809);

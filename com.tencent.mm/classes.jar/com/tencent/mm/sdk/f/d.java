@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  private static final Map<String, String> IhQ;
-  private static final Map<String, String> IhR;
+  private static final Map<String, String> ICb;
+  private static final Map<String, String> ICc;
   
   static
   {
@@ -33,12 +33,12 @@ public final class d
       localHashMap1.put(localPair.first, localPair.second);
       localHashMap2.put(localPair.second, localPair.first);
     }
-    IhQ = Collections.unmodifiableMap(localHashMap1);
-    IhR = Collections.unmodifiableMap(localHashMap2);
+    ICb = Collections.unmodifiableMap(localHashMap1);
+    ICc = Collections.unmodifiableMap(localHashMap2);
     AppMethodBeat.o(153471);
   }
   
-  public static String aMq(String paramString)
+  public static String aNM(String paramString)
   {
     AppMethodBeat.i(153470);
     if (TextUtils.isEmpty(paramString))
@@ -47,7 +47,7 @@ public final class d
       return null;
     }
     String str3 = paramString.toLowerCase();
-    String str2 = (String)IhR.get(str3);
+    String str2 = (String)ICc.get(str3);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = MimeTypeMap.getSingleton().getExtensionFromMimeType(paramString);
@@ -84,7 +84,7 @@ public final class d
     return str1;
   }
   
-  public static String aNJ(String paramString)
+  public static String aPg(String paramString)
   {
     Object localObject2 = null;
     AppMethodBeat.i(153469);
@@ -94,7 +94,7 @@ public final class d
     }
     for (;;)
     {
-      paramString = aRD((String)localObject1);
+      paramString = aTa((String)localObject1);
       AppMethodBeat.o(153469);
       return paramString;
       int i = paramString.lastIndexOf('.');
@@ -109,7 +109,7 @@ public final class d
     }
   }
   
-  public static String aRD(String paramString)
+  public static String aTa(String paramString)
   {
     AppMethodBeat.i(153468);
     if (TextUtils.isEmpty(paramString))
@@ -117,7 +117,7 @@ public final class d
       AppMethodBeat.o(153468);
       return null;
     }
-    String str2 = (String)IhQ.get(paramString.toLowerCase());
+    String str2 = (String)ICb.get(paramString.toLowerCase());
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
@@ -137,14 +137,14 @@ public final class d
   
   public static final class a
   {
-    private static final Pattern IhS;
+    private static final Pattern ICd;
     public final String charset;
     public final String mimeType;
     
     static
     {
       AppMethodBeat.i(153467);
-      IhS = Pattern.compile("([a-zA-Z*-.0-9]+/[a-zA-Z*-.0-9]+)");
+      ICd = Pattern.compile("([a-zA-Z*-.0-9]+/[a-zA-Z*-.0-9]+)");
       AppMethodBeat.o(153467);
     }
     
@@ -154,7 +154,7 @@ public final class d
       this.charset = paramString2;
     }
     
-    public static a aRE(String paramString)
+    public static a aTb(String paramString)
     {
       String str = null;
       AppMethodBeat.i(153466);
@@ -163,7 +163,7 @@ public final class d
         AppMethodBeat.o(153466);
         return null;
       }
-      Object localObject = IhS.matcher(paramString);
+      Object localObject = ICd.matcher(paramString);
       if (!((Matcher)localObject).find())
       {
         AppMethodBeat.o(153466);

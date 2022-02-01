@@ -8,10 +8,10 @@ import com.tencent.mm.i.g.a;
 import com.tencent.mm.i.g.b;
 import com.tencent.mm.i.h;
 import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.loader.i;
 import com.tencent.mm.plugin.finder.loader.m;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.al;
-import com.tencent.mm.plugin.finder.model.y;
+import com.tencent.mm.plugin.finder.model.am;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore.a;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore.b;
@@ -24,16 +24,14 @@ import com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler;
 import com.tencent.mm.plugin.i.a.d.a;
 import com.tencent.mm.plugin.thumbplayer.PluginThumbPlayer;
 import com.tencent.mm.plugin.thumbplayer.b.a.d;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.a.j;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
 import d.n.n;
-import d.o;
-import d.z;
 import java.io.ByteArrayOutputStream;
 import java.util.Collection;
 import java.util.HashMap;
@@ -45,144 +43,144 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/worker/IPreloadWorker;", "model", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "sceneTag", "", "(Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;Ljava/lang/String;)V", "TAG", "focusedMediaId", "isOpenMultiBitRate", "", "isRelease", "isStop", "Ljava/util/concurrent/atomic/AtomicBoolean;", "loadingMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lkotlin/collections/HashMap;", "mainLock", "Ljava/util/concurrent/locks/ReentrantLock;", "preLoadCallbacks", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "getPreLoadCallbacks", "()Ljava/util/concurrent/ConcurrentLinkedQueue;", "waitingList", "Ljava/util/LinkedList;", "buildPreloadList", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataList", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "cancel", "mediaId", "isIgnorePlaying", "cancelWaitingTask", "createPreloadCDNTask", "detail", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "enqueue", "", "task", "getPreLoadingCount", "isFocusedMedia", "media", "mergePreload", "preloadList", "needToMerge", "new", "old", "onClearAll", "", "onMediaFocus", "isFocused", "onPreloadStart", "onPreloadStop", "onRelease", "pollWaiting", "preload", "source", "printMergeList", "", "rawList", "removeWaitingList", "resetRunningTask", "showErrToast", "stage", "ret", "syncLock", "T", "tag", "handle", "Lkotlin/Function0;", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "Companion", "VideoPreloadTaskCallback", "VideoTaskCallTask", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/worker/IPreloadWorker;", "model", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "sceneTag", "", "(Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;Ljava/lang/String;)V", "TAG", "focusedMediaId", "isOpenMultiBitRate", "", "isRelease", "isStop", "Ljava/util/concurrent/atomic/AtomicBoolean;", "loadingMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lkotlin/collections/HashMap;", "mainLock", "Ljava/util/concurrent/locks/ReentrantLock;", "preLoadCallbacks", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "getPreLoadCallbacks", "()Ljava/util/concurrent/ConcurrentLinkedQueue;", "waitingList", "Ljava/util/LinkedList;", "buildPreloadList", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataList", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "cancel", "mediaId", "isIgnorePlaying", "cancelWaitingTask", "createPreloadCDNTask", "detail", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "enqueue", "", "task", "getPreLoadingCount", "isFocusedMedia", "media", "mergePreload", "preloadList", "needToMerge", "new", "old", "onClearAll", "", "onMediaFocus", "isFocused", "onPreloadStart", "onPreloadStop", "onRelease", "pollWaiting", "preload", "source", "printMergeList", "", "rawList", "removeWaitingList", "resetRunningTask", "showErrToast", "stage", "ret", "syncLock", "T", "tag", "handle", "Lkotlin/Function0;", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "Companion", "VideoPreloadTaskCallback", "VideoTaskCallTask", "plugin-finder_release"})
 public final class b
 {
-  public static final a slI;
+  public static final a svz;
   public final String TAG;
-  public AtomicBoolean deX;
-  private final LinkedList<com.tencent.mm.plugin.finder.preload.c> grX;
-  public boolean hju;
-  private final ReentrantLock slB;
-  private final HashMap<String, com.tencent.mm.plugin.finder.preload.c> slC;
-  private String slD;
-  private final boolean slE;
-  public final ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> slF;
-  private final com.tencent.mm.plugin.finder.preload.model.a slG;
-  private String slH;
+  public AtomicBoolean dfZ;
+  private final LinkedList<com.tencent.mm.plugin.finder.preload.c> guy;
+  public boolean hmi;
+  private final ReentrantLock svs;
+  private final HashMap<String, com.tencent.mm.plugin.finder.preload.c> svt;
+  private String svu;
+  private final boolean svv;
+  public final ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> svw;
+  private final com.tencent.mm.plugin.finder.preload.model.a svx;
+  private String svy;
   
   static
   {
-    AppMethodBeat.i(203098);
-    slI = new a((byte)0);
-    AppMethodBeat.o(203098);
+    AppMethodBeat.i(203639);
+    svz = new a((byte)0);
+    AppMethodBeat.o(203639);
   }
   
   public b(com.tencent.mm.plugin.finder.preload.model.a parama, String paramString)
   {
-    AppMethodBeat.i(203096);
-    this.slG = parama;
-    this.slH = paramString;
-    this.slB = new ReentrantLock();
-    this.slC = new HashMap();
-    this.grX = new LinkedList();
-    this.slD = "";
-    parama = com.tencent.mm.plugin.finder.storage.b.sxa;
-    this.slE = com.tencent.mm.plugin.finder.storage.b.cGE();
-    this.slF = new ConcurrentLinkedQueue();
-    this.TAG = ("Finder.VideoPreloadWorker_" + this.slH);
-    this.slF.add(new com.tencent.mm.plugin.finder.preload.b()
+    AppMethodBeat.i(203637);
+    this.svx = parama;
+    this.svy = paramString;
+    this.svs = new ReentrantLock();
+    this.svt = new HashMap();
+    this.guy = new LinkedList();
+    this.svu = "";
+    parama = com.tencent.mm.plugin.finder.storage.b.sHP;
+    this.svv = com.tencent.mm.plugin.finder.storage.b.cIB();
+    this.svw = new ConcurrentLinkedQueue();
+    this.TAG = ("Finder.VideoPreloadWorker_" + this.svy);
+    this.svw.add(new com.tencent.mm.plugin.finder.preload.b()
     {
       public final void a(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3, com.tencent.mm.plugin.finder.preload.c paramAnonymousc)
       {
-        AppMethodBeat.i(203059);
+        AppMethodBeat.i(203600);
         p.h(paramAnonymousString1, "mediaId");
         p.h(paramAnonymousString2, "fileFormat");
         p.h(paramAnonymousString3, "codingFormat");
         p.h(paramAnonymousc, "task");
-        AppMethodBeat.o(203059);
+        AppMethodBeat.o(203600);
       }
       
       public final void a(String paramAnonymousString1, String paramAnonymousString2, com.tencent.mm.plugin.finder.preload.c paramAnonymousc)
       {
-        AppMethodBeat.i(203062);
+        AppMethodBeat.i(203603);
         p.h(paramAnonymousString1, "mediaId");
         p.h(paramAnonymousString2, "msg");
         p.h(paramAnonymousc, "task");
-        b.g(this.slJ);
-        AppMethodBeat.o(203062);
+        b.g(this.svA);
+        AppMethodBeat.o(203603);
       }
       
       public final void a(String paramAnonymousString, boolean paramAnonymousBoolean, int paramAnonymousInt, com.tencent.mm.plugin.finder.preload.c paramAnonymousc)
       {
-        AppMethodBeat.i(203061);
+        AppMethodBeat.i(203602);
         p.h(paramAnonymousString, "mediaId");
         p.h(paramAnonymousc, "task");
-        if (b.e(this.slJ).sle)
+        if (b.e(this.svA).sub)
         {
-          Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-          localObject = com.tencent.mm.plugin.finder.storage.logic.c.aiD(paramAnonymousString);
-          MediaPreloadCore.a locala = MediaPreloadCore.skO;
-          if ((!MediaPreloadCore.a.a((y)localObject).skP) && (!paramAnonymousBoolean))
+          Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+          localObject = com.tencent.mm.plugin.finder.storage.logic.c.ajA(paramAnonymousString);
+          MediaPreloadCore.a locala = MediaPreloadCore.stL;
+          if ((!MediaPreloadCore.a.a((com.tencent.mm.plugin.finder.model.z)localObject).stM) && (!paramAnonymousBoolean))
           {
-            ad.w(b.a(this.slJ), "Moov failure! try to download all! ".concat(String.valueOf(localObject)));
-            b.a(this.slJ, paramAnonymousString, false);
-            paramAnonymousc.fJK = 100;
+            ae.w(b.a(this.svA), "Moov failure! try to download all! ".concat(String.valueOf(localObject)));
+            b.a(this.svA, paramAnonymousString, false);
+            paramAnonymousc.fLN = 100;
             paramAnonymousc.field_preloadRatio = 100;
-            b.a(this.slJ, paramAnonymousc);
-            AppMethodBeat.o(203061);
+            b.a(this.svA, paramAnonymousc);
+            AppMethodBeat.o(203602);
             return;
           }
         }
-        b.g(this.slJ);
-        AppMethodBeat.o(203061);
+        b.g(this.svA);
+        AppMethodBeat.o(203602);
       }
       
-      public final void ahz(String paramAnonymousString)
+      public final void aiw(String paramAnonymousString)
       {
-        AppMethodBeat.i(203063);
+        AppMethodBeat.i(203604);
         p.h(paramAnonymousString, "mediaId");
-        ad.e(b.a(this.slJ), "[onFormatChange] mediaId=".concat(String.valueOf(paramAnonymousString)));
-        b.a(this.slJ, paramAnonymousString, false);
-        com.tencent.mm.plugin.finder.storage.logic.c localc = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-        com.tencent.mm.vfs.i.deleteFile(com.tencent.mm.plugin.finder.storage.logic.c.aiD(paramAnonymousString).getFilePath());
-        localc = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-        com.tencent.mm.plugin.finder.storage.logic.c.dt(paramAnonymousString, -2);
-        AppMethodBeat.o(203063);
+        ae.e(b.a(this.svA), "[onFormatChange] mediaId=".concat(String.valueOf(paramAnonymousString)));
+        b.a(this.svA, paramAnonymousString, false);
+        com.tencent.mm.plugin.finder.storage.logic.c localc = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+        com.tencent.mm.vfs.o.deleteFile(com.tencent.mm.plugin.finder.storage.logic.c.ajA(paramAnonymousString).getFilePath());
+        localc = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+        com.tencent.mm.plugin.finder.storage.logic.c.dy(paramAnonymousString, -2);
+        AppMethodBeat.o(203604);
       }
       
-      public final void dk(String paramAnonymousString, int paramAnonymousInt)
+      public final void dp(String paramAnonymousString, int paramAnonymousInt)
       {
-        AppMethodBeat.i(203060);
+        AppMethodBeat.i(203601);
         p.h(paramAnonymousString, "mediaId");
-        AppMethodBeat.o(203060);
+        AppMethodBeat.o(203601);
       }
     });
-    this.deX = new AtomicBoolean(false);
-    AppMethodBeat.o(203096);
+    this.dfZ = new AtomicBoolean(false);
+    AppMethodBeat.o(203637);
   }
   
   private final int a(final com.tencent.mm.plugin.finder.preload.c paramc)
   {
-    AppMethodBeat.i(203091);
-    this.slB.lock();
+    AppMethodBeat.i(203632);
+    this.svs.lock();
     Object localObject3;
     Object localObject4;
     for (;;)
     {
       try
       {
-        if (this.hju)
+        if (this.hmi)
         {
-          ad.i(this.TAG, "[enqueue] VideoPreloadWorker has release. " + paramc + " just return.");
+          ae.i(this.TAG, "[enqueue] VideoPreloadWorker has release. " + paramc + " just return.");
           return -1;
         }
-        if (a(paramc.rQu.siC))
+        if (a(paramc.rYW.srx))
         {
-          ad.i(this.TAG, "[enqueue] is focused task " + paramc + " just return.");
+          ae.i(this.TAG, "[enqueue] is focused task " + paramc + " just return.");
           return -1;
         }
-        localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-        localObject2 = com.tencent.mm.plugin.finder.storage.logic.c.aiD(paramc.skX);
-        localObject3 = ((Iterable)this.slF).iterator();
+        localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+        localObject2 = com.tencent.mm.plugin.finder.storage.logic.c.ajA(paramc.stU);
+        localObject3 = ((Iterable)this.svw).iterator();
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
         localObject4 = (com.tencent.mm.plugin.finder.preload.b)((Iterator)localObject3).next();
-        String str1 = ((y)localObject2).field_mediaId;
+        String str1 = ((com.tencent.mm.plugin.finder.model.z)localObject2).field_mediaId;
         p.g(str1, "cache.field_mediaId");
-        i = ((y)localObject2).cCY();
-        String str2 = paramc.cDc();
+        i = ((com.tencent.mm.plugin.finder.model.z)localObject2).cEL();
+        String str2 = paramc.cEP();
         if (paramc.field_requestVideoFormat == 1)
         {
           localObject1 = "H264";
@@ -195,114 +193,134 @@ public final class b
       }
       finally
       {
-        this.slB.unlock();
-        AppMethodBeat.o(203091);
+        this.svs.unlock();
+        AppMethodBeat.o(203632);
       }
     }
-    if ((((y)localObject2).cCY() >= paramc.fJK) && (((y)localObject2).field_cacheSize >= paramc.preloadMinSize))
+    boolean bool;
+    if (((com.tencent.mm.plugin.finder.model.z)localObject2).cEJ())
     {
-      ad.i(this.TAG, "[enqueue] " + paramc + " has finish preload(" + ((y)localObject2).cCY() + "%)! just return.");
-      localObject1 = ((Iterable)this.slF).iterator();
+      ae.i(this.TAG, "[enqueue] " + paramc + " has complete file(" + ((com.tencent.mm.plugin.finder.model.z)localObject2).cEL() + "%)! just return.");
+      localObject1 = ((Iterable)this.svw).iterator();
       if (((Iterator)localObject1).hasNext())
       {
         localObject3 = (com.tencent.mm.plugin.finder.preload.b)((Iterator)localObject1).next();
-        localObject4 = paramc.skX;
-        if (((y)localObject2).cCY() >= 100) {}
-        for (boolean bool = true;; bool = false)
+        localObject4 = paramc.stU;
+        if (((com.tencent.mm.plugin.finder.model.z)localObject2).cEL() >= 100) {}
+        for (bool = true;; bool = false)
         {
-          ((com.tencent.mm.plugin.finder.preload.b)localObject3).a((String)localObject4, bool, ((y)localObject2).cCY(), paramc);
+          ((com.tencent.mm.plugin.finder.preload.b)localObject3).a((String)localObject4, bool, ((com.tencent.mm.plugin.finder.model.z)localObject2).cEL(), paramc);
           break;
         }
       }
-      this.slB.unlock();
-      AppMethodBeat.o(203091);
+      this.svs.unlock();
+      AppMethodBeat.o(203632);
       return 1;
     }
-    int i = this.slC.size();
-    if ((this.slG.slj <= i) || (this.deX.get()))
+    if ((((com.tencent.mm.plugin.finder.model.z)localObject2).cEL() >= paramc.fLN) && (((com.tencent.mm.plugin.finder.model.z)localObject2).field_cacheSize >= paramc.preloadMinSize))
     {
-      j.b((List)this.grX, (d.g.a.b)new f(paramc));
-      this.grX.add(paramc);
-      paramc.a(c.b.slc);
-      ad.i(this.TAG, "[enqueue] " + paramc + " wait to preLoad, just return. isStop=" + this.deX + " preLoadingCount=" + i + " waitingSize=" + this.grX.size());
-      this.slB.unlock();
-      AppMethodBeat.o(203091);
+      ae.i(this.TAG, "[enqueue] " + paramc + " has finish preload(" + ((com.tencent.mm.plugin.finder.model.z)localObject2).cEL() + "%)! just return.");
+      localObject1 = ((Iterable)this.svw).iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = (com.tencent.mm.plugin.finder.preload.b)((Iterator)localObject1).next();
+        localObject4 = paramc.stU;
+        if (((com.tencent.mm.plugin.finder.model.z)localObject2).cEL() >= 100) {}
+        for (bool = true;; bool = false)
+        {
+          ((com.tencent.mm.plugin.finder.preload.b)localObject3).a((String)localObject4, bool, ((com.tencent.mm.plugin.finder.model.z)localObject2).cEL(), paramc);
+          break;
+        }
+      }
+      this.svs.unlock();
+      AppMethodBeat.o(203632);
       return 1;
     }
-    paramc.a(c.b.sla);
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-    com.tencent.mm.plugin.finder.storage.logic.c.a(paramc.skX, paramc.skY, paramc.rQu.getUrl(), paramc.rQu.getPath(), paramc.field_requestVideoFormat, paramc.cDc(), ((y)localObject2).field_cacheSize, ((y)localObject2).field_totalSize, 1, paramc.rQu.siC.videoDuration, paramc.rQu.siC.url_token, paramc.rQu.siC.decodeKey);
-    ((Map)this.slC).put(paramc.skX, paramc);
-    localObject1 = new com.tencent.mm.plugin.finder.loader.g(paramc.rQu.siC, r.syE);
-    Object localObject2 = com.tencent.mm.plugin.finder.loader.i.sja;
-    com.tencent.mm.plugin.finder.loader.i.cCB().bI(localObject1).aqI();
+    int i = this.svt.size();
+    if ((this.svx.sug <= i) || (this.dfZ.get()))
+    {
+      j.c((List)this.guy, (d.g.a.b)new g(paramc));
+      this.guy.add(paramc);
+      paramc.a(c.b.stZ);
+      ae.i(this.TAG, "[enqueue] " + paramc + " wait to preLoad, just return. isStop=" + this.dfZ + " preLoadingCount=" + i + " waitingSize=" + this.guy.size());
+      this.svs.unlock();
+      AppMethodBeat.o(203632);
+      return 1;
+    }
+    paramc.a(c.b.stX);
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+    com.tencent.mm.plugin.finder.storage.logic.c.a(paramc.stU, paramc.stV, paramc.rYW.getUrl(), paramc.field_requestVideoFormat, paramc.cEP(), ((com.tencent.mm.plugin.finder.model.z)localObject2).field_cacheSize, ((com.tencent.mm.plugin.finder.model.z)localObject2).field_totalSize, 1, paramc.rYW.srx.videoDuration, paramc.rYW.srx.url_token, paramc.rYW.srx.decodeKey);
+    ((Map)this.svt).put(paramc.stU, paramc);
+    localObject1 = new com.tencent.mm.plugin.finder.loader.g(paramc.rYW.srx, r.sJv);
+    Object localObject2 = i.srW;
+    i.cEn().bI(localObject1).aqX();
     localObject1 = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
     p.g(localObject1, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
     if (((com.tencent.mm.plugin.thumbplayer.a.a)localObject1).isOpenTPPlayer())
     {
       localObject1 = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController();
       localObject2 = (h)paramc;
-      localObject3 = (com.tencent.mm.plugin.thumbplayer.b.d)new g(this, paramc);
+      localObject3 = (com.tencent.mm.plugin.thumbplayer.b.d)new f(this, paramc);
       p.h(localObject2, "task");
-      if (bt.isNullOrNil(((h)localObject2).field_mediaId)) {
-        ad.e(((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).TAG, "add download task, but task mediaId is null.");
+      if (bu.isNullOrNil(((h)localObject2).field_mediaId)) {
+        ae.e(((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).TAG, "add download task, but task mediaId is null.");
       }
     }
     for (;;)
     {
-      ad.i(this.TAG, "[enqueue] begin to preloadVideo... ".concat(String.valueOf(paramc)));
-      this.slB.unlock();
-      AppMethodBeat.o(203091);
+      ae.i(this.TAG, "[enqueue] begin to preloadVideo... ".concat(String.valueOf(paramc)));
+      this.svs.unlock();
+      AppMethodBeat.o(203632);
       return 1;
-      ad.i(((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).TAG, "startPreloadDownloadTask: " + ((h)localObject2).field_mediaId + " current run tasks " + ((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).BpO.size());
+      ae.i(((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).TAG, "startPreloadDownloadTask: " + ((h)localObject2).field_mediaId + " current run tasks " + ((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).BHn.size());
       if (((h)localObject2).field_fileId == null) {
         ((h)localObject2).field_fileId = "";
       }
       if (((h)localObject2).field_aesKey == null) {
         ((h)localObject2).field_aesKey = "";
       }
-      ((h)localObject2).dNR = false;
-      com.tencent.mm.ad.c.c("MicroMsg.Cdn.ThreadName", (d.g.a.a)new a.d((com.tencent.mm.plugin.thumbplayer.b.a)localObject1, (h)localObject2, (com.tencent.mm.plugin.thumbplayer.b.d)localObject3));
+      ((h)localObject2).dPh = false;
+      com.tencent.mm.ac.c.c("MicroMsg.Cdn.ThreadName", (d.g.a.a)new a.d((com.tencent.mm.plugin.thumbplayer.b.a)localObject1, (h)localObject2, (com.tencent.mm.plugin.thumbplayer.b.d)localObject3));
       continue;
-      com.tencent.mm.ao.f.aGI().d((com.tencent.mm.i.g)paramc);
+      com.tencent.mm.an.f.aGZ().d((com.tencent.mm.i.g)paramc);
     }
   }
   
   private final com.tencent.mm.plugin.finder.preload.c a(a.b paramb)
   {
-    AppMethodBeat.i(203092);
+    AppMethodBeat.i(203633);
     int i;
     com.tencent.mm.plugin.finder.preload.c localc;
-    if (p.i(paramb.slv, "h265"))
+    if (p.i(paramb.suu, "h265"))
     {
       i = 2;
-      localc = new com.tencent.mm.plugin.finder.preload.c(paramb.slw);
-      localc.fJi = "task_VideoPreloadWorker";
-      localc.field_mediaId = paramb.slw.aeA();
-      localc.url = (paramb.slw.getUrl() + paramb.slw.cCz());
-      localc.field_fullpath = paramb.slw.getPath();
-      localc.snsCipherKey = paramb.slw.cCy();
-      localc.fJz = 2;
-      localc.fJF = 2;
-      localc.fJA = 8;
-      localc.fJK = paramb.fJK;
-      localc.field_preloadRatio = paramb.fJK;
-      localc.concurrentCount = d.a.tfM;
-      localc.connectionCount = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getMediaPreloadModel().slk;
-      localc.fJj = ((g.a)new c(localc.fJK, paramb.preloadMinSize, this.slC, this.slF, paramb.slw));
-      localc.fJB = ((g.b)new b(localc.fJK, SystemClock.uptimeMillis(), this.slC, this.slF));
-      localc.field_fileType = com.tencent.mm.i.a.fIF;
+      localc = new com.tencent.mm.plugin.finder.preload.c(paramb.suv);
+      localc.fLl = "task_VideoPreloadWorker";
+      localc.field_mediaId = paramb.suv.aeM();
+      localc.url = (paramb.suv.getUrl() + paramb.suv.cEl());
+      localc.field_fullpath = paramb.suv.getPath();
+      localc.snsCipherKey = paramb.suv.cEk();
+      localc.fLC = 2;
+      localc.fLI = 2;
+      localc.fLD = 8;
+      localc.fLN = paramb.fLN;
+      localc.field_preloadRatio = paramb.fLN;
+      localc.concurrentCount = d.a.tqF;
+      localc.connectionCount = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getMediaPreloadModel().suh;
+      localc.fLm = ((g.a)new c(localc.fLN, paramb.preloadMinSize, this.svt, this.svw, paramb.suv));
+      localc.fLE = ((g.b)new b(localc.fLN, SystemClock.uptimeMillis(), this.svt, this.svw));
+      localc.field_fileType = com.tencent.mm.i.a.fKJ;
       localc.preloadMinSize = paramb.preloadMinSize;
-      localc.fJM = 0;
-      if (!this.slE) {
+      localc.fLP = 0;
+      if (!this.svv) {
         break label283;
       }
       localc.field_requestVideoFormat = 0;
-      localc.ahE(paramb.dDf);
+      localc.aiB(paramb.dEk);
     }
     for (;;)
     {
-      AppMethodBeat.o(203092);
+      AppMethodBeat.o(203633);
       return localc;
       i = 1;
       break;
@@ -311,40 +329,43 @@ public final class b
     }
   }
   
-  private final boolean a(bvf parambvf)
+  private final boolean a(bvz parambvz)
   {
-    AppMethodBeat.i(203089);
-    String str = this.slD;
-    parambvf = parambvf.mediaId;
-    p.g(parambvf, "media.mediaId");
-    boolean bool = n.nA(str, parambvf);
-    AppMethodBeat.o(203089);
+    AppMethodBeat.i(203630);
+    String str2 = this.svu;
+    String str1 = parambvz.mediaId;
+    parambvz = str1;
+    if (str1 == null) {
+      parambvz = "";
+    }
+    boolean bool = n.nG(str2, parambvz);
+    AppMethodBeat.o(203630);
     return bool;
   }
   
   private final LinkedList<com.tencent.mm.plugin.finder.preload.c> ae(final LinkedList<com.tencent.mm.plugin.finder.preload.c> paramLinkedList)
   {
-    AppMethodBeat.i(203093);
+    AppMethodBeat.i(203634);
     final List localList = j.s((Collection)paramLinkedList);
     final LinkedList localLinkedList1 = new LinkedList();
-    final LinkedList localLinkedList2 = ahI(null);
+    final LinkedList localLinkedList2 = aiG(null);
     i("mergePreload", (d.g.a.a)new h(this, paramLinkedList, localLinkedList1, localList, localLinkedList2));
     d((List)paramLinkedList, localList, (List)localLinkedList2);
-    AppMethodBeat.o(203093);
+    AppMethodBeat.o(203634);
     return paramLinkedList;
   }
   
-  private final LinkedList<com.tencent.mm.plugin.finder.preload.c> ahI(final String paramString)
+  private final LinkedList<com.tencent.mm.plugin.finder.preload.c> aiG(final String paramString)
   {
-    AppMethodBeat.i(203088);
+    AppMethodBeat.i(203629);
     paramString = (LinkedList)i("cancelWaitingTask", (d.g.a.a)new e(this, paramString));
-    AppMethodBeat.o(203088);
+    AppMethodBeat.o(203629);
     return paramString;
   }
   
-  private final LinkedList<com.tencent.mm.plugin.finder.preload.c> b(BaseFinderFeed paramBaseFinderFeed, List<o<al, List<bvf>>> paramList)
+  private final LinkedList<com.tencent.mm.plugin.finder.preload.c> b(BaseFinderFeed paramBaseFinderFeed, List<d.o<am, List<bvz>>> paramList)
   {
-    AppMethodBeat.i(203090);
+    AppMethodBeat.i(203631);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = paramList.iterator();
     int i = 0;
@@ -355,8 +376,8 @@ public final class b
     int i2;
     if (((Iterator)localObject).hasNext())
     {
-      al localal = (al)((o)((Iterator)localObject).next()).first;
-      if (((localal instanceof BaseFinderFeed)) && (((BaseFinderFeed)localal).feedObject.getExpectId() == paramBaseFinderFeed.lP()))
+      am localam = (am)((d.o)((Iterator)localObject).next()).first;
+      if (((localam instanceof BaseFinderFeed)) && (((BaseFinderFeed)localam).feedObject.getExpectId() == paramBaseFinderFeed.lP()))
       {
         j = 1;
         if (j == 0) {
@@ -366,8 +387,8 @@ public final class b
         if (j < 0) {
           break label408;
         }
-        i1 = Math.max(j - this.slG.slf, 0);
-        i2 = Math.min(this.slG.slg + j + 1, paramList.size());
+        i1 = Math.max(j - this.svx.suc, 0);
+        i2 = Math.min(this.svx.sud + j + 1, paramList.size());
         paramBaseFinderFeed = (Iterable)paramList.subList(i1, i2);
         i = 0;
         paramBaseFinderFeed = paramBaseFinderFeed.iterator();
@@ -381,9 +402,9 @@ public final class b
       paramList = paramBaseFinderFeed.next();
       int k = i + 1;
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
-      paramList = (bvf)j.jd((List)((o)paramList).second);
+      paramList = (bvz)j.jm((List)((d.o)paramList).second);
       if (paramList != null)
       {
         if ((paramList.mediaType == 4) && (!a(paramList)))
@@ -393,7 +414,7 @@ public final class b
           {
             m = i + (i1 - j);
             label241:
-            paramList = (Iterable)this.slG.a(paramList, true);
+            paramList = (Iterable)this.svx.a(paramList, true);
             i = 0;
             paramList = paramList.iterator();
           }
@@ -405,7 +426,7 @@ public final class b
             localObject = paramList.next();
             int n = i + 1;
             if (i < 0) {
-              j.gfB();
+              j.gkd();
             }
             localObject = (a.b)localObject;
             if (i == 0)
@@ -441,25 +462,25 @@ public final class b
     }
     label408:
     j.sort((List)localLinkedList);
-    AppMethodBeat.o(203090);
+    AppMethodBeat.o(203631);
     return localLinkedList;
   }
   
-  private final com.tencent.mm.plugin.finder.preload.c bd(final String paramString, final boolean paramBoolean)
+  private final com.tencent.mm.plugin.finder.preload.c bf(final String paramString, final boolean paramBoolean)
   {
-    AppMethodBeat.i(203087);
+    AppMethodBeat.i(203628);
     paramString = (com.tencent.mm.plugin.finder.preload.c)i("cancel", (d.g.a.a)new d(this, paramString, paramBoolean));
-    AppMethodBeat.o(203087);
+    AppMethodBeat.o(203628);
     return paramString;
   }
   
   private final void d(List<com.tencent.mm.plugin.finder.preload.c> paramList1, List<com.tencent.mm.plugin.finder.preload.c> paramList2, List<com.tencent.mm.plugin.finder.preload.c> paramList3)
   {
-    AppMethodBeat.i(203095);
+    AppMethodBeat.i(203636);
     if (paramList1.isEmpty())
     {
-      ad.i(this.TAG, "[mergePreload] preloadList is empty!");
-      AppMethodBeat.o(203095);
+      ae.i(this.TAG, "[mergePreload] preloadList is empty!");
+      AppMethodBeat.o(203636);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("[mergePreload] -> \n");
@@ -479,55 +500,55 @@ public final class b
         localStringBuilder.append("(~) ").append(paramList3).append("\n");
       }
     }
-    ad.i(this.TAG, localStringBuilder.toString());
-    AppMethodBeat.o(203095);
+    ae.i(this.TAG, localStringBuilder.toString());
+    AppMethodBeat.o(203636);
   }
   
-  public final void a(BaseFinderFeed paramBaseFinderFeed, List<o<al, List<bvf>>> paramList, int paramInt)
+  public final void a(BaseFinderFeed paramBaseFinderFeed, List<d.o<am, List<bvz>>> paramList, int paramInt)
   {
-    AppMethodBeat.i(203084);
+    AppMethodBeat.i(203625);
     p.h(paramBaseFinderFeed, "centerFeed");
     p.h(paramList, "dataList");
-    ad.i(this.TAG, "[preload] prevCount=" + this.slG.slf + " nextCount=" + this.slG.slg + " maxPreloadTaskCount=" + this.slG.slj + ' ' + "list=" + paramList.size() + " center=" + paramBaseFinderFeed.cCG() + " source=" + paramInt);
+    ae.i(this.TAG, "[preload] prevCount=" + this.svx.suc + " nextCount=" + this.svx.sud + " maxPreloadTaskCount=" + this.svx.sug + ' ' + "list=" + paramList.size() + " center=" + paramBaseFinderFeed.cEt() + " source=" + paramInt);
     paramBaseFinderFeed = ((Iterable)ae(b(paramBaseFinderFeed, paramList))).iterator();
     while (paramBaseFinderFeed.hasNext()) {
       a((com.tencent.mm.plugin.finder.preload.c)paramBaseFinderFeed.next());
     }
-    AppMethodBeat.o(203084);
+    AppMethodBeat.o(203625);
   }
   
-  public final void bc(final String paramString, boolean paramBoolean)
+  public final void be(final String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(203085);
+    AppMethodBeat.i(203626);
     p.h(paramString, "mediaId");
     String str = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("[onMediaFocus] mediaId=");
-    c.a locala = com.tencent.mm.plugin.finder.preload.c.skZ;
-    ad.i(str, c.a.ahF(paramString) + " isFocused=" + paramBoolean);
+    c.a locala = com.tencent.mm.plugin.finder.preload.c.stW;
+    ae.i(str, c.a.aiC(paramString) + " isFocused=" + paramBoolean);
     if (paramBoolean)
     {
       i("onMediaFocus", (d.g.a.a)new j(this, paramString));
-      bd(paramString, true);
-      cDd();
-      AppMethodBeat.o(203085);
+      bf(paramString, true);
+      cEV();
+      AppMethodBeat.o(203626);
       return;
     }
-    this.slD = "";
-    AppMethodBeat.o(203085);
+    this.svu = "";
+    AppMethodBeat.o(203626);
   }
   
-  public final void cDd()
+  public final void cEV()
   {
-    AppMethodBeat.i(203086);
+    AppMethodBeat.i(203627);
     i("pollWaiting", (d.g.a.a)new k(this));
-    AppMethodBeat.o(203086);
+    AppMethodBeat.o(203627);
   }
   
   public final <T> T i(String paramString, d.g.a.a<? extends T> parama)
   {
-    AppMethodBeat.i(203094);
+    AppMethodBeat.i(203635);
     long l = SystemClock.uptimeMillis();
-    this.slB.lock();
+    this.svs.lock();
     try
     {
       parama = parama.invoke();
@@ -535,54 +556,54 @@ public final class b
     }
     finally
     {
-      this.slB.unlock();
+      this.svs.unlock();
       l = SystemClock.uptimeMillis() - l;
       if (l > 100L) {
-        ad.w(this.TAG, "[syncLock] tag=" + paramString + " so slow! cost=" + l + "ms");
+        ae.w(this.TAG, "[syncLock] tag=" + paramString + " so slow! cost=" + l + "ms");
       }
-      AppMethodBeat.o(203094);
+      AppMethodBeat.o(203635);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$Companion;", "", "()V", "ENQUEUE_FAILURE", "", "ENQUEUE_REJECT", "ENQUEUE_SUCCESSFULLY", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$Companion;", "", "()V", "ENQUEUE_FAILURE", "", "ENQUEUE_REJECT", "ENQUEUE_SUCCESSFULLY", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$VideoPreloadTaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "expect", "", "startTick", "", "loadingMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lkotlin/collections/HashMap;", "preLoadCallbacks", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "(Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;IJLjava/util/HashMap;Ljava/util/concurrent/ConcurrentLinkedQueue;)V", "onPreloadCompleted", "", "mediaId", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$VideoPreloadTaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "expect", "", "startTick", "", "loadingMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lkotlin/collections/HashMap;", "preLoadCallbacks", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "(Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;IJLjava/util/HashMap;Ljava/util/concurrent/ConcurrentLinkedQueue;)V", "onPreloadCompleted", "", "mediaId", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "plugin-finder_release"})
   public final class b
     implements g.b
   {
-    private final long gkt;
-    final HashMap<String, com.tencent.mm.plugin.finder.preload.c> slC;
-    private final ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> slF;
-    private final int slK;
+    private final long gmN;
+    private final int svB;
+    final HashMap<String, com.tencent.mm.plugin.finder.preload.c> svt;
+    private final ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> svw;
     
     public b(long paramLong, HashMap<String, com.tencent.mm.plugin.finder.preload.c> paramHashMap, ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> paramConcurrentLinkedQueue)
     {
-      AppMethodBeat.i(203066);
-      this.slK = paramLong;
-      this.gkt = ???;
-      this.slC = paramConcurrentLinkedQueue;
-      this.slF = localObject;
-      AppMethodBeat.o(203066);
+      AppMethodBeat.i(203607);
+      this.svB = paramLong;
+      this.gmN = ???;
+      this.svt = paramConcurrentLinkedQueue;
+      this.svw = localObject;
+      AppMethodBeat.o(203607);
     }
     
     public final void b(final String paramString, com.tencent.mm.i.d paramd)
     {
-      AppMethodBeat.i(203065);
+      AppMethodBeat.i(203606);
       p.h(paramString, "mediaId");
       if ((paramd != null) && (paramd.field_retCode == -21112))
       {
-        paramd = ((Iterable)this.slF).iterator();
+        paramd = ((Iterable)this.svw).iterator();
         while (paramd.hasNext()) {
-          ((com.tencent.mm.plugin.finder.preload.b)paramd.next()).ahz(paramString);
+          ((com.tencent.mm.plugin.finder.preload.b)paramd.next()).aiw(paramString);
         }
-        AppMethodBeat.o(203065);
+        AppMethodBeat.o(203606);
         return;
       }
       if (paramd == null)
       {
-        ad.e(b.a(b.this), "[onPreloadCompleted] sceneResult == null");
-        AppMethodBeat.o(203065);
+        ae.e(b.a(b.this), "[onPreloadCompleted] sceneResult == null");
+        AppMethodBeat.o(203606);
         return;
       }
       Object localObject = new long[3];
@@ -590,25 +611,25 @@ public final class b
       long l1 = Math.max(localObject[0], paramd.field_recvedBytes);
       long l2 = paramd.field_fileLength;
       com.tencent.mm.plugin.finder.preload.c localc = (com.tencent.mm.plugin.finder.preload.c)b.a(b.this, "onPreloadCompleted", (d.g.a.a)new a(this, paramString));
-      com.tencent.mm.ao.f.aGI().EQ(paramString);
+      com.tencent.mm.an.f.aGZ().Fs(paramString);
       if ((l1 > 0L) && (l2 > 0L) && (localc != null))
       {
-        localObject = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
+        localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
         int i;
         if (l2 <= l1)
         {
           i = 3;
-          y localy = com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, l1, l2, i);
+          com.tencent.mm.plugin.finder.model.z localz = com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, l1, l2, i);
           String str = paramd.field_videoFlag;
           localObject = str;
           if (str == null) {
-            localObject = localc.cDc();
+            localObject = localc.cEP();
           }
-          localy.field_fileFormat = ((String)localObject);
-          localObject = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-          com.tencent.mm.plugin.finder.storage.logic.c.aiC(paramString);
-          ad.i(b.a(b.this), "[onPreloadCompleted] successfully! mediaId=" + paramString + " startTick=" + this.gkt + " receivedBytes=" + l1 + " fileLength=" + l2 + " expect=" + this.slK + "% result=" + (int)(100.0F * (float)l1 / (float)l2) + "% fileFormat=" + paramd.field_videoFlag + " videoFormat=" + paramd.field_videoFormat);
-          paramd = ((Iterable)this.slF).iterator();
+          localz.field_fileFormat = ((String)localObject);
+          localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+          com.tencent.mm.plugin.finder.storage.logic.c.ajz(paramString);
+          ae.i(b.a(b.this), "[onPreloadCompleted] successfully! mediaId=" + paramString + " startTick=" + this.gmN + " receivedBytes=" + l1 + " fileLength=" + l2 + " expect=" + this.svB + "% result=" + (int)(100.0F * (float)l1 / (float)l2) + "% fileFormat=" + paramd.field_videoFlag + " videoFormat=" + paramd.field_videoFormat);
+          paramd = ((Iterable)this.svw).iterator();
           label367:
           if (!paramd.hasNext()) {
             break label437;
@@ -621,29 +642,29 @@ public final class b
         label431:
         for (boolean bool = true;; bool = false)
         {
-          ((com.tencent.mm.plugin.finder.preload.b)localObject).a(paramString, bool, d.h.a.co(100.0F * (float)l1 / (float)l2), localc);
+          ((com.tencent.mm.plugin.finder.preload.b)localObject).a(paramString, bool, d.h.a.cm(100.0F * (float)l1 / (float)l2), localc);
           break label367;
           i = 2;
           break;
         }
         label437:
-        paramd = com.tencent.mm.ui.component.a.KiD;
-        ((FinderVideoRecycler)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderVideoRecycler.class)).ajo(paramString);
-        AppMethodBeat.o(203065);
+        paramd = com.tencent.mm.ui.component.a.KEX;
+        ((FinderVideoRecycler)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderVideoRecycler.class)).akm(paramString);
+        AppMethodBeat.o(203606);
         return;
       }
-      ad.e(b.a(b.this), "[onPreloadCompleted] ERROR! mediaId=" + paramString + " startTick=" + this.gkt + " recvedBytes=" + l1 + " fileLength=" + l2 + " fileFormat=" + paramd.field_videoFlag + " videoFormat=" + paramd.field_videoFormat);
+      ae.e(b.a(b.this), "[onPreloadCompleted] ERROR! mediaId=" + paramString + " startTick=" + this.gmN + " recvedBytes=" + l1 + " fileLength=" + l2 + " fileFormat=" + paramd.field_videoFlag + " videoFormat=" + paramd.field_videoFormat);
       if (localc != null)
       {
-        paramd = ((Iterable)this.slF).iterator();
+        paramd = ((Iterable)this.svw).iterator();
         while (paramd.hasNext()) {
           ((com.tencent.mm.plugin.finder.preload.b)paramd.next()).a(paramString, "onPreloadCompleted error", localc);
         }
       }
-      AppMethodBeat.o(203065);
+      AppMethodBeat.o(203606);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
     static final class a
       extends q
       implements d.g.a.a<com.tencent.mm.plugin.finder.preload.c>
@@ -655,52 +676,52 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$VideoTaskCallTask;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "expect", "", "preloadMinSize", "", "loadingMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lkotlin/collections/HashMap;", "preLoadCallbacks", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "(Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;IJLjava/util/HashMap;Ljava/util/concurrent/ConcurrentLinkedQueue;Lcom/tencent/mm/plugin/finder/loader/FinderVideo;)V", "getExpect", "()I", "getPreloadMinSize", "()J", "callback", "mediaId", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$VideoTaskCallTask;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "expect", "", "preloadMinSize", "", "loadingMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lkotlin/collections/HashMap;", "preLoadCallbacks", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "(Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;IJLjava/util/HashMap;Ljava/util/concurrent/ConcurrentLinkedQueue;Lcom/tencent/mm/plugin/finder/loader/FinderVideo;)V", "getExpect", "()I", "getPreloadMinSize", "()J", "callback", "mediaId", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-finder_release"})
   final class c
     implements g.a
   {
     private final long preloadMinSize;
-    private final m rQu;
-    final HashMap<String, com.tencent.mm.plugin.finder.preload.c> slC;
-    private final ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> slF;
-    private final int slK;
+    private final m rYW;
+    private final int svB;
+    final HashMap<String, com.tencent.mm.plugin.finder.preload.c> svt;
+    private final ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> svw;
     
     public c(long paramLong, HashMap<String, com.tencent.mm.plugin.finder.preload.c> paramHashMap, ConcurrentLinkedQueue<com.tencent.mm.plugin.finder.preload.b> paramConcurrentLinkedQueue, m paramm)
     {
-      AppMethodBeat.i(203071);
-      this.slK = paramLong;
+      AppMethodBeat.i(203612);
+      this.svB = paramLong;
       this.preloadMinSize = ???;
-      this.slC = paramConcurrentLinkedQueue;
-      this.slF = paramm;
-      this.rQu = localObject;
-      AppMethodBeat.o(203071);
+      this.svt = paramConcurrentLinkedQueue;
+      this.svw = paramm;
+      this.rYW = localObject;
+      AppMethodBeat.o(203612);
     }
     
     public final int a(final String paramString, int paramInt, com.tencent.mm.i.c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
     {
-      AppMethodBeat.i(203070);
+      AppMethodBeat.i(203611);
       p.h(paramString, "mediaId");
       if ((paramd != null) && (paramd.field_retCode == -21112))
       {
         b.a(b.this, "callback#1", (d.g.a.a)new a(this, paramString));
-        paramc = ((Iterable)this.slF).iterator();
+        paramc = ((Iterable)this.svw).iterator();
         while (paramc.hasNext()) {
-          ((com.tencent.mm.plugin.finder.preload.b)paramc.next()).ahz(paramString);
+          ((com.tencent.mm.plugin.finder.preload.b)paramc.next()).aiw(paramString);
         }
-        AppMethodBeat.o(203070);
+        AppMethodBeat.o(203611);
         return -1;
       }
       if ((paramc != null) && (paramc.field_toltalLength > 0L))
       {
         long l1 = paramc.field_finishedLength;
         long l2 = paramc.field_toltalLength;
-        if (((int)((float)l1 / (float)l2 * 100.0F) >= this.slK) && (l1 < l2) && (this.preloadMinSize <= l1)) {
+        if (((int)((float)l1 / (float)l2 * 100.0F) >= this.svB) && (l1 < l2) && (this.preloadMinSize <= l1)) {
           paramInt = 2;
         }
         for (;;)
         {
-          paramc = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-          y localy = com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, l1, l2, paramInt);
+          paramc = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+          com.tencent.mm.plugin.finder.model.z localz = com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, l1, l2, paramInt);
           if (paramd != null)
           {
             paramd = paramd.field_videoFlag;
@@ -709,14 +730,14 @@ public final class b
           }
           else
           {
-            paramc = ((c)this).rQu.siD.detail;
+            paramc = ((c)this).rYW.sry.detail;
           }
-          localy.field_fileFormat = paramc;
-          paramc = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-          com.tencent.mm.plugin.finder.storage.logic.c.aiC(paramString);
-          paramc = ((Iterable)this.slF).iterator();
+          localz.field_fileFormat = paramc;
+          paramc = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+          com.tencent.mm.plugin.finder.storage.logic.c.ajz(paramString);
+          paramc = ((Iterable)this.svw).iterator();
           while (paramc.hasNext()) {
-            ((com.tencent.mm.plugin.finder.preload.b)paramc.next()).dk(paramString, d.h.a.co((float)l1 * 100.0F / (float)l2));
+            ((com.tencent.mm.plugin.finder.preload.b)paramc.next()).dp(paramString, d.h.a.cm((float)l1 * 100.0F / (float)l2));
           }
           if (l1 >= l2) {
             paramInt = 3;
@@ -727,30 +748,30 @@ public final class b
       }
       if (paramInt != 0)
       {
-        ad.e(b.a(b.this), "[VideoTaskCallTask] error! startRet=" + paramInt + " mediaId=" + paramString);
+        ae.e(b.a(b.this), "[VideoTaskCallTask] error! startRet=" + paramInt + " mediaId=" + paramString);
         if (-21006 != paramInt)
         {
           paramc = (com.tencent.mm.plugin.finder.preload.c)b.a(b.this, "callback#2", (d.g.a.a)new b(this, paramString));
-          paramd = com.tencent.mm.plugin.finder.storage.logic.c.sAv;
-          com.tencent.mm.plugin.finder.storage.logic.c.dt(paramString, -1);
+          paramd = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+          com.tencent.mm.plugin.finder.storage.logic.c.dy(paramString, -1);
           if (paramc != null)
           {
-            paramd = ((Iterable)this.slF).iterator();
+            paramd = ((Iterable)this.svw).iterator();
             while (paramd.hasNext()) {
               ((com.tencent.mm.plugin.finder.preload.b)paramd.next()).a(paramString, "UPDATE ERROR", paramc);
             }
           }
         }
       }
-      AppMethodBeat.o(203070);
+      AppMethodBeat.o(203611);
       return 0;
     }
     
     public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
     {
-      AppMethodBeat.i(203069);
+      AppMethodBeat.i(203610);
       p.h(paramString, "mediaId");
-      AppMethodBeat.o(203069);
+      AppMethodBeat.o(203610);
     }
     
     public final byte[] f(String paramString, byte[] paramArrayOfByte)
@@ -758,7 +779,7 @@ public final class b
       return new byte[0];
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
     static final class a
       extends q
       implements d.g.a.a<com.tencent.mm.plugin.finder.preload.c>
@@ -769,7 +790,7 @@ public final class b
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
     static final class b
       extends q
       implements d.g.a.a<com.tencent.mm.plugin.finder.preload.c>
@@ -781,7 +802,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
   static final class d
     extends q
     implements d.g.a.a<com.tencent.mm.plugin.finder.preload.c>
@@ -791,23 +812,23 @@ public final class b
       super();
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$cancel$1$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StopPreloadDownloadCallback;", "onStop", "", "ret", "", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$cancel$1$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StopPreloadDownloadCallback;", "onStop", "", "ret", "", "plugin-finder_release"})
     public static final class a
       implements com.tencent.mm.plugin.thumbplayer.b.f
     {
       a(b.d paramd) {}
       
-      public final void EI(int paramInt)
+      public final void Fb(int paramInt)
       {
-        AppMethodBeat.i(203072);
-        ad.i(b.a(this.slO.slJ), "preload task on Stop " + this.slO.pAc + ' ' + paramInt);
-        b.dl("stopPreload", paramInt);
-        AppMethodBeat.o(203072);
+        AppMethodBeat.i(203613);
+        ae.i(b.a(this.svF.svA), "preload task on Stop " + this.svF.pGG + ' ' + paramInt);
+        b.dq("stopPreload", paramInt);
+        AppMethodBeat.o(203613);
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
   static final class e
     extends q
     implements d.g.a.a<LinkedList<com.tencent.mm.plugin.finder.preload.c>>
@@ -818,36 +839,36 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
-  static final class f
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$enqueue$5", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StartPreloadDownloadCallback;", "onStart", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "plugin-finder_release"})
+  public static final class f
+    implements com.tencent.mm.plugin.thumbplayer.b.d
+  {
+    f(com.tencent.mm.plugin.finder.preload.c paramc) {}
+    
+    public final void Fc(int paramInt)
+    {
+      AppMethodBeat.i(224304);
+      ae.i(b.a(this.svA), "preload task on Start " + paramc.field_mediaId + ' ' + paramInt);
+      b.dq("startPreload", paramInt);
+      AppMethodBeat.o(224304);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "invoke"})
+  static final class g
     extends q
     implements d.g.a.b<com.tencent.mm.plugin.finder.preload.c, Boolean>
   {
-    f(com.tencent.mm.plugin.finder.preload.c paramc)
+    g(com.tencent.mm.plugin.finder.preload.c paramc)
     {
       super();
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker$enqueue$4", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StartPreloadDownloadCallback;", "onStart", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "plugin-finder_release"})
-  public static final class g
-    implements com.tencent.mm.plugin.thumbplayer.b.d
-  {
-    g(com.tencent.mm.plugin.finder.preload.c paramc) {}
-    
-    public final void EJ(int paramInt)
-    {
-      AppMethodBeat.i(203077);
-      ad.i(b.a(this.slJ), "preload task on Start " + paramc.field_mediaId + ' ' + paramInt);
-      b.dl("startPreload", paramInt);
-      AppMethodBeat.o(203077);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class h
     extends q
-    implements d.g.a.a<z>
+    implements d.g.a.a<d.z>
   {
     h(b paramb, LinkedList paramLinkedList1, LinkedList paramLinkedList2, List paramList, LinkedList paramLinkedList3)
     {
@@ -855,10 +876,10 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   public static final class i
     extends q
-    implements d.g.a.a<z>
+    implements d.g.a.a<d.z>
   {
     public i(b paramb, LinkedList paramLinkedList)
     {
@@ -866,10 +887,10 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class j
     extends q
-    implements d.g.a.a<z>
+    implements d.g.a.a<d.z>
   {
     j(b paramb, String paramString)
     {
@@ -877,10 +898,10 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class k
     extends q
-    implements d.g.a.a<z>
+    implements d.g.a.a<d.z>
   {
     k(b paramb)
     {
@@ -888,7 +909,7 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   public static final class l
     extends q
     implements d.g.a.a<Boolean>
@@ -899,10 +920,10 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class m
     extends q
-    implements d.g.a.a<z>
+    implements d.g.a.a<d.z>
   {
     m(String paramString, int paramInt)
     {

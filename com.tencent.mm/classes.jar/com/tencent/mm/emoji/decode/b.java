@@ -3,57 +3,57 @@ package com.tencent.mm.emoji.decode;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/decode/EmptyDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "()V", "TAG", "", "emptyFrame", "Landroid/graphics/Bitmap;", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/decode/EmptyDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "()V", "TAG", "", "emptyFrame", "Landroid/graphics/Bitmap;", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
 public final class b
   implements d
 {
   private final String TAG;
-  private Bitmap gib;
+  private Bitmap gkt;
   
   public b()
   {
     AppMethodBeat.i(105365);
     this.TAG = "MicroMsg.EmptyDecoder";
-    ad.w(this.TAG, "init: should not call this, something error");
+    ae.w(this.TAG, "init: should not call this, something error");
     Bitmap localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
     p.g(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
-    this.gib = localBitmap;
+    this.gkt = localBitmap;
     AppMethodBeat.o(105365);
   }
   
-  public final void aeu() {}
+  public final void aeG() {}
   
-  public final Bitmap aev()
+  public final Bitmap aeH()
   {
-    return this.gib;
+    return this.gkt;
   }
   
-  public final int aew()
+  public final int aeI()
   {
     return 1;
   }
   
-  public final int aex()
+  public final int aeJ()
   {
     return 2147483647;
   }
   
-  public final int aey()
+  public final int aeK()
   {
     AppMethodBeat.i(105363);
-    int i = this.gib.getWidth();
+    int i = this.gkt.getWidth();
     AppMethodBeat.o(105363);
     return i;
   }
   
-  public final int aez()
+  public final int aeL()
   {
     AppMethodBeat.i(105364);
-    int i = this.gib.getHeight();
+    int i = this.gkt.getHeight();
     AppMethodBeat.o(105364);
     return i;
   }

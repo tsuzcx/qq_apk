@@ -12,14 +12,14 @@ final class ConversationWithAppBrandListView$12
   public final void onAnimationCancel(Animator paramAnimator)
   {
     AppMethodBeat.i(38408);
-    ConversationWithAppBrandListView.k(this.KuA);
+    ConversationWithAppBrandListView.k(this.KQU);
     AppMethodBeat.o(38408);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(38407);
-    ConversationWithAppBrandListView.k(this.KuA);
+    ConversationWithAppBrandListView.k(this.KQU);
     AppMethodBeat.o(38407);
   }
   

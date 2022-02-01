@@ -6,7 +6,7 @@ import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.aj;
 
 final class WalletPayUI$22
   implements DialogInterface.OnClickListener
@@ -16,12 +16,12 @@ final class WalletPayUI$22
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(69411);
-    if (this.CKo.isChecked())
+    if (this.DbU.isChecked())
     {
-      g.ajD();
-      g.ajC().ajl().set(196614, Boolean.FALSE);
+      g.ajS();
+      g.ajR().ajA().set(196614, Boolean.FALSE);
     }
-    this.CKl.ue(false);
+    this.DbR.ul(false);
     AppMethodBeat.o(69411);
   }
 }

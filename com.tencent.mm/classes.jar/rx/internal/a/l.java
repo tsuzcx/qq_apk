@@ -12,18 +12,18 @@ import rx.i;
 public final class l<T>
   implements d.a<T>
 {
-  final d<T> NXL;
-  final g NXQ;
+  final d<T> OuQ;
+  final g OuV;
   
   public l(d<T> paramd, g paramg)
   {
-    this.NXQ = paramg;
-    this.NXL = paramd;
+    this.OuV = paramg;
+    this.OuQ = paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.a.l
  * JD-Core Version:    0.7.0.1
  */

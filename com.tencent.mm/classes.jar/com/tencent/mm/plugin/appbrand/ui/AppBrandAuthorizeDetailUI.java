@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.preference.AppBrandAuthPreference;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -16,22 +16,22 @@ import com.tencent.mm.ui.base.preference.f;
 public class AppBrandAuthorizeDetailUI
   extends MMPreference
 {
-  private int lpU;
-  private AppBrandAuthPreference mzA;
-  private AppBrandAuthPreference mzB;
-  private boolean mzw = false;
-  private f mzx;
-  private Preference mzy;
-  private AppBrandAuthPreference mzz;
+  private int lur;
+  private AppBrandAuthPreference mEA;
+  private AppBrandAuthPreference mEB;
+  private boolean mEw = false;
+  private f mEx;
+  private Preference mEy;
+  private AppBrandAuthPreference mEz;
   
-  private void byU()
+  private void bzP()
   {
     AppMethodBeat.i(48524);
-    if (this.mzw)
+    if (this.mEw)
     {
-      ad.i("MicroMsg.AppBrandAuthorizeDetailUI", "setResData, has changed, state:%s", new Object[] { Integer.valueOf(this.lpU) });
+      ae.i("MicroMsg.AppBrandAuthorizeDetailUI", "setResData, has changed, state:%s", new Object[] { Integer.valueOf(this.lur) });
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_result_state", this.lpU);
+      localIntent.putExtra("key_result_state", this.lur);
       setResult(-1, localIntent);
       AppMethodBeat.o(48524);
       return;
@@ -48,7 +48,7 @@ public class AppBrandAuthorizeDetailUI
   public void onBackPressed()
   {
     AppMethodBeat.i(48523);
-    byU();
+    bzP();
     super.onBackPressed();
     AppMethodBeat.o(48523);
   }
@@ -71,31 +71,31 @@ public class AppBrandAuthorizeDetailUI
     });
     label129:
     boolean bool;
-    if ((getIntent() != null) && (!bt.isNullOrNil(getIntent().getStringExtra("key_title"))))
+    if ((getIntent() != null) && (!bu.isNullOrNil(getIntent().getStringExtra("key_title"))))
     {
       setMMTitle(getIntent().getStringExtra("key_title"));
-      this.mzx = getPreferenceScreen();
-      this.mzx.removeAll();
-      if ((getIntent() == null) || (bt.isNullOrNil(getIntent().getStringExtra("key_desc")))) {
+      this.mEx = getPreferenceScreen();
+      this.mEx.removeAll();
+      if ((getIntent() == null) || (bu.isNullOrNil(getIntent().getStringExtra("key_desc")))) {
         break label420;
       }
       paramBundle = getIntent().getStringExtra("key_desc");
       paramBundle = String.format(getString(2131755339), new Object[] { paramBundle });
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bu.isNullOrNil(paramBundle))
       {
-        this.mzy = new Preference(this);
-        this.mzy.setTitle(paramBundle);
-        this.mzy.setLayoutResource(2131493026);
-        this.mzx.b(this.mzy);
+        this.mEy = new Preference(this);
+        this.mEy.setTitle(paramBundle);
+        this.mEy.setLayoutResource(2131493026);
+        this.mEx.b(this.mEy);
       }
-      this.mzz = new AppBrandAuthPreference(this);
-      this.mzz.setKey("none");
-      this.mzz.se(2131755333);
-      this.mzx.b(this.mzz);
-      this.mzA = new AppBrandAuthPreference(this);
-      this.mzA.setKey("foreground");
-      this.mzA.se(2131755332);
-      this.mzx.b(this.mzA);
+      this.mEz = new AppBrandAuthPreference(this);
+      this.mEz.setKey("none");
+      this.mEz.sh(2131755333);
+      this.mEx.b(this.mEz);
+      this.mEA = new AppBrandAuthPreference(this);
+      this.mEA.setKey("foreground");
+      this.mEA.sh(2131755332);
+      this.mEx.b(this.mEA);
       if (getIntent() == null) {
         break label425;
       }
@@ -103,23 +103,23 @@ public class AppBrandAuthorizeDetailUI
       label282:
       if (bool)
       {
-        this.mzB = new AppBrandAuthPreference(this);
-        this.mzB.setKey("both");
-        this.mzB.se(2131755331);
-        this.mzx.b(this.mzB);
+        this.mEB = new AppBrandAuthPreference(this);
+        this.mEB.setKey("both");
+        this.mEB.sh(2131755331);
+        this.mEx.b(this.mEB);
       }
       if ((getIntent() != null) && (getIntent().hasExtra("key_state"))) {
-        this.lpU = getIntent().getIntExtra("key_state", 0);
+        this.lur = getIntent().getIntExtra("key_state", 0);
       }
-      switch (this.lpU)
+      switch (this.lur)
       {
       default: 
-        this.mzz.setChecked(true);
+        this.mEz.setChecked(true);
       }
     }
     for (;;)
     {
-      this.mzx.notifyDataSetChanged();
+      this.mEx.notifyDataSetChanged();
       AppMethodBeat.o(48522);
       return;
       setMMTitle(2131755335);
@@ -130,11 +130,11 @@ public class AppBrandAuthorizeDetailUI
       label425:
       bool = false;
       break label282;
-      if (this.mzB != null)
+      if (this.mEB != null)
       {
-        this.mzB.setChecked(true);
+        this.mEB.setChecked(true);
         continue;
-        this.mzA.setChecked(true);
+        this.mEA.setChecked(true);
       }
     }
   }
@@ -142,42 +142,42 @@ public class AppBrandAuthorizeDetailUI
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(48525);
-    ad.i("MicroMsg.AppBrandAuthorizeDetailUI", "onPreferenceTreeClick, key:%s", new Object[] { paramPreference.mKey });
+    ae.i("MicroMsg.AppBrandAuthorizeDetailUI", "onPreferenceTreeClick, key:%s", new Object[] { paramPreference.mKey });
     if ((paramPreference instanceof AppBrandAuthPreference))
     {
-      this.mzw = true;
+      this.mEw = true;
       if (!paramPreference.mKey.equalsIgnoreCase("both")) {
         break label99;
       }
-      this.lpU = 2;
-      this.mzz.setChecked(false);
-      this.mzA.setChecked(false);
-      if (this.mzB != null) {
-        this.mzB.setChecked(true);
+      this.lur = 2;
+      this.mEz.setChecked(false);
+      this.mEA.setChecked(false);
+      if (this.mEB != null) {
+        this.mEB.setChecked(true);
       }
     }
     for (;;)
     {
-      this.mzx.notifyDataSetChanged();
+      this.mEx.notifyDataSetChanged();
       AppMethodBeat.o(48525);
       return false;
       label99:
       if (paramPreference.mKey.equalsIgnoreCase("foreground"))
       {
-        this.lpU = 1;
-        this.mzA.setChecked(true);
-        this.mzz.setChecked(false);
-        if (this.mzB != null) {
-          this.mzB.setChecked(false);
+        this.lur = 1;
+        this.mEA.setChecked(true);
+        this.mEz.setChecked(false);
+        if (this.mEB != null) {
+          this.mEB.setChecked(false);
         }
       }
       else
       {
-        this.lpU = 0;
-        this.mzz.setChecked(true);
-        this.mzA.setChecked(false);
-        if (this.mzB != null) {
-          this.mzB.setChecked(false);
+        this.lur = 0;
+        this.mEz.setChecked(true);
+        this.mEA.setChecked(false);
+        if (this.mEB != null) {
+          this.mEB.setChecked(false);
         }
       }
     }
@@ -191,7 +191,7 @@ public class AppBrandAuthorizeDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeDetailUI
  * JD-Core Version:    0.7.0.1
  */

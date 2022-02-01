@@ -17,8 +17,8 @@ final class CollectBillListUI$5
     AppMethodBeat.i(64051);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/collect/ui/CollectBillListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    CollectBillListUI.d(this.pdX).dismiss();
+    a.b("com/tencent/mm/plugin/collect/ui/CollectBillListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    CollectBillListUI.d(this.pkD).dismiss();
     a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(64051);
   }

@@ -12,71 +12,71 @@ import java.util.Map;
 public final class n
   extends j
 {
-  private static int lnf = 3;
-  private static boolean lnh;
-  private com.tencent.mm.plugin.appbrand.jsapi.video.b.c.n lmY;
-  private com.tencent.mm.plugin.appbrand.jsapi.video.b.c.e lni;
-  private int lnj;
+  private static int lrF = 3;
+  private static boolean lrG;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.b.c.e lrH;
+  private int lrI;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.b.c.n lry;
   private String uuid;
   
   public n(String paramString, i<String> parami, s params, com.tencent.mm.plugin.appbrand.jsapi.video.b.c.e parame, com.tencent.mm.plugin.appbrand.jsapi.video.b.e.e<Map<String, List<String>>> parame1, com.tencent.mm.plugin.appbrand.jsapi.video.b.c.n paramn)
   {
     super(paramString, parami, params, true, parame1);
-    AppMethodBeat.i(206063);
-    this.lnj = 0;
-    this.lni = parame;
-    this.lmY = paramn;
-    if (!lnh)
+    AppMethodBeat.i(211090);
+    this.lrI = 0;
+    this.lrH = parame;
+    this.lry = paramn;
+    if (!lrG)
     {
-      lnf = a.bnx().lmh;
-      lnh = true;
+      lrF = a.boh().lqH;
+      lrG = true;
     }
-    AppMethodBeat.o(206063);
+    AppMethodBeat.o(211090);
   }
   
   private int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, l.a parama)
   {
-    AppMethodBeat.i(206067);
+    AppMethodBeat.i(211094);
     h.log(4, getLogTag(), "read source error occurred " + parama.toString());
-    this.lnj += 1;
-    long l1 = this.lmn.position + this.bytesRead;
-    int i = this.lnj * 2000;
-    h.log(4, getLogTag(), "retrying after " + i + " ms, read start at offset " + l1 + " retry " + this.lnj + "/" + lnf);
+    this.lrI += 1;
+    long l1 = this.lqN.position + this.bytesRead;
+    int i = this.lrI * 2000;
+    h.log(4, getLogTag(), "retrying after " + i + " ms, read start at offset " + l1 + " retry " + this.lrI + "/" + lrF);
     long l2 = i;
     g localg;
     try
     {
       Thread.sleep(l2);
-      localg = new g(Uri.parse(getUri()), 0L, l1, -1L, null, 0, this.uuid, this.lmn.priority);
-      if ((Thread.currentThread().isInterrupted()) || (this.lnj >= lnf)) {
+      localg = new g(Uri.parse(getUri()), 0L, l1, -1L, null, 0, this.uuid, this.lqN.priority);
+      if ((Thread.currentThread().isInterrupted()) || (this.lrI >= lrF)) {
         break label306;
       }
-      if (this.lmY.tz(1))
+      if (this.lry.tD(1))
       {
-        h.log(4, getLogTag(), "abort retry videoRequest is cancelling " + this.lmY);
-        paramArrayOfByte = new l.c("readRetry interrupted " + this.lmY, this.lmn);
-        AppMethodBeat.o(206067);
+        h.log(4, getLogTag(), "abort retry videoRequest is cancelling " + this.lry);
+        paramArrayOfByte = new l.c("readRetry interrupted " + this.lry, this.lqN);
+        AppMethodBeat.o(211094);
         throw paramArrayOfByte;
       }
     }
     catch (InterruptedException paramArrayOfByte)
     {
       h.log(5, getLogTag(), "readRetry interrupted");
-      AppMethodBeat.o(206067);
+      AppMethodBeat.o(211094);
       throw parama;
     }
     a(localg);
     paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(206067);
+    AppMethodBeat.o(211094);
     return paramInt1;
     label306:
-    AppMethodBeat.o(206067);
+    AppMethodBeat.o(211094);
     throw parama;
   }
   
   private long a(g paramg, l.a parama)
   {
-    AppMethodBeat.i(206065);
+    AppMethodBeat.i(211092);
     int i = 0;
     if ((parama instanceof l.f)) {
       i = ((l.f)parama).responseCode;
@@ -85,10 +85,10 @@ public final class n
     h.log(4, getLogTag(), "retryOpen url=" + (String)localObject1 + " with responseCode=" + i);
     i = 0;
     Object localObject3;
-    if ((!Thread.currentThread().isInterrupted()) && (i < lnf)) {
-      if (this.lni != null)
+    if ((!Thread.currentThread().isInterrupted()) && (i < lrF)) {
+      if (this.lrH != null)
       {
-        localObject3 = this.lni.bnF();
+        localObject3 = this.lrH.bop();
         h.log(4, getLogTag(), "retryCount=" + i + " retryUrl=" + (String)localObject3);
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           break label458;
@@ -105,7 +105,7 @@ public final class n
       }
       i += 1;
       int j = i * 2000;
-      h.log(4, getLogTag(), "retry open retrying after " + j + " seconds  retry " + i + "/" + lnf);
+      h.log(4, getLogTag(), "retry open retrying after " + j + " seconds  retry " + i + "/" + lrF);
       long l = j;
       try
       {
@@ -115,29 +115,29 @@ public final class n
       catch (InterruptedException paramg)
       {
         Thread.currentThread().interrupt();
-        paramg = new l.b("retry open interrupted " + this.lmY, this.lmn);
-        AppMethodBeat.o(206065);
+        paramg = new l.b("retry open interrupted " + this.lry, this.lqN);
+        AppMethodBeat.o(211092);
         throw paramg;
       }
       try
       {
         l = super.b((g)localObject1);
-        AppMethodBeat.o(206065);
+        AppMethodBeat.o(211092);
         return l;
       }
       catch (l.a locala)
       {
-        if ((this.lmY == null) || (!this.lmY.tz(1))) {
+        if ((this.lry == null) || (!this.lry.tD(1))) {
           break label451;
         }
-        h.log(4, getLogTag(), "abort retryOpen videoRequest is cancelling " + this.lmY + ", reason=" + h.h(locala));
-        paramg = new l.b("retry open interrupted " + this.lmY, this.lmn);
-        AppMethodBeat.o(206065);
+        h.log(4, getLogTag(), "abort retryOpen videoRequest is cancelling " + this.lry + ", reason=" + h.i(locala));
+        paramg = new l.b("retry open interrupted " + this.lry, this.lqN);
+        AppMethodBeat.o(211092);
         throw paramg;
         Object localObject2 = localObject3;
       }
       h.log(4, getLogTag(), "httpRetryLogic is null");
-      AppMethodBeat.o(206065);
+      AppMethodBeat.o(211092);
       throw parama;
       break;
     }
@@ -145,36 +145,36 @@ public final class n
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(206064);
+    AppMethodBeat.i(211091);
     this.uuid = paramg.uuid;
     long l;
     try
     {
       l = super.a(paramg);
-      AppMethodBeat.o(206064);
+      AppMethodBeat.o(211091);
       return l;
     }
     catch (l.a locala)
     {
       l = a(paramg, locala);
-      AppMethodBeat.o(206064);
+      AppMethodBeat.o(211091);
     }
     return l;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206066);
+    AppMethodBeat.i(211093);
     try
     {
       int i = super.read(paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(206066);
+      AppMethodBeat.o(211093);
       return i;
     }
     catch (l.a locala)
     {
       paramInt1 = a(paramArrayOfByte, paramInt1, paramInt2, locala);
-      AppMethodBeat.o(206066);
+      AppMethodBeat.o(211093);
     }
     return paramInt1;
   }

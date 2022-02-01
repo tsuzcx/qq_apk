@@ -33,11 +33,11 @@ import com.tencent.mm.plugin.location.model.e;
 import com.tencent.mm.plugin.location.ui.RemarkUI;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.y;
@@ -51,55 +51,55 @@ public abstract class a
   protected float aTL = 0.0F;
   protected float aTM = 0.0F;
   public Activity activity;
-  protected int drP = 0;
-  protected ProgressDialog fMu = null;
-  ap handler = new ap(Looper.getMainLooper());
-  protected String jDf = "";
+  protected int dsV = 0;
+  protected ProgressDialog fOC = null;
+  aq handler = new aq(Looper.getMainLooper());
+  protected String jGd = "";
+  protected LocationInfo kSe = new LocationInfo((byte)0);
+  protected LocationInfo kSf = new LocationInfo((byte)0);
+  protected com.tencent.mm.plugin.location.ui.d kSg;
   protected int type = 0;
-  int uZt;
-  DisplayMetrics upU = null;
-  protected String vaL = "";
-  protected String vbx;
-  public String veR = "";
-  protected boolean veS = false;
-  public boolean veT = false;
-  protected Addr veU = null;
-  protected com.tencent.mm.plugin.location.ui.d veV;
-  protected LocationInfo veW = new LocationInfo((byte)0);
-  protected LocationInfo veX = new LocationInfo((byte)0);
-  protected a veY;
-  protected boolean veZ = false;
-  protected HashMap<String, com.tencent.mm.plugin.location.ui.c> vfa = new HashMap();
-  protected com.tencent.mm.modelgeo.c vfb;
-  protected boolean vfc = false;
-  protected ArrayList<String> vfd = new ArrayList();
-  protected boolean vfe = false;
-  protected boolean vff = false;
-  protected com.tencent.mm.plugin.location.model.c vfg = null;
-  protected com.tencent.mm.modelgeo.d vfh;
-  public c.a vfi = new c.a()
+  DisplayMetrics uBq = null;
+  int vlE;
+  protected String vmW = "";
+  protected String vnI;
+  public String vrb = "";
+  protected boolean vrc = false;
+  public boolean vrd = false;
+  protected Addr vre = null;
+  protected a vrf;
+  protected boolean vrg = false;
+  protected HashMap<String, com.tencent.mm.plugin.location.ui.c> vrh = new HashMap();
+  protected com.tencent.mm.modelgeo.c vri;
+  protected boolean vrj = false;
+  protected ArrayList<String> vrk = new ArrayList();
+  protected boolean vrl = false;
+  protected boolean vrm = false;
+  protected com.tencent.mm.plugin.location.model.c vrn = null;
+  protected com.tencent.mm.modelgeo.d vro;
+  public c.a vrp = new c.a()
   {
     public final void b(Addr paramAnonymousAddr)
     {
       AppMethodBeat.i(55997);
-      ad.d("MicroMsg.BaseMapUI", "onGetAddrss  %s", new Object[] { paramAnonymousAddr.toString() });
-      a.this.veU = paramAnonymousAddr;
-      String str = paramAnonymousAddr.aHM();
-      a.this.veX.dDq = a.this.activity.getResources().getString(2131760712);
-      if ((paramAnonymousAddr.tag != null) && (paramAnonymousAddr.tag.equals(a.this.veX.uZq))) {
-        a.this.veX.uZu = str;
+      ae.d("MicroMsg.BaseMapUI", "onGetAddrss  %s", new Object[] { paramAnonymousAddr.toString() });
+      a.this.vre = paramAnonymousAddr;
+      String str = paramAnonymousAddr.aId();
+      a.this.kSf.dEv = a.this.activity.getResources().getString(2131760712);
+      if ((paramAnonymousAddr.tag != null) && (paramAnonymousAddr.tag.equals(a.this.kSf.vlB))) {
+        a.this.kSf.vlF = str;
       }
       for (;;)
       {
-        if ((paramAnonymousAddr.tag != null) && (a.this.vfa.containsKey(paramAnonymousAddr.tag)))
+        if ((paramAnonymousAddr.tag != null) && (a.this.vrh.containsKey(paramAnonymousAddr.tag)))
         {
-          paramAnonymousAddr = (com.tencent.mm.plugin.location.ui.c)a.this.vfa.get(paramAnonymousAddr.tag);
+          paramAnonymousAddr = (com.tencent.mm.plugin.location.ui.c)a.this.vrh.get(paramAnonymousAddr.tag);
           paramAnonymousAddr.setText(paramAnonymousAddr.getPreText() + str);
         }
         AppMethodBeat.o(55997);
         return;
-        if (!bt.isNullOrNil(paramAnonymousAddr.hWY)) {
-          a.this.veY.vfl.setVisibility(0);
+        if (!bu.isNullOrNil(paramAnonymousAddr.hZQ)) {
+          a.this.vrf.vrs.setVisibility(0);
         }
       }
     }
@@ -108,101 +108,18 @@ public abstract class a
   public a(Activity paramActivity)
   {
     this.activity = paramActivity;
-    this.vfb = com.tencent.mm.modelgeo.c.aHN();
+    this.vri = com.tencent.mm.modelgeo.c.aIe();
   }
   
-  protected abstract String aRw();
+  protected abstract String aRV();
   
   protected final boolean c(LocationInfo paramLocationInfo)
   {
-    if (this.veY.vbP.getIController() == null) {}
-    while (!e.j(paramLocationInfo.uZr, paramLocationInfo.uZs)) {
+    if (this.vrf.voa.getIController() == null) {}
+    while (!e.j(paramLocationInfo.vlC, paramLocationInfo.vlD)) {
       return false;
     }
-    this.veY.vbP.getIController().animateTo(paramLocationInfo.uZr, paramLocationInfo.uZs);
-    return true;
-  }
-  
-  protected final void dgS()
-  {
-    if ((this.veY.vfq == null) || (this.veY.vfr == null)) {
-      return;
-    }
-    this.veY.vfq.setText(k.b(this.veY.vfq.getContext(), this.vbx, this.veY.vfq.getTextSize()));
-    if ((this.vfd == null) || (this.vfd.isEmpty()))
-    {
-      this.veY.vfr.setText("");
-      return;
-    }
-    String str1 = (String)this.vfd.get(0);
-    String str2 = this.activity.getResources().getString(2131759020);
-    int i = 1;
-    while (i < this.vfd.size())
-    {
-      str1 = str1 + str2 + (String)this.vfd.get(i);
-      i += 1;
-    }
-    this.veY.vfr.setText(k.b(this.veY.vfr.getContext(), str1, this.veY.vfr.getTextSize()));
-  }
-  
-  protected final void dgT()
-  {
-    this.veY.vfl.removeAllViews();
-    View localView = View.inflate(this.activity, 2131494596, null);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.veY.vfl.addView(localView, localLayoutParams);
-    this.veY.vfq = ((TextView)localView.findViewById(2131301538));
-    this.veY.vfq.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(55995);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/BaseMapUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = new Intent(a.this.activity, RemarkUI.class);
-        paramAnonymousView.putExtra("key_nullable", true);
-        paramAnonymousView.putExtra("key_value", a.this.dgU());
-        paramAnonymousView.putExtra("key_hint", a.this.getString(2131760726));
-        paramAnonymousView.putExtra("Kwebmap_locaion", a.this.veW.uZu);
-        paramAnonymousView.putExtra("kFavInfoLocalId", a.this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
-        paramAnonymousView.putExtra("kRemark", a.this.activity.getIntent().getStringExtra("kRemark"));
-        a.this.activity.startActivityForResult(paramAnonymousView, 4096);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/BaseMapUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(55995);
-      }
-    });
-    this.veY.vfr = ((TextView)localView.findViewById(2131301543));
-    this.veY.vfr.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(55996);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("key_fav_item_id", a.this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
-        paramAnonymousView.putExtra("key_fav_result_list", a.this.activity.getIntent().getStringArrayListExtra("kTags"));
-        com.tencent.mm.plugin.fav.a.b.a(a.this.activity, ".ui.FavTagEditUI", paramAnonymousView, 4100);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(55996);
-      }
-    });
-    dgS();
-  }
-  
-  protected final String dgU()
-  {
-    return bt.bI(this.vbx, "");
-  }
-  
-  protected abstract void dgV();
-  
-  abstract void dgW();
-  
-  public boolean dgX()
-  {
+    this.vrf.voa.getIController().animateTo(paramLocationInfo.vlC, paramLocationInfo.vlD);
     return true;
   }
   
@@ -210,8 +127,8 @@ public abstract class a
   {
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ad.d("MicroMsg.BaseMapUI", "dispatchKeyEvent");
-      dgV();
+      ae.d("MicroMsg.BaseMapUI", "dispatchKeyEvent");
+      djU();
       this.activity.finish();
       return true;
     }
@@ -221,6 +138,89 @@ public abstract class a
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     return false;
+  }
+  
+  protected final void djR()
+  {
+    if ((this.vrf.vrx == null) || (this.vrf.vry == null)) {
+      return;
+    }
+    this.vrf.vrx.setText(k.b(this.vrf.vrx.getContext(), this.vnI, this.vrf.vrx.getTextSize()));
+    if ((this.vrk == null) || (this.vrk.isEmpty()))
+    {
+      this.vrf.vry.setText("");
+      return;
+    }
+    String str1 = (String)this.vrk.get(0);
+    String str2 = this.activity.getResources().getString(2131759020);
+    int i = 1;
+    while (i < this.vrk.size())
+    {
+      str1 = str1 + str2 + (String)this.vrk.get(i);
+      i += 1;
+    }
+    this.vrf.vry.setText(k.b(this.vrf.vry.getContext(), str1, this.vrf.vry.getTextSize()));
+  }
+  
+  protected final void djS()
+  {
+    this.vrf.vrs.removeAllViews();
+    View localView = View.inflate(this.activity, 2131494596, null);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.vrf.vrs.addView(localView, localLayoutParams);
+    this.vrf.vrx = ((TextView)localView.findViewById(2131301538));
+    this.vrf.vrx.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(55995);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/BaseMapUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = new Intent(a.this.activity, RemarkUI.class);
+        paramAnonymousView.putExtra("key_nullable", true);
+        paramAnonymousView.putExtra("key_value", a.this.djT());
+        paramAnonymousView.putExtra("key_hint", a.this.getString(2131760726));
+        paramAnonymousView.putExtra("Kwebmap_locaion", a.this.kSe.vlF);
+        paramAnonymousView.putExtra("kFavInfoLocalId", a.this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
+        paramAnonymousView.putExtra("kRemark", a.this.activity.getIntent().getStringExtra("kRemark"));
+        a.this.activity.startActivityForResult(paramAnonymousView, 4096);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/BaseMapUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(55995);
+      }
+    });
+    this.vrf.vry = ((TextView)localView.findViewById(2131301543));
+    this.vrf.vry.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(55996);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        paramAnonymousView = new Intent();
+        paramAnonymousView.putExtra("key_fav_item_id", a.this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
+        paramAnonymousView.putExtra("key_fav_result_list", a.this.activity.getIntent().getStringArrayListExtra("kTags"));
+        com.tencent.mm.plugin.fav.a.b.a(a.this.activity, ".ui.FavTagEditUI", paramAnonymousView, 4100);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/BaseMapUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(55996);
+      }
+    });
+    djR();
+  }
+  
+  protected final String djT()
+  {
+    return bu.bI(this.vnI, "");
+  }
+  
+  protected abstract void djU();
+  
+  abstract void djV();
+  
+  public boolean djW()
+  {
+    return true;
   }
   
   public final View findViewById(int paramInt)
@@ -252,32 +252,32 @@ public abstract class a
   
   protected final void initView()
   {
-    ad.d("MicroMsg.BaseMapUI", "initView");
-    this.veY.vfp = ((LinearLayout)findViewById(2131300707));
-    this.veY.vbP = ((com.tencent.mm.plugin.k.d)findViewById(2131300334));
-    this.veY.vfk = ((FrameLayout)findViewById(2131298786));
-    this.veY.vfl = ((RelativeLayout)findViewById(2131305886));
-    this.veY.gSx = ((ImageView)findViewById(2131305914));
-    this.veY.vfm = ((ImageButton)findViewById(2131305916));
-    this.veY.vfn = findViewById(2131305917);
-    this.veY.vfo = ((TextView)findViewById(2131296377));
-    this.veY.titleView = ((TextView)findViewById(2131302293));
-    this.veY.rcj = ((TextView)findViewById(2131302473));
-    this.veY.titleView.setText(aRw());
-    this.veY.vbP.getIController().setZoom(com.tencent.mm.plugin.location.ui.d.dgu());
+    ae.d("MicroMsg.BaseMapUI", "initView");
+    this.vrf.vrw = ((LinearLayout)findViewById(2131300707));
+    this.vrf.voa = ((com.tencent.mm.plugin.k.d)findViewById(2131300334));
+    this.vrf.vrr = ((FrameLayout)findViewById(2131298786));
+    this.vrf.vrs = ((RelativeLayout)findViewById(2131305886));
+    this.vrf.gVf = ((ImageView)findViewById(2131305914));
+    this.vrf.vrt = ((ImageButton)findViewById(2131305916));
+    this.vrf.vru = findViewById(2131305917);
+    this.vrf.vrv = ((TextView)findViewById(2131296377));
+    this.vrf.titleView = ((TextView)findViewById(2131302293));
+    this.vrf.rkp = ((TextView)findViewById(2131302473));
+    this.vrf.titleView.setText(aRV());
+    this.vrf.voa.getIController().setZoom(com.tencent.mm.plugin.location.ui.d.djt());
     if ((this.type != 0) && (this.type != 3))
     {
-      this.veY.vfm.setVisibility(0);
-      this.veY.vfn.setVisibility(8);
-      this.veY.vfm.setEnabled(false);
-      this.veY.vfm.setImageResource(2131690603);
+      this.vrf.vrt.setVisibility(0);
+      this.vrf.vru.setVisibility(8);
+      this.vrf.vrt.setEnabled(false);
+      this.vrf.vrt.setImageResource(2131690603);
     }
-    this.veY.vbP.setBuiltInZoomControls(false);
-    this.veY.gSx.setOnClickListener(new a.4(this));
-    this.veY.vfo.setOnClickListener(new a.5(this));
-    dgW();
-    setActionbarColor(aj.getResources().getColor(2131100705));
-    this.veY.vbP.setMapAnchor(0.5F, 0.5F);
+    this.vrf.voa.setBuiltInZoomControls(false);
+    this.vrf.gVf.setOnClickListener(new a.4(this));
+    this.vrf.vrv.setOnClickListener(new a.5(this));
+    djV();
+    setActionbarColor(ak.getResources().getColor(2131100705));
+    this.vrf.voa.setMapAnchor(0.5F, 0.5F);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -291,18 +291,18 @@ public abstract class a
         if (4096 != paramInt1) {
           break;
         }
-      } while (this.veY.vfq == null);
+      } while (this.vrf.vrx == null);
       paramIntent = paramIntent.getCharSequenceExtra("key_result");
       if (paramIntent == null) {}
       for (paramIntent = "";; paramIntent = paramIntent.toString())
       {
-        this.vbx = paramIntent;
-        dgS();
+        this.vnI = paramIntent;
+        djR();
         return;
       }
-    } while ((4100 != paramInt1) || (this.veY.vfr == null));
-    this.vfd = paramIntent.getStringArrayListExtra("key_fav_result_list");
-    dgS();
+    } while ((4100 != paramInt1) || (this.vrf.vry == null));
+    this.vrk = paramIntent.getStringArrayListExtra("key_fav_result_list");
+    djR();
   }
   
   public void onBackPressed()
@@ -312,57 +312,57 @@ public abstract class a
   
   public void onCreate(Bundle paramBundle)
   {
-    this.vfh = com.tencent.mm.modelgeo.d.aHQ();
-    Object localObject = this.veX;
-    LocationInfo localLocationInfo = this.veW;
-    paramBundle = ac.f(aj.fkD());
-    ad.d("MicroMsg.BaseMapUI", " initLanguage ".concat(String.valueOf(paramBundle)));
+    this.vro = com.tencent.mm.modelgeo.d.aIh();
+    Object localObject = this.kSf;
+    LocationInfo localLocationInfo = this.kSe;
+    paramBundle = ad.f(ak.fox());
+    ae.d("MicroMsg.BaseMapUI", " initLanguage ".concat(String.valueOf(paramBundle)));
     if (paramBundle.equals("language_default"))
     {
-      ac.a(this.activity, Locale.ENGLISH);
+      ad.a(this.activity, Locale.ENGLISH);
       paramBundle = "en";
-      localLocationInfo.uZv = paramBundle;
-      ((LocationInfo)localObject).uZv = paramBundle;
-      ad.d("MicroMsg.BaseMapUI", "sosomap " + this.veW.uZv);
+      localLocationInfo.vlG = paramBundle;
+      ((LocationInfo)localObject).vlG = paramBundle;
+      ae.d("MicroMsg.BaseMapUI", "sosomap " + this.kSe.vlG);
       this.activity.requestWindowFeature(1);
       this.activity.setContentView(2131494411);
       paramBundle = (FrameLayout)findViewById(2131302155);
-      localObject = (SoSoMapView)d.fG(this.activity);
+      localObject = (SoSoMapView)d.fM(this.activity);
       paramBundle.addView((View)localObject);
       if (!al.isDarkMode()) {
-        break label301;
+        break label298;
       }
       ((SoSoMapView)localObject).enableDarkMode();
     }
     for (;;)
     {
-      this.veV = new com.tencent.mm.plugin.location.ui.d(this.activity);
-      this.veY = new a();
-      this.vbx = this.activity.getIntent().getStringExtra("kRemark");
-      this.vfd = this.activity.getIntent().getStringArrayListExtra("kTags");
+      this.kSg = new com.tencent.mm.plugin.location.ui.d(this.activity);
+      this.vrf = new a();
+      this.vnI = this.activity.getIntent().getStringExtra("kRemark");
+      this.vrk = this.activity.getIntent().getStringArrayListExtra("kTags");
       this.type = this.activity.getIntent().getIntExtra("map_view_type", 0);
-      this.veT = this.activity.getIntent().getBooleanExtra("kIs_pick_poi", false);
-      ad.i("MicroMsg.BaseMapUI", "isPickPoi " + this.veT);
+      this.vrd = this.activity.getIntent().getBooleanExtra("kIs_pick_poi", false);
+      ae.i("MicroMsg.BaseMapUI", "isPickPoi " + this.vrd);
       return;
-      Locale localLocale = ac.aQq(paramBundle);
-      ac.a(this.activity, localLocale);
+      Locale localLocale = ad.aRN(paramBundle);
+      ad.a(this.activity, localLocale);
       break;
-      label301:
+      label298:
       ((SoSoMapView)localObject).disableDarkMode();
     }
   }
   
   public void onDestroy()
   {
-    this.vfb.a(this.vfi);
-    this.vfa.clear();
-    ad.d("MicroMsg.BaseMapUI", "destroy");
-    if (this.fMu != null)
+    this.vri.a(this.vrp);
+    this.vrh.clear();
+    ae.d("MicroMsg.BaseMapUI", "destroy");
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
-    this.veY.vbP.destroy();
+    this.vrf.voa.destroy();
     System.gc();
   }
   
@@ -378,20 +378,20 @@ public abstract class a
   
   protected final void setActionbarColor(int paramInt)
   {
-    this.veY.vfp.setBackgroundColor(paramInt);
-    Boolean localBoolean = Boolean.valueOf(ao.abX(paramInt));
+    this.vrf.vrw.setBackgroundColor(paramInt);
+    Boolean localBoolean = Boolean.valueOf(ao.acF(paramInt));
     Object localObject;
     if (localBoolean.booleanValue())
     {
-      this.veY.gSx.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-      this.veY.vfm.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-      this.veY.titleView.setTextColor(aj.getResources().getColor(2131101182));
+      this.vrf.gVf.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.vrf.vrt.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.vrf.titleView.setTextColor(ak.getResources().getColor(2131101182));
       if (Build.VERSION.SDK_INT >= 21)
       {
         localObject = this.activity.getWindow();
         ((Window)localObject).clearFlags(201326592);
         ((Window)localObject).addFlags(-2147483648);
-        if ((Build.VERSION.SDK_INT < 23) || (g.abl())) {
+        if ((Build.VERSION.SDK_INT < 23) || (g.abu())) {
           break label237;
         }
       }
@@ -413,9 +413,9 @@ public abstract class a
       {
         ((View)localObject).setSystemUiVisibility(paramInt);
         return;
-        this.veY.gSx.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
-        this.veY.vfm.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
-        this.veY.titleView.setTextColor(aj.getResources().getColor(2131100021));
+        this.vrf.gVf.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+        this.vrf.vrt.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+        this.vrf.titleView.setTextColor(ak.getResources().getColor(2131100021));
         break;
         label237:
         if (Build.VERSION.SDK_INT < 21) {
@@ -433,18 +433,18 @@ public abstract class a
   
   final class a
   {
-    ImageView gSx;
-    TextView rcj;
+    ImageView gVf;
+    TextView rkp;
     TextView titleView;
-    com.tencent.mm.plugin.k.d vbP;
-    FrameLayout vfk;
-    RelativeLayout vfl;
-    ImageButton vfm;
-    View vfn;
-    TextView vfo;
-    LinearLayout vfp;
-    TextView vfq;
-    TextView vfr;
+    com.tencent.mm.plugin.k.d voa;
+    FrameLayout vrr;
+    RelativeLayout vrs;
+    ImageButton vrt;
+    View vru;
+    TextView vrv;
+    LinearLayout vrw;
+    TextView vrx;
+    TextView vry;
     
     a() {}
   }

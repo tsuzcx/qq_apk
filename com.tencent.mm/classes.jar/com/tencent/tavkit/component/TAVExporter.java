@@ -27,22 +27,22 @@ public class TAVExporter
   
   public TAVExporter()
   {
-    AppMethodBeat.i(219659);
+    AppMethodBeat.i(200690);
     this.TAG = ("GameTemplateExporter@" + Integer.toHexString(hashCode()));
     this.defaultOutputConfig = new EncoderWriter.OutputConfig();
     this.defaultOutputConfig.VIDEO_TARGET_WIDTH = 720;
     this.defaultOutputConfig.VIDEO_TARGET_HEIGHT = 1280;
     this.defaultOutputConfig.VIDEO_FRAME_RATE = 25;
-    AppMethodBeat.o(219659);
+    AppMethodBeat.o(200690);
   }
   
   private File newOutputFile(String paramString)
   {
-    AppMethodBeat.i(219663);
+    AppMethodBeat.i(200694);
     paramString = new File(paramString);
     if (paramString.exists())
     {
-      AppMethodBeat.o(219663);
+      AppMethodBeat.o(200694);
       return paramString;
     }
     try
@@ -50,7 +50,7 @@ public class TAVExporter
       if (!paramString.createNewFile())
       {
         paramString = new RuntimeException("创建输出文件失败");
-        AppMethodBeat.o(219663);
+        AppMethodBeat.o(200694);
         throw paramString;
       }
     }
@@ -58,38 +58,38 @@ public class TAVExporter
     {
       Logger.e(this.TAG, "export: ", paramString);
       paramString = new RuntimeException("创建输出文件失败", paramString);
-      AppMethodBeat.o(219663);
+      AppMethodBeat.o(200694);
       throw paramString;
     }
-    AppMethodBeat.o(219663);
+    AppMethodBeat.o(200694);
     return paramString;
   }
   
   public void cancelExport()
   {
-    AppMethodBeat.i(219662);
+    AppMethodBeat.i(200693);
     if (this.exportSession != null)
     {
       this.isCanceled = true;
       this.exportSession.cancelExport();
     }
     this.isExporting = false;
-    AppMethodBeat.o(219662);
+    AppMethodBeat.o(200693);
   }
   
   public void export(TAVComposition paramTAVComposition, String paramString)
   {
-    AppMethodBeat.i(219661);
+    AppMethodBeat.i(200692);
     export(paramTAVComposition, paramString, this.defaultOutputConfig);
-    AppMethodBeat.o(219661);
+    AppMethodBeat.o(200692);
   }
   
   public void export(TAVComposition paramTAVComposition, final String paramString, EncoderWriter.OutputConfig paramOutputConfig)
   {
-    AppMethodBeat.i(219660);
+    AppMethodBeat.i(200691);
     if (paramTAVComposition == null)
     {
-      AppMethodBeat.o(219660);
+      AppMethodBeat.o(200691);
       return;
     }
     if (this.exportSession != null)
@@ -117,13 +117,13 @@ public class TAVExporter
     {
       public void handlerCallback(AssetExportSession paramAnonymousAssetExportSession)
       {
-        AppMethodBeat.i(219657);
+        AppMethodBeat.i(200688);
         switch (TAVExporter.2.$SwitchMap$com$tencent$tav$core$AssetExportSession$AssetExportSessionStatus[paramAnonymousAssetExportSession.getStatus().ordinal()])
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(219657);
+          AppMethodBeat.o(200688);
           return;
           if (TAVExporter.this.exportListener != null)
           {
@@ -134,21 +134,21 @@ public class TAVExporter
             TAVExporter.this.exportListener.onExporting(paramAnonymousAssetExportSession.getProgress());
           }
           TAVExporter.access$202(TAVExporter.this, true);
-          AppMethodBeat.o(219657);
+          AppMethodBeat.o(200688);
           return;
           Logger.i(TAVExporter.this.TAG, "export progress finished");
           if (TAVExporter.this.exportListener != null) {
             TAVExporter.this.exportListener.onExportCompleted(paramString);
           }
           TAVExporter.access$202(TAVExporter.this, false);
-          AppMethodBeat.o(219657);
+          AppMethodBeat.o(200688);
           return;
           Logger.i(TAVExporter.this.TAG, "export error");
           if (TAVExporter.this.exportListener != null) {
             TAVExporter.this.exportListener.onExportError(paramAnonymousAssetExportSession.getErrCode(), paramAnonymousAssetExportSession.getThrowable());
           }
           TAVExporter.access$202(TAVExporter.this, false);
-          AppMethodBeat.o(219657);
+          AppMethodBeat.o(200688);
           return;
           Logger.i(TAVExporter.this.TAG, "export cancel");
           if ((TAVExporter.this.exportListener != null) && (TAVExporter.this.isCanceled))
@@ -160,7 +160,7 @@ public class TAVExporter
         }
       }
     });
-    AppMethodBeat.o(219660);
+    AppMethodBeat.o(200691);
   }
   
   public AssetExportSession getExportSession()

@@ -11,23 +11,21 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.w;
-import com.tencent.mm.openim.a.b;
+import com.tencent.mm.model.al;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.patmsg.ui.AvatarPatTipImageView;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.e;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -38,142 +36,142 @@ import java.util.List;
 public final class r
   extends BaseAdapter
 {
-  public static int EWl = 5;
+  public static int FoG = 5;
   public static int MAX_COUNT = 44;
-  private List<am> BrD;
-  String EWA;
-  private final int EWB;
-  public boolean EWC;
-  private boolean EWD;
-  boolean EWE;
-  public boolean EWF;
-  a EWm;
-  private ArrayList<am> EWn;
-  public boolean EWo;
-  public boolean EWp;
-  private List<Object> EWq;
-  int EWr;
-  int EWs;
-  e EWt;
-  public boolean EWu;
-  public boolean EWv;
-  public boolean EWw;
-  private boolean EWx;
-  boolean EWy;
-  int EWz;
-  private List<String> dAa;
-  private boolean dyF;
-  ab fLO;
-  boolean fRb;
-  private com.tencent.mm.aw.a.a.c fSr;
+  private List<an> BJc;
+  a FoH;
+  private ArrayList<an> FoI;
+  public boolean FoJ;
+  public boolean FoK;
+  private List<Object> FoL;
+  int FoM;
+  int FoN;
+  e FoO;
+  public boolean FoP;
+  public boolean FoQ;
+  public boolean FoR;
+  private boolean FoS;
+  boolean FoT;
+  int FoU;
+  String FoV;
+  private final int FoW;
+  public boolean FoX;
+  private boolean FoY;
+  boolean FoZ;
+  public boolean Fpa;
+  private List<String> dBf;
+  private boolean dzK;
+  ac fNS;
+  boolean fTh;
+  private com.tencent.mm.av.a.a.c fUx;
   private Context mContext;
-  boolean ruj;
+  boolean rCv;
   private String username;
   
   public r(Context paramContext)
   {
     AppMethodBeat.i(152192);
-    this.dAa = new ArrayList();
-    this.EWn = new ArrayList();
-    this.ruj = false;
-    this.EWo = false;
-    this.EWp = false;
-    this.BrD = new ArrayList();
-    this.EWq = new ArrayList();
-    this.EWr = 0;
-    this.EWs = 0;
-    this.EWu = false;
-    this.EWv = false;
-    this.EWw = false;
-    this.EWx = true;
-    this.EWy = false;
-    this.EWz = 12;
-    this.EWC = false;
-    this.fSr = null;
-    this.EWD = true;
-    this.EWE = true;
-    this.EWF = false;
+    this.dBf = new ArrayList();
+    this.FoI = new ArrayList();
+    this.rCv = false;
+    this.FoJ = false;
+    this.FoK = false;
+    this.BJc = new ArrayList();
+    this.FoL = new ArrayList();
+    this.FoM = 0;
+    this.FoN = 0;
+    this.FoP = false;
+    this.FoQ = false;
+    this.FoR = false;
+    this.FoS = true;
+    this.FoT = false;
+    this.FoU = 12;
+    this.FoX = false;
+    this.fUx = null;
+    this.FoY = true;
+    this.FoZ = true;
+    this.Fpa = false;
     this.mContext = paramContext;
-    this.fRb = false;
-    this.EWB = paramContext.getResources().getDimensionPixelSize(2131165187);
+    this.fTh = false;
+    this.FoW = paramContext.getResources().getDimensionPixelSize(2131165187);
     AppMethodBeat.o(152192);
   }
   
-  private void YV(int paramInt)
+  private void ZB(int paramInt)
   {
     AppMethodBeat.i(152199);
-    if (paramInt < this.EWs)
+    if (paramInt < this.FoN)
     {
-      this.fRb = true;
-      cdp();
+      this.fTh = true;
+      ceE();
     }
     AppMethodBeat.o(152199);
   }
   
-  private void cdp()
+  private void ceE()
   {
     AppMethodBeat.i(152200);
-    if (this.EWm != null) {
-      this.EWm.cdp();
+    if (this.FoH != null) {
+      this.FoH.ceE();
     }
     AppMethodBeat.o(152200);
   }
   
-  private c fU(View paramView)
+  private c fT(View paramView)
   {
     AppMethodBeat.i(152201);
     c localc = new c();
-    localc.EWI = ((ImageView)paramView.findViewById(2131304212));
-    localc.fSS = ((AvatarPatTipImageView)paramView.findViewById(2131304237));
-    localc.yJy = ((ImageView)paramView.findViewById(2131304211));
-    localc.fOg = ((TextView)paramView.findViewById(2131304233));
-    localc.fSt = ((TextView)paramView.findViewById(2131304234));
-    localc.fSu = ((TextView)paramView.findViewById(2131304236));
-    localc.mYk = ((ImageView)paramView.findViewById(2131304213));
-    localc.fSS.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localc.Fpd = ((ImageView)paramView.findViewById(2131304212));
+    localc.fUY = ((AvatarPatTipImageView)paramView.findViewById(2131304237));
+    localc.yZI = ((ImageView)paramView.findViewById(2131304211));
+    localc.fQm = ((TextView)paramView.findViewById(2131304233));
+    localc.fUz = ((TextView)paramView.findViewById(2131304234));
+    localc.fUA = ((TextView)paramView.findViewById(2131304236));
+    localc.ndr = ((ImageView)paramView.findViewById(2131304213));
+    localc.fUY.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramView.setTag(localc);
     AppMethodBeat.o(152201);
     return localc;
   }
   
-  private void fcE()
+  private void fgs()
   {
     AppMethodBeat.i(152193);
-    if ((this.ruj) && (x.a.EWT != null)) {
-      this.fSr = x.a.EWT.aMI(this.username);
+    if ((this.rCv) && (x.a.Fpn != null)) {
+      this.fUx = x.a.Fpn.aOe(this.username);
     }
     AppMethodBeat.o(152193);
   }
   
-  private void fcG()
+  private void fgu()
   {
     AppMethodBeat.i(152197);
-    if (this.EWn == null)
+    if (this.FoI == null)
     {
       AppMethodBeat.o(152197);
       return;
     }
-    ad.d("MicroMsg.ContactsListArchAdapter", "initData memberContactList.size %d", new Object[] { Integer.valueOf(this.EWn.size()) });
-    this.BrD.clear();
-    if (this.EWn.size() > 0)
+    ae.d("MicroMsg.ContactsListArchAdapter", "initData memberContactList.size %d", new Object[] { Integer.valueOf(this.FoI.size()) });
+    this.BJc.clear();
+    if (this.FoI.size() > 0)
     {
-      Iterator localIterator = this.EWn.iterator();
+      Iterator localIterator = this.FoI.iterator();
       while (localIterator.hasNext())
       {
-        am localam = (am)localIterator.next();
-        this.BrD.add(localam);
+        an localan = (an)localIterator.next();
+        this.BJc.add(localan);
       }
     }
-    this.EWs = this.BrD.size();
+    this.FoN = this.BJc.size();
     AppMethodBeat.o(152197);
   }
   
-  public final boolean YU(int paramInt)
+  public final boolean ZA(int paramInt)
   {
     AppMethodBeat.i(152198);
-    if (!this.fRb)
+    if (!this.fTh)
     {
-      YV(paramInt);
+      ZB(paramInt);
       AppMethodBeat.o(152198);
       return true;
     }
@@ -181,174 +179,174 @@ public final class r
     return false;
   }
   
-  public final boolean YW(int paramInt)
+  public final boolean ZC(int paramInt)
   {
-    return paramInt < this.EWs;
+    return paramInt < this.FoN;
   }
   
-  public final void Zd()
+  public final void Zm()
   {
     AppMethodBeat.i(152196);
-    if ((this.dAa == null) && (this.EWn == null))
+    if ((this.dBf == null) && (this.FoI == null))
     {
       AppMethodBeat.o(152196);
       return;
     }
     int i;
-    if (this.EWx) {
-      if (this.dAa != null)
+    if (this.FoS) {
+      if (this.dBf != null)
       {
-        ad.d("MicroMsg.ContactsListArchAdapter", "initData memberList.size %d", new Object[] { Integer.valueOf(this.dAa.size()) });
-        this.BrD.clear();
-        this.EWq.clear();
+        ae.d("MicroMsg.ContactsListArchAdapter", "initData memberList.size %d", new Object[] { Integer.valueOf(this.dBf.size()) });
+        this.BJc.clear();
+        this.FoL.clear();
         Object localObject1 = new LinkedList();
-        if (this.dAa.size() > 0)
+        if (this.dBf.size() > 0)
         {
-          Object localObject2 = this.dAa.iterator();
+          Object localObject2 = this.dBf.iterator();
           i = 1;
           while (((Iterator)localObject2).hasNext())
           {
             String str = (String)((Iterator)localObject2).next();
-            if (this.ruj)
+            if (this.rCv)
             {
-              this.EWq.add(x.a.EWT.aMH(str));
+              this.FoL.add(x.a.Fpn.aOd(str));
             }
             else
             {
-              am localam = ((l)g.ab(l.class)).azp().Bf(str);
-              if ((this.fLO != null) && (str.equals(this.fLO.field_roomowner)))
+              an localan = ((l)g.ab(l.class)).azF().BH(str);
+              if ((this.fNS != null) && (str.equals(this.fNS.field_roomowner)))
               {
-                ((LinkedList)localObject1).add(new b(localam, 0));
+                ((LinkedList)localObject1).add(new b(localan, 0));
               }
-              else if ((this.fLO != null) && (this.fLO.aSH(localam.field_username)))
+              else if ((this.fNS != null) && (this.fNS.aUg(localan.field_username)))
               {
-                ((LinkedList)localObject1).add(new b(localam, i));
+                ((LinkedList)localObject1).add(new b(localan, i));
                 i += 1;
               }
               else
               {
-                ((LinkedList)localObject1).add(new b(localam, 100));
+                ((LinkedList)localObject1).add(new b(localan, 100));
               }
             }
           }
-          if (this.EWD) {
+          if (this.FoY) {
             Collections.sort((List)localObject1, new Comparator() {});
           }
-          if (!this.ruj)
+          if (!this.rCv)
           {
             localObject1 = ((LinkedList)localObject1).iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (b)((Iterator)localObject1).next();
-              this.BrD.add((am)((b)localObject2).EWH);
+              this.BJc.add((an)((b)localObject2).Fpc);
             }
           }
         }
-        if (this.ruj) {
-          this.EWs = this.EWq.size();
+        if (this.rCv) {
+          this.FoN = this.FoL.size();
         }
       }
       else
       {
-        if (this.EWs != 0) {
+        if (this.FoN != 0) {
           break label581;
         }
-        this.EWr = EWl;
+        this.FoM = FoG;
       }
     }
     for (;;)
     {
-      ad.d("MicroMsg.ContactsListArchAdapter", "Number Size  contactSize :" + this.EWs + " realySize : " + this.EWr);
-      cdp();
+      ae.d("MicroMsg.ContactsListArchAdapter", "Number Size  contactSize :" + this.FoN + " realySize : " + this.FoM);
+      ceE();
       AppMethodBeat.o(152196);
       return;
-      if (this.dyF)
+      if (this.dzK)
       {
-        if ((this.fLO != null) && (!this.fLO.YH()))
+        if ((this.fNS != null) && (!this.fNS.YQ()))
         {
-          if (this.BrD.size() >= MAX_COUNT) {}
-          for (i = MAX_COUNT;; i = this.BrD.size())
+          if (this.BJc.size() >= MAX_COUNT) {}
+          for (i = MAX_COUNT;; i = this.BJc.size())
           {
-            this.EWs = i;
+            this.FoN = i;
             break;
           }
         }
-        if (this.BrD.size() >= MAX_COUNT - 1) {}
-        for (i = MAX_COUNT - 1;; i = this.BrD.size())
+        if (this.BJc.size() >= MAX_COUNT - 1) {}
+        for (i = MAX_COUNT - 1;; i = this.BJc.size())
         {
-          this.EWs = i;
+          this.FoN = i;
           break;
         }
       }
-      this.EWs = this.BrD.size();
+      this.FoN = this.BJc.size();
       break;
-      fcG();
+      fgu();
       break;
       label581:
-      if ((this.EWv) && (this.EWu) && (this.EWw)) {
-        this.EWr = (((this.EWs + 2) / EWl + 1) * EWl);
-      } else if (((this.EWv) && (this.EWu) && (!this.EWw)) || ((this.EWv) && (!this.EWu) && (this.EWw)) || ((!this.EWv) && (this.EWu) && (this.EWw))) {
-        this.EWr = (((this.EWs + 1) / EWl + 1) * EWl);
-      } else if (((this.EWv) && (!this.EWu) && (!this.EWw)) || ((!this.EWv) && (this.EWu) && (!this.EWw)) || ((!this.EWv) && (!this.EWu) && (this.EWw))) {
-        this.EWr = ((this.EWs / EWl + 1) * EWl);
-      } else if ((!this.EWv) && (!this.EWu) && (!this.EWw)) {
-        this.EWr = (((this.EWs - 1) / EWl + 1) * EWl);
+      if ((this.FoQ) && (this.FoP) && (this.FoR)) {
+        this.FoM = (((this.FoN + 2) / FoG + 1) * FoG);
+      } else if (((this.FoQ) && (this.FoP) && (!this.FoR)) || ((this.FoQ) && (!this.FoP) && (this.FoR)) || ((!this.FoQ) && (this.FoP) && (this.FoR))) {
+        this.FoM = (((this.FoN + 1) / FoG + 1) * FoG);
+      } else if (((this.FoQ) && (!this.FoP) && (!this.FoR)) || ((!this.FoQ) && (this.FoP) && (!this.FoR)) || ((!this.FoQ) && (!this.FoP) && (this.FoR))) {
+        this.FoM = ((this.FoN / FoG + 1) * FoG);
+      } else if ((!this.FoQ) && (!this.FoP) && (!this.FoR)) {
+        this.FoM = (((this.FoN - 1) / FoG + 1) * FoG);
       }
     }
   }
   
-  public final void aO(ArrayList<am> paramArrayList)
+  public final void aP(ArrayList<an> paramArrayList)
   {
-    this.EWx = false;
-    this.EWn = paramArrayList;
+    this.FoS = false;
+    this.FoI = paramArrayList;
   }
   
-  public final void eo(List<String> paramList)
+  public final void es(List<String> paramList)
   {
     AppMethodBeat.i(152204);
-    fS(paramList);
-    Zd();
+    gb(paramList);
+    Zm();
     AppMethodBeat.o(152204);
   }
   
-  public final void fS(List<String> paramList)
-  {
-    this.EWx = true;
-    this.dAa = paramList;
-  }
-  
-  public final boolean fcF()
+  public final boolean fgt()
   {
     AppMethodBeat.i(152195);
-    if (this.ruj)
+    if (this.rCv)
     {
-      bool = this.EWp;
+      bool = this.FoK;
       AppMethodBeat.o(152195);
       return bool;
     }
-    boolean bool = w.vF(this.username);
+    boolean bool = com.tencent.mm.model.x.wb(this.username);
     AppMethodBeat.o(152195);
     return bool;
   }
   
-  public final void fcH()
+  public final void fgv()
   {
     AppMethodBeat.i(152203);
-    this.fRb = false;
-    Zd();
+    this.fTh = false;
+    Zm();
     AppMethodBeat.o(152203);
+  }
+  
+  public final void gb(List<String> paramList)
+  {
+    this.FoS = true;
+    this.dBf = paramList;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(152205);
-    if (this.EWy)
+    if (this.FoT)
     {
-      i = Math.min(this.EWz, this.EWr);
+      i = Math.min(this.FoU, this.FoM);
       AppMethodBeat.o(152205);
       return i;
     }
-    int i = this.EWr;
+    int i = this.FoM;
     AppMethodBeat.o(152205);
     return i;
   }
@@ -356,15 +354,15 @@ public final class r
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(152206);
-    if (paramInt < this.EWs)
+    if (paramInt < this.FoN)
     {
-      if (this.ruj)
+      if (this.rCv)
       {
-        localObject = this.EWq.get(paramInt);
+        localObject = this.FoL.get(paramInt);
         AppMethodBeat.o(152206);
         return localObject;
       }
-      Object localObject = this.BrD.get(paramInt);
+      Object localObject = this.BJc.get(paramInt);
       AppMethodBeat.o(152206);
       return localObject;
     }
@@ -380,12 +378,12 @@ public final class r
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(152202);
-    am localam = null;
+    an localan = null;
     int i;
-    if (paramInt < this.EWs)
+    if (paramInt < this.FoN)
     {
       i = 0;
-      if (this.ruj) {
+      if (this.rCv) {
         paramViewGroup = getItem(paramInt);
       }
     }
@@ -396,7 +394,7 @@ public final class r
       if (paramView == null)
       {
         localView = View.inflate(this.mContext, 2131495276, null);
-        localc = fU(localView);
+        localc = fT(localView);
       }
       label257:
       label645:
@@ -405,96 +403,96 @@ public final class r
       {
         label58:
         int j;
-        if ((EWl == 4) || (this.EWF))
+        if ((FoG == 4) || (this.Fpa))
         {
           j = this.mContext.getResources().getDimensionPixelSize(2131165510);
-          localc.fSS.getLayoutParams().height = j;
-          localc.fSS.getLayoutParams().width = j;
+          localc.fUY.getLayoutParams().height = j;
+          localc.fUY.getLayoutParams().width = j;
           label113:
-          localc.EWI.setVisibility(8);
-          localc.fSu.setVisibility(8);
+          localc.Fpd.setVisibility(8);
+          localc.fUA.setVisibility(8);
           if (i != 0) {
             break label968;
           }
-          localc.fSS.setVisibility(0);
-          if (!this.dyF) {
+          localc.fUY.setVisibility(0);
+          if (!this.dzK) {
             break label645;
           }
-          if (bt.isNullOrNil(localam.field_conRemark)) {
+          if (bu.isNullOrNil(localan.field_conRemark)) {
             break label615;
           }
-          paramView = localam.field_conRemark;
+          paramView = localan.field_conRemark;
           label171:
           Object localObject = paramView;
-          if (bt.isNullOrNil(paramView)) {
-            localObject = localam.field_conRemark;
+          if (bu.isNullOrNil(paramView)) {
+            localObject = localan.field_conRemark;
           }
           paramView = (View)localObject;
-          if (bt.isNullOrNil((String)localObject)) {
-            paramView = localam.adu();
+          if (bu.isNullOrNil((String)localObject)) {
+            paramView = localan.adF();
           }
-          paramView = k.b(this.mContext, paramView, localc.fOg.getTextSize());
+          paramView = k.b(this.mContext, paramView, localc.fQm.getTextSize());
           label222:
           if (!(paramView instanceof SpannableString)) {
             break label750;
           }
-          localc.fOg.setVisibility(8);
-          localc.fSt.setVisibility(0);
-          localc.fSt.setText(paramView);
-          paramView = com.tencent.mm.openim.room.a.a.H(localam);
+          localc.fQm.setVisibility(8);
+          localc.fUz.setVisibility(0);
+          localc.fUz.setText(paramView);
+          paramView = com.tencent.mm.openim.room.a.a.O(localan);
           if (!TextUtils.isEmpty(paramView)) {
             break label781;
           }
-          localc.fSu.setVisibility(8);
+          localc.fUA.setVisibility(8);
           label280:
-          localc.fSS.setContentDescription("");
-          if (!this.ruj) {
+          localc.fUY.setContentDescription("");
+          if (!this.rCv) {
             break label802;
           }
-          q.aIJ().a(x.a.EWT.dN(paramViewGroup), localc.fSS, this.fSr);
-          localc.fSS.setBackgroundDrawable(null);
+          q.aJb().a(x.a.Fpn.dO(paramViewGroup), localc.fUY, this.fUx);
+          localc.fUY.setBackgroundDrawable(null);
           label331:
-          if (!this.ruj) {
+          if (!this.rCv) {
             break label914;
           }
-          if ((!this.fRb) || ((this.EWA != null) && (this.EWA.equals(x.a.EWT.dO(paramViewGroup))))) {
+          if ((!this.fTh) || ((this.FoV != null) && (this.FoV.equals(x.a.Fpn.dP(paramViewGroup))))) {
             break label901;
           }
-          localc.yJy.setVisibility(0);
+          localc.yZI.setVisibility(0);
         }
         label781:
         label802:
         label1315:
         for (;;)
         {
-          if ((!this.ruj) || (paramViewGroup == null)) {
-            localc.mYk.setVisibility(8);
+          if ((!this.rCv) || (paramViewGroup == null)) {
+            localc.ndr.setVisibility(8);
           }
-          localc.oIb = i;
+          localc.oOD = i;
           AppMethodBeat.o(152202);
           return localView;
-          localam = (am)getItem(paramInt);
+          localan = (an)getItem(paramInt);
           paramViewGroup = null;
           break;
-          if ((paramInt == this.EWs) && (this.EWv))
+          if ((paramInt == this.FoN) && (this.FoQ))
           {
             paramViewGroup = null;
             i = 3;
             break;
           }
-          if ((paramInt == this.EWs + 1) && (this.EWu))
+          if ((paramInt == this.FoN + 1) && (this.FoP))
           {
             paramViewGroup = null;
             i = 4;
             break;
           }
-          if ((paramInt == this.EWs + 1) && (this.EWw) && (!this.EWu))
+          if ((paramInt == this.FoN + 1) && (this.FoR) && (!this.FoP))
           {
             paramViewGroup = null;
             i = 5;
             break;
           }
-          if ((paramInt != this.EWs + 2) || (!this.EWw) || (!this.EWu)) {
+          if ((paramInt != this.FoN + 2) || (!this.FoR) || (!this.FoP)) {
             break label1553;
           }
           paramViewGroup = null;
@@ -504,78 +502,78 @@ public final class r
           if (localc != null) {
             break label1547;
           }
-          localc = fU(paramView);
+          localc = fT(paramView);
           localView = paramView;
           break label58;
           j = this.mContext.getResources().getDimensionPixelSize(2131165508);
-          localc.fSS.getLayoutParams().height = j;
-          localc.fSS.getLayoutParams().width = j;
+          localc.fUY.getLayoutParams().height = j;
+          localc.fUY.getLayoutParams().width = j;
           break label113;
           label615:
-          paramView = localam.field_username;
-          if (this.fLO == null)
+          paramView = localan.field_username;
+          if (this.fNS == null)
           {
             paramView = null;
             break label171;
           }
-          paramView = this.fLO.zf(paramView);
+          paramView = this.fNS.zP(paramView);
           break label171;
-          if (this.ruj)
+          if (this.rCv)
           {
-            paramView = k.b(this.mContext, x.a.EWT.dM(paramViewGroup), localc.fOg.getTextSize());
+            paramView = k.b(this.mContext, x.a.Fpn.dN(paramViewGroup), localc.fQm.getTextSize());
             break label222;
           }
-          if (am.aSQ(localam.field_username))
+          if (an.aUq(localan.field_username))
           {
-            paramView = ((b)g.ab(b.class)).e(aj.getContext(), localam.adv(), (int)localc.fOg.getTextSize());
+            paramView = ((com.tencent.mm.openim.a.a)g.ab(com.tencent.mm.openim.a.a.class)).e(ak.getContext(), localan.adG(), (int)localc.fQm.getTextSize());
             break label222;
           }
-          paramView = k.b(this.mContext, localam.adv(), localc.fOg.getTextSize());
+          paramView = k.b(this.mContext, localan.adG(), localc.fQm.getTextSize());
           break label222;
           label750:
-          localc.fOg.setVisibility(0);
-          localc.fSt.setVisibility(8);
-          localc.fOg.setText(paramView);
+          localc.fQm.setVisibility(0);
+          localc.fUz.setVisibility(8);
+          localc.fQm.setText(paramView);
           break label257;
-          localc.fSu.setVisibility(0);
-          localc.fSu.setText(paramView);
+          localc.fUA.setVisibility(0);
+          localc.fUA.setText(paramView);
           break label280;
-          a.b.c(localc.fSS, localam.field_username);
-          paramView = (com.tencent.mm.pluginsdk.ui.a)localc.fSS.getDrawable();
-          if (this.EWt != null) {
-            this.EWt.a(paramView);
+          a.b.c(localc.fUY, localan.field_username);
+          paramView = (com.tencent.mm.pluginsdk.ui.a)localc.fUY.getDrawable();
+          if (this.FoO != null) {
+            this.FoO.a(paramView);
           }
-          localc.fSS.setTagUsername(localam.field_username);
-          localc.fSS.setTagTalker(this.username);
-          if (w.zk(this.username))
+          localc.fUY.setTagUsername(localan.field_username);
+          localc.fUY.setTagTalker(this.username);
+          if (com.tencent.mm.model.x.zU(this.username))
           {
-            localc.fSS.setTagScene(4);
+            localc.fUY.setTagScene(4);
             break label331;
           }
-          localc.fSS.setTagScene(3);
+          localc.fUY.setTagScene(3);
           break label331;
-          localc.yJy.setVisibility(8);
+          localc.yZI.setVisibility(8);
           continue;
           label1215:
           label1220:
-          if ((this.fRb) && ((this.EWA == null) || (!this.EWA.equals(localam.field_username))))
+          if ((this.fTh) && ((this.FoV == null) || (!this.FoV.equals(localan.field_username))))
           {
-            localc.yJy.setVisibility(0);
+            localc.yZI.setVisibility(0);
           }
           else
           {
-            localc.yJy.setVisibility(8);
+            localc.yZI.setVisibility(8);
             continue;
             label968:
             if (i == 3)
             {
-              paramView = localc.fOg;
+              paramView = localc.fQm;
               if (paramInt == 0)
               {
                 j = 8;
                 label988:
                 paramView.setVisibility(j);
-                paramView = localc.fSt;
+                paramView = localc.fUz;
                 if (paramInt != 0) {
                   break label1047;
                 }
@@ -583,33 +581,33 @@ public final class r
               for (paramInt = 8;; paramInt = 4)
               {
                 paramView.setVisibility(paramInt);
-                localc.yJy.setVisibility(8);
-                if (!this.fRb) {
+                localc.yZI.setVisibility(8);
+                if (!this.fTh) {
                   break label1052;
                 }
-                localc.fSS.setVisibility(4);
+                localc.fUY.setVisibility(4);
                 break;
                 j = 4;
                 break label988;
               }
-              localc.fSS.setVisibility(0);
-              if (this.ruj)
+              localc.fUY.setVisibility(0);
+              if (this.rCv)
               {
-                q.aIJ().a("", localc.fSS, this.fSr);
-                localc.fSS.setBackgroundDrawable(null);
+                q.aJb().a("", localc.fUY, this.fUx);
+                localc.fUY.setBackgroundDrawable(null);
               }
-              localc.fSS.setImageResource(2131231164);
-              localc.fSS.setContentDescription(this.mContext.getString(2131755156));
+              localc.fUY.setImageResource(2131231164);
+              localc.fUY.setContentDescription(this.mContext.getString(2131755156));
             }
             else if (i == 4)
             {
-              paramView = localc.fOg;
+              paramView = localc.fQm;
               if (1 == paramInt)
               {
                 j = 8;
                 label1148:
                 paramView.setVisibility(j);
-                paramView = localc.fSt;
+                paramView = localc.fUz;
                 if (1 != paramInt) {
                   break label1215;
                 }
@@ -617,32 +615,32 @@ public final class r
               for (paramInt = 8;; paramInt = 4)
               {
                 paramView.setVisibility(paramInt);
-                localc.yJy.setVisibility(8);
-                if ((!this.fRb) && (this.EWs != 0)) {
+                localc.yZI.setVisibility(8);
+                if ((!this.fTh) && (this.FoN != 0)) {
                   break label1220;
                 }
-                localc.fSS.setVisibility(4);
+                localc.fUY.setVisibility(4);
                 break;
                 j = 4;
                 break label1148;
               }
-              localc.fSS.setVisibility(0);
-              if (this.ruj)
+              localc.fUY.setVisibility(0);
+              if (this.rCv)
               {
-                q.aIJ().a("", localc.fSS, this.fSr);
-                localc.fSS.setBackgroundDrawable(null);
+                q.aJb().a("", localc.fUY, this.fUx);
+                localc.fUY.setBackgroundDrawable(null);
               }
-              localc.fSS.setImageResource(2131231165);
-              localc.fSS.setContentDescription(this.mContext.getString(2131758028));
+              localc.fUY.setImageResource(2131231165);
+              localc.fUY.setContentDescription(this.mContext.getString(2131758028));
             }
             else if (i == 5)
             {
-              paramView = localc.fOg;
+              paramView = localc.fQm;
               if (paramInt == 0)
               {
                 j = 8;
                 paramView.setVisibility(j);
-                paramView = localc.fSt;
+                paramView = localc.fUz;
                 if (paramInt != 0) {
                   break label1374;
                 }
@@ -651,36 +649,36 @@ public final class r
               for (paramInt = 8;; paramInt = 4)
               {
                 paramView.setVisibility(paramInt);
-                localc.yJy.setVisibility(8);
-                if (!this.fRb) {
+                localc.yZI.setVisibility(8);
+                if (!this.fTh) {
                   break label1379;
                 }
-                localc.fSS.setVisibility(4);
+                localc.fUY.setVisibility(4);
                 break;
                 j = 4;
                 break label1315;
               }
               label1379:
-              localc.fSS.setVisibility(0);
-              if (this.ruj)
+              localc.fUY.setVisibility(0);
+              if (this.rCv)
               {
-                q.aIJ().a("", localc.fSS, this.fSr);
-                localc.fSS.setBackgroundDrawable(null);
+                q.aJb().a("", localc.fUY, this.fUx);
+                localc.fUY.setBackgroundDrawable(null);
               }
-              localc.fSS.setImageResource(2131231166);
-              localc.fSS.setContentDescription(this.mContext.getString(2131761336));
+              localc.fUY.setImageResource(2131231166);
+              localc.fUY.setContentDescription(this.mContext.getString(2131761336));
             }
             else if (i == 2)
             {
-              if (this.ruj) {
-                q.aIJ().a("", localc.fSS, this.fSr);
+              if (this.rCv) {
+                q.aJb().a("", localc.fUY, this.fUx);
               }
-              localc.fOg.setVisibility(4);
-              localc.fSt.setVisibility(4);
-              localc.yJy.setVisibility(8);
-              localc.fSS.setVisibility(4);
-              localc.fSS.setImageResource(2131233299);
-              localc.fSS.setBackgroundResource(2131233299);
+              localc.fQm.setVisibility(4);
+              localc.fUz.setVisibility(4);
+              localc.yZI.setVisibility(8);
+              localc.fUY.setVisibility(4);
+              localc.fUY.setImageResource(2131233299);
+              localc.fUY.setBackgroundResource(2131233299);
             }
           }
         }
@@ -700,44 +698,44 @@ public final class r
   {
     AppMethodBeat.i(152194);
     this.username = paramString;
-    this.dyF = w.vF(paramString);
-    if ((!this.dyF) && (x.a.EWT != null)) {
-      this.ruj = x.a.EWT.aMG(paramString);
+    this.dzK = com.tencent.mm.model.x.wb(paramString);
+    if ((!this.dzK) && (x.a.Fpn != null)) {
+      this.rCv = x.a.Fpn.aOc(paramString);
     }
-    if (!this.ruj) {
-      this.fLO = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AN(paramString);
+    if (!this.rCv) {
+      this.fNS = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(paramString);
     }
-    fcE();
+    fgs();
     AppMethodBeat.o(152194);
   }
   
   public static abstract interface a
   {
-    public abstract void cdp();
+    public abstract void ceE();
   }
   
   final class b
   {
-    public Object EWH;
+    public Object Fpc;
     public int order;
     
     public b(Object paramObject, int paramInt)
     {
-      this.EWH = paramObject;
+      this.Fpc = paramObject;
       this.order = paramInt;
     }
   }
   
   final class c
   {
-    public ImageView EWI;
-    public TextView fOg;
-    public AvatarPatTipImageView fSS;
-    public TextView fSt;
-    public TextView fSu;
-    public ImageView mYk;
-    public int oIb;
-    public ImageView yJy;
+    public ImageView Fpd;
+    public TextView fQm;
+    public TextView fUA;
+    public AvatarPatTipImageView fUY;
+    public TextView fUz;
+    public ImageView ndr;
+    public int oOD;
+    public ImageView yZI;
     
     c() {}
   }

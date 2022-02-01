@@ -7,11 +7,11 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
@@ -28,12 +28,12 @@ public class r
     Intent localIntent = new Intent();
     String str3 = ((g)paramb.chg).getUrl();
     localIntent.putExtra("req_url", str3);
-    String str2 = ((g)paramb.chg).DOL.getAppId();
+    String str2 = ((g)paramb.chg).EgL.getAppId();
     String str1 = str2;
-    if (bt.isNullOrNil(str2))
+    if (bu.isNullOrNil(str2))
     {
       str1 = str2;
-      if (!bt.isNullOrNil(str3))
+      if (!bu.isNullOrNil(str3))
       {
         str1 = str2;
         if (Uri.parse(str3).getHost().equals("game.weixin.qq.com")) {
@@ -53,16 +53,16 @@ public class r
           ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(null);
           if ((paramAnonymousInt2 == -1) && (paramAnonymousIntent != null))
           {
-            String str1 = bt.bI(paramAnonymousIntent.getStringExtra("nationalCode"), "");
-            String str2 = bt.bI(paramAnonymousIntent.getStringExtra("userName"), "");
-            String str3 = bt.bI(paramAnonymousIntent.getStringExtra("telNumber"), "");
-            String str4 = bt.bI(paramAnonymousIntent.getStringExtra("addressPostalCode"), "");
-            String str5 = bt.bI(paramAnonymousIntent.getStringExtra("proviceFirstStageName"), "");
-            String str6 = bt.bI(paramAnonymousIntent.getStringExtra("addressCitySecondStageName"), "");
-            String str7 = bt.bI(paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName"), "");
-            paramAnonymousIntent = bt.bI(paramAnonymousIntent.getStringExtra("addressDetailInfo"), "");
-            ad.i("MicroMsg.JsApiEditAddress", "first =  " + str5 + " ; detail =" + paramAnonymousIntent + "; second = " + str6 + " ; tel = " + str3 + "; third = " + str7);
-            if (!bt.isNullOrNil(str2))
+            String str1 = bu.bI(paramAnonymousIntent.getStringExtra("nationalCode"), "");
+            String str2 = bu.bI(paramAnonymousIntent.getStringExtra("userName"), "");
+            String str3 = bu.bI(paramAnonymousIntent.getStringExtra("telNumber"), "");
+            String str4 = bu.bI(paramAnonymousIntent.getStringExtra("addressPostalCode"), "");
+            String str5 = bu.bI(paramAnonymousIntent.getStringExtra("proviceFirstStageName"), "");
+            String str6 = bu.bI(paramAnonymousIntent.getStringExtra("addressCitySecondStageName"), "");
+            String str7 = bu.bI(paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName"), "");
+            paramAnonymousIntent = bu.bI(paramAnonymousIntent.getStringExtra("addressDetailInfo"), "");
+            ae.i("MicroMsg.JsApiEditAddress", "first =  " + str5 + " ; detail =" + paramAnonymousIntent + "; second = " + str6 + " ; tel = " + str3 + "; third = " + str7);
+            if (!bu.isNullOrNil(str2))
             {
               HashMap localHashMap = new HashMap();
               localHashMap.put("nationalCode", str1);
@@ -73,7 +73,7 @@ public class r
               localHashMap.put("addressCitySecondStageName", str6);
               localHashMap.put("addressCountiesThirdStageName", str7);
               localHashMap.put("addressDetailInfo", paramAnonymousIntent);
-              paramb.d("", localHashMap);
+              paramb.e("", localHashMap);
               AppMethodBeat.o(175741);
               return;
             }
@@ -93,7 +93,7 @@ public class r
     AppMethodBeat.o(175742);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

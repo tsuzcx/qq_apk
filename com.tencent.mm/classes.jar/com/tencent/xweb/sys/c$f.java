@@ -9,10 +9,10 @@ import java.util.Map;
 public final class c$f
   implements com.tencent.xweb.WebResourceRequest
 {
-  private Map<String, String> EQK;
-  private boolean MtT;
-  private boolean MtU;
-  a MtV;
+  private Map<String, String> Fjf;
+  private boolean MQX;
+  private boolean MQY;
+  a MQZ;
   private String method;
   private Uri url;
   
@@ -22,11 +22,11 @@ public final class c$f
     if (Build.VERSION.SDK_INT >= 21)
     {
       this.url = paramWebResourceRequest.getUrl();
-      this.MtT = paramWebResourceRequest.isForMainFrame();
-      this.MtU = paramWebResourceRequest.hasGesture();
+      this.MQX = paramWebResourceRequest.isForMainFrame();
+      this.MQY = paramWebResourceRequest.hasGesture();
       this.method = paramWebResourceRequest.getMethod();
-      this.EQK = paramWebResourceRequest.getRequestHeaders();
-      this.MtV = new a(this);
+      this.Fjf = paramWebResourceRequest.getRequestHeaders();
+      this.MQZ = new a(this);
     }
     AppMethodBeat.o(153666);
   }
@@ -38,7 +38,7 @@ public final class c$f
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.EQK;
+    return this.Fjf;
   }
   
   public final Uri getUrl()
@@ -48,12 +48,12 @@ public final class c$f
   
   public final boolean hasGesture()
   {
-    return this.MtU;
+    return this.MQY;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.MtT;
+    return this.MQX;
   }
 }
 

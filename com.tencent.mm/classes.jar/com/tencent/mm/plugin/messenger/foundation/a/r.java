@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.kernel.b.a;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.model.am;
 import com.tencent.mm.model.an;
-import com.tencent.mm.model.cd;
 
 public abstract interface r
-  extends a
+  extends a, an
 {
-  public abstract b getBizTimeLineCallback();
+  public abstract void ak(String paramString1, String paramString2);
   
-  public abstract cd getSysCmdMsgExtension();
+  public abstract am wl(String paramString);
   
-  public abstract boolean ifAddTicketByActionFlag(String paramString);
+  public abstract am wm(String paramString);
   
-  public abstract void setBizTimeLineCallback(b paramb);
+  public abstract void wr(String paramString);
   
-  public abstract void setEnSendMsgActionFlag(int paramInt);
+  public abstract void ws(String paramString);
   
-  public abstract void setIDataTransferFactoryDelegate(an paraman);
+  public abstract void wt(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.r
  * JD-Core Version:    0.7.0.1
  */

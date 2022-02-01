@@ -6,22 +6,22 @@ import java.util.Arrays;
 public final class b
   extends s.a.a<b>
 {
-  public int[] Mcz;
+  public int[] Mzu;
   
   public b(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.Mcz = paramArrayOfInt;
+    this.Mzu = paramArrayOfInt;
   }
   
   private int a(b paramb)
   {
     int k = 0;
-    int m = this.Mcz.length;
-    int i = paramb.Mcz.length;
+    int m = this.Mzu.length;
+    int i = paramb.Mzu.length;
     if (m != i)
     {
-      i = c.kY(m, i);
+      i = c.lf(m, i);
       return i;
     }
     int j = 0;
@@ -31,8 +31,8 @@ public final class b
       if (j >= m) {
         break;
       }
-      if (this.Mcz[j] != paramb.Mcz[j]) {
-        return c.kY(this.Mcz[j], paramb.Mcz[j]);
+      if (this.Mzu[j] != paramb.Mzu[j]) {
+        return c.lf(this.Mzu[j], paramb.Mzu[j]);
       }
       j += 1;
     }
@@ -49,7 +49,7 @@ public final class b
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.Mcz);
+    return Arrays.hashCode(this.Mzu);
   }
 }
 

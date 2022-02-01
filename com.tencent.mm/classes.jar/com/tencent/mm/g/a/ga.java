@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bq.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class ga
   extends b
 {
-  public a dry;
-  public b drz;
+  public a dsz;
   
   public ga()
   {
@@ -16,32 +16,26 @@ public final class ga
   
   private ga(byte paramByte)
   {
-    AppMethodBeat.i(116808);
-    this.dry = new a();
-    this.drz = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116022);
+    this.dsz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116808);
+    AppMethodBeat.o(116022);
   }
   
   public static final class a
   {
-    public int action;
-    public long bqh;
-    public long drA;
-    public long drB;
-  }
-  
-  public static final class b
-  {
-    public String drC;
-    public boolean drD = false;
-    public int drE;
+    public boolean dsA;
+    public boolean dsB;
+    public int dsC;
+    public bq.a dsD;
+    public int type;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ga
  * JD-Core Version:    0.7.0.1
  */

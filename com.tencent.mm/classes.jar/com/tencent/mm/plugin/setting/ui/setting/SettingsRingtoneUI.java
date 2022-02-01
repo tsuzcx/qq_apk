@@ -24,9 +24,9 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.n.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.s.b;
 import java.lang.reflect.Field;
@@ -36,12 +36,12 @@ public class SettingsRingtoneUI
   implements AdapterView.OnItemClickListener, Runnable
 {
   private Cursor Tc;
-  private ap mHandler;
-  private RingtoneManager yIH;
-  LayoutInflater yII;
-  private int yIJ = -1;
-  private int yIK = -1;
-  private Ringtone yIL;
+  private aq mHandler;
+  private RingtoneManager yYR;
+  LayoutInflater yYS;
+  private int yYT = -1;
+  private int yYU = -1;
+  private Ringtone yYV;
   
   public int getLayoutId()
   {
@@ -52,12 +52,12 @@ public class SettingsRingtoneUI
   {
     AppMethodBeat.i(74366);
     super.onCreate(paramBundle);
-    this.mHandler = new ap();
-    this.yII = LayoutInflater.from(this);
-    this.yIH = new RingtoneManager(this);
-    this.yIH.setType(2);
+    this.mHandler = new aq();
+    this.yYS = LayoutInflater.from(this);
+    this.yYR = new RingtoneManager(this);
+    this.yYR.setType(2);
     setVolumeControlStream(5);
-    this.yIL = RingtoneManager.getRingtone(this, RingtoneManager.getDefaultUri(2));
+    this.yYV = RingtoneManager.getRingtone(this, RingtoneManager.getDefaultUri(2));
     setMMTitle(2131763335);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -75,37 +75,37 @@ public class SettingsRingtoneUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(74361);
-        SharedPreferences.Editor localEditor = SettingsRingtoneUI.this.getSharedPreferences(aj.fkC(), 0).edit();
-        paramAnonymousMenuItem = f.gek;
+        SharedPreferences.Editor localEditor = SettingsRingtoneUI.this.getSharedPreferences(ak.fow(), 0).edit();
+        paramAnonymousMenuItem = f.ggs;
         if (SettingsRingtoneUI.a(SettingsRingtoneUI.this) != 0)
         {
           Object localObject = SettingsRingtoneUI.a(SettingsRingtoneUI.this, SettingsRingtoneUI.a(SettingsRingtoneUI.this));
-          ad.d("RingtonePickerActivity", "set ringtone to ".concat(String.valueOf(localObject)));
+          ae.d("RingtonePickerActivity", "set ringtone to ".concat(String.valueOf(localObject)));
           if (localObject != null)
           {
             paramAnonymousMenuItem = ((Uri)localObject).toString();
             localObject = SettingsRingtoneUI.a(SettingsRingtoneUI.this, (Uri)localObject);
             localEditor.putString("settings.ringtone.name", (String)localObject);
-            ad.d("RingtonePickerActivity", "ringtone name: ".concat(String.valueOf(localObject)));
+            ae.d("RingtonePickerActivity", "ringtone name: ".concat(String.valueOf(localObject)));
           }
         }
         for (;;)
         {
           localEditor.commit();
-          f.vy(paramAnonymousMenuItem);
+          f.vU(paramAnonymousMenuItem);
           SettingsRingtoneUI.this.finish();
           AppMethodBeat.o(74361);
           return true;
-          paramAnonymousMenuItem = f.gek;
+          paramAnonymousMenuItem = f.ggs;
           localEditor.putString("settings.ringtone.name", SettingsRingtoneUI.this.getString(2131763334));
-          ad.d("RingtonePickerActivity", "set ringtone follow system");
+          ae.d("RingtonePickerActivity", "set ringtone follow system");
           continue;
-          paramAnonymousMenuItem = f.gek;
+          paramAnonymousMenuItem = f.ggs;
           localEditor.putString("settings.ringtone.name", SettingsRingtoneUI.this.getString(2131763334));
-          ad.d("RingtonePickerActivity", "set ringtone follow system");
+          ae.d("RingtonePickerActivity", "set ringtone follow system");
         }
       }
-    }, null, s.b.JbS);
+    }, null, s.b.JwA);
     paramBundle = (ListView)findViewById(2131304668);
     Object localObject = new View(this);
     int i = getResources().getDimensionPixelSize(2131165480);
@@ -116,36 +116,36 @@ public class SettingsRingtoneUI
     localView.setClickable(false);
     paramBundle.addHeaderView((View)localObject);
     paramBundle.addFooterView(localView);
-    this.Tc = this.yIH.getCursor();
+    this.Tc = this.yYR.getCursor();
     paramBundle.setAdapter(new a(this.Tc));
     paramBundle.setItemsCanFocus(false);
     paramBundle.setOnItemClickListener(this);
-    localObject = f.abP();
-    if (localObject != f.gek)
+    localObject = f.abY();
+    if (localObject != f.ggs)
     {
       localObject = Uri.parse((String)localObject);
-      i = this.yIH.getRingtonePosition((Uri)localObject);
+      i = this.yYR.getRingtonePosition((Uri)localObject);
       if (i >= 0)
       {
         i += 2;
-        this.yIJ = i;
-        if (this.yIJ == 1)
+        this.yYT = i;
+        if (this.yYT == 1)
         {
-          getSharedPreferences(aj.fkC(), 0).edit().putString("settings.ringtone.name", getString(2131763334)).commit();
-          ad.d("RingtonePickerActivity", "set ringtone follow system");
+          getSharedPreferences(ak.fow(), 0).edit().putString("settings.ringtone.name", getString(2131763334)).commit();
+          ae.d("RingtonePickerActivity", "set ringtone follow system");
         }
-        this.yIK = (this.yIJ - 1);
+        this.yYU = (this.yYT - 1);
       }
     }
     for (;;)
     {
-      paramBundle.setItemChecked(this.yIJ, true);
-      paramBundle.setSelection(this.yIJ);
+      paramBundle.setItemChecked(this.yYT, true);
+      paramBundle.setSelection(this.yYT);
       AppMethodBeat.o(74366);
       return;
       i = 1;
       break;
-      this.yIJ = 1;
+      this.yYT = 1;
     }
   }
   
@@ -158,7 +158,7 @@ public class SettingsRingtoneUI
       this.Tc.close();
       this.Tc = null;
     }
-    RingtoneManager localRingtoneManager = this.yIH;
+    RingtoneManager localRingtoneManager = this.yYR;
     if (localRingtoneManager != null) {}
     try
     {
@@ -187,11 +187,11 @@ public class SettingsRingtoneUI
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsRingtoneUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsRingtoneUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
     this.mHandler.removeCallbacks(this);
-    this.yIK = (paramInt - 1);
+    this.yYU = (paramInt - 1);
     this.mHandler.postDelayed(this, 300L);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsRingtoneUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(74367);
@@ -214,7 +214,7 @@ public class SettingsRingtoneUI
   public void onStop()
   {
     AppMethodBeat.i(74369);
-    this.yIH.stopPreviousRingtone();
+    this.yYR.stopPreviousRingtone();
     super.onStop();
     AppMethodBeat.o(74369);
   }
@@ -233,8 +233,8 @@ public class SettingsRingtoneUI
       AppMethodBeat.o(74368);
       return;
     }
-    if (this.yIK == 0) {}
-    for (Ringtone localRingtone = this.yIL;; localRingtone = this.yIH.getRingtone(this.yIK - 1))
+    if (this.yYU == 0) {}
+    for (Ringtone localRingtone = this.yYV;; localRingtone = this.yYR.getRingtone(this.yYU - 1))
     {
       if (localRingtone == null) {
         break label78;
@@ -247,7 +247,7 @@ public class SettingsRingtoneUI
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("RingtonePickerActivity", localException, "play ringtone error", new Object[0]);
+        ae.printErrStackTrace("RingtonePickerActivity", localException, "play ringtone error", new Object[0]);
       }
     }
     label78:
@@ -258,7 +258,7 @@ public class SettingsRingtoneUI
     extends BaseAdapter
   {
     int count;
-    Cursor dqD;
+    Cursor drI;
     int padding;
     
     public a(Cursor paramCursor)
@@ -266,9 +266,9 @@ public class SettingsRingtoneUI
       AppMethodBeat.i(74362);
       this.count = 0;
       this.padding = 0;
-      this.dqD = paramCursor;
+      this.drI = paramCursor;
       this.count = (paramCursor.getCount() + 1);
-      ad.d("RingtonePickerActivity", "count = " + this.count);
+      ae.d("RingtonePickerActivity", "count = " + this.count);
       this.padding = SettingsRingtoneUI.this.getResources().getDimensionPixelSize(2131165516);
       AppMethodBeat.o(74362);
     }
@@ -276,12 +276,12 @@ public class SettingsRingtoneUI
     private String getItem(int paramInt)
     {
       AppMethodBeat.i(74364);
-      if ((this.dqD.isClosed()) || (!this.dqD.moveToPosition(paramInt - 1)))
+      if ((this.drI.isClosed()) || (!this.drI.moveToPosition(paramInt - 1)))
       {
         AppMethodBeat.o(74364);
         return "";
       }
-      String str = this.dqD.getString(this.dqD.getColumnIndex("title"));
+      String str = this.drI.getString(this.drI.getColumnIndex("title"));
       AppMethodBeat.o(74364);
       return str;
     }
@@ -299,7 +299,7 @@ public class SettingsRingtoneUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(74363);
-      paramView = (CheckedTextView)SettingsRingtoneUI.this.yII.inflate(2131495345, null);
+      paramView = (CheckedTextView)SettingsRingtoneUI.this.yYS.inflate(2131495345, null);
       if (paramInt == 0)
       {
         paramView.setBackgroundResource(2131231818);

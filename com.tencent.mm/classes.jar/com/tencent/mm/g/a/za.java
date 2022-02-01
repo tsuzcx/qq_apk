@@ -2,13 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class za
   extends b
 {
-  public a dNX;
-  public b dNY;
+  public a dOZ;
+  public b dPa;
   
   public za()
   {
@@ -17,33 +16,24 @@ public final class za
   
   private za(byte paramByte)
   {
-    AppMethodBeat.i(91234);
-    this.dNX = new a();
-    this.dNY = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116058);
+    this.dOZ = new a();
+    this.dPa = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91234);
+    AppMethodBeat.o(116058);
   }
   
   public static final class a
   {
-    public int action;
-    public String content;
-    public int dNZ;
-    public long dmV;
+    public String dPb;
   }
   
   public static final class b
   {
-    public int dNZ;
-    public long dOa;
-    public String dOb;
-    public List dOc;
-    public byte[] dOd;
-    public byte[] dOe;
-    public String dOf;
-    public String dOg;
-    public long dmV;
+    public int dPc = -1;
+    public int dPd = -1;
+    public int dPe = -1;
   }
 }
 

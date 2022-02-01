@@ -20,17 +20,17 @@ public class AudioInfo
   
   public AudioInfo clone()
   {
-    AppMethodBeat.i(218146);
+    AppMethodBeat.i(214786);
     AudioInfo localAudioInfo = new AudioInfo(this.sampleRate, this.channelCount, this.pcmEncoding);
-    AppMethodBeat.o(218146);
+    AppMethodBeat.o(214786);
     return localAudioInfo;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(218147);
+    AppMethodBeat.i(214787);
     String str = "AudioInfo{sampleRate=" + this.sampleRate + ", channelCount=" + this.channelCount + ", pcmEncoding=" + this.pcmEncoding + '}';
-    AppMethodBeat.o(218147);
+    AppMethodBeat.o(214787);
     return str;
   }
 }

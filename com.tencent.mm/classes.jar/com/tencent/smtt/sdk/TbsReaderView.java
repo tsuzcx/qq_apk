@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.b.c;
+import com.tencent.smtt.sdk.c.c;
 import com.tencent.smtt.utils.Apn;
 
 public class TbsReaderView
@@ -193,8 +193,8 @@ public class TbsReaderView
     AppMethodBeat.i(55482);
     if (!f)
     {
-      e.a(true).a(paramContext.getApplicationContext(), true, false, null);
-      f = e.a(false).b();
+      g.a(true).a(paramContext.getApplicationContext(), true, false, null);
+      f = g.a(false).b();
     }
     new StringBuilder("gInitSdk:").append(f);
     boolean bool = f;

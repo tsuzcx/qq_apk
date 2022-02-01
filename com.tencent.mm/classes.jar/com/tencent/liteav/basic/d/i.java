@@ -14,21 +14,21 @@ public class i
   public i()
   {
     super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
-    AppMethodBeat.i(187289);
+    AppMethodBeat.i(221418);
     this.s = new float[16];
     this.r = false;
     this.o = true;
-    AppMethodBeat.o(187289);
+    AppMethodBeat.o(221418);
   }
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    AppMethodBeat.i(187291);
+    AppMethodBeat.i(221420);
     GLES20.glUseProgram(this.a);
     k();
     if ((!m()) || (this.s == null))
     {
-      AppMethodBeat.o(187291);
+      AppMethodBeat.o(221420);
       return;
     }
     paramFloatBuffer1.position(0);
@@ -48,7 +48,7 @@ public class i
     GLES20.glDisableVertexAttribArray(this.b);
     GLES20.glDisableVertexAttribArray(this.d);
     GLES20.glBindTexture(36197, 0);
-    AppMethodBeat.o(187291);
+    AppMethodBeat.o(221420);
   }
   
   public void a(float[] paramArrayOfFloat)
@@ -58,15 +58,15 @@ public class i
   
   public boolean b()
   {
-    AppMethodBeat.i(187290);
+    AppMethodBeat.i(221419);
     boolean bool = super.b();
     this.t = GLES20.glGetUniformLocation(this.a, "textureTransform");
     if ((bool) && (GLES20.glGetError() == 0))
     {
-      AppMethodBeat.o(187290);
+      AppMethodBeat.o(221419);
       return true;
     }
-    AppMethodBeat.o(187290);
+    AppMethodBeat.o(221419);
     return false;
   }
 }

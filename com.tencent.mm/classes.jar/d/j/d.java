@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Random", "Lkotlin/random/Random;", "seed", "", "", "boundsErrorMessage", "", "from", "", "until", "checkRangeBounds", "", "", "fastLog2", "value", "nextInt", "range", "Lkotlin/ranges/IntRange;", "nextLong", "Lkotlin/ranges/LongRange;", "takeUpperBits", "bitCount", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Random", "Lkotlin/random/Random;", "seed", "", "", "boundsErrorMessage", "", "from", "", "until", "checkRangeBounds", "", "", "fastLog2", "value", "nextInt", "range", "Lkotlin/ranges/IntRange;", "nextLong", "Lkotlin/ranges/LongRange;", "takeUpperBits", "bitCount", "kotlin-stdlib"})
 public final class d
 {
-  public static final c Fv(long paramLong)
+  public static final c FX(long paramLong)
   {
     AppMethodBeat.i(129568);
     c localc = (c)new e((int)paramLong, (int)(paramLong >> 32));
@@ -15,7 +15,7 @@ public final class d
     return localc;
   }
   
-  public static final String T(Object paramObject1, Object paramObject2)
+  public static final String S(Object paramObject1, Object paramObject2)
   {
     AppMethodBeat.i(129569);
     p.h(paramObject1, "from");
@@ -25,7 +25,7 @@ public final class d
     return paramObject1;
   }
   
-  public static final int ln(int paramInt1, int paramInt2)
+  public static final int lu(int paramInt1, int paramInt2)
   {
     return paramInt1 >>> 32 - paramInt2 & -paramInt2 >> 31;
   }

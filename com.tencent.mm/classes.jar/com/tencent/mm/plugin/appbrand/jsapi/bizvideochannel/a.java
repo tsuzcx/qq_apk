@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiEventOnUpdateChannelFeeds;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "success", "", "channelFeedsData", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiEventOnUpdateChannelFeeds;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "success", "", "channelFeedsData", "", "Companion", "plugin-appbrand-integration_release"})
 public final class a
   extends at
 {
   public static final int CTRL_INDEX = 767;
   public static final String NAME = "onUpdateChannelFeeds";
-  public static final a kCM;
+  public static final a kGb;
   
   static
   {
     AppMethodBeat.i(175134);
-    kCM = new a((byte)0);
+    kGb = new a((byte)0);
     AppMethodBeat.o(175134);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiEventOnUpdateChannelFeeds$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiEventOnUpdateChannelFeeds$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

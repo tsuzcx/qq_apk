@@ -7,19 +7,23 @@ import com.tencent.mm.sdk.e.k.a;
 public abstract interface c
   extends a
 {
-  public abstract void aie(String paramString);
+  public abstract void ajb(String paramString);
   
-  public abstract int aif(String paramString);
+  public abstract int ajc(String paramString);
   
-  public abstract boolean amB(String paramString);
+  public abstract String aje(String paramString);
   
-  public abstract int daD();
+  public abstract boolean anA(String paramString);
   
-  public abstract String daE();
+  public abstract int ddp();
   
-  public abstract long daF();
+  public abstract String ddq();
   
-  public abstract d daG();
+  public abstract long ddr();
+  
+  public abstract d dds();
+  
+  public abstract boolean gt(String paramString1, String paramString2);
   
   public abstract void l(k.a parama);
   
@@ -27,7 +31,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.a.c
  * JD-Core Version:    0.7.0.1
  */

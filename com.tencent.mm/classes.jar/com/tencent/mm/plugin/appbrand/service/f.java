@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.appbrand.api.c;
 public abstract interface f
   extends a
 {
-  public abstract String KJ(String paramString);
+  public abstract String Lj(String paramString);
   
   public abstract Pair<Integer, String> a(Context paramContext, WXLaunchWxaRedirectingPage.Req paramReq, String paramString1, String paramString2, String paramString3);
   
@@ -20,17 +20,19 @@ public abstract interface f
   
   public abstract <T extends Parcelable> void a(String paramString, T paramT);
   
-  public abstract void aYx();
+  public abstract void aYS();
   
-  public abstract void aYy();
+  public abstract void aYT();
   
-  public abstract void aYz();
+  public abstract void aYU();
   
-  public abstract Pair<String, Integer> rO(int paramInt);
+  public abstract void aYV();
+  
+  public abstract Pair<String, Integer> rR(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.f
  * JD-Core Version:    0.7.0.1
  */

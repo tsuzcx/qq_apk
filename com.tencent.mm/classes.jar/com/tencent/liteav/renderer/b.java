@@ -35,19 +35,19 @@ class b
   
   private void f()
   {
-    AppMethodBeat.i(187387);
+    AppMethodBeat.i(221516);
     try
     {
       a locala = (a)this.a.get();
       if (locala != null) {
         locala.a(this);
       }
-      AppMethodBeat.o(187387);
+      AppMethodBeat.o(221516);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(187387);
+      AppMethodBeat.o(221516);
     }
   }
   
@@ -71,7 +71,7 @@ class b
   
   private boolean h()
   {
-    AppMethodBeat.i(187388);
+    AppMethodBeat.i(221517);
     try
     {
       if (this.a != null)
@@ -80,14 +80,14 @@ class b
         if (locala != null)
         {
           boolean bool = locala.c();
-          AppMethodBeat.o(187388);
+          AppMethodBeat.o(221517);
           return bool;
         }
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(187388);
+      AppMethodBeat.o(221517);
     }
     return false;
   }
@@ -120,11 +120,11 @@ class b
   
   private void k()
   {
-    AppMethodBeat.i(187389);
+    AppMethodBeat.i(221518);
     Object localObject = (a)this.a.get();
     if (localObject == null)
     {
-      AppMethodBeat.o(187389);
+      AppMethodBeat.o(221518);
       return;
     }
     localObject = ((a)localObject).d();
@@ -138,7 +138,7 @@ class b
       {
         TXCLog.w("TXCVideoRenderThread", "vrender: init egl share context " + this.h + ", create context" + a());
         e();
-        AppMethodBeat.o(187389);
+        AppMethodBeat.o(221518);
         return;
         this.f = c.a(null, (android.opengl.EGLContext)this.h, (Surface)localObject, this.c, this.d);
       }
@@ -147,7 +147,7 @@ class b
   
   private void l()
   {
-    AppMethodBeat.i(187390);
+    AppMethodBeat.i(221519);
     TXCLog.w("TXCVideoRenderThread", "vrender: uninit egl " + a());
     if (this.g != null)
     {
@@ -159,26 +159,26 @@ class b
       this.f.c();
       this.f = null;
     }
-    AppMethodBeat.o(187390);
+    AppMethodBeat.o(221519);
   }
   
   public Object a()
   {
-    AppMethodBeat.i(187386);
+    AppMethodBeat.i(221515);
     Object localObject;
     if (this.g != null)
     {
       localObject = this.g.d();
-      AppMethodBeat.o(187386);
+      AppMethodBeat.o(221515);
       return localObject;
     }
     if (this.f != null)
     {
       localObject = this.f.e();
-      AppMethodBeat.o(187386);
+      AppMethodBeat.o(221515);
       return localObject;
     }
-    AppMethodBeat.o(187386);
+    AppMethodBeat.o(221515);
     return null;
   }
   

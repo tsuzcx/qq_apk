@@ -3,7 +3,7 @@ package d.g.a;
 import d.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/functions/Function2;", "P1", "P2", "R", "Lkotlin/Function;", "invoke", "p1", "p2", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/jvm/functions/Function2;", "P1", "P2", "R", "Lkotlin/Function;", "invoke", "p1", "p2", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
 public abstract interface m<P1, P2, R>
   extends c<R>
 {

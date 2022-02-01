@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.tmassistantsdk.util.TMLog;
 
 public class QQDownloaderInstalled
@@ -36,7 +36,7 @@ public class QQDownloaderInstalled
   {
     AppMethodBeat.i(102099);
     TMLog.i("QQDownloaderInstalled", "onReceive!");
-    h.LTJ.aU(new Runnable()
+    h.MqF.aR(new Runnable()
     {
       public void run()
       {
@@ -71,7 +71,7 @@ public class QQDownloaderInstalled
       {
         TMLog.i("QQDownloaderInstalled", "registeReceiver exception!!!");
         this.isRegisted = false;
-        ad.printErrStackTrace("QQDownloaderInstalled", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("QQDownloaderInstalled", paramContext, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102100);
@@ -98,7 +98,7 @@ public class QQDownloaderInstalled
       {
         TMLog.i("QQDownloaderInstalled", "unRegisteReceiver exception!!!");
         this.isRegisted = false;
-        ad.printErrStackTrace("QQDownloaderInstalled", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("QQDownloaderInstalled", paramContext, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102101);

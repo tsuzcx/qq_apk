@@ -14,22 +14,22 @@ import java.util.HashMap;
 public final class c
   implements Comparable<c>
 {
-  private Uri IQN;
-  Uri IQO;
-  File IQP;
-  public File IQQ;
-  boolean IQR;
-  boolean IQS;
-  boolean IQT;
-  int IQU;
-  long IQV;
-  long IQW;
-  private a IQX;
-  HashMap<String, String> IQY;
-  public f IQZ;
-  private e IRa;
-  public b IRb;
-  private d IRc;
+  boolean JlA;
+  boolean JlB;
+  int JlC;
+  long JlD;
+  long JlE;
+  private a JlF;
+  HashMap<String, String> JlG;
+  public f JlH;
+  private e JlI;
+  public b JlJ;
+  private d JlK;
+  private Uri Jlv;
+  Uri Jlw;
+  File Jlx;
+  public File Jly;
+  boolean Jlz;
   boolean mCancelled;
   public long mContentLength;
   int mId;
@@ -37,56 +37,56 @@ public final class c
   
   public c(String paramString)
   {
-    AppMethodBeat.i(211571);
+    AppMethodBeat.i(189002);
     this.mCancelled = false;
-    this.IQR = true;
-    this.IQS = true;
-    this.IQT = false;
-    this.IQU = 0;
-    this.IQV = 0L;
+    this.Jlz = true;
+    this.JlA = true;
+    this.JlB = false;
+    this.JlC = 0;
+    this.JlD = 0L;
     this.mContentLength = -1L;
-    this.IQW = 1000L;
-    this.IQX = a.IRe;
+    this.JlE = 1000L;
+    this.JlF = a.JlM;
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new NullPointerException("uri is invalid!");
-      AppMethodBeat.o(211571);
+      AppMethodBeat.o(189002);
       throw paramString;
     }
     paramString = Uri.parse(paramString);
-    this.IQY = new HashMap();
+    this.JlG = new HashMap();
     this.mState = 2000;
-    this.IQN = paramString;
-    this.IQO = paramString;
-    AppMethodBeat.o(211571);
+    this.Jlv = paramString;
+    this.Jlw = paramString;
+    AppMethodBeat.o(189002);
   }
   
   public final c T(File paramFile)
   {
-    AppMethodBeat.i(211572);
-    this.IQQ = paramFile;
-    this.IQP = new File(paramFile.getAbsolutePath() + ".tmp");
-    AppMethodBeat.o(211572);
+    AppMethodBeat.i(189003);
+    this.Jly = paramFile;
+    this.Jlx = new File(paramFile.getAbsolutePath() + ".tmp");
+    AppMethodBeat.o(189003);
     return this;
   }
   
   final void finish()
   {
-    AppMethodBeat.i(211574);
-    if (this.IRc != null) {
-      this.IRc.f(this);
+    AppMethodBeat.i(189005);
+    if (this.JlK != null) {
+      this.JlK.f(this);
     }
-    AppMethodBeat.o(211574);
+    AppMethodBeat.o(189005);
   }
   
-  final e fun()
+  final e fyo()
   {
-    AppMethodBeat.i(211573);
-    while (this.IRa == null) {
-      this.IRa = new e.a();
+    AppMethodBeat.i(189004);
+    while (this.JlI == null) {
+      this.JlI = new e.a();
     }
-    e locale = this.IRa;
-    AppMethodBeat.o(211573);
+    e locale = this.JlI;
+    AppMethodBeat.o(189004);
     return locale;
   }
   
@@ -94,13 +94,13 @@ public final class c
   {
     static
     {
-      AppMethodBeat.i(211570);
-      IRd = new a("LOW", 0);
-      IRe = new a("NORMAL", 1);
-      IRf = new a("HIGH", 2);
-      IRg = new a("IMMEDIATE", 3);
-      IRh = new a[] { IRd, IRe, IRf, IRg };
-      AppMethodBeat.o(211570);
+      AppMethodBeat.i(189001);
+      JlL = new a("LOW", 0);
+      JlM = new a("NORMAL", 1);
+      JlN = new a("HIGH", 2);
+      JlO = new a("IMMEDIATE", 3);
+      JlP = new a[] { JlL, JlM, JlN, JlO };
+      AppMethodBeat.o(189001);
     }
     
     private a() {}

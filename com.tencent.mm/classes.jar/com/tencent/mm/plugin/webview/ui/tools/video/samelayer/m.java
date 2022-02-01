@@ -7,51 +7,51 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c;
 import com.tencent.mm.plugin.appbrand.jsapi.video.j;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.v;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport;", "", "()V", "videoProfileData", "Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport$VideoProfileData;", "onMediaPlayerCreated", "", "costTime", "", "onMediaPlayerVideoBufferEnd", "onMediaPlayerVideoBufferStart", "onMediaPlayerVideoEnd", "invokeContext", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext;", "mediaPlayer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "onMediaPlayerVideoError", "what", "", "extra", "msg", "", "onMediaPlayerVideoPrepareEnd", "duration", "onMediaPlayerVideoPrepareStart", "onMediaPlayerVideoStop", "onVideoPathChanged", "cachedSize", "videoPath", "reportVideoProfile", "callFrom", "Companion", "VideoProfileData", "plugin-webview_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport;", "", "()V", "videoProfileData", "Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport$VideoProfileData;", "onMediaPlayerCreated", "", "costTime", "", "onMediaPlayerVideoBufferEnd", "onMediaPlayerVideoBufferStart", "onMediaPlayerVideoEnd", "invokeContext", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext;", "mediaPlayer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer;", "onMediaPlayerVideoError", "what", "", "extra", "msg", "", "onMediaPlayerVideoPrepareEnd", "duration", "onMediaPlayerVideoPrepareStart", "onMediaPlayerVideoStop", "onVideoPathChanged", "cachedSize", "videoPath", "reportVideoProfile", "callFrom", "Companion", "VideoProfileData", "plugin-webview_release"})
 public final class m
 {
-  public static final m.a Eqh;
-  final b Eqg;
+  public static final m.a EIx;
+  final b EIw;
   
   static
   {
-    AppMethodBeat.i(207792);
-    Eqh = new m.a((byte)0);
-    AppMethodBeat.o(207792);
+    AppMethodBeat.i(199566);
+    EIx = new m.a((byte)0);
+    AppMethodBeat.o(199566);
   }
   
   public m()
   {
-    AppMethodBeat.i(207791);
-    this.Eqg = new b();
-    AppMethodBeat.o(207791);
+    AppMethodBeat.i(199565);
+    this.EIw = new b();
+    AppMethodBeat.o(199565);
   }
   
   public final void a(a parama, b paramb)
   {
-    AppMethodBeat.i(207789);
+    AppMethodBeat.i(199563);
     p.h(paramb, "mediaPlayer");
-    if ((!bt.isNullOrNil(this.Eqg.videoPath)) && (this.Eqg.lBi > 0L))
+    if ((!bu.isNullOrNil(this.EIw.videoPath)) && (this.EIw.lFG > 0L))
     {
-      this.Eqg.lBp = bt.flT();
+      this.EIw.lFN = bu.fpO();
       a(parama, paramb, "onMediaPlayerVideoStop");
     }
-    AppMethodBeat.o(207789);
+    AppMethodBeat.o(199563);
   }
   
   final void a(a parama, b paramb, String paramString)
   {
-    AppMethodBeat.i(207790);
-    if (this.Eqg.lBj < this.Eqg.lBi)
+    AppMethodBeat.i(199564);
+    if (this.EIw.lFH < this.EIw.lFG)
     {
-      ad.i("MicroMsg.WebViewVideoProfileReport", "reportVideoProfile, wired case, ignore reporting and reset data");
-      this.Eqg.reset();
-      AppMethodBeat.o(207790);
+      ae.i("MicroMsg.WebViewVideoProfileReport", "reportVideoProfile, wired case, ignore reporting and reset data");
+      this.EIw.reset();
+      AppMethodBeat.o(199564);
       return;
     }
     if (!(parama instanceof f)) {}
@@ -60,7 +60,7 @@ public final class m
       localObject = (f)localObject;
       if (localObject != null)
       {
-        localObject = ((f)localObject).eVi();
+        localObject = ((f)localObject).eYV();
         if (localObject != null) {}
       }
       else
@@ -85,31 +85,31 @@ public final class m
           {
             parama = "";
           }
-          parama = x.aNF(parama);
-          String str = x.aNF(this.Eqg.videoPath);
+          parama = x.aPc(parama);
+          String str = x.aPc(this.EIw.videoPath);
           int i;
           if (com.tencent.mm.plugin.appbrand.jsapi.video.l.f(paramb))
           {
             if (paramb == null)
             {
               parama = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.video.player.exo.ExoMediaPlayer");
-              AppMethodBeat.o(207790);
+              AppMethodBeat.o(199564);
               throw parama;
             }
-            i = ((c)paramb).bop();
+            i = ((c)paramb).boZ();
           }
           int j;
           while (com.tencent.mm.plugin.appbrand.jsapi.video.l.f(paramb)) {
             if (paramb == null)
             {
               parama = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.video.player.exo.ExoMediaPlayer");
-              AppMethodBeat.o(207790);
+              AppMethodBeat.o(199564);
               throw parama;
               i = 0;
             }
             else
             {
-              j = ((c)paramb).boq();
+              j = ((c)paramb).bpa();
             }
           }
           int k;
@@ -117,21 +117,21 @@ public final class m
             if (paramb == null)
             {
               parama = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.video.player.exo.ExoMediaPlayer");
-              AppMethodBeat.o(207790);
+              AppMethodBeat.o(199564);
               throw parama;
               j = 0;
             }
             else
             {
-              k = ((c)paramb).bor();
-              paramb = j.bnr();
+              k = ((c)paramb).bpb();
+              paramb = j.bob();
               p.g(paramb, "VideoCore.getInstance()");
-              if (!paramb.bnt()) {
+              if (!paramb.bod()) {
                 break label751;
               }
-              paramb = j.bnr();
+              paramb = j.bob();
               p.g(paramb, "VideoCore.getInstance()");
-              if (!paramb.bns()) {
+              if (!paramb.boc()) {
                 break label751;
               }
             }
@@ -139,12 +139,12 @@ public final class m
           label751:
           for (int m = 1;; m = 0)
           {
-            paramb = j.bnr();
+            paramb = j.bob();
             p.g(paramb, "VideoCore.getInstance()");
-            ad.i("MicroMsg.WebViewVideoProfileReport", "reportVideoProfile:%s, webComptName:%s, proxy:%s, playerCreateTime:%s, videoPath:%s, cachedSize:%s, duration:%s, prepareTime:%s, bufferCount:%s, bufferTime:%s, error(%s, %s, %s), minBufferMs:%s, maxBufferMs:%s, bufferForPlaybackMs:%s", new Object[] { paramString, localObject, Boolean.valueOf(paramb.bnt()), Long.valueOf(this.Eqg.lBg), this.Eqg.videoPath, Long.valueOf(this.Eqg.lBh), Long.valueOf(this.Eqg.duration), Long.valueOf(this.Eqg.lBk), Integer.valueOf(this.Eqg.lBl), Long.valueOf(this.Eqg.lBm), Integer.valueOf(this.Eqg.lBr), Integer.valueOf(this.Eqg.lBs), this.Eqg.errorMsg, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-            g.yhR.f(19953, new Object[] { localObject, parama, str, Long.valueOf(this.Eqg.lBi), Long.valueOf(this.Eqg.lBj), Long.valueOf(this.Eqg.lBk), Long.valueOf(this.Eqg.lBg), Long.valueOf(this.Eqg.duration), Long.valueOf(this.Eqg.lBh), Integer.valueOf(this.Eqg.lBr), Integer.valueOf(this.Eqg.lBs), this.Eqg.errorMsg, Integer.valueOf(m), Integer.valueOf(this.Eqg.lBl), Long.valueOf(this.Eqg.lBm), Long.valueOf(this.Eqg.lBp), Long.valueOf(this.Eqg.lBq), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-            this.Eqg.reset();
-            AppMethodBeat.o(207790);
+            ae.i("MicroMsg.WebViewVideoProfileReport", "reportVideoProfile:%s, webComptName:%s, proxy:%s, playerCreateTime:%s, videoPath:%s, cachedSize:%s, duration:%s, prepareTime:%s, bufferCount:%s, bufferTime:%s, error(%s, %s, %s), minBufferMs:%s, maxBufferMs:%s, bufferForPlaybackMs:%s", new Object[] { paramString, localObject, Boolean.valueOf(paramb.bod()), Long.valueOf(this.EIw.lFE), this.EIw.videoPath, Long.valueOf(this.EIw.lFF), Long.valueOf(this.EIw.duration), Long.valueOf(this.EIw.lFI), Integer.valueOf(this.EIw.lFJ), Long.valueOf(this.EIw.lFK), Integer.valueOf(this.EIw.lFP), Integer.valueOf(this.EIw.lFQ), this.EIw.errorMsg, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+            g.yxI.f(19953, new Object[] { localObject, parama, str, Long.valueOf(this.EIw.lFG), Long.valueOf(this.EIw.lFH), Long.valueOf(this.EIw.lFI), Long.valueOf(this.EIw.lFE), Long.valueOf(this.EIw.duration), Long.valueOf(this.EIw.lFF), Integer.valueOf(this.EIw.lFP), Integer.valueOf(this.EIw.lFQ), this.EIw.errorMsg, Integer.valueOf(m), Integer.valueOf(this.EIw.lFJ), Long.valueOf(this.EIw.lFK), Long.valueOf(this.EIw.lFN), Long.valueOf(this.EIw.lFO), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+            this.EIw.reset();
+            AppMethodBeat.o(199564);
             return;
             k = 0;
             break;
@@ -154,74 +154,74 @@ public final class m
     }
   }
   
-  public final void aJz(String paramString)
+  public final void aKV(String paramString)
   {
-    AppMethodBeat.i(207788);
+    AppMethodBeat.i(199562);
     if (paramString == null)
     {
-      AppMethodBeat.o(207788);
+      AppMethodBeat.o(199562);
       return;
     }
-    g.yhR.idkeyStat(1379L, 14L, 1L, false);
+    g.yxI.idkeyStat(1379L, 14L, 1L, false);
     if (0L > 0L)
     {
-      g.yhR.idkeyStat(1379L, 15L, 1L, false);
-      g.yhR.idkeyStat(1379L, 16L, 0L, false);
-      ad.d("MicroMsg.WebViewVideoProfileReport", "onVideoPathChanged, cachedSize:%s, cachedSizeInKB:%s", new Object[] { Long.valueOf(0L), Long.valueOf(0L) });
+      g.yxI.idkeyStat(1379L, 15L, 1L, false);
+      g.yxI.idkeyStat(1379L, 16L, 0L, false);
+      ae.d("MicroMsg.WebViewVideoProfileReport", "onVideoPathChanged, cachedSize:%s, cachedSizeInKB:%s", new Object[] { Long.valueOf(0L), Long.valueOf(0L) });
     }
-    this.Eqg.setVideoPath(paramString);
-    this.Eqg.lBh = 0L;
-    AppMethodBeat.o(207788);
+    this.EIw.setVideoPath(paramString);
+    this.EIw.lFF = 0L;
+    AppMethodBeat.o(199562);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport$VideoProfileData;", "", "(Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport;)V", "bufferEndTime", "", "getBufferEndTime", "()J", "setBufferEndTime", "(J)V", "bufferStartTime", "getBufferStartTime", "setBufferStartTime", "buffetAllTime", "getBuffetAllTime", "setBuffetAllTime", "buffetCount", "", "getBuffetCount", "()I", "setBuffetCount", "(I)V", "cachedSize", "getCachedSize", "setCachedSize", "duration", "getDuration", "setDuration", "endTimeStamp", "getEndTimeStamp", "setEndTimeStamp", "errorExtra", "getErrorExtra", "setErrorExtra", "errorMsg", "", "getErrorMsg", "()Ljava/lang/String;", "setErrorMsg", "(Ljava/lang/String;)V", "errorWhat", "getErrorWhat", "setErrorWhat", "playerCreateTime", "getPlayerCreateTime", "setPlayerCreateTime", "prepareEndTime", "getPrepareEndTime", "setPrepareEndTime", "prepareStartTime", "getPrepareStartTime", "setPrepareStartTime", "prepareTime", "getPrepareTime", "setPrepareTime", "stopTimeStamp", "getStopTimeStamp", "setStopTimeStamp", "value", "videoPath", "getVideoPath", "setVideoPath", "reset", "", "resetBufferTime", "plugin-webview_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport$VideoProfileData;", "", "(Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewVideoProfileReport;)V", "bufferEndTime", "", "getBufferEndTime", "()J", "setBufferEndTime", "(J)V", "bufferStartTime", "getBufferStartTime", "setBufferStartTime", "buffetAllTime", "getBuffetAllTime", "setBuffetAllTime", "buffetCount", "", "getBuffetCount", "()I", "setBuffetCount", "(I)V", "cachedSize", "getCachedSize", "setCachedSize", "duration", "getDuration", "setDuration", "endTimeStamp", "getEndTimeStamp", "setEndTimeStamp", "errorExtra", "getErrorExtra", "setErrorExtra", "errorMsg", "", "getErrorMsg", "()Ljava/lang/String;", "setErrorMsg", "(Ljava/lang/String;)V", "errorWhat", "getErrorWhat", "setErrorWhat", "playerCreateTime", "getPlayerCreateTime", "setPlayerCreateTime", "prepareEndTime", "getPrepareEndTime", "setPrepareEndTime", "prepareStartTime", "getPrepareStartTime", "setPrepareStartTime", "prepareTime", "getPrepareTime", "setPrepareTime", "stopTimeStamp", "getStopTimeStamp", "setStopTimeStamp", "value", "videoPath", "getVideoPath", "setVideoPath", "reset", "", "resetBufferTime", "plugin-webview_release"})
   public final class b
   {
     long duration;
     String errorMsg = "";
-    long lBg;
-    long lBh;
-    long lBi;
-    long lBj;
-    long lBk;
-    int lBl;
-    long lBm;
-    long lBn;
-    long lBo;
-    long lBp;
-    long lBq;
-    int lBr;
-    int lBs;
+    long lFE;
+    long lFF;
+    long lFG;
+    long lFH;
+    long lFI;
+    int lFJ;
+    long lFK;
+    long lFL;
+    long lFM;
+    long lFN;
+    long lFO;
+    int lFP;
+    int lFQ;
     String videoPath = "";
     
     public final void reset()
     {
-      AppMethodBeat.i(207787);
+      AppMethodBeat.i(199561);
       setVideoPath("");
-      this.lBg = 0L;
+      this.lFE = 0L;
       this.duration = 0L;
-      this.lBh = 0L;
-      this.lBi = 0L;
-      this.lBj = 0L;
-      this.lBk = 0L;
-      this.lBl = 0;
-      this.lBn = 0L;
-      this.lBo = 0L;
-      this.lBm = 0L;
-      this.lBp = 0L;
-      this.lBq = 0L;
-      this.lBr = 0;
-      this.lBs = 0;
+      this.lFF = 0L;
+      this.lFG = 0L;
+      this.lFH = 0L;
+      this.lFI = 0L;
+      this.lFJ = 0;
+      this.lFL = 0L;
+      this.lFM = 0L;
+      this.lFK = 0L;
+      this.lFN = 0L;
+      this.lFO = 0L;
+      this.lFP = 0;
+      this.lFQ = 0;
       this.errorMsg = "";
-      AppMethodBeat.o(207787);
+      AppMethodBeat.o(199561);
     }
     
     public final void setVideoPath(String paramString)
     {
-      AppMethodBeat.i(207786);
+      AppMethodBeat.i(199560);
       p.h(paramString, "value");
       String str;
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
         str = paramString;
         if (paramString.length() > 512)
@@ -233,7 +233,7 @@ public final class m
       for (;;)
       {
         this.videoPath = str;
-        AppMethodBeat.o(207786);
+        AppMethodBeat.o(199560);
         return;
         str = "";
       }
@@ -242,7 +242,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.video.samelayer.m
  * JD-Core Version:    0.7.0.1
  */

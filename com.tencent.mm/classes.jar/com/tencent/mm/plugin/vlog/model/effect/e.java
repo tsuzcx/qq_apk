@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.vlog.model.effect;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "", "type", "", "(I)V", "getType", "()I", "Companion", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "", "type", "", "(I)V", "getType", "()I", "Companion", "plugin-vlog_release"})
 public abstract class e
 {
-  public static final a BHl = new a((byte)0);
+  public static final a BYK = new a((byte)0);
   public final int type;
   
   public e(int paramInt)
@@ -13,7 +13,7 @@ public abstract class e
     this.type = paramInt;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem$Companion;", "", "()V", "TypeAddEffect", "", "TypeEffect", "TypeTitle", "plugin-vlog_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem$Companion;", "", "()V", "TypeAddEffect", "", "TypeEffect", "TypeTitle", "plugin-vlog_release"})
   public static final class a {}
 }
 

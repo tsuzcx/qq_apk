@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.label.ui;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class ContactLabelMemberListUI$1
-  extends ap
+  extends aq
 {
   ContactLabelMemberListUI$1(ContactLabelMemberListUI paramContactLabelMemberListUI) {}
   
@@ -14,15 +14,15 @@ final class ContactLabelMemberListUI$1
   {
     AppMethodBeat.i(26261);
     int i = paramMessage.what;
-    ad.d("MicroMsg.Label.ContactLabelMemberListUI", "handleMessage:%d", new Object[] { Integer.valueOf(i) });
+    ae.d("MicroMsg.Label.ContactLabelMemberListUI", "handleMessage:%d", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
     default: 
-      ad.w("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] unknow msg.");
+      ae.w("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] unknow msg.");
       AppMethodBeat.o(26261);
       return;
     }
-    ContactLabelMemberListUI.a(this.uXg);
+    ContactLabelMemberListUI.a(this.viU);
     AppMethodBeat.o(26261);
   }
 }

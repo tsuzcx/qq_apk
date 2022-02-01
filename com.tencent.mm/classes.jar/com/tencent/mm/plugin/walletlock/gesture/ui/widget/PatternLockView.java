@@ -25,10 +25,10 @@ import android.view.View;
 import android.view.View.BaseSavedState;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.walletlock.a.a;
 import com.tencent.mm.plugin.walletlock.gesture.a.f;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.h;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,113 +37,113 @@ import java.util.List;
 public class PatternLockView
   extends View
 {
-  private Bitmap DvA;
-  private Bitmap DvB;
-  private Bitmap DvC;
-  private float DvD;
-  private float DvE;
-  private long DvF;
-  private float DvG;
-  private float DvH;
-  private a DvI;
-  private Paint Dvk;
-  private Paint Dvl;
-  private Path Dvm;
-  private Matrix Dvn;
-  private Rect Dvo;
-  private Rect Dvp;
-  private ArrayList<f> Dvq;
-  private boolean[][] Dvr;
-  private PatternLockView.c Dvs;
-  private int Dvt;
-  private float Dvu;
-  private boolean Dvv;
-  private boolean Dvw;
-  private boolean Dvx;
-  private b Dvy;
-  private Bitmap Dvz;
+  private Paint DMP;
+  private Paint DMQ;
+  private Path DMR;
+  private Matrix DMS;
+  private Rect DMT;
+  private Rect DMU;
+  private ArrayList<f> DMV;
+  private boolean[][] DMW;
+  private PatternLockView.c DMX;
+  private int DMY;
+  private float DMZ;
+  private boolean DNa;
+  private boolean DNb;
+  private boolean DNc;
+  private b DNd;
+  private Bitmap DNe;
+  private Bitmap DNf;
+  private Bitmap DNg;
+  private Bitmap DNh;
+  private float DNi;
+  private float DNj;
+  private long DNk;
+  private float DNl;
+  private float DNm;
+  private a DNn;
   private int mBitmapHeight;
   private int mBitmapWidth;
-  private boolean mSm;
-  private int pwe;
-  private int qnn;
+  private boolean mXw;
+  private int pCI;
+  private int qtS;
   
   public PatternLockView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(129865);
-    this.Dvk = new Paint();
-    this.Dvl = new Paint();
-    this.Dvm = new Path();
-    this.Dvn = new Matrix();
-    this.Dvo = new Rect();
-    this.Dvp = new Rect();
-    this.Dvq = new ArrayList(9);
-    this.Dvr = ((boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 }));
-    this.Dvs = PatternLockView.c.DvQ;
-    this.pwe = 6;
-    this.Dvt = 200;
-    this.Dvu = 0.66F;
-    this.Dvv = false;
-    this.Dvw = true;
-    this.Dvx = false;
+    this.DMP = new Paint();
+    this.DMQ = new Paint();
+    this.DMR = new Path();
+    this.DMS = new Matrix();
+    this.DMT = new Rect();
+    this.DMU = new Rect();
+    this.DMV = new ArrayList(9);
+    this.DMW = ((boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 }));
+    this.DMX = PatternLockView.c.DNv;
+    this.pCI = 6;
+    this.DMY = 200;
+    this.DMZ = 0.66F;
+    this.DNa = false;
+    this.DNb = true;
+    this.DNc = false;
     int i;
     if (isInEditMode())
     {
       i = -1;
-      this.qnn = i;
-      this.Dvy = b.DvK;
-      this.Dvz = null;
-      this.DvA = null;
-      this.DvB = null;
-      this.DvC = null;
-      this.DvD = -1.0F;
-      this.DvE = -1.0F;
-      this.mSm = false;
-      this.DvF = 0L;
+      this.qtS = i;
+      this.DNd = b.DNp;
+      this.DNe = null;
+      this.DNf = null;
+      this.DNg = null;
+      this.DNh = null;
+      this.DNi = -1.0F;
+      this.DNj = -1.0F;
+      this.mXw = false;
+      this.DNk = 0L;
       this.mBitmapWidth = 0;
       this.mBitmapHeight = 0;
-      this.DvG = 0.0F;
-      this.DvH = 0.0F;
-      this.DvI = null;
+      this.DNl = 0.0F;
+      this.DNm = 0.0F;
+      this.DNn = null;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.mm_patternlock_view);
-      this.Dvw = paramContext.getBoolean(4, this.Dvw);
-      this.Dvt = paramContext.getInt(1, this.Dvt);
-      this.pwe = paramContext.getInt(2, this.pwe);
-      this.Dvv = paramContext.getBoolean(0, this.Dvv);
-      switch (paramContext.getInt(3, this.Dvs.ordinal()))
+      this.DNb = paramContext.getBoolean(4, this.DNb);
+      this.DMY = paramContext.getInt(1, this.DMY);
+      this.pCI = paramContext.getInt(2, this.pCI);
+      this.DNa = paramContext.getBoolean(0, this.DNa);
+      switch (paramContext.getInt(3, this.DMX.ordinal()))
       {
       default: 
-        this.Dvs = PatternLockView.c.DvQ;
+        this.DMX = PatternLockView.c.DNv;
       }
     }
     for (;;)
     {
       paramContext.recycle();
       setClickable(true);
-      this.Dvl.setStyle(Paint.Style.STROKE);
-      this.Dvl.setStrokeJoin(Paint.Join.ROUND);
-      this.Dvl.setStrokeCap(Paint.Cap.ROUND);
-      this.Dvl.setAntiAlias(true);
-      this.Dvl.setDither(false);
-      this.Dvl.setAlpha(this.Dvt);
-      this.Dvk.setAntiAlias(true);
-      this.Dvk.setDither(true);
+      this.DMQ.setStyle(Paint.Style.STROKE);
+      this.DMQ.setStrokeJoin(Paint.Join.ROUND);
+      this.DMQ.setStrokeCap(Paint.Cap.ROUND);
+      this.DMQ.setAntiAlias(true);
+      this.DMQ.setDither(false);
+      this.DMQ.setAlpha(this.DMY);
+      this.DMP.setAntiAlias(true);
+      this.DMP.setDither(true);
       if (isInEditMode()) {
         break label646;
       }
-      if (this.Dvz == null)
+      if (this.DNe == null)
       {
-        this.Dvz = drawable2Bitmap(a.l(getContext(), 2131232595));
-        this.DvA = drawable2Bitmap(a.l(getContext(), 2131232596));
-        this.DvB = this.DvA;
-        this.DvC = drawable2Bitmap(a.l(getContext(), 2131232597));
+        this.DNe = drawable2Bitmap(a.l(getContext(), 2131232595));
+        this.DNf = drawable2Bitmap(a.l(getContext(), 2131232596));
+        this.DNg = this.DNf;
+        this.DNh = drawable2Bitmap(a.l(getContext(), 2131232597));
       }
-      this.pwe = ((int)(this.pwe * g.aQF().density));
-      paramContext = this.Dvz;
-      paramAttributeSet = this.DvA;
-      Bitmap localBitmap1 = this.DvB;
-      Bitmap localBitmap2 = this.DvC;
+      this.pCI = ((int)(this.pCI * h.aRe().density));
+      paramContext = this.DNe;
+      paramAttributeSet = this.DNf;
+      Bitmap localBitmap1 = this.DNg;
+      Bitmap localBitmap2 = this.DNh;
       i = 0;
       while (i < 4)
       {
@@ -154,32 +154,32 @@ public class PatternLockView
       }
       i = getResources().getColor(2131099699);
       break;
-      this.Dvs = PatternLockView.c.DvQ;
+      this.DMX = PatternLockView.c.DNv;
       continue;
-      this.Dvs = PatternLockView.c.DvR;
+      this.DMX = PatternLockView.c.DNw;
     }
     label646:
     AppMethodBeat.o(129865);
   }
   
-  private float VP(int paramInt)
+  private float Ww(int paramInt)
   {
     AppMethodBeat.i(129880);
     float f1 = getPaddingLeft();
     float f2 = paramInt;
-    float f3 = this.DvG;
-    float f4 = this.DvG;
+    float f3 = this.DNl;
+    float f4 = this.DNl;
     AppMethodBeat.o(129880);
     return f1 + f2 * f3 + f4 * 0.5F;
   }
   
-  private float VQ(int paramInt)
+  private float Wx(int paramInt)
   {
     AppMethodBeat.i(129881);
     float f1 = getPaddingTop();
     float f2 = paramInt;
-    float f3 = this.DvH;
-    float f4 = this.DvH;
+    float f3 = this.DNm;
+    float f4 = this.DNm;
     AppMethodBeat.o(129881);
     return f1 + f2 * f3 + f4 * 0.5F;
   }
@@ -188,46 +188,46 @@ public class PatternLockView
   {
     AppMethodBeat.i(129876);
     Bitmap localBitmap;
-    if ((!paramBoolean) || ((!this.Dvw) && (this.Dvy != b.DvL))) {
-      localBitmap = this.Dvz;
+    if ((!paramBoolean) || ((!this.DNb) && (this.DNd != b.DNq))) {
+      localBitmap = this.DNe;
     }
     for (;;)
     {
       int j = this.mBitmapWidth;
       int i = this.mBitmapHeight;
-      float f1 = this.DvG;
-      float f2 = this.DvH;
+      float f1 = this.DNl;
+      float f2 = this.DNm;
       j = (int)((f1 - j) * 0.5F);
       i = (int)((f2 - i) * 0.5F);
       f2 = getResources().getDisplayMetrics().density;
-      f1 = Math.min((this.DvG - 33.0F * f2) / this.mBitmapWidth, 1.0F);
-      f2 = Math.min((this.DvH - f2 * 33.0F) / this.mBitmapHeight, 1.0F);
-      this.Dvn.setTranslate(j + paramInt1, i + paramInt2);
-      this.Dvn.preTranslate(this.mBitmapWidth / 2, this.mBitmapHeight / 2);
-      this.Dvn.preScale(f1, f2);
-      this.Dvn.preTranslate(-this.mBitmapWidth / 2, -this.mBitmapHeight / 2);
+      f1 = Math.min((this.DNl - 33.0F * f2) / this.mBitmapWidth, 1.0F);
+      f2 = Math.min((this.DNm - f2 * 33.0F) / this.mBitmapHeight, 1.0F);
+      this.DMS.setTranslate(j + paramInt1, i + paramInt2);
+      this.DMS.preTranslate(this.mBitmapWidth / 2, this.mBitmapHeight / 2);
+      this.DMS.preScale(f1, f2);
+      this.DMS.preTranslate(-this.mBitmapWidth / 2, -this.mBitmapHeight / 2);
       if (!isInEditMode()) {
-        paramCanvas.drawBitmap(localBitmap, this.Dvn, this.Dvk);
+        paramCanvas.drawBitmap(localBitmap, this.DMS, this.DMP);
       }
       AppMethodBeat.o(129876);
       return;
-      if (this.mSm)
+      if (this.mXw)
       {
-        localBitmap = this.DvA;
+        localBitmap = this.DNf;
       }
-      else if (this.Dvy == b.DvL)
+      else if (this.DNd == b.DNq)
       {
-        localBitmap = this.DvC;
+        localBitmap = this.DNh;
       }
       else
       {
-        if ((this.Dvy != b.DvK) && (this.Dvy != b.DvM)) {
+        if ((this.DNd != b.DNp) && (this.DNd != b.DNr)) {
           break;
         }
-        localBitmap = this.DvB;
+        localBitmap = this.DNg;
       }
     }
-    paramCanvas = new IllegalStateException("unknown display mode " + this.Dvy);
+    paramCanvas = new IllegalStateException("unknown display mode " + this.DNd);
     AppMethodBeat.o(129876);
     throw paramCanvas;
   }
@@ -235,14 +235,14 @@ public class PatternLockView
   private void a(b paramb, List<f> paramList)
   {
     AppMethodBeat.i(129883);
-    this.Dvq.clear();
-    eJW();
-    this.Dvq.addAll(paramList);
-    paramList = this.Dvq.iterator();
+    this.DMV.clear();
+    eNE();
+    this.DMV.addAll(paramList);
+    paramList = this.DMV.iterator();
     while (paramList.hasNext())
     {
       f localf = (f)paramList.next();
-      this.Dvr[localf.DuE][localf.DuF] = 1;
+      this.DMW[localf.DMj][localf.DMk] = 1;
     }
     setDisplayMode(paramb);
     AppMethodBeat.o(129883);
@@ -253,8 +253,8 @@ public class PatternLockView
     int k = 0;
     AppMethodBeat.i(129877);
     Object localObject2 = null;
-    float f1 = this.DvH;
-    float f2 = f1 * this.Dvu;
+    float f1 = this.DNm;
+    float f2 = f1 * this.DMZ;
     float f3 = getPaddingTop();
     float f4 = (f1 - f2) / 2.0F;
     int i = 0;
@@ -270,8 +270,8 @@ public class PatternLockView
         localObject1 = localObject2;
         if (j >= 0)
         {
-          paramFloat2 = this.DvG;
-          f1 = this.Dvu * paramFloat2;
+          paramFloat2 = this.DNl;
+          f1 = this.DMZ * paramFloat2;
           f2 = getPaddingLeft();
           f3 = (paramFloat2 - f1) / 2.0F;
           i = k;
@@ -292,19 +292,19 @@ public class PatternLockView
       if (i >= 0)
       {
         localObject1 = localObject2;
-        if (this.Dvr[j][i] == 0) {
-          localObject1 = f.iM(j, i);
+        if (this.DMW[j][i] == 0) {
+          localObject1 = f.iQ(j, i);
         }
       }
       if (localObject1 == null) {
         break label296;
       }
-      this.Dvr[localObject1.DuE][localObject1.DuF] = 1;
-      this.Dvq.add(localObject1);
-      if (this.DvI != null) {
-        new ArrayList(this.Dvq);
+      this.DMW[localObject1.DMj][localObject1.DMk] = 1;
+      this.DMV.add(localObject1);
+      if (this.DNn != null) {
+        new ArrayList(this.DMV);
       }
-      if (this.Dvv) {
+      if (this.DNa) {
         performHapticFeedback(1, 3);
       }
       AppMethodBeat.o(129877);
@@ -341,7 +341,7 @@ public class PatternLockView
     }
   }
   
-  private void eJW()
+  private void eNE()
   {
     int i = 0;
     while (i < 3)
@@ -349,24 +349,24 @@ public class PatternLockView
       int j = 0;
       while (j < 3)
       {
-        this.Dvr[i][j] = 0;
+        this.DMW[i][j] = 0;
         j += 1;
       }
       i += 1;
     }
   }
   
-  private void eJX()
+  private void eNF()
   {
     AppMethodBeat.i(129884);
-    this.Dvq.clear();
-    eJW();
-    this.Dvy = b.DvK;
+    this.DMV.clear();
+    eNE();
+    this.DNd = b.DNp;
     invalidate();
     AppMethodBeat.o(129884);
   }
   
-  private static String gQ(List<f> paramList)
+  private static String ha(List<f> paramList)
   {
     AppMethodBeat.i(129867);
     if (paramList == null)
@@ -381,8 +381,8 @@ public class PatternLockView
     while (i < j)
     {
       f localf = (f)paramList.get(i);
-      int k = localf.DuE;
-      arrayOfByte[i] = ((byte)(localf.DuF + k * 3));
+      int k = localf.DMj;
+      arrayOfByte[i] = ((byte)(localf.DMk + k * 3));
       i += 1;
     }
     paramList = new String(arrayOfByte);
@@ -390,7 +390,7 @@ public class PatternLockView
     return paramList;
   }
   
-  private static int iN(int paramInt1, int paramInt2)
+  private static int iR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(129873);
     int j = View.MeasureSpec.getSize(paramInt1);
@@ -405,35 +405,35 @@ public class PatternLockView
     }
   }
   
-  public final void eJY()
+  public final void eNG()
   {
     AppMethodBeat.i(129885);
-    eJX();
-    if (this.DvI != null) {
-      this.DvI.a(this);
+    eNF();
+    if (this.DNn != null) {
+      this.DNn.a(this);
     }
     AppMethodBeat.o(129885);
   }
   
   public boolean getDisplayLine()
   {
-    return this.Dvw;
+    return this.DNb;
   }
   
   public boolean getEnableHapticFeedback()
   {
-    return this.Dvv;
+    return this.DNa;
   }
   
   public boolean getEnableInput()
   {
-    return this.Dvx;
+    return this.DNc;
   }
   
   public List<f> getPattern()
   {
     AppMethodBeat.i(129882);
-    ArrayList localArrayList = new ArrayList(this.Dvq);
+    ArrayList localArrayList = new ArrayList(this.DMV);
     AppMethodBeat.o(129882);
     return localArrayList;
   }
@@ -459,9 +459,9 @@ public class PatternLockView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(129875);
-    ArrayList localArrayList = this.Dvq;
+    ArrayList localArrayList = this.DMV;
     int m = localArrayList.size();
-    boolean[][] arrayOfBoolean = this.Dvr;
+    boolean[][] arrayOfBoolean = this.DMW;
     int j;
     int k;
     Object localObject;
@@ -474,16 +474,16 @@ public class PatternLockView
     int n;
     int i1;
     boolean bool;
-    if (this.Dvy == b.DvM)
+    if (this.DNd == b.DNr)
     {
-      j = (int)(SystemClock.elapsedRealtime() - this.DvF) % ((m + 1) * 700);
+      j = (int)(SystemClock.elapsedRealtime() - this.DNk) % ((m + 1) * 700);
       k = j / 700;
-      eJW();
+      eNE();
       i = 0;
       while (i < k)
       {
         localObject = (f)localArrayList.get(i);
-        arrayOfBoolean[localObject.DuE][localObject.DuF] = 1;
+        arrayOfBoolean[localObject.DMj][localObject.DMk] = 1;
         i += 1;
       }
       if ((k > 0) && (k < m))
@@ -493,37 +493,37 @@ public class PatternLockView
         {
           f1 = j % 700 / 700.0F;
           localObject = (f)localArrayList.get(k - 1);
-          f2 = VP(((f)localObject).DuF);
-          f3 = VQ(((f)localObject).DuE);
+          f2 = Ww(((f)localObject).DMk);
+          f3 = Wx(((f)localObject).DMj);
           localObject = (f)localArrayList.get(k);
-          f4 = VP(((f)localObject).DuF);
-          f5 = VQ(((f)localObject).DuE);
-          this.DvD = (f2 + (f4 - f2) * f1);
-          this.DvE = ((f5 - f3) * f1 + f3);
+          f4 = Ww(((f)localObject).DMk);
+          f5 = Wx(((f)localObject).DMj);
+          this.DNi = (f2 + (f4 - f2) * f1);
+          this.DNj = ((f5 - f3) * f1 + f3);
         }
         invalidate();
       }
     }
     else
     {
-      this.Dvl.setColor(this.qnn);
-      this.Dvl.setStrokeWidth(this.pwe);
-      localObject = this.Dvm;
+      this.DMQ.setColor(this.qtS);
+      this.DMQ.setStrokeWidth(this.pCI);
+      localObject = this.DMR;
       ((Path)localObject).rewind();
-      if ((!this.Dvw) && (this.Dvy != b.DvL)) {
+      if ((!this.DNb) && (this.DNd != b.DNq)) {
         break label436;
       }
       i = 1;
       n = getPaddingTop();
       i1 = getPaddingLeft();
-      f1 = this.DvG;
-      f2 = this.DvH;
-      if ((this.Dvk.getFlags() & 0x2) == 0) {
+      f1 = this.DNl;
+      f2 = this.DNm;
+      if ((this.DMP.getFlags() & 0x2) == 0) {
         break label442;
       }
       bool = true;
       label335:
-      this.Dvk.setFilterBitmap(true);
+      this.DMP.setFilterBitmap(true);
       j = 0;
     }
     float f6;
@@ -566,11 +566,11 @@ public class PatternLockView
       if (i < m)
       {
         f localf = (f)localArrayList.get(i);
-        if (arrayOfBoolean[localf.DuE][localf.DuF] != 0)
+        if (arrayOfBoolean[localf.DMj][localf.DMk] != 0)
         {
           j = 1;
-          f3 = VP(localf.DuF);
-          f4 = VQ(localf.DuE);
+          f3 = Ww(localf.DMk);
+          f4 = Wx(localf.DMj);
           if (i == 0) {
             ((Path)localObject).moveTo(f3, f4);
           }
@@ -582,10 +582,10 @@ public class PatternLockView
           }
         }
       }
-      if (((this.mSm) || (this.Dvy == b.DvM)) && (j != 0)) {
-        ((Path)localObject).lineTo(this.DvD, this.DvE);
+      if (((this.mXw) || (this.DNd == b.DNr)) && (j != 0)) {
+        ((Path)localObject).lineTo(this.DNi, this.DNj);
       }
-      paramCanvas.drawPath((Path)localObject, this.Dvl);
+      paramCanvas.drawPath((Path)localObject, this.DMQ);
     }
     int i = 0;
     while (i < 3)
@@ -604,7 +604,7 @@ public class PatternLockView
       }
       i += 1;
     }
-    this.Dvk.setFilterBitmap(bool);
+    this.DMP.setFilterBitmap(bool);
     AppMethodBeat.o(129875);
   }
   
@@ -613,9 +613,9 @@ public class PatternLockView
     AppMethodBeat.i(129874);
     int j = getSuggestedMinimumWidth();
     int i = getSuggestedMinimumHeight();
-    paramInt1 = iN(paramInt1, j);
-    i = iN(paramInt2, i);
-    if (this.Dvs == PatternLockView.c.DvQ) {
+    paramInt1 = iR(paramInt1, j);
+    i = iR(paramInt2, i);
+    if (this.DMX == PatternLockView.c.DNv) {
       paramInt2 = Math.min(paramInt1, i);
     }
     for (paramInt1 = paramInt2;; paramInt1 = i)
@@ -632,8 +632,8 @@ public class PatternLockView
     AppMethodBeat.i(129869);
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    b localb = b.DvK;
-    Object localObject = paramParcelable.DvO;
+    b localb = b.DNp;
+    Object localObject = paramParcelable.DNt;
     if (localObject == null)
     {
       paramParcelable = new IllegalArgumentException("Serialized pattern is null");
@@ -646,21 +646,21 @@ public class PatternLockView
     while (i < localObject.length)
     {
       int j = localObject[i];
-      localArrayList.add(f.iM(j / 3, j % 3));
+      localArrayList.add(f.iQ(j / 3, j % 3));
       i += 1;
     }
     a(localb, localArrayList);
-    this.Dvy = b.values()[paramParcelable.DvP];
-    this.Dvw = paramParcelable.Dvw;
-    this.Dvx = paramParcelable.Dvx;
-    this.Dvv = paramParcelable.Dvv;
+    this.DNd = b.values()[paramParcelable.DNu];
+    this.DNb = paramParcelable.DNb;
+    this.DNc = paramParcelable.DNc;
+    this.DNa = paramParcelable.DNa;
     AppMethodBeat.o(129869);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     AppMethodBeat.i(129868);
-    SavedState localSavedState = new SavedState(super.onSaveInstanceState(), gQ(this.Dvq), this.Dvy.ordinal(), this.Dvw, this.Dvx, this.Dvv);
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState(), ha(this.DMV), this.DNd.ordinal(), this.DNb, this.DNc, this.DNa);
     AppMethodBeat.o(129868);
     return localSavedState;
   }
@@ -668,15 +668,15 @@ public class PatternLockView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(129872);
-    this.DvG = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 3.0F);
-    this.DvH = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 3.0F);
+    this.DNl = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 3.0F);
+    this.DNm = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 3.0F);
     AppMethodBeat.o(129872);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(129878);
-    if ((!this.Dvx) || (!isEnabled()))
+    if ((!this.DNc) || (!isEnabled()))
     {
       AppMethodBeat.o(129878);
       return false;
@@ -695,47 +695,47 @@ public class PatternLockView
       AppMethodBeat.o(129878);
       return false;
     case 0: 
-      eJX();
+      eNF();
       f1 = paramMotionEvent.getX();
       f2 = paramMotionEvent.getY();
       paramMotionEvent = ai(f1, f2);
       if (paramMotionEvent != null)
       {
-        this.mSm = true;
-        this.Dvy = b.DvK;
-        if (this.DvI == null) {}
+        this.mXw = true;
+        this.DNd = b.DNp;
+        if (this.DNn == null) {}
       }
       for (;;)
       {
         if (paramMotionEvent != null)
         {
-          f3 = VP(paramMotionEvent.DuF);
-          f4 = VQ(paramMotionEvent.DuE);
-          f5 = this.DvG * 0.5F;
-          f6 = this.DvH * 0.5F;
+          f3 = Ww(paramMotionEvent.DMk);
+          f4 = Wx(paramMotionEvent.DMj);
+          f5 = this.DNl * 0.5F;
+          f6 = this.DNm * 0.5F;
           invalidate((int)(f3 - f5), (int)(f4 - f6), (int)(f3 + f5), (int)(f4 + f6));
         }
-        this.DvD = f1;
-        this.DvE = f2;
+        this.DNi = f1;
+        this.DNj = f2;
         AppMethodBeat.o(129878);
         return true;
-        this.mSm = false;
+        this.mXw = false;
       }
     case 1: 
-      if (!this.Dvq.isEmpty())
+      if (!this.DMV.isEmpty())
       {
-        this.mSm = false;
-        if (this.DvI != null) {
-          this.DvI.a(this, new ArrayList(this.Dvq));
+        this.mXw = false;
+        if (this.DNn != null) {
+          this.DNn.a(this, new ArrayList(this.DMV));
         }
         invalidate();
       }
       AppMethodBeat.o(129878);
       return true;
     case 2: 
-      float f7 = this.pwe;
+      float f7 = this.pCI;
       int k = paramMotionEvent.getHistorySize();
-      this.Dvo.setEmpty();
+      this.DMT.setEmpty();
       j = 0;
       i = 0;
       if (i < k + 1) {
@@ -749,20 +749,20 @@ public class PatternLockView
           f2 = paramMotionEvent.getHistoricalY(i);
           label332:
           f localf1 = ai(f1, f2);
-          int m = this.Dvq.size();
+          int m = this.DMV.size();
           if ((localf1 != null) && (m == 1)) {
-            this.mSm = true;
+            this.mXw = true;
           }
-          f3 = Math.abs(f1 - this.DvD);
-          f4 = Math.abs(f2 - this.DvE);
+          f3 = Math.abs(f1 - this.DNi);
+          f4 = Math.abs(f2 - this.DNj);
           if ((f3 > 0.0F) || (f4 > 0.0F)) {
             j = 1;
           }
-          if ((this.mSm) && (m > 0))
+          if ((this.mXw) && (m > 0))
           {
-            f localf2 = (f)this.Dvq.get(m - 1);
-            f4 = VP(localf2.DuF);
-            f3 = VQ(localf2.DuE);
+            f localf2 = (f)this.DMV.get(m - 1);
+            f4 = Ww(localf2.DMk);
+            f3 = Wx(localf2.DMj);
             f5 = Math.min(f4, f1) - f7;
             f4 = Math.max(f4, f1) + f7;
             f6 = Math.min(f3, f2) - f7;
@@ -770,10 +770,10 @@ public class PatternLockView
             if (localf1 == null) {
               break label912;
             }
-            f2 = this.DvG * 0.5F;
-            float f8 = this.DvH * 0.5F;
-            float f10 = VP(localf1.DuF);
-            float f9 = VQ(localf1.DuE);
+            f2 = this.DNl * 0.5F;
+            float f8 = this.DNm * 0.5F;
+            float f10 = Ww(localf1.DMk);
+            float f9 = Wx(localf1.DMj);
             f1 = Math.min(f10 - f2, f5);
             f4 = Math.max(f2 + f10, f4);
             f2 = Math.min(f9 - f8, f6);
@@ -785,7 +785,7 @@ public class PatternLockView
     }
     for (;;)
     {
-      this.Dvo.union(Math.round(f1), Math.round(f2), Math.round(f4), Math.round(f3));
+      this.DMT.union(Math.round(f1), Math.round(f2), Math.round(f4), Math.round(f3));
       i += 1;
       break;
       f1 = paramMotionEvent.getX();
@@ -793,42 +793,42 @@ public class PatternLockView
       label630:
       f2 = paramMotionEvent.getY();
       break label332;
-      this.DvD = paramMotionEvent.getX();
-      if (this.DvD < getPaddingLeft() + this.pwe)
+      this.DNi = paramMotionEvent.getX();
+      if (this.DNi < getPaddingLeft() + this.pCI)
       {
-        this.DvD = (getPaddingLeft() + this.pwe);
-        this.DvE = paramMotionEvent.getY();
-        if (this.DvE >= getPaddingTop() + this.pwe) {
+        this.DNi = (getPaddingLeft() + this.pCI);
+        this.DNj = paramMotionEvent.getY();
+        if (this.DNj >= getPaddingTop() + this.pCI) {
           break label816;
         }
-        this.DvE = (getPaddingTop() + this.pwe);
+        this.DNj = (getPaddingTop() + this.pCI);
       }
       for (;;)
       {
         if (j != 0)
         {
-          this.Dvp.union(this.Dvo);
-          invalidate(this.Dvp);
-          this.Dvp.set(this.Dvo);
+          this.DMU.union(this.DMT);
+          invalidate(this.DMU);
+          this.DMU.set(this.DMT);
         }
         AppMethodBeat.o(129878);
         return true;
-        if (this.DvD <= getPaddingLeft() + getWidth() - getPaddingRight() - this.pwe) {
+        if (this.DNi <= getPaddingLeft() + getWidth() - getPaddingRight() - this.pCI) {
           break;
         }
-        this.DvD = (getPaddingLeft() + getWidth() - getPaddingRight() - this.pwe);
+        this.DNi = (getPaddingLeft() + getWidth() - getPaddingRight() - this.pCI);
         break;
         label816:
-        if (this.DvE > getPaddingTop() + getHeight() - getPaddingRight() - this.pwe) {
-          this.DvE = (getPaddingTop() + getHeight() - getPaddingBottom() - this.pwe);
+        if (this.DNj > getPaddingTop() + getHeight() - getPaddingRight() - this.pCI) {
+          this.DNj = (getPaddingTop() + getHeight() - getPaddingBottom() - this.pCI);
         }
       }
-      if (this.mSm)
+      if (this.mXw)
       {
-        this.mSm = false;
-        eJX();
-        if (this.DvI != null) {
-          this.DvI.a(this);
+        this.mXw = false;
+        eNF();
+        if (this.DNn != null) {
+          this.DNn.a(this);
         }
       }
       AppMethodBeat.o(129878);
@@ -842,7 +842,7 @@ public class PatternLockView
   public void setDisplayLine(boolean paramBoolean)
   {
     AppMethodBeat.i(129879);
-    this.Dvw = paramBoolean;
+    this.DNb = paramBoolean;
     invalidate();
     AppMethodBeat.o(129879);
   }
@@ -850,59 +850,59 @@ public class PatternLockView
   public void setDisplayMode(b paramb)
   {
     AppMethodBeat.i(129886);
-    switch (1.DvJ[paramb.ordinal()])
+    switch (1.DNo[paramb.ordinal()])
     {
     }
     for (;;)
     {
-      this.Dvy = paramb;
+      this.DNd = paramb;
       invalidate();
       AppMethodBeat.o(129886);
       return;
-      this.qnn = getResources().getColor(2131100460);
+      this.qtS = getResources().getColor(2131100460);
       continue;
-      this.qnn = getResources().getColor(2131100463);
+      this.qtS = getResources().getColor(2131100463);
       continue;
-      if (this.Dvq.size() == 0)
+      if (this.DMV.size() == 0)
       {
         paramb = new IllegalStateException("You should set a pattern before animating.");
         AppMethodBeat.o(129886);
         throw paramb;
       }
-      this.Dvx = false;
-      this.qnn = getResources().getColor(2131100460);
-      f localf = (f)this.Dvq.get(0);
-      this.DvD = VP(localf.DuF);
-      this.DvE = VQ(localf.DuE);
-      eJW();
-      this.DvF = SystemClock.elapsedRealtime();
+      this.DNc = false;
+      this.qtS = getResources().getColor(2131100460);
+      f localf = (f)this.DMV.get(0);
+      this.DNi = Ww(localf.DMk);
+      this.DNj = Wx(localf.DMj);
+      eNE();
+      this.DNk = SystemClock.elapsedRealtime();
     }
   }
   
   public void setEnableHapticFeedback(boolean paramBoolean)
   {
-    this.Dvv = paramBoolean;
+    this.DNa = paramBoolean;
   }
   
   public void setEnableInput(boolean paramBoolean)
   {
-    this.Dvx = paramBoolean;
+    this.DNc = paramBoolean;
   }
   
   public void setOnPatternListener(a parama)
   {
-    this.DvI = parama;
+    this.DNn = parama;
   }
   
   static class SavedState
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    String DvO;
-    int DvP;
-    boolean Dvv;
-    boolean Dvw;
-    boolean Dvx;
+    boolean DNa;
+    boolean DNb;
+    boolean DNc;
+    String DNt;
+    int DNu;
     
     static
     {
@@ -915,33 +915,33 @@ public class PatternLockView
     {
       super();
       AppMethodBeat.i(129859);
-      this.DvO = paramParcel.readString();
-      this.DvP = paramParcel.readInt();
-      this.Dvw = ((Boolean)paramParcel.readValue(null)).booleanValue();
-      this.Dvx = ((Boolean)paramParcel.readValue(null)).booleanValue();
-      this.Dvv = ((Boolean)paramParcel.readValue(null)).booleanValue();
+      this.DNt = paramParcel.readString();
+      this.DNu = paramParcel.readInt();
+      this.DNb = ((Boolean)paramParcel.readValue(null)).booleanValue();
+      this.DNc = ((Boolean)paramParcel.readValue(null)).booleanValue();
+      this.DNa = ((Boolean)paramParcel.readValue(null)).booleanValue();
       AppMethodBeat.o(129859);
     }
     
     public SavedState(Parcelable paramParcelable, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
     {
       super();
-      this.DvO = paramString;
-      this.DvP = paramInt;
-      this.Dvw = paramBoolean1;
-      this.Dvx = paramBoolean2;
-      this.Dvv = paramBoolean3;
+      this.DNt = paramString;
+      this.DNu = paramInt;
+      this.DNb = paramBoolean1;
+      this.DNc = paramBoolean2;
+      this.DNa = paramBoolean3;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(129860);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.DvO);
-      paramParcel.writeInt(this.DvP);
-      paramParcel.writeValue(Boolean.valueOf(this.Dvw));
-      paramParcel.writeValue(Boolean.valueOf(this.Dvx));
-      paramParcel.writeValue(Boolean.valueOf(this.Dvv));
+      paramParcel.writeString(this.DNt);
+      paramParcel.writeInt(this.DNu);
+      paramParcel.writeValue(Boolean.valueOf(this.DNb));
+      paramParcel.writeValue(Boolean.valueOf(this.DNc));
+      paramParcel.writeValue(Boolean.valueOf(this.DNa));
       AppMethodBeat.o(129860);
     }
   }
@@ -958,10 +958,10 @@ public class PatternLockView
     static
     {
       AppMethodBeat.i(129857);
-      DvK = new b("Correct", 0);
-      DvL = new b("Wrong", 1);
-      DvM = new b("Animate", 2);
-      DvN = new b[] { DvK, DvL, DvM };
+      DNp = new b("Correct", 0);
+      DNq = new b("Wrong", 1);
+      DNr = new b("Animate", 2);
+      DNs = new b[] { DNp, DNq, DNr };
       AppMethodBeat.o(129857);
     }
     
@@ -970,7 +970,7 @@ public class PatternLockView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView
  * JD-Core Version:    0.7.0.1
  */

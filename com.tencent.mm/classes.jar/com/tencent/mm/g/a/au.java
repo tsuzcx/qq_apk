@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class au
   extends b
 {
-  public a dlF;
+  public a dmH;
   
   public au()
   {
@@ -17,8 +17,8 @@ public final class au
   private au(byte paramByte)
   {
     AppMethodBeat.i(115969);
-    this.dlF = new a();
-    this.IbR = false;
+    this.dmH = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(115969);
   }
@@ -26,12 +26,12 @@ public final class au
   public static final class a
   {
     public Activity activity;
-    public String dlG;
+    public String dmI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.au
  * JD-Core Version:    0.7.0.1
  */

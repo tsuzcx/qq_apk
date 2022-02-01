@@ -14,19 +14,19 @@ public final class m
   {
     super(paramString1, "");
     AppMethodBeat.i(158900);
-    a(e.a.kcD);
-    cE("Nt", "upnp:event");
-    cE("Timeout", "Second-10800");
-    cE("Callback", "<" + paramString2 + ">");
+    a(e.a.kfU);
+    cG("Nt", "upnp:event");
+    cG("Timeout", "Second-10800");
+    cG("Callback", "<" + paramString2 + ">");
     AppMethodBeat.o(158900);
   }
   
-  public final String bff()
+  public final String bfN()
   {
     return "SUBSCRIBE";
   }
   
-  public final String bfg()
+  public final String bfO()
   {
     return "";
   }

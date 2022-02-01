@@ -35,7 +35,7 @@ public class d
   
   public d(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(187118);
+    AppMethodBeat.i(221247);
     this.b = true;
     this.c = false;
     this.d = 0;
@@ -68,7 +68,7 @@ public class d
       this.b = paramBoolean;
       this.h = new c(this.a, this.b);
       a.a().a(paramContext);
-      AppMethodBeat.o(187118);
+      AppMethodBeat.o(221247);
       return;
       TXCLog.i("TXCVideoPreprocessor", "This devices is OpenGlUtils.OPENGL_ES_2");
       j.a(2);
@@ -79,7 +79,7 @@ public class d
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(187128);
+    AppMethodBeat.i(221257);
     if (this.j == null)
     {
       this.j = new c(null);
@@ -146,7 +146,7 @@ public class d
           break label936;
         }
         TXCLog.e("TXCVideoPreprocessor", "init failed!");
-        AppMethodBeat.o(187128);
+        AppMethodBeat.o(221257);
         return false;
         paramInt1 -= this.g.a;
         break;
@@ -179,7 +179,7 @@ public class d
         this.h.b(paramInt5);
       }
       label936:
-      AppMethodBeat.o(187128);
+      AppMethodBeat.o(221257);
       return true;
       label943:
       i1 = paramInt1;
@@ -188,7 +188,7 @@ public class d
   
   private boolean a(c paramc, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187130);
+    AppMethodBeat.i(221259);
     this.i.d = paramc.b;
     this.i.e = paramc.c;
     this.i.m = paramc.j;
@@ -208,13 +208,13 @@ public class d
       this.h.a(this.f);
     }
     boolean bool = this.h.a(this.i);
-    AppMethodBeat.o(187130);
+    AppMethodBeat.o(221259);
     return bool;
   }
   
   private com.tencent.liteav.basic.util.d b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(187129);
+    AppMethodBeat.i(221258);
     if ((paramInt3 == 90) || (paramInt3 == 270))
     {
       paramInt3 = paramInt4;
@@ -232,13 +232,13 @@ public class d
         {
           float f1 = 1.0F * i3 / i1;
           locald = new com.tencent.liteav.basic.util.d((int)(paramInt4 * f1), (int)(paramInt3 * f1));
-          AppMethodBeat.o(187129);
+          AppMethodBeat.o(221258);
           return locald;
         }
         paramInt5 += 1;
       }
       com.tencent.liteav.basic.util.d locald = new com.tencent.liteav.basic.util.d(paramInt1, paramInt2);
-      AppMethodBeat.o(187129);
+      AppMethodBeat.o(221258);
       return locald;
       paramInt3 = paramInt5;
     }
@@ -246,7 +246,7 @@ public class d
   
   private void c()
   {
-    AppMethodBeat.i(187117);
+    AppMethodBeat.i(221246);
     if (this.m != 0L) {
       setStatusValue(3002, Long.valueOf(System.currentTimeMillis() - this.m));
     }
@@ -258,7 +258,7 @@ public class d
       this.n = 0L;
       this.o = l1;
     }
-    AppMethodBeat.o(187117);
+    AppMethodBeat.o(221246);
   }
   
   private int z(int paramInt)
@@ -278,7 +278,7 @@ public class d
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool = false;
-    AppMethodBeat.i(187114);
+    AppMethodBeat.i(221243);
     if (this.k != null)
     {
       b localb = new b();
@@ -291,10 +291,10 @@ public class d
       localb.i = bool;
       localb.a = paramInt1;
       paramInt1 = this.k.a(localb);
-      AppMethodBeat.o(187114);
+      AppMethodBeat.o(221243);
       return paramInt1;
     }
-    AppMethodBeat.o(187114);
+    AppMethodBeat.o(221243);
     return 0;
   }
   
@@ -302,11 +302,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187122);
+      AppMethodBeat.i(221251);
       a(paramInt2, paramInt3, z(paramInt4), paramInt5, paramInt6);
       this.h.b(this.i);
       paramInt1 = this.h.a(paramInt1, paramInt5, paramLong);
-      AppMethodBeat.o(187122);
+      AppMethodBeat.o(221251);
       return paramInt1;
     }
     finally
@@ -414,11 +414,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187121);
+      AppMethodBeat.i(221250);
       a(paramInt1, paramInt2, z(paramInt3), paramInt4, paramInt5);
       this.h.b(this.i);
       paramInt1 = this.h.a(paramArrayOfByte, paramInt4);
-      AppMethodBeat.o(187121);
+      AppMethodBeat.o(221250);
       return paramInt1;
     }
     finally
@@ -446,11 +446,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187160);
+      AppMethodBeat.i(221289);
       if (this.h != null) {
         this.h.a(paramFloat);
       }
-      AppMethodBeat.o(187160);
+      AppMethodBeat.o(221289);
       return;
     }
     finally {}
@@ -458,7 +458,7 @@ public class d
   
   public void a(int paramInt)
   {
-    AppMethodBeat.i(187131);
+    AppMethodBeat.i(221260);
     if (paramInt != this.f)
     {
       this.f = paramInt;
@@ -466,7 +466,7 @@ public class d
         this.h.a(this.f);
       }
     }
-    AppMethodBeat.o(187131);
+    AppMethodBeat.o(221260);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -487,7 +487,7 @@ public class d
   public void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     boolean bool = false;
-    AppMethodBeat.i(187115);
+    AppMethodBeat.i(221244);
     c();
     if (this.k != null)
     {
@@ -502,18 +502,18 @@ public class d
       localb.a = paramInt1;
       this.k.a(localb, paramLong);
     }
-    AppMethodBeat.o(187115);
+    AppMethodBeat.o(221244);
   }
   
   public void a(Bitmap paramBitmap)
   {
     try
     {
-      AppMethodBeat.i(187161);
+      AppMethodBeat.i(221290);
       if (this.h != null) {
         this.h.a(paramBitmap);
       }
-      AppMethodBeat.o(187161);
+      AppMethodBeat.o(221290);
       return;
     }
     finally {}
@@ -640,10 +640,10 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187124);
+      AppMethodBeat.i(221253);
       this.l = paramd;
       TXCLog.i("TXCVideoPreprocessor", "set Process SDK performance ".concat(String.valueOf(paramd)));
-      AppMethodBeat.o(187124);
+      AppMethodBeat.o(221253);
       return;
     }
     finally
@@ -659,24 +659,24 @@ public class d
     {
       try
       {
-        AppMethodBeat.i(187126);
+        AppMethodBeat.i(221255);
         if (this.h == null)
         {
           TXCLog.e("TXCVideoPreprocessor", "setListener mDrawer is null!");
-          AppMethodBeat.o(187126);
+          AppMethodBeat.o(221255);
           return;
         }
         this.k = paramf;
         if (paramf == null)
         {
           this.h.a(null);
-          AppMethodBeat.o(187126);
+          AppMethodBeat.o(221255);
           continue;
         }
         this.h.a(this);
       }
       finally {}
-      AppMethodBeat.o(187126);
+      AppMethodBeat.o(221255);
     }
   }
   
@@ -698,11 +698,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187138);
+      AppMethodBeat.i(221267);
       if (this.h != null) {
         this.h.a(paramString);
       }
-      AppMethodBeat.o(187138);
+      AppMethodBeat.o(221267);
       return;
     }
     finally {}
@@ -710,44 +710,44 @@ public class d
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(187120);
+    AppMethodBeat.i(221249);
     if (this.h != null) {
       this.h.a(paramBoolean);
     }
-    AppMethodBeat.o(187120);
+    AppMethodBeat.o(221249);
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(187116);
+    AppMethodBeat.i(221245);
     if (this.k != null) {
       this.k.b(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     }
-    AppMethodBeat.o(187116);
+    AppMethodBeat.o(221245);
   }
   
   public void a(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(187119);
+    AppMethodBeat.i(221248);
     if (this.h != null) {
       this.h.a(paramArrayOfFloat);
     }
-    AppMethodBeat.o(187119);
+    AppMethodBeat.o(221248);
   }
   
   @TargetApi(18)
   public boolean a(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(187140);
+    AppMethodBeat.i(221269);
     if (Build.VERSION.SDK_INT < 18)
     {
-      AppMethodBeat.o(187140);
+      AppMethodBeat.o(221269);
       return false;
     }
     if (this.h != null) {
       this.h.a(paramString, paramBoolean);
     }
-    AppMethodBeat.o(187140);
+    AppMethodBeat.o(221269);
     return true;
   }
   
@@ -755,12 +755,12 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187132);
+      AppMethodBeat.i(221261);
       if (this.h != null) {
         this.h.a();
       }
       this.j = null;
-      AppMethodBeat.o(187132);
+      AppMethodBeat.o(221261);
       return;
     }
     finally {}
@@ -770,12 +770,12 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187133);
+      AppMethodBeat.i(221262);
       if (this.h != null) {
         this.h.d(paramInt);
       }
       this.q.a("beautyStyle", paramInt);
-      AppMethodBeat.o(187133);
+      AppMethodBeat.o(221262);
       return;
     }
     finally {}
@@ -862,11 +862,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187139);
+      AppMethodBeat.i(221268);
       if (this.h != null) {
         this.h.b(paramBoolean);
       }
-      AppMethodBeat.o(187139);
+      AppMethodBeat.o(221268);
       return;
     }
     finally {}
@@ -1000,7 +1000,7 @@ public class d
   
   public void f(int paramInt)
   {
-    AppMethodBeat.i(187137);
+    AppMethodBeat.i(221266);
     int i1;
     if (paramInt > 9)
     {
@@ -1012,7 +1012,7 @@ public class d
       if (this.h != null) {
         this.h.f(i1);
       }
-      AppMethodBeat.o(187137);
+      AppMethodBeat.o(221266);
       return;
       i1 = paramInt;
       if (paramInt < 0)
@@ -1027,12 +1027,12 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187141);
+      AppMethodBeat.i(221270);
       if (this.h != null) {
         this.h.h(paramInt);
       }
       this.q.a("eyeBigScale", paramInt);
-      AppMethodBeat.o(187141);
+      AppMethodBeat.o(221270);
       return;
     }
     finally {}
@@ -1042,12 +1042,12 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(187142);
+      AppMethodBeat.i(221271);
       if (this.h != null) {
         this.h.i(paramInt);
       }
       this.q.a("faceSlimLevel", paramInt);
-      AppMethodBeat.o(187142);
+      AppMethodBeat.o(221271);
       return;
     }
     finally {}
@@ -1055,180 +1055,180 @@ public class d
   
   public void i(int paramInt)
   {
-    AppMethodBeat.i(187143);
+    AppMethodBeat.i(221272);
     if (this.h != null) {
       this.h.j(paramInt);
     }
     this.q.a("faceVLevel", paramInt);
-    AppMethodBeat.o(187143);
+    AppMethodBeat.o(221272);
   }
   
   public void j(int paramInt)
   {
-    AppMethodBeat.i(187144);
+    AppMethodBeat.i(221273);
     if (this.h != null) {
       this.h.k(paramInt);
     }
     this.q.a("faceShortLevel", paramInt);
-    AppMethodBeat.o(187144);
+    AppMethodBeat.o(221273);
   }
   
   public void k(int paramInt)
   {
-    AppMethodBeat.i(187145);
+    AppMethodBeat.i(221274);
     if (this.h != null) {
       this.h.l(paramInt);
     }
     this.q.a("chinLevel", paramInt);
-    AppMethodBeat.o(187145);
+    AppMethodBeat.o(221274);
   }
   
   public void l(int paramInt)
   {
-    AppMethodBeat.i(187146);
+    AppMethodBeat.i(221275);
     if (this.h != null) {
       this.h.m(paramInt);
     }
     this.q.a("noseSlimLevel", paramInt);
-    AppMethodBeat.o(187146);
+    AppMethodBeat.o(221275);
   }
   
   public void m(int paramInt)
   {
-    AppMethodBeat.i(187147);
+    AppMethodBeat.i(221276);
     if (this.h != null) {
       this.h.n(paramInt);
     }
     this.q.a("eyeLightenLevel", paramInt);
-    AppMethodBeat.o(187147);
+    AppMethodBeat.o(221276);
   }
   
   public void n(int paramInt)
   {
-    AppMethodBeat.i(187148);
+    AppMethodBeat.i(221277);
     if (this.h != null) {
       this.h.o(paramInt);
     }
     this.q.a("toothWhitenLevel", paramInt);
-    AppMethodBeat.o(187148);
+    AppMethodBeat.o(221277);
   }
   
   public void o(int paramInt)
   {
-    AppMethodBeat.i(187149);
+    AppMethodBeat.i(221278);
     if (this.h != null) {
       this.h.p(paramInt);
     }
     this.q.a("wrinkleRemoveLevel", paramInt);
-    AppMethodBeat.o(187149);
+    AppMethodBeat.o(221278);
   }
   
   public void p(int paramInt)
   {
-    AppMethodBeat.i(187150);
+    AppMethodBeat.i(221279);
     if (this.h != null) {
       this.h.q(paramInt);
     }
     this.q.a("pounchRemoveLevel", paramInt);
-    AppMethodBeat.o(187150);
+    AppMethodBeat.o(221279);
   }
   
   public void q(int paramInt)
   {
-    AppMethodBeat.i(187151);
+    AppMethodBeat.i(221280);
     if (this.h != null) {
       this.h.r(paramInt);
     }
     this.q.a("smileLinesRemoveLevel", paramInt);
-    AppMethodBeat.o(187151);
+    AppMethodBeat.o(221280);
   }
   
   public void r(int paramInt)
   {
-    AppMethodBeat.i(187152);
+    AppMethodBeat.i(221281);
     if (this.h != null) {
       this.h.s(paramInt);
     }
     this.q.a("foreheadLevel", paramInt);
-    AppMethodBeat.o(187152);
+    AppMethodBeat.o(221281);
   }
   
   public void s(int paramInt)
   {
-    AppMethodBeat.i(187153);
+    AppMethodBeat.i(221282);
     if (this.h != null) {
       this.h.t(paramInt);
     }
     this.q.a("eyeDistanceLevel", paramInt);
-    AppMethodBeat.o(187153);
+    AppMethodBeat.o(221282);
   }
   
   public void setID(String paramString)
   {
-    AppMethodBeat.i(187162);
+    AppMethodBeat.i(221291);
     super.setID(paramString);
     setStatusValue(3001, this.q.a());
-    AppMethodBeat.o(187162);
+    AppMethodBeat.o(221291);
   }
   
   public void t(int paramInt)
   {
-    AppMethodBeat.i(187154);
+    AppMethodBeat.i(221283);
     if (this.h != null) {
       this.h.u(paramInt);
     }
     this.q.a("eyeAngleLevel", paramInt);
-    AppMethodBeat.o(187154);
+    AppMethodBeat.o(221283);
   }
   
   public void u(int paramInt)
   {
-    AppMethodBeat.i(187155);
+    AppMethodBeat.i(221284);
     if (this.h != null) {
       this.h.v(paramInt);
     }
     this.q.a("mouthShapeLevel", paramInt);
-    AppMethodBeat.o(187155);
+    AppMethodBeat.o(221284);
   }
   
   public void v(int paramInt)
   {
-    AppMethodBeat.i(187156);
+    AppMethodBeat.i(221285);
     if (this.h != null) {
       this.h.w(paramInt);
     }
     this.q.a("noseWingLevel", paramInt);
-    AppMethodBeat.o(187156);
+    AppMethodBeat.o(221285);
   }
   
   public void w(int paramInt)
   {
-    AppMethodBeat.i(187157);
+    AppMethodBeat.i(221286);
     if (this.h != null) {
       this.h.x(paramInt);
     }
     this.q.a("nosePositionLevel", paramInt);
-    AppMethodBeat.o(187157);
+    AppMethodBeat.o(221286);
   }
   
   public void x(int paramInt)
   {
-    AppMethodBeat.i(187158);
+    AppMethodBeat.i(221287);
     if (this.h != null) {
       this.h.y(paramInt);
     }
     this.q.a("lipsThicknessLevel", paramInt);
-    AppMethodBeat.o(187158);
+    AppMethodBeat.o(221287);
   }
   
   public void y(int paramInt)
   {
-    AppMethodBeat.i(187159);
+    AppMethodBeat.i(221288);
     if (this.h != null) {
       this.h.z(paramInt);
     }
     this.q.a("faceBeautyLevel", paramInt);
-    AppMethodBeat.o(187159);
+    AppMethodBeat.o(221288);
   }
   
   static class b

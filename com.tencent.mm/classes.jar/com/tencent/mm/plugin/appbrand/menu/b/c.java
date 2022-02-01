@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.l;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.menu.a.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public final class c
   implements b<com.tencent.luggage.sdk.b.a.c>
@@ -20,13 +20,13 @@ public final class c
     if (paramBoolean) {}
     for (paramString = paramd.getContext().getResources().getString(2131755372);; paramString = paramd.getContext().getResources().getString(2131755371))
     {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(147335);
-          Toast.makeText(this.kxO.getContext(), paramString, 0).show();
-          this.kxO.getRuntime().finish();
+          Toast.makeText(this.kBd.getContext(), paramString, 0).show();
+          this.kBd.getRuntime().finish();
           AppMethodBeat.o(147335);
         }
       });

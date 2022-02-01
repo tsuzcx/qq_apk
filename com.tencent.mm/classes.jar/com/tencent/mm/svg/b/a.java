@@ -8,7 +8,7 @@ public final class a<T>
   public Field bMM;
   private String classname;
   private String fieldName;
-  private boolean gcX;
+  private boolean gff;
   public Object obj;
   
   public a(Object paramObject, String paramString)
@@ -26,7 +26,7 @@ public final class a<T>
     AppMethodBeat.o(148753);
   }
   
-  public final boolean aaY()
+  public final boolean abh()
   {
     AppMethodBeat.i(148756);
     prepare();
@@ -67,12 +67,12 @@ public final class a<T>
   public final void prepare()
   {
     AppMethodBeat.i(148754);
-    if (this.gcX)
+    if (this.gff)
     {
       AppMethodBeat.o(148754);
       return;
     }
-    this.gcX = true;
+    this.gff = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try

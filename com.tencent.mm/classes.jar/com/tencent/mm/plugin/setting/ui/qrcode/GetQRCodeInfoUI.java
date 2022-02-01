@@ -9,34 +9,34 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.model.bo;
-import com.tencent.mm.model.bo.a;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bq.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.setting.b;
+import com.tencent.mm.plugin.setting.c;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cyw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.base.h;
 
 public class GetQRCodeInfoUI
   extends MMBaseActivity
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private ProgressDialog fMu = null;
-  private com.tencent.mm.plugin.messenger.a.f yDI;
+  private ProgressDialog fOC = null;
+  private com.tencent.mm.plugin.messenger.a.f yTN;
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(73839);
-    b.iRG.p(new Intent(), this);
+    c.iUz.p(new Intent(), this);
     finish();
     AppMethodBeat.o(73839);
   }
@@ -53,11 +53,11 @@ public class GetQRCodeInfoUI
       AppMethodBeat.o(73835);
       return;
     }
-    paramBundle = bt.nullAsNil(((Uri)localObject).getHost());
-    localObject = bt.nullAsNil(((Uri)localObject).getScheme());
+    paramBundle = bu.nullAsNil(((Uri)localObject).getHost());
+    localObject = bu.nullAsNil(((Uri)localObject).getScheme());
     if ((("http".equals(localObject)) && ("weixin.qq.com".equals(paramBundle))) || (("weixin".equals(localObject)) && ("qr".equals(paramBundle))))
     {
-      com.tencent.mm.kernel.g.aiU().a(new bo(new bo.a()
+      com.tencent.mm.kernel.g.ajj().a(new bq(new bq.a()
       {
         public final void a(com.tencent.mm.network.e paramAnonymouse)
         {
@@ -68,13 +68,13 @@ public class GetQRCodeInfoUI
             AppMethodBeat.o(73831);
             return;
           }
-          if ((com.tencent.mm.kernel.g.ajx()) && (!a.aiE()))
+          if ((com.tencent.mm.kernel.g.ajM()) && (!a.aiT()))
           {
             GetQRCodeInfoUI.a(GetQRCodeInfoUI.this, GetQRCodeInfoUI.this.getIntent().getDataString());
             AppMethodBeat.o(73831);
             return;
           }
-          b.iRG.p(new Intent(), GetQRCodeInfoUI.this);
+          c.iUz.p(new Intent(), GetQRCodeInfoUI.this);
           GetQRCodeInfoUI.this.finish();
           AppMethodBeat.o(73831);
         }
@@ -90,10 +90,10 @@ public class GetQRCodeInfoUI
   {
     AppMethodBeat.i(73837);
     super.onDestroy();
-    if (this.yDI != null) {
-      com.tencent.mm.kernel.g.aiU().a(this.yDI);
+    if (this.yTN != null) {
+      com.tencent.mm.kernel.g.ajj().a(this.yTN);
     }
-    com.tencent.mm.kernel.g.aiU().b(106, this);
+    com.tencent.mm.kernel.g.ajj().b(106, this);
     AppMethodBeat.o(73837);
   }
   
@@ -102,7 +102,7 @@ public class GetQRCodeInfoUI
     AppMethodBeat.i(73836);
     super.onResume();
     getString(2131755906);
-    this.fMu = h.b(this, getString(2131755224), true, new DialogInterface.OnCancelListener()
+    this.fOC = h.b(this, getString(2131755224), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -117,11 +117,11 @@ public class GetQRCodeInfoUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(73838);
-    ad.i("MicroMsg.GetQRCodeInfoUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fMu != null)
+    ae.i("MicroMsg.GetQRCodeInfoUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
     if ((paramInt1 == 4) && (paramInt2 == -2004))
     {
@@ -151,15 +151,15 @@ public class GetQRCodeInfoUI
       AppMethodBeat.o(73838);
       return;
     }
-    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramn).dlC();
-    paramn = z.a(paramString.GbY);
-    p.aEk().h(paramn, z.a(paramString.Fvm));
+    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramn).doB();
+    paramn = z.a(paramString.GuF);
+    p.aEA().h(paramn, z.a(paramString.FNK));
     Intent localIntent = new Intent();
     ((k)com.tencent.mm.kernel.g.ab(k.class)).a(localIntent, paramString, 30);
-    if (bt.nullAsNil(paramn).length() > 0)
+    if (bu.nullAsNil(paramn).length() > 0)
     {
-      if ((paramString.GNU & 0x8) > 0) {
-        com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramn + ",30");
+      if ((paramString.Hhu & 0x8) > 0) {
+        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10298, paramn + ",30");
       }
       d.c(this, "profile", ".ui.ContactInfoUI", 1);
     }

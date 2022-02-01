@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 public abstract interface AddressView$a
 {
-  public abstract CharSequence abq(int paramInt);
+  public abstract CharSequence abY(int paramInt);
 }
 
 

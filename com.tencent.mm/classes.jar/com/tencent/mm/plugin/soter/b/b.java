@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class b
   extends l
 {
-  c.a AES;
-  c.b AET;
+  c.a AWv;
+  c.b AWw;
   
   b()
   {
     AppMethodBeat.i(130804);
-    this.AES = new c.a();
-    this.AET = new c.b();
+    this.AWv = new c.a();
+    this.AWw = new c.b();
     AppMethodBeat.o(130804);
   }
   
@@ -26,12 +26,12 @@ final class b
   
   public final l.d getReqObjImp()
   {
-    return this.AES;
+    return this.AWv;
   }
   
   public final l.e getRespObj()
   {
-    return this.AET;
+    return this.AWw;
   }
   
   public final int getType()

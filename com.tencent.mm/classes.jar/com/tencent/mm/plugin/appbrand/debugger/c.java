@@ -4,9 +4,9 @@ import android.webkit.ValueCallback;
 
 public final class c
 {
-  public String dln;
-  public ValueCallback<String> kaI;
-  public long kaJ;
+  public String dmp;
+  public ValueCallback<String> kdY;
+  public long kdZ;
   public int size;
 }
 

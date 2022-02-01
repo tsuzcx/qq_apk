@@ -14,7 +14,7 @@ public class e
   final char[] b;
   boolean c;
   j[] d;
-  e.l[] e;
+  l[] e;
   byte[] f;
   private final c g;
   private final a h;
@@ -203,7 +203,7 @@ public class e
       {
         k = 24;
         m /= k;
-        this.e = new e.l[m];
+        this.e = new l[m];
         arrayOfChar = new char[1];
         k = 0;
         if (k >= m) {
@@ -212,15 +212,15 @@ public class e
         if (!bool) {
           break label192;
         }
-        localObject2 = new e.i();
-        ((e.i)localObject2).c = localc.b();
+        localObject2 = new i();
+        ((i)localObject2).c = localc.b();
         localc.a(arrayOfChar);
-        ((e.i)localObject2).d = arrayOfChar[0];
+        ((i)localObject2).d = arrayOfChar[0];
         localc.a(arrayOfChar);
-        ((e.i)localObject2).e = arrayOfChar[0];
-        ((e.i)localObject2).a = localc.c();
-        ((e.i)localObject2).b = localc.c();
-        ((e.i)localObject2).f = localc.a();
+        ((i)localObject2).e = arrayOfChar[0];
+        ((i)localObject2).a = localc.c();
+        ((i)localObject2).b = localc.c();
+        ((i)localObject2).f = localc.a();
         this.e[k] = localObject2;
       }
       for (;;)
@@ -230,15 +230,15 @@ public class e
         k = 16;
         break;
         label192:
-        localObject2 = new e.e();
-        ((e.e)localObject2).c = localc.b();
-        ((e.e)localObject2).a = localc.b();
-        ((e.e)localObject2).b = localc.b();
+        localObject2 = new e();
+        ((e)localObject2).c = localc.b();
+        ((e)localObject2).a = localc.b();
+        ((e)localObject2).b = localc.b();
         localc.a(arrayOfChar);
-        ((e.e)localObject2).d = arrayOfChar[0];
+        ((e)localObject2).d = arrayOfChar[0];
         localc.a(arrayOfChar);
-        ((e.e)localObject2).e = arrayOfChar[0];
-        ((e.e)localObject2).f = localc.a();
+        ((e)localObject2).e = arrayOfChar[0];
+        ((e)localObject2).f = localc.a();
         this.e[k] = localObject2;
       }
       label286:
@@ -452,6 +452,13 @@ public class e
     }
   }
   
+  static class e
+    extends e.l
+  {
+    int a;
+    int b;
+  }
+  
   static class f
     extends e.a
   {
@@ -502,6 +509,13 @@ public class e
     }
   }
   
+  static class i
+    extends e.l
+  {
+    long a;
+    long b;
+  }
+  
   static abstract class j
   {
     int g;
@@ -518,6 +532,14 @@ public class e
     public abstract int a();
     
     public abstract long b();
+  }
+  
+  static abstract class l
+  {
+    int c;
+    char d;
+    char e;
+    short f;
   }
 }
 

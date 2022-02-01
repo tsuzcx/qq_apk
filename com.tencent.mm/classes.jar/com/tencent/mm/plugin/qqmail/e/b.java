@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.qqmail.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
@@ -17,29 +17,29 @@ public final class b
   implements k
 {
   private f callback;
-  public com.tencent.mm.al.b hWL;
+  public com.tencent.mm.ak.b hZD;
   
   public b()
   {
-    AppMethodBeat.i(215251);
+    AppMethodBeat.i(217997);
     b.a locala = new b.a();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/xmmailbroker/mb_getunreadcount";
     aq localaq = new aq();
-    g.ajA();
+    g.ajP();
     localaq.uin = a.getUin();
-    locala.hNM = localaq;
-    locala.hNN = new ar();
-    this.hWL = locala.aDC();
-    AppMethodBeat.o(215251);
+    locala.hQF = localaq;
+    locala.hQG = new ar();
+    this.hZD = locala.aDS();
+    AppMethodBeat.o(217997);
   }
   
   public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(215252);
+    AppMethodBeat.i(217998);
     this.callback = paramf;
-    int i = dispatch(parame, this.hWL, this);
-    AppMethodBeat.o(215252);
+    int i = dispatch(parame, this.hZD, this);
+    AppMethodBeat.o(217998);
     return i;
   }
   
@@ -50,9 +50,9 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215253);
+    AppMethodBeat.i(217999);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(215253);
+    AppMethodBeat.o(217999);
   }
 }
 

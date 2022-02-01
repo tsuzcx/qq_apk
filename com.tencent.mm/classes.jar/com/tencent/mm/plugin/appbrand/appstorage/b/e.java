@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/TransferTaskResult;", "", "isTaskSuccess", "", "isTaskNeedTransfer", "errorMsg", "", "(ZZLjava/lang/String;)V", "getErrorMsg", "()Ljava/lang/String;", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/TransferTaskResult;", "", "isTaskSuccess", "", "isTaskNeedTransfer", "errorMsg", "", "(ZZLjava/lang/String;)V", "getErrorMsg", "()Ljava/lang/String;", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
 public final class e
 {
   private final String errorMsg;
-  final boolean jNV;
-  private final boolean jNW;
+  final boolean jRm;
+  private final boolean jRn;
   
   public e(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     AppMethodBeat.i(175127);
-    this.jNV = paramBoolean1;
-    this.jNW = paramBoolean2;
+    this.jRm = paramBoolean1;
+    this.jRn = paramBoolean2;
     this.errorMsg = paramString;
     AppMethodBeat.o(175127);
   }
@@ -28,7 +28,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((this.jNV != paramObject.jNV) || (this.jNW != paramObject.jNW) || (!p.i(this.errorMsg, paramObject.errorMsg))) {}
+        if ((this.jRm != paramObject.jRm) || (this.jRn != paramObject.jRn) || (!p.i(this.errorMsg, paramObject.errorMsg))) {}
       }
     }
     else
@@ -48,7 +48,7 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(175129);
-    String str = "TransferTaskResult(isTaskSuccess=" + this.jNV + ", isTaskNeedTransfer=" + this.jNW + ", errorMsg=" + this.errorMsg + ")";
+    String str = "TransferTaskResult(isTaskSuccess=" + this.jRm + ", isTaskNeedTransfer=" + this.jRn + ", errorMsg=" + this.errorMsg + ")";
     AppMethodBeat.o(175129);
     return str;
   }

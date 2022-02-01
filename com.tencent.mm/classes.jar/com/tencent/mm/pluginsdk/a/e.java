@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.a;
 
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.SmileyInfo;
 import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
@@ -13,41 +13,41 @@ public abstract interface e
 {
   public abstract byte[] a(EmojiInfo paramEmojiInfo);
   
-  public abstract void abD(String paramString);
+  public abstract EmojiInfo acj(String paramString);
   
-  public abstract boolean abE(String paramString);
+  public abstract String acm(String paramString);
   
-  public abstract void abF(String paramString);
+  public abstract void acu(String paramString);
   
-  public abstract void abG(String paramString);
+  public abstract boolean acv(String paramString);
   
-  public abstract EmojiInfo abs(String paramString);
+  public abstract void acw(String paramString);
   
-  public abstract String abv(String paramString);
+  public abstract void acx(String paramString);
   
-  public abstract boolean afc();
+  public abstract boolean afq();
   
-  public abstract boolean afd();
+  public abstract boolean afr();
   
-  public abstract <T> T c(al.a parama, T paramT);
+  public abstract <T> T c(am.a parama, T paramT);
   
-  public abstract void cgA();
+  public abstract ArrayList<SmileyInfo> chL();
   
-  public abstract boolean cgB();
+  public abstract ArrayList<SmileyPanelConfigInfo> chM();
   
-  public abstract List<v> cgC();
+  public abstract String chP();
   
-  public abstract void cgD();
+  public abstract void chQ();
   
-  public abstract boolean cgE();
+  public abstract boolean chR();
   
-  public abstract ArrayList<SmileyInfo> cgv();
+  public abstract List<v> chS();
   
-  public abstract ArrayList<SmileyPanelConfigInfo> cgw();
+  public abstract void chT();
   
-  public abstract String cgz();
+  public abstract boolean chU();
   
-  public abstract void d(al.a parama, Object paramObject);
+  public abstract void d(am.a parama, Object paramObject);
   
   public abstract String getAccPath();
   
@@ -71,7 +71,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.a.e
  * JD-Core Version:    0.7.0.1
  */

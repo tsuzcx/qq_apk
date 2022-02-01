@@ -14,7 +14,7 @@ public class TbsVideoCacheTask
   Context a;
   TbsVideoCacheListener b;
   private boolean c;
-  private q d;
+  private s d;
   private String e;
   private String f;
   private Object g;
@@ -44,8 +44,8 @@ public class TbsVideoCacheTask
     Object localObject;
     if (this.d == null)
     {
-      e.a(true).a(this.a, false, false, null);
-      localObject = e.a(true).a();
+      g.a(true).a(this.a, false, false, null);
+      localObject = g.a(true).a();
       if (localObject == null) {
         break label110;
       }
@@ -53,7 +53,7 @@ public class TbsVideoCacheTask
       if (localObject == null) {
         break label129;
       }
-      this.d = new q((DexLoader)localObject);
+      this.d = new s((DexLoader)localObject);
     }
     for (;;)
     {

@@ -6,8 +6,8 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.wallet_core.ui.f;
 
 final class b$1
   implements View.OnClickListener
@@ -19,9 +19,9 @@ final class b$1
     AppMethodBeat.i(66802);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/order/ui/preference/FetchOrderPrefFactory$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (!bt.isNullOrNil(this.wCn.wCG)) {
-      e.ac(this.val$context, this.wCn.wCG);
+    a.b("com/tencent/mm/plugin/order/ui/preference/FetchOrderPrefFactory$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (!bu.isNullOrNil(this.wRY.wSr)) {
+      f.ae(this.val$context, this.wRY.wSr);
     }
     a.a(this, "com/tencent/mm/plugin/order/ui/preference/FetchOrderPrefFactory$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66802);

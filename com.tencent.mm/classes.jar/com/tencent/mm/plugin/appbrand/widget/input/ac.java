@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 
 public abstract interface ac
 {
-  public abstract boolean bEw();
+  public abstract boolean bFo();
 }
 
 

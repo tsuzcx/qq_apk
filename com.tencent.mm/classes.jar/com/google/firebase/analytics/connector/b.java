@@ -28,7 +28,7 @@ public final class b
   }
   
   @KeepForSdk
-  public static a am(Context paramContext)
+  public static a an(Context paramContext)
   {
     AppMethodBeat.i(116767);
     Preconditions.checkNotNull(paramContext);
@@ -129,7 +129,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.analytics.connector.b
  * JD-Core Version:    0.7.0.1
  */

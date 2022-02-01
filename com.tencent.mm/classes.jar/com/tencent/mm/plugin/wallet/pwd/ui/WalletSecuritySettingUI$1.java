@@ -12,7 +12,7 @@ final class WalletSecuritySettingUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(69790);
-    this.CNK.finish();
+    this.Dfs.finish();
     AppMethodBeat.o(69790);
     return false;
   }

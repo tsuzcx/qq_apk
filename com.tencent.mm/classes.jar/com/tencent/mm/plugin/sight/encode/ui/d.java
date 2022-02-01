@@ -16,9 +16,9 @@ import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -27,61 +27,61 @@ import java.util.List;
 public final class d
   implements TextWatcher, View.OnClickListener, View.OnFocusChangeListener, l
 {
-  private ap handler;
-  public EditText tPG;
-  public TextView yUL;
-  public View yUM;
-  private com.tencent.mm.plugin.fts.a.a.a yUN;
-  InputMethodManager yUO;
-  public d.b yUP;
-  public a yUQ;
+  private aq handler;
+  public EditText uax;
+  public TextView zkV;
+  public View zkW;
+  private com.tencent.mm.plugin.fts.a.a.a zkX;
+  InputMethodManager zkY;
+  public d.b zkZ;
+  public a zla;
   
   public d()
   {
     AppMethodBeat.i(28746);
-    this.yUP = d.b.yUS;
-    this.handler = new ap(Looper.getMainLooper());
+    this.zkZ = d.b.zlc;
+    this.handler = new aq(Looper.getMainLooper());
     AppMethodBeat.o(28746);
   }
   
-  private void dQN()
+  private void dUk()
   {
     AppMethodBeat.i(28750);
-    if (dQL())
+    if (dUi())
     {
       AppMethodBeat.o(28750);
       return;
     }
-    this.yUP = d.b.yUR;
-    this.yUM.setVisibility(0);
-    if (this.yUQ != null) {
-      this.yUQ.dQP();
+    this.zkZ = d.b.zlb;
+    this.zkW.setVisibility(0);
+    if (this.zla != null) {
+      this.zla.dUm();
     }
-    this.tPG.requestFocus();
-    this.yUO.showSoftInput(this.tPG, 0);
+    this.uax.requestFocus();
+    this.zkY.showSoftInput(this.uax, 0);
     AppMethodBeat.o(28750);
   }
   
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(28753);
-    if (bt.isNullOrNil(paramEditable.toString()))
+    if (bu.isNullOrNil(paramEditable.toString()))
     {
       AppMethodBeat.o(28753);
       return;
     }
     paramEditable = paramEditable.toString();
-    ad.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
-    if (this.yUN != null)
+    ae.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
+    if (this.zkX != null)
     {
-      ((n)g.ad(n.class)).cancelSearchTask(this.yUN);
-      this.yUN = null;
+      ((n)g.ad(n.class)).cancelSearchTask(this.zkX);
+      this.zkX = null;
     }
     HashSet localHashSet = new HashSet();
-    com.tencent.mm.plugin.fts.a.c.b localb = com.tencent.mm.plugin.fts.a.c.b.tvI;
-    ap localap = this.handler;
-    paramEditable = j.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localap);
-    this.yUN = ((n)g.ad(n.class)).search(2, paramEditable);
+    com.tencent.mm.plugin.fts.a.c.b localb = com.tencent.mm.plugin.fts.a.c.b.tGz;
+    aq localaq = this.handler;
+    paramEditable = j.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localaq);
+    this.zkX = ((n)g.ad(n.class)).search(2, paramEditable);
     AppMethodBeat.o(28753);
   }
   
@@ -90,56 +90,56 @@ public final class d
     AppMethodBeat.i(28752);
     if (paramk.bZU == 0)
     {
-      if ((paramk.tvl == null) || (this.yUQ == null))
+      if ((paramk.tGc == null) || (this.zla == null))
       {
         AppMethodBeat.o(28752);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      paramk = paramk.tvl.iterator();
+      paramk = paramk.tGc.iterator();
       while (paramk.hasNext()) {
-        localArrayList.add(((m)paramk.next()).tuh);
+        localArrayList.add(((m)paramk.next()).tEY);
       }
-      this.yUQ.fE(localArrayList);
+      this.zla.fM(localArrayList);
     }
     AppMethodBeat.o(28752);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final boolean dQL()
+  public final boolean dUi()
   {
-    return this.yUP == d.b.yUR;
+    return this.zkZ == d.b.zlb;
   }
   
-  public final void dQM()
+  public final void dUj()
   {
     AppMethodBeat.i(28749);
-    if (dQL())
+    if (dUi())
     {
-      dQO();
+      dUl();
       AppMethodBeat.o(28749);
       return;
     }
-    dQN();
+    dUk();
     AppMethodBeat.o(28749);
   }
   
-  public final void dQO()
+  public final void dUl()
   {
     AppMethodBeat.i(28751);
-    if (!dQL())
+    if (!dUi())
     {
       AppMethodBeat.o(28751);
       return;
     }
-    this.tPG.setText("");
-    this.tPG.clearFocus();
-    bt.hideVKB(this.tPG);
-    this.yUP = d.b.yUS;
-    this.yUM.setVisibility(8);
-    if (this.yUQ != null) {
-      this.yUQ.dQQ();
+    this.uax.setText("");
+    this.uax.clearFocus();
+    bu.hideVKB(this.uax);
+    this.zkZ = d.b.zlc;
+    this.zkW.setVisibility(8);
+    if (this.zla != null) {
+      this.zla.dUn();
     }
     AppMethodBeat.o(28751);
   }
@@ -149,16 +149,16 @@ public final class d
     AppMethodBeat.i(28748);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (paramView.getId() == 2131304397)
     {
-      if (!dQL())
+      if (!dUi())
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28748);
         return;
       }
-      dQM();
+      dUj();
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(28748);
@@ -169,8 +169,8 @@ public final class d
     AppMethodBeat.i(28747);
     if (!paramBoolean)
     {
-      this.tPG.clearFocus();
-      bt.hideVKB(this.tPG);
+      this.uax.clearFocus();
+      bu.hideVKB(this.uax);
     }
     AppMethodBeat.o(28747);
   }
@@ -179,11 +179,11 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void dQP();
+    public abstract void dUm();
     
-    public abstract void dQQ();
+    public abstract void dUn();
     
-    public abstract void fE(List<String> paramList);
+    public abstract void fM(List<String> paramList);
   }
 }
 

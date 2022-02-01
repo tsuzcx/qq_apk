@@ -6,7 +6,7 @@ public abstract interface b
   
   public abstract void b(i.c paramc);
   
-  public abstract void gds();
+  public abstract void ghU();
 }
 
 

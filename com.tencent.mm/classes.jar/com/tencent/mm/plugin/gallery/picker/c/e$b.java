@@ -8,17 +8,17 @@ import d.l;
 import d.z;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryMediaListener;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryMediaInAlbumFinished;", "()V", "callback", "Lkotlin/Function3;", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "", "", "getCallback", "()Lkotlin/jvm/functions/Function3;", "setCallback", "(Lkotlin/jvm/functions/Function3;)V", "ticket", "getTicket", "()J", "setTicket", "(J)V", "onQueryMediaFinished", "mediaItems", "t", "isFirstNotify", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryMediaListener;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryMediaInAlbumFinished;", "()V", "callback", "Lkotlin/Function3;", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "", "", "getCallback", "()Lkotlin/jvm/functions/Function3;", "setCallback", "(Lkotlin/jvm/functions/Function3;)V", "ticket", "getTicket", "()J", "setTicket", "(J)V", "onQueryMediaFinished", "mediaItems", "t", "isFirstNotify", "plugin-gallery_release"})
 public final class e$b
   implements i.c
 {
-  long iqK;
-  q<? super Boolean, ? super LinkedList<GalleryItem.MediaItem>, ? super Long, z> tJo;
+  long itF;
+  q<? super Boolean, ? super LinkedList<GalleryItem.MediaItem>, ? super Long, z> tUf;
   
   public e$b()
   {
     AppMethodBeat.i(164904);
-    this.iqK = System.currentTimeMillis();
+    this.itF = System.currentTimeMillis();
     AppMethodBeat.o(164904);
   }
   
@@ -26,9 +26,9 @@ public final class e$b
   {
     z localz = null;
     AppMethodBeat.i(164903);
-    long l = System.currentTimeMillis() - this.iqK;
+    long l = System.currentTimeMillis() - this.itF;
     int i;
-    if (this.iqK == paramLong)
+    if (this.itF == paramLong)
     {
       i = 1;
       if (i == 0) {
@@ -39,21 +39,21 @@ public final class e$b
     {
       if (paramLinkedList != null)
       {
-        q localq = this.tJo;
+        q localq = this.tUf;
         if (localq != null)
         {
           localq.d(Boolean.TRUE, paramLinkedList, Long.valueOf(l));
-          localz = z.MKo;
+          localz = z.Nhr;
         }
         if (localz != null) {}
       }
       else
       {
-        paramLinkedList = ((b)this).tJo;
+        paramLinkedList = ((b)this).tUf;
         if (paramLinkedList != null)
         {
           paramLinkedList.d(Boolean.FALSE, new LinkedList(), Long.valueOf(l));
-          paramLinkedList = z.MKo;
+          paramLinkedList = z.Nhr;
         }
       }
       AppMethodBeat.o(164903);

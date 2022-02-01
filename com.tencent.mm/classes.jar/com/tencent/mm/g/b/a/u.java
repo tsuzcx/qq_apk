@@ -6,41 +6,41 @@ import com.tencent.mm.plugin.report.a;
 public final class u
   extends a
 {
-  public long dTf;
-  public long dTg;
-  public long dTh = 0L;
-  public String dTi = "";
+  public long dUv;
+  public long dUw;
+  public long dUx = 0L;
+  public String dUy = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(197134);
+    AppMethodBeat.i(221072);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTf);
+    ((StringBuffer)localObject).append(this.dUv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTg);
+    ((StringBuffer)localObject).append(this.dUw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTh);
+    ((StringBuffer)localObject).append(this.dUx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTi);
+    ((StringBuffer)localObject).append(this.dUy);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(197134);
+    axO((String)localObject);
+    AppMethodBeat.o(221072);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(197135);
+    AppMethodBeat.i(221073);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickMethod:").append(this.dTf);
+    ((StringBuffer)localObject).append("ClickMethod:").append(this.dUv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadNum:").append(this.dTg);
+    ((StringBuffer)localObject).append("UnreadNum:").append(this.dUw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpToChatType:").append(this.dTh);
+    ((StringBuffer)localObject).append("JumpToChatType:").append(this.dUx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UserName:").append(this.dTi);
+    ((StringBuffer)localObject).append("UserName:").append(this.dUy);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(197135);
+    AppMethodBeat.o(221073);
     return localObject;
   }
   

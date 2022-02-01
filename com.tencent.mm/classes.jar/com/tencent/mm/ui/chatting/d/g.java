@@ -10,107 +10,107 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.b;
-import com.tencent.mm.bc.p;
-import com.tencent.mm.bc.t;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.bb.b;
+import com.tencent.mm.bb.p;
+import com.tencent.mm.bb.t;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.pluginsdk.ui.f;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.d.b.af;
 import java.util.HashMap;
 
-@com.tencent.mm.ui.chatting.d.a.a(fFo=com.tencent.mm.ui.chatting.d.b.c.class)
+@com.tencent.mm.ui.chatting.d.a.a(fJv=com.tencent.mm.ui.chatting.d.b.c.class)
 public class g
   extends a
   implements com.tencent.mm.ui.chatting.d.b.c
 {
-  private static HashMap<String, f> JHy;
-  private Bitmap JHu;
-  private ImageView JHv;
-  private boolean JHw;
-  private final k.a JHx;
-  private ImageView rDx;
-  private f xmv;
+  private static HashMap<String, f> Kcp;
+  private Bitmap Kcl;
+  private ImageView Kcm;
+  private boolean Kcn;
+  private final k.a Kco;
+  private ImageView rLI;
+  private f xCs;
   
   static
   {
     AppMethodBeat.i(35176);
-    JHy = new HashMap();
+    Kcp = new HashMap();
     AppMethodBeat.o(35176);
   }
   
   public g()
   {
     AppMethodBeat.i(35167);
-    this.JHw = true;
-    this.JHx = new k.a()
+    this.Kcn = true;
+    this.Kco = new k.a()
     {
       public final void a(String paramAnonymousString, m paramAnonymousm)
       {
         AppMethodBeat.i(35166);
-        ad.d("MicroMsg.ChattingUI.ChattingBackgroundComponent", "onBGChange event:%s", new Object[] { paramAnonymousString });
-        if ((paramAnonymousString != null) && ((paramAnonymousString.equals(g.this.cWM.getTalkerUserName())) || (paramAnonymousString.equals("*")))) {
-          g.this.eRV();
+        ae.d("MicroMsg.ChattingUI.ChattingBackgroundComponent", "onBGChange event:%s", new Object[] { paramAnonymousString });
+        if ((paramAnonymousString != null) && ((paramAnonymousString.equals(g.this.cXJ.getTalkerUserName())) || (paramAnonymousString.equals("*")))) {
+          g.this.eVH();
         }
         AppMethodBeat.o(35166);
       }
     };
-    this.xmv = null;
+    this.xCs = null;
     AppMethodBeat.o(35167);
   }
   
-  private boolean cp(Context paramContext, String paramString)
+  private boolean cq(Context paramContext, String paramString)
   {
     AppMethodBeat.i(35172);
-    if (JHy.containsKey(paramString))
+    if (Kcp.containsKey(paramString))
     {
-      this.xmv = ((f)JHy.get(paramString));
+      this.xCs = ((f)Kcp.get(paramString));
       AppMethodBeat.o(35172);
       return true;
     }
     try
     {
-      this.xmv = new f(bt.convertStreamToString(paramContext.getAssets().open(paramString)), this.cWM.JOR.getContext());
-      JHy.put(paramString, this.xmv);
+      this.xCs = new f(bu.convertStreamToString(paramContext.getAssets().open(paramString)), this.cXJ.Kkd.getContext());
+      Kcp.put(paramString, this.xCs);
       AppMethodBeat.o(35172);
       return true;
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.ChattingUI.ChattingBackgroundComponent", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.ChattingUI.ChattingBackgroundComponent", paramContext, "", new Object[0]);
       AppMethodBeat.o(35172);
     }
     return false;
   }
   
-  private void fDh()
+  private void fHj()
   {
     AppMethodBeat.i(35169);
-    if ((this.JHu != null) && (!this.JHu.isRecycled()))
+    if ((this.Kcl != null) && (!this.Kcl.isRecycled()))
     {
-      ad.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "recycle bitmap:%s", new Object[] { this.JHu.toString() });
-      this.JHu.recycle();
+      ae.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "recycle bitmap:%s", new Object[] { this.Kcl.toString() });
+      this.Kcl.recycle();
     }
-    if (this.JHv != null) {
-      this.JHv.setImageBitmap(null);
+    if (this.Kcm != null) {
+      this.Kcm.setImageBitmap(null);
     }
-    if (this.rDx != null) {
-      this.rDx.setVisibility(8);
+    if (this.rLI != null) {
+      this.rLI.setVisibility(8);
     }
     AppMethodBeat.o(35169);
   }
   
-  private int fDi()
+  private int fHk()
   {
     AppMethodBeat.i(35170);
-    int i = this.cWM.JOR.getMMResources().getColor(2131100207);
+    int i = this.cXJ.Kkd.getMMResources().getColor(2131100207);
     AppMethodBeat.o(35170);
     return i;
   }
@@ -118,53 +118,53 @@ public class g
   private void setBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(35171);
-    fDh();
-    if (this.JHv == null)
+    fHj();
+    if (this.Kcm == null)
     {
-      View localView = this.cWM.findViewById(2131298066);
+      View localView = this.cXJ.findViewById(2131298066);
       if (localView != null) {
         localView.setBackgroundColor(paramInt);
       }
       AppMethodBeat.o(35171);
       return;
     }
-    this.JHv.setImageDrawable(new ColorDrawable(paramInt));
+    this.Kcm.setImageDrawable(new ColorDrawable(paramInt));
     AppMethodBeat.o(35171);
   }
   
-  public final void eRV()
+  public final void eVH()
   {
     int j = 0;
     AppMethodBeat.i(35168);
-    com.tencent.mm.bc.a locala;
-    if (((af)this.cWM.bh(af.class)).fEz())
+    com.tencent.mm.bb.a locala;
+    if (((af)this.cXJ.bh(af.class)).fID())
     {
       locala = null;
       if (locala != null) {
         break label115;
       }
-      ba.aBQ();
+      bc.aCg();
     }
     label115:
-    for (int i = ((Integer)com.tencent.mm.model.c.ajl().get(12311, Integer.valueOf(-2))).intValue();; i = locala.iiM)
+    for (int i = ((Integer)com.tencent.mm.model.c.ajA().get(12311, Integer.valueOf(-2))).intValue();; i = locala.ilF)
     {
       if (i != -2) {
         break label124;
       }
-      setBackgroundColor(fDi());
-      cp(this.cWM.JOR.getContext(), "chatting/purecolor_chat.xml");
+      setBackgroundColor(fHk());
+      cq(this.cXJ.Kkd.getContext(), "chatting/purecolor_chat.xml");
       AppMethodBeat.o(35168);
       return;
-      locala = t.aKa().Gb(this.cWM.getTalkerUserName());
+      locala = t.aKt().GD(this.cXJ.getTalkerUserName());
       break;
     }
     label124:
-    t.aJZ();
-    int k = p.cF(this.cWM.JOR.getContext());
+    t.aKs();
+    int k = p.cH(this.cXJ.Kkd.getContext());
     switch (k)
     {
     default: 
-      this.JHw = true;
+      this.Kcn = true;
     }
     for (;;)
     {
@@ -174,23 +174,23 @@ public class g
         default: 
           i = -1;
           if (i != -1) {
-            fDh();
+            fHj();
           }
           break;
         }
       }
       try
       {
-        this.JHu = BitmapFactory.decodeResource(this.cWM.JOR.getMMResources(), i);
+        this.Kcl = BitmapFactory.decodeResource(this.cXJ.Kkd.getMMResources(), i);
         label233:
-        if (this.JHu == null)
+        if (this.Kcl == null)
         {
-          ad.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, resId = ".concat(String.valueOf(i)));
-          setBackgroundColor(this.cWM.JOR.getMMResources().getColor(2131100140));
-          cp(this.cWM.JOR.getContext(), "chatting/reserved_chat.xml");
+          ae.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, resId = ".concat(String.valueOf(i)));
+          setBackgroundColor(this.cXJ.Kkd.getMMResources().getColor(2131100140));
+          cq(this.cXJ.Kkd.getContext(), "chatting/reserved_chat.xml");
           AppMethodBeat.o(35168);
           return;
-          this.JHw = false;
+          this.Kcn = false;
           continue;
           i = 2131231650;
         }
@@ -199,31 +199,31 @@ public class g
       {
         do
         {
-          ad.printErrStackTrace("MicroMsg.Crash", localIncompatibleClassChangeError, "May cause dvmFindCatchBlock crash!", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.Crash", localIncompatibleClassChangeError, "May cause dvmFindCatchBlock crash!", new Object[0]);
           localObject = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(localIncompatibleClassChangeError);
           AppMethodBeat.o(35168);
           throw ((Throwable)localObject);
-          if (this.JHv == null) {
-            this.JHv = ((ImageView)this.cWM.findViewById(2131298065));
+          if (this.Kcm == null) {
+            this.Kcm = ((ImageView)this.cXJ.findViewById(2131298065));
           }
-          if (this.rDx == null) {
-            this.rDx = ((ImageView)this.cWM.findViewById(2131297208));
+          if (this.rLI == null) {
+            this.rLI = ((ImageView)this.cXJ.findViewById(2131297208));
           }
-          if (this.JHv != null) {
-            this.JHv.setImageBitmap(this.JHu);
+          if (this.Kcm != null) {
+            this.Kcm.setImageBitmap(this.Kcl);
           }
-        } while (this.rDx == null);
-        Object localObject = this.rDx;
+        } while (this.rLI == null);
+        Object localObject = this.rLI;
         if (al.isDarkMode()) {}
         for (i = 0;; i = 8)
         {
           ((ImageView)localObject).setVisibility(i);
           break;
         }
-        p localp = t.aJZ();
+        p localp = t.aKs();
         if (i > 0)
         {
-          cp(this.cWM.JOR.getContext(), "chatting/default_chat.xml");
+          cq(this.cXJ.Kkd.getContext(), "chatting/default_chat.xml");
           switch (k)
           {
           default: 
@@ -232,13 +232,13 @@ public class g
         }
         for (;;)
         {
-          fDh();
-          this.JHu = u.IT((String)localObject);
-          if (this.JHu != null) {
+          fHj();
+          this.Kcl = u.Js((String)localObject);
+          if (this.Kcl != null) {
             break;
           }
-          ad.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, path = ".concat(String.valueOf(localObject)));
-          setBackgroundColor(fDi());
+          ae.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, path = ".concat(String.valueOf(localObject)));
+          setBackgroundColor(fHk());
           AppMethodBeat.o(35168);
           return;
           localObject = localp.dm(i, 1) + "horizontal_hdpi.jpg";
@@ -249,25 +249,25 @@ public class g
           continue;
           localObject = localp.dm(i, 1) + "vertical_ldpi.jpg";
           continue;
-          cp(this.cWM.JOR.getContext(), "chatting/default_chat.xml");
+          cq(this.cXJ.Kkd.getContext(), "chatting/default_chat.xml");
           if (localObject == null) {
-            localObject = p.an("default", k);
+            localObject = p.ao("default", k);
           } else {
-            localObject = p.an(this.cWM.getTalkerUserName(), k);
+            localObject = p.ao(this.cXJ.getTalkerUserName(), k);
           }
         }
-        if (this.JHv == null) {
-          this.JHv = ((ImageView)this.cWM.findViewById(2131298065));
+        if (this.Kcm == null) {
+          this.Kcm = ((ImageView)this.cXJ.findViewById(2131298065));
         }
-        if (this.rDx == null) {
-          this.rDx = ((ImageView)this.cWM.findViewById(2131297208));
+        if (this.rLI == null) {
+          this.rLI = ((ImageView)this.cXJ.findViewById(2131297208));
         }
-        if (this.JHv != null) {
-          this.JHv.setImageBitmap(this.JHu);
+        if (this.Kcm != null) {
+          this.Kcm.setImageBitmap(this.Kcl);
         }
-        if (this.rDx != null)
+        if (this.rLI != null)
         {
-          localObject = this.rDx;
+          localObject = this.rLI;
           if (!al.isDarkMode()) {
             break label851;
           }
@@ -287,60 +287,73 @@ public class g
     }
   }
   
-  public final f fDj()
-  {
-    return this.xmv;
-  }
+  public final void fAs() {}
   
-  public final void fws() {}
-  
-  public final void fwt()
+  public final void fAt()
   {
     AppMethodBeat.i(35173);
-    ad.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingEnterAnimStart]");
-    eRV();
+    ae.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingEnterAnimStart]");
+    eVH();
     AppMethodBeat.o(35173);
   }
   
-  public final void fwu()
+  public final void fAu()
   {
     AppMethodBeat.i(35174);
-    t.aKa().add(this.JHx);
-    t.aJZ().add(this.JHx);
+    t.aKt().add(this.Kco);
+    t.aKs().add(this.Kco);
     AppMethodBeat.o(35174);
   }
   
-  public final void fwv() {}
+  public final void fAv() {}
   
-  public final void fww() {}
+  public final void fAw() {}
   
-  public final void fwy()
+  public final void fAy()
   {
     AppMethodBeat.i(35175);
-    ad.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingExitAnimEnd]");
-    if (ba.ajx())
+    ae.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingExitAnimEnd]");
+    if (bc.ajM())
     {
-      t.aKa().remove(this.JHx);
-      t.aJZ().remove(this.JHx);
+      t.aKt().remove(this.Kco);
+      t.aKs().remove(this.Kco);
     }
-    fDh();
+    fHj();
     AppMethodBeat.o(35175);
+  }
+  
+  public final f fHl()
+  {
+    return this.xCs;
+  }
+  
+  public final boolean fHm()
+  {
+    AppMethodBeat.i(187291);
+    com.tencent.mm.bb.a locala = t.aKt().GD(this.cXJ.getTalkerUserName());
+    if ((locala == null) || (locala.ilF == -2))
+    {
+      AppMethodBeat.o(187291);
+      return false;
+    }
+    AppMethodBeat.o(187291);
+    return true;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(193984);
+    AppMethodBeat.i(187292);
     super.onConfigurationChanged(paramConfiguration);
-    if ((paramConfiguration.orientation == 1) && (!this.JHw))
+    if ((paramConfiguration.orientation == 1) && (!this.Kcn))
     {
-      eRV();
-      AppMethodBeat.o(193984);
+      eVH();
+      AppMethodBeat.o(187292);
       return;
     }
-    if ((paramConfiguration.orientation == 2) && (this.JHw)) {
-      eRV();
+    if ((paramConfiguration.orientation == 2) && (this.Kcn)) {
+      eVH();
     }
-    AppMethodBeat.o(193984);
+    AppMethodBeat.o(187292);
   }
 }
 

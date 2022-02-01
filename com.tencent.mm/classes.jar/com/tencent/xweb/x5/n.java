@@ -10,17 +10,17 @@ public final class n
 {
   public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195534);
+    AppMethodBeat.i(207550);
     paramString1 = new WebView(XWalkEnvironment.getApplicationContext()).getHttpAuthUsernamePassword(paramString1, paramString2);
-    AppMethodBeat.o(195534);
+    AppMethodBeat.o(207550);
     return paramString1;
   }
   
   public final void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(195533);
+    AppMethodBeat.i(207549);
     new WebView(XWalkEnvironment.getApplicationContext()).setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(195533);
+    AppMethodBeat.o(207549);
   }
 }
 

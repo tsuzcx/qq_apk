@@ -6,32 +6,32 @@ import org.json.JSONObject;
 
 public final class j
 {
-  public final Object grf;
+  public final Object gtF;
   public final String method;
   
   public j(String paramString, Object paramObject)
   {
     this.method = paramString;
-    this.grf = paramObject;
+    this.gtF = paramObject;
   }
   
-  public final <T> T wd(String paramString)
+  public final <T> T wM(String paramString)
   {
     AppMethodBeat.i(9850);
-    if (this.grf == null)
+    if (this.gtF == null)
     {
       AppMethodBeat.o(9850);
       return null;
     }
-    if ((this.grf instanceof Map))
+    if ((this.gtF instanceof Map))
     {
-      paramString = ((Map)this.grf).get(paramString);
+      paramString = ((Map)this.gtF).get(paramString);
       AppMethodBeat.o(9850);
       return paramString;
     }
-    if ((this.grf instanceof JSONObject))
+    if ((this.gtF instanceof JSONObject))
     {
-      paramString = ((JSONObject)this.grf).opt(paramString);
+      paramString = ((JSONObject)this.gtF).opt(paramString);
       AppMethodBeat.o(9850);
       return paramString;
     }
@@ -42,7 +42,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.j
  * JD-Core Version:    0.7.0.1
  */

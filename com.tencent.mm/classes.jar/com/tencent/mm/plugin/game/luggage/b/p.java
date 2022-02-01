@@ -6,10 +6,10 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.luggage.f.g;
-import com.tencent.mm.plugin.game.luggage.f.g.9;
+import com.tencent.mm.plugin.game.luggage.f.g.10;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.aq;
 import org.json.JSONObject;
 
@@ -25,20 +25,20 @@ public class p
     String str1 = ((JSONObject)localObject).optString("url");
     String str2 = ((JSONObject)localObject).optString("viewId");
     int i = ((JSONObject)localObject).optInt("left");
-    i = aq.fromDPToPix(aj.getContext(), i);
+    i = aq.fromDPToPix(ak.getContext(), i);
     int j = ((JSONObject)localObject).optInt("top");
-    j = aq.fromDPToPix(aj.getContext(), j);
+    j = aq.fromDPToPix(ak.getContext(), j);
     int k = ((JSONObject)localObject).optInt("width");
-    k = aq.fromDPToPix(aj.getContext(), k);
+    k = aq.fromDPToPix(ak.getContext(), k);
     int m = ((JSONObject)localObject).optInt("height");
-    m = aq.fromDPToPix(aj.getContext(), m);
+    m = aq.fromDPToPix(ak.getContext(), m);
     localObject = (g)paramb.chg;
-    ((g)localObject).au(new g.9((g)localObject, str1, str2, k, m, i, j));
+    ((g)localObject).as(new g.10((g)localObject, str1, str2, k, m, i, j));
     paramb.a("", null);
     AppMethodBeat.o(83074);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

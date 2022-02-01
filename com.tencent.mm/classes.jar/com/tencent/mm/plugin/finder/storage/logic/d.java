@@ -7,43 +7,43 @@ import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.ac;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMentionLogic;", "", "()V", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMentionLogic;", "", "()V", "Companion", "plugin-finder_release"})
 public final class d
 {
   private static final String TAG = "Finder.FinderMentionLogic";
-  public static final a sAw;
+  public static final a sLu;
   
   static
   {
     AppMethodBeat.i(167113);
-    sAw = new a((byte)0);
+    sLu = new a((byte)0);
     TAG = "Finder.FinderMentionLogic";
     AppMethodBeat.o(167113);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMentionLogic$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getBeforeTimeLimit", "", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "mentionId", "", "limit", "", "types", "", "scene", "getByMentionIdCreateTime", "mentionCreateTime", "getDbSelect", "getLocalFlag", "insertMention", "", "mention", "mentionList", "removePrivateMention", "", "clientMsgId", "transformFinderMentionToCovertData", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "transformMentionToLocal", "Lcom/tencent/mm/protocal/protobuf/FinderMention;", "updateMentionExtFlag", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMentionLogic$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getBeforeTimeLimit", "", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "mentionId", "", "limit", "", "types", "", "scene", "getByMentionIdCreateTime", "mentionCreateTime", "getDbSelect", "getLocalFlag", "insertMention", "", "mention", "mentionList", "removePrivateMention", "", "clientMsgId", "transformFinderMentionToCovertData", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "transformMentionToLocal", "Lcom/tencent/mm/protocal/protobuf/FinderMention;", "updateMentionExtFlag", "plugin-finder_release"})
   public static final class a
   {
-    private static String Fw(int paramInt)
+    private static String FT(int paramInt)
     {
-      AppMethodBeat.i(203876);
+      AppMethodBeat.i(204468);
       StringBuilder localStringBuilder = new StringBuilder("SELECT rowid, * FROM ");
-      if (Fx(paramInt) == 1) {}
-      for (String str = ci.eZq;; str = ci.eZp)
+      if (FU(paramInt) == 1) {}
+      for (String str = ci.fbd;; str = ci.fbc)
       {
         str = str;
-        AppMethodBeat.o(203876);
+        AppMethodBeat.o(204468);
         return str;
       }
     }
     
-    public static int Fx(int paramInt)
+    public static int FU(int paramInt)
     {
       switch (paramInt)
       {
@@ -68,19 +68,19 @@ public final class d
       //   13: invokestatic 105	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
       //   16: checkcast 99	com/tencent/mm/plugin/finder/PluginFinder
       //   19: iload 4
-      //   21: invokestatic 67	com/tencent/mm/plugin/finder/storage/logic/d$a:Fx	(I)I
+      //   21: invokestatic 67	com/tencent/mm/plugin/finder/storage/logic/d$a:FU	(I)I
       //   24: invokevirtual 109	com/tencent/mm/plugin/finder/PluginFinder:getMentionStorage	(I)Lcom/tencent/mm/sdk/e/j;
       //   27: astore 12
-      //   29: invokestatic 113	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+      //   29: invokestatic 113	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
       //   32: astore 10
       //   34: aload 10
       //   36: ldc 115
       //   38: invokestatic 118	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
       //   41: aload 10
-      //   43: invokevirtual 124	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
-      //   46: getstatic 130	com/tencent/mm/storage/al$a:IIg	Lcom/tencent/mm/storage/al$a;
+      //   43: invokevirtual 124	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
+      //   46: getstatic 130	com/tencent/mm/storage/am$a:JcJ	Lcom/tencent/mm/storage/am$a;
       //   49: iconst_0
-      //   50: invokevirtual 136	com/tencent/mm/storage/ai:getInt	(Lcom/tencent/mm/storage/al$a;I)I
+      //   50: invokevirtual 136	com/tencent/mm/storage/aj:getInt	(Lcom/tencent/mm/storage/am$a;I)I
       //   53: istore 7
       //   55: aload_3
       //   56: arraylength
@@ -93,7 +93,7 @@ public final class d
       //   71: dup
       //   72: invokespecial 137	java/lang/StringBuilder:<init>	()V
       //   75: iload 4
-      //   77: invokestatic 139	com/tencent/mm/plugin/finder/storage/logic/d$a:Fw	(I)Ljava/lang/String;
+      //   77: invokestatic 139	com/tencent/mm/plugin/finder/storage/logic/d$a:FT	(I)Ljava/lang/String;
       //   80: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   83: ldc 141
       //   85: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -116,7 +116,7 @@ public final class d
       //   125: aload_3
       //   126: invokestatic 165	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
       //   129: invokevirtual 169	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   132: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   132: invokestatic 174	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   135: aload 12
       //   137: aload_3
       //   138: iconst_0
@@ -234,7 +234,7 @@ public final class d
       //   379: dup
       //   380: invokespecial 137	java/lang/StringBuilder:<init>	()V
       //   383: iload 4
-      //   385: invokestatic 139	com/tencent/mm/plugin/finder/storage/logic/d$a:Fw	(I)Ljava/lang/String;
+      //   385: invokestatic 139	com/tencent/mm/plugin/finder/storage/logic/d$a:FT	(I)Ljava/lang/String;
       //   388: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   391: ldc 141
       //   393: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -257,7 +257,7 @@ public final class d
       //   433: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   436: astore_3
       //   437: goto -317 -> 120
-      //   440: getstatic 235	d/z:MKo	Ld/z;
+      //   440: getstatic 235	d/z:Nhr	Ld/z;
       //   443: astore 10
       //   445: aload 12
       //   447: aconst_null
@@ -315,16 +315,16 @@ public final class d
     
     public static boolean a(ac paramac, int paramInt)
     {
-      AppMethodBeat.i(203874);
+      AppMethodBeat.i(204466);
       p.h(paramac, "mention");
-      j localj = ((PluginFinder)g.ad(PluginFinder.class)).getMentionStorage(Fx(paramInt));
-      if (Fx(paramInt) == 1) {}
-      for (String str1 = ci.eZq;; str1 = ci.eZp)
+      j localj = ((PluginFinder)g.ad(PluginFinder.class)).getMentionStorage(FU(paramInt));
+      if (FU(paramInt) == 1) {}
+      for (String str1 = ci.fbd;; str1 = ci.fbc)
       {
         String str2 = "UPDATE " + str1 + " SET extFlag=" + paramac.field_extFlag + " WHERE id=" + paramac.field_id;
         boolean bool = localj.execSQL(str1, str2);
-        ad.i(d.access$getTAG$cp(), "updateMentionExtFlag sql:" + str2 + ", flag:" + paramac.field_extFlag);
-        AppMethodBeat.o(203874);
+        ae.i(d.access$getTAG$cp(), "updateMentionExtFlag sql:" + str2 + ", flag:" + paramac.field_extFlag);
+        AppMethodBeat.o(204466);
         return bool;
       }
     }
@@ -349,19 +349,19 @@ public final class d
       //   32: iload_2
       //   33: invokevirtual 152	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
       //   36: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   39: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   39: invokestatic 174	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   42: ldc 99
       //   44: invokestatic 105	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
       //   47: checkcast 99	com/tencent/mm/plugin/finder/PluginFinder
       //   50: iload_3
-      //   51: invokestatic 67	com/tencent/mm/plugin/finder/storage/logic/d$a:Fx	(I)I
+      //   51: invokestatic 67	com/tencent/mm/plugin/finder/storage/logic/d$a:FU	(I)I
       //   54: invokevirtual 109	com/tencent/mm/plugin/finder/PluginFinder:getMentionStorage	(I)Lcom/tencent/mm/sdk/e/j;
       //   57: astore 4
       //   59: new 58	java/lang/StringBuilder
       //   62: dup
       //   63: invokespecial 137	java/lang/StringBuilder:<init>	()V
       //   66: iload_3
-      //   67: invokestatic 139	com/tencent/mm/plugin/finder/storage/logic/d$a:Fw	(I)Ljava/lang/String;
+      //   67: invokestatic 139	com/tencent/mm/plugin/finder/storage/logic/d$a:FT	(I)Ljava/lang/String;
       //   70: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   73: ldc_w 273
       //   76: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -378,7 +378,7 @@ public final class d
       //   103: aload 6
       //   105: invokestatic 165	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
       //   108: invokevirtual 169	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   111: invokestatic 278	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+      //   111: invokestatic 278	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
       //   114: aload 4
       //   116: aload 6
       //   118: iconst_0
@@ -407,7 +407,7 @@ public final class d
       //   174: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   177: aload 7
       //   179: areturn
-      //   180: getstatic 235	d/z:MKo	Ld/z;
+      //   180: getstatic 235	d/z:Nhr	Ld/z;
       //   183: astore 4
       //   185: aload 6
       //   187: aconst_null
@@ -452,9 +452,9 @@ public final class d
       //   180	185	228	finally
     }
     
-    public static int p(List<ac> paramList, int paramInt)
+    public static int q(List<ac> paramList, int paramInt)
     {
-      AppMethodBeat.i(203873);
+      AppMethodBeat.i(204465);
       p.h(paramList, "mentionList");
       Iterator localIterator = ((Iterable)paramList).iterator();
       int i = 0;
@@ -462,9 +462,9 @@ public final class d
       if (localIterator.hasNext())
       {
         paramList = (ac)localIterator.next();
-        Object localObject = d.sAw;
+        Object localObject = d.sLu;
         p.h(paramList, "mention");
-        localObject = ((PluginFinder)g.ad(PluginFinder.class)).getMentionStorage(Fx(paramInt));
+        localObject = ((PluginFinder)g.ad(PluginFinder.class)).getMentionStorage(FU(paramInt));
         localac = l(paramList.field_id, paramList.field_createTime, paramInt);
         if (localac != null) {
           ((j)localObject).delete(localac.systemRowid);
@@ -476,7 +476,7 @@ public final class d
         {
           paramList = "null";
           label154:
-          ad.i((String)localObject, paramList + ", " + bool);
+          ae.i((String)localObject, paramList + ", " + bool);
           if (!bool) {
             break label225;
           }
@@ -489,8 +489,8 @@ public final class d
         break;
         paramList = Long.valueOf(localac.systemRowid);
         break label154;
-        ad.i(d.access$getTAG$cp(), "insert mention ".concat(String.valueOf(i)));
-        AppMethodBeat.o(203873);
+        ae.i(d.access$getTAG$cp(), "insert mention ".concat(String.valueOf(i)));
+        AppMethodBeat.o(204465);
         return i;
       }
     }

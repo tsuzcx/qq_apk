@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.freewifi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.freewifi.model.j;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public class Plugin
     return localg;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(24700);
     j localj = new j();

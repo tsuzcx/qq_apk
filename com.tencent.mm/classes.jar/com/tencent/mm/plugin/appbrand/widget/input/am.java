@@ -8,49 +8,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class am
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final View ngR;
-  private final a ngS;
-  private int ngT;
-  private int ngU;
-  private boolean ngV;
+  private final View nlZ;
+  private final a nma;
+  private int nmb;
+  private int nmc;
+  private boolean nmd;
   
   private am(View paramView, a parama)
   {
-    this.ngR = paramView;
-    this.ngS = parama;
+    this.nlZ = paramView;
+    this.nma = parama;
   }
   
   public static void a(View paramView, a parama)
   {
     AppMethodBeat.i(133758);
     paramView = new am(paramView, parama);
-    paramView.ngR.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
+    paramView.nlZ.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
     AppMethodBeat.o(133758);
   }
   
   public final void onGlobalLayout()
   {
     AppMethodBeat.i(133759);
-    if (!this.ngV)
+    if (!this.nmd)
     {
-      this.ngV = true;
-      this.ngT = this.ngR.getWidth();
-      this.ngU = this.ngR.getHeight();
+      this.nmd = true;
+      this.nmb = this.nlZ.getWidth();
+      this.nmc = this.nlZ.getHeight();
       AppMethodBeat.o(133759);
       return;
     }
-    if ((this.ngR.getWidth() != this.ngT) || (this.ngR.getHeight() != this.ngU))
+    if ((this.nlZ.getWidth() != this.nmb) || (this.nlZ.getHeight() != this.nmc))
     {
-      this.ngS.bDL();
-      this.ngT = this.ngR.getWidth();
-      this.ngU = this.ngR.getHeight();
+      this.nma.bED();
+      this.nmb = this.nlZ.getWidth();
+      this.nmc = this.nlZ.getHeight();
     }
     AppMethodBeat.o(133759);
   }
   
   public static abstract interface a
   {
-    public abstract void bDL();
+    public abstract void bED();
   }
 }
 

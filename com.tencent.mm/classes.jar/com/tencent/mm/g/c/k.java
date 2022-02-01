@@ -8,11 +8,11 @@ public abstract class k
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFA = "token".hashCode();
-  private static final int eFp = "username".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eHj = "token".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean eFz = true;
+  private boolean eGV = true;
+  private boolean eHi = true;
   public String field_token;
   public String field_username;
   
@@ -29,7 +29,7 @@ public abstract class k
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -40,7 +40,7 @@ public abstract class k
       break label20;
       break;
       label60:
-      if (eFA == k) {
+      if (eHj == k) {
         this.field_token = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class k
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eFz) {
+    if (this.eHi) {
       localContentValues.put("token", this.field_token);
     }
     if (this.systemRowid > 0L) {

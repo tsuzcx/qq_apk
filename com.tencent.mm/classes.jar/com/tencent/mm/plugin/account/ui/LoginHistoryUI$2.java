@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.n.e;
 
 final class LoginHistoryUI$2
@@ -20,16 +20,16 @@ final class LoginHistoryUI$2
     {
       AppMethodBeat.o(128089);
       return;
-      LoginHistoryUI.d(this.jlq);
+      LoginHistoryUI.d(this.jok);
       AppMethodBeat.o(128089);
       return;
-      LoginHistoryUI.e(this.jlq);
+      LoginHistoryUI.e(this.jok);
       AppMethodBeat.o(128089);
       return;
-      LoginHistoryUI.f(this.jlq);
+      LoginHistoryUI.f(this.jok);
       AppMethodBeat.o(128089);
       return;
-      LoginHistoryUI.Q(this.jlq, this.jlq.getString(2131766190) + ac.fks());
+      LoginHistoryUI.R(this.jok, this.jok.getString(2131766190) + ad.fom());
     }
   }
 }

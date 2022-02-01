@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.b.a.dj;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/report/VideoEditResultReport;", "", "()V", "TAG", "", "reportJson", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "getReportJson", "()Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "setReportJson", "(Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;)V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMeidaEditResultStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMeidaEditResultStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMeidaEditResultStruct;)V", "fillReportMem", "", "report", "setComposition", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "setEditItem", "itemList", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/VideoEditResultReport;", "", "()V", "TAG", "", "reportJson", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "getReportJson", "()Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "setReportJson", "(Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;)V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMeidaEditResultStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMeidaEditResultStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMeidaEditResultStruct;)V", "fillReportMem", "", "report", "setComposition", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "setEditItem", "itemList", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "plugin-vlog_release"})
 public final class d
 {
-  public dj BHW;
-  public c BHX;
+  public dj BZv;
+  public c BZw;
   public final String TAG;
   
   public d()
   {
-    AppMethodBeat.i(195902);
+    AppMethodBeat.i(191362);
     this.TAG = "MicroMsg.MultiMediaEditReport";
-    this.BHW = new dj();
-    this.BHX = new c();
-    AppMethodBeat.o(195902);
+    this.BZv = new dj();
+    this.BZw = new c();
+    AppMethodBeat.o(191362);
   }
 }
 

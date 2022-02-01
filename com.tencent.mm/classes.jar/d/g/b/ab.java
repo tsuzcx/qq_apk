@@ -3,16 +3,16 @@ package d.g.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/ShortCompanionObject;", "", "()V", "MAX_VALUE", "", "MIN_VALUE", "SIZE_BITS", "", "SIZE_BYTES", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/jvm/internal/ShortCompanionObject;", "", "()V", "MAX_VALUE", "", "MIN_VALUE", "SIZE_BITS", "", "SIZE_BYTES", "kotlin-stdlib"})
 public final class ab
 {
-  public static final ab MLY;
+  public static final ab Njb;
   
   static
   {
-    AppMethodBeat.i(199629);
-    MLY = new ab();
-    AppMethodBeat.o(199629);
+    AppMethodBeat.i(188721);
+    Njb = new ab();
+    AppMethodBeat.o(188721);
   }
 }
 

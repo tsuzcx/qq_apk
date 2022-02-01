@@ -2,7 +2,7 @@ package kotlinx.a.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "Array", "", "()V", "position", "", "getPosition", "()I", "build", "()Ljava/lang/Object;", "ensureCapacity", "", "requiredCapacity", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "Array", "", "()V", "position", "", "getPosition", "()I", "build", "()Ljava/lang/Object;", "ensureCapacity", "", "requiredCapacity", "kotlinx-serialization-runtime"})
 public abstract class av<Array>
 {
   public abstract Array build();

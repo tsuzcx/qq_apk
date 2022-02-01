@@ -15,7 +15,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 public abstract class KeyStepBaseActivity
   extends HellActivity
 {
-  private TextView lCL;
+  private TextView lHk;
   
   static
   {
@@ -38,18 +38,18 @@ public abstract class KeyStepBaseActivity
     int i = getLayoutId();
     assert (i != 0);
     localLayoutInflater.inflate(i, paramBundle);
-    this.lCL = ((TextView)findViewById(2131296415));
+    this.lHk = ((TextView)findViewById(2131296415));
     findViewById(2131296417).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(187660);
+        AppMethodBeat.i(201227);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         KeyStepBaseActivity.this.finish();
         a.a(this, "com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187660);
+        AppMethodBeat.o(201227);
       }
     });
   }
@@ -62,7 +62,7 @@ public abstract class KeyStepBaseActivity
   
   protected final void setTitle(String paramString)
   {
-    this.lCL.setText(paramString);
+    this.lHk.setText(paramString);
   }
 }
 

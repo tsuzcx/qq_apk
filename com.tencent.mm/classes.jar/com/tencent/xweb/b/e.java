@@ -5,11 +5,11 @@ import java.io.OutputStream;
 
 public abstract interface e
 {
-  public abstract OutputStream Cz(String paramString);
+  public abstract OutputStream Db(String paramString);
   
-  public abstract String aPK(String paramString);
+  public abstract String aRh(String paramString);
   
-  public abstract boolean lL(String paramString1, String paramString2);
+  public abstract boolean lS(String paramString1, String paramString2);
   
   public abstract InputStream openRead(String paramString);
 }

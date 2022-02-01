@@ -3,8 +3,8 @@ package com.tencent.mm.modelvoice;
 public final class g
 {
   public byte[] buf = null;
-  public int dhO = 0;
-  public int iuI = 0;
+  public int diR = 0;
+  public int ixC = 0;
   public int ret = 0;
 }
 

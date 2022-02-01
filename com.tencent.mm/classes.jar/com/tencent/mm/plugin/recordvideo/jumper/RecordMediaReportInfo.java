@@ -13,7 +13,7 @@ public class RecordMediaReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<RecordMediaReportInfo> CREATOR;
-  private HashMap xyH;
+  private HashMap xOD;
   
   static
   {
@@ -25,19 +25,19 @@ public class RecordMediaReportInfo
   public RecordMediaReportInfo()
   {
     AppMethodBeat.i(101508);
-    this.xyH = new HashMap();
+    this.xOD = new HashMap();
     AppMethodBeat.o(101508);
   }
   
   protected RecordMediaReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(101512);
-    this.xyH = new HashMap();
-    this.xyH = ((HashMap)paramParcel.readSerializable());
+    this.xOD = new HashMap();
+    this.xOD = ((HashMap)paramParcel.readSerializable());
     AppMethodBeat.o(101512);
   }
   
-  public final void avJ(String paramString)
+  public final void awY(String paramString)
   {
     AppMethodBeat.i(101514);
     if (paramString == null)
@@ -52,7 +52,7 @@ public class RecordMediaReportInfo
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.xyH.put(str, paramString.get(str));
+        this.xOD.put(str, paramString.get(str));
       }
       AppMethodBeat.o(101514);
     }
@@ -63,10 +63,10 @@ public class RecordMediaReportInfo
     }
   }
   
-  public final String dFJ()
+  public final String dJa()
   {
     AppMethodBeat.i(101513);
-    String str = new JSONObject(this.xyH).toString();
+    String str = new JSONObject(this.xOD).toString();
     AppMethodBeat.o(101513);
     return str;
   }
@@ -79,16 +79,16 @@ public class RecordMediaReportInfo
   public final void u(String paramString, Object paramObject)
   {
     AppMethodBeat.i(101509);
-    this.xyH.put(paramString, paramObject);
+    this.xOD.put(paramString, paramObject);
     AppMethodBeat.o(101509);
   }
   
   public final <T> T v(String paramString, T paramT)
   {
     AppMethodBeat.i(101510);
-    if (this.xyH.get(paramString) != null)
+    if (this.xOD.get(paramString) != null)
     {
-      paramString = this.xyH.get(paramString);
+      paramString = this.xOD.get(paramString);
       AppMethodBeat.o(101510);
       return paramString;
     }
@@ -99,13 +99,13 @@ public class RecordMediaReportInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101511);
-    paramParcel.writeSerializable(this.xyH);
+    paramParcel.writeSerializable(this.xOD);
     AppMethodBeat.o(101511);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo
  * JD-Core Version:    0.7.0.1
  */

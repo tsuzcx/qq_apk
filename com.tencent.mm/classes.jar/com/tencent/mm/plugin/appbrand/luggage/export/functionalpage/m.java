@@ -9,15 +9,15 @@ import com.tencent.mm.ui.MMFragmentActivity.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalUIAnimationStyle;", "", "()V", "setOpenAnimation", "", "activity", "Landroid/app/Activity;", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalUIAnimationStyle;", "", "()V", "setOpenAnimation", "", "activity", "Landroid/app/Activity;", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "plugin-appbrand-integration_release"})
 public final class m
 {
-  public static final m lOC;
+  public static final m lTd;
   
   static
   {
     AppMethodBeat.i(50877);
-    lOC = new m();
+    lTd = new m();
     AppMethodBeat.o(50877);
   }
   
@@ -38,7 +38,7 @@ public final class m
     {
       if (g.e((AppBrandInitConfigWC)paramAppBrandInitConfig, paramAppBrandStatObject))
       {
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.mOe, MMFragmentActivity.a.mOf);
+        paramActivity.overridePendingTransition(MMFragmentActivity.a.mTi, MMFragmentActivity.a.mTj);
         bool1 = true;
       }
     }

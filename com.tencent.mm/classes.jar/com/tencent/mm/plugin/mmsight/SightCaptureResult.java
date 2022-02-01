@@ -4,54 +4,54 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bxm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.byg;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class SightCaptureResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SightCaptureResult> CREATOR;
-  public boolean pzW;
-  public String vMA;
-  public boolean vMs;
-  public boolean vMt;
-  public String vMu;
-  public String vMv;
-  public String vMw;
-  public String vMx;
-  public int vMy;
-  public bxm vMz;
+  public boolean pGA;
+  public String vYA;
+  public String vYB;
+  public int vYC;
+  public byg vYD;
+  public String vYE;
+  public boolean vYw;
+  public boolean vYx;
+  public String vYy;
+  public String vYz;
   
   static
   {
     AppMethodBeat.i(148782);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new SightCaptureResult.1();
     AppMethodBeat.o(148782);
   }
   
   protected SightCaptureResult(Parcel paramParcel)
   {
     AppMethodBeat.i(148780);
-    this.pzW = false;
-    this.vMs = false;
-    this.vMt = true;
-    this.vMu = "";
-    this.vMv = "";
-    this.vMw = "";
-    this.vMx = "";
-    this.vMy = 0;
-    this.vMz = new bxm();
-    this.vMA = "";
+    this.pGA = false;
+    this.vYw = false;
+    this.vYx = true;
+    this.vYy = "";
+    this.vYz = "";
+    this.vYA = "";
+    this.vYB = "";
+    this.vYC = 0;
+    this.vYD = new byg();
+    this.vYE = "";
     if (paramParcel.readByte() != 0)
     {
       bool = true;
-      this.pzW = bool;
+      this.pGA = bool;
       if (paramParcel.readByte() == 0) {
         break label203;
       }
       bool = true;
       label93:
-      this.vMs = bool;
+      this.vYw = bool;
       if (paramParcel.readByte() == 0) {
         break label208;
       }
@@ -60,25 +60,25 @@ public class SightCaptureResult
     label208:
     for (boolean bool = true;; bool = false)
     {
-      this.vMt = bool;
-      this.vMu = paramParcel.readString();
-      this.vMv = paramParcel.readString();
-      this.vMw = paramParcel.readString();
-      this.vMx = paramParcel.readString();
-      this.vMy = paramParcel.readInt();
-      this.vMA = paramParcel.readString();
+      this.vYx = bool;
+      this.vYy = paramParcel.readString();
+      this.vYz = paramParcel.readString();
+      this.vYA = paramParcel.readString();
+      this.vYB = paramParcel.readString();
+      this.vYC = paramParcel.readInt();
+      this.vYE = paramParcel.readString();
       try
       {
         byte[] arrayOfByte = new byte[paramParcel.readInt()];
         paramParcel.readByteArray(arrayOfByte);
-        this.vMz = new bxm();
-        this.vMz.parseFrom(arrayOfByte);
+        this.vYD = new byg();
+        this.vYD.parseFrom(arrayOfByte);
         AppMethodBeat.o(148780);
         return;
       }
       catch (Exception paramParcel)
       {
-        ad.e("MicroMsg.SightCaptureResult", "read ext info error: %s", new Object[] { paramParcel.getMessage() });
+        ae.e("MicroMsg.SightCaptureResult", "read ext info error: %s", new Object[] { paramParcel.getMessage() });
         AppMethodBeat.o(148780);
       }
       bool = false;
@@ -91,45 +91,45 @@ public class SightCaptureResult
   public SightCaptureResult(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(148779);
-    this.pzW = false;
-    this.vMs = false;
-    this.vMt = true;
-    this.vMu = "";
-    this.vMv = "";
-    this.vMw = "";
-    this.vMx = "";
-    this.vMy = 0;
-    this.vMz = new bxm();
-    this.vMA = "";
-    this.vMt = paramBoolean;
-    this.vMA = paramString;
-    this.pzW = false;
-    this.vMs = true;
+    this.pGA = false;
+    this.vYw = false;
+    this.vYx = true;
+    this.vYy = "";
+    this.vYz = "";
+    this.vYA = "";
+    this.vYB = "";
+    this.vYC = 0;
+    this.vYD = new byg();
+    this.vYE = "";
+    this.vYx = paramBoolean;
+    this.vYE = paramString;
+    this.pGA = false;
+    this.vYw = true;
     AppMethodBeat.o(148779);
   }
   
-  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, bxm parambxm)
+  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, byg parambyg)
   {
     AppMethodBeat.i(148778);
-    this.pzW = false;
-    this.vMs = false;
-    this.vMt = true;
-    this.vMu = "";
-    this.vMv = "";
-    this.vMw = "";
-    this.vMx = "";
-    this.vMy = 0;
-    this.vMz = new bxm();
-    this.vMA = "";
-    this.vMt = paramBoolean;
-    this.vMu = paramString1;
-    this.vMv = paramString2;
-    this.vMw = paramString3;
-    this.vMy = paramInt;
-    this.vMz = parambxm;
-    this.vMx = paramString4;
-    this.pzW = true;
-    this.vMs = false;
+    this.pGA = false;
+    this.vYw = false;
+    this.vYx = true;
+    this.vYy = "";
+    this.vYz = "";
+    this.vYA = "";
+    this.vYB = "";
+    this.vYC = 0;
+    this.vYD = new byg();
+    this.vYE = "";
+    this.vYx = paramBoolean;
+    this.vYy = paramString1;
+    this.vYz = paramString2;
+    this.vYA = paramString3;
+    this.vYC = paramInt;
+    this.vYD = parambyg;
+    this.vYB = paramString4;
+    this.pGA = true;
+    this.vYw = false;
     AppMethodBeat.o(148778);
   }
   
@@ -142,17 +142,17 @@ public class SightCaptureResult
   {
     int i = 1;
     AppMethodBeat.i(148781);
-    if (this.pzW)
+    if (this.pGA)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.vMs) {
+      if (!this.vYw) {
         break label133;
       }
       paramInt = 1;
       label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.vMt) {
+      if (!this.vYx) {
         break label138;
       }
     }
@@ -161,15 +161,15 @@ public class SightCaptureResult
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.vMu);
-      paramParcel.writeString(this.vMv);
-      paramParcel.writeString(this.vMw);
-      paramParcel.writeString(this.vMx);
-      paramParcel.writeInt(this.vMy);
-      paramParcel.writeString(this.vMA);
+      paramParcel.writeString(this.vYy);
+      paramParcel.writeString(this.vYz);
+      paramParcel.writeString(this.vYA);
+      paramParcel.writeString(this.vYB);
+      paramParcel.writeInt(this.vYC);
+      paramParcel.writeString(this.vYE);
       try
       {
-        byte[] arrayOfByte = this.vMz.toByteArray();
+        byte[] arrayOfByte = this.vYD.toByteArray();
         paramParcel.writeInt(arrayOfByte.length);
         paramParcel.writeByteArray(arrayOfByte);
         AppMethodBeat.o(148781);
@@ -177,7 +177,7 @@ public class SightCaptureResult
       }
       catch (Exception paramParcel)
       {
-        ad.e("MicroMsg.SightCaptureResult", "write ext info error");
+        ae.e("MicroMsg.SightCaptureResult", "write ext info error");
         AppMethodBeat.o(148781);
       }
       paramInt = 0;
@@ -189,7 +189,7 @@ public class SightCaptureResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.SightCaptureResult
  * JD-Core Version:    0.7.0.1
  */

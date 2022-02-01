@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.freewifi.d.c;
 import com.tencent.mm.plugin.freewifi.d.i;
 import com.tencent.mm.plugin.freewifi.k;
@@ -12,24 +12,24 @@ import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.protocal.protobuf.ats;
-import com.tencent.mm.protocal.protobuf.cov;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aui;
+import com.tencent.mm.protocal.protobuf.cpp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
   Activity activity;
   int channel;
-  String dmM;
+  String dnO;
   Intent intent;
   
   public a(Activity paramActivity, String paramString, int paramInt)
   {
     AppMethodBeat.i(24992);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       paramActivity = new IllegalArgumentException("acitvity or apKey cannot be null.");
       AppMethodBeat.o(24992);
@@ -37,12 +37,12 @@ public final class a
     }
     this.activity = paramActivity;
     this.intent = paramActivity.getIntent();
-    this.dmM = paramString;
+    this.dnO = paramString;
     this.channel = paramInt;
     AppMethodBeat.o(24992);
   }
   
-  final void aka(String paramString)
+  final void akY(String paramString)
   {
     AppMethodBeat.i(24994);
     Object localObject = new Intent();
@@ -51,8 +51,8 @@ public final class a
     this.activity.finish();
     paramString = this.activity;
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "toErrorUI", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "toErrorUI", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "toErrorUI", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(24994);
   }
@@ -60,50 +60,50 @@ public final class a
   public final void connect()
   {
     AppMethodBeat.i(24993);
-    if (bt.isNullOrNil(this.dmM))
+    if (bu.isNullOrNil(this.dnO))
     {
-      ad.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get key failed");
+      ae.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get key failed");
       this.activity.finish();
     }
-    this.activity.getIntent().putExtra("free_wifi_url", this.dmM);
-    this.activity.getIntent().putExtra("free_wifi_ap_key", this.dmM);
-    if (bt.isNullOrNil(this.dmM))
+    this.activity.getIntent().putExtra("free_wifi_url", this.dnO);
+    this.activity.getIntent().putExtra("free_wifi_ap_key", this.dnO);
+    if (bu.isNullOrNil(this.dnO))
     {
-      ad.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ap key is null");
+      ae.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ap key is null");
       this.activity.finish();
       AppMethodBeat.o(24993);
       return;
     }
-    ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo, desc=it starts net request [getApInfo] for retrieving protocol type and frontpage info. apKey=%s, channel=%d", new Object[] { m.ao(this.intent), Integer.valueOf(m.ap(this.intent)), this.dmM, Integer.valueOf(this.channel) });
-    k.a locala = k.cQR();
-    locala.dmM = this.dmM;
-    locala.oZp = m.ao(this.intent);
-    locala.tlh = k.b.tlp.tlS;
-    locala.tli = k.b.tlp.name;
+    ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo, desc=it starts net request [getApInfo] for retrieving protocol type and frontpage info. apKey=%s, channel=%d", new Object[] { m.ap(this.intent), Integer.valueOf(m.aq(this.intent)), this.dnO, Integer.valueOf(this.channel) });
+    k.a locala = k.cTw();
+    locala.dnO = this.dnO;
+    locala.pfT = m.ap(this.intent);
+    locala.tvZ = k.b.twh.twK;
+    locala.twa = k.b.twh.name;
     locala.channel = this.channel;
-    locala.tlg = m.aq(this.intent);
-    locala.cQT().c(this.intent, false).cQS();
-    new com.tencent.mm.plugin.freewifi.d.a(this.dmM, this.channel, m.ao(this.intent)).aq(this.activity).c(new f()
+    locala.tvY = m.ar(this.intent);
+    locala.cTy().c(this.intent, false).cTx();
+    new com.tencent.mm.plugin.freewifi.d.a(this.dnO, this.channel, m.ap(this.intent)).ar(this.activity).c(new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(24990);
-        Object localObject1 = k.cQR();
-        ((k.a)localObject1).dmM = a.this.dmM;
-        ((k.a)localObject1).oZp = m.ao(a.this.intent);
-        ((k.a)localObject1).tlh = k.b.tlq.tlS;
-        ((k.a)localObject1).tli = k.b.tlq.name;
-        ((k.a)localObject1).tlg = m.aq(a.this.intent);
+        Object localObject1 = k.cTw();
+        ((k.a)localObject1).dnO = a.this.dnO;
+        ((k.a)localObject1).pfT = m.ap(a.this.intent);
+        ((k.a)localObject1).tvZ = k.b.twi.twK;
+        ((k.a)localObject1).twa = k.b.twi.name;
+        ((k.a)localObject1).tvY = m.ar(a.this.intent);
         ((k.a)localObject1).channel = a.this.channel;
         ((k.a)localObject1).result = paramAnonymousInt2;
-        ((k.a)localObject1).fKQ = paramAnonymousString;
-        localObject1 = ((k.a)localObject1).cQT();
+        ((k.a)localObject1).fMT = paramAnonymousString;
+        localObject1 = ((k.a)localObject1).cTy();
         Object localObject2 = a.this.intent;
         if (paramAnonymousInt2 != 0) {}
         for (boolean bool = true;; bool = false)
         {
-          ((k)localObject1).c((Intent)localObject2, bool).cQS();
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback, desc=net request [getApInfo] returns. errType=%d, errCode=%d, errMsg=%s", new Object[] { m.ao(a.this.intent), Integer.valueOf(m.ap(a.this.intent)), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          ((k)localObject1).c((Intent)localObject2, bool).cTx();
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback, desc=net request [getApInfo] returns. errType=%d, errCode=%d, errMsg=%s", new Object[] { m.ap(a.this.intent), Integer.valueOf(m.aq(a.this.intent)), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
             break label2794;
           }
@@ -111,223 +111,223 @@ public final class a
           if ((paramAnonymousn instanceof com.tencent.mm.plugin.freewifi.d.a)) {
             break;
           }
-          paramAnonymousString.aka(paramAnonymousString.activity.getString(2131759623));
+          paramAnonymousString.akY(paramAnonymousString.activity.getString(2131759623));
           AppMethodBeat.o(24990);
           return;
         }
         localObject1 = (com.tencent.mm.plugin.freewifi.d.a)paramAnonymousn;
-        paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_SHOULD_BIND_PHONE", ((com.tencent.mm.plugin.freewifi.d.a)localObject1).cRJ());
-        Object localObject4 = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).cRK();
+        paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_SHOULD_BIND_PHONE", ((com.tencent.mm.plugin.freewifi.d.a)localObject1).cUo());
+        Object localObject4 = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).cUp();
         if (localObject4 != null)
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo/getFrontPage), desc=net request [getapinfo] gets response. frontpageinfo:  appid: %s, nickName: %s, userName: %s, headImgUrl: %s, welcomeMsg: %s, privacyDescriUrl: %s, timestamp=%s, sign=%s, HasMobile=%d", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)), ((ats)localObject4).FuU, ((ats)localObject4).nEt, ((ats)localObject4).nDo, ((ats)localObject4).ufR, ((ats)localObject4).GrK, ((ats)localObject4).GrL, ((ats)localObject4).FDD, ((ats)localObject4).FXg, Integer.valueOf(((ats)localObject4).FqJ) });
-          paramAnonymousString.intent.putExtra("free_wifi_appid", ((ats)localObject4).FuU);
-          paramAnonymousString.intent.putExtra("free_wifi_head_img_url", ((ats)localObject4).ufR);
-          paramAnonymousString.intent.putExtra("free_wifi_welcome_msg", ((ats)localObject4).GrK);
-          paramAnonymousString.intent.putExtra("free_wifi_privacy_url", ((ats)localObject4).GrL);
-          paramAnonymousString.intent.putExtra("free_wifi_app_nickname", ((ats)localObject4).nEt);
-          paramAnonymousString.intent.putExtra("free_wifi_welcome_sub_title", ((ats)localObject4).GrM);
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo/getFrontPage), desc=net request [getapinfo] gets response. frontpageinfo:  appid: %s, nickName: %s, userName: %s, headImgUrl: %s, welcomeMsg: %s, privacyDescriUrl: %s, timestamp=%s, sign=%s, HasMobile=%d", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)), ((aui)localObject4).FNs, ((aui)localObject4).nJO, ((aui)localObject4).nIJ, ((aui)localObject4).urn, ((aui)localObject4).GLi, ((aui)localObject4).GLj, ((aui)localObject4).FVY, ((aui)localObject4).GpF, Integer.valueOf(((aui)localObject4).FJh) });
+          paramAnonymousString.intent.putExtra("free_wifi_appid", ((aui)localObject4).FNs);
+          paramAnonymousString.intent.putExtra("free_wifi_head_img_url", ((aui)localObject4).urn);
+          paramAnonymousString.intent.putExtra("free_wifi_welcome_msg", ((aui)localObject4).GLi);
+          paramAnonymousString.intent.putExtra("free_wifi_privacy_url", ((aui)localObject4).GLj);
+          paramAnonymousString.intent.putExtra("free_wifi_app_nickname", ((aui)localObject4).nJO);
+          paramAnonymousString.intent.putExtra("free_wifi_welcome_sub_title", ((aui)localObject4).GLk);
         }
         if (paramAnonymousString.channel != 2) {
           paramAnonymousString.activity.getIntent().putExtra("free_wifi_jump_to_main_ui", true);
         }
-        Object localObject3 = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).cRI();
+        Object localObject3 = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).cUn();
         if (localObject3 == null)
         {
-          ad.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get qstring from server is null");
+          ae.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get qstring from server is null");
           paramAnonymousString.activity.finish();
-          paramAnonymousn = k.cQR();
-          paramAnonymousn.dmM = paramAnonymousString.dmM;
-          paramAnonymousn.oZp = m.ao(paramAnonymousString.intent);
-          paramAnonymousn.tlh = k.b.tlr.tlS;
-          paramAnonymousn.tli = k.b.tlr.name;
-          paramAnonymousn.tlg = m.aq(paramAnonymousString.intent);
+          paramAnonymousn = k.cTw();
+          paramAnonymousn.dnO = paramAnonymousString.dnO;
+          paramAnonymousn.pfT = m.ap(paramAnonymousString.intent);
+          paramAnonymousn.tvZ = k.b.twj.twK;
+          paramAnonymousn.twa = k.b.twj.name;
+          paramAnonymousn.tvY = m.ar(paramAnonymousString.intent);
           paramAnonymousn.channel = paramAnonymousString.channel;
           paramAnonymousn.result = -1;
-          paramAnonymousn.fKQ = "qstrInfo is null.";
-          paramAnonymousn.cQT().c(paramAnonymousString.intent, true).cQS();
+          paramAnonymousn.fMT = "qstrInfo is null.";
+          paramAnonymousn.cTy().c(paramAnonymousString.intent, true).cTx();
           AppMethodBeat.o(24990);
           return;
         }
-        if (m.ea(((cov)localObject3).qdY))
+        if (m.ef(((cpp)localObject3).qkD))
         {
-          ad.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get qstrInfo.ssid from server is empty");
+          ae.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "get qstrInfo.ssid from server is empty");
           paramAnonymousString.activity.finish();
-          paramAnonymousn = k.cQR();
-          paramAnonymousn.dmM = paramAnonymousString.dmM;
-          paramAnonymousn.oZp = m.ao(paramAnonymousString.intent);
-          paramAnonymousn.tlh = k.b.tlr.tlS;
-          paramAnonymousn.tli = k.b.tlr.name;
-          paramAnonymousn.tlg = m.aq(paramAnonymousString.intent);
+          paramAnonymousn = k.cTw();
+          paramAnonymousn.dnO = paramAnonymousString.dnO;
+          paramAnonymousn.pfT = m.ap(paramAnonymousString.intent);
+          paramAnonymousn.tvZ = k.b.twj.twK;
+          paramAnonymousn.twa = k.b.twj.name;
+          paramAnonymousn.tvY = m.ar(paramAnonymousString.intent);
           paramAnonymousn.channel = paramAnonymousString.channel;
           paramAnonymousn.result = -1;
-          paramAnonymousn.fKQ = "qstrInfo.Ssid is empty.";
-          paramAnonymousn.cQT().c(paramAnonymousString.intent, true).cQS();
+          paramAnonymousn.fMT = "qstrInfo.Ssid is empty.";
+          paramAnonymousn.cTy().c(paramAnonymousString.intent, true).cTx();
           AppMethodBeat.o(24990);
           return;
         }
-        paramAnonymousString.intent.putExtra("free_wifi_ssid", ((cov)localObject3).qdY);
-        ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=net request [getApInfo/getFrontPage] gets response. qstrInfo:  prototype = %d, ssid : %s, pssword : %s", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)), Integer.valueOf(((cov)localObject3).Hij), ((cov)localObject3).qdY, ((cov)localObject3).Ggv });
+        paramAnonymousString.intent.putExtra("free_wifi_ssid", ((cpp)localObject3).qkD);
+        ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=net request [getApInfo/getFrontPage] gets response. qstrInfo:  prototype = %d, ssid : %s, pssword : %s", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)), Integer.valueOf(((cpp)localObject3).HBJ), ((cpp)localObject3).qkD, ((cpp)localObject3).Gze });
         paramAnonymousn = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).getOpenId();
-        localObject1 = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).Ua();
+        localObject1 = ((com.tencent.mm.plugin.freewifi.d.a)localObject1).Ug();
         paramAnonymousString.intent.putExtra("free_wifi_openid", paramAnonymousn);
         paramAnonymousString.intent.putExtra("free_wifi_tid", (String)localObject1);
-        paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_TIMESTAMP", ((ats)localObject4).FDD);
-        paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_SIGN", ((ats)localObject4).FXg);
-        ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=net request [getApInfo/getFrontPage] gets response. openId=%s, tid=%s", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)), paramAnonymousn, localObject1 });
-        paramAnonymousString.intent.putExtra("free_wifi_protocol_type", ((cov)localObject3).Hij);
-        if (((cov)localObject3).Hij == 10)
+        paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_TIMESTAMP", ((aui)localObject4).FVY);
+        paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_SIGN", ((aui)localObject4).GpF);
+        ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=net request [getApInfo/getFrontPage] gets response. openId=%s, tid=%s", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)), paramAnonymousn, localObject1 });
+        paramAnonymousString.intent.putExtra("free_wifi_protocol_type", ((cpp)localObject3).HBJ);
+        if (((cpp)localObject3).HBJ == 10)
         {
-          if ((bt.isNullOrNil(((cov)localObject3).qdY)) || (bt.isNullOrNil(((cov)localObject3).Ggv)))
+          if ((bu.isNullOrNil(((cpp)localObject3).qkD)) || (bu.isNullOrNil(((cpp)localObject3).Gze)))
           {
-            ad.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ssid or password is null");
+            ae.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ssid or password is null");
             paramAnonymousString.activity.finish();
             AppMethodBeat.o(24990);
             return;
           }
           paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 4);
           paramAnonymousString.intent.putExtra("free_wifi_auth_type", 2);
-          paramAnonymousString.intent.putExtra("free_wifi_passowrd", ((cov)localObject3).Ggv);
+          paramAnonymousString.intent.putExtra("free_wifi_passowrd", ((cpp)localObject3).Gze);
           paramAnonymousString.intent.setClass(paramAnonymousString.activity, FreeWifiFrontPageUI.class);
           paramAnonymousn = paramAnonymousString.activity;
           localObject1 = paramAnonymousString.intent;
           localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramAnonymousString.activity.finish();
           paramAnonymousString.activity.overridePendingTransition(2130772144, 2130772141);
           AppMethodBeat.o(24990);
           return;
         }
-        if (((cov)localObject3).Hij == 11)
+        if (((cpp)localObject3).HBJ == 11)
         {
-          if ((bt.isNullOrNil(((cov)localObject3).qdY)) || (bt.isNullOrNil(((cov)localObject3).Ggv)))
+          if ((bu.isNullOrNil(((cpp)localObject3).qkD)) || (bu.isNullOrNil(((cpp)localObject3).Gze)))
           {
-            ad.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ssid or password is null");
+            ae.e("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "ssid or password is null");
             paramAnonymousString.activity.finish();
             AppMethodBeat.o(24990);
             return;
           }
           paramAnonymousString.intent.putExtra("free_wifi_auth_type", 2);
-          paramAnonymousString.intent.putExtra("free_wifi_passowrd", ((cov)localObject3).Ggv);
+          paramAnonymousString.intent.putExtra("free_wifi_passowrd", ((cpp)localObject3).Gze);
           paramAnonymousString.intent.setClass(paramAnonymousString.activity, FreewifiActivateWeChatNoAuthStateUI.class);
           paramAnonymousn = paramAnonymousString.activity;
           localObject1 = paramAnonymousString.intent;
           localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramAnonymousString.activity.finish();
           paramAnonymousString.activity.overridePendingTransition(2130772144, 2130772141);
           AppMethodBeat.o(24990);
           return;
         }
-        if (((cov)localObject3).Hij == 12)
+        if (((cpp)localObject3).HBJ == 12)
         {
           paramAnonymousString.intent.putExtra("free_wifi_auth_type", 1);
           paramAnonymousString.intent.setClass(paramAnonymousString.activity, FreeWifiActivateAuthStateUI.class);
           paramAnonymousn = paramAnonymousString.activity;
           localObject1 = paramAnonymousString.intent;
           localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramAnonymousString.activity.finish();
           paramAnonymousString.activity.overridePendingTransition(2130772144, 2130772141);
           AppMethodBeat.o(24990);
           return;
         }
-        if (((cov)localObject3).Hij == 31)
+        if (((cpp)localObject3).HBJ == 31)
         {
           paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 31);
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=it goes into protocal 31 handle branch.", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)) });
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=it goes into protocal 31 handle branch.", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)) });
           localObject2 = paramAnonymousString.intent.getStringExtra("free_wifi_schema_ticket");
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=it tries to get ticket. ticket=%s.", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)), localObject2 });
-          if (bt.isNullOrNil((String)localObject2))
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=it tries to get ticket. ticket=%s.", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)), localObject2 });
+          if (bu.isNullOrNil((String)localObject2))
           {
             paramAnonymousString.activity.finish();
-            paramAnonymousn = k.cQR();
-            paramAnonymousn.dmM = paramAnonymousString.dmM;
-            paramAnonymousn.oZp = m.ao(paramAnonymousString.intent);
-            paramAnonymousn.tlh = k.b.tlr.tlS;
-            paramAnonymousn.tli = k.b.tlr.name;
+            paramAnonymousn = k.cTw();
+            paramAnonymousn.dnO = paramAnonymousString.dnO;
+            paramAnonymousn.pfT = m.ap(paramAnonymousString.intent);
+            paramAnonymousn.tvZ = k.b.twj.twK;
+            paramAnonymousn.twa = k.b.twj.name;
             paramAnonymousn.channel = paramAnonymousString.channel;
-            paramAnonymousn.tlg = m.aq(paramAnonymousString.intent);
+            paramAnonymousn.tvY = m.ar(paramAnonymousString.intent);
             paramAnonymousn.result = -1;
-            paramAnonymousn.fKQ = "31 ticket is empty.";
-            paramAnonymousn.cQT().c(paramAnonymousString.intent, true).cQS();
+            paramAnonymousn.fMT = "31 ticket is empty.";
+            paramAnonymousn.cTy().c(paramAnonymousString.intent, true).cTx();
             AppMethodBeat.o(24990);
             return;
           }
-          String str1 = ((cov)localObject3).qdY;
-          localObject3 = ((ats)localObject4).FDD;
-          localObject4 = ((ats)localObject4).FXg;
-          if (d.cRp() == null)
+          String str1 = ((cpp)localObject3).qkD;
+          localObject3 = ((aui)localObject4).FVY;
+          localObject4 = ((aui)localObject4).GpF;
+          if (d.cTU() == null)
           {
-            ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.protocol31GetPortalApInfo, desc=it tries to get current connected wifi info but return null, so it fails to connect wifi. ", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)) });
-            paramAnonymousString.aka(paramAnonymousString.activity.getString(2131759623));
-            paramAnonymousn = k.cQR();
-            paramAnonymousn.dmM = paramAnonymousString.dmM;
-            paramAnonymousn.oZp = m.ao(paramAnonymousString.intent);
-            paramAnonymousn.tlh = k.b.tlr.tlS;
-            paramAnonymousn.tli = k.b.tlr.name;
+            ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.protocol31GetPortalApInfo, desc=it tries to get current connected wifi info but return null, so it fails to connect wifi. ", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)) });
+            paramAnonymousString.akY(paramAnonymousString.activity.getString(2131759623));
+            paramAnonymousn = k.cTw();
+            paramAnonymousn.dnO = paramAnonymousString.dnO;
+            paramAnonymousn.pfT = m.ap(paramAnonymousString.intent);
+            paramAnonymousn.tvZ = k.b.twj.twK;
+            paramAnonymousn.twa = k.b.twj.name;
             paramAnonymousn.channel = paramAnonymousString.channel;
-            paramAnonymousn.tlg = m.aq(paramAnonymousString.intent);
+            paramAnonymousn.tvY = m.ar(paramAnonymousString.intent);
             paramAnonymousn.result = -1;
-            paramAnonymousn.fKQ = "wifiInfo is empty.";
-            paramAnonymousn.cQT().c(paramAnonymousString.intent, true).cQS();
+            paramAnonymousn.fMT = "wifiInfo is empty.";
+            paramAnonymousn.cTy().c(paramAnonymousString.intent, true).cTx();
             AppMethodBeat.o(24990);
             return;
           }
-          bool = d.ajQ(str1);
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.protocol31GetPortalApInfo, desc=it gets connected wifi info. is_current_connected_ssid_equals_target_ssid=%b", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)), Boolean.valueOf(bool) });
-          str1 = ay.iV(aj.getContext());
-          String str2 = ay.iW(aj.getContext());
-          String str3 = m.ajM("MicroMsg.FreeWifi.FreeWifiNetCheckUI");
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.protocol31GetPortalApInfo desc=it starts net request [GetPortalApInfo]  for portal ap info. apKey=%s, apSsid=%s, apBssid=%s, mobileMac=%s, ticket=%s", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)), paramAnonymousString.dmM, str1, str2, str3, localObject2 });
-          k.a locala = k.cQR();
-          locala.dmM = paramAnonymousString.dmM;
-          locala.oZp = m.ao(paramAnonymousString.intent);
-          locala.tlh = k.b.tlr.tlS;
-          locala.tli = k.b.tlr.name;
+          bool = d.akO(str1);
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.protocol31GetPortalApInfo, desc=it gets connected wifi info. is_current_connected_ssid_equals_target_ssid=%b", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)), Boolean.valueOf(bool) });
+          str1 = az.ja(ak.getContext());
+          String str2 = az.jb(ak.getContext());
+          String str3 = m.akK("MicroMsg.FreeWifi.FreeWifiNetCheckUI");
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.protocol31GetPortalApInfo desc=it starts net request [GetPortalApInfo]  for portal ap info. apKey=%s, apSsid=%s, apBssid=%s, mobileMac=%s, ticket=%s", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)), paramAnonymousString.dnO, str1, str2, str3, localObject2 });
+          k.a locala = k.cTw();
+          locala.dnO = paramAnonymousString.dnO;
+          locala.pfT = m.ap(paramAnonymousString.intent);
+          locala.tvZ = k.b.twj.twK;
+          locala.twa = k.b.twj.name;
           locala.channel = paramAnonymousString.channel;
-          locala.tlg = m.aq(paramAnonymousString.intent);
+          locala.tvY = m.ar(paramAnonymousString.intent);
           locala.result = 0;
-          locala.fKQ = "";
-          locala.cQT().c(paramAnonymousString.intent, true).cQS();
-          locala = k.cQR();
+          locala.fMT = "";
+          locala.cTy().c(paramAnonymousString.intent, true).cTx();
+          locala = k.cTw();
           locala.ssid = paramAnonymousString.intent.getStringExtra("free_wifi_ssid");
-          locala.dmM = paramAnonymousString.dmM;
-          locala.tlf = paramAnonymousString.intent.getStringExtra("free_wifi_appid");
-          locala.oZp = m.ao(paramAnonymousString.intent);
-          locala.tlg = m.aq(paramAnonymousString.intent);
-          locala.tlh = k.b.tlB.tlS;
-          locala.tli = k.b.tlB.name;
-          locala.channel = m.ar(paramAnonymousString.intent);
-          locala.tlg = m.aq(paramAnonymousString.intent);
-          locala.cQT().c(paramAnonymousString.intent, false).cQS();
-          new i(paramAnonymousString.dmM, str1, str2, str3, (String)localObject2, m.ao(paramAnonymousString.intent)).aq(paramAnonymousString.activity).c(new a.2(paramAnonymousString, paramAnonymousn, (String)localObject1, (String)localObject3, (String)localObject4));
+          locala.dnO = paramAnonymousString.dnO;
+          locala.tvX = paramAnonymousString.intent.getStringExtra("free_wifi_appid");
+          locala.pfT = m.ap(paramAnonymousString.intent);
+          locala.tvY = m.ar(paramAnonymousString.intent);
+          locala.tvZ = k.b.twt.twK;
+          locala.twa = k.b.twt.name;
+          locala.channel = m.as(paramAnonymousString.intent);
+          locala.tvY = m.ar(paramAnonymousString.intent);
+          locala.cTy().c(paramAnonymousString.intent, false).cTx();
+          new i(paramAnonymousString.dnO, str1, str2, str3, (String)localObject2, m.ap(paramAnonymousString.intent)).ar(paramAnonymousString.activity).c(new a.2(paramAnonymousString, paramAnonymousn, (String)localObject1, (String)localObject3, (String)localObject4));
           AppMethodBeat.o(24990);
           return;
         }
-        if (((cov)localObject3).Hij == 32)
+        if (((cpp)localObject3).HBJ == 32)
         {
           paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 32);
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=it goes into protocal 32 handle branch.", new Object[] { m.ao(paramAnonymousString.intent), Integer.valueOf(m.ap(paramAnonymousString.intent)) });
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=FreeWifiConnector.getApInfo.callback(openFrontPageByApInfo), desc=it goes into protocal 32 handle branch.", new Object[] { m.ap(paramAnonymousString.intent), Integer.valueOf(m.aq(paramAnonymousString.intent)) });
           paramAnonymousString.intent.setClass(paramAnonymousString.activity, FreeWifiFrontPageUI.class);
           paramAnonymousn = paramAnonymousString.activity;
           localObject1 = paramAnonymousString.intent;
           localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramAnonymousString.activity.finish();
           paramAnonymousString.activity.overridePendingTransition(2130772144, 2130772141);
           AppMethodBeat.o(24990);
           return;
         }
-        if (((cov)localObject3).Hij == 1)
+        if (((cpp)localObject3).HBJ == 1)
         {
           paramAnonymousString.intent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 1);
           paramAnonymousString.intent.putExtra("free_wifi_auth_type", 1);
@@ -335,8 +335,8 @@ public final class a
           paramAnonymousn = paramAnonymousString.activity;
           localObject1 = paramAnonymousString.intent;
           localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousn.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousn, "com/tencent/mm/plugin/freewifi/ui/FreeWifiConnector", "openFrontPageByApInfo", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramAnonymousString.activity.finish();
           paramAnonymousString.activity.overridePendingTransition(2130772144, 2130772141);
@@ -344,23 +344,23 @@ public final class a
           return;
         }
         paramAnonymousString.activity.finish();
-        paramAnonymousString.aka(paramAnonymousString.activity.getString(2131759628));
+        paramAnonymousString.akY(paramAnonymousString.activity.getString(2131759628));
         AppMethodBeat.o(24990);
         return;
         label2794:
-        if ((m.gd(paramAnonymousInt1, paramAnonymousInt2)) && (!m.ea(paramAnonymousString)))
+        if ((m.gd(paramAnonymousInt1, paramAnonymousInt2)) && (!m.ef(paramAnonymousString)))
         {
-          a.this.aka(paramAnonymousString + "(" + m.a(m.aq(a.this.intent), k.b.tlq, paramAnonymousInt2) + ")");
+          a.this.akY(paramAnonymousString + "(" + m.a(m.ar(a.this.intent), k.b.twi, paramAnonymousInt2) + ")");
           AppMethodBeat.o(24990);
           return;
         }
         if (paramAnonymousInt2 == -30031)
         {
-          a.this.aka(a.this.activity.getString(2131759627));
+          a.this.akY(a.this.activity.getString(2131759627));
           AppMethodBeat.o(24990);
           return;
         }
-        a.this.aka(a.this.activity.getString(2131759623) + "(" + String.format("%02d", new Object[] { Integer.valueOf(m.aq(a.this.intent)) }) + k.b.tlq.tlS + Math.abs(paramAnonymousInt2) + ")");
+        a.this.akY(a.this.activity.getString(2131759623) + "(" + String.format("%02d", new Object[] { Integer.valueOf(m.ar(a.this.intent)) }) + k.b.twi.twK + Math.abs(paramAnonymousInt2) + ")");
         AppMethodBeat.o(24990);
       }
     });
@@ -369,7 +369,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.a
  * JD-Core Version:    0.7.0.1
  */

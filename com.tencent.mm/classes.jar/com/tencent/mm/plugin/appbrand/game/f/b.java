@@ -3,16 +3,17 @@ package com.tencent.mm.plugin.appbrand.game.f;
 import android.util.Base64;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.game.e.b.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.protocal.protobuf.ehe;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.protocal.protobuf.eiv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 import java.security.KeyFactory;
 import java.security.PublicKey;
@@ -22,79 +23,79 @@ import java.util.Map;
 
 public final class b
 {
-  WeakReference<AppBrandRuntime> ciG;
-  public ehe kma;
-  public ap kmb;
-  public PublicKey kmc;
+  WeakReference<AppBrandRuntime> ciI;
+  public eiv kpq;
+  public aq kpr;
+  public PublicKey kps;
   
-  b(ehe paramehe, AppBrandRuntime paramAppBrandRuntime)
+  b(eiv parameiv, AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(45170);
-    this.kma = paramehe;
-    this.ciG = new WeakReference(paramAppBrandRuntime);
-    this.kmb = new ap("canvas_security_guard");
-    if ((this.kma != null) && (this.kma.HRW != null) && (this.kma.HRW.zr != null))
+    this.kpq = parameiv;
+    this.ciI = new WeakReference(paramAppBrandRuntime);
+    this.kpr = new aq("canvas_security_guard");
+    if ((this.kpq != null) && (this.kpq.Imd != null) && (this.kpq.Imd.zr != null))
     {
-      paramehe = Base64.decode(new String(this.kma.HRW.zr).replace("\n", "").replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", ""), 0);
+      parameiv = Base64.decode(new String(this.kpq.Imd.zr).replace("\n", "").replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", ""), 0);
       try
       {
-        paramehe = new X509EncodedKeySpec(paramehe);
-        this.kmc = KeyFactory.getInstance("RSA").generatePublic(paramehe);
-        ad.d("MicroMsg.WAGameCanvasSecurityGuard", "hy: sample config: %s", new Object[] { this.kma.HRV });
+        parameiv = new X509EncodedKeySpec(parameiv);
+        this.kps = KeyFactory.getInstance("RSA").generatePublic(parameiv);
+        ae.d("MicroMsg.WAGameCanvasSecurityGuard", "hy: sample config: %s", new Object[] { this.kpq.Imc });
         AppMethodBeat.o(45170);
         return;
       }
-      catch (Throwable paramehe)
+      catch (Throwable parameiv)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.WAGameCanvasSecurityGuard", paramehe, "hy: can not retrieve rsa key!", new Object[0]);
-          this.kmc = null;
+          ae.printErrStackTrace("MicroMsg.WAGameCanvasSecurityGuard", parameiv, "hy: can not retrieve rsa key!", new Object[0]);
+          this.kps = null;
         }
       }
     }
-    ad.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: no pubkey retrieved");
-    this.kmc = null;
+    ae.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: no pubkey retrieved");
+    this.kps = null;
     AppMethodBeat.o(45170);
   }
   
-  final ae aWZ()
+  final ad aXu()
   {
     AppMethodBeat.i(180199);
-    if ((this.ciG.get() != null) && (((AppBrandRuntime)this.ciG.get()).aVN() != null) && (((AppBrandRuntime)this.ciG.get()).aVN().getCurrentPage() != null) && ((((AppBrandRuntime)this.ciG.get()).aVN().getCurrentPage().getCurrentPageView() instanceof ae)))
+    if ((this.ciI.get() != null) && (((AppBrandRuntime)this.ciI.get()).aWm() != null) && (((AppBrandRuntime)this.ciI.get()).aWm().getCurrentPage() != null) && ((((AppBrandRuntime)this.ciI.get()).aWm().getCurrentPage().getCurrentPageView() instanceof ad)))
     {
-      ae localae = (ae)((AppBrandRuntime)this.ciG.get()).aVN().getCurrentPage().getCurrentPageView();
+      ad localad = (ad)((AppBrandRuntime)this.ciI.get()).aWm().getCurrentPage().getCurrentPageView();
       AppMethodBeat.o(180199);
-      return localae;
+      return localad;
     }
-    ad.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: runtime released");
+    ae.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: runtime released");
     AppMethodBeat.o(180199);
     return null;
   }
   
-  public final boolean bhn()
+  public final boolean bhV()
   {
-    return (this.kma != null) && (this.kma.HRN);
+    return (this.kpq != null) && (this.kpq.IlU);
   }
   
-  public final com.tencent.luggage.game.page.d bho()
+  public final com.tencent.luggage.game.page.d bhW()
   {
     AppMethodBeat.i(45171);
-    if (aWZ() != null)
+    if (aXu() != null)
     {
-      com.tencent.luggage.game.page.d locald = (com.tencent.luggage.game.page.d)aWZ().Q(com.tencent.luggage.game.page.d.class);
+      com.tencent.luggage.game.page.d locald = (com.tencent.luggage.game.page.d)aXu().Q(com.tencent.luggage.game.page.d.class);
       AppMethodBeat.o(45171);
       return locald;
     }
-    ad.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: GamePageLogicExt not found");
+    ae.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: GamePageLogicExt not found");
     AppMethodBeat.o(45171);
     return null;
   }
   
-  public final boolean bhp()
+  public final boolean bhX()
   {
     AppMethodBeat.i(45172);
-    if ((bho() != null) && (bho().getMagicBrushView() != null) && (!bho().getMagicBrushView().getMagicBrush().isDestroyed()))
+    if ((bhW() != null) && (bhW().getMagicBrushView() != null) && (!bhW().getMagicBrushView().getMagicBrush().isDestroyed()))
     {
       AppMethodBeat.o(45172);
       return true;
@@ -105,7 +106,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.b
  * JD-Core Version:    0.7.0.1
  */

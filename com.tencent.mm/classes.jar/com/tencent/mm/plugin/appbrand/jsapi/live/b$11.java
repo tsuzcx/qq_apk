@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.TXLivePusher.OnBGMNotify;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,14 +15,14 @@ final class b$11
   public final void onBGMComplete(int paramInt)
   {
     AppMethodBeat.i(145875);
-    ad.i("MicroMsg.JsApiInsertLivePusher", "onBGMComplete, error:%s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiInsertLivePusher", "onBGMComplete, error:%s", new Object[] { Integer.valueOf(paramInt) });
     b.b localb = new b.b((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("livePusherId", this.kCh);
-      this.kCd.b(localb.Pi(localJSONObject.toString()));
+      localJSONObject.put("livePusherId", this.kFw);
+      this.kFs.b(localb.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145875);
       return;
     }
@@ -30,7 +30,7 @@ final class b$11
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiInsertLivePusher", "onBGMComplete fail", new Object[] { localJSONException });
+        ae.e("MicroMsg.JsApiInsertLivePusher", "onBGMComplete fail", new Object[] { localJSONException });
       }
     }
   }
@@ -44,8 +44,8 @@ final class b$11
     {
       localJSONObject.put("progress", paramLong1);
       localJSONObject.put("duration", paramLong2);
-      localJSONObject.put("livePusherId", this.kCh);
-      this.kCd.b(localc.Pi(localJSONObject.toString()));
+      localJSONObject.put("livePusherId", this.kFw);
+      this.kFs.b(localc.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145874);
       return;
     }
@@ -53,7 +53,7 @@ final class b$11
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiInsertLivePusher", "onBGMProgress fail", new Object[] { localJSONException });
+        ae.e("MicroMsg.JsApiInsertLivePusher", "onBGMProgress fail", new Object[] { localJSONException });
       }
     }
   }
@@ -61,13 +61,13 @@ final class b$11
   public final void onBGMStart()
   {
     AppMethodBeat.i(145873);
-    ad.i("MicroMsg.JsApiInsertLivePusher", "onBGMStart");
+    ae.i("MicroMsg.JsApiInsertLivePusher", "onBGMStart");
     b.d locald = new b.d((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("livePusherId", this.kCh);
-      this.kCd.b(locald.Pi(localJSONObject.toString()));
+      localJSONObject.put("livePusherId", this.kFw);
+      this.kFs.b(locald.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145873);
       return;
     }
@@ -75,7 +75,7 @@ final class b$11
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiInsertLivePusher", "onBGMStart fail", new Object[] { localJSONException });
+        ae.e("MicroMsg.JsApiInsertLivePusher", "onBGMStart fail", new Object[] { localJSONException });
       }
     }
   }

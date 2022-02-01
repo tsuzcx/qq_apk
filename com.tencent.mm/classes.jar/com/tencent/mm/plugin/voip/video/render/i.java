@@ -5,16 +5,16 @@ import com.tencent.mm.plugin.voip.b.h;
 import com.tencent.mm.plugin.voip.b.k;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper;", "", "()V", "RGB2YUV_HW_ENCODE", "", "RGB2YUV_RENDER", "RGB2YUV_SOFT_ENCODE", "RGB2YUV_TEXTURE_2_BYTE_ARRAY", "RGB2YUV_TRANSFER", "TAG", "", "record", "", "Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "[Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "appendHw", "", "cost", "", "appendSoft", "appendTransfer", "report", "id", "reset", "Record", "plugin-voip_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper;", "", "()V", "RGB2YUV_HW_ENCODE", "", "RGB2YUV_RENDER", "RGB2YUV_SOFT_ENCODE", "RGB2YUV_TEXTURE_2_BYTE_ARRAY", "RGB2YUV_TRANSFER", "TAG", "", "record", "", "Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "[Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "appendHw", "", "cost", "", "appendSoft", "appendTransfer", "report", "id", "reset", "Record", "plugin-voip_release"})
 public final class i
 {
-  private static final a[] Csi;
-  public static final i Csj;
+  private static final a[] CJM;
+  public static final i CJN;
   
   static
   {
-    AppMethodBeat.i(216156);
-    Csj = new i();
+    AppMethodBeat.i(210577);
+    CJN = new i();
     a[] arrayOfa = new a[5];
     int i = 0;
     while (i < 5)
@@ -22,81 +22,81 @@ public final class i
       arrayOfa[i] = new a();
       i += 1;
     }
-    Csi = arrayOfa;
-    AppMethodBeat.o(216156);
+    CJM = arrayOfa;
+    AppMethodBeat.o(210577);
   }
   
   public static void aJ(int paramInt, long paramLong)
   {
-    a locala = Csi[paramInt];
-    locala.Csk += 1L;
-    locala.Csl += paramLong;
+    a locala = CJM[paramInt];
+    locala.CJO += 1L;
+    locala.CJP += paramLong;
   }
   
   public static void report()
   {
-    AppMethodBeat.i(216155);
-    if (!h.ezF())
+    AppMethodBeat.i(210576);
+    if (!h.eDn())
     {
       reset();
-      AppMethodBeat.o(216155);
+      AppMethodBeat.o(210576);
       return;
     }
     k localk;
-    if (Csi[0].Csk >= 5L)
+    if (CJM[0].CJO >= 5L)
     {
-      localk = k.ClI;
-      k.Cb(Csi[0].eBj());
+      localk = k.CDm;
+      k.Cz(CJM[0].eER());
     }
-    if (Csi[1].Csk >= 5L)
+    if (CJM[1].CJO >= 5L)
     {
-      localk = k.ClI;
-      k.Cc(Csi[1].eBj());
+      localk = k.CDm;
+      k.CA(CJM[1].eER());
     }
-    if (Csi[2].Csk >= 5L)
+    if (CJM[2].CJO >= 5L)
     {
-      localk = k.ClI;
-      k.Cd(Csi[2].eBj());
+      localk = k.CDm;
+      k.CB(CJM[2].eER());
     }
-    if (Csi[3].Csk >= 5L)
+    if (CJM[3].CJO >= 5L)
     {
-      localk = k.ClI;
-      k.Ce(Csi[3].eBj());
+      localk = k.CDm;
+      k.CC(CJM[3].eER());
     }
-    if (Csi[4].Csk >= 5L)
+    if (CJM[4].CJO >= 5L)
     {
-      localk = k.ClI;
-      k.Cf(Csi[4].eBj());
+      localk = k.CDm;
+      k.CD(CJM[4].eER());
     }
     reset();
-    AppMethodBeat.o(216155);
+    AppMethodBeat.o(210576);
   }
   
   public static void reset()
   {
-    a[] arrayOfa = Csi;
+    a[] arrayOfa = CJM;
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       a locala = arrayOfa[i];
-      locala.Csk = 0L;
-      locala.Csl = 0L;
+      locala.CJO = 0L;
+      locala.CJP = 0L;
       i += 1;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "", "times", "", "sum", "(JJ)V", "getSum", "()J", "setSum", "(J)V", "getTimes", "setTimes", "append", "", "cost", "avg", "reset", "plugin-voip_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "", "times", "", "sum", "(JJ)V", "getSum", "()J", "setSum", "(J)V", "getTimes", "setTimes", "append", "", "cost", "avg", "reset", "plugin-voip_release"})
   public static final class a
   {
-    long Csk = 0L;
-    long Csl = 0L;
+    long CJO = 0L;
+    long CJP = 0L;
     
-    public final long eBj()
+    public final long eER()
     {
-      long l2 = this.Csl;
-      if (this.Csk == 0L) {}
-      for (long l1 = 1L;; l1 = this.Csk) {
+      long l2 = this.CJP;
+      if (this.CJO == 0L) {}
+      for (long l1 = 1L;; l1 = this.CJO) {
         return l2 / l1;
       }
     }

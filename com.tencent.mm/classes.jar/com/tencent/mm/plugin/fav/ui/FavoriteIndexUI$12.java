@@ -18,7 +18,7 @@ final class FavoriteIndexUI$12
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/fav/ui/FavoriteIndexUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/fav/ui/FavoriteIndexUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,8 +27,8 @@ final class FavoriteIndexUI$12
       a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavoriteIndexUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(107010);
       return false;
-      FavoriteIndexUI.c(this.ryD)[0] = ((int)paramMotionEvent.getRawX());
-      FavoriteIndexUI.c(this.ryD)[1] = ((int)paramMotionEvent.getRawY());
+      FavoriteIndexUI.c(this.rGO)[0] = ((int)paramMotionEvent.getRawX());
+      FavoriteIndexUI.c(this.rGO)[1] = ((int)paramMotionEvent.getRawY());
     }
   }
 }

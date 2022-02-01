@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.f;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/ThreadState;", "", "context", "Lkotlin/coroutines/CoroutineContext;", "n", "", "(Lkotlin/coroutines/CoroutineContext;I)V", "a", "", "[Ljava/lang/Object;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "i", "append", "", "value", "start", "take", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/ThreadState;", "", "context", "Lkotlin/coroutines/CoroutineContext;", "n", "", "(Lkotlin/coroutines/CoroutineContext;I)V", "a", "", "[Ljava/lang/Object;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "i", "append", "", "value", "start", "take", "kotlinx-coroutines-core"})
 final class aa
 {
-  final f NHt;
-  Object[] NKq;
+  final f Oez;
+  Object[] Ohw;
   int i;
   
   public aa(f paramf, int paramInt)
   {
     AppMethodBeat.i(118108);
-    this.NHt = paramf;
-    this.NKq = new Object[paramInt];
+    this.Oez = paramf;
+    this.Ohw = new Object[paramInt];
     AppMethodBeat.o(118108);
   }
 }

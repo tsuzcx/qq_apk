@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-story_release"})
 public final class StoryRoundImageView
   extends ImageView
 {
-  private final RectF ciQ;
-  private int hbv;
+  private final RectF ciS;
+  private int hej;
   private final Path lP;
   
   public StoryRoundImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -29,21 +29,21 @@ public final class StoryRoundImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120303);
-    this.ciQ = new RectF();
+    this.ciS = new RectF();
     this.lP = new Path();
     AppMethodBeat.o(120303);
   }
   
   public final int getRound()
   {
-    return this.hbv;
+    return this.hej;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(120301);
-    this.ciQ.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-    this.lP.addRoundRect(this.ciQ, this.hbv, this.hbv, Path.Direction.CW);
+    this.ciS.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    this.lP.addRoundRect(this.ciS, this.hej, this.hej, Path.Direction.CW);
     if (paramCanvas != null) {
       paramCanvas.save();
     }
@@ -62,7 +62,7 @@ public final class StoryRoundImageView
   
   public final void setRound(int paramInt)
   {
-    this.hbv = paramInt;
+    this.hej = paramInt;
   }
 }
 

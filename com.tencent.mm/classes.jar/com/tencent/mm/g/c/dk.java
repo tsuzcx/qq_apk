@@ -8,13 +8,13 @@ public abstract class dk
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eHT = "title".hashCode();
-  private static final int ffP = "appusername".hashCode();
-  private static final int ffS = "score".hashCode();
+  private static final int eJC = "title".hashCode();
+  private static final int fhM = "appusername".hashCode();
+  private static final int fhP = "score".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eHQ;
-  private boolean ffM;
-  private boolean ffR;
+  private boolean eJz;
+  private boolean fhJ;
+  private boolean fhO;
   public String field_appusername;
   public int field_score;
   public String field_title;
@@ -32,7 +32,7 @@ public abstract class dk
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ffP != k) {
+      if (fhM != k) {
         break label60;
       }
       this.field_appusername = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class dk
       break label20;
       break;
       label60:
-      if (eHT == k) {
+      if (eJC == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (ffS == k) {
+      } else if (fhP == k) {
         this.field_score = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class dk
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ffM) {
+    if (this.fhJ) {
       localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.eHQ) {
+    if (this.eJz) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.ffR) {
+    if (this.fhO) {
       localContentValues.put("score", Integer.valueOf(this.field_score));
     }
     if (this.systemRowid > 0L) {

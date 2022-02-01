@@ -11,17 +11,17 @@ import com.tencent.mm.sdcard_migrate.util.ExtStorageMigrateException;
 public abstract interface d
   extends IInterface
 {
-  public abstract void aam(int paramInt);
+  public abstract void aaS(int paramInt);
   
-  public abstract void aan(int paramInt);
+  public abstract void aaT(int paramInt);
   
   public abstract void b(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException);
   
-  public abstract void fjE();
+  public abstract void fnw();
   
-  public abstract void jt(int paramInt1, int paramInt2);
+  public abstract void jx(int paramInt1, int paramInt2);
   
-  public abstract void lI(String paramString1, String paramString2);
+  public abstract void lP(String paramString1, String paramString2);
   
   public static abstract class a
     extends Binder
@@ -32,7 +32,7 @@ public abstract interface d
       attachInterface(this, "com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
     }
     
-    public static d L(IBinder paramIBinder)
+    public static d M(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -60,17 +60,17 @@ public abstract interface d
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        aam(paramParcel1.readInt());
+        aaS(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        lI(paramParcel1.readString(), paramParcel1.readString());
+        lP(paramParcel1.readString(), paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        aan(paramParcel1.readInt());
+        aaT(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 4: 
@@ -85,12 +85,12 @@ public abstract interface d
         }
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        fjE();
+        fnw();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-      jt(paramParcel1.readInt(), paramParcel1.readInt());
+      jx(paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }
@@ -105,9 +105,9 @@ public abstract interface d
         this.mRemote = paramIBinder;
       }
       
-      public final void aam(int paramInt)
+      public final void aaS(int paramInt)
       {
-        AppMethodBeat.i(211089);
+        AppMethodBeat.i(211873);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -122,13 +122,13 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211089);
+          AppMethodBeat.o(211873);
         }
       }
       
-      public final void aan(int paramInt)
+      public final void aaT(int paramInt)
       {
-        AppMethodBeat.i(211091);
+        AppMethodBeat.i(211875);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -143,7 +143,7 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211091);
+          AppMethodBeat.o(211875);
         }
       }
       
@@ -222,9 +222,9 @@ public abstract interface d
         //   75	80	83	finally
       }
       
-      public final void fjE()
+      public final void fnw()
       {
-        AppMethodBeat.i(211093);
+        AppMethodBeat.i(211877);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -238,13 +238,13 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211093);
+          AppMethodBeat.o(211877);
         }
       }
       
-      public final void jt(int paramInt1, int paramInt2)
+      public final void jx(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(211094);
+        AppMethodBeat.i(211878);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -260,13 +260,13 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211094);
+          AppMethodBeat.o(211878);
         }
       }
       
-      public final void lI(String paramString1, String paramString2)
+      public final void lP(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(211090);
+        AppMethodBeat.i(211874);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -282,7 +282,7 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211090);
+          AppMethodBeat.o(211874);
         }
       }
     }

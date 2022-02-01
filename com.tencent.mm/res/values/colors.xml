@@ -1492,4 +1492,5 @@
     <color name="abb">@color/BW_0_Alpha_0_8</color>
     <color name="abc">#80555555</color>
     <color name="abd">#4dffffff</color>
+    <color name="abe">#ffededed</color>
 </resources>

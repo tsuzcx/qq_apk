@@ -19,38 +19,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ae.a.a;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.z;
 import java.util.List;
 
 public class Preference
   implements Comparable<Preference>
 {
-  int FlJ;
+  int FEh;
   private CharSequence Hd;
-  private boolean JtA;
-  public boolean JtB;
-  String JtC;
-  private boolean JtD;
-  private int JtE;
-  private boolean JtF;
-  public boolean JtG;
-  public boolean JtH;
-  private boolean JtI;
-  private boolean JtJ;
-  private int JtK;
-  public int JtL;
-  private boolean JtM;
-  private List<Preference> JtN;
-  private a Jtt;
-  public b Jtu;
-  public c Jtv;
-  private int Jtw;
-  private int Jtx;
-  private String Jty;
-  boolean Jtz;
+  public int JOA;
+  private boolean JOB;
+  private List<Preference> JOC;
+  private a JOi;
+  public b JOj;
+  public c JOk;
+  private int JOl;
+  private int JOm;
+  private String JOn;
+  boolean JOo;
+  private boolean JOp;
+  public boolean JOq;
+  String JOr;
+  private boolean JOs;
+  private int JOt;
+  private boolean JOu;
+  public boolean JOv;
+  public boolean JOw;
+  private boolean JOx;
+  private boolean JOy;
+  private int JOz;
   private int[] Qo;
   protected Drawable Xj;
   protected int aeA;
@@ -60,9 +60,9 @@ public class Preference
   private boolean mEnabled;
   private Bundle mExtras;
   public String mKey;
-  public int oPT;
-  private CharSequence wUo;
-  private ImageView zCz;
+  public int oWv;
+  private CharSequence xkf;
+  private ImageView zTB;
   
   public Preference(Context paramContext)
   {
@@ -79,21 +79,21 @@ public class Preference
     AppMethodBeat.i(142632);
     this.Qo = new int[] { 2130969590, 2130969495 };
     this.bJr = 2147483647;
-    this.FlJ = 0;
+    this.FEh = 0;
     this.mEnabled = true;
-    this.Jtz = true;
-    this.JtB = true;
-    this.JtD = true;
-    this.oPT = -1;
-    this.zCz = null;
-    this.JtE = 0;
-    this.JtF = false;
-    this.JtG = false;
-    this.JtH = false;
-    this.JtI = false;
-    this.JtJ = true;
-    this.JtK = 2131494804;
-    this.JtM = false;
+    this.JOo = true;
+    this.JOq = true;
+    this.JOs = true;
+    this.oWv = -1;
+    this.zTB = null;
+    this.JOt = 0;
+    this.JOu = false;
+    this.JOv = false;
+    this.JOw = false;
+    this.JOx = false;
+    this.JOy = true;
+    this.JOz = 2131494804;
+    this.JOB = false;
     this.mContext = paramContext;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.Preference, paramInt, 0);
     paramInt = paramAttributeSet.getIndexCount();
@@ -109,7 +109,7 @@ public class Preference
         break;
         if (i == 5)
         {
-          this.FlJ = paramAttributeSet.getColor(i, 0);
+          this.FEh = paramAttributeSet.getColor(i, 0);
         }
         else if (i == 6)
         {
@@ -117,18 +117,18 @@ public class Preference
         }
         else if (i == 13)
         {
-          this.Jtw = paramAttributeSet.getResourceId(i, 0);
+          this.JOl = paramAttributeSet.getResourceId(i, 0);
           this.Hd = paramAttributeSet.getString(i);
-          if (this.Jtw != 0) {
-            this.Hd = paramContext.getString(this.Jtw);
+          if (this.JOl != 0) {
+            this.Hd = paramContext.getString(this.JOl);
           }
         }
         else if (i == 12)
         {
-          this.wUo = paramAttributeSet.getString(i);
-          this.Jtx = paramAttributeSet.getResourceId(i, 0);
-          if (this.Jtx != 0) {
-            this.wUo = paramContext.getString(this.Jtx);
+          this.xkf = paramAttributeSet.getString(i);
+          this.JOm = paramAttributeSet.getResourceId(i, 0);
+          if (this.JOm != 0) {
+            this.xkf = paramContext.getString(this.JOm);
           }
         }
         else if (i == 8)
@@ -137,15 +137,15 @@ public class Preference
         }
         else if (i == 3)
         {
-          this.Jty = paramAttributeSet.getString(i);
+          this.JOn = paramAttributeSet.getString(i);
         }
         else if (i == 7)
         {
-          this.JtK = paramAttributeSet.getResourceId(i, this.JtK);
+          this.JOz = paramAttributeSet.getResourceId(i, this.JOz);
         }
         else if (i == 14)
         {
-          this.JtL = paramAttributeSet.getResourceId(i, this.JtL);
+          this.JOA = paramAttributeSet.getResourceId(i, this.JOA);
         }
         else if (i == 2)
         {
@@ -153,15 +153,15 @@ public class Preference
         }
         else if (i == 10)
         {
-          this.Jtz = paramAttributeSet.getBoolean(i, true);
+          this.JOo = paramAttributeSet.getBoolean(i, true);
         }
         else if (i == 9)
         {
-          this.JtB = paramAttributeSet.getBoolean(i, this.JtB);
+          this.JOq = paramAttributeSet.getBoolean(i, this.JOq);
         }
         else if (i == 1)
         {
-          this.JtC = paramAttributeSet.getString(i);
+          this.JOr = paramAttributeSet.getString(i);
         }
         else if (i == 0)
         {
@@ -169,18 +169,18 @@ public class Preference
         }
         else if (i == 11)
         {
-          this.JtJ = paramAttributeSet.getBoolean(i, this.JtJ);
+          this.JOy = paramAttributeSet.getBoolean(i, this.JOy);
         }
       }
     }
     paramAttributeSet.recycle();
     if (!getClass().getName().startsWith("android.preference")) {
-      this.JtM = true;
+      this.JOB = true;
     }
     AppMethodBeat.o(142632);
   }
   
-  private void fzH()
+  private void fDJ()
   {
     AppMethodBeat.i(142646);
     if (this.mKey == null)
@@ -189,7 +189,7 @@ public class Preference
       AppMethodBeat.o(142646);
       throw localIllegalStateException;
     }
-    this.JtA = true;
+    this.JOp = true;
     AppMethodBeat.o(142646);
   }
   
@@ -208,7 +208,7 @@ public class Preference
   private void notifyDependencyChange(boolean paramBoolean)
   {
     AppMethodBeat.i(142649);
-    List localList = this.JtN;
+    List localList = this.JOC;
     if (localList == null)
     {
       AppMethodBeat.o(142649);
@@ -218,7 +218,7 @@ public class Preference
     int i = 0;
     while (i < j)
     {
-      ((Preference)localList.get(i)).xH(paramBoolean);
+      ((Preference)localList.get(i)).xO(paramBoolean);
       i += 1;
     }
     AppMethodBeat.o(142649);
@@ -236,7 +236,7 @@ public class Preference
     return false;
   }
   
-  private void w(View paramView, boolean paramBoolean)
+  private void x(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(142637);
     paramView.setEnabled(paramBoolean);
@@ -246,17 +246,17 @@ public class Preference
       int i = paramView.getChildCount() - 1;
       while (i >= 0)
       {
-        w(paramView.getChildAt(i), paramBoolean);
+        x(paramView.getChildAt(i), paramBoolean);
         i -= 1;
       }
     }
     AppMethodBeat.o(142637);
   }
   
-  private void xH(boolean paramBoolean)
+  private void xO(boolean paramBoolean)
   {
     AppMethodBeat.i(142650);
-    if (this.JtD == paramBoolean) {
+    if (this.JOs == paramBoolean) {
       if (paramBoolean) {
         break label44;
       }
@@ -264,7 +264,7 @@ public class Preference
     label44:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.JtD = paramBoolean;
+      this.JOs = paramBoolean;
       notifyDependencyChange(shouldDisableDependents());
       notifyChanged();
       AppMethodBeat.o(142650);
@@ -274,40 +274,40 @@ public class Preference
   
   public void a(a parama)
   {
-    this.Jtt = parama;
+    this.JOi = parama;
   }
   
-  public final void acw(int paramInt)
+  public final void ade(int paramInt)
   {
     AppMethodBeat.i(142652);
-    this.JtE = paramInt;
-    if (this.zCz != null) {
-      this.zCz.setVisibility(paramInt);
+    this.JOt = paramInt;
+    if (this.zTB != null) {
+      this.zTB.setVisibility(paramInt);
     }
     AppMethodBeat.o(142652);
   }
   
-  protected final boolean callChangeListener(Object paramObject)
+  public final boolean callChangeListener(Object paramObject)
   {
     AppMethodBeat.i(142648);
-    if (this.Jtt == null)
+    if (this.JOi == null)
     {
       AppMethodBeat.o(142648);
       return true;
     }
-    boolean bool = this.Jtt.a(this, paramObject);
+    boolean bool = this.JOi.a(this, paramObject);
     AppMethodBeat.o(142648);
     return bool;
   }
   
-  public final void fzI()
+  public final void fDK()
   {
-    this.JtB = false;
+    this.JOq = false;
   }
   
-  public final void fzJ()
+  public final void fDL()
   {
-    this.JtI = true;
+    this.JOx = true;
   }
   
   public final Context getContext()
@@ -333,12 +333,12 @@ public class Preference
   
   public int getLayoutResource()
   {
-    return this.JtK;
+    return this.JOz;
   }
   
   public CharSequence getSummary()
   {
-    return this.wUo;
+    return this.xkf;
   }
   
   public CharSequence getTitle()
@@ -373,7 +373,7 @@ public class Preference
   
   public final boolean isEnabled()
   {
-    return (this.mEnabled) && (this.JtD);
+    return (this.mEnabled) && (this.JOs);
   }
   
   protected void notifyChanged() {}
@@ -384,8 +384,8 @@ public class Preference
     Object localObject1 = paramView.findViewById(2131298739);
     if (localObject1 != null)
     {
-      ((View)localObject1).setMinimumHeight((int)(this.mContext.getResources().getDimensionPixelSize(2131165488) * a.il(this.mContext)));
-      ad.d("dancy test", "resource:%s, height:%s, scale:%s", new Object[] { this.mContext.getResources(), Integer.valueOf(this.mContext.getResources().getDimensionPixelSize(2131165488)), Float.valueOf(a.il(this.mContext)) });
+      ((View)localObject1).setMinimumHeight((int)(this.mContext.getResources().getDimensionPixelSize(2131165488) * a.iq(this.mContext)));
+      ae.d("dancy test", "resource:%s, height:%s, scale:%s", new Object[] { this.mContext.getResources(), Integer.valueOf(this.mContext.getResources().getDimensionPixelSize(2131165488)), Float.valueOf(a.iq(this.mContext)) });
     }
     localObject1 = (TextView)paramView.findViewById(16908310);
     Object localObject2;
@@ -394,7 +394,7 @@ public class Preference
       localObject2 = getTitle();
       if ((localObject2 != null) && ((localObject2 instanceof Spannable)))
       {
-        if (this.JtH) {
+        if (this.JOw) {
           ((TextView)localObject1).setClickable(true);
         }
         if (((TextView)localObject1).isClickable()) {
@@ -414,20 +414,20 @@ public class Preference
         if (((TextView)localObject2).getVisibility() != 0) {
           ((TextView)localObject2).setVisibility(0);
         }
-        if (!this.JtG) {
+        if (!this.JOv) {
           break label464;
         }
         ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView)localObject2).setClickable(true);
         ((TextView)localObject2).setText(getSummary(), TextView.BufferType.SPANNABLE);
         label240:
-        if (this.oPT != -1) {
-          ((TextView)localObject2).setTextColor(this.oPT);
+        if (this.oWv != -1) {
+          ((TextView)localObject2).setTextColor(this.oWv);
         }
-        if (this.JtI) {
+        if (this.JOx) {
           ((TextView)localObject2).setSingleLine();
         }
-        if ((localObject1 != null) && (this.JtF)) {
+        if ((localObject1 != null) && (this.JOu)) {
           ((TextView)localObject2).post(new Runnable()
           {
             public final void run()
@@ -439,14 +439,14 @@ public class Preference
                 AppMethodBeat.o(164171);
                 return;
               }
-              int i = this.wFd.getMeasuredWidth() + this.JtO.getMeasuredWidth();
+              int i = this.wUO.getMeasuredWidth() + this.JOD.getMeasuredWidth();
               if (i > 0)
               {
-                int j = (int)this.JtO.getPaint().measureText(this.JtO.getText().toString());
-                if ((int)this.wFd.getPaint().measureText(localCharSequence, 0, localCharSequence.length()) + j > i)
+                int j = (int)this.JOD.getPaint().measureText(this.JOD.getText().toString());
+                if ((int)this.wUO.getPaint().measureText(localCharSequence, 0, localCharSequence.length()) + j > i)
                 {
-                  localCharSequence = TextUtils.ellipsize(localCharSequence, this.wFd.getPaint(), i - j - 5, TextUtils.TruncateAt.END);
-                  this.wFd.setText(localCharSequence);
+                  localCharSequence = TextUtils.ellipsize(localCharSequence, this.wUO.getPaint(), i - j - 5, TextUtils.TruncateAt.END);
+                  this.wUO.setText(localCharSequence);
                 }
               }
               AppMethodBeat.o(164171);
@@ -466,8 +466,8 @@ public class Preference
           if (this.Xj != null)
           {
             ((ImageView)localObject1).setImageDrawable(this.Xj);
-            if (this.FlJ != 0) {
-              ((ImageView)localObject1).getDrawable().setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
+            if (this.FEh != 0) {
+              ((ImageView)localObject1).getDrawable().setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
             }
           }
         }
@@ -482,12 +482,12 @@ public class Preference
     for (int i = 0;; i = 8)
     {
       ((ImageView)localObject1).setVisibility(i);
-      this.zCz = ((ImageView)paramView.findViewById(2131304172));
-      if (this.zCz != null) {
-        this.zCz.setVisibility(this.JtE);
+      this.zTB = ((ImageView)paramView.findViewById(2131304172));
+      if (this.zTB != null) {
+        this.zTB.setVisibility(this.JOt);
       }
-      if (this.JtJ) {
-        w(paramView, isEnabled());
+      if (this.JOy) {
+        x(paramView, isEnabled());
       }
       AppMethodBeat.o(142636);
       return;
@@ -506,15 +506,15 @@ public class Preference
   protected View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142635);
-    LayoutInflater localLayoutInflater = z.jO(this.mContext);
-    paramViewGroup = localLayoutInflater.inflate(this.JtK, paramViewGroup, false);
+    LayoutInflater localLayoutInflater = z.jV(this.mContext);
+    paramViewGroup = localLayoutInflater.inflate(this.JOz, paramViewGroup, false);
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(16908312);
     if (localViewGroup != null)
     {
-      if (this.JtL == 0) {
+      if (this.JOA == 0) {
         break label65;
       }
-      localLayoutInflater.inflate(this.JtL, localViewGroup);
+      localLayoutInflater.inflate(this.JOA, localViewGroup);
     }
     for (;;)
     {
@@ -541,26 +541,26 @@ public class Preference
   {
     AppMethodBeat.i(142645);
     this.mKey = paramString;
-    if ((this.JtA) && (!hasKey())) {
-      fzH();
+    if ((this.JOp) && (!hasKey())) {
+      fDJ();
     }
     AppMethodBeat.o(142645);
   }
   
   public final void setLayoutResource(int paramInt)
   {
-    if (paramInt != this.JtK) {
-      this.JtM = true;
+    if (paramInt != this.JOz) {
+      this.JOB = true;
     }
-    this.JtK = paramInt;
+    this.JOz = paramInt;
   }
   
   public final void setSelectable(boolean paramBoolean)
   {
     AppMethodBeat.i(142644);
-    if (this.Jtz != paramBoolean)
+    if (this.JOo != paramBoolean)
     {
-      this.Jtz = paramBoolean;
+      this.JOo = paramBoolean;
       notifyChanged();
     }
     AppMethodBeat.o(142644);
@@ -576,9 +576,9 @@ public class Preference
   public void setSummary(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142641);
-    if (((paramCharSequence == null) && (this.wUo != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.wUo))))
+    if (((paramCharSequence == null) && (this.xkf != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.xkf))))
     {
-      this.wUo = paramCharSequence;
+      this.xkf = paramCharSequence;
       notifyChanged();
     }
     AppMethodBeat.o(142641);
@@ -588,7 +588,7 @@ public class Preference
   {
     AppMethodBeat.i(142639);
     setTitle(this.mContext.getString(paramInt));
-    this.Jtw = paramInt;
+    this.JOl = paramInt;
     AppMethodBeat.o(142639);
   }
   
@@ -597,7 +597,7 @@ public class Preference
     AppMethodBeat.i(142638);
     if (((paramCharSequence == null) && (this.Hd != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.Hd))))
     {
-      this.Jtw = 0;
+      this.JOl = 0;
       this.Hd = paramCharSequence;
       notifyChanged();
     }
@@ -606,10 +606,10 @@ public class Preference
   
   public final void setWidgetLayoutResource(int paramInt)
   {
-    if (paramInt != this.JtL) {
-      this.JtM = true;
+    if (paramInt != this.JOA) {
+      this.JOB = true;
     }
-    this.JtL = paramInt;
+    this.JOA = paramInt;
   }
   
   public String toString()
@@ -639,12 +639,12 @@ public class Preference
   
   public static abstract interface b
   {
-    public abstract boolean dAh();
+    public abstract boolean dDy();
   }
   
   public static abstract interface c
   {
-    public abstract boolean dBu();
+    public abstract boolean dEL();
   }
 }
 

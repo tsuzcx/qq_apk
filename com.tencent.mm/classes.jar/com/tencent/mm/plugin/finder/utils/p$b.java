@@ -7,62 +7,62 @@ import d.g.b.p;
 import d.l;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderUtil$VisibleFeedDataObj;", "", "feedDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "notFeedDataList", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "(Ljava/util/LinkedList;Ljava/util/LinkedList;)V", "getFeedDataList", "()Ljava/util/LinkedList;", "setFeedDataList", "(Ljava/util/LinkedList;)V", "getNotFeedDataList", "setNotFeedDataList", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderUtil$VisibleFeedDataObj;", "", "feedDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "notFeedDataList", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "(Ljava/util/LinkedList;Ljava/util/LinkedList;)V", "getFeedDataList", "()Ljava/util/LinkedList;", "setFeedDataList", "(Ljava/util/LinkedList;)V", "getNotFeedDataList", "setNotFeedDataList", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
 public final class p$b
 {
-  public LinkedList<g> sMr;
-  public LinkedList<a> sMs;
+  public LinkedList<g> sXC;
+  public LinkedList<a> sXD;
   
   private p$b(LinkedList<g> paramLinkedList, LinkedList<a> paramLinkedList1)
   {
-    AppMethodBeat.i(204518);
-    this.sMr = paramLinkedList;
-    this.sMs = paramLinkedList1;
-    AppMethodBeat.o(204518);
+    AppMethodBeat.i(205138);
+    this.sXC = paramLinkedList;
+    this.sXD = paramLinkedList1;
+    AppMethodBeat.o(205138);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(204522);
+    AppMethodBeat.i(205142);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.i(this.sMr, paramObject.sMr)) || (!p.i(this.sMs, paramObject.sMs))) {}
+        if ((!p.i(this.sXC, paramObject.sXC)) || (!p.i(this.sXD, paramObject.sXD))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(204522);
+      AppMethodBeat.o(205142);
       return true;
     }
-    AppMethodBeat.o(204522);
+    AppMethodBeat.o(205142);
     return false;
   }
   
   public final int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(204521);
-    LinkedList localLinkedList = this.sMr;
+    AppMethodBeat.i(205141);
+    LinkedList localLinkedList = this.sXC;
     if (localLinkedList != null) {}
     for (int i = localLinkedList.hashCode();; i = 0)
     {
-      localLinkedList = this.sMs;
+      localLinkedList = this.sXD;
       if (localLinkedList != null) {
         j = localLinkedList.hashCode();
       }
-      AppMethodBeat.o(204521);
+      AppMethodBeat.o(205141);
       return i * 31 + j;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(204520);
-    String str = "VisibleFeedDataObj(feedDataList=" + this.sMr + ", notFeedDataList=" + this.sMs + ")";
-    AppMethodBeat.o(204520);
+    AppMethodBeat.i(205140);
+    String str = "VisibleFeedDataObj(feedDataList=" + this.sXC + ", notFeedDataList=" + this.sXD + ")";
+    AppMethodBeat.o(205140);
     return str;
   }
 }

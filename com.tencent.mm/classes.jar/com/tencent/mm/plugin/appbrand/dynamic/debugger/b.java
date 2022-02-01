@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.debugger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.n.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,18 +11,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static final Map<String, List<n.a>> gxT;
-  private static final Map<String, DebuggerInfo> kgh;
+  private static final Map<String, List<n.a>> gAA;
+  private static final Map<String, DebuggerInfo> kjx;
   
   static
   {
     AppMethodBeat.i(121294);
-    gxT = new ConcurrentHashMap();
-    kgh = new ConcurrentHashMap();
+    gAA = new ConcurrentHashMap();
+    kjx = new ConcurrentHashMap();
     AppMethodBeat.o(121294);
   }
   
-  public static DebuggerInfo OC(String paramString)
+  public static DebuggerInfo Pk(String paramString)
   {
     AppMethodBeat.i(121289);
     if ((paramString == null) || (paramString.length() == 0))
@@ -30,20 +30,20 @@ public final class b
       AppMethodBeat.o(121289);
       return null;
     }
-    paramString = (DebuggerInfo)kgh.get(paramString);
+    paramString = (DebuggerInfo)kjx.get(paramString);
     AppMethodBeat.o(121289);
     return paramString;
   }
   
-  public static void P(String paramString, int paramInt)
+  public static void Q(String paramString, int paramInt)
   {
     AppMethodBeat.i(121293);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(121293);
       return;
     }
-    paramString = (List)gxT.get(paramString);
+    paramString = (List)gAA.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(121293);
@@ -51,7 +51,7 @@ public final class b
     }
     paramString = new LinkedList(paramString).iterator();
     while (paramString.hasNext()) {
-      ((n.a)paramString.next()).oO(paramInt);
+      ((n.a)paramString.next()).oR(paramInt);
     }
     AppMethodBeat.o(121293);
   }
@@ -64,23 +64,23 @@ public final class b
       AppMethodBeat.o(121290);
       return;
     }
-    kgh.put(paramString, paramDebuggerInfo);
+    kjx.put(paramString, paramDebuggerInfo);
     AppMethodBeat.o(121290);
   }
   
   public static boolean c(String paramString, n.a parama)
   {
     AppMethodBeat.i(121291);
-    if ((bt.isNullOrNil(paramString)) || (parama == null))
+    if ((bu.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(121291);
       return false;
     }
-    Object localObject = (List)gxT.get(paramString);
+    Object localObject = (List)gAA.get(paramString);
     if (localObject == null)
     {
       localObject = new LinkedList();
-      gxT.put(paramString, localObject);
+      gAA.put(paramString, localObject);
       paramString = (String)localObject;
     }
     do
@@ -97,12 +97,12 @@ public final class b
   public static boolean d(String paramString, n.a parama)
   {
     AppMethodBeat.i(121292);
-    if ((bt.isNullOrNil(paramString)) || (parama == null))
+    if ((bu.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(121292);
       return false;
     }
-    List localList = (List)gxT.get(paramString);
+    List localList = (List)gAA.get(paramString);
     if (localList == null)
     {
       AppMethodBeat.o(121292);
@@ -110,7 +110,7 @@ public final class b
     }
     boolean bool = localList.remove(parama);
     if (localList.isEmpty()) {
-      gxT.remove(paramString);
+      gAA.remove(paramString);
     }
     AppMethodBeat.o(121292);
     return bool;

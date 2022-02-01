@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 
 public final class i
 {
-  public final ajn dsC;
-  public final g rwF;
+  public final ajx dtI;
+  public final g rER;
   
-  public i(g paramg, ajn paramajn)
+  public i(g paramg, ajx paramajx)
   {
-    this.dsC = paramajn;
-    this.rwF = paramg;
+    this.dtI = paramajx;
+    this.rER = paramg;
   }
 }
 

@@ -10,9 +10,9 @@ import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.permission.d.1;
 import com.tencent.mm.plugin.appbrand.permission.d.a;
 import com.tencent.mm.plugin.appbrand.permission.d.b;
-import com.tencent.mm.plugin.appbrand.permission.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.permission.k;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -20,15 +20,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class c
   implements c.b
 {
-  private final AppBrandRuntime jvM;
-  private final com.tencent.mm.plugin.appbrand.permission.d jvN;
-  final com.tencent.mm.plugin.appbrand.jsapi.c jvO;
+  private final AppBrandRuntime jyH;
+  private final com.tencent.mm.plugin.appbrand.permission.d jyI;
+  final com.tencent.mm.plugin.appbrand.jsapi.c jyJ;
   
   public c(AppBrandRuntime paramAppBrandRuntime, com.tencent.mm.plugin.appbrand.jsapi.c paramc, com.tencent.mm.plugin.appbrand.permission.d paramd)
   {
-    this.jvM = paramAppBrandRuntime;
-    this.jvO = paramc;
-    this.jvN = paramd;
+    this.jyH = paramAppBrandRuntime;
+    this.jyJ = paramc;
+    this.jyI = paramd;
   }
   
   public void S(int paramInt, String paramString) {}
@@ -43,59 +43,59 @@ public class c
     {
       try
       {
-        if (this.jvM == null) {
+        if (this.jyH == null) {
           break label405;
         }
-        localObject2 = this.jvM.jwS;
+        localObject2 = this.jyH.jzQ;
         localObject1 = localObject2;
         if (localObject2 == null) {
           break label405;
         }
         localObject1 = localObject2;
-        if (((com.tencent.mm.plugin.appbrand.a.c)localObject2).jKT.jLd.get()) {
+        if (((com.tencent.mm.plugin.appbrand.a.c)localObject2).jOf.jOp.get()) {
           break label405;
         }
         i = 1;
         if (i == 0)
         {
-          parama.Pd("fail:interrupted");
+          parama.PL("fail:interrupted");
           AppMethodBeat.o(146924);
           return;
         }
-        if ((!this.jvO.isRunning()) && (!this.jvO.aXt()))
+        if ((!this.jyJ.isRunning()) && (!this.jyJ.aXO()))
         {
           i = 1;
           if (i == 0) {
             break;
           }
-          ad.e("MicroMsg.AppBrandComponentInterceptor", "onDispatch, event[%s], appId[%s], envStopped", new Object[] { paramat.getName(), this.jvO.getAppId() });
-          parama.Pd("fail:interrupted");
+          ae.e("MicroMsg.AppBrandComponentInterceptor", "onDispatch, event[%s], appId[%s], envStopped", new Object[] { paramat.getName(), this.jyJ.getAppId() });
+          parama.PL("fail:interrupted");
           AppMethodBeat.o(146924);
           return;
         }
       }
       catch (NullPointerException parama)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandComponentInterceptor", parama, "onDispatchImpl %s", new Object[] { paramat.getName() });
+        ae.printErrStackTrace("MicroMsg.AppBrandComponentInterceptor", parama, "onDispatchImpl %s", new Object[] { paramat.getName() });
         AppMethodBeat.o(146924);
         return;
       }
       i = 0;
     }
-    localObject1 = ((com.tencent.mm.plugin.appbrand.a.c)localObject2).jKT.bbg();
-    boolean bool2 = this.jvN.a(this.jvO, paramat.getClass());
-    if (com.tencent.mm.plugin.appbrand.a.b.jKQ != localObject1)
+    localObject1 = ((com.tencent.mm.plugin.appbrand.a.c)localObject2).jOf.bbI();
+    boolean bool2 = this.jyI.a(this.jyJ, paramat.getClass());
+    if (com.tencent.mm.plugin.appbrand.a.b.jOc != localObject1)
     {
       if (!bool2) {
         break label425;
       }
       break label414;
       label219:
-      localObject2 = (i)this.jvO.K(i.class);
+      localObject2 = (k)this.jyJ.K(k.class);
       if (localObject2 == null) {
         break label420;
       }
-      if (((i)localObject2).a(paramat)) {
+      if (((k)localObject2).a(paramat)) {
         break label431;
       }
       break label420;
@@ -104,22 +104,22 @@ public class c
     {
       if (i != 0)
       {
-        ad.i("MicroMsg.AppBrandComponentInterceptor", "dispatchToService, canSend %B, event %s, state %s, hasPermission %b", new Object[] { Boolean.valueOf(bool1), paramat.getName(), localObject1, Boolean.valueOf(bool2) });
-        if (bu.flY())
+        ae.i("MicroMsg.AppBrandComponentInterceptor", "dispatchToService, canSend %B, event %s, state %s, hasPermission %b", new Object[] { Boolean.valueOf(bool1), paramat.getName(), localObject1, Boolean.valueOf(bool2) });
+        if (bv.fpT())
         {
           if (!paramat.getName().equals("onInitialRenderingCacheReady")) {
             break label365;
           }
-          ad.d("MicroMsg.AppBrandComponentInterceptor", "dispatchToAutoTest, event %s, data %d, ", new Object[] { paramat.getName(), Integer.valueOf(paramat.getData().length()) });
+          ae.d("MicroMsg.AppBrandComponentInterceptor", "dispatchToAutoTest, event %s, data %d, ", new Object[] { paramat.getName(), Integer.valueOf(paramat.getData().length()) });
         }
       }
       while (!bool1)
       {
-        parama.Pd("fail:access denied");
+        parama.PL("fail:access denied");
         AppMethodBeat.o(146924);
         return;
         label365:
-        ad.d("MicroMsg.AppBrandComponentInterceptor", "dispatchToAutoTest, event %s, data %s, ", new Object[] { paramat.getName(), paramat.getData() });
+        ae.d("MicroMsg.AppBrandComponentInterceptor", "dispatchToAutoTest, event %s, data %s, ", new Object[] { paramat.getName(), paramat.getData() });
       }
       parama.proceed();
       AppMethodBeat.o(146924);
@@ -147,14 +147,14 @@ public class c
   public boolean a(final m paramm, String arg2, int paramInt, final c.a parama)
   {
     AppMethodBeat.i(146923);
-    com.tencent.mm.plugin.appbrand.permission.d locald = this.jvN;
-    com.tencent.mm.plugin.appbrand.jsapi.c localc = this.jvO;
+    com.tencent.mm.plugin.appbrand.permission.d locald = this.jyI;
+    com.tencent.mm.plugin.appbrand.jsapi.c localc = this.jyJ;
     d.b local1 = new d.b()
     {
       public final void a(d.a paramAnonymousa)
       {
         AppMethodBeat.i(146922);
-        if ((c.this.jvO == null) || (!c.this.jvO.isRunning()))
+        if ((c.this.jyJ == null) || (!c.this.jyJ.isRunning()))
         {
           AppMethodBeat.o(146922);
           return;
@@ -168,20 +168,20 @@ public class c
         if (TextUtils.isEmpty(paramAnonymousa.msg)) {}
         for (paramAnonymousa = "fail:internal error";; paramAnonymousa = paramAnonymousa.msg)
         {
-          parama.Pd(paramm.e(paramAnonymousa, null));
+          parama.PL(paramm.e(paramAnonymousa, null));
           AppMethodBeat.o(146922);
           return;
         }
       }
     };
     if ((paramm == null) || (localc == null)) {
-      ??? = d.a.bvZ();
+      ??? = d.a.bwQ();
     }
     while (-2 == ???.ret)
     {
       AppMethodBeat.o(146923);
       return true;
-      com.tencent.mm.plugin.appbrand.a.b localb = locald.jzY.jwS.jKT.bbg();
+      com.tencent.mm.plugin.appbrand.a.b localb = locald.jDb.jzQ.jOf.bbI();
       int i = locald.a(localc, paramm, ???, true);
       String str = localc.getAppId();
       if (i == 6) {
@@ -189,54 +189,54 @@ public class c
       }
       do
       {
-        ??? = d.a.bvZ();
+        ??? = d.a.bwQ();
         break;
         if (i == 1)
         {
-          if (((localc instanceof q)) && (localb == com.tencent.mm.plugin.appbrand.a.b.jKQ) && (com.tencent.mm.compatible.loader.a.contains(com.tencent.mm.plugin.appbrand.permission.d.mhZ, paramm.getName())))
+          if (((localc instanceof r)) && (localb == com.tencent.mm.plugin.appbrand.a.b.jOc) && (com.tencent.mm.compatible.loader.a.contains(com.tencent.mm.plugin.appbrand.permission.d.mmX, paramm.getName())))
           {
             ??? = new d.a(-1, String.format(Locale.US, "fail: jsapi has no permission, event=%s, runningState=%s, permissionMsg=%s, detail=%s", new Object[] { paramm.getName(), localb.name().toLowerCase(), "permission ok", "network api interrupted in suspend state" }));
             break;
           }
-          ??? = d.a.bvY();
+          ??? = d.a.bwP();
           break;
         }
         if (i == 4)
         {
-          if (com.tencent.mm.plugin.appbrand.permission.a.a.ek(str, paramm.getName()))
+          if (com.tencent.mm.plugin.appbrand.permission.a.a.en(str, paramm.getName()))
           {
-            ??? = d.a.bvY();
+            ??? = d.a.bwP();
             break;
           }
           if (com.tencent.mm.plugin.appbrand.permission.a.a.a((h)localc, paramm.getName()))
           {
-            ??? = d.a.bvY();
+            ??? = d.a.bwP();
             break;
           }
           com.tencent.mm.plugin.appbrand.permission.a.a.a(new com.tencent.mm.plugin.appbrand.permission.a.c((d)localc, paramm.getName(), ???, paramInt), new d.1(locald, local1));
-          ??? = d.a.bwc();
+          ??? = d.a.bwT();
           break;
         }
         if (i == 7)
         {
-          if (locald.jzY.jwS.jKT.bbh())
+          if (locald.jDb.jzQ.jOf.bbJ())
           {
-            ??? = d.a.bvY();
+            ??? = d.a.bwP();
             break;
           }
           ??? = new d.a(-1, String.format(Locale.US, "fail: jsapi has no permission, event=%s, runningState=%s, permissionMsg=%s, detail=%s", new Object[] { paramm.getName(), localb.name().toLowerCase(), "permission ok", "jsapi permission required playing audio but current not playing audio in background state" }));
           break;
         }
       } while (i != 8);
-      synchronized (locald.mhT)
+      synchronized (locald.mmR)
       {
-        locald.mhT.addLast(local1);
-        ??? = d.a.bwc();
+        locald.mmR.addLast(local1);
+        ??? = d.a.bwT();
       }
     }
     if (???.ret != 0)
     {
-      parama.Pd(paramm.e(???.msg, null));
+      parama.PL(paramm.e(???.msg, null));
       AppMethodBeat.o(146923);
       return true;
     }
@@ -246,7 +246,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.c
  * JD-Core Version:    0.7.0.1
  */

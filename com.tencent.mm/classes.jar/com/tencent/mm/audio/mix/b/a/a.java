@@ -20,7 +20,7 @@ public final class a
     this.filePath = paramString2;
   }
   
-  public final void Ox()
+  public final void Ov()
   {
     AppMethodBeat.i(136749);
     b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "runTask, appId:%s", new Object[] { this.appId });
@@ -30,7 +30,7 @@ public final class a
     if (TextUtils.isEmpty(this.filePath))
     {
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file task");
-      localObject2 = e.Ou().Ow();
+      localObject2 = e.Os().Ou();
       if (((ArrayList)localObject2).size() > 0)
       {
         localObject1 = "";
@@ -39,10 +39,10 @@ public final class a
         while (localIterator.hasNext())
         {
           localObject2 = (String)localIterator.next();
-          d locald = e.Ou().fJ((String)localObject2);
-          if ((locald == null) || (!locald.aBS) || (!locald.dcc))
+          d locald = e.Os().fP((String)localObject2);
+          if ((locald == null) || (!locald.aBS) || (!locald.dde))
           {
-            int j = e.Ou().fK((String)localObject2);
+            int j = e.Os().fQ((String)localObject2);
             if (j < i) {
               break label291;
             }
@@ -56,18 +56,18 @@ public final class a
     for (;;)
     {
       break;
-      localObject2 = e.Ou().fJ((String)localObject1);
-      if ((localObject2 != null) && (((d)localObject2).aBS) && (!((d)localObject2).dcc)) {
-        ((d)localObject2).fI(this.appId);
+      localObject2 = e.Os().fP((String)localObject1);
+      if ((localObject2 != null) && (((d)localObject2).aBS) && (!((d)localObject2).dde)) {
+        ((d)localObject2).fO(this.appId);
       }
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file path :%s, size:%d", new Object[] { localObject1, Integer.valueOf(i) });
       AppMethodBeat.o(136749);
       return;
-      i = e.Ou().fK(this.filePath);
+      i = e.Os().fQ(this.filePath);
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file path :%s, size:%d", new Object[] { this.filePath, Integer.valueOf(i) });
-      localObject1 = e.Ou().fJ(this.filePath);
-      if ((localObject1 != null) && (((d)localObject1).aBS) && (!((d)localObject1).dcc)) {
-        ((d)localObject1).fI(this.appId);
+      localObject1 = e.Os().fP(this.filePath);
+      if ((localObject1 != null) && (((d)localObject1).aBS) && (!((d)localObject1).dde)) {
+        ((d)localObject1).fO(this.appId);
       }
       AppMethodBeat.o(136749);
       return;
@@ -78,7 +78,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.a
  * JD-Core Version:    0.7.0.1
  */

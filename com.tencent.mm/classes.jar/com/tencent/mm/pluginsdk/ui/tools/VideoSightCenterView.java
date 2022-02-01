@@ -5,22 +5,20 @@ import android.media.MediaMetadataRetriever;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.h.d;
 import com.tencent.mm.plugin.sight.decode.a.b;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
 import com.tencent.mm.plugin.sight.decode.a.b.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class VideoSightCenterView
   extends VideoSightView
 {
-  private volatile boolean Flb = false;
-  private MediaMetadataRetriever Flc;
+  private MediaMetadataRetriever FDA;
+  private volatile boolean FDz = false;
   private boolean isStart = false;
-  private int vty = 0;
+  private int vFD = 0;
   
   public VideoSightCenterView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,7 +30,7 @@ public class VideoSightCenterView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void bSn()
+  private void bTA()
   {
     AppMethodBeat.i(116255);
     if ((getLayoutParams() instanceof RelativeLayout.LayoutParams))
@@ -47,8 +45,8 @@ public class VideoSightCenterView
   public int getCurrentPosition()
   {
     AppMethodBeat.i(116259);
-    ad.v("MicroMsg.VideoSightCenterView", "getCurrentPosition: %s", new Object[] { Integer.valueOf(this.vty) });
-    int i = this.vty;
+    com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "getCurrentPosition: %s", new Object[] { Integer.valueOf(this.vFD) });
+    int i = this.vFD;
     AppMethodBeat.o(116259);
     return i;
   }
@@ -56,23 +54,23 @@ public class VideoSightCenterView
   public int getDuration()
   {
     AppMethodBeat.i(116258);
-    ad.i("MicroMsg.VideoSightCenterView", "getDuration");
-    if (!bt.isNullOrNil(this.cuO)) {
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSightCenterView", "getDuration");
+    if (!bu.isNullOrNil(this.cvr)) {
       try
       {
-        if (this.Flc == null)
+        if (this.FDA == null)
         {
-          this.Flc = new d();
-          this.Flc.setDataSource(this.cuO);
+          this.FDA = new d();
+          this.FDA.setDataSource(this.cvr);
         }
-        i = Integer.valueOf(this.Flc.extractMetadata(9)).intValue();
-        ad.i("MicroMsg.VideoSightCenterView", "getDuration: %s", new Object[] { Integer.valueOf(i) });
+        i = Integer.valueOf(this.FDA.extractMetadata(9)).intValue();
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSightCenterView", "getDuration: %s", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(116258);
         return i;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.VideoSightCenterView", "getDuration error: %s", new Object[] { localException.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSightCenterView", "getDuration error: %s", new Object[] { localException.getMessage() });
       }
     }
     int i = super.getDuration();
@@ -88,19 +86,19 @@ public class VideoSightCenterView
     return d;
   }
   
-  public final void hw(int paramInt1, int paramInt2)
+  public final void hy(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(116254);
-    super.hw(paramInt1, paramInt2);
-    bSn();
+    super.hy(paramInt1, paramInt2);
+    bTA();
     AppMethodBeat.o(116254);
   }
   
   protected final void init()
   {
     AppMethodBeat.i(116256);
-    if (bt.bI(ae.gcP.fZX, "").equals("other")) {
-      ad.i("MicroMsg.VideoSightCenterView", "init::use other player");
+    if (bu.bI(com.tencent.mm.compatible.deviceinfo.ae.geX.gcg, "").equals("other")) {
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSightCenterView", "init::use other player");
     }
     for (;;)
     {
@@ -111,19 +109,19 @@ public class VideoSightCenterView
           AppMethodBeat.i(116251);
           if (-1 == paramAnonymousInt)
           {
-            ad.i("MicroMsg.VideoSightCenterView", "error stop, isCompletion: %s", new Object[] { Boolean.valueOf(VideoSightCenterView.a(VideoSightCenterView.this)) });
-            if ((VideoSightCenterView.this.pUM != null) && (!VideoSightCenterView.a(VideoSightCenterView.this)))
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSightCenterView", "error stop, isCompletion: %s", new Object[] { Boolean.valueOf(VideoSightCenterView.a(VideoSightCenterView.this)) });
+            if ((VideoSightCenterView.this.qbr != null) && (!VideoSightCenterView.a(VideoSightCenterView.this)))
             {
-              VideoSightCenterView.this.pUM.onError(0, 0);
+              VideoSightCenterView.this.qbr.onError(0, 0);
               AppMethodBeat.o(116251);
             }
           }
           else if (paramAnonymousInt == 0)
           {
-            ad.i("MicroMsg.VideoSightCenterView", "normal stop");
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSightCenterView", "normal stop");
             VideoSightCenterView.b(VideoSightCenterView.this);
-            if (VideoSightCenterView.this.pUM != null) {
-              VideoSightCenterView.this.pUM.onCompletion();
+            if (VideoSightCenterView.this.qbr != null) {
+              VideoSightCenterView.this.qbr.onCompletion();
             }
           }
           AppMethodBeat.o(116251);
@@ -131,14 +129,14 @@ public class VideoSightCenterView
       });
       AppMethodBeat.o(116256);
       return;
-      rb(true);
+      ri(true);
     }
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(116265);
-    ad.v("MicroMsg.VideoSightCenterView", "isPlaying, isStart: %s, currentPosition: %s", new Object[] { Boolean.valueOf(this.isStart), Integer.valueOf(this.vty) });
+    com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "isPlaying, isStart: %s, currentPosition: %s", new Object[] { Boolean.valueOf(this.isStart), Integer.valueOf(this.vFD) });
     boolean bool = this.isStart;
     AppMethodBeat.o(116265);
     return bool;
@@ -147,7 +145,7 @@ public class VideoSightCenterView
   public final void p(double paramDouble)
   {
     AppMethodBeat.i(116264);
-    ad.v("MicroMsg.VideoSightCenterView", "seekTo, time: %s, isStart: %s, currentPosition: %s, getLastProgresstime: %s", new Object[] { Double.valueOf(paramDouble), Boolean.valueOf(this.isStart), Integer.valueOf(this.vty), Double.valueOf(getLastProgresstime()) });
+    com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "seekTo, time: %s, isStart: %s, currentPosition: %s, getLastProgresstime: %s", new Object[] { Double.valueOf(paramDouble), Boolean.valueOf(this.isStart), Integer.valueOf(this.vFD), Double.valueOf(getLastProgresstime()) });
     if ((this.isStart) && (getLastProgresstime() > 0.0D)) {
       super.p(paramDouble / 1000.0D);
     }
@@ -157,7 +155,7 @@ public class VideoSightCenterView
   public final void pause()
   {
     AppMethodBeat.i(116262);
-    ad.v("MicroMsg.VideoSightCenterView", "pause");
+    com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "pause");
     super.pause();
     AppMethodBeat.o(116262);
   }
@@ -166,7 +164,7 @@ public class VideoSightCenterView
   {
     AppMethodBeat.i(116253);
     super.setDrawableWidth(paramInt);
-    bSn();
+    bTA();
     AppMethodBeat.o(116253);
   }
   
@@ -183,11 +181,11 @@ public class VideoSightCenterView
           if (VideoSightCenterView.this.duration == 0) {
             VideoSightCenterView.this.duration = VideoSightCenterView.this.getDuration();
           }
-          if (VideoSightCenterView.this.pUM != null)
+          if (VideoSightCenterView.this.qbr != null)
           {
-            ad.v("MicroMsg.VideoSightCenterView", "onPlayTime, currentTime: %s, duration: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(VideoSightCenterView.this.duration) });
+            com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "onPlayTime, currentTime: %s, duration: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(VideoSightCenterView.this.duration) });
             VideoSightCenterView.a(VideoSightCenterView.this, (int)(1000L * paramAnonymousLong));
-            VideoSightCenterView.this.pUM.eT((int)paramAnonymousLong, VideoSightCenterView.this.duration);
+            VideoSightCenterView.this.qbr.eU((int)paramAnonymousLong, VideoSightCenterView.this.duration);
           }
           AppMethodBeat.o(116252);
         }
@@ -202,7 +200,7 @@ public class VideoSightCenterView
   public final boolean start()
   {
     AppMethodBeat.i(116260);
-    ad.v("MicroMsg.VideoSightCenterView", "start");
+    com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "start");
     this.isStart = true;
     boolean bool = super.start();
     AppMethodBeat.o(116260);
@@ -212,9 +210,9 @@ public class VideoSightCenterView
   public final void stop()
   {
     AppMethodBeat.i(116261);
-    ad.v("MicroMsg.VideoSightCenterView", "stop");
+    com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VideoSightCenterView", "stop");
     super.stop();
-    this.vty = 0;
+    this.vFD = 0;
     this.isStart = false;
     AppMethodBeat.o(116261);
   }

@@ -12,15 +12,15 @@ public final class u
   extends s
   implements b.a
 {
-  public MMFragment Jco = null;
-  public b Jcp;
+  public MMFragment JwY = null;
+  public b JwZ;
   private ActionBar mActionBar;
   
   public final boolean d(Menu paramMenu)
   {
     AppMethodBeat.i(141376);
-    if (this.Jco != null) {
-      this.Jco.onPrepareOptionsMenu(paramMenu);
+    if (this.JwY != null) {
+      this.JwY.onPrepareOptionsMenu(paramMenu);
     }
     AppMethodBeat.o(141376);
     return true;
@@ -29,8 +29,8 @@ public final class u
   protected final void dealContentView(View paramView)
   {
     AppMethodBeat.i(141368);
-    if (this.Jco != null) {
-      this.Jco.dealContentView(paramView);
+    if (this.JwY != null) {
+      this.JwY.dealContentView(paramView);
     }
     AppMethodBeat.o(141368);
   }
@@ -38,7 +38,7 @@ public final class u
   public final boolean e(Menu paramMenu)
   {
     AppMethodBeat.i(141377);
-    this.Jco.onCreateOptionsMenu(paramMenu, this.Jcp.getMenuInflater());
+    this.JwY.onCreateOptionsMenu(paramMenu, this.JwZ.getMenuInflater());
     AppMethodBeat.o(141377);
     return true;
   }
@@ -59,7 +59,7 @@ public final class u
   protected final String getClassName()
   {
     AppMethodBeat.i(141373);
-    String str = this.Jco.getClass().getName();
+    String str = this.JwY.getClass().getName();
     AppMethodBeat.o(141373);
     return str;
   }
@@ -67,9 +67,9 @@ public final class u
   protected final String getIdentString()
   {
     AppMethodBeat.i(141369);
-    if (this.Jco != null)
+    if (this.JwY != null)
     {
-      String str = this.Jco.getIdentityString();
+      String str = this.JwY.getIdentityString();
       AppMethodBeat.o(141369);
       return str;
     }
@@ -80,9 +80,9 @@ public final class u
   protected final int getLayoutId()
   {
     AppMethodBeat.i(141367);
-    if (this.Jco != null)
+    if (this.JwY != null)
     {
-      int i = this.Jco.getLayoutId();
+      int i = this.JwY.getLayoutId();
       AppMethodBeat.o(141367);
       return i;
     }
@@ -93,9 +93,9 @@ public final class u
   protected final View getLayoutView()
   {
     AppMethodBeat.i(141370);
-    if (this.Jco != null)
+    if (this.JwY != null)
     {
-      View localView = this.Jco.getLayoutView();
+      View localView = this.JwY.getLayoutView();
       AppMethodBeat.o(141370);
       return localView;
     }
@@ -107,7 +107,7 @@ public final class u
   {
     AppMethodBeat.i(141374);
     if (this.mActionBar == null) {
-      this.mActionBar = this.Jcp.fyg();
+      this.mActionBar = this.JwZ.fCi();
     }
     ActionBar localActionBar = this.mActionBar;
     AppMethodBeat.o(141374);
@@ -122,8 +122,8 @@ public final class u
   protected final void onCreateBeforeSetContentView()
   {
     AppMethodBeat.i(141372);
-    if (this.Jco != null) {
-      this.Jco.onCreateBeforeSetContentView();
+    if (this.JwY != null) {
+      this.JwY.onCreateBeforeSetContentView();
     }
     AppMethodBeat.o(141372);
   }
@@ -131,8 +131,8 @@ public final class u
   public final void onKeyboardStateChanged()
   {
     AppMethodBeat.i(141371);
-    if (this.Jco != null) {
-      this.Jco.onKeyboardStateChanged();
+    if (this.JwY != null) {
+      this.JwY.onKeyboardStateChanged();
     }
     AppMethodBeat.o(141371);
   }
@@ -140,7 +140,7 @@ public final class u
   public final void supportInvalidateOptionsMenu()
   {
     AppMethodBeat.i(141375);
-    this.Jcp.supportInvalidateOptionsMenu();
+    this.JwZ.supportInvalidateOptionsMenu();
     AppMethodBeat.o(141375);
   }
 }

@@ -40,9 +40,9 @@ public class WXImageObject
   
   public WXImageObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196935);
+    AppMethodBeat.i(194047);
     this.imageData = paramArrayOfByte;
-    AppMethodBeat.o(196935);
+    AppMethodBeat.o(194047);
   }
   
   private int getFileSize(String paramString)

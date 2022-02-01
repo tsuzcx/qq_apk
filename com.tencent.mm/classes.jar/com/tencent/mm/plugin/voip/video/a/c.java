@@ -5,56 +5,56 @@ import com.tencent.mm.compatible.util.j;
 
 public class c
 {
-  public static boolean Cps;
+  public static boolean CGW;
   
   static
   {
     AppMethodBeat.i(115716);
-    Cps = false;
-    eAP();
+    CGW = false;
+    eEx();
     AppMethodBeat.o(115716);
   }
   
-  public static void eAP()
+  public static void eEx()
   {
     AppMethodBeat.i(115715);
     System.currentTimeMillis();
-    if (!Cps) {
+    if (!CGW) {
       try
       {
         c.class.getClassLoader();
-        j.vr("image_filter_common");
+        j.vN("image_filter_common");
         c.class.getClassLoader();
-        j.vr("image_filter_gpu");
+        j.vN("image_filter_gpu");
         c.class.getClassLoader();
-        j.vr("format_convert");
+        j.vN("format_convert");
         c.class.getClassLoader();
-        j.vr("YTCommon");
+        j.vN("YTCommon");
         c.class.getClassLoader();
-        j.vr("YTFaceTrackPro");
+        j.vN("YTFaceTrackPro");
         c.class.getClassLoader();
-        j.vr("algo_youtu_jni");
+        j.vN("algo_youtu_jni");
         c.class.getClassLoader();
-        j.vr("pitu_tools");
-        Cps = true;
+        j.vN("pitu_tools");
+        CGW = true;
         AppMethodBeat.o(115715);
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        Cps = false;
+        CGW = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (RuntimeException localRuntimeException)
       {
-        Cps = false;
+        CGW = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (Exception localException)
       {
-        Cps = false;
+        CGW = false;
       }
     }
     AppMethodBeat.o(115715);

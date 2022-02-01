@@ -20,7 +20,7 @@ import com.tencent.mm.plugin.wenote.model.nativenote.spans.m;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.n;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.q;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.r;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -40,14 +40,14 @@ public final class b
     if (!paramStack.isEmpty())
     {
       paramStack = (a)paramStack.pop();
-      String str = paramStack.EAK.pxy;
-      int j = paramStack.pxe;
+      String str = paramStack.ETg.pEc;
+      int j = paramStack.pDI;
       while (i < j)
       {
         paramStringBuilder.append(str);
         i += 1;
       }
-      i = paramStack.pxe;
+      i = paramStack.pDI;
       AppMethodBeat.o(30390);
       return i;
     }
@@ -58,7 +58,7 @@ public final class b
   public static String a(Spanned paramSpanned)
   {
     AppMethodBeat.i(30383);
-    if ((paramSpanned == null) || (bt.isNullOrNil(paramSpanned.toString())))
+    if ((paramSpanned == null) || (bu.isNullOrNil(paramSpanned.toString())))
     {
       AppMethodBeat.o(30383);
       return "";
@@ -93,7 +93,7 @@ public final class b
   private static void a(Spanned paramSpanned, StringBuilder paramStringBuilder)
   {
     AppMethodBeat.i(30384);
-    ArrayList localArrayList = new j(paramSpanned).pvN;
+    ArrayList localArrayList = new j(paramSpanned).pCr;
     Stack localStack = new Stack();
     int m = localArrayList.size();
     int i = 0;
@@ -110,10 +110,10 @@ public final class b
           break;
         }
         localObject1 = (r)((Iterator)localObject3).next();
-      } while (!((r)localObject1).EAK.pxz);
-      Object localObject1 = ((r)localObject1).EAK;
+      } while (!((r)localObject1).ETg.pEd);
+      Object localObject1 = ((r)localObject1).ETg;
       int j = 0;
-      localq = q.EAP;
+      localq = q.ETl;
       localObject2 = ((Set)localObject2).iterator();
       int k;
       label192:
@@ -122,20 +122,20 @@ public final class b
       {
         localObject3 = (r)((Iterator)localObject2).next();
         boolean bool;
-        if ((((r)localObject3).EAK.cft()) || (((r)localObject3).EAK.cfu()) || (((r)localObject3).EAK.cfv()))
+        if ((((r)localObject3).ETg.cgJ()) || (((r)localObject3).ETg.cgK()) || (((r)localObject3).ETg.cgL()))
         {
           k = 1;
           j += k;
-          localObject4 = ((r)localObject3).EAK;
-          if (!((r)localObject3).EAK.cft()) {
+          localObject4 = ((r)localObject3).ETg;
+          if (!((r)localObject3).ETg.cgJ()) {
             break label247;
           }
-          bool = ((d)((r)localObject3).pxF).pxi;
+          bool = ((d)((r)localObject3).pEj).pDM;
           label228:
           if (!bool) {
             break label307;
           }
-          localq = q.EAP;
+          localq = q.ETl;
         }
         for (;;)
         {
@@ -143,52 +143,52 @@ public final class b
           k = 0;
           break label192;
           label247:
-          if (((r)localObject3).EAK.cfu())
+          if (((r)localObject3).ETg.cgK())
           {
-            bool = ((m)((r)localObject3).pxF).pxi;
+            bool = ((m)((r)localObject3).pEj).pDM;
             break label228;
           }
-          if (((r)localObject3).EAK.cfv())
+          if (((r)localObject3).ETg.cgL())
           {
-            bool = ((k)((r)localObject3).pxF).pxi;
+            bool = ((k)((r)localObject3).pEj).pDM;
             break label228;
           }
           bool = true;
           break label228;
           label307:
-          if (((q)localObject4).cft()) {
-            localq = q.EAQ;
-          } else if (((q)localObject4).cfu()) {
-            localq = q.EAR;
-          } else if (((q)localObject4).cfv()) {
-            localq = q.EAS;
+          if (((q)localObject4).cgJ()) {
+            localq = q.ETm;
+          } else if (((q)localObject4).cgK()) {
+            localq = q.ETn;
+          } else if (((q)localObject4).cgL()) {
+            localq = q.ETo;
           }
         }
       }
       a(localStack, paramStringBuilder, new a(localq, j, 0));
-      if (localq.cfv())
+      if (localq.cgL())
       {
         localObject2 = (k[])paramSpanned.getSpans(localn.avj, localn.OQ, k.class);
         if (localObject2.length > 0)
         {
-          localq.pxD = localObject2[0].pxK;
-          j = localq.pxA.indexOf("\"") + 1;
-          k = localq.pxA.lastIndexOf("\"");
+          localq.pEh = localObject2[0].pEo;
+          j = localq.pEe.indexOf("\"") + 1;
+          k = localq.pEe.lastIndexOf("\"");
           if (j < k)
           {
-            localObject3 = localq.pxA.substring(j, k);
-            if (!bt.isNullOrNil((String)localObject3))
+            localObject3 = localq.pEe.substring(j, k);
+            if (!bu.isNullOrNil((String)localObject3))
             {
               localObject4 = ((String)localObject3).trim();
-              if (!localq.pxD) {
+              if (!localq.pEh) {
                 break label669;
               }
               localObject2 = "1";
               label495:
               if (!((String)localObject4).equals(localObject2))
               {
-                localObject4 = localq.pxA;
-                if (!localq.pxD) {
+                localObject4 = localq.pEe;
+                if (!localq.pEh) {
                   break label677;
                 }
               }
@@ -200,8 +200,8 @@ public final class b
       label677:
       for (localObject2 = "1";; localObject2 = "0")
       {
-        localq.pxA = ((String)localObject4).replaceAll((String)localObject3, (String)localObject2);
-        paramStringBuilder.append(localq.pxA);
+        localq.pEe = ((String)localObject4).replaceAll((String)localObject3, (String)localObject2);
+        paramStringBuilder.append(localq.pEe);
         if (localObject1 != null) {
           paramStringBuilder.append(((q)localObject1).mStartTag);
         }
@@ -213,10 +213,10 @@ public final class b
         if (localObject1 != null)
         {
           a(paramStringBuilder, (q)localObject1);
-          paramStringBuilder.append(((q)localObject1).pxy);
+          paramStringBuilder.append(((q)localObject1).pEc);
         }
         a(paramStringBuilder, localq);
-        paramStringBuilder.append(localq.pxB);
+        paramStringBuilder.append(localq.pEf);
         i += 1;
         break;
         localObject2 = "0";
@@ -298,14 +298,14 @@ public final class b
         if ((localCharacterStyle instanceof RelativeSizeSpan))
         {
           paramStringBuilder.append("<wx-font style=\"font-size:");
-          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.BE((int)(((RelativeSizeSpan)localCharacterStyle).getSizeChange() * com.tencent.mm.plugin.wenote.model.nativenote.manager.b.getTextSize())));
+          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.BQ((int)(((RelativeSizeSpan)localCharacterStyle).getSizeChange() * com.tencent.mm.plugin.wenote.model.nativenote.manager.b.getTextSize())));
           paramStringBuilder.append("px\">");
           break label135;
         }
         if ((localCharacterStyle instanceof AbsoluteSizeSpan))
         {
           paramStringBuilder.append("<wx-font style=\"font-size:");
-          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.BE(((AbsoluteSizeSpan)localCharacterStyle).getSize()));
+          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.BQ(((AbsoluteSizeSpan)localCharacterStyle).getSize()));
           paramStringBuilder.append("px\">");
           break label135;
         }
@@ -396,7 +396,7 @@ public final class b
   private static void a(StringBuilder paramStringBuilder, q paramq)
   {
     AppMethodBeat.i(30387);
-    if ((paramq.pxC) && (paramStringBuilder.length() >= 5))
+    if ((paramq.pEg) && (paramStringBuilder.length() >= 5))
     {
       int i = paramStringBuilder.length() - 5;
       int j = paramStringBuilder.length();
@@ -414,28 +414,28 @@ public final class b
     for (;;)
     {
       int i = 0;
-      localObject = q.EAP;
+      localObject = q.ETl;
       if (!paramStack.isEmpty())
       {
         localObject = (a)paramStack.peek();
-        i = ((a)localObject).pxd;
-        localObject = ((a)localObject).EAK;
+        i = ((a)localObject).pDH;
+        localObject = ((a)localObject).ETg;
       }
-      if (parama.pxd > i)
+      if (parama.pDH > i)
       {
-        parama.pxe = (parama.pxd - i);
+        parama.pDI = (parama.pDH - i);
         b(paramStack, paramStringBuilder, parama);
         AppMethodBeat.o(30389);
         return;
       }
-      if (parama.pxd >= i) {
+      if (parama.pDH >= i) {
         break;
       }
       a(paramStack, paramStringBuilder);
     }
-    if (parama.EAK != localObject)
+    if (parama.ETg != localObject)
     {
-      parama.pxe = a(paramStack, paramStringBuilder);
+      parama.pDI = a(paramStack, paramStringBuilder);
       b(paramStack, paramStringBuilder, parama);
     }
     AppMethodBeat.o(30389);
@@ -444,8 +444,8 @@ public final class b
   private static void b(Stack<a> paramStack, StringBuilder paramStringBuilder, a parama)
   {
     AppMethodBeat.i(30391);
-    String str = parama.EAK.mStartTag;
-    int j = parama.pxe;
+    String str = parama.ETg.mStartTag;
+    int j = parama.pDI;
     int i = 0;
     while (i < j)
     {

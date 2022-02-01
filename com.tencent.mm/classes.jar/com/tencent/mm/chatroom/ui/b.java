@@ -27,8 +27,8 @@ public final class b
     localIntent.putExtra("room_name", paramString);
     localIntent.putExtra("announce_ok", true);
     paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.ahp(), "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramString.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.ahE(), "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(12767);
   }

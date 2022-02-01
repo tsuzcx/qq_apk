@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.concurrent.Future;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CancelFutureOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "future", "Ljava/util/concurrent/Future;", "(Ljava/util/concurrent/Future;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CancelFutureOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "future", "Ljava/util/concurrent/Future;", "(Ljava/util/concurrent/Future;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
 final class h
   extends i
 {
-  private final Future<?> djn;
+  private final Future<?> dkp;
   
   public h(Future<?> paramFuture)
   {
-    this.djn = paramFuture;
+    this.dkp = paramFuture;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(190697);
-    String str = "CancelFutureOnCancel[" + this.djn + ']';
-    AppMethodBeat.o(190697);
+    AppMethodBeat.i(209188);
+    String str = "CancelFutureOnCancel[" + this.dkp + ']';
+    AppMethodBeat.o(209188);
     return str;
   }
   
-  public final void v(Throwable paramThrowable)
+  public final void x(Throwable paramThrowable)
   {
-    AppMethodBeat.i(190695);
-    this.djn.cancel(false);
-    AppMethodBeat.o(190695);
+    AppMethodBeat.i(209186);
+    this.dkp.cancel(false);
+    AppMethodBeat.o(209186);
   }
 }
 

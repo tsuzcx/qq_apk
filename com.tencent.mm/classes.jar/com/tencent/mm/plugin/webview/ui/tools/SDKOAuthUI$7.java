@@ -12,7 +12,7 @@ final class SDKOAuthUI$7
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
     AppMethodBeat.i(79738);
-    SDKOAuthUI.r(this.Eab);
+    SDKOAuthUI.r(this.Esd);
     AppMethodBeat.o(79738);
   }
 }

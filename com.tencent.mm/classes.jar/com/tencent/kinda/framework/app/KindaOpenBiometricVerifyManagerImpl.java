@@ -7,14 +7,14 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KindaOpenBiometricVerifyManager;
 import com.tencent.kinda.gen.SelectBioType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yk;
+import com.tencent.mm.g.a.yq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.b.h;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public class KindaOpenBiometricVerifyManagerImpl
@@ -28,13 +28,13 @@ public class KindaOpenBiometricVerifyManagerImpl
     Object localObject = KindaContext.get();
     if (localObject == null)
     {
-      ad.e("KindaOpenBiometricVerifyManagerImpl", "Fail to start KindaOpenBiometricVerifyManagerImpl due to context is null!");
+      ae.e("KindaOpenBiometricVerifyManagerImpl", "Fail to start KindaOpenBiometricVerifyManagerImpl due to context is null!");
       AppMethodBeat.o(18457);
       return;
     }
     if (!(localObject instanceof MMActivity))
     {
-      ad.e("KindaOpenBiometricVerifyManagerImpl", "Fail to start KindaOpenBiometricVerifyManagerImpl due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
+      ae.e("KindaOpenBiometricVerifyManagerImpl", "Fail to start KindaOpenBiometricVerifyManagerImpl due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18457);
       return;
     }
@@ -54,16 +54,16 @@ public class KindaOpenBiometricVerifyManagerImpl
       if (paramString != null) {
         break label227;
       }
-      ad.i("KindaOpenBiometricVerifyManagerImpl", "The Extras data in current kinda Activity is null!");
+      ae.i("KindaOpenBiometricVerifyManagerImpl", "The Extras data in current kinda Activity is null!");
     }
     for (;;)
     {
-      s.eDp();
-      paramString = s.eDq().eGi();
-      if ((paramString == null) || (!paramString.eFQ())) {
+      s.eGW();
+      paramString = s.eGX().eJP();
+      if ((paramString == null) || (!paramString.eJx())) {
         break label254;
       }
-      ad.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has opened fingerprint (biometric) payment in WeChat.");
+      ae.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has opened fingerprint (biometric) payment in WeChat.");
       ((h)g.ab(h.class)).i((MMActivity)localObject);
       AppMethodBeat.o(18457);
       return;
@@ -73,15 +73,15 @@ public class KindaOpenBiometricVerifyManagerImpl
       ((MMActivity)localObject).getIntent().putExtra("selectBioType", 2);
       break;
       label227:
-      ad.i("KindaOpenBiometricVerifyManagerImpl", "The Extras data in current kinda Activity is " + paramString.toString());
+      ae.i("KindaOpenBiometricVerifyManagerImpl", "The Extras data in current kinda Activity is " + paramString.toString());
     }
     label254:
-    ad.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has not opened fingerprint (biometric) payment in WeChat. Send a message to call the bind query.");
-    paramString = new yk();
-    paramString.dMG.scene = 1;
-    paramString.dMG.dMI = true;
-    paramString.dMG.dMJ = true;
-    paramString.dMH.dMy = new Runnable()
+    ae.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has not opened fingerprint (biometric) payment in WeChat. Send a message to call the bind query.");
+    paramString = new yq();
+    paramString.dNW.scene = 1;
+    paramString.dNW.dNY = true;
+    paramString.dNW.dNZ = true;
+    paramString.dNX.dNO = new Runnable()
     {
       public void run()
       {
@@ -90,13 +90,13 @@ public class KindaOpenBiometricVerifyManagerImpl
         AppMethodBeat.o(18456);
       }
     };
-    a.IbL.a(paramString, Looper.myLooper());
+    a.IvT.a(paramString, Looper.myLooper());
     AppMethodBeat.o(18457);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaOpenBiometricVerifyManagerImpl
  * JD-Core Version:    0.7.0.1
  */

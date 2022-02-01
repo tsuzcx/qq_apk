@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vf
   extends b
 {
-  public a dJs;
+  public a dKz;
   
   public vf()
   {
@@ -15,21 +15,21 @@ public final class vf
   
   private vf(byte paramByte)
   {
-    AppMethodBeat.i(94817);
-    this.dJs = new a();
-    this.IbR = false;
+    AppMethodBeat.i(94816);
+    this.dKz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(94817);
+    AppMethodBeat.o(94816);
   }
   
   public static final class a
   {
-    public String mediaId;
+    public boolean dKA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.vf
  * JD-Core Version:    0.7.0.1
  */

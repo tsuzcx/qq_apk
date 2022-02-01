@@ -12,7 +12,7 @@ final class WalletSecuritySettingUI$6
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(69795);
-    this.CNK.finish();
+    this.Dfs.finish();
     AppMethodBeat.o(69795);
   }
 }

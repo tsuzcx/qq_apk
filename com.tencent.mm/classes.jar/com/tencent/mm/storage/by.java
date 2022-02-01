@@ -1,56 +1,69 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eu;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class by
-  extends eu
+  extends com.tencent.mm.bw.a
 {
-  protected static c.a info;
+  public long deP;
+  public long kzj;
+  public long msgId;
   
-  static
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32880);
-    c.a locala = new c.a();
-    locala.IhA = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.IhC.put("appId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IhB = "appId";
-    locala.columns[1] = "packageName";
-    locala.IhC.put("packageName", "TEXT");
-    localStringBuilder.append(" packageName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "status";
-    locala.IhC.put("status", "INTEGER default '0' ");
-    localStringBuilder.append(" status INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "sceneFlag";
-    locala.IhC.put("sceneFlag", "INTEGER default '0' ");
-    localStringBuilder.append(" sceneFlag INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "msgTypeFlag";
-    locala.IhC.put("msgTypeFlag", "INTEGER default '0' ");
-    localStringBuilder.append(" msgTypeFlag INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "msgState";
-    locala.IhC.put("msgState", "INTEGER default '0' ");
-    localStringBuilder.append(" msgState INTEGER default '0' ");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(32880);
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
+    AppMethodBeat.i(43276);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aZ(1, this.msgId);
+      paramVarArgs.aZ(2, this.kzj);
+      paramVarArgs.aZ(3, this.deP);
+      AppMethodBeat.o(43276);
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      paramInt = f.a.a.b.b.a.p(1, this.msgId);
+      int i = f.a.a.b.b.a.p(2, this.kzj);
+      int j = f.a.a.b.b.a.p(3, this.deP);
+      AppMethodBeat.o(43276);
+      return paramInt + 0 + i + j;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(43276);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      by localby = (by)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(43276);
+        return -1;
+      case 1: 
+        localby.msgId = locala.OmT.zd();
+        AppMethodBeat.o(43276);
+        return 0;
+      case 2: 
+        localby.kzj = locala.OmT.zd();
+        AppMethodBeat.o(43276);
+        return 0;
+      }
+      localby.deP = locala.OmT.zd();
+      AppMethodBeat.o(43276);
+      return 0;
+    }
+    AppMethodBeat.o(43276);
+    return -1;
   }
 }
 

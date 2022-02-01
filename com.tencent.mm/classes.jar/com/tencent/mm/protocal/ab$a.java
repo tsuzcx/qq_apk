@@ -29,13 +29,13 @@ public abstract class ab$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-      paramParcel1 = aiW();
+      paramParcel1 = ajl();
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-      paramParcel1 = aiX();
+      paramParcel1 = ajm();
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;

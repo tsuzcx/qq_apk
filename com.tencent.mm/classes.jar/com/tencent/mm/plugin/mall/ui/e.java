@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.mall.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class e
 {
-  private static boolean vGx = false;
+  private static boolean vSB = false;
   
-  public static void dkG()
+  public static void dnG()
   {
-    vGx = true;
+    vSB = true;
   }
   
-  public static int dkH()
+  public static int dnH()
   {
     AppMethodBeat.i(66145);
-    if (vGx)
+    if (vSB)
     {
-      i = aj.getContext().getResources().getColor(2131100605);
+      i = ak.getContext().getResources().getColor(2131100605);
       AppMethodBeat.o(66145);
       return i;
     }
-    int i = aj.getContext().getResources().getColor(2131099679);
+    int i = ak.getContext().getResources().getColor(2131099679);
     AppMethodBeat.o(66145);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.e
  * JD-Core Version:    0.7.0.1
  */

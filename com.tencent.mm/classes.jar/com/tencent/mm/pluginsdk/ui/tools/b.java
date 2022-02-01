@@ -1,10 +1,10 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.f;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public class b
@@ -16,11 +16,11 @@ public class b
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152372);
-    if (!bt.isNullOrNil(this.songAlbumUrl)) {
-      paramStringBuilder.append("<songalbumurl>").append(bt.aRc(this.songAlbumUrl)).append("</songalbumurl>");
+    if (!bu.isNullOrNil(this.songAlbumUrl)) {
+      paramStringBuilder.append("<songalbumurl>").append(bu.aSz(this.songAlbumUrl)).append("</songalbumurl>");
     }
-    if (!bt.isNullOrNil(this.songLyric)) {
-      paramStringBuilder.append("<songlyric>").append(bt.aRc(this.songLyric)).append("</songlyric>");
+    if (!bu.isNullOrNil(this.songLyric)) {
+      paramStringBuilder.append("<songlyric>").append(bu.aSz(this.songLyric)).append("</songlyric>");
     }
     AppMethodBeat.o(152372);
   }
@@ -33,7 +33,7 @@ public class b
     AppMethodBeat.o(152373);
   }
   
-  public final f aot()
+  public final f aoI()
   {
     AppMethodBeat.i(152371);
     b localb = new b();

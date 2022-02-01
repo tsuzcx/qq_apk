@@ -5,10 +5,12 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.plugin.websearch.api.af;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 final class BizTimeLineUI$18
@@ -18,35 +20,35 @@ final class BizTimeLineUI$18
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(209519);
-    if (com.tencent.mm.plugin.websearch.api.ad.Wd(0))
+    AppMethodBeat.i(208475);
+    if (ad.WK(0))
     {
-      paramMenuItem = com.tencent.mm.plugin.websearch.api.ad.eMd();
-      paramMenuItem.putExtra("title", this.ocb.getString(2131759718));
-      paramMenuItem.putExtra("searchbar_tips", this.ocb.getString(2131759718));
+      paramMenuItem = ad.ePM();
+      paramMenuItem.putExtra("title", this.ohP.getString(2131759718));
+      paramMenuItem.putExtra("searchbar_tips", this.ohP.getString(2131759718));
       paramMenuItem.putExtra("KRightBtn", true);
       paramMenuItem.putExtra("ftsneedkeyboard", true);
       paramMenuItem.putExtra("publishIdPrefix", "bs");
       paramMenuItem.putExtra("ftsType", 2);
       paramMenuItem.putExtra("ftsbizscene", 11);
-      Object localObject = com.tencent.mm.plugin.websearch.api.ad.f(11, true, 2);
-      String str = com.tencent.mm.plugin.websearch.api.ad.Wb(bt.aRe((String)((Map)localObject).get("scene")));
+      Object localObject = ad.f(11, true, 2);
+      String str = ad.WI(bu.aSB((String)((Map)localObject).get("scene")));
       ((Map)localObject).put("sessionId", str);
       paramMenuItem.putExtra("sessionId", str);
-      paramMenuItem.putExtra("rawUrl", com.tencent.mm.plugin.websearch.api.ad.aY((Map)localObject));
+      paramMenuItem.putExtra("rawUrl", ad.be((Map)localObject));
       paramMenuItem.putExtra("key_load_js_without_delay", true);
       paramMenuItem.addFlags(67108864);
-      localObject = af.aFR("bizAccountTopSearch");
+      localObject = af.aHl("bizAccountTopSearch");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         paramMenuItem.putExtra("key_search_input_hint", (String)localObject);
       }
-      d.b(aj.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", paramMenuItem);
+      d.b(ak.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", paramMenuItem);
     }
     for (;;)
     {
-      AppMethodBeat.o(209519);
+      AppMethodBeat.o(208475);
       return true;
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BizTimeLineUI", "fts h5 template not avail");
+      ae.e("MicroMsg.BizTimeLineUI", "fts h5 template not avail");
     }
   }
 }

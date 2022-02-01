@@ -5,37 +5,37 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
-  public static void Kc(String paramString)
+  public static void KA(String paramString)
   {
     AppMethodBeat.i(134212);
-    aj.getContext().getSharedPreferences(aj.fkC(), 0).edit().putString("reg_last_exit_ui", paramString).commit();
+    ak.getContext().getSharedPreferences(ak.fow(), 0).edit().putString("reg_last_exit_ui", paramString).commit();
     AppMethodBeat.o(134212);
   }
   
-  public static void Ma(String paramString)
+  public static void KB(String paramString)
   {
     AppMethodBeat.i(134214);
-    aj.getContext().getSharedPreferences(aj.fkC(), 0).edit().putString("reg_next_enter_ui", paramString).commit();
+    ak.getContext().getSharedPreferences(ak.fow(), 0).edit().putString("reg_next_enter_ui", paramString).commit();
     AppMethodBeat.o(134214);
   }
   
-  public static String Mp()
+  public static String aVo()
   {
     AppMethodBeat.i(134213);
-    String str = aj.getContext().getSharedPreferences(aj.fkC(), 0).getString("reg_last_exit_ui", "");
+    String str = ak.getContext().getSharedPreferences(ak.fow(), 0).getString("reg_last_exit_ui", "");
     AppMethodBeat.o(134213);
     return str;
   }
   
-  private static String Mq()
+  private static String aVp()
   {
     AppMethodBeat.i(134215);
-    String str = aj.getContext().getSharedPreferences(aj.fkC(), 0).getString("reg_next_enter_ui", "");
+    String str = ak.getContext().getSharedPreferences(ak.fow(), 0).getString("reg_next_enter_ui", "");
     AppMethodBeat.o(134215);
     return str;
   }
@@ -44,19 +44,19 @@ public final class a
   {
     AppMethodBeat.i(134217);
     if (paramBoolean) {}
-    for (paramString = paramString + "," + bt.flT() + "," + Mp();; paramString = paramString + "," + bt.flT() + "," + Mq())
+    for (paramString = paramString + "," + bu.fpO() + "," + aVo();; paramString = paramString + "," + bu.fpO() + "," + aVp())
     {
-      e.ygI.a(10645, paramString, true, true);
+      e.ywz.a(10645, paramString, true, true);
       AppMethodBeat.o(134217);
       return;
     }
   }
   
-  public static void vk(String paramString)
+  public static void vG(String paramString)
   {
     AppMethodBeat.i(134216);
-    paramString = paramString + "," + bt.flT() + "," + Mp();
-    e.ygI.a(10645, paramString, true, true);
+    paramString = paramString + "," + bu.fpO() + "," + aVo();
+    e.ywz.a(10645, paramString, true, true);
     AppMethodBeat.o(134216);
   }
 }

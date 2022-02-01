@@ -5,23 +5,23 @@ import d.a.j;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/byp/BypConstants$BypBizSyncKeyType;", "", "()V", "BYP_GAME_LIFE_KEY", "", "BYP_MSG_AVATAR_KEY", "BYP_MSG_FINDER_KEY", "SELECTOR_SUPPORTED", "", "getSELECTOR_SUPPORTED", "()Ljava/util/List;", "plugin-byp_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/byp/BypConstants$BypBizSyncKeyType;", "", "()V", "BYP_GAME_LIFE_KEY", "", "BYP_MSG_AVATAR_KEY", "BYP_MSG_FINDER_KEY", "SELECTOR_SUPPORTED", "", "getSELECTOR_SUPPORTED", "()Ljava/util/List;", "plugin-byp_release"})
 public final class a$a
 {
-  public static final a ouK;
-  private static final List<Integer> vJJ;
+  private static final List<Integer> oBj;
+  public static final a oBk;
   
   static
   {
-    AppMethodBeat.i(219193);
-    ouK = new a();
-    vJJ = j.listOf(new Integer[] { Integer.valueOf(1), Integer.valueOf(3) });
-    AppMethodBeat.o(219193);
+    AppMethodBeat.i(218308);
+    oBk = new a();
+    oBj = j.listOf(new Integer[] { Integer.valueOf(1), Integer.valueOf(3) });
+    AppMethodBeat.o(218308);
   }
   
-  public static List<Integer> bEd()
+  public static List<Integer> bUd()
   {
-    return vJJ;
+    return oBj;
   }
 }
 

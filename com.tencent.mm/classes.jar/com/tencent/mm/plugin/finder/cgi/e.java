@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.finder.report.i;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.amv;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.art;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.asi;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFeedBack;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderFeedbackResponse;", "feedId", "", "objectNonceId", "", "feedbackType", "", "subType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;IILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFeedBack;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderFeedbackResponse;", "feedId", "", "objectNonceId", "", "feedbackType", "", "subType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;IILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "Companion", "plugin-finder_release"})
 public final class e
   extends w<Object>
 {
-  public static final a rHM;
+  public static final a rPX;
   
   static
   {
     AppMethodBeat.i(165162);
-    rHM = new a((byte)0);
+    rPX = new a((byte)0);
     AppMethodBeat.o(165162);
   }
   
-  public e(long paramLong, String paramString, aqy paramaqy)
+  public e(long paramLong, String paramString, arn paramarn)
   {
-    super(paramaqy);
-    AppMethodBeat.i(201022);
+    super(paramarn);
+    AppMethodBeat.i(201444);
     b.a locala = new b.a();
-    amv localamv = new amv();
-    localamv.id = paramLong;
-    localamv.objectNonceId = paramString;
-    localamv.Gmk = 1;
-    localamv.Gml = 2;
-    paramString = v.rIR;
-    localamv.Glv = v.a(paramaqy);
-    paramString = h.soM;
-    if (paramaqy != null) {}
-    for (int i = paramaqy.rTD;; i = 0)
+    anh localanh = new anh();
+    localanh.id = paramLong;
+    localanh.objectNonceId = paramString;
+    localanh.GFm = 1;
+    localanh.GFn = 2;
+    paramString = v.rRb;
+    localanh.GDR = v.a(paramarn);
+    paramString = i.syT;
+    if (paramarn != null) {}
+    for (int i = paramarn.sch;; i = 0)
     {
-      localamv.sessionBuffer = h.I(paramLong, i);
-      locala.c((a)localamv);
-      paramString = new art();
+      localanh.sessionBuffer = i.I(paramLong, i);
+      locala.c((a)localanh);
+      paramString = new asi();
       paramString.setBaseResponse(new BaseResponse());
-      paramString.getBaseResponse().ErrMsg = new cwt();
+      paramString.getBaseResponse().ErrMsg = new cxn();
       locala.d((a)paramString);
-      locala.Dl("/cgi-bin/micromsg-bin/finderfeedback");
-      locala.oP(3912);
-      c(locala.aDC());
-      ad.i("CgiFinderFeedBack", "[CgiFinderFeedBack] feedId=" + paramLong + " feedbackType=1 subType=2");
-      AppMethodBeat.o(201022);
+      locala.DN("/cgi-bin/micromsg-bin/finderfeedback");
+      locala.oS(3912);
+      c(locala.aDS());
+      ae.i("CgiFinderFeedBack", "[CgiFinderFeedBack] feedId=" + paramLong + " feedbackType=1 subType=2");
+      AppMethodBeat.o(201444);
       return;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFeedBack$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFeedBack$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

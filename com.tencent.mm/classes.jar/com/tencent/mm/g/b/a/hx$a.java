@@ -8,12 +8,12 @@ public enum hx$a
   
   static
   {
-    AppMethodBeat.i(43495);
-    eue = new a("release", 0, 1);
-    euf = new a("debug", 1, 2);
-    eug = new a("demo", 2, 3);
-    euh = new a[] { eue, euf, eug };
-    AppMethodBeat.o(43495);
+    AppMethodBeat.i(180152);
+    evf = new a("release", 0, 1);
+    evg = new a("debug", 1, 2);
+    evh = new a("demo", 2, 3);
+    evi = new a[] { evf, evg, evh };
+    AppMethodBeat.o(180152);
   }
   
   private hx$a(int paramInt)
@@ -21,23 +21,23 @@ public enum hx$a
     this.value = paramInt;
   }
   
-  public static a jc(int paramInt)
+  public static a jb(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 1: 
-      return eue;
+      return evf;
     case 2: 
-      return euf;
+      return evg;
     }
-    return eug;
+    return evh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hx.a
  * JD-Core Version:    0.7.0.1
  */

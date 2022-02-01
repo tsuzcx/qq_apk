@@ -3,14 +3,14 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bh
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CzQ;
-  public String CzR;
-  public String Dhj;
-  public int Dhk;
-  public String dDH;
-  public String dxD;
+  public String CRv;
+  public String CRw;
+  public String DyN;
+  public int DyO;
+  public String dEM;
+  public String dyI;
   public String title;
   public String url;
   
@@ -23,25 +23,25 @@ public final class bh
       if (this.url != null) {
         paramVarArgs.d(1, this.url);
       }
-      if (this.dxD != null) {
-        paramVarArgs.d(2, this.dxD);
+      if (this.dyI != null) {
+        paramVarArgs.d(2, this.dyI);
       }
-      if (this.dDH != null) {
-        paramVarArgs.d(3, this.dDH);
+      if (this.dEM != null) {
+        paramVarArgs.d(3, this.dEM);
       }
-      if (this.Dhj != null) {
-        paramVarArgs.d(4, this.Dhj);
+      if (this.DyN != null) {
+        paramVarArgs.d(4, this.DyN);
       }
       if (this.title != null) {
         paramVarArgs.d(5, this.title);
       }
-      if (this.CzQ != null) {
-        paramVarArgs.d(6, this.CzQ);
+      if (this.CRv != null) {
+        paramVarArgs.d(6, this.CRv);
       }
-      if (this.CzR != null) {
-        paramVarArgs.d(7, this.CzR);
+      if (this.CRw != null) {
+        paramVarArgs.d(7, this.CRw);
       }
-      paramVarArgs.aS(8, this.Dhk);
+      paramVarArgs.aS(8, this.DyO);
       AppMethodBeat.o(91345);
       return 0;
     }
@@ -54,38 +54,38 @@ public final class bh
     for (int i = f.a.a.b.b.a.e(1, this.url) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.dxD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dxD);
+      if (this.dyI != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dyI);
       }
       i = paramInt;
-      if (this.dDH != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dDH);
+      if (this.dEM != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dEM);
       }
       paramInt = i;
-      if (this.Dhj != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Dhj);
+      if (this.DyN != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.DyN);
       }
       i = paramInt;
       if (this.title != null) {
         i = paramInt + f.a.a.b.b.a.e(5, this.title);
       }
       paramInt = i;
-      if (this.CzQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.CzQ);
+      if (this.CRv != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.CRv);
       }
       i = paramInt;
-      if (this.CzR != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.CzR);
+      if (this.CRw != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.CRw);
       }
-      paramInt = f.a.a.b.b.a.bz(8, this.Dhk);
+      paramInt = f.a.a.b.b.a.bz(8, this.DyO);
       AppMethodBeat.o(91345);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91345);
@@ -101,35 +101,35 @@ public final class bh
           AppMethodBeat.o(91345);
           return -1;
         case 1: 
-          localbh.url = locala.NPN.readString();
+          localbh.url = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         case 2: 
-          localbh.dxD = locala.NPN.readString();
+          localbh.dyI = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         case 3: 
-          localbh.dDH = locala.NPN.readString();
+          localbh.dEM = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         case 4: 
-          localbh.Dhj = locala.NPN.readString();
+          localbh.DyN = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         case 5: 
-          localbh.title = locala.NPN.readString();
+          localbh.title = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         case 6: 
-          localbh.CzQ = locala.NPN.readString();
+          localbh.CRv = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         case 7: 
-          localbh.CzR = locala.NPN.readString();
+          localbh.CRw = locala.OmT.readString();
           AppMethodBeat.o(91345);
           return 0;
         }
-        localbh.Dhk = locala.NPN.zc();
+        localbh.DyO = locala.OmT.zc();
         AppMethodBeat.o(91345);
         return 0;
       }

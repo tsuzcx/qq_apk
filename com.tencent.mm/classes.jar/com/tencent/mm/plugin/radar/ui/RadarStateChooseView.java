@@ -14,22 +14,22 @@ import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isShowing", "", "mStatus", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getMStatus", "()Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "setMStatus", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;)V", "mTrunOn", "slideInAnim", "Landroid/view/animation/Animation;", "getSlideInAnim", "()Landroid/view/animation/Animation;", "slideInAnim$delegate", "Lkotlin/Lazy;", "slideOutAnim", "getSlideOutAnim", "slideOutAnim$delegate", "hide", "", "show", "stateAlignment", "trunOff", "trunOn", "trunToStatus", "status", "Companion", "plugin-radar_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isShowing", "", "mStatus", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getMStatus", "()Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "setMStatus", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;)V", "mTrunOn", "slideInAnim", "Landroid/view/animation/Animation;", "getSlideInAnim", "()Landroid/view/animation/Animation;", "slideInAnim$delegate", "Lkotlin/Lazy;", "slideOutAnim", "getSlideOutAnim", "slideOutAnim$delegate", "hide", "", "show", "stateAlignment", "trunOff", "trunOn", "trunToStatus", "status", "Companion", "plugin-radar_release"})
 public final class RadarStateChooseView
   extends RelativeLayout
 {
   private static final String TAG = "MicroMsg.Radar.RadarStateChooseView";
-  public static final a xko;
-  boolean cMS;
-  private final f xkk;
-  private final f xkl;
-  boolean xkm;
-  e.a xkn;
+  public static final a xAl;
+  boolean cNB;
+  private final f xAh;
+  private final f xAi;
+  boolean xAj;
+  e.a xAk;
   
   static
   {
     AppMethodBeat.i(138673);
-    xko = new a((byte)0);
+    xAl = new a((byte)0);
     TAG = "MicroMsg.Radar.RadarStateChooseView";
     AppMethodBeat.o(138673);
   }
@@ -38,10 +38,10 @@ public final class RadarStateChooseView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138678);
-    this.xkk = g.O((a)new c(this));
-    this.xkl = g.O((a)new b(this));
-    this.xkm = true;
-    this.xkn = e.a.xjb;
+    this.xAh = g.O((a)new c(this));
+    this.xAi = g.O((a)new b(this));
+    this.xAj = true;
+    this.xAk = e.a.xyY;
     AppMethodBeat.o(138678);
   }
   
@@ -49,18 +49,18 @@ public final class RadarStateChooseView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(138679);
-    this.xkk = g.O((a)new c(this));
-    this.xkl = g.O((a)new b(this));
-    this.xkm = true;
-    this.xkn = e.a.xjb;
+    this.xAh = g.O((a)new c(this));
+    this.xAi = g.O((a)new b(this));
+    this.xAj = true;
+    this.xAk = e.a.xyY;
     AppMethodBeat.o(138679);
   }
   
-  final void dDo()
+  final void dGF()
   {
     AppMethodBeat.i(138677);
-    e.a locala = this.xkn;
-    switch (e.cpQ[locala.ordinal()])
+    e.a locala = this.xAk;
+    switch (e.cqt[locala.ordinal()])
     {
     default: 
       setVisibility(4);
@@ -78,13 +78,13 @@ public final class RadarStateChooseView
   
   public final e.a getMStatus()
   {
-    return this.xkn;
+    return this.xAk;
   }
   
   final Animation getSlideInAnim()
   {
     AppMethodBeat.i(138675);
-    Animation localAnimation = (Animation)this.xkl.getValue();
+    Animation localAnimation = (Animation)this.xAi.getValue();
     AppMethodBeat.o(138675);
     return localAnimation;
   }
@@ -92,7 +92,7 @@ public final class RadarStateChooseView
   final Animation getSlideOutAnim()
   {
     AppMethodBeat.i(138674);
-    Animation localAnimation = (Animation)this.xkk.getValue();
+    Animation localAnimation = (Animation)this.xAh.getValue();
     AppMethodBeat.o(138674);
     return localAnimation;
   }
@@ -101,14 +101,14 @@ public final class RadarStateChooseView
   {
     AppMethodBeat.i(138676);
     p.h(parama, "<set-?>");
-    this.xkn = parama;
+    this.xAk = parama;
     AppMethodBeat.o(138676);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements a<Animation>
@@ -118,7 +118,7 @@ public final class RadarStateChooseView
       super();
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideInAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideInAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
     public static final class a
       implements Animation.AnimationListener
     {
@@ -128,8 +128,8 @@ public final class RadarStateChooseView
       {
         AppMethodBeat.i(138666);
         p.h(paramAnimation, "animation");
-        RadarStateChooseView.a(this.xkq.xkp);
-        this.xkq.xkp.setVisibility(8);
+        RadarStateChooseView.a(this.xAn.xAm);
+        this.xAn.xAm.setVisibility(8);
         AppMethodBeat.o(138666);
       }
       
@@ -149,7 +149,7 @@ public final class RadarStateChooseView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
     implements a<Animation>
@@ -159,7 +159,7 @@ public final class RadarStateChooseView
       super();
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
     public static final class a
       implements Animation.AnimationListener
     {

@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.freewifi.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class f
 {
-  private b tmM;
+  private b txE;
   
-  public final boolean af(String paramString1, String paramString2, String paramString3)
+  public final boolean ag(String paramString1, String paramString2, String paramString3)
   {
     boolean bool = false;
     for (;;)
@@ -17,34 +17,34 @@ public final class f
       try
       {
         AppMethodBeat.i(24799);
-        if (bt.V(new String[] { paramString1, paramString2, paramString3 }))
+        if (bu.V(new String[] { paramString1, paramString2, paramString3 }))
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "WifiInfo got Currently is null. Cannot compared with last WifiInfo.");
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "WifiInfo got Currently is null. Cannot compared with last WifiInfo.");
           AppMethodBeat.o(24799);
           return bool;
         }
-        if (this.tmM != null)
+        if (this.txE != null)
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "last WifiInfo stored in memmory : ssid=%s, bssid=%s ", new Object[] { this.tmM.tmO, this.tmM.tmP });
-          if ((m.ajI(paramString1).equals(this.tmM.tmO)) && (paramString2.equalsIgnoreCase(this.tmM.tmP))) {
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "last WifiInfo stored in memmory : ssid=%s, bssid=%s ", new Object[] { this.txE.txG, this.txE.txH });
+          if ((m.akG(paramString1).equals(this.txE.txG)) && (paramString2.equalsIgnoreCase(this.txE.txH))) {
             AppMethodBeat.o(24799);
           }
         }
         else
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "last WifiInfo stored in memmory is null.");
+          ae.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "last WifiInfo stored in memmory is null.");
         }
       }
       finally {}
-      this.tmM = new b(m.ajI(paramString1), paramString2, paramString3, System.currentTimeMillis(), (byte)0);
-      ad.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "new WifiInfo stored in memmory : ssid=%s, bssid=%s ", new Object[] { this.tmM.tmO, this.tmM.tmP });
+      this.txE = new b(m.akG(paramString1), paramString2, paramString3, System.currentTimeMillis(), (byte)0);
+      ae.i("MicroMsg.FreeWifi.FreeWifiNetChangeManager.onNetworkChangeFreeWifi", "new WifiInfo stored in memmory : ssid=%s, bssid=%s ", new Object[] { this.txE.txG, this.txE.txH });
       AppMethodBeat.o(24799);
       bool = true;
     }
   }
   
   /* Error */
-  public final void cRs()
+  public final void cTX()
   {
     // Byte code:
     //   0: aload_0
@@ -52,7 +52,7 @@ public final class f
     //   2: sipush 24798
     //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   9: getfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
     //   12: ifnull +55 -> 67
     //   15: ldc 37
     //   17: ldc 51
@@ -61,22 +61,22 @@ public final class f
     //   23: dup
     //   24: iconst_0
     //   25: aload_0
-    //   26: getfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
-    //   29: getfield 55	com/tencent/mm/plugin/freewifi/model/f$b:tmO	Ljava/lang/String;
+    //   26: getfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   29: getfield 55	com/tencent/mm/plugin/freewifi/model/f$b:txG	Ljava/lang/String;
     //   32: aastore
     //   33: dup
     //   34: iconst_1
     //   35: aload_0
-    //   36: getfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
-    //   39: getfield 58	com/tencent/mm/plugin/freewifi/model/f$b:tmP	Ljava/lang/String;
+    //   36: getfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   39: getfield 58	com/tencent/mm/plugin/freewifi/model/f$b:txH	Ljava/lang/String;
     //   42: aastore
-    //   43: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   43: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   46: aload_0
     //   47: aconst_null
-    //   48: putfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   48: putfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
     //   51: ldc 37
     //   53: ldc 91
-    //   55: invokestatic 44	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: invokestatic 44	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   58: sipush 24798
     //   61: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aload_0
@@ -84,7 +84,7 @@ public final class f
     //   66: return
     //   67: ldc 37
     //   69: ldc 77
-    //   71: invokestatic 44	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: invokestatic 44	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   74: goto -28 -> 46
     //   77: astore_1
     //   78: aload_0
@@ -102,11 +102,11 @@ public final class f
     //   67	74	77	finally
   }
   
-  public final b cRt()
+  public final b cTY()
   {
     try
     {
-      b localb = this.tmM;
+      b localb = this.txE;
       return localb;
     }
     finally
@@ -117,7 +117,7 @@ public final class f
   }
   
   /* Error */
-  public final void cRu()
+  public final void cTZ()
   {
     // Byte code:
     //   0: aload_0
@@ -125,17 +125,17 @@ public final class f
     //   2: sipush 24800
     //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   9: getfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
     //   12: ifnull +20 -> 32
     //   15: aload_0
-    //   16: getfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   16: getfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
     //   19: astore_1
     //   20: aload_1
-    //   21: getfield 98	com/tencent/mm/plugin/freewifi/model/f$b:tmR	Z
+    //   21: getfield 98	com/tencent/mm/plugin/freewifi/model/f$b:txJ	Z
     //   24: ifeq +17 -> 41
     //   27: aload_0
     //   28: aload_1
-    //   29: putfield 49	com/tencent/mm/plugin/freewifi/model/f:tmM	Lcom/tencent/mm/plugin/freewifi/model/f$b;
+    //   29: putfield 49	com/tencent/mm/plugin/freewifi/model/f:txE	Lcom/tencent/mm/plugin/freewifi/model/f$b;
     //   32: sipush 24800
     //   35: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_0
@@ -144,18 +144,18 @@ public final class f
     //   41: new 9	com/tencent/mm/plugin/freewifi/model/f$b
     //   44: dup
     //   45: aload_1
-    //   46: getfield 55	com/tencent/mm/plugin/freewifi/model/f$b:tmO	Ljava/lang/String;
+    //   46: getfield 55	com/tencent/mm/plugin/freewifi/model/f$b:txG	Ljava/lang/String;
     //   49: aload_1
-    //   50: getfield 58	com/tencent/mm/plugin/freewifi/model/f$b:tmP	Ljava/lang/String;
+    //   50: getfield 58	com/tencent/mm/plugin/freewifi/model/f$b:txH	Ljava/lang/String;
     //   53: aload_1
-    //   54: getfield 101	com/tencent/mm/plugin/freewifi/model/f$b:tmQ	Ljava/lang/String;
+    //   54: getfield 101	com/tencent/mm/plugin/freewifi/model/f$b:txI	Ljava/lang/String;
     //   57: aload_1
-    //   58: getfield 105	com/tencent/mm/plugin/freewifi/model/f$b:tmF	J
+    //   58: getfield 105	com/tencent/mm/plugin/freewifi/model/f$b:txx	J
     //   61: invokespecial 108	com/tencent/mm/plugin/freewifi/model/f$b:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
     //   64: astore_1
     //   65: aload_1
     //   66: iconst_1
-    //   67: putfield 98	com/tencent/mm/plugin/freewifi/model/f$b:tmR	Z
+    //   67: putfield 98	com/tencent/mm/plugin/freewifi/model/f$b:txJ	Z
     //   70: goto -43 -> 27
     //   73: astore_1
     //   74: aload_0
@@ -177,39 +177,39 @@ public final class f
   
   public static final class a
   {
-    private static f tmN;
+    private static f txF;
     
     static
     {
       AppMethodBeat.i(24796);
-      tmN = new f((byte)0);
+      txF = new f((byte)0);
       AppMethodBeat.o(24796);
     }
   }
   
   public static final class b
   {
-    public long tmF;
-    public String tmO;
-    public String tmP;
-    public String tmQ;
-    public boolean tmR;
+    public String txG;
+    public String txH;
+    public String txI;
+    public boolean txJ;
+    public long txx;
     
     b(String paramString1, String paramString2, String paramString3, long paramLong)
     {
       AppMethodBeat.i(24797);
-      this.tmO = m.ajI(paramString1);
-      this.tmP = paramString2;
-      this.tmQ = paramString3;
-      this.tmF = paramLong;
-      this.tmR = false;
+      this.txG = m.akG(paramString1);
+      this.txH = paramString2;
+      this.txI = paramString3;
+      this.txx = paramLong;
+      this.txJ = false;
       AppMethodBeat.o(24797);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.f
  * JD-Core Version:    0.7.0.1
  */

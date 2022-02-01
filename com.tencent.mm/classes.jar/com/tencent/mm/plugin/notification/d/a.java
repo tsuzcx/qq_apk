@@ -4,18 +4,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.fts.a.n;
 
 public final class a
-  extends t
+  extends u
   implements b
 {
-  public a()
+  private static a wLA;
+  
+  private a()
   {
-    super(com.tencent.mm.bs.c.aNR("notification"));
+    super(com.tencent.mm.br.c.aPo("notification"));
     AppMethodBeat.i(26743);
     AppMethodBeat.o(26743);
+  }
+  
+  public static a dzm()
+  {
+    try
+    {
+      AppMethodBeat.i(186486);
+      if (wLA == null) {
+        wLA = new a();
+      }
+      a locala = wLA;
+      AppMethodBeat.o(186486);
+      return locala;
+    }
+    finally {}
   }
   
   public final void parallelsDependency()

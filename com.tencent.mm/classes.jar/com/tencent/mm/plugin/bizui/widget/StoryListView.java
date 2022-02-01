@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class StoryListView
   extends ListView
 {
-  private boolean nPg;
+  private boolean nUM;
   
   public StoryListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,7 +18,7 @@ public class StoryListView
   protected void layoutChildren()
   {
     AppMethodBeat.i(123723);
-    if (!this.nPg) {
+    if (!this.nUM) {
       super.layoutChildren();
     }
     AppMethodBeat.o(123723);
@@ -26,7 +26,7 @@ public class StoryListView
   
   public void setBlockLayoutChildren(boolean paramBoolean)
   {
-    this.nPg = paramBoolean;
+    this.nUM = paramBoolean;
   }
 }
 

@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 public final class g
 {
-  public static long EV(long paramLong)
+  public static long Fx(long paramLong)
   {
     AppMethodBeat.i(88664);
     paramLong = (System.nanoTime() - paramLong) / 1000L / 1000L;
@@ -109,7 +109,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.soter.core.c.g
  * JD-Core Version:    0.7.0.1
  */

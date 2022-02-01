@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.appbrand.game.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameCliCfg;", "", "()V", "get", "T", "key", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "defaultValue", "log", "", "(Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;Ljava/lang/Object;Z)Ljava/lang/Object;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameCliCfg;", "", "()V", "get", "T", "key", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "defaultValue", "log", "", "(Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;Ljava/lang/Object;Z)Ljava/lang/Object;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a kkt;
+  public static final a knJ;
   
   static
   {
     AppMethodBeat.i(50355);
-    kkt = new a();
+    knJ = new a();
     AppMethodBeat.o(50355);
   }
 }

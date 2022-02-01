@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderMediaReportInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int audioBitrate;
   public int fileSize;
@@ -44,9 +44,9 @@ public class FinderMediaReportInfo
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(169007);
@@ -62,31 +62,31 @@ public class FinderMediaReportInfo
         AppMethodBeat.o(169007);
         return -1;
       case 1: 
-        localFinderMediaReportInfo.videoDuration = locala.NPN.zc();
+        localFinderMediaReportInfo.videoDuration = locala.OmT.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 2: 
-        localFinderMediaReportInfo.videoBitrate = locala.NPN.zc();
+        localFinderMediaReportInfo.videoBitrate = locala.OmT.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 3: 
-        localFinderMediaReportInfo.width = locala.NPN.zc();
+        localFinderMediaReportInfo.width = locala.OmT.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 4: 
-        localFinderMediaReportInfo.height = locala.NPN.zc();
+        localFinderMediaReportInfo.height = locala.OmT.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 5: 
-        localFinderMediaReportInfo.fileSize = locala.NPN.zc();
+        localFinderMediaReportInfo.fileSize = locala.OmT.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 6: 
-        localFinderMediaReportInfo.audioBitrate = locala.NPN.zc();
+        localFinderMediaReportInfo.audioBitrate = locala.OmT.zc();
         AppMethodBeat.o(169007);
         return 0;
       }
-      localFinderMediaReportInfo.fps = locala.NPN.zc();
+      localFinderMediaReportInfo.fps = locala.OmT.zc();
       AppMethodBeat.o(169007);
       return 0;
     }
@@ -96,7 +96,7 @@ public class FinderMediaReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderMediaReportInfo
  * JD-Core Version:    0.7.0.1
  */

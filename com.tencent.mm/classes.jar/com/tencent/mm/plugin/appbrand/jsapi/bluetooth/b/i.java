@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiWriteBlePeripheralCharacteristicValue;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiWriteBlePeripheralCharacteristicValue;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class i
   extends a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   private static final int CTRL_INDEX = 727;
   private static final String NAME = "writeBLEPeripheralCharacteristicValue";
-  public static final a kDJ;
+  public static final a kGY;
   
   static
   {
     AppMethodBeat.i(144768);
-    kDJ = new a((byte)0);
+    kGY = new a((byte)0);
     NAME = "writeBLEPeripheralCharacteristicValue";
     CTRL_INDEX = 727;
     AppMethodBeat.o(144768);
@@ -30,10 +30,10 @@ public final class i
   {
     AppMethodBeat.i(144767);
     d.g.b.p.h(paramc, "env");
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki())
     {
       b.a(this, paramInt, paramc, 10001, "fail:not available");
-      ad.i("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: Ble is not available");
+      ae.i("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: Ble is not available");
       AppMethodBeat.o(144767);
       return;
     }
@@ -44,15 +44,15 @@ public final class i
       return;
     }
     int i = paramJSONObject.optInt("serverId");
-    Object localObject1 = o.kEf;
-    localObject1 = o.sR(i);
+    Object localObject1 = o.kHu;
+    localObject1 = o.sU(i);
     if (localObject1 == null)
     {
       b.a(this, paramInt, paramc, 10020, "fail: no server");
       AppMethodBeat.o(144767);
       return;
     }
-    if (((n)localObject1).kDO != p.kEi)
+    if (((n)localObject1).kHd != p.kHx)
     {
       b.a(this, paramInt, paramc, 10000, "fail:not init");
       AppMethodBeat.o(144767);
@@ -65,7 +65,7 @@ public final class i
       boolean bool = paramJSONObject.optBoolean("needNotify", false);
       i = paramJSONObject.optInt("callbackId", -1);
       paramJSONObject = paramJSONObject.optString("value");
-      ad.i("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: write = " + paramJSONObject + " serviceId = %s, characteristicId = %s, needNotify = %s, jCallbackId = %s", new Object[] { localObject3, localObject2, String.valueOf(bool), String.valueOf(i) });
+      ae.i("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: write = " + paramJSONObject + " serviceId = %s, characteristicId = %s, needNotify = %s, jCallbackId = %s", new Object[] { localObject3, localObject2, String.valueOf(bool), String.valueOf(i) });
       localObject3 = UUID.fromString((String)localObject3);
       d.g.b.p.g(localObject3, "UUID.fromString(serviceId)");
       localObject2 = UUID.fromString((String)localObject2);
@@ -78,20 +78,20 @@ public final class i
     }
     catch (JSONException paramJSONObject)
     {
-      ad.e("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: fail: ".concat(String.valueOf(paramJSONObject)));
+      ae.e("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: fail: ".concat(String.valueOf(paramJSONObject)));
       b.a(this, paramInt, paramc, 10013, "fail:invalid data");
       AppMethodBeat.o(144767);
       return;
     }
     catch (IllegalArgumentException paramJSONObject)
     {
-      ad.e("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: fail: ".concat(String.valueOf(paramJSONObject)));
+      ae.e("MicroMsg.BLE.JsApiWriteBlePeripheralCharacteristicValue", "invoke: fail: ".concat(String.valueOf(paramJSONObject)));
       b.a(this, paramInt, paramc, 10013, "fail:invalid data");
       AppMethodBeat.o(144767);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiWriteBlePeripheralCharacteristicValue$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiWriteBlePeripheralCharacteristicValue$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
 }
 

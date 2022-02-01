@@ -8,8 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.h;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,14 +19,14 @@ public class az
   private void a(long paramLong, bq.a parama)
   {
     AppMethodBeat.i(78616);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ua(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(paramLong);
     if ((locala != null) && (locala.field_fromDownloadApp))
     {
       locala.field_fromDownloadApp = false;
       locala.field_showNotification = true;
       com.tencent.mm.plugin.downloader.model.d.e(locala);
     }
-    if (f.ccl().tU(paramLong)) {
+    if (f.cdA().ul(paramLong)) {
       parama.f(null, null);
     }
     for (;;)
@@ -42,7 +41,7 @@ public class az
   public final void a(Context paramContext, final String paramString, final bq.a parama)
   {
     AppMethodBeat.i(78615);
-    ad.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
+    ae.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
     final long l;
     try
     {
@@ -50,7 +49,7 @@ public class az
       l = paramString.optLong("download_id");
       if (l <= 0L)
       {
-        ad.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+        ae.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
         parama.f("invalid_downloadid", null);
         AppMethodBeat.o(78615);
         return;
@@ -58,7 +57,7 @@ public class az
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
+      ae.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78615);
       return;
@@ -68,7 +67,7 @@ public class az
     int k = paramString.optInt("notice_id");
     int m = paramString.optInt("ssid");
     int n = paramString.optInt("download_type", 1);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ua(l);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(l);
     locala.field_scene = i;
     locala.field_uiarea = j;
     locala.field_noticeId = k;
@@ -79,7 +78,7 @@ public class az
     {
       com.tencent.mm.plugin.downloader.f.b localb = new com.tencent.mm.plugin.downloader.f.b();
       localb.k(locala);
-      localb.msQ = 0L;
+      localb.mxN = 0L;
       com.tencent.mm.plugin.downloader.f.a.a(10, localb);
     }
     boolean bool1 = paramString.optBoolean("use_downloader_widget", false);
@@ -99,7 +98,7 @@ public class az
       AppMethodBeat.o(78615);
       return;
     }
-    if (ay.isWifi(paramContext))
+    if (com.tencent.mm.sdk.platformtools.az.isWifi(paramContext))
     {
       a(l, parama);
       AppMethodBeat.o(78615);
@@ -110,7 +109,7 @@ public class az
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(78612);
-        az.a(az.this, l, this.pot);
+        az.a(az.this, l, this.puZ);
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(78612);
       }
@@ -129,7 +128,7 @@ public class az
   
   public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

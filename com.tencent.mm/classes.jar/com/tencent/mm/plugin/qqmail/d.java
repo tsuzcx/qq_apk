@@ -7,7 +7,7 @@ import com.tencent.mm.pluginsdk.b.c;
 public final class d
   implements c
 {
-  public final com.tencent.mm.pluginsdk.b.a aa(Context paramContext, String paramString)
+  public final com.tencent.mm.pluginsdk.b.a ac(Context paramContext, String paramString)
   {
     AppMethodBeat.i(122636);
     paramContext = new com.tencent.mm.plugin.qqmail.ui.a(paramContext);

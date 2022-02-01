@@ -9,14 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.ad.f.c;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.a;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdLandingPageFloatView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -26,52 +27,52 @@ import java.util.Map;
 public final class b
 {
   private boolean Ek;
-  private i.a yXp;
-  private SnsAdLandingPageFloatView yXq;
+  private i.a znR;
+  private SnsAdLandingPageFloatView znS;
   
   public b(i.a parama)
   {
-    this.yXp = parama;
+    this.znR = parama;
     this.Ek = false;
   }
   
-  public final void dRu()
+  public final void dUS()
   {
-    AppMethodBeat.i(197579);
+    AppMethodBeat.i(219040);
     try
     {
-      SnsAdLandingPageFloatView localSnsAdLandingPageFloatView = this.yXq;
+      SnsAdLandingPageFloatView localSnsAdLandingPageFloatView = this.znS;
       if (localSnsAdLandingPageFloatView != null)
       {
-        localSnsAdLandingPageFloatView.eeU();
-        AppMethodBeat.o(197579);
+        localSnsAdLandingPageFloatView.eiB();
+        AppMethodBeat.o(219040);
         return;
       }
-      ad.w("SnsAd.FloatPageHelper", "the float view is null, is it attached??");
-      AppMethodBeat.o(197579);
+      ae.w("SnsAd.FloatPageHelper", "the float view is null, is it attached??");
+      AppMethodBeat.o(219040);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197579);
+      AppMethodBeat.o(219040);
     }
   }
   
-  public final List<l> getAllComp()
+  public final List<m> getAllComp()
   {
-    AppMethodBeat.i(197580);
+    AppMethodBeat.i(219041);
     try
     {
-      if (this.yXq != null)
+      if (this.znS != null)
       {
-        List localList = this.yXq.getAllComp();
-        AppMethodBeat.o(197580);
+        List localList = this.znS.getAllComp();
+        AppMethodBeat.o(219041);
         return localList;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197580);
+      AppMethodBeat.o(219041);
     }
     return null;
   }
@@ -79,26 +80,26 @@ public final class b
   public final boolean v(ViewGroup paramViewGroup)
   {
     boolean bool = false;
-    AppMethodBeat.i(197578);
+    AppMethodBeat.i(219039);
     this.Ek = false;
     if (paramViewGroup == null)
     {
-      AppMethodBeat.o(197578);
+      AppMethodBeat.o(219039);
       return false;
     }
     for (;;)
     {
       try
       {
-        localObject1 = this.yXp;
-        if ((localObject1 == null) || (!com.tencent.mm.plugin.sns.ad.e.b.m(((i.a)localObject1).zLR))) {
+        localObject1 = this.znR;
+        if ((localObject1 == null) || (!c.m(((i.a)localObject1).AcY))) {
           continue;
         }
-        localObject1 = (g)((i.a)localObject1).zLR.get(0);
+        localObject1 = (g)((i.a)localObject1).AcY.get(0);
         if (localObject1 == null) {
           continue;
         }
-        if (!com.tencent.mm.plugin.sns.ad.e.b.isEmpty(((g)localObject1).zLK)) {
+        if (!c.isEmpty(((g)localObject1).AcR)) {
           continue;
         }
       }
@@ -117,30 +118,30 @@ public final class b
       {
         localObject2 = new SnsAdLandingPageFloatView(paramViewGroup.getContext());
         localObject3 = new Bundle();
-        ((Bundle)localObject3).putString("sns_float_component_id", ((v)localObject1).zAg);
-        localg = (g)this.yXp.zLR.get(0);
+        ((Bundle)localObject3).putString("sns_float_component_id", ((w)localObject1).zRg);
+        localg = (g)this.znR.AcY.get(0);
         if (localg == null) {}
       }
       try
       {
-        ((SnsAdLandingPageFloatView)localObject2).dCk = ((Bundle)localObject3).getString("sns_float_component_id");
-        ((SnsAdLandingPageFloatView)localObject2).zuQ = ((Bundle)localObject3).getString("sns_landing_pages_canvas_ext");
-        ((SnsAdLandingPageFloatView)localObject2).ACf = new g();
-        ((SnsAdLandingPageFloatView)localObject2).ACf.jVX = localg.jVX;
-        ((SnsAdLandingPageFloatView)localObject2).ACf.zLL = true;
-        ((SnsAdLandingPageFloatView)localObject2).ACf.id = 0;
-        if (com.tencent.mm.plugin.sns.ad.e.b.aD(localg.zLK))
+        ((SnsAdLandingPageFloatView)localObject2).dDp = ((Bundle)localObject3).getString("sns_float_component_id");
+        ((SnsAdLandingPageFloatView)localObject2).zMl = ((Bundle)localObject3).getString("sns_landing_pages_canvas_ext");
+        ((SnsAdLandingPageFloatView)localObject2).ATG = new g();
+        ((SnsAdLandingPageFloatView)localObject2).ATG.jZm = localg.jZm;
+        ((SnsAdLandingPageFloatView)localObject2).ATG.AcS = true;
+        ((SnsAdLandingPageFloatView)localObject2).ATG.id = 0;
+        if (c.aJ(localg.AcR))
         {
-          localObject3 = (x)localg.zLK.get(((SnsAdLandingPageFloatView)localObject2).dCk);
-          if ((localObject3 != null) && (i.QH(((x)localObject3).type)))
+          localObject3 = (y)localg.AcR.get(((SnsAdLandingPageFloatView)localObject2).dDp);
+          if ((localObject3 != null) && (i.Ro(((y)localObject3).type)))
           {
-            ((SnsAdLandingPageFloatView)localObject2).ACe = ((v)localObject3);
-            ((SnsAdLandingPageFloatView)localObject2).ACf.zLJ.add(((SnsAdLandingPageFloatView)localObject2).ACe);
-            ((SnsAdLandingPageFloatView)localObject2).ACf.zLK.putAll(localg.zLK);
-            if (((SnsAdLandingPageFloatView)localObject2).ACe.zAd <= 0) {
+            ((SnsAdLandingPageFloatView)localObject2).ATF = ((w)localObject3);
+            ((SnsAdLandingPageFloatView)localObject2).ATG.AcQ.add(((SnsAdLandingPageFloatView)localObject2).ATF);
+            ((SnsAdLandingPageFloatView)localObject2).ATG.AcR.putAll(localg.AcR);
+            if (((SnsAdLandingPageFloatView)localObject2).ATF.zRc <= 0) {
               bool = true;
             }
-            ((SnsAdLandingPageFloatView)localObject2).ACj = bool;
+            ((SnsAdLandingPageFloatView)localObject2).ATK = bool;
           }
         }
         ((SnsAdLandingPageFloatView)localObject2).initView();
@@ -148,14 +149,14 @@ public final class b
       catch (Throwable localThrowable)
       {
         float f;
-        ad.e("MicroMsg.SnsAdLandingPageFloatView", "the init from helper has something wrong!!");
+        ae.e("MicroMsg.SnsAdLandingPageFloatView", "the init from helper has something wrong!!");
         continue;
       }
       paramViewGroup.addView((View)localObject2, paramViewGroup.getChildCount() - 1, new ViewGroup.LayoutParams(-1, -1));
-      this.yXq = ((SnsAdLandingPageFloatView)localObject2);
+      this.znS = ((SnsAdLandingPageFloatView)localObject2);
       this.Ek = true;
-      f = ((v)localObject1).hF;
-      paramViewGroup = this.yXq;
+      f = ((w)localObject1).hF;
+      paramViewGroup = this.znS;
       if ((paramViewGroup != null) && (paramViewGroup.getChildCount() > 0))
       {
         paramViewGroup = paramViewGroup.getChildAt(0);
@@ -170,24 +171,24 @@ public final class b
         }
       }
       bool = this.Ek;
-      AppMethodBeat.o(197578);
+      AppMethodBeat.o(219039);
       return bool;
-      localObject2 = ((g)localObject1).zLK.values().iterator();
+      localObject2 = ((g)localObject1).AcR.values().iterator();
       if (!((Iterator)localObject2).hasNext()) {
         continue;
       }
-      localObject1 = (x)((Iterator)localObject2).next();
-      if ((localObject1 instanceof v))
+      localObject1 = (y)((Iterator)localObject2).next();
+      if ((localObject1 instanceof w))
       {
-        localObject1 = (v)localObject1;
-        if (((v)localObject1).zAc <= 0) {}
+        localObject1 = (w)localObject1;
+        if (((w)localObject1).zRb <= 0) {}
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.b
  * JD-Core Version:    0.7.0.1
  */

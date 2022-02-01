@@ -6,28 +6,28 @@ import java.util.ArrayList;
 
 public class d
 {
-  private static d dcq;
-  private ArrayList<e> dcp;
+  private static d dds;
+  private ArrayList<e> ddr;
   private Object sLock;
   
   private d()
   {
     AppMethodBeat.i(136735);
-    this.dcp = new ArrayList();
+    this.ddr = new ArrayList();
     this.sLock = new Object();
     AppMethodBeat.o(136735);
   }
   
-  public static d Os()
+  public static d Oq()
   {
     AppMethodBeat.i(136736);
-    if (dcq == null) {}
+    if (dds == null) {}
     try
     {
-      if (dcq == null) {
-        dcq = new d();
+      if (dds == null) {
+        dds = new d();
       }
-      d locald = dcq;
+      d locald = dds;
       AppMethodBeat.o(136736);
       return locald;
     }
@@ -37,14 +37,14 @@ public class d
     }
   }
   
-  public final e Or()
+  public final e Op()
   {
     AppMethodBeat.i(136737);
     synchronized (this.sLock)
     {
-      if (this.dcp.size() > 0)
+      if (this.ddr.size() > 0)
       {
-        e locale = (e)this.dcp.remove(this.dcp.size() - 1);
+        e locale = (e)this.ddr.remove(this.ddr.size() - 1);
         AppMethodBeat.o(136737);
         return locale;
       }
@@ -54,12 +54,12 @@ public class d
     }
   }
   
-  public final long Ot()
+  public final long Or()
   {
     try
     {
       AppMethodBeat.i(136739);
-      long l = this.dcp.size() * 3536;
+      long l = this.ddr.size() * 3536;
       AppMethodBeat.o(136739);
       return l;
     }
@@ -73,7 +73,7 @@ public class d
   public final void b(e parame)
   {
     AppMethodBeat.i(136738);
-    if ((parame == null) || (parame.dbX == null))
+    if ((parame == null) || (parame.dcZ == null))
     {
       AppMethodBeat.o(136738);
       return;
@@ -81,7 +81,7 @@ public class d
     parame.reset();
     synchronized (this.sLock)
     {
-      this.dcp.add(0, parame);
+      this.ddr.add(0, parame);
       AppMethodBeat.o(136738);
       return;
     }
@@ -89,7 +89,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.d
  * JD-Core Version:    0.7.0.1
  */

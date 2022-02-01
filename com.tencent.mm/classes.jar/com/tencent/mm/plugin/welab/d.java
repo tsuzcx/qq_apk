@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.welab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
 {
@@ -9,17 +9,17 @@ public final class d
   {
     AppMethodBeat.i(146213);
     com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
-    localg.m("expid", parama.ExL + ",");
-    localg.m("appid", parama.duW + ",");
+    localg.m("expid", parama.EQh + ",");
+    localg.m("appid", parama.dwb + ",");
     localg.m("action", parama.action + ",");
     localg.m("timestamp", parama.timeStamp + ",");
     StringBuilder localStringBuilder = new StringBuilder();
-    if (parama.ExM) {}
+    if (parama.EQi) {}
     for (int i = 1;; i = 0)
     {
       localg.m("hasRedPoint", i + ",");
-      ad.i("WelabReporter", "report " + localg.RE());
-      com.tencent.mm.plugin.report.service.g.yhR.f(14206, new Object[] { localg });
+      ae.i("WelabReporter", "report " + localg.RD());
+      com.tencent.mm.plugin.report.service.g.yxI.f(14206, new Object[] { localg });
       AppMethodBeat.o(146213);
       return;
     }
@@ -29,11 +29,11 @@ public final class d
   {
     AppMethodBeat.i(146215);
     a locala = new a();
-    locala.duW = paramString1;
+    locala.dwb = paramString1;
     locala.action = paramInt;
     locala.timeStamp = System.currentTimeMillis();
-    locala.ExL = paramString2;
-    locala.ExM = paramBoolean;
+    locala.EQh = paramString2;
+    locala.EQi = paramBoolean;
     a(locala);
     AppMethodBeat.o(146215);
   }
@@ -42,27 +42,27 @@ public final class d
   {
     AppMethodBeat.i(146214);
     a locala = new a();
-    locala.duW = paramString;
+    locala.dwb = paramString;
     locala.action = paramInt;
     locala.timeStamp = System.currentTimeMillis();
-    locala.ExL = a.eWo().aJN(paramString).field_expId;
-    locala.ExM = paramBoolean;
+    locala.EQh = a.faa().aLj(paramString).field_expId;
+    locala.EQi = paramBoolean;
     a(locala);
     AppMethodBeat.o(146214);
   }
   
   public static final class a
   {
-    public String ExL;
-    public boolean ExM;
+    public String EQh;
+    public boolean EQi;
     public int action;
-    public String duW;
+    public String dwb;
     public long timeStamp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d
  * JD-Core Version:    0.7.0.1
  */

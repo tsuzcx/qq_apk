@@ -14,83 +14,83 @@ import kotlinx.a.c.s;
 import kotlinx.a.j;
 import kotlinx.a.n;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/internal/JsonTreeInput;", "Lkotlinx/serialization/json/internal/AbstractJsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonObject;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonObject;)V", "position", "", "getValue", "()Lkotlinx/serialization/json/JsonObject;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "endStructure", "", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/internal/JsonTreeInput;", "Lkotlinx/serialization/json/internal/AbstractJsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonObject;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonObject;)V", "position", "", "getValue", "()Lkotlinx/serialization/json/JsonObject;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "endStructure", "", "kotlinx-serialization-runtime"})
 class h
   extends a
 {
-  private final s NOl;
+  private final s Olr;
   private int position;
   
   public h(kotlinx.a.c.a parama, s params)
   {
     super(parama, (f)params, (byte)0);
-    AppMethodBeat.i(191298);
-    this.NOl = params;
-    AppMethodBeat.o(191298);
+    AppMethodBeat.i(199886);
+    this.Olr = params;
+    AppMethodBeat.o(199886);
   }
   
   public void a(n paramn)
   {
-    AppMethodBeat.i(191296);
+    AppMethodBeat.i(199884);
     p.h(paramn, "descriptor");
-    if ((this.NNe.NNq) || ((paramn.gwR() instanceof j)))
+    if ((this.Okk.Okw) || ((paramn.gBt() instanceof j)))
     {
-      AppMethodBeat.o(191296);
+      AppMethodBeat.o(199884);
       return;
     }
     Object localObject = bj.e(paramn);
-    Iterator localIterator = gxv().keySet().iterator();
+    Iterator localIterator = gBX().keySet().iterator();
     while (localIterator.hasNext())
     {
       paramn = (String)localIterator.next();
       if (!((Set)localObject).contains(paramn))
       {
-        localObject = gxv().toString();
+        localObject = gBX().toString();
         p.h(paramn, "key");
         p.h(localObject, "input");
-        paramn = (Throwable)new e(-1, "JSON encountered unknown key: '" + paramn + "'. You can enable 'JsonConfiguration.ignoreUnknownKeys' property to ignore unknown keys.\n JSON input: " + kotlinx.a.c.l.hr((String)localObject, -1));
-        AppMethodBeat.o(191296);
+        paramn = (Throwable)new e(-1, "JSON encountered unknown key: '" + paramn + "'. You can enable 'JsonConfiguration.ignoreUnknownKeys' property to ignore unknown keys.\n JSON input: " + kotlinx.a.c.l.hA((String)localObject, -1));
+        AppMethodBeat.o(199884);
         throw paramn;
       }
     }
-    AppMethodBeat.o(191296);
+    AppMethodBeat.o(199884);
   }
   
   public int b(n paramn)
   {
-    AppMethodBeat.i(191294);
+    AppMethodBeat.i(199882);
     p.h(paramn, "descriptor");
-    while (this.position < paramn.gwT())
+    while (this.position < paramn.gBv())
     {
       int i = this.position;
       this.position = (i + 1);
       String str = k(paramn, i);
-      s locals = gxv();
+      s locals = gBX();
       p.h(str, "key");
-      if (((locals instanceof s)) && (((s)locals).NNU.containsKey(str))) {}
+      if (((locals instanceof s)) && (((s)locals).Ola.containsKey(str))) {}
       for (i = 1; i != 0; i = 0)
       {
         i = this.position;
-        AppMethodBeat.o(191294);
+        AppMethodBeat.o(199882);
         return i - 1;
       }
     }
-    AppMethodBeat.o(191294);
+    AppMethodBeat.o(199882);
     return -1;
   }
   
-  protected f bdo(String paramString)
+  protected f beS(String paramString)
   {
-    AppMethodBeat.i(191295);
+    AppMethodBeat.i(199883);
     p.h(paramString, "tag");
-    paramString = (f)ae.e((Map)gxv(), paramString);
-    AppMethodBeat.o(191295);
+    paramString = (f)ae.e((Map)gBX(), paramString);
+    AppMethodBeat.o(199883);
     return paramString;
   }
   
-  public s gxv()
+  public s gBX()
   {
-    return this.NOl;
+    return this.Olr;
   }
 }
 

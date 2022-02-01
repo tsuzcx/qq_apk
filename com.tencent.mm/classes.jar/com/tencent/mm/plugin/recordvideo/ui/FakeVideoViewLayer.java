@@ -22,28 +22,28 @@ import com.tencent.mm.plugin.recordvideo.e.c.a;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.model.audio.i.a;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.m;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "backgrounndSilent", "", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "fakeImageView", "Landroid/widget/ImageView;", "fakeMusicInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "fakeVideoInfo", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "loopingFrame", "startTime", "", "stopTime", "storyFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "useFakeImage", "videoHeight", "", "videoPlaying", "videoRotation", "videoWidth", "checkFakeVideoMatchScreenRatio", "isBackgroundSilent", "pauseFakeLayer", "", "playAudio", "playFakeLayer", "mute", "requestLoopFakeFrame", "frameRetriever", "setFakeVideoInfo", "videoEditData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "stopFakeLayer", "plugin-recordvideo_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "backgrounndSilent", "", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "fakeImageView", "Landroid/widget/ImageView;", "fakeMusicInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "fakeVideoInfo", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "loopingFrame", "startTime", "", "stopTime", "storyFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "useFakeImage", "videoHeight", "", "videoPlaying", "videoRotation", "videoWidth", "checkFakeVideoMatchScreenRatio", "isBackgroundSilent", "pauseFakeLayer", "", "playAudio", "playFakeLayer", "mute", "requestLoopFakeFrame", "frameRetriever", "setFakeVideoInfo", "videoEditData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "stopFakeLayer", "plugin-recordvideo_release"})
 public final class FakeVideoViewLayer
   extends RelativeLayout
 {
   private final String TAG;
-  private long gvN;
+  private long gyu;
   private long startTime;
   private int videoHeight;
   private int videoWidth;
-  private v xDo;
-  private afy xHE;
-  private AudioCacheInfo xHF;
-  public boolean xHG;
-  private ImageView xHH;
-  private com.tencent.mm.plugin.recordvideo.ui.editor.b.g xHI;
-  private boolean xHJ;
-  private boolean xHK;
-  private int xHL;
+  private v xTj;
+  private AudioCacheInfo xXA;
+  public boolean xXB;
+  private ImageView xXC;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.b.g xXD;
+  private boolean xXE;
+  private boolean xXF;
+  private int xXG;
+  private agh xXz;
   
   public FakeVideoViewLayer(Context paramContext)
   {
@@ -63,28 +63,28 @@ public final class FakeVideoViewLayer
   
   private final void a(final com.tencent.mm.plugin.recordvideo.ui.editor.b.g paramg)
   {
-    AppMethodBeat.i(200434);
-    if (!this.xHJ)
+    AppMethodBeat.i(206695);
+    if (!this.xXE)
     {
-      ad.i(this.TAG, "requestLoopFakeFrame stop");
-      AppMethodBeat.o(200434);
+      ae.i(this.TAG, "requestLoopFakeFrame stop");
+      AppMethodBeat.o(206695);
       return;
     }
-    if ((p.i(paramg, this.xHI) ^ true))
+    if ((p.i(paramg, this.xXD) ^ true))
     {
-      ad.i(this.TAG, "requestLoopFakeFrame frameRetriever not match");
-      AppMethodBeat.o(200434);
+      ae.i(this.TAG, "requestLoopFakeFrame frameRetriever not match");
+      AppMethodBeat.o(206695);
       return;
     }
-    Object localObject = this.xHE;
-    if (((localObject != null) && (((afy)localObject).htP == true)) || (!this.xHK))
+    Object localObject = this.xXz;
+    if (((localObject != null) && (((agh)localObject).hwD == true)) || (!this.xXF))
     {
-      ad.i(this.TAG, "requestLoopFakeFrame local capture video or not useFakeImage");
-      AppMethodBeat.o(200434);
+      ae.i(this.TAG, "requestLoopFakeFrame local capture video or not useFakeImage");
+      AppMethodBeat.o(206695);
       return;
     }
-    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = paramg.ckc();
-    ImageView localImageView = this.xHH;
+    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = paramg.cls();
+    ImageView localImageView = this.xXC;
     long l;
     label180:
     int i;
@@ -98,14 +98,14 @@ public final class FakeVideoViewLayer
     }
     else
     {
-      localObject = this.xHH;
+      localObject = this.xXC;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(0);
       }
       if (locala == null) {
         break label285;
       }
-      localObject = Long.valueOf(locala.xPI);
+      localObject = Long.valueOf(locala.yfB);
       l = ((Number)localObject).longValue();
       if (1L <= l) {
         break label242;
@@ -121,16 +121,16 @@ public final class FakeVideoViewLayer
       if (localObject != null)
       {
         l = ((Number)localObject).longValue();
-        localObject = this.xHH;
+        localObject = this.xXC;
         if (localObject != null)
         {
           ((ImageView)localObject).postDelayed((Runnable)new a(this, paramg), l);
-          AppMethodBeat.o(200434);
+          AppMethodBeat.o(206695);
           return;
           localObject = null;
           break;
           label242:
-          if ((1000L < l) || (!this.xHJ) || (!p.i(paramg, this.xHI))) {
+          if ((1000L < l) || (!this.xXE) || (!p.i(paramg, this.xXD))) {
             break label180;
           }
           i = 1;
@@ -139,12 +139,12 @@ public final class FakeVideoViewLayer
           localObject = null;
           continue;
         }
-        AppMethodBeat.o(200434);
+        AppMethodBeat.o(206695);
         return;
       }
     }
     label285:
-    AppMethodBeat.o(200434);
+    AppMethodBeat.o(206695);
   }
   
   private final void playAudio()
@@ -152,25 +152,25 @@ public final class FakeVideoViewLayer
     AppMethodBeat.i(75863);
     Object localObject2 = new com.google.android.exoplayer2.g.c((f.a)new a.a((com.google.android.exoplayer2.h.d)new com.google.android.exoplayer2.h.l()));
     Object localObject1 = x.h(getContext(), getContext().getString(2131755822));
-    this.xDo = com.google.android.exoplayer2.g.a(getContext(), (h)localObject2);
+    this.xTj = com.google.android.exoplayer2.g.a(getContext(), (h)localObject2);
     try
     {
-      localObject2 = com.tencent.mm.plugin.recordvideo.model.audio.i.xzM;
-      localObject2 = this.xHF;
+      localObject2 = com.tencent.mm.plugin.recordvideo.model.audio.i.xPI;
+      localObject2 = this.xXA;
       if (localObject2 == null) {
-        p.gfZ();
+        p.gkB();
       }
       p.g(localObject1, "userAgent");
-      localObject1 = new com.google.android.exoplayer2.source.d(i.a.a((AudioCacheInfo)localObject2, (String)localObject1), this.startTime, this.gvN * 1000L);
-      localObject2 = this.xDo;
+      localObject1 = new com.google.android.exoplayer2.source.d(i.a.a((AudioCacheInfo)localObject2, (String)localObject1), this.startTime, this.gyu * 1000L);
+      localObject2 = this.xTj;
       if (localObject2 != null) {
         ((v)localObject2).aP(true);
       }
-      localObject2 = this.xDo;
+      localObject2 = this.xTj;
       if (localObject2 != null) {
         ((v)localObject2).a((com.google.android.exoplayer2.source.i)localObject1);
       }
-      localObject1 = this.xDo;
+      localObject1 = this.xTj;
       if (localObject1 != null)
       {
         ((v)localObject1).setRepeatMode(2);
@@ -182,23 +182,23 @@ public final class FakeVideoViewLayer
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
+      ae.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
       AppMethodBeat.o(75863);
     }
   }
   
-  public final void dHk()
+  public final void dKB()
   {
     AppMethodBeat.i(75861);
     String str = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("LogStory: pauseFakeLayer ");
-    Object localObject = this.xHE;
+    Object localObject = this.xXz;
     int i;
     if (localObject != null)
     {
-      localObject = Long.valueOf(((afy)localObject).timeStamp);
-      ad.i(str, localObject);
-      localObject = this.xDo;
+      localObject = Long.valueOf(((agh)localObject).timeStamp);
+      ae.i(str, localObject);
+      localObject = this.xTj;
       if (localObject != null) {
         ((v)localObject).aP(false);
       }
@@ -222,47 +222,47 @@ public final class FakeVideoViewLayer
       break;
       label113:
       if ((localObject instanceof m)) {
-        ((m)localObject).xPa = false;
+        ((m)localObject).yeT = false;
       }
     }
     label131:
-    this.xHJ = false;
-    localObject = this.xHH;
+    this.xXE = false;
+    localObject = this.xXC;
     if (localObject != null) {
       ((ImageView)localObject).setImageBitmap(null);
     }
-    localObject = this.xHH;
+    localObject = this.xXC;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
-    localObject = this.xHI;
+    localObject = this.xXD;
     if (localObject != null) {
       ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject).destroy();
     }
-    this.xHI = null;
+    this.xXD = null;
     AppMethodBeat.o(75861);
   }
   
-  public final void dHl()
+  public final void dKC()
   {
     AppMethodBeat.i(75862);
     String str = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("LogStory: stopFakeLayer ");
-    Object localObject = this.xHE;
+    Object localObject = this.xXz;
     int i;
     if (localObject != null)
     {
-      localObject = Long.valueOf(((afy)localObject).timeStamp);
-      ad.i(str, localObject);
-      localObject = this.xDo;
+      localObject = Long.valueOf(((agh)localObject).timeStamp);
+      ae.i(str, localObject);
+      localObject = this.xTj;
       if (localObject != null) {
         ((v)localObject).stop();
       }
-      localObject = this.xDo;
+      localObject = this.xTj;
       if (localObject != null) {
         ((v)localObject).release();
       }
-      this.xDo = null;
+      this.xTj = null;
       int j = getChildCount();
       i = 0;
       label93:
@@ -283,47 +283,47 @@ public final class FakeVideoViewLayer
       break;
       label130:
       if ((localObject instanceof m)) {
-        ((m)localObject).xPa = false;
+        ((m)localObject).yeT = false;
       }
     }
     label148:
-    this.xHJ = false;
-    localObject = this.xHH;
+    this.xXE = false;
+    localObject = this.xXC;
     if (localObject != null) {
       ((ImageView)localObject).setImageBitmap(null);
     }
-    localObject = this.xHH;
+    localObject = this.xXC;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
-    localObject = this.xHI;
+    localObject = this.xXD;
     if (localObject != null) {
       ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject).destroy();
     }
-    this.xHI = null;
+    this.xXD = null;
     AppMethodBeat.o(75862);
   }
   
-  public final void pW(boolean paramBoolean)
+  public final void qe(boolean paramBoolean)
   {
     AppMethodBeat.i(75860);
     Object localObject2 = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("LogStory: playFakeLayer ");
-    Object localObject1 = this.xHE;
+    Object localObject1 = this.xXz;
     int i;
     if (localObject1 != null)
     {
-      localObject1 = Long.valueOf(((afy)localObject1).timeStamp);
-      ad.i((String)localObject2, localObject1);
-      localObject1 = this.xDo;
+      localObject1 = Long.valueOf(((agh)localObject1).timeStamp);
+      ae.i((String)localObject2, localObject1);
+      localObject1 = this.xTj;
       if (localObject1 != null) {
         ((v)localObject1).stop();
       }
-      localObject1 = this.xDo;
+      localObject1 = this.xTj;
       if (localObject1 != null) {
         ((v)localObject1).release();
       }
-      if ((this.xHF != null) && (!paramBoolean)) {
+      if ((this.xXA != null) && (!paramBoolean)) {
         playAudio();
       }
       int j = getChildCount();
@@ -350,28 +350,28 @@ public final class FakeVideoViewLayer
       }
     }
     label174:
-    if (this.xHK)
+    if (this.xXF)
     {
-      localObject1 = this.xHE;
+      localObject1 = this.xXz;
       if (localObject1 != null)
       {
-        localObject2 = this.xHI;
+        localObject2 = this.xXD;
         if (localObject2 != null) {
           ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject2).destroy();
         }
-        localObject2 = this.xHH;
+        localObject2 = this.xXC;
         if (localObject2 != null) {
           ((ImageView)localObject2).setImageBitmap(null);
         }
-        localObject2 = e.xuo;
+        localObject2 = e.xKl;
         localObject2 = getContext();
         p.g(localObject2, "context");
-        this.xHI = e.a((afy)localObject1, (Context)localObject2, this.videoWidth, this.videoHeight, this.xHL);
-        localObject1 = this.xHI;
+        this.xXD = e.a((agh)localObject1, (Context)localObject2, this.videoWidth, this.videoHeight, this.xXG);
+        localObject1 = this.xXD;
         if (localObject1 != null)
         {
           ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject1).start();
-          this.xHJ = true;
+          this.xXE = true;
           a((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject1);
           AppMethodBeat.o(75860);
           return;
@@ -388,13 +388,13 @@ public final class FakeVideoViewLayer
     boolean bool3 = true;
     AppMethodBeat.i(75858);
     p.h(paramc, "videoEditData");
-    Object localObject1 = (com.tencent.mm.bx.a)new afy();
+    Object localObject1 = (com.tencent.mm.bw.a)new agh();
     Object localObject2 = paramc.field_baseItemData;
-    afy localafy;
+    agh localagh;
     try
     {
-      ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject2);
-      localObject1 = (afy)localObject1;
+      ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject2);
+      localObject1 = (agh)localObject1;
       if (localObject1 == null)
       {
         AppMethodBeat.o(75858);
@@ -405,20 +405,20 @@ public final class FakeVideoViewLayer
     {
       for (;;)
       {
-        ad.l("safeParser", "", new Object[] { localException });
-        localafy = null;
+        ae.l("safeParser", "", new Object[] { localException });
+        localagh = null;
       }
       this.videoWidth = paramc.field_targetWidth;
       this.videoHeight = paramc.field_targetHeight;
-      this.xHL = paramc.field_videoRotate;
-      ad.i(this.TAG, "LogStory: setFakeVideoInfo " + localafy.timeStamp);
-      this.xHE = localafy;
-      if (this.xHH != null) {
+      this.xXG = paramc.field_videoRotate;
+      ae.i(this.TAG, "LogStory: setFakeVideoInfo " + localagh.timeStamp);
+      this.xXz = localagh;
+      if (this.xXC != null) {
         break label224;
       }
     }
     paramc = new ImageView(getContext());
-    if ((this.xHL == 90) || (this.xHL == 270))
+    if ((this.xXG == 90) || (this.xXG == 270))
     {
       int i = this.videoHeight;
       this.videoHeight = this.videoWidth;
@@ -429,9 +429,9 @@ public final class FakeVideoViewLayer
     if (this.videoWidth > this.videoHeight)
     {
       paramc.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      this.xHH = paramc;
+      this.xXC = paramc;
       removeAllViews();
-      paramc = this.xHE;
+      paramc = this.xXz;
       if (paramc == null) {
         break label511;
       }
@@ -439,42 +439,42 @@ public final class FakeVideoViewLayer
       if (paramc == null) {
         break label511;
       }
-      localObject2 = com.tencent.mm.plugin.recordvideo.e.c.xRv;
-      paramc = com.tencent.mm.plugin.recordvideo.e.c.awc(paramc);
+      localObject2 = com.tencent.mm.plugin.recordvideo.e.c.yho;
+      paramc = com.tencent.mm.plugin.recordvideo.e.c.axr(paramc);
       if (paramc == null) {
         break label506;
       }
-      bool1 = paramc.xRw;
+      bool1 = paramc.yhp;
       label265:
-      if ((localafy.htP) || (bool1)) {
+      if ((localagh.hwD) || (bool1)) {
         break label516;
       }
       bool2 = true;
       label280:
-      this.xHK = bool2;
-      ad.i(this.TAG, "useFakeImage:" + this.xHK + ", isCaptureVideo:" + localafy.htP + ", matchScreenRatio:" + bool1);
-      if (!this.xHK) {
+      this.xXF = bool2;
+      ae.i(this.TAG, "useFakeImage:" + this.xXF + ", isCaptureVideo:" + localagh.hwD + ", matchScreenRatio:" + bool1);
+      if (!this.xXF) {
         break label522;
       }
-      addView((View)this.xHH, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-      paramc = this.xHH;
+      addView((View)this.xXC, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+      paramc = this.xXC;
       if (paramc != null) {
         paramc.setVisibility(0);
       }
       label381:
-      if (localafy.hml == null) {
+      if (localagh.hoZ == null) {
         break label565;
       }
       paramc = new AudioCacheInfo();
-      paramc.xyZ = localafy.xyZ;
-      paramc.aXj = localafy.aXj;
-      paramc.cachePath = localafy.hml;
-      paramc.musicUrl = localafy.musicUrl;
-      this.xHF = paramc;
+      paramc.xOV = localagh.xOV;
+      paramc.aXj = localagh.aXj;
+      paramc.cachePath = localagh.hoZ;
+      paramc.musicUrl = localagh.musicUrl;
+      this.xXA = paramc;
       label438:
       bool1 = bool3;
-      if (localafy.hhG != 0) {
-        if (localafy.hhG != 2) {
+      if (localagh.hku != 0) {
+        if (localagh.hku != 2) {
           break label573;
         }
       }
@@ -485,10 +485,10 @@ public final class FakeVideoViewLayer
     label573:
     for (boolean bool1 = bool3;; bool1 = false)
     {
-      this.xHG = bool1;
-      this.startTime = localafy.startTime;
-      this.gvN = localafy.endTime;
-      this.xHJ = false;
+      this.xXB = bool1;
+      this.startTime = localagh.startTime;
+      this.gyu = localagh.endTime;
+      this.xXE = false;
       AppMethodBeat.o(75858);
       return;
       paramc.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -501,22 +501,22 @@ public final class FakeVideoViewLayer
       break label265;
       bool2 = false;
       break label280;
-      paramc = e.xuo;
+      paramc = e.xKl;
       paramc = getContext();
       p.g(paramc, "context");
-      e.a(localafy, paramc, (ViewGroup)this);
-      paramc = this.xHH;
+      e.a(localagh, paramc, (ViewGroup)this);
+      paramc = this.xXC;
       if (paramc == null) {
         break label381;
       }
       paramc.setVisibility(8);
       break label381;
-      this.xHF = null;
+      this.xXA = null;
       break label438;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer$requestLoopFakeFrame$2$1"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer$requestLoopFakeFrame$2$1"})
   static final class a
     implements Runnable
   {
@@ -525,14 +525,14 @@ public final class FakeVideoViewLayer
     public final void run()
     {
       AppMethodBeat.i(75857);
-      FakeVideoViewLayer.a(this.xHM, paramg);
+      FakeVideoViewLayer.a(this.xXH, paramg);
       AppMethodBeat.o(75857);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer
  * JD-Core Version:    0.7.0.1
  */

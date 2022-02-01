@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -18,14 +18,14 @@ public final class c
     this.fileName = paramString;
   }
   
-  public static int Hj(String paramString)
+  public static int HL(String paramString)
   {
     AppMethodBeat.i(28935);
     if (paramString.length() >= 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      paramString = new e(paramString);
+      paramString = new k(paramString);
       if (paramString.exists()) {
         break;
       }
@@ -42,7 +42,7 @@ public final class c
     return i;
   }
   
-  private boolean emX()
+  private boolean eqG()
   {
     AppMethodBeat.i(169765);
     if (this.fileName.length() >= 0)
@@ -57,16 +57,16 @@ public final class c
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ad.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
+      ae.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
       try
       {
-        this.file = i.dd(this.fileName, false);
+        this.file = o.dg(this.fileName, false);
         AppMethodBeat.o(169765);
         return true;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        ae.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
         this.file = null;
         AppMethodBeat.o(169765);
       }
@@ -76,7 +76,7 @@ public final class c
     return false;
   }
   
-  public final a SH(int paramInt)
+  public final a To(int paramInt)
   {
     AppMethodBeat.i(28938);
     a locala = new a();
@@ -86,7 +86,7 @@ public final class c
       AppMethodBeat.o(28938);
       return locala;
     }
-    if ((this.file == null) && (!emX()))
+    if ((this.file == null) && (!eqG()))
     {
       locala.ret = -2;
       AppMethodBeat.o(28938);
@@ -98,28 +98,28 @@ public final class c
       long l = this.file.length();
       this.file.seek(paramInt);
       int j = this.file.read(locala.buf, 0, 6000);
-      ad.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
+      ae.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       int i = j;
       if (j < 0) {
         i = 0;
       }
-      locala.dhO = i;
-      locala.iuI = (i + paramInt);
+      locala.diR = i;
+      locala.ixC = (i + paramInt);
       locala.ret = 0;
       AppMethodBeat.o(28938);
       return locala;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
-      aNm();
+      ae.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
+      aNK();
       locala.ret = -1;
       AppMethodBeat.o(28938);
     }
     return locala;
   }
   
-  public final void aNm()
+  public final void aNK()
   {
     AppMethodBeat.i(28936);
     if (this.file != null) {
@@ -127,7 +127,7 @@ public final class c
       {
         this.file.close();
         this.file = null;
-        ad.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
+        ae.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
         AppMethodBeat.o(28936);
         return;
       }
@@ -139,8 +139,8 @@ public final class c
   public static final class a
   {
     public byte[] buf = null;
-    public int dhO = 0;
-    public int iuI = 0;
+    public int diR = 0;
+    public int ixC = 0;
     public int ret = 0;
   }
 }

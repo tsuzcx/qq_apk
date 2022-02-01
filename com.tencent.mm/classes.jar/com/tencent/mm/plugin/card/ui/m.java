@@ -14,11 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,23 +26,23 @@ public final class m
   extends BaseAdapter
 {
   private Context mContext;
-  View.OnClickListener oKd;
-  boolean oKe;
-  private List<b> owP;
+  private List<b> oDr;
+  View.OnClickListener oQF;
+  boolean oQG;
   
   public m(Context paramContext)
   {
     AppMethodBeat.i(113612);
-    this.owP = new ArrayList();
-    this.oKe = false;
+    this.oDr = new ArrayList();
+    this.oQG = false;
     this.mContext = paramContext;
     AppMethodBeat.o(113612);
   }
   
-  private b AF(int paramInt)
+  private b AR(int paramInt)
   {
     AppMethodBeat.i(113615);
-    b localb = (b)this.owP.get(paramInt);
+    b localb = (b)this.oDr.get(paramInt);
     AppMethodBeat.o(113615);
     return localb;
   }
@@ -55,7 +55,7 @@ public final class m
       AppMethodBeat.o(161199);
       return;
     }
-    c(paramView, paramb.oxY, paramBoolean);
+    c(paramView, paramb.oEA, paramBoolean);
     AppMethodBeat.o(161199);
   }
   
@@ -86,7 +86,7 @@ public final class m
   public final int getCount()
   {
     AppMethodBeat.i(113614);
-    int i = this.owP.size();
+    int i = this.oDr.size();
     AppMethodBeat.o(113614);
     return i;
   }
@@ -102,8 +102,8 @@ public final class m
     boolean bool2 = true;
     boolean bool1 = false;
     AppMethodBeat.i(113616);
-    b localb = AF(paramInt);
-    switch (localb.oxX)
+    b localb = AR(paramInt);
+    switch (localb.oEz)
     {
     default: 
       if (paramView == null) {
@@ -122,53 +122,53 @@ public final class m
       {
         paramView = View.inflate(this.mContext, 2131493255, null);
         localObject1 = new a((byte)0);
-        ((a)localObject1).oJh = ((TextView)paramView.findViewById(2131297753));
-        ((a)localObject1).oKj = ((TextView)paramView.findViewById(2131297752));
-        ((a)localObject1).oKk = ((TextView)paramView.findViewById(2131297749));
-        ((a)localObject1).oKl = ((ImageView)paramView.findViewById(2131297751));
+        ((a)localObject1).oPJ = ((TextView)paramView.findViewById(2131297753));
+        ((a)localObject1).oQL = ((TextView)paramView.findViewById(2131297752));
+        ((a)localObject1).oQM = ((TextView)paramView.findViewById(2131297749));
+        ((a)localObject1).oQN = ((ImageView)paramView.findViewById(2131297751));
         ((a)localObject1).rY = paramView.findViewById(2131297747);
-        ((a)localObject1).oKm = ((CheckBox)paramView.findViewById(2131297750));
+        ((a)localObject1).oQO = ((CheckBox)paramView.findViewById(2131297750));
         paramView.setTag(localObject1);
       }
-      ((a)localObject1).oJh.setText(localb.title);
+      ((a)localObject1).oPJ.setText(localb.title);
       label257:
       int i;
       label272:
       label317:
       label334:
       Object localObject2;
-      if (localb.oxZ)
+      if (localb.oEB)
       {
-        ((a)localObject1).oKm.setVisibility(0);
-        ((a)localObject1).oKm.setChecked(localb.dKs);
-        ((a)localObject1).oKm.setOnClickListener(new m.2(this, localb));
-        if (!TextUtils.isEmpty(localb.oxN)) {
+        ((a)localObject1).oQO.setVisibility(0);
+        ((a)localObject1).oQO.setChecked(localb.dLH);
+        ((a)localObject1).oQO.setOnClickListener(new m.2(this, localb));
+        if (!TextUtils.isEmpty(localb.oEp)) {
           break label666;
         }
-        ((a)localObject1).oKj.setVisibility(4);
-        if ((localb.FSA & 1L) <= 0L) {
+        ((a)localObject1).oQL.setVisibility(4);
+        if ((localb.GkZ & 1L) <= 0L) {
           break label691;
         }
         i = 1;
         if (i == 0) {
           break label697;
         }
-        ((a)localObject1).oJh.setGravity(17);
-        ((a)localObject1).oJh.setTextColor(this.mContext.getResources().getColor(2131100547));
-        ((a)localObject1).oKj.setVisibility(8);
-        if (!localb.oxY) {
+        ((a)localObject1).oPJ.setGravity(17);
+        ((a)localObject1).oPJ.setTextColor(this.mContext.getResources().getColor(2131100547));
+        ((a)localObject1).oQL.setVisibility(8);
+        if (!localb.oEA) {
           break label801;
         }
-        ((a)localObject1).oKk.setVisibility(0);
-        paramViewGroup = ((a)localObject1).oKj;
+        ((a)localObject1).oQM.setVisibility(0);
+        paramViewGroup = ((a)localObject1).oQL;
         localObject2 = this.mContext.getResources();
-        if (!localb.oya) {
+        if (!localb.oEC) {
           break label814;
         }
         i = 2131100212;
         label361:
         paramViewGroup.setTextColor(((Resources)localObject2).getColor(i));
-        if (bt.isNullOrNil(localb.pkr)) {
+        if (bu.isNullOrNil(localb.pqW)) {
           break label822;
         }
         i = 1;
@@ -176,23 +176,23 @@ public final class m
         if (i == 0) {
           break label828;
         }
-        ((a)localObject1).oKl.setVisibility(0);
-        n.a(((a)localObject1).oKl, localb.pkr, a.fromDPToPix(this.mContext, 20), 2131233400, false);
+        ((a)localObject1).oQN.setVisibility(0);
+        n.a(((a)localObject1).oQN, localb.pqW, a.fromDPToPix(this.mContext, 20), 2131233400, false);
         label425:
         if (paramInt + 1 >= getCount()) {
           break label853;
         }
-        paramViewGroup = AF(paramInt);
+        paramViewGroup = AR(paramInt);
         localObject2 = ((a)localObject1).rY;
-        if (localb.oya) {
+        if (localb.oEC) {
           break label841;
         }
         bool1 = true;
         label459:
         a((View)localObject2, paramViewGroup, bool1);
-        paramViewGroup = AF(paramInt + 1);
+        paramViewGroup = AR(paramInt + 1);
         localObject1 = ((a)localObject1).rY;
-        if (localb.oya) {
+        if (localb.oEC) {
           break label847;
         }
         bool1 = bool2;
@@ -207,39 +207,39 @@ public final class m
         paramViewGroup = (TextView)paramView.findViewById(2131297756);
         localObject1 = (TextView)paramView.findViewById(2131297755);
         localObject2 = (LinearLayout)paramView.findViewById(2131304768);
-        if (!TextUtils.isEmpty(localb.oyb))
+        if (!TextUtils.isEmpty(localb.oED))
         {
-          ((LinearLayout)localObject2).setTag(localb.oyb);
+          ((LinearLayout)localObject2).setTag(localb.oED);
           ((LinearLayout)localObject2).setOnClickListener(new m.1(this));
-          ((ImageView)paramView.findViewById(2131297754)).setBackgroundColor(l.Zh(localb.hAD));
+          ((ImageView)paramView.findViewById(2131297754)).setBackgroundColor(l.ZY(localb.hDr));
           ((LinearLayout)localObject2).setVisibility(0);
         }
         for (;;)
         {
           paramViewGroup.setText(localb.title);
-          ((TextView)localObject1).setText(localb.oxN);
+          ((TextView)localObject1).setText(localb.oEp);
           AppMethodBeat.o(113616);
           return paramView;
           ((LinearLayout)localObject2).setVisibility(8);
         }
-        ((a)localObject1).oKm.setVisibility(8);
+        ((a)localObject1).oQO.setVisibility(8);
         break;
         label666:
-        ((a)localObject1).oKj.setVisibility(0);
-        ((a)localObject1).oKj.setText(localb.oxN);
+        ((a)localObject1).oQL.setVisibility(0);
+        ((a)localObject1).oQL.setText(localb.oEp);
         break label257;
         label691:
         i = 0;
         break label272;
         label697:
-        ((a)localObject1).oJh.setGravity(3);
-        paramViewGroup = ((a)localObject1).oJh;
+        ((a)localObject1).oPJ.setGravity(3);
+        paramViewGroup = ((a)localObject1).oPJ;
         localObject2 = this.mContext.getResources();
-        if (localb.oya) {}
+        if (localb.oEC) {}
         for (i = 2131100711;; i = 2131099820)
         {
           paramViewGroup.setTextColor(((Resources)localObject2).getColor(i));
-          if (!localb.oya) {
+          if (!localb.oEC) {
             break label781;
           }
           paramView.setBackgroundColor(this.mContext.getResources().getColor(2131101179));
@@ -249,7 +249,7 @@ public final class m
         paramView.setBackgroundColor(this.mContext.getResources().getColor(2131099828));
         break label317;
         label801:
-        ((a)localObject1).oKk.setVisibility(8);
+        ((a)localObject1).oQM.setVisibility(8);
         break label334;
         label814:
         i = 2131099819;
@@ -258,7 +258,7 @@ public final class m
         i = 0;
         break label386;
         label828:
-        ((a)localObject1).oKl.setVisibility(8);
+        ((a)localObject1).oQN.setVisibility(8);
         break label425;
         label841:
         bool1 = false;
@@ -269,11 +269,11 @@ public final class m
         label853:
         if (paramInt + 1 == getCount())
         {
-          if (!this.oKe) {
+          if (!this.oQG) {
             break label897;
           }
           paramViewGroup = ((a)localObject1).rY;
-          if (!localb.oya) {
+          if (!localb.oEC) {
             bool1 = true;
           }
           c(paramViewGroup, true, bool1);
@@ -281,7 +281,7 @@ public final class m
       }
       label897:
       paramViewGroup = ((a)localObject1).rY;
-      if (!localb.oya) {}
+      if (!localb.oEC) {}
       for (bool1 = bool3;; bool1 = false)
       {
         c(paramViewGroup, false, bool1);
@@ -293,18 +293,18 @@ public final class m
   public final void setData(List<b> paramList)
   {
     AppMethodBeat.i(113613);
-    this.owP.clear();
-    this.owP.addAll(paramList);
+    this.oDr.clear();
+    this.oDr.addAll(paramList);
     AppMethodBeat.o(113613);
   }
   
   final class a
   {
-    TextView oJh;
-    TextView oKj;
-    TextView oKk;
-    ImageView oKl;
-    CheckBox oKm;
+    TextView oPJ;
+    TextView oQL;
+    TextView oQM;
+    ImageView oQN;
+    CheckBox oQO;
     View rY;
     
     private a() {}

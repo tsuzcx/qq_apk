@@ -9,19 +9,19 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g oDk;
+  private g oJM;
   
   public h(g paramg)
   {
-    this.oDk = paramg;
+    this.oJM = paramg;
   }
   
-  public final b Am(int paramInt)
+  public final b Ay(int paramInt)
   {
     AppMethodBeat.i(113099);
-    if (this.oDk != null)
+    if (this.oJM != null)
     {
-      b localb = this.oDk.Am(paramInt);
+      b localb = this.oJM.Ay(paramInt);
       AppMethodBeat.o(113099);
       return localb;
     }
@@ -32,21 +32,21 @@ public final class h
   public final void onCreate()
   {
     AppMethodBeat.i(113096);
-    this.oDk.notifyDataSetChanged();
+    this.oJM.notifyDataSetChanged();
     AppMethodBeat.o(113096);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113097);
-    if (this.oDk != null)
+    if (this.oJM != null)
     {
-      g localg = this.oDk;
-      localg.oCY.release();
-      localg.oCY = null;
-      localg.oDj.clear();
+      g localg = this.oJM;
+      localg.oJA.release();
+      localg.oJA = null;
+      localg.oJL.clear();
       localg.mContext = null;
-      this.oDk = null;
+      this.oJM = null;
     }
     AppMethodBeat.o(113097);
   }
@@ -54,8 +54,8 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113098);
-    if (this.oDk != null) {
-      this.oDk.notifyDataSetChanged();
+    if (this.oJM != null) {
+      this.oJM.notifyDataSetChanged();
     }
     AppMethodBeat.o(113098);
   }

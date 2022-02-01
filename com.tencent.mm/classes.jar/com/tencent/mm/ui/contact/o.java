@@ -3,7 +3,7 @@ package com.tencent.mm.ui.contact;
 public abstract class o
   extends p
 {
-  public a KmN;
+  public a KJh;
   
   public o(n paramn, boolean paramBoolean, int paramInt)
   {
@@ -12,15 +12,15 @@ public abstract class o
   
   public void a(a parama)
   {
-    this.KmN = parama;
+    this.KJh = parama;
   }
   
-  public int aWM(String paramString)
+  public int aYn(String paramString)
   {
     return -1;
   }
   
-  public int aWR(String paramString)
+  public int aYs(String paramString)
   {
     return -1;
   }
@@ -29,12 +29,12 @@ public abstract class o
   
   public abstract void clearData();
   
-  public boolean fIb()
+  public boolean fMt()
   {
     return false;
   }
   
-  public String fIc()
+  public String fMu()
   {
     return null;
   }

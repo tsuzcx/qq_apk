@@ -11,25 +11,25 @@ public abstract class b
   implements e
 {
   protected Context context;
-  protected int ljZ;
-  public e.b tvM;
+  protected int lox;
+  public e.b tGD;
   
   public b(Context paramContext, e.b paramb, int paramInt)
   {
     this.context = paramContext;
-    this.tvM = paramb;
-    this.ljZ = paramInt;
+    this.tGD = paramb;
+    this.lox = paramInt;
   }
   
-  protected static boolean dT(List<? extends Object> paramList)
+  protected static boolean dX(List<? extends Object> paramList)
   {
     return (paramList != null) && (paramList.size() > 0);
   }
   
-  protected static <T> List<T> dU(List<T> paramList)
+  protected static <T> List<T> dY(List<T> paramList)
   {
     Object localObject = paramList;
-    if (dT(paramList))
+    if (dX(paramList))
     {
       localObject = paramList;
       if (paramList.size() > 3) {
@@ -44,19 +44,19 @@ public abstract class b
     return false;
   }
   
-  public int cSR()
+  public int cVw()
   {
     return 0;
   }
   
-  public List<c> xA(long paramLong)
+  public List<c> xU(long paramLong)
   {
     return new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.b
  * JD-Core Version:    0.7.0.1
  */

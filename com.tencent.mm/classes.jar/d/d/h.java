@@ -7,27 +7,27 @@ import d.l;
 import d.p.b;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
 public final class h<T>
   implements e, d<T>
 {
-  private static final AtomicReferenceFieldUpdater<h<?>, Object> MLa;
+  private static final AtomicReferenceFieldUpdater<h<?>, Object> Nid;
   @Deprecated
-  public static final a MLb;
-  private final d<T> MKZ;
+  public static final a Nie;
+  private final d<T> Nic;
   private volatile Object result;
   
   static
   {
     AppMethodBeat.i(129640);
-    MLb = new a((byte)0);
-    MLa = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
+    Nie = new a((byte)0);
+    Nid = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
     AppMethodBeat.o(129640);
   }
   
   public h(d<? super T> paramd)
   {
-    this(paramd, a.MLd);
+    this(paramd, a.Nig);
     AppMethodBeat.i(129639);
     AppMethodBeat.o(129639);
   }
@@ -35,12 +35,12 @@ public final class h<T>
   private h(d<? super T> paramd, Object paramObject)
   {
     AppMethodBeat.i(129638);
-    this.MKZ = paramd;
+    this.Nic = paramd;
     this.result = paramObject;
     AppMethodBeat.o(129638);
   }
   
-  public final void eN(Object paramObject)
+  public final void eQ(Object paramObject)
   {
     AppMethodBeat.i(129635);
     do
@@ -49,17 +49,17 @@ public final class h<T>
       do
       {
         localObject = this.result;
-        if (localObject != a.MLd) {
+        if (localObject != a.Nig) {
           break;
         }
-      } while (!MLa.compareAndSet(this, a.MLd, paramObject));
+      } while (!Nid.compareAndSet(this, a.Nig, paramObject));
       AppMethodBeat.o(129635);
       return;
-      if (localObject != a.MLc) {
+      if (localObject != a.Nif) {
         break;
       }
-    } while (!MLa.compareAndSet(this, a.MLc, a.MLe));
-    this.MKZ.eN(paramObject);
+    } while (!Nid.compareAndSet(this, a.Nif, a.Nih));
+    this.Nic.eQ(paramObject);
     AppMethodBeat.o(129635);
     return;
     paramObject = (Throwable)new IllegalStateException("Already resumed");
@@ -67,38 +67,38 @@ public final class h<T>
     throw paramObject;
   }
   
-  public final f gfE()
+  public final f gkg()
   {
     AppMethodBeat.i(129634);
-    f localf = this.MKZ.gfE();
+    f localf = this.Nic.gkg();
     AppMethodBeat.o(129634);
     return localf;
   }
   
-  public final Object gfF()
+  public final Object gkh()
   {
     AppMethodBeat.i(129636);
     Object localObject2 = this.result;
     Object localObject1 = localObject2;
-    if (localObject2 == a.MLd)
+    if (localObject2 == a.Nig)
     {
-      if (MLa.compareAndSet(this, a.MLd, a.MLc))
+      if (Nid.compareAndSet(this, a.Nig, a.Nif))
       {
-        localObject1 = a.MLc;
+        localObject1 = a.Nif;
         AppMethodBeat.o(129636);
         return localObject1;
       }
       localObject1 = this.result;
     }
-    if (localObject1 == a.MLe)
+    if (localObject1 == a.Nih)
     {
-      localObject1 = a.MLc;
+      localObject1 = a.Nif;
       AppMethodBeat.o(129636);
       return localObject1;
     }
     if ((localObject1 instanceof p.b))
     {
-      localObject1 = ((p.b)localObject1).MKf;
+      localObject1 = ((p.b)localObject1).Nhi;
       AppMethodBeat.o(129636);
       throw ((Throwable)localObject1);
     }
@@ -106,9 +106,9 @@ public final class h<T>
     return localObject1;
   }
   
-  public final e gfG()
+  public final e gki()
   {
-    d locald2 = this.MKZ;
+    d locald2 = this.Nic;
     d locald1 = locald2;
     if (!(locald2 instanceof e)) {
       locald1 = null;
@@ -116,7 +116,7 @@ public final class h<T>
     return (e)locald1;
   }
   
-  public final StackTraceElement gfH()
+  public final StackTraceElement gkj()
   {
     return null;
   }
@@ -124,12 +124,12 @@ public final class h<T>
   public final String toString()
   {
     AppMethodBeat.i(129637);
-    String str = "SafeContinuation for " + this.MKZ;
+    String str = "SafeContinuation for " + this.Nic;
     AppMethodBeat.o(129637);
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "RESULT$annotations", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "RESULT$annotations", "kotlin-stdlib"})
   static final class a {}
 }
 

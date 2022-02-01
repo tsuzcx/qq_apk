@@ -9,14 +9,14 @@ public final class l
   extends j<k>
 {
   public static final String[] SQL_CREATE;
-  static final String[] uOz;
+  static final String[] val;
   public e db;
   
   static
   {
     AppMethodBeat.i(25562);
     SQL_CREATE = new String[] { j.getCreateSQLs(k.info, "IPCallRecord") };
-    uOz = new String[] { "*", "rowid" };
+    val = new String[] { "*", "rowid" };
     AppMethodBeat.o(25562);
   }
   
@@ -35,26 +35,26 @@ public final class l
     AppMethodBeat.o(25561);
   }
   
-  public final Cursor anD(String paramString)
+  public final Cursor aoF(String paramString)
   {
     AppMethodBeat.i(25558);
-    paramString = this.db.query("IPCallRecord", uOz, "phonenumber=?", new String[] { paramString }, null, null, "calltime desc limit 4");
+    paramString = this.db.query("IPCallRecord", val, "phonenumber=?", new String[] { paramString }, null, null, "calltime desc limit 4");
     AppMethodBeat.o(25558);
     return paramString;
   }
   
-  public final Cursor anE(String paramString)
+  public final Cursor aoG(String paramString)
   {
     AppMethodBeat.i(25559);
-    paramString = this.db.query("IPCallRecord", uOz, "phonenumber=?", new String[] { paramString }, null, null, "calltime desc");
+    paramString = this.db.query("IPCallRecord", val, "phonenumber=?", new String[] { paramString }, null, null, "calltime desc");
     AppMethodBeat.o(25559);
     return paramString;
   }
   
-  public final Cursor xQ(long paramLong)
+  public final Cursor yk(long paramLong)
   {
     AppMethodBeat.i(25560);
-    Cursor localCursor = this.db.query("IPCallRecord", uOz, "addressId=?", new String[] { String.valueOf(paramLong) }, null, null, "calltime desc");
+    Cursor localCursor = this.db.query("IPCallRecord", val, "addressId=?", new String[] { String.valueOf(paramLong) }, null, null, "calltime desc");
     AppMethodBeat.o(25560);
     return localCursor;
   }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class bg
@@ -15,7 +15,7 @@ public final class bg
     AppMethodBeat.i(45560);
     String str = paramJSONObject.optString("op");
     int j = paramJSONObject.optInt("redDotType", 0);
-    ad.i("MicroMsg.JsApiOpNativeRedDot", "op:%s redDotType:%d", new Object[] { str, Integer.valueOf(j) });
+    ae.i("MicroMsg.JsApiOpNativeRedDot", "op:%s redDotType:%d", new Object[] { str, Integer.valueOf(j) });
     int i = -1;
     switch (str.hashCode())
     {
@@ -25,7 +25,7 @@ public final class bg
       switch (i)
       {
       default: 
-        ad.w("MicroMsg.JsApiOpNativeRedDot", "unknown op:%s", new Object[] { str });
+        ae.w("MicroMsg.JsApiOpNativeRedDot", "unknown op:%s", new Object[] { str });
         paramc.h(paramInt, e("fail unknown op", null));
         AppMethodBeat.o(45560);
         return;
@@ -35,7 +35,7 @@ public final class bg
         break;
       }
     }
-    com.tencent.mm.plugin.appbrand.u.a.vf(j);
+    com.tencent.mm.plugin.appbrand.t.a.vk(j);
     paramc.h(paramInt, e("ok", null));
     AppMethodBeat.o(45560);
   }

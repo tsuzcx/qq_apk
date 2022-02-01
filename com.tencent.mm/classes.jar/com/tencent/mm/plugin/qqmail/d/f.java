@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int FileSize;
-  public int nDG;
-  public int xbr;
-  public String xbs;
-  public long xbt;
+  public int nJb;
+  public int xri;
+  public String xrj;
+  public long xrk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,35 +17,35 @@ public final class f
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.xbr);
-      if (this.xbs != null) {
-        paramVarArgs.d(2, this.xbs);
+      paramVarArgs.aS(1, this.xri);
+      if (this.xrj != null) {
+        paramVarArgs.d(2, this.xrj);
       }
-      paramVarArgs.aS(3, this.nDG);
+      paramVarArgs.aS(3, this.nJb);
       paramVarArgs.aS(4, this.FileSize);
-      paramVarArgs.aY(5, this.xbt);
+      paramVarArgs.aZ(5, this.xrk);
       AppMethodBeat.o(122660);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.xbr) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.xri) + 0;
       paramInt = i;
-      if (this.xbs != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.xbs);
+      if (this.xrj != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.xrj);
       }
-      i = f.a.a.b.b.a.bz(3, this.nDG);
+      i = f.a.a.b.b.a.bz(3, this.nJb);
       int j = f.a.a.b.b.a.bz(4, this.FileSize);
-      int k = f.a.a.b.b.a.p(5, this.xbt);
+      int k = f.a.a.b.b.a.p(5, this.xrk);
       AppMethodBeat.o(122660);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(122660);
@@ -61,23 +61,23 @@ public final class f
         AppMethodBeat.o(122660);
         return -1;
       case 1: 
-        localf.xbr = locala.NPN.zc();
+        localf.xri = locala.OmT.zc();
         AppMethodBeat.o(122660);
         return 0;
       case 2: 
-        localf.xbs = locala.NPN.readString();
+        localf.xrj = locala.OmT.readString();
         AppMethodBeat.o(122660);
         return 0;
       case 3: 
-        localf.nDG = locala.NPN.zc();
+        localf.nJb = locala.OmT.zc();
         AppMethodBeat.o(122660);
         return 0;
       case 4: 
-        localf.FileSize = locala.NPN.zc();
+        localf.FileSize = locala.OmT.zc();
         AppMethodBeat.o(122660);
         return 0;
       }
-      localf.xbt = locala.NPN.zd();
+      localf.xrk = locala.OmT.zd();
       AppMethodBeat.o(122660);
       return 0;
     }

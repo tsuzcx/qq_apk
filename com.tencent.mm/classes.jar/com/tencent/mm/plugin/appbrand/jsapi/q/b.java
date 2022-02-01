@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface b
 {
-  public abstract a FI();
+  public abstract a FO();
   
-  public abstract Boolean FJ();
+  public abstract Boolean FP();
   
   public static enum a
   {
     static
     {
       AppMethodBeat.i(176553);
-      leg = new a("NONE", 0);
-      leh = new a("PUSH", 1);
-      lei = new a("POP", 2);
-      lej = new a("PUSH_AND_POP", 3);
-      lek = new a[] { leg, leh, lei, lej };
+      lhS = new a("NONE", 0);
+      lhT = new a("PUSH", 1);
+      lhU = new a("POP", 2);
+      lhV = new a("PUSH_AND_POP", 3);
+      lhW = new a[] { lhS, lhT, lhU, lhV };
       AppMethodBeat.o(176553);
     }
     
     private a() {}
     
-    public static a Qt(String paramString)
+    public static a Rc(String paramString)
     {
       AppMethodBeat.i(176552);
       paramString = paramString.trim();
@@ -59,16 +59,16 @@ public abstract interface b
           break;
         }
       }
-      paramString = leg;
+      paramString = lhS;
       AppMethodBeat.o(176552);
       return paramString;
-      paramString = leh;
+      paramString = lhT;
       AppMethodBeat.o(176552);
       return paramString;
-      paramString = lei;
+      paramString = lhU;
       AppMethodBeat.o(176552);
       return paramString;
-      paramString = lej;
+      paramString = lhV;
       AppMethodBeat.o(176552);
       return paramString;
     }

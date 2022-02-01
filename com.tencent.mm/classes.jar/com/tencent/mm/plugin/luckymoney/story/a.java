@@ -6,43 +6,43 @@ import com.tencent.mm.plugin.report.service.g;
 
 public final class a
 {
-  public static int dJI;
+  public static int dKW;
   private static long enterTime;
-  public static String fJG;
+  public static String fLJ;
   public static int scene;
-  public static String vtY;
-  public static int vtZ = 1;
+  public static String vGc;
+  public static int vGd = 1;
   
   public static void l(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(199013);
+    AppMethodBeat.i(189848);
     scene = paramInt1;
-    fJG = paramString;
-    dJI = paramInt2;
+    fLJ = paramString;
+    dKW = paramInt2;
     enterTime = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(199013);
+    AppMethodBeat.o(189848);
   }
   
-  public static void tQ(int paramInt)
+  public static void tW(int paramInt)
   {
-    AppMethodBeat.i(199014);
+    AppMethodBeat.i(189849);
     if (enterTime > 0L)
     {
       long l = (SystemClock.elapsedRealtime() - enterTime) / 1000L;
-      g.yhR.f(20255, new Object[] { Integer.valueOf(scene), fJG, Integer.valueOf(dJI), Integer.valueOf(0), vtY, Integer.valueOf(vtZ), Integer.valueOf(paramInt), Long.valueOf(l) });
+      g.yxI.f(20255, new Object[] { Integer.valueOf(scene), fLJ, Integer.valueOf(dKW), Integer.valueOf(0), vGc, Integer.valueOf(vGd), Integer.valueOf(paramInt), Long.valueOf(l) });
     }
     scene = 0;
     enterTime = -1L;
-    fJG = null;
-    dJI = 0;
-    vtY = null;
-    vtZ = 1;
-    AppMethodBeat.o(199014);
+    fLJ = null;
+    dKW = 0;
+    vGc = null;
+    vGd = 1;
+    AppMethodBeat.o(189849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.a
  * JD-Core Version:    0.7.0.1
  */

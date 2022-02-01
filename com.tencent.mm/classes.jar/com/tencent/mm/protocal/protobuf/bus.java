@@ -1,105 +1,158 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bus
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FIy;
-  public String GOM;
-  public int GON;
-  public String content;
-  public String fSp;
+  public PersonalDesigner GQO;
+  public String GwI;
+  public bur HhP;
+  public buu HhQ;
+  public String Name;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(211966);
+    AppMethodBeat.i(104818);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GOM != null) {
-        paramVarArgs.d(1, this.GOM);
+      if (this.GwI != null) {
+        paramVarArgs.d(1, this.GwI);
       }
-      if (this.fSp != null) {
-        paramVarArgs.d(2, this.fSp);
+      if (this.HhP != null)
+      {
+        paramVarArgs.lJ(2, this.HhP.computeSize());
+        this.HhP.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(3, this.FIy);
-      if (this.content != null) {
-        paramVarArgs.d(4, this.content);
+      if (this.Name != null) {
+        paramVarArgs.d(3, this.Name);
       }
-      paramVarArgs.aS(5, this.GON);
-      AppMethodBeat.o(211966);
+      if (this.GQO != null)
+      {
+        paramVarArgs.lJ(4, this.GQO.computeSize());
+        this.GQO.writeFields(paramVarArgs);
+      }
+      if (this.HhQ != null)
+      {
+        paramVarArgs.lJ(5, this.HhQ.computeSize());
+        this.HhQ.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(104818);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GOM == null) {
-        break label422;
+      if (this.GwI == null) {
+        break label738;
       }
     }
-    label422:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GOM) + 0;; paramInt = 0)
+    label738:
+    for (int i = f.a.a.b.b.a.e(1, this.GwI) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.fSp != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.fSp);
-      }
-      i += f.a.a.b.b.a.bz(3, this.FIy);
       paramInt = i;
-      if (this.content != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.content);
+      if (this.HhP != null) {
+        paramInt = i + f.a.a.a.lI(2, this.HhP.computeSize());
       }
-      i = f.a.a.b.b.a.bz(5, this.GON);
-      AppMethodBeat.o(211966);
-      return paramInt + i;
+      i = paramInt;
+      if (this.Name != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Name);
+      }
+      paramInt = i;
+      if (this.GQO != null) {
+        paramInt = i + f.a.a.a.lI(4, this.GQO.computeSize());
+      }
+      i = paramInt;
+      if (this.HhQ != null) {
+        i = paramInt + f.a.a.a.lI(5, this.HhQ.computeSize());
+      }
+      AppMethodBeat.o(104818);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(211966);
+        AppMethodBeat.o(104818);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bus localbus = (bus)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(211966);
+          AppMethodBeat.o(104818);
           return -1;
         case 1: 
-          localbus.GOM = locala.NPN.readString();
-          AppMethodBeat.o(211966);
+          localbus.GwI = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(104818);
           return 0;
         case 2: 
-          localbus.fSp = locala.NPN.readString();
-          AppMethodBeat.o(211966);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new bur();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((bur)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbus.HhP = ((bur)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104818);
           return 0;
         case 3: 
-          localbus.FIy = locala.NPN.zc();
-          AppMethodBeat.o(211966);
+          localbus.Name = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(104818);
           return 0;
         case 4: 
-          localbus.content = locala.NPN.readString();
-          AppMethodBeat.o(211966);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new PersonalDesigner();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((PersonalDesigner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbus.GQO = ((PersonalDesigner)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104818);
           return 0;
         }
-        localbus.GON = locala.NPN.zc();
-        AppMethodBeat.o(211966);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new buu();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((buu)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbus.HhQ = ((buu)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(104818);
         return 0;
       }
-      AppMethodBeat.o(211966);
+      AppMethodBeat.o(104818);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bus
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,17 @@ import java.lang.ref.WeakReference;
 
 public final class ag
 {
-  public String doX;
-  public TimeLineObject zQl;
-  public WeakReference<View> zSQ;
+  public TimeLineObject Ahs;
+  public WeakReference<View> AjX;
+  public String dqc;
   
   public ag(TimeLineObject paramTimeLineObject, View paramView, String paramString)
   {
-    AppMethodBeat.i(198183);
-    this.zQl = paramTimeLineObject;
-    this.zSQ = new WeakReference(paramView);
-    this.doX = paramString;
-    AppMethodBeat.o(198183);
+    AppMethodBeat.i(219705);
+    this.Ahs = paramTimeLineObject;
+    this.AjX = new WeakReference(paramView);
+    this.dqc = paramString;
+    AppMethodBeat.o(219705);
   }
 }
 

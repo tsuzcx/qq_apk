@@ -5,16 +5,20 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.ab;
 import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.utils.f;
+import com.tencent.mm.plugin.appbrand.widget.input.aa;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.a;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
+import com.tencent.mm.plugin.appbrand.widget.input.d.e;
 import com.tencent.mm.plugin.appbrand.widget.input.i;
 import com.tencent.mm.plugin.appbrand.widget.input.i.b;
 import com.tencent.mm.plugin.appbrand.widget.input.l;
 import com.tencent.mm.plugin.appbrand.widget.input.o;
 import com.tencent.mm.plugin.appbrand.widget.input.y;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,67 +29,67 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class h
-  extends a<com.tencent.mm.plugin.appbrand.widget.input.d.e>
+  extends a<e>
 {
   public static final int CTRL_INDEX = 1;
   static final String NAME = "showKeyboard";
   
-  static void a(int paramInt1, int paramInt2, com.tencent.mm.plugin.appbrand.page.aa paramaa)
+  static void a(int paramInt1, int paramInt2, z paramz)
   {
-    AppMethodBeat.i(190966);
+    AppMethodBeat.i(221714);
     try
     {
-      paramInt2 = com.tencent.mm.plugin.appbrand.z.g.vH(paramInt2);
-      paramaa.c("onKeyboardShow", com.tencent.mm.ac.h.ain().Q("inputId", paramInt1).Q("height", paramInt2).toString(), 0);
-      AppMethodBeat.o(190966);
+      paramInt2 = com.tencent.mm.plugin.appbrand.y.g.vM(paramInt2);
+      paramz.c("onKeyboardShow", com.tencent.mm.ab.h.aiC().R("inputId", paramInt1).R("height", paramInt2).toString(), 0);
+      AppMethodBeat.o(221714);
       return;
     }
-    catch (com.tencent.mm.ac.g paramaa)
+    catch (com.tencent.mm.ab.g paramz)
     {
-      ad.e("MicroMsg.JsApiShowKeyboard", "", new Object[] { paramaa.getMessage() });
-      AppMethodBeat.o(190966);
+      ae.e("MicroMsg.JsApiShowKeyboard", "", new Object[] { paramz.getMessage() });
+      AppMethodBeat.o(221714);
     }
   }
   
-  protected i a(final WeakReference<com.tencent.mm.plugin.appbrand.page.aa> paramWeakReference, final String paramString, final int paramInt)
+  protected i a(final WeakReference<z> paramWeakReference, final String paramString, final int paramInt)
   {
     AppMethodBeat.i(136286);
     paramWeakReference = new i()
     {
-      private void bky()
+      private void bli()
       {
         AppMethodBeat.i(136284);
-        com.tencent.mm.plugin.appbrand.page.aa localaa = (com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get();
-        if ((localaa == null) || (localaa.lYc == null))
+        z localz = (z)paramWeakReference.get();
+        if ((localz == null) || (localz.mcJ == null))
         {
           AppMethodBeat.o(136284);
           return;
         }
-        com.tencent.mm.plugin.appbrand.widget.input.h.bDY().e(localaa.lYc);
+        com.tencent.mm.plugin.appbrand.widget.input.h.bEQ().e(localz.mcJ);
         AppMethodBeat.o(136284);
       }
       
-      public final void PE(String paramAnonymousString)
+      public final void Qm(String paramAnonymousString)
       {
         AppMethodBeat.i(136283);
-        com.tencent.mm.plugin.appbrand.page.aa localaa = (com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get();
-        if (localaa == null)
+        z localz = (z)paramWeakReference.get();
+        if (localz == null)
         {
           AppMethodBeat.o(136283);
           return;
         }
         try
         {
-          int i = this.ndw;
+          int i = this.niF;
           h.a locala = new h.a();
-          paramAnonymousString = new JSONObject().put("value", com.tencent.mm.plugin.appbrand.utils.e.Vb(paramAnonymousString)).put("data", h.td(i)).put("cursor", 0).put("inputId", i).put("keyCode", 8);
-          locala.a(localaa.getRuntime().Ew(), localaa.aXC()).Ph(paramAnonymousString.toString()).bir();
+          paramAnonymousString = new JSONObject().put("value", f.VM(paramAnonymousString)).put("data", h.tg(i)).put("cursor", 0).put("inputId", i).put("keyCode", 8);
+          locala.a(localz.getRuntime().Ey(), localz.aXX()).PP(paramAnonymousString.toString()).bja();
           AppMethodBeat.o(136283);
           return;
         }
         catch (Exception paramAnonymousString)
         {
-          ad.e("MicroMsg.JsApiShowKeyboard", "onBackspacePressedWhileValueNoChange, e = %s", new Object[] { paramAnonymousString });
+          ae.e("MicroMsg.JsApiShowKeyboard", "onBackspacePressedWhileValueNoChange, e = %s", new Object[] { paramAnonymousString });
           AppMethodBeat.o(136283);
         }
       }
@@ -96,50 +100,50 @@ public class h
         if (paramWeakReference.get() != null) {}
         try
         {
-          paramAnonymousString = com.tencent.mm.plugin.appbrand.utils.e.Vb(paramAnonymousString);
-          paramAnonymousString = new JSONObject().put("value", paramAnonymousString).put("inputId", this.ndw).put("cursor", paramAnonymousInt).toString();
+          paramAnonymousString = f.VM(paramAnonymousString);
+          paramAnonymousString = new JSONObject().put("value", paramAnonymousString).put("inputId", this.niF).put("cursor", paramAnonymousInt).toString();
           if (paramAnonymousBoolean1) {
-            ((com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get()).c("onKeyboardConfirm", paramAnonymousString, 0);
+            ((z)paramWeakReference.get()).c("onKeyboardConfirm", paramAnonymousString, 0);
           }
           if (!paramAnonymousBoolean2) {
-            ((com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get()).c("onKeyboardComplete", paramAnonymousString, 0);
+            ((z)paramWeakReference.get()).c("onKeyboardComplete", paramAnonymousString, 0);
           }
         }
         catch (JSONException paramAnonymousString)
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiShowKeyboard", "dispatch input done, exp = %s", new Object[] { bt.n(paramAnonymousString) });
+            ae.e("MicroMsg.JsApiShowKeyboard", "dispatch input done, exp = %s", new Object[] { bu.o(paramAnonymousString) });
           }
         }
         if (!paramAnonymousBoolean2) {
-          bky();
+          bli();
         }
         AppMethodBeat.o(136280);
       }
       
-      public final void bkw()
+      public final void blg()
       {
         AppMethodBeat.i(136281);
         if (paramWeakReference.get() != null)
         {
-          int i = this.ndw;
+          int i = this.niF;
           HashMap localHashMap = new HashMap(1);
           localHashMap.put("inputId", Integer.valueOf(i));
-          ((com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get()).h(paramInt, h.this.m("ok", localHashMap));
+          ((z)paramWeakReference.get()).h(paramInt, h.this.n("ok", localHashMap));
           h.ai(i, paramString);
-          h.a(i, (com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get());
+          h.a(i, (z)paramWeakReference.get());
         }
         AppMethodBeat.o(136281);
       }
       
-      public final void bkx()
+      public final void blh()
       {
         AppMethodBeat.i(136282);
         if (paramWeakReference.get() != null)
         {
-          ((com.tencent.mm.plugin.appbrand.page.aa)paramWeakReference.get()).h(paramInt, h.this.e("fail", null));
-          bky();
+          ((z)paramWeakReference.get()).h(paramInt, h.this.e("fail", null));
+          bli();
         }
         AppMethodBeat.o(136282);
       }
@@ -148,7 +152,7 @@ public class h
     return paramWeakReference;
   }
   
-  public void a(final com.tencent.mm.plugin.appbrand.page.aa paramaa, JSONObject paramJSONObject, final int paramInt)
+  public void a(final z paramz, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(136285);
     final int i = paramJSONObject.optInt("cursor", -2);
@@ -159,21 +163,21 @@ public class h
       try
       {
         final int k = paramJSONObject.getInt("inputId");
-        if (!bku()) {
+        if (!ble()) {
           break;
         }
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(136275);
-            if (o.a(paramaa, k, i, j))
+            if (o.a(paramz, k, i, j))
             {
-              paramaa.h(paramInt, h.this.e("ok", null));
+              paramz.h(paramInt, h.this.e("ok", null));
               AppMethodBeat.o(136275);
               return;
             }
-            paramaa.h(paramInt, h.this.e("fail:invalid data", null));
+            paramz.h(paramInt, h.this.e("fail:invalid data", null));
             AppMethodBeat.o(136275);
           }
         });
@@ -182,8 +186,8 @@ public class h
       }
       catch (JSONException localJSONException)
       {
-        final com.tencent.mm.plugin.appbrand.widget.input.d.e locale = new com.tencent.mm.plugin.appbrand.widget.input.d.e();
-        if (a(locale, paramJSONObject, paramaa, paramInt)) {
+        final e locale = new e();
+        if (a(locale, paramJSONObject, paramz, paramInt)) {
           break label137;
         }
         AppMethodBeat.o(136285);
@@ -192,14 +196,14 @@ public class h
           break label209;
         }
         long l = System.nanoTime();
-        locale.ncO = (paramaa.hashCode() + "#" + System.currentTimeMillis() + "#" + l).hashCode();
-        a(locale.ncO, 0, paramaa);
-        com.tencent.mm.plugin.appbrand.z.m.runOnUiThread(new Runnable()
+        locale.nhX = (paramz.hashCode() + "#" + System.currentTimeMillis() + "#" + l).hashCode();
+        a(locale.nhX, 0, paramz);
+        com.tencent.mm.plugin.appbrand.y.m.runOnUiThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(136276);
-            h.a(h.this, paramaa, i, j, this.kNY, locale, paramInt);
+            h.a(h.this, paramz, i, j, this.kRA, locale, paramInt);
             AppMethodBeat.o(136276);
           }
         });
@@ -213,69 +217,69 @@ public class h
   
   protected void a(i parami) {}
   
-  protected boolean a(com.tencent.mm.plugin.appbrand.widget.input.d.e parame, JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt)
+  protected boolean a(e parame, JSONObject paramJSONObject, z paramz, int paramInt)
   {
     int j = 0;
     AppMethodBeat.i(136287);
-    if (!super.a(parame, paramJSONObject, paramaa, paramInt))
+    if (!super.a(parame, paramJSONObject, paramz, paramInt))
     {
       AppMethodBeat.o(136287);
       return false;
     }
-    parame.niR = paramJSONObject.optInt("parentId");
-    parame.ncO = paramJSONObject.optInt("inputId");
-    parame.niW = Integer.valueOf(Math.max(0, parame.niW.intValue()));
-    if (parame.niX == null) {}
-    for (int i = 0;; i = Math.max(0, parame.niX.intValue()))
+    parame.nnZ = paramJSONObject.optInt("parentId");
+    parame.nhX = paramJSONObject.optInt("inputId");
+    parame.noe = Integer.valueOf(Math.max(0, parame.noe.intValue()));
+    if (parame.nof == null) {}
+    for (int i = 0;; i = Math.max(0, parame.nof.intValue()))
     {
-      parame.niX = Integer.valueOf(i);
-      parame.cvH = paramJSONObject.optString("type", "text");
-      if (o.new.contains(parame.cvH)) {
+      parame.nof = Integer.valueOf(i);
+      parame.cwl = paramJSONObject.optString("type", "text");
+      if (o.njE.contains(parame.cwl)) {
         break;
       }
-      paramaa.h(paramInt, e("fail:unsupported input type", null));
+      paramz.h(paramInt, e("fail:unsupported input type", null));
       AppMethodBeat.o(136287);
       return false;
     }
-    if (parame.njt == null) {
-      parame.njt = Boolean.TRUE;
+    if (parame.noB == null) {
+      parame.noB = Boolean.TRUE;
     }
-    parame.cvK = paramJSONObject.optBoolean("password");
-    parame.njB = Boolean.valueOf(paramJSONObject.optBoolean("password"));
-    if (bkv())
+    parame.cwo = paramJSONObject.optBoolean("password");
+    parame.noJ = Boolean.valueOf(paramJSONObject.optBoolean("password"));
+    if (blf())
     {
-      paramaa = paramJSONObject.optJSONObject("dropdown");
-      if (paramaa != null)
+      paramz = paramJSONObject.optJSONObject("dropdown");
+      if (paramz != null)
       {
         paramJSONObject = new a.a();
-        paramJSONObject.niC = paramaa.optInt("marginLeft");
-        paramJSONObject.niD = paramaa.optInt("marginRight");
-        paramJSONObject.niE = paramaa.optString("width");
-        paramaa = paramaa.optJSONArray("options");
-        if ((paramaa != null) && (paramaa.length() > 0))
+        paramJSONObject.nnK = paramz.optInt("marginLeft");
+        paramJSONObject.nnL = paramz.optInt("marginRight");
+        paramJSONObject.nnM = paramz.optString("width");
+        paramz = paramz.optJSONArray("options");
+        if ((paramz != null) && (paramz.length() > 0))
         {
-          paramJSONObject.niF = new ArrayList();
+          paramJSONObject.nnN = new ArrayList();
           paramInt = j;
-          while (paramInt < paramaa.length())
+          while (paramInt < paramz.length())
           {
-            Object localObject = paramaa.optJSONObject(paramInt);
+            Object localObject = paramz.optJSONObject(paramInt);
             if (localObject != null)
             {
               String str1 = ((JSONObject)localObject).optString("id");
               String str2 = ((JSONObject)localObject).optString("title");
               localObject = ((JSONObject)localObject).optString("content");
-              if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(str2)))
+              if ((!bu.isNullOrNil(str1)) && (!bu.isNullOrNil(str2)))
               {
                 a.b localb = new a.b();
                 localb.id = str1;
                 localb.title = str2;
                 localb.content = ((String)localObject);
-                paramJSONObject.niF.add(localb);
+                paramJSONObject.nnN.add(localb);
               }
             }
             paramInt += 1;
           }
-          parame.niU = paramJSONObject;
+          parame.noc = paramJSONObject;
         }
       }
     }
@@ -283,21 +287,14 @@ public class h
     return true;
   }
   
-  protected boolean bku()
+  protected boolean ble()
   {
     return true;
   }
   
-  protected boolean bkv()
+  protected boolean blf()
   {
     return true;
-  }
-  
-  public static final class a
-    extends p
-  {
-    public static final int CTRL_INDEX = 78;
-    public static final String NAME = "onKeyboardValueChange";
   }
 }
 

@@ -16,33 +16,33 @@ import com.tencent.xweb.x.a;
 public class f
   extends x
 {
-  private x DOs;
+  private x Egs;
   
   public f()
   {
     AppMethodBeat.i(78223);
-    this.DOs = new x();
+    this.Egs = new x();
     AppMethodBeat.o(78223);
   }
   
   public final void a(WebView paramWebView, int paramInt)
   {
     AppMethodBeat.i(78233);
-    this.DOs.a(paramWebView, paramInt);
+    this.Egs.a(paramWebView, paramInt);
     AppMethodBeat.o(78233);
   }
   
   public final void a(x paramx)
   {
     if (paramx != null) {
-      this.DOs = paramx;
+      this.Egs = paramx;
     }
   }
   
   public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, x.a parama)
   {
     AppMethodBeat.i(78232);
-    boolean bool = this.DOs.a(paramWebView, paramValueCallback, parama);
+    boolean bool = this.Egs.a(paramWebView, paramValueCallback, parama);
     AppMethodBeat.o(78232);
     return bool;
   }
@@ -50,7 +50,7 @@ public class f
   public final boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(78227);
-    boolean bool = this.DOs.a(paramWebView, paramString1, paramString2, paramJsResult);
+    boolean bool = this.Egs.a(paramWebView, paramString1, paramString2, paramJsResult);
     AppMethodBeat.o(78227);
     return bool;
   }
@@ -58,7 +58,7 @@ public class f
   public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
   {
     AppMethodBeat.i(78229);
-    boolean bool = this.DOs.a(paramWebView, paramString1, paramString2, paramString3, paramo);
+    boolean bool = this.Egs.a(paramWebView, paramString1, paramString2, paramString3, paramo);
     AppMethodBeat.o(78229);
     return bool;
   }
@@ -66,7 +66,7 @@ public class f
   public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(78228);
-    boolean bool = this.DOs.b(paramWebView, paramString1, paramString2, paramJsResult);
+    boolean bool = this.Egs.b(paramWebView, paramString1, paramString2, paramJsResult);
     AppMethodBeat.o(78228);
     return bool;
   }
@@ -74,14 +74,14 @@ public class f
   public void d(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(78234);
-    this.DOs.d(paramWebView, paramString);
+    this.Egs.d(paramWebView, paramString);
     AppMethodBeat.o(78234);
   }
   
   public final View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(78230);
-    View localView = this.DOs.getVideoLoadingProgressView();
+    View localView = this.Egs.getVideoLoadingProgressView();
     AppMethodBeat.o(78230);
     return localView;
   }
@@ -89,43 +89,43 @@ public class f
   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
     AppMethodBeat.i(78224);
-    boolean bool = this.DOs.onConsoleMessage(paramConsoleMessage);
+    boolean bool = this.Egs.onConsoleMessage(paramConsoleMessage);
     AppMethodBeat.o(78224);
     return bool;
   }
   
   public final void onGeolocationPermissionsHidePrompt()
   {
-    AppMethodBeat.i(207836);
-    this.DOs.onGeolocationPermissionsHidePrompt();
-    AppMethodBeat.o(207836);
+    AppMethodBeat.i(198016);
+    this.Egs.onGeolocationPermissionsHidePrompt();
+    AppMethodBeat.o(198016);
   }
   
   public final void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
   {
     AppMethodBeat.i(78225);
-    this.DOs.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+    this.Egs.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
     AppMethodBeat.o(78225);
   }
   
   public final void onHideCustomView()
   {
     AppMethodBeat.i(78226);
-    this.DOs.onHideCustomView();
+    this.Egs.onHideCustomView();
     AppMethodBeat.o(78226);
   }
   
   public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
     AppMethodBeat.i(78235);
-    this.DOs.onShowCustomView(paramView, paramCustomViewCallback);
+    this.Egs.onShowCustomView(paramView, paramCustomViewCallback);
     AppMethodBeat.o(78235);
   }
   
   public final void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
     AppMethodBeat.i(78231);
-    this.DOs.openFileChooser(paramValueCallback, paramString1, paramString2);
+    this.Egs.openFileChooser(paramValueCallback, paramString1, paramString2);
     AppMethodBeat.o(78231);
   }
 }

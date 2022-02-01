@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,23 +15,23 @@ public final class b
   String iconUrl;
   String jumpUrl;
   int position;
-  String ppR;
-  String ppS;
-  List<String> ppT;
+  String pwx;
+  String pwy;
+  List<String> pwz;
   long size;
   int state;
   int type;
   
-  public static void aj(Context paramContext, String paramString)
+  public static void al(Context paramContext, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(8956);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8956);
       return;
     }
-    ak(paramContext, paramString);
+    am(paramContext, paramString);
     paramContext = paramContext.getSharedPreferences("search_history_href", 0);
     String str = paramContext.getString("search_history_list", "");
     StringBuffer localStringBuffer = new StringBuffer();
@@ -50,10 +50,10 @@ public final class b
     AppMethodBeat.o(8956);
   }
   
-  public static void ak(Context paramContext, String paramString)
+  public static void am(Context paramContext, String paramString)
   {
     AppMethodBeat.i(8957);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8957);
       return;
@@ -64,12 +64,12 @@ public final class b
     AppMethodBeat.o(8957);
   }
   
-  public static List<b> ey(Context paramContext)
+  public static List<b> eC(Context paramContext)
   {
     AppMethodBeat.i(8955);
     ArrayList localArrayList = new ArrayList();
     paramContext = paramContext.getSharedPreferences("search_history_href", 0).getString("search_history_list", "");
-    if (bt.isNullOrNil(paramContext))
+    if (bu.isNullOrNil(paramContext))
     {
       AppMethodBeat.o(8955);
       return localArrayList;
@@ -82,18 +82,18 @@ public final class b
     {
       String str = paramContext[i];
       k = j;
-      if (!bt.isNullOrNil(str))
+      if (!bu.isNullOrNil(str))
       {
         b localb = new b();
         localb.type = 2;
-        localb.ppR = new String(Base64.decode(str, 0));
+        localb.pwx = new String(Base64.decode(str, 0));
         k = j + 1;
         localb.position = k;
         localArrayList.add(localb);
       }
       i += 1;
     }
-    if (!bt.hj(localArrayList))
+    if (!bu.ht(localArrayList))
     {
       paramContext = new b();
       paramContext.type = 1;
@@ -106,9 +106,9 @@ public final class b
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(8954);
-    if (((paramObject instanceof b)) && (((b)paramObject).ppR != null))
+    if (((paramObject instanceof b)) && (((b)paramObject).pwx != null))
     {
-      bool = ((b)paramObject).ppR.equals(this.ppR);
+      bool = ((b)paramObject).pwx.equals(this.pwx);
       AppMethodBeat.o(8954);
       return bool;
     }

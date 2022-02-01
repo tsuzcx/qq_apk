@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public final class f
 {
-  public String uOu;
-  public ArrayList<e> uOv;
+  public String vag;
+  public ArrayList<e> vah;
 }
 
 

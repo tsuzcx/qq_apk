@@ -12,8 +12,8 @@ import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pluginsdk.ui.tools.h.d;
 import com.tencent.mm.pluginsdk.ui.tools.h.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class SnsVideoPlayTextureView
   extends VideoPlayerTextureView
@@ -39,102 +39,102 @@ public class SnsVideoPlayTextureView
   public final void b(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100415);
-    ad.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d surface[%d] available [%d, %d] pauseByDestroyed[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurfaceTexture.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.lsR) });
+    ae.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d surface[%d] available [%d, %d] pauseByDestroyed[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurfaceTexture.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.lxq) });
     for (;;)
     {
       try
       {
-        fzf();
+        fDh();
         this.mSurface = new Surface(paramSurfaceTexture);
-        if ((this.pUJ == null) || (!this.Zn))
+        if ((this.qbo == null) || (!this.Zn))
         {
-          boN();
-          bSn();
-          if (this.pUO != null) {
-            this.pUO.aMx();
+          bpx();
+          bTA();
+          if (this.qbt != null) {
+            this.qbt.aMV();
           }
           AppMethodBeat.o(100415);
           return;
         }
-        this.pUJ.i(this.mSurface);
-        if (!d.ly(23)) {
+        this.qbo.i(this.mSurface);
+        if (!d.lA(23)) {
           break label208;
         }
-        if (this.lsR)
+        if (this.lxq)
         {
-          this.pUJ.start();
-          this.lsR = false;
+          this.qbo.start();
+          this.lxq = false;
           continue;
         }
-        this.lsS = true;
+        this.lxr = true;
       }
       catch (Exception paramSurfaceTexture)
       {
-        ad.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", paramSurfaceTexture, "onSurfaceTextureAvailable failed", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", paramSurfaceTexture, "onSurfaceTextureAvailable failed", new Object[0]);
         AppMethodBeat.o(100415);
         return;
       }
-      this.lsQ = 0L;
-      this.pUJ.setMute(true);
-      this.pUJ.start();
+      this.lxp = 0L;
+      this.qbo.setMute(true);
+      this.qbo.start();
       continue;
       label208:
-      if (this.lsR) {
-        d(this.pUJ.dmz(), true);
+      if (this.lxq) {
+        d(this.qbo.dpx(), true);
       } else {
-        d(this.pUJ.dmz(), false);
+        d(this.qbo.dpx(), false);
       }
     }
   }
   
-  public final void boN()
+  public final void bpx()
   {
     AppMethodBeat.i(100409);
-    ad.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
+    ae.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
     synchronized (this.lock)
     {
-      if (this.pUJ != null)
+      if (this.qbo != null)
       {
-        this.pUJ.vLN = null;
-        this.pUJ.stop();
-        this.pUJ.release();
-        this.pUJ = null;
+        this.qbo.vXR = null;
+        this.qbo.stop();
+        this.qbo.release();
+        this.qbo = null;
       }
-      if (bt.isNullOrNil(this.path))
+      if (bu.isNullOrNil(this.path))
       {
-        ad.w("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video but path is null.", new Object[] { Integer.valueOf(hashCode()) });
+        ae.w("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video but path is null.", new Object[] { Integer.valueOf(hashCode()) });
         AppMethodBeat.o(100409);
         return;
       }
       try
       {
         this.Zn = false;
-        this.pUJ = new j(Looper.getMainLooper());
-        this.pUJ.setPath(this.path);
-        this.pUJ.setIOnlineCache(this.vLz);
-        this.pUJ.setNeedResetExtractor(this.pUP);
-        this.pUJ.setIsOnlineVideoType(this.pUQ);
-        this.pUJ.vLN = this.pUT;
-        this.pUJ.setSurface(this.mSurface);
-        this.pUJ.oq(this.pUR);
+        this.qbo = new j(Looper.getMainLooper());
+        this.qbo.setPath(this.path);
+        this.qbo.setIOnlineCache(this.vXD);
+        this.qbo.setNeedResetExtractor(this.qbu);
+        this.qbo.setIsOnlineVideoType(this.qbv);
+        this.qbo.vXR = this.qby;
+        this.qbo.setSurface(this.mSurface);
+        this.qbo.ov(this.qbw);
         if (this.mSurface != null) {
-          this.pUJ.cQr();
+          this.qbo.cSW();
         }
         for (;;)
         {
           AppMethodBeat.o(100409);
           return;
-          if (this.pUL) {
-            this.pUJ.cQr();
+          if (this.qbq) {
+            this.qbo.cSW();
           }
         }
         localObject2 = finally;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
-        if (this.pUM != null) {
-          this.pUM.onError(-1, -1);
+        ae.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
+        if (this.qbr != null) {
+          this.qbr.onError(-1, -1);
         }
         AppMethodBeat.o(100409);
         return;
@@ -145,22 +145,22 @@ public class SnsVideoPlayTextureView
   public final void k(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(100416);
-    if ((d.ly(23)) && (this.lsS) && (this.lsQ > 0L))
+    if ((d.lA(23)) && (this.lxr) && (this.lxp > 0L))
     {
-      if (this.pUJ != null)
+      if (this.qbo != null)
       {
-        this.pUJ.pause();
-        this.pUJ.setMute(this.fMP);
+        this.qbo.pause();
+        this.qbo.setMute(this.fOX);
       }
-      this.lsS = false;
+      this.lxr = false;
     }
-    if ((this.lsQ > 0L) && (this.FkY != null))
+    if ((this.lxp > 0L) && (this.FDw != null))
     {
-      ad.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
-      this.FkY.boT();
-      this.FkY = null;
+      ae.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
+      this.FDw.bpD();
+      this.FDw = null;
     }
-    this.lsQ = System.currentTimeMillis();
+    this.lxp = System.currentTimeMillis();
     AppMethodBeat.o(100416);
   }
   

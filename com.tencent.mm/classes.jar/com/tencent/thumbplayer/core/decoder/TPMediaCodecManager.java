@@ -16,15 +16,15 @@ public class TPMediaCodecManager
   
   static
   {
-    AppMethodBeat.i(220559);
+    AppMethodBeat.i(197498);
     mCodecList = new SparseArray();
     codecNum = new AtomicInteger(0);
-    AppMethodBeat.o(220559);
+    AppMethodBeat.o(197498);
   }
   
   private static void addCodecToList(int paramInt, ITPMediaCodecDecoder paramITPMediaCodecDecoder)
   {
-    AppMethodBeat.i(220556);
+    AppMethodBeat.i(197495);
     try
     {
       mCodecList.put(paramInt, paramITPMediaCodecDecoder);
@@ -32,14 +32,14 @@ public class TPMediaCodecManager
     }
     finally
     {
-      AppMethodBeat.o(220556);
+      AppMethodBeat.o(197495);
     }
   }
   
   @TPMethodCalledByNative
   public static int createMediaCodec(boolean paramBoolean)
   {
-    AppMethodBeat.i(220539);
+    AppMethodBeat.i(197478);
     if (codecNum.get() >= 2147483647) {
       codecNum.set(0);
     }
@@ -48,7 +48,7 @@ public class TPMediaCodecManager
     for (Object localObject = new TPMediaCodecAudioDecoder();; localObject = new TPMediaCodecVideoDecoder())
     {
       addCodecToList(i, (ITPMediaCodecDecoder)localObject);
-      AppMethodBeat.o(220539);
+      AppMethodBeat.o(197478);
       return i;
     }
   }
@@ -56,37 +56,37 @@ public class TPMediaCodecManager
   @TPMethodCalledByNative
   public static int flushMediaCodec(int paramInt)
   {
-    AppMethodBeat.i(220548);
+    AppMethodBeat.i(197487);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "flushMediaCodec failed!");
-      AppMethodBeat.o(220548);
+      AppMethodBeat.o(197487);
       return 3;
     }
     paramInt = localITPMediaCodecDecoder.flush();
-    AppMethodBeat.o(220548);
+    AppMethodBeat.o(197487);
     return paramInt;
   }
   
   private static ITPMediaCodecDecoder getCodecById(int paramInt)
   {
-    AppMethodBeat.i(220558);
+    AppMethodBeat.i(197497);
     try
     {
       ITPMediaCodecDecoder localITPMediaCodecDecoder1 = (ITPMediaCodecDecoder)mCodecList.get(paramInt);
       if (localITPMediaCodecDecoder1 == null)
       {
         TPNativeLog.printLog(3, "TPMediaCodecManager", "No such codec by id:".concat(String.valueOf(paramInt)));
-        AppMethodBeat.o(220558);
+        AppMethodBeat.o(197497);
         return null;
       }
     }
     finally
     {
-      AppMethodBeat.o(220558);
+      AppMethodBeat.o(197497);
     }
-    AppMethodBeat.o(220558);
+    AppMethodBeat.o(197497);
     return localITPMediaCodecDecoder2;
   }
   
@@ -99,97 +99,97 @@ public class TPMediaCodecManager
   @TPMethodCalledByNative
   public static boolean initAudioMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(220541);
+    AppMethodBeat.i(197480);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "initAudioMediaCodec failed!");
-      AppMethodBeat.o(220541);
+      AppMethodBeat.o(197480);
       return false;
     }
     if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramInt5))
     {
-      AppMethodBeat.o(220541);
+      AppMethodBeat.o(197480);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.startDecoder();
-    AppMethodBeat.o(220541);
+    AppMethodBeat.o(197480);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static boolean initVideoMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, Surface paramSurface, int paramInt5)
   {
-    AppMethodBeat.i(220540);
+    AppMethodBeat.i(197479);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "initVideoMediaCodec failed!");
-      AppMethodBeat.o(220540);
+      AppMethodBeat.o(197479);
       return false;
     }
     if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramSurface, paramInt5))
     {
-      AppMethodBeat.o(220540);
+      AppMethodBeat.o(197479);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.startDecoder();
-    AppMethodBeat.o(220540);
+    AppMethodBeat.o(197479);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static TPFrameInfo receiveOneFrame(int paramInt)
   {
-    AppMethodBeat.i(220544);
+    AppMethodBeat.i(197483);
     Object localObject = getCodecById(paramInt);
     if (localObject == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "receiveOneFrame failed!");
-      AppMethodBeat.o(220544);
+      AppMethodBeat.o(197483);
       return null;
     }
     localObject = ((ITPMediaCodecDecoder)localObject).dequeueOutputBuffer();
-    AppMethodBeat.o(220544);
+    AppMethodBeat.o(197483);
     return localObject;
   }
   
   @TPMethodCalledByNative
   public static int releaseMediaCodec(int paramInt)
   {
-    AppMethodBeat.i(220546);
+    AppMethodBeat.i(197485);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "releaseMediaCodec failed!");
-      AppMethodBeat.o(220546);
+      AppMethodBeat.o(197485);
       return 3;
     }
     removeCodecFromList(paramInt);
     paramInt = localITPMediaCodecDecoder.release();
-    AppMethodBeat.o(220546);
+    AppMethodBeat.o(197485);
     return paramInt;
   }
   
   @TPMethodCalledByNative
   public static int releaseVideoFrame(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(220545);
+    AppMethodBeat.i(197484);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "releaseVideoFrame failed!");
-      AppMethodBeat.o(220545);
+      AppMethodBeat.o(197484);
       return 3;
     }
     paramInt1 = localITPMediaCodecDecoder.releaseOutputBuffer(paramInt2, paramBoolean);
-    AppMethodBeat.o(220545);
+    AppMethodBeat.o(197484);
     return paramInt1;
   }
   
   private static void removeCodecFromList(int paramInt)
   {
-    AppMethodBeat.i(220557);
+    AppMethodBeat.i(197496);
     try
     {
       mCodecList.remove(paramInt);
@@ -197,166 +197,166 @@ public class TPMediaCodecManager
     }
     finally
     {
-      AppMethodBeat.o(220557);
+      AppMethodBeat.o(197496);
     }
   }
   
   @TPMethodCalledByNative
   public static int sendOnePacket(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
-    AppMethodBeat.i(220543);
+    AppMethodBeat.i(197482);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "sendOnePacket failed!");
-      AppMethodBeat.o(220543);
+      AppMethodBeat.o(197482);
       return 3;
     }
     paramInt = localITPMediaCodecDecoder.decode(paramArrayOfByte, paramBoolean1, paramLong, paramBoolean2);
-    AppMethodBeat.o(220543);
+    AppMethodBeat.o(197482);
     return paramInt;
   }
   
   @TPMethodCalledByNative
   public static void setCryptoInfo(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt3)
   {
-    AppMethodBeat.i(220555);
+    AppMethodBeat.i(197494);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamObject failed!");
-      AppMethodBeat.o(220555);
+      AppMethodBeat.o(197494);
       return;
     }
     localITPMediaCodecDecoder.setCryptoInfo(paramInt2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfByte1, paramArrayOfByte2, paramInt3);
-    AppMethodBeat.o(220555);
+    AppMethodBeat.o(197494);
   }
   
   @TPMethodCalledByNative
   public static boolean setMediaCodecParamBool(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(220551);
+    AppMethodBeat.i(197490);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamBool failed!");
-      AppMethodBeat.o(220551);
+      AppMethodBeat.o(197490);
       return false;
     }
     paramBoolean = localITPMediaCodecDecoder.setParamBool(paramInt2, paramBoolean);
-    AppMethodBeat.o(220551);
+    AppMethodBeat.o(197490);
     return paramBoolean;
   }
   
   @TPMethodCalledByNative
   public static boolean setMediaCodecParamBytes(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(220553);
+    AppMethodBeat.i(197492);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamBytes failed!");
-      AppMethodBeat.o(220553);
+      AppMethodBeat.o(197492);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.setParamBytes(paramInt2, paramArrayOfByte);
-    AppMethodBeat.o(220553);
+    AppMethodBeat.o(197492);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static boolean setMediaCodecParamInt(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(220549);
+    AppMethodBeat.i(197488);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamInt failed!");
-      AppMethodBeat.o(220549);
+      AppMethodBeat.o(197488);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.setParamInt(paramInt2, paramInt3);
-    AppMethodBeat.o(220549);
+    AppMethodBeat.o(197488);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static boolean setMediaCodecParamLong(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(220550);
+    AppMethodBeat.i(197489);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamLong failed!");
-      AppMethodBeat.o(220550);
+      AppMethodBeat.o(197489);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.setParamLong(paramInt2, paramLong);
-    AppMethodBeat.o(220550);
+    AppMethodBeat.o(197489);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static boolean setMediaCodecParamObject(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(220554);
+    AppMethodBeat.i(197493);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamObject failed!");
-      AppMethodBeat.o(220554);
+      AppMethodBeat.o(197493);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.setParamObject(paramInt2, paramObject);
-    AppMethodBeat.o(220554);
+    AppMethodBeat.o(197493);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static boolean setMediaCodecParamString(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(220552);
+    AppMethodBeat.i(197491);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecParamString failed!");
-      AppMethodBeat.o(220552);
+      AppMethodBeat.o(197491);
       return false;
     }
     boolean bool = localITPMediaCodecDecoder.setParamString(paramInt2, paramString);
-    AppMethodBeat.o(220552);
+    AppMethodBeat.o(197491);
     return bool;
   }
   
   @TPMethodCalledByNative
   public static int setMediaCodecSurface(int paramInt, Surface paramSurface)
   {
-    AppMethodBeat.i(220542);
+    AppMethodBeat.i(197481);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecSurface failed!");
-      AppMethodBeat.o(220542);
+      AppMethodBeat.o(197481);
       return 3;
     }
     paramInt = localITPMediaCodecDecoder.setOutputSurface(paramSurface);
-    AppMethodBeat.o(220542);
+    AppMethodBeat.o(197481);
     return paramInt;
   }
   
   @TPMethodCalledByNative
   public static int signalEndOfStream(int paramInt)
   {
-    AppMethodBeat.i(220547);
+    AppMethodBeat.i(197486);
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt);
     if (localITPMediaCodecDecoder == null)
     {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "signalEndOfStream failed!");
-      AppMethodBeat.o(220547);
+      AppMethodBeat.o(197486);
       return 3;
     }
     paramInt = localITPMediaCodecDecoder.signalEndOfStream();
-    AppMethodBeat.o(220547);
+    AppMethodBeat.o(197486);
     return paramInt;
   }
 }

@@ -6,39 +6,44 @@ import android.os.Looper;
 
 public final class e
 {
-  private final Handler cIR;
-  long cIS;
+  private final Handler cJA;
+  long cJB;
   private final Handler mMainHandler;
   
   public e(long paramLong, HandlerThread paramHandlerThread)
   {
-    this.cIR = new Handler(paramHandlerThread.getLooper());
+    this.cJA = new Handler(paramHandlerThread.getLooper());
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.cIS = paramLong;
+    this.cJB = paramLong;
   }
   
-  public final void IQ()
+  public final void IY()
   {
-    this.cIR.removeCallbacksAndMessages(null);
+    this.cJA.removeCallbacksAndMessages(null);
     this.mMainHandler.removeCallbacksAndMessages(null);
   }
   
   public final void a(final a parama, final int paramInt)
   {
-    this.cIR.postDelayed(new Runnable()
+    this.cJA.postDelayed(new Runnable()
     {
       public final void run()
       {
-        if (parama.IL() == e.a.a.cIX) {
+        if (parama.IT() == e.a.a.cJG) {
           e.this.a(parama, paramInt + 1);
         }
       }
-    }, this.cIS);
+    }, this.cJB);
   }
   
   public static abstract interface a
   {
-    public abstract e.a.a IL();
+    public abstract a IT();
+    
+    public static enum a
+    {
+      private a() {}
+    }
   }
 }
 

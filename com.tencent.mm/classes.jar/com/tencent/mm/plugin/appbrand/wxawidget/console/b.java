@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   extends com.tencent.mm.ipcinvoker.d.b
 {
-  public static final b nqi;
+  public static final b nvB;
   
   static
   {
     AppMethodBeat.i(121615);
-    nqi = new b();
+    nvB = new b();
     AppMethodBeat.o(121615);
   }
 }

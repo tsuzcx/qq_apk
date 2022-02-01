@@ -1,21 +1,21 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.j;
+import com.tencent.mm.bb.j;
 import d.g.b.p;
 import d.l;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/LuckyBagParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "getLuckyBag", "()Lcom/tencent/mm/modelpackage/LuckyBag;", "parseTag", "", "tag", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/LuckyBagParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "getLuckyBag", "()Lcom/tencent/mm/modelpackage/LuckyBag;", "parseTag", "", "tag", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"})
 public final class n
   extends a
 {
-  final j gkH;
+  final j gnb;
   
   public n()
   {
     AppMethodBeat.i(105525);
-    this.gkH = new j();
+    this.gnb = new j();
     AppMethodBeat.o(105525);
   }
   
@@ -57,61 +57,61 @@ public final class n
                               AppMethodBeat.o(105524);
                               return;
                             } while (!paramString.equals("BrandIcon"));
-                            this.gkH.ijf = c(paramXmlPullParser);
+                            this.gnb.ilY = c(paramXmlPullParser);
                             AppMethodBeat.o(105524);
                             return;
                           } while (!paramString.equals("BackgroundLogo"));
-                          this.gkH.ijh = c(paramXmlPullParser);
+                          this.gnb.ima = c(paramXmlPullParser);
                           AppMethodBeat.o(105524);
                           return;
                         } while (!paramString.equals("SubTitleColor"));
-                        this.gkH.ije = c(paramXmlPullParser);
+                        this.gnb.ilX = c(paramXmlPullParser);
                         AppMethodBeat.o(105524);
                         return;
                       } while (!paramString.equals("MainTitle"));
-                      this.gkH.ijb = c(paramXmlPullParser);
+                      this.gnb.ilU = c(paramXmlPullParser);
                       AppMethodBeat.o(105524);
                       return;
                     } while (!paramString.equals("RedEnvelopeCoverSmallTitle"));
-                    this.gkH.ijj = c(paramXmlPullParser);
+                    this.gnb.imc = c(paramXmlPullParser);
                     AppMethodBeat.o(105524);
                     return;
                   } while (!paramString.equals("MainTitleColor"));
-                  this.gkH.ijc = c(paramXmlPullParser);
+                  this.gnb.ilV = c(paramXmlPullParser);
                   AppMethodBeat.o(105524);
                   return;
                 } while (!paramString.equals("BrandName"));
-                this.gkH.doD = c(paramXmlPullParser);
+                this.gnb.dpI = c(paramXmlPullParser);
                 AppMethodBeat.o(105524);
                 return;
               } while (!paramString.equals("AppId"));
-              this.gkH.appId = c(paramXmlPullParser);
+              this.gnb.appId = c(paramXmlPullParser);
               AppMethodBeat.o(105524);
               return;
             } while (!paramString.equals("CouponBigTitle"));
-            this.gkH.ijk = c(paramXmlPullParser);
+            this.gnb.imd = c(paramXmlPullParser);
             AppMethodBeat.o(105524);
             return;
           } while (!paramString.equals("CouponSmallTitle"));
-          this.gkH.ijl = c(paramXmlPullParser);
+          this.gnb.ime = c(paramXmlPullParser);
           AppMethodBeat.o(105524);
           return;
         } while (!paramString.equals("SubTitle"));
-        this.gkH.ijd = c(paramXmlPullParser);
+        this.gnb.ilW = c(paramXmlPullParser);
         AppMethodBeat.o(105524);
         return;
       } while (!paramString.equals("RedEnvelopeCoverBigTitle"));
-      this.gkH.iji = c(paramXmlPullParser);
+      this.gnb.imb = c(paramXmlPullParser);
       AppMethodBeat.o(105524);
       return;
     } while (!paramString.equals("BackgroundColor"));
-    this.gkH.ijg = c(paramXmlPullParser);
+    this.gnb.ilZ = c(paramXmlPullParser);
     AppMethodBeat.o(105524);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.n
  * JD-Core Version:    0.7.0.1
  */

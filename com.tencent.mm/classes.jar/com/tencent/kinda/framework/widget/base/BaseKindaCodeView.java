@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.ArrayList;
 
 public abstract class BaseKindaCodeView
@@ -22,7 +22,7 @@ public abstract class BaseKindaCodeView
       int i = this.mCodeBitmaps.size() - 1;
       while (i > 1)
       {
-        e.T((Bitmap)this.mCodeBitmaps.remove(i));
+        f.U((Bitmap)this.mCodeBitmaps.remove(i));
         i -= 1;
       }
     }

@@ -9,9 +9,9 @@ import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class al
@@ -23,17 +23,17 @@ public class al
   {
     int i = 1;
     AppMethodBeat.i(78588);
-    ad.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
+    ae.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
     final String str1 = paramb.chh.cgn.optString("url");
-    if (bt.isNullOrNil(str1))
+    if (bu.isNullOrNil(str1))
     {
       paramb.a("invalid_url", null);
       AppMethodBeat.o(78588);
       return;
     }
-    ad.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
+    ae.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
     String str2 = paramb.chh.cgn.optString("orientation");
-    if (!bt.isNullOrNil(str2)) {
+    if (!bu.isNullOrNil(str2)) {
       if (str2.equals("horizontal")) {
         i = 0;
       }
@@ -50,20 +50,20 @@ public class al
       localBundle.putBoolean("show_full_screen", bool1);
       localBundle.putBoolean("disable_swipe_back", bool3);
       localBundle.putString("shortcut_user_name", str2);
-      localBundle.putString("game_hv_menu_appid", bt.nullAsNil(paramb.chh.cgn.optString("gameAppid")));
+      localBundle.putString("game_hv_menu_appid", bu.nullAsNil(paramb.chh.cgn.optString("gameAppid")));
       localBundle.putBoolean("from_find_more_friend", ((g)paramb.chg).mParams.getBoolean("from_find_more_friend", false));
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78587);
           if (bool2)
           {
-            ((g)paramb.chg).chm.Ce().i(str1, localBundle);
+            ((g)paramb.chg).chm.Ch().i(str1, localBundle);
             AppMethodBeat.o(78587);
             return;
           }
-          ((g)paramb.chg).chm.Ce().h(str1, localBundle);
+          ((g)paramb.chg).chm.Ch().h(str1, localBundle);
           AppMethodBeat.o(78587);
         }
       });
@@ -76,7 +76,7 @@ public class al
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

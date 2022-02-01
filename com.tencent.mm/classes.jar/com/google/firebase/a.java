@@ -81,7 +81,7 @@ public class a
     this.bKa = ((b)Preconditions.checkNotNull(paramb));
     this.bKg = new com.google.firebase.b.a();
     paramContext = new k(this.bJZ);
-    this.bKb = new n(k.z(paramContext.bKB.an(paramContext.mContext)), new com.google.firebase.components.a[] { com.google.firebase.components.a.a(Context.class, this.bJZ), com.google.firebase.components.a.a(a.class, this), com.google.firebase.components.a.a(b.class, this.bKa) });
+    this.bKb = new n(k.z(paramContext.bKB.ao(paramContext.mContext)), new com.google.firebase.components.a[] { com.google.firebase.components.a.a(Context.class, this.bJZ), com.google.firebase.components.a.a(a.class, this), com.google.firebase.components.a.a(b.class, this.bKa) });
     AppMethodBeat.o(4055);
   }
   
@@ -174,7 +174,7 @@ public class a
     AppMethodBeat.o(4060);
   }
   
-  public static a aj(Context paramContext)
+  public static a ak(Context paramContext)
   {
     AppMethodBeat.i(4051);
     synchronized (sLock)
@@ -185,7 +185,7 @@ public class a
         AppMethodBeat.o(4051);
         return paramContext;
       }
-      b localb = b.al(paramContext);
+      b localb = b.am(paramContext);
       if (localb == null)
       {
         AppMethodBeat.o(4051);
@@ -284,9 +284,9 @@ public class a
   private final void zzc()
   {
     AppMethodBeat.i(4059);
-    boolean bool = android.support.v4.content.b.T(this.bJZ);
+    boolean bool = android.support.v4.content.b.U(this.bJZ);
     if (bool) {
-      b.ak(this.bJZ);
+      b.al(this.bJZ);
     }
     for (;;)
     {

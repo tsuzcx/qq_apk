@@ -1,128 +1,281 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.os.Looper;
-import android.text.TextUtils;
-import android.util.SparseLongArray;
-import com.tencent.e.i;
-import com.tencent.e.i.d;
-import com.tencent.luggage.h.k;
-import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
-import com.tencent.mars.cdn.CdnLogic.CronetTaskResult;
-import com.tencent.mars.cdn.CdnLogic.DownloadCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zs;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
+import java.io.Closeable;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
-public final class z
+final class z
+  implements q, Closeable
 {
-  private static volatile boolean jGH;
-  private static final SparseLongArray jGI;
-  private static final long jGJ;
-  private static final ConcurrentHashMap<String, d<ArrayList<String>>> jGK;
+  final String appId;
+  final WxaPkgWrappingInfo jJF;
+  private final Map<String, WxaPkg> jJG;
   
-  static
+  z(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    AppMethodBeat.i(161747);
-    jGH = false;
-    jGI = new SparseLongArray();
-    jGJ = TimeUnit.MINUTES.toMillis(5L);
-    jGK = new ConcurrentHashMap();
-    AppMethodBeat.o(161747);
+    AppMethodBeat.i(178521);
+    this.jJG = new HashMap();
+    this.appId = paramString;
+    this.jJF = paramWxaPkgWrappingInfo;
+    this.jJF.Mm(paramString);
+    AppMethodBeat.o(178521);
   }
   
-  static ArrayList<String> Lr(String paramString)
+  private WxaPkg LT(String paramString)
   {
-    AppMethodBeat.i(161745);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(134677);
+    for (;;)
     {
-      ad.w("MicroMsg.PkgNetworkOpt", "getNewDNSIPListByHost with EMPTY host");
-      paramString = new ArrayList(0);
-      AppMethodBeat.o(161745);
-      return paramString;
-    }
-    ad.i("MicroMsg.PkgNetworkOpt", "getNewDNSIPListByHost with host[%s]", new Object[] { paramString });
-    d locald2 = (d)jGK.get(paramString);
-    d locald1 = locald2;
-    if (locald2 == null)
-    {
-      locald1 = com.tencent.e.h.LTJ.a(new z.3(paramString), "MicroMsg.PkgNetworkOpt");
-      jGK.put(paramString, locald1);
-    }
-    try
-    {
-      paramString = (ArrayList)locald1.get(500L, TimeUnit.MILLISECONDS);
-      AppMethodBeat.o(161745);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      ad.e("MicroMsg.PkgNetworkOpt", "getNewDNSIPListByHost await future t=%s", new Object[] { paramString });
-      paramString = new ArrayList(0);
-      AppMethodBeat.o(161745);
-    }
-    return paramString;
-  }
-  
-  public static boolean aZX()
-  {
-    AppMethodBeat.i(207431);
-    boolean bool = ((b)g.ab(b.class)).a(b.a.quN, false);
-    AppMethodBeat.o(207431);
-    return bool;
-  }
-  
-  public static void aZY()
-  {
-    AppMethodBeat.i(44304);
-    if (jGH)
-    {
-      AppMethodBeat.o(44304);
-      return;
-    }
-    jGH = true;
-    com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
-    {
-      public final String getKey()
+      synchronized (this.jJG)
       {
-        return "PkgNetworkOpt.triggerPreConnect";
-      }
-      
-      public final void run()
-      {
-        AppMethodBeat.i(44303);
-        try
+        WxaPkg localWxaPkg = (WxaPkg)this.jJG.get(paramString);
+        if (localWxaPkg != null)
         {
-          String str = AppBrandGlobalSystemConfig.bdT().jWz;
-          boolean bool = TextUtils.isEmpty(str);
-          if (bool) {
-            return;
+          paramString = localWxaPkg;
+          if (paramString != null) {
+            paramString.aZO();
           }
-          z.uh(str);
-          z.Lr(k.dq(str));
-          return;
+          AppMethodBeat.o(134677);
+          return paramString;
         }
-        catch (Exception localException)
+        if ("__APP__".equals(paramString))
         {
-          ad.printErrStackTrace("MicroMsg.PkgNetworkOpt", localException, "triggerPreConnect", new Object[0]);
-          return;
-        }
-        finally
-        {
-          z.aZZ();
-          AppMethodBeat.o(44303);
+          localObject = this.jJF.pkgPath;
+          label70:
+          if (!bu.isNullOrNil((String)localObject)) {
+            break label148;
+          }
+          paramString = localWxaPkg;
         }
       }
-    });
-    AppMethodBeat.o(44304);
+      Object localObject = this.jJF.jLY.iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject).hasNext())
+        {
+          ModulePkgInfo localModulePkgInfo = (ModulePkgInfo)((Iterator)localObject).next();
+          if (paramString.equals(localModulePkgInfo.name))
+          {
+            localObject = localModulePkgInfo.pkgPath;
+            break label70;
+            label148:
+            localObject = new WxaPkg((String)localObject);
+            this.jJG.put(paramString, localObject);
+            paramString = (String)localObject;
+            break;
+          }
+        }
+      }
+      localObject = null;
+    }
+  }
+  
+  public final WxaPkg LK(String paramString)
+  {
+    AppMethodBeat.i(134674);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(134674);
+      return null;
+    }
+    paramString = n.MV(paramString);
+    if (WxaPkgWrappingInfo.jLU != null)
+    {
+      paramString = WxaPkgWrappingInfo.jLU.b(this.jJF.jLY, paramString, String.format(Locale.ENGLISH, "findAppropriateModuleInfo with appId[%s]", new Object[] { this.appId }));
+      if (paramString != null) {}
+      for (paramString = paramString.name;; paramString = "__APP__")
+      {
+        paramString = LT(paramString);
+        AppMethodBeat.o(134674);
+        return paramString;
+      }
+    }
+    Object localObject = this.jJF.jLY.iterator();
+    ModulePkgInfo localModulePkgInfo;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localModulePkgInfo = (ModulePkgInfo)((Iterator)localObject).next();
+    } while (!paramString.startsWith(localModulePkgInfo.name));
+    for (localObject = localModulePkgInfo.name;; localObject = null)
+    {
+      paramString = (String)localObject;
+      if (!bu.isNullOrNil((String)localObject)) {
+        break;
+      }
+      paramString = "__APP__";
+      break;
+    }
+  }
+  
+  public final InputStream LL(String paramString)
+  {
+    AppMethodBeat.i(178524);
+    WxaPkg localWxaPkg = LK(paramString);
+    int i;
+    int j;
+    if ((paramString.startsWith("/__plugin__/")) && (localWxaPkg != null))
+    {
+      Object localObject = localWxaPkg.LI(paramString);
+      if (localObject != null)
+      {
+        AppMethodBeat.o(178524);
+        return localObject;
+      }
+      localObject = "/__plugin__/".substring(1, 11);
+      String[] arrayOfString = paramString.split("/");
+      i = 0;
+      if (i >= arrayOfString.length) {
+        break label177;
+      }
+      if ((arrayOfString[i].equalsIgnoreCase((String)localObject)) && (i + 1 < arrayOfString.length))
+      {
+        String str = arrayOfString[(i + 1)];
+        if (!bu.isNullOrNil(str))
+        {
+          j = paramString.indexOf(str);
+          i = str.length();
+        }
+      }
+    }
+    for (;;)
+    {
+      paramString = localWxaPkg.LI(paramString.substring(i + j));
+      AppMethodBeat.o(178524);
+      return paramString;
+      i += 1;
+      break;
+      if (localWxaPkg == null)
+      {
+        AppMethodBeat.o(178524);
+        return null;
+      }
+      paramString = localWxaPkg.LI(paramString);
+      AppMethodBeat.o(178524);
+      return paramString;
+      label177:
+      i = -1;
+      j = -1;
+    }
+  }
+  
+  public final q.a LM(String paramString)
+  {
+    AppMethodBeat.i(178523);
+    WxaPkg localWxaPkg = LK(paramString);
+    if (localWxaPkg == null) {}
+    for (paramString = null; paramString != null; paramString = localWxaPkg.openReadPartialInfo(paramString))
+    {
+      q.a locala = new q.a();
+      locala.jIJ = this.appId;
+      locala.aDD = this.jJF.pkgVersion();
+      locala.jIK = this.jJF.checksumMd5();
+      locala.jIL = localWxaPkg;
+      locala.jIM = w.B(localWxaPkg.ggb.fTh());
+      locala.fileName = paramString.fileName;
+      locala.jIN = paramString.jIN;
+      locala.jIO = paramString.jIO;
+      AppMethodBeat.o(178523);
+      return locala;
+    }
+    AppMethodBeat.o(178523);
+    return null;
+  }
+  
+  public final boolean LN(String paramString)
+  {
+    AppMethodBeat.i(178525);
+    if (LM(paramString) != null)
+    {
+      AppMethodBeat.o(178525);
+      return true;
+    }
+    AppMethodBeat.o(178525);
+    return false;
+  }
+  
+  public final List<WxaPkg.Info> bah()
+  {
+    AppMethodBeat.i(134675);
+    Object localObject = LT("__APP__");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(134675);
+      return null;
+    }
+    localObject = ((WxaPkg)localObject).baU();
+    AppMethodBeat.o(134675);
+    return localObject;
+  }
+  
+  public final void bai()
+  {
+    AppMethodBeat.i(178526);
+    this.jJF.Mm(this.appId);
+    synchronized (this.jJG)
+    {
+      LT("__APP__");
+      Iterator localIterator = this.jJF.jLY.iterator();
+      if (localIterator.hasNext()) {
+        LT(((ModulePkgInfo)localIterator.next()).name);
+      }
+    }
+    AppMethodBeat.o(178526);
+  }
+  
+  public final List<ModulePkgInfo> baj()
+  {
+    AppMethodBeat.i(178527);
+    LinkedList localLinkedList = new LinkedList(this.jJF.jLY);
+    AppMethodBeat.o(178527);
+    return localLinkedList;
+  }
+  
+  public final List<String> bak()
+  {
+    AppMethodBeat.i(207749);
+    LinkedList localLinkedList = new LinkedList();
+    synchronized (this.jJG)
+    {
+      Iterator localIterator = this.jJG.values().iterator();
+      while (localIterator.hasNext())
+      {
+        WxaPkg localWxaPkg = (WxaPkg)localIterator.next();
+        if (localWxaPkg != null) {
+          localLinkedList.addAll(localWxaPkg.baV());
+        }
+      }
+    }
+    AppMethodBeat.o(207749);
+    return localList;
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(134678);
+    synchronized (this.jJG)
+    {
+      Collection localCollection = this.jJG.values();
+      this.jJG.clear();
+      ??? = localCollection.iterator();
+      if (((Iterator)???).hasNext()) {
+        ((WxaPkg)((Iterator)???).next()).close();
+      }
+    }
+    AppMethodBeat.o(134678);
   }
 }
 

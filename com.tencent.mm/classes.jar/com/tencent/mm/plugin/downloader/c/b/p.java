@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String iTL;
-  public String ozD;
+  public String iWE;
+  public String oGf;
   public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -16,11 +16,11 @@ public final class p
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aS(1, this.type);
-      if (this.iTL != null) {
-        paramVarArgs.d(2, this.iTL);
+      if (this.iWE != null) {
+        paramVarArgs.d(2, this.iWE);
       }
-      if (this.ozD != null) {
-        paramVarArgs.d(3, this.ozD);
+      if (this.oGf != null) {
+        paramVarArgs.d(3, this.oGf);
       }
       AppMethodBeat.o(153076);
       return 0;
@@ -29,12 +29,12 @@ public final class p
     {
       int i = f.a.a.b.b.a.bz(1, this.type) + 0;
       paramInt = i;
-      if (this.iTL != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.iTL);
+      if (this.iWE != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.iWE);
       }
       i = paramInt;
-      if (this.ozD != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ozD);
+      if (this.oGf != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.oGf);
       }
       AppMethodBeat.o(153076);
       return i;
@@ -42,9 +42,9 @@ public final class p
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(153076);
@@ -60,15 +60,15 @@ public final class p
         AppMethodBeat.o(153076);
         return -1;
       case 1: 
-        localp.type = locala.NPN.zc();
+        localp.type = locala.OmT.zc();
         AppMethodBeat.o(153076);
         return 0;
       case 2: 
-        localp.iTL = locala.NPN.readString();
+        localp.iWE = locala.OmT.readString();
         AppMethodBeat.o(153076);
         return 0;
       }
-      localp.ozD = locala.NPN.readString();
+      localp.oGf = locala.OmT.readString();
       AppMethodBeat.o(153076);
       return 0;
     }

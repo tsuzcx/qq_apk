@@ -36,9 +36,9 @@ public class d
   
   public String toString()
   {
-    AppMethodBeat.i(187221);
+    AppMethodBeat.i(221350);
     String str = "Size(" + this.a + ", " + this.b + ")";
-    AppMethodBeat.o(187221);
+    AppMethodBeat.o(221350);
     return str;
   }
 }

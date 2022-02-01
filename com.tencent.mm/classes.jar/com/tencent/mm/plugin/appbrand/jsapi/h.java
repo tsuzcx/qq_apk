@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 public abstract interface h
   extends c
 {
-  public abstract ICommLibReader aVF();
+  public abstract ICommLibReader aWe();
   
   public abstract AppBrandRuntime getRuntime();
 }

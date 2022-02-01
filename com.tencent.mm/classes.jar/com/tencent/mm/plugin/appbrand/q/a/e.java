@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.appbrand.q.a;
 
 import android.support.v4.e.b;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public abstract class e
 {
-  public final q cox;
-  private final a lXL;
-  private final Set<Integer> lXM = new b();
+  public final r coz;
+  private final a mcs;
+  private final Set<Integer> mct = new b();
   
-  public e(a parama, q paramq)
+  public e(a parama, r paramr)
   {
-    this.lXL = parama;
-    this.cox = paramq;
+    this.mcs = parama;
+    this.coz = paramr;
   }
   
-  public final void Q(Map<String, Object> paramMap)
+  public final void X(Map<String, Object> paramMap)
   {
-    Iterator localIterator = this.lXM.iterator();
+    Iterator localIterator = this.mct.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      this.lXL.d(i, paramMap);
+      this.mcs.e(i, paramMap);
     }
   }
   
-  protected abstract void btD();
+  protected abstract void buo();
   
   public abstract int getType();
   
@@ -38,17 +38,17 @@ public abstract class e
     {
       try
       {
-        if (this.lXM.isEmpty()) {
+        if (this.mct.isEmpty()) {
           break label47;
         }
         i = 1;
-        this.lXM.add(Integer.valueOf(paramInt));
+        this.mct.add(Integer.valueOf(paramInt));
         if (i != 0) {
           return;
         }
       }
       finally {}
-      btD();
+      buo();
       return;
       label47:
       int i = 0;
@@ -61,10 +61,10 @@ public abstract class e
   {
     try
     {
-      if (this.lXM.contains(Integer.valueOf(paramInt))) {
-        this.lXM.remove(Integer.valueOf(paramInt));
+      if (this.mct.contains(Integer.valueOf(paramInt))) {
+        this.mct.remove(Integer.valueOf(paramInt));
       }
-      if (!this.lXM.isEmpty()) {
+      if (!this.mct.isEmpty()) {
         return;
       }
       removeListener();
@@ -75,7 +75,7 @@ public abstract class e
   
   public static abstract interface a
   {
-    public abstract void d(int paramInt, Map<String, Object> paramMap);
+    public abstract void e(int paramInt, Map<String, Object> paramMap);
   }
 }
 

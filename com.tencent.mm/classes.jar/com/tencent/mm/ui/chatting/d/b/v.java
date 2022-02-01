@@ -1,14 +1,14 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.d.ad;
 
 public abstract interface v
   extends ad
 {
-  public abstract void DV(long paramLong);
+  public abstract void Eu(long paramLong);
   
-  public abstract boolean bO(bu parambu);
+  public abstract boolean bN(bv parambv);
 }
 
 

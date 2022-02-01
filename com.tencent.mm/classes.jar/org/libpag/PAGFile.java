@@ -9,11 +9,11 @@ public class PAGFile
 {
   static
   {
-    AppMethodBeat.i(220139);
+    AppMethodBeat.i(216893);
     b.loadLibrary("libpag");
     nativeInit();
     PAGFont.loadSystemFonts();
-    AppMethodBeat.o(220139);
+    AppMethodBeat.o(216893);
   }
   
   private PAGFile(long paramLong)
@@ -23,25 +23,25 @@ public class PAGFile
   
   public static PAGFile Load(AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(220137);
+    AppMethodBeat.i(216891);
     paramAssetManager = LoadFromAssets(paramAssetManager, paramString);
-    AppMethodBeat.o(220137);
+    AppMethodBeat.o(216891);
     return paramAssetManager;
   }
   
   public static PAGFile Load(String paramString)
   {
-    AppMethodBeat.i(220135);
+    AppMethodBeat.i(216889);
     paramString = LoadFromPath(paramString);
-    AppMethodBeat.o(220135);
+    AppMethodBeat.o(216889);
     return paramString;
   }
   
   public static PAGFile Load(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(220136);
+    AppMethodBeat.i(216890);
     paramArrayOfByte = LoadFromBytes(paramArrayOfByte, paramArrayOfByte.length);
-    AppMethodBeat.o(220136);
+    AppMethodBeat.o(216890);
     return paramArrayOfByte;
   }
   
@@ -73,15 +73,15 @@ public class PAGFile
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(220138);
+    AppMethodBeat.i(216892);
     if (paramPAGImage == null)
     {
       nativeReplaceImage(paramInt, 0L);
-      AppMethodBeat.o(220138);
+      AppMethodBeat.o(216892);
       return;
     }
     nativeReplaceImage(paramInt, paramPAGImage.nativeContext);
-    AppMethodBeat.o(220138);
+    AppMethodBeat.o(216892);
   }
   
   public native void replaceText(int paramInt, PAGText paramPAGText);

@@ -11,8 +11,8 @@ final class TopStoryListVideoUI$4
   public final void run()
   {
     AppMethodBeat.i(126503);
-    if (this.Byf.Byb.getVisibility() == 0) {
-      this.Byf.Byb.setVisibility(8);
+    if (this.BPD.BPz.getVisibility() == 0) {
+      this.BPD.BPz.setVisibility(8);
     }
     AppMethodBeat.o(126503);
   }

@@ -11,15 +11,15 @@ public abstract interface aa
 {
   public abstract void a(Button paramButton, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2);
   
-  public abstract String aWg(String paramString);
+  public abstract String aXH(String paramString);
   
-  public abstract void adl(int paramInt);
+  public abstract void adS(int paramInt);
   
-  public abstract void bs(Intent paramIntent);
+  public abstract void bt(Intent paramIntent);
   
-  public abstract boolean fEs();
+  public abstract boolean fIw();
   
-  public abstract boolean fEt();
+  public abstract boolean fIx();
   
   public abstract void g(i parami);
 }

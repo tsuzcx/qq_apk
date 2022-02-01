@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class zd
   extends b
 {
-  public a dOk;
+  public a dPj;
   
   public zd()
   {
@@ -15,21 +15,21 @@ public final class zd
   
   private zd(byte paramByte)
   {
-    AppMethodBeat.i(114793);
-    this.dOk = new a();
-    this.IbR = false;
+    AppMethodBeat.i(91233);
+    this.dPj = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(114793);
+    AppMethodBeat.o(91233);
   }
   
   public static final class a
   {
-    public int dkM;
+    public int result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.zd
  * JD-Core Version:    0.7.0.1
  */

@@ -6,18 +6,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class MultiButtonPreference
   extends Preference
 {
-  private String wSC;
-  public String wSD;
-  private String wSE;
-  private View.OnClickListener wSF;
-  public View.OnClickListener wSG;
-  private View.OnClickListener wSH;
+  private String xit;
+  public String xiu;
+  private String xiv;
+  private View.OnClickListener xiw;
+  public View.OnClickListener xix;
+  private View.OnClickListener xiy;
   
   public MultiButtonPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,8 +37,8 @@ public class MultiButtonPreference
   
   public final void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.wSC = paramString;
-    this.wSF = paramOnClickListener;
+    this.xit = paramString;
+    this.xiw = paramOnClickListener;
   }
   
   public final void onBindView(View paramView)
@@ -51,37 +51,37 @@ public class MultiButtonPreference
     View localView2 = paramView.findViewById(2131297637);
     Button localButton3 = (Button)paramView.findViewById(2131297638);
     paramView.setBackgroundColor(0);
-    if (!bt.isNullOrNil(this.wSC))
+    if (!bu.isNullOrNil(this.xit))
     {
       localButton1.setVisibility(0);
-      localButton1.setText(this.wSC);
-      if (bt.isNullOrNil(this.wSD)) {
+      localButton1.setText(this.xit);
+      if (bu.isNullOrNil(this.xiu)) {
         break label219;
       }
-      if (!bt.isNullOrNil(this.wSC)) {
+      if (!bu.isNullOrNil(this.xit)) {
         break label211;
       }
       localView1.setVisibility(8);
       label112:
       localButton2.setVisibility(0);
-      localButton2.setText(this.wSD);
+      localButton2.setText(this.xiu);
       label127:
-      if (bt.isNullOrNil(this.wSE)) {
+      if (bu.isNullOrNil(this.xiv)) {
         break label244;
       }
-      if (!bt.isNullOrNil(this.wSD)) {
+      if (!bu.isNullOrNil(this.xiu)) {
         break label235;
       }
       localView2.setVisibility(8);
       label154:
       localButton3.setVisibility(0);
-      localButton3.setText(this.wSE);
+      localButton3.setText(this.xiv);
     }
     for (;;)
     {
-      localButton1.setOnClickListener(this.wSF);
-      localButton2.setOnClickListener(this.wSG);
-      localButton3.setOnClickListener(this.wSH);
+      localButton1.setOnClickListener(this.xiw);
+      localButton2.setOnClickListener(this.xix);
+      localButton3.setOnClickListener(this.xiy);
       AppMethodBeat.o(27264);
       return;
       localButton1.setVisibility(8);

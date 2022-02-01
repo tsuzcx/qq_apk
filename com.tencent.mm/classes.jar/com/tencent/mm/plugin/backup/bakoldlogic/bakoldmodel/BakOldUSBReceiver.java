@@ -4,10 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.ae;
+import com.tencent.mm.br.d;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public class BakOldUSBReceiver
   extends BroadcastReceiver
@@ -20,24 +18,24 @@ public class BakOldUSBReceiver
       String str = paramIntent.getAction();
       if ("MMBakchatServiceStart".equalsIgnoreCase(str))
       {
-        d.be(new Intent().setClassName(paramContext, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService").putExtra("url", paramIntent.getStringExtra("url")));
-        ad.d("MicroMsg.BakOldUSBReceiver", "START_ACTION onReceive start end");
+        d.bf(new Intent().setClassName(paramContext, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService").putExtra("url", paramIntent.getStringExtra("url")));
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BakOldUSBReceiver", "START_ACTION onReceive start end");
         AppMethodBeat.o(21811);
         return;
       }
       if ("MMBakchatServiceStop".equalsIgnoreCase(str))
       {
-        paramIntent = new ae();
-        paramIntent.dkN.dkO = paramContext;
-        a.IbL.l(paramIntent);
-        ad.d("MicroMsg.BakOldUSBReceiver", "STOP_ACTION onReceive stop end");
+        paramIntent = new com.tencent.mm.g.a.ae();
+        paramIntent.dlP.dlQ = paramContext;
+        a.IvT.l(paramIntent);
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BakOldUSBReceiver", "STOP_ACTION onReceive stop end");
       }
       AppMethodBeat.o(21811);
       return;
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.BakOldUSBReceiver", paramContext, "onReceive:", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.BakOldUSBReceiver", paramContext, "onReceive:", new Object[0]);
       AppMethodBeat.o(21811);
     }
   }

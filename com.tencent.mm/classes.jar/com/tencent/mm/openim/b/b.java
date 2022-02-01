@@ -1,39 +1,39 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.protocal.protobuf.dc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends n
   implements k
 {
   private f callback;
-  public String iHA;
-  private final com.tencent.mm.al.b rr;
+  public String iKt;
+  private final com.tencent.mm.ak.b rr;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151180);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new db();
-    ((b.a)localObject).hNN = new dc();
+    ((b.a)localObject).hQF = new db();
+    ((b.a)localObject).hQG = new dc();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/addopenimcontact";
     ((b.a)localObject).funcId = 667;
-    this.rr = ((b.a)localObject).aDC();
-    this.iHA = paramString1;
-    localObject = (db)this.rr.hNK.hNQ;
-    ((db)localObject).iHA = paramString1;
-    ((db)localObject).Fvw = paramString2;
-    ad.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "tp_username: %s, antispam_ticket:%s", new Object[] { paramString1, paramString2 });
+    this.rr = ((b.a)localObject).aDS();
+    this.iKt = paramString1;
+    localObject = (db)this.rr.hQD.hQJ;
+    ((db)localObject).iKt = paramString1;
+    ((db)localObject).FNU = paramString2;
+    ae.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "tp_username: %s, antispam_ticket:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(151180);
   }
   
@@ -54,7 +54,7 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151181);
-    ad.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.iHA });
+    ae.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.iKt });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

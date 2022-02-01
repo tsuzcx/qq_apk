@@ -7,46 +7,46 @@ import android.graphics.Point;
 import android.graphics.PorterDuff.Mode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.c;
-import com.tencent.mm.protocal.protobuf.rt;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.rv;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.ar;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/CaptionEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "captionItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;)V", "bitmapPaint", "Landroid/graphics/Paint;", "canvas", "Landroid/graphics/Canvas;", "captionItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "hasContent", "", "scale", "", "screenWidth", "", "seekTime", "", "showBitmap", "Landroid/graphics/Bitmap;", "transMatrix", "Landroid/graphics/Matrix;", "destroy", "", "draw", "paint", "getScale", "matrix", "init", "prepareNext", "seekTo", "timeMs", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/CaptionEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "captionItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;)V", "bitmapPaint", "Landroid/graphics/Paint;", "canvas", "Landroid/graphics/Canvas;", "captionItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "hasContent", "", "scale", "", "screenWidth", "", "seekTime", "", "showBitmap", "Landroid/graphics/Bitmap;", "transMatrix", "Landroid/graphics/Matrix;", "destroy", "", "draw", "paint", "getScale", "matrix", "init", "prepareNext", "seekTo", "timeMs", "plugin-recordvideo_release"})
 public final class d
   extends a
 {
   private Canvas aTq;
   private Paint aYE;
-  private int ltA;
+  private int lxZ;
   private final float scale;
-  private final c xJt;
-  private com.tencent.mm.plugin.recordvideo.ui.editor.a xPv;
-  private Matrix xPw;
-  private boolean xPx;
+  private final c xZo;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.a yfo;
+  private Matrix yfp;
+  private boolean yfq;
   
   public d(c paramc)
   {
     super(paramc.gR);
-    AppMethodBeat.i(200758);
-    this.xJt = paramc;
+    AppMethodBeat.i(207016);
+    this.xZo = paramc;
     this.aYE = new Paint();
-    paramc = aj.getContext();
+    paramc = ak.getContext();
     p.g(paramc, "MMApplicationContext.getContext()");
-    this.xPv = new com.tencent.mm.plugin.recordvideo.ui.editor.a(paramc);
-    this.ltA = ar.ci(aj.getContext()).x;
-    this.xPw = new Matrix();
+    this.yfo = new com.tencent.mm.plugin.recordvideo.ui.editor.a(paramc);
+    this.lxZ = ar.ck(ak.getContext()).x;
+    this.yfp = new Matrix();
     paramc = this.gR;
     float[] arrayOfFloat = new float[9];
     paramc.getValues(arrayOfFloat);
     double d1 = arrayOfFloat[0];
     double d2 = arrayOfFloat[3];
     this.scale = ((float)Math.sqrt(d2 * d2 + d1 * d1));
-    AppMethodBeat.o(200758);
+    AppMethodBeat.o(207016);
   }
   
-  public final long dIg()
+  public final long dLx()
   {
     return 9223372036854775807L;
   }
@@ -55,50 +55,50 @@ public final class d
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(200756);
+    AppMethodBeat.i(207014);
     p.h(paramCanvas, "canvas");
     p.h(paramPaint, "paint");
-    if (this.xPx)
+    if (this.yfq)
     {
       paramCanvas.save();
-      this.xPw.reset();
-      this.xPw.postTranslate((this.ltA - this.xPv.getMeasuredWidth() * this.scale) / 2.0F, 0.0F);
-      paramCanvas.concat(this.xPw);
+      this.yfp.reset();
+      this.yfp.postTranslate((this.lxZ - this.yfo.getMeasuredWidth() * this.scale) / 2.0F, 0.0F);
+      paramCanvas.concat(this.yfp);
       paramCanvas.concat(this.gR);
-      this.xPv.draw(paramCanvas);
+      this.yfo.draw(paramCanvas);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(200756);
+    AppMethodBeat.o(207014);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(200755);
+    AppMethodBeat.i(207013);
     this.aYE.setAntiAlias(true);
-    this.xPv.setCaptionItem(this.xJt);
-    this.xPv.setTag(this.xJt);
-    AppMethodBeat.o(200755);
+    this.yfo.setCaptionItem(this.xZo);
+    this.yfo.setTag(this.xZo);
+    AppMethodBeat.o(207013);
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(200757);
+    AppMethodBeat.i(207015);
     super.seekTo(paramLong);
     Object localObject = this.aTq;
     if (localObject != null) {
       ((Canvas)localObject).drawColor(0, PorterDuff.Mode.MULTIPLY);
     }
-    if (this.xPv.yJ(paramLong))
+    if (this.yfo.zi(paramLong))
     {
-      localObject = this.xPv.xJt;
+      localObject = this.yfo.xZo;
       boolean bool;
       int i;
       if (localObject != null)
       {
-        localObject = ((c)localObject).yM(paramLong);
+        localObject = ((c)localObject).zk(paramLong);
         if (localObject != null)
         {
-          bool = ((rt)localObject).FNT;
+          bool = ((rv)localObject).Ggs;
           if (bool) {
             break label135;
           }
@@ -110,10 +110,10 @@ public final class d
         if (i == 0) {
           break label145;
         }
-        this.xPx = true;
-        this.xPv.measure(0, 0);
-        this.xPv.layout(0, 0, this.xPv.getMeasuredWidth(), this.xPv.getMeasuredHeight());
-        AppMethodBeat.o(200757);
+        this.yfq = true;
+        this.yfo.measure(0, 0);
+        this.yfo.layout(0, 0, this.yfo.getMeasuredWidth(), this.yfo.getMeasuredHeight());
+        AppMethodBeat.o(207015);
         return;
         bool = true;
         break;
@@ -124,8 +124,8 @@ public final class d
       }
     }
     label145:
-    this.xPx = false;
-    AppMethodBeat.o(200757);
+    this.yfq = false;
+    AppMethodBeat.o(207015);
   }
 }
 

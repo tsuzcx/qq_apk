@@ -6,47 +6,50 @@ import com.tencent.mm.plugin.report.a;
 public final class du
   extends a
 {
-  public int dSg;
-  public String dWK;
-  public String ehb;
-  public int ehc;
+  public long dQB = 0L;
+  public long eiI = 0L;
+  private String eiJ = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(193097);
+    AppMethodBeat.i(163177);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSg);
+    ((StringBuffer)localObject).append(this.dQB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWK);
+    ((StringBuffer)localObject).append(this.eiI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehc);
+    ((StringBuffer)localObject).append(this.eiJ);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(193097);
+    axO((String)localObject);
+    AppMethodBeat.o(163177);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(193098);
+    AppMethodBeat.i(163178);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dSg);
+    ((StringBuffer)localObject).append("Action:").append(this.dQB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Username:").append(this.dWK);
+    ((StringBuffer)localObject).append("IsRedDot:").append(this.eiI);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatUsername:").append(this.ehb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MessageCount:").append(this.ehc);
+    ((StringBuffer)localObject).append("AppList:").append(this.eiJ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(193098);
+    AppMethodBeat.o(163178);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19963;
+    return 19194;
+  }
+  
+  public final du nz(String paramString)
+  {
+    AppMethodBeat.i(163176);
+    this.eiJ = t("AppList", paramString, true);
+    AppMethodBeat.o(163176);
+    return this;
   }
 }
 

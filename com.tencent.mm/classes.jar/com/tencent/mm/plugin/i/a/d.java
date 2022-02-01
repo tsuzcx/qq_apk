@@ -5,20 +5,20 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  public static final Pattern jrU;
-  public static int tfL;
+  public static final Pattern juN;
+  public static int tqE;
   
   static
   {
-    AppMethodBeat.i(209260);
-    jrU = Pattern.compile("<a>(.+?)</a>");
-    tfL = 33554432;
-    AppMethodBeat.o(209260);
+    AppMethodBeat.i(189297);
+    juN = Pattern.compile("<a>(.+?)</a>");
+    tqE = 33554432;
+    AppMethodBeat.o(189297);
   }
   
   public static abstract interface a
   {
-    public static final int tfM = Math.max(4, Runtime.getRuntime().availableProcessors());
+    public static final int tqF = Math.max(4, Runtime.getRuntime().availableProcessors());
   }
 }
 

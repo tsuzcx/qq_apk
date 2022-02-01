@@ -1,28 +1,28 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.d;
-import com.tencent.mm.bc.f;
-import com.tencent.mm.bc.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.bb.d;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.bb.m;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/EggListParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "TAG", "", "eggList", "Lcom/tencent/mm/modelpackage/EggList;", "getEggList", "()Lcom/tencent/mm/modelpackage/EggList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "validEggInfo", "", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "Companion", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/EggListParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "TAG", "", "eggList", "Lcom/tencent/mm/modelpackage/EggList;", "getEggList", "()Lcom/tencent/mm/modelpackage/EggList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "validEggInfo", "", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "Companion", "plugin-emojisdk_release"})
 public final class h
   extends a
 {
-  public static final h.a gjT;
+  public static final h.a gmm;
   private final String TAG;
-  public final f gjS;
+  public final f gml;
   
   static
   {
     AppMethodBeat.i(160330);
-    gjT = new h.a((byte)0);
+    gmm = new h.a((byte)0);
     AppMethodBeat.o(160330);
   }
   
@@ -30,7 +30,7 @@ public final class h
   {
     AppMethodBeat.i(105507);
     this.TAG = "MicroMsg.EggListParser";
-    this.gjS = new f();
+    this.gml = new f();
     AppMethodBeat.o(105507);
   }
   
@@ -54,8 +54,8 @@ public final class h
       label71:
       paramString = new g(p.i(paramString, "ItemNew"));
       paramString.e(paramXmlPullParser);
-      paramXmlPullParser = paramString.gjP;
-      switch (paramXmlPullParser.iiU)
+      paramXmlPullParser = paramString.gmi;
+      switch (paramXmlPullParser.ilN)
       {
       default: 
         bool1 = false;
@@ -67,23 +67,23 @@ public final class h
       m localm;
       for (;;)
       {
-        ad.i(this.TAG, "validEggInfo: " + paramXmlPullParser.name + ", " + paramXmlPullParser.iiU + ", " + paramXmlPullParser.type + ", " + bool1);
+        ae.i(this.TAG, "validEggInfo: " + paramXmlPullParser.name + ", " + paramXmlPullParser.ilN + ", " + paramXmlPullParser.type + ", " + bool1);
         if (!bool1) {
           break label56;
         }
-        this.gjS.iiX.add(paramString.gjP);
+        this.gml.ilQ.add(paramString.gmi);
         AppMethodBeat.o(105506);
         return;
         if (!paramString.equals("ItemNew")) {
           break;
         }
         break label71;
-        localIterator = paramXmlPullParser.iiV.iterator();
+        localIterator = paramXmlPullParser.ilO.iterator();
         while (localIterator.hasNext())
         {
           localm = (m)localIterator.next();
-          if (localm.ijo > 3) {
-            localm.ijo = 0;
+          if (localm.imh > 3) {
+            localm.imh = 0;
           }
         }
         bool1 = bool2;
@@ -92,12 +92,12 @@ public final class h
           paramXmlPullParser.type = 0;
           bool1 = bool2;
           continue;
-          localIterator = paramXmlPullParser.iiV.iterator();
+          localIterator = paramXmlPullParser.ilO.iterator();
           while (localIterator.hasNext())
           {
             localm = (m)localIterator.next();
-            if (localm.ijo > 4) {
-              localm.ijo = 0;
+            if (localm.imh > 4) {
+              localm.imh = 0;
             }
           }
           bool1 = bool2;
@@ -108,17 +108,17 @@ public final class h
           }
         }
       }
-      Iterator localIterator = paramXmlPullParser.iiV.iterator();
+      Iterator localIterator = paramXmlPullParser.ilO.iterator();
       while (localIterator.hasNext())
       {
         localm = (m)localIterator.next();
-        if (localm.ijo > 4) {
-          localm.ijo = 0;
+        if (localm.imh > 4) {
+          localm.imh = 0;
         }
       }
       bool1 = bool2;
     } while (1 != paramXmlPullParser.type);
-    if (paramXmlPullParser.gkH != null) {}
+    if (paramXmlPullParser.gnb != null) {}
     for (boolean bool1 = true;; bool1 = false) {
       break;
     }
@@ -128,14 +128,14 @@ public final class h
   {
     AppMethodBeat.i(105505);
     p.h(paramXmlPullParser, "parser");
-    this.gjS.bNT = e(paramXmlPullParser, "version");
+    this.gml.bNT = e(paramXmlPullParser, "version");
     super.e(paramXmlPullParser);
     AppMethodBeat.o(105505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.h
  * JD-Core Version:    0.7.0.1
  */

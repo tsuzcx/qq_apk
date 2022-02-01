@@ -8,9 +8,9 @@ public final class c
 {
   public static void loadLibrary(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(220057);
-    new d().cM(paramContext, paramString);
-    AppMethodBeat.o(220057);
+    AppMethodBeat.i(216811);
+    new d().cN(paramContext, paramString);
+    AppMethodBeat.o(216811);
   }
   
   public static abstract interface a
@@ -20,11 +20,11 @@ public final class c
   
   public static abstract interface b
   {
-    public abstract void bdV(String paramString);
+    public abstract String bfA(String paramString);
     
-    public abstract String bdW(String paramString);
+    public abstract void bfz(String paramString);
     
-    public abstract String[] gyl();
+    public abstract String[] gCN();
     
     public abstract void loadLibrary(String paramString);
     

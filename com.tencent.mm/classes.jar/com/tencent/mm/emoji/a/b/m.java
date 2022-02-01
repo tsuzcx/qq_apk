@@ -3,32 +3,33 @@ package com.tencent.mm.emoji.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "", "wordVersion", "", "wordType", "", "wordSize", "preloadSessionId", "", "(JIILjava/lang/String;)V", "getPreloadSessionId", "()Ljava/lang/String;", "setPreloadSessionId", "(Ljava/lang/String;)V", "getWordSize", "()I", "setWordSize", "(I)V", "getWordType", "setWordType", "getWordVersion", "()J", "setWordVersion", "(J)V", "plugin-emojisdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "entranceType", "", "(I)V", "getEntranceType", "()I", "equals", "", "other", "", "plugin-emojisdk_release"})
 public final class m
+  extends ac
 {
-  public int gmA;
-  public String gmB;
-  public int gmp;
-  public long gmq;
+  public final int gnM;
   
-  public m()
+  public m(int paramInt)
   {
-    this(0L, 0, 0, null, 15);
+    super(3);
+    this.gnM = paramInt;
   }
   
-  private m(long paramLong, int paramInt1, int paramInt2, String paramString)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(218984);
-    this.gmq = paramLong;
-    this.gmp = paramInt1;
-    this.gmA = paramInt2;
-    this.gmB = paramString;
-    AppMethodBeat.o(218984);
+    AppMethodBeat.i(105558);
+    if ((super.equals(paramObject)) && ((paramObject instanceof m)) && (((m)paramObject).gnM == this.gnM))
+    {
+      AppMethodBeat.o(105558);
+      return true;
+    }
+    AppMethodBeat.o(105558);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.b.m
  * JD-Core Version:    0.7.0.1
  */

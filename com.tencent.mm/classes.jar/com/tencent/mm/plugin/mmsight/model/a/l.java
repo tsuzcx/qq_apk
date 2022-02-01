@@ -6,24 +6,24 @@ import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.k;
 import com.tencent.mm.plugin.mmsight.model.p;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am.a;
 
 public final class l
 {
-  private static l vQd;
-  public SightParams vQe;
+  private static l wch;
+  public SightParams wci;
   
   static
   {
     AppMethodBeat.i(89505);
-    vQd = new l();
+    wch = new l();
     AppMethodBeat.o(89505);
   }
   
-  public static boolean cIZ()
+  public static boolean cLB()
   {
     AppMethodBeat.i(89504);
-    if (CaptureMMProxy.getInstance().getInt(al.a.Iwy, 0) == 1)
+    if (CaptureMMProxy.getInstance().getInt(am.a.IQW, 0) == 1)
     {
       AppMethodBeat.o(89504);
       return true;
@@ -32,24 +32,24 @@ public final class l
     return false;
   }
   
-  public static l dno()
+  public static l dqm()
   {
-    return vQd;
+    return wch;
   }
   
-  public static int dnq()
+  public static int dqo()
   {
-    return k.vOq.videoBitrate;
+    return k.wat.videoBitrate;
   }
   
-  public static int dnr()
+  public static int dqp()
   {
-    return k.vOq.hpj;
+    return k.wat.hrX;
   }
   
-  public static String dns()
+  public static String dqq()
   {
-    switch (k.vOq.gbj)
+    switch (k.wat.gdr)
     {
     default: 
       return "";
@@ -63,7 +63,7 @@ public final class l
   {
     AppMethodBeat.i(89503);
     Object localObject = null;
-    switch (k.vOq.gbj)
+    switch (k.wat.gdr)
     {
     default: 
       paramVideoTransPara = localObject;
@@ -78,9 +78,9 @@ public final class l
     }
   }
   
-  public final SightParams dnp()
+  public final SightParams dqn()
   {
-    return this.vQe;
+    return this.wci;
   }
 }
 

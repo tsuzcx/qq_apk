@@ -13,15 +13,15 @@ public class MutableAudioMixInputParameters
   public MutableAudioMixInputParameters(AssetTrack paramAssetTrack)
   {
     super(paramAssetTrack.getTrackID(), "");
-    AppMethodBeat.i(217957);
-    AppMethodBeat.o(217957);
+    AppMethodBeat.i(214596);
+    AppMethodBeat.o(214596);
   }
   
   public MutableAudioMixInputParameters(AssetTrack paramAssetTrack, String paramString)
   {
     super(paramAssetTrack.getTrackID(), paramString);
-    AppMethodBeat.i(217956);
-    AppMethodBeat.o(217956);
+    AppMethodBeat.i(214595);
+    AppMethodBeat.o(214595);
   }
   
   public void setAudioTapProcessor(AudioTapProcessor paramAudioTapProcessor)
@@ -43,7 +43,7 @@ public class MutableAudioMixInputParameters
   
   public void setVolumeForTimeRange(float paramFloat)
   {
-    AppMethodBeat.i(217959);
+    AppMethodBeat.i(214598);
     Iterator localIterator = this.volumeRanges.iterator();
     while (localIterator.hasNext())
     {
@@ -51,25 +51,25 @@ public class MutableAudioMixInputParameters
       localVolumeRange.startVolume = paramFloat;
       localVolumeRange.endVolume = paramFloat;
     }
-    AppMethodBeat.o(217959);
+    AppMethodBeat.o(214598);
   }
   
   public void setVolumeForTimeRange(float paramFloat, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217960);
+    AppMethodBeat.i(214599);
     setVolumeRampForTimeRange(paramFloat, paramFloat, paramCMTimeRange);
-    AppMethodBeat.o(217960);
+    AppMethodBeat.o(214599);
   }
   
   public void setVolumeRampForTimeRange(float paramFloat1, float paramFloat2, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217958);
+    AppMethodBeat.i(214597);
     AudioMixInputParameters.VolumeRange localVolumeRange = new AudioMixInputParameters.VolumeRange();
     localVolumeRange.timeRange = paramCMTimeRange;
     localVolumeRange.startVolume = paramFloat1;
     localVolumeRange.endVolume = paramFloat2;
     this.volumeRanges.add(0, localVolumeRange);
-    AppMethodBeat.o(217958);
+    AppMethodBeat.o(214597);
   }
 }
 

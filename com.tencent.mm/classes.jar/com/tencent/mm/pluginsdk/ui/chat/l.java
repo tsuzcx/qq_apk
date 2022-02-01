@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.e;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.ic;
-import com.tencent.mm.g.a.rd;
-import com.tencent.mm.g.a.vt;
+import com.tencent.mm.bh.e;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.id;
+import com.tencent.mm.g.a.re;
+import com.tencent.mm.g.a.vx;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bq;
 
 public final class l
   implements View.OnClickListener
@@ -31,7 +31,7 @@ public final class l
     AppMethodBeat.i(31760);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SourceClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SourceClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
     localObject = paramView.getTag();
     int i;
     if ((localObject instanceof b))
@@ -39,16 +39,16 @@ public final class l
       localObject = (b)localObject;
       if ((localObject == null) || (paramView == null))
       {
-        ad.w("MicroMsg.SourceClickListener", "localAppRedirectHandle: but info or v is null");
+        ae.w("MicroMsg.SourceClickListener", "localAppRedirectHandle: but info or v is null");
         i = 0;
         label69:
         if (i == 0)
         {
-          paramView = q.e(this.context, ((b)localObject).appId, ((b)localObject).dET);
-          localObject = new vt();
-          ((vt)localObject).dKj.dKk = paramView;
-          ((vt)localObject).dKj.context = this.context;
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+          paramView = q.e(this.context, ((b)localObject).appId, ((b)localObject).dFY);
+          localObject = new vx();
+          ((vx)localObject).dLy.dLz = paramView;
+          ((vx)localObject).dLy.context = this.context;
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
         }
       }
     }
@@ -59,9 +59,9 @@ public final class l
       return;
       if ("wx7fa037cc7dfabad5".equals(((b)localObject).appId))
       {
-        com.tencent.mm.plugin.sport.a.c.ma(33);
-        ba.aBQ();
-        if (com.tencent.mm.o.b.lM(com.tencent.mm.model.c.azp().Bf("gh_43f2581f6fd6").field_type))
+        com.tencent.mm.plugin.sport.a.c.md(33);
+        bc.aCg();
+        if (com.tencent.mm.contact.c.lO(com.tencent.mm.model.c.azF().BH("gh_43f2581f6fd6").field_type))
         {
           paramView = new Intent();
           paramView.putExtra("Chat_User", "gh_43f2581f6fd6");
@@ -87,14 +87,14 @@ public final class l
       }
       if ("wxfbc915ff7c30e335".equals(((b)localObject).appId))
       {
-        if (com.tencent.mm.ax.b.aJn())
+        if (com.tencent.mm.aw.b.aJF())
         {
           i = 1;
           break label69;
         }
         paramView = new Intent();
         paramView.putExtra("BaseScanUI_select_scan_mode", 1);
-        if ((!com.tencent.mm.s.a.n(this.context, true)) && (!e.aMh()) && (!com.tencent.mm.s.a.p(this.context, true))) {
+        if ((!com.tencent.mm.r.a.n(this.context, true)) && (!e.aME()) && (!com.tencent.mm.r.a.p(this.context, true))) {
           d.b(this.context, "scanner", ".ui.BaseScanUI", paramView);
         }
         i = 1;
@@ -111,47 +111,47 @@ public final class l
       if ((localObject instanceof a))
       {
         paramView = (a)localObject;
-        localObject = new ic();
-        ((ic)localObject).duF.actionCode = 2;
-        ((ic)localObject).duF.scene = paramView.scene;
-        ((ic)localObject).duF.extMsg = ("chatting_src=" + paramView.scene);
-        ((ic)localObject).duF.appId = paramView.appId;
-        ((ic)localObject).duF.context = this.context;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-        localObject = new rd();
-        ((rd)localObject).dFI.context = this.context;
-        ((rd)localObject).dFI.scene = paramView.scene;
-        ((rd)localObject).dFI.duW = paramView.appId;
-        ((rd)localObject).dFI.packageName = paramView.dFD;
-        ((rd)localObject).dFI.msgType = paramView.FdV;
-        ((rd)localObject).dFI.dyU = paramView.dFE;
-        ((rd)localObject).dFI.dFJ = 5;
-        ((rd)localObject).dFI.mediaTagName = paramView.FdW;
-        ((rd)localObject).dFI.dAY = paramView.dAY;
-        ((rd)localObject).dFI.dFK = "";
-        ((rd)localObject).dFI.dkh = paramView.FdX;
-        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new id();
+        ((id)localObject).dvK.actionCode = 2;
+        ((id)localObject).dvK.scene = paramView.scene;
+        ((id)localObject).dvK.extMsg = ("chatting_src=" + paramView.scene);
+        ((id)localObject).dvK.appId = paramView.appId;
+        ((id)localObject).dvK.context = this.context;
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new re();
+        ((re)localObject).dGN.context = this.context;
+        ((re)localObject).dGN.scene = paramView.scene;
+        ((re)localObject).dGN.dwb = paramView.appId;
+        ((re)localObject).dGN.packageName = paramView.dGI;
+        ((re)localObject).dGN.msgType = paramView.Fwt;
+        ((re)localObject).dGN.dzZ = paramView.dGJ;
+        ((re)localObject).dGN.dGO = 5;
+        ((re)localObject).dGN.mediaTagName = paramView.Fwu;
+        ((re)localObject).dGN.dCd = paramView.dCd;
+        ((re)localObject).dGN.dGP = "";
+        ((re)localObject).dGN.dlj = paramView.Fwv;
+        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
       }
     }
   }
   
   public static final class a
   {
-    public int FdV;
-    public String FdW;
-    public String FdX;
+    public int Fwt;
+    public String Fwu;
+    public String Fwv;
     public String appId;
-    public long dAY;
-    public String dET;
-    public String dFD;
-    public String dFE;
+    public long dCd;
+    public String dFY;
+    public String dGI;
+    public String dGJ;
     public int scene;
   }
   
   public static final class b
   {
     public String appId;
-    public String dET;
+    public String dFY;
   }
 }
 

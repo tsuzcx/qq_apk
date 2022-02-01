@@ -6,28 +6,28 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class j
 {
-  public static boolean xxH = false;
+  public static boolean xNE = false;
   
   public static boolean isEnable()
   {
     AppMethodBeat.i(75022);
-    if (xxH)
+    if (xNE)
     {
       AppMethodBeat.o(75022);
       return true;
     }
-    if (((b)g.ab(b.class)).a(b.a.qvW, 0L) > 0L)
+    if (((b)g.ab(b.class)).a(b.a.qCV, 0L) > 0L)
     {
       i = 1;
-      if ((i == 0) || (!d.ly(28))) {
+      if ((i == 0) || (!d.lA(28))) {
         break label97;
       }
-      if (g.ajC().ajl().a(al.a.IFS, 0L) < 3L) {
+      if (g.ajR().ajA().a(am.a.Jas, 0L) < 3L) {
         break label92;
       }
     }

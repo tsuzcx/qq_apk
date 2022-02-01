@@ -5,35 +5,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvas;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "TAG", "", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "canvasView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "hasProcessCrash", "", "item", "Landroid/view/View;", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "", "convertView", "parent", "hide", "inflate", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvas;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "TAG", "", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "canvasView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "hasProcessCrash", "", "item", "Landroid/view/View;", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "", "convertView", "parent", "hide", "inflate", "plugin-brandservice_release"})
 public final class n
-  extends u
+  extends v
 {
   public final String TAG;
-  private final b obC;
-  public BizTLRecCardCanvasView odK;
-  public boolean odc;
-  public View odh;
+  private final b ohs;
+  public View oiV;
+  public BizTLRecCardCanvasView ojy;
+  public boolean ojz;
   
   public n(b paramb)
   {
-    AppMethodBeat.i(209759);
-    this.obC = paramb;
+    AppMethodBeat.i(208733);
+    this.ohs = paramb;
     this.TAG = "MicroMsg.BizTLRecCardCanvas";
-    AppMethodBeat.o(209759);
+    AppMethodBeat.o(208733);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(209758);
-    View localView = this.odh;
+    AppMethodBeat.i(208732);
+    View localView = this.oiV;
     if (localView != null)
     {
       localView.setVisibility(8);
-      AppMethodBeat.o(209758);
+      AppMethodBeat.o(208732);
       return;
     }
-    AppMethodBeat.o(209758);
+    AppMethodBeat.o(208732);
   }
 }
 

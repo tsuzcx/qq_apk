@@ -18,9 +18,9 @@ final class z
       AppMethodBeat.o(134624);
       return paramc;
     }
-    if ((paramc instanceof q))
+    if ((paramc instanceof r))
     {
-      paramc = ((q)paramc).getCurrentPageView();
+      paramc = ((r)paramc).getCurrentPageView();
       AppMethodBeat.o(134624);
       return paramc;
     }
@@ -30,7 +30,7 @@ final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z
  * JD-Core Version:    0.7.0.1
  */

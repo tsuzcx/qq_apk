@@ -2,80 +2,80 @@ package com.tencent.tinker.a.b.a;
 
 public class e
 {
-  private final e Mep;
+  private final e MBm;
   
   public e(e parame)
   {
-    this.Mep = parame;
+    this.MBm = parame;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramInt3, paramArrayOfInt);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramInt3, paramArrayOfInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramObject, paramInt3, paramInt4);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramObject, paramInt3, paramInt4);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (this.Mep != null) {
-      this.Mep.a(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
+    if (this.MBm != null) {
+      this.MBm.a(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
     }
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
-    if (this.Mep != null) {
-      this.Mep.b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
+    if (this.MBm != null) {
+      this.MBm.b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
     }
   }
 }

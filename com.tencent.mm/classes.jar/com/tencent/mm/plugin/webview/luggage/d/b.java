@@ -7,9 +7,9 @@ import java.util.Map;
 public final class b
   implements WebResourceRequest
 {
-  private boolean DSo;
-  private boolean DSp;
-  private Map<String, String> DSq;
+  private boolean Eko;
+  private boolean Ekp;
+  private Map<String, String> Ekq;
   private String cgz;
   private boolean mIsRedirect;
   private Uri mUri;
@@ -17,11 +17,11 @@ public final class b
   public b(Uri paramUri, boolean paramBoolean1, boolean paramBoolean2, String paramString, Map<String, String> paramMap)
   {
     this.mUri = paramUri;
-    this.DSo = paramBoolean1;
+    this.Eko = paramBoolean1;
     this.mIsRedirect = false;
-    this.DSp = paramBoolean2;
+    this.Ekp = paramBoolean2;
     this.cgz = paramString;
-    this.DSq = paramMap;
+    this.Ekq = paramMap;
   }
   
   public final String getMethod()
@@ -31,7 +31,7 @@ public final class b
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.DSq;
+    return this.Ekq;
   }
   
   public final Uri getUrl()
@@ -41,12 +41,12 @@ public final class b
   
   public final boolean hasGesture()
   {
-    return this.DSp;
+    return this.Ekp;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.DSo;
+    return this.Eko;
   }
   
   public final boolean isRedirect()

@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class hy
   extends b
 {
-  public a duv;
-  public b duw;
+  public a dvz;
   
   public hy()
   {
@@ -17,22 +15,16 @@ public final class hy
   
   private hy(byte paramByte)
   {
-    AppMethodBeat.i(19811);
-    this.duv = new a();
-    this.duw = new b();
-    this.IbR = false;
+    AppMethodBeat.i(19810);
+    this.dvz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19811);
+    AppMethodBeat.o(19810);
   }
   
   public static final class a
   {
-    public Intent intent;
-  }
-  
-  public static final class b
-  {
-    public int dqI = 0;
+    public String data;
   }
 }
 

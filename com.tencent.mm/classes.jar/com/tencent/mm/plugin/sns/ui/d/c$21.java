@@ -6,7 +6,7 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class c$21
   implements View.OnTouchListener
@@ -15,15 +15,15 @@ final class c$21
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198574);
+    AppMethodBeat.i(220119);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$28", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    ad.d("MicroMsg.TimelineClickListener", "v " + paramView.getId() + "  ");
-    this.Azi.fc(paramView);
+    a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$28", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    ae.d("MicroMsg.TimelineClickListener", "v " + paramView.getId() + "  ");
+    this.AQE.fb(paramView);
     a.a(false, this, "com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$28", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(198574);
+    AppMethodBeat.o(220119);
     return false;
   }
 }

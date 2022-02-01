@@ -3,19 +3,18 @@ package com.tencent.mm.sticker.a;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bty;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bus;
+import com.tencent.mm.protocal.protobuf.but;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sticker.c.d;
 import com.tencent.mm.sticker.c.d.a;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.vfs.o;
 import d.g.a.a;
 import d.g.b.p;
 import d.g.b.q;
@@ -28,35 +27,35 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/model/LensInfoUserCache;", "", "()V", "TAG", "", "historyFile", "historyList", "Lcom/tencent/mm/protocal/protobuf/LensInfoList;", "historyListener", "Lkotlin/Function0;", "", "getHistoryListener", "()Lkotlin/jvm/functions/Function0;", "setHistoryListener", "(Lkotlin/jvm/functions/Function0;)V", "recommendFile", "recommendList", "stickerData", "getStickerData", "()Ljava/lang/String;", "appendHistory", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "checkHistory", "cleanHistory", "getCacheDir", "getCacheDirInMM", "getHistory", "", "getRecommendList", "parseHistory", "parseRecommend", "removeHistory", "lensId", "saveHistory", "saveRecommend", "updateRecommend", "list", "IPCGetCacheDir", "plugin-sticker_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/model/LensInfoUserCache;", "", "()V", "TAG", "", "historyFile", "historyList", "Lcom/tencent/mm/protocal/protobuf/LensInfoList;", "historyListener", "Lkotlin/Function0;", "", "getHistoryListener", "()Lkotlin/jvm/functions/Function0;", "setHistoryListener", "(Lkotlin/jvm/functions/Function0;)V", "recommendFile", "recommendList", "stickerData", "getStickerData", "()Ljava/lang/String;", "appendHistory", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "checkHistory", "cleanHistory", "getCacheDir", "getCacheDirInMM", "getHistory", "", "getRecommendList", "parseHistory", "parseRecommend", "removeHistory", "lensId", "saveHistory", "saveRecommend", "updateRecommend", "list", "IPCGetCacheDir", "plugin-sticker_release"})
 public final class b
 {
-  private static final String ImX;
-  private static final String ImY;
-  private static final String ImZ;
-  private static final btz Ina;
-  static final btz Inb;
-  private static a<z> Inc;
-  public static final b Ind;
+  private static final String IHi;
+  private static final String IHj;
+  private static final String IHk;
+  private static final but IHl;
+  static final but IHm;
+  private static a<z> IHn;
+  public static final b IHo;
   private static final String TAG = "MicroMsg.LensInfoUserCache";
   
   static
   {
     AppMethodBeat.i(105971);
-    Ind = new b();
+    IHo = new b();
     TAG = "MicroMsg.LensInfoUserCache";
     Object localObject;
-    if (aj.cmR()) {
-      localObject = fop();
+    if (ak.coh()) {
+      localObject = fsi();
     }
     for (;;)
     {
-      ImX = (String)localObject;
-      ImY = ImX + "recommend.proto";
-      ImZ = ImX + "history.proto";
-      Ina = new btz();
-      Inb = new btz();
-      localObject = i.aY(ImY, 0, -1);
+      IHi = (String)localObject;
+      IHj = IHi + "recommend.proto";
+      IHk = IHi + "history.proto";
+      IHl = new but();
+      IHm = new but();
+      localObject = o.bb(IHj, 0, -1);
       int i;
       if (localObject != null)
       {
@@ -73,12 +72,12 @@ public final class b
       }
       try
       {
-        Ina.parseFrom((byte[])localObject);
-        ad.i(TAG, "parseRecommend: " + ImY + ' ' + Ina.GOr.size());
-        fok();
+        IHl.parseFrom((byte[])localObject);
+        ae.i(TAG, "parseRecommend: " + IHj + ' ' + IHl.HhR.size());
+        fsd();
         AppMethodBeat.o(105971);
         return;
-        localObject = (Bundle)h.a(aj.getPackageName(), null, a.class);
+        localObject = (Bundle)h.a(ak.getPackageName(), null, b.a.class);
         if (localObject != null)
         {
           String str = ((Bundle)localObject).getString("data");
@@ -99,7 +98,7 @@ public final class b
       {
         for (;;)
         {
-          ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+          ae.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
         }
       }
     }
@@ -107,31 +106,31 @@ public final class b
   
   public static void L(a<z> parama)
   {
-    Inc = parama;
+    IHn = parama;
   }
   
-  public static void f(bty parambty)
+  public static void f(bus parambus)
   {
-    AppMethodBeat.i(215385);
-    p.h(parambty, "lensInfo");
-    Object localObject = Inb.GOr;
+    AppMethodBeat.i(208264);
+    p.h(parambus, "lensInfo");
+    Object localObject = IHm.HhR;
     p.g(localObject, "historyList.lensInfoList");
     localObject = ((List)localObject).iterator();
     int i = 0;
     if (((Iterator)localObject).hasNext()) {
-      if (!p.i(((bty)((Iterator)localObject).next()).Geb, parambty.Geb)) {}
+      if (!p.i(((bus)((Iterator)localObject).next()).GwI, parambus.GwI)) {}
     }
     for (;;)
     {
-      if ((i >= 0) && (i < Inb.GOr.size())) {
-        Inb.GOr.remove(i);
+      if ((i >= 0) && (i < IHm.HhR.size())) {
+        IHm.HhR.remove(i);
       }
-      Inb.GOr.add(0, parambty);
-      if (Inb.GOr.size() > 4) {
-        Inb.GOr.remove(Inb.GOr.size() - 1);
+      IHm.HhR.add(0, parambus);
+      if (IHm.HhR.size() > 4) {
+        IHm.HhR.remove(IHm.HhR.size() - 1);
       }
-      fol();
-      AppMethodBeat.o(215385);
+      fse();
+      AppMethodBeat.o(208264);
       return;
       i += 1;
       break;
@@ -139,10 +138,10 @@ public final class b
     }
   }
   
-  private static void fok()
+  private static void fsd()
   {
     AppMethodBeat.i(105965);
-    Object localObject1 = i.aY(ImZ, 0, -1);
+    Object localObject1 = o.bb(IHk, 0, -1);
     if (localObject1 != null)
     {
       int i;
@@ -160,8 +159,8 @@ public final class b
         {
           try
           {
-            Inb.parseFrom((byte[])localObject1);
-            localObject1 = Inb.GOr;
+            IHm.parseFrom((byte[])localObject1);
+            localObject1 = IHm.HhR;
             p.g(localObject1, "historyList.lensInfoList");
             Object localObject2 = (Iterable)localObject1;
             localObject1 = (Collection)new ArrayList();
@@ -171,8 +170,8 @@ public final class b
               if (((Iterator)localObject2).hasNext())
               {
                 Object localObject3 = ((Iterator)localObject2).next();
-                CharSequence localCharSequence = (CharSequence)((bty)localObject3).Geb;
-                if ((localCharSequence == null) || (n.aE(localCharSequence)))
+                CharSequence localCharSequence = (CharSequence)((bus)localObject3).GwI;
+                if ((localCharSequence == null) || (n.aD(localCharSequence)))
                 {
                   i = 1;
                   if (i != 0) {
@@ -195,7 +194,7 @@ public final class b
           {
             for (;;)
             {
-              ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+              ae.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
               continue;
               i = 0;
               continue;
@@ -203,9 +202,9 @@ public final class b
               i = 0;
             }
             List localList = (List)localException;
-            Inb.GOr.clear();
-            Inb.GOr.addAll((Collection)localList);
-            ad.i(TAG, "parseHistory: " + ImZ + ' ' + Inb.GOr.size());
+            IHm.HhR.clear();
+            IHm.HhR.addAll((Collection)localList);
+            ae.i(TAG, "parseHistory: " + IHk + ' ' + IHm.HhR.size());
           }
         }
       }
@@ -213,121 +212,116 @@ public final class b
     AppMethodBeat.o(105965);
   }
   
-  public static void fol()
+  public static void fse()
   {
     AppMethodBeat.i(105966);
-    Object localObject = Inc;
+    Object localObject = IHn;
     if (localObject != null) {
       ((a)localObject).invoke();
     }
-    localObject = Inb.toByteArray();
-    i.aYg(ImX);
-    i.C(ImZ, (byte[])localObject);
-    ad.i(TAG, "saveHistory: " + Inb.GOr.size());
+    localObject = IHm.toByteArray();
+    o.aZI(IHi);
+    o.C(IHk, (byte[])localObject);
+    ae.i(TAG, "saveHistory: " + IHm.HhR.size());
     AppMethodBeat.o(105966);
   }
   
-  public static List<bty> fom()
+  public static List<bus> fsf()
   {
     AppMethodBeat.i(105967);
-    Object localObject = Inb.GOr;
+    Object localObject = IHm.HhR;
     p.g(localObject, "historyList.lensInfoList");
     localObject = (List)localObject;
     AppMethodBeat.o(105967);
     return localObject;
   }
   
-  public static void fon()
+  public static void fsg()
   {
     AppMethodBeat.i(105968);
-    Object localObject1 = Inb.GOr;
+    Object localObject1 = IHm.HhR;
     p.g(localObject1, "historyList.lensInfoList");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      bty localbty = (bty)((Iterator)localObject1).next();
-      ad.i(TAG, "checkHistory: " + localbty.Geb);
-      Object localObject2 = d.Inh;
-      localObject2 = localbty.Geb;
+      bus localbus = (bus)((Iterator)localObject1).next();
+      ae.i(TAG, "checkHistory: " + localbus.GwI);
+      Object localObject2 = d.IHs;
+      localObject2 = localbus.GwI;
       p.g(localObject2, "it.LensId");
-      d.a.a(null, (String)localObject2, (com.tencent.mm.sticker.c.c)new b(localbty));
+      d.a.a(null, (String)localObject2, (com.tencent.mm.sticker.c.c)new b(localbus));
     }
     AppMethodBeat.o(105968);
   }
   
-  public static void foo()
+  public static void fsh()
   {
     AppMethodBeat.i(105969);
-    Inb.GOr.clear();
-    fol();
+    IHm.HhR.clear();
+    fse();
     AppMethodBeat.o(105969);
   }
   
-  private static String fop()
+  private static String fsi()
   {
     Object localObject1 = null;
     AppMethodBeat.i(105970);
-    Object localObject2 = g.ajC();
+    Object localObject2 = g.ajR();
     p.g(localObject2, "MMKernel.storage()");
-    localObject2 = ((e)localObject2).ajl().get(al.a.IFL, null);
+    localObject2 = ((e)localObject2).ajA().get(am.a.Jal, null);
     if (!(localObject2 instanceof String)) {}
     for (;;)
     {
       localObject2 = (String)localObject1;
       localObject1 = localObject2;
-      if (bt.isNullOrNil((String)localObject2))
+      if (bu.isNullOrNil((String)localObject2))
       {
         localObject1 = "lens_" + System.currentTimeMillis();
-        localObject2 = g.ajC();
+        localObject2 = g.ajR();
         p.g(localObject2, "MMKernel.storage()");
-        ((e)localObject2).ajl().set(al.a.IFL, localObject1);
+        ((e)localObject2).ajA().set(am.a.Jal, localObject1);
       }
-      localObject1 = com.tencent.mm.loader.j.b.arN() + "sticker/data/" + (String)localObject1 + '/';
+      localObject1 = com.tencent.mm.loader.j.b.asc() + "sticker/data/" + (String)localObject1 + '/';
       AppMethodBeat.o(105970);
       return localObject1;
       localObject1 = localObject2;
     }
   }
   
-  public static void hm(List<? extends bty> paramList)
+  public static void hw(List<? extends bus> paramList)
   {
     AppMethodBeat.i(105964);
     p.h(paramList, "list");
-    Ina.GOr.clear();
-    Ina.GOr.addAll((Collection)paramList);
-    paramList = Ina.toByteArray();
-    i.aYg(ImX);
-    i.C(ImY, paramList);
-    ad.i(TAG, "saveRecommend: " + Ina.GOr.size());
+    IHl.HhR.clear();
+    IHl.HhR.addAll((Collection)paramList);
+    paramList = IHl.toByteArray();
+    o.aZI(IHi);
+    o.C(IHj, paramList);
+    ae.i(TAG, "saveRecommend: " + IHl.HhR.size());
     AppMethodBeat.o(105964);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/model/LensInfoUserCache$IPCGetCacheDir;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "data", "plugin-sticker_release"})
-  public static final class a
-    implements k<Bundle, Bundle>
-  {}
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/sticker/model/LensInfoUserCache$checkHistory$1$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-sticker_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/sticker/model/LensInfoUserCache$checkHistory$1$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-sticker_release"})
   public static final class b
     implements com.tencent.mm.sticker.c.c
   {
-    b(bty parambty) {}
+    b(bus parambus) {}
     
-    public final void a(final int paramInt, final bty parambty)
+    public final void a(final int paramInt, final bus parambus)
     {
       AppMethodBeat.i(105962);
-      b localb = b.Ind;
-      ad.i(b.jdMethod_for(), "onResult: " + this.Ine.Geb + ", " + paramInt);
-      com.tencent.mm.ad.c.g((a)new a(this, paramInt, parambty));
+      b localb = b.IHo;
+      ae.i(b.fsk(), "onResult: " + this.IHp.GwI + ", " + paramInt);
+      com.tencent.mm.ac.c.h((a)new a(this, paramInt, parambus));
       AppMethodBeat.o(105962);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
     static final class a
       extends q
       implements a<z>
     {
-      a(b.b paramb, int paramInt, bty parambty)
+      a(b.b paramb, int paramInt, bus parambus)
       {
         super();
       }
@@ -336,7 +330,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sticker.a.b
  * JD-Core Version:    0.7.0.1
  */

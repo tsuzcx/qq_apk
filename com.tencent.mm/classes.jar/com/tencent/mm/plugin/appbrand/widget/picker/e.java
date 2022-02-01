@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class e
 {
-  public static int[] Vy(String paramString)
+  public static int[] Wk(String paramString)
   {
     AppMethodBeat.i(138087);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -19,9 +19,9 @@ public final class e
       AppMethodBeat.o(138087);
       return null;
     }
-    int i = Vz(paramString[0]);
-    int j = Vz(paramString[1]);
-    if ((!wK(i)) || (!wJ(j)))
+    int i = Wl(paramString[0]);
+    int j = Wl(paramString[1]);
+    if ((!wP(i)) || (!wO(j)))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -30,7 +30,7 @@ public final class e
     return new int[] { i, j };
   }
   
-  private static int Vz(String paramString)
+  private static int Wl(String paramString)
   {
     AppMethodBeat.i(138088);
     try
@@ -46,12 +46,12 @@ public final class e
     return -1;
   }
   
-  public static boolean wJ(int paramInt)
+  public static boolean wO(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 59);
   }
   
-  public static boolean wK(int paramInt)
+  public static boolean wP(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 23);
   }

@@ -14,14 +14,14 @@ public final class q
   {
     AppMethodBeat.i(59871);
     p.h(paramc, "$this$render");
-    paramc = paramc.grm();
+    paramc = paramc.gvO();
     p.g(paramc, "pathSegments()");
-    paramc = js(paramc);
+    paramc = jB(paramc);
     AppMethodBeat.o(59871);
     return paramc;
   }
   
-  public static final String js(List<f> paramList)
+  public static final String jB(List<f> paramList)
   {
     AppMethodBeat.i(59872);
     p.h(paramList, "pathSegments");
@@ -63,7 +63,7 @@ public final class q
   private static final boolean y(f paramf)
   {
     AppMethodBeat.i(59870);
-    if (paramf.Nqp)
+    if (paramf.NNv)
     {
       AppMethodBeat.o(59870);
       return false;
@@ -71,7 +71,7 @@ public final class q
     paramf = paramf.sD();
     p.g(paramf, "asString()");
     int j;
-    if (!l.NuU.contains(paramf))
+    if (!l.NSa.contains(paramf))
     {
       paramf = (CharSequence)paramf;
       i = 0;
@@ -110,7 +110,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.i.q
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ final class d$m
 {
   static
   {
-    AppMethodBeat.i(189753);
+    AppMethodBeat.i(193665);
     String str = new StringBuilder("txegsmron").reverse().toString();
     if (Process.myPid() == Process.myTid())
     {
       System.loadLibrary(str);
-      AppMethodBeat.o(189753);
+      AppMethodBeat.o(193665);
       return;
     }
     final CountDownLatch localCountDownLatch = new CountDownLatch(1);
@@ -23,21 +23,21 @@ final class d$m
     {
       public final void run()
       {
-        AppMethodBeat.i(189752);
-        System.loadLibrary(this.iHg);
+        AppMethodBeat.i(193664);
+        System.loadLibrary(this.iJZ);
         localCountDownLatch.countDown();
-        AppMethodBeat.o(189752);
+        AppMethodBeat.o(193664);
       }
     });
     try
     {
       localCountDownLatch.await();
-      AppMethodBeat.o(189753);
+      AppMethodBeat.o(193665);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(189753);
+      AppMethodBeat.o(193665);
     }
   }
   

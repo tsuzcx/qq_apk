@@ -7,17 +7,17 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
 final class BizVideoDetailUI$g
   extends q
   implements m<WebView, String, z>
 {
-  public static final g opj;
+  public static final g ovb;
   
   static
   {
     AppMethodBeat.i(7091);
-    opj = new g();
+    ovb = new g();
     AppMethodBeat.o(7091);
   }
   

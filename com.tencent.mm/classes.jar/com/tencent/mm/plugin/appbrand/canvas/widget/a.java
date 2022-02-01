@@ -6,7 +6,7 @@ import org.json.JSONArray;
 public abstract interface a
   extends b, com.tencent.mm.plugin.appbrand.collector.d
 {
-  public abstract void R(Runnable paramRunnable);
+  public abstract void P(Runnable paramRunnable);
   
   public abstract void a(DrawCanvasArg paramDrawCanvasArg, a.a parama);
   
@@ -16,9 +16,9 @@ public abstract interface a
   
   public abstract void b(JSONArray paramJSONArray, a.a parama);
   
-  public abstract void bdk();
+  public abstract void bdP();
   
-  public abstract void bdl();
+  public abstract void bdQ();
   
   public abstract com.tencent.mm.plugin.appbrand.canvas.d getDrawContext();
   

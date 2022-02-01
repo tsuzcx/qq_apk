@@ -15,31 +15,31 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.ao;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryHolderView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "attrs", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "initMargin", "getInitMargin", "()I", "setInitMargin", "(I)V", "lastScrollAlpha", "", "mActionIv", "Landroid/widget/ImageView;", "mActionView", "Landroid/widget/LinearLayout;", "mBubbleIv", "mIsFirstPullDown", "", "mTitleTv", "Landroid/widget/TextView;", "smallHead", "animClosing", "", "animOpening", "checkSmallHead", "closed", "goStoryCaptureUI", "onClosing", "offset", "onListInnerScroll", "onOpening", "opened", "setVisibility", "visibility", "Companion", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryHolderView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "attrs", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "initMargin", "getInitMargin", "()I", "setInitMargin", "(I)V", "lastScrollAlpha", "", "mActionIv", "Landroid/widget/ImageView;", "mActionView", "Landroid/widget/LinearLayout;", "mBubbleIv", "mIsFirstPullDown", "", "mTitleTv", "Landroid/widget/TextView;", "smallHead", "animClosing", "", "animOpening", "checkSmallHead", "closed", "goStoryCaptureUI", "onClosing", "offset", "onListInnerScroll", "onOpening", "opened", "setVisibility", "visibility", "Companion", "plugin-story_release"})
 public final class GalleryHolderView
   extends RelativeLayout
 {
-  public static final GalleryHolderView.a BcK;
+  public static final GalleryHolderView.a Bui;
   static final String TAG = "MicroMsg.GalleryHolderView";
-  LinearLayout BcE;
-  private ImageView BcF;
-  private ImageView BcG;
-  private boolean BcH;
-  int BcI;
-  float BcJ;
-  TextView lCL;
+  LinearLayout Buc;
+  private ImageView Bud;
+  private ImageView Bue;
+  private boolean Buf;
+  int Bug;
+  float Buh;
+  TextView lHk;
   
   static
   {
     AppMethodBeat.i(120342);
-    BcK = new GalleryHolderView.a((byte)0);
+    Bui = new GalleryHolderView.a((byte)0);
     TAG = "MicroMsg.GalleryHolderView";
     AppMethodBeat.o(120342);
   }
@@ -58,91 +58,91 @@ public final class GalleryHolderView
     View.inflate(paramContext, 2131495694, (ViewGroup)this);
     paramAttributeSet = findViewById(2131305427);
     p.g(paramAttributeSet, "findViewById(R.id.story_…ery_holder_action_layout)");
-    this.BcE = ((LinearLayout)paramAttributeSet);
+    this.Buc = ((LinearLayout)paramAttributeSet);
     paramAttributeSet = findViewById(2131305426);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_holder_action_iv)");
-    this.BcF = ((ImageView)paramAttributeSet);
+    this.Bud = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305429);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_holder_bubble)");
-    this.BcG = ((ImageView)paramAttributeSet);
+    this.Bue = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305431);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_holder_title_tv)");
-    this.lCL = ((TextView)paramAttributeSet);
-    this.BcE.setVisibility(4);
-    this.BcF.setImageDrawable(ao.e(paramContext.getResources().getDrawable(2131690361), paramContext.getResources().getColor(2131100993)));
-    this.BcE.setOnClickListener((View.OnClickListener)new GalleryHolderView.1(this));
+    this.lHk = ((TextView)paramAttributeSet);
+    this.Buc.setVisibility(4);
+    this.Bud.setImageDrawable(ao.e(paramContext.getResources().getDrawable(2131690361), paramContext.getResources().getColor(2131100993)));
+    this.Buc.setOnClickListener((View.OnClickListener)new GalleryHolderView.1(this));
     setBackgroundColor(paramContext.getResources().getColor(2131100983));
-    paramContext = g.ajC();
+    paramContext = g.ajR();
     p.g(paramContext, "MMKernel.storage()");
-    paramContext = paramContext.ajl().get(al.a.IFC, Boolean.TRUE);
+    paramContext = paramContext.ajA().get(am.a.Jac, Boolean.TRUE);
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type kotlin.Boolean");
       AppMethodBeat.o(120340);
       throw paramContext;
     }
-    this.BcH = ((Boolean)paramContext).booleanValue();
-    if (this.BcH)
+    this.Buf = ((Boolean)paramContext).booleanValue();
+    if (this.Buf)
     {
-      this.lCL.setTextColor(getResources().getColor(2131100960));
-      paramContext = this.lCL;
-      paramAttributeSet = StoryGalleryView.BeM;
+      this.lHk.setTextColor(getResources().getColor(2131100960));
+      paramContext = this.lHk;
+      paramAttributeSet = StoryGalleryView.Bwk;
       paramAttributeSet = getResources().getString(2131764278);
       p.g(paramAttributeSet, "resources.getString(R.st…ory_gallery_holder_title)");
       paramContext.setText((CharSequence)StoryGalleryView.a.l((CharSequence)paramAttributeSet, getResources().getColor(2131100960)));
-      if (!com.tencent.mm.plugin.story.c.a.e.AIM.egX()) {
+      if (!com.tencent.mm.plugin.story.c.a.e.Bap.ekF()) {
         break label376;
       }
-      this.BcG.setVisibility(8);
+      this.Bue.setVisibility(8);
     }
     for (;;)
     {
-      this.BcJ = 1.0F;
+      this.Buh = 1.0F;
       AppMethodBeat.o(120340);
       return;
-      this.lCL.setTextColor(getResources().getColor(2131100984));
-      this.lCL.setText((CharSequence)getResources().getString(2131764276));
+      this.lHk.setTextColor(getResources().getColor(2131100984));
+      this.lHk.setText((CharSequence)getResources().getString(2131764276));
       break;
       label376:
-      this.BcG.setVisibility(0);
+      this.Bue.setVisibility(0);
     }
   }
   
-  public final void emd()
+  public final void epM()
   {
     AppMethodBeat.i(120337);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(new Animator[] { (Animator)ObjectAnimator.ofFloat(this.lCL, "alpha", new float[] { this.lCL.getAlpha(), 0.0F }), (Animator)ObjectAnimator.ofFloat(this.BcE, "alpha", new float[] { this.BcE.getAlpha(), 1.0F }) });
+    localAnimatorSet.playTogether(new Animator[] { (Animator)ObjectAnimator.ofFloat(this.lHk, "alpha", new float[] { this.lHk.getAlpha(), 0.0F }), (Animator)ObjectAnimator.ofFloat(this.Buc, "alpha", new float[] { this.Buc.getAlpha(), 1.0F }) });
     localAnimatorSet.setDuration(100L);
     localAnimatorSet.start();
     AppMethodBeat.o(120337);
   }
   
-  public final void eme()
+  public final void epN()
   {
     AppMethodBeat.i(120338);
-    this.BcE.setVisibility(0);
-    this.lCL.setVisibility(4);
-    if (this.BcH)
+    this.Buc.setVisibility(0);
+    this.lHk.setVisibility(4);
+    if (this.Buf)
     {
-      this.BcH = false;
-      com.tencent.mm.kernel.e locale = g.ajC();
+      this.Buf = false;
+      com.tencent.mm.kernel.e locale = g.ajR();
       p.g(locale, "MMKernel.storage()");
-      locale.ajl().set(al.a.IFC, Boolean.FALSE);
+      locale.ajA().set(am.a.Jac, Boolean.FALSE);
     }
-    this.lCL.setTextColor(getResources().getColor(2131100984));
-    this.lCL.setText((CharSequence)getResources().getString(2131764276));
+    this.lHk.setTextColor(getResources().getColor(2131100984));
+    this.lHk.setText((CharSequence)getResources().getString(2131764276));
     AppMethodBeat.o(120338);
   }
   
   public final int getInitMargin()
   {
-    return this.BcI;
+    return this.Bug;
   }
   
   public final void setInitMargin(int paramInt)
   {
-    this.BcI = paramInt;
+    this.Bug = paramInt;
   }
   
   public final void setVisibility(int paramInt)
@@ -151,20 +151,20 @@ public final class GalleryHolderView
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      if (com.tencent.mm.plugin.story.c.a.e.AIM.egX())
+      if (com.tencent.mm.plugin.story.c.a.e.Bap.ekF())
       {
-        this.BcG.setVisibility(8);
+        this.Bue.setVisibility(8);
         AppMethodBeat.o(120339);
         return;
       }
-      this.BcG.setVisibility(0);
+      this.Bue.setVisibility(0);
     }
     AppMethodBeat.o(120339);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.GalleryHolderView
  * JD-Core Version:    0.7.0.1
  */

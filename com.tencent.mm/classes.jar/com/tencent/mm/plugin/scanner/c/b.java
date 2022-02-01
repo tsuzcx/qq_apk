@@ -7,26 +7,26 @@ import java.util.Map;
 
 public final class b
 {
-  private static b ylU;
-  Object ylI;
-  Map yln;
-  Object ylo;
-  private Rect ylr;
+  private static b yBT;
+  Object yBH;
+  Map yBm;
+  Object yBn;
+  private Rect yBq;
   
   static
   {
     AppMethodBeat.i(51586);
-    ylU = new b();
+    yBT = new b();
     AppMethodBeat.o(51586);
   }
   
   public b()
   {
     AppMethodBeat.i(51585);
-    this.ylo = new Object();
-    this.ylI = new Object();
-    this.ylr = new Rect();
-    this.yln = new HashMap();
+    this.yBn = new Object();
+    this.yBH = new Object();
+    this.yBq = new Rect();
+    this.yBm = new HashMap();
     AppMethodBeat.o(51585);
   }
 }

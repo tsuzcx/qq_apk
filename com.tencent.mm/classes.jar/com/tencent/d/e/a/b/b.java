@@ -8,29 +8,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends JceStruct
 {
-  public int LNT = 0;
-  public float LNU = 0.0F;
-  public String cUi = "";
-  public String dBg = "";
+  public int MkS = 0;
+  public float MkT = 0.0F;
+  public String cVh = "";
+  public String dCl = "";
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138418);
-    this.dBg = paramJceInputStream.readString(0, true);
-    this.LNT = paramJceInputStream.read(this.LNT, 1, true);
-    this.LNU = paramJceInputStream.read(this.LNU, 2, true);
-    this.cUi = paramJceInputStream.readString(3, false);
+    this.dCl = paramJceInputStream.readString(0, true);
+    this.MkS = paramJceInputStream.read(this.MkS, 1, true);
+    this.MkT = paramJceInputStream.read(this.MkT, 2, true);
+    this.cVh = paramJceInputStream.readString(3, false);
     AppMethodBeat.o(138418);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138417);
-    paramJceOutputStream.write(this.dBg, 0);
-    paramJceOutputStream.write(this.LNT, 1);
-    paramJceOutputStream.write(this.LNU, 2);
-    if (this.cUi != null) {
-      paramJceOutputStream.write(this.cUi, 3);
+    paramJceOutputStream.write(this.dCl, 0);
+    paramJceOutputStream.write(this.MkS, 1);
+    paramJceOutputStream.write(this.MkT, 2);
+    if (this.cVh != null) {
+      paramJceOutputStream.write(this.cVh, 3);
     }
     AppMethodBeat.o(138417);
   }

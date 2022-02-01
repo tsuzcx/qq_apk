@@ -11,103 +11,103 @@ import kotlinx.a.h;
 import kotlinx.a.n;
 import kotlinx.a.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/NullableSerializer;", "T", "", "Lkotlinx/serialization/KSerializer;", "serializer", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "equals", "", "other", "hashCode", "", "patch", "old", "(Lkotlinx/serialization/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/NullableSerializer;", "T", "", "Lkotlinx/serialization/KSerializer;", "serializer", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "equals", "", "other", "hashCode", "", "patch", "old", "(Lkotlinx/serialization/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "kotlinx-serialization-runtime"})
 public final class as<T>
   implements h<T>
 {
-  private final n NLm;
-  private final h<T> NMG;
+  private final n Ois;
+  private final h<T> OjM;
   
   public as(h<T> paramh)
   {
-    AppMethodBeat.i(191077);
-    this.NMG = paramh;
-    this.NLm = ((n)new bb(this.NMG.eLj()));
-    AppMethodBeat.o(191077);
+    AppMethodBeat.i(199665);
+    this.OjM = paramh;
+    this.Ois = ((n)new bb(this.OjM.eOR()));
+    AppMethodBeat.o(199665);
   }
   
   public final T a(c paramc)
   {
-    AppMethodBeat.i(191073);
+    AppMethodBeat.i(199661);
     p.h(paramc, "decoder");
-    if (paramc.gwD())
+    if (paramc.gBf())
     {
-      paramc = paramc.a((f)this.NMG);
-      AppMethodBeat.o(191073);
+      paramc = paramc.a((f)this.OjM);
+      AppMethodBeat.o(199661);
       return paramc;
     }
-    paramc = paramc.gwE();
-    AppMethodBeat.o(191073);
+    paramc = paramc.gBg();
+    AppMethodBeat.o(199661);
     return paramc;
   }
   
   public final T a(c paramc, T paramT)
   {
-    AppMethodBeat.i(191074);
+    AppMethodBeat.i(199662);
     p.h(paramc, "decoder");
     if (paramT == null)
     {
       paramc = a(paramc);
-      AppMethodBeat.o(191074);
+      AppMethodBeat.o(199662);
       return paramc;
     }
-    if (paramc.gwD())
+    if (paramc.gBf())
     {
-      paramc = paramc.a((f)this.NMG, paramT);
-      AppMethodBeat.o(191074);
+      paramc = paramc.a((f)this.OjM, paramT);
+      AppMethodBeat.o(199662);
       return paramc;
     }
-    paramc.gwE();
-    AppMethodBeat.o(191074);
+    paramc.gBg();
+    AppMethodBeat.o(199662);
     return paramT;
   }
   
   public final void a(g paramg, T paramT)
   {
-    AppMethodBeat.i(191072);
+    AppMethodBeat.i(199660);
     p.h(paramg, "encoder");
     if (paramT != null)
     {
-      paramg.a((v)this.NMG, paramT);
-      AppMethodBeat.o(191072);
+      paramg.a((v)this.OjM, paramT);
+      AppMethodBeat.o(199660);
       return;
     }
-    paramg.gwO();
-    AppMethodBeat.o(191072);
+    paramg.gBq();
+    AppMethodBeat.o(199660);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return this.NLm;
+    return this.Ois;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191075);
+    AppMethodBeat.i(199663);
     if ((as)this == paramObject)
     {
-      AppMethodBeat.o(191075);
+      AppMethodBeat.o(199663);
       return true;
     }
     if ((paramObject == null) || ((p.i(z.bp(getClass()), z.bp(paramObject.getClass())) ^ true)))
     {
-      AppMethodBeat.o(191075);
+      AppMethodBeat.o(199663);
       return false;
     }
-    if ((p.i(this.NMG, ((as)paramObject).NMG) ^ true))
+    if ((p.i(this.OjM, ((as)paramObject).OjM) ^ true))
     {
-      AppMethodBeat.o(191075);
+      AppMethodBeat.o(199663);
       return false;
     }
-    AppMethodBeat.o(191075);
+    AppMethodBeat.o(199663);
     return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(191076);
-    int i = this.NMG.hashCode();
-    AppMethodBeat.o(191076);
+    AppMethodBeat.i(199664);
+    int i = this.OjM.hashCode();
+    AppMethodBeat.o(199664);
     return i;
   }
 }

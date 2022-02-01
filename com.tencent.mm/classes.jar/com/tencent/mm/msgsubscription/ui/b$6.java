@@ -9,7 +9,7 @@ import d.l;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class b$6
   implements View.OnClickListener
 {
@@ -20,15 +20,15 @@ final class b$6
     AppMethodBeat.i(149740);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = b.j(this.iDz);
-    if (!b.j(this.iDz).isChecked()) {}
+    a.b("com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = b.j(this.iGs);
+    if (!b.j(this.iGs).isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setChecked(bool);
-      paramView = ((Iterable)this.iDA).iterator();
+      paramView = ((Iterable)this.iGt).iterator();
       while (paramView.hasNext()) {
-        ((b.b)paramView.next()).iDB = b.j(this.iDz).isChecked();
+        ((b.b)paramView.next()).iGu = b.j(this.iGs).isChecked();
       }
     }
     a.a(this, "com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

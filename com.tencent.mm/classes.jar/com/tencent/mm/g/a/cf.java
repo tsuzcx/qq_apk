@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cf
   extends b
 {
-  public a dna;
-  public b dnb;
+  public a doc;
+  public b dod;
   
   public cf()
   {
@@ -17,9 +17,9 @@ public final class cf
   private cf(byte paramByte)
   {
     AppMethodBeat.i(43440);
-    this.dna = new a();
-    this.dnb = new b();
-    this.IbR = false;
+    this.doc = new a();
+    this.dod = new b();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(43440);
   }
@@ -32,7 +32,7 @@ public final class cf
   public static final class b
   {
     public String appId;
-    public String[] cng;
+    public String[] cni;
     public String nickname;
   }
 }

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
@@ -30,9 +32,10 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.g.a.ks;
+import com.tencent.mm.g.a.kt;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.k;
@@ -41,29 +44,37 @@ import com.tencent.mm.plugin.wallet.balance.model.lqt.x;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.BindCardOrder;
 import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.e;
 import com.tencent.mm.plugin.wallet_core.model.m;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.q;
 import com.tencent.mm.plugin.wallet_core.ui.q.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.protocal.protobuf.bpp;
-import com.tencent.mm.protocal.protobuf.cbc;
-import com.tencent.mm.protocal.protobuf.ckp;
-import com.tencent.mm.protocal.protobuf.clm;
-import com.tencent.mm.protocal.protobuf.cmp;
-import com.tencent.mm.protocal.protobuf.csc;
+import com.tencent.mm.protocal.protobuf.bqi;
+import com.tencent.mm.protocal.protobuf.cbw;
+import com.tencent.mm.protocal.protobuf.clj;
+import com.tencent.mm.protocal.protobuf.cmg;
+import com.tencent.mm.protocal.protobuf.cnj;
+import com.tencent.mm.protocal.protobuf.csw;
 import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.tools.p;
 import com.tencent.mm.ui.widget.picker.c.a;
+import com.tencent.mm.vending.g.g;
 import com.tencent.mm.wallet_core.c.a.a;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard.a;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tencent.mm.wallet_core.ui.h;
+import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -75,81 +86,81 @@ public class WalletLqtPlanAddUI
   extends WalletLqtBasePresenterUI
   implements WcPayKeyboard.a
 {
-  private static final int CBB;
-  private static final int CBC;
-  private ScrollView CBD;
-  private TextView CBE;
-  private TextView CBF;
-  private TextView CBG;
-  private TextView CBH;
-  private WalletFormView CBI;
-  private TextView CBJ;
-  private CdnImageView CBK;
-  private TextView CBL;
-  private LinearLayout CBM;
-  private TextView CBN;
-  private LinearLayout CBO;
-  private Button CBP;
-  private CheckBox CBQ;
-  private TextView CBS;
-  private LinearLayout CBT;
-  private View CBU;
-  private View CBV;
-  private View CBW;
-  private x CBX;
-  private boolean CBY;
-  private String CBZ;
-  private List<Bankcard> CCa;
-  private bpp CCb;
-  private cmp CCc;
-  private boolean CCd;
-  private ckp CCe;
-  private LinearLayout CCf;
-  private long CCg;
-  private int CCh;
-  private String CCi;
-  private String CCj;
-  private String[] CCk;
-  private Button CCl;
-  private Button CCm;
-  private Button CCn;
-  private RelativeLayout CCo;
-  private List<csc> CCp;
-  private boolean CCq;
-  private boolean CCr;
-  private boolean CCs;
+  private static final int CTi;
+  private static final int CTj;
+  private View CTA;
+  private View CTB;
+  private View CTC;
+  private x CTD;
+  private boolean CTE;
+  private String CTF;
+  private List<Bankcard> CTG;
+  private bqi CTH;
+  private cnj CTI;
+  private boolean CTJ;
+  private clj CTK;
+  private LinearLayout CTL;
+  private long CTM;
+  private int CTN;
+  private String CTO;
+  private String CTP;
+  private String[] CTQ;
+  private Button CTR;
+  private Button CTS;
+  private Button CTT;
+  private RelativeLayout CTU;
+  private List<csw> CTV;
+  private boolean CTW;
+  private boolean CTX;
+  private boolean CTY;
+  private ScrollView CTk;
+  private TextView CTl;
+  private TextView CTm;
+  private TextView CTn;
+  private TextView CTo;
+  private WalletFormView CTp;
+  private TextView CTq;
+  private CdnImageView CTr;
+  private TextView CTs;
+  private LinearLayout CTt;
+  private TextView CTu;
+  private LinearLayout CTv;
+  private Button CTw;
+  private CheckBox CTx;
+  private TextView CTy;
+  private LinearLayout CTz;
   private int mMode;
   private com.tencent.mm.wallet_core.ui.a mTenpayKBStateListener;
   private String mTitle;
-  private int uCd;
-  private com.tencent.mm.sdk.b.c<ks> wxJ;
-  private WcPayKeyboard xWL;
+  private int uNI;
+  private com.tencent.mm.sdk.b.c<kt> wNu;
+  private WcPayKeyboard ymE;
   
   static
   {
     AppMethodBeat.i(68896);
-    CBB = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 48);
-    CBC = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 8);
+    CTi = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 48);
+    CTj = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 8);
     AppMethodBeat.o(68896);
   }
   
   public WalletLqtPlanAddUI()
   {
     AppMethodBeat.i(68865);
-    this.CBX = ((x)am(x.class));
-    this.uCd = 0;
-    this.CBY = false;
-    this.CCa = new ArrayList();
-    this.CCe = new ckp();
-    this.CCp = new ArrayList();
-    this.CCq = false;
-    this.CCr = true;
-    this.CCs = true;
-    this.wxJ = new com.tencent.mm.sdk.b.c() {};
+    this.CTD = ((x)am(x.class));
+    this.uNI = 0;
+    this.CTE = false;
+    this.CTG = new ArrayList();
+    this.CTK = new clj();
+    this.CTV = new ArrayList();
+    this.CTW = false;
+    this.CTX = true;
+    this.CTY = true;
+    this.wNu = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(68865);
   }
   
-  private static String Cg(long paramLong)
+  private static String CE(long paramLong)
   {
     AppMethodBeat.i(68880);
     String str = String.valueOf(paramLong);
@@ -170,10 +181,10 @@ public class WalletLqtPlanAddUI
     return str;
   }
   
-  private Bankcard aDV(String paramString)
+  private Bankcard aFo(String paramString)
   {
     AppMethodBeat.i(68878);
-    Iterator localIterator = this.CCa.iterator();
+    Iterator localIterator = this.CTG.iterator();
     while (localIterator.hasNext())
     {
       Bankcard localBankcard = (Bankcard)localIterator.next();
@@ -183,76 +194,141 @@ public class WalletLqtPlanAddUI
         return localBankcard;
       }
     }
-    paramString = t.eFy().aEt(paramString);
+    paramString = t.eJf().aFN(paramString);
     AppMethodBeat.o(68878);
     return paramString;
   }
   
-  private void e(Button paramButton)
+  private void e(final Button paramButton)
   {
     AppMethodBeat.i(68879);
-    paramButton.setOnClickListener(new WalletLqtPlanAddUI.16(this, paramButton));
+    paramButton.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(68850);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        WalletLqtPlanAddUI.a(WalletLqtPlanAddUI.this).setText(paramButton.getText().toString().substring(1));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(68850);
+      }
+    });
     AppMethodBeat.o(68879);
   }
   
-  private void eCQ()
+  private void eGA()
+  {
+    AppMethodBeat.i(68876);
+    double d = bu.getDouble(this.CTp.getText(), 0.0D);
+    ae.i("MicroMsg.WalletLqtPlanAddUI", "money: %s", new Object[] { Double.valueOf(d) });
+    Bankcard localBankcard = aFo(this.CTK.COw);
+    if ((localBankcard != null) && (d > localBankcard.field_dayQuotaKind))
+    {
+      ae.i("MicroMsg.WalletLqtPlanAddUI", "show over alert");
+      this.CTq.setText(this.CTP);
+      this.CTq.setTextColor(getResources().getColor(2131100800));
+      this.CTL.setVisibility(0);
+      AppMethodBeat.o(68876);
+      return;
+    }
+    this.CTq.setText(this.CTF);
+    this.CTq.setTextColor(getResources().getColor(2131100707));
+    this.CTL.setVisibility(0);
+    AppMethodBeat.o(68876);
+  }
+  
+  private void eGB()
+  {
+    AppMethodBeat.i(68877);
+    if ((this.CTI != null) && (!bu.isNullOrNil(this.CTI.title)))
+    {
+      this.CTy.setClickable(true);
+      this.CTy.setOnTouchListener(new n(this));
+      q localq = new q(new q.a()
+      {
+        public final void dN(View paramAnonymousView)
+        {
+          AppMethodBeat.i(68847);
+          f.p(WalletLqtPlanAddUI.this.getContext(), WalletLqtPlanAddUI.u(WalletLqtPlanAddUI.this).url, true);
+          AppMethodBeat.o(68847);
+        }
+      });
+      String str = getString(2131765472);
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
+      localSpannableStringBuilder.append(this.CTI.title);
+      localSpannableStringBuilder.setSpan(localq, str.length(), localSpannableStringBuilder.length(), 18);
+      this.CTy.setText(localSpannableStringBuilder);
+      if (this.CTI.Hzu) {
+        this.CTx.setChecked(true);
+      }
+      this.CTz.setVisibility(0);
+      AppMethodBeat.o(68877);
+      return;
+    }
+    this.CTz.setVisibility(8);
+    AppMethodBeat.o(68877);
+  }
+  
+  private void eGx()
   {
     AppMethodBeat.i(68873);
     if (this.mMode == 2)
     {
-      BigDecimal localBigDecimal = com.tencent.mm.wallet_core.ui.e.b(this.CCe.dOa, "100", 2, RoundingMode.HALF_UP);
+      BigDecimal localBigDecimal = f.b(this.CTK.dPq, "100", 2, RoundingMode.HALF_UP);
       if (localBigDecimal.intValue() == localBigDecimal.doubleValue())
       {
-        this.CBI.setText(localBigDecimal.intValue());
+        this.CTp.setText(localBigDecimal.intValue());
         AppMethodBeat.o(68873);
         return;
       }
-      this.CBI.setText(localBigDecimal.toString());
+      this.CTp.setText(localBigDecimal.toString());
     }
     AppMethodBeat.o(68873);
   }
   
-  private void eCR()
+  private void eGy()
   {
     AppMethodBeat.i(68874);
-    final Bankcard localBankcard = aDV(this.CCe.CwR);
+    final Bankcard localBankcard = aFo(this.CTK.COw);
     if (localBankcard != null)
     {
-      this.CBH.setVisibility(8);
-      if (bt.isNullOrNil(localBankcard.field_bankcardTypeName)) {
-        this.CBL.setText(String.format("%s(%s)", new Object[] { this.CCe.uJF, this.CCe.wCE }));
+      this.CTo.setVisibility(8);
+      if (bu.isNullOrNil(localBankcard.field_bankcardTypeName)) {
+        this.CTs.setText(String.format("%s(%s)", new Object[] { this.CTK.uVs, this.CTK.wSp }));
       }
       for (;;)
       {
-        this.CBK.setTag(this.CCe.CwR);
-        if (!localBankcard.eER()) {
+        this.CTr.setTag(this.CTK.COw);
+        if (!localBankcard.eIy()) {
           break;
         }
-        this.CBK.setImageResource(2131234612);
+        this.CTr.setImageResource(2131234612);
         AppMethodBeat.o(68874);
         return;
-        this.CBL.setText(String.format("%s %s(%s)", new Object[] { this.CCe.uJF, localBankcard.field_bankcardTypeName, this.CCe.wCE }));
+        this.CTs.setText(String.format("%s %s(%s)", new Object[] { this.CTK.uVs, localBankcard.field_bankcardTypeName, this.CTK.wSp }));
       }
       Object localObject = "";
-      com.tencent.mm.plugin.wallet_core.model.e locale = com.tencent.mm.plugin.wallet_core.d.b.i(this, localBankcard.field_bankcardType, localBankcard.eEQ());
+      e locale = com.tencent.mm.plugin.wallet_core.d.b.i(this, localBankcard.field_bankcardType, localBankcard.eIx());
       if (locale != null) {
-        localObject = locale.wqa;
+        localObject = locale.wFJ;
       }
       localObject = u.a(new com.tencent.mm.plugin.wallet_core.ui.view.c((String)localObject));
       if (localObject != null) {
-        this.CBK.setImageBitmap((Bitmap)localObject);
+        this.CTr.setImageBitmap((Bitmap)localObject);
       }
       u.a(new u.a()
       {
         public final void k(String paramAnonymousString, final Bitmap paramAnonymousBitmap)
         {
           AppMethodBeat.i(68845);
-          com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+          ar.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(68844);
-              if ((WalletLqtPlanAddUI.11.this.CCw != null) && (WalletLqtPlanAddUI.t(WalletLqtPlanAddUI.this).getTag() != null) && (WalletLqtPlanAddUI.t(WalletLqtPlanAddUI.this).getTag().equals(WalletLqtPlanAddUI.11.this.CCw.field_bindSerial))) {
+              if ((WalletLqtPlanAddUI.11.this.CUc != null) && (WalletLqtPlanAddUI.t(WalletLqtPlanAddUI.this).getTag() != null) && (WalletLqtPlanAddUI.t(WalletLqtPlanAddUI.this).getTag().equals(WalletLqtPlanAddUI.11.this.CUc.field_bindSerial))) {
                 WalletLqtPlanAddUI.t(WalletLqtPlanAddUI.this).setImageBitmap(paramAnonymousBitmap);
               }
               AppMethodBeat.o(68844);
@@ -264,89 +340,36 @@ public class WalletLqtPlanAddUI
       AppMethodBeat.o(68874);
       return;
     }
-    this.CBH.setVisibility(0);
+    this.CTo.setVisibility(0);
     AppMethodBeat.o(68874);
   }
   
-  private void eCS()
+  private void eGz()
   {
     AppMethodBeat.i(68875);
-    int i = this.CCe.fKG - 1;
-    ad.i("MicroMsg.WalletLqtPlanAddUI", "select day index: %s", new Object[] { Integer.valueOf(i) });
-    if ((i >= 0) && (i < this.CCk.length))
+    int i = this.CTK.fMJ - 1;
+    ae.i("MicroMsg.WalletLqtPlanAddUI", "select day index: %s", new Object[] { Integer.valueOf(i) });
+    if ((i >= 0) && (i < this.CTQ.length))
     {
-      this.CBG.setVisibility(8);
-      this.CBN.setText(this.CCk[i]);
+      this.CTn.setVisibility(8);
+      this.CTu.setText(this.CTQ[i]);
       AppMethodBeat.o(68875);
       return;
     }
-    this.CBG.setVisibility(0);
+    this.CTn.setVisibility(0);
     AppMethodBeat.o(68875);
   }
   
-  private void eCT()
-  {
-    AppMethodBeat.i(68876);
-    double d = bt.getDouble(this.CBI.getText(), 0.0D);
-    ad.i("MicroMsg.WalletLqtPlanAddUI", "money: %s", new Object[] { Double.valueOf(d) });
-    Bankcard localBankcard = aDV(this.CCe.CwR);
-    if ((localBankcard != null) && (d > localBankcard.field_dayQuotaKind))
-    {
-      ad.i("MicroMsg.WalletLqtPlanAddUI", "show over alert");
-      this.CBJ.setText(this.CCj);
-      this.CBJ.setTextColor(getResources().getColor(2131100800));
-      this.CCf.setVisibility(0);
-      AppMethodBeat.o(68876);
-      return;
-    }
-    this.CBJ.setText(this.CBZ);
-    this.CBJ.setTextColor(getResources().getColor(2131100707));
-    this.CCf.setVisibility(0);
-    AppMethodBeat.o(68876);
-  }
-  
-  private void eCU()
-  {
-    AppMethodBeat.i(68877);
-    if ((this.CCc != null) && (!bt.isNullOrNil(this.CCc.title)))
-    {
-      this.CBS.setClickable(true);
-      this.CBS.setOnTouchListener(new n(this));
-      q localq = new q(new q.a()
-      {
-        public final void dN(View paramAnonymousView)
-        {
-          AppMethodBeat.i(68847);
-          com.tencent.mm.wallet_core.ui.e.o(WalletLqtPlanAddUI.this.getContext(), WalletLqtPlanAddUI.u(WalletLqtPlanAddUI.this).url, true);
-          AppMethodBeat.o(68847);
-        }
-      });
-      String str = getString(2131765472);
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
-      localSpannableStringBuilder.append(this.CCc.title);
-      localSpannableStringBuilder.setSpan(localq, str.length(), localSpannableStringBuilder.length(), 18);
-      this.CBS.setText(localSpannableStringBuilder);
-      if (this.CCc.HfU) {
-        this.CBQ.setChecked(true);
-      }
-      this.CBT.setVisibility(0);
-      AppMethodBeat.o(68877);
-      return;
-    }
-    this.CBT.setVisibility(8);
-    AppMethodBeat.o(68877);
-  }
-  
-  private void tW(final boolean paramBoolean)
+  private void ud(final boolean paramBoolean)
   {
     final Dialog localDialog = null;
     AppMethodBeat.i(68871);
-    ad.i("MicroMsg.WalletLqtPlanAddUI", "do pre add plan: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.WalletLqtPlanAddUI", "do pre add plan: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     int i;
-    if ((this.mMode == 2) && (this.CCe != null))
+    if ((this.mMode == 2) && (this.CTK != null))
     {
-      i = this.CCe.CwW;
-      localDialog = com.tencent.mm.wallet_core.ui.g.c(getContext(), false, null);
+      i = this.CTK.COB;
+      localDialog = h.c(getContext(), false, null);
     }
     for (;;)
     {
@@ -362,34 +385,45 @@ public class WalletLqtPlanAddUI
   private void updateView()
   {
     AppMethodBeat.i(68872);
-    eCQ();
-    eCR();
-    eCS();
-    eCU();
-    eCT();
-    this.CBD.post(new WalletLqtPlanAddUI.10(this));
+    eGx();
+    eGy();
+    eGz();
+    eGB();
+    eGA();
+    this.CTk.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(68843);
+        if (WalletLqtPlanAddUI.r(WalletLqtPlanAddUI.this) != null) {
+          WalletLqtPlanAddUI.r(WalletLqtPlanAddUI.this).setVisibility(0);
+        }
+        p.a(WalletLqtPlanAddUI.this, WalletLqtPlanAddUI.l(WalletLqtPlanAddUI.this), WalletLqtPlanAddUI.this.findViewById(2131303141), WalletLqtPlanAddUI.s(WalletLqtPlanAddUI.this), WalletLqtPlanAddUI.r(WalletLqtPlanAddUI.this), 24);
+        AppMethodBeat.o(68843);
+      }
+    });
     AppMethodBeat.o(68872);
   }
   
   public final void bv(float paramFloat)
   {
     AppMethodBeat.i(68882);
-    ad.i("MicroMsg.WalletLqtPlanAddUI", "onUpdateWcPayKeyboardHeight");
-    if (this.CCs)
+    ae.i("MicroMsg.WalletLqtPlanAddUI", "onUpdateWcPayKeyboardHeight");
+    if (this.CTY)
     {
-      this.CCs = false;
+      this.CTY = false;
       int i = ((WindowManager)getSystemService("window")).getDefaultDisplay().getHeight();
       Rect localRect = new Rect();
-      this.CBM.getGlobalVisibleRect(localRect);
-      ad.i("MicroMsg.WalletLqtPlanAddUI", "screenHeight：%s，mWcKeyboard.getHeight():%s,pageBottomRect.bottom:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.mWcKeyboard.getHeight()), Integer.valueOf(localRect.bottom) });
-      if (i - this.mWcKeyboard.getHeight() - localRect.bottom <= com.tencent.mm.ui.aq.fromDPToPix(this, 22)) {
+      this.CTt.getGlobalVisibleRect(localRect);
+      ae.i("MicroMsg.WalletLqtPlanAddUI", "screenHeight：%s，mWcKeyboard.getHeight():%s,pageBottomRect.bottom:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.mWcKeyboard.getHeight()), Integer.valueOf(localRect.bottom) });
+      if (i - this.mWcKeyboard.getHeight() - localRect.bottom <= aq.fromDPToPix(this, 22)) {
         break label145;
       }
     }
     label145:
     for (boolean bool = false;; bool = true)
     {
-      this.CCr = bool;
+      this.CTX = bool;
       AppMethodBeat.o(68882);
       return;
     }
@@ -416,53 +450,81 @@ public class WalletLqtPlanAddUI
   public void initView()
   {
     AppMethodBeat.i(68867);
-    this.CBD = ((ScrollView)findViewById(2131301632));
-    this.CBE = ((TextView)findViewById(2131301623));
-    this.CBF = ((TextView)findViewById(2131301622));
-    this.CBG = ((TextView)findViewById(2131301627));
-    this.CBH = ((TextView)findViewById(2131301625));
-    this.CBI = ((WalletFormView)findViewById(2131301617));
-    this.CBJ = ((TextView)findViewById(2131301616));
-    this.CBK = ((CdnImageView)findViewById(2131301610));
-    this.CBL = ((TextView)findViewById(2131301612));
-    this.CBM = ((LinearLayout)findViewById(2131301611));
-    this.CBN = ((TextView)findViewById(2131301628));
-    this.CBO = ((LinearLayout)findViewById(2131301626));
-    this.CBP = ((Button)findViewById(2131301614));
-    this.CBQ = ((CheckBox)findViewById(2131301629));
-    this.CBS = ((TextView)findViewById(2131301631));
-    this.CBT = ((LinearLayout)findViewById(2131301630));
-    this.CCf = ((LinearLayout)findViewById(2131301615));
-    this.xWL = ((WcPayKeyboard)findViewById(2131307020));
-    this.CBU = findViewById(2131301633);
-    this.CBV = findViewById(2131301634);
-    this.CBW = findViewById(2131301613);
-    this.CCo = ((RelativeLayout)findViewById(2131303856));
-    this.CCl = ((Button)findViewById(2131303857));
-    this.CCm = ((Button)findViewById(2131303858));
-    this.CCn = ((Button)findViewById(2131303859));
-    this.CBI.setContentPadding$3b4dfe4b(0);
-    this.CBI.setTitleText(ah.fRG());
-    setWPKeyboard(this.CBI.getContentEt(), false, false);
-    if (d.ly(28)) {
-      this.CBI.post(new WalletLqtPlanAddUI.1(this));
+    this.CTk = ((ScrollView)findViewById(2131301632));
+    this.CTl = ((TextView)findViewById(2131301623));
+    this.CTm = ((TextView)findViewById(2131301622));
+    this.CTn = ((TextView)findViewById(2131301627));
+    this.CTo = ((TextView)findViewById(2131301625));
+    this.CTp = ((WalletFormView)findViewById(2131301617));
+    this.CTq = ((TextView)findViewById(2131301616));
+    this.CTr = ((CdnImageView)findViewById(2131301610));
+    this.CTs = ((TextView)findViewById(2131301612));
+    this.CTt = ((LinearLayout)findViewById(2131301611));
+    this.CTu = ((TextView)findViewById(2131301628));
+    this.CTv = ((LinearLayout)findViewById(2131301626));
+    this.CTw = ((Button)findViewById(2131301614));
+    this.CTx = ((CheckBox)findViewById(2131301629));
+    this.CTy = ((TextView)findViewById(2131301631));
+    this.CTz = ((LinearLayout)findViewById(2131301630));
+    this.CTL = ((LinearLayout)findViewById(2131301615));
+    this.ymE = ((WcPayKeyboard)findViewById(2131307020));
+    this.CTA = findViewById(2131301633);
+    this.CTB = findViewById(2131301634);
+    this.CTC = findViewById(2131301613);
+    this.CTU = ((RelativeLayout)findViewById(2131303856));
+    this.CTR = ((Button)findViewById(2131303857));
+    this.CTS = ((Button)findViewById(2131303858));
+    this.CTT = ((Button)findViewById(2131303859));
+    this.CTp.setContentPadding$3b4dfe4b(0);
+    this.CTp.setTitleText(ah.fWc());
+    setWPKeyboard(this.CTp.getContentEt(), false, false);
+    if (d.lA(28)) {
+      this.CTp.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(68833);
+          WalletFormView localWalletFormView = WalletLqtPlanAddUI.a(WalletLqtPlanAddUI.this);
+          if (localWalletFormView.LXo != null)
+          {
+            localWalletFormView.LXo.setFocusable(true);
+            localWalletFormView.LXo.requestFocus();
+          }
+          AppMethodBeat.o(68833);
+        }
+      });
     }
-    this.xWL.setActionText(getString(2131755903));
-    this.xWL.zj(false);
-    ((RelativeLayout.LayoutParams)this.xWL.getLayoutParams()).addRule(12);
-    this.CBI.getContentEt().setOnEditorActionListener(new WalletLqtPlanAddUI.12(this));
-    this.CBP.setOnClickListener(new View.OnClickListener()
+    this.ymE.setActionText(getString(2131755903));
+    this.ymE.zx(false);
+    ((RelativeLayout.LayoutParams)this.ymE.getLayoutParams()).addRule(12);
+    this.CTp.getContentEt().setOnEditorActionListener(new TextView.OnEditorActionListener()
+    {
+      public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
+      {
+        AppMethodBeat.i(68846);
+        if ((paramAnonymousKeyEvent.getAction() == 1) && (paramAnonymousKeyEvent.getKeyCode() == 66))
+        {
+          ae.i("MicroMsg.WalletLqtPlanAddUI", "click enter");
+          WalletLqtPlanAddUI.this.hideWcKb();
+          AppMethodBeat.o(68846);
+          return true;
+        }
+        AppMethodBeat.o(68846);
+        return true;
+      }
+    });
+    this.CTw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68857);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).isShown()) {
           WalletLqtPlanAddUI.this.hideWcKb();
         }
-        ad.i("MicroMsg.WalletLqtPlanAddUI", "click btn");
+        ae.i("MicroMsg.WalletLqtPlanAddUI", "click btn");
         WalletLqtPlanAddUI.c(WalletLqtPlanAddUI.this);
         if (!WalletLqtPlanAddUI.d(WalletLqtPlanAddUI.this).isEnabled())
         {
@@ -482,7 +544,7 @@ public class WalletLqtPlanAddUI
         }
       }
     });
-    this.CBQ.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.CTx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
@@ -491,9 +553,33 @@ public class WalletLqtPlanAddUI
         AppMethodBeat.o(68858);
       }
     });
-    this.CBM.setOnClickListener(new WalletLqtPlanAddUI.25(this));
-    this.CBO.setOnClickListener(new WalletLqtPlanAddUI.26(this));
-    this.CBI.a(new TextWatcher()
+    this.CTt.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(68859);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        WalletLqtPlanAddUI.f(WalletLqtPlanAddUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(68859);
+      }
+    });
+    this.CTv.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(68860);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        WalletLqtPlanAddUI.g(WalletLqtPlanAddUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(68860);
+      }
+    });
+    this.CTp.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -511,11 +597,11 @@ public class WalletLqtPlanAddUI
         WalletLqtPlanAddUI.c(WalletLqtPlanAddUI.this);
         if (j == 0)
         {
-          WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).zj(false);
+          WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).zx(false);
           AppMethodBeat.o(68861);
           return;
         }
-        WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).zj(true);
+        WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).zx(true);
         AppMethodBeat.o(68861);
       }
       
@@ -528,8 +614,8 @@ public class WalletLqtPlanAddUI
       public final void onVisibleStateChange(final boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(68863);
-        ad.i("MicroMsg.WalletLqtPlanAddUI", "onVisibleStateChange() visitable:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if (WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).fQZ())
+        ae.i("MicroMsg.WalletLqtPlanAddUI", "onVisibleStateChange() visitable:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (WalletLqtPlanAddUI.b(WalletLqtPlanAddUI.this).fVv())
         {
           AppMethodBeat.o(68863);
           return;
@@ -547,7 +633,7 @@ public class WalletLqtPlanAddUI
       }
     };
     setTenpayKBStateListener(this.mTenpayKBStateListener);
-    this.CBD.setOnTouchListener(new View.OnTouchListener()
+    this.CTk.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -555,8 +641,8 @@ public class WalletLqtPlanAddUI
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-        if ((WalletLqtPlanAddUI.j(WalletLqtPlanAddUI.this).isShown()) && (WalletLqtPlanAddUI.k(WalletLqtPlanAddUI.this).fQW()))
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        if ((WalletLqtPlanAddUI.j(WalletLqtPlanAddUI.this).isShown()) && (WalletLqtPlanAddUI.k(WalletLqtPlanAddUI.this).fVs()))
         {
           WalletLqtPlanAddUI.this.hideWcKb();
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanAddUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -569,10 +655,10 @@ public class WalletLqtPlanAddUI
       }
     });
     setResult(0);
-    this.CCo.setVisibility(8);
-    e(this.CCl);
-    e(this.CCm);
-    e(this.CCn);
+    this.CTU.setVisibility(8);
+    e(this.CTR);
+    e(this.CTS);
+    e(this.CTT);
     setWcKbHeightListener(this);
     AppMethodBeat.o(68867);
   }
@@ -580,7 +666,7 @@ public class WalletLqtPlanAddUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(68870);
-    ad.i("MicroMsg.WalletLqtPlanAddUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.WalletLqtPlanAddUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     String str1;
     int i;
     String str2;
@@ -594,15 +680,15 @@ public class WalletLqtPlanAddUI
       if (paramInt2 == -1)
       {
         str1 = paramIntent.getStringExtra("encrypt_pwd");
-        i = com.tencent.mm.wallet_core.ui.e.mH(this.CBI.getText(), "100");
-        str2 = this.CCe.dkR;
-        str3 = this.CCe.wCE;
-        str4 = this.CCe.CwR;
-        j = this.CCe.fKG;
-        k = this.CCe.CwW;
-        localDialog = com.tencent.mm.wallet_core.ui.g.c(getContext(), false, null);
-        localObject = this.CBX.CxI;
-        com.tencent.mm.vending.g.g.a(str1, str2, str3, str4, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k)).c((com.tencent.mm.vending.c.a)localObject).f(new com.tencent.mm.vending.c.a() {}).a(new com.tencent.mm.vending.g.d.a()
+        i = f.mN(this.CTp.getText(), "100");
+        str2 = this.CTK.dlT;
+        str3 = this.CTK.wSp;
+        str4 = this.CTK.COw;
+        j = this.CTK.fMJ;
+        k = this.CTK.COB;
+        localDialog = h.c(getContext(), false, null);
+        localObject = this.CTD.CPn;
+        g.a(str1, str2, str3, str4, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k)).c((com.tencent.mm.vending.c.a)localObject).f(new com.tencent.mm.vending.c.a() {}).a(new com.tencent.mm.vending.g.d.a()
         {
           public final void ce(Object paramAnonymousObject)
           {
@@ -624,15 +710,15 @@ public class WalletLqtPlanAddUI
       if ((paramInt1 == 4) && (paramInt2 == -1))
       {
         str1 = paramIntent.getStringExtra("encrypt_pwd");
-        i = com.tencent.mm.wallet_core.ui.e.mH(this.CBI.getText(), "100");
-        j = this.CCe.CwW;
-        str2 = this.CCe.dkR;
-        str3 = this.CCe.wCE;
-        str4 = this.CCe.CwR;
-        k = this.CCe.fKG;
-        localDialog = com.tencent.mm.wallet_core.ui.g.c(getContext(), false, null);
-        localObject = this.CBX.CxJ;
-        com.tencent.mm.vending.g.g.a(Integer.valueOf(j), str2, str3, str4, Integer.valueOf(i), Integer.valueOf(k), str1).c((com.tencent.mm.vending.c.a)localObject).f(new com.tencent.mm.vending.c.a() {}).a(new com.tencent.mm.vending.g.d.a()
+        i = f.mN(this.CTp.getText(), "100");
+        j = this.CTK.COB;
+        str2 = this.CTK.dlT;
+        str3 = this.CTK.wSp;
+        str4 = this.CTK.COw;
+        k = this.CTK.fMJ;
+        localDialog = h.c(getContext(), false, null);
+        localObject = this.CTD.CPo;
+        g.a(Integer.valueOf(j), str2, str3, str4, Integer.valueOf(i), Integer.valueOf(k), str1).c((com.tencent.mm.vending.c.a)localObject).f(new com.tencent.mm.vending.c.a() {}).a(new com.tencent.mm.vending.g.d.a()
         {
           public final void ce(Object paramAnonymousObject)
           {
@@ -660,14 +746,14 @@ public class WalletLqtPlanAddUI
     if (this.mMode == 2) {}
     try
     {
-      paramBundle = new ckp();
+      paramBundle = new clj();
       byte[] arrayOfByte = getIntent().getByteArrayExtra("key_plan_item");
       if (arrayOfByte != null)
       {
-        this.CCe = ((ckp)paramBundle.parseFrom(arrayOfByte));
-        this.CCg = this.CCe.dOa;
-        this.CCh = this.CCe.fKG;
-        this.CCi = this.CCe.CwR;
+        this.CTK = ((clj)paramBundle.parseFrom(arrayOfByte));
+        this.CTM = this.CTK.dPq;
+        this.CTN = this.CTK.fMJ;
+        this.CTO = this.CTK.COw;
       }
     }
     catch (IOException paramBundle)
@@ -675,18 +761,18 @@ public class WalletLqtPlanAddUI
       for (;;)
       {
         int i;
-        ad.printErrStackTrace("MicroMsg.WalletLqtPlanAddUI", paramBundle, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.WalletLqtPlanAddUI", paramBundle, "", new Object[0]);
       }
       initView();
       updateView();
-      tW(true);
+      ud(true);
       AppMethodBeat.o(68866);
     }
-    this.CCk = new String[28];
+    this.CTQ = new String[28];
     i = 0;
     while (i < 28)
     {
-      this.CCk[i] = getString(2131765429, new Object[] { String.valueOf(i + 1) });
+      this.CTQ[i] = getString(2131765429, new Object[] { String.valueOf(i + 1) });
       i += 1;
     }
   }
@@ -701,7 +787,7 @@ public class WalletLqtPlanAddUI
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(68869);
-    if ((this.xWL.isShown()) && (bt.isNullOrNil(this.CBI.getText())))
+    if ((this.ymE.isShown()) && (bu.isNullOrNil(this.CTp.getText())))
     {
       hideWcKb();
       AppMethodBeat.o(68869);
@@ -720,7 +806,7 @@ public class WalletLqtPlanAddUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanAddUI
  * JD-Core Version:    0.7.0.1
  */

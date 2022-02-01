@@ -5,29 +5,29 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.jsapi.video.j;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizPlaylistFileMgr;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "playlistManager", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "getPlaylistManager", "()Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "isProxyOpen", "", "save", "", "url", "content", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizPlaylistFileMgr;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "playlistManager", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "getPlaylistManager", "()Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "isProxyOpen", "", "save", "", "url", "content", "plugin-brandservice_release"})
 public final class a
 {
   public static final String TAG = "MicroMsg.BizPlaylistFileMgr";
-  public static final ao oqj;
-  public static final a oqk;
+  public static final ap owF;
+  public static final a owG;
   
   static
   {
     AppMethodBeat.i(175529);
-    oqk = new a();
+    owG = new a();
     TAG = "MicroMsg.BizPlaylistFileMgr";
-    oqj = new ao("bizplaylist", 86400L);
+    owF = new ap("bizplaylist", 86400L);
     AppMethodBeat.o(175529);
   }
   
-  public static boolean bRY()
+  public static boolean bTk()
   {
     AppMethodBeat.i(175528);
-    if ((j.bnr().bnt()) && (((b)g.ab(b.class)).a(b.a.qux, 0) == 1))
+    if ((j.bob().bod()) && (((b)g.ab(b.class)).a(b.a.qBo, 0) == 1))
     {
       AppMethodBeat.o(175528);
       return true;
@@ -38,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.a
  * JD-Core Version:    0.7.0.1
  */

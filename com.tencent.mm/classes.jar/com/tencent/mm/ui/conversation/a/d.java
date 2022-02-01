@@ -5,8 +5,8 @@ import android.widget.Button;
 
 public final class d
 {
-  View KxT;
-  Button KxU;
+  View KUn;
+  Button KUo;
 }
 
 

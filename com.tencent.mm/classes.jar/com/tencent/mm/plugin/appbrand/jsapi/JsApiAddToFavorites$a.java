@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cv;
-import com.tencent.mm.g.a.cv.b;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.model.u;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.g.a.cw.b;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.protocal.protobuf.ajl;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akj;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akt;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import com.tencent.mm.ui.widget.snackbar.a.c;
 import java.util.LinkedList;
@@ -24,73 +24,73 @@ final class JsApiAddToFavorites$a
 {
   public final void a(final AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(188259);
+    AppMethodBeat.i(222385);
     paramProcessRequest = (JsApiAddToFavorites.IPCFavRequest)paramProcessRequest;
-    Object localObject = new ajn();
-    ((ajn)localObject).ZI(19);
-    ((ajn)localObject).aOu(paramProcessRequest.krn);
-    if (bt.isNullOrNil(paramProcessRequest.krn)) {
-      ((ajn)localObject).wl(true);
+    Object localObject = new ajx();
+    ((ajx)localObject).aao(19);
+    ((ajx)localObject).aPR(paramProcessRequest.kuD);
+    if (bu.isNullOrNil(paramProcessRequest.kuD)) {
+      ((ajx)localObject).wt(true);
     }
-    ((ajn)localObject).aOt(paramProcessRequest.krn);
-    ((ajn)localObject).aOf(paramProcessRequest.title);
-    ((ajn)localObject).aOg(paramProcessRequest.title);
-    ((ajn)localObject).aOs(com.tencent.mm.plugin.fav.a.b.di(localObject.toString(), 19));
-    akj localakj = new akj();
-    localakj.aPf(u.aAm());
-    localakj.CM(bt.flT());
-    localakj.ZR(paramProcessRequest.scene);
-    ajl localajl = new ajl();
-    localajl.appId = paramProcessRequest.appId;
-    localajl.iconUrl = paramProcessRequest.iconUrl;
-    localajl.dki = paramProcessRequest.dki;
-    localajl.dtF = paramProcessRequest.hQh;
-    localajl.version = paramProcessRequest.version;
-    localajl.username = paramProcessRequest.username;
-    localajl.kro = paramProcessRequest.kro;
-    localajl.jXI = paramProcessRequest.jXI;
-    localajl.dJW = paramProcessRequest.dJW;
-    localajl.subType = paramProcessRequest.subType;
-    akd localakd = new akd();
-    localakd.nZa.add(localObject);
-    localakd.c(localajl);
-    localakd.a(localakj);
-    localObject = new cv();
-    localakd.aPd(paramProcessRequest.title);
-    ((cv)localObject).dnG.desc = paramProcessRequest.title;
-    ((cv)localObject).dnG.title = paramProcessRequest.title;
-    ((cv)localObject).dnG.dnI = localakd;
-    ((cv)localObject).dnG.type = 19;
-    a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
-    int i = ((cv)localObject).dnH.ret;
+    ((ajx)localObject).aPQ(paramProcessRequest.kuD);
+    ((ajx)localObject).aPC(paramProcessRequest.title);
+    ((ajx)localObject).aPD(paramProcessRequest.title);
+    ((ajx)localObject).aPP(com.tencent.mm.plugin.fav.a.b.dm(localObject.toString(), 19));
+    akt localakt = new akt();
+    localakt.aQC(v.aAC());
+    localakt.Dk(bu.fpO());
+    localakt.aax(paramProcessRequest.scene);
+    ajv localajv = new ajv();
+    localajv.appId = paramProcessRequest.appId;
+    localajv.iconUrl = paramProcessRequest.iconUrl;
+    localajv.dlk = paramProcessRequest.dlk;
+    localajv.duK = paramProcessRequest.hSZ;
+    localajv.version = paramProcessRequest.version;
+    localajv.username = paramProcessRequest.username;
+    localajv.kuE = paramProcessRequest.kuE;
+    localajv.kaX = paramProcessRequest.kaX;
+    localajv.dLl = paramProcessRequest.dLl;
+    localajv.subType = paramProcessRequest.subType;
+    akn localakn = new akn();
+    localakn.oeJ.add(localObject);
+    localakn.c(localajv);
+    localakn.a(localakt);
+    localObject = new cw();
+    localakn.aQA(paramProcessRequest.title);
+    ((cw)localObject).doL.desc = paramProcessRequest.title;
+    ((cw)localObject).doL.title = paramProcessRequest.title;
+    ((cw)localObject).doL.doN = localakn;
+    ((cw)localObject).doL.type = 19;
+    a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+    int i = ((cw)localObject).doM.ret;
     paramProcessRequest = new JsApiAddToFavorites.IPCFavResult();
     paramProcessRequest.ret = i;
-    ad.i("MicroMsg.JsApiAddToFavorites", "fav result:%d", new Object[] { Integer.valueOf(i) });
-    e.a(-1, i, bhJ(), null, new a.c()
+    ae.i("MicroMsg.JsApiAddToFavorites", "fav result:%d", new Object[] { Integer.valueOf(i) });
+    e.a(-1, i, bis(), null, new a.c()
     {
-      public final void bio() {}
+      public final void biX() {}
       
       public final void onHide()
       {
-        AppMethodBeat.i(188257);
+        AppMethodBeat.i(222383);
         JsApiAddToFavorites.a.a(JsApiAddToFavorites.a.this, paramProcessRequest);
-        AppMethodBeat.o(188257);
+        AppMethodBeat.o(222383);
       }
       
       public final void onShow() {}
     }, null, new a.b()
     {
-      public final void bip()
+      public final void biY()
       {
-        AppMethodBeat.i(188258);
-        gw localgw = new gw();
-        localgw.dsV.type = 35;
-        localgw.dsV.context = JsApiAddToFavorites.a.a(JsApiAddToFavorites.a.this);
-        a.IbL.l(localgw);
-        AppMethodBeat.o(188258);
+        AppMethodBeat.i(222384);
+        gx localgx = new gx();
+        localgx.dub.type = 35;
+        localgx.dub.context = JsApiAddToFavorites.a.a(JsApiAddToFavorites.a.this);
+        a.IvT.l(localgx);
+        AppMethodBeat.o(222384);
       }
     });
-    AppMethodBeat.o(188259);
+    AppMethodBeat.o(222385);
   }
 }
 

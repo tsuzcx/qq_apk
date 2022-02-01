@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.csu;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cto;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class j$a
   extends l.d
   implements l.b
 {
-  public csu rgb;
+  public cto roe;
   
   public j$a()
   {
     AppMethodBeat.i(103595);
-    this.rgb = new csu();
+    this.roe = new cto();
     AppMethodBeat.o(103595);
   }
   
@@ -36,11 +36,11 @@ public final class j$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(103596);
-    setRsaInfo(ac.fgx());
-    this.rgb.FDQ = new SKBuiltinBuffer_t().setBuffer(bt.flL());
-    this.rgb.setBaseRequest(l.a(this));
-    setPassKey(this.rgb.FDQ.getBuffer().toByteArray());
-    byte[] arrayOfByte = this.rgb.toByteArray();
+    setRsaInfo(ac.fkn());
+    this.roe.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
+    this.roe.setBaseRequest(l.a(this));
+    setPassKey(this.roe.FWl.getBuffer().toByteArray());
+    byte[] arrayOfByte = this.roe.toByteArray();
     AppMethodBeat.o(103596);
     return arrayOfByte;
   }

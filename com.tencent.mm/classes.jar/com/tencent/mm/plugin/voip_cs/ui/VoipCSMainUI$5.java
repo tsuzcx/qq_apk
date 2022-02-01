@@ -11,15 +11,15 @@ final class VoipCSMainUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(192879);
+    AppMethodBeat.i(193490);
     paramDialogInterface.dismiss();
-    this.Cwj.Vb(2);
-    AppMethodBeat.o(192879);
+    this.CNO.VI(2);
+    AppMethodBeat.o(193490);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.ui.VoipCSMainUI.5
  * JD-Core Version:    0.7.0.1
  */

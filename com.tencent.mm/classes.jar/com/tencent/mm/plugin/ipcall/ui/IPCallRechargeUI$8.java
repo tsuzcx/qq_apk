@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class IPCallRechargeUI$8
   implements DialogInterface.OnCancelListener
@@ -17,16 +17,16 @@ final class IPCallRechargeUI$8
     AppMethodBeat.i(25879);
     try
     {
-      if (this.uTj.uTi != null) {
-        ba.aiU().a(this.uTj.uTi);
+      if (this.veW.veV != null) {
+        bc.ajj().a(this.veW.veV);
       }
-      this.uTj.finish();
+      this.veW.finish();
       AppMethodBeat.o(25879);
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      ad.e("MicroMsg.IPCallRechargeUI", "cancel getProductListScene error: %s", new Object[] { paramDialogInterface.getMessage() });
+      ae.e("MicroMsg.IPCallRechargeUI", "cancel getProductListScene error: %s", new Object[] { paramDialogInterface.getMessage() });
       AppMethodBeat.o(25879);
     }
   }

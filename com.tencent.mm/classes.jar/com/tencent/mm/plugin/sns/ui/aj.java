@@ -9,14 +9,14 @@ import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.plugin.sns.j.g;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.bb;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.model.bc;
+import com.tencent.mm.plugin.sns.model.bd;
 import com.tencent.mm.pluginsdk.i.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.dhj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,126 +25,131 @@ import java.util.List;
 public final class aj
   implements ac
 {
+  private int Ahk;
+  private e Ahq = null;
+  private String Ahr = "";
+  private boolean AiJ = false;
+  private boolean AiK = false;
+  private WXMediaMessage AiL = null;
+  private String AkK = "";
+  private boolean AkL = false;
   private String appName = "";
-  private String duW = "";
-  private MMActivity fLP;
-  private int zQd;
-  private e zQj = null;
-  private String zQk = "";
-  private boolean zRC = false;
-  private boolean zRD = false;
-  private WXMediaMessage zRE = null;
-  private String zTD = "";
-  private boolean zTE = false;
-  private int znT = 1;
+  private String dwb = "";
+  private MMActivity fNT;
+  private int zFi = 1;
   
   public aj(MMActivity paramMMActivity, boolean paramBoolean)
   {
-    this.fLP = paramMMActivity;
-    this.zTE = paramBoolean;
+    this.fNT = paramMMActivity;
+    this.AkL = paramBoolean;
   }
   
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bvq parambvq, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bwk parambwk, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(98012);
-    if (this.fLP.isFinishing())
+    if (this.fNT.isFinishing())
     {
       AppMethodBeat.o(98012);
       return false;
     }
-    paramLinkedList = new bc(2);
+    paramLinkedList = new bd(2);
     paramPInt.value = paramLinkedList.beN;
-    if (paramInt3 > a.zbZ) {
-      paramLinkedList.Qb(2);
+    if (paramInt3 > a.zsC) {
+      paramLinkedList.QI(2);
     }
     paramPInt = new LinkedList();
     if (paramList1 != null)
     {
       new LinkedList();
-      paramString2 = d.fas();
+      paramString2 = d.feg();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         String str = (String)paramList1.next();
         if (!paramString2.contains(str))
         {
-          dhj localdhj = new dhj();
-          localdhj.nDo = str;
-          paramPInt.add(localdhj);
+          did localdid = new did();
+          localdid.nIJ = str;
+          paramPInt.add(localdid);
         }
       }
     }
     if (paramBoolean) {
-      paramLinkedList.Qh(1);
+      paramLinkedList.QO(1);
     }
     for (;;)
     {
       if (parami != null) {
-        paramLinkedList.jr(parami.token, parami.GTp);
+        paramLinkedList.jy(parami.token, parami.HmQ);
       }
-      paramLinkedList.Qg(this.zQd);
-      if (this.zRC) {
-        paramLinkedList.Qg(5);
+      paramLinkedList.QN(this.Ahk);
+      if (this.AiJ) {
+        paramLinkedList.QN(5);
       }
-      if ((this.zRD) && (this.zRE != null))
+      if ((this.AiK) && (this.AiL != null))
       {
-        paramLinkedList.azk(this.zRE.mediaTagName);
-        paramLinkedList.aD(this.duW, this.zRE.messageExt, this.zRE.messageAction);
+        paramLinkedList.aAB(this.AiL.mediaTagName);
+        paramLinkedList.aD(this.dwb, this.AiL.messageExt, this.AiL.messageAction);
       }
-      paramLinkedList.cc(this.znT, this.zQk);
+      paramLinkedList.cc(this.zFi, this.Ahr);
       paramLinkedList.g(null, null, null, paramInt4, paramInt5);
-      paramLinkedList.azj(paramString1).a(parambvq).aU(paramPInt).Qe(paramInt1).Qf(paramInt2).fL(paramList2);
+      paramLinkedList.aAA(paramString1).a(parambwk).aV(paramPInt).QL(paramInt1).QM(paramInt2).fU(paramList2);
       paramInt1 = paramLinkedList.commit();
-      if (this.zQj != null)
+      if (this.Ahq != null)
       {
-        this.zQj.pX(paramInt1);
-        g.zus.c(this.zQj);
+        this.Ahq.qa(paramInt1);
+        g.zLJ.c(this.Ahq);
       }
-      this.fLP.setResult(-1);
-      ag.dUa().dSE();
-      this.fLP.finish();
+      this.fNT.setResult(-1);
+      ah.dXA().dWc();
+      this.fNT.finish();
       AppMethodBeat.o(98012);
       return true;
-      paramLinkedList.Qh(0);
+      paramLinkedList.QO(0);
     }
   }
   
-  public final void ap(Bundle paramBundle)
+  public final void aq(Bundle paramBundle)
   {
     AppMethodBeat.i(98011);
-    this.zQj = e.w(this.fLP.getIntent());
-    this.zTD = this.fLP.getIntent().getStringExtra("Kdescription");
-    this.duW = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.zRC = this.fLP.getIntent().getBooleanExtra("KThrid_app", false);
-    this.zRD = this.fLP.getIntent().getBooleanExtra("KSnsAction", false);
-    this.zQd = this.fLP.getIntent().getIntExtra("Ksnsupload_source", 0);
-    paramBundle = this.fLP.getIntent().getBundleExtra("Ksnsupload_timeline");
+    this.Ahq = e.w(this.fNT.getIntent());
+    this.AkK = this.fNT.getIntent().getStringExtra("Kdescription");
+    this.dwb = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.AiJ = this.fNT.getIntent().getBooleanExtra("KThrid_app", false);
+    this.AiK = this.fNT.getIntent().getBooleanExtra("KSnsAction", false);
+    this.Ahk = this.fNT.getIntent().getIntExtra("Ksnsupload_source", 0);
+    paramBundle = this.fNT.getIntent().getBundleExtra("Ksnsupload_timeline");
     if (paramBundle != null) {
-      this.zRE = new SendMessageToWX.Req(paramBundle).message;
+      this.AiL = new SendMessageToWX.Req(paramBundle).message;
     }
-    if (this.fLP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
-    for (this.znT = 1;; this.znT = 0)
+    if (this.fNT.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.zFi = 1;; this.zFi = 0)
     {
-      this.zQk = bt.bI(this.fLP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      this.Ahr = bu.bI(this.fNT.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
       AppMethodBeat.o(98011);
       return;
     }
   }
   
-  public final void aq(Bundle paramBundle) {}
+  public final void ar(Bundle paramBundle) {}
   
-  public final boolean dZG()
+  public final boolean edl()
   {
-    return this.zTE;
+    return this.AkL;
   }
   
-  public final View dZH()
+  public final View edm()
   {
     return null;
   }
   
-  public final boolean dZI()
+  public final boolean edn()
+  {
+    return true;
+  }
+  
+  public final boolean edo()
   {
     return false;
   }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.n;
 
@@ -13,7 +13,7 @@ public class Plugin
     return null;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(71960);
     com.tencent.mm.plugin.wallet_payu.a.d locald = new com.tencent.mm.plugin.wallet_payu.a.d();

@@ -10,15 +10,15 @@ public abstract interface b
   
   public abstract void a(g paramg);
   
-  public abstract g aZE(String paramString);
-  
   public abstract void b(g paramg);
+  
+  public abstract g bbh(String paramString);
   
   public abstract boolean c(g paramg);
   
   public abstract void d(g paramg);
   
-  public abstract Map<String, Integer> fVL();
+  public abstract Map<String, Integer> gak();
 }
 
 

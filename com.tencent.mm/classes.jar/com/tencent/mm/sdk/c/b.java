@@ -1,9 +1,9 @@
 package com.tencent.mm.sdk.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public abstract class b
 {
   protected final String userAgent = "weixin/android";
   
-  public static Map<String, String> auU(String paramString)
+  public static Map<String, String> awj(String paramString)
   {
     HashMap localHashMap = new HashMap();
     if ((paramString == null) || (paramString.length() == 0)) {}
@@ -45,40 +45,40 @@ public abstract class b
   
   public static final class b
   {
-    public String IbX;
-    public b.a IbY = null;
+    public String Iwf;
+    public b.a Iwg = null;
     public String host;
     public int timeout;
     public String uri;
-    public int xaV = 0;
-    public Map<String, String> xaW = null;
-    public Map<String, String> xaX = null;
+    public int xqM = 0;
+    public Map<String, String> xqN = null;
+    public Map<String, String> xqO = null;
     
     public final String getUrl()
     {
       AppMethodBeat.i(157522);
       StringBuilder localStringBuilder = new StringBuilder();
       if ((!this.uri.startsWith("http://")) && (!this.uri.startsWith("https://"))) {
-        localStringBuilder.append(this.IbX + this.host);
+        localStringBuilder.append(this.Iwf + this.host);
       }
       localStringBuilder.append(this.uri);
-      if (this.xaW == null)
+      if (this.xqN == null)
       {
         str1 = localStringBuilder.toString();
         AppMethodBeat.o(157522);
         return str1;
       }
       localStringBuilder.append('?');
-      Iterator localIterator = this.xaW.keySet().iterator();
+      Iterator localIterator = this.xqN.keySet().iterator();
       int i = 1;
       if (localIterator.hasNext())
       {
         String str2 = (String)localIterator.next();
-        String str3 = (String)this.xaW.get(str2);
+        String str3 = (String)this.xqN.get(str2);
         if (i != 0) {}
         for (str1 = "";; str1 = "&")
         {
-          localStringBuilder.append(str1).append(URLEncoder.encode(str2, "utf-8")).append('=').append(URLEncoder.encode(bt.nullAsNil(str3), "utf-8"));
+          localStringBuilder.append(str1).append(URLEncoder.encode(str2, "utf-8")).append('=').append(URLEncoder.encode(bu.nullAsNil(str3), "utf-8"));
           i = 0;
           break;
         }
@@ -99,7 +99,7 @@ public abstract class b
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        ad.printErrStackTrace("MicroMsg.HttpWrapperBase", localUnsupportedEncodingException, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.HttpWrapperBase", localUnsupportedEncodingException, "", new Object[0]);
         AppMethodBeat.o(157523);
       }
       return "";
@@ -108,10 +108,10 @@ public abstract class b
   
   public static class c
   {
-    public b.a IbY;
+    public b.a Iwg;
     public String content;
     public int status = 0;
-    public Map<String, String> xaX = null;
+    public Map<String, String> xqO = null;
     
     public c(String paramString)
     {
@@ -125,9 +125,9 @@ public abstract class b
       AppMethodBeat.i(157524);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
-      if (this.xaX != null)
+      if (this.xqO != null)
       {
-        localObject = this.xaX;
+        localObject = this.xqO;
         localObject = localStringBuilder.append(localObject).append(", content length :");
         if (this.content == null) {
           break label87;

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.soter.b;
 
 public abstract interface a
 {
-  public abstract void RP(int paramInt);
+  public abstract void Sw(int paramInt);
   
-  public abstract void efs();
+  public abstract void eja();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.a
  * JD-Core Version:    0.7.0.1
  */

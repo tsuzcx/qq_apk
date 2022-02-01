@@ -3,188 +3,188 @@ package com.tencent.mm.plugin.expt.h;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public final class b
 {
-  private static b rbF;
-  private String rbD = null;
-  private String rbE = null;
+  private static b rjL;
+  private String rjJ = null;
+  private String rjK = null;
   
-  private int afC(String paramString)
+  private int agy(String paramString)
   {
-    AppMethodBeat.i(195162);
+    AppMethodBeat.i(196724);
     try
     {
-      int i = crB().getInt(paramString, 0);
-      AppMethodBeat.o(195162);
+      int i = ctd().getInt(paramString, 0);
+      AppMethodBeat.o(196724);
       return i;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(195162);
+      AppMethodBeat.o(196724);
     }
     return 0;
   }
   
-  public static b crz()
+  public static b ctb()
   {
-    AppMethodBeat.i(195155);
-    if (rbF == null) {
-      rbF = new b();
+    AppMethodBeat.i(196717);
+    if (rjL == null) {
+      rjL = new b();
     }
-    b localb = rbF;
-    AppMethodBeat.o(195155);
+    b localb = rjL;
+    AppMethodBeat.o(196717);
     return localb;
   }
   
   private String info()
   {
-    AppMethodBeat.i(195163);
+    AppMethodBeat.i(196725);
     String str = hashCode();
-    AppMethodBeat.o(195163);
+    AppMethodBeat.o(196725);
     return str;
   }
   
-  public final a DA(int paramInt)
+  public final a DN(int paramInt)
   {
-    AppMethodBeat.i(195160);
-    Object localObject = crA();
+    AppMethodBeat.i(196722);
+    Object localObject = ctc();
     if (localObject == null)
     {
-      AppMethodBeat.o(195160);
+      AppMethodBeat.o(196722);
       return null;
     }
-    localObject = ((ax)localObject).getString(String.valueOf(paramInt), "");
-    if (!bt.isNullOrNil((String)localObject))
+    localObject = ((ay)localObject).getString(String.valueOf(paramInt), "");
+    if (!bu.isNullOrNil((String)localObject))
     {
       a locala = new a();
-      if (locala.afB((String)localObject))
+      if (locala.agx((String)localObject))
       {
-        AppMethodBeat.o(195160);
+        AppMethodBeat.o(196722);
         return locala;
       }
     }
-    AppMethodBeat.o(195160);
+    AppMethodBeat.o(196722);
     return null;
   }
   
   public final int a(String paramString1, String paramString2, PString paramPString)
   {
-    AppMethodBeat.i(195161);
-    int i = afC(paramString1);
+    AppMethodBeat.i(196723);
+    int i = agy(paramString1);
     a locala;
     if (i > 0)
     {
-      locala = DA(i);
+      locala = DN(i);
       if ((locala != null) && (locala.isReady()))
       {
-        HashMap localHashMap = locala.cry();
+        HashMap localHashMap = locala.cta();
         if ((localHashMap != null) && (!localHashMap.isEmpty()))
         {
           paramPString.value = ((String)localHashMap.get(paramString1));
-          if (bt.isNullOrNil(paramPString.value)) {}
+          if (bu.isNullOrNil(paramPString.value)) {}
         }
       }
     }
-    for (i = locala.rbx;; i = 0)
+    for (i = locala.rjD;; i = 0)
     {
       if (i <= 0) {
         paramPString.value = paramString2;
       }
-      AppMethodBeat.o(195161);
+      AppMethodBeat.o(196723);
       return i;
     }
   }
   
-  public final ax crA()
+  public final ay ctc()
   {
-    AppMethodBeat.i(195156);
-    d.crP();
+    AppMethodBeat.i(196718);
+    d.ctr();
     int i = d.getUin();
     if (i == 0)
     {
-      AppMethodBeat.o(195156);
+      AppMethodBeat.o(196718);
       return null;
     }
     Object localObject = i + "_WxExptAppIdMmkv";
-    if (!bt.lQ(this.rbD, (String)localObject))
+    if (!bu.lX(this.rjJ, (String)localObject))
     {
-      ad.i("MicroMsg.ExptAppManager", "%s get exptId mmkv change uin old[%s] new[%s]", new Object[] { info(), this.rbD, localObject });
-      this.rbD = ((String)localObject);
+      ae.i("MicroMsg.ExptAppManager", "%s get exptId mmkv change uin old[%s] new[%s]", new Object[] { info(), this.rjJ, localObject });
+      this.rjJ = ((String)localObject);
     }
-    localObject = ax.aQz(this.rbD);
-    AppMethodBeat.o(195156);
+    localObject = ay.aRW(this.rjJ);
+    AppMethodBeat.o(196718);
     return localObject;
   }
   
-  public final ax crB()
+  public final ay ctd()
   {
-    AppMethodBeat.i(195157);
-    d.crP();
+    AppMethodBeat.i(196719);
+    d.ctr();
     int i = d.getUin();
     if (i == 0)
     {
-      AppMethodBeat.o(195157);
+      AppMethodBeat.o(196719);
       return null;
     }
     Object localObject = i + "_WxExptAppKeyMmkv";
-    if (!bt.lQ(this.rbE, (String)localObject))
+    if (!bu.lX(this.rjK, (String)localObject))
     {
-      ad.i("MicroMsg.ExptAppManager", "%s get exptKey mmkv change uin old[%s] new[%s]", new Object[] { info(), this.rbE, localObject });
-      this.rbE = ((String)localObject);
+      ae.i("MicroMsg.ExptAppManager", "%s get exptKey mmkv change uin old[%s] new[%s]", new Object[] { info(), this.rjK, localObject });
+      this.rjK = ((String)localObject);
     }
-    localObject = ax.aQz(this.rbE);
-    AppMethodBeat.o(195157);
+    localObject = ay.aRW(this.rjK);
+    AppMethodBeat.o(196719);
     return localObject;
   }
   
-  public final List<a> crC()
+  public final List<a> cte()
   {
-    AppMethodBeat.i(195159);
+    AppMethodBeat.i(196721);
     ArrayList localArrayList = new ArrayList();
-    ax localax = crA();
-    if (localax == null)
+    ay localay = ctc();
+    if (localay == null)
     {
-      AppMethodBeat.o(195159);
+      AppMethodBeat.o(196721);
       return localArrayList;
     }
-    String[] arrayOfString = localax.allKeys();
+    String[] arrayOfString = localay.allKeys();
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
-        String str = localax.getString(arrayOfString[i], "");
-        if (!bt.isNullOrNil(str))
+        String str = localay.getString(arrayOfString[i], "");
+        if (!bu.isNullOrNil(str))
         {
           a locala = new a();
-          if (locala.afB(str)) {
+          if (locala.agx(str)) {
             localArrayList.add(locala);
           }
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(195159);
+    AppMethodBeat.o(196721);
     return localArrayList;
   }
   
   public final boolean removeAll()
   {
-    AppMethodBeat.i(195158);
+    AppMethodBeat.i(196720);
     try
     {
-      crA().clear().commit();
-      crB().clear().commit();
+      ctc().clear().commit();
+      ctd().clear().commit();
       label31:
-      AppMethodBeat.o(195158);
+      AppMethodBeat.o(196720);
       return true;
     }
     catch (Exception localException)

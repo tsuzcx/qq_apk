@@ -11,7 +11,7 @@ final class IPCallContactUI$8
   public final void run()
   {
     AppMethodBeat.i(25698);
-    a.ddp().a(IPCallContactUI.g(this.uQB), false);
+    a.dgh().a(IPCallContactUI.g(this.vcn), false);
     AppMethodBeat.o(25698);
   }
 }

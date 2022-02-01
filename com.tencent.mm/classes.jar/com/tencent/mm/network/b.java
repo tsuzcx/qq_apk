@@ -1,8 +1,8 @@
 package com.tencent.mm.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.InputStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -12,23 +12,23 @@ import java.util.List;
 
 public final class b
 {
-  static a iEy;
+  static a iHr;
   
-  public static v Iq(String paramString)
+  public static v IS(String paramString)
   {
-    AppMethodBeat.i(221713);
+    AppMethodBeat.i(224422);
     paramString = a(paramString, null);
-    AppMethodBeat.o(221713);
+    AppMethodBeat.o(224422);
     return paramString;
   }
   
-  public static x Ir(String paramString)
+  public static x IT(String paramString)
   {
     AppMethodBeat.i(132664);
     b localb = new b(paramString);
-    paramString = new x(paramString, localb.iEz);
-    paramString.iFG = localb.ip;
-    if (1 == localb.iEz)
+    paramString = new x(paramString, localb.iHs);
+    paramString.iIz = localb.ip;
+    if (1 == localb.iHs)
     {
       paramString.setRequestProperty("Host", localb.host);
       paramString.setRequestProperty("X-Online-Host", localb.host);
@@ -37,7 +37,7 @@ public final class b
     return paramString;
   }
   
-  public static y Is(String paramString)
+  public static y IU(String paramString)
   {
     AppMethodBeat.i(132666);
     paramString = new y(paramString);
@@ -61,7 +61,7 @@ public final class b
     }
     catch (Exception paramw)
     {
-      ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.n(paramw) });
+      ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramw) });
       AppMethodBeat.o(132665);
     }
     return -3;
@@ -70,12 +70,12 @@ public final class b
   public static int a(String paramString, boolean paramBoolean, List<String> paramList)
   {
     AppMethodBeat.i(132659);
-    if ((iEy == null) || (iEy.aiY() == null))
+    if ((iHr == null) || (iHr.ajn() == null))
     {
       AppMethodBeat.o(132659);
       return -1;
     }
-    int i = iEy.aiY().a(paramString, paramBoolean, paramList);
+    int i = iHr.ajn().a(paramString, paramBoolean, paramList);
     AppMethodBeat.o(132659);
     return i;
   }
@@ -87,10 +87,10 @@ public final class b
     if (paramb == null) {
       localb = new b(paramString);
     }
-    ad.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.iEz) });
-    paramString = new v(localb.url, localb.iEz);
-    paramString.iFz = localb.ip;
-    if (1 == localb.iEz)
+    ae.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.iHs) });
+    paramString = new v(localb.url, localb.iHs);
+    paramString.iIs = localb.ip;
+    if (1 == localb.iHs)
     {
       paramString.setRequestProperty("Host", localb.host);
       paramString.setRequestProperty("X-Online-Host", localb.host);
@@ -102,28 +102,28 @@ public final class b
   public static void a(a parama)
   {
     AppMethodBeat.i(132657);
-    ad.i("MicroMsg.GprsSetting", "sethostimpl %b, [%s]", new Object[] { Boolean.FALSE, bt.flS() });
-    iEy = parama;
+    ae.i("MicroMsg.GprsSetting", "sethostimpl %b, [%s]", new Object[] { Boolean.FALSE, bu.fpN() });
+    iHr = parama;
     AppMethodBeat.o(132657);
   }
   
   public static int b(boolean paramBoolean, List<String> paramList, String paramString)
   {
     AppMethodBeat.i(132658);
-    if (iEy == null)
+    if (iHr == null)
     {
       AppMethodBeat.o(132658);
       return -1;
     }
     try
     {
-      int i = iEy.aiY().a(paramString, paramBoolean, paramList);
+      int i = iHr.ajn().a(paramString, paramBoolean, paramList);
       AppMethodBeat.o(132658);
       return i;
     }
     catch (Exception paramList)
     {
-      ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.n(paramList) });
+      ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramList) });
       AppMethodBeat.o(132658);
     }
     return -1;
@@ -132,8 +132,8 @@ public final class b
   public static void reportFailIp(String paramString)
   {
     AppMethodBeat.i(132660);
-    if ((iEy != null) && (iEy.aiY() != null)) {
-      iEy.aiY().reportFailIp(paramString);
+    if ((iHr != null) && (iHr.ajn() != null)) {
+      iHr.ajn().reportFailIp(paramString);
     }
     AppMethodBeat.o(132660);
   }
@@ -157,17 +157,17 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract e aiY();
+    public abstract e ajn();
   }
   
   public static final class b
   {
     public String host;
-    private ArrayList<String> iEA;
-    public String iEB;
-    public boolean iEC;
-    private boolean iED;
-    public int iEz;
+    public int iHs;
+    private ArrayList<String> iHt;
+    public String iHu;
+    public boolean iHv;
+    private boolean iHw;
     public String ip;
     public URL url;
     
@@ -177,35 +177,35 @@ public final class b
       this.host = null;
       this.url = null;
       this.ip = "";
-      this.iEz = 0;
-      this.iEA = new ArrayList();
-      this.iEC = false;
-      this.iED = false;
-      this.iEB = paramString;
+      this.iHs = 0;
+      this.iHt = new ArrayList();
+      this.iHv = false;
+      this.iHw = false;
+      this.iHu = paramString;
       try
       {
         this.url = new URL(paramString);
         this.host = this.url.getHost();
         Object localObject = new ArrayList();
-        if ((b.iEy == null) || (b.iEy.aiY() == null))
+        if ((b.iHr == null) || (b.iHr.ajn() == null))
         {
-          if (b.iEy == null) {}
-          for (paramString = "-1";; paramString = b.iEy.aiY())
+          if (b.iHr == null) {}
+          for (paramString = "-1";; paramString = b.iHr.ajn())
           {
-            ad.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bt.flS() });
+            ae.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bu.fpN() });
             AppMethodBeat.o(132654);
             return;
           }
         }
-        this.iEz = b.iEy.aiY().getHostByName(this.host, (List)localObject);
-        ad.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.iEz), this.host, paramString });
+        this.iHs = b.iHr.ajn().getHostByName(this.host, (List)localObject);
+        ae.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.iHs), this.host, paramString });
         if (((ArrayList)localObject).size() <= 0)
         {
-          this.iEz = 0;
+          this.iHs = 0;
           AppMethodBeat.o(132654);
           return;
         }
-        int i = this.iEz;
+        int i = this.iHs;
         if (1 != i)
         {
           AppMethodBeat.o(132654);
@@ -214,7 +214,7 @@ public final class b
         String str = (String)((ArrayList)localObject).remove(0);
         this.ip = str;
         localObject = str;
-        if (It(str)) {
+        if (IV(str)) {
           localObject = "[" + str + "]";
         }
         this.url = new URL(paramString.replaceFirst(this.host, (String)localObject));
@@ -223,7 +223,7 @@ public final class b
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.n(paramString) });
+        ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramString) });
         AppMethodBeat.o(132654);
       }
     }
@@ -234,42 +234,42 @@ public final class b
       this.host = null;
       this.url = null;
       this.ip = "";
-      this.iEz = 0;
-      this.iEA = new ArrayList();
-      this.iEC = false;
-      this.iED = false;
-      this.iEC = paramBoolean;
-      this.iEB = paramString;
+      this.iHs = 0;
+      this.iHt = new ArrayList();
+      this.iHv = false;
+      this.iHw = false;
+      this.iHv = paramBoolean;
+      this.iHu = paramString;
       try
       {
         this.url = new URL(paramString);
         this.host = this.url.getHost();
-        if ((b.iEy == null) || (b.iEy.aiY() == null))
+        if ((b.iHr == null) || (b.iHr.ajn() == null))
         {
-          if (b.iEy == null) {}
-          for (paramString = "-1";; paramString = b.iEy.aiY())
+          if (b.iHr == null) {}
+          for (paramString = "-1";; paramString = b.iHr.ajn())
           {
-            ad.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bt.flS() });
+            ae.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bu.fpN() });
             AppMethodBeat.o(132655);
             return;
           }
         }
-        this.iEz = b.iEy.aiY().a(this.host, paramBoolean, this.iEA);
-        ad.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.iEz), this.host, paramString, this.iEA });
-        if (this.iEA.size() <= 0)
+        this.iHs = b.iHr.ajn().a(this.host, paramBoolean, this.iHt);
+        ae.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.iHs), this.host, paramString, this.iHt });
+        if (this.iHt.size() <= 0)
         {
-          this.iEz = 0;
+          this.iHs = 0;
           AppMethodBeat.o(132655);
           return;
         }
-        int i = this.iEz;
+        int i = this.iHs;
         if (1 != i)
         {
           AppMethodBeat.o(132655);
           return;
         }
-        this.ip = ((String)this.iEA.remove(0));
-        if (It(this.ip)) {
+        this.ip = ((String)this.iHt.remove(0));
+        if (IV(this.ip)) {
           this.ip = ("[" + this.ip + "]");
         }
         this.url = new URL(paramString.replaceFirst(this.host, this.ip));
@@ -278,12 +278,12 @@ public final class b
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.n(paramString) });
+        ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramString) });
         AppMethodBeat.o(132655);
       }
     }
     
-    private static boolean It(String paramString)
+    private static boolean IV(String paramString)
     {
       AppMethodBeat.i(132656);
       try
@@ -298,7 +298,7 @@ public final class b
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.n(localException) });
+        ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(localException) });
         if (!paramString.contains("."))
         {
           AppMethodBeat.o(132656);

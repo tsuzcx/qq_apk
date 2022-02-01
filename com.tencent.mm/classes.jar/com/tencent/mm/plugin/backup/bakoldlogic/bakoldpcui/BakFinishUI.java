@@ -11,26 +11,26 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakFinishUI
   extends MMWizardActivity
   implements e.e
 {
-  private ap handler;
-  private int nCh;
-  private TextView nCj;
+  private aq handler;
+  private int nHC;
+  private TextView nHE;
   
   public BakFinishUI()
   {
     AppMethodBeat.i(21980);
-    this.handler = new ap(Looper.getMainLooper());
+    this.handler = new aq(Looper.getMainLooper());
     AppMethodBeat.o(21980);
   }
   
-  public final void bJy()
+  public final void bKw()
   {
     AppMethodBeat.i(21985);
     this.handler.post(new Runnable()
@@ -38,7 +38,7 @@ public class BakFinishUI
       public final void run()
       {
         AppMethodBeat.i(21978);
-        a.bJi().bJj().nBA = -1;
+        a.bKg().bKh().nGV = -1;
         BakFinishUI.b(BakFinishUI.this);
         AppMethodBeat.o(21978);
       }
@@ -55,9 +55,9 @@ public class BakFinishUI
   {
     AppMethodBeat.i(21982);
     setMMTitle(2131756308);
-    this.nCj = ((TextView)findViewById(2131297074));
-    if (6 == this.nCh) {
-      this.nCj.setText(getString(2131756304));
+    this.nHE = ((TextView)findViewById(2131297074));
+    if (6 == this.nHC) {
+      this.nHE.setText(getString(2131756304));
     }
     for (;;)
     {
@@ -66,7 +66,7 @@ public class BakFinishUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(21977);
-          a.bJi().bJj().nBA = -1;
+          a.bKg().bKh().nGV = -1;
           BakFinishUI.a(BakFinishUI.this);
           AppMethodBeat.o(21977);
           return true;
@@ -74,8 +74,8 @@ public class BakFinishUI
       });
       AppMethodBeat.o(21982);
       return;
-      if (1 == this.nCh) {
-        this.nCj.setText(getString(2131756295));
+      if (1 == this.nHC) {
+        this.nHE.setText(getString(2131756295));
       }
     }
   }
@@ -89,10 +89,10 @@ public class BakFinishUI
       AppMethodBeat.o(21981);
       return;
     }
-    this.nCh = getIntent().getIntExtra("cmd", -1);
-    ad.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.nCh) });
+    this.nHC = getIntent().getIntExtra("cmd", -1);
+    ae.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.nHC) });
     initView();
-    a.bJi().bJj().nBs = this;
+    a.bKg().bKh().nGN = this;
     AppMethodBeat.o(21981);
   }
   
@@ -100,8 +100,8 @@ public class BakFinishUI
   {
     AppMethodBeat.i(21983);
     super.onDestroy();
-    a.bJi().bJj().nBs = null;
-    ad.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.nCh) });
+    a.bKg().bKh().nGN = null;
+    ae.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.nHC) });
     AppMethodBeat.o(21983);
   }
   
@@ -113,7 +113,7 @@ public class BakFinishUI
       public final void run()
       {
         AppMethodBeat.i(21979);
-        ad.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
+        ae.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
         Intent localIntent = new Intent(BakFinishUI.this, BakConnErrorUI.class);
         MMWizardActivity.al(BakFinishUI.this, localIntent);
         AppMethodBeat.o(21979);
@@ -127,8 +127,8 @@ public class BakFinishUI
     AppMethodBeat.i(21984);
     if (paramInt == 4)
     {
-      a.bJi().bJj().nBA = -1;
-      abK(1);
+      a.bKg().bKh().nGV = -1;
+      acs(1);
       AppMethodBeat.o(21984);
       return true;
     }

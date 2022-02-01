@@ -5,38 +5,38 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class SnsObject
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<cwt> BlackList;
+  public LinkedList<cxn> BlackList;
   public int BlackListCount;
   public int CommentCount;
-  public LinkedList<dfn> CommentUserList;
+  public LinkedList<dgh> CommentUserList;
   public int CommentUserListCount;
   public int CreateTime;
   public int DeleteFlag;
   public int ExtFlag;
   public int GroupCount;
-  public LinkedList<dfv> GroupList;
-  public LinkedList<cwt> GroupUser;
+  public LinkedList<dgp> GroupList;
+  public LinkedList<cxn> GroupUser;
   public int GroupUserCount;
   public long Id;
   public int IsNotRichText;
   public int LikeCount;
   public int LikeFlag;
-  public LinkedList<dfn> LikeUserList;
+  public LinkedList<dgh> LikeUserList;
   public int LikeUserListCount;
   public String Nickname;
   public int NoChange;
   public SKBuiltinBuffer_t ObjectDesc;
   public SKBuiltinBuffer_t ObjectOperations;
-  public clp PreDownloadInfo;
+  public cmj PreDownloadInfo;
   public long ReferId;
   public String ReferUsername;
-  public dgo SnsRedEnvelops;
+  public dhi SnsRedEnvelops;
   public String Username;
-  public dfj WeAppInfo;
+  public dgd WeAppInfo;
   public int WithUserCount;
-  public LinkedList<dfn> WithUserList;
+  public LinkedList<dgh> WithUserList;
   public int WithUserListCount;
   
   public SnsObject()
@@ -63,7 +63,7 @@ public class SnsObject
         AppMethodBeat.o(125792);
         throw paramVarArgs;
       }
-      paramVarArgs.aY(1, this.Id);
+      paramVarArgs.aZ(1, this.Id);
       if (this.Username != null) {
         paramVarArgs.d(2, this.Username);
       }
@@ -73,7 +73,7 @@ public class SnsObject
       paramVarArgs.aS(4, this.CreateTime);
       if (this.ObjectDesc != null)
       {
-        paramVarArgs.lC(5, this.ObjectDesc.computeSize());
+        paramVarArgs.lJ(5, this.ObjectDesc.computeSize());
         this.ObjectDesc.writeFields(paramVarArgs);
       }
       paramVarArgs.aS(6, this.LikeFlag);
@@ -94,7 +94,7 @@ public class SnsObject
       if (this.ReferUsername != null) {
         paramVarArgs.d(21, this.ReferUsername);
       }
-      paramVarArgs.aY(22, this.ReferId);
+      paramVarArgs.aZ(22, this.ReferId);
       paramVarArgs.aS(23, this.BlackListCount);
       paramVarArgs.e(24, 8, this.BlackList);
       paramVarArgs.aS(25, this.DeleteFlag);
@@ -102,22 +102,22 @@ public class SnsObject
       paramVarArgs.e(27, 8, this.GroupUser);
       if (this.ObjectOperations != null)
       {
-        paramVarArgs.lC(28, this.ObjectOperations.computeSize());
+        paramVarArgs.lJ(28, this.ObjectOperations.computeSize());
         this.ObjectOperations.writeFields(paramVarArgs);
       }
       if (this.SnsRedEnvelops != null)
       {
-        paramVarArgs.lC(29, this.SnsRedEnvelops.computeSize());
+        paramVarArgs.lJ(29, this.SnsRedEnvelops.computeSize());
         this.SnsRedEnvelops.writeFields(paramVarArgs);
       }
       if (this.PreDownloadInfo != null)
       {
-        paramVarArgs.lC(30, this.PreDownloadInfo.computeSize());
+        paramVarArgs.lJ(30, this.PreDownloadInfo.computeSize());
         this.PreDownloadInfo.writeFields(paramVarArgs);
       }
       if (this.WeAppInfo != null)
       {
-        paramVarArgs.lC(31, this.WeAppInfo.computeSize());
+        paramVarArgs.lJ(31, this.WeAppInfo.computeSize());
         this.WeAppInfo.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(125792);
@@ -138,7 +138,7 @@ public class SnsObject
       i += f.a.a.b.b.a.bz(4, this.CreateTime);
       paramInt = i;
       if (this.ObjectDesc != null) {
-        paramInt = i + f.a.a.a.lB(5, this.ObjectDesc.computeSize());
+        paramInt = i + f.a.a.a.lI(5, this.ObjectDesc.computeSize());
       }
       i = paramInt + f.a.a.b.b.a.bz(6, this.LikeFlag) + f.a.a.b.b.a.bz(7, this.LikeCount) + f.a.a.b.b.a.bz(8, this.LikeUserListCount) + f.a.a.a.c(9, 8, this.LikeUserList) + f.a.a.b.b.a.bz(10, this.CommentCount) + f.a.a.b.b.a.bz(11, this.CommentUserListCount) + f.a.a.a.c(12, 8, this.CommentUserList) + f.a.a.b.b.a.bz(13, this.WithUserCount) + f.a.a.b.b.a.bz(14, this.WithUserListCount) + f.a.a.a.c(15, 8, this.WithUserList) + f.a.a.b.b.a.bz(16, this.ExtFlag) + f.a.a.b.b.a.bz(17, this.NoChange) + f.a.a.b.b.a.bz(18, this.GroupCount) + f.a.a.a.c(19, 8, this.GroupList) + f.a.a.b.b.a.bz(20, this.IsNotRichText);
       paramInt = i;
@@ -148,19 +148,19 @@ public class SnsObject
       i = paramInt + f.a.a.b.b.a.p(22, this.ReferId) + f.a.a.b.b.a.bz(23, this.BlackListCount) + f.a.a.a.c(24, 8, this.BlackList) + f.a.a.b.b.a.bz(25, this.DeleteFlag) + f.a.a.b.b.a.bz(26, this.GroupUserCount) + f.a.a.a.c(27, 8, this.GroupUser);
       paramInt = i;
       if (this.ObjectOperations != null) {
-        paramInt = i + f.a.a.a.lB(28, this.ObjectOperations.computeSize());
+        paramInt = i + f.a.a.a.lI(28, this.ObjectOperations.computeSize());
       }
       i = paramInt;
       if (this.SnsRedEnvelops != null) {
-        i = paramInt + f.a.a.a.lB(29, this.SnsRedEnvelops.computeSize());
+        i = paramInt + f.a.a.a.lI(29, this.SnsRedEnvelops.computeSize());
       }
       paramInt = i;
       if (this.PreDownloadInfo != null) {
-        paramInt = i + f.a.a.a.lB(30, this.PreDownloadInfo.computeSize());
+        paramInt = i + f.a.a.a.lI(30, this.PreDownloadInfo.computeSize());
       }
       i = paramInt;
       if (this.WeAppInfo != null) {
-        i = paramInt + f.a.a.a.lB(31, this.WeAppInfo.computeSize());
+        i = paramInt + f.a.a.a.lI(31, this.WeAppInfo.computeSize());
       }
       AppMethodBeat.o(125792);
       return i;
@@ -175,9 +175,9 @@ public class SnsObject
       this.BlackList.clear();
       this.GroupUser.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       if (this.ObjectDesc == null)
@@ -202,23 +202,23 @@ public class SnsObject
         AppMethodBeat.o(125792);
         return -1;
       case 1: 
-        localSnsObject.Id = ((f.a.a.a.a)localObject1).NPN.zd();
+        localSnsObject.Id = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(125792);
         return 0;
       case 2: 
-        localSnsObject.Username = ((f.a.a.a.a)localObject1).NPN.readString();
+        localSnsObject.Username = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(125792);
         return 0;
       case 3: 
-        localSnsObject.Nickname = ((f.a.a.a.a)localObject1).NPN.readString();
+        localSnsObject.Nickname = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(125792);
         return 0;
       case 4: 
-        localSnsObject.CreateTime = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.CreateTime = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 5: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -226,168 +226,168 @@ public class SnsObject
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.ObjectDesc = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 6: 
-        localSnsObject.LikeFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.LikeFlag = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 7: 
-        localSnsObject.LikeCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.LikeCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 8: 
-        localSnsObject.LikeUserListCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.LikeUserListCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 9: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dfn();
+          localObject1 = new dgh();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dfn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((dgh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.LikeUserList.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 10: 
-        localSnsObject.CommentCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.CommentCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 11: 
-        localSnsObject.CommentUserListCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.CommentUserListCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 12: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dfn();
+          localObject1 = new dgh();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dfn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((dgh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.CommentUserList.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 13: 
-        localSnsObject.WithUserCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.WithUserCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 14: 
-        localSnsObject.WithUserListCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.WithUserListCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 15: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dfn();
+          localObject1 = new dgh();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dfn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((dgh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.WithUserList.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 16: 
-        localSnsObject.ExtFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.ExtFlag = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 17: 
-        localSnsObject.NoChange = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.NoChange = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 18: 
-        localSnsObject.GroupCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.GroupCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 19: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dfv();
+          localObject1 = new dgp();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dfv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((dgp)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.GroupList.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 20: 
-        localSnsObject.IsNotRichText = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.IsNotRichText = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 21: 
-        localSnsObject.ReferUsername = ((f.a.a.a.a)localObject1).NPN.readString();
+        localSnsObject.ReferUsername = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(125792);
         return 0;
       case 22: 
-        localSnsObject.ReferId = ((f.a.a.a.a)localObject1).NPN.zd();
+        localSnsObject.ReferId = ((f.a.a.a.a)localObject1).OmT.zd();
         AppMethodBeat.o(125792);
         return 0;
       case 23: 
-        localSnsObject.BlackListCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.BlackListCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 24: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new cwt();
+          localObject1 = new cxn();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((cwt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((cxn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.BlackList.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 25: 
-        localSnsObject.DeleteFlag = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.DeleteFlag = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 26: 
-        localSnsObject.GroupUserCount = ((f.a.a.a.a)localObject1).NPN.zc();
+        localSnsObject.GroupUserCount = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(125792);
         return 0;
       case 27: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new cwt();
+          localObject1 = new cxn();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((cwt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((cxn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.GroupUser.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 28: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -395,53 +395,53 @@ public class SnsObject
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localSnsObject.ObjectOperations = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 29: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dgo();
+          localObject1 = new dhi();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dgo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localSnsObject.SnsRedEnvelops = ((dgo)localObject1);
+          for (bool = true; bool; bool = ((dhi)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localSnsObject.SnsRedEnvelops = ((dhi)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       case 30: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new clp();
+          localObject1 = new cmj();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((clp)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localSnsObject.PreDownloadInfo = ((clp)localObject1);
+          for (bool = true; bool; bool = ((cmj)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localSnsObject.PreDownloadInfo = ((cmj)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(125792);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new dfj();
+        localObject1 = new dgd();
         localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((dfj)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localSnsObject.WeAppInfo = ((dfj)localObject1);
+        for (bool = true; bool; bool = ((dgd)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localSnsObject.WeAppInfo = ((dgd)localObject1);
         paramInt += 1;
       }
       AppMethodBeat.o(125792);

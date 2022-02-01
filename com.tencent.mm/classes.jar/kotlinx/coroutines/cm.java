@@ -5,26 +5,26 @@ import d.d.f;
 import d.d.f.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
 public final class cm
   extends ac
 {
-  public static final cm NJk;
+  public static final cm Ogq;
   
   static
   {
     AppMethodBeat.i(118172);
-    NJk = new cm();
+    Ogq = new cm();
     AppMethodBeat.o(118172);
   }
   
   public final void a(f paramf, Runnable paramRunnable)
   {
     AppMethodBeat.i(118171);
-    paramf = (co)paramf.get((f.c)co.NJm);
+    paramf = (co)paramf.get((f.c)co.Ogs);
     if (paramf != null)
     {
-      paramf.NJl = true;
+      paramf.Ogr = true;
       AppMethodBeat.o(118171);
       return;
     }
@@ -33,7 +33,7 @@ public final class cm
     throw paramf;
   }
   
-  public final boolean gvb()
+  public final boolean gzD()
   {
     return false;
   }

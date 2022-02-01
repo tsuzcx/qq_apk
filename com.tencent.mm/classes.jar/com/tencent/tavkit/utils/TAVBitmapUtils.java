@@ -9,7 +9,7 @@ public class TAVBitmapUtils
   public static int readImagePreferRotation(String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(219982);
+    AppMethodBeat.i(201013);
     try
     {
       int j = new ExifInterface(paramString).getAttributeInt("Orientation", 1);
@@ -23,7 +23,7 @@ public class TAVBitmapUtils
       }
       for (;;)
       {
-        AppMethodBeat.o(219982);
+        AppMethodBeat.o(201013);
         return i;
         i = 3;
         continue;
@@ -33,7 +33,7 @@ public class TAVBitmapUtils
     }
     catch (IOException paramString)
     {
-      AppMethodBeat.o(219982);
+      AppMethodBeat.o(201013);
     }
   }
 }

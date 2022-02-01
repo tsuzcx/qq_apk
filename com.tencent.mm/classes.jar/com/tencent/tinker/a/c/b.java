@@ -4,7 +4,7 @@ public final class b
   implements Cloneable
 {
   private static final int[] bQP = new int[0];
-  public int[] Mew;
+  public int[] MBt;
   public int[] OW;
   public int mSize;
   
@@ -18,7 +18,7 @@ public final class b
     if (paramInt == 0) {
       this.OW = bQP;
     }
-    for (this.Mew = bQP;; this.Mew = new int[this.OW.length])
+    for (this.MBt = bQP;; this.MBt = new int[this.OW.length])
     {
       this.mSize = 0;
       return;
@@ -77,7 +77,7 @@ public final class b
     return arrayOfInt;
   }
   
-  private b fYt()
+  private b gcS()
   {
     try
     {
@@ -89,7 +89,7 @@ public final class b
       try
       {
         localb.OW = ((int[])this.OW.clone());
-        localb.Mew = ((int[])this.Mew.clone());
+        localb.MBt = ((int[])this.MBt.clone());
         return localb;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -113,13 +113,13 @@ public final class b
     return arrayOfInt;
   }
   
-  public final int ahV(int paramInt)
+  public final int aiE(int paramInt)
   {
     paramInt = b(this.OW, this.mSize, paramInt);
     if (paramInt < 0) {
       return 0;
     }
-    return this.Mew[paramInt];
+    return this.MBt[paramInt];
   }
   
   public final void append(int paramInt1, int paramInt2)
@@ -130,13 +130,13 @@ public final class b
       return;
     }
     this.OW = h(this.OW, this.mSize, paramInt1);
-    this.Mew = h(this.Mew, this.mSize, paramInt2);
+    this.MBt = h(this.MBt, this.mSize, paramInt2);
     this.mSize += 1;
   }
   
   public final int get(int paramInt)
   {
-    return ahV(paramInt);
+    return aiE(paramInt);
   }
   
   public final int indexOfKey(int paramInt)
@@ -154,12 +154,12 @@ public final class b
     int i = b(this.OW, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.Mew[i] = paramInt2;
+      this.MBt[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
     this.OW = b(this.OW, this.mSize, i, paramInt1);
-    this.Mew = b(this.Mew, this.mSize, i, paramInt2);
+    this.MBt = b(this.MBt, this.mSize, i, paramInt2);
     this.mSize += 1;
   }
   
@@ -183,7 +183,7 @@ public final class b
       }
       localStringBuilder.append(this.OW[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.Mew[i]);
+      localStringBuilder.append(this.MBt[i]);
       i += 1;
     }
     localStringBuilder.append('}');

@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.bq;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,44 +23,44 @@ public final class c
   {
     AppMethodBeat.i(156047);
     c.a locala = new c.a();
-    locala.IhA = new Field[9];
+    locala.IBL = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "exptId";
-    locala.IhC.put("exptId", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("exptId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" exptId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "exptId";
+    locala.IBM = "exptId";
     locala.columns[1] = "groupId";
-    locala.IhC.put("groupId", "INTEGER");
+    locala.IBN.put("groupId", "INTEGER");
     localStringBuilder.append(" groupId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "exptSeq";
-    locala.IhC.put("exptSeq", "INTEGER");
+    locala.IBN.put("exptSeq", "INTEGER");
     localStringBuilder.append(" exptSeq INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "exptContent";
-    locala.IhC.put("exptContent", "TEXT");
+    locala.IBN.put("exptContent", "TEXT");
     localStringBuilder.append(" exptContent TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "startTime";
-    locala.IhC.put("startTime", "LONG");
+    locala.IBN.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "endTime";
-    locala.IhC.put("endTime", "LONG");
+    locala.IBN.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "exptType";
-    locala.IhC.put("exptType", "INTEGER");
+    locala.IBN.put("exptType", "INTEGER");
     localStringBuilder.append(" exptType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "subType";
-    locala.IhC.put("subType", "INTEGER");
+    locala.IBN.put("subType", "INTEGER");
     localStringBuilder.append(" subType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "exptCheckSum";
-    locala.IhC.put("exptCheckSum", "TEXT");
+    locala.IBN.put("exptCheckSum", "TEXT");
     localStringBuilder.append(" exptCheckSum TEXT");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -79,7 +79,7 @@ public final class c
     String str = paramJSONObject.optString("Key");
     paramJSONObject = paramJSONObject.optString("Val");
     Object localObject;
-    if ((!bt.isNullOrNil(str)) && (!bt.isNullOrNil(paramJSONObject)))
+    if ((!bu.isNullOrNil(str)) && (!bu.isNullOrNil(paramJSONObject)))
     {
       localObject = Base64.decode(paramJSONObject, 0);
       if ((localObject == null) || (localObject.length <= 0)) {
@@ -109,17 +109,17 @@ public final class c
       AppMethodBeat.o(156044);
       return;
       label99:
-      ad.e("MicroMsg.ExptItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str });
+      ae.e("MicroMsg.ExptItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str });
       paramJSONObject = "";
-      e.ygI.idkeyStat(863L, 16L, 1L, false);
+      e.ywz.idkeyStat(863L, 16L, 1L, false);
     }
   }
   
-  private static String afD(String paramString)
+  private static String agz(String paramString)
   {
     AppMethodBeat.i(156045);
     String str1 = "";
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(156045);
       return "";
@@ -135,8 +135,8 @@ public final class c
       }
       else if (paramString.charAt(i + 1) != '^')
       {
-        int k = dg(paramString.substring(i + 1, i + 3), 2);
-        int j = dg(paramString.charAt(i + 3), 1) + 5;
+        int k = dk(paramString.substring(i + 1, i + 3), 2);
+        int j = dk(paramString.charAt(i + 3), 1) + 5;
         k = str1.length() - k - j;
         String str2 = str1.substring(k, j + k);
         str1 = str1 + str2;
@@ -152,7 +152,7 @@ public final class c
     return str1;
   }
   
-  private static int dg(String paramString, int paramInt)
+  private static int dk(String paramString, int paramInt)
   {
     AppMethodBeat.i(156046);
     int j = 0;
@@ -181,10 +181,10 @@ public final class c
     return k;
   }
   
-  public final boolean afB(String paramString)
+  public final boolean agx(String paramString)
   {
     AppMethodBeat.i(156037);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(156037);
       return false;
@@ -201,11 +201,11 @@ public final class c
       this.field_endTime = localJSONObject.optLong("EndTime");
       this.field_exptType = localJSONObject.optInt("ExptType");
       this.field_exptCheckSum = localJSONObject.optString("ExptCheckSum");
-      cry();
+      cta();
       if ((this.cache != null) && (this.cache.containsKey("jsoncfg_param_" + this.field_exptId + "_subtype"))) {}
-      for (this.field_subType = bt.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_subtype"), 0);; this.field_subType = 0)
+      for (this.field_subType = bu.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_subtype"), 0);; this.field_subType = 0)
       {
-        ad.v("MicroMsg.ExptItem", "convertFrom new [%s] old[%s] args[%s]", new Object[] { toString(), str, paramString });
+        ae.v("MicroMsg.ExptItem", "convertFrom new [%s] old[%s] args[%s]", new Object[] { toString(), str, paramString });
         AppMethodBeat.o(156037);
         return true;
       }
@@ -213,165 +213,17 @@ public final class c
     }
     catch (Exception localException)
     {
-      e.ygI.idkeyStat(863L, 5L, 1L, false);
-      ad.e("MicroMsg.ExptItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
+      e.ywz.idkeyStat(863L, 5L, 1L, false);
+      ae.e("MicroMsg.ExptItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
       AppMethodBeat.o(156037);
     }
   }
   
-  public final boolean crD()
-  {
-    return this.field_exptType == 10;
-  }
-  
-  public final boolean crE()
-  {
-    return this.field_subType == 1;
-  }
-  
-  public final boolean crF()
-  {
-    return this.field_subType == 2;
-  }
-  
-  public final boolean crG()
-  {
-    return this.field_subType == 3;
-  }
-  
-  public final boolean crH()
-  {
-    return this.field_subType == 4;
-  }
-  
-  public final boolean crI()
-  {
-    return this.field_subType == 5;
-  }
-  
-  public final boolean crJ()
-  {
-    return this.field_subType == 6;
-  }
-  
-  public final boolean crK()
-  {
-    AppMethodBeat.i(195164);
-    if ((crE()) || (crF()) || (crG()) || (crH()) || (crI()) || (crJ()))
-    {
-      AppMethodBeat.o(195164);
-      return true;
-    }
-    AppMethodBeat.o(195164);
-    return false;
-  }
-  
-  public final boolean crL()
-  {
-    return this.field_exptType == 2;
-  }
-  
-  public final boolean crM()
-  {
-    AppMethodBeat.i(156040);
-    if ((this.cache == null) || (this.cache.size() <= 0))
-    {
-      AppMethodBeat.o(156040);
-      return false;
-    }
-    if (bt.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_report"), 0) > 0)
-    {
-      AppMethodBeat.o(156040);
-      return true;
-    }
-    AppMethodBeat.o(156040);
-    return false;
-  }
-  
-  public final long crN()
-  {
-    AppMethodBeat.i(156041);
-    if ((this.cache == null) || (this.cache.size() <= 0))
-    {
-      AppMethodBeat.o(156041);
-      return 0L;
-    }
-    long l = bt.getLong((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_sessionpageid"), 0L);
-    AppMethodBeat.o(156041);
-    return l;
-  }
-  
-  public final String crO()
-  {
-    AppMethodBeat.i(156042);
-    if (!crK())
-    {
-      AppMethodBeat.o(156042);
-      return "";
-    }
-    if ((this.cache == null) || (this.cache.size() <= 0)) {
-      cry();
-    }
-    Object localObject2 = this.cache;
-    if ((localObject2 == null) || (((HashMap)localObject2).size() <= 0))
-    {
-      AppMethodBeat.o(156042);
-      return "";
-    }
-    String str3 = "jsoncfg_param_" + this.field_exptId + "_";
-    int j = bt.getInt((String)((HashMap)localObject2).get(str3 + "size"), 0);
-    if (j <= 0)
-    {
-      AppMethodBeat.o(156042);
-      return "";
-    }
-    Object localObject1 = new StringBuilder();
-    int i = 0;
-    while (i < j)
-    {
-      ((StringBuilder)localObject1).append((String)((HashMap)localObject2).get(str3 + i));
-      i += 1;
-    }
-    String str2 = ((StringBuilder)localObject1).toString();
-    for (;;)
-    {
-      try
-      {
-        if (bt.getInt((String)((HashMap)localObject2).get(str3 + "decompress"), 0) <= 0) {
-          continue;
-        }
-        localObject1 = afD(str2);
-        String str4 = ai.ee((String)localObject1);
-        localObject2 = (String)((HashMap)localObject2).get(str3 + "md5");
-        if (str4 == null) {
-          continue;
-        }
-        boolean bool = str4.equalsIgnoreCase((String)localObject2);
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        ad.printErrStackTrace("MicroMsg.ExptItem", localException, "tosession config e[%s]", new Object[] { localException.toString() });
-        String str1 = "";
-        continue;
-      }
-      AppMethodBeat.o(156042);
-      return localObject1;
-      e.ygI.idkeyStat(863L, 12L, 1L, false);
-      ad.e("MicroMsg.ExptItem", "to session config but md5 not right deJson[%s] json[%s]", new Object[] { localObject1, str2 });
-      localObject1 = "";
-      continue;
-      localObject1 = ((StringBuilder)localObject1).toString();
-    }
-  }
-  
   /* Error */
-  public final HashMap<String, String> cry()
+  public final HashMap<String, String> cta()
   {
     // Byte code:
-    //   0: ldc_w 382
+    //   0: ldc_w 312
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 120	com/tencent/mm/plugin/expt/h/c:cache	Ljava/util/HashMap;
@@ -379,13 +231,13 @@ public final class c
     //   13: aload_0
     //   14: getfield 120	com/tencent/mm/plugin/expt/h/c:cache	Ljava/util/HashMap;
     //   17: astore_2
-    //   18: ldc_w 382
+    //   18: ldc_w 312
     //   21: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aload_2
     //   25: areturn
     //   26: aload_0
     //   27: getfield 221	com/tencent/mm/plugin/expt/h/c:field_exptContent	Ljava/lang/String;
-    //   30: invokestatic 143	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   30: invokestatic 143	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   33: ifne +160 -> 193
     //   36: aload_0
     //   37: getfield 221	com/tencent/mm/plugin/expt/h/c:field_exptContent	Ljava/lang/String;
@@ -394,24 +246,24 @@ public final class c
     //   44: dup
     //   45: aload_2
     //   46: invokespecial 217	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   49: ldc_w 384
-    //   52: invokevirtual 387	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   49: ldc_w 314
+    //   52: invokevirtual 317	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   55: astore_3
     //   56: aload_3
     //   57: ifnonnull +11 -> 68
-    //   60: ldc_w 382
+    //   60: ldc_w 312
     //   63: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   66: aconst_null
     //   67: areturn
     //   68: new 157	java/util/HashMap
     //   71: dup
-    //   72: invokespecial 388	java/util/HashMap:<init>	()V
+    //   72: invokespecial 318	java/util/HashMap:<init>	()V
     //   75: astore_2
     //   76: aload_3
-    //   77: instanceof 390
+    //   77: instanceof 320
     //   80: ifeq +56 -> 136
     //   83: aload_3
-    //   84: checkcast 390	org/json/JSONArray
+    //   84: checkcast 320	org/json/JSONArray
     //   87: astore_3
     //   88: aload_3
     //   89: ifnull +29 -> 118
@@ -419,13 +271,13 @@ public final class c
     //   93: istore_1
     //   94: iload_1
     //   95: aload_3
-    //   96: invokevirtual 391	org/json/JSONArray:length	()I
+    //   96: invokevirtual 321	org/json/JSONArray:length	()I
     //   99: if_icmpge +19 -> 118
     //   102: aload_2
     //   103: aload_3
     //   104: iload_1
-    //   105: invokevirtual 395	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   108: invokestatic 397	com/tencent/mm/plugin/expt/h/c:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
+    //   105: invokevirtual 325	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   108: invokestatic 327	com/tencent/mm/plugin/expt/h/c:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
     //   111: iload_1
     //   112: iconst_1
     //   113: iadd
@@ -437,7 +289,7 @@ public final class c
     //   123: aload_0
     //   124: getfield 120	com/tencent/mm/plugin/expt/h/c:cache	Ljava/util/HashMap;
     //   127: astore_2
-    //   128: ldc_w 382
+    //   128: ldc_w 312
     //   131: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   134: aload_2
     //   135: areturn
@@ -447,13 +299,13 @@ public final class c
     //   143: aload_2
     //   144: aload_3
     //   145: checkcast 131	org/json/JSONObject
-    //   148: invokestatic 397	com/tencent/mm/plugin/expt/h/c:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
+    //   148: invokestatic 327	com/tencent/mm/plugin/expt/h/c:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
     //   151: goto -33 -> 118
     //   154: astore_3
     //   155: aconst_null
     //   156: astore_2
     //   157: ldc 160
-    //   159: ldc_w 399
+    //   159: ldc_w 329
     //   162: iconst_2
     //   163: anewarray 164	java/lang/Object
     //   166: dup
@@ -467,7 +319,7 @@ public final class c
     //   176: getfield 231	com/tencent/mm/plugin/expt/h/c:field_exptId	I
     //   179: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   182: aastore
-    //   183: invokestatic 170	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   183: invokestatic 170	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   186: goto -68 -> 118
     //   189: astore_3
     //   190: goto -33 -> 157
@@ -491,6 +343,154 @@ public final class c
     //   136	151	189	java/lang/Exception
   }
   
+  public final boolean ctf()
+  {
+    return this.field_exptType == 10;
+  }
+  
+  public final boolean ctg()
+  {
+    return this.field_subType == 1;
+  }
+  
+  public final boolean cth()
+  {
+    return this.field_subType == 2;
+  }
+  
+  public final boolean cti()
+  {
+    return this.field_subType == 3;
+  }
+  
+  public final boolean ctj()
+  {
+    return this.field_subType == 4;
+  }
+  
+  public final boolean ctk()
+  {
+    return this.field_subType == 5;
+  }
+  
+  public final boolean ctl()
+  {
+    return this.field_subType == 6;
+  }
+  
+  public final boolean ctm()
+  {
+    AppMethodBeat.i(196726);
+    if ((ctg()) || (cth()) || (cti()) || (ctj()) || (ctk()) || (ctl()))
+    {
+      AppMethodBeat.o(196726);
+      return true;
+    }
+    AppMethodBeat.o(196726);
+    return false;
+  }
+  
+  public final boolean ctn()
+  {
+    return this.field_exptType == 2;
+  }
+  
+  public final boolean cto()
+  {
+    AppMethodBeat.i(156040);
+    if ((this.cache == null) || (this.cache.size() <= 0))
+    {
+      AppMethodBeat.o(156040);
+      return false;
+    }
+    if (bu.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_report"), 0) > 0)
+    {
+      AppMethodBeat.o(156040);
+      return true;
+    }
+    AppMethodBeat.o(156040);
+    return false;
+  }
+  
+  public final long ctp()
+  {
+    AppMethodBeat.i(156041);
+    if ((this.cache == null) || (this.cache.size() <= 0))
+    {
+      AppMethodBeat.o(156041);
+      return 0L;
+    }
+    long l = bu.getLong((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_sessionpageid"), 0L);
+    AppMethodBeat.o(156041);
+    return l;
+  }
+  
+  public final String ctq()
+  {
+    AppMethodBeat.i(156042);
+    if (!ctm())
+    {
+      AppMethodBeat.o(156042);
+      return "";
+    }
+    if ((this.cache == null) || (this.cache.size() <= 0)) {
+      cta();
+    }
+    Object localObject2 = this.cache;
+    if ((localObject2 == null) || (((HashMap)localObject2).size() <= 0))
+    {
+      AppMethodBeat.o(156042);
+      return "";
+    }
+    String str3 = "jsoncfg_param_" + this.field_exptId + "_";
+    int j = bu.getInt((String)((HashMap)localObject2).get(str3 + "size"), 0);
+    if (j <= 0)
+    {
+      AppMethodBeat.o(156042);
+      return "";
+    }
+    Object localObject1 = new StringBuilder();
+    int i = 0;
+    while (i < j)
+    {
+      ((StringBuilder)localObject1).append((String)((HashMap)localObject2).get(str3 + i));
+      i += 1;
+    }
+    String str2 = ((StringBuilder)localObject1).toString();
+    for (;;)
+    {
+      try
+      {
+        if (bu.getInt((String)((HashMap)localObject2).get(str3 + "decompress"), 0) <= 0) {
+          continue;
+        }
+        localObject1 = agz(str2);
+        String str4 = aj.ej((String)localObject1);
+        localObject2 = (String)((HashMap)localObject2).get(str3 + "md5");
+        if (str4 == null) {
+          continue;
+        }
+        boolean bool = str4.equalsIgnoreCase((String)localObject2);
+        if (!bool) {
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        ae.printErrStackTrace("MicroMsg.ExptItem", localException, "tosession config e[%s]", new Object[] { localException.toString() });
+        String str1 = "";
+        continue;
+      }
+      AppMethodBeat.o(156042);
+      return localObject1;
+      e.ywz.idkeyStat(863L, 12L, 1L, false);
+      ae.e("MicroMsg.ExptItem", "to session config but md5 not right deJson[%s] json[%s]", new Object[] { localObject1, str2 });
+      localObject1 = "";
+      continue;
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+  }
+  
   public final c.a getDBInfo()
   {
     return info;
@@ -508,7 +508,7 @@ public final class c
     {
       AppMethodBeat.o(156039);
       return bool1;
-      long l = bt.aQJ();
+      long l = bu.aRi();
       bool1 = bool2;
       if (l >= this.field_startTime) {
         if (this.field_endTime > 0L)

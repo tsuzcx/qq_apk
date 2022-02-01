@@ -6,17 +6,17 @@ import d.g.b.q;
 import d.l;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "invoke"})
 final class c$b
   extends q
   implements a<ConcurrentLinkedDeque<String>>
 {
-  public static final b EJf;
+  public static final b FbD;
   
   static
   {
     AppMethodBeat.i(124764);
-    EJf = new b();
+    FbD = new b();
     AppMethodBeat.o(124764);
   }
   

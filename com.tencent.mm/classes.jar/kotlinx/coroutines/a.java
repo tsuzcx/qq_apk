@@ -8,26 +8,26 @@ import d.l;
 import d.z;
 import kotlinx.coroutines.internal.x;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/AbstractCoroutine;", "T", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/Continuation;", "Lkotlinx/coroutines/CoroutineScope;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "context", "context$annotations", "()V", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "coroutineContext", "getCoroutineContext", "isActive", "()Z", "afterResume", "", "state", "", "cancellationExceptionMessage", "", "handleOnCompletionException", "exception", "", "handleOnCompletionException$kotlinx_coroutines_core", "initParentJob", "initParentJob$kotlinx_coroutines_core", "nameString", "nameString$kotlinx_coroutines_core", "onCancelled", "cause", "handled", "onCompleted", "value", "(Ljava/lang/Object;)V", "onCompletionInternal", "onStart", "onStartInternal", "onStartInternal$kotlinx_coroutines_core", "resumeWith", "result", "Lkotlin/Result;", "start", "R", "Lkotlinx/coroutines/CoroutineStart;", "receiver", "block", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/CoroutineStart;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "Lkotlin/Function1;", "(Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function1;)V", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/AbstractCoroutine;", "T", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/Continuation;", "Lkotlinx/coroutines/CoroutineScope;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "context", "context$annotations", "()V", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "coroutineContext", "getCoroutineContext", "isActive", "()Z", "afterResume", "", "state", "", "cancellationExceptionMessage", "", "handleOnCompletionException", "exception", "", "handleOnCompletionException$kotlinx_coroutines_core", "initParentJob", "initParentJob$kotlinx_coroutines_core", "nameString", "nameString$kotlinx_coroutines_core", "onCancelled", "cause", "handled", "onCompleted", "value", "(Ljava/lang/Object;)V", "onCompletionInternal", "onStart", "onStartInternal", "onStartInternal$kotlinx_coroutines_core", "resumeWith", "result", "Lkotlin/Result;", "start", "R", "Lkotlinx/coroutines/CoroutineStart;", "receiver", "block", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/CoroutineStart;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "Lkotlin/Function1;", "(Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function1;)V", "kotlinx-coroutines-core"})
 public abstract class a<T>
   extends bv
   implements d<T>, ah, br
 {
-  final f NHt;
-  protected final f NHu;
+  protected final f OeA;
+  final f Oez;
   
   public a(f paramf, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.NHu = paramf;
-    this.NHt = this.NHu.plus((f)this);
+    this.OeA = paramf;
+    this.Oez = this.OeA.plus((f)this);
   }
   
   public final <R> void a(aj paramaj, R paramR, d.g.a.m<? super R, ? super d<? super T>, ? extends Object> paramm)
   {
-    guF();
+    gzh();
     d locald = (d)this;
-    switch (ak.gnp[paramaj.ordinal()])
+    switch (ak.gpL[paramaj.ordinal()])
     {
     default: 
       throw new d.m();
@@ -40,15 +40,15 @@ public abstract class a<T>
       d.g.b.p.h(paramm, "$this$startCoroutine");
       d.g.b.p.h(locald, "completion");
       paramaj = b.d(b.a(paramm, paramR, locald));
-      paramR = z.MKo;
-      paramm = d.p.MKe;
-      paramaj.eN(d.p.eL(paramR));
+      paramR = z.Nhr;
+      paramm = d.p.Nhh;
+      paramaj.eQ(d.p.eO(paramR));
       return;
       d.g.b.p.h(locald, "completion");
       Object localObject;
       try
       {
-        paramaj = locald.gfE();
+        paramaj = locald.gkg();
         localObject = x.a(paramaj, null);
         if (paramm == null) {
           try
@@ -64,45 +64,45 @@ public abstract class a<T>
       }
       catch (Throwable paramaj)
       {
-        paramR = d.p.MKe;
-        locald.eN(d.p.eL(d.q.o(paramaj)));
+        paramR = d.p.Nhh;
+        locald.eQ(d.p.eO(d.q.p(paramaj)));
         return;
       }
       x.b(paramaj, localObject);
-    } while (paramR == d.d.a.a.MLc);
-    paramaj = d.p.MKe;
-    locald.eN(d.p.eL(paramR));
+    } while (paramR == d.d.a.a.Nif);
+    paramaj = d.p.Nhh;
+    locald.eQ(d.p.eO(paramR));
   }
   
-  public final void eN(Object paramObject)
+  public final void eQ(Object paramObject)
   {
-    paramObject = fR(v.fJ(paramObject));
-    if (paramObject == bw.NIY) {
+    paramObject = fU(v.fM(paramObject));
+    if (paramObject == bw.Oge) {
       return;
     }
-    fF(paramObject);
+    fI(paramObject);
   }
   
-  protected void fF(Object paramObject)
+  protected void fI(Object paramObject)
   {
-    fL(paramObject);
+    fO(paramObject);
   }
   
-  public final f gfE()
+  public final f gkg()
   {
-    return this.NHt;
+    return this.Oez;
   }
   
-  public final f guE()
+  public final f gzg()
   {
-    return this.NHt;
+    return this.Oez;
   }
   
-  public final void guF()
+  public final void gzh()
   {
-    Object localObject = (br)this.NHu.get((f.c)br.NIM);
+    Object localObject = (br)this.OeA.get((f.c)br.OfS);
     int i;
-    if (am.gvd())
+    if (am.gzF())
     {
       if ((q)this._parentHandle == null) {}
       for (i = 1; i == 0; i = 0) {
@@ -110,7 +110,7 @@ public abstract class a<T>
       }
     }
     if (localObject == null) {
-      this._parentHandle = ((q)cb.NJe);
+      this._parentHandle = ((q)cb.Ogk);
     }
     for (;;)
     {
@@ -118,33 +118,33 @@ public abstract class a<T>
       ((br)localObject).start();
       localObject = ((br)localObject).a((s)this);
       this._parentHandle = localObject;
-      if (!(gvE() instanceof bm)) {}
+      if (!(gAg() instanceof bm)) {}
       for (i = 1; i != 0; i = 0)
       {
         ((q)localObject).dispose();
-        this._parentHandle = ((q)cb.NJe);
+        this._parentHandle = ((q)cb.Ogk);
         return;
       }
     }
   }
   
-  public final void guG()
+  public final void gzi()
   {
     onStart();
   }
   
-  protected final String guH()
+  protected final String gzj()
   {
     return getClass().getSimpleName() + " was cancelled";
   }
   
-  public final String guI()
+  public final String gzk()
   {
-    String str = ab.a(this.NHt);
+    String str = ab.a(this.Oez);
     if (str == null) {
-      return super.guI();
+      return super.gzk();
     }
-    return "\"" + str + "\":" + super.guI();
+    return "\"" + str + "\":" + super.gzk();
   }
   
   public final boolean isActive()
@@ -154,9 +154,9 @@ public abstract class a<T>
   
   protected void onStart() {}
   
-  public final void u(Throwable paramThrowable)
+  public final void v(Throwable paramThrowable)
   {
-    ae.b(this.NHt, paramThrowable);
+    ae.b(this.Oez, paramThrowable);
   }
 }
 

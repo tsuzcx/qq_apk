@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class zm
   extends b
 {
-  public zm.a dOM;
+  public a dPF;
   
   public zm()
   {
@@ -15,11 +15,16 @@ public final class zm
   
   private zm(byte paramByte)
   {
-    AppMethodBeat.i(110508);
-    this.dOM = new zm.a();
-    this.IbR = false;
+    AppMethodBeat.i(91235);
+    this.dPF = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(110508);
+    AppMethodBeat.o(91235);
+  }
+  
+  public static final class a
+  {
+    public String der;
   }
 }
 

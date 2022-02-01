@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class RspHead
   extends JceStruct
@@ -150,7 +150,7 @@ public final class RspHead
     }
     catch (Exception localException2)
     {
-      ad.printErrStackTrace("RspHead", localException2, "", new Object[0]);
+      ae.printErrStackTrace("RspHead", localException2, "", new Object[0]);
       AppMethodBeat.o(102365);
     }
     return 0;

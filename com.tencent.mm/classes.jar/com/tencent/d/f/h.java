@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  private static boolean LOE;
-  private static g LOF;
+  private static boolean MlD;
+  private static g MlE;
   
   static
   {
     AppMethodBeat.i(138483);
-    LOE = false;
-    LOF = new k();
-    LOE = false;
-    LOF = new k();
+    MlD = false;
+    MlE = new k();
+    MlD = false;
+    MlE = new k();
     AppMethodBeat.o(138483);
   }
   
-  public static void es(Object paramObject)
+  public static void ev(Object paramObject)
   {
     AppMethodBeat.i(138481);
     if ((paramObject != null) && ((paramObject instanceof Exception)))
@@ -29,7 +29,7 @@ public final class h
     AppMethodBeat.o(138481);
   }
   
-  public static void et(Object paramObject)
+  public static void ew(Object paramObject)
   {
     AppMethodBeat.i(138482);
     if ((paramObject != null) && ((paramObject instanceof Exception)))
@@ -41,16 +41,16 @@ public final class h
     AppMethodBeat.o(138482);
   }
   
-  public static void fUg() {}
+  public static void fYF() {}
   
-  public static void fUh() {}
+  public static void fYG() {}
   
-  public static void fuo() {}
+  public static void fyp() {}
   
   public static void w(Throwable paramThrowable)
   {
     AppMethodBeat.i(138480);
-    es(paramThrowable);
+    ev(paramThrowable);
     AppMethodBeat.o(138480);
   }
 }

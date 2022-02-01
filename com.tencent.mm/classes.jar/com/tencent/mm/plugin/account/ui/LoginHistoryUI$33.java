@@ -18,8 +18,8 @@ final class LoginHistoryUI$33
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    this.jlq.hideVKB();
+    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    this.jok.hideVKB();
     a.a(false, this, "com/tencent/mm/plugin/account/ui/LoginHistoryUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(128115);
     return false;

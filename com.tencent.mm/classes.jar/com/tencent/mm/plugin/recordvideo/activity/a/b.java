@@ -15,8 +15,8 @@ import com.tencent.mm.plugin.recordvideo.plugin.parent.BasePluginLayout;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.EditPhotoPluginLayout;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.EditorVideoPluginLayoutNew;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.RecordPluginLayout;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import d.g.b.p;
 import d.l;
 import d.v;
@@ -27,25 +27,25 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIRouter;", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "context", "Landroid/content/Context;", "root", "Landroid/view/ViewGroup;", "provider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "toWhere", "", "(Landroid/content/Context;Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;I)V", "currentRouter", "currentView", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "enableRecordPage", "", "isFinishing", "getProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "viewMap", "Landroid/util/SparseArray;", "viewTable", "Ljava/lang/Class;", "finish", "", "loadViewFromClass", "key", "clazz", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "scene", "onDestroy", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "route", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIRouter;", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "context", "Landroid/content/Context;", "root", "Landroid/view/ViewGroup;", "provider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "toWhere", "", "(Landroid/content/Context;Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;I)V", "currentRouter", "currentView", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "enableRecordPage", "", "isFinishing", "getProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "viewMap", "Landroid/util/SparseArray;", "viewTable", "Ljava/lang/Class;", "finish", "", "loadViewFromClass", "key", "clazz", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "scene", "onDestroy", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "route", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "Companion", "plugin-recordvideo_release"})
 public final class b
   implements a
 {
-  public static final b.a xtA;
+  public static final b.a xJx;
   private final Context context;
-  private final SparseArray<Class<?>> gGF;
-  private final SparseArray<BasePluginLayout> gGG;
-  private final ViewGroup gGK;
+  private final SparseArray<Class<?>> gJo;
+  private final SparseArray<BasePluginLayout> gJp;
+  private final ViewGroup gJt;
   public boolean isFinishing;
-  public BasePluginLayout xtw;
-  private boolean xtx;
-  private int xty;
-  private final RecordConfigProvider xtz;
+  public BasePluginLayout xJt;
+  private boolean xJu;
+  private int xJv;
+  private final RecordConfigProvider xJw;
   
   static
   {
     AppMethodBeat.i(75075);
-    xtA = new b.a((byte)0);
+    xJx = new b.a((byte)0);
     AppMethodBeat.o(75075);
   }
   
@@ -53,16 +53,16 @@ public final class b
   {
     AppMethodBeat.i(75074);
     this.context = paramContext;
-    this.gGK = paramViewGroup;
-    this.xtz = paramRecordConfigProvider;
-    this.gGF = new SparseArray();
-    this.gGG = new SparseArray();
-    this.xty = -2;
-    ad.i("MicroMsg.RecordUIRouter", "init");
-    this.gGF.put(0, RecordPluginLayout.class);
-    this.gGF.put(1, EditPhotoPluginLayout.class);
-    this.gGF.put(2, EditorVideoPluginLayoutNew.class);
-    paramContext = this.xtz.gGB;
+    this.gJt = paramViewGroup;
+    this.xJw = paramRecordConfigProvider;
+    this.gJo = new SparseArray();
+    this.gJp = new SparseArray();
+    this.xJv = -2;
+    ae.i("MicroMsg.RecordUIRouter", "init");
+    this.gJo.put(0, RecordPluginLayout.class);
+    this.gJo.put(1, EditPhotoPluginLayout.class);
+    this.gJo.put(2, EditorVideoPluginLayoutNew.class);
+    paramContext = this.xJw.gJk;
     p.g(paramContext, "routerMap");
     int i;
     if (!((Map)paramContext).isEmpty())
@@ -90,8 +90,8 @@ public final class b
           i = 0;
           break;
         }
-        ad.i("MicroMsg.RecordUIRouter", ((Integer)localObject).intValue() + " value:" + paramViewGroup.getValue());
-        paramRecordConfigProvider = this.gGF;
+        ae.i("MicroMsg.RecordUIRouter", ((Integer)localObject).intValue() + " value:" + paramViewGroup.getValue());
+        paramRecordConfigProvider = this.gJo;
         localObject = paramViewGroup.getKey();
         if (localObject == null)
         {
@@ -113,12 +113,12 @@ public final class b
     label344:
     if (paramInt == 0)
     {
-      this.xtx = true;
-      paramContext = this.gGF.get(0);
+      this.xJu = true;
+      paramContext = this.gJo.get(0);
       p.g(paramContext, "viewTable[KEY_TO_RECORD]");
       e(0, (Class)paramContext);
     }
-    ad.i("MicroMsg.RecordUIRouter", "setEnableRecordPage " + this.xtx);
+    ae.i("MicroMsg.RecordUIRouter", "setEnableRecordPage " + this.xJu);
     AppMethodBeat.o(75074);
   }
   
@@ -137,14 +137,14 @@ public final class b
     }
     catch (Exception paramClass)
     {
-      ad.printErrStackTrace("MicroMsg.RecordUIRouter", (Throwable)paramClass, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.RecordUIRouter", (Throwable)paramClass, "", new Object[0]);
       AppMethodBeat.o(75073);
       return;
     }
     paramClass = (BasePluginLayout)paramClass;
-    paramClass.a((a)this, this.xtz);
-    this.gGG.put(paramInt, paramClass);
-    this.gGK.addView((View)paramClass, new ViewGroup.LayoutParams(-1, -1));
+    paramClass.a((a)this, this.xJw);
+    this.gJp.put(paramInt, paramClass);
+    this.gJt.addView((View)paramClass, new ViewGroup.LayoutParams(-1, -1));
     paramClass.setVisibility(8);
     AppMethodBeat.o(75073);
   }
@@ -163,33 +163,33 @@ public final class b
     AppMethodBeat.i(75072);
     if (this.isFinishing)
     {
-      ad.i("MicroMsg.RecordUIRouter", "isFinishing toWhere:" + paramInt + "  MediaCaptureInfo:" + paramb);
+      ae.i("MicroMsg.RecordUIRouter", "isFinishing toWhere:" + paramInt + "  MediaCaptureInfo:" + paramb);
       AppMethodBeat.o(75072);
       return;
     }
     if (paramb != null) {}
     final int i;
-    for (Object localObject1 = paramb.htW;; localObject1 = null)
+    for (Object localObject1 = paramb.hwK;; localObject1 = null)
     {
       List localList = (List)localObject1;
       localObject1 = localObject2;
       if (paramb != null) {
-        localObject1 = paramb.htX;
+        localObject1 = paramb.hwL;
       }
       i = b.a.d(paramInt, localList, (List)localObject1);
-      ad.i("MicroMsg.RecordUIRouter", "toWhere:" + paramInt + " real:" + i + " current:" + this.xty + " MediaCaptureInfo:" + paramb);
-      if (i != this.xty) {
+      ae.i("MicroMsg.RecordUIRouter", "toWhere:" + paramInt + " real:" + i + " current:" + this.xJv + " MediaCaptureInfo:" + paramb);
+      if (i != this.xJv) {
         break;
       }
       AppMethodBeat.o(75072);
       return;
     }
-    this.xty = i;
-    aq.f((Runnable)new d(this, i, paramb));
+    this.xJv = i;
+    ar.f((Runnable)new d(this, i, paramb));
     AppMethodBeat.o(75072);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class b
     implements Runnable
   {
@@ -198,18 +198,18 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(75069);
-      int j = b.c(this.xtB).size();
+      int j = b.c(this.xJy).size();
       int i = 0;
       while (i < j)
       {
-        ((BasePluginLayout)b.c(this.xtB).valueAt(i)).onDetach();
+        ((BasePluginLayout)b.c(this.xJy).valueAt(i)).onDetach();
         i += 1;
       }
       AppMethodBeat.o(75069);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   public static final class c
     implements Runnable
   {
@@ -218,18 +218,18 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(75070);
-      int j = b.c(this.xtB).size();
+      int j = b.c(this.xJy).size();
       int i = 0;
       while (i < j)
       {
-        ((BasePluginLayout)b.c(this.xtB).valueAt(i)).release();
+        ((BasePluginLayout)b.c(this.xJy).valueAt(i)).release();
         i += 1;
       }
       AppMethodBeat.o(75070);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -238,9 +238,9 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(75071);
-      if ((i == 0) && (!b.a(this.xtB)))
+      if ((i == 0) && (!b.a(this.xJy)))
       {
-        localObject = b.b(this.xtB);
+        localObject = b.b(this.xJy);
         if (localObject == null)
         {
           localObject = new v("null cannot be cast to non-null type android.app.Activity");
@@ -251,15 +251,15 @@ public final class b
         AppMethodBeat.o(75071);
         return;
       }
-      if (b.c(this.xtB).get(i) == null)
+      if (b.c(this.xJy).get(i) == null)
       {
-        if (b.d(this.xtB).get(i) == null)
+        if (b.d(this.xJy).get(i) == null)
         {
-          ad.e("MicroMsg.RecordUIRouter", "No corresponding " + i);
+          ae.e("MicroMsg.RecordUIRouter", "No corresponding " + i);
           AppMethodBeat.o(75071);
           return;
         }
-        localObject = b.d(this.xtB).get(i);
+        localObject = b.d(this.xJy).get(i);
         if (localObject == null)
         {
           localObject = new v("null cannot be cast to non-null type java.lang.Class<*>");
@@ -267,16 +267,16 @@ public final class b
           throw ((Throwable)localObject);
         }
         localObject = (Class)localObject;
-        ad.i("MicroMsg.RecordUIRouter", "create BasePluginLayout :" + ((Class)localObject).getSimpleName());
-        b.a(this.xtB, i, (Class)localObject);
+        ae.i("MicroMsg.RecordUIRouter", "create BasePluginLayout :" + ((Class)localObject).getSimpleName());
+        b.a(this.xJy, i, (Class)localObject);
       }
-      Object localObject = b.e(this.xtB);
-      b.a(this.xtB, (BasePluginLayout)b.c(this.xtB).get(i));
-      BasePluginLayout localBasePluginLayout = b.e(this.xtB);
+      Object localObject = b.e(this.xJy);
+      b.a(this.xJy, (BasePluginLayout)b.c(this.xJy).get(i));
+      BasePluginLayout localBasePluginLayout = b.e(this.xJy);
       if (localBasePluginLayout != null) {
         localBasePluginLayout.a(paramb);
       }
-      localBasePluginLayout = b.e(this.xtB);
+      localBasePluginLayout = b.e(this.xJy);
       if (localBasePluginLayout != null) {
         localBasePluginLayout.bringToFront();
       }
@@ -293,17 +293,17 @@ public final class b
       {
         AppMethodBeat.o(75071);
         return;
-        localObject = c.xHa;
+        localObject = c.xWV;
         c.u("KEY_EXIT_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
         AppMethodBeat.o(75071);
         return;
-        localObject = c.xHa;
+        localObject = c.xWV;
         c.u("KEY_EXIT_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
         AppMethodBeat.o(75071);
         return;
-        localObject = c.xHa;
-        c.NN(19);
-        localObject = c.xHa;
+        localObject = c.xWV;
+        c.Ot(19);
+        localObject = c.xWV;
         c.u("KEY_EXIT_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
       }
     }
@@ -311,7 +311,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.activity.a.b
  * JD-Core Version:    0.7.0.1
  */

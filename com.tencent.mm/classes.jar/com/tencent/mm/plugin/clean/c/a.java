@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.clean.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.ArrayList;
 
 public final class a
 {
-  private static long oTT;
-  private static long oTU;
-  private static long oTV;
-  private static final ap oUe;
-  private static ArrayList<Object> oUf;
-  private static long oUg;
-  private static int oUh;
+  private static final aq paH;
+  private static ArrayList<Object> paI;
+  private static long paJ;
+  private static int paK;
+  private static long pav;
+  private static long paw;
+  private static long pax;
   
   static
   {
     AppMethodBeat.i(22808);
-    oUe = new ap();
-    oTT = 0L;
-    oUg = 0L;
-    oTV = 0L;
-    oTU = 0L;
-    oUh = 0;
+    paH = new aq();
+    pav = 0L;
+    paJ = 0L;
+    pax = 0L;
+    paw = 0L;
+    paK = 0;
     AppMethodBeat.o(22808);
   }
   
-  public static final void bZG()
+  public static final void caV()
   {
     AppMethodBeat.i(22806);
-    ad.i("MicroMsg.CleanLogic", "startCleanDataNow");
-    oUe.removeCallbacksAndMessages(null);
-    oTT = 0L;
-    oUg = 0L;
-    ad.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.TRUE });
-    oUf = null;
-    oUh = 0;
+    ae.i("MicroMsg.CleanLogic", "startCleanDataNow");
+    paH.removeCallbacksAndMessages(null);
+    pav = 0L;
+    paJ = 0L;
+    ae.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.TRUE });
+    paI = null;
+    paK = 0;
     AppMethodBeat.o(22806);
   }
 }

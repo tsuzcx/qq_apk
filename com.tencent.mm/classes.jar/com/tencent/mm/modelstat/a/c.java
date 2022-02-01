@@ -2,14 +2,14 @@ package com.tencent.mm.modelstat.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
 {
-  public static Bundle GG(String paramString)
+  public static Bundle Hi(String paramString)
   {
     AppMethodBeat.i(151154);
-    ad.v("MicroMsg.WebViewMMReportUtil", "create webview bundle name[%s]", new Object[] { paramString });
+    ae.v("MicroMsg.WebViewMMReportUtil", "create webview bundle name[%s]", new Object[] { paramString });
     Bundle localBundle = new Bundle();
     localBundle.putString("mm_event_class", paramString);
     AppMethodBeat.o(151154);

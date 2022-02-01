@@ -12,13 +12,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.c.ba;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.chatting.ChattingUI;
@@ -28,10 +28,10 @@ import java.util.LinkedList;
 public class SearchConversationResultUI
   extends MMActivity
 {
-  private String KPA = null;
-  private ListView KPy;
-  private a KPz;
-  private TextView oVh;
+  private ListView LlW;
+  private a LlX;
+  private String LlY = null;
+  private TextView pbK;
   private String username;
   
   public int getLayoutId()
@@ -42,19 +42,19 @@ public class SearchConversationResultUI
   public void initView()
   {
     AppMethodBeat.i(39526);
-    this.KPy = ((ListView)findViewById(2131306532));
-    this.oVh = ((TextView)findViewById(2131299481));
-    this.KPz = new a(getApplicationContext(), new r.a()
+    this.LlW = ((ListView)findViewById(2131306532));
+    this.pbK = ((TextView)findViewById(2131299481));
+    this.LlX = new a(getApplicationContext(), new r.a()
     {
-      public final void aSs() {}
+      public final void aSR() {}
     });
-    if (this.KPz != null) {
-      this.KPz.io(new LinkedList());
+    if (this.LlX != null) {
+      this.LlX.iy(new LinkedList());
     }
-    this.KPy.setAdapter(this.KPz);
-    this.oVh.setVisibility(8);
+    this.LlW.setAdapter(this.LlX);
+    this.pbK.setVisibility(8);
     this.username = getIntent().getStringExtra("SearchConversationResult_User");
-    this.KPA = getIntent().getStringExtra("SearchConversationResult_Error");
+    this.LlY = getIntent().getStringExtra("SearchConversationResult_Error");
     setMMTitle(getString(2131764763));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -66,7 +66,7 @@ public class SearchConversationResultUI
         return true;
       }
     });
-    this.KPy.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.LlW.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -74,9 +74,9 @@ public class SearchConversationResultUI
         b localb = new b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/voicesearch/SearchConversationResultUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/voicesearch/SearchConversationResultUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         if (paramAnonymousInt < SearchConversationResultUI.a(SearchConversationResultUI.this).getHeaderViewsCount())
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/voicesearch/SearchConversationResultUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -84,17 +84,17 @@ public class SearchConversationResultUI
           return;
         }
         paramAnonymousInt -= SearchConversationResultUI.a(SearchConversationResultUI.this).getHeaderViewsCount();
-        paramAnonymousAdapterView = (at)SearchConversationResultUI.b(SearchConversationResultUI.this).getItem(paramAnonymousInt);
+        paramAnonymousAdapterView = (au)SearchConversationResultUI.b(SearchConversationResultUI.this).getItem(paramAnonymousInt);
         if (paramAnonymousAdapterView == null)
         {
-          ad.e("MicroMsg.VoiceSearchResultUI", "null user at position = ".concat(String.valueOf(paramAnonymousInt)));
+          ae.e("MicroMsg.VoiceSearchResultUI", "null user at position = ".concat(String.valueOf(paramAnonymousInt)));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/voicesearch/SearchConversationResultUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(39524);
           return;
         }
-        ad.d("MicroMsg.VoiceSearchResultUI", "username " + paramAnonymousAdapterView.field_username);
-        if (w.zJ(paramAnonymousAdapterView.field_username)) {
-          if (u.aAJ())
+        ae.d("MicroMsg.VoiceSearchResultUI", "username " + paramAnonymousAdapterView.field_username);
+        if (x.At(paramAnonymousAdapterView.field_username)) {
+          if (v.aAZ())
           {
             paramAnonymousAdapterView = new Intent().putExtra("finish_direct", true);
             d.b(SearchConversationResultUI.this.getContext(), "tmessage", ".ui.TConversationUI", paramAnonymousAdapterView);
@@ -107,9 +107,9 @@ public class SearchConversationResultUI
           return;
           d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
           continue;
-          if (w.zL(paramAnonymousAdapterView.field_username))
+          if (x.Av(paramAnonymousAdapterView.field_username))
           {
-            if (u.aAG())
+            if (v.aAW())
             {
               paramAnonymousAdapterView = new Intent().putExtra("finish_direct", true);
               d.b(SearchConversationResultUI.this.getContext(), "qmessage", ".ui.QConversationUI", paramAnonymousAdapterView);
@@ -119,26 +119,26 @@ public class SearchConversationResultUI
               d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
             }
           }
-          else if (w.zK(paramAnonymousAdapterView.field_username))
+          else if (x.Au(paramAnonymousAdapterView.field_username))
           {
             d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
           }
-          else if (w.zP(paramAnonymousAdapterView.field_username))
+          else if (x.Az(paramAnonymousAdapterView.field_username))
           {
             MMAppMgr.cancelNotification(paramAnonymousAdapterView.field_username);
             d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
           }
-          else if (w.zH(paramAnonymousAdapterView.field_username))
+          else if (x.Ar(paramAnonymousAdapterView.field_username))
           {
-            if (u.aAU()) {
+            if (v.aBk()) {
               SearchConversationResultUI.a(SearchConversationResultUI.this, ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousAdapterView.field_username).putExtra("finish_direct", true));
             } else {
               d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
             }
           }
-          else if (w.zU(paramAnonymousAdapterView.field_username))
+          else if (x.AE(paramAnonymousAdapterView.field_username))
           {
-            if (u.aAN())
+            if (v.aBd())
             {
               paramAnonymousAdapterView = new Intent();
               paramAnonymousAdapterView.putExtra("type", 20);
@@ -149,9 +149,9 @@ public class SearchConversationResultUI
               d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
             }
           }
-          else if (w.Ac(paramAnonymousAdapterView.field_username))
+          else if (x.AM(paramAnonymousAdapterView.field_username))
           {
-            if (u.aAO())
+            if (v.aBe())
             {
               paramAnonymousAdapterView = new Intent();
               paramAnonymousAdapterView.putExtra("type", 11);
@@ -162,13 +162,13 @@ public class SearchConversationResultUI
               d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
             }
           }
-          else if (w.zM(paramAnonymousAdapterView.field_username))
+          else if (x.Aw(paramAnonymousAdapterView.field_username))
           {
             d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
           }
-          else if (w.zN(paramAnonymousAdapterView.field_username))
+          else if (x.Ax(paramAnonymousAdapterView.field_username))
           {
-            if (u.aAQ())
+            if (v.aBg())
             {
               paramAnonymousAdapterView = new Intent().putExtra("finish_direct", true);
               d.b(SearchConversationResultUI.this, "masssend", ".ui.MassSendHistoryUI", paramAnonymousAdapterView);
@@ -178,15 +178,15 @@ public class SearchConversationResultUI
               d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
             }
           }
-          else if (w.zT(paramAnonymousAdapterView.field_username))
+          else if (x.AD(paramAnonymousAdapterView.field_username))
           {
-            if (u.aAK()) {
+            if (v.aBa()) {
               SearchConversationResultUI.b(SearchConversationResultUI.this, ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousAdapterView.field_username).putExtra("finish_direct", true));
             } else {
               d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
             }
           }
-          else if ((w.zR(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (w.zS(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (w.zO(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (w.zW(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (w.zX(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (w.zI(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (w.Af(SearchConversationResultUI.c(SearchConversationResultUI.this))))
+          else if ((x.AB(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (x.AC(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (x.Ay(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (x.AG(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (x.AH(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (x.As(SearchConversationResultUI.c(SearchConversationResultUI.this))) || (x.AP(SearchConversationResultUI.c(SearchConversationResultUI.this))))
           {
             d.b(SearchConversationResultUI.this, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousAdapterView.field_username));
           }
@@ -198,9 +198,9 @@ public class SearchConversationResultUI
       }
     });
     String str = this.username;
-    this.oVh.setVisibility(8);
-    if (this.KPz != null) {
-      this.KPz.Jo(str);
+    this.pbK.setVisibility(8);
+    if (this.LlX != null) {
+      this.LlX.JN(str);
     }
     AppMethodBeat.o(39526);
   }
@@ -217,7 +217,7 @@ public class SearchConversationResultUI
   {
     AppMethodBeat.i(39527);
     super.onDestroy();
-    this.KPz.det();
+    this.LlX.dhl();
     AppMethodBeat.o(39527);
   }
   

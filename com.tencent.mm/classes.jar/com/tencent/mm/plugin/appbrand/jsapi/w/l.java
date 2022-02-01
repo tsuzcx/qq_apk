@@ -10,14 +10,14 @@ import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.b;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.model.z.b;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,43 +26,43 @@ import org.json.JSONObject;
 
 public final class l
 {
-  private static final HashMap<String, HandlerThread> lhz;
-  private String lhy;
+  private static final HashMap<String, HandlerThread> lll;
+  private String llk;
   private Handler mHandler;
   private SensorManager mSensorManager;
   
   static
   {
-    AppMethodBeat.i(195023);
-    lhz = new HashMap();
-    AppMethodBeat.o(195023);
+    AppMethodBeat.i(197254);
+    lll = new HashMap();
+    AppMethodBeat.o(197254);
   }
   
   public l(String paramString)
   {
-    AppMethodBeat.i(195022);
-    this.lhy = null;
-    this.mHandler = new Handler(Qx(paramString).getLooper());
-    AppMethodBeat.o(195022);
+    AppMethodBeat.i(197253);
+    this.llk = null;
+    this.mHandler = new Handler(Rg(paramString).getLooper());
+    AppMethodBeat.o(197253);
   }
   
-  private static HandlerThread Qx(String paramString)
+  private static HandlerThread Rg(String paramString)
   {
-    AppMethodBeat.i(195021);
+    AppMethodBeat.i(197252);
     String str = "MicroMsg.UnitSensor.".concat(String.valueOf(paramString));
-    synchronized (lhz)
+    synchronized (lll)
     {
-      HandlerThread localHandlerThread = (HandlerThread)lhz.get(str);
+      HandlerThread localHandlerThread = (HandlerThread)lll.get(str);
       paramString = localHandlerThread;
       if (localHandlerThread == null)
       {
-        paramString = d.ha(str, 5);
-        lhz.put(str, paramString);
+        paramString = d.hj(str, 5);
+        lll.put(str, paramString);
       }
       if (paramString.getLooper() == null) {
         paramString.start();
       }
-      AppMethodBeat.o(195021);
+      AppMethodBeat.o(197252);
       return paramString;
     }
   }
@@ -70,16 +70,16 @@ public final class l
   public final i.a a(c paramc, JSONObject paramJSONObject, a parama, String paramString, List<Integer> paramList)
   {
     AppMethodBeat.i(137657);
-    this.lhy = paramString;
+    this.llk = paramString;
     boolean bool1 = paramJSONObject.optBoolean("enable");
     int j = paramJSONObject.optInt("interval", 200);
-    ad.i("MicroMsg.UnitSensor", "sessionId:%s,interval:%s,enable:%b", new Object[] { paramString, Integer.valueOf(j), Boolean.valueOf(bool1) });
+    ae.i("MicroMsg.UnitSensor", "sessionId:%s,interval:%s,enable:%b", new Object[] { paramString, Integer.valueOf(j), Boolean.valueOf(bool1) });
     if (this.mSensorManager == null) {
-      this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
+      this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
     }
     if (this.mSensorManager == null)
     {
-      ad.i("MicroMsg.UnitSensor", "getSystemService(SENSOR_SERVICE) failed.");
+      ae.i("MicroMsg.UnitSensor", "getSystemService(SENSOR_SERVICE) failed.");
       paramc = new i.a("fail:null system service", new Object[0]);
       AppMethodBeat.o(137657);
       return paramc;
@@ -93,7 +93,7 @@ public final class l
       paramList = this.mSensorManager.getDefaultSensor(i);
       if (paramList == null)
       {
-        ad.i("MicroMsg.UnitSensor", "get sensor failed.");
+        ae.i("MicroMsg.UnitSensor", "get sensor failed.");
         paramc = new i.a("fail:null sensor", new Object[0]);
         AppMethodBeat.o(137657);
         return paramc;
@@ -102,23 +102,23 @@ public final class l
     }
     if (bool1)
     {
-      paramJSONObject = y.aBq().AF(paramString);
+      paramJSONObject = z.aBG().Bp(paramString);
       if (paramJSONObject != null) {
         break label697;
       }
-      paramJSONObject = y.aBq().F(paramString, true);
+      paramJSONObject = z.aBG().F(paramString, true);
     }
     label697:
     for (;;)
     {
       if ((a)paramJSONObject.get("sensor_event_listener", null) != null)
       {
-        ad.w("MicroMsg.UnitSensor", "register failed, sensorEventListener has already registered.");
+        ae.w("MicroMsg.UnitSensor", "register failed, sensorEventListener has already registered.");
         paramc = new i.a("fail, has enable, should stop pre operation", new Object[0]);
         AppMethodBeat.o(137657);
         return paramc;
       }
-      g.a(paramc.getAppId(), parama);
+      h.a(paramc.getAppId(), parama);
       paramJSONObject.k("sensor_event_listener", parama);
       paramList = ((List)localObject).iterator();
       bool1 = false;
@@ -141,12 +141,12 @@ public final class l
       if (!bool1)
       {
         this.mSensorManager.unregisterListener(parama);
-        parama.bmx();
-        g.b(paramc.getAppId(), parama);
+        parama.bng();
+        h.b(paramc.getAppId(), parama);
         paramJSONObject.recycle();
-        y.aBq().AG(paramString);
+        z.aBG().Bq(paramString);
       }
-      ad.i("MicroMsg.UnitSensor", "register sensor finished(s : %s, r : %s).", new Object[] { paramString, Boolean.valueOf(bool1) });
+      ae.i("MicroMsg.UnitSensor", "register sensor finished(s : %s, r : %s).", new Object[] { paramString, Boolean.valueOf(bool1) });
       if (bool1) {}
       for (paramc = "ok";; paramc = "fail:system error")
       {
@@ -162,10 +162,10 @@ public final class l
         i = 3;
         break;
       }
-      paramJSONObject = y.aBq().AG(paramString);
+      paramJSONObject = z.aBG().Bq(paramString);
       if (paramJSONObject == null)
       {
-        ad.i("MicroMsg.UnitSensor", "unregister sensor event listener failed, keyValueSet do not exist.");
+        ae.i("MicroMsg.UnitSensor", "unregister sensor event listener failed, keyValueSet do not exist.");
         paramc = new i.a("fail:fail to disable, not enable?", new Object[0]);
         AppMethodBeat.o(137657);
         return paramc;
@@ -173,16 +173,16 @@ public final class l
       parama = (a)paramJSONObject.get("sensor_event_listener", null);
       if (parama == null)
       {
-        ad.i("MicroMsg.UnitSensor", "unregister sensor event listener failed, listener do not exist.");
+        ae.i("MicroMsg.UnitSensor", "unregister sensor event listener failed, listener do not exist.");
         paramc = new i.a("fail:fail to disable, not enable?", new Object[0]);
         AppMethodBeat.o(137657);
         return paramc;
       }
       this.mSensorManager.unregisterListener(parama);
-      g.b(paramc.getAppId(), parama);
-      parama.bmx();
+      h.b(paramc.getAppId(), parama);
+      parama.bng();
       paramJSONObject.recycle();
-      ad.i("MicroMsg.UnitSensor", "unregister sensor finished(%s).", new Object[] { paramString });
+      ae.i("MicroMsg.UnitSensor", "unregister sensor finished(%s).", new Object[] { paramString });
       paramc = new i.a("ok", new Object[0]);
       AppMethodBeat.o(137657);
       return paramc;
@@ -193,17 +193,17 @@ public final class l
   {
     AppMethodBeat.i(137658);
     this.mSensorManager.unregisterListener(parama);
-    if (!TextUtils.isEmpty(this.lhy)) {
-      y.aBq().AG(this.lhy);
+    if (!TextUtils.isEmpty(this.llk)) {
+      z.aBG().Bq(this.llk);
     }
     AppMethodBeat.o(137658);
   }
   
   public static abstract class a
-    extends g.c
+    extends h.c
     implements SensorEventListener
   {
-    public void bmx() {}
+    public void bng() {}
     
     public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
     
@@ -212,7 +212,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w.l
  * JD-Core Version:    0.7.0.1
  */

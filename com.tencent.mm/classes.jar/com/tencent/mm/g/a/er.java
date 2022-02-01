@@ -2,13 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class er
   extends b
 {
-  public a dpN;
-  public b dpO;
+  public a dqP;
+  public b dqQ;
   
   public er()
   {
@@ -17,24 +16,29 @@ public final class er
   
   private er(byte paramByte)
   {
-    AppMethodBeat.i(116005);
-    this.dpN = new a();
-    this.dpO = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116004);
+    this.dqP = new a();
+    this.dqQ = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116005);
+    AppMethodBeat.o(116004);
   }
   
   public static final class a
   {
-    public List dpa;
+    public String dpI;
+    public boolean dpJ = false;
+    public int dqR = -1;
   }
   
-  public static final class b {}
+  public static final class b
+  {
+    public boolean dpK;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.er
  * JD-Core Version:    0.7.0.1
  */

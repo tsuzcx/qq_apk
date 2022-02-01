@@ -8,15 +8,15 @@ import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a;
 public final class b
 {
   private Context context;
-  public c kEA;
-  public a kEB;
+  public c kHP;
+  public a kHQ;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(144531);
     this.context = paramContext;
-    this.kEA = new c(paramContext);
-    this.kEB = new a(paramContext);
+    this.kHP = new c(paramContext);
+    this.kHQ = new a(paramContext);
     AppMethodBeat.o(144531);
   }
 }

@@ -3,28 +3,28 @@ package com.tencent.mm.sandbox.updater;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 
 final class g
 {
-  private static long HXG = 125829120L;
-  private static long HXH = 314572800L;
-  private long HXI;
-  private long HXJ;
-  private String HXK;
-  private k HXL;
-  av cXg;
+  private static long IrN = 125829120L;
+  private static long IrO = 314572800L;
+  private long IrP;
+  private long IrQ;
+  private String IrR;
+  private k IrS;
+  aw cYd;
   private boolean initialized;
-  boolean ruo;
+  boolean rCA;
   
   public g(k paramk)
   {
     AppMethodBeat.i(32716);
-    this.cXg = new av(new av.a()
+    this.cYd = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -34,21 +34,21 @@ final class g
         return true;
       }
     }, true);
-    this.HXI = 0L;
-    this.HXJ = 0L;
-    this.HXK = null;
+    this.IrP = 0L;
+    this.IrQ = 0L;
+    this.IrR = null;
     this.initialized = false;
-    this.ruo = false;
-    this.HXL = paramk;
+    this.rCA = false;
+    this.IrS = paramk;
     AppMethodBeat.o(32716);
   }
   
-  public static boolean aPL(String paramString)
+  public static boolean aRi(String paramString)
   {
     AppMethodBeat.i(32721);
-    if (j.aPN(paramString) > HXG)
+    if (j.aRk(paramString) > IrN)
     {
-      ad.e("MicroMsg.TrafficStatistic", "overTrafficAlertLine reach traffic alert line!");
+      ae.e("MicroMsg.TrafficStatistic", "overTrafficAlertLine reach traffic alert line!");
       AppMethodBeat.o(32721);
       return true;
     }
@@ -56,67 +56,67 @@ final class g
     return false;
   }
   
-  private void fiF()
+  private void fmx()
   {
     AppMethodBeat.i(32719);
-    if (this.HXI + this.HXJ > 0L)
+    if (this.IrP + this.IrQ > 0L)
     {
       Intent localIntent = new Intent();
       localIntent.setAction("com.tencent.mm.sandbox.updater.intent.ACTION_UPDATE");
-      localIntent.putExtra("intent_extra_flow_stat_upstream", this.HXI);
-      localIntent.putExtra("intent_extra_flow_stat_downstream", this.HXJ);
-      if (this.HXL.mContext != null) {
-        this.ruo = ay.isWifi(this.HXL.mContext);
+      localIntent.putExtra("intent_extra_flow_stat_upstream", this.IrP);
+      localIntent.putExtra("intent_extra_flow_stat_downstream", this.IrQ);
+      if (this.IrS.mContext != null) {
+        this.rCA = az.isWifi(this.IrS.mContext);
       }
-      localIntent.putExtra("intent_extra_flow_stat_is_wifi", this.ruo);
-      if (this.HXL.mContext != null) {
-        this.HXL.mContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+      localIntent.putExtra("intent_extra_flow_stat_is_wifi", this.rCA);
+      if (this.IrS.mContext != null) {
+        this.IrS.mContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
       }
     }
     AppMethodBeat.o(32719);
   }
   
-  private long fiG()
+  private long fmy()
   {
     AppMethodBeat.i(32722);
-    fiF();
-    if (bt.isNullOrNil(this.HXK))
+    fmx();
+    if (bu.isNullOrNil(this.IrR))
     {
-      ad.e("MicroMsg.TrafficStatistic", "traffic is null!");
+      ae.e("MicroMsg.TrafficStatistic", "traffic is null!");
       AppMethodBeat.o(32722);
       return 0L;
     }
-    long l = j.K(this.HXK, this.HXI, this.HXJ);
-    this.HXI = 0L;
-    this.HXJ = 0L;
+    long l = j.K(this.IrR, this.IrP, this.IrQ);
+    this.IrP = 0L;
+    this.IrQ = 0L;
     AppMethodBeat.o(32722);
     return l;
   }
   
-  public final void gf(String paramString, int paramInt)
+  public final void go(String paramString, int paramInt)
   {
     AppMethodBeat.i(32717);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(32717);
       return;
     }
-    if (!paramString.equals(this.HXK)) {
+    if (!paramString.equals(this.IrR)) {
       stop();
     }
-    ad.i("MicroMsg.TrafficStatistic", "pack size: ".concat(String.valueOf(paramInt)));
-    ad.i("MicroMsg.TrafficStatistic", "TRAFFIC_ALERT_LINE before : %s", new Object[] { Long.valueOf(HXG) });
-    HXG = Math.max(paramInt * 4, HXG);
-    HXG = Math.min(HXH, HXG);
-    ad.i("MicroMsg.TrafficStatistic", "TRAFFIC_ALERT_LINE after : %s", new Object[] { Long.valueOf(HXG) });
+    ae.i("MicroMsg.TrafficStatistic", "pack size: ".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.TrafficStatistic", "TRAFFIC_ALERT_LINE before : %s", new Object[] { Long.valueOf(IrN) });
+    IrN = Math.max(paramInt * 4, IrN);
+    IrN = Math.min(IrO, IrN);
+    ae.i("MicroMsg.TrafficStatistic", "TRAFFIC_ALERT_LINE after : %s", new Object[] { Long.valueOf(IrN) });
     if (!this.initialized)
     {
-      if (this.HXL.mContext != null) {
-        this.ruo = ay.isWifi(this.HXL.mContext);
+      if (this.IrS.mContext != null) {
+        this.rCA = az.isWifi(this.IrS.mContext);
       }
-      this.cXg.az(30000L, 30000L);
+      this.cYd.ay(30000L, 30000L);
       this.initialized = true;
-      this.HXK = paramString;
+      this.IrR = paramString;
     }
     AppMethodBeat.o(32717);
   }
@@ -124,26 +124,26 @@ final class g
   public final void stop()
   {
     AppMethodBeat.i(32718);
-    wr(true);
-    this.cXg.stopTimer();
+    wz(true);
+    this.cYd.stopTimer();
     this.initialized = false;
     AppMethodBeat.o(32718);
   }
   
-  final void wr(boolean paramBoolean)
+  final void wz(boolean paramBoolean)
   {
     AppMethodBeat.i(32720);
-    if (((paramBoolean) || (this.HXI + this.HXJ >= 524288L)) && (fiG() >= HXG) && (this.HXL.zTO == 2))
+    if (((paramBoolean) || (this.IrP + this.IrQ >= 524288L)) && (fmy() >= IrN) && (this.IrS.AkV == 2))
     {
-      ad.e("MicroMsg.TrafficStatistic", "checkIfTrafficAlert reach traffic alert line!");
-      this.HXL.cancel();
+      ae.e("MicroMsg.TrafficStatistic", "checkIfTrafficAlert reach traffic alert line!");
+      this.IrS.cancel();
     }
     AppMethodBeat.o(32720);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.g
  * JD-Core Version:    0.7.0.1
  */

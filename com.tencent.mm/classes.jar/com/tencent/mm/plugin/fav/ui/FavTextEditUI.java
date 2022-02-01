@@ -4,27 +4,27 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.am;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.bzw;
-import com.tencent.mm.protocal.protobuf.bzz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.caq;
+import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.MMTextInputUI;
 import java.util.LinkedList;
 
 public class FavTextEditUI
   extends MMTextInputUI
 {
-  public final void L(CharSequence paramCharSequence)
+  public final void K(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(106934);
-    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
+    if ((paramCharSequence == null) || (bu.isNullOrNil(paramCharSequence.toString())))
     {
-      ad.w("MicroMsg.FavTextEditUI", "text is null");
+      ae.w("MicroMsg.FavTextEditUI", "text is null");
       AppMethodBeat.o(106934);
       return;
     }
@@ -32,35 +32,35 @@ public class FavTextEditUI
     paramCharSequence = paramCharSequence.toString();
     if (i <= 0)
     {
-      ad.w("MicroMsg.FavTextEditUI", "modEditText favid:%d", new Object[] { Integer.valueOf(i) });
+      ae.w("MicroMsg.FavTextEditUI", "modEditText favid:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(106934);
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = new bzw();
-    ((bzw)localObject1).GUM = 4;
-    ((bzw)localObject1).GUN = 0;
+    Object localObject1 = new caq();
+    ((caq)localObject1).Hon = 4;
+    ((caq)localObject1).Hoo = 0;
     localLinkedList.add(localObject1);
     localObject1 = new LinkedList();
-    Object localObject2 = new bzz();
-    ((bzz)localObject2).uiP = "favitem.desc";
-    ((bzz)localObject2).yhw = bt.bI(paramCharSequence, "");
+    Object localObject2 = new cat();
+    ((cat)localObject2).uum = "favitem.desc";
+    ((cat)localObject2).yxn = bu.bI(paramCharSequence, "");
     ((LinkedList)localObject1).add(localObject2);
-    localObject2 = new bzz();
-    ((bzz)localObject2).uiP = "favitem.edittime";
-    ((bzz)localObject2).yhw = String.valueOf(bt.aQJ());
+    localObject2 = new cat();
+    ((cat)localObject2).uum = "favitem.edittime";
+    ((cat)localObject2).yxn = String.valueOf(bu.aRi());
     ((LinkedList)localObject1).add(localObject2);
-    localObject2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vF(i);
+    localObject2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vV(i);
     if (localObject2 != null)
     {
-      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_edittime = bt.aQJ();
-      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.CL(((com.tencent.mm.plugin.fav.a.g)localObject2).field_edittime);
-      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aPe(bt.bI(paramCharSequence, ""));
+      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_edittime = bu.aRi();
+      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.Dj(((com.tencent.mm.plugin.fav.a.g)localObject2).field_edittime);
+      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aQB(bu.bI(paramCharSequence, ""));
       ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
     }
     paramCharSequence = new am(i, localLinkedList, (LinkedList)localObject1);
-    com.tencent.mm.kernel.g.aiU().a(paramCharSequence, 0);
-    com.tencent.mm.plugin.report.service.g.yhR.f(10874, new Object[] { Integer.valueOf(1) });
+    com.tencent.mm.kernel.g.ajj().a(paramCharSequence, 0);
+    com.tencent.mm.plugin.report.service.g.yxI.f(10874, new Object[] { Integer.valueOf(1) });
     AppMethodBeat.o(106934);
   }
   

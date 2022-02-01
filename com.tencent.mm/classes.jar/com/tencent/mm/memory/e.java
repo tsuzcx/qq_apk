@@ -2,22 +2,22 @@ package com.tencent.mm.memory;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.NavigableMap;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 public abstract class e<T, S extends Comparable>
 {
-  protected long hwA = 0L;
-  protected NavigableMap<S, d<T, S>> hwy = new ConcurrentSkipListMap();
-  private Vector<e<T, S>.a> hwz = new Vector();
+  protected NavigableMap<S, d<T, S>> hzm = new ConcurrentSkipListMap();
+  private Vector<e<T, S>.a> hzn = new Vector();
+  protected long hzo = 0L;
   
-  private void rF(long paramLong)
+  private void rS(long paramLong)
   {
     try
     {
-      this.hwA += paramLong;
+      this.hzo += paramLong;
       return;
     }
     finally
@@ -27,9 +27,9 @@ public abstract class e<T, S extends Comparable>
     }
   }
   
-  public final void OE()
+  public final void OC()
   {
-    if (this.hwz.size() > 0) {
+    if (this.hzn.size() > 0) {
       b.c(new Runnable()
       {
         public final void run()
@@ -49,7 +49,7 @@ public abstract class e<T, S extends Comparable>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 27	com/tencent/mm/memory/e:hwy	Ljava/util/NavigableMap;
+    //   3: getfield 27	com/tencent/mm/memory/e:hzm	Ljava/util/NavigableMap;
     //   6: aload_1
     //   7: invokeinterface 134 2 0
     //   12: checkcast 98	com/tencent/mm/memory/d
@@ -63,9 +63,9 @@ public abstract class e<T, S extends Comparable>
     //   28: invokevirtual 138	com/tencent/mm/memory/d:pop	()Ljava/lang/Object;
     //   31: astore_1
     //   32: aload_0
-    //   33: getfield 27	com/tencent/mm/memory/e:hwy	Ljava/util/NavigableMap;
+    //   33: getfield 27	com/tencent/mm/memory/e:hzm	Ljava/util/NavigableMap;
     //   36: aload_2
-    //   37: invokevirtual 141	com/tencent/mm/memory/d:ayx	()Ljava/lang/Object;
+    //   37: invokevirtual 141	com/tencent/mm/memory/d:ayM	()Ljava/lang/Object;
     //   40: aload_2
     //   41: invokeinterface 120 3 0
     //   46: pop
@@ -73,7 +73,7 @@ public abstract class e<T, S extends Comparable>
     //   48: aload_0
     //   49: aload_1
     //   50: invokevirtual 106	com/tencent/mm/memory/e:bM	(Ljava/lang/Object;)J
-    //   53: invokevirtual 144	com/tencent/mm/memory/e:rG	(J)V
+    //   53: invokevirtual 144	com/tencent/mm/memory/e:rT	(J)V
     //   56: aload_0
     //   57: monitorexit
     //   58: aload_1
@@ -86,7 +86,7 @@ public abstract class e<T, S extends Comparable>
     //   69: iconst_0
     //   70: aload_1
     //   71: aastore
-    //   72: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   75: aconst_null
     //   76: astore_1
     //   77: goto -21 -> 56
@@ -109,20 +109,20 @@ public abstract class e<T, S extends Comparable>
   
   public final void a(e<T, S>.a parame)
   {
-    this.hwz.add(parame);
-    ad.i("MicroMsg.BucketPool", "%s addPreload: %s", new Object[] { this, parame });
-    OE();
+    this.hzn.add(parame);
+    ae.i("MicroMsg.BucketPool", "%s addPreload: %s", new Object[] { this, parame });
+    OC();
   }
   
-  protected abstract long ayu();
+  protected abstract long ayJ();
   
-  protected abstract long ayv();
+  protected abstract long ayK();
   
-  public void ayw()
+  public void ayL()
   {
-    ad.i("MicroMsg.BucketPool", "freeAll: %s", new Object[] { getClass().getName() });
-    this.hwy.clear();
-    this.hwA = 0L;
+    ae.i("MicroMsg.BucketPool", "freeAll: %s", new Object[] { getClass().getName() });
+    this.hzm.clear();
+    this.hzo = 0L;
   }
   
   protected abstract S b(S paramS);
@@ -139,27 +139,27 @@ public abstract class e<T, S extends Comparable>
       {
         localComparable = bN(paramT);
         l = bM(paramT);
-        if (l > ayv())
+        if (l > ayK())
         {
-          ad.e("MicroMsg.BucketPool", "release, reach maximum element size: %s, ignore this", new Object[] { Long.valueOf(l) });
+          ae.e("MicroMsg.BucketPool", "release, reach maximum element size: %s, ignore this", new Object[] { Long.valueOf(l) });
           continue;
         }
       }
       finally {}
-      if (this.hwA + l > ayu())
+      if (this.hzo + l > ayJ())
       {
-        ad.e("MicroMsg.BucketPool", "release, reach maximum size, just ignore %s %s", new Object[] { Long.valueOf(l), Long.valueOf(this.hwA) });
+        ae.e("MicroMsg.BucketPool", "release, reach maximum size, just ignore %s %s", new Object[] { Long.valueOf(l), Long.valueOf(this.hzo) });
       }
       else
       {
-        d locald2 = (d)this.hwy.get(localComparable);
+        d locald2 = (d)this.hzm.get(localComparable);
         d locald1 = locald2;
         if (locald2 == null) {
           locald1 = c(localComparable);
         }
         locald1.put(paramT);
-        this.hwy.put(localComparable, locald1);
-        rF(l);
+        this.hzm.put(localComparable, locald1);
+        rS(l);
       }
     }
   }
@@ -172,11 +172,11 @@ public abstract class e<T, S extends Comparable>
   
   protected abstract T d(S paramS);
   
-  protected final void rG(long paramLong)
+  protected final void rT(long paramLong)
   {
     try
     {
-      this.hwA -= paramLong;
+      this.hzo -= paramLong;
       return;
     }
     finally
@@ -190,11 +190,11 @@ public abstract class e<T, S extends Comparable>
   {
     public a() {}
     
-    public abstract int ayA();
+    public abstract S ayN();
     
-    public abstract S ayy();
+    public abstract long ayO();
     
-    public abstract long ayz();
+    public abstract int ayP();
   }
 }
 

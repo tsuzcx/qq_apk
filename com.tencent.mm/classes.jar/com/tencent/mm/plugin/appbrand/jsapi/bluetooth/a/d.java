@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,46 +22,46 @@ public final class d
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144498);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(151);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(151);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "getBLEDeviceCharacteristics data is null");
+      ae.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "getBLEDeviceCharacteristics data is null");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10013));
-      paramc.h(paramInt, m("fail:invalid data", paramJSONObject));
+      paramc.h(paramInt, n("fail:invalid data", paramJSONObject));
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 154);
       AppMethodBeat.o(144498);
       return;
     }
-    ad.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "appId:%s getBLEDeviceCharacteristics data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Pt(paramc.getAppId());
+    ae.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "appId:%s getBLEDeviceCharacteristics data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Qb(paramc.getAppId());
     if (localObject == null)
     {
-      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "bleWorker is null, may not open ble");
+      ae.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
-      paramc.h(paramInt, m("fail:not init", paramJSONObject));
+      paramc.h(paramInt, n("fail:not init", paramJSONObject));
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 156);
       AppMethodBeat.o(144498);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki())
     {
-      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "adapter is null or not enabled!");
+      ae.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.h(paramInt, m("fail:not available", paramJSONObject));
+      paramc.h(paramInt, n("fail:not available", paramJSONObject));
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 158);
       AppMethodBeat.o(144498);
       return;
     }
-    localObject = ((b)localObject).cV(paramJSONObject.optString("deviceId"), paramJSONObject.optString("serviceId"));
+    localObject = ((b)localObject).cX(paramJSONObject.optString("deviceId"), paramJSONObject.optString("serviceId"));
     paramJSONObject = new HashMap();
     if ((localObject == null) || (((List)localObject).size() <= 0))
     {
-      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "not found characteristic");
+      ae.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "not found characteristic");
       paramJSONObject.put("errCode", Integer.valueOf(10005));
-      paramc.h(paramInt, m("fail:no characteristic", paramJSONObject));
+      paramc.h(paramInt, n("fail:no characteristic", paramJSONObject));
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 159);
       AppMethodBeat.o(144498);
       return;
@@ -81,24 +81,24 @@ public final class d
           localc.jsonObject = new JSONObject();
           localc.jsonObject.put("uuid", localc.uuid);
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("read", localc.kFr);
-          if (localc.kFs) {
+          localJSONObject.put("read", localc.kIG);
+          if (localc.kIH) {
             break label658;
           }
-          if (!localc.kFt) {
+          if (!localc.kII) {
             break label536;
           }
           break label658;
           localJSONObject.put("write", bool);
-          localJSONObject.put("notify", localc.hFJ);
-          localJSONObject.put("indicate", localc.kFu);
+          localJSONObject.put("notify", localc.hIB);
+          localJSONObject.put("indicate", localc.kIJ);
           localc.jsonObject.put("properties", localJSONObject);
         }
         paramJSONObject.put(localc.jsonObject);
       }
       catch (JSONException localJSONException)
       {
-        ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "JSONException %s", new Object[] { localJSONException.getMessage() });
+        ae.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "JSONException %s", new Object[] { localJSONException.getMessage() });
       }
       break;
       label536:
@@ -110,9 +110,9 @@ public final class d
         ((JSONObject)localObject).put("errMsg", getName() + ":ok");
         ((JSONObject)localObject).put("characteristics", paramJSONObject);
         ((JSONObject)localObject).put("errCode", 0);
-        ad.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "retJson %s", new Object[] { ((JSONObject)localObject).toString() });
+        ae.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "retJson %s", new Object[] { ((JSONObject)localObject).toString() });
         paramc.h(paramInt, ((JSONObject)localObject).toString());
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(152);
+        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(152);
         AppMethodBeat.o(144498);
         return;
       }
@@ -120,7 +120,7 @@ public final class d
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.JsApiGetBLEDeviceCharacteristics", paramJSONObject, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.JsApiGetBLEDeviceCharacteristics", paramJSONObject, "", new Object[0]);
         }
       }
       label658:

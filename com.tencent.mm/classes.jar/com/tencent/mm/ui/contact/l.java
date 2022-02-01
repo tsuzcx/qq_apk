@@ -12,24 +12,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.modelsimple.aa;
+import com.tencent.mm.modelsimple.ab;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bf;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.storage.bg;
 import com.tencent.mm.storage.bh;
 import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.tools.u;
@@ -38,118 +38,118 @@ import java.util.List;
 public final class l
   extends RelativeLayout
 {
-  public static Boolean Kml = Boolean.TRUE;
-  private final av JFB;
-  private View Kmm;
-  k.a Kmn;
-  private boolean Kmo;
+  public static Boolean KIF = Boolean.TRUE;
+  private View KIG;
+  k.a KIH;
+  private boolean KII;
+  private final aw Kas;
   private Context context;
+  private View iBX;
   private boolean isVisible;
-  private View ize;
   
   public l(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(37837);
     this.context = null;
-    this.ize = null;
-    this.Kmm = null;
+    this.iBX = null;
+    this.KIG = null;
     this.isVisible = true;
-    this.JFB = new av(new av.a()
+    this.Kas = new aw(new aw.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(37831);
-        ad.d("MicroMsg.FMessageContactView", "refresh timer expired, update");
-        l.fHZ();
+        ae.d("MicroMsg.FMessageContactView", "refresh timer expired, update");
+        l.fMr();
         l.a(l.this);
         AppMethodBeat.o(37831);
         return false;
       }
     }, true);
-    this.Kmn = new k.a()
+    this.KIH = new k.a()
     {
       public final void a(String paramAnonymousString, m paramAnonymousm)
       {
         AppMethodBeat.i(37832);
-        ad.d("MicroMsg.FMessageContactView", "onNotifyChange, fmsg change");
-        if (!l.b(l.this).fkZ()) {
+        ae.d("MicroMsg.FMessageContactView", "onNotifyChange, fmsg change");
+        if (!l.b(l.this).foU()) {
           l.b(l.this).stopTimer();
         }
         paramAnonymousString = l.b(l.this);
         if (l.c(l.this)) {}
         for (long l = 500L;; l = 1000L)
         {
-          paramAnonymousString.az(l, l);
+          paramAnonymousString.ay(l, l);
           AppMethodBeat.o(37832);
           return;
         }
       }
     };
-    this.Kmo = false;
+    this.KII = false;
     this.context = paramContext;
-    com.tencent.mm.bk.d.aMo().add(this.Kmn);
-    fHX();
+    com.tencent.mm.bj.d.aMM().add(this.KIH);
+    fMp();
     init();
     AppMethodBeat.o(37837);
   }
   
-  private void a(bf parambf)
+  private void a(bg parambg)
   {
     AppMethodBeat.i(37840);
     if (this.context == null)
     {
-      ad.w("MicroMsg.FMessageContactView", "initSingleNew failed. context is null.");
+      ae.w("MicroMsg.FMessageContactView", "initSingleNew failed. context is null.");
       AppMethodBeat.o(37840);
       return;
     }
     TextView localTextView;
     Object localObject;
     boolean bool;
-    if (com.tencent.mm.cc.a.im(this.context))
+    if (com.tencent.mm.cb.a.ir(this.context))
     {
-      this.ize = View.inflate(this.context, 2131494150, this);
-      ((TextView)this.ize.findViewById(2131300167)).setText(k.c(this.context, parambf.field_displayName));
-      localTextView = (TextView)this.ize.findViewById(2131300166);
-      localObject = com.tencent.mm.bk.d.aMn().apM(parambf.field_talker);
+      this.iBX = View.inflate(this.context, 2131494150, this);
+      ((TextView)this.iBX.findViewById(2131300167)).setText(k.c(this.context, parambg.field_displayName));
+      localTextView = (TextView)this.iBX.findViewById(2131300166);
+      localObject = com.tencent.mm.bj.d.aML().aqR(parambg.field_talker);
       Context localContext = this.context;
-      int i = ((bh)localObject).field_type;
-      int j = parambf.field_addScene;
-      String str = ((bh)localObject).field_msgContent;
-      if (((bh)localObject).frm()) {
+      int i = ((bi)localObject).field_type;
+      int j = parambg.field_addScene;
+      String str = ((bi)localObject).field_msgContent;
+      if (((bi)localObject).fvm()) {
         break label240;
       }
       bool = true;
       label136:
       localObject = com.tencent.mm.pluginsdk.ui.preference.b.a(localContext, i, j, str, bool);
-      if (!bt.isNullOrNil((String)localObject)) {
+      if (!bu.isNullOrNil((String)localObject)) {
         break label246;
       }
       localTextView.setVisibility(8);
     }
     for (;;)
     {
-      this.Kmm = this.ize.findViewById(2131300149);
-      this.ize.setOnClickListener(new View.OnClickListener()
+      this.KIG = this.iBX.findViewById(2131300149);
+      this.iBX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(37835);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.d("MicroMsg.FMessageContactView", "initSingleNew, not goto ContactInfoUI, goto FMessageConversationUI");
-          ba.aBQ();
-          c.ajl().set(143618, Integer.valueOf(0));
-          com.tencent.mm.bs.d.b(l.d(l.this), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ae.d("MicroMsg.FMessageContactView", "initSingleNew, not goto ContactInfoUI, goto FMessageConversationUI");
+          bc.aCg();
+          c.ajA().set(143618, Integer.valueOf(0));
+          com.tencent.mm.br.d.b(l.d(l.this), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/FMessageContactView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37835);
         }
       });
-      a.b.c((ImageView)((MaskLayout)this.ize.findViewById(2131300144)).getContentView(), parambf.field_talker);
+      a.b.c((ImageView)((MaskLayout)this.iBX.findViewById(2131300144)).getContentView(), parambg.field_talker);
       AppMethodBeat.o(37840);
       return;
-      this.ize = View.inflate(this.context, 2131494149, this);
+      this.iBX = View.inflate(this.context, 2131494149, this);
       break;
       label240:
       bool = false;
@@ -159,81 +159,135 @@ public final class l
     }
   }
   
-  private void fHW()
+  private void fMo()
   {
     AppMethodBeat.i(37839);
     if (this.context == null)
     {
-      ad.w("MicroMsg.FMessageContactView", "initNoNew failed. context is null.");
+      ae.w("MicroMsg.FMessageContactView", "initNoNew failed. context is null.");
       AppMethodBeat.o(37839);
       return;
     }
-    this.ize = View.inflate(this.context, 2131494147, this);
-    this.Kmm = this.ize.findViewById(2131300162);
-    Object localObject = this.Kmm.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = ((int)(com.tencent.mm.cc.a.ay(this.context, 2131165242) * com.tencent.mm.cc.a.il(this.context)));
-    this.Kmm.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.ize.setOnClickListener(new View.OnClickListener()
+    this.iBX = View.inflate(this.context, 2131494147, this);
+    this.KIG = this.iBX.findViewById(2131300162);
+    Object localObject = this.KIG.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = ((int)(com.tencent.mm.cb.a.ay(this.context, 2131165242) * com.tencent.mm.cb.a.iq(this.context)));
+    this.KIG.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.iBX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(37834);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.d("MicroMsg.FMessageContactView", "initNoNew, goto FMessageConversationUI");
-        com.tencent.mm.bs.d.b(l.d(l.this), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ae.d("MicroMsg.FMessageContactView", "initNoNew, goto FMessageConversationUI");
+        com.tencent.mm.br.d.b(l.d(l.this), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/FMessageContactView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(37834);
       }
     });
-    localObject = (MaskLayout)this.ize.findViewById(2131300144);
-    p.aEk();
-    Bitmap localBitmap = e.Dc("fmessage");
+    localObject = (MaskLayout)this.iBX.findViewById(2131300144);
+    p.aEA();
+    Bitmap localBitmap = e.DE("fmessage");
     ((ImageView)((MaskLayout)localObject).getContentView()).setImageBitmap(localBitmap);
     AppMethodBeat.o(37839);
   }
   
-  private static void fHX()
+  private static void fMp()
   {
     AppMethodBeat.i(37843);
-    int i = com.tencent.mm.bk.d.aMo().frk();
-    ad.v("MicroMsg.FMessageContactView", "updateAddressTabUnread, newCount update to = %d", new Object[] { Integer.valueOf(i) });
+    int i = com.tencent.mm.bj.d.aMM().fvk();
+    ae.v("MicroMsg.FMessageContactView", "updateAddressTabUnread, newCount update to = %d", new Object[] { Integer.valueOf(i) });
     if (i > 0)
     {
-      ba.aBQ();
-      c.ajl().set(143618, Integer.valueOf(i));
+      bc.aCg();
+      c.ajA().set(143618, Integer.valueOf(i));
     }
     AppMethodBeat.o(37843);
   }
   
-  public static void fHY()
+  public static void fMq()
   {
     AppMethodBeat.i(37844);
-    ba.aBQ();
-    if (c.aiI())
+    bc.aCg();
+    if (c.aiX())
     {
-      ba.aBQ();
-      if (c.ajl().getInt(143618, 0) > 0) {
-        aa.aq("fmessage", 2);
+      bc.aCg();
+      if (c.ajA().getInt(143618, 0) > 0) {
+        ab.ar("fmessage", 2);
       }
     }
-    ba.aBQ();
-    c.ajl().set(143618, Integer.valueOf(0));
+    bc.aCg();
+    c.ajA().set(143618, Integer.valueOf(0));
     AppMethodBeat.o(37844);
+  }
+  
+  private void iF(List<bg> paramList)
+  {
+    AppMethodBeat.i(37841);
+    if (this.context == null)
+    {
+      ae.w("MicroMsg.FMessageContactView", "initMultiNew failed. context is null.");
+      AppMethodBeat.o(37841);
+      return;
+    }
+    this.iBX = View.inflate(this.context, 2131494148, this);
+    int i = paramList.size();
+    ae.d("MicroMsg.FMessageContactView", "initMultiNew, newList size = %d", new Object[] { Integer.valueOf(i) });
+    Object localObject = (bg)paramList.get(0);
+    MaskLayout localMaskLayout = (MaskLayout)this.iBX.findViewById(2131300144);
+    a.b.c((ImageView)localMaskLayout.getContentView(), ((bg)localObject).field_talker);
+    localMaskLayout.setVisibility(0);
+    localObject = (bg)paramList.get(1);
+    localMaskLayout = (MaskLayout)this.iBX.findViewById(2131300145);
+    a.b.c((ImageView)localMaskLayout.getContentView(), ((bg)localObject).field_talker);
+    localMaskLayout.setVisibility(0);
+    if (i > 2)
+    {
+      localObject = (bg)paramList.get(2);
+      localMaskLayout = (MaskLayout)this.iBX.findViewById(2131300146);
+      a.b.c((ImageView)localMaskLayout.getContentView(), ((bg)localObject).field_talker);
+      localMaskLayout.setVisibility(0);
+    }
+    if (i > 3)
+    {
+      paramList = (bg)paramList.get(3);
+      localObject = (MaskLayout)this.iBX.findViewById(2131300147);
+      a.b.c((ImageView)((MaskLayout)localObject).getContentView(), paramList.field_talker);
+      ((MaskLayout)localObject).setVisibility(0);
+    }
+    this.KIG = this.iBX.findViewById(2131300149);
+    this.KIG.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(37836);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ae.d("MicroMsg.FMessageContactView", "initMultiNew, goto FMessageConversationUI");
+        bc.aCg();
+        c.ajA().set(143618, Integer.valueOf(0));
+        com.tencent.mm.br.d.b(l.d(l.this), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/FMessageContactView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(37836);
+      }
+    });
+    AppMethodBeat.o(37841);
   }
   
   private void init()
   {
     AppMethodBeat.i(37838);
-    Object localObject = com.tencent.mm.bk.d.aMo().fri();
+    Object localObject = com.tencent.mm.bj.d.aMM().fvi();
     int i = ((List)localObject).size();
-    ad.d("MicroMsg.FMessageContactView", "init new fconv size = %d (max is 4)", new Object[] { Integer.valueOf(i) });
+    ae.d("MicroMsg.FMessageContactView", "init new fconv size = %d (max is 4)", new Object[] { Integer.valueOf(i) });
     removeAllViews();
     if (i <= 0)
     {
-      fHW();
-      localObject = this.ize.findViewById(2131300149);
+      fMo();
+      localObject = this.iBX.findViewById(2131300149);
       if (localObject != null) {
         if (!this.isVisible) {
           break label198;
@@ -244,7 +298,7 @@ public final class l
     for (i = 0;; i = 8)
     {
       ((View)localObject).setVisibility(i);
-      this.Kmm.setOnTouchListener(new View.OnTouchListener()
+      this.KIG.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -252,7 +306,7 @@ public final class l
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           if ((l.d(l.this) instanceof MMActivity)) {
             ((MMActivity)l.d(l.this)).hideVKB();
           }
@@ -261,28 +315,28 @@ public final class l
           return false;
         }
       });
-      i = com.tencent.mm.bk.d.aMo().frk();
-      ad.d("MicroMsg.FMessageContactView", "init totalNewSize = %d", new Object[] { Integer.valueOf(i) });
-      localObject = (TextView)this.ize.findViewById(2131300160);
-      ((TextView)localObject).setBackgroundResource(u.kE(this.context));
+      i = com.tencent.mm.bj.d.aMM().fvk();
+      ae.d("MicroMsg.FMessageContactView", "init totalNewSize = %d", new Object[] { Integer.valueOf(i) });
+      localObject = (TextView)this.iBX.findViewById(2131300160);
+      ((TextView)localObject).setBackgroundResource(u.kL(this.context));
       if (i > 0) {
         break label204;
       }
       ((TextView)localObject).setVisibility(8);
-      Kml = Boolean.FALSE;
+      KIF = Boolean.FALSE;
       AppMethodBeat.o(37838);
       return;
       if (i == 1)
       {
-        a((bf)((List)localObject).get(0));
+        a((bg)((List)localObject).get(0));
         break;
       }
-      iv((List)localObject);
+      iF((List)localObject);
       break;
     }
     label204:
     ((TextView)localObject).setVisibility(0);
-    Kml = Boolean.TRUE;
+    KIF = Boolean.TRUE;
     if (i > 99)
     {
       ((TextView)localObject).setText("");
@@ -295,70 +349,16 @@ public final class l
     AppMethodBeat.o(37838);
   }
   
-  private void iv(List<bf> paramList)
-  {
-    AppMethodBeat.i(37841);
-    if (this.context == null)
-    {
-      ad.w("MicroMsg.FMessageContactView", "initMultiNew failed. context is null.");
-      AppMethodBeat.o(37841);
-      return;
-    }
-    this.ize = View.inflate(this.context, 2131494148, this);
-    int i = paramList.size();
-    ad.d("MicroMsg.FMessageContactView", "initMultiNew, newList size = %d", new Object[] { Integer.valueOf(i) });
-    Object localObject = (bf)paramList.get(0);
-    MaskLayout localMaskLayout = (MaskLayout)this.ize.findViewById(2131300144);
-    a.b.c((ImageView)localMaskLayout.getContentView(), ((bf)localObject).field_talker);
-    localMaskLayout.setVisibility(0);
-    localObject = (bf)paramList.get(1);
-    localMaskLayout = (MaskLayout)this.ize.findViewById(2131300145);
-    a.b.c((ImageView)localMaskLayout.getContentView(), ((bf)localObject).field_talker);
-    localMaskLayout.setVisibility(0);
-    if (i > 2)
-    {
-      localObject = (bf)paramList.get(2);
-      localMaskLayout = (MaskLayout)this.ize.findViewById(2131300146);
-      a.b.c((ImageView)localMaskLayout.getContentView(), ((bf)localObject).field_talker);
-      localMaskLayout.setVisibility(0);
-    }
-    if (i > 3)
-    {
-      paramList = (bf)paramList.get(3);
-      localObject = (MaskLayout)this.ize.findViewById(2131300147);
-      a.b.c((ImageView)((MaskLayout)localObject).getContentView(), paramList.field_talker);
-      ((MaskLayout)localObject).setVisibility(0);
-    }
-    this.Kmm = this.ize.findViewById(2131300149);
-    this.Kmm.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(37836);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/FMessageContactView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ad.d("MicroMsg.FMessageContactView", "initMultiNew, goto FMessageConversationUI");
-        ba.aBQ();
-        c.ajl().set(143618, Integer.valueOf(0));
-        com.tencent.mm.bs.d.b(l.d(l.this), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/FMessageContactView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(37836);
-      }
-    });
-    AppMethodBeat.o(37841);
-  }
-  
   public final void setFrontGround(boolean paramBoolean)
   {
-    this.Kmo = paramBoolean;
+    this.KII = paramBoolean;
   }
   
   public final void setVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(37842);
-    ad.d("MicroMsg.FMessageContactView", "setVisible visible = ".concat(String.valueOf(paramBoolean)));
-    View localView = this.ize.findViewById(2131300149);
+    ae.d("MicroMsg.FMessageContactView", "setVisible visible = ".concat(String.valueOf(paramBoolean)));
+    View localView = this.iBX.findViewById(2131300149);
     if (localView != null) {
       if (!paramBoolean) {
         break label58;

@@ -4,7 +4,7 @@
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd">
             <View android:layout_width="0.0dip" android:layout_height="@dimen/aa" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/fe2" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" android:text="@string/e_q" style="@style/h0" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/iz" android:id="@id/fe2" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" android:text="@string/e_q" style="@style/h0" />
             <ImageView android:id="@id/akw" android:layout_marginRight="@dimen/jn" style="@style/gm" />
         </LinearLayout>
         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd">

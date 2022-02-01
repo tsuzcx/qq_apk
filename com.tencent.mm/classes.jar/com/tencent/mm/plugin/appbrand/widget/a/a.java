@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.widget.a;
 
 import com.tencent.luggage.a.b;
-import com.tencent.mm.protocal.protobuf.blq;
+import com.tencent.mm.protocal.protobuf.bmi;
 
 public abstract interface a
   extends b
 {
-  public abstract com.tencent.mm.al.a<blq> a(String paramString1, int paramInt1, String paramString2, int paramInt2);
+  public abstract com.tencent.mm.ak.a<bmi> a(String paramString1, int paramInt1, String paramString2, int paramInt2);
 }
 
 

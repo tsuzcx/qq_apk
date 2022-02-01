@@ -7,55 +7,53 @@ import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class b
 {
-  public static String aBl(String paramString)
+  public static String aCC(String paramString)
   {
-    AppMethodBeat.i(198629);
-    if (efl())
+    AppMethodBeat.i(220178);
+    if (TextUtils.isEmpty(paramString))
     {
-      paramString = aHq(paramString);
-      AppMethodBeat.o(198629);
-      return paramString;
+      ae.d("ad.waid.WaidHelper", "getAppWaid, pkg is empty");
+      AppMethodBeat.o(220178);
+      return "";
     }
-    ad.w("ad.waid.WaidHelper", "getAppWaid isExptWaidEnable=false");
-    AppMethodBeat.o(198629);
-    return "";
-  }
-  
-  private static String aBm(String paramString)
-  {
-    AppMethodBeat.i(198631);
-    paramString = bt.nullAsNil(paramString).replace(" ", "_");
-    AppMethodBeat.o(198631);
+    if (!eiT())
+    {
+      ae.w("ad.waid.WaidHelper", "getAppWaid, isInnerExptWaidEnable==false");
+      AppMethodBeat.o(220178);
+      return "";
+    }
+    paramString = aCD(paramString);
+    AppMethodBeat.o(220178);
     return paramString;
   }
   
-  public static String aHq(String paramString)
+  public static String aCD(String paramString)
   {
     try
     {
-      AppMethodBeat.i(221355);
+      AppMethodBeat.i(220179);
       try
       {
         long l = System.currentTimeMillis();
-        String str = jY(paramString, efi());
-        ad.i("ad.waid.WaidHelper", "doGetAppWaid pkg=" + paramString + ", appWaid=" + str + ", timeCost=" + (System.currentTimeMillis() - l));
-        AppMethodBeat.o(221355);
+        String str = kf(paramString, eiP());
+        ae.i("ad.waid.WaidHelper", "doGetAppWaid pkg=" + paramString + ", appWaid=" + str + ", timeCost=" + (System.currentTimeMillis() - l));
+        AppMethodBeat.o(220179);
         paramString = str;
       }
       catch (Throwable paramString)
       {
         for (;;)
         {
-          ad.e("ad.waid.WaidHelper", "doGetAppWaid exp=" + paramString.toString());
+          ae.e("ad.waid.WaidHelper", "doGetAppWaid exp=" + paramString.toString());
           paramString = "";
-          AppMethodBeat.o(221355);
+          AppMethodBeat.o(220179);
         }
       }
       return paramString;
@@ -63,63 +61,71 @@ public final class b
     finally {}
   }
   
-  private static String efi()
+  private static String aCE(String paramString)
+  {
+    AppMethodBeat.i(220181);
+    paramString = bu.nullAsNil(paramString).replace(" ", "_");
+    AppMethodBeat.o(220181);
+    return paramString;
+  }
+  
+  private static String eiP()
   {
     int i = 1;
-    AppMethodBeat.i(198630);
+    AppMethodBeat.i(220180);
     try
     {
-      String str3 = "appWaid_" + aBm(Build.BRAND) + "_" + aBm(Build.MODEL);
-      Object localObject2 = ax.aQz("ad_id_kv_pref").getString(str3, "");
-      String str2 = com.tencent.mm.plugin.normsg.a.b.wtJ.duT();
-      ad.i("ad.waid.WaidHelper", "getRawWaid, key=" + str3 + ", wxWaid=" + str2 + ", localWaid=" + (String)localObject2);
-      Object localObject1 = localObject2;
+      String str = "appWaid_" + aCE(Build.BRAND) + "_" + aCE(Build.MODEL);
+      Object localObject4 = ay.aRW("ad_id_kv_pref").getString(str, "");
+      Object localObject3 = com.tencent.mm.plugin.normsg.a.b.wJt.dyj();
+      ae.i("ad.waid.WaidHelper", "getRawWaid, key=" + str + ", wxWaid=" + (String)localObject3 + ", localWaid=" + (String)localObject4);
+      Object localObject1 = localObject4;
       int j;
-      if (TextUtils.isEmpty((CharSequence)localObject2))
+      if (TextUtils.isEmpty((CharSequence)localObject4))
       {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str2))
+        localObject1 = localObject4;
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
-          jZ(str3, str2);
-          localObject1 = efj();
-          j = efk();
-          ad.w("ad.waid.WaidHelper", "device changed, update localWaid, key=" + str3 + ", kvCount=" + j);
+          kg(str, (String)localObject3);
+          localObject1 = eiQ();
+          j = eiR();
+          ae.w("ad.waid.WaidHelper", "device changed, update localWaid, key=" + str + ", kvCount=" + j);
           if (j <= 1) {
-            break label401;
+            break label406;
           }
-          if (efn()) {
+          if (eiV()) {
             break label330;
           }
-          ad.e("ad.waid.WaidReporter", "reportDeviceChange isWxEnvInitDone==false");
-          localObject1 = str2;
+          ae.e("ad.waid.WaidReporter", "reportDeviceChange isWxEnvInitDone==false");
+          localObject1 = localObject3;
         }
       }
-      localObject2 = localObject1;
+      localObject4 = localObject1;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject2 = localObject1;
-        if (!TextUtils.isEmpty(str2))
+        localObject4 = localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
-          localObject2 = localObject1;
-          if (!((String)localObject1).equals(str2))
+          localObject4 = localObject1;
+          if (!((String)localObject1).equals(localObject3))
           {
-            boolean bool = efm();
-            ad.i("ad.waid.WaidHelper", "waid Changed, key=" + str3 + ", localWaid=" + (String)localObject1 + ", wxWaid=" + str2 + ", isNeedUpdate=" + bool);
+            boolean bool = eiU();
+            ae.i("ad.waid.WaidHelper", "waid Changed, key=" + str + ", localWaid=" + (String)localObject1 + ", wxWaid=" + (String)localObject3 + ", isNeedUpdate=" + bool);
             if (bool)
             {
-              jZ(str3, str2);
-              localObject1 = str2;
+              kg(str, (String)localObject3);
+              localObject1 = localObject3;
             }
-            j = efk();
+            j = eiR();
             if (!bool) {
-              break label407;
-            }
-            label306:
-            if (efn()) {
               break label412;
             }
-            ad.e("ad.waid.WaidReporter", "reportWaidChange isWxEnvInitDone==false");
-            localObject2 = localObject1;
+            label306:
+            if (eiV()) {
+              break label417;
+            }
+            ae.e("ad.waid.WaidReporter", "reportWaidChange isWxEnvInitDone==false");
+            localObject4 = localObject1;
           }
         }
       }
@@ -127,62 +133,61 @@ public final class b
       {
         for (;;)
         {
-          AppMethodBeat.o(198630);
-          return localObject2;
+          AppMethodBeat.o(220180);
+          return localObject4;
           try
           {
             label330:
-            ad.i("ad.waid.WaidReporter", "reportDeviceChange data=".concat(String.valueOf(localObject1)));
-            com.tencent.mm.plugin.report.service.g.yhR.f(18666, new Object[] { Integer.valueOf(1004), localObject1 });
-            localObject1 = str2;
+            localObject1 = c.aCF((String)localObject1);
+            ae.i("ad.waid.WaidReporter", "reportDeviceChange data=".concat(String.valueOf(localObject1)));
+            com.tencent.mm.plugin.report.service.g.yxI.f(18666, new Object[] { Integer.valueOf(2004), localObject1 });
+            localObject1 = localObject3;
           }
           catch (Throwable localThrowable1)
           {
-            ad.e("ad.waid.WaidReporter", "reportDeviceChange exp=" + Log.getStackTraceString(localThrowable1));
+            ae.e("ad.waid.WaidReporter", "reportDeviceChange exp=" + Log.getStackTraceString(localThrowable1));
           }
         }
-        label401:
-        String str1 = str2;
+        label406:
+        Object localObject2 = localObject3;
         break;
-        label407:
+        label412:
         i = 0;
         break label306;
         try
         {
-          label412:
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("localWaid", str1);
-          ((JSONObject)localObject2).put("wxWaid", str2);
-          ((JSONObject)localObject2).put("exptValue", i);
-          ((JSONObject)localObject2).put("kvCount", j);
-          str2 = ((JSONObject)localObject2).toString();
-          ad.i("ad.waid.WaidReporter", "reportWaidChange data=".concat(String.valueOf(str2)));
-          com.tencent.mm.plugin.report.service.g.yhR.f(18666, new Object[] { Integer.valueOf(1003), str2 });
-          localObject2 = str1;
+          label417:
+          localObject3 = new JSONObject();
+          ((JSONObject)localObject3).put("needUpdate", i);
+          ((JSONObject)localObject3).put("kvCount", j);
+          localObject3 = c.aCF(((JSONObject)localObject3).toString());
+          ae.i("ad.waid.WaidReporter", "reportWaidChange data=".concat(String.valueOf(localObject3)));
+          com.tencent.mm.plugin.report.service.g.yxI.f(18666, new Object[] { Integer.valueOf(2003), localObject3 });
+          localObject4 = localObject2;
         }
         catch (Throwable localThrowable3)
         {
-          ad.e("ad.waid.WaidReporter", "reportWaidChange exp=" + Log.getStackTraceString(localThrowable3));
-          localObject2 = str1;
+          ae.e("ad.waid.WaidReporter", "reportWaidChange exp=" + Log.getStackTraceString(localThrowable3));
+          localObject4 = localObject2;
         }
       }
       return "";
     }
     catch (Throwable localThrowable2)
     {
-      ad.e("ad.waid.WaidHelper", "getRawWaid exp=" + Log.getStackTraceString(localThrowable2));
-      AppMethodBeat.o(198630);
+      ae.e("ad.waid.WaidHelper", "getRawWaid exp=" + Log.getStackTraceString(localThrowable2));
+      AppMethodBeat.o(220180);
     }
   }
   
-  private static String efj()
+  private static String eiQ()
   {
-    AppMethodBeat.i(198634);
+    AppMethodBeat.i(220184);
     localObject = new JSONObject();
     try
     {
-      ax localax = ax.aQz("ad_id_kv_pref");
-      String[] arrayOfString = localax.allKeys();
+      ay localay = ay.aRW("ad_id_kv_pref");
+      String[] arrayOfString = localay.allKeys();
       if ((arrayOfString != null) && (arrayOfString.length > 0))
       {
         int j = arrayOfString.length;
@@ -190,7 +195,7 @@ public final class b
         while (i < j)
         {
           String str = arrayOfString[i];
-          ((JSONObject)localObject).put(str, localax.getString(str, ""));
+          ((JSONObject)localObject).put(str, localay.getString(str, ""));
           i += 1;
         }
       }
@@ -198,100 +203,117 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      ad.e("ad.waid.WaidHelper", "dumpKV exp=" + localThrowable.toString());
+      ae.e("ad.waid.WaidHelper", "dumpKV exp=" + localThrowable.toString());
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(198634);
+      AppMethodBeat.o(220184);
     }
   }
   
-  private static int efk()
+  private static int eiR()
   {
-    AppMethodBeat.i(198635);
+    AppMethodBeat.i(220185);
     try
     {
-      String[] arrayOfString = ax.aQz("ad_id_kv_pref").allKeys();
+      String[] arrayOfString = ay.aRW("ad_id_kv_pref").allKeys();
       if (arrayOfString == null)
       {
-        AppMethodBeat.o(198635);
+        AppMethodBeat.o(220185);
         return 0;
       }
       int i = arrayOfString.length;
-      AppMethodBeat.o(198635);
+      AppMethodBeat.o(220185);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("ad.waid.WaidHelper", "getKVCount exp=" + localThrowable.toString());
-      AppMethodBeat.o(198635);
+      ae.e("ad.waid.WaidHelper", "getKVCount exp=" + localThrowable.toString());
+      AppMethodBeat.o(220185);
     }
     return 0;
   }
   
-  public static boolean efl()
+  public static boolean eiS()
   {
-    AppMethodBeat.i(198636);
+    AppMethodBeat.i(220186);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qqA, 0);
-      ad.i("ad.waid.WaidHelper", "isExptWaidEnable, value=".concat(String.valueOf(i)));
-      if (i > 0)
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxj, 0) > 0)
       {
-        AppMethodBeat.o(198636);
+        AppMethodBeat.o(220186);
         return true;
       }
-      AppMethodBeat.o(198636);
+      AppMethodBeat.o(220186);
       return false;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("ad.waid.WaidHelper", "isExptWaidEnable, exp=" + localThrowable.toString());
-      AppMethodBeat.o(198636);
+      ae.e("ad.waid.WaidHelper", "isExptWaidEnable, exp=" + localThrowable.toString());
+      AppMethodBeat.o(220186);
     }
     return false;
   }
   
-  private static boolean efm()
+  private static boolean eiT()
   {
-    AppMethodBeat.i(198637);
+    AppMethodBeat.i(220187);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qqB, 0);
-      ad.i("ad.waid.WaidHelper", "isExptWaidNeedUpdate, value=".concat(String.valueOf(i)));
-      if (i > 0)
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxi, 1) > 0)
       {
-        AppMethodBeat.o(198637);
+        AppMethodBeat.o(220187);
         return true;
       }
-      AppMethodBeat.o(198637);
+      AppMethodBeat.o(220187);
       return false;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("ad.waid.WaidHelper", "isExptWaidNeedUpdate, exp=" + localThrowable.toString());
-      AppMethodBeat.o(198637);
+      ae.e("ad.waid.WaidHelper", "isInnerExptWaidEnable, exp=" + localThrowable.toString());
+      AppMethodBeat.o(220187);
     }
     return false;
   }
   
-  public static boolean efn()
+  private static boolean eiU()
   {
-    AppMethodBeat.i(198638);
-    if ((com.tencent.mm.kernel.g.ajD().gBW) && (com.tencent.mm.kernel.g.ajA().aiK()))
+    AppMethodBeat.i(220188);
+    try
     {
-      AppMethodBeat.o(198638);
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxk, 0) > 0)
+      {
+        AppMethodBeat.o(220188);
+        return true;
+      }
+      AppMethodBeat.o(220188);
+      return false;
+    }
+    catch (Throwable localThrowable)
+    {
+      ae.e("ad.waid.WaidHelper", "isExptWaidNeedUpdate, exp=" + localThrowable.toString());
+      AppMethodBeat.o(220188);
+    }
+    return false;
+  }
+  
+  public static boolean eiV()
+  {
+    AppMethodBeat.i(220189);
+    if ((com.tencent.mm.kernel.g.ajS().gED) && (com.tencent.mm.kernel.g.ajP().aiZ()))
+    {
+      AppMethodBeat.o(220189);
       return true;
     }
-    AppMethodBeat.o(198638);
+    AppMethodBeat.o(220189);
     return false;
   }
   
-  private static String jY(String paramString1, String paramString2)
+  private static String kf(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198632);
-    paramString1 = bt.nullAsNil(paramString1).trim();
+    AppMethodBeat.i(220182);
+    paramString1 = bu.nullAsNil(paramString1).trim();
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(198632);
+      AppMethodBeat.o(220182);
       return "";
     }
     paramString1 = paramString1.toLowerCase();
@@ -302,36 +324,36 @@ public final class b
       if (!TextUtils.isEmpty(paramString1))
       {
         paramString1 = "waid".concat(String.valueOf(paramString1));
-        AppMethodBeat.o(198632);
+        AppMethodBeat.o(220182);
         return paramString1;
       }
     }
     catch (Throwable paramString1)
     {
-      ad.e("ad.waid.WaidHelper", "getAppWaid, exp=" + paramString1.toString());
-      AppMethodBeat.o(198632);
+      ae.e("ad.waid.WaidHelper", "getAppWaid, exp=" + paramString1.toString());
+      AppMethodBeat.o(220182);
     }
     return "";
   }
   
-  private static void jZ(String paramString1, String paramString2)
+  private static void kg(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198633);
+    AppMethodBeat.i(220183);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(198633);
+      AppMethodBeat.o(220183);
       return;
     }
-    paramString2 = bt.nullAsNil(paramString2);
-    ax localax = ax.aQz("ad_id_kv_pref");
-    int i = efk();
+    paramString2 = bu.nullAsNil(paramString2);
+    ay localay = ay.aRW("ad_id_kv_pref");
+    int i = eiR();
     if (i >= 10)
     {
-      localax.clear().commit();
-      ad.e("ad.waid.WaidHelper", "saveKVString, clearKv, kvCOunt=".concat(String.valueOf(i)));
+      localay.clear().commit();
+      ae.e("ad.waid.WaidHelper", "saveKVString, clearKv, kvCOunt=".concat(String.valueOf(i)));
     }
-    localax.edit().putString(paramString1, paramString2).commit();
-    AppMethodBeat.o(198633);
+    localay.edit().putString(paramString1, paramString2).commit();
+    AppMethodBeat.o(220183);
   }
 }
 

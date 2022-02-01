@@ -10,11 +10,11 @@ public class MMRadioImageButton
   extends ImageButton
   implements Checkable
 {
-  private boolean Jnc;
-  private boolean Jnd = true;
-  private boolean Jne;
-  private a Jnf;
-  private a Jng;
+  private boolean JHR;
+  private boolean JHS = true;
+  private boolean JHT;
+  private a JHU;
+  private a JHV;
   
   public MMRadioImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +28,7 @@ public class MMRadioImageButton
   
   public boolean isChecked()
   {
-    return this.Jne;
+    return this.JHT;
   }
   
   public boolean performClick()
@@ -41,52 +41,52 @@ public class MMRadioImageButton
   
   public void setCheckable(boolean paramBoolean)
   {
-    this.Jnd = paramBoolean;
+    this.JHS = paramBoolean;
   }
   
   public void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(142118);
-    if (this.Jne != paramBoolean)
+    if (this.JHT != paramBoolean)
     {
-      this.Jne = paramBoolean;
-      setSelected(this.Jne);
+      this.JHT = paramBoolean;
+      setSelected(this.JHT);
       refreshDrawableState();
-      if (this.Jnc)
+      if (this.JHR)
       {
         AppMethodBeat.o(142118);
         return;
       }
-      this.Jnc = true;
-      if (this.Jnf != null) {
-        this.Jnf.a(this);
+      this.JHR = true;
+      if (this.JHU != null) {
+        this.JHU.a(this);
       }
-      if (this.Jng != null) {
-        this.Jng.a(this);
+      if (this.JHV != null) {
+        this.JHV.a(this);
       }
-      this.Jnc = false;
+      this.JHR = false;
     }
     AppMethodBeat.o(142118);
   }
   
   public void setOnMMRadioButtonCheckedChangeListener(a parama)
   {
-    this.Jnf = parama;
+    this.JHU = parama;
   }
   
   public void setOnOtherMMRadioButtonCheckedChangeListener(a parama)
   {
-    this.Jng = parama;
+    this.JHV = parama;
   }
   
   public void toggle()
   {
     AppMethodBeat.i(142116);
-    if (this.Jnd)
+    if (this.JHS)
     {
       if (!isChecked())
       {
-        if (!this.Jne) {}
+        if (!this.JHT) {}
         for (boolean bool = true;; bool = false)
         {
           setChecked(bool);
@@ -97,11 +97,11 @@ public class MMRadioImageButton
     }
     else
     {
-      if (this.Jnf != null) {
-        this.Jnf.b(this);
+      if (this.JHU != null) {
+        this.JHU.b(this);
       }
-      if (this.Jng != null) {
-        this.Jng.b(this);
+      if (this.JHV != null) {
+        this.JHV.b(this);
       }
     }
     AppMethodBeat.o(142116);

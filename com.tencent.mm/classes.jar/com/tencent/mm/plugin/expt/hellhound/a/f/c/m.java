@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.dbp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dcj;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.io.IOException;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath;", "", "()V", "Companion", "plugin-expt_release"})
 public final class m
 {
-  public static final a qZk;
+  public static final a rhq;
   
   static
   {
     AppMethodBeat.i(185607);
-    qZk = new a((byte)0);
+    rhq = new a((byte)0);
     AppMethodBeat.o(185607);
   }
   
-  public static final void Ej(String paramString)
+  public static final void EL(String paramString)
   {
     AppMethodBeat.i(185608);
     if (paramString == null)
@@ -29,23 +29,23 @@ public final class m
       AppMethodBeat.o(185608);
       return;
     }
-    dbp localdbp2 = a.cqw();
-    dbp localdbp1 = localdbp2;
-    if (localdbp2 == null) {
-      localdbp1 = new dbp();
+    dcj localdcj2 = a.crY();
+    dcj localdcj1 = localdcj2;
+    if (localdcj2 == null) {
+      localdcj1 = new dcj();
     }
-    if (localdbp1.GIM.size() > 100) {
-      localdbp1.GIM.removeFirst();
+    if (localdcj1.Hco.size() > 100) {
+      localdcj1.Hco.removeFirst();
     }
-    localdbp1.GIM.addLast(paramString);
-    if ((localdbp1 == null) || (localdbp1.GIM.isEmpty()))
+    localdcj1.Hco.addLast(paramString);
+    if ((localdcj1 == null) || (localdcj1.Hco.isEmpty()))
     {
       AppMethodBeat.o(185608);
       return;
     }
     try
     {
-      paramString = localdbp1.toByteArray();
+      paramString = localdcj1.toByteArray();
       if (paramString != null) {
         b.p("mmkv_sionId_table_hell", paramString);
       }
@@ -54,38 +54,38 @@ public final class m
     }
     catch (IOException paramString)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)paramString, "SessionTable, _write: %s", new Object[] { paramString.getMessage() });
+      ae.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)paramString, "SessionTable, _write: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(185608);
     }
   }
   
-  public static final String cpH()
-  {
-    AppMethodBeat.i(210968);
-    Object localObject = a.cqw();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(210968);
-      return null;
-    }
-    if (((dbp)localObject).GIM.isEmpty())
-    {
-      AppMethodBeat.o(210968);
-      return null;
-    }
-    localObject = ((dbp)localObject).GIM;
-    p.g(localObject, "table.sessions");
-    localObject = (String)((LinkedList)localObject).getLast();
-    AppMethodBeat.o(210968);
-    return localObject;
-  }
-  
-  public static final dbp cqv()
+  public static final dcj crX()
   {
     AppMethodBeat.i(185609);
-    dbp localdbp = a.cqw();
+    dcj localdcj = a.crY();
     AppMethodBeat.o(185609);
-    return localdbp;
+    return localdcj;
+  }
+  
+  public static final String crj()
+  {
+    AppMethodBeat.i(196639);
+    Object localObject = a.crY();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(196639);
+      return null;
+    }
+    if (((dcj)localObject).Hco.isEmpty())
+    {
+      AppMethodBeat.o(196639);
+      return null;
+    }
+    localObject = ((dcj)localObject).Hco;
+    p.g(localObject, "table.sessions");
+    localObject = (String)((LinkedList)localObject).getLast();
+    AppMethodBeat.o(196639);
+    return localObject;
   }
   
   public static final void reset()
@@ -95,10 +95,10 @@ public final class m
     AppMethodBeat.o(185610);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath$Companion;", "", "()V", "KEY_MMKV", "", "MAX_ITMES", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/SessionTable;", "_write", "", "table", "add", "sessionId", "get", "getCurSessionId", "reset", "plugin-expt_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath$Companion;", "", "()V", "KEY_MMKV", "", "MAX_ITMES", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/SessionTable;", "_write", "", "table", "add", "sessionId", "get", "getCurSessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    static dbp cqw()
+    static dcj crY()
     {
       AppMethodBeat.i(185606);
       byte[] arrayOfByte = b.getBytes("mmkv_sionId_table_hell");
@@ -113,16 +113,16 @@ public final class m
         AppMethodBeat.o(185606);
         return null;
       }
-      dbp localdbp = new dbp();
+      dcj localdcj = new dcj();
       try
       {
-        localdbp.parseFrom(arrayOfByte);
+        localdcj.parseFrom(arrayOfByte);
         AppMethodBeat.o(185606);
-        return localdbp;
+        return localdcj;
       }
       catch (IOException localIOException)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)localIOException, "SessionTable, _read: %s", new Object[] { localIOException.getMessage() });
+        ae.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)localIOException, "SessionTable, _read: %s", new Object[] { localIOException.getMessage() });
         AppMethodBeat.o(185606);
       }
       return null;

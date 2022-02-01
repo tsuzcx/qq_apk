@@ -11,24 +11,24 @@ import d.v;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "replaceContactInDB", "", "ct", "updateContact", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "replaceContactInDB", "", "ct", "updateContact", "Companion", "plugin-finder_release"})
 public final class c
   extends j<cd>
 {
   private static final String[] INDEX_CREATE;
   private static final String[] SQL_CREATE;
-  public static final a sxC;
-  public final com.tencent.mm.sdk.e.e sxB;
+  public static final a sIt;
+  public final com.tencent.mm.sdk.e.e sIs;
   
   static
   {
     AppMethodBeat.i(166958);
-    sxC = new a((byte)0);
-    Object localObject = g.rHB;
+    sIt = new a((byte)0);
+    Object localObject = g.rPM;
     SQL_CREATE = new String[] { j.getCreateSQLs(g.access$getInfo$cp(), "FinderContact") };
     localObject = cd.INDEX_CREATE;
     p.g(localObject, "BaseFinderContact.INDEX_CREATE");
-    localObject = d.a.e.X((Object[])localObject);
+    localObject = d.a.e.W((Object[])localObject);
     ((List)localObject).add(0, "DROP INDEX username_index");
     localObject = ((Collection)localObject).toArray(new String[0]);
     if (localObject == null)
@@ -45,12 +45,12 @@ public final class c
   {
     super(parame, g.access$getInfo$cp(), "FinderContact", INDEX_CREATE);
     AppMethodBeat.i(166957);
-    this.sxB = parame;
+    this.sIs = parame;
     AppMethodBeat.o(166957);
   }
   
   /* Error */
-  public final g agW(String paramString)
+  public final g ahT(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -65,12 +65,12 @@ public final class c
     //   17: ldc 144
     //   19: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   22: aload_1
-    //   23: invokestatic 151	com/tencent/mm/storagebase/h:wo	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: invokestatic 151	com/tencent/mm/storagebase/h:wX	(Ljava/lang/String;)Ljava/lang/String;
     //   26: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: astore_1
     //   33: aload_0
-    //   34: getfield 132	com/tencent/mm/plugin/finder/storage/c:sxB	Lcom/tencent/mm/sdk/e/e;
+    //   34: getfield 132	com/tencent/mm/plugin/finder/storage/c:sIs	Lcom/tencent/mm/sdk/e/e;
     //   37: aload_1
     //   38: aconst_null
     //   39: iconst_2
@@ -93,7 +93,7 @@ public final class c
     //   79: aload_1
     //   80: aload 4
     //   82: invokevirtual 178	com/tencent/mm/plugin/finder/api/g:convertFrom	(Landroid/database/Cursor;)V
-    //   85: getstatic 184	d/z:MKo	Ld/z;
+    //   85: getstatic 184	d/z:Nhr	Ld/z;
     //   88: astore 4
     //   90: aload_3
     //   91: aconst_null
@@ -142,7 +142,7 @@ public final class c
     //   85	90	128	finally
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "kotlin.jvm.PlatformType", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "getSQL_CREATE", "TAG", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "kotlin.jvm.PlatformType", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "getSQL_CREATE", "TAG", "plugin-finder_release"})
   public static final class a {}
 }
 

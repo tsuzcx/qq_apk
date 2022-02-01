@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.plugin.topstory.a.b.a.a;
 import com.tencent.mm.plugin.topstory.a.b.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -22,32 +22,32 @@ import java.util.List;
 public class TopStorySettingUI
   extends MMPreference
 {
-  private final String Bta = "unlike";
-  private final String Btb = "black";
-  private final String Btc = "feedback";
-  private IconPreference Btd;
-  private IconPreference Bte;
-  private int Btf = -1;
-  private int Btg = -1;
-  private int Bth = -1;
+  private final String BKA = "feedback";
+  private IconPreference BKB;
+  private IconPreference BKC;
+  private int BKD = -1;
+  private int BKE = -1;
+  private int BKF = -1;
+  private final String BKy = "unlike";
+  private final String BKz = "black";
   private f screen;
   
-  private boolean SW(int paramInt)
+  private boolean TD(int paramInt)
   {
     AppMethodBeat.i(125990);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStorySettingUI", "goDetailSettingUI, type:%s", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.TopStory.TopStorySettingUI", "goDetailSettingUI, type:%s", new Object[] { Integer.valueOf(paramInt) });
     if ((paramInt != 1) && (paramInt != 2))
     {
-      this.Bth = -1;
+      this.BKF = -1;
       AppMethodBeat.o(125990);
       return false;
     }
-    this.Bth = paramInt;
+    this.BKF = paramInt;
     Intent localIntent = new Intent();
     String str;
     if (paramInt == 1)
     {
-      str = bt.m(com.tencent.mm.plugin.topstory.a.b.a.eoQ().BqV, ",");
+      str = bu.m(com.tencent.mm.plugin.topstory.a.b.a.esx().BIu, ",");
       localIntent.putExtra("k_topstory_type", 1);
       localIntent.putExtra("k_topstory_user_list", str);
       com.tencent.mm.plugin.websearch.api.ad.e(this, ".ui.home.TopStorySettingVisibilityDetailUI", localIntent);
@@ -56,42 +56,42 @@ public class TopStorySettingUI
     {
       AppMethodBeat.o(125990);
       return true;
-      str = bt.m(com.tencent.mm.plugin.topstory.a.b.a.eoQ().AHn, ",");
+      str = bu.m(com.tencent.mm.plugin.topstory.a.b.a.esx().AYQ, ",");
       localIntent.putExtra("k_topstory_type", 2);
       localIntent.putExtra("k_topstory_user_list", str);
       com.tencent.mm.plugin.websearch.api.ad.e(this, ".ui.home.TopStorySettingVisibilityDetailUI", localIntent);
     }
   }
   
-  private void epm()
+  private void esT()
   {
     AppMethodBeat.i(125986);
-    this.Btg = com.tencent.mm.plugin.topstory.a.b.a.eoQ().AHn.size();
-    this.Btf = com.tencent.mm.plugin.topstory.a.b.a.eoQ().BqV.size();
+    this.BKE = com.tencent.mm.plugin.topstory.a.b.a.esx().AYQ.size();
+    this.BKD = com.tencent.mm.plugin.topstory.a.b.a.esx().BIu.size();
     AppMethodBeat.o(125986);
   }
   
-  private void epn()
+  private void esU()
   {
     AppMethodBeat.i(125989);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStorySettingUI", "updateSummary %s, %s", new Object[] { Integer.valueOf(this.Btf), Integer.valueOf(this.Btg) });
-    if (this.Btf <= 0)
+    ae.i("MicroMsg.TopStory.TopStorySettingUI", "updateSummary %s, %s", new Object[] { Integer.valueOf(this.BKD), Integer.valueOf(this.BKE) });
+    if (this.BKD <= 0)
     {
-      this.Btd.setSummary("");
-      if (this.Btg > 0) {
+      this.BKB.setSummary("");
+      if (this.BKE > 0) {
         break label110;
       }
-      this.Bte.setSummary("");
+      this.BKC.setSummary("");
     }
     for (;;)
     {
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(125989);
       return;
-      this.Btd.setSummary(this.Btf);
+      this.BKB.setSummary(this.BKD);
       break;
       label110:
-      this.Bte.setSummary(this.Btg);
+      this.BKC.setSummary(this.BKE);
     }
   }
   
@@ -116,17 +116,17 @@ public class TopStorySettingUI
       }
     });
     this.screen = getPreferenceScreen();
-    this.Btd = ((IconPreference)this.screen.aVD("unlike"));
-    this.Bte = ((IconPreference)this.screen.aVD("black"));
-    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.eoQ();
-    paramBundle.ab(paramBundle.BqW, 0);
-    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.eoQ();
-    paramBundle.ac(paramBundle.BqX, 0);
-    epm();
-    epn();
-    com.tencent.mm.plugin.topstory.a.b.a.eoQ().Brc = new a.a()
+    this.BKB = ((IconPreference)this.screen.aXe("unlike"));
+    this.BKC = ((IconPreference)this.screen.aXe("black"));
+    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.esx();
+    paramBundle.ab(paramBundle.BIv, 0);
+    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.esx();
+    paramBundle.ac(paramBundle.BIw, 0);
+    esT();
+    esU();
+    com.tencent.mm.plugin.topstory.a.b.a.esx().BIB = new a.a()
     {
-      public final void agl()
+      public final void agz()
       {
         AppMethodBeat.i(125982);
         TopStorySettingUI.a(TopStorySettingUI.this);
@@ -134,9 +134,9 @@ public class TopStorySettingUI
         AppMethodBeat.o(125982);
       }
     };
-    com.tencent.mm.plugin.topstory.a.b.a.eoQ().Brd = new a.b()
+    com.tencent.mm.plugin.topstory.a.b.a.esx().BIC = new a.b()
     {
-      public final void agl()
+      public final void agz()
       {
         AppMethodBeat.i(125983);
         TopStorySettingUI.a(TopStorySettingUI.this);
@@ -151,8 +151,8 @@ public class TopStorySettingUI
   {
     AppMethodBeat.i(125988);
     super.onDestroy();
-    com.tencent.mm.plugin.topstory.a.b.a.eoQ().Brd = null;
-    com.tencent.mm.plugin.topstory.a.b.a.eoQ().Brc = null;
+    com.tencent.mm.plugin.topstory.a.b.a.esx().BIC = null;
+    com.tencent.mm.plugin.topstory.a.b.a.esx().BIB = null;
     AppMethodBeat.o(125988);
   }
   
@@ -163,21 +163,21 @@ public class TopStorySettingUI
     boolean bool;
     if ("unlike".equals(paramf))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(1), Integer.valueOf(2), this.Btf });
-      bool = SW(1);
+      com.tencent.mm.plugin.report.service.g.yxI.f(17080, new Object[] { Integer.valueOf(1), Integer.valueOf(2), this.BKD });
+      bool = TD(1);
       AppMethodBeat.o(125984);
       return bool;
     }
     if ("black".equals(paramf))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(2), Integer.valueOf(2), this.Btg });
-      bool = SW(2);
+      com.tencent.mm.plugin.report.service.g.yxI.f(17080, new Object[] { Integer.valueOf(2), Integer.valueOf(2), this.BKE });
+      bool = TD(2);
       AppMethodBeat.o(125984);
       return bool;
     }
     if ("feedback".equals(paramf))
     {
-      com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(18), Integer.valueOf(2), "0" });
+      com.tencent.mm.plugin.report.service.g.yxI.f(17080, new Object[] { Integer.valueOf(18), Integer.valueOf(2), "0" });
       paramf = new StringBuilder("https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=feedback/index");
     }
     try
@@ -195,22 +195,22 @@ public class TopStorySettingUI
           label270:
           paramf.append("&from=settingPage");
           paramPreference = paramf.append("&uin=");
-          com.tencent.mm.kernel.g.ajA();
-          paramPreference.append(com.tencent.mm.kernel.a.aiq());
-          paramf.append("&version=").append(com.tencent.mm.protocal.d.Fnj);
+          com.tencent.mm.kernel.g.ajP();
+          paramPreference.append(com.tencent.mm.kernel.a.aiF());
+          paramf.append("&version=").append(com.tencent.mm.protocal.d.FFH);
           try
           {
-            paramf.append("&lang=").append(q.encode(ac.fks(), "UTF-8"));
+            paramf.append("&lang=").append(q.encode(com.tencent.mm.sdk.platformtools.ad.fom(), "UTF-8"));
             try
             {
               label332:
-              paramf.append("&ostype=").append(q.encode(com.tencent.mm.protocal.d.Fnf, "UTF-8"));
+              paramf.append("&ostype=").append(q.encode(com.tencent.mm.protocal.d.FFD, "UTF-8"));
               label352:
               paramf.append("&scene=32");
-              paramf.append("&timeZone=").append(bt.flM());
-              paramf.append("&templateVersion=").append(com.tencent.mm.plugin.websearch.api.ad.We(1));
+              paramf.append("&timeZone=").append(bu.fpH());
+              paramf.append("&templateVersion=").append(com.tencent.mm.plugin.websearch.api.ad.WL(1));
               paramf.append("#/list/4155");
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStorySettingUI", "url is:" + paramf.toString());
+              ae.i("MicroMsg.TopStory.TopStorySettingUI", "url is:" + paramf.toString());
               paramPreference = new Intent();
               paramPreference.putExtra("rawUrl", paramf.toString());
               paramPreference.putExtra("convertActivityFromTranslucent", false);
@@ -219,7 +219,7 @@ public class TopStorySettingUI
               paramPreference.putExtra("prePublishId", "wes##2##1");
               paramPreference.putExtra("KPublisherId", "wes##2##1");
               paramPreference.putExtra("preChatTYPE", 10);
-              com.tencent.mm.bs.d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", paramPreference);
+              com.tencent.mm.br.d.b(ak.getContext(), "webview", ".ui.tools.WebViewUI", paramPreference);
               AppMethodBeat.o(125984);
               return true;
               AppMethodBeat.o(125984);
@@ -255,8 +255,8 @@ public class TopStorySettingUI
   {
     AppMethodBeat.i(125987);
     super.onResume();
-    epm();
-    epn();
+    esT();
+    esU();
     AppMethodBeat.o(125987);
   }
   

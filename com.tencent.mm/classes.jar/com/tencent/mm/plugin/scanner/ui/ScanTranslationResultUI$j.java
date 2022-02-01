@@ -5,7 +5,7 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
 final class ScanTranslationResultUI$j
   implements DialogInterface.OnClickListener
 {
@@ -14,7 +14,7 @@ final class ScanTranslationResultUI$j
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(120981);
-    ScanTranslationResultUI.j(this.ytr);
+    ScanTranslationResultUI.j(this.yJr);
     AppMethodBeat.o(120981);
   }
 }

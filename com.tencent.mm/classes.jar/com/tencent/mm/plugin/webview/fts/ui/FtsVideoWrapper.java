@@ -20,25 +20,25 @@ import com.tencent.mm.pluginsdk.ui.i.c;
 import com.tencent.mm.pluginsdk.ui.i.d;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class FtsVideoWrapper
   extends RelativeLayout
   implements d.a, i, i.a, i.b, i.c
 {
   private boolean bzN;
-  private boolean dCQ;
-  private boolean hvp;
-  private float llC;
-  private int llD;
+  private boolean dDV;
+  private boolean hyd;
+  private float lqb;
+  private int lqc;
   private Context mContext;
-  private h osV;
-  private i.b osZ;
-  private d ota;
+  private i.b ozA;
+  private d ozB;
+  private h ozw;
   private String url;
-  private i.e xyl;
-  private i zHQ;
+  private i.e xOi;
+  private i zYX;
   
   public FtsVideoWrapper(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,15 +49,15 @@ public class FtsVideoWrapper
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(77989);
-    this.xyl = i.e.ESO;
-    this.hvp = false;
-    this.llC = -1.0F;
+    this.xOi = i.e.Flj;
+    this.hyd = false;
+    this.lqb = -1.0F;
     this.mContext = paramContext;
-    this.ota = new d();
+    this.ozB = new d();
     AppMethodBeat.o(77989);
   }
   
-  private i cYo()
+  private i daY()
   {
     AppMethodBeat.i(77991);
     CommonVideoView localCommonVideoView = new CommonVideoView(this.mContext);
@@ -67,9 +67,13 @@ public class FtsVideoWrapper
     return localCommonVideoView;
   }
   
-  public final void aAa() {}
+  public final void aAo() {}
   
-  public final void aAb() {}
+  public final void aAp() {}
+  
+  public final void aAq() {}
+  
+  public final void aAr() {}
   
   public final boolean aE(float paramFloat)
   {
@@ -79,10 +83,10 @@ public class FtsVideoWrapper
       AppMethodBeat.o(78014);
       return false;
     }
-    this.llC = paramFloat;
-    if (this.zHQ != null)
+    this.lqb = paramFloat;
+    if (this.zYX != null)
     {
-      boolean bool = this.zHQ.aE(this.llC);
+      boolean bool = this.zYX.aE(this.lqb);
       AppMethodBeat.o(78014);
       return bool;
     }
@@ -90,52 +94,48 @@ public class FtsVideoWrapper
     return false;
   }
   
-  public final void aK(String paramString, boolean paramBoolean)
+  public final void aM(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(78015);
-    ad.i("MicroMsg.AppBrandVideoWrapper", "%d onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { Integer.valueOf(hashCode()), paramString, Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.AppBrandVideoWrapper", "%d onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { Integer.valueOf(hashCode()), paramString, Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       AppMethodBeat.o(78015);
       return;
     }
-    if ((this.zHQ instanceof MMVideoView))
+    if ((this.zYX instanceof MMVideoView))
     {
-      this.zHQ.stop();
-      this.zHQ.cMk();
-      removeView((View)this.zHQ);
-      ad.i("MicroMsg.AppBrandVideoWrapper", "%d onDownloadFinish use common video view !", new Object[] { Integer.valueOf(hashCode()) });
-      this.zHQ = cYo();
+      this.zYX.stop();
+      this.zYX.cOS();
+      removeView((View)this.zYX);
+      ae.i("MicroMsg.AppBrandVideoWrapper", "%d onDownloadFinish use common video view !", new Object[] { Integer.valueOf(hashCode()) });
+      this.zYX = daY();
     }
     for (int i = 1;; i = 0)
     {
-      setScaleType(this.xyl);
-      aE(this.llC);
-      setMute(this.hvp);
+      setScaleType(this.xOi);
+      aE(this.lqb);
+      setMute(this.hyd);
       if (i != 0)
       {
-        setVideoFooterView(this.osV);
+        setVideoFooterView(this.ozw);
         paramString = new RelativeLayout.LayoutParams(-1, -2);
         paramString.addRule(13);
-        addView((View)this.zHQ, paramString);
-        this.zHQ.c(this.bzN, this.url, this.llD);
-        this.zHQ.start();
+        addView((View)this.zYX, paramString);
+        this.zYX.c(this.bzN, this.url, this.lqc);
+        this.zYX.start();
       }
       AppMethodBeat.o(78015);
       return;
     }
   }
   
-  public final void azY() {}
-  
-  public final void azZ() {}
-  
-  public final boolean bhH()
+  public final boolean bip()
   {
     AppMethodBeat.i(78004);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      boolean bool = this.zHQ.bhH();
+      boolean bool = this.zYX.bip();
       AppMethodBeat.o(78004);
       return bool;
     }
@@ -146,9 +146,9 @@ public class FtsVideoWrapper
   public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(78016);
-    ad.w("MicroMsg.AppBrandVideoWrapper", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.osZ != null) {
-      this.osZ.c(paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    ae.w("MicroMsg.AppBrandVideoWrapper", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.ozA != null) {
+      this.ozA.c(paramString1, paramString2, paramString3, paramInt1, paramInt2);
     }
     AppMethodBeat.o(78016);
   }
@@ -156,47 +156,47 @@ public class FtsVideoWrapper
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
     AppMethodBeat.i(77990);
-    this.llD = paramInt;
+    this.lqc = paramInt;
     this.bzN = paramBoolean;
     PString localPString = new PString();
     localPString.value = paramString;
-    bt.isNullOrNil(localPString.value);
-    this.dCQ = false;
+    bu.isNullOrNil(localPString.value);
+    this.dDV = false;
     this.url = localPString.value;
-    if (this.zHQ == null)
+    if (this.zYX == null)
     {
-      ad.i("MicroMsg.AppBrandVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
-      this.zHQ = cYo();
+      ae.i("MicroMsg.AppBrandVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
+      this.zYX = daY();
       paramInt = 1;
     }
     for (;;)
     {
-      setScaleType(this.xyl);
-      aE(this.llC);
-      setMute(this.hvp);
+      setScaleType(this.xOi);
+      aE(this.lqb);
+      setMute(this.hyd);
       if (paramInt != 0)
       {
-        setVideoFooterView(this.osV);
+        setVideoFooterView(this.ozw);
         paramString = new RelativeLayout.LayoutParams(-1, -2);
         paramString.addRule(13);
-        addView((View)this.zHQ, paramString);
+        addView((View)this.zYX, paramString);
       }
-      this.zHQ.c(this.bzN, this.url, this.llD);
+      this.zYX.c(this.bzN, this.url, this.lqc);
       AppMethodBeat.o(77990);
       return;
-      if ((this.zHQ instanceof MMVideoView))
+      if ((this.zYX instanceof MMVideoView))
       {
-        this.zHQ.stop();
-        this.zHQ.cMk();
-        removeView((View)this.zHQ);
-        ad.i("MicroMsg.AppBrandVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.zHQ = cYo();
+        this.zYX.stop();
+        this.zYX.cOS();
+        removeView((View)this.zYX);
+        ae.i("MicroMsg.AppBrandVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.zYX = daY();
         paramInt = 1;
       }
       else
       {
-        ad.i("MicroMsg.AppBrandVideoWrapper", "%d use last common video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.zHQ.stop();
+        ae.i("MicroMsg.AppBrandVideoWrapper", "%d use last common video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.zYX.stop();
         paramInt = 0;
       }
     }
@@ -205,9 +205,9 @@ public class FtsVideoWrapper
   public final boolean c(double paramDouble, boolean paramBoolean)
   {
     AppMethodBeat.i(77996);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      paramBoolean = this.zHQ.c(paramDouble, paramBoolean);
+      paramBoolean = this.zYX.c(paramDouble, paramBoolean);
       AppMethodBeat.o(77996);
       return paramBoolean;
     }
@@ -215,11 +215,11 @@ public class FtsVideoWrapper
     return false;
   }
   
-  public final void cMk()
+  public final void cOS()
   {
     AppMethodBeat.i(77993);
-    if (this.zHQ != null) {
-      this.zHQ.cMk();
+    if (this.zYX != null) {
+      this.zYX.cOS();
     }
     AppMethodBeat.o(77993);
   }
@@ -227,83 +227,83 @@ public class FtsVideoWrapper
   public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(78019);
-    ad.i("MicroMsg.AppBrandVideoWrapper", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.osZ != null) {
-      this.osZ.d(paramString1, paramString2, paramInt1, paramInt2);
+    ae.i("MicroMsg.AppBrandVideoWrapper", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.ozA != null) {
+      this.ozA.d(paramString1, paramString2, paramInt1, paramInt2);
     }
     AppMethodBeat.o(78019);
   }
   
-  public final void dq(String paramString1, String paramString2)
+  public final void ds(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78017);
-    ad.i("MicroMsg.AppBrandVideoWrapper", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.osZ != null) {
-      this.osZ.dq(paramString1, paramString2);
+    ae.i("MicroMsg.AppBrandVideoWrapper", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.ozA != null) {
+      this.ozA.ds(paramString1, paramString2);
     }
     AppMethodBeat.o(78017);
   }
   
-  public final void dr(String paramString1, String paramString2)
+  public final void dt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78018);
-    ad.i("MicroMsg.AppBrandVideoWrapper", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.osZ != null) {
-      this.osZ.dr(paramString1, paramString2);
+    ae.i("MicroMsg.AppBrandVideoWrapper", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.ozA != null) {
+      this.ozA.dt(paramString1, paramString2);
     }
     AppMethodBeat.o(78018);
   }
   
-  public final void ds(String paramString1, String paramString2)
+  public final void du(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78020);
-    ad.d("MicroMsg.AppBrandVideoWrapper", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
+    ae.d("MicroMsg.AppBrandVideoWrapper", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
     setKeepScreenOn(false);
-    this.ota.ex(false);
-    if (this.osZ != null) {
-      this.osZ.ds(paramString1, paramString2);
+    this.ozB.ez(false);
+    if (this.ozA != null) {
+      this.ozA.du(paramString1, paramString2);
     }
     AppMethodBeat.o(78020);
   }
   
-  public final void dt(String paramString1, String paramString2)
+  public final void dv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78021);
-    ad.d("MicroMsg.AppBrandVideoWrapper", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
+    ae.d("MicroMsg.AppBrandVideoWrapper", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
     setKeepScreenOn(true);
-    this.ota.a(this);
-    if (this.osZ != null) {
-      this.osZ.dt(paramString1, paramString2);
+    this.ozB.a(this);
+    if (this.ozA != null) {
+      this.ozA.dv(paramString1, paramString2);
     }
     AppMethodBeat.o(78021);
   }
   
-  public final void du(String paramString1, String paramString2)
+  public final void dw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78022);
-    if (this.osZ != null) {
-      this.osZ.du(paramString1, paramString2);
+    if (this.ozA != null) {
+      this.ozA.dw(paramString1, paramString2);
     }
     AppMethodBeat.o(78022);
   }
   
-  public final void dv(String paramString1, String paramString2)
+  public final void dx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78023);
-    if (this.osZ != null) {
-      this.osZ.dv(paramString1, paramString2);
+    if (this.ozA != null) {
+      this.ozA.dx(paramString1, paramString2);
     }
     AppMethodBeat.o(78023);
   }
   
-  public final void eT(String paramString1, String paramString2) {}
+  public final void eX(String paramString1, String paramString2) {}
   
   public int getCacheTimeSec()
   {
     AppMethodBeat.i(78002);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      int i = this.zHQ.getCacheTimeSec();
+      int i = this.zYX.getCacheTimeSec();
       AppMethodBeat.o(78002);
       return i;
     }
@@ -314,9 +314,9 @@ public class FtsVideoWrapper
   public int getCurrPosMs()
   {
     AppMethodBeat.i(78000);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      int i = this.zHQ.getCurrPosMs();
+      int i = this.zYX.getCurrPosMs();
       AppMethodBeat.o(78000);
       return i;
     }
@@ -327,9 +327,9 @@ public class FtsVideoWrapper
   public int getCurrPosSec()
   {
     AppMethodBeat.i(78001);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      int i = this.zHQ.getCurrPosSec();
+      int i = this.zYX.getCurrPosSec();
       AppMethodBeat.o(78001);
       return i;
     }
@@ -340,9 +340,9 @@ public class FtsVideoWrapper
   public int getPlayerType()
   {
     AppMethodBeat.i(77994);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      int i = this.zHQ.getPlayerType();
+      int i = this.zYX.getPlayerType();
       AppMethodBeat.o(77994);
       return i;
     }
@@ -353,13 +353,13 @@ public class FtsVideoWrapper
   public int getVideoDurationSec()
   {
     AppMethodBeat.i(77999);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      i = this.zHQ.getVideoDurationSec();
+      i = this.zYX.getVideoDurationSec();
       AppMethodBeat.o(77999);
       return i;
     }
-    int i = this.llD;
+    int i = this.lqc;
     AppMethodBeat.o(77999);
     return i;
   }
@@ -367,9 +367,9 @@ public class FtsVideoWrapper
   public final boolean isPlaying()
   {
     AppMethodBeat.i(78003);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      boolean bool = this.zHQ.isPlaying();
+      boolean bool = this.zYX.isPlaying();
       AppMethodBeat.o(78003);
       return bool;
     }
@@ -380,9 +380,9 @@ public class FtsVideoWrapper
   public final boolean o(double paramDouble)
   {
     AppMethodBeat.i(77995);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      boolean bool = this.zHQ.o(paramDouble);
+      boolean bool = this.zYX.o(paramDouble);
       AppMethodBeat.o(77995);
       return bool;
     }
@@ -393,10 +393,10 @@ public class FtsVideoWrapper
   public final void onUIDestroy()
   {
     AppMethodBeat.i(78012);
-    if (this.zHQ != null) {
-      this.zHQ.onUIDestroy();
+    if (this.zYX != null) {
+      this.zYX.onUIDestroy();
     }
-    this.ota.ex(false);
+    this.ozB.ez(false);
     setKeepScreenOn(false);
     AppMethodBeat.o(78012);
   }
@@ -404,10 +404,10 @@ public class FtsVideoWrapper
   public final void onUIPause()
   {
     AppMethodBeat.i(78011);
-    if (this.zHQ != null) {
-      this.zHQ.onUIPause();
+    if (this.zYX != null) {
+      this.zYX.onUIPause();
     }
-    this.ota.ex(false);
+    this.ozB.ez(false);
     setKeepScreenOn(false);
     AppMethodBeat.o(78011);
   }
@@ -415,8 +415,8 @@ public class FtsVideoWrapper
   public final void onUIResume()
   {
     AppMethodBeat.i(78010);
-    if (this.zHQ != null) {
-      this.zHQ.onUIResume();
+    if (this.zYX != null) {
+      this.zYX.onUIResume();
     }
     AppMethodBeat.o(78010);
   }
@@ -424,11 +424,11 @@ public class FtsVideoWrapper
   public final boolean pause()
   {
     AppMethodBeat.i(78008);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
       setKeepScreenOn(false);
-      this.ota.ex(false);
-      boolean bool = this.zHQ.pause();
+      this.ozB.ez(false);
+      boolean bool = this.zYX.pause();
       AppMethodBeat.o(78008);
       return bool;
     }
@@ -436,18 +436,18 @@ public class FtsVideoWrapper
     return false;
   }
   
-  public final void qQ(long paramLong)
+  public final void rd(long paramLong)
   {
     AppMethodBeat.i(78025);
-    g.yhR.idkeyStat(600L, paramLong, 1L, false);
+    g.yxI.idkeyStat(600L, paramLong, 1L, false);
     AppMethodBeat.o(78025);
   }
   
   public void setCover(Bitmap paramBitmap)
   {
     AppMethodBeat.i(78005);
-    if (this.zHQ != null) {
-      this.zHQ.setCover(paramBitmap);
+    if (this.zYX != null) {
+      this.zYX.setCover(paramBitmap);
     }
     AppMethodBeat.o(78005);
   }
@@ -455,22 +455,22 @@ public class FtsVideoWrapper
   public void setFullDirection(int paramInt)
   {
     AppMethodBeat.i(77998);
-    if (this.zHQ != null) {
-      this.zHQ.setFullDirection(paramInt);
+    if (this.zYX != null) {
+      this.zYX.setFullDirection(paramInt);
     }
     AppMethodBeat.o(77998);
   }
   
   public void setIMMVideoViewCallback(i.b paramb)
   {
-    this.osZ = paramb;
+    this.ozA = paramb;
   }
   
   public void setIsShowBasicControls(boolean paramBoolean)
   {
     AppMethodBeat.i(77997);
-    if (this.zHQ != null) {
-      this.zHQ.setIsShowBasicControls(paramBoolean);
+    if (this.zYX != null) {
+      this.zYX.setIsShowBasicControls(paramBoolean);
     }
     AppMethodBeat.o(77997);
   }
@@ -478,7 +478,7 @@ public class FtsVideoWrapper
   public void setKeepScreenOn(boolean paramBoolean)
   {
     AppMethodBeat.i(78024);
-    ad.d("MicroMsg.AppBrandVideoWrapper", "set keep screen on[%b] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), bt.flS() });
+    ae.d("MicroMsg.AppBrandVideoWrapper", "set keep screen on[%b] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), bu.fpN() });
     super.setKeepScreenOn(paramBoolean);
     AppMethodBeat.o(78024);
   }
@@ -490,9 +490,9 @@ public class FtsVideoWrapper
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(78009);
-    this.hvp = paramBoolean;
-    if (this.zHQ != null) {
-      this.zHQ.setMute(this.hvp);
+    this.hyd = paramBoolean;
+    if (this.zYX != null) {
+      this.zYX.setMute(this.hyd);
     }
     AppMethodBeat.o(78009);
   }
@@ -500,9 +500,9 @@ public class FtsVideoWrapper
   public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(78013);
-    this.xyl = parame;
-    if (this.zHQ != null) {
-      this.zHQ.setScaleType(this.xyl);
+    this.xOi = parame;
+    if (this.zYX != null) {
+      this.zYX.setScaleType(this.xOi);
     }
     AppMethodBeat.o(78013);
   }
@@ -510,9 +510,9 @@ public class FtsVideoWrapper
   public void setVideoFooterView(h paramh)
   {
     AppMethodBeat.i(77992);
-    this.osV = paramh;
-    if (this.zHQ != null) {
-      this.zHQ.setVideoFooterView(this.osV);
+    this.ozw = paramh;
+    if (this.zYX != null) {
+      this.zYX.setVideoFooterView(this.ozw);
     }
     AppMethodBeat.o(77992);
   }
@@ -520,11 +520,11 @@ public class FtsVideoWrapper
   public final void start()
   {
     AppMethodBeat.i(78006);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      this.zHQ.start();
+      this.zYX.start();
       setKeepScreenOn(true);
-      this.ota.a(this);
+      this.ozB.a(this);
     }
     AppMethodBeat.o(78006);
   }
@@ -532,25 +532,25 @@ public class FtsVideoWrapper
   public final void stop()
   {
     AppMethodBeat.i(78007);
-    if (this.zHQ != null)
+    if (this.zYX != null)
     {
-      this.zHQ.stop();
-      this.ota.ex(false);
+      this.zYX.stop();
+      this.ozB.ez(false);
       setKeepScreenOn(false);
     }
     AppMethodBeat.o(78007);
   }
   
-  public final void vk(String paramString)
+  public final void vG(String paramString)
   {
     AppMethodBeat.i(78026);
-    g.yhR.kvStat(14349, paramString);
+    g.yxI.kvStat(14349, paramString);
     AppMethodBeat.o(78026);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.FtsVideoWrapper
  * JD-Core Version:    0.7.0.1
  */

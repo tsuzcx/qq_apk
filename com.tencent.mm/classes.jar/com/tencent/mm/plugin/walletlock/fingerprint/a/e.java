@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.doi;
-import com.tencent.mm.protocal.protobuf.doj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dpf;
+import com.tencent.mm.protocal.protobuf.dpg;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class e
   extends n
   implements k
 {
-  boolean Dul;
+  boolean DLQ;
   private f callback;
   private b rr;
-  String thf;
+  String trY;
   
   public e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(129683);
-    this.Dul = false;
+    this.DLQ = false;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new doi();
-    ((b.a)localObject).hNN = new doj();
+    ((b.a)localObject).hQF = new dpf();
+    ((b.a)localObject).hQG = new dpg();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/touchlockgetchallenge";
     ((b.a)localObject).funcId = 1548;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (doi)this.rr.hNK.hNQ;
-    ((doi)localObject).scene = 1548;
-    ((doi)localObject).AFy = paramString1;
-    ((doi)localObject).AFz = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dpf)this.rr.hQD.hQJ;
+    ((dpf)localObject).scene = 1548;
+    ((dpf)localObject).AXb = paramString1;
+    ((dpf)localObject).AXc = paramString2;
     AppMethodBeat.o(129683);
   }
   
@@ -58,12 +58,12 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(129685);
-    ad.i("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch wallet lock challenge errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (doj)((b)paramq).hNL.hNQ;
-    this.thf = paramq.thf;
-    ad.d("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch lock challenge: %s", new Object[] { this.thf });
-    if (paramq.HvY == 1) {}
-    for (this.Dul = true;; this.Dul = false)
+    ae.i("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch wallet lock challenge errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (dpg)((b)paramq).hQE.hQJ;
+    this.trY = paramq.trY;
+    ae.d("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch lock challenge: %s", new Object[] { this.trY });
+    if (paramq.HPB == 1) {}
+    for (this.DLQ = true;; this.DLQ = false)
     {
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

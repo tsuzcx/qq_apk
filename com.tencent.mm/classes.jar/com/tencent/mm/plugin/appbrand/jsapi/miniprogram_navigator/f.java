@@ -17,12 +17,12 @@ public class f
   public void a(final h paramh, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(147181);
-    paramh.M(new Runnable()
+    paramh.K(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(147180);
-        paramh.getRuntime().R(MiniProgramNavigationBackResult.a(this.kVX, this.kVY));
+        paramh.getRuntime().R(MiniProgramNavigationBackResult.a(this.kZF, this.kZG));
         paramh.h(paramInt, f.this.e("ok", null));
         AppMethodBeat.o(147180);
       }

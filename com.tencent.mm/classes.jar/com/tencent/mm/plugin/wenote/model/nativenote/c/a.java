@@ -11,18 +11,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends View
 {
-  private a EAB;
+  private a ESX;
   private int mPadding;
   private Paint mPaint;
   private int mType;
-  private RectF pvY;
-  private RectF pvZ;
-  private RectF pwa;
-  private RectF pwb;
-  private int pwc;
-  private int pwd;
-  private int pwe;
-  private int pwf;
+  private RectF pCC;
+  private RectF pCD;
+  private RectF pCE;
+  private RectF pCF;
+  private int pCG;
+  private int pCH;
+  private int pCI;
+  private int pCJ;
   
   public a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, a parama)
   {
@@ -30,24 +30,24 @@ public final class a
     AppMethodBeat.i(30544);
     this.mType = 2;
     this.mType = paramInt1;
-    this.pwd = paramInt2;
-    this.pwe = paramInt3;
-    this.pwc = (this.pwd * 2 / 5);
-    this.mPadding = this.pwc;
-    this.pwf = (this.pwc * 3 / 4);
+    this.pCH = paramInt2;
+    this.pCI = paramInt3;
+    this.pCG = (this.pCH * 2 / 5);
+    this.mPadding = this.pCG;
+    this.pCJ = (this.pCG * 3 / 4);
     this.mPaint = new Paint(1);
     this.mPaint.setColor(paramInt4);
-    this.EAB = parama;
-    this.pvY = new RectF(this.mPadding, this.pwd, this.mPadding + this.pwc * 2, this.pwd + this.pwc * 2);
-    this.pvZ = new RectF(this.pwf - this.pwc, this.pwd, this.pwf + this.pwc, this.pwd + this.pwc * 2);
-    this.pwa = new RectF(this.mPadding, this.pwd, this.mPadding + this.pwc * 2, this.pwd + this.pwc * 2);
-    this.pwb = new RectF(this.mPadding + this.pwe, this.pwd, this.mPadding + this.pwe + this.pwc * 2, this.pwd + this.pwc * 2);
+    this.ESX = parama;
+    this.pCC = new RectF(this.mPadding, this.pCH, this.mPadding + this.pCG * 2, this.pCH + this.pCG * 2);
+    this.pCD = new RectF(this.pCJ - this.pCG, this.pCH, this.pCJ + this.pCG, this.pCH + this.pCG * 2);
+    this.pCE = new RectF(this.mPadding, this.pCH, this.mPadding + this.pCG * 2, this.pCH + this.pCG * 2);
+    this.pCF = new RectF(this.mPadding + this.pCI, this.pCH, this.mPadding + this.pCI + this.pCG * 2, this.pCH + this.pCG * 2);
     AppMethodBeat.o(30544);
   }
   
   public final int getOffsetForCursorMid()
   {
-    return this.mPadding + this.pwc + 1;
+    return this.mPadding + this.pCG + 1;
   }
   
   public final int getType()
@@ -57,7 +57,7 @@ public final class a
   
   public final int getViewHeight()
   {
-    return this.pwd + this.pwc * 2 + this.mPadding;
+    return this.pCH + this.pCG * 2 + this.mPadding;
   }
   
   public final int getViewPadding()
@@ -68,9 +68,9 @@ public final class a
   public final int getViewWidth()
   {
     if ((this.mType == 3) || (this.mType == 4)) {
-      return this.mPadding + this.pwc + this.pwf;
+      return this.mPadding + this.pCG + this.pCJ;
     }
-    return this.pwe + (this.mPadding + this.pwc) * 2;
+    return this.pCI + (this.mPadding + this.pCG) * 2;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -83,27 +83,27 @@ public final class a
     {
       AppMethodBeat.o(30545);
       return;
-      paramCanvas.drawRect(this.mPadding + this.pwc, 0.0F, this.mPadding + this.pwc + this.pwe, this.pwd + this.pwc * 2, this.mPaint);
-      paramCanvas.drawArc(this.pwa, 90.0F, 180.0F, true, this.mPaint);
-      paramCanvas.drawArc(this.pwb, 270.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.pCG, 0.0F, this.mPadding + this.pCG + this.pCI, this.pCH + this.pCG * 2, this.mPaint);
+      paramCanvas.drawArc(this.pCE, 90.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.pCF, 270.0F, 180.0F, true, this.mPaint);
       AppMethodBeat.o(30545);
       return;
-      paramCanvas.drawRect(this.mPadding + this.pwc + this.pwf - this.pwe, 0.0F, this.mPadding + this.pwc + this.pwf, this.pwd, this.mPaint);
-      paramCanvas.drawArc(this.pvY, 90.0F, 180.0F, true, this.mPaint);
-      paramCanvas.drawRect(this.mPadding + this.pwc, this.pwd, this.mPadding + this.pwc + this.pwf, this.pwd + this.pwc * 2, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.pCG + this.pCJ - this.pCI, 0.0F, this.mPadding + this.pCG + this.pCJ, this.pCH, this.mPaint);
+      paramCanvas.drawArc(this.pCC, 90.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.pCG, this.pCH, this.mPadding + this.pCG + this.pCJ, this.pCH + this.pCG * 2, this.mPaint);
       AppMethodBeat.o(30545);
       return;
-      paramCanvas.drawRect(0.0F, 0.0F, this.pwe, this.pwd, this.mPaint);
-      paramCanvas.drawRect(0.0F, this.pwd, this.pwf, this.pwd + this.pwc * 2, this.mPaint);
-      paramCanvas.drawArc(this.pvZ, 270.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(0.0F, 0.0F, this.pCI, this.pCH, this.mPaint);
+      paramCanvas.drawRect(0.0F, this.pCH, this.pCJ, this.pCH + this.pCG * 2, this.mPaint);
+      paramCanvas.drawArc(this.pCD, 270.0F, 180.0F, true, this.mPaint);
     }
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(30546);
-    if (this.EAB != null) {
-      this.EAB.a(this.mType, paramMotionEvent);
+    if (this.ESX != null) {
+      this.ESX.a(this.mType, paramMotionEvent);
     }
     AppMethodBeat.o(30546);
     return true;

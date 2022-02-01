@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.protocal.protobuf.clv;
-import com.tencent.mm.protocal.protobuf.cnl;
-import com.tencent.mm.protocal.protobuf.coq;
-import com.tencent.mm.protocal.protobuf.csl;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.protocal.protobuf.cmp;
+import com.tencent.mm.protocal.protobuf.cof;
+import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.protocal.protobuf.ctf;
 import com.tencent.mm.vending.g.b;
 
 public class aa

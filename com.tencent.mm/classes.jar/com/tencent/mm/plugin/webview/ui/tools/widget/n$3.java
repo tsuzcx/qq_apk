@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class n$3
   implements View.OnTouchListener
 {
@@ -22,15 +22,15 @@ final class n$3
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     p.g(paramMotionEvent, "event");
     if (paramMotionEvent.getAction() == 0)
     {
-      paramView = this.Erx;
-      if (paramView.Eex != -3) {
+      paramView = this.EJN;
+      if (paramView.Ewz != -3) {
         break label93;
       }
-      paramView.Erv.hideVKB();
+      paramView.EJL.hideVKB();
     }
     for (;;)
     {
@@ -38,8 +38,8 @@ final class n$3
       AppMethodBeat.o(82693);
       return true;
       label93:
-      if ((paramView.getSayFooter().eVD()) && (paramView.bni())) {
-        paramView.getSayFooter().edA();
+      if ((paramView.getSayFooter().eZq()) && (paramView.bnS())) {
+        paramView.getSayFooter().ehh();
       } else {
         paramView.hide();
       }

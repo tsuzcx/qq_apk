@@ -6,7 +6,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class WalletBalanceFetchUI$15
   implements View.OnClickListener
@@ -18,10 +18,10 @@ final class WalletBalanceFetchUI$15
     AppMethodBeat.i(68594);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog closeIcon click");
-    if ((this.Czp != null) && (this.Czp.isShowing())) {
-      this.Czp.dismiss();
+    a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog closeIcon click");
+    if ((this.CQU != null) && (this.CQU.isShowing())) {
+      this.CQU.dismiss();
     }
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68594);

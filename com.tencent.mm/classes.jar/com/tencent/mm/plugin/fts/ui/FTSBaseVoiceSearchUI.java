@@ -15,9 +15,9 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.fts.ui.widget.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.r.b;
 import java.util.Iterator;
@@ -29,57 +29,57 @@ public abstract class FTSBaseVoiceSearchUI
   implements d.a, e, r.b
 {
   String query;
-  ListView tyU;
-  private d tyV;
-  private boolean tyW = false;
-  private ap tyn = new ap()
+  ListView tJL;
+  private d tJM;
+  private boolean tJN = false;
+  protected c tJR;
+  private boolean tJS = true;
+  private boolean tJT;
+  private aq tJe = new aq()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
       AppMethodBeat.i(111877);
-      if ((paramAnonymousMessage.what == 1) && (!bt.isNullOrNil(FTSBaseVoiceSearchUI.b(FTSBaseVoiceSearchUI.this)))) {
-        FTSBaseVoiceSearchUI.this.cTo();
+      if ((paramAnonymousMessage.what == 1) && (!bu.isNullOrNil(FTSBaseVoiceSearchUI.b(FTSBaseVoiceSearchUI.this)))) {
+        FTSBaseVoiceSearchUI.this.cVT();
       }
       AppMethodBeat.o(111877);
     }
   };
-  protected c tza;
-  private boolean tzb = true;
-  private boolean tzc;
   
-  public boolean Jp(String paramString)
+  public boolean JO(String paramString)
   {
-    ad.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchKeyDown %s", new Object[] { paramString });
+    ae.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchKeyDown %s", new Object[] { paramString });
     hideVKB();
-    if (this.tza != null) {
-      this.tza.clearFocus();
+    if (this.tJR != null) {
+      this.tJR.clearFocus();
     }
     return false;
   }
   
-  public void Jq(String paramString)
+  public void JP(String paramString)
   {
-    ad.v("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchChange %s", new Object[] { paramString });
-    if (bt.isNullOrNil(paramString))
+    ae.v("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchChange %s", new Object[] { paramString });
+    if (bu.isNullOrNil(paramString))
     {
-      if (!this.tza.fKf())
+      if (!this.tJR.fOw())
       {
-        this.tza.fKg();
+        this.tJR.fOx();
         showVKB();
       }
-      cTy();
+      cWd();
     }
-    paramString = com.tencent.mm.plugin.fts.a.d.akp(paramString);
-    if ((!bt.isNullOrNil(this.query)) && (this.query.equals(paramString)))
+    paramString = com.tencent.mm.plugin.fts.a.d.aln(paramString);
+    if ((!bu.isNullOrNil(this.query)) && (this.query.equals(paramString)))
     {
-      ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "Same query %s %s", new Object[] { this.query, paramString });
+      ae.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "Same query %s %s", new Object[] { this.query, paramString });
       return;
     }
     this.query = paramString;
-    if (!bt.isNullOrNil(this.query))
+    if (!bu.isNullOrNil(this.query))
     {
-      this.tyn.removeMessages(1);
-      this.tyn.sendEmptyMessageDelayed(1, 300L);
+      this.tJe.removeMessages(1);
+      this.tJe.sendEmptyMessageDelayed(1, 300L);
       return;
     }
     stopSearch();
@@ -87,93 +87,93 @@ public abstract class FTSBaseVoiceSearchUI
   
   protected abstract d a(e parame);
   
-  public final void aSm()
+  public final void aSL()
   {
-    ad.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onQuitSearch");
+    ae.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onQuitSearch");
     finish();
   }
   
-  public final void aSn()
+  public final void aSM()
   {
-    ad.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnterSearch");
+    ae.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnterSearch");
   }
   
-  public final void aSo() {}
+  public final void aSN() {}
   
-  public final void aSp() {}
+  public final void aSO() {}
   
-  public void am(int paramInt, boolean paramBoolean)
+  public void ap(int paramInt, boolean paramBoolean)
   {
-    ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnd resultCount=%d | isFinished=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnd resultCount=%d | isFinished=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      cTE();
+      cWj();
       if (paramInt > 0) {
-        cTx();
+        cWc();
       }
     }
     for (;;)
     {
-      if (this.tyW)
+      if (this.tJN)
       {
-        this.tyW = false;
-        this.tyU.setSelection(0);
+        this.tJN = false;
+        this.tJL.setSelection(0);
       }
       return;
-      cTw();
+      cWb();
       continue;
       if (paramInt > 0)
       {
-        cTx();
-        cTD();
+        cWc();
+        cWi();
       }
       else
       {
-        cTv();
-        cTE();
+        cWa();
+        cWj();
       }
     }
   }
   
-  protected void cTB() {}
+  protected void cVT()
+  {
+    this.tJN = true;
+    this.tJM.aiR(this.query);
+    cWa();
+  }
   
-  protected List<View> cTC()
+  protected void cVY() {}
+  
+  protected void cWa()
+  {
+    this.tJL.setVisibility(8);
+  }
+  
+  protected void cWb()
+  {
+    this.tJL.setVisibility(8);
+  }
+  
+  protected void cWc()
+  {
+    this.tJL.setVisibility(0);
+  }
+  
+  protected void cWd()
+  {
+    this.tJL.setVisibility(8);
+  }
+  
+  protected void cWg() {}
+  
+  protected List<View> cWh()
   {
     return null;
   }
   
-  protected void cTD() {}
+  protected void cWi() {}
   
-  protected void cTE() {}
-  
-  protected void cTo()
-  {
-    this.tyW = true;
-    this.tyV.ahT(this.query);
-    cTv();
-  }
-  
-  protected void cTt() {}
-  
-  protected void cTv()
-  {
-    this.tyU.setVisibility(8);
-  }
-  
-  protected void cTw()
-  {
-    this.tyU.setVisibility(8);
-  }
-  
-  protected void cTx()
-  {
-    this.tyU.setVisibility(0);
-  }
-  
-  protected void cTy()
-  {
-    this.tyU.setVisibility(8);
-  }
+  protected void cWj() {}
   
   protected View getHeaderView()
   {
@@ -182,13 +182,13 @@ public abstract class FTSBaseVoiceSearchUI
   
   public final ListView getListView()
   {
-    return this.tyU;
+    return this.tJL;
   }
   
-  public final void mJ(boolean paramBoolean)
+  public final void mN(boolean paramBoolean)
   {
-    ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "enableLV %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.tzb = paramBoolean;
+    ae.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "enableLV %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.tJS = paramBoolean;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -197,33 +197,33 @@ public abstract class FTSBaseVoiceSearchUI
     showMMLogo();
     setMMTitle("");
     setActionbarColor(getContext().getResources().getColor(2131100705));
-    cTt();
-    this.tza = new c();
-    this.tza.KKQ = this;
-    this.tza.tDU = false;
-    this.tyU = ((ListView)findViewById(2131304446));
+    cVY();
+    this.tJR = new c();
+    this.tJR.Lhk = this;
+    this.tJR.tOL = false;
+    this.tJL = ((ListView)findViewById(2131304446));
     if (getHeaderView() != null)
     {
-      ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addHeaderView");
-      this.tyU.addHeaderView(getHeaderView());
+      ae.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addHeaderView");
+      this.tJL.addHeaderView(getHeaderView());
     }
-    paramBundle = cTC();
+    paramBundle = cWh();
     if ((paramBundle != null) && (paramBundle.size() > 0))
     {
-      ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addFooterView %d", new Object[] { Integer.valueOf(paramBundle.size()) });
+      ae.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addFooterView %d", new Object[] { Integer.valueOf(paramBundle.size()) });
       paramBundle = paramBundle.iterator();
       while (paramBundle.hasNext())
       {
         View localView = (View)paramBundle.next();
-        this.tyU.addFooterView(localView);
+        this.tJL.addFooterView(localView);
       }
     }
-    this.tyV = a(this);
-    this.tyV.tyT = this;
-    this.tyU.setAdapter(this.tyV);
-    this.tyU.setOnScrollListener(this.tyV);
-    this.tyU.setOnItemClickListener(this.tyV);
-    this.tyU.setOnTouchListener(new View.OnTouchListener()
+    this.tJM = a(this);
+    this.tJM.tJK = this;
+    this.tJL.setAdapter(this.tJM);
+    this.tJL.setOnScrollListener(this.tJM);
+    this.tJL.setOnItemClickListener(this.tJM);
+    this.tJL.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -231,10 +231,10 @@ public abstract class FTSBaseVoiceSearchUI
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/FTSBaseVoiceSearchUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-        FTSBaseVoiceSearchUI.this.tza.clearFocus();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/FTSBaseVoiceSearchUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        FTSBaseVoiceSearchUI.this.tJR.clearFocus();
         FTSBaseVoiceSearchUI.this.hideVKB();
-        FTSBaseVoiceSearchUI.this.cTB();
+        FTSBaseVoiceSearchUI.this.cWg();
         if (!FTSBaseVoiceSearchUI.a(FTSBaseVoiceSearchUI.this)) {}
         for (boolean bool = true;; bool = false)
         {
@@ -258,31 +258,31 @@ public abstract class FTSBaseVoiceSearchUI
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    this.tza.a(this, paramMenu);
-    if (!this.tzc)
+    this.tJR.a(this, paramMenu);
+    if (!this.tJT)
     {
-      this.tza.yC(true);
-      this.tzc = true;
+      this.tJR.yP(true);
+      this.tJT = true;
     }
     return true;
   }
   
   public void onDestroy()
   {
-    this.tyn.removeMessages(1);
-    this.tyV.finish();
+    this.tJe.removeMessages(1);
+    this.tJM.finish();
     super.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.tza.clearFocus();
+    this.tJR.clearFocus();
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    this.tza.a(this, paramMenu);
+    this.tJR.a(this, paramMenu);
     return true;
   }
   
@@ -294,15 +294,15 @@ public abstract class FTSBaseVoiceSearchUI
   
   protected void stopSearch()
   {
-    this.tyn.removeMessages(1);
-    this.tyW = false;
-    this.tyV.stopSearch();
-    cTy();
+    this.tJe.removeMessages(1);
+    this.tJN = false;
+    this.tJM.stopSearch();
+    cWd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSBaseVoiceSearchUI
  * JD-Core Version:    0.7.0.1
  */

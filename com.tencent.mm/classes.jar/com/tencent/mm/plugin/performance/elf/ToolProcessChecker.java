@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.performance.elf;
 public class ToolProcessChecker
   extends MainProcessChecker
 {
-  protected final boolean dyI()
+  protected final boolean dBZ()
   {
     return false;
   }

@@ -15,17 +15,17 @@ public class CompositionTrack
   
   CompositionTrack()
   {
-    AppMethodBeat.i(217677);
+    AppMethodBeat.i(214315);
     this.segments = new ArrayList();
-    AppMethodBeat.o(217677);
+    AppMethodBeat.o(214315);
   }
   
   CompositionTrack(Asset paramAsset, int paramInt1, int paramInt2, CMTimeRange paramCMTimeRange)
   {
     super(paramAsset, paramInt1, paramInt2, paramCMTimeRange);
-    AppMethodBeat.i(217678);
+    AppMethodBeat.i(214316);
     this.segments = new ArrayList();
-    AppMethodBeat.o(217678);
+    AppMethodBeat.o(214316);
   }
   
   public List<CompositionTrackSegment> getSegments()
@@ -35,7 +35,7 @@ public class CompositionTrack
   
   public CompositionTrackSegment segmentForTrackTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(217679);
+    AppMethodBeat.i(214317);
     if (this.segments != null)
     {
       Iterator localIterator = this.segments.iterator();
@@ -48,21 +48,21 @@ public class CompositionTrack
           if ((localCMTimeRange != null) && (localCMTimeRange.containsTime(paramCMTime)) && ((localAssetTrackSegment instanceof CompositionTrackSegment)))
           {
             paramCMTime = (CompositionTrackSegment)localAssetTrackSegment;
-            AppMethodBeat.o(217679);
+            AppMethodBeat.o(214317);
             return paramCMTime;
           }
         }
       }
     }
-    AppMethodBeat.o(217679);
+    AppMethodBeat.o(214317);
     return null;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(217680);
+    AppMethodBeat.i(214318);
     String str = "CompositionTrack{segments=" + this.segments + ", trackID=" + this.trackID + ", mediaType=" + this.mediaType + '}';
-    AppMethodBeat.o(217680);
+    AppMethodBeat.o(214318);
     return str;
   }
 }

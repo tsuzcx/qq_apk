@@ -264,39 +264,39 @@ public final class a
   private static void a(com.tencent.xweb.internal.a.b paramb, Element paramElement)
   {
     AppMethodBeat.i(154543);
-    paramb.MsI = a(paramElement, "apkMin");
-    paramb.MsJ = a(paramElement, "apkMax");
-    paramb.MsK = a(paramElement, "preDownApkMin");
-    paramb.MsL = a(paramElement, "preDownApkMax");
-    paramb.MsG = a(paramElement, "sdkMin");
-    paramb.MsH = a(paramElement, "sdkMax");
-    paramb.MsM = a(paramElement, "apiMin");
-    paramb.MsN = a(paramElement, "apiMax");
-    paramb.MsO = paramElement.getAttribute("forbidDeviceRegex");
-    paramb.MsP = paramElement.getAttribute("whiteDeviceRegex");
-    paramb.MsZ = paramElement.getAttribute("forbidAppRegex");
-    paramb.Mta = paramElement.getAttribute("whiteAppRegex");
-    paramb.MsQ = a(paramElement, "grayMin");
-    paramb.MsR = a(paramElement, "grayMax");
-    paramb.MsS = a(paramElement, "dayGrayMin");
-    paramb.MsT = a(paramElement, "dayGrayMax");
-    paramb.MsU = a(paramElement, "chromeMin");
-    paramb.MsV = a(paramElement, "chromeMax");
-    paramb.MsW = a(paramElement, "usertype");
-    paramb.Mtb = a(paramElement, "x5sdkmin");
-    paramb.Mtc = a(paramElement, "x5sdkmax");
-    paramb.Mtd = a(paramElement, "x5coremin");
-    paramb.Mte = a(paramElement, "x5coremax");
-    paramb.MsX = c(paramElement, "hoursStart");
-    paramb.MsY = c(paramElement, "hoursEnd");
-    paramb.Mtg = paramElement.getAttribute("runtimeAbis");
-    paramb.Mti = paramElement.getAttribute("blackRuntimeAbis");
-    paramb.Mtf = paramElement.getAttribute("deviceAbis");
-    paramb.Mth = paramElement.getAttribute("blackDeviceAbis");
-    paramb.Mtj = b(paramElement, "appClientVerMin");
-    paramb.Mtk = b(paramElement, "appClientVerMax");
-    paramb.Mtl = paramElement.getAttribute("appInfoWhiteList");
-    paramb.Mtm = paramElement.getAttribute("appInfoBlackList");
+    paramb.MPM = a(paramElement, "apkMin");
+    paramb.MPN = a(paramElement, "apkMax");
+    paramb.MPO = a(paramElement, "preDownApkMin");
+    paramb.MPP = a(paramElement, "preDownApkMax");
+    paramb.MPK = a(paramElement, "sdkMin");
+    paramb.MPL = a(paramElement, "sdkMax");
+    paramb.MPQ = a(paramElement, "apiMin");
+    paramb.MPR = a(paramElement, "apiMax");
+    paramb.MPS = paramElement.getAttribute("forbidDeviceRegex");
+    paramb.MPT = paramElement.getAttribute("whiteDeviceRegex");
+    paramb.MQd = paramElement.getAttribute("forbidAppRegex");
+    paramb.MQe = paramElement.getAttribute("whiteAppRegex");
+    paramb.MPU = a(paramElement, "grayMin");
+    paramb.MPV = a(paramElement, "grayMax");
+    paramb.MPW = a(paramElement, "dayGrayMin");
+    paramb.MPX = a(paramElement, "dayGrayMax");
+    paramb.MPY = a(paramElement, "chromeMin");
+    paramb.MPZ = a(paramElement, "chromeMax");
+    paramb.MQa = a(paramElement, "usertype");
+    paramb.MQf = a(paramElement, "x5sdkmin");
+    paramb.MQg = a(paramElement, "x5sdkmax");
+    paramb.MQh = a(paramElement, "x5coremin");
+    paramb.MQi = a(paramElement, "x5coremax");
+    paramb.MQb = c(paramElement, "hoursStart");
+    paramb.MQc = c(paramElement, "hoursEnd");
+    paramb.MQk = paramElement.getAttribute("runtimeAbis");
+    paramb.MQm = paramElement.getAttribute("blackRuntimeAbis");
+    paramb.MQj = paramElement.getAttribute("deviceAbis");
+    paramb.MQl = paramElement.getAttribute("blackDeviceAbis");
+    paramb.MQn = b(paramElement, "appClientVerMin");
+    paramb.MQo = b(paramElement, "appClientVerMax");
+    paramb.MQp = paramElement.getAttribute("appInfoWhiteList");
+    paramb.MQq = paramElement.getAttribute("appInfoBlackList");
     AppMethodBeat.o(154543);
   }
   
@@ -312,10 +312,10 @@ public final class a
       {
         c localc = new c();
         Element localElement = (Element)paramElement.item(i);
-        localc.Myl = localElement.getAttribute("url");
-        localc.MyA = a(localElement, "targetVersion");
-        localc.Mys = localElement.getAttribute("md5");
-        localc.Myt = e(localElement, "useCellular");
+        localc.MVp = localElement.getAttribute("url");
+        localc.MVF = a(localElement, "targetVersion");
+        localc.MVw = localElement.getAttribute("md5");
+        localc.MVx = e(localElement, "useCellular");
         localc.bUseCdn = e(localElement, "useCdn");
         arrayOfc[i] = localc;
         i += 1;
@@ -329,16 +329,16 @@ public final class a
   
   private static int b(Element paramElement, String paramString)
   {
-    AppMethodBeat.i(195593);
+    AppMethodBeat.i(207614);
     if (paramElement == null)
     {
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(207614);
       return 0;
     }
     paramString = paramElement.getAttribute(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(207614);
       return 0;
     }
     paramElement = paramString;
@@ -348,13 +348,13 @@ public final class a
     try
     {
       int i = Integer.parseInt(paramElement, 16);
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(207614);
       return i;
     }
     catch (Exception paramElement)
     {
       Log.e("ConfigParser", "safeGetIntFromHex failed" + paramElement.getMessage());
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(207614);
     }
     return 0;
   }
@@ -378,10 +378,10 @@ public final class a
         {
           com.tencent.xweb.internal.a.a locala = new com.tencent.xweb.internal.a.a();
           Element localElement = (Element)paramElement.item(i);
-          locala.MsD = localElement.getAttribute("optype");
-          locala.MsE = localElement.getAttribute("opvalue");
-          locala.MsF = localElement.getAttribute("module");
-          a(locala.MsC, localElement);
+          locala.MPH = localElement.getAttribute("optype");
+          locala.MPI = localElement.getAttribute("opvalue");
+          locala.MPJ = localElement.getAttribute("module");
+          a(locala.MPG, localElement);
           arrayOfa[i] = locala;
           i += 1;
         }
@@ -397,7 +397,7 @@ public final class a
     return null;
   }
   
-  public static b bbC(String paramString)
+  public static b bdf(String paramString)
   {
     AppMethodBeat.i(154536);
     if (paramString == null)
@@ -413,7 +413,7 @@ public final class a
       AppMethodBeat.o(154536);
       return null;
     }
-    paramString = i(paramString, a(paramString, (int)paramString.length(), "<Versions>"));
+    paramString = j(paramString, a(paramString, (int)paramString.length(), "<Versions>"));
     AppMethodBeat.o(154536);
     return paramString;
   }
@@ -448,28 +448,28 @@ public final class a
   
   private static float d(Element paramElement, String paramString)
   {
-    AppMethodBeat.i(195594);
+    AppMethodBeat.i(207615);
     if (paramElement == null)
     {
-      AppMethodBeat.o(195594);
+      AppMethodBeat.o(207615);
       return -1.0F;
     }
     paramElement = paramElement.getAttribute(paramString);
     if ((paramElement == null) || (paramElement.isEmpty()))
     {
-      AppMethodBeat.o(195594);
+      AppMethodBeat.o(207615);
       return -1.0F;
     }
     try
     {
       float f = Float.parseFloat(paramElement);
-      AppMethodBeat.o(195594);
+      AppMethodBeat.o(207615);
       return f;
     }
     catch (Exception paramElement)
     {
       Log.e("ConfigParser", "safeGetFloat failed : " + paramElement.getMessage());
-      AppMethodBeat.o(195594);
+      AppMethodBeat.o(207615);
     }
     return -1.0F;
   }
@@ -494,12 +494,12 @@ public final class a
   }
   
   /* Error */
-  private static b i(File paramFile, String paramString)
+  private static b j(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 477
+    //   0: ldc_w 478
     //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 483	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   6: invokestatic 484	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   9: astore 5
     //   11: new 87	java/io/FileInputStream
     //   14: dup
@@ -510,139 +510,139 @@ public final class a
     //   23: astore_0
     //   24: new 9	com/tencent/xweb/xwalk/updater/a$b
     //   27: dup
-    //   28: invokespecial 484	com/tencent/xweb/xwalk/updater/a$b:<init>	()V
+    //   28: invokespecial 485	com/tencent/xweb/xwalk/updater/a$b:<init>	()V
     //   31: astore_3
     //   32: aload 4
     //   34: astore_0
     //   35: aload 5
-    //   37: invokevirtual 488	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   37: invokevirtual 489	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
     //   40: aload 4
-    //   42: invokevirtual 494	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   45: invokeinterface 500 1 0
+    //   42: invokevirtual 495	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   45: invokeinterface 501 1 0
     //   50: astore 5
     //   52: aload 5
     //   54: ifnonnull +37 -> 91
     //   57: aload 4
     //   59: astore_0
-    //   60: ldc_w 502
+    //   60: ldc_w 503
     //   63: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   66: aload 4
     //   68: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   71: ldc_w 477
+    //   71: ldc_w 478
     //   74: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aconst_null
     //   78: areturn
     //   79: astore_0
     //   80: ldc 58
-    //   82: ldc_w 504
+    //   82: ldc_w 505
     //   85: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: goto -17 -> 71
     //   91: aload 4
     //   93: astore_0
     //   94: aload_3
     //   95: aload 5
-    //   97: ldc_w 506
+    //   97: ldc_w 507
     //   100: invokeinterface 44 2 0
-    //   105: putfield 507	com/tencent/xweb/xwalk/updater/a$b:Mys	Ljava/lang/String;
+    //   105: putfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
     //   108: aload 4
     //   110: astore_0
     //   111: aload_3
     //   112: aload 5
-    //   114: ldc_w 509
+    //   114: ldc_w 510
     //   117: invokeinterface 44 2 0
-    //   122: putfield 511	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
+    //   122: putfield 512	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
     //   125: aload 4
     //   127: astore_0
     //   128: aload_3
-    //   129: getfield 507	com/tencent/xweb/xwalk/updater/a$b:Mys	Ljava/lang/String;
+    //   129: getfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
     //   132: ifnull +17 -> 149
     //   135: aload 4
     //   137: astore_0
     //   138: aload_3
-    //   139: getfield 507	com/tencent/xweb/xwalk/updater/a$b:Mys	Ljava/lang/String;
+    //   139: getfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
     //   142: aload_1
-    //   143: invokevirtual 514	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   143: invokevirtual 515	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   146: ifne +46 -> 192
     //   149: aload 4
     //   151: astore_0
-    //   152: ldc2_w 515
-    //   155: invokestatic 522	com/tencent/xweb/util/g:Fh	(J)V
+    //   152: ldc2_w 516
+    //   155: invokestatic 523	com/tencent/xweb/util/g:FJ	(J)V
     //   158: aload 4
     //   160: astore_0
-    //   161: ldc_w 524
+    //   161: ldc_w 525
     //   164: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   167: aload 4
     //   169: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   172: ldc_w 477
+    //   172: ldc_w 478
     //   175: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   178: aconst_null
     //   179: areturn
     //   180: astore_0
     //   181: ldc 58
-    //   183: ldc_w 504
+    //   183: ldc_w 505
     //   186: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   189: goto -17 -> 172
     //   192: aload 4
     //   194: astore_0
     //   195: aload_3
-    //   196: getfield 507	com/tencent/xweb/xwalk/updater/a$b:Mys	Ljava/lang/String;
+    //   196: getfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
     //   199: aload_3
-    //   200: getfield 511	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
-    //   203: ldc_w 526
-    //   206: invokestatic 532	com/tencent/xweb/util/b:bn	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   200: getfield 512	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
+    //   203: ldc_w 527
+    //   206: invokestatic 533	com/tencent/xweb/util/b:bo	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     //   209: ifne +46 -> 255
     //   212: aload 4
     //   214: astore_0
-    //   215: ldc2_w 533
-    //   218: invokestatic 522	com/tencent/xweb/util/g:Fh	(J)V
+    //   215: ldc2_w 534
+    //   218: invokestatic 523	com/tencent/xweb/util/g:FJ	(J)V
     //   221: aload 4
     //   223: astore_0
-    //   224: ldc_w 536
+    //   224: ldc_w 537
     //   227: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   230: aload 4
     //   232: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   235: ldc_w 477
+    //   235: ldc_w 478
     //   238: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   241: aconst_null
     //   242: areturn
     //   243: astore_0
     //   244: ldc 58
-    //   246: ldc_w 504
+    //   246: ldc_w 505
     //   249: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   252: goto -17 -> 235
     //   255: aload 4
     //   257: astore_0
     //   258: aload_3
     //   259: aload 5
-    //   261: ldc_w 538
+    //   261: ldc_w 539
     //   264: invokeinterface 44 2 0
-    //   269: putfield 541	com/tencent/xweb/xwalk/updater/a$b:Myx	Ljava/lang/String;
+    //   269: putfield 542	com/tencent/xweb/xwalk/updater/a$b:MVC	Ljava/lang/String;
     //   272: aload 4
     //   274: astore_0
     //   275: aload_3
     //   276: aload 5
-    //   278: invokestatic 543	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
-    //   281: putfield 547	com/tencent/xweb/xwalk/updater/a$b:Myz	[Lcom/tencent/xweb/internal/a$a;
+    //   278: invokestatic 544	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
+    //   281: putfield 548	com/tencent/xweb/xwalk/updater/a$b:MVE	[Lcom/tencent/xweb/internal/a$a;
     //   284: aload 4
     //   286: astore_0
     //   287: aload 5
-    //   289: ldc_w 549
+    //   289: ldc_w 550
     //   292: invokeinterface 328 2 0
     //   297: astore_1
     //   298: aload_1
-    //   299: ifnull +508 -> 807
+    //   299: ifnull +524 -> 823
     //   302: aload 4
     //   304: astore_0
     //   305: aload_1
     //   306: invokeinterface 333 1 0
-    //   311: ifeq +496 -> 807
+    //   311: ifeq +512 -> 823
     //   314: aload 4
     //   316: astore_0
     //   317: aload_3
     //   318: aload_1
     //   319: invokeinterface 333 1 0
     //   324: anewarray 21	com/tencent/xweb/xwalk/updater/a$f
-    //   327: putfield 553	com/tencent/xweb/xwalk/updater/a$b:Myy	[Lcom/tencent/xweb/xwalk/updater/a$f;
+    //   327: putfield 554	com/tencent/xweb/xwalk/updater/a$b:MVD	[Lcom/tencent/xweb/xwalk/updater/a$f;
     //   330: iconst_0
     //   331: istore_2
     //   332: aload 4
@@ -650,12 +650,12 @@ public final class a
     //   335: iload_2
     //   336: aload_1
     //   337: invokeinterface 333 1 0
-    //   342: if_icmpge +465 -> 807
+    //   342: if_icmpge +481 -> 823
     //   345: aload 4
     //   347: astore_0
     //   348: new 21	com/tencent/xweb/xwalk/updater/a$f
     //   351: dup
-    //   352: invokespecial 554	com/tencent/xweb/xwalk/updater/a$f:<init>	()V
+    //   352: invokespecial 555	com/tencent/xweb/xwalk/updater/a$f:<init>	()V
     //   355: astore 5
     //   357: aload 4
     //   359: astore_0
@@ -668,540 +668,551 @@ public final class a
     //   374: astore_0
     //   375: aload 5
     //   377: aload 6
-    //   379: ldc_w 556
+    //   379: ldc_w 557
     //   382: invokeinterface 44 2 0
-    //   387: putfield 557	com/tencent/xweb/xwalk/updater/a$f:Myl	Ljava/lang/String;
+    //   387: putfield 558	com/tencent/xweb/xwalk/updater/a$f:MVp	Ljava/lang/String;
     //   390: aload 4
     //   392: astore_0
     //   393: aload 5
     //   395: aload 6
     //   397: ldc_w 351
     //   400: invokeinterface 44 2 0
-    //   405: putfield 558	com/tencent/xweb/xwalk/updater/a$f:Mys	Ljava/lang/String;
+    //   405: putfield 559	com/tencent/xweb/xwalk/updater/a$f:MVw	Ljava/lang/String;
     //   408: aload 4
     //   410: astore_0
     //   411: aload 5
-    //   413: getfield 559	com/tencent/xweb/xwalk/updater/a$f:MsC	Lcom/tencent/xweb/internal/a$b;
+    //   413: getfield 560	com/tencent/xweb/xwalk/updater/a$f:MPG	Lcom/tencent/xweb/internal/a$b;
     //   416: aload 6
     //   418: invokestatic 411	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
     //   421: aload 4
     //   423: astore_0
     //   424: aload 5
     //   426: aload 6
-    //   428: ldc_w 561
+    //   428: ldc_w 562
     //   431: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   434: putfield 564	com/tencent/xweb/xwalk/updater/a$f:Myr	I
+    //   434: putfield 565	com/tencent/xweb/xwalk/updater/a$f:MVv	I
     //   437: aload 4
     //   439: astore_0
     //   440: aload 5
     //   442: aload 6
-    //   444: ldc_w 566
+    //   444: ldc_w 567
     //   447: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   450: putfield 568	com/tencent/xweb/xwalk/updater/a$f:version	I
+    //   450: putfield 569	com/tencent/xweb/xwalk/updater/a$f:version	I
     //   453: aload 4
     //   455: astore_0
     //   456: aload 5
     //   458: aload 6
     //   460: ldc_w 356
     //   463: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   466: putfield 569	com/tencent/xweb/xwalk/updater/a$f:Myt	Z
+    //   466: putfield 570	com/tencent/xweb/xwalk/updater/a$f:MVx	Z
     //   469: aload 4
     //   471: astore_0
     //   472: aload 5
     //   474: aload 6
-    //   476: ldc_w 365
+    //   476: ldc_w 572
     //   479: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   482: putfield 570	com/tencent/xweb/xwalk/updater/a$f:bUseCdn	Z
+    //   482: putfield 575	com/tencent/xweb/xwalk/updater/a$f:MVy	Z
     //   485: aload 4
     //   487: astore_0
     //   488: aload 5
     //   490: aload 6
-    //   492: ldc_w 572
-    //   495: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   498: putfield 575	com/tencent/xweb/xwalk/updater/a$f:Myk	I
+    //   492: ldc_w 365
+    //   495: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   498: putfield 576	com/tencent/xweb/xwalk/updater/a$f:bUseCdn	Z
     //   501: aload 4
     //   503: astore_0
     //   504: aload 5
     //   506: aload 6
-    //   508: ldc_w 577
-    //   511: invokeinterface 44 2 0
-    //   516: putfield 580	com/tencent/xweb/xwalk/updater/a$f:Myo	Ljava/lang/String;
-    //   519: aload 4
-    //   521: astore_0
-    //   522: aload 5
-    //   524: aload 6
-    //   526: ldc_w 582
-    //   529: invokeinterface 44 2 0
-    //   534: putfield 585	com/tencent/xweb/xwalk/updater/a$f:Myp	Ljava/lang/String;
-    //   537: aload 4
-    //   539: astore_0
-    //   540: aload 5
-    //   542: aload 6
-    //   544: ldc_w 587
-    //   547: invokeinterface 44 2 0
-    //   552: putfield 590	com/tencent/xweb/xwalk/updater/a$f:MyF	Ljava/lang/String;
-    //   555: aload 4
-    //   557: astore_0
-    //   558: aload 5
-    //   560: aload 6
-    //   562: ldc_w 592
-    //   565: invokeinterface 44 2 0
-    //   570: putfield 595	com/tencent/xweb/xwalk/updater/a$f:Myu	Ljava/lang/String;
-    //   573: aload 4
-    //   575: astore_0
-    //   576: aload 5
-    //   578: aload 6
-    //   580: ldc_w 597
-    //   583: invokeinterface 44 2 0
-    //   588: putfield 600	com/tencent/xweb/xwalk/updater/a$f:Myv	Ljava/lang/String;
-    //   591: aload 4
-    //   593: astore_0
-    //   594: aload 5
-    //   596: aload 6
-    //   598: ldc_w 602
-    //   601: invokeinterface 44 2 0
-    //   606: putfield 605	com/tencent/xweb/xwalk/updater/a$f:Myw	Ljava/lang/String;
-    //   609: aload 4
-    //   611: astore_0
-    //   612: aload 5
-    //   614: aload 6
-    //   616: ldc_w 607
-    //   619: invokestatic 609	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   622: putfield 613	com/tencent/xweb/xwalk/updater/a$f:Mym	F
+    //   508: ldc_w 578
+    //   511: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
+    //   514: putfield 581	com/tencent/xweb/xwalk/updater/a$f:MVo	I
+    //   517: aload 4
+    //   519: astore_0
+    //   520: aload 5
+    //   522: aload 6
+    //   524: ldc_w 583
+    //   527: invokeinterface 44 2 0
+    //   532: putfield 586	com/tencent/xweb/xwalk/updater/a$f:MVs	Ljava/lang/String;
+    //   535: aload 4
+    //   537: astore_0
+    //   538: aload 5
+    //   540: aload 6
+    //   542: ldc_w 588
+    //   545: invokeinterface 44 2 0
+    //   550: putfield 591	com/tencent/xweb/xwalk/updater/a$f:MVt	Ljava/lang/String;
+    //   553: aload 4
+    //   555: astore_0
+    //   556: aload 5
+    //   558: aload 6
+    //   560: ldc_w 593
+    //   563: invokeinterface 44 2 0
+    //   568: putfield 596	com/tencent/xweb/xwalk/updater/a$f:MVK	Ljava/lang/String;
+    //   571: aload 4
+    //   573: astore_0
+    //   574: aload 5
+    //   576: aload 6
+    //   578: ldc_w 598
+    //   581: invokeinterface 44 2 0
+    //   586: putfield 601	com/tencent/xweb/xwalk/updater/a$f:MVz	Ljava/lang/String;
+    //   589: aload 4
+    //   591: astore_0
+    //   592: aload 5
+    //   594: aload 6
+    //   596: ldc_w 603
+    //   599: invokeinterface 44 2 0
+    //   604: putfield 606	com/tencent/xweb/xwalk/updater/a$f:MVA	Ljava/lang/String;
+    //   607: aload 4
+    //   609: astore_0
+    //   610: aload 5
+    //   612: aload 6
+    //   614: ldc_w 608
+    //   617: invokeinterface 44 2 0
+    //   622: putfield 611	com/tencent/xweb/xwalk/updater/a$f:MVB	Ljava/lang/String;
     //   625: aload 4
     //   627: astore_0
     //   628: aload 5
     //   630: aload 6
-    //   632: ldc_w 615
-    //   635: invokestatic 609	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   638: putfield 618	com/tencent/xweb/xwalk/updater/a$f:Myn	F
+    //   632: ldc_w 613
+    //   635: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   638: putfield 619	com/tencent/xweb/xwalk/updater/a$f:MVq	F
     //   641: aload 4
     //   643: astore_0
-    //   644: aload 6
-    //   646: ldc_w 620
-    //   649: invokeinterface 44 2 0
-    //   654: astore 7
-    //   656: aload 7
-    //   658: ifnull +27 -> 685
-    //   661: aload 4
-    //   663: astore_0
-    //   664: aload 7
-    //   666: invokevirtual 50	java/lang/String:isEmpty	()Z
-    //   669: ifne +16 -> 685
-    //   672: aload 4
-    //   674: astore_0
-    //   675: aload 5
-    //   677: aload 7
-    //   679: invokestatic 470	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
-    //   682: putfield 623	com/tencent/xweb/xwalk/updater/a$f:bTryUseSharedCore	Z
-    //   685: aload 4
-    //   687: astore_0
-    //   688: aload 5
-    //   690: aload 6
-    //   692: ldc_w 625
-    //   695: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   698: putfield 628	com/tencent/xweb/xwalk/updater/a$f:MyE	Z
+    //   644: aload 5
+    //   646: aload 6
+    //   648: ldc_w 621
+    //   651: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   654: putfield 624	com/tencent/xweb/xwalk/updater/a$f:MVr	F
+    //   657: aload 4
+    //   659: astore_0
+    //   660: aload 6
+    //   662: ldc_w 626
+    //   665: invokeinterface 44 2 0
+    //   670: astore 7
+    //   672: aload 7
+    //   674: ifnull +27 -> 701
+    //   677: aload 4
+    //   679: astore_0
+    //   680: aload 7
+    //   682: invokevirtual 50	java/lang/String:isEmpty	()Z
+    //   685: ifne +16 -> 701
+    //   688: aload 4
+    //   690: astore_0
+    //   691: aload 5
+    //   693: aload 7
+    //   695: invokestatic 471	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   698: putfield 629	com/tencent/xweb/xwalk/updater/a$f:bTryUseSharedCore	Z
     //   701: aload 4
     //   703: astore_0
     //   704: aload 5
-    //   706: getfield 632	com/tencent/xweb/xwalk/updater/a$f:MyD	Lcom/tencent/xweb/xwalk/updater/a$g;
-    //   709: astore 7
-    //   711: aload 7
-    //   713: ifnull +63 -> 776
-    //   716: aload 4
-    //   718: astore_0
-    //   719: aload 6
-    //   721: ldc_w 634
-    //   724: invokeinterface 328 2 0
-    //   729: astore 8
-    //   731: aload 8
-    //   733: ifnull +43 -> 776
-    //   736: aload 4
-    //   738: astore_0
-    //   739: aload 8
-    //   741: invokeinterface 333 1 0
-    //   746: ifeq +30 -> 776
-    //   749: aload 4
-    //   751: astore_0
-    //   752: aload 7
-    //   754: aload 8
-    //   756: iconst_0
-    //   757: invokeinterface 339 2 0
-    //   762: checkcast 40	org/w3c/dom/Element
-    //   765: ldc_w 636
-    //   768: invokeinterface 44 2 0
-    //   773: putfield 639	com/tencent/xweb/xwalk/updater/a$g:MyG	Ljava/lang/String;
-    //   776: aload 4
-    //   778: astore_0
-    //   779: aload 5
-    //   781: aload 6
-    //   783: invokestatic 641	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
-    //   786: putfield 645	com/tencent/xweb/xwalk/updater/a$f:Myq	[Lcom/tencent/xweb/xwalk/updater/a$c;
-    //   789: aload 4
-    //   791: astore_0
-    //   792: aload_3
-    //   793: getfield 553	com/tencent/xweb/xwalk/updater/a$b:Myy	[Lcom/tencent/xweb/xwalk/updater/a$f;
-    //   796: iload_2
-    //   797: aload 5
-    //   799: aastore
-    //   800: iload_2
-    //   801: iconst_1
-    //   802: iadd
-    //   803: istore_2
-    //   804: goto -472 -> 332
-    //   807: aload 4
-    //   809: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   812: aload_3
-    //   813: astore_0
-    //   814: ldc_w 477
-    //   817: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   820: aload_0
-    //   821: areturn
-    //   822: astore_0
-    //   823: ldc 58
-    //   825: ldc_w 504
-    //   828: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   831: aload_3
-    //   832: astore_0
-    //   833: goto -19 -> 814
-    //   836: astore_0
-    //   837: aconst_null
-    //   838: astore 4
-    //   840: aconst_null
-    //   841: astore_1
-    //   842: aload 4
-    //   844: astore_0
-    //   845: ldc_w 502
-    //   848: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   851: aload_1
+    //   706: aload 6
+    //   708: ldc_w 631
+    //   711: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   714: putfield 634	com/tencent/xweb/xwalk/updater/a$f:MVJ	Z
+    //   717: aload 4
+    //   719: astore_0
+    //   720: aload 5
+    //   722: getfield 638	com/tencent/xweb/xwalk/updater/a$f:MVI	Lcom/tencent/xweb/xwalk/updater/a$g;
+    //   725: astore 7
+    //   727: aload 7
+    //   729: ifnull +63 -> 792
+    //   732: aload 4
+    //   734: astore_0
+    //   735: aload 6
+    //   737: ldc_w 640
+    //   740: invokeinterface 328 2 0
+    //   745: astore 8
+    //   747: aload 8
+    //   749: ifnull +43 -> 792
+    //   752: aload 4
+    //   754: astore_0
+    //   755: aload 8
+    //   757: invokeinterface 333 1 0
+    //   762: ifeq +30 -> 792
+    //   765: aload 4
+    //   767: astore_0
+    //   768: aload 7
+    //   770: aload 8
+    //   772: iconst_0
+    //   773: invokeinterface 339 2 0
+    //   778: checkcast 40	org/w3c/dom/Element
+    //   781: ldc_w 642
+    //   784: invokeinterface 44 2 0
+    //   789: putfield 645	com/tencent/xweb/xwalk/updater/a$g:MVL	Ljava/lang/String;
+    //   792: aload 4
+    //   794: astore_0
+    //   795: aload 5
+    //   797: aload 6
+    //   799: invokestatic 647	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   802: putfield 651	com/tencent/xweb/xwalk/updater/a$f:MVu	[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   805: aload 4
+    //   807: astore_0
+    //   808: aload_3
+    //   809: getfield 554	com/tencent/xweb/xwalk/updater/a$b:MVD	[Lcom/tencent/xweb/xwalk/updater/a$f;
+    //   812: iload_2
+    //   813: aload 5
+    //   815: aastore
+    //   816: iload_2
+    //   817: iconst_1
+    //   818: iadd
+    //   819: istore_2
+    //   820: goto -488 -> 332
+    //   823: aload 4
+    //   825: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   828: aload_3
+    //   829: astore_0
+    //   830: ldc_w 478
+    //   833: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   836: aload_0
+    //   837: areturn
+    //   838: astore_0
+    //   839: ldc 58
+    //   841: ldc_w 505
+    //   844: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   847: aload_3
+    //   848: astore_0
+    //   849: goto -19 -> 830
     //   852: astore_0
-    //   853: aload 4
-    //   855: ifnull -41 -> 814
+    //   853: aconst_null
+    //   854: astore 4
+    //   856: aconst_null
+    //   857: astore_1
     //   858: aload 4
-    //   860: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   863: aload_1
-    //   864: astore_0
-    //   865: goto -51 -> 814
+    //   860: astore_0
+    //   861: ldc_w 503
+    //   864: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   867: aload_1
     //   868: astore_0
-    //   869: ldc 58
-    //   871: ldc_w 504
-    //   874: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   877: aload_1
-    //   878: astore_0
-    //   879: goto -65 -> 814
-    //   882: astore_0
-    //   883: aconst_null
-    //   884: astore 4
-    //   886: aconst_null
-    //   887: astore_1
-    //   888: aload 4
-    //   890: astore_0
-    //   891: ldc_w 502
-    //   894: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   897: aload_1
+    //   869: aload 4
+    //   871: ifnull -41 -> 830
+    //   874: aload 4
+    //   876: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   879: aload_1
+    //   880: astore_0
+    //   881: goto -51 -> 830
+    //   884: astore_0
+    //   885: ldc 58
+    //   887: ldc_w 505
+    //   890: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   893: aload_1
+    //   894: astore_0
+    //   895: goto -65 -> 830
     //   898: astore_0
-    //   899: aload 4
-    //   901: ifnull -87 -> 814
+    //   899: aconst_null
+    //   900: astore 4
+    //   902: aconst_null
+    //   903: astore_1
     //   904: aload 4
-    //   906: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   909: aload_1
-    //   910: astore_0
-    //   911: goto -97 -> 814
+    //   906: astore_0
+    //   907: ldc_w 503
+    //   910: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   913: aload_1
     //   914: astore_0
-    //   915: ldc 58
-    //   917: ldc_w 504
-    //   920: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   923: aload_1
-    //   924: astore_0
-    //   925: goto -111 -> 814
-    //   928: astore_0
-    //   929: aconst_null
-    //   930: astore 4
-    //   932: aconst_null
-    //   933: astore_1
-    //   934: aload 4
-    //   936: astore_0
-    //   937: ldc_w 502
-    //   940: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   943: aload_1
+    //   915: aload 4
+    //   917: ifnull -87 -> 830
+    //   920: aload 4
+    //   922: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   925: aload_1
+    //   926: astore_0
+    //   927: goto -97 -> 830
+    //   930: astore_0
+    //   931: ldc 58
+    //   933: ldc_w 505
+    //   936: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   939: aload_1
+    //   940: astore_0
+    //   941: goto -111 -> 830
     //   944: astore_0
-    //   945: aload 4
-    //   947: ifnull -133 -> 814
+    //   945: aconst_null
+    //   946: astore 4
+    //   948: aconst_null
+    //   949: astore_1
     //   950: aload 4
-    //   952: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   955: aload_1
-    //   956: astore_0
-    //   957: goto -143 -> 814
+    //   952: astore_0
+    //   953: ldc_w 503
+    //   956: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   959: aload_1
     //   960: astore_0
-    //   961: ldc 58
-    //   963: ldc_w 504
-    //   966: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   969: aload_1
-    //   970: astore_0
-    //   971: goto -157 -> 814
-    //   974: astore_1
-    //   975: aconst_null
+    //   961: aload 4
+    //   963: ifnull -133 -> 830
+    //   966: aload 4
+    //   968: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   971: aload_1
+    //   972: astore_0
+    //   973: goto -143 -> 830
     //   976: astore_0
-    //   977: aload_0
-    //   978: ifnull +7 -> 985
-    //   981: aload_0
-    //   982: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   985: ldc_w 477
-    //   988: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   991: aload_1
-    //   992: athrow
-    //   993: astore_0
-    //   994: ldc 58
-    //   996: ldc_w 504
-    //   999: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1002: goto -17 -> 985
-    //   1005: astore_1
-    //   1006: goto -29 -> 977
+    //   977: ldc 58
+    //   979: ldc_w 505
+    //   982: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   985: aload_1
+    //   986: astore_0
+    //   987: goto -157 -> 830
+    //   990: astore_1
+    //   991: aconst_null
+    //   992: astore_0
+    //   993: aload_0
+    //   994: ifnull +7 -> 1001
+    //   997: aload_0
+    //   998: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   1001: ldc_w 478
+    //   1004: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1007: aload_1
+    //   1008: athrow
     //   1009: astore_0
-    //   1010: aconst_null
-    //   1011: astore_1
-    //   1012: goto -78 -> 934
-    //   1015: astore_0
-    //   1016: aload_3
-    //   1017: astore_1
-    //   1018: goto -84 -> 934
-    //   1021: astore_0
-    //   1022: aconst_null
-    //   1023: astore_1
-    //   1024: goto -136 -> 888
-    //   1027: astore_0
-    //   1028: aload_3
-    //   1029: astore_1
-    //   1030: goto -142 -> 888
-    //   1033: astore_0
-    //   1034: aconst_null
-    //   1035: astore_1
-    //   1036: goto -194 -> 842
-    //   1039: astore_0
-    //   1040: aload_3
-    //   1041: astore_1
-    //   1042: goto -200 -> 842
+    //   1010: ldc 58
+    //   1012: ldc_w 505
+    //   1015: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1018: goto -17 -> 1001
+    //   1021: astore_1
+    //   1022: goto -29 -> 993
+    //   1025: astore_0
+    //   1026: aconst_null
+    //   1027: astore_1
+    //   1028: goto -78 -> 950
+    //   1031: astore_0
+    //   1032: aload_3
+    //   1033: astore_1
+    //   1034: goto -84 -> 950
+    //   1037: astore_0
+    //   1038: aconst_null
+    //   1039: astore_1
+    //   1040: goto -136 -> 904
+    //   1043: astore_0
+    //   1044: aload_3
+    //   1045: astore_1
+    //   1046: goto -142 -> 904
+    //   1049: astore_0
+    //   1050: aconst_null
+    //   1051: astore_1
+    //   1052: goto -194 -> 858
+    //   1055: astore_0
+    //   1056: aload_3
+    //   1057: astore_1
+    //   1058: goto -200 -> 858
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1045	0	paramFile	File
-    //   0	1045	1	paramString	String
-    //   331	473	2	i	int
-    //   31	1010	3	localb	b
-    //   19	932	4	localFileInputStream	java.io.FileInputStream
-    //   9	789	5	localObject1	Object
-    //   370	412	6	localElement	Element
-    //   654	99	7	localObject2	Object
-    //   729	26	8	localNodeList	NodeList
+    //   0	1061	0	paramFile	File
+    //   0	1061	1	paramString	String
+    //   331	489	2	i	int
+    //   31	1026	3	localb	b
+    //   19	948	4	localFileInputStream	java.io.FileInputStream
+    //   9	805	5	localObject1	Object
+    //   370	428	6	localElement	Element
+    //   670	99	7	localObject2	Object
+    //   745	26	8	localNodeList	NodeList
     // Exception table:
     //   from	to	target	type
     //   66	71	79	java/lang/Exception
     //   167	172	180	java/lang/Exception
     //   230	235	243	java/lang/Exception
-    //   807	812	822	java/lang/Exception
-    //   11	21	836	javax/xml/parsers/ParserConfigurationException
-    //   858	863	868	java/lang/Exception
-    //   11	21	882	org/xml/sax/SAXException
-    //   904	909	914	java/lang/Exception
-    //   11	21	928	java/io/IOException
-    //   950	955	960	java/lang/Exception
-    //   11	21	974	finally
-    //   981	985	993	java/lang/Exception
-    //   24	32	1005	finally
-    //   35	52	1005	finally
-    //   60	66	1005	finally
-    //   94	108	1005	finally
-    //   111	125	1005	finally
-    //   128	135	1005	finally
-    //   138	149	1005	finally
-    //   152	158	1005	finally
-    //   161	167	1005	finally
-    //   195	212	1005	finally
-    //   215	221	1005	finally
-    //   224	230	1005	finally
-    //   258	272	1005	finally
-    //   275	284	1005	finally
-    //   287	298	1005	finally
-    //   305	314	1005	finally
-    //   317	330	1005	finally
-    //   335	345	1005	finally
-    //   348	357	1005	finally
-    //   360	372	1005	finally
-    //   375	390	1005	finally
-    //   393	408	1005	finally
-    //   411	421	1005	finally
-    //   424	437	1005	finally
-    //   440	453	1005	finally
-    //   456	469	1005	finally
-    //   472	485	1005	finally
-    //   488	501	1005	finally
-    //   504	519	1005	finally
-    //   522	537	1005	finally
-    //   540	555	1005	finally
-    //   558	573	1005	finally
-    //   576	591	1005	finally
-    //   594	609	1005	finally
-    //   612	625	1005	finally
-    //   628	641	1005	finally
-    //   644	656	1005	finally
-    //   664	672	1005	finally
-    //   675	685	1005	finally
-    //   688	701	1005	finally
-    //   704	711	1005	finally
-    //   719	731	1005	finally
-    //   739	749	1005	finally
-    //   752	776	1005	finally
-    //   779	789	1005	finally
-    //   792	800	1005	finally
-    //   845	851	1005	finally
-    //   891	897	1005	finally
-    //   937	943	1005	finally
-    //   24	32	1009	java/io/IOException
-    //   35	52	1015	java/io/IOException
-    //   60	66	1015	java/io/IOException
-    //   94	108	1015	java/io/IOException
-    //   111	125	1015	java/io/IOException
-    //   128	135	1015	java/io/IOException
-    //   138	149	1015	java/io/IOException
-    //   152	158	1015	java/io/IOException
-    //   161	167	1015	java/io/IOException
-    //   195	212	1015	java/io/IOException
-    //   215	221	1015	java/io/IOException
-    //   224	230	1015	java/io/IOException
-    //   258	272	1015	java/io/IOException
-    //   275	284	1015	java/io/IOException
-    //   287	298	1015	java/io/IOException
-    //   305	314	1015	java/io/IOException
-    //   317	330	1015	java/io/IOException
-    //   335	345	1015	java/io/IOException
-    //   348	357	1015	java/io/IOException
-    //   360	372	1015	java/io/IOException
-    //   375	390	1015	java/io/IOException
-    //   393	408	1015	java/io/IOException
-    //   411	421	1015	java/io/IOException
-    //   424	437	1015	java/io/IOException
-    //   440	453	1015	java/io/IOException
-    //   456	469	1015	java/io/IOException
-    //   472	485	1015	java/io/IOException
-    //   488	501	1015	java/io/IOException
-    //   504	519	1015	java/io/IOException
-    //   522	537	1015	java/io/IOException
-    //   540	555	1015	java/io/IOException
-    //   558	573	1015	java/io/IOException
-    //   576	591	1015	java/io/IOException
-    //   594	609	1015	java/io/IOException
-    //   612	625	1015	java/io/IOException
-    //   628	641	1015	java/io/IOException
-    //   644	656	1015	java/io/IOException
-    //   664	672	1015	java/io/IOException
-    //   675	685	1015	java/io/IOException
-    //   688	701	1015	java/io/IOException
-    //   704	711	1015	java/io/IOException
-    //   719	731	1015	java/io/IOException
-    //   739	749	1015	java/io/IOException
-    //   752	776	1015	java/io/IOException
-    //   779	789	1015	java/io/IOException
-    //   792	800	1015	java/io/IOException
-    //   24	32	1021	org/xml/sax/SAXException
-    //   35	52	1027	org/xml/sax/SAXException
-    //   60	66	1027	org/xml/sax/SAXException
-    //   94	108	1027	org/xml/sax/SAXException
-    //   111	125	1027	org/xml/sax/SAXException
-    //   128	135	1027	org/xml/sax/SAXException
-    //   138	149	1027	org/xml/sax/SAXException
-    //   152	158	1027	org/xml/sax/SAXException
-    //   161	167	1027	org/xml/sax/SAXException
-    //   195	212	1027	org/xml/sax/SAXException
-    //   215	221	1027	org/xml/sax/SAXException
-    //   224	230	1027	org/xml/sax/SAXException
-    //   258	272	1027	org/xml/sax/SAXException
-    //   275	284	1027	org/xml/sax/SAXException
-    //   287	298	1027	org/xml/sax/SAXException
-    //   305	314	1027	org/xml/sax/SAXException
-    //   317	330	1027	org/xml/sax/SAXException
-    //   335	345	1027	org/xml/sax/SAXException
-    //   348	357	1027	org/xml/sax/SAXException
-    //   360	372	1027	org/xml/sax/SAXException
-    //   375	390	1027	org/xml/sax/SAXException
-    //   393	408	1027	org/xml/sax/SAXException
-    //   411	421	1027	org/xml/sax/SAXException
-    //   424	437	1027	org/xml/sax/SAXException
-    //   440	453	1027	org/xml/sax/SAXException
-    //   456	469	1027	org/xml/sax/SAXException
-    //   472	485	1027	org/xml/sax/SAXException
-    //   488	501	1027	org/xml/sax/SAXException
-    //   504	519	1027	org/xml/sax/SAXException
-    //   522	537	1027	org/xml/sax/SAXException
-    //   540	555	1027	org/xml/sax/SAXException
-    //   558	573	1027	org/xml/sax/SAXException
-    //   576	591	1027	org/xml/sax/SAXException
-    //   594	609	1027	org/xml/sax/SAXException
-    //   612	625	1027	org/xml/sax/SAXException
-    //   628	641	1027	org/xml/sax/SAXException
-    //   644	656	1027	org/xml/sax/SAXException
-    //   664	672	1027	org/xml/sax/SAXException
-    //   675	685	1027	org/xml/sax/SAXException
-    //   688	701	1027	org/xml/sax/SAXException
-    //   704	711	1027	org/xml/sax/SAXException
-    //   719	731	1027	org/xml/sax/SAXException
-    //   739	749	1027	org/xml/sax/SAXException
-    //   752	776	1027	org/xml/sax/SAXException
-    //   779	789	1027	org/xml/sax/SAXException
-    //   792	800	1027	org/xml/sax/SAXException
-    //   24	32	1033	javax/xml/parsers/ParserConfigurationException
-    //   35	52	1039	javax/xml/parsers/ParserConfigurationException
-    //   60	66	1039	javax/xml/parsers/ParserConfigurationException
-    //   94	108	1039	javax/xml/parsers/ParserConfigurationException
-    //   111	125	1039	javax/xml/parsers/ParserConfigurationException
-    //   128	135	1039	javax/xml/parsers/ParserConfigurationException
-    //   138	149	1039	javax/xml/parsers/ParserConfigurationException
-    //   152	158	1039	javax/xml/parsers/ParserConfigurationException
-    //   161	167	1039	javax/xml/parsers/ParserConfigurationException
-    //   195	212	1039	javax/xml/parsers/ParserConfigurationException
-    //   215	221	1039	javax/xml/parsers/ParserConfigurationException
-    //   224	230	1039	javax/xml/parsers/ParserConfigurationException
-    //   258	272	1039	javax/xml/parsers/ParserConfigurationException
-    //   275	284	1039	javax/xml/parsers/ParserConfigurationException
-    //   287	298	1039	javax/xml/parsers/ParserConfigurationException
-    //   305	314	1039	javax/xml/parsers/ParserConfigurationException
-    //   317	330	1039	javax/xml/parsers/ParserConfigurationException
-    //   335	345	1039	javax/xml/parsers/ParserConfigurationException
-    //   348	357	1039	javax/xml/parsers/ParserConfigurationException
-    //   360	372	1039	javax/xml/parsers/ParserConfigurationException
-    //   375	390	1039	javax/xml/parsers/ParserConfigurationException
-    //   393	408	1039	javax/xml/parsers/ParserConfigurationException
-    //   411	421	1039	javax/xml/parsers/ParserConfigurationException
-    //   424	437	1039	javax/xml/parsers/ParserConfigurationException
-    //   440	453	1039	javax/xml/parsers/ParserConfigurationException
-    //   456	469	1039	javax/xml/parsers/ParserConfigurationException
-    //   472	485	1039	javax/xml/parsers/ParserConfigurationException
-    //   488	501	1039	javax/xml/parsers/ParserConfigurationException
-    //   504	519	1039	javax/xml/parsers/ParserConfigurationException
-    //   522	537	1039	javax/xml/parsers/ParserConfigurationException
-    //   540	555	1039	javax/xml/parsers/ParserConfigurationException
-    //   558	573	1039	javax/xml/parsers/ParserConfigurationException
-    //   576	591	1039	javax/xml/parsers/ParserConfigurationException
-    //   594	609	1039	javax/xml/parsers/ParserConfigurationException
-    //   612	625	1039	javax/xml/parsers/ParserConfigurationException
-    //   628	641	1039	javax/xml/parsers/ParserConfigurationException
-    //   644	656	1039	javax/xml/parsers/ParserConfigurationException
-    //   664	672	1039	javax/xml/parsers/ParserConfigurationException
-    //   675	685	1039	javax/xml/parsers/ParserConfigurationException
-    //   688	701	1039	javax/xml/parsers/ParserConfigurationException
-    //   704	711	1039	javax/xml/parsers/ParserConfigurationException
-    //   719	731	1039	javax/xml/parsers/ParserConfigurationException
-    //   739	749	1039	javax/xml/parsers/ParserConfigurationException
-    //   752	776	1039	javax/xml/parsers/ParserConfigurationException
-    //   779	789	1039	javax/xml/parsers/ParserConfigurationException
-    //   792	800	1039	javax/xml/parsers/ParserConfigurationException
+    //   823	828	838	java/lang/Exception
+    //   11	21	852	javax/xml/parsers/ParserConfigurationException
+    //   874	879	884	java/lang/Exception
+    //   11	21	898	org/xml/sax/SAXException
+    //   920	925	930	java/lang/Exception
+    //   11	21	944	java/io/IOException
+    //   966	971	976	java/lang/Exception
+    //   11	21	990	finally
+    //   997	1001	1009	java/lang/Exception
+    //   24	32	1021	finally
+    //   35	52	1021	finally
+    //   60	66	1021	finally
+    //   94	108	1021	finally
+    //   111	125	1021	finally
+    //   128	135	1021	finally
+    //   138	149	1021	finally
+    //   152	158	1021	finally
+    //   161	167	1021	finally
+    //   195	212	1021	finally
+    //   215	221	1021	finally
+    //   224	230	1021	finally
+    //   258	272	1021	finally
+    //   275	284	1021	finally
+    //   287	298	1021	finally
+    //   305	314	1021	finally
+    //   317	330	1021	finally
+    //   335	345	1021	finally
+    //   348	357	1021	finally
+    //   360	372	1021	finally
+    //   375	390	1021	finally
+    //   393	408	1021	finally
+    //   411	421	1021	finally
+    //   424	437	1021	finally
+    //   440	453	1021	finally
+    //   456	469	1021	finally
+    //   472	485	1021	finally
+    //   488	501	1021	finally
+    //   504	517	1021	finally
+    //   520	535	1021	finally
+    //   538	553	1021	finally
+    //   556	571	1021	finally
+    //   574	589	1021	finally
+    //   592	607	1021	finally
+    //   610	625	1021	finally
+    //   628	641	1021	finally
+    //   644	657	1021	finally
+    //   660	672	1021	finally
+    //   680	688	1021	finally
+    //   691	701	1021	finally
+    //   704	717	1021	finally
+    //   720	727	1021	finally
+    //   735	747	1021	finally
+    //   755	765	1021	finally
+    //   768	792	1021	finally
+    //   795	805	1021	finally
+    //   808	816	1021	finally
+    //   861	867	1021	finally
+    //   907	913	1021	finally
+    //   953	959	1021	finally
+    //   24	32	1025	java/io/IOException
+    //   35	52	1031	java/io/IOException
+    //   60	66	1031	java/io/IOException
+    //   94	108	1031	java/io/IOException
+    //   111	125	1031	java/io/IOException
+    //   128	135	1031	java/io/IOException
+    //   138	149	1031	java/io/IOException
+    //   152	158	1031	java/io/IOException
+    //   161	167	1031	java/io/IOException
+    //   195	212	1031	java/io/IOException
+    //   215	221	1031	java/io/IOException
+    //   224	230	1031	java/io/IOException
+    //   258	272	1031	java/io/IOException
+    //   275	284	1031	java/io/IOException
+    //   287	298	1031	java/io/IOException
+    //   305	314	1031	java/io/IOException
+    //   317	330	1031	java/io/IOException
+    //   335	345	1031	java/io/IOException
+    //   348	357	1031	java/io/IOException
+    //   360	372	1031	java/io/IOException
+    //   375	390	1031	java/io/IOException
+    //   393	408	1031	java/io/IOException
+    //   411	421	1031	java/io/IOException
+    //   424	437	1031	java/io/IOException
+    //   440	453	1031	java/io/IOException
+    //   456	469	1031	java/io/IOException
+    //   472	485	1031	java/io/IOException
+    //   488	501	1031	java/io/IOException
+    //   504	517	1031	java/io/IOException
+    //   520	535	1031	java/io/IOException
+    //   538	553	1031	java/io/IOException
+    //   556	571	1031	java/io/IOException
+    //   574	589	1031	java/io/IOException
+    //   592	607	1031	java/io/IOException
+    //   610	625	1031	java/io/IOException
+    //   628	641	1031	java/io/IOException
+    //   644	657	1031	java/io/IOException
+    //   660	672	1031	java/io/IOException
+    //   680	688	1031	java/io/IOException
+    //   691	701	1031	java/io/IOException
+    //   704	717	1031	java/io/IOException
+    //   720	727	1031	java/io/IOException
+    //   735	747	1031	java/io/IOException
+    //   755	765	1031	java/io/IOException
+    //   768	792	1031	java/io/IOException
+    //   795	805	1031	java/io/IOException
+    //   808	816	1031	java/io/IOException
+    //   24	32	1037	org/xml/sax/SAXException
+    //   35	52	1043	org/xml/sax/SAXException
+    //   60	66	1043	org/xml/sax/SAXException
+    //   94	108	1043	org/xml/sax/SAXException
+    //   111	125	1043	org/xml/sax/SAXException
+    //   128	135	1043	org/xml/sax/SAXException
+    //   138	149	1043	org/xml/sax/SAXException
+    //   152	158	1043	org/xml/sax/SAXException
+    //   161	167	1043	org/xml/sax/SAXException
+    //   195	212	1043	org/xml/sax/SAXException
+    //   215	221	1043	org/xml/sax/SAXException
+    //   224	230	1043	org/xml/sax/SAXException
+    //   258	272	1043	org/xml/sax/SAXException
+    //   275	284	1043	org/xml/sax/SAXException
+    //   287	298	1043	org/xml/sax/SAXException
+    //   305	314	1043	org/xml/sax/SAXException
+    //   317	330	1043	org/xml/sax/SAXException
+    //   335	345	1043	org/xml/sax/SAXException
+    //   348	357	1043	org/xml/sax/SAXException
+    //   360	372	1043	org/xml/sax/SAXException
+    //   375	390	1043	org/xml/sax/SAXException
+    //   393	408	1043	org/xml/sax/SAXException
+    //   411	421	1043	org/xml/sax/SAXException
+    //   424	437	1043	org/xml/sax/SAXException
+    //   440	453	1043	org/xml/sax/SAXException
+    //   456	469	1043	org/xml/sax/SAXException
+    //   472	485	1043	org/xml/sax/SAXException
+    //   488	501	1043	org/xml/sax/SAXException
+    //   504	517	1043	org/xml/sax/SAXException
+    //   520	535	1043	org/xml/sax/SAXException
+    //   538	553	1043	org/xml/sax/SAXException
+    //   556	571	1043	org/xml/sax/SAXException
+    //   574	589	1043	org/xml/sax/SAXException
+    //   592	607	1043	org/xml/sax/SAXException
+    //   610	625	1043	org/xml/sax/SAXException
+    //   628	641	1043	org/xml/sax/SAXException
+    //   644	657	1043	org/xml/sax/SAXException
+    //   660	672	1043	org/xml/sax/SAXException
+    //   680	688	1043	org/xml/sax/SAXException
+    //   691	701	1043	org/xml/sax/SAXException
+    //   704	717	1043	org/xml/sax/SAXException
+    //   720	727	1043	org/xml/sax/SAXException
+    //   735	747	1043	org/xml/sax/SAXException
+    //   755	765	1043	org/xml/sax/SAXException
+    //   768	792	1043	org/xml/sax/SAXException
+    //   795	805	1043	org/xml/sax/SAXException
+    //   808	816	1043	org/xml/sax/SAXException
+    //   24	32	1049	javax/xml/parsers/ParserConfigurationException
+    //   35	52	1055	javax/xml/parsers/ParserConfigurationException
+    //   60	66	1055	javax/xml/parsers/ParserConfigurationException
+    //   94	108	1055	javax/xml/parsers/ParserConfigurationException
+    //   111	125	1055	javax/xml/parsers/ParserConfigurationException
+    //   128	135	1055	javax/xml/parsers/ParserConfigurationException
+    //   138	149	1055	javax/xml/parsers/ParserConfigurationException
+    //   152	158	1055	javax/xml/parsers/ParserConfigurationException
+    //   161	167	1055	javax/xml/parsers/ParserConfigurationException
+    //   195	212	1055	javax/xml/parsers/ParserConfigurationException
+    //   215	221	1055	javax/xml/parsers/ParserConfigurationException
+    //   224	230	1055	javax/xml/parsers/ParserConfigurationException
+    //   258	272	1055	javax/xml/parsers/ParserConfigurationException
+    //   275	284	1055	javax/xml/parsers/ParserConfigurationException
+    //   287	298	1055	javax/xml/parsers/ParserConfigurationException
+    //   305	314	1055	javax/xml/parsers/ParserConfigurationException
+    //   317	330	1055	javax/xml/parsers/ParserConfigurationException
+    //   335	345	1055	javax/xml/parsers/ParserConfigurationException
+    //   348	357	1055	javax/xml/parsers/ParserConfigurationException
+    //   360	372	1055	javax/xml/parsers/ParserConfigurationException
+    //   375	390	1055	javax/xml/parsers/ParserConfigurationException
+    //   393	408	1055	javax/xml/parsers/ParserConfigurationException
+    //   411	421	1055	javax/xml/parsers/ParserConfigurationException
+    //   424	437	1055	javax/xml/parsers/ParserConfigurationException
+    //   440	453	1055	javax/xml/parsers/ParserConfigurationException
+    //   456	469	1055	javax/xml/parsers/ParserConfigurationException
+    //   472	485	1055	javax/xml/parsers/ParserConfigurationException
+    //   488	501	1055	javax/xml/parsers/ParserConfigurationException
+    //   504	517	1055	javax/xml/parsers/ParserConfigurationException
+    //   520	535	1055	javax/xml/parsers/ParserConfigurationException
+    //   538	553	1055	javax/xml/parsers/ParserConfigurationException
+    //   556	571	1055	javax/xml/parsers/ParserConfigurationException
+    //   574	589	1055	javax/xml/parsers/ParserConfigurationException
+    //   592	607	1055	javax/xml/parsers/ParserConfigurationException
+    //   610	625	1055	javax/xml/parsers/ParserConfigurationException
+    //   628	641	1055	javax/xml/parsers/ParserConfigurationException
+    //   644	657	1055	javax/xml/parsers/ParserConfigurationException
+    //   660	672	1055	javax/xml/parsers/ParserConfigurationException
+    //   680	688	1055	javax/xml/parsers/ParserConfigurationException
+    //   691	701	1055	javax/xml/parsers/ParserConfigurationException
+    //   704	717	1055	javax/xml/parsers/ParserConfigurationException
+    //   720	727	1055	javax/xml/parsers/ParserConfigurationException
+    //   735	747	1055	javax/xml/parsers/ParserConfigurationException
+    //   755	765	1055	javax/xml/parsers/ParserConfigurationException
+    //   768	792	1055	javax/xml/parsers/ParserConfigurationException
+    //   795	805	1055	javax/xml/parsers/ParserConfigurationException
+    //   808	816	1055	javax/xml/parsers/ParserConfigurationException
   }
   
   /* Error */
-  public static d j(File paramFile, String paramString)
+  public static d k(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 648
+    //   0: ldc_w 654
     //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 483	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   6: invokestatic 484	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   9: astore 5
     //   11: new 87	java/io/FileInputStream
     //   14: dup
@@ -1212,135 +1223,135 @@ public final class a
     //   23: astore_0
     //   24: new 15	com/tencent/xweb/xwalk/updater/a$d
     //   27: dup
-    //   28: invokespecial 649	com/tencent/xweb/xwalk/updater/a$d:<init>	()V
+    //   28: invokespecial 655	com/tencent/xweb/xwalk/updater/a$d:<init>	()V
     //   31: astore_3
     //   32: aload 4
     //   34: astore_0
     //   35: aload 5
-    //   37: invokevirtual 488	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   37: invokevirtual 489	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
     //   40: aload 4
-    //   42: invokevirtual 494	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   45: invokeinterface 500 1 0
+    //   42: invokevirtual 495	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   45: invokeinterface 501 1 0
     //   50: astore 5
     //   52: aload 5
     //   54: ifnonnull +37 -> 91
     //   57: aload 4
     //   59: astore_0
-    //   60: ldc_w 651
+    //   60: ldc_w 657
     //   63: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   66: aload 4
     //   68: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   71: ldc_w 648
+    //   71: ldc_w 654
     //   74: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aconst_null
     //   78: areturn
     //   79: astore_0
     //   80: ldc 58
-    //   82: ldc_w 653
+    //   82: ldc_w 659
     //   85: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: goto -17 -> 71
     //   91: aload 4
     //   93: astore_0
     //   94: aload_3
     //   95: aload 5
-    //   97: ldc_w 506
+    //   97: ldc_w 507
     //   100: invokeinterface 44 2 0
-    //   105: putfield 654	com/tencent/xweb/xwalk/updater/a$d:Mys	Ljava/lang/String;
+    //   105: putfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
     //   108: aload 4
     //   110: astore_0
     //   111: aload_3
     //   112: aload 5
-    //   114: ldc_w 509
+    //   114: ldc_w 510
     //   117: invokeinterface 44 2 0
-    //   122: putfield 655	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
+    //   122: putfield 661	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
     //   125: aload 4
     //   127: astore_0
     //   128: aload_3
-    //   129: getfield 654	com/tencent/xweb/xwalk/updater/a$d:Mys	Ljava/lang/String;
+    //   129: getfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
     //   132: ifnull +17 -> 149
     //   135: aload 4
     //   137: astore_0
     //   138: aload_3
-    //   139: getfield 654	com/tencent/xweb/xwalk/updater/a$d:Mys	Ljava/lang/String;
+    //   139: getfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
     //   142: aload_1
-    //   143: invokevirtual 514	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   143: invokevirtual 515	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   146: ifne +37 -> 183
     //   149: aload 4
     //   151: astore_0
-    //   152: ldc_w 657
+    //   152: ldc_w 663
     //   155: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   158: aload 4
     //   160: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   163: ldc_w 648
+    //   163: ldc_w 654
     //   166: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   169: aconst_null
     //   170: areturn
     //   171: astore_0
     //   172: ldc 58
-    //   174: ldc_w 653
+    //   174: ldc_w 659
     //   177: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   180: goto -17 -> 163
     //   183: aload 4
     //   185: astore_0
     //   186: aload_3
-    //   187: getfield 654	com/tencent/xweb/xwalk/updater/a$d:Mys	Ljava/lang/String;
+    //   187: getfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
     //   190: aload_3
-    //   191: getfield 655	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
-    //   194: ldc_w 526
-    //   197: invokestatic 532	com/tencent/xweb/util/b:bn	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   191: getfield 661	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
+    //   194: ldc_w 527
+    //   197: invokestatic 533	com/tencent/xweb/util/b:bo	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     //   200: ifne +46 -> 246
     //   203: aload 4
     //   205: astore_0
-    //   206: ldc2_w 533
-    //   209: invokestatic 522	com/tencent/xweb/util/g:Fh	(J)V
+    //   206: ldc2_w 534
+    //   209: invokestatic 523	com/tencent/xweb/util/g:FJ	(J)V
     //   212: aload 4
     //   214: astore_0
-    //   215: ldc_w 659
+    //   215: ldc_w 665
     //   218: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   221: aload 4
     //   223: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   226: ldc_w 648
+    //   226: ldc_w 654
     //   229: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   232: aconst_null
     //   233: areturn
     //   234: astore_0
     //   235: ldc 58
-    //   237: ldc_w 653
+    //   237: ldc_w 659
     //   240: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: goto -17 -> 226
     //   246: aload 4
     //   248: astore_0
     //   249: aload_3
     //   250: aload 5
-    //   252: ldc_w 538
+    //   252: ldc_w 539
     //   255: invokeinterface 44 2 0
-    //   260: putfield 660	com/tencent/xweb/xwalk/updater/a$d:Myx	Ljava/lang/String;
+    //   260: putfield 666	com/tencent/xweb/xwalk/updater/a$d:MVC	Ljava/lang/String;
     //   263: aload 4
     //   265: astore_0
     //   266: aload_3
     //   267: aload 5
-    //   269: invokestatic 543	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
-    //   272: putfield 661	com/tencent/xweb/xwalk/updater/a$d:Myz	[Lcom/tencent/xweb/internal/a$a;
+    //   269: invokestatic 544	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
+    //   272: putfield 667	com/tencent/xweb/xwalk/updater/a$d:MVE	[Lcom/tencent/xweb/internal/a$a;
     //   275: aload 4
     //   277: astore_0
     //   278: aload 5
-    //   280: ldc_w 663
+    //   280: ldc_w 669
     //   283: invokeinterface 328 2 0
     //   288: astore_1
     //   289: aload_1
-    //   290: ifnull +373 -> 663
+    //   290: ifnull +389 -> 679
     //   293: aload 4
     //   295: astore_0
     //   296: aload_1
     //   297: invokeinterface 333 1 0
-    //   302: ifeq +361 -> 663
+    //   302: ifeq +377 -> 679
     //   305: aload 4
     //   307: astore_0
     //   308: aload_3
     //   309: aload_1
     //   310: invokeinterface 333 1 0
     //   315: anewarray 18	com/tencent/xweb/xwalk/updater/a$e
-    //   318: putfield 667	com/tencent/xweb/xwalk/updater/a$d:MyB	[Lcom/tencent/xweb/xwalk/updater/a$e;
+    //   318: putfield 673	com/tencent/xweb/xwalk/updater/a$d:MVG	[Lcom/tencent/xweb/xwalk/updater/a$e;
     //   321: iconst_0
     //   322: istore_2
     //   323: aload 4
@@ -1348,7 +1359,7 @@ public final class a
     //   326: iload_2
     //   327: aload_1
     //   328: invokeinterface 333 1 0
-    //   333: if_icmpge +330 -> 663
+    //   333: if_icmpge +346 -> 679
     //   336: aload 4
     //   338: astore_0
     //   339: aload_1
@@ -1360,510 +1371,522 @@ public final class a
     //   353: astore_0
     //   354: new 18	com/tencent/xweb/xwalk/updater/a$e
     //   357: dup
-    //   358: invokespecial 668	com/tencent/xweb/xwalk/updater/a$e:<init>	()V
+    //   358: invokespecial 674	com/tencent/xweb/xwalk/updater/a$e:<init>	()V
     //   361: astore 6
     //   363: aload 4
     //   365: astore_0
     //   366: aload 6
     //   368: aload 5
-    //   370: ldc_w 670
+    //   370: ldc_w 676
     //   373: invokeinterface 44 2 0
-    //   378: putfield 673	com/tencent/xweb/xwalk/updater/a$e:MyC	Ljava/lang/String;
+    //   378: putfield 679	com/tencent/xweb/xwalk/updater/a$e:MVH	Ljava/lang/String;
     //   381: aload 4
     //   383: astore_0
     //   384: aload 6
     //   386: aload 5
-    //   388: ldc_w 566
+    //   388: ldc_w 567
     //   391: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   394: putfield 674	com/tencent/xweb/xwalk/updater/a$e:version	I
+    //   394: putfield 680	com/tencent/xweb/xwalk/updater/a$e:version	I
     //   397: aload 4
     //   399: astore_0
     //   400: aload 6
     //   402: aload 5
-    //   404: ldc_w 556
+    //   404: ldc_w 557
     //   407: invokeinterface 44 2 0
-    //   412: putfield 675	com/tencent/xweb/xwalk/updater/a$e:Myl	Ljava/lang/String;
+    //   412: putfield 681	com/tencent/xweb/xwalk/updater/a$e:MVp	Ljava/lang/String;
     //   415: aload 4
     //   417: astore_0
     //   418: aload 6
     //   420: aload 5
     //   422: ldc_w 351
     //   425: invokeinterface 44 2 0
-    //   430: putfield 676	com/tencent/xweb/xwalk/updater/a$e:Mys	Ljava/lang/String;
+    //   430: putfield 682	com/tencent/xweb/xwalk/updater/a$e:MVw	Ljava/lang/String;
     //   433: aload 4
     //   435: astore_0
     //   436: aload 6
     //   438: aload 5
     //   440: ldc_w 356
     //   443: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   446: putfield 677	com/tencent/xweb/xwalk/updater/a$e:Myt	Z
+    //   446: putfield 683	com/tencent/xweb/xwalk/updater/a$e:MVx	Z
     //   449: aload 4
     //   451: astore_0
     //   452: aload 6
     //   454: aload 5
-    //   456: ldc_w 365
+    //   456: ldc_w 572
     //   459: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   462: putfield 678	com/tencent/xweb/xwalk/updater/a$e:bUseCdn	Z
+    //   462: putfield 684	com/tencent/xweb/xwalk/updater/a$e:MVy	Z
     //   465: aload 4
     //   467: astore_0
     //   468: aload 6
     //   470: aload 5
-    //   472: ldc_w 561
-    //   475: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   478: putfield 679	com/tencent/xweb/xwalk/updater/a$e:Myr	I
+    //   472: ldc_w 365
+    //   475: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   478: putfield 685	com/tencent/xweb/xwalk/updater/a$e:bUseCdn	Z
     //   481: aload 4
     //   483: astore_0
     //   484: aload 6
     //   486: aload 5
-    //   488: ldc_w 572
+    //   488: ldc_w 562
     //   491: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   494: putfield 680	com/tencent/xweb/xwalk/updater/a$e:Myk	I
+    //   494: putfield 686	com/tencent/xweb/xwalk/updater/a$e:MVv	I
     //   497: aload 4
     //   499: astore_0
     //   500: aload 6
     //   502: aload 5
-    //   504: ldc_w 577
-    //   507: invokeinterface 44 2 0
-    //   512: putfield 681	com/tencent/xweb/xwalk/updater/a$e:Myo	Ljava/lang/String;
-    //   515: aload 4
-    //   517: astore_0
-    //   518: aload 6
-    //   520: aload 5
-    //   522: ldc_w 582
-    //   525: invokeinterface 44 2 0
-    //   530: putfield 682	com/tencent/xweb/xwalk/updater/a$e:Myp	Ljava/lang/String;
-    //   533: aload 4
-    //   535: astore_0
-    //   536: aload 6
-    //   538: aload 5
-    //   540: ldc_w 592
-    //   543: invokeinterface 44 2 0
-    //   548: putfield 683	com/tencent/xweb/xwalk/updater/a$e:Myu	Ljava/lang/String;
-    //   551: aload 4
-    //   553: astore_0
-    //   554: aload 6
-    //   556: aload 5
-    //   558: ldc_w 597
-    //   561: invokeinterface 44 2 0
-    //   566: putfield 684	com/tencent/xweb/xwalk/updater/a$e:Myv	Ljava/lang/String;
-    //   569: aload 4
-    //   571: astore_0
-    //   572: aload 6
-    //   574: aload 5
-    //   576: ldc_w 602
-    //   579: invokeinterface 44 2 0
-    //   584: putfield 685	com/tencent/xweb/xwalk/updater/a$e:Myw	Ljava/lang/String;
-    //   587: aload 4
-    //   589: astore_0
-    //   590: aload 6
-    //   592: aload 5
-    //   594: ldc_w 607
-    //   597: invokestatic 609	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   600: putfield 686	com/tencent/xweb/xwalk/updater/a$e:Mym	F
+    //   504: ldc_w 578
+    //   507: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
+    //   510: putfield 687	com/tencent/xweb/xwalk/updater/a$e:MVo	I
+    //   513: aload 4
+    //   515: astore_0
+    //   516: aload 6
+    //   518: aload 5
+    //   520: ldc_w 583
+    //   523: invokeinterface 44 2 0
+    //   528: putfield 688	com/tencent/xweb/xwalk/updater/a$e:MVs	Ljava/lang/String;
+    //   531: aload 4
+    //   533: astore_0
+    //   534: aload 6
+    //   536: aload 5
+    //   538: ldc_w 588
+    //   541: invokeinterface 44 2 0
+    //   546: putfield 689	com/tencent/xweb/xwalk/updater/a$e:MVt	Ljava/lang/String;
+    //   549: aload 4
+    //   551: astore_0
+    //   552: aload 6
+    //   554: aload 5
+    //   556: ldc_w 598
+    //   559: invokeinterface 44 2 0
+    //   564: putfield 690	com/tencent/xweb/xwalk/updater/a$e:MVz	Ljava/lang/String;
+    //   567: aload 4
+    //   569: astore_0
+    //   570: aload 6
+    //   572: aload 5
+    //   574: ldc_w 603
+    //   577: invokeinterface 44 2 0
+    //   582: putfield 691	com/tencent/xweb/xwalk/updater/a$e:MVA	Ljava/lang/String;
+    //   585: aload 4
+    //   587: astore_0
+    //   588: aload 6
+    //   590: aload 5
+    //   592: ldc_w 608
+    //   595: invokeinterface 44 2 0
+    //   600: putfield 692	com/tencent/xweb/xwalk/updater/a$e:MVB	Ljava/lang/String;
     //   603: aload 4
     //   605: astore_0
     //   606: aload 6
     //   608: aload 5
-    //   610: ldc_w 615
-    //   613: invokestatic 609	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   616: putfield 687	com/tencent/xweb/xwalk/updater/a$e:Myn	F
+    //   610: ldc_w 613
+    //   613: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   616: putfield 693	com/tencent/xweb/xwalk/updater/a$e:MVq	F
     //   619: aload 4
     //   621: astore_0
     //   622: aload 6
-    //   624: getfield 688	com/tencent/xweb/xwalk/updater/a$e:MsC	Lcom/tencent/xweb/internal/a$b;
-    //   627: aload 5
-    //   629: invokestatic 411	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
-    //   632: aload 4
-    //   634: astore_0
-    //   635: aload 6
-    //   637: aload 5
-    //   639: invokestatic 641	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
-    //   642: putfield 689	com/tencent/xweb/xwalk/updater/a$e:Myq	[Lcom/tencent/xweb/xwalk/updater/a$c;
-    //   645: aload 4
-    //   647: astore_0
-    //   648: aload_3
-    //   649: getfield 667	com/tencent/xweb/xwalk/updater/a$d:MyB	[Lcom/tencent/xweb/xwalk/updater/a$e;
-    //   652: iload_2
-    //   653: aload 6
-    //   655: aastore
-    //   656: iload_2
-    //   657: iconst_1
-    //   658: iadd
-    //   659: istore_2
-    //   660: goto -337 -> 323
-    //   663: aload 4
-    //   665: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   668: aload_3
-    //   669: astore_0
-    //   670: ldc_w 648
-    //   673: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   676: aload_0
-    //   677: areturn
-    //   678: astore_0
-    //   679: ldc 58
-    //   681: ldc_w 653
-    //   684: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   687: aload_3
-    //   688: astore_0
-    //   689: goto -19 -> 670
-    //   692: astore_0
-    //   693: aconst_null
-    //   694: astore 4
-    //   696: aconst_null
-    //   697: astore_1
-    //   698: aload 4
-    //   700: astore_0
-    //   701: ldc_w 691
-    //   704: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   707: aload_1
+    //   624: aload 5
+    //   626: ldc_w 621
+    //   629: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   632: putfield 694	com/tencent/xweb/xwalk/updater/a$e:MVr	F
+    //   635: aload 4
+    //   637: astore_0
+    //   638: aload 6
+    //   640: getfield 695	com/tencent/xweb/xwalk/updater/a$e:MPG	Lcom/tencent/xweb/internal/a$b;
+    //   643: aload 5
+    //   645: invokestatic 411	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
+    //   648: aload 4
+    //   650: astore_0
+    //   651: aload 6
+    //   653: aload 5
+    //   655: invokestatic 647	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   658: putfield 696	com/tencent/xweb/xwalk/updater/a$e:MVu	[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   661: aload 4
+    //   663: astore_0
+    //   664: aload_3
+    //   665: getfield 673	com/tencent/xweb/xwalk/updater/a$d:MVG	[Lcom/tencent/xweb/xwalk/updater/a$e;
+    //   668: iload_2
+    //   669: aload 6
+    //   671: aastore
+    //   672: iload_2
+    //   673: iconst_1
+    //   674: iadd
+    //   675: istore_2
+    //   676: goto -353 -> 323
+    //   679: aload 4
+    //   681: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   684: aload_3
+    //   685: astore_0
+    //   686: ldc_w 654
+    //   689: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   692: aload_0
+    //   693: areturn
+    //   694: astore_0
+    //   695: ldc 58
+    //   697: ldc_w 659
+    //   700: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   703: aload_3
+    //   704: astore_0
+    //   705: goto -19 -> 686
     //   708: astore_0
-    //   709: aload 4
-    //   711: ifnull -41 -> 670
+    //   709: aconst_null
+    //   710: astore 4
+    //   712: aconst_null
+    //   713: astore_1
     //   714: aload 4
-    //   716: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   719: aload_1
-    //   720: astore_0
-    //   721: goto -51 -> 670
+    //   716: astore_0
+    //   717: ldc_w 698
+    //   720: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   723: aload_1
     //   724: astore_0
-    //   725: ldc 58
-    //   727: ldc_w 653
-    //   730: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   733: aload_1
-    //   734: astore_0
-    //   735: goto -65 -> 670
-    //   738: astore_0
-    //   739: aconst_null
-    //   740: astore 4
-    //   742: aconst_null
-    //   743: astore_1
-    //   744: aload 4
-    //   746: astore_0
-    //   747: ldc_w 693
-    //   750: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   753: aload_1
+    //   725: aload 4
+    //   727: ifnull -41 -> 686
+    //   730: aload 4
+    //   732: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   735: aload_1
+    //   736: astore_0
+    //   737: goto -51 -> 686
+    //   740: astore_0
+    //   741: ldc 58
+    //   743: ldc_w 659
+    //   746: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   749: aload_1
+    //   750: astore_0
+    //   751: goto -65 -> 686
     //   754: astore_0
-    //   755: aload 4
-    //   757: ifnull -87 -> 670
+    //   755: aconst_null
+    //   756: astore 4
+    //   758: aconst_null
+    //   759: astore_1
     //   760: aload 4
-    //   762: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   765: aload_1
-    //   766: astore_0
-    //   767: goto -97 -> 670
+    //   762: astore_0
+    //   763: ldc_w 700
+    //   766: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   769: aload_1
     //   770: astore_0
-    //   771: ldc 58
-    //   773: ldc_w 653
-    //   776: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   779: aload_1
-    //   780: astore_0
-    //   781: goto -111 -> 670
-    //   784: astore_0
-    //   785: aconst_null
-    //   786: astore 4
-    //   788: aconst_null
-    //   789: astore_1
-    //   790: aload 4
-    //   792: astore_0
-    //   793: ldc_w 695
-    //   796: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
-    //   799: aload_1
+    //   771: aload 4
+    //   773: ifnull -87 -> 686
+    //   776: aload 4
+    //   778: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   781: aload_1
+    //   782: astore_0
+    //   783: goto -97 -> 686
+    //   786: astore_0
+    //   787: ldc 58
+    //   789: ldc_w 659
+    //   792: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   795: aload_1
+    //   796: astore_0
+    //   797: goto -111 -> 686
     //   800: astore_0
-    //   801: aload 4
-    //   803: ifnull -133 -> 670
+    //   801: aconst_null
+    //   802: astore 4
+    //   804: aconst_null
+    //   805: astore_1
     //   806: aload 4
-    //   808: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   811: aload_1
-    //   812: astore_0
-    //   813: goto -143 -> 670
+    //   808: astore_0
+    //   809: ldc_w 702
+    //   812: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   815: aload_1
     //   816: astore_0
-    //   817: ldc 58
-    //   819: ldc_w 653
-    //   822: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   825: aload_1
-    //   826: astore_0
-    //   827: goto -157 -> 670
-    //   830: astore_1
-    //   831: aconst_null
+    //   817: aload 4
+    //   819: ifnull -133 -> 686
+    //   822: aload 4
+    //   824: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   827: aload_1
+    //   828: astore_0
+    //   829: goto -143 -> 686
     //   832: astore_0
-    //   833: aload_0
-    //   834: ifnull +7 -> 841
-    //   837: aload_0
-    //   838: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   841: ldc_w 648
-    //   844: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   847: aload_1
-    //   848: athrow
-    //   849: astore_0
-    //   850: ldc 58
-    //   852: ldc_w 653
-    //   855: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   858: goto -17 -> 841
-    //   861: astore_1
-    //   862: goto -29 -> 833
+    //   833: ldc 58
+    //   835: ldc_w 659
+    //   838: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   841: aload_1
+    //   842: astore_0
+    //   843: goto -157 -> 686
+    //   846: astore_1
+    //   847: aconst_null
+    //   848: astore_0
+    //   849: aload_0
+    //   850: ifnull +7 -> 857
+    //   853: aload_0
+    //   854: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   857: ldc_w 654
+    //   860: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   863: aload_1
+    //   864: athrow
     //   865: astore_0
-    //   866: aconst_null
-    //   867: astore_1
-    //   868: goto -78 -> 790
-    //   871: astore_0
-    //   872: aload_3
-    //   873: astore_1
-    //   874: goto -84 -> 790
-    //   877: astore_0
-    //   878: aconst_null
-    //   879: astore_1
-    //   880: goto -136 -> 744
-    //   883: astore_0
-    //   884: aload_3
-    //   885: astore_1
-    //   886: goto -142 -> 744
-    //   889: astore_0
-    //   890: aconst_null
-    //   891: astore_1
-    //   892: goto -194 -> 698
-    //   895: astore_0
-    //   896: aload_3
-    //   897: astore_1
-    //   898: goto -200 -> 698
+    //   866: ldc 58
+    //   868: ldc_w 659
+    //   871: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   874: goto -17 -> 857
+    //   877: astore_1
+    //   878: goto -29 -> 849
+    //   881: astore_0
+    //   882: aconst_null
+    //   883: astore_1
+    //   884: goto -78 -> 806
+    //   887: astore_0
+    //   888: aload_3
+    //   889: astore_1
+    //   890: goto -84 -> 806
+    //   893: astore_0
+    //   894: aconst_null
+    //   895: astore_1
+    //   896: goto -136 -> 760
+    //   899: astore_0
+    //   900: aload_3
+    //   901: astore_1
+    //   902: goto -142 -> 760
+    //   905: astore_0
+    //   906: aconst_null
+    //   907: astore_1
+    //   908: goto -194 -> 714
+    //   911: astore_0
+    //   912: aload_3
+    //   913: astore_1
+    //   914: goto -200 -> 714
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	901	0	paramFile	File
-    //   0	901	1	paramString	String
-    //   322	338	2	i	int
-    //   31	866	3	locald	d
-    //   19	788	4	localFileInputStream	java.io.FileInputStream
-    //   9	629	5	localObject	Object
-    //   361	293	6	locale	e
+    //   0	917	0	paramFile	File
+    //   0	917	1	paramString	String
+    //   322	354	2	i	int
+    //   31	882	3	locald	d
+    //   19	804	4	localFileInputStream	java.io.FileInputStream
+    //   9	645	5	localObject	Object
+    //   361	309	6	locale	e
     // Exception table:
     //   from	to	target	type
     //   66	71	79	java/lang/Exception
     //   158	163	171	java/lang/Exception
     //   221	226	234	java/lang/Exception
-    //   663	668	678	java/lang/Exception
-    //   11	21	692	javax/xml/parsers/ParserConfigurationException
-    //   714	719	724	java/lang/Exception
-    //   11	21	738	org/xml/sax/SAXException
-    //   760	765	770	java/lang/Exception
-    //   11	21	784	java/io/IOException
-    //   806	811	816	java/lang/Exception
-    //   11	21	830	finally
-    //   837	841	849	java/lang/Exception
-    //   24	32	861	finally
-    //   35	52	861	finally
-    //   60	66	861	finally
-    //   94	108	861	finally
-    //   111	125	861	finally
-    //   128	135	861	finally
-    //   138	149	861	finally
-    //   152	158	861	finally
-    //   186	203	861	finally
-    //   206	212	861	finally
-    //   215	221	861	finally
-    //   249	263	861	finally
-    //   266	275	861	finally
-    //   278	289	861	finally
-    //   296	305	861	finally
-    //   308	321	861	finally
-    //   326	336	861	finally
-    //   339	351	861	finally
-    //   354	363	861	finally
-    //   366	381	861	finally
-    //   384	397	861	finally
-    //   400	415	861	finally
-    //   418	433	861	finally
-    //   436	449	861	finally
-    //   452	465	861	finally
-    //   468	481	861	finally
-    //   484	497	861	finally
-    //   500	515	861	finally
-    //   518	533	861	finally
-    //   536	551	861	finally
-    //   554	569	861	finally
-    //   572	587	861	finally
-    //   590	603	861	finally
-    //   606	619	861	finally
-    //   622	632	861	finally
-    //   635	645	861	finally
-    //   648	656	861	finally
-    //   701	707	861	finally
-    //   747	753	861	finally
-    //   793	799	861	finally
-    //   24	32	865	java/io/IOException
-    //   35	52	871	java/io/IOException
-    //   60	66	871	java/io/IOException
-    //   94	108	871	java/io/IOException
-    //   111	125	871	java/io/IOException
-    //   128	135	871	java/io/IOException
-    //   138	149	871	java/io/IOException
-    //   152	158	871	java/io/IOException
-    //   186	203	871	java/io/IOException
-    //   206	212	871	java/io/IOException
-    //   215	221	871	java/io/IOException
-    //   249	263	871	java/io/IOException
-    //   266	275	871	java/io/IOException
-    //   278	289	871	java/io/IOException
-    //   296	305	871	java/io/IOException
-    //   308	321	871	java/io/IOException
-    //   326	336	871	java/io/IOException
-    //   339	351	871	java/io/IOException
-    //   354	363	871	java/io/IOException
-    //   366	381	871	java/io/IOException
-    //   384	397	871	java/io/IOException
-    //   400	415	871	java/io/IOException
-    //   418	433	871	java/io/IOException
-    //   436	449	871	java/io/IOException
-    //   452	465	871	java/io/IOException
-    //   468	481	871	java/io/IOException
-    //   484	497	871	java/io/IOException
-    //   500	515	871	java/io/IOException
-    //   518	533	871	java/io/IOException
-    //   536	551	871	java/io/IOException
-    //   554	569	871	java/io/IOException
-    //   572	587	871	java/io/IOException
-    //   590	603	871	java/io/IOException
-    //   606	619	871	java/io/IOException
-    //   622	632	871	java/io/IOException
-    //   635	645	871	java/io/IOException
-    //   648	656	871	java/io/IOException
-    //   24	32	877	org/xml/sax/SAXException
-    //   35	52	883	org/xml/sax/SAXException
-    //   60	66	883	org/xml/sax/SAXException
-    //   94	108	883	org/xml/sax/SAXException
-    //   111	125	883	org/xml/sax/SAXException
-    //   128	135	883	org/xml/sax/SAXException
-    //   138	149	883	org/xml/sax/SAXException
-    //   152	158	883	org/xml/sax/SAXException
-    //   186	203	883	org/xml/sax/SAXException
-    //   206	212	883	org/xml/sax/SAXException
-    //   215	221	883	org/xml/sax/SAXException
-    //   249	263	883	org/xml/sax/SAXException
-    //   266	275	883	org/xml/sax/SAXException
-    //   278	289	883	org/xml/sax/SAXException
-    //   296	305	883	org/xml/sax/SAXException
-    //   308	321	883	org/xml/sax/SAXException
-    //   326	336	883	org/xml/sax/SAXException
-    //   339	351	883	org/xml/sax/SAXException
-    //   354	363	883	org/xml/sax/SAXException
-    //   366	381	883	org/xml/sax/SAXException
-    //   384	397	883	org/xml/sax/SAXException
-    //   400	415	883	org/xml/sax/SAXException
-    //   418	433	883	org/xml/sax/SAXException
-    //   436	449	883	org/xml/sax/SAXException
-    //   452	465	883	org/xml/sax/SAXException
-    //   468	481	883	org/xml/sax/SAXException
-    //   484	497	883	org/xml/sax/SAXException
-    //   500	515	883	org/xml/sax/SAXException
-    //   518	533	883	org/xml/sax/SAXException
-    //   536	551	883	org/xml/sax/SAXException
-    //   554	569	883	org/xml/sax/SAXException
-    //   572	587	883	org/xml/sax/SAXException
-    //   590	603	883	org/xml/sax/SAXException
-    //   606	619	883	org/xml/sax/SAXException
-    //   622	632	883	org/xml/sax/SAXException
-    //   635	645	883	org/xml/sax/SAXException
-    //   648	656	883	org/xml/sax/SAXException
-    //   24	32	889	javax/xml/parsers/ParserConfigurationException
-    //   35	52	895	javax/xml/parsers/ParserConfigurationException
-    //   60	66	895	javax/xml/parsers/ParserConfigurationException
-    //   94	108	895	javax/xml/parsers/ParserConfigurationException
-    //   111	125	895	javax/xml/parsers/ParserConfigurationException
-    //   128	135	895	javax/xml/parsers/ParserConfigurationException
-    //   138	149	895	javax/xml/parsers/ParserConfigurationException
-    //   152	158	895	javax/xml/parsers/ParserConfigurationException
-    //   186	203	895	javax/xml/parsers/ParserConfigurationException
-    //   206	212	895	javax/xml/parsers/ParserConfigurationException
-    //   215	221	895	javax/xml/parsers/ParserConfigurationException
-    //   249	263	895	javax/xml/parsers/ParserConfigurationException
-    //   266	275	895	javax/xml/parsers/ParserConfigurationException
-    //   278	289	895	javax/xml/parsers/ParserConfigurationException
-    //   296	305	895	javax/xml/parsers/ParserConfigurationException
-    //   308	321	895	javax/xml/parsers/ParserConfigurationException
-    //   326	336	895	javax/xml/parsers/ParserConfigurationException
-    //   339	351	895	javax/xml/parsers/ParserConfigurationException
-    //   354	363	895	javax/xml/parsers/ParserConfigurationException
-    //   366	381	895	javax/xml/parsers/ParserConfigurationException
-    //   384	397	895	javax/xml/parsers/ParserConfigurationException
-    //   400	415	895	javax/xml/parsers/ParserConfigurationException
-    //   418	433	895	javax/xml/parsers/ParserConfigurationException
-    //   436	449	895	javax/xml/parsers/ParserConfigurationException
-    //   452	465	895	javax/xml/parsers/ParserConfigurationException
-    //   468	481	895	javax/xml/parsers/ParserConfigurationException
-    //   484	497	895	javax/xml/parsers/ParserConfigurationException
-    //   500	515	895	javax/xml/parsers/ParserConfigurationException
-    //   518	533	895	javax/xml/parsers/ParserConfigurationException
-    //   536	551	895	javax/xml/parsers/ParserConfigurationException
-    //   554	569	895	javax/xml/parsers/ParserConfigurationException
-    //   572	587	895	javax/xml/parsers/ParserConfigurationException
-    //   590	603	895	javax/xml/parsers/ParserConfigurationException
-    //   606	619	895	javax/xml/parsers/ParserConfigurationException
-    //   622	632	895	javax/xml/parsers/ParserConfigurationException
-    //   635	645	895	javax/xml/parsers/ParserConfigurationException
-    //   648	656	895	javax/xml/parsers/ParserConfigurationException
+    //   679	684	694	java/lang/Exception
+    //   11	21	708	javax/xml/parsers/ParserConfigurationException
+    //   730	735	740	java/lang/Exception
+    //   11	21	754	org/xml/sax/SAXException
+    //   776	781	786	java/lang/Exception
+    //   11	21	800	java/io/IOException
+    //   822	827	832	java/lang/Exception
+    //   11	21	846	finally
+    //   853	857	865	java/lang/Exception
+    //   24	32	877	finally
+    //   35	52	877	finally
+    //   60	66	877	finally
+    //   94	108	877	finally
+    //   111	125	877	finally
+    //   128	135	877	finally
+    //   138	149	877	finally
+    //   152	158	877	finally
+    //   186	203	877	finally
+    //   206	212	877	finally
+    //   215	221	877	finally
+    //   249	263	877	finally
+    //   266	275	877	finally
+    //   278	289	877	finally
+    //   296	305	877	finally
+    //   308	321	877	finally
+    //   326	336	877	finally
+    //   339	351	877	finally
+    //   354	363	877	finally
+    //   366	381	877	finally
+    //   384	397	877	finally
+    //   400	415	877	finally
+    //   418	433	877	finally
+    //   436	449	877	finally
+    //   452	465	877	finally
+    //   468	481	877	finally
+    //   484	497	877	finally
+    //   500	513	877	finally
+    //   516	531	877	finally
+    //   534	549	877	finally
+    //   552	567	877	finally
+    //   570	585	877	finally
+    //   588	603	877	finally
+    //   606	619	877	finally
+    //   622	635	877	finally
+    //   638	648	877	finally
+    //   651	661	877	finally
+    //   664	672	877	finally
+    //   717	723	877	finally
+    //   763	769	877	finally
+    //   809	815	877	finally
+    //   24	32	881	java/io/IOException
+    //   35	52	887	java/io/IOException
+    //   60	66	887	java/io/IOException
+    //   94	108	887	java/io/IOException
+    //   111	125	887	java/io/IOException
+    //   128	135	887	java/io/IOException
+    //   138	149	887	java/io/IOException
+    //   152	158	887	java/io/IOException
+    //   186	203	887	java/io/IOException
+    //   206	212	887	java/io/IOException
+    //   215	221	887	java/io/IOException
+    //   249	263	887	java/io/IOException
+    //   266	275	887	java/io/IOException
+    //   278	289	887	java/io/IOException
+    //   296	305	887	java/io/IOException
+    //   308	321	887	java/io/IOException
+    //   326	336	887	java/io/IOException
+    //   339	351	887	java/io/IOException
+    //   354	363	887	java/io/IOException
+    //   366	381	887	java/io/IOException
+    //   384	397	887	java/io/IOException
+    //   400	415	887	java/io/IOException
+    //   418	433	887	java/io/IOException
+    //   436	449	887	java/io/IOException
+    //   452	465	887	java/io/IOException
+    //   468	481	887	java/io/IOException
+    //   484	497	887	java/io/IOException
+    //   500	513	887	java/io/IOException
+    //   516	531	887	java/io/IOException
+    //   534	549	887	java/io/IOException
+    //   552	567	887	java/io/IOException
+    //   570	585	887	java/io/IOException
+    //   588	603	887	java/io/IOException
+    //   606	619	887	java/io/IOException
+    //   622	635	887	java/io/IOException
+    //   638	648	887	java/io/IOException
+    //   651	661	887	java/io/IOException
+    //   664	672	887	java/io/IOException
+    //   24	32	893	org/xml/sax/SAXException
+    //   35	52	899	org/xml/sax/SAXException
+    //   60	66	899	org/xml/sax/SAXException
+    //   94	108	899	org/xml/sax/SAXException
+    //   111	125	899	org/xml/sax/SAXException
+    //   128	135	899	org/xml/sax/SAXException
+    //   138	149	899	org/xml/sax/SAXException
+    //   152	158	899	org/xml/sax/SAXException
+    //   186	203	899	org/xml/sax/SAXException
+    //   206	212	899	org/xml/sax/SAXException
+    //   215	221	899	org/xml/sax/SAXException
+    //   249	263	899	org/xml/sax/SAXException
+    //   266	275	899	org/xml/sax/SAXException
+    //   278	289	899	org/xml/sax/SAXException
+    //   296	305	899	org/xml/sax/SAXException
+    //   308	321	899	org/xml/sax/SAXException
+    //   326	336	899	org/xml/sax/SAXException
+    //   339	351	899	org/xml/sax/SAXException
+    //   354	363	899	org/xml/sax/SAXException
+    //   366	381	899	org/xml/sax/SAXException
+    //   384	397	899	org/xml/sax/SAXException
+    //   400	415	899	org/xml/sax/SAXException
+    //   418	433	899	org/xml/sax/SAXException
+    //   436	449	899	org/xml/sax/SAXException
+    //   452	465	899	org/xml/sax/SAXException
+    //   468	481	899	org/xml/sax/SAXException
+    //   484	497	899	org/xml/sax/SAXException
+    //   500	513	899	org/xml/sax/SAXException
+    //   516	531	899	org/xml/sax/SAXException
+    //   534	549	899	org/xml/sax/SAXException
+    //   552	567	899	org/xml/sax/SAXException
+    //   570	585	899	org/xml/sax/SAXException
+    //   588	603	899	org/xml/sax/SAXException
+    //   606	619	899	org/xml/sax/SAXException
+    //   622	635	899	org/xml/sax/SAXException
+    //   638	648	899	org/xml/sax/SAXException
+    //   651	661	899	org/xml/sax/SAXException
+    //   664	672	899	org/xml/sax/SAXException
+    //   24	32	905	javax/xml/parsers/ParserConfigurationException
+    //   35	52	911	javax/xml/parsers/ParserConfigurationException
+    //   60	66	911	javax/xml/parsers/ParserConfigurationException
+    //   94	108	911	javax/xml/parsers/ParserConfigurationException
+    //   111	125	911	javax/xml/parsers/ParserConfigurationException
+    //   128	135	911	javax/xml/parsers/ParserConfigurationException
+    //   138	149	911	javax/xml/parsers/ParserConfigurationException
+    //   152	158	911	javax/xml/parsers/ParserConfigurationException
+    //   186	203	911	javax/xml/parsers/ParserConfigurationException
+    //   206	212	911	javax/xml/parsers/ParserConfigurationException
+    //   215	221	911	javax/xml/parsers/ParserConfigurationException
+    //   249	263	911	javax/xml/parsers/ParserConfigurationException
+    //   266	275	911	javax/xml/parsers/ParserConfigurationException
+    //   278	289	911	javax/xml/parsers/ParserConfigurationException
+    //   296	305	911	javax/xml/parsers/ParserConfigurationException
+    //   308	321	911	javax/xml/parsers/ParserConfigurationException
+    //   326	336	911	javax/xml/parsers/ParserConfigurationException
+    //   339	351	911	javax/xml/parsers/ParserConfigurationException
+    //   354	363	911	javax/xml/parsers/ParserConfigurationException
+    //   366	381	911	javax/xml/parsers/ParserConfigurationException
+    //   384	397	911	javax/xml/parsers/ParserConfigurationException
+    //   400	415	911	javax/xml/parsers/ParserConfigurationException
+    //   418	433	911	javax/xml/parsers/ParserConfigurationException
+    //   436	449	911	javax/xml/parsers/ParserConfigurationException
+    //   452	465	911	javax/xml/parsers/ParserConfigurationException
+    //   468	481	911	javax/xml/parsers/ParserConfigurationException
+    //   484	497	911	javax/xml/parsers/ParserConfigurationException
+    //   500	513	911	javax/xml/parsers/ParserConfigurationException
+    //   516	531	911	javax/xml/parsers/ParserConfigurationException
+    //   534	549	911	javax/xml/parsers/ParserConfigurationException
+    //   552	567	911	javax/xml/parsers/ParserConfigurationException
+    //   570	585	911	javax/xml/parsers/ParserConfigurationException
+    //   588	603	911	javax/xml/parsers/ParserConfigurationException
+    //   606	619	911	javax/xml/parsers/ParserConfigurationException
+    //   622	635	911	javax/xml/parsers/ParserConfigurationException
+    //   638	648	911	javax/xml/parsers/ParserConfigurationException
+    //   651	661	911	javax/xml/parsers/ParserConfigurationException
+    //   664	672	911	javax/xml/parsers/ParserConfigurationException
   }
   
   public static class a
   {
-    public com.tencent.xweb.internal.a.b MsC;
-    public int Myk;
-    public String Myl;
-    public float Mym;
-    public float Myn;
-    public String Myo;
-    public String Myp;
-    public a.c[] Myq;
-    public int Myr;
-    public String Mys;
-    public boolean Myt;
-    public String Myu;
-    public String Myv;
-    public String Myw;
+    public com.tencent.xweb.internal.a.b MPG;
+    public String MVA;
+    public String MVB;
+    public int MVo;
+    public String MVp;
+    public float MVq;
+    public float MVr;
+    public String MVs;
+    public String MVt;
+    public a.c[] MVu;
+    public int MVv;
+    public String MVw;
+    public boolean MVx;
+    public boolean MVy;
+    public String MVz;
     public boolean bUseCdn;
     public int version;
     
     public a()
     {
-      AppMethodBeat.i(195592);
-      this.MsC = new com.tencent.xweb.internal.a.c();
-      this.Mym = -1.0F;
-      this.Myn = -1.0F;
-      AppMethodBeat.o(195592);
+      AppMethodBeat.i(207613);
+      this.MPG = new com.tencent.xweb.internal.a.c();
+      this.MVq = -1.0F;
+      this.MVr = -1.0F;
+      AppMethodBeat.o(207613);
     }
   }
   
   public static final class b
   {
-    public String Mys;
-    public String Myx;
-    public a.f[] Myy;
-    public com.tencent.xweb.internal.a.a[] Myz;
+    public String MVC;
+    public a.f[] MVD;
+    public com.tencent.xweb.internal.a.a[] MVE;
+    public String MVw;
     public String signature;
   }
   
   public static final class c
   {
-    public int MyA;
-    public String Myl;
-    public String Mys;
-    public boolean Myt;
+    public int MVF;
+    public String MVp;
+    public String MVw;
+    public boolean MVx;
     public boolean bUseCdn;
   }
   
   public static final class d
   {
-    public a.e[] MyB = null;
-    public String Mys = "";
-    public String Myx = "";
-    public com.tencent.xweb.internal.a.a[] Myz;
+    public String MVC = "";
+    public com.tencent.xweb.internal.a.a[] MVE;
+    public a.e[] MVG = null;
+    public String MVw = "";
     public String signature;
   }
   
   public static final class e
     extends a.a
   {
-    public String MyC;
+    public String MVH;
     
     public e()
     {
       AppMethodBeat.i(154534);
-      this.MyC = "";
+      this.MVH = "";
       AppMethodBeat.o(154534);
     }
   }
@@ -1871,15 +1894,15 @@ public final class a
   public static final class f
     extends a.a
   {
-    public a.g MyD;
-    public boolean MyE;
-    public String MyF;
+    public a.g MVI;
+    public boolean MVJ;
+    public String MVK;
     public boolean bTryUseSharedCore;
     
     public f()
     {
       AppMethodBeat.i(154535);
-      this.MyD = new a.g();
+      this.MVI = new a.g();
       this.bTryUseSharedCore = true;
       AppMethodBeat.o(154535);
     }
@@ -1887,7 +1910,7 @@ public final class a
   
   public static final class g
   {
-    public String MyG = "";
+    public String MVL = "";
   }
 }
 

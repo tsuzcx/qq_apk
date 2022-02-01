@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.patmsg;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.d;
-import com.tencent.mm.protocal.protobuf.cih;
+import com.tencent.mm.protocal.protobuf.cjb;
 
 public final class b
-  extends d<cih>
+  extends d<cjb>
 {
   public b(String paramString)
   {
-    AppMethodBeat.i(215681);
-    IK(paramString);
-    AppMethodBeat.o(215681);
+    AppMethodBeat.i(220315);
+    Jj(paramString);
+    AppMethodBeat.o(220315);
   }
 }
 

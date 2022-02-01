@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.rtmp.ITXLivePlayListener;
 import java.util.Iterator;
 import java.util.Set;
@@ -23,7 +23,7 @@ final class a$8
     JSONObject localJSONObject2;
     try
     {
-      localJSONObject1.put("livePlayerId", this.kCh);
+      localJSONObject1.put("livePlayerId", this.kFw);
       localJSONObject2 = new JSONObject();
       if (paramBundle != null)
       {
@@ -33,7 +33,7 @@ final class a$8
           String str = (String)localIterator.next();
           localJSONObject2.put(str, paramBundle.get(str));
           continue;
-          this.kCd.b(localc.Pi(localJSONObject1.toString()));
+          this.kFs.b(localc.PQ(localJSONObject1.toString()));
         }
       }
     }
@@ -49,16 +49,16 @@ final class a$8
   public final void onPlayEvent(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(145853);
-    ad.i("MicroMsg.JsApiInsertLivePlayer", "onPlayEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.JsApiInsertLivePlayer", "onPlayEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
     a.d locald = new a.d((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
-      localJSONObject.put("livePlayerId", this.kCh);
+      localJSONObject.put("livePlayerId", this.kFw);
       label76:
-      this.kCd.b(locald.Pi(localJSONObject.toString()));
+      this.kFs.b(locald.PQ(localJSONObject.toString()));
       AppMethodBeat.o(145853);
       return;
     }

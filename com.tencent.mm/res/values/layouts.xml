@@ -15,7 +15,6 @@
     <item type="layout" name="c3">false</item>
     <item type="layout" name="c4">false</item>
     <item type="layout" name="c6">false</item>
-    <item type="layout" name="cc">false</item>
     <item type="layout" name="cm">false</item>
     <item type="layout" name="cp">false</item>
     <item type="layout" name="cy">false</item>
@@ -38,6 +37,7 @@
     <item type="layout" name="eu">false</item>
     <item type="layout" name="f1">false</item>
     <item type="layout" name="f_">false</item>
+    <item type="layout" name="fe">false</item>
     <item type="layout" name="fh">false</item>
     <item type="layout" name="fr">false</item>
     <item type="layout" name="fy">false</item>
@@ -48,6 +48,7 @@
     <item type="layout" name="gn">false</item>
     <item type="layout" name="gp">false</item>
     <item type="layout" name="gq">false</item>
+    <item type="layout" name="gz">false</item>
     <item type="layout" name="h5">false</item>
     <item type="layout" name="h8">false</item>
     <item type="layout" name="hl">false</item>
@@ -318,6 +319,7 @@
     <item type="layout" name="ard">false</item>
     <item type="layout" name="ark">false</item>
     <item type="layout" name="arl">false</item>
+    <item type="layout" name="arz">false</item>
     <item type="layout" name="asm">false</item>
     <item type="layout" name="asp">false</item>
     <item type="layout" name="asy">false</item>
@@ -405,7 +407,6 @@
     <item type="layout" name="b7e">false</item>
     <item type="layout" name="b7j">false</item>
     <item type="layout" name="b7w">false</item>
-    <item type="layout" name="b83">false</item>
     <item type="layout" name="b8m">false</item>
     <item type="layout" name="b8p">false</item>
     <item type="layout" name="b8s">false</item>
@@ -546,4 +547,8 @@
     <item type="layout" name="bvr">false</item>
     <item type="layout" name="bx9">false</item>
     <item type="layout" name="bx_">false</item>
+    <item type="layout" name="by3">false</item>
+    <item type="layout" name="APKTOOL_DUMMY_71" />
+    <item type="layout" name="APKTOOL_DUMMY_ca" />
+    <item type="layout" name="APKTOOL_DUMMY_a60" />
 </resources>

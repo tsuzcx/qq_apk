@@ -14,38 +14,38 @@ import com.tencent.toybrick.g.b.b;
 public final class a
   extends g<a, a>
 {
-  public static final int Miq = 2131493530;
-  private Drawable Mir;
-  private b.b<a> Mis;
-  private b.a<a> Mit;
-  private CharSequence wUo;
+  public static final int MFn = 2131493530;
+  private Drawable MFo;
+  private b.b<a> MFp;
+  private b.a<a> MFq;
+  private CharSequence xkf;
   
   public final int getLayoutResource()
   {
-    return Miq;
+    return MFn;
   }
   
   public final class a
     extends com.tencent.toybrick.f.a
   {
-    public TextView Miv;
-    public ImageView Miw;
-    public ImageView Mix;
-    public MMSwitchBtn Miy;
+    public TextView MFs;
+    public ImageView MFt;
+    public ImageView MFu;
+    public MMSwitchBtn MFv;
     public TextView titleTv;
-    public TextView wSo;
+    public TextView xif;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159933);
       this.titleTv = ((TextView)paramView.findViewById(16908310));
-      this.Mix = ((ImageView)paramView.findViewById(2131301384));
-      this.Miv = ((TextView)paramView.findViewById(2131305740));
-      this.Miw = ((ImageView)paramView.findViewById(2131300957));
-      this.wSo = ((TextView)paramView.findViewById(2131305546));
-      this.Miy = ((MMSwitchBtn)paramView.findViewById(2131298255));
-      this.Miy.setSwitchListener(new MMSwitchBtn.a()
+      this.MFu = ((ImageView)paramView.findViewById(2131301384));
+      this.MFs = ((TextView)paramView.findViewById(2131305740));
+      this.MFt = ((ImageView)paramView.findViewById(2131300957));
+      this.xif = ((TextView)paramView.findViewById(2131305546));
+      this.MFv = ((MMSwitchBtn)paramView.findViewById(2131298255));
+      this.MFv.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean) {}
       });

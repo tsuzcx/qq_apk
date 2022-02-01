@@ -9,8 +9,8 @@ import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.ui.tools.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class bh
@@ -21,23 +21,23 @@ public class bh
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78627);
-    ad.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
+    ae.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
     String str = paramb.chh.cgn.optString("title");
-    if (!bt.isNullOrNil(paramb.chh.cgn.optString("color")))
+    if (!bu.isNullOrNil(paramb.chh.cgn.optString("color")))
     {
-      int i = e.fO(paramb.chh.cgn.optString("color"), ((g)paramb.chg).mContext.getResources().getColor(2131099874));
-      ((g)paramb.chg).dJ(str, i);
+      int i = e.ee(paramb.chh.cgn.optString("color"), ((g)paramb.chg).mContext.getResources().getColor(2131099874));
+      ((g)paramb.chg).dN(str, i);
     }
     for (;;)
     {
       paramb.a("", null);
       AppMethodBeat.o(78627);
       return;
-      ((g)paramb.chg).dJ(str, 0);
+      ((g)paramb.chg).dN(str, 0);
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

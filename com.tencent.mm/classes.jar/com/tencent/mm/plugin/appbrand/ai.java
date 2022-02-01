@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand;
 
 import android.content.Context;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.r.a.c;
+import com.tencent.mm.plugin.appbrand.platform.window.c;
 
 public abstract interface ai
 {
@@ -20,11 +20,11 @@ public abstract interface ai
   
   public abstract c getWindowAndroid();
   
-  public abstract AppBrandRuntime w(AppBrandRuntime paramAppBrandRuntime);
+  public abstract AppBrandRuntime v(AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract boolean x(AppBrandRuntime paramAppBrandRuntime);
+  public abstract boolean w(AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract void y(AppBrandRuntime paramAppBrandRuntime);
+  public abstract void x(AppBrandRuntime paramAppBrandRuntime);
 }
 
 

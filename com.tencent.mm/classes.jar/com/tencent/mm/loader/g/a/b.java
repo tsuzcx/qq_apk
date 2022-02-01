@@ -9,15 +9,15 @@ public final class b
   extends com.tencent.e.b
   implements a
 {
-  private ReentrantLock hfX = new ReentrantLock();
-  private Condition hfY = this.hfX.newCondition();
-  private BlockingQueue<Runnable> hfZ;
+  private ReentrantLock hiL = new ReentrantLock();
+  private Condition hiM = this.hiL.newCondition();
+  private BlockingQueue<Runnable> hiN;
   private boolean isPaused;
   
   public b(String paramString, int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue)
   {
     super(paramString, paramInt1, paramInt2, paramBlockingQueue);
-    this.hfZ = paramBlockingQueue;
+    this.hiN = paramBlockingQueue;
   }
   
   /* Error */
@@ -29,13 +29,13 @@ public final class b
     //   2: aload_2
     //   3: invokespecial 43	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
     //   6: aload_0
-    //   7: getfield 26	com/tencent/mm/loader/g/a/b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   7: getfield 26	com/tencent/mm/loader/g/a/b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   10: invokevirtual 46	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   13: aload_0
     //   14: getfield 48	com/tencent/mm/loader/g/a/b:isPaused	Z
     //   17: ifeq +46 -> 63
     //   20: aload_0
-    //   21: getfield 32	com/tencent/mm/loader/g/a/b:hfY	Ljava/util/concurrent/locks/Condition;
+    //   21: getfield 32	com/tencent/mm/loader/g/a/b:hiM	Ljava/util/concurrent/locks/Condition;
     //   24: invokeinterface 53 1 0
     //   29: goto -16 -> 13
     //   32: astore_2
@@ -50,18 +50,18 @@ public final class b
     //   47: aload_2
     //   48: invokevirtual 68	java/lang/Exception:toString	()Ljava/lang/String;
     //   51: aastore
-    //   52: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   52: invokestatic 74	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   55: aload_0
-    //   56: getfield 26	com/tencent/mm/loader/g/a/b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   56: getfield 26	com/tencent/mm/loader/g/a/b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   59: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   62: return
     //   63: aload_0
-    //   64: getfield 26	com/tencent/mm/loader/g/a/b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   64: getfield 26	com/tencent/mm/loader/g/a/b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   67: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   70: return
     //   71: astore_1
     //   72: aload_0
-    //   73: getfield 26	com/tencent/mm/loader/g/a/b:hfX	Ljava/util/concurrent/locks/ReentrantLock;
+    //   73: getfield 26	com/tencent/mm/loader/g/a/b:hiL	Ljava/util/concurrent/locks/ReentrantLock;
     //   76: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   79: aload_1
     //   80: athrow

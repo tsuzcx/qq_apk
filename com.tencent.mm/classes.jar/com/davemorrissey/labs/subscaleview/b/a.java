@@ -13,8 +13,8 @@ import com.davemorrissey.labs.subscaleview.a.c;
 import com.davemorrissey.labs.subscaleview.a.d;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,7 +61,7 @@ public final class a
       {
         try
         {
-          localInputStream = i.b(paramUri, null);
+          localInputStream = o.b(paramUri, null);
           paramSubsamplingScaleImageView = localObject;
         }
         catch (IOException paramSubsamplingScaleImageView)
@@ -73,7 +73,7 @@ public final class a
             AppMethodBeat.o(157349);
             throw paramContext;
             paramSubsamplingScaleImageView = paramSubsamplingScaleImageView;
-            ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", paramSubsamplingScaleImageView, "Unable to read file: %s", new Object[] { paramUri.toString() });
+            ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", paramSubsamplingScaleImageView, "Unable to read file: %s", new Object[] { paramUri.toString() });
           }
           catch (Throwable localThrowable)
           {
@@ -116,7 +116,7 @@ public final class a
       AppMethodBeat.i(157351);
       if ((paramSubsamplingScaleImageView != null) && (this.aWQ) && (this.aWS != -1L))
       {
-        ad.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode onEnd %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        ae.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode onEnd %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
         paramSubsamplingScaleImageView.dD((int)(System.currentTimeMillis() - this.aWS));
       }
       AppMethodBeat.o(157351);
@@ -126,7 +126,7 @@ public final class a
     private Integer rF()
     {
       AppMethodBeat.i(157350);
-      ad.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode start");
+      ae.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode start");
       if (this.aWQ) {
         this.aWS = System.currentTimeMillis();
       }
@@ -150,7 +150,7 @@ public final class a
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
         this.exception = localFileNotFoundException;
         this.aWR = new c(1, "tile init file not found");
         a((SubsamplingScaleImageView)this.og.get());
@@ -161,7 +161,7 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localException, "Failed to load bitmap", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localException, "Failed to load bitmap", new Object[0]);
           this.exception = localException;
           this.aWR = new c(2, "bitmap decode failed");
         }
@@ -170,7 +170,7 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localOutOfMemoryError, "Failed to load bitmap - OutOfMemoryError", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localOutOfMemoryError, "Failed to load bitmap - OutOfMemoryError", new Object[0]);
           this.exception = new RuntimeException(localOutOfMemoryError);
           this.aWR = new c(3, "bitmap decode OutOfMemoryError");
           SubsamplingScaleImageView.setPreferredBitmapConfig(Bitmap.Config.RGB_565);

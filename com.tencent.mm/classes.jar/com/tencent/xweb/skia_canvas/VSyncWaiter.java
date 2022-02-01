@@ -13,11 +13,11 @@ public class VSyncWaiter
   
   private VSyncWaiter()
   {
-    AppMethodBeat.i(217458);
+    AppMethodBeat.i(218255);
     this.mWorkingThread = new HandlerThread("VSyncWaiterWorkingThread");
     this.mWorkingThread.start();
     this.mWorkingHandler = new Handler(this.mWorkingThread.getLooper());
-    AppMethodBeat.o(217458);
+    AppMethodBeat.o(218255);
   }
   
   public static VSyncWaiter getInstance()
@@ -27,25 +27,25 @@ public class VSyncWaiter
   
   public void asyncWaitForVSync(final VSyncWaiterCallback paramVSyncWaiterCallback)
   {
-    AppMethodBeat.i(217457);
+    AppMethodBeat.i(218254);
     this.mWorkingHandler.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(217455);
+        AppMethodBeat.i(218252);
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback()
         {
           public void doFrame(long paramAnonymous2Long)
           {
-            AppMethodBeat.i(217454);
+            AppMethodBeat.i(218251);
             VSyncWaiter.1.this.val$callback.doFrame(paramAnonymous2Long);
-            AppMethodBeat.o(217454);
+            AppMethodBeat.o(218251);
           }
         });
-        AppMethodBeat.o(217455);
+        AppMethodBeat.o(218252);
       }
     });
-    AppMethodBeat.o(217457);
+    AppMethodBeat.o(218254);
   }
   
   static final class Holder
@@ -54,9 +54,9 @@ public class VSyncWaiter
     
     static
     {
-      AppMethodBeat.i(217456);
+      AppMethodBeat.i(218253);
       INSTANCE = new VSyncWaiter(null);
-      AppMethodBeat.o(217456);
+      AppMethodBeat.o(218253);
     }
   }
   

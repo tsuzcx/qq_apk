@@ -9,9 +9,9 @@ public abstract interface o
   
   public abstract boolean b(c paramc);
   
-  public abstract c eS(String paramString);
+  public abstract c eX(String paramString);
   
-  public abstract void eT(String paramString);
+  public abstract void eY(String paramString);
 }
 
 

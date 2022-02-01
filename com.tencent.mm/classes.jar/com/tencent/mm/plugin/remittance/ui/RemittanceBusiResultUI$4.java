@@ -13,12 +13,12 @@ final class RemittanceBusiResultUI$4
   public final void run()
   {
     AppMethodBeat.i(67993);
-    ViewGroup.LayoutParams localLayoutParams = this.yci.getLayoutParams();
-    if (this.ycj != null)
+    ViewGroup.LayoutParams localLayoutParams = this.yrZ.getLayoutParams();
+    if (this.ysa != null)
     {
-      localLayoutParams.width = this.ycj.getWidth();
-      localLayoutParams.height = this.ycj.getHeight();
-      this.yci.setLayoutParams(localLayoutParams);
+      localLayoutParams.width = this.ysa.getWidth();
+      localLayoutParams.height = this.ysa.getHeight();
+      this.yrZ.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(67993);
   }

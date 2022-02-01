@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "", "onBringToFront", "", "onDelete", "onUpdateMatrix", "centerX", "", "centerY", "scale", "rotate", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "", "onBringToFront", "", "onDelete", "onUpdateMatrix", "centerX", "", "centerY", "scale", "rotate", "plugin-recordvideo_release"})
 public abstract interface j
 {
-  public abstract void dIa();
+  public abstract void dLr();
   
-  public abstract void dIb();
+  public abstract void dLs();
   
   public abstract void n(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
 }

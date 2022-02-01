@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
 
 public final class b
@@ -12,7 +12,7 @@ public final class b
   public static void e(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(183798);
-    if ((paramImageView == null) || (bt.isNullOrNil(paramString)))
+    if ((paramImageView == null) || (bu.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(183798);
       return;

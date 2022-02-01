@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class si
   extends b
 {
-  public a dGP;
+  public a dHT;
   
   public si()
   {
@@ -16,17 +16,18 @@ public final class si
   
   private si(byte paramByte)
   {
-    AppMethodBeat.i(146076);
-    this.dGP = new a();
-    this.IbR = false;
+    AppMethodBeat.i(146075);
+    this.dHT = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(146076);
+    AppMethodBeat.o(146075);
   }
   
   public static final class a
   {
-    public String cardId;
-    public Bitmap dGQ;
+    public int action = 0;
+    public String cardNum;
+    public Bitmap dHU;
   }
 }
 

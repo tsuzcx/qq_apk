@@ -18,31 +18,31 @@ import com.tencent.mm.ui.base.preference.f;
 public final class g
   extends Preference
 {
-  private static int wEX;
-  private static float wEY = 16.0F;
+  private static int wUI;
+  private static float wUJ = 16.0F;
+  f mEx;
   private View mView;
-  f mzx;
-  String wEZ;
-  private String[] wFa;
-  private TextUtils.TruncateAt wFb;
-  private boolean wFc;
+  String wUK;
+  private String[] wUL;
+  private TextUtils.TruncateAt wUM;
+  private boolean wUN;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66820);
     this.mView = null;
-    this.wFc = false;
+    this.wUN = false;
     setLayoutResource(2131494710);
-    wEX = paramContext.getResources().getColor(2131100614);
+    wUI = paramContext.getResources().getColor(2131100614);
     AppMethodBeat.o(66820);
   }
   
   public final void a(String[] paramArrayOfString, TextUtils.TruncateAt paramTruncateAt)
   {
-    this.wFa = paramArrayOfString;
-    this.wFb = paramTruncateAt;
-    this.wFc = true;
+    this.wUL = paramArrayOfString;
+    this.wUM = paramTruncateAt;
+    this.wUN = true;
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
@@ -65,12 +65,12 @@ public final class g
     final TextView localTextView2 = (TextView)paramView.findViewById(2131302039);
     paramView = (LinearLayout)paramView.findViewById(2131302038);
     localTextView1.setText(getTitle());
-    if ((this.wFa == null) || (this.wFa.length <= 1)) {
-      localTextView2.setTextColor(wEX);
+    if ((this.wUL == null) || (this.wUL.length <= 1)) {
+      localTextView2.setTextColor(wUI);
     }
     for (;;)
     {
-      localTextView2.setText(this.wEZ);
+      localTextView2.setText(this.wUK);
       AppMethodBeat.o(66822);
       return;
       localTextView2.setOnClickListener(new View.OnClickListener()
@@ -80,7 +80,7 @@ public final class g
           AppMethodBeat.i(66819);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/order/ui/preference/MallOrderDeployablePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/order/ui/preference/MallOrderDeployablePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           localTextView2.setVisibility(8);
           int i = 0;
           while (i < g.a(g.this).length)

@@ -36,13 +36,13 @@ public class c
     return paramIJSRuntime;
   }
   
-  public final void a(y paramy)
+  public final void a(z paramz)
   {
     AppMethodBeat.i(144159);
-    if (this.lBu != null)
+    if (this.lFS != null)
     {
-      m localm = this.lBu;
-      localm.cYn.r(new m.9(localm, paramy));
+      m localm = this.lFS;
+      localm.cZl.r(new m.9(localm, paramz));
     }
     AppMethodBeat.o(144159);
   }
@@ -59,7 +59,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.c
  * JD-Core Version:    0.7.0.1
  */

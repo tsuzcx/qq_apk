@@ -19,10 +19,10 @@ public class RecoveryConsoleUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  List<b.a> EJJ;
-  SimpleAdapter EJK;
+  List<b.a> Fch;
+  SimpleAdapter Fci;
   ListView GF;
-  List<Map<String, String>> pAZ;
+  List<Map<String, String>> pHD;
   
   public int getLayoutId()
   {
@@ -34,19 +34,19 @@ public class RecoveryConsoleUI
     AppMethodBeat.i(151618);
     super.onCreate(paramBundle);
     setTitle("Recovery Console");
-    this.EJJ = b.eZb();
-    this.pAZ = new ArrayList(this.EJJ.size());
-    paramBundle = this.EJJ.iterator();
+    this.Fch = b.fcP();
+    this.pHD = new ArrayList(this.Fch.size());
+    paramBundle = this.Fch.iterator();
     while (paramBundle.hasNext())
     {
       b.a locala = (b.a)paramBundle.next();
       HashMap localHashMap = new HashMap();
-      localHashMap.put("title", getString(locala.mlW));
-      this.pAZ.add(localHashMap);
+      localHashMap.put("title", getString(locala.mqT));
+      this.pHD.add(localHashMap);
     }
-    this.EJK = new SimpleAdapter(this, this.pAZ, 2131494804, new String[] { "title" }, new int[] { 16908310 });
+    this.Fci = new SimpleAdapter(this, this.pHD, 2131494804, new String[] { "title" }, new int[] { 16908310 });
     this.GF = ((ListView)findViewById(16908298));
-    this.GF.setAdapter(this.EJK);
+    this.GF.setAdapter(this.Fci);
     this.GF.setOnItemClickListener(this);
     AppMethodBeat.o(151618);
   }
@@ -57,19 +57,19 @@ public class RecoveryConsoleUI
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/cmd/RecoveryConsoleUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-    paramAdapterView = (b.a)this.EJJ.get(paramInt);
-    if (paramAdapterView.EJO != null) {
-      paramAdapterView.EJO.a(this, paramAdapterView.dOr.split(" +"), "");
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/cmd/RecoveryConsoleUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    paramAdapterView = (b.a)this.Fch.get(paramInt);
+    if (paramAdapterView.Fcm != null) {
+      paramAdapterView.Fcm.a(this, paramAdapterView.dPH.split(" +"), "");
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/cmd/RecoveryConsoleUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(151619);
       return;
-      b.L(this, paramAdapterView.dOr, "");
+      b.L(this, paramAdapterView.dPH, "");
     }
   }
   

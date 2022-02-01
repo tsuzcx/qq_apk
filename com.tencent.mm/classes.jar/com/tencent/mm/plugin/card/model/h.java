@@ -24,7 +24,7 @@ public final class h
     this.db = parame;
   }
   
-  public final int bUJ()
+  public final int bVY()
   {
     int i = 0;
     AppMethodBeat.i(112778);
@@ -42,7 +42,7 @@ public final class h
     return i;
   }
   
-  public final boolean bUK()
+  public final boolean bVZ()
   {
     AppMethodBeat.i(112779);
     boolean bool = this.db.execSQL("CardMsgInfo", " update CardMsgInfo set read_state = 0  where read_state = 1");

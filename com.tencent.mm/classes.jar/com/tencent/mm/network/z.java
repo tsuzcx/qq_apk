@@ -2,7 +2,7 @@ package com.tencent.mm.network;
 
 public final class z
 {
-  public o iFW = null;
+  public o iIP = null;
 }
 
 

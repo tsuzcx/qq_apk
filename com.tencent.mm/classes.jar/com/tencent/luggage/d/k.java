@@ -4,11 +4,11 @@ import android.os.Bundle;
 
 public abstract interface k
 {
-  public abstract boolean BX();
+  public abstract boolean BY();
   
   public abstract boolean bp(boolean paramBoolean);
   
-  public abstract boolean cA(String paramString);
+  public abstract boolean cB(String paramString);
   
   public abstract boolean h(String paramString, Bundle paramBundle);
   

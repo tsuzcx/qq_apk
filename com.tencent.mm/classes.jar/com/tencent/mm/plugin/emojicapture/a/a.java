@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.emojicapture.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.agf;
-import com.tencent.mm.protocal.protobuf.agg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.ago;
+import com.tencent.mm.protocal.protobuf.agp;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/cgi/CgiTextAntiSpam;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/EmojiTextAntiSpamResponse;", "text", "", "(Ljava/lang/String;)V", "TAG", "getTAG", "()Ljava/lang/String;", "getText", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/cgi/CgiTextAntiSpam;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/EmojiTextAntiSpamResponse;", "text", "", "(Ljava/lang/String;)V", "TAG", "getTAG", "()Ljava/lang/String;", "getText", "plugin-emojicapture_release"})
 public final class a
-  extends com.tencent.mm.al.a<agg>
+  extends com.tencent.mm.ak.a<agp>
 {
   private final String TAG;
   private final String text;
@@ -20,14 +20,14 @@ public final class a
     this.text = paramString;
     this.TAG = "MicroMsg.CgiTextAntiSpam";
     paramString = new b.a();
-    agf localagf = new agf();
-    localagf.FGP = this.text;
-    paramString.c((com.tencent.mm.bx.a)localagf);
-    paramString.d((com.tencent.mm.bx.a)new agg());
-    paramString.Dl("/cgi-bin/micromsg-bin/mmemojitextantispam");
-    paramString.oP(532);
-    c(paramString.aDC());
-    ad.i(this.TAG, "Check text anti spam " + this.text);
+    ago localago = new ago();
+    localago.FZl = this.text;
+    paramString.c((com.tencent.mm.bw.a)localago);
+    paramString.d((com.tencent.mm.bw.a)new agp());
+    paramString.DN("/cgi-bin/micromsg-bin/mmemojitextantispam");
+    paramString.oS(532);
+    c(paramString.aDS());
+    ae.i(this.TAG, "Check text anti spam " + this.text);
     AppMethodBeat.o(128);
   }
 }

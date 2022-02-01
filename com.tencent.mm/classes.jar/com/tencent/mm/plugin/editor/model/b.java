@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.editor.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.g.a.gw.b;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.g.a.gx.b;
 import com.tencent.mm.plugin.editor.model.a.i;
 import com.tencent.mm.plugin.editor.model.a.j;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public static String a(ajn paramajn)
+  public static String a(ajx paramajx)
   {
     AppMethodBeat.i(181671);
-    gw localgw = new gw();
-    localgw.dsV.type = 27;
-    localgw.dsV.dsX = paramajn;
-    com.tencent.mm.sdk.b.a.IbL.l(localgw);
-    paramajn = localgw.dsW.thumbPath;
+    gx localgx = new gx();
+    localgx.dub.type = 27;
+    localgx.dub.dud = paramajx;
+    com.tencent.mm.sdk.b.a.IvT.l(localgx);
+    paramajx = localgx.duc.thumbPath;
     AppMethodBeat.o(181671);
-    return paramajn;
+    return paramajx;
   }
   
   public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> a(Object paramObject, List<String> paramList)
@@ -51,8 +51,8 @@ public final class b
       if (((String)localObject1).trim().equals("<ThisisNoteNodeHrObj>"))
       {
         localObject1 = new i();
-        ((i)localObject1).ptF = false;
-        ((i)localObject1).ptL = false;
+        ((i)localObject1).pAj = false;
+        ((i)localObject1).pAp = false;
         if (i < localArrayList.size()) {
           localArrayList.add(i, localObject1);
         }
@@ -67,9 +67,9 @@ public final class b
         {
           localObject2 = new j();
           ((j)localObject2).content = ((String)localObject1);
-          ((j)localObject2).ptF = false;
-          ((j)localObject2).ptL = false;
-          ((j)localObject2).dsU = aaU(localObject2.toString());
+          ((j)localObject2).pAj = false;
+          ((j)localObject2).pAp = false;
+          ((j)localObject2).dua = abL(localObject2.toString());
           if (i < localArrayList.size()) {
             localArrayList.add(i, localObject2);
           } else {
@@ -84,7 +84,7 @@ public final class b
     return localArrayList;
   }
   
-  public static String aaU(String paramString)
+  public static String abL(String paramString)
   {
     AppMethodBeat.i(181670);
     paramString = g.getMessageDigest((paramString + 18 + System.currentTimeMillis()).getBytes());
@@ -92,19 +92,19 @@ public final class b
     return paramString;
   }
   
-  public static String b(ajn paramajn)
+  public static String b(ajx paramajx)
   {
     AppMethodBeat.i(181672);
-    gw localgw = new gw();
-    localgw.dsV.type = 27;
-    localgw.dsV.dsX = paramajn;
-    com.tencent.mm.sdk.b.a.IbL.l(localgw);
-    paramajn = localgw.dsW.path;
+    gx localgx = new gx();
+    localgx.dub.type = 27;
+    localgx.dub.dud = paramajx;
+    com.tencent.mm.sdk.b.a.IvT.l(localgx);
+    paramajx = localgx.duc.path;
     AppMethodBeat.o(181672);
-    return paramajn;
+    return paramajx;
   }
   
-  public static float sv(long paramLong)
+  public static float sI(long paramLong)
   {
     float f1 = 1.0F;
     AppMethodBeat.i(181669);

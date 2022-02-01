@@ -4,11 +4,11 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract void ah(Map<String, String> paramMap);
+  public abstract void an(Map<String, String> paramMap);
   
-  public abstract boolean dcC();
+  public abstract boolean dfu();
   
-  public abstract void dcD();
+  public abstract void dfv();
 }
 
 

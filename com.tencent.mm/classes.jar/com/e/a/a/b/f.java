@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public final class f
 {
-  static final a cdJ = new a(", ").cr("null");
+  static final a cdJ = new a(", ").cs("null");
   
   static boolean a(Collection<?> paramCollection, @Nullable Object paramObject)
   {
@@ -26,7 +26,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.e.a.a.b.f
  * JD-Core Version:    0.7.0.1
  */

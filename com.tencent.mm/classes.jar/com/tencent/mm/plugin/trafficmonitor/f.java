@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class f
 {
-  private static Map<String, Long> BAR;
-  private static Map<String, Integer> BAS;
-  private long BAM;
-  private double BAN = 0.35D;
-  private double BAO = 3.0D;
-  long BAP = 0L;
-  double BAQ = 0.0D;
+  private static Map<String, Long> BSp;
+  private static Map<String, Integer> BSq;
+  private long BSk;
+  private double BSl = 0.35D;
+  private double BSm = 3.0D;
+  long BSn = 0L;
+  double BSo = 0.0D;
   public final String TAG = "Traf.TrafficModel";
   
   static
   {
     AppMethodBeat.i(123922);
-    BAR = new HashMap();
-    BAS = new HashMap();
-    BAR.put("null", Long.valueOf(4194304L));
-    BAR.put("Background", Long.valueOf(5242880L));
-    BAR.put("WebViewUI", Long.valueOf(83886080L));
-    BAR.put("WebviewMpUI", Long.valueOf(83886080L));
-    BAR.put("SnsTimeLineUI", Long.valueOf(15728640L));
-    BAR.put("SnsUserUI", Long.valueOf(15728640L));
-    BAR.put("AppBrandLaunchProxyUI", Long.valueOf(12582912L));
-    BAR.put("AppBrandUI", Long.valueOf(20971520L));
-    BAR.put("ChattingUI", Long.valueOf(12582912L));
-    BAR.put("SnsBrowseUI", Long.valueOf(12582912L));
-    BAR.put("SnsOnlineVideoActivity", Long.valueOf(12582912L));
-    BAR.put("EmojiStoreV2UI", Long.valueOf(16777216L));
-    BAR.put("EmojiStoreDetailUI", Long.valueOf(16777216L));
-    BAR.put("FTSSOSMoreWebViewUI", Long.valueOf(12582912L));
-    BAR.put("FTSWebViewUI", Long.valueOf(12582912L));
-    BAR.put("TopStoryHomeUI", Long.valueOf(16777216L));
-    BAR.put("TopStoryVideoStreamUI", Long.valueOf(25165824L));
-    BAR.put("GameDemoActivity1", Long.valueOf(12582912L));
-    BAR.put("ImageGalleryUI", Long.valueOf(12582912L));
-    BAR.put("SnsGalleryUI", Long.valueOf(12582912L));
-    BAR.put("VideoActivity", Long.valueOf(16777216L));
-    BAR.put("MultiTalkMainUI", Long.valueOf(16777216L));
-    BAR.put("FavoriteVideoPlayUI", Long.valueOf(16777216L));
-    BAR.put("AppAttachDownloadUI", Long.valueOf(20971520L));
-    BAR.put("LuggageGameWebViewUI", Long.valueOf(20971520L));
-    BAS.put("AppAttachDownloadUI", Integer.valueOf(2));
-    BAS.put("SendImgProxyUI", Integer.valueOf(2));
+    BSp = new HashMap();
+    BSq = new HashMap();
+    BSp.put("null", Long.valueOf(4194304L));
+    BSp.put("Background", Long.valueOf(5242880L));
+    BSp.put("WebViewUI", Long.valueOf(83886080L));
+    BSp.put("WebviewMpUI", Long.valueOf(83886080L));
+    BSp.put("SnsTimeLineUI", Long.valueOf(15728640L));
+    BSp.put("SnsUserUI", Long.valueOf(15728640L));
+    BSp.put("AppBrandLaunchProxyUI", Long.valueOf(12582912L));
+    BSp.put("AppBrandUI", Long.valueOf(20971520L));
+    BSp.put("ChattingUI", Long.valueOf(12582912L));
+    BSp.put("SnsBrowseUI", Long.valueOf(12582912L));
+    BSp.put("SnsOnlineVideoActivity", Long.valueOf(12582912L));
+    BSp.put("EmojiStoreV2UI", Long.valueOf(16777216L));
+    BSp.put("EmojiStoreDetailUI", Long.valueOf(16777216L));
+    BSp.put("FTSSOSMoreWebViewUI", Long.valueOf(12582912L));
+    BSp.put("FTSWebViewUI", Long.valueOf(12582912L));
+    BSp.put("TopStoryHomeUI", Long.valueOf(16777216L));
+    BSp.put("TopStoryVideoStreamUI", Long.valueOf(25165824L));
+    BSp.put("GameDemoActivity1", Long.valueOf(12582912L));
+    BSp.put("ImageGalleryUI", Long.valueOf(12582912L));
+    BSp.put("SnsGalleryUI", Long.valueOf(12582912L));
+    BSp.put("VideoActivity", Long.valueOf(16777216L));
+    BSp.put("MultiTalkMainUI", Long.valueOf(16777216L));
+    BSp.put("FavoriteVideoPlayUI", Long.valueOf(16777216L));
+    BSp.put("AppAttachDownloadUI", Long.valueOf(20971520L));
+    BSp.put("LuggageGameWebViewUI", Long.valueOf(20971520L));
+    BSq.put("AppAttachDownloadUI", Integer.valueOf(2));
+    BSq.put("SendImgProxyUI", Integer.valueOf(2));
     AppMethodBeat.o(123922);
   }
   
@@ -56,13 +56,13 @@ public final class f
   
   public f(long paramLong)
   {
-    this.BAM = paramLong;
+    this.BSk = paramLong;
   }
   
   public final boolean a(List<TrafficClickFlowReceiver.c> paramList, long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(123920);
-    ad.i("Traf.TrafficModel", "realInterval:%d", new Object[] { Long.valueOf(paramLong3) });
+    ae.i("Traf.TrafficModel", "realInterval:%d", new Object[] { Long.valueOf(paramLong3) });
     if (paramLong3 <= 5000L)
     {
       AppMethodBeat.o(123920);
@@ -77,8 +77,8 @@ public final class f
     if (paramLong3 <= 300000L)
     {
       i = 100;
-      this.BAM = (i * paramLong3 * 1048576L / 60000L);
-      this.BAP = 0L;
+      this.BSk = (i * paramLong3 * 1048576L / 60000L);
+      this.BSn = 0L;
       l1 = 0L;
       j = 0;
       i = 0;
@@ -87,7 +87,7 @@ public final class f
       }
       l2 = Math.min(((TrafficClickFlowReceiver.c)paramList.get(i)).endTime - ((TrafficClickFlowReceiver.c)paramList.get(i)).startTime, paramLong2);
       l1 += l2;
-      Object localObject2 = ((TrafficClickFlowReceiver.c)paramList.get(i)).BAJ;
+      Object localObject2 = ((TrafficClickFlowReceiver.c)paramList.get(i)).BSh;
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "null";
@@ -105,13 +105,13 @@ public final class f
       if (((String)localObject1).contains("_")) {
         localObject2 = ((String)localObject1).substring(0, ((String)localObject1).indexOf("_"));
       }
-      if (!BAR.containsKey(localObject2)) {
+      if (!BSp.containsKey(localObject2)) {
         break label362;
       }
-      d1 = this.BAP;
-      d2 = ((Long)BAR.get(localObject2)).longValue();
+      d1 = this.BSn;
+      d2 = ((Long)BSp.get(localObject2)).longValue();
     }
-    for (this.BAP = ((l2 / 1000.0D / 60.0D * d2 + d1));; this.BAP = ((l2 / 1000.0D / 60.0D * 8388608.0D + d1)))
+    for (this.BSn = ((l2 / 1000.0D / 60.0D * d2 + d1));; this.BSn = ((l2 / 1000.0D / 60.0D * 8388608.0D + d1)))
     {
       i += 1;
       j = k;
@@ -129,32 +129,32 @@ public final class f
       i = 50;
       break;
       label362:
-      d1 = this.BAP;
+      d1 = this.BSn;
     }
     label395:
     if (l1 < paramLong2) {
-      this.BAP += (paramLong2 - l1) / 1000L / 60L * 8388608L;
+      this.BSn += (paramLong2 - l1) / 1000L / 60L * 8388608L;
     }
-    this.BAP = Math.max(((Long)BAR.get("null")).longValue() * (paramLong2 / 1000L / 60L), this.BAP);
+    this.BSn = Math.max(((Long)BSp.get("null")).longValue() * (paramLong2 / 1000L / 60L), this.BSn);
     if (j != 0)
     {
-      paramLong2 = this.BAP;
-      this.BAP = (((Integer)BAS.get("AppAttachDownloadUI")).intValue() * paramLong2);
+      paramLong2 = this.BSn;
+      this.BSn = (((Integer)BSq.get("AppAttachDownloadUI")).intValue() * paramLong2);
     }
     if (j != 0)
     {
-      paramLong2 = this.BAP;
-      this.BAP = (((Integer)BAS.get("SendImgProxyUI")).intValue() * paramLong2);
+      paramLong2 = this.BSn;
+      this.BSn = (((Integer)BSq.get("SendImgProxyUI")).intValue() * paramLong2);
     }
-    paramLong2 = this.BAM;
-    long l1 = this.BAP;
-    this.BAQ = (paramLong1 / paramLong2 + paramLong1 / l1 * this.BAN);
-    if (this.BAQ < 0.0D) {
-      this.BAQ = 0.0D;
+    paramLong2 = this.BSk;
+    long l1 = this.BSn;
+    this.BSo = (paramLong1 / paramLong2 + paramLong1 / l1 * this.BSl);
+    if (this.BSo < 0.0D) {
+      this.BSo = 0.0D;
     }
-    double d1 = this.BAQ;
-    ad.i("Traf.TrafficModel", "compute Traffic realTraffic:%d , standardTraffic:%d, predictionTraffic:%d, realInterval:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.BAM), Long.valueOf(this.BAP), Long.valueOf(paramLong3) });
-    if (d1 > this.BAO)
+    double d1 = this.BSo;
+    ae.i("Traf.TrafficModel", "compute Traffic realTraffic:%d , standardTraffic:%d, predictionTraffic:%d, realInterval:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.BSk), Long.valueOf(this.BSn), Long.valueOf(paramLong3) });
+    if (d1 > this.BSm)
     {
       AppMethodBeat.o(123920);
       return true;
@@ -166,7 +166,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(123921);
-    String str = "TrafficModel{standardTraffic=" + this.BAM + ", preciseRatio=" + this.BAN + ", threshold=" + this.BAO + '}';
+    String str = "TrafficModel{standardTraffic=" + this.BSk + ", preciseRatio=" + this.BSl + ", threshold=" + this.BSm + '}';
     AppMethodBeat.o(123921);
     return str;
   }

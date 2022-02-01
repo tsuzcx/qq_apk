@@ -30,43 +30,43 @@ public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
   private ViewTreeObserver afv;
-  public View kBS;
-  private Dialog lzA;
-  private BottomSheetBehavior lzD;
-  private boolean lzE;
-  private int lzF;
-  private boolean lzH;
-  private boolean lzI;
+  public View kFh;
+  private Dialog lDY;
+  private BottomSheetBehavior lEb;
+  private boolean lEc;
+  private int lEd;
+  private boolean lEf;
+  private boolean lEg;
   private Context mContext;
   private View qI;
-  private boolean sSh;
-  private boolean sSi;
+  private boolean tds;
+  private boolean tdt;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(178057);
-    this.lzE = false;
-    this.sSi = false;
-    this.lzH = false;
-    this.lzI = false;
+    this.lEc = false;
+    this.tdt = false;
+    this.lEf = false;
+    this.lEg = false;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
       this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
     paramContext = this.mContext;
-    if (this.lzI) {}
-    for (this.lzA = new b(paramContext);; this.lzA = new a(paramContext, 2131820788))
+    if (this.lEg) {}
+    for (this.lDY = new b(paramContext);; this.lDY = new a(paramContext, 2131820788))
     {
-      this.kBS = View.inflate(paramContext, 2131494069, null);
-      this.lzE = aol();
-      this.lzA.setContentView(this.kBS);
-      this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
-      this.lzD.setState(3);
-      this.lzD.oi = new BottomSheetBehavior.a()
+      this.kFh = View.inflate(paramContext, 2131494069, null);
+      this.lEc = aoA();
+      this.lDY.setContentView(this.kFh);
+      this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
+      this.lEb.setState(3);
+      this.lEb.oi = new BottomSheetBehavior.a()
       {
         public final void M(int paramAnonymousInt) {}
       };
-      this.lzA.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.lDY.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -90,7 +90,7 @@ public final class d
     }
   }
   
-  private boolean aol()
+  private boolean aoA()
   {
     AppMethodBeat.i(178064);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -117,7 +117,7 @@ public final class d
   private boolean isShowing()
   {
     AppMethodBeat.i(178063);
-    if ((this.lzA != null) && (this.lzA.isShowing()))
+    if ((this.lDY != null) && (this.lDY.isShowing()))
     {
       AppMethodBeat.o(178063);
       return true;
@@ -126,60 +126,60 @@ public final class d
     return false;
   }
   
-  public final d Gc(int paramInt)
+  public final d GC(int paramInt)
   {
-    AppMethodBeat.i(200928);
-    LinearLayout localLinearLayout = (LinearLayout)this.kBS.findViewById(2131297461);
-    LayoutInflater.from(this.kBS.getContext()).inflate(paramInt, localLinearLayout, true);
-    AppMethodBeat.o(200928);
+    AppMethodBeat.i(201350);
+    LinearLayout localLinearLayout = (LinearLayout)this.kFh.findViewById(2131297461);
+    LayoutInflater.from(this.kFh.getContext()).inflate(paramInt, localLinearLayout, true);
+    AppMethodBeat.o(201350);
     return this;
   }
   
-  public final void bpT()
+  public final void bqD()
   {
     AppMethodBeat.i(178062);
-    if (this.lzA != null)
+    if (this.lDY != null)
     {
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lzA.dismiss();
+        this.lDY.dismiss();
       }
-      if (this.lzD != null) {
-        this.lzD.nZ = true;
+      if (this.lEb != null) {
+        this.lEb.nZ = true;
       }
     }
     AppMethodBeat.o(178062);
   }
   
-  public final void cMW()
+  public final void cPF()
   {
     AppMethodBeat.i(178061);
-    this.lzE = aol();
-    this.lzF = getRotation();
-    if (this.lzA != null)
+    this.lEc = aoA();
+    this.lEd = getRotation();
+    if (this.lDY != null)
     {
-      ((ViewGroup)this.kBS.getParent()).setVisibility(0);
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kBS.getLayoutParams();
-      if ((this.lzE) && (this.qI != null))
+      ((ViewGroup)this.kFh.getParent()).setVisibility(0);
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kFh.getLayoutParams();
+      if ((this.lEc) && (this.qI != null))
       {
         Rect localRect = new Rect();
         this.qI.getWindowVisibleDisplayFrame(localRect);
         localLayoutParams.width = localRect.right;
       }
-      this.kBS.setLayoutParams(localLayoutParams);
+      this.kFh.setLayoutParams(localLayoutParams);
       if (Build.VERSION.SDK_INT >= 21) {
-        this.lzA.getWindow().addFlags(-2147483648);
+        this.lDY.getWindow().addFlags(-2147483648);
       }
-      if ((this.sSh) && (Build.VERSION.SDK_INT >= 23) && (this.lzA != null))
+      if ((this.tds) && (Build.VERSION.SDK_INT >= 23) && (this.lDY != null))
       {
-        this.lzA.getWindow().getDecorView().setSystemUiVisibility(9216);
-        this.lzA.getWindow().setStatusBarColor(0);
+        this.lDY.getWindow().getDecorView().setSystemUiVisibility(9216);
+        this.lDY.getWindow().setStatusBarColor(0);
       }
-      if (!this.lzH) {
+      if (!this.lEf) {
         break label308;
       }
-      this.lzA.getWindow().setFlags(8, 8);
-      this.lzA.getWindow().addFlags(131200);
-      this.lzA.getWindow().getDecorView().setSystemUiVisibility(6);
+      this.lDY.getWindow().setFlags(8, 8);
+      this.lDY.getWindow().addFlags(131200);
+      this.lDY.getWindow().getDecorView().setSystemUiVisibility(6);
       if (this.qI != null) {
         if (this.afv != null) {
           break label363;
@@ -195,17 +195,17 @@ public final class d
         this.afv.addOnGlobalLayoutListener(this);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.lzA.show();
+        this.lDY.show();
       }
-      if (this.lzD != null) {
-        this.lzD.nZ = false;
+      if (this.lEb != null) {
+        this.lEb.nZ = false;
       }
       AppMethodBeat.o(178061);
       return;
-      this.lzA.getWindow().clearFlags(8);
-      this.lzA.getWindow().clearFlags(131072);
-      this.lzA.getWindow().clearFlags(128);
-      this.lzA.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.lDY.getWindow().clearFlags(8);
+      this.lDY.getWindow().clearFlags(131072);
+      this.lDY.getWindow().clearFlags(128);
+      this.lDY.getWindow().getDecorView().setSystemUiVisibility(0);
       break;
     }
   }
@@ -218,12 +218,12 @@ public final class d
       View localView = this.qI;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bpT();
+        bqD();
         AppMethodBeat.o(178058);
         return;
       }
-      if ((isShowing()) && ((this.lzE != aol()) || (this.lzF != getRotation()))) {
-        bpT();
+      if ((isShowing()) && ((this.lEc != aoA()) || (this.lEd != getRotation()))) {
+        bqD();
       }
     }
     AppMethodBeat.o(178058);
@@ -231,7 +231,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.d
  * JD-Core Version:    0.7.0.1
  */

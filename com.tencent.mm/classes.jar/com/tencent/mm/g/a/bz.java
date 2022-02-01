@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bz
   extends b
 {
-  public a dmQ;
+  public a dnS;
   
   public bz()
   {
@@ -16,20 +16,20 @@ public final class bz
   private bz(byte paramByte)
   {
     AppMethodBeat.i(149858);
-    this.dmQ = new a();
-    this.IbR = false;
+    this.dnS = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(149858);
   }
   
   public static final class a
   {
-    public long dmR;
+    public long dnT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.bz
  * JD-Core Version:    0.7.0.1
  */

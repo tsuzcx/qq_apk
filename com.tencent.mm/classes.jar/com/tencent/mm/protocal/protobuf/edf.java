@@ -1,59 +1,54 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class edf
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Hnp;
-  public int Hrp;
+  public String username;
+  public int version;
+  public String ypt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32546);
+    AppMethodBeat.i(197213);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Hnp == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32546);
-        throw paramVarArgs;
+      if (this.username != null) {
+        paramVarArgs.d(1, this.username);
       }
-      if (this.Hnp != null) {
-        paramVarArgs.d(1, this.Hnp);
+      if (this.ypt != null) {
+        paramVarArgs.d(2, this.ypt);
       }
-      paramVarArgs.aS(2, this.Hrp);
-      AppMethodBeat.o(32546);
+      paramVarArgs.aS(3, this.version);
+      AppMethodBeat.o(197213);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Hnp == null) {
+      if (this.username == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Hnp) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.Hrp);
-      AppMethodBeat.o(32546);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.ypt != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ypt);
+      }
+      paramInt = f.a.a.b.b.a.bz(3, this.version);
+      AppMethodBeat.o(197213);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.Hnp == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32546);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32546);
+        AppMethodBeat.o(197213);
         return 0;
       }
       if (paramInt == 3)
@@ -63,18 +58,22 @@ public final class edf
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32546);
+          AppMethodBeat.o(197213);
           return -1;
         case 1: 
-          localedf.Hnp = locala.NPN.readString();
-          AppMethodBeat.o(32546);
+          localedf.username = locala.OmT.readString();
+          AppMethodBeat.o(197213);
+          return 0;
+        case 2: 
+          localedf.ypt = locala.OmT.readString();
+          AppMethodBeat.o(197213);
           return 0;
         }
-        localedf.Hrp = locala.NPN.zc();
-        AppMethodBeat.o(32546);
+        localedf.version = locala.OmT.zc();
+        AppMethodBeat.o(197213);
         return 0;
       }
-      AppMethodBeat.o(32546);
+      AppMethodBeat.o(197213);
       return -1;
     }
   }

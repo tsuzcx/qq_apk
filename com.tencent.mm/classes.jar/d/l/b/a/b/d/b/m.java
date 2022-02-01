@@ -9,22 +9,22 @@ import d.n.n;
 final class m
   implements l<k>
 {
-  public static final m Njb;
+  public static final m NGh;
   
   static
   {
     AppMethodBeat.i(58216);
-    Njb = new m();
+    NGh = new m();
     AppMethodBeat.o(58216);
   }
   
-  private k bcu(String paramString)
+  private k bdY(String paramString)
   {
     int k = 0;
     AppMethodBeat.i(58209);
     p.h(paramString, "representation");
     if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
       paramString = (Throwable)new AssertionError("empty string as JvmType");
       AppMethodBeat.o(58209);
@@ -74,7 +74,7 @@ final class m
           i = 1;
         }
       }
-      if ((ac.MKp) && (i == 0))
+      if ((ac.Nhs) && (i == 0))
       {
         paramString = (Throwable)new AssertionError("Type that is not primitive nor array should be Object, but '" + paramString + "' was found");
         AppMethodBeat.o(58209);
@@ -89,7 +89,7 @@ final class m
       label157:
       paramString = paramString.substring(1);
       p.g(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = (k)new k.a(bcu(paramString));
+      paramString = (k)new k.a(bdY(paramString));
       AppMethodBeat.o(58209);
       return paramString;
     }
@@ -100,7 +100,7 @@ final class m
     return paramString;
   }
   
-  private static k.b bcv(String paramString)
+  private static k.b bdZ(String paramString)
   {
     AppMethodBeat.i(58211);
     p.h(paramString, "internalName");
@@ -115,13 +115,13 @@ final class m
     p.h(paramk, "type");
     if ((paramk instanceof k.a))
     {
-      paramk = "[" + a(((k.a)paramk).NiY);
+      paramk = "[" + a(((k.a)paramk).NGe);
       AppMethodBeat.o(58213);
       return paramk;
     }
     if ((paramk instanceof k.c))
     {
-      paramk = ((k.c)paramk).Nja;
+      paramk = ((k.c)paramk).NGg;
       if (paramk != null)
       {
         paramk = paramk.getDesc();
@@ -137,7 +137,7 @@ final class m
     {
       if ((paramk instanceof k.b))
       {
-        paramk = "L" + ((k.b)paramk).NiZ + ";";
+        paramk = "L" + ((k.b)paramk).NGf + ";";
         AppMethodBeat.o(58213);
         return paramk;
       }
@@ -151,7 +151,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.m
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,19 @@ import java.util.Set;
 
 public final class r
 {
-  private static r cOV = null;
-  private Map<Integer, q> cOT;
-  private int cOU;
+  private static r cPF = null;
+  private Map<Integer, q> cPD;
+  private int cPE;
   
   private r(Context paramContext)
   {
     AppMethodBeat.i(87606);
-    this.cOT = null;
-    this.cOU = 0;
-    this.cOT = new HashMap(3);
-    this.cOT.put(Integer.valueOf(1), new o(paramContext));
-    this.cOT.put(Integer.valueOf(2), new d(paramContext));
-    this.cOT.put(Integer.valueOf(4), new k(paramContext));
+    this.cPD = null;
+    this.cPE = 0;
+    this.cPD = new HashMap(3);
+    this.cPD.put(Integer.valueOf(1), new o(paramContext));
+    this.cPD.put(Integer.valueOf(2), new d(paramContext));
+    this.cPD.put(Integer.valueOf(4), new k(paramContext));
     AppMethodBeat.o(87606);
   }
   
@@ -47,23 +47,23 @@ public final class r
           return paramList;
         }
         localObject = (Integer)paramList.next();
-        localObject = (q)this.cOT.get(localObject);
+        localObject = (q)this.cPD.get(localObject);
       } while (localObject == null);
-      localObject = ((q)localObject).JJ();
+      localObject = ((q)localObject).JR();
     } while (localObject == null);
     AppMethodBeat.o(87611);
     return localObject;
   }
   
-  static r aX(Context paramContext)
+  static r aY(Context paramContext)
   {
     try
     {
       AppMethodBeat.i(87607);
-      if (cOV == null) {
-        cOV = new r(paramContext);
+      if (cPF == null) {
+        cPF = new r(paramContext);
       }
-      paramContext = cOV;
+      paramContext = cPF;
       AppMethodBeat.o(87607);
       return paramContext;
     }
@@ -88,15 +88,15 @@ public final class r
           return paramList;
         }
         localObject = (Integer)paramList.next();
-        localObject = (q)this.cOT.get(localObject);
+        localObject = (q)this.cPD.get(localObject);
       } while (localObject == null);
-      localObject = ((q)localObject).JI();
-    } while ((localObject == null) || (!s.el(((g)localObject).cOB)));
+      localObject = ((q)localObject).JQ();
+    } while ((localObject == null) || (!s.eq(((g)localObject).cPl)));
     AppMethodBeat.o(87609);
     return localObject;
   }
   
-  final g JI()
+  final g JQ()
   {
     AppMethodBeat.i(87608);
     g localg = G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4) })));
@@ -104,7 +104,7 @@ public final class r
     return localg;
   }
   
-  final a JJ()
+  final a JR()
   {
     AppMethodBeat.i(87610);
     a locala = H(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(4) })));
@@ -115,7 +115,7 @@ public final class r
   final void b(a parama)
   {
     AppMethodBeat.i(87612);
-    Iterator localIterator = this.cOT.entrySet().iterator();
+    Iterator localIterator = this.cPD.entrySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -130,7 +130,7 @@ public final class r
   final void b(g paramg)
   {
     AppMethodBeat.i(87613);
-    Iterator localIterator = this.cOT.entrySet().iterator();
+    Iterator localIterator = this.cPD.entrySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext())

@@ -5,11 +5,11 @@ import android.os.AsyncTask;
 public abstract class b
   extends AsyncTask<Void, Void, String>
 {
+  protected boolean Acx;
+  protected int Acy;
   protected String filePath;
   protected int scene;
   protected String url;
-  protected boolean zLq;
-  protected int zLr;
 }
 
 

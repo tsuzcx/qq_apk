@@ -23,18 +23,18 @@ import java.util.Set;
 
 public class ae
 {
-  public static Iterable eP(Object paramObject)
+  public static Iterable eS(Object paramObject)
   {
     AppMethodBeat.i(128964);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.c))) {
       i(paramObject, "kotlin.collections.MutableIterable");
     }
-    paramObject = eQ(paramObject);
+    paramObject = eT(paramObject);
     AppMethodBeat.o(128964);
     return paramObject;
   }
   
-  private static Iterable eQ(Object paramObject)
+  private static Iterable eT(Object paramObject)
   {
     AppMethodBeat.i(128965);
     try
@@ -45,24 +45,24 @@ public class ae
     }
     catch (ClassCastException paramObject)
     {
-      paramObject = (ClassCastException)p(paramObject);
+      paramObject = (ClassCastException)q(paramObject);
       AppMethodBeat.o(128965);
       throw paramObject;
     }
   }
   
-  public static Collection eR(Object paramObject)
+  public static Collection eU(Object paramObject)
   {
     AppMethodBeat.i(128966);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.b))) {
       i(paramObject, "kotlin.collections.MutableCollection");
     }
-    paramObject = eS(paramObject);
+    paramObject = eV(paramObject);
     AppMethodBeat.o(128966);
     return paramObject;
   }
   
-  private static Collection eS(Object paramObject)
+  private static Collection eV(Object paramObject)
   {
     AppMethodBeat.i(128967);
     try
@@ -73,24 +73,24 @@ public class ae
     }
     catch (ClassCastException paramObject)
     {
-      paramObject = (ClassCastException)p(paramObject);
+      paramObject = (ClassCastException)q(paramObject);
       AppMethodBeat.o(128967);
       throw paramObject;
     }
   }
   
-  public static Set eT(Object paramObject)
+  public static Set eW(Object paramObject)
   {
     AppMethodBeat.i(128968);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.g))) {
       i(paramObject, "kotlin.collections.MutableSet");
     }
-    paramObject = eU(paramObject);
+    paramObject = eX(paramObject);
     AppMethodBeat.o(128968);
     return paramObject;
   }
   
-  private static Set eU(Object paramObject)
+  private static Set eX(Object paramObject)
   {
     AppMethodBeat.i(128969);
     try
@@ -101,24 +101,24 @@ public class ae
     }
     catch (ClassCastException paramObject)
     {
-      paramObject = (ClassCastException)p(paramObject);
+      paramObject = (ClassCastException)q(paramObject);
       AppMethodBeat.o(128969);
       throw paramObject;
     }
   }
   
-  public static Map eV(Object paramObject)
+  public static Map eY(Object paramObject)
   {
     AppMethodBeat.i(177350);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.f))) {
       i(paramObject, "kotlin.collections.MutableMap");
     }
-    paramObject = eW(paramObject);
+    paramObject = eZ(paramObject);
     AppMethodBeat.o(177350);
     return paramObject;
   }
   
-  private static Map eW(Object paramObject)
+  private static Map eZ(Object paramObject)
   {
     AppMethodBeat.i(177351);
     try
@@ -129,7 +129,7 @@ public class ae
     }
     catch (ClassCastException paramObject)
     {
-      paramObject = (ClassCastException)p(paramObject);
+      paramObject = (ClassCastException)q(paramObject);
       AppMethodBeat.o(177351);
       throw paramObject;
     }
@@ -141,7 +141,7 @@ public class ae
     if (paramObject == null) {}
     for (paramObject = "null";; paramObject = paramObject.getClass().getName())
     {
-      paramObject = (ClassCastException)p(new ClassCastException(paramObject + " cannot be cast to " + paramString));
+      paramObject = (ClassCastException)q(new ClassCastException(paramObject + " cannot be cast to " + paramString));
       AppMethodBeat.o(128963);
       throw paramObject;
     }
@@ -149,7 +149,7 @@ public class ae
   
   public static Object p(Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(199605);
+    AppMethodBeat.i(188697);
     if (paramObject != null)
     {
       if (!(paramObject instanceof d.c)) {
@@ -170,7 +170,7 @@ public class ae
       if (i == 0) {
         i(paramObject, "kotlin.jvm.functions.Function".concat(String.valueOf(paramInt)));
       }
-      AppMethodBeat.o(199605);
+      AppMethodBeat.o(188697);
       return paramObject;
       if ((paramObject instanceof d.g.a.a))
       {
@@ -292,7 +292,7 @@ public class ae
     }
   }
   
-  private static <T extends Throwable> T p(T paramT)
+  private static <T extends Throwable> T q(T paramT)
   {
     AppMethodBeat.i(128962);
     paramT = p.b(paramT, ae.class.getName());

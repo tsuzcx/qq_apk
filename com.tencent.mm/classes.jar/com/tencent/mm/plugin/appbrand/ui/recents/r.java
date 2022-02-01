@@ -7,7 +7,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +16,12 @@ final class r
 {
   private final ArrayList<?> mDataList;
   private LayoutInflater mInflater;
-  final SparseArray<s> mMs;
+  final SparseArray<s> mRv;
   
   r(ArrayList<?> paramArrayList)
   {
     AppMethodBeat.i(49283);
-    this.mMs = new SparseArray();
+    this.mRv = new SparseArray();
     this.mDataList = paramArrayList;
     AppMethodBeat.o(49283);
   }
@@ -29,7 +29,7 @@ final class r
   public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(49286);
-    s locals = (s)this.mMs.get(paramInt);
+    s locals = (s)this.mRv.get(paramInt);
     if (locals == null)
     {
       AppMethodBeat.o(49286);
@@ -47,9 +47,9 @@ final class r
   public final void a(RecyclerView.w paramw, int paramInt)
   {
     AppMethodBeat.i(49287);
-    s locals = (s)this.mMs.get(getItemViewType(paramInt));
+    s locals = (s)this.mRv.get(getItemViewType(paramInt));
     if (locals != null) {
-      locals.c(paramw, vE(paramInt));
+      locals.c(paramw, vJ(paramInt));
     }
     AppMethodBeat.o(49287);
   }
@@ -57,7 +57,7 @@ final class r
   public final void a(RecyclerView.w paramw, int paramInt, List paramList)
   {
     AppMethodBeat.i(49288);
-    s locals = (s)this.mMs.get(getItemViewType(paramInt));
+    s locals = (s)this.mRv.get(getItemViewType(paramInt));
     if (locals == null)
     {
       super.a(paramw, paramInt, paramList);
@@ -66,14 +66,14 @@ final class r
     }
     if (paramList.size() > 0)
     {
-      vE(paramInt);
+      vJ(paramInt);
       if (locals.b(paramw, paramList.get(0)))
       {
         AppMethodBeat.o(49288);
         return;
       }
     }
-    locals.c(paramw, vE(paramInt));
+    locals.c(paramw, vJ(paramInt));
     AppMethodBeat.o(49288);
   }
   
@@ -93,14 +93,14 @@ final class r
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(49290);
-    Object localObject = vE(paramInt);
-    s locals = (s)this.mMs.get(getItemViewType(paramInt));
+    Object localObject = vJ(paramInt);
+    s locals = (s)this.mRv.get(getItemViewType(paramInt));
     if ((localObject == null) || (locals == null))
     {
       AppMethodBeat.o(49290);
       return 0L;
     }
-    long l = locals.cD(localObject);
+    long l = locals.cE(localObject);
     AppMethodBeat.o(49290);
     return l;
   }
@@ -108,7 +108,7 @@ final class r
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(49289);
-    Object localObject = vE(paramInt);
+    Object localObject = vJ(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(49289);
@@ -122,7 +122,7 @@ final class r
   final boolean isEmpty()
   {
     AppMethodBeat.i(49284);
-    if ((this.mDataList == null) || (bt.hj(this.mDataList)))
+    if ((this.mDataList == null) || (bu.ht(this.mDataList)))
     {
       AppMethodBeat.o(49284);
       return true;
@@ -131,7 +131,7 @@ final class r
     return false;
   }
   
-  final Object vE(int paramInt)
+  final Object vJ(int paramInt)
   {
     AppMethodBeat.i(49285);
     if ((paramInt < 0) || (paramInt >= getItemCount()))
@@ -146,7 +146,7 @@ final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.r
  * JD-Core Version:    0.7.0.1
  */

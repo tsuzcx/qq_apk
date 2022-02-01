@@ -9,7 +9,7 @@ class ErrLog$PreventError
   implements Parcelable
 {
   public static final Parcelable.Creator<PreventError> CREATOR;
-  public ErrLog.Error HWz;
+  public ErrLog.Error IqH;
   public String processName;
   public String tag;
   public String username;
@@ -26,7 +26,7 @@ class ErrLog$PreventError
     AppMethodBeat.i(32592);
     this.username = paramParcel.readString();
     this.tag = paramParcel.readString();
-    this.HWz = ((ErrLog.Error)paramParcel.readParcelable(ErrLog.Error.class.getClassLoader()));
+    this.IqH = ((ErrLog.Error)paramParcel.readParcelable(ErrLog.Error.class.getClassLoader()));
     this.processName = paramParcel.readString();
     AppMethodBeat.o(32592);
   }
@@ -35,7 +35,7 @@ class ErrLog$PreventError
   {
     this.username = paramString1;
     this.tag = paramString2;
-    this.HWz = paramError;
+    this.IqH = paramError;
     this.processName = paramString3;
   }
   
@@ -47,7 +47,7 @@ class ErrLog$PreventError
   public String toString()
   {
     AppMethodBeat.i(32590);
-    String str = "PreventError{username='" + this.username + '\'' + ", tag='" + this.tag + '\'' + ", err=" + this.HWz + ", processName='" + this.processName + '\'' + '}';
+    String str = "PreventError{username='" + this.username + '\'' + ", tag='" + this.tag + '\'' + ", err=" + this.IqH + ", processName='" + this.processName + '\'' + '}';
     AppMethodBeat.o(32590);
     return str;
   }
@@ -57,7 +57,7 @@ class ErrLog$PreventError
     AppMethodBeat.i(32591);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.tag);
-    paramParcel.writeParcelable(this.HWz, paramInt);
+    paramParcel.writeParcelable(this.IqH, paramInt);
     paramParcel.writeString(this.processName);
     AppMethodBeat.o(32591);
   }

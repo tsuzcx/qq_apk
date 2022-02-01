@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(214718);
+    AppMethodBeat.i(212949);
     aPz = new t("Document", 0);
     aPA = new t("RenderOptions", 1);
     aPB = new t[] { aPz, aPA };
-    AppMethodBeat.o(214718);
+    AppMethodBeat.o(212949);
   }
   
   private b$t() {}

@@ -11,13 +11,13 @@ import com.tencent.mm.vending.j.d;
 public class g
   implements b<f>
 {
-  protected f iUt;
-  public final d iUu;
-  public final a iUv;
-  public final e iUw;
-  public final c iUx;
-  public final b iUy;
-  public final f iUz;
+  protected f iXm;
+  public final d iXn;
+  public final a iXo;
+  public final e iXp;
+  public final c iXq;
+  public final b iXr;
+  public final f iXs;
   
   public g()
   {
@@ -29,13 +29,13 @@ public class g
   private g(f paramf)
   {
     AppMethodBeat.i(63469);
-    this.iUu = new d();
-    this.iUv = new a();
-    this.iUw = new e();
-    this.iUx = new c();
-    this.iUy = new b();
-    this.iUz = new f();
-    this.iUt = paramf;
+    this.iXn = new d();
+    this.iXo = new a();
+    this.iXp = new e();
+    this.iXq = new c();
+    this.iXr = new b();
+    this.iXs = new f();
+    this.iXm = paramf;
     AppMethodBeat.o(63469);
   }
   
@@ -44,7 +44,7 @@ public class g
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -55,7 +55,7 @@ public class g
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -66,7 +66,7 @@ public class g
   {
     public c() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -85,15 +85,15 @@ public class g
   {
     public d() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
     
-    public final c<w> aRm()
+    public final c<w> aRL()
     {
       AppMethodBeat.i(63463);
-      c localc = com.tencent.mm.vending.g.g.fOf().c(this);
+      c localc = com.tencent.mm.vending.g.g.fSA().c(this);
       AppMethodBeat.o(63463);
       return localc;
     }
@@ -104,7 +104,7 @@ public class g
   {
     public e() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -123,7 +123,7 @@ public class g
   {
     public f() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

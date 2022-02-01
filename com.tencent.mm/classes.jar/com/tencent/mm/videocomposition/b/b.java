@@ -5,32 +5,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/render/BlendBitmapRender;", "", "()V", "blendBitmapProvider", "Lkotlin/Function1;", "", "Landroid/graphics/Bitmap;", "height", "", "texture", "width", "blendTexture", "Lcom/tencent/mm/xeffect/InputTexture;", "pts", "ensureTexture", "", "release", "setBlendBitmapProvider", "uploadBitmap", "bitmap", "Companion", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/BlendBitmapRender;", "", "()V", "blendBitmapProvider", "Lkotlin/Function1;", "", "Landroid/graphics/Bitmap;", "height", "", "texture", "width", "blendTexture", "Lcom/tencent/mm/xeffect/InputTexture;", "pts", "ensureTexture", "", "release", "setBlendBitmapProvider", "uploadBitmap", "bitmap", "Companion", "video_composition_release"})
 public final class b
 {
-  public static final a Lns;
-  int BHZ;
+  public static final a LKd;
+  int BZy;
   int height;
-  d.g.a.b<? super Long, Bitmap> hkY;
+  d.g.a.b<? super Long, Bitmap> hnM;
   int width;
   
   static
   {
-    AppMethodBeat.i(220902);
-    Lns = new a((byte)0);
-    AppMethodBeat.o(220902);
+    AppMethodBeat.i(195037);
+    LKd = new a((byte)0);
+    AppMethodBeat.o(195037);
   }
   
-  public final void E(d.g.a.b<? super Long, Bitmap> paramb)
+  public final void F(d.g.a.b<? super Long, Bitmap> paramb)
   {
-    AppMethodBeat.i(220901);
+    AppMethodBeat.i(195036);
     p.h(paramb, "blendBitmapProvider");
     new StringBuilder("setBlendBitmapProvider:").append(paramb.hashCode());
-    this.hkY = paramb;
-    AppMethodBeat.o(220901);
+    this.hnM = paramb;
+    AppMethodBeat.o(195036);
   }
   
-  @l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/render/BlendBitmapRender$Companion;", "", "()V", "TAG", "", "video_composition_release"})
+  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/BlendBitmapRender$Companion;", "", "()V", "TAG", "", "video_composition_release"})
   public static final class a {}
 }
 

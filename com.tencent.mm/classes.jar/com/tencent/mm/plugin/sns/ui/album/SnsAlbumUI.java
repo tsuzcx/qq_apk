@@ -13,18 +13,18 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.sns.b.i.a;
 import com.tencent.mm.plugin.sns.data.SnsCmdList;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.an.a;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ao.a;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.SnsUserUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.MMFragment;
 import java.util.Iterator;
 import java.util.List;
@@ -33,40 +33,40 @@ public class SnsAlbumUI
   extends MMFragment
   implements i.a, a.a
 {
-  private int AkB;
-  private boolean Aku;
-  private String Akz;
-  private Runnable ApD;
-  private an.a Apm;
-  private LinearLayout Asv;
-  private LinearLayout Asw;
-  private a Asx;
-  private int Asy;
+  private boolean ABG;
+  private String ABL;
+  private int ABN;
+  private Runnable AGQ;
+  private ao.a AGz;
+  private LinearLayout AJJ;
+  private LinearLayout AJK;
+  private a AJL;
+  private int AJM;
   private RecyclerView anl;
-  private String lEN;
+  private String lJm;
   
   public SnsAlbumUI()
   {
     AppMethodBeat.i(99882);
     this.anl = null;
-    this.Asv = null;
-    this.Asw = null;
-    this.Asx = null;
-    this.Akz = null;
-    this.lEN = null;
-    this.AkB = 0;
-    this.Aku = false;
-    this.Apm = null;
-    this.Asy = 0;
-    this.ApD = new Runnable()
+    this.AJJ = null;
+    this.AJK = null;
+    this.AJL = null;
+    this.ABL = null;
+    this.lJm = null;
+    this.ABN = 0;
+    this.ABG = false;
+    this.AGz = null;
+    this.AJM = 0;
+    this.AGQ = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(99876);
         if (SnsAlbumUI.a(SnsAlbumUI.this) != null)
         {
-          SnsAlbumUI.a(SnsAlbumUI.this).ecx();
-          SnsAlbumUI.a(SnsAlbumUI.this).rT(true);
+          SnsAlbumUI.a(SnsAlbumUI.this).ege();
+          SnsAlbumUI.a(SnsAlbumUI.this).sa(true);
         }
         AppMethodBeat.o(99876);
       }
@@ -79,29 +79,29 @@ public class SnsAlbumUI
   public final void a(String paramString, boolean paramBoolean, int paramInt, com.tencent.mm.plugin.sns.b.b paramb)
   {
     AppMethodBeat.i(99886);
-    if ((this.Akz.equals(this.lEN)) && (paramb.dSw() != 0L))
+    if ((this.ABL.equals(this.lJm)) && (paramb.dVU() != 0L))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IxP, Long.valueOf(paramb.dSw()));
-      this.Asx.Ao(paramb.dSw());
+      g.ajS();
+      g.ajR().ajA().set(am.a.ISn, Long.valueOf(paramb.dVU()));
+      this.AJL.AM(paramb.dVU());
     }
-    if (paramb.dSr()) {
-      this.Asx.aBa(paramb.dSx());
+    if (paramb.dVP()) {
+      this.AJL.aCr(paramb.dVV());
     }
     label199:
     label202:
     for (;;)
     {
-      if ((bt.isNullOrNil(this.Asx.ArV)) && (this.Asx != null))
+      if ((bu.isNullOrNil(this.AJL.AJj)) && (this.AJL != null))
       {
-        this.Asx.ArU = paramString;
-        this.Asx.ecx();
-        this.Asx.rT(true);
+        this.AJL.AJi = paramString;
+        this.AJL.ege();
+        this.AJL.sa(true);
       }
       AppMethodBeat.o(99886);
       return;
-      if (!paramb.dSs()) {
-        if (this.Asy >= 2) {
+      if (!paramb.dVQ()) {
+        if (this.AJM >= 2) {
           break label199;
         }
       }
@@ -110,8 +110,8 @@ public class SnsAlbumUI
         if (paramInt == 0) {
           break label202;
         }
-        this.Asy += 1;
-        this.Apm.b(10, this.lEN, true, this.AkB);
+        this.AJM += 1;
+        this.AGz.b(10, this.lJm, true, this.ABN);
         break;
       }
     }
@@ -120,28 +120,28 @@ public class SnsAlbumUI
   public final void b(String paramString, boolean paramBoolean, int paramInt, com.tencent.mm.plugin.sns.b.b paramb)
   {
     AppMethodBeat.i(99887);
-    ag.cVf().removeCallbacks(this.ApD);
-    if ((this.Akz.equals(this.lEN)) && (paramb.dSw() != 0L))
+    ah.cXK().removeCallbacks(this.AGQ);
+    if ((this.ABL.equals(this.lJm)) && (paramb.dVU() != 0L))
     {
-      g.ajD();
-      g.ajC().ajl().set(al.a.IxP, Long.valueOf(paramb.dSw()));
-      this.Asx.Ao(paramb.dSw());
+      g.ajS();
+      g.ajR().ajA().set(am.a.ISn, Long.valueOf(paramb.dVU()));
+      this.AJL.AM(paramb.dVU());
     }
-    if (paramb.dSr())
+    if (paramb.dVP())
     {
-      this.Asx.aBa(paramb.dSx());
-      if (this.Asx.getItemCount() > 0)
+      this.AJL.aCr(paramb.dVV());
+      if (this.AJL.getItemCount() > 0)
       {
-        this.Asx.cj(this.Asx.getItemCount() - 1);
+        this.AJL.cj(this.AJL.getItemCount() - 1);
         AppMethodBeat.o(99887);
       }
     }
-    else if (this.Asx != null)
+    else if (this.AJL != null)
     {
-      this.Asx.ArW = paramb.dSt();
-      this.Asx.ArU = paramString;
-      this.Asx.ecx();
-      this.Asx.rT(true);
+      this.AJL.AJk = paramb.dVR();
+      this.AJL.AJi = paramString;
+      this.AJL.ege();
+      this.AJL.sa(true);
     }
     AppMethodBeat.o(99887);
   }
@@ -150,56 +150,56 @@ public class SnsAlbumUI
   {
     AppMethodBeat.i(99883);
     super.dealContentView(paramView);
-    this.Apm = ag.dTU();
-    this.AkB = getActivity().getIntent().getIntExtra("sns_source", 0);
-    this.lEN = getActivity().getIntent().getStringExtra("sns_userName");
-    this.Akz = u.aAm();
-    this.Asx = new a(getContext(), this.lEN, this);
-    this.Asx.Asc = new c.a()
+    this.AGz = ah.dXu();
+    this.ABN = getActivity().getIntent().getIntExtra("sns_source", 0);
+    this.lJm = getActivity().getIntent().getStringExtra("sns_userName");
+    this.ABL = v.aAC();
+    this.AJL = new a(getContext(), this.lJm, this);
+    this.AJL.AJq = new c.a()
     {
       public final void cf(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(99878);
-        ad.i("MicroMsg.SnsAlbumUI", "onClickItem localId=%s, mediaId=%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        ae.i("MicroMsg.SnsAlbumUI", "onClickItem localId=%s, mediaId=%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         SnsAlbumUI.a(SnsAlbumUI.this, paramAnonymousInt, paramAnonymousString);
         AppMethodBeat.o(99878);
       }
     };
-    this.Asv = ((LinearLayout)paramView.findViewById(2131296604));
-    this.Asw = ((LinearLayout)paramView.findViewById(2131296603));
+    this.AJJ = ((LinearLayout)paramView.findViewById(2131296604));
+    this.AJK = ((LinearLayout)paramView.findViewById(2131296603));
     this.anl = ((RecyclerView)paramView.findViewById(2131296606));
-    this.Asw.setOnClickListener(new View.OnClickListener()
+    this.AJK.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99879);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         localObject = new Intent(SnsAlbumUI.this.getActivity(), SnsUserUI.class);
         ((Intent)localObject).putExtra("sns_rpt_scene", 21);
         ((Intent)localObject).putExtra("sns_userName", SnsAlbumUI.b(SnsAlbumUI.this));
         paramAnonymousView = SnsAlbumUI.this.getActivity();
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(99879);
       }
     });
-    this.anl.setAdapter(this.Asx);
+    this.anl.setAdapter(this.AJL);
     paramView = this.anl;
     getContext();
     paramView.setLayoutManager(new LinearLayoutManager());
     this.anl.a(new d()
     {
-      public final void Zt()
+      public final void ZC()
       {
         AppMethodBeat.i(99880);
-        ad.d("MicroMsg.SnsAlbumUI", "onLoadMore");
+        ae.d("MicroMsg.SnsAlbumUI", "onLoadMore");
         SnsAlbumUI.d(SnsAlbumUI.this).b(10, SnsAlbumUI.b(SnsAlbumUI.this), true, SnsAlbumUI.c(SnsAlbumUI.this));
-        ag.cVf().postDelayed(SnsAlbumUI.e(SnsAlbumUI.this), 3000L);
+        ah.cXK().postDelayed(SnsAlbumUI.e(SnsAlbumUI.this), 3000L);
         AppMethodBeat.o(99880);
       }
     });
@@ -210,7 +210,7 @@ public class SnsAlbumUI
         AppMethodBeat.i(99881);
         if (SnsAlbumUI.f(SnsAlbumUI.this))
         {
-          ad.w("MicroMsg.SnsAlbumUI", "too fast that it finish");
+          ae.w("MicroMsg.SnsAlbumUI", "too fast that it finish");
           AppMethodBeat.o(99881);
           return;
         }
@@ -222,33 +222,33 @@ public class SnsAlbumUI
     AppMethodBeat.o(99883);
   }
   
-  public final void gb(List<a.b> paramList)
+  public int getLayoutId()
+  {
+    return 2131495525;
+  }
+  
+  public final void gk(List<a.b> paramList)
   {
     AppMethodBeat.i(99889);
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.anl.setVisibility(0);
-      this.Asv.setVisibility(8);
+      this.AJJ.setVisibility(8);
       AppMethodBeat.o(99889);
       return;
     }
     this.anl.setVisibility(8);
-    this.Asv.setVisibility(0);
+    this.AJJ.setVisibility(0);
     AppMethodBeat.o(99889);
-  }
-  
-  public int getLayoutId()
-  {
-    return 2131495525;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(99890);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.d("MicroMsg.SnsAlbumUI", "onActivityResult result=%s request=%s intent=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramIntent });
+    ae.d("MicroMsg.SnsAlbumUI", "onActivityResult result=%s request=%s intent=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramIntent });
     if ((paramInt1 == 8) && (paramIntent != null) && (paramIntent.getParcelableExtra("sns_cmd_list") != null) && ((paramIntent.getParcelableExtra("sns_cmd_list") instanceof SnsCmdList))) {
-      paramIntent = ((SnsCmdList)paramIntent.getParcelableExtra("sns_cmd_list")).zdl.iterator();
+      paramIntent = ((SnsCmdList)paramIntent.getParcelableExtra("sns_cmd_list")).zub.iterator();
     }
     label133:
     label423:
@@ -259,7 +259,7 @@ public class SnsAlbumUI
       if (paramIntent.hasNext())
       {
         int n = ((Integer)paramIntent.next()).intValue();
-        locala = this.Asx;
+        locala = this.AJL;
         Object localObject = this.anl;
         paramInt1 = 0;
         label201:
@@ -268,13 +268,13 @@ public class SnsAlbumUI
         label240:
         int k;
         int m;
-        if (paramInt1 < locala.ArT.size())
+        if (paramInt1 < locala.AJh.size())
         {
-          Iterator localIterator = ((a.b)locala.ArT.get(paramInt1)).Asf.iterator();
+          Iterator localIterator = ((a.b)locala.AJh.get(paramInt1)).AJt.iterator();
           for (;;)
           {
             if (localIterator.hasNext()) {
-              if (n == ((p)localIterator.next()).zMC)
+              if (n == ((p)localIterator.next()).AdJ)
               {
                 paramInt2 = paramInt1;
                 if (paramInt2 == -1) {
@@ -288,12 +288,12 @@ public class SnsAlbumUI
                 j = -1;
                 i = 1;
                 paramInt1 = 0;
-                if (paramInt1 >= ((c)localObject).Asp.size()) {
+                if (paramInt1 >= ((c)localObject).AJD.size()) {
                   break label337;
                 }
                 k = j;
                 m = i;
-                if (((a.d)((c)localObject).Asp.get(paramInt1)).dJd == n)
+                if (((a.d)((c)localObject).AJD.get(paramInt1)).dKr == n)
                 {
                   if (j != -1) {
                     break label324;
@@ -328,10 +328,10 @@ public class SnsAlbumUI
         paramInt1 = 0;
         while (paramInt1 < i)
         {
-          ((c)localObject).Asp.remove(j);
+          ((c)localObject).AJD.remove(j);
           paramInt1 += 1;
         }
-        paramInt1 = ((c)localObject).Asp.size();
+        paramInt1 = ((c)localObject).AJD.size();
         ((c)localObject).as(j, i);
       }
       for (;;)
@@ -339,7 +339,7 @@ public class SnsAlbumUI
         if (paramInt1 > 0) {
           break label426;
         }
-        locala.ArT.remove(paramInt2);
+        locala.AJh.remove(paramInt2);
         locala.cl(paramInt2);
         break;
         AppMethodBeat.o(99890);
@@ -373,11 +373,11 @@ public class SnsAlbumUI
   {
     AppMethodBeat.i(99888);
     super.onDestroy();
-    this.Aku = true;
-    ag.cVf().removeCallbacks(this.ApD);
-    g.ajD();
-    if ((g.ajA().aiK()) && (this.Apm != null)) {
-      this.Apm.a(this, 10);
+    this.ABG = true;
+    ah.cXK().removeCallbacks(this.AGQ);
+    g.ajS();
+    if ((g.ajP().aiZ()) && (this.AGz != null)) {
+      this.AGz.a(this, 10);
     }
     AppMethodBeat.o(99888);
   }
@@ -385,7 +385,7 @@ public class SnsAlbumUI
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     AppMethodBeat.i(99885);
-    ad.d("MicroMsg.SnsAlbumUI", "onViewCreated");
+    ae.d("MicroMsg.SnsAlbumUI", "onViewCreated");
     super.onViewCreated(paramView, paramBundle);
     AppMethodBeat.o(99885);
   }

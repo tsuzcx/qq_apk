@@ -5,25 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  b EsV;
-  WebViewSmileyPanel.a EsW;
-  Context nhZ;
-  boolean nip = false;
-  int nit;
-  int niu;
+  private b ELp;
+  WebViewSmileyPanel.a ELq;
+  int nnB;
+  int nnC;
+  Context nnh;
+  boolean nnx = false;
   
-  public final a eVO()
+  public final a eZA()
   {
     AppMethodBeat.i(82355);
-    if (this.EsV == null)
+    if (this.ELp == null)
     {
-      this.EsV = new b();
-      this.EsV.nhZ = this.nhZ;
-      this.EsV.setPanelManager(this);
+      this.ELp = new b();
+      this.ELp.nnh = this.nnh;
+      this.ELp.setPanelManager(this);
     }
-    b localb = this.EsV;
+    b localb = this.ELp;
     AppMethodBeat.o(82355);
     return localb;
+  }
+  
+  public final void onDestroy()
+  {
+    this.ELp = null;
+    this.nnh = null;
   }
 }
 

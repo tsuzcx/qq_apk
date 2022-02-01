@@ -11,13 +11,13 @@ public final class a
 {
   public int breakStrategy = -1;
   public int fontStyle = -1;
-  public int gFD = -1;
-  public Layout.Alignment gFb = Layout.Alignment.ALIGN_NORMAL;
-  public TextUtils.TruncateAt gFc = null;
-  public TextDirectionHeuristic gFe = null;
-  public float gFf = 0.0F;
-  public float gFg = 1.0F;
-  public boolean gFh = false;
+  public Layout.Alignment gHI = Layout.Alignment.ALIGN_NORMAL;
+  public TextUtils.TruncateAt gHJ = null;
+  public TextDirectionHeuristic gHL = null;
+  public float gHM = 0.0F;
+  public float gHN = 1.0F;
+  public boolean gHO = false;
+  public int gIk = -1;
   public int gravity = 51;
   public TextPaint iU = null;
   public int linkColor = -1;
@@ -36,18 +36,18 @@ public final class a
     if (this.iU != null) {
       i = j + this.iU.hashCode() * 31;
     }
-    j = i + this.gFb.hashCode() * 31;
+    j = i + this.gHI.hashCode() * 31;
     i = j;
-    if (this.gFc != null) {
-      i = j + this.gFc.hashCode() * 31;
+    if (this.gHJ != null) {
+      i = j + this.gHJ.hashCode() * 31;
     }
-    j = i + this.gravity * 31 + this.gFD * 31;
+    j = i + this.gravity * 31 + this.gIk * 31;
     i = j;
-    if (this.gFe != null) {
-      i = j + this.gFe.hashCode() * 31;
+    if (this.gHL != null) {
+      i = j + this.gHL.hashCode() * 31;
     }
-    j = (int)((int)(i + this.gFf * 31.0F) + this.gFg * 31.0F);
-    if (this.gFh) {}
+    j = (int)((int)(i + this.gHM * 31.0F) + this.gHN * 31.0F);
+    if (this.gHO) {}
     for (i = 1;; i = 0)
     {
       j = i * 31 + j;
@@ -71,13 +71,13 @@ public final class a
     ((StringBuilder)localObject).append(String.format("maxLines: %d ", new Object[] { Integer.valueOf(this.maxLines) }));
     ((StringBuilder)localObject).append(String.format("maxLength: %d ", new Object[] { Integer.valueOf(this.maxLength) }));
     ((StringBuilder)localObject).append(String.format("textPaint: %s ", new Object[] { this.iU }));
-    ((StringBuilder)localObject).append(String.format("alignment: %s ", new Object[] { this.gFb }));
-    ((StringBuilder)localObject).append(String.format("ellipsize: %s ", new Object[] { this.gFc }));
+    ((StringBuilder)localObject).append(String.format("alignment: %s ", new Object[] { this.gHI }));
+    ((StringBuilder)localObject).append(String.format("ellipsize: %s ", new Object[] { this.gHJ }));
     ((StringBuilder)localObject).append(String.format("gravity: %s ", new Object[] { Integer.valueOf(this.gravity) }));
-    ((StringBuilder)localObject).append(String.format("ellipsizeWidth: %s ", new Object[] { Integer.valueOf(this.gFD) }));
-    ((StringBuilder)localObject).append(String.format("textDirection: %s ", new Object[] { this.gFe }));
-    ((StringBuilder)localObject).append(String.format("spacingAdd: %s spacingMult: %s ", new Object[] { Float.valueOf(this.gFf), Float.valueOf(this.gFg) }));
-    ((StringBuilder)localObject).append(String.format("includedPad: %b ", new Object[] { Boolean.valueOf(this.gFh) }));
+    ((StringBuilder)localObject).append(String.format("ellipsizeWidth: %s ", new Object[] { Integer.valueOf(this.gIk) }));
+    ((StringBuilder)localObject).append(String.format("textDirection: %s ", new Object[] { this.gHL }));
+    ((StringBuilder)localObject).append(String.format("spacingAdd: %s spacingMult: %s ", new Object[] { Float.valueOf(this.gHM), Float.valueOf(this.gHN) }));
+    ((StringBuilder)localObject).append(String.format("includedPad: %b ", new Object[] { Boolean.valueOf(this.gHO) }));
     ((StringBuilder)localObject).append(String.format("typeface: %s ", new Object[] { this.sx }));
     ((StringBuilder)localObject).append(String.format("fontStyle: %d ", new Object[] { Integer.valueOf(this.fontStyle) }));
     ((StringBuilder)localObject).append(String.format("textSize: %s ", new Object[] { Float.valueOf(this.textSize) }));
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.ball.d;
 
-import d.l;
-
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ball/listener/OnMeasuredListener;", "", "onMeasure", "", "widthMeasureSpec", "", "heightMeasureSpec", "plugin-ball_release"})
 public abstract interface e
 {
-  public abstract void bKn();
+  public abstract int aS(float paramFloat);
+  
+  public abstract void setFloatBallAlpha(float paramFloat);
 }
 
 

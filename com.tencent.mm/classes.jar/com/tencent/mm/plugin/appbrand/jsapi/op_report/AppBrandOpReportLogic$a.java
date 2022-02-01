@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.h;
 
 public final class AppBrandOpReportLogic$a
 {
-  private static boolean laE = false;
+  private static boolean lem = false;
   
   /* Error */
   public static void d(h paramh)
@@ -17,7 +17,7 @@ public final class AppBrandOpReportLogic$a
     //   2: monitorenter
     //   3: ldc 19
     //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 15	com/tencent/mm/plugin/appbrand/jsapi/op_report/AppBrandOpReportLogic$a:laE	Z
+    //   8: getstatic 15	com/tencent/mm/plugin/appbrand/jsapi/op_report/AppBrandOpReportLogic$a:lem	Z
     //   11: ifeq +12 -> 23
     //   14: ldc 19
     //   16: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -32,7 +32,7 @@ public final class AppBrandOpReportLogic$a
     //   34: invokespecial 37	com/tencent/mm/plugin/appbrand/jsapi/op_report/AppBrandOpReportLogic$a$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/h;)V
     //   37: invokestatic 42	com/tencent/mm/plugin/appbrand/ipc/MMToClientEvent:a	(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/ipc/MMToClientEvent$c;)V
     //   40: iconst_1
-    //   41: putstatic 15	com/tencent/mm/plugin/appbrand/jsapi/op_report/AppBrandOpReportLogic$a:laE	Z
+    //   41: putstatic 15	com/tencent/mm/plugin/appbrand/jsapi/op_report/AppBrandOpReportLogic$a:lem	Z
     //   44: ldc 19
     //   46: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -30 -> 19

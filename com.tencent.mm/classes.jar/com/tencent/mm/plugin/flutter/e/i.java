@@ -9,48 +9,48 @@ final class i
   implements d.a
 {
   private boolean done;
-  private ArrayList<Object> tjA;
-  private d.a tjz;
+  private d.a tur;
+  private ArrayList<Object> tus;
   
   i()
   {
     AppMethodBeat.i(148927);
-    this.tjA = new ArrayList();
+    this.tus = new ArrayList();
     this.done = false;
     AppMethodBeat.o(148927);
   }
   
-  private void cQw()
+  private void cTb()
   {
     AppMethodBeat.i(148933);
-    if (this.tjz == null)
+    if (this.tur == null)
     {
       AppMethodBeat.o(148933);
       return;
     }
-    Iterator localIterator = this.tjA.iterator();
+    Iterator localIterator = this.tus.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if ((localObject instanceof a))
+      if ((localObject instanceof i.a))
       {
-        this.tjz.cQv();
+        this.tur.cTa();
       }
       else if ((localObject instanceof b))
       {
         localObject = (b)localObject;
-        this.tjz.f(((b)localObject).code, ((b)localObject).message, ((b)localObject).tjB);
+        this.tur.f(((b)localObject).code, ((b)localObject).message, ((b)localObject).tut);
       }
       else
       {
-        this.tjz.de(localObject);
+        this.tur.df(localObject);
       }
     }
-    this.tjA.clear();
+    this.tus.clear();
     AppMethodBeat.o(148933);
   }
   
-  private void df(Object paramObject)
+  private void dg(Object paramObject)
   {
     AppMethodBeat.i(148932);
     if (this.done)
@@ -58,62 +58,60 @@ final class i
       AppMethodBeat.o(148932);
       return;
     }
-    this.tjA.add(paramObject);
+    this.tus.add(paramObject);
     AppMethodBeat.o(148932);
   }
   
   public final void b(d.a parama)
   {
     AppMethodBeat.i(148928);
-    this.tjz = parama;
-    cQw();
+    this.tur = parama;
+    cTb();
     AppMethodBeat.o(148928);
   }
   
-  public final void cQv()
+  public final void cTa()
   {
     AppMethodBeat.i(148929);
-    df(new a((byte)0));
-    cQw();
+    dg(new i.a((byte)0));
+    cTb();
     this.done = true;
     AppMethodBeat.o(148929);
   }
   
-  public final void de(Object paramObject)
+  public final void df(Object paramObject)
   {
     AppMethodBeat.i(148931);
-    df(paramObject);
-    cQw();
+    dg(paramObject);
+    cTb();
     AppMethodBeat.o(148931);
   }
   
   public final void f(String paramString1, String paramString2, Object paramObject)
   {
     AppMethodBeat.i(148930);
-    df(new b(paramString1, paramString2, paramObject));
-    cQw();
+    dg(new b(paramString1, paramString2, paramObject));
+    cTb();
     AppMethodBeat.o(148930);
   }
-  
-  static final class a {}
   
   static final class b
   {
     String code;
     String message;
-    Object tjB;
+    Object tut;
     
     b(String paramString1, String paramString2, Object paramObject)
     {
       this.code = paramString1;
       this.message = paramString2;
-      this.tjB = paramObject;
+      this.tut = paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.e.i
  * JD-Core Version:    0.7.0.1
  */

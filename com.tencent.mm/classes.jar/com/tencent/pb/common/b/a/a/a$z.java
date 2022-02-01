@@ -6,7 +6,7 @@ import com.google.b.a.e;
 public final class a$z
   extends e
 {
-  public String LFV = "";
+  public String McZ = "";
   
   public a$z()
   {
@@ -15,8 +15,8 @@ public final class a$z
   
   public final void a(b paramb)
   {
-    if (!this.LFV.equals("")) {
-      paramb.d(1, this.LFV);
+    if (!this.McZ.equals("")) {
+      paramb.d(1, this.McZ);
     }
     super.a(paramb);
   }
@@ -25,8 +25,8 @@ public final class a$z
   {
     int j = super.zq();
     int i = j;
-    if (!this.LFV.equals("")) {
-      i = j + b.e(1, this.LFV);
+    if (!this.McZ.equals("")) {
+      i = j + b.e(1, this.McZ);
     }
     return i;
   }

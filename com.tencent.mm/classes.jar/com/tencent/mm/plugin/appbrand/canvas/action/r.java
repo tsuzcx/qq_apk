@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontFamilyActionArg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -19,8 +19,8 @@ public final class r
     AppMethodBeat.i(144919);
     if (!TextUtils.isEmpty(paramString))
     {
-      paramd.jSY.MQ(paramString);
-      paramd.jSZ.MQ(paramString);
+      paramd.jWp.Nx(paramString);
+      paramd.jWq.Nx(paramString);
       AppMethodBeat.o(144919);
       return true;
     }
@@ -59,13 +59,13 @@ public final class r
     }
     catch (JSONException paramd)
     {
-      ad.i("MicroMsg.SetFontFamily", "get 'fontFamily' error.");
+      ae.i("MicroMsg.SetFontFamily", "get 'fontFamily' error.");
       AppMethodBeat.o(144918);
     }
     return false;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144917);
     SetFontFamilyActionArg localSetFontFamilyActionArg = new SetFontFamilyActionArg();

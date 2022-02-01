@@ -9,7 +9,7 @@ public class NfcAID
   implements Parcelable
 {
   public static final Parcelable.Creator<NfcAID> CREATOR;
-  public String EOp;
+  public String FgL;
   public String mURL;
   
   static
@@ -22,9 +22,9 @@ public class NfcAID
   public NfcAID(Parcel paramParcel)
   {
     AppMethodBeat.i(31136);
-    this.EOp = null;
+    this.FgL = null;
     this.mURL = null;
-    this.EOp = paramParcel.readString();
+    this.FgL = paramParcel.readString();
     this.mURL = paramParcel.readString();
     AppMethodBeat.o(31136);
   }
@@ -37,14 +37,14 @@ public class NfcAID
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(31137);
-    paramParcel.writeString(this.EOp);
+    paramParcel.writeString(this.FgL);
     paramParcel.writeString(this.mURL);
     AppMethodBeat.o(31137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.nfc.NfcAID
  * JD-Core Version:    0.7.0.1
  */

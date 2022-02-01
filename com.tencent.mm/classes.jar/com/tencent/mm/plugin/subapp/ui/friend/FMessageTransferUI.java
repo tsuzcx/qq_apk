@@ -4,19 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bk.d;
+import com.tencent.mm.bj.d;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bh;
 import com.tencent.mm.ui.MMActivity;
 
 @i
 public class FMessageTransferUI
   extends MMActivity
 {
-  private int cVT;
+  private int cWQ;
   
   public int getLayoutId()
   {
@@ -28,15 +28,15 @@ public class FMessageTransferUI
     AppMethodBeat.i(29053);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("friend_message_transfer_username");
-    if (bt.isNullOrNil(paramBundle)) {
+    if (bu.isNullOrNil(paramBundle)) {
       finish();
     }
-    d.aMo().aTT(paramBundle);
-    d.aMo().frl();
+    d.aMM().aVu(paramBundle);
+    d.aMM().fvl();
     String str1 = getIntent().getAction();
     String str2 = "friend_message_accept_".concat(String.valueOf(paramBundle));
-    this.cVT = (0x7F000000 | 0x7FFFFFFF & paramBundle.hashCode());
-    ba.getNotification().cancel(this.cVT);
+    this.cWQ = (0x7F000000 | 0x7FFFFFFF & paramBundle.hashCode());
+    bc.getNotification().cancel(this.cWQ);
     if (str2.equals(str1)) {
       a.h(getContext(), paramBundle, true);
     }

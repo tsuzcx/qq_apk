@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface o$c$a
 {
-  public abstract String eKC();
+  public abstract String eOk();
   
-  public abstract void eKD();
+  public abstract void eOl();
   
-  public abstract boolean eKE();
+  public abstract boolean eOm();
 }
 
 

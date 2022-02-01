@@ -23,61 +23,61 @@ import com.tencent.mm.plugin.story.ui.view.StoryMsgInputView;
 import com.tencent.mm.plugin.story.ui.view.StoryMsgView;
 import com.tencent.mm.plugin.vlog.ui.preview.VLogFakeVideoView;
 import com.tencent.mm.plugin.vlog.ui.preview.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.ar;
 import d.g.b.p;
 import java.util.LinkedHashMap;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "commentView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "getCommentView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "imageVideoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryImageVideoViewMgr;", "msgView", "Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "getMsgView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "params", "Landroid/view/ViewGroup$LayoutParams;", "position", "getPosition", "()I", "setPosition", "(I)V", "postTipView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "getPostTipView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "setPostTipView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;)V", "thumbView", "Landroid/widget/ImageView;", "getThumbView", "()Landroid/widget/ImageView;", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getVideoItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "setVideoItem", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;)V", "videoParams", "Landroid/widget/FrameLayout$LayoutParams;", "videoViewContainer", "Landroid/view/ViewGroup;", "videoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "vlogFakeVideoViewMgr", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr;", "changeVideoItem", "", "item", "checkVisitEnable", "getPlayStatus", "", "initPostTipView", "onActiveItem", "onBackPressed", "onDestroy", "onDetachedFromWindow", "onPause", "onResume", "onUnactiveItem", "postVisit", "reBindBitmap", "resetLastView", "setImageVideoViewMgr", "setMute", "isMute", "setVLogFakeVideoViewMgr", "setVideoViewMgr", "setupCurView", "onMsgPanelStateCallback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "state", "index", "isSelf", "onPageSelectedCallback", "Lkotlin/Function2;", "stateChangeCallback", "Lkotlin/Function1;", "outClickListener", "Lkotlin/Function0;", "sessionId", "switchImageMode", "switchVideoMode", "toggleActiveState", "newActive", "updateCommentId", "success", "storyId", "", "plugin-story_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "commentView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "getCommentView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "imageVideoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryImageVideoViewMgr;", "msgView", "Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "getMsgView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "params", "Landroid/view/ViewGroup$LayoutParams;", "position", "getPosition", "()I", "setPosition", "(I)V", "postTipView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "getPostTipView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "setPostTipView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;)V", "thumbView", "Landroid/widget/ImageView;", "getThumbView", "()Landroid/widget/ImageView;", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getVideoItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "setVideoItem", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;)V", "videoParams", "Landroid/widget/FrameLayout$LayoutParams;", "videoViewContainer", "Landroid/view/ViewGroup;", "videoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "vlogFakeVideoViewMgr", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr;", "changeVideoItem", "", "item", "checkVisitEnable", "getPlayStatus", "", "initPostTipView", "onActiveItem", "onBackPressed", "onDestroy", "onDetachedFromWindow", "onPause", "onResume", "onUnactiveItem", "postVisit", "reBindBitmap", "resetLastView", "setImageVideoViewMgr", "setMute", "isMute", "setVLogFakeVideoViewMgr", "setVideoViewMgr", "setupCurView", "onMsgPanelStateCallback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "state", "index", "isSelf", "onPageSelectedCallback", "Lkotlin/Function2;", "stateChangeCallback", "Lkotlin/Function1;", "outClickListener", "Lkotlin/Function0;", "sessionId", "switchImageMode", "switchVideoMode", "toggleActiveState", "newActive", "updateCommentId", "success", "storyId", "", "plugin-story_release"})
 public final class StoryGalleryItemView
   extends RelativeLayout
 {
-  j AMA;
-  final StoryCommentView AVS;
-  final StoryMsgView AVT;
-  private StoryGalleryPostTip AVU;
-  ViewGroup BdR;
-  final FrameLayout.LayoutParams BdS;
-  n BdT;
-  l BdU;
-  a BdV;
+  j Bec;
+  final StoryCommentView Bnq;
+  final StoryMsgView Bnr;
+  private StoryGalleryPostTip Bns;
+  ViewGroup Bvp;
+  final FrameLayout.LayoutParams Bvq;
+  n Bvr;
+  l Bvs;
+  a Bvt;
   final String TAG;
   int position;
-  final ImageView rAT;
-  private final ViewGroup.LayoutParams vUi;
+  final ImageView rJe;
+  private final ViewGroup.LayoutParams wgm;
   
   public StoryGalleryItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120412);
     this.TAG = "MircoMsg.StoryGalleryItemView";
-    this.vUi = new ViewGroup.LayoutParams(-1, -1);
-    this.BdS = new FrameLayout.LayoutParams(-1, -1);
+    this.wgm = new ViewGroup.LayoutParams(-1, -1);
+    this.Bvq = new FrameLayout.LayoutParams(-1, -1);
     setBackgroundColor(-16777216);
-    this.BdR = ((ViewGroup)new FrameLayout(paramContext));
-    this.rAT = new ImageView(paramContext);
-    this.rAT.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    addView((View)this.rAT, this.vUi);
-    addView((View)this.BdR, this.vUi);
-    this.AVS = new StoryCommentView(paramContext);
-    addView((View)this.AVS, this.vUi);
-    this.AVT = new StoryMsgView(paramContext);
-    addView((View)this.AVT, this.vUi);
+    this.Bvp = ((ViewGroup)new FrameLayout(paramContext));
+    this.rJe = new ImageView(paramContext);
+    this.rJe.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    addView((View)this.rJe, this.wgm);
+    addView((View)this.Bvp, this.wgm);
+    this.Bnq = new StoryCommentView(paramContext);
+    addView((View)this.Bnq, this.wgm);
+    this.Bnr = new StoryMsgView(paramContext);
+    addView((View)this.Bnr, this.wgm);
     paramContext = getContext();
     p.g(paramContext, "context");
-    this.AVU = new StoryGalleryPostTip(paramContext);
-    paramContext = new RelativeLayout.LayoutParams(-1, ar.dT(getContext()) + ar.jW(getContext()));
+    this.Bns = new StoryGalleryPostTip(paramContext);
+    paramContext = new RelativeLayout.LayoutParams(-1, ar.dX(getContext()) + ar.kd(getContext()));
     paramContext.addRule(10);
-    addView((View)this.AVU, (ViewGroup.LayoutParams)paramContext);
-    if (e.AIM.egX())
+    addView((View)this.Bns, (ViewGroup.LayoutParams)paramContext);
+    if (e.Bap.ekF())
     {
-      this.AVT.setVisibility(0);
-      this.AVS.setVisibility(8);
+      this.Bnr.setVisibility(0);
+      this.Bnq.setVisibility(8);
       AppMethodBeat.o(120412);
       return;
     }
-    this.AVT.setVisibility(8);
-    this.AVS.setVisibility(0);
+    this.Bnr.setVisibility(8);
+    this.Bnq.setVisibility(0);
     AppMethodBeat.o(120412);
   }
   
@@ -86,15 +86,15 @@ public final class StoryGalleryItemView
     AppMethodBeat.i(120401);
     if (paramj != null)
     {
-      if (paramj.eiO())
+      if (paramj.emw())
       {
-        localObject = this.BdU;
+        localObject = this.Bvs;
         if (localObject != null)
         {
           p.h(paramj, "item");
-          if (((l)localObject).BeW != null)
+          if (((l)localObject).Bwu != null)
           {
-            paramj = ((l)localObject).BeW;
+            paramj = ((l)localObject).Bwu;
             if (paramj != null) {
               paramj.isPlaying();
             }
@@ -103,12 +103,12 @@ public final class StoryGalleryItemView
         AppMethodBeat.o(120401);
         return false;
       }
-      if (paramj.eiP())
+      if (paramj.emx())
       {
-        paramj = this.BdV;
-        if ((paramj != null) && (paramj.BTH != null))
+        paramj = this.Bvt;
+        if ((paramj != null) && (paramj.Cli != null))
         {
-          paramj = paramj.BTH;
+          paramj = paramj.Cli;
           if (paramj != null) {
             paramj.isPlaying();
           }
@@ -116,13 +116,13 @@ public final class StoryGalleryItemView
         AppMethodBeat.o(120401);
         return false;
       }
-      Object localObject = this.BdT;
+      Object localObject = this.Bvr;
       if (localObject != null)
       {
         p.h(paramj, "item");
-        if (((n)localObject).BfT != null)
+        if (((n)localObject).Bxr != null)
         {
-          paramj = ((n)localObject).BfT;
+          paramj = ((n)localObject).Bxr;
           if (paramj != null) {
             paramj.isPlaying();
           }
@@ -135,39 +135,39 @@ public final class StoryGalleryItemView
     return false;
   }
   
-  public final void ema()
+  public final void epJ()
   {
     AppMethodBeat.i(120408);
-    if (e.AIM.egX()) {
-      this.AVT.ema();
+    if (e.Bap.ekF()) {
+      this.Bnr.epJ();
     }
     AppMethodBeat.o(120408);
   }
   
-  public final void emg()
+  public final void epP()
   {
     AppMethodBeat.i(120403);
-    ad.i(this.TAG, "switchVideoMode");
-    Object localObject1 = this.AMA;
+    ae.i(this.TAG, "switchVideoMode");
+    Object localObject1 = this.Bec;
     Object localObject2;
     boolean bool;
     if (localObject1 != null)
     {
-      if (!((j)localObject1).eiO()) {
+      if (!((j)localObject1).emw()) {
         break label241;
       }
-      localObject2 = this.BdT;
+      localObject2 = this.Bvr;
       if (localObject2 == null) {
         break label226;
       }
-      bool = ((n)localObject2).Bfb;
+      bool = ((n)localObject2).Bwz;
       if (!bool)
       {
-        localObject2 = this.BdV;
+        localObject2 = this.Bvt;
         if (localObject2 == null) {
           break label231;
         }
-        bool = ((a)localObject2).Bfb;
+        bool = ((a)localObject2).Bwz;
         label64:
         if (!bool) {
           break label236;
@@ -175,40 +175,40 @@ public final class StoryGalleryItemView
       }
       bool = true;
       label70:
-      localObject2 = this.BdT;
+      localObject2 = this.Bvr;
       if (localObject2 != null) {
-        ((n)localObject2).ap(true, false);
+        ((n)localObject2).ao(true, false);
       }
-      localObject2 = this.BdV;
+      localObject2 = this.Bvt;
       if (localObject2 != null) {
-        ((a)localObject2).sA(true);
+        ((a)localObject2).sH(true);
       }
-      localObject2 = this.BdU;
+      localObject2 = this.Bvs;
       if (localObject2 != null) {
-        ((l)localObject2).a(this.BdR, (ViewGroup.LayoutParams)this.BdS);
+        ((l)localObject2).a(this.Bvp, (ViewGroup.LayoutParams)this.Bvq);
       }
-      localObject2 = this.BdU;
+      localObject2 = this.Bvs;
       if (localObject2 != null) {
         ((l)localObject2).a((j)localObject1, bool);
       }
     }
-    this.BdR.setVisibility(0);
-    if (e.AIM.egX())
+    this.Bvp.setVisibility(0);
+    if (e.Bap.ekF())
     {
-      this.AVT.setVisibility(0);
-      this.AVS.setVisibility(8);
-      this.AVT.show();
+      this.Bnr.setVisibility(0);
+      this.Bnq.setVisibility(8);
+      this.Bnr.show();
     }
     for (;;)
     {
-      localObject1 = this.AMA;
+      localObject1 = this.Bec;
       if (localObject1 == null) {
         break label532;
       }
-      localObject2 = com.tencent.mm.plugin.story.h.c.ARR;
-      com.tencent.mm.plugin.story.h.c.bp(((j)localObject1).username, ((j)localObject1).dKt);
-      localObject2 = b.ARx;
-      b.n(((j)localObject1).username, ((j)localObject1).dKt, -1);
+      localObject2 = com.tencent.mm.plugin.story.h.c.Bjp;
+      com.tencent.mm.plugin.story.h.c.bq(((j)localObject1).username, ((j)localObject1).dLI);
+      localObject2 = b.BiV;
+      b.n(((j)localObject1).username, ((j)localObject1).dLI, -1);
       AppMethodBeat.o(120403);
       return;
       label226:
@@ -221,19 +221,19 @@ public final class StoryGalleryItemView
       bool = false;
       break label70;
       label241:
-      if (((j)localObject1).eiP())
+      if (((j)localObject1).emx())
       {
-        localObject2 = this.BdT;
+        localObject2 = this.Bvr;
         if (localObject2 != null)
         {
-          bool = ((n)localObject2).Bfb;
+          bool = ((n)localObject2).Bwz;
           if (!bool)
           {
-            localObject2 = this.BdU;
+            localObject2 = this.Bvs;
             if (localObject2 == null) {
               break label365;
             }
-            bool = ((l)localObject2).Bfb;
+            bool = ((l)localObject2).Bwz;
             if (!bool) {
               break label370;
             }
@@ -242,23 +242,23 @@ public final class StoryGalleryItemView
         label370:
         for (bool = true;; bool = false)
         {
-          localObject2 = this.BdT;
+          localObject2 = this.Bvr;
           if (localObject2 != null) {
-            ((n)localObject2).ap(true, false);
+            ((n)localObject2).ao(true, false);
           }
-          localObject2 = this.BdU;
+          localObject2 = this.Bvs;
           if (localObject2 != null) {
-            ((l)localObject2).sA(true);
+            ((l)localObject2).sH(true);
           }
-          localObject2 = this.BdV;
+          localObject2 = this.Bvt;
           if (localObject2 != null) {
-            ((a)localObject2).a(this.BdR, (ViewGroup.LayoutParams)this.BdS);
+            ((a)localObject2).a(this.Bvp, (ViewGroup.LayoutParams)this.Bvq);
           }
-          localObject2 = this.BdV;
+          localObject2 = this.Bvt;
           if (localObject2 == null) {
             break;
           }
-          ((a)localObject2).a(((j)localObject1).AML, bool);
+          ((a)localObject2).a(((j)localObject1).Ben, bool);
           break;
           bool = false;
           break label262;
@@ -269,18 +269,18 @@ public final class StoryGalleryItemView
       label262:
       label280:
       label365:
-      localObject2 = this.BdU;
+      localObject2 = this.Bvs;
       if (localObject2 != null)
       {
-        bool = ((l)localObject2).Bfb;
+        bool = ((l)localObject2).Bwz;
         label389:
         if (!bool)
         {
-          localObject2 = this.BdV;
+          localObject2 = this.Bvt;
           if (localObject2 == null) {
             break label488;
           }
-          bool = ((a)localObject2).Bfb;
+          bool = ((a)localObject2).Bwz;
           label407:
           if (!bool) {
             break label493;
@@ -291,19 +291,19 @@ public final class StoryGalleryItemView
       label493:
       for (bool = true;; bool = false)
       {
-        localObject2 = this.BdU;
+        localObject2 = this.Bvs;
         if (localObject2 != null) {
-          ((l)localObject2).sA(true);
+          ((l)localObject2).sH(true);
         }
-        localObject2 = this.BdV;
+        localObject2 = this.Bvt;
         if (localObject2 != null) {
-          ((a)localObject2).sA(true);
+          ((a)localObject2).sH(true);
         }
-        localObject2 = this.BdT;
+        localObject2 = this.Bvr;
         if (localObject2 != null) {
-          ((n)localObject2).a(this.BdR, (ViewGroup.LayoutParams)this.BdS);
+          ((n)localObject2).a(this.Bvp, (ViewGroup.LayoutParams)this.Bvq);
         }
-        localObject2 = this.BdT;
+        localObject2 = this.Bvr;
         if (localObject2 == null) {
           break;
         }
@@ -314,9 +314,9 @@ public final class StoryGalleryItemView
         bool = false;
         break label407;
       }
-      this.AVT.setVisibility(8);
-      this.AVS.setVisibility(0);
-      localObject1 = this.AVS;
+      this.Bnr.setVisibility(8);
+      this.Bnq.setVisibility(0);
+      localObject1 = this.Bnq;
       ((StoryCommentView)localObject1).isActive = true;
       ((StoryCommentView)localObject1).show();
     }
@@ -324,29 +324,29 @@ public final class StoryGalleryItemView
     AppMethodBeat.o(120403);
   }
   
-  public final void emh()
+  public final void epQ()
   {
     AppMethodBeat.i(120409);
-    if (e.AIM.egX())
+    if (e.Bap.ekF())
     {
-      this.AVT.setVisibility(0);
-      this.AVS.setVisibility(8);
+      this.Bnr.setVisibility(0);
+      this.Bnq.setVisibility(8);
       AppMethodBeat.o(120409);
       return;
     }
-    this.AVT.setVisibility(8);
-    this.AVS.setVisibility(0);
+    this.Bnr.setVisibility(8);
+    this.Bnq.setVisibility(0);
     AppMethodBeat.o(120409);
   }
   
   public final StoryCommentView getCommentView()
   {
-    return this.AVS;
+    return this.Bnq;
   }
   
   public final StoryMsgView getMsgView()
   {
-    return this.AVT;
+    return this.Bnr;
   }
   
   public final int getPosition()
@@ -356,7 +356,7 @@ public final class StoryGalleryItemView
   
   public final StoryGalleryPostTip getPostTipView()
   {
-    return this.AVU;
+    return this.Bns;
   }
   
   public final String getTAG()
@@ -366,33 +366,33 @@ public final class StoryGalleryItemView
   
   public final ImageView getThumbView()
   {
-    return this.rAT;
+    return this.rJe;
   }
   
   public final j getVideoItem()
   {
-    return this.AMA;
+    return this.Bec;
   }
   
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(120407);
-    if (e.AIM.egX())
+    if (e.Bap.ekF())
     {
-      localObject = this.AVT;
-      if (((StoryMsgView)localObject).Bbp.getVisibility() == 0)
+      localObject = this.Bnr;
+      if (((StoryMsgView)localObject).BsN.getVisibility() == 0)
       {
-        if (((StoryMsgView)localObject).Bbu.getInputType() != -1) {
-          ((StoryMsgView)localObject).Bbu.elW();
+        if (((StoryMsgView)localObject).BsS.getInputType() != -1) {
+          ((StoryMsgView)localObject).BsS.epF();
         }
         for (;;)
         {
           AppMethodBeat.o(120407);
           return true;
-          if (((StoryMsgView)localObject).Bbu.getVisibility() == 0)
+          if (((StoryMsgView)localObject).BsS.getVisibility() == 0)
           {
-            if (((StoryMsgView)localObject).drv) {
-              ((StoryMsgView)localObject).Bbu.setVisibility(8);
+            if (((StoryMsgView)localObject).dsB) {
+              ((StoryMsgView)localObject).BsS.setVisibility(8);
             } else {
               ((StoryMsgView)localObject).animateClose();
             }
@@ -405,22 +405,22 @@ public final class StoryGalleryItemView
       AppMethodBeat.o(120407);
       return false;
     }
-    Object localObject = this.AVS;
-    if (((StoryCommentView)localObject).hIo == 1)
+    Object localObject = this.Bnq;
+    if (((StoryCommentView)localObject).hLg == 1)
     {
-      ((StoryCommentView)localObject).tK(2);
+      ((StoryCommentView)localObject).tP(2);
       AppMethodBeat.o(120407);
       return true;
     }
-    if (((StoryCommentView)localObject).hIo == 3)
+    if (((StoryCommentView)localObject).hLg == 3)
     {
-      ((StoryCommentView)localObject).tK(2);
+      ((StoryCommentView)localObject).tP(2);
       AppMethodBeat.o(120407);
       return true;
     }
-    if (((StoryCommentView)localObject).hIo == 5)
+    if (((StoryCommentView)localObject).hLg == 5)
     {
-      ((StoryCommentView)localObject).tK(2);
+      ((StoryCommentView)localObject).tP(2);
       AppMethodBeat.o(120407);
       return true;
     }
@@ -431,13 +431,13 @@ public final class StoryGalleryItemView
   public final void onDestroy()
   {
     AppMethodBeat.i(120406);
-    if (!e.AIM.egX())
+    if (!e.Bap.ekF())
     {
-      Object localObject = this.AVS;
-      ((StoryCommentView)localObject).AZR.pause();
-      ((StoryCommentView)localObject).Ban.clear();
-      ((StoryCommentView)localObject).Bag.clear();
-      localObject = ((StoryCommentView)localObject).Bac;
+      Object localObject = this.Bnq;
+      ((StoryCommentView)localObject).Brp.pause();
+      ((StoryCommentView)localObject).BrL.clear();
+      ((StoryCommentView)localObject).BrE.clear();
+      localObject = ((StoryCommentView)localObject).BrA;
       if (localObject != null)
       {
         ((com.tencent.mm.plugin.story.ui.view.c)localObject).dismiss();
@@ -451,22 +451,22 @@ public final class StoryGalleryItemView
   protected final void onDetachedFromWindow()
   {
     AppMethodBeat.i(120411);
-    ad.d(this.TAG, "onDetachedFromWindow");
+    ae.d(this.TAG, "onDetachedFromWindow");
     super.onDetachedFromWindow();
-    this.BdT = null;
-    this.BdU = null;
-    this.BdV = null;
+    this.Bvr = null;
+    this.Bvs = null;
+    this.Bvt = null;
     AppMethodBeat.o(120411);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(120405);
-    if (!e.AIM.egX())
+    if (!e.Bap.ekF())
     {
-      StoryCommentView localStoryCommentView = this.AVS;
-      ad.i(StoryCommentView.TAG, "LogStory: pause");
-      localStoryCommentView.AZR.pause();
+      StoryCommentView localStoryCommentView = this.Bnq;
+      ae.i(StoryCommentView.TAG, "LogStory: pause");
+      localStoryCommentView.Brp.pause();
     }
     AppMethodBeat.o(120405);
   }
@@ -474,42 +474,68 @@ public final class StoryGalleryItemView
   public final void onResume()
   {
     AppMethodBeat.i(120404);
-    if (!e.AIM.egX())
+    if (!e.Bap.ekF())
     {
-      StoryCommentView localStoryCommentView = this.AVS;
-      ad.i(StoryCommentView.TAG, "LogStory: resume");
-      if ((localStoryCommentView.contentView.getVisibility() == 0) && (localStoryCommentView.hIo == 2) && (localStoryCommentView.AZR.dtm)) {
-        localStoryCommentView.AZR.resume();
+      StoryCommentView localStoryCommentView = this.Bnq;
+      ae.i(StoryCommentView.TAG, "LogStory: resume");
+      if ((localStoryCommentView.contentView.getVisibility() == 0) && (localStoryCommentView.hLg == 2) && (localStoryCommentView.Brp.dus)) {
+        localStoryCommentView.Brp.resume();
       }
     }
     AppMethodBeat.o(120404);
   }
   
+  public final void sG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(120410);
+    if (e.Bap.ekF())
+    {
+      localObject = this.Bnr.BsP;
+      if (paramBoolean) {}
+      for (int i = 0;; i = 8)
+      {
+        ((StoryActionView)localObject).setVisibility(i);
+        AppMethodBeat.o(120410);
+        return;
+      }
+    }
+    Object localObject = this.Bnq;
+    ae.i(StoryCommentView.TAG, "toggleActiveState ".concat(String.valueOf(paramBoolean)));
+    if (paramBoolean)
+    {
+      ((StoryCommentView)localObject).show();
+      AppMethodBeat.o(120410);
+      return;
+    }
+    ((StoryCommentView)localObject).hide();
+    AppMethodBeat.o(120410);
+  }
+  
   public final void setImageVideoViewMgr(l paraml)
   {
-    this.BdU = paraml;
+    this.Bvs = paraml;
   }
   
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(120402);
-    Object localObject = this.BdT;
+    Object localObject = this.Bvr;
     if (localObject != null) {
       ((n)localObject).setMute(paramBoolean);
     }
-    localObject = this.BdU;
+    localObject = this.Bvs;
     if (localObject != null)
     {
       p.g("", "if(BuildConfig.DEBUG) Ut…tack().toString() else \"\"");
-      ad.i(((l)localObject).TAG, "setMute " + paramBoolean + " ret " + "");
-      ((l)localObject).fMP = paramBoolean;
+      ae.i(((l)localObject).TAG, "setMute " + paramBoolean + " ret " + "");
+      ((l)localObject).fOX = paramBoolean;
     }
-    localObject = this.BdV;
+    localObject = this.Bvt;
     if (localObject != null)
     {
       p.g("", "if(BuildConfig.DEBUG) Ut…tack().toString() else \"\"");
-      ((a)localObject).fMP = paramBoolean;
-      ad.i("MicroMsg.VLogFakeVideoViewMgr", "setMute " + paramBoolean + " ret " + "");
+      ((a)localObject).fOX = paramBoolean;
+      ae.i("MicroMsg.VLogFakeVideoViewMgr", "setMute " + paramBoolean + " ret " + "");
       AppMethodBeat.o(120402);
       return;
     }
@@ -523,53 +549,27 @@ public final class StoryGalleryItemView
   
   public final void setPostTipView(StoryGalleryPostTip paramStoryGalleryPostTip)
   {
-    this.AVU = paramStoryGalleryPostTip;
+    this.Bns = paramStoryGalleryPostTip;
   }
   
   public final void setVLogFakeVideoViewMgr(a parama)
   {
-    this.BdV = parama;
+    this.Bvt = parama;
   }
   
   public final void setVideoItem(j paramj)
   {
-    this.AMA = paramj;
+    this.Bec = paramj;
   }
   
   public final void setVideoViewMgr(n paramn)
   {
-    this.BdT = paramn;
-  }
-  
-  public final void sz(boolean paramBoolean)
-  {
-    AppMethodBeat.i(120410);
-    if (e.AIM.egX())
-    {
-      localObject = this.AVT.Bbr;
-      if (paramBoolean) {}
-      for (int i = 0;; i = 8)
-      {
-        ((StoryActionView)localObject).setVisibility(i);
-        AppMethodBeat.o(120410);
-        return;
-      }
-    }
-    Object localObject = this.AVS;
-    ad.i(StoryCommentView.TAG, "toggleActiveState ".concat(String.valueOf(paramBoolean)));
-    if (paramBoolean)
-    {
-      ((StoryCommentView)localObject).show();
-      AppMethodBeat.o(120410);
-      return;
-    }
-    ((StoryCommentView)localObject).hide();
-    AppMethodBeat.o(120410);
+    this.Bvr = paramn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryItemView
  * JD-Core Version:    0.7.0.1
  */

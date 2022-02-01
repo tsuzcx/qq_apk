@@ -6,7 +6,7 @@ import com.tencent.smtt.export.external.interfaces.IX5CoreCookieManager;
 import java.lang.reflect.Field;
 
 public class CookieSyncManager
-  extends x
+  extends z
 {
   private static android.webkit.CookieSyncManager a;
   private static CookieSyncManager b;
@@ -71,7 +71,7 @@ public class CookieSyncManager
     {
       Field localField = Class.forName("android.webkit.WebSyncManager").getDeclaredField("mSyncThread");
       localField.setAccessible(true);
-      ((Thread)localField.get(a)).setUncaughtExceptionHandler(new f());
+      ((Thread)localField.get(a)).setUncaughtExceptionHandler(new h());
       AppMethodBeat.o(55018);
       return;
     }

@@ -20,10 +20,10 @@ public final class m
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78708);
-    paramg.ePj().aGY("shareTimeline");
+    paramg.eSV().aIs("shareTimeline");
     paramg.chX.a(new d()
     {
-      public final JSONObject BO()
+      public final JSONObject BP()
       {
         return null;
       }
@@ -33,14 +33,14 @@ public final class m
         return "menu:share:timeline";
       }
     });
-    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 10);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 10);
     AppMethodBeat.o(78708);
   }
   
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78707);
-    if (paramg.HC(23)) {
+    if (paramg.HZ(23)) {
       paraml.a(2, paramContext.getString(2131762164), 2131689817);
     }
     AppMethodBeat.o(78707);

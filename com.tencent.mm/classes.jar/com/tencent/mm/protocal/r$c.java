@@ -2,27 +2,27 @@ package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aiu;
+import com.tencent.mm.protocal.protobuf.aje;
 
 public final class r$c
   extends l.e
   implements l.c
 {
-  public aiu Foo;
+  public aje FGM;
   
   public r$c()
   {
     AppMethodBeat.i(149116);
-    this.Foo = new aiu();
+    this.FGM = new aje();
     AppMethodBeat.o(149116);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149117);
-    this.Foo = ((aiu)new aiu().parseFrom(paramArrayOfByte));
-    l.a(this, this.Foo.getBaseResponse());
-    int i = this.Foo.getBaseResponse().Ret;
+    this.FGM = ((aje)new aje().parseFrom(paramArrayOfByte));
+    l.a(this, this.FGM.getBaseResponse());
+    int i = this.FGM.getBaseResponse().Ret;
     AppMethodBeat.o(149117);
     return i;
   }

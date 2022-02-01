@@ -31,7 +31,7 @@ public class T2BUseCaseCallback
       }
       if ((paramITransmitKvData.getInt("retcode") == 1) && (this.mBean != null) && (this.mBean.getPayInfo() != null))
       {
-        paramITransmitKvData = this.mBean.getPayInfo().htZ;
+        paramITransmitKvData = this.mBean.getPayInfo().hwN;
         if (paramITransmitKvData != null)
         {
           paramITransmitKvData = paramITransmitKvData.getString("key_transfer_bill_id");
@@ -54,7 +54,7 @@ public class T2BUseCaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.T2BUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

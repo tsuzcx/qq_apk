@@ -18,7 +18,7 @@ public final class y
   {
     AppMethodBeat.i(56520);
     if (parama == null) {
-      ajm(2);
+      ajW(2);
     }
     parama = a(null, parama);
     AppMethodBeat.o(56520);
@@ -29,7 +29,7 @@ public final class y
   {
     AppMethodBeat.i(56519);
     if (parama == null) {
-      ajm(1);
+      ajW(1);
     }
     paramT = new a(paramT, parama);
     AppMethodBeat.o(56519);
@@ -39,16 +39,16 @@ public final class y
   public static final class a<T>
     extends y.c<T>
   {
-    private final a<T> MKg;
-    private volatile SoftReference<Object> MOP;
+    private final a<T> Nhj;
+    private volatile SoftReference<Object> NlU;
     
     public a(T paramT, a<T> parama)
     {
       AppMethodBeat.i(56514);
-      this.MOP = null;
-      this.MKg = parama;
+      this.NlU = null;
+      this.Nhj = parama;
       if (paramT != null) {
-        this.MOP = new SoftReference(eX(paramT));
+        this.NlU = new SoftReference(fa(paramT));
       }
       AppMethodBeat.o(56514);
     }
@@ -56,19 +56,19 @@ public final class y
     public final T invoke()
     {
       AppMethodBeat.i(56515);
-      Object localObject = this.MOP;
+      Object localObject = this.NlU;
       if (localObject != null)
       {
         localObject = ((SoftReference)localObject).get();
         if (localObject != null)
         {
-          localObject = eY(localObject);
+          localObject = fb(localObject);
           AppMethodBeat.o(56515);
           return localObject;
         }
       }
-      localObject = this.MKg.invoke();
-      this.MOP = new SoftReference(eX(localObject));
+      localObject = this.Nhj.invoke();
+      this.NlU = new SoftReference(fa(localObject));
       AppMethodBeat.o(56515);
       return localObject;
     }
@@ -77,14 +77,14 @@ public final class y
   public static final class b<T>
     extends y.c<T>
   {
-    private final a<T> MKg;
+    private final a<T> Nhj;
     private volatile Object value;
     
     public b(a<T> parama)
     {
       AppMethodBeat.i(56516);
       this.value = null;
-      this.MKg = parama;
+      this.Nhj = parama;
       AppMethodBeat.o(56516);
     }
     
@@ -94,12 +94,12 @@ public final class y
       Object localObject = this.value;
       if (localObject != null)
       {
-        localObject = eY(localObject);
+        localObject = fb(localObject);
         AppMethodBeat.o(56517);
         return localObject;
       }
-      localObject = this.MKg.invoke();
-      this.value = eX(localObject);
+      localObject = this.Nhj.invoke();
+      this.value = fa(localObject);
       AppMethodBeat.o(56517);
       return localObject;
     }
@@ -107,21 +107,21 @@ public final class y
   
   public static abstract class c<T>
   {
-    private static final Object MOQ = new Object() {};
+    private static final Object NlV = new Object() {};
     
-    protected static Object eX(T paramT)
+    protected static Object fa(T paramT)
     {
       Object localObject = paramT;
       if (paramT == null) {
-        localObject = MOQ;
+        localObject = NlV;
       }
       return localObject;
     }
     
-    protected static T eY(Object paramObject)
+    protected static T fb(Object paramObject)
     {
       Object localObject = paramObject;
-      if (paramObject == MOQ) {
+      if (paramObject == NlV) {
         localObject = null;
       }
       return localObject;
@@ -132,7 +132,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.y
  * JD-Core Version:    0.7.0.1
  */

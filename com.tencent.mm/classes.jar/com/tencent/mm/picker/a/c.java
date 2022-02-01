@@ -7,9 +7,9 @@ import com.tencent.mm.picker.base.a.b;
 public final class c
   implements b<Integer>
 {
-  public int iKq;
-  public int iKr;
-  private a iKs;
+  public int iNj;
+  public int iNk;
+  private a iNl;
   
   public c(int paramInt1, int paramInt2)
   {
@@ -28,21 +28,21 @@ public final class c
   private void a(int paramInt1, int paramInt2, a parama)
   {
     AppMethodBeat.i(175290);
-    this.iKs = parama;
-    if (this.iKs == null) {
-      this.iKs = new a();
+    this.iNl = parama;
+    if (this.iNl == null) {
+      this.iNl = new a();
     }
-    this.iKq = paramInt1;
-    this.iKr = paramInt2;
+    this.iNj = paramInt1;
+    this.iNk = paramInt2;
     AppMethodBeat.o(175290);
   }
   
-  private Integer qM(int paramInt)
+  private Integer qP(int paramInt)
   {
     AppMethodBeat.i(175292);
     if ((paramInt >= 0) && (paramInt < getItemsCount()))
     {
-      int i = this.iKq;
+      int i = this.iNj;
       AppMethodBeat.o(175292);
       return Integer.valueOf(i + paramInt);
     }
@@ -52,17 +52,17 @@ public final class c
   
   public final int getItemsCount()
   {
-    return this.iKr - this.iKq + 1;
+    return this.iNk - this.iNj + 1;
   }
   
-  public final String qL(int paramInt)
+  public final String qO(int paramInt)
   {
     AppMethodBeat.i(175293);
-    Object localObject = qM(paramInt);
+    Object localObject = qP(paramInt);
     if (localObject == null) {}
     for (localObject = "";; localObject = ((Integer)localObject).toString())
     {
-      localObject = this.iKs.IJ((String)localObject);
+      localObject = this.iNl.Ji((String)localObject);
       AppMethodBeat.o(175293);
       return localObject;
     }
@@ -73,7 +73,7 @@ public final class c
   {
     a() {}
     
-    public final String IJ(String paramString)
+    public final String Ji(String paramString)
     {
       return paramString;
     }
@@ -81,7 +81,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.a.c
  * JD-Core Version:    0.7.0.1
  */

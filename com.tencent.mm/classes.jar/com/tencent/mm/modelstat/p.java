@@ -2,37 +2,37 @@ package com.tencent.mm.modelstat;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.modelsns.g;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.dif;
-import com.tencent.mm.protocal.protobuf.dih;
-import com.tencent.mm.protocal.protobuf.dii;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.dja;
+import com.tencent.mm.protocal.protobuf.djc;
+import com.tencent.mm.protocal.protobuf.djd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public final class p
 {
-  public static dii GF(String paramString)
+  public static djd Hh(String paramString)
   {
     AppMethodBeat.i(94880);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(94880);
       return null;
     }
     byte[] arrayOfByte = Base64.decode(paramString, 0);
-    paramString = new dih();
+    paramString = new djc();
     try
     {
       paramString.parseFrom(arrayOfByte);
-      paramString = paramString.Hxa;
+      paramString = paramString.HQJ;
       AppMethodBeat.o(94880);
       return paramString;
     }
@@ -40,53 +40,53 @@ public final class p
     {
       for (;;)
       {
-        ad.e("MicroMsg.SnsStatExtUtil", "", new Object[] { localException });
+        ae.e("MicroMsg.SnsStatExtUtil", "", new Object[] { localException });
       }
     }
   }
   
-  public static String X(bu parambu)
+  public static String W(bv parambv)
   {
     AppMethodBeat.i(94883);
-    if (parambu == null)
+    if (parambv == null)
     {
       AppMethodBeat.o(94883);
       return "";
     }
     Object localObject = null;
-    if (parambu.cTc())
+    if (parambv.cVH())
     {
-      localObject = k.b.yr(parambu.field_content);
-      if ((localObject == null) || (bt.isNullOrNil(((k.b)localObject).dHv)))
+      localObject = k.b.zb(parambv.field_content);
+      if ((localObject == null) || (bu.isNullOrNil(((k.b)localObject).dIA)))
       {
         AppMethodBeat.o(94883);
         return "";
       }
-      localObject = ((k.b)localObject).dHv;
+      localObject = ((k.b)localObject).dIA;
     }
-    if (parambu.cxh())
+    if (parambv.cyI())
     {
-      parambu = u.Hy(parambu.field_imgPath);
-      if ((parambu == null) || (bt.isNullOrNil(parambu.dHv)))
+      parambv = u.Ia(parambv.field_imgPath);
+      if ((parambv == null) || (bu.isNullOrNil(parambv.dIA)))
       {
         AppMethodBeat.o(94883);
         return "";
       }
-      localObject = parambu.dHv;
+      localObject = parambv.dIA;
     }
     AppMethodBeat.o(94883);
     return localObject;
   }
   
-  public static String a(dii paramdii)
+  public static String a(djd paramdjd)
   {
     AppMethodBeat.i(94882);
-    if (paramdii != null)
+    if (paramdjd != null)
     {
-      Object localObject = paramdii.Fml;
+      Object localObject = paramdjd.FEJ;
       String str2 = "";
       String str1 = str2;
-      if (!bt.isNullOrNil((String)localObject))
+      if (!bu.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).split("\\|");
         str1 = str2;
@@ -100,13 +100,13 @@ public final class p
       }
       try
       {
-        paramdii = String.format("expId=%d&adgroup_id=%s&snsId=%s", new Object[] { Integer.valueOf(paramdii.Hxe), URLEncoder.encode(str1, "UTF-8"), paramdii.Hxd });
+        paramdjd = String.format("expId=%d&adgroup_id=%s&snsId=%s", new Object[] { Integer.valueOf(paramdjd.HQN), URLEncoder.encode(str1, "UTF-8"), paramdjd.HQM });
         AppMethodBeat.o(94882);
-        return paramdii;
+        return paramdjd;
       }
-      catch (UnsupportedEncodingException paramdii)
+      catch (UnsupportedEncodingException paramdjd)
       {
-        ad.e("MicroMsg.SnsStatExtUtil", "", new Object[] { paramdii });
+        ae.e("MicroMsg.SnsStatExtUtil", "", new Object[] { paramdjd });
       }
     }
     AppMethodBeat.o(94882);
@@ -116,21 +116,21 @@ public final class p
   public static String a(String paramString, PString paramPString)
   {
     AppMethodBeat.i(94881);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(94881);
       return "";
     }
     Object localObject = Base64.decode(paramString, 0);
-    paramString = new dih();
+    paramString = new djc();
     try
     {
       paramString.parseFrom((byte[])localObject);
-      localObject = paramString.Hxa.Fml;
-      String str = paramString.Hxa.Hxd;
-      localObject = String.format("snsId=%s&uxInfo=%s&source=%d&snsStatExt=%s", new Object[] { URLEncoder.encode((String)localObject, "UTF-8"), URLEncoder.encode(str, "UTF-8"), Integer.valueOf(paramString.Hxa.dnh), URLEncoder.encode(a(paramString.Hxa), "UTF-8") });
-      if (paramString.Hxc == null) {}
-      for (paramString = "";; paramString = paramString.Hxc.ubt)
+      localObject = paramString.HQJ.FEJ;
+      String str = paramString.HQJ.HQM;
+      localObject = String.format("snsId=%s&uxInfo=%s&source=%d&snsStatExt=%s", new Object[] { URLEncoder.encode((String)localObject, "UTF-8"), URLEncoder.encode(str, "UTF-8"), Integer.valueOf(paramString.HQJ.doj), URLEncoder.encode(a(paramString.HQJ), "UTF-8") });
+      if (paramString.HQL == null) {}
+      for (paramString = "";; paramString = paramString.HQL.umv)
       {
         paramPString.value = paramString;
         AppMethodBeat.o(94881);
@@ -140,7 +140,7 @@ public final class p
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.SnsStatExtUtil", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.SnsStatExtUtil", paramString, "", new Object[0]);
       AppMethodBeat.o(94881);
     }
   }
@@ -165,10 +165,10 @@ public final class p
       AppMethodBeat.o(94879);
       return;
     }
-    paramString = GF(paramString);
+    paramString = Hh(paramString);
     StringBuilder localStringBuilder = paramStringBuilder.append(",");
     if (paramString == null) {}
-    for (int i = -1;; i = paramString.dnh)
+    for (int i = -1;; i = paramString.doj)
     {
       localStringBuilder.append(i);
       paramStringBuilder.append(",").append(a(paramString));
@@ -180,15 +180,15 @@ public final class p
   public static void b(String paramString, g paramg)
   {
     AppMethodBeat.i(94878);
-    if ((bt.isNullOrNil(paramString)) || (paramg == null))
+    if ((bu.isNullOrNil(paramString)) || (paramg == null))
     {
       AppMethodBeat.o(94878);
       return;
     }
-    paramString = GF(paramString);
+    paramString = Hh(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramString == null) {}
-    for (int i = -1;; i = paramString.dnh)
+    for (int i = -1;; i = paramString.doj)
     {
       paramg.m("Source", i + ",");
       paramg.m("SnsStatExt", a(paramString));
@@ -204,10 +204,10 @@ public final class p
     static
     {
       AppMethodBeat.i(94876);
-      irf = new a("Chat", 0, 1);
-      irg = new a("TalkChat", 1, 2);
-      irh = new a("Sns", 2, 3);
-      iri = new a[] { irf, irg, irh };
+      iua = new a("Chat", 0, 1);
+      iub = new a("TalkChat", 1, 2);
+      iuc = new a("Sns", 2, 3);
+      iud = new a[] { iua, iub, iuc };
       AppMethodBeat.o(94876);
     }
     

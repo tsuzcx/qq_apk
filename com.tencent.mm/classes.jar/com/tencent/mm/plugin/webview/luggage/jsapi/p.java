@@ -22,7 +22,7 @@ public class p
     JSONObject localJSONObject = parama.chh.cgn;
     String str = localJSONObject.optString("eventName");
     localJSONObject = localJSONObject.optJSONObject("data");
-    Iterator localIterator = j.ePw().iterator();
+    Iterator localIterator = j.eTi().iterator();
     while (localIterator.hasNext()) {
       ((s)localIterator.next()).chX.a(new d.1(str, localJSONObject));
     }
@@ -30,7 +30,7 @@ public class p
     AppMethodBeat.o(78548);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

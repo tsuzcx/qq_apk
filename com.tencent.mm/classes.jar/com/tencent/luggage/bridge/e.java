@@ -20,7 +20,7 @@ class e
     this.cgn = paramJSONObject;
   }
   
-  final void c(Map<String, Object> paramMap)
+  final void j(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(140318);
     this.cgn = new JSONObject(paramMap);

@@ -16,51 +16,51 @@ import com.tencent.mm.ui.ao;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Landroid/view/View$OnClickListener;", "view", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cancelBtn", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "cropFuncLayout", "curFuncType", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin$FuncType;", "normalFuncLayout", "okBtn", "rotateImg", "Landroid/widget/ImageView;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "unDoImg", "getView", "()Landroid/view/ViewGroup;", "setView", "(Landroid/view/ViewGroup;)V", "onBackPress", "", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "FuncType", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Landroid/view/View$OnClickListener;", "view", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cancelBtn", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "cropFuncLayout", "curFuncType", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin$FuncType;", "normalFuncLayout", "okBtn", "rotateImg", "Landroid/widget/ImageView;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "unDoImg", "getView", "()Landroid/view/ViewGroup;", "setView", "(Landroid/view/ViewGroup;)V", "onBackPress", "", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "FuncType", "plugin-recordvideo_release"})
 public final class r
   implements View.OnClickListener, t
 {
-  private final Button gUt;
-  private final Button gWI;
-  private ViewGroup sQD;
-  private d sQE;
-  private final ViewGroup xAI;
-  private final ViewGroup xAJ;
-  private final ImageView xAK;
-  private final ImageView xAL;
-  private r.a xBd;
+  private final Button gXc;
+  private final Button gZv;
+  private ViewGroup tbO;
+  private d tbP;
+  private final ViewGroup xQD;
+  private final ViewGroup xQE;
+  private final ImageView xQF;
+  private final ImageView xQG;
+  private r.a xQY;
   
   public r(ViewGroup paramViewGroup, d paramd)
   {
     AppMethodBeat.i(75585);
-    this.sQD = paramViewGroup;
-    this.sQE = paramd;
-    this.xAI = ((ViewGroup)this.sQD.findViewById(2131300333));
-    this.xAJ = ((ViewGroup)this.sQD.findViewById(2131298862));
-    this.gWI = ((Button)this.sQD.findViewById(2131298859));
-    this.gUt = ((Button)this.sQD.findViewById(2131298861));
-    this.xAK = ((ImageView)this.sQD.findViewById(2131298865));
-    this.xAL = ((ImageView)this.sQD.findViewById(2131298864));
-    this.xBd = r.a.xBg;
-    paramViewGroup = this.xAJ;
+    this.tbO = paramViewGroup;
+    this.tbP = paramd;
+    this.xQD = ((ViewGroup)this.tbO.findViewById(2131300333));
+    this.xQE = ((ViewGroup)this.tbO.findViewById(2131298862));
+    this.gZv = ((Button)this.tbO.findViewById(2131298859));
+    this.gXc = ((Button)this.tbO.findViewById(2131298861));
+    this.xQF = ((ImageView)this.tbO.findViewById(2131298865));
+    this.xQG = ((ImageView)this.tbO.findViewById(2131298864));
+    this.xQY = r.a.xRb;
+    paramViewGroup = this.xQE;
     p.g(paramViewGroup, "cropFuncLayout");
     paramViewGroup.setVisibility(4);
-    this.sQD.findViewById(2131299262);
-    this.xAK.setImageDrawable(ao.k(this.sQD.getContext(), 2131691345, -1));
-    this.xAL.setImageDrawable(ao.k(this.sQD.getContext(), 2131690467, -1));
-    this.gWI.setOnClickListener((View.OnClickListener)this);
-    this.gUt.setOnClickListener((View.OnClickListener)this);
-    this.xAK.setOnClickListener((View.OnClickListener)this);
-    this.xAL.setOnClickListener((View.OnClickListener)this);
+    this.tbO.findViewById(2131299262);
+    this.xQF.setImageDrawable(ao.k(this.tbO.getContext(), 2131691345, -1));
+    this.xQG.setImageDrawable(ao.k(this.tbO.getContext(), 2131690467, -1));
+    this.gZv.setOnClickListener((View.OnClickListener)this);
+    this.gXc.setOnClickListener((View.OnClickListener)this);
+    this.xQF.setOnClickListener((View.OnClickListener)this);
+    this.xQG.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(75585);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     AppMethodBeat.i(75583);
-    if (this.xBd == r.a.xBe)
+    if (this.xQY == r.a.xQZ)
     {
-      d.b.a(this.sQE, d.c.xFl);
+      d.b.a(this.tbP, d.c.xVg);
       AppMethodBeat.o(75583);
       return true;
     }
@@ -68,7 +68,7 @@ public final class r
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -82,7 +82,7 @@ public final class r
     AppMethodBeat.i(75584);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if (paramView != null)
     {
       paramView = Integer.valueOf(paramView.getId());
@@ -113,35 +113,35 @@ public final class r
       if (paramView.intValue() != 2131298859) {
         break label50;
       }
-      paramView = this.xAI;
+      paramView = this.xQD;
       p.g(paramView, "normalFuncLayout");
       paramView.setVisibility(0);
-      paramView = this.xAJ;
+      paramView = this.xQE;
       p.g(paramView, "cropFuncLayout");
       paramView.setVisibility(4);
-      d.b.a(this.sQE, d.c.xFl);
+      d.b.a(this.tbP, d.c.xVg);
       continue;
       label139:
       if (paramView.intValue() != 2131298861) {
         break label54;
       }
-      paramView = this.xAI;
+      paramView = this.xQD;
       p.g(paramView, "normalFuncLayout");
       paramView.setVisibility(0);
-      paramView = this.xAJ;
+      paramView = this.xQE;
       p.g(paramView, "cropFuncLayout");
       paramView.setVisibility(4);
-      d.b.a(this.sQE, d.c.xFm);
+      d.b.a(this.tbP, d.c.xVh);
       continue;
       label193:
       if (paramView.intValue() != 2131298865) {
         break label58;
       }
-      d.b.a(this.sQE, d.c.xFo);
+      d.b.a(this.tbP, d.c.xVj);
       continue;
       label215:
       if (paramView.intValue() == 2131298864) {
-        d.b.a(this.sQE, d.c.xFn);
+        d.b.a(this.tbP, d.c.xVi);
       }
     }
   }
@@ -152,11 +152,11 @@ public final class r
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200322);
+    AppMethodBeat.i(206583);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200322);
+    AppMethodBeat.o(206583);
   }
   
   public final void onResume() {}
@@ -168,13 +168,13 @@ public final class r
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75582);
-    this.sQD.setVisibility(paramInt);
+    this.tbO.setVisibility(paramInt);
     AppMethodBeat.o(75582);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.r
  * JD-Core Version:    0.7.0.1
  */

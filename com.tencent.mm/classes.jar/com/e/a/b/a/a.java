@@ -6,7 +6,7 @@ public abstract interface a
 {
   public static final ByteOrder cfy = ByteOrder.BIG_ENDIAN;
   
-  public abstract long Bx();
+  public abstract long By();
   
   public abstract void aG(long paramLong);
   

@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONArray;
 
 public final class l
 {
-  volatile d kqI;
+  volatile d ktX;
   
   public l(d paramd)
   {
-    this.kqI = paramd;
+    this.ktX = paramd;
   }
   
-  private static int[] Od(String paramString)
+  private static int[] OK(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(140639);
@@ -40,7 +40,7 @@ public final class l
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.AppBrandJSInterface", paramString.getMessage());
+      ae.e("MicroMsg.AppBrandJSInterface", paramString.getMessage());
       localObject2 = localObject1;
       AppMethodBeat.o(140639);
     }
@@ -52,7 +52,7 @@ public final class l
     AppMethodBeat.i(140637);
     try
     {
-      d locald = this.kqI;
+      d locald = this.ktX;
       if (locald == null)
       {
         AppMethodBeat.o(140637);
@@ -64,7 +64,7 @@ public final class l
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
       AppMethodBeat.o(140637);
       throw paramString1;
     }
@@ -76,19 +76,19 @@ public final class l
     AppMethodBeat.i(140636);
     try
     {
-      d locald = this.kqI;
+      d locald = this.ktX;
       if (locald == null)
       {
         AppMethodBeat.o(140636);
         return;
       }
-      locald.b(paramString1, paramString2, Od(paramString3));
+      locald.b(paramString1, paramString2, OK(paramString3));
       AppMethodBeat.o(140636);
       return;
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "publishHandler", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "publishHandler", new Object[0]);
       AppMethodBeat.o(140636);
       throw paramString1;
     }
@@ -96,7 +96,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l
  * JD-Core Version:    0.7.0.1
  */

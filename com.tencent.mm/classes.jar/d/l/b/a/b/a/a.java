@@ -9,26 +9,26 @@ import d.l.b.a.b.b.ac;
 
 public abstract interface a
 {
-  public static final a MPH = a.MPJ;
+  public static final a NmM = a.NmO;
   
-  public abstract ac ggT();
+  public abstract ac glv();
   
   public static final class a
   {
-    private static final f MPI;
+    private static final f NmN;
     
     static
     {
       AppMethodBeat.i(56649);
-      MPJ = new a();
-      MPI = g.a(k.MKb, (d.g.a.a)a.MPK);
+      NmO = new a();
+      NmN = g.a(k.Nhe, (d.g.a.a)a.NmP);
       AppMethodBeat.o(56649);
     }
     
-    public static a ggU()
+    public static a glw()
     {
       AppMethodBeat.i(56650);
-      a locala = (a)MPI.getValue();
+      a locala = (a)NmN.getValue();
       AppMethodBeat.o(56650);
       return locala;
     }
@@ -37,12 +37,12 @@ public abstract interface a
       extends q
       implements d.g.a.a<a>
     {
-      public static final a MPK;
+      public static final a NmP;
       
       static
       {
         AppMethodBeat.i(56648);
-        MPK = new a();
+        NmP = new a();
         AppMethodBeat.o(56648);
       }
       

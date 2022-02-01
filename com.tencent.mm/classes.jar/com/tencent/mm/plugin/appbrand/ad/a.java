@@ -1,163 +1,204 @@
 package com.tencent.mm.plugin.appbrand.ad;
 
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.HashSet;
-import java.util.Set;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.d;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b.a;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.e;
+import d.g.b.p;
+import d.l;
+import d.v;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ad/AppBrandActionBarWithCapsule;", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/IAppBrandActionBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "(Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;)V", "capsuleBarImplView", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/AppBrandCapsuleBarImplView;", "destroy", "", "getActionView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getBackgroundAlpha", "", "getBackgroundColor", "", "getCapsuleView", "getForegroundColor", "getMainTitle", "", "getOptionButton", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;", "getParent", "Landroid/view/ViewParent;", "resetForegroundStyle", "setBackButtonClickListener", "listener", "Landroid/view/View$OnClickListener;", "setBackgroundAlpha", "alpha", "setBackgroundColor", "color", "setCloseButtonClickListener", "setForegroundColor", "setForegroundStyle", "isBlack", "", "style", "", "setFullscreenMode", "fullscreen", "setLoadingIconVisibility", "visible", "setMainTitle", "title", "setNavHidden", "hidden", "setOptionButtonClickListener", "showCapsuleArea", "show", "showNavArea", "showTitleArea", "luggage-wxa-app_release"})
 public final class a
+  implements e
 {
-  public static String TAG;
-  private static Set<Integer> jBI;
+  private d jEC;
+  final b jED;
   
-  static
+  public a(Context paramContext)
   {
-    AppMethodBeat.i(187944);
-    TAG = "MicroMsg.AppBrandAdABTests[AppBrandSplashAd]";
-    HashSet localHashSet = new HashSet();
-    jBI = localHashSet;
-    localHashSet.add(Integer.valueOf(1001));
-    jBI.add(Integer.valueOf(1089));
-    jBI.add(Integer.valueOf(1104));
-    jBI.add(Integer.valueOf(1103));
-    AppMethodBeat.o(187944);
+    this(new b(paramContext));
+    AppMethodBeat.i(208055);
+    AppMethodBeat.o(208055);
   }
   
-  public static void aXW()
+  private a(b paramb)
   {
-    AppMethodBeat.i(44003);
-    ax.aQz("appbrandAd").removeValueForKey("showad");
-    AppMethodBeat.o(44003);
-  }
-  
-  public static boolean aXX()
-  {
-    AppMethodBeat.i(44005);
-    int i = ax.aQz("appbrandAd").decodeInt("showad", -1);
-    if (i >= 0)
-    {
-      ad.i(TAG, "canShowAppBrandAd, command value:%s", new Object[] { Integer.valueOf(i) });
-      if (i == 1)
-      {
-        AppMethodBeat.o(44005);
-        return true;
-      }
-      AppMethodBeat.o(44005);
-      return false;
+    AppMethodBeat.i(208054);
+    this.jED = paramb;
+    paramb = this.jED.findViewById(2131304180);
+    if (paramb == null) {
+      p.gkB();
     }
-    i = ((b)g.ab(b.class)).a(b.a.qvK, 0);
-    ad.i(TAG, "canShowAppBrandAd, experiment value:%s", new Object[] { Integer.valueOf(i) });
-    if (i == 1)
+    if (paramb == null)
     {
-      AppMethodBeat.o(44005);
-      return true;
+      paramb = new v("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(208054);
+      throw paramb;
     }
-    AppMethodBeat.o(44005);
-    return false;
+    ((ViewGroup)paramb).removeAllViews();
+    this.jEC = new d(((ViewGroup)paramb).getContext());
+    paramb = (ViewGroup)paramb;
+    d locald = this.jEC;
+    if (locald == null) {
+      p.bdF("capsuleBarImplView");
+    }
+    paramb.addView((View)locald, new ViewGroup.LayoutParams(-2, -2));
+    this.jED.setCapsuleBarInteractionDelegate((b.a)new a(this));
+    AppMethodBeat.o(208054);
   }
   
-  public static void aXY()
+  public final AppBrandOptionButton aYp()
   {
-    AppMethodBeat.i(44006);
-    ax.aQz("appbrandAd").removeValueForKey("allshowad");
-    AppMethodBeat.o(44006);
+    AppMethodBeat.i(208053);
+    Object localObject = this.jEC;
+    if (localObject == null) {
+      p.bdF("capsuleBarImplView");
+    }
+    localObject = ((d)localObject).getOptionBtn();
+    AppMethodBeat.o(208053);
+    return localObject;
   }
   
-  public static boolean aXZ()
+  public final void destroy()
   {
-    AppMethodBeat.i(44008);
-    int i = ax.aQz("appbrandAd").decodeInt("allshowad", -1);
-    if (i >= 0)
-    {
-      ad.i(TAG, "canAllShowAppBrandAd, command value:%s", new Object[] { Integer.valueOf(i) });
-      if (i == 1)
-      {
-        AppMethodBeat.o(44008);
-        return true;
-      }
-      AppMethodBeat.o(44008);
-      return false;
-    }
-    i = ((b)g.ab(b.class)).a(b.a.qvL, 0);
-    ad.i(TAG, "canAllShowAppBrandAd, experiment value:%s", new Object[] { Integer.valueOf(i) });
-    if (i == 1)
-    {
-      AppMethodBeat.o(44008);
-      return true;
-    }
-    AppMethodBeat.o(44008);
-    return false;
+    AppMethodBeat.i(208056);
+    this.jED.destroy();
+    AppMethodBeat.o(208056);
   }
   
-  public static int aXl()
+  public final void fC(boolean paramBoolean)
   {
-    AppMethodBeat.i(187942);
-    int i = ((b)g.ab(b.class)).a(b.a.qvR, 0);
-    ad.i(TAG, "getCodeBlockTimeThreshold, timeThreshold:%s", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(187942);
+    AppMethodBeat.i(208051);
+    this.jED.fC(paramBoolean);
+    AppMethodBeat.o(208051);
+  }
+  
+  public final void fD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(208052);
+    this.jED.fD(paramBoolean);
+    AppMethodBeat.o(208052);
+  }
+  
+  public final void fE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(208066);
+    this.jED.fE(paramBoolean);
+    AppMethodBeat.o(208066);
+  }
+  
+  public final View getActionView()
+  {
+    AppMethodBeat.i(208057);
+    View localView = this.jED.getActionView();
+    AppMethodBeat.o(208057);
+    return localView;
+  }
+  
+  public final int getBackgroundColor()
+  {
+    AppMethodBeat.i(208058);
+    int i = this.jED.getBackgroundColor();
+    AppMethodBeat.o(208058);
     return i;
   }
   
-  public static int aYa()
+  public final void setBackButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(187943);
-    int i = ((b)g.ab(b.class)).a(b.a.qvS, 0);
-    ad.i(TAG, "getCheckBlockTimeThreshold, timeThreshold:%s", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(187943);
-    return i;
+    AppMethodBeat.i(208059);
+    this.jED.setBackButtonClickListener(paramOnClickListener);
+    AppMethodBeat.o(208059);
   }
   
-  public static void rL(int paramInt)
+  public final void setBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(44004);
-    ax.aQz("appbrandAd").encode("showad", paramInt);
-    AppMethodBeat.o(44004);
+    AppMethodBeat.i(208060);
+    this.jED.setBackgroundColor(paramInt);
+    AppMethodBeat.o(208060);
   }
   
-  public static void rM(int paramInt)
+  public final void setCloseButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44007);
-    ax.aQz("appbrandAd").encode("allshowad", paramInt);
-    AppMethodBeat.o(44007);
+    AppMethodBeat.i(208061);
+    this.jED.setCloseButtonClickListener(paramOnClickListener);
+    AppMethodBeat.o(208061);
   }
   
-  public static boolean rN(int paramInt)
+  public final void setForegroundColor(int paramInt)
   {
-    AppMethodBeat.i(187941);
-    Object localObject = ((b)g.ab(b.class)).a(b.a.qvQ, "");
-    if (!bt.isNullOrNil((String)localObject)) {}
-    for (;;)
+    AppMethodBeat.i(208062);
+    this.jED.setForegroundColor(paramInt);
+    AppMethodBeat.o(208062);
+  }
+  
+  public final void setForegroundStyle(String paramString)
+  {
+    AppMethodBeat.i(208063);
+    this.jED.setForegroundStyle(paramString);
+    AppMethodBeat.o(208063);
+  }
+  
+  public final void setFullscreenMode(boolean paramBoolean)
+  {
+    AppMethodBeat.i(208050);
+    this.jED.setFullscreenMode(paramBoolean);
+    AppMethodBeat.o(208050);
+  }
+  
+  public final void setLoadingIconVisibility(boolean paramBoolean)
+  {
+    AppMethodBeat.i(208064);
+    this.jED.setLoadingIconVisibility(paramBoolean);
+    AppMethodBeat.o(208064);
+  }
+  
+  public final void setMainTitle(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(208065);
+    this.jED.setMainTitle(paramCharSequence);
+    AppMethodBeat.o(208065);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/ad/AppBrandActionBarWithCapsule$1$1", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$CapsuleBarInteractionDelegate;", "dispatchCapsuleViewVisibilityChanged", "", "visibility", "", "setHomeButtonOnClickListener", "l", "Landroid/view/View$OnClickListener;", "setOptionButtonOnClickListener", "setStyleColor", "color", "luggage-wxa-app_release"})
+  public static final class a
+    implements b.a
+  {
+    a(a parama) {}
+    
+    public final void rN(int paramInt)
     {
-      try
-      {
-        HashSet localHashSet = new HashSet();
-        localObject = new JSONArray((String)localObject);
-        int i = 0;
-        if (i < ((JSONArray)localObject).length())
-        {
-          localHashSet.add(Integer.valueOf(((JSONArray)localObject).optInt(i)));
-          i += 1;
-          continue;
-        }
-        ad.i(TAG, "checkSceneForShowAd, abtest set:%s, scene:%s", new Object[] { localHashSet, Integer.valueOf(paramInt) });
-        bool = localHashSet.contains(Integer.valueOf(paramInt));
-      }
-      catch (Exception localException)
-      {
-        ad.i(TAG, "checkSceneForShowAd, exception, set:%s, scene:%s", new Object[] { jBI, Integer.valueOf(paramInt) });
-        bool = jBI.contains(Integer.valueOf(paramInt));
-        continue;
-      }
-      AppMethodBeat.o(187941);
-      return bool;
-      ad.i(TAG, "checkSceneForShowAd, no abtest, set:%s, scene:%s", new Object[] { jBI, Integer.valueOf(paramInt) });
-      boolean bool = jBI.contains(Integer.valueOf(paramInt));
+      AppMethodBeat.i(208049);
+      a.a(this.jEE).setVisibility(paramInt);
+      AppMethodBeat.o(208049);
+    }
+    
+    public final void setHomeButtonOnClickListener(View.OnClickListener paramOnClickListener)
+    {
+      AppMethodBeat.i(208047);
+      a.a(this.jEE).setHomeButtonOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(208047);
+    }
+    
+    public final void setOptionButtonOnClickListener(View.OnClickListener paramOnClickListener)
+    {
+      AppMethodBeat.i(208048);
+      a.a(this.jEE).setOptionButtonOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(208048);
+    }
+    
+    public final void setStyleColor(int paramInt)
+    {
+      AppMethodBeat.i(208046);
+      a.a(this.jEE).setStyleColor(paramInt);
+      AppMethodBeat.o(208046);
     }
   }
 }

@@ -5,7 +5,7 @@ import com.tencent.luggage.a.b;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.f;
 import d.g;
 import d.g.b.p;
@@ -13,28 +13,28 @@ import d.l;
 import d.n.n;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
 abstract class q
 {
-  private final f moq = g.O((d.g.a.a)a.mor);
+  private final f mto = g.O((d.g.a.a)a.mtp);
   
-  protected final o bwH()
+  protected final o bxy()
   {
-    return (o)this.moq.getValue();
+    return (o)this.mto.getValue();
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1;"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1;"})
   static final class a
     extends d.g.b.q
     implements d.g.a.a<1>
   {
-    public static final a mor;
+    public static final a mtp;
     
     static
     {
-      AppMethodBeat.i(189583);
-      mor = new a();
-      AppMethodBeat.o(189583);
+      AppMethodBeat.i(223852);
+      mtp = new a();
+      AppMethodBeat.o(223852);
     }
     
     a()

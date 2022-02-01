@@ -6,18 +6,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
 final class v$b
   extends q
   implements b<String, z>
 {
-  public static final b OdH;
+  public static final b BXP;
   
   static
   {
-    AppMethodBeat.i(221624);
-    OdH = new b();
-    AppMethodBeat.o(221624);
+    AppMethodBeat.i(191240);
+    BXP = new b();
+    AppMethodBeat.o(191240);
   }
   
   v$b()
@@ -27,7 +27,7 @@ final class v$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.v.b
  * JD-Core Version:    0.7.0.1
  */

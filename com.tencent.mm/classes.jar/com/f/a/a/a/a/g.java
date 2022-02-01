@@ -7,206 +7,206 @@ import java.util.List;
 public final class g
   implements com.tencent.mapsdk.raster.model.Polygon
 {
-  private com.tencent.tencentmap.mapsdk.maps.model.Polygon Mzz;
+  private com.tencent.tencentmap.mapsdk.maps.model.Polygon MWG;
   
   public g(com.tencent.tencentmap.mapsdk.maps.model.Polygon paramPolygon)
   {
-    this.Mzz = paramPolygon;
+    this.MWG = paramPolygon;
   }
   
   public final boolean contains(LatLng paramLatLng)
   {
-    AppMethodBeat.i(200030);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212722);
+    if (this.MWG != null)
     {
-      boolean bool = this.Mzz.contains(l.c(paramLatLng));
-      AppMethodBeat.o(200030);
+      boolean bool = this.MWG.contains(l.c(paramLatLng));
+      AppMethodBeat.o(212722);
       return bool;
     }
-    AppMethodBeat.o(200030);
+    AppMethodBeat.o(212722);
     return false;
   }
   
   public final int getFillColor()
   {
-    AppMethodBeat.i(200023);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212715);
+    if (this.MWG != null)
     {
-      int i = this.Mzz.getFillColor();
-      AppMethodBeat.o(200023);
+      int i = this.MWG.getFillColor();
+      AppMethodBeat.o(212715);
       return i;
     }
-    AppMethodBeat.o(200023);
+    AppMethodBeat.o(212715);
     return 0;
   }
   
   public final String getId()
   {
-    AppMethodBeat.i(200015);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212707);
+    if (this.MWG != null)
     {
-      String str = this.Mzz.getId();
-      AppMethodBeat.o(200015);
+      String str = this.MWG.getId();
+      AppMethodBeat.o(212707);
       return str;
     }
-    AppMethodBeat.o(200015);
+    AppMethodBeat.o(212707);
     return null;
   }
   
   public final int getLevel()
   {
-    AppMethodBeat.i(200027);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212719);
+    if (this.MWG != null)
     {
-      int i = this.Mzz.getLevel();
-      AppMethodBeat.o(200027);
+      int i = this.MWG.getLevel();
+      AppMethodBeat.o(212719);
       return i;
     }
-    AppMethodBeat.o(200027);
+    AppMethodBeat.o(212719);
     return 0;
   }
   
   public final List<LatLng> getPoints()
   {
-    AppMethodBeat.i(200017);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212709);
+    if (this.MWG != null)
     {
-      List localList = l.iU(this.Mzz.getPoints());
-      AppMethodBeat.o(200017);
+      List localList = l.jd(this.MWG.getPoints());
+      AppMethodBeat.o(212709);
       return localList;
     }
-    AppMethodBeat.o(200017);
+    AppMethodBeat.o(212709);
     return null;
   }
   
   public final int getStrokeColor()
   {
-    AppMethodBeat.i(200021);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212713);
+    if (this.MWG != null)
     {
-      int i = this.Mzz.getStrokeColor();
-      AppMethodBeat.o(200021);
+      int i = this.MWG.getStrokeColor();
+      AppMethodBeat.o(212713);
       return i;
     }
-    AppMethodBeat.o(200021);
+    AppMethodBeat.o(212713);
     return 0;
   }
   
   public final float getStrokeWidth()
   {
-    AppMethodBeat.i(200019);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212711);
+    if (this.MWG != null)
     {
-      float f = this.Mzz.getStrokeWidth();
-      AppMethodBeat.o(200019);
+      float f = this.MWG.getStrokeWidth();
+      AppMethodBeat.o(212711);
       return f;
     }
-    AppMethodBeat.o(200019);
+    AppMethodBeat.o(212711);
     return 0.0F;
   }
   
   public final float getZIndex()
   {
-    AppMethodBeat.i(200025);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212717);
+    if (this.MWG != null)
     {
-      float f = (int)this.Mzz.getZIndex();
-      AppMethodBeat.o(200025);
+      float f = (int)this.MWG.getZIndex();
+      AppMethodBeat.o(212717);
       return f;
     }
-    AppMethodBeat.o(200025);
+    AppMethodBeat.o(212717);
     return 0.0F;
   }
   
   public final boolean isVisible()
   {
-    AppMethodBeat.i(200029);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212721);
+    if (this.MWG != null)
     {
-      boolean bool = this.Mzz.isVisible();
-      AppMethodBeat.o(200029);
+      boolean bool = this.MWG.isVisible();
+      AppMethodBeat.o(212721);
       return bool;
     }
-    AppMethodBeat.o(200029);
+    AppMethodBeat.o(212721);
     return false;
   }
   
   public final void remove()
   {
-    AppMethodBeat.i(200014);
-    if (this.Mzz != null) {
-      this.Mzz.remove();
+    AppMethodBeat.i(212706);
+    if (this.MWG != null) {
+      this.MWG.remove();
     }
-    AppMethodBeat.o(200014);
+    AppMethodBeat.o(212706);
   }
   
   public final void setFillColor(int paramInt)
   {
-    AppMethodBeat.i(200022);
-    if (this.Mzz != null) {
-      this.Mzz.setFillColor(paramInt);
+    AppMethodBeat.i(212714);
+    if (this.MWG != null) {
+      this.MWG.setFillColor(paramInt);
     }
-    AppMethodBeat.o(200022);
+    AppMethodBeat.o(212714);
   }
   
   public final void setLevel(int paramInt)
   {
-    AppMethodBeat.i(200026);
-    if (this.Mzz != null) {
-      this.Mzz.setLevel(paramInt);
+    AppMethodBeat.i(212718);
+    if (this.MWG != null) {
+      this.MWG.setLevel(paramInt);
     }
-    AppMethodBeat.o(200026);
+    AppMethodBeat.o(212718);
   }
   
   public final void setPoints(List<LatLng> paramList)
   {
-    AppMethodBeat.i(200016);
-    if (this.Mzz != null) {
-      this.Mzz.setPoints(l.iV(paramList));
+    AppMethodBeat.i(212708);
+    if (this.MWG != null) {
+      this.MWG.setPoints(l.je(paramList));
     }
-    AppMethodBeat.o(200016);
+    AppMethodBeat.o(212708);
   }
   
   public final void setStrokeColor(int paramInt)
   {
-    AppMethodBeat.i(200020);
-    if (this.Mzz != null) {
-      this.Mzz.setStrokeColor(paramInt);
+    AppMethodBeat.i(212712);
+    if (this.MWG != null) {
+      this.MWG.setStrokeColor(paramInt);
     }
-    AppMethodBeat.o(200020);
+    AppMethodBeat.o(212712);
   }
   
   public final void setStrokeWidth(float paramFloat)
   {
-    AppMethodBeat.i(200018);
-    if (this.Mzz != null)
+    AppMethodBeat.i(212710);
+    if (this.MWG != null)
     {
-      com.tencent.tencentmap.mapsdk.maps.model.Polygon localPolygon = this.Mzz;
+      com.tencent.tencentmap.mapsdk.maps.model.Polygon localPolygon = this.MWG;
       float f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
       localPolygon.setStrokeWidth(f);
     }
-    AppMethodBeat.o(200018);
+    AppMethodBeat.o(212710);
   }
   
   public final void setVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(200028);
-    if (this.Mzz != null) {
-      this.Mzz.setVisible(paramBoolean);
+    AppMethodBeat.i(212720);
+    if (this.MWG != null) {
+      this.MWG.setVisible(paramBoolean);
     }
-    AppMethodBeat.o(200028);
+    AppMethodBeat.o(212720);
   }
   
   public final void setZIndex(float paramFloat)
   {
-    AppMethodBeat.i(200024);
-    if (this.Mzz != null) {
-      this.Mzz.setZIndex((int)paramFloat);
+    AppMethodBeat.i(212716);
+    if (this.MWG != null) {
+      this.MWG.setZIndex((int)paramFloat);
     }
-    AppMethodBeat.o(200024);
+    AppMethodBeat.o(212716);
   }
 }
 

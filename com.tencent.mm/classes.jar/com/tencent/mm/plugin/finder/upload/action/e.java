@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.finder.upload.action;
 
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "", "uicallback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;)V", "postTime", "", "getPostTime", "()J", "setPostTime", "(J)V", "trycount", "", "getTrycount", "()I", "setTrycount", "(I)V", "getUicallback", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "setUicallback", "doSomething", "", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "isValid", "", "uniqueId", "", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "", "uicallback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;)V", "postTime", "", "getPostTime", "()J", "setPostTime", "(J)V", "trycount", "", "getTrycount", "()I", "setTrycount", "(I)V", "getUicallback", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "setUicallback", "doSomething", "", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "isValid", "", "uniqueId", "", "plugin-finder_release"})
 public abstract class e
 {
-  private int sJZ;
-  long sKa = cf.aCK();
-  private g.b sKb = null;
+  private int sVm;
+  long sVn = ch.aDa();
+  private g.b sVo = null;
   
   public void a(h.b paramb)
   {
     p.h(paramb, "callback");
-    this.sJZ += 1;
+    this.sVm += 1;
   }
   
-  public abstract String aeK();
+  public abstract String aeW();
   
   public final boolean isValid()
   {
-    long l1 = cf.aCK();
-    long l2 = this.sKa;
-    int i = this.sJZ;
-    a.a locala = a.sJK;
-    if (i < a.cKQ()) {
-      locala = a.sJK;
+    long l1 = ch.aDa();
+    long l2 = this.sVn;
+    int i = this.sVm;
+    a.a locala = a.sUX;
+    if (i < a.cNu()) {
+      locala = a.sUX;
     }
-    return l1 - l2 <= a.cKP();
+    return l1 - l2 <= a.cNt();
   }
 }
 

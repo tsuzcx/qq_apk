@@ -5,21 +5,7 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface ao
   extends ad
 {
-  public abstract void aG(Runnable paramRunnable);
-  
-  public abstract void aWj(String paramString);
-  
-  public abstract void cR(String paramString, boolean paramBoolean);
-  
-  public abstract boolean fEU();
-  
-  public abstract boolean fEV();
-  
-  public abstract boolean fEW();
-  
-  public abstract int fEX();
-  
-  public abstract void xY(boolean paramBoolean);
+  public abstract void fHA();
 }
 
 

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -13,13 +13,13 @@ import java.lang.ref.WeakReference;
 
 public final class e
 {
-  WeakReference<Context> cya;
+  WeakReference<Context> cyH;
   
-  public static e dJC()
+  public static e dMU()
   {
     try
     {
-      e locale = a.ybp;
+      e locale = a.yrg;
       return locale;
     }
     finally
@@ -32,11 +32,11 @@ public final class e
   public final d a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(67989);
-    ad.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert2() msg:%s, title:%s", new Object[] { bt.nullAsNil(paramString), bt.nullAsNil(null) });
-    Context localContext = (Context)this.cya.get();
+    ae.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert2() msg:%s, title:%s", new Object[] { bu.nullAsNil(paramString), bu.nullAsNil(null) });
+    Context localContext = (Context)this.cyH.get();
     if (localContext == null)
     {
-      ad.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      ae.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
       AppMethodBeat.o(67989);
       return null;
     }
@@ -48,11 +48,11 @@ public final class e
   public final d a(String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     AppMethodBeat.i(67988);
-    ad.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert1() msg:%s, title:%s, yes:%s, no:%s", new Object[] { bt.nullAsNil(paramString1), bt.nullAsNil(paramString2), bt.nullAsNil(paramString3), bt.nullAsNil(paramString4) });
-    Context localContext = (Context)this.cya.get();
+    ae.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert1() msg:%s, title:%s, yes:%s, no:%s", new Object[] { bu.nullAsNil(paramString1), bu.nullAsNil(paramString2), bu.nullAsNil(paramString3), bu.nullAsNil(paramString4) });
+    Context localContext = (Context)this.cyH.get();
     if (localContext == null)
     {
-      ad.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      ae.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
       AppMethodBeat.o(67988);
       return null;
     }
@@ -61,27 +61,27 @@ public final class e
     return paramString1;
   }
   
-  public final boolean dJD()
+  public final boolean dMV()
   {
     AppMethodBeat.i(163813);
-    ad.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitF2fDCodeAndLMRemindUI()");
-    Context localContext = (Context)this.cya.get();
+    ae.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitF2fDCodeAndLMRemindUI()");
+    Context localContext = (Context)this.cyH.get();
     if (localContext == null)
     {
-      ad.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      ae.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
       AppMethodBeat.o(163813);
       return false;
     }
     if ((localContext instanceof RemittanceF2fDynamicCodeUI))
     {
-      ad.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fDynamicCodeUI");
+      ae.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fDynamicCodeUI");
       ((Activity)localContext).finish();
       AppMethodBeat.o(163813);
       return true;
     }
     if ((localContext instanceof RemittanceF2fLargeMoneyUI))
     {
-      ad.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fLargeMoneyUI");
+      ae.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fLargeMoneyUI");
       ((Activity)localContext).finish();
       AppMethodBeat.o(163813);
       return true;
@@ -90,20 +90,20 @@ public final class e
     return false;
   }
   
-  public final boolean dJE()
+  public final boolean dMW()
   {
     AppMethodBeat.i(163814);
-    ad.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitLMRemindUI()");
-    Context localContext = (Context)this.cya.get();
+    ae.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitLMRemindUI()");
+    Context localContext = (Context)this.cyH.get();
     if (localContext == null)
     {
-      ad.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      ae.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
       AppMethodBeat.o(163814);
       return false;
     }
     if ((localContext instanceof RemittanceF2fLargeMoneyUI))
     {
-      ad.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fLargeMoneyUI");
+      ae.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fLargeMoneyUI");
       ((Activity)localContext).finish();
       AppMethodBeat.o(163814);
       return true;
@@ -112,14 +112,14 @@ public final class e
     return false;
   }
   
-  public final boolean dJF()
+  public final boolean dMX()
   {
     AppMethodBeat.i(163815);
-    ad.w("MicroMsg.RemittanceBusiDialogMgr", "showSafeProgress()");
-    Context localContext = (Context)this.cya.get();
+    ae.w("MicroMsg.RemittanceBusiDialogMgr", "showSafeProgress()");
+    Context localContext = (Context)this.cyH.get();
     if (localContext == null)
     {
-      ad.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      ae.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
       AppMethodBeat.o(163815);
       return false;
     }
@@ -138,21 +138,13 @@ public final class e
     return false;
   }
   
-  public final void gc(Context paramContext)
-  {
-    AppMethodBeat.i(67986);
-    ad.i("MicroMsg.RemittanceBusiDialogMgr", "attach() %s", new Object[] { paramContext.getClass().getSimpleName() });
-    this.cya = new WeakReference(paramContext);
-    AppMethodBeat.o(67986);
-  }
-  
   public final Context getContext()
   {
     AppMethodBeat.i(163812);
-    Context localContext = (Context)this.cya.get();
+    Context localContext = (Context)this.cyH.get();
     if (localContext == null)
     {
-      ad.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      ae.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
       AppMethodBeat.o(163812);
       return null;
     }
@@ -160,21 +152,29 @@ public final class e
     return localContext;
   }
   
+  public final void gi(Context paramContext)
+  {
+    AppMethodBeat.i(67986);
+    ae.i("MicroMsg.RemittanceBusiDialogMgr", "attach() %s", new Object[] { paramContext.getClass().getSimpleName() });
+    this.cyH = new WeakReference(paramContext);
+    AppMethodBeat.o(67986);
+  }
+  
   static final class a
   {
-    static e ybp;
+    static e yrg;
     
     static
     {
       AppMethodBeat.i(67985);
-      ybp = new e();
+      yrg = new e();
       AppMethodBeat.o(67985);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.e
  * JD-Core Version:    0.7.0.1
  */

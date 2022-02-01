@@ -16,15 +16,15 @@ final class VoipScoreDialog$1
     AppMethodBeat.i(115379);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/voip/ui/VoipScoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    VoipScoreDialog.a(this.CjR, this.val$index);
+    a.b("com/tencent/mm/plugin/voip/ui/VoipScoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    VoipScoreDialog.a(this.CBv, this.val$index);
     a.a(this, "com/tencent/mm/plugin/voip/ui/VoipScoreDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(115379);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipScoreDialog.1
  * JD-Core Version:    0.7.0.1
  */

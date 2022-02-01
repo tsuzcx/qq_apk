@@ -5,7 +5,7 @@ import android.graphics.Path.Direction;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathRectActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class j
@@ -46,7 +46,7 @@ public final class j
     return bool;
   }
   
-  public final BasePathActionArg bdz()
+  public final BasePathActionArg bee()
   {
     AppMethodBeat.i(145382);
     PathRectActionArg localPathRectActionArg = new PathRectActionArg();

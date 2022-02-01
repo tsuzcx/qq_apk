@@ -17,11 +17,11 @@ final class WelcomeActivity$1
     AppMethodBeat.i(128794);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/WelcomeActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/WelcomeActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
     paramView.putExtra("not_auth_setting", true);
     paramView.putExtra("from_login_history", true);
-    com.tencent.mm.plugin.account.a.a.iRG.o(paramView, this.jru);
+    com.tencent.mm.plugin.account.a.a.iUz.o(paramView, this.jun);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/WelcomeActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128794);
   }

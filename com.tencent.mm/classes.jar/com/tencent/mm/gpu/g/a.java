@@ -15,8 +15,8 @@ import com.tencent.mm.gpu.d.c;
 import com.tencent.mm.gpu.d.c.4;
 import com.tencent.mm.gpu.e.e;
 import com.tencent.mm.gpu.f.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,78 +24,78 @@ import java.util.List;
 public final class a
   implements Application.ActivityLifecycleCallbacks, Runnable
 {
-  private static a gui;
+  private static a gwP;
   private volatile String activity;
-  public boolean guj;
-  private long guk;
+  public boolean gwQ;
+  private long gwR;
   public List<a> mListeners;
   
   static
   {
-    AppMethodBeat.i(219568);
-    gui = new a();
-    AppMethodBeat.o(219568);
+    AppMethodBeat.i(209690);
+    gwP = new a();
+    AppMethodBeat.o(209690);
   }
   
   private a()
   {
-    AppMethodBeat.i(219561);
+    AppMethodBeat.i(209683);
     this.activity = "default";
-    this.guj = false;
+    this.gwQ = false;
     this.mListeners = new ArrayList();
-    this.guk = 0L;
-    ((Application)aj.getContext()).registerActivityLifecycleCallbacks(this);
-    AppMethodBeat.o(219561);
+    this.gwR = 0L;
+    ((Application)ak.getContext()).registerActivityLifecycleCallbacks(this);
+    AppMethodBeat.o(209683);
   }
   
-  public static a agX()
+  public static a ahm()
   {
-    return gui;
+    return gwP;
   }
   
-  private boolean agY()
+  private boolean ahn()
   {
-    AppMethodBeat.i(219566);
-    if (System.currentTimeMillis() - this.guk > 10000L)
+    AppMethodBeat.i(209688);
+    if (System.currentTimeMillis() - this.gwR > 10000L)
     {
-      AppMethodBeat.o(219566);
+      AppMethodBeat.o(209688);
       return true;
     }
-    AppMethodBeat.o(219566);
+    AppMethodBeat.o(209688);
     return false;
   }
   
-  private void agZ()
+  private void aho()
   {
-    AppMethodBeat.i(219567);
-    if (!agY())
+    AppMethodBeat.i(209689);
+    if (!ahn())
     {
-      ad.i("MicroMsg.GpuMemoryWatchDog", "checkCanDump in run false.");
-      AppMethodBeat.o(219567);
+      ae.i("MicroMsg.GpuMemoryWatchDog", "checkCanDump in run false.");
+      AppMethodBeat.o(209689);
       return;
     }
-    ad.d("MicroMsg.GpuMemoryWatchDog", "GpuResReportTask run.");
-    h.LTJ.aR(this);
-    AppMethodBeat.o(219567);
+    ae.d("MicroMsg.GpuMemoryWatchDog", "GpuResReportTask run.");
+    h.MqF.aO(this);
+    AppMethodBeat.o(209689);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(219562);
+    AppMethodBeat.i(209684);
     if (parama == null)
     {
-      AppMethodBeat.o(219562);
+      AppMethodBeat.o(209684);
       return;
     }
     synchronized (this.mListeners)
     {
       if (!this.mListeners.contains(parama))
       {
-        AppMethodBeat.o(219562);
+        AppMethodBeat.o(209684);
         return;
       }
       this.mListeners.remove(parama);
-      AppMethodBeat.o(219562);
+      AppMethodBeat.o(209684);
       return;
     }
   }
@@ -112,60 +112,60 @@ public final class a
   
   public final void onActivityStarted(Activity paramActivity)
   {
-    AppMethodBeat.i(219563);
+    AppMethodBeat.i(209685);
     this.activity = paramActivity.getClass().getSimpleName();
-    if (agY()) {
-      agZ();
+    if (ahn()) {
+      aho();
     }
-    AppMethodBeat.o(219563);
+    AppMethodBeat.o(209685);
   }
   
   public final void onActivityStopped(Activity paramActivity)
   {
-    AppMethodBeat.i(219564);
-    if (agY()) {
-      agZ();
+    AppMethodBeat.i(209686);
+    if (ahn()) {
+      aho();
     }
-    AppMethodBeat.o(219564);
+    AppMethodBeat.o(209686);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(219565);
+    AppMethodBeat.i(209687);
     if (PluginGpuRes.isSkipModel())
     {
-      ad.e("MicroMsg.GpuMemoryWatchDog", "skip current phone model");
-      AppMethodBeat.o(219565);
+      ae.e("MicroMsg.GpuMemoryWatchDog", "skip current phone model");
+      AppMethodBeat.o(209687);
       return;
     }
-    ad.d("MicroMsg.GpuMemoryWatchDog", "do not skip current phone model");
-    if (!agY())
+    ae.d("MicroMsg.GpuMemoryWatchDog", "do not skip current phone model");
+    if (!ahn())
     {
-      ad.i("MicroMsg.GpuMemoryWatchDog", "checkCanDump in run false.");
-      AppMethodBeat.o(219565);
+      ae.i("MicroMsg.GpuMemoryWatchDog", "checkCanDump in run false.");
+      AppMethodBeat.o(209687);
       return;
     }
-    ad.d("MicroMsg.GpuMemoryWatchDog", "GpuResReportTask run.");
-    this.guk = System.currentTimeMillis();
-    long l1 = this.guk;
+    ae.d("MicroMsg.GpuMemoryWatchDog", "GpuResReportTask run.");
+    this.gwR = System.currentTimeMillis();
+    long l1 = this.gwR;
     ??? = new com.tencent.mm.gpu.f.a();
     long l2 = System.currentTimeMillis();
-    Object localObject3 = aj.getProcessName();
+    Object localObject3 = ak.getProcessName();
     e locale = new e();
     locale.pid = Process.myPid();
     locale.processName = ((String)localObject3);
-    locale.gua = PluginGpuRes.getCurrSpend();
-    locale.gtZ = (l2 - l1);
-    locale.gtY = ((com.tencent.mm.gpu.f.a)???).agU();
-    locale.gtW = ((com.tencent.mm.gpu.f.a)???).agT();
-    locale.gtX = ((com.tencent.mm.gpu.f.a)???).agV();
+    locale.gwH = PluginGpuRes.getCurrSpend();
+    locale.gwG = (l2 - l1);
+    locale.gwF = ((com.tencent.mm.gpu.f.a)???).ahj();
+    locale.gwD = ((com.tencent.mm.gpu.f.a)???).ahi();
+    locale.gwE = ((com.tencent.mm.gpu.f.a)???).ahk();
     locale.activityName = this.activity;
-    ad.e("MicroMsg.GpuMemoryWatchDog", locale.toString());
-    ad.e("MicroMsg.GpuMemoryWatchDog.oomScore", b.agW());
-    ??? = c.agM();
-    ((c)???).gtL.post(new c.4((c)???));
-    ??? = com.tencent.mm.gpu.d.a.agK();
-    ((com.tencent.mm.gpu.d.a)???).gtL.post(new a.3((com.tencent.mm.gpu.d.a)???));
+    ae.e("MicroMsg.GpuMemoryWatchDog", locale.toString());
+    ae.e("MicroMsg.GpuMemoryWatchDog.oomScore", b.ahl());
+    ??? = c.ahb();
+    ((c)???).gws.post(new c.4((c)???));
+    ??? = com.tencent.mm.gpu.d.a.agZ();
+    ((com.tencent.mm.gpu.d.a)???).gws.post(new a.3((com.tencent.mm.gpu.d.a)???));
     synchronized (this.mListeners)
     {
       if (this.mListeners.size() > 0)
@@ -180,7 +180,7 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(219565);
+    AppMethodBeat.o(209687);
   }
   
   static abstract interface a

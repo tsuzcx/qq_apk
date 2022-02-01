@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cmo;
-import com.tencent.mm.protocal.protobuf.ub;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.wallet_core.ui.f;
 import java.io.UnsupportedEncodingException;
 import java.math.RoundingMode;
 import java.net.URLDecoder;
@@ -20,89 +20,89 @@ import org.json.JSONObject;
 
 public class d
 {
-  private static d CVd = null;
+  private static d DmJ = null;
   
-  public static Bankcard a(ub paramub)
+  public static Bankcard a(ud paramud)
   {
     boolean bool = true;
     AppMethodBeat.i(70229);
-    ad.i("MicroMsg.BankcardParser", "parseFromBindQueryRecord %s", new Object[] { paramub });
+    ae.i("MicroMsg.BankcardParser", "parseFromBindQueryRecord %s", new Object[] { paramud });
     Bankcard localBankcard = new Bankcard();
     for (;;)
     {
       try
       {
-        localBankcard.field_bankName = paramub.uJF;
-        localBankcard.field_bankcardTypeName = paramub.FBq;
-        localBankcard.field_bankcardType = paramub.dkR;
-        localBankcard.field_bindSerial = paramub.wBI;
-        ad.d("MicroMsg.BankcardParser", "bind_serial: %s", new Object[] { localBankcard.field_bindSerial });
-        if (2 == bt.getInt(paramub.FBo, 2))
+        localBankcard.field_bankName = paramud.uVs;
+        localBankcard.field_bankcardTypeName = paramud.FTL;
+        localBankcard.field_bankcardType = paramud.dlT;
+        localBankcard.field_bindSerial = paramud.wRt;
+        ae.d("MicroMsg.BankcardParser", "bind_serial: %s", new Object[] { localBankcard.field_bindSerial });
+        if (2 == bu.getInt(paramud.FTJ, 2))
         {
           i = 1;
           if (i != 0) {
-            localBankcard.field_cardType |= Bankcard.CUq;
+            localBankcard.field_cardType |= Bankcard.DlW;
           }
-          if (!"NORMAL".equals(paramub.FSR))
+          if (!"NORMAL".equals(paramud.Glq))
           {
             i = 1;
             if (i != 0) {
-              localBankcard.field_cardType |= Bankcard.CUr;
+              localBankcard.field_cardType |= Bankcard.DlX;
             }
-            if (!bt.isNullOrNil(paramub.dzn)) {
-              localBankcard.field_mobile = URLDecoder.decode(paramub.dzn.replaceAll("x", "%"), "utf-8");
+            if (!bu.isNullOrNil(paramud.dAs)) {
+              localBankcard.field_mobile = URLDecoder.decode(paramud.dAs.replaceAll("x", "%"), "utf-8");
             }
-            localBankcard.field_onceQuotaKind = e.a(paramub.FSN, "100", 2, RoundingMode.HALF_UP);
-            localBankcard.field_onceQuotaVirtual = e.a(paramub.FSL, "100", 2, RoundingMode.HALF_UP);
-            localBankcard.field_dayQuotaKind = e.a(paramub.FSJ, "100", 2, RoundingMode.HALF_UP);
-            localBankcard.field_dayQuotaVirtual = e.a(paramub.FSH, "100", 2, RoundingMode.HALF_UP);
-            localBankcard.field_bankcardTail = paramub.FBp;
-            localBankcard.field_forbidWord = paramub.wBJ;
-            localBankcard.field_repay_url = paramub.EGG;
+            localBankcard.field_onceQuotaKind = f.a(paramud.Glm, "100", 2, RoundingMode.HALF_UP);
+            localBankcard.field_onceQuotaVirtual = f.a(paramud.Glk, "100", 2, RoundingMode.HALF_UP);
+            localBankcard.field_dayQuotaKind = f.a(paramud.Gli, "100", 2, RoundingMode.HALF_UP);
+            localBankcard.field_dayQuotaVirtual = f.a(paramud.Glg, "100", 2, RoundingMode.HALF_UP);
+            localBankcard.field_bankcardTail = paramud.FTK;
+            localBankcard.field_forbidWord = paramud.wRu;
+            localBankcard.field_repay_url = paramud.EZc;
             localBankcard.field_wxcreditState = 2;
-            if (bt.isNullOrNil(localBankcard.field_forbidWord)) {
+            if (bu.isNullOrNil(localBankcard.field_forbidWord)) {
               continue;
             }
             localBankcard.field_bankcardState = 8;
-            localBankcard.field_bankPhone = paramub.CWr;
-            localBankcard.field_fetchArriveTime = (bt.getLong(paramub.FSW, 0L) * 1000L);
-            localBankcard.field_fetchArriveTimeWording = paramub.FTi;
-            localBankcard.field_bankcardTag = bt.getInt(paramub.FSO, 1);
+            localBankcard.field_bankPhone = paramud.DnW;
+            localBankcard.field_fetchArriveTime = (bu.getLong(paramud.Glv, 0L) * 1000L);
+            localBankcard.field_fetchArriveTimeWording = paramud.GlH;
+            localBankcard.field_bankcardTag = bu.getInt(paramud.Gln, 1);
             if (localBankcard.field_bankcardTag != 2) {
               break label719;
             }
             i = 1;
             if (i != 0) {
-              localBankcard.field_cardType |= Bankcard.CUp;
+              localBankcard.field_cardType |= Bankcard.DlV;
             }
-            if (paramub.FST != 1) {
+            if (paramud.Gls != 1) {
               break label724;
             }
             localBankcard.field_support_micropay = bool;
-            ad.i("MicroMsg.BankcardParser", "getBalance() support_micropay:" + paramub.FST);
-            localBankcard.field_arrive_type = paramub.FTc;
-            localBankcard.field_avail_save_wording = paramub.FTe;
-            i = paramub.FTj;
-            ad.i("MicroMsg.BankcardParser", "fetch_charge_rate:".concat(String.valueOf(i)));
+            ae.i("MicroMsg.BankcardParser", "getBalance() support_micropay:" + paramud.Gls);
+            localBankcard.field_arrive_type = paramud.GlB;
+            localBankcard.field_avail_save_wording = paramud.GlD;
+            i = paramud.GlI;
+            ae.i("MicroMsg.BankcardParser", "fetch_charge_rate:".concat(String.valueOf(i)));
             localBankcard.field_fetch_charge_rate = (i / 10000.0D);
-            ad.i("MicroMsg.BankcardParser", "field_fetch_charge_rate:" + localBankcard.field_fetch_charge_rate);
-            i = paramub.FTk;
-            ad.i("MicroMsg.BankcardParser", "full_fetch_charge_fee:" + localBankcard.field_full_fetch_charge_fee);
+            ae.i("MicroMsg.BankcardParser", "field_fetch_charge_rate:" + localBankcard.field_fetch_charge_rate);
+            i = paramud.GlJ;
+            ae.i("MicroMsg.BankcardParser", "full_fetch_charge_fee:" + localBankcard.field_full_fetch_charge_fee);
             localBankcard.field_full_fetch_charge_fee = (i / 100.0D);
-            localBankcard.field_fetch_charge_info = paramub.FTl;
-            localBankcard.field_tips = paramub.oBP;
-            localBankcard.field_forbid_title = paramub.FBg;
-            localBankcard.field_forbid_url = paramub.FBh;
-            localBankcard.field_no_micro_word = paramub.FTd;
-            localBankcard.field_card_bottom_wording = paramub.FTr;
-            localBankcard.field_support_lqt_turn_in = paramub.FTu;
-            localBankcard.field_support_lqt_turn_out = paramub.FTv;
-            localBankcard.field_is_hightlight_pre_arrive_time_wording = paramub.FTt;
-            if (paramub.FBk != null)
+            localBankcard.field_fetch_charge_info = paramud.GlK;
+            localBankcard.field_tips = paramud.oIr;
+            localBankcard.field_forbid_title = paramud.FTB;
+            localBankcard.field_forbid_url = paramud.FTC;
+            localBankcard.field_no_micro_word = paramud.GlC;
+            localBankcard.field_card_bottom_wording = paramud.GlQ;
+            localBankcard.field_support_lqt_turn_in = paramud.GlT;
+            localBankcard.field_support_lqt_turn_out = paramud.GlU;
+            localBankcard.field_is_hightlight_pre_arrive_time_wording = paramud.GlS;
+            if (paramud.FTF != null)
             {
-              localBankcard.field_prompt_info_prompt_text = paramub.FBk.HfS;
-              localBankcard.field_prompt_info_jump_text = paramub.FBk.HfT;
-              localBankcard.field_prompt_info_jump_url = paramub.FBk.ozD;
+              localBankcard.field_prompt_info_prompt_text = paramud.FTF.Hzs;
+              localBankcard.field_prompt_info_jump_text = paramud.FTF.Hzt;
+              localBankcard.field_prompt_info_jump_url = paramud.FTF.oGf;
             }
             e(localBankcard);
             AppMethodBeat.o(70229);
@@ -116,18 +116,18 @@ public class d
         }
         i = 0;
         continue;
-        if (1 == bt.getInt(paramub.FSK, 0))
+        if (1 == bu.getInt(paramud.Glj, 0))
         {
           localBankcard.field_bankcardState = 1;
           continue;
         }
-        if (bt.getInt(paramub.CWq, 1) != 0) {
+        if (bu.getInt(paramud.DnV, 1) != 0) {
           break label711;
         }
       }
-      catch (Exception paramub)
+      catch (Exception paramud)
       {
-        ad.printErrStackTrace("MicroMsg.BankcardParser", paramub, "parseFromBindQueryRecord() error:" + paramub.getMessage(), new Object[0]);
+        ae.printErrStackTrace("MicroMsg.BankcardParser", paramud, "parseFromBindQueryRecord() error:" + paramud.getMessage(), new Object[0]);
         AppMethodBeat.o(70229);
         return null;
       }
@@ -152,61 +152,61 @@ public class d
       AppMethodBeat.o(70230);
       return;
     }
-    if (paramBankcard.eER())
+    if (paramBankcard.eIy())
     {
       paramBankcard.field_desc = paramBankcard.field_bankName;
       AppMethodBeat.o(70230);
       return;
     }
-    if (paramBankcard.eEV())
+    if (paramBankcard.eIC())
     {
-      paramBankcard.field_desc = aj.getContext().getString(2131765290, new Object[] { paramBankcard.CUV, e.gP(paramBankcard.CUS, 8) });
+      paramBankcard.field_desc = ak.getContext().getString(2131765290, new Object[] { paramBankcard.DmB, f.gY(paramBankcard.Dmy, 8) });
       AppMethodBeat.o(70230);
       return;
     }
-    if (paramBankcard.eET())
+    if (paramBankcard.eIA())
     {
-      paramBankcard.field_desc = aj.getContext().getString(2131765222, new Object[] { paramBankcard.field_bankName, paramBankcard.field_bankcardTail });
+      paramBankcard.field_desc = ak.getContext().getString(2131765222, new Object[] { paramBankcard.field_bankName, paramBankcard.field_bankcardTail });
       AppMethodBeat.o(70230);
       return;
     }
-    if (paramBankcard.eEQ())
+    if (paramBankcard.eIx())
     {
-      paramBankcard.field_desc = aj.getContext().getString(2131765998, new Object[] { paramBankcard.field_bankName, paramBankcard.field_bankcardTail });
+      paramBankcard.field_desc = ak.getContext().getString(2131765998, new Object[] { paramBankcard.field_bankName, paramBankcard.field_bankcardTail });
       AppMethodBeat.o(70230);
       return;
     }
-    if (paramBankcard.eEW())
+    if (paramBankcard.eID())
     {
-      paramBankcard.field_desc = paramBankcard.CVb;
+      paramBankcard.field_desc = paramBankcard.DmH;
       AppMethodBeat.o(70230);
       return;
     }
-    paramBankcard.field_desc = aj.getContext().getString(2131765242, new Object[] { paramBankcard.field_bankName, paramBankcard.field_bankcardTail });
+    paramBankcard.field_desc = ak.getContext().getString(2131765242, new Object[] { paramBankcard.field_bankName, paramBankcard.field_bankcardTail });
     AppMethodBeat.o(70230);
   }
   
-  public static d eEX()
+  public static d eIE()
   {
     AppMethodBeat.i(70226);
-    if (CVd == null) {
-      CVd = new d();
+    if (DmJ == null) {
+      DmJ = new d();
     }
-    d locald = CVd;
+    d locald = DmJ;
     AppMethodBeat.o(70226);
     return locald;
   }
   
-  public static List<Bankcard> gI(List<ub> paramList)
+  public static List<Bankcard> gR(List<ud> paramList)
   {
     AppMethodBeat.i(70228);
     ArrayList localArrayList = new ArrayList();
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      ad.i("MicroMsg.BankcardParser", "record size: %s", new Object[] { Integer.valueOf(paramList.size()) });
+      ae.i("MicroMsg.BankcardParser", "record size: %s", new Object[] { Integer.valueOf(paramList.size()) });
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        localArrayList.add(a((ub)paramList.next()));
+        localArrayList.add(a((ud)paramList.next()));
       }
     }
     AppMethodBeat.o(70228);
@@ -221,7 +221,7 @@ public class d
     if (paramJSONObject == null)
     {
       localObject1 = "";
-      ad.i("MicroMsg.BankcardParser", "parseJson jsonBankcard %s", new Object[] { localObject1 });
+      ae.i("MicroMsg.BankcardParser", "parseJson jsonBankcard %s", new Object[] { localObject1 });
       localObject1 = new Bankcard();
     }
     int i;
@@ -234,40 +234,40 @@ public class d
       ((Bankcard)localObject1).field_bankcardTypeName = paramJSONObject.optString("bankacc_type_name");
       ((Bankcard)localObject1).field_bankcardType = paramJSONObject.getString("bank_type");
       ((Bankcard)localObject1).field_bindSerial = paramJSONObject.optString("bind_serial");
-      ad.d("MicroMsg.BankcardParser", "bind_serial: %s", new Object[] { ((Bankcard)localObject1).field_bindSerial });
-      ((Bankcard)localObject1).CUB = paramJSONObject.optString("h_bind_serialno");
+      ae.d("MicroMsg.BankcardParser", "bind_serial: %s", new Object[] { ((Bankcard)localObject1).field_bindSerial });
+      ((Bankcard)localObject1).Dmh = paramJSONObject.optString("h_bind_serialno");
       if (2 != paramJSONObject.optInt("bankacc_type", 0)) {
         break label1183;
       }
       i = 1;
       if (i != 0) {
-        ((Bankcard)localObject1).field_cardType |= Bankcard.CUq;
+        ((Bankcard)localObject1).field_cardType |= Bankcard.DlW;
       }
       if ("NORMAL".equals(paramJSONObject.optString("extra_bind_flag"))) {
         break label1188;
       }
       i = 1;
       if (i != 0) {
-        ((Bankcard)localObject1).field_cardType |= Bankcard.CUr;
+        ((Bankcard)localObject1).field_cardType |= Bankcard.DlX;
       }
       if ("QMF".equals(((Bankcard)localObject1).field_bankcardType))
       {
-        ((Bankcard)localObject1).field_cardType |= Bankcard.CUw;
+        ((Bankcard)localObject1).field_cardType |= Bankcard.Dmc;
         localObject2 = paramJSONObject.optJSONObject("qmfCardInfo");
         if (localObject2 != null)
         {
-          ((Bankcard)localObject1).CUP = ((JSONObject)localObject2).optLong("total_credit_line", 0L);
-          ((Bankcard)localObject1).CUQ = ((JSONObject)localObject2).optLong("use_credit_line", 0L);
-          ((Bankcard)localObject1).CUR = ((JSONObject)localObject2).optLong("unuse_credit_line", 0L);
-          ((Bankcard)localObject1).CUS = ((JSONObject)localObject2).optString("payer_username", "");
-          ((Bankcard)localObject1).CUT = ((JSONObject)localObject2).optInt("hide_credit_line", 0);
-          ((Bankcard)localObject1).CUU = ((JSONObject)localObject2).optInt("card_type", 0);
-          ((Bankcard)localObject1).CUV = ((JSONObject)localObject2).optString("card_type_name", "");
-          ((Bankcard)localObject1).CUW = ((JSONObject)localObject2).optString("icon_url", "");
+          ((Bankcard)localObject1).Dmv = ((JSONObject)localObject2).optLong("total_credit_line", 0L);
+          ((Bankcard)localObject1).Dmw = ((JSONObject)localObject2).optLong("use_credit_line", 0L);
+          ((Bankcard)localObject1).Dmx = ((JSONObject)localObject2).optLong("unuse_credit_line", 0L);
+          ((Bankcard)localObject1).Dmy = ((JSONObject)localObject2).optString("payer_username", "");
+          ((Bankcard)localObject1).Dmz = ((JSONObject)localObject2).optInt("hide_credit_line", 0);
+          ((Bankcard)localObject1).DmA = ((JSONObject)localObject2).optInt("card_type", 0);
+          ((Bankcard)localObject1).DmB = ((JSONObject)localObject2).optString("card_type_name", "");
+          ((Bankcard)localObject1).DmC = ((JSONObject)localObject2).optString("icon_url", "");
         }
       }
       ((Bankcard)localObject1).field_mobile = URLDecoder.decode(paramJSONObject.optString("mobile").replaceAll("x", "%"), "utf-8");
-      if (bt.isNullOrNil(((Bankcard)localObject1).field_mobile)) {
+      if (bu.isNullOrNil(((Bankcard)localObject1).field_mobile)) {
         ((Bankcard)localObject1).field_mobile = paramJSONObject.optString("mobile_mask");
       }
       ((Bankcard)localObject1).field_onceQuotaKind = (paramJSONObject.optDouble("once_quota_3") / 100.0D);
@@ -275,14 +275,14 @@ public class d
       ((Bankcard)localObject1).field_dayQuotaKind = (paramJSONObject.optDouble("day_quota_3") / 100.0D);
       ((Bankcard)localObject1).field_dayQuotaVirtual = (paramJSONObject.optDouble("day_quota_1") / 100.0D);
       ((Bankcard)localObject1).field_bankcardTail = paramJSONObject.optString("bind_tail");
-      if (bt.isNullOrNil(((Bankcard)localObject1).field_bankcardTail)) {
+      if (bu.isNullOrNil(((Bankcard)localObject1).field_bankcardTail)) {
         ((Bankcard)localObject1).field_bankcardTail = paramJSONObject.optString("card_tail");
       }
-      ((Bankcard)localObject1).CUz = paramJSONObject.optString("card_mask");
+      ((Bankcard)localObject1).Dmf = paramJSONObject.optString("card_mask");
       ((Bankcard)localObject1).field_forbidWord = paramJSONObject.optString("forbid_word");
       ((Bankcard)localObject1).field_repay_url = paramJSONObject.optString("repay_url");
       ((Bankcard)localObject1).field_wxcreditState = 2;
-      if (bt.isNullOrNil(((Bankcard)localObject1).field_forbidWord)) {
+      if (bu.isNullOrNil(((Bankcard)localObject1).field_forbidWord)) {
         break label1193;
       }
       ((Bankcard)localObject1).field_bankcardState = 8;
@@ -291,8 +291,8 @@ public class d
     {
       for (;;)
       {
-        ad.i("MicroMsg.BankcardParser", "parseJson() JSONException:" + paramJSONObject.getMessage());
-        ad.printErrStackTrace("MicroMsg.BankcardParser", paramJSONObject, "", new Object[0]);
+        ae.i("MicroMsg.BankcardParser", "parseJson() JSONException:" + paramJSONObject.getMessage());
+        ae.printErrStackTrace("MicroMsg.BankcardParser", paramJSONObject, "", new Object[0]);
         AppMethodBeat.o(70227);
         return null;
         if (paramJSONObject.optInt("bank_flag", 1) != 0) {
@@ -305,8 +305,8 @@ public class d
     {
       for (;;)
       {
-        ad.i("MicroMsg.BankcardParser", "parseJson() UnsupportedEncodingException :" + paramJSONObject.getMessage());
-        ad.printErrStackTrace("MicroMsg.BankcardParser", paramJSONObject, "", new Object[0]);
+        ae.i("MicroMsg.BankcardParser", "parseJson() UnsupportedEncodingException :" + paramJSONObject.getMessage());
+        ae.printErrStackTrace("MicroMsg.BankcardParser", paramJSONObject, "", new Object[0]);
         AppMethodBeat.o(70227);
         return null;
         ((Bankcard)localObject1).field_bankcardState = 0;
@@ -315,24 +315,24 @@ public class d
     catch (Exception paramJSONObject)
     {
       label555:
-      ad.i("MicroMsg.BankcardParser", "parseJson() Exception:" + paramJSONObject.getMessage());
-      ad.printErrStackTrace("MicroMsg.BankcardParser", paramJSONObject, "", new Object[0]);
+      ae.i("MicroMsg.BankcardParser", "parseJson() Exception:" + paramJSONObject.getMessage());
+      ae.printErrStackTrace("MicroMsg.BankcardParser", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(70227);
       return null;
     }
-    if (bt.lQ("FQF", ((Bankcard)localObject1).field_bankcardType))
+    if (bu.lX("FQF", ((Bankcard)localObject1).field_bankcardType))
     {
-      ((Bankcard)localObject1).field_cardType |= Bankcard.CUx;
+      ((Bankcard)localObject1).field_cardType |= Bankcard.Dmd;
       localObject2 = paramJSONObject.optJSONObject("fqf_info");
       if (localObject2 != null)
       {
-        ((Bankcard)localObject1).CVa = ((JSONObject)localObject2).optString("fqf_pay_desk_title", "");
-        ((Bankcard)localObject1).CVb = ((JSONObject)localObject2).optString("fqf_title", "");
-        ((Bankcard)localObject1).CVc = ((JSONObject)localObject2).optString("fqf_sub_title", "");
+        ((Bankcard)localObject1).DmG = ((JSONObject)localObject2).optString("fqf_pay_desk_title", "");
+        ((Bankcard)localObject1).DmH = ((JSONObject)localObject2).optString("fqf_title", "");
+        ((Bankcard)localObject1).DmI = ((JSONObject)localObject2).optString("fqf_sub_title", "");
       }
     }
-    ((Bankcard)localObject1).CzQ = paramJSONObject.optString("tinyapp_username", "");
-    ((Bankcard)localObject1).CzR = paramJSONObject.optString("tinyapp_path", "");
+    ((Bankcard)localObject1).CRv = paramJSONObject.optString("tinyapp_username", "");
+    ((Bankcard)localObject1).CRw = paramJSONObject.optString("tinyapp_path", "");
     ((Bankcard)localObject1).field_bankPhone = paramJSONObject.optString("bank_phone");
     ((Bankcard)localObject1).field_fetchArriveTime = (paramJSONObject.optLong("fetch_pre_arrive_time") * 1000L);
     ((Bankcard)localObject1).field_fetchArriveTimeWording = paramJSONObject.optString("fetch_pre_arrive_time_wording");
@@ -342,7 +342,7 @@ public class d
       i = j;
       label739:
       if (i != 0) {
-        ((Bankcard)localObject1).field_cardType |= Bankcard.CUp;
+        ((Bankcard)localObject1).field_cardType |= Bankcard.DlV;
       }
       localObject2 = paramJSONObject.optString("support_micropay");
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -357,13 +357,13 @@ public class d
     {
       ((Bankcard)localObject1).field_arrive_type = paramJSONObject.optString("arrive_type");
       ((Bankcard)localObject1).field_avail_save_wording = paramJSONObject.optString("avail_save_wording");
-      ad.i("MicroMsg.BankcardParser", "getBalance() support_micropay:" + paramJSONObject.optString("support_micropay"));
+      ae.i("MicroMsg.BankcardParser", "getBalance() support_micropay:" + paramJSONObject.optString("support_micropay"));
       i = paramJSONObject.optInt("fetch_charge_rate", 0);
-      ad.i("MicroMsg.BankcardParser", "fetch_charge_rate:".concat(String.valueOf(i)));
+      ae.i("MicroMsg.BankcardParser", "fetch_charge_rate:".concat(String.valueOf(i)));
       ((Bankcard)localObject1).field_fetch_charge_rate = (i / 10000.0D);
-      ad.i("MicroMsg.BankcardParser", "field_fetch_charge_rate:" + ((Bankcard)localObject1).field_fetch_charge_rate);
+      ae.i("MicroMsg.BankcardParser", "field_fetch_charge_rate:" + ((Bankcard)localObject1).field_fetch_charge_rate);
       i = paramJSONObject.optInt("full_fetch_charge_fee", 0);
-      ad.i("MicroMsg.BankcardParser", "full_fetch_charge_fee:" + ((Bankcard)localObject1).field_full_fetch_charge_fee);
+      ae.i("MicroMsg.BankcardParser", "full_fetch_charge_fee:" + ((Bankcard)localObject1).field_full_fetch_charge_fee);
       ((Bankcard)localObject1).field_full_fetch_charge_fee = (i / 100.0D);
       ((Bankcard)localObject1).field_fetch_charge_info = paramJSONObject.optString("fetch_charge_info");
       ((Bankcard)localObject1).field_tips = paramJSONObject.optString("tips");
@@ -374,10 +374,10 @@ public class d
       ((Bankcard)localObject1).field_support_lqt_turn_in = paramJSONObject.optInt("support_lqt_turn_in", 0);
       ((Bankcard)localObject1).field_support_lqt_turn_out = paramJSONObject.optInt("support_lqt_turn_out", 0);
       ((Bankcard)localObject1).field_is_hightlight_pre_arrive_time_wording = paramJSONObject.optInt("is_hightlight_pre_arrive_time_wording", 0);
-      ((Bankcard)localObject1).CUX = paramJSONObject.optInt("support_foreign_mobile", 0);
+      ((Bankcard)localObject1).DmD = paramJSONObject.optInt("support_foreign_mobile", 0);
       ((Bankcard)localObject1).field_card_state_name = paramJSONObject.optString("card_state_name");
-      ((Bankcard)localObject1).CUY = paramJSONObject.optString("card_fetch_wording");
-      ((Bankcard)localObject1).CUZ = paramJSONObject.optLong("card_min_charge_fee");
+      ((Bankcard)localObject1).DmE = paramJSONObject.optString("card_fetch_wording");
+      ((Bankcard)localObject1).DmF = paramJSONObject.optLong("card_min_charge_fee");
       paramJSONObject = paramJSONObject.optJSONObject("prompt_info");
       if (paramJSONObject != null)
       {
@@ -413,7 +413,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.d
  * JD-Core Version:    0.7.0.1
  */

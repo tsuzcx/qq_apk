@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ki
   extends b
 {
+  public a dys;
+  
   public ki()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class ki
   
   private ki(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(19814);
+    this.dys = new a();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(19814);
+  }
+  
+  public static final class a
+  {
+    public byte[] dyt;
   }
 }
 

@@ -22,235 +22,246 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.LinkedList;
 
 public class LiveTalkRoomTipsBar
   extends LinearLayout
 {
-  public p IZZ;
-  private RelativeLayout Jaa;
-  public RelativeLayout Jab;
-  private RelativeLayout Jac;
-  private FrameLayout Jad;
-  private TextView Jae;
-  private WeImageView Jaf;
-  private View Jag;
-  public ListView Jah;
-  private View Jai;
-  private com.tencent.mm.ui.chatting.e.a Jaj;
-  private WeImageView Jak;
-  private View Jal;
-  private boolean Jam;
+  public p JuH;
+  private RelativeLayout JuI;
+  public RelativeLayout JuJ;
+  private RelativeLayout JuK;
+  private FrameLayout JuL;
+  private TextView JuM;
+  private WeImageView JuN;
+  private View JuO;
+  public ListView JuP;
+  private View JuQ;
+  private com.tencent.mm.ui.chatting.e.a JuR;
+  private WeImageView JuS;
+  private View JuT;
+  private boolean JuU;
   public Context context;
-  private View mJf;
-  private View oaY;
+  private View mOh;
+  private View ogP;
   
   public LiveTalkRoomTipsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(193690);
+    AppMethodBeat.i(186977);
     this.context = paramContext;
     initView();
-    AppMethodBeat.o(193690);
+    AppMethodBeat.o(186977);
   }
   
   @TargetApi(11)
   public LiveTalkRoomTipsBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(193689);
+    AppMethodBeat.i(186976);
     this.context = paramContext;
     initView();
-    AppMethodBeat.o(193689);
+    AppMethodBeat.o(186976);
   }
   
-  private void abE(int paramInt)
+  private void acm(int paramInt)
   {
-    AppMethodBeat.i(193694);
-    int j = com.tencent.mm.cc.a.ax(this.context, 2131165303);
+    AppMethodBeat.i(186982);
+    int j = com.tencent.mm.cb.a.ax(this.context, 2131165303);
     Object localObject = new DisplayMetrics();
     ((Activity)this.context).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
     int i = (((DisplayMetrics)localObject).heightPixels - j * 21) / 2;
     paramInt = j * ((paramInt + 1) * 8);
-    localObject = this.Jah.getLayoutParams();
+    localObject = this.JuP.getLayoutParams();
     if (paramInt > i) {}
     for (((ViewGroup.LayoutParams)localObject).height = i;; ((ViewGroup.LayoutParams)localObject).height = paramInt)
     {
-      this.Jah.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      ViewGroup.LayoutParams localLayoutParams = this.Jab.getLayoutParams();
+      this.JuP.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ViewGroup.LayoutParams localLayoutParams = this.JuJ.getLayoutParams();
       localLayoutParams.height = ((ViewGroup.LayoutParams)localObject).height;
-      this.Jab.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(193694);
+      this.JuJ.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(186982);
       return;
     }
   }
   
-  private void fwM()
+  private void fAN()
   {
-    AppMethodBeat.i(193695);
-    this.Jab.setVisibility(8);
+    AppMethodBeat.i(186983);
+    this.JuJ.setVisibility(8);
     setVisibility(8);
     setRootTipsBarBackground(false);
-    AppMethodBeat.o(193695);
+    AppMethodBeat.o(186983);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(193691);
+    AppMethodBeat.i(186979);
     inflate(getContext(), 2131496341, this);
-    this.Jaa = ((RelativeLayout)findViewById(2131307794));
-    this.Jaf = ((WeImageView)findViewById(2131307793));
-    this.Jaf.setIconColor(0);
-    this.Jae = ((TextView)findViewById(2131307799));
-    this.Jac = ((RelativeLayout)findViewById(2131307791));
-    this.mJf = findViewById(2131297453);
-    this.Jak = ((WeImageView)findViewById(2131296937));
-    this.Jal = findViewById(2131307790);
-    this.Jab = ((RelativeLayout)findViewById(2131307800));
-    this.Jad = ((FrameLayout)findViewById(2131307801));
-    this.Jah = ((ListView)findViewById(2131307796));
-    this.oaY = z.jO(this.context).inflate(2131496342, null);
-    this.Jah.addFooterView(this.oaY);
-    this.Jag = findViewById(2131307795);
-    aT(true, false);
-    this.Jaa.setOnClickListener(new View.OnClickListener()
+    this.JuI = ((RelativeLayout)findViewById(2131307794));
+    this.JuN = ((WeImageView)findViewById(2131307793));
+    this.JuN.setIconColor(0);
+    this.JuM = ((TextView)findViewById(2131307799));
+    this.JuK = ((RelativeLayout)findViewById(2131307791));
+    this.mOh = findViewById(2131297453);
+    this.JuS = ((WeImageView)findViewById(2131296937));
+    this.JuT = findViewById(2131307790);
+    this.JuJ = ((RelativeLayout)findViewById(2131307800));
+    this.JuL = ((FrameLayout)findViewById(2131307801));
+    this.JuP = ((ListView)findViewById(2131307796));
+    this.ogP = z.jV(this.context).inflate(2131496342, null);
+    this.JuP.addFooterView(this.ogP);
+    this.JuO = findViewById(2131307795);
+    aS(true, false);
+    this.JuI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193684);
+        AppMethodBeat.i(186971);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if (LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this).Jaq != null)
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if (LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this).JuY != null)
         {
-          int i = LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this).Jaq.getCount();
+          int i = LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this).JuY.getCount();
           if (i <= 0)
           {
-            ad.e("MicroMsg.LiveTalkRoomTipsBar", "click liveTipsBarLayout error, count:%d", new Object[] { Integer.valueOf(i) });
+            ae.e("MicroMsg.LiveTalkRoomTipsBar", "click liveTipsBarLayout error, count:%d", new Object[] { Integer.valueOf(i) });
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/LiveTalkRoomTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(193684);
+            AppMethodBeat.o(186971);
             return;
           }
-          ad.i("MicroMsg.LiveTalkRoomTipsBar", "click liveTipsBarLayout, isAnchorLiving:%b, isVisitorLiving:%b, count:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).isAnchorLiving()), Boolean.valueOf(((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).isVisitorLiving()), Integer.valueOf(i) });
+          ae.i("MicroMsg.LiveTalkRoomTipsBar", "click liveTipsBarLayout, isAnchorLiving:%b, isVisitorLiving:%b, count:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).isAnchorLiving()), Boolean.valueOf(((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).isVisitorLiving()), Integer.valueOf(i) });
           if (LiveTalkRoomTipsBar.b(LiveTalkRoomTipsBar.this).getVisibility() == 8) {
             LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this, false);
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/LiveTalkRoomTipsBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(193684);
+        AppMethodBeat.o(186971);
       }
     });
-    this.Jac.setOnClickListener(new View.OnClickListener()
+    this.JuK.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193685);
+        AppMethodBeat.i(186972);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this) != null)
         {
           LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this);
-          p.aVo(LiveTalkRoomTipsBar.c(LiveTalkRoomTipsBar.this).getTalkerUserName());
+          p.aWP(LiveTalkRoomTipsBar.c(LiveTalkRoomTipsBar.this).getTalkerUserName());
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/LiveTalkRoomTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(193685);
+        AppMethodBeat.o(186972);
       }
     });
-    this.Jag.setOnClickListener(new View.OnClickListener()
+    this.JuO.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193686);
+        AppMethodBeat.i(186973);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this, true);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/LiveTalkRoomTipsBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(193686);
+        AppMethodBeat.o(186973);
       }
     });
-    AppMethodBeat.o(193691);
+    AppMethodBeat.o(186979);
   }
   
-  public final void aT(boolean paramBoolean1, boolean paramBoolean2)
+  public final void aS(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(193692);
+    AppMethodBeat.i(186980);
     Animation localAnimation;
     if (paramBoolean1)
     {
-      if ((this.Jab.getVisibility() == 0) && (paramBoolean2))
+      if ((this.JuJ.getVisibility() == 0) && (paramBoolean2))
       {
         localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772109);
         localAnimation.setAnimationListener(new Animation.AnimationListener()
         {
           public final void onAnimationEnd(Animation paramAnonymousAnimation)
           {
-            AppMethodBeat.i(193687);
+            AppMethodBeat.i(186974);
             LiveTalkRoomTipsBar.b(LiveTalkRoomTipsBar.this).setVisibility(8);
-            LiveTalkRoomTipsBar.this.fwL();
-            AppMethodBeat.o(193687);
+            LiveTalkRoomTipsBar.this.fAM();
+            AppMethodBeat.o(186974);
           }
           
           public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
           
           public final void onAnimationStart(Animation paramAnonymousAnimation) {}
         });
-        this.Jab.startAnimation(localAnimation);
+        this.JuJ.startAnimation(localAnimation);
       }
       for (;;)
       {
         setRootTipsBarBackground(false);
-        AppMethodBeat.o(193692);
+        AppMethodBeat.o(186980);
         return;
-        this.Jab.setVisibility(8);
-        fwL();
+        this.JuJ.setVisibility(8);
+        fAM();
       }
     }
-    if (this.Jab.getVisibility() != 0)
+    if (this.JuJ.getVisibility() != 0)
     {
-      this.Jab.setVisibility(0);
+      this.JuJ.setVisibility(0);
       setRootTipsBarBackground(true);
       if (paramBoolean2)
       {
         localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772105);
-        this.Jab.startAnimation(localAnimation);
-        if (this.Jai != null) {
-          this.Jai.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772047));
+        this.JuJ.startAnimation(localAnimation);
+        if (this.JuQ != null) {
+          this.JuQ.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772047));
         }
       }
     }
-    fwL();
-    if (this.Jaj != null) {
-      this.Jaj.hideVKB();
+    fAM();
+    if (this.JuR != null) {
+      this.JuR.hideVKB();
     }
-    AppMethodBeat.o(193692);
+    AppMethodBeat.o(186980);
   }
   
-  public final void fwL()
+  public final void fAL()
   {
-    AppMethodBeat.i(193693);
-    if (!this.Jam)
+    AppMethodBeat.i(186978);
+    if (this.JuH != null)
     {
-      fwM();
-      AppMethodBeat.o(193693);
+      p localp = this.JuH;
+      ((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).getLiveTipsBarStorage().gTL = localp.gTL;
+    }
+    AppMethodBeat.o(186978);
+  }
+  
+  public final void fAM()
+  {
+    AppMethodBeat.i(186981);
+    if (!this.JuU)
+    {
+      fAN();
+      AppMethodBeat.o(186981);
       return;
     }
     LinkedList localLinkedList;
     Object localObject;
-    if (this.IZZ != null)
+    if (this.JuH != null)
     {
-      localLinkedList = this.IZZ.fwN();
+      localLinkedList = this.JuH.fAP();
       if ((localLinkedList == null) || (localLinkedList.size() <= 0))
       {
         if (localLinkedList == null) {}
         for (localObject = "null";; localObject = "0")
         {
-          ad.e("MicroMsg.LiveTalkRoomTipsBar", "showLiveTipsBar List error:%s", new Object[] { localObject });
-          fwM();
-          AppMethodBeat.o(193693);
+          ae.e("MicroMsg.LiveTalkRoomTipsBar", "showLiveTipsBar List error:%s", new Object[] { localObject });
+          fAN();
+          AppMethodBeat.o(186981);
           return;
         }
       }
@@ -260,121 +271,121 @@ public class LiveTalkRoomTipsBar
         break label286;
       }
       localObject = "null";
-      ad.i("MicroMsg.LiveTalkRoomTipsBar", "showLiveTipsBar List size:%s, isAnchorLiving:%b, isVisitorLiving:%b", new Object[] { localObject, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      if (((!bool1) && (!bool2)) || (this.IZZ == null) || (!this.IZZ.aVn(((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).getLivingRoomId()))) {
+      ae.i("MicroMsg.LiveTalkRoomTipsBar", "showLiveTipsBar List size:%s, isAnchorLiving:%b, isVisitorLiving:%b", new Object[] { localObject, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if (((!bool1) && (!bool2)) || (this.JuH == null) || (!this.JuH.aWO(((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).getLivingRoomId()))) {
         break label309;
       }
       localObject = this.context.getString(2131766728, new Object[] { Integer.valueOf(localLinkedList.size()) });
-      if (this.Jab.getVisibility() != 0) {
+      if (this.JuJ.getVisibility() != 0) {
         break label298;
       }
-      this.Jae.setText((CharSequence)localObject);
-      abE(localLinkedList.size());
+      this.JuM.setText((CharSequence)localObject);
+      acm(localLinkedList.size());
       setRootTipsBarBackground(true);
-      this.IZZ.Jaq.notifyDataSetChanged();
+      this.JuH.JuY.notifyDataSetChanged();
     }
     for (;;)
     {
       setVisibility(0);
-      AppMethodBeat.o(193693);
+      AppMethodBeat.o(186981);
       return;
       label286:
       localObject = Integer.valueOf(localLinkedList.size());
       break;
       label298:
-      this.Jae.setText((CharSequence)localObject);
+      this.JuM.setText((CharSequence)localObject);
       continue;
       label309:
       localObject = this.context.getString(2131766729, new Object[] { Integer.valueOf(localLinkedList.size()) });
-      if (this.Jab.getVisibility() == 0)
+      if (this.JuJ.getVisibility() == 0)
       {
-        this.Jae.setText((CharSequence)localObject);
-        abE(localLinkedList.size());
+        this.JuM.setText((CharSequence)localObject);
+        acm(localLinkedList.size());
         setRootTipsBarBackground(true);
-        this.IZZ.Jaq.notifyDataSetChanged();
+        this.JuH.JuY.notifyDataSetChanged();
       }
       else
       {
-        this.Jae.setText((CharSequence)localObject);
+        this.JuM.setText((CharSequence)localObject);
       }
     }
   }
   
   public void setChattingContext(com.tencent.mm.ui.chatting.e.a parama)
   {
-    this.Jaj = parama;
+    this.JuR = parama;
   }
   
   public void setChattingUserName(String paramString)
   {
-    if (this.IZZ != null) {
-      this.IZZ.gGz = paramString;
+    if (this.JuH != null) {
+      this.JuH.gJi = paramString;
     }
   }
   
   public void setInChatRoom(boolean paramBoolean)
   {
-    this.Jam = paramBoolean;
+    this.JuU = paramBoolean;
   }
   
   public void setRootTipsBarBackground(View paramView)
   {
-    this.Jai = paramView;
+    this.JuQ = paramView;
   }
   
   public void setRootTipsBarBackground(boolean paramBoolean)
   {
-    AppMethodBeat.i(193696);
-    if (this.Jai != null) {
+    AppMethodBeat.i(186984);
+    if (this.JuQ != null) {
       if (paramBoolean)
       {
-        this.Jai.setVisibility(0);
-        this.Jai.setOnClickListener(new View.OnClickListener()
+        this.JuQ.setVisibility(0);
+        this.JuQ.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(193688);
+            AppMethodBeat.i(186975);
             b localb = new b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/LiveTalkRoomTipsBar$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             LiveTalkRoomTipsBar.a(LiveTalkRoomTipsBar.this, true);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/LiveTalkRoomTipsBar$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(193688);
+            AppMethodBeat.o(186975);
           }
         });
-        if (this.mJf != null) {
-          this.mJf.setVisibility(8);
+        if (this.mOh != null) {
+          this.mOh.setVisibility(8);
         }
-        if (this.Jak != null) {
-          this.Jak.setVisibility(4);
+        if (this.JuS != null) {
+          this.JuS.setVisibility(4);
         }
-        if (this.Jal != null) {
-          this.Jal.setBackgroundColor(0);
+        if (this.JuT != null) {
+          this.JuT.setBackgroundColor(0);
         }
-        if (this.Jac != null)
+        if (this.JuK != null)
         {
-          this.Jac.setVisibility(0);
-          AppMethodBeat.o(193696);
+          this.JuK.setVisibility(0);
+          AppMethodBeat.o(186984);
         }
       }
       else
       {
-        this.Jai.setVisibility(8);
-        if (this.mJf != null) {
-          this.mJf.setVisibility(0);
+        this.JuQ.setVisibility(8);
+        if (this.mOh != null) {
+          this.mOh.setVisibility(0);
         }
-        if (this.Jak != null) {
-          this.Jak.setVisibility(0);
+        if (this.JuS != null) {
+          this.JuS.setVisibility(0);
         }
-        if (this.Jal != null) {
-          this.Jal.setBackgroundResource(2131234968);
+        if (this.JuT != null) {
+          this.JuT.setBackgroundResource(2131234968);
         }
-        if (this.Jac != null) {
-          this.Jac.setVisibility(4);
+        if (this.JuK != null) {
+          this.JuK.setVisibility(8);
         }
       }
     }
-    AppMethodBeat.o(193696);
+    AppMethodBeat.o(186984);
   }
 }
 

@@ -7,24 +7,24 @@ import java.util.LinkedList;
 
 public final class j
 {
-  private static LinkedList<s> DPp;
-  private static HashMap<String, s> DPq;
+  private static LinkedList<s> Ehp;
+  private static HashMap<String, s> Ehq;
   private static Object lock;
   
   static
   {
     AppMethodBeat.i(78357);
     lock = new Object();
-    DPp = new LinkedList();
-    DPq = new HashMap();
+    Ehp = new LinkedList();
+    Ehq = new HashMap();
     AppMethodBeat.o(78357);
   }
   
-  public static s aGW(String paramString)
+  public static s aIq(String paramString)
   {
-    AppMethodBeat.i(207882);
-    paramString = (s)DPq.get(paramString);
-    AppMethodBeat.o(207882);
+    AppMethodBeat.i(198062);
+    paramString = (s)Ehq.get(paramString);
+    AppMethodBeat.o(198062);
     return paramString;
   }
   
@@ -33,10 +33,10 @@ public final class j
     AppMethodBeat.i(78355);
     synchronized (lock)
     {
-      if (!DPp.contains(params))
+      if (!Ehp.contains(params))
       {
-        DPp.add(params);
-        DPq.put(d(params), params);
+        Ehp.add(params);
+        Ehq.put(d(params), params);
       }
       AppMethodBeat.o(78355);
       return;
@@ -48,8 +48,8 @@ public final class j
     AppMethodBeat.i(78356);
     synchronized (lock)
     {
-      DPp.remove(params);
-      DPq.remove(d(params));
+      Ehp.remove(params);
+      Ehq.remove(d(params));
       AppMethodBeat.o(78356);
       return;
     }
@@ -57,19 +57,19 @@ public final class j
   
   public static String d(s params)
   {
-    AppMethodBeat.i(207884);
+    AppMethodBeat.i(198064);
     params = "luggage_page_" + params.hashCode();
-    AppMethodBeat.o(207884);
+    AppMethodBeat.o(198064);
     return params;
   }
   
-  public static LinkedList<s> ePw()
+  public static LinkedList<s> eTi()
   {
-    AppMethodBeat.i(207883);
+    AppMethodBeat.i(198063);
     synchronized (lock)
     {
-      LinkedList localLinkedList = new LinkedList(DPp);
-      AppMethodBeat.o(207883);
+      LinkedList localLinkedList = new LinkedList(Ehp);
+      AppMethodBeat.o(198063);
       return localLinkedList;
     }
   }

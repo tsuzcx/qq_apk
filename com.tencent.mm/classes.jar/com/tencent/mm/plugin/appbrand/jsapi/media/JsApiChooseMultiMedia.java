@@ -9,19 +9,20 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.permission.p;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.permission.r;
 import com.tencent.mm.plugin.appbrand.utils.b.a.b;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -34,7 +35,7 @@ public final class JsApiChooseMultiMedia
   public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46542);
-    if (n.KE(paramc.getAppId()).jzb)
+    if (o.Ld(paramc.getAppId()).jCb)
     {
       paramc.h(paramInt, e("cancel", null));
       AppMethodBeat.o(46542);
@@ -49,21 +50,21 @@ public final class JsApiChooseMultiMedia
     }
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, data is null");
+      ae.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, data is null");
       paramc.h(paramInt, e("fail:data is null", null));
       AppMethodBeat.o(46542);
       return;
     }
     int i = paramJSONObject.optInt("maxDuration", 10);
-    ad.i("MicroMsg.JsApiChooseMultiMedia", "videoMaxDuration: %d.", new Object[] { Integer.valueOf(i) });
+    ae.i("MicroMsg.JsApiChooseMultiMedia", "videoMaxDuration: %d.", new Object[] { Integer.valueOf(i) });
     if ((i <= 0) || (i > 1800))
     {
-      ad.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, invalid maxDuration parameter");
+      ae.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, invalid maxDuration parameter");
       paramc.h(paramInt, e("fail:invalid maxDuration parameter", null));
       AppMethodBeat.o(46542);
       return;
     }
-    localContext.getSharedPreferences(aj.fkC() + "_locCache", 0).edit().putString("locStr", null).apply();
+    localContext.getSharedPreferences(ak.fow() + "_locCache", 0).edit().putString("locStr", null).apply();
     Object localObject1 = new a.b()
     {
       public final void a(int paramAnonymousInt, String paramAnonymousString, com.tencent.mm.plugin.appbrand.utils.b.a.a paramAnonymousa)
@@ -77,13 +78,13 @@ public final class JsApiChooseMultiMedia
           paramAnonymousString.append(paramAnonymousInt);
           paramAnonymousString.append(",");
           paramAnonymousString.append(i);
-          localContext.getSharedPreferences(aj.fkC() + "_locCache", 0).edit().putString("locStr", paramAnonymousString.toString()).apply();
-          ad.d("MicroMsg.JsApiChooseMultiMedia", "onLocationChange latitude %f, longitude: %f, locStr: %s.", new Object[] { Double.valueOf(paramAnonymousa.latitude), Double.valueOf(paramAnonymousa.longitude), paramAnonymousString });
+          localContext.getSharedPreferences(ak.fow() + "_locCache", 0).edit().putString("locStr", paramAnonymousString.toString()).apply();
+          ae.d("MicroMsg.JsApiChooseMultiMedia", "onLocationChange latitude %f, longitude: %f, locStr: %s.", new Object[] { Double.valueOf(paramAnonymousa.latitude), Double.valueOf(paramAnonymousa.longitude), paramAnonymousString });
           ((com.tencent.mm.plugin.appbrand.utils.b.a)e.K(com.tencent.mm.plugin.appbrand.utils.b.a.class)).c("wgs84", this, null);
           AppMethodBeat.o(46493);
           return;
         }
-        ad.e("MicroMsg.JsApiChooseMultiMedia", "onLocationChange error, errCode: %d.", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.e("MicroMsg.JsApiChooseMultiMedia", "onLocationChange error, errCode: %d.", new Object[] { Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(46493);
       }
     };
@@ -98,7 +99,7 @@ public final class JsApiChooseMultiMedia
       d2 = ((JSONObject)localObject1).optDouble("longitude");
       d1 = ((JSONObject)localObject1).optDouble("latitude");
       if ((!Double.isNaN(d2)) && (!Double.isNaN(d1))) {
-        break label780;
+        break label781;
       }
       d2 = 181.0D;
       d1 = 91.0D;
@@ -118,24 +119,24 @@ public final class JsApiChooseMultiMedia
         int k = paramJSONObject.optInt("pickAlbumType", 0);
         boolean bool2;
         boolean bool3;
-        label426:
+        label427:
         boolean bool5;
         boolean bool4;
-        label445:
+        label446:
         int m;
         if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0))
         {
           bool2 = true;
           bool3 = true;
           if ((localJSONArray != null) && (localJSONArray.length() != 0)) {
-            break label547;
+            break label548;
           }
           bool5 = false;
           bool4 = false;
           if (!bool2) {
-            break label621;
+            break label622;
           }
-          p.b(paramc.getAppId(), new android.support.v4.app.a.a()
+          r.b(paramc.getAppId(), new android.support.v4.app.a.a()
           {
             public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
             {
@@ -157,7 +158,7 @@ public final class JsApiChooseMultiMedia
           });
           paramJSONObject = paramc.getContext();
           if ((paramJSONObject instanceof Activity)) {
-            break label576;
+            break label577;
           }
           paramc.h(paramInt, e("fail", null));
           m = 0;
@@ -165,7 +166,7 @@ public final class JsApiChooseMultiMedia
         for (;;)
         {
           if (m != 0) {
-            break label621;
+            break label622;
           }
           AppMethodBeat.o(46542);
           return;
@@ -173,29 +174,29 @@ public final class JsApiChooseMultiMedia
           break;
           bool2 = ((JSONArray)localObject2).toString().contains("camera");
           bool3 = ((JSONArray)localObject2).toString().contains("album");
-          break label426;
-          label547:
+          break label427;
+          label548:
           bool4 = localJSONArray.toString().contains("video");
           bool5 = localJSONArray.toString().contains("photo");
-          break label445;
-          label576:
+          break label446;
+          label577:
           boolean bool6 = b.a((Activity)paramJSONObject, "android.permission.CAMERA", 113, "", "");
           m = bool6;
           if (bool6)
           {
-            p.TS(paramc.getAppId());
+            r.UC(paramc.getAppId());
             m = bool6;
           }
         }
-        label621:
-        n.KF(paramc.getAppId()).jzb = true;
-        g.a(paramc.getAppId(), new g.c()
+        label622:
+        o.Le(paramc.getAppId()).jCb = true;
+        h.a(paramc.getAppId(), new h.c()
         {
           public final void onResume()
           {
             AppMethodBeat.i(46494);
-            n.KF(paramc.getAppId()).jzb = false;
-            g.b(paramc.getAppId(), this);
+            o.Le(paramc.getAppId()).jCb = false;
+            h.b(paramc.getAppId(), this);
             AppMethodBeat.o(46494);
           }
         });
@@ -205,20 +206,20 @@ public final class JsApiChooseMultiMedia
         localObject2 = com.tencent.mm.modelgeo.a.a.c(d2, d1);
         paramJSONObject.longitude = localObject2[0];
         paramJSONObject.latitude = localObject2[1];
-        paramJSONObject.jDf = ((String)localObject1);
-        paramJSONObject.ikO = d3;
-        paramJSONObject.kTo = bool2;
-        paramJSONObject.kTp = bool3;
-        paramJSONObject.juP = i;
-        paramJSONObject.kUl = bool4;
-        paramJSONObject.kUm = bool5;
-        paramJSONObject.kUn = k;
-        paramJSONObject.kUo = bool1;
+        paramJSONObject.jGd = ((String)localObject1);
+        paramJSONObject.inH = d3;
+        paramJSONObject.kWX = bool2;
+        paramJSONObject.kWY = bool3;
+        paramJSONObject.jxK = i;
+        paramJSONObject.kXU = bool4;
+        paramJSONObject.kXV = bool5;
+        paramJSONObject.kXW = k;
+        paramJSONObject.kXX = bool1;
         com.tencent.mm.plugin.appbrand.ipc.a.a(localContext, paramJSONObject, new AppBrandProxyUIProcessTask.b() {});
         AppMethodBeat.o(46542);
         return;
       }
-      label780:
+      label781:
       bool1 = false;
     }
   }
@@ -229,15 +230,15 @@ public final class JsApiChooseMultiMedia
     public static final Parcelable.Creator<ChooseRequest> CREATOR;
     String appId;
     int count;
-    double ikO;
-    String jDf;
-    int juP;
-    boolean kTo;
-    boolean kTp;
-    boolean kUl;
-    boolean kUm;
-    int kUn;
-    boolean kUo;
+    double inH;
+    String jGd;
+    int jxK;
+    boolean kWX;
+    boolean kWY;
+    boolean kXU;
+    boolean kXV;
+    int kXW;
+    boolean kXX;
     double latitude;
     double longitude;
     
@@ -257,17 +258,17 @@ public final class JsApiChooseMultiMedia
       AppMethodBeat.o(46500);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+    public final Class<? extends AppBrandProxyUIProcessTask> bhv()
     {
       return JsApiChooseMultiMedia.a.class;
     }
     
-    public final boolean bhR()
+    public final boolean biA()
     {
       return true;
     }
     
-    public final String bhS()
+    public final String biB()
     {
       return "GalleryChooseMultiMedia";
     }
@@ -285,32 +286,32 @@ public final class JsApiChooseMultiMedia
       this.count = paramParcel.readInt();
       this.longitude = paramParcel.readDouble();
       this.latitude = paramParcel.readDouble();
-      this.jDf = paramParcel.readString();
-      this.ikO = paramParcel.readDouble();
+      this.jGd = paramParcel.readString();
+      this.inH = paramParcel.readDouble();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.kTo = bool1;
+        this.kWX = bool1;
         if (paramParcel.readByte() == 0) {
           break label152;
         }
         bool1 = true;
         label78:
-        this.kTp = bool1;
-        this.juP = paramParcel.readInt();
+        this.kWY = bool1;
+        this.jxK = paramParcel.readInt();
         if (paramParcel.readByte() == 0) {
           break label157;
         }
         bool1 = true;
         label100:
-        this.kUl = bool1;
+        this.kXU = bool1;
         if (paramParcel.readByte() == 0) {
           break label162;
         }
         bool1 = true;
         label114:
-        this.kUm = bool1;
-        this.kUn = paramParcel.readInt();
+        this.kXV = bool1;
+        this.kXW = paramParcel.readInt();
         if (paramParcel.readByte() == 0) {
           break label167;
         }
@@ -321,7 +322,7 @@ public final class JsApiChooseMultiMedia
       label167:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.kUo = bool1;
+        this.kXX = bool1;
         AppMethodBeat.o(46499);
         return;
         bool1 = false;
@@ -343,33 +344,33 @@ public final class JsApiChooseMultiMedia
       paramParcel.writeInt(this.count);
       paramParcel.writeDouble(this.longitude);
       paramParcel.writeDouble(this.latitude);
-      paramParcel.writeString(this.jDf);
-      paramParcel.writeDouble(this.ikO);
-      if (this.kTo)
+      paramParcel.writeString(this.jGd);
+      paramParcel.writeDouble(this.inH);
+      if (this.kWX)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.kTp) {
+        if (!this.kWY) {
           break label154;
         }
         b1 = 1;
         label79:
         paramParcel.writeByte(b1);
-        paramParcel.writeInt(this.juP);
-        if (!this.kUl) {
+        paramParcel.writeInt(this.jxK);
+        if (!this.kXU) {
           break label159;
         }
         b1 = 1;
         label101:
         paramParcel.writeByte(b1);
-        if (!this.kUm) {
+        if (!this.kXV) {
           break label164;
         }
         b1 = 1;
         label115:
         paramParcel.writeByte(b1);
-        paramParcel.writeInt(this.kUn);
-        if (!this.kUo) {
+        paramParcel.writeInt(this.kXW);
+        if (!this.kXX) {
           break label169;
         }
       }
@@ -394,10 +395,53 @@ public final class JsApiChooseMultiMedia
     }
   }
   
+  static final class ChooseResult
+    extends AppBrandProxyUIProcessTask.ProcessResult
+  {
+    public static final Parcelable.Creator<ChooseResult> CREATOR;
+    int bZU;
+    String kXY;
+    
+    static
+    {
+      AppMethodBeat.i(46505);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(46505);
+    }
+    
+    ChooseResult() {}
+    
+    ChooseResult(Parcel paramParcel)
+    {
+      super();
+    }
+    
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final void j(Parcel paramParcel)
+    {
+      AppMethodBeat.i(46503);
+      this.bZU = paramParcel.readInt();
+      this.kXY = paramParcel.readString();
+      AppMethodBeat.o(46503);
+    }
+    
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(46504);
+      paramParcel.writeInt(this.bZU);
+      paramParcel.writeString(this.kXY);
+      AppMethodBeat.o(46504);
+    }
+  }
+  
   static final class b
   {
+    public String cpm;
     public int height;
-    public String jVL;
     public int width;
   }
 }

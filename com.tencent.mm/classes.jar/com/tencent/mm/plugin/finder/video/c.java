@@ -9,7 +9,7 @@ import d.l;
 import java.nio.FloatBuffer;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderGLTextureRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "videoHeight", "videoWidth", "initDrawCoordBuffer", "", "setVideoSize", "width", "height", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderGLTextureRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "videoHeight", "videoWidth", "initDrawCoordBuffer", "", "setVideoSize", "width", "height", "plugin-finder_release"})
 public final class c
   extends b
 {
@@ -21,24 +21,24 @@ public final class c
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
-  public final void auc()
+  public final void aur()
   {
-    AppMethodBeat.i(204610);
+    AppMethodBeat.i(205234);
     if (this.scaleType == 4)
     {
-      Object localObject = aub();
+      Object localObject = auq();
       float f7 = ((RectF)localObject).left;
       float f1 = ((RectF)localObject).top;
       float f5 = ((RectF)localObject).right;
       float f2 = ((RectF)localObject).bottom;
-      localObject = this.hnr;
+      localObject = this.hqf;
       float[] arrayOfFloat;
       int i;
       if (localObject != null)
       {
-        arrayOfFloat = com.tencent.mm.media.k.c.hoJ;
+        arrayOfFloat = com.tencent.mm.media.k.c.hrx;
         arrayOfFloat = Arrays.copyOf(arrayOfFloat, arrayOfFloat.length);
-        c.a locala = c.a.sNm;
+        c.a locala = c.a.sYx;
         if (this.videoWidth <= 0) {
           break label354;
         }
@@ -49,7 +49,7 @@ public final class c
       }
       label354:
       label363:
-      for (int j = this.videoHeight;; j = this.gKK)
+      for (int j = this.videoHeight;; j = this.gNt)
       {
         float f6 = c.a.al(((Rect)localObject).left / i);
         float f8 = c.a.al(((Rect)localObject).right / i);
@@ -69,22 +69,22 @@ public final class c
         arrayOfFloat[5] = f4;
         arrayOfFloat[6] = f7;
         arrayOfFloat[7] = f4;
-        this.gLl.put(com.tencent.mm.media.k.c.hoJ);
-        this.gLl.position(0);
-        this.gLl.put(arrayOfFloat);
-        this.gLl.position(0);
-        this.gLm.position(0);
-        this.gLm.position(0);
-        this.gLm.put(com.tencent.mm.media.k.c.hoI);
-        this.gLm.position(0);
-        AppMethodBeat.o(204610);
+        this.gNU.put(com.tencent.mm.media.k.c.hrx);
+        this.gNU.position(0);
+        this.gNU.put(arrayOfFloat);
+        this.gNU.position(0);
+        this.gNV.position(0);
+        this.gNV.position(0);
+        this.gNV.put(com.tencent.mm.media.k.c.hrw);
+        this.gNV.position(0);
+        AppMethodBeat.o(205234);
         return;
-        i = this.gKJ;
+        i = this.gNs;
         break;
       }
     }
-    super.auc();
-    AppMethodBeat.o(204610);
+    super.aur();
+    AppMethodBeat.o(205234);
   }
 }
 

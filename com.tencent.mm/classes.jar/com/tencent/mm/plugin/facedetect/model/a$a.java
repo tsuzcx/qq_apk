@@ -4,9 +4,9 @@ import com.tencent.mm.loader.j.b;
 
 public abstract interface a$a
 {
-  public static final String rgW = b.arU() + "face_debug/";
-  public static final String rgX = b.arU() + "facedir/";
-  public static final String rgY = b.arU() + "face_debug_template/";
+  public static final String rpa = b.asj() + "face_debug/";
+  public static final String rpb = b.asj() + "facedir/";
+  public static final String rpc = b.asj() + "face_debug_template/";
 }
 
 

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.radar.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqi;
+import com.tencent.mm.protocal.protobuf.crc;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarManager$LatestChangeStat;", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "(Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "getMember", "()Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-radar_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/model/RadarManager$LatestChangeStat;", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "(Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "getMember", "()Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-radar_release"})
 public final class e$c
 {
-  public final cqi xjd;
-  public final c.e xje;
+  public final crc xza;
+  public final c.e xzb;
   
-  public e$c(cqi paramcqi, c.e parame)
+  public e$c(crc paramcrc, c.e parame)
   {
     AppMethodBeat.i(138552);
-    this.xjd = paramcqi;
-    this.xje = parame;
+    this.xza = paramcrc;
+    this.xzb = parame;
     AppMethodBeat.o(138552);
   }
   
@@ -27,7 +27,7 @@ public final class e$c
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!p.i(this.xjd, paramObject.xjd)) || (!p.i(this.xje, paramObject.xje))) {}
+        if ((!p.i(this.xza, paramObject.xza)) || (!p.i(this.xzb, paramObject.xzb))) {}
       }
     }
     else
@@ -43,11 +43,11 @@ public final class e$c
   {
     int j = 0;
     AppMethodBeat.i(138554);
-    Object localObject = this.xjd;
+    Object localObject = this.xza;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.xje;
+      localObject = this.xzb;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,7 +59,7 @@ public final class e$c
   public final String toString()
   {
     AppMethodBeat.i(138553);
-    String str = "LatestChangeStat(member=" + this.xjd + ", state=" + this.xje + ")";
+    String str = "LatestChangeStat(member=" + this.xza + ", state=" + this.xzb + ")";
     AppMethodBeat.o(138553);
     return str;
   }

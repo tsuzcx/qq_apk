@@ -3,133 +3,92 @@ package com.tencent.mm.plugin.webview.luggage;
 import com.tencent.luggage.d.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class q
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private static final Set<String> DPY;
-  private g DOl;
-  public String DPV;
-  private boolean DPW;
-  private String DPX;
+  private static final Set<String> EhY;
+  private g Egl;
+  public String EhV;
+  private boolean EhW;
+  private String EhX;
   
   static
   {
     AppMethodBeat.i(78425);
     HashSet localHashSet = new HashSet();
-    DPY = localHashSet;
+    EhY = localHashSet;
     localHashSet.add("title");
-    DPY.add("webpageTitle");
-    DPY.add("srcUsername");
-    DPY.add("srcDisplayname");
-    DPY.add("mode");
-    DPY.add("KTemplateId");
-    DPY.add("KPublisherId");
+    EhY.add("webpageTitle");
+    EhY.add("srcUsername");
+    EhY.add("srcDisplayname");
+    EhY.add("mode");
+    EhY.add("KTemplateId");
+    EhY.add("KPublisherId");
     AppMethodBeat.o(78425);
   }
   
   public q(com.tencent.mm.plugin.ball.a.f paramf, g paramg)
   {
     super(paramf);
-    this.DOl = paramg;
+    this.Egl = paramg;
   }
   
-  public final void Wm(String paramString)
+  public final void WY(String paramString)
   {
     AppMethodBeat.i(78423);
-    if ((this.nGj != null) && (!bt.isNullOrNil(this.nGj.name)) && (!this.nGj.name.startsWith("http://")) && (!this.nGj.name.startsWith("https://")) && (!bt.isNullOrNil(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+    if ((this.nLK != null) && (!bu.isNullOrNil(this.nLK.name)) && (!this.nLK.name.startsWith("http://")) && (!this.nLK.name.startsWith("https://")) && (!bu.isNullOrNil(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
     {
       AppMethodBeat.o(78423);
       return;
     }
-    super.Wm(paramString);
+    super.WY(paramString);
     AppMethodBeat.o(78423);
   }
   
-  public final void aGX(String paramString)
+  public final void aIr(String paramString)
   {
     AppMethodBeat.i(78424);
-    this.DPX = paramString;
-    if (!this.DPW)
+    this.EhX = paramString;
+    if (!this.EhW)
     {
       AppMethodBeat.o(78424);
       return;
     }
-    bKG().dwX = paramString;
-    bKC();
+    bLD().dyc = paramString;
+    bLz();
     AppMethodBeat.o(78424);
   }
   
   public final void ac(int paramInt, String paramString)
   {
     AppMethodBeat.i(78417);
-    ad.i("MicroMsg.LuggageWebViewFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ae.i("MicroMsg.LuggageWebViewFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
     super.ac(paramInt, paramString);
-    bKG().nGc = 8;
-    bKG().nGb = 32;
-    bKC();
-    if ((this.nHb.getIntent() != null) && (this.nGj.ime != null))
+    bLD().nLC = 8;
+    bLD().nLB = 32;
+    bLz();
+    if ((this.nME.getIntent() != null) && (this.nLK.ioY != null))
     {
-      com.tencent.mm.plugin.ball.f.a.b(this.nHb.getIntent(), this.nGj.ime, DPY);
-      bKC();
+      com.tencent.mm.plugin.ball.f.a.b(this.nME.getIntent(), this.nLK.ioY, EhY);
+      bLz();
     }
-    this.DPV = paramString;
-    this.DPW = true;
-    if (!bt.isNullOrNil(this.DPX)) {
-      aGX(this.DPX);
+    this.EhV = paramString;
+    this.EhW = true;
+    if (!bu.isNullOrNil(this.EhX)) {
+      aIr(this.EhX);
     }
     AppMethodBeat.o(78417);
   }
   
-  public final boolean bgA()
-  {
-    AppMethodBeat.i(78415);
-    boolean bool = this.DOl.ePk();
-    AppMethodBeat.o(78415);
-    return bool;
-  }
-  
-  public final void bgB()
-  {
-    AppMethodBeat.i(78420);
-    ad.i("MicroMsg.LuggageWebViewFloatBallHelper", "onEnterPage :%s", new Object[] { Integer.valueOf(this.DOl.hashCode()) });
-    super.bgB();
-    AppMethodBeat.o(78420);
-  }
-  
-  public final void bgC()
-  {
-    AppMethodBeat.i(78421);
-    ad.i("MicroMsg.LuggageWebViewFloatBallHelper", "onExitPage :%s", new Object[] { Integer.valueOf(this.DOl.hashCode()) });
-    super.bgC();
-    AppMethodBeat.o(78421);
-  }
-  
-  public final void bgD()
-  {
-    AppMethodBeat.i(78422);
-    ad.i("MicroMsg.LuggageWebViewFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent:%s", new Object[] { Integer.valueOf(this.DOl.hashCode()) });
-    super.bgD();
-    this.nHb.gg(false);
-    AppMethodBeat.o(78422);
-  }
-  
-  public final boolean bgI()
-  {
-    AppMethodBeat.i(207902);
-    boolean bool = this.DOl.ePk();
-    AppMethodBeat.o(207902);
-    return bool;
-  }
-  
-  public final boolean bgz()
+  public final boolean bhh()
   {
     AppMethodBeat.i(78416);
-    if ((this.DOl.ePk()) && (this.nHb.bgz()))
+    if ((this.Egl.eSW()) && (this.nME.bhh()))
     {
       AppMethodBeat.o(78416);
       return true;
@@ -138,19 +97,60 @@ public final class q
     return false;
   }
   
+  public final boolean bhi()
+  {
+    AppMethodBeat.i(78415);
+    boolean bool = this.Egl.eSW();
+    AppMethodBeat.o(78415);
+    return bool;
+  }
+  
+  public final void bhj()
+  {
+    AppMethodBeat.i(78420);
+    ae.i("MicroMsg.LuggageWebViewFloatBallHelper", "onEnterPage :%s", new Object[] { Integer.valueOf(this.Egl.hashCode()) });
+    super.bhj();
+    AppMethodBeat.o(78420);
+  }
+  
+  public final void bhk()
+  {
+    AppMethodBeat.i(78421);
+    ae.i("MicroMsg.LuggageWebViewFloatBallHelper", "onExitPage :%s", new Object[] { Integer.valueOf(this.Egl.hashCode()) });
+    super.bhk();
+    AppMethodBeat.o(78421);
+  }
+  
+  public final void bhl()
+  {
+    AppMethodBeat.i(78422);
+    ae.i("MicroMsg.LuggageWebViewFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent:%s", new Object[] { Integer.valueOf(this.Egl.hashCode()) });
+    super.bhl();
+    this.nME.ge(false);
+    AppMethodBeat.o(78422);
+  }
+  
+  public final boolean bhq()
+  {
+    AppMethodBeat.i(198082);
+    boolean bool = this.Egl.eSW();
+    AppMethodBeat.o(198082);
+    return bool;
+  }
+  
   public final void onDestroy()
   {
     AppMethodBeat.i(78419);
-    ad.i("MicroMsg.LuggageWebViewFloatBallHelper", "onDestroy :%s", new Object[] { Integer.valueOf(this.DOl.hashCode()) });
+    ae.i("MicroMsg.LuggageWebViewFloatBallHelper", "onDestroy :%s", new Object[] { Integer.valueOf(this.Egl.hashCode()) });
     super.onDestroy();
     AppMethodBeat.o(78419);
   }
   
-  public final boolean sv(int paramInt)
+  public final boolean sy(int paramInt)
   {
     AppMethodBeat.i(78418);
-    ad.i("MicroMsg.LuggageWebViewFloatBallHelper", "onClose :%s", new Object[] { Integer.valueOf(this.DOl.hashCode()) });
-    boolean bool = super.sv(paramInt);
+    ae.i("MicroMsg.LuggageWebViewFloatBallHelper", "onClose :%s", new Object[] { Integer.valueOf(this.Egl.hashCode()) });
+    boolean bool = super.sy(paramInt);
     AppMethodBeat.o(78418);
     return bool;
   }
@@ -158,50 +158,50 @@ public final class q
   public static final class a
     implements com.tencent.luggage.d.a.a
   {
-    private com.tencent.mm.plugin.webview.e.c DOK;
-    private g DOl;
-    private Set<String> DPZ;
+    private com.tencent.mm.plugin.webview.e.c EgK;
+    private g Egl;
+    private Set<String> EhZ;
     
     public a(g paramg, com.tencent.mm.plugin.webview.e.c paramc)
     {
-      AppMethodBeat.i(207898);
-      this.DPZ = new HashSet();
-      this.DOl = paramg;
-      this.DOK = paramc;
-      AppMethodBeat.o(207898);
+      AppMethodBeat.i(198078);
+      this.EhZ = new HashSet();
+      this.Egl = paramg;
+      this.EgK = paramc;
+      AppMethodBeat.o(198078);
     }
     
     public final void a(com.tencent.luggage.d.a.c paramc)
     {
-      AppMethodBeat.i(207900);
+      AppMethodBeat.i(198080);
       paramc.a(b.cif);
-      AppMethodBeat.o(207900);
+      AppMethodBeat.o(198080);
     }
     
     public final void a(String paramString, com.tencent.luggage.d.a.c paramc)
     {
-      AppMethodBeat.i(207901);
-      if (this.DPZ.contains(paramString))
+      AppMethodBeat.i(198081);
+      if (this.EhZ.contains(paramString))
       {
-        this.DPZ.remove(paramString);
+        this.EhZ.remove(paramString);
         paramc.a(b.cif);
-        AppMethodBeat.o(207901);
+        AppMethodBeat.o(198081);
         return;
       }
-      if (this.DOK.fK(this.DOl.getUrl(), com.tencent.mm.plugin.webview.e.c.aIg(paramString))) {}
+      if (this.EgK.fV(this.Egl.getUrl(), com.tencent.mm.plugin.webview.e.c.aJz(paramString))) {}
       for (paramString = b.cif;; paramString = b.cig)
       {
         paramc.a(paramString);
-        AppMethodBeat.o(207901);
+        AppMethodBeat.o(198081);
         return;
       }
     }
     
-    public final void aGY(String paramString)
+    public final void aIs(String paramString)
     {
-      AppMethodBeat.i(207899);
-      this.DPZ.add(paramString);
-      AppMethodBeat.o(207899);
+      AppMethodBeat.i(198079);
+      this.EhZ.add(paramString);
+      AppMethodBeat.o(198079);
     }
   }
 }

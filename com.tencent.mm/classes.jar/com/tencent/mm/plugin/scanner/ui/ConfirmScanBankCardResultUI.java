@@ -12,11 +12,11 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.si;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,23 +25,23 @@ import java.util.Map;
 public class ConfirmScanBankCardResultUI
   extends MMActivity
 {
-  protected static final Map<String, Bitmap> yqz;
+  protected static final Map<String, Bitmap> yGz;
   protected Bitmap mBmp = null;
-  private ImageView yqA;
-  private EditText yqB;
-  private String yqy = null;
+  private ImageView yGA;
+  private EditText yGB;
+  private String yGy = null;
   
   static
   {
     AppMethodBeat.i(118349);
-    yqz = new HashMap();
+    yGz = new HashMap();
     AppMethodBeat.o(118349);
   }
   
   public static void c(Bitmap paramBitmap, String paramString)
   {
     AppMethodBeat.i(118343);
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()) || (bt.isNullOrNil(paramString)))
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()) || (bu.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(118343);
       return;
@@ -53,24 +53,24 @@ public class ConfirmScanBankCardResultUI
       Object localObject = localActivity;
       if (localActivity == null)
       {
-        localObject = aj.getContext();
+        localObject = ak.getContext();
         localIntent.addFlags(268435456);
       }
       localIntent.setClass((Context)localObject, ConfirmScanBankCardResultUI.class);
       localIntent.putExtra("_card_num_", paramString);
       paramString = "_image_cache_key_".concat(String.valueOf(paramString));
-      yqz.put(paramString, paramBitmap);
+      yGz.put(paramString, paramBitmap);
       localIntent.putExtra("_image_cache_key_", paramString);
       paramBitmap = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramBitmap.ahp(), "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI", "startConfirm", "(Landroid/graphics/Bitmap;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject).startActivity((Intent)paramBitmap.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramBitmap.ahE(), "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI", "startConfirm", "(Landroid/graphics/Bitmap;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramBitmap.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI", "startConfirm", "(Landroid/graphics/Bitmap;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(118343);
       return;
     }
   }
   
-  private void dLE()
+  private void dOX()
   {
     AppMethodBeat.i(118345);
     Object localObject = new Intent();
@@ -79,8 +79,8 @@ public class ConfirmScanBankCardResultUI
     ((Intent)localObject).addFlags(268435456);
     ((Intent)localObject).setClass(this, ScanCardUI.class);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI", "goBackScan", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI", "goBackScan", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI", "goBackScan", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(118345);
@@ -99,7 +99,7 @@ public class ConfirmScanBankCardResultUI
   public void onBackPressed()
   {
     AppMethodBeat.i(118346);
-    dLE();
+    dOX();
     AppMethodBeat.o(118346);
   }
   
@@ -111,7 +111,7 @@ public class ConfirmScanBankCardResultUI
     int i;
     if (getIntent() == null)
     {
-      ad.e("MicroMsg.ConfirmScanBankCardResultUI", "intent is null, return");
+      ae.e("MicroMsg.ConfirmScanBankCardResultUI", "intent is null, return");
       i = 0;
     }
     while (i == 0)
@@ -119,18 +119,18 @@ public class ConfirmScanBankCardResultUI
       finish();
       AppMethodBeat.o(118344);
       return;
-      this.yqy = getIntent().getStringExtra("_image_cache_key_");
-      if (bt.isNullOrNil(this.yqy))
+      this.yGy = getIntent().getStringExtra("_image_cache_key_");
+      if (bu.isNullOrNil(this.yGy))
       {
-        ad.e("MicroMsg.ConfirmScanBankCardResultUI", "bmp cache key is null or nil");
+        ae.e("MicroMsg.ConfirmScanBankCardResultUI", "bmp cache key is null or nil");
         i = 0;
       }
       else
       {
-        this.mBmp = ((Bitmap)yqz.get(this.yqy));
+        this.mBmp = ((Bitmap)yGz.get(this.yGy));
         if ((this.mBmp == null) || (this.mBmp.isRecycled()))
         {
-          ad.e("MicroMsg.ConfirmScanBankCardResultUI", "bmp invalid, return");
+          ae.e("MicroMsg.ConfirmScanBankCardResultUI", "bmp invalid, return");
           i = 0;
         }
         else
@@ -140,17 +140,17 @@ public class ConfirmScanBankCardResultUI
       }
     }
     paramBundle = getIntent().getStringExtra("_card_num_");
-    if (bt.isNullOrNil(paramBundle))
+    if (bu.isNullOrNil(paramBundle))
     {
-      ad.e("MicroMsg.ConfirmScanBankCardResultUI", "cardNum is null or nil");
+      ae.e("MicroMsg.ConfirmScanBankCardResultUI", "cardNum is null or nil");
       finish();
       AppMethodBeat.o(118344);
       return;
     }
-    this.yqA = ((ImageView)findViewById(2131300915));
-    this.yqB = ((EditText)findViewById(2131299248));
-    this.yqA.setImageBitmap(this.mBmp);
-    this.yqB.setText(paramBundle);
+    this.yGA = ((ImageView)findViewById(2131300915));
+    this.yGB = ((EditText)findViewById(2131299248));
+    this.yGA.setImageBitmap(this.mBmp);
+    this.yGB.setText(paramBundle);
     findViewById(2131297632).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -158,22 +158,22 @@ public class ConfirmScanBankCardResultUI
         AppMethodBeat.i(118341);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         if (ConfirmScanBankCardResultUI.a(ConfirmScanBankCardResultUI.this) != null)
         {
           paramAnonymousView = ConfirmScanBankCardResultUI.a(ConfirmScanBankCardResultUI.this).getEditableText().toString();
-          if (bt.isNullOrNil(paramAnonymousView))
+          if (bu.isNullOrNil(paramAnonymousView))
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(118341);
             return;
           }
           ConfirmScanBankCardResultUI.this.finish();
-          localObject = new sh();
-          ((sh)localObject).dGN.action = 1;
-          ((sh)localObject).dGN.cardNum = paramAnonymousView;
-          ((sh)localObject).dGN.dGO = ConfirmScanBankCardResultUI.this.mBmp;
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+          localObject = new si();
+          ((si)localObject).dHT.action = 1;
+          ((si)localObject).dHT.cardNum = paramAnonymousView;
+          ((si)localObject).dHT.dHU = ConfirmScanBankCardResultUI.this.mBmp;
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ConfirmScanBankCardResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(118341);
@@ -196,15 +196,15 @@ public class ConfirmScanBankCardResultUI
   {
     AppMethodBeat.i(118347);
     super.onDestroy();
-    if (this.yqA != null) {
-      this.yqA.setImageBitmap(null);
+    if (this.yGA != null) {
+      this.yGA.setImageBitmap(null);
     }
-    if (!bt.isNullOrNil(this.yqy)) {
-      yqz.remove(this.yqy);
+    if (!bu.isNullOrNil(this.yGy)) {
+      yGz.remove(this.yGy);
     }
     if (this.mBmp != null)
     {
-      ad.i("MicroMsg.ConfirmScanBankCardResultUI", "bitmap recycle %s", new Object[] { this.mBmp.toString() });
+      ae.i("MicroMsg.ConfirmScanBankCardResultUI", "bitmap recycle %s", new Object[] { this.mBmp.toString() });
       this.mBmp.recycle();
     }
     AppMethodBeat.o(118347);

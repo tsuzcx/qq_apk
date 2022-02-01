@@ -6,11 +6,11 @@ import java.util.HashMap;
 public class e
   implements j
 {
-  HashMap<String, AppRuntimeApiPermissionBundle> mih;
+  HashMap<String, AppRuntimeApiPermissionBundle> mnf;
   
   public e(HashMap<String, AppRuntimeApiPermissionBundle> paramHashMap)
   {
-    this.mih = paramHashMap;
+    this.mnf = paramHashMap;
   }
 }
 

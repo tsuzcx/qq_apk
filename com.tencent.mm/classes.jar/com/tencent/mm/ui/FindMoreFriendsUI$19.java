@@ -5,8 +5,8 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class FindMoreFriendsUI$19
   implements DialogInterface.OnClickListener
@@ -17,7 +17,7 @@ final class FindMoreFriendsUI$19
   {
     AppMethodBeat.i(33052);
     this.val$runnable.run();
-    g.ajC().ajl().set(al.a.IGn, Boolean.TRUE);
+    g.ajR().ajA().set(am.a.JaN, Boolean.TRUE);
     AppMethodBeat.o(33052);
   }
 }

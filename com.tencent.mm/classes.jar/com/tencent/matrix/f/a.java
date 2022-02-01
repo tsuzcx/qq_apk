@@ -27,19 +27,19 @@ import java.util.regex.Pattern;
 public class a
   extends com.tencent.matrix.e.b
 {
-  private static long[] cJg = new long[0];
-  private static int cJh = 0;
-  private a cJe;
-  private List<List<d>> cJf;
-  private long cJi;
-  private long cJj;
-  private long cJk;
-  private int cJl;
-  private final b cJm;
+  private static long[] cJP = new long[0];
+  private static int cJQ = 0;
+  private a cJN;
+  private List<List<d>> cJO;
+  private long cJR;
+  private long cJS;
+  private long cJT;
+  private int cJU;
+  private final b cJV;
   private Handler handler;
   private long lastReportTime;
   
-  public static int IS()
+  public static int Ja()
   {
     Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
     for (;;)
@@ -76,20 +76,20 @@ public class a
     }
   }
   
-  public static List<d> IT()
+  public static List<d> Jb()
   {
     Object localObject = a(new c()new b
     {
       public final void a(a.e paramAnonymouse)
       {
-        a.e locale = (a.e)this.cJo.get(paramAnonymouse.tid);
+        a.e locale = (a.e)this.cJX.get(paramAnonymouse.tid);
         if (locale != null)
         {
           paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J");
-          paramAnonymouse.cJs = locale.cJs;
-          paramAnonymouse.cJr = locale.cJr;
-          paramAnonymouse.cJt = locale.cJt;
-          paramAnonymouse.cJu = true;
+          paramAnonymouse.cKb = locale.cKb;
+          paramAnonymouse.cKa = locale.cKa;
+          paramAnonymouse.cKc = locale.cKc;
+          paramAnonymouse.cKd = true;
           return;
         }
         paramAnonymouse.name = paramAnonymouse.name.replaceAll("-?[0-9]\\d*", "?");
@@ -133,7 +133,7 @@ public class a
       {
         locale.tid = ((HandlerThread)localThread).getThreadId();
         localLongSparseArray.put(locale.tid, locale);
-        locale.cJr = true;
+        locale.cKa = true;
       }
     }
     return localLongSparseArray;
@@ -256,37 +256,37 @@ public class a
   {
     super.onForeground(paramBoolean);
     this.handler.removeCallbacksAndMessages(null);
-    if (this.cJe != null)
+    if (this.cJN != null)
     {
       if (paramBoolean) {
-        this.handler.postDelayed(this.cJe, this.cJi);
+        this.handler.postDelayed(this.cJN, this.cJR);
       }
     }
     else {
       return;
     }
-    this.handler.postDelayed(this.cJe, this.cJj);
+    this.handler.postDelayed(this.cJN, this.cJS);
   }
   
   public void start()
   {
     super.start();
     c.i("Matrix.ThreadMonitor", "start!", new Object[0]);
-    cJg = new long[6666];
-    cJh = 6666;
+    cJP = new long[6666];
+    cJQ = 6666;
     com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = new AppMethodBeat.b()
     {
       public final void r(int paramAnonymousInt, long paramAnonymousLong)
       {
-        if ((paramAnonymousLong < a.cJh) && (a.IU()[((int)paramAnonymousLong)] == 0L))
+        if ((paramAnonymousLong < a.cJQ) && (a.Jc()[((int)paramAnonymousLong)] == 0L))
         {
           long l1 = Process.myTid();
           long l2 = paramAnonymousInt;
-          a.IU()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
+          a.Jc()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
         }
       }
     };
-    com.tencent.matrix.g.b.Js().post(new Runnable()
+    com.tencent.matrix.g.b.JA().post(new Runnable()
     {
       public final void run()
       {
@@ -299,37 +299,37 @@ public class a
   {
     super.stop();
     c.i("Matrix.ThreadMonitor", "stop!", new Object[0]);
-    this.handler.removeCallbacks(this.cJe);
+    this.handler.removeCallbacks(this.cJN);
     com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = null;
-    cJg = new long[0];
+    cJP = new long[0];
   }
   
   final class a
     implements Runnable
   {
-    private final long cJp;
+    private final long cJY;
     
     public final void run()
     {
-      int i = a.IS();
-      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.cJn)) });
-      if (a.c(this.cJn) >= i) {
+      int i = a.Ja();
+      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.cJW)) });
+      if (a.c(this.cJW) >= i) {
         return;
       }
       Object localObject1 = a.b(new a.c()new a.b
       {
         public final void a(a.e paramAnonymouse)
         {
-          a.e locale = (a.e)this.cJo.get(paramAnonymouse.tid);
+          a.e locale = (a.e)this.cJX.get(paramAnonymouse.tid);
           if (locale != null)
           {
             if (paramAnonymouse.tid == a.a.a(a.a.this)) {}
             for (paramAnonymouse.name = "main";; paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J"))
             {
-              paramAnonymouse.cJs = locale.cJs;
-              paramAnonymouse.cJr = locale.cJr;
-              paramAnonymouse.cJt = locale.cJt;
-              paramAnonymouse.cJu = true;
+              paramAnonymouse.cKb = locale.cKb;
+              paramAnonymouse.cKa = locale.cKa;
+              paramAnonymouse.cKc = locale.cKc;
+              paramAnonymouse.cKd = true;
               return;
             }
           }
@@ -339,7 +339,7 @@ public class a
       {
         public final boolean b(a.e paramAnonymouse)
         {
-          return a.d(a.a.this.cJn).b(paramAnonymouse);
+          return a.d(a.a.this.cJW).b(paramAnonymouse);
         }
       });
       HashMap localHashMap = new HashMap();
@@ -360,30 +360,30 @@ public class a
       localObject1 = new LinkedList(localHashMap.values());
       Collections.sort((List)localObject1, new Comparator() {});
       long l = SystemClock.uptimeMillis();
-      if ((this.cJn.isForeground()) && (l - a.e(this.cJn) > a.f(this.cJn)))
+      if ((this.cJW.isForeground()) && (l - a.e(this.cJW) > a.f(this.cJW)))
       {
-        localObject1 = a.g(this.cJn).iterator();
+        localObject1 = a.g(this.cJW).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (List)((Iterator)localObject1).next();
-          a.a(this.cJn, (List)localObject2);
+          a.a(this.cJW, (List)localObject2);
         }
-        a.a(this.cJn, l);
-        a.g(this.cJn).clear();
-        localObject1 = a.b(this.cJn);
-        if (!com.tencent.matrix.a.cAS.cAU) {
+        a.a(this.cJW, l);
+        a.g(this.cJW).clear();
+        localObject1 = a.b(this.cJW);
+        if (!com.tencent.matrix.a.cBz.cBB) {
           break label399;
         }
       }
       label399:
-      for (l = a.h(this.cJn);; l = a.i(this.cJn))
+      for (l = a.h(this.cJW);; l = a.i(this.cJW))
       {
         ((Handler)localObject1).postDelayed(this, l);
         return;
-        if (a.g(this.cJn).size() >= 10) {
-          a.g(this.cJn).remove(0);
+        if (a.g(this.cJW).size() >= 10) {
+          a.g(this.cJW).remove(0);
         }
-        a.g(this.cJn).add(localObject1);
+        a.g(this.cJW).add(localObject1);
         break;
       }
     }
@@ -409,11 +409,11 @@ public class a
       this.name = paramString;
     }
     
-    public final boolean IV()
+    public final boolean Jd()
     {
       boolean bool = false;
       if (this.list.size() > 0) {
-        bool = ((a.e)this.list.get(0)).cJu;
+        bool = ((a.e)this.list.get(0)).cKd;
       }
       return bool;
     }
@@ -446,10 +446,10 @@ public class a
   
   public static final class e
   {
-    boolean cJr;
-    int cJs;
-    String cJt;
-    boolean cJu;
+    boolean cKa;
+    int cKb;
+    String cKc;
+    boolean cKd;
     String name;
     String state;
     long tid;
@@ -476,7 +476,7 @@ public class a
     
     public final String toString()
     {
-      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.cJr), Boolean.valueOf(this.cJu) });
+      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.cKa), Boolean.valueOf(this.cKd) });
     }
   }
 }

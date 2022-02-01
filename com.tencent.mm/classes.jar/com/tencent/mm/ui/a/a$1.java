@@ -3,7 +3,7 @@ package com.tencent.mm.ui.a;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Locale;
 
 final class a$1
@@ -15,10 +15,10 @@ final class a$1
   {
     AppMethodBeat.i(141492);
     TextToSpeech localTextToSpeech;
-    if (this.JgS.JgP != null)
+    if (this.JBD.JBA != null)
     {
-      localTextToSpeech = this.JgS.JgP;
-      if (!ac.fko()) {
+      localTextToSpeech = this.JBD.JBA;
+      if (!ad.foi()) {
         break label62;
       }
     }
@@ -26,7 +26,7 @@ final class a$1
     for (Locale localLocale = Locale.CHINESE;; localLocale = Locale.ENGLISH)
     {
       localTextToSpeech.setLanguage(localLocale);
-      this.JgS.JgP.speak(this.ilu, 0, null);
+      this.JBD.JBA.speak(this.ion, 0, null);
       AppMethodBeat.o(141492);
       return;
     }
@@ -34,7 +34,7 @@ final class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.a.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.cdndownloader.f.c;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract c bYP();
+  public abstract c cae();
 }
 
 

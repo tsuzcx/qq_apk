@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static final Uri rfs;
+  public static final Uri rnv;
   
   static
   {
     AppMethodBeat.i(24566);
-    rfs = Uri.parse("content://com.tencent.qlauncher.provider.third_party_coop_provider/push_item");
+    rnv = Uri.parse("content://com.tencent.qlauncher.provider.third_party_coop_provider/push_item");
     AppMethodBeat.o(24566);
   }
 }

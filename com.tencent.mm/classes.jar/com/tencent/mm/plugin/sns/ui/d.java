@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class d<T>
 {
-  private ap handler = null;
-  List<Integer> zNN = new LinkedList();
+  List<Integer> AeU = new LinkedList();
+  private aq handler = null;
   
   public d()
   {
-    this.zNN.clear();
+    this.AeU.clear();
   }
   
-  public abstract List<T> Zq();
+  public abstract List<T> Zz();
   
-  final void fT(final List<T> paramList)
+  final void gc(final List<T> paramList)
   {
     this.handler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(97699);
-        d.this.fU(paramList);
+        d.this.gd(paramList);
         d locald = d.this;
-        boolean bool = this.zNR;
-        ag.dFL().post(new d.3(locald, bool));
+        boolean bool = this.AeY;
+        ah.dJc().post(new d.3(locald, bool));
         AppMethodBeat.o(97699);
       }
     });
   }
   
-  public abstract void fU(List<T> paramList);
+  public abstract void gd(List<T> paramList);
   
-  protected final void nd(final boolean paramBoolean)
+  protected final void nh(final boolean paramBoolean)
   {
     int i;
     int j;
@@ -48,7 +48,7 @@ public abstract class d<T>
       if (i != 1) {
         break label73;
       }
-      Iterator localIterator = this.zNN.iterator();
+      Iterator localIterator = this.AeU.iterator();
       while (localIterator.hasNext()) {
         if (((Integer)localIterator.next()).intValue() == 1)
         {
@@ -57,7 +57,7 @@ public abstract class d<T>
           if (j == 0) {
             break label73;
           }
-          ad.e("MicroMsg.AdapterLoader", "thread is loading ui should be not load any");
+          ae.e("MicroMsg.AdapterLoader", "thread is loading ui should be not load any");
         }
       }
     }
@@ -70,30 +70,30 @@ public abstract class d<T>
       break label51;
       label73:
       if (!paramBoolean) {
-        ad.d("MicroMsg.AdapterLoader", "ui load");
+        ae.d("MicroMsg.AdapterLoader", "ui load");
       }
-      while (this.zNN.size() <= 1)
+      while (this.AeU.size() <= 1)
       {
-        this.zNN.add(Integer.valueOf(i));
+        this.AeU.add(Integer.valueOf(i));
         if (!paramBoolean) {
           break label164;
         }
-        ag.dFL().post(new Runnable()
+        ah.dJc().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97698);
-            List localList = d.this.Zq();
-            d.this.fT(localList);
+            List localList = d.this.Zz();
+            d.this.gc(localList);
             AppMethodBeat.o(97698);
           }
         });
         return;
-        ad.d("MicroMsg.AdapterLoader", "thread load" + this.zNN.size());
+        ae.d("MicroMsg.AdapterLoader", "thread load" + this.AeU.size());
       }
     }
     label164:
-    fT(Zq());
+    gc(Zz());
   }
 }
 

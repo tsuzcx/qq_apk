@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.b.b;
 public final class d
   extends b
 {
-  public a mwp;
+  public a mBm;
   
   public d()
   {
     AppMethodBeat.i(153228);
-    this.mwp = new a();
+    this.mBm = new a();
     AppMethodBeat.o(153228);
   }
   
   public static final class a
   {
-    public String mwq;
+    public String mBn;
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.mm.live.core.view;
 import d.g.a.m;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class a
   implements b.a
 {
   a(m paramm)
   {
-    this.gMc = paramm;
+    this.gOL = paramm;
   }
 }
 

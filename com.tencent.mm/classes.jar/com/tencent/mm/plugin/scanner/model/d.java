@@ -5,62 +5,62 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.au;
 import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.qq;
+import com.tencent.mm.g.a.my;
+import com.tencent.mm.g.a.qr;
 import com.tencent.mm.plugin.scanner.d.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
 {
   Activity mActivity;
-  String ymE;
-  com.tencent.mm.plugin.scanner.util.c ymF;
-  com.tencent.mm.plugin.scanner.util.a ymG;
-  e.a ymH;
-  public com.tencent.mm.sdk.b.c ymI;
-  public com.tencent.mm.sdk.b.c ymJ;
-  public com.tencent.mm.sdk.b.c ymK;
+  String yCC;
+  com.tencent.mm.plugin.scanner.util.c yCD;
+  com.tencent.mm.plugin.scanner.util.a yCE;
+  e.a yCF;
+  public com.tencent.mm.sdk.b.c yCG;
+  public com.tencent.mm.sdk.b.c yCH;
+  public com.tencent.mm.sdk.b.c yCI;
   
   public d()
   {
     AppMethodBeat.i(51615);
-    this.ymH = new e.a()
+    this.yCF = new e.a()
     {
       public final void t(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(51612);
-        ad.i("MicroMsg.ExternRequestDealQBarStrHandler", "Deal QBar String notify, id:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        mx localmx = new mx();
-        localmx.dAR.dAP = paramAnonymousInt;
-        localmx.dAR.activity = d.this.mActivity;
-        localmx.dAR.dlG = d.this.ymE;
-        localmx.dAR.dAS = paramAnonymousBundle;
-        com.tencent.mm.sdk.b.a.IbL.l(localmx);
+        ae.i("MicroMsg.ExternRequestDealQBarStrHandler", "Deal QBar String notify, id:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        my localmy = new my();
+        localmy.dBW.dBU = paramAnonymousInt;
+        localmy.dBW.activity = d.this.mActivity;
+        localmy.dBW.dmI = d.this.yCC;
+        localmy.dBW.dBX = paramAnonymousBundle;
+        com.tencent.mm.sdk.b.a.IvT.l(localmy);
         AppMethodBeat.o(51612);
       }
     };
-    this.ymI = new com.tencent.mm.sdk.b.c() {};
-    this.ymJ = new com.tencent.mm.sdk.b.c() {};
-    this.ymK = new com.tencent.mm.sdk.b.c() {};
+    this.yCG = new com.tencent.mm.sdk.b.c() {};
+    this.yCH = new com.tencent.mm.sdk.b.c() {};
+    this.yCI = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(51615);
   }
   
-  public final void dKQ()
+  public final void dOi()
   {
     AppMethodBeat.i(51616);
-    if (this.ymF != null)
+    if (this.yCD != null)
     {
-      this.ymF.dML();
-      this.ymF = null;
+      this.yCD.dQe();
+      this.yCD = null;
     }
     this.mActivity = null;
-    this.ymE = null;
+    this.yCC = null;
     AppMethodBeat.o(51616);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ public final class x
   extends AbstractList<String>
   implements o, RandomAccess
 {
-  private final o Nsb;
+  private final o NPh;
   
   public x(o paramo)
   {
-    this.Nsb = paramo;
+    this.NPh = paramo;
   }
   
-  public final d alg(int paramInt)
+  public final d alQ(int paramInt)
   {
     AppMethodBeat.i(59629);
-    d locald = this.Nsb.alg(paramInt);
+    d locald = this.NPh.alQ(paramInt);
     AppMethodBeat.o(59629);
     return locald;
   }
@@ -34,15 +34,15 @@ public final class x
     throw paramd;
   }
   
-  public final List<?> grY()
+  public final List<?> gwA()
   {
     AppMethodBeat.i(59633);
-    List localList = this.Nsb.grY();
+    List localList = this.NPh.gwA();
     AppMethodBeat.o(59633);
     return localList;
   }
   
-  public final o grZ()
+  public final o gwB()
   {
     return this;
   }
@@ -52,12 +52,12 @@ public final class x
     AppMethodBeat.i(59632);
     Iterator local2 = new Iterator()
     {
-      Iterator<String> Nrc;
+      Iterator<String> NOi;
       
       public final boolean hasNext()
       {
         AppMethodBeat.i(59625);
-        boolean bool = this.Nrc.hasNext();
+        boolean bool = this.NOi.hasNext();
         AppMethodBeat.o(59625);
         return bool;
       }
@@ -79,12 +79,12 @@ public final class x
     AppMethodBeat.i(59631);
     ListIterator local1 = new ListIterator()
     {
-      ListIterator<String> Nsc;
+      ListIterator<String> NPi;
       
       public final boolean hasNext()
       {
         AppMethodBeat.i(59615);
-        boolean bool = this.Nsc.hasNext();
+        boolean bool = this.NPi.hasNext();
         AppMethodBeat.o(59615);
         return bool;
       }
@@ -92,7 +92,7 @@ public final class x
       public final boolean hasPrevious()
       {
         AppMethodBeat.i(59616);
-        boolean bool = this.Nsc.hasPrevious();
+        boolean bool = this.NPi.hasPrevious();
         AppMethodBeat.o(59616);
         return bool;
       }
@@ -100,7 +100,7 @@ public final class x
       public final int nextIndex()
       {
         AppMethodBeat.i(59617);
-        int i = this.Nsc.nextIndex();
+        int i = this.NPi.nextIndex();
         AppMethodBeat.o(59617);
         return i;
       }
@@ -108,7 +108,7 @@ public final class x
       public final int previousIndex()
       {
         AppMethodBeat.i(59618);
-        int i = this.Nsc.previousIndex();
+        int i = this.NPi.previousIndex();
         AppMethodBeat.o(59618);
         return i;
       }
@@ -128,7 +128,7 @@ public final class x
   public final int size()
   {
     AppMethodBeat.i(59628);
-    int i = this.Nsb.size();
+    int i = this.NPh.size();
     AppMethodBeat.o(59628);
     return i;
   }

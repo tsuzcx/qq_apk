@@ -12,40 +12,40 @@ import java.util.Iterator;
 public final class ah
   extends TouchDelegate
 {
-  private static final Rect Jgl;
-  public ArrayList<ai> Jgm;
-  public ai Jgn;
+  private static final Rect JAW;
+  public ArrayList<ai> JAX;
+  public ai JAY;
   
   static
   {
-    AppMethodBeat.i(186446);
-    Jgl = new Rect();
-    AppMethodBeat.o(186446);
+    AppMethodBeat.i(193699);
+    JAW = new Rect();
+    AppMethodBeat.o(193699);
   }
   
   public ah(View paramView)
   {
-    super(Jgl, paramView);
+    super(JAW, paramView);
   }
   
   private static ai a(ArrayList<ai> paramArrayList, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(186445);
+    AppMethodBeat.i(193698);
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(186445);
+      AppMethodBeat.o(193698);
       return null;
     }
     int m = paramArrayList.size();
     if (m <= 0)
     {
-      AppMethodBeat.o(186445);
+      AppMethodBeat.o(193698);
       return null;
     }
     if (m == 1)
     {
       paramArrayList = (ai)paramArrayList.get(0);
-      AppMethodBeat.o(186445);
+      AppMethodBeat.o(193698);
       return paramArrayList;
     }
     int i = 2147483647;
@@ -56,11 +56,11 @@ public final class ah
       ai localai = (ai)paramArrayList.get(j);
       p.h(paramMotionEvent, "event");
       int[] arrayOfInt = new int[2];
-      localai.Jgo.getLocationOnScreen(arrayOfInt);
+      localai.JAZ.getLocationOnScreen(arrayOfInt);
       int k = arrayOfInt[0];
-      int n = localai.Jgo.getWidth() / 2;
+      int n = localai.JAZ.getWidth() / 2;
       int i1 = arrayOfInt[1];
-      int i2 = localai.Jgo.getHeight() / 2;
+      int i2 = localai.JAZ.getHeight() / 2;
       k = (int)Math.sqrt(Math.pow(paramMotionEvent.getRawX() - (k + n), 2.0D) + Math.pow(paramMotionEvent.getRawY() - (i1 + i2), 2.0D));
       if (k >= i) {
         break label230;
@@ -76,28 +76,28 @@ public final class ah
       if (i == 2147483647)
       {
         paramArrayList = (ai)paramArrayList.get(0);
-        AppMethodBeat.o(186445);
+        AppMethodBeat.o(193698);
         return paramArrayList;
       }
-      AppMethodBeat.o(186445);
+      AppMethodBeat.o(193698);
       return localObject;
     }
   }
   
   public final void a(ai paramai)
   {
-    AppMethodBeat.i(186443);
-    if (this.Jgm == null) {
-      this.Jgm = new ArrayList();
+    AppMethodBeat.i(193696);
+    if (this.JAX == null) {
+      this.JAX = new ArrayList();
     }
-    this.Jgm.add(paramai);
-    AppMethodBeat.o(186443);
+    this.JAX.add(paramai);
+    AppMethodBeat.o(193696);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     Object localObject3 = null;
-    AppMethodBeat.i(186444);
+    AppMethodBeat.i(193697);
     Object localObject1;
     switch (paramMotionEvent.getAction())
     {
@@ -106,14 +106,14 @@ public final class ah
     }
     while (localObject1 == null)
     {
-      AppMethodBeat.o(186444);
+      AppMethodBeat.o(193697);
       return false;
       localObject1 = localObject3;
-      if (this.Jgm != null)
+      if (this.JAX != null)
       {
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        Iterator localIterator = this.Jgm.iterator();
+        Iterator localIterator = this.JAX.iterator();
         for (localObject1 = null; localIterator.hasNext(); localObject1 = localObject2)
         {
           label93:
@@ -133,24 +133,24 @@ public final class ah
         localObject1 = localObject3;
         if (localObject2 != null)
         {
-          this.Jgn = ((ai)localObject2);
-          AppMethodBeat.o(186444);
+          this.JAY = ((ai)localObject2);
+          AppMethodBeat.o(193697);
           return true;
-          localObject1 = this.Jgn;
+          localObject1 = this.JAY;
           continue;
-          localObject1 = this.Jgn;
-          this.Jgn = null;
+          localObject1 = this.JAY;
+          this.JAY = null;
         }
       }
     }
     boolean bool = ((TouchDelegate)localObject1).onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(186444);
+    AppMethodBeat.o(193697);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.ah
  * JD-Core Version:    0.7.0.1
  */

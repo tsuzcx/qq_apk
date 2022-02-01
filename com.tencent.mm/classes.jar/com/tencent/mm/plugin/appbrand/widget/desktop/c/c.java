@@ -9,35 +9,35 @@ public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  public long guK;
-  public int guL;
-  double guM;
-  private int guN;
-  public boolean guO;
+  public long gxr;
+  public int gxs;
+  double gxt;
+  private int gxu;
+  public boolean gxv;
   private final Object lock;
   
   static
   {
     AppMethodBeat.i(49855);
-    naO = new c("INSTANCE");
-    naP = new c[] { naO };
+    nfW = new c("INSTANCE");
+    nfX = new c[] { nfW };
     AppMethodBeat.o(49855);
   }
   
   private c()
   {
     AppMethodBeat.i(49853);
-    this.guK = 0L;
-    this.guL = 0;
-    this.guM = 0.0D;
-    this.guN = 500;
-    this.guO = false;
+    this.gxr = 0L;
+    this.gxs = 0;
+    this.gxt = 0.0D;
+    this.gxu = 500;
+    this.gxv = false;
     this.lock = new Object();
     AppMethodBeat.o(49853);
   }
   
   /* Error */
-  public final Choreographer ahe()
+  public final Choreographer aht()
   {
     // Byte code:
     //   0: ldc 94
@@ -127,23 +127,23 @@ public enum c
   {
     AppMethodBeat.i(49854);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.guK > 0L)
+    if (this.gxr > 0L)
     {
-      long l = paramLong - this.guK;
-      this.guL += 1;
-      if (l > this.guN)
+      long l = paramLong - this.gxr;
+      this.gxs += 1;
+      if (l > this.gxu)
       {
-        this.guM = (this.guL * 1000 / l);
-        this.guK = paramLong;
-        this.guL = 0;
+        this.gxt = (this.gxs * 1000 / l);
+        this.gxr = paramLong;
+        this.gxs = 0;
       }
     }
     for (;;)
     {
-      ahe().postFrameCallback(this);
+      aht().postFrameCallback(this);
       AppMethodBeat.o(49854);
       return;
-      this.guK = paramLong;
+      this.gxr = paramLong;
     }
   }
 }

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.facedetect.b;
 
 public abstract interface e
 {
-  public abstract boolean csE();
+  public abstract boolean cuf();
   
-  public abstract String csF();
+  public abstract String cug();
 }
 
 

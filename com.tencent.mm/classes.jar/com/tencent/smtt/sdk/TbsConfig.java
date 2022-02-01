@@ -22,8 +22,8 @@ public class TbsConfig
   public static final boolean TBS_LOG = true;
   public static final boolean TBS_LOG_ENCRYPT = true;
   public static final boolean TBS_NETWORK_SIMULATE_SWITCH = false;
-  public static final int TBS_SDK_VERSIONCODE = 43804;
-  public static final String TBS_SDK_VERSIONNAME = "4.4.0.0005";
+  public static final int TBS_SDK_VERSIONCODE = 43805;
+  public static final String TBS_SDK_VERSIONNAME = "4.4.0.0006";
   public static final boolean TBS_UNZIP_SIMULATE_SWITCH = false;
 }
 

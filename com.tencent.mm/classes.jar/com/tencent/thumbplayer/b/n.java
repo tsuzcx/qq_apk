@@ -12,18 +12,18 @@ public final class n
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191858);
+    AppMethodBeat.i(194536);
     if ((paramObject == null) || (!(paramObject instanceof n)))
     {
-      AppMethodBeat.o(191858);
+      AppMethodBeat.o(194536);
       return false;
     }
     if ((this.name.equals(((n)paramObject).name)) && (this.trackType == ((n)paramObject).trackType))
     {
-      AppMethodBeat.o(191858);
+      AppMethodBeat.o(194536);
       return true;
     }
-    AppMethodBeat.o(191858);
+    AppMethodBeat.o(194536);
     return false;
   }
 }

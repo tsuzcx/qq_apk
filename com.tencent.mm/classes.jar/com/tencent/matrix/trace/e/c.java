@@ -2,18 +2,18 @@ package com.tencent.matrix.trace.e;
 
 public abstract class c
 {
-  public boolean cKQ = false;
+  public boolean cLz = false;
   
   public void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, boolean paramBoolean)
   {
-    this.cKQ = false;
+    this.cLz = false;
   }
   
   public void a(String paramString, long paramLong1, long paramLong2, boolean paramBoolean, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
   
   public void d(long paramLong1, long paramLong2, long paramLong3)
   {
-    this.cKQ = true;
+    this.cLz = true;
   }
 }
 

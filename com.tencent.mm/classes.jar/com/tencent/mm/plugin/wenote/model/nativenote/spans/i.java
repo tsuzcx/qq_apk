@@ -11,15 +11,15 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.b;
 public final class i
   extends ArrowKeyMovementMethod
 {
-  private static i EAM;
+  private static i ETi;
   
-  public static i eXj()
+  public static i faV()
   {
     AppMethodBeat.i(30637);
-    if (EAM == null) {
-      EAM = new i();
+    if (ETi == null) {
+      ETi = new i();
     }
-    i locali = EAM;
+    i locali = ETi;
     AppMethodBeat.o(30637);
     return locali;
   }
@@ -39,7 +39,7 @@ public final class i
       Object localObject = paramTextView.getLayout();
       j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(n + (j - k)), m);
       localObject = (k[])paramSpannable.getSpans(j, j + 1, k.class);
-      if ((m < b.cez()) && (localObject.length != 0))
+      if ((m < b.cfO()) && (localObject.length != 0))
       {
         if (i == 0) {
           localObject[0].a(paramTextView, paramSpannable, paramMotionEvent, localObject[0]);

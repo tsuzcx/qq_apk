@@ -17,9 +17,9 @@ final class j$2
     AppMethodBeat.i(113549);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/card/ui/CardPopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if ((this.oJA.jtC != null) && (this.oJA.jtC.isShowing())) {
-      this.oJA.jtC.dismiss();
+    a.b("com/tencent/mm/plugin/card/ui/CardPopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if ((this.oQc.jwx != null) && (this.oQc.jwx.isShowing())) {
+      this.oQc.jwx.dismiss();
     }
     a.a(this, "com/tencent/mm/plugin/card/ui/CardPopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(113549);

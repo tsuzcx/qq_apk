@@ -20,43 +20,42 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.luggage.h.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class a
   extends FrameLayout
 {
-  public f npn;
-  public LinearLayout npo;
-  protected String npp;
-  protected int npq;
-  protected int npr;
-  protected LinkedList<a> nps;
-  public LinkedList<Pair<d, d>> npt;
-  private int npu;
-  private b npv;
+  protected int nuA;
+  protected int nuB;
+  protected LinkedList<a> nuC;
+  public LinkedList<Pair<d, d>> nuD;
+  private int nuE;
+  private a.b nuF;
+  public f nux;
+  public LinearLayout nuy;
+  protected String nuz;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135519);
-    this.npu = 0;
-    this.nps = new LinkedList();
-    this.npt = new LinkedList();
-    this.npn = new f();
+    this.nuE = 0;
+    this.nuC = new LinkedList();
+    this.nuD = new LinkedList();
+    this.nux = new f();
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    this.npo = new LinearLayout(paramContext);
-    this.npo.setOrientation(0);
-    this.npo.setGravity(16);
-    this.npo.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    addView(this.npo);
+    this.nuy = new LinearLayout(paramContext);
+    this.nuy.setOrientation(0);
+    this.nuy.setGravity(16);
+    this.nuy.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    addView(this.nuy);
     AppMethodBeat.o(135519);
   }
   
@@ -95,9 +94,9 @@ public class a
       {
         AppMethodBeat.i(135517);
         int i = 0;
-        while (i < a.this.nps.size())
+        while (i < a.this.nuC.size())
         {
-          a.this.a(a.this.npo.getChildAt(i), (a.a)a.this.nps.get(i));
+          a.this.a(a.this.nuy.getChildAt(i), (a.a)a.this.nuC.get(i));
           i += 1;
         }
         AppMethodBeat.o(135517);
@@ -119,19 +118,19 @@ public class a
     AppMethodBeat.o(135521);
   }
   
-  public final int VF(String paramString)
+  public final int Wr(String paramString)
   {
     AppMethodBeat.i(135533);
-    LinkedList localLinkedList = this.nps;
-    String str = k.dr(paramString);
-    Iterator localIterator = this.nps.iterator();
+    LinkedList localLinkedList = this.nuC;
+    String str = k.dt(paramString);
+    Iterator localIterator = this.nuC.iterator();
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
       paramString = (a)localIterator.next();
-    } while (!k.dr(paramString.mUrl).equals(str));
+    } while (!k.dt(paramString.mUrl).equals(str));
     for (;;)
     {
       int i = localLinkedList.indexOf(paramString);
@@ -144,12 +143,12 @@ public class a
   public final void a(int paramInt, String paramString, d paramd1, d paramd2)
   {
     AppMethodBeat.i(135524);
-    if (paramInt >= this.nps.size())
+    if (paramInt >= this.nuC.size())
     {
       AppMethodBeat.o(135524);
       return;
     }
-    a locala = (a)this.nps.get(paramInt);
+    a locala = (a)this.nuC.get(paramInt);
     String str = paramString;
     if (paramString == null) {
       str = locala.mText;
@@ -158,18 +157,18 @@ public class a
     if (paramd1 != null)
     {
       paramString = paramd1;
-      if (paramd1.bFM() == null) {
-        paramString = locala.npI;
+      if (paramd1.bGH() == null) {
+        paramString = locala.nuS;
       }
-      locala.npI = paramString;
+      locala.nuS = paramString;
     }
     if (paramd2 != null)
     {
       paramString = paramd2;
-      if (paramd2.bFM() == null) {
-        paramString = locala.npJ;
+      if (paramd2.bGH() == null) {
+        paramString = locala.nuT;
       }
-      locala.npJ = paramString;
+      locala.nuT = paramString;
     }
     refreshView();
     AppMethodBeat.o(135524);
@@ -178,44 +177,44 @@ public class a
   protected void a(View paramView, a parama)
   {
     AppMethodBeat.i(135531);
-    final RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131307143);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131307143);
     final ImageView localImageView1 = (ImageView)paramView.findViewById(2131307144);
-    final TextView localTextView1 = (TextView)paramView.findViewById(2131307142);
-    final ImageView localImageView2 = (ImageView)paramView.findViewById(2131307147);
-    final TextView localTextView2 = (TextView)paramView.findViewById(2131307148);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131307142);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131307147);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131307148);
     View localView = paramView.findViewById(2131307146);
     int i;
-    if ("top".equals(this.npp))
+    if ("top".equals(this.nuz))
     {
       paramView.setLayoutParams(new LinearLayout.LayoutParams(0, fromDPToPix(getContext(), 40), 1.0F));
       localImageView1.setVisibility(8);
       localTextView2.setTextSize(1, 14.0F);
-      if (parama.npK)
+      if (parama.nuU)
       {
-        localView.setBackgroundColor(this.npr);
+        localView.setBackgroundColor(this.nuB);
         localView.setVisibility(0);
         paramView = localTextView1.getBackground();
         if (paramView != null) {
-          paramView.setColorFilter(parama.npN, PorterDuff.Mode.SRC_ATOP);
+          paramView.setColorFilter(parama.nuX, PorterDuff.Mode.SRC_ATOP);
         }
-        if (!parama.npM.isEmpty()) {
+        if (!parama.nuW.isEmpty()) {
           break label592;
         }
         i = 4;
         label180:
         localTextView1.setVisibility(i);
-        localTextView1.setText(parama.npM);
-        localTextView1.setTextColor(parama.npO);
-        if (!parama.npL) {
+        localTextView1.setText(parama.nuW);
+        localTextView1.setTextColor(parama.nuY);
+        if (!parama.nuV) {
           break label597;
         }
         i = 0;
         label213:
         localImageView2.setVisibility(i);
-        if ((!parama.npK) || (parama.npJ.bFM() == null)) {
+        if ((!parama.nuU) || (parama.nuT.bGH() == null)) {
           break label602;
         }
-        parama.npJ.a(new e()
+        parama.nuT.a(new e()
         {
           public final void a(Bitmap paramAnonymousBitmap, d paramAnonymousd)
           {
@@ -225,66 +224,25 @@ public class a
             AppMethodBeat.o(135506);
           }
         });
-        parama.npJ.bFL();
+        parama.nuT.bGG();
         label260:
         localTextView2.setText(parama.mText);
-        if (!parama.npK) {
+        if (!parama.nuU) {
           break label629;
         }
-        localTextView2.setTextColor(this.npr);
+        localTextView2.setTextColor(this.nuB);
       }
     }
     for (;;)
     {
-      if (!"top".equals(this.npp)) {
-        localTextView2.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(135508);
-            int i = localTextView2.getMeasuredWidth() - localImageView1.getMeasuredWidth() >> 1;
-            if ((i > 0) && (localImageView1.getVisibility() != 8))
-            {
-              localLayoutParams = (RelativeLayout.LayoutParams)localTextView1.getLayoutParams();
-              int j = a.this.getResources().getDimensionPixelSize(2131165860) - i;
-              if (localLayoutParams.leftMargin != j)
-              {
-                localLayoutParams.leftMargin = j;
-                localRelativeLayout.updateViewLayout(localTextView1, localLayoutParams);
-              }
-              localLayoutParams = (RelativeLayout.LayoutParams)localImageView2.getLayoutParams();
-              i = a.this.getResources().getDimensionPixelSize(2131165861) - i;
-              if (localLayoutParams.leftMargin != i)
-              {
-                localLayoutParams.leftMargin = i;
-                localRelativeLayout.updateViewLayout(localImageView2, localLayoutParams);
-              }
-              AppMethodBeat.o(135508);
-              return;
-            }
-            RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localTextView1.getLayoutParams();
-            i = a.this.getResources().getDimensionPixelSize(2131165860);
-            if (localLayoutParams.leftMargin != i)
-            {
-              localLayoutParams.leftMargin = i;
-              localRelativeLayout.updateViewLayout(localTextView1, localLayoutParams);
-            }
-            localLayoutParams = (RelativeLayout.LayoutParams)localImageView2.getLayoutParams();
-            i = a.this.getResources().getDimensionPixelSize(2131165861);
-            if (localLayoutParams.leftMargin != i)
-            {
-              localLayoutParams.leftMargin = i;
-              localRelativeLayout.updateViewLayout(localImageView2, localLayoutParams);
-            }
-            AppMethodBeat.o(135508);
-          }
-        });
+      if (!"top".equals(this.nuz)) {
+        localTextView2.post(new a.4(this, localTextView2, localImageView1, localTextView1, localRelativeLayout, localImageView2));
       }
       AppMethodBeat.o(135531);
       return;
       localView.setVisibility(4);
       break;
-      if (parama.npI.bFM() != null) {
+      if (parama.nuS.bGH() != null) {
         if ((parama.mText != null) && (!parama.mText.equals("")))
         {
           paramView.setLayoutParams(new LinearLayout.LayoutParams(0, fromDPToPix(getContext(), 54), 1.0F));
@@ -320,7 +278,7 @@ public class a
       i = 4;
       break label213;
       label602:
-      parama.npI.a(new e()
+      parama.nuS.a(new e()
       {
         public final void a(Bitmap paramAnonymousBitmap, d paramAnonymousd)
         {
@@ -330,44 +288,44 @@ public class a
           AppMethodBeat.o(135507);
         }
       });
-      parama.npI.bFL();
+      parama.nuS.bGG();
       break label260;
       label629:
-      localTextView2.setTextColor(this.npq);
+      localTextView2.setTextColor(this.nuA);
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, AppBrandTabBarItem paramAppBrandTabBarItem)
   {
-    AppMethodBeat.i(197473);
+    AppMethodBeat.i(208028);
     a locala = new a();
-    locala.npI = new b(paramString3, new c()
+    locala.nuS = new b(paramString3, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(135510);
         super.a(paramAnonymousString, paramAnonymousd);
-        ad.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
+        ae.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(135510);
       }
     });
-    locala.npJ = new b(paramString4, new c()
+    locala.nuT = new b(paramString4, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(135511);
         super.a(paramAnonymousString, paramAnonymousd);
-        ad.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
+        ae.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(135511);
       }
     });
     locala.mText = paramString2;
     locala.mUrl = paramString1;
-    this.npt.add(new Pair(locala.npI, locala.npJ));
-    if ((locala.mText == null) && ((locala.npI.bFM() == null) || (locala.npJ.bFM() == null)))
+    this.nuD.add(new Pair(locala.nuS, locala.nuT));
+    if ((locala.mText == null) && ((locala.nuS.bGH() == null) || (locala.nuT.bGH() == null)))
     {
-      ad.e("MicroMsg.AppBrandPageTabBar", "illegal data");
-      AppMethodBeat.o(197473);
+      ae.e("MicroMsg.AppBrandPageTabBar", "illegal data");
+      AppMethodBeat.o(208028);
       return;
     }
     if (paramAppBrandTabBarItem != null) {}
@@ -381,17 +339,17 @@ public class a
           AppMethodBeat.i(135512);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/tabbar/AppBrandPageTabBar$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          int i = a.this.npo.indexOfChild(paramAnonymousView);
-          a.this.wX(i);
-          a.this.bFJ();
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/tabbar/AppBrandPageTabBar$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          int i = a.this.nuy.indexOfChild(paramAnonymousView);
+          a.this.xc(i);
+          a.this.bGE();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/tabbar/AppBrandPageTabBar$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(135512);
         }
       });
-      this.nps.add(locala);
-      this.npo.addView(paramAppBrandTabBarItem);
-      AppMethodBeat.o(197473);
+      this.nuC.add(locala);
+      this.nuy.addView(paramAppBrandTabBarItem);
+      AppMethodBeat.o(208028);
       return;
       paramAppBrandTabBarItem = new AppBrandTabBarItem(getContext());
     }
@@ -403,7 +361,7 @@ public class a
     int j = getHeight();
     int i;
     final ObjectAnimator localObjectAnimator;
-    if ("top".equals(this.npp))
+    if ("top".equals(this.nuz))
     {
       i = -1;
       localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { i * j, 0.0F });
@@ -447,11 +405,11 @@ public class a
     AppMethodBeat.o(135532);
   }
   
-  public final void bFJ()
+  public final void bGE()
   {
     AppMethodBeat.i(135530);
-    if (this.npv != null) {
-      this.npv.ao(this.npu, ((a)this.nps.get(this.npu)).mUrl);
+    if (this.nuF != null) {
+      this.nuF.ao(this.nuE, ((a)this.nuC.get(this.nuE)).mUrl);
     }
     AppMethodBeat.o(135530);
   }
@@ -459,18 +417,18 @@ public class a
   public final void d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(135525);
-    int j = g.cg(paramString3, 0);
-    int k = g.cg(paramString4, -1);
+    int j = g.ck(paramString3, 0);
+    int k = g.ck(paramString4, -1);
     int i = 0;
-    if (i < this.nps.size())
+    if (i < this.nuC.size())
     {
       if (i == paramInt)
       {
-        ((a)this.nps.get(i)).bFK();
+        ((a)this.nuC.get(i)).bGF();
         if (!"redDot".equals(paramString1)) {
           break label93;
         }
-        ((a)this.nps.get(i)).npL = true;
+        ((a)this.nuC.get(i)).nuV = true;
       }
       for (;;)
       {
@@ -479,14 +437,14 @@ public class a
         label93:
         if ("text".equals(paramString1))
         {
-          ((a)this.nps.get(i)).npM = paramString2;
-          ((a)this.nps.get(i)).npN = j;
-          ((a)this.nps.get(i)).npO = k;
+          ((a)this.nuC.get(i)).nuW = paramString2;
+          ((a)this.nuC.get(i)).nuX = j;
+          ((a)this.nuC.get(i)).nuY = k;
         }
         else if ("none".equals(paramString1))
         {
-          ((a)this.nps.get(i)).npL = false;
-          ((a)this.nps.get(i)).npM = "";
+          ((a)this.nuC.get(i)).nuV = false;
+          ((a)this.nuC.get(i)).nuW = "";
         }
       }
     }
@@ -494,19 +452,27 @@ public class a
     AppMethodBeat.o(135525);
   }
   
-  public final void dV(boolean paramBoolean)
+  public final void dX(final boolean paramBoolean)
   {
     AppMethodBeat.i(135526);
-    if (!aq.isMainThread())
+    if (!ar.isMainThread())
     {
-      aq.f(new a.9(this, paramBoolean));
+      ar.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(135513);
+          a.this.dX(paramBoolean);
+          AppMethodBeat.o(135513);
+        }
+      });
       AppMethodBeat.o(135526);
       return;
     }
     int j = getHeight();
     int i;
     ObjectAnimator localObjectAnimator;
-    if ("top".equals(this.npp))
+    if ("top".equals(this.nuz))
     {
       i = -1;
       localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, i * j });
@@ -536,7 +502,7 @@ public class a
   
   public String getPosition()
   {
-    return this.npp;
+    return this.nuz;
   }
   
   public final void j(final String paramString1, final String paramString2, final String paramString3, final String paramString4)
@@ -556,24 +522,24 @@ public class a
     AppMethodBeat.o(135520);
   }
   
-  public void setClickListener(b paramb)
+  public void setClickListener(a.b paramb)
   {
-    this.npv = paramb;
+    this.nuF = paramb;
   }
   
   public void setPosition(String paramString)
   {
-    this.npp = paramString;
+    this.nuz = paramString;
   }
   
-  public final void wX(int paramInt)
+  public final void xc(int paramInt)
   {
     AppMethodBeat.i(135523);
-    ((a)this.nps.get(this.npu)).npK = false;
-    if ((paramInt > 0) && (paramInt < this.nps.size())) {}
-    for (this.npu = paramInt;; this.npu = 0)
+    ((a)this.nuC.get(this.nuE)).nuU = false;
+    if ((paramInt > 0) && (paramInt < this.nuC.size())) {}
+    for (this.nuE = paramInt;; this.nuE = 0)
     {
-      ((a)this.nps.get(this.npu)).npK = true;
+      ((a)this.nuC.get(this.nuE)).nuU = true;
       refreshView();
       AppMethodBeat.o(135523);
       return;
@@ -584,34 +550,29 @@ public class a
   {
     public String mText;
     public String mUrl;
-    public d npI;
-    public d npJ;
-    public boolean npK;
-    public boolean npL;
-    public String npM;
-    public int npN;
-    public int npO;
+    public d nuS;
+    public d nuT;
+    public boolean nuU;
+    public boolean nuV;
+    public String nuW;
+    public int nuX;
+    public int nuY;
     
     public a()
     {
       AppMethodBeat.i(135518);
-      this.npK = false;
-      bFK();
+      this.nuU = false;
+      bGF();
       AppMethodBeat.o(135518);
     }
     
-    final void bFK()
+    final void bGF()
     {
-      this.npL = false;
-      this.npM = "";
-      this.npN = 0;
-      this.npO = -1;
+      this.nuV = false;
+      this.nuW = "";
+      this.nuX = 0;
+      this.nuY = -1;
     }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void ao(int paramInt, String paramString);
   }
 }
 

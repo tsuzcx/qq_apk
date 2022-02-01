@@ -7,12 +7,12 @@ public enum c$a
   static
   {
     AppMethodBeat.i(155551);
-    fVA = new a("PCM", 0);
-    fVB = new a("AMR", 1);
-    fVC = new a("SILK", 2);
-    fVD = new a("SPEEX", 3);
-    fVE = new a("UNKNOWN", 4);
-    fVF = new a[] { fVA, fVB, fVC, fVD, fVE };
+    fXG = new a("PCM", 0);
+    fXH = new a("AMR", 1);
+    fXI = new a("SILK", 2);
+    fXJ = new a("SPEEX", 3);
+    fXK = new a("UNKNOWN", 4);
+    fXL = new a[] { fXG, fXH, fXI, fXJ, fXK };
     AppMethodBeat.o(155551);
   }
   
@@ -20,7 +20,7 @@ public enum c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.b.c.a
  * JD-Core Version:    0.7.0.1
  */

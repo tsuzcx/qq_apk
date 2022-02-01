@@ -9,8 +9,8 @@ import android.webkit.WebSettings.LayoutAlgorithm;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.ac;
@@ -19,18 +19,18 @@ import com.tencent.xweb.z;
 public class HtmlTextView2
   extends MMWebView
 {
-  private ac wMX;
+  private ac xcL;
   
   public HtmlTextView2(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(aj.getContext(), paramAttributeSet);
+    super(ak.getContext(), paramAttributeSet);
     AppMethodBeat.i(66930);
-    this.wMX = new ac()
+    this.xcL = new ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(66928);
-        ad.d("test", paramAnonymousString);
+        ae.d("test", paramAnonymousString);
         AppMethodBeat.o(66928);
         return true;
       }
@@ -41,14 +41,14 @@ public class HtmlTextView2
   
   public HtmlTextView2(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aj.getContext(), paramAttributeSet, paramInt);
+    super(ak.getContext(), paramAttributeSet, paramInt);
     AppMethodBeat.i(66929);
-    this.wMX = new ac()
+    this.xcL = new ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(66928);
-        ad.d("test", paramAnonymousString);
+        ae.d("test", paramAnonymousString);
         AppMethodBeat.o(66928);
         return true;
       }
@@ -68,7 +68,7 @@ public class HtmlTextView2
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/product/ui/HtmlTextView2$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/product/ui/HtmlTextView2$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 2) {}
         for (boolean bool = true;; bool = false)
         {
@@ -89,7 +89,7 @@ public class HtmlTextView2
     AppMethodBeat.i(66932);
     setWebViewClient(null);
     loadData(paramString, "text/html", "utf-8");
-    setWebViewClient(this.wMX);
+    setWebViewClient(this.xcL);
     AppMethodBeat.o(66932);
   }
 }

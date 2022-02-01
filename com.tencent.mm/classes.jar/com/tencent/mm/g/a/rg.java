@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rg
   extends b
 {
-  public a dFQ;
+  public a dGT;
   
   public rg()
   {
@@ -17,17 +15,16 @@ public final class rg
   
   private rg(byte paramByte)
   {
-    AppMethodBeat.i(91217);
-    this.dFQ = new a();
-    this.IbR = false;
+    AppMethodBeat.i(153417);
+    this.dGT = new a();
+    this.IvZ = true;
     this.callback = null;
-    AppMethodBeat.o(91217);
+    AppMethodBeat.o(153417);
   }
   
   public static final class a
   {
-    public Context context;
-    public Intent intent;
+    public String dGU;
   }
 }
 

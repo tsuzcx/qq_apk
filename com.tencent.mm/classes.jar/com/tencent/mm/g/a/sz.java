@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bv;
 
 public final class sz
   extends b
 {
-  public a dHB;
+  public a dIE;
   
   public sz()
   {
@@ -15,22 +16,21 @@ public final class sz
   
   private sz(byte paramByte)
   {
-    AppMethodBeat.i(19834);
-    this.dHB = new a();
-    this.IbR = false;
+    AppMethodBeat.i(42657);
+    this.dIE = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19834);
+    AppMethodBeat.o(42657);
   }
   
   public static final class a
   {
-    public String dFE;
-    public int msgType = 0;
+    public bv dlw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.sz
  * JD-Core Version:    0.7.0.1
  */

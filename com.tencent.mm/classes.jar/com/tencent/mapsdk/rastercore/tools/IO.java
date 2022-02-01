@@ -8,17 +8,17 @@ public class IO
 {
   public static final void safeClose(Closeable paramCloseable)
   {
-    AppMethodBeat.i(199843);
+    AppMethodBeat.i(212532);
     if (paramCloseable != null) {
       try
       {
         paramCloseable.close();
-        AppMethodBeat.o(199843);
+        AppMethodBeat.o(212532);
         return;
       }
       catch (IOException paramCloseable) {}
     }
-    AppMethodBeat.o(199843);
+    AppMethodBeat.o(212532);
   }
 }
 

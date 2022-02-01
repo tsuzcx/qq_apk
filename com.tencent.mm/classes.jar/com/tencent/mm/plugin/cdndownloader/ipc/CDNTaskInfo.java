@@ -10,16 +10,16 @@ public class CDNTaskInfo
 {
   public static final Parcelable.Creator<CDNTaskInfo> CREATOR;
   public String downloadUrl;
-  public boolean fJs;
+  public boolean fLv;
   public String filePath;
   public String mediaId;
-  public String oRi;
-  public String oRj;
-  public int oRk;
-  public int oRl;
-  public boolean oRm;
-  public boolean oRn;
-  public boolean oRo;
+  public String oXK;
+  public String oXL;
+  public int oXM;
+  public int oXN;
+  public boolean oXO;
+  public boolean oXP;
+  public boolean oXQ;
   
   static
   {
@@ -36,20 +36,20 @@ public class CDNTaskInfo
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.fJs = bool1;
+      this.fLv = bool1;
       this.downloadUrl = paramParcel.readString();
       this.mediaId = paramParcel.readString();
       this.filePath = paramParcel.readString();
-      this.oRi = paramParcel.readString();
-      this.oRj = paramParcel.readString();
-      this.oRk = paramParcel.readInt();
-      this.oRl = paramParcel.readInt();
+      this.oXK = paramParcel.readString();
+      this.oXL = paramParcel.readString();
+      this.oXM = paramParcel.readInt();
+      this.oXN = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
         break label123;
       }
       bool1 = true;
       label92:
-      this.oRm = bool1;
+      this.oXO = bool1;
       if (paramParcel.readByte() != 1) {
         break label128;
       }
@@ -57,7 +57,7 @@ public class CDNTaskInfo
     label128:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.oRo = bool1;
+      this.oXQ = bool1;
       AppMethodBeat.o(120757);
       return;
       bool1 = false;
@@ -102,24 +102,24 @@ public class CDNTaskInfo
   {
     byte b2 = 1;
     AppMethodBeat.i(120756);
-    if (this.fJs)
+    if (this.fLv)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
       paramParcel.writeString(this.downloadUrl);
       paramParcel.writeString(this.mediaId);
       paramParcel.writeString(this.filePath);
-      paramParcel.writeString(this.oRi);
-      paramParcel.writeString(this.oRj);
-      paramParcel.writeInt(this.oRk);
-      paramParcel.writeInt(this.oRl);
-      if (!this.oRm) {
+      paramParcel.writeString(this.oXK);
+      paramParcel.writeString(this.oXL);
+      paramParcel.writeInt(this.oXM);
+      paramParcel.writeInt(this.oXN);
+      if (!this.oXO) {
         break label118;
       }
       b1 = 1;
       label87:
       paramParcel.writeByte(b1);
-      if (!this.oRo) {
+      if (!this.oXQ) {
         break label123;
       }
     }

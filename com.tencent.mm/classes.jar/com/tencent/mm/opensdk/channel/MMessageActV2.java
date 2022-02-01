@@ -62,8 +62,8 @@ public class MMessageActV2
           localIntent.setFlags(i);
           break;
           paramArgs = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArgs.ahp(), "com/tencent/mm/opensdk/channel/MMessageActV2", "send", "(Landroid/content/Context;Lcom/tencent/mm/opensdk/channel/MMessageActV2$Args;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramArgs.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArgs.ahE(), "com/tencent/mm/opensdk/channel/MMessageActV2", "send", "(Landroid/content/Context;Lcom/tencent/mm/opensdk/channel/MMessageActV2$Args;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramArgs.mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/opensdk/channel/MMessageActV2", "send", "(Landroid/content/Context;Lcom/tencent/mm/opensdk/channel/MMessageActV2$Args;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         Log.e("MicroMsg.SDK.MMessageAct", "send fail, invalid argument");
@@ -81,7 +81,7 @@ public class MMessageActV2
   
   private static void sendUsingPendingIntent(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(196973);
+    AppMethodBeat.i(194085);
     try
     {
       Log.i("MicroMsg.SDK.MMessageAct", "sendUsingPendingIntent");
@@ -89,22 +89,22 @@ public class MMessageActV2
       {
         public final void onSendFinished(PendingIntent paramAnonymousPendingIntent, Intent paramAnonymousIntent, int paramAnonymousInt, String paramAnonymousString, Bundle paramAnonymousBundle)
         {
-          AppMethodBeat.i(196942);
+          AppMethodBeat.i(194054);
           Log.i("MicroMsg.SDK.MMessageAct", "sendUsingPendingIntent onSendFinished resultCode: " + paramAnonymousInt + ", resultData: " + paramAnonymousString);
-          AppMethodBeat.o(196942);
+          AppMethodBeat.o(194054);
         }
       }, null);
-      AppMethodBeat.o(196973);
+      AppMethodBeat.o(194085);
       return;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.SDK.MMessageAct", "sendUsingPendingIntent fail, ex = " + localException.getMessage());
       paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/opensdk/channel/MMessageActV2", "sendUsingPendingIntent", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/opensdk/channel/MMessageActV2", "sendUsingPendingIntent", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/opensdk/channel/MMessageActV2", "sendUsingPendingIntent", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(196973);
+      AppMethodBeat.o(194085);
     }
   }
   
@@ -120,9 +120,9 @@ public class MMessageActV2
     
     public Args()
     {
-      AppMethodBeat.i(196990);
+      AppMethodBeat.i(194102);
       this.flags = -1;
-      AppMethodBeat.o(196990);
+      AppMethodBeat.o(194102);
     }
     
     public String toString()

@@ -12,14 +12,14 @@ public final class a
   
   public a()
   {
-    AppMethodBeat.i(188455);
-    c.TP("onReceiveMsgChannel");
-    AppMethodBeat.o(188455);
+    AppMethodBeat.i(222605);
+    c.Uy("onReceiveMsgChannel");
+    AppMethodBeat.o(222605);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.a
  * JD-Core Version:    0.7.0.1
  */

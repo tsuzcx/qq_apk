@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import org.xwalk.core.Log;
 
 public class CameraFrontSightView
@@ -16,27 +16,27 @@ public class CameraFrontSightView
 {
   public int mHeight;
   private Paint mPaint;
-  private int mSV;
+  private int mStrokeWidth;
   public int mWidth;
-  private boolean vUb;
-  private boolean vUc;
-  private boolean vUd;
-  private boolean vUe;
-  private long vUf;
-  private int vUg;
-  private int vUh;
-  private ViewGroup.LayoutParams vUi;
+  private boolean wgf;
+  private boolean wgg;
+  private boolean wgh;
+  private boolean wgi;
+  private long wgj;
+  private int wgk;
+  private int wgl;
+  private ViewGroup.LayoutParams wgm;
   
   public CameraFrontSightView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94503);
     this.mPaint = new Paint();
-    this.vUb = false;
-    this.vUc = false;
-    this.vUd = false;
-    this.vUe = false;
-    this.vUf = 0L;
+    this.wgf = false;
+    this.wgg = false;
+    this.wgh = false;
+    this.wgi = false;
+    this.wgj = 0L;
     AppMethodBeat.o(94503);
   }
   
@@ -45,11 +45,11 @@ public class CameraFrontSightView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94502);
     this.mPaint = new Paint();
-    this.vUb = false;
-    this.vUc = false;
-    this.vUd = false;
-    this.vUe = false;
-    this.vUf = 0L;
+    this.wgf = false;
+    this.wgg = false;
+    this.wgh = false;
+    this.wgi = false;
+    this.wgj = 0L;
     AppMethodBeat.o(94502);
   }
   
@@ -67,19 +67,19 @@ public class CameraFrontSightView
     ((ViewGroup.MarginLayoutParams)localObject).leftMargin = ((int)paramFloat1 - this.mWidth / 2);
     ((ViewGroup.MarginLayoutParams)localObject).topMargin = ((int)paramFloat2 - this.mHeight / 2);
     setLayoutParams((ViewGroup.LayoutParams)localObject);
-    dnO();
+    dqM();
     AppMethodBeat.o(94506);
   }
   
-  public final void dnO()
+  public final void dqM()
   {
     AppMethodBeat.i(94505);
     setVisibility(0);
-    this.vUb = true;
-    this.vUc = false;
-    this.vUd = false;
-    this.vUe = false;
-    this.vUf = System.currentTimeMillis();
+    this.wgf = true;
+    this.wgg = false;
+    this.wgh = false;
+    this.wgi = false;
+    this.wgj = System.currentTimeMillis();
     invalidate();
     AppMethodBeat.o(94505);
   }
@@ -87,37 +87,37 @@ public class CameraFrontSightView
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(94507);
-    paramCanvas.translate(this.vUg / 2, this.vUh / 2);
-    long l = System.currentTimeMillis() - this.vUf;
+    paramCanvas.translate(this.wgk / 2, this.wgl / 2);
+    long l = System.currentTimeMillis() - this.wgj;
     if (l > 200L)
     {
-      this.vUb = false;
-      this.vUc = true;
+      this.wgf = false;
+      this.wgg = true;
     }
     if (l > 800L)
     {
-      this.vUc = false;
-      this.vUd = true;
+      this.wgg = false;
+      this.wgh = true;
     }
     if (l > 1100L)
     {
-      this.vUd = false;
-      this.vUe = true;
+      this.wgh = false;
+      this.wgi = true;
     }
     if (l > 1300L)
     {
-      this.vUe = false;
+      this.wgi = false;
       setVisibility(8);
       AppMethodBeat.o(94507);
       return;
     }
     float f;
-    if (this.vUb)
+    if (this.wgf)
     {
       f = (float)(200L - l) / 200.0F + 1.0F;
-      paramCanvas.scale(f, f, this.vUg / 2, this.vUh / 2);
+      paramCanvas.scale(f, f, this.wgk / 2, this.wgl / 2);
       this.mPaint.setAlpha((int)((2.0F - f) * 255.0F));
-      if (!this.vUc) {
+      if (!this.wgg) {
         break label491;
       }
       f = (float)((l - 200L) % 200L) / 200.0F * 2.0F;
@@ -131,19 +131,19 @@ public class CameraFrontSightView
     }
     for (;;)
     {
-      if (this.vUe)
+      if (this.wgi)
       {
         f = (float)(l - 1100L) / 200.0F;
         this.mPaint.setAlpha((int)((1.0F - f) * 255.0F));
       }
-      paramCanvas.drawLine(0.0F, 0.0F, this.vUg, 0.0F, this.mPaint);
-      paramCanvas.drawLine(0.0F, 0.0F, 0.0F, this.vUh, this.mPaint);
-      paramCanvas.drawLine(this.vUg, 0.0F, this.vUg, this.vUh, this.mPaint);
-      paramCanvas.drawLine(0.0F, this.vUh, this.vUg, this.vUh, this.mPaint);
-      paramCanvas.drawLine(0.0F, this.vUh / 2, this.vUg / 10, this.vUh / 2, this.mPaint);
-      paramCanvas.drawLine(this.vUg, this.vUh / 2, this.vUg * 9 / 10, this.vUh / 2, this.mPaint);
-      paramCanvas.drawLine(this.vUg / 2, 0.0F, this.vUg / 2, this.vUh / 10, this.mPaint);
-      paramCanvas.drawLine(this.vUg / 2, this.vUh, this.vUg / 2, this.vUh * 9 / 10, this.mPaint);
+      paramCanvas.drawLine(0.0F, 0.0F, this.wgk, 0.0F, this.mPaint);
+      paramCanvas.drawLine(0.0F, 0.0F, 0.0F, this.wgl, this.mPaint);
+      paramCanvas.drawLine(this.wgk, 0.0F, this.wgk, this.wgl, this.mPaint);
+      paramCanvas.drawLine(0.0F, this.wgl, this.wgk, this.wgl, this.mPaint);
+      paramCanvas.drawLine(0.0F, this.wgl / 2, this.wgk / 10, this.wgl / 2, this.mPaint);
+      paramCanvas.drawLine(this.wgk, this.wgl / 2, this.wgk * 9 / 10, this.wgl / 2, this.mPaint);
+      paramCanvas.drawLine(this.wgk / 2, 0.0F, this.wgk / 2, this.wgl / 10, this.mPaint);
+      paramCanvas.drawLine(this.wgk / 2, this.wgl, this.wgk / 2, this.wgl * 9 / 10, this.mPaint);
       invalidate();
       AppMethodBeat.o(94507);
       return;
@@ -160,29 +160,29 @@ public class CameraFrontSightView
   public final void gC(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(94504);
-    this.vUi = getLayoutParams();
-    if (this.vUi != null)
+    this.wgm = getLayoutParams();
+    if (this.wgm != null)
     {
-      this.vUi.width = paramInt1;
-      this.vUi.height = paramInt2;
+      this.wgm.width = paramInt1;
+      this.wgm.height = paramInt2;
     }
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    this.vUg = (this.mWidth / 2);
-    this.vUh = (this.mHeight / 2);
-    this.mSV = a.fromDPToPix(getContext(), 1);
+    this.wgk = (this.mWidth / 2);
+    this.wgl = (this.mHeight / 2);
+    this.mStrokeWidth = a.fromDPToPix(getContext(), 1);
     this.mPaint.setColor(-12206054);
-    this.mPaint.setStrokeWidth(this.mSV);
+    this.mPaint.setStrokeWidth(this.mStrokeWidth);
     AppMethodBeat.o(94504);
   }
   
   public void setFocusColor(int paramInt)
   {
-    AppMethodBeat.i(214494);
+    AppMethodBeat.i(189030);
     if (paramInt != 0) {
       this.mPaint.setColor(paramInt);
     }
-    AppMethodBeat.o(214494);
+    AppMethodBeat.o(189030);
   }
 }
 

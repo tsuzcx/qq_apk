@@ -16,10 +16,10 @@ final class EmojiStoreV2TabView$1
     AppMethodBeat.i(109371);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     int i = ((Integer)paramView.getTag()).intValue();
-    if (EmojiStoreV2TabView.a(this.pPo) != null) {
-      EmojiStoreV2TabView.a(this.pPo).onTabClick(i);
+    if (EmojiStoreV2TabView.a(this.pVT) != null) {
+      EmojiStoreV2TabView.a(this.pVT).onTabClick(i);
     }
     a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109371);

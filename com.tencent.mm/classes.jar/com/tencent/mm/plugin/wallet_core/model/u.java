@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.b.a.ho;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class u
 {
-  public String Dad;
-  public String Dae;
-  public String dxD;
+  public String DrI;
+  public String DrJ;
+  public String dyI;
   
   public static u bm(JSONObject paramJSONObject)
   {
@@ -28,32 +28,32 @@ public final class u
         return null;
       }
       u localu = new u();
-      localu.dxD = paramJSONObject.optString("wording");
-      localu.Dad = paramJSONObject.optString("btn_cancel");
-      localu.Dae = paramJSONObject.optString("btn_confirm");
+      localu.dyI = paramJSONObject.optString("wording");
+      localu.DrI = paramJSONObject.optString("btn_cancel");
+      localu.DrJ = paramJSONObject.optString("btn_confirm");
       AppMethodBeat.o(70406);
       return localu;
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.UnderAgeDialog", "parseUnderAgeDialogFromJson Exception:%s %s", new Object[] { paramJSONObject.getClass().getSimpleName(), paramJSONObject.getMessage() });
+      ae.e("MicroMsg.UnderAgeDialog", "parseUnderAgeDialogFromJson Exception:%s %s", new Object[] { paramJSONObject.getClass().getSimpleName(), paramJSONObject.getMessage() });
       AppMethodBeat.o(70406);
     }
     return null;
   }
   
-  public static void tQ(int paramInt)
+  public static void tW(int paramInt)
   {
     AppMethodBeat.i(70407);
-    hm localhm = new hm();
-    localhm.dPl = paramInt;
-    localhm.aLk();
+    ho localho = new ho();
+    localho.dQB = paramInt;
+    localho.aLH();
     AppMethodBeat.o(70407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.u
  * JD-Core Version:    0.7.0.1
  */

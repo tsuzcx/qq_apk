@@ -6,23 +6,24 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.i;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.api.c;
 import com.tencent.mm.api.d;
 import com.tencent.mm.booter.o;
-import com.tencent.mm.g.a.wn;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.g.a.wr;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.modelmulti.f;
 import com.tencent.mm.plugin.gallery.picker.view.ImageCropUI;
 import com.tencent.mm.plugin.game.api.b.a;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.ui.span.r;
-import com.tencent.mm.protocal.protobuf.bzp;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bu.a;
+import com.tencent.mm.protocal.protobuf.caj;
+import com.tencent.mm.protocal.protobuf.cyw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bv.a;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.y.a;
@@ -30,66 +31,66 @@ import com.tencent.mm.ui.y.a;
 final class aj
   implements i, com.tencent.mm.api.l, k, com.tencent.mm.pluginsdk.l
 {
-  public final void MR()
+  public final void MM()
   {
     AppMethodBeat.i(19502);
-    com.tencent.mm.modelmulti.p.aJx().pM(7);
+    com.tencent.mm.modelmulti.p.aJQ().pP(7);
     AppMethodBeat.o(19502);
   }
   
-  public final com.tencent.mm.al.h MS()
+  public final com.tencent.mm.ak.h MN()
   {
     AppMethodBeat.i(19504);
-    com.tencent.mm.audio.a.a locala = new com.tencent.mm.audio.a.a(com.tencent.mm.sdk.platformtools.aj.getContext());
+    com.tencent.mm.audio.a.a locala = new com.tencent.mm.audio.a.a(ak.getContext());
     AppMethodBeat.o(19504);
     return locala;
   }
   
-  public final void MT()
+  public final void MO()
   {
     AppMethodBeat.i(19514);
-    wn localwn = new wn();
-    localwn.dKS.dKU = true;
-    com.tencent.mm.sdk.b.a.IbL.l(localwn);
+    wr localwr = new wr();
+    localwr.dMh.dMj = true;
+    com.tencent.mm.sdk.b.a.IvT.l(localwr);
     AppMethodBeat.o(19514);
   }
   
-  public final void MU()
+  public final void MP()
   {
     AppMethodBeat.i(19519);
-    MMAppMgr.MU();
+    MMAppMgr.MP();
     AppMethodBeat.o(19519);
   }
   
-  public final Intent MV()
+  public final Intent MQ()
   {
     AppMethodBeat.i(19524);
-    Intent localIntent = new Intent(com.tencent.mm.sdk.platformtools.aj.getContext(), LauncherUI.class);
+    Intent localIntent = new Intent(ak.getContext(), LauncherUI.class);
     localIntent.putExtra("nofification_type", "talkroom_notification");
     localIntent.addFlags(67108864);
     AppMethodBeat.o(19524);
     return localIntent;
   }
   
-  public final boolean MW()
+  public final boolean MR()
   {
     AppMethodBeat.i(19529);
-    boolean bool = r.MW();
+    boolean bool = r.MR();
     AppMethodBeat.o(19529);
     return bool;
   }
   
-  public final void MX()
+  public final void MS()
   {
     AppMethodBeat.i(19531);
-    o.MX();
+    o.MS();
     AppMethodBeat.o(19531);
   }
   
-  public final boolean MY()
+  public final boolean MT()
   {
     AppMethodBeat.i(19537);
-    boolean bool = com.tencent.mm.modelmulti.l.aJs();
+    boolean bool = com.tencent.mm.modelmulti.l.aJL();
     AppMethodBeat.o(19537);
     return bool;
   }
@@ -102,88 +103,28 @@ final class aj
     return paramString1;
   }
   
-  public final Bitmap a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(19523);
-    if (paramInt2 != -1)
-    {
-      AppMethodBeat.o(19523);
-      return null;
-    }
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(19523);
-      return null;
-      paramIntent = com.tencent.mm.pluginsdk.ui.tools.q.i(paramActivity.getApplicationContext(), paramIntent, com.tencent.mm.loader.j.b.asc());
-      if (paramIntent == null)
-      {
-        AppMethodBeat.o(19523);
-        return null;
-      }
-      Intent localIntent = new Intent(paramActivity, ImageCropUI.class);
-      localIntent.putExtra("CropImageMode", 1);
-      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.loader.j.b.asc() + "temp.avatar");
-      localIntent.putExtra("CropImage_ImgPath", paramIntent);
-      localIntent.putExtra("CropImage_from_scene", 3);
-      paramActivity.startActivityForResult(localIntent, 4);
-      AppMethodBeat.o(19523);
-      return null;
-      if (paramIntent == null)
-      {
-        AppMethodBeat.o(19523);
-        return null;
-      }
-      localIntent = new Intent(paramActivity, ImageCropUI.class);
-      localIntent.putExtra("CropImageMode", 1);
-      localIntent.putExtra("CropImage_Filter", true);
-      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.loader.j.b.asc() + "temp.avatar");
-      localIntent.putExtra("CropImage_ImgPath", null);
-      localIntent.putExtra("CropImage_from_scene", 3);
-      com.tencent.mm.ui.tools.a.a(paramActivity, paramIntent, localIntent, com.tencent.mm.loader.j.b.asc(), 4);
-      AppMethodBeat.o(19523);
-      return null;
-      if (paramIntent == null)
-      {
-        AppMethodBeat.o(19523);
-        return null;
-      }
-      paramActivity = paramIntent.getStringExtra("CropImage_OutputPath");
-      if (paramActivity != null) {
-        break;
-      }
-      ad.e("MicroMsg.WorkerModelCallback", "crop picture failed");
-    }
-    ad.e("MicroMsg.WorkerModelCallback", "crop picture path %s ", new Object[] { paramActivity });
-    paramActivity = com.tencent.mm.sdk.platformtools.g.aQf(paramActivity);
-    AppMethodBeat.o(19523);
-    return paramActivity;
-  }
-  
-  public final n a(com.tencent.mm.al.g paramg)
+  public final n a(com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(19525);
-    if (com.tencent.mm.modelmulti.l.aJs())
+    if (com.tencent.mm.modelmulti.l.aJL())
     {
       paramg = new f(paramg);
       AppMethodBeat.o(19525);
       return paramg;
     }
-    com.tencent.mm.modelmulti.p.aJx().pM(4);
+    com.tencent.mm.modelmulti.p.aJQ().pP(4);
     AppMethodBeat.o(19525);
     return null;
   }
   
-  public final void a(Context paramContext, am paramam, bu.a parama, Bundle paramBundle, String paramString)
+  public final void a(Context paramContext, an paraman, bv.a parama, Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(19533);
-    com.tencent.mm.ui.contact.e.a(paramContext, paramam, parama, true, true, paramBundle, paramString);
+    com.tencent.mm.ui.contact.e.a(paramContext, paraman, parama, true, true, paramBundle, paramString);
     AppMethodBeat.o(19533);
   }
   
-  public final void a(Context paramContext, bu.a parama, Bundle paramBundle)
+  public final void a(Context paramContext, bv.a parama, Bundle paramBundle)
   {
     AppMethodBeat.i(19532);
     com.tencent.mm.ui.contact.e.a(paramContext, parama, true, true, paramBundle);
@@ -193,17 +134,17 @@ final class aj
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(19512);
-    com.tencent.mm.plugin.game.api.b localb = b.a.cWM();
+    com.tencent.mm.plugin.game.api.b localb = b.a.cZq();
     if (localb != null) {
       localb.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, "");
     }
     AppMethodBeat.o(19512);
   }
   
-  public final void a(Intent paramIntent, cyc paramcyc, int paramInt)
+  public final void a(Intent paramIntent, cyw paramcyw, int paramInt)
   {
     AppMethodBeat.i(19530);
-    d.a(paramIntent, paramcyc, paramInt);
+    d.a(paramIntent, paramcyw, paramInt);
     AppMethodBeat.o(19530);
   }
   
@@ -214,31 +155,31 @@ final class aj
     AppMethodBeat.o(19534);
   }
   
-  public final void a(c paramc, Activity paramActivity, am paramam)
+  public final void a(c paramc, Activity paramActivity, an paraman)
   {
     AppMethodBeat.i(19528);
-    com.tencent.mm.ui.tools.b.c(paramc, paramActivity, paramam);
+    com.tencent.mm.ui.tools.b.c(paramc, paramActivity, paraman);
     AppMethodBeat.o(19528);
   }
   
-  public final void a(c paramc, Activity paramActivity, am paramam, boolean paramBoolean, Runnable paramRunnable)
+  public final void a(c paramc, Activity paramActivity, an paraman, boolean paramBoolean, Runnable paramRunnable)
   {
     AppMethodBeat.i(19527);
-    com.tencent.mm.ui.tools.b.a(paramc, paramActivity, paramam, paramBoolean, paramRunnable, 0);
+    com.tencent.mm.ui.tools.b.a(paramc, paramActivity, paraman, paramBoolean, paramRunnable, 0);
     AppMethodBeat.o(19527);
   }
   
-  public final void a(bzp parambzp, String paramString, int paramInt)
+  public final void a(caj paramcaj, String paramString, int paramInt)
   {
-    AppMethodBeat.i(193081);
-    ((com.tencent.mm.plugin.messenger.foundation.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.e.class)).processModContact(parambzp, paramString, null, true, false, paramInt);
-    AppMethodBeat.o(193081);
+    AppMethodBeat.i(186314);
+    ((com.tencent.mm.plugin.messenger.foundation.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.e.class)).processModContact(paramcaj, paramString, null, true, false, paramInt);
+    AppMethodBeat.o(186314);
   }
   
   public final void a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong)
   {
     AppMethodBeat.i(19513);
-    com.tencent.mm.plugin.game.api.b localb = b.a.cWM();
+    com.tencent.mm.plugin.game.api.b localb = b.a.cZq();
     if (localb != null) {
       localb.a(paramString1, paramString2, paramInt, 4, paramString3, paramLong, "", 0);
     }
@@ -253,12 +194,72 @@ final class aj
     return bool;
   }
   
-  public final boolean a(am paramam)
+  public final boolean a(an paraman)
   {
     AppMethodBeat.i(19526);
-    boolean bool = com.tencent.mm.modelmulti.a.a(paramam);
+    boolean bool = com.tencent.mm.modelmulti.a.a(paraman);
     AppMethodBeat.o(19526);
     return bool;
+  }
+  
+  public final Bitmap b(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(19523);
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(19523);
+      return null;
+    }
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(19523);
+      return null;
+      paramIntent = com.tencent.mm.pluginsdk.ui.tools.q.i(paramActivity.getApplicationContext(), paramIntent, com.tencent.mm.loader.j.b.asr());
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(19523);
+        return null;
+      }
+      Intent localIntent = new Intent(paramActivity, ImageCropUI.class);
+      localIntent.putExtra("CropImageMode", 1);
+      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.loader.j.b.asr() + "temp.avatar");
+      localIntent.putExtra("CropImage_ImgPath", paramIntent);
+      localIntent.putExtra("CropImage_from_scene", 3);
+      paramActivity.startActivityForResult(localIntent, 4);
+      AppMethodBeat.o(19523);
+      return null;
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(19523);
+        return null;
+      }
+      localIntent = new Intent(paramActivity, ImageCropUI.class);
+      localIntent.putExtra("CropImageMode", 1);
+      localIntent.putExtra("CropImage_Filter", true);
+      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.loader.j.b.asr() + "temp.avatar");
+      localIntent.putExtra("CropImage_ImgPath", null);
+      localIntent.putExtra("CropImage_from_scene", 3);
+      com.tencent.mm.ui.tools.a.a(paramActivity, paramIntent, localIntent, com.tencent.mm.loader.j.b.asr(), 4);
+      AppMethodBeat.o(19523);
+      return null;
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(19523);
+        return null;
+      }
+      paramActivity = paramIntent.getStringExtra("CropImage_OutputPath");
+      if (paramActivity != null) {
+        break;
+      }
+      ae.e("MicroMsg.WorkerModelCallback", "crop picture failed");
+    }
+    ae.e("MicroMsg.WorkerModelCallback", "crop picture path %s ", new Object[] { paramActivity });
+    paramActivity = com.tencent.mm.sdk.platformtools.h.aRC(paramActivity);
+    AppMethodBeat.o(19523);
+    return paramActivity;
   }
   
   public final boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString)
@@ -269,10 +270,10 @@ final class aj
     return bool;
   }
   
-  public final void bx(Context paramContext)
+  public final void bz(Context paramContext)
   {
     AppMethodBeat.i(19521);
-    MMAppMgr.jM(paramContext);
+    MMAppMgr.jT(paramContext);
     AppMethodBeat.o(19521);
   }
   
@@ -280,10 +281,10 @@ final class aj
   {
     AppMethodBeat.i(19515);
     if (paramBoolean) {
-      com.tencent.mm.bc.t.aJZ().pQ(4);
+      com.tencent.mm.bb.t.aKs().pT(4);
     }
-    com.tencent.mm.bc.l locall = new com.tencent.mm.bc.l(4);
-    ba.aiU().a(locall, 0);
+    com.tencent.mm.bb.l locall = new com.tencent.mm.bb.l(4);
+    bc.ajj().a(locall, 0);
     AppMethodBeat.o(19515);
     return locall;
   }
@@ -296,7 +297,7 @@ final class aj
     return paramContext;
   }
   
-  public final String fw(String paramString)
+  public final String fC(String paramString)
   {
     AppMethodBeat.i(19506);
     if (com.tencent.mm.pluginsdk.model.app.h.m(paramString, false, false) != null)
@@ -309,35 +310,35 @@ final class aj
     return "";
   }
   
-  public final boolean fx(String paramString)
+  public final boolean fD(String paramString)
   {
     AppMethodBeat.i(19508);
-    boolean bool = com.tencent.mm.pluginsdk.model.app.h.fx(paramString);
+    boolean bool = com.tencent.mm.pluginsdk.model.app.h.fD(paramString);
     AppMethodBeat.o(19508);
     return bool;
   }
   
-  public final boolean fy(String paramString)
+  public final boolean fE(String paramString)
   {
     AppMethodBeat.i(19516);
-    boolean bool = com.tencent.mm.pluginsdk.model.app.h.fy(paramString);
+    boolean bool = com.tencent.mm.pluginsdk.model.app.h.fE(paramString);
     AppMethodBeat.o(19516);
     return bool;
   }
   
-  public final void fz(String paramString)
+  public final void fF(String paramString)
   {
     AppMethodBeat.i(19535);
-    com.tencent.mm.at.b.aHW();
-    com.tencent.mm.at.b.EZ(paramString);
+    com.tencent.mm.as.b.aIn();
+    com.tencent.mm.as.b.FB(paramString);
     AppMethodBeat.o(19535);
   }
   
   public final void hu(int paramInt)
   {
     AppMethodBeat.i(19503);
-    ad.d("MicroMsg.WorkerModelCallback", "trigger netscene sync, scene[%d]", new Object[] { Integer.valueOf(paramInt) });
-    com.tencent.mm.modelmulti.p.aJx().pM(paramInt);
+    ae.d("MicroMsg.WorkerModelCallback", "trigger netscene sync, scene[%d]", new Object[] { Integer.valueOf(paramInt) });
+    com.tencent.mm.modelmulti.p.aJQ().pP(paramInt);
     AppMethodBeat.o(19503);
   }
   
@@ -352,7 +353,7 @@ final class aj
   public final boolean s(Activity paramActivity)
   {
     AppMethodBeat.i(19520);
-    if (!com.tencent.mm.compatible.util.e.abf())
+    if (!com.tencent.mm.compatible.util.e.abo())
     {
       com.tencent.mm.ui.base.t.g(paramActivity, null);
       AppMethodBeat.o(19520);
@@ -378,12 +379,12 @@ final class aj
     AppMethodBeat.o(19522);
   }
   
-  public final String u(String paramString, int paramInt)
+  public final String v(String paramString, int paramInt)
   {
     AppMethodBeat.i(19505);
-    if (com.tencent.mm.pluginsdk.model.app.h.fX(paramString, paramInt) != null)
+    if (com.tencent.mm.pluginsdk.model.app.h.gg(paramString, paramInt) != null)
     {
-      paramString = com.tencent.mm.pluginsdk.model.app.h.fX(paramString, paramInt).field_packageName;
+      paramString = com.tencent.mm.pluginsdk.model.app.h.gg(paramString, paramInt).field_packageName;
       AppMethodBeat.o(19505);
       return paramString;
     }

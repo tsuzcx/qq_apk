@@ -6,12 +6,12 @@ import java.util.HashMap;
 public final class a
   implements com.tencent.f.b.a
 {
-  private g MjR;
+  private g MGO;
   private boolean aqv = true;
   
   protected a(g paramg)
   {
-    this.MjR = paramg;
+    this.MGO = paramg;
   }
   
   public final void z(String paramString, Object paramObject)
@@ -22,16 +22,16 @@ public final class a
       AppMethodBeat.o(62811);
       return;
     }
-    f localf = f.fYP();
+    f localf = f.gdo();
     if (paramObject == null)
     {
       paramString = new h("TpfServiceCenter|registerService|name or service should not be null");
       AppMethodBeat.o(62811);
       throw paramString;
     }
-    synchronized (localf.MjX)
+    synchronized (localf.MGU)
     {
-      localf.MjV.put(paramString, paramObject);
+      localf.MGS.put(paramString, paramObject);
       AppMethodBeat.o(62811);
       return;
     }

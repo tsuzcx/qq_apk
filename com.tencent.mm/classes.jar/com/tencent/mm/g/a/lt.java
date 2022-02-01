@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lt
   extends b
 {
-  public a dyT;
+  public a dzW;
   
   public lt()
   {
@@ -15,33 +15,23 @@ public final class lt
   
   private lt(byte paramByte)
   {
-    AppMethodBeat.i(126679);
-    this.dyT = new a();
-    this.IbR = false;
+    AppMethodBeat.i(19819);
+    this.dzW = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(126679);
+    AppMethodBeat.o(19819);
   }
   
   public static final class a
   {
-    public String dyU;
-    public String dyV;
-    public int dyW;
-    public String[] dyX;
-    public String dyY;
-    public int dyZ;
-    public int dza;
-    public String dzb;
-    public long endTime;
-    public String fileId;
-    public int netType;
-    public String path;
-    public long startTime;
+    public boolean cQF;
+    public long dzX;
+    public long progress;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.lt
  * JD-Core Version:    0.7.0.1
  */

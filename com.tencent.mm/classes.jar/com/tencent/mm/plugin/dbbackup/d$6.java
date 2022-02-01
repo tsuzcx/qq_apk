@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.dbbackup;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 
 final class d$6
   implements Runnable
@@ -14,33 +14,33 @@ final class d$6
   public final void run()
   {
     AppMethodBeat.i(23084);
-    Object localObject = this.pib + "corrupted/EnMicroMsg.db";
-    if (i.fv((String)localObject + ".corrupt"))
+    Object localObject = this.poI + "corrupted/EnMicroMsg.db";
+    if (o.fB((String)localObject + ".corrupt"))
     {
       AppMethodBeat.o(23084);
       return;
     }
     long l = System.currentTimeMillis();
-    localObject = new e(this.pib + "corrupted");
-    if (!((e)localObject).isDirectory())
+    localObject = new k(this.poI + "corrupted");
+    if (!((k)localObject).isDirectory())
     {
       AppMethodBeat.o(23084);
       return;
     }
-    e[] arrayOfe = ((e)localObject).fOM();
-    int j = arrayOfe.length;
+    k[] arrayOfk = ((k)localObject).fTj();
+    int j = arrayOfk.length;
     int i = 0;
     while (i < j)
     {
-      if (l - arrayOfe[i].lastModified() < 7776000000L)
+      if (l - arrayOfk[i].lastModified() < 7776000000L)
       {
         AppMethodBeat.o(23084);
         return;
       }
       i += 1;
     }
-    if (i.cZ(q.B(((e)localObject).mUri), true)) {
-      ad.i("MicroMsg.SubCoreDBBackup", "Corrupted databases removed.");
+    if (o.dd(w.B(((k)localObject).mUri), true)) {
+      ae.i("MicroMsg.SubCoreDBBackup", "Corrupted databases removed.");
     }
     AppMethodBeat.o(23084);
   }

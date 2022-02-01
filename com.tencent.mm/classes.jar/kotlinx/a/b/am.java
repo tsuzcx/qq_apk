@@ -13,26 +13,26 @@ import kotlinx.a.o;
 import kotlinx.a.s;
 import kotlinx.a.w.c;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/MapEntrySerializer;", "K", "V", "Lkotlinx/serialization/internal/KeyValueSerializer;", "", "keySerializer", "Lkotlinx/serialization/KSerializer;", "valueSerializer", "(Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "key", "getKey", "(Ljava/util/Map$Entry;)Ljava/lang/Object;", "value", "getValue", "toResult", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map$Entry;", "MapEntry", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/MapEntrySerializer;", "K", "V", "Lkotlinx/serialization/internal/KeyValueSerializer;", "", "keySerializer", "Lkotlinx/serialization/KSerializer;", "valueSerializer", "(Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "key", "getKey", "(Ljava/util/Map$Entry;)Ljava/lang/Object;", "value", "getValue", "toResult", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map$Entry;", "MapEntry", "kotlinx-serialization-runtime"})
 public final class am<K, V>
   extends ac<K, V, Map.Entry<? extends K, ? extends V>>
 {
-  private final n NLm;
+  private final n Ois;
   
   public am(h<K> paramh, final h<V> paramh1)
   {
     super(paramh, paramh1, (byte)0);
-    AppMethodBeat.i(191035);
-    this.NLm = kotlinx.a.p.a("kotlin.collections.Map.Entry", (s)w.c.NLS, (b)new b(paramh, paramh1));
-    AppMethodBeat.o(191035);
+    AppMethodBeat.i(199623);
+    this.Ois = kotlinx.a.p.a("kotlin.collections.Map.Entry", (s)w.c.OiY, (b)new b(paramh, paramh1));
+    AppMethodBeat.o(199623);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return this.NLm;
+    return this.Ois;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/MapEntrySerializer$MapEntry;", "K", "V", "", "key", "value", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getKey", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getValue", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlinx/serialization/internal/MapEntrySerializer$MapEntry;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/MapEntrySerializer$MapEntry;", "K", "V", "", "key", "value", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getKey", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getValue", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlinx/serialization/internal/MapEntrySerializer$MapEntry;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlinx-serialization-runtime"})
   static final class a<K, V>
     implements a, Map.Entry<K, V>
   {
@@ -47,7 +47,7 @@ public final class am<K, V>
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(191218);
+      AppMethodBeat.i(199806);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
@@ -58,10 +58,10 @@ public final class am<K, V>
       }
       else
       {
-        AppMethodBeat.o(191218);
+        AppMethodBeat.o(199806);
         return true;
       }
-      AppMethodBeat.o(191218);
+      AppMethodBeat.o(199806);
       return false;
     }
     
@@ -78,7 +78,7 @@ public final class am<K, V>
     public final int hashCode()
     {
       int j = 0;
-      AppMethodBeat.i(191217);
+      AppMethodBeat.i(199805);
       Object localObject = getKey();
       if (localObject != null) {}
       for (int i = localObject.hashCode();; i = 0)
@@ -87,29 +87,29 @@ public final class am<K, V>
         if (localObject != null) {
           j = localObject.hashCode();
         }
-        AppMethodBeat.o(191217);
+        AppMethodBeat.o(199805);
         return i * 31 + j;
       }
     }
     
     public final V setValue(V paramV)
     {
-      AppMethodBeat.i(191219);
+      AppMethodBeat.i(199807);
       paramV = new UnsupportedOperationException("Operation is not supported for read-only collection");
-      AppMethodBeat.o(191219);
+      AppMethodBeat.o(199807);
       throw paramV;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(191216);
+      AppMethodBeat.i(199804);
       String str = "MapEntry(key=" + getKey() + ", value=" + getValue() + ")";
-      AppMethodBeat.o(191216);
+      AppMethodBeat.o(199804);
       return str;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "K", "V", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "K", "V", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
   static final class b
     extends q
     implements b<o, z>

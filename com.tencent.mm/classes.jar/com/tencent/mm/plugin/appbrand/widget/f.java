@@ -9,47 +9,47 @@ import java.util.Map;
 public final class f
   extends bf
 {
-  public static c.a hEe;
+  public static c.a hGW;
   
   static
   {
     AppMethodBeat.i(76398);
     c.a locala = new c.a();
-    locala.IhA = new Field[6];
+    locala.IBL = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "id";
-    locala.IhC.put("id", "TEXT");
+    locala.IBN.put("id", "TEXT");
     localStringBuilder.append(" id TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "cacheKey";
-    locala.IhC.put("cacheKey", "TEXT");
+    locala.IBN.put("cacheKey", "TEXT");
     localStringBuilder.append(" cacheKey TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "appId";
-    locala.IhC.put("appId", "TEXT");
+    locala.IBN.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "data";
-    locala.IhC.put("data", "TEXT");
+    locala.IBN.put("data", "TEXT");
     localStringBuilder.append(" data TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "interval";
-    locala.IhC.put("interval", "INTEGER");
+    locala.IBN.put("interval", "INTEGER");
     localStringBuilder.append(" interval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "updateTime";
-    locala.IhC.put("updateTime", "LONG");
+    locala.IBN.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hEe = locala;
+    hGW = locala;
     AppMethodBeat.o(76398);
   }
   
   public final c.a getDBInfo()
   {
-    return hEe;
+    return hGW;
   }
 }
 

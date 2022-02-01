@@ -6,82 +6,44 @@ import com.tencent.mm.plugin.report.a;
 public final class do
   extends a
 {
-  private String dQt = "";
-  private String egI = "";
-  public long egJ = 0L;
-  public long egK = 0L;
-  public long egL = 0L;
-  public long egM = 0L;
-  public long egN = 0L;
-  public long egO = 0L;
+  public long dWm = 0L;
+  private String eip = "";
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(149920);
+    AppMethodBeat.i(149913);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dQt);
+    ((StringBuffer)localObject).append(this.eip);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egI);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egO);
+    ((StringBuffer)localObject).append(this.dWm);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(149920);
+    axO((String)localObject);
+    AppMethodBeat.o(149913);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(149921);
+    AppMethodBeat.i(149914);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("sessionid:").append(this.dQt);
+    ((StringBuffer)localObject).append("chatRoomUserName:").append(this.eip);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("userName:").append(this.egI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("succeedStatus:").append(this.egJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("userStatus:").append(this.egK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("showSucceedMethod:").append(this.egL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickSucceedAction:").append(this.egM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("watchMessageRecord:").append(this.egN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sendMessageStatus:").append(this.egO);
+    ((StringBuffer)localObject).append("scene:").append(this.dWm);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149921);
+    AppMethodBeat.o(149914);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15855;
+    return 15848;
   }
   
-  public final do mU(String paramString)
+  public final do nl(String paramString)
   {
-    AppMethodBeat.i(149918);
-    this.dQt = t("sessionid", paramString, true);
-    AppMethodBeat.o(149918);
-    return this;
-  }
-  
-  public final do mV(String paramString)
-  {
-    AppMethodBeat.i(149919);
-    this.egI = t("userName", paramString, true);
-    AppMethodBeat.o(149919);
+    AppMethodBeat.i(149912);
+    this.eip = t("chatRoomUserName", paramString, true);
+    AppMethodBeat.o(149912);
     return this;
   }
 }

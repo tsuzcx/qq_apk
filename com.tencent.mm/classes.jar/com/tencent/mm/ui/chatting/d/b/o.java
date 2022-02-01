@@ -5,9 +5,9 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface o
   extends ad
 {
-  public abstract void edB();
+  public abstract void ehi();
   
-  public abstract void fDA();
+  public abstract void fHD();
 }
 
 

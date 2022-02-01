@@ -11,20 +11,20 @@ public final class c
     super(paramMMActivity);
   }
   
-  public final boolean bXE()
+  public final boolean bYT()
   {
-    return this.oKn;
+    return this.oQP;
   }
   
-  public final boolean bXH()
+  public final boolean bYW()
   {
     return false;
   }
   
-  public final boolean bXI()
+  public final boolean bYX()
   {
     AppMethodBeat.i(113639);
-    if ((this.oKn) && (super.bXI()))
+    if ((this.oQP) && (super.bYX()))
     {
       AppMethodBeat.o(113639);
       return true;
@@ -33,12 +33,12 @@ public final class c
     return false;
   }
   
-  public final boolean bXM()
+  public final boolean bZb()
   {
     return false;
   }
   
-  public final boolean bXN()
+  public final boolean bZc()
   {
     return false;
   }

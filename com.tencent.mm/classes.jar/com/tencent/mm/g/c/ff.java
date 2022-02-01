@@ -8,31 +8,25 @@ public abstract class ff
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableStartTimeIndex ON PredownloadIssueLaunchWxaAppResponse(startTime)", "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableEndTimeIndex ON PredownloadIssueLaunchWxaAppResponse(endTime)" };
-  private static final int eDo = "startTime".hashCode();
-  private static final int eDp = "endTime".hashCode();
-  private static final int eEB;
-  private static final int eEU = "appId".hashCode();
-  private static final int eGy = "reportId".hashCode();
-  private static final int foG;
+  private static final int eEX = "startTime".hashCode();
+  private static final int eEY = "endTime".hashCode();
+  private static final int eGD = "appId".hashCode();
+  private static final int eGk = "scene".hashCode();
+  private static final int eIh = "reportId".hashCode();
+  private static final int fqH = "launchProtoBlob".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDh = true;
-  private boolean eDi = true;
-  private boolean eED = true;
-  private boolean eEz = true;
-  private boolean eGt = true;
+  private boolean eEQ = true;
+  private boolean eER = true;
+  private boolean eGi = true;
+  private boolean eGm = true;
+  private boolean eIc = true;
   public String field_appId;
   public long field_endTime;
   public byte[] field_launchProtoBlob;
   public long field_reportId;
   public int field_scene;
   public long field_startTime;
-  private boolean foF = true;
-  
-  static
-  {
-    eEB = "scene".hashCode();
-    foG = "launchProtoBlob".hashCode();
-  }
+  private boolean fqG = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -47,7 +41,7 @@ public abstract class ff
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eGD != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -58,15 +52,15 @@ public abstract class ff
       break label20;
       break;
       label60:
-      if (eEB == k) {
+      if (eGk == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (foG == k) {
+      } else if (fqH == k) {
         this.field_launchProtoBlob = paramCursor.getBlob(i);
-      } else if (eDo == k) {
+      } else if (eEX == k) {
         this.field_startTime = paramCursor.getLong(i);
-      } else if (eDp == k) {
+      } else if (eEY == k) {
         this.field_endTime = paramCursor.getLong(i);
-      } else if (eGy == k) {
+      } else if (eIh == k) {
         this.field_reportId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -77,22 +71,22 @@ public abstract class ff
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.foF) {
+    if (this.fqG) {
       localContentValues.put("launchProtoBlob", this.field_launchProtoBlob);
     }
-    if (this.eDh) {
+    if (this.eEQ) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eDi) {
+    if (this.eER) {
       localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.eGt) {
+    if (this.eIc) {
       localContentValues.put("reportId", Long.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {

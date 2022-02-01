@@ -11,53 +11,53 @@ public abstract class an
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCW = "msgId".hashCode();
-  private static final int eDc;
-  private static final int eEf;
-  private static final int eEm;
-  private static final int eHX;
-  private static final int eIE;
-  private static final int eIP;
-  private static final int eKz = "extInfo".hashCode();
-  private static final int eLD;
-  private static final int eLE;
-  private static final int eLF;
-  private static final int eLG;
-  private static final int eLH;
-  private static final int eLI;
-  private static final int eLJ;
-  private static final int eLK;
-  private static final int eLe = "msgSvrId".hashCode();
-  private static final int eLf;
-  private static final int eLg;
-  private static final int eLh;
-  private static final int eLi;
-  private static final int eLp;
+  private static final int eEF = "msgId".hashCode();
+  private static final int eEL;
+  private static final int eFO;
+  private static final int eFV;
+  private static final int eJG;
+  private static final int eKn;
+  private static final int eKy;
+  private static final int eMO = "msgSvrId".hashCode();
+  private static final int eMP;
+  private static final int eMQ;
+  private static final int eMR;
+  private static final int eMS;
+  private static final int eMZ;
+  private static final int eMi = "extInfo".hashCode();
+  private static final int eNo;
+  private static final int eNp;
+  private static final int eNq;
+  private static final int eNr;
+  private static final int eNs;
+  private static final int eNt;
+  private static final int eNu;
+  private static final int eNv;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype;
-  private boolean eCS;
-  private boolean eCZ;
-  private boolean eDI;
-  private boolean eDP;
-  private boolean eHV;
-  private boolean eIA;
-  private boolean eIp;
-  private boolean eKR;
-  private boolean eKS;
-  private boolean eKT;
-  private boolean eKU;
-  private boolean eKV;
-  private boolean eKl;
-  private boolean eLA;
-  private boolean eLB;
-  private boolean eLC;
-  private boolean eLc;
-  private boolean eLv;
-  private boolean eLw;
-  private boolean eLx;
-  private boolean eLy;
-  private boolean eLz;
+  private boolean eEB;
+  private boolean eEI;
+  private boolean eFr;
+  private boolean eFy;
+  private boolean eJE;
+  private boolean eJY;
+  private boolean eKj;
+  private boolean eLU;
+  private boolean eMA;
+  private boolean eMB;
+  private boolean eMC;
+  private boolean eMD;
+  private boolean eME;
+  private boolean eML;
+  private boolean eNg;
+  private boolean eNh;
+  private boolean eNi;
+  private boolean eNj;
+  private boolean eNk;
+  private boolean eNl;
+  private boolean eNm;
+  private boolean eNn;
   public long field_bizChatId;
   public String field_bizChatUserId;
   public String field_bizClientMsgId;
@@ -84,124 +84,124 @@ public abstract class an
   
   static
   {
-    eDc = "status".hashCode();
-    eIP = "isSend".hashCode();
-    eLD = "isShowTimer".hashCode();
-    eEf = "createTime".hashCode();
-    eLf = "talker".hashCode();
-    eEm = "content".hashCode();
-    eLg = "imgPath".hashCode();
-    eLE = "reserved".hashCode();
-    eLh = "lvbuffer".hashCode();
-    eLi = "talkerId".hashCode();
-    eLF = "transContent".hashCode();
-    eLG = "transBrandWording".hashCode();
-    eLp = "bizClientMsgId".hashCode();
-    eIE = "bizChatId".hashCode();
-    eLH = "bizChatUserId".hashCode();
-    eLI = "msgSeq".hashCode();
-    eHX = "flag".hashCode();
-    eLJ = "fromUsername".hashCode();
-    eLK = "toUsername".hashCode();
+    eEL = "status".hashCode();
+    eKy = "isSend".hashCode();
+    eNo = "isShowTimer".hashCode();
+    eFO = "createTime".hashCode();
+    eMP = "talker".hashCode();
+    eFV = "content".hashCode();
+    eMQ = "imgPath".hashCode();
+    eNp = "reserved".hashCode();
+    eMR = "lvbuffer".hashCode();
+    eMS = "talkerId".hashCode();
+    eNq = "transContent".hashCode();
+    eNr = "transBrandWording".hashCode();
+    eMZ = "bizClientMsgId".hashCode();
+    eKn = "bizChatId".hashCode();
+    eNs = "bizChatUserId".hashCode();
+    eNt = "msgSeq".hashCode();
+    eJG = "flag".hashCode();
+    eNu = "fromUsername".hashCode();
+    eNv = "toUsername".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[23];
+    locala.IBL = new Field[23];
     locala.columns = new String[24];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.IhC.put("msgId", "LONG PRIMARY KEY ");
+    locala.IBN.put("msgId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" msgId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "msgId";
+    locala.IBM = "msgId";
     locala.columns[1] = "msgSvrId";
-    locala.IhC.put("msgSvrId", "LONG");
+    locala.IBN.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.IhC.put("status", "INTEGER");
+    locala.IBN.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "isSend";
-    locala.IhC.put("isSend", "INTEGER");
+    locala.IBN.put("isSend", "INTEGER");
     localStringBuilder.append(" isSend INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "isShowTimer";
-    locala.IhC.put("isShowTimer", "INTEGER");
+    locala.IBN.put("isShowTimer", "INTEGER");
     localStringBuilder.append(" isShowTimer INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "createTime";
-    locala.IhC.put("createTime", "LONG");
+    locala.IBN.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "talker";
-    locala.IhC.put("talker", "TEXT");
+    locala.IBN.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "content";
-    locala.IhC.put("content", "TEXT default '' ");
+    locala.IBN.put("content", "TEXT default '' ");
     localStringBuilder.append(" content TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "imgPath";
-    locala.IhC.put("imgPath", "TEXT");
+    locala.IBN.put("imgPath", "TEXT");
     localStringBuilder.append(" imgPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "reserved";
-    locala.IhC.put("reserved", "TEXT");
+    locala.IBN.put("reserved", "TEXT");
     localStringBuilder.append(" reserved TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "lvbuffer";
-    locala.IhC.put("lvbuffer", "BLOB");
+    locala.IBN.put("lvbuffer", "BLOB");
     localStringBuilder.append(" lvbuffer BLOB");
     localStringBuilder.append(", ");
     locala.columns[12] = "talkerId";
-    locala.IhC.put("talkerId", "INTEGER");
+    locala.IBN.put("talkerId", "INTEGER");
     localStringBuilder.append(" talkerId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[13] = "transContent";
-    locala.IhC.put("transContent", "TEXT default '' ");
+    locala.IBN.put("transContent", "TEXT default '' ");
     localStringBuilder.append(" transContent TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "transBrandWording";
-    locala.IhC.put("transBrandWording", "TEXT default '' ");
+    locala.IBN.put("transBrandWording", "TEXT default '' ");
     localStringBuilder.append(" transBrandWording TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "bizClientMsgId";
-    locala.IhC.put("bizClientMsgId", "TEXT default '' ");
+    locala.IBN.put("bizClientMsgId", "TEXT default '' ");
     localStringBuilder.append(" bizClientMsgId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "bizChatId";
-    locala.IhC.put("bizChatId", "LONG default '-1' ");
+    locala.IBN.put("bizChatId", "LONG default '-1' ");
     localStringBuilder.append(" bizChatId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[17] = "bizChatUserId";
-    locala.IhC.put("bizChatUserId", "TEXT default '' ");
+    locala.IBN.put("bizChatUserId", "TEXT default '' ");
     localStringBuilder.append(" bizChatUserId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "msgSeq";
-    locala.IhC.put("msgSeq", "LONG");
+    locala.IBN.put("msgSeq", "LONG");
     localStringBuilder.append(" msgSeq LONG");
     localStringBuilder.append(", ");
     locala.columns[19] = "flag";
-    locala.IhC.put("flag", "INTEGER default '0' ");
+    locala.IBN.put("flag", "INTEGER default '0' ");
     localStringBuilder.append(" flag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "fromUsername";
-    locala.IhC.put("fromUsername", "TEXT");
+    locala.IBN.put("fromUsername", "TEXT");
     localStringBuilder.append(" fromUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "toUsername";
-    locala.IhC.put("toUsername", "TEXT");
+    locala.IBN.put("toUsername", "TEXT");
     localStringBuilder.append(" toUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[22] = "extInfo";
-    locala.IhC.put("extInfo", "BLOB");
+    locala.IBN.put("extInfo", "BLOB");
     localStringBuilder.append(" extInfo BLOB");
     locala.columns[23] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -221,11 +221,11 @@ public abstract class an
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eCW != k) {
+      if (eEF != k) {
         break label65;
       }
       this.field_msgId = paramCursor.getLong(i);
-      this.eCS = true;
+      this.eEB = true;
     }
     for (;;)
     {
@@ -233,49 +233,49 @@ public abstract class an
       break label20;
       break;
       label65:
-      if (eLe == k) {
+      if (eMO == k) {
         this.field_msgSvrId = paramCursor.getLong(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (eIP == k) {
+      } else if (eKy == k) {
         this.field_isSend = paramCursor.getInt(i);
-      } else if (eLD == k) {
+      } else if (eNo == k) {
         this.field_isShowTimer = paramCursor.getInt(i);
-      } else if (eEf == k) {
+      } else if (eFO == k) {
         this.field_createTime = paramCursor.getLong(i);
-      } else if (eLf == k) {
+      } else if (eMP == k) {
         this.field_talker = paramCursor.getString(i);
-      } else if (eEm == k) {
+      } else if (eFV == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (eLg == k) {
+      } else if (eMQ == k) {
         this.field_imgPath = paramCursor.getString(i);
-      } else if (eLE == k) {
+      } else if (eNp == k) {
         this.field_reserved = paramCursor.getString(i);
-      } else if (eLh == k) {
+      } else if (eMR == k) {
         this.field_lvbuffer = paramCursor.getBlob(i);
-      } else if (eLi == k) {
+      } else if (eMS == k) {
         this.field_talkerId = paramCursor.getInt(i);
-      } else if (eLF == k) {
+      } else if (eNq == k) {
         this.field_transContent = paramCursor.getString(i);
-      } else if (eLG == k) {
+      } else if (eNr == k) {
         this.field_transBrandWording = paramCursor.getString(i);
-      } else if (eLp == k) {
+      } else if (eMZ == k) {
         this.field_bizClientMsgId = paramCursor.getString(i);
-      } else if (eIE == k) {
+      } else if (eKn == k) {
         this.field_bizChatId = paramCursor.getLong(i);
-      } else if (eLH == k) {
+      } else if (eNs == k) {
         this.field_bizChatUserId = paramCursor.getString(i);
-      } else if (eLI == k) {
+      } else if (eNt == k) {
         this.field_msgSeq = paramCursor.getLong(i);
-      } else if (eHX == k) {
+      } else if (eJG == k) {
         this.field_flag = paramCursor.getInt(i);
-      } else if (eLJ == k) {
+      } else if (eNu == k) {
         this.field_fromUsername = paramCursor.getString(i);
-      } else if (eLK == k) {
+      } else if (eNv == k) {
         this.field_toUsername = paramCursor.getString(i);
-      } else if (eKz == k) {
+      } else if (eMi == k) {
         this.field_extInfo = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -286,88 +286,88 @@ public abstract class an
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCS) {
+    if (this.eEB) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eKR) {
+    if (this.eMA) {
       localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eIA) {
+    if (this.eKj) {
       localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
-    if (this.eLv) {
+    if (this.eNg) {
       localContentValues.put("isShowTimer", Integer.valueOf(this.field_isShowTimer));
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.eKS) {
+    if (this.eMB) {
       localContentValues.put("talker", this.field_talker);
     }
     if (this.field_content == null) {
       this.field_content = "";
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.eKT) {
+    if (this.eMC) {
       localContentValues.put("imgPath", this.field_imgPath);
     }
-    if (this.eLw) {
+    if (this.eNh) {
       localContentValues.put("reserved", this.field_reserved);
     }
-    if (this.eKU) {
+    if (this.eMD) {
       localContentValues.put("lvbuffer", this.field_lvbuffer);
     }
-    if (this.eKV) {
+    if (this.eME) {
       localContentValues.put("talkerId", Integer.valueOf(this.field_talkerId));
     }
     if (this.field_transContent == null) {
       this.field_transContent = "";
     }
-    if (this.eLx) {
+    if (this.eNi) {
       localContentValues.put("transContent", this.field_transContent);
     }
     if (this.field_transBrandWording == null) {
       this.field_transBrandWording = "";
     }
-    if (this.eLy) {
+    if (this.eNj) {
       localContentValues.put("transBrandWording", this.field_transBrandWording);
     }
     if (this.field_bizClientMsgId == null) {
       this.field_bizClientMsgId = "";
     }
-    if (this.eLc) {
+    if (this.eML) {
       localContentValues.put("bizClientMsgId", this.field_bizClientMsgId);
     }
-    if (this.eIp) {
+    if (this.eJY) {
       localContentValues.put("bizChatId", Long.valueOf(this.field_bizChatId));
     }
     if (this.field_bizChatUserId == null) {
       this.field_bizChatUserId = "";
     }
-    if (this.eLz) {
+    if (this.eNk) {
       localContentValues.put("bizChatUserId", this.field_bizChatUserId);
     }
-    if (this.eLA) {
+    if (this.eNl) {
       localContentValues.put("msgSeq", Long.valueOf(this.field_msgSeq));
     }
-    if (this.eHV) {
+    if (this.eJE) {
       localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
-    if (this.eLB) {
+    if (this.eNm) {
       localContentValues.put("fromUsername", this.field_fromUsername);
     }
-    if (this.eLC) {
+    if (this.eNn) {
       localContentValues.put("toUsername", this.field_toUsername);
     }
-    if (this.eKl) {
+    if (this.eLU) {
       localContentValues.put("extInfo", this.field_extInfo);
     }
     if (this.systemRowid > 0L) {
@@ -378,7 +378,7 @@ public abstract class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.an
  * JD-Core Version:    0.7.0.1
  */

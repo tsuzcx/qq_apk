@@ -37,10 +37,10 @@ public class AVReportCenter
   
   static
   {
-    AppMethodBeat.i(220301);
+    AppMethodBeat.i(217055);
     TAG = "AVReportCenter-" + Integer.toHexString(AVReportCenter.class.hashCode());
     ourInstance = new AVReportCenter();
-    AppMethodBeat.o(220301);
+    AppMethodBeat.o(217055);
   }
   
   public static AVReportCenter getInstance()
@@ -50,17 +50,17 @@ public class AVReportCenter
   
   private void hibernate(String paramString)
   {
-    AppMethodBeat.i(220295);
+    AppMethodBeat.i(217049);
     hibernate(paramString, "bean");
-    AppMethodBeat.o(220295);
+    AppMethodBeat.o(217049);
   }
   
   private void hibernate(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220296);
+    AppMethodBeat.i(217050);
     if ((this.dir == null) || (this.dir.length() == 0))
     {
-      AppMethodBeat.o(220296);
+      AppMethodBeat.o(217050);
       return;
     }
     try
@@ -77,53 +77,53 @@ public class AVReportCenter
       localFileOutputStream.write(paramString1);
       localFileOutputStream.close();
       localFile.renameTo(new File(this.dir + File.separator + paramString2 + "." + System.nanoTime()));
-      AppMethodBeat.o(220296);
+      AppMethodBeat.o(217050);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(220296);
+      AppMethodBeat.o(217050);
     }
   }
   
   private void hibernateMap(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(220292);
+    AppMethodBeat.i(217046);
     hibernate(toUrlParams(paramMap));
-    AppMethodBeat.o(220292);
+    AppMethodBeat.o(217046);
   }
   
   private String md5(String paramString)
   {
-    AppMethodBeat.i(220298);
+    AppMethodBeat.i(217052);
     try
     {
       for (String str = new BigInteger(1, MessageDigest.getInstance("MD5").digest(paramString.getBytes(Charset.forName("UTF-8")))).toString(16); str.length() < 32; str = "0".concat(String.valueOf(str))) {}
-      AppMethodBeat.o(220298);
+      AppMethodBeat.o(217052);
       return str;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220298);
+      AppMethodBeat.o(217052);
     }
     return paramString;
   }
   
   private void putCommonData(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(220291);
+    AppMethodBeat.i(217045);
     paramMap.put("device", DeviceInfo.getBrand() + DeviceInfo.getDeviceName());
     paramMap.put("device_id", this.imei);
     paramMap.put("platform", "and");
     paramMap.put("os", this.os);
     paramMap.put("appid", this.app);
     paramMap.put("_dc", Integer.valueOf(Math.abs(new Random().nextInt())));
-    AppMethodBeat.o(220291);
+    AppMethodBeat.o(217045);
   }
   
   private static String toUrlParams(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(220297);
+    AppMethodBeat.i(217051);
     Iterator localIterator = paramMap.entrySet().iterator();
     paramMap = "attaid=06400000136&token=3598698434";
     for (;;)
@@ -147,7 +147,7 @@ public class AVReportCenter
           paramMap = (Map<String, Object>)localObject1;
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
-        AppMethodBeat.o(220297);
+        AppMethodBeat.o(217051);
         return paramMap;
       }
     }
@@ -155,17 +155,17 @@ public class AVReportCenter
   
   public void commit(final Map<String, String> paramMap)
   {
-    AppMethodBeat.i(220293);
+    AppMethodBeat.i(217047);
     if ((!this.enable) || (paramMap == null) || (this.ioHandler == null))
     {
-      AppMethodBeat.o(220293);
+      AppMethodBeat.o(217047);
       return;
     }
     this.ioHandler.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(220288);
+        AppMethodBeat.i(217042);
         AVReportCenter localAVReportCenter;
         File localFile;
         Boolean localBoolean;
@@ -186,34 +186,34 @@ public class AVReportCenter
           AVReportCenter.access$600(AVReportCenter.this, (Map)localObject);
           ((Map)localObject).putAll(paramMap);
           AVReportCenter.access$700(AVReportCenter.this, (Map)localObject);
-          AppMethodBeat.o(220288);
+          AppMethodBeat.o(217042);
           return;
         }
       }
     });
-    AppMethodBeat.o(220293);
+    AppMethodBeat.o(217047);
   }
   
   public void flush()
   {
-    AppMethodBeat.i(220294);
+    AppMethodBeat.i(217048);
     if (this.ioHandler == null)
     {
-      AppMethodBeat.o(220294);
+      AppMethodBeat.o(217048);
       return;
     }
     this.ioHandler.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(220289);
+        AppMethodBeat.i(217043);
         if (AVReportCenter.this.reporter != null) {
           AVReportCenter.this.reporter.flush();
         }
-        AppMethodBeat.o(220289);
+        AppMethodBeat.o(217043);
       }
     });
-    AppMethodBeat.o(220294);
+    AppMethodBeat.o(217048);
   }
   
   /* Error */

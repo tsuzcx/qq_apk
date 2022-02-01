@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.freewifi.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class c
 {
-  private ap tmI;
+  private aq txA;
   
-  public final ap cRl()
+  public final aq cTQ()
   {
     AppMethodBeat.i(24773);
-    if (this.tmI == null) {
-      this.tmI = new ap("FreeWifiHandlerThread_handlerThread");
+    if (this.txA == null) {
+      this.txA = new aq("FreeWifiHandlerThread_handlerThread");
     }
-    ap localap = this.tmI;
+    aq localaq = this.txA;
     AppMethodBeat.o(24773);
-    return localap;
+    return localaq;
   }
   
   public final void release()
   {
     AppMethodBeat.i(24774);
-    if (this.tmI != null) {
-      this.tmI.quit();
+    if (this.txA != null) {
+      this.txA.quit();
     }
-    this.tmI = null;
+    this.txA = null;
     AppMethodBeat.o(24774);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.c
  * JD-Core Version:    0.7.0.1
  */

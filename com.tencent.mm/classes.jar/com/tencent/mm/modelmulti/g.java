@@ -1,64 +1,64 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.l;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.w.a;
 import com.tencent.mm.protocal.w.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
   extends n
   implements k
 {
   private f callback;
-  private com.tencent.mm.network.q hON;
-  private byte[] ieX;
-  public long iet = -1L;
+  private com.tencent.mm.network.q hRG;
+  private byte[] ihP;
+  public long ihl = -1L;
   private int uin = 0;
   
   public g(long paramLong, byte[] paramArrayOfByte)
   {
-    this.iet = paramLong;
-    this.ieX = paramArrayOfByte;
+    this.ihl = paramLong;
+    this.ihP = paramArrayOfByte;
   }
   
   public g(long paramLong, byte[] paramArrayOfByte, int paramInt)
   {
-    this.iet = paramLong;
-    this.ieX = paramArrayOfByte;
+    this.ihl = paramLong;
+    this.ihP = paramArrayOfByte;
     this.uin = paramInt;
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(132563);
-    if (bt.cC(this.ieX))
+    if (bu.cF(this.ihP))
     {
-      ad.e("MicroMsg.NetSceneNotifyData", "dkpush %s", new Object[] { "get keyBuf failed" });
+      ae.e("MicroMsg.NetSceneNotifyData", "dkpush %s", new Object[] { "get keyBuf failed" });
       AppMethodBeat.o(132563);
       return -1;
     }
     if (this.uin == 0) {
-      this.hON = new a();
+      this.hRG = new a();
     }
     for (;;)
     {
-      ad.i("MicroMsg.NetSceneNotifyData", "doScene now:%d buf:%s", new Object[] { Long.valueOf(this.iet), bt.cA(this.ieX) });
-      ((w.a)this.hON.getReqObj()).hWw = this.iet;
-      ((w.a)this.hON.getReqObj()).dsR = this.ieX;
+      ae.i("MicroMsg.NetSceneNotifyData", "doScene now:%d buf:%s", new Object[] { Long.valueOf(this.ihl), bu.cD(this.ihP) });
+      ((w.a)this.hRG.getReqObj()).hZo = this.ihl;
+      ((w.a)this.hRG.getReqObj()).dtX = this.ihP;
       this.callback = paramf;
-      int i = dispatch(parame, this.hON, this);
+      int i = dispatch(parame, this.hRG, this);
       AppMethodBeat.o(132563);
       return i;
-      this.hON = new b();
-      ((b)this.hON).uin = this.uin;
+      this.hRG = new b();
+      ((b)this.hRG).uin = this.uin;
     }
   }
   
@@ -70,7 +70,7 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132564);
-    ad.i("MicroMsg.NetSceneNotifyData", "onGYNetEnd [%d,%d] %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneNotifyData", "onGYNetEnd [%d,%d] %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(132564);
   }
@@ -78,14 +78,14 @@ public final class g
   public static final class a
     extends l
   {
-    private final w.a ieY;
-    private final w.b ieZ;
+    private final w.a ihQ;
+    private final w.b ihR;
     
     public a()
     {
       AppMethodBeat.i(132560);
-      this.ieY = new w.a();
-      this.ieZ = new w.b();
+      this.ihQ = new w.a();
+      this.ihR = new w.b();
       AppMethodBeat.o(132560);
     }
     
@@ -108,15 +108,15 @@ public final class g
   public static final class b
     implements com.tencent.mm.network.q
   {
-    private final w.a ieY;
-    private final w.b ieZ;
+    private final w.a ihQ;
+    private final w.b ihR;
     int uin;
     
     public b()
     {
       AppMethodBeat.i(132561);
-      this.ieY = new w.a();
-      this.ieZ = new w.b();
+      this.ihQ = new w.a();
+      this.ihR = new w.b();
       AppMethodBeat.o(132561);
     }
     
@@ -148,11 +148,11 @@ public final class g
     public final l.d getReqObj()
     {
       AppMethodBeat.i(132562);
-      this.ieY.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.aay());
-      this.ieY.setDeviceType(d.hgH);
-      this.ieY.setClientVersion(d.Fnj);
-      this.ieY.setUin(this.uin);
-      w.a locala = this.ieY;
+      this.ihQ.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.aaH());
+      this.ihQ.setDeviceType(d.hjv);
+      this.ihQ.setClientVersion(d.FFH);
+      this.ihQ.setUin(this.uin);
+      w.a locala = this.ihQ;
       AppMethodBeat.o(132562);
       return locala;
     }

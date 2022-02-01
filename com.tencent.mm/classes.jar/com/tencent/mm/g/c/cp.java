@@ -8,13 +8,13 @@ public abstract class cp
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int eHb = "modifyTime".hashCode();
-  private static final int ePc = "encryptUsername".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eIK = "modifyTime".hashCode();
+  private static final int eQN = "encryptUsername".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean eGF = true;
-  private boolean eOK = true;
+  private boolean eGV = true;
+  private boolean eIo = true;
+  private boolean eQv = true;
   public String field_encryptUsername;
   public long field_modifyTime;
   public String field_username;
@@ -32,11 +32,11 @@ public abstract class cp
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ePc != k) {
+      if (eQN != k) {
         break label65;
       }
       this.field_encryptUsername = paramCursor.getString(i);
-      this.eOK = true;
+      this.eQv = true;
     }
     for (;;)
     {
@@ -44,9 +44,9 @@ public abstract class cp
       break label20;
       break;
       label65:
-      if (eFp == k) {
+      if (eGY == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (eHb == k) {
+      } else if (eIK == k) {
         this.field_modifyTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -60,16 +60,16 @@ public abstract class cp
     if (this.field_encryptUsername == null) {
       this.field_encryptUsername = "";
     }
-    if (this.eOK) {
+    if (this.eQv) {
       localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eGF) {
+    if (this.eIo) {
       localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
     if (this.systemRowid > 0L) {

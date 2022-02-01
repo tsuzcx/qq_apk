@@ -7,11 +7,11 @@ import com.google.b.a.g;
 public final class a$a
   extends e
 {
-  public int CcE = 0;
-  public long CcF = 0L;
-  public int[] LFS = g.bQP;
-  public int LFT = 0;
-  public String[] LFU = g.EMPTY_STRING_ARRAY;
+  public int Cuf = 0;
+  public long Cug = 0L;
+  public int[] McW = g.bQP;
+  public int McX = 0;
+  public String[] McY = g.EMPTY_STRING_ARRAY;
   public String groupId = "";
   
   public a$a()
@@ -25,31 +25,31 @@ public final class a$a
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.CcE != 0) {
-      paramb.bx(2, this.CcE);
+    if (this.Cuf != 0) {
+      paramb.bx(2, this.Cuf);
     }
-    if (this.CcF != 0L) {
-      paramb.n(3, this.CcF);
+    if (this.Cug != 0L) {
+      paramb.n(3, this.Cug);
     }
     int i;
-    if ((this.LFS != null) && (this.LFS.length > 0))
+    if ((this.McW != null) && (this.McW.length > 0))
     {
       i = 0;
-      while (i < this.LFS.length)
+      while (i < this.McW.length)
       {
-        paramb.by(4, this.LFS[i]);
+        paramb.by(4, this.McW[i]);
         i += 1;
       }
     }
-    if (this.LFT != 0) {
-      paramb.bx(5, this.LFT);
+    if (this.McX != 0) {
+      paramb.bx(5, this.McX);
     }
-    if ((this.LFU != null) && (this.LFU.length > 0))
+    if ((this.McY != null) && (this.McY.length > 0))
     {
       i = j;
-      while (i < this.LFU.length)
+      while (i < this.McY.length)
       {
-        String str = this.LFU[i];
+        String str = this.McY[i];
         if (str != null) {
           paramb.d(100, str);
         }
@@ -67,46 +67,46 @@ public final class a$a
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.CcE != 0) {
-      j = i + b.bz(2, this.CcE);
+    if (this.Cuf != 0) {
+      j = i + b.bz(2, this.Cuf);
     }
     i = j;
-    if (this.CcF != 0L) {
-      i = j + b.p(3, this.CcF);
+    if (this.Cug != 0L) {
+      i = j + b.p(3, this.Cug);
     }
     j = i;
     int k;
-    if (this.LFS != null)
+    if (this.McW != null)
     {
       j = i;
-      if (this.LFS.length > 0)
+      if (this.McW.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.LFS.length)
+        while (j < this.McW.length)
         {
-          k += b.fP(this.LFS[j]);
+          k += b.fP(this.McW[j]);
           j += 1;
         }
-        j = i + k + this.LFS.length * 1;
+        j = i + k + this.McW.length * 1;
       }
     }
     i = j;
-    if (this.LFT != 0) {
-      i = j + b.bz(5, this.LFT);
+    if (this.McX != 0) {
+      i = j + b.bz(5, this.McX);
     }
     j = i;
-    if (this.LFU != null)
+    if (this.McY != null)
     {
       j = i;
-      if (this.LFU.length > 0)
+      if (this.McY.length > 0)
       {
         j = 0;
         k = 0;
         int n;
-        for (int m = 0; j < this.LFU.length; m = n)
+        for (int m = 0; j < this.McY.length; m = n)
         {
-          String str = this.LFU[j];
+          String str = this.McY[j];
           int i1 = k;
           n = m;
           if (str != null)

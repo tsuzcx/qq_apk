@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.vlog.player.c;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class VLogPreloadPlayView$d
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class VLogPreloadPlayView$d
   public final void run()
   {
     AppMethodBeat.i(111214);
-    c.a(this.BTT, null, false, 7);
+    c.a(this.Clu, null, false, 7);
     AppMethodBeat.o(111214);
   }
 }

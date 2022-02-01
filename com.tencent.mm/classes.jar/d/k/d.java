@@ -1,75 +1,134 @@
 package d.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.e.c;
+import d.g.b.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/IntRange;", "Lkotlin/ranges/IntProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(II)V", "getEndInclusive", "()Ljava/lang/Integer;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
-public final class d
-  extends b
-  implements a<Integer>
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/IntProgression;", "", "", "start", "endInclusive", "step", "(III)V", "first", "getFirst", "()I", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "isEmpty", "iterator", "Lkotlin/collections/IntIterator;", "toString", "", "Companion", "kotlin-stdlib"})
+public class d
+  implements a, Iterable<Integer>
 {
-  private static final d MMn;
-  public static final a MMo;
+  public static final a Njo;
+  public final int Njm;
+  public final int Njn;
+  public final int kyd;
   
   static
   {
-    AppMethodBeat.i(129326);
-    MMo = new a((byte)0);
-    MMn = new d(1, 0);
-    AppMethodBeat.o(129326);
+    AppMethodBeat.i(129297);
+    Njo = new a((byte)0);
+    AppMethodBeat.o(129297);
   }
   
-  public d(int paramInt1, int paramInt2)
+  public d(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramInt1, paramInt2, 1);
-  }
-  
-  public final boolean contains(int paramInt)
-  {
-    return (this.MMh <= paramInt) && (paramInt <= this.MMi);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(129323);
-    if (((paramObject instanceof d)) && (((isEmpty()) && (((d)paramObject).isEmpty())) || ((this.MMh == ((d)paramObject).MMh) && (this.MMi == ((d)paramObject).MMi))))
+    AppMethodBeat.i(129296);
+    if (paramInt3 == 0)
     {
-      AppMethodBeat.o(129323);
+      localThrowable = (Throwable)new IllegalArgumentException("Step must be non-zero.");
+      AppMethodBeat.o(129296);
+      throw localThrowable;
+    }
+    if (paramInt3 == -2147483648)
+    {
+      localThrowable = (Throwable)new IllegalArgumentException("Step must be greater than Int.MIN_VALUE to avoid overflow on negation.");
+      AppMethodBeat.o(129296);
+      throw localThrowable;
+    }
+    this.Njm = paramInt1;
+    int i;
+    if (paramInt3 > 0) {
+      if (paramInt1 >= paramInt2) {
+        i = paramInt2;
+      }
+    }
+    for (;;)
+    {
+      this.Njn = i;
+      this.kyd = paramInt3;
+      AppMethodBeat.o(129296);
+      return;
+      i = paramInt2 - c.aZ(paramInt2, paramInt1, paramInt3);
+      continue;
+      if (paramInt3 >= 0) {
+        break;
+      }
+      i = paramInt2;
+      if (paramInt1 > paramInt2) {
+        i = paramInt2 + c.aZ(paramInt1, paramInt2, -paramInt3);
+      }
+    }
+    Throwable localThrowable = (Throwable)new IllegalArgumentException("Step is zero.");
+    AppMethodBeat.o(129296);
+    throw localThrowable;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(129293);
+    if (((paramObject instanceof d)) && (((isEmpty()) && (((d)paramObject).isEmpty())) || ((this.Njm == ((d)paramObject).Njm) && (this.Njn == ((d)paramObject).Njn) && (this.kyd == ((d)paramObject).kyd))))
+    {
+      AppMethodBeat.o(129293);
       return true;
     }
-    AppMethodBeat.o(129323);
+    AppMethodBeat.o(129293);
     return false;
   }
   
-  public final int hashCode()
+  public int hashCode()
   {
-    AppMethodBeat.i(129324);
+    AppMethodBeat.i(129294);
     if (isEmpty())
     {
-      AppMethodBeat.o(129324);
+      AppMethodBeat.o(129294);
       return -1;
     }
-    int i = this.MMh;
-    int j = this.MMi;
-    AppMethodBeat.o(129324);
-    return i * 31 + j;
+    int i = this.Njm;
+    int j = this.Njn;
+    int k = this.kyd;
+    AppMethodBeat.o(129294);
+    return (i * 31 + j) * 31 + k;
   }
   
-  public final boolean isEmpty()
+  public boolean isEmpty()
   {
-    return this.MMh > this.MMi;
+    if (this.kyd > 0) {
+      if (this.Njm <= this.Njn) {}
+    }
+    while (this.Njm < this.Njn)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
   
-  public final String toString()
+  public String toString()
   {
-    AppMethodBeat.i(129325);
-    String str = this.MMh + ".." + this.MMi;
-    AppMethodBeat.o(129325);
+    AppMethodBeat.i(129295);
+    if (this.kyd > 0)
+    {
+      str = this.Njm + ".." + this.Njn + " step " + this.kyd;
+      AppMethodBeat.o(129295);
+      return str;
+    }
+    String str = this.Njm + " downTo " + this.Njn + " step " + -this.kyd;
+    AppMethodBeat.o(129295);
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/IntRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/IntRange;", "getEMPTY", "()Lkotlin/ranges/IntRange;", "kotlin-stdlib"})
-  public static final class a {}
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/ranges/IntProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/IntProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
+  public static final class a
+  {
+    public static d ba(int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(129305);
+      d locald = new d(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(129305);
+      return locald;
+    }
+  }
 }
 
 

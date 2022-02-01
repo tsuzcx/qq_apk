@@ -2,7 +2,7 @@ package d.b;
 
 import d.l;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={"kotlin/comparisons/ComparisonsKt__ComparisonsKt", "kotlin/comparisons/ComparisonsKt___ComparisonsJvmKt", "kotlin/comparisons/ComparisonsKt___ComparisonsKt"})
+@l(gjZ={1, 1, 16}, gka={"kotlin/comparisons/ComparisonsKt__ComparisonsKt", "kotlin/comparisons/ComparisonsKt___ComparisonsJvmKt", "kotlin/comparisons/ComparisonsKt___ComparisonsKt"}, gkc=1)
 public final class a
   extends d
 {}

@@ -7,29 +7,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  talk Mlr;
+  talk MIo;
   
   public b()
   {
     AppMethodBeat.i(62557);
-    this.Mlr = new talk();
-    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.Mlr });
+    this.MIo = new talk();
+    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.MIo });
     AppMethodBeat.o(62557);
   }
   
   public final int Close()
   {
     AppMethodBeat.i(62559);
-    if (!a.LER)
+    if (!a.MbV)
     {
       AppMethodBeat.o(62559);
       return 0;
     }
     try
     {
-      if (this.Mlr != null)
+      if (this.MIo != null)
       {
-        i = this.Mlr.close();
+        i = this.MIo.close();
         com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
         AppMethodBeat.o(62559);
         return i;
@@ -48,39 +48,39 @@ public final class b
   public final void OnMembersChanged(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(62560);
-    if ((!a.LER) || (this.Mlr == null))
+    if ((!a.MbV) || (this.MIo == null))
     {
       AppMethodBeat.o(62560);
       return;
     }
-    this.Mlr.OnMembersChanged(paramArrayOfInt);
+    this.MIo.OnMembersChanged(paramArrayOfInt);
     AppMethodBeat.o(62560);
   }
   
-  public final byte[] fZs()
+  public final byte[] gdT()
   {
-    if ((!a.LER) || (this.Mlr == null)) {
+    if ((!a.MbV) || (this.MIo == null)) {
       return new byte[0];
     }
-    return this.Mlr.field_capInfo;
+    return this.MIo.field_capInfo;
   }
   
-  public final void fZt()
+  public final void gdU()
   {
-    if ((!a.LER) || (this.Mlr == null)) {
+    if ((!a.MbV) || (this.MIo == null)) {
       return;
     }
-    this.Mlr.field_capInfo = null;
+    this.MIo.field_capInfo = null;
   }
   
-  public final int fZu()
+  public final int gdV()
   {
     AppMethodBeat.i(62561);
     try
     {
-      if (a.LER)
+      if (a.MbV)
       {
-        localObject = this.Mlr;
+        localObject = this.MIo;
         if (localObject != null) {}
       }
       else
@@ -90,7 +90,7 @@ public final class b
       }
       Object localObject = new AtomicInteger();
       AtomicInteger localAtomicInteger = new AtomicInteger();
-      this.Mlr.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
+      this.MIo.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
       int i = localAtomicInteger.get();
       AppMethodBeat.o(62561);
       return i;
@@ -106,16 +106,16 @@ public final class b
   public final int uninitLive()
   {
     AppMethodBeat.i(62558);
-    if (!a.LER)
+    if (!a.MbV)
     {
       AppMethodBeat.o(62558);
       return 0;
     }
     try
     {
-      if (this.Mlr != null)
+      if (this.MIo != null)
       {
-        i = this.Mlr.uninit();
+        i = this.MIo.uninit();
         com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
         AppMethodBeat.o(62558);
         return i;

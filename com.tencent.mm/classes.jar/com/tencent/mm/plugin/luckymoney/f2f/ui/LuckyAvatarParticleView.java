@@ -17,27 +17,27 @@ import java.util.List;
 public class LuckyAvatarParticleView
   extends View
 {
-  public static DisplayMetrics iNB;
+  public static DisplayMetrics iQv;
   private ValueAnimator animator;
   private long duration;
   private Paint paint;
-  private int vlJ;
-  private int vlK;
-  private List<Rect> vlL;
-  private List<Integer> vlM;
-  private List<Integer> vlN;
-  private int vlO;
-  private int vlP;
-  private int vlQ;
-  private int vlR;
+  private int vxO;
+  private int vxP;
+  private List<Rect> vxQ;
+  private List<Integer> vxR;
+  private List<Integer> vxS;
+  private int vxT;
+  private int vxU;
+  private int vxV;
+  private int vxW;
   
   public LuckyAvatarParticleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65051);
-    this.vlL = new ArrayList();
-    this.vlM = new ArrayList();
-    this.vlN = new ArrayList();
+    this.vxQ = new ArrayList();
+    this.vxR = new ArrayList();
+    this.vxS = new ArrayList();
     this.paint = new Paint();
     AppMethodBeat.o(65051);
   }
@@ -45,8 +45,8 @@ public class LuckyAvatarParticleView
   private int getRandomRectWidth()
   {
     AppMethodBeat.i(65053);
-    int i = this.vlQ;
-    int j = (int)(Math.random() * (this.vlR - this.vlQ));
+    int i = this.vxV;
+    int j = (int)(Math.random() * (this.vxW - this.vxV));
     AppMethodBeat.o(65053);
     return i + j;
   }
@@ -54,8 +54,8 @@ public class LuckyAvatarParticleView
   private int getRandomVelocity()
   {
     AppMethodBeat.i(65052);
-    int i = this.vlO;
-    int j = (int)(Math.random() * (this.vlP - this.vlO));
+    int i = this.vxT;
+    int j = (int)(Math.random() * (this.vxU - this.vxT));
     AppMethodBeat.o(65052);
     return i + j;
   }
@@ -65,9 +65,9 @@ public class LuckyAvatarParticleView
     AppMethodBeat.i(65054);
     super.onDraw(paramCanvas);
     int i = 0;
-    while (i < this.vlL.size())
+    while (i < this.vxQ.size())
     {
-      paramCanvas.drawRect((Rect)this.vlL.get(i), this.paint);
+      paramCanvas.drawRect((Rect)this.vxQ.get(i), this.paint);
       i += 1;
     }
     AppMethodBeat.o(65054);

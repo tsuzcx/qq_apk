@@ -14,24 +14,24 @@ public final class f
   public static final f aPP;
   public static final f aPQ;
   a aPG;
-  b aPH;
+  f.b aPH;
   
   static
   {
-    AppMethodBeat.i(214745);
+    AppMethodBeat.i(212976);
     aPI = new f(null, null);
     aPJ = new f(a.aPR, null);
-    aPK = new f(a.aPW, b.aQc);
-    aPL = new f(a.aPS, b.aQc);
-    aPM = new f(a.aQa, b.aQc);
-    aPN = new f(a.aPT, b.aQc);
-    aPO = new f(a.aPZ, b.aQc);
-    aPP = new f(a.aPW, b.aQd);
-    aPQ = new f(a.aPS, b.aQd);
-    AppMethodBeat.o(214745);
+    aPK = new f(a.aPW, f.b.aQc);
+    aPL = new f(a.aPS, f.b.aQc);
+    aPM = new f(a.aQa, f.b.aQc);
+    aPN = new f(a.aPT, f.b.aQc);
+    aPO = new f(a.aPZ, f.b.aQc);
+    aPP = new f(a.aPW, f.b.aQd);
+    aPQ = new f(a.aPS, f.b.aQd);
+    AppMethodBeat.o(212976);
   }
   
-  f(a parama, b paramb)
+  f(a parama, f.b paramb)
   {
     this.aPG = parama;
     this.aPH = paramb;
@@ -39,37 +39,37 @@ public final class f
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(214743);
+    AppMethodBeat.i(212974);
     if (this == paramObject)
     {
-      AppMethodBeat.o(214743);
+      AppMethodBeat.o(212974);
       return true;
     }
     if (paramObject == null)
     {
-      AppMethodBeat.o(214743);
+      AppMethodBeat.o(212974);
       return false;
     }
     if (getClass() != paramObject.getClass())
     {
-      AppMethodBeat.o(214743);
+      AppMethodBeat.o(212974);
       return false;
     }
     paramObject = (f)paramObject;
     if ((this.aPG == paramObject.aPG) && (this.aPH == paramObject.aPH))
     {
-      AppMethodBeat.o(214743);
+      AppMethodBeat.o(212974);
       return true;
     }
-    AppMethodBeat.o(214743);
+    AppMethodBeat.o(212974);
     return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(214744);
+    AppMethodBeat.i(212975);
     String str = this.aPG + " " + this.aPH;
-    AppMethodBeat.o(214744);
+    AppMethodBeat.o(212975);
     return str;
   }
   
@@ -77,7 +77,7 @@ public final class f
   {
     static
     {
-      AppMethodBeat.i(214739);
+      AppMethodBeat.i(212970);
       aPR = new a("none", 0);
       aPS = new a("xMinYMin", 1);
       aPT = new a("xMidYMin", 2);
@@ -89,29 +89,15 @@ public final class f
       aPZ = new a("xMidYMax", 8);
       aQa = new a("xMaxYMax", 9);
       aQb = new a[] { aPR, aPS, aPT, aPU, aPV, aPW, aPX, aPY, aPZ, aQa };
-      AppMethodBeat.o(214739);
+      AppMethodBeat.o(212970);
     }
     
     private a() {}
   }
-  
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(214742);
-      aQc = new b("meet", 0);
-      aQd = new b("slice", 1);
-      aQe = new b[] { aQc, aQd };
-      AppMethodBeat.o(214742);
-    }
-    
-    private b() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.a.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/UsageQueryCacheConfig;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "count", "", "(I)V", "getCount", "()I", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/UsageQueryCacheConfig;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "count", "", "(I)V", "getCount", "()I", "plugin-appbrand-integration_release"})
 public final class o
   extends n
 {
@@ -12,9 +12,9 @@ public final class o
   public o()
   {
     super(new Object[] { Integer.valueOf(50) });
-    AppMethodBeat.i(189737);
+    AppMethodBeat.i(224009);
     this.count = 50;
-    AppMethodBeat.o(189737);
+    AppMethodBeat.o(224009);
   }
 }
 

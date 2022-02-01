@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.qqmail;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -40,74 +40,74 @@ public final class b
   public static final String USER_AGENT;
   private boolean isCancelled = false;
   private int result = 0;
-  private HttpClient xaJ = null;
-  private HttpRequestBase xaK = null;
-  private HttpResponse xaL = null;
+  private HttpClient xqA = null;
+  private HttpRequestBase xqB = null;
+  private HttpResponse xqC = null;
   
   static
   {
-    AppMethodBeat.i(215164);
-    USER_AGENT = "weixin/" + d.hgH + "/0x" + Integer.toHexString(d.Fnj);
-    AppMethodBeat.o(215164);
+    AppMethodBeat.i(217910);
+    USER_AGENT = "weixin/" + d.hjv + "/0x" + Integer.toHexString(d.FFH);
+    AppMethodBeat.o(217910);
   }
   
   private static void a(c.e parame, HttpRequestBase paramHttpRequestBase)
   {
-    AppMethodBeat.i(215163);
-    if (parame.xaW == null)
+    AppMethodBeat.i(217909);
+    if (parame.xqN == null)
     {
-      AppMethodBeat.o(215163);
+      AppMethodBeat.o(217909);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = parame.xaW.keySet().iterator();
+    Iterator localIterator = parame.xqN.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localArrayList.add(new BasicNameValuePair(str, (String)parame.xaW.get(str)));
+      localArrayList.add(new BasicNameValuePair(str, (String)parame.xqN.get(str)));
     }
     ((HttpPost)paramHttpRequestBase).setEntity(new UrlEncodedFormEntity(localArrayList, "utf-8"));
-    AppMethodBeat.o(215163);
+    AppMethodBeat.o(217909);
   }
   
   public final c.f a(String paramString1, String paramString2, c.e parame, c.d paramd)
   {
-    AppMethodBeat.i(215161);
-    ad.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + parame);
+    AppMethodBeat.i(217907);
+    ae.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + parame);
     for (;;)
     {
       Object localObject2;
       try
       {
         this.isCancelled = false;
-        this.xaJ = new DefaultHttpClient();
-        if (parame.xaV != 0) {
+        this.xqA = new DefaultHttpClient();
+        if (parame.xqM != 0) {
           continue;
         }
-        this.xaK = new HttpGet(f(paramString1, paramString2, parame.xaW));
-        this.xaK.addHeader("User-Agent", USER_AGENT);
+        this.xqB = new HttpGet(f(paramString1, paramString2, parame.xqN));
+        this.xqB.addHeader("User-Agent", USER_AGENT);
         System.setProperty("http.keepAlive", "false");
-        this.xaK.addHeader("Accept-Charset", "utf-8");
-        this.xaK.addHeader("Accept-Encoding", "compress;q=0.5, gzip;q=1.0");
-        this.xaK.addHeader("Content-Type", "text/html");
-        this.xaK.addHeader("Cookie", aA(parame.xaX));
-        if (parame.xaV == 1) {
-          a(parame, this.xaK);
+        this.xqB.addHeader("Accept-Charset", "utf-8");
+        this.xqB.addHeader("Accept-Encoding", "compress;q=0.5, gzip;q=1.0");
+        this.xqB.addHeader("Content-Type", "text/html");
+        this.xqB.addHeader("Cookie", aG(parame.xqO));
+        if (parame.xqM == 1) {
+          a(parame, this.xqB);
         }
-        this.xaL = this.xaJ.execute(this.xaK);
-        this.result = this.xaL.getStatusLine().getStatusCode();
+        this.xqC = this.xqA.execute(this.xqB);
+        this.result = this.xqC.getStatusLine().getStatusCode();
         localObject1 = null;
         localObject2 = null;
         localHttpEntity = null;
-        if (this.xaL.getFirstHeader("set-cookie") == null) {
+        if (this.xqC.getFirstHeader("set-cookie") == null) {
           break label1248;
         }
-        paramString1 = this.xaL.getFirstHeader("set-cookie").getValue();
-        if (this.xaL.getFirstHeader("Content-Encoding") != null) {
-          localObject1 = this.xaL.getFirstHeader("Content-Encoding").getValue();
+        paramString1 = this.xqC.getFirstHeader("set-cookie").getValue();
+        if (this.xqC.getFirstHeader("Content-Encoding") != null) {
+          localObject1 = this.xqC.getFirstHeader("Content-Encoding").getValue();
         }
-        if (this.xaL.getFirstHeader("Content-Disposition") != null) {
-          localObject2 = this.xaL.getFirstHeader("Content-Disposition").getValue();
+        if (this.xqC.getFirstHeader("Content-Disposition") != null) {
+          localObject2 = this.xqC.getFirstHeader("Content-Disposition").getValue();
         }
         if ((localObject2 == null) || (!((String)localObject2).contains("attachment;")) || (!paramString2.contains("download"))) {
           continue;
@@ -120,7 +120,7 @@ public final class b
         return paramString1;
         i = 0;
         continue;
-        localHttpEntity = this.xaL.getEntity();
+        localHttpEntity = this.xqC.getEntity();
         localHttpEntity.getContentLength();
         localObject2 = localHttpEntity.getContent();
         if ((localObject1 == null) || (!((String)localObject1).contains("gzip"))) {
@@ -130,13 +130,13 @@ public final class b
         if (i == 0) {
           continue;
         }
-        localObject2 = xaM;
+        localObject2 = xqD;
         StringBuilder localStringBuilder = new StringBuilder();
-        if (parame.xaW.get("default_attach_name") != null) {
+        if (parame.xqN.get("default_attach_name") != null) {
           continue;
         }
         parame = Long.valueOf(System.currentTimeMillis());
-        parame = i.d(new e((String)localObject2, parame), true);
+        parame = o.d(new k((String)localObject2, parame), true);
         localObject2 = new byte[1024];
         if (this.isCancelled) {
           continue;
@@ -147,14 +147,14 @@ public final class b
         }
         parame.write((byte[])localObject2, 0, j);
         parame.flush();
-        paramd.dCd();
+        paramd.dFu();
         continue;
       }
       catch (UnknownHostException paramString1)
       {
         paramString1 = new c.f(-10005, null, "unknow host");
         return paramString1;
-        parame = (Serializable)parame.xaW.get("default_attach_name");
+        parame = (Serializable)parame.xqN.get("default_attach_name");
         continue;
         parame = new ByteArrayOutputStream();
         continue;
@@ -171,7 +171,7 @@ public final class b
         parame.close();
         return null;
         int j = this.result;
-        paramd = auU(paramString1);
+        paramd = awj(paramString1);
         if (i == 0) {
           continue;
         }
@@ -184,7 +184,7 @@ public final class b
           continue;
         }
         ((InputStream)localObject1).close();
-        ad.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramString1);
+        ae.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramString1);
         return paramString1;
         paramString1 = new String(((ByteArrayOutputStream)parame).toByteArray());
         continue;
@@ -201,7 +201,7 @@ public final class b
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "http unavailable", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "http unavailable", new Object[0]);
         if (this.result != 0) {
           continue;
         }
@@ -213,7 +213,7 @@ public final class b
       }
       catch (OutOfMemoryError paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "http unavailable", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "http unavailable", new Object[0]);
         if (this.result != 0) {
           continue;
         }
@@ -225,27 +225,27 @@ public final class b
       }
       finally
       {
-        if (this.xaJ == null) {
+        if (this.xqA == null) {
           continue;
         }
-        this.xaJ.getConnectionManager().shutdown();
-        AppMethodBeat.o(215161);
+        this.xqA.getConnectionManager().shutdown();
+        AppMethodBeat.o(217907);
       }
       if (i == 0)
       {
         localObject2 = localHttpEntity;
-        if (this.xaL.getFirstHeader("Content-Length") != null) {
-          localObject2 = this.xaL.getFirstHeader("Content-Length").getValue();
+        if (this.xqC.getFirstHeader("Content-Length") != null) {
+          localObject2 = this.xqC.getFirstHeader("Content-Length").getValue();
         }
-        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (bt.getInt((String)localObject2, 0) > 5242880L))
+        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (bu.getInt((String)localObject2, 0) > 5242880L))
         {
           paramString1 = new c.f(-10000, null, "mail content to large");
-          if (this.xaJ != null) {
-            this.xaJ.getConnectionManager().shutdown();
+          if (this.xqA != null) {
+            this.xqA.getConnectionManager().shutdown();
           }
-          AppMethodBeat.o(215161);
+          AppMethodBeat.o(217907);
           return paramString1;
-          this.xaK = new HttpPost(f(paramString1, paramString2, null));
+          this.xqB = new HttpPost(f(paramString1, paramString2, null));
           continue;
         }
       }
@@ -259,16 +259,16 @@ public final class b
   
   public final void cancel()
   {
-    AppMethodBeat.i(215162);
-    ad.d("MicroMsg.HttpClientUtil", "cancel conection.");
+    AppMethodBeat.i(217908);
+    ae.d("MicroMsg.HttpClientUtil", "cancel conection.");
     this.isCancelled = true;
-    if ((this.xaK != null) && (!this.xaK.isAborted())) {
-      this.xaK.abort();
+    if ((this.xqB != null) && (!this.xqB.isAborted())) {
+      this.xqB.abort();
     }
-    if (this.xaJ != null) {
-      this.xaJ.getConnectionManager().shutdown();
+    if (this.xqA != null) {
+      this.xqA.getConnectionManager().shutdown();
     }
-    AppMethodBeat.o(215162);
+    AppMethodBeat.o(217908);
   }
 }
 

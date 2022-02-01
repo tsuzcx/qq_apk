@@ -16,17 +16,17 @@ public class TPHttpUtils
   
   static
   {
-    AppMethodBeat.i(220566);
+    AppMethodBeat.i(197505);
     mHttpSrcFactory = new DefaultHttpDataSourceFactory("qqlive");
-    AppMethodBeat.o(220566);
+    AppMethodBeat.o(197505);
   }
   
   private static byte[] onHttp(byte[] paramArrayOfByte1, Object paramObject, byte[] paramArrayOfByte2, int paramInt)
   {
-    AppMethodBeat.i(220565);
+    AppMethodBeat.i(197504);
     if (paramArrayOfByte1 == null)
     {
-      AppMethodBeat.o(220565);
+      AppMethodBeat.o(197504);
       return null;
     }
     paramObject = new HashMap();
@@ -39,12 +39,12 @@ public class TPHttpUtils
     try
     {
       paramArrayOfByte1 = new BasicNetwork(mHttpSrcFactory).performRequest(paramArrayOfByte1).result;
-      AppMethodBeat.o(220565);
+      AppMethodBeat.o(197504);
       return paramArrayOfByte1;
     }
     catch (IOException paramArrayOfByte1)
     {
-      AppMethodBeat.o(220565);
+      AppMethodBeat.o(197504);
     }
     return null;
   }

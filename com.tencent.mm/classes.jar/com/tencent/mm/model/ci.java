@@ -1,57 +1,59 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ae;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class ci
 {
-  public static boolean bW(Object paramObject)
+  public Set<a> hLo;
+  public boolean isRunning;
+  
+  public ci()
   {
-    AppMethodBeat.i(150192);
-    if ((paramObject instanceof Boolean)) {
-      try
-      {
-        boolean bool = ((Boolean)paramObject).booleanValue();
-        AppMethodBeat.o(150192);
-        return bool;
-      }
-      catch (Exception paramObject) {}
-    }
-    AppMethodBeat.o(150192);
-    return false;
+    AppMethodBeat.i(132286);
+    this.isRunning = false;
+    this.hLo = new HashSet();
+    AppMethodBeat.o(132286);
   }
   
-  public static String c(Object paramObject, String paramString)
+  public final boolean a(a parama)
   {
-    if ((paramObject instanceof String)) {
-      try
-      {
-        paramObject = (String)paramObject;
-        return paramObject;
-      }
-      catch (Exception paramObject) {}
+    AppMethodBeat.i(132287);
+    if (this.isRunning)
+    {
+      ae.e("MicroMsg.UninitForUEH", "add , is running , forbid add");
+      AppMethodBeat.o(132287);
+      return false;
     }
-    return paramString;
+    boolean bool = this.hLo.add(parama);
+    AppMethodBeat.o(132287);
+    return bool;
   }
   
-  public static int getInt(Object paramObject, int paramInt)
+  public final boolean b(a parama)
   {
-    AppMethodBeat.i(150191);
-    if ((paramObject instanceof Integer)) {
-      try
-      {
-        int i = ((Integer)paramObject).intValue();
-        AppMethodBeat.o(150191);
-        return i;
-      }
-      catch (Exception paramObject) {}
+    AppMethodBeat.i(132288);
+    if (this.isRunning)
+    {
+      ae.e("MicroMsg.UninitForUEH", "remove , is running , forbid remove");
+      AppMethodBeat.o(132288);
+      return false;
     }
-    AppMethodBeat.o(150191);
-    return paramInt;
+    boolean bool = this.hLo.remove(parama);
+    AppMethodBeat.o(132288);
+    return bool;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean aDe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.ci
  * JD-Core Version:    0.7.0.1
  */

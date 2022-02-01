@@ -8,14 +8,14 @@ import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.bj.a;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bl.a;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.report.b;
-import com.tencent.mm.plugin.finder.report.x;
+import com.tencent.mm.plugin.finder.report.y;
 import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.plugin.finder.storage.w;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.view.TouchableLayout;
 import com.tencent.mm.view.TouchableLayout.a;
@@ -25,74 +25,74 @@ import d.v;
 import d.z;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter$OnItemLongClickListener;", "Landroid/view/View$OnCreateContextMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "Landroid/widget/PopupWindow$OnDismissListener;", "callBack", "Lkotlin/Function0;", "", "(Lkotlin/jvm/functions/Function0;)V", "focusedConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "onCreateContextMenu", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onDismiss", "onItemLongClick", "view", "position", "", "conv", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter$OnItemLongClickListener;", "Landroid/view/View$OnCreateContextMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "Landroid/widget/PopupWindow$OnDismissListener;", "callBack", "Lkotlin/Function0;", "", "(Lkotlin/jvm/functions/Function0;)V", "focusedConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "onCreateContextMenu", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onDismiss", "onItemLongClick", "view", "position", "", "conv", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "Companion", "plugin-finder_release"})
 public final class g
   implements View.OnCreateContextMenuListener, PopupWindow.OnDismissListener, d.b, n.e
 {
-  public static final a rLE;
-  private c rLC;
-  private d.g.a.a<z> rLD;
+  public static final a rTR;
+  private c rTP;
+  private d.g.a.a<z> rTQ;
   
   static
   {
-    AppMethodBeat.i(201286);
-    rLE = new a((byte)0);
-    AppMethodBeat.o(201286);
+    AppMethodBeat.i(201713);
+    rTR = new a((byte)0);
+    AppMethodBeat.o(201713);
   }
   
   public g(d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(201285);
-    this.rLD = parama;
-    AppMethodBeat.o(201285);
+    AppMethodBeat.i(201712);
+    this.rTQ = parama;
+    AppMethodBeat.o(201712);
   }
   
   public final void a(View paramView, int paramInt, c paramc)
   {
-    AppMethodBeat.i(201284);
+    AppMethodBeat.i(201711);
     p.h(paramView, "view");
     p.h(paramc, "conv");
-    this.rLC = paramc;
+    this.rTP = paramc;
     paramc = new com.tencent.mm.ui.widget.b.a(paramView.getContext());
     paramc.setOnDismissListener((PopupWindow.OnDismissListener)this);
     View.OnCreateContextMenuListener localOnCreateContextMenuListener = (View.OnCreateContextMenuListener)this;
     n.e locale = (n.e)this;
-    TouchableLayout.a locala = TouchableLayout.LrZ;
-    int i = TouchableLayout.fQh();
-    locala = TouchableLayout.LrZ;
-    paramc.a(paramView, paramInt, 0L, localOnCreateContextMenuListener, locale, i, TouchableLayout.fQi());
-    paramc.fGP();
-    AppMethodBeat.o(201284);
+    TouchableLayout.a locala = TouchableLayout.LOL;
+    int i = TouchableLayout.fUD();
+    locala = TouchableLayout.LOL;
+    paramc.a(paramView, paramInt, 0L, localOnCreateContextMenuListener, locale, i, TouchableLayout.fUE());
+    paramc.fLf();
+    AppMethodBeat.o(201711);
   }
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(201282);
+    AppMethodBeat.i(201709);
     p.h(paramContextMenu, "menu");
     p.h(paramView, "v");
     p.h(paramContextMenuInfo, "menuInfo");
-    paramView = this.rLC;
+    paramView = this.rTP;
     if (paramView != null) {}
     for (paramView = paramView.field_sessionId;; paramView = null)
     {
       if ((p.i(paramView, "findersayhisessionholder") ^ true)) {
         paramContextMenu.add(0, 2, 0, 2131761057);
       }
-      AppMethodBeat.o(201282);
+      AppMethodBeat.o(201709);
       return;
     }
   }
   
   public final void onDismiss()
   {
-    this.rLC = null;
+    this.rTP = null;
   }
   
   public final void onMMMenuItemSelected(final MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(201283);
+    AppMethodBeat.i(201710);
     p.h(paramMenuItem, "menuItem");
-    c localc = this.rLC;
+    c localc = this.rTP;
     if (localc != null)
     {
       switch (paramMenuItem.getItemId())
@@ -100,116 +100,116 @@ public final class g
       }
       for (;;)
       {
-        AppMethodBeat.o(201283);
+        AppMethodBeat.o(201710);
         return;
         paramMenuItem = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage();
         Object localObject = localc.field_sessionId;
         p.g(localObject, "focused.field_sessionId");
-        if (paramMenuItem.be((String)localObject, true))
+        if (paramMenuItem.bh((String)localObject, true))
         {
-          paramMenuItem = this.rLD;
+          paramMenuItem = this.rTQ;
           if (paramMenuItem != null)
           {
             paramMenuItem.invoke();
-            AppMethodBeat.o(201283);
+            AppMethodBeat.o(201710);
             return;
           }
-          AppMethodBeat.o(201283);
+          AppMethodBeat.o(201710);
           return;
         }
-        ad.e("Finder.ConversationOnLongClickListener", "setTopPlace failed. sessionId=" + localc.field_sessionId);
-        AppMethodBeat.o(201283);
+        ae.e("Finder.ConversationOnLongClickListener", "setTopPlace failed. sessionId=" + localc.field_sessionId);
+        AppMethodBeat.o(201710);
         return;
         paramMenuItem = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage();
         localObject = localc.field_sessionId;
         p.g(localObject, "focused.field_sessionId");
-        if (paramMenuItem.be((String)localObject, false))
+        if (paramMenuItem.bh((String)localObject, false))
         {
-          paramMenuItem = this.rLD;
+          paramMenuItem = this.rTQ;
           if (paramMenuItem != null)
           {
             paramMenuItem.invoke();
-            AppMethodBeat.o(201283);
+            AppMethodBeat.o(201710);
             return;
           }
-          AppMethodBeat.o(201283);
+          AppMethodBeat.o(201710);
           return;
         }
-        ad.e("Finder.ConversationOnLongClickListener", "setUnTopPlace failed. sessionId=" + localc.field_sessionId);
-        AppMethodBeat.o(201283);
+        ae.e("Finder.ConversationOnLongClickListener", "setUnTopPlace failed. sessionId=" + localc.field_sessionId);
+        AppMethodBeat.o(201710);
         return;
         paramMenuItem = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage();
         localObject = localc.field_sessionId;
         p.g(localObject, "focused.field_sessionId");
-        if (paramMenuItem.ais((String)localObject))
+        if (paramMenuItem.ajp((String)localObject))
         {
-          paramMenuItem = this.rLD;
+          paramMenuItem = this.rTQ;
           if (paramMenuItem != null)
           {
             paramMenuItem.invoke();
-            AppMethodBeat.o(201283);
+            AppMethodBeat.o(201710);
             return;
           }
-          AppMethodBeat.o(201283);
+          AppMethodBeat.o(201710);
           return;
         }
-        ad.e("Finder.ConversationOnLongClickListener", "clearUnreadCount failed. sessionId=" + localc.field_sessionId);
-        AppMethodBeat.o(201283);
+        ae.e("Finder.ConversationOnLongClickListener", "clearUnreadCount failed. sessionId=" + localc.field_sessionId);
+        AppMethodBeat.o(201710);
         return;
         localObject = paramMenuItem.getMenuInfo();
         if (localObject == null)
         {
           paramMenuItem = new v("null cannot be cast to non-null type android.widget.AdapterView.AdapterContextMenuInfo");
-          AppMethodBeat.o(201283);
+          AppMethodBeat.o(201710);
           throw paramMenuItem;
         }
         localObject = (AdapterView.AdapterContextMenuInfo)localObject;
-        bj.a(localc.field_sessionId, (bj.a)new b(localc, (AdapterView.AdapterContextMenuInfo)localObject, this, paramMenuItem));
+        bl.a(localc.field_sessionId, (bl.a)new b(localc, (AdapterView.AdapterContextMenuInfo)localObject, this, paramMenuItem));
       }
     }
-    AppMethodBeat.o(201283);
+    AppMethodBeat.o(201710);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener$Companion;", "", "()V", "CONTEXT_MENU_LONG_CLICK_DELETE", "", "CONTEXT_MENU_LONG_CLICK_MARK_READ", "CONTEXT_MENU_LONG_CLICK_PLACED_TOP", "CONTEXT_MENU_LONG_CLICK_UN_PLACED_TOP", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener$Companion;", "", "()V", "CONTEXT_MENU_LONG_CLICK_DELETE", "", "CONTEXT_MENU_LONG_CLICK_MARK_READ", "CONTEXT_MENU_LONG_CLICK_PLACED_TOP", "CONTEXT_MENU_LONG_CLICK_UN_PLACED_TOP", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/model/MsgInfoStorageLogic$IDeleteMsg;", "finishCallback", "", "isCancel", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/model/MsgInfoStorageLogic$IDeleteMsg;", "finishCallback", "", "isCancel", "", "plugin-finder_release"})
   public static final class b
-    implements bj.a
+    implements bl.a
   {
     b(c paramc, AdapterView.AdapterContextMenuInfo paramAdapterContextMenuInfo, g paramg, MenuItem paramMenuItem) {}
     
-    public final boolean YK()
+    public final boolean YT()
     {
       return false;
     }
     
-    public final void YL()
+    public final void YU()
     {
-      AppMethodBeat.i(201281);
-      ad.i("Finder.ConversationOnLongClickListener", "longclick delete msg finish");
-      boolean bool = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().deleteNotify(this.rLF.systemRowid, false);
+      AppMethodBeat.i(201708);
+      ae.i("Finder.ConversationOnLongClickListener", "longclick delete msg finish");
+      boolean bool = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().deleteNotify(this.rTS.systemRowid, false);
       if (bool)
       {
         localObject = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage();
-        String str = this.rLF.field_sessionId;
+        String str = this.rTS.field_sessionId;
         p.g(str, "focused.field_sessionId");
         p.h(str, "sessionId");
-        j localj = ((w)localObject).aiw(str);
-        ((w)localObject).szf.remove(str);
-        ((w)localObject).sze.remove(localj.field_talker);
+        j localj = ((w)localObject).ajt(str);
+        ((w)localObject).sJW.remove(str);
+        ((w)localObject).sJV.remove(localj.field_talker);
         ((w)localObject).delete((com.tencent.mm.sdk.e.c)localj, false, new String[] { "sessionId" });
-        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().doNotify(this.rLF.field_sessionId, 6, this.rLF);
+        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().doNotify(this.rTS.field_sessionId, 6, this.rTS);
         localObject = g.a(jdField_this);
         if (localObject != null) {
           ((d.g.a.a)localObject).invoke();
         }
       }
-      ad.i("Finder.ConversationOnLongClickListener", "[CONTEXT_MENU_LONG_CLICK_DELETE] ret" + bool + " position=" + this.rLG.position);
-      Object localObject = b.snk;
-      localObject = b.cDj();
-      ((x)localObject).ssD += 1L;
-      AppMethodBeat.o(201281);
+      ae.i("Finder.ConversationOnLongClickListener", "[CONTEXT_MENU_LONG_CLICK_DELETE] ret" + bool + " position=" + this.rTT.position);
+      Object localObject = b.sxb;
+      localObject = b.cFb();
+      ((y)localObject).sCN += 1L;
+      AppMethodBeat.o(201708);
     }
   }
 }

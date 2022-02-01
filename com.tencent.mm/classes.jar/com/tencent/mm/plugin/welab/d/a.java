@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ public final class a
     get(locala, new String[0]);
     if ((parama.field_expId == locala.field_expId) && (parama.field_sequence < locala.field_sequence))
     {
-      ad.i("LabAppInfoStorage", "sequence old origin.seq " + locala.field_sequence + " old.seq " + parama.field_sequence);
+      ae.i("LabAppInfoStorage", "sequence old origin.seq " + locala.field_sequence + " old.seq " + parama.field_sequence);
       AppMethodBeat.o(146253);
       return false;
     }
@@ -47,7 +47,7 @@ public final class a
     AppMethodBeat.o(146252);
   }
   
-  public final List<com.tencent.mm.plugin.welab.d.a.a> eWw()
+  public final List<com.tencent.mm.plugin.welab.d.a.a> fai()
   {
     AppMethodBeat.i(146250);
     Cursor localCursor = getAll();
@@ -63,21 +63,21 @@ public final class a
     return localArrayList;
   }
   
-  public final void gZ(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  public final void hj(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
   {
     AppMethodBeat.i(146251);
     h localh = null;
     if ((this.db instanceof h)) {
       localh = (h)this.db;
     }
-    for (long l = localh.xO(-1L);; l = 0L)
+    for (long l = localh.yi(-1L);; l = 0L)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         c((com.tencent.mm.plugin.welab.d.a.a)paramList.next());
       }
       if (localh != null) {
-        localh.sJ(l);
+        localh.sW(l);
       }
       AppMethodBeat.o(146251);
       return;
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a
  * JD-Core Version:    0.7.0.1
  */

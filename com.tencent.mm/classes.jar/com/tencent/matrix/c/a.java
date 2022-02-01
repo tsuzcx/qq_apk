@@ -1,7 +1,9 @@
 package com.tencent.matrix.c;
 
+import android.database.Cursor;
 import com.tencent.matrix.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.sqlitelint.ISQLiteExecutionDelegate;
 import com.tencent.sqlitelint.SQLiteLint.InstallEnv;
 import com.tencent.sqlitelint.SQLiteLint.Options.Builder;
 import com.tencent.sqlitelint.SQLiteLintPlugin;
@@ -12,30 +14,30 @@ import java.util.Map;
 
 public final class a
 {
-  private static Map<String, Boolean> cEi = new HashMap();
-  private static SQLiteLintPlugin cEj;
+  private static Map<String, Boolean> cEP = new HashMap();
+  private static SQLiteLintPlugin cEQ;
   
   public static void a(SQLiteDatabase paramSQLiteDatabase, String paramString, long paramLong)
   {
-    if (!b.HK()) {}
+    if (!b.HS()) {}
     do
     {
       do
       {
         return;
-        if (cEj != null) {
+        if (cEQ != null) {
           break;
         }
-        localObject1 = (SQLiteLintPlugin)b.HL().V(SQLiteLintPlugin.class);
-        cEj = (SQLiteLintPlugin)localObject1;
+        localObject1 = (SQLiteLintPlugin)b.HT().V(SQLiteLintPlugin.class);
+        cEQ = (SQLiteLintPlugin)localObject1;
       } while (localObject1 == null);
-    } while (!cEj.isPluginStarted());
-    ad.v("Matrix.MatrixSQLiteLintManager", "onSQLExecuted  String sql:%s,  timeCost:%d", new Object[] { paramString, Long.valueOf(paramLong) });
+    } while (!cEQ.isPluginStarted());
+    ae.v("Matrix.MatrixSQLiteLintManager", "onSQLExecuted  String sql:%s,  timeCost:%d", new Object[] { paramString, Long.valueOf(paramLong) });
     Object localObject1 = paramSQLiteDatabase.getPath();
     Object localObject2;
-    if (!cEi.containsKey(localObject1))
+    if (!cEP.containsKey(localObject1))
     {
-      paramSQLiteDatabase = new SQLiteLint.InstallEnv((String)localObject1, new a.a(paramSQLiteDatabase));
+      paramSQLiteDatabase = new SQLiteLint.InstallEnv((String)localObject1, new a(paramSQLiteDatabase));
       localObject2 = new SQLiteLint.Options.Builder();
       ((SQLiteLint.Options.Builder)localObject2).setReportBehaviour(true);
       ((SQLiteLint.Options.Builder)localObject2).setAlertBehaviour(false);
@@ -54,9 +56,9 @@ public final class a
     }
     for (;;)
     {
-      cEj.addConcernedDB(paramSQLiteDatabase);
-      cEi.put(localObject1, Boolean.TRUE);
-      cEj.notifySqlExecution((String)localObject1, paramString, (int)paramLong);
+      cEQ.addConcernedDB(paramSQLiteDatabase);
+      cEP.put(localObject1, Boolean.TRUE);
+      cEQ.notifySqlExecution((String)localObject1, paramString, (int)paramLong);
       return;
       label230:
       if (((String)localObject2).endsWith("AppBrandComm.db")) {
@@ -64,6 +66,37 @@ public final class a
       } else if (((String)localObject2).endsWith("SnsMicroMsg.db")) {
         paramSQLiteDatabase.setWhiteListXml(2131951745);
       }
+    }
+  }
+  
+  static final class a
+    implements ISQLiteExecutionDelegate
+  {
+    private final SQLiteDatabase mDb;
+    
+    a(SQLiteDatabase paramSQLiteDatabase)
+    {
+      this.mDb = paramSQLiteDatabase;
+    }
+    
+    public final void execSQL(String paramString)
+    {
+      if (!this.mDb.isOpen())
+      {
+        ae.w("Matrix.MatrixSQLiteLintManager", "rawQuery db close", new Object[0]);
+        return;
+      }
+      this.mDb.execSQL(paramString);
+    }
+    
+    public final Cursor rawQuery(String paramString, String... paramVarArgs)
+    {
+      if (!this.mDb.isOpen())
+      {
+        ae.w("Matrix.MatrixSQLiteLintManager", "rawQuery db close", new Object[0]);
+        return null;
+      }
+      return this.mDb.rawQuery(paramString, paramVarArgs);
     }
   }
 }

@@ -17,7 +17,7 @@ public final class c
       AppMethodBeat.o(153667);
       return null;
     }
-    if ((paramWebResourceResponse.Mqd) && (Build.VERSION.SDK_INT >= 21)) {
+    if ((paramWebResourceResponse.MNh) && (Build.VERSION.SDK_INT >= 21)) {
       try
       {
         android.webkit.WebResourceResponse localWebResourceResponse1 = new android.webkit.WebResourceResponse(paramWebResourceResponse.mMimeType, paramWebResourceResponse.mEncoding, paramWebResourceResponse.mStatusCode, paramWebResourceResponse.mReasonPhrase, paramWebResourceResponse.mResponseHeaders, paramWebResourceResponse.mInputStream);
@@ -45,24 +45,24 @@ public final class c
   public static final class a
     implements r
   {
-    SslErrorHandler MtO;
+    SslErrorHandler MQS;
     
     public a(SslErrorHandler paramSslErrorHandler)
     {
-      this.MtO = paramSslErrorHandler;
+      this.MQS = paramSslErrorHandler;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(153658);
-      this.MtO.cancel();
+      this.MQS.cancel();
       AppMethodBeat.o(153658);
     }
     
     public final void proceed()
     {
       AppMethodBeat.i(153657);
-      this.MtO.proceed();
+      this.MQS.proceed();
       AppMethodBeat.o(153657);
     }
   }

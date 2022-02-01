@@ -1,91 +1,83 @@
 package com.tencent.mm.plugin.appbrand.networking;
 
-import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.c.b;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.x.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import d.g.b.p;
 import d.l;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedDeque;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceImpl;", "Lcom/tencent/mm/plugin/appbrand/networking/INetworkService;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "mListeners", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/plugin/appbrand/networking/IOnNetworkStateChanged;", "mRuntime", "getMRuntime", "()Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "addListener", "", "l", "notifyNetworkStateChanged", "onRegister", "onUnregister", "removeListener", "luggage-wxa-app_release"})
-public class f
-  implements b, c
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver;", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceImpl;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "TAG", "", "appContext", "Landroid/content/Context;", "getAppContext", "()Landroid/content/Context;", "mNetworkStateChangedReceiver", "com/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1;", "onRegister", "", "onUnregister", "luggage-wxa-app_release"})
+public final class f
+  extends g
 {
-  final AppBrandRuntime jzY;
-  @TargetApi(21)
-  private final ConcurrentLinkedDeque<d> lXl;
+  private final String TAG;
+  private final NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1 mbQ;
   
   public f(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(135591);
-    this.jzY = paramAppBrandRuntime;
-    this.lXl = new ConcurrentLinkedDeque();
-    AppMethodBeat.o(135591);
+    super(paramAppBrandRuntime);
+    AppMethodBeat.i(135584);
+    this.TAG = "Luggage.WXA.NetworkServiceBySystemReceiver";
+    this.mbQ = new NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1(this);
+    AppMethodBeat.o(135584);
   }
   
-  public final void a(d paramd)
+  private static Context getAppContext()
   {
-    AppMethodBeat.i(135590);
-    this.lXl.add(paramd);
-    AppMethodBeat.o(135590);
-  }
-  
-  public void akx()
-  {
-    AppMethodBeat.i(135587);
-    a((d)new a(this));
-    AppMethodBeat.o(135587);
-  }
-  
-  public void aky()
-  {
-    AppMethodBeat.i(135588);
-    this.lXl.clear();
-    AppMethodBeat.o(135588);
-  }
-  
-  public final void btw()
-  {
-    AppMethodBeat.i(135589);
-    Object localObject = this.jzY.Ew();
-    if (localObject != null)
-    {
-      if (((q)localObject).isRunning() == true)
-      {
-        localObject = this.lXl.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((d)((Iterator)localObject).next()).bmF();
-        }
-      }
+    AppMethodBeat.i(176454);
+    Context localContext = ak.getContext();
+    if (localContext == null) {
+      p.gkB();
     }
-    else
+    AppMethodBeat.o(176454);
+    return localContext;
+  }
+  
+  public final void akM()
+  {
+    AppMethodBeat.i(135582);
+    super.akM();
+    try
     {
-      AppMethodBeat.o(135589);
+      Context localContext = getAppContext();
+      BroadcastReceiver localBroadcastReceiver = (BroadcastReceiver)this.mbQ;
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+      localContext.registerReceiver(localBroadcastReceiver, localIntentFilter);
+      AppMethodBeat.o(135582);
       return;
     }
-    AppMethodBeat.o(135589);
+    catch (Throwable localThrowable)
+    {
+      ae.e(this.TAG, "register network receiver, t=".concat(String.valueOf(localThrowable)));
+      AppMethodBeat.o(135582);
+    }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onNetworkStateChanged"})
-  static final class a
-    implements d
+  public final void akN()
   {
-    a(f paramf) {}
-    
-    public final void bmF()
+    AppMethodBeat.i(135583);
+    super.akN();
+    try
     {
-      AppMethodBeat.i(135586);
-      a.m((com.tencent.mm.plugin.appbrand.jsapi.c)this.lXm.jzY.Ew());
-      AppMethodBeat.o(135586);
+      getAppContext().unregisterReceiver((BroadcastReceiver)this.mbQ);
+      AppMethodBeat.o(135583);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ae.e(this.TAG, "unregister network receiver, t=".concat(String.valueOf(localThrowable)));
+      AppMethodBeat.o(135583);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.networking.f
  * JD-Core Version:    0.7.0.1
  */

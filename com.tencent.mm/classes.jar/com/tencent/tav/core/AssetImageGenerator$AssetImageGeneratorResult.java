@@ -6,12 +6,12 @@ public enum AssetImageGenerator$AssetImageGeneratorResult
 {
   static
   {
-    AppMethodBeat.i(217771);
+    AppMethodBeat.i(214409);
     AssetImageGeneratorSucceeded = new AssetImageGeneratorResult("AssetImageGeneratorSucceeded", 0);
     AssetImageGeneratorFailed = new AssetImageGeneratorResult("AssetImageGeneratorFailed", 1);
     AssetImageGeneratorCancelled = new AssetImageGeneratorResult("AssetImageGeneratorCancelled", 2);
     $VALUES = new AssetImageGeneratorResult[] { AssetImageGeneratorSucceeded, AssetImageGeneratorFailed, AssetImageGeneratorCancelled };
-    AppMethodBeat.o(217771);
+    AppMethodBeat.o(214409);
   }
   
   private AssetImageGenerator$AssetImageGeneratorResult() {}

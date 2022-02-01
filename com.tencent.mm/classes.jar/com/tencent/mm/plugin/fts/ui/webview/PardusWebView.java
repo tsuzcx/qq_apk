@@ -8,8 +8,8 @@ import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.z;
@@ -48,7 +48,7 @@ public class PardusWebView
     AppMethodBeat.o(176921);
   }
   
-  private void bNc()
+  private void bOa()
   {
     AppMethodBeat.i(176923);
     if (getIsX5Kernel())
@@ -56,7 +56,7 @@ public class PardusWebView
       AppMethodBeat.o(176923);
       return;
     }
-    if (d.ly(19))
+    if (d.lA(19))
     {
       AppMethodBeat.o(176923);
       return;
@@ -64,21 +64,21 @@ public class PardusWebView
     try
     {
       Object localObject = new com.tencent.mm.compatible.loader.c(this, "mSysWebView", null).get();
-      ad.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { localObject });
+      ae.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mProvider", null).get();
-      ad.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { localObject });
+      ae.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mWebViewCore", null).get();
-      ad.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { localObject });
+      ae.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "sWebCoreHandler", null).get();
-      ad.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { localObject });
+      ae.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mLooper", null).get();
-      ad.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { localObject });
+      ae.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mThread", null).get();
-      ad.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { localObject });
+      ae.d("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { localObject });
       if ((localObject instanceof Thread))
       {
         localObject = (Thread)localObject;
-        ad.i("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { ((Thread)localObject).getState() });
+        ae.i("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { ((Thread)localObject).getState() });
         if (((Thread)localObject).getState() == Thread.State.WAITING) {
           ((Thread)localObject).interrupt();
         }
@@ -88,7 +88,7 @@ public class PardusWebView
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { localException });
+      ae.e("MicroMsg.FTS.PardusWebView", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { localException });
       AppMethodBeat.o(176923);
     }
   }
@@ -96,66 +96,66 @@ public class PardusWebView
   private void init()
   {
     AppMethodBeat.i(176922);
-    ad.i("MicroMsg.FTS.PardusWebView", "init FlightWebView");
-    this.gcX = true;
-    kF(this.context);
-    bNc();
+    ae.i("MicroMsg.FTS.PardusWebView", "init FlightWebView");
+    this.gff = true;
+    kM(this.context);
+    bOa();
     AppMethodBeat.o(176922);
   }
   
   public final void a(a parama, b paramb)
   {
     AppMethodBeat.i(176924);
-    getSettings().gbb();
+    getSettings().gfD();
     getSettings().setJavaScriptEnabled(true);
     getSettings().setPluginsEnabled(true);
     getSettings().setBuiltInZoomControls(false);
     getSettings().setMediaPlaybackRequiresUserGesture(true);
-    getSettings().gbd();
-    getSettings().setUserAgentString(x.bW(getContext(), getSettings().getUserAgentString()));
+    getSettings().gfF();
+    getSettings().setUserAgentString(x.bX(getContext(), getSettings().getUserAgentString()));
     getSettings().setUseWideViewPort(true);
     getSettings().setLoadWithOverviewMode(true);
-    getSettings().gaU();
-    getSettings().gaT();
+    getSettings().gfw();
+    getSettings().gfv();
     getSettings().setGeolocationEnabled(true);
     getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    getSettings().gbd();
-    getSettings().gaZ();
+    getSettings().gfF();
+    getSettings().gfB();
     getSettings().setAppCachePath(this.context.getDir("webviewcache", 0).getAbsolutePath());
-    getSettings().gaY();
-    getSettings().gba();
-    getSettings().setDatabasePath(com.tencent.mm.loader.j.b.arL() + "databases/");
-    com.tencent.xweb.c.gaw().gax();
-    com.tencent.xweb.c.gaw().e(this);
+    getSettings().gfA();
+    getSettings().gfC();
+    getSettings().setDatabasePath(com.tencent.mm.loader.j.b.asa() + "databases/");
+    com.tencent.xweb.c.geY().geZ();
+    com.tencent.xweb.c.geY().e(this);
     getView().setHorizontalScrollBarEnabled(false);
     getView().setVerticalScrollBarEnabled(true);
-    setConfigCallback((WindowManager)aj.getContext().getSystemService("window"));
+    setConfigCallback((WindowManager)ak.getContext().getSystemService("window"));
     super.setWebChromeClient(parama);
     super.setWebViewClient(paramb);
-    fLz();
-    ad.i("MicroMsg.FTS.PardusWebView", "current webview core %s", new Object[] { getWebCoreType() });
-    float f = getContext().getSharedPreferences(aj.fkC(), 0).getFloat("current_text_size_scale_key", com.tencent.mm.cc.a.hZ(getContext()));
-    if (f >= com.tencent.mm.cc.a.jdMethod_if(getContext())) {
+    fPT();
+    ae.i("MicroMsg.FTS.PardusWebView", "current webview core %s", new Object[] { getWebCoreType() });
+    float f = getContext().getSharedPreferences(ak.fow(), 0).getFloat("current_text_size_scale_key", com.tencent.mm.cb.a.ie(getContext()));
+    if (f >= com.tencent.mm.cb.a.ik(getContext())) {
       getSettings().setTextZoom(148);
     }
     for (;;)
     {
-      ad.i("MicroMsg.FTS.PardusWebView", "SetFontSize, fontSize = %f", new Object[] { Float.valueOf(f) });
+      ae.i("MicroMsg.FTS.PardusWebView", "SetFontSize, fontSize = %f", new Object[] { Float.valueOf(f) });
       AppMethodBeat.o(176924);
       return;
-      if (f >= com.tencent.mm.cc.a.ie(getContext())) {
+      if (f >= com.tencent.mm.cb.a.ij(getContext())) {
         getSettings().setTextZoom(140);
-      } else if (f >= com.tencent.mm.cc.a.id(getContext())) {
+      } else if (f >= com.tencent.mm.cb.a.ii(getContext())) {
         getSettings().setTextZoom(132);
-      } else if (f >= com.tencent.mm.cc.a.ic(getContext())) {
+      } else if (f >= com.tencent.mm.cb.a.ih(getContext())) {
         getSettings().setTextZoom(124);
-      } else if (f >= com.tencent.mm.cc.a.ib(getContext())) {
+      } else if (f >= com.tencent.mm.cb.a.ig(getContext())) {
         getSettings().setTextZoom(116);
-      } else if (f >= com.tencent.mm.cc.a.ia(getContext())) {
+      } else if (f >= com.tencent.mm.cb.a.jdMethod_if(getContext())) {
         getSettings().setTextZoom(108);
-      } else if (f >= com.tencent.mm.cc.a.hZ(getContext())) {
+      } else if (f >= com.tencent.mm.cb.a.ie(getContext())) {
         getSettings().setTextZoom(100);
-      } else if (f >= com.tencent.mm.cc.a.hY(getContext())) {
+      } else if (f >= com.tencent.mm.cb.a.id(getContext())) {
         getSettings().setTextZoom(92);
       } else {
         getSettings().setTextZoom(80);

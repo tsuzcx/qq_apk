@@ -5,59 +5,59 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void Bv(int paramInt);
+  public abstract void BH(int paramInt);
   
-  public abstract void Bw(int paramInt);
+  public abstract void BI(int paramInt);
   
-  public abstract void Bx(int paramInt);
+  public abstract void BJ(int paramInt);
   
-  public abstract void By(int paramInt);
+  public abstract void BK(int paramInt);
   
-  public abstract void O(int paramInt, long paramLong);
+  public abstract void N(int paramInt, long paramLong);
   
   public abstract void a(WXRTEditText paramWXRTEditText);
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract int cdA();
+  public abstract void ceF();
   
-  public abstract boolean cdB();
+  public abstract void ceG();
   
-  public abstract RecyclerView cdC();
+  public abstract void ceH();
   
-  public abstract void cdq();
+  public abstract void ceJ();
   
-  public abstract void cdr();
+  public abstract void ceK();
   
-  public abstract void cds();
+  public abstract void ceL();
   
-  public abstract void cdu();
+  public abstract void ceN();
   
-  public abstract void cdv();
+  public abstract int ceO();
   
-  public abstract void cdw();
+  public abstract int ceP();
   
-  public abstract void cdy();
+  public abstract boolean ceQ();
   
-  public abstract int cdz();
+  public abstract RecyclerView ceR();
   
   public abstract void e(boolean paramBoolean, long paramLong);
   
-  public abstract void eWQ();
+  public abstract void faC();
   
-  public abstract void eWR();
+  public abstract void faD();
   
-  public abstract void eWS();
-  
-  public abstract void fc(int paramInt1, int paramInt2);
+  public abstract void faE();
   
   public abstract void fd(int paramInt1, int paramInt2);
   
   public abstract void fe(int paramInt1, int paramInt2);
   
+  public abstract void ff(int paramInt1, int paramInt2);
+  
   public abstract void g(Object paramObject, boolean paramBoolean);
   
-  public abstract void vy(boolean paramBoolean);
+  public abstract void vH(boolean paramBoolean);
 }
 
 

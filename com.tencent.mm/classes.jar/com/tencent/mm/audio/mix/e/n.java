@@ -15,10 +15,10 @@ public final class n
       int k = 0;
       while (j < paramInt1)
       {
-        k += this.dez[j][i];
+        k += this.dfB[j][i];
         j += 1;
       }
-      this.deC[i] = ((short)(k / paramInt1));
+      this.dfE[i] = ((short)(k / paramInt1));
       i += 1;
     }
     byte[] arrayOfByte = cg(paramInt3, paramInt2);
@@ -28,7 +28,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.n
  * JD-Core Version:    0.7.0.1
  */

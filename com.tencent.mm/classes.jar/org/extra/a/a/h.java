@@ -9,18 +9,18 @@ public final class h
 {
   public h(f paramf, c.b paramb, long paramLong)
   {
-    AppMethodBeat.i(220092);
+    AppMethodBeat.i(216846);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
-    if (paramb.NVG) {}
+    if (paramb.OsL) {}
     for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
     {
       localByteBuffer.order(localByteOrder);
-      paramLong = paramb.NVH + paramb.NVJ * paramLong;
-      this.dle = paramf.e(localByteBuffer, paramLong);
+      paramLong = paramb.OsM + paramb.OsO * paramLong;
+      this.dmg = paramf.e(localByteBuffer, paramLong);
       this.offset = paramf.d(localByteBuffer, 8L + paramLong);
-      this.NVO = paramf.d(localByteBuffer, 16L + paramLong);
-      this.NVP = paramf.d(localByteBuffer, paramLong + 40L);
-      AppMethodBeat.o(220092);
+      this.OsT = paramf.d(localByteBuffer, 16L + paramLong);
+      this.OsU = paramf.d(localByteBuffer, paramLong + 40L);
+      AppMethodBeat.o(216846);
       return;
     }
   }

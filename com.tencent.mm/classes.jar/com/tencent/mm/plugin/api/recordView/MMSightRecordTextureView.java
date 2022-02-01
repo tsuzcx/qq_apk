@@ -5,15 +5,15 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.MMTextureView;
 
 class MMSightRecordTextureView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private d juG;
-  private c juH;
+  private d jxB;
+  private c jxC;
   private int surfaceHeight;
   private int surfaceWidth;
   
@@ -36,25 +36,25 @@ class MMSightRecordTextureView
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89212);
-    ad.i("MicroMsg.MMSightRecordTextureViewImpl", "onSurfaceTextureAvailable, surface: %s, width: %s, height: %s", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.MMSightRecordTextureViewImpl", "onSurfaceTextureAvailable, surface: %s, width: %s, height: %s", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    this.juG = new d();
-    this.juH = new c(paramSurfaceTexture, this.juG);
-    this.juG.dB(paramInt1, paramInt2);
-    this.juH.juI = true;
-    this.juH.start();
+    this.jxB = new d();
+    this.jxC = new c(paramSurfaceTexture, this.jxB);
+    this.jxB.dB(paramInt1, paramInt2);
+    this.jxC.jxD = true;
+    this.jxC.start();
     AppMethodBeat.o(89212);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(89214);
-    this.juH.juI = false;
+    this.jxC.jxD = false;
     try
     {
-      this.juH.join();
-      this.juH = null;
+      this.jxC.join();
+      this.jxC = null;
       AppMethodBeat.o(89214);
       return false;
     }
@@ -62,7 +62,7 @@ class MMSightRecordTextureView
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.MMSightRecordTextureViewImpl", paramSurfaceTexture, "onSurfaceTextureDestroyed error: %s", new Object[] { paramSurfaceTexture.getMessage() });
+        ae.printErrStackTrace("MicroMsg.MMSightRecordTextureViewImpl", paramSurfaceTexture, "onSurfaceTextureDestroyed error: %s", new Object[] { paramSurfaceTexture.getMessage() });
       }
     }
   }
@@ -70,10 +70,10 @@ class MMSightRecordTextureView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89213);
-    ad.i("MicroMsg.MMSightRecordTextureViewImpl", "onSurfaceTextureSizeChanged, surface: %s, width: %s, height: %s", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.MMSightRecordTextureViewImpl", "onSurfaceTextureSizeChanged, surface: %s, width: %s, height: %s", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    this.juG.dB(paramInt1, paramInt2);
+    this.jxB.dB(paramInt1, paramInt2);
     AppMethodBeat.o(89213);
   }
   

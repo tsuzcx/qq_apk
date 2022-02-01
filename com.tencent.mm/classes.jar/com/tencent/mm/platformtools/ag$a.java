@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 public final class ag$a
 {
   /* Error */
-  public static int M(Context paramContext, String paramString)
+  public static int N(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -37,7 +37,7 @@ public final class ag$a
     //   37: ldc 34
     //   39: iconst_0
     //   40: anewarray 4	java/lang/Object
-    //   43: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   43: invokestatic 40	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   46: aconst_null
     //   47: astore 5
     //   49: goto -29 -> 20
@@ -101,7 +101,7 @@ public final class ag$a
     //   184: ldc 34
     //   186: iconst_0
     //   187: anewarray 4	java/lang/Object
-    //   190: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   190: invokestatic 40	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   193: iconst_0
     //   194: istore_2
     //   195: goto -63 -> 132
@@ -161,7 +161,7 @@ public final class ag$a
     //   310: astore_1
     //   311: aload 6
     //   313: iconst_0
-    //   314: invokestatic 109	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   314: invokestatic 109	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   317: istore_2
     //   318: aload 5
     //   320: ifnull +10 -> 330
@@ -181,7 +181,7 @@ public final class ag$a
     //   350: ldc 34
     //   352: iconst_0
     //   353: anewarray 4	java/lang/Object
-    //   356: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   356: invokestatic 40	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   359: goto -227 -> 132
     //   362: astore 5
     //   364: aload_0
@@ -191,7 +191,7 @@ public final class ag$a
     //   370: ldc 34
     //   372: iconst_0
     //   373: anewarray 4	java/lang/Object
-    //   376: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   376: invokestatic 40	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   379: aload_0
     //   380: ifnull +9 -> 389
     //   383: aload_0
@@ -210,7 +210,7 @@ public final class ag$a
     //   409: ldc 34
     //   411: iconst_0
     //   412: anewarray 4	java/lang/Object
-    //   415: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   415: invokestatic 40	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   418: goto -286 -> 132
     //   421: astore_0
     //   422: aload_1

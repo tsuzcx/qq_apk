@@ -1,6 +1,7 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,21 +9,21 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static final boolean a(com.tencent.mm.vfs.e parame)
+  public static final boolean a(k paramk)
   {
     int i = 0;
-    if (!parame.exists()) {}
+    if (!paramk.exists()) {}
     do
     {
       do
       {
         return false;
-      } while (!parame.isDirectory());
-      parame = parame.fOM();
-    } while (parame == null);
-    while (i < parame.length)
+      } while (!paramk.isDirectory());
+      paramk = paramk.fTj();
+    } while (paramk == null);
+    while (i < paramk.length)
     {
-      parame[i].delete();
+      paramk[i].delete();
       i += 1;
     }
     return true;
@@ -54,7 +55,7 @@ public final class e
       }
       catch (Exception paramInputStream)
       {
-        ad.w("MicroMsg.FileOperation", "copyStream error: %s", new Object[] { paramInputStream.getMessage() });
+        ae.w("MicroMsg.FileOperation", "copyStream error: %s", new Object[] { paramInputStream.getMessage() });
       }
     }
   }
@@ -65,9 +66,9 @@ public final class e
     while (i <= 0)
     {
       String str = paramVarArgs[0];
-      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(str);
-      if ((!locale.exists()) && ((!locale.mkdirs()) || (!locale.isDirectory()))) {
-        ad.e("MicroMsg.FileOperation", "batchMkDirs mkdir error. %s", new Object[] { str });
+      k localk = new k(str);
+      if ((!localk.exists()) && ((!localk.mkdirs()) || (!localk.isDirectory()))) {
+        ae.e("MicroMsg.FileOperation", "batchMkDirs mkdir error. %s", new Object[] { str });
       }
       i += 1;
     }

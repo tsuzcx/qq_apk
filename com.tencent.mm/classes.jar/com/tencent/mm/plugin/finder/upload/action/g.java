@@ -3,12 +3,13 @@ package com.tencent.mm.plugin.finder.upload.action;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.g.a.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.ab;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.j;
 import d.g.b.q;
 import d.l;
 import java.util.ArrayList;
@@ -20,61 +21,61 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr;", "", "()V", "actionQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "feedCommentLikeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$KeyData;", "Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "feedMap", "Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "localFeedLikeMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "Lkotlin/collections/HashMap;", "queue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "tryTask", "Ljava/lang/Runnable;", "addSelf", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "likeList", "addSelfInto", "", "newList", "commentLikeCount", "", "feedId", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "scene", "doLike", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "like", "", "isPrivate", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "doLikeComment", "objectNonceId", "", "comment", "isPoster", "doLikeLocalFeed", "localId", "doPost", "action", "friendLikeCount", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "friendLikeList", "isCommentLike", "isLike", "Lkotlin/Pair;", "isLocalFeedLike", "isWxScene", "likeCount", "likeLocalFeed", "likeAction", "showTips", "removeLikeCache", "removeLikeCommentCache", "removeLocalLikeFeed", "removeSelf", "removeSelfFrom", "removeUnuseAction", "restoreLocalLikeFeed", "saveLocalLikeFeed", "tryNext", "Companion", "ILikeActionCallback", "KeyData", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr;", "", "()V", "actionQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "feedCommentLikeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$KeyData;", "Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "feedMap", "Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "localFeedLikeMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "Lkotlin/collections/HashMap;", "queue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "tryTask", "Ljava/lang/Runnable;", "addSelf", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "likeList", "addSelfInto", "", "newList", "commentLikeCount", "", "feedId", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "scene", "doLike", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "like", "", "isPrivate", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "doLikeComment", "objectNonceId", "", "comment", "isPoster", "doLikeLocalFeed", "localId", "doPost", "action", "friendLikeCount", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "friendLikeList", "isCommentLike", "isLike", "Lkotlin/Pair;", "isLocalFeedLike", "isWxScene", "likeCount", "likeLocalFeed", "likeAction", "showTips", "removeLikeCache", "removeLikeCommentCache", "removeLocalLikeFeed", "removeSelf", "removeSelfFrom", "removeUnuseAction", "restoreLocalLikeFeed", "saveLocalLikeFeed", "tryNext", "Companion", "ILikeActionCallback", "KeyData", "plugin-finder_release"})
 public final class g
 {
   public static final String TAG = "Finder.FinderLikeActionMgr";
-  private static final g sKh;
-  public static final a sKi;
-  private com.tencent.mm.loader.g.d<h> sIA;
-  private final Runnable sIB;
-  private final ConcurrentLinkedQueue<e> sJP;
-  private final ConcurrentHashMap<Long, f> sJQ;
-  private final ConcurrentHashMap<Long, ConcurrentHashMap<c, i>> sKf;
-  public final HashMap<Long, com.tencent.mm.plugin.finder.storage.o> sKg;
+  private static final g sVu;
+  public static final a sVv;
+  private com.tencent.mm.loader.g.d<h> sTM;
+  private final Runnable sTN;
+  private final ConcurrentLinkedQueue<e> sVc;
+  private final ConcurrentHashMap<Long, f> sVd;
+  private final ConcurrentHashMap<Long, ConcurrentHashMap<c, i>> sVs;
+  public final HashMap<Long, com.tencent.mm.plugin.finder.storage.o> sVt;
   
   static
   {
     AppMethodBeat.i(167823);
-    sKi = new a((byte)0);
+    sVv = new a((byte)0);
     TAG = "Finder.FinderLikeActionMgr";
-    sKh = new g();
+    sVu = new g();
     AppMethodBeat.o(167823);
   }
   
   public g()
   {
     AppMethodBeat.i(167822);
-    this.sIA = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new a(100), new com.tencent.mm.loader.g.a.g(1, (byte)0), 1, "finder_action_like_post_quene"));
-    cKU();
-    this.sJP = new ConcurrentLinkedQueue();
-    this.sJQ = new ConcurrentHashMap();
-    this.sKf = new ConcurrentHashMap();
-    this.sKg = new HashMap();
-    this.sIB = ((Runnable)new f(this));
+    this.sTM = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new a(100), new com.tencent.mm.loader.g.a.g(1, (byte)0), 1, "finder_action_like_post_quene"));
+    cNy();
+    this.sVc = new ConcurrentLinkedQueue();
+    this.sVd = new ConcurrentHashMap();
+    this.sVs = new ConcurrentHashMap();
+    this.sVt = new HashMap();
+    this.sTN = ((Runnable)new f(this));
     AppMethodBeat.o(167822);
   }
   
   private final void a(final e parame)
   {
     AppMethodBeat.i(167821);
-    this.sIA.a((com.tencent.mm.loader.g.c)new h(parame), (com.tencent.mm.loader.g.f)new d(this, parame));
+    this.sTM.a((com.tencent.mm.loader.g.c)new h(parame), (com.tencent.mm.loader.g.f)new d(this, parame));
     AppMethodBeat.o(167821);
   }
   
   private static LinkedList<FinderCommentInfo> ak(LinkedList<FinderCommentInfo> paramLinkedList)
   {
-    AppMethodBeat.i(204378);
+    AppMethodBeat.i(204996);
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.addAll((Collection)paramLinkedList);
     al(localLinkedList);
-    AppMethodBeat.o(204378);
+    AppMethodBeat.o(204996);
     return localLinkedList;
   }
   
   public static void al(LinkedList<FinderCommentInfo> paramLinkedList)
   {
-    AppMethodBeat.i(204379);
+    AppMethodBeat.i(204997);
     d.g.b.p.h(paramLinkedList, "newList");
     Iterator localIterator = ((Iterable)paramLinkedList).iterator();
     Object localObject;
@@ -84,18 +85,18 @@ public final class g
         break;
       }
       localObject = localIterator.next();
-    } while (!d.g.b.p.i(((FinderCommentInfo)localObject).username, u.aAm()));
+    } while (!d.g.b.p.i(((FinderCommentInfo)localObject).username, v.aAC()));
     for (;;)
     {
       if ((FinderCommentInfo)localObject == null)
       {
         localObject = new FinderCommentInfo();
-        ((FinderCommentInfo)localObject).username = u.aAm();
-        ((FinderCommentInfo)localObject).nickname = u.aAo();
+        ((FinderCommentInfo)localObject).username = v.aAC();
+        ((FinderCommentInfo)localObject).nickname = v.aAE();
         ((FinderCommentInfo)localObject).headUrl = "";
         paramLinkedList.add(0, localObject);
       }
-      AppMethodBeat.o(204379);
+      AppMethodBeat.o(204997);
       return;
       localObject = null;
     }
@@ -103,25 +104,25 @@ public final class g
   
   private static LinkedList<FinderCommentInfo> am(LinkedList<FinderCommentInfo> paramLinkedList)
   {
-    AppMethodBeat.i(204380);
+    AppMethodBeat.i(204998);
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.addAll((Collection)paramLinkedList);
     an(localLinkedList);
-    AppMethodBeat.o(204380);
+    AppMethodBeat.o(204998);
     return localLinkedList;
   }
   
   public static void an(LinkedList<FinderCommentInfo> paramLinkedList)
   {
-    AppMethodBeat.i(204381);
+    AppMethodBeat.i(204999);
     d.g.b.p.h(paramLinkedList, "newList");
-    com.tencent.mm.ad.c.a(paramLinkedList, (d.g.a.b)e.sKk);
-    AppMethodBeat.o(204381);
+    com.tencent.mm.ac.c.a(paramLinkedList, (d.g.a.b)e.sVx);
+    AppMethodBeat.o(204999);
   }
   
-  private final void cKU()
+  private final void cNy()
   {
-    AppMethodBeat.i(204386);
+    AppMethodBeat.i(205004);
     Object localObject;
     try
     {
@@ -141,27 +142,27 @@ public final class g
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace(TAG, localThrowable, "restoreLocalLikeFeed", new Object[0]);
-      AppMethodBeat.o(204386);
+      ae.printErrStackTrace(TAG, localThrowable, "restoreLocalLikeFeed", new Object[0]);
+      AppMethodBeat.o(205004);
       return;
     }
-    ad.i(com.tencent.mm.plugin.finder.storage.p.TAG, "getAllData size:" + localThrowable.size());
+    ae.i(com.tencent.mm.plugin.finder.storage.p.TAG, "getAllData size:" + localThrowable.size());
     Iterator localIterator = ((Iterable)localThrowable).iterator();
     while (localIterator.hasNext())
     {
       localObject = (com.tencent.mm.plugin.finder.storage.o)localIterator.next();
-      ((Map)this.sKg).put(Long.valueOf(((com.tencent.mm.plugin.finder.storage.o)localObject).field_localId), localObject);
+      ((Map)this.sVt).put(Long.valueOf(((com.tencent.mm.plugin.finder.storage.o)localObject).field_localId), localObject);
     }
-    AppMethodBeat.o(204386);
+    AppMethodBeat.o(205004);
   }
   
   /* Error */
-  public final void a(long paramLong, com.tencent.mm.protocal.protobuf.aqy paramaqy, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final void a(long paramLong, com.tencent.mm.protocal.protobuf.arn paramarn, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 508
+    //   2: ldc_w 511
     //   5: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_3
     //   9: ldc 228
@@ -169,154 +170,154 @@ public final class g
     //   14: getstatic 136	com/tencent/mm/plugin/finder/upload/action/g:TAG	Ljava/lang/String;
     //   17: new 230	java/lang/StringBuilder
     //   20: dup
-    //   21: ldc_w 510
+    //   21: ldc_w 513
     //   24: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   27: lload_1
     //   28: invokevirtual 239	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   31: ldc_w 512
+    //   31: ldc_w 515
     //   34: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: iload 4
     //   39: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   42: ldc_w 514
+    //   42: ldc_w 517
     //   45: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: iload 6
     //   50: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   53: ldc_w 516
+    //   53: ldc_w 519
     //   56: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: aload_0
-    //   60: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sKg	Ljava/util/HashMap;
+    //   60: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sVt	Ljava/util/HashMap;
     //   63: lload_1
     //   64: invokestatic 279	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   67: invokevirtual 519	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   67: invokevirtual 522	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   70: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   73: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 266	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokestatic 266	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   79: iload 4
     //   81: ifeq +192 -> 273
     //   84: aload_0
-    //   85: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sKg	Ljava/util/HashMap;
+    //   85: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sVt	Ljava/util/HashMap;
     //   88: lload_1
     //   89: invokestatic 279	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   92: invokevirtual 519	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   92: invokevirtual 522	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   95: ifeq +34 -> 129
     //   98: aload_0
-    //   99: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sKg	Ljava/util/HashMap;
+    //   99: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sVt	Ljava/util/HashMap;
     //   102: lload_1
     //   103: invokestatic 279	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   106: invokevirtual 520	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   109: checkcast 480	com/tencent/mm/plugin/finder/storage/o
+    //   106: invokevirtual 523	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   109: checkcast 483	com/tencent/mm/plugin/finder/storage/o
     //   112: astore 8
     //   114: aload 8
     //   116: ifnull +13 -> 129
     //   119: aload 8
-    //   121: getfield 524	com/tencent/mm/plugin/finder/storage/o:field_isPrivate	Z
+    //   121: getfield 527	com/tencent/mm/plugin/finder/storage/o:field_isPrivate	Z
     //   124: iload 6
     //   126: if_icmpeq +87 -> 213
-    //   129: new 480	com/tencent/mm/plugin/finder/storage/o
+    //   129: new 483	com/tencent/mm/plugin/finder/storage/o
     //   132: dup
-    //   133: invokespecial 481	com/tencent/mm/plugin/finder/storage/o:<init>	()V
+    //   133: invokespecial 484	com/tencent/mm/plugin/finder/storage/o:<init>	()V
     //   136: astore 8
     //   138: aload 8
     //   140: lload_1
-    //   141: putfield 504	com/tencent/mm/plugin/finder/storage/o:field_localId	J
+    //   141: putfield 507	com/tencent/mm/plugin/finder/storage/o:field_localId	J
     //   144: aload 8
     //   146: aload_3
-    //   147: putfield 528	com/tencent/mm/plugin/finder/storage/o:field_contextObj	Lcom/tencent/mm/protocal/protobuf/aqy;
+    //   147: putfield 531	com/tencent/mm/plugin/finder/storage/o:field_contextObj	Lcom/tencent/mm/protocal/protobuf/arn;
     //   150: aload 8
     //   152: iconst_1
-    //   153: putfield 532	com/tencent/mm/plugin/finder/storage/o:field_likeAction	I
+    //   153: putfield 535	com/tencent/mm/plugin/finder/storage/o:field_likeAction	I
     //   156: aload 8
     //   158: iconst_2
-    //   159: putfield 535	com/tencent/mm/plugin/finder/storage/o:field_scene	I
+    //   159: putfield 538	com/tencent/mm/plugin/finder/storage/o:field_scene	I
     //   162: aload 8
     //   164: iload 5
-    //   166: putfield 538	com/tencent/mm/plugin/finder/storage/o:field_showTips	Z
+    //   166: putfield 541	com/tencent/mm/plugin/finder/storage/o:field_showTips	Z
     //   169: aload 8
     //   171: iload 6
-    //   173: putfield 524	com/tencent/mm/plugin/finder/storage/o:field_isPrivate	Z
+    //   173: putfield 527	com/tencent/mm/plugin/finder/storage/o:field_isPrivate	Z
     //   176: aload_0
-    //   177: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sKg	Ljava/util/HashMap;
+    //   177: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sVt	Ljava/util/HashMap;
     //   180: checkcast 294	java/util/Map
     //   183: lload_1
     //   184: invokestatic 279	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   187: aload 8
-    //   189: invokeinterface 306 3 0
+    //   189: invokeinterface 312 3 0
     //   194: pop
-    //   195: ldc_w 449
-    //   198: invokestatic 455	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-    //   201: checkcast 449	com/tencent/mm/plugin/finder/PluginFinder
-    //   204: invokevirtual 459	com/tencent/mm/plugin/finder/PluginFinder:getLocalLikeFeedStorage	()Lcom/tencent/mm/plugin/finder/storage/p;
+    //   195: ldc_w 452
+    //   198: invokestatic 458	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   201: checkcast 452	com/tencent/mm/plugin/finder/PluginFinder
+    //   204: invokevirtual 462	com/tencent/mm/plugin/finder/PluginFinder:getLocalLikeFeedStorage	()Lcom/tencent/mm/plugin/finder/storage/p;
     //   207: aload 8
-    //   209: invokevirtual 541	com/tencent/mm/plugin/finder/storage/p:a	(Lcom/tencent/mm/plugin/finder/storage/o;)Z
+    //   209: invokevirtual 544	com/tencent/mm/plugin/finder/storage/p:a	(Lcom/tencent/mm/plugin/finder/storage/o;)Z
     //   212: pop
     //   213: getstatic 136	com/tencent/mm/plugin/finder/upload/action/g:TAG	Ljava/lang/String;
     //   216: new 230	java/lang/StringBuilder
     //   219: dup
-    //   220: ldc_w 543
+    //   220: ldc_w 546
     //   223: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   226: lload_1
     //   227: invokevirtual 239	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   230: ldc_w 512
+    //   230: ldc_w 515
     //   233: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   236: iload 4
     //   238: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   241: ldc_w 514
+    //   241: ldc_w 517
     //   244: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   247: iload 6
     //   249: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   252: ldc_w 545
+    //   252: ldc_w 548
     //   255: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 266	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   264: ldc_w 508
+    //   261: invokestatic 266	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   264: ldc_w 511
     //   267: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   270: aload_0
     //   271: monitorexit
     //   272: return
     //   273: aload_0
-    //   274: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sKg	Ljava/util/HashMap;
+    //   274: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sVt	Ljava/util/HashMap;
     //   277: lload_1
     //   278: invokestatic 279	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   281: invokevirtual 519	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   281: invokevirtual 522	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   284: ifeq -71 -> 213
     //   287: aload_0
-    //   288: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sKg	Ljava/util/HashMap;
+    //   288: getfield 193	com/tencent/mm/plugin/finder/upload/action/g:sVt	Ljava/util/HashMap;
     //   291: lload_1
     //   292: invokestatic 279	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   295: invokevirtual 547	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   295: invokevirtual 550	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   298: pop
-    //   299: ldc_w 449
-    //   302: invokestatic 455	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-    //   305: checkcast 449	com/tencent/mm/plugin/finder/PluginFinder
-    //   308: invokevirtual 459	com/tencent/mm/plugin/finder/PluginFinder:getLocalLikeFeedStorage	()Lcom/tencent/mm/plugin/finder/storage/p;
+    //   299: ldc_w 452
+    //   302: invokestatic 458	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   305: checkcast 452	com/tencent/mm/plugin/finder/PluginFinder
+    //   308: invokevirtual 462	com/tencent/mm/plugin/finder/PluginFinder:getLocalLikeFeedStorage	()Lcom/tencent/mm/plugin/finder/storage/p;
     //   311: astore_3
     //   312: aload_3
-    //   313: getfield 465	com/tencent/mm/plugin/finder/storage/p:db	Lcom/tencent/mm/sdk/e/e;
+    //   313: getfield 468	com/tencent/mm/plugin/finder/storage/p:db	Lcom/tencent/mm/sdk/e/e;
     //   316: aload_3
-    //   317: invokevirtual 550	com/tencent/mm/plugin/finder/storage/p:getTableName	()Ljava/lang/String;
-    //   320: ldc_w 552
+    //   317: invokevirtual 553	com/tencent/mm/plugin/finder/storage/p:getTableName	()Ljava/lang/String;
+    //   320: ldc_w 555
     //   323: iconst_1
-    //   324: anewarray 554	java/lang/String
+    //   324: anewarray 557	java/lang/String
     //   327: dup
     //   328: iconst_0
     //   329: lload_1
-    //   330: invokestatic 557	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   330: invokestatic 560	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   333: aastore
-    //   334: invokeinterface 561 4 0
+    //   334: invokeinterface 564 4 0
     //   339: istore 7
-    //   341: getstatic 495	com/tencent/mm/plugin/finder/storage/p:TAG	Ljava/lang/String;
+    //   341: getstatic 498	com/tencent/mm/plugin/finder/storage/p:TAG	Ljava/lang/String;
     //   344: new 230	java/lang/StringBuilder
     //   347: dup
-    //   348: ldc_w 563
+    //   348: ldc_w 566
     //   351: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   354: lload_1
     //   355: invokevirtual 239	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   358: ldc_w 565
+    //   358: ldc_w 568
     //   361: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   364: iload 7
     //   366: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   369: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   372: invokestatic 266	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   372: invokestatic 266	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   375: goto -162 -> 213
     //   378: astore_3
     //   379: aload_0
@@ -327,7 +328,7 @@ public final class g
     //   start	length	slot	name	signature
     //   0	383	0	this	g
     //   0	383	1	paramLong	long
-    //   0	383	3	paramaqy	com.tencent.mm.protocal.protobuf.aqy
+    //   0	383	3	paramarn	com.tencent.mm.protocal.protobuf.arn
     //   0	383	4	paramBoolean1	boolean
     //   0	383	5	paramBoolean2	boolean
     //   0	383	6	paramBoolean3	boolean
@@ -347,25 +348,25 @@ public final class g
   {
     AppMethodBeat.i(167816);
     d.g.b.p.h(paramf, "action");
-    f localf = (f)this.sJQ.get(Long.valueOf(paramf.dtq));
+    f localf = (f)this.sVd.get(Long.valueOf(paramf.duw));
     if (localf != null)
     {
       String str;
       StringBuilder localStringBuilder;
-      if (com.tencent.mm.sdk.platformtools.i.DEBUG)
+      if (j.DEBUG)
       {
         str = TAG;
         localStringBuilder = new StringBuilder("removeLikeCache ").append(paramf).append(" result ");
-        if (paramf.sKa < localf.sKa) {
+        if (paramf.sVn < localf.sVn) {
           break label130;
         }
       }
       label130:
       for (boolean bool = true;; bool = false)
       {
-        ad.i(str, bool);
-        if (paramf.sKa >= localf.sKa) {
-          this.sJQ.remove(Long.valueOf(paramf.dtq));
+        ae.i(str, bool);
+        if (paramf.sVn >= localf.sVn) {
+          this.sVd.remove(Long.valueOf(paramf.duw));
         }
         AppMethodBeat.o(167816);
         return;
@@ -378,28 +379,28 @@ public final class g
   {
     AppMethodBeat.i(167817);
     d.g.b.p.h(parami, "action");
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.sKf.get(Long.valueOf(parami.dtq));
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.sVs.get(Long.valueOf(parami.duw));
     if (localConcurrentHashMap != null)
     {
-      c localc = new c(parami.sKn.cIG(), parami.scene);
+      c localc = new c(parami.sVA.cLl().commentId, parami.scene);
       i locali = (i)localConcurrentHashMap.get(localc);
       if (locali != null)
       {
         String str;
         StringBuilder localStringBuilder;
-        if (com.tencent.mm.sdk.platformtools.i.DEBUG)
+        if (j.DEBUG)
         {
           str = TAG;
           localStringBuilder = new StringBuilder("removeLikeCommentCache ").append(parami).append(" result ");
-          if (parami.sKa < locali.sKa) {
-            break label160;
+          if (parami.sVn < locali.sVn) {
+            break label163;
           }
         }
-        label160:
+        label163:
         for (boolean bool = true;; bool = false)
         {
-          ad.i(str, bool);
-          if (parami.sKa >= locali.sKa) {
+          ae.i(str, bool);
+          if (parami.sVn >= locali.sVn) {
             localConcurrentHashMap.remove(localc);
           }
           AppMethodBeat.o(167817);
@@ -418,7 +419,7 @@ public final class g
     d.g.b.p.h(paramab, "commentObj");
     if (paramLong == 0L)
     {
-      if (paramab.getLikeFlag() == 1)
+      if (paramab.cLl().likeFlag == 1)
       {
         AppMethodBeat.o(167814);
         return true;
@@ -428,49 +429,49 @@ public final class g
     }
     boolean bool;
     Object localObject;
-    if (paramab.getLikeFlag() == 1)
+    if (paramab.cLl().likeFlag == 1)
     {
       bool = true;
-      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cHb().value()).intValue() == 1) {
-        break label287;
+      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cJa().value()).intValue() == 1) {
+        break label299;
       }
-      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (com.tencent.mm.plugin.finder.storage.b.cGm() != 1) {
-        break label287;
+      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (com.tencent.mm.plugin.finder.storage.b.cIj() != 1) {
+        break label299;
       }
-      localObject = (ConcurrentHashMap)this.sKf.get(Long.valueOf(paramLong));
+      localObject = (ConcurrentHashMap)this.sVs.get(Long.valueOf(paramLong));
       if (localObject == null) {
-        break label279;
+        break label291;
       }
-      localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cIG(), 1));
+      localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cLl().commentId, 1));
       if (localObject == null) {
-        break label279;
+        break label291;
       }
-      bool = ((i)localObject).sKc;
-      localObject = "" + " get from cache " + ((i)localObject).sKc + ' ';
+      bool = ((i)localObject).sVp;
+      localObject = "" + " get from cache " + ((i)localObject).sVp + ' ';
     }
     for (;;)
     {
-      if (com.tencent.mm.sdk.platformtools.i.DEBUG) {
-        ad.i(TAG, "isCommentLike test " + paramLong + " commentObj:" + paramab + " cache:" + (String)localObject + " likeFlag:" + paramab.getLikeFlag() + " scene:" + paramInt + " result:" + bool);
+      if (j.DEBUG) {
+        ae.i(TAG, "isCommentLike test " + paramLong + " commentObj:" + paramab + " cache:" + (String)localObject + " likeFlag:" + paramab.cLl().likeFlag + " scene:" + paramInt + " result:" + bool);
       }
       AppMethodBeat.o(167814);
       return bool;
       bool = false;
       break;
-      label279:
+      label291:
       localObject = "";
       continue;
-      label287:
-      localObject = (ConcurrentHashMap)this.sKf.get(Long.valueOf(paramLong));
+      label299:
+      localObject = (ConcurrentHashMap)this.sVs.get(Long.valueOf(paramLong));
       if (localObject != null)
       {
-        localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cIG(), paramInt));
+        localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cLl().commentId, paramInt));
         if (localObject != null)
         {
-          bool = ((i)localObject).sKc;
-          localObject = "" + " get from cache " + ((i)localObject).sKc + ' ';
+          bool = ((i)localObject).sVp;
+          localObject = "" + " get from cache " + ((i)localObject).sVp + ' ';
           continue;
         }
       }
@@ -484,87 +485,87 @@ public final class g
     d.g.b.p.h(paramab, "commentObj");
     if (paramLong == 0L)
     {
-      paramInt = paramab.getLikeCount();
+      paramInt = paramab.cLl().likeCount;
       AppMethodBeat.o(167815);
       return paramInt;
     }
     boolean bool1;
     Object localObject;
     boolean bool2;
-    if (paramab.getLikeFlag() == 1)
+    if (paramab.cLl().likeFlag == 1)
     {
       bool1 = true;
-      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cHb().value()).intValue() == 1) {
-        break label175;
+      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cJa().value()).intValue() == 1) {
+        break label187;
       }
-      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
-      if (com.tencent.mm.plugin.finder.storage.b.cGm() != 1) {
-        break label175;
+      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
+      if (com.tencent.mm.plugin.finder.storage.b.cIj() != 1) {
+        break label187;
       }
-      localObject = (ConcurrentHashMap)this.sKf.get(Long.valueOf(paramLong));
+      localObject = (ConcurrentHashMap)this.sVs.get(Long.valueOf(paramLong));
       if (localObject == null) {
-        break label168;
+        break label180;
       }
-      localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cIG(), 1));
+      localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cLl().commentId, 1));
       if (localObject == null) {
-        break label168;
+        break label180;
       }
-      bool2 = ((i)localObject).sKc;
+      bool2 = ((i)localObject).sVp;
     }
     for (;;)
     {
       if ((!bool1) || (bool1 == bool2)) {
-        break label241;
+        break label256;
       }
-      paramInt = paramab.getLikeCount();
+      paramInt = paramab.cLl().likeCount;
       AppMethodBeat.o(167815);
       return paramInt - 1;
       bool1 = false;
       break;
-      label168:
+      label180:
       bool2 = bool1;
       continue;
-      label175:
-      localObject = (ConcurrentHashMap)this.sKf.get(Long.valueOf(paramLong));
+      label187:
+      localObject = (ConcurrentHashMap)this.sVs.get(Long.valueOf(paramLong));
       if (localObject != null)
       {
-        localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cIG(), paramInt));
+        localObject = (i)((ConcurrentHashMap)localObject).get(new c(paramab.cLl().commentId, paramInt));
         if (localObject != null)
         {
-          bool2 = ((i)localObject).sKc;
+          bool2 = ((i)localObject).sVp;
           continue;
         }
       }
       bool2 = bool1;
     }
-    label241:
+    label256:
     if ((!bool1) && (bool1 != bool2))
     {
-      paramInt = paramab.getLikeCount();
+      paramInt = paramab.cLl().likeCount;
       AppMethodBeat.o(167815);
       return paramInt + 1;
     }
-    paramInt = paramab.getLikeCount();
+    paramInt = paramab.cLl().likeCount;
     AppMethodBeat.o(167815);
     return paramInt;
   }
   
-  public final void cKB()
+  public final void cNf()
   {
     AppMethodBeat.i(167818);
     e locale;
     boolean bool;
     do
     {
-      if (this.sJP.size() <= 0)
+      if (this.sVc.size() <= 0)
       {
         AppMethodBeat.o(167818);
         return;
       }
-      locale = (e)this.sJP.poll();
+      locale = (e)this.sVc.poll();
       bool = locale.isValid();
-      ad.i(TAG, "tryNext isValid:" + bool + " action:" + locale + " size:" + this.sJP.size());
+      ae.i(TAG, "tryNext isValid:" + bool + " action:" + locale + " size:" + this.sVc.size());
     } while (!bool);
     d.g.b.p.g(locale, "action");
     a(locale);
@@ -575,7 +576,7 @@ public final class g
   {
     boolean bool3 = true;
     boolean bool2 = true;
-    AppMethodBeat.i(204375);
+    AppMethodBeat.i(204993);
     d.g.b.p.h(paramFinderObject, "feed");
     boolean bool1;
     if (paramFinderObject.id == 0L)
@@ -590,7 +591,7 @@ public final class g
       for (;;)
       {
         paramFinderObject = new d.o(Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-        AppMethodBeat.o(204375);
+        AppMethodBeat.o(204993);
         return paramFinderObject;
         bool1 = false;
         break;
@@ -608,17 +609,17 @@ public final class g
         break label271;
       }
       bool2 = bool3;
-      localObject = (f)this.sJQ.get(Long.valueOf(paramFinderObject.id));
+      localObject = (f)this.sVd.get(Long.valueOf(paramFinderObject.id));
       if (localObject != null)
       {
-        bool1 = ((f)localObject).sKc;
-        bool2 = ((f)localObject).sKd;
+        bool1 = ((f)localObject).sVp;
+        bool2 = ((f)localObject).sVq;
       }
-      if (com.tencent.mm.sdk.platformtools.i.DEBUG)
+      if (j.DEBUG)
       {
         str = TAG;
         localStringBuilder = new StringBuilder("isLike test ").append(paramFinderObject.id).append(" isLike:");
-        localObject = (f)this.sJQ.get(Long.valueOf(paramFinderObject.id));
+        localObject = (f)this.sVd.get(Long.valueOf(paramFinderObject.id));
         if (localObject == null) {
           break label276;
         }
@@ -626,11 +627,11 @@ public final class g
     }
     label271:
     label276:
-    for (Object localObject = Boolean.valueOf(((f)localObject).sKc);; localObject = null)
+    for (Object localObject = Boolean.valueOf(((f)localObject).sVp);; localObject = null)
     {
-      ad.i(str, localObject + " likeFlag:" + paramFinderObject.likeFlag + " result:" + bool1);
+      ae.i(str, localObject + " likeFlag:" + paramFinderObject.likeFlag + " result:" + bool1);
       paramFinderObject = new d.o(Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      AppMethodBeat.o(204375);
+      AppMethodBeat.o(204993);
       return paramFinderObject;
       bool1 = false;
       break;
@@ -654,13 +655,13 @@ public final class g
     if (paramFinderObject.likeFlag != 0)
     {
       bool1 = true;
-      localf = (f)this.sJQ.get(Long.valueOf(paramFinderObject.id));
+      localf = (f)this.sVd.get(Long.valueOf(paramFinderObject.id));
       if (localf == null) {
         break label105;
       }
     }
     label105:
-    for (boolean bool2 = localf.sKc;; bool2 = bool1)
+    for (boolean bool2 = localf.sVp;; bool2 = bool1)
     {
       if ((!bool1) || (true == bool2)) {
         break label111;
@@ -686,22 +687,22 @@ public final class g
   public final int m(FinderObject paramFinderObject)
   {
     int j = 1;
-    AppMethodBeat.i(204376);
+    AppMethodBeat.i(204994);
     d.g.b.p.h(paramFinderObject, "feed");
     if (paramFinderObject.id == 0L)
     {
       i = paramFinderObject.friendLikeCount;
-      AppMethodBeat.o(204376);
+      AppMethodBeat.o(204994);
       return i;
     }
     if (paramFinderObject.likeFlag == 1)
     {
       i = 1;
-      f localf = (f)this.sJQ.get(Long.valueOf(paramFinderObject.id));
+      f localf = (f)this.sVd.get(Long.valueOf(paramFinderObject.id));
       if (localf == null) {
         break label121;
       }
-      if ((!localf.sKc) || (localf.sKd)) {
+      if ((!localf.sVp) || (localf.sVq)) {
         break label116;
       }
     }
@@ -711,7 +712,7 @@ public final class g
         break label126;
       }
       i = paramFinderObject.friendLikeCount;
-      AppMethodBeat.o(204376);
+      AppMethodBeat.o(204994);
       return i - 1;
       i = 0;
       break;
@@ -725,35 +726,35 @@ public final class g
     if ((i == 0) && (i != j))
     {
       i = paramFinderObject.friendLikeCount;
-      AppMethodBeat.o(204376);
+      AppMethodBeat.o(204994);
       return i + 1;
     }
     int i = paramFinderObject.friendLikeCount;
-    AppMethodBeat.o(204376);
+    AppMethodBeat.o(204994);
     return i;
   }
   
   public final LinkedList<FinderCommentInfo> n(FinderObject paramFinderObject)
   {
     int j = 1;
-    AppMethodBeat.i(204377);
+    AppMethodBeat.i(204995);
     d.g.b.p.h(paramFinderObject, "feed");
     if (paramFinderObject.id == 0L)
     {
       paramFinderObject = paramFinderObject.likeList;
       d.g.b.p.g(paramFinderObject, "feed.likeList");
-      AppMethodBeat.o(204377);
+      AppMethodBeat.o(204995);
       return paramFinderObject;
     }
     int i;
     if (paramFinderObject.likeFlag == 1)
     {
       i = 1;
-      f localf = (f)this.sJQ.get(Long.valueOf(paramFinderObject.id));
+      f localf = (f)this.sVd.get(Long.valueOf(paramFinderObject.id));
       if (localf == null) {
         break label138;
       }
-      if ((!localf.sKc) || (localf.sKd)) {
+      if ((!localf.sVp) || (localf.sVq)) {
         break label133;
       }
     }
@@ -765,7 +766,7 @@ public final class g
       paramFinderObject = paramFinderObject.likeList;
       d.g.b.p.g(paramFinderObject, "feed.likeList");
       paramFinderObject = am(paramFinderObject);
-      AppMethodBeat.o(204377);
+      AppMethodBeat.o(204995);
       return paramFinderObject;
       i = 0;
       break;
@@ -781,37 +782,37 @@ public final class g
       paramFinderObject = paramFinderObject.likeList;
       d.g.b.p.g(paramFinderObject, "feed.likeList");
       paramFinderObject = ak(paramFinderObject);
-      AppMethodBeat.o(204377);
+      AppMethodBeat.o(204995);
       return paramFinderObject;
     }
     paramFinderObject = paramFinderObject.likeList;
     d.g.b.p.g(paramFinderObject, "feed.likeList");
-    AppMethodBeat.o(204377);
+    AppMethodBeat.o(204995);
     return paramFinderObject;
   }
   
-  public final d.o<Boolean, Boolean> xm(long paramLong)
+  public final d.o<Boolean, Boolean> xD(long paramLong)
   {
-    AppMethodBeat.i(204384);
-    boolean bool2 = this.sKg.containsKey(Long.valueOf(paramLong));
-    Object localObject = (com.tencent.mm.plugin.finder.storage.o)this.sKg.get(Long.valueOf(paramLong));
+    AppMethodBeat.i(205002);
+    boolean bool2 = this.sVt.containsKey(Long.valueOf(paramLong));
+    Object localObject = (com.tencent.mm.plugin.finder.storage.o)this.sVt.get(Long.valueOf(paramLong));
     if (localObject != null) {}
     for (boolean bool1 = ((com.tencent.mm.plugin.finder.storage.o)localObject).field_isPrivate;; bool1 = false)
     {
-      ad.i(TAG, "isLocalFeedLike " + paramLong + ", " + bool2);
+      ae.i(TAG, "isLocalFeedLike " + paramLong + ", " + bool2);
       localObject = new d.o(Boolean.valueOf(bool2), Boolean.valueOf(bool1));
-      AppMethodBeat.o(204384);
+      AppMethodBeat.o(205002);
       return localObject;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr;", "getINSTANCE", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr;", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr;", "getINSTANCE", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr;", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "", "onLikeFail", "", "errType", "", "errCode", "errMsg", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "", "onLikeFail", "", "errType", "", "errCode", "errMsg", "", "plugin-finder_release"})
   public static abstract interface b {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$KeyData;", "", "id", "", "scene", "", "(JI)V", "getId", "()J", "getScene", "()I", "equals", "", "other", "hashCode", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$KeyData;", "", "id", "", "scene", "", "(JI)V", "getId", "()J", "getScene", "()I", "equals", "", "other", "hashCode", "plugin-finder_release"})
   public static final class c
   {
     private final long id;
@@ -847,25 +848,25 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/action/LikeActionMgr$doPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/upload/action/LikeActionMgr$doPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
   public static final class d
     implements com.tencent.mm.loader.g.f<h>
   {
     d(e parame) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "invoke"})
   static final class e
     extends q
     implements d.g.a.b<FinderCommentInfo, Boolean>
   {
-    public static final e sKk;
+    public static final e sVx;
     
     static
     {
-      AppMethodBeat.i(204374);
-      sKk = new e();
-      AppMethodBeat.o(204374);
+      AppMethodBeat.i(204992);
+      sVx = new e();
+      AppMethodBeat.o(204992);
     }
     
     e()
@@ -874,7 +875,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -883,7 +884,7 @@ public final class g
     public final void run()
     {
       AppMethodBeat.i(167811);
-      this.sKj.cKB();
+      this.sVw.cNf();
       AppMethodBeat.o(167811);
     }
   }

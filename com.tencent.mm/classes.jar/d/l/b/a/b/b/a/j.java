@@ -14,46 +14,46 @@ import java.util.Map;
 public final class j
   implements c
 {
-  final d.l.b.a.b.a.g MVT;
-  final b MVU;
-  private final Map<d.l.b.a.b.f.f, d.l.b.a.b.j.b.g<?>> MVV;
-  private final d.f okp;
+  private final d.f NsY;
+  final d.l.b.a.b.a.g NsZ;
+  final b Nta;
+  private final Map<d.l.b.a.b.f.f, d.l.b.a.b.j.b.g<?>> Ntb;
   
   public j(d.l.b.a.b.a.g paramg, b paramb, Map<d.l.b.a.b.f.f, ? extends d.l.b.a.b.j.b.g<?>> paramMap)
   {
     AppMethodBeat.i(56960);
-    this.MVT = paramg;
-    this.MVU = paramb;
-    this.MVV = paramMap;
-    this.okp = d.g.a(k.MKb, (a)new a(this));
+    this.NsZ = paramg;
+    this.Nta = paramb;
+    this.Ntb = paramMap;
+    this.NsY = d.g.a(k.Nhe, (a)new a(this));
     AppMethodBeat.o(56960);
   }
   
-  public final an ghI()
+  public final an gmk()
   {
     AppMethodBeat.i(56959);
-    an localan = an.MUX;
+    an localan = an.Nsc;
     p.g(localan, "SourceElement.NO_SOURCE");
     AppMethodBeat.o(56959);
     return localan;
   }
   
-  public final Map<d.l.b.a.b.f.f, d.l.b.a.b.j.b.g<?>> gjK()
+  public final b gnI()
   {
-    return this.MVV;
+    return this.Nta;
   }
   
-  public final b gjg()
-  {
-    return this.MVU;
-  }
-  
-  public final ab gju()
+  public final ab gnW()
   {
     AppMethodBeat.i(56958);
-    ab localab = (ab)this.okp.getValue();
+    ab localab = (ab)this.NsY.getValue();
     AppMethodBeat.o(56958);
     return localab;
+  }
+  
+  public final Map<d.l.b.a.b.f.f, d.l.b.a.b.j.b.g<?>> gom()
+  {
+    return this.Ntb;
   }
   
   static final class a
@@ -68,7 +68,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.j
  * JD-Core Version:    0.7.0.1
  */

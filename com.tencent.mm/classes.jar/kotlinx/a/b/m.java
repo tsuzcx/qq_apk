@@ -5,25 +5,25 @@ import d.g.b.f;
 import kotlinx.a.a.e;
 import kotlinx.a.h;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/CharArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/CharArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/CharArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/CharArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
 public final class m
   extends ax<Character, char[], l>
   implements h<char[]>
 {
-  public static final m NMi;
+  public static final m Ojo;
   
   static
   {
-    AppMethodBeat.i(191144);
-    NMi = new m();
-    AppMethodBeat.o(191144);
+    AppMethodBeat.i(199732);
+    Ojo = new m();
+    AppMethodBeat.o(199732);
   }
   
   private m()
   {
-    super(e.a(f.MLD));
-    AppMethodBeat.i(191143);
-    AppMethodBeat.o(191143);
+    super(e.a(f.NiG));
+    AppMethodBeat.i(199731);
+    AppMethodBeat.o(199731);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jk;
+import com.tencent.mm.g.a.jl;
 import com.tencent.mm.sdk.b.c;
 
 final class g$3
-  extends c<jk>
+  extends c<jl>
 {
   g$3(g paramg)
   {
     AppMethodBeat.i(161760);
-    this.__eventId = jk.class.getName().hashCode();
+    this.__eventId = jl.class.getName().hashCode();
     AppMethodBeat.o(161760);
   }
 }

@@ -3,38 +3,37 @@ package com.tencent.xweb.xwalk.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.util.d;
 import com.tencent.xweb.util.g;
-import com.tencent.xweb.xwalk.updater.SchedulerConfig;
 import java.io.File;
 import org.xwalk.core.Log;
 
 public final class c
   extends f
 {
-  public final int a(SchedulerConfig paramSchedulerConfig)
+  public final int a(com.tencent.xweb.xwalk.updater.c paramc)
   {
-    AppMethodBeat.i(197118);
-    Log.i("FullScreenVideo", "performInstall version " + paramSchedulerConfig.version);
-    if (d.nh(paramSchedulerConfig.path, paramSchedulerConfig.Mys))
+    AppMethodBeat.i(217436);
+    Log.i("FullScreenVideo", "performInstall version " + paramc.version);
+    if (d.nn(paramc.path, paramc.MVw))
     {
-      aiJ(paramSchedulerConfig.version);
-      Log.i("FullScreenVideo", "performInstall " + this.MxJ + " success");
-      AppMethodBeat.o(197118);
+      ajt(paramc.version);
+      Log.i("FullScreenVideo", "performInstall " + this.MUN + " success");
+      AppMethodBeat.o(217436);
       return 0;
     }
     Log.e("FullScreenVideo", "performInstall failed, md5 not match");
-    paramSchedulerConfig = new File(paramSchedulerConfig.path);
-    if (paramSchedulerConfig.exists()) {
-      paramSchedulerConfig.delete();
+    paramc = new File(paramc.path);
+    if (paramc.exists()) {
+      paramc.delete();
     }
-    g.jdMethod_do("FullScreenVideo", false);
-    AppMethodBeat.o(197118);
+    g.dr("FullScreenVideo", false);
+    AppMethodBeat.o(217436);
     return -1;
   }
   
-  public final String bq(int paramInt, boolean paramBoolean)
+  public final String bz(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(157176);
-    String str = aiK(paramInt);
+    String str = aju(paramInt);
     if ((str == null) || (str.isEmpty()))
     {
       AppMethodBeat.o(157176);
@@ -51,21 +50,21 @@ public final class c
     return str;
   }
   
-  public final boolean gdi()
+  public final String getPluginName()
+  {
+    return "FullScreenVideo";
+  }
+  
+  public final boolean ghK()
   {
     return true;
   }
   
-  public final void gdj()
+  public final void ghL()
   {
     AppMethodBeat.i(157178);
     Log.i("FullScreenVideo", "checkVersionFiles, skip");
     AppMethodBeat.o(157178);
-  }
-  
-  public final String getPluginName()
-  {
-    return "FullScreenVideo";
   }
 }
 

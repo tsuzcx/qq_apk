@@ -8,13 +8,22 @@ public abstract class gk
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fva = "tableHash".hashCode();
-  private static final int fvb = "tableSQLMD5".hashCode();
+  private static final int eQD = "conRemark".hashCode();
+  private static final int eQN = "encryptUsername".hashCode();
+  private static final int fwV = "contactLabels".hashCode();
+  private static final int fwW = "conDescription".hashCode();
+  private static final int fwX = "conPhone".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public int field_tableHash;
-  public String field_tableSQLMD5;
-  private boolean fuY = true;
-  private boolean fuZ = true;
+  private boolean eQl = true;
+  private boolean eQv = true;
+  public String field_conDescription;
+  public String field_conPhone;
+  public String field_conRemark;
+  public String field_contactLabels;
+  public String field_encryptUsername;
+  private boolean fwS = true;
+  private boolean fwT = true;
+  private boolean fwU = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +38,11 @@ public abstract class gk
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fva != k) {
+      if (eQN != k) {
         break label65;
       }
-      this.field_tableHash = paramCursor.getInt(i);
-      this.fuY = true;
+      this.field_encryptUsername = paramCursor.getString(i);
+      this.eQv = true;
     }
     for (;;)
     {
@@ -41,8 +50,14 @@ public abstract class gk
       break label20;
       break;
       label65:
-      if (fvb == k) {
-        this.field_tableSQLMD5 = paramCursor.getString(i);
+      if (eQD == k) {
+        this.field_conRemark = paramCursor.getString(i);
+      } else if (fwV == k) {
+        this.field_contactLabels = paramCursor.getString(i);
+      } else if (fwW == k) {
+        this.field_conDescription = paramCursor.getString(i);
+      } else if (fwX == k) {
+        this.field_conPhone = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +67,35 @@ public abstract class gk
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fuY) {
-      localContentValues.put("tableHash", Integer.valueOf(this.field_tableHash));
+    if (this.field_encryptUsername == null) {
+      this.field_encryptUsername = "";
     }
-    if (this.fuZ) {
-      localContentValues.put("tableSQLMD5", this.field_tableSQLMD5);
+    if (this.eQv) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
+    }
+    if (this.field_conRemark == null) {
+      this.field_conRemark = "";
+    }
+    if (this.eQl) {
+      localContentValues.put("conRemark", this.field_conRemark);
+    }
+    if (this.field_contactLabels == null) {
+      this.field_contactLabels = "";
+    }
+    if (this.fwS) {
+      localContentValues.put("contactLabels", this.field_contactLabels);
+    }
+    if (this.field_conDescription == null) {
+      this.field_conDescription = "";
+    }
+    if (this.fwT) {
+      localContentValues.put("conDescription", this.field_conDescription);
+    }
+    if (this.field_conPhone == null) {
+      this.field_conPhone = "";
+    }
+    if (this.fwU) {
+      localContentValues.put("conPhone", this.field_conPhone);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -4,38 +4,47 @@ import android.app.ActivityManager.MemoryInfo;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import java.util.ArrayList;
+import java.util.Map;
 
 public final class b
 {
-  private static int wJS = 0;
-  private static int wJT = 0;
-  private static int wJU = 0;
-  private static int wJV = 0;
-  private static int wJW = 0;
-  private static boolean wJX = false;
+  private static int wZD = 0;
+  private static int wZE = 0;
+  private static int wZF = 0;
+  private static int wZG = 0;
+  private static int wZH = 0;
+  private static boolean wZI = false;
+  
+  private static void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2, long paramLong6, long paramLong7)
+  {
+    AppMethodBeat.i(215448);
+    e.ywz.f(20731, new Object[] { Integer.valueOf(paramInt1), ak.getProcessName(), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), paramString, Integer.valueOf(paramInt2), Long.valueOf(paramLong6), Long.valueOf(paramLong7) });
+    AppMethodBeat.o(215448);
+  }
   
   private static void a(c.a parama)
   {
-    AppMethodBeat.i(211776);
+    AppMethodBeat.i(215446);
     int i;
-    if (aj.cmR()) {
+    if (ak.coh()) {
       i = 1161;
     }
     while (i <= 0)
     {
-      AppMethodBeat.o(211776);
+      AppMethodBeat.o(215446);
       return;
-      if (aj.isAppBrandProcess()) {
+      if (ak.isAppBrandProcess()) {
         i = 1162;
-      } else if (aj.fkI()) {
+      } else if (ak.foC()) {
         i = 1163;
-      } else if (aj.fkG()) {
+      } else if (ak.foA()) {
         i = 1164;
-      } else if (aj.fkJ()) {
+      } else if (ak.foD()) {
         i = 1165;
       } else {
         i = -1;
@@ -52,79 +61,73 @@ public final class b
     ((IDKey)localObject2).SetValue(1L);
     int j;
     long l1;
-    label235:
+    label224:
     long l2;
-    label303:
+    label281:
     long l3;
-    label380:
+    label340:
+    int i2;
+    label399:
     int k;
-    label444:
-    label495:
+    label452:
     long l4;
-    if (i.hgJ)
+    if (j.hjx)
     {
       j = 254;
       ((IDKey)localObject2).SetKey(j);
       ((ArrayList)localObject1).add(localObject2);
-      l1 = parama.wKj - parama.wKk;
-      if (l1 > 262144000L) {
-        wJS += 1;
-      }
+      l1 = parama.wZU - parama.wZV;
+      yO(l1);
       localObject2 = new IDKey();
       ((IDKey)localObject2).SetID(i);
       ((IDKey)localObject2).SetValue(1L);
       if (l1 >= 104857600L) {
-        break label833;
+        break label782;
       }
       ((IDKey)localObject2).SetKey(1);
       ((ArrayList)localObject1).add(localObject2);
-      l2 = parama.wKh;
-      if (l2 > 524288000L) {
-        wJT += 1;
-      }
+      l2 = parama.wZS;
+      yP(l2);
       localObject2 = new IDKey();
       ((IDKey)localObject2).SetID(i);
       ((IDKey)localObject2).SetValue(1L);
       if (l2 >= 104857600L) {
-        break label1010;
+        break label959;
       }
       ((IDKey)localObject2).SetKey(33);
       ((ArrayList)localObject1).add(localObject2);
-      l3 = parama.wKf;
-      if ((!i.hgJ) && (l3 > 3879731.2000000002D)) {
-        wJU += 1;
-      }
+      l3 = parama.wZQ;
+      yQ(l3);
       localObject2 = new IDKey();
       ((IDKey)localObject2).SetID(i);
       ((IDKey)localObject2).SetValue(1L);
       if (l3 >= 1572864.0D) {
-        break label1191;
+        break label1140;
       }
       ((IDKey)localObject2).SetKey(65);
       ((ArrayList)localObject1).add(localObject2);
-      k = parama.wKq;
-      if (k > 1024000) {
-        wJV += 1;
-      }
+      i2 = parama.xab;
+      yR(i2);
       localObject2 = new IDKey();
       ((IDKey)localObject2).SetID(i);
       ((IDKey)localObject2).SetValue(1L);
-      if (k >= 102400) {
-        break label1542;
+      if (i2 >= 102400) {
+        break label1491;
       }
-      if (!i.hgJ) {
-        break label1536;
+      if (!j.hjx) {
+        break label1485;
       }
       i = 154;
       ((IDKey)localObject2).SetKey(i);
       ((ArrayList)localObject1).add(localObject2);
-      if (aj.cmR())
+      k = 0;
+      if (ak.coh())
       {
         localObject2 = new IDKey();
         ((IDKey)localObject2).SetID(1308);
         ((IDKey)localObject2).SetValue(1L);
-        if (!i.hgJ) {
-          break label1851;
+        if (!j.hjx) {
+          break label1810;
         }
         i = 1;
         ((IDKey)localObject2).SetKey(i);
@@ -132,79 +135,79 @@ public final class b
         localObject2 = new IDKey();
         ((IDKey)localObject2).SetID(1308);
         ((IDKey)localObject2).SetValue(1L);
-        i = parama.wKr;
-        if (i > 2097152) {
-          wJW += 1;
+        k = parama.xac;
+        yS(k);
+        if (k >= 102400) {
+          break label1820;
         }
-        if (i >= 102400) {
-          break label1861;
-        }
-        if (!i.hgJ) {
-          break label1856;
+        if (!j.hjx) {
+          break label1815;
         }
         i = 42;
-        label566:
+        label515:
         ((IDKey)localObject2).SetKey(i);
         ((ArrayList)localObject1).add(localObject2);
         localObject2 = new IDKey();
         ((IDKey)localObject2).SetID(1308);
         ((IDKey)localObject2).SetValue(1L);
-        l4 = parama.wKp.availMem;
+        l4 = parama.xaa.availMem;
         if (l4 >= 104857600L) {
-          break label2278;
+          break label2242;
         }
-        if (!i.hgJ) {
-          break label2272;
+        if (!j.hjx) {
+          break label2236;
         }
         i = 113;
-        label630:
+        label579:
         ((IDKey)localObject2).SetKey(i);
         ((ArrayList)localObject1).add(localObject2);
       }
-      e.ygI.b((ArrayList)localObject1, false);
+      e.ywz.b((ArrayList)localObject1, false);
       j = 0;
-      if (wJS >= 3) {
+      if (wZD >= 3) {
         j = 1;
       }
       i = j;
-      if (wJT >= 3) {
+      if (wZE >= 3) {
         i = j | 0x2;
       }
       j = i;
-      if (wJU >= 3) {
+      if (wZF >= 3) {
         j = i | 0x4;
       }
       i = j;
-      if (wJV >= 3) {
+      if (wZG >= 3) {
         i = j | 0x8;
       }
-      if (wJW < 3) {
-        break label2665;
+      if (wZH < 3) {
+        break label2806;
       }
       i |= 0x10;
     }
-    label833:
-    label1861:
-    label2272:
-    label2278:
-    label2665:
+    label782:
+    label959:
+    label1140:
+    label2806:
     for (;;)
     {
-      if ((i != 0) && (!wJX))
+      int m;
+      int n;
+      int i1;
+      if ((i != 0) && (!wZI))
       {
         localObject1 = new StringBuilder();
         if ((i & 0x10) == 16)
         {
           ((StringBuilder)localObject1).append("allProcess:");
-          localObject2 = parama.wKs;
-          int m = localObject2.length;
+          localObject2 = parama.xad;
+          m = localObject2.length;
           j = 0;
           for (;;)
           {
             if (j < m)
             {
               Object localObject3 = localObject2[j];
-              ((StringBuilder)localObject1).append(localObject3.pid).append("-").append(localObject3.processName).append("-pss:").append(localObject3.wKq).append(";");
+              ((StringBuilder)localObject1).append(localObject3.pid).append("-").append(localObject3.processName).append("-pss:").append(localObject3.xab).append(";");
               j += 1;
               continue;
               j = 255;
@@ -212,191 +215,281 @@ public final class b
               if (l1 < 209715200L)
               {
                 ((IDKey)localObject2).SetKey(2);
-                break label235;
+                break label224;
               }
               if (l1 < 314572800L)
               {
                 ((IDKey)localObject2).SetKey(3);
-                break label235;
+                break label224;
               }
               if (l1 < 419430400L)
               {
                 ((IDKey)localObject2).SetKey(4);
-                break label235;
+                break label224;
               }
               if (l1 < 524288000L)
               {
                 ((IDKey)localObject2).SetKey(5);
-                break label235;
+                break label224;
               }
               if (l1 < 629145600L)
               {
                 ((IDKey)localObject2).SetKey(6);
-                break label235;
+                break label224;
               }
               if (l1 < 734003200L)
               {
                 ((IDKey)localObject2).SetKey(7);
-                break label235;
+                break label224;
               }
               if (l1 < 838860800L)
               {
                 ((IDKey)localObject2).SetKey(8);
-                break label235;
+                break label224;
               }
               if (l1 < 943718400L)
               {
                 ((IDKey)localObject2).SetKey(9);
-                break label235;
+                break label224;
               }
               if (l1 < 1048576000L)
               {
                 ((IDKey)localObject2).SetKey(10);
-                break label235;
+                break label224;
               }
               ((IDKey)localObject2).SetKey(11);
-              break label235;
-              label1010:
+              break label224;
               if (l2 < 209715200L)
               {
                 ((IDKey)localObject2).SetKey(34);
-                break label303;
+                break label281;
               }
               if (l2 < 314572800L)
               {
                 ((IDKey)localObject2).SetKey(35);
-                break label303;
+                break label281;
               }
               if (l2 < 419430400L)
               {
                 ((IDKey)localObject2).SetKey(36);
-                break label303;
+                break label281;
               }
               if (l2 < 524288000L)
               {
                 ((IDKey)localObject2).SetKey(37);
-                break label303;
+                break label281;
               }
               if (l2 < 629145600L)
               {
                 ((IDKey)localObject2).SetKey(38);
-                break label303;
+                break label281;
               }
               if (l2 < 734003200L)
               {
                 ((IDKey)localObject2).SetKey(39);
-                break label303;
+                break label281;
               }
               if (l2 < 838860800L)
               {
                 ((IDKey)localObject2).SetKey(40);
-                break label303;
+                break label281;
               }
               if (l2 < 943718400L)
               {
                 ((IDKey)localObject2).SetKey(41);
-                break label303;
+                break label281;
               }
               if (l2 < 1048576000L)
               {
                 ((IDKey)localObject2).SetKey(42);
-                break label303;
+                break label281;
               }
               ((IDKey)localObject2).SetKey(43);
-              break label303;
+              break label281;
               if (l3 < 2097152L)
               {
                 ((IDKey)localObject2).SetKey(66);
-                break label380;
+                break label340;
               }
               if (l3 < 2621440.0D)
               {
                 ((IDKey)localObject2).SetKey(67);
-                break label380;
+                break label340;
               }
               if (l3 < 3145728L)
               {
                 ((IDKey)localObject2).SetKey(68);
-                break label380;
+                break label340;
               }
               if (l3 < 3670016.0D)
               {
                 ((IDKey)localObject2).SetKey(69);
-                break label380;
+                break label340;
               }
               if (l3 < 4194304L)
               {
                 ((IDKey)localObject2).SetKey(70);
-                break label380;
+                break label340;
               }
               if (l3 < 4718592.0D)
               {
                 ((IDKey)localObject2).SetKey(71);
-                break label380;
+                break label340;
               }
               if (l3 < 5242880L)
               {
                 ((IDKey)localObject2).SetKey(72);
-                break label380;
+                break label340;
               }
               if (l3 < 5767168.0D)
               {
                 ((IDKey)localObject2).SetKey(73);
-                break label380;
+                break label340;
               }
               if (l3 < 6291456.0D)
               {
                 ((IDKey)localObject2).SetKey(74);
-                break label380;
+                break label340;
               }
               if (l3 < 6815744.0D)
               {
                 ((IDKey)localObject2).SetKey(75);
-                break label380;
+                break label340;
               }
               if (l3 < 7340032.0D)
               {
                 ((IDKey)localObject2).SetKey(76);
-                break label380;
+                break label340;
               }
               if (l3 < 7864320.0D)
               {
                 ((IDKey)localObject2).SetKey(77);
-                break label380;
+                break label340;
               }
               if (l3 < 8388608.0D)
               {
                 ((IDKey)localObject2).SetKey(78);
-                break label380;
+                break label340;
               }
               if (l3 < 8912896.0D)
               {
                 ((IDKey)localObject2).SetKey(79);
-                break label380;
+                break label340;
               }
               if (l3 < 9437184.0D)
               {
                 ((IDKey)localObject2).SetKey(80);
-                break label380;
+                break label340;
               }
               if (l3 < 9961472.0D)
               {
                 ((IDKey)localObject2).SetKey(81);
-                break label380;
+                break label340;
               }
               if (l3 < 10485760L)
               {
                 ((IDKey)localObject2).SetKey(82);
-                break label380;
+                break label340;
               }
               ((IDKey)localObject2).SetKey(83);
-              break label380;
+              break label340;
               i = 122;
-              break label444;
+              break label399;
+              if (i2 < 204800)
+              {
+                if (j.hjx) {}
+                for (i = 155;; i = 123)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 307200)
+              {
+                if (j.hjx) {}
+                for (i = 156;; i = 124)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 409600)
+              {
+                if (j.hjx) {}
+                for (i = 157;; i = 125)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 512000)
+              {
+                if (j.hjx) {}
+                for (i = 158;; i = 126)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 614400)
+              {
+                if (j.hjx) {}
+                for (i = 159;; i = 127)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 716800)
+              {
+                if (j.hjx) {}
+                for (i = 160;; i = 128)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 819200)
+              {
+                if (j.hjx) {}
+                for (i = 161;; i = 129)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 921600)
+              {
+                if (j.hjx) {}
+                for (i = 162;; i = 130)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (i2 < 1024000)
+              {
+                if (j.hjx) {}
+                for (i = 163;; i = 131)
+                {
+                  ((IDKey)localObject2).SetKey(i);
+                  break;
+                }
+              }
+              if (j.hjx) {}
+              for (i = 164;; i = 132)
+              {
+                ((IDKey)localObject2).SetKey(i);
+                break;
+              }
+              i = 0;
+              break label452;
+              i = 2;
+              break label515;
               if (k < 204800)
               {
-                if (i.hgJ) {}
-                for (i = 155;; i = 123)
+                if (j.hjx) {}
+                for (i = 43;; i = 3)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -404,8 +497,8 @@ public final class b
               }
               if (k < 307200)
               {
-                if (i.hgJ) {}
-                for (i = 156;; i = 124)
+                if (j.hjx) {}
+                for (i = 44;; i = 4)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -413,8 +506,8 @@ public final class b
               }
               if (k < 409600)
               {
-                if (i.hgJ) {}
-                for (i = 157;; i = 125)
+                if (j.hjx) {}
+                for (i = 45;; i = 5)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -422,8 +515,8 @@ public final class b
               }
               if (k < 512000)
               {
-                if (i.hgJ) {}
-                for (i = 158;; i = 126)
+                if (j.hjx) {}
+                for (i = 46;; i = 6)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -431,8 +524,8 @@ public final class b
               }
               if (k < 614400)
               {
-                if (i.hgJ) {}
-                for (i = 159;; i = 127)
+                if (j.hjx) {}
+                for (i = 47;; i = 7)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -440,8 +533,8 @@ public final class b
               }
               if (k < 716800)
               {
-                if (i.hgJ) {}
-                for (i = 160;; i = 128)
+                if (j.hjx) {}
+                for (i = 48;; i = 8)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -449,8 +542,8 @@ public final class b
               }
               if (k < 819200)
               {
-                if (i.hgJ) {}
-                for (i = 161;; i = 129)
+                if (j.hjx) {}
+                for (i = 49;; i = 9)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -458,8 +551,8 @@ public final class b
               }
               if (k < 921600)
               {
-                if (i.hgJ) {}
-                for (i = 162;; i = 130)
+                if (j.hjx) {}
+                for (i = 50;; i = 10)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
@@ -467,151 +560,60 @@ public final class b
               }
               if (k < 1024000)
               {
-                if (i.hgJ) {}
-                for (i = 163;; i = 131)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i.hgJ) {}
-              for (i = 164;; i = 132)
-              {
-                ((IDKey)localObject2).SetKey(i);
-                break;
-              }
-              i = 0;
-              break label495;
-              i = 2;
-              break label566;
-              if (i < 204800)
-              {
-                if (i.hgJ) {}
-                for (i = 43;; i = 3)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 307200)
-              {
-                if (i.hgJ) {}
-                for (i = 44;; i = 4)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 409600)
-              {
-                if (i.hgJ) {}
-                for (i = 45;; i = 5)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 512000)
-              {
-                if (i.hgJ) {}
-                for (i = 46;; i = 6)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 614400)
-              {
-                if (i.hgJ) {}
-                for (i = 47;; i = 7)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 716800)
-              {
-                if (i.hgJ) {}
-                for (i = 48;; i = 8)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 819200)
-              {
-                if (i.hgJ) {}
-                for (i = 49;; i = 9)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 921600)
-              {
-                if (i.hgJ) {}
-                for (i = 50;; i = 10)
-                {
-                  ((IDKey)localObject2).SetKey(i);
-                  break;
-                }
-              }
-              if (i < 1024000)
-              {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 51;; i = 11)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
                 }
               }
-              if (i < 1126400)
+              if (k < 1126400)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 52;; i = 12)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
                 }
               }
-              if (i < 1228800)
+              if (k < 1228800)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 53;; i = 13)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
                 }
               }
-              if (i < 1331200)
+              if (k < 1331200)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 54;; i = 14)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
                 }
               }
-              if (i < 1433600)
+              if (k < 1433600)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 55;; i = 15)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
                 }
               }
-              if (i.hgJ) {}
+              if (j.hjx) {}
               for (i = 56;; i = 16)
               {
                 ((IDKey)localObject2).SetKey(i);
                 break;
               }
               i = 82;
-              break label630;
+              break label579;
               if (l4 < 209715200L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 114;; i = 83)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -620,7 +622,7 @@ public final class b
               }
               if (l4 < 314572800L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 115;; i = 84)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -629,7 +631,7 @@ public final class b
               }
               if (l4 < 419430400L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 116;; i = 85)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -638,7 +640,7 @@ public final class b
               }
               if (l4 < 524288000L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 117;; i = 86)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -647,7 +649,7 @@ public final class b
               }
               if (l4 < 629145600L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 118;; i = 87)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -656,7 +658,7 @@ public final class b
               }
               if (l4 < 734003200L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 119;; i = 88)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -665,7 +667,7 @@ public final class b
               }
               if (l4 < 838860800L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 120;; i = 89)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -674,7 +676,7 @@ public final class b
               }
               if (l4 < 943718400L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 121;; i = 90)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -683,7 +685,7 @@ public final class b
               }
               if (l4 < 1048576000L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 122;; i = 91)
                 {
                   ((IDKey)localObject2).SetKey(i);
@@ -692,14 +694,14 @@ public final class b
               }
               if (l4 < 1572864000L)
               {
-                if (i.hgJ) {}
+                if (j.hjx) {}
                 for (i = 123;; i = 92)
                 {
                   ((IDKey)localObject2).SetKey(i);
                   break;
                 }
               }
-              if (i.hgJ) {}
+              if (j.hjx) {}
               for (i = 124;; i = 93)
               {
                 ((IDKey)localObject2).SetKey(i);
@@ -708,44 +710,77 @@ public final class b
             }
           }
         }
-        c(i, l1, l2, l3, k, parama.wKr, ((StringBuilder)localObject1).toString(), -1);
-        wJX = true;
+        if (!yO(l1)) {
+          break label2778;
+        }
+        j = 1;
+        if (!yP(l2)) {
+          break label2783;
+        }
+        m = 2;
+        if (!yQ(l3)) {
+          break label2789;
+        }
+        n = 4;
+        if (!yR(i2)) {
+          break label2795;
+        }
+        i1 = 8;
+        if (!yS(k)) {
+          break label2801;
+        }
       }
-      AppMethodBeat.o(211776);
-      return;
+      for (k = 16;; k = 0)
+      {
+        l4 = bu.getLong((String)parama.map.get("summary.system"), -1L);
+        long l5 = bu.getLong((String)parama.map.get("summary.graphics"), -1L);
+        ae.d("MicroMsg.MemoryWatchDog.Reporter", "systemPss = %d, graphics = %d", new Object[] { Long.valueOf(l4), Long.valueOf(l5) });
+        a(i1 | i | j | m | n | k, l1, l2, l3, i2, parama.xac, ((StringBuilder)localObject1).toString(), -1, l4, l5);
+        wZI = true;
+        AppMethodBeat.o(215446);
+        return;
+        j = 0;
+        break;
+        m = 0;
+        break label2617;
+        n = 0;
+        break label2628;
+        i1 = 0;
+        break label2641;
+      }
     }
   }
   
   public static void a(c.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(211775);
+    AppMethodBeat.i(215445);
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey1 = new IDKey();
     localIDKey1.SetID(959);
     localIDKey1.SetValue(1L);
-    label110:
+    label111:
     int i;
-    if (parama.wKj - parama.wKk < 104857600L)
+    if (parama.wZU - parama.wZV < 104857600L)
     {
       localIDKey1.SetKey(120);
       localArrayList.add(localIDKey1);
       localIDKey1 = new IDKey();
       localIDKey1.SetID(959);
       localIDKey1.SetValue(1L);
-      if (parama.wKh >= 104857600L) {
-        break label979;
+      if (parama.wZS >= 104857600L) {
+        break label985;
       }
       localIDKey1.SetKey(131);
       localArrayList.add(localIDKey1);
       localIDKey1 = new IDKey();
       localIDKey1.SetID(959);
       localIDKey1.SetValue(1L);
-      if (parama.wKf >= 2097152) {
-        break label1144;
+      if (parama.wZQ >= 2097152) {
+        break label1150;
       }
       localIDKey1.SetKey(142);
-      label158:
-      if (parama.wKf >= 3858759.8F)
+      label160:
+      if (parama.wZQ >= 3858759.8F)
       {
         IDKey localIDKey2 = new IDKey();
         localIDKey2.SetID(959);
@@ -759,42 +794,42 @@ public final class b
       localIDKey1.SetValue(1L);
       localIDKey1.SetKey(151);
       localArrayList.add(localIDKey1);
-      e.ygI.b(localArrayList, false);
+      e.ywz.b(localArrayList, false);
       a(parama);
       localArrayList = new ArrayList();
-      if (!aj.cmR()) {
-        break label1270;
+      if (!ak.coh()) {
+        break label1276;
       }
       i = 10;
     }
     for (;;)
     {
-      label286:
+      label289:
       localIDKey1 = new IDKey();
       localIDKey1.SetID(1031);
       localIDKey1.SetKey(i);
-      localIDKey1.SetValue((parama.wKj - parama.wKk) / 1024L / 1024L);
+      localIDKey1.SetValue((parama.wZU - parama.wZV) / 1024L / 1024L);
       localArrayList.add(localIDKey1);
       localIDKey1 = new IDKey();
       localIDKey1.SetID(1031);
       localIDKey1.SetKey(i + 1);
-      localIDKey1.SetValue(parama.wKh / 1024L / 1024L);
+      localIDKey1.SetValue(parama.wZS / 1024L / 1024L);
       localArrayList.add(localIDKey1);
       localIDKey1 = new IDKey();
       localIDKey1.SetID(1031);
       localIDKey1.SetKey(i + 2);
       localIDKey1.SetValue(1L);
       localArrayList.add(localIDKey1);
-      e.ygI.b(localArrayList, false);
-      label483:
+      e.ywz.b(localArrayList, false);
+      label488:
       int j;
-      label518:
+      label523:
       long l;
-      if ((aj.isAppBrandProcess()) || (aj.fkI()) || (aj.fkJ()))
+      if ((ak.isAppBrandProcess()) || (ak.foC()) || (ak.foD()))
       {
-        ad.d("MicroMsg.MemoryWatchDog.Reporter", "reportPreloadProcessMemory: hasActivity = %s", new Object[] { Boolean.valueOf(paramBoolean) });
-        if (!aj.isAppBrandProcess()) {
-          break label1300;
+        ae.d("MicroMsg.MemoryWatchDog.Reporter", "reportPreloadProcessMemory: hasActivity = %s", new Object[] { Boolean.valueOf(paramBoolean) });
+        if (!ak.isAppBrandProcess()) {
+          break label1306;
         }
         i = 1462;
         if (i > 0)
@@ -802,205 +837,205 @@ public final class b
           localArrayList = new ArrayList();
           localArrayList.add(new IDKey(i, 0, 1));
           if (!paramBoolean) {
-            break label1331;
+            break label1337;
           }
           j = 1;
           localArrayList.add(new IDKey(i, j, 1));
-          l = parama.wKj - parama.wKk;
+          l = parama.wZU - parama.wZV;
           localIDKey1 = new IDKey();
           localIDKey1.SetID(i);
           localIDKey1.SetValue(1L);
           if (l >= 52428800L) {
-            break label1342;
+            break label1348;
           }
           if (!paramBoolean) {
-            break label1336;
+            break label1342;
           }
           j = 3;
-          label581:
+          label586:
           localIDKey1.SetKey(j);
           localArrayList.add(localIDKey1);
-          l = parama.wKh;
+          l = parama.wZS;
           localIDKey1 = new IDKey();
           localIDKey1.SetID(i);
           localIDKey1.SetValue(1L);
           if (l >= 104857600L) {
-            break label1678;
+            break label1684;
           }
           if (!paramBoolean) {
-            break label1672;
+            break label1678;
           }
           j = 55;
-          label638:
+          label643:
           localIDKey1.SetKey(j);
           localArrayList.add(localIDKey1);
-          if (!i.hgJ)
+          if (!j.hjx)
           {
             localIDKey1 = new IDKey();
             localIDKey1.SetID(i);
             localIDKey1.SetValue(1L);
-            l = parama.wKf;
+            l = parama.wZQ;
             if (l >= 1572864.0D) {
-              break label1985;
+              break label1991;
             }
             if (!paramBoolean) {
-              break label1979;
+              break label1985;
             }
             j = 111;
-            label703:
+            label708:
             localIDKey1.SetKey(j);
             localArrayList.add(localIDKey1);
           }
           localIDKey1 = new IDKey();
           localIDKey1.SetID(i);
           localIDKey1.SetValue(1L);
-          i = parama.wKq;
+          i = parama.xab;
           if (i >= 102400) {
-            break label2140;
+            break label2146;
           }
           if (!paramBoolean) {
-            break label2133;
+            break label2139;
           }
         }
       }
-      label979:
-      label2133:
+      label985:
+      label2139:
       for (i = 139;; i = 153)
       {
         localIDKey1.SetKey(i);
         localArrayList.add(localIDKey1);
-        e.ygI.b(localArrayList, false);
-        AppMethodBeat.o(211775);
+        e.ywz.b(localArrayList, false);
+        AppMethodBeat.o(215445);
         return;
-        if (parama.wKj - parama.wKk < 209715200L)
+        if (parama.wZU - parama.wZV < 209715200L)
         {
           localIDKey1.SetKey(121);
           break;
         }
-        if (parama.wKj - parama.wKk < 314572800L)
+        if (parama.wZU - parama.wZV < 314572800L)
         {
           localIDKey1.SetKey(122);
           break;
         }
-        if (parama.wKj - parama.wKk < 419430400L)
+        if (parama.wZU - parama.wZV < 419430400L)
         {
           localIDKey1.SetKey(123);
           break;
         }
-        if (parama.wKj - parama.wKk < 524288000L)
+        if (parama.wZU - parama.wZV < 524288000L)
         {
           localIDKey1.SetKey(124);
           break;
         }
-        if (parama.wKj - parama.wKk < 629145600L)
+        if (parama.wZU - parama.wZV < 629145600L)
         {
           localIDKey1.SetKey(125);
           break;
         }
-        if (parama.wKj - parama.wKk < 734003200L)
+        if (parama.wZU - parama.wZV < 734003200L)
         {
           localIDKey1.SetKey(126);
           break;
         }
-        if (parama.wKj - parama.wKk < 838860800L)
+        if (parama.wZU - parama.wZV < 838860800L)
         {
           localIDKey1.SetKey(127);
           break;
         }
         localIDKey1.SetKey(128);
         break;
-        if (parama.wKh < 209715200L)
+        if (parama.wZS < 209715200L)
         {
           localIDKey1.SetKey(132);
-          break label110;
+          break label111;
         }
-        if (parama.wKh < 314572800L)
+        if (parama.wZS < 314572800L)
         {
           localIDKey1.SetKey(133);
-          break label110;
+          break label111;
         }
-        if (parama.wKh < 419430400L)
+        if (parama.wZS < 419430400L)
         {
           localIDKey1.SetKey(134);
-          break label110;
+          break label111;
         }
-        if (parama.wKh < 524288000L)
+        if (parama.wZS < 524288000L)
         {
           localIDKey1.SetKey(135);
-          break label110;
+          break label111;
         }
-        if (parama.wKh < 629145600L)
+        if (parama.wZS < 629145600L)
         {
           localIDKey1.SetKey(136);
-          break label110;
+          break label111;
         }
-        if (parama.wKh < 734003200L)
+        if (parama.wZS < 734003200L)
         {
           localIDKey1.SetKey(137);
-          break label110;
+          break label111;
         }
-        if (parama.wKh < 838860800L)
+        if (parama.wZS < 838860800L)
         {
           localIDKey1.SetKey(138);
-          break label110;
+          break label111;
         }
         localIDKey1.SetKey(139);
-        break label110;
-        label1144:
-        if (parama.wKf < 2516582.5F)
+        break label111;
+        label1150:
+        if (parama.wZQ < 2516582.5F)
         {
           localIDKey1.SetKey(143);
-          break label158;
+          break label160;
         }
-        if (parama.wKf < 2936012.8F)
+        if (parama.wZQ < 2936012.8F)
         {
           localIDKey1.SetKey(144);
-          break label158;
+          break label160;
         }
-        if (parama.wKf < 3145728.0F)
+        if (parama.wZQ < 3145728.0F)
         {
           localIDKey1.SetKey(145);
-          break label158;
+          break label160;
         }
-        if (parama.wKf < 3565158.5F)
+        if (parama.wZQ < 3565158.5F)
         {
           localIDKey1.SetKey(146);
-          break label158;
+          break label160;
         }
-        if (parama.wKf < 3984588.8F)
+        if (parama.wZQ < 3984588.8F)
         {
           localIDKey1.SetKey(147);
-          break label158;
+          break label160;
         }
         localIDKey1.SetKey(148);
-        break label158;
-        label1270:
-        if ((aj.fkI()) || (aj.fkJ()))
+        break label160;
+        label1276:
+        if ((ak.foC()) || (ak.foD()))
         {
           i = 20;
-          break label286;
+          break label289;
         }
-        if (!aj.isAppBrandProcess()) {
-          break label2434;
+        if (!ak.isAppBrandProcess()) {
+          break label2441;
         }
         i = 30;
-        break label286;
-        if (aj.fkI())
+        break label289;
+        if (ak.foC())
         {
           i = 1463;
-          break label483;
+          break label488;
         }
-        if (aj.fkJ())
+        if (ak.foD())
         {
           i = 1464;
-          break label483;
+          break label488;
         }
         i = -1;
-        break label483;
+        break label488;
         j = 2;
-        break label518;
+        break label523;
         j = 16;
-        break label581;
+        break label586;
         if (l < 104857600L)
         {
           if (paramBoolean) {}
@@ -1098,7 +1133,7 @@ public final class b
           break;
         }
         j = 69;
-        break label638;
+        break label643;
         if (l < 209715200L)
         {
           if (paramBoolean) {}
@@ -1187,7 +1222,7 @@ public final class b
           break;
         }
         j = 118;
-        break label703;
+        break label708;
         if (l < 2097152L)
         {
           if (paramBoolean) {}
@@ -1231,12 +1266,12 @@ public final class b
           break;
         }
       }
-      label1300:
-      label1331:
-      label1336:
+      label1306:
+      label1337:
       label1342:
-      label1985:
-      label2140:
+      label1348:
+      label1991:
+      label2146:
       if (i < 204800)
       {
         if (paramBoolean) {}
@@ -1246,9 +1281,9 @@ public final class b
           break;
         }
       }
-      label1672:
       label1678:
-      label1979:
+      label1684:
+      label1985:
       if (i < 307200)
       {
         if (paramBoolean) {}
@@ -1327,26 +1362,26 @@ public final class b
         localIDKey1.SetKey(i);
         break;
       }
-      label2434:
+      label2441:
       i = 0;
     }
   }
   
   public static void a(c.a parama, Object... paramVarArgs)
   {
-    AppMethodBeat.i(211777);
+    AppMethodBeat.i(215447);
     StringBuilder localStringBuilder = new StringBuilder();
     int i;
-    if ((parama.wKs != null) && (parama.wKs.length > 0))
+    if ((parama.xad != null) && (parama.xad.length > 0))
     {
       localStringBuilder.append("allProcess:");
-      c.a[] arrayOfa = parama.wKs;
+      c.a[] arrayOfa = parama.xad;
       j = arrayOfa.length;
       i = 0;
       while (i < j)
       {
         c.a locala = arrayOfa[i];
-        localStringBuilder.append(locala.pid).append("-").append(locala.processName).append("-pss:").append(locala.wKq).append(";");
+        localStringBuilder.append(locala.pid).append("-").append(locala.processName).append("-pss:").append(locala.xab).append(";");
         i += 1;
       }
     }
@@ -1371,15 +1406,58 @@ public final class b
         }
       }
     }
-    c(32, parama.wKj - parama.wKk, parama.wKh, parama.wKf, parama.wKq, parama.wKr, localStringBuilder.toString(), j);
-    AppMethodBeat.o(211777);
+    a(32, parama.wZU - parama.wZV, parama.wZS, parama.wZQ, parama.xab, parama.xac, localStringBuilder.toString(), j, -2L, -2L);
+    AppMethodBeat.o(215447);
   }
   
-  private static void c(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
+  private static boolean yO(long paramLong)
   {
-    AppMethodBeat.i(211778);
-    e.ygI.f(20731, new Object[] { Integer.valueOf(paramInt1), aj.getProcessName(), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), paramString, Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(211778);
+    if (paramLong > 262144000L)
+    {
+      wZD += 1;
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean yP(long paramLong)
+  {
+    if (paramLong > 524288000L)
+    {
+      wZE += 1;
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean yQ(long paramLong)
+  {
+    if ((!j.hjx) && (paramLong > 3879731.2000000002D))
+    {
+      wZF += 1;
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean yR(long paramLong)
+  {
+    if (paramLong > 1024000L)
+    {
+      wZG += 1;
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean yS(long paramLong)
+  {
+    if (paramLong > 2097152L)
+    {
+      wZH += 1;
+      return true;
+    }
+    return false;
   }
 }
 

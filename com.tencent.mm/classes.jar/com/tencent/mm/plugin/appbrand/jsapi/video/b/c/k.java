@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.c;
 
 public abstract interface k
 {
-  public abstract void bnu();
+  public abstract void boe();
   
-  public abstract void tu(int paramInt);
+  public abstract void ty(int paramInt);
 }
 
 

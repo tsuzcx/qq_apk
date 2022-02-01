@@ -6,7 +6,7 @@ public abstract interface b
 {
   public abstract void aw(View paramView, int paramInt);
   
-  public abstract boolean eSC();
+  public abstract boolean eWo();
 }
 
 

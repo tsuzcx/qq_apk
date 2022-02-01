@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class w
   extends b
 {
-  public a dkE;
+  public a dlG;
   
   public w()
   {
@@ -16,13 +16,13 @@ public final class w
   private w(byte paramByte)
   {
     AppMethodBeat.i(136973);
-    this.dkE = new a();
-    this.IbR = false;
+    this.dlG = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(136973);
   }
   
-  public static String ie(int paramInt)
+  public static String ig(int paramInt)
   {
     if (paramInt == 0) {
       return "play";
@@ -67,8 +67,8 @@ public final class w
   {
     public int action;
     public String appId;
-    public String dce;
-    public String ddp;
+    public String ddg;
+    public String der;
     public long duration;
     public int errCode;
     public String errMsg;
@@ -77,7 +77,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.w
  * JD-Core Version:    0.7.0.1
  */

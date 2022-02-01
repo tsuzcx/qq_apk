@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 import android.graphics.Paint.Style;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 
 public final class e
   extends b
 {
-  private static e jTQ;
+  private static e jXh;
   
   static
   {
     AppMethodBeat.i(145323);
-    jTQ = new e();
+    jXh = new e();
     AppMethodBeat.o(145323);
   }
   
-  public static e bdt()
+  public static e bdY()
   {
-    return jTQ;
+    return jXh;
   }
   
   public final void a(a parama)
@@ -29,18 +29,18 @@ public final class e
     parama.release();
     parama.setStyle(Paint.Style.FILL);
     parama.setAntiAlias(true);
-    parama.setStrokeWidth(g.vJ(1));
+    parama.setStrokeWidth(g.vO(1));
     super.a(parama);
     AppMethodBeat.o(145321);
   }
   
-  public final a bdq()
+  public final a bdV()
   {
     AppMethodBeat.i(145322);
     a locala = new a();
     locala.setStyle(Paint.Style.FILL);
     locala.setAntiAlias(true);
-    locala.setStrokeWidth(g.vJ(1));
+    locala.setStrokeWidth(g.vO(1));
     AppMethodBeat.o(145322);
     return locala;
   }

@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class er
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int enabled;
   public String url;
@@ -34,9 +34,9 @@ public final class er
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(103179);
@@ -52,11 +52,11 @@ public final class er
         AppMethodBeat.o(103179);
         return -1;
       case 1: 
-        localer.enabled = locala.NPN.zc();
+        localer.enabled = locala.OmT.zc();
         AppMethodBeat.o(103179);
         return 0;
       }
-      localer.url = locala.NPN.readString();
+      localer.url = locala.OmT.readString();
       AppMethodBeat.o(103179);
       return 0;
     }

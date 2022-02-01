@@ -2,13 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
+import java.util.List;
 
 public final class mm
   extends b
 {
-  public a dAi;
-  public b dAj;
+  public a dBc;
+  public b dBd;
   
   public mm()
   {
@@ -17,25 +17,30 @@ public final class mm
   
   private mm(byte paramByte)
   {
-    AppMethodBeat.i(116460);
-    this.dAi = new a();
-    this.dAj = new b();
-    this.IbR = false;
+    AppMethodBeat.i(116459);
+    this.dBc = new a();
+    this.dBd = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116460);
+    AppMethodBeat.o(116459);
   }
   
   public static final class a
   {
-    public String chatroomName;
-    public LinkedList<String> dAk;
-    public boolean dzW = false;
-    public int scene = 0;
+    public boolean dBb = false;
+    public String dBe;
+    public List<String> dBf;
   }
   
   public static final class b
   {
-    public int errCode;
+    public int dBg;
+    public String dBh;
+    public List<String> dBi;
+    public List<String> dBj;
+    public List<String> dBk;
+    public List<String> dBl;
+    public List<String> dBm;
   }
 }
 

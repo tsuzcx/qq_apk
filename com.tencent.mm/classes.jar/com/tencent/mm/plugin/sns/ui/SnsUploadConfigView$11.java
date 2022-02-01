@@ -15,7 +15,7 @@ final class SnsUploadConfigView$11
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(99528);
-    a.iRG.g(new Intent(), SnsUploadConfigView.k(this.AoD));
+    a.iUz.g(new Intent(), SnsUploadConfigView.k(this.AFQ));
     AppMethodBeat.o(99528);
   }
 }

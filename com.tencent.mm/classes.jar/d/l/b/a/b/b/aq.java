@@ -15,12 +15,12 @@ public abstract interface aq
   public static final class a
     implements aq
   {
-    public static final a MUZ;
+    public static final a Nse;
     
     static
     {
       AppMethodBeat.i(56886);
-      MUZ = new a();
+      Nse = new a();
       AppMethodBeat.o(56886);
     }
     

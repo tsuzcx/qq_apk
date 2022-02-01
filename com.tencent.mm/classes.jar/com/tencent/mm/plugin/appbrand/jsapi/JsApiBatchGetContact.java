@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 @Deprecated
 public class JsApiBatchGetContact
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 410;
   public static final String NAME = "batchGetContact";
@@ -24,11 +24,11 @@ public class JsApiBatchGetContact
   {
     public static final Parcelable.Creator<JsApiBatchGetContactTask> CREATOR;
     private String errMsg;
-    private q jCl;
-    private int kje;
-    public ArrayList<String> krx;
-    private m kry;
-    private String krz;
+    private r jFj;
+    private int kmu;
+    public ArrayList<String> kuN;
+    private m kuO;
+    private String kuP;
     
     static
     {
@@ -44,15 +44,15 @@ public class JsApiBatchGetContact
       AppMethodBeat.o(45454);
     }
     
-    public JsApiBatchGetContactTask(m paramm, q paramq, int paramInt, ArrayList<String> paramArrayList)
+    public JsApiBatchGetContactTask(m paramm, r paramr, int paramInt, ArrayList<String> paramArrayList)
     {
-      this.kry = paramm;
-      this.jCl = paramq;
-      this.kje = paramInt;
-      this.krx = paramArrayList;
+      this.kuO = paramm;
+      this.jFj = paramr;
+      this.kmu = paramInt;
+      this.kuN = paramArrayList;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45456);
       b.c(new Runnable()
@@ -92,8 +92,8 @@ public class JsApiBatchGetContact
           //   54: invokespecial 53	org/json/JSONArray:<init>	()V
           //   57: astore 4
           //   59: aload_0
-          //   60: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
-          //   63: getfield 57	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:krx	Ljava/util/ArrayList;
+          //   60: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   63: getfield 57	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:kuN	Ljava/util/ArrayList;
           //   66: invokevirtual 61	java/util/ArrayList:iterator	()Ljava/util/Iterator;
           //   69: astore 7
           //   71: aload 7
@@ -106,7 +106,7 @@ public class JsApiBatchGetContact
           //   93: aload 8
           //   95: iconst_0
           //   96: aconst_null
-          //   97: invokestatic 79	com/tencent/mm/plugin/appbrand/config/x:a	(Ljava/lang/String;ZLcom/tencent/mm/plugin/appbrand/config/x$d;)Landroid/util/Pair;
+          //   97: invokestatic 79	com/tencent/mm/plugin/appbrand/config/x:a	(Ljava/lang/String;ZLcom/tencent/mm/plugin/appbrand/config/x$e;)Landroid/util/Pair;
           //   100: astore_1
           //   101: aload_1
           //   102: getfield 85	android/util/Pair:second	Ljava/lang/Object;
@@ -135,22 +135,22 @@ public class JsApiBatchGetContact
           //   147: getfield 98	android/util/Pair:first	Ljava/lang/Object;
           //   150: checkcast 100	com/tencent/mm/plugin/appbrand/config/WxaAttributes
           //   153: getfield 104	com/tencent/mm/plugin/appbrand/config/WxaAttributes:field_appInfo	Ljava/lang/String;
-          //   156: invokestatic 110	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+          //   156: invokestatic 110	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
           //   159: ifeq +46 -> 205
           //   162: aload 5
           //   164: iconst_0
           //   165: iconst_1
           //   166: bastore
           //   167: aload_0
-          //   168: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   168: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
           //   171: ldc 112
           //   173: invokestatic 115	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;Ljava/lang/String;)Ljava/lang/String;
           //   176: pop
           //   177: ldc 117
           //   179: ldc 119
-          //   181: invokestatic 125	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+          //   181: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
           //   184: aload_0
-          //   185: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   185: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
           //   188: invokestatic 129	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:b	(Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;)Z
           //   191: pop
           //   192: ldc 13
@@ -203,9 +203,9 @@ public class JsApiBatchGetContact
           //   279: ldc 152
           //   281: iconst_0
           //   282: anewarray 4	java/lang/Object
-          //   285: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   285: invokestatic 156	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
           //   288: aload_0
-          //   289: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   289: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
           //   292: new 158	java/lang/StringBuilder
           //   295: dup
           //   296: ldc 160
@@ -217,7 +217,7 @@ public class JsApiBatchGetContact
           //   311: invokestatic 115	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;Ljava/lang/String;)Ljava/lang/String;
           //   314: pop
           //   315: aload_0
-          //   316: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   316: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
           //   319: invokestatic 175	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:d	(Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;)Z
           //   322: pop
           //   323: aload_3
@@ -226,7 +226,7 @@ public class JsApiBatchGetContact
           //   329: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   332: return
           //   333: aload 6
-          //   335: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:hj	(Ljava/util/List;)Z
+          //   335: invokestatic 179	com/tencent/mm/sdk/platformtools/bu:ht	(Ljava/util/List;)Z
           //   338: ifne +51 -> 389
           //   341: ldc 117
           //   343: ldc 181
@@ -238,11 +238,11 @@ public class JsApiBatchGetContact
           //   353: invokevirtual 185	java/util/ArrayList:size	()I
           //   356: invokestatic 191	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
           //   359: aastore
-          //   360: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   360: invokestatic 194	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   363: aload 6
-          //   365: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:hj	(Ljava/util/List;)Z
+          //   365: invokestatic 179	com/tencent/mm/sdk/platformtools/bu:ht	(Ljava/util/List;)Z
           //   368: ifne +21 -> 389
-          //   371: getstatic 200	com/tencent/e/h:LTJ	Lcom/tencent/e/i;
+          //   371: getstatic 200	com/tencent/e/h:MqF	Lcom/tencent/e/i;
           //   374: new 202	com/tencent/mm/plugin/appbrand/config/x$2
           //   377: dup
           //   378: aload 6
@@ -268,7 +268,7 @@ public class JsApiBatchGetContact
           //   416: bastore
           //   417: ldc 117
           //   419: ldc 213
-          //   421: invokestatic 215	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   421: invokestatic 215	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
           //   424: new 131	org/json/JSONObject
           //   427: dup
           //   428: invokespecial 141	org/json/JSONObject:<init>	()V
@@ -284,13 +284,13 @@ public class JsApiBatchGetContact
           //   446: invokevirtual 147	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
           //   449: pop
           //   450: aload_0
-          //   451: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   451: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
           //   454: aload_1
           //   455: invokevirtual 222	org/json/JSONObject:toString	()Ljava/lang/String;
           //   458: invokestatic 224	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:b	(Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;Ljava/lang/String;)Ljava/lang/String;
           //   461: pop
           //   462: aload_0
-          //   463: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:krA	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
+          //   463: getfield 22	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask$1:kuQ	Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;
           //   466: invokestatic 227	com/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask:c	(Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContact$JsApiBatchGetContactTask;)Z
           //   469: pop
           //   470: ldc 13
@@ -362,27 +362,27 @@ public class JsApiBatchGetContact
       AppMethodBeat.o(45456);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(45455);
-      ad.i("MicroMsg.JsApiBatchGetContact", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jCl.getAppId(), this.krz, Integer.valueOf(this.kje), Boolean.valueOf(this.jCl.isRunning()) });
-      if (!bt.isNullOrNil(this.krz)) {
-        this.jCl.h(this.kje, this.krz);
+      ae.i("MicroMsg.JsApiBatchGetContact", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jFj.getAppId(), this.kuP, Integer.valueOf(this.kmu), Boolean.valueOf(this.jFj.isRunning()) });
+      if (!bu.isNullOrNil(this.kuP)) {
+        this.jFj.h(this.kmu, this.kuP);
       }
       for (;;)
       {
-        bhO();
+        bix();
         AppMethodBeat.o(45455);
         return;
-        this.jCl.h(this.kje, this.kry.e(this.errMsg, null));
+        this.jFj.h(this.kmu, this.kuO.e(this.errMsg, null));
       }
     }
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45457);
-      this.krx = paramParcel.readArrayList(getClass().getClassLoader());
-      this.krz = paramParcel.readString();
+      this.kuN = paramParcel.readArrayList(getClass().getClassLoader());
+      this.kuP = paramParcel.readString();
       this.errMsg = paramParcel.readString();
       AppMethodBeat.o(45457);
     }
@@ -390,8 +390,8 @@ public class JsApiBatchGetContact
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45458);
-      paramParcel.writeList(this.krx);
-      paramParcel.writeString(this.krz);
+      paramParcel.writeList(this.kuN);
+      paramParcel.writeString(this.kuP);
       paramParcel.writeString(this.errMsg);
       AppMethodBeat.o(45458);
     }

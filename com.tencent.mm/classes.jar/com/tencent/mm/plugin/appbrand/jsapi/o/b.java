@@ -5,20 +5,20 @@ import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/JsApiNoticePerformanceMetrics;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/JsApiNoticePerformanceMetrics;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class b
   extends a<d>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "noticePerformanceMetrics";
   @Deprecated
-  public static final b.a ldv;
+  public static final b.a lhg;
   
   static
   {
-    AppMethodBeat.i(189164);
-    ldv = new b.a((byte)0);
-    AppMethodBeat.o(189164);
+    AppMethodBeat.i(223421);
+    lhg = new b.a((byte)0);
+    AppMethodBeat.o(223421);
   }
 }
 

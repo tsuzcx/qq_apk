@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.qqmail.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.qqmail.d.ar;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class g
   implements f, com.tencent.mm.ipcinvoker.b<IPCVoid, IPCInteger>
 {
-  private d<IPCInteger> gyc;
+  private d<IPCInteger> gAJ;
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(215184);
-    ad.i("MicroMsg.GetUnreadMailCountTask", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    com.tencent.mm.kernel.g.aiU().b(12213, this);
-    if (this.gyc != null)
+    AppMethodBeat.i(217930);
+    ae.i("MicroMsg.GetUnreadMailCountTask", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    com.tencent.mm.kernel.g.ajj().b(12213, this);
+    if (this.gAJ != null)
     {
-      paramInt1 = ((ar)((com.tencent.mm.plugin.qqmail.e.b)paramn).hWL.hNL.hNQ).xdm;
-      this.gyc.be(new IPCInteger(paramInt1));
+      paramInt1 = ((ar)((com.tencent.mm.plugin.qqmail.e.b)paramn).hZD.hQE.hQJ).xtd;
+      this.gAJ.be(new IPCInteger(paramInt1));
     }
-    AppMethodBeat.o(215184);
+    AppMethodBeat.o(217930);
   }
 }
 

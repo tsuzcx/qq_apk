@@ -7,36 +7,36 @@ import com.tencent.mm.plugin.finder.storage.x;
 import com.tencent.mm.plugin.finder.storage.z;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderFeedLayoutFactory;", "", "()V", "getLayoutConfig", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderFeedLayoutFactory;", "", "()V", "getLayoutConfig", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "plugin-finder_release"})
 public final class e
 {
-  public static final e sLf;
+  public static final e sWq;
   
   static
   {
-    AppMethodBeat.i(204471);
-    sLf = new e();
-    AppMethodBeat.o(204471);
+    AppMethodBeat.i(205089);
+    sWq = new e();
+    AppMethodBeat.o(205089);
   }
   
-  public static z cLd()
+  public static z cNH()
   {
-    AppMethodBeat.i(204470);
-    Object localObject = b.sxa;
-    if (b.cGu())
+    AppMethodBeat.i(205088);
+    Object localObject = b.sHP;
+    if (b.cIr())
     {
       localObject = (z)new k();
-      AppMethodBeat.o(204470);
+      AppMethodBeat.o(205088);
       return localObject;
     }
     localObject = (z)new x();
-    AppMethodBeat.o(204470);
+    AppMethodBeat.o(205088);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.e
  * JD-Core Version:    0.7.0.1
  */

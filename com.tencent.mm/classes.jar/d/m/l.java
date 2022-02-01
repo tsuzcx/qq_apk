@@ -7,7 +7,7 @@ import d.g.b.p;
 import d.g.b.q;
 import java.util.Iterator;
 
-@d.l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"Sequence", "Lkotlin/sequences/Sequence;", "T", "iterator", "Lkotlin/Function0;", "", "emptySequence", "generateSequence", "", "nextFunction", "seedFunction", "Lkotlin/Function1;", "seed", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;", "sequenceOf", "elements", "", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "asSequence", "constrainOnce", "flatten", "R", "flatten$SequencesKt__SequencesKt", "", "flattenSequenceOfIterable", "ifEmpty", "defaultValue", "orEmpty", "unzip", "Lkotlin/Pair;", "", "kotlin-stdlib"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Sequence", "Lkotlin/sequences/Sequence;", "T", "iterator", "Lkotlin/Function0;", "", "emptySequence", "generateSequence", "", "nextFunction", "seedFunction", "Lkotlin/Function1;", "seed", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;", "sequenceOf", "elements", "", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "asSequence", "constrainOnce", "flatten", "R", "flatten$SequencesKt__SequencesKt", "", "flattenSequenceOfIterable", "ifEmpty", "defaultValue", "orEmpty", "unzip", "Lkotlin/Pair;", "", "kotlin-stdlib"}, gkc=1)
 public class l
   extends k
 {
@@ -34,18 +34,18 @@ public class l
     return paramh;
   }
   
-  public static final <T> h<T> ai(T... paramVarArgs)
+  public static final <T> h<T> ah(T... paramVarArgs)
   {
     AppMethodBeat.i(129530);
     p.h(paramVarArgs, "elements");
     if (paramVarArgs.length == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramVarArgs = (h)d.NGv;
+      paramVarArgs = (h)d.OdB;
       AppMethodBeat.o(129530);
       return paramVarArgs;
     }
-    paramVarArgs = e.aa(paramVarArgs);
+    paramVarArgs = e.Z(paramVarArgs);
     AppMethodBeat.o(129530);
     return paramVarArgs;
   }
@@ -56,7 +56,7 @@ public class l
     p.h(paramb, "nextFunction");
     if (paramT == null)
     {
-      paramT = (h)d.NGv;
+      paramT = (h)d.OdB;
       AppMethodBeat.o(129533);
       return paramT;
     }
@@ -67,14 +67,14 @@ public class l
   
   public static final <T> h<T> d(Iterator<? extends T> paramIterator)
   {
-    AppMethodBeat.i(199640);
+    AppMethodBeat.i(188735);
     p.h(paramIterator, "$this$asSequence");
     paramIterator = i.a((h)new a(paramIterator));
-    AppMethodBeat.o(199640);
+    AppMethodBeat.o(188735);
     return paramIterator;
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"})
   public static final class a
     implements h<T>
   {
@@ -82,21 +82,21 @@ public class l
     
     public final Iterator<T> iterator()
     {
-      return this.NGI;
+      return this.OdO;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "T", "R", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "R", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
   public static final class c
     extends q
     implements b<T, T>
   {
-    public static final c NGK;
+    public static final c OdQ;
     
     static
     {
       AppMethodBeat.i(129488);
-      NGK = new c();
+      OdQ = new c();
       AppMethodBeat.o(129488);
     }
     
@@ -111,7 +111,7 @@ public class l
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "T", "", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class d
     extends q
     implements b<T, T>
@@ -125,13 +125,13 @@ public class l
     {
       AppMethodBeat.i(129473);
       p.h(paramT, "it");
-      paramT = this.NGL.invoke();
+      paramT = this.OdR.invoke();
       AppMethodBeat.o(129473);
       return paramT;
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "T", "", "invoke", "()Ljava/lang/Object;"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "", "invoke", "()Ljava/lang/Object;"})
   static final class e
     extends q
     implements d.g.a.a<T>
@@ -143,7 +143,7 @@ public class l
     
     public final T invoke()
     {
-      return this.NGM;
+      return this.OdS;
     }
   }
 }

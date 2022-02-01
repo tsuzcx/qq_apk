@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.MMPullDownView;
 
 public class CollectPullDownView
@@ -21,7 +21,7 @@ public class CollectPullDownView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void cbz()
+  public final void ccO()
   {
     AppMethodBeat.i(64191);
     View localView1 = inflate(this.context, 2131493556, null);
@@ -33,7 +33,7 @@ public class CollectPullDownView
   
   public void setLoadDataEnd(boolean paramBoolean)
   {
-    this.Jmv = paramBoolean;
+    this.JHk = paramBoolean;
   }
 }
 

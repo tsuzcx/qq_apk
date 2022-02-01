@@ -13,7 +13,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.qqmail.d.v;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.xweb.c;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +22,21 @@ public class MailAttachListLinearLayout
   extends LinearLayout
 {
   private Context context;
-  private String xbf;
-  private List<String> xgw;
+  private String xqW;
+  private List<String> xwo;
   
   public MailAttachListLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(123105);
-    this.xgw = new ArrayList();
+    this.xwo = new ArrayList();
     this.context = paramContext;
     AppMethodBeat.o(123105);
   }
   
-  public final void eU(List<Bundle> paramList)
+  public final void fc(List<Bundle> paramList)
   {
-    AppMethodBeat.i(215316);
+    AppMethodBeat.i(218063);
     int i = 0;
     if (i < paramList.size())
     {
@@ -49,10 +49,10 @@ public class MailAttachListLinearLayout
       {
         addView(localView);
         final String str = localBundle.getString("attach_name", "");
-        this.xgw.add(str);
+        this.xwo.add(str);
         final int j = localBundle.getInt("attach_size", 0);
         ((TextView)localView.findViewById(2131303788)).setText(str);
-        ((TextView)localView.findViewById(2131303790)).setText(bt.sy(j));
+        ((TextView)localView.findViewById(2131303790)).setText(bu.sL(j));
         localView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
@@ -60,42 +60,42 @@ public class MailAttachListLinearLayout
             AppMethodBeat.i(123104);
             Object localObject = new b();
             ((b)localObject).bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/MailAttachListLinearLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/MailAttachListLinearLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
             localObject = new Intent(MailAttachListLinearLayout.a(MailAttachListLinearLayout.this), AttachDownloadPage.class);
             ((Intent)localObject).putExtra("attach_name", str);
             ((Intent)localObject).putExtra("mail_id", MailAttachListLinearLayout.b(MailAttachListLinearLayout.this));
-            ((Intent)localObject).putExtra("attach_id", this.xgx);
+            ((Intent)localObject).putExtra("attach_id", this.xwp);
             ((Intent)localObject).putExtra("total_size", j);
-            ((Intent)localObject).putExtra("attach_url", this.xgy);
-            ((Intent)localObject).putExtra("is_compress", MailAttachListLinearLayout.ave(this.xgy));
+            ((Intent)localObject).putExtra("attach_url", this.xwq);
+            ((Intent)localObject).putExtra("is_compress", MailAttachListLinearLayout.awt(this.xwq));
             ((Intent)localObject).putExtra("is_preview", 1);
-            ((Intent)localObject).putExtra("qqmail_cookie", c.gaw().getCookie(v.dCk()));
+            ((Intent)localObject).putExtra("qqmail_cookie", c.geY().getCookie(v.dFB()));
             paramAnonymousView = MailAttachListLinearLayout.a(MailAttachListLinearLayout.this);
             localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/qqmail/ui/MailAttachListLinearLayout$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/qqmail/ui/MailAttachListLinearLayout$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/qqmail/ui/MailAttachListLinearLayout$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/MailAttachListLinearLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(123104);
           }
         });
-        ((ImageView)localView.findViewById(2131303787)).setImageResource(FileExplorerUI.aNp(str));
+        ((ImageView)localView.findViewById(2131303787)).setImageResource(FileExplorerUI.aOM(str));
         i += 1;
         break;
         localView.setBackgroundResource(2131233187);
       }
     }
-    AppMethodBeat.o(215316);
+    AppMethodBeat.o(218063);
   }
   
   public void setMailId(String paramString)
   {
-    this.xbf = paramString;
+    this.xqW = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAttachListLinearLayout
  * JD-Core Version:    0.7.0.1
  */

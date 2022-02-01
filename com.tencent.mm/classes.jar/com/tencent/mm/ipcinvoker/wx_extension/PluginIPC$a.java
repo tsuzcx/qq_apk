@@ -2,17 +2,17 @@ package com.tencent.mm.ipcinvoker.wx_extension;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class PluginIPC$a
   implements a
 {
-  static final a gyh;
+  static final a gAO;
   
   static
   {
     AppMethodBeat.i(146421);
-    gyh = new a();
+    gAO = new a();
     AppMethodBeat.o(146421);
   }
   
@@ -26,22 +26,22 @@ final class PluginIPC$a
     {
       AppMethodBeat.o(146420);
       return;
-      ad.v(paramString1, paramString2, paramVarArgs);
+      ae.v(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ad.d(paramString1, paramString2, paramVarArgs);
+      ae.d(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ad.i(paramString1, paramString2, paramVarArgs);
+      ae.i(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ad.w(paramString1, paramString2, paramVarArgs);
+      ae.w(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ad.e(paramString1, paramString2, paramVarArgs);
+      ae.e(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ad.e(paramString1, paramString2, paramVarArgs);
+      ae.e(paramString1, paramString2, paramVarArgs);
     }
   }
 }

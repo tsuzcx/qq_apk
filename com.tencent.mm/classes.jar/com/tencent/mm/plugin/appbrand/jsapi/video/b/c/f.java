@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.b.c;
 
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
 
 public abstract interface f
 {
-  public abstract e dy(String paramString);
+  public abstract k dB(String paramString);
 }
 
 

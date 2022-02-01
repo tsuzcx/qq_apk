@@ -16,16 +16,16 @@ public final class p
   {
     AppMethodBeat.i(60639);
     if (paramList1 == null) {
-      ajm(0);
+      ajW(0);
     }
     if (paramay == null) {
-      ajm(1);
+      ajW(1);
     }
     if (paraml == null) {
-      ajm(2);
+      ajW(2);
     }
     if (paramList2 == null) {
-      ajm(3);
+      ajW(3);
     }
     paramList1 = a(paramList1, paramay, paraml, paramList2, null);
     if (paramList1 == null)
@@ -35,7 +35,7 @@ public final class p
       throw paramList1;
     }
     if (paramList1 == null) {
-      ajm(4);
+      ajW(4);
     }
     AppMethodBeat.o(60639);
     return paramList1;
@@ -45,16 +45,16 @@ public final class p
   {
     AppMethodBeat.i(60640);
     if (paramList1 == null) {
-      ajm(5);
+      ajW(5);
     }
     if (paramay == null) {
-      ajm(6);
+      ajW(6);
     }
     if (paraml == null) {
-      ajm(7);
+      ajW(7);
     }
     if (paramList2 == null) {
-      ajm(8);
+      ajW(8);
     }
     Object localObject1 = new HashMap();
     HashMap localHashMap = new HashMap();
@@ -63,23 +63,23 @@ public final class p
     while (((Iterator)localObject2).hasNext())
     {
       as localas = (as)((Iterator)localObject2).next();
-      ai localai = ai.a(paraml, localas.ghH(), localas.giG(), localas.giF(), localas.giD(), i, an.MUX, localas.giE());
-      ((Map)localObject1).put(localas.ghu(), new ax(localai.giC()));
+      ai localai = ai.a(paraml, localas.gmj(), localas.gni(), localas.gnh(), localas.gnf(), i, an.Nsc, localas.gng());
+      ((Map)localObject1).put(localas.glW(), new ax(localai.gne()));
       localHashMap.put(localas, localai);
       paramList2.add(localai);
       i += 1;
     }
-    paramay = ba.b(paramay, au.cj((Map)localObject1));
+    paramay = ba.b(paramay, au.co((Map)localObject1));
     paramList1 = paramList1.iterator();
     while (paramList1.hasNext())
     {
       paramList2 = (as)paramList1.next();
       paraml = (ai)localHashMap.get(paramList2);
-      paramList2 = paramList2.ggj().iterator();
+      paramList2 = paramList2.gkL().iterator();
       while (paramList2.hasNext())
       {
         localObject1 = (ab)paramList2.next();
-        localObject2 = paramay.c((ab)localObject1, bh.NCQ);
+        localObject2 = paramay.c((ab)localObject1, bh.NZX);
         if (localObject2 == null)
         {
           AppMethodBeat.o(60640);
@@ -98,7 +98,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.p
  * JD-Core Version:    0.7.0.1
  */

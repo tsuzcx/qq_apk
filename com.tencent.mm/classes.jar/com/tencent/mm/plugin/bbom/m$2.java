@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.bbom;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.pluginsdk.model.app.ao;
 
 final class m$2
@@ -12,7 +12,7 @@ final class m$2
   public final void execute(g paramg)
   {
     AppMethodBeat.i(22369);
-    new t(ao.class);
+    new u(ao.class);
     AppMethodBeat.o(22369);
   }
 }

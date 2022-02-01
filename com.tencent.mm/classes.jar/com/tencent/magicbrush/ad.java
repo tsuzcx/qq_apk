@@ -8,55 +8,55 @@ import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(gfx={1, 1, 13})
+@l(gjZ={1, 1, 13})
 final class ad
   extends t
 {
-  public static final h cxK;
+  public static final h cyr;
   
   static
   {
-    AppMethodBeat.i(215096);
-    cxK = new ad();
-    AppMethodBeat.o(215096);
+    AppMethodBeat.i(213334);
+    cyr = new ad();
+    AppMethodBeat.o(213334);
   }
   
-  public final String Hu()
+  public final String HC()
   {
-    return "getSupport_gfximage_share_texture()Z";
+    return "getSupport_client_vertex_buffer()Z";
   }
   
-  public final d Hv()
+  public final d HD()
   {
-    AppMethodBeat.i(215097);
+    AppMethodBeat.i(213335);
     b localb = z.bp(MBRuntime.MBParams.class);
-    AppMethodBeat.o(215097);
+    AppMethodBeat.o(213335);
     return localb;
   }
   
   public final Object get(Object paramObject)
   {
-    AppMethodBeat.i(215098);
-    boolean bool = ((MBRuntime.MBParams)paramObject).support_gfximage_share_texture;
-    AppMethodBeat.o(215098);
+    AppMethodBeat.i(213336);
+    boolean bool = ((MBRuntime.MBParams)paramObject).support_client_vertex_buffer;
+    AppMethodBeat.o(213336);
     return Boolean.valueOf(bool);
   }
   
   public final String getName()
   {
-    return "support_gfximage_share_texture";
+    return "support_client_vertex_buffer";
   }
   
   public final void set(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(215099);
-    ((MBRuntime.MBParams)paramObject1).support_gfximage_share_texture = ((Boolean)paramObject2).booleanValue();
-    AppMethodBeat.o(215099);
+    AppMethodBeat.i(213337);
+    ((MBRuntime.MBParams)paramObject1).support_client_vertex_buffer = ((Boolean)paramObject2).booleanValue();
+    AppMethodBeat.o(213337);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.ad
  * JD-Core Version:    0.7.0.1
  */

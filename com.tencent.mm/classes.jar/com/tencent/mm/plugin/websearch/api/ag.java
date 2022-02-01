@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.cyl;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.model.v;
+import com.tencent.mm.protocal.protobuf.czf;
+import com.tencent.mm.protocal.protobuf.czg;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -17,34 +17,34 @@ import org.json.JSONObject;
 
 public final class ag
 {
-  public static cym DCd;
+  public static czg DUa;
   
-  public static String bnU()
+  public static String boE()
   {
     AppMethodBeat.i(117724);
-    String str = "key_pb_history_list" + u.aAm();
+    String str = "key_pb_history_list" + v.aAC();
     AppMethodBeat.o(117724);
     return str;
   }
   
-  public static cym eMk()
+  public static czg ePT()
   {
     AppMethodBeat.i(117723);
     Object localObject;
-    if (DCd == null)
+    if (DUa == null)
     {
-      localObject = bnU();
-      DCd = new cym();
-      localObject = aj.getContext().getSharedPreferences("fts_history_search_sp", 0).getString((String)localObject, "");
-      if (!bt.isNullOrNil((String)localObject)) {
+      localObject = boE();
+      DUa = new czg();
+      localObject = ak.getContext().getSharedPreferences("fts_history_search_sp", 0).getString((String)localObject, "");
+      if (!bu.isNullOrNil((String)localObject)) {
         localObject = Base64.decode(((String)localObject).getBytes(), 0);
       }
     }
     try
     {
-      DCd.parseFrom((byte[])localObject);
+      DUa.parseFrom((byte[])localObject);
       label67:
-      localObject = DCd;
+      localObject = DUa;
       AppMethodBeat.o(117723);
       return localObject;
     }
@@ -54,11 +54,11 @@ public final class ag
     }
   }
   
-  public static String eMl()
+  public static String ePU()
   {
     AppMethodBeat.i(117725);
-    cym localcym = eMk();
-    int j = localcym.nDj.size();
+    czg localczg = ePT();
+    int j = localczg.nIE.size();
     Object localObject = new JSONObject();
     try
     {
@@ -66,11 +66,11 @@ public final class ag
       JSONObject localJSONObject1 = new JSONObject();
       JSONArray localJSONArray2 = new JSONArray();
       int i = 0;
-      while ((i < localcym.nDj.size()) && (i < j))
+      while ((i < localczg.nIE.size()) && (i < j))
       {
-        cyl localcyl = (cyl)localcym.nDj.get(i);
+        czf localczf = (czf)localczg.nIE.get(i);
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("word", localcyl.FKK);
+        localJSONObject2.put("word", localczf.Gdj);
         localJSONArray2.put(localJSONObject2);
         i += 1;
       }

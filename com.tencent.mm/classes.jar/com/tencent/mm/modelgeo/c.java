@@ -1,15 +1,15 @@
 package com.tencent.mm.modelgeo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bf.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,21 +21,21 @@ public final class c
   implements f
 {
   public static String TAG = "MicroMsg.LocationAddr";
-  private static c hXn;
+  private static c iaf;
   private HashMap<String, CopyOnWriteArrayList<WeakReference<a>>> bGq;
-  private c hXo;
-  private CopyOnWriteArrayList<c> hXp;
-  private be hXq;
-  private boolean hXr;
+  private c iag;
+  private CopyOnWriteArrayList<c> iah;
+  private bf iai;
+  private boolean iaj;
   
   private c()
   {
     AppMethodBeat.i(150467);
-    this.hXo = null;
-    this.hXp = new CopyOnWriteArrayList();
+    this.iag = null;
+    this.iah = new CopyOnWriteArrayList();
     this.bGq = new HashMap();
-    this.hXq = new be(1, "addr_worker");
-    this.hXr = true;
+    this.iai = new bf(1, "addr_worker");
+    this.iaj = true;
     AppMethodBeat.o(150467);
   }
   
@@ -45,7 +45,7 @@ public final class c
     // Byte code:
     //   0: ldc 80
     //   2: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 86	com/tencent/mm/sdk/platformtools/ac:fks	()Ljava/lang/String;
+    //   5: invokestatic 86	com/tencent/mm/sdk/platformtools/ad:fom	()Ljava/lang/String;
     //   8: astore 12
     //   10: new 88	com/tencent/mm/modelgeo/Addr
     //   13: dup
@@ -77,7 +77,7 @@ public final class c
     //   59: aload 6
     //   61: invokestatic 108	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   64: invokevirtual 112	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   67: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   67: invokestatic 118	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   70: aconst_null
     //   71: astore 10
     //   73: aconst_null
@@ -121,7 +121,7 @@ public final class c
     //   152: invokevirtual 144	com/tencent/mm/network/v:getResponseCode	()I
     //   155: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   158: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: invokestatic 118	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   164: aload 6
     //   166: astore 7
     //   168: aload 6
@@ -166,7 +166,7 @@ public final class c
     //   253: astore 7
     //   255: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
     //   258: ldc 176
-    //   260: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   260: invokestatic 118	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   263: aload 6
     //   265: astore 7
     //   267: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
@@ -176,21 +176,21 @@ public final class c
     //   276: dup
     //   277: iconst_0
     //   278: aload 10
-    //   280: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   280: invokestatic 183	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   283: aastore
-    //   284: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   287: aload 8
     //   289: astore 7
     //   291: aload 6
     //   293: ifnull +12 -> 305
     //   296: aload 6
-    //   298: invokevirtual 191	com/tencent/mm/network/v:disconnect	()V
+    //   298: invokevirtual 190	com/tencent/mm/network/v:disconnect	()V
     //   301: aload 8
     //   303: astore 7
     //   305: aload 7
     //   307: ifnull +8 -> 315
     //   310: aload 7
-    //   312: invokevirtual 194	java/io/InputStreamReader:close	()V
+    //   312: invokevirtual 193	java/io/InputStreamReader:close	()V
     //   315: ldc 80
     //   317: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   320: aload 11
@@ -210,7 +210,7 @@ public final class c
     //   342: aastore
     //   343: dup
     //   344: iconst_2
-    //   345: ldc 196
+    //   345: ldc 195
     //   347: aastore
     //   348: invokestatic 103	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   351: astore 6
@@ -220,43 +220,43 @@ public final class c
     //   360: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
     //   363: new 136	java/lang/StringBuilder
     //   366: dup
-    //   367: ldc 198
+    //   367: ldc 197
     //   369: invokespecial 140	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   372: aload 10
-    //   374: invokevirtual 199	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   377: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   374: invokevirtual 198	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   377: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   380: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   383: invokestatic 118	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   386: aload 6
     //   388: astore 7
-    //   390: new 204	org/json/JSONObject
+    //   390: new 203	org/json/JSONObject
     //   393: dup
     //   394: aload 10
-    //   396: invokevirtual 199	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   399: invokespecial 205	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   402: ldc 207
-    //   404: invokevirtual 211	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   396: invokevirtual 198	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   399: invokespecial 204	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   402: ldc 206
+    //   404: invokevirtual 210	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   407: astore 10
     //   409: aload 6
     //   411: astore 7
     //   413: aload 10
     //   415: iconst_0
-    //   416: invokevirtual 217	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   416: invokevirtual 216	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   419: astore 9
     //   421: aload 6
     //   423: astore 7
     //   425: aload 11
     //   427: aload 9
-    //   429: ldc 219
-    //   431: invokevirtual 222	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   434: putfield 225	com/tencent/mm/modelgeo/Addr:hWY	Ljava/lang/String;
+    //   429: ldc 218
+    //   431: invokevirtual 221	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   434: putfield 224	com/tencent/mm/modelgeo/Addr:hZQ	Ljava/lang/String;
     //   437: aload 6
     //   439: astore 7
     //   441: aload 10
     //   443: iconst_0
-    //   444: invokevirtual 217	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   447: ldc 227
-    //   449: invokevirtual 211	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   444: invokevirtual 216	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   447: ldc 226
+    //   449: invokevirtual 210	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   452: astore 13
     //   454: iconst_0
     //   455: istore 5
@@ -264,69 +264,69 @@ public final class c
     //   459: astore 7
     //   461: iload 5
     //   463: aload 13
-    //   465: invokevirtual 230	org/json/JSONArray:length	()I
+    //   465: invokevirtual 229	org/json/JSONArray:length	()I
     //   468: if_icmpge +266 -> 734
     //   471: aload 6
     //   473: astore 7
     //   475: aload 13
     //   477: iload 5
-    //   479: invokevirtual 217	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   479: invokevirtual 216	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   482: astore 14
     //   484: aload 6
     //   486: astore 7
     //   488: aload 14
-    //   490: ldc 232
-    //   492: invokevirtual 222	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   490: ldc 231
+    //   492: invokevirtual 221	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   495: astore 10
     //   497: aload 6
     //   499: astore 7
     //   501: aload 14
-    //   503: ldc 234
-    //   505: invokevirtual 211	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   503: ldc 233
+    //   505: invokevirtual 210	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   508: iconst_0
-    //   509: invokevirtual 237	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   509: invokevirtual 236	org/json/JSONArray:getString	(I)Ljava/lang/String;
     //   512: astore 14
     //   514: aload 6
     //   516: astore 7
     //   518: aload 14
-    //   520: ldc 239
-    //   522: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   520: ldc 238
+    //   522: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   525: ifeq +17 -> 542
     //   528: aload 6
     //   530: astore 7
     //   532: aload 11
     //   534: aload 10
-    //   536: putfield 246	com/tencent/mm/modelgeo/Addr:hWZ	Ljava/lang/String;
+    //   536: putfield 245	com/tencent/mm/modelgeo/Addr:hZR	Ljava/lang/String;
     //   539: goto +559 -> 1098
     //   542: aload 6
     //   544: astore 7
     //   546: aload 14
-    //   548: ldc 248
-    //   550: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   548: ldc 247
+    //   550: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   553: ifeq +17 -> 570
     //   556: aload 6
     //   558: astore 7
     //   560: aload 11
     //   562: aload 10
-    //   564: putfield 251	com/tencent/mm/modelgeo/Addr:hXa	Ljava/lang/String;
+    //   564: putfield 250	com/tencent/mm/modelgeo/Addr:hZS	Ljava/lang/String;
     //   567: goto +531 -> 1098
     //   570: aload 6
     //   572: astore 7
     //   574: aload 14
-    //   576: ldc 253
-    //   578: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   576: ldc 252
+    //   578: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   581: ifeq +37 -> 618
     //   584: aload 6
     //   586: astore 7
     //   588: aload 11
     //   590: aload 10
-    //   592: putfield 256	com/tencent/mm/modelgeo/Addr:hXc	Ljava/lang/String;
+    //   592: putfield 255	com/tencent/mm/modelgeo/Addr:hZU	Ljava/lang/String;
     //   595: goto +503 -> 1098
     //   598: astore 6
     //   600: aload 7
     //   602: ifnull +8 -> 610
     //   605: aload 7
-    //   607: invokevirtual 191	com/tencent/mm/network/v:disconnect	()V
+    //   607: invokevirtual 190	com/tencent/mm/network/v:disconnect	()V
     //   610: ldc 80
     //   612: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   615: aload 6
@@ -334,94 +334,94 @@ public final class c
     //   618: aload 6
     //   620: astore 7
     //   622: aload 14
-    //   624: ldc_w 258
-    //   627: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   624: ldc_w 257
+    //   627: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   630: ifeq +17 -> 647
     //   633: aload 6
     //   635: astore 7
     //   637: aload 11
     //   639: aload 10
-    //   641: putfield 261	com/tencent/mm/modelgeo/Addr:hXd	Ljava/lang/String;
+    //   641: putfield 260	com/tencent/mm/modelgeo/Addr:hZV	Ljava/lang/String;
     //   644: goto +454 -> 1098
     //   647: aload 6
     //   649: astore 7
     //   651: aload 14
-    //   653: ldc_w 263
-    //   656: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   653: ldc_w 262
+    //   656: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   659: ifeq +17 -> 676
     //   662: aload 6
     //   664: astore 7
     //   666: aload 11
     //   668: aload 10
-    //   670: putfield 266	com/tencent/mm/modelgeo/Addr:hXe	Ljava/lang/String;
+    //   670: putfield 265	com/tencent/mm/modelgeo/Addr:hZW	Ljava/lang/String;
     //   673: goto +425 -> 1098
     //   676: aload 6
     //   678: astore 7
     //   680: aload 14
-    //   682: ldc_w 268
-    //   685: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   682: ldc_w 267
+    //   685: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   688: ifeq +17 -> 705
     //   691: aload 6
     //   693: astore 7
     //   695: aload 11
     //   697: aload 10
-    //   699: putfield 271	com/tencent/mm/modelgeo/Addr:hXf	Ljava/lang/String;
+    //   699: putfield 270	com/tencent/mm/modelgeo/Addr:hZX	Ljava/lang/String;
     //   702: goto +396 -> 1098
     //   705: aload 6
     //   707: astore 7
     //   709: aload 14
-    //   711: ldc_w 273
-    //   714: invokevirtual 243	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   711: ldc_w 272
+    //   714: invokevirtual 242	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   717: ifeq +381 -> 1098
     //   720: aload 6
     //   722: astore 7
     //   724: aload 11
     //   726: aload 10
-    //   728: putfield 275	com/tencent/mm/modelgeo/Addr:country	Ljava/lang/String;
+    //   728: putfield 274	com/tencent/mm/modelgeo/Addr:country	Ljava/lang/String;
     //   731: goto +367 -> 1098
     //   734: aload 6
     //   736: astore 7
     //   738: aload 11
-    //   740: getfield 225	com/tencent/mm/modelgeo/Addr:hWY	Ljava/lang/String;
-    //   743: ldc_w 277
-    //   746: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   740: getfield 224	com/tencent/mm/modelgeo/Addr:hZQ	Ljava/lang/String;
+    //   743: ldc_w 276
+    //   746: invokestatic 282	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   749: astore 10
     //   751: aload 6
     //   753: astore 7
     //   755: aload 13
-    //   757: invokevirtual 284	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   760: ldc_w 277
-    //   763: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   757: invokevirtual 283	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   760: ldc_w 276
+    //   763: invokestatic 282	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   766: astore 13
     //   768: aload 6
     //   770: astore 7
     //   772: aload 9
-    //   774: ldc_w 286
-    //   777: invokevirtual 289	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   780: invokevirtual 290	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   783: ldc_w 277
-    //   786: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   774: ldc_w 285
+    //   777: invokevirtual 288	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   780: invokevirtual 289	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   783: ldc_w 276
+    //   786: invokestatic 282	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   789: astore 14
     //   791: aload 6
     //   793: astore 7
     //   795: aload 9
-    //   797: ldc_w 292
-    //   800: invokevirtual 222	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   803: ldc_w 277
-    //   806: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   797: ldc_w 291
+    //   800: invokevirtual 221	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   803: ldc_w 276
+    //   806: invokestatic 282	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   809: astore 15
     //   811: aload 6
     //   813: astore 7
     //   815: aload 9
-    //   817: ldc 234
-    //   819: invokevirtual 211	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   822: invokevirtual 284	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   825: ldc_w 277
-    //   828: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   817: ldc 233
+    //   819: invokevirtual 210	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   822: invokevirtual 283	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   825: ldc_w 276
+    //   828: invokestatic 282	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   831: astore 9
     //   833: aload 6
     //   835: astore 7
-    //   837: ldc_w 294
+    //   837: ldc_w 293
     //   840: iconst_2
     //   841: anewarray 4	java/lang/Object
     //   844: dup
@@ -435,13 +435,13 @@ public final class c
     //   854: invokestatic 97	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   857: aastore
     //   858: invokestatic 103	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   861: ldc_w 277
-    //   864: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   861: ldc_w 276
+    //   864: invokestatic 282	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   867: astore 16
     //   869: aload 6
     //   871: astore 7
     //   873: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
-    //   876: ldc_w 296
+    //   876: ldc_w 295
     //   879: bipush 7
     //   881: anewarray 4	java/lang/Object
     //   884: dup
@@ -472,10 +472,10 @@ public final class c
     //   915: bipush 6
     //   917: aload 12
     //   919: aastore
-    //   920: invokestatic 298	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   920: invokestatic 297	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   923: aload 6
     //   925: astore 7
-    //   927: getstatic 304	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+    //   927: getstatic 303	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
     //   930: sipush 12886
     //   933: bipush 7
     //   935: anewarray 4	java/lang/Object
@@ -507,9 +507,9 @@ public final class c
     //   969: bipush 6
     //   971: aload 12
     //   973: aastore
-    //   974: invokevirtual 308	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
+    //   974: invokevirtual 307	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
     //   977: aload 6
-    //   979: invokevirtual 191	com/tencent/mm/network/v:disconnect	()V
+    //   979: invokevirtual 190	com/tencent/mm/network/v:disconnect	()V
     //   982: aload 8
     //   984: astore 7
     //   986: goto -681 -> 305
@@ -521,8 +521,8 @@ public final class c
     //   998: aload 6
     //   1000: astore 7
     //   1002: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
-    //   1005: ldc_w 310
-    //   1008: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1005: ldc_w 309
+    //   1008: invokestatic 118	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1011: aload 6
     //   1013: astore 7
     //   1015: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
@@ -532,15 +532,15 @@ public final class c
     //   1024: dup
     //   1025: iconst_0
     //   1026: aload 9
-    //   1028: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1028: invokestatic 183	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1031: aastore
-    //   1032: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1032: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1035: aload 8
     //   1037: astore 7
     //   1039: aload 6
     //   1041: ifnull -736 -> 305
     //   1044: aload 6
-    //   1046: invokevirtual 191	com/tencent/mm/network/v:disconnect	()V
+    //   1046: invokevirtual 190	com/tencent/mm/network/v:disconnect	()V
     //   1049: aload 8
     //   1051: astore 7
     //   1053: goto -748 -> 305
@@ -552,9 +552,9 @@ public final class c
     //   1067: dup
     //   1068: iconst_0
     //   1069: aload 6
-    //   1071: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1071: invokestatic 183	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1074: aastore
-    //   1075: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1075: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1078: goto -763 -> 315
     //   1081: astore 9
     //   1083: goto -85 -> 998
@@ -730,7 +730,7 @@ public final class c
   private void a(Addr paramAddr)
   {
     AppMethodBeat.i(150476);
-    if (this.hXo == null)
+    if (this.iag == null)
     {
       AppMethodBeat.o(150476);
       return;
@@ -739,13 +739,13 @@ public final class c
     if (paramAddr == null) {
       localAddr = new Addr();
     }
-    if (this.hXo.tag == null) {}
-    for (paramAddr = new Object();; paramAddr = this.hXo.tag)
+    if (this.iag.tag == null) {}
+    for (paramAddr = new Object();; paramAddr = this.iag.tag)
     {
       localAddr.tag = paramAddr;
-      localAddr.hXj = ((float)this.hXo.lat);
-      localAddr.hXk = ((float)this.hXo.lng);
-      paramAddr = (CopyOnWriteArrayList)this.bGq.get(this.hXo.toString());
+      localAddr.iab = ((float)this.iag.lat);
+      localAddr.iac = ((float)this.iag.lng);
+      paramAddr = (CopyOnWriteArrayList)this.bGq.get(this.iag.toString());
       if (paramAddr == null) {
         break;
       }
@@ -758,12 +758,12 @@ public final class c
         }
       }
     }
-    this.bGq.remove(this.hXo.toString());
-    ad.d(TAG, "postexecute2 listeners %d", new Object[] { Integer.valueOf(this.bGq.size()) });
-    this.hXo = null;
-    aHO();
-    if ((this.hXo == null) && (this.hXp.size() > 0)) {
-      g.aiU().b(655, this);
+    this.bGq.remove(this.iag.toString());
+    ae.d(TAG, "postexecute2 listeners %d", new Object[] { Integer.valueOf(this.bGq.size()) });
+    this.iag = null;
+    aIf();
+    if ((this.iag == null) && (this.iah.size() > 0)) {
+      g.ajj().b(655, this);
     }
     AppMethodBeat.o(150476);
   }
@@ -785,39 +785,39 @@ public final class c
     return false;
   }
   
-  public static c aHN()
+  public static c aIe()
   {
     AppMethodBeat.i(150468);
-    if (hXn == null) {
-      hXn = new c();
+    if (iaf == null) {
+      iaf = new c();
     }
-    c localc = hXn;
+    c localc = iaf;
     AppMethodBeat.o(150468);
     return localc;
   }
   
-  private void aHO()
+  private void aIf()
   {
     AppMethodBeat.i(150474);
-    if ((this.hXo == null) && (this.hXp != null) && (this.hXp.size() > 0))
+    if ((this.iag == null) && (this.iah != null) && (this.iah.size() > 0))
     {
-      this.hXo = ((c)this.hXp.remove(0));
-      aHP();
+      this.iag = ((c)this.iah.remove(0));
+      aIg();
     }
     AppMethodBeat.o(150474);
   }
   
-  private void aHP()
+  private void aIg()
   {
     AppMethodBeat.i(150475);
-    if (bt.jk(aj.getContext()))
+    if (bu.jq(ak.getContext()))
     {
-      this.hXq.c(new b());
+      this.iai.c(new b());
       AppMethodBeat.o(150475);
       return;
     }
-    g.aiU().a(655, this);
-    g.aiU().a(new e(this.hXo.lat, this.hXo.lng), 0);
+    g.ajj().a(655, this);
+    g.ajj().a(new e(this.iag.lat, this.iag.lng), 0);
     AppMethodBeat.o(150475);
   }
   
@@ -857,12 +857,12 @@ public final class c
     AppMethodBeat.i(150472);
     if (paramObject != null)
     {
-      localObject = this.hXp.iterator();
+      localObject = this.iah.iterator();
       while (((Iterator)localObject).hasNext())
       {
         localc = (c)((Iterator)localObject).next();
         if ((localc != null) && (localc.tag != null) && (localc.tag.equals(paramObject))) {
-          this.hXp.remove(localc);
+          this.iah.remove(localc);
         }
       }
     }
@@ -876,31 +876,31 @@ public final class c
       paramObject.add(new WeakReference(parama));
     }
     this.bGq.put(localc.toString(), paramObject);
-    parama = this.hXp.iterator();
+    parama = this.iah.iterator();
     while (parama.hasNext()) {
       if (((c)parama.next()).equals(localc))
       {
-        aHO();
+        aIf();
         AppMethodBeat.o(150472);
         return false;
       }
     }
-    if ((this.hXo != null) && (localc.equals(this.hXo)))
+    if ((this.iag != null) && (localc.equals(this.iag)))
     {
       AppMethodBeat.o(150472);
       return false;
     }
-    this.hXp.add(localc);
-    ad.i(TAG, "push task size %d listeners %d", new Object[] { Integer.valueOf(this.hXp.size()), Integer.valueOf(this.bGq.size()) });
-    while (this.hXp.size() > 30)
+    this.iah.add(localc);
+    ae.i(TAG, "push task size %d listeners %d", new Object[] { Integer.valueOf(this.iah.size()), Integer.valueOf(this.bGq.size()) });
+    while (this.iah.size() > 30)
     {
-      ad.i(TAG, "force remove task");
-      parama = (c)this.hXp.remove(0);
+      ae.i(TAG, "force remove task");
+      parama = (c)this.iah.remove(0);
       if (parama != null) {
         this.bGq.remove(parama.toString());
       }
     }
-    aHO();
+    aIf();
     AppMethodBeat.o(150472);
     return true;
   }
@@ -927,7 +927,7 @@ public final class c
       localObject2 = (String)parama.next();
       this.bGq.remove(localObject2);
     }
-    parama = this.hXp.iterator();
+    parama = this.iah.iterator();
     while (parama.hasNext())
     {
       localObject2 = (c)parama.next();
@@ -942,9 +942,9 @@ public final class c
     while (parama.hasNext())
     {
       localObject1 = (c)parama.next();
-      this.hXp.remove(localObject1);
+      this.iah.remove(localObject1);
     }
-    ad.i(TAG, "remove taskLists %d listeners size %d", new Object[] { Integer.valueOf(this.hXp.size()), Integer.valueOf(this.bGq.size()) });
+    ae.i(TAG, "remove taskLists %d listeners size %d", new Object[] { Integer.valueOf(this.iah.size()), Integer.valueOf(this.bGq.size()) });
     AppMethodBeat.o(150469);
     return true;
   }
@@ -954,10 +954,10 @@ public final class c
     AppMethodBeat.i(150478);
     if (paramn.getType() == 655)
     {
-      paramString = ((e)paramn).aHT();
-      if ((paramString == null) || (paramString.hWY == null) || (paramString.hWY.equals("")))
+      paramString = ((e)paramn).aIk();
+      if ((paramString == null) || (paramString.hZQ == null) || (paramString.hZQ.equals("")))
       {
-        this.hXq.c(new b());
+        this.iai.c(new b());
         AppMethodBeat.o(150478);
         return;
       }
@@ -972,13 +972,13 @@ public final class c
   }
   
   final class b
-    implements be.a
+    implements bf.a
   {
-    private Addr hXs = null;
+    private Addr iak = null;
     
     public b() {}
     
-    public final boolean aEm()
+    public final boolean aEC()
     {
       AppMethodBeat.i(150463);
       if (c.a(c.this) == null)
@@ -986,18 +986,18 @@ public final class c
         AppMethodBeat.o(150463);
         return false;
       }
-      if ((this.hXs == null) || (this.hXs.hWY == null) || (this.hXs.hWY.equals(""))) {
-        this.hXs = c.b(c.a(c.this).lat, c.a(c.this).lng, c.b(c.this));
+      if ((this.iak == null) || (this.iak.hZQ == null) || (this.iak.hZQ.equals(""))) {
+        this.iak = c.b(c.a(c.this).lat, c.a(c.this).lng, c.b(c.this));
       }
       AppMethodBeat.o(150463);
       return true;
     }
     
-    public final boolean aEn()
+    public final boolean aED()
     {
       AppMethodBeat.i(150464);
       c.c(c.this);
-      c.a(c.this, this.hXs);
+      c.a(c.this, this.iak);
       AppMethodBeat.o(150464);
       return true;
     }

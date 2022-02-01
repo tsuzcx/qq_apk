@@ -60,14 +60,14 @@ public class b
   
   private EGLContext a(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(187360);
+    AppMethodBeat.i(221489);
     EGLContext localEGLContext = paramEGLContext;
     if (paramEGLContext == null) {
       localEGLContext = EGL10.EGL_NO_CONTEXT;
     }
     paramEGLDisplay = this.b.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, new int[] { 12440, paramInt, 12344 });
     f();
-    AppMethodBeat.o(187360);
+    AppMethodBeat.o(221489);
     return paramEGLDisplay;
   }
   
@@ -150,15 +150,15 @@ public class b
   
   private void f()
   {
-    AppMethodBeat.i(187361);
+    AppMethodBeat.i(221490);
     int n = this.b.eglGetError();
     if (n != 12288)
     {
       d locald = new d(n);
-      AppMethodBeat.o(187361);
+      AppMethodBeat.o(221490);
       throw locald;
     }
-    AppMethodBeat.o(187361);
+    AppMethodBeat.o(221490);
   }
   
   public boolean a()
@@ -216,7 +216,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.liteav.basic.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -19,17 +19,17 @@ public class AudioResample
   public AudioResample()
   {
     this(newDefaultDestAudioInfo());
-    AppMethodBeat.i(217888);
-    AppMethodBeat.o(217888);
+    AppMethodBeat.i(214526);
+    AppMethodBeat.o(214526);
   }
   
   public AudioResample(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217889);
+    AppMethodBeat.i(214527);
     this.TAG = ("AudioResample@" + Integer.toHexString(hashCode()));
     this.destAudioInfo = paramAudioInfo;
     Logger.i(this.TAG, "AudioResample() called with: destAudioInfo = [" + paramAudioInfo + "], thread = " + Thread.currentThread().getName());
-    AppMethodBeat.o(217889);
+    AppMethodBeat.o(214527);
   }
   
   private boolean compareAudioInfo(AudioInfo paramAudioInfo)
@@ -43,12 +43,12 @@ public class AudioResample
   
   private static AudioInfo newDefaultDestAudioInfo()
   {
-    AppMethodBeat.i(217890);
+    AppMethodBeat.i(214528);
     AudioInfo localAudioInfo = new AudioInfo();
     localAudioInfo.channelCount = 1;
     localAudioInfo.sampleRate = 44100;
     localAudioInfo.pcmEncoding = 2;
-    AppMethodBeat.o(217890);
+    AppMethodBeat.o(214528);
     return localAudioInfo;
   }
   
@@ -59,7 +59,7 @@ public class AudioResample
   
   public ByteBuffer resample(ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217891);
+    AppMethodBeat.i(214529);
     Logger.v(this.TAG, "resample() called with: srcBuffer = [" + paramByteBuffer + "], srcAudioInfo = [" + paramAudioInfo + "]， thread = " + Thread.currentThread().getName());
     if ((!compareAudioInfo(paramAudioInfo)) && (AVResampleFactory.getInstance().isResampleEnable()))
     {
@@ -77,7 +77,7 @@ public class AudioResample
         break;
       }
       Logger.w(this.TAG, "resample: avResample 创建失败！");
-      AppMethodBeat.o(217891);
+      AppMethodBeat.o(214529);
       return null;
     }
     paramByteBuffer = this.avResample.resample(paramByteBuffer, paramByteBuffer.limit());
@@ -91,7 +91,7 @@ public class AudioResample
     this.destBuffer.position(0);
     this.destBuffer.limit(paramByteBuffer.length);
     paramByteBuffer = this.destBuffer;
-    AppMethodBeat.o(217891);
+    AppMethodBeat.o(214529);
     return paramByteBuffer;
   }
 }

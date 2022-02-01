@@ -11,23 +11,23 @@ public abstract interface d<T>
   
   public abstract boolean a(Object paramObject, a parama);
   
-  public abstract boolean abi(int paramInt);
+  public abstract boolean abQ(int paramInt);
   
-  public abstract a abj(int paramInt);
+  public abstract a abR(int paramInt);
   
-  public abstract void abk(int paramInt);
+  public abstract void abS(int paramInt);
   
-  public abstract boolean dX(Object paramObject);
+  public abstract boolean dY(Object paramObject);
   
-  public abstract a dY(Object paramObject);
+  public abstract a dZ(Object paramObject);
   
-  public abstract SparseArray<T>[] ftH();
+  public abstract SparseArray<T>[] fxI();
   
-  public abstract HashMap<Object, T> ftI();
+  public abstract HashMap<Object, T> fxJ();
   
-  public abstract boolean ftJ();
+  public abstract boolean fxK();
   
-  public abstract void wS(boolean paramBoolean);
+  public abstract void xa(boolean paramBoolean);
 }
 
 

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 
 public abstract interface b
 {
-  public abstract void RG(String paramString);
+  public abstract void Sp(String paramString);
   
-  public abstract void RH(String paramString);
+  public abstract void Sq(String paramString);
   
   public abstract void b(String paramString, a parama, long paramLong);
   

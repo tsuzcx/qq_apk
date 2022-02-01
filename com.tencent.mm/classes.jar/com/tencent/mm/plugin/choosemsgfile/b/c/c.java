@@ -13,7 +13,7 @@ public final class c
   extends a
   implements g
 {
-  boolean oSR;
+  boolean oZt;
   
   public c(com.tencent.mm.plugin.choosemsgfile.ui.c paramc, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
   {
@@ -35,25 +35,25 @@ public final class c
     return paramViewGroup;
   }
   
-  public final boolean bZy()
+  public final boolean caN()
   {
-    return this.oSR;
+    return this.oZt;
   }
   
-  public final int tA(long paramLong)
+  public final int tR(long paramLong)
   {
     AppMethodBeat.i(123308);
-    Iterator localIterator = this.mYL.iterator();
+    Iterator localIterator = this.ndS.iterator();
     int i = -1;
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)localIterator.next();
       int j = i + 1;
       i = j;
-      if (locala.oRU != null)
+      if (locala.oYw != null)
       {
         i = j;
-        if (locala.oRU.field_msgId == paramLong)
+        if (locala.oYw.field_msgId == paramLong)
         {
           AppMethodBeat.o(123308);
           return j;

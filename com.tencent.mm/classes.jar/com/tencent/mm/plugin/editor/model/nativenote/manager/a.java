@@ -11,8 +11,8 @@ public final class a
   extends SpannableString
 {
   private int apA;
-  private Object[] puq;
-  private int[] pur;
+  private Object[] pAU;
+  private int[] pAV;
   
   public a(CharSequence paramCharSequence)
   {
@@ -25,8 +25,8 @@ public final class a
   private void h(CharSequence paramCharSequence, int paramInt)
   {
     AppMethodBeat.i(181714);
-    this.puq = new Object[20];
-    this.pur = new int[60];
+    this.pAU = new Object[20];
+    this.pAV = new int[60];
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
@@ -60,8 +60,8 @@ public final class a
   public final int getSpanEnd(Object paramObject)
   {
     int i = this.apA;
-    Object[] arrayOfObject = this.puq;
-    int[] arrayOfInt = this.pur;
+    Object[] arrayOfObject = this.pAU;
+    int[] arrayOfInt = this.pAV;
     i -= 1;
     while (i >= 0)
     {
@@ -76,8 +76,8 @@ public final class a
   public final int getSpanFlags(Object paramObject)
   {
     int i = this.apA;
-    Object[] arrayOfObject = this.puq;
-    int[] arrayOfInt = this.pur;
+    Object[] arrayOfObject = this.pAU;
+    int[] arrayOfInt = this.pAV;
     i -= 1;
     while (i >= 0)
     {
@@ -92,8 +92,8 @@ public final class a
   public final int getSpanStart(Object paramObject)
   {
     int i = this.apA;
-    Object[] arrayOfObject = this.puq;
-    int[] arrayOfInt = this.pur;
+    Object[] arrayOfObject = this.pAU;
+    int[] arrayOfInt = this.pAV;
     i -= 1;
     while (i >= 0)
     {
@@ -110,8 +110,8 @@ public final class a
     AppMethodBeat.i(181717);
     int k = 0;
     int m = this.apA;
-    Object[] arrayOfObject = this.puq;
-    int[] arrayOfInt = this.pur;
+    Object[] arrayOfObject = this.pAU;
+    int[] arrayOfInt = this.pAV;
     Object localObject1 = null;
     Object localObject2 = null;
     int j = 0;
@@ -232,8 +232,8 @@ public final class a
   {
     AppMethodBeat.i(181718);
     int m = this.apA;
-    Object[] arrayOfObject = this.puq;
-    int[] arrayOfInt = this.pur;
+    Object[] arrayOfObject = this.pAU;
+    int[] arrayOfInt = this.pAV;
     Object localObject = paramClass;
     if (paramClass == null) {
       localObject = Object.class;
@@ -269,8 +269,8 @@ public final class a
   {
     AppMethodBeat.i(181716);
     int j = this.apA;
-    Object[] arrayOfObject = this.puq;
-    int[] arrayOfInt = this.pur;
+    Object[] arrayOfObject = this.pAU;
+    int[] arrayOfInt = this.pAV;
     int i = j - 1;
     while (i >= 0)
     {
@@ -291,20 +291,20 @@ public final class a
   public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(181715);
-    if (this.apA + 1 >= this.puq.length)
+    if (this.apA + 1 >= this.pAU.length)
     {
       int i = this.apA + 10;
       Object[] arrayOfObject = new Object[i];
       int[] arrayOfInt = new int[i * 3];
-      System.arraycopy(this.puq, 0, arrayOfObject, 0, this.apA);
-      System.arraycopy(this.pur, 0, arrayOfInt, 0, this.apA * 3);
-      this.puq = arrayOfObject;
-      this.pur = arrayOfInt;
+      System.arraycopy(this.pAU, 0, arrayOfObject, 0, this.apA);
+      System.arraycopy(this.pAV, 0, arrayOfInt, 0, this.apA * 3);
+      this.pAU = arrayOfObject;
+      this.pAV = arrayOfInt;
     }
-    this.puq[this.apA] = paramObject;
-    this.pur[(this.apA * 3 + 0)] = paramInt1;
-    this.pur[(this.apA * 3 + 1)] = paramInt2;
-    this.pur[(this.apA * 3 + 2)] = paramInt3;
+    this.pAU[this.apA] = paramObject;
+    this.pAV[(this.apA * 3 + 0)] = paramInt1;
+    this.pAV[(this.apA * 3 + 1)] = paramInt2;
+    this.pAV[(this.apA * 3 + 2)] = paramInt3;
     this.apA += 1;
     AppMethodBeat.o(181715);
   }

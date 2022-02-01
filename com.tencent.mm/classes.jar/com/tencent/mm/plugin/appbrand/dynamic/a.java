@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ej;
+import com.tencent.mm.g.b.a.el;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class a
 {
-  public String gaR;
-  public String kev;
-  h kew;
+  public String gcZ;
+  public String khM;
+  h khN;
   
   public a(h paramh)
   {
-    this.kew = paramh;
+    this.khN = paramh;
   }
   
-  public final void bw(String paramString, int paramInt)
+  public final void bz(String paramString, int paramInt)
   {
     AppMethodBeat.i(121136);
-    if ((this.gaR == null) || (this.gaR.length() == 0))
+    if ((this.gcZ == null) || (this.gcZ.length() == 0))
     {
       AppMethodBeat.o(121136);
       return;
@@ -35,7 +35,7 @@ public final class a
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putInt("widgetState", paramInt);
-    com.tencent.mm.ipcinvoker.h.a(i.bfK().Ou(paramString), localBundle, f.a.class, null);
+    com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(paramString), localBundle, f.a.class, null);
     AppMethodBeat.o(121136);
   }
   

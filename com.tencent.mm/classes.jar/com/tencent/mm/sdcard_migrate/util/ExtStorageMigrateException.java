@@ -14,16 +14,16 @@ public final class ExtStorageMigrateException
   
   static
   {
-    AppMethodBeat.i(211150);
+    AppMethodBeat.i(211934);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(211150);
+    AppMethodBeat.o(211934);
   }
   
   public ExtStorageMigrateException(Throwable paramThrowable)
   {
-    AppMethodBeat.i(211148);
+    AppMethodBeat.i(211932);
     initCause(paramThrowable);
-    AppMethodBeat.o(211148);
+    AppMethodBeat.o(211932);
   }
   
   public final int describeContents()
@@ -33,9 +33,9 @@ public final class ExtStorageMigrateException
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(211149);
+    AppMethodBeat.i(211933);
     paramParcel.writeParcelable(this, paramInt);
-    AppMethodBeat.o(211149);
+    AppMethodBeat.o(211933);
   }
 }
 

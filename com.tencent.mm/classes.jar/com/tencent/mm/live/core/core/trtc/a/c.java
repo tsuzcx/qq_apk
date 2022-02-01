@@ -10,13 +10,13 @@ import java.io.File;
 
 public final class c
 {
-  public static final String gIQ;
-  private TRTCCloud gIR;
-  private boolean gIS;
-  private int gIT;
-  private int gIU;
-  private int gIV;
-  private a gIW;
+  public static final String gLz;
+  private TRTCCloud gLA;
+  private boolean gLB;
+  private int gLC;
+  private int gLD;
+  private int gLE;
+  private a gLF;
   private int mAppScene;
   private int mBeautyLevel;
   private int mRuddyLevel;
@@ -25,87 +25,87 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(216690);
-    gIQ = Environment.getExternalStorageDirectory().getPath() + "/test/record/record.aac";
-    AppMethodBeat.o(216690);
+    AppMethodBeat.i(197089);
+    gLz = Environment.getExternalStorageDirectory().getPath() + "/test/record/record.aac";
+    AppMethodBeat.o(197089);
   }
   
   public c()
   {
-    this.gIS = true;
-    this.gIT = 0;
+    this.gLB = true;
+    this.gLC = 0;
     this.mBeautyLevel = 5;
     this.mWhiteningLevel = 3;
     this.mRuddyLevel = 2;
-    this.gIV = 0;
+    this.gLE = 0;
   }
   
   public c(TRTCCloud paramTRTCCloud, TRTCCloudDef.TRTCParams paramTRTCParams)
   {
-    AppMethodBeat.i(216677);
-    this.gIS = true;
-    this.gIT = 0;
+    AppMethodBeat.i(197076);
+    this.gLB = true;
+    this.gLC = 0;
     this.mBeautyLevel = 5;
     this.mWhiteningLevel = 3;
     this.mRuddyLevel = 2;
-    this.gIV = 0;
-    this.gIR = paramTRTCCloud;
+    this.gLE = 0;
+    this.gLA = paramTRTCCloud;
     this.mTRTCParams = paramTRTCParams;
     this.mAppScene = 1;
     if (paramTRTCParams == null) {}
     for (int i = 21;; i = this.mTRTCParams.role)
     {
-      this.gIU = i;
-      AppMethodBeat.o(216677);
+      this.gLD = i;
+      AppMethodBeat.o(197076);
       return;
     }
   }
   
-  private void alS()
+  private void amh()
   {
-    AppMethodBeat.i(216682);
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.alO().alK();
+    AppMethodBeat.i(197081);
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
     TRTCCloudDef.TRTCVideoEncParam localTRTCVideoEncParam = new TRTCCloudDef.TRTCVideoEncParam();
-    localTRTCVideoEncParam.videoResolution = locald.gJl;
-    localTRTCVideoEncParam.videoFps = locald.gJm;
+    localTRTCVideoEncParam.videoResolution = locald.gLU;
+    localTRTCVideoEncParam.videoFps = locald.gLV;
     localTRTCVideoEncParam.videoBitrate = locald.mVideoBitrate;
-    if (locald.gJn) {}
+    if (locald.gLW) {}
     for (int i = 1;; i = 0)
     {
       localTRTCVideoEncParam.videoResolutionMode = i;
-      this.gIR.setVideoEncoderParam(localTRTCVideoEncParam);
-      AppMethodBeat.o(216682);
+      this.gLA.setVideoEncoderParam(localTRTCVideoEncParam);
+      AppMethodBeat.o(197081);
       return;
     }
   }
   
-  private void alT()
+  private void ami()
   {
-    AppMethodBeat.i(216683);
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.alO().alK();
+    AppMethodBeat.i(197082);
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
     TRTCCloudDef.TRTCNetworkQosParam localTRTCNetworkQosParam = new TRTCCloudDef.TRTCNetworkQosParam();
     localTRTCNetworkQosParam.controlMode = locald.mQosMode;
     localTRTCNetworkQosParam.preference = locald.mQosPreference;
-    this.gIR.setNetworkQosParam(localTRTCNetworkQosParam);
-    AppMethodBeat.o(216683);
+    this.gLA.setNetworkQosParam(localTRTCNetworkQosParam);
+    AppMethodBeat.o(197082);
   }
   
-  private void alU()
+  private void amj()
   {
     int j = 1;
-    AppMethodBeat.i(216684);
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.alO().alK();
+    AppMethodBeat.i(197083);
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
     Object localObject = new TRTCCloudDef.TRTCVideoEncParam();
     ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoResolution = 100;
-    ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoFps = locald.gJm;
+    ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoFps = locald.gLV;
     ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoBitrate = 100;
-    if (locald.gJn)
+    if (locald.gLW)
     {
       i = 1;
       ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoResolutionMode = i;
-      this.gIR.enableEncSmallVideoStream(locald.gJs, (TRTCCloudDef.TRTCVideoEncParam)localObject);
-      localObject = this.gIR;
-      if (!locald.gJt) {
+      this.gLA.enableEncSmallVideoStream(locald.gMb, (TRTCCloudDef.TRTCVideoEncParam)localObject);
+      localObject = this.gLA;
+      if (!locald.gMc) {
         break label108;
       }
     }
@@ -113,7 +113,7 @@ public final class c
     for (int i = j;; i = 0)
     {
       ((TRTCCloud)localObject).setPriorRemoteVideoStreamType(i);
-      AppMethodBeat.o(216684);
+      AppMethodBeat.o(197083);
       return;
       i = 0;
       break;
@@ -122,147 +122,147 @@ public final class c
   
   public final void a(a parama)
   {
-    this.gIW = parama;
+    this.gLF = parama;
   }
   
   public final void a(d paramd)
   {
-    AppMethodBeat.i(216678);
-    this.gIR.setListener(new b(paramd));
-    AppMethodBeat.o(216678);
+    AppMethodBeat.i(197077);
+    this.gLA.setListener(new b(paramd));
+    AppMethodBeat.o(197077);
   }
   
-  public final void alP()
+  public final void ame()
   {
-    AppMethodBeat.i(216679);
-    com.tencent.mm.live.core.core.trtc.a.a.a locala = a.a.alO().alL();
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.alO().alK();
-    this.gIR.enableCustomVideoCapture(true);
-    this.gIR.setDefaultStreamRecvMode(true, true);
+    AppMethodBeat.i(197078);
+    com.tencent.mm.live.core.core.trtc.a.a.a locala = a.a.amd().ama();
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
+    this.gLA.enableCustomVideoCapture(true);
+    this.gLA.setDefaultStreamRecvMode(true, true);
     int i;
-    if (locald.gJo)
+    if (locald.gLX)
     {
-      this.gIR.setLocalViewFillMode(0);
-      i = locald.gJw;
-      this.gIR.setLocalViewRotation(i);
-      if (!locala.gJd) {
+      this.gLA.setLocalViewFillMode(0);
+      i = locald.gMf;
+      this.gLA.setLocalViewRotation(i);
+      if (!locala.gLM) {
         break label160;
       }
-      this.gIR.setAudioRoute(0);
+      this.gLA.setAudioRoute(0);
       label82:
-      if (!locald.gJu) {
+      if (!locald.gMd) {
         break label171;
       }
-      this.gIR.setGSensorMode(2);
+      this.gLA.setGSensorMode(2);
     }
     for (;;)
     {
-      i = locala.gIY;
-      this.gIR.setSystemVolumeType(i);
-      boolean bool = locald.cua;
-      this.gIR.setVideoEncoderMirror(bool);
-      i = locald.gJp;
-      this.gIR.setLocalViewMirror(i);
-      alR();
-      AppMethodBeat.o(216679);
+      i = locala.gLH;
+      this.gLA.setSystemVolumeType(i);
+      boolean bool = locald.cuD;
+      this.gLA.setVideoEncoderMirror(bool);
+      i = locald.gLY;
+      this.gLA.setLocalViewMirror(i);
+      amg();
+      AppMethodBeat.o(197078);
       return;
-      this.gIR.setLocalViewFillMode(1);
+      this.gLA.setLocalViewFillMode(1);
       break;
       label160:
-      this.gIR.setAudioRoute(1);
+      this.gLA.setAudioRoute(1);
       break label82;
       label171:
-      this.gIR.setGSensorMode(0);
+      this.gLA.setGSensorMode(0);
     }
   }
   
-  public final void alQ()
+  public final void amf()
   {
-    AppMethodBeat.i(216680);
-    boolean bool = a.a.alO().alL().gJe;
+    AppMethodBeat.i(197079);
+    boolean bool = a.a.amd().ama().gLN;
     if (bool) {
-      this.gIR.enableAudioVolumeEvaluation(300);
+      this.gLA.enableAudioVolumeEvaluation(300);
     }
     for (;;)
     {
-      if (this.gIW != null) {
-        this.gIW.dE(bool);
+      if (this.gLF != null) {
+        this.gLF.dF(bool);
       }
-      this.gIR.enterRoom(this.mTRTCParams, this.mAppScene);
-      AppMethodBeat.o(216680);
+      this.gLA.enterRoom(this.mTRTCParams, this.mAppScene);
+      AppMethodBeat.o(197079);
       return;
-      this.gIR.enableAudioVolumeEvaluation(0);
+      this.gLA.enableAudioVolumeEvaluation(0);
     }
   }
   
-  public final void alR()
+  public final void amg()
   {
-    AppMethodBeat.i(216681);
-    alS();
-    alT();
-    alU();
-    AppMethodBeat.o(216681);
+    AppMethodBeat.i(197080);
+    amh();
+    ami();
+    amj();
+    AppMethodBeat.o(197080);
   }
   
-  public final int alV()
+  public final int amk()
   {
     int i = 20;
-    AppMethodBeat.i(216686);
-    if (this.gIU == 20) {
+    AppMethodBeat.i(197085);
+    if (this.gLD == 20) {
       i = 21;
     }
-    if (this.gIR != null) {
-      this.gIR.switchRole(i);
+    if (this.gLA != null) {
+      this.gLA.switchRole(i);
     }
-    this.gIU = i;
-    i = this.gIU;
-    AppMethodBeat.o(216686);
+    this.gLD = i;
+    i = this.gLD;
+    AppMethodBeat.o(197085);
     return i;
   }
   
-  public final int alW()
+  public final int aml()
   {
-    return this.gIU;
+    return this.gLD;
   }
   
-  public final void dF(boolean paramBoolean)
+  public final void dG(boolean paramBoolean)
   {
-    AppMethodBeat.i(216689);
-    this.gIR.enableAudioEarMonitoring(paramBoolean);
-    AppMethodBeat.o(216689);
+    AppMethodBeat.i(197088);
+    this.gLA.enableAudioEarMonitoring(paramBoolean);
+    AppMethodBeat.o(197088);
   }
   
   public final void exitRoom()
   {
-    AppMethodBeat.i(216685);
-    if (this.gIR != null) {
-      this.gIR.exitRoom();
+    AppMethodBeat.i(197084);
+    if (this.gLA != null) {
+      this.gLA.exitRoom();
     }
-    AppMethodBeat.o(216685);
+    AppMethodBeat.o(197084);
   }
   
   public final void startLocalAudio()
   {
-    AppMethodBeat.i(216687);
-    this.gIR.startLocalAudio();
-    AppMethodBeat.o(216687);
+    AppMethodBeat.i(197086);
+    this.gLA.startLocalAudio();
+    AppMethodBeat.o(197086);
   }
   
   public final void stopLocalAudio()
   {
-    AppMethodBeat.i(216688);
-    this.gIR.stopLocalAudio();
-    AppMethodBeat.o(216688);
+    AppMethodBeat.i(197087);
+    this.gLA.stopLocalAudio();
+    AppMethodBeat.o(197087);
   }
   
   public static abstract interface a
   {
-    public abstract void dE(boolean paramBoolean);
+    public abstract void dF(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.c
  * JD-Core Version:    0.7.0.1
  */

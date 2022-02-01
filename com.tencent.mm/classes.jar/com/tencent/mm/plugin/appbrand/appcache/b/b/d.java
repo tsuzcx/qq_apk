@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.x.b;
-import com.tencent.mm.protocal.protobuf.eig;
+import com.tencent.mm.protocal.protobuf.ejx;
 import com.tencent.mm.vending.g.b;
 
 public class d
-  extends a<Boolean, eig>
+  extends a<Boolean, ejx>
 {
-  final String bbb()
+  final String bbD()
   {
     return "CmdGetContact";
   }

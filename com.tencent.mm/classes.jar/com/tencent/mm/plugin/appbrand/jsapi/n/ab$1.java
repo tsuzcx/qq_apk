@@ -4,9 +4,9 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.k;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.j;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.widget.tabbar.a;
 import com.tencent.mm.plugin.appbrand.widget.tabbar.c;
 import com.tencent.mm.plugin.appbrand.widget.tabbar.d;
@@ -16,41 +16,41 @@ import java.util.LinkedList;
 final class ab$1
   implements Runnable
 {
-  ab$1(ab paramab, q paramq, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3) {}
+  ab$1(ab paramab, r paramr, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3) {}
   
   public final void run()
   {
     AppMethodBeat.i(138242);
-    Object localObject = this.cjP.getRuntime().aVN().getCurrentPage();
-    if (!(localObject instanceof k))
+    Object localObject = this.cjR.getRuntime().aWm().getCurrentPage();
+    if (!(localObject instanceof j))
     {
-      this.cjP.h(this.cjQ, this.lce.e("fail:not TabBar page", null));
+      this.cjR.h(this.cjS, this.lfP.e("fail:not TabBar page", null));
       AppMethodBeat.o(138242);
       return;
     }
-    localObject = ((k)localObject).getTabBar();
-    d locald1 = ((a)localObject).npn.a(this.lcc, new c()
+    localObject = ((j)localObject).getTabBar();
+    d locald1 = ((a)localObject).nux.a(this.lfN, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(138240);
         super.a(paramAnonymousString, paramAnonymousd);
-        this.lcf.a(ab.1.this.val$index, ab.1.this.val$text, (d)((Pair)this.lcf.npt.get(ab.1.this.val$index)).first, null);
+        this.lfQ.a(ab.1.this.val$index, ab.1.this.val$text, (d)((Pair)this.lfQ.nuD.get(ab.1.this.val$index)).first, null);
         AppMethodBeat.o(138240);
       }
-    }, this.cjP, this.val$index);
-    d locald2 = ((a)localObject).npn.a(this.lcd, new c()
+    }, this.cjR, this.val$index);
+    d locald2 = ((a)localObject).nux.a(this.lfO, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(138241);
         super.a(paramAnonymousString, paramAnonymousd);
-        this.lcf.a(ab.1.this.val$index, ab.1.this.val$text, null, (d)((Pair)this.lcf.npt.get(ab.1.this.val$index)).second);
+        this.lfQ.a(ab.1.this.val$index, ab.1.this.val$text, null, (d)((Pair)this.lfQ.nuD.get(ab.1.this.val$index)).second);
         AppMethodBeat.o(138241);
       }
-    }, this.cjP, this.val$index);
+    }, this.cjR, this.val$index);
     ((a)localObject).a(this.val$index, this.val$text, locald1, locald2);
-    this.cjP.h(this.cjQ, this.lce.e("ok", null));
+    this.cjR.h(this.cjS, this.lfP.e("ok", null));
     AppMethodBeat.o(138242);
   }
 }

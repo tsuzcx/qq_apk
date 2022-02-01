@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.xlabeffect.d;
+import com.tencent.mm.plugin.xlabeffect.e;
 import com.tencent.mm.xeffect.FaceTracker;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
@@ -9,68 +9,68 @@ import java.util.concurrent.Executors;
 
 public final class a
 {
-  static a kLy;
+  static a kON;
   float aTL;
   float aTM;
-  FaceTracker kLA;
-  ExecutorService kLB;
-  HashMap<String, Float> kLC;
-  d kLz;
+  e kOO;
+  FaceTracker kOP;
+  ExecutorService kOQ;
+  HashMap<String, Float> kOR;
   
   public a()
   {
-    AppMethodBeat.i(188330);
-    this.kLB = Executors.newSingleThreadExecutor();
+    AppMethodBeat.i(222456);
+    this.kOQ = Executors.newSingleThreadExecutor();
     this.aTL = -1.0F;
     this.aTM = -1.0F;
-    this.kLC = new HashMap(1);
-    AppMethodBeat.o(188330);
+    this.kOR = new HashMap(1);
+    AppMethodBeat.o(222456);
   }
   
   public static int a(a parama)
   {
-    AppMethodBeat.i(221280);
-    switch (1.kLJ[parama.ordinal()])
+    AppMethodBeat.i(222458);
+    switch (1.kOS[parama.ordinal()])
     {
     default: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return -1;
     case 1: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 0;
     case 2: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 1;
     case 3: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 2;
     case 4: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 3;
     case 5: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 4;
     case 6: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 5;
     case 7: 
-      AppMethodBeat.o(221280);
+      AppMethodBeat.o(222458);
       return 6;
     }
-    AppMethodBeat.o(221280);
+    AppMethodBeat.o(222458);
     return 7;
   }
   
-  public static a bkf()
+  public static a bkO()
   {
     try
     {
-      AppMethodBeat.i(188331);
-      if (kLy == null) {
-        kLy = new a();
+      AppMethodBeat.i(222457);
+      if (kON == null) {
+        kON = new a();
       }
-      a locala = kLy;
-      AppMethodBeat.o(188331);
+      a locala = kON;
+      AppMethodBeat.o(222457);
       return locala;
     }
     finally {}
@@ -80,17 +80,17 @@ public final class a
   {
     static
     {
-      AppMethodBeat.i(221279);
-      kLK = new a("ResultOK", 0);
-      kLL = new a("ResultNotInit", 1);
-      kLM = new a("ResultInited", 2);
-      kLO = new a("ResultInitFail", 3);
-      mcI = new a("ResultNoLicense", 4);
-      mcJ = new a("ResultFaceDetectedFail", 5);
-      mcK = new a("ResultStopFail", 6);
-      mnX = new a("ResultUndefinedError", 7);
-      mnZ = new a[] { kLK, kLL, kLM, kLO, mcI, mcJ, mcK, mnX };
-      AppMethodBeat.o(221279);
+      AppMethodBeat.i(222455);
+      kOT = new a("ResultOK", 0);
+      kOU = new a("ResultNotInit", 1);
+      kOV = new a("ResultInited", 2);
+      kOW = new a("ResultInitFail", 3);
+      kOX = new a("ResultNoLicense", 4);
+      kOY = new a("ResultFaceDetectedFail", 5);
+      kOZ = new a("ResultStopFail", 6);
+      kPa = new a("ResultUndefinedError", 7);
+      kPb = new a[] { kOT, kOU, kOV, kOW, kOX, kOY, kOZ, kPa };
+      AppMethodBeat.o(222455);
     }
     
     private a() {}

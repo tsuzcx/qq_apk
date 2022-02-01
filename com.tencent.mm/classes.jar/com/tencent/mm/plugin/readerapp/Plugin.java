@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.readerapp;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.readerapp.ui.b;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class Plugin
   implements d
 {
-  private c nUl;
+  private c nZR;
   
   public Plugin()
   {
     AppMethodBeat.i(102644);
-    this.nUl = new c()
+    this.nZR = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ac(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(102643);
-        ad.i("MicroMsg.ReaderApp.Plugin", "create contact widget type[%s]", new Object[] { paramAnonymousString });
+        ae.i("MicroMsg.ReaderApp.Plugin", "create contact widget type[%s]", new Object[] { paramAnonymousString });
         if ("widget_type_news".equals(paramAnonymousString))
         {
           paramAnonymousContext = new b(paramAnonymousContext);
@@ -44,14 +44,14 @@ public final class Plugin
     return locala;
   }
   
-  public final ax createSubCore()
+  public final az createSubCore()
   {
     return null;
   }
   
   public final c getContactWidgetFactory()
   {
-    return this.nUl;
+    return this.nZR;
   }
 }
 

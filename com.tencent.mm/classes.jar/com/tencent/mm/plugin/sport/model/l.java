@@ -15,15 +15,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.contact.c;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.model.v;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.widget.a.h.1;
@@ -36,41 +37,41 @@ import org.json.JSONObject;
 
 public final class l
 {
-  private static o AHk;
-  private static final String[] AHl;
-  private static final Uri AHm;
+  private static o AYN;
+  private static final String[] AYO;
+  private static final Uri AYP;
   
   static
   {
     AppMethodBeat.i(149364);
-    AHl = new String[] { "_id", "_begin_time", "_end_time", "_mode", "_steps" };
-    AHm = Uri.parse("content://com.miui.providers.steps/item");
+    AYO = new String[] { "_id", "_begin_time", "_end_time", "_mode", "_steps" };
+    AYP = Uri.parse("content://com.miui.providers.steps/item");
     AppMethodBeat.o(149364);
   }
   
-  public static long[] aBr(String paramString)
+  public static long[] aCK(String paramString)
   {
     AppMethodBeat.i(149362);
     paramString = paramString.split(",");
     long[] arrayOfLong = new long[paramString.length];
-    arrayOfLong[0] = bt.getLong(paramString[0], 0L);
-    arrayOfLong[1] = bt.getLong(paramString[1], 0L);
-    arrayOfLong[2] = bt.getLong(paramString[2], 0L);
-    arrayOfLong[3] = bt.getLong(paramString[3], 0L);
-    arrayOfLong[4] = bt.getLong(paramString[4], 0L);
-    arrayOfLong[5] = bt.getLong(paramString[5], 0L);
-    arrayOfLong[6] = bt.getLong(paramString[6], 0L);
+    arrayOfLong[0] = bu.getLong(paramString[0], 0L);
+    arrayOfLong[1] = bu.getLong(paramString[1], 0L);
+    arrayOfLong[2] = bu.getLong(paramString[2], 0L);
+    arrayOfLong[3] = bu.getLong(paramString[3], 0L);
+    arrayOfLong[4] = bu.getLong(paramString[4], 0L);
+    arrayOfLong[5] = bu.getLong(paramString[5], 0L);
+    arrayOfLong[6] = bu.getLong(paramString[6], 0L);
     AppMethodBeat.o(149362);
     return arrayOfLong;
   }
   
-  public static boolean am(long paramLong1, long paramLong2)
+  public static boolean al(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(149354);
     l2 = 3600000L;
     try
     {
-      JSONObject localJSONObject = h.egq().optJSONObject("stepCountUploadConfig");
+      JSONObject localJSONObject = h.ejY().optJSONObject("stepCountUploadConfig");
       l1 = l2;
       if (localJSONObject != null)
       {
@@ -94,7 +95,7 @@ public final class l
     return false;
   }
   
-  public static boolean an(long paramLong1, long paramLong2)
+  public static boolean am(long paramLong1, long paramLong2)
   {
     j = 500;
     AppMethodBeat.i(149355);
@@ -105,7 +106,7 @@ public final class l
     }
     try
     {
-      JSONObject localJSONObject = h.egq().optJSONObject("stepCountUploadConfig");
+      JSONObject localJSONObject = h.ejY().optJSONObject("stepCountUploadConfig");
       i = j;
       if (localJSONObject != null) {
         i = localJSONObject.optInt("backgroundStepCountInterval", 500);
@@ -127,33 +128,46 @@ public final class l
     return false;
   }
   
-  public static void dbE()
+  public static void dev()
   {
     AppMethodBeat.i(149361);
-    if (AHk != null)
+    if (AYN != null)
     {
-      AHk.dismiss();
-      AHk = null;
+      AYN.dismiss();
+      AYN = null;
     }
     AppMethodBeat.o(149361);
   }
   
-  public static boolean efY()
+  public static boolean ejG()
   {
     AppMethodBeat.i(149359);
-    am localam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf("gh_43f2581f6fd6");
-    if (localam != null) {}
-    for (boolean bool = com.tencent.mm.o.b.lM(localam.field_type);; bool = false)
+    an localan = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH("gh_43f2581f6fd6");
+    if (localan != null) {}
+    for (boolean bool = c.lO(localan.field_type);; bool = false)
     {
       if (!bool) {
-        ad.i("MicroMsg.Sport.SportUtil", "checkUserInstallWeSportPlugin %b", new Object[] { Boolean.valueOf(bool) });
+        ae.i("MicroMsg.Sport.SportUtil", "checkUserInstallWeSportPlugin %b", new Object[] { Boolean.valueOf(bool) });
       }
       AppMethodBeat.o(149359);
       return bool;
     }
   }
   
-  public static int egA()
+  public static long ekh()
+  {
+    AppMethodBeat.i(149351);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    long l = localCalendar.getTimeInMillis();
+    AppMethodBeat.o(149351);
+    return l;
+  }
+  
+  public static int eki()
   {
     AppMethodBeat.i(149352);
     TimeZone localTimeZone = TimeZone.getDefault();
@@ -167,12 +181,12 @@ public final class l
     }
   }
   
-  public static boolean egB()
+  public static boolean ekj()
   {
     AppMethodBeat.i(149357);
-    if (h.egq().optInt("checkWeSportInstall") != 1)
+    if (h.ejY().optInt("checkWeSportInstall") != 1)
     {
-      ad.i("MicroMsg.Sport.SportUtil", "checkPushInstallWeSport is false");
+      ae.i("MicroMsg.Sport.SportUtil", "checkPushInstallWeSport is false");
       AppMethodBeat.o(149357);
       return false;
     }
@@ -180,12 +194,12 @@ public final class l
     return true;
   }
   
-  public static boolean egC()
+  public static boolean ekk()
   {
     AppMethodBeat.i(149358);
-    if (h.egq().optInt("extStepApiSwitch") != 1)
+    if (h.ejY().optInt("extStepApiSwitch") != 1)
     {
-      ad.i("MicroMsg.Sport.SportUtil", "Not Support extStepApiSwitch is off");
+      ae.i("MicroMsg.Sport.SportUtil", "Not Support extStepApiSwitch is off");
       AppMethodBeat.o(149358);
       return false;
     }
@@ -194,215 +208,241 @@ public final class l
   }
   
   /* Error */
-  public static int egD()
+  public static int ekl()
   {
     // Byte code:
-    //   0: ldc 207
+    //   0: ldc 222
     //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aconst_null
     //   6: astore 5
     //   8: aconst_null
     //   9: astore 4
-    //   11: invokestatic 212	com/tencent/mm/sdk/h/b:fmu	()Z
-    //   14: ifeq +312 -> 326
-    //   17: ldc 214
-    //   19: invokestatic 220	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   11: invokestatic 227	com/tencent/mm/sdk/h/b:fqp	()Z
+    //   14: ifeq +313 -> 327
+    //   17: ldc 229
+    //   19: invokestatic 235	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   22: astore 7
     //   24: aload 7
-    //   26: invokevirtual 224	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   26: invokevirtual 239	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   29: astore 6
     //   31: aload 7
-    //   33: ldc 226
+    //   33: ldc 241
     //   35: iconst_2
-    //   36: anewarray 216	java/lang/Class
+    //   36: anewarray 231	java/lang/Class
     //   39: dup
     //   40: iconst_0
     //   41: ldc 23
     //   43: aastore
     //   44: dup
     //   45: iconst_1
-    //   46: getstatic 230	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   46: getstatic 245	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   49: aastore
-    //   50: invokevirtual 234	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   50: invokevirtual 249	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   53: astore 7
     //   55: aload 7
     //   57: iconst_1
-    //   58: invokevirtual 240	java/lang/reflect/Method:setAccessible	(Z)V
+    //   58: invokevirtual 255	java/lang/reflect/Method:setAccessible	(Z)V
     //   61: aload 7
     //   63: aload 6
     //   65: iconst_2
     //   66: anewarray 4	java/lang/Object
     //   69: dup
     //   70: iconst_0
-    //   71: ldc 242
-    //   73: aastore
-    //   74: dup
-    //   75: iconst_1
-    //   76: getstatic 246	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   79: aastore
-    //   80: invokevirtual 250	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   83: astore 6
-    //   85: aload 6
-    //   87: instanceof 147
-    //   90: ifeq +236 -> 326
-    //   93: aload 6
-    //   95: checkcast 147	java/lang/Boolean
-    //   98: invokevirtual 253	java/lang/Boolean:booleanValue	()Z
-    //   101: ifeq +225 -> 326
-    //   104: invokestatic 256	com/tencent/mm/plugin/sport/model/l:egz	()J
-    //   107: lstore_2
-    //   108: invokestatic 262	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   111: invokevirtual 268	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   114: astore 6
-    //   116: aload 6
-    //   118: ifnull +208 -> 326
-    //   121: aload 6
-    //   123: getstatic 45	com/tencent/mm/plugin/sport/model/l:AHm	Landroid/net/Uri;
-    //   126: getstatic 35	com/tencent/mm/plugin/sport/model/l:AHl	[Ljava/lang/String;
-    //   129: ldc_w 270
-    //   132: iconst_2
-    //   133: anewarray 23	java/lang/String
-    //   136: dup
-    //   137: iconst_0
-    //   138: lload_2
-    //   139: invokestatic 273	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   142: aastore
-    //   143: dup
-    //   144: iconst_1
-    //   145: lload_2
-    //   146: ldc2_w 274
-    //   149: ladd
-    //   150: invokestatic 273	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   153: aastore
-    //   154: ldc_w 277
-    //   157: invokevirtual 283	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   160: astore 4
-    //   162: aload 4
-    //   164: ifnull +157 -> 321
-    //   167: iconst_0
-    //   168: istore_0
-    //   169: aload 4
-    //   171: astore 5
-    //   173: aload 4
-    //   175: invokeinterface 288 1 0
-    //   180: ifeq +23 -> 203
-    //   183: aload 4
-    //   185: astore 5
-    //   187: aload 4
-    //   189: iconst_4
-    //   190: invokeinterface 292 2 0
-    //   195: istore_1
-    //   196: iload_0
-    //   197: iload_1
-    //   198: iadd
-    //   199: istore_0
-    //   200: goto -31 -> 169
-    //   203: iload_0
-    //   204: istore_1
-    //   205: aload 4
-    //   207: ifnull +12 -> 219
-    //   210: aload 4
-    //   212: invokeinterface 295 1 0
-    //   217: iload_0
-    //   218: istore_1
-    //   219: ldc 143
-    //   221: ldc_w 297
-    //   224: iconst_1
-    //   225: anewarray 4	java/lang/Object
-    //   228: dup
-    //   229: iconst_0
-    //   230: iload_1
-    //   231: invokestatic 302	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   234: aastore
-    //   235: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   238: ldc 207
-    //   240: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   243: iload_1
-    //   244: ireturn
-    //   245: astore 6
-    //   247: aconst_null
-    //   248: astore 4
-    //   250: iconst_0
-    //   251: istore_0
-    //   252: aload 4
-    //   254: astore 5
-    //   256: ldc 143
-    //   258: aload 6
-    //   260: ldc_w 304
-    //   263: iconst_0
-    //   264: anewarray 4	java/lang/Object
-    //   267: invokestatic 308	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   270: iload_0
-    //   271: istore_1
-    //   272: aload 4
-    //   274: ifnull -55 -> 219
-    //   277: aload 4
-    //   279: invokeinterface 295 1 0
-    //   284: iload_0
-    //   285: istore_1
-    //   286: goto -67 -> 219
-    //   289: astore 4
-    //   291: aload 5
-    //   293: ifnull +10 -> 303
-    //   296: aload 5
-    //   298: invokeinterface 295 1 0
-    //   303: ldc 207
-    //   305: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   308: aload 4
-    //   310: athrow
-    //   311: astore 4
-    //   313: goto -22 -> 291
-    //   316: astore 6
-    //   318: goto -66 -> 252
-    //   321: iconst_0
-    //   322: istore_0
-    //   323: goto -120 -> 203
-    //   326: iconst_0
-    //   327: istore_0
-    //   328: goto -125 -> 203
+    //   71: ldc_w 257
+    //   74: aastore
+    //   75: dup
+    //   76: iconst_1
+    //   77: getstatic 261	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   80: aastore
+    //   81: invokevirtual 265	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   84: astore 6
+    //   86: aload 6
+    //   88: instanceof 147
+    //   91: ifeq +236 -> 327
+    //   94: aload 6
+    //   96: checkcast 147	java/lang/Boolean
+    //   99: invokevirtual 268	java/lang/Boolean:booleanValue	()Z
+    //   102: ifeq +225 -> 327
+    //   105: invokestatic 270	com/tencent/mm/plugin/sport/model/l:ekh	()J
+    //   108: lstore_2
+    //   109: invokestatic 276	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   112: invokevirtual 282	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   115: astore 6
+    //   117: aload 6
+    //   119: ifnull +208 -> 327
+    //   122: aload 6
+    //   124: getstatic 45	com/tencent/mm/plugin/sport/model/l:AYP	Landroid/net/Uri;
+    //   127: getstatic 35	com/tencent/mm/plugin/sport/model/l:AYO	[Ljava/lang/String;
+    //   130: ldc_w 284
+    //   133: iconst_2
+    //   134: anewarray 23	java/lang/String
+    //   137: dup
+    //   138: iconst_0
+    //   139: lload_2
+    //   140: invokestatic 287	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   143: aastore
+    //   144: dup
+    //   145: iconst_1
+    //   146: lload_2
+    //   147: ldc2_w 288
+    //   150: ladd
+    //   151: invokestatic 287	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   154: aastore
+    //   155: ldc_w 291
+    //   158: invokevirtual 297	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   161: astore 4
+    //   163: aload 4
+    //   165: ifnull +157 -> 322
+    //   168: iconst_0
+    //   169: istore_0
+    //   170: aload 4
+    //   172: astore 5
+    //   174: aload 4
+    //   176: invokeinterface 302 1 0
+    //   181: ifeq +23 -> 204
+    //   184: aload 4
+    //   186: astore 5
+    //   188: aload 4
+    //   190: iconst_4
+    //   191: invokeinterface 306 2 0
+    //   196: istore_1
+    //   197: iload_0
+    //   198: iload_1
+    //   199: iadd
+    //   200: istore_0
+    //   201: goto -31 -> 170
+    //   204: iload_0
+    //   205: istore_1
+    //   206: aload 4
+    //   208: ifnull +12 -> 220
+    //   211: aload 4
+    //   213: invokeinterface 309 1 0
+    //   218: iload_0
+    //   219: istore_1
+    //   220: ldc 143
+    //   222: ldc_w 311
+    //   225: iconst_1
+    //   226: anewarray 4	java/lang/Object
+    //   229: dup
+    //   230: iconst_0
+    //   231: iload_1
+    //   232: invokestatic 316	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   235: aastore
+    //   236: invokestatic 156	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   239: ldc 222
+    //   241: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   244: iload_1
+    //   245: ireturn
+    //   246: astore 6
+    //   248: aconst_null
+    //   249: astore 4
+    //   251: iconst_0
+    //   252: istore_0
+    //   253: aload 4
+    //   255: astore 5
+    //   257: ldc 143
+    //   259: aload 6
+    //   261: ldc_w 318
+    //   264: iconst_0
+    //   265: anewarray 4	java/lang/Object
+    //   268: invokestatic 322	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   271: iload_0
+    //   272: istore_1
+    //   273: aload 4
+    //   275: ifnull -55 -> 220
+    //   278: aload 4
+    //   280: invokeinterface 309 1 0
+    //   285: iload_0
+    //   286: istore_1
+    //   287: goto -67 -> 220
+    //   290: astore 4
+    //   292: aload 5
+    //   294: ifnull +10 -> 304
+    //   297: aload 5
+    //   299: invokeinterface 309 1 0
+    //   304: ldc 222
+    //   306: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   309: aload 4
+    //   311: athrow
+    //   312: astore 4
+    //   314: goto -22 -> 292
+    //   317: astore 6
+    //   319: goto -66 -> 253
+    //   322: iconst_0
+    //   323: istore_0
+    //   324: goto -120 -> 204
+    //   327: iconst_0
+    //   328: istore_0
+    //   329: goto -125 -> 204
     // Local variable table:
     //   start	length	slot	name	signature
-    //   168	160	0	i	int
-    //   195	91	1	j	int
-    //   107	39	2	l	long
-    //   9	269	4	localCursor	android.database.Cursor
-    //   289	20	4	localObject1	Object
-    //   311	1	4	localObject2	Object
-    //   6	291	5	localObject3	Object
-    //   29	93	6	localObject4	Object
-    //   245	14	6	localException1	Exception
-    //   316	1	6	localException2	Exception
+    //   169	160	0	i	int
+    //   196	91	1	j	int
+    //   108	39	2	l	long
+    //   9	270	4	localCursor	android.database.Cursor
+    //   290	20	4	localObject1	Object
+    //   312	1	4	localObject2	Object
+    //   6	292	5	localObject3	Object
+    //   29	94	6	localObject4	Object
+    //   246	14	6	localException1	Exception
+    //   317	1	6	localException2	Exception
     //   22	40	7	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   11	116	245	java/lang/Exception
-    //   121	162	245	java/lang/Exception
-    //   11	116	289	finally
-    //   121	162	289	finally
-    //   173	183	311	finally
-    //   187	196	311	finally
-    //   256	270	311	finally
-    //   173	183	316	java/lang/Exception
-    //   187	196	316	java/lang/Exception
+    //   11	117	246	java/lang/Exception
+    //   122	163	246	java/lang/Exception
+    //   11	117	290	finally
+    //   122	163	290	finally
+    //   174	184	312	finally
+    //   188	197	312	finally
+    //   257	271	312	finally
+    //   174	184	317	java/lang/Exception
+    //   188	197	317	java/lang/Exception
   }
   
-  public static long egz()
+  public static boolean gv(Context paramContext)
   {
-    AppMethodBeat.i(149351);
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    long l = localCalendar.getTimeInMillis();
-    AppMethodBeat.o(149351);
-    return l;
+    AppMethodBeat.i(149356);
+    if (d.lB(19))
+    {
+      ae.i("MicroMsg.Sport.SportUtil", "Not Support SDK VERSION");
+      AppMethodBeat.o(149356);
+      return false;
+    }
+    if (!paramContext.getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter"))
+    {
+      ae.i("MicroMsg.Sport.SportUtil", "Not Support FEATURE_SENSOR_STEP_COUNTER");
+      AppMethodBeat.o(149356);
+      return false;
+    }
+    try
+    {
+      if (((SensorManager)ak.getContext().getSystemService("sensor")).getDefaultSensor(19) == null)
+      {
+        ae.i("MicroMsg.Sport.SportUtil", "Not Support can not get sensor");
+        AppMethodBeat.o(149356);
+        return false;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(149356);
+      return false;
+    }
+    if (h.ejY().optInt("deviceStepSwitch") != 1)
+    {
+      ae.i("MicroMsg.Sport.SportUtil", "Not Support deviceStepSwitch is off");
+      AppMethodBeat.o(149356);
+      return false;
+    }
+    AppMethodBeat.o(149356);
+    return true;
   }
   
-  public static void g(Activity paramActivity, String paramString)
+  public static void h(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(149360);
-    if ((AHk != null) && (AHk.isShowing()))
+    if ((AYN != null) && (AYN.isShowing()))
     {
       AppMethodBeat.o(149360);
       return;
@@ -412,10 +452,10 @@ public final class l
       AppMethodBeat.o(149360);
       return;
     }
-    if ((u.aAm().equals(paramString)) && (!((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).gq(aj.getContext())))
+    if ((v.aAC().equals(paramString)) && (!((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).gv(ak.getContext())))
     {
       int i = paramActivity.getResources().getColor(2131099803);
-      Object localObject1 = aj.getContext().getString(2131764114);
+      Object localObject1 = ak.getContext().getString(2131764114);
       paramString = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -423,7 +463,7 @@ public final class l
           AppMethodBeat.i(149350);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/sport/model/SportUtil$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/sport/model/SportUtil$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           k.aD(5, 0L);
           a.a(this, "com/tencent/mm/plugin/sport/model/SportUtil$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(149350);
@@ -443,52 +483,21 @@ public final class l
       localObject2 = new Rect();
       paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject2);
       int j = ((Rect)localObject2).top;
-      int k = ar.dT(paramActivity);
+      int k = ar.dX(paramActivity);
       i = j;
       if (j == 0) {
-        i = ar.jW(paramActivity);
+        i = ar.kd(paramActivity);
       }
       ((o)localObject1).showAtLocation(paramActivity.getWindow().getDecorView(), 48, 0, i + k);
       paramActivity = (ImageView)localView.findViewById(2131305900);
       paramActivity.setImageResource(2131690535);
       paramActivity.setOnClickListener(new h.1((o)localObject1, paramString));
-      AHk = (o)localObject1;
+      AYN = (o)localObject1;
     }
     AppMethodBeat.o(149360);
   }
   
-  public static boolean gq(Context paramContext)
-  {
-    AppMethodBeat.i(149356);
-    if (d.lz(19))
-    {
-      ad.i("MicroMsg.Sport.SportUtil", "Not Support SDK VERSION");
-      AppMethodBeat.o(149356);
-      return false;
-    }
-    if (!paramContext.getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter"))
-    {
-      ad.i("MicroMsg.Sport.SportUtil", "Not Support FEATURE_SENSOR_STEP_COUNTER");
-      AppMethodBeat.o(149356);
-      return false;
-    }
-    if (((SensorManager)aj.getContext().getSystemService("sensor")).getDefaultSensor(19) == null)
-    {
-      ad.i("MicroMsg.Sport.SportUtil", "Not Support can not get sensor");
-      AppMethodBeat.o(149356);
-      return false;
-    }
-    if (h.egq().optInt("deviceStepSwitch") != 1)
-    {
-      ad.i("MicroMsg.Sport.SportUtil", "Not Support deviceStepSwitch is off");
-      AppMethodBeat.o(149356);
-      return false;
-    }
-    AppMethodBeat.o(149356);
-    return true;
-  }
-  
-  public static final String sm(long paramLong)
+  public static final String sz(long paramLong)
   {
     AppMethodBeat.i(149353);
     String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(paramLong));
@@ -498,7 +507,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.l
  * JD-Core Version:    0.7.0.1
  */

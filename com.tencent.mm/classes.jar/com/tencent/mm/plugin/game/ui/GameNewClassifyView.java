@@ -12,74 +12,74 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.f;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.d.dw;
-import com.tencent.mm.plugin.game.d.dx;
+import com.tencent.mm.plugin.game.d.ef;
+import com.tencent.mm.plugin.game.d.eg;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class GameNewClassifyView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private LayoutInflater jfG;
-  private LinearLayout rEk;
-  private int udq;
+  private LayoutInflater jiz;
+  private LinearLayout rMv;
+  private int uoy;
   
   public GameNewClassifyView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public final void a(dx paramdx, int paramInt1, int paramInt2)
+  public final void a(eg parameg, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(42315);
-    if ((paramdx == null) || (bt.hj(paramdx.ugO)))
+    if ((parameg == null) || (bu.ht(parameg.usl)))
     {
       setVisibility(8);
       AppMethodBeat.o(42315);
       return;
     }
-    this.udq = paramInt2;
-    if (this.jfG == null) {
-      this.jfG = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.uoy = paramInt2;
+    if (this.jiz == null) {
+      this.jiz = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
     }
-    this.rEk.removeAllViews();
+    this.rMv.removeAllViews();
     LinearLayout localLinearLayout;
-    while (this.rEk.getChildCount() < paramdx.ugO.size())
+    while (this.rMv.getChildCount() < parameg.usl.size())
     {
-      localLinearLayout = (LinearLayout)this.jfG.inflate(2131494363, this, false);
+      localLinearLayout = (LinearLayout)this.jiz.inflate(2131494363, this, false);
       localLinearLayout.setOnClickListener(this);
-      this.rEk.addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+      this.rMv.addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
     }
     paramInt2 = 0;
-    if (paramInt2 < this.rEk.getChildCount())
+    if (paramInt2 < this.rMv.getChildCount())
     {
-      if (paramInt2 < paramdx.ugO.size()) {
-        this.rEk.getChildAt(paramInt2).setVisibility(0);
+      if (paramInt2 < parameg.usl.size()) {
+        this.rMv.getChildAt(paramInt2).setVisibility(0);
       }
       for (;;)
       {
         paramInt2 += 1;
         break;
-        this.rEk.getChildAt(paramInt2).setVisibility(8);
+        this.rMv.getChildAt(paramInt2).setVisibility(8);
       }
     }
     paramInt2 = 0;
-    while (paramInt2 < paramdx.ugO.size())
+    while (paramInt2 < parameg.usl.size())
     {
-      localLinearLayout = (LinearLayout)this.rEk.getChildAt(paramInt2);
+      localLinearLayout = (LinearLayout)this.rMv.getChildAt(paramInt2);
       ImageView localImageView = (ImageView)localLinearLayout.findViewById(2131300367);
       TextView localTextView = (TextView)localLinearLayout.findViewById(2131300368);
-      e.dav().l(localImageView, ((dw)paramdx.ugO.get(paramInt2)).IconUrl);
-      localTextView.setText(((dw)paramdx.ugO.get(paramInt2)).Title);
-      localLinearLayout.setTag(new a(((dw)paramdx.ugO.get(paramInt2)).ueY, paramInt2 + 1, ((dw)paramdx.ugO.get(paramInt2)).ufG));
+      e.ddh().l(localImageView, ((ef)parameg.usl.get(paramInt2)).IconUrl);
+      localTextView.setText(((ef)parameg.usl.get(paramInt2)).Title);
+      localLinearLayout.setTag(new a(((ef)parameg.usl.get(paramInt2)).uqf, paramInt2 + 1, ((ef)parameg.usl.get(paramInt2)).ura));
       paramInt2 += 1;
     }
     setVisibility(0);
     if (paramInt1 == 2) {
-      com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1019, 0, null, this.udq, null);
+      com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1019, 0, null, this.uoy, null);
     }
     AppMethodBeat.o(42315);
   }
@@ -89,7 +89,7 @@ public class GameNewClassifyView
     AppMethodBeat.i(42316);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -97,10 +97,10 @@ public class GameNewClassifyView
       return;
     }
     paramView = (a)paramView.getTag();
-    if (!bt.isNullOrNil(paramView.url))
+    if (!bu.isNullOrNil(paramView.url))
     {
-      c.aB(getContext(), paramView.url);
-      f.a(getContext(), 10, 1019, paramView.position, 7, null, this.udq, com.tencent.mm.plugin.game.e.a.wk(paramView.extInfo));
+      c.aD(getContext(), paramView.url);
+      f.a(getContext(), 10, 1019, paramView.position, 7, null, this.uoy, com.tencent.mm.plugin.game.e.a.wT(paramView.extInfo));
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42316);
@@ -110,8 +110,8 @@ public class GameNewClassifyView
   {
     AppMethodBeat.i(42314);
     super.onFinishInflate();
-    this.jfG = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.rEk = ((LinearLayout)findViewById(2131300497));
+    this.jiz = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.rMv = ((LinearLayout)findViewById(2131300497));
     AppMethodBeat.o(42314);
   }
   
@@ -131,7 +131,7 @@ public class GameNewClassifyView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameNewClassifyView
  * JD-Core Version:    0.7.0.1
  */

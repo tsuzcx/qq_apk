@@ -6,53 +6,53 @@ import com.tencent.mm.plugin.ipcall.model.f;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.ipcall.ui.j;
 import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bl;
 import com.tencent.mm.ui.MMActivity;
 
 public final class b
   implements d.a
 {
-  public MMActivity fLP;
-  public com.tencent.mm.plugin.ipcall.model.a.a uMb;
-  public d uMe;
-  public j uMf;
-  public long uMg;
+  public MMActivity fNT;
+  public com.tencent.mm.plugin.ipcall.model.a.a uXO;
+  public d uXR;
+  public j uXS;
+  public long uXT;
   
   public b()
   {
     AppMethodBeat.i(25419);
-    this.uMg = 0L;
-    this.uMe = new d();
-    this.uMb = new com.tencent.mm.plugin.ipcall.model.a.a();
+    this.uXT = 0L;
+    this.uXR = new d();
+    this.uXO = new com.tencent.mm.plugin.ipcall.model.a.a();
     AppMethodBeat.o(25419);
   }
   
   public final void a(a.b paramb)
   {
-    this.uMb.uLl = paramb;
+    this.uXO.uWY = paramb;
   }
   
   public final void a(j paramj)
   {
     AppMethodBeat.i(25420);
-    this.uMf = paramj;
+    this.uXS = paramj;
     if (paramj != null) {
-      i.ddL().nz(false);
+      i.dgD().nD(false);
     }
     AppMethodBeat.o(25420);
   }
   
-  public final void ddY()
+  public final void dgQ()
   {
     AppMethodBeat.i(25421);
-    this.uMe.uMp = this;
-    d locald = this.uMe;
-    if (!locald.pyv.aMy)
+    this.uXR.uYc = this;
+    d locald = this.uXR;
+    if (!locald.pEZ.aMy)
     {
-      locald.pyv.a(locald);
+      locald.pEZ.a(locald);
       d.1 local1 = new d.1(locald);
-      if (locald.pyu.aD(local1))
+      if (locald.pEY.aB(local1))
       {
         locald.lastShakeTime = 0L;
         AppMethodBeat.o(25421);
@@ -63,15 +63,15 @@ public final class b
     AppMethodBeat.o(25421);
   }
   
-  public final int ddZ()
+  public final int dgR()
   {
     AppMethodBeat.i(25426);
-    a locala = this.uMb.uLm;
+    a locala = this.uXO.uWZ;
     if (locala != null)
     {
-      if ((locala.oVX != null) && (locala.isStart))
+      if ((locala.pcA != null) && (locala.isStart))
       {
-        int i = locala.oVX.aNs();
+        int i = locala.pcA.aNQ();
         AppMethodBeat.o(25426);
         return i;
       }
@@ -82,22 +82,22 @@ public final class b
     return 0;
   }
   
-  public final void nJ(boolean paramBoolean)
+  public final void nN(boolean paramBoolean)
   {
     AppMethodBeat.i(25422);
-    this.uMb.cn(paramBoolean);
+    this.uXO.cn(paramBoolean);
     AppMethodBeat.o(25422);
   }
   
-  public final void nK(boolean paramBoolean)
+  public final void nO(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(25423);
-    ad.i("MicroMsg.IPCallDeviceManager", "onScreenDistanceChange, isClose: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.IPCallDeviceManager", "onScreenDistanceChange, isClose: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     MMActivity localMMActivity;
-    if (this.fLP != null)
+    if (this.fNT != null)
     {
-      localMMActivity = this.fLP;
+      localMMActivity = this.fNT;
       if (paramBoolean) {
         break label75;
       }
@@ -105,26 +105,26 @@ public final class b
     for (;;)
     {
       localMMActivity.setScreenEnable(bool);
-      if (!i.ddK().ddA()) {
+      if (!i.dgC().dgs()) {
         break label87;
       }
       if (!paramBoolean) {
         break;
       }
-      this.uMb.cn(false);
+      this.uXO.cn(false);
       AppMethodBeat.o(25423);
       return;
       label75:
       bool = false;
     }
-    this.uMb.ddS();
+    this.uXO.dgK();
     label87:
     AppMethodBeat.o(25423);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c.b
  * JD-Core Version:    0.7.0.1
  */

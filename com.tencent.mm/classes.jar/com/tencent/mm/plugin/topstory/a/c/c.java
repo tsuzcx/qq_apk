@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.azm;
-import com.tencent.mm.protocal.protobuf.azn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class c
   extends n
@@ -20,25 +20,25 @@ public final class c
 {
   private f callback;
   private b rr;
-  private long soX;
+  private long szi;
   private int type;
   
   public c(int paramInt1, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(91008);
     this.type = paramInt1;
-    this.soX = System.currentTimeMillis();
+    this.szi = System.currentTimeMillis();
     Object localObject = new b.a();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/getcolikeblocklist";
-    ((b.a)localObject).hNM = new azm();
-    ((b.a)localObject).hNN = new azn();
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (azm)this.rr.hNK.hNQ;
-    ((azm)localObject).nEf = paramInt1;
-    ((azm)localObject).Guq = paramLong;
-    ((azm)localObject).FMu = paramInt2;
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryGetBlockList", "request NetSceneTopStoryGetBlockList: %d %d %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+    ((b.a)localObject).hQF = new bac();
+    ((b.a)localObject).hQG = new bad();
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (bac)this.rr.hQD.hQJ;
+    ((bac)localObject).nJA = paramInt1;
+    ((bac)localObject).GNP = paramLong;
+    ((bac)localObject).GeT = paramInt2;
+    ae.i("MicroMsg.TopStory.NetSceneTopStoryGetBlockList", "request NetSceneTopStoryGetBlockList: %d %d %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(91008);
   }
   
@@ -51,9 +51,9 @@ public final class c
     return i;
   }
   
-  public final azn eoV()
+  public final bad esC()
   {
-    return (azn)this.rr.hNL.hNQ;
+    return (bad)this.rr.hQE.hQJ;
   }
   
   public final int getType()
@@ -64,7 +64,7 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(91010);
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryGetBlockList", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.soX) });
+    ae.i("MicroMsg.TopStory.NetSceneTopStoryGetBlockList", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.szi) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(91010);
   }

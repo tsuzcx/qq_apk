@@ -27,11 +27,12 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
+import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.plugin.exdevice.model.e;
 import com.tencent.mm.plugin.exdevice.model.e.b;
 import com.tencent.mm.plugin.exdevice.model.h;
@@ -39,12 +40,13 @@ import com.tencent.mm.plugin.exdevice.model.j;
 import com.tencent.mm.plugin.exdevice.model.j.a;
 import com.tencent.mm.plugin.exdevice.model.t;
 import com.tencent.mm.plugin.exdevice.model.v;
-import com.tencent.mm.protocal.protobuf.bnj;
-import com.tencent.mm.protocal.protobuf.bnk;
-import com.tencent.mm.protocal.protobuf.bzp;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.caj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,29 +56,29 @@ import org.json.JSONObject;
 @SuppressLint({"Assert"})
 public class ExdeviceBindDeviceUI
   extends MMActivity
-  implements com.tencent.mm.al.f, e.b
+  implements com.tencent.mm.ak.f, e.b
 {
-  private ProgressDialog fMu;
-  private ScrollView kLj;
+  private ProgressDialog fOC;
+  private ScrollView kOy;
   private String mDeviceType;
   private ListView mListView;
-  private TextView oHG;
-  private String qbM;
-  private j.a qcz;
-  private TextView qhw;
-  private TextView qhx;
-  private a qij;
-  private View qik;
-  private TextView qil;
-  private ImageView qim;
-  private View qin;
-  private ExdeviceBindDeviceUI.e qio;
-  private String qip;
-  private String qiq;
-  private boolean qir = false;
-  private j.a qis;
-  private boolean qit = false;
-  private boolean qiu = false;
+  private TextView oOi;
+  private String qir;
+  private j.a qje;
+  private a qoO;
+  private View qoP;
+  private TextView qoQ;
+  private ImageView qoR;
+  private View qoS;
+  private ExdeviceBindDeviceUI.e qoT;
+  private String qoU;
+  private String qoV;
+  private boolean qoW = false;
+  private j.a qoX;
+  private boolean qoY = false;
+  private boolean qoZ = false;
+  private TextView qob;
+  private TextView qoc;
   
   static
   {
@@ -90,7 +92,7 @@ public class ExdeviceBindDeviceUI
     }
   }
   
-  private void CD(int paramInt)
+  private void CP(int paramInt)
   {
     AppMethodBeat.i(23934);
     switch (paramInt)
@@ -119,7 +121,7 @@ public class ExdeviceBindDeviceUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(23901);
-          com.tencent.mm.plugin.exdevice.model.f.an(ExdeviceBindDeviceUI.this.getContext(), "http://o2o.gtimg.com/mydevice/page/deviceHelp.html");
+          com.tencent.mm.plugin.exdevice.model.f.ap(ExdeviceBindDeviceUI.this.getContext(), "http://o2o.gtimg.com/mydevice/page/deviceHelp.html");
           AppMethodBeat.o(23901);
         }
         
@@ -131,8 +133,8 @@ public class ExdeviceBindDeviceUI
           AppMethodBeat.o(23902);
         }
       }, 0, str.length(), 33);
-      this.qil.setMovementMethod(LinkMovementMethod.getInstance());
-      this.qil.setText((CharSequence)localObject);
+      this.qoQ.setMovementMethod(LinkMovementMethod.getInstance());
+      this.qoQ.setText((CharSequence)localObject);
       break;
       str = getString(2131758485);
       localObject = getString(2131758482);
@@ -155,8 +157,8 @@ public class ExdeviceBindDeviceUI
           AppMethodBeat.o(23904);
         }
       }, str.length(), str.length() + ((String)localObject).length(), 33);
-      this.qil.setMovementMethod(LinkMovementMethod.getInstance());
-      this.qil.setText(localSpannableString);
+      this.qoQ.setMovementMethod(LinkMovementMethod.getInstance());
+      this.qoQ.setText(localSpannableString);
       break;
       str = getString(2131758486);
       localObject = getString(2131758515);
@@ -179,42 +181,42 @@ public class ExdeviceBindDeviceUI
           AppMethodBeat.o(23894);
         }
       }, str.length(), str.length() + ((String)localObject).length(), 33);
-      this.qil.setMovementMethod(LinkMovementMethod.getInstance());
-      this.qil.setText(localSpannableString);
+      this.qoQ.setMovementMethod(LinkMovementMethod.getInstance());
+      this.qoQ.setText(localSpannableString);
       break;
-      this.qim.setImageResource(2131689789);
-      this.qhw.setText(2131758494);
-      this.qhx.setText(2131758478);
+      this.qoR.setImageResource(2131689789);
+      this.qob.setText(2131758494);
+      this.qoc.setText(2131758478);
       break label72;
-      this.qim.setImageResource(2131689789);
-      this.qhw.setText(2131758492);
-      this.qhx.setText("");
+      this.qoR.setImageResource(2131689789);
+      this.qob.setText(2131758492);
+      this.qoc.setText("");
       break label72;
-      this.qim.setImageResource(2131691457);
-      this.qhw.setText(2131758494);
-      this.qhx.setText(2131758489);
+      this.qoR.setImageResource(2131691457);
+      this.qob.setText(2131758494);
+      this.qoc.setText(2131758489);
       break label72;
-      this.qik.setVisibility(0);
+      this.qoP.setVisibility(0);
       this.mListView.setVisibility(0);
-      this.qil.setVisibility(0);
-      this.qim.setVisibility(8);
-      this.qhw.setVisibility(8);
-      this.qhx.setVisibility(8);
+      this.qoQ.setVisibility(0);
+      this.qoR.setVisibility(8);
+      this.qob.setVisibility(8);
+      this.qoc.setVisibility(8);
       AppMethodBeat.o(23934);
       return;
-      this.kLj.setVisibility(8);
-      this.qik.setVisibility(8);
+      this.kOy.setVisibility(8);
+      this.qoP.setVisibility(8);
       this.mListView.setVisibility(8);
-      this.qil.setVisibility(8);
-      this.qim.setVisibility(0);
-      this.qhw.setVisibility(0);
+      this.qoQ.setVisibility(8);
+      this.qoR.setVisibility(0);
+      this.qob.setVisibility(0);
       if (paramInt == 4)
       {
-        this.qhx.setVisibility(8);
+        this.qoc.setVisibility(8);
         AppMethodBeat.o(23934);
         return;
       }
-      this.qhx.setVisibility(0);
+      this.qoc.setVisibility(0);
     }
   }
   
@@ -222,30 +224,30 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23932);
     Object localObject = paramf.getKey();
-    if (this.qij.acP((String)localObject))
+    if (this.qoO.adG((String)localObject))
     {
       AppMethodBeat.o(23932);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceBindDeviceUI", "Add device: " + paramf.cmc());
-    localObject = this.qij;
-    if ((paramf != null) && (!((a)localObject).acP(paramf.getKey())))
+    ae.d("MicroMsg.ExdeviceBindDeviceUI", "Add device: " + paramf.cns());
+    localObject = this.qoO;
+    if ((paramf != null) && (!((a)localObject).adG(paramf.getKey())))
     {
-      paramf.qiO = ((a)localObject).c(paramf);
-      ((a)localObject).qiC.add(paramf);
+      paramf.qpt = ((a)localObject).c(paramf);
+      ((a)localObject).qph.add(paramf);
     }
-    this.qij.notifyDataSetChanged();
-    if (paramf.qiP == ExdeviceBindDeviceUI.b.qiH)
+    this.qoO.notifyDataSetChanged();
+    if (paramf.qpu == ExdeviceBindDeviceUI.b.qpm)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchBLEHardDevice doScene, mac(%s), brandName(%s),categoryId(%s)", new Object[] { paramf.qiQ.cOA, this.qbM, this.qip });
-      ba.aiU().a(new t(paramf.qiQ.cOA, this.qbM, this.qip), 0);
+      ae.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchBLEHardDevice doScene, mac(%s), brandName(%s),categoryId(%s)", new Object[] { paramf.qpv.cPk, this.qir, this.qoU });
+      bc.ajj().a(new t(paramf.qpv.cPk, this.qir, this.qoU), 0);
       AppMethodBeat.o(23932);
       return;
     }
-    if (paramf.qiP == ExdeviceBindDeviceUI.b.qiG)
+    if (paramf.qpu == ExdeviceBindDeviceUI.b.qpl)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchWiFiHardDevice doScene, deviceType(%s), deviceId(%s)", new Object[] { paramf.qiR.mDeviceType, paramf.qiR.qbN });
-      ba.aiU().a(new v(paramf.qiR.mDeviceType, paramf.qiR.qbN, paramf.qiW), 0);
+      ae.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchWiFiHardDevice doScene, deviceType(%s), deviceId(%s)", new Object[] { paramf.qpw.mDeviceType, paramf.qpw.qis });
+      bc.ajj().a(new v(paramf.qpw.mDeviceType, paramf.qpw.qis, paramf.qpB), 0);
       AppMethodBeat.o(23932);
       return;
     }
@@ -267,18 +269,18 @@ public class ExdeviceBindDeviceUI
     AppMethodBeat.i(23927);
     this.mListView = ((ListView)findViewById(2131301457));
     Object localObject = View.inflate(this, 2131493860, null);
-    this.qin = View.inflate(this, 2131493893, null);
-    this.qik = this.qin.findViewById(2131304456);
-    this.oHG = ((TextView)this.qin.findViewById(2131305885));
-    this.qil = ((TextView)findViewById(2131304300));
-    this.qim = ((ImageView)findViewById(2131301586));
-    this.qhw = ((TextView)findViewById(2131299511));
-    this.qhx = ((TextView)findViewById(2131299512));
-    this.kLj = ((ScrollView)findViewById(2131299066));
+    this.qoS = View.inflate(this, 2131493893, null);
+    this.qoP = this.qoS.findViewById(2131304456);
+    this.oOi = ((TextView)this.qoS.findViewById(2131305885));
+    this.qoQ = ((TextView)findViewById(2131304300));
+    this.qoR = ((ImageView)findViewById(2131301586));
+    this.qob = ((TextView)findViewById(2131299511));
+    this.qoc = ((TextView)findViewById(2131299512));
+    this.kOy = ((ScrollView)findViewById(2131299066));
     this.mListView.addHeaderView((View)localObject, null, false);
-    this.mListView.addFooterView(this.qin, null, false);
-    this.qij = new a(this.qbM, this.qio, this.qip);
-    this.mListView.setAdapter(this.qij);
+    this.mListView.addFooterView(this.qoS, null, false);
+    this.qoO = new a(this.qir, this.qoT, this.qoU);
+    this.mListView.setAdapter(this.qoO);
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -287,12 +289,12 @@ public class ExdeviceBindDeviceUI
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceBindDeviceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceBindDeviceUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
         int i = ((ListView)paramAnonymousAdapterView).getHeaderViewsCount();
-        paramAnonymousAdapterView = ExdeviceBindDeviceUI.a(ExdeviceBindDeviceUI.this).CF(paramAnonymousInt - i);
-        if (paramAnonymousAdapterView.qiT.ffF != 0) {
+        paramAnonymousAdapterView = ExdeviceBindDeviceUI.a(ExdeviceBindDeviceUI.this).CR(paramAnonymousInt - i);
+        if (paramAnonymousAdapterView.qpy.fhC != 0) {
           ExdeviceBindDeviceUI.a(ExdeviceBindDeviceUI.this, paramAnonymousAdapterView);
         }
         for (;;)
@@ -304,60 +306,60 @@ public class ExdeviceBindDeviceUI
         }
       }
     });
-    if ((this.qiu) && (!this.qit))
+    if ((this.qoZ) && (!this.qoY))
     {
-      if (!com.tencent.mm.plugin.d.a.e.a.ep(getContext()))
+      if (!com.tencent.mm.plugin.d.a.e.a.et(getContext()))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-        CD(4);
+        ae.i("MicroMsg.ExdeviceBindDeviceUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+        CP(4);
         AppMethodBeat.o(23927);
         return;
       }
-      if (!com.tencent.mm.plugin.d.a.e.a.bMR())
+      if (!com.tencent.mm.plugin.d.a.e.a.bNP())
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "Bluetooth is not open, Just leave");
-        CD(3);
+        ae.i("MicroMsg.ExdeviceBindDeviceUI", "Bluetooth is not open, Just leave");
+        CP(3);
         AppMethodBeat.o(23927);
         return;
       }
     }
-    if ((!this.qiu) && (this.qit) && (!ay.isWifi(getContext())))
+    if ((!this.qoZ) && (this.qoY) && (!az.isWifi(getContext())))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "wifi is not open, Just leave");
-      CD(5);
+      ae.i("MicroMsg.ExdeviceBindDeviceUI", "wifi is not open, Just leave");
+      CP(5);
       AppMethodBeat.o(23927);
       return;
     }
-    if (this.qio == ExdeviceBindDeviceUI.e.qiL)
+    if (this.qoT == ExdeviceBindDeviceUI.e.qpq)
     {
-      CD(0);
+      CP(0);
       AppMethodBeat.o(23927);
       return;
     }
-    if (this.qio == ExdeviceBindDeviceUI.e.qiM)
+    if (this.qoT == ExdeviceBindDeviceUI.e.qpr)
     {
-      if ((this.qiu) && (this.qit))
+      if ((this.qoZ) && (this.qoY))
       {
         Assert.assertTrue(false);
-        CD(1);
+        CP(1);
         AppMethodBeat.o(23927);
         return;
       }
-      if (this.qiu)
+      if (this.qoZ)
       {
-        CD(2);
+        CP(2);
         AppMethodBeat.o(23927);
         return;
       }
-      if (this.qit)
+      if (this.qoY)
       {
-        CD(1);
+        CP(1);
         AppMethodBeat.o(23927);
       }
     }
     else
     {
-      localObject = ExdeviceBindDeviceUI.e.qiK;
+      localObject = ExdeviceBindDeviceUI.e.qpp;
       Assert.assertTrue(false);
     }
     AppMethodBeat.o(23927);
@@ -366,19 +368,19 @@ public class ExdeviceBindDeviceUI
   public final void o(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(23930);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceBindDeviceUI", "onScanResult, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
-    if (bt.isNullOrNil(paramString2))
+    ae.d("MicroMsg.ExdeviceBindDeviceUI", "onScanResult, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+    if (bu.isNullOrNil(paramString2))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceBindDeviceUI", "onScanResult failed, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      ae.e("MicroMsg.ExdeviceBindDeviceUI", "onScanResult failed, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(23930);
       return;
     }
     final f localf = new f((byte)0);
-    localf.qiP = ExdeviceBindDeviceUI.b.qiH;
-    localf.qiQ = new c((byte)0);
-    localf.qiQ.qiJ = paramString1;
-    localf.qiQ.cOA = com.tencent.mm.plugin.exdevice.k.b.uP(com.tencent.mm.plugin.exdevice.k.b.acY(paramString2));
-    aq.f(new Runnable()
+    localf.qpu = ExdeviceBindDeviceUI.b.qpm;
+    localf.qpv = new c((byte)0);
+    localf.qpv.qpo = paramString1;
+    localf.qpv.cPk = com.tencent.mm.plugin.exdevice.k.b.vg(com.tencent.mm.plugin.exdevice.k.b.adP(paramString2));
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -393,8 +395,8 @@ public class ExdeviceBindDeviceUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(23933);
-    this.qij.cmb();
-    this.qij.notifyDataSetChanged();
+    this.qoO.cnr();
+    this.qoO.notifyDataSetChanged();
     AppMethodBeat.o(23933);
   }
   
@@ -413,35 +415,35 @@ public class ExdeviceBindDeviceUI
       }
     });
     Object localObject = getIntent();
-    this.qip = ((Intent)localObject).getStringExtra("device_category_id");
-    this.qbM = ((Intent)localObject).getStringExtra("device_brand_name");
+    this.qoU = ((Intent)localObject).getStringExtra("device_category_id");
+    this.qir = ((Intent)localObject).getStringExtra("device_brand_name");
     this.mDeviceType = ((Intent)localObject).getStringExtra("device_type");
     if ((this.mDeviceType == null) || (this.mDeviceType.length() == 0)) {
-      this.mDeviceType = this.qbM;
+      this.mDeviceType = this.qir;
     }
     String str2 = ((Intent)localObject).getStringExtra("device_scan_conn_proto");
     String str3 = ((Intent)localObject).getStringExtra("device_scan_mode");
     paramBundle = "";
     String str1 = ((Intent)localObject).getStringExtra("device_title");
     localObject = str1;
-    if (bt.isNullOrNil(str1)) {
+    if (bu.isNullOrNil(str1)) {
       localObject = getContext().getString(2131758530);
     }
     if (str3.contains("SCAN_MY_DEVICE"))
     {
-      this.qio = ExdeviceBindDeviceUI.e.qiL;
+      this.qoT = ExdeviceBindDeviceUI.e.qpq;
       paramBundle = getContext().getString(2131758468);
       setMMTitle(paramBundle);
-      if (this.qio != ExdeviceBindDeviceUI.e.qiM) {
+      if (this.qoT != ExdeviceBindDeviceUI.e.qpr) {
         break label425;
       }
-      this.qit = str2.contains("wifi");
-      this.qiu = str2.contains("blue");
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "mIsScanWifi(%b), mIsScanBlue(%b)", new Object[] { Boolean.valueOf(this.qit), Boolean.valueOf(this.qiu) });
+      this.qoY = str2.contains("wifi");
+      this.qoZ = str2.contains("blue");
+      ae.i("MicroMsg.ExdeviceBindDeviceUI", "mIsScanWifi(%b), mIsScanBlue(%b)", new Object[] { Boolean.valueOf(this.qoY), Boolean.valueOf(this.qoZ) });
     }
     for (;;)
     {
-      this.qcz = new j.a()
+      this.qje = new j.a()
       {
         public final void g(int paramAnonymousInt, Object... paramAnonymousVarArgs)
         {
@@ -460,7 +462,7 @@ public class ExdeviceBindDeviceUI
               localObject1 = localJSONObject.getJSONObject("deviceInfo");
               paramAnonymousVarArgs = ((JSONObject)localObject1).getString("deviceType");
               Object[] arrayOfObject1;
-              com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.ExdeviceBindDeviceUI", localException1, "", new Object[0]);
+              ae.printErrStackTrace("MicroMsg.ExdeviceBindDeviceUI", localException1, "", new Object[0]);
             }
             catch (Exception localException1)
             {
@@ -502,7 +504,7 @@ public class ExdeviceBindDeviceUI
               paramAnonymousVarArgs = null;
             }
             label125:
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceBindDeviceUI", "json decode failed: deviceInfo decode");
+            ae.e("MicroMsg.ExdeviceBindDeviceUI", "json decode failed: deviceInfo decode");
             arrayOfObject2 = paramAnonymousVarArgs;
             localObject2 = localObject1;
             label151:
@@ -510,66 +512,66 @@ public class ExdeviceBindDeviceUI
             localObject1 = localObject2;
           }
           localObject2 = new ExdeviceBindDeviceUI.f(ExdeviceBindDeviceUI.this, (byte)0);
-          ((ExdeviceBindDeviceUI.f)localObject2).qiP = ExdeviceBindDeviceUI.b.qiG;
-          ((ExdeviceBindDeviceUI.f)localObject2).qiR = new ExdeviceBindDeviceUI.d(ExdeviceBindDeviceUI.this, (byte)0);
-          ((ExdeviceBindDeviceUI.f)localObject2).qiR.mDeviceType = arrayOfObject2;
-          ((ExdeviceBindDeviceUI.f)localObject2).qiR.qbN = ((String)localObject1);
-          if (!bt.isNullOrNil(paramAnonymousVarArgs))
+          ((ExdeviceBindDeviceUI.f)localObject2).qpu = ExdeviceBindDeviceUI.b.qpl;
+          ((ExdeviceBindDeviceUI.f)localObject2).qpw = new ExdeviceBindDeviceUI.d(ExdeviceBindDeviceUI.this, (byte)0);
+          ((ExdeviceBindDeviceUI.f)localObject2).qpw.mDeviceType = arrayOfObject2;
+          ((ExdeviceBindDeviceUI.f)localObject2).qpw.qis = ((String)localObject1);
+          if (!bu.isNullOrNil(paramAnonymousVarArgs))
           {
-            ((ExdeviceBindDeviceUI.f)localObject2).qiW = Base64.encodeToString(paramAnonymousVarArgs.getBytes(), 2);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "device.mManufacturerData: %s", new Object[] { ((ExdeviceBindDeviceUI.f)localObject2).qiW });
+            ((ExdeviceBindDeviceUI.f)localObject2).qpB = Base64.encodeToString(paramAnonymousVarArgs.getBytes(), 2);
+            ae.i("MicroMsg.ExdeviceBindDeviceUI", "device.mManufacturerData: %s", new Object[] { ((ExdeviceBindDeviceUI.f)localObject2).qpB });
           }
           for (;;)
           {
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(23895);
-                ExdeviceBindDeviceUI.this.a(this.qiw);
+                ExdeviceBindDeviceUI.this.a(this.qpb);
                 AppMethodBeat.o(23895);
               }
             });
             AppMethodBeat.o(23896);
             return;
-            ((ExdeviceBindDeviceUI.f)localObject2).qiW = null;
+            ((ExdeviceBindDeviceUI.f)localObject2).qpB = null;
           }
         }
       };
-      this.qis = new j.a()
+      this.qoX = new j.a()
       {
         public final void g(int paramAnonymousInt, Object... paramAnonymousVarArgs) {}
       };
       initView();
-      this.oHG.setText(getContext().getString(2131758598, new Object[] { localObject }));
-      ba.aiU().a(1264, this);
-      ba.aiU().a(1706, this);
-      ba.aiU().a(1270, this);
-      ba.aiU().a(1719, this);
-      if (this.qiu) {
-        com.tencent.mm.plugin.exdevice.model.ad.clE().a(this);
+      this.oOi.setText(getContext().getString(2131758598, new Object[] { localObject }));
+      bc.ajj().a(1264, this);
+      bc.ajj().a(1706, this);
+      bc.ajj().a(1270, this);
+      bc.ajj().a(1719, this);
+      if (this.qoZ) {
+        ad.cmU().a(this);
       }
-      if (this.qit)
+      if (this.qoY)
       {
-        j.clk().a(10, this.qcz);
-        j.clk().a(11, this.qis);
+        j.cmA().a(10, this.qje);
+        j.cmA().a(11, this.qoX);
         Java2CExDevice.initWCLanDeviceLib();
       }
       AppMethodBeat.o(23925);
       return;
       if (str3.compareTo("SCAN_CATALOG") == 0)
       {
-        this.qio = ExdeviceBindDeviceUI.e.qiM;
+        this.qoT = ExdeviceBindDeviceUI.e.qpr;
         paramBundle = getContext().getString(2131758466);
         break;
       }
       Assert.assertTrue(false);
       break;
       label425:
-      if (this.qio == ExdeviceBindDeviceUI.e.qiL)
+      if (this.qoT == ExdeviceBindDeviceUI.e.qpq)
       {
-        this.qiu = true;
-        this.qit = true;
+        this.qoZ = true;
+        this.qoY = true;
       }
     }
   }
@@ -578,21 +580,21 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23929);
     super.onDestroy();
-    if (this.qit)
+    if (this.qoY)
     {
-      ba.ajF().ay(new ExdeviceBindDeviceUI.6(this));
-      j.clk().b(10, this.qcz);
-      j.clk().b(11, this.qis);
+      bc.ajU().aw(new ExdeviceBindDeviceUI.6(this));
+      j.cmA().b(10, this.qje);
+      j.cmA().b(11, this.qoX);
     }
-    if (this.qiu)
+    if (this.qoZ)
     {
-      com.tencent.mm.plugin.exdevice.model.ad.clE().b(this);
-      com.tencent.mm.plugin.exdevice.model.ad.clF().stopScan();
+      ad.cmU().b(this);
+      ad.cmV().stopScan();
     }
-    ba.aiU().b(1264, this);
-    ba.aiU().b(1706, this);
-    ba.aiU().b(1270, this);
-    ba.aiU().b(1719, this);
+    bc.ajj().b(1264, this);
+    bc.ajj().b(1706, this);
+    bc.ajj().b(1270, this);
+    bc.ajj().b(1719, this);
     AppMethodBeat.o(23929);
   }
   
@@ -600,12 +602,12 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23928);
     super.onPause();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "onPause stop scan.");
-    if (this.qit) {
+    ae.i("MicroMsg.ExdeviceBindDeviceUI", "onPause stop scan.");
+    if (this.qoY) {
       Java2CExDevice.stopScanWCLanDevice();
     }
-    if (this.qiu) {
-      com.tencent.mm.plugin.exdevice.model.ad.clF().stopScan();
+    if (this.qoZ) {
+      ad.cmV().stopScan();
     }
     AppMethodBeat.o(23928);
   }
@@ -614,31 +616,31 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23926);
     super.onResume();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "onResume start scan.");
-    if (this.qiu)
+    ae.i("MicroMsg.ExdeviceBindDeviceUI", "onResume start scan.");
+    if (this.qoZ)
     {
-      com.tencent.mm.plugin.exdevice.model.ad.clE();
-      e.clg();
+      ad.cmU();
+      e.cmw();
     }
-    if (this.qit) {
+    if (this.qoY) {
       Java2CExDevice.startScanWCLanDevice(new byte[0], 1000);
     }
-    this.qij.cmb();
-    this.qij.notifyDataSetChanged();
+    this.qoO.cnr();
+    this.qoO.notifyDataSetChanged();
     AppMethodBeat.o(23926);
   }
   
   public void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, final n paramn)
   {
     AppMethodBeat.i(23931);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ae.i("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (paramn == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, scene is null.");
+      ae.e("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, scene is null.");
       AppMethodBeat.o(23931);
       return;
     }
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -659,32 +661,32 @@ public class ExdeviceBindDeviceUI
   static final class a
     extends BaseAdapter
   {
-    private c qhI;
-    List<ExdeviceBindDeviceUI.f> qiC;
-    private String qiD;
-    private ExdeviceBindDeviceUI.e qiE;
-    private String qiF;
+    private c qon;
+    List<ExdeviceBindDeviceUI.f> qph;
+    private String qpi;
+    private ExdeviceBindDeviceUI.e qpj;
+    private String qpk;
     
     public a(String paramString1, ExdeviceBindDeviceUI.e parame, String paramString2)
     {
       AppMethodBeat.i(23905);
-      this.qiD = paramString1;
-      this.qiE = parame;
-      this.qiF = paramString2;
-      this.qiC = new ArrayList();
+      this.qpi = paramString1;
+      this.qpj = parame;
+      this.qpk = paramString2;
+      this.qph = new ArrayList();
       paramString1 = new c.a();
-      paramString1.idG = 2131100860;
-      this.qhI = paramString1.aJc();
+      paramString1.igy = 2131100860;
+      this.qon = paramString1.aJu();
       AppMethodBeat.o(23905);
     }
     
-    private int acR(String paramString)
+    private int adI(String paramString)
     {
       AppMethodBeat.i(23913);
       int i = 0;
-      while (i < this.qiC.size())
+      while (i < this.qph.size())
       {
-        if (((ExdeviceBindDeviceUI.f)this.qiC.get(i)).getKey().compareTo(paramString) == 0)
+        if (((ExdeviceBindDeviceUI.f)this.qph.get(i)).getKey().compareTo(paramString) == 0)
         {
           AppMethodBeat.o(23913);
           return i;
@@ -695,7 +697,7 @@ public class ExdeviceBindDeviceUI
       return -1;
     }
     
-    private static boolean acS(String paramString)
+    private static boolean adJ(String paramString)
     {
       AppMethodBeat.i(23916);
       if ((paramString == null) || (paramString.length() == 0))
@@ -707,20 +709,20 @@ public class ExdeviceBindDeviceUI
       return false;
     }
     
-    public final ExdeviceBindDeviceUI.f CF(int paramInt)
+    public final ExdeviceBindDeviceUI.f CR(int paramInt)
     {
       AppMethodBeat.i(23911);
       int j = -1;
       int i = 0;
-      while (i < this.qiC.size())
+      while (i < this.qph.size())
       {
         int k = j;
-        if (((ExdeviceBindDeviceUI.f)this.qiC.get(i)).qiO) {
+        if (((ExdeviceBindDeviceUI.f)this.qph.get(i)).qpt) {
           k = j + 1;
         }
         if (k == paramInt)
         {
-          ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.qiC.get(i);
+          ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.qph.get(i);
           AppMethodBeat.o(23911);
           return localf;
         }
@@ -731,10 +733,10 @@ public class ExdeviceBindDeviceUI
       return null;
     }
     
-    public final boolean acP(String paramString)
+    public final boolean adG(String paramString)
     {
       AppMethodBeat.i(23908);
-      if (acR(paramString) >= 0)
+      if (adI(paramString) >= 0)
       {
         AppMethodBeat.o(23908);
         return true;
@@ -743,7 +745,7 @@ public class ExdeviceBindDeviceUI
       return false;
     }
     
-    public final ExdeviceBindDeviceUI.f acQ(String paramString)
+    public final ExdeviceBindDeviceUI.f adH(String paramString)
     {
       AppMethodBeat.i(23909);
       if ((paramString == null) || (paramString.length() == 0))
@@ -752,10 +754,10 @@ public class ExdeviceBindDeviceUI
         return null;
       }
       int i = 0;
-      while (i < this.qiC.size())
+      while (i < this.qph.size())
       {
-        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.qiC.get(i);
-        if ((!acS(localf.cmc())) && (paramString.equalsIgnoreCase(localf.cmc())))
+        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.qph.get(i);
+        if ((!adJ(localf.cns())) && (paramString.equalsIgnoreCase(localf.cns())))
         {
           AppMethodBeat.o(23909);
           return localf;
@@ -769,12 +771,12 @@ public class ExdeviceBindDeviceUI
     public final boolean b(ExdeviceBindDeviceUI.f paramf)
     {
       AppMethodBeat.i(23907);
-      if (acR(paramf.getKey()) < 0)
+      if (adI(paramf.getKey()) < 0)
       {
         AppMethodBeat.o(23907);
         return false;
       }
-      paramf.qiO = c(paramf);
+      paramf.qpt = c(paramf);
       AppMethodBeat.o(23907);
       return true;
     }
@@ -782,27 +784,27 @@ public class ExdeviceBindDeviceUI
     final boolean c(ExdeviceBindDeviceUI.f paramf)
     {
       AppMethodBeat.i(23915);
-      if (paramf.qiT == null)
+      if (paramf.qpy == null)
       {
         AppMethodBeat.o(23915);
         return false;
       }
-      if (this.qiE == ExdeviceBindDeviceUI.e.qiM)
+      if (this.qpj == ExdeviceBindDeviceUI.e.qpr)
       {
-        if ((paramf.qiT.GHv == null) || (paramf.qiT.GHv.compareTo(this.qiD) != 0))
+        if ((paramf.qpy.HaX == null) || (paramf.qpy.HaX.compareTo(this.qpi) != 0))
         {
           AppMethodBeat.o(23915);
           return false;
         }
-        if ((paramf.qiT.GHE == null) || (paramf.qiT.GHE.compareTo(this.qiF) != 0))
+        if ((paramf.qpy.Hbg == null) || (paramf.qpy.Hbg.compareTo(this.qpk) != 0))
         {
           AppMethodBeat.o(23915);
           return false;
         }
       }
-      else if (this.qiE == ExdeviceBindDeviceUI.e.qiL)
+      else if (this.qpj == ExdeviceBindDeviceUI.e.qpq)
       {
-        if (paramf.qiT.ffF == 0)
+        if (paramf.qpy.fhC == 0)
         {
           AppMethodBeat.o(23915);
           return false;
@@ -818,52 +820,52 @@ public class ExdeviceBindDeviceUI
       return true;
     }
     
-    final void cmb()
+    final void cnr()
     {
       AppMethodBeat.i(23906);
       int i = 0;
-      while (i < this.qiC.size())
+      while (i < this.qph.size())
       {
-        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.qiC.get(i);
-        localf.qiO = c(localf);
+        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.qph.get(i);
+        localf.qpt = c(localf);
         i += 1;
       }
       AppMethodBeat.o(23906);
     }
     
-    final int fH(String paramString1, String paramString2)
+    final int fL(String paramString1, String paramString2)
     {
       AppMethodBeat.i(23914);
       int i = 0;
-      while (i < this.qiC.size())
+      while (i < this.qph.size())
       {
-        Object localObject = (ExdeviceBindDeviceUI.f)this.qiC.get(i);
+        Object localObject = (ExdeviceBindDeviceUI.f)this.qph.get(i);
         String str;
-        if (((ExdeviceBindDeviceUI.f)localObject).qiS != null)
+        if (((ExdeviceBindDeviceUI.f)localObject).qpx != null)
         {
-          str = ((ExdeviceBindDeviceUI.f)localObject).qiS.FzJ;
-          if (((ExdeviceBindDeviceUI.f)localObject).qiS == null) {
+          str = ((ExdeviceBindDeviceUI.f)localObject).qpx.FSh;
+          if (((ExdeviceBindDeviceUI.f)localObject).qpx == null) {
             break label144;
           }
-          localObject = ((ExdeviceBindDeviceUI.f)localObject).qiS.nDr;
+          localObject = ((ExdeviceBindDeviceUI.f)localObject).qpx.nIM;
         }
         for (;;)
         {
-          if ((acS(str)) || (acS((String)localObject)) || (paramString1.compareTo(str) != 0) || (paramString2.compareTo((String)localObject) != 0)) {
+          if ((adJ(str)) || (adJ((String)localObject)) || (paramString1.compareTo(str) != 0) || (paramString2.compareTo((String)localObject) != 0)) {
             break label174;
           }
           AppMethodBeat.o(23914);
           return i;
-          if (((ExdeviceBindDeviceUI.f)localObject).qiP == ExdeviceBindDeviceUI.b.qiG)
+          if (((ExdeviceBindDeviceUI.f)localObject).qpu == ExdeviceBindDeviceUI.b.qpl)
           {
-            str = ((ExdeviceBindDeviceUI.f)localObject).qiR.mDeviceType;
+            str = ((ExdeviceBindDeviceUI.f)localObject).qpw.mDeviceType;
             break;
           }
           str = null;
           break;
           label144:
-          if (((ExdeviceBindDeviceUI.f)localObject).qiP == ExdeviceBindDeviceUI.b.qiG) {
-            localObject = ((ExdeviceBindDeviceUI.f)localObject).qiR.qbN;
+          if (((ExdeviceBindDeviceUI.f)localObject).qpu == ExdeviceBindDeviceUI.b.qpl) {
+            localObject = ((ExdeviceBindDeviceUI.f)localObject).qpw.qis;
           } else {
             localObject = null;
           }
@@ -880,10 +882,10 @@ public class ExdeviceBindDeviceUI
       AppMethodBeat.i(23910);
       int i = 0;
       int k;
-      for (int j = 0; i < this.qiC.size(); j = k)
+      for (int j = 0; i < this.qph.size(); j = k)
       {
         k = j;
-        if (((ExdeviceBindDeviceUI.f)this.qiC.get(i)).qiO) {
+        if (((ExdeviceBindDeviceUI.f)this.qph.get(i)).qpt) {
           k = j + 1;
         }
         i += 1;
@@ -900,18 +902,18 @@ public class ExdeviceBindDeviceUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(23912);
-      ExdeviceBindDeviceUI.f localf = CF(paramInt);
+      ExdeviceBindDeviceUI.f localf = CR(paramInt);
       a locala;
       View localView;
       if (paramView == null)
       {
         locala = new a((byte)0);
         localView = View.inflate(paramViewGroup.getContext(), 2131493857, null);
-        locala.jfJ = ((TextView)localView.findViewById(2131302656));
-        locala.lZa = ((ImageView)localView.findViewById(2131300880));
+        locala.jiC = ((TextView)localView.findViewById(2131302656));
+        locala.mdt = ((ImageView)localView.findViewById(2131300880));
         localView.setTag(locala);
       }
-      while ((localf == null) || (localf.qiT == null))
+      while ((localf == null) || (localf.qpy == null))
       {
         Assert.assertTrue(false);
         AppMethodBeat.o(23912);
@@ -920,60 +922,60 @@ public class ExdeviceBindDeviceUI
         localView = paramView;
       }
       Object localObject;
-      if (localf.qiP == ExdeviceBindDeviceUI.b.qiH)
+      if (localf.qpu == ExdeviceBindDeviceUI.b.qpm)
       {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceBindDeviceUI", "position(%s), broadcastname(%s), mac(%s), deviceTitle(%s).", new Object[] { Integer.valueOf(paramInt), localf.qiQ.qiJ, localf.qiQ.cOA, localf.qiT.GHC });
+        ae.d("MicroMsg.ExdeviceBindDeviceUI", "position(%s), broadcastname(%s), mac(%s), deviceTitle(%s).", new Object[] { Integer.valueOf(paramInt), localf.qpv.qpo, localf.qpv.cPk, localf.qpy.Hbe });
         localObject = "";
-        paramView = localf.qiT.ffJ;
+        paramView = localf.qpy.fhG;
         if ((paramView != null) && (paramView.length() >= 4))
         {
           paramView = paramView.substring(paramView.length() - 4, paramView.length());
-          paramView = localf.qiT.GHC + " " + paramView;
+          paramView = localf.qpy.Hbe + " " + paramView;
           localObject = new SpannableString(paramView);
-          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131100490)), localf.qiT.GHC.length() + 1, paramView.length(), 17);
-          locala.jfJ.setText((CharSequence)localObject);
+          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131100490)), localf.qpy.Hbe.length() + 1, paramView.length(), 17);
+          locala.jiC.setText((CharSequence)localObject);
         }
       }
       for (;;)
       {
-        paramView = localf.qiT.IconUrl;
-        if (!acS(paramView)) {
-          com.tencent.mm.aw.q.aIJ().a(paramView, locala.lZa, this.qhI);
+        paramView = localf.qpy.IconUrl;
+        if (!adJ(paramView)) {
+          com.tencent.mm.av.q.aJb().a(paramView, locala.mdt, this.qon);
         }
         AppMethodBeat.o(23912);
         return localView;
         paramView = (View)localObject;
-        if (localf.qiQ.cOA == null) {
+        if (localf.qpv.cPk == null) {
           break;
         }
         paramView = (View)localObject;
-        if (localf.qiQ.cOA.length() < 4) {
+        if (localf.qpv.cPk.length() < 4) {
           break;
         }
-        paramView = localf.qiQ.cOA;
+        paramView = localf.qpv.cPk;
         paramView = paramView.substring(paramView.length() - 4, paramView.length());
         break;
-        if (localf.qiP == ExdeviceBindDeviceUI.b.qiG)
+        if (localf.qpu == ExdeviceBindDeviceUI.b.qpl)
         {
           localObject = "";
-          paramView = localf.qiT.ffJ;
+          paramView = localf.qpy.fhG;
           if ((paramView != null) && (paramView.length() >= 4)) {
             paramView = paramView.substring(paramView.length() - 4, paramView.length());
           }
           for (;;)
           {
-            paramView = localf.qiT.GHC + " " + paramView;
+            paramView = localf.qpy.Hbe + " " + paramView;
             localObject = new SpannableString(paramView);
-            ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131100490)), localf.qiT.GHC.length() + 1, paramView.length(), 17);
-            locala.jfJ.setText((CharSequence)localObject);
+            ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131100490)), localf.qpy.Hbe.length() + 1, paramView.length(), 17);
+            locala.jiC.setText((CharSequence)localObject);
             break;
             paramView = (View)localObject;
-            if (localf.qiT.FCM != null)
+            if (localf.qpy.FVh != null)
             {
               paramView = (View)localObject;
-              if (localf.qiT.FCM.length() >= 4)
+              if (localf.qpy.FVh.length() >= 4)
               {
-                paramView = localf.qiT.FCM;
+                paramView = localf.qpy.FVh;
                 paramView = paramView.substring(paramView.length() - 4, paramView.length());
               }
             }
@@ -985,15 +987,15 @@ public class ExdeviceBindDeviceUI
     
     static final class a
     {
-      TextView jfJ;
-      ImageView lZa;
+      TextView jiC;
+      ImageView mdt;
     }
   }
   
   final class c
   {
-    public String cOA;
-    public String qiJ;
+    public String cPk;
+    public String qpo;
     
     private c() {}
   }
@@ -1001,48 +1003,48 @@ public class ExdeviceBindDeviceUI
   final class d
   {
     public String mDeviceType;
-    public String qbN;
+    public String qis;
     
     private d() {}
   }
   
   final class f
   {
-    public String qhX;
-    public boolean qiO = false;
-    public ExdeviceBindDeviceUI.b qiP = ExdeviceBindDeviceUI.b.qiG;
-    public ExdeviceBindDeviceUI.c qiQ;
-    public ExdeviceBindDeviceUI.d qiR;
-    public bnj qiS;
-    public bnk qiT;
-    public int qiU;
-    public bzp qiV;
-    public String qiW;
+    public String qoC;
+    public caj qpA;
+    public String qpB;
+    public boolean qpt = false;
+    public ExdeviceBindDeviceUI.b qpu = ExdeviceBindDeviceUI.b.qpl;
+    public ExdeviceBindDeviceUI.c qpv;
+    public ExdeviceBindDeviceUI.d qpw;
+    public bob qpx;
+    public boc qpy;
+    public int qpz;
     
     private f() {}
     
-    public final String cmc()
+    public final String cns()
     {
-      if (this.qiP == ExdeviceBindDeviceUI.b.qiG)
+      if (this.qpu == ExdeviceBindDeviceUI.b.qpl)
       {
-        if (this.qiT == null) {
+        if (this.qpy == null) {
           return null;
         }
-        return this.qiT.FCM;
+        return this.qpy.FVh;
       }
-      return this.qiQ.cOA;
+      return this.qpv.cPk;
     }
     
     public final String getKey()
     {
       AppMethodBeat.i(23924);
-      if (this.qiP == ExdeviceBindDeviceUI.b.qiG)
+      if (this.qpu == ExdeviceBindDeviceUI.b.qpl)
       {
-        str = this.qiR.mDeviceType + this.qiR.qbN;
+        str = this.qpw.mDeviceType + this.qpw.qis;
         AppMethodBeat.o(23924);
         return str;
       }
-      String str = this.qiQ.cOA;
+      String str = this.qpv.cPk;
       AppMethodBeat.o(23924);
       return str;
     }

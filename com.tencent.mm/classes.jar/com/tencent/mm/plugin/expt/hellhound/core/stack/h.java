@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dno;
+import com.tencent.mm.protocal.protobuf.dol;
 
 public final class h
 {
-  public static boolean a(dno paramdno1, dno paramdno2)
+  public static boolean a(dol paramdol1, dol paramdol2)
   {
     AppMethodBeat.i(121912);
-    if ((paramdno1 == null) || (paramdno2 == null))
+    if ((paramdol1 == null) || (paramdol2 == null))
     {
       AppMethodBeat.o(121912);
       return false;
     }
-    if ((TextUtils.isEmpty(paramdno1.activityName)) || (TextUtils.isEmpty(paramdno2.activityName)))
+    if ((TextUtils.isEmpty(paramdol1.activityName)) || (TextUtils.isEmpty(paramdol2.activityName)))
     {
       AppMethodBeat.o(121912);
       return false;
     }
-    boolean bool = paramdno1.activityName.equals(paramdno2.activityName);
+    boolean bool = paramdol1.activityName.equals(paramdol2.activityName);
     AppMethodBeat.o(121912);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.h
  * JD-Core Version:    0.7.0.1
  */

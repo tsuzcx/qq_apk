@@ -23,8 +23,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.z;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -49,7 +49,7 @@ public final class t
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiInsertMap", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      ae.e("MicroMsg.JsApiInsertMap", "get mapId error, exception : %s", new Object[] { paramJSONObject });
       AppMethodBeat.o(143684);
     }
     return -1;
@@ -58,49 +58,52 @@ public final class t
   public final View a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, final JSONObject paramJSONObject)
   {
     AppMethodBeat.i(143683);
-    float f1 = bt.getFloat(paramJSONObject.optString("centerLatitude"), 0.0F);
-    float f2 = bt.getFloat(paramJSONObject.optString("centerLongitude"), 0.0F);
-    float f3 = bt.getFloat(paramJSONObject.optString("scale"), 16.0F);
+    float f1 = bu.getFloat(paramJSONObject.optString("centerLatitude"), 0.0F);
+    float f2 = bu.getFloat(paramJSONObject.optString("centerLongitude"), 0.0F);
+    float f3 = bu.getFloat(paramJSONObject.optString("scale"), 16.0F);
     int i = paramJSONObject.optInt("rotate", 0);
     int j = paramJSONObject.optInt("skew", 0);
-    int k = bt.getInt(paramJSONObject.optString("maxScale"), 20);
-    int m = bt.getInt(paramJSONObject.optString("minScale"), 3);
+    int k = bu.getInt(paramJSONObject.optString("maxScale"), 20);
+    int m = bu.getInt(paramJSONObject.optString("minScale"), 3);
     if ((Math.abs(f1) > 90.0F) || (Math.abs(f2) > 180.0F))
     {
-      ad.d("MicroMsg.JsApiInsertMap", "centerLatitude or centerLongitude value is error!");
+      ae.d("MicroMsg.JsApiInsertMap", "centerLatitude or centerLongitude value is error!");
       AppMethodBeat.o(143683);
       return null;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.i.a.e.th(0);
+    com.tencent.mm.plugin.appbrand.jsapi.i.a.e.tk(0);
     final String str = parame.getAppId();
-    ad.i("MicroMsg.JsApiInsertMap", "insertMap appId:%s viewId:%d data:%s", new Object[] { str, Integer.valueOf(A(paramJSONObject)), paramJSONObject });
+    ae.i("MicroMsg.JsApiInsertMap", "insertMap appId:%s viewId:%d data:%s", new Object[] { str, Integer.valueOf(A(paramJSONObject)), paramJSONObject });
     final com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = ((c)com.tencent.luggage.a.e.K(c.class)).b(parame, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiInsertMap", "mapView is null, return");
+      ae.e("MicroMsg.JsApiInsertMap", "mapView is null, return");
       AppMethodBeat.o(143683);
       return null;
     }
     if (!g.a(str, f.i(parame, paramJSONObject), localb))
     {
-      ad.e("MicroMsg.JsApiInsertMap", "initMapView is false, return");
-      com.tencent.mm.plugin.appbrand.jsapi.i.a.e.th(1);
+      ae.e("MicroMsg.JsApiInsertMap", "initMapView is false, return");
+      com.tencent.mm.plugin.appbrand.jsapi.i.a.e.tk(1);
       AppMethodBeat.o(143683);
       return null;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.i.a.e.th(2);
-    localb.gA(paramJSONObject.optBoolean("enableZoom", true));
-    localb.gB(paramJSONObject.optBoolean("enableScroll", true));
-    localb.gC(paramJSONObject.optBoolean("enableRotate", false));
-    localb.gD(paramJSONObject.optBoolean("showCompass", false));
-    localb.gE(paramJSONObject.optBoolean("enable3D", false));
-    localb.gF(paramJSONObject.optBoolean("enableOverlooking", false));
-    localb.gG(paramJSONObject.optBoolean("enableSatellite", false));
-    localb.gI(paramJSONObject.optBoolean("enableIndoor", true));
-    localb.gJ(paramJSONObject.optBoolean("enableIndoorLevelPick", false));
-    localb.gK(paramJSONObject.optBoolean("showScale", true));
+    com.tencent.mm.plugin.appbrand.jsapi.i.a.e.tk(2);
+    localb.gz(paramJSONObject.optBoolean("enableZoom", true));
+    localb.gA(paramJSONObject.optBoolean("enableScroll", true));
+    localb.gB(paramJSONObject.optBoolean("enableRotate", false));
+    localb.gC(paramJSONObject.optBoolean("showCompass", false));
+    localb.setBuilding3dEffectEnable(paramJSONObject.optBoolean("enable3D", false));
+    localb.gD(paramJSONObject.optBoolean("enableOverlooking", false));
+    localb.gE(paramJSONObject.optBoolean("enableSatellite", false));
+    localb.gG(paramJSONObject.optBoolean("enableIndoor", true));
+    localb.gH(paramJSONObject.optBoolean("enableIndoorLevelPick", false));
+    localb.gI(paramJSONObject.optBoolean("showScale", true));
     if (paramJSONObject.has("enablePoi")) {
       localb.setPoisEnabled(paramJSONObject.optBoolean("enablePoi", true));
+    }
+    if (paramJSONObject.has("enableBuilding")) {
+      localb.gJ(paramJSONObject.optBoolean("enableBuilding", true));
     }
     localb.setMaxZoomLevel(k);
     localb.setMinZoomLevel(m);
@@ -110,7 +113,7 @@ public final class t
       public final void onBackground()
       {
         AppMethodBeat.i(143671);
-        ad.i("MicroMsg.JsApiInsertMap", "onBackground");
+        ae.i("MicroMsg.JsApiInsertMap", "onBackground");
         if (localb != null) {
           localb.onPause();
         }
@@ -122,7 +125,7 @@ public final class t
       public final void onForeground()
       {
         AppMethodBeat.i(143673);
-        ad.i("MicroMsg.JsApiInsertMap", "onForeground");
+        ae.i("MicroMsg.JsApiInsertMap", "onForeground");
         if (localb != null) {
           localb.onResume();
         }
@@ -134,9 +137,9 @@ public final class t
       public final void onDestroy()
       {
         AppMethodBeat.i(143674);
-        ad.i("MicroMsg.JsApiInsertMap", "onDestroy");
+        ae.i("MicroMsg.JsApiInsertMap", "onDestroy");
         parame.b(this);
-        g.dj(str, f.i(parame, paramJSONObject));
+        g.dl(str, f.i(parame, paramJSONObject));
         AppMethodBeat.o(143674);
       }
     });
@@ -149,10 +152,10 @@ public final class t
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, final int paramInt, final View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(143685);
-    paramView = g.di(parame.getAppId(), f.i(parame, paramJSONObject));
+    paramView = g.dk(parame.getAppId(), f.i(parame, paramJSONObject));
     if (paramView == null)
     {
-      ad.e("MicroMsg.JsApiInsertMap", "mapView is null, error, return");
+      ae.e("MicroMsg.JsApiInsertMap", "mapView is null, error, return");
       AppMethodBeat.o(143685);
       return;
     }
@@ -167,7 +170,7 @@ public final class t
         {
           localJSONObject.put("mapId", paramInt);
           localJSONObject.put("data", paramAnonymousu.data);
-          localb.Pi(localJSONObject.toString());
+          localb.PQ(localJSONObject.toString());
           parame.b(localb);
           AppMethodBeat.o(143675);
           return;
@@ -176,7 +179,7 @@ public final class t
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousu });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousu });
           }
         }
       }
@@ -192,7 +195,7 @@ public final class t
         {
           localJSONObject.put("mapId", paramInt);
           localJSONObject.put("data", paramAnonymousu.data);
-          localf.Pi(localJSONObject.toString());
+          localf.PQ(localJSONObject.toString());
           parame.b(localf);
           AppMethodBeat.o(143676);
           return true;
@@ -201,7 +204,7 @@ public final class t
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousu });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousu });
           }
         }
       }
@@ -218,7 +221,7 @@ public final class t
           localJSONObject.put("mapId", paramInt);
           localJSONObject.put("longitude", paramAnonymousDouble1);
           localJSONObject.put("latitude", paramAnonymousDouble2);
-          localc.Pi(localJSONObject.toString());
+          localc.PQ(localJSONObject.toString());
           parame.b(localc);
           AppMethodBeat.o(143677);
           return;
@@ -227,7 +230,7 @@ public final class t
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { localJSONException });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { localJSONException });
           }
         }
       }
@@ -243,7 +246,7 @@ public final class t
         {
           localJSONObject.put("mapId", paramInt);
           localJSONObject.put("data", paramAnonymousu.data);
-          locale.Pi(localJSONObject.toString());
+          locale.PQ(localJSONObject.toString());
           parame.b(locale);
           AppMethodBeat.o(143678);
           return true;
@@ -252,7 +255,7 @@ public final class t
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousu });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousu });
           }
         }
       }
@@ -270,14 +273,14 @@ public final class t
           localJSONObject.put("latitude", paramAnonymoust.latitude);
           localJSONObject.put("longitude", paramAnonymoust.longitude);
           localJSONObject.put("name", paramAnonymoust.name);
-          if (!bt.isNullOrNil(paramAnonymoust.buildingId))
+          if (!bu.isNullOrNil(paramAnonymoust.buildingId))
           {
             localJSONObject.put("buildingId", paramAnonymoust.buildingId);
             localJSONObject.put("floorName", paramAnonymoust.floorName);
           }
-          localg.Pi(localJSONObject.toString());
+          localg.PQ(localJSONObject.toString());
           parame.b(localg);
-          ad.v("MicroMsg.JsApiInsertMap", "OnMapPoiClick %s", new Object[] { localJSONObject.toString() });
+          ae.v("MicroMsg.JsApiInsertMap", "OnMapPoiClick %s", new Object[] { localJSONObject.toString() });
           AppMethodBeat.o(143679);
           return;
         }
@@ -285,23 +288,23 @@ public final class t
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymoust });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymoust });
           }
         }
       }
     });
-    paramView.gL(paramJSONObject.optBoolean("showLocation"));
+    paramView.gK(paramJSONObject.optBoolean("showLocation"));
     paramView.a(new b.w()
     {
       JSONObject jsonObject;
-      AtomicBoolean kPB;
-      float kPC;
-      t.h kPD;
+      AtomicBoolean kTj;
+      float kTk;
+      t.h kTl;
       
       public final void a(b.a paramAnonymousa, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(143681);
-        if (this.kPB.compareAndSet(false, true)) {}
+        if (this.kTj.compareAndSet(false, true)) {}
         for (;;)
         {
           try
@@ -319,13 +322,13 @@ public final class t
           }
           catch (JSONException localJSONException)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { localJSONException });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { localJSONException });
             continue;
           }
-          this.kPD.Pi(this.jsonObject.toString());
-          parame.b(this.kPD);
-          this.kPC = paramAnonymousa.zoom;
-          ad.v("MicroMsg.JsApiInsertMap", "onCameraChange begin");
+          this.kTl.PQ(this.jsonObject.toString());
+          parame.b(this.kTl);
+          this.kTk = paramAnonymousa.zoom;
+          ae.v("MicroMsg.JsApiInsertMap", "onCameraChange begin");
           AppMethodBeat.o(143681);
           return;
           this.jsonObject.put("causedBy", "update");
@@ -335,7 +338,7 @@ public final class t
       public final void b(b.a paramAnonymousa, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(143682);
-        if (this.kPB.compareAndSet(true, false)) {}
+        if (this.kTj.compareAndSet(true, false)) {}
         for (;;)
         {
           try
@@ -345,7 +348,7 @@ public final class t
             this.jsonObject.remove("type");
             this.jsonObject.put("type", "end");
             this.jsonObject.remove("causedBy");
-            if (paramAnonymousa.zoom == this.kPC) {
+            if (paramAnonymousa.zoom == this.kTk) {
               continue;
             }
             i = 1;
@@ -360,22 +363,22 @@ public final class t
           catch (JSONException paramAnonymousa)
           {
             int i;
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousa });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousa });
             continue;
             this.jsonObject.put("causedBy", "update");
             continue;
           }
           this.jsonObject.remove("rotate");
-          this.jsonObject.put("rotate", paramAnonymousa.kRD);
+          this.jsonObject.put("rotate", paramAnonymousa.kVl);
           this.jsonObject.remove("skew");
           this.jsonObject.put("skew", paramAnonymousa.skew);
           this.jsonObject.remove("scale");
           this.jsonObject.put("scale", paramView.getZoom());
           a.a(paramView, this.jsonObject);
           a.b(paramView, this.jsonObject);
-          this.kPD.Pi(this.jsonObject.toString());
-          parame.b(this.kPD);
-          ad.v("MicroMsg.JsApiInsertMap", "onCameraChange finish, result:%s", new Object[] { this.jsonObject.toString() });
+          this.kTl.PQ(this.jsonObject.toString());
+          parame.b(this.kTl);
+          ae.v("MicroMsg.JsApiInsertMap", "onCameraChange finish, result:%s", new Object[] { this.jsonObject.toString() });
           AppMethodBeat.o(143682);
           return;
           i = 0;
@@ -399,10 +402,10 @@ public final class t
           {
             localJSONObject1.put("buildingId", paramAnonymousf.buildingId);
             localJSONObject1.put("buildingName", paramAnonymousf.buildingName);
-            if ((paramAnonymousf.kRI != null) && (paramAnonymousf.kRI.size() > 0))
+            if ((paramAnonymousf.kVr != null) && (paramAnonymousf.kVr.size() > 0))
             {
               localJSONArray = new JSONArray();
-              Iterator localIterator = paramAnonymousf.kRI.iterator();
+              Iterator localIterator = paramAnonymousf.kVr.iterator();
               while (localIterator.hasNext())
               {
                 b.g localg = (b.g)localIterator.next();
@@ -414,21 +417,21 @@ public final class t
           }
           else
           {
-            locald.Pi(localJSONObject1.toString());
+            locald.PQ(localJSONObject1.toString());
           }
         }
         catch (JSONException paramAnonymousf)
         {
-          ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousf });
+          ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { paramAnonymousf });
         }
         for (;;)
         {
           parame.b(locald);
-          ad.v("MicroMsg.JsApiInsertMap", "OnMapIndoorStateChange:%s", new Object[] { localJSONObject1.toString() });
+          ae.v("MicroMsg.JsApiInsertMap", "OnMapIndoorStateChange:%s", new Object[] { localJSONObject1.toString() });
           AppMethodBeat.o(143672);
           return;
           localJSONObject1.put("floorList", localJSONArray);
-          localJSONObject1.put("floorIndex", paramAnonymousf.kRJ);
+          localJSONObject1.put("floorIndex", paramAnonymousf.kVs);
         }
       }
     });
@@ -436,7 +439,7 @@ public final class t
     {
       public final void d(double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
-        AppMethodBeat.i(186146);
+        AppMethodBeat.i(206461);
         t.a locala = new t.a();
         JSONObject localJSONObject = new JSONObject();
         try
@@ -444,17 +447,17 @@ public final class t
           localJSONObject.put("mapId", paramInt);
           localJSONObject.put("longitude", paramAnonymousDouble2);
           localJSONObject.put("latitude", paramAnonymousDouble1);
-          locala.Pi(localJSONObject.toString());
+          locala.PQ(localJSONObject.toString());
           parame.b(locala);
-          ad.v("MicroMsg.JsApiInsertMap", "MapOnMapAnchorPointClick:%s", new Object[] { localJSONObject.toString() });
-          AppMethodBeat.o(186146);
+          ae.v("MicroMsg.JsApiInsertMap", "MapOnMapAnchorPointClick:%s", new Object[] { localJSONObject.toString() });
+          AppMethodBeat.o(206461);
           return;
         }
         catch (JSONException localJSONException)
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { localJSONException });
+            ae.e("MicroMsg.JsApiInsertMap", "put JSON data error : %s", new Object[] { localJSONException });
           }
         }
       }
@@ -520,7 +523,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.t
  * JD-Core Version:    0.7.0.1
  */

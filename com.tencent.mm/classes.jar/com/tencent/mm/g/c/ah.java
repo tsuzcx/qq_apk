@@ -8,11 +8,11 @@ public abstract class ah
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIF = "brandUserName".hashCode();
-  private static final int eJu = "userId".hashCode();
+  private static final int eKo = "brandUserName".hashCode();
+  private static final int eLd = "userId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eIq = true;
-  private boolean eJt = true;
+  private boolean eJZ = true;
+  private boolean eLc = true;
   public String field_brandUserName;
   public String field_userId;
   
@@ -29,11 +29,11 @@ public abstract class ah
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eIF != k) {
+      if (eKo != k) {
         break label65;
       }
       this.field_brandUserName = paramCursor.getString(i);
-      this.eIq = true;
+      this.eJZ = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ah
       break label20;
       break;
       label65:
-      if (eJu == k) {
+      if (eLd == k) {
         this.field_userId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class ah
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eIq) {
+    if (this.eJZ) {
       localContentValues.put("brandUserName", this.field_brandUserName);
     }
-    if (this.eJt) {
+    if (this.eLc) {
       localContentValues.put("userId", this.field_userId);
     }
     if (this.systemRowid > 0L) {

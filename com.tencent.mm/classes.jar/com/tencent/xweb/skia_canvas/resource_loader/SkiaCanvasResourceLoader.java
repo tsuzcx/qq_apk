@@ -9,42 +9,42 @@ public class SkiaCanvasResourceLoader
   
   static
   {
-    AppMethodBeat.i(217471);
+    AppMethodBeat.i(218268);
     TAG = SkiaCanvasResourceLoader.class.getSimpleName();
     sThreadLocalLoader = new ThreadLocal();
-    AppMethodBeat.o(217471);
+    AppMethodBeat.o(218268);
   }
   
   static ResourceLoaderDelegateWrapper getDelegateWrapperForCurrentThread()
   {
-    AppMethodBeat.i(217469);
+    AppMethodBeat.i(218266);
     ResourceLoaderDelegateWrapper localResourceLoaderDelegateWrapper = (ResourceLoaderDelegateWrapper)sThreadLocalLoader.get();
-    AppMethodBeat.o(217469);
+    AppMethodBeat.o(218266);
     return localResourceLoaderDelegateWrapper;
   }
   
   public static boolean hasDelegateSet()
   {
-    AppMethodBeat.i(217470);
+    AppMethodBeat.i(218267);
     if (sThreadLocalLoader.get() != null)
     {
-      AppMethodBeat.o(217470);
+      AppMethodBeat.o(218267);
       return true;
     }
-    AppMethodBeat.o(217470);
+    AppMethodBeat.o(218267);
     return false;
   }
   
   public static void setDelegate(IResourceLoader paramIResourceLoader)
   {
-    AppMethodBeat.i(217468);
+    AppMethodBeat.i(218265);
     sThreadLocalLoader.set(new ResourceLoaderDelegateWrapper(paramIResourceLoader));
-    AppMethodBeat.o(217468);
+    AppMethodBeat.o(218265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.resource_loader.SkiaCanvasResourceLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class a
   public static boolean a(int paramInt, a parama)
   {
     AppMethodBeat.i(157475);
-    if (d.ly(paramInt))
+    if (d.lA(paramInt))
     {
       parama.run();
       AppMethodBeat.o(157475);

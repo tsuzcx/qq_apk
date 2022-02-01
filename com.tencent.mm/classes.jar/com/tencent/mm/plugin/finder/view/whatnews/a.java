@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.finder.view.whatnews;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.f;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewController;", "", "()V", "ID_KEY", "", "TAG", "", "isAvailableBoot", "", "()Z", "isAvailableBootLazy", "isAvailableBootLazy$delegate", "Lkotlin/Lazy;", "isAvailableEnter", "style", "", "getStyle", "()I", "clearShowFlag", "", "hasShown", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewController;", "", "()V", "ID_KEY", "", "TAG", "", "isAvailableBoot", "", "()Z", "isAvailableBootLazy", "isAvailableBootLazy$delegate", "Lkotlin/Lazy;", "isAvailableEnter", "style", "", "getStyle", "()I", "clearShowFlag", "", "hasShown", "plugin-finder_release"})
 public final class a
 {
-  public static final f sYP;
-  public static final a sYQ;
+  public static final f tkd;
+  public static final a tke;
   
   static
   {
     AppMethodBeat.i(168552);
-    sYQ = new a();
-    e locale = com.tencent.mm.kernel.g.ajC();
+    tke = new a();
+    e locale = com.tencent.mm.kernel.g.ajR();
     p.g(locale, "MMKernel.storage()");
-    locale.ajl().getBoolean(al.a.IHP, false);
-    sYP = d.g.O((d.g.a.a)a.sYR);
+    locale.ajA().getBoolean(am.a.Jcs, false);
+    tkd = d.g.O((d.g.a.a)a.tkf);
     AppMethodBeat.o(168552);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements d.g.a.a<Boolean>
   {
-    public static final a sYR;
+    public static final a tkf;
     
     static
     {
       AppMethodBeat.i(168551);
-      sYR = new a();
+      tkf = new a();
       AppMethodBeat.o(168551);
     }
     

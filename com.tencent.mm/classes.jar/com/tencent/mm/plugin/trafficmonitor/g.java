@@ -9,13 +9,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class g
 {
-  private static Map<Integer, e> BAT;
-  private static g BAU;
+  private static Map<Integer, e> BSr;
+  private static g BSs;
   
   static
   {
     AppMethodBeat.i(123929);
-    BAT = new ConcurrentHashMap();
+    BSr = new ConcurrentHashMap();
     AppMethodBeat.o(123929);
   }
   
@@ -29,16 +29,16 @@ public class g
     AppMethodBeat.o(123923);
   }
   
-  public static g erk()
+  public static g euR()
   {
     AppMethodBeat.i(123924);
-    if (BAU == null) {}
+    if (BSs == null) {}
     try
     {
-      if (BAU == null) {
-        BAU = new g();
+      if (BSs == null) {
+        BSs = new g();
       }
-      g localg = BAU;
+      g localg = BSs;
       AppMethodBeat.o(123924);
       return localg;
     }
@@ -48,31 +48,31 @@ public class g
     }
   }
   
-  public static void erl()
+  public static void euS()
   {
     AppMethodBeat.i(123926);
-    Iterator localIterator = BAT.values().iterator();
+    Iterator localIterator = BSr.values().iterator();
     while (localIterator.hasNext()) {
-      ((e)localIterator.next()).erh();
+      ((e)localIterator.next()).euO();
     }
     AppMethodBeat.o(123926);
   }
   
-  public static void erm()
+  public static void euT()
   {
     AppMethodBeat.i(123927);
-    Iterator localIterator = BAT.values().iterator();
+    Iterator localIterator = BSr.values().iterator();
     while (localIterator.hasNext()) {
       ((e)localIterator.next()).currentIndex = 0;
     }
     AppMethodBeat.o(123927);
   }
   
-  public static int ern()
+  public static int euU()
   {
     AppMethodBeat.i(123928);
     int i = -1;
-    Iterator localIterator = BAT.values().iterator();
+    Iterator localIterator = BSr.values().iterator();
     long l = 0L;
     if (localIterator.hasNext())
     {
@@ -96,15 +96,15 @@ public class g
   {
     AppMethodBeat.i(123925);
     f localf = new f(paramLong1);
-    if ((Build.VERSION.SDK_INT > 28) || (Build.VERSION.CODENAME.equals("Q"))) {}
+    if (Build.VERSION.SDK_INT >= 28) {}
     for (Object localObject = new d();; localObject = new b())
     {
       ((e)localObject).id = paramInt;
       ((e)localObject).interval = paramLong2;
       ((e)localObject).type = 0;
-      ((e)localObject).BAK = localf;
-      ((e)localObject).BAL = new e.a() {};
-      BAT.put(Integer.valueOf(paramInt), localObject);
+      ((e)localObject).BSi = localf;
+      ((e)localObject).BSj = new e.a() {};
+      BSr.put(Integer.valueOf(paramInt), localObject);
       AppMethodBeat.o(123925);
       return;
     }

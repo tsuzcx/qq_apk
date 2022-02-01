@@ -14,51 +14,51 @@ import java.util.List;
 public final class a
   extends RecyclerView.a<b>
 {
-  public int BEk;
-  private ImageView BEl;
-  public List<a> fSq;
+  public int BVI;
+  private ImageView BVJ;
+  public List<a> fUw;
   
   public a()
   {
     AppMethodBeat.i(185311);
-    this.fSq = new ArrayList();
-    this.BEk = -1;
-    this.BEl = null;
+    this.fUw = new ArrayList();
+    this.BVI = -1;
+    this.BVJ = null;
     AppMethodBeat.o(185311);
+  }
+  
+  public final void gB(List<a> paramList)
+  {
+    AppMethodBeat.i(185313);
+    this.fUw.clear();
+    this.fUw.addAll(paramList);
+    AppMethodBeat.o(185313);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(185312);
-    int i = this.fSq.size();
+    int i = this.fUw.size();
     AppMethodBeat.o(185312);
     return i;
   }
   
-  public final void gs(List<a> paramList)
-  {
-    AppMethodBeat.i(185313);
-    this.fSq.clear();
-    this.fSq.addAll(paramList);
-    AppMethodBeat.o(185313);
-  }
-  
   public static final class a
   {
-    public String BEo = "";
-    public int BEp = -1;
+    public String BVM = "";
+    public int BVN = -1;
     
     public a(String paramString, int paramInt)
     {
-      this.BEo = paramString;
-      this.BEp = paramInt;
+      this.BVM = paramString;
+      this.BVN = paramInt;
     }
   }
   
   final class b
     extends RecyclerView.w
   {
-    public ImageView fUN;
+    public ImageView fWT;
     public TextView titleTv;
     
     public b(View paramView)
@@ -66,9 +66,9 @@ public final class a
       super();
       AppMethodBeat.i(185310);
       this.titleTv = null;
-      this.fUN = null;
+      this.fWT = null;
       this.titleTv = ((TextView)paramView.findViewById(2131302831));
-      this.fUN = ((ImageView)paramView.findViewById(2131302826));
+      this.fWT = ((ImageView)paramView.findViewById(2131302826));
       AppMethodBeat.o(185310);
     }
   }

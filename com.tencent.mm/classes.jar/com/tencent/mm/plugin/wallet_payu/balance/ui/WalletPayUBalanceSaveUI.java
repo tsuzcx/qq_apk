@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceSaveUI;
 import com.tencent.mm.plugin.wallet_payu.balance.a.a;
 import com.tencent.mm.pluginsdk.wallet.f;
@@ -12,10 +12,10 @@ import com.tencent.mm.pluginsdk.wallet.f;
 public class WalletPayUBalanceSaveUI
   extends WalletBalanceSaveUI
 {
-  public final void eCE()
+  public final void eGl()
   {
     AppMethodBeat.i(71971);
-    doSceneProgress(new a(this.xXb, "ZAR"));
+    doSceneProgress(new a(this.ymU, "ZAR"));
     AppMethodBeat.o(71971);
   }
   
@@ -23,7 +23,7 @@ public class WalletPayUBalanceSaveUI
   {
     AppMethodBeat.i(71970);
     super.onCreate(paramBundle);
-    this.CyG.setVisibility(8);
+    this.CQl.setVisibility(8);
     AppMethodBeat.o(71970);
   }
   
@@ -31,7 +31,7 @@ public class WalletPayUBalanceSaveUI
   {
     AppMethodBeat.i(71972);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof a))) {
-      f.a(this, ((a)paramn).dlu, "", 11, 1);
+      f.a(this, ((a)paramn).dmw, "", 11, 1);
     }
     AppMethodBeat.o(71972);
     return false;
@@ -45,7 +45,7 @@ public class WalletPayUBalanceSaveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.ui.WalletPayUBalanceSaveUI
  * JD-Core Version:    0.7.0.1
  */

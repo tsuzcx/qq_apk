@@ -1,95 +1,90 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class mx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FEO;
-  public LinkedList<mw> FGN;
-  public int FGO;
-  
-  public mx()
-  {
-    AppMethodBeat.i(124413);
-    this.FGN = new LinkedList();
-    AppMethodBeat.o(124413);
-  }
+  public int FZd;
+  public int FZe;
+  public int FZf;
+  public String FZg;
+  public String FZh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124414);
+    AppMethodBeat.i(124410);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 8, this.FGN);
-      paramVarArgs.aS(2, this.FGO);
-      if (this.FEO != null) {
-        paramVarArgs.d(3, this.FEO);
+      paramVarArgs.aS(1, this.FZd);
+      paramVarArgs.aS(2, this.FZe);
+      paramVarArgs.aS(3, this.FZf);
+      if (this.FZg != null) {
+        paramVarArgs.d(4, this.FZg);
       }
-      AppMethodBeat.o(124414);
+      if (this.FZh != null) {
+        paramVarArgs.d(5, this.FZh);
+      }
+      AppMethodBeat.o(124410);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = f.a.a.a.c(1, 8, this.FGN) + 0 + f.a.a.b.b.a.bz(2, this.FGO);
+      int i = f.a.a.b.b.a.bz(1, this.FZd) + 0 + f.a.a.b.b.a.bz(2, this.FZe) + f.a.a.b.b.a.bz(3, this.FZf);
       paramInt = i;
-      if (this.FEO != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.FEO);
+      if (this.FZg != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FZg);
       }
-      AppMethodBeat.o(124414);
-      return paramInt;
+      i = paramInt;
+      if (this.FZh != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FZh);
+      }
+      AppMethodBeat.o(124410);
+      return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.FGN.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(124414);
+      AppMethodBeat.o(124410);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       mx localmx = (mx)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(124414);
+        AppMethodBeat.o(124410);
         return -1;
       case 1: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new mw();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((mw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localmx.FGN.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(124414);
+        localmx.FZd = locala.OmT.zc();
+        AppMethodBeat.o(124410);
         return 0;
       case 2: 
-        localmx.FGO = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(124414);
+        localmx.FZe = locala.OmT.zc();
+        AppMethodBeat.o(124410);
+        return 0;
+      case 3: 
+        localmx.FZf = locala.OmT.zc();
+        AppMethodBeat.o(124410);
+        return 0;
+      case 4: 
+        localmx.FZg = locala.OmT.readString();
+        AppMethodBeat.o(124410);
         return 0;
       }
-      localmx.FEO = ((f.a.a.a.a)localObject1).NPN.readString();
-      AppMethodBeat.o(124414);
+      localmx.FZh = locala.OmT.readString();
+      AppMethodBeat.o(124410);
       return 0;
     }
-    AppMethodBeat.o(124414);
+    AppMethodBeat.o(124410);
     return -1;
   }
 }

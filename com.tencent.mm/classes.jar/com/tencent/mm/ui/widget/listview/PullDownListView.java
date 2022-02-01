@@ -33,97 +33,97 @@ public class PullDownListView
   implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, AdapterView.OnItemSelectedListener
 {
   private int Bd;
-  private View KZA;
-  private int KZB;
-  public IPullDownCallback KZC;
-  private boolean KZD;
-  private final int KZE;
-  private final int KZF;
-  private final int KZG;
-  private View KZH;
-  private float KZI;
-  private float KZJ;
-  private boolean KZK;
-  private boolean KZL;
-  private boolean KZM;
-  private float KZN;
-  private float KZO;
-  private int KZP;
-  private int KZQ;
-  private boolean KZR;
-  private float KZS;
-  private int KZT;
-  private int KZU;
-  private boolean KZV;
-  private long KZW;
-  private long KZX;
-  private AdapterView.OnItemLongClickListener KZY;
-  private boolean KZt;
-  private float KZu;
-  private float KZv;
-  private float KZw;
-  private float KZx;
-  public boolean KZy;
-  private View KZz;
+  private boolean LvR;
+  private float LvS;
+  private float LvT;
+  private float LvU;
+  private float LvV;
+  public boolean LvW;
+  private View LvX;
+  private View LvY;
+  private int LvZ;
+  public IPullDownCallback Lwa;
+  private boolean Lwb;
+  private final int Lwc;
+  private final int Lwd;
+  private final int Lwe;
+  private View Lwf;
+  private float Lwg;
+  private float Lwh;
+  private boolean Lwi;
+  private boolean Lwj;
+  private boolean Lwk;
+  private float Lwl;
+  private float Lwm;
+  private int Lwn;
+  private int Lwo;
+  private boolean Lwp;
+  private float Lwq;
+  private int Lwr;
+  private int Lws;
+  private boolean Lwt;
+  private long Lwu;
+  private long Lwv;
+  private AdapterView.OnItemLongClickListener Lww;
   private float aZk;
   private float aZl;
   private AdapterView.OnItemClickListener arf;
   private AdapterView.OnItemSelectedListener arg;
   private View azo;
   public boolean isVisible;
-  private boolean kSw;
-  private int ltB;
+  private boolean kWf;
+  private int lya;
   private int mActivePointerId;
   private float mLastMotionY;
   private Rect mRect;
-  private int mUu;
-  private int mUv;
-  private Vibrator mUw;
+  private int mZB;
+  private int mZC;
+  private Vibrator mZD;
   
   public PullDownListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159440);
-    this.KZt = false;
-    this.KZu = 0.05F;
-    this.KZv = 0.05F;
-    this.mUu = 0;
-    this.mUv = 0;
-    this.ltB = 0;
-    this.KZw = 0.0F;
-    this.KZx = 0.0F;
-    this.KZy = true;
+    this.LvR = false;
+    this.LvS = 0.05F;
+    this.LvT = 0.05F;
+    this.mZB = 0;
+    this.mZC = 0;
+    this.lya = 0;
+    this.LvU = 0.0F;
+    this.LvV = 0.0F;
+    this.LvW = true;
     this.mRect = new Rect();
     this.Bd = 0;
-    this.KZB = 0;
-    this.KZD = false;
-    this.KZE = 1;
-    this.KZF = 2;
-    this.KZG = 200;
-    this.KZI = 0.0F;
-    this.KZJ = 0.0F;
-    this.kSw = false;
+    this.LvZ = 0;
+    this.Lwb = false;
+    this.Lwc = 1;
+    this.Lwd = 2;
+    this.Lwe = 200;
+    this.Lwg = 0.0F;
+    this.Lwh = 0.0F;
+    this.kWf = false;
     this.isVisible = true;
-    this.KZK = false;
-    this.KZL = false;
-    this.KZM = false;
-    this.KZO = 0.0F;
-    this.KZP = 0;
-    this.KZQ = 0;
-    this.KZR = false;
-    this.KZS = 0.0F;
+    this.Lwi = false;
+    this.Lwj = false;
+    this.Lwk = false;
+    this.Lwm = 0.0F;
+    this.Lwn = 0;
+    this.Lwo = 0;
+    this.Lwp = false;
+    this.Lwq = 0.0F;
     this.mActivePointerId = -1;
-    this.KZT = 0;
-    this.KZU = 0;
-    this.KZV = false;
-    this.KZW = 0L;
-    this.KZX = 0L;
+    this.Lwr = 0;
+    this.Lws = 0;
+    this.Lwt = false;
+    this.Lwu = 0L;
+    this.Lwv = 0L;
     super.setOnItemClickListener(this);
     super.setOnItemLongClickListener(this);
     super.setOnItemSelectedListener(this);
-    ar.ci(paramContext);
-    this.ltB = ar.ci(paramContext).y;
-    this.mUw = ((Vibrator)getContext().getSystemService("vibrator"));
+    ar.ck(paramContext);
+    this.lya = ar.ck(paramContext).y;
+    this.mZD = ((Vibrator)getContext().getSystemService("vibrator"));
     post(new Runnable()
     {
       public final void run()
@@ -140,22 +140,22 @@ public class PullDownListView
   private void I(final int paramInt1, final int paramInt2, final boolean paramBoolean)
   {
     AppMethodBeat.i(159447);
-    ap.i("MicroMsg.PullDownListView", "story_cat animation: %s %s %s %s %s %s %s %s start:%s, end:%s, openLimitPx():%s, closeLimitPx():%s, isMute:%s", new Object[] { Integer.valueOf(this.mRect.left), Integer.valueOf(this.mRect.top), Integer.valueOf(this.mRect.right), Integer.valueOf(this.mRect.bottom), Integer.valueOf(getLeft()), Integer.valueOf(getTop()), Integer.valueOf(getRight()), Integer.valueOf(getBottom()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(bCC()), Integer.valueOf(fMz()), Boolean.valueOf(paramBoolean) });
+    ap.i("MicroMsg.PullDownListView", "story_cat animation: %s %s %s %s %s %s %s %s start:%s, end:%s, openLimitPx():%s, closeLimitPx():%s, isMute:%s", new Object[] { Integer.valueOf(this.mRect.left), Integer.valueOf(this.mRect.top), Integer.valueOf(this.mRect.right), Integer.valueOf(this.mRect.bottom), Integer.valueOf(getLeft()), Integer.valueOf(getTop()), Integer.valueOf(getRight()), Integer.valueOf(getBottom()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(bDu()), Integer.valueOf(fQT()), Boolean.valueOf(paramBoolean) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt1, paramInt2 }));
-    if ((this.azo != null) && (paramInt1 > bCC()) && (paramInt1 < fMz()))
+    if ((this.azo != null) && (paramInt1 > bDu()) && (paramInt1 < fQT()))
     {
       if (paramInt2 != 0) {
         localArrayList.add(ObjectAnimator.ofFloat(this.azo, "translationY", new float[] { paramInt1, paramInt2 }));
       }
     }
-    else if (this.KZH != null)
+    else if (this.Lwf != null)
     {
       if (paramInt2 < getBottom()) {
         break label379;
       }
-      localArrayList.add(kg(((ViewGroup.MarginLayoutParams)this.KZH.getLayoutParams()).topMargin, 0));
+      localArrayList.add(kn(((ViewGroup.MarginLayoutParams)this.Lwf.getLayoutParams()).topMargin, 0));
     }
     for (;;)
     {
@@ -196,14 +196,14 @@ public class PullDownListView
           while ((PullDownListView.g(PullDownListView.this) != null) && (paramInt1 > PullDownListView.e(PullDownListView.this)) && (paramInt1 < PullDownListView.f(PullDownListView.this))) {
             if (PullDownListView.h(PullDownListView.this))
             {
-              PullDownListView.g(PullDownListView.this).dAB();
+              PullDownListView.g(PullDownListView.this).dDS();
               AppMethodBeat.o(159437);
               return;
               PullDownListView.b(PullDownListView.this, false);
             }
             else
             {
-              PullDownListView.g(PullDownListView.this).dAA();
+              PullDownListView.g(PullDownListView.this).dDR();
             }
           }
           AppMethodBeat.o(159437);
@@ -211,35 +211,35 @@ public class PullDownListView
       });
       localAnimatorSet.playTogether(localArrayList);
       localAnimatorSet.start();
-      cTT();
+      cWy();
       AppMethodBeat.o(159447);
       return;
-      localArrayList.add(ObjectAnimator.ofFloat(this.azo, "translationY", new float[] { paramInt1, paramInt2 - this.KZB }));
+      localArrayList.add(ObjectAnimator.ofFloat(this.azo, "translationY", new float[] { paramInt1, paramInt2 - this.LvZ }));
       break;
       label379:
-      localArrayList.add(kg(((ViewGroup.MarginLayoutParams)this.KZH.getLayoutParams()).topMargin, this.KZP));
+      localArrayList.add(kn(((ViewGroup.MarginLayoutParams)this.Lwf.getLayoutParams()).topMargin, this.Lwn));
     }
   }
   
-  private int afA(int paramInt)
+  private int agj(int paramInt)
   {
     AppMethodBeat.i(159451);
-    int i = (int)Math.abs(paramInt / this.ltB * this.KZP);
-    ap.d("MicroMsg.PullDownListView", "offset:%s,  ((float) offset / screenHeight):%s,  Math.abs(mCoordinationAnimThreshold):%s,  result:%s", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramInt / this.ltB), Integer.valueOf(Math.abs(this.KZP)), Integer.valueOf(i) });
+    int i = (int)Math.abs(paramInt / this.lya * this.Lwn);
+    ap.d("MicroMsg.PullDownListView", "offset:%s,  ((float) offset / screenHeight):%s,  Math.abs(mCoordinationAnimThreshold):%s,  result:%s", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramInt / this.lya), Integer.valueOf(Math.abs(this.Lwn)), Integer.valueOf(i) });
     AppMethodBeat.o(159451);
     return i;
   }
   
-  private boolean al(MotionEvent paramMotionEvent)
+  private boolean aj(MotionEvent paramMotionEvent)
   {
     boolean bool = true;
     AppMethodBeat.i(159452);
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    if (this.KZA != null) {
-      if ((paramMotionEvent.getActionMasked() != 1) || (this.KZX >= 200L)) {
-        if (this.aZk < this.KZA.getRight()) {
-          if ((f1 <= this.KZA.getLeft()) || (f1 >= this.KZA.getRight()) || (f2 <= this.KZA.getTop() - this.KZA.getHeight() / 2) || (f2 >= this.KZA.getBottom() + this.KZB)) {}
+    if (this.LvY != null) {
+      if ((paramMotionEvent.getActionMasked() != 1) || (this.Lwv >= 200L)) {
+        if (this.aZk < this.LvY.getRight()) {
+          if ((f1 <= this.LvY.getLeft()) || (f1 >= this.LvY.getRight()) || (f2 <= this.LvY.getTop() - this.LvY.getHeight() / 2) || (f2 >= this.LvY.getBottom() + this.LvZ)) {}
         }
       }
     }
@@ -249,7 +249,7 @@ public class PullDownListView
       return bool;
       bool = false;
       continue;
-      if ((f1 <= this.KZA.getLeft()) || (f1 >= this.KZA.getRight()) || (f2 <= this.KZA.getTop()) || (f2 >= this.KZA.getBottom() + this.KZB))
+      if ((f1 <= this.LvY.getLeft()) || (f1 >= this.LvY.getRight()) || (f2 <= this.LvY.getTop()) || (f2 >= this.LvY.getBottom() + this.LvZ))
       {
         bool = false;
         continue;
@@ -258,32 +258,40 @@ public class PullDownListView
     }
   }
   
-  private int bCC()
+  private int bDu()
   {
-    if (this.mUu == 0) {
-      this.mUu = ((int)(this.ltB * this.KZu));
+    if (this.mZB == 0) {
+      this.mZB = ((int)(this.lya * this.LvS));
     }
-    return this.mUu;
+    return this.mZB;
   }
   
   @TargetApi(11)
-  private void cTT()
+  private void cWy()
   {
     AppMethodBeat.i(159449);
     this.Bd = 0;
-    ap.d("MicroMsg.PullDownListView", "startAnimation %s %s %s %s", new Object[] { Integer.valueOf(this.KZz.getLeft()), Integer.valueOf(this.KZz.getTop()), Integer.valueOf(this.KZz.getRight()), Integer.valueOf(this.KZz.getBottom()) });
+    ap.d("MicroMsg.PullDownListView", "startAnimation %s %s %s %s", new Object[] { Integer.valueOf(this.LvX.getLeft()), Integer.valueOf(this.LvX.getTop()), Integer.valueOf(this.LvX.getRight()), Integer.valueOf(this.LvX.getBottom()) });
     AppMethodBeat.o(159449);
   }
   
-  private void fMA()
+  private int fQT()
+  {
+    if (this.mZC == 0) {
+      this.mZC = ((int)((this.lya - this.Lwo) * (1.0F - this.LvT)));
+    }
+    return this.mZC;
+  }
+  
+  private void fQU()
   {
     AppMethodBeat.i(159446);
-    if (this.KZA != null)
+    if (this.LvY != null)
     {
-      float f1 = this.KZA.getTranslationX();
-      float f2 = this.KZA.getTranslationY();
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.KZA, "translationX", new float[] { f1, this.KZw });
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.KZA, "translationY", new float[] { f2, this.KZx });
+      float f1 = this.LvY.getTranslationX();
+      float f2 = this.LvY.getTranslationY();
+      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.LvY, "translationX", new float[] { f1, this.LvU });
+      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.LvY, "translationY", new float[] { f2, this.LvV });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
       localAnimatorSet.addListener(new AnimatorListenerAdapter()
@@ -311,7 +319,7 @@ public class PullDownListView
     AppMethodBeat.o(159446);
   }
   
-  private boolean fMB()
+  private boolean fQV()
   {
     AppMethodBeat.i(159450);
     if ((!this.mRect.isEmpty()) && (Math.abs(this.Bd) > 0))
@@ -323,36 +331,28 @@ public class PullDownListView
     return false;
   }
   
-  private void fMC()
+  private void fQW()
   {
     AppMethodBeat.i(159453);
-    if (this.KZA != null) {
-      this.KZA.setVisibility(8);
+    if (this.LvY != null) {
+      this.LvY.setVisibility(8);
     }
     AppMethodBeat.o(159453);
   }
   
-  private void fMD()
+  private void fQX()
   {
     AppMethodBeat.i(159454);
-    if (this.KZA != null)
+    if (this.LvY != null)
     {
-      this.KZA.setTranslationX(this.KZw);
-      this.KZA.setTranslationY(this.KZx);
-      this.KZA.setVisibility(8);
+      this.LvY.setTranslationX(this.LvU);
+      this.LvY.setTranslationY(this.LvV);
+      this.LvY.setVisibility(8);
     }
     AppMethodBeat.o(159454);
   }
   
-  private int fMz()
-  {
-    if (this.mUv == 0) {
-      this.mUv = ((int)((this.ltB - this.KZQ) * (1.0F - this.KZv)));
-    }
-    return this.mUv;
-  }
-  
-  private ValueAnimator kg(int paramInt1, int paramInt2)
+  private ValueAnimator kn(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159455);
     ap.d("MicroMsg.PullDownListView", "startStoryGalleryOpenAnim start:%s, end:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
@@ -373,13 +373,13 @@ public class PullDownListView
     return localValueAnimator;
   }
   
-  public final void B(View paramView, int paramInt1, int paramInt2)
+  public final void A(View paramView, int paramInt1, int paramInt2)
   {
-    this.KZH = paramView;
-    this.KZQ = paramInt1;
-    this.KZP = paramInt2;
-    this.mUv = 0;
-    this.mUu = 0;
+    this.Lwf = paramView;
+    this.Lwo = paramInt1;
+    this.Lwn = paramInt2;
+    this.mZC = 0;
+    this.mZB = 0;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -390,22 +390,22 @@ public class PullDownListView
     return bool;
   }
   
-  public final void fME()
+  public final void fQY()
   {
     AppMethodBeat.i(159460);
     ap.i("MicroMsg.PullDownListView", "switchNormalStatus", new Object[0]);
     if (!this.isVisible) {
-      I(fMz() - 1, 0, false);
+      I(fQT() - 1, 0, false);
     }
     AppMethodBeat.o(159460);
   }
   
-  public final void fMF()
+  public final void fQZ()
   {
     AppMethodBeat.i(159461);
     ap.i("MicroMsg.PullDownListView", "switchPullDownStatus", new Object[0]);
     if (this.isVisible) {
-      I(bCC() + 1, this.KZz.getBottom() + this.KZB, false);
+      I(bDu() + 1, this.LvX.getBottom() + this.LvZ, false);
     }
     AppMethodBeat.o(159461);
   }
@@ -414,18 +414,18 @@ public class PullDownListView
   protected void onFinishInflate()
   {
     AppMethodBeat.i(159443);
-    this.KZz = this;
-    this.KZN = getTranslationY();
-    ap.d("MicroMsg.PullDownListView", "onFinishInflate %s %s %s %s", new Object[] { Integer.valueOf(this.KZz.getLeft()), Integer.valueOf(this.KZz.getTop()), Integer.valueOf(this.KZz.getRight()), Integer.valueOf(this.KZz.getBottom()) });
+    this.LvX = this;
+    this.Lwl = getTranslationY();
+    ap.d("MicroMsg.PullDownListView", "onFinishInflate %s %s %s %s", new Object[] { Integer.valueOf(this.LvX.getLeft()), Integer.valueOf(this.LvX.getTop()), Integer.valueOf(this.LvX.getRight()), Integer.valueOf(this.LvX.getBottom()) });
     AppMethodBeat.o(159443);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(159456);
-    if ((this.arf != null) && (!this.kSw) && (this.isVisible))
+    if ((this.arf != null) && (!this.kWf) && (this.isVisible))
     {
-      this.KZD = true;
+      this.Lwb = true;
       this.arf.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
     AppMethodBeat.o(159456);
@@ -434,10 +434,10 @@ public class PullDownListView
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(159459);
-    if ((this.KZY != null) && (!this.kSw) && (this.isVisible))
+    if ((this.Lww != null) && (!this.kWf) && (this.isVisible))
     {
-      this.KZD = true;
-      boolean bool = this.KZY.onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
+      this.Lwb = true;
+      boolean bool = this.Lww.onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
       AppMethodBeat.o(159459);
       return bool;
     }
@@ -451,12 +451,12 @@ public class PullDownListView
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/ui/widget/listview/PullDownListView", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-    if ((this.arg != null) && (!this.kSw) && (this.isVisible))
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/ui/widget/listview/PullDownListView", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    if ((this.arg != null) && (!this.kWf) && (this.isVisible))
     {
-      this.KZD = true;
+      this.Lwb = true;
       this.arg.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
     }
     a.a(this, "com/tencent/mm/ui/widget/listview/PullDownListView", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -483,9 +483,9 @@ public class PullDownListView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159445);
-    ap.d("MicroMsg.PullDownListView", "dancy test onTouchEvent, supportOverscroll:%s, scrollY:%s", new Object[] { Boolean.valueOf(this.KZt), Integer.valueOf(getScrollY()) });
+    ap.d("MicroMsg.PullDownListView", "dancy test onTouchEvent, supportOverscroll:%s, scrollY:%s", new Object[] { Boolean.valueOf(this.LvR), Integer.valueOf(getScrollY()) });
     boolean bool1;
-    if ((!this.KZt) || (this.KZz == null) || (this.KZK))
+    if ((!this.LvR) || (this.LvX == null) || (this.Lwi))
     {
       bool1 = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(159445);
@@ -518,29 +518,29 @@ public class PullDownListView
           }
           AppMethodBeat.o(159445);
           return true;
-          if (this.KZR) {
+          if (this.Lwp) {
             break;
           }
           this.mActivePointerId = paramMotionEvent.getPointerId(0);
-          fMC();
-          this.KZD = false;
+          fQW();
+          this.Lwb = false;
           f = paramMotionEvent.getY(0);
           this.mLastMotionY = f;
-          this.KZI = f;
-          this.KZJ = paramMotionEvent.getX(0);
+          this.Lwg = f;
+          this.Lwh = paramMotionEvent.getX(0);
           this.mRect.setEmpty();
           this.aZl = paramMotionEvent.getY(0);
           this.aZk = paramMotionEvent.getX(0);
-          this.KZO = 0.0F;
-          this.KZT = ((int)this.KZO);
-          this.KZR = true;
-          this.KZV = false;
-          this.KZW = System.currentTimeMillis();
-          this.KZX = 0L;
-          fMD();
+          this.Lwm = 0.0F;
+          this.Lwr = ((int)this.Lwm);
+          this.Lwp = true;
+          this.Lwt = false;
+          this.Lwu = System.currentTimeMillis();
+          this.Lwv = 0L;
+          fQX();
         }
-        this.kSw = true;
-        if (!this.KZR)
+        this.kWf = true;
+        if (!this.Lwp)
         {
           if (this.isVisible) {
             break;
@@ -548,22 +548,22 @@ public class PullDownListView
           this.mActivePointerId = paramMotionEvent.getPointerId(0);
           this.mLastMotionY = paramMotionEvent.getY(0);
           this.aZl = paramMotionEvent.getY(0);
-          this.KZO = (this.ltB - this.KZQ);
-          this.KZT = ((int)this.KZO);
-          this.KZR = true;
+          this.Lwm = (this.lya - this.Lwo);
+          this.Lwr = ((int)this.Lwm);
+          this.Lwp = true;
         }
         k = paramMotionEvent.findPointerIndex(this.mActivePointerId);
       } while (k == -1);
-      this.KZI = paramMotionEvent.getY(k);
-      this.KZJ = paramMotionEvent.getX(k);
-      if (this.KZI - this.aZl >= 0.0F)
+      this.Lwg = paramMotionEvent.getY(k);
+      this.Lwh = paramMotionEvent.getX(k);
+      if (this.Lwg - this.aZl >= 0.0F)
       {
-        this.KZU = 2;
+        this.Lws = 2;
         i = getChildCount();
         if ((i <= 0) || (!this.isVisible)) {
           break label2425;
         }
-        if (this.KZU != 2) {
+        if (this.Lws != 2) {
           break label1499;
         }
         if (getChildAt(0).getTop() >= getPaddingTop() + 0) {
@@ -577,107 +577,107 @@ public class PullDownListView
     {
       label483:
       if (i != 0) {
-        this.KZV = true;
+        this.Lwt = true;
       }
       label1024:
       ViewGroup.MarginLayoutParams localMarginLayoutParams;
-      if (!this.KZV)
+      if (!this.Lwt)
       {
         ap.d("MicroMsg.PullDownListView", "rawY:%s, rawX:%s, indexY:%s, indexX:%s", new Object[] { Float.valueOf(paramMotionEvent.getRawY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getY(k)), Float.valueOf(paramMotionEvent.getX(k)) });
-        ap.d("MicroMsg.PullDownListView", "move deltaY:%s, isAnima:%s, mDeltaY:%s, mIsIgnoreCallBack:%s translateBaseY:%s", new Object[] { Integer.valueOf((int)(this.mLastMotionY - this.KZI)), Boolean.valueOf(this.KZK), Integer.valueOf(this.Bd), Boolean.valueOf(this.KZD), Float.valueOf(this.KZO) });
-        if ((!this.KZD) && (!this.KZK))
+        ap.d("MicroMsg.PullDownListView", "move deltaY:%s, isAnima:%s, mDeltaY:%s, mIsIgnoreCallBack:%s translateBaseY:%s", new Object[] { Integer.valueOf((int)(this.mLastMotionY - this.Lwg)), Boolean.valueOf(this.Lwi), Integer.valueOf(this.Bd), Boolean.valueOf(this.Lwb), Float.valueOf(this.Lwm) });
+        if ((!this.Lwb) && (!this.Lwi))
         {
           if (this.mRect.isEmpty())
           {
-            this.KZN = getTranslationY();
-            this.mRect.set(this.KZz.getLeft(), this.KZz.getTop(), this.KZz.getRight(), this.KZz.getBottom());
-            ap.d("MicroMsg.PullDownListView", "mRect.isEmpty() %s %s %s %s", new Object[] { Integer.valueOf(this.KZz.getLeft()), Integer.valueOf(this.KZz.getTop()), Integer.valueOf(this.KZz.getRight()), Integer.valueOf(this.KZz.getBottom()) });
+            this.Lwl = getTranslationY();
+            this.mRect.set(this.LvX.getLeft(), this.LvX.getTop(), this.LvX.getRight(), this.LvX.getBottom());
+            ap.d("MicroMsg.PullDownListView", "mRect.isEmpty() %s %s %s %s", new Object[] { Integer.valueOf(this.LvX.getLeft()), Integer.valueOf(this.LvX.getTop()), Integer.valueOf(this.LvX.getRight()), Integer.valueOf(this.LvX.getBottom()) });
           }
           ap.d("MicroMsg.PullDownListView", "eventIndex:%s, ev.getY():%s, y_down:%s, ev.getY()-y_down:%s", new Object[] { Integer.valueOf(k), Float.valueOf(paramMotionEvent.getY(k)), Float.valueOf(this.aZl), Float.valueOf(paramMotionEvent.getY(k) - this.aZl) });
-          this.KZT += (int)((int)(this.KZI - this.mLastMotionY) / 2.0F);
-          this.Bd = Math.max(0, this.KZT);
-          ap.d("MicroMsg.PullDownListView", "top %s, bottom:%s, mDeltaY %s, deltaOverScrollY:%s", new Object[] { Integer.valueOf(this.KZz.getTop()), Integer.valueOf(this.KZz.getBottom()), Integer.valueOf(this.Bd), Integer.valueOf(this.KZT) });
-          if (Math.abs(this.KZT) > 50)
+          this.Lwr += (int)((int)(this.Lwg - this.mLastMotionY) / 2.0F);
+          this.Bd = Math.max(0, this.Lwr);
+          ap.d("MicroMsg.PullDownListView", "top %s, bottom:%s, mDeltaY %s, deltaOverScrollY:%s", new Object[] { Integer.valueOf(this.LvX.getTop()), Integer.valueOf(this.LvX.getBottom()), Integer.valueOf(this.Bd), Integer.valueOf(this.Lwr) });
+          if (Math.abs(this.Lwr) > 50)
           {
-            if ((!this.KZL) && (this.Bd >= bCC()) && (this.Bd <= fMz()))
+            if ((!this.Lwj) && (this.Bd >= bDu()) && (this.Bd <= fQT()))
             {
-              this.mUw.vibrate(10L);
-              this.KZL = true;
-              this.KZS = this.KZT;
+              this.mZD.vibrate(10L);
+              this.Lwj = true;
+              this.Lwq = this.Lwr;
             }
-            ap.d("MicroMsg.PullDownListView", "OverScroll top %s, mIsIgnoreCallBack:%s, isVisible:%s", new Object[] { Integer.valueOf(this.mRect.top + this.Bd), Boolean.valueOf(this.KZD), Boolean.valueOf(this.isVisible) });
+            ap.d("MicroMsg.PullDownListView", "OverScroll top %s, mIsIgnoreCallBack:%s, isVisible:%s", new Object[] { Integer.valueOf(this.mRect.top + this.Bd), Boolean.valueOf(this.Lwb), Boolean.valueOf(this.isVisible) });
             bool1 = true;
-            this.KZz.setTranslationY(this.Bd);
+            this.LvX.setTranslationY(this.Bd);
             if (this.isVisible)
             {
-              i = afA(Math.max(this.Bd - (int)this.KZO, 0));
-              if (this.KZH != null)
+              i = agj(Math.max(this.Bd - (int)this.Lwm, 0));
+              if (this.Lwf != null)
               {
-                localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.KZH.getLayoutParams();
-                localMarginLayoutParams.topMargin = Math.max(this.KZP, Math.min(0, i + this.KZP));
+                localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.Lwf.getLayoutParams();
+                localMarginLayoutParams.topMargin = Math.max(this.Lwn, Math.min(0, i + this.Lwn));
                 ap.d("MicroMsg.PullDownListView", "openingCoordinationView params.bottomMargin:%s", new Object[] { Integer.valueOf(localMarginLayoutParams.bottomMargin) });
-                this.KZH.setLayoutParams(localMarginLayoutParams);
+                this.Lwf.setLayoutParams(localMarginLayoutParams);
               }
-              if (this.KZC != null) {
-                this.KZC.MJ(afA(Math.max(this.Bd - bCC() - (int)this.KZO, 0)));
+              if (this.Lwa != null) {
+                this.Lwa.Np(agj(Math.max(this.Bd - bDu() - (int)this.Lwm, 0)));
               }
               label1174:
-              if (this.KZS != 0.0F)
+              if (this.Lwq != 0.0F)
               {
-                i = (int)((int)(this.KZT - this.KZS) * 3.0F);
-                if ((!this.isVisible) || (i <= 0) || (this.KZC == null)) {
+                i = (int)((int)(this.Lwr - this.Lwq) * 3.0F);
+                if ((!this.isVisible) || (i <= 0) || (this.Lwa == null)) {
                   break label1691;
                 }
                 f = i;
-                if (this.KZA != null)
+                if (this.LvY != null)
                 {
-                  this.KZA.setTranslationX(Math.min(this.KZw + f, 0.0F));
-                  this.KZA.setTranslationY(Math.max(this.KZx - f, 0.0F));
-                  this.KZA.setVisibility(0);
+                  this.LvY.setTranslationX(Math.min(this.LvU + f, 0.0F));
+                  this.LvY.setTranslationY(Math.max(this.LvV - f, 0.0F));
+                  this.LvY.setVisibility(0);
                 }
-                if ((this.KZM) || (!al(paramMotionEvent))) {
+                if ((this.Lwk) || (!aj(paramMotionEvent))) {
                   break label1663;
                 }
-                this.mUw.vibrate(20L);
-                this.KZM = true;
-                if (!this.KZM) {
+                this.mZD.vibrate(20L);
+                this.Lwk = true;
+                if (!this.Lwk) {
                   break label1679;
                 }
-                this.KZC.dAC();
+                this.Lwa.dDT();
               }
               label1301:
               label1317:
-              ap.d("MicroMsg.PullDownListView", "mThis.layout %s %s %s %s", new Object[] { Integer.valueOf(this.KZz.getLeft()), Integer.valueOf(this.KZz.getTop()), Integer.valueOf(this.KZz.getRight()), Integer.valueOf(this.KZz.getBottom()) });
+              ap.d("MicroMsg.PullDownListView", "mThis.layout %s %s %s %s", new Object[] { Integer.valueOf(this.LvX.getLeft()), Integer.valueOf(this.LvX.getTop()), Integer.valueOf(this.LvX.getRight()), Integer.valueOf(this.LvX.getBottom()) });
             }
           }
         }
       }
       for (;;)
       {
-        this.mLastMotionY = this.KZI;
+        this.mLastMotionY = this.Lwg;
         break label147;
         this.mActivePointerId = paramMotionEvent.getPointerId(0);
-        fMC();
-        this.KZD = false;
+        fQW();
+        this.Lwb = false;
         f = paramMotionEvent.getY(0);
         this.mLastMotionY = f;
-        this.KZI = f;
-        this.KZJ = paramMotionEvent.getX(0);
+        this.Lwg = f;
+        this.Lwh = paramMotionEvent.getX(0);
         this.mRect.setEmpty();
         this.aZl = paramMotionEvent.getY(0);
         this.aZk = paramMotionEvent.getX(0);
-        this.KZO = 0.0F;
-        this.KZT = ((int)this.KZO);
-        this.KZR = true;
-        fMD();
+        this.Lwm = 0.0F;
+        this.Lwr = ((int)this.Lwm);
+        this.Lwp = true;
+        fQX();
         break label385;
-        this.KZU = 1;
+        this.Lws = 1;
         break label440;
         label1494:
         i = 0;
         break label483;
         label1499:
-        if (this.KZU != 1) {
+        if (this.Lws != 1) {
           break label2425;
         }
         if (getChildAt(i - 1).getBottom() >= getHeight() - getPaddingBottom())
@@ -687,54 +687,54 @@ public class PullDownListView
         }
         i = 0;
         break label483;
-        i = afA(Math.max((int)this.KZO - this.Bd, 0));
-        if (this.KZH != null)
+        i = agj(Math.max((int)this.Lwm - this.Bd, 0));
+        if (this.Lwf != null)
         {
-          localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.KZH.getLayoutParams();
-          localMarginLayoutParams.topMargin = Math.min(0, Math.max(this.KZP, -i));
+          localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.Lwf.getLayoutParams();
+          localMarginLayoutParams.topMargin = Math.min(0, Math.max(this.Lwn, -i));
           ap.d("MicroMsg.PullDownListView", "closingCoordinationView params.bottomMargin:%s", new Object[] { Integer.valueOf(localMarginLayoutParams.bottomMargin) });
-          this.KZH.setLayoutParams(localMarginLayoutParams);
+          this.Lwf.setLayoutParams(localMarginLayoutParams);
         }
-        if (this.KZC == null) {
+        if (this.Lwa == null) {
           break label1174;
         }
-        this.KZC.MK(afA(Math.max(fMz() - this.Bd, 0)));
+        this.Lwa.Nq(agj(Math.max(fQT() - this.Bd, 0)));
         break label1174;
         label1663:
-        if (al(paramMotionEvent)) {
+        if (aj(paramMotionEvent)) {
           break label1301;
         }
-        this.KZM = false;
+        this.Lwk = false;
         break label1301;
         label1679:
-        this.KZC.dAD();
+        this.Lwa.dDU();
         break label1317;
         label1691:
-        fMC();
+        fQW();
         break label1317;
         i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
         if (i == -1) {
           break;
         }
-        this.KZI = paramMotionEvent.getY(i);
-        this.KZJ = paramMotionEvent.getX(i);
-        fMA();
+        this.Lwg = paramMotionEvent.getY(i);
+        this.Lwh = paramMotionEvent.getX(i);
+        fQU();
         this.mLastMotionY = 0.0F;
-        this.KZS = 0.0F;
-        this.KZL = false;
-        this.KZX = (System.currentTimeMillis() - this.KZW);
-        ap.d("MicroMsg.PullDownListView", "dancy test action up, mDeltaY:%s, closeLimitPx:%s, bottom:%s, mPullDownDuration%s", new Object[] { Integer.valueOf(this.Bd), Integer.valueOf(fMz()), Integer.valueOf(this.KZz.getBottom()), Long.valueOf(this.KZX) });
-        if ((fMB()) && (this.KZC != null) && (!this.KZK) && (this.KZy) && (!this.KZV))
+        this.Lwq = 0.0F;
+        this.Lwj = false;
+        this.Lwv = (System.currentTimeMillis() - this.Lwu);
+        ap.d("MicroMsg.PullDownListView", "dancy test action up, mDeltaY:%s, closeLimitPx:%s, bottom:%s, mPullDownDuration%s", new Object[] { Integer.valueOf(this.Bd), Integer.valueOf(fQT()), Integer.valueOf(this.LvX.getBottom()), Long.valueOf(this.Lwv) });
+        if ((fQV()) && (this.Lwa != null) && (!this.Lwi) && (this.LvW) && (!this.Lwt))
         {
-          ap.d("MicroMsg.PullDownListView", "dancy test action up, deltaOverScrollY:%s, translateBaseY:%s", new Object[] { Integer.valueOf(this.KZT), Float.valueOf(this.KZO) });
-          if (this.KZT - this.KZO > 0.0F)
+          ap.d("MicroMsg.PullDownListView", "dancy test action up, deltaOverScrollY:%s, translateBaseY:%s", new Object[] { Integer.valueOf(this.Lwr), Float.valueOf(this.Lwm) });
+          if (this.Lwr - this.Lwm > 0.0F)
           {
             i = 1;
             label1900:
             if (i == 0) {
               break label2013;
             }
-            if (((!this.isVisible) || (this.Bd < bCC())) && ((this.isVisible) || (this.Bd < fMz()))) {
+            if (((!this.isVisible) || (this.Bd < bDu())) && ((this.isVisible) || (this.Bd < fQT()))) {
               break label2408;
             }
           }
@@ -744,21 +744,21 @@ public class PullDownListView
         label2272:
         label2277:
         label2408:
-        for (i = this.KZz.getBottom() + this.KZB;; i = 0)
+        for (i = this.LvX.getBottom() + this.LvZ;; i = 0)
         {
-          I(this.Bd, i, al(paramMotionEvent));
-          this.KZD = false;
-          this.KZR = false;
-          this.KZT = 0;
+          I(this.Bd, i, aj(paramMotionEvent));
+          this.Lwb = false;
+          this.Lwp = false;
+          this.Lwr = 0;
           this.mActivePointerId = -1;
-          this.KZV = false;
-          this.KZX = 0L;
-          this.KZW = 0L;
+          this.Lwt = false;
+          this.Lwv = 0L;
+          this.Lwu = 0L;
           bool1 = false;
           break label147;
           i = 0;
           break label1900;
-          if (this.KZT - this.KZO < 0.0F)
+          if (this.Lwr - this.Lwm < 0.0F)
           {
             i = 1;
             label2030:
@@ -777,29 +777,29 @@ public class PullDownListView
             i = 0;
             break label2030;
             break label1967;
-            if (this.Bd >= fMz())
+            if (this.Bd >= fQT())
             {
-              i = this.KZz.getBottom();
+              i = this.LvX.getBottom();
               continue;
-              if (fMB()) {
+              if (fQV()) {
                 break label1967;
               }
-              this.kSw = false;
+              this.kWf = false;
               break label1967;
-              fMA();
-              this.KZR = false;
-              this.KZD = false;
+              fQU();
+              this.Lwp = false;
+              this.Lwb = false;
               this.mLastMotionY = 0.0F;
-              this.KZS = 0.0F;
-              this.KZL = false;
-              if (this.KZC != null) {
-                cTT();
+              this.Lwq = 0.0F;
+              this.Lwj = false;
+              if (this.Lwa != null) {
+                cWy();
               }
-              this.KZT = 0;
+              this.Lwr = 0;
               this.mActivePointerId = -1;
-              this.KZV = false;
-              this.KZX = 0L;
-              this.KZW = 0L;
+              this.Lwt = false;
+              this.Lwv = 0L;
+              this.Lwu = 0L;
               bool1 = false;
               break label147;
               i = paramMotionEvent.getActionIndex();
@@ -831,11 +831,11 @@ public class PullDownListView
               {
                 boolean bool2 = super.onTouchEvent(paramMotionEvent);
                 ap.d("MicroMsg.PullDownListView", "super.onTouchEvent(): %b", new Object[] { Boolean.valueOf(bool2) });
-                if ((this.KZC != null) && (getChildCount() > 0))
+                if ((this.Lwa != null) && (getChildCount() > 0))
                 {
                   i = getChildAt(0).getTop();
                   ap.d("MicroMsg.PullDownListView", "scrolled %s", new Object[] { Integer.valueOf(i) });
-                  this.KZC.ML(i);
+                  this.Lwa.Nr(i);
                 }
                 AppMethodBeat.o(159445);
                 return bool2;
@@ -883,11 +883,11 @@ public class PullDownListView
     }
     for (;;)
     {
-      this.KZA = paramView;
+      this.LvY = paramView;
       AppMethodBeat.o(159441);
       return;
-      this.KZw = 0.0F;
-      this.KZx = 0.0F;
+      this.LvU = 0.0F;
+      this.LvV = 0.0F;
     }
   }
   
@@ -895,7 +895,7 @@ public class PullDownListView
   {
     AppMethodBeat.i(159442);
     ap.i("MicroMsg.PullDownListView", "setNavigationBarHeight=%s", new Object[] { Integer.valueOf(paramInt) });
-    this.KZB = paramInt;
+    this.LvZ = paramInt;
     AppMethodBeat.o(159442);
   }
   
@@ -906,7 +906,7 @@ public class PullDownListView
   
   public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.KZY = paramOnItemLongClickListener;
+    this.Lww = paramOnItemLongClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
@@ -916,7 +916,7 @@ public class PullDownListView
   
   public void setSupportOverscroll(boolean paramBoolean)
   {
-    this.KZt = paramBoolean;
+    this.LvR = paramBoolean;
   }
   
   public void setTabView(View paramView)
@@ -926,19 +926,19 @@ public class PullDownListView
   
   public static abstract interface IPullDownCallback
   {
-    public abstract void MJ(int paramInt);
+    public abstract void Np(int paramInt);
     
-    public abstract void MK(int paramInt);
+    public abstract void Nq(int paramInt);
     
-    public abstract void ML(int paramInt);
+    public abstract void Nr(int paramInt);
     
-    public abstract void dAA();
+    public abstract void dDR();
     
-    public abstract void dAB();
+    public abstract void dDS();
     
-    public abstract void dAC();
+    public abstract void dDT();
     
-    public abstract void dAD();
+    public abstract void dDU();
     
     public abstract void onPostClose();
     

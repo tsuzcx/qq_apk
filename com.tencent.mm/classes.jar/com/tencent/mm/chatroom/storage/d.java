@@ -1,28 +1,36 @@
 package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.br;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class d
   extends j<c>
+  implements n.b
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public static final Long fMe;
+  public static final Long fOi;
   private e db;
   
   static
   {
     AppMethodBeat.i(182146);
-    fMe = Long.valueOf(604800000L);
+    fOi = Long.valueOf(604800000L);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "GroupTodo") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS todoIdIndex ON GroupTodo ( todoid )", "CREATE INDEX IF NOT EXISTS todoIdRoomNameIndex ON GroupTodo ( todoid,roomname )", "CREATE INDEX IF NOT EXISTS roomNameIndex ON GroupTodo ( roomname )" };
     AppMethodBeat.o(182146);
@@ -34,34 +42,36 @@ public final class d
     this.db = parame;
   }
   
-  public final boolean Yp()
+  public final void a(int paramInt, n paramn, final Object paramObject)
   {
-    AppMethodBeat.i(182144);
-    try
+    AppMethodBeat.i(217144);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      i = this.db.delete("GroupTodo", "createtime<?", new String[] { cf.aCL() - fMe.longValue() });
-      if (i > 0)
-      {
-        AppMethodBeat.o(182144);
-        return true;
-      }
+      ae.d("MicroMsg.roomTodo.GroupTodoStorage", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      AppMethodBeat.o(217144);
+      return;
     }
-    catch (Exception localException)
+    paramObject = (String)paramObject;
+    if ((paramInt == 5) && ((paramn instanceof br)))
     {
-      for (;;)
+      ae.i("MicroMsg.roomTodo.GroupTodoStorage", "delete, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
+      h.MqF.aO(new Runnable()
       {
-        ad.e("MicroMsg.roomTodo.GroupTodoStorage", "deleteExpireData  Exception：[%s %s]", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
-        int i = 0;
-      }
-      AppMethodBeat.o(182144);
+        public final void run()
+        {
+          AppMethodBeat.i(217141);
+          ae.i("MicroMsg.roomTodo.GroupTodoStorage", "onNotifyChange delete expire data : %s", new Object[] { Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().vm(paramObject)) });
+          AppMethodBeat.o(217141);
+        }
+      });
     }
-    return false;
+    AppMethodBeat.o(217144);
   }
   
   public final c ag(String paramString1, String paramString2)
   {
     AppMethodBeat.i(182140);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(182140);
       return null;
@@ -150,18 +160,18 @@ public final class d
     return bool;
   }
   
-  public final c uP(String paramString)
+  public final c vk(String paramString)
   {
-    AppMethodBeat.i(213428);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(217142);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(213428);
+      AppMethodBeat.o(217142);
       return null;
     }
     paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and username=? and state!=?", new String[] { paramString, "roomannouncement@app.origin", "2" }, null, null, null);
     if (paramString == null)
     {
-      AppMethodBeat.o(213428);
+      AppMethodBeat.o(217142);
       return null;
     }
     try
@@ -178,32 +188,32 @@ public final class d
     finally
     {
       paramString.close();
-      AppMethodBeat.o(213428);
+      AppMethodBeat.o(217142);
     }
     int i;
     if (i == 0)
     {
       paramString.close();
-      AppMethodBeat.o(213428);
+      AppMethodBeat.o(217142);
       return null;
     }
     c localc1 = (c)localObject.get(0);
     paramString.close();
-    AppMethodBeat.o(213428);
+    AppMethodBeat.o(217142);
     return localc1;
   }
   
-  public final List<c> uQ(String paramString)
+  public final List<c> vl(String paramString)
   {
     AppMethodBeat.i(182143);
     ArrayList localArrayList = new ArrayList();
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(182143);
       return localArrayList;
     }
-    long l = cf.aCN();
-    paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - fMe.longValue() }, null, null, "updatetime DESC limit 20");
+    long l = ch.aDd();
+    paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - fOi.longValue() }, null, null, "updatetime DESC limit 20");
     if (paramString == null)
     {
       AppMethodBeat.o(182143);
@@ -224,6 +234,30 @@ public final class d
       }
       AppMethodBeat.o(182143);
     }
+  }
+  
+  public final boolean vm(String paramString)
+  {
+    AppMethodBeat.i(217143);
+    try
+    {
+      i = this.db.delete("GroupTodo", "createtime<? and username=?", new String[] { ch.aDb() - fOi.longValue(), paramString });
+      if (i > 0)
+      {
+        AppMethodBeat.o(217143);
+        return true;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.roomTodo.GroupTodoStorage", "deleteExpireData Exception：[%s %s]", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+        int i = 0;
+      }
+      AppMethodBeat.o(217143);
+    }
+    return false;
   }
 }
 

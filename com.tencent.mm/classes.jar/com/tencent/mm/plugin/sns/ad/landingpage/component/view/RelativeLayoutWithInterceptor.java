@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RelativeLayoutWithInterceptor
   extends RelativeLayout
 {
-  private a yXj;
+  private a znK;
   
   public RelativeLayoutWithInterceptor(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,25 +23,25 @@ public class RelativeLayoutWithInterceptor
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(197570);
-    if (this.yXj != null)
+    AppMethodBeat.i(219031);
+    if (this.znK != null)
     {
-      boolean bool = this.yXj.dRq();
-      AppMethodBeat.o(197570);
+      boolean bool = this.znK.dUO();
+      AppMethodBeat.o(219031);
       return bool;
     }
-    AppMethodBeat.o(197570);
+    AppMethodBeat.o(219031);
     return true;
   }
   
   public void setEventInterceptor(a parama)
   {
-    this.yXj = parama;
+    this.znK = parama;
   }
   
   public static abstract interface a
   {
-    public abstract boolean dRq();
+    public abstract boolean dUO();
   }
 }
 

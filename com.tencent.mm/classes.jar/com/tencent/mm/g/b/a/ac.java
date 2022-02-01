@@ -6,44 +6,44 @@ import com.tencent.mm.plugin.report.a;
 public final class ac
   extends a
 {
-  public long dUM;
-  public long dUN;
-  public long dUO;
-  public long dUP = 0L;
-  public long dUQ = 0L;
+  public long dWc;
+  public long dWd;
+  public long dWe;
+  public long dWf = 0L;
+  public long dWg = 0L;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(73526);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUM);
+    ((StringBuffer)localObject).append(this.dWc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUN);
+    ((StringBuffer)localObject).append(this.dWd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUO);
+    ((StringBuffer)localObject).append(this.dWe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUP);
+    ((StringBuffer)localObject).append(this.dWf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUQ);
+    ((StringBuffer)localObject).append(this.dWg);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(73526);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(73527);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("favid:").append(this.dUM);
+    ((StringBuffer)localObject).append("favid:").append(this.dWc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("favsize:").append(this.dUN);
+    ((StringBuffer)localObject).append("favsize:").append(this.dWd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachecnt:").append(this.dUO);
+    ((StringBuffer)localObject).append("cachecnt:").append(this.dWe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachelsize:").append(this.dUP);
+    ((StringBuffer)localObject).append("cachelsize:").append(this.dWf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachesuccess:").append(this.dUQ);
+    ((StringBuffer)localObject).append("cachesuccess:").append(this.dWg);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(73527);
     return localObject;

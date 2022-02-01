@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.monitor;
 
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.k;
 import java.util.Comparator;
 
 final class b$5
-  implements Comparator<e>
+  implements Comparator<k>
 {
   b$5(b paramb) {}
   

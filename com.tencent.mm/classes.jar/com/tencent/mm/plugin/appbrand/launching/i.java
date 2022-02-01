@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.appbrand.launching;
 import d.g.a.a;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 final class i
   implements Runnable
 {
   i(a parama)
   {
-    this.civ = parama;
+    this.cix = parama;
   }
 }
 

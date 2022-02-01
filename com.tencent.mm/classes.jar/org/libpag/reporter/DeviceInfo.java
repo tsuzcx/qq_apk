@@ -45,13 +45,13 @@ public class DeviceInfo
   
   public static String getRomFingerprint(Context paramContext)
   {
-    AppMethodBeat.i(220302);
+    AppMethodBeat.i(217056);
     String str = Build.FINGERPRINT;
     paramContext = str;
     if (TextUtils.isEmpty(str)) {
       paramContext = "Android";
     }
-    AppMethodBeat.o(220302);
+    AppMethodBeat.o(217056);
     return paramContext;
   }
 }

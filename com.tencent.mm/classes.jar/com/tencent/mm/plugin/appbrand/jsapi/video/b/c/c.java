@@ -8,149 +8,149 @@ import java.util.HashMap;
 
 public final class c
 {
-  public static final c lnp;
-  public static final c lnq;
-  public static final c lnr;
-  private static final byte[] lns;
-  public static HashMap<String, c> lnv;
-  public String lnt;
-  public String lnu;
+  public static final c lrO;
+  public static final c lrP;
+  public static final c lrQ;
+  private static final byte[] lrR;
+  public static HashMap<String, c> lrU;
+  public String lrS;
+  public String lrT;
   
   static
   {
-    AppMethodBeat.i(206091);
-    lnp = new c("unknown");
-    lnq = new c("application/octet-stream");
-    lnr = new c("video/mp4");
-    lns = new byte[] { 117, 110, 107, 110, 111, 119, 110 };
-    lnv = new HashMap();
-    AppMethodBeat.o(206091);
+    AppMethodBeat.i(211118);
+    lrO = new c("unknown");
+    lrP = new c("application/octet-stream");
+    lrQ = new c("video/mp4");
+    lrR = new byte[] { 117, 110, 107, 110, 111, 119, 110 };
+    lrU = new HashMap();
+    AppMethodBeat.o(211118);
   }
   
   private c(String paramString)
   {
-    this.lnt = paramString;
+    this.lrS = paramString;
   }
   
-  public static String QM(String paramString)
+  public static String Rv(String paramString)
   {
-    AppMethodBeat.i(206085);
+    AppMethodBeat.i(211112);
     try
     {
       paramString = b.encode(paramString.getBytes("UTF-8"));
-      AppMethodBeat.o(206085);
+      AppMethodBeat.o(211112);
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
     {
-      paramString = b.encode(lns);
-      AppMethodBeat.o(206085);
+      paramString = b.encode(lrR);
+      AppMethodBeat.o(211112);
     }
     return paramString;
   }
   
-  private static String QN(String paramString)
+  private static String Rw(String paramString)
   {
-    AppMethodBeat.i(206086);
+    AppMethodBeat.i(211113);
     try
     {
       paramString = new String(b.decode(paramString), "UTF-8");
-      AppMethodBeat.o(206086);
+      AppMethodBeat.o(211113);
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
     {
-      paramString = lnp.toString();
-      AppMethodBeat.o(206086);
+      paramString = lrO.toString();
+      AppMethodBeat.o(211113);
     }
     return paramString;
   }
   
-  public static c QO(String paramString)
+  public static c Rx(String paramString)
   {
-    AppMethodBeat.i(206087);
+    AppMethodBeat.i(211114);
     if (TextUtils.isEmpty(paramString))
     {
-      paramString = lnp;
-      AppMethodBeat.o(206087);
+      paramString = lrO;
+      AppMethodBeat.o(211114);
       return paramString;
     }
     if (paramString.equals("video/mp4"))
     {
-      paramString = lnr;
-      AppMethodBeat.o(206087);
+      paramString = lrQ;
+      AppMethodBeat.o(211114);
       return paramString;
     }
     if (paramString.equals("unknown"))
     {
-      paramString = lnp;
-      AppMethodBeat.o(206087);
+      paramString = lrO;
+      AppMethodBeat.o(211114);
       return paramString;
     }
     paramString = new c(paramString);
-    AppMethodBeat.o(206087);
+    AppMethodBeat.o(211114);
     return paramString;
   }
   
-  public static c QP(String paramString)
+  public static c Ry(String paramString)
   {
-    AppMethodBeat.i(206088);
-    if (lnv.containsKey(paramString)) {}
+    AppMethodBeat.i(211115);
+    if (lrU.containsKey(paramString)) {}
     c localc;
-    for (paramString = (c)lnv.get(paramString);; paramString = localc)
+    for (paramString = (c)lrU.get(paramString);; paramString = localc)
     {
-      AppMethodBeat.o(206088);
+      AppMethodBeat.o(211115);
       return paramString;
-      localc = QO(QN(paramString));
-      lnv.put(paramString, localc);
+      localc = Rx(Rw(paramString));
+      lrU.put(paramString, localc);
     }
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(206089);
+    AppMethodBeat.i(211116);
     if (this == paramObject)
     {
-      AppMethodBeat.o(206089);
+      AppMethodBeat.o(211116);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(206089);
+      AppMethodBeat.o(211116);
       return false;
     }
     paramObject = (c)paramObject;
-    if (this.lnt != null)
+    if (this.lrS != null)
     {
-      if (this.lnt.equals(paramObject.lnt)) {}
+      if (this.lrS.equals(paramObject.lrS)) {}
     }
     else {
-      while (paramObject.lnt != null)
+      while (paramObject.lrS != null)
       {
-        AppMethodBeat.o(206089);
+        AppMethodBeat.o(211116);
         return false;
       }
     }
-    AppMethodBeat.o(206089);
+    AppMethodBeat.o(211116);
     return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(206090);
-    if (this.lnt != null)
+    AppMethodBeat.i(211117);
+    if (this.lrS != null)
     {
-      int i = this.lnt.hashCode();
-      AppMethodBeat.o(206090);
+      int i = this.lrS.hashCode();
+      AppMethodBeat.o(211117);
       return i;
     }
-    AppMethodBeat.o(206090);
+    AppMethodBeat.o(211117);
     return 0;
   }
   
   public final String toString()
   {
-    return this.lnt;
+    return this.lrS;
   }
 }
 

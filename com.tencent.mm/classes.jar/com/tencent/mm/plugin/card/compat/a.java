@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.compat;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.pluginsdk.model.app.m;
 

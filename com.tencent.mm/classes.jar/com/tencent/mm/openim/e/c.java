@@ -15,27 +15,27 @@ public final class c
   {
     AppMethodBeat.i(151329);
     c.a locala = new c.a();
-    locala.IhA = new Field[5];
+    locala.IBL = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appid";
-    locala.IhC.put("appid", "TEXT");
+    locala.IBN.put("appid", "TEXT");
     localStringBuilder.append(" appid TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "language";
-    locala.IhC.put("language", "TEXT");
+    locala.IBN.put("language", "TEXT");
     localStringBuilder.append(" language TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "appRec";
-    locala.IhC.put("appRec", "BLOB");
+    locala.IBN.put("appRec", "BLOB");
     localStringBuilder.append(" appRec BLOB");
     localStringBuilder.append(", ");
     locala.columns[3] = "updateTime";
-    locala.IhC.put("updateTime", "LONG default '0' ");
+    locala.IBN.put("updateTime", "LONG default '0' ");
     localStringBuilder.append(" updateTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "acctTypeId";
-    locala.IhC.put("acctTypeId", "TEXT");
+    locala.IBN.put("acctTypeId", "TEXT");
     localStringBuilder.append(" acctTypeId TEXT");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -50,7 +50,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.e.c
  * JD-Core Version:    0.7.0.1
  */

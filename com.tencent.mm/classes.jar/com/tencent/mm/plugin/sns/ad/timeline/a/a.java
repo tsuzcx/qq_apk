@@ -5,53 +5,53 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
 {
   public static boolean a(com.tencent.mm.plugin.sns.storage.b paramb)
   {
     boolean bool = false;
-    AppMethodBeat.i(197655);
+    AppMethodBeat.i(219121);
     if (paramb != null)
     {
-      if (paramb.zwC > 0) {
+      if (paramb.zNY > 0) {
         bool = true;
       }
-      ad.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml return ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(197655);
+      ae.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml return ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(219121);
       return bool;
     }
-    ad.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml : the adxml is null, so return false");
-    AppMethodBeat.o(197655);
+    ae.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml : the adxml is null, so return false");
+    AppMethodBeat.o(219121);
     return false;
   }
   
   public static boolean a(TimeLineObject paramTimeLineObject, com.tencent.mm.plugin.sns.storage.b paramb)
   {
-    AppMethodBeat.i(197653);
+    AppMethodBeat.i(219119);
     if ((c(paramTimeLineObject)) && (a(paramb)))
     {
-      if (dRT())
+      if (dVr())
       {
-        if ((paramb != null) && (!paramb.dVZ()) && (!paramb.dWa()) && (!paramb.dWb())) {}
+        if ((paramb != null) && (!paramb.dZA()) && (!paramb.dZB()) && (!paramb.dZC())) {}
         for (int i = 1; i != 0; i = 0)
         {
-          ad.i("SnsAd.OnlinePlayerSwitchHelper", "the normal video preload is disable, because the online normal video preload is enable!");
-          AppMethodBeat.o(197653);
+          ae.i("SnsAd.OnlinePlayerSwitchHelper", "the normal video preload is disable, because the online normal video preload is enable!");
+          AppMethodBeat.o(219119);
           return true;
         }
       }
-      if ((dRU()) && (paramb.dVZ()))
+      if ((dVs()) && (paramb.dZA()))
       {
-        ad.i("SnsAd.OnlinePlayerSwitchHelper", "the base card ad video preload is disable, because the online base card prload is enable!");
-        AppMethodBeat.o(197653);
+        ae.i("SnsAd.OnlinePlayerSwitchHelper", "the base card ad video preload is disable, because the online base card prload is enable!");
+        AppMethodBeat.o(219119);
         return true;
       }
-      ad.i("SnsAd.OnlinePlayerSwitchHelper", "the ad video preload is not disable!");
+      ae.i("SnsAd.OnlinePlayerSwitchHelper", "the ad video preload is not disable!");
     }
-    AppMethodBeat.o(197653);
+    AppMethodBeat.o(219119);
     return false;
   }
   
@@ -62,10 +62,10 @@ public final class a
     if (paramTimeLineObject != null)
     {
       bool1 = bool2;
-      if (paramTimeLineObject.HAT != null)
+      if (paramTimeLineObject.HUG != null)
       {
         bool1 = bool2;
-        if (paramTimeLineObject.HAT.GaP == 15) {
+        if (paramTimeLineObject.HUG.Gtw == 15) {
           bool1 = true;
         }
       }
@@ -73,67 +73,67 @@ public final class a
     return bool1;
   }
   
-  public static boolean dRT()
+  public static boolean dVr()
   {
-    AppMethodBeat.i(197651);
+    AppMethodBeat.i(219117);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qqE, 0);
-      ad.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInNormalTimeline value is ".concat(String.valueOf(i)));
+      int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxr, 0);
+      ae.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInNormalTimeline value is ".concat(String.valueOf(i)));
       if (i > 0)
       {
-        AppMethodBeat.o(197651);
+        AppMethodBeat.o(219117);
         return true;
       }
-      AppMethodBeat.o(197651);
+      AppMethodBeat.o(219117);
       return false;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197651);
+      AppMethodBeat.o(219117);
     }
     return false;
   }
   
-  public static boolean dRU()
+  public static boolean dVs()
   {
-    AppMethodBeat.i(197652);
+    AppMethodBeat.i(219118);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qqD, 0);
-      ad.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInBaseCardTimeline value is  ".concat(String.valueOf(i)));
+      int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxq, 0);
+      ae.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInBaseCardTimeline value is  ".concat(String.valueOf(i)));
       if (i > 0)
       {
-        AppMethodBeat.o(197652);
+        AppMethodBeat.o(219118);
         return true;
       }
-      AppMethodBeat.o(197652);
+      AppMethodBeat.o(219118);
       return false;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(197652);
+      AppMethodBeat.o(219118);
     }
     return false;
   }
   
-  public static boolean i(p paramp)
+  public static boolean j(p paramp)
   {
-    AppMethodBeat.i(197654);
+    AppMethodBeat.i(219120);
     if (paramp == null)
     {
-      ad.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is null!!");
-      AppMethodBeat.o(197654);
+      ae.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is null!!");
+      AppMethodBeat.o(219120);
       return false;
     }
-    if (!paramp.QM(32))
+    if (!paramp.Rt(32))
     {
-      ad.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is not ad!!");
-      AppMethodBeat.o(197654);
+      ae.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is not ad!!");
+      AppMethodBeat.o(219120);
       return false;
     }
-    boolean bool = a(paramp.dYl(), paramp.dRL());
-    AppMethodBeat.o(197654);
+    boolean bool = a(paramp.ebP(), paramp.dVj());
+    AppMethodBeat.o(219120);
     return bool;
   }
 }

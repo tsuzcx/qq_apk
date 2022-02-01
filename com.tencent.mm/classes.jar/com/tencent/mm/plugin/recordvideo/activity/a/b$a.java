@@ -6,7 +6,7 @@ import d.l;
 import java.util.Collection;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIRouter$Companion;", "", "()V", "TAG", "", "autoRoute", "", "toWhere", "photoList", "", "videoList", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIRouter$Companion;", "", "()V", "TAG", "", "autoRoute", "", "toWhere", "photoList", "", "videoList", "plugin-recordvideo_release"})
 public final class b$a
 {
   public static int d(int paramInt, List<String> paramList1, List<String> paramList2)
@@ -44,7 +44,7 @@ public final class b$a
         break;
         label86:
         if (paramList1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramInt = paramList1.size();
         break label39;
@@ -53,7 +53,7 @@ public final class b$a
         break label59;
         label108:
         if (paramList2 == null) {
-          p.gfZ();
+          p.gkB();
         }
       }
       label125:

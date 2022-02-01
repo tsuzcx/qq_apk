@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.cdndownloader.e;
 
 public abstract interface b
 {
-  public abstract void bYW();
+  public abstract void cal();
   
   public abstract void clear();
   

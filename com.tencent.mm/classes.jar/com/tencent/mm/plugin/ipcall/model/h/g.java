@@ -15,36 +15,36 @@ public final class g
   {
     AppMethodBeat.i(25548);
     c.a locala = new c.a();
-    locala.IhA = new Field[7];
+    locala.IBL = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "svrId";
-    locala.IhC.put("svrId", "LONG PRIMARY KEY ");
+    locala.IBN.put("svrId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" svrId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "svrId";
+    locala.IBM = "svrId";
     locala.columns[1] = "isRead";
-    locala.IhC.put("isRead", "SHORT default '0' ");
+    locala.IBN.put("isRead", "SHORT default '0' ");
     localStringBuilder.append(" isRead SHORT default '0' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "title";
-    locala.IhC.put("title", "TEXT");
+    locala.IBN.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "content";
-    locala.IhC.put("content", "TEXT");
+    locala.IBN.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "pushTime";
-    locala.IhC.put("pushTime", "LONG");
+    locala.IBN.put("pushTime", "LONG");
     localStringBuilder.append(" pushTime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "msgType";
-    locala.IhC.put("msgType", "INTEGER");
+    locala.IBN.put("msgType", "INTEGER");
     localStringBuilder.append(" msgType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "descUrl";
-    locala.IhC.put("descUrl", "TEXT");
+    locala.IBN.put("descUrl", "TEXT");
     localStringBuilder.append(" descUrl TEXT");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -59,7 +59,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.g
  * JD-Core Version:    0.7.0.1
  */

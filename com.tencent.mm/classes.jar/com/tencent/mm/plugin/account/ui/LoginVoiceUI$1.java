@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
@@ -19,12 +19,12 @@ final class LoginVoiceUI$1
     AppMethodBeat.i(128250);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginVoiceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    g.yhR.f(11557, new Object[] { Integer.valueOf(2) });
+    a.b("com/tencent/mm/plugin/account/ui/LoginVoiceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    g.yxI.f(11557, new Object[] { Integer.valueOf(2) });
     paramView = new Intent();
-    paramView.putExtra("Kusername", this.jlZ.jla);
+    paramView.putExtra("Kusername", this.joT.jnU);
     paramView.putExtra("kscene_type", 1);
-    d.b(this.jlZ.getContext(), "voiceprint", ".ui.VoiceLoginUI", paramView, 1024);
+    d.b(this.joT.getContext(), "voiceprint", ".ui.VoiceLoginUI", paramView, 1024);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginVoiceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128250);
   }

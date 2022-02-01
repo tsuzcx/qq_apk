@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor;
 
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.a.a;
-import d.g.b.q;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioView$insectBottom$1$1"})
 final class EditorAudioView$l
-  extends q
-  implements a<WeImageView>
+  implements Runnable
 {
-  EditorAudioView$l(EditorAudioView paramEditorAudioView)
+  EditorAudioView$l(View paramView, int paramInt) {}
+  
+  public final void run()
   {
-    super(0);
+    AppMethodBeat.i(75949);
+    this.ybr.setPadding(this.ybr.getPaddingLeft(), this.ybr.getPaddingTop(), this.ybr.getPaddingRight(), this.ybs);
+    this.ybr.requestLayout();
+    AppMethodBeat.o(75949);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView.l
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ public abstract interface g
 {
   public abstract void a(int paramInt, m paramm);
   
-  public abstract void eLS();
+  public abstract void ePB();
   
-  public abstract void eLT();
+  public abstract void ePC();
 }
 
 

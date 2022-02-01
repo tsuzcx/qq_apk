@@ -9,32 +9,32 @@ import java.util.concurrent.Executors;
 
 public final class a
 {
-  private static a yll;
-  private static float ylm;
-  private Rect hmm;
-  private Map yln;
-  private Object ylo;
-  private Object ylp;
-  private ExecutorService ylq;
-  private Rect ylr;
+  private static a yBk;
+  private static float yBl;
+  private Rect hpa;
+  private Map yBm;
+  private Object yBn;
+  private Object yBo;
+  private ExecutorService yBp;
+  private Rect yBq;
   
   static
   {
     AppMethodBeat.i(118321);
-    yll = new a();
-    ylm = 1.15F;
+    yBk = new a();
+    yBl = 1.15F;
     AppMethodBeat.o(118321);
   }
   
   public a()
   {
     AppMethodBeat.i(118320);
-    this.yln = new HashMap();
-    this.ylo = new Object();
-    this.ylp = new Object();
-    this.ylq = Executors.newSingleThreadExecutor();
-    this.ylr = new Rect();
-    this.hmm = new Rect();
+    this.yBm = new HashMap();
+    this.yBn = new Object();
+    this.yBo = new Object();
+    this.yBp = Executors.newSingleThreadExecutor();
+    this.yBq = new Rect();
+    this.hpa = new Rect();
     AppMethodBeat.o(118320);
   }
 }

@@ -6,8 +6,8 @@ import junit.framework.Assert;
 
 public class d
 {
-  public String dln;
-  public f gxY;
+  public String dmp;
+  public f gAF;
   private String process;
   
   public <T extends b> d(String paramString, Class<T> paramClass)
@@ -16,8 +16,8 @@ public class d
     Assert.assertNotNull(paramString);
     Assert.assertNotNull(paramClass);
     this.process = paramString;
-    this.dln = paramClass.getName();
-    this.gxY = new f(paramString);
+    this.dmp = paramClass.getName();
+    this.gAF = new f(paramString);
     AppMethodBeat.o(158789);
   }
 }

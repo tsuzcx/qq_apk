@@ -18,21 +18,21 @@ import java.util.Set;
 public final class i<T>
   extends AbstractSet<T>
 {
-  public static final b NGf;
+  public static final b Odl;
   private Object data;
   private int size;
   
   static
   {
     AppMethodBeat.i(61401);
-    NGf = new b((byte)0);
+    Odl = new b((byte)0);
     AppMethodBeat.o(61401);
   }
   
-  public static final <T> i<T> guu()
+  public static final <T> i<T> gyW()
   {
     AppMethodBeat.i(61402);
-    i locali = b.guu();
+    i locali = b.gyW();
     AppMethodBeat.o(61402);
     return locali;
   }
@@ -80,7 +80,7 @@ public final class i<T>
         {
           localObject = Arrays.copyOf((Object[])localObject, localObject.length);
           p.h(localObject, "elements");
-          localObject = (LinkedHashSet)e.b((Object[])localObject, (Collection)new LinkedHashSet(d.a.ae.aji(localObject.length)));
+          localObject = (LinkedHashSet)e.b((Object[])localObject, (Collection)new LinkedHashSet(d.a.ae.ajS(localObject.length)));
           ((LinkedHashSet)localObject).add(paramT);
         }
         for (paramT = (TT)localObject;; paramT = (TT)localObject)
@@ -99,7 +99,7 @@ public final class i<T>
         AppMethodBeat.o(61399);
         throw paramT;
       }
-    } while (d.g.b.ae.eT(localObject).add(paramT));
+    } while (d.g.b.ae.eW(localObject).add(paramT));
     AppMethodBeat.o(61399);
     return false;
   }
@@ -184,14 +184,14 @@ public final class i<T>
       AppMethodBeat.o(61398);
       throw ((Throwable)localObject);
     }
-    localObject = d.g.b.ae.eT(localObject).iterator();
+    localObject = d.g.b.ae.eW(localObject).iterator();
     AppMethodBeat.o(61398);
     return localObject;
   }
   
   public static final class b
   {
-    public static <T> i<T> guu()
+    public static <T> i<T> gyW()
     {
       AppMethodBeat.i(61395);
       i locali = new i((byte)0);
@@ -203,27 +203,27 @@ public final class i<T>
   static final class c<T>
     implements d, Iterator<T>
   {
-    private final T MLV;
-    private boolean MMl;
+    private final T NiY;
+    private boolean Njq;
     
     public c(T paramT)
     {
-      this.MLV = paramT;
-      this.MMl = true;
+      this.NiY = paramT;
+      this.Njq = true;
     }
     
     public final boolean hasNext()
     {
-      return this.MMl;
+      return this.Njq;
     }
     
     public final T next()
     {
       AppMethodBeat.i(61396);
-      if (this.MMl)
+      if (this.Njq)
       {
-        this.MMl = false;
-        localObject = this.MLV;
+        this.Njq = false;
+        localObject = this.NiY;
         AppMethodBeat.o(61396);
         return localObject;
       }

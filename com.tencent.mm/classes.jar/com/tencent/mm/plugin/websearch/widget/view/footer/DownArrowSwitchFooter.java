@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 
@@ -20,21 +20,21 @@ public class DownArrowSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c DEF;
-  private TextView DFo;
-  private View DFp;
-  private a.a DFr;
+  private c DWD;
+  private TextView DXl;
+  private View DXm;
+  private a.a DXo;
   private Context context;
-  private ImageView mMM;
+  private ImageView mRP;
   
   public DownArrowSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116752);
     c.a locala = new c.a();
-    locala.idr = true;
-    locala.idq = true;
-    this.DEF = locala.aJc();
+    locala.igk = true;
+    locala.igj = true;
+    this.DWD = locala.aJu();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116752);
@@ -45,9 +45,9 @@ public class DownArrowSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116753);
     paramAttributeSet = new c.a();
-    paramAttributeSet.idr = true;
-    paramAttributeSet.idq = true;
-    this.DEF = paramAttributeSet.aJc();
+    paramAttributeSet.igk = true;
+    paramAttributeSet.igj = true;
+    this.DWD = paramAttributeSet.aJu();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116753);
@@ -56,10 +56,10 @@ public class DownArrowSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116754);
-    ViewGroup localViewGroup = (ViewGroup)z.jO(this.context).inflate(2131496111, this);
-    this.DFp = localViewGroup.findViewById(2131299188);
-    this.DFo = ((TextView)localViewGroup.findViewById(2131300214));
-    this.mMM = ((ImageView)localViewGroup.findViewById(2131300201));
+    ViewGroup localViewGroup = (ViewGroup)z.jV(this.context).inflate(2131496111, this);
+    this.DXm = localViewGroup.findViewById(2131299188);
+    this.DXl = ((TextView)localViewGroup.findViewById(2131300214));
+    this.mRP = ((ImageView)localViewGroup.findViewById(2131300201));
     localViewGroup.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -67,9 +67,9 @@ public class DownArrowSwitchFooter
         AppMethodBeat.i(116751);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (DownArrowSwitchFooter.a(DownArrowSwitchFooter.this) != null) {
-          DownArrowSwitchFooter.a(DownArrowSwitchFooter.this).eNa();
+          DownArrowSwitchFooter.a(DownArrowSwitchFooter.this).eQL();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116751);
@@ -81,16 +81,16 @@ public class DownArrowSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116757);
-    this.DFr = parama;
+    this.DXo = parama;
     if (parama != null)
     {
       if (parama.getItemCount() > 1)
       {
-        this.DFp.setVisibility(0);
+        this.DXm.setVisibility(0);
         AppMethodBeat.o(116757);
         return;
       }
-      this.DFp.setVisibility(8);
+      this.DXm.setVisibility(8);
     }
     AppMethodBeat.o(116757);
   }
@@ -100,19 +100,19 @@ public class DownArrowSwitchFooter
     AppMethodBeat.i(116756);
     if (TextUtils.isEmpty(paramString))
     {
-      this.mMM.setVisibility(8);
+      this.mRP.setVisibility(8);
       AppMethodBeat.o(116756);
       return;
     }
-    this.mMM.setVisibility(0);
-    com.tencent.mm.aw.a.a.aIP().a(paramString, this.mMM, this.DEF);
+    this.mRP.setVisibility(0);
+    com.tencent.mm.av.a.a.aJh().a(paramString, this.mRP, this.DWD);
     AppMethodBeat.o(116756);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116755);
-    this.DFo.setText(paramString);
+    this.DXl.setText(paramString);
     AppMethodBeat.o(116755);
   }
 }

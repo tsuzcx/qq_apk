@@ -8,127 +8,127 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class RecoveryCrash
 {
-  public long HTR;
-  public String HTS;
-  g HTT;
-  public c HTU;
+  public long InZ;
+  public String Ioa;
+  g Iob;
+  public c Ioc;
   final Context mContext;
   
   private RecoveryCrash(Context paramContext)
   {
-    AppMethodBeat.i(206975);
+    AppMethodBeat.i(195283);
     this.mContext = paramContext;
-    this.HTT = new g.a(paramContext, "recovery_crash");
-    AppMethodBeat.o(206975);
+    this.Iob = new g.a(paramContext, "recovery_crash");
+    AppMethodBeat.o(195283);
   }
   
   RecoveryCrash(Context paramContext, long paramLong, String paramString, g paramg, c paramc)
   {
     this.mContext = paramContext;
-    this.HTR = paramLong;
-    this.HTS = paramString;
-    this.HTT = paramg;
-    this.HTU = paramc;
+    this.InZ = paramLong;
+    this.Ioa = paramString;
+    this.Iob = paramg;
+    this.Ioc = paramc;
   }
   
-  private void fgX()
+  private void fkP()
   {
-    AppMethodBeat.i(206976);
-    this.HTU = c.hL(this.mContext);
-    AppMethodBeat.o(206976);
+    AppMethodBeat.i(195284);
+    this.Ioc = c.hR(this.mContext);
+    AppMethodBeat.o(195284);
   }
   
-  public static RecoveryCrash hJ(Context paramContext)
+  public static RecoveryCrash hP(Context paramContext)
   {
-    AppMethodBeat.i(206973);
+    AppMethodBeat.i(195281);
     paramContext = new RecoveryCrash(paramContext);
-    paramContext.fgX();
-    paramContext.fgY();
-    AppMethodBeat.o(206973);
+    paramContext.fkP();
+    paramContext.fkQ();
+    AppMethodBeat.o(195281);
     return paramContext;
   }
   
-  public static RecoveryCrash hK(Context paramContext)
+  public static RecoveryCrash hQ(Context paramContext)
   {
-    AppMethodBeat.i(206974);
+    AppMethodBeat.i(195282);
     paramContext = new RecoveryCrash(paramContext);
-    paramContext.fgX();
-    AppMethodBeat.o(206974);
+    paramContext.fkP();
+    AppMethodBeat.o(195282);
     return paramContext;
   }
   
-  public final RecoveryCrash ZW(int paramInt)
+  public final RecoveryCrash aaC(int paramInt)
   {
-    this.HTU.HTW = paramInt;
+    this.Ioc.Ioe = paramInt;
     return this;
   }
   
-  public final void fgY()
+  public final void fkQ()
   {
-    AppMethodBeat.i(206977);
-    this.HTT.fhb();
-    if (this.HTS != null)
+    AppMethodBeat.i(195285);
+    this.Iob.fkT();
+    if (this.Ioa != null)
     {
-      AppMethodBeat.o(206977);
+      AppMethodBeat.o(195285);
       return;
     }
-    this.HTS = this.HTT.getString("crash_version", null);
-    this.HTR = Math.max(this.HTT.getLong("crash_time", 0L), 0L);
-    AppMethodBeat.o(206977);
+    this.Ioa = this.Iob.getString("crash_version", null);
+    this.InZ = Math.max(this.Iob.getLong("crash_time", 0L), 0L);
+    AppMethodBeat.o(195285);
   }
   
-  public final RecoveryCrash fgZ()
+  public final RecoveryCrash fkR()
   {
-    this.HTU.HTW = 0;
-    this.HTR = 0L;
-    this.HTS = null;
+    this.Ioc.Ioe = 0;
+    this.InZ = 0L;
+    this.Ioa = null;
     return this;
   }
   
-  public final Record fha()
+  public final Record fkS()
   {
-    AppMethodBeat.i(206979);
-    fgY();
+    AppMethodBeat.i(195287);
+    fkQ();
     Record localRecord = new Record();
-    localRecord.crashCount = this.HTU.HTW;
-    localRecord.GoL = this.HTR;
-    localRecord.HTV = this.HTS;
-    AppMethodBeat.o(206979);
+    localRecord.crashCount = this.Ioc.Ioe;
+    localRecord.GIb = this.InZ;
+    localRecord.Iod = this.Ioa;
+    AppMethodBeat.o(195287);
     return localRecord;
   }
   
   public final void save()
   {
-    AppMethodBeat.i(206978);
-    this.HTU.save();
-    this.HTT.lF("crash_version", this.HTS).bR("crash_time", this.HTR).fhc();
-    AppMethodBeat.o(206978);
+    AppMethodBeat.i(195286);
+    this.Ioc.save();
+    this.Iob.lM("crash_version", this.Ioa).bS("crash_time", this.InZ).fkU();
+    AppMethodBeat.o(195286);
   }
   
   public static class Record
     implements Parcelable
   {
     public static final Parcelable.Creator<Record> CREATOR;
-    public long GoL;
-    public String HTV;
+    public long GIb;
+    public String Iod;
     public int crashCount;
     
     static
     {
-      AppMethodBeat.i(206972);
+      AppMethodBeat.i(195280);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(206972);
+      AppMethodBeat.o(195280);
     }
     
     Record() {}
     
     protected Record(Parcel paramParcel)
     {
-      AppMethodBeat.i(206970);
+      AppMethodBeat.i(195278);
       this.crashCount = paramParcel.readInt();
-      this.GoL = paramParcel.readLong();
-      this.HTV = paramParcel.readString();
-      AppMethodBeat.o(206970);
+      this.GIb = paramParcel.readLong();
+      this.Iod = paramParcel.readString();
+      AppMethodBeat.o(195278);
     }
     
     public int describeContents()
@@ -138,11 +138,11 @@ public final class RecoveryCrash
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(206971);
+      AppMethodBeat.i(195279);
       paramParcel.writeInt(this.crashCount);
-      paramParcel.writeLong(this.GoL);
-      paramParcel.writeString(this.HTV);
-      AppMethodBeat.o(206971);
+      paramParcel.writeLong(this.GIb);
+      paramParcel.writeString(this.Iod);
+      AppMethodBeat.o(195279);
     }
   }
 }

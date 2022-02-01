@@ -4,41 +4,43 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.b;
-import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.b;
+import com.tencent.mm.model.au.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.remittance.model.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.ui.f;
 
 @com.tencent.mm.ui.base.a(7)
 public class RemittanceAdapterUI
   extends WalletBaseUI
 {
-  public String fGM = null;
+  public String fIQ = null;
   protected String mAppID = null;
   protected int mChannel;
   protected int mScene;
-  protected boolean xZY = false;
-  protected com.tencent.mm.plugin.wallet.a xZZ = null;
+  protected boolean ypQ = false;
+  protected com.tencent.mm.plugin.wallet.a ypR = null;
   
   protected void c(String paramString, int paramInt, Intent paramIntent)
   {
     AppMethodBeat.i(67949);
-    ad.i("MicroMsg.RemittanceAdapterUI", "startRemittanceUI scene=" + this.mScene + ", name=" + paramString + " payScene: " + paramInt);
+    ae.i("MicroMsg.RemittanceAdapterUI", "startRemittanceUI scene=" + this.mScene + ", name=" + paramString + " payScene: " + paramInt);
     if (paramIntent != null)
     {
       paramIntent = new Intent(paramIntent);
-      com.tencent.mm.plugin.wallet.a.a(this.xZZ, paramIntent);
+      com.tencent.mm.plugin.wallet.a.a(this.ypR, paramIntent);
       if (paramIntent.getIntExtra("busi_type", 0) != 1) {
         break label212;
       }
@@ -51,8 +53,8 @@ public class RemittanceAdapterUI
       paramIntent.putExtra("pay_scene", paramInt);
       paramIntent.putExtra("pay_channel", this.mChannel);
       paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahp(), "com/tencent/mm/plugin/remittance/ui/RemittanceAdapterUI", "startRemittanceUI", "(Ljava/lang/String;ILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramString.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahE(), "com/tencent/mm/plugin/remittance/ui/RemittanceAdapterUI", "startRemittanceUI", "(Ljava/lang/String;ILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramString.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceAdapterUI", "startRemittanceUI", "(Ljava/lang/String;ILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       setResult(-1);
       finish();
@@ -65,10 +67,10 @@ public class RemittanceAdapterUI
     }
   }
   
-  protected void dJp()
+  protected void dMH()
   {
     AppMethodBeat.i(67945);
-    x localx = new x(this.fGM, this.mChannel);
+    x localx = new x(this.fIQ, this.mChannel);
     localx.setProcessName("RemittanceProcess");
     doSceneProgress(localx, true);
     AppMethodBeat.o(67945);
@@ -82,14 +84,14 @@ public class RemittanceAdapterUI
   public void onBackPressed()
   {
     AppMethodBeat.i(67947);
-    if (!this.xZY)
+    if (!this.ypQ)
     {
-      ad.d("MicroMsg.RemittanceAdapterUI", "back press not lock");
+      ae.d("MicroMsg.RemittanceAdapterUI", "back press not lock");
       finish();
       AppMethodBeat.o(67947);
       return;
     }
-    ad.d("MicroMsg.RemittanceAdapterUI", "back press but lock");
+    ae.d("MicroMsg.RemittanceAdapterUI", "back press but lock");
     AppMethodBeat.o(67947);
   }
   
@@ -99,23 +101,23 @@ public class RemittanceAdapterUI
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
     this.mScene = getIntent().getIntExtra("scene", 0);
-    this.fGM = getIntent().getStringExtra("receiver_name");
+    this.fIQ = getIntent().getStringExtra("receiver_name");
     this.mChannel = getIntent().getIntExtra("pay_channel", -1);
-    this.xZZ = com.tencent.mm.plugin.wallet.a.aS(getIntent());
+    this.ypR = com.tencent.mm.plugin.wallet.a.aT(getIntent());
     if (this.mChannel == 56) {
-      this.mAppID = this.xZZ.Cwr;
+      this.mAppID = this.ypR.CNW;
     }
     if (this.mChannel == -1)
     {
       paramBundle = getProcess();
       if (paramBundle != null) {
-        this.mChannel = paramBundle.dxT.getInt("pay_channel", -1);
+        this.mChannel = paramBundle.dyY.getInt("pay_channel", -1);
       }
     }
     if (this.mScene == 1)
     {
-      this.xZY = true;
-      dJp();
+      this.ypQ = true;
+      dMH();
       AppMethodBeat.o(67944);
       return;
     }
@@ -124,7 +126,7 @@ public class RemittanceAdapterUI
       addSceneEndListener(580);
       if (getIntent() == null)
       {
-        ad.d("MicroMsg.RemittanceAdapterUI", "func[doCheckPayNetscene] intent null");
+        ae.d("MicroMsg.RemittanceAdapterUI", "func[doCheckPayNetscene] intent null");
         setResult(0);
         finish();
         AppMethodBeat.o(67944);
@@ -138,38 +140,38 @@ public class RemittanceAdapterUI
     }
     if (this.mScene == 2)
     {
-      if (bt.isNullOrNil(this.fGM))
+      if (bu.isNullOrNil(this.fIQ))
       {
-        ad.w("MicroMsg.RemittanceAdapterUI", "Username empty & finish. scene=" + this.mScene);
+        ae.w("MicroMsg.RemittanceAdapterUI", "Username empty & finish. scene=" + this.mScene);
         finish();
         AppMethodBeat.o(67944);
         return;
       }
-      c(this.fGM, 31, null);
+      c(this.fIQ, 31, null);
       AppMethodBeat.o(67944);
       return;
     }
     if ((this.mScene == 5) || (this.mScene == 6))
     {
-      if (bt.isNullOrNil(this.fGM))
+      if (bu.isNullOrNil(this.fIQ))
       {
-        ad.w("MicroMsg.RemittanceAdapterUI", "Username empty & finish. scene=" + this.mScene);
+        ae.w("MicroMsg.RemittanceAdapterUI", "Username empty & finish. scene=" + this.mScene);
         finish();
         AppMethodBeat.o(67944);
         return;
       }
-      paramBundle = this.fGM;
-      ad.i("MicroMsg.RemittanceAdapterUI", "startRemittanceUI scene=" + this.mScene + ", name=" + paramBundle);
+      paramBundle = this.fIQ;
+      ae.i("MicroMsg.RemittanceAdapterUI", "startRemittanceUI scene=" + this.mScene + ", name=" + paramBundle);
       Intent localIntent = new Intent();
-      com.tencent.mm.plugin.wallet.a.a(this.xZZ, localIntent);
+      com.tencent.mm.plugin.wallet.a.a(this.ypR, localIntent);
       localIntent.setClass(this, RemittanceOSRedirect.class);
       localIntent.putExtra("receiver_name", paramBundle);
       localIntent.putExtra("scene", this.mScene);
       localIntent.putExtra("pay_scene", 31);
       localIntent.putExtra("pay_channel", this.mChannel);
       paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramBundle.ahp(), "com/tencent/mm/plugin/remittance/ui/RemittanceAdapterUI", "startRemittanceOSUI", "(Ljava/lang/String;ILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramBundle.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramBundle.ahE(), "com/tencent/mm/plugin/remittance/ui/RemittanceAdapterUI", "startRemittanceOSUI", "(Ljava/lang/String;ILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramBundle.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceAdapterUI", "startRemittanceOSUI", "(Ljava/lang/String;ILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       setResult(-1);
       finish();
@@ -194,27 +196,27 @@ public class RemittanceAdapterUI
   {
     AppMethodBeat.i(67948);
     if ((paramn instanceof x)) {
-      this.xZY = false;
+      this.ypQ = false;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if ((paramn instanceof x))
       {
         paramString = (x)paramn;
-        if ((this.mScene == 1) && (paramString.dlw == 0) && (paramString.ozA == 1))
+        if ((this.mScene == 1) && (paramString.dmy == 0) && (paramString.oGc == 1))
         {
           paramn = new Intent();
-          paramn.putExtra("rawUrl", paramString.ozD);
-          com.tencent.mm.wallet_core.ui.e.an(this, paramn);
+          paramn.putExtra("rawUrl", paramString.oGf);
+          f.an(this, paramn);
           finish();
           AppMethodBeat.o(67948);
           return true;
         }
-        paramn = paramString.xZb;
-        this.fGM = paramString.username;
-        if ((bt.isNullOrNil(this.fGM)) && (bt.isNullOrNil(paramn)))
+        paramn = paramString.yoT;
+        this.fIQ = paramString.username;
+        if ((bu.isNullOrNil(this.fIQ)) && (bu.isNullOrNil(paramn)))
         {
-          ad.d("MicroMsg.RemittanceAdapterUI", "Username empty & fishsh. scene=" + this.mScene);
+          ae.d("MicroMsg.RemittanceAdapterUI", "Username empty & fishsh. scene=" + this.mScene);
           finish();
           AppMethodBeat.o(67948);
           return true;
@@ -223,76 +225,76 @@ public class RemittanceAdapterUI
         {
           if (paramString.scene == 33)
           {
-            this.xZZ = com.tencent.mm.plugin.wallet.a.fl(this.fGM, 2);
-            this.xZZ.cp(20, getIntent().getStringExtra("receiver_name"));
+            this.ypR = com.tencent.mm.plugin.wallet.a.fu(this.fIQ, 2);
+            this.ypR.cp(20, getIntent().getStringExtra("receiver_name"));
           }
         }
         else
         {
           paramn = new Intent();
-          paramn.putExtra("fee", paramString.paV);
+          paramn.putExtra("fee", paramString.phz);
           paramn.putExtra("desc", paramString.desc);
-          paramn.putExtra("scan_remittance_id", paramString.xYS);
-          paramn.putExtra("receiver_true_name", com.tencent.mm.wallet_core.ui.e.aYH(paramString.xYR));
-          paramn.putExtra("receiver_true_name_busi", paramString.xYy);
-          paramn.putExtra("receiver_tips", paramString.xYT);
-          paramn.putExtra("rcvr_new_desc", paramString.xYU);
-          paramn.putExtra("payer_desc", paramString.xYV);
-          paramn.putExtra("rcvr_open_id", paramString.xZb);
-          paramn.putExtra("mch_name", paramString.xYY);
-          paramn.putExtra("mch_info", paramString.xZe);
-          paramn.putExtra("mch_photo", paramString.xYZ);
-          paramn.putExtra("mch_type", paramString.xZc);
-          paramn.putExtra("mch_time", paramString.xZa);
-          paramn.putExtra("amount_remind_bit", paramString.xZf);
-          if (paramString.xYX == 1)
+          paramn.putExtra("scan_remittance_id", paramString.yoK);
+          paramn.putExtra("receiver_true_name", f.bak(paramString.yoJ));
+          paramn.putExtra("receiver_true_name_busi", paramString.yoq);
+          paramn.putExtra("receiver_tips", paramString.yoL);
+          paramn.putExtra("rcvr_new_desc", paramString.yoM);
+          paramn.putExtra("payer_desc", paramString.yoN);
+          paramn.putExtra("rcvr_open_id", paramString.yoT);
+          paramn.putExtra("mch_name", paramString.yoQ);
+          paramn.putExtra("mch_info", paramString.yoW);
+          paramn.putExtra("mch_photo", paramString.yoR);
+          paramn.putExtra("mch_type", paramString.yoU);
+          paramn.putExtra("mch_time", paramString.yoS);
+          paramn.putExtra("amount_remind_bit", paramString.yoX);
+          if (paramString.yoP == 1)
           {
-            paramn.putExtra("busi_type", paramString.xYX);
-            paramn.putExtra("rcvr_ticket", paramString.xYW);
-            paramn.putExtra("rcvr_open_id", paramString.xZb);
-            paramn.putExtra("get_pay_wifi", paramString.xZd);
-            if (paramString.xZg != null) {
-              paramn.putExtra("BusiRemittanceResp", paramString.xZg);
+            paramn.putExtra("busi_type", paramString.yoP);
+            paramn.putExtra("rcvr_ticket", paramString.yoO);
+            paramn.putExtra("rcvr_open_id", paramString.yoT);
+            paramn.putExtra("get_pay_wifi", paramString.yoV);
+            if (paramString.yoY != null) {
+              paramn.putExtra("BusiRemittanceResp", paramString.yoY);
             }
           }
           if (this.mChannel == 56) {
             paramn.putExtra("app_id", this.mAppID);
           }
-          g.ajD();
-          am localam = ((l)g.ab(l.class)).azp().aTk(this.fGM);
-          c.ak(this.fGM, 3);
-          if ((localam == null) && (!this.fGM.equals(""))) {
+          g.ajS();
+          an localan = ((l)g.ab(l.class)).azF().aUL(this.fIQ);
+          c.al(this.fIQ, 3);
+          if ((localan == null) && (!this.fIQ.equals(""))) {
             break label639;
           }
-          c(this.fGM, paramString.scene, paramn);
+          c(this.fIQ, paramString.scene, paramn);
         }
         for (;;)
         {
           AppMethodBeat.o(67948);
           return true;
-          this.xZZ = com.tencent.mm.plugin.wallet.a.fl(this.fGM, 3);
-          this.xZZ.cp(10, getIntent().getStringExtra("receiver_name"));
+          this.ypR = com.tencent.mm.plugin.wallet.a.fu(this.fIQ, 3);
+          this.ypR.cp(10, getIntent().getStringExtra("receiver_name"));
           break;
           label639:
-          ad.d("MicroMsg.RemittanceAdapterUI", "Receiver in contactStg and try to get contact");
-          final long l = bt.flT();
-          as.a.hFO.a(this.fGM, "", new as.b.a()
+          ae.d("MicroMsg.RemittanceAdapterUI", "Receiver in contactStg and try to get contact");
+          final long l = bu.fpO();
+          au.a.hIG.a(this.fIQ, "", new au.b.a()
           {
             public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(67943);
               if (paramAnonymousBoolean)
               {
-                ad.v("MicroMsg.RemittanceAdapterUI", "getContact suc; cost=" + (bt.flT() - l) + " ms");
-                c.ak(paramAnonymousString, 3);
-                p.aEz().CU(paramAnonymousString);
+                ae.v("MicroMsg.RemittanceAdapterUI", "getContact suc; cost=" + (bu.fpO() - l) + " ms");
+                c.al(paramAnonymousString, 3);
+                p.aEP().Dw(paramAnonymousString);
               }
               for (;;)
               {
-                RemittanceAdapterUI.this.c(RemittanceAdapterUI.this.fGM, paramn.scene, this.yab);
+                RemittanceAdapterUI.this.c(RemittanceAdapterUI.this.fIQ, paramn.scene, this.ypT);
                 AppMethodBeat.o(67943);
                 return;
-                ad.w("MicroMsg.RemittanceAdapterUI", "getContact failed");
+                ae.w("MicroMsg.RemittanceAdapterUI", "getContact failed");
               }
             }
           });
@@ -300,7 +302,7 @@ public class RemittanceAdapterUI
       }
       if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.d))
       {
-        com.tencent.mm.pluginsdk.wallet.e.aNP(((com.tencent.mm.plugin.wallet_core.c.d)paramn).eEF());
+        e.aPm(((com.tencent.mm.plugin.wallet_core.c.d)paramn).eIm());
         c(null, 31, null);
         AppMethodBeat.o(67948);
         return true;
@@ -309,7 +311,7 @@ public class RemittanceAdapterUI
     else
     {
       setResult(0);
-      h.cl(this, paramString);
+      h.cm(this, paramString);
       finish();
       AppMethodBeat.o(67948);
       return true;
@@ -326,7 +328,7 @@ public class RemittanceAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceAdapterUI
  * JD-Core Version:    0.7.0.1
  */

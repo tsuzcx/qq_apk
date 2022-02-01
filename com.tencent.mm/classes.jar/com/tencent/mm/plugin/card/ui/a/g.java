@@ -7,67 +7,67 @@ public abstract interface g
 {
   public abstract void a(b paramb, e.a parama);
   
-  public abstract boolean bWJ();
+  public abstract boolean bXY();
   
-  public abstract boolean bXA();
+  public abstract boolean bYA();
   
-  public abstract boolean bXB();
+  public abstract boolean bYB();
   
-  public abstract boolean bXC();
+  public abstract boolean bYG();
   
-  public abstract boolean bXD();
+  public abstract boolean bYH();
   
-  public abstract boolean bXE();
+  public abstract boolean bYI();
   
-  public abstract boolean bXF();
+  public abstract boolean bYJ();
   
-  public abstract boolean bXG();
+  public abstract boolean bYK();
   
-  public abstract boolean bXH();
+  public abstract boolean bYL();
   
-  public abstract boolean bXI();
+  public abstract boolean bYM();
   
-  public abstract boolean bXJ();
+  public abstract boolean bYN();
   
-  public abstract boolean bXK();
+  public abstract boolean bYO();
   
-  public abstract boolean bXL();
+  public abstract boolean bYP();
   
-  public abstract boolean bXM();
+  public abstract boolean bYQ();
   
-  public abstract boolean bXN();
+  public abstract boolean bYR();
   
-  public abstract boolean bXO();
+  public abstract boolean bYS();
   
-  public abstract boolean bXP();
+  public abstract boolean bYT();
   
-  public abstract boolean bXQ();
+  public abstract boolean bYU();
   
-  public abstract void bXR();
+  public abstract boolean bYV();
   
-  public abstract String bXk();
+  public abstract boolean bYW();
   
-  public abstract boolean bXl();
+  public abstract boolean bYX();
   
-  public abstract boolean bXm();
+  public abstract boolean bYY();
   
-  public abstract boolean bXr();
+  public abstract boolean bYZ();
   
-  public abstract boolean bXs();
+  public abstract String bYz();
   
-  public abstract boolean bXt();
+  public abstract boolean bZa();
   
-  public abstract boolean bXu();
+  public abstract boolean bZb();
   
-  public abstract boolean bXv();
+  public abstract boolean bZc();
   
-  public abstract boolean bXw();
+  public abstract boolean bZd();
   
-  public abstract boolean bXx();
+  public abstract boolean bZe();
   
-  public abstract boolean bXy();
+  public abstract boolean bZf();
   
-  public abstract boolean bXz();
+  public abstract void bZg();
   
   public abstract void release();
 }

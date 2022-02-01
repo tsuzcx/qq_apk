@@ -3,11 +3,11 @@ package com.tencent.mm.recovery;
 public final class c
   implements android.support.v4.e.c<Integer>
 {
-  private final int[] HTC;
+  private final int[] InJ;
   
   public c(int[] paramArrayOfInt)
   {
-    this.HTC = paramArrayOfInt;
+    this.InJ = paramArrayOfInt;
   }
 }
 

@@ -4,38 +4,39 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class ac
 {
-  private static final Map<String, Integer> DBC;
+  private static final Map<String, Integer> DTz;
   
   static
   {
     AppMethodBeat.i(117657);
-    DBC = new HashMap();
+    DTz = new HashMap();
     AppMethodBeat.o(117657);
   }
   
-  private static int Wa(int paramInt)
+  private static int WH(int paramInt)
   {
     AppMethodBeat.i(117654);
     switch (paramInt)
     {
     default: 
-      paramInt = ad.We(0);
+      paramInt = ad.WL(0);
       AppMethodBeat.o(117654);
       return paramInt;
     case 201: 
-      paramInt = ad.eMb();
+      paramInt = ad.ePK();
       AppMethodBeat.o(117654);
       return paramInt;
     }
-    paramInt = ad.We(1);
+    paramInt = ad.WL(1);
     AppMethodBeat.o(117654);
     return paramInt;
   }
@@ -66,8 +67,8 @@ public final class ac
       if ((paramInt1 == 1) || (paramInt1 == 10) || (paramInt1 == 12)) {
         i = 0;
       }
-      str2 = bt.bI(paramString1, "");
-      String str3 = bt.bI(paramString2, "");
+      str2 = bu.bI(paramString1, "");
+      String str3 = bu.bI(paramString2, "");
       if (!TextUtils.isEmpty(paramString3)) {
         break label497;
       }
@@ -76,24 +77,24 @@ public final class ac
         break label504;
       }
       j = 1;
-      String str4 = bt.bI(paramString4, "");
+      String str4 = bu.bI(paramString4, "");
       l = System.currentTimeMillis();
-      String str5 = bxa();
-      String str6 = bt.bI(paramString5, "");
+      String str5 = bxT();
+      String str6 = bu.bI(paramString5, "");
       if (!TextUtils.isEmpty(paramString6)) {
         break label510;
       }
       str1 = "";
-      m = Wa(paramInt2);
+      m = WH(paramInt2);
       if (!paramBoolean3) {
         break label517;
       }
       k = 1;
       label123:
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.WebSearchActionTracer", "reporting 14904 %s ", new Object[] { v(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, str3, localObject, Integer.valueOf(paramInt3), Integer.valueOf(j), str4, Long.valueOf(l), str5, Integer.valueOf(i), str6, str1, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) }) });
-      localObject = e.ygI;
-      str1 = bt.bI(paramString1, "");
-      str2 = bt.bI(paramString2, "");
+      ae.i("MicroMsg.WebSearch.WebSearchActionTracer", "reporting 14904 %s ", new Object[] { u(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, str3, localObject, Integer.valueOf(paramInt3), Integer.valueOf(j), str4, Long.valueOf(l), str5, Integer.valueOf(i), str6, str1, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) }) });
+      localObject = e.ywz;
+      str1 = bu.bI(paramString1, "");
+      str2 = bu.bI(paramString2, "");
       paramString1 = paramString3;
       if (TextUtils.isEmpty(paramString3)) {
         paramString1 = "";
@@ -103,15 +104,15 @@ public final class ac
       }
       j = 1;
       label303:
-      paramString3 = bt.bI(paramString4, "");
+      paramString3 = bu.bI(paramString4, "");
       l = System.currentTimeMillis();
-      paramString4 = bxa();
-      paramString5 = bt.bI(paramString5, "");
+      paramString4 = bxT();
+      paramString5 = bu.bI(paramString5, "");
       paramString2 = paramString6;
       if (TextUtils.isEmpty(paramString6)) {
         paramString2 = "";
       }
-      m = Wa(paramInt2);
+      m = WH(paramInt2);
       if (!paramBoolean3) {
         break label529;
       }
@@ -198,38 +199,38 @@ public final class ac
     AppMethodBeat.o(117651);
   }
   
-  private static String bxa()
+  private static String bxT()
   {
     AppMethodBeat.i(117655);
-    Context localContext = aj.getContext();
-    if (!ay.isConnected(localContext))
+    Context localContext = ak.getContext();
+    if (!az.isConnected(localContext))
     {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, not connected");
+      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, not connected");
       AppMethodBeat.o(117655);
       return "fail";
     }
-    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, type = ".concat(String.valueOf(ay.getNetType(localContext))));
-    if (ay.is2G(localContext))
+    ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, type = ".concat(String.valueOf(az.getNetType(localContext))));
+    if (az.is2G(localContext))
     {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 2g");
+      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 2g");
       AppMethodBeat.o(117655);
       return "2g";
     }
-    if (ay.is3G(localContext))
+    if (az.is3G(localContext))
     {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 3g");
+      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 3g");
       AppMethodBeat.o(117655);
       return "3g";
     }
-    if (ay.is4G(localContext))
+    if (az.is4G(localContext))
     {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 4g");
+      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 4g");
       AppMethodBeat.o(117655);
       return "4g";
     }
-    if (ay.isWifi(localContext))
+    if (az.isWifi(localContext))
     {
-      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, wifi");
+      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, wifi");
       AppMethodBeat.o(117655);
       return "wifi";
     }
@@ -237,9 +238,9 @@ public final class ac
     return "fail";
   }
   
-  public static void eLZ() {}
+  public static void ePI() {}
   
-  private static String v(Object... paramVarArgs)
+  private static String u(Object... paramVarArgs)
   {
     AppMethodBeat.i(117656);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -257,7 +258,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ac
  * JD-Core Version:    0.7.0.1
  */

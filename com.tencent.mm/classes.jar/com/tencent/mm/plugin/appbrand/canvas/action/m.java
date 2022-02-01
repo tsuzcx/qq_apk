@@ -35,7 +35,7 @@ public final class m
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144899);
     DefaultDrawActionArg localDefaultDrawActionArg = new DefaultDrawActionArg();

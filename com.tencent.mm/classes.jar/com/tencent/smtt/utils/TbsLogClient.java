@@ -99,7 +99,7 @@ public class TbsLogClient
   {
     AppMethodBeat.i(53933);
     if (this.b != null) {
-      this.b.post(new TbsLogClient.a(this, paramString));
+      this.b.post(new a(paramString));
     }
     AppMethodBeat.o(53933);
   }
@@ -147,6 +147,26 @@ public class TbsLogClient
     catch (Exception localException)
     {
       AppMethodBeat.o(53932);
+    }
+  }
+  
+  class a
+    implements Runnable
+  {
+    String a = null;
+    
+    a(String paramString)
+    {
+      this.a = paramString;
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(54005);
+      if (TbsLogClient.this.b != null) {
+        TbsLogClient.this.b.append(this.a + "\n");
+      }
+      AppMethodBeat.o(54005);
     }
   }
 }

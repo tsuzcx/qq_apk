@@ -6,21 +6,21 @@ public abstract interface n
 {
   public abstract void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3);
   
-  public abstract void aFL(String paramString);
+  public abstract void aHf(String paramString);
   
   public abstract void addView(View paramView);
   
-  public abstract void eLU();
+  public abstract void ePD();
   
-  public abstract void fv(String paramString, int paramInt);
+  public abstract void fG(String paramString, int paramInt);
   
-  public abstract void fw(String paramString, int paramInt);
+  public abstract void fH(String paramString, int paramInt);
   
   public abstract void h(String paramString1, String paramString2, String paramString3, int paramInt);
   
   public abstract void i(String paramString1, boolean paramBoolean, String paramString2);
   
-  public abstract void kE(String paramString1, String paramString2);
+  public abstract void kL(String paramString1, String paramString2);
   
   public abstract void removeView(View paramView);
 }

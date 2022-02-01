@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class k
 {
-  private static final Map<String, WxaWidgetContext> kfk;
+  private static final Map<String, WxaWidgetContext> kiA;
   
   static
   {
     AppMethodBeat.i(121197);
-    kfk = new ConcurrentHashMap();
+    kiA = new ConcurrentHashMap();
     AppMethodBeat.o(121197);
   }
   
-  public static WxaWidgetContext OA(String paramString)
-  {
-    AppMethodBeat.i(121196);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(121196);
-      return null;
-    }
-    paramString = (WxaWidgetContext)kfk.remove(paramString);
-    AppMethodBeat.o(121196);
-    return paramString;
-  }
-  
-  public static WxaWidgetContext Oz(String paramString)
+  public static WxaWidgetContext Ph(String paramString)
   {
     AppMethodBeat.i(121195);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(121195);
       return null;
     }
-    paramString = (WxaWidgetContext)kfk.get(paramString);
+    paramString = (WxaWidgetContext)kiA.get(paramString);
     AppMethodBeat.o(121195);
+    return paramString;
+  }
+  
+  public static WxaWidgetContext Pi(String paramString)
+  {
+    AppMethodBeat.i(121196);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(121196);
+      return null;
+    }
+    paramString = (WxaWidgetContext)kiA.remove(paramString);
+    AppMethodBeat.o(121196);
     return paramString;
   }
   
   public static boolean a(String paramString, WxaWidgetContext paramWxaWidgetContext)
   {
     AppMethodBeat.i(121194);
-    if ((bt.isNullOrNil(paramString)) || (paramWxaWidgetContext == null))
+    if ((bu.isNullOrNil(paramString)) || (paramWxaWidgetContext == null))
     {
       AppMethodBeat.o(121194);
       return false;
     }
-    kfk.put(paramString, paramWxaWidgetContext);
+    kiA.put(paramString, paramWxaWidgetContext);
     AppMethodBeat.o(121194);
     return true;
   }

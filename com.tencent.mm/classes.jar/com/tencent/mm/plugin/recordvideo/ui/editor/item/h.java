@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorData;", "", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorData;", "", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "plugin-recordvideo_release"})
 public abstract interface h
 {
-  public abstract a dHT();
+  public abstract a dLk();
 }
 
 

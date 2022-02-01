@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ag;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class i
   extends j<ag>
@@ -26,11 +26,11 @@ public final class i
     this.db = parame;
   }
   
-  public final ag aEI(String paramString)
+  public final ag aGc(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(70621);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       Cursor localCursor = this.db.a("select * from WalletPrefInfo where pref_key=?", new String[] { paramString }, 2);
       if (localCursor == null)
@@ -52,10 +52,10 @@ public final class i
     return null;
   }
   
-  public final boolean aEJ(String paramString)
+  public final boolean aGd(String paramString)
   {
     AppMethodBeat.i(70622);
-    if (!bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       paramString = "delete from WalletPrefInfo where pref_key='" + paramString + "'";
       boolean bool = this.db.execSQL("WalletPrefInfo", paramString);

@@ -14,16 +14,16 @@ public class DefaultMediaMuxer
   
   public DefaultMediaMuxer(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218468);
+    AppMethodBeat.i(215108);
     this.muxer = new MediaMuxer(paramString, paramInt);
-    AppMethodBeat.o(218468);
+    AppMethodBeat.o(215108);
   }
   
   public int addTrack(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218470);
+    AppMethodBeat.i(215110);
     int i = this.muxer.addTrack(paramMediaFormat);
-    AppMethodBeat.o(218470);
+    AppMethodBeat.o(215110);
     return i;
   }
   
@@ -34,32 +34,32 @@ public class DefaultMediaMuxer
   
   public void release()
   {
-    AppMethodBeat.i(218473);
+    AppMethodBeat.i(215113);
     this.muxer.release();
-    AppMethodBeat.o(218473);
+    AppMethodBeat.o(215113);
   }
   
   public void setExportConfig(ExportConfig paramExportConfig) {}
   
   public void start()
   {
-    AppMethodBeat.i(218469);
+    AppMethodBeat.i(215109);
     this.muxer.start();
-    AppMethodBeat.o(218469);
+    AppMethodBeat.o(215109);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(218472);
+    AppMethodBeat.i(215112);
     this.muxer.stop();
-    AppMethodBeat.o(218472);
+    AppMethodBeat.o(215112);
   }
   
   public void writeSampleData(int paramInt, ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(218471);
+    AppMethodBeat.i(215111);
     this.muxer.writeSampleData(paramInt, paramByteBuffer, paramBufferInfo);
-    AppMethodBeat.o(218471);
+    AppMethodBeat.o(215111);
   }
 }
 

@@ -15,37 +15,37 @@ import com.tencent.mm.plugin.fts.ui.n;
 public final class a
   extends com.tencent.mm.plugin.fts.a.d.a.a
 {
-  public CharSequence tAx;
-  private b tAy;
-  private a tAz;
+  public CharSequence tLo;
+  private b tLp;
+  private a tLq;
   
   public a(int paramInt)
   {
     super(7, paramInt);
     AppMethodBeat.i(112054);
-    this.tAy = new b();
-    this.tAz = new a();
+    this.tLp = new b();
+    this.tLq = new a();
     AppMethodBeat.o(112054);
   }
   
   public final void a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112055);
-    this.tAx = com.tencent.mm.plugin.fts.a.f.a(paramContext.getResources().getString(2131759676), "", e.c(this.tun.tuL, this.tun.tuL)).tuE;
+    this.tLo = com.tencent.mm.plugin.fts.a.f.a(paramContext.getResources().getString(2131759676), "", e.c(this.tFe.tFC, this.tFe.tFC)).tFv;
     AppMethodBeat.o(112055);
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b agC()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b agQ()
   {
-    return this.tAy;
+    return this.tLp;
   }
   
   public final class a
     extends com.tencent.mm.plugin.fts.a.d.a.a.a
   {
     public View contentView;
-    public ImageView lZa;
-    public TextView tAA;
+    public ImageView mdt;
+    public TextView tLr;
     
     public a()
     {
@@ -66,8 +66,8 @@ public final class a
       AppMethodBeat.i(112052);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494219, paramViewGroup, false);
       paramViewGroup = new a.a(a.this);
-      paramViewGroup.lZa = ((ImageView)paramContext.findViewById(2131300891));
-      paramViewGroup.tAA = ((TextView)paramContext.findViewById(2131305880));
+      paramViewGroup.mdt = ((ImageView)paramContext.findViewById(2131300891));
+      paramViewGroup.tLr = ((TextView)paramContext.findViewById(2131305880));
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112052);
@@ -78,9 +78,9 @@ public final class a
     {
       AppMethodBeat.i(112053);
       paramContext = (a.a)parama;
-      n.q(paramContext.contentView, a.this.tvU);
-      n.a(a.this.tAx, paramContext.tAA);
-      paramContext.lZa.setImageResource(2131691130);
+      n.q(paramContext.contentView, a.this.tGL);
+      n.a(a.this.tLo, paramContext.tLr);
+      paramContext.mdt.setImageResource(2131691130);
       AppMethodBeat.o(112053);
     }
     
@@ -92,7 +92,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

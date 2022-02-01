@@ -5,20 +5,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Map;
 import java.util.WeakHashMap;
 
 public final class c
 {
-  private static final Map<View, Class<? extends com.tencent.mm.sdk.b.b>> wuT;
-  private static final Map<View, Boolean> wuU;
+  private static final Map<View, Class<? extends com.tencent.mm.sdk.b.b>> wKD;
+  private static final Map<View, Boolean> wKE;
   
   static
   {
     AppMethodBeat.i(149088);
-    wuT = new WeakHashMap();
-    wuU = new WeakHashMap();
+    wKD = new WeakHashMap();
+    wKE = new WeakHashMap();
     AppMethodBeat.o(149088);
   }
   
@@ -37,11 +37,11 @@ public final class c
       AppMethodBeat.o(149087);
       throw paramView;
     }
-    Object localObject2 = h.b(paramView, "getListenerInfo", null, new Object[0]);
+    Object localObject2 = i.b(paramView, "getListenerInfo", null, new Object[0]);
     if (localObject2 != null)
     {
-      ??? = (View.OnTouchListener)h.d(localObject2, "mOnTouchListener");
-      localObject2 = (View.OnClickListener)h.d(localObject2, "mOnClickListener");
+      ??? = (View.OnTouchListener)i.d(localObject2, "mOnTouchListener");
+      localObject2 = (View.OnClickListener)i.d(localObject2, "mOnClickListener");
     }
     for (;;)
     {
@@ -53,11 +53,11 @@ public final class c
         if (localObject2 == null) {
           paramView.setOnClickListener(new a(null));
         }
-        synchronized (wuT)
+        synchronized (wKD)
         {
           do
           {
-            wuT.put(paramView, paramClass);
+            wKD.put(paramView, paramClass);
             AppMethodBeat.o(149087);
             return;
             if ((??? instanceof b)) {
@@ -77,11 +77,11 @@ public final class c
   static final class a
     implements View.OnClickListener
   {
-    private final View.OnClickListener wuV;
+    private final View.OnClickListener wKF;
     
     a(View.OnClickListener paramOnClickListener)
     {
-      this.wuV = paramOnClickListener;
+      this.wKF = paramOnClickListener;
     }
     
     public final void onClick(View paramView)
@@ -89,13 +89,13 @@ public final class c
       AppMethodBeat.i(149085);
       ??? = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)???).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)???).ahq());
-      synchronized (c.wuT)
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)???).ahF());
+      synchronized (c.wKD)
       {
-        if (!c.wuT.containsKey(paramView))
+        if (!c.wKD.containsKey(paramView))
         {
-          if (this.wuV != null) {
-            this.wuV.onClick(paramView);
+          if (this.wKF != null) {
+            this.wKF.onClick(paramView);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(149085);
@@ -104,17 +104,17 @@ public final class c
       }
       for (;;)
       {
-        synchronized (c.aaT())
+        synchronized (c.abc())
         {
           for (;;)
           {
-            if (!c.aaT().containsKey(paramView))
+            if (!c.abc().containsKey(paramView))
             {
-              Class localClass = (Class)c.wuT.get(paramView);
+              Class localClass = (Class)c.wKD.get(paramView);
               if (localClass != null) {}
               try
               {
-                com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localClass.newInstance());
+                com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localClass.newInstance());
                 break;
                 paramView = finally;
                 AppMethodBeat.o(149085);
@@ -124,13 +124,13 @@ public final class c
               {
                 for (;;)
                 {
-                  ad.printErrStackTrace("MicroMsg.CBCH", localThrowable, "failure to instantiate event class: " + localClass.getName(), new Object[0]);
+                  ae.printErrStackTrace("MicroMsg.CBCH", localThrowable, "failure to instantiate event class: " + localClass.getName(), new Object[0]);
                 }
               }
             }
           }
         }
-        c.aaT().remove(paramView);
+        c.abc().remove(paramView);
       }
     }
   }
@@ -138,11 +138,11 @@ public final class c
   static final class b
     implements View.OnTouchListener
   {
-    private final View.OnTouchListener wuW;
+    private final View.OnTouchListener wKG;
     
     b(View.OnTouchListener paramOnTouchListener)
     {
-      this.wuW = paramOnTouchListener;
+      this.wKG = paramOnTouchListener;
     }
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -151,25 +151,25 @@ public final class c
       ??? = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)???).bd(paramView);
       ((com.tencent.mm.hellhoundlib.b.b)???).bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)???).ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)???).ahF());
       for (;;)
       {
-        synchronized (c.wuT)
+        synchronized (c.wKD)
         {
-          if (!c.wuT.containsKey(paramView))
+          if (!c.wKD.containsKey(paramView))
           {
-            if (this.wuW == null) {
+            if (this.wKG == null) {
               break;
             }
-            boolean bool = this.wuW.onTouch(paramView, paramMotionEvent);
+            boolean bool = this.wKG.onTouch(paramView, paramMotionEvent);
             com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(149086);
             return bool;
           }
         }
-        synchronized (c.aaT())
+        synchronized (c.abc())
         {
-          c.aaT().put(paramView, Boolean.TRUE);
+          c.abc().put(paramView, Boolean.TRUE);
           continue;
           paramView = finally;
           AppMethodBeat.o(149086);

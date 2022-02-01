@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.recharge.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.protocal.protobuf.cim;
-import com.tencent.mm.protocal.protobuf.cin;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cjg;
+import com.tencent.mm.protocal.protobuf.cjh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -24,25 +24,25 @@ public final class f
   implements k
 {
   public String appId;
-  private com.tencent.mm.al.f callback;
+  private com.tencent.mm.ak.f callback;
   public int cmdId;
   public String desc;
   public int errCode;
   public String errMsg;
-  public String jmL;
+  public String jpF;
   private b rr;
-  public com.tencent.mm.plugin.wallet.a.e xnA;
-  public com.tencent.mm.plugin.wallet.a.e xnB;
-  public p xnC;
-  public List<a> xnD;
-  public boolean xnE;
-  public boolean xnt;
-  public int xnu;
-  public ArrayList<com.tencent.mm.plugin.wallet.a.q> xnv;
-  public ArrayList<com.tencent.mm.plugin.wallet.a.q> xnw;
-  public com.tencent.mm.plugin.wallet.a.e xnx;
-  public com.tencent.mm.plugin.wallet.a.e xny;
-  public com.tencent.mm.plugin.wallet.a.e xnz;
+  public List<a> xDA;
+  public boolean xDB;
+  public boolean xDq;
+  public int xDr;
+  public ArrayList<com.tencent.mm.plugin.wallet.a.q> xDs;
+  public ArrayList<com.tencent.mm.plugin.wallet.a.q> xDt;
+  public com.tencent.mm.plugin.wallet.a.e xDu;
+  public com.tencent.mm.plugin.wallet.a.e xDv;
+  public com.tencent.mm.plugin.wallet.a.e xDw;
+  public com.tencent.mm.plugin.wallet.a.e xDx;
+  public com.tencent.mm.plugin.wallet.a.e xDy;
+  public p xDz;
   
   public f(String paramString)
   {
@@ -52,35 +52,35 @@ public final class f
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(67110);
-    this.jmL = "";
+    this.jpF = "";
     this.appId = "";
-    this.xnt = false;
+    this.xDq = false;
     this.desc = "";
     this.errCode = 0;
     this.errMsg = "";
-    this.xnE = false;
-    this.jmL = paramString;
+    this.xDB = false;
+    this.jpF = paramString;
     paramString = new b.a();
-    paramString.hNM = new cim();
-    paramString.hNN = new cin();
+    paramString.hQF = new cjg();
+    paramString.hQG = new cjh();
     paramString.uri = "/cgi-bin/mmpay-bin/paychargeproxy";
     paramString.funcId = 1571;
-    paramString.hNO = 0;
+    paramString.hQH = 0;
     paramString.respCmdId = 0;
-    this.rr = paramString.aDC();
-    paramString = (cim)this.rr.hNK.hNQ;
-    paramString.FYU = paramInt;
+    this.rr = paramString.aDS();
+    paramString = (cjg)this.rr.hQD.hQJ;
+    paramString.Gru = paramInt;
     this.cmdId = paramInt;
-    ad.i("MicroMsg.NetScenePayChargeProxy", "cmdId: %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!bt.isNullOrNil(this.jmL))
+    ae.i("MicroMsg.NetScenePayChargeProxy", "cmdId: %d", new Object[] { Integer.valueOf(paramInt) });
+    if (!bu.isNullOrNil(this.jpF))
     {
-      ad.i("MicroMsg.NetScenePayChargeProxy", "hy: requesting phone num: %s", new Object[] { this.jmL });
-      paramString.Hct = String.format("phone=%s", new Object[] { this.jmL });
+      ae.i("MicroMsg.NetScenePayChargeProxy", "hy: requesting phone num: %s", new Object[] { this.jpF });
+      paramString.HvT = String.format("phone=%s", new Object[] { this.jpF });
     }
     AppMethodBeat.o(67110);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(67111);
     this.callback = paramf;
@@ -97,31 +97,31 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(67112);
-    ad.i("MicroMsg.NetScenePayChargeProxy", "hy: NetScenePayChargeProxy end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetScenePayChargeProxy", "hy: NetScenePayChargeProxy end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.errCode = paramInt3;
     Object localObject1;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (cin)((b)paramq).hNL.hNQ;
+      paramq = (cjh)((b)paramq).hQE.hQJ;
       Object localObject2;
       try
       {
-        paramq = new JSONObject(paramq.Hcu);
-        ad.d("MicroMsg.NetScenePayChargeProxy", "tofutest: json: %s", new Object[] { paramq.toString() });
+        paramq = new JSONObject(paramq.HvU);
+        ae.d("MicroMsg.NetScenePayChargeProxy", "tofutest: json: %s", new Object[] { paramq.toString() });
         this.appId = paramq.optString("appId");
         this.errCode = paramq.optInt("errCode", -1);
-        this.errMsg = paramq.optString("errMsg", aj.getContext().getString(2131765337));
+        this.errMsg = paramq.optString("errMsg", ak.getContext().getString(2131765337));
         if (this.errCode < 0) {}
-        for (this.xnt = true;; this.xnt = false)
+        for (this.xDq = true;; this.xDq = false)
         {
           this.desc = paramq.optString("desc");
-          this.xnu = paramq.optInt("userTag", 0);
+          this.xDr = paramq.optInt("userTag", 0);
           paramArrayOfByte = paramq.optJSONArray("productList");
           if (paramArrayOfByte == null) {
             break label553;
           }
-          this.xnv = new ArrayList();
-          this.xnw = new ArrayList();
+          this.xDs = new ArrayList();
+          this.xDt = new ArrayList();
           paramInt1 = 0;
           if (paramInt1 >= paramArrayOfByte.length()) {
             break label563;
@@ -134,37 +134,37 @@ public final class f
           ((com.tencent.mm.plugin.wallet.a.q)localObject2).status = ((JSONObject)localObject1).optInt("status", 0);
           ((com.tencent.mm.plugin.wallet.a.q)localObject2).url = ((JSONObject)localObject1).optString("url", "");
           ((com.tencent.mm.plugin.wallet.a.q)localObject2).type = ((JSONObject)localObject1).optInt("type");
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHx = ((JSONObject)localObject1).optString("typeName");
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHz = ((JSONObject)localObject1).optString("isColor", "0");
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHA = ((JSONObject)localObject1).optString("colorCode", "0");
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHB = ((JSONObject)localObject1).optInt("isReConfirm", 0);
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CGS = ((JSONObject)localObject1).optString("weappID");
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).hDs = ((JSONObject)localObject1).optString("weappPath");
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHC = ((JSONObject)localObject1).optInt("isRecommend", 0);
-          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHD = ((JSONObject)localObject1).optString("recommendId", "");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZd = ((JSONObject)localObject1).optString("typeName");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZf = ((JSONObject)localObject1).optString("isColor", "0");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZg = ((JSONObject)localObject1).optString("colorCode", "0");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZh = ((JSONObject)localObject1).optInt("isReConfirm", 0);
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CYy = ((JSONObject)localObject1).optString("weappID");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).hGk = ((JSONObject)localObject1).optString("weappPath");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZi = ((JSONObject)localObject1).optInt("isRecommend", 0);
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZj = ((JSONObject)localObject1).optString("recommendId", "");
           if (((com.tencent.mm.plugin.wallet.a.q)localObject2).type != 1) {
             break;
           }
-          this.xnv.add(localObject2);
+          this.xDs.add(localObject2);
           break label1551;
         }
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
       catch (Exception paramq)
       {
-        ad.e("MicroMsg.NetScenePayChargeProxy", "hy: exception occurred when parsing json: %s", new Object[] { paramq.toString() });
-        this.xnt = true;
-        this.errMsg = aj.getContext().getString(2131765337);
+        ae.e("MicroMsg.NetScenePayChargeProxy", "hy: exception occurred when parsing json: %s", new Object[] { paramq.toString() });
+        this.xDq = true;
+        this.errMsg = ak.getContext().getString(2131765337);
       }
       label507:
       AppMethodBeat.o(67112);
       return;
-      ((com.tencent.mm.plugin.wallet.a.q)localObject2).CHy = ((JSONObject)localObject1).optString("productAttr");
-      this.xnw.add(localObject2);
+      ((com.tencent.mm.plugin.wallet.a.q)localObject2).CZe = ((JSONObject)localObject1).optString("productAttr");
+      this.xDt.add(localObject2);
       break label1551;
       label553:
-      this.xnv = null;
-      this.xnw = null;
+      this.xDs = null;
+      this.xDt = null;
       label563:
       Object localObject3 = paramq.optJSONObject("weSim");
       if (localObject3 != null)
@@ -173,10 +173,10 @@ public final class f
         localObject1 = ((JSONObject)localObject3).optString("name");
         localObject2 = ((JSONObject)localObject3).optString("weappID");
         localObject3 = ((JSONObject)localObject3).optString("weappPath");
-        if (bt.isNullOrNil((String)localObject1))
+        if (bu.isNullOrNil((String)localObject1))
         {
-          ad.w("MicroMsg.NetScenePayChargeProxy", "tf: weSim is missing");
-          this.xnA = null;
+          ae.w("MicroMsg.NetScenePayChargeProxy", "tf: weSim is missing");
+          this.xDx = null;
         }
       }
       else
@@ -189,12 +189,12 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("name");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bt.isNullOrNil((String)localObject1)) {
+          if (!bu.isNullOrNil((String)localObject1)) {
             break label1163;
           }
-          ad.w("MicroMsg.NetScenePayChargeProxy", "hy: remind unicom unnecessary element missing");
+          ae.w("MicroMsg.NetScenePayChargeProxy", "hy: remind unicom unnecessary element missing");
         }
-        this.xnx = null;
+        this.xDu = null;
         label715:
         localObject3 = paramq.optJSONObject("wxCard");
         if (localObject3 != null)
@@ -203,12 +203,12 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("name");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bt.isNullOrNil((String)localObject1)) {
+          if (!bu.isNullOrNil((String)localObject1)) {
             break label1213;
           }
-          ad.w("MicroMsg.NetScenePayChargeProxy", "hy: phone card necessary element missing");
+          ae.w("MicroMsg.NetScenePayChargeProxy", "hy: phone card necessary element missing");
         }
-        this.xny = null;
+        this.xDv = null;
         label791:
         localObject3 = paramq.optJSONObject("wxWt");
         if (localObject3 != null)
@@ -217,23 +217,23 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("name");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bt.isNullOrNil((String)localObject1)) {
+          if (!bu.isNullOrNil((String)localObject1)) {
             break label1263;
           }
-          ad.w("MicroMsg.NetScenePayChargeProxy", "hy: phone hall necessary element missing");
+          ae.w("MicroMsg.NetScenePayChargeProxy", "hy: phone hall necessary element missing");
         }
-        this.xnz = null;
+        this.xDw = null;
         label867:
         paramArrayOfByte = paramq.optJSONObject("banner");
         if (paramArrayOfByte == null) {
           break label1313;
         }
-        this.xnC = new p();
-        this.xnC.id = paramArrayOfByte.getInt("id");
-        this.xnC.name = paramArrayOfByte.optString("name");
-        this.xnC.url = paramArrayOfByte.optString("url");
-        this.xnC.CGS = paramArrayOfByte.optString("weappID");
-        this.xnC.hDs = paramArrayOfByte.optString("weappPath");
+        this.xDz = new p();
+        this.xDz.id = paramArrayOfByte.getInt("id");
+        this.xDz.name = paramArrayOfByte.optString("name");
+        this.xDz.url = paramArrayOfByte.optString("url");
+        this.xDz.CYy = paramArrayOfByte.optString("weappID");
+        this.xDz.hGk = paramArrayOfByte.optString("weappPath");
         label968:
         localObject3 = paramq.optJSONObject("headEnter");
         if (localObject3 != null)
@@ -242,12 +242,12 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("url");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bt.isNullOrNil(paramArrayOfByte)) {
+          if (!bu.isNullOrNil(paramArrayOfByte)) {
             break label1321;
           }
-          ad.w("MicroMsg.NetScenePayChargeProxy", "tf: headEnter is missing");
+          ae.w("MicroMsg.NetScenePayChargeProxy", "tf: headEnter is missing");
         }
-        this.xnB = null;
+        this.xDy = null;
       }
       for (;;)
       {
@@ -255,54 +255,54 @@ public final class f
         if (paramq == null) {
           break label1494;
         }
-        if (bt.isNullOrNil(this.jmL)) {
-          this.xnE = true;
+        if (bu.isNullOrNil(this.jpF)) {
+          this.xDB = true;
         }
         if (paramq.length() > 0) {
           break label1371;
         }
-        ad.w("MicroMsg.NetScenePayChargeProxy", "number length is short! %s", new Object[] { Integer.valueOf(paramq.length()) });
-        this.xnD = null;
+        ae.w("MicroMsg.NetScenePayChargeProxy", "number length is short! %s", new Object[] { Integer.valueOf(paramq.length()) });
+        this.xDA = null;
         break;
-        this.xnA = new com.tencent.mm.plugin.wallet.a.e();
-        this.xnA.url = paramArrayOfByte;
-        this.xnA.name = ((String)localObject1);
-        this.xnA.CGS = ((String)localObject2);
-        this.xnA.hDs = ((String)localObject3);
+        this.xDx = new com.tencent.mm.plugin.wallet.a.e();
+        this.xDx.url = paramArrayOfByte;
+        this.xDx.name = ((String)localObject1);
+        this.xDx.CYy = ((String)localObject2);
+        this.xDx.hGk = ((String)localObject3);
         break label639;
         label1163:
-        this.xnx = new com.tencent.mm.plugin.wallet.a.e();
-        this.xnx.url = paramArrayOfByte;
-        this.xnx.name = ((String)localObject1);
-        this.xnx.CGS = ((String)localObject2);
-        this.xnx.hDs = ((String)localObject3);
+        this.xDu = new com.tencent.mm.plugin.wallet.a.e();
+        this.xDu.url = paramArrayOfByte;
+        this.xDu.name = ((String)localObject1);
+        this.xDu.CYy = ((String)localObject2);
+        this.xDu.hGk = ((String)localObject3);
         break label715;
         label1213:
-        this.xny = new com.tencent.mm.plugin.wallet.a.e();
-        this.xny.url = paramArrayOfByte;
-        this.xny.name = ((String)localObject1);
-        this.xny.CGS = ((String)localObject2);
-        this.xny.hDs = ((String)localObject3);
+        this.xDv = new com.tencent.mm.plugin.wallet.a.e();
+        this.xDv.url = paramArrayOfByte;
+        this.xDv.name = ((String)localObject1);
+        this.xDv.CYy = ((String)localObject2);
+        this.xDv.hGk = ((String)localObject3);
         break label791;
         label1263:
-        this.xnz = new com.tencent.mm.plugin.wallet.a.e();
-        this.xnz.url = paramArrayOfByte;
-        this.xnz.name = ((String)localObject1);
-        this.xnz.CGS = ((String)localObject2);
-        this.xnz.hDs = ((String)localObject3);
+        this.xDw = new com.tencent.mm.plugin.wallet.a.e();
+        this.xDw.url = paramArrayOfByte;
+        this.xDw.name = ((String)localObject1);
+        this.xDw.CYy = ((String)localObject2);
+        this.xDw.hGk = ((String)localObject3);
         break label867;
         label1313:
-        this.xnC = null;
+        this.xDz = null;
         break label968;
         label1321:
-        this.xnB = new com.tencent.mm.plugin.wallet.a.e();
-        this.xnB.name = paramArrayOfByte;
-        this.xnB.url = ((String)localObject1);
-        this.xnB.CGS = ((String)localObject2);
-        this.xnB.hDs = ((String)localObject3);
+        this.xDy = new com.tencent.mm.plugin.wallet.a.e();
+        this.xDy.name = paramArrayOfByte;
+        this.xDy.url = ((String)localObject1);
+        this.xDy.CYy = ((String)localObject2);
+        this.xDy.hGk = ((String)localObject3);
       }
       label1371:
-      this.xnD = new ArrayList();
+      this.xDA = new ArrayList();
       paramInt1 = 0;
     }
     for (;;)
@@ -314,25 +314,25 @@ public final class f
         {
           paramArrayOfByte = ((JSONObject)localObject1).optString("number");
           localObject1 = ((JSONObject)localObject1).optString("desc");
-          if (!bt.isNullOrNil(paramArrayOfByte))
+          if (!bu.isNullOrNil(paramArrayOfByte))
           {
             paramArrayOfByte = new a(paramArrayOfByte, "", (String)localObject1, 2);
-            this.xnD.add(paramArrayOfByte);
+            this.xDA.add(paramArrayOfByte);
           }
         }
       }
       else
       {
-        ad.i("MicroMsg.NetScenePayChargeProxy", "number list: %s", new Object[] { Integer.valueOf(this.xnD.size()) });
+        ae.i("MicroMsg.NetScenePayChargeProxy", "number list: %s", new Object[] { Integer.valueOf(this.xDA.size()) });
         break label507;
         label1494:
-        this.xnD = null;
-        ad.w("MicroMsg.NetScenePayChargeProxy", "empty numberList");
+        this.xDA = null;
+        ae.w("MicroMsg.NetScenePayChargeProxy", "empty numberList");
         break label507;
-        this.xnt = true;
+        this.xDq = true;
         paramq = paramString;
-        if (bt.isNullOrNil(paramString)) {
-          paramq = aj.getContext().getString(2131765224);
+        if (bu.isNullOrNil(paramString)) {
+          paramq = ak.getContext().getString(2131765224);
         }
         this.errMsg = paramq;
         paramString = paramq;
@@ -347,7 +347,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.f
  * JD-Core Version:    0.7.0.1
  */

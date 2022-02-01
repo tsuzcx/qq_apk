@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.music.b;
 
 public abstract interface c
 {
-  public abstract void afY(String paramString);
+  public abstract void agU(String paramString);
   
-  public abstract void arJ(String paramString);
+  public abstract void asW(String paramString);
   
-  public abstract void gc(String paramString);
+  public abstract void gi(String paramString);
   
   public abstract void onError(String paramString);
   
@@ -14,7 +14,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public abstract interface c
   
   public static final class a
   {
-    public static c viz;
+    public static c vuE;
   }
 }
 

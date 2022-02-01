@@ -1,36 +1,36 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class c$b$a
 {
-  public ArrayList<String> cRb;
+  public ArrayList<String> cRL;
   
-  public static a ez(String paramString)
+  public static a eE(String paramString)
   {
     AppMethodBeat.i(116356);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(116356);
       return null;
     }
     locala = new a();
-    ad.d("MicroMsg.BizInfo", "BizAcctTransferInfo is [%s]", new Object[] { paramString });
+    ae.d("MicroMsg.BizInfo", "BizAcctTransferInfo is [%s]", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString).optJSONArray("origin_name_list");
       if (paramString != null)
       {
-        locala.cRb = new ArrayList();
+        locala.cRL = new ArrayList();
         int i = 0;
         while (i < paramString.length())
         {
-          locala.cRb.add(paramString.optString(i));
+          locala.cRL.add(paramString.optString(i));
           i += 1;
         }
       }
@@ -38,7 +38,7 @@ public final class c$b$a
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.n(paramString) });
+      ae.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bu.o(paramString) });
       AppMethodBeat.o(116356);
     }
   }

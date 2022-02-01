@@ -4,7 +4,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.a.a;
 import com.tencent.mm.ui.contact.a.a.b;
@@ -13,10 +13,10 @@ import junit.framework.Assert;
 public abstract class p
   extends BaseAdapter
 {
-  private SparseArray<a> InK;
-  public n KmO;
-  boolean KmP;
-  boolean KmQ;
+  private SparseArray<a> IHV;
+  public n KJi;
+  boolean KJj;
+  boolean KJk;
   protected int scene;
   
   public p(n paramn, boolean paramBoolean, int paramInt)
@@ -26,36 +26,36 @@ public abstract class p
   
   public p(n paramn, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this.KmO = paramn;
-    this.KmP = paramBoolean1;
-    this.InK = new SparseArray();
+    this.KJi = paramn;
+    this.KJj = paramBoolean1;
+    this.IHV = new SparseArray();
     this.scene = paramInt;
-    this.KmQ = paramBoolean2;
+    this.KJk = paramBoolean2;
   }
   
-  public final a aen(int paramInt)
+  public final a aeW(int paramInt)
   {
-    if (this.InK.indexOfKey(paramInt) >= 0) {
-      return (a)this.InK.get(paramInt);
+    if (this.IHV.indexOfKey(paramInt) >= 0) {
+      return (a)this.IHV.get(paramInt);
     }
     if ((paramInt >= 0) && (paramInt < getCount()))
     {
-      a locala = rh(paramInt);
+      a locala = rk(paramInt);
       if (locala != null)
       {
-        locala.nXU = c(locala);
-        this.InK.put(paramInt, locala);
-        ad.d("MicroMsg.MMSelectContactAdapter", "put item to cache viewType=%d|position=%d", new Object[] { Integer.valueOf(locala.oIb), Integer.valueOf(paramInt) });
+        locala.odD = c(locala);
+        this.IHV.put(paramInt, locala);
+        ae.d("MicroMsg.MMSelectContactAdapter", "put item to cache viewType=%d|position=%d", new Object[] { Integer.valueOf(locala.oOD), Integer.valueOf(paramInt) });
         return locala;
       }
-      ad.e("MicroMsg.MMSelectContactAdapter", "createDataItem Occur error !!!!!!!!! position = %d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.MMSelectContactAdapter", "createDataItem Occur error !!!!!!!!! position = %d", new Object[] { Integer.valueOf(paramInt) });
       return locala;
     }
-    ad.e("MicroMsg.MMSelectContactAdapter", "getItem Occur error !!!!!!!!! position = %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.e("MicroMsg.MMSelectContactAdapter", "getItem Occur error !!!!!!!!! position = %d", new Object[] { Integer.valueOf(paramInt) });
     return null;
   }
   
-  public boolean aeo(int paramInt)
+  public boolean aeX(int paramInt)
   {
     return false;
   }
@@ -67,17 +67,17 @@ public abstract class p
   
   public final void clearCache()
   {
-    if (this.InK != null) {
-      this.InK.clear();
+    if (this.IHV != null) {
+      this.IHV.clear();
     }
   }
   
-  public boolean dQK()
+  public boolean dUh()
   {
-    return this.KmP;
+    return this.KJj;
   }
   
-  public int fHH()
+  public int fLZ()
   {
     return 0;
   }
@@ -94,29 +94,29 @@ public abstract class p
   
   public int getItemViewType(int paramInt)
   {
-    if (aen(paramInt) != null) {
-      return aen(paramInt).oIb;
+    if (aeW(paramInt) != null) {
+      return aeW(paramInt).oOD;
     }
-    ad.e("MicroMsg.MMSelectContactAdapter", "getItemViewType: get data item fail, return unkown Type, totalCount=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
+    ae.e("MicroMsg.MMSelectContactAdapter", "getItemViewType: get data item fail, return unkown Type, totalCount=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return -1;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    a locala = aen(paramInt);
+    a locala = aeW(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = locala.aRs().a(this.KmO.getActivity(), paramViewGroup);
+      localView = locala.aRR().a(this.KJi.getActivity(), paramViewGroup);
     }
     paramView = (a.a)localView.getTag();
     Assert.assertNotNull(paramView);
-    if (!locala.KqF)
+    if (!locala.KMZ)
     {
-      locala.a(this.KmO.getActivity(), paramView);
-      locala.KqF = true;
+      locala.a(this.KJi.getActivity(), paramView);
+      locala.KMZ = true;
     }
-    locala.KmP = dQK();
-    locala.aRs().a(this.KmO.getActivity(), paramView, locala, this.KmO.b(locala), this.KmO.a(locala));
+    locala.KJj = dUh();
+    locala.aRR().a(this.KJi.getActivity(), paramView, locala, this.KJi.b(locala), this.KJi.a(locala));
     return localView;
   }
   
@@ -125,11 +125,11 @@ public abstract class p
     return 8;
   }
   
-  protected abstract a rh(int paramInt);
+  protected abstract a rk(int paramInt);
   
-  public final void yn(boolean paramBoolean)
+  public final void yA(boolean paramBoolean)
   {
-    this.KmP = paramBoolean;
+    this.KJj = paramBoolean;
     notifyDataSetChanged();
   }
 }

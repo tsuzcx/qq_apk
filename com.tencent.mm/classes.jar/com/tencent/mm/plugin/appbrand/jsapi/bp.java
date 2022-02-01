@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class bp
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 201;
   public static final String NAME = "openUrl";

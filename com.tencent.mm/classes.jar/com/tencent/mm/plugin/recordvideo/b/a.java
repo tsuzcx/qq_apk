@@ -11,60 +11,60 @@ import d.l;
 import d.n.n;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/config/AppCameraContainerProcess;", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "recordVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "previewPlugin", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "videoPath", "", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;Ljava/lang/String;)V", "getPreviewPlugin", "()Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "setPreviewPlugin", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;)V", "getRecordVideoTransPara", "()Lcom/tencent/mm/modelcontrol/VideoTransPara;", "setRecordVideoTransPara", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;)V", "getVideoPath", "()Ljava/lang/String;", "setVideoPath", "(Ljava/lang/String;)V", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getContext", "Landroid/content/Context;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getRecordScene", "", "getResolutionLimit", "getVideoTransPara", "useCpuCrop", "", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/config/AppCameraContainerProcess;", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "recordVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "previewPlugin", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "videoPath", "", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;Ljava/lang/String;)V", "getPreviewPlugin", "()Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "setPreviewPlugin", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;)V", "getRecordVideoTransPara", "()Lcom/tencent/mm/modelcontrol/VideoTransPara;", "setRecordVideoTransPara", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;)V", "getVideoPath", "()Ljava/lang/String;", "setVideoPath", "(Ljava/lang/String;)V", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getContext", "Landroid/content/Context;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getRecordScene", "", "getResolutionLimit", "getVideoTransPara", "useCpuCrop", "", "Companion", "plugin-recordvideo_release"})
 public final class a
   implements com.tencent.mm.media.widget.camerarecordview.d.a
 {
-  public static final a.a xwH;
-  private CameraPreviewGLSurfaceView sNu;
+  public static final a.a xME;
+  private CameraPreviewGLSurfaceView sYF;
   public String videoPath;
-  public VideoTransPara xwG;
+  public VideoTransPara xMD;
   
   static
   {
     AppMethodBeat.i(75350);
-    xwH = new a.a((byte)0);
+    xME = new a.a((byte)0);
     AppMethodBeat.o(75350);
   }
   
   public a(VideoTransPara paramVideoTransPara, CameraPreviewGLSurfaceView paramCameraPreviewGLSurfaceView, String paramString)
   {
     AppMethodBeat.i(75349);
-    this.xwG = paramVideoTransPara;
-    this.sNu = paramCameraPreviewGLSurfaceView;
+    this.xMD = paramVideoTransPara;
+    this.sYF = paramCameraPreviewGLSurfaceView;
     this.videoPath = paramString;
     AppMethodBeat.o(75349);
   }
   
-  public final boolean Pf()
+  public final boolean Pd()
   {
     return false;
   }
   
-  public final boolean axJ()
+  public final boolean axY()
   {
     return false;
   }
   
-  public final boolean axK()
+  public final boolean axZ()
   {
     return false;
   }
   
-  public final boolean axL()
+  public final boolean aya()
   {
     return false;
   }
   
   public final e getCameraPreviewView()
   {
-    return (e)this.sNu;
+    return (e)this.sYF;
   }
   
   public final Context getContext()
   {
     AppMethodBeat.i(75348);
-    Context localContext = this.sNu.getContext();
+    Context localContext = this.sYF.getContext();
     p.g(localContext, "previewPlugin.context");
     AppMethodBeat.o(75348);
     return localContext;
@@ -111,12 +111,12 @@ public final class a
     AppMethodBeat.i(75346);
     if (g.isInit())
     {
-      g localg = g.xxu;
-      i = g.dFw();
+      g localg = g.xNr;
+      i = g.dIN();
       AppMethodBeat.o(75346);
       return i;
     }
-    int i = this.xwG.width;
+    int i = this.xMD.width;
     AppMethodBeat.o(75346);
     return i;
   }
@@ -126,38 +126,30 @@ public final class a
     AppMethodBeat.i(75345);
     if (g.isInit())
     {
-      localObject = g.xxu;
-      localObject = g.dFu();
-      if ((localObject != null) && ((((VideoTransPara)localObject).width != this.xwG.width) || (((VideoTransPara)localObject).height != this.xwG.height)))
+      localObject = g.xNr;
+      localObject = g.dIL();
+      if ((localObject != null) && ((((VideoTransPara)localObject).width != this.xMD.width) || (((VideoTransPara)localObject).height != this.xMD.height)))
       {
-        this.xwG.width = ((VideoTransPara)localObject).width;
-        this.xwG.height = ((VideoTransPara)localObject).height;
+        this.xMD.width = ((VideoTransPara)localObject).width;
+        this.xMD.height = ((VideoTransPara)localObject).height;
       }
     }
-    Object localObject = this.xwG;
+    Object localObject = this.xMD;
     AppMethodBeat.o(75345);
     return localObject;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/recordvideo/config/AppCameraContainerProcess$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/recordvideo/config/AppCameraContainerProcess$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-recordvideo_release"})
   public static final class b
     implements com.tencent.mm.media.widget.camerarecordview.b.a
   {
-    public final String axA()
-    {
-      AppMethodBeat.i(75344);
-      String str = (String)n.b((CharSequence)this.xwI.videoPath, new String[] { "." }).get(0) + "_thumb.jpg";
-      AppMethodBeat.o(75344);
-      return str;
-    }
-    
-    public final int axz()
+    public final int axO()
     {
       AppMethodBeat.i(75343);
       if (g.isInit())
       {
-        g localg = g.xxu;
-        int i = g.dFv();
+        g localg = g.xNr;
+        int i = g.dIM();
         AppMethodBeat.o(75343);
         return i;
       }
@@ -165,9 +157,17 @@ public final class a
       return 2;
     }
     
+    public final String axP()
+    {
+      AppMethodBeat.i(75344);
+      String str = (String)n.b((CharSequence)this.xMF.videoPath, new String[] { "." }).get(0) + "_thumb.jpg";
+      AppMethodBeat.o(75344);
+      return str;
+    }
+    
     public final String getFilePath()
     {
-      return this.xwI.videoPath;
+      return this.xMF.videoPath;
     }
   }
 }

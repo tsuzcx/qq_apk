@@ -13,7 +13,7 @@ public final class r
     this.Qt = paramObject;
   }
   
-  public static r W(Context paramContext)
+  public static r X(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 24) {
       return new r(PointerIcon.getSystemIcon(paramContext, 1002));

@@ -9,39 +9,39 @@ public class TPThumbplayerCapabilityHelper
 {
   public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
-    AppMethodBeat.i(220515);
+    AppMethodBeat.i(197454);
     boolean bool = TPPlayerDecoderCapability.addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
-    AppMethodBeat.o(220515);
+    AppMethodBeat.o(197454);
     return bool;
   }
   
   public static boolean addVCodecWhitelist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
-    AppMethodBeat.i(220516);
+    AppMethodBeat.i(197455);
     boolean bool = TPPlayerDecoderCapability.addVCodecWhitelist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
-    AppMethodBeat.o(220516);
+    AppMethodBeat.o(197455);
     return bool;
   }
   
   public static int[] getDRMCapabilities()
   {
-    AppMethodBeat.i(220522);
+    AppMethodBeat.i(197461);
     int[] arrayOfInt = TPDrm.getDRMCapabilities();
-    AppMethodBeat.o(220522);
+    AppMethodBeat.o(197461);
     return arrayOfInt;
   }
   
   public static HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> getVCodecDecoderMaxCapabilityMap(int paramInt)
   {
-    AppMethodBeat.i(220517);
+    AppMethodBeat.i(197456);
     HashMap localHashMap = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(paramInt);
-    AppMethodBeat.o(220517);
+    AppMethodBeat.o(197456);
     return localHashMap;
   }
   
   public static TPCodecCapability.TPVCodecMaxCapability getVCodecMaxCapability(int paramInt)
   {
-    AppMethodBeat.i(220518);
+    AppMethodBeat.i(197457);
     TPCodecCapability.TPVCodecMaxCapability localTPVCodecMaxCapability2 = new TPCodecCapability.TPVCodecMaxCapability(0, 0, 0);
     HashMap localHashMap1 = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC);
     HashMap localHashMap2 = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(TPDecoderType.TP_VIDEO_DECODER_FFMPEG);
@@ -63,7 +63,7 @@ public class TPThumbplayerCapabilityHelper
     }
     for (;;)
     {
-      AppMethodBeat.o(220518);
+      AppMethodBeat.o(197457);
       return localTPVCodecMaxCapability1;
       label118:
       localTPVCodecMaxCapability1 = (TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt));
@@ -93,9 +93,9 @@ public class TPThumbplayerCapabilityHelper
   {
     try
     {
-      AppMethodBeat.i(220512);
+      AppMethodBeat.i(197451);
       TPPlayerDecoderCapability.init(paramContext, paramBoolean);
-      AppMethodBeat.o(220512);
+      AppMethodBeat.o(197451);
       return;
     }
     finally
@@ -107,30 +107,30 @@ public class TPThumbplayerCapabilityHelper
   
   public static boolean isDDPlusSupported()
   {
-    AppMethodBeat.i(220520);
+    AppMethodBeat.i(197459);
     boolean bool = TPPlayerDecoderCapability.isDDPlusSupported();
-    AppMethodBeat.o(220520);
+    AppMethodBeat.o(197459);
     return bool;
   }
   
   public static boolean isDDSupported()
   {
-    AppMethodBeat.i(220519);
+    AppMethodBeat.i(197458);
     boolean bool = TPPlayerDecoderCapability.isDDPlusSupported();
-    AppMethodBeat.o(220519);
+    AppMethodBeat.o(197458);
     return bool;
   }
   
   public static boolean isDRMsupport(int paramInt)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(220523);
+    AppMethodBeat.i(197462);
     int[] arrayOfInt = getDRMCapabilities();
     boolean bool1;
     if (arrayOfInt.length == 0)
     {
       bool1 = bool2;
-      AppMethodBeat.o(220523);
+      AppMethodBeat.o(197462);
       return bool1;
     }
     int i = 0;
@@ -151,17 +151,17 @@ public class TPThumbplayerCapabilityHelper
   
   public static boolean isDolbyDSSupported()
   {
-    AppMethodBeat.i(220521);
+    AppMethodBeat.i(197460);
     boolean bool = TPPlayerDecoderCapability.isDolbyDSSupported();
-    AppMethodBeat.o(220521);
+    AppMethodBeat.o(197460);
     return bool;
   }
   
   public static boolean isHDRsupport(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(220524);
+    AppMethodBeat.i(197463);
     boolean bool = TPPlayerDecoderCapability.isHDRsupport(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(220524);
+    AppMethodBeat.o(197463);
     return bool;
   }
   
@@ -182,20 +182,20 @@ public class TPThumbplayerCapabilityHelper
   
   public static boolean isVCodecCapabilityCanSupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(220514);
+    AppMethodBeat.i(197453);
     if (isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_FFMPEG, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5)) {}
     for (boolean bool = true;; bool = isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5))
     {
-      AppMethodBeat.o(220514);
+      AppMethodBeat.o(197453);
       return bool;
     }
   }
   
   public static boolean isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(220513);
+    AppMethodBeat.i(197452);
     boolean bool = TPPlayerDecoderCapability.isVCodecCapabilitySupport(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    AppMethodBeat.o(220513);
+    AppMethodBeat.o(197452);
     return bool;
   }
 }

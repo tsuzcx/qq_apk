@@ -8,27 +8,28 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.ad.e.j;
+import com.tencent.mm.plugin.sns.ad.f.j;
+import com.tencent.mm.plugin.sns.ad.timeline.a.f;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
 import com.tencent.mm.plugin.sns.ui.aq;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.item.a.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
   extends b
 {
-  a.a Atj;
-  AnimatorSet yvH;
+  a.a AKx;
+  AnimatorSet yLH;
   
   public d(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(99961);
     this.activity = paramMMActivity;
-    this.Atj = ((a.a)paramBaseViewHolder);
+    this.AKx = ((a.a)paramBaseViewHolder);
     paramMMActivity = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     paramMMActivity.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
@@ -38,9 +39,9 @@ public final class d
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (f != 1.0F)
         {
-          d.this.Atj.Awu.setScaleX(f);
-          d.this.Atj.Awu.setScaleY(f);
-          d.this.Atj.Awu.setAlpha(f);
+          d.this.AKx.ANL.setScaleX(f);
+          d.this.AKx.ANL.setScaleY(f);
+          d.this.AKx.ANL.setAlpha(f);
         }
         AppMethodBeat.o(99956);
       }
@@ -51,14 +52,14 @@ public final class d
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99957);
-        if (d.this.Atj.grY)
+        if (d.this.AKx.guz)
         {
-          ad.i("MicroMsg.CardAdClickAnimation", "holder is busy");
-          d.this.yvH.end();
+          ae.i("MicroMsg.CardAdClickAnimation", "holder is busy");
+          d.this.yLH.end();
           AppMethodBeat.o(99957);
           return;
         }
-        d.this.Atj.grY = true;
+        d.this.AKx.guz = true;
         AppMethodBeat.o(99957);
       }
     });
@@ -69,45 +70,45 @@ public final class d
       {
         AppMethodBeat.i(99958);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        d.this.Atj.Awv.setAlpha(f);
+        d.this.AKx.ANM.setAlpha(f);
         AppMethodBeat.o(99958);
       }
     });
     paramBaseViewHolder.setDuration(100L);
-    this.yvH = new AnimatorSet();
-    this.yvH.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
-    this.yvH.addListener(new AnimatorListenerAdapter()
+    this.yLH = new AnimatorSet();
+    this.yLH.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
+    this.yLH.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99960);
-        ad.i("MicroMsg.CardAdClickAnimation", "onAnimation end");
-        d.this.Atj.Awu.setScaleX(1.0F);
-        d.this.Atj.Awu.setScaleY(1.0F);
-        d.this.Atj.Awu.setAlpha(1.0F);
-        d.this.Atj.Awv.setAlpha(1.0F);
-        if (d.this.Atj.AwG) {
-          if (j.x(d.this.Atj.AwF))
+        ae.i("MicroMsg.CardAdClickAnimation", "onAnimation end");
+        d.this.AKx.ANL.setScaleX(1.0F);
+        d.this.AKx.ANL.setScaleY(1.0F);
+        d.this.AKx.ANL.setAlpha(1.0F);
+        d.this.AKx.ANM.setAlpha(1.0F);
+        if (d.this.AKx.ANY) {
+          if (j.x(d.this.AKx.ANX))
           {
-            paramAnonymousAnimator = d.this.Atj.AwF.getChildAt(0);
+            paramAnonymousAnimator = d.this.AKx.ANX.getChildAt(0);
             if ((paramAnonymousAnimator instanceof OnlineVideoView)) {
-              ((OnlineVideoView)paramAnonymousAnimator).aB(0, false);
+              ((OnlineVideoView)paramAnonymousAnimator).aE(0, false);
             }
           }
         }
         label248:
         for (;;)
         {
-          if (d.this.AsL != null) {
-            d.this.AsL.onAnimationEnd();
+          if (d.this.AJZ != null) {
+            d.this.AJZ.onAnimationEnd();
           }
-          d.this.Atj.grY = false;
+          d.this.AKx.guz = false;
           AppMethodBeat.o(99960);
           return;
-          paramAnonymousAnimator = com.tencent.mm.plugin.sns.ad.timeline.a.d.b(d.this.Atj);
+          paramAnonymousAnimator = f.b(d.this.AKx);
           int i;
-          if ((paramAnonymousAnimator != null) && (paramAnonymousAnimator.HAT != null)) {
-            if ((paramAnonymousAnimator.HAT.GaP == 15) || (paramAnonymousAnimator.HAT.GaP == 5)) {
+          if ((paramAnonymousAnimator != null) && (paramAnonymousAnimator.HUG != null)) {
+            if ((paramAnonymousAnimator.HUG.Gtw == 15) || (paramAnonymousAnimator.HUG.Gtw == 5)) {
               i = 1;
             }
           }
@@ -116,7 +117,7 @@ public final class d
             if (i == 0) {
               break label248;
             }
-            d.this.Atj.Atv.zWy.ySq.clear();
+            d.this.AKx.AKJ.AnH.ziA.clear();
             break;
             i = 0;
             continue;
@@ -128,20 +129,20 @@ public final class d
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99959);
-        ad.i("MicroMsg.CardAdClickAnimation", "onAnimation start");
+        ae.i("MicroMsg.CardAdClickAnimation", "onAnimation start");
         AppMethodBeat.o(99959);
       }
     });
     AppMethodBeat.o(99961);
   }
   
-  public final void At(long paramLong)
+  public final void AR(long paramLong)
   {
     AppMethodBeat.i(99962);
-    if (!this.yvH.isStarted())
+    if (!this.yLH.isStarted())
     {
-      this.yvH.setStartDelay(paramLong);
-      this.yvH.start();
+      this.yLH.setStartDelay(paramLong);
+      this.yLH.start();
     }
     AppMethodBeat.o(99962);
   }

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jo
   extends b
 {
-  public a dws;
+  public a dxw;
   
   public jo()
   {
@@ -15,16 +15,16 @@ public final class jo
   
   private jo(byte paramByte)
   {
-    AppMethodBeat.i(125620);
-    this.dws = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125619);
+    this.dxw = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(125620);
+    AppMethodBeat.o(125619);
   }
   
   public static final class a
   {
-    public int dsi = 0;
+    public boolean isResume = false;
   }
 }
 

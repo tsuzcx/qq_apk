@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.storage;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appstorage.s;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 
@@ -12,12 +12,12 @@ public class n
 {
   public static final int CTRL_INDEX = 16;
   public static final String NAME = "setStorage";
-  private a ljf;
+  private a lmR;
   
   public n()
   {
     AppMethodBeat.i(147281);
-    this.ljf = new a()
+    this.lmR = new a()
     {
       public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.jsapi.h paramAnonymoush, int paramAnonymousInt)
       {
@@ -33,7 +33,7 @@ public class n
   {
     AppMethodBeat.i(147282);
     final long l = System.currentTimeMillis();
-    paramh.getRuntime().N(new com.tencent.e.i.h()
+    paramh.getRuntime().L(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
@@ -43,11 +43,11 @@ public class n
       public final void run()
       {
         AppMethodBeat.i(147279);
-        String str = p.a(((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dg(paramh.getAppId()).c(paramInt2, paramString4, paramString1, paramString2, paramString3));
+        String str = p.a(((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dl(paramh.getAppId()).c(paramInt2, paramString4, paramString1, paramString2, paramString3));
         if (parama != null) {
           parama.a(str, paramh, paramInt1);
         }
-        n.b(2, s.cq(paramString1, paramString2), l, paramh);
+        n.b(2, t.cr(paramString1, paramString2), l, paramh);
         AppMethodBeat.o(147279);
       }
     });
@@ -60,9 +60,9 @@ public class n
     final long l = System.currentTimeMillis();
     final JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
     localJsApiSetStorageTask.appId = paramString4;
-    localJsApiSetStorageTask.liU = paramInt2;
+    localJsApiSetStorageTask.lmG = paramInt2;
     localJsApiSetStorageTask.C(paramString1, paramString2, paramString3);
-    localJsApiSetStorageTask.krg = new Runnable()
+    localJsApiSetStorageTask.kuv = new Runnable()
     {
       public final void run()
       {
@@ -70,12 +70,12 @@ public class n
         if (parama != null) {
           parama.a(localJsApiSetStorageTask.result, paramh, paramInt1);
         }
-        n.b(1, s.cq(paramString1, paramString2), l, paramh);
-        localJsApiSetStorageTask.bhO();
+        n.b(1, t.cr(paramString1, paramString2), l, paramh);
+        localJsApiSetStorageTask.bix();
         AppMethodBeat.o(147280);
       }
     };
-    localJsApiSetStorageTask.bhN();
+    localJsApiSetStorageTask.biw();
     AppBrandMainProcessService.a(localJsApiSetStorageTask);
     AppMethodBeat.o(147283);
   }
@@ -95,7 +95,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.n
  * JD-Core Version:    0.7.0.1
  */

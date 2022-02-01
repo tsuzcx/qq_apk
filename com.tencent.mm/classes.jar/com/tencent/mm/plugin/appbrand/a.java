@@ -2,17 +2,15 @@ package com.tencent.mm.plugin.appbrand;
 
 import android.content.Context;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.c;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.i;
-import com.tencent.mm.plugin.appbrand.utils.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,59 +22,59 @@ import java.util.Map.Entry;
 
 public final class a
 {
-  private static final LinkedHashMap<String, o> jvF;
-  public static int jvG;
-  private static final Map<String, o> jvH;
+  private static final LinkedHashMap<String, p> jyA;
+  public static int jyB;
+  private static final Map<String, p> jyC;
   
   static
   {
     AppMethodBeat.i(43783);
-    aj.getContext().registerComponentCallbacks(new h()
+    ak.getContext().registerComponentCallbacks(new com.tencent.mm.plugin.appbrand.utils.i()
     {
       public final void onTrimMemory(int paramAnonymousInt)
       {
         AppMethodBeat.i(43771);
-        ad.i("MicroMsg.AppBrandBridge", "onTrimMemory level=%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ae.i("MicroMsg.AppBrandBridge", "onTrimMemory level=%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         switch (paramAnonymousInt)
         {
         default: 
           AppMethodBeat.o(43771);
           return;
         }
-        synchronized (a.jvH)
+        synchronized (a.jyC)
         {
-          Iterator localIterator = new LinkedList(a.aVA().values()).iterator();
+          Iterator localIterator = new LinkedList(a.aVZ().values()).iterator();
           while (localIterator.hasNext())
           {
-            o localo = (o)localIterator.next();
-            if (!localo.mResumed)
+            p localp = (p)localIterator.next();
+            if (!localp.mResumed)
             {
-              a.aVA().remove(localo.mAppId);
-              localo.aWl();
+              a.aVZ().remove(localp.mAppId);
+              localp.aWM();
             }
           }
         }
         AppMethodBeat.o(43771);
       }
     });
-    jvF = new LinkedHashMap()
+    jyA = new LinkedHashMap()
     {
       protected final boolean removeEldestEntry(final Map.Entry paramAnonymousEntry)
       {
         AppMethodBeat.i(43773);
-        if (size() > a.jvG) {}
+        if (size() > a.jyB) {}
         for (boolean bool = true;; bool = false)
         {
           if (bool)
           {
-            paramAnonymousEntry = (o)paramAnonymousEntry.getValue();
-            ad.i("MicroMsg.AppBrandBridge", "%s will be removed from sKeepNoRecycleRuntimeMap", new Object[] { paramAnonymousEntry.toString() });
-            aq.f(new Runnable()
+            paramAnonymousEntry = (p)paramAnonymousEntry.getValue();
+            ae.i("MicroMsg.AppBrandBridge", "%s will be removed from sKeepNoRecycleRuntimeMap", new Object[] { paramAnonymousEntry.toString() });
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(43772);
-                paramAnonymousEntry.aWl();
+                paramAnonymousEntry.aWM();
                 AppMethodBeat.o(43772);
               }
             });
@@ -86,78 +84,78 @@ public final class a
         }
       }
     };
-    jvG = 4;
-    jvH = new HashMap();
+    jyB = 4;
+    jyC = new HashMap();
     AppMethodBeat.o(43783);
   }
   
-  public static o Kj(String paramString)
+  public static p KI(String paramString)
   {
     AppMethodBeat.i(43779);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(43779);
       return null;
     }
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      paramString = (o)jvH.get(paramString);
+      paramString = (p)jyC.get(paramString);
       AppMethodBeat.o(43779);
       return paramString;
     }
   }
   
   @Deprecated
-  public static AppBrandSysConfigWC Kk(String paramString)
+  public static AppBrandSysConfigWC KJ(String paramString)
   {
     AppMethodBeat.i(43781);
-    paramString = Kj(paramString);
+    paramString = KI(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(43781);
       return null;
     }
-    paramString = paramString.aXb();
+    paramString = paramString.aXw();
     AppMethodBeat.o(43781);
     return paramString;
   }
   
   @Deprecated
-  public static AppBrandStatObject Kl(String paramString)
+  public static AppBrandStatObject KK(String paramString)
   {
     AppMethodBeat.i(43782);
-    paramString = Kj(paramString);
+    paramString = KI(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(43782);
       return null;
     }
-    paramString = paramString.Fb().cmC;
+    paramString = paramString.Fg().cmE;
     AppMethodBeat.o(43782);
     return paramString;
   }
   
-  public static boolean a(o paramo)
+  public static boolean a(p paramp)
   {
     AppMethodBeat.i(43774);
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      boolean bool = jvF.containsValue(paramo);
+      boolean bool = jyA.containsValue(paramp);
       AppMethodBeat.o(43774);
       return bool;
     }
   }
   
-  public static boolean aVy()
+  public static boolean aVX()
   {
     AppMethodBeat.i(43776);
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      Iterator localIterator = jvH.values().iterator();
+      Iterator localIterator = jyC.values().iterator();
       while (localIterator.hasNext())
       {
-        o localo = (o)localIterator.next();
-        if ((localo != null) && (localo.Eb()))
+        p localp = (p)localIterator.next();
+        if ((localp != null) && (localp.Ee()))
         {
           AppMethodBeat.o(43776);
           return true;
@@ -168,37 +166,37 @@ public final class a
     }
   }
   
-  public static int aVz()
+  public static int aVY()
   {
     AppMethodBeat.i(43780);
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      int i = jvH.size();
+      int i = jyC.size();
       AppMethodBeat.o(43780);
       return i;
     }
   }
   
-  static void b(o paramo)
+  static void b(p paramp)
   {
     AppMethodBeat.i(43777);
-    if (bt.isNullOrNil(paramo.mAppId))
+    if (bu.isNullOrNil(paramp.mAppId))
     {
-      ad.e("MicroMsg.AppBrandBridge", "clearRuntime with nil appId");
+      ae.e("MicroMsg.AppBrandBridge", "clearRuntime with nil appId");
       AppMethodBeat.o(43777);
       return;
     }
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      o localo = (o)jvH.get(paramo.mAppId);
-      if ((localo == null) || (localo == paramo))
+      p localp = (p)jyC.get(paramp.mAppId);
+      if ((localp == null) || (localp == paramp))
       {
-        jvH.remove(paramo.mAppId);
-        jvF.remove(paramo.mAppId);
+        jyC.remove(paramp.mAppId);
+        jyA.remove(paramp.mAppId);
         AppMethodBeat.o(43777);
         return;
       }
-      ad.e("MicroMsg.AppBrandBridge", "clearRuntime with mismatch instance, stack %s", new Object[] { bt.n(new Throwable()) });
+      ae.e("MicroMsg.AppBrandBridge", "clearRuntime with mismatch instance, stack %s", new Object[] { bu.o(new Throwable()) });
     }
   }
   
@@ -206,39 +204,39 @@ public final class a
   {
     AppMethodBeat.i(43775);
     LinkedList localLinkedList = new LinkedList();
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      Iterator localIterator = jvH.values().iterator();
+      Iterator localIterator = jyC.values().iterator();
       while (localIterator.hasNext())
       {
-        o localo = (o)localIterator.next();
-        if ((localo != null) && (localo.Eb()) && (localo != paramAppBrandRuntime)) {
-          localLinkedList.add(localo);
+        p localp = (p)localIterator.next();
+        if ((localp != null) && (localp.Ee()) && (localp != paramAppBrandRuntime)) {
+          localLinkedList.add(localp);
         }
       }
     }
     paramAppBrandRuntime = localLinkedList.iterator();
     while (paramAppBrandRuntime.hasNext()) {
-      ((o)paramAppBrandRuntime.next()).aXg();
+      ((p)paramAppBrandRuntime.next()).aXB();
     }
     AppMethodBeat.o(43775);
   }
   
-  static void setRuntime(o paramo)
+  static void setRuntime(p paramp)
   {
     AppMethodBeat.i(43778);
-    if (bt.isNullOrNil(paramo.mAppId))
+    if (bu.isNullOrNil(paramp.mAppId))
     {
-      ad.e("MicroMsg.AppBrandBridge", "setRuntime with nil appId");
+      ae.e("MicroMsg.AppBrandBridge", "setRuntime with nil appId");
       AppMethodBeat.o(43778);
       return;
     }
-    synchronized (jvH)
+    synchronized (jyC)
     {
-      jvH.put(paramo.mAppId, paramo);
-      jvF.put(paramo.mAppId, paramo);
-      if (paramo.aXc() != null) {
-        i.bT(paramo.mAppId, paramo.aXc().cmr);
+      jyC.put(paramp.mAppId, paramp);
+      jyA.put(paramp.mAppId, paramp);
+      if (paramp.aXx() != null) {
+        com.tencent.mm.plugin.appbrand.report.i.bX(paramp.mAppId, paramp.aXx().cmt);
       }
       AppMethodBeat.o(43778);
       return;
@@ -247,7 +245,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

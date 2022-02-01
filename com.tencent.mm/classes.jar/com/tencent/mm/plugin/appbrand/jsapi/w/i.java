@@ -8,32 +8,32 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 public final class i
   implements a
 {
-  public static i lhq;
-  private a lhr;
+  public static i llc;
+  private a lld;
   
   static
   {
     AppMethodBeat.i(137650);
-    lhq = new i();
+    llc = new i();
     AppMethodBeat.o(137650);
   }
   
   public i()
   {
     AppMethodBeat.i(137645);
-    this.lhr = new a()
+    this.lld = new a()
     {
       public final boolean a(c paramAnonymousc, at paramAnonymousat)
       {
         return true;
       }
       
-      public final int bmv()
+      public final int bne()
       {
         return 20;
       }
       
-      public final int bmw()
+      public final int bnf()
       {
         return 200;
       }
@@ -41,7 +41,7 @@ public final class i
     AppMethodBeat.o(137645);
   }
   
-  private a bmy()
+  private a bnh()
   {
     AppMethodBeat.i(137646);
     if (e.K(a.class) != null)
@@ -50,31 +50,31 @@ public final class i
       AppMethodBeat.o(137646);
       return locala;
     }
-    a locala = this.lhr;
+    a locala = this.lld;
     AppMethodBeat.o(137646);
     return locala;
   }
   
   public final boolean a(c paramc, at paramat)
   {
-    AppMethodBeat.i(195020);
-    boolean bool = bmy().a(paramc, paramat);
-    AppMethodBeat.o(195020);
+    AppMethodBeat.i(197251);
+    boolean bool = bnh().a(paramc, paramat);
+    AppMethodBeat.o(197251);
     return bool;
   }
   
-  public final int bmv()
+  public final int bne()
   {
     AppMethodBeat.i(137647);
-    int i = bmy().bmv();
+    int i = bnh().bne();
     AppMethodBeat.o(137647);
     return i;
   }
   
-  public final int bmw()
+  public final int bnf()
   {
     AppMethodBeat.i(137648);
-    int i = bmy().bmw();
+    int i = bnh().bnf();
     AppMethodBeat.o(137648);
     return i;
   }

@@ -1,67 +1,67 @@
 package com.tencent.mm.chatroom.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.c;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.cd.a;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.cf.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 
 public final class a
-  implements cd.a
+  implements cf.a
 {
   public final void a(e.a parama)
   {
     AppMethodBeat.i(12501);
-    cv localcv = parama.gqE;
+    cv localcv = parama.gte;
     String str1;
     String str2;
-    bu localbu;
-    if (localcv.ugm == 10002)
+    bv localbv;
+    if (localcv.urJ == 10002)
     {
-      str1 = z.a(localcv.Fvk);
-      if (bt.isNullOrNil(str1))
+      str1 = z.a(localcv.FNI);
+      if (bu.isNullOrNil(str1))
       {
-        ad.w("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "msg content is null");
+        ae.w("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "msg content is null");
         AppMethodBeat.o(12501);
         return;
       }
-      str2 = z.a(localcv.Fvi);
-      localbu = ((l)g.ab(l.class)).dlK().aI(str2, localcv.xbt);
-      if (localbu.field_msgId <= 0L) {
+      str2 = z.a(localcv.FNG);
+      localbv = ((l)g.ab(l.class)).doJ().aJ(str2, localcv.xrk);
+      if (localbv.field_msgId <= 0L) {
         break label247;
       }
     }
     label247:
     for (int i = 1;; i = 0)
     {
-      localbu.qz(localcv.xbt);
-      localbu.qA(bj.B(str2, localcv.CreateTime));
-      localbu.setType(10002);
-      localbu.setContent(str1);
-      localbu.kr(0);
-      localbu.tN(str2);
-      localbu.sP(localcv.Fvn);
-      localbu.fsg();
-      bj.a(localbu, parama);
+      localbv.qM(localcv.xrk);
+      localbv.qN(bl.B(str2, localcv.CreateTime));
+      localbv.setType(10002);
+      localbv.setContent(str1);
+      localbv.kt(0);
+      localbv.ui(str2);
+      localbv.tk(localcv.FNL);
+      localbv.fwh();
+      bl.a(localbv, parama);
       if (i == 0)
       {
-        bj.v(localbu);
+        bl.v(localbv);
         AppMethodBeat.o(12501);
         return;
       }
-      ((l)g.ab(l.class)).dlK().b(localcv.xbt, localbu);
+      ((l)g.ab(l.class)).doJ().b(localcv.xrk, localbv);
       AppMethodBeat.o(12501);
       return;
-      ad.i("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(localcv.ugm) });
+      ae.i("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(localcv.urJ) });
       AppMethodBeat.o(12501);
       return;
     }

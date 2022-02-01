@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class LoginHistoryUI$31
   implements View.OnClickListener
@@ -17,9 +17,9 @@ final class LoginHistoryUI$31
     AppMethodBeat.i(128112);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = this.jlq.getString(2131759660, new Object[] { ac.fks() });
-    LoginHistoryUI.Q(this.jlq, paramView);
+    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = this.jok.getString(2131759660, new Object[] { ad.fom() });
+    LoginHistoryUI.R(this.jok, paramView);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginHistoryUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128112);
   }

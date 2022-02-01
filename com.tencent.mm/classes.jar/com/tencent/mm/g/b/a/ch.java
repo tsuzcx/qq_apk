@@ -6,24 +6,24 @@ import com.tencent.mm.plugin.report.a;
 public final class ch
   extends a
 {
-  public long ecv = 0L;
+  public long edQ = 0L;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(63299);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecv);
+    ((StringBuffer)localObject).append(this.edQ);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(63299);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(63300);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("reportScene:").append(this.ecv);
+    ((StringBuffer)localObject).append("reportScene:").append(this.edQ);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(63300);
     return localObject;

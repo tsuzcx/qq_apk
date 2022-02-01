@@ -14,14 +14,14 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.setting.model.k;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.storage.cc;
+import com.tencent.mm.plugin.setting.model.l;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.storage.cd;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -29,9 +29,9 @@ public class SendFeedBackUI
   extends MMActivity
   implements f
 {
-  private ProgressDialog fMu = null;
-  private EditText mlU;
-  private TextView yEP = null;
+  private ProgressDialog fOC = null;
+  private EditText mqR;
+  private TextView yUU = null;
   
   public int getLayoutId()
   {
@@ -42,20 +42,20 @@ public class SendFeedBackUI
   {
     AppMethodBeat.i(73989);
     setMMTitle(2131763230);
-    this.mlU = ((EditText)findViewById(2131298739));
+    this.mqR = ((EditText)findViewById(2131298739));
     String str = getIntent().getStringExtra("intentKeyFrom");
     if ((str != null) && (str.equals("fromEnjoyAppDialog")))
     {
-      this.yEP = ((TextView)findViewById(2131306434));
-      this.yEP.setVisibility(0);
-      this.yEP.setOnClickListener(new View.OnClickListener()
+      this.yUU = ((TextView)findViewById(2131306434));
+      this.yUU.setVisibility(0);
+      this.yUU.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(73982);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SendFeedBackUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/setting/ui/setting/SendFeedBackUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("showShare", false);
           paramAnonymousView.putExtra("rawUrl", SendFeedBackUI.this.getString(2131766184));
@@ -91,9 +91,9 @@ public class SendFeedBackUI
             AppMethodBeat.o(73985);
             return false;
           }
-          paramAnonymousMenuItem = new k(com.tencent.mm.compatible.deviceinfo.q.aaD(), paramAnonymousMenuItem + " key " + cc.fsJ() + " local key " + cc.fsI() + "NetType:" + ay.getNetTypeString(SendFeedBackUI.this.getApplicationContext()) + " hasNeon: " + com.tencent.mm.compatible.deviceinfo.n.aak() + " isArmv6: " + com.tencent.mm.compatible.deviceinfo.n.aam() + " isArmv7: " + com.tencent.mm.compatible.deviceinfo.n.aal());
-          g.aiU().a(153, SendFeedBackUI.this);
-          g.aiU().a(paramAnonymousMenuItem, 0);
+          paramAnonymousMenuItem = new l(com.tencent.mm.compatible.deviceinfo.q.aaM(), paramAnonymousMenuItem + " key " + cd.fwK() + " local key " + cd.fwJ() + "NetType:" + az.getNetTypeString(SendFeedBackUI.this.getApplicationContext()) + " hasNeon: " + com.tencent.mm.compatible.deviceinfo.n.aat() + " isArmv6: " + com.tencent.mm.compatible.deviceinfo.n.aav() + " isArmv7: " + com.tencent.mm.compatible.deviceinfo.n.aau());
+          g.ajj().a(153, SendFeedBackUI.this);
+          g.ajj().a(paramAnonymousMenuItem, 0);
           SendFeedBackUI.this.hideVKB();
           SendFeedBackUI localSendFeedBackUI1 = SendFeedBackUI.this;
           SendFeedBackUI localSendFeedBackUI2 = SendFeedBackUI.this;
@@ -103,7 +103,7 @@ public class SendFeedBackUI
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(73984);
-              g.aiU().a(paramAnonymousMenuItem);
+              g.ajj().a(paramAnonymousMenuItem);
               AppMethodBeat.o(73984);
             }
           }));
@@ -126,18 +126,18 @@ public class SendFeedBackUI
   public void onDestroy()
   {
     AppMethodBeat.i(73988);
-    g.aiU().b(153, this);
+    g.ajj().b(153, this);
     super.onDestroy();
     AppMethodBeat.o(73988);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(73990);
-    if (this.fMu != null)
+    if (this.fOC != null)
     {
-      this.fMu.dismiss();
-      this.fMu = null;
+      this.fOC.dismiss();
+      this.fOC = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {

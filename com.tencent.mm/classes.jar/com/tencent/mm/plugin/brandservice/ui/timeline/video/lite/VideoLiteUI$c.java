@@ -8,7 +8,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class VideoLiteUI$c
   implements View.OnClickListener
 {
@@ -16,16 +16,16 @@ final class VideoLiteUI$c
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(210108);
+    AppMethodBeat.i(209142);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = VideoLiteUI.b(this.oqd);
+    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = VideoLiteUI.b(this.owz);
     if (paramView != null) {
       paramView.start();
     }
     a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(210108);
+    AppMethodBeat.o(209142);
   }
 }
 

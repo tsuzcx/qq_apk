@@ -14,40 +14,40 @@ import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter;", "Lcom/tencent/mm/ui/widget/InputPanelLinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "alignBtn", "Landroid/widget/ImageButton;", "alignModeChangeListener", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$AlignModeChangeListener;", "curAlignMode", "curEditMode", "emojiBtn", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "smileyTextListener", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "getCurrentAlignMode", "hideSmileyPanel", "", "init", "onInputPanelChange", "isKeyboardShow", "", "keyboardHeight", "setAlignModeChangeListener", "setSmileyTextOperationListener", "showSmileyPanel", "switchAlignMode", "AlignModeChangeListener", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter;", "Lcom/tencent/mm/ui/widget/InputPanelLinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "alignBtn", "Landroid/widget/ImageButton;", "alignModeChangeListener", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$AlignModeChangeListener;", "curAlignMode", "curEditMode", "emojiBtn", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "smileyTextListener", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "getCurrentAlignMode", "hideSmileyPanel", "", "init", "onInputPanelChange", "isKeyboardShow", "", "keyboardHeight", "setAlignModeChangeListener", "setSmileyTextOperationListener", "showSmileyPanel", "switchAlignMode", "AlignModeChangeListener", "Companion", "plugin-finder_release"})
 public final class FinderEditFooter
   extends InputPanelLinearLayout
 {
-  private static final int tel = 101;
-  private static final int tem = 102;
-  private static final int ten = 201;
-  private static final int teo = 202;
-  public static final FinderEditFooter.b tep;
+  private static final int tpe = 101;
+  private static final int tpf = 102;
+  private static final int tpg = 201;
+  private static final int tph = 202;
+  public static final FinderEditFooter.b tpi;
   private String TAG;
-  private ChatFooterPanel pWJ;
-  private ImageButton tef;
-  private ImageButton teg;
-  private int teh;
-  private a tei;
-  private ChatFooterPanel.a tej;
-  private int tek;
+  private ChatFooterPanel qdo;
+  private ImageButton toY;
+  private ImageButton toZ;
+  private int tpa;
+  private a tpb;
+  private ChatFooterPanel.a tpc;
+  private int tpd;
   
   static
   {
     AppMethodBeat.i(168575);
-    tep = new FinderEditFooter.b((byte)0);
-    tel = 101;
-    tem = 102;
-    ten = 201;
-    teo = 202;
+    tpi = new FinderEditFooter.b((byte)0);
+    tpe = 101;
+    tpf = 102;
+    tpg = 201;
+    tph = 202;
     AppMethodBeat.o(168575);
   }
   
@@ -56,8 +56,8 @@ public final class FinderEditFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168573);
     this.TAG = "Finder.FinderEditFooter";
-    this.teh = tel;
-    this.tek = ten;
+    this.tpa = tpe;
+    this.tpd = tpg;
     init();
     AppMethodBeat.o(168573);
   }
@@ -67,8 +67,8 @@ public final class FinderEditFooter
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168574);
     this.TAG = "Finder.FinderEditFooter";
-    this.teh = tel;
-    this.tek = ten;
+    this.tpa = tpe;
+    this.tpd = tpg;
     init();
     AppMethodBeat.o(168574);
   }
@@ -80,47 +80,47 @@ public final class FinderEditFooter
     LinearLayout localLinearLayout = (LinearLayout)findViewById(2131304246);
     Object localObject = findViewById(2131299333);
     p.g(localObject, "findViewById(R.id.emoji_btn)");
-    this.tef = ((ImageButton)localObject);
-    localObject = this.tef;
+    this.toY = ((ImageButton)localObject);
+    localObject = this.toY;
     if (localObject == null) {
-      p.bcb("emojiBtn");
+      p.bdF("emojiBtn");
     }
     ((ImageButton)localObject).setOnClickListener((View.OnClickListener)new c(this));
     localObject = findViewById(2131296642);
     p.g(localObject, "findViewById(R.id.alignment_btn)");
-    this.teg = ((ImageButton)localObject);
-    localObject = this.teg;
+    this.toZ = ((ImageButton)localObject);
+    localObject = this.toZ;
     if (localObject == null) {
-      p.bcb("alignBtn");
+      p.bdF("alignBtn");
     }
     ((ImageButton)localObject).setOnClickListener((View.OnClickListener)new d(this));
-    localObject = e.fet().eA(getContext());
+    localObject = e.fij().eE(getContext());
     p.g(localObject, "FooterFactory.getSmileyP…).getSmileyPanel(context)");
-    this.pWJ = ((ChatFooterPanel)localObject);
-    localObject = this.pWJ;
+    this.qdo = ((ChatFooterPanel)localObject);
+    localObject = this.qdo;
     if (localObject == null) {
-      p.bcb("smileyPanel");
+      p.bdF("smileyPanel");
     }
-    ((ChatFooterPanel)localObject).setEntranceScene(ChatFooterPanel.rJs);
-    localObject = this.pWJ;
+    ((ChatFooterPanel)localObject).setEntranceScene(ChatFooterPanel.rRG);
+    localObject = this.qdo;
     if (localObject == null) {
-      p.bcb("smileyPanel");
+      p.bdF("smileyPanel");
     }
     ((ChatFooterPanel)localObject).setVisibility(8);
-    localObject = this.pWJ;
+    localObject = this.qdo;
     if (localObject == null) {
-      p.bcb("smileyPanel");
+      p.bdF("smileyPanel");
     }
     ((ChatFooterPanel)localObject).setBackgroundResource(2131231548);
-    localObject = this.pWJ;
+    localObject = this.qdo;
     if (localObject == null) {
-      p.bcb("smileyPanel");
+      p.bdF("smileyPanel");
     }
-    ((ChatFooterPanel)localObject).fbF();
-    int i = z.iI(getContext());
-    localObject = this.pWJ;
+    ((ChatFooterPanel)localObject).fft();
+    int i = aa.iN(getContext());
+    localObject = this.qdo;
     if (localObject == null) {
-      p.bcb("smileyPanel");
+      p.bdF("smileyPanel");
     }
     localLinearLayout.addView((View)localObject, -1, i);
     AppMethodBeat.o(168569);
@@ -130,29 +130,29 @@ public final class FinderEditFooter
   {
     AppMethodBeat.i(168570);
     super.g(paramBoolean, paramInt);
-    ad.d(this.TAG, "isKeyboardShow " + paramBoolean + " keyboardHeight " + paramInt);
+    ae.d(this.TAG, "isKeyboardShow " + paramBoolean + " keyboardHeight " + paramInt);
     Object localObject;
     if (paramBoolean)
     {
-      this.tek = ten;
-      localObject = this.tef;
+      this.tpd = tpg;
+      localObject = this.toY;
       if (localObject == null) {
-        p.bcb("emojiBtn");
+        p.bdF("emojiBtn");
       }
       ((ImageButton)localObject).setImageResource(2131690564);
-      localObject = this.pWJ;
+      localObject = this.qdo;
       if (localObject == null) {
-        p.bcb("smileyPanel");
+        p.bdF("smileyPanel");
       }
       ((ChatFooterPanel)localObject).setVisibility(0);
       AppMethodBeat.o(168570);
       return;
     }
-    if (this.tek == ten)
+    if (this.tpd == tpg)
     {
-      localObject = this.pWJ;
+      localObject = this.qdo;
       if (localObject == null) {
-        p.bcb("smileyPanel");
+        p.bdF("smileyPanel");
       }
       ((ChatFooterPanel)localObject).setVisibility(8);
     }
@@ -161,14 +161,14 @@ public final class FinderEditFooter
   
   public final int getCurrentAlignMode()
   {
-    return this.teh;
+    return this.tpa;
   }
   
   public final void setAlignModeChangeListener(a parama)
   {
     AppMethodBeat.i(168571);
     p.h(parama, "alignModeChangeListener");
-    this.tei = parama;
+    this.tpb = parama;
     AppMethodBeat.o(168571);
   }
   
@@ -176,22 +176,22 @@ public final class FinderEditFooter
   {
     AppMethodBeat.i(168572);
     p.h(parama, "smileyTextListener");
-    this.tej = parama;
-    ChatFooterPanel localChatFooterPanel = this.pWJ;
+    this.tpc = parama;
+    ChatFooterPanel localChatFooterPanel = this.qdo;
     if (localChatFooterPanel == null) {
-      p.bcb("smileyPanel");
+      p.bdF("smileyPanel");
     }
     localChatFooterPanel.setOnTextOperationListener(parama);
     AppMethodBeat.o(168572);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$AlignModeChangeListener;", "", "onAlignModeChange", "", "alignMode", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$AlignModeChangeListener;", "", "onAlignModeChange", "", "alignMode", "", "plugin-finder_release"})
   public static abstract interface a
   {
-    public abstract void FB(int paramInt);
+    public abstract void FZ(int paramInt);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -202,13 +202,13 @@ public final class FinderEditFooter
       AppMethodBeat.i(168567);
       Object localObject = new b();
       ((b)localObject).bd(paramView);
-      a.b("com/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-      int i = FinderEditFooter.a(this.teq);
-      paramView = FinderEditFooter.tep;
-      if (i == FinderEditFooter.cOG())
+      a.b("com/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+      int i = FinderEditFooter.a(this.tpj);
+      paramView = FinderEditFooter.tpi;
+      if (i == FinderEditFooter.cRl())
       {
-        FinderEditFooter.b(this.teq);
-        paramView = this.teq.getContext();
+        FinderEditFooter.b(this.tpj);
+        paramView = this.tpj.getContext();
         if (paramView == null)
         {
           paramView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
@@ -216,16 +216,16 @@ public final class FinderEditFooter
           throw paramView;
         }
         ((MMActivity)paramView).showVKB();
-        paramView = this.teq;
-        localObject = FinderEditFooter.tep;
-        FinderEditFooter.a(paramView, FinderEditFooter.cOF());
+        paramView = this.tpj;
+        localObject = FinderEditFooter.tpi;
+        FinderEditFooter.a(paramView, FinderEditFooter.cRk());
       }
       for (;;)
       {
         a.a(this, "com/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(168567);
         return;
-        paramView = this.teq.getContext();
+        paramView = this.tpj.getContext();
         if (paramView == null)
         {
           paramView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
@@ -233,15 +233,15 @@ public final class FinderEditFooter
           throw paramView;
         }
         ((MMActivity)paramView).hideVKB();
-        FinderEditFooter.c(this.teq);
-        paramView = this.teq;
-        localObject = FinderEditFooter.tep;
-        FinderEditFooter.a(paramView, FinderEditFooter.cOG());
+        FinderEditFooter.c(this.tpj);
+        paramView = this.tpj;
+        localObject = FinderEditFooter.tpi;
+        FinderEditFooter.a(paramView, FinderEditFooter.cRl());
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -252,11 +252,11 @@ public final class FinderEditFooter
       AppMethodBeat.i(168568);
       b localb = new b();
       localb.bd(paramView);
-      a.b("com/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      FinderEditFooter.d(this.teq);
-      paramView = FinderEditFooter.e(this.teq);
+      a.b("com/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      FinderEditFooter.d(this.tpj);
+      paramView = FinderEditFooter.e(this.tpj);
       if (paramView != null) {
-        paramView.FB(FinderEditFooter.f(this.teq));
+        paramView.FZ(FinderEditFooter.f(this.tpj));
       }
       a.a(this, "com/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168568);
@@ -265,7 +265,7 @@ public final class FinderEditFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.edit.FinderEditFooter
  * JD-Core Version:    0.7.0.1
  */

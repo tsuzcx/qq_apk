@@ -5,41 +5,41 @@ import android.content.res.Resources;
 import android.util.Pair;
 import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.bc;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bd;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.report.h;
 import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 final class bl
 {
-  private static String RV(String paramString)
+  private static String SE(String paramString)
   {
     AppMethodBeat.i(180317);
     Object localObject = null;
-    bc localbc = j.aYX().a(paramString, 10001, new String[] { "versionMd5", "pkgPath" });
+    bd localbd = j.aZu().a(paramString, 10001, new String[] { "versionMd5", "pkgPath" });
     paramString = localObject;
-    if (localbc != null)
+    if (localbd != null)
     {
       paramString = localObject;
-      if (!bt.isNullOrNil(localbc.field_pkgPath))
+      if (!bu.isNullOrNil(localbd.field_pkgPath))
       {
         paramString = localObject;
-        if (i.fv(localbc.field_pkgPath))
+        if (o.fB(localbd.field_pkgPath))
         {
           paramString = localObject;
-          if (!bt.isNullOrNil(localbc.field_versionMd5))
+          if (!bu.isNullOrNil(localbd.field_versionMd5))
           {
             paramString = localObject;
-            if (localbc.field_pkgPath.equals(i.aPK(localbc.field_pkgPath))) {
-              paramString = localbc.field_versionMd5;
+            if (localbd.field_pkgPath.equals(o.aRh(localbd.field_pkgPath))) {
+              paramString = localbd.field_versionMd5;
             }
           }
         }
@@ -49,24 +49,24 @@ final class bl
     return paramString;
   }
   
-  private static void RW(String paramString)
+  private static void SF(String paramString)
   {
     AppMethodBeat.i(47361);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      bf.uk(2131755379);
+      bf.uq(2131755379);
       AppMethodBeat.o(47361);
       return;
     }
     paramString = new Intent().putExtra("rawUrl", paramString).putExtra("forceHideShare", true);
-    d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
+    d.b(ak.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
     AppMethodBeat.o(47361);
   }
   
   static boolean a(WxaAttributes paramWxaAttributes, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
     AppMethodBeat.i(47358);
-    if (1 == paramWxaAttributes.ben().cmx)
+    if (1 == paramWxaAttributes.beV().cmz)
     {
       AppBrand404PageUI.a(paramActivityStarterIpcDelegate);
       h.S(paramWxaAttributes.field_appId, 14, 1);
@@ -80,11 +80,11 @@ final class bl
   static boolean au(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(47360);
-    Object localObject = new bm(paramString, RV(paramString), paramBoolean).brJ();
+    Object localObject = new bm(paramString, SE(paramString), paramBoolean).bsu();
     int i = ((Integer)((Pair)localObject).first).intValue();
     localObject = (String)((Pair)localObject).second;
-    ad.i("MicroMsg.AppBrand.PrepareStepOpBan", "checkDemoInfo, appId %s, ret %d, ignoreCgiError %b", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
-    bm.a locala = bm.a.un(i);
+    ae.i("MicroMsg.AppBrand.PrepareStepOpBan", "checkDemoInfo, appId %s, ret %d, ignoreCgiError %b", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
+    bm.a locala = bm.a.ut(i);
     if (locala == null)
     {
       switch (i)
@@ -97,17 +97,17 @@ final class bl
         }
         break;
       case -13002: 
-        bf.uk(2131755378);
+        bf.uq(2131755378);
         h.S(paramString, 13, 3);
         AppMethodBeat.o(47360);
         return false;
       case -13003: 
-        RW((String)localObject);
+        SF((String)localObject);
         h.S(paramString, 12, 3);
         AppMethodBeat.o(47360);
         return false;
       }
-      bf.RO(aj.getResources().getString(2131755580, new Object[] { Integer.valueOf(3), Integer.valueOf(i) }));
+      bf.Sx(ak.getResources().getString(2131755580, new Object[] { Integer.valueOf(3), Integer.valueOf(i) }));
       AppMethodBeat.o(47360);
       return false;
     }
@@ -116,10 +116,10 @@ final class bl
       AppMethodBeat.o(47360);
       return true;
     }
-    switch (1.lLG[locala.ordinal()])
+    switch (1.lQg[locala.ordinal()])
     {
     default: 
-      bf.uk(2131755376);
+      bf.uq(2131755376);
       h.S(paramString, 13, 3);
       AppMethodBeat.o(47360);
       return false;
@@ -127,7 +127,7 @@ final class bl
       AppMethodBeat.o(47360);
       return true;
     }
-    bf.uk(2131755377);
+    bf.uq(2131755377);
     h.S(paramString, 13, 3);
     AppMethodBeat.o(47360);
     return false;

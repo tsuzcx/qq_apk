@@ -5,18 +5,18 @@ import d.g.b.p;
 
 public final class t<T extends d.l.b.a.b.e.b.a>
 {
-  private final d.l.b.a.b.f.a MSw;
-  private final T Nzg;
-  private final T Nzh;
+  private final T NWn;
+  private final T NWo;
+  private final d.l.b.a.b.f.a NpB;
   private final String filePath;
   
   public t(T paramT1, T paramT2, String paramString, d.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(60319);
-    this.Nzg = paramT1;
-    this.Nzh = paramT2;
+    this.NWn = paramT1;
+    this.NWo = paramT2;
     this.filePath = paramString;
-    this.MSw = parama;
+    this.NpB = parama;
     AppMethodBeat.o(60319);
   }
   
@@ -28,7 +28,7 @@ public final class t<T extends d.l.b.a.b.e.b.a>
       if ((paramObject instanceof t))
       {
         paramObject = (t)paramObject;
-        if ((!p.i(this.Nzg, paramObject.Nzg)) || (!p.i(this.Nzh, paramObject.Nzh)) || (!p.i(this.filePath, paramObject.filePath)) || (!p.i(this.MSw, paramObject.MSw))) {}
+        if ((!p.i(this.NWn, paramObject.NWn)) || (!p.i(this.NWo, paramObject.NWo)) || (!p.i(this.filePath, paramObject.filePath)) || (!p.i(this.NpB, paramObject.NpB))) {}
       }
     }
     else
@@ -44,13 +44,13 @@ public final class t<T extends d.l.b.a.b.e.b.a>
   {
     int m = 0;
     AppMethodBeat.i(60321);
-    Object localObject = this.Nzg;
+    Object localObject = this.NWn;
     int i;
     int j;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.Nzh;
+      localObject = this.NWo;
       if (localObject == null) {
         break label105;
       }
@@ -65,7 +65,7 @@ public final class t<T extends d.l.b.a.b.e.b.a>
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.MSw;
+      localObject = this.NpB;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -81,7 +81,7 @@ public final class t<T extends d.l.b.a.b.e.b.a>
   public final String toString()
   {
     AppMethodBeat.i(60320);
-    String str = "IncompatibleVersionErrorData(actualVersion=" + this.Nzg + ", expectedVersion=" + this.Nzh + ", filePath=" + this.filePath + ", classId=" + this.MSw + ")";
+    String str = "IncompatibleVersionErrorData(actualVersion=" + this.NWn + ", expectedVersion=" + this.NWo + ", filePath=" + this.filePath + ", classId=" + this.NpB + ")";
     AppMethodBeat.o(60320);
     return str;
   }

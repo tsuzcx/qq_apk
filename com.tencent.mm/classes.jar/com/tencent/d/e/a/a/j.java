@@ -7,14 +7,14 @@ import java.util.Arrays;
 
 public final class j
 {
-  public final int LNI;
+  public final int MkH;
   public final long timestamp;
   public final float[] values;
   
   public j(SensorEvent paramSensorEvent, long paramLong)
   {
     AppMethodBeat.i(138414);
-    this.LNI = paramSensorEvent.sensor.getType();
+    this.MkH = paramSensorEvent.sensor.getType();
     this.timestamp = paramLong;
     this.values = Arrays.copyOf(paramSensorEvent.values, paramSensorEvent.values.length);
     AppMethodBeat.o(138414);

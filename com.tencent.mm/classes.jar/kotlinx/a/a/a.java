@@ -11,13 +11,13 @@ import kotlinx.a.h;
 import kotlinx.a.n;
 import kotlinx.a.t;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/builtins/AbstractDecoder;", "Lkotlinx/serialization/Decoder;", "Lkotlinx/serialization/CompositeDecoder;", "()V", "context", "Lkotlinx/serialization/modules/SerialModule;", "getContext", "()Lkotlinx/serialization/modules/SerialModule;", "updateMode", "Lkotlinx/serialization/UpdateMode;", "getUpdateMode", "()Lkotlinx/serialization/UpdateMode;", "beginStructure", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/SerialDescriptor;[Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/CompositeDecoder;", "decodeBoolean", "", "decodeBooleanElement", "index", "", "decodeByte", "", "decodeByteElement", "decodeChar", "", "decodeCharElement", "decodeDouble", "", "decodeDoubleElement", "decodeEnum", "enumDescriptor", "decodeFloat", "", "decodeFloatElement", "decodeInt", "decodeIntElement", "decodeLong", "", "decodeLongElement", "decodeNotNullMark", "decodeNull", "", "decodeNullableSerializableElement", "T", "", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "decodeSerializableElement", "decodeShort", "", "decodeShortElement", "decodeString", "", "decodeStringElement", "decodeUnit", "", "decodeUnitElement", "decodeValue", "endStructure", "updateNullableSerializableElement", "old", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;", "updateSerializableElement", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/builtins/AbstractDecoder;", "Lkotlinx/serialization/Decoder;", "Lkotlinx/serialization/CompositeDecoder;", "()V", "context", "Lkotlinx/serialization/modules/SerialModule;", "getContext", "()Lkotlinx/serialization/modules/SerialModule;", "updateMode", "Lkotlinx/serialization/UpdateMode;", "getUpdateMode", "()Lkotlinx/serialization/UpdateMode;", "beginStructure", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/SerialDescriptor;[Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/CompositeDecoder;", "decodeBoolean", "", "decodeBooleanElement", "index", "", "decodeByte", "", "decodeByteElement", "decodeChar", "", "decodeCharElement", "decodeDouble", "", "decodeDoubleElement", "decodeEnum", "enumDescriptor", "decodeFloat", "", "decodeFloatElement", "decodeInt", "decodeIntElement", "decodeLong", "", "decodeLongElement", "decodeNotNullMark", "decodeNull", "", "decodeNullableSerializableElement", "T", "", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "decodeSerializableElement", "decodeShort", "", "decodeShortElement", "decodeString", "", "decodeStringElement", "decodeUnit", "", "decodeUnitElement", "decodeValue", "endStructure", "updateNullableSerializableElement", "old", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;", "updateSerializableElement", "kotlinx-serialization-runtime"})
 public abstract class a
   implements kotlinx.a.a, c
 {
-  private final kotlinx.a.z NMc = kotlinx.a.z.NMa;
+  private final kotlinx.a.z Oji = kotlinx.a.z.Ojg;
   
-  private Object gwU()
+  private Object gBw()
   {
     throw ((Throwable)new t(d.g.b.z.bp(getClass()) + " can't retrieve untyped values", (byte)0));
   }
@@ -77,13 +77,13 @@ public abstract class a
   public final boolean a(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwF();
+    return gBh();
   }
   
   public final byte b(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwG();
+    return gBi();
   }
   
   public <T> T b(f<T> paramf)
@@ -101,128 +101,128 @@ public abstract class a
   public final char c(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwI();
+    return gBk();
   }
   
   public final short d(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwH();
+    return gBj();
   }
   
   public final int e(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwJ();
+    return gBl();
   }
   
   public final long f(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwK();
+    return gBm();
   }
   
   public final float g(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwL();
+    return gBn();
   }
   
-  public b gwB()
+  public b gBd()
   {
-    return (b)kotlinx.a.d.a.NOF;
+    return (b)kotlinx.a.d.a.OlL;
   }
   
-  public kotlinx.a.z gwC()
+  public kotlinx.a.z gBe()
   {
-    return this.NMc;
+    return this.Oji;
   }
   
-  public boolean gwD()
+  public boolean gBf()
   {
     return true;
   }
   
-  public Void gwE()
+  public Void gBg()
   {
     return null;
   }
   
-  public boolean gwF()
+  public boolean gBh()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Boolean");
     }
     return ((Boolean)localObject).booleanValue();
   }
   
-  public byte gwG()
+  public byte gBi()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Byte");
     }
     return ((Byte)localObject).byteValue();
   }
   
-  public short gwH()
+  public short gBj()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Short");
     }
     return ((Short)localObject).shortValue();
   }
   
-  public char gwI()
+  public char gBk()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Char");
     }
     return ((Character)localObject).charValue();
   }
   
-  public int gwJ()
+  public int gBl()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Int");
     }
     return ((Integer)localObject).intValue();
   }
   
-  public long gwK()
+  public long gBm()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Long");
     }
     return ((Long)localObject).longValue();
   }
   
-  public float gwL()
+  public float gBn()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Float");
     }
     return ((Float)localObject).floatValue();
   }
   
-  public double gwM()
+  public double gBo()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.Double");
     }
     return ((Double)localObject).doubleValue();
   }
   
-  public String gwN()
+  public String gBp()
   {
-    Object localObject = gwU();
+    Object localObject = gBw();
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type kotlin.String");
     }
@@ -232,13 +232,13 @@ public abstract class a
   public final double h(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwM();
+    return gBo();
   }
   
   public final String i(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gwN();
+    return gBp();
   }
 }
 

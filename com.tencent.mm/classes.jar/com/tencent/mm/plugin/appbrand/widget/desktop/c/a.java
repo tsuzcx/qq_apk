@@ -8,55 +8,55 @@ import java.util.List;
 public final class a
   implements b
 {
-  public double hil;
-  public double him;
-  private List<Double> naM;
-  public double naN;
+  public double hkZ;
+  public double hla;
+  private List<Double> nfU;
+  public double nfV;
   
   public a()
   {
     AppMethodBeat.i(49848);
-    this.naM = new ArrayList(100);
-    this.naN = 0.0D;
-    this.hil = 1.7976931348623157E+308D;
-    this.him = 4.9E-324D;
+    this.nfU = new ArrayList(100);
+    this.nfV = 0.0D;
+    this.hkZ = 1.7976931348623157E+308D;
+    this.hla = 4.9E-324D;
     AppMethodBeat.o(49848);
   }
   
-  public final void ahc()
+  public final void ahr()
   {
     AppMethodBeat.i(49849);
-    if (this.naM == null)
+    if (this.nfU == null)
     {
       AppMethodBeat.o(49849);
       return;
     }
-    if (this.naM.size() > 10000)
+    if (this.nfU.size() > 10000)
     {
       AppMethodBeat.o(49849);
       return;
     }
-    if (this.naM.size() != 0)
+    if (this.nfU.size() != 0)
     {
-      Iterator localIterator = this.naM.iterator();
+      Iterator localIterator = this.nfU.iterator();
       double d2;
       for (double d1 = 0.0D; localIterator.hasNext(); d1 += d2)
       {
         d2 = ((Double)localIterator.next()).doubleValue();
-        this.hil = Math.min(this.hil, d2);
-        this.him = Math.max(this.him, d2);
+        this.hkZ = Math.min(this.hkZ, d2);
+        this.hla = Math.max(this.hla, d2);
       }
-      this.naN = (d1 / this.naM.size());
+      this.nfV = (d1 / this.nfU.size());
     }
     AppMethodBeat.o(49849);
   }
   
-  public final void ahd()
+  public final void ahs()
   {
     double d1 = 60.0D;
     double d2 = 0.0D;
     AppMethodBeat.i(49850);
-    double d3 = c.naO.guM;
+    double d3 = c.nfW.gxt;
     if (d3 > 60.0D) {}
     for (;;)
     {
@@ -65,7 +65,7 @@ public final class a
       }
       for (;;)
       {
-        this.naM.add(Double.valueOf(d1));
+        this.nfU.add(Double.valueOf(d1));
         AppMethodBeat.o(49850);
         return;
       }

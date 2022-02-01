@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.sns.ad.landingpage.helper.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.ug;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a
 {
-  public volatile boolean yXA;
+  public volatile boolean zoc;
   
-  public static a dRv()
+  public static a dUT()
   {
-    AppMethodBeat.i(197596);
+    AppMethodBeat.i(219057);
     try
     {
       a locala = new a();
-      AppMethodBeat.o(197596);
+      AppMethodBeat.o(219057);
       return locala;
     }
     catch (Throwable localThrowable)
     {
-      ad.d("SnsAd.VideoCompletionHelper", "new instance failed!");
-      AppMethodBeat.o(197596);
+      ae.d("SnsAd.VideoCompletionHelper", "new instance failed!");
+      AppMethodBeat.o(219057);
     }
     return null;
   }
   
   public final void sendMessage()
   {
-    AppMethodBeat.i(197597);
-    ad.d("SnsAd.VideoCompletionHelper", "sendMessage video is called");
-    if (this.yXA) {
-      com.tencent.mm.sdk.b.a.IbL.l(new uc());
+    AppMethodBeat.i(219058);
+    ae.d("SnsAd.VideoCompletionHelper", "sendMessage video is called");
+    if (this.zoc) {
+      com.tencent.mm.sdk.b.a.IvT.l(new ug());
     }
-    this.yXA = false;
-    AppMethodBeat.o(197597);
+    this.zoc = false;
+    AppMethodBeat.o(219058);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,24 +15,24 @@ import com.tencent.mm.g.a.bj;
 import com.tencent.mm.g.a.bj.a;
 import com.tencent.mm.g.a.bs;
 import com.tencent.mm.g.a.bs.a;
-import com.tencent.mm.g.a.yb;
-import com.tencent.mm.g.a.yb.b;
+import com.tencent.mm.g.a.yh;
+import com.tencent.mm.g.a.yh.b;
 import com.tencent.mm.n.e;
 import com.tencent.mm.n.g;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class n
 {
-  public static Context ClL;
-  private static final Uri ClM;
+  public static Context CDp;
+  private static final Uri CDq;
   private static final String SYS_INFO;
   
   static
   {
     AppMethodBeat.i(115542);
-    ClL = null;
+    CDp = null;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
     localStringBuilder.append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
@@ -49,24 +49,24 @@ public final class n
     localStringBuilder.append("] TYPE:[" + Build.TYPE);
     localStringBuilder.append("] USER:[" + Build.USER + "]");
     SYS_INFO = localStringBuilder.toString();
-    ClM = Uri.parse("content://com.lbe.security.miui.permmgr/active");
+    CDq = Uri.parse("content://com.lbe.security.miui.permmgr/active");
     AppMethodBeat.o(115542);
   }
   
-  public static int II(String paramString)
+  public static int Jh(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(115536);
     try
     {
-      int j = bt.getInt(g.acA().getValue(paramString), 0);
+      int j = bu.getInt(g.acL().getValue(paramString), 0);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("VoipUtil", "getIntValFromDynamicConfig parseInt failed, val: ".concat(String.valueOf(paramString)));
+        ae.e("VoipUtil", "getIntValFromDynamicConfig parseInt failed, val: ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(115536);
@@ -76,7 +76,7 @@ public final class n
   public static Notification e(s.c paramc)
   {
     AppMethodBeat.i(115541);
-    if (d.lz(16))
+    if (d.lB(16))
     {
       paramc = paramc.build();
       AppMethodBeat.o(115541);
@@ -87,13 +87,13 @@ public final class n
     return paramc;
   }
   
-  public static boolean eAc()
+  public static boolean eDK()
   {
     return true;
   }
   
   /* Error */
-  private static boolean eAd()
+  private static boolean eDL()
   {
     // Byte code:
     //   0: aconst_null
@@ -118,12 +118,12 @@ public final class n
     //   34: astore 4
     //   36: aload 7
     //   38: astore 5
-    //   40: new 196	com/tencent/mm/vfs/e
+    //   40: new 196	com/tencent/mm/vfs/k
     //   43: dup
     //   44: invokestatic 202	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   47: ldc 204
-    //   49: invokespecial 207	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   52: invokestatic 213	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   49: invokespecial 207	com/tencent/mm/vfs/k:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   52: invokestatic 213	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
     //   55: astore 6
     //   57: aload 6
     //   59: astore 4
@@ -160,13 +160,13 @@ public final class n
     //   119: iconst_1
     //   120: istore_0
     //   121: aload 6
-    //   123: invokestatic 235	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   123: invokestatic 235	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
     //   126: ldc 154
     //   128: ldc 237
     //   130: iload_0
     //   131: invokestatic 240	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   134: invokevirtual 165	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   137: invokestatic 243	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: invokestatic 243	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   140: ldc 191
     //   142: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: iload_0
@@ -179,13 +179,13 @@ public final class n
     //   158: aload 4
     //   160: invokevirtual 248	java/io/InputStream:close	()V
     //   163: aload 4
-    //   165: invokestatic 235	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   165: invokestatic 235	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
     //   168: iload_2
     //   169: istore_0
     //   170: goto -44 -> 126
     //   173: astore 4
     //   175: aload 5
-    //   177: invokestatic 235	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   177: invokestatic 235	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
     //   180: ldc 191
     //   182: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: aload 4
@@ -223,62 +223,62 @@ public final class n
     //   158	163	188	java/io/IOException
   }
   
-  public static boolean eAe()
+  public static boolean eDM()
   {
     AppMethodBeat.i(115537);
     bj localbj = new bj();
-    a.IbL.l(localbj);
-    boolean bool = localbj.dmp.aLU;
+    a.IvT.l(localbj);
+    boolean bool = localbj.dnr.aLU;
     AppMethodBeat.o(115537);
     return bool;
   }
   
-  public static boolean eAf()
+  public static boolean eDN()
   {
     AppMethodBeat.i(115539);
     bs localbs = new bs();
-    a.IbL.l(localbs);
-    boolean bool = localbs.dmI.aLU;
+    a.IvT.l(localbs);
+    boolean bool = localbs.dnK.aLU;
     AppMethodBeat.o(115539);
     return bool;
   }
   
-  public static boolean eAg()
+  public static boolean eDO()
   {
     AppMethodBeat.i(115540);
     bh localbh = new bh();
-    a.IbL.l(localbh);
-    boolean bool = localbh.dmk.dml;
+    a.IvT.l(localbh);
+    boolean bool = localbh.dnm.dnn;
     AppMethodBeat.o(115540);
     return bool;
   }
   
-  public static boolean gC(Context paramContext)
+  public static boolean gH(Context paramContext)
   {
     AppMethodBeat.i(115531);
     boolean bool = false;
-    if (eAd() == true) {
-      bool = gF(paramContext);
+    if (eDL() == true) {
+      bool = gK(paramContext);
     }
-    ad.d("VoipUtil", "isLbePermissionEnable ret:".concat(String.valueOf(bool)));
+    ae.d("VoipUtil", "isLbePermissionEnable ret:".concat(String.valueOf(bool)));
     AppMethodBeat.o(115531);
     return bool;
   }
   
-  public static boolean gD(Context paramContext)
+  public static boolean gI(Context paramContext)
   {
     AppMethodBeat.i(115532);
     boolean bool = false;
-    if (eAd() == true) {
-      bool = gE(paramContext);
+    if (eDL() == true) {
+      bool = gJ(paramContext);
     }
-    ad.d("VoipUtil", "setLbePermissionEnable ret:".concat(String.valueOf(bool)));
+    ae.d("VoipUtil", "setLbePermissionEnable ret:".concat(String.valueOf(bool)));
     AppMethodBeat.o(115532);
     return bool;
   }
   
   /* Error */
-  private static boolean gE(Context paramContext)
+  private static boolean gJ(Context paramContext)
   {
     // Byte code:
     //   0: ldc_w 319
@@ -287,7 +287,7 @@ public final class n
     //   7: invokevirtual 325	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_0
     //   11: aload_0
-    //   12: getstatic 125	com/tencent/mm/plugin/voip/b/n:ClM	Landroid/net/Uri;
+    //   12: getstatic 125	com/tencent/mm/plugin/voip/b/n:CDq	Landroid/net/Uri;
     //   15: iconst_1
     //   16: anewarray 158	java/lang/String
     //   19: dup
@@ -347,7 +347,7 @@ public final class n
     //   127: ldc_w 358
     //   130: invokestatic 355	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   133: aastore
-    //   134: invokestatic 361	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   134: invokestatic 361	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   137: iconst_m1
     //   138: istore_2
     //   139: iload_1
@@ -369,7 +369,7 @@ public final class n
     //   168: invokestatic 355	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   171: invokevirtual 368	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   174: aload 4
-    //   176: getstatic 125	com/tencent/mm/plugin/voip/b/n:ClM	Landroid/net/Uri;
+    //   176: getstatic 125	com/tencent/mm/plugin/voip/b/n:CDq	Landroid/net/Uri;
     //   179: aload_0
     //   180: ldc_w 329
     //   183: aconst_null
@@ -402,7 +402,7 @@ public final class n
     //   227: iload_1
     //   228: invokestatic 355	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   231: aastore
-    //   232: invokestatic 361	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   232: invokestatic 361	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   235: iload_1
     //   236: ifle +117 -> 353
     //   239: ldc_w 319
@@ -429,7 +429,7 @@ public final class n
     //   273: ldc_w 358
     //   276: invokestatic 355	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   279: aastore
-    //   280: invokestatic 381	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   280: invokestatic 381	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   283: aload_0
     //   284: ifnull +115 -> 399
     //   287: aload_0
@@ -464,7 +464,7 @@ public final class n
     //   340: ldc_w 358
     //   343: invokestatic 355	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   346: aastore
-    //   347: invokestatic 381	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   347: invokestatic 381	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   350: goto -115 -> 235
     //   353: ldc_w 319
     //   356: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -527,14 +527,14 @@ public final class n
   }
   
   /* Error */
-  private static boolean gF(Context paramContext)
+  private static boolean gK(Context paramContext)
   {
     // Byte code:
     //   0: ldc_w 384
     //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: invokevirtual 325	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   10: getstatic 125	com/tencent/mm/plugin/voip/b/n:ClM	Landroid/net/Uri;
+    //   10: getstatic 125	com/tencent/mm/plugin/voip/b/n:CDq	Landroid/net/Uri;
     //   13: iconst_4
     //   14: anewarray 158	java/lang/String
     //   17: dup
@@ -651,7 +651,7 @@ public final class n
     //   245: ldc_w 358
     //   248: invokestatic 355	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   251: aastore
-    //   252: invokestatic 381	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   252: invokestatic 381	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   255: aload 6
     //   257: ifnull -45 -> 212
     //   260: aload 6
@@ -704,7 +704,7 @@ public final class n
     //   121	131	298	java/lang/Throwable
   }
   
-  public static void gG(Context paramContext)
+  public static void gL(Context paramContext)
   {
     AppMethodBeat.i(115535);
     Toast.makeText(paramContext, 2131764868, 0).show();
@@ -719,10 +719,10 @@ public final class n
   public static boolean isVoipStarted()
   {
     AppMethodBeat.i(115538);
-    yb localyb = new yb();
-    localyb.dMo.dsi = 2;
-    a.IbL.l(localyb);
-    boolean bool = localyb.dMp.dMq;
+    yh localyh = new yh();
+    localyh.dNE.dto = 2;
+    a.IvT.l(localyh);
+    boolean bool = localyh.dNF.dNG;
     AppMethodBeat.o(115538);
     return bool;
   }

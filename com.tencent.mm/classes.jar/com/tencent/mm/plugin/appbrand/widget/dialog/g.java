@@ -15,10 +15,10 @@ public class g
   implements k, k.a
 {
   private View contentView;
-  private m iDj;
-  private DialogInterface.OnCancelListener jjc;
-  private DialogInterface.OnDismissListener naV;
-  private DialogInterface.OnShowListener ncc;
+  private m iGc;
+  private DialogInterface.OnCancelListener jlV;
+  private DialogInterface.OnDismissListener ngd;
+  private DialogInterface.OnShowListener ngl;
   private boolean ov;
   private boolean ow;
   
@@ -42,19 +42,19 @@ public class g
   public final void a(m paramm)
   {
     AppMethodBeat.i(147742);
-    if (this.ncc != null) {
-      this.ncc.onShow(this);
+    if (this.ngl != null) {
+      this.ngl.onShow(this);
     }
-    this.iDj = paramm;
+    this.iGc = paramm;
     AppMethodBeat.o(147742);
   }
   
-  public final boolean aOv()
+  public final boolean aOS()
   {
     return false;
   }
   
-  public final boolean aOw()
+  public final boolean aOT()
   {
     return this.ow;
   }
@@ -62,11 +62,11 @@ public class g
   public void dismiss()
   {
     AppMethodBeat.i(147747);
-    if (this.iDj != null)
+    if (this.iGc != null)
     {
-      this.iDj.c(this);
-      if (this.naV != null) {
-        this.naV.onDismiss(this);
+      this.iGc.c(this);
+      if (this.ngd != null) {
+        this.ngd.onDismiss(this);
       }
     }
     AppMethodBeat.o(147747);
@@ -90,13 +90,13 @@ public class g
   public final void onCancel()
   {
     AppMethodBeat.i(147746);
-    if (this.jjc != null) {
-      this.jjc.onCancel(this);
+    if (this.jlV != null) {
+      this.jlV.onCancel(this);
     }
     AppMethodBeat.o(147746);
   }
   
-  public final void qy(int paramInt) {}
+  public final void qB(int paramInt) {}
   
   public void setCancelable(boolean paramBoolean)
   {
@@ -140,7 +140,7 @@ public class g
   {
     AppMethodBeat.i(147751);
     super.setOnCancelListener(paramOnCancelListener);
-    this.jjc = paramOnCancelListener;
+    this.jlV = paramOnCancelListener;
     AppMethodBeat.o(147751);
   }
   
@@ -148,7 +148,7 @@ public class g
   {
     AppMethodBeat.i(147748);
     super.setOnDismissListener(paramOnDismissListener);
-    this.naV = paramOnDismissListener;
+    this.ngd = paramOnDismissListener;
     AppMethodBeat.o(147748);
   }
   
@@ -156,7 +156,7 @@ public class g
   {
     AppMethodBeat.i(147745);
     super.setOnShowListener(paramOnShowListener);
-    this.ncc = paramOnShowListener;
+    this.ngl = paramOnShowListener;
     AppMethodBeat.o(147745);
   }
   
@@ -164,7 +164,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.g
  * JD-Core Version:    0.7.0.1
  */

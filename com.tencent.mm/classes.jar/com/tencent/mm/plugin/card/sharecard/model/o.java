@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public final class o
     this.db = parame;
   }
   
-  public final List<n> bUL()
+  public final List<n> bWa()
   {
     AppMethodBeat.i(113026);
     ArrayList localArrayList = new ArrayList();
@@ -39,7 +39,7 @@ public final class o
       localArrayList.add(localn);
     }
     localCursor.close();
-    ad.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    ae.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(113026);
     return localArrayList;
   }

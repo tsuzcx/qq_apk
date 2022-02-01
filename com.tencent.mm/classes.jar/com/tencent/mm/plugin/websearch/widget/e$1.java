@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.websearch.widget;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
@@ -15,16 +15,16 @@ final class e$1
   public final void run()
   {
     AppMethodBeat.i(116639);
-    Object localObject = a.a.gyq;
-    localObject = a.wz("100458");
+    Object localObject = a.a.gAX;
+    localObject = a.xi("100458");
     if (localObject == null)
     {
-      ad.i("WidgetSafeModeProxyImpl", "ABTEST_LAYERID_SEARCH_WIDGET_SAFE_MODE_SWITCH item is null");
+      ae.i("WidgetSafeModeProxyImpl", "ABTEST_LAYERID_SEARCH_WIDGET_SAFE_MODE_SWITCH item is null");
       AppMethodBeat.o(116639);
       return;
     }
-    e locale = this.DEu;
-    if ((((c)localObject).isValid()) && ("1".equals(((c)localObject).foF().get("isOpen")))) {}
+    e locale = this.DWs;
+    if ((((c)localObject).isValid()) && ("1".equals(((c)localObject).fsy().get("isOpen")))) {}
     for (boolean bool = true;; bool = false)
     {
       e.a(locale, bool);

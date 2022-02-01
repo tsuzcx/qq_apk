@@ -12,12 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.plugin.luckymoney.model.ai;
 import com.tencent.mm.plugin.luckymoney.model.j;
 import com.tencent.mm.plugin.luckymoney.model.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.s.b;
 import java.util.LinkedList;
@@ -27,24 +29,24 @@ public class LuckyMoneyIndexUI
   extends LuckyMoneyBaseUI
 {
   private int mChannel;
-  private LinearLayout vxl;
-  private LinearLayout vxm;
-  private LinearLayout vxn;
+  private LinearLayout vJp;
+  private LinearLayout vJq;
+  private LinearLayout vJr;
   
-  private void djo()
+  private void dmn()
   {
     AppMethodBeat.i(65606);
-    com.tencent.mm.plugin.luckymoney.b.a.dhH();
-    j localj = com.tencent.mm.plugin.luckymoney.b.a.dhI().dil();
+    com.tencent.mm.plugin.luckymoney.b.a.dkG();
+    j localj = com.tencent.mm.plugin.luckymoney.b.a.dkH().dlk();
     if (localj == null)
     {
       AppMethodBeat.o(65606);
       return;
     }
     ImageView localImageView = (ImageView)findViewById(2131301834);
-    if ((localj.vnW & 0x1) == 1)
+    if ((localj.vAb & 0x1) == 1)
     {
-      ad.i("MicroMsg.LuckyMoneyIndexUI", "initView: topBg use money bg");
+      ae.i("MicroMsg.LuckyMoneyIndexUI", "initView: topBg use money bg");
       localImageView.setImageResource(2131233038);
       AppMethodBeat.o(65606);
       return;
@@ -72,9 +74,9 @@ public class LuckyMoneyIndexUI
         return true;
       }
     });
-    this.vxl = ((LinearLayout)findViewById(2131301833));
-    this.vxm = ((LinearLayout)findViewById(2131301831));
-    this.vxn = ((LinearLayout)findViewById(2131301828));
+    this.vJp = ((LinearLayout)findViewById(2131301833));
+    this.vJq = ((LinearLayout)findViewById(2131301831));
+    this.vJr = ((LinearLayout)findViewById(2131301828));
     ((Button)findViewById(2131301832)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -82,8 +84,8 @@ public class LuckyMoneyIndexUI
         AppMethodBeat.i(65599);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        com.tencent.mm.plugin.report.service.g.yhR.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.plugin.report.service.g.yxI.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
         LuckyMoneyIndexUI.a(LuckyMoneyIndexUI.this, 0);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(65599);
@@ -96,8 +98,8 @@ public class LuckyMoneyIndexUI
         AppMethodBeat.i(65600);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        com.tencent.mm.plugin.report.service.g.yhR.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        com.tencent.mm.plugin.report.service.g.yxI.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
         LuckyMoneyIndexUI.a(LuckyMoneyIndexUI.this, 1);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(65600);
@@ -108,7 +110,7 @@ public class LuckyMoneyIndexUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(65602);
-        com.tencent.mm.plugin.report.service.g.yhR.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(4) });
+        com.tencent.mm.plugin.report.service.g.yxI.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(4) });
         paramAnonymousMenuItem = new LinkedList();
         LinkedList localLinkedList = new LinkedList();
         paramAnonymousMenuItem.add(LuckyMoneyIndexUI.this.getString(2131760896));
@@ -124,7 +126,7 @@ public class LuckyMoneyIndexUI
             switch (paramAnonymous2Int2)
             {
             default: 
-              com.tencent.mm.plugin.report.service.g.yhR.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(5) });
+              com.tencent.mm.plugin.report.service.g.yxI.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(5) });
               paramAnonymous2Int1 = 2;
             }
             for (;;)
@@ -134,20 +136,20 @@ public class LuckyMoneyIndexUI
               ((Intent)localObject).putExtra("key_type", paramAnonymous2Int1);
               LuckyMoneyIndexUI localLuckyMoneyIndexUI = LuckyMoneyIndexUI.this;
               localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(localLuckyMoneyIndexUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$4$1", "onClick", "(II)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              localLuckyMoneyIndexUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(localLuckyMoneyIndexUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$4$1", "onClick", "(II)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              localLuckyMoneyIndexUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
               com.tencent.mm.hellhoundlib.a.a.a(localLuckyMoneyIndexUI, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyIndexUI$4$1", "onClick", "(II)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(65601);
               return;
-              com.tencent.mm.plugin.report.service.g.yhR.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(6) });
+              com.tencent.mm.plugin.report.service.g.yxI.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(6) });
             }
           }
         });
         AppMethodBeat.o(65602);
         return true;
       }
-    }, null, s.b.JbZ);
-    djo();
+    }, null, s.b.JwH);
+    dmn();
     AppMethodBeat.o(65605);
   }
   
@@ -157,9 +159,9 @@ public class LuckyMoneyIndexUI
     super.onCreate(paramBundle);
     ((com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.walletlock.a.b.class)).a(this, null);
     initView();
-    doSceneProgress(new com.tencent.mm.plugin.luckymoney.model.ai("v1.0", ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.ICu, Integer.valueOf(0))).intValue(), (byte)0), false);
+    doSceneProgress(new ai("v1.0", ((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IWU, Integer.valueOf(0))).intValue(), (byte)0), false);
     this.mChannel = getIntent().getIntExtra("pay_channel", -1);
-    com.tencent.mm.plugin.report.service.g.yhR.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+    com.tencent.mm.plugin.report.service.g.yxI.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
     AppMethodBeat.o(65603);
   }
   
@@ -168,30 +170,30 @@ public class LuckyMoneyIndexUI
     AppMethodBeat.i(65604);
     super.onResume();
     com.tencent.mm.plugin.walletlock.a.b localb = (com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.walletlock.a.b.class);
-    localb.a(this, localb.eJn(), null);
+    localb.a(this, localb.eMV(), null);
     AppMethodBeat.o(65604);
   }
   
   public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(65607);
-    if ((paramn instanceof com.tencent.mm.plugin.luckymoney.model.ai))
+    if ((paramn instanceof ai))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (com.tencent.mm.plugin.luckymoney.model.ai)paramn;
+        paramString = (ai)paramn;
         paramn = new h.c();
         paramn.textColor = getResources().getColor(2131100589);
-        paramn.vzq = 101;
-        h.a(this, this.vxl, paramString.vot, paramn, "Text");
+        paramn.vLu = 101;
+        h.a(this, this.vJp, paramString.vAy, paramn, "Text");
         paramn = new h.c();
         paramn.textColor = getResources().getColor(2131100589);
-        paramn.vzq = 100;
-        h.a(this, this.vxm, paramString.vqk, paramn, "Text");
+        paramn.vLu = 100;
+        h.a(this, this.vJq, paramString.vCp, paramn, "Text");
         paramn = new h.c();
-        paramn.vzq = 102;
-        h.a(this, this.vxn, paramString.vqi, paramn, "Pic");
-        djo();
+        paramn.vLu = 102;
+        h.a(this, this.vJr, paramString.vCn, paramn, "Pic");
+        dmn();
       }
       AppMethodBeat.o(65607);
       return true;
@@ -208,7 +210,7 @@ public class LuckyMoneyIndexUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyIndexUI
  * JD-Core Version:    0.7.0.1
  */

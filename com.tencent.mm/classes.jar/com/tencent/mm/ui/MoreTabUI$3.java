@@ -12,8 +12,8 @@ final class MoreTabUI$3
   public final void run()
   {
     AppMethodBeat.i(33535);
-    this.IWz.setVisibility(8);
-    this.IWz.startAnimation(AnimationUtils.loadAnimation(this.JdT.getContext(), 2130772048));
+    this.Jrh.setVisibility(8);
+    this.Jrh.startAnimation(AnimationUtils.loadAnimation(this.JyE.getContext(), 2130772048));
     AppMethodBeat.o(33535);
   }
 }

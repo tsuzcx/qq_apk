@@ -9,9 +9,9 @@ import com.tencent.mm.kiss.widget.textview.a.a;
 public class SnsCommentPreloadTextView
   extends PLTextView
 {
-  private static a ACX = null;
-  private static int ACY = 0;
-  private boolean ACZ = false;
+  private static a AUy = null;
+  private static int AUz = 0;
+  private boolean AUA = false;
   
   public SnsCommentPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,10 +26,10 @@ public class SnsCommentPreloadTextView
   public static a getTextViewConfig()
   {
     AppMethodBeat.i(100524);
-    if (ACX == null) {
-      ACX = d.efb().getTextViewConfig();
+    if (AUy == null) {
+      AUy = d.eiI().getTextViewConfig();
     }
-    a locala = ACX;
+    a locala = AUy;
     AppMethodBeat.o(100524);
     return locala;
   }
@@ -37,21 +37,21 @@ public class SnsCommentPreloadTextView
   public static int getViewWidth()
   {
     AppMethodBeat.i(100527);
-    if (ACY == 0) {
-      ACY = d.efb().getViewWidth();
+    if (AUz == 0) {
+      AUz = d.eiI().getViewWidth();
     }
-    int i = ACY;
+    int i = AUz;
     AppMethodBeat.o(100527);
     return i;
   }
   
-  public final a akH()
+  public final a akW()
   {
     AppMethodBeat.i(100523);
-    if (ACX == null) {
-      ACX = d.efb().getTextViewConfig();
+    if (AUy == null) {
+      AUy = d.eiI().getTextViewConfig();
     }
-    a locala = ACX;
+    a locala = AUy;
     AppMethodBeat.o(100523);
     return locala;
   }

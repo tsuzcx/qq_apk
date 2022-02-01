@@ -5,7 +5,7 @@ import com.tencent.mm.ui.chatting.d.ad;
 public abstract interface q
   extends ad
 {
-  public abstract boolean fDB();
+  public abstract boolean fHE();
 }
 
 

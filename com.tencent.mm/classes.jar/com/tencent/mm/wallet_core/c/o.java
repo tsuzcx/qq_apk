@@ -1,7 +1,7 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public final class o
   extends m
 {
-  public String Lyo;
+  public String LVd;
   
   public o(String paramString)
   {
     AppMethodBeat.i(72781);
-    this.Lyo = paramString;
+    this.LVd = paramString;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     localHashMap1.put("crt_no", com.tencent.mm.compatible.util.q.encode(paramString));
@@ -43,13 +43,13 @@ public final class o
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72782);
-    ad.i("MicroMsg.NetSceneDeletedigitalcert", "onGYNetEnd %d %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ae.i("MicroMsg.NetSceneDeletedigitalcert", "onGYNetEnd %d %s", new Object[] { Integer.valueOf(paramInt), paramString });
     AppMethodBeat.o(72782);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.o
  * JD-Core Version:    0.7.0.1
  */

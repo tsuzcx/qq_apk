@@ -2,24 +2,24 @@ package com.tencent.mm.chatroom.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.bzn;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cah;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.bu;
 
 @Deprecated
 public final class a
   extends k.b
 {
-  private bzn fLw;
+  private cah fNA;
   
   public a(String paramString, int paramInt)
   {
     super(20);
     AppMethodBeat.i(12503);
-    this.fLw = new bzn();
-    this.fLw.FuO = new cwt().aPy(bt.nullAsNil(paramString));
-    this.fLw.nDG = paramInt;
-    this.vKm = this.fLw;
+    this.fNA = new cah();
+    this.fNA.FNm = new cxn().aQV(bu.nullAsNil(paramString));
+    this.fNA.nJb = paramInt;
+    this.vWq = this.fNA;
     AppMethodBeat.o(12503);
   }
 }

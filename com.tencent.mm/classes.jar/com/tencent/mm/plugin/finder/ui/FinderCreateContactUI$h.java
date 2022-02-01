@@ -12,12 +12,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class FinderCreateContactUI$h
   implements View.OnTouchListener
 {
@@ -29,7 +29,7 @@ final class FinderCreateContactUI$h
     Object localObject1 = new b();
     ((b)localObject1).bd(paramView);
     ((b)localObject1).bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/finder/ui/FinderCreateContactUI$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject1).ahq());
+    a.b("com/tencent/mm/plugin/finder/ui/FinderCreateContactUI$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject1).ahF());
     p.g(paramMotionEvent, "event");
     int j = paramMotionEvent.getAction();
     if (paramView == null)
@@ -39,13 +39,13 @@ final class FinderCreateContactUI$h
       throw paramView;
     }
     paramView = (TextView)paramView;
-    localObject1 = this.sBU;
+    localObject1 = this.sMT;
     Object localObject2;
     int k;
     int i;
     if ((j == 1) || (j == 3))
     {
-      localObject2 = (ClickableSpan[])((Spannable)localObject1).getSpans(0, this.sBU.length(), ClickableSpan.class);
+      localObject2 = (ClickableSpan[])((Spannable)localObject1).getSpans(0, this.sMT.length(), ClickableSpan.class);
       if (localObject2 != null)
       {
         k = localObject2.length;
@@ -56,7 +56,7 @@ final class FinderCreateContactUI$h
           if ((localObject3 instanceof o))
           {
             ((o)localObject3).setIsPressed(false);
-            this.sBV.invalidate();
+            this.sMU.invalidate();
           }
           i += 1;
         }
@@ -83,7 +83,7 @@ final class FinderCreateContactUI$h
     }
     for (boolean bool = true;; bool = false)
     {
-      ad.i(FinderCreateContactUI.b(this.sBS), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
+      ae.i(FinderCreateContactUI.b(this.sMR), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
       a.a(bool, this, "com/tencent/mm/plugin/finder/ui/FinderCreateContactUI$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(167173);
       return bool;
@@ -93,7 +93,7 @@ final class FinderCreateContactUI$h
       if ((localObject2 instanceof o))
       {
         ((o)localObject2).setIsPressed(true);
-        this.sBV.invalidate();
+        this.sMU.invalidate();
       }
       Selection.setSelection((Spannable)localObject1, ((Spannable)localObject1).getSpanStart(localObject2), ((Spannable)localObject1).getSpanEnd(localObject2));
       break;
@@ -103,7 +103,7 @@ final class FinderCreateContactUI$h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderCreateContactUI.h
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MatrixSettingSeekBarPreference
   extends Preference
 {
-  int FJm = 700;
-  MatrixSettingSeekBarPreference.a KBD;
-  private SeekBar nka;
+  int GbL = 700;
+  MatrixSettingSeekBarPreference.a KXX;
+  private SeekBar npi;
   
   public MatrixSettingSeekBarPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,11 +31,11 @@ public class MatrixSettingSeekBarPreference
   {
     AppMethodBeat.i(38885);
     super.onBindView(paramView);
-    this.nka = ((SeekBar)paramView.findViewById(2131305791));
-    this.nka.setProgress((int)(100.0F * this.FJm / 5000.0F));
+    this.npi = ((SeekBar)paramView.findViewById(2131305791));
+    this.npi.setProgress((int)(100.0F * this.GbL / 5000.0F));
     paramView = (TextView)paramView.findViewById(2131301227);
-    paramView.setText(this.mContext.getResources().getString(2131761200, new Object[] { Integer.valueOf(this.FJm) }));
-    this.nka.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+    paramView.setText(this.mContext.getResources().getString(2131761200, new Object[] { Integer.valueOf(this.GbL) }));
+    this.npi.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
@@ -51,7 +51,7 @@ public class MatrixSettingSeekBarPreference
       {
         AppMethodBeat.i(38884);
         if (MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this) != null) {
-          MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this).aeO(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this));
+          MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this).afx(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this));
         }
         AppMethodBeat.o(38884);
       }

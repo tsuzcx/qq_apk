@@ -11,10 +11,10 @@ public class AppBrandWeishiParams
   public static final Parcelable.Creator<AppBrandWeishiParams> CREATOR;
   public String appId;
   public String appName;
-  public int hyq;
-  public String jYq;
-  public String jYr;
-  public String jYs;
+  public int hBe;
+  public String kbF;
+  public String kbG;
+  public String kbH;
   public String thumbUrl;
   
   static
@@ -36,13 +36,13 @@ public class AppBrandWeishiParams
   private void i(Parcel paramParcel)
   {
     AppMethodBeat.i(134802);
-    this.hyq = paramParcel.readInt();
+    this.hBe = paramParcel.readInt();
     this.thumbUrl = paramParcel.readString();
-    this.jYq = paramParcel.readString();
-    this.jYr = paramParcel.readString();
+    this.kbF = paramParcel.readString();
+    this.kbG = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.appName = paramParcel.readString();
-    this.jYs = paramParcel.readString();
+    this.kbH = paramParcel.readString();
     AppMethodBeat.o(134802);
   }
   
@@ -71,7 +71,7 @@ public class AppBrandWeishiParams
   public String toString()
   {
     AppMethodBeat.i(134800);
-    String str = "AppBrandWeishiParams{fromOpenSdk=" + this.hyq + ", thumbUrl='" + this.thumbUrl + '\'' + ", thumbFullPath='" + this.jYq + '\'' + ", msgImgPath='" + this.jYr + '\'' + ", appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", sourceUserName='" + this.jYs + '\'' + '}';
+    String str = "AppBrandWeishiParams{fromOpenSdk=" + this.hBe + ", thumbUrl='" + this.thumbUrl + '\'' + ", thumbFullPath='" + this.kbF + '\'' + ", msgImgPath='" + this.kbG + '\'' + ", appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", sourceUserName='" + this.kbH + '\'' + '}';
     AppMethodBeat.o(134800);
     return str;
   }
@@ -79,13 +79,13 @@ public class AppBrandWeishiParams
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134804);
-    paramParcel.writeInt(this.hyq);
+    paramParcel.writeInt(this.hBe);
     paramParcel.writeString(this.thumbUrl);
-    paramParcel.writeString(this.jYq);
-    paramParcel.writeString(this.jYr);
+    paramParcel.writeString(this.kbF);
+    paramParcel.writeString(this.kbG);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.appName);
-    paramParcel.writeString(this.jYs);
+    paramParcel.writeString(this.kbH);
     AppMethodBeat.o(134804);
   }
 }

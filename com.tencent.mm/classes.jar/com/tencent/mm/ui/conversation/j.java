@@ -15,29 +15,29 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.ag;
-import com.tencent.mm.am.f;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.c.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.modelvoice.p;
-import com.tencent.mm.o.b;
 import com.tencent.mm.pluginsdk.i.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.m;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.a.a.a;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -55,43 +55,43 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public final class j
-  extends r<at>
+  extends r<au>
   implements n.b
 {
-  private static long KsD = 2000L;
-  private float JuA;
-  HashMap<String, a> JuD;
-  private boolean JuE;
-  private boolean JuF;
-  private float Juw;
-  private float Juz;
-  private final int KsA;
-  private final int KsB;
-  private boolean KsE;
-  av KsF;
-  public String Ksy;
-  private String Kvu;
-  private ColorStateList[] Kvv;
-  private String dCB;
-  protected MMSlideDelView.g nUw;
-  protected MMSlideDelView.c nUx;
-  protected MMSlideDelView.f nUy;
-  protected MMSlideDelView.d nUz;
+  private static long KOX = 2000L;
+  private float JPl;
+  private float JPo;
+  private float JPp;
+  HashMap<String, a> JPs;
+  private boolean JPt;
+  private boolean JPu;
+  public String KOS;
+  private final int KOU;
+  private final int KOV;
+  private boolean KOY;
+  aw KOZ;
+  private String KRO;
+  private ColorStateList[] KRP;
+  private String dDG;
+  protected MMSlideDelView.g oac;
+  protected MMSlideDelView.c oad;
+  protected MMSlideDelView.f oae;
+  protected MMSlideDelView.d oaf;
   
   public j(Context paramContext, String paramString, r.a parama)
   {
-    super(paramContext, new at());
+    super(paramContext, new au());
     AppMethodBeat.i(38528);
-    this.Kvv = new ColorStateList[5];
-    this.nUz = MMSlideDelView.getItemStatusCallBack();
-    this.Juw = -1.0F;
-    this.Juz = -1.0F;
-    this.JuA = -1.0F;
-    this.JuE = false;
-    this.JuF = false;
-    this.Ksy = "";
-    this.KsE = false;
-    this.KsF = new av(com.tencent.mm.model.ba.ajF().IdO.getLooper(), new av.a()
+    this.KRP = new ColorStateList[5];
+    this.oaf = MMSlideDelView.getItemStatusCallBack();
+    this.JPl = -1.0F;
+    this.JPo = -1.0F;
+    this.JPp = -1.0F;
+    this.JPt = false;
+    this.JPu = false;
+    this.KOS = "";
+    this.KOY = false;
+    this.KOZ = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -104,42 +104,42 @@ public final class j
       }
     }, false);
     super.a(parama);
-    this.dCB = paramString;
+    this.dDG = paramString;
     try
     {
-      ag.aFZ();
-      this.Kvu = f.DH(paramString);
+      ag.aGp();
+      this.KRO = f.Ej(paramString);
       label122:
-      this.JuD = new HashMap();
-      this.Kvv[0] = com.tencent.mm.cc.a.m(paramContext, 2131100490);
-      this.Kvv[1] = com.tencent.mm.cc.a.m(paramContext, 2131100643);
-      this.Kvv[3] = com.tencent.mm.cc.a.m(paramContext, 2131100711);
-      this.Kvv[2] = com.tencent.mm.cc.a.m(paramContext, 2131100640);
-      this.Kvv[2] = com.tencent.mm.cc.a.m(paramContext, 2131100640);
-      this.Kvv[4] = com.tencent.mm.cc.a.m(paramContext, 2131100543);
-      if (com.tencent.mm.cc.a.in(paramContext))
+      this.JPs = new HashMap();
+      this.KRP[0] = com.tencent.mm.cb.a.m(paramContext, 2131100490);
+      this.KRP[1] = com.tencent.mm.cb.a.m(paramContext, 2131100643);
+      this.KRP[3] = com.tencent.mm.cb.a.m(paramContext, 2131100711);
+      this.KRP[2] = com.tencent.mm.cb.a.m(paramContext, 2131100640);
+      this.KRP[2] = com.tencent.mm.cb.a.m(paramContext, 2131100640);
+      this.KRP[4] = com.tencent.mm.cb.a.m(paramContext, 2131100543);
+      if (com.tencent.mm.cb.a.is(paramContext))
       {
-        this.KsB = paramContext.getResources().getDimensionPixelSize(2131165246);
-        this.KsA = paramContext.getResources().getDimensionPixelSize(2131165247);
+        this.KOV = paramContext.getResources().getDimensionPixelSize(2131165246);
+        this.KOU = paramContext.getResources().getDimensionPixelSize(2131165247);
       }
       for (;;)
       {
-        this.Juw = com.tencent.mm.cc.a.ax(paramContext, 2131165517);
-        this.Juz = com.tencent.mm.cc.a.ax(paramContext, 2131165466);
-        this.JuA = com.tencent.mm.cc.a.ax(paramContext, 2131165576);
-        com.tencent.mm.model.ba.aBQ();
-        c.azv().a(this);
+        this.JPl = com.tencent.mm.cb.a.ax(paramContext, 2131165517);
+        this.JPo = com.tencent.mm.cb.a.ax(paramContext, 2131165466);
+        this.JPp = com.tencent.mm.cb.a.ax(paramContext, 2131165576);
+        bc.aCg();
+        com.tencent.mm.model.c.azL().a(this);
         AppMethodBeat.o(38528);
         return;
-        if (com.tencent.mm.cc.a.im(paramContext))
+        if (com.tencent.mm.cb.a.ir(paramContext))
         {
-          this.KsB = paramContext.getResources().getDimensionPixelSize(2131165245);
-          this.KsA = paramContext.getResources().getDimensionPixelSize(2131165247);
+          this.KOV = paramContext.getResources().getDimensionPixelSize(2131165245);
+          this.KOU = paramContext.getResources().getDimensionPixelSize(2131165247);
         }
         else
         {
-          this.KsB = paramContext.getResources().getDimensionPixelSize(2131165244);
-          this.KsA = paramContext.getResources().getDimensionPixelSize(2131165248);
+          this.KOV = paramContext.getResources().getDimensionPixelSize(2131165244);
+          this.KOU = paramContext.getResources().getDimensionPixelSize(2131165248);
         }
       }
     }
@@ -149,26 +149,26 @@ public final class j
     }
   }
   
-  public static at a(at paramat, Cursor paramCursor)
+  public static au a(au paramau, Cursor paramCursor)
   {
-    AppMethodBeat.i(194666);
-    at localat = paramat;
-    if (paramat == null) {
-      localat = new at();
+    AppMethodBeat.i(188068);
+    au localau = paramau;
+    if (paramau == null) {
+      localau = new au();
     }
-    localat.tB("");
-    localat.tC("");
-    localat.convertFrom(paramCursor);
-    AppMethodBeat.o(194666);
-    return localat;
+    localau.tW("");
+    localau.tX("");
+    localau.convertFrom(paramCursor);
+    AppMethodBeat.o(188068);
+    return localau;
   }
   
-  private static String aVK(String paramString)
+  private static String aXl(String paramString)
   {
     AppMethodBeat.i(38536);
     if ((paramString != null) && (paramString.length() == 32))
     {
-      paramString = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abv(paramString);
+      paramString = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acm(paramString);
       AppMethodBeat.o(38536);
       return paramString;
     }
@@ -176,77 +176,77 @@ public final class j
     return null;
   }
   
-  private CharSequence c(at paramat, int paramInt, boolean paramBoolean)
+  private CharSequence c(au paramau, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(38535);
-    if ((!bt.isNullOrNil(paramat.field_editingMsg)) && ((paramat.field_atCount <= 0) || (paramat.field_unReadCount <= 0)))
+    if ((!bu.isNullOrNil(paramau.field_editingMsg)) && ((paramau.field_atCount <= 0) || (paramau.field_unReadCount <= 0)))
     {
       localObject1 = new SpannableStringBuilder(this.context.getString(2131761048));
       ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(-5569532), 0, ((SpannableStringBuilder)localObject1).length(), 33);
-      ((SpannableStringBuilder)localObject1).append(" ").append(k.b(this.context, paramat.field_editingMsg, paramInt));
+      ((SpannableStringBuilder)localObject1).append(" ").append(k.b(this.context, paramau.field_editingMsg, paramInt));
       AppMethodBeat.o(38535);
       return localObject1;
     }
-    Object localObject1 = paramat.field_digest;
+    Object localObject1 = paramau.field_digest;
     if ((localObject1 != null) && (((String)localObject1).startsWith("<img src=\"original_label.png\"/>  ")))
     {
-      paramat = new SpannableString(k.e(this.context, (CharSequence)localObject1, paramInt));
+      paramau = new SpannableString(k.e(this.context, (CharSequence)localObject1, paramInt));
       AppMethodBeat.o(38535);
-      return paramat;
+      return paramau;
     }
     String str1;
-    if ((m(paramat) == 47) || (m(paramat) == 1048625))
+    if ((m(paramau) == 47) || (m(paramau) == 1048625))
     {
-      localObject1 = aVK(paramat.field_digest);
+      localObject1 = aXl(paramau.field_digest);
       str1 = "";
       if (localObject1 != null)
       {
-        paramat = "[" + (String)localObject1 + "]";
+        paramau = "[" + (String)localObject1 + "]";
         AppMethodBeat.o(38535);
-        return paramat;
+        return paramau;
       }
       localObject1 = str1;
-      if (paramat.field_digest != null)
+      if (paramau.field_digest != null)
       {
         localObject1 = str1;
-        if (paramat.field_digest.contains(":"))
+        if (paramau.field_digest.contains(":"))
         {
-          str1 = paramat.field_digest.substring(0, paramat.field_digest.indexOf(":"));
-          String str2 = aVK(paramat.field_digest.substring(paramat.field_digest.indexOf(":") + 1).replace(" ", ""));
+          str1 = paramau.field_digest.substring(0, paramau.field_digest.indexOf(":"));
+          String str2 = aXl(paramau.field_digest.substring(paramau.field_digest.indexOf(":") + 1).replace(" ", ""));
           localObject1 = str1;
           if (str2 != null)
           {
-            paramat = "[" + str2 + "]";
-            if (bt.isNullOrNil(str1))
+            paramau = "[" + str2 + "]";
+            if (bu.isNullOrNil(str1))
             {
               AppMethodBeat.o(38535);
-              return paramat;
+              return paramau;
             }
-            paramat = str1 + ": " + paramat;
+            paramau = str1 + ": " + paramau;
             AppMethodBeat.o(38535);
-            return paramat;
+            return paramau;
           }
         }
       }
       str1 = this.context.getString(2131755722);
-      if (bt.isNullOrNil((String)localObject1))
+      if (bu.isNullOrNil((String)localObject1))
       {
         localObject1 = str1;
-        paramat.tB((String)localObject1);
+        paramau.tW((String)localObject1);
       }
     }
     else
     {
-      if (bt.isNullOrNil(paramat.field_digest)) {
+      if (bu.isNullOrNil(paramau.field_digest)) {
         break label633;
       }
-      if (bt.isNullOrNil(paramat.field_digestUser)) {
+      if (bu.isNullOrNil(paramau.field_digestUser)) {
         break label622;
       }
-      if ((paramat.field_isSend != 0) || (!w.vF(paramat.field_username))) {
+      if ((paramau.field_isSend != 0) || (!x.wb(paramau.field_username))) {
         break label610;
       }
-      localObject1 = v.getDisplayName(paramat.field_digestUser, paramat.field_username);
+      localObject1 = w.getDisplayName(paramau.field_digestUser, paramau.field_username);
     }
     for (;;)
     {
@@ -254,134 +254,134 @@ public final class j
       label622:
       try
       {
-        localObject1 = String.format(paramat.field_digest, new Object[] { localObject1 });
+        localObject1 = String.format(paramau.field_digest, new Object[] { localObject1 });
         str1 = ((String)localObject1).replace('\n', ' ');
-        if ((paramat.field_atCount <= 0) || (paramat.field_unReadCount <= 0)) {
+        if ((paramau.field_atCount <= 0) || (paramau.field_unReadCount <= 0)) {
           break label661;
         }
-        paramat = new SpannableStringBuilder(this.context.getString(2131761044));
-        paramat.setSpan(new ForegroundColorSpan(-5569532), 0, paramat.length(), 33);
-        paramat.append(" ").append(k.b(this.context, str1, paramInt));
+        paramau = new SpannableStringBuilder(this.context.getString(2131761044));
+        paramau.setSpan(new ForegroundColorSpan(-5569532), 0, paramau.length(), 33);
+        paramau.append(" ").append(k.b(this.context, str1, paramInt));
         AppMethodBeat.o(38535);
-        return paramat;
+        return paramau;
       }
       catch (Exception localException) {}
       localObject1 = (String)localObject1 + ": " + str1;
       break;
-      localObject1 = v.zf(paramat.field_digestUser);
+      localObject1 = w.zP(paramau.field_digestUser);
       continue;
-      localObject1 = paramat.field_digest;
+      localObject1 = paramau.field_digest;
       continue;
       label633:
-      localObject2 = com.tencent.mm.booter.notification.a.h.a(paramat.field_isSend, paramat.field_username, paramat.field_content, m(paramat), this.context);
+      localObject2 = com.tencent.mm.booter.notification.a.h.a(paramau.field_isSend, paramau.field_username, paramau.field_content, m(paramau), this.context);
     }
     label661:
     Object localObject2 = str1;
     if (paramBoolean)
     {
       localObject2 = str1;
-      if (paramat.field_unReadCount > 1) {
-        localObject2 = this.context.getString(2131761047, new Object[] { Integer.valueOf(paramat.field_unReadCount), str1 });
+      if (paramau.field_unReadCount > 1) {
+        localObject2 = this.context.getString(2131761047, new Object[] { Integer.valueOf(paramau.field_unReadCount), str1 });
       }
     }
-    paramat = k.b(this.context, (CharSequence)localObject2, paramInt);
+    paramau = k.b(this.context, (CharSequence)localObject2, paramInt);
     AppMethodBeat.o(38535);
-    return paramat;
+    return paramau;
   }
   
-  private void fID()
+  private void fMV()
   {
     AppMethodBeat.i(38538);
-    if (this.JuD == null)
+    if (this.JPs == null)
     {
       AppMethodBeat.o(38538);
       return;
     }
-    Iterator localIterator = this.JuD.entrySet().iterator();
+    Iterator localIterator = this.JPs.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).KsI = null;
+      ((a)((Map.Entry)localIterator.next()).getValue()).KPc = null;
     }
     AppMethodBeat.o(38538);
   }
   
-  private void fIE()
+  private void fMW()
   {
     AppMethodBeat.i(38541);
-    ad.d("MicroMsg.EnterpriseConversationAdapter", "dkpno postTryNotify needNotify:%b timerStopped:%b", new Object[] { Boolean.valueOf(this.KsE), Boolean.valueOf(this.KsF.fkZ()) });
-    this.KsE = true;
-    if (this.KsF.fkZ()) {
-      fIF();
+    ae.d("MicroMsg.EnterpriseConversationAdapter", "dkpno postTryNotify needNotify:%b timerStopped:%b", new Object[] { Boolean.valueOf(this.KOY), Boolean.valueOf(this.KOZ.foU()) });
+    this.KOY = true;
+    if (this.KOZ.foU()) {
+      fMX();
     }
     AppMethodBeat.o(38541);
   }
   
-  private void fIF()
+  private void fMX()
   {
     AppMethodBeat.i(38542);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(38527);
-        if (!com.tencent.mm.model.ba.ajx())
+        if (!bc.ajM())
         {
           j.c(j.this).stopTimer();
-          ad.e("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange acc has not ready");
+          ae.e("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange acc has not ready");
           AppMethodBeat.o(38527);
           return;
         }
-        long l = bt.flT();
+        long l = bu.fpO();
         j.d(j.this);
-        l = bt.Df(l) * 3L;
-        ad.d("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange guest:%d old:%d needNotify:%b", new Object[] { Long.valueOf(l), Long.valueOf(j.KsD), Boolean.valueOf(j.a(j.this)) });
-        j.Eo((l + j.KsD) / 2L);
+        l = bu.DD(l) * 3L;
+        ae.d("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange guest:%d old:%d needNotify:%b", new Object[] { Long.valueOf(l), Long.valueOf(j.KOX), Boolean.valueOf(j.a(j.this)) });
+        j.EQ((l + j.KOX) / 2L);
         j.e(j.this);
-        av localav = j.c(j.this);
-        l = j.KsD;
-        localav.az(l, l);
+        aw localaw = j.c(j.this);
+        l = j.KOX;
+        localaw.ay(l, l);
         AppMethodBeat.o(38527);
       }
     });
     AppMethodBeat.o(38542);
   }
   
-  private CharSequence i(at paramat)
+  private CharSequence i(au paramau)
   {
     AppMethodBeat.i(38537);
-    if (paramat.field_status == 1)
+    if (paramau.field_status == 1)
     {
-      paramat = this.context.getString(2131761075);
+      paramau = this.context.getString(2131761075);
       AppMethodBeat.o(38537);
-      return paramat;
+      return paramau;
     }
-    if (paramat.field_conversationTime == 9223372036854775807L)
+    if (paramau.field_conversationTime == 9223372036854775807L)
     {
       AppMethodBeat.o(38537);
       return "";
     }
-    paramat = i.c(this.context, paramat.field_conversationTime, true);
+    paramau = i.c(this.context, paramau.field_conversationTime, true);
     AppMethodBeat.o(38537);
-    return paramat;
+    return paramau;
   }
   
-  private static int m(at paramat)
+  private static int m(au paramau)
   {
     int j = 1;
     AppMethodBeat.i(38534);
-    paramat = paramat.field_msgType;
+    paramau = paramau.field_msgType;
     int i = j;
-    if (paramat != null)
+    if (paramau != null)
     {
       i = j;
-      if (paramat.length() <= 0) {}
+      if (paramau.length() <= 0) {}
     }
     try
     {
-      i = Integer.valueOf(paramat).intValue();
+      i = Integer.valueOf(paramau).intValue();
       AppMethodBeat.o(38534);
       return i;
     }
-    catch (NumberFormatException paramat)
+    catch (NumberFormatException paramau)
     {
       for (;;)
       {
@@ -390,31 +390,31 @@ public final class j
     }
   }
   
-  public final void Zu()
+  public final void ZD()
   {
     AppMethodBeat.i(38532);
-    det();
+    dhl();
     LinkedList localLinkedList = new LinkedList();
     try
     {
-      localLinkedList.addAll(com.tencent.mm.am.g.DV(this.dCB));
+      localLinkedList.addAll(com.tencent.mm.al.g.Ex(this.dDG));
       label30:
-      if (bt.isNullOrNil(this.Kvu))
+      if (bu.isNullOrNil(this.KRO))
       {
-        com.tencent.mm.model.ba.aBQ();
-        setCursor(c.azv().c(w.hFd, localLinkedList, this.dCB));
+        bc.aCg();
+        setCursor(com.tencent.mm.model.c.azL().c(x.hHV, localLinkedList, this.dDG));
       }
       for (;;)
       {
-        if (this.JaF != null) {
-          this.JaF.aSs();
+        if (this.Jvn != null) {
+          this.Jvn.aSR();
         }
         super.notifyDataSetChanged();
         AppMethodBeat.o(38532);
         return;
-        localLinkedList.add(this.Kvu);
-        com.tencent.mm.model.ba.aBQ();
-        setCursor(c.azv().c(w.hFd, localLinkedList, this.dCB));
+        localLinkedList.add(this.KRO);
+        bc.aCg();
+        setCursor(com.tencent.mm.model.c.azL().c(x.hHV, localLinkedList, this.dDG));
       }
     }
     catch (Throwable localThrowable)
@@ -423,10 +423,10 @@ public final class j
     }
   }
   
-  public final void Zv()
+  public final void ZE()
   {
     AppMethodBeat.i(38531);
-    Zu();
+    ZD();
     AppMethodBeat.o(38531);
   }
   
@@ -435,7 +435,7 @@ public final class j
     AppMethodBeat.i(38539);
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ad.e("MicroMsg.EnterpriseConversationAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ae.e("MicroMsg.EnterpriseConversationAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       AppMethodBeat.o(38539);
       return;
     }
@@ -445,39 +445,39 @@ public final class j
   
   public final void a(MMSlideDelView.f paramf)
   {
-    this.nUy = paramf;
+    this.oae = paramf;
   }
   
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(38540);
-    ad.i("MicroMsg.EnterpriseConversationAdapter", "dkpno onNotifyChange mIsFront:%b mChangedBackground:%b event:%s", new Object[] { Boolean.valueOf(this.JuE), Boolean.valueOf(this.JuF), paramString });
-    if ((!bt.isNullOrNil(paramString)) && (this.JuD != null)) {
-      this.JuD.remove(paramString);
+    ae.i("MicroMsg.EnterpriseConversationAdapter", "dkpno onNotifyChange mIsFront:%b mChangedBackground:%b event:%s", new Object[] { Boolean.valueOf(this.JPt), Boolean.valueOf(this.JPu), paramString });
+    if ((!bu.isNullOrNil(paramString)) && (this.JPs != null)) {
+      this.JPs.remove(paramString);
     }
-    if (this.JuE)
+    if (this.JPt)
     {
-      fIE();
+      fMW();
       AppMethodBeat.o(38540);
       return;
     }
-    this.JuF = true;
+    this.JPu = true;
     AppMethodBeat.o(38540);
   }
   
   public final Cursor getCursor()
   {
-    AppMethodBeat.i(194665);
+    AppMethodBeat.i(188067);
     Cursor localCursor = super.getCursor();
-    AppMethodBeat.o(194665);
+    AppMethodBeat.o(188067);
     return localCursor;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(38533);
-    at localat = (at)getItem(paramInt);
-    String str = localat.field_username;
+    au localau = (au)getItem(paramInt);
+    String str = localau.field_username;
     paramViewGroup = null;
     if (paramView != null) {
       paramViewGroup = (b)paramView.getTag();
@@ -485,27 +485,27 @@ public final class j
     if ((paramView == null) || (paramViewGroup == null))
     {
       paramViewGroup = new b();
-      if (com.tencent.mm.cc.a.im(this.context))
+      if (com.tencent.mm.cb.a.ir(this.context))
       {
         paramView = View.inflate(this.context, 2131493663, null);
-        paramViewGroup.fOf = ((ImageView)paramView.findViewById(2131297008));
-        paramViewGroup.Kvx = ((NoMeasuredTextView)paramView.findViewById(2131302867));
-        paramViewGroup.Kvx.setTextSize(0, this.Juw);
-        paramViewGroup.Kvx.setTextColor(this.Kvv[3]);
-        paramViewGroup.Kvx.setShouldEllipsize(true);
-        paramViewGroup.Kvy = ((NoMeasuredTextView)paramView.findViewById(2131306207));
-        paramViewGroup.Kvy.setTextSize(0, this.JuA);
-        paramViewGroup.Kvy.setTextColor(this.Kvv[4]);
-        paramViewGroup.Kvy.setShouldEllipsize(false);
-        paramViewGroup.Kvy.setGravity(5);
-        paramViewGroup.Kvz = ((NoMeasuredTextView)paramView.findViewById(2131301311));
-        paramViewGroup.Kvz.setTextSize(0, this.Juz);
-        paramViewGroup.Kvz.setTextColor(this.Kvv[0]);
-        paramViewGroup.Kvz.setShouldEllipsize(true);
-        paramViewGroup.KvA = ((TextView)paramView.findViewById(2131305882));
-        paramViewGroup.KvA.setBackgroundResource(u.kE(this.context));
-        paramViewGroup.JuN = ((ImageView)paramView.findViewById(2131300954));
-        paramViewGroup.JuP = paramView.findViewById(2131297015);
+        paramViewGroup.fQl = ((ImageView)paramView.findViewById(2131297008));
+        paramViewGroup.KRR = ((NoMeasuredTextView)paramView.findViewById(2131302867));
+        paramViewGroup.KRR.setTextSize(0, this.JPl);
+        paramViewGroup.KRR.setTextColor(this.KRP[3]);
+        paramViewGroup.KRR.setShouldEllipsize(true);
+        paramViewGroup.KRS = ((NoMeasuredTextView)paramView.findViewById(2131306207));
+        paramViewGroup.KRS.setTextSize(0, this.JPp);
+        paramViewGroup.KRS.setTextColor(this.KRP[4]);
+        paramViewGroup.KRS.setShouldEllipsize(false);
+        paramViewGroup.KRS.setGravity(5);
+        paramViewGroup.KRT = ((NoMeasuredTextView)paramView.findViewById(2131301311));
+        paramViewGroup.KRT.setTextSize(0, this.JPo);
+        paramViewGroup.KRT.setTextColor(this.KRP[0]);
+        paramViewGroup.KRT.setShouldEllipsize(true);
+        paramViewGroup.KRU = ((TextView)paramView.findViewById(2131305882));
+        paramViewGroup.KRU.setBackgroundResource(u.kL(this.context));
+        paramViewGroup.JPC = ((ImageView)paramView.findViewById(2131300954));
+        paramViewGroup.JPE = paramView.findViewById(2131297015);
         paramView.findViewById(2131305672).setVisibility(8);
         paramView.findViewById(2131301541).setVisibility(8);
         paramView.setTag(paramViewGroup);
@@ -513,9 +513,9 @@ public final class j
     }
     for (;;)
     {
-      a locala = (a)this.JuD.get(str);
-      com.tencent.mm.model.ba.aBQ();
-      Object localObject = c.azp().Bf(str);
+      a locala = (a)this.JPs.get(str);
+      bc.aCg();
+      Object localObject = com.tencent.mm.model.c.azF().BH(str);
       label382:
       boolean bool;
       if (locala == null)
@@ -523,107 +523,107 @@ public final class j
         locala = new a((byte)0);
         if (localObject != null)
         {
-          locala.KsL = ((int)((b)localObject).gfj);
+          locala.KPf = ((int)((com.tencent.mm.contact.c)localObject).ght);
           if (localObject == null) {
             break label1093;
           }
           bool = true;
           label390:
-          locala.KsR = bool;
-          if ((localObject == null) || (!((am)localObject).YY())) {
+          locala.KPl = bool;
+          if ((localObject == null) || (!((an)localObject).Zh())) {
             break label1099;
           }
           bool = true;
           label413:
-          locala.KsT = bool;
-          if ((localObject == null) || (!((am)localObject).Pf())) {
+          locala.KPn = bool;
+          if ((localObject == null) || (!((an)localObject).Pd())) {
             break label1105;
           }
           bool = true;
           label436:
-          locala.KsO = bool;
-          if (localat.field_unReadCount <= 0) {
+          locala.KPi = bool;
+          if (localau.field_unReadCount <= 0) {
             break label1111;
           }
           bool = true;
           label454:
-          locala.ANB = bool;
-          locala.oIb = 0;
-          if ((m(localat) == 34) && (localat.field_isSend == 0) && (!bt.isNullOrNil(localat.field_content)) && (!new p(localat.field_content).itZ)) {
-            locala.oIb = 1;
+          locala.Bfc = bool;
+          locala.oOD = 0;
+          if ((m(localau) == 34) && (localau.field_isSend == 0) && (!bu.isNullOrNil(localau.field_content)) && (!new p(localau.field_content).iwT)) {
+            locala.oOD = 1;
           }
-          locala.nickName = k.b(this.context, v.a((am)localObject, str, false), paramViewGroup.Kvx.getTextSize());
-          locala.KsI = i(localat);
-          paramInt = (int)paramViewGroup.Kvz.getTextSize();
-          if ((!locala.KsO) || (!locala.ANB)) {
+          locala.nickName = k.b(this.context, w.a((an)localObject, str, false), paramViewGroup.KRR.getTextSize());
+          locala.KPc = i(localau);
+          paramInt = (int)paramViewGroup.KRT.getTextSize();
+          if ((!locala.KPi) || (!locala.Bfc)) {
             break label1117;
           }
           bool = true;
           label586:
-          locala.KsJ = c(localat, paramInt, bool);
-          locala.KsU = localat.field_attrflag;
-          switch (localat.field_status)
+          locala.KPd = c(localau, paramInt, bool);
+          locala.KPo = localau.field_attrflag;
+          switch (localau.field_status)
           {
           case 3: 
           case 4: 
           default: 
             paramInt = -1;
             label654:
-            locala.KsK = paramInt;
-            com.tencent.mm.model.ba.aBQ();
-            locala.JuH = c.azv().h(localat);
-            locala.KsP = ac.fko();
-            this.JuD.put(str, locala);
+            locala.KPe = paramInt;
+            bc.aCg();
+            locala.JPw = com.tencent.mm.model.c.azL().h(localau);
+            locala.KPj = ad.foi();
+            this.JPs.put(str, locala);
           }
         }
       }
       for (;;)
       {
-        if (locala.KsI == null) {
-          locala.KsI = i(localat);
+        if (locala.KPc == null) {
+          locala.KPc = i(localau);
         }
-        if ((locala.KsO) && (locala.ANB))
+        if ((locala.KPi) && (locala.Bfc))
         {
-          paramViewGroup.Kvz.setTextColor(this.Kvv[0]);
+          paramViewGroup.KRT.setTextColor(this.KRP[0]);
           label747:
-          com.tencent.mm.booter.notification.a.h.kY(paramViewGroup.Kvz.getWidth());
-          com.tencent.mm.booter.notification.a.h.kZ((int)paramViewGroup.Kvz.getTextSize());
-          com.tencent.mm.booter.notification.a.h.b(paramViewGroup.Kvz.getPaint());
-          if (locala.KsK == -1) {
+          com.tencent.mm.booter.notification.a.h.la(paramViewGroup.KRT.getWidth());
+          com.tencent.mm.booter.notification.a.h.lb((int)paramViewGroup.KRT.getTextSize());
+          com.tencent.mm.booter.notification.a.h.b(paramViewGroup.KRT.getPaint());
+          if (locala.KPe == -1) {
             break label1167;
           }
-          paramViewGroup.Kvz.setCompoundLeftDrawablesWithIntrinsicBounds(locala.KsK);
-          paramViewGroup.Kvz.setDrawLeftDrawable(true);
+          paramViewGroup.KRT.setCompoundLeftDrawablesWithIntrinsicBounds(locala.KPe);
+          paramViewGroup.KRT.setDrawLeftDrawable(true);
           label807:
-          paramViewGroup.Kvz.setText(locala.KsJ);
-          paramViewGroup.Kvx.setDrawRightDrawable(false);
-          paramViewGroup.Kvx.setText(locala.nickName);
-          localObject = paramViewGroup.Kvy.getLayoutParams();
-          if (locala.KsI.length() < 9) {
+          paramViewGroup.KRT.setText(locala.KPd);
+          paramViewGroup.KRR.setDrawRightDrawable(false);
+          paramViewGroup.KRR.setText(locala.nickName);
+          localObject = paramViewGroup.KRS.getLayoutParams();
+          if (locala.KPc.length() < 9) {
             break label1178;
           }
-          if (((ViewGroup.LayoutParams)localObject).width != this.KsB)
+          if (((ViewGroup.LayoutParams)localObject).width != this.KOV)
           {
-            ((ViewGroup.LayoutParams)localObject).width = this.KsB;
-            paramViewGroup.Kvy.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            ((ViewGroup.LayoutParams)localObject).width = this.KOV;
+            paramViewGroup.KRS.setLayoutParams((ViewGroup.LayoutParams)localObject);
           }
           label893:
-          paramViewGroup.Kvy.setText(locala.KsI);
-          if (!locala.KsO) {
+          paramViewGroup.KRS.setText(locala.KPc);
+          if (!locala.KPi) {
             break label1211;
           }
-          paramViewGroup.JuN.setVisibility(0);
+          paramViewGroup.JPC.setVisibility(0);
           label921:
-          a.b.c(paramViewGroup.fOf, str);
-          paramViewGroup.KvA.setVisibility(4);
-          paramViewGroup.JuP.setVisibility(4);
-          if ((locala.KsR) && (locala.KsL != 0))
+          a.b.c(paramViewGroup.fQl, str);
+          paramViewGroup.KRU.setVisibility(4);
+          paramViewGroup.JPE.setVisibility(4);
+          if ((locala.KPl) && (locala.KPf != 0))
           {
-            paramInt = localat.field_unReadCount;
-            if (!locala.KsO) {
+            paramInt = localau.field_unReadCount;
+            if (!locala.KPi) {
               break label1228;
             }
-            paramViewGroup = paramViewGroup.JuP;
+            paramViewGroup = paramViewGroup.JPE;
             if (paramInt <= 0) {
               break label1223;
             }
@@ -632,19 +632,19 @@ public final class j
             paramViewGroup.setVisibility(paramInt);
           }
           label992:
-          if ((!locala.JuH) || (localat.field_conversationTime == -1L)) {
+          if ((!locala.JPw) || (localau.field_conversationTime == -1L)) {
             break label1305;
           }
           paramView.findViewById(2131298792).setBackgroundResource(2131231817);
         }
         for (;;)
         {
-          a.a.fyf().a(paramView, String.valueOf(locala.nickName), localat.field_unReadCount, String.valueOf(locala.KsI), String.valueOf(locala.KsJ));
+          a.a.fCh().a(paramView, String.valueOf(locala.nickName), localau.field_unReadCount, String.valueOf(locala.KPc), String.valueOf(locala.KPd));
           AppMethodBeat.o(38533);
           return paramView;
           paramView = View.inflate(this.context, 2131493662, null);
           break;
-          locala.KsL = -1;
+          locala.KPf = -1;
           break label382;
           label1093:
           bool = false;
@@ -669,20 +669,20 @@ public final class j
           break label654;
           paramInt = 2131690877;
           break label654;
-          paramViewGroup.Kvz.setTextColor(this.Kvv[locala.oIb]);
+          paramViewGroup.KRT.setTextColor(this.KRP[locala.oOD]);
           break label747;
           label1167:
-          paramViewGroup.Kvz.setDrawLeftDrawable(false);
+          paramViewGroup.KRT.setDrawLeftDrawable(false);
           break label807;
           label1178:
-          if (((ViewGroup.LayoutParams)localObject).width == this.KsA) {
+          if (((ViewGroup.LayoutParams)localObject).width == this.KOU) {
             break label893;
           }
-          ((ViewGroup.LayoutParams)localObject).width = this.KsA;
-          paramViewGroup.Kvy.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          ((ViewGroup.LayoutParams)localObject).width = this.KOU;
+          paramViewGroup.KRS.setLayoutParams((ViewGroup.LayoutParams)localObject);
           break label893;
           label1211:
-          paramViewGroup.JuN.setVisibility(8);
+          paramViewGroup.JPC.setVisibility(8);
           break label921;
           label1223:
           paramInt = 4;
@@ -690,17 +690,17 @@ public final class j
           label1228:
           if (paramInt > 99)
           {
-            paramViewGroup.KvA.setText("");
-            paramViewGroup.KvA.setBackgroundResource(2131689744);
-            paramViewGroup.KvA.setVisibility(0);
+            paramViewGroup.KRU.setText("");
+            paramViewGroup.KRU.setBackgroundResource(2131689744);
+            paramViewGroup.KRU.setVisibility(0);
             break label992;
           }
           if (paramInt <= 0) {
             break label992;
           }
-          paramViewGroup.KvA.setText(String.valueOf(paramInt));
-          paramViewGroup.KvA.setBackgroundResource(u.aP(this.context, paramInt));
-          paramViewGroup.KvA.setVisibility(0);
+          paramViewGroup.KRU.setText(String.valueOf(paramInt));
+          paramViewGroup.KRU.setBackgroundResource(u.aP(this.context, paramInt));
+          paramViewGroup.KRU.setVisibility(0);
           break label992;
           label1305:
           paramView.findViewById(2131298792).setBackgroundResource(2131231818);
@@ -712,10 +712,10 @@ public final class j
   public final void onPause()
   {
     AppMethodBeat.i(38529);
-    if (this.nUz != null) {
-      this.nUz.deC();
+    if (this.oaf != null) {
+      this.oaf.dhu();
     }
-    this.JuE = false;
+    this.JPt = false;
     AppMethodBeat.o(38529);
   }
   
@@ -723,21 +723,21 @@ public final class j
   {
     int i = 1;
     AppMethodBeat.i(38530);
-    this.JuE = true;
+    this.JPt = true;
     Object localObject = new Time();
     ((Time)localObject).setToNow();
     localObject = com.tencent.mm.pluginsdk.i.h.a("MM/dd", (Time)localObject).toString();
-    if (!this.Ksy.equals(localObject)) {}
+    if (!this.KOS.equals(localObject)) {}
     for (;;)
     {
-      this.Ksy = ((String)localObject);
+      this.KOS = ((String)localObject);
       if (i != 0) {
-        fID();
+        fMV();
       }
-      if (this.JuF)
+      if (this.JPu)
       {
         super.a(null, null);
-        this.JuF = false;
+        this.JPu = false;
       }
       AppMethodBeat.o(38530);
       return;
@@ -747,42 +747,42 @@ public final class j
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.nUx = paramc;
+    this.oad = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.nUw = paramg;
+    this.oac = paramg;
   }
   
   final class a
   {
-    public boolean ANB;
-    public boolean JuH;
-    public CharSequence KsI;
-    public CharSequence KsJ;
-    public int KsK;
-    public int KsL;
-    public boolean KsO;
-    public boolean KsP;
-    public boolean KsR;
-    public boolean KsT;
-    public int KsU;
+    public boolean Bfc;
+    public boolean JPw;
+    public CharSequence KPc;
+    public CharSequence KPd;
+    public int KPe;
+    public int KPf;
+    public boolean KPi;
+    public boolean KPj;
+    public boolean KPl;
+    public boolean KPn;
+    public int KPo;
     public CharSequence nickName;
-    public int oIb;
+    public int oOD;
     
     private a() {}
   }
   
   public static final class b
   {
-    public ImageView JuN;
-    public View JuP;
-    public TextView KvA;
-    public NoMeasuredTextView Kvx;
-    public NoMeasuredTextView Kvy;
-    public NoMeasuredTextView Kvz;
-    public ImageView fOf;
+    public ImageView JPC;
+    public View JPE;
+    public NoMeasuredTextView KRR;
+    public NoMeasuredTextView KRS;
+    public NoMeasuredTextView KRT;
+    public TextView KRU;
+    public ImageView fQl;
   }
 }
 

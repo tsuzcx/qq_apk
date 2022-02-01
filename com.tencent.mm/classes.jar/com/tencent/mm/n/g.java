@@ -5,18 +5,18 @@ import com.tencent.mm.plugin.zero.b.a;
 
 public final class g
 {
-  public static e acA()
+  public static e acL()
   {
     AppMethodBeat.i(133655);
-    e locale = ((a)com.tencent.mm.kernel.g.ab(a.class)).acA();
+    e locale = ((a)com.tencent.mm.kernel.g.ab(a.class)).acL();
     AppMethodBeat.o(133655);
     return locale;
   }
   
-  public static c acB()
+  public static c acM()
   {
     AppMethodBeat.i(133656);
-    c localc = ((a)com.tencent.mm.kernel.g.ab(a.class)).acB();
+    c localc = ((a)com.tencent.mm.kernel.g.ab(a.class)).acM();
     AppMethodBeat.o(133656);
     return localc;
   }

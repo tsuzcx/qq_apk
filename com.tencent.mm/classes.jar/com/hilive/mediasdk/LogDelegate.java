@@ -9,7 +9,7 @@ public class LogDelegate
   static
   {
     AppMethodBeat.i(73604);
-    sImp = new DefaultLog(null);
+    sImp = new LogDelegate.DefaultLog(null);
     AppMethodBeat.o(73604);
   }
   
@@ -62,119 +62,6 @@ public class LogDelegate
     AppMethodBeat.o(73601);
   }
   
-  static class DefaultLog
-    implements LogDelegate.ILog
-  {
-    public void d(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(73593);
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length > 0) {
-          String.format(paramString2, paramVarArgs);
-        }
-        AppMethodBeat.o(73593);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        AppMethodBeat.o(73593);
-      }
-    }
-    
-    public void e(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(73596);
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length > 0) {
-          String.format(paramString2, paramVarArgs);
-        }
-        AppMethodBeat.o(73596);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        AppMethodBeat.o(73596);
-      }
-    }
-    
-    public void i(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(73594);
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length > 0) {
-          String.format(paramString2, paramVarArgs);
-        }
-        AppMethodBeat.o(73594);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        AppMethodBeat.o(73594);
-      }
-    }
-    
-    public void printStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(73597);
-      if (paramThrowable != null)
-      {
-        if (paramVarArgs != null) {}
-        try
-        {
-          if (paramVarArgs.length > 0) {
-            String.format(paramString2, paramVarArgs);
-          }
-          AppMethodBeat.o(73597);
-          return;
-        }
-        catch (Exception paramString1) {}
-      }
-      AppMethodBeat.o(73597);
-    }
-    
-    public void v(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(73592);
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length > 0) {
-          String.format(paramString2, paramVarArgs);
-        }
-        AppMethodBeat.o(73592);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        AppMethodBeat.o(73592);
-      }
-    }
-    
-    public void w(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(73595);
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length > 0) {
-          String.format(paramString2, paramVarArgs);
-        }
-        AppMethodBeat.o(73595);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        AppMethodBeat.o(73595);
-      }
-    }
-  }
-  
   public static abstract interface ILog
   {
     public abstract void d(String paramString1, String paramString2, Object... paramVarArgs);
@@ -192,7 +79,7 @@ public class LogDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.hilive.mediasdk.LogDelegate
  * JD-Core Version:    0.7.0.1
  */

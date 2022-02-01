@@ -6,7 +6,7 @@ import android.view.View.OnKeyListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class i$9
   implements View.OnKeyListener
@@ -18,20 +18,20 @@ final class i$9
     AppMethodBeat.i(136367);
     b localb = new b();
     localb.bd(paramView);
-    localb.mr(paramInt);
+    localb.mu(paramInt);
     localb.bd(paramKeyEvent);
-    a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$17", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
-    paramView = this.ndJ;
+    a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$17", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
+    paramView = this.niS;
     boolean bool;
     if (67 == paramInt)
     {
       bool = true;
-      paramView.tak = bool;
-      if (!this.ndJ.tak) {
+      paramView.nxw = bool;
+      if (!this.niS.nxw) {
         break label143;
       }
-      this.ndJ.lEc.removeCallbacks(this.ndJ.tal);
-      this.ndJ.lEc.postDelayed(this.ndJ.tal, 1000L);
+      this.niS.lIB.removeCallbacks(this.niS.omQ);
+      this.niS.lIB.postDelayed(this.niS.omQ, 1000L);
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ final class i$9
       bool = false;
       break;
       label143:
-      this.ndJ.tal.run();
+      this.niS.omQ.run();
     }
   }
 }

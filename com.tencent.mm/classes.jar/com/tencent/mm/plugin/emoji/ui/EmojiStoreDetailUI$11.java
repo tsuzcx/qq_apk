@@ -12,8 +12,8 @@ final class EmojiStoreDetailUI$11
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(176189);
-    paraml.a(1001, this.pKS.getString(2131758301), 2131689831);
-    paraml.a(1000, this.pKS.getString(2131758302), 2131689817);
+    paraml.a(1001, this.pRx.getString(2131758301), 2131689831);
+    paraml.a(1000, this.pRx.getString(2131758302), 2131689817);
     AppMethodBeat.o(176189);
   }
 }

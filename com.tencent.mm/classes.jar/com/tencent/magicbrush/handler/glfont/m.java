@@ -9,18 +9,18 @@ import java.util.Map;
 public final class m
 {
   public static int VERSION = 5;
-  public static int czd = 0;
-  public static int cze = 1;
-  public static int czf = 2;
-  public static int czg = 3;
-  public static int czh = 4;
-  public static int czi = 6;
-  Map<Integer, String> czj;
+  public static int czK = 0;
+  public static int czL = 1;
+  public static int czM = 2;
+  public static int czN = 3;
+  public static int czO = 4;
+  public static int czP = 6;
+  Map<Integer, String> czQ;
   
   public m()
   {
     AppMethodBeat.i(140061);
-    this.czj = new HashMap();
+    this.czQ = new HashMap();
     AppMethodBeat.o(140061);
   }
   
@@ -45,7 +45,7 @@ public final class m
     {
       paramRandomAccessFile.read((byte[])localObject1);
       localc.name = new String((byte[])localObject1);
-      localc.czt = paramRandomAccessFile.readInt();
+      localc.cAa = paramRandomAccessFile.readInt();
       localc.offset = paramRandomAccessFile.readInt();
       localc.length = paramRandomAccessFile.readInt();
       if (!"name".equalsIgnoreCase(localc.name)) {}
@@ -64,30 +64,30 @@ public final class m
       }
       paramRandomAccessFile.seek(localc.offset);
       localObject1 = new b((byte)0);
-      ((b)localObject1).czq = paramRandomAccessFile.readShort();
-      ((b)localObject1).czr = paramRandomAccessFile.readShort();
-      ((b)localObject1).czs = paramRandomAccessFile.readShort();
+      ((b)localObject1).czX = paramRandomAccessFile.readShort();
+      ((b)localObject1).czY = paramRandomAccessFile.readShort();
+      ((b)localObject1).czZ = paramRandomAccessFile.readShort();
       a locala = new a((byte)0);
       i = j;
-      while (i < ((b)localObject1).czr)
+      while (i < ((b)localObject1).czY)
       {
-        locala.czk = paramRandomAccessFile.readShort();
-        locala.czl = paramRandomAccessFile.readShort();
-        locala.czm = paramRandomAccessFile.readShort();
-        locala.czn = paramRandomAccessFile.readShort();
-        locala.czo = paramRandomAccessFile.readShort();
-        locala.czp = paramRandomAccessFile.readShort();
+        locala.czR = paramRandomAccessFile.readShort();
+        locala.czS = paramRandomAccessFile.readShort();
+        locala.czT = paramRandomAccessFile.readShort();
+        locala.czU = paramRandomAccessFile.readShort();
+        locala.czV = paramRandomAccessFile.readShort();
+        locala.czW = paramRandomAccessFile.readShort();
         long l = paramRandomAccessFile.getFilePointer();
-        if ((locala.czo <= 0) || (locala.czo >= 32767))
+        if ((locala.czV <= 0) || (locala.czV >= 32767))
         {
           AppMethodBeat.o(140062);
           return;
         }
-        Object localObject2 = new byte[locala.czo];
-        paramRandomAccessFile.seek(localc.offset + locala.czp + ((b)localObject1).czs);
+        Object localObject2 = new byte[locala.czV];
+        paramRandomAccessFile.seek(localc.offset + locala.czW + ((b)localObject1).czZ);
         paramRandomAccessFile.read((byte[])localObject2);
         localObject2 = new String((byte[])localObject2, Charset.forName("utf-16"));
-        this.czj.put(Integer.valueOf(locala.czn), localObject2);
+        this.czQ.put(Integer.valueOf(locala.czU), localObject2);
         paramRandomAccessFile.seek(l);
         i += 1;
       }
@@ -99,31 +99,31 @@ public final class m
   public final String toString()
   {
     AppMethodBeat.i(140063);
-    String str = this.czj.toString();
+    String str = this.czQ.toString();
     AppMethodBeat.o(140063);
     return str;
   }
   
   static final class a
   {
-    int czk;
-    int czl;
-    int czm;
-    int czn;
-    int czo;
-    int czp;
+    int czR;
+    int czS;
+    int czT;
+    int czU;
+    int czV;
+    int czW;
   }
   
   static final class b
   {
-    int czq;
-    int czr;
-    int czs;
+    int czX;
+    int czY;
+    int czZ;
   }
   
   static final class c
   {
-    int czt;
+    int cAa;
     int length;
     String name;
     int offset;

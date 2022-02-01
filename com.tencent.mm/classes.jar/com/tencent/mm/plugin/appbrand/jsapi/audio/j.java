@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import com.tencent.luggage.sdk.b.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.y.b;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.b;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.model.z.b;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.b;
+import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 

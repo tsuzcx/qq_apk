@@ -10,19 +10,19 @@ public class d
   implements View.OnClickListener
 {
   private View.OnClickListener km;
-  private long mtj = 0L;
+  private long myg = 0L;
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(72961);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/wallet_core/ui/SafeOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    a.b("com/tencent/mm/wallet_core/ui/SafeOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     long l = System.currentTimeMillis();
-    if (l - this.mtj >= 500L)
+    if (l - this.myg >= 500L)
     {
       this.km.onClick(paramView);
-      this.mtj = l;
+      this.myg = l;
     }
     a.a(this, "com/tencent/mm/wallet_core/ui/SafeOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(72961);

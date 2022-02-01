@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.lite.keepalive;
 import com.tencent.mm.service.MMService;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/lite/keepalive/WxaLiteAppKeepAliveService;", "Lcom/tencent/mm/service/MMService;", "()V", "luggage-lite-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/lite/keepalive/WxaLiteAppKeepAliveService;", "Lcom/tencent/mm/service/MMService;", "()V", "luggage-lite-app_release"})
 public final class WxaLiteAppKeepAliveService
   extends MMService
 {}

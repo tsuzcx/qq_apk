@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class l
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  public int BVE;
-  private String BVF;
-  public int BVG;
-  public a BVH;
-  public int BVs;
+  public int CmT;
+  public int Cnf;
+  private String Cng;
+  public int Cnh;
+  public a Cni;
   
   public l()
   {
     AppMethodBeat.i(29792);
-    this.BVE = 71;
-    this.BVF = null;
-    this.BVG = 0;
-    this.BVs = 0;
-    this.BVH = null;
-    ba.aiU().a(611, this);
-    ba.aiU().a(612, this);
+    this.Cnf = 71;
+    this.Cng = null;
+    this.Cnh = 0;
+    this.CmT = 0;
+    this.Cni = null;
+    bc.ajj().a(611, this);
+    bc.ajj().a(612, this);
     AppMethodBeat.o(29792);
   }
   
   public l(a parama)
   {
     this();
-    this.BVH = parama;
+    this.Cni = parama;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(29793);
-    ad.d("MicroMsg.VoicePrintCreateService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.d("MicroMsg.VoicePrintCreateService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
       if (paramInt2 == -34)
       {
-        ad.d("MicroMsg.VoicePrintCreateService", "blocked by limit");
-        if (this.BVH != null) {
-          this.BVH.aDB(paramString);
+        ae.d("MicroMsg.VoicePrintCreateService", "blocked by limit");
+        if (this.Cni != null) {
+          this.Cni.aEU(paramString);
         }
         AppMethodBeat.o(29793);
         return;
       }
-      if (this.BVH != null) {
-        this.BVH.euj();
+      if (this.Cni != null) {
+        this.Cni.exP();
       }
       AppMethodBeat.o(29793);
       return;
@@ -59,21 +59,21 @@ public final class l
     if (paramn.getType() == 611)
     {
       paramString = (d)paramn;
-      this.BVG = paramString.BVl;
-      this.BVF = paramString.BVk;
-      ad.d("MicroMsg.VoicePrintCreateService", "onFinishGetText, resId:%d, voiceText==null:%b", new Object[] { Integer.valueOf(this.BVG), Boolean.valueOf(bt.isNullOrNil(this.BVF)) });
-      if (this.BVH != null)
+      this.Cnh = paramString.CmM;
+      this.Cng = paramString.CmL;
+      ae.d("MicroMsg.VoicePrintCreateService", "onFinishGetText, resId:%d, voiceText==null:%b", new Object[] { Integer.valueOf(this.Cnh), Boolean.valueOf(bu.isNullOrNil(this.Cng)) });
+      if (this.Cni != null)
       {
-        if (this.BVE != 71) {
+        if (this.Cnf != 71) {
           break label333;
         }
-        this.BVH.aDz(this.BVF);
+        this.Cni.aES(this.Cng);
       }
     }
     if (paramn.getType() == 612)
     {
       paramString = (f)paramn;
-      if (((paramString.BVu != 72) || (paramString.Nv != 0)) && (paramString.BVu != 71)) {
+      if (((paramString.CmV != 72) || (paramString.Nv != 0)) && (paramString.CmV != 71)) {
         break label358;
       }
       paramInt1 = 1;
@@ -81,47 +81,47 @@ public final class l
       if (paramInt1 == 0) {
         break label363;
       }
-      ad.d("MicroMsg.VoicePrintCreateService", "onRegister, ok, step:%d", new Object[] { Integer.valueOf(paramString.BVu) });
-      this.BVs = paramString.BVs;
-      if (this.BVH != null) {
-        this.BVH.S(true, paramString.BVu);
+      ae.d("MicroMsg.VoicePrintCreateService", "onRegister, ok, step:%d", new Object[] { Integer.valueOf(paramString.CmV) });
+      this.CmT = paramString.CmT;
+      if (this.Cni != null) {
+        this.Cni.V(true, paramString.CmV);
       }
     }
     for (;;)
     {
-      if ((paramInt1 != 0) && (paramString.BVu == 71) && (this.BVH != null)) {
-        this.BVH.aDA(this.BVF);
+      if ((paramInt1 != 0) && (paramString.CmV == 71) && (this.Cni != null)) {
+        this.Cni.aET(this.Cng);
       }
       AppMethodBeat.o(29793);
       return;
       label333:
-      if (this.BVE != 72) {
+      if (this.Cnf != 72) {
         break;
       }
-      this.BVH.aDA(this.BVF);
+      this.Cni.aET(this.Cng);
       break;
       label358:
       paramInt1 = 0;
       break label239;
       label363:
-      ad.d("MicroMsg.VoicePrintCreateService", "onRegister, not ok, step:%d", new Object[] { Integer.valueOf(paramString.BVu) });
-      if (this.BVH != null) {
-        this.BVH.S(false, paramString.BVu);
+      ae.d("MicroMsg.VoicePrintCreateService", "onRegister, not ok, step:%d", new Object[] { Integer.valueOf(paramString.CmV) });
+      if (this.Cni != null) {
+        this.Cni.V(false, paramString.CmV);
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void S(boolean paramBoolean, int paramInt);
+    public abstract void V(boolean paramBoolean, int paramInt);
     
-    public abstract void aDA(String paramString);
+    public abstract void aES(String paramString);
     
-    public abstract void aDB(String paramString);
+    public abstract void aET(String paramString);
     
-    public abstract void aDz(String paramString);
+    public abstract void aEU(String paramString);
     
-    public abstract void euj();
+    public abstract void exP();
   }
 }
 

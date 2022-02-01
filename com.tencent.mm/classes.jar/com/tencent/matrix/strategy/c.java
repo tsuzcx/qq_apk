@@ -1,18 +1,18 @@
 package com.tencent.matrix.strategy;
 
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.protocal.protobuf.ah;
-import com.tencent.mm.protocal.protobuf.avn;
-import com.tencent.mm.protocal.protobuf.avo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.awd;
+import com.tencent.mm.protocal.protobuf.awe;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class c
   extends n
@@ -20,28 +20,28 @@ public final class c
 {
   private static boolean isRunning = false;
   private static Object lock = new Object();
-  private avn cJa;
-  private a cJb;
+  private awd cJJ;
+  private a cJK;
   private f callback;
   private b rr;
   
   public c(byte[] paramArrayOfByte, final a parama)
   {
-    this.cJb = parama;
+    this.cJK = parama;
     setIsRunning(true);
     ah localah = new ah();
-    this.cJa = new avn();
+    this.cJJ = new awd();
     try
     {
       localah.parseFrom(paramArrayOfByte);
-      this.cJa.Gux = localah;
+      this.cJJ.GNW = localah;
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("Matrix.NetSceneGetMatrixStrategy", "parse data error");
-      g.ajD();
-      g.ajF().ay(new Runnable()
+      ae.e("Matrix.NetSceneGetMatrixStrategy", "parse data error");
+      g.ajS();
+      g.ajU().aw(new Runnable()
       {
         public final void run()
         {
@@ -74,13 +74,13 @@ public final class c
     int j = -1;
     this.callback = paramf;
     int i;
-    if ((parame != null) && (parame.aFc() != null) && (parame.aFc().aEW()))
+    if ((parame != null) && (parame.aFs() != null) && (parame.aFs().aFm()))
     {
       i = 1;
       if (i != 0) {
         break label58;
       }
-      ad.w("Matrix.NetSceneGetMatrixStrategy", "get mrs strategy must go after login");
+      ae.w("Matrix.NetSceneGetMatrixStrategy", "get mrs strategy must go after login");
       i = j;
     }
     label58:
@@ -90,25 +90,25 @@ public final class c
       i = 0;
       break;
       paramf = new b.a();
-      paramf.hNP = false;
-      paramf.hNM = this.cJa;
-      paramf.hNN = new avo();
+      paramf.hQI = false;
+      paramf.hQF = this.cJJ;
+      paramf.hQG = new awe();
       paramf.uri = "/cgi-bin/micromsg-bin/getapmstrategy";
       paramf.funcId = getType();
-      this.rr = paramf.aDC();
+      this.rr = paramf.aDS();
       j = dispatch(parame, this.rr, this);
       i = j;
     } while (j >= 0);
-    ad.i("Matrix.NetSceneGetMatrixStrategy", "mark all failed. do scene %d", new Object[] { Integer.valueOf(j) });
+    ae.i("Matrix.NetSceneGetMatrixStrategy", "mark all failed. do scene %d", new Object[] { Integer.valueOf(j) });
     try
     {
-      this.cJb.onStrategyResp(3, -1, null);
+      this.cJK.onStrategyResp(3, -1, null);
       setIsRunning(false);
       return j;
     }
     catch (Exception parame)
     {
-      ad.e("Matrix.NetSceneGetMatrixStrategy", "onStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bt.n(parame) });
+      ae.e("Matrix.NetSceneGetMatrixStrategy", "onStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bu.o(parame) });
     }
     return j;
   }
@@ -122,18 +122,18 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, java.lang.String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 186	com/tencent/mm/kernel/g:ajB	()Lcom/tencent/mm/kernel/b;
-    //   3: getfield 192	com/tencent/mm/kernel/b:gAO	Lcom/tencent/mm/al/q;
+    //   0: invokestatic 186	com/tencent/mm/kernel/g:ajQ	()Lcom/tencent/mm/kernel/b;
+    //   3: getfield 192	com/tencent/mm/kernel/b:gDv	Lcom/tencent/mm/ak/q;
     //   6: ifnull +15 -> 21
-    //   9: invokestatic 186	com/tencent/mm/kernel/g:ajB	()Lcom/tencent/mm/kernel/b;
-    //   12: getfield 192	com/tencent/mm/kernel/b:gAO	Lcom/tencent/mm/al/q;
-    //   15: getfield 198	com/tencent/mm/al/q:hOv	Lcom/tencent/mm/network/e;
+    //   9: invokestatic 186	com/tencent/mm/kernel/g:ajQ	()Lcom/tencent/mm/kernel/b;
+    //   12: getfield 192	com/tencent/mm/kernel/b:gDv	Lcom/tencent/mm/ak/q;
+    //   15: getfield 198	com/tencent/mm/ak/q:hRo	Lcom/tencent/mm/network/e;
     //   18: ifnonnull +29 -> 47
     //   21: ldc 63
     //   23: ldc 200
-    //   25: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: invokestatic 203	com/tencent/mm/sdk/platformtools/ae:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_0
-    //   29: getfield 95	com/tencent/matrix/strategy/c:callback	Lcom/tencent/mm/al/f;
+    //   29: getfield 95	com/tencent/matrix/strategy/c:callback	Lcom/tencent/mm/ak/f;
     //   32: iload_2
     //   33: iload_3
     //   34: aload 4
@@ -156,15 +156,15 @@ public final class c
     //   71: iload_3
     //   72: invokevirtual 220	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   75: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 71	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: invokestatic 71	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   81: aload_0
-    //   82: getfield 41	com/tencent/matrix/strategy/c:cJb	Lcom/tencent/matrix/strategy/c$a;
+    //   82: getfield 41	com/tencent/matrix/strategy/c:cJK	Lcom/tencent/matrix/strategy/c$a;
     //   85: iload_2
     //   86: iload_3
     //   87: aconst_null
     //   88: invokeinterface 167 4 0
     //   93: aload_0
-    //   94: getfield 95	com/tencent/matrix/strategy/c:callback	Lcom/tencent/mm/al/f;
+    //   94: getfield 95	com/tencent/matrix/strategy/c:callback	Lcom/tencent/mm/ak/f;
     //   97: iload_2
     //   98: iload_3
     //   99: aload 4
@@ -175,23 +175,23 @@ public final class c
     //   111: return
     //   112: ldc 63
     //   114: ldc 231
-    //   116: invokestatic 234	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   116: invokestatic 234	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   119: aload_0
-    //   120: getfield 147	com/tencent/matrix/strategy/c:rr	Lcom/tencent/mm/al/b;
-    //   123: getfield 240	com/tencent/mm/al/b:hNL	Lcom/tencent/mm/al/b$c;
-    //   126: getfield 245	com/tencent/mm/al/b$c:hNQ	Lcom/tencent/mm/bx/a;
-    //   129: checkcast 123	com/tencent/mm/protocal/protobuf/avo
+    //   120: getfield 147	com/tencent/matrix/strategy/c:rr	Lcom/tencent/mm/ak/b;
+    //   123: getfield 240	com/tencent/mm/ak/b:hQE	Lcom/tencent/mm/ak/b$c;
+    //   126: getfield 245	com/tencent/mm/ak/b$c:hQJ	Lcom/tencent/mm/bw/a;
+    //   129: checkcast 123	com/tencent/mm/protocal/protobuf/awe
     //   132: astore 5
     //   134: aload_0
-    //   135: getfield 41	com/tencent/matrix/strategy/c:cJb	Lcom/tencent/matrix/strategy/c$a;
+    //   135: getfield 41	com/tencent/matrix/strategy/c:cJK	Lcom/tencent/matrix/strategy/c$a;
     //   138: iconst_0
     //   139: iconst_0
     //   140: aload 5
-    //   142: getfield 249	com/tencent/mm/protocal/protobuf/avo:Guy	Lcom/tencent/mm/protocal/protobuf/ai;
+    //   142: getfield 249	com/tencent/mm/protocal/protobuf/awe:GNX	Lcom/tencent/mm/protocal/protobuf/ai;
     //   145: invokevirtual 255	com/tencent/mm/protocal/protobuf/ai:toByteArray	()[B
     //   148: invokeinterface 167 4 0
     //   153: aload_0
-    //   154: getfield 95	com/tencent/matrix/strategy/c:callback	Lcom/tencent/mm/al/f;
+    //   154: getfield 95	com/tencent/matrix/strategy/c:callback	Lcom/tencent/mm/ak/f;
     //   157: iload_2
     //   158: iload_3
     //   159: aload 4
@@ -214,9 +214,9 @@ public final class c
     //   193: dup
     //   194: iconst_1
     //   195: aload 5
-    //   197: invokestatic 178	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   197: invokestatic 178	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   200: aastore
-    //   201: invokestatic 180	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: invokestatic 180	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   204: goto -51 -> 153
     //   207: astore 4
     //   209: iconst_0

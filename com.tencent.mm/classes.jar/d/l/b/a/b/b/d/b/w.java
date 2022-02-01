@@ -9,23 +9,23 @@ import java.lang.reflect.WildcardType;
 public abstract class w
   implements d.l.b.a.b.d.a.e.v
 {
-  public static final a NaG = new a((byte)0);
+  public static final a NxM = new a((byte)0);
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof w)) && (p.i(gkF(), ((w)paramObject).gkF()));
+    return ((paramObject instanceof w)) && (p.i(gph(), ((w)paramObject).gph()));
   }
   
-  protected abstract Type gkF();
+  protected abstract Type gph();
   
   public int hashCode()
   {
-    return gkF().hashCode();
+    return gph().hashCode();
   }
   
   public String toString()
   {
-    return getClass().getName() + ": " + gkF();
+    return getClass().getName() + ": " + gph();
   }
   
   public static final class a
@@ -60,7 +60,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.w
  * JD-Core Version:    0.7.0.1
  */

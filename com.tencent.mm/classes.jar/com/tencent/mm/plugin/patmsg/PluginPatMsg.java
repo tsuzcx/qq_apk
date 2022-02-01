@@ -4,19 +4,21 @@ import android.util.Pair;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cd;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.a.h.a;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
-import com.tencent.mm.protocal.protobuf.cig;
-import com.tencent.mm.protocal.protobuf.cih;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.protocal.protobuf.cja;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.j;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,80 +29,80 @@ public class PluginPatMsg
   extends com.tencent.mm.kernel.b.f
   implements c, com.tencent.mm.plugin.patmsg.a.e
 {
-  private Map<String, com.tencent.mm.plugin.patmsg.a.f> wFA;
-  private Animation wFB;
-  private Animation wFC;
-  private Animation wFD;
-  private Map<Long, cih> wFE;
-  private b wFF;
-  private a wFz;
+  private a wVk;
+  private Map<String, com.tencent.mm.plugin.patmsg.a.f> wVl;
+  private Animation wVm;
+  private Animation wVn;
+  private Animation wVo;
+  private Map<Long, cjb> wVp;
+  private b wVq;
   
   public PluginPatMsg()
   {
-    AppMethodBeat.i(215691);
-    this.wFz = new a();
-    this.wFA = new HashMap();
-    this.wFB = AnimationUtils.loadAnimation(aj.getContext(), 2130772172);
-    this.wFC = AnimationUtils.loadAnimation(aj.getContext(), 2130772182);
-    this.wFD = AnimationUtils.loadAnimation(aj.getContext(), 2130772181);
-    this.wFE = new HashMap();
-    this.wFF = null;
-    AppMethodBeat.o(215691);
+    AppMethodBeat.i(220325);
+    this.wVk = new a();
+    this.wVl = new HashMap();
+    this.wVm = AnimationUtils.loadAnimation(ak.getContext(), 2130772172);
+    this.wVn = AnimationUtils.loadAnimation(ak.getContext(), 2130772182);
+    this.wVo = AnimationUtils.loadAnimation(ak.getContext(), 2130772181);
+    this.wVp = new HashMap();
+    this.wVq = null;
+    AppMethodBeat.o(220325);
   }
   
   private void syncRecvRecord()
   {
-    AppMethodBeat.i(215705);
-    com.tencent.e.h.LTJ.f(new Runnable()
+    AppMethodBeat.i(220339);
+    com.tencent.e.h.MqF.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(215690);
+        AppMethodBeat.i(220324);
         LinkedList localLinkedList = new LinkedList();
-        synchronized (PluginPatMsg.this.wFE)
+        synchronized (PluginPatMsg.this.wVp)
         {
-          localLinkedList.addAll(PluginPatMsg.this.wFE.values());
-          if (PluginPatMsg.this.wFF != null) {
-            PluginPatMsg.this.wFF.r(localLinkedList);
+          localLinkedList.addAll(PluginPatMsg.this.wVp.values());
+          if (PluginPatMsg.this.wVq != null) {
+            PluginPatMsg.this.wVq.r(localLinkedList);
           }
-          AppMethodBeat.o(215690);
+          AppMethodBeat.o(220324);
           return;
         }
       }
     }, "sync_pat_recv_record_thread");
-    AppMethodBeat.o(215705);
+    AppMethodBeat.o(220339);
   }
   
-  public void addRecvRecord(long paramLong, cig paramcig)
+  public void addRecvRecord(long paramLong, cja paramcja)
   {
-    AppMethodBeat.i(215702);
-    synchronized (this.wFE)
+    AppMethodBeat.i(220336);
+    synchronized (this.wVp)
     {
-      cih localcih = new cih();
-      localcih.Hcf = paramLong;
-      localcih.Hcg = paramcig;
-      this.wFE.put(Long.valueOf(paramcig.nxr), localcih);
+      cjb localcjb = new cjb();
+      localcjb.HvF = paramLong;
+      localcjb.HvG = paramcja;
+      this.wVp.put(Long.valueOf(paramcja.nCM), localcjb);
       syncRecvRecord();
-      AppMethodBeat.o(215702);
+      AppMethodBeat.o(220336);
       return;
     }
   }
   
   public void clearTemplate()
   {
-    AppMethodBeat.i(215700);
-    this.wFA.clear();
-    AppMethodBeat.o(215700);
+    AppMethodBeat.i(220334);
+    this.wVl.clear();
+    AppMethodBeat.o(220334);
   }
   
   public void deleteRecvRecord(long paramLong)
   {
-    AppMethodBeat.i(215703);
-    synchronized (this.wFE)
+    AppMethodBeat.i(220337);
+    synchronized (this.wVp)
     {
-      this.wFE.remove(Long.valueOf(paramLong));
+      this.wVp.remove(Long.valueOf(paramLong));
       syncRecvRecord();
-      AppMethodBeat.o(215703);
+      AppMethodBeat.o(220337);
       return;
     }
   }
@@ -109,117 +111,117 @@ public class PluginPatMsg
   
   public String getAccPatMsgPath()
   {
-    AppMethodBeat.i(215701);
-    String str = com.tencent.mm.kernel.g.ajC().gBm + "patmsg/";
-    AppMethodBeat.o(215701);
+    AppMethodBeat.i(220335);
+    String str = com.tencent.mm.kernel.g.ajR().gDT + "patmsg/";
+    AppMethodBeat.o(220335);
     return str;
   }
   
-  public cih getRecvRecord(long paramLong)
+  public cjb getRecvRecord(long paramLong)
   {
-    AppMethodBeat.i(215704);
-    synchronized (this.wFE)
+    AppMethodBeat.i(220338);
+    synchronized (this.wVp)
     {
-      cih localcih = (cih)this.wFE.get(Long.valueOf(paramLong));
-      AppMethodBeat.o(215704);
-      return localcih;
+      cjb localcjb = (cjb)this.wVp.get(Long.valueOf(paramLong));
+      AppMethodBeat.o(220338);
+      return localcjb;
     }
   }
   
   public boolean isNickClickable()
   {
-    AppMethodBeat.i(215697);
-    if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("SendPatUserShowBitVal", 0) != 0)
+    AppMethodBeat.i(220331);
+    if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("SendPatUserShowBitVal", 0) != 0)
     {
-      AppMethodBeat.o(215697);
+      AppMethodBeat.o(220331);
       return true;
     }
-    AppMethodBeat.o(215697);
+    AppMethodBeat.o(220331);
     return false;
   }
   
   public boolean isPatEnable()
   {
-    AppMethodBeat.i(215696);
-    int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("DisableSendPat", 1);
-    ad.i("MicroMsg.PluginPatMsg", "disable sendPat %d", new Object[] { Integer.valueOf(i) });
-    if ((com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_PURPLE) || (com.tencent.mm.sdk.platformtools.i.DEBUG))
+    AppMethodBeat.i(220330);
+    int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("DisableSendPat", 1);
+    ae.i("MicroMsg.PluginPatMsg", "disable sendPat %d", new Object[] { Integer.valueOf(i) });
+    if ((j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE) || (j.DEBUG))
     {
-      AppMethodBeat.o(215696);
+      AppMethodBeat.o(220330);
       return true;
     }
     if (i == 0)
     {
-      AppMethodBeat.o(215696);
+      AppMethodBeat.o(220330);
       return true;
     }
-    AppMethodBeat.o(215696);
+    AppMethodBeat.o(220330);
     return false;
   }
   
   public boolean isRevokePatMsgEnable()
   {
-    AppMethodBeat.i(215698);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qIj, 1) == 1)
+    AppMethodBeat.i(220332);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPQ, 1) == 1)
     {
-      AppMethodBeat.o(215698);
+      AppMethodBeat.o(220332);
       return true;
     }
-    AppMethodBeat.o(215698);
+    AppMethodBeat.o(220332);
     return false;
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(215692);
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.patmsg.a.b.class, this.wFz);
-    com.tencent.mm.kernel.g.aiU().a(849, this.wFz);
-    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("pat", this.wFz.wFt);
-    this.wFF = new b(((PluginPatMsg)com.tencent.mm.kernel.g.ad(PluginPatMsg.class)).getAccPatMsgPath() + "pat_recv_record");
-    com.tencent.e.h.LTJ.aR(new Runnable()
+    AppMethodBeat.i(220326);
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.patmsg.a.b.class, this.wVk);
+    com.tencent.mm.kernel.g.ajj().a(849, this.wVk);
+    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().a("pat", this.wVk.wVe);
+    this.wVq = new b(((PluginPatMsg)com.tencent.mm.kernel.g.ad(PluginPatMsg.class)).getAccPatMsgPath() + "pat_recv_record");
+    com.tencent.e.h.MqF.aO(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(215689);
-        Object localObject1 = PluginPatMsg.this.wFF.aQn();
+        AppMethodBeat.i(220323);
+        Object localObject1 = PluginPatMsg.this.wVq.aQM();
         if (localObject1 != null)
         {
-          synchronized (PluginPatMsg.this.wFE)
+          synchronized (PluginPatMsg.this.wVp)
           {
             localObject1 = ((LinkedList)localObject1).iterator();
             if (((Iterator)localObject1).hasNext())
             {
-              cih localcih = (cih)((Iterator)localObject1).next();
-              PluginPatMsg.this.wFE.put(Long.valueOf(localcih.Hcg.nxr), localcih);
+              cjb localcjb = (cjb)((Iterator)localObject1).next();
+              PluginPatMsg.this.wVp.put(Long.valueOf(localcjb.HvG.nCM), localcjb);
             }
           }
-          AppMethodBeat.o(215689);
+          AppMethodBeat.o(220323);
           return;
         }
-        AppMethodBeat.o(215689);
+        AppMethodBeat.o(220323);
       }
     });
-    AppMethodBeat.o(215692);
+    AppMethodBeat.o(220326);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(215693);
+    AppMethodBeat.i(220327);
     com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.patmsg.a.b.class);
-    com.tencent.mm.kernel.g.aiU().b(849, this.wFz);
-    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("pat", this.wFz.wFt);
-    AppMethodBeat.o(215693);
+    com.tencent.mm.kernel.g.ajj().b(849, this.wVk);
+    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().b("pat", this.wVk.wVe);
+    AppMethodBeat.o(220327);
   }
   
   public com.tencent.mm.plugin.patmsg.a.f parseDisplayTemplate(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215699);
-    Object localObject = com.tencent.mm.plugin.messenger.a.h.apx(paramString1);
-    if (this.wFA.containsKey(paramString1))
+    AppMethodBeat.i(220333);
+    Object localObject = com.tencent.mm.plugin.messenger.a.h.aqC(paramString1);
+    if (this.wVl.containsKey(paramString1))
     {
-      ad.i("MicroMsg.PluginPatMsg", "find %s (%s) in cache", new Object[] { paramString1, this.wFA.get(paramString1) });
-      paramString1 = (com.tencent.mm.plugin.patmsg.a.f)this.wFA.get(paramString1);
-      AppMethodBeat.o(215699);
+      ae.i("MicroMsg.PluginPatMsg", "find %s (%s) in cache", new Object[] { paramString1, this.wVl.get(paramString1) });
+      paramString1 = (com.tencent.mm.plugin.patmsg.a.f)this.wVl.get(paramString1);
+      AppMethodBeat.o(220333);
       return paramString1;
     }
     com.tencent.mm.plugin.patmsg.a.f localf = new com.tencent.mm.plugin.patmsg.a.f();
@@ -229,32 +231,32 @@ public class PluginPatMsg
     for (localObject = paramString1; localIterator.hasNext(); localObject = ((String)localObject).replace(locala.group, str))
     {
       locala = (h.a)localIterator.next();
-      str = v.getDisplayName(locala.value, paramString2);
+      str = w.getDisplayName(locala.value, paramString2);
       int i = ((String)localObject).indexOf(locala.group);
-      localf.wFI.add(Pair.create(Integer.valueOf(i), Integer.valueOf(i + str.length())));
-      localf.hRC.add(locala.value);
+      localf.wVt.add(Pair.create(Integer.valueOf(i), Integer.valueOf(i + str.length())));
+      localf.hUu.add(locala.value);
     }
     localf.result = ((String)localObject);
-    this.wFA.put(paramString1, localf);
-    AppMethodBeat.o(215699);
+    this.wVl.put(paramString1, localf);
+    AppMethodBeat.o(220333);
     return localf;
   }
   
   public void playPatAnimation(View paramView)
   {
-    AppMethodBeat.i(215694);
-    paramView.startAnimation(this.wFB);
-    AppMethodBeat.o(215694);
+    AppMethodBeat.i(220328);
+    paramView.startAnimation(this.wVm);
+    AppMethodBeat.o(220328);
   }
   
   public void playRevokePatAnimation(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(215695);
+    AppMethodBeat.i(220329);
     if (paramBoolean) {}
-    for (Animation localAnimation = this.wFC;; localAnimation = this.wFD)
+    for (Animation localAnimation = this.wVn;; localAnimation = this.wVo)
     {
       paramView.startAnimation(localAnimation);
-      AppMethodBeat.o(215695);
+      AppMethodBeat.o(220329);
       return;
     }
   }

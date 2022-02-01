@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 class JsApiLuggageStartSoterAuthentication$1
   extends ResultReceiver
@@ -20,10 +20,10 @@ class JsApiLuggageStartSoterAuthentication$1
     AppMethodBeat.i(159050);
     if (paramInt == -1)
     {
-      ad.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
-      localb = this.kCK;
-      localc = this.cnJ;
-      paramInt = this.cjQ;
+      ae.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
+      localb = this.kFZ;
+      localc = this.cnL;
+      paramInt = this.cjS;
       if (paramBundle != null) {}
       for (;;)
       {
@@ -35,10 +35,10 @@ class JsApiLuggageStartSoterAuthentication$1
     }
     if (paramInt == 1)
     {
-      ad.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
-      localb = this.kCK;
-      localc = this.cnJ;
-      paramInt = this.cjQ;
+      ae.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
+      localb = this.kFZ;
+      localc = this.cnL;
+      paramInt = this.cjS;
       if (paramBundle != null) {}
       for (;;)
       {
@@ -48,10 +48,10 @@ class JsApiLuggageStartSoterAuthentication$1
         paramBundle = null;
       }
     }
-    ad.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
-    b localb = this.kCK;
-    c localc = this.cnJ;
-    paramInt = this.cjQ;
+    ae.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
+    b localb = this.kFZ;
+    c localc = this.cnL;
+    paramInt = this.cjS;
     if (paramBundle != null) {}
     for (;;)
     {

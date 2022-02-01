@@ -15,7 +15,7 @@ public abstract class j$a
     attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnScanCallback_AIDL");
   }
   
-  public static j x(IBinder paramIBinder)
+  public static j y(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;

@@ -8,24 +8,24 @@ import java.util.List;
 public final class a
   extends c.a
 {
-  private List<g> Mif;
-  private List<g> Mig;
+  private List<g> MFc;
+  private List<g> MFd;
   
   public a(List<g> paramList1, List<g> paramList2)
   {
-    this.Mif = paramList1;
-    this.Mig = paramList2;
+    this.MFc = paramList1;
+    this.MFd = paramList2;
   }
   
   public final int aA()
   {
     AppMethodBeat.i(159913);
-    if (this.Mig == null)
+    if (this.MFd == null)
     {
       AppMethodBeat.o(159913);
       return 0;
     }
-    int i = this.Mig.size();
+    int i = this.MFd.size();
     AppMethodBeat.o(159913);
     return i;
   }
@@ -33,12 +33,12 @@ public final class a
   public final int az()
   {
     AppMethodBeat.i(159912);
-    if (this.Mif == null)
+    if (this.MFc == null)
     {
       AppMethodBeat.o(159912);
       return 0;
     }
-    int i = this.Mif.size();
+    int i = this.MFc.size();
     AppMethodBeat.o(159912);
     return i;
   }
@@ -46,8 +46,8 @@ public final class a
   public final boolean i(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159914);
-    g localg1 = (g)this.Mif.get(paramInt1);
-    g localg2 = (g)this.Mig.get(paramInt2);
+    g localg1 = (g)this.MFc.get(paramInt1);
+    g localg2 = (g)this.MFd.get(paramInt2);
     if ((localg1 == null) || (localg2 == null))
     {
       AppMethodBeat.o(159914);
@@ -65,8 +65,8 @@ public final class a
   public final boolean j(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159915);
-    g localg1 = (g)this.Mif.get(paramInt1);
-    g localg2 = (g)this.Mig.get(paramInt2);
+    g localg1 = (g)this.MFc.get(paramInt1);
+    g localg2 = (g)this.MFd.get(paramInt2);
     if ((localg1 == null) || (localg2 == null))
     {
       AppMethodBeat.o(159915);
@@ -79,7 +79,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.toybrick.a.a
  * JD-Core Version:    0.7.0.1
  */

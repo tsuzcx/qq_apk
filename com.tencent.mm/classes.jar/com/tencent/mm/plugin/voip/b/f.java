@@ -8,30 +8,30 @@ import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.voip.c;
 import com.tencent.mm.plugin.voip.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.BufferedOutputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public final class f
 {
-  public static boolean Clo = false;
-  private static long Clp;
-  private static long Clq = 0L;
+  public static boolean CCS = false;
+  private static long CCT;
+  private static long CCU = 0L;
   static BufferedOutputStream mOutputStream = null;
-  private static int uRy;
+  private static int vdk;
   
   static
   {
-    Clp = 0L;
-    uRy = 0;
+    CCT = 0L;
+    vdk = 0;
   }
   
   public static void Logd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(115514);
-    ad.d(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
+    ae.d(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
     AppMethodBeat.o(115514);
   }
@@ -39,7 +39,7 @@ public final class f
   public static void Loge(String paramString1, String paramString2)
   {
     AppMethodBeat.i(115512);
-    ad.e(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
+    ae.e(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
     AppMethodBeat.o(115512);
   }
@@ -47,7 +47,7 @@ public final class f
   public static void Logi(String paramString1, String paramString2)
   {
     AppMethodBeat.i(115513);
-    ad.i(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
+    ae.i(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
     AppMethodBeat.o(115513);
   }
@@ -55,12 +55,12 @@ public final class f
   public static void Logw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(115515);
-    ad.w(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
+    ae.w(paramString1, "[" + Thread.currentThread().getId() + "]" + paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
     AppMethodBeat.o(115515);
   }
   
-  public static byte[] UC(int paramInt)
+  public static byte[] Vj(int paramInt)
   {
     byte[] arrayOfByte = new byte[4];
     int i = 0;
@@ -72,7 +72,7 @@ public final class f
     return arrayOfByte;
   }
   
-  public static void UD(int paramInt)
+  public static void Vk(int paramInt)
   {
     AppMethodBeat.i(115517);
     long l = paramInt;
@@ -84,12 +84,12 @@ public final class f
     }
     catch (InterruptedException localInterruptedException)
     {
-      ad.printErrStackTrace("MicroMsg.VoipHelper", localInterruptedException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VoipHelper", localInterruptedException, "", new Object[0]);
       AppMethodBeat.o(115517);
     }
   }
   
-  public static void UE(int paramInt)
+  public static void Vl(int paramInt)
   {
     int i3 = 2;
     AppMethodBeat.i(115521);
@@ -107,36 +107,36 @@ public final class f
     int n;
     label87:
     int i1;
-    if (d.lA(28)) {
-      if (com.tencent.mm.n.a.abL())
+    if (d.lC(28)) {
+      if (com.tencent.mm.n.a.abU())
       {
         j = 1;
-        if (!com.tencent.mm.n.a.abM()) {
+        if (!com.tencent.mm.n.a.abV()) {
           break label238;
         }
         i = 1;
-        localg = g.yhR;
-        i4 = c.euM().exw();
-        l1 = c.euM().exx();
-        l2 = c.euM().evX();
-        if (!com.tencent.mm.aq.a.isActive()) {
+        localg = g.yxI;
+        i4 = c.eys().eBd();
+        l1 = c.eys().eBe();
+        l2 = c.eys().ezE();
+        if (!com.tencent.mm.ap.a.isActive()) {
           break label309;
         }
         k = 1;
-        if (!com.tencent.mm.n.a.abF()) {
+        if (!com.tencent.mm.n.a.abO()) {
           break label314;
         }
         m = 1;
-        if (!com.tencent.mm.n.a.abH()) {
+        if (!com.tencent.mm.n.a.abQ()) {
           break label320;
         }
         n = 1;
-        if (!com.tencent.mm.n.a.abI()) {
+        if (!com.tencent.mm.n.a.abR()) {
           break label326;
         }
         i1 = 1;
         label96:
-        if (!com.tencent.mm.n.a.abK()) {
+        if (!com.tencent.mm.n.a.abT()) {
           break label332;
         }
       }
@@ -150,7 +150,7 @@ public final class f
     label332:
     for (int i2 = 1;; i2 = 2)
     {
-      if (com.tencent.mm.n.a.abO()) {
+      if (com.tencent.mm.n.a.abX()) {
         i3 = 1;
       }
       localg.a(16366, true, true, new Object[] { Integer.valueOf(i4), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt) });
@@ -161,12 +161,12 @@ public final class f
       label238:
       i = 2;
       break label32;
-      if (d.ly(26))
+      if (d.lA(26))
       {
-        if (com.tencent.mm.n.a.abS()) {}
+        if (com.tencent.mm.n.a.acb()) {}
         for (j = 1;; j = 2)
         {
-          if (!com.tencent.mm.n.a.abT()) {
+          if (!com.tencent.mm.n.a.acc()) {
             break label275;
           }
           i = 1;
@@ -175,10 +175,10 @@ public final class f
         i = 2;
         break label32;
       }
-      if (com.tencent.mm.n.a.abJ()) {}
+      if (com.tencent.mm.n.a.abS()) {}
       for (j = 1;; j = 2)
       {
-        if (!com.tencent.mm.n.a.abN()) {
+        if (!com.tencent.mm.n.a.abW()) {
           break label304;
         }
         i = 1;
@@ -197,7 +197,7 @@ public final class f
     }
   }
   
-  private static int UF(int paramInt)
+  private static int Vm(int paramInt)
   {
     switch (paramInt)
     {
@@ -216,16 +216,16 @@ public final class f
   public static void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     AppMethodBeat.i(115522);
-    ad.i("MicroMsg.VoipHelper", "before convert, beforeNetType:%s, afterNetType:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt5) });
-    paramInt2 = UF(paramInt2);
-    paramInt3 = UF(paramInt3);
-    ad.i("MicroMsg.VoipHelper", "after convert, beforeNetType:%s, afterNetType:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt5) });
-    g.yhR.a(16519, true, true, new Object[] { Long.valueOf(c.euM().evX()), Integer.valueOf(c.euM().exw()), Long.valueOf(c.euM().exx()), Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
-    ad.i("MicroMsg.VoipHelper", "reportVoipNetChangeCost is memberIdx =" + paramInt1 + "|switchNetworkTimestamp " + paramLong + "|beforeNetType " + paramInt2 + "|afterNetType" + paramInt3 + "|beforeNetStrength" + paramInt4 + "|afterNetStrength" + paramInt5 + "|avgNetStrength" + paramInt6);
+    ae.i("MicroMsg.VoipHelper", "before convert, beforeNetType:%s, afterNetType:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt5) });
+    paramInt2 = Vm(paramInt2);
+    paramInt3 = Vm(paramInt3);
+    ae.i("MicroMsg.VoipHelper", "after convert, beforeNetType:%s, afterNetType:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt5) });
+    g.yxI.a(16519, true, true, new Object[] { Long.valueOf(c.eys().ezE()), Integer.valueOf(c.eys().eBd()), Long.valueOf(c.eys().eBe()), Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
+    ae.i("MicroMsg.VoipHelper", "reportVoipNetChangeCost is memberIdx =" + paramInt1 + "|switchNetworkTimestamp " + paramLong + "|beforeNetType " + paramInt2 + "|afterNetType" + paramInt3 + "|beforeNetStrength" + paramInt4 + "|afterNetStrength" + paramInt5 + "|avgNetStrength" + paramInt6);
     AppMethodBeat.o(115522);
   }
   
-  public static int aoi(String paramString)
+  public static int apk(String paramString)
   {
     AppMethodBeat.i(115519);
     try
@@ -240,20 +240,20 @@ public final class f
           j = j << 8 | arrayOfByte[i] & 0xFF;
           i += 1;
         }
-        ad.d("MicroMsg.VoipHelper", "ipAddressStrToInt, ip: %s, result: %d", new Object[] { paramString, Integer.valueOf(j) });
+        ae.d("MicroMsg.VoipHelper", "ipAddressStrToInt, ip: %s, result: %d", new Object[] { paramString, Integer.valueOf(j) });
         AppMethodBeat.o(115519);
         return j;
       }
     }
     catch (UnknownHostException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.VoipHelper", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VoipHelper", paramString, "", new Object[0]);
       AppMethodBeat.o(115519);
     }
     return 0;
   }
   
-  public static int bV(byte[] paramArrayOfByte)
+  public static int bY(byte[] paramArrayOfByte)
   {
     int i = 0;
     int k;
@@ -273,18 +273,18 @@ public final class f
   public static void c(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(115520);
-    if ((c.euM().exw() != 0) && (c.euM().exx() != 0L))
+    if ((c.eys().eBd() != 0) && (c.eys().eBe() != 0L))
     {
-      Clp = c.euM().evX();
-      uRy = paramInt1;
-      Clq = paramLong;
+      CCT = c.eys().ezE();
+      vdk = paramInt1;
+      CCU = paramLong;
     }
-    g.yhR.a(16516, true, true, new Object[] { Long.valueOf(Clp), Integer.valueOf(uRy), Long.valueOf(Clq), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    ad.i("MicroMsg.VoipHelper", "room type " + Clp + "room id" + uRy + "room key" + Clq + "call type " + paramInt2 + "type " + paramInt3);
+    g.yxI.a(16516, true, true, new Object[] { Long.valueOf(CCT), Integer.valueOf(vdk), Long.valueOf(CCU), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.VoipHelper", "room type " + CCT + "room id" + vdk + "room key" + CCU + "call type " + paramInt2 + "type " + paramInt3);
     AppMethodBeat.o(115520);
   }
   
-  public static void ezD() {}
+  public static void eDl() {}
   
   public static void flushLogFile()
   {
@@ -302,7 +302,7 @@ public final class f
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.VoipHelper", localException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VoipHelper", localException, "", new Object[0]);
       AppMethodBeat.o(115511);
     }
   }
@@ -320,7 +320,7 @@ public final class f
           AppMethodBeat.o(115509);
           return 2;
         }
-        ad.i("MicroMsg.VoipHelper", "getNetType: %s %s", new Object[] { Integer.valueOf(paramContext.getType()), Integer.valueOf(paramContext.getSubtype()) });
+        ae.i("MicroMsg.VoipHelper", "getNetType: %s %s", new Object[] { Integer.valueOf(paramContext.getType()), Integer.valueOf(paramContext.getSubtype()) });
         i = paramContext.getType();
         if (i == 1)
         {
@@ -337,9 +337,9 @@ public final class f
         switch (j)
         {
         case 0: 
-          ad.i("MicroMsg.VoipHelper", "NEWEST type, use wifi as default!");
+          ae.i("MicroMsg.VoipHelper", "NEWEST type, use wifi as default!");
           i = 4;
-          ad.i("MicroMsg.VoipHelper", "steve: subType:%s, getMobileType(2G/3G/4G/...): %s ", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+          ae.i("MicroMsg.VoipHelper", "steve: subType:%s, getMobileType(2G/3G/4G/...): %s ", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
           AppMethodBeat.o(115509);
           return i;
         }
@@ -347,7 +347,7 @@ public final class f
       catch (NullPointerException paramContext)
       {
         int i;
-        ad.printErrStackTrace("MicroMsg.VoipHelper", paramContext, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.VoipHelper", paramContext, "", new Object[0]);
         AppMethodBeat.o(115509);
         return 2;
       }
@@ -367,12 +367,12 @@ public final class f
   {
     AppMethodBeat.i(115516);
     byte[] arrayOfByte = paramArrayOfByte;
-    if (bt.cC(paramArrayOfByte)) {
+    if (bu.cF(paramArrayOfByte)) {
       arrayOfByte = new byte[0];
     }
     paramArrayOfByte = new String(arrayOfByte);
     if (paramInt == 4) {
-      ad.e(paramString, paramArrayOfByte);
+      ae.e(paramString, paramArrayOfByte);
     }
     while (!paramString.equals("MicroMsg.v2Core"))
     {
@@ -380,9 +380,9 @@ public final class f
       AppMethodBeat.o(115516);
       return;
       if (paramInt == 2) {
-        ad.i(paramString, paramArrayOfByte);
+        ae.i(paramString, paramArrayOfByte);
       } else {
-        ad.d(paramString, paramArrayOfByte);
+        ae.d(paramString, paramArrayOfByte);
       }
     }
     writeLogToFile(paramString + ":" + paramArrayOfByte);
@@ -405,14 +405,14 @@ public final class f
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.VoipHelper", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VoipHelper", paramString, "", new Object[0]);
       AppMethodBeat.o(115510);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.f
  * JD-Core Version:    0.7.0.1
  */

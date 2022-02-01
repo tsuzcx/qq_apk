@@ -2,10 +2,10 @@ package com.tencent.mm.network;
 
 import com.tencent.mars.stn.StnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bp;
 
 public final class t$14
-  extends bo<Object>
+  extends bp<Object>
 {
   public t$14(t paramt, String paramString1, String paramString2)
   {
@@ -15,7 +15,7 @@ public final class t$14
   public final Object run()
   {
     AppMethodBeat.i(132786);
-    StnLogic.setDebugIP(this.iFr, this.val$ip);
+    StnLogic.setDebugIP(this.iIk, this.val$ip);
     AppMethodBeat.o(132786);
     return null;
   }

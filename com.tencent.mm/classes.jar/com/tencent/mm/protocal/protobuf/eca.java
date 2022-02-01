@@ -3,34 +3,43 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eca
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long HOv;
+  public int ID;
+  public String hFS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91737);
+    AppMethodBeat.i(32505);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).aY(1, this.HOv);
-      AppMethodBeat.o(91737);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aS(1, this.ID);
+      if (this.hFS != null) {
+        paramVarArgs.d(2, this.hFS);
+      }
+      AppMethodBeat.o(32505);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.HOv);
-      AppMethodBeat.o(91737);
-      return paramInt + 0;
+      int i = f.a.a.b.b.a.bz(1, this.ID) + 0;
+      paramInt = i;
+      if (this.hFS != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.hFS);
+      }
+      AppMethodBeat.o(32505);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(91737);
+      AppMethodBeat.o(32505);
       return 0;
     }
     if (paramInt == 3)
@@ -40,14 +49,18 @@ public final class eca
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(91737);
+        AppMethodBeat.o(32505);
         return -1;
+      case 1: 
+        localeca.ID = locala.OmT.zc();
+        AppMethodBeat.o(32505);
+        return 0;
       }
-      localeca.HOv = locala.NPN.zd();
-      AppMethodBeat.o(91737);
+      localeca.hFS = locala.OmT.readString();
+      AppMethodBeat.o(32505);
       return 0;
     }
-    AppMethodBeat.o(91737);
+    AppMethodBeat.o(32505);
     return -1;
   }
 }

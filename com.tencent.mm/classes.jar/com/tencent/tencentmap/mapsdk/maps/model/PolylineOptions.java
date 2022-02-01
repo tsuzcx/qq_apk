@@ -72,7 +72,7 @@ public class PolylineOptions
     this.colorType = PolylineOptions.ColorType.LINE_COLOR_NONE;
     this.iLevel = OverlayLevel.OverlayLevelAboveRoads;
     this.strCustomerTextName = sDefaultColorTexture;
-    this.mArrowSpacing = 100;
+    this.mArrowSpacing = 150;
     this.fwidth = -1.0F;
     this.iStrokeColor = COLOR_DEFAULT_POLYLINE;
     this.boVisible = true;

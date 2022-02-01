@@ -5,8 +5,8 @@ import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.hardwareopt.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class PluginHardwareOpt
   extends f
@@ -15,12 +15,12 @@ public class PluginHardwareOpt
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(55548);
-    if (!paramg.akw())
+    if (!paramg.akL())
     {
       AppMethodBeat.o(55548);
       return;
     }
-    ad.v("MicroMsg.PluginHardwareOpt", "hy: on config");
+    ae.v("MicroMsg.PluginHardwareOpt", "hy: on config");
     com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.hardwareopt.a.a.a.class, new com.tencent.mm.plugin.hardwareopt.a.a());
     AppMethodBeat.o(55548);
   }
@@ -28,15 +28,15 @@ public class PluginHardwareOpt
   public void dependency()
   {
     AppMethodBeat.i(55547);
-    dependsOn(r.class);
+    dependsOn(s.class);
     AppMethodBeat.o(55547);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(55549);
-    if (paramg.akw()) {
-      ad.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
+    if (paramg.akL()) {
+      ae.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
     }
     AppMethodBeat.o(55549);
   }
@@ -51,15 +51,15 @@ public class PluginHardwareOpt
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(55550);
-    ad.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
-    ((com.tencent.mm.plugin.hardwareopt.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).nr(false);
+    ae.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
+    ((com.tencent.mm.plugin.hardwareopt.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).nv(false);
     AppMethodBeat.o(55550);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(55551);
-    ad.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountRelease");
+    ae.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountRelease");
     AppMethodBeat.o(55551);
   }
 }

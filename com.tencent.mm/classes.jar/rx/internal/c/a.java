@@ -18,21 +18,21 @@ public final class a
   extends rx.g
   implements j
 {
-  private static final TimeUnit NYF;
-  static final c NYG;
-  static final a NYH;
-  final ThreadFactory LTn;
-  final AtomicReference<a> NYI;
+  private static final TimeUnit OvK;
+  static final c OvL;
+  static final a OvM;
+  final ThreadFactory Mqk;
+  final AtomicReference<a> OvN;
   
   static
   {
     AppMethodBeat.i(90324);
-    NYF = TimeUnit.SECONDS;
-    Object localObject = new c(rx.internal.util.g.Oax);
-    NYG = (c)localObject;
-    ((c)localObject).gyQ();
+    OvK = TimeUnit.SECONDS;
+    Object localObject = new c(rx.internal.util.g.OxC);
+    OvL = (c)localObject;
+    ((c)localObject).gDs();
     localObject = new a(null, 0L, null);
-    NYH = (a)localObject;
+    OvM = (a)localObject;
     ((a)localObject).shutdown();
     AppMethodBeat.o(90324);
   }
@@ -40,8 +40,8 @@ public final class a
   public a(ThreadFactory paramThreadFactory)
   {
     AppMethodBeat.i(90320);
-    this.LTn = paramThreadFactory;
-    this.NYI = new AtomicReference(NYH);
+    this.Mqk = paramThreadFactory;
+    this.OvN = new AtomicReference(OvM);
     start();
     AppMethodBeat.o(90320);
   }
@@ -49,7 +49,7 @@ public final class a
   public final g.a createWorker()
   {
     AppMethodBeat.i(90323);
-    b localb = new b((a)this.NYI.get());
+    b localb = new b((a)this.OvN.get());
     AppMethodBeat.o(90323);
     return localb;
   }
@@ -60,13 +60,13 @@ public final class a
     a locala;
     do
     {
-      locala = (a)this.NYI.get();
-      if (locala == NYH)
+      locala = (a)this.OvN.get();
+      if (locala == OvM)
       {
         AppMethodBeat.o(90322);
         return;
       }
-    } while (!this.NYI.compareAndSet(locala, NYH));
+    } while (!this.OvN.compareAndSet(locala, OvM));
     locala.shutdown();
     AppMethodBeat.o(90322);
   }
@@ -74,8 +74,8 @@ public final class a
   public final void start()
   {
     AppMethodBeat.i(90321);
-    a locala = new a(this.LTn, 60L, NYF);
-    if (!this.NYI.compareAndSet(NYH, locala)) {
+    a locala = new a(this.Mqk, 60L, OvK);
+    if (!this.OvN.compareAndSet(OvM, locala)) {
       locala.shutdown();
     }
     AppMethodBeat.o(90321);
@@ -83,23 +83,23 @@ public final class a
   
   static final class a
   {
-    private final ThreadFactory LTn;
-    final long LTp;
-    final ConcurrentLinkedQueue<a.c> NYJ;
-    final b NYK;
-    private final ScheduledExecutorService NYL;
-    private final Future<?> NYM;
+    private final ThreadFactory Mqk;
+    final long Mqm;
+    final ConcurrentLinkedQueue<a.c> OvO;
+    final b OvP;
+    private final ScheduledExecutorService OvQ;
+    private final Future<?> OvR;
     
     a(ThreadFactory paramThreadFactory, long paramLong, TimeUnit paramTimeUnit)
     {
       AppMethodBeat.i(90312);
-      this.LTn = paramThreadFactory;
+      this.Mqk = paramThreadFactory;
       if (paramTimeUnit != null)
       {
         paramLong = paramTimeUnit.toNanos(paramLong);
-        this.LTp = paramLong;
-        this.NYJ = new ConcurrentLinkedQueue();
-        this.NYK = new b();
+        this.Mqm = paramLong;
+        this.OvO = new ConcurrentLinkedQueue();
+        this.OvP = new b();
         if (paramTimeUnit == null) {
           break label126;
         }
@@ -111,29 +111,29 @@ public final class a
           {
             AppMethodBeat.i(90311);
             a.a locala = a.a.this;
-            if (!locala.NYJ.isEmpty())
+            if (!locala.OvO.isEmpty())
             {
               long l = System.nanoTime();
-              Iterator localIterator = locala.NYJ.iterator();
+              Iterator localIterator = locala.OvO.iterator();
               while (localIterator.hasNext())
               {
                 a.c localc = (a.c)localIterator.next();
-                if (localc.NYU > l) {
+                if (localc.OvZ > l) {
                   break;
                 }
-                if (locala.NYJ.remove(localc)) {
-                  locala.NYK.e(localc);
+                if (locala.OvO.remove(localc)) {
+                  locala.OvP.e(localc);
                 }
               }
             }
             AppMethodBeat.o(90311);
           }
-        }, this.LTp, this.LTp, TimeUnit.NANOSECONDS);
+        }, this.Mqm, this.Mqm, TimeUnit.NANOSECONDS);
       }
       for (;;)
       {
-        this.NYL = paramThreadFactory;
-        this.NYM = paramTimeUnit;
+        this.OvQ = paramThreadFactory;
+        this.OvR = paramTimeUnit;
         AppMethodBeat.o(90312);
         return;
         paramLong = 0L;
@@ -144,26 +144,26 @@ public final class a
       }
     }
     
-    final a.c gyZ()
+    final a.c gDB()
     {
       AppMethodBeat.i(90313);
-      if (this.NYK.OaI)
+      if (this.OvP.OxN)
       {
-        localc = a.NYG;
+        localc = a.OvL;
         AppMethodBeat.o(90313);
         return localc;
       }
-      while (!this.NYJ.isEmpty())
+      while (!this.OvO.isEmpty())
       {
-        localc = (a.c)this.NYJ.poll();
+        localc = (a.c)this.OvO.poll();
         if (localc != null)
         {
           AppMethodBeat.o(90313);
           return localc;
         }
       }
-      a.c localc = new a.c(this.LTn);
-      this.NYK.b(localc);
+      a.c localc = new a.c(this.Mqk);
+      this.OvP.b(localc);
       AppMethodBeat.o(90313);
       return localc;
     }
@@ -173,17 +173,17 @@ public final class a
       AppMethodBeat.i(90314);
       try
       {
-        if (this.NYM != null) {
-          this.NYM.cancel(true);
+        if (this.OvR != null) {
+          this.OvR.cancel(true);
         }
-        if (this.NYL != null) {
-          this.NYL.shutdownNow();
+        if (this.OvQ != null) {
+          this.OvQ.shutdownNow();
         }
         return;
       }
       finally
       {
-        this.NYK.gyQ();
+        this.OvP.gDs();
         AppMethodBeat.o(90314);
       }
     }
@@ -192,18 +192,18 @@ public final class a
   static final class b
     extends g.a
   {
-    final b NYP;
-    private final a.a NYQ;
-    private final a.c NYR;
-    final AtomicBoolean NYS;
+    final b OvU;
+    private final a.a OvV;
+    private final a.c OvW;
+    final AtomicBoolean OvX;
     
     b(a.a parama)
     {
       AppMethodBeat.i(90316);
-      this.NYP = new b();
-      this.NYQ = parama;
-      this.NYS = new AtomicBoolean();
-      this.NYR = parama.gyZ();
+      this.OvU = new b();
+      this.OvV = parama;
+      this.OvX = new AtomicBoolean();
+      this.OvW = parama.gDB();
       AppMethodBeat.o(90316);
     }
     
@@ -218,18 +218,18 @@ public final class a
     public final rx.j a(final rx.b.a parama, long paramLong, TimeUnit paramTimeUnit)
     {
       AppMethodBeat.i(90319);
-      if (this.NYP.OaI)
+      if (this.OvU.OxN)
       {
-        parama = d.gzD();
+        parama = d.gEf();
         AppMethodBeat.o(90319);
         return parama;
       }
-      parama = this.NYR.b(new rx.b.a()
+      parama = this.OvW.b(new rx.b.a()
       {
         public final void call()
         {
           AppMethodBeat.i(90315);
-          if (a.b.this.NYP.OaI)
+          if (a.b.this.OvU.OxN)
           {
             AppMethodBeat.o(90315);
             return;
@@ -238,37 +238,37 @@ public final class a
           AppMethodBeat.o(90315);
         }
       }, paramLong, paramTimeUnit);
-      this.NYP.b(parama);
-      paramTimeUnit = this.NYP;
-      parama.NZC.b(new i.b(parama, paramTimeUnit));
+      this.OvU.b(parama);
+      paramTimeUnit = this.OvU;
+      parama.OwH.b(new i.b(parama, paramTimeUnit));
       AppMethodBeat.o(90319);
       return parama;
     }
     
-    public final void gyQ()
+    public final void gDs()
     {
       AppMethodBeat.i(90317);
-      if (this.NYS.compareAndSet(false, true))
+      if (this.OvX.compareAndSet(false, true))
       {
-        a.a locala = this.NYQ;
-        a.c localc = this.NYR;
-        localc.NYU = (System.nanoTime() + locala.LTp);
-        locala.NYJ.offer(localc);
+        a.a locala = this.OvV;
+        a.c localc = this.OvW;
+        localc.OvZ = (System.nanoTime() + locala.Mqm);
+        locala.OvO.offer(localc);
       }
-      this.NYP.gyQ();
+      this.OvU.gDs();
       AppMethodBeat.o(90317);
     }
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
-      return this.NYP.OaI;
+      return this.OvU.OxN;
     }
   }
   
   static final class c
     extends h
   {
-    long NYU = 0L;
+    long OvZ = 0L;
     
     c(ThreadFactory paramThreadFactory)
     {
@@ -278,7 +278,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.a
  * JD-Core Version:    0.7.0.1
  */

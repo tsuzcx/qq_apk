@@ -3,13 +3,13 @@ package com.tencent.mm.pluginsdk.k.a;
 import android.content.Context;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,42 +19,42 @@ import java.util.Map;
 
 public final class a
 {
-  public static final String[] ERn = { "LDPI", "HDPI", "MDPI" };
-  public String ERg;
-  public boolean ERh;
-  public boolean ERi;
-  public int ERj;
-  public Rect ERk;
-  public Rect ERl;
-  public Map<String, String> ERm;
+  public static final String[] FjI = { "LDPI", "HDPI", "MDPI" };
+  public String FjB;
+  public boolean FjC;
+  public boolean FjD;
+  public int FjE;
+  public Rect FjF;
+  public Rect FjG;
+  public Map<String, String> FjH;
   public String desc;
-  public String hIB;
-  public String hIC;
+  public String hLu;
+  public String hLv;
   public String id;
   public String platform;
   public String title;
   public String url;
-  public int xoz;
+  public int xEw;
   
   private a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.id = paramString1;
     this.platform = paramString2;
-    this.ERg = paramString3;
-    this.ERh = paramBoolean1;
-    this.ERi = paramBoolean2;
+    this.FjB = paramString3;
+    this.FjC = paramBoolean1;
+    this.FjD = paramBoolean2;
   }
   
-  public static String aMm(String paramString)
+  public static String aNI(String paramString)
   {
     AppMethodBeat.i(31155);
-    Object localObject = aMn(paramString);
-    if (localObject == a.a.ERo)
+    Object localObject = aNJ(paramString);
+    if (localObject == a.FjJ)
     {
       AppMethodBeat.o(31155);
       return paramString;
     }
-    if (localObject == a.a.ERp)
+    if (localObject == a.FjK)
     {
       if (paramString == null) {
         paramString = null;
@@ -71,8 +71,8 @@ public final class a
         }
       }
       localObject = new StringBuilder();
-      ba.aBQ();
-      paramString = c.azA() + paramString;
+      bc.aCg();
+      paramString = c.azQ() + paramString;
       AppMethodBeat.o(31155);
       return paramString;
     }
@@ -80,27 +80,27 @@ public final class a
     return null;
   }
   
-  public static a.a aMn(String paramString)
+  public static a aNJ(String paramString)
   {
     AppMethodBeat.i(31156);
     if (paramString.indexOf("tips/") == 0)
     {
-      paramString = a.a.ERo;
+      paramString = a.FjJ;
       AppMethodBeat.o(31156);
       return paramString;
     }
     if (paramString.indexOf("weixin://") == 0)
     {
-      paramString = a.a.ERp;
+      paramString = a.FjK;
       AppMethodBeat.o(31156);
       return paramString;
     }
-    paramString = a.a.ERq;
+    paramString = a.FjL;
     AppMethodBeat.o(31156);
     return paramString;
   }
   
-  public static ArrayList<a> bR(Context paramContext, String paramString)
+  public static ArrayList<a> bS(Context paramContext, String paramString)
   {
     AppMethodBeat.i(31157);
     if ((paramString == null) || (paramString.length() < 0))
@@ -108,7 +108,7 @@ public final class a
       AppMethodBeat.o(31157);
       return null;
     }
-    Object localObject2 = BackwardSupportUtil.b.iy(paramContext);
+    Object localObject2 = BackwardSupportUtil.b.iD(paramContext);
     if (localObject2 == null)
     {
       paramContext = null;
@@ -122,8 +122,8 @@ public final class a
     {
       localObject1 = new HashSet();
       ((HashSet)localObject1).add(localObject2);
-      paramContext = BackwardSupportUtil.b.ix(paramContext);
-      ad.d("MicroMsg.PushMessage", "getDisplaySizeType :".concat(String.valueOf(paramContext)));
+      paramContext = BackwardSupportUtil.b.iC(paramContext);
+      ae.d("MicroMsg.PushMessage", "getDisplaySizeType :".concat(String.valueOf(paramContext)));
       if (paramContext != null)
       {
         paramContext = paramContext.split("_");
@@ -140,7 +140,7 @@ public final class a
         break;
       }
     }
-    Object localObject1 = bw.M(paramString, "tips");
+    Object localObject1 = bx.M(paramString, "tips");
     if (localObject1 == null)
     {
       AppMethodBeat.o(31157);
@@ -164,32 +164,32 @@ public final class a
           break;
         }
         paramString = (String)((Map)localObject1).get((String)localObject3 + ".$id");
-        ad.d("MicroMsg.PushMessage", "parseMessages id:".concat(String.valueOf(paramString)));
+        ae.d("MicroMsg.PushMessage", "parseMessages id:".concat(String.valueOf(paramString)));
         localObject4 = (String)((Map)localObject1).get((String)localObject3 + ".$platform");
         if (!((String)localObject4).equals("android")) {
           break label1316;
         }
-        localObject4 = new a(paramString, (String)localObject4, (String)((Map)localObject1).get((String)localObject3 + ".$device"), bt.n(Boolean.valueOf((String)((Map)localObject1).get((String)localObject3 + ".$enableclose"))), bt.n(Boolean.valueOf((String)((Map)localObject1).get((String)localObject3 + ".$transparentclose"))));
-        j = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$x"), 0);
-        int k = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$y"), 0);
-        int m = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$width"), 0);
-        int n = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$font"), 0);
-        int i1 = bt.gj((String)((Map)localObject1).get((String)localObject3 + ".title.$color"), 0);
+        localObject4 = new a(paramString, (String)localObject4, (String)((Map)localObject1).get((String)localObject3 + ".$device"), bu.n(Boolean.valueOf((String)((Map)localObject1).get((String)localObject3 + ".$enableclose"))), bu.n(Boolean.valueOf((String)((Map)localObject1).get((String)localObject3 + ".$transparentclose"))));
+        j = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$x"), 0);
+        int k = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$y"), 0);
+        int m = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$width"), 0);
+        int n = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".title.$font"), 0);
+        int i1 = bu.gs((String)((Map)localObject1).get((String)localObject3 + ".title.$color"), 0);
         ((a)localObject4).title = ((String)((Map)localObject1).get((String)localObject3 + ".title"));
-        ((a)localObject4).ERj = i1;
-        ((a)localObject4).ERk = new Rect(j, k, m + j, n + k);
-        j = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$x"), 0);
-        k = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$y"), 0);
-        m = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$width"), 0);
-        n = bt.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$font"), 0);
-        i1 = bt.gj((String)((Map)localObject1).get((String)localObject3 + ".description.$color"), 0);
+        ((a)localObject4).FjE = i1;
+        ((a)localObject4).FjF = new Rect(j, k, m + j, n + k);
+        j = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$x"), 0);
+        k = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$y"), 0);
+        m = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$width"), 0);
+        n = bu.getInt((String)((Map)localObject1).get((String)localObject3 + ".description.$font"), 0);
+        i1 = bu.gs((String)((Map)localObject1).get((String)localObject3 + ".description.$color"), 0);
         ((a)localObject4).desc = ((String)((Map)localObject1).get((String)localObject3 + ".description"));
-        ((a)localObject4).xoz = i1;
-        ((a)localObject4).ERl = new Rect(j, k, m + j, n + k);
+        ((a)localObject4).xEw = i1;
+        ((a)localObject4).FjG = new Rect(j, k, m + j, n + k);
         ((a)localObject4).url = ((String)((Map)localObject1).get((String)localObject3 + ".url"));
-        ((a)localObject4).hIB = ((String)((Map)localObject1).get((String)localObject3 + ".time.start"));
-        ((a)localObject4).hIC = ((String)((Map)localObject1).get((String)localObject3 + ".time.end"));
-        ad.d("MicroMsg.PushMessage", "parseMessages id:" + ((a)localObject4).id + " start:" + ((a)localObject4).hIB + " end:" + ((a)localObject4).hIC);
+        ((a)localObject4).hLu = ((String)((Map)localObject1).get((String)localObject3 + ".time.start"));
+        ((a)localObject4).hLv = ((String)((Map)localObject1).get((String)localObject3 + ".time.end"));
+        ae.d("MicroMsg.PushMessage", "parseMessages id:" + ((a)localObject4).id + " start:" + ((a)localObject4).hLu + " end:" + ((a)localObject4).hLv);
         localHashMap = new HashMap();
         j = 0;
         localObject5 = new StringBuilder().append((String)localObject3).append(".images.image");
@@ -202,7 +202,7 @@ public final class a
       {
         localObject5 = paramString;
         paramString = (String)((Map)localObject1).get(localObject5);
-        ad.d("MicroMsg.PushMessage", " img res:".concat(String.valueOf(paramString)));
+        ae.d("MicroMsg.PushMessage", " img res:".concat(String.valueOf(paramString)));
         if (paramString == null) {
           break label1267;
         }
@@ -217,14 +217,14 @@ public final class a
       }
       label1267:
       if (localHashMap.size() > 0) {
-        ((a)localObject4).ERm = localHashMap;
+        ((a)localObject4).FjH = localHashMap;
       }
-      ad.d("MicroMsg.PushMessage", "msgid :" + ((a)localObject4).id);
+      ae.d("MicroMsg.PushMessage", "msgid :" + ((a)localObject4).id);
       ((ArrayList)localObject2).add(localObject4);
       label1316:
       i += 1;
     }
-    ad.d("MicroMsg.PushMessage", "msgs size: " + ((ArrayList)localObject2).size());
+    ae.d("MicroMsg.PushMessage", "msgs size: " + ((ArrayList)localObject2).size());
     if (((ArrayList)localObject2).size() > 0)
     {
       AppMethodBeat.o(31157);
@@ -234,21 +234,21 @@ public final class a
     return null;
   }
   
-  private boolean fbg()
+  private boolean feU()
   {
     AppMethodBeat.i(31153);
-    long l3 = bt.flT();
+    long l3 = bu.fpO();
     long l1 = 9223372036854775807L;
     long l2 = 0L;
     try
     {
-      if (this.hIC != null) {
-        l1 = new SimpleDateFormat("yyyy-MM-dd-HH").parse(this.hIC).getTime();
+      if (this.hLv != null) {
+        l1 = new SimpleDateFormat("yyyy-MM-dd-HH").parse(this.hLv).getTime();
       }
-      if (this.hIB != null) {
-        l2 = new SimpleDateFormat("yyyy-MM-dd-HH").parse(this.hIB).getTime();
+      if (this.hLu != null) {
+        l2 = new SimpleDateFormat("yyyy-MM-dd-HH").parse(this.hLu).getTime();
       }
-      ad.d("MicroMsg.PushMessage", "CHECKTIME : [" + l2 + "," + l1 + "]");
+      ae.d("MicroMsg.PushMessage", "CHECKTIME : [" + l2 + "," + l1 + "]");
       if (l1 <= l3) {
         break label151;
       }
@@ -270,43 +270,43 @@ public final class a
     return false;
   }
   
-  public static void fbh()
+  public static void feV()
   {
     AppMethodBeat.i(31158);
-    ba.aBQ();
-    c.ajl().set(8193, "");
-    ba.aBQ();
-    c.ajl().set(8449, Long.valueOf(0L));
+    bc.aCg();
+    c.ajA().set(8193, "");
+    bc.aCg();
+    c.ajA().set(8449, Long.valueOf(0L));
     AppMethodBeat.o(31158);
   }
   
-  public static a hx(Context paramContext)
+  public static a hD(Context paramContext)
   {
     int i = 1;
     AppMethodBeat.i(31159);
-    ba.aBQ();
-    long l1 = bt.m(c.ajl().get(8449, null), 0);
-    long l2 = bt.aQJ();
+    bc.aCg();
+    long l1 = bu.m(c.ajA().get(8449, null), 0);
+    long l2 = bu.aRi();
     if ((l1 > 0L) && (l2 - l1 >= 86400L)) {
-      fbh();
+      feV();
     }
     for (;;)
     {
       AppMethodBeat.o(31159);
       return null;
-      ba.aBQ();
-      localObject = (String)c.ajl().get(8193, null);
-      if (!bt.isNullOrNil((String)localObject)) {
+      bc.aCg();
+      localObject = (String)c.ajA().get(8193, null);
+      if (!bu.isNullOrNil((String)localObject)) {
         if (((String)localObject).contains("id=\"setavatar\""))
         {
-          fbh();
+          feV();
         }
         else
         {
-          if (bt.isNullOrNil((String)localObject)) {
+          if (bu.isNullOrNil((String)localObject)) {
             break label190;
           }
-          paramContext = bR(paramContext, (String)localObject);
+          paramContext = bS(paramContext, (String)localObject);
           if ((paramContext != null) && (paramContext.size() == 1)) {
             break;
           }
@@ -314,18 +314,18 @@ public final class a
           if (paramContext != null) {
             break label200;
           }
-          fbh();
+          feV();
         }
       }
     }
     Object localObject = (a)paramContext.get(0);
-    if ((((a)localObject).ERm != null) && (((a)localObject).ERm.size() > 0)) {}
+    if ((((a)localObject).FjH != null) && (((a)localObject).FjH.size() > 0)) {}
     for (;;)
     {
       if (i != 0)
       {
         paramContext = (Context)localObject;
-        if (((a)localObject).fbg()) {
+        if (((a)localObject).feU()) {
           break;
         }
       }
@@ -342,12 +342,12 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(31154);
-    StringBuilder localStringBuilder = new StringBuilder("ad.id=").append(this.id).append(", platform=").append(this.platform).append(", device=").append(this.ERg);
-    if (this.ERh)
+    StringBuilder localStringBuilder = new StringBuilder("ad.id=").append(this.id).append(", platform=").append(this.platform).append(", device=").append(this.FjB);
+    if (this.FjC)
     {
       str = ", closable";
       localStringBuilder = localStringBuilder.append(str);
-      if (!this.ERi) {
+      if (!this.FjD) {
         break label102;
       }
     }
@@ -360,6 +360,21 @@ public final class a
       str = "";
       break;
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(31152);
+      FjJ = new a("ASSET", 0);
+      FjK = new a("DOWNLOAD", 1);
+      FjL = new a("ERROR", 2);
+      FjM = new a[] { FjJ, FjK, FjL };
+      AppMethodBeat.o(31152);
+    }
+    
+    private a() {}
   }
 }
 

@@ -7,13 +7,15 @@ import android.widget.LinearLayout;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.ag;
-import com.tencent.mm.am.f;
-import com.tencent.mm.am.f.a;
-import com.tencent.mm.am.f.a.b;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.a.b;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.ui.aq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,20 +25,20 @@ public final class j
   extends LinearLayout
   implements f.a
 {
-  private List<String> Kme;
-  private Map<String, View> Kmf;
-  private List<String> Kmg;
-  private a Kmh;
+  private List<String> KIA;
+  private a KIB;
+  private List<String> KIy;
+  private Map<String, View> KIz;
   private Context context;
-  private LinearLayout rEk;
+  private LinearLayout rMv;
   
   public j(Context paramContext, a parama)
   {
     super(paramContext);
     AppMethodBeat.i(37821);
-    this.rEk = null;
+    this.rMv = null;
     this.context = paramContext;
-    this.Kmh = parama;
+    this.KIB = parama;
     reset();
     AppMethodBeat.o(37821);
   }
@@ -44,24 +46,24 @@ public final class j
   public final void a(f.a.b paramb)
   {
     AppMethodBeat.i(37824);
-    if (paramb.hQb == null)
+    if (paramb.hST == null)
     {
       AppMethodBeat.o(37824);
       return;
     }
-    if (!paramb.hQb.Kn())
+    if (!paramb.hST.Kv())
     {
-      ad.i("MicroMsg.EnterpriseBizView", "onEvent, not enterprise father");
+      ae.i("MicroMsg.EnterpriseBizView", "onEvent, not enterprise father");
       AppMethodBeat.o(37824);
       return;
     }
-    com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194540);
+        AppMethodBeat.i(187941);
         j.this.reset();
-        AppMethodBeat.o(194540);
+        AppMethodBeat.o(187941);
       }
     });
     AppMethodBeat.o(37824);
@@ -70,36 +72,36 @@ public final class j
   public final int getEnterpriseFriendCount()
   {
     AppMethodBeat.i(37822);
-    if ((this.Kme == null) || (this.Kmg == null))
+    if ((this.KIy == null) || (this.KIA == null))
     {
       AppMethodBeat.o(37822);
       return 0;
     }
-    int i = this.Kme.size();
-    int j = this.Kmg.size();
+    int i = this.KIy.size();
+    int j = this.KIA.size();
     AppMethodBeat.o(37822);
     return i + j;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(194541);
-    h.LTJ.aR(new Runnable()
+    AppMethodBeat.i(187942);
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(37820);
         j localj = j.this;
-        Object localObject1 = ag.aFZ();
+        Object localObject1 = ag.aGp();
         ArrayList localArrayList = new ArrayList();
         Object localObject2 = new StringBuilder();
         f.a((StringBuilder)localObject2);
         f.c((StringBuilder)localObject2);
         ((StringBuilder)localObject2).append(" and bizinfo.type = 2 ");
         ((StringBuilder)localObject2).append(" order by ");
-        ((StringBuilder)localObject2).append(f.aFv());
+        ((StringBuilder)localObject2).append(f.aFL());
         localObject2 = ((StringBuilder)localObject2).toString();
-        ad.i("MicroMsg.BizInfoStorage", "getEnterpriseFatherBizLst sql %s", new Object[] { localObject2 });
+        ae.i("MicroMsg.BizInfoStorage", "getEnterpriseFatherBizLst sql %s", new Object[] { localObject2 });
         localObject1 = ((f)localObject1).rawQuery((String)localObject2, new String[0]);
         if (localObject1 != null)
         {
@@ -113,13 +115,13 @@ public final class j
         }
         j.a(localj, localArrayList);
         localj = j.this;
-        ba.aBQ();
-        j.b(localj, com.tencent.mm.model.c.azp().fqs());
+        bc.aCg();
+        j.b(localj, com.tencent.mm.model.c.azF().fus());
         j.this.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(194539);
+            AppMethodBeat.i(187940);
             if ((j.a(j.this) != null) && (j.a(j.this).contains("wework")))
             {
               j.a(j.this).clear();
@@ -127,7 +129,7 @@ public final class j
             }
             if ((j.b(j.this).size() > 0) || (j.a(j.this).size() > 0))
             {
-              ad.i("MicroMsg.EnterpriseBizView", "biz list size = %s", new Object[] { Integer.valueOf(j.b(j.this).size()) });
+              ae.i("MicroMsg.EnterpriseBizView", "biz list size = %s", new Object[] { Integer.valueOf(j.b(j.this).size()) });
               if (j.c(j.this) == null)
               {
                 View.inflate(j.this.getContext(), 2131493837, j.this);
@@ -149,7 +151,7 @@ public final class j
                   {
                     localObject = ((z)localObject).findViewById(2131299501);
                     j = ((View)localObject).getPaddingLeft();
-                    ((View)localObject).setBackground(com.tencent.mm.ui.aq.aM(j.d(j.this), 2130969245));
+                    ((View)localObject).setBackground(aq.aM(j.d(j.this), 2130969245));
                     ((View)localObject).findViewById(2131299503).setBackground(null);
                     ((View)localObject).setPadding(j, 0, 0, 0);
                   }
@@ -158,7 +160,7 @@ public final class j
                     i += 1;
                     break;
                     ((z)localObject).findViewById(2131299501).setBackground(null);
-                    ((z)localObject).findViewById(2131299501).findViewById(2131299503).setBackground(com.tencent.mm.ui.aq.aM(j.d(j.this), 2130969245));
+                    ((z)localObject).findViewById(2131299501).findViewById(2131299503).setBackground(aq.aM(j.d(j.this), 2130969245));
                   }
                 }
               }
@@ -192,20 +194,20 @@ public final class j
                   }
                 }
               }
-              j.f(j.this).ael(j.this.getEnterpriseFriendCount());
+              j.f(j.this).aeU(j.this.getEnterpriseFriendCount());
             }
-            AppMethodBeat.o(194539);
+            AppMethodBeat.o(187940);
           }
         });
         AppMethodBeat.o(37820);
       }
     });
-    AppMethodBeat.o(194541);
+    AppMethodBeat.o(187942);
   }
   
   public static abstract interface a
   {
-    public abstract void ael(int paramInt);
+    public abstract void aeU(int paramInt);
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mm.gpu.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
 {
-  public static final String gtD;
-  public static final String gtE;
-  public static final String gtF;
-  public static final String gtG;
+  public static final String gwk;
+  public static final String gwl;
+  public static final String gwm;
+  public static final String gwn;
   
   static
   {
-    AppMethodBeat.i(219497);
-    gtD = aj.getPackageName();
-    gtE = aj.getPackageName() + ":appbrand";
-    gtF = aj.getPackageName() + ":tools";
-    gtG = aj.getPackageName() + ":toolsmp";
-    AppMethodBeat.o(219497);
+    AppMethodBeat.i(209619);
+    gwk = ak.getPackageName();
+    gwl = ak.getPackageName() + ":appbrand";
+    gwm = ak.getPackageName() + ":tools";
+    gwn = ak.getPackageName() + ":toolsmp";
+    AppMethodBeat.o(209619);
   }
 }
 

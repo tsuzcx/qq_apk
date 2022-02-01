@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hc
   extends b
 {
-  public a dtv;
+  public a duz;
   
   public hc()
   {
@@ -15,17 +15,17 @@ public final class hc
   
   private hc(byte paramByte)
   {
-    AppMethodBeat.i(209022);
-    this.dtv = new a();
-    this.IbR = false;
+    AppMethodBeat.i(168878);
+    this.duz = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(209022);
+    AppMethodBeat.o(168878);
   }
   
   public static final class a
   {
-    public int dtw;
-    public String dtx;
+    public long doE;
+    public long id;
   }
 }
 

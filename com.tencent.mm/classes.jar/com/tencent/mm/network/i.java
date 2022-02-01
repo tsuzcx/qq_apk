@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface i
   extends IInterface
 {
-  public abstract int aOK();
+  public abstract int aPh();
   
-  public abstract void aOL();
+  public abstract void aPi();
   
-  public abstract long aOM();
+  public abstract long aPj();
   
   public abstract boolean c(n paramn);
   
@@ -28,7 +28,7 @@ public abstract interface i
       attachInterface(this, "com.tencent.mm.network.INetworkEvent_AIDL");
     }
     
-    public static i n(IBinder paramIBinder)
+    public static i o(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -59,7 +59,7 @@ public abstract interface i
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-        paramInt1 = aOK();
+        paramInt1 = aPh();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -85,12 +85,12 @@ public abstract interface i
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-        aOL();
+        aPi();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-      long l = aOM();
+      long l = aPj();
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
@@ -106,7 +106,7 @@ public abstract interface i
         this.mRemote = paramIBinder;
       }
       
-      public final int aOK()
+      public final int aPh()
       {
         AppMethodBeat.i(132740);
         Parcel localParcel1 = Parcel.obtain();
@@ -127,7 +127,7 @@ public abstract interface i
         }
       }
       
-      public final void aOL()
+      public final void aPi()
       {
         AppMethodBeat.i(132743);
         Parcel localParcel1 = Parcel.obtain();
@@ -147,7 +147,7 @@ public abstract interface i
         }
       }
       
-      public final long aOM()
+      public final long aPj()
       {
         AppMethodBeat.i(132744);
         Parcel localParcel1 = Parcel.obtain();

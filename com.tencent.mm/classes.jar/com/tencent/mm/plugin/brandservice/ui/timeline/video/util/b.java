@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.j;
 import d.l;
 import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
 public final class b
 {
   public final String TAG;
-  public LinkedList<c> oql;
+  public LinkedList<c> owH;
   
   public b()
   {
     AppMethodBeat.i(7283);
     this.TAG = "MicroMsg.BizVideoDotHelper";
-    this.oql = new LinkedList();
+    this.owH = new LinkedList();
     AppMethodBeat.o(7283);
   }
   
   public static boolean a(float paramFloat, c paramc)
   {
     if (paramc == null) {}
-    while ((paramc.oqq) || (paramc.oqt > paramFloat) || (paramFloat > paramc.oqm)) {
+    while ((paramc.owM) || (paramc.owP > paramFloat) || (paramFloat > paramc.owI)) {
       return false;
     }
     return true;
   }
   
-  public static boolean bRZ()
+  public static boolean bTl()
   {
     AppMethodBeat.i(7282);
-    if ((!i.DEBUG) && (!i.IS_FLAVOR_RED))
+    if ((!j.DEBUG) && (!j.IS_FLAVOR_RED))
     {
       AppMethodBeat.o(7282);
       return true;
     }
-    if (ax.aQz("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
+    if (ay.aRW("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
     {
       AppMethodBeat.o(7282);
       return false;
@@ -55,26 +55,26 @@ public final class b
     AppMethodBeat.i(7280);
     try
     {
-      boolean bool = bt.hj((List)this.oql);
+      boolean bool = bu.ht((List)this.owH);
       if (bool) {
         return null;
       }
-      Object localObject1 = this.oql.iterator();
+      Object localObject1 = this.owH.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         c localc = (c)((Iterator)localObject1).next();
-        if (paramFloat <= localc.oqm) {
+        if (paramFloat <= localc.owI) {
           if (paramFloat >= 2.0F)
           {
             double d1 = paramFloat;
-            double d2 = localc.oqt;
+            double d2 = localc.owP;
             if (d1 >= d2 - 10.0D) {
               return localc;
             }
           }
         }
       }
-      localObject1 = z.MKo;
+      localObject1 = z.Nhr;
       return null;
     }
     finally
@@ -91,17 +91,17 @@ public final class b
       AppMethodBeat.o(7281);
       return false;
     }
-    if ((paramc.oqq) && ((paramFloat < paramc.oqt) || (paramFloat > paramc.oqu)))
+    if ((paramc.owM) && ((paramFloat < paramc.owP) || (paramFloat > paramc.owQ)))
     {
       AppMethodBeat.o(7281);
       return true;
     }
-    if (paramFloat > paramc.oqu)
+    if (paramFloat > paramc.owQ)
     {
       AppMethodBeat.o(7281);
       return true;
     }
-    if (paramFloat < paramc.oqt)
+    if (paramFloat < paramc.owP)
     {
       c localc = aU(paramFloat);
       if ((localc != null) && (localc.id != paramc.id))
@@ -119,8 +119,8 @@ public final class b
     AppMethodBeat.i(7279);
     try
     {
-      this.oql.clear();
-      z localz = z.MKo;
+      this.owH.clear();
+      z localz = z.Nhr;
       return;
     }
     finally
@@ -131,7 +131,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.b
  * JD-Core Version:    0.7.0.1
  */

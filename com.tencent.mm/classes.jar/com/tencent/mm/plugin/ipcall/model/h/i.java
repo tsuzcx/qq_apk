@@ -15,20 +15,20 @@ public final class i
   {
     AppMethodBeat.i(25551);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "countryCode";
-    locala.IhC.put("countryCode", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("countryCode", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" countryCode INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "countryCode";
+    locala.IBM = "countryCode";
     locala.columns[1] = "callTimeCount";
-    locala.IhC.put("callTimeCount", "LONG");
+    locala.IBN.put("callTimeCount", "LONG");
     localStringBuilder.append(" callTimeCount LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "lastCallTime";
-    locala.IhC.put("lastCallTime", "LONG");
+    locala.IBN.put("lastCallTime", "LONG");
     localStringBuilder.append(" lastCallTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -43,7 +43,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.i
  * JD-Core Version:    0.7.0.1
  */

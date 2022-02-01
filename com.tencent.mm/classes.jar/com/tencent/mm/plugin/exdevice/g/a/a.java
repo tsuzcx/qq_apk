@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.plugin.exdevice.g.b.a.c;
 import com.tencent.mm.plugin.exdevice.g.b.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,17 +15,17 @@ public final class a
   public static ArrayList<d> a(String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap, List<c> paramList)
   {
     AppMethodBeat.i(23497);
-    ad.d("MicroMsg.ExdeviceMsgXmlParser", paramString3);
-    if (bt.isNullOrNil(paramString3))
+    ae.d("MicroMsg.ExdeviceMsgXmlParser", paramString3);
+    if (bu.isNullOrNil(paramString3))
     {
-      ad.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
+      ae.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
       AppMethodBeat.o(23497);
       return null;
     }
-    paramString3 = k.b.aA(paramString3, paramString4);
+    paramString3 = k.b.aB(paramString3, paramString4);
     if (paramString3 != null)
     {
-      paramString4 = paramString3.hzM;
+      paramString4 = paramString3.hCA;
       ArrayList localArrayList = new ArrayList();
       boolean bool;
       int i;
@@ -33,11 +33,11 @@ public final class a
       if (paramString4 == null)
       {
         bool = true;
-        ad.d("MicroMsg.ExdeviceMsgXmlParser", "map is null :%s", new Object[] { Boolean.valueOf(bool) });
+        ae.d("MicroMsg.ExdeviceMsgXmlParser", "map is null :%s", new Object[] { Boolean.valueOf(bool) });
         if ((paramString4 == null) || (paramString4.isEmpty())) {
           break label711;
         }
-        ad.d("MicroMsg.ExdeviceMsgXmlParser", "ap: map %s", new Object[] { paramString4.toString() });
+        ae.d("MicroMsg.ExdeviceMsgXmlParser", "ap: map %s", new Object[] { paramString4.toString() });
         i = 0;
         localObject1 = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
         if (i != 0) {
@@ -46,10 +46,10 @@ public final class a
         paramString3 = "";
         label137:
         localObject1 = (String)paramString4.get(paramString3 + ".username");
-        if (!bt.isNullOrNil((String)localObject1)) {
+        if (!bu.isNullOrNil((String)localObject1)) {
           break label331;
         }
-        ad.i("MicroMsg.ExdeviceMsgXmlParser", "follow should break now : %d", new Object[] { Integer.valueOf(i) });
+        ae.i("MicroMsg.ExdeviceMsgXmlParser", "follow should break now : %d", new Object[] { Integer.valueOf(i) });
         i = 0;
         paramList = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
         if (i != 0) {
@@ -71,10 +71,10 @@ public final class a
       for (paramString3 = "";; paramString3 = Integer.valueOf(i))
       {
         localObject1 = (String)paramString4.get(paramString3 + ".nickname");
-        if (!bt.isNullOrNil(paramList)) {
+        if (!bu.isNullOrNil(paramList)) {
           break label523;
         }
-        ad.i("MicroMsg.ExdeviceMsgXmlParser", "should break now : %d", new Object[] { Integer.valueOf(i) });
+        ae.i("MicroMsg.ExdeviceMsgXmlParser", "should break now : %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(23497);
         return localArrayList;
         bool = false;
@@ -99,7 +99,7 @@ public final class a
           ((c)localObject3).field_appusername = paramString2;
           ((c)localObject3).field_username = ((String)localObject1);
           ((c)localObject3).field_rankID = paramString1;
-          ((c)localObject3).field_step = bt.getInt(paramString3, 0);
+          ((c)localObject3).field_step = bu.getInt(paramString3, 0);
           paramList.add(localObject3);
           paramMap.put(localObject1, localObject2);
           i += 1;
@@ -126,12 +126,12 @@ public final class a
       label702:
       for (paramString3 = "";; paramString3 = Integer.valueOf(i))
       {
-        int j = bt.getInt((String)paramString4.get(paramString3 + ".score.scoredisplay"), 0);
+        int j = bu.getInt((String)paramString4.get(paramString3 + ".score.scoredisplay"), 0);
         paramString3 = new d();
         paramString3.field_appusername = paramString2;
         paramString3.field_rankID = paramString1;
         paramString3.field_username = paramList;
-        paramString3.field_ranknum = bt.getInt((String)localObject2, 0);
+        paramString3.field_ranknum = bu.getInt((String)localObject2, 0);
         paramString3.field_score = j;
         paramString3.field_selfLikeState = 2;
         paramString3.field_likecount = 0;
@@ -152,17 +152,17 @@ public final class a
   {
     int k = 0;
     AppMethodBeat.i(23498);
-    ad.d("MicroMsg.ExdeviceMsgXmlParser", "ap: only nickname: %s", new Object[] { paramString1 });
-    if (bt.isNullOrNil(paramString1))
+    ae.d("MicroMsg.ExdeviceMsgXmlParser", "ap: only nickname: %s", new Object[] { paramString1 });
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
+      ae.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
       AppMethodBeat.o(23498);
       return;
     }
-    paramString1 = k.b.aA(paramString1, paramString2);
+    paramString1 = k.b.aB(paramString1, paramString2);
     if (paramString1 != null)
     {
-      paramString2 = paramString1.hzM;
+      paramString2 = paramString1.hCA;
       if ((paramString2 != null) && (!paramString2.isEmpty()))
       {
         int i = 0;
@@ -175,7 +175,7 @@ public final class a
           paramString1 = "";
           localObject = (String)paramString2.get(paramString1 + ".username");
           j = k;
-          if (bt.isNullOrNil((String)localObject)) {
+          if (bu.isNullOrNil((String)localObject)) {
             break label203;
           }
           localStringBuilder = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
@@ -208,7 +208,7 @@ public final class a
         for (paramString1 = "";; paramString1 = Integer.valueOf(j))
         {
           paramString1 = (String)paramString2.get(paramString1 + ".nickname");
-          if (bt.isNullOrNil((String)localObject)) {
+          if (bu.isNullOrNil((String)localObject)) {
             break label335;
           }
           paramMap.put(localObject, paramString1);

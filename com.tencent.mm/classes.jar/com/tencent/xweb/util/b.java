@@ -11,7 +11,7 @@ import org.xwalk.core.Log;
 
 public final class b
 {
-  public static boolean bn(String paramString1, String paramString2, String paramString3)
+  public static boolean bo(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(156990);
     boolean bool = new a(paramString1, paramString2, paramString3, "SHA1withECDSA").verify();
@@ -21,17 +21,17 @@ public final class b
   
   static final class a
   {
-    String Mut;
-    String Muu;
-    String Muv;
-    String Muw;
+    String MRA;
+    String MRx;
+    String MRy;
+    String MRz;
     
     public a(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      this.Mut = paramString1;
-      this.Muu = paramString2;
-      this.Muv = paramString3;
-      this.Muw = paramString4;
+      this.MRx = paramString1;
+      this.MRy = paramString2;
+      this.MRz = paramString3;
+      this.MRA = paramString4;
     }
     
     public final boolean verify()
@@ -39,12 +39,12 @@ public final class b
       AppMethodBeat.i(156989);
       try
       {
-        Object localObject1 = new X509EncodedKeySpec(Base64.decode(this.Muv, 0));
+        Object localObject1 = new X509EncodedKeySpec(Base64.decode(this.MRz, 0));
         Object localObject2 = KeyFactory.getInstance("EC").generatePublic((KeySpec)localObject1);
-        localObject1 = Signature.getInstance(this.Muw);
+        localObject1 = Signature.getInstance(this.MRA);
         ((Signature)localObject1).initVerify((PublicKey)localObject2);
-        localObject2 = Base64.decode(this.Muu, 0);
-        ((Signature)localObject1).update(this.Mut.getBytes());
+        localObject2 = Base64.decode(this.MRy, 0);
+        ((Signature)localObject1).update(this.MRx.getBytes());
         boolean bool = ((Signature)localObject1).verify((byte[])localObject2);
         AppMethodBeat.o(156989);
         return bool;

@@ -9,10 +9,10 @@ import org.xwalk.core.XWalkInitializer;
 public final class i
   extends AsyncTask<a, b, c>
 {
-  private b Mzk = null;
-  private a Mzl = null;
-  private int Mzm = 0;
-  private long Mzn = 0L;
+  private b MWr = null;
+  private a MWs = null;
+  private int MWt = 0;
+  private long MWu = 0L;
   private Timer mTimer = null;
   
   /* Error */
@@ -46,10 +46,10 @@ public final class i
     //   44: aconst_null
     //   45: areturn
     //   46: aload_0
-    //   47: getfield 32	com/tencent/xweb/xwalk/updater/i:Mzk	Lcom/tencent/xweb/xwalk/updater/b;
+    //   47: getfield 32	com/tencent/xweb/xwalk/updater/i:MWr	Lcom/tencent/xweb/xwalk/updater/b;
     //   50: ifnull +12 -> 62
     //   53: aload_0
-    //   54: getfield 32	com/tencent/xweb/xwalk/updater/i:Mzk	Lcom/tencent/xweb/xwalk/updater/b;
+    //   54: getfield 32	com/tencent/xweb/xwalk/updater/i:MWr	Lcom/tencent/xweb/xwalk/updater/b;
     //   57: invokeinterface 62 1 0
     //   62: new 15	com/tencent/xweb/xwalk/updater/i$c
     //   65: dup
@@ -65,13 +65,13 @@ public final class i
     //   88: putfield 72	com/tencent/xweb/xwalk/updater/i$c:mFilePath	Ljava/lang/String;
     //   91: aload 21
     //   93: iconst_0
-    //   94: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   94: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   97: aload 21
     //   99: ldc 77
-    //   101: putfield 80	com/tencent/xweb/xwalk/updater/i$c:ksX	Ljava/lang/String;
+    //   101: putfield 80	com/tencent/xweb/xwalk/updater/i$c:kwn	Ljava/lang/String;
     //   104: aload 21
     //   106: aload_0
-    //   107: getfield 36	com/tencent/xweb/xwalk/updater/i:Mzm	I
+    //   107: getfield 36	com/tencent/xweb/xwalk/updater/i:MWt	I
     //   110: putfield 83	com/tencent/xweb/xwalk/updater/i$c:mRetryTimes	I
     //   113: aload 21
     //   115: lconst_0
@@ -81,7 +81,7 @@ public final class i
     //   122: putfield 89	com/tencent/xweb/xwalk/updater/i$c:mTotalSize	J
     //   125: aload 21
     //   127: iconst_0
-    //   128: putfield 92	com/tencent/xweb/xwalk/updater/i$c:Mzs	I
+    //   128: putfield 92	com/tencent/xweb/xwalk/updater/i$c:MWz	I
     //   131: aload 21
     //   133: invokestatic 98	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
     //   136: invokestatic 104	org/xwalk/core/NetworkUtil:getCurrentNetWorkStatus	(Landroid/content/Context;)I
@@ -101,13 +101,13 @@ public final class i
     //   174: invokevirtual 113	java/lang/String:length	()I
     //   177: ifeq +10 -> 187
     //   180: aload_0
-    //   181: getfield 32	com/tencent/xweb/xwalk/updater/i:Mzk	Lcom/tencent/xweb/xwalk/updater/b;
+    //   181: getfield 32	com/tencent/xweb/xwalk/updater/i:MWr	Lcom/tencent/xweb/xwalk/updater/b;
     //   184: ifnonnull +24 -> 208
     //   187: ldc 115
     //   189: invokestatic 121	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   192: aload 21
     //   194: sipush -10001
-    //   197: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   197: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   200: ldc 48
     //   202: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   205: aload 21
@@ -327,7 +327,7 @@ public final class i
     //   627: invokestatic 121	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   630: aload 21
     //   632: sipush -10003
-    //   635: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   635: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   638: ldc 48
     //   640: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   643: aload 21
@@ -344,7 +344,7 @@ public final class i
     //   659: invokevirtual 204	java/io/OutputStream:write	([BII)V
     //   662: aload 10
     //   664: lload 6
-    //   666: putfield 207	com/tencent/xweb/xwalk/updater/i$b:Mzq	J
+    //   666: putfield 207	com/tencent/xweb/xwalk/updater/i$b:MWx	J
     //   669: lload 6
     //   671: lstore 4
     //   673: iload_2
@@ -392,7 +392,7 @@ public final class i
     //   756: astore 12
     //   758: aload 21
     //   760: sipush -10002
-    //   763: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   763: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   766: aload 8
     //   768: ifnull +8 -> 776
     //   771: aload 8
@@ -415,7 +415,7 @@ public final class i
     //   809: aload 21
     //   811: invokestatic 220	java/lang/System:currentTimeMillis	()J
     //   814: aload_0
-    //   815: getfield 40	com/tencent/xweb/xwalk/updater/i:Mzn	J
+    //   815: getfield 40	com/tencent/xweb/xwalk/updater/i:MWu	J
     //   818: lsub
     //   819: putfield 86	com/tencent/xweb/xwalk/updater/i$c:baR	J
     //   822: aload_1
@@ -454,7 +454,7 @@ public final class i
     //   891: astore 13
     //   893: aload 21
     //   895: sipush -10005
-    //   898: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   898: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   901: aload 18
     //   903: astore 9
     //   905: aload 14
@@ -468,7 +468,7 @@ public final class i
     //   921: iload_2
     //   922: invokestatic 226	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   925: invokevirtual 230	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   928: putfield 80	com/tencent/xweb/xwalk/updater/i$c:ksX	Ljava/lang/String;
+    //   928: putfield 80	com/tencent/xweb/xwalk/updater/i$c:kwn	Ljava/lang/String;
     //   931: aload 17
     //   933: astore 11
     //   935: goto -113 -> 822
@@ -490,7 +490,7 @@ public final class i
     //   970: invokestatic 121	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   973: aload 21
     //   975: sipush -10003
-    //   978: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   978: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   981: ldc 48
     //   983: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   986: aload 21
@@ -507,7 +507,7 @@ public final class i
     //   1009: invokestatic 121	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   1012: aload 21
     //   1014: sipush -10003
-    //   1017: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   1017: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   1020: ldc 48
     //   1022: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1025: aload 21
@@ -545,7 +545,7 @@ public final class i
     //   1093: invokestatic 121	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   1096: aload 21
     //   1098: sipush -10003
-    //   1101: putfield 75	com/tencent/xweb/xwalk/updater/i$c:Mzr	I
+    //   1101: putfield 75	com/tencent/xweb/xwalk/updater/i$c:MWy	I
     //   1104: ldc 48
     //   1106: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1109: aload 21
@@ -666,11 +666,11 @@ public final class i
   {
     AppMethodBeat.i(154584);
     i locali = new i();
-    locali.Mzk = paramb;
-    locali.Mzl = parama;
-    locali.Mzm = 0;
-    locali.Mzn = System.currentTimeMillis();
-    locali.execute(new a[] { locali.Mzl });
+    locali.MWr = paramb;
+    locali.MWs = parama;
+    locali.MWt = 0;
+    locali.MWu = System.currentTimeMillis();
+    locali.execute(new a[] { locali.MWs });
     AppMethodBeat.o(154584);
   }
   
@@ -678,24 +678,24 @@ public final class i
   
   public static final class a
   {
-    public boolean Mzp;
+    public boolean MWw;
     public String mFilePath;
     public String mUrl;
   }
   
   public static final class b
   {
-    public long Mzq;
+    public long MWx;
     public long mTotalSize;
     public String mUrl;
   }
   
   public static final class c
   {
-    public int Mzr;
-    public int Mzs;
+    public int MWy;
+    public int MWz;
     public long baR;
-    public String ksX;
+    public String kwn;
     public String mFilePath;
     public int mNetWorkType;
     public int mRetryTimes;

@@ -1,10 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rm
   extends b
 {
+  public a dHm;
+  public b dHn;
+  
   public rm()
   {
     this((byte)0);
@@ -12,8 +17,22 @@ public final class rm
   
   private rm(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(149886);
+    this.dHm = new a();
+    this.dHn = new b();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(149886);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+  }
+  
+  public static final class b
+  {
+    public boolean dHb;
   }
 }
 

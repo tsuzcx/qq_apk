@@ -2,7 +2,7 @@ package com.tencent.luggage.xweb_ext.extendplugin.a;
 
 public abstract interface c
 {
-  public abstract b dA(String paramString);
+  public abstract b dD(String paramString);
 }
 
 

@@ -15,7 +15,7 @@ import com.tencent.neattextview.textview.view.NeatTextView;
 public final class c
   implements LineBackgroundSpan
 {
-  private View Jis;
+  private View JDg;
   private final int color;
   private int end;
   private Rect rect;
@@ -24,7 +24,7 @@ public final class c
   public c(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159148);
-    this.Jis = paramView;
+    this.JDg = paramView;
     this.color = paramInt1;
     this.start = paramInt2;
     this.end = paramInt3;
@@ -46,8 +46,8 @@ public final class c
       return;
     }
     int i = paramPaint.getColor();
-    int k = b.aM(this.Jis, this.start);
-    int j = b.aM(this.Jis, this.end);
+    int k = b.aM(this.JDg, this.start);
+    int j = b.aM(this.JDg, this.end);
     paramInt7 = paramInt1;
     paramInt5 = paramInt2;
     float f;
@@ -60,7 +60,7 @@ public final class c
         if (k != paramInt8) {
           break label269;
         }
-        f = b.aN(this.Jis, this.start);
+        f = b.aN(this.JDg, this.start);
         paramInt7 = (int)f;
         if (j != paramInt8) {
           break label360;
@@ -70,7 +70,7 @@ public final class c
     label269:
     label354:
     label360:
-    for (paramInt5 = (int)b.aN(this.Jis, this.end);; paramInt5 = (int)b.aQ(this.Jis, paramInt8) + paramInt7)
+    for (paramInt5 = (int)b.aN(this.JDg, this.end);; paramInt5 = (int)b.aQ(this.JDg, paramInt8) + paramInt7)
     {
       paramInt1 = (int)(paramInt4 + paramPaint.descent());
       this.rect.left = paramInt7;
@@ -92,7 +92,7 @@ public final class c
       paramPaint.setColor(i);
       AppMethodBeat.o(159149);
       return;
-      paramCharSequence = this.Jis;
+      paramCharSequence = this.JDg;
       if ((paramCharSequence instanceof NeatTextView))
       {
         paramCharSequence = ((NeatTextView)paramCharSequence).getLayout();

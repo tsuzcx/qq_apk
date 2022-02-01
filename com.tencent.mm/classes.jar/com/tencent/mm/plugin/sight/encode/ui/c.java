@@ -11,11 +11,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.contact.a.a.a;
 import com.tencent.mm.ui.contact.a.a.b;
 import com.tencent.mm.ui.contact.a.e;
@@ -29,51 +29,25 @@ import java.util.List;
 public final class c
   extends q
 {
-  public static boolean yUG = true;
-  public static boolean yUH = false;
-  List<String> yUE;
-  boolean yUF;
+  public static boolean zkQ = true;
+  public static boolean zkR = false;
+  List<String> zkO;
+  boolean zkP;
   
   public c(n paramn)
   {
     super(paramn, new ArrayList(), true, true);
     AppMethodBeat.i(28735);
-    this.yUF = true;
-    this.yUF = true;
-    this.yUE = null;
+    this.zkP = true;
+    this.zkP = true;
+    this.zkO = null;
     AppMethodBeat.o(28735);
   }
   
-  public static boolean axA(String paramString)
-  {
-    AppMethodBeat.i(28740);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(28740);
-      return false;
-    }
-    boolean bool = paramString.endsWith("@search.tencent");
-    AppMethodBeat.o(28740);
-    return bool;
-  }
-  
-  public static boolean axB(String paramString)
-  {
-    AppMethodBeat.i(28741);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(28741);
-      return false;
-    }
-    boolean bool = paramString.endsWith("@draft.tencent");
-    AppMethodBeat.o(28741);
-    return bool;
-  }
-  
-  public static boolean axz(String paramString)
+  public static boolean ayP(String paramString)
   {
     AppMethodBeat.i(28739);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(28739);
       return false;
@@ -83,70 +57,96 @@ public final class c
     return bool;
   }
   
-  public final void ce(List<String> paramList)
+  public static boolean ayQ(String paramString)
+  {
+    AppMethodBeat.i(28740);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(28740);
+      return false;
+    }
+    boolean bool = paramString.endsWith("@search.tencent");
+    AppMethodBeat.o(28740);
+    return bool;
+  }
+  
+  public static boolean ayR(String paramString)
+  {
+    AppMethodBeat.i(28741);
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(28741);
+      return false;
+    }
+    boolean bool = paramString.endsWith("@draft.tencent");
+    AppMethodBeat.o(28741);
+    return bool;
+  }
+  
+  public final void cg(List<String> paramList)
   {
     AppMethodBeat.i(28737);
     clearCache();
-    this.yUE = paramList;
+    this.zkO = paramList;
     notifyDataSetChanged();
     AppMethodBeat.o(28737);
   }
   
-  public final boolean dQK()
+  public final boolean dUh()
   {
-    return this.yUF;
+    return this.zkP;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(28736);
-    if (this.yUE == null)
+    if (this.zkO == null)
     {
       AppMethodBeat.o(28736);
       return 0;
     }
-    int i = this.yUE.size();
+    int i = this.zkO.size();
     AppMethodBeat.o(28736);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a rh(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a rk(int paramInt)
   {
     AppMethodBeat.i(28738);
-    if (this.yUE == null)
+    if (this.zkO == null)
     {
       AppMethodBeat.o(28738);
       return null;
     }
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
-      ad.e("MicroMsg.MainSightSelectContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.MainSightSelectContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(28738);
       return null;
     }
     a locala = new a(paramInt);
-    Object localObject = (String)this.yUE.get(paramInt);
-    if (axz((String)localObject)) {
-      localObject = new am("@sns.tencent");
+    Object localObject = (String)this.zkO.get(paramInt);
+    if (ayP((String)localObject)) {
+      localObject = new an("@sns.tencent");
     }
     for (;;)
     {
-      locala.contact = ((am)localObject);
-      locala.KmP = this.yUF;
+      locala.contact = ((an)localObject);
+      locala.KJj = this.zkP;
       AppMethodBeat.o(28738);
       return locala;
-      if (axA((String)localObject))
+      if (ayQ((String)localObject))
       {
-        localObject = new am("@search.tencent");
+        localObject = new an("@search.tencent");
       }
-      else if (axB((String)localObject))
+      else if (ayR((String)localObject))
       {
-        localObject = new am("@draft.tencent");
+        localObject = new an("@draft.tencent");
       }
       else
       {
-        ba.aBQ();
-        localObject = com.tencent.mm.model.c.azp().Bf((String)this.yUE.get(paramInt));
+        bc.aCg();
+        localObject = com.tencent.mm.model.c.azF().BH((String)this.zkO.get(paramInt));
       }
     }
   }
@@ -159,7 +159,7 @@ public final class c
       super();
     }
     
-    public final a.b aRs()
+    public final a.b aRR()
     {
       AppMethodBeat.i(28733);
       b localb = new b();
@@ -167,7 +167,7 @@ public final class c
       return localb;
     }
     
-    public final a.a dJN()
+    public final a.a dNf()
     {
       AppMethodBeat.i(28734);
       a locala = new a();
@@ -178,8 +178,8 @@ public final class c
     public final class a
       extends e.a
     {
-      public View yTD;
-      public View yUJ;
+      public View zjN;
+      public View zkT;
       
       public a()
       {
@@ -199,16 +199,16 @@ public final class c
       {
         AppMethodBeat.i(28731);
         paramContext = LayoutInflater.from(paramContext).inflate(2131495460, paramViewGroup, false);
-        paramViewGroup = (c.a.a)c.a.this.dJN();
-        paramViewGroup.fOf = ((ImageView)paramContext.findViewById(2131297008));
-        paramViewGroup.iVq = ((TextView)paramContext.findViewById(2131305948));
-        paramViewGroup.iCV = ((TextView)paramContext.findViewById(2131299008));
+        paramViewGroup = (c.a.a)c.a.this.dNf();
+        paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
+        paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
+        paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
         paramViewGroup.contentView = paramContext.findViewById(2131304518);
-        paramViewGroup.iVs = ((CheckBox)paramContext.findViewById(2131304502));
-        paramViewGroup.yTD = paramContext.findViewById(2131301189);
-        paramViewGroup.yUJ = paramContext.findViewById(2131304452);
+        paramViewGroup.iYl = ((CheckBox)paramContext.findViewById(2131304502));
+        paramViewGroup.zjN = paramContext.findViewById(2131301189);
+        paramViewGroup.zkT = paramContext.findViewById(2131304452);
         paramContext.setTag(paramViewGroup);
-        paramViewGroup.iVq.setTextColor(-1);
+        paramViewGroup.iYj.setTextColor(-1);
         paramViewGroup = (AbsListView.LayoutParams)paramContext.getLayoutParams();
         paramViewGroup.width = -1;
         paramContext.setLayoutParams(paramViewGroup);
@@ -220,79 +220,79 @@ public final class c
       public final void a(Context paramContext, a.a parama, com.tencent.mm.ui.contact.a.a parama1, boolean paramBoolean1, boolean paramBoolean2)
       {
         AppMethodBeat.i(28732);
-        am localam = parama1.contact;
+        an localan = parama1.contact;
         c.a.a locala = (c.a.a)parama;
         locala.contentView.setVisibility(0);
-        locala.yUJ.setVisibility(8);
-        locala.yTD.setVisibility(8);
-        if (c.axB(localam.field_username))
+        locala.zkT.setVisibility(8);
+        locala.zjN.setVisibility(8);
+        if (c.ayR(localan.field_username))
         {
-          locala.fOf.setImageResource(2131691172);
-          locala.iVq.setText(2131763703);
-          locala.iCV.setText(2131763701);
-          locala.iCV.setVisibility(0);
-          locala.iVs.setEnabled(false);
-          if (c.yUH)
+          locala.fQl.setImageResource(2131691172);
+          locala.iYj.setText(2131763703);
+          locala.iFO.setText(2131763701);
+          locala.iFO.setVisibility(0);
+          locala.iYl.setEnabled(false);
+          if (c.zkR)
           {
             locala.contentView.setBackgroundResource(2131234043);
-            locala.iVs.setVisibility(0);
-            locala.iVs.setBackgroundResource(2131691180);
-            locala.yTD.setVisibility(0);
+            locala.iYl.setVisibility(0);
+            locala.iYl.setBackgroundResource(2131691180);
+            locala.zjN.setVisibility(0);
           }
           for (;;)
           {
             c.e(paramContext, locala.contentView);
-            parama = locala.fOf.getLayoutParams();
-            parama.width = com.tencent.mm.cc.a.ax(paramContext, 2131166795);
-            parama.height = com.tencent.mm.cc.a.ax(paramContext, 2131166795);
-            locala.fOf.setLayoutParams(parama);
-            parama = (LinearLayout.LayoutParams)locala.iVs.getLayoutParams();
-            parama.height = com.tencent.mm.cc.a.ax(paramContext, 2131166801);
-            parama.width = com.tencent.mm.cc.a.ax(paramContext, 2131166801);
+            parama = locala.fQl.getLayoutParams();
+            parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
+            parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
+            locala.fQl.setLayoutParams(parama);
+            parama = (LinearLayout.LayoutParams)locala.iYl.getLayoutParams();
+            parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
+            parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
             parama.setMargins(parama.leftMargin, parama.topMargin, 0, parama.bottomMargin);
-            locala.iVs.setLayoutParams(parama);
+            locala.iYl.setLayoutParams(parama);
             AppMethodBeat.o(28732);
             return;
             locala.contentView.setBackgroundResource(2131234047);
-            locala.iVs.setVisibility(8);
-            locala.iVs.setBackgroundResource(2131691182);
-            locala.yTD.setVisibility(8);
+            locala.iYl.setVisibility(8);
+            locala.iYl.setBackgroundResource(2131691182);
+            locala.zjN.setVisibility(8);
           }
         }
-        if (c.axz(localam.field_username))
+        if (c.ayP(localan.field_username))
         {
-          locala.fOf.setImageResource(2131691179);
-          locala.iVs.setVisibility(8);
-          locala.iVq.setText(paramContext.getString(2131763713));
-          locala.iCV.setVisibility(8);
-          if (c.yUG)
+          locala.fQl.setImageResource(2131691179);
+          locala.iYl.setVisibility(8);
+          locala.iYj.setText(paramContext.getString(2131763713));
+          locala.iFO.setVisibility(8);
+          if (c.zkQ)
           {
             locala.contentView.setBackgroundResource(2131234047);
-            locala.yTD.setVisibility(8);
+            locala.zjN.setVisibility(8);
             c.e(paramContext, locala.contentView);
           }
         }
         for (;;)
         {
-          parama = locala.fOf.getLayoutParams();
-          parama.width = com.tencent.mm.cc.a.ax(paramContext, 2131166795);
-          parama.height = com.tencent.mm.cc.a.ax(paramContext, 2131166795);
-          locala.fOf.setLayoutParams(parama);
-          parama = (LinearLayout.LayoutParams)locala.iVs.getLayoutParams();
-          parama.height = com.tencent.mm.cc.a.ax(paramContext, 2131166801);
-          parama.width = com.tencent.mm.cc.a.ax(paramContext, 2131166801);
+          parama = locala.fQl.getLayoutParams();
+          parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
+          parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
+          locala.fQl.setLayoutParams(parama);
+          parama = (LinearLayout.LayoutParams)locala.iYl.getLayoutParams();
+          parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
+          parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
           parama.setMargins(parama.leftMargin, parama.topMargin, 0, parama.bottomMargin);
-          locala.iVs.setLayoutParams(parama);
-          locala.iVs.setBackgroundResource(2131234042);
+          locala.iYl.setLayoutParams(parama);
+          locala.iYl.setBackgroundResource(2131234042);
           AppMethodBeat.o(28732);
           return;
           locala.contentView.setBackgroundResource(2131234043);
-          locala.yTD.setVisibility(0);
+          locala.zjN.setVisibility(0);
           break;
-          if (c.axA(localam.field_username))
+          if (c.ayQ(localan.field_username))
           {
             locala.contentView.setVisibility(8);
-            locala.yUJ.setVisibility(0);
+            locala.zkT.setVisibility(0);
             AppMethodBeat.o(28732);
             return;
           }

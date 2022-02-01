@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b$a
   extends Handler
 {
-  boolean hpv = false;
-  int kuN = 0;
+  boolean hsj = false;
+  int kyd = 0;
   
   public b$a(Looper paramLooper)
   {
@@ -25,8 +25,8 @@ final class b$a
     AppMethodBeat.i(31166);
     Camera localCamera = (Camera)paramMessage.obj;
     Camera.Parameters localParameters = localCamera.getParameters();
-    int i = localParameters.getZoom() + this.kuN;
-    if (this.hpv) {
+    int i = localParameters.getZoom() + this.kyd;
+    if (this.hsj) {
       if (i >= localParameters.getMaxZoom() / 2) {
         i = localParameters.getMaxZoom() / 2;
       }

@@ -7,12 +7,12 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.model.w;
+import com.tencent.mm.br.d;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONObject;
@@ -25,19 +25,19 @@ public class bl
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(78635);
-    ad.i("MicroMsg.JsApiShareTimeLine", "invoke");
+    ae.i("MicroMsg.JsApiShareTimeLine", "invoke");
     final MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
     if ((localMMActivity == null) || (localMMActivity.isFinishing()))
     {
-      ad.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
+      ae.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
       AppMethodBeat.o(78635);
       return;
     }
     Object localObject1 = paramb.chh.cgn;
     String str1 = ((JSONObject)localObject1).optString("link");
-    if (bt.isNullOrNil(str1))
+    if (bu.isNullOrNil(str1))
     {
-      ad.e("MicroMsg.JsApiShareTimeLine", "link is null");
+      ae.e("MicroMsg.JsApiShareTimeLine", "link is null");
       paramb.a("invalid_params", null);
       AppMethodBeat.o(78635);
       return;
@@ -55,7 +55,7 @@ public class bl
       str2 = ((JSONObject)localObject1).optString("appid");
       Object localObject2 = ((JSONObject)localObject1).optString("img_width");
       String str7 = ((JSONObject)localObject1).optString("img_height");
-      ad.i("MicroMsg.JsApiShareTimeLine", "doTimeline, rawUrl:[%s], shareUrl:[%s]", new Object[] { str1, str1 });
+      ae.i("MicroMsg.JsApiShareTimeLine", "doTimeline, rawUrl:[%s], shareUrl:[%s]", new Object[] { str1, str1 });
       String str3 = ((JSONObject)localObject1).optString("type");
       String str4 = ((JSONObject)localObject1).optString("title");
       String str5 = ((JSONObject)localObject1).optString("img_url");
@@ -80,17 +80,17 @@ public class bl
       ((Intent)localObject2).putExtra("Ksnsupload_link", str1);
       ((Intent)localObject2).putExtra("Ksnsupload_title", str4);
       ((Intent)localObject2).putExtra("Ksnsupload_imgurl", str5);
-      if (w.zE(str6))
+      if (x.Ao(str6))
       {
         ((Intent)localObject2).putExtra("src_username", str6);
         ((Intent)localObject2).putExtra("src_displayname", (String)localObject1);
       }
       ((Intent)localObject2).putExtra("Ksnsupload_source", 1);
       ((Intent)localObject2).putExtra("Ksnsupload_type", 1);
-      if ((!bt.isNullOrNil(str3)) && (str3.equals("music"))) {
+      if ((!bu.isNullOrNil(str3)) && (str3.equals("music"))) {
         ((Intent)localObject2).putExtra("ksnsis_music", true);
       }
-      if ((!bt.isNullOrNil(str3)) && (str3.equals("video"))) {
+      if ((!bu.isNullOrNil(str3)) && (str3.equals("video"))) {
         ((Intent)localObject2).putExtra("ksnsis_video", true);
       }
       if ((str2 != null) && (str2.length() > 0)) {
@@ -98,9 +98,9 @@ public class bl
       }
       ((Intent)localObject2).putExtra("ShareUrlOriginal", str1);
       ((Intent)localObject2).putExtra("ShareUrlOpen", ((g)paramb.chg).getUrl());
-      ((Intent)localObject2).putExtra("JsAppId", ((g)paramb.chg).DOL.getAppId());
+      ((Intent)localObject2).putExtra("JsAppId", ((g)paramb.chg).EgL.getAppId());
       ((Intent)localObject2).putExtra("need_result", true);
-      ad.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
+      ae.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
       localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
       {
         public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -133,7 +133,7 @@ public class bl
     }
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

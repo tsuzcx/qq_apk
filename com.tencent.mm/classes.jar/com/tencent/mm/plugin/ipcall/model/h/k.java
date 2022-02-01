@@ -15,31 +15,31 @@ public final class k
   {
     AppMethodBeat.i(25557);
     c.a locala = new c.a();
-    locala.IhA = new Field[6];
+    locala.IBL = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "phonenumber";
-    locala.IhC.put("phonenumber", "TEXT");
+    locala.IBN.put("phonenumber", "TEXT");
     localStringBuilder.append(" phonenumber TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "calltime";
-    locala.IhC.put("calltime", "LONG");
+    locala.IBN.put("calltime", "LONG");
     localStringBuilder.append(" calltime LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "duration";
-    locala.IhC.put("duration", "LONG");
+    locala.IBN.put("duration", "LONG");
     localStringBuilder.append(" duration LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.IhC.put("status", "INTEGER");
+    locala.IBN.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "addressId";
-    locala.IhC.put("addressId", "LONG default '-1' ");
+    locala.IBN.put("addressId", "LONG default '-1' ");
     localStringBuilder.append(" addressId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "phoneType";
-    locala.IhC.put("phoneType", "INTEGER default '-1' ");
+    locala.IBN.put("phoneType", "INTEGER default '-1' ");
     localStringBuilder.append(" phoneType INTEGER default '-1' ");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -54,7 +54,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.k
  * JD-Core Version:    0.7.0.1
  */

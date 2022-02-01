@@ -3,7 +3,7 @@ package kotlinx.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/PolymorphicKind;", "Lkotlinx/serialization/SerialKind;", "()V", "OPEN", "SEALED", "Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind$OPEN;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicKind;", "Lkotlinx/serialization/SerialKind;", "()V", "OPEN", "SEALED", "Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind$OPEN;", "kotlinx-serialization-runtime"})
 public abstract class j
   extends s
 {
@@ -12,17 +12,17 @@ public abstract class j
     super((byte)0);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/PolymorphicKind$OPEN;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicKind$OPEN;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
   public static final class a
     extends j
   {
-    public static final a NLk;
+    public static final a Oiq;
     
     static
     {
-      AppMethodBeat.i(191247);
-      NLk = new a();
-      AppMethodBeat.o(191247);
+      AppMethodBeat.i(199835);
+      Oiq = new a();
+      AppMethodBeat.o(199835);
     }
     
     private a()
@@ -31,17 +31,17 @@ public abstract class j
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
   public static final class b
     extends j
   {
-    public static final b NLl;
+    public static final b Oir;
     
     static
     {
-      AppMethodBeat.i(191005);
-      NLl = new b();
-      AppMethodBeat.o(191005);
+      AppMethodBeat.i(199593);
+      Oir = new b();
+      AppMethodBeat.o(199593);
     }
     
     private b()

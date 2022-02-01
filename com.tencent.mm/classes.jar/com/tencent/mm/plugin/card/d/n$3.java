@@ -14,7 +14,7 @@ public final class n$3
   public final void onAnimationEnd(Animation paramAnimation)
   {
     AppMethodBeat.i(113857);
-    this.oPJ.startAnimation(this.oPK);
+    this.oWl.startAnimation(this.oWm);
     AppMethodBeat.o(113857);
   }
   

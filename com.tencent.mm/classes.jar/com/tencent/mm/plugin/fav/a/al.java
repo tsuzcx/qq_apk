@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbk;
-import com.tencent.mm.protocal.protobuf.bbl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bca;
+import com.tencent.mm.protocal.protobuf.bcb;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class al
   extends n
   implements k
 {
   private f callback;
-  private final com.tencent.mm.al.b rr;
+  private final com.tencent.mm.ak.b rr;
   
   public al()
   {
     AppMethodBeat.i(103480);
     this.callback = null;
     b.a locala = new b.a();
-    locala.hNM = new bbk();
-    locala.hNN = new bbl();
+    locala.hQF = new bca();
+    locala.hQG = new bcb();
     locala.uri = "/cgi-bin/micromsg-bin/getfavinfo";
     locala.funcId = 438;
-    locala.hNO = 217;
+    locala.hQH = 217;
     locala.respCmdId = 1000000217;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(103480);
   }
   
@@ -51,16 +51,16 @@ public final class al
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103482);
-    ad.d("MicroMsg.NetSceneGetFavInfo", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ae.d("MicroMsg.NetSceneGetFavInfo", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bbl)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-      ad.v("MicroMsg.NetSceneGetFavInfo", "used:%d  total:%d  mxDown:%d  mxUp:%d  mxFile:%d", new Object[] { Long.valueOf(paramq.Fvd), Long.valueOf(paramq.nDF), Integer.valueOf(paramq.Gyw), Integer.valueOf(paramq.Gyv), Integer.valueOf(paramq.Gyu) });
-      b.vn(paramq.Fvd);
-      b.vo(paramq.nDF);
-      b.vq(paramq.Gyw);
-      b.vr(paramq.Gyv);
-      b.vs(paramq.Gyu);
+      paramq = (bcb)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+      ae.v("MicroMsg.NetSceneGetFavInfo", "used:%d  total:%d  mxDown:%d  mxUp:%d  mxFile:%d", new Object[] { Long.valueOf(paramq.FNB), Long.valueOf(paramq.nJa), Integer.valueOf(paramq.GRW), Integer.valueOf(paramq.GRV), Integer.valueOf(paramq.GRU) });
+      b.vD(paramq.FNB);
+      b.vE(paramq.nJa);
+      b.vG(paramq.GRW);
+      b.vH(paramq.GRV);
+      b.vI(paramq.GRU);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(103482);

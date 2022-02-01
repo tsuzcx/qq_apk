@@ -7,7 +7,7 @@ import com.tencent.mm.pluginsdk.ui.applet.a.a;
 import d.l;
 import java.lang.ref.WeakReference;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "ok", "", "hasSentVerify", "respUsername", "", "googleItemID", "canAddContact"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ok", "", "hasSentVerify", "respUsername", "", "googleItemID", "canAddContact"})
 final class p$c
   implements a.a
 {
@@ -15,15 +15,15 @@ final class p$c
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(209770);
+    AppMethodBeat.i(208744);
     d.g.b.p.h(paramString1, "respUsername");
     d.g.b.p.h(paramString2, "googleItemID");
-    if ((paramBoolean1) && (this.oeh.mXV != null) && (this.oeh.mXV.get() != null))
+    if ((paramBoolean1) && (this.ojX.ndc != null) && (this.ojX.ndc.get() != null))
     {
-      this.oeh.bOI().setVisibility(0);
-      this.oeh.bOH().setVisibility(8);
+      this.ojX.bPG().setVisibility(0);
+      this.ojX.bPF().setVisibility(8);
     }
-    AppMethodBeat.o(209770);
+    AppMethodBeat.o(208744);
   }
 }
 

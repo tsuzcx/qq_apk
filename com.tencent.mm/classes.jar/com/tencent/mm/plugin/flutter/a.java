@@ -5,11 +5,11 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.flutter.a.c;
 import com.tencent.mm.plugin.flutter.ui.MMFlutterActivity;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.io.File;
 import java.util.HashMap;
 import java.util.UUID;
@@ -20,7 +20,7 @@ public final class a
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(148836);
-    if (ad.getLogLevel() > 1)
+    if (ae.getLogLevel() > 1)
     {
       AppMethodBeat.o(148836);
       return false;
@@ -69,26 +69,26 @@ public final class a
     return true;
     paramArrayOfString = UUID.randomUUID().toString();
     paramContext = new c();
-    paramContext.til = "emotion";
-    paramContext.tim = "store";
-    paramContext.tio = 2;
-    paramContext.tin = new HashMap();
-    paramContext.tin.put("fontScale", Float.valueOf(com.tencent.mm.cc.a.eb(aj.getContext())));
-    paramContext.tin.put("layoutScale", Float.valueOf(com.tencent.mm.cc.a.il(aj.getContext())));
-    paramContext.tin.put("language", ac.fks());
-    paramContext.tin.put("sessionId", paramArrayOfString);
-    paramArrayOfString = new Intent(aj.getContext(), MMFlutterActivity.class);
+    paramContext.ttd = "emotion";
+    paramContext.tte = "store";
+    paramContext.ttg = 2;
+    paramContext.ttf = new HashMap();
+    paramContext.ttf.put("fontScale", Float.valueOf(com.tencent.mm.cb.a.ef(ak.getContext())));
+    paramContext.ttf.put("layoutScale", Float.valueOf(com.tencent.mm.cb.a.iq(ak.getContext())));
+    paramContext.ttf.put("language", ad.fom());
+    paramContext.ttf.put("sessionId", paramArrayOfString);
+    paramArrayOfString = new Intent(ak.getContext(), MMFlutterActivity.class);
     paramArrayOfString.addFlags(268435456);
-    paramArrayOfString.putExtra("route", paramContext.aYt());
-    paramContext = aj.getContext();
+    paramArrayOfString.putExtra("route", paramContext.aYO());
+    paramContext = ak.getContext();
     paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().bc(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.ahp(), "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramArrayOfString.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.ahE(), "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramArrayOfString.mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(148836);
     return true;
-    paramArrayOfString = new File(q.B(new e(paramContext.getCacheDir() + "/flutter").fOK()));
-    paramContext = new e(paramContext.getCacheDir() + "/flutter");
+    paramArrayOfString = new File(w.B(new k(paramContext.getCacheDir() + "/flutter").fTh()));
+    paramContext = new k(paramContext.getCacheDir() + "/flutter");
     paramArrayOfString.delete();
     paramContext.delete();
     AppMethodBeat.o(148836);
@@ -97,7 +97,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a
  * JD-Core Version:    0.7.0.1
  */

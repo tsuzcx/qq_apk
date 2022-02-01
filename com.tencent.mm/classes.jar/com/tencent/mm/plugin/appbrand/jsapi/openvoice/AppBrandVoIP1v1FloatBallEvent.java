@@ -9,26 +9,26 @@ public class AppBrandVoIP1v1FloatBallEvent
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandVoIP1v1FloatBallEvent> CREATOR;
-  public int dyx;
+  public int dzC;
   
   static
   {
-    AppMethodBeat.i(188461);
+    AppMethodBeat.i(222611);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(188461);
+    AppMethodBeat.o(222611);
   }
   
   public AppBrandVoIP1v1FloatBallEvent()
   {
-    this.dyx = 0;
+    this.dzC = 0;
   }
   
   public AppBrandVoIP1v1FloatBallEvent(Parcel paramParcel)
   {
-    AppMethodBeat.i(188459);
-    this.dyx = 0;
-    this.dyx = paramParcel.readInt();
-    AppMethodBeat.o(188459);
+    AppMethodBeat.i(222609);
+    this.dzC = 0;
+    this.dzC = paramParcel.readInt();
+    AppMethodBeat.o(222609);
   }
   
   public int describeContents()
@@ -38,9 +38,9 @@ public class AppBrandVoIP1v1FloatBallEvent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(188460);
-    paramParcel.writeInt(this.dyx);
-    AppMethodBeat.o(188460);
+    AppMethodBeat.i(222610);
+    paramParcel.writeInt(this.dzC);
+    AppMethodBeat.o(222610);
   }
 }
 

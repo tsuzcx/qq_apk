@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gif;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class MMWXGFJNI
 {
@@ -18,7 +18,7 @@ public class MMWXGFJNI
     AppMethodBeat.i(104681);
     mIsInit = false;
     mECode = -1;
-    ad.i("MicroMsg.JNI.MMWXGF", "static MMWXGFJNI");
+    ae.i("MicroMsg.JNI.MMWXGF", "static MMWXGFJNI");
     if (!mIsInit)
     {
       int i = nativeInit("libvoipCodec.so");
@@ -27,12 +27,12 @@ public class MMWXGFJNI
       for (boolean bool = true;; bool = false)
       {
         mIsInit = bool;
-        ad.i("MicroMsg.JNI.MMWXGF", "native init MMWXGF mECode:%d result:%b :%s", new Object[] { Integer.valueOf(mECode), Boolean.valueOf(mIsInit), "libvoipCodec.so" });
+        ae.i("MicroMsg.JNI.MMWXGF", "native init MMWXGF mECode:%d result:%b :%s", new Object[] { Integer.valueOf(mECode), Boolean.valueOf(mIsInit), "libvoipCodec.so" });
         AppMethodBeat.o(104681);
         return;
       }
     }
-    ad.d("MicroMsg.JNI.MMWXGF", "MMWXGF has init.");
+    ae.d("MicroMsg.JNI.MMWXGF", "MMWXGF has init.");
     AppMethodBeat.o(104681);
   }
   
@@ -87,39 +87,39 @@ public class MMWXGFJNI
   
   public static int pic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(219022);
+    AppMethodBeat.i(188501);
     paramInt1 = nativePic2Wxam(q.k(paramString1, false), q.k(paramString2, true), paramInt1, paramInt2);
-    AppMethodBeat.o(219022);
+    AppMethodBeat.o(188501);
     return paramInt1;
   }
   
   public static int pic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(219024);
+    AppMethodBeat.i(188503);
     paramInt1 = nativePic2WxamWithWH(q.k(paramString1, false), q.k(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(219024);
+    AppMethodBeat.o(188503);
     return paramInt1;
   }
   
   public static int pic2WxamWithWH(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(219025);
+    AppMethodBeat.i(188504);
     paramInt1 = nativePic2WxamWithWH(q.k(paramString, true), paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
-    AppMethodBeat.o(219025);
+    AppMethodBeat.o(188504);
     return paramInt1;
   }
   
   public static int wxam2Pic(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(219023);
+    AppMethodBeat.i(188502);
     int i = nativeWxam2Pic(q.k(paramString1, false), q.k(paramString2, true));
-    AppMethodBeat.o(219023);
+    AppMethodBeat.o(188502);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMWXGFJNI
  * JD-Core Version:    0.7.0.1
  */

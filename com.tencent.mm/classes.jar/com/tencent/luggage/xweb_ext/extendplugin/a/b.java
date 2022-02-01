@@ -8,7 +8,7 @@ import com.tencent.luggage.xweb_ext.extendplugin.b.c;
 
 public abstract interface b
 {
-  public abstract void Gb();
+  public abstract void Gh();
   
   public abstract void a(c paramc);
   
@@ -20,7 +20,7 @@ public abstract interface b
   
   public abstract void l(MotionEvent paramMotionEvent);
   
-  public abstract void r(Bitmap paramBitmap);
+  public abstract void s(Bitmap paramBitmap);
   
   public abstract void setId(int paramInt);
   

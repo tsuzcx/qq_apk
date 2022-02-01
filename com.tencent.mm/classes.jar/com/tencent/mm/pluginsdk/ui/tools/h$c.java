@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 public abstract interface h$c
 {
-  public abstract void eU(boolean paramBoolean);
+  public abstract void eX(boolean paramBoolean);
 }
 
 

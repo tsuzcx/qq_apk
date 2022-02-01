@@ -10,10 +10,10 @@ import com.tencent.wework.api.util.SessionProvider;
 public abstract class WWBaseMessage
   extends BaseMessage
 {
-  public String Mos;
+  public String MLo;
   public String appId;
   public String appName;
-  public String jXT;
+  public String kbi;
   public int sdkVer;
   public String transaction;
   
@@ -26,12 +26,12 @@ public abstract class WWBaseMessage
   {
     this.transaction = paramBundle.getString("_wwapi_basereq_transaction");
     this.appId = paramBundle.getString("_wwapi_basereq_openid");
-    this.jXT = paramBundle.getString("_wwapi_basereq_agentid");
+    this.kbi = paramBundle.getString("_wwapi_basereq_agentid");
     this.appName = paramBundle.getString("_wwapi_basereq_appname");
-    this.Mos = paramBundle.getString("_wwapi_basereq_appbundle");
+    this.MLo = paramBundle.getString("_wwapi_basereq_appbundle");
     this.sdkVer = paramBundle.getInt("_wwobject_sdkVer", 0);
-    if ((Mor != null) && (TextUtils.isEmpty(this.viB))) {
-      this.viB = Mor.gae();
+    if ((MLn != null) && (TextUtils.isEmpty(this.vuG))) {
+      this.vuG = MLn.geG();
     }
   }
   
@@ -41,15 +41,15 @@ public abstract class WWBaseMessage
     this.transaction = str;
     paramBundle.putString("_wwapi_basereq_transaction", str);
     paramBundle.putString("_wwapi_basereq_openid", this.appId);
-    paramBundle.putString("_wwapi_basereq_agentid", this.jXT);
+    paramBundle.putString("_wwapi_basereq_agentid", this.kbi);
     try
     {
       paramBundle.putString("_wwapi_basereq_appbundle", this.mContext.getPackageName());
       paramBundle.putString("_wwapi_basereq_appname", this.mContext.getString(this.mContext.getApplicationInfo().labelRes));
       label75:
       paramBundle.putInt("_wwobject_sdkVer", 2);
-      if ((Mor != null) && (TextUtils.isEmpty(this.viB))) {
-        this.viB = Mor.gae();
+      if ((MLn != null) && (TextUtils.isEmpty(this.vuG))) {
+        this.vuG = MLn.geG();
       }
       return;
     }

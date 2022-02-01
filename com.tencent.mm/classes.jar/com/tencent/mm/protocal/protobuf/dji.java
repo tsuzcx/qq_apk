@@ -1,126 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dji
-  extends cvc
+  extends com.tencent.mm.bw.a
 {
-  public String HtU;
-  public long HtV;
-  public long Hvg;
-  public int Hvh;
-  public String nDo;
-  public int qey;
+  public int HRf;
+  public String nIJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(118449);
+    AppMethodBeat.i(152701);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.nIJ != null) {
+        paramVarArgs.d(1, this.nIJ);
       }
-      if (this.HtU != null) {
-        paramVarArgs.d(2, this.HtU);
-      }
-      if (this.nDo != null) {
-        paramVarArgs.d(3, this.nDo);
-      }
-      paramVarArgs.aS(4, this.qey);
-      paramVarArgs.aY(5, this.HtV);
-      paramVarArgs.aY(6, this.Hvg);
-      paramVarArgs.aS(7, this.Hvh);
-      AppMethodBeat.o(118449);
+      paramVarArgs.aS(2, this.HRf);
+      AppMethodBeat.o(152701);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label618;
+      if (this.nIJ == null) {
+        break label258;
       }
     }
-    label618:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label258:
+    for (paramInt = f.a.a.b.b.a.e(1, this.nIJ) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.HtU != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.HtU);
-      }
-      i = paramInt;
-      if (this.nDo != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.nDo);
-      }
-      paramInt = f.a.a.b.b.a.bz(4, this.qey);
-      int j = f.a.a.b.b.a.p(5, this.HtV);
-      int k = f.a.a.b.b.a.p(6, this.Hvg);
-      int m = f.a.a.b.b.a.bz(7, this.Hvh);
-      AppMethodBeat.o(118449);
-      return i + paramInt + j + k + m;
+      int i = f.a.a.b.b.a.bz(2, this.HRf);
+      AppMethodBeat.o(152701);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(118449);
+        AppMethodBeat.o(152701);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         dji localdji = (dji)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(118449);
+          AppMethodBeat.o(152701);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdji.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(118449);
-          return 0;
-        case 2: 
-          localdji.HtU = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(118449);
-          return 0;
-        case 3: 
-          localdji.nDo = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(118449);
-          return 0;
-        case 4: 
-          localdji.qey = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(118449);
-          return 0;
-        case 5: 
-          localdji.HtV = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(118449);
-          return 0;
-        case 6: 
-          localdji.Hvg = ((f.a.a.a.a)localObject1).NPN.zd();
-          AppMethodBeat.o(118449);
+          localdji.nIJ = locala.OmT.readString();
+          AppMethodBeat.o(152701);
           return 0;
         }
-        localdji.Hvh = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(118449);
+        localdji.HRf = locala.OmT.zc();
+        AppMethodBeat.o(152701);
         return 0;
       }
-      AppMethodBeat.o(118449);
+      AppMethodBeat.o(152701);
       return -1;
     }
   }

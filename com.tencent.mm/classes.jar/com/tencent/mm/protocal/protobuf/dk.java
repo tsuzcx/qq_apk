@@ -5,18 +5,18 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dk
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String FvH;
-  public String FvI;
-  public String FvJ;
-  public akt FvK;
-  public int FvL;
+  public String FOf;
+  public String FOg;
+  public String FOh;
+  public ald FOi;
+  public int FOj;
   public int channel;
-  public String iTJ;
+  public String iWC;
   public int scene;
-  public int xXA;
-  public String xZb;
+  public int yns;
+  public String yoT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -24,92 +24,92 @@ public final class dk
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FvH == null)
+      if (this.FOf == null)
       {
         paramVarArgs = new b("Not all required fields were included: f2f_id");
         AppMethodBeat.o(91349);
         throw paramVarArgs;
       }
-      if (this.FvJ == null)
+      if (this.FOh == null)
       {
         paramVarArgs = new b("Not all required fields were included: payok_checksign");
         AppMethodBeat.o(91349);
         throw paramVarArgs;
       }
-      if (this.FvH != null) {
-        paramVarArgs.d(1, this.FvH);
+      if (this.FOf != null) {
+        paramVarArgs.d(1, this.FOf);
       }
-      if (this.FvI != null) {
-        paramVarArgs.d(2, this.FvI);
+      if (this.FOg != null) {
+        paramVarArgs.d(2, this.FOg);
       }
       paramVarArgs.aS(3, this.channel);
-      paramVarArgs.aS(4, this.xXA);
+      paramVarArgs.aS(4, this.yns);
       paramVarArgs.aS(5, this.scene);
-      if (this.FvJ != null) {
-        paramVarArgs.d(6, this.FvJ);
+      if (this.FOh != null) {
+        paramVarArgs.d(6, this.FOh);
       }
-      if (this.FvK != null)
+      if (this.FOi != null)
       {
-        paramVarArgs.lC(7, this.FvK.computeSize());
-        this.FvK.writeFields(paramVarArgs);
+        paramVarArgs.lJ(7, this.FOi.computeSize());
+        this.FOi.writeFields(paramVarArgs);
       }
-      if (this.iTJ != null) {
-        paramVarArgs.d(8, this.iTJ);
+      if (this.iWC != null) {
+        paramVarArgs.d(8, this.iWC);
       }
-      if (this.xZb != null) {
-        paramVarArgs.d(9, this.xZb);
+      if (this.yoT != null) {
+        paramVarArgs.d(9, this.yoT);
       }
-      paramVarArgs.aS(10, this.FvL);
+      paramVarArgs.aS(10, this.FOj);
       AppMethodBeat.o(91349);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FvH == null) {
+      if (this.FOf == null) {
         break label890;
       }
     }
     label890:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FvH) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.FOf) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FvI != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FvI);
+      if (this.FOg != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FOg);
       }
-      i = i + f.a.a.b.b.a.bz(3, this.channel) + f.a.a.b.b.a.bz(4, this.xXA) + f.a.a.b.b.a.bz(5, this.scene);
+      i = i + f.a.a.b.b.a.bz(3, this.channel) + f.a.a.b.b.a.bz(4, this.yns) + f.a.a.b.b.a.bz(5, this.scene);
       paramInt = i;
-      if (this.FvJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.FvJ);
+      if (this.FOh != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.FOh);
       }
       i = paramInt;
-      if (this.FvK != null) {
-        i = paramInt + f.a.a.a.lB(7, this.FvK.computeSize());
+      if (this.FOi != null) {
+        i = paramInt + f.a.a.a.lI(7, this.FOi.computeSize());
       }
       paramInt = i;
-      if (this.iTJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.iTJ);
+      if (this.iWC != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.iWC);
       }
       i = paramInt;
-      if (this.xZb != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.xZb);
+      if (this.yoT != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.yoT);
       }
-      paramInt = f.a.a.b.b.a.bz(10, this.FvL);
+      paramInt = f.a.a.b.b.a.bz(10, this.FOj);
       AppMethodBeat.o(91349);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.FvH == null)
+        if (this.FOf == null)
         {
           paramVarArgs = new b("Not all required fields were included: f2f_id");
           AppMethodBeat.o(91349);
           throw paramVarArgs;
         }
-        if (this.FvJ == null)
+        if (this.FOh == null)
         {
           paramVarArgs = new b("Not all required fields were included: payok_checksign");
           AppMethodBeat.o(91349);
@@ -129,54 +129,54 @@ public final class dk
           AppMethodBeat.o(91349);
           return -1;
         case 1: 
-          localdk.FvH = ((f.a.a.a.a)localObject1).NPN.readString();
+          localdk.FOf = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91349);
           return 0;
         case 2: 
-          localdk.FvI = ((f.a.a.a.a)localObject1).NPN.readString();
+          localdk.FOg = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91349);
           return 0;
         case 3: 
-          localdk.channel = ((f.a.a.a.a)localObject1).NPN.zc();
+          localdk.channel = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91349);
           return 0;
         case 4: 
-          localdk.xXA = ((f.a.a.a.a)localObject1).NPN.zc();
+          localdk.yns = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91349);
           return 0;
         case 5: 
-          localdk.scene = ((f.a.a.a.a)localObject1).NPN.zc();
+          localdk.scene = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91349);
           return 0;
         case 6: 
-          localdk.FvJ = ((f.a.a.a.a)localObject1).NPN.readString();
+          localdk.FOh = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91349);
           return 0;
         case 7: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new akt();
+            localObject1 = new ald();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((akt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdk.FvK = ((akt)localObject1);
+            for (boolean bool = true; bool; bool = ((ald)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdk.FOi = ((ald)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91349);
           return 0;
         case 8: 
-          localdk.iTJ = ((f.a.a.a.a)localObject1).NPN.readString();
+          localdk.iWC = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91349);
           return 0;
         case 9: 
-          localdk.xZb = ((f.a.a.a.a)localObject1).NPN.readString();
+          localdk.yoT = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91349);
           return 0;
         }
-        localdk.FvL = ((f.a.a.a.a)localObject1).NPN.zc();
+        localdk.FOj = ((f.a.a.a.a)localObject1).OmT.zc();
         AppMethodBeat.o(91349);
         return 0;
       }
@@ -187,7 +187,7 @@ public final class dk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dk
  * JD-Core Version:    0.7.0.1
  */

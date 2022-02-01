@@ -7,26 +7,26 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.br.d;
 import com.tencent.mm.choosemsgfile.compat.a.a;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.choosemsgfile.b.b.h;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -37,12 +37,12 @@ import java.util.List;
 
 public final class c
 {
-  private static ag<Integer, com.tencent.mm.aw.a.a.c> oTo;
+  private static ah<Integer, com.tencent.mm.av.a.a.c> oZQ;
   
   static
   {
     AppMethodBeat.i(123381);
-    oTo = new ag(3);
+    oZQ = new ah(3);
     AppMethodBeat.o(123381);
   }
   
@@ -51,7 +51,7 @@ public final class c
     AppMethodBeat.i(123380);
     String str = String.format(paramContext.getString(2131757349), new Object[] { Integer.valueOf(paramInt) });
     paramContext = new f.a(paramContext);
-    paramContext.aXO(str).yU(false);
+    paramContext.aZq(str).zi(false);
     paramContext.b(new f.c()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString) {}
@@ -59,48 +59,264 @@ public final class c
     AppMethodBeat.o(123380);
   }
   
-  public static List<String> ZC(String paramString)
+  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bv parambv)
+  {
+    AppMethodBeat.i(123366);
+    if (parambv.fvK())
+    {
+      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.b(paramc, parambv);
+      AppMethodBeat.o(123366);
+      return paramc;
+    }
+    if (parambv.ftg())
+    {
+      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.g(paramc, parambv);
+      AppMethodBeat.o(123366);
+      return paramc;
+    }
+    AppMethodBeat.o(123366);
+    return null;
+  }
+  
+  public static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bv parambv, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(123363);
+    String str = paramString2;
+    if (bu.isNullOrNil(paramString2)) {
+      str = "all";
+    }
+    paramString2 = aat(paramString3);
+    paramString3 = str.toLowerCase();
+    int i = -1;
+    switch (paramString3.hashCode())
+    {
+    }
+    for (;;)
+    {
+      switch (i)
+      {
+      default: 
+        AppMethodBeat.o(123363);
+        return null;
+        if (paramString3.equals("all"))
+        {
+          i = 0;
+          continue;
+          if (paramString3.equals("image"))
+          {
+            i = 1;
+            continue;
+            if (paramString3.equals("video"))
+            {
+              i = 2;
+              continue;
+              if (paramString3.equals("file")) {
+                i = 3;
+              }
+            }
+          }
+        }
+        break;
+      }
+    }
+    paramString2 = a(paramc, parambv, paramString1, paramString2);
+    paramString1 = paramString2;
+    if (paramString2 == null)
+    {
+      paramString2 = b(paramc, parambv);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = a(paramc, parambv);
+      }
+    }
+    AppMethodBeat.o(123363);
+    return paramString1;
+    paramc = a(paramc, parambv);
+    AppMethodBeat.o(123363);
+    return paramc;
+    paramc = b(paramc, parambv);
+    AppMethodBeat.o(123363);
+    return paramc;
+    paramc = a(paramc, parambv, paramString1, paramString2);
+    AppMethodBeat.o(123363);
+    return paramc;
+  }
+  
+  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bv parambv, String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(123365);
+    if (parambv.cVH())
+    {
+      Object localObject = parambv.field_content;
+      if (localObject != null)
+      {
+        localObject = k.b.zb((String)localObject);
+        if ((localObject != null) && (((k.b)localObject).type == 6))
+        {
+          paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.f(paramc, parambv, paramString);
+          if ((paramList == null) || (paramList.size() == 0))
+          {
+            AppMethodBeat.o(123365);
+            return paramc;
+          }
+          parambv = paramList.iterator();
+          while (parambv.hasNext())
+          {
+            paramString = (String)parambv.next();
+            if (paramc.getFileName().endsWith(paramString))
+            {
+              AppMethodBeat.o(123365);
+              return paramc;
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(123365);
+    return null;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, Intent paramIntent, a.a parama)
+  {
+    AppMethodBeat.i(123377);
+    if (paramInt1 == b.oZP) {
+      switch (paramInt2)
+      {
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(123377);
+      return;
+      if (paramIntent == null)
+      {
+        ae.e("MicroMsg.MsgFileUtils", "data is null");
+        a(parama, "data is null");
+        AppMethodBeat.o(123377);
+        return;
+      }
+      paramIntent = paramIntent.getParcelableArrayListExtra("FILEPATHS");
+      if (paramIntent == null)
+      {
+        ae.e("MicroMsg.MsgFileUtils", "msgFiles is null");
+        a(parama, "msgFiles is null");
+        AppMethodBeat.o(123377);
+        return;
+      }
+      if (parama != null) {
+        parama.a(-1, "", paramIntent);
+      }
+      AppMethodBeat.o(123377);
+      return;
+      if (paramIntent == null)
+      {
+        ae.e("MicroMsg.MsgFileUtils", "data is null");
+        a(parama, "data is null");
+        AppMethodBeat.o(123377);
+        return;
+      }
+      a(parama, paramIntent.getStringExtra("ERRMSG"));
+      AppMethodBeat.o(123377);
+      return;
+      if (parama != null) {
+        parama.a(0, "", null);
+      }
+    }
+  }
+  
+  public static void a(Context paramContext, View paramView, com.tencent.mm.plugin.choosemsgfile.b.b.a parama)
+  {
+    AppMethodBeat.i(123372);
+    Intent localIntent = new Intent();
+    if (parama == null)
+    {
+      ae.e("MicroMsg.MsgFileUtils", "[enterGallery] item == null");
+      AppMethodBeat.o(123372);
+      return;
+    }
+    parama = parama.oYw;
+    if (parama == null)
+    {
+      ae.e("MicroMsg.MsgFileUtils", "[enterGallery] msg == null");
+      AppMethodBeat.o(123372);
+      return;
+    }
+    int k = paramContext.getResources().getConfiguration().orientation;
+    int j = 0;
+    int i = 0;
+    int[] arrayOfInt = new int[2];
+    if (paramView != null)
+    {
+      j = paramView.getWidth();
+      i = paramView.getHeight();
+      paramView.getLocationInWindow(arrayOfInt);
+    }
+    localIntent.addFlags(536870912);
+    localIntent.putExtra("img_gallery_msg_id", parama.field_msgId).putExtra("img_gallery_msg_svr_id", parama.field_msgSvrId).putExtra("img_gallery_talker", parama.field_talker).putExtra("img_gallery_chatroom_name", parama.field_talker).putExtra("img_gallery_orientation", k).putExtra("show_enter_grid", false).putExtra("img_gallery_enter_from_scene", 1);
+    if (paramView != null) {
+      localIntent.putExtra("img_gallery_width", j).putExtra("img_gallery_height", i).putExtra("img_gallery_left", arrayOfInt[0]).putExtra("img_gallery_top", arrayOfInt[1]).putExtra("img_gallery_enter_from_grid", true);
+    }
+    for (;;)
+    {
+      d.f(paramContext, "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", localIntent);
+      ((Activity)paramContext).overridePendingTransition(0, 0);
+      AppMethodBeat.o(123372);
+      return;
+      localIntent.putExtra("img_gallery_back_from_grid", true);
+    }
+  }
+  
+  private static void a(a.a parama, String paramString)
+  {
+    AppMethodBeat.i(123378);
+    if (parama != null) {
+      parama.a(1, paramString, null);
+    }
+    AppMethodBeat.o(123378);
+  }
+  
+  public static List<String> aat(String paramString)
   {
     AppMethodBeat.i(123364);
     localArrayList = new ArrayList();
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123364);
       return localArrayList;
     }
     try
     {
-      paramString = new com.tencent.mm.ac.f(paramString);
+      paramString = new com.tencent.mm.ab.f(paramString);
       int i = 0;
       while (i < paramString.length())
       {
         String str = paramString.optString(i, "");
-        if (!bt.isNullOrNil(str)) {
+        if (!bu.isNullOrNil(str)) {
           localArrayList.add(str);
         }
         i += 1;
       }
       return localArrayList;
     }
-    catch (com.tencent.mm.ac.g paramString)
+    catch (com.tencent.mm.ab.g paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MsgFileUtils", paramString, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.MsgFileUtils", paramString, "", new Object[0]);
       AppMethodBeat.o(123364);
     }
   }
   
-  public static String ZD(String paramString)
+  public static String aau(String paramString)
   {
     AppMethodBeat.i(123373);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.i("MicroMsg.MsgFileUtils", "type is null, use default type");
+      ae.i("MicroMsg.MsgFileUtils", "type is null, use default type");
       AppMethodBeat.o(123373);
       return "all";
     }
     if (("all".equals(paramString)) || ("image".equals(paramString)) || ("video".equals(paramString)) || ("file".equals(paramString)))
     {
-      ad.i("MicroMsg.MsgFileUtils", "type is invalid, use default type");
+      ae.i("MicroMsg.MsgFileUtils", "type is invalid, use default type");
       AppMethodBeat.o(123373);
       return paramString;
     }
@@ -108,7 +324,7 @@ public final class c
     return "all";
   }
   
-  public static String ZE(String paramString)
+  public static String aav(String paramString)
   {
     AppMethodBeat.i(123376);
     int i = -1;
@@ -449,10 +665,10 @@ public final class c
     return "#6781F0";
   }
   
-  public static String ZF(String paramString)
+  public static String aaw(String paramString)
   {
     AppMethodBeat.i(123379);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123379);
       return "";
@@ -468,228 +684,12 @@ public final class c
     return paramString;
   }
   
-  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bu parambu)
-  {
-    AppMethodBeat.i(123366);
-    if (parambu.frK())
-    {
-      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.b(paramc, parambu);
-      AppMethodBeat.o(123366);
-      return paramc;
-    }
-    if (parambu.fpi())
-    {
-      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.g(paramc, parambu);
-      AppMethodBeat.o(123366);
-      return paramc;
-    }
-    AppMethodBeat.o(123366);
-    return null;
-  }
-  
-  public static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bu parambu, String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(123363);
-    String str = paramString2;
-    if (bt.isNullOrNil(paramString2)) {
-      str = "all";
-    }
-    paramString2 = ZC(paramString3);
-    paramString3 = str.toLowerCase();
-    int i = -1;
-    switch (paramString3.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        AppMethodBeat.o(123363);
-        return null;
-        if (paramString3.equals("all"))
-        {
-          i = 0;
-          continue;
-          if (paramString3.equals("image"))
-          {
-            i = 1;
-            continue;
-            if (paramString3.equals("video"))
-            {
-              i = 2;
-              continue;
-              if (paramString3.equals("file")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
-      }
-    }
-    paramString2 = a(paramc, parambu, paramString1, paramString2);
-    paramString1 = paramString2;
-    if (paramString2 == null)
-    {
-      paramString2 = b(paramc, parambu);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = a(paramc, parambu);
-      }
-    }
-    AppMethodBeat.o(123363);
-    return paramString1;
-    paramc = a(paramc, parambu);
-    AppMethodBeat.o(123363);
-    return paramc;
-    paramc = b(paramc, parambu);
-    AppMethodBeat.o(123363);
-    return paramc;
-    paramc = a(paramc, parambu, paramString1, paramString2);
-    AppMethodBeat.o(123363);
-    return paramc;
-  }
-  
-  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bu parambu, String paramString, List<String> paramList)
-  {
-    AppMethodBeat.i(123365);
-    if (parambu.cTc())
-    {
-      Object localObject = parambu.field_content;
-      if (localObject != null)
-      {
-        localObject = k.b.yr((String)localObject);
-        if ((localObject != null) && (((k.b)localObject).type == 6))
-        {
-          paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.f(paramc, parambu, paramString);
-          if ((paramList == null) || (paramList.size() == 0))
-          {
-            AppMethodBeat.o(123365);
-            return paramc;
-          }
-          parambu = paramList.iterator();
-          while (parambu.hasNext())
-          {
-            paramString = (String)parambu.next();
-            if (paramc.getFileName().endsWith(paramString))
-            {
-              AppMethodBeat.o(123365);
-              return paramc;
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(123365);
-    return null;
-  }
-  
-  public static void a(int paramInt1, int paramInt2, Intent paramIntent, a.a parama)
-  {
-    AppMethodBeat.i(123377);
-    if (paramInt1 == b.oTn) {
-      switch (paramInt2)
-      {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(123377);
-      return;
-      if (paramIntent == null)
-      {
-        ad.e("MicroMsg.MsgFileUtils", "data is null");
-        a(parama, "data is null");
-        AppMethodBeat.o(123377);
-        return;
-      }
-      paramIntent = paramIntent.getParcelableArrayListExtra("FILEPATHS");
-      if (paramIntent == null)
-      {
-        ad.e("MicroMsg.MsgFileUtils", "msgFiles is null");
-        a(parama, "msgFiles is null");
-        AppMethodBeat.o(123377);
-        return;
-      }
-      if (parama != null) {
-        parama.a(-1, "", paramIntent);
-      }
-      AppMethodBeat.o(123377);
-      return;
-      if (paramIntent == null)
-      {
-        ad.e("MicroMsg.MsgFileUtils", "data is null");
-        a(parama, "data is null");
-        AppMethodBeat.o(123377);
-        return;
-      }
-      a(parama, paramIntent.getStringExtra("ERRMSG"));
-      AppMethodBeat.o(123377);
-      return;
-      if (parama != null) {
-        parama.a(0, "", null);
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, View paramView, com.tencent.mm.plugin.choosemsgfile.b.b.a parama)
-  {
-    AppMethodBeat.i(123372);
-    Intent localIntent = new Intent();
-    if (parama == null)
-    {
-      ad.e("MicroMsg.MsgFileUtils", "[enterGallery] item == null");
-      AppMethodBeat.o(123372);
-      return;
-    }
-    parama = parama.oRU;
-    if (parama == null)
-    {
-      ad.e("MicroMsg.MsgFileUtils", "[enterGallery] msg == null");
-      AppMethodBeat.o(123372);
-      return;
-    }
-    int k = paramContext.getResources().getConfiguration().orientation;
-    int j = 0;
-    int i = 0;
-    int[] arrayOfInt = new int[2];
-    if (paramView != null)
-    {
-      j = paramView.getWidth();
-      i = paramView.getHeight();
-      paramView.getLocationInWindow(arrayOfInt);
-    }
-    localIntent.addFlags(536870912);
-    localIntent.putExtra("img_gallery_msg_id", parama.field_msgId).putExtra("img_gallery_msg_svr_id", parama.field_msgSvrId).putExtra("img_gallery_talker", parama.field_talker).putExtra("img_gallery_chatroom_name", parama.field_talker).putExtra("img_gallery_orientation", k).putExtra("show_enter_grid", false).putExtra("img_gallery_enter_from_scene", 1);
-    if (paramView != null) {
-      localIntent.putExtra("img_gallery_width", j).putExtra("img_gallery_height", i).putExtra("img_gallery_left", arrayOfInt[0]).putExtra("img_gallery_top", arrayOfInt[1]).putExtra("img_gallery_enter_from_grid", true);
-    }
-    for (;;)
-    {
-      d.f(paramContext, "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", localIntent);
-      ((Activity)paramContext).overridePendingTransition(0, 0);
-      AppMethodBeat.o(123372);
-      return;
-      localIntent.putExtra("img_gallery_back_from_grid", true);
-    }
-  }
-  
-  private static void a(a.a parama, String paramString)
-  {
-    AppMethodBeat.i(123378);
-    if (parama != null) {
-      parama.a(1, paramString, null);
-    }
-    AppMethodBeat.o(123378);
-  }
-  
-  private static com.tencent.mm.plugin.choosemsgfile.b.b.a b(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bu parambu)
+  private static com.tencent.mm.plugin.choosemsgfile.b.b.a b(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bv parambv)
   {
     AppMethodBeat.i(123367);
-    if ((parambu.cxf()) || (parambu.cxh()))
+    if ((parambv.cyG()) || (parambv.cyI()))
     {
-      paramc = new h(paramc, parambu);
+      paramc = new h(paramc, parambv);
       AppMethodBeat.o(123367);
       return paramc;
     }
@@ -697,47 +697,47 @@ public final class c
     return null;
   }
   
-  public static String b(bu parambu, boolean paramBoolean)
+  public static String b(bv parambv, boolean paramBoolean)
   {
     String str1 = null;
     AppMethodBeat.i(123368);
-    if (parambu == null)
+    if (parambv == null)
     {
       AppMethodBeat.o(123368);
       return null;
     }
-    if (parambu.field_isSend == 1)
+    if (parambv.field_isSend == 1)
     {
-      parambu = u.aAm();
+      parambv = v.aAC();
       AppMethodBeat.o(123368);
-      return parambu;
+      return parambv;
     }
     if (paramBoolean) {
-      str1 = bj.Bk(parambu.field_content);
+      str1 = bl.BM(parambv.field_content);
     }
     String str2 = str1;
-    if (bt.isNullOrNil(str1)) {
-      str2 = parambu.field_talker;
+    if (bu.isNullOrNil(str1)) {
+      str2 = parambv.field_talker;
     }
     AppMethodBeat.o(123368);
     return str2;
   }
   
-  public static final com.tencent.mm.aw.a.a.c et(Context paramContext)
+  public static final com.tencent.mm.av.a.a.c ex(Context paramContext)
   {
     AppMethodBeat.i(123371);
-    com.tencent.mm.aw.a.a.c localc = (com.tencent.mm.aw.a.a.c)oTo.get(Integer.valueOf(4));
+    com.tencent.mm.av.a.a.c localc = (com.tencent.mm.av.a.a.c)oZQ.get(Integer.valueOf(4));
     Object localObject = localc;
     if (localc == null)
     {
       localObject = new c.a();
-      ((c.a)localObject).idu = 1;
-      ((c.a)localObject).idL = true;
-      ((c.a)localObject).hdS = (com.tencent.mm.cc.a.ip(paramContext) / 4);
-      ((c.a)localObject).hdR = (com.tencent.mm.cc.a.ip(paramContext) / 4);
-      ((c.a)localObject).idG = 2131100734;
-      localObject = ((c.a)localObject).aJc();
-      oTo.put(Integer.valueOf(4), localObject);
+      ((c.a)localObject).ign = 1;
+      ((c.a)localObject).igD = true;
+      ((c.a)localObject).hgG = (com.tencent.mm.cb.a.iu(paramContext) / 4);
+      ((c.a)localObject).hgF = (com.tencent.mm.cb.a.iu(paramContext) / 4);
+      ((c.a)localObject).igy = 2131100734;
+      localObject = ((c.a)localObject).aJu();
+      oZQ.put(Integer.valueOf(4), localObject);
     }
     AppMethodBeat.o(123371);
     return localObject;
@@ -746,7 +746,7 @@ public final class c
   public static void g(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(123375);
-    if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
+    if (!com.tencent.mm.kernel.g.ajR().isSDCardAvailable())
     {
       t.g(paramContext, null);
       AppMethodBeat.o(123375);
@@ -757,57 +757,57 @@ public final class c
     ((Intent)localObject).putExtra("app_msg_id", paramLong);
     ((Intent)localObject).putExtra("scene", 1);
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(123375);
   }
   
-  public static String tG(long paramLong)
+  public static String tX(long paramLong)
   {
     AppMethodBeat.i(123369);
     Object localObject = new Date(paramLong);
-    localObject = com.tencent.mm.ui.gridviewheaders.a.fJG().a((Date)localObject, aj.getContext());
+    localObject = com.tencent.mm.ui.gridviewheaders.a.fNX().a((Date)localObject, ak.getContext());
     AppMethodBeat.o(123369);
     return localObject;
   }
   
-  public static long tH(long paramLong)
+  public static long tY(long paramLong)
   {
     AppMethodBeat.i(123370);
     Date localDate = new Date(paramLong);
-    paramLong = com.tencent.mm.ui.gridviewheaders.a.fJG().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.fNX().b(localDate);
     AppMethodBeat.o(123370);
     return paramLong;
   }
   
-  public static String ze(String paramString)
+  public static String zO(String paramString)
   {
     AppMethodBeat.i(123374);
-    if (w.vF(paramString))
+    if (x.wb(paramString))
     {
-      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString);
-      if ((localObject != null) && (!bt.isNullOrNil(((aw)localObject).field_nickname)))
+      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramString);
+      if ((localObject != null) && (!bu.isNullOrNil(((aw)localObject).field_nickname)))
       {
         paramString = ((aw)localObject).field_nickname;
         AppMethodBeat.o(123374);
         return paramString;
       }
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AN(paramString);
+      localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(paramString);
       if (localObject == null)
       {
-        ad.e("MicroMsg.MsgFileUtils", "%s chatRoomMember is null", new Object[] { paramString });
+        ae.e("MicroMsg.MsgFileUtils", "%s chatRoomMember is null", new Object[] { paramString });
         AppMethodBeat.o(123374);
         return "";
       }
-      paramString = ((ab)localObject).field_displayname;
+      paramString = ((ac)localObject).field_displayname;
       AppMethodBeat.o(123374);
       return paramString;
     }
-    Object localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString);
+    Object localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramString);
     if (localObject == null)
     {
-      ad.e("MicroMsg.MsgFileUtils", "%s, contact is null", new Object[] { paramString });
+      ae.e("MicroMsg.MsgFileUtils", "%s, contact is null", new Object[] { paramString });
       AppMethodBeat.o(123374);
       return "";
     }

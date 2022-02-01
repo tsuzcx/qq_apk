@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.pluginsdk.wallet.b.a;
-import com.tencent.mm.protocal.protobuf.czi;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dac;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class h
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 507;
   public static final String NAME = "secureTunnel";

@@ -8,18 +8,18 @@ import com.tencent.mm.sdk.b.c;
 
 public final class b
 {
-  private static b nEV;
-  c nES;
-  c nET;
-  c nEU;
+  private static b nKq;
+  c nKn;
+  c nKo;
+  c nKp;
   
-  public static b bJO()
+  public static b bKM()
   {
     AppMethodBeat.i(22162);
-    if (nEV == null) {
-      nEV = new b();
+    if (nKq == null) {
+      nKq = new b();
     }
-    b localb = nEV;
+    b localb = nKq;
     AppMethodBeat.o(22162);
     return localb;
   }

@@ -12,15 +12,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMPwdInputView
   extends LinearLayout
 {
-  public StringBuilder fUm;
-  public int rov;
-  private boolean wZP;
-  private ImageView wZQ;
-  private ImageView wZR;
-  private ImageView wZS;
-  private ImageView wZT;
-  private a wZU;
-  private MMPwdInputView.b wZV;
+  public StringBuilder fWs;
+  public int rwA;
+  private boolean xpG;
+  private ImageView xpH;
+  private ImageView xpI;
+  private ImageView xpJ;
+  private ImageView xpK;
+  private a xpL;
+  private MMPwdInputView.b xpM;
   
   public MMPwdInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,18 +31,18 @@ public class MMPwdInputView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27697);
-    this.fUm = new StringBuilder();
-    this.wZP = false;
-    this.wZV = MMPwdInputView.b.wZX;
+    this.fWs = new StringBuilder();
+    this.xpG = false;
+    this.xpM = MMPwdInputView.b.xpO;
     paramContext = inflate(getContext(), 2131495149, null);
-    this.wZQ = ((ImageView)paramContext.findViewById(2131300106));
-    this.wZR = ((ImageView)paramContext.findViewById(2131304457));
-    this.wZS = ((ImageView)paramContext.findViewById(2131305767));
-    this.wZT = ((ImageView)paramContext.findViewById(2131300234));
-    this.wZQ.setImageResource(2131231075);
-    this.wZR.setImageResource(2131231075);
-    this.wZS.setImageResource(2131231075);
-    this.wZT.setImageResource(2131231075);
+    this.xpH = ((ImageView)paramContext.findViewById(2131300106));
+    this.xpI = ((ImageView)paramContext.findViewById(2131304457));
+    this.xpJ = ((ImageView)paramContext.findViewById(2131305767));
+    this.xpK = ((ImageView)paramContext.findViewById(2131300234));
+    this.xpH.setImageResource(2131231075);
+    this.xpI.setImageResource(2131231075);
+    this.xpJ.setImageResource(2131231075);
+    this.xpK.setImageResource(2131231075);
     addView(paramContext);
     AppMethodBeat.o(27697);
   }
@@ -119,50 +119,50 @@ public class MMPwdInputView
     AppMethodBeat.o(27700);
   }
   
-  public final void bcD()
+  public final void bdi()
   {
     AppMethodBeat.i(27702);
-    if (this.rov > 0) {
-      this.fUm.delete(0, this.rov);
+    if (this.rwA > 0) {
+      this.fWs.delete(0, this.rwA);
     }
-    cuk();
-    dBQ();
+    cvL();
+    dFh();
     AppMethodBeat.o(27702);
   }
   
-  public final void cuk()
+  public final void cvL()
   {
     AppMethodBeat.i(27701);
-    if (this.fUm != null)
+    if (this.fWs != null)
     {
-      this.rov = this.fUm.length();
-      if (this.rov < 4) {
+      this.rwA = this.fWs.length();
+      if (this.rwA < 4) {
         break label79;
       }
     }
     label79:
-    for (this.wZP = true;; this.wZP = false)
+    for (this.xpG = true;; this.xpG = false)
     {
-      if (this.wZU != null) {
-        this.wZU.x(this.wZP, this.fUm.toString());
+      if (this.xpL != null) {
+        this.xpL.y(this.xpG, this.fWs.toString());
       }
       AppMethodBeat.o(27701);
       return;
-      this.rov = 0;
+      this.rwA = 0;
       break;
     }
   }
   
-  public final void dBQ()
+  public final void dFh()
   {
     AppMethodBeat.i(27699);
     int i = 0;
     if (i < 4)
     {
       String str;
-      if (this.rov > i)
+      if (this.rwA > i)
       {
-        str = this.fUm.toString().charAt(i);
+        str = this.fWs.toString().charAt(i);
         label46:
         switch (i)
         {
@@ -174,13 +174,13 @@ public class MMPwdInputView
         break;
         str = "";
         break label46;
-        t(this.wZQ, str);
+        t(this.xpH, str);
         continue;
-        t(this.wZR, str);
+        t(this.xpI, str);
         continue;
-        t(this.wZS, str);
+        t(this.xpJ, str);
         continue;
-        t(this.wZT, str);
+        t(this.xpK, str);
       }
     }
     AppMethodBeat.o(27699);
@@ -189,50 +189,50 @@ public class MMPwdInputView
   public final void input(String paramString)
   {
     AppMethodBeat.i(27703);
-    if ((TextUtils.isEmpty(paramString)) || (this.wZP))
+    if ((TextUtils.isEmpty(paramString)) || (this.xpG))
     {
       AppMethodBeat.o(27703);
       return;
     }
-    this.fUm.append(paramString);
-    cuk();
-    dBQ();
+    this.fWs.append(paramString);
+    cvL();
+    dFh();
     AppMethodBeat.o(27703);
   }
   
   public void setNumberStyle(MMPwdInputView.b paramb)
   {
-    this.wZV = paramb;
+    this.xpM = paramb;
   }
   
   public void setNumberWidth(int paramInt)
   {
     AppMethodBeat.i(27698);
-    if (this.wZQ != null)
+    if (this.xpH != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.wZQ.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.xpH.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.wZQ.setLayoutParams(localLayoutParams);
-      this.wZR.setLayoutParams(localLayoutParams);
-      this.wZS.setLayoutParams(localLayoutParams);
-      this.wZT.setLayoutParams(localLayoutParams);
+      this.xpH.setLayoutParams(localLayoutParams);
+      this.xpI.setLayoutParams(localLayoutParams);
+      this.xpJ.setLayoutParams(localLayoutParams);
+      this.xpK.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(27698);
   }
   
   public void setOnFinishInputListener(a parama)
   {
-    this.wZU = parama;
+    this.xpL = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void x(boolean paramBoolean, String paramString);
+    public abstract void y(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView
  * JD-Core Version:    0.7.0.1
  */

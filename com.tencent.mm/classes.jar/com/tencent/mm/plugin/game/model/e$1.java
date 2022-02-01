@@ -11,11 +11,11 @@ final class e$1
   
   public final void v(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(206814);
+    AppMethodBeat.i(195629);
     if (paramBoolean1) {
-      a.gsb.c(this.val$appId, 0, 0, null, null);
+      a.guC.c(this.val$appId, 0, 0, null, null);
     }
-    AppMethodBeat.o(206814);
+    AppMethodBeat.o(195629);
   }
 }
 

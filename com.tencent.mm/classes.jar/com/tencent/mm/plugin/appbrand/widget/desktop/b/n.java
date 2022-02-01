@@ -8,69 +8,69 @@ import d.l;
 import d.v;
 import java.util.Arrays;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "", "args", "", "([Ljava/lang/Object;)V", "getArgs", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "", "args", "", "([Ljava/lang/Object;)V", "getArgs", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
 public class n
 {
   final Object[] args;
   
   public n(Object... paramVarArgs)
   {
-    AppMethodBeat.i(189736);
+    AppMethodBeat.i(224008);
     this.args = paramVarArgs;
-    AppMethodBeat.o(189736);
+    AppMethodBeat.o(224008);
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(189735);
+    AppMethodBeat.i(224007);
     if ((n)this == paramObject)
     {
-      AppMethodBeat.o(189735);
+      AppMethodBeat.o(224007);
       return true;
     }
     if (paramObject == null)
     {
       paramObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.widget.desktop.helper.QueryCacheConfig");
-      AppMethodBeat.o(189735);
+      AppMethodBeat.o(224007);
       throw paramObject;
     }
     if (!Arrays.equals(this.args, ((n)paramObject).args))
     {
-      AppMethodBeat.o(189735);
+      AppMethodBeat.o(224007);
       return false;
     }
-    AppMethodBeat.o(189735);
+    AppMethodBeat.o(224007);
     return true;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(189734);
+    AppMethodBeat.i(224006);
     int i = toString().hashCode();
-    AppMethodBeat.o(189734);
+    AppMethodBeat.o(224006);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(189733);
-    String str = e.a(this.args, null, null, null, 0, null, (b)a.naL, 31);
-    AppMethodBeat.o(189733);
+    AppMethodBeat.i(224005);
+    String str = e.a(this.args, null, null, null, 0, null, (b)a.nfT, 31);
+    AppMethodBeat.o(224005);
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
   static final class a
     extends q
     implements b<Object, CharSequence>
   {
-    public static final a naL;
+    public static final a nfT;
     
     static
     {
-      AppMethodBeat.i(189732);
-      naL = new a();
-      AppMethodBeat.o(189732);
+      AppMethodBeat.i(224004);
+      nfT = new a();
+      AppMethodBeat.o(224004);
     }
     
     a()

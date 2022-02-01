@@ -6,7 +6,7 @@ import com.google.b.a.e;
 public final class a$ba
   extends e
 {
-  public int LJh = 0;
+  public int Mgl = 0;
   
   public a$ba()
   {
@@ -15,8 +15,8 @@ public final class a$ba
   
   public final void a(b paramb)
   {
-    if (this.LJh != 0) {
-      paramb.by(1, this.LJh);
+    if (this.Mgl != 0) {
+      paramb.by(1, this.Mgl);
     }
     super.a(paramb);
   }
@@ -25,8 +25,8 @@ public final class a$ba
   {
     int j = super.zq();
     int i = j;
-    if (this.LJh != 0) {
-      i = j + b.bA(1, this.LJh);
+    if (this.Mgl != 0) {
+      i = j + b.bA(1, this.Mgl);
     }
     return i;
   }

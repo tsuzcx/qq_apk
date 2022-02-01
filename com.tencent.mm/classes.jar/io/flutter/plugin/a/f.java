@@ -9,12 +9,12 @@ import org.json.JSONTokener;
 public final class f
   implements i<Object>
 {
-  public static final f MFT;
+  public static final f NcZ;
   
   static
   {
     AppMethodBeat.i(9882);
-    MFT = new f();
+    NcZ = new f();
     AppMethodBeat.o(9882);
   }
   
@@ -29,7 +29,7 @@ public final class f
     Object localObject;
     try
     {
-      localObject = p.MGc;
+      localObject = p.Ndi;
       paramByteBuffer = new JSONTokener(p.P(paramByteBuffer));
       localObject = paramByteBuffer.nextValue();
       if (paramByteBuffer.more())
@@ -49,7 +49,7 @@ public final class f
     return localObject;
   }
   
-  public final ByteBuffer eG(Object paramObject)
+  public final ByteBuffer eJ(Object paramObject)
   {
     AppMethodBeat.i(9880);
     if (paramObject == null)
@@ -60,13 +60,13 @@ public final class f
     paramObject = h.wrap(paramObject);
     if ((paramObject instanceof String))
     {
-      localp = p.MGc;
-      paramObject = p.bbY(JSONObject.quote((String)paramObject));
+      localp = p.Ndi;
+      paramObject = p.bdC(JSONObject.quote((String)paramObject));
       AppMethodBeat.o(9880);
       return paramObject;
     }
-    p localp = p.MGc;
-    paramObject = p.bbY(paramObject.toString());
+    p localp = p.Ndi;
+    paramObject = p.bdC(paramObject.toString());
     AppMethodBeat.o(9880);
     return paramObject;
   }

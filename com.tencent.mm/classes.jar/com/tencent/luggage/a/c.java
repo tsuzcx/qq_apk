@@ -4,9 +4,9 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract Map<Class<? extends b>, b> BE();
+  public abstract Map<Class<? extends b>, b> BF();
   
-  public abstract Map<Class<? extends d>, d> BF();
+  public abstract Map<Class<? extends d>, d> BG();
   
   public abstract String getName();
 }

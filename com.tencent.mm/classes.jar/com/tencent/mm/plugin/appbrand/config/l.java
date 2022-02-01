@@ -1,81 +1,91 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import android.content.SharedPreferences.Editor;
-import com.tencent.luggage.sdk.d.c;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.performance.a;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.plugin.appbrand.permission.i;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class l
 {
-  private static final ax cBy;
+  private static final ay cCf;
   
   static
   {
     AppMethodBeat.i(146993);
-    cBy = ax.aQz("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper");
+    cCf = ay.aRW("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper");
     AppMethodBeat.o(146993);
   }
   
-  public static void Nj(String paramString)
+  public static void NQ(String paramString)
   {
     AppMethodBeat.i(146991);
-    cBy.remove(paramString + "_AppDebugEnabled").commit();
+    cCf.remove(paramString + "_AppDebugEnabled").commit();
     AppMethodBeat.o(146991);
   }
   
-  public static boolean Nn(String paramString)
+  public static boolean NU(String paramString)
   {
     AppMethodBeat.i(146990);
-    boolean bool = cBy.getBoolean(paramString + "_AppDebugEnabled", false);
+    boolean bool = cCf.getBoolean(paramString + "_AppDebugEnabled", false);
     AppMethodBeat.o(146990);
     return bool;
   }
   
-  public static void No(String paramString)
+  public static void NV(String paramString)
   {
-    AppMethodBeat.i(192205);
-    cBy.putString("V8DebugFlags", paramString);
-    AppMethodBeat.o(192205);
+    AppMethodBeat.i(220776);
+    cCf.putString("V8DebugFlags", paramString);
+    AppMethodBeat.o(220776);
+  }
+  
+  public static boolean NW(String paramString)
+  {
+    AppMethodBeat.i(220779);
+    boolean bool = ((i)e.K(i.class)).UA(paramString);
+    AppMethodBeat.o(220779);
+    return bool;
   }
   
   public static void al(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(146989);
-    cBy.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
+    cCf.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
     AppMethodBeat.o(146989);
   }
   
-  public static String bef()
+  public static String beL()
   {
-    AppMethodBeat.i(192206);
-    String str = cBy.getString("V8DebugFlags", "");
-    AppMethodBeat.o(192206);
+    AppMethodBeat.i(220777);
+    String str = cCf.getString("V8DebugFlags", "");
+    AppMethodBeat.o(220777);
     return str;
   }
   
-  public static void beg()
+  public static void beM()
   {
-    AppMethodBeat.i(192207);
-    cBy.remove("V8DebugFlags");
-    AppMethodBeat.o(192207);
+    AppMethodBeat.i(220778);
+    cCf.remove("V8DebugFlags");
+    AppMethodBeat.o(220778);
   }
   
-  public static boolean c(c paramc)
+  public static boolean c(d paramd)
   {
     AppMethodBeat.i(146992);
-    a locala = (a)paramc.c(a.class, false);
+    a locala = (a)paramd.c(a.class, false);
     if (locala == null)
     {
       AppMethodBeat.o(146992);
       return false;
     }
-    if (paramc.Fe())
+    if (paramd.Fj())
     {
       AppMethodBeat.o(146992);
       return false;
     }
-    boolean bool = locala.mhc;
+    boolean bool = locala.mmb;
     AppMethodBeat.o(146992);
     return bool;
   }

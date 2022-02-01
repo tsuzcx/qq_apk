@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"})
 public final class d
 {
-  public static final d hiq;
+  public static final d hle;
   
   static
   {
     AppMethodBeat.i(93530);
-    hiq = new d();
+    hle = new d();
     AppMethodBeat.o(93530);
   }
   

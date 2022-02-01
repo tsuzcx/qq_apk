@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiManufacturerLoadingUI;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$2
   implements Runnable
@@ -15,14 +15,14 @@ final class b$2
   {
     AppMethodBeat.i(24746);
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid", this.tmh);
-    ((Intent)localObject).putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid", this.tmi);
-    ((Intent)localObject).setClass(aj.getContext(), FreeWifiManufacturerLoadingUI.class);
+    ((Intent)localObject).putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid", this.twZ);
+    ((Intent)localObject).putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid", this.txa);
+    ((Intent)localObject).setClass(ak.getContext(), FreeWifiManufacturerLoadingUI.class);
     ((Intent)localObject).addFlags(268435456);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/freewifi/manufacturer/FreeWifiManufacturerConnectWifiHelper$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/freewifi/manufacturer/FreeWifiManufacturerConnectWifiHelper$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/freewifi/manufacturer/FreeWifiManufacturerConnectWifiHelper$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(24746);
   }

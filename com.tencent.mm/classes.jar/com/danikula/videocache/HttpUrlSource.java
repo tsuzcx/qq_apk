@@ -37,15 +37,15 @@ public class HttpUrlSource
   public HttpUrlSource(String paramString)
   {
     this(paramString, SourceInfoStorageFactory.newEmptySourceInfoStorage());
-    AppMethodBeat.i(215860);
-    AppMethodBeat.o(215860);
+    AppMethodBeat.i(195144);
+    AppMethodBeat.o(195144);
   }
   
   public HttpUrlSource(String paramString, SourceInfoStorage paramSourceInfoStorage)
   {
     this(paramString, paramSourceInfoStorage, new EmptyHeadersInjector());
-    AppMethodBeat.i(215861);
-    AppMethodBeat.o(215861);
+    AppMethodBeat.i(195145);
+    AppMethodBeat.o(195145);
   }
   
   public HttpUrlSource(String paramString, SourceInfoStorage paramSourceInfoStorage, HeaderInjector paramHeaderInjector)
@@ -252,14 +252,14 @@ public class HttpUrlSource
   
   private void injectCustomHeaders(HttpURLConnection paramHttpURLConnection, String paramString)
   {
-    AppMethodBeat.i(215862);
+    AppMethodBeat.i(195146);
     paramString = this.headerInjector.addHeaders(paramString).entrySet().iterator();
     while (paramString.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramString.next();
       paramHttpURLConnection.setRequestProperty((String)localEntry.getKey(), (String)localEntry.getValue());
     }
-    AppMethodBeat.o(215862);
+    AppMethodBeat.o(195146);
   }
   
   private HttpURLConnection openConnection(long paramLong, int paramInt)

@@ -9,30 +9,30 @@ import java.util.LinkedList;
 
 public class e
 {
-  private static e dct;
+  private static e ddv;
   public volatile HashMap<String, d> cache;
-  public volatile LinkedList<String> dcr;
-  public volatile Object dcs;
+  public volatile LinkedList<String> ddt;
+  public volatile Object ddu;
   
   private e()
   {
     AppMethodBeat.i(136740);
-    this.dcr = new LinkedList();
+    this.ddt = new LinkedList();
     this.cache = new HashMap();
-    this.dcs = new Object();
+    this.ddu = new Object();
     AppMethodBeat.o(136740);
   }
   
-  public static e Ou()
+  public static e Os()
   {
     AppMethodBeat.i(136741);
-    if (dct == null) {}
+    if (ddv == null) {}
     try
     {
-      if (dct == null) {
-        dct = new e();
+      if (ddv == null) {
+        ddv = new e();
       }
-      e locale = dct;
+      e locale = ddv;
       AppMethodBeat.o(136741);
       return locale;
     }
@@ -42,20 +42,20 @@ public class e
     }
   }
   
-  public final long Ov()
+  public final long Ot()
   {
     AppMethodBeat.i(136747);
     long l = 0L;
     for (;;)
     {
-      synchronized (this.dcs)
+      synchronized (this.ddu)
       {
-        Iterator localIterator = this.dcr.iterator();
+        Iterator localIterator = this.ddt.iterator();
         if (localIterator.hasNext())
         {
           Object localObject3 = (String)localIterator.next();
           localObject3 = (d)this.cache.get(localObject3);
-          if ((localObject3 != null) && (((d)localObject3).aBS) && (!((d)localObject3).dcc)) {
+          if ((localObject3 != null) && (((d)localObject3).aBS) && (!((d)localObject3).dde)) {
             l = ((d)localObject3).getBufferSize() + l;
           }
         }
@@ -68,13 +68,13 @@ public class e
     }
   }
   
-  public final ArrayList<String> Ow()
+  public final ArrayList<String> Ou()
   {
     AppMethodBeat.i(136748);
-    synchronized (this.dcs)
+    synchronized (this.ddu)
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.dcr);
+      localArrayList.addAll(this.ddt);
       AppMethodBeat.o(136748);
       return localArrayList;
     }
@@ -83,9 +83,9 @@ public class e
   public final void clearCache()
   {
     AppMethodBeat.i(136745);
-    synchronized (this.dcs)
+    synchronized (this.ddu)
     {
-      Iterator localIterator = this.dcr.iterator();
+      Iterator localIterator = this.ddt.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
@@ -95,18 +95,18 @@ public class e
         }
       }
     }
-    this.dcr.clear();
+    this.ddt.clear();
     this.cache.clear();
     AppMethodBeat.o(136745);
   }
   
-  public final d fJ(String paramString)
+  public final d fP(String paramString)
   {
     AppMethodBeat.i(136742);
-    synchronized (this.dcs)
+    synchronized (this.ddu)
     {
-      if (!this.dcr.contains(paramString)) {
-        this.dcr.add(paramString);
+      if (!this.ddt.contains(paramString)) {
+        this.ddt.add(paramString);
       }
       d locald2 = (d)this.cache.get(paramString);
       d locald1 = locald2;
@@ -120,12 +120,12 @@ public class e
     }
   }
   
-  public final int fK(String paramString)
+  public final int fQ(String paramString)
   {
     AppMethodBeat.i(136743);
-    synchronized (this.dcs)
+    synchronized (this.ddu)
     {
-      if (!this.dcr.contains(paramString))
+      if (!this.ddt.contains(paramString))
       {
         AppMethodBeat.o(136743);
         return 0;
@@ -142,12 +142,12 @@ public class e
     }
   }
   
-  public final boolean fL(String paramString)
+  public final boolean fR(String paramString)
   {
     AppMethodBeat.i(136744);
-    synchronized (this.dcs)
+    synchronized (this.ddu)
     {
-      if (!this.dcr.contains(paramString))
+      if (!this.ddt.contains(paramString))
       {
         AppMethodBeat.o(136744);
         return false;
@@ -163,12 +163,12 @@ public class e
     }
   }
   
-  public final long fM(String paramString)
+  public final long fS(String paramString)
   {
     AppMethodBeat.i(136746);
-    synchronized (this.dcs)
+    synchronized (this.ddu)
     {
-      if (!this.dcr.contains(paramString))
+      if (!this.ddt.contains(paramString))
       {
         AppMethodBeat.o(136746);
         return 0L;
@@ -187,7 +187,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.e
  * JD-Core Version:    0.7.0.1
  */

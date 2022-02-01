@@ -1,64 +1,71 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class drg
-  extends cvc
+  extends cvw
 {
-  public String HEN;
-  public int status;
-  public String uuid;
+  public int FNv;
+  public bob FVS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153309);
+    AppMethodBeat.i(32473);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.FVS == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: HardDevice");
+        AppMethodBeat.o(32473);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.uuid != null) {
-        paramVarArgs.d(2, this.uuid);
+      if (this.FVS != null)
+      {
+        paramVarArgs.lJ(2, this.FVS.computeSize());
+        this.FVS.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(3, this.status);
-      if (this.HEN != null) {
-        paramVarArgs.d(4, this.HEN);
-      }
-      AppMethodBeat.o(153309);
+      paramVarArgs.aS(4, this.FNv);
+      AppMethodBeat.o(32473);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label474;
+        break label571;
       }
     }
-    label474:
-    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label571:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.uuid != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.uuid);
+      if (this.FVS != null) {
+        i = paramInt + f.a.a.a.lI(2, this.FVS.computeSize());
       }
-      i += f.a.a.b.b.a.bz(3, this.status);
-      paramInt = i;
-      if (this.HEN != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.HEN);
-      }
-      AppMethodBeat.o(153309);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(4, this.FNv);
+      AppMethodBeat.o(32473);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(153309);
+        if (this.FVS == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: HardDevice");
+          AppMethodBeat.o(32473);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32473);
         return 0;
       }
       if (paramInt == 3)
@@ -66,47 +73,57 @@ public final class drg
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         drg localdrg = (drg)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
+        case 3: 
         default: 
-          AppMethodBeat.o(153309);
+          AppMethodBeat.o(32473);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localdrg.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(153309);
+          AppMethodBeat.o(32473);
           return 0;
         case 2: 
-          localdrg.uuid = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(153309);
-          return 0;
-        case 3: 
-          localdrg.status = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(153309);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new bob();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((bob)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdrg.FVS = ((bob)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32473);
           return 0;
         }
-        localdrg.HEN = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(153309);
+        localdrg.FNv = ((f.a.a.a.a)localObject1).OmT.zc();
+        AppMethodBeat.o(32473);
         return 0;
       }
-      AppMethodBeat.o(153309);
+      AppMethodBeat.o(32473);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.drg
  * JD-Core Version:    0.7.0.1
  */

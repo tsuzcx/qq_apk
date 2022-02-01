@@ -12,60 +12,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class OverScrollLinearout
   extends LinearLayout
 {
-  private a ADQ;
-  private int ADR;
-  private boolean lOj;
+  private a AVq;
+  private int AVr;
+  private int AbS;
+  private boolean lSK;
   private Scroller mScroller;
-  private int mcY;
-  private int zKL;
+  private int mhq;
   
   public OverScrollLinearout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(198615);
+    AppMethodBeat.i(220163);
     init(paramContext);
-    AppMethodBeat.o(198615);
+    AppMethodBeat.o(220163);
   }
   
   public OverScrollLinearout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(198616);
+    AppMethodBeat.i(220164);
     init(paramContext);
-    AppMethodBeat.o(198616);
+    AppMethodBeat.o(220164);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(198617);
+    AppMethodBeat.i(220165);
     this.mScroller = new Scroller(paramContext);
-    this.ADR = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    AppMethodBeat.o(198617);
+    this.AVr = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    AppMethodBeat.o(220165);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198618);
+    AppMethodBeat.i(220166);
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getY();
     if (i == 0)
     {
-      this.lOj = false;
-      this.zKL = j;
-      this.mcY = this.zKL;
-      if (this.ADQ != null) {
-        this.ADQ.dXs();
+      this.lSK = false;
+      this.AbS = j;
+      this.mhq = this.AbS;
+      if (this.AVq != null) {
+        this.AVq.eaV();
       }
     }
     for (;;)
     {
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(198618);
+      AppMethodBeat.o(220166);
       return bool;
       if (i == 2)
       {
-        if ((this.ADQ != null) && (this.ADQ.dXQ()) && (this.zKL - j >= this.ADR)) {
-          this.lOj = true;
+        if ((this.AVq != null) && (this.AVq.ebu()) && (this.AbS - j >= this.AVr)) {
+          this.lSK = true;
         }
       }
       else if ((i == 1) || (i == 3))
@@ -83,46 +83,54 @@ public class OverScrollLinearout
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(198620);
+    AppMethodBeat.i(220168);
     super.onDraw(paramCanvas);
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(0, this.mScroller.getCurrY());
       invalidate();
     }
-    AppMethodBeat.o(198620);
+    AppMethodBeat.o(220168);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.lOj;
+    return this.lSK;
+  }
+  
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(220169);
+    super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    postOnAnimation(new OverScrollLinearout.1(this, paramInt1, paramInt2, paramInt3, paramInt4));
+    AppMethodBeat.o(220169);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198619);
+    AppMethodBeat.i(220167);
     int i = (int)paramMotionEvent.getY();
-    if (this.ADQ != null) {
-      this.ADQ.bD(this.mcY - i);
+    if (this.AVq != null) {
+      this.AVq.bB(this.mhq - i);
     }
-    this.mcY = i;
-    boolean bool = this.lOj;
-    AppMethodBeat.o(198619);
+    this.mhq = i;
+    boolean bool = this.lSK;
+    AppMethodBeat.o(220167);
     return bool;
   }
   
   public void setOnScrollActionListener(a parama)
   {
-    this.ADQ = parama;
+    this.AVq = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void bD(float paramFloat);
+    public abstract void bB(float paramFloat);
     
-    public abstract boolean dXQ();
+    public abstract void eaV();
     
-    public abstract void dXs();
+    public abstract boolean ebu();
   }
 }
 

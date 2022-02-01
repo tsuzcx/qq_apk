@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,7 +58,7 @@ final class v
     {
       try
       {
-        this.mPort = bt.getInt(str, this.mPort);
+        this.mPort = bu.getInt(str, this.mPort);
         paramString = paramString.group(5);
         if ((paramString != null) && (paramString.length() > 0))
         {
@@ -129,7 +129,7 @@ final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.v
  * JD-Core Version:    0.7.0.1
  */

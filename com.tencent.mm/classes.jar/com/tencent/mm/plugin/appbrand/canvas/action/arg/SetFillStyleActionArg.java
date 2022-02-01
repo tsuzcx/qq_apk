@@ -14,7 +14,7 @@ public class SetFillStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFillStyleActionArg> CREATOR;
-  public RealSetFillStyleActionArg jTw;
+  public RealSetFillStyleActionArg jWN;
   
   static
   {
@@ -33,12 +33,12 @@ public class SetFillStyleActionArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145133);
-    if (this.jTw == null)
+    if (this.jWN == null)
     {
       AppMethodBeat.o(145133);
       return false;
     }
-    boolean bool = this.jTw.a(paramd, paramCanvas);
+    boolean bool = this.jWN.a(paramd, paramCanvas);
     AppMethodBeat.o(145133);
     return bool;
   }
@@ -67,7 +67,7 @@ public class SetFillStyleActionArg
       return false;
     }
     paramObject = (SetFillStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.jTw, paramObject.jTw);
+    boolean bool = Objects.equals(this.jWN, paramObject.jWN);
     AppMethodBeat.o(145137);
     return bool;
   }
@@ -76,14 +76,14 @@ public class SetFillStyleActionArg
   {
     AppMethodBeat.i(145134);
     super.h(paramParcel);
-    this.jTw = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
+    this.jWN = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
     AppMethodBeat.o(145134);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145138);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jTw });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jWN });
     AppMethodBeat.o(145138);
     return i;
   }
@@ -99,8 +99,8 @@ public class SetFillStyleActionArg
       return;
     }
     String str = paramJSONObject.optString(0);
-    this.jTw = ((RealSetFillStyleActionArg)g.bdv().MN(str));
-    this.jTw.f(paramJSONObject);
+    this.jWN = ((RealSetFillStyleActionArg)g.bea().Nu(str));
+    this.jWN.f(paramJSONObject);
     AppMethodBeat.o(145136);
   }
   
@@ -108,8 +108,8 @@ public class SetFillStyleActionArg
   {
     AppMethodBeat.i(145132);
     super.reset();
-    g.bdv().a(this.jTw);
-    this.jTw = null;
+    g.bea().a(this.jWN);
+    this.jWN = null;
     AppMethodBeat.o(145132);
   }
   
@@ -117,7 +117,7 @@ public class SetFillStyleActionArg
   {
     AppMethodBeat.i(145135);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.jTw, paramInt);
+    paramParcel.writeParcelable(this.jWN, paramInt);
     AppMethodBeat.o(145135);
   }
 }

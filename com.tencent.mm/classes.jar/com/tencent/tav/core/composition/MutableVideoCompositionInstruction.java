@@ -20,7 +20,7 @@ public class MutableVideoCompositionInstruction
   
   public void setLayerInstructions(List<VideoCompositionLayerInstruction> paramList)
   {
-    AppMethodBeat.i(218056);
+    AppMethodBeat.i(214695);
     this.layerInstructions.clear();
     this.layerInstructions.addAll(paramList);
     this.requiredSourceTrackIDs.clear();
@@ -30,7 +30,7 @@ public class MutableVideoCompositionInstruction
       VideoCompositionLayerInstruction localVideoCompositionLayerInstruction = (VideoCompositionLayerInstruction)paramList.next();
       this.requiredSourceTrackIDs.add(Integer.valueOf(localVideoCompositionLayerInstruction.getTrackID()));
     }
-    AppMethodBeat.o(218056);
+    AppMethodBeat.o(214695);
   }
   
   public void setTimeRange(CMTimeRange paramCMTimeRange)

@@ -14,21 +14,21 @@ import java.util.LinkedList;
 public class t
   extends i
 {
-  com.tencent.mm.plugin.webview.modeltools.a DQm;
+  com.tencent.mm.plugin.webview.modeltools.a Eim;
   
   public t(final Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(78469);
     this.chq = com.tencent.mm.plugin.webview.luggage.d.a.class;
-    this.cht.A(bs.ccP());
-    this.DQm = new com.tencent.mm.plugin.webview.modeltools.a();
-    this.chy.Cg().a(new e.c()
+    this.cht.A(bs.cee());
+    this.Eim = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.chy.Cj().a(new e.c()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(78468);
-        boolean bool = t.this.DQm.c(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+        boolean bool = t.this.Eim.d(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
         AppMethodBeat.o(78468);
         return bool;
       }
@@ -36,7 +36,7 @@ public class t
     AppMethodBeat.o(78469);
   }
   
-  private void ePI()
+  private void eTu()
   {
     AppMethodBeat.i(78471);
     if ((this.mContext instanceof MMActivity))
@@ -44,7 +44,7 @@ public class t
       SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
       if (localSwipeBackLayout != null)
       {
-        if (this.chy.Cd().size() <= 1)
+        if (this.chy.Cg().size() <= 1)
         {
           localSwipeBackLayout.setEnableGesture(true);
           AppMethodBeat.o(78471);
@@ -56,18 +56,18 @@ public class t
     AppMethodBeat.o(78471);
   }
   
-  public final void Cb()
+  public final void Cc()
   {
     AppMethodBeat.i(78472);
-    ((g)BW()).ePa();
-    ePI();
+    ((g)BX()).eSM();
+    eTu();
     AppMethodBeat.o(78472);
   }
   
-  public final void Cc()
+  public final void Cd()
   {
     AppMethodBeat.i(78473);
-    ePI();
+    eTu();
     AppMethodBeat.o(78473);
   }
   
@@ -75,7 +75,7 @@ public class t
   {
     AppMethodBeat.i(78470);
     super.onResume();
-    ePI();
+    eTu();
     AppMethodBeat.o(78470);
   }
 }

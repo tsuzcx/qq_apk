@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.util.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -11,21 +11,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "scanTabIdToIndex", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "scanTabInfos", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "Lkotlin/collections/ArrayList;", "scrollTabList", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "scrollTabView", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabView;", "selectedIndex", "addTab", "", "index", "scanTab", "attachScrollTabView", "", "enableScanGoods", "enableTranslation", "getScanTabById", "tabId", "hide", "setEnable", "enable", "setEnableSwitchTab", "setEnableTab", "tabIdList", "", "setOnTabClickListener", "tabOnClickListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "setOnTabScrollListener", "tabOnScrollListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnScrollListener;", "setOnTabSelectedListener", "tabOnSelectedListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "setSelectedTab", "show", "showTab", "switchNextTab", "switchPreviousTab", "Companion", "ScanTabInfo", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "scanTabIdToIndex", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "scanTabInfos", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "Lkotlin/collections/ArrayList;", "scrollTabList", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "scrollTabView", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabView;", "selectedIndex", "addTab", "", "index", "scanTab", "attachScrollTabView", "", "enableScanGoods", "enableTranslation", "getScanTabById", "tabId", "hide", "setEnable", "enable", "setEnableSwitchTab", "setEnableTab", "tabIdList", "", "setOnTabClickListener", "tabOnClickListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "setOnTabScrollListener", "tabOnScrollListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnScrollListener;", "setOnTabSelectedListener", "tabOnSelectedListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "setSelectedTab", "show", "showTab", "switchNextTab", "switchPreviousTab", "Companion", "ScanTabInfo", "plugin-scan_release"})
 public final class b
 {
-  public static final b.a yyC;
+  public static final b.a yOC;
   public int bxN;
   private final Context context;
-  public final ArrayList<b.b> yyA;
-  public HashMap<Integer, Integer> yyB;
-  public ScanScrollTabView yyy;
-  public ArrayList<a> yyz;
+  public final ArrayList<b.b> yOA;
+  public HashMap<Integer, Integer> yOB;
+  public ScanScrollTabView yOy;
+  public ArrayList<a> yOz;
   
   static
   {
     AppMethodBeat.i(52442);
-    yyC = new b.a((byte)0);
+    yOC = new b.a((byte)0);
     AppMethodBeat.o(52442);
   }
   
@@ -33,7 +33,7 @@ public final class b
   {
     AppMethodBeat.i(52441);
     this.context = paramContext;
-    this.yyz = new ArrayList();
+    this.yOz = new ArrayList();
     this.bxN = -1;
     paramContext = this.context.getString(2131762809);
     p.g(paramContext, "context.getString(R.string.scan_entry_qbar)");
@@ -43,20 +43,20 @@ public final class b
     localObject = new b.b(12, (String)localObject);
     String str = this.context.getString(2131762808);
     p.g(str, "context.getString(R.string.scan_entry_ocr)");
-    this.yyA = j.ac(new b.b[] { paramContext, localObject, new b.b(3, str) });
-    this.yyB = new HashMap();
+    this.yOA = j.ab(new b.b[] { paramContext, localObject, new b.b(3, str) });
+    this.yOB = new HashMap();
     AppMethodBeat.o(52441);
   }
   
-  private static boolean OR(int paramInt)
+  private static boolean Py(int paramInt)
   {
     AppMethodBeat.i(52440);
-    if ((paramInt == 3) && (!o.dMS()))
+    if ((paramInt == 3) && (!o.dQl()))
     {
       AppMethodBeat.o(52440);
       return false;
     }
-    if ((paramInt == 12) && (!o.dMU()))
+    if ((paramInt == 12) && (!o.dQn()))
     {
       AppMethodBeat.o(52440);
       return false;
@@ -68,38 +68,38 @@ public final class b
   public final boolean a(int paramInt, b.b paramb)
   {
     AppMethodBeat.i(52435);
-    if (!OR(paramb.yyD))
+    if (!Py(paramb.yOD))
     {
-      ad.w("MicroMsg.ScanScrollTabController", "alvinluo initTabs tabId: %d not show", new Object[] { Integer.valueOf(paramb.yyD) });
+      ae.w("MicroMsg.ScanScrollTabController", "alvinluo initTabs tabId: %d not show", new Object[] { Integer.valueOf(paramb.yOD) });
       AppMethodBeat.o(52435);
       return false;
     }
     ScrollTab localScrollTab = new ScrollTab(this.context);
-    localScrollTab.setTabId(paramb.yyD);
-    localScrollTab.setTabTitle(paramb.yyE);
-    ((Map)this.yyB).put(Integer.valueOf(paramb.yyD), Integer.valueOf(paramInt));
-    this.yyz.add(localScrollTab);
-    ScanScrollTabView localScanScrollTabView = this.yyy;
+    localScrollTab.setTabId(paramb.yOD);
+    localScrollTab.setTabTitle(paramb.yOE);
+    ((Map)this.yOB).put(Integer.valueOf(paramb.yOD), Integer.valueOf(paramInt));
+    this.yOz.add(localScrollTab);
+    ScanScrollTabView localScanScrollTabView = this.yOy;
     if (localScanScrollTabView != null) {
       localScanScrollTabView.b((a)localScrollTab);
     }
-    ad.i("MicroMsg.ScanScrollTabController", "alvinluo addTab index: %d, tabId: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramb.yyD) });
+    ae.i("MicroMsg.ScanScrollTabController", "alvinluo addTab index: %d, tabId: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramb.yOD) });
     AppMethodBeat.o(52435);
     return true;
   }
   
-  public final void dMA()
+  public final void dPT()
   {
     AppMethodBeat.i(52437);
     int i = this.bxN + 1;
-    ad.d("MicroMsg.ScanScrollTabController", "alvinluo switchNextTab selectedIndex: %d, nextIndex: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(i) });
-    if ((i >= 0) && (i < this.yyz.size()))
+    ae.d("MicroMsg.ScanScrollTabController", "alvinluo switchNextTab selectedIndex: %d, nextIndex: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(i) });
+    if ((i >= 0) && (i < this.yOz.size()))
     {
       this.bxN = i;
-      ScanScrollTabView localScanScrollTabView = this.yyy;
+      ScanScrollTabView localScanScrollTabView = this.yOy;
       if (localScanScrollTabView != null)
       {
-        localScanScrollTabView.hs(i, 3);
+        localScanScrollTabView.hu(i, 3);
         AppMethodBeat.o(52437);
         return;
       }
@@ -107,18 +107,18 @@ public final class b
     AppMethodBeat.o(52437);
   }
   
-  public final void dMB()
+  public final void dPU()
   {
     AppMethodBeat.i(52438);
     int i = this.bxN - 1;
-    ad.d("MicroMsg.ScanScrollTabController", "alvinluo switchPreviousTab selectedIndex: %d, previousIndex: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(i) });
-    if ((i >= 0) && (i < this.yyz.size()))
+    ae.d("MicroMsg.ScanScrollTabController", "alvinluo switchPreviousTab selectedIndex: %d, previousIndex: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(i) });
+    if ((i >= 0) && (i < this.yOz.size()))
     {
       this.bxN = i;
-      ScanScrollTabView localScanScrollTabView = this.yyy;
+      ScanScrollTabView localScanScrollTabView = this.yOy;
       if (localScanScrollTabView != null)
       {
-        localScanScrollTabView.hs(i, 3);
+        localScanScrollTabView.hu(i, 3);
         AppMethodBeat.o(52438);
         return;
       }
@@ -129,8 +129,8 @@ public final class b
   public final void setEnableSwitchTab(boolean paramBoolean)
   {
     AppMethodBeat.i(52439);
-    ad.i("MicroMsg.ScanScrollTabController", "alvinluo setEnableSwitchTab enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    ScanScrollTabView localScanScrollTabView = this.yyy;
+    ae.i("MicroMsg.ScanScrollTabController", "alvinluo setEnableSwitchTab enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ScanScrollTabView localScanScrollTabView = this.yOy;
     if (localScanScrollTabView != null)
     {
       localScanScrollTabView.setEnableSwitchTab(paramBoolean);
@@ -140,27 +140,27 @@ public final class b
     AppMethodBeat.o(52439);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$setOnTabSelectedListener$tabOnSelectedListenerWrapper$1", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "onTabSelected", "", "tabId", "", "tabSelectedAction", "onTabUnSelected", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$setOnTabSelectedListener$tabOnSelectedListenerWrapper$1", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "onTabSelected", "", "tabId", "", "tabSelectedAction", "onTabUnSelected", "plugin-scan_release"})
   public static final class d
     implements e
   {
     public d(e parame) {}
     
-    public final void OK(int paramInt)
+    public final void Pr(int paramInt)
     {
       AppMethodBeat.i(52434);
-      this.yyG.OK(paramInt);
+      this.yOG.Pr(paramInt);
       AppMethodBeat.o(52434);
     }
     
-    public final void hp(int paramInt1, int paramInt2)
+    public final void hr(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(52433);
-      Integer localInteger = (Integer)b.a(this.yyF).get(Integer.valueOf(paramInt1));
+      Integer localInteger = (Integer)b.a(this.yOF).get(Integer.valueOf(paramInt1));
       if (localInteger != null) {
-        b.a(this.yyF, localInteger.intValue());
+        b.a(this.yOF, localInteger.intValue());
       }
-      this.yyG.hp(paramInt1, paramInt2);
+      this.yOG.hr(paramInt1, paramInt2);
       AppMethodBeat.o(52433);
     }
   }

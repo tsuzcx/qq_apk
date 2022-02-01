@@ -1,100 +1,62 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dns
-  extends cvp
+  extends com.tencent.mm.bw.a
 {
-  public String HBK;
-  public String HbT;
+  public int HUR;
+  public int oEs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117935);
+    AppMethodBeat.i(72586);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      if (this.HBK != null) {
-        paramVarArgs.d(2, this.HBK);
-      }
-      if (this.HbT != null) {
-        paramVarArgs.d(3, this.HbT);
-      }
-      AppMethodBeat.o(117935);
+      paramVarArgs.aS(1, this.HUR);
+      paramVarArgs.aS(2, this.oEs);
+      AppMethodBeat.o(72586);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label430;
-      }
-    }
-    label430:
-    for (int i = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
-      paramInt = i;
-      if (this.HBK != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.HBK);
-      }
-      i = paramInt;
-      if (this.HbT != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.HbT);
-      }
-      AppMethodBeat.o(117935);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(117935);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        dns localdns = (dns)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(117935);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdns.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(117935);
-          return 0;
-        case 2: 
-          localdns.HBK = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(117935);
-          return 0;
-        }
-        localdns.HbT = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(117935);
-        return 0;
-      }
-      AppMethodBeat.o(117935);
-      return -1;
+      paramInt = f.a.a.b.b.a.bz(1, this.HUR);
+      int i = f.a.a.b.b.a.bz(2, this.oEs);
+      AppMethodBeat.o(72586);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(72586);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      dns localdns = (dns)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(72586);
+        return -1;
+      case 1: 
+        localdns.HUR = locala.OmT.zc();
+        AppMethodBeat.o(72586);
+        return 0;
+      }
+      localdns.oEs = locala.OmT.zc();
+      AppMethodBeat.o(72586);
+      return 0;
+    }
+    AppMethodBeat.o(72586);
+    return -1;
   }
 }
 

@@ -147,10 +147,10 @@ public class TXCQoS
   
   public static c getProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187217);
+    AppMethodBeat.i(221346);
     paramInt1 = nativeGetProperResolutionByVideoBitrate(paramBoolean, paramInt1, paramInt2);
     c localc = (c)RESOLUTION_MAP.get(Integer.valueOf(paramInt1));
-    AppMethodBeat.o(187217);
+    AppMethodBeat.o(221346);
     return localc;
   }
   
@@ -250,7 +250,7 @@ public class TXCQoS
   
   public void setDefaultVideoResolution(c paramc)
   {
-    AppMethodBeat.i(187216);
+    AppMethodBeat.i(221345);
     TXCLog.i("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramc)));
     this.mWidth = 0;
     this.mHeight = 0;
@@ -269,7 +269,7 @@ public class TXCQoS
     {
       break;
       nativeSetVideoDefaultResolution(this.mInstance, i);
-      AppMethodBeat.o(187216);
+      AppMethodBeat.o(221345);
       return;
     }
   }

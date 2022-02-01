@@ -3,25 +3,25 @@ package com.tencent.mm.platformtools;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class i
 {
-  public static i iNa;
-  private Map<String, String> iNb;
+  public static i iPU;
+  private Map<String, String> iPV;
   
   static
   {
     AppMethodBeat.i(127692);
-    iNa = new i();
+    iPU = new i();
     AppMethodBeat.o(127692);
   }
   
-  public final Map<String, String> cT(Context paramContext)
+  public final Map<String, String> cV(Context paramContext)
   {
     AppMethodBeat.i(127691);
     for (;;)
@@ -29,23 +29,23 @@ public final class i
       int i;
       try
       {
-        paramContext = bt.S(paramContext.getAssets().open("config/EmailAddress.xml"));
-        boolean bool = bt.isNullOrNil(paramContext);
+        paramContext = bu.S(paramContext.getAssets().open("config/EmailAddress.xml"));
+        boolean bool = bu.isNullOrNil(paramContext);
         if (bool)
         {
           AppMethodBeat.o(127691);
           return null;
         }
-        Map localMap = bw.M(paramContext, "config");
+        Map localMap = bx.M(paramContext, "config");
         if ((localMap == null) || (localMap.isEmpty()))
         {
-          ad.d("MicroMsg.EmailFormater", "values null");
+          ae.d("MicroMsg.EmailFormater", "values null");
           AppMethodBeat.o(127691);
           return null;
         }
-        if (this.iNb == null)
+        if (this.iPV == null)
         {
-          this.iNb = new HashMap();
+          this.iPV = new HashMap();
           i = 0;
           Object localObject = new StringBuilder(".config.format");
           if (i == 0)
@@ -59,28 +59,28 @@ public final class i
             localObject = (String)localObject + ".loginpage";
             paramContext = (String)localMap.get(paramContext);
             localObject = (String)localMap.get(localObject);
-            if ((bt.isNullOrNil(paramContext)) || (bt.isNullOrNil((String)localObject))) {
+            if ((bu.isNullOrNil(paramContext)) || (bu.isNullOrNil((String)localObject))) {
               break label290;
             }
-            this.iNb.put(paramContext, localObject);
+            this.iPV.put(paramContext, localObject);
             break label290;
           }
         }
         else
         {
-          paramContext = this.iNb;
+          paramContext = this.iPV;
           AppMethodBeat.o(127691);
           return paramContext;
         }
         paramContext = Integer.valueOf(i);
         continue;
-        paramContext = this.iNb;
+        paramContext = this.iPV;
         AppMethodBeat.o(127691);
         return paramContext;
       }
       catch (Exception paramContext)
       {
-        ad.e("MicroMsg.EmailFormater", "parse email failed:[%s]", new Object[] { paramContext.getMessage() });
+        ae.e("MicroMsg.EmailFormater", "parse email failed:[%s]", new Object[] { paramContext.getMessage() });
         AppMethodBeat.o(127691);
         return null;
       }

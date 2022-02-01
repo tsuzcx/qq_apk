@@ -16,8 +16,8 @@ public class e
   extends TextView
   implements f
 {
-  private boolean lOj;
-  private a mSQ;
+  private boolean lSK;
+  private a mXZ;
   
   public e(Context paramContext)
   {
@@ -41,23 +41,23 @@ public class e
     AppMethodBeat.o(137936);
   }
   
-  public final boolean biZ()
+  public final boolean bjI()
   {
-    return this.lOj;
+    return this.lSK;
   }
   
   public void setInterceptEvent(boolean paramBoolean)
   {
-    this.lOj = paramBoolean;
+    this.lSK = paramBoolean;
   }
   
   public void setLineHeight(int paramInt)
   {
     AppMethodBeat.i(137937);
-    if (this.mSQ == null) {
-      this.mSQ = new a(paramInt);
+    if (this.mXZ == null) {
+      this.mXZ = new a(paramInt);
     }
-    if (!this.mSQ.aP(paramInt))
+    if (!this.mXZ.aP(paramInt))
     {
       AppMethodBeat.o(137937);
       return;

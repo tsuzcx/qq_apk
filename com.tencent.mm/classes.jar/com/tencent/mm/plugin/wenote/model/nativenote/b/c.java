@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract interface c
 {
-  public abstract void Bz(int paramInt);
+  public abstract void BL(int paramInt);
   
   public abstract void a(WXRTEditText paramWXRTEditText, int paramInt1, int paramInt2);
   
@@ -17,9 +17,9 @@ public abstract interface c
   
   public abstract void e(boolean paramBoolean, long paramLong);
   
-  public abstract void eWS();
+  public abstract void faE();
   
-  public abstract void eWT();
+  public abstract void faF();
 }
 
 

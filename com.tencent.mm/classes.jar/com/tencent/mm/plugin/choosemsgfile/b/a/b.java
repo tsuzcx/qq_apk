@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.choosemsgfile.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private static final ThreadPoolExecutor oRM;
+  private static final ThreadPoolExecutor oYo;
   
   static
   {
     AppMethodBeat.i(123226);
-    oRM = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+    oYo = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
     AppMethodBeat.o(123226);
   }
   
   public static void a(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, com.tencent.mm.vending.e.b paramb)
   {
     AppMethodBeat.i(123225);
-    ad.i("MicroMsg.MsgFileMgr", "sumbit() item:%s", new Object[] { parama });
+    ae.i("MicroMsg.MsgFileMgr", "sumbit() item:%s", new Object[] { parama });
     Object localObject = null;
     switch (parama.getType())
     {
@@ -29,8 +29,8 @@ public final class b
     }
     while (parama == null)
     {
-      ad.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
-      parama1.bZe();
+      ae.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
+      parama1.cat();
       AppMethodBeat.o(123225);
       return;
       parama = new e(parama, parama1, paramb);
@@ -43,13 +43,13 @@ public final class b
     }
     if (!parama.checkValid())
     {
-      ad.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
-      parama1.bZg();
+      ae.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
+      parama1.cav();
       AppMethodBeat.o(123225);
       return;
     }
-    if (!parama.bZh()) {
-      oRM.submit(parama);
+    if (!parama.caw()) {
+      oYo.submit(parama);
     }
     AppMethodBeat.o(123225);
   }

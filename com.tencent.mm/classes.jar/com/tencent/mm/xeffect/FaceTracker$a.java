@@ -2,7 +2,7 @@ package com.tencent.mm.xeffect;
 
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/xeffect/FaceTracker$Companion;", "", "()V", "TAG", "", "renderlib_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/xeffect/FaceTracker$Companion;", "", "()V", "TAG", "", "renderlib_release"})
 public final class FaceTracker$a {}
 
 

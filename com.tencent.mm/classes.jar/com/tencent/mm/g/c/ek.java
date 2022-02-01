@@ -8,22 +8,24 @@ public abstract class ek
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf = "createTime".hashCode();
-  private static final int eNZ;
-  private static final int eST = "state".hashCode();
-  private static final int eTa;
-  private static final int fkO = "wxGroupId".hashCode();
-  private static final int fkP;
-  private static final int fkQ;
-  private static final int fkR;
-  private static final int fkS;
+  private static final int eFO = "createTime".hashCode();
+  private static final int ePK;
+  private static final int eUE = "state".hashCode();
+  private static final int eUL;
+  private static final int fmN = "wxGroupId".hashCode();
+  private static final int fmO;
+  private static final int fmP;
+  private static final int fmQ;
+  private static final int fmR;
+  private static final int fmS = "ilinkRoomId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eDI = true;
-  private boolean eNz = true;
-  private boolean eSh = true;
-  private boolean eSo = true;
+  private boolean eFr = true;
+  private boolean ePk = true;
+  private boolean eTS = true;
+  private boolean eTZ = true;
   public long field_createTime;
   public String field_groupId;
+  public long field_ilinkRoomId;
   public String field_inviteUserName;
   public int field_memberCount;
   public int field_roomId;
@@ -31,20 +33,21 @@ public abstract class ek
   public int field_routeId;
   public int field_state;
   public String field_wxGroupId;
-  private boolean fkJ = true;
-  private boolean fkK = true;
-  private boolean fkL = true;
-  private boolean fkM = true;
-  private boolean fkN = true;
+  private boolean fmH = true;
+  private boolean fmI = true;
+  private boolean fmJ = true;
+  private boolean fmK = true;
+  private boolean fmL = true;
+  private boolean fmM = true;
   
   static
   {
-    eTa = "groupId".hashCode();
-    fkP = "roomId".hashCode();
-    fkQ = "roomKey".hashCode();
-    fkR = "routeId".hashCode();
-    fkS = "inviteUserName".hashCode();
-    eNZ = "memberCount".hashCode();
+    eUL = "groupId".hashCode();
+    fmO = "roomId".hashCode();
+    fmP = "roomKey".hashCode();
+    fmQ = "routeId".hashCode();
+    fmR = "inviteUserName".hashCode();
+    ePK = "memberCount".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -60,11 +63,11 @@ public abstract class ek
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fkO != k) {
+      if (fmN != k) {
         break label65;
       }
       this.field_wxGroupId = paramCursor.getString(i);
-      this.fkJ = true;
+      this.fmH = true;
     }
     for (;;)
     {
@@ -72,22 +75,24 @@ public abstract class ek
       break label20;
       break;
       label65:
-      if (eTa == k) {
+      if (eUL == k) {
         this.field_groupId = paramCursor.getString(i);
-      } else if (fkP == k) {
+      } else if (fmO == k) {
         this.field_roomId = paramCursor.getInt(i);
-      } else if (fkQ == k) {
+      } else if (fmP == k) {
         this.field_roomKey = paramCursor.getLong(i);
-      } else if (fkR == k) {
+      } else if (fmQ == k) {
         this.field_routeId = paramCursor.getInt(i);
-      } else if (fkS == k) {
+      } else if (fmR == k) {
         this.field_inviteUserName = paramCursor.getString(i);
-      } else if (eNZ == k) {
+      } else if (ePK == k) {
         this.field_memberCount = paramCursor.getInt(i);
-      } else if (eEf == k) {
+      } else if (eFO == k) {
         this.field_createTime = paramCursor.getLong(i);
-      } else if (eST == k) {
+      } else if (eUE == k) {
         this.field_state = paramCursor.getInt(i);
+      } else if (fmS == k) {
+        this.field_ilinkRoomId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -97,32 +102,35 @@ public abstract class ek
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fkJ) {
+    if (this.fmH) {
       localContentValues.put("wxGroupId", this.field_wxGroupId);
     }
-    if (this.eSo) {
+    if (this.eTZ) {
       localContentValues.put("groupId", this.field_groupId);
     }
-    if (this.fkK) {
+    if (this.fmI) {
       localContentValues.put("roomId", Integer.valueOf(this.field_roomId));
     }
-    if (this.fkL) {
+    if (this.fmJ) {
       localContentValues.put("roomKey", Long.valueOf(this.field_roomKey));
     }
-    if (this.fkM) {
+    if (this.fmK) {
       localContentValues.put("routeId", Integer.valueOf(this.field_routeId));
     }
-    if (this.fkN) {
+    if (this.fmL) {
       localContentValues.put("inviteUserName", this.field_inviteUserName);
     }
-    if (this.eNz) {
+    if (this.ePk) {
       localContentValues.put("memberCount", Integer.valueOf(this.field_memberCount));
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.eSh) {
+    if (this.eTS) {
       localContentValues.put("state", Integer.valueOf(this.field_state));
+    }
+    if (this.fmM) {
+      localContentValues.put("ilinkRoomId", Long.valueOf(this.field_ilinkRoomId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

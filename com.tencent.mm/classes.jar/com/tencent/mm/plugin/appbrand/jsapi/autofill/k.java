@@ -10,7 +10,7 @@ import android.widget.TextView;
 public abstract class k
   extends LinkMovementMethod
 {
-  public abstract void Pp(String paramString);
+  public abstract void PX(String paramString);
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
@@ -27,14 +27,14 @@ public abstract class k
     i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
     paramTextView = (URLSpan[])paramSpannable.getSpans(i, i, URLSpan.class);
     if (paramTextView.length != 0) {
-      Pp(paramTextView[0].getURL());
+      PX(paramTextView[0].getURL());
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.autofill.k
  * JD-Core Version:    0.7.0.1
  */

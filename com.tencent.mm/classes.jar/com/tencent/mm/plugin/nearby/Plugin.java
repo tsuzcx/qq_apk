@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.nearby;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.nearby.a.f;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -11,14 +11,14 @@ import com.tencent.mm.pluginsdk.n;
 public class Plugin
   implements d
 {
-  private c nUl;
+  private c nZR;
   
   public Plugin()
   {
     AppMethodBeat.i(89751);
-    this.nUl = new c()
+    this.nZR = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ac(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(89750);
         paramAnonymousContext = new com.tencent.mm.plugin.nearby.ui.a(paramAnonymousContext);
@@ -37,7 +37,7 @@ public class Plugin
     return locala;
   }
   
-  public ax createSubCore()
+  public az createSubCore()
   {
     AppMethodBeat.i(89753);
     f localf = new f();
@@ -47,7 +47,7 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.nUl;
+    return this.nZR;
   }
 }
 

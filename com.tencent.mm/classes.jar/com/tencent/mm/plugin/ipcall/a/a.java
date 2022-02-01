@@ -13,9 +13,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.g.a.bf;
 import com.tencent.mm.g.a.bf.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bb;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,37 +30,37 @@ import java.util.Locale;
 
 public final class a
 {
-  public static int uVI;
-  public static String uVJ;
-  public static String uVK;
-  public static String uVL;
-  private static ba uVM;
-  private static HashMap<String, b> uVN;
-  private static HashMap<String, String> uVO;
-  private static HashMap<String, String> uVP;
-  private static HashMap<String, String> uVQ;
-  private static HashMap<String, String> uVR;
+  private static HashMap<String, b> vhA;
+  private static HashMap<String, String> vhB;
+  private static HashMap<String, String> vhC;
+  private static HashMap<String, String> vhD;
+  private static HashMap<String, String> vhE;
+  public static int vhv;
+  public static String vhw;
+  public static String vhx;
+  public static String vhy;
+  private static bb vhz;
   
   static
   {
     AppMethodBeat.i(26089);
-    uVI = 3;
-    uVJ = "+";
-    uVK = "00";
-    uVL = null;
-    uVM = new ba();
-    uVN = new HashMap();
-    uVO = new HashMap();
-    uVP = new HashMap();
-    uVQ = new HashMap();
-    uVR = new HashMap();
+    vhv = 3;
+    vhw = "+";
+    vhx = "00";
+    vhy = null;
+    vhz = new bb();
+    vhA = new HashMap();
+    vhB = new HashMap();
+    vhC = new HashMap();
+    vhD = new HashMap();
+    vhE = new HashMap();
     AppMethodBeat.o(26089);
   }
   
-  public static String IP(int paramInt)
+  public static String Jn(int paramInt)
   {
     AppMethodBeat.i(26071);
-    Object localObject = aj.getContext();
+    Object localObject = ak.getContext();
     switch (paramInt)
     {
     case 3: 
@@ -92,14 +94,14 @@ public final class a
     return localObject;
   }
   
-  public static String aL(Context paramContext, String paramString)
+  public static String aN(Context paramContext, String paramString)
   {
     localObject1 = null;
     Object localObject2 = null;
     AppMethodBeat.i(26063);
     if (!com.tencent.mm.pluginsdk.permission.b.n(paramContext, "android.permission.READ_CONTACTS"))
     {
-      ad.e("MicroMsg.IPCallAddressUtil", "no contact permission");
+      ae.e("MicroMsg.IPCallAddressUtil", "no contact permission");
       AppMethodBeat.o(26063);
       return null;
     }
@@ -117,7 +119,7 @@ public final class a
           paramContext = localObject2;
           if (!localCursor.isAfterLast())
           {
-            if (!PhoneNumberUtils.compare(com.tencent.mm.pluginsdk.b.JV(paramString), localCursor.getString(1))) {
+            if (!PhoneNumberUtils.compare(com.tencent.mm.pluginsdk.b.Ku(paramString), localCursor.getString(1))) {
               continue;
             }
             paramContext = localCursor.getString(0);
@@ -132,7 +134,7 @@ public final class a
       }
       catch (Exception paramContext)
       {
-        ad.d("MicroMsg.IPCallAddressUtil", "getNicknameByPhonenumber, error: %s", new Object[] { paramContext.getMessage() });
+        ae.d("MicroMsg.IPCallAddressUtil", "getNicknameByPhonenumber, error: %s", new Object[] { paramContext.getMessage() });
         paramString = localObject1;
         if (localCursor == null) {
           continue;
@@ -155,11 +157,11 @@ public final class a
     }
   }
   
-  public static String aM(Context paramContext, String paramString)
+  public static String aO(Context paramContext, String paramString)
   {
     AppMethodBeat.i(26064);
-    paramString = aL(paramContext, paramString);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    paramString = aN(paramContext, paramString);
+    if (!bu.isNullOrNil(paramString))
     {
       paramContext = com.tencent.mm.pluginsdk.b.i(paramString, paramContext);
       AppMethodBeat.o(26064);
@@ -169,10 +171,10 @@ public final class a
     return null;
   }
   
-  public static String aN(Context paramContext, String paramString)
+  public static String aP(Context paramContext, String paramString)
   {
     AppMethodBeat.i(26065);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       paramContext = com.tencent.mm.pluginsdk.b.i(paramString, paramContext);
       AppMethodBeat.o(26065);
@@ -182,7 +184,7 @@ public final class a
     return null;
   }
   
-  public static Bitmap aO(Context paramContext, String paramString)
+  public static Bitmap aQ(Context paramContext, String paramString)
   {
     AppMethodBeat.i(26066);
     paramContext = g(paramContext, paramString, false);
@@ -190,25 +192,25 @@ public final class a
     return paramContext;
   }
   
-  public static Bitmap aP(Context paramContext, String paramString)
+  public static Bitmap aR(Context paramContext, String paramString)
   {
     AppMethodBeat.i(26068);
-    String str = aL(paramContext, paramString);
+    String str = aN(paramContext, paramString);
     Bitmap localBitmap = null;
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str)) {
+    if (!bu.isNullOrNil(str)) {
       localBitmap = g(paramContext, str, true);
     }
     paramContext = localBitmap;
     if (localBitmap == null)
     {
       paramContext = localBitmap;
-      if (aSR())
+      if (aTq())
       {
-        paramString = anW(paramString);
-        ad.d("MicroMsg.IPCallAddressUtil", "getAvatarByPhoneNumber, username: %s", new Object[] { paramString });
+        paramString = aoY(paramString);
+        ae.d("MicroMsg.IPCallAddressUtil", "getAvatarByPhoneNumber, username: %s", new Object[] { paramString });
         paramContext = localBitmap;
-        if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString)) {
-          paramContext = com.tencent.mm.ak.c.e(paramString, 320, 320, 4);
+        if (!bu.isNullOrNil(paramString)) {
+          paramContext = com.tencent.mm.aj.c.e(paramString, 320, 320, 4);
         }
       }
     }
@@ -216,37 +218,37 @@ public final class a
     return paramContext;
   }
   
-  public static boolean aSR()
+  public static boolean aTq()
   {
     AppMethodBeat.i(26087);
     bf localbf = new bf();
-    com.tencent.mm.sdk.b.a.IbL.l(localbf);
-    ad.d("MicroMsg.IPCallAddressUtil", "canSyncAddrBook: %b", new Object[] { Boolean.valueOf(localbf.dmf.result) });
-    boolean bool = localbf.dmf.result;
+    com.tencent.mm.sdk.b.a.IvT.l(localbf);
+    ae.d("MicroMsg.IPCallAddressUtil", "canSyncAddrBook: %b", new Object[] { Boolean.valueOf(localbf.dnh.result) });
+    boolean bool = localbf.dnh.result;
     AppMethodBeat.o(26087);
     return bool;
   }
   
-  public static String anW(String paramString)
+  public static String aoY(String paramString)
   {
     AppMethodBeat.i(26069);
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(26069);
       return null;
     }
-    paramString = g.getMessageDigest(c.aoj(paramString).getBytes());
-    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().Jz(paramString);
+    paramString = g.getMessageDigest(c.apl(paramString).getBytes());
+    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().JY(paramString);
     AppMethodBeat.o(26069);
     return paramString;
   }
   
-  public static String anX(String paramString)
+  public static String aoZ(String paramString)
   {
     AppMethodBeat.i(26070);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().JA(paramString);
+      paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().JZ(paramString);
       AppMethodBeat.o(26070);
       return paramString;
     }
@@ -254,21 +256,21 @@ public final class a
     return null;
   }
   
-  public static String anY(String paramString)
+  public static String apa(String paramString)
   {
     AppMethodBeat.i(26074);
-    if (uVN.size() == 0) {
-      deZ();
+    if (vhA.size() == 0) {
+      dhR();
     }
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(26074);
       return null;
     }
-    paramString = (b)uVN.get(paramString);
+    paramString = (b)vhA.get(paramString);
     if (paramString != null)
     {
-      paramString = paramString.uVU;
+      paramString = paramString.vhH;
       AppMethodBeat.o(26074);
       return paramString;
     }
@@ -276,48 +278,48 @@ public final class a
     return null;
   }
   
-  public static String anZ(String paramString)
+  public static String apb(String paramString)
   {
     AppMethodBeat.i(26075);
-    if (uVO.size() == 0) {
-      deZ();
+    if (vhB.size() == 0) {
+      dhR();
     }
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(26075);
       return null;
     }
-    paramString = (String)uVO.get(paramString);
+    paramString = (String)vhB.get(paramString);
     AppMethodBeat.o(26075);
     return paramString;
   }
   
-  public static String aoa(String paramString)
+  public static String apc(String paramString)
   {
     AppMethodBeat.i(26076);
-    if (uVQ.size() == 0) {
-      deZ();
+    if (vhD.size() == 0) {
+      dhR();
     }
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(26076);
       return null;
     }
-    paramString = (String)uVQ.get(paramString);
+    paramString = (String)vhD.get(paramString);
     AppMethodBeat.o(26076);
     return paramString;
   }
   
-  public static String aob(String paramString)
+  public static String apd(String paramString)
   {
     AppMethodBeat.i(26079);
-    if (uVO.size() == 0) {
-      deZ();
+    if (vhB.size() == 0) {
+      dhR();
     }
-    if (aod(paramString))
+    if (apf(paramString))
     {
-      paramString = c.aoj(aoe(paramString));
-      Object localObject = new ArrayList(uVO.keySet());
+      paramString = c.apl(apg(paramString));
+      Object localObject = new ArrayList(vhB.keySet());
       Collections.sort((List)localObject, Collections.reverseOrder(new a.a((byte)0)));
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -334,13 +336,13 @@ public final class a
     return null;
   }
   
-  public static boolean aoc(String paramString)
+  public static boolean ape(String paramString)
   {
     AppMethodBeat.i(26080);
-    if (uVO.size() == 0) {
-      deZ();
+    if (vhB.size() == 0) {
+      dhR();
     }
-    if (uVO.containsKey(paramString))
+    if (vhB.containsKey(paramString))
     {
       AppMethodBeat.o(26080);
       return true;
@@ -349,10 +351,10 @@ public final class a
     return false;
   }
   
-  public static boolean aod(String paramString)
+  public static boolean apf(String paramString)
   {
     AppMethodBeat.i(26081);
-    if ((!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString)) && ((paramString.startsWith(uVJ)) || (paramString.startsWith(uVK))))
+    if ((!bu.isNullOrNil(paramString)) && ((paramString.startsWith(vhw)) || (paramString.startsWith(vhx))))
     {
       AppMethodBeat.o(26081);
       return true;
@@ -361,20 +363,20 @@ public final class a
     return false;
   }
   
-  public static String aoe(String paramString)
+  public static String apg(String paramString)
   {
     AppMethodBeat.i(26082);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      if (paramString.startsWith(uVJ))
+      if (paramString.startsWith(vhw))
       {
-        paramString = paramString.substring(uVJ.length());
+        paramString = paramString.substring(vhw.length());
         AppMethodBeat.o(26082);
         return paramString;
       }
-      if (paramString.startsWith(uVK))
+      if (paramString.startsWith(vhx))
       {
-        paramString = paramString.substring(uVK.length());
+        paramString = paramString.substring(vhx.length());
         AppMethodBeat.o(26082);
         return paramString;
       }
@@ -383,20 +385,20 @@ public final class a
     return paramString;
   }
   
-  public static String aof(String paramString)
+  public static String aph(String paramString)
   {
     AppMethodBeat.i(26083);
-    Object localObject = c.aoj(paramString);
-    String str = c.aoj((String)localObject);
+    Object localObject = c.apl(paramString);
+    String str = c.apl((String)localObject);
     paramString = null;
-    if (aod(str)) {
-      paramString = aob(str);
+    if (apf(str)) {
+      paramString = apd(str);
     }
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
-      localObject = aoe(str).substring(paramString.length());
-      str = ba.formatNumber(paramString, (String)localObject);
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str)) {
+      localObject = apg(str).substring(paramString.length());
+      str = bb.formatNumber(paramString, (String)localObject);
+      if (!bu.isNullOrNil(str)) {
         break label190;
       }
     }
@@ -415,24 +417,24 @@ public final class a
         return localObject;
         paramString = "+" + paramString + " " + ((String)localObject).replace("+", "");
         continue;
-        paramString = ba.aQH((String)localObject);
+        paramString = bb.aSe((String)localObject);
       }
       label190:
       localObject = str;
     }
   }
   
-  public static String aog(String paramString)
+  public static String api(String paramString)
   {
     AppMethodBeat.i(26086);
-    if (uVO.size() == 0) {
-      deZ();
+    if (vhB.size() == 0) {
+      dhR();
     }
     Object localObject = paramString;
-    if (aod(paramString))
+    if (apf(paramString))
     {
-      paramString = c.aoj(aoe(paramString));
-      localObject = new ArrayList(uVO.keySet());
+      paramString = c.apl(apg(paramString));
+      localObject = new ArrayList(vhB.keySet());
       Collections.sort((List)localObject, Collections.reverseOrder(new a.a((byte)0)));
       Iterator localIterator = ((List)localObject).iterator();
       do
@@ -452,7 +454,7 @@ public final class a
   }
   
   /* Error */
-  public static ArrayList<String> aoh(String paramString)
+  public static ArrayList<String> apj(String paramString)
   {
     // Byte code:
     //   0: sipush 26088
@@ -461,18 +463,18 @@ public final class a
     //   9: dup
     //   10: invokespecial 378	java/util/ArrayList:<init>	()V
     //   13: astore_1
-    //   14: invokestatic 74	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   14: invokestatic 74	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   17: ldc 91
     //   19: invokestatic 97	com/tencent/mm/pluginsdk/permission/b:n	(Landroid/content/Context;Ljava/lang/String;)Z
     //   22: ifne +18 -> 40
     //   25: ldc 99
     //   27: ldc 101
-    //   29: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: invokestatic 107	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: sipush 26088
     //   35: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_1
     //   39: areturn
-    //   40: invokestatic 74	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   40: invokestatic 74	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   43: invokevirtual 111	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   46: getstatic 117	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   49: aconst_null
@@ -522,7 +524,7 @@ public final class a
     //   147: aload_2
     //   148: invokevirtual 163	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   151: aastore
-    //   152: invokestatic 393	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   152: invokestatic 393	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   155: aload_0
     //   156: ifnull +9 -> 165
     //   159: aload_0
@@ -560,14 +562,14 @@ public final class a
     //   136	155	186	finally
   }
   
-  private static void deZ()
+  private static void dhR()
   {
     AppMethodBeat.i(26072);
-    uVO.clear();
-    uVP.clear();
-    uVQ.clear();
-    uVR.clear();
-    uVN.clear();
+    vhB.clear();
+    vhC.clear();
+    vhD.clear();
+    vhE.clear();
+    vhA.clear();
     Object localObject4 = null;
     label105:
     String str2;
@@ -575,7 +577,7 @@ public final class a
     {
       try
       {
-        localObject5 = aj.getContext().getAssets().open("ipcall_country_code.txt");
+        localObject5 = ak.getContext().getAssets().open("ipcall_country_code.txt");
         localObject1 = localObject5;
         localObject4 = localObject5;
         localObject6 = new byte[((InputStream)localObject5).available()];
@@ -596,7 +598,7 @@ public final class a
           int i;
           Object localObject2;
           localObject4 = localObject2;
-          ad.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.n(localIOException4) });
+          ae.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { bu.o(localIOException4) });
           if (localObject2 == null) {
             break;
           }
@@ -607,7 +609,7 @@ public final class a
           }
           catch (IOException localIOException2)
           {
-            ad.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.n(localIOException2) });
+            ae.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { bu.o(localIOException2) });
             String str1 = "";
           }
         }
@@ -628,24 +630,24 @@ public final class a
           {
             for (;;)
             {
-              ad.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.n(localIOException3) });
+              ae.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { bu.o(localIOException3) });
             }
           }
           Object localObject6 = new b();
-          ((b)localObject6).uVS = arrayOfString[0];
-          ((b)localObject6).uVT = arrayOfString[1];
-          RegionCodeDecoder.fsz();
+          ((b)localObject6).vhF = arrayOfString[0];
+          ((b)localObject6).vhG = arrayOfString[1];
+          RegionCodeDecoder.fwA();
           String str3 = RegionCodeDecoder.getLocName(arrayOfString[0]);
           str2 = str3;
-          if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str3)) {
-            str2 = new Locale("", arrayOfString[0]).getDisplayCountry(aj.getResources().getConfiguration().locale);
+          if (bu.isNullOrNil(str3)) {
+            str2 = new Locale("", arrayOfString[0]).getDisplayCountry(ak.getResources().getConfiguration().locale);
           }
-          ((b)localObject6).uVU = str2;
-          uVQ.put(((b)localObject6).uVT, ((b)localObject6).uVS);
-          uVR.put(((b)localObject6).uVS, ((b)localObject6).uVT);
-          uVO.put(((b)localObject6).uVT, ((b)localObject6).uVU);
-          uVP.put(((b)localObject6).uVU, ((b)localObject6).uVT);
-          uVN.put(((b)localObject6).uVS, localObject6);
+          ((b)localObject6).vhH = str2;
+          vhD.put(((b)localObject6).vhG, ((b)localObject6).vhF);
+          vhE.put(((b)localObject6).vhF, ((b)localObject6).vhG);
+          vhB.put(((b)localObject6).vhG, ((b)localObject6).vhH);
+          vhC.put(((b)localObject6).vhH, ((b)localObject6).vhG);
+          vhA.put(((b)localObject6).vhF, localObject6);
         }
         label466:
         AppMethodBeat.o(26072);
@@ -658,7 +660,7 @@ public final class a
       }
       catch (IOException localIOException1)
       {
-        ad.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.n(localIOException1) });
+        ae.e("MicroMsg.IPCallAddressUtil", "exception:%s", new Object[] { bu.o(localIOException1) });
         localObject2 = localObject6;
         break label105;
       }
@@ -673,75 +675,75 @@ public final class a
         if (arrayOfString.length >= 2) {
           break;
         }
-        ad.e("MicroMsg.IPCallAddressUtil", "this country item has problem %s", new Object[] { localObject5[i] });
+        ae.e("MicroMsg.IPCallAddressUtil", "this country item has problem %s", new Object[] { localObject5[i] });
         i += 1;
       }
     }
   }
   
-  public static HashMap<String, b> dfa()
+  public static HashMap<String, b> dhS()
   {
     AppMethodBeat.i(26073);
-    if (uVN.size() == 0) {
-      deZ();
+    if (vhA.size() == 0) {
+      dhR();
     }
-    HashMap localHashMap = uVN;
+    HashMap localHashMap = vhA;
     AppMethodBeat.o(26073);
     return localHashMap;
   }
   
-  public static String dfb()
+  public static String dhT()
   {
     AppMethodBeat.i(26084);
-    if (uVP.size() == 0) {
-      deZ();
+    if (vhC.size() == 0) {
+      dhR();
     }
-    String str = com.tencent.mm.sdk.platformtools.bt.jg(aj.getContext());
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str))
+    String str = bu.jm(ak.getContext());
+    if (!bu.isNullOrNil(str))
     {
-      ad.i("MicroMsg.IPCallAddressUtil", "simCountryCode: %s", new Object[] { str });
+      ae.i("MicroMsg.IPCallAddressUtil", "simCountryCode: %s", new Object[] { str });
       str = str.toUpperCase();
-      str = (String)uVR.get(str);
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str)) {
-        ad.i("MicroMsg.IPCallAddressUtil", "final sim countryCode: %s", new Object[] { str });
+      str = (String)vhE.get(str);
+      if (!bu.isNullOrNil(str)) {
+        ae.i("MicroMsg.IPCallAddressUtil", "final sim countryCode: %s", new Object[] { str });
       }
     }
-    while (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str))
+    while (!bu.isNullOrNil(str))
     {
       AppMethodBeat.o(26084);
       return str;
       str = "";
     }
-    str = com.tencent.mm.model.bt.aCv().countryCode;
-    ad.i("MicroMsg.IPCallAddressUtil", "personalInfoCountryCode: %s", new Object[] { str });
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str))
+    str = bv.aCL().countryCode;
+    ae.i("MicroMsg.IPCallAddressUtil", "personalInfoCountryCode: %s", new Object[] { str });
+    if (!bu.isNullOrNil(str))
     {
-      str = (String)uVR.get(str);
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str))
+      str = (String)vhE.get(str);
+      if (!bu.isNullOrNil(str))
       {
-        ad.i("MicroMsg.IPCallAddressUtil", "final sim countryCode: %s", new Object[] { str });
+        ae.i("MicroMsg.IPCallAddressUtil", "final sim countryCode: %s", new Object[] { str });
         AppMethodBeat.o(26084);
         return str;
       }
     }
-    str = aj.getContext().getString(2131757951);
-    ad.i("MicroMsg.IPCallAddressUtil", "fallbackCountryCode: %s", new Object[] { str });
+    str = ak.getContext().getString(2131757951);
+    ae.i("MicroMsg.IPCallAddressUtil", "fallbackCountryCode: %s", new Object[] { str });
     str = str.replace("+", "");
     AppMethodBeat.o(26084);
     return str;
   }
   
-  public static void dfc()
+  public static void dhU()
   {
     AppMethodBeat.i(26085);
-    deZ();
+    dhR();
     AppMethodBeat.o(26085);
   }
   
   public static Bitmap g(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(26067);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (!bu.isNullOrNil(paramString))
     {
       paramContext = com.tencent.mm.pluginsdk.b.a(paramString, paramContext, paramBoolean);
       AppMethodBeat.o(26067);
@@ -751,27 +753,27 @@ public final class a
     return null;
   }
   
-  public static int hA(String paramString1, String paramString2)
+  public static int hH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26077);
-    if ((com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString1)) || (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString2)))
+    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(26077);
       return -1;
     }
-    int j = hB(paramString1, paramString2);
+    int j = hI(paramString1, paramString2);
     int i = j;
     if (j == -1)
     {
       i = j;
       if (paramString2.startsWith("+"))
       {
-        String str2 = aob(paramString2);
+        String str2 = apd(paramString2);
         String str1 = paramString2;
-        if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str2)) {
+        if (!bu.isNullOrNil(str2)) {
           str1 = paramString2.substring("+".concat(String.valueOf(str2)).length());
         }
-        i = hB(paramString1, str1);
+        i = hI(paramString1, str1);
       }
     }
     AppMethodBeat.o(26077);
@@ -779,23 +781,23 @@ public final class a
   }
   
   /* Error */
-  private static int hB(String paramString1, String paramString2)
+  private static int hI(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 26078
     //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 74	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   6: invokestatic 74	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   9: ldc 91
     //   11: invokestatic 97	com/tencent/mm/pluginsdk/permission/b:n	(Landroid/content/Context;Ljava/lang/String;)Z
     //   14: ifne +18 -> 32
     //   17: ldc 99
     //   19: ldc 101
-    //   21: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokestatic 107	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   24: sipush 26078
     //   27: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: iconst_m1
     //   31: ireturn
-    //   32: invokestatic 74	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   32: invokestatic 74	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   35: invokevirtual 111	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   38: getstatic 117	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   41: aconst_null
@@ -810,7 +812,7 @@ public final class a
     //   54: invokevirtual 129	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   57: astore_0
     //   58: aload_1
-    //   59: invokestatic 236	com/tencent/mm/plugin/ipcall/a/c:aoj	(Ljava/lang/String;)Ljava/lang/String;
+    //   59: invokestatic 236	com/tencent/mm/plugin/ipcall/a/c:apl	(Ljava/lang/String;)Ljava/lang/String;
     //   62: astore_1
     //   63: aload_0
     //   64: invokeinterface 135 1 0
@@ -829,7 +831,7 @@ public final class a
     //   99: ldc 123
     //   101: invokeinterface 386 2 0
     //   106: invokeinterface 145 2 0
-    //   111: invokestatic 236	com/tencent/mm/plugin/ipcall/a/c:aoj	(Ljava/lang/String;)Ljava/lang/String;
+    //   111: invokestatic 236	com/tencent/mm/plugin/ipcall/a/c:apl	(Ljava/lang/String;)Ljava/lang/String;
     //   114: aload_1
     //   115: invokevirtual 543	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   118: istore_3
@@ -855,7 +857,7 @@ public final class a
     //   159: aload_1
     //   160: invokevirtual 163	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   163: aastore
-    //   164: invokestatic 393	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   164: invokestatic 393	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   167: aload_0
     //   168: invokeinterface 154 1 0
     //   173: sipush 26078

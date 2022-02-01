@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ak
   extends b
 {
-  public a dkW;
-  public ak.b dkX;
+  public a dlY;
+  public b dlZ;
   
   public ak()
   {
@@ -17,16 +17,21 @@ public final class ak
   private ak(byte paramByte)
   {
     AppMethodBeat.i(42651);
-    this.dkW = new a();
-    this.dkX = new ak.b();
-    this.IbR = false;
+    this.dlY = new a();
+    this.dlZ = new b();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(42651);
   }
   
   public static final class a
   {
-    public int dkY = 0;
+    public int dma = 0;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

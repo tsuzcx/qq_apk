@@ -4,50 +4,50 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.d.a.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public BluetoothDevice kGR;
+  public BluetoothDevice kKg;
   public long mSessionId;
   public int mState;
-  public long nSZ;
-  public c.a nTa;
-  public c.b nTb;
-  public c.c nTc;
+  public long nYF;
+  public c.a nYG;
+  public c.b nYH;
+  public c.c nYI;
   
   public b(long paramLong)
   {
     AppMethodBeat.i(22594);
-    this.nSZ = paramLong;
+    this.nYF = paramLong;
     this.mSessionId = paramLong;
-    this.nTa = null;
-    this.nTb = null;
-    this.nTc = null;
+    this.nYG = null;
+    this.nYH = null;
+    this.nYI = null;
     this.mState = 0;
-    this.kGR = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(a.ti(paramLong));
+    this.kKg = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(a.tw(paramLong));
     AppMethodBeat.o(22594);
   }
   
   public final void disconnect()
   {
     AppMethodBeat.i(22595);
-    ad.i("MicroMsg.exdevice.BluetoothChatSession", "disconnect");
+    ae.i("MicroMsg.exdevice.BluetoothChatSession", "disconnect");
     this.mState = 0;
-    if (this.nTa != null)
+    if (this.nYG != null)
     {
-      this.nTa.disconnect();
-      this.nTa = null;
+      this.nYG.disconnect();
+      this.nYG = null;
     }
-    if (this.nTb != null)
+    if (this.nYH != null)
     {
-      this.nTb.cancel();
-      this.nTb = null;
+      this.nYH.cancel();
+      this.nYH = null;
     }
-    if (this.nTc != null)
+    if (this.nYI != null)
     {
-      this.nTc.cancel();
-      this.nTc = null;
+      this.nYI.cancel();
+      this.nYI = null;
     }
     AppMethodBeat.o(22595);
   }

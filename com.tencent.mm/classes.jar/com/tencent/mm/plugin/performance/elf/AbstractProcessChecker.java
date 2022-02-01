@@ -14,11 +14,13 @@ import android.os.Debug;
 import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,32 +33,32 @@ import java.util.regex.Pattern;
 public abstract class AbstractProcessChecker
   extends BroadcastReceiver
 {
-  boolean cBJ = true;
-  private ap wHx;
-  a wHy = new a((byte)0);
-  private long wHz = -1L;
+  boolean cCq = true;
+  private aq wXi;
+  a wXj = new a((byte)0);
+  private long wXk = -1L;
   
   public AbstractProcessChecker()
   {
-    ((Application)aj.getContext()).registerActivityLifecycleCallbacks(this.wHy);
-    if (ElfCallUpReceiver.wHD > 0)
+    ((Application)ak.getContext()).registerActivityLifecycleCallbacks(this.wXj);
+    if (ElfCallUpReceiver.wXo > 0)
     {
-      gX(Process.myPid(), ElfCallUpReceiver.wHD);
+      gY(Process.myPid(), ElfCallUpReceiver.wXo);
       return;
     }
-    ad.w(getTag(), "not processElf call up!");
+    ae.w(getTag(), "not processElf call up!");
   }
   
-  public static long Jr()
+  public static long Jz()
   {
-    Matcher localMatcher = Pattern.compile("\\d+").matcher(dyM());
+    Matcher localMatcher = Pattern.compile("\\d+").matcher(dCd());
     if (localMatcher.find()) {
-      return bt.aRe(localMatcher.group()) * 1000L;
+      return bu.aSB(localMatcher.group()) * 1000L;
     }
     return -1L;
   }
   
-  protected static int ax(Map<String, Integer> paramMap)
+  protected static int aD(Map<String, Integer> paramMap)
   {
     Object localObject = Looper.getMainLooper().getThread().getThreadGroup();
     Thread[] arrayOfThread = new Thread[((ThreadGroup)localObject).activeCount() * 2];
@@ -66,7 +68,7 @@ public abstract class AbstractProcessChecker
     if (j < k)
     {
       localObject = arrayOfThread[j].getName();
-      if (bt.isNullOrNil((String)localObject)) {
+      if (bu.isNullOrNil((String)localObject)) {
         break label136;
       }
       localObject = ((String)localObject).replaceAll("-?[0-9]\\d*", "?");
@@ -124,7 +126,7 @@ public abstract class AbstractProcessChecker
     return localStringBuilder.toString();
   }
   
-  private static String dyM()
+  private static String dCd()
   {
     Object localObject = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
     for (;;)
@@ -156,7 +158,7 @@ public abstract class AbstractProcessChecker
     }
   }
   
-  protected static long dyN()
+  protected static long dCe()
   {
     String str = String.format("/proc/%s/schedstat", new Object[] { Integer.valueOf(Process.myPid()) });
     try
@@ -165,7 +167,7 @@ public abstract class AbstractProcessChecker
       if (str == null) {
         return -1L;
       }
-      long l = bt.aRf(str.replaceAll("\n", "").split(" ")[2]);
+      long l = bu.aSC(str.replaceAll("\n", "").split(" ")[2]);
       return l;
     }
     catch (Exception localException) {}
@@ -174,16 +176,16 @@ public abstract class AbstractProcessChecker
   
   public static String getProcessName()
   {
-    return aj.getProcessName();
+    return ak.getProcessName();
   }
   
   private static String getStringFromFile(String paramString)
   {
-    Object localObject1 = new com.tencent.mm.vfs.e(paramString);
+    Object localObject1 = new k(paramString);
     paramString = null;
     try
     {
-      localObject1 = i.ai((com.tencent.mm.vfs.e)localObject1);
+      localObject1 = o.ai((k)localObject1);
       paramString = (String)localObject1;
       String str = convertStreamToString((InputStream)localObject1);
       if (localObject1 != null) {
@@ -199,62 +201,62 @@ public abstract class AbstractProcessChecker
     }
   }
   
-  private void pn(boolean paramBoolean)
+  private void pv(boolean paramBoolean)
   {
-    ElfCheckResponse localElfCheckResponse = new ElfCheckResponse(isEnable(), dyL(), paramBoolean, dyI(), aj.getProcessName(), ElfCallUpReceiver.class.getName());
+    ElfCheckResponse localElfCheckResponse = new ElfCheckResponse(isEnable(), dCc(), paramBoolean, dBZ(), ak.getProcessName(), ElfCallUpReceiver.class.getName());
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("processId", Process.myPid());
     localElfCheckResponse.En = ((Bundle)localObject);
     localObject = new Intent("ACTION_ELF_CHECK_RESPONSE");
     ((Intent)localObject).putExtra("MicroMsg.ElfCheckResponse", localElfCheckResponse);
-    aj.getContext().sendBroadcast((Intent)localObject);
+    ak.getContext().sendBroadcast((Intent)localObject);
   }
   
-  protected abstract boolean ac(long paramLong1, long paramLong2);
+  protected abstract boolean ab(long paramLong1, long paramLong2);
   
   public void bV(boolean paramBoolean)
   {
-    this.cBJ = paramBoolean;
+    this.cCq = paramBoolean;
   }
   
-  protected final ap cWY()
+  protected final aq cZF()
   {
-    if ((this.wHx == null) || (this.wHx.isQuit())) {
-      this.wHx = new ap("ProcessChecker");
+    if ((this.wXi == null) || (this.wXi.isQuit())) {
+      this.wXi = new aq("ProcessChecker");
     }
-    return this.wHx;
+    return this.wXi;
   }
   
-  protected boolean dyI()
+  protected boolean dBZ()
   {
     return true;
   }
   
-  protected final void dyJ()
+  protected final void dCa()
   {
-    if ((!this.cBJ) && (!this.wHy.isResume))
+    if ((!this.cCq) && (!this.wXj.isResume))
     {
-      pn(true);
-      throw new RuntimeException(dyK());
+      pv(true);
+      throw new RuntimeException(dCb());
     }
-    ad.w("MicroMsg.AbstractProcessChecker", "pass this kill! app is on foreground!");
-    com.tencent.mm.plugin.report.e.ygI.idkeyStat(959L, 6L, 1L, true);
-    pn(false);
+    ae.w("MicroMsg.AbstractProcessChecker", "pass this kill! app is on foreground!");
+    e.ywz.idkeyStat(959L, 6L, 1L, true);
+    pv(false);
   }
   
-  protected String dyK()
+  protected String dCb()
   {
-    return String.format("ProcessEfl found exception!kill process[%s] %s %s %s", new Object[] { Integer.valueOf(Process.myPid()), Long.valueOf(Jr()), Long.valueOf(Debug.getNativeHeapSize()), Long.valueOf(Runtime.getRuntime().totalMemory()) });
+    return String.format("ProcessEfl found exception!kill process[%s] %s %s %s", new Object[] { Integer.valueOf(Process.myPid()), Long.valueOf(Jz()), Long.valueOf(Debug.getNativeHeapSize()), Long.valueOf(Runtime.getRuntime().totalMemory()) });
   }
   
-  protected abstract long dyL();
+  protected abstract long dCc();
   
-  protected final boolean dyO()
+  protected final boolean dCf()
   {
-    Object localObject = (ActivityManager)aj.getContext().getSystemService("activity");
+    Object localObject = (ActivityManager)ak.getContext().getSystemService("activity");
     if (localObject == null)
     {
-      ad.e("MicroMsg.AbstractProcessChecker", "[isHighPriorityProcess] mActivityManager is null.");
+      ae.e("MicroMsg.AbstractProcessChecker", "[isHighPriorityProcess] mActivityManager is null.");
       return false;
     }
     localObject = ((ActivityManager)localObject).getRunningServices(50);
@@ -266,7 +268,7 @@ public abstract class AbstractProcessChecker
         ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)((Iterator)localObject).next();
         if (localRunningServiceInfo.foreground)
         {
-          ad.i(getTag(), "foreground service:%s process:%s ", new Object[] { localRunningServiceInfo.service, localRunningServiceInfo.process });
+          ae.i(getTag(), "foreground service:%s process:%s ", new Object[] { localRunningServiceInfo.service, localRunningServiceInfo.process });
           return true;
         }
       }
@@ -274,7 +276,7 @@ public abstract class AbstractProcessChecker
     return false;
   }
   
-  protected void gX(int paramInt1, int paramInt2) {}
+  protected void gY(int paramInt1, int paramInt2) {}
   
   protected String getTag()
   {
@@ -286,7 +288,7 @@ public abstract class AbstractProcessChecker
   public final void onReceive(Context paramContext, final Intent paramIntent)
   {
     if (paramIntent.getAction() == "ACTION_ELF_CHECK") {
-      cWY().post(new Runnable()
+      cZF().post(new Runnable()
       {
         public final void run()
         {
@@ -296,15 +298,15 @@ public abstract class AbstractProcessChecker
             ElfCheckRequest localElfCheckRequest = (ElfCheckRequest)paramIntent.getParcelableExtra("MicroMsg.ElfCheckRequest");
             if (localElfCheckRequest == null)
             {
-              ad.w("MicroMsg.AbstractProcessChecker", "pass this check,because request is null! ????");
+              ae.w("MicroMsg.AbstractProcessChecker", "pass this check,because request is null! ????");
               AppMethodBeat.o(124968);
               return;
             }
-            boolean bool = AbstractProcessChecker.this.ac(Process.myPid(), localElfCheckRequest.cJi);
-            ad.i("MicroMsg.AbstractProcessChecker", "[onReceive] begin to check process[%s] isCanKill:%s isNeedReCall:%s", new Object[] { AbstractProcessChecker.getProcessName(), Boolean.valueOf(bool), Boolean.valueOf(AbstractProcessChecker.this.dyI()) });
+            boolean bool = AbstractProcessChecker.this.ab(Process.myPid(), localElfCheckRequest.cJR);
+            ae.i("MicroMsg.AbstractProcessChecker", "[onReceive] begin to check process[%s] isCanKill:%s isNeedReCall:%s", new Object[] { AbstractProcessChecker.getProcessName(), Boolean.valueOf(bool), Boolean.valueOf(AbstractProcessChecker.this.dBZ()) });
             if (bool)
             {
-              AbstractProcessChecker.this.dyJ();
+              AbstractProcessChecker.this.dCa();
               AppMethodBeat.o(124968);
               return;
             }
@@ -327,15 +329,15 @@ public abstract class AbstractProcessChecker
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("ACTION_ELF_CHECK");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-    aj.getContext().registerReceiver(this, localIntentFilter);
+    ak.getContext().registerReceiver(this, localIntentFilter);
   }
   
   final class a
     implements Application.ActivityLifecycleCallbacks
   {
     boolean isResume = true;
-    String wHB = "";
-    boolean wHC = false;
+    String wXm = "";
+    boolean wXn = false;
     
     private a() {}
     
@@ -344,8 +346,8 @@ public abstract class AbstractProcessChecker
       AppMethodBeat.i(124969);
       if (paramActivity.getClass().getSimpleName().endsWith("WeChatSplashActivity"))
       {
-        this.wHC = true;
-        ad.i(AbstractProcessChecker.this.getTag(), "WeChatSplashActivity was created!");
+        this.wXn = true;
+        ae.i(AbstractProcessChecker.this.getTag(), "WeChatSplashActivity was created!");
       }
       AppMethodBeat.o(124969);
     }
@@ -355,8 +357,8 @@ public abstract class AbstractProcessChecker
     public final void onActivityPaused(Activity paramActivity)
     {
       AppMethodBeat.i(124971);
-      if (bt.isNullOrNil(this.wHB)) {
-        this.wHB = paramActivity.getClass().getName();
+      if (bu.isNullOrNil(this.wXm)) {
+        this.wXm = paramActivity.getClass().getName();
       }
       AppMethodBeat.o(124971);
     }
@@ -364,7 +366,7 @@ public abstract class AbstractProcessChecker
     public final void onActivityResumed(Activity paramActivity)
     {
       AppMethodBeat.i(124970);
-      this.wHB = paramActivity.getClass().getName();
+      this.wXm = paramActivity.getClass().getName();
       this.isResume = true;
       AppMethodBeat.o(124970);
     }
@@ -376,8 +378,8 @@ public abstract class AbstractProcessChecker
     public final void onActivityStopped(Activity paramActivity)
     {
       AppMethodBeat.i(124972);
-      if (bt.isNullOrNil(this.wHB)) {
-        this.wHB = paramActivity.getClass().getName();
+      if (bu.isNullOrNil(this.wXm)) {
+        this.wXm = paramActivity.getClass().getName();
       }
       this.isResume = false;
       AppMethodBeat.o(124972);

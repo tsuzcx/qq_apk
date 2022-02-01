@@ -7,7 +7,7 @@ import d.l;
 import d.m.i;
 import java.util.Iterator;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"CASE_INSENSITIVE_ORDER", "Ljava/util/Comparator;", "", "Lkotlin/Comparator;", "Lkotlin/String$Companion;", "getCASE_INSENSITIVE_ORDER", "(Lkotlin/jvm/internal/StringCompanionObject;)Ljava/util/Comparator;", "String", "stringBuffer", "Ljava/lang/StringBuffer;", "stringBuilder", "Ljava/lang/StringBuilder;", "bytes", "", "charset", "Ljava/nio/charset/Charset;", "offset", "", "length", "chars", "", "codePoints", "", "capitalize", "locale", "Ljava/util/Locale;", "codePointAt", "index", "codePointBefore", "codePointCount", "beginIndex", "endIndex", "compareTo", "other", "ignoreCase", "", "concatToString", "startIndex", "contentEquals", "charSequence", "", "decapitalize", "decodeToString", "throwOnInvalidSequence", "encodeToByteArray", "endsWith", "suffix", "equals", "format", "args", "", "", "(Ljava/lang/String;Ljava/util/Locale;[Ljava/lang/Object;)Ljava/lang/String;", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "(Lkotlin/jvm/internal/StringCompanionObject;Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "(Lkotlin/jvm/internal/StringCompanionObject;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "intern", "isBlank", "nativeIndexOf", "ch", "", "fromIndex", "str", "nativeLastIndexOf", "offsetByCodePoints", "codePointOffset", "regionMatches", "thisOffset", "otherOffset", "repeat", "n", "replace", "oldChar", "newChar", "oldValue", "newValue", "replaceFirst", "split", "", "regex", "Ljava/util/regex/Pattern;", "limit", "startsWith", "prefix", "substring", "toByteArray", "toCharArray", "destination", "destinationOffset", "toLowerCase", "toPattern", "flags", "toUpperCase", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"CASE_INSENSITIVE_ORDER", "Ljava/util/Comparator;", "", "Lkotlin/Comparator;", "Lkotlin/String$Companion;", "getCASE_INSENSITIVE_ORDER", "(Lkotlin/jvm/internal/StringCompanionObject;)Ljava/util/Comparator;", "String", "stringBuffer", "Ljava/lang/StringBuffer;", "stringBuilder", "Ljava/lang/StringBuilder;", "bytes", "", "charset", "Ljava/nio/charset/Charset;", "offset", "", "length", "chars", "", "codePoints", "", "capitalize", "locale", "Ljava/util/Locale;", "codePointAt", "index", "codePointBefore", "codePointCount", "beginIndex", "endIndex", "compareTo", "other", "ignoreCase", "", "concatToString", "startIndex", "contentEquals", "charSequence", "", "decapitalize", "decodeToString", "throwOnInvalidSequence", "encodeToByteArray", "endsWith", "suffix", "equals", "format", "args", "", "", "(Ljava/lang/String;Ljava/util/Locale;[Ljava/lang/Object;)Ljava/lang/String;", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "(Lkotlin/jvm/internal/StringCompanionObject;Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "(Lkotlin/jvm/internal/StringCompanionObject;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "intern", "isBlank", "nativeIndexOf", "ch", "", "fromIndex", "str", "nativeLastIndexOf", "offsetByCodePoints", "codePointOffset", "regionMatches", "thisOffset", "otherOffset", "repeat", "n", "replace", "oldChar", "newChar", "oldValue", "newValue", "replaceFirst", "split", "", "regex", "Ljava/util/regex/Pattern;", "limit", "startsWith", "prefix", "substring", "toByteArray", "toCharArray", "destination", "destinationOffset", "toLowerCase", "toPattern", "flags", "toUpperCase", "kotlin-stdlib"}, gkc=1)
 public class w
   extends v
 {
@@ -61,13 +61,13 @@ public class w
     return paramBoolean;
   }
   
-  public static final boolean aE(CharSequence paramCharSequence)
+  public static final boolean aD(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(129371);
     p.h(paramCharSequence, "$this$isBlank");
     if (paramCharSequence.length() != 0)
     {
-      Iterator localIterator = ((Iterable)n.aG(paramCharSequence)).iterator();
+      Iterator localIterator = ((Iterable)n.aF(paramCharSequence)).iterator();
       do
       {
         if (!localIterator.hasNext()) {
@@ -84,7 +84,7 @@ public class w
     return false;
   }
   
-  public static final String bp(String paramString1, String paramString2, String paramString3)
+  public static final String bq(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(129368);
     p.h(paramString1, "$this$replaceFirst");
@@ -149,23 +149,23 @@ public class w
     return paramString1;
   }
   
-  public static final boolean nA(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(129370);
-    p.h(paramString1, "$this$endsWith");
-    p.h(paramString2, "suffix");
-    boolean bool = paramString1.endsWith(paramString2);
-    AppMethodBeat.o(129370);
-    return bool;
-  }
-  
-  public static final boolean nz(String paramString1, String paramString2)
+  public static final boolean nF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(129369);
     p.h(paramString1, "$this$startsWith");
     p.h(paramString2, "prefix");
     boolean bool = paramString1.startsWith(paramString2);
     AppMethodBeat.o(129369);
+    return bool;
+  }
+  
+  public static final boolean nG(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(129370);
+    p.h(paramString1, "$this$endsWith");
+    p.h(paramString2, "suffix");
+    boolean bool = paramString1.endsWith(paramString2);
+    AppMethodBeat.o(129370);
     return bool;
   }
   

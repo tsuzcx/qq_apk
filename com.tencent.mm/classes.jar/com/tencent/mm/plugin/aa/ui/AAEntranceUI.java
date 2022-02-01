@@ -15,16 +15,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 
 @i
 public class AAEntranceUI
   extends MMActivity
 {
-  private Button iUC;
-  private TextView iUD;
+  private Button iXv;
+  private TextView iXw;
   
   public int getLayoutId()
   {
@@ -42,8 +42,8 @@ public class AAEntranceUI
     if (paramInt1 == 1)
     {
       String str = paramIntent.getStringExtra("Select_Conv_User");
-      ad.i("MicroMsg.AAEntranceUI", "select chatroom：%s", new Object[] { str });
-      if (!bt.isNullOrNil(str))
+      ae.i("MicroMsg.AAEntranceUI", "select chatroom：%s", new Object[] { str });
+      if (!bu.isNullOrNil(str))
       {
         Intent localIntent = new Intent(getContext(), LaunchAAUI.class);
         localIntent.putExtra("enter_scene", 2);
@@ -73,39 +73,39 @@ public class AAEntranceUI
     setActionbarColor(getResources().getColor(2131101179));
     hideActionbarLine();
     setMMTitle("");
-    this.iUC = ((Button)findViewById(2131301332));
-    this.iUD = ((TextView)findViewById(2131298215));
-    this.iUC.setOnClickListener(new View.OnClickListener()
+    this.iXv = ((Button)findViewById(2131301332));
+    this.iXw = ((TextView)findViewById(2131298215));
+    this.iXv.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(63471);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/AAEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/AAEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         AAEntranceUI.a(AAEntranceUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AAEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(63471);
       }
     });
-    this.iUD.setClickable(true);
-    this.iUD.setOnTouchListener(new n(this));
+    this.iXw.setClickable(true);
+    this.iXw.setOnTouchListener(new n(this));
     paramBundle = new SpannableStringBuilder(getString(2131757336));
     paramBundle.setSpan(new a(new a.a()
     {
-      public final void aRn()
+      public final void aRM()
       {
         AppMethodBeat.i(63472);
         Object localObject = new Intent(AAEntranceUI.this.getContext(), AAQueryListUI.class);
         AAEntranceUI localAAEntranceUI = AAEntranceUI.this;
         localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localAAEntranceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localAAEntranceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(63472);
       }
     }), 0, paramBundle.length(), 18);
-    this.iUD.setText(paramBundle);
+    this.iXw.setText(paramBundle);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

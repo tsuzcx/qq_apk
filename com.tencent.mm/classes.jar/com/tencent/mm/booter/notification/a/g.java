@@ -5,35 +5,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  private int fHA;
-  private int fHB;
-  public boolean fHC;
-  public boolean fHD;
-  public b fHp;
-  public c fHq;
-  public d fHr;
-  public h fHs;
-  private f fHt;
-  public a fHu;
-  public int fHv;
-  public int fHw;
-  public int fHx;
-  public int fHy;
-  public boolean fHz;
+  public int fJA;
+  public int fJB;
+  public int fJC;
+  public boolean fJD;
+  private int fJE;
+  private int fJF;
+  public boolean fJG;
+  public boolean fJH;
+  public b fJt;
+  public c fJu;
+  public d fJv;
+  public h fJw;
+  private f fJx;
+  public a fJy;
+  public int fJz;
   public Context mContext;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(20067);
-    this.fHA = -1;
-    this.fHB = -1;
+    this.fJE = -1;
+    this.fJF = -1;
     this.mContext = paramContext;
-    this.fHp = new b();
-    this.fHq = new c();
-    this.fHr = new d();
-    this.fHs = new h();
-    this.fHu = new a();
-    this.fHt = f.a.Xz();
+    this.fJt = new b();
+    this.fJu = new c();
+    this.fJv = new d();
+    this.fJw = new h();
+    this.fJy = new a();
+    this.fJx = f.a.XH();
     AppMethodBeat.o(20067);
   }
   
@@ -64,32 +64,32 @@ public final class g
     return paramArrayOfLong;
   }
   
-  public final int Mn()
+  public final int XI()
   {
-    AppMethodBeat.i(221373);
-    if (this.fHw == -1) {
-      this.fHw = com.tencent.mm.n.f.acw();
+    AppMethodBeat.i(186340);
+    if (this.fJA == -1) {
+      this.fJA = com.tencent.mm.n.f.acH();
     }
-    int i = this.fHw;
-    AppMethodBeat.o(221373);
+    int i = this.fJA;
+    AppMethodBeat.o(186340);
     return i;
   }
   
-  public final int Mo()
+  public final int XJ()
   {
-    AppMethodBeat.i(221374);
-    if (this.fHx == -1) {
-      this.fHx = com.tencent.mm.n.f.acx();
+    AppMethodBeat.i(186341);
+    if (this.fJB == -1) {
+      this.fJB = com.tencent.mm.n.f.acI();
     }
-    int i = this.fHx;
-    AppMethodBeat.o(221374);
+    int i = this.fJB;
+    AppMethodBeat.o(186341);
     return i;
   }
   
-  public final void uu(String paramString)
+  public final void uP(String paramString)
   {
     AppMethodBeat.i(20068);
-    this.fHt.ut(paramString);
+    this.fJx.uO(paramString);
     AppMethodBeat.o(20068);
   }
 }

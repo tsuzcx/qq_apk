@@ -12,7 +12,7 @@ public final class e
     super(paramContext);
   }
   
-  protected final com.tencent.mm.view.b.a fPK()
+  protected final com.tencent.mm.view.b.a fUg()
   {
     AppMethodBeat.i(9363);
     com.tencent.mm.view.b.b localb = new com.tencent.mm.view.b.b(getContext(), getPresenter());
@@ -20,7 +20,7 @@ public final class e
     return localb;
   }
   
-  protected final com.tencent.mm.view.footer.a fPL()
+  protected final com.tencent.mm.view.footer.a fUh()
   {
     AppMethodBeat.i(9364);
     com.tencent.mm.view.footer.b localb = new com.tencent.mm.view.footer.b(getContext(), getPresenter());
@@ -30,10 +30,10 @@ public final class e
   
   public final g[] getFeatures()
   {
-    if (this.LnR == null) {
-      this.LnR = new g[] { g.cRD, g.cRF, g.cRE, g.cRG, g.cRH };
+    if (this.LKC == null) {
+      this.LKC = new g[] { g.cSn, g.cSp, g.cSo, g.cSq, g.cSr };
     }
-    return this.LnR;
+    return this.LKC;
   }
 }
 

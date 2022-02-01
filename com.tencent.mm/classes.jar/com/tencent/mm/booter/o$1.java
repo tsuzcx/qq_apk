@@ -2,7 +2,7 @@ package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.k;
 
 final class o$1
   implements Runnable
@@ -12,7 +12,7 @@ final class o$1
   public final void run()
   {
     AppMethodBeat.i(19899);
-    g.yhR.kvStat(10675, this.fFs + "," + j.cSc);
+    g.yxI.kvStat(10675, this.fHw + "," + k.cSM);
     AppMethodBeat.o(19899);
   }
 }

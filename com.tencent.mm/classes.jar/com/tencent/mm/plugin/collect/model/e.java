@@ -7,7 +7,7 @@ import java.util.Date;
 
 public final class e
 {
-  public static String Bh(int paramInt)
+  public static String Bt(int paramInt)
   {
     AppMethodBeat.i(63781);
     String str = String.format("%.2f", new Object[] { Double.valueOf(paramInt / 100.0D) });

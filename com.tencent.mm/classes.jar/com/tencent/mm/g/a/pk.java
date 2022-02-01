@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class pk
   extends b
 {
-  public a dDB;
+  public b dEA;
+  public a dEz;
   
   public pk()
   {
@@ -15,16 +16,27 @@ public final class pk
   
   private pk(byte paramByte)
   {
-    AppMethodBeat.i(19824);
-    this.dDB = new a();
-    this.IbR = false;
+    AppMethodBeat.i(155374);
+    this.dEz = new a();
+    this.dEA = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19824);
+    AppMethodBeat.o(155374);
   }
   
   public static final class a
   {
-    public boolean dDC;
+    public String dEB;
+    public String dEC;
+    public String dED;
+    public int dEE = 0;
+    public int dEF = 0;
+    public int opType = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean doq;
   }
 }
 

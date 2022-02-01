@@ -3,30 +3,30 @@ package com.tencent.mm.api;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.cya;
-import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.protocal.protobuf.cyu;
+import com.tencent.mm.protocal.protobuf.cyw;
 import java.util.ArrayList;
 
 public abstract interface m
   extends a
 {
-  public abstract void a(Intent paramIntent, cya paramcya, int paramInt);
+  public abstract void a(Intent paramIntent, cyu paramcyu, int paramInt);
   
-  public abstract void a(Intent paramIntent, cyc paramcyc, int paramInt);
+  public abstract void a(Intent paramIntent, cyw paramcyw, int paramInt);
   
   public abstract void b(Activity paramActivity, String paramString);
   
-  public abstract boolean eM(String paramString);
+  public abstract boolean eR(String paramString);
   
-  public abstract ArrayList<String> eN(String paramString);
+  public abstract ArrayList<String> eS(String paramString);
   
-  public abstract boolean eO(String paramString);
+  public abstract boolean eT(String paramString);
   
-  public abstract String eP(String paramString);
+  public abstract String eU(String paramString);
   
-  public abstract String eQ(String paramString);
+  public abstract String eV(String paramString);
   
-  public abstract void eR(String paramString);
+  public abstract void eW(String paramString);
 }
 
 

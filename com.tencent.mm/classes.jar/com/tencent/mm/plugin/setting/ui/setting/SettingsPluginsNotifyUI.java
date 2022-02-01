@@ -7,10 +7,12 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.setting.model.m;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -21,35 +23,35 @@ public class SettingsPluginsNotifyUI
   private f screen;
   private int state;
   
-  private void Ph(int paramInt)
+  private void PO(int paramInt)
   {
     AppMethodBeat.i(74332);
     this.state = paramInt;
     if ((this.state == 1) || (this.state == 0))
     {
-      g.ajC().ajl().set(8200, Boolean.TRUE);
+      g.ajR().ajA().set(8200, Boolean.TRUE);
       if (this.state == 1)
       {
-        g.ajC().ajl().set(8201, Integer.valueOf(22));
-        g.ajC().ajl().set(8208, Integer.valueOf(8));
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.plugin.setting.model.l(true, 22, 8));
+        g.ajR().ajA().set(8201, Integer.valueOf(22));
+        g.ajR().ajA().set(8208, Integer.valueOf(8));
+        ((l)g.ab(l.class)).azE().d(new m(true, 22, 8));
       }
     }
     for (;;)
     {
-      dNV();
+      dRs();
       AppMethodBeat.o(74332);
       return;
-      g.ajC().ajl().set(8201, Integer.valueOf(0));
-      g.ajC().ajl().set(8208, Integer.valueOf(0));
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.plugin.setting.model.l(true, 0, 0));
+      g.ajR().ajA().set(8201, Integer.valueOf(0));
+      g.ajR().ajA().set(8208, Integer.valueOf(0));
+      ((l)g.ab(l.class)).azE().d(new m(true, 0, 0));
       continue;
-      g.ajC().ajl().set(8200, Boolean.FALSE);
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.plugin.setting.model.l());
+      g.ajR().ajA().set(8200, Boolean.FALSE);
+      ((l)g.ab(l.class)).azE().d(new m());
     }
   }
   
-  private void dNV()
+  private void dRs()
   {
     AppMethodBeat.i(74331);
     this.screen.removeAll();
@@ -108,9 +110,9 @@ public class SettingsPluginsNotifyUI
   public void initView()
   {
     AppMethodBeat.i(74333);
-    Boolean localBoolean = Boolean.valueOf(u.aAM());
-    int j = u.aAW();
-    int k = u.aAX();
+    Boolean localBoolean = Boolean.valueOf(v.aBc());
+    int j = v.aBm();
+    int k = v.aBn();
     int i;
     if (localBoolean.booleanValue()) {
       if (j == k) {
@@ -119,7 +121,7 @@ public class SettingsPluginsNotifyUI
     }
     for (this.state = i;; this.state = 2)
     {
-      ad.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
+      ae.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
       this.state = this.state;
       this.screen = getPreferenceScreen();
       setMMTitle(2131763353);
@@ -154,13 +156,13 @@ public class SettingsPluginsNotifyUI
     AppMethodBeat.i(74330);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_plugings_disturb_on")) {
-      Ph(0);
+      PO(0);
     }
     if (paramf.equals("settings_plugings_disturb_on_night")) {
-      Ph(1);
+      PO(1);
     }
     if (paramf.equals("settings_plugings_disturb_off")) {
-      Ph(2);
+      PO(2);
     }
     AppMethodBeat.o(74330);
     return false;
@@ -170,7 +172,7 @@ public class SettingsPluginsNotifyUI
   {
     AppMethodBeat.i(74329);
     super.onResume();
-    dNV();
+    dRs();
     AppMethodBeat.o(74329);
   }
   

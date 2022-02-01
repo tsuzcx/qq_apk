@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends SFSOutputStream
 {
-  private a ikT;
+  private a inM;
   
   public d(long paramLong, String paramString)
   {
     super(paramLong);
     AppMethodBeat.i(155992);
-    this.ikT = new a(paramString);
+    this.inM = new a(paramString);
     AppMethodBeat.o(155992);
   }
   
@@ -19,8 +19,8 @@ public final class d
   {
     AppMethodBeat.i(155995);
     super.close();
-    if (this.ikT != null) {
-      this.ikT.free();
+    if (this.inM != null) {
+      this.inM.free();
     }
     AppMethodBeat.o(155995);
   }
@@ -42,7 +42,7 @@ public final class d
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(155994);
-    this.ikT.z(paramArrayOfByte, paramInt2);
+    this.inM.z(paramArrayOfByte, paramInt2);
     super.write(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(155994);
   }

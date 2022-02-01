@@ -16,7 +16,7 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIModal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.s;
 
@@ -46,7 +46,7 @@ public class ModalFragment
     if (paramView != null)
     {
       this.mViewCenterPadding = paramView.findViewById(2131306427);
-      int i = al.jG(getContext());
+      int i = al.jN(getContext());
       this.mViewCenterPadding.setVisibility(0);
       paramView = this.mViewCenterPadding.getLayoutParams();
       paramView.height = i;
@@ -62,7 +62,7 @@ public class ModalFragment
     {
       this.page.setPlatformDelegate(this.pagePlatformDelegate);
       covertPlatformData(getActivity().getIntent().getBundleExtra("key_platform_data"));
-      ad.i("MicroMsg.ModalFragment", "finish init page");
+      ae.i("MicroMsg.ModalFragment", "finish init page");
     }
     AppMethodBeat.o(18545);
   }
@@ -91,7 +91,7 @@ public class ModalFragment
     }
     if ((this.mPreFragment instanceof ModalFragment))
     {
-      i = ((ModalFragment)this.mPreFragment).getController().fwQ();
+      i = ((ModalFragment)this.mPreFragment).getController().fAS();
       setCenterPaddingColor(getContext().getResources().getColor(2131101053));
       setActionBarColor(i);
       AppMethodBeat.o(178764);
@@ -105,7 +105,7 @@ public class ModalFragment
         AppMethodBeat.o(178764);
         return;
       }
-      i = ((MainFragment)this.mPreFragment).getController().fwQ();
+      i = ((MainFragment)this.mPreFragment).getController().fAS();
       int j = getContext().getResources().getColor(getBlackMaskColorRes());
       setActionBarColor((int)ColorUtil.MergeColors(i, j));
       setCenterPaddingColor(j);
@@ -122,7 +122,7 @@ public class ModalFragment
   {
     AppMethodBeat.i(18554);
     super.finalize();
-    ad.i("MicroMsg.ModalFragment", "finalize " + this.page);
+    ae.i("MicroMsg.ModalFragment", "finalize " + this.page);
     AppMethodBeat.o(18554);
   }
   
@@ -208,11 +208,11 @@ public class ModalFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(199429);
+    AppMethodBeat.i(193139);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(199429);
+    AppMethodBeat.o(193139);
   }
   
   public void onStart()
@@ -286,7 +286,7 @@ public class ModalFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.ModalFragment
  * JD-Core Version:    0.7.0.1
  */

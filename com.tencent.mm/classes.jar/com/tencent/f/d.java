@@ -2,20 +2,20 @@ package com.tencent.f;
 
 public abstract class d<T extends e>
 {
-  private T[] MjS = fYL();
-  private int lrx;
+  private T[] MGP = gdk();
+  private int lvX;
   private final Object mLock = new Object();
   
-  private T fYO()
+  private T gdn()
   {
     e locale = null;
     synchronized (this.mLock)
     {
-      if (this.lrx > 0)
+      if (this.lvX > 0)
       {
-        this.lrx -= 1;
-        locale = this.MjS[this.lrx];
-        this.MjS[this.lrx] = null;
+        this.lvX -= 1;
+        locale = this.MGP[this.lvX];
+        this.MGP[this.lvX] = null;
       }
       return locale;
     }
@@ -25,25 +25,25 @@ public abstract class d<T extends e>
   {
     synchronized (this.mLock)
     {
-      int i = this.MjS.length;
-      if (this.lrx < i)
+      int i = this.MGP.length;
+      if (this.lvX < i)
       {
-        this.MjS[this.lrx] = paramT;
-        this.lrx += 1;
+        this.MGP[this.lvX] = paramT;
+        this.lvX += 1;
       }
       return;
     }
   }
   
-  protected abstract T[] fYL();
+  protected abstract T[] gdk();
   
-  protected abstract T fYM();
+  protected abstract T gdl();
   
-  public final T fYN()
+  public final T gdm()
   {
-    e locale = fYO();
+    e locale = gdn();
     if (locale == null) {
-      return fYM();
+      return gdl();
     }
     locale.reset();
     return locale;

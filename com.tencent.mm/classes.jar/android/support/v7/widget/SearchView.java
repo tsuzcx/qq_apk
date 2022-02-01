@@ -36,31 +36,30 @@ import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.KeyEvent.DispatcherState;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.View.OnLayoutChangeListener;
-import android.view.ViewConfiguration;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import java.lang.reflect.Method;
 import java.util.WeakHashMap;
 
 public class SearchView
   extends LinearLayoutCompat
   implements c
 {
-  static final SearchView.a awn = new SearchView.a();
+  static final a awn = new a();
   private final AdapterView.OnItemSelectedListener XW = new AdapterView.OnItemSelectedListener()
   {
     public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -100,7 +99,7 @@ public class SearchView
   final ImageView avF;
   final ImageView avG;
   final View avH;
-  private e avI;
+  private SearchView.e avI;
   private Rect avJ = new Rect();
   private Rect avK = new Rect();
   private int[] avL = new int[2];
@@ -241,8 +240,8 @@ public class SearchView
               ((Intent)localObject2).putExtra("calling_package", paramAnonymousView);
               paramAnonymousView = localSearchView.getContext();
               localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "android/support/v7/widget/SearchView", "onVoiceClicked", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "android/support/v7/widget/SearchView", "onVoiceClicked", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "android/support/v7/widget/SearchView", "onVoiceClicked", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               return;
             }
@@ -286,8 +285,8 @@ public class SearchView
                   localIntent.putExtra("android.speech.extra.RESULTS_PENDINGINTENT_BUNDLE", localBundle);
                   paramAnonymousView = localSearchView.getContext();
                   localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-                  com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "android/support/v7/widget/SearchView", "onVoiceClicked", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+                  com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "android/support/v7/widget/SearchView", "onVoiceClicked", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
                   com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "android/support/v7/widget/SearchView", "onVoiceClicked", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                   return;
                 }
@@ -557,7 +556,7 @@ public class SearchView
     }
   }
   
-  static boolean ab(Context paramContext)
+  static boolean ac(Context paramContext)
   {
     return paramContext.getResources().getConfiguration().orientation == 2;
   }
@@ -630,8 +629,8 @@ public class SearchView
     {
       Context localContext = getContext();
       com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(localContext, locala.ahp(), "android/support/v7/widget/SearchView", "launchIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localContext.startActivity((Intent)locala.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localContext, locala.ahE(), "android/support/v7/widget/SearchView", "launchIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext.startActivity((Intent)locala.mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(localContext, "android/support/v7/widget/SearchView", "launchIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
@@ -768,8 +767,8 @@ public class SearchView
     Object localObject = a("android.intent.action.SEARCH", null, null, paramString);
     paramString = getContext();
     localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "android/support/v7/widget/SearchView", "launchQuerySearch", "(ILjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "android/support/v7/widget/SearchView", "launchQuerySearch", "(ILjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramString, "android/support/v7/widget/SearchView", "launchQuerySearch", "(ILjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
@@ -994,7 +993,7 @@ public class SearchView
       this.avK.set(this.avJ.left, 0, this.avJ.right, paramInt4 - paramInt2);
       if (this.avI == null)
       {
-        this.avI = new e(this.avK, this.avJ, this.avz);
+        this.avI = new SearchView.e(this.avK, this.avJ, this.avz);
         setTouchDelegate(this.avI);
       }
     }
@@ -1460,7 +1459,7 @@ public class SearchView
       if ((paramBoolean) && (this.awA.hasFocus()) && (getVisibility() == 0))
       {
         this.awB = true;
-        if (SearchView.ab(getContext())) {
+        if (SearchView.ac(getContext())) {
           SearchView.awn.c(this);
         }
       }
@@ -1502,6 +1501,77 @@ public class SearchView
     }
   }
   
+  static final class a
+  {
+    private Method aww;
+    private Method awx;
+    private Method awy;
+    
+    a()
+    {
+      try
+      {
+        this.aww = AutoCompleteTextView.class.getDeclaredMethod("doBeforeTextChanged", new Class[0]);
+        this.aww.setAccessible(true);
+        try
+        {
+          label27:
+          this.awx = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged", new Class[0]);
+          this.awx.setAccessible(true);
+          try
+          {
+            label50:
+            this.awy = AutoCompleteTextView.class.getMethod("ensureImeVisible", new Class[] { Boolean.TYPE });
+            this.awy.setAccessible(true);
+            return;
+          }
+          catch (NoSuchMethodException localNoSuchMethodException1) {}
+        }
+        catch (NoSuchMethodException localNoSuchMethodException2)
+        {
+          break label50;
+        }
+      }
+      catch (NoSuchMethodException localNoSuchMethodException3)
+      {
+        break label27;
+      }
+    }
+    
+    final void a(AutoCompleteTextView paramAutoCompleteTextView)
+    {
+      if (this.aww != null) {}
+      try
+      {
+        this.aww.invoke(paramAutoCompleteTextView, new Object[0]);
+        return;
+      }
+      catch (Exception paramAutoCompleteTextView) {}
+    }
+    
+    final void b(AutoCompleteTextView paramAutoCompleteTextView)
+    {
+      if (this.awx != null) {}
+      try
+      {
+        this.awx.invoke(paramAutoCompleteTextView, new Object[0]);
+        return;
+      }
+      catch (Exception paramAutoCompleteTextView) {}
+    }
+    
+    final void c(AutoCompleteTextView paramAutoCompleteTextView)
+    {
+      if (this.awy != null) {}
+      try
+      {
+        this.awy.invoke(paramAutoCompleteTextView, new Object[] { Boolean.TRUE });
+        return;
+      }
+      catch (Exception paramAutoCompleteTextView) {}
+    }
+  }
+  
   public static abstract interface b
   {
     public abstract boolean onClose();
@@ -1517,92 +1587,6 @@ public class SearchView
     public abstract boolean ms();
     
     public abstract boolean mt();
-  }
-  
-  static final class e
-    extends TouchDelegate
-  {
-    private final View awE;
-    private final Rect awF;
-    private final Rect awG;
-    private final Rect awH;
-    private final int awI;
-    private boolean awJ;
-    
-    public e(Rect paramRect1, Rect paramRect2, View paramView)
-    {
-      super(paramView);
-      this.awI = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-      this.awF = new Rect();
-      this.awH = new Rect();
-      this.awG = new Rect();
-      a(paramRect1, paramRect2);
-      this.awE = paramView;
-    }
-    
-    public final void a(Rect paramRect1, Rect paramRect2)
-    {
-      this.awF.set(paramRect1);
-      this.awH.set(paramRect1);
-      this.awH.inset(-this.awI, -this.awI);
-      this.awG.set(paramRect2);
-    }
-    
-    public final boolean onTouchEvent(MotionEvent paramMotionEvent)
-    {
-      boolean bool3 = false;
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int i;
-      boolean bool1;
-      label57:
-      boolean bool2;
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        i = 1;
-        bool1 = false;
-        bool2 = bool3;
-        if (bool1)
-        {
-          if ((i == 0) || (this.awG.contains(j, k))) {
-            break label203;
-          }
-          paramMotionEvent.setLocation(this.awE.getWidth() / 2, this.awE.getHeight() / 2);
-        }
-        break;
-      }
-      for (;;)
-      {
-        bool2 = this.awE.dispatchTouchEvent(paramMotionEvent);
-        return bool2;
-        if (!this.awF.contains(j, k)) {
-          break;
-        }
-        this.awJ = true;
-        i = 1;
-        bool1 = true;
-        break label57;
-        bool2 = this.awJ;
-        bool1 = bool2;
-        if (bool2)
-        {
-          bool1 = bool2;
-          if (!this.awH.contains(j, k))
-          {
-            i = 0;
-            bool1 = bool2;
-            break label57;
-            bool1 = this.awJ;
-            this.awJ = false;
-          }
-        }
-        i = 1;
-        break label57;
-        label203:
-        paramMotionEvent.setLocation(j - this.awG.left, k - this.awG.top);
-      }
-    }
   }
 }
 

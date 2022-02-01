@@ -1,46 +1,45 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
 
 public final class ecz
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long HOC;
-  public b nCV;
+  public int Iid;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32538);
+    AppMethodBeat.i(91730);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.HOC);
-      if (this.nCV != null) {
-        paramVarArgs.c(2, this.nCV);
+      paramVarArgs.aS(1, this.Iid);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      AppMethodBeat.o(32538);
+      AppMethodBeat.o(91730);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.HOC) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.Iid) + 0;
       paramInt = i;
-      if (this.nCV != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.nCV);
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
-      AppMethodBeat.o(32538);
+      AppMethodBeat.o(91730);
       return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
-      AppMethodBeat.o(32538);
+      AppMethodBeat.o(91730);
       return 0;
     }
     if (paramInt == 3)
@@ -50,18 +49,18 @@ public final class ecz
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32538);
+        AppMethodBeat.o(91730);
         return -1;
       case 1: 
-        localecz.HOC = locala.NPN.zd();
-        AppMethodBeat.o(32538);
+        localecz.Iid = locala.OmT.zc();
+        AppMethodBeat.o(91730);
         return 0;
       }
-      localecz.nCV = locala.NPN.gxI();
-      AppMethodBeat.o(32538);
+      localecz.url = locala.OmT.readString();
+      AppMethodBeat.o(91730);
       return 0;
     }
-    AppMethodBeat.o(32538);
+    AppMethodBeat.o(91730);
     return -1;
   }
 }

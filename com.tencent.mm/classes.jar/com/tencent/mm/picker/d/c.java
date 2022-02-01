@@ -2,7 +2,7 @@ package com.tencent.mm.picker.d;
 
 public abstract interface c
 {
-  public abstract void qU(int paramInt);
+  public abstract void qX(int paramInt);
 }
 
 

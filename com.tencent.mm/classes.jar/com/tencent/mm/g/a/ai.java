@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ai
   extends b
 {
-  public a dkT;
+  public a dlV;
   
   public ai()
   {
@@ -17,8 +17,8 @@ public final class ai
   private ai(byte paramByte)
   {
     AppMethodBeat.i(149851);
-    this.dkT = new a();
-    this.IbR = false;
+    this.dlV = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(149851);
   }

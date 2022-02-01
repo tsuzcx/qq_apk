@@ -14,9 +14,9 @@ import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class JsApiNavigateBackApplication$NavigateBackAppTask
   extends MainProcessTask
@@ -51,31 +51,31 @@ public final class JsApiNavigateBackApplication$NavigateBackAppTask
     paramBaseResp = new MMessageActV2.Args();
     paramBaseResp.targetPkgName = paramg.field_packageName;
     paramBaseResp.bundle = paramBundle;
-    q.bb(paramBundle);
     q.bc(paramBundle);
-    MMessageActV2.send(aj.getContext(), paramBaseResp);
+    q.bd(paramBundle);
+    MMessageActV2.send(ak.getContext(), paramBaseResp);
     AppMethodBeat.o(45555);
   }
   
-  public final void aOA()
+  public final void aOX()
   {
     AppMethodBeat.i(45554);
     g localg = h.m(this.appId, true, true);
-    ad.i("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appid %s", new Object[] { this.appId });
+    ae.i("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appid %s", new Object[] { this.appId });
     if (localg == null)
     {
-      ad.w("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appinfo is null");
+      ae.w("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appinfo is null");
       AppMethodBeat.o(45554);
       return;
     }
     if (!h.i(localg))
     {
-      ad.e("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask packageName invalid");
+      ae.e("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask packageName invalid");
       AppMethodBeat.o(45554);
       return;
     }
     Bundle localBundle = new Bundle();
-    if (bt.isNullOrNil(this.businessType))
+    if (bu.isNullOrNil(this.businessType))
     {
       localObject = new WXLaunchMiniProgram.Resp(localBundle);
       ((WXLaunchMiniProgram.Resp)localObject).extMsg = this.data;
@@ -89,7 +89,7 @@ public final class JsApiNavigateBackApplication$NavigateBackAppTask
     ((WXOpenBusinessView.Resp)localObject).openId = localg.field_openId;
     ((WXOpenBusinessView.Resp)localObject).errCode = this.errCode;
     ((WXOpenBusinessView.Resp)localObject).businessType = this.businessType;
-    ((WXOpenBusinessView.Resp)localObject).transaction = l.FkP;
+    ((WXOpenBusinessView.Resp)localObject).transaction = l.FDn;
     a(localBundle, (BaseResp)localObject, localg);
     AppMethodBeat.o(45554);
   }
@@ -116,7 +116,7 @@ public final class JsApiNavigateBackApplication$NavigateBackAppTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiNavigateBackApplication.NavigateBackAppTask
  * JD-Core Version:    0.7.0.1
  */

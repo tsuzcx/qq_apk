@@ -287,7 +287,7 @@ public class TXCYuvTextureRender
   
   public void flipVertical(boolean paramBoolean)
   {
-    AppMethodBeat.i(187391);
+    AppMethodBeat.i(221520);
     float[] arrayOfFloat;
     if (paramBoolean)
     {
@@ -315,7 +315,7 @@ public class TXCYuvTextureRender
       this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
       this.mTextureBuffer.put(arrayOfFloat);
       this.mTextureBuffer.position(0);
-      AppMethodBeat.o(187391);
+      AppMethodBeat.o(221520);
       return;
       arrayOfFloat = new float[8];
       float[] tmp100_99 = arrayOfFloat;

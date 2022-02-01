@@ -5,26 +5,26 @@ import d.g.b.p;
 public final class k
   implements Runnable
 {
-  private c hfQ;
-  private a hfR;
-  private b hfk;
+  private b hhY;
+  private c hiE;
+  private a hiF;
   
   public k(c paramc, b paramb, a parama)
   {
-    this.hfQ = paramc;
-    this.hfk = paramb;
-    this.hfR = parama;
+    this.hiE = paramc;
+    this.hhY = paramb;
+    this.hiF = parama;
   }
   
   public final void run()
   {
-    c localc = this.hfQ;
-    b localb = this.hfk;
-    a locala = this.hfR;
+    c localc = this.hiE;
+    b localb = this.hhY;
+    a locala = this.hiF;
     p.h(localb, "loader");
     p.h(locala, "watch");
-    localc.hfk = localb;
-    localc.hfl = locala;
+    localc.hhY = localb;
+    localc.hhZ = locala;
     localc.call();
   }
   
@@ -35,7 +35,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.g.k
  * JD-Core Version:    0.7.0.1
  */

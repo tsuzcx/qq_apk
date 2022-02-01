@@ -18,25 +18,25 @@ public class LuckyMoneyTextInputView
   extends LinearLayout
   implements c
 {
-  private TextView lCL;
-  LinearLayout vBe;
-  ImageView vBf;
-  BaseEmojiView vBg;
-  private View.OnClickListener vBh;
-  private g vjF;
-  private MMEditText vlc;
+  private TextView lHk;
+  LinearLayout vNi;
+  ImageView vNj;
+  BaseEmojiView vNk;
+  private View.OnClickListener vNl;
+  private g vvK;
+  private MMEditText vxh;
   
   public LuckyMoneyTextInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65933);
     paramContext = LayoutInflater.from(paramContext).inflate(2131494660, this, true);
-    this.vlc = ((MMEditText)paramContext.findViewById(2131301944));
-    this.lCL = ((TextView)paramContext.findViewById(2131301945));
-    this.vBe = ((LinearLayout)paramContext.findViewById(2131301794));
-    this.vBf = ((ImageView)paramContext.findViewById(2131301795));
-    this.vBg = ((BaseEmojiView)paramContext.findViewById(2131301793));
-    this.vlc.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.vxh = ((MMEditText)paramContext.findViewById(2131301944));
+    this.lHk = ((TextView)paramContext.findViewById(2131301945));
+    this.vNi = ((LinearLayout)paramContext.findViewById(2131301794));
+    this.vNj = ((ImageView)paramContext.findViewById(2131301795));
+    this.vNk = ((BaseEmojiView)paramContext.findViewById(2131301793));
+    this.vxh.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -45,32 +45,32 @@ public class LuckyMoneyTextInputView
         {
           paramAnonymousView = LuckyMoneyTextInputView.a(LuckyMoneyTextInputView.this);
           LuckyMoneyTextInputView.this.getInputViewId();
-          paramAnonymousView.dhR();
+          paramAnonymousView.dkQ();
         }
         AppMethodBeat.o(65931);
       }
     });
-    this.vBe.setOnClickListener(new LuckyMoneyTextInputView.2(this));
-    this.vBe.setVisibility(8);
+    this.vNi.setOnClickListener(new LuckyMoneyTextInputView.2(this));
+    this.vNi.setVisibility(8);
     AppMethodBeat.o(65933);
   }
   
-  public final void A(EmojiInfo paramEmojiInfo)
+  public final void B(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(65938);
-    this.vBe.setTag("delete");
-    this.vBf.setVisibility(8);
-    this.vBg.setVisibility(0);
-    this.vBg.setEmojiInfo(paramEmojiInfo);
+    this.vNi.setTag("delete");
+    this.vNj.setVisibility(8);
+    this.vNk.setVisibility(0);
+    this.vNk.setEmojiInfo(paramEmojiInfo);
     AppMethodBeat.o(65938);
   }
   
-  public final String IZ(int paramInt)
+  public final String Jy(int paramInt)
   {
     return null;
   }
   
-  public final int dhQ()
+  public final int dkP()
   {
     return 0;
   }
@@ -78,7 +78,7 @@ public class LuckyMoneyTextInputView
   public String getInput()
   {
     AppMethodBeat.i(65934);
-    String str = this.vlc.getText().toString();
+    String str = this.vxh.getText().toString();
     AppMethodBeat.o(65934);
     return str;
   }
@@ -91,18 +91,18 @@ public class LuckyMoneyTextInputView
     return i;
   }
   
-  public final void of(boolean paramBoolean)
+  public final void ok(boolean paramBoolean)
   {
     AppMethodBeat.i(65937);
     if (paramBoolean)
     {
-      this.vBe.setVisibility(8);
+      this.vNi.setVisibility(8);
       AppMethodBeat.o(65937);
       return;
     }
-    this.vBe.setVisibility(0);
-    this.vBf.setVisibility(0);
-    this.vBg.setVisibility(8);
+    this.vNi.setVisibility(0);
+    this.vNj.setVisibility(0);
+    this.vNk.setVisibility(8);
     AppMethodBeat.o(65937);
   }
   
@@ -113,30 +113,30 @@ public class LuckyMoneyTextInputView
   public void setHintText(String paramString)
   {
     AppMethodBeat.i(65935);
-    this.vlc.setHint(paramString);
+    this.vxh.setHint(paramString);
     AppMethodBeat.o(65935);
   }
   
   public void setOnInputValidChangerListener(g paramg)
   {
-    this.vjF = paramg;
+    this.vvK = paramg;
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(65936);
-    this.lCL.setText(paramString);
+    this.lHk.setText(paramString);
     AppMethodBeat.o(65936);
   }
   
   public void setmOnEmojiSelectClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.vBh = paramOnClickListener;
+    this.vNl = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyTextInputView
  * JD-Core Version:    0.7.0.1
  */

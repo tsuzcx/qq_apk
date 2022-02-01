@@ -8,13 +8,13 @@ public abstract interface n
   
   public abstract long a(g paramg);
   
-  public abstract int tR(long paramLong);
+  public abstract int ui(long paramLong);
   
-  public abstract FileDownloadTaskInfo tS(long paramLong);
+  public abstract FileDownloadTaskInfo uj(long paramLong);
   
-  public abstract boolean tT(long paramLong);
+  public abstract boolean uk(long paramLong);
   
-  public abstract boolean tU(long paramLong);
+  public abstract boolean ul(long paramLong);
 }
 
 

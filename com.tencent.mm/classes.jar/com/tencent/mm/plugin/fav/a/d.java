@@ -6,45 +6,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class d
 {
-  private static d rsi = null;
+  private static d rAv = null;
   private long endTime;
-  private boolean llo;
-  ap mHandler;
-  public ArrayList<a> rsh;
-  private Object rsj;
-  private Runnable rsk;
+  private boolean lpM;
+  aq mHandler;
+  public ArrayList<a> rAu;
+  private Object rAw;
+  private Runnable rAx;
   private long startTime;
   
   private d()
   {
     AppMethodBeat.i(103365);
-    this.llo = false;
-    this.rsh = new ArrayList();
+    this.lpM = false;
+    this.rAu = new ArrayList();
     this.startTime = -1L;
     this.endTime = -1L;
-    this.rsj = new Object();
-    this.rsk = new Runnable()
+    this.rAw = new Object();
+    this.rAx = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(103363);
-        ((af)g.ad(af.class)).getFavItemInfoStorage().cvt();
+        ((af)g.ad(af.class)).getFavItemInfoStorage().cwU();
         d.a(d.this, System.currentTimeMillis());
-        ad.d("MicroMsg.FavCleanFirstLoader", "calDataBaseDataTotalLength, used: %dms", new Object[] { Long.valueOf(d.a(d.this) - d.b(d.this)) });
+        ae.d("MicroMsg.FavCleanFirstLoader", "calDataBaseDataTotalLength, used: %dms", new Object[] { Long.valueOf(d.a(d.this) - d.b(d.this)) });
         d.a(d.this, -1L);
         d.c(d.this);
         synchronized (d.d(d.this))
         {
-          g.ajC().ajl().set(al.a.Itc, Boolean.TRUE);
+          g.ajR().ajA().set(am.a.INy, Boolean.TRUE);
           d.e(d.this);
           d.this.mHandler.sendEmptyMessage(0);
           AppMethodBeat.o(103363);
@@ -52,12 +52,12 @@ public final class d
         }
       }
     };
-    this.mHandler = new ap(Looper.getMainLooper())
+    this.mHandler = new aq(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(103364);
-        paramAnonymousMessage = d.this.rsh.iterator();
+        paramAnonymousMessage = d.this.rAu.iterator();
         while (paramAnonymousMessage.hasNext())
         {
           d.a locala = (d.a)paramAnonymousMessage.next();
@@ -65,22 +65,22 @@ public final class d
             locala.onFinish();
           }
         }
-        d.this.rsh.clear();
+        d.this.rAu.clear();
         AppMethodBeat.o(103364);
       }
     };
     AppMethodBeat.o(103365);
   }
   
-  public static d cuO()
+  public static d cwp()
   {
     try
     {
       AppMethodBeat.i(103366);
-      if (rsi == null) {
-        rsi = new d();
+      if (rAv == null) {
+        rAv = new d();
       }
-      d locald = rsi;
+      d locald = rAv;
       AppMethodBeat.o(103366);
       return locald;
     }
@@ -90,9 +90,9 @@ public final class d
   public final void a(a parama)
   {
     AppMethodBeat.i(103367);
-    synchronized (this.rsj)
+    synchronized (this.rAw)
     {
-      if (((Boolean)g.ajC().ajl().get(al.a.Itc, Boolean.FALSE)).booleanValue())
+      if (((Boolean)g.ajR().ajA().get(am.a.INy, Boolean.FALSE)).booleanValue())
       {
         if (parama != null) {
           parama.onFinish();
@@ -101,17 +101,17 @@ public final class d
         return;
       }
       if (parama != null) {
-        this.rsh.add(parama);
+        this.rAu.add(parama);
       }
-      if (this.llo)
+      if (this.lpM)
       {
-        ad.i("MicroMsg.FavCleanFirstLoader", "isLoading is true, ignore");
+        ae.i("MicroMsg.FavCleanFirstLoader", "isLoading is true, ignore");
         AppMethodBeat.o(103367);
         return;
       }
-      this.llo = true;
+      this.lpM = true;
       this.startTime = System.currentTimeMillis();
-      b.c(this.rsk, "FavCleanFirstLoader_CalFavDataLength");
+      b.c(this.rAx, "FavCleanFirstLoader_CalFavDataLength");
       AppMethodBeat.o(103367);
       return;
     }

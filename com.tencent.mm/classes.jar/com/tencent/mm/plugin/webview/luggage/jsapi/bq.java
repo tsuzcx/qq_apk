@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask;
 import com.tencent.mm.plugin.webview.luggage.ipc.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONObject;
 
@@ -21,29 +21,29 @@ public abstract class bq<T extends com.tencent.luggage.d.a>
   public void a(final com.tencent.luggage.d.b<T>.a paramb)
   {
     Object localObject;
-    if (ccO() == 1)
+    if (ced() == 1)
     {
       localObject = new JsApiMMTask();
-      ((JsApiMMTask)localObject).DQB = paramb;
-      ((JsApiMMTask)localObject).DQC = getClass().getName();
-      ((JsApiMMTask)localObject).kwS = paramb.chh.cgn.toString();
-      ((JsApiMMTask)localObject).bhN();
+      ((JsApiMMTask)localObject).EiB = paramb;
+      ((JsApiMMTask)localObject).EiC = getClass().getName();
+      ((JsApiMMTask)localObject).kAh = paramb.chh.cgn.toString();
+      ((JsApiMMTask)localObject).biw();
       AppBrandMainProcessService.a((MainProcessTask)localObject);
       return;
     }
-    if (ccO() == 2)
+    if (ced() == 2)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("jsapi_name", getClass().getName());
       ((Bundle)localObject).putString("data", paramb.chh.cgn.toString());
       com.tencent.mm.plugin.webview.luggage.ipc.b.a((MMActivity)((com.tencent.luggage.d.a)paramb.chg).getContext(), (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
       {
-        public final void q(Bundle paramAnonymousBundle)
+        public final void r(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(78641);
           String str = paramAnonymousBundle.getString("err_msg");
           paramAnonymousBundle = paramAnonymousBundle.getString("data");
-          if (!bt.isNullOrNil(str))
+          if (!bu.isNullOrNil(str))
           {
             paramb.a(str, null);
             AppMethodBeat.o(78641);
@@ -70,7 +70,7 @@ public abstract class bq<T extends com.tencent.luggage.d.a>
   
   public abstract void b(com.tencent.luggage.d.b<T>.a paramb);
   
-  public abstract int ccO();
+  public abstract int ced();
   
   public static abstract class a
   {

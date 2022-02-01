@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.downloader_app.a;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,36 +14,36 @@ import java.util.Map;
 
 public final class g
 {
-  public com.tencent.mm.plugin.downloader.c.a.a.b ppb;
-  private Map<String, i> ppc;
-  private LinkedList<i> ppd;
-  public f ppe;
-  private String ppf;
+  public com.tencent.mm.plugin.downloader.c.a.a.b pvH;
+  private Map<String, i> pvI;
+  private LinkedList<i> pvJ;
+  public f pvK;
+  private String pvL;
   
   public g(com.tencent.mm.plugin.downloader.c.a.a.b paramb)
   {
     AppMethodBeat.i(8896);
-    this.ppc = new HashMap();
-    this.ppd = new LinkedList();
-    this.ppf = "";
+    this.pvI = new HashMap();
+    this.pvJ = new LinkedList();
+    this.pvL = "";
     if (paramb == null)
     {
-      this.ppb = new com.tencent.mm.plugin.downloader.c.a.a.b();
+      this.pvH = new com.tencent.mm.plugin.downloader.c.a.a.b();
       AppMethodBeat.o(8896);
       return;
     }
-    this.ppb = paramb;
-    Zd();
+    this.pvH = paramb;
+    Zm();
     AppMethodBeat.o(8896);
   }
   
   public g(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(8897);
-    this.ppc = new HashMap();
-    this.ppd = new LinkedList();
-    this.ppf = "";
-    this.ppb = new com.tencent.mm.plugin.downloader.c.a.a.b();
+    this.pvI = new HashMap();
+    this.pvJ = new LinkedList();
+    this.pvL = "";
+    this.pvH = new com.tencent.mm.plugin.downloader.c.a.a.b();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(8897);
@@ -51,8 +51,8 @@ public final class g
     }
     try
     {
-      this.ppb.parseFrom(paramArrayOfByte);
-      Zd();
+      this.pvH.parseFrom(paramArrayOfByte);
+      Zm();
       AppMethodBeat.o(8897);
       return;
     }
@@ -60,61 +60,61 @@ public final class g
     {
       for (;;)
       {
-        ad.e("MicroMsg.PBAppInfo", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        ae.e("MicroMsg.PBAppInfo", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void Zd()
+  private void Zm()
   {
     AppMethodBeat.i(8898);
-    this.ppe = this.ppb.pjD;
-    if (bt.hj(this.ppb.pjC))
+    this.pvK = this.pvH.pqi;
+    if (bu.ht(this.pvH.pqh))
     {
       AppMethodBeat.o(8898);
       return;
     }
-    Iterator localIterator = this.ppb.pjC.iterator();
+    Iterator localIterator = this.pvH.pqh.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.downloader.c.a.a.d locald = (com.tencent.mm.plugin.downloader.c.a.a.d)localIterator.next();
-      if ((locald.pjF.pkQ == null) || (locald.pjF.pkQ.pkF == null))
+      if ((locald.pqk.prv == null) || (locald.pqk.prv.prk == null))
       {
-        ad.e("MicroMsg.PBAppInfo", "download info is null, appid:%s", new Object[] { locald.pjF.pkO.duW });
+        ae.e("MicroMsg.PBAppInfo", "download info is null, appid:%s", new Object[] { locald.pqk.prt.dwb });
       }
       else
       {
         i locali = new i();
-        locali.appId = locald.pjF.pkO.duW;
-        locali.appName = locald.pjF.pkO.pkq;
-        locali.iconUrl = locald.pjF.pkO.pkr;
-        locali.packageName = locald.pjF.pkQ.pkF.pkf;
-        locali.ppl = locald.pjF.pkQ.pkF;
+        locali.appId = locald.pqk.prt.dwb;
+        locali.appName = locald.pqk.prt.pqV;
+        locali.iconUrl = locald.pqk.prt.pqW;
+        locali.packageName = locald.pqk.prv.prk.pqK;
+        locali.pvR = locald.pqk.prv.prk;
         Object localObject;
-        if (locald.pjH != null)
+        if (locald.pqm != null)
         {
-          localObject = locald.pjH.pjE;
+          localObject = locald.pqm.pqj;
           label219:
           locali.jumpUrl = ((String)localObject);
-          if (!bt.isNullOrNil(locali.jumpUrl)) {
-            this.ppf = locali.jumpUrl;
+          if (!bu.isNullOrNil(locali.jumpUrl)) {
+            this.pvL = locali.jumpUrl;
           }
-          locali.ppj = locald.pjF.pkQ.pkF.pkn;
-          locali.ppn = locald.pjF.pkS;
-          if (j.aaD(locald.pjF.pkO.duW) != k.UN_INSTALLED) {
+          locali.pvP = locald.pqk.prv.prk.pqS;
+          locali.pvT = locald.pqk.prx;
+          if (j.abu(locald.pqk.prt.dwb) != k.UN_INSTALLED) {
             break label326;
           }
           locali.type = 2;
         }
         for (;;)
         {
-          this.ppc.put(locali.appId, locali);
+          this.pvI.put(locali.appId, locali);
           break;
           localObject = "";
           break label219;
           label326:
-          localObject = com.tencent.mm.plugin.appbrand.z.b.getPackageInfo(aj.getContext(), locald.pjF.pkQ.pkF.pkf);
-          if ((localObject != null) && (((PackageInfo)localObject).versionCode < locald.pjF.pkQ.pkF.pkj)) {
+          localObject = com.tencent.mm.plugin.appbrand.y.b.getPackageInfo(ak.getContext(), locald.pqk.prv.prk.pqK);
+          if ((localObject != null) && (((PackageInfo)localObject).versionCode < locald.pqk.prv.prk.pqO)) {
             locali.type = 4;
           } else {
             locali.type = 6;
@@ -128,8 +128,8 @@ public final class g
   public final LinkedList<i> V(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(8900);
-    this.ppd.clear();
-    if (!bt.hj(paramLinkedList))
+    this.pvJ.clear();
+    if (!bu.ht(paramLinkedList))
     {
       paramLinkedList = paramLinkedList.iterator();
       int i = 0;
@@ -138,7 +138,7 @@ public final class g
       if (paramLinkedList.hasNext())
       {
         Object localObject = (String)paramLinkedList.next();
-        localObject = (i)this.ppc.get(localObject);
+        localObject = (i)this.pvI.get(localObject);
         int m = i;
         int n = k;
         int i1 = j;
@@ -157,7 +157,7 @@ public final class g
         }
         for (;;)
         {
-          this.ppd.add(localObject);
+          this.pvJ.add(localObject);
           i = m;
           k = n;
           j = i1;
@@ -179,26 +179,26 @@ public final class g
         }
       }
       paramLinkedList = new i(8);
-      paramLinkedList.ppm = this.ppe;
-      this.ppd.add(paramLinkedList);
+      paramLinkedList.pvS = this.pvK;
+      this.pvJ.add(paramLinkedList);
     }
-    paramLinkedList = this.ppd;
+    paramLinkedList = this.pvJ;
     AppMethodBeat.o(8900);
     return paramLinkedList;
   }
   
-  public final i aaC(String paramString)
+  public final i abt(String paramString)
   {
     AppMethodBeat.i(8899);
-    paramString = (i)this.ppc.get(paramString);
+    paramString = (i)this.pvI.get(paramString);
     AppMethodBeat.o(8899);
     return paramString;
   }
   
-  public final boolean ccW()
+  public final boolean cel()
   {
     AppMethodBeat.i(8901);
-    if (this.ppc.size() == 0)
+    if (this.pvI.size() == 0)
     {
       AppMethodBeat.o(8901);
       return true;

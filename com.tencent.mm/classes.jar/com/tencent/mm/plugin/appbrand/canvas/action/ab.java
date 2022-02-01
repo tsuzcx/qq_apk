@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineWidthActionArg;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class ab
@@ -15,8 +15,8 @@ public final class ab
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat)
   {
     AppMethodBeat.i(144956);
-    paramd.jSZ.setStrokeWidth(paramFloat);
-    paramd.jSY.setStrokeWidth(paramFloat);
+    paramd.jWq.setStrokeWidth(paramFloat);
+    paramd.jWp.setStrokeWidth(paramFloat);
     AppMethodBeat.o(144956);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ab
       AppMethodBeat.o(144957);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.jTB);
+    boolean bool = a(paramd, paramCanvas.jWS);
     AppMethodBeat.o(144957);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class ab
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144954);
     SetLineWidthActionArg localSetLineWidthActionArg = new SetLineWidthActionArg();

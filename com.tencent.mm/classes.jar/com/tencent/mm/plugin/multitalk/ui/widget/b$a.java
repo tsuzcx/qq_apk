@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder$Companion;", "", "()V", "TAG", "", "TYPE_LOADING", "", "TYPE_NONE", "TYPE_PAUSE", "TYPE_ROTATE", "TYPE_STOP", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder$Companion;", "", "()V", "TAG", "", "TYPE_LOADING", "", "TYPE_NONE", "TYPE_PAUSE", "TYPE_ROTATE", "TYPE_STOP", "plugin-multitalk_release"})
 public final class b$a {}
 
 

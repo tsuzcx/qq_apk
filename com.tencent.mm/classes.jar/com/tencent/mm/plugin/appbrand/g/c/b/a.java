@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public b kel;
+  public b khC;
   public String value;
   
   public a()
   {
     AppMethodBeat.i(159022);
-    this.kel = new b();
+    this.khC = new b();
     AppMethodBeat.o(159022);
   }
   
-  public final String Oo(String paramString)
+  public final String OW(String paramString)
   {
     AppMethodBeat.i(159023);
-    paramString = this.kel.get(paramString);
+    paramString = this.khC.get(paramString);
     AppMethodBeat.o(159023);
     return paramString;
   }
@@ -30,7 +30,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(159024);
-    String str = this.value + ", attrs:" + this.kel.toString() + "\n";
+    String str = this.value + ", attrs:" + this.khC.toString() + "\n";
     AppMethodBeat.o(159024);
     return str;
   }

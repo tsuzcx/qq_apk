@@ -18,7 +18,7 @@ import java.util.List;
 public class MMKVContentProvider
   extends ContentProvider
 {
-  private static Uri LCa;
+  private static Uri LZe;
   
   protected static String aS(Context paramContext, int paramInt)
   {
@@ -42,7 +42,7 @@ public class MMKVContentProvider
     return "";
   }
   
-  private static String iP(Context paramContext)
+  private static String iU(Context paramContext)
   {
     AppMethodBeat.i(13529);
     try
@@ -67,12 +67,12 @@ public class MMKVContentProvider
     return null;
   }
   
-  protected static Uri kR(Context paramContext)
+  protected static Uri kY(Context paramContext)
   {
     AppMethodBeat.i(13528);
-    if (LCa != null)
+    if (LZe != null)
     {
-      paramContext = LCa;
+      paramContext = LZe;
       AppMethodBeat.o(13528);
       return paramContext;
     }
@@ -81,14 +81,14 @@ public class MMKVContentProvider
       AppMethodBeat.o(13528);
       return null;
     }
-    paramContext = iP(paramContext);
+    paramContext = iU(paramContext);
     if (paramContext == null)
     {
       AppMethodBeat.o(13528);
       return null;
     }
     paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
-    LCa = paramContext;
+    LZe = paramContext;
     AppMethodBeat.o(13528);
     return paramContext;
   }
@@ -148,14 +148,14 @@ public class MMKVContentProvider
       AppMethodBeat.o(13530);
       return false;
     }
-    localObject = iP((Context)localObject);
+    localObject = iU((Context)localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(13530);
       return false;
     }
-    if (LCa == null) {
-      LCa = Uri.parse("content://".concat(String.valueOf(localObject)));
+    if (LZe == null) {
+      LZe = Uri.parse("content://".concat(String.valueOf(localObject)));
     }
     AppMethodBeat.o(13530);
     return true;

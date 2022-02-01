@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "", "(Ljava/lang/String;I)V", "ORIGIN", "NO_REFERRER", "luggage-commons_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "", "(Ljava/lang/String;I)V", "ORIGIN", "NO_REFERRER", "luggage-commons_release"})
 public enum c
 {
   static
   {
-    AppMethodBeat.i(187566);
+    AppMethodBeat.i(201133);
     c localc1 = new c("ORIGIN", 0);
-    lfb = localc1;
+    liN = localc1;
     c localc2 = new c("NO_REFERRER", 1);
-    lfc = localc2;
-    lfd = new c[] { localc1, localc2 };
-    AppMethodBeat.o(187566);
+    liO = localc2;
+    liP = new c[] { localc1, localc2 };
+    AppMethodBeat.o(201133);
   }
   
   private c() {}

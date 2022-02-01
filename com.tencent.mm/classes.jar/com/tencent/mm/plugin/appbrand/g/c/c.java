@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.appbrand.g.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g.c.a.a;
-import com.tencent.mm.plugin.appbrand.g.c.b.e;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
 {
   private boolean enable;
-  private String kdC;
-  private int kdD;
-  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> kdE;
-  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> kdF;
-  private a kdG;
+  private String kgT;
+  private int kgU;
+  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> kgV;
+  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> kgW;
+  private a kgX;
   
   private c()
   {
     AppMethodBeat.i(158965);
     this.enable = false;
-    this.kdG = new a()
+    this.kgX = new a()
     {
       public final boolean b(com.tencent.mm.plugin.appbrand.g.c.b.d paramAnonymousd)
       {
@@ -29,16 +27,16 @@ public final class c
           int i;
           try
           {
-            String str1 = paramAnonymousd.kep.get("SID");
+            String str1 = paramAnonymousd.khG.get("SID");
             com.tencent.mm.plugin.appbrand.g.c.b.c localc = null;
-            String str2 = paramAnonymousd.keo;
+            String str2 = paramAnonymousd.khF;
             i = -1;
             switch (str2.hashCode())
             {
             case -2006516997: 
-              if ((localc != null) && (localc.ken != null))
+              if ((localc != null) && (localc.khE != null))
               {
-                boolean bool = localc.ken.a(paramAnonymousd);
+                boolean bool = localc.khE.a(paramAnonymousd);
                 return bool;
                 if (!str2.equals("avtEvent")) {
                   break label190;
@@ -51,9 +49,9 @@ public final class c
               {
                 i = 1;
                 break label190;
-                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.kdE.get(str1);
+                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.kgV.get(str1);
                 continue;
-                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.kdF.get(str1);
+                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.kgW.get(str1);
                 continue;
                 return true;
               }
@@ -71,23 +69,23 @@ public final class c
         }
       }
     };
-    this.kdE = new HashMap();
-    this.kdF = new HashMap();
+    this.kgV = new HashMap();
+    this.kgW = new HashMap();
     AppMethodBeat.o(158965);
   }
   
-  public static c bfv()
+  public static c bgd()
   {
-    AppMethodBeat.i(221732);
-    c localc = b.bfw();
-    AppMethodBeat.o(221732);
+    AppMethodBeat.i(224573);
+    c localc = b.bge();
+    AppMethodBeat.o(224573);
     return localc;
   }
   
-  public final String Ok(String paramString)
+  public final String OR(String paramString)
   {
     AppMethodBeat.i(158969);
-    paramString = "http://" + this.kdC + ":" + this.kdD + paramString;
+    paramString = "http://" + this.kgT + ":" + this.kgU + paramString;
     AppMethodBeat.o(158969);
     return paramString;
   }
@@ -96,11 +94,11 @@ public final class c
   {
     AppMethodBeat.i(158968);
     this.enable = false;
-    d locald = d.c.bfx();
-    locald.kdG = null;
+    d locald = d.c.bgf();
+    locald.kgX = null;
     locald.stop();
-    this.kdE.clear();
-    this.kdF.clear();
+    this.kgV.clear();
+    this.kgW.clear();
     AppMethodBeat.o(158968);
     return true;
   }
@@ -109,11 +107,11 @@ public final class c
   {
     AppMethodBeat.i(158967);
     this.enable = true;
-    d locald = d.c.bfx();
-    locald.kdG = this.kdG;
+    d locald = d.c.bgf();
+    locald.kgX = this.kgX;
     locald.start();
-    this.kdC = locald.ip;
-    this.kdD = locald.port;
+    this.kgT = locald.ip;
+    this.kgU = locald.port;
     AppMethodBeat.o(158967);
     return true;
   }
@@ -125,12 +123,12 @@ public final class c
   
   public static final class b
   {
-    private static c kdM;
+    private static c khd;
     
     static
     {
       AppMethodBeat.i(158964);
-      kdM = new c((byte)0);
+      khd = new c((byte)0);
       AppMethodBeat.o(158964);
     }
   }

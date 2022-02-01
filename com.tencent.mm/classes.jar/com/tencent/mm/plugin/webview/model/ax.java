@@ -5,15 +5,15 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.o;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -21,93 +21,93 @@ import org.json.JSONStringer;
 
 public final class ax
 {
-  public static String aHA(String paramString)
-  {
-    AppMethodBeat.i(79051);
-    ad.i("MicroMsg.WebviewJSSDKUtil", "genLocalIdByFilePath, file path is ：%s", new Object[] { paramString });
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(79051);
-      return null;
-    }
-    String str = "weixin://resourceid/" + ai.ee(paramString);
-    ad.i("MicroMsg.WebviewJSSDKUtil", "gen local id by filepath, filepath : %s, localid : %s", new Object[] { paramString, str });
-    AppMethodBeat.o(79051);
-    return str;
-  }
-  
-  public static String aHB(String paramString)
-  {
-    AppMethodBeat.i(79052);
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eQU().aHu(paramString);
-    if (localWebViewJSSDKFileItem != null)
-    {
-      ad.i("MicroMsg.WebviewJSSDKUtil", "get local thumb filepath from local id :%s", new Object[] { localWebViewJSSDKFileItem.kHB });
-      paramString = localWebViewJSSDKFileItem.kHB;
-      AppMethodBeat.o(79052);
-      return paramString;
-    }
-    ad.e("MicroMsg.WebviewJSSDKUtil", "fromLocalIdToFilePath, local map not contains the local id : %s", new Object[] { paramString });
-    AppMethodBeat.o(79052);
-    return null;
-  }
-  
-  public static String aHC(String paramString)
-  {
-    AppMethodBeat.i(79053);
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eQU().aHu(paramString);
-    if (localWebViewJSSDKFileItem != null)
-    {
-      ad.i("MicroMsg.WebviewJSSDKUtil", "get orignal filepath from local id :%s", new Object[] { localWebViewJSSDKFileItem.jUC });
-      paramString = localWebViewJSSDKFileItem.jUC;
-      AppMethodBeat.o(79053);
-      return paramString;
-    }
-    ad.e("MicroMsg.WebviewJSSDKUtil", "getOrigFilePathByLocalId, local map not contains the local id : %s", new Object[] { paramString });
-    AppMethodBeat.o(79053);
-    return null;
-  }
-  
-  public static String aHD(String paramString)
-  {
-    AppMethodBeat.i(79059);
-    paramString = "_USER_FOR_WEBVIEW_JSAPI" + s.w(paramString, bt.flT());
-    AppMethodBeat.o(79059);
-    return paramString;
-  }
-  
-  public static String aHy(String paramString)
+  public static String aIR(String paramString)
   {
     AppMethodBeat.i(79047);
-    Object localObject = new e(b.asg());
-    if (!((e)localObject).mkdirs()) {
-      ad.i("MicroMsg.WebviewJSSDKUtil", "mkdirs failed.File is exist = " + ((e)localObject).exists());
+    Object localObject = new k(b.asv());
+    if (!((k)localObject).mkdirs()) {
+      ae.i("MicroMsg.WebviewJSSDKUtil", "mkdirs failed.File is exist = " + ((k)localObject).exists());
     }
-    if (!((e)localObject).exists()) {
-      ad.e("MicroMsg.WebviewJSSDKUtil", "camera storage path do not exist.(%s)", new Object[] { b.asg() });
+    if (!((k)localObject).exists()) {
+      ae.e("MicroMsg.WebviewJSSDKUtil", "camera storage path do not exist.(%s)", new Object[] { b.asv() });
     }
-    localObject = q.B(((e)localObject).fOK()) + "/" + paramString + ".jpg";
-    ad.i("MicroMsg.WebviewJSSDKUtil", "get file path from capture file name : %s == %s", new Object[] { paramString, localObject });
+    localObject = w.B(((k)localObject).fTh()) + "/" + paramString + ".jpg";
+    ae.i("MicroMsg.WebviewJSSDKUtil", "get file path from capture file name : %s == %s", new Object[] { paramString, localObject });
     AppMethodBeat.o(79047);
     return localObject;
   }
   
-  private static Intent aHz(String paramString)
+  private static Intent aIS(String paramString)
   {
     AppMethodBeat.i(79048);
     Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-    paramString = aHy(paramString);
-    localIntent.putExtra("output", n.a(aj.getContext(), new e(paramString)));
+    paramString = aIR(paramString);
+    localIntent.putExtra("output", o.a(ak.getContext(), new k(paramString)));
     AppMethodBeat.o(79048);
     return localIntent;
   }
   
-  public static String aI(ArrayList<String> paramArrayList)
+  public static String aIT(String paramString)
+  {
+    AppMethodBeat.i(79051);
+    ae.i("MicroMsg.WebviewJSSDKUtil", "genLocalIdByFilePath, file path is ：%s", new Object[] { paramString });
+    if (bu.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79051);
+      return null;
+    }
+    String str = "weixin://resourceid/" + aj.ej(paramString);
+    ae.i("MicroMsg.WebviewJSSDKUtil", "gen local id by filepath, filepath : %s, localid : %s", new Object[] { paramString, str });
+    AppMethodBeat.o(79051);
+    return str;
+  }
+  
+  public static String aIU(String paramString)
+  {
+    AppMethodBeat.i(79052);
+    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eUG().aIN(paramString);
+    if (localWebViewJSSDKFileItem != null)
+    {
+      ae.i("MicroMsg.WebviewJSSDKUtil", "get local thumb filepath from local id :%s", new Object[] { localWebViewJSSDKFileItem.kKQ });
+      paramString = localWebViewJSSDKFileItem.kKQ;
+      AppMethodBeat.o(79052);
+      return paramString;
+    }
+    ae.e("MicroMsg.WebviewJSSDKUtil", "fromLocalIdToFilePath, local map not contains the local id : %s", new Object[] { paramString });
+    AppMethodBeat.o(79052);
+    return null;
+  }
+  
+  public static String aIV(String paramString)
+  {
+    AppMethodBeat.i(79053);
+    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eUG().aIN(paramString);
+    if (localWebViewJSSDKFileItem != null)
+    {
+      ae.i("MicroMsg.WebviewJSSDKUtil", "get orignal filepath from local id :%s", new Object[] { localWebViewJSSDKFileItem.jXT });
+      paramString = localWebViewJSSDKFileItem.jXT;
+      AppMethodBeat.o(79053);
+      return paramString;
+    }
+    ae.e("MicroMsg.WebviewJSSDKUtil", "getOrigFilePathByLocalId, local map not contains the local id : %s", new Object[] { paramString });
+    AppMethodBeat.o(79053);
+    return null;
+  }
+  
+  public static String aIW(String paramString)
+  {
+    AppMethodBeat.i(79059);
+    paramString = "_USER_FOR_WEBVIEW_JSAPI" + t.w(paramString, bu.fpO());
+    AppMethodBeat.o(79059);
+    return paramString;
+  }
+  
+  public static String aJ(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(79054);
     if (paramArrayList.size() == 0)
     {
-      ad.e("MicroMsg.WebviewJSSDKUtil", "data is null");
+      ae.e("MicroMsg.WebviewJSSDKUtil", "data is null");
       AppMethodBeat.o(79054);
       return null;
     }
@@ -123,12 +123,12 @@ public final class ax
     return paramArrayList;
   }
   
-  public static String aJ(ArrayList<String> paramArrayList)
+  public static String aK(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(79055);
     if (paramArrayList.size() == 0)
     {
-      ad.e("MicroMsg.WebviewJSSDKUtil", "data is null");
+      ae.e("MicroMsg.WebviewJSSDKUtil", "data is null");
       AppMethodBeat.o(79055);
       return "";
     }
@@ -153,16 +153,16 @@ public final class ax
     }
     catch (Exception paramArrayList)
     {
-      ad.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramArrayList, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramArrayList, "", new Object[0]);
       AppMethodBeat.o(79055);
     }
     return "";
   }
   
-  public static String aK(ArrayList<String> paramArrayList)
+  public static String aL(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(79056);
-    if (bt.hj(paramArrayList))
+    if (bu.ht(paramArrayList))
     {
       AppMethodBeat.o(79056);
       return "";
@@ -175,7 +175,7 @@ public final class ax
       while (paramArrayList.hasNext())
       {
         String str = (String)paramArrayList.next();
-        WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eQU().aHu(str);
+        WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eUG().aIN(str);
         if ((localWebViewJSSDKFileItem instanceof WebViewJSSDKImageItem))
         {
           localJSONStringer.object();
@@ -186,7 +186,7 @@ public final class ax
           localJSONStringer.key("width");
           localJSONStringer.value(localWebViewJSSDKFileItem.width);
           localJSONStringer.key("isGif");
-          localJSONStringer.value(((WebViewJSSDKImageItem)localWebViewJSSDKFileItem).tJO);
+          localJSONStringer.value(((WebViewJSSDKImageItem)localWebViewJSSDKFileItem).tUF);
           localJSONStringer.endObject();
         }
       }
@@ -194,7 +194,7 @@ public final class ax
     }
     catch (Exception paramArrayList)
     {
-      ad.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramArrayList, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramArrayList, "", new Object[0]);
       AppMethodBeat.o(79056);
       return "";
     }
@@ -203,24 +203,24 @@ public final class ax
     return paramArrayList;
   }
   
-  public static Intent aU(String paramString1, String paramString2, String paramString3)
+  public static Intent aV(String paramString1, String paramString2, String paramString3)
   {
     int i = 1;
     AppMethodBeat.i(79046);
     Intent localIntent = new Intent("android.intent.action.GET_CONTENT");
     localIntent.addCategory("android.intent.category.OPENABLE");
     Object localObject;
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
       localIntent.setType("*/*");
       localObject = null;
-      if (bt.isNullOrNil(paramString2)) {
+      if (bu.isNullOrNil(paramString2)) {
         break label345;
       }
       if (!"camera".equalsIgnoreCase(paramString2)) {
         break label159;
       }
-      paramString1 = aHz(paramString3);
+      paramString1 = aIS(paramString3);
       i = 0;
       paramString1 = new Intent[] { paramString1 };
     }
@@ -230,7 +230,7 @@ public final class ax
       {
         paramString2 = new Intent("android.intent.action.CHOOSER");
         paramString2.putExtra("android.intent.extra.INITIAL_INTENTS", paramString1);
-        paramString2.putExtra("android.intent.extra.TITLE", aj.getContext().getString(2131766283));
+        paramString2.putExtra("android.intent.extra.TITLE", ak.getContext().getString(2131766283));
         paramString2.putExtra("android.intent.extra.INTENT", localIntent);
         AppMethodBeat.o(79046);
         return paramString2;
@@ -239,14 +239,14 @@ public final class ax
         label159:
         if ("camcorder".equalsIgnoreCase(paramString2))
         {
-          paramString1 = eQv();
+          paramString1 = eUh();
           i = 0;
           paramString1 = new Intent[] { paramString1 };
           continue;
         }
         if ("microphone".equalsIgnoreCase(paramString2))
         {
-          paramString1 = eQw();
+          paramString1 = eUi();
           i = 0;
           paramString1 = new Intent[] { paramString1 };
           continue;
@@ -257,7 +257,7 @@ public final class ax
         if (paramString1.equalsIgnoreCase("image/*"))
         {
           paramString1 = new Intent[1];
-          paramString1[0] = aHz(paramString3);
+          paramString1[0] = aIS(paramString3);
           paramString3 = paramString1;
         }
       }
@@ -270,7 +270,7 @@ public final class ax
           if (paramString1.equalsIgnoreCase("audio/*"))
           {
             paramString3 = new Intent[1];
-            paramString3[0] = eQw();
+            paramString3[0] = eUi();
           }
           else
           {
@@ -278,13 +278,13 @@ public final class ax
             if (paramString1.equalsIgnoreCase("video/*"))
             {
               paramString3 = new Intent[1];
-              paramString3[0] = eQv();
+              paramString3[0] = eUh();
               continue;
               label345:
-              if (d.lz(16))
+              if (d.lB(16))
               {
-                ad.i("MicroMsg.WebviewJSSDKUtil", "android API version is below 16.");
-                paramString1 = aHz(paramString3);
+                ae.i("MicroMsg.WebviewJSSDKUtil", "android API version is below 16.");
+                paramString1 = aIS(paramString3);
                 i = 0;
                 paramString1 = new Intent[] { paramString1 };
                 break;
@@ -308,9 +308,9 @@ public final class ax
   public static String b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(79057);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.WebviewJSSDKUtil", "parseVideoItemToJson localId is null");
+      ae.e("MicroMsg.WebviewJSSDKUtil", "parseVideoItemToJson localId is null");
       AppMethodBeat.o(79057);
       return "";
     }
@@ -339,13 +339,13 @@ public final class ax
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramString1, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(79057);
     }
     return "";
   }
   
-  private static Intent eQv()
+  private static Intent eUh()
   {
     AppMethodBeat.i(79049);
     Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
@@ -353,7 +353,7 @@ public final class ax
     return localIntent;
   }
   
-  private static Intent eQw()
+  private static Intent eUi()
   {
     AppMethodBeat.i(79050);
     Intent localIntent = new Intent("android.provider.MediaStore.RECORD_SOUND");

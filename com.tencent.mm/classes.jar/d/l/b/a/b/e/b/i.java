@@ -9,21 +9,21 @@ import java.util.List;
 
 public final class i
 {
-  private static final i NoZ;
-  public static final a Npa;
-  final List<a.u> hJk;
+  private static final i NMf;
+  public static final a NMg;
+  final List<a.u> hMd;
   
   static
   {
     AppMethodBeat.i(59086);
-    Npa = new a((byte)0);
-    NoZ = new i((List)v.MKE);
+    NMg = new a((byte)0);
+    NMf = new i((List)v.NhH);
     AppMethodBeat.o(59086);
   }
   
   private i(List<a.u> paramList)
   {
-    this.hJk = paramList;
+    this.hMd = paramList;
   }
   
   public static final class a
@@ -32,13 +32,13 @@ public final class i
     {
       AppMethodBeat.i(59085);
       p.h(paramv, "table");
-      if (paramv.NnJ.size() == 0)
+      if (paramv.NKP.size() == 0)
       {
-        paramv = i.gqm();
+        paramv = i.guO();
         AppMethodBeat.o(59085);
         return paramv;
       }
-      paramv = paramv.NnJ;
+      paramv = paramv.NKP;
       p.g(paramv, "table.requirementList");
       paramv = new i(paramv, (byte)0);
       AppMethodBeat.o(59085);
@@ -48,7 +48,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.b.i
  * JD-Core Version:    0.7.0.1
  */

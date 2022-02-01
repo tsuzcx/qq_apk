@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,12 +57,12 @@ public final class a
     return bool;
   }
   
-  public final b yg(long paramLong)
+  public final b yA(long paramLong)
   {
     AppMethodBeat.i(88803);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteStorage", "getMsgQuteByMsgId:%s", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.msgquote.MsgQuoteStorage", "getMsgQuteByMsgId:%s", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(88803);
       return null;
     }
@@ -89,12 +89,12 @@ public final class a
     return localObject;
   }
   
-  public final b yh(long paramLong)
+  public final b yB(long paramLong)
   {
     AppMethodBeat.i(88804);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgSvrId:%s", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgSvrId:%s", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(88804);
       return null;
     }
@@ -121,12 +121,12 @@ public final class a
     return localObject;
   }
   
-  public final b yi(long paramLong)
+  public final b yC(long paramLong)
   {
     AppMethodBeat.i(88805);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
+      ae.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(88805);
       return null;
     }
@@ -155,7 +155,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.a.a
  * JD-Core Version:    0.7.0.1
  */

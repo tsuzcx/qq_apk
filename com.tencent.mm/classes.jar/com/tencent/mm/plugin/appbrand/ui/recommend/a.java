@@ -27,12 +27,10 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI;
-import com.tencent.mm.protocal.protobuf.crr;
+import com.tencent.mm.protocal.protobuf.csl;
 import d.f;
 import d.g.a.m;
-import d.g.b.p;
 import d.l;
 import d.n.n;
 import d.v;
@@ -40,22 +38,22 @@ import d.z;
 import java.text.DecimalFormat;
 import java.util.LinkedList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "activity", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "getActivity", "()Landroid/app/Activity;", "df", "Ljava/text/DecimalFormat;", "getDf", "()Ljava/text/DecimalFormat;", "setDf", "(Ljava/text/DecimalFormat;)V", "isEmptyList", "", "()Z", "onBindView", "Lkotlin/Function2;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "", "", "getOnBindView", "()Lkotlin/jvm/functions/Function2;", "setOnBindView", "(Lkotlin/jvm/functions/Function2;)V", "onClickContent", "getOnClickContent", "setOnClickContent", "onClickFooter", "getOnClickFooter", "setOnClickFooter", "wxaList", "Ljava/util/LinkedList;", "getWxaList", "()Ljava/util/LinkedList;", "wxaList$delegate", "Lkotlin/Lazy;", "appendData", "data", "getData", "position", "getItemCount", "getItemId", "", "getItemViewType", "getRecommendStatObj", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandRecommendStatObj;", "attr", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "itemData", "pos", "jumpProfile", "context", "Landroid/content/Context;", "fromFooter", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setAppNameViewMargin", "view", "Landroid/view/View;", "alignTop", "setData", "AppRecommendViewHolder", "AudioRecommendViewHolder", "BaseRecommendViewHolder", "BigVideoRecommendViewHolder", "Companion", "GoodsAppRecommendViewHolder", "ImageTextRecommendViewHolder", "VideoRecommendViewHolder", "WithContentDescViewHolder", "WithFooterViewHolder", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "activity", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "getActivity", "()Landroid/app/Activity;", "df", "Ljava/text/DecimalFormat;", "getDf", "()Ljava/text/DecimalFormat;", "setDf", "(Ljava/text/DecimalFormat;)V", "isEmptyList", "", "()Z", "onBindView", "Lkotlin/Function2;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "", "", "getOnBindView", "()Lkotlin/jvm/functions/Function2;", "setOnBindView", "(Lkotlin/jvm/functions/Function2;)V", "onClickContent", "getOnClickContent", "setOnClickContent", "onClickFooter", "getOnClickFooter", "setOnClickFooter", "wxaList", "Ljava/util/LinkedList;", "getWxaList", "()Ljava/util/LinkedList;", "wxaList$delegate", "Lkotlin/Lazy;", "appendData", "data", "getData", "position", "getItemCount", "getItemId", "", "getItemViewType", "getRecommendStatObj", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandRecommendStatObj;", "attr", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "itemData", "pos", "jumpProfile", "context", "Landroid/content/Context;", "fromFooter", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setAppNameViewMargin", "view", "Landroid/view/View;", "alignTop", "setData", "AppRecommendViewHolder", "AudioRecommendViewHolder", "BaseRecommendViewHolder", "BigVideoRecommendViewHolder", "Companion", "GoodsAppRecommendViewHolder", "ImageTextRecommendViewHolder", "VideoRecommendViewHolder", "WithContentDescViewHolder", "WithFooterViewHolder", "plugin-appbrand-integration_release"})
 public final class a
   extends RecyclerView.a<c>
 {
-  public static final a.e mMB;
+  public static final a.e mRE;
   final Activity activity;
   private DecimalFormat df;
-  m<? super crr, ? super Integer, z> mMA;
-  private final f mMx;
-  m<? super crr, ? super Integer, z> mMy;
-  m<? super crr, ? super Integer, z> mMz;
+  private final f mRA;
+  m<? super csl, ? super Integer, z> mRB;
+  m<? super csl, ? super Integer, z> mRC;
+  m<? super csl, ? super Integer, z> mRD;
   
   static
   {
     AppMethodBeat.i(51338);
-    mMB = new a.e((byte)0);
+    mRE = new a.e((byte)0);
     AppMethodBeat.o(51338);
   }
   
@@ -63,33 +61,33 @@ public final class a
   {
     AppMethodBeat.i(51347);
     this.activity = paramActivity;
-    this.mMx = d.g.O((d.g.a.a)a.r.mMW);
-    this.mMy = ((m)a.k.mMP);
-    this.mMz = ((m)a.q.mMV);
-    this.mMA = ((m)a.p.mMU);
+    this.mRA = d.g.O((d.g.a.a)a.r.mRZ);
+    this.mRB = ((m)a.k.mRS);
+    this.mRC = ((m)a.q.mRY);
+    this.mRD = ((m)a.p.mRX);
     this.df = new DecimalFormat("0.00");
     AppMethodBeat.o(51347);
   }
   
-  public static AppBrandRecommendStatObj a(WxaAttributes paramWxaAttributes, crr paramcrr, int paramInt)
+  public static AppBrandRecommendStatObj a(WxaAttributes paramWxaAttributes, csl paramcsl, int paramInt)
   {
     AppMethodBeat.i(51345);
-    p.h(paramcrr, "itemData");
+    d.g.b.p.h(paramcsl, "itemData");
     AppBrandRecommendStatObj localAppBrandRecommendStatObj = new AppBrandRecommendStatObj();
-    localAppBrandRecommendStatObj.username = paramcrr.GMM;
-    localAppBrandRecommendStatObj.mrh = paramcrr.mrh;
-    localAppBrandRecommendStatObj.mri = paramcrr.mri;
+    localAppBrandRecommendStatObj.username = paramcsl.Hgn;
+    localAppBrandRecommendStatObj.mwf = paramcsl.mwf;
+    localAppBrandRecommendStatObj.mwg = paramcsl.mwg;
     if (paramWxaAttributes != null) {
-      localAppBrandRecommendStatObj.duW = paramWxaAttributes.field_appId;
+      localAppBrandRecommendStatObj.dwb = paramWxaAttributes.field_appId;
     }
-    localAppBrandRecommendStatObj.mrj = paramcrr.mrj;
-    localAppBrandRecommendStatObj.mrk = paramcrr.mrk;
-    localAppBrandRecommendStatObj.mrl = paramcrr.mrl;
-    localAppBrandRecommendStatObj.mrm = paramcrr.mrm;
+    localAppBrandRecommendStatObj.mwh = paramcsl.mwh;
+    localAppBrandRecommendStatObj.mwi = paramcsl.mwi;
+    localAppBrandRecommendStatObj.mwj = paramcsl.mwj;
+    localAppBrandRecommendStatObj.mwk = paramcsl.mwk;
     localAppBrandRecommendStatObj.position = (paramInt + 1);
-    localAppBrandRecommendStatObj.dAp = c.bcH();
-    localAppBrandRecommendStatObj.dyz = c.bcH();
-    localAppBrandRecommendStatObj.sessionId = d.jQT.bcP().sessionId;
+    localAppBrandRecommendStatObj.dBu = c.bdm();
+    localAppBrandRecommendStatObj.dzE = c.bdm();
+    localAppBrandRecommendStatObj.sessionId = d.jUl.bdu().sessionId;
     AppMethodBeat.o(51345);
     return localAppBrandRecommendStatObj;
   }
@@ -97,8 +95,8 @@ public final class a
   private static void a(Context paramContext, View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(51343);
-    p.h(paramContext, "context");
-    p.h(paramView, "view");
+    d.g.b.p.h(paramContext, "context");
+    d.g.b.p.h(paramView, "view");
     Object localObject;
     if ((paramView instanceof TextView))
     {
@@ -125,42 +123,42 @@ public final class a
     }
   }
   
-  public final void a(Context paramContext, WxaAttributes paramWxaAttributes, crr paramcrr, int paramInt, boolean paramBoolean)
+  public final void a(Context paramContext, WxaAttributes paramWxaAttributes, csl paramcsl, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(51344);
-    p.h(paramContext, "context");
-    p.h(paramcrr, "itemData");
-    String str = paramcrr.mrh;
-    if (!TextUtils.isEmpty((CharSequence)paramcrr.mri)) {
-      str = paramcrr.mrh + ":" + paramcrr.mri.toString();
+    d.g.b.p.h(paramContext, "context");
+    d.g.b.p.h(paramcsl, "itemData");
+    String str = paramcsl.mwf;
+    if (!TextUtils.isEmpty((CharSequence)paramcsl.mwg)) {
+      str = paramcsl.mwf + ":" + paramcsl.mwg.toString();
     }
     WxaExposedParams.a locala = new WxaExposedParams.a();
     if (paramWxaAttributes != null)
     {
-      locala.NV(paramWxaAttributes.field_appId);
-      locala.NX(paramWxaAttributes.field_nickname);
+      locala.OC(paramWxaAttributes.field_appId);
+      locala.OE(paramWxaAttributes.field_nickname);
     }
-    locala.NW(paramcrr.GMM);
-    locala.NY(paramcrr.Hkh);
-    locala.si(12);
-    paramWxaAttributes = a(paramWxaAttributes, paramcrr, paramInt);
+    locala.OD(paramcsl.Hgn);
+    locala.OF(paramcsl.HDH);
+    locala.sl(12);
+    paramWxaAttributes = a(paramWxaAttributes, paramcsl, paramInt);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("key_recommend_stat_obj", (Parcelable)paramWxaAttributes);
-    AppBrandProfileUI.a(paramContext, paramcrr.GMM, 7, str, locala.bet(), localBundle, null);
+    AppBrandProfileUI.a(paramContext, paramcsl.Hgn, 7, str, locala.bfb(), localBundle, null);
     if (paramBoolean)
     {
-      this.mMz.p(paramcrr, Integer.valueOf(paramInt));
+      this.mRC.p(paramcsl, Integer.valueOf(paramInt));
       AppMethodBeat.o(51344);
       return;
     }
-    this.mMA.p(paramcrr, Integer.valueOf(paramInt));
+    this.mRD.p(paramcsl, Integer.valueOf(paramInt));
     AppMethodBeat.o(51344);
   }
   
-  final LinkedList<crr> bAV()
+  final LinkedList<csl> bBP()
   {
     AppMethodBeat.i(51339);
-    LinkedList localLinkedList = (LinkedList)this.mMx.getValue();
+    LinkedList localLinkedList = (LinkedList)this.mRA.getValue();
     AppMethodBeat.o(51339);
     return localLinkedList;
   }
@@ -168,7 +166,7 @@ public final class a
   public final int getItemCount()
   {
     AppMethodBeat.i(51346);
-    int i = bAV().size();
+    int i = bBP().size();
     AppMethodBeat.o(51346);
     return i;
   }
@@ -181,75 +179,75 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(51341);
-    paramInt = ((crr)bAV().get(paramInt)).mrl;
+    paramInt = ((csl)bBP().get(paramInt)).mwj;
     AppMethodBeat.o(51341);
     return paramInt;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$AppRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "appName", "Landroid/widget/TextView;", "getAppName", "()Landroid/widget/TextView;", "contentDesc", "getContentDesc", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$AppRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "appName", "Landroid/widget/TextView;", "getAppName", "()Landroid/widget/TextView;", "contentDesc", "getContentDesc", "plugin-appbrand-integration_release"})
   public final class a
     extends a.c
   {
-    final TextView mMC;
-    final TextView mMD;
+    final TextView mRF;
+    final TextView mRG;
     
     public a()
     {
       super(localObject);
       AppMethodBeat.i(51317);
       this$1 = localObject.findViewById(2131296807);
-      p.g(a.this, "itemView.findViewById(R.…d_recommend_content_desc)");
-      this.mMC = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…d_recommend_content_desc)");
+      this.mRF = ((TextView)a.this);
       this$1 = localObject.findViewById(2131296811);
-      p.g(a.this, "itemView.findViewById(R.…ecommend_footer_app_name)");
-      this.mMD = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…ecommend_footer_app_name)");
+      this.mRG = ((TextView)a.this);
       AppMethodBeat.o(51317);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$AudioRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "audioIcon", "Landroid/widget/ImageView;", "getAudioIcon", "()Landroid/widget/ImageView;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$AudioRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "audioIcon", "Landroid/widget/ImageView;", "getAudioIcon", "()Landroid/widget/ImageView;", "plugin-appbrand-integration_release"})
   public class b
     extends a.i
   {
-    final ImageView mMF;
+    final ImageView mRI;
     
     public b()
     {
       super(localObject);
       AppMethodBeat.i(51318);
       this$1 = localObject.findViewById(2131296816);
-      p.g(a.this, "itemView.findViewById(R.…rand_recommend_play_icon)");
-      this.mMF = ((ImageView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…rand_recommend_play_icon)");
+      this.mRI = ((ImageView)a.this);
       AppMethodBeat.o(51318);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "content", "Landroid/view/ViewGroup;", "getContent", "()Landroid/view/ViewGroup;", "contentIcon", "Landroid/widget/ImageView;", "getContentIcon", "()Landroid/widget/ImageView;", "recommendReasonTv", "Landroid/widget/TextView;", "getRecommendReasonTv", "()Landroid/widget/TextView;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "content", "Landroid/view/ViewGroup;", "getContent", "()Landroid/view/ViewGroup;", "contentIcon", "Landroid/widget/ImageView;", "getContentIcon", "()Landroid/widget/ImageView;", "recommendReasonTv", "Landroid/widget/TextView;", "getRecommendReasonTv", "()Landroid/widget/TextView;", "plugin-appbrand-integration_release"})
   public class c
     extends RecyclerView.w
   {
-    final ImageView mMG;
-    final TextView mMH;
-    final ViewGroup mMI;
+    final ImageView mRJ;
+    final TextView mRK;
+    final ViewGroup mRL;
     
     public c()
     {
       super();
       AppMethodBeat.i(51319);
       this$1 = localObject.findViewById(2131296808);
-      p.g(a.this, "itemView.findViewById(R.…d_recommend_content_icon)");
-      this.mMG = ((ImageView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…d_recommend_content_icon)");
+      this.mRJ = ((ImageView)a.this);
       this$1 = localObject.findViewById(2131296818);
-      p.g(a.this, "itemView.findViewById(R.…p_brand_recommend_reason)");
-      this.mMH = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…p_brand_recommend_reason)");
+      this.mRK = ((TextView)a.this);
       this$1 = localObject.findViewById(2131296806);
-      p.g(a.this, "itemView.findViewById(R.…_brand_recommend_content)");
-      this.mMI = ((ViewGroup)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…_brand_recommend_content)");
+      this.mRL = ((ViewGroup)a.this);
       AppMethodBeat.o(51319);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BigVideoRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$AudioRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BigVideoRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$AudioRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "plugin-appbrand-integration_release"})
   public final class d
     extends a.b
   {
@@ -261,32 +259,32 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$GoodsAppRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithFooterViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "discountPrice", "Landroid/widget/TextView;", "getDiscountPrice", "()Landroid/widget/TextView;", "goodsName", "getGoodsName", "originPrice", "getOriginPrice", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$GoodsAppRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithFooterViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "discountPrice", "Landroid/widget/TextView;", "getDiscountPrice", "()Landroid/widget/TextView;", "goodsName", "getGoodsName", "originPrice", "getOriginPrice", "plugin-appbrand-integration_release"})
   public final class f
     extends a.j
   {
-    final TextView mMJ;
-    final TextView mMK;
-    final TextView mML;
+    final TextView mRM;
+    final TextView mRN;
+    final TextView mRO;
     
     public f()
     {
       super(localObject);
       AppMethodBeat.i(51321);
       this$1 = localObject.findViewById(2131296814);
-      p.g(a.this, "itemView.findViewById(R.…and_recommend_goods_name)");
-      this.mMJ = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…and_recommend_goods_name)");
+      this.mRM = ((TextView)a.this);
       this$1 = localObject.findViewById(2131296809);
-      p.g(a.this, "itemView.findViewById(R.…recommend_discount_price)");
-      this.mMK = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…recommend_discount_price)");
+      this.mRN = ((TextView)a.this);
       this$1 = localObject.findViewById(2131296815);
-      p.g(a.this, "itemView.findViewById(R.…d_recommend_origin_price)");
-      this.mML = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…d_recommend_origin_price)");
+      this.mRO = ((TextView)a.this);
       AppMethodBeat.o(51321);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$ImageTextRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$ImageTextRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "plugin-appbrand-integration_release"})
   public final class g
     extends a.i
   {
@@ -298,191 +296,191 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$VideoRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "videoIcon", "Landroid/widget/ImageView;", "getVideoIcon", "()Landroid/widget/ImageView;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$VideoRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "videoIcon", "Landroid/widget/ImageView;", "getVideoIcon", "()Landroid/widget/ImageView;", "plugin-appbrand-integration_release"})
   public final class h
     extends a.i
   {
-    final ImageView mwS;
+    final ImageView mBP;
     
     public h()
     {
       super(localObject);
       AppMethodBeat.i(51323);
       this$1 = localObject.findViewById(2131296816);
-      p.g(a.this, "itemView.findViewById(R.…rand_recommend_play_icon)");
-      this.mwS = ((ImageView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…rand_recommend_play_icon)");
+      this.mBP = ((ImageView)a.this);
       AppMethodBeat.o(51323);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithFooterViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "contentDesc", "Landroid/widget/TextView;", "getContentDesc", "()Landroid/widget/TextView;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithContentDescViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithFooterViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "contentDesc", "Landroid/widget/TextView;", "getContentDesc", "()Landroid/widget/TextView;", "plugin-appbrand-integration_release"})
   public class i
     extends a.j
   {
-    final TextView mMC;
+    final TextView mRF;
     
     public i()
     {
       super(localObject);
       AppMethodBeat.i(51324);
       this$1 = localObject.findViewById(2131296807);
-      p.g(a.this, "itemView.findViewById(R.…d_recommend_content_desc)");
-      this.mMC = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…d_recommend_content_desc)");
+      this.mRF = ((TextView)a.this);
       AppMethodBeat.o(51324);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithFooterViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "footer", "Landroid/view/ViewGroup;", "getFooter", "()Landroid/view/ViewGroup;", "footerAppName", "Landroid/widget/TextView;", "getFooterAppName", "()Landroid/widget/TextView;", "footerIcon", "Landroid/widget/ImageView;", "getFooterIcon", "()Landroid/widget/ImageView;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$WithFooterViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$BaseRecommendViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;Landroid/view/View;)V", "footer", "Landroid/view/ViewGroup;", "getFooter", "()Landroid/view/ViewGroup;", "footerAppName", "Landroid/widget/TextView;", "getFooterAppName", "()Landroid/widget/TextView;", "footerIcon", "Landroid/widget/ImageView;", "getFooterIcon", "()Landroid/widget/ImageView;", "plugin-appbrand-integration_release"})
   public class j
     extends a.c
   {
-    final ImageView mMM;
-    final TextView mMN;
-    final ViewGroup mMO;
+    final ImageView mRP;
+    final TextView mRQ;
+    final ViewGroup mRR;
     
     public j()
     {
       super(localObject);
       AppMethodBeat.i(51325);
       this$1 = localObject.findViewById(2131296813);
-      p.g(a.this, "itemView.findViewById(R.…nd_recommend_footer_icon)");
-      this.mMM = ((ImageView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…nd_recommend_footer_icon)");
+      this.mRP = ((ImageView)a.this);
       this$1 = localObject.findViewById(2131296811);
-      p.g(a.this, "itemView.findViewById(R.…ecommend_footer_app_name)");
-      this.mMN = ((TextView)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…ecommend_footer_app_name)");
+      this.mRQ = ((TextView)a.this);
       this$1 = localObject.findViewById(2131296810);
-      p.g(a.this, "itemView.findViewById(R.…p_brand_recommend_footer)");
-      this.mMO = ((ViewGroup)a.this);
+      d.g.b.p.g(a.this, "itemView.findViewById(R.…p_brand_recommend_footer)");
+      this.mRR = ((ViewGroup)a.this);
       AppMethodBeat.o(51325);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$1"})
   static final class l
     implements View.OnClickListener
   {
-    l(a.c paramc, a parama, crr paramcrr, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
+    l(a.c paramc, a parama, csl paramcsl, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(51328);
       Object localObject = new b();
       ((b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-      paramView = this.mME;
-      localObject = this.mMQ.auu;
-      p.g(localObject, "baseViewHolder.itemView");
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+      paramView = this.mRH;
+      localObject = this.mRT.auu;
+      d.g.b.p.g(localObject, "baseViewHolder.itemView");
       localObject = ((View)localObject).getContext();
-      p.g(localObject, "baseViewHolder.itemView.context");
-      paramView.a((Context)localObject, this.mMS, this.mMR, this.mMT, true);
+      d.g.b.p.g(localObject, "baseViewHolder.itemView.context");
+      paramView.a((Context)localObject, this.mRV, this.mRU, this.mRW, true);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(51328);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$4"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$4"})
   static final class m
     implements View.OnClickListener
   {
-    m(a parama, crr paramcrr, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
+    m(a parama, csl paramcsl, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(51329);
       Object localObject = new b();
       ((b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
-      localObject = new Intent((Context)this.mME.activity, AppBrandRecommendVideoUI.class);
-      ((Intent)localObject).putExtra("1", this.mMR.Hkb);
-      paramView = this.mME.activity;
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+      localObject = new Intent((Context)this.mRH.activity, AppBrandRecommendVideoUI.class);
+      ((Intent)localObject).putExtra("1", this.mRU.HDB);
+      paramView = this.mRH.activity;
       localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      this.mME.mMA.p(this.mMR, Integer.valueOf(this.mMT));
+      this.mRH.mRD.p(this.mRU, Integer.valueOf(this.mRW));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(51329);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$5"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$5"})
   static final class n
     implements View.OnClickListener
   {
-    n(a.c paramc, a parama, crr paramcrr, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
+    n(a.c paramc, a parama, csl paramcsl, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(51330);
       Object localObject1 = new b();
       ((b)localObject1).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).ahq());
-      if (this.mMR.mrl == 4)
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).ahF());
+      if (this.mRU.mwj == 4)
       {
-        paramView = this.mME;
-        localObject1 = this.mMQ.auu;
-        p.g(localObject1, "baseViewHolder.itemView");
+        paramView = this.mRH;
+        localObject1 = this.mRT.auu;
+        d.g.b.p.g(localObject1, "baseViewHolder.itemView");
         localObject1 = ((View)localObject1).getContext();
-        p.g(localObject1, "baseViewHolder.itemView.context");
-        paramView.a((Context)localObject1, this.mMS, this.mMR, this.mMT, false);
+        d.g.b.p.g(localObject1, "baseViewHolder.itemView.context");
+        paramView.a((Context)localObject1, this.mRV, this.mRU, this.mRW, false);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(51330);
         return;
       }
-      localObject1 = this.mMR.mrj;
+      localObject1 = this.mRU.mwh;
       paramView = (View)localObject1;
       Object localObject2;
-      if (this.mMR.mrk != null)
+      if (this.mRU.mwi != null)
       {
-        localObject2 = this.mMR.mrk;
-        p.g(localObject2, "itemData.page_param");
+        localObject2 = this.mRU.mwi;
+        d.g.b.p.g(localObject2, "itemData.page_param");
         paramView = (View)localObject1;
-        if (!n.aE((CharSequence)localObject2)) {
-          paramView = (String)localObject1 + "?" + this.mMR.mrk;
+        if (!n.aD((CharSequence)localObject2)) {
+          paramView = (String)localObject1 + "?" + this.mRU.mwi;
         }
       }
       localObject1 = new AppBrandStatObject();
       ((AppBrandStatObject)localObject1).scene = 1118;
-      ((AppBrandStatObject)localObject1).dJQ = 14;
-      if (!TextUtils.isEmpty((CharSequence)this.mMR.mri)) {
-        ((AppBrandStatObject)localObject1).dkh = (this.mMR.mrh + ":" + this.mMR.mri.toString());
+      ((AppBrandStatObject)localObject1).dLf = 14;
+      if (!TextUtils.isEmpty((CharSequence)this.mRU.mwg)) {
+        ((AppBrandStatObject)localObject1).dlj = (this.mRU.mwf + ":" + this.mRU.mwg.toString());
       }
-      for (((AppBrandStatObject)localObject1).dJR = (this.mMR.mrh + ":" + this.mMR.mri.toString());; ((AppBrandStatObject)localObject1).dJR = this.mMR.mrh)
+      for (((AppBrandStatObject)localObject1).dLg = (this.mRU.mwf + ":" + this.mRU.mwg.toString());; ((AppBrandStatObject)localObject1).dLg = this.mRU.mwf)
       {
-        ((AppBrandStatObject)localObject1).mrz = a.a(this.mMS, this.mMR, this.mMT);
-        if (this.mMS != null)
+        ((AppBrandStatObject)localObject1).mwx = a.a(this.mRV, this.mRU, this.mRW);
+        if (this.mRV != null)
         {
-          localObject2 = this.mMS;
+          localObject2 = this.mRV;
           if (localObject2 != null)
           {
-            localObject2 = ((WxaAttributes)localObject2).ben();
+            localObject2 = ((WxaAttributes)localObject2).beV();
             if (localObject2 != null)
             {
               int i = ((WxaAttributes.WxaVersionInfo)localObject2).aDD;
-              ((o)com.tencent.mm.kernel.g.ab(o.class)).a(this.hqo, this.mMR.GMM, this.mMS.field_appId, 0, i, paramView, (AppBrandStatObject)localObject1);
+              ((com.tencent.mm.plugin.appbrand.service.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.p.class)).a(this.htc, this.mRU.Hgn, this.mRV.field_appId, 0, i, paramView, (AppBrandStatObject)localObject1);
             }
           }
         }
-        this.mME.mMA.p(this.mMR, Integer.valueOf(this.mMT));
+        this.mRH.mRD.p(this.mRU, Integer.valueOf(this.mRW));
         break;
-        ((AppBrandStatObject)localObject1).dkh = this.mMR.mrh;
+        ((AppBrandStatObject)localObject1).dlj = this.mRU.mwf;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$6"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$6"})
   static final class o
     implements View.OnLongClickListener
   {
-    o(a parama, crr paramcrr, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
+    o(a parama, csl paramcsl, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
     
     public final boolean onLongClick(View paramView)
     {
       AppMethodBeat.i(51331);
       b localb = new b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-      com.tencent.mm.pluginsdk.i.a.b((CharSequence)"", (CharSequence)(this.mMR.mrh.toString() + "," + this.mMR.Hkg + "," + this.mMR.GMM));
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+      com.tencent.mm.pluginsdk.i.a.b((CharSequence)"", (CharSequence)(this.mRU.mwf.toString() + "," + this.mRU.HDG + "," + this.mRU.Hgn));
       com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$$inlined$let$lambda$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(51331);
       return false;
@@ -491,7 +489,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.a
  * JD-Core Version:    0.7.0.1
  */

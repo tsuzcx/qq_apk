@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  public a.b MsC;
-  public String MsD;
-  public String MsE;
-  public String MsF;
+  public a.b MPG;
+  public String MPH;
+  public String MPI;
+  public String MPJ;
   
   public a$a()
   {
     AppMethodBeat.i(156950);
-    this.MsC = new a.b();
+    this.MPG = new a.b();
     AppMethodBeat.o(156950);
   }
 }

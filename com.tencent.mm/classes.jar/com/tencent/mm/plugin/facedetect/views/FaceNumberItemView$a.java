@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.facedetect.views;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 import java.lang.ref.WeakReference;
 import java.util.TimerTask;
 
 final class FaceNumberItemView$a
   extends TimerTask
 {
-  private WeakReference<Runnable> rot;
+  private WeakReference<Runnable> rwy;
   
   private FaceNumberItemView$a(FaceNumberItemView paramFaceNumberItemView, Runnable paramRunnable)
   {
     AppMethodBeat.i(104164);
-    this.rot = null;
-    this.rot = new WeakReference(paramRunnable);
+    this.rwy = null;
+    this.rwy = new WeakReference(paramRunnable);
     AppMethodBeat.o(104164);
   }
   
   public final void run()
   {
     AppMethodBeat.i(104165);
-    if ((this.rot != null) && (this.rot.get() != null))
+    if ((this.rwy != null) && (this.rwy.get() != null))
     {
-      aq.f((Runnable)this.rot.get());
+      ar.f((Runnable)this.rwy.get());
       AppMethodBeat.o(104165);
       return;
     }

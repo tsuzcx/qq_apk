@@ -8,25 +8,25 @@ public abstract class fo
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEB = "scene".hashCode();
-  private static final int eRb = "productId".hashCode();
-  private static final int fqW = "xmlContent".hashCode();
-  private static final int fqX = "ScanTime".hashCode();
-  private static final int fqY = "funcType".hashCode();
-  private static final int fqZ = "qrcodeUrl".hashCode();
+  private static final int eGk = "scene".hashCode();
+  private static final int eSM = "productId".hashCode();
+  private static final int fsW = "xmlContent".hashCode();
+  private static final int fsX = "ScanTime".hashCode();
+  private static final int fsY = "funcType".hashCode();
+  private static final int fsZ = "qrcodeUrl".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEz = true;
-  private boolean eQY = true;
+  private boolean eGi = true;
+  private boolean eSJ = true;
   public long field_ScanTime;
   public int field_funcType;
   public String field_productId;
   public String field_qrcodeUrl;
   public int field_scene;
   public String field_xmlContent;
-  private boolean fqS = true;
-  private boolean fqT = true;
-  private boolean fqU = true;
-  private boolean fqV = true;
+  private boolean fsS = true;
+  private boolean fsT = true;
+  private boolean fsU = true;
+  private boolean fsV = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +41,11 @@ public abstract class fo
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eRb != k) {
+      if (eSM != k) {
         break label65;
       }
       this.field_productId = paramCursor.getString(i);
-      this.eQY = true;
+      this.eSJ = true;
     }
     for (;;)
     {
@@ -53,15 +53,15 @@ public abstract class fo
       break label20;
       break;
       label65:
-      if (fqW == k) {
+      if (fsW == k) {
         this.field_xmlContent = paramCursor.getString(i);
-      } else if (fqX == k) {
+      } else if (fsX == k) {
         this.field_ScanTime = paramCursor.getLong(i);
-      } else if (fqY == k) {
+      } else if (fsY == k) {
         this.field_funcType = paramCursor.getInt(i);
-      } else if (fqZ == k) {
+      } else if (fsZ == k) {
         this.field_qrcodeUrl = paramCursor.getString(i);
-      } else if (eEB == k) {
+      } else if (eGk == k) {
         this.field_scene = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -72,22 +72,22 @@ public abstract class fo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eQY) {
+    if (this.eSJ) {
       localContentValues.put("productId", this.field_productId);
     }
-    if (this.fqS) {
+    if (this.fsS) {
       localContentValues.put("xmlContent", this.field_xmlContent);
     }
-    if (this.fqT) {
+    if (this.fsT) {
       localContentValues.put("ScanTime", Long.valueOf(this.field_ScanTime));
     }
-    if (this.fqU) {
+    if (this.fsU) {
       localContentValues.put("funcType", Integer.valueOf(this.field_funcType));
     }
-    if (this.fqV) {
+    if (this.fsV) {
       localContentValues.put("qrcodeUrl", this.field_qrcodeUrl);
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
     if (this.systemRowid > 0L) {

@@ -14,12 +14,49 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public abstract class f
   extends RecyclerView.k
 {
   public RecyclerView anl;
-  private final RecyclerView.m asH = new f.1(this);
+  private final RecyclerView.m asH = new RecyclerView.m()
+  {
+    boolean awM = false;
+    
+    public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
+    {
+      AppMethodBeat.i(220252);
+      b localb = new b();
+      localb.bd(paramAnonymousRecyclerView);
+      localb.mu(paramAnonymousInt1);
+      localb.mu(paramAnonymousInt2);
+      a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
+      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
+        this.awM = true;
+      }
+      a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
+      AppMethodBeat.o(220252);
+    }
+    
+    public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
+    {
+      AppMethodBeat.i(126674);
+      b localb = new b();
+      localb.bd(paramAnonymousRecyclerView);
+      localb.mu(paramAnonymousInt);
+      a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
+      super.b(paramAnonymousRecyclerView, paramAnonymousInt);
+      if ((paramAnonymousInt == 0) && (this.awM))
+      {
+        this.awM = false;
+        f.this.mv();
+      }
+      a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
+      AppMethodBeat.o(126674);
+    }
+  };
   protected Scroller awL;
   
   public abstract int a(RecyclerView.i parami, int paramInt1, int paramInt2);
@@ -149,7 +186,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.f
  * JD-Core Version:    0.7.0.1
  */

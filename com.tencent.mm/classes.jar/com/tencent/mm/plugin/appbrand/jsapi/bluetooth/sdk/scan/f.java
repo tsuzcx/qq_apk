@@ -16,40 +16,40 @@ import java.util.Set;
 
 public final class f
 {
-  private final int kGL;
-  public final List<ParcelUuid> kGM;
-  public final SparseArray<byte[]> kGN;
-  public final Map<ParcelUuid, byte[]> kGO;
-  private final int kGP;
-  final byte[] kGQ;
+  private final int kKa;
+  public final List<ParcelUuid> kKb;
+  public final SparseArray<byte[]> kKc;
+  public final Map<ParcelUuid, byte[]> kKd;
+  private final int kKe;
+  final byte[] kKf;
   public final String mDeviceName;
   
   @TargetApi(21)
   f(ScanRecord paramScanRecord)
   {
     AppMethodBeat.i(144632);
-    this.kGM = paramScanRecord.getServiceUuids();
-    this.kGN = paramScanRecord.getManufacturerSpecificData();
-    this.kGO = paramScanRecord.getServiceData();
+    this.kKb = paramScanRecord.getServiceUuids();
+    this.kKc = paramScanRecord.getManufacturerSpecificData();
+    this.kKd = paramScanRecord.getServiceData();
     this.mDeviceName = paramScanRecord.getDeviceName();
-    this.kGL = paramScanRecord.getAdvertiseFlags();
-    this.kGP = paramScanRecord.getTxPowerLevel();
-    this.kGQ = paramScanRecord.getBytes();
+    this.kKa = paramScanRecord.getAdvertiseFlags();
+    this.kKe = paramScanRecord.getTxPowerLevel();
+    this.kKf = paramScanRecord.getBytes();
     AppMethodBeat.o(144632);
   }
   
   private f(List<ParcelUuid> paramList, SparseArray<byte[]> paramSparseArray, Map<ParcelUuid, byte[]> paramMap, int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
-    this.kGM = paramList;
-    this.kGN = paramSparseArray;
-    this.kGO = paramMap;
+    this.kKb = paramList;
+    this.kKc = paramSparseArray;
+    this.kKd = paramMap;
     this.mDeviceName = paramString;
-    this.kGL = paramInt1;
-    this.kGP = paramInt2;
-    this.kGQ = paramArrayOfByte;
+    this.kKa = paramInt1;
+    this.kKe = paramInt2;
+    this.kKf = paramArrayOfByte;
   }
   
-  private static <T> String C(Map<T, byte[]> paramMap)
+  private static <T> String J(Map<T, byte[]> paramMap)
   {
     AppMethodBeat.i(144638);
     if (paramMap == null)
@@ -202,7 +202,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(144634);
-    String str = "ScanRecord [mAdvertiseFlags=" + this.kGL + ", mServiceUuids=" + this.kGM + ", mManufacturerSpecificData=" + d(this.kGN) + ", mServiceData=" + C(this.kGO) + ", mTxPowerLevel=" + this.kGP + ", mDeviceName=" + this.mDeviceName + "]";
+    String str = "ScanRecord [mAdvertiseFlags=" + this.kKa + ", mServiceUuids=" + this.kKb + ", mManufacturerSpecificData=" + d(this.kKc) + ", mServiceData=" + J(this.kKd) + ", mTxPowerLevel=" + this.kKe + ", mDeviceName=" + this.mDeviceName + "]";
     AppMethodBeat.o(144634);
     return str;
   }

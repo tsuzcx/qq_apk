@@ -8,14 +8,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public static a cz(Context paramContext, String paramString)
+  public static a cA(Context paramContext, String paramString)
   {
     AppMethodBeat.i(138484);
     a locala = new a();
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
-      locala.dFD = paramString;
+      locala.dGI = paramString;
       locala.versionName = paramContext.versionName;
       locala.versionCode = paramContext.versionCode;
       label45:

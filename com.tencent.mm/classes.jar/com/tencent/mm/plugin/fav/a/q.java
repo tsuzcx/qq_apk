@@ -14,29 +14,29 @@ public abstract interface q
   
   public abstract boolean a(c paramc, String... paramVarArgs);
   
-  public abstract c agv(String paramString);
+  public abstract c ahs(String paramString);
   
   public abstract void b(p paramp);
   
   public abstract boolean b(c paramc, String... paramVarArgs);
   
-  public abstract LinkedList<c> cvf();
+  public abstract LinkedList<c> cwG();
   
-  public abstract Cursor cvg();
+  public abstract Cursor cwH();
   
-  public abstract Cursor cvh();
+  public abstract Cursor cwI();
   
   public abstract boolean f(c paramc);
   
   public abstract void startAll();
   
-  public abstract List<c> vA(long paramLong);
+  public abstract List<c> vP(long paramLong);
   
-  public abstract void vB(long paramLong);
+  public abstract List<c> vQ(long paramLong);
   
-  public abstract boolean vC(long paramLong);
+  public abstract void vR(long paramLong);
   
-  public abstract List<c> vz(long paramLong);
+  public abstract boolean vS(long paramLong);
   
   public abstract void y(g paramg);
   

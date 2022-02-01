@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static c qQV;
-  public e qQW;
+  private static c qYT;
+  public e qYU;
   
   private c()
   {
     AppMethodBeat.i(121868);
-    this.qQW = new e();
+    this.qYU = new e();
     AppMethodBeat.o(121868);
   }
   
-  public static c cnO()
+  public static c cpq()
   {
     AppMethodBeat.i(121867);
-    if (qQV == null) {}
+    if (qYT == null) {}
     try
     {
-      if (qQV == null) {
-        qQV = new c();
+      if (qYT == null) {
+        qYT = new c();
       }
-      c localc = qQV;
+      c localc = qYT;
       AppMethodBeat.o(121867);
       return localc;
     }
@@ -33,12 +33,12 @@ public final class c
     }
   }
   
-  public final void CR(int paramInt)
+  public final void De(int paramInt)
   {
     AppMethodBeat.i(121869);
     a locala = new a();
     locala.msgType = paramInt;
-    this.qQW.b(locala);
+    this.qYU.b(locala);
     AppMethodBeat.o(121869);
   }
   
@@ -47,14 +47,14 @@ public final class c
     AppMethodBeat.i(121870);
     a locala = new a();
     locala.msgType = paramInt;
-    locala.qQS = paramObject;
-    this.qQW.b(locala);
+    locala.qYQ = paramObject;
+    this.qYU.b(locala);
     AppMethodBeat.o(121870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.a.a.c
  * JD-Core Version:    0.7.0.1
  */

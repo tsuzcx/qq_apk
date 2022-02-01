@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Objects;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,17 +15,17 @@ public class WidgetData
   implements Parcelable
 {
   public static final Parcelable.Creator<WidgetData> CREATOR;
-  public MoreFooter DCN;
-  public Info DCO;
-  public Style DCP;
-  public int DCQ;
-  public String dDE;
+  public MoreFooter DUL;
+  public Info DUM;
+  public Style DUN;
+  public int DUO;
+  public String dEJ;
   public String query;
   
   static
   {
     AppMethodBeat.i(117833);
-    CREATOR = new WidgetData.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(117833);
   }
   
@@ -34,48 +34,48 @@ public class WidgetData
   protected WidgetData(Parcel paramParcel)
   {
     AppMethodBeat.i(117832);
-    this.DCN = ((MoreFooter)paramParcel.readParcelable(MoreFooter.class.getClassLoader()));
-    this.DCO = ((Info)paramParcel.readParcelable(Info.class.getClassLoader()));
-    this.DCP = ((Style)paramParcel.readParcelable(Style.class.getClassLoader()));
-    this.DCQ = paramParcel.readInt();
+    this.DUL = ((MoreFooter)paramParcel.readParcelable(MoreFooter.class.getClassLoader()));
+    this.DUM = ((Info)paramParcel.readParcelable(Info.class.getClassLoader()));
+    this.DUN = ((Style)paramParcel.readParcelable(Style.class.getClassLoader()));
+    this.DUO = paramParcel.readInt();
     this.query = paramParcel.readString();
-    this.dDE = paramParcel.readString();
+    this.dEJ = paramParcel.readString();
     AppMethodBeat.o(117832);
   }
   
-  public static WidgetData aFW(String paramString)
+  public static WidgetData aHq(String paramString)
   {
     AppMethodBeat.i(117830);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ad.i("WidgetData", "insert args invalid");
+      ae.i("WidgetData", "insert args invalid");
       AppMethodBeat.o(117830);
       return null;
     }
     WidgetData localWidgetData = new WidgetData();
-    localWidgetData.DCO = new Info();
-    localWidgetData.DCP = new Style();
+    localWidgetData.DUM = new Info();
+    localWidgetData.DUN = new Style();
     for (;;)
     {
       try
       {
         paramString = new JSONObject(paramString);
-        localWidgetData.DCO.duW = paramString.optString("appid");
-        localWidgetData.DCO.version = paramString.optInt("version");
-        localWidgetData.DCO.bVF = paramString.optString("nickName");
-        localWidgetData.DCO.userName = paramString.optString("username");
-        localWidgetData.DCO.hKC = paramString.optString("srcAppid");
-        localWidgetData.DCO.DCR = paramString.optString("inputData");
-        localWidgetData.DCO.dki = paramString.optString("pagePath");
-        localWidgetData.DCO.DCS = paramString.optString("wxaData");
-        localWidgetData.DCO.DCT = paramString.optString("launchwxawidget");
-        localWidgetData.DCO.cQN = bt.aRe(paramString.optString("serviceType"));
-        Object localObject = localWidgetData.DCO;
+        localWidgetData.DUM.dwb = paramString.optString("appid");
+        localWidgetData.DUM.version = paramString.optInt("version");
+        localWidgetData.DUM.bVF = paramString.optString("nickName");
+        localWidgetData.DUM.userName = paramString.optString("username");
+        localWidgetData.DUM.hNv = paramString.optString("srcAppid");
+        localWidgetData.DUM.DUP = paramString.optString("inputData");
+        localWidgetData.DUM.dlk = paramString.optString("pagePath");
+        localWidgetData.DUM.DUQ = paramString.optString("wxaData");
+        localWidgetData.DUM.DUR = paramString.optString("launchwxawidget");
+        localWidgetData.DUM.cRx = bu.aSB(paramString.optString("serviceType"));
+        Object localObject = localWidgetData.DUM;
         if (!paramString.has("debugMode"))
         {
           i = 0;
-          ((Info)localObject).DCU = i;
-          localWidgetData.DCO.keN = paramString.optString("searchId");
+          ((Info)localObject).DUS = i;
+          localWidgetData.DUM.kid = paramString.optString("searchId");
           localObject = paramString.optString("relayInfoStr");
         }
         try
@@ -84,31 +84,31 @@ public class WidgetData
           {
             localObject = new JSONObject((String)localObject);
             if (((JSONObject)localObject).has("openapp_permission")) {
-              localWidgetData.DCO.DCW = ((JSONObject)localObject).optLong("openapp_permission");
+              localWidgetData.DUM.DUU = ((JSONObject)localObject).optLong("openapp_permission");
             }
           }
-          localObject = localWidgetData.DCP;
+          localObject = localWidgetData.DUN;
           if (paramString.has("maxHeight"))
           {
             i = paramString.optInt("maxHeight");
-            ((Style)localObject).DDb = i;
-            localWidgetData.DCP.height = paramString.optInt("height");
-            localWidgetData.DCP.width = paramString.optInt("width");
-            localWidgetData.DCP.jVX = paramString.optString("backgroundColor");
-            localObject = localWidgetData.DCP;
+            ((Style)localObject).DUZ = i;
+            localWidgetData.DUN.height = paramString.optInt("height");
+            localWidgetData.DUN.width = paramString.optInt("width");
+            localWidgetData.DUN.jZm = paramString.optString("backgroundColor");
+            localObject = localWidgetData.DUN;
             if (!paramString.has("minHeight")) {
               break label529;
             }
             d = paramString.optDouble("minHeight");
-            ((Style)localObject).DDa = d;
-            localWidgetData.DCP.kSh = paramString.optInt("offsetX");
-            localWidgetData.DCP.kSi = paramString.optInt("offsetY");
-            localObject = localWidgetData.DCP;
+            ((Style)localObject).DUY = d;
+            localWidgetData.DUN.kVQ = paramString.optInt("offsetX");
+            localWidgetData.DUN.kVR = paramString.optInt("offsetY");
+            localObject = localWidgetData.DUN;
             if (!paramString.has("show")) {
               break label534;
             }
             bool = paramString.optBoolean("show");
-            ((Style)localObject).dJm = bool;
+            ((Style)localObject).dKA = bool;
             AppMethodBeat.o(117830);
             return localWidgetData;
             i = paramString.optInt("debugMode");
@@ -116,14 +116,14 @@ public class WidgetData
         }
         catch (JSONException localJSONException)
         {
-          ad.printErrStackTrace("WidgetData", localJSONException, "", new Object[0]);
+          ae.printErrStackTrace("WidgetData", localJSONException, "", new Object[0]);
           continue;
         }
         int i = 2147483647;
       }
       catch (JSONException paramString)
       {
-        ad.printErrStackTrace("WidgetData", paramString, "", new Object[0]);
+        ae.printErrStackTrace("WidgetData", paramString, "", new Object[0]);
         AppMethodBeat.o(117830);
         return null;
       }
@@ -155,7 +155,7 @@ public class WidgetData
       return false;
     }
     paramObject = (WidgetData)paramObject;
-    if ((this.DCQ == paramObject.DCQ) && (Objects.equals(this.DCN, paramObject.DCN)) && (Objects.equals(this.DCO, paramObject.DCO)) && (Objects.equals(this.DCP, paramObject.DCP)) && (Objects.equals(this.query, paramObject.query)) && (Objects.equals(this.dDE, paramObject.dDE)))
+    if ((this.DUO == paramObject.DUO) && (Objects.equals(this.DUL, paramObject.DUL)) && (Objects.equals(this.DUM, paramObject.DUM)) && (Objects.equals(this.DUN, paramObject.DUN)) && (Objects.equals(this.query, paramObject.query)) && (Objects.equals(this.dEJ, paramObject.dEJ)))
     {
       AppMethodBeat.o(117828);
       return true;
@@ -167,7 +167,7 @@ public class WidgetData
   public int hashCode()
   {
     AppMethodBeat.i(117829);
-    int i = Objects.hash(new Object[] { this.DCN, this.DCO, this.DCP, Integer.valueOf(this.DCQ), this.query, this.dDE });
+    int i = Objects.hash(new Object[] { this.DUL, this.DUM, this.DUN, Integer.valueOf(this.DUO), this.query, this.dEJ });
     AppMethodBeat.o(117829);
     return i;
   }
@@ -176,20 +176,20 @@ public class WidgetData
   {
     AppMethodBeat.i(117827);
     String str1;
-    if (this.DCO == null)
+    if (this.DUM == null)
     {
       str1 = "";
-      if (this.DCP != null) {
+      if (this.DUN != null) {
         break label66;
       }
     }
     label66:
-    for (String str2 = "";; str2 = this.DCP.toString())
+    for (String str2 = "";; str2 = this.DUN.toString())
     {
       str1 = String.format("info: [%s], style:[%s]", new Object[] { str1, str2 });
       AppMethodBeat.o(117827);
       return str1;
-      str1 = this.DCO.toString();
+      str1 = this.DUM.toString();
       break;
     }
   }
@@ -197,12 +197,12 @@ public class WidgetData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(117831);
-    paramParcel.writeParcelable(this.DCN, paramInt);
-    paramParcel.writeParcelable(this.DCO, paramInt);
-    paramParcel.writeParcelable(this.DCP, paramInt);
-    paramParcel.writeInt(this.DCQ);
+    paramParcel.writeParcelable(this.DUL, paramInt);
+    paramParcel.writeParcelable(this.DUM, paramInt);
+    paramParcel.writeParcelable(this.DUN, paramInt);
+    paramParcel.writeInt(this.DUO);
     paramParcel.writeString(this.query);
-    paramParcel.writeString(this.dDE);
+    paramParcel.writeString(this.dEJ);
     AppMethodBeat.o(117831);
   }
   
@@ -210,32 +210,32 @@ public class WidgetData
     implements Parcelable
   {
     public static final Parcelable.Creator<Info> CREATOR;
-    public String DCR;
-    public String DCS;
-    public String DCT;
-    public int DCU;
-    public String DCV;
-    public long DCW;
-    public String DCX;
+    public String DUP;
+    public String DUQ;
+    public String DUR;
+    public int DUS;
+    public String DUT;
+    public long DUU;
+    public String DUV;
     public String bVF;
-    public int cQN;
-    public String dki;
+    public int cRx;
+    public String dlk;
     public String downloadUrl;
-    public String duW;
+    public String dwb;
     public String footerWording;
-    public String hKC;
+    public String hNv;
     public String iconUrl;
-    public String keN;
+    public String kid;
     public String label;
-    public boolean sSB;
-    public String tul;
+    public String tFc;
+    public boolean tdN;
     public String userName;
     public int version;
     
     static
     {
       AppMethodBeat.i(117813);
-      CREATOR = new WidgetData.Info.1();
+      CREATOR = new Parcelable.Creator() {};
       AppMethodBeat.o(117813);
     }
     
@@ -244,30 +244,30 @@ public class WidgetData
     protected Info(Parcel paramParcel)
     {
       AppMethodBeat.i(117812);
-      this.cQN = paramParcel.readInt();
-      this.DCR = paramParcel.readString();
+      this.cRx = paramParcel.readInt();
+      this.DUP = paramParcel.readString();
       this.bVF = paramParcel.readString();
-      this.DCS = paramParcel.readString();
-      this.DCT = paramParcel.readString();
-      this.dki = paramParcel.readString();
-      this.duW = paramParcel.readString();
+      this.DUQ = paramParcel.readString();
+      this.DUR = paramParcel.readString();
+      this.dlk = paramParcel.readString();
+      this.dwb = paramParcel.readString();
       this.userName = paramParcel.readString();
-      this.DCU = paramParcel.readInt();
+      this.DUS = paramParcel.readInt();
       this.version = paramParcel.readInt();
-      this.tul = paramParcel.readString();
+      this.tFc = paramParcel.readString();
       this.iconUrl = paramParcel.readString();
       this.downloadUrl = paramParcel.readString();
-      this.DCV = paramParcel.readString();
-      this.keN = paramParcel.readString();
+      this.DUT = paramParcel.readString();
+      this.kid = paramParcel.readString();
       this.label = paramParcel.readString();
-      this.DCW = paramParcel.readLong();
-      this.hKC = paramParcel.readString();
-      this.DCX = paramParcel.readString();
+      this.DUU = paramParcel.readLong();
+      this.hNv = paramParcel.readString();
+      this.DUV = paramParcel.readString();
       this.footerWording = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.sSB = bool;
+        this.tdN = bool;
         AppMethodBeat.o(117812);
         return;
       }
@@ -292,7 +292,7 @@ public class WidgetData
         return false;
       }
       paramObject = (Info)paramObject;
-      if ((this.cQN == paramObject.cQN) && (this.DCU == paramObject.DCU) && (this.version == paramObject.version) && (this.DCW == paramObject.DCW) && (this.sSB == paramObject.sSB) && (Objects.equals(this.DCR, paramObject.DCR)) && (Objects.equals(this.bVF, paramObject.bVF)) && (Objects.equals(this.DCS, paramObject.DCS)) && (Objects.equals(this.DCT, paramObject.DCT)) && (Objects.equals(this.dki, paramObject.dki)) && (Objects.equals(this.duW, paramObject.duW)) && (Objects.equals(this.userName, paramObject.userName)) && (Objects.equals(this.tul, paramObject.tul)) && (Objects.equals(this.iconUrl, paramObject.iconUrl)) && (Objects.equals(this.downloadUrl, paramObject.downloadUrl)) && (Objects.equals(this.DCV, paramObject.DCV)) && (Objects.equals(this.keN, paramObject.keN)) && (Objects.equals(this.label, paramObject.label)) && (Objects.equals(this.hKC, paramObject.hKC)) && (Objects.equals(this.DCX, paramObject.DCX)) && (Objects.equals(this.footerWording, paramObject.footerWording)))
+      if ((this.cRx == paramObject.cRx) && (this.DUS == paramObject.DUS) && (this.version == paramObject.version) && (this.DUU == paramObject.DUU) && (this.tdN == paramObject.tdN) && (Objects.equals(this.DUP, paramObject.DUP)) && (Objects.equals(this.bVF, paramObject.bVF)) && (Objects.equals(this.DUQ, paramObject.DUQ)) && (Objects.equals(this.DUR, paramObject.DUR)) && (Objects.equals(this.dlk, paramObject.dlk)) && (Objects.equals(this.dwb, paramObject.dwb)) && (Objects.equals(this.userName, paramObject.userName)) && (Objects.equals(this.tFc, paramObject.tFc)) && (Objects.equals(this.iconUrl, paramObject.iconUrl)) && (Objects.equals(this.downloadUrl, paramObject.downloadUrl)) && (Objects.equals(this.DUT, paramObject.DUT)) && (Objects.equals(this.kid, paramObject.kid)) && (Objects.equals(this.label, paramObject.label)) && (Objects.equals(this.hNv, paramObject.hNv)) && (Objects.equals(this.DUV, paramObject.DUV)) && (Objects.equals(this.footerWording, paramObject.footerWording)))
       {
         AppMethodBeat.o(117809);
         return true;
@@ -304,7 +304,7 @@ public class WidgetData
     public int hashCode()
     {
       AppMethodBeat.i(117810);
-      int i = Objects.hash(new Object[] { Integer.valueOf(this.cQN), this.DCR, this.bVF, this.DCS, this.DCT, this.dki, this.duW, this.userName, Integer.valueOf(this.DCU), Integer.valueOf(this.version), this.tul, this.iconUrl, this.downloadUrl, this.DCV, this.keN, this.label, Long.valueOf(this.DCW), this.hKC, this.DCX, this.footerWording, Boolean.valueOf(this.sSB) });
+      int i = Objects.hash(new Object[] { Integer.valueOf(this.cRx), this.DUP, this.bVF, this.DUQ, this.DUR, this.dlk, this.dwb, this.userName, Integer.valueOf(this.DUS), Integer.valueOf(this.version), this.tFc, this.iconUrl, this.downloadUrl, this.DUT, this.kid, this.label, Long.valueOf(this.DUU), this.hNv, this.DUV, this.footerWording, Boolean.valueOf(this.tdN) });
       AppMethodBeat.o(117810);
       return i;
     }
@@ -312,7 +312,7 @@ public class WidgetData
     public String toString()
     {
       AppMethodBeat.i(117808);
-      String str = String.format("appid:%s, srcAppid %s, permission %d, pathPath: %s", new Object[] { this.duW, this.hKC, Long.valueOf(this.DCW), this.dki });
+      String str = String.format("appid:%s, srcAppid %s, permission %d, pathPath: %s", new Object[] { this.dwb, this.hNv, Long.valueOf(this.DUU), this.dlk });
       AppMethodBeat.o(117808);
       return str;
     }
@@ -320,27 +320,27 @@ public class WidgetData
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(117811);
-      paramParcel.writeInt(this.cQN);
-      paramParcel.writeString(this.DCR);
+      paramParcel.writeInt(this.cRx);
+      paramParcel.writeString(this.DUP);
       paramParcel.writeString(this.bVF);
-      paramParcel.writeString(this.DCS);
-      paramParcel.writeString(this.DCT);
-      paramParcel.writeString(this.dki);
-      paramParcel.writeString(this.duW);
+      paramParcel.writeString(this.DUQ);
+      paramParcel.writeString(this.DUR);
+      paramParcel.writeString(this.dlk);
+      paramParcel.writeString(this.dwb);
       paramParcel.writeString(this.userName);
-      paramParcel.writeInt(this.DCU);
+      paramParcel.writeInt(this.DUS);
       paramParcel.writeInt(this.version);
-      paramParcel.writeString(this.tul);
+      paramParcel.writeString(this.tFc);
       paramParcel.writeString(this.iconUrl);
       paramParcel.writeString(this.downloadUrl);
-      paramParcel.writeString(this.DCV);
-      paramParcel.writeString(this.keN);
+      paramParcel.writeString(this.DUT);
+      paramParcel.writeString(this.kid);
       paramParcel.writeString(this.label);
-      paramParcel.writeLong(this.DCW);
-      paramParcel.writeString(this.hKC);
-      paramParcel.writeString(this.DCX);
+      paramParcel.writeLong(this.DUU);
+      paramParcel.writeString(this.hNv);
+      paramParcel.writeString(this.DUV);
       paramParcel.writeString(this.footerWording);
-      if (this.sSB) {}
+      if (this.tdN) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -354,8 +354,8 @@ public class WidgetData
     implements Parcelable
   {
     public static final Parcelable.Creator<MoreFooter> CREATOR;
-    public String DCY;
-    public String DCZ;
+    public String DUW;
+    public String DUX;
     public String title;
     
     static
@@ -371,8 +371,8 @@ public class WidgetData
     {
       AppMethodBeat.i(117816);
       this.title = paramParcel.readString();
-      this.DCY = paramParcel.readString();
-      this.DCZ = paramParcel.readString();
+      this.DUW = paramParcel.readString();
+      this.DUX = paramParcel.readString();
       AppMethodBeat.o(117816);
     }
     
@@ -395,7 +395,7 @@ public class WidgetData
         return false;
       }
       paramObject = (MoreFooter)paramObject;
-      if ((Objects.equals(this.title, paramObject.title)) && (Objects.equals(this.DCY, paramObject.DCY)) && (Objects.equals(this.DCZ, paramObject.DCZ)))
+      if ((Objects.equals(this.title, paramObject.title)) && (Objects.equals(this.DUW, paramObject.DUW)) && (Objects.equals(this.DUX, paramObject.DUX)))
       {
         AppMethodBeat.o(117817);
         return true;
@@ -407,7 +407,7 @@ public class WidgetData
     public int hashCode()
     {
       AppMethodBeat.i(117818);
-      int i = Objects.hash(new Object[] { this.title, this.DCY, this.DCZ });
+      int i = Objects.hash(new Object[] { this.title, this.DUW, this.DUX });
       AppMethodBeat.o(117818);
       return i;
     }
@@ -416,8 +416,8 @@ public class WidgetData
     {
       AppMethodBeat.i(117815);
       paramParcel.writeString(this.title);
-      paramParcel.writeString(this.DCY);
-      paramParcel.writeString(this.DCZ);
+      paramParcel.writeString(this.DUW);
+      paramParcel.writeString(this.DUX);
       AppMethodBeat.o(117815);
     }
   }
@@ -426,13 +426,13 @@ public class WidgetData
     implements Parcelable
   {
     public static final Parcelable.Creator<Style> CREATOR;
-    public double DDa;
-    public int DDb;
-    public boolean dJm;
+    public double DUY;
+    public int DUZ;
+    public boolean dKA;
     public int height;
-    public String jVX;
-    public int kSh;
-    public int kSi;
+    public String jZm;
+    public int kVQ;
+    public int kVR;
     public int width;
     
     static
@@ -444,26 +444,26 @@ public class WidgetData
     
     public Style()
     {
-      this.DDa = 65.0D;
-      this.dJm = true;
+      this.DUY = 65.0D;
+      this.dKA = true;
     }
     
     protected Style(Parcel paramParcel)
     {
       AppMethodBeat.i(117823);
-      this.DDa = 65.0D;
-      this.dJm = true;
-      this.DDa = paramParcel.readDouble();
-      this.DDb = paramParcel.readInt();
-      this.kSh = paramParcel.readInt();
-      this.kSi = paramParcel.readInt();
+      this.DUY = 65.0D;
+      this.dKA = true;
+      this.DUY = paramParcel.readDouble();
+      this.DUZ = paramParcel.readInt();
+      this.kVQ = paramParcel.readInt();
+      this.kVR = paramParcel.readInt();
       this.height = paramParcel.readInt();
-      this.jVX = paramParcel.readString();
+      this.jZm = paramParcel.readString();
       this.width = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (;;)
       {
-        this.dJm = bool;
+        this.dKA = bool;
         AppMethodBeat.o(117823);
         return;
         bool = false;
@@ -489,7 +489,7 @@ public class WidgetData
         return false;
       }
       paramObject = (Style)paramObject;
-      if ((Double.compare(paramObject.DDa, this.DDa) == 0) && (this.DDb == paramObject.DDb) && (this.kSh == paramObject.kSh) && (this.kSi == paramObject.kSi) && (this.height == paramObject.height) && (this.width == paramObject.width) && (this.dJm == paramObject.dJm) && (Objects.equals(this.jVX, paramObject.jVX)))
+      if ((Double.compare(paramObject.DUY, this.DUY) == 0) && (this.DUZ == paramObject.DUZ) && (this.kVQ == paramObject.kVQ) && (this.kVR == paramObject.kVR) && (this.height == paramObject.height) && (this.width == paramObject.width) && (this.dKA == paramObject.dKA) && (Objects.equals(this.jZm, paramObject.jZm)))
       {
         AppMethodBeat.o(117824);
         return true;
@@ -501,7 +501,7 @@ public class WidgetData
     public int hashCode()
     {
       AppMethodBeat.i(117825);
-      int i = Objects.hash(new Object[] { Double.valueOf(this.DDa), Integer.valueOf(this.DDb), Integer.valueOf(this.kSh), Integer.valueOf(this.kSi), Integer.valueOf(this.height), this.jVX, Integer.valueOf(this.width), Boolean.valueOf(this.dJm) });
+      int i = Objects.hash(new Object[] { Double.valueOf(this.DUY), Integer.valueOf(this.DUZ), Integer.valueOf(this.kVQ), Integer.valueOf(this.kVR), Integer.valueOf(this.height), this.jZm, Integer.valueOf(this.width), Boolean.valueOf(this.dKA) });
       AppMethodBeat.o(117825);
       return i;
     }
@@ -517,14 +517,14 @@ public class WidgetData
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(117822);
-      paramParcel.writeDouble(this.DDa);
-      paramParcel.writeInt(this.DDb);
-      paramParcel.writeInt(this.kSh);
-      paramParcel.writeInt(this.kSi);
+      paramParcel.writeDouble(this.DUY);
+      paramParcel.writeInt(this.DUZ);
+      paramParcel.writeInt(this.kVQ);
+      paramParcel.writeInt(this.kVR);
       paramParcel.writeInt(this.height);
-      paramParcel.writeString(this.jVX);
+      paramParcel.writeString(this.jZm);
       paramParcel.writeInt(this.width);
-      if (this.dJm) {}
+      if (this.dKA) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);

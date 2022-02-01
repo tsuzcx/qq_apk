@@ -6,20 +6,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.n;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   private static final int CTRL_INDEX = 424;
   private static final String NAME = "openRedPacket";
   
-  public final boolean bib()
+  public final boolean biK()
   {
     return true;
   }
@@ -27,29 +27,29 @@ public final class a
   public static final class a
     extends n
   {
-    public a(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
+    public a(m paramm, r paramr, z paramz, JSONObject paramJSONObject, int paramInt)
     {
-      super(paramq, paramaa, paramJSONObject, paramInt);
+      super(paramr, paramz, paramJSONObject, paramInt);
     }
     
     public final void C(Intent paramIntent)
     {
       AppMethodBeat.i(46389);
-      ad.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.onResult");
+      ae.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.onResult");
       paramIntent = new HashMap();
       paramIntent.put("errCode", Integer.valueOf(0));
-      z(paramIntent);
+      G(paramIntent);
       AppMethodBeat.o(46389);
     }
     
     public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
     {
       AppMethodBeat.i(174839);
-      String str = Ew().getAppId();
+      String str = Ey().getAppId();
       paramJSONObject = paramJSONObject.optString("redPacketId", null);
-      if ((bt.isNullOrNil(str)) || (bt.isNullOrNil(paramJSONObject)))
+      if ((bu.isNullOrNil(str)) || (bu.isNullOrNil(paramJSONObject)))
       {
-        ad.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.launch appId = [%s] sendId = [%s]", new Object[] { str, paramJSONObject });
+        ae.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.launch appId = [%s] sendId = [%s]", new Object[] { str, paramJSONObject });
         AppMethodBeat.o(174839);
         return false;
       }
@@ -61,10 +61,10 @@ public final class a
     public final void onError(int paramInt, String paramString)
     {
       AppMethodBeat.i(46390);
-      ad.i("MicroMsg.JsApiOpenRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+      ae.i("MicroMsg.JsApiOpenRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
       HashMap localHashMap = new HashMap();
       localHashMap.put("errCode", Integer.valueOf(paramInt));
-      n(paramString, localHashMap);
+      o(paramString, localHashMap);
       AppMethodBeat.o(46390);
     }
   }

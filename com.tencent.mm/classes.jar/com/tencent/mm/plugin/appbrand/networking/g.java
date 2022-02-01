@@ -1,128 +1,86 @@
 package com.tencent.mm.plugin.appbrand.networking;
 
-import android.util.SparseIntArray;
+import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.b;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Locale;
-import junit.framework.Assert;
+import com.tencent.mm.kernel.c.b;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.x.a;
+import com.tencent.mm.plugin.appbrand.r;
+import d.l;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
-public final class g
-  implements b
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceImpl;", "Lcom/tencent/mm/plugin/appbrand/networking/INetworkService;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "mListeners", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/plugin/appbrand/networking/IOnNetworkStateChanged;", "mRuntime", "getMRuntime", "()Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "addListener", "", "l", "notifyNetworkStateChanged", "onRegister", "onUnregister", "removeListener", "luggage-wxa-app_release"})
+public class g
+  implements b, d
 {
-  protected static final boolean jxf;
-  public static final g lXn;
-  protected static final com.tencent.mm.ce.a lXo;
-  protected static final a lXp;
+  final AppBrandRuntime jDb;
+  @TargetApi(21)
+  private final ConcurrentLinkedDeque<e> mbS;
   
-  static
+  public g(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(47763);
-    lXn = new g();
-    jxf = bu.flY();
-    lXo = new com.tencent.mm.ce.a("MicroMsg.WxaCgiServiceWC");
-    a locala = new a((byte)0);
-    lXp = locala;
-    locala.put("/cgi-bin/mmbiz-bin/wxaapp/verifyplugin", 1714);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync", 1192);
-    lXp.put("/cgi-bin/mmbiz-bin/wxabusiness/reportwxaappexpose", 1345);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp_getauthinfo", 1115);
-    lXp.put("/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket", 1862);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo", 1194);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo", 1191);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/saveinfo", 1180);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/authinfo", 1183);
-    lXp.put("/cgi-bin/mmbiz-bin/js-authorize", 1157);
-    lXp.put("/cgi-bin/mmbiz-bin/js-authorize-confirm", 1158);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/updateuserphone", 2932);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/sendverifycode", 2695);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/sendverifycode", 1024);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/checkverifycode", 2775);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/checkverifycode", 1010);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/getallphone", 2536);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/updateuserphone", 2932);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/sendverifycode", 2695);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/sendverifycode", 1024);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/checkverifycode", 2775);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/checkverifycode", 1010);
-    lXp.put("/cgi-bin/mmbiz-bin/wxaapp/customphone/getallphone", 2536);
-    lXp.put("/cgi-bin/mmbiz-bin/js-operatewxdata", 1133);
-    lXp.put("/cgi-bin/mmbiz-bin/js-authorize", 1157);
-    lXp.put("/cgi-bin/mmbiz-bin/js-authorize-confirm", 1158);
-    lXp.put("/cgi-bin/mmbiz-bin/js-login", 1029);
-    lXp.put("/cgi-bin/mmbiz-bin/js-login-confirm", 1117);
-    lXp.put("/cgi-bin/mmbiz-bin/bizattr/subscribemsg", 2920);
-    AppMethodBeat.o(47763);
+    AppMethodBeat.i(135591);
+    this.jDb = paramAppBrandRuntime;
+    this.mbS = new ConcurrentLinkedDeque();
+    AppMethodBeat.o(135591);
   }
   
-  private <Resp extends cvp> f<Resp> b(final String paramString, com.tencent.mm.bx.a parama, Class<Resp> paramClass)
+  public final void a(e parame)
   {
-    AppMethodBeat.i(47761);
-    final b.a locala = new b.a();
-    locala.funcId = lXp.Nr(paramString);
-    locala.uri = paramString;
-    locala.hNM = parama;
-    try
+    AppMethodBeat.i(135590);
+    this.mbS.add(parame);
+    AppMethodBeat.o(135590);
+  }
+  
+  public void akM()
+  {
+    AppMethodBeat.i(135587);
+    a((e)new a(this));
+    AppMethodBeat.o(135587);
+  }
+  
+  public void akN()
+  {
+    AppMethodBeat.i(135588);
+    this.mbS.clear();
+    AppMethodBeat.o(135588);
+  }
+  
+  public final void buh()
+  {
+    AppMethodBeat.i(135589);
+    Object localObject = this.jDb.Ey();
+    if (localObject != null)
     {
-      locala.hNN = ((com.tencent.mm.bx.a)paramClass.newInstance());
-      paramString = com.tencent.mm.cn.g.fSm().d(lXo).g(new com.tencent.mm.vending.c.a() {});
-      AppMethodBeat.o(47761);
-      return paramString;
-    }
-    catch (InstantiationException parama)
-    {
-      do
+      if (((r)localObject).isRunning() == true)
       {
-        ad.e("MicroMsg.WxaCgiServiceWC", "new Response failed %s", new Object[] { paramClass.getName() });
-      } while (!jxf);
-      paramString = new RuntimeException(parama);
-      AppMethodBeat.o(47761);
-      throw paramString;
-    }
-    catch (IllegalAccessException parama)
-    {
-      label82:
-      break label82;
-    }
-  }
-  
-  static final class a
-    extends SparseIntArray
-  {
-    public final int Nr(String paramString)
-    {
-      AppMethodBeat.i(175022);
-      int i = super.get(paramString.hashCode(), -1);
-      if (i == -1) {
-        Assert.assertEquals(String.format(Locale.US, "Found invalid funcid, please register %s in this map.", new Object[] { paramString }), false, g.jxf);
+        localObject = this.mbS.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((e)((Iterator)localObject).next()).bno();
+        }
       }
-      AppMethodBeat.o(175022);
-      return i;
     }
-    
-    public final void put(String paramString, int paramInt)
+    else
     {
-      AppMethodBeat.i(175021);
-      super.put(paramString.hashCode(), paramInt);
-      AppMethodBeat.o(175021);
+      AppMethodBeat.o(135589);
+      return;
     }
+    AppMethodBeat.o(135589);
   }
   
-  static final class b
-    implements IPCRunCgi.b
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onNetworkStateChanged"})
+  static final class a
+    implements e
   {
-    public final com.tencent.mm.al.b a(com.tencent.mm.al.b paramb)
+    a(g paramg) {}
+    
+    public final void bno()
     {
-      AppMethodBeat.i(188678);
-      ad.i("MicroMsg.WxaCgiServiceWC.IPCRunCgiMainProcessMonitor", "before run cgi, rr.url=%s, rr.cmdid=%d", new Object[] { paramb.getUri(), Integer.valueOf(paramb.getType()) });
-      AppMethodBeat.o(188678);
-      return paramb;
+      AppMethodBeat.i(135586);
+      a.m((c)this.mbT.jDb.Ey());
+      AppMethodBeat.o(135586);
     }
   }
 }

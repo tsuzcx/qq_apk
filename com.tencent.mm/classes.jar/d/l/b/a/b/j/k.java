@@ -15,7 +15,7 @@ public final class k
     AppMethodBeat.i(60010);
     p.h(paramCollection, "descriptors");
     if (!paramCollection.isEmpty()) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
       paramCollection = (Throwable)new AssertionError("Assertion failed");
       AppMethodBeat.o(60010);
@@ -32,7 +32,7 @@ public final class k
       }
       else
       {
-        Integer localInteger = az.b(paramCollection.ghz(), localb.ghz());
+        Integer localInteger = az.b(paramCollection.gmb(), localb.gmb());
         if ((localInteger == null) || (localInteger.intValue() >= 0)) {
           break label143;
         }
@@ -44,7 +44,7 @@ public final class k
     {
       break;
       if (paramCollection == null) {
-        p.gfZ();
+        p.gkB();
       }
       AppMethodBeat.o(60010);
       return paramCollection;
@@ -53,7 +53,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.k
  * JD-Core Version:    0.7.0.1
  */

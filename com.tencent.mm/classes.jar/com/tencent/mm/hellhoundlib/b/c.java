@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static ThreadLocal<a> gwt;
+  private static ThreadLocal<a> gza;
   
   static
   {
     AppMethodBeat.i(183796);
-    gwt = new ThreadLocal();
+    gza = new ThreadLocal();
     AppMethodBeat.o(183796);
   }
   

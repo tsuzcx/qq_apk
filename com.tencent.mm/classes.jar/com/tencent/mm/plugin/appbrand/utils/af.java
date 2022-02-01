@@ -1,140 +1,96 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
+import android.graphics.drawable.Drawable;
+import android.text.Layout.Alignment;
+import android.text.SpannableString;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.co;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.o;
+import com.tencent.mm.ui.widget.a;
+import d.g.b.p;
+import d.l;
+import java.util.ArrayList;
+import java.util.List;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/StringSpanHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class af
 {
-  public static boolean dS(Context paramContext)
+  public static final a mUG;
+  
+  static
   {
-    AppMethodBeat.i(197450);
-    DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-    double d = Math.pow(localDisplayMetrics.widthPixels / localDisplayMetrics.xdpi, 2.0D);
-    d = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels / localDisplayMetrics.ydpi, 2.0D) + d);
-    if (((paramContext.getResources().getConfiguration().screenLayout & 0xF) >= 3) && (d >= 7.0D))
+    AppMethodBeat.i(223940);
+    mUG = new a((byte)0);
+    AppMethodBeat.o(223940);
+  }
+  
+  public static final Pair<SpannableString, Integer> a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, ClickableSpan paramClickableSpan)
+  {
+    AppMethodBeat.i(223942);
+    paramContext = a.a(paramContext, paramInt1, 4, paramInt2, paramInt3, paramClickableSpan);
+    AppMethodBeat.o(223942);
+    return paramContext;
+  }
+  
+  public static final List<Point> a(TextPaint paramTextPaint, CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(223941);
+    p.h(paramTextPaint, "tp");
+    p.h(paramCharSequence, "cs");
+    paramTextPaint = new StaticLayout(paramCharSequence, paramTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+    int i = paramTextPaint.getLineCount();
+    paramCharSequence = (List)new ArrayList();
+    paramInt = 0;
+    while (paramInt < i)
     {
-      AppMethodBeat.o(197450);
-      return true;
+      paramCharSequence.add(new Point(paramTextPaint.getLineStart(paramInt), paramTextPaint.getLineEnd(paramInt)));
+      paramInt += 1;
     }
-    AppMethodBeat.o(197450);
-    return false;
+    AppMethodBeat.o(223941);
+    return paramCharSequence;
   }
   
-  public static int[] f(h paramh)
+  public static final Pair<SpannableString, Integer> dV(Context paramContext)
   {
-    AppMethodBeat.i(135384);
-    paramh = g(paramh);
-    ad.v("Luggage.WXA.UIUtil", "getScreenSize: [x,y] = [%d,%d]", new Object[] { Integer.valueOf(paramh[0]), Integer.valueOf(paramh[1]) });
-    AppMethodBeat.o(135384);
-    return paramh;
+    AppMethodBeat.i(223943);
+    p.h(paramContext, "context");
+    paramContext = a.a(paramContext, 2131234982, 1, 0, 0, (ClickableSpan)new af.a.a());
+    AppMethodBeat.o(223943);
+    return paramContext;
   }
   
-  private static int[] g(h paramh)
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/StringSpanHelper$Companion;", "", "()V", "emptySpanIcon", "Landroid/util/Pair;", "Landroid/text/SpannableString;", "", "context", "Landroid/content/Context;", "getLineStartAndEnd", "", "Landroid/graphics/Point;", "tp", "Landroid/text/TextPaint;", "cs", "", "lineWidth", "makeSpanIcon", "iconResId", "leftMarginDp", "widthDp", "heightDp", "clickableSpan", "Landroid/text/style/ClickableSpan;", "plugin-appbrand-integration_release"})
+  public static final class a
   {
-    AppMethodBeat.i(197449);
-    c localc;
-    if (paramh.getRuntime() != null)
+    public static Pair<SpannableString, Integer> a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ClickableSpan paramClickableSpan)
     {
-      localc = paramh.getRuntime().getWindowAndroid();
-      if (localc == null) {
-        break label74;
+      AppMethodBeat.i(223939);
+      p.h(paramContext, "context");
+      paramContext = paramContext.getResources().getDrawable(paramInt1);
+      p.g(paramContext, "context.resources.getDrawable(iconResId)");
+      paramContext.setBounds(o.vP(paramInt2), 0, o.vP(paramInt3 + paramInt2), o.vP(paramInt4));
+      a locala = new a(paramContext);
+      SpannableString localSpannableString = new SpannableString((CharSequence)"@");
+      localSpannableString.setSpan(locala, 0, 1, 33);
+      if (paramClickableSpan != null) {
+        localSpannableString.setSpan(paramClickableSpan, 0, 1, 33);
       }
-      ad.v("Luggage.WXA.UIUtil", "getScreenSizeInner: V_DM");
+      paramContext = new Pair(localSpannableString, Integer.valueOf(paramContext.getBounds().right));
+      AppMethodBeat.o(223939);
+      return paramContext;
     }
-    for (paramh = localc.getVDisplayMetrics();; paramh = paramh.getContext().getResources().getDisplayMetrics())
-    {
-      int i = paramh.widthPixels;
-      int j = paramh.heightPixels;
-      AppMethodBeat.o(197449);
-      return new int[] { i, j };
-      localc = null;
-      break;
-      label74:
-      ad.v("Luggage.WXA.UIUtil", "getScreenSizeInner: normal DM");
-    }
-  }
-  
-  public static View k(d paramd)
-  {
-    AppMethodBeat.i(135382);
-    paramd = co.i(paramd);
-    if (paramd == null)
-    {
-      AppMethodBeat.o(135382);
-      return null;
-    }
-    paramd = paramd.lZG;
-    AppMethodBeat.o(135382);
-    return paramd;
-  }
-  
-  public static int[] l(d paramd)
-  {
-    AppMethodBeat.i(135383);
-    paramd = m(paramd);
-    ad.v("Luggage.WXA.UIUtil", "getWindowWidthHeight: [x,y] = [%d,%d]", new Object[] { Integer.valueOf(paramd[0]), Integer.valueOf(paramd[1]) });
-    AppMethodBeat.o(135383);
-    return paramd;
-  }
-  
-  private static int[] m(d paramd)
-  {
-    AppMethodBeat.i(197448);
-    View localView = k(paramd);
-    int i;
-    int j;
-    if ((localView != null) && (localView.isLaidOut()))
-    {
-      ad.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: normal");
-      i = localView.getWidth();
-      j = localView.getHeight();
-      AppMethodBeat.o(197448);
-      return new int[] { i, j };
-    }
-    if ((paramd.getContext() instanceof Activity))
-    {
-      ad.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: DecorView");
-      localView = ((Activity)paramd.getContext()).getWindow().getDecorView();
-      Rect localRect = new Rect();
-      localView.getWindowVisibleDisplayFrame(localRect);
-      if (localRect.width() <= 0)
-      {
-        ad.e("Luggage.WXA.UIUtil", "getWindowWidthHeight try Method(DecorView) but rect.width()<=0, use Method(Screen) instead");
-        paramd = f(paramd);
-        AppMethodBeat.o(197448);
-        return paramd;
-      }
-      i = localRect.right;
-      j = localRect.left;
-      int k = localRect.bottom;
-      int m = localRect.top;
-      int n = paramd.getContext().getResources().getDimensionPixelSize(2131165250);
-      AppMethodBeat.o(197448);
-      return new int[] { i - j, k - m - n };
-    }
-    ad.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: Screen");
-    paramd = f(paramd);
-    AppMethodBeat.o(197448);
-    return paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.af
  * JD-Core Version:    0.7.0.1
  */

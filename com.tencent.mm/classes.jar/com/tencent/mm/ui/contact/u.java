@@ -2,44 +2,44 @@ package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
 import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 
 public final class u
 {
-  public static final int KnA;
-  public static final int KnB;
-  public static final int KnC;
-  public static final int KnD;
-  public static final int KnE;
-  public static final int KnF;
-  public static final int KnG;
-  public static final int Knw;
-  public static final int Knx;
-  public static int Kny;
-  public static int Knz;
+  public static final int KJQ;
+  public static final int KJR;
+  public static int KJS;
+  public static int KJT;
+  public static final int KJU;
+  public static final int KJV;
+  public static final int KJW;
+  public static final int KJX;
+  public static final int KJY;
+  public static final int KJZ;
+  public static final int KKa;
   
   static
   {
     AppMethodBeat.i(133757);
-    Knw = I(new int[] { 256, 16, 1, 2, 4 });
-    Knx = I(new int[] { 16, 1, 2, 4, 64, 16384 });
-    Kny = I(new int[] { 16, 1, 2, 4, 64, 16384, 16777216 });
-    Knz = I(new int[] { 16, 1, 2, 4, 64, 4096, 16777216 });
-    KnA = I(new int[] { Knw, 64, 16384, 4096, 16777216 });
-    KnB = I(new int[] { 16, 2, 16384, 4 });
-    KnC = I(new int[] { Knw, 16384, 64, 4096, 16777216 });
-    KnD = I(new int[] { Knw, 16384, 64, 131072, 8192, 16777216 });
-    KnE = I(new int[] { 16, 32, 1, 4, 2, 64 });
-    KnF = I(new int[] { 1, 2, 4, 64, 256, 16384 });
-    KnG = I(new int[] { Kny, 131072 });
+    KJQ = J(new int[] { 256, 16, 1, 2, 4 });
+    KJR = J(new int[] { 16, 1, 2, 4, 64, 16384 });
+    KJS = J(new int[] { 16, 1, 2, 4, 64, 16384, 16777216 });
+    KJT = J(new int[] { 16, 1, 2, 4, 64, 4096, 16777216 });
+    KJU = J(new int[] { KJQ, 64, 16384, 4096, 16777216 });
+    KJV = J(new int[] { 16, 2, 16384, 4 });
+    KJW = J(new int[] { KJQ, 16384, 64, 4096, 16777216 });
+    KJX = J(new int[] { KJQ, 16384, 64, 131072, 8192, 16777216 });
+    KJY = J(new int[] { 16, 32, 1, 4, 2, 64 });
+    KJZ = J(new int[] { 1, 2, 4, 64, 256, 16384 });
+    KKa = J(new int[] { KJS, 131072 });
     AppMethodBeat.o(133757);
   }
   
-  public static int I(int... paramVarArgs)
+  public static int J(int... paramVarArgs)
   {
     int k = paramVarArgs.length;
     int j = 0;
@@ -52,7 +52,7 @@ public final class u
     return i;
   }
   
-  public static HashSet<String> fIp()
+  public static HashSet<String> fMH()
   {
     AppMethodBeat.i(133752);
     HashSet localHashSet = new HashSet();
@@ -61,13 +61,13 @@ public final class u
     return localHashSet;
   }
   
-  public static HashSet<String> fIq()
+  public static HashSet<String> fMI()
   {
     AppMethodBeat.i(133754);
     HashSet localHashSet = new HashSet();
     localHashSet.add("officialaccounts");
     localHashSet.add("newsapp");
-    String[] arrayOfString = w.hFm;
+    String[] arrayOfString = x.hIe;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -105,11 +105,11 @@ public final class u
     return localHashSet;
   }
   
-  public static boolean fIr()
+  public static boolean fMJ()
   {
     AppMethodBeat.i(133756);
-    int i = ((a)g.ab(a.class)).acA().getInt("ShowOpenImInGroup", 0);
-    ad.i("MMSelectContactLogic", "config_val %s ", new Object[] { Integer.valueOf(i) });
+    int i = ((a)g.ab(a.class)).acL().getInt("ShowOpenImInGroup", 0);
+    ae.i("MMSelectContactLogic", "config_val %s ", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
       AppMethodBeat.o(133756);
@@ -134,30 +134,30 @@ public final class u
   public static void init()
   {
     AppMethodBeat.i(133755);
-    if (!fIr())
+    if (!fMJ())
     {
-      if (hasAttr(Kny, 16777216)) {
-        Kny &= 0xFEFFFFFF;
+      if (hasAttr(KJS, 16777216)) {
+        KJS &= 0xFEFFFFFF;
       }
-      if (hasAttr(Knz, 16777216))
+      if (hasAttr(KJT, 16777216))
       {
-        Knz &= 0xFEFFFFFF;
+        KJT &= 0xFEFFFFFF;
         AppMethodBeat.o(133755);
       }
     }
     else
     {
-      if (!hasAttr(Kny, 16777216)) {
-        Kny = I(new int[] { Kny, 16777216 });
+      if (!hasAttr(KJS, 16777216)) {
+        KJS = J(new int[] { KJS, 16777216 });
       }
-      if (!hasAttr(Knz, 16777216)) {
-        Knz = I(new int[] { Knz, 16777216 });
+      if (!hasAttr(KJT, 16777216)) {
+        KJT = J(new int[] { KJT, 16777216 });
       }
     }
     AppMethodBeat.o(133755);
   }
   
-  public static int jU(int paramInt1, int paramInt2)
+  public static int kb(int paramInt1, int paramInt2)
   {
     return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
   }

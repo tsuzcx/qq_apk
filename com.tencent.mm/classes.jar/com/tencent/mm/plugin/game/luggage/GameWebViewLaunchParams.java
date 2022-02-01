@@ -9,7 +9,7 @@ public class GameWebViewLaunchParams
   implements Parcelable
 {
   public static final Parcelable.Creator<GameWebViewLaunchParams> CREATOR;
-  public GameFloatLayerInfo tTl;
+  public GameFloatLayerInfo uec;
   
   static
   {
@@ -23,7 +23,7 @@ public class GameWebViewLaunchParams
   private GameWebViewLaunchParams(Parcel paramParcel)
   {
     AppMethodBeat.i(82984);
-    this.tTl = ((GameFloatLayerInfo)paramParcel.readParcelable(GameFloatLayerInfo.class.getClassLoader()));
+    this.uec = ((GameFloatLayerInfo)paramParcel.readParcelable(GameFloatLayerInfo.class.getClassLoader()));
     AppMethodBeat.o(82984);
   }
   
@@ -35,7 +35,7 @@ public class GameWebViewLaunchParams
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(82983);
-    paramParcel.writeParcelable(this.tTl, paramInt);
+    paramParcel.writeParcelable(this.uec, paramInt);
     AppMethodBeat.o(82983);
   }
 }

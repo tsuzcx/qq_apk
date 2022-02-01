@@ -6,13 +6,13 @@ import com.tencent.mm.view.recyclerview.d.b;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "()V", "avatar", "", "getAvatar", "()Ljava/lang/String;", "setAvatar", "(Ljava/lang/String;)V", "count", "", "getCount", "()I", "setCount", "(I)V", "compare", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "()V", "avatar", "", "getAvatar", "()Ljava/lang/String;", "setAvatar", "(Ljava/lang/String;)V", "count", "", "getCount", "()I", "setCount", "(I)V", "compare", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class g
   extends d.b
   implements i
 {
   public int count;
-  public String sjU = "";
+  public String ssR = "";
   
   public final int a(i parami)
   {
@@ -22,7 +22,7 @@ public final class g
     return 0;
   }
   
-  public final int bYk()
+  public final int bZz()
   {
     return -5;
   }
@@ -36,13 +36,13 @@ public final class g
   {
     AppMethodBeat.i(166371);
     p.h(paramString, "<set-?>");
-    this.sjU = paramString;
+    this.ssR = paramString;
     AppMethodBeat.o(166371);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.g
  * JD-Core Version:    0.7.0.1
  */

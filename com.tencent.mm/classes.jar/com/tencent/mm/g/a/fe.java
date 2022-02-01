@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fe
   extends b
 {
-  public a dqp;
-  public b dqq;
+  public a drs;
+  public b drt;
   
   public fe()
   {
@@ -16,28 +16,27 @@ public final class fe
   
   private fe(byte paramByte)
   {
-    AppMethodBeat.i(19801);
-    this.dqp = new a();
-    this.dqq = new b();
-    this.IbR = false;
+    AppMethodBeat.i(19800);
+    this.drs = new a();
+    this.drt = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19801);
+    AppMethodBeat.o(19800);
   }
   
   public static final class a
   {
-    public byte[] data;
-    public String mac;
+    public boolean dpJ = false;
   }
   
   public static final class b
   {
-    public boolean doF;
+    public boolean dpK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fe
  * JD-Core Version:    0.7.0.1
  */

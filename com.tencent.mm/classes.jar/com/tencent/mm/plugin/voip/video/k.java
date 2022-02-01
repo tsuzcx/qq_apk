@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.voip.video;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
@@ -13,36 +13,36 @@ import java.util.Iterator;
 
 public final class k
 {
-  private v2protocal Cdn;
-  public int CmH;
-  public boolean CoD;
-  private int CoE;
-  private int CoF;
-  private ArrayList<a> nQn;
+  public int CEl;
+  public boolean CGh;
+  private int CGi;
+  private int CGj;
+  private v2protocal CuO;
+  private ArrayList<a> nVT;
   
   public k()
   {
     AppMethodBeat.i(115701);
-    this.CoD = false;
-    this.CmH = 0;
-    this.nQn = new ArrayList();
-    this.Cdn = new v2protocal(new ap(Looper.myLooper()));
+    this.CGh = false;
+    this.CEl = 0;
+    this.nVT = new ArrayList();
+    this.CuO = new v2protocal(new aq(Looper.myLooper()));
     AppMethodBeat.o(115701);
   }
   
-  private static byte[] F(int[] paramArrayOfInt)
+  private static byte[] G(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(216571);
+    AppMethodBeat.i(210250);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
     localByteBuffer.asIntBuffer().put(paramArrayOfInt);
     paramArrayOfInt = localByteBuffer.array();
-    AppMethodBeat.o(216571);
+    AppMethodBeat.o(210250);
     return paramArrayOfInt;
   }
   
-  private static int[] bW(byte[] paramArrayOfByte)
+  private static int[] bZ(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(216570);
+    AppMethodBeat.i(210249);
     int j = paramArrayOfByte.length / 4;
     if (paramArrayOfByte.length % 4 == 0) {}
     for (int i = 0;; i = 1)
@@ -55,38 +55,38 @@ public final class k
       paramArrayOfByte = ((ByteBuffer)localObject).asIntBuffer();
       localObject = new int[i];
       paramArrayOfByte.get((int[])localObject);
-      AppMethodBeat.o(216570);
+      AppMethodBeat.o(210249);
       return localObject;
     }
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(216573);
-    if (!this.nQn.contains(parama)) {
-      this.nQn.add(parama);
+    AppMethodBeat.i(210252);
+    if (!this.nVT.contains(parama)) {
+      this.nVT.add(parama);
     }
-    AppMethodBeat.o(216573);
+    AppMethodBeat.o(210252);
   }
   
   public final void b(a parama)
   {
     AppMethodBeat.i(115702);
-    if (this.nQn.contains(parama)) {
-      this.nQn.remove(parama);
+    if (this.nVT.contains(parama)) {
+      this.nVT.remove(parama);
     }
     AppMethodBeat.o(115702);
   }
   
   public final void setPreviewSize(int paramInt1, int paramInt2)
   {
-    this.CoF = paramInt2;
-    this.CoE = paramInt1;
+    this.CGj = paramInt2;
+    this.CGi = paramInt1;
   }
   
-  public final void tI(boolean paramBoolean)
+  public final void tP(boolean paramBoolean)
   {
-    AppMethodBeat.i(216572);
+    AppMethodBeat.i(210251);
     Object localObject = new int[2];
     if (paramBoolean)
     {
@@ -95,11 +95,11 @@ public final class k
     }
     for (;;)
     {
-      localObject = F((int[])localObject);
-      if (this.Cdn.setAppCmd(13, (byte[])localObject, localObject.length) < 0) {
+      localObject = G((int[])localObject);
+      if (this.CuO.setAppCmd(13, (byte[])localObject, localObject.length) < 0) {
         break label315;
       }
-      localObject = bW((byte[])localObject);
+      localObject = bZ((byte[])localObject);
       int i = localObject[0];
       int j = localObject[1];
       if (i + j == 0) {
@@ -107,35 +107,35 @@ public final class k
       }
       new b();
       localObject = new b();
-      ((b)localObject).CoG = (i & 0xFFFF);
-      ((b)localObject).CoH = (i >> 16 & 0xFFFF);
-      ((b)localObject).CoI = (j & 0xFFFF);
-      ((b)localObject).CoJ = (j >> 16 & 0xFFFF);
-      ad.d("MicroMsg.VoipFaceDetector", "detect face, location:%s", new Object[] { localObject });
-      Iterator localIterator = this.nQn.iterator();
+      ((b)localObject).CGk = (i & 0xFFFF);
+      ((b)localObject).CGl = (i >> 16 & 0xFFFF);
+      ((b)localObject).CGm = (j & 0xFFFF);
+      ((b)localObject).CGn = (j >> 16 & 0xFFFF);
+      ae.d("MicroMsg.VoipFaceDetector", "detect face, location:%s", new Object[] { localObject });
+      Iterator localIterator = this.nVT.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        i = ((b)localObject).CoG;
-        j = ((b)localObject).CoH;
-        int k = ((b)localObject).CoI;
-        int m = ((b)localObject).CoJ;
-        paramBoolean = this.CoD;
-        int n = this.CmH;
+        i = ((b)localObject).CGk;
+        j = ((b)localObject).CGl;
+        int k = ((b)localObject).CGm;
+        int m = ((b)localObject).CGn;
+        paramBoolean = this.CGh;
+        int n = this.CEl;
         locala.a(new int[] { i, j, k, m }, paramBoolean, n);
       }
       localObject[0] = 0;
       localObject[1] = 0;
     }
-    AppMethodBeat.o(216572);
+    AppMethodBeat.o(210251);
     return;
     label269:
-    localObject = this.nQn.iterator();
+    localObject = this.nVT.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).a(null, this.CoD, this.CmH);
+      ((a)((Iterator)localObject).next()).a(null, this.CGh, this.CEl);
     }
     label315:
-    AppMethodBeat.o(216572);
+    AppMethodBeat.o(210251);
   }
   
   public static abstract interface a
@@ -145,17 +145,17 @@ public final class k
   
   final class b
   {
-    int CoG;
-    int CoH;
-    int CoI;
-    int CoJ;
+    int CGk;
+    int CGl;
+    int CGm;
+    int CGn;
     
     public b() {}
     
     public final String toString()
     {
       AppMethodBeat.i(115700);
-      String str = String.format("topLeftX:%d, topLeftY:%d, rightBottomX:%d, rightBottomY:%d", new Object[] { Integer.valueOf(this.CoG), Integer.valueOf(this.CoH), Integer.valueOf(this.CoI), Integer.valueOf(this.CoJ) });
+      String str = String.format("topLeftX:%d, topLeftY:%d, rightBottomX:%d, rightBottomY:%d", new Object[] { Integer.valueOf(this.CGk), Integer.valueOf(this.CGl), Integer.valueOf(this.CGm), Integer.valueOf(this.CGn) });
       AppMethodBeat.o(115700);
       return str;
     }
@@ -163,7 +163,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.k
  * JD-Core Version:    0.7.0.1
  */

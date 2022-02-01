@@ -35,7 +35,7 @@ public final class e
     AppMethodBeat.o(80990);
   }
   
-  private boolean aol()
+  private boolean aoA()
   {
     AppMethodBeat.i(80997);
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
@@ -54,7 +54,7 @@ public final class e
     Object localObject1 = getWindow();
     Object localObject2;
     View localView;
-    if (aol())
+    if (aoA())
     {
       ((Window)localObject1).setGravity(5);
       ((Window)localObject1).setWindowAnimations(2131821249);
@@ -73,7 +73,7 @@ public final class e
           localObject1 = getLayoutInflater().inflate(paramInt, (ViewGroup)localObject2, false);
         }
       }
-      if (!aol()) {
+      if (!aoA()) {
         break label201;
       }
       paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131302250);
@@ -86,7 +86,7 @@ public final class e
     }
     for (;;)
     {
-      if (eUt()) {
+      if (eYg()) {
         localView.setOnClickListener(new e.1(this));
       }
       AppMethodBeat.o(80995);
@@ -102,7 +102,7 @@ public final class e
     }
   }
   
-  private boolean eUt()
+  private boolean eYg()
   {
     AppMethodBeat.i(80996);
     if (Build.VERSION.SDK_INT < 11)

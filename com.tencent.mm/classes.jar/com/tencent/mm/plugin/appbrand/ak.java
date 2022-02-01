@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ak
 {
-  private static volatile Boolean jBg = null;
+  private static volatile Boolean jDR = null;
   
-  public static boolean aXO()
+  public static boolean aYh()
   {
     AppMethodBeat.i(43978);
     AppMethodBeat.o(43978);

@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String desc;
-  public String tSb;
+  public String ucS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,8 +17,8 @@ public final class c
       if (this.desc != null) {
         paramVarArgs.d(1, this.desc);
       }
-      if (this.tSb != null) {
-        paramVarArgs.d(2, this.tSb);
+      if (this.ucS != null) {
+        paramVarArgs.d(2, this.ucS);
       }
       AppMethodBeat.o(40866);
       return 0;
@@ -32,17 +32,17 @@ public final class c
     for (paramInt = f.a.a.b.b.a.e(1, this.desc) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.tSb != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.tSb);
+      if (this.ucS != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ucS);
       }
       AppMethodBeat.o(40866);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(40866);
@@ -58,11 +58,11 @@ public final class c
           AppMethodBeat.o(40866);
           return -1;
         case 1: 
-          localc.desc = locala.NPN.readString();
+          localc.desc = locala.OmT.readString();
           AppMethodBeat.o(40866);
           return 0;
         }
-        localc.tSb = locala.NPN.readString();
+        localc.ucS = locala.OmT.readString();
         AppMethodBeat.o(40866);
         return 0;
       }

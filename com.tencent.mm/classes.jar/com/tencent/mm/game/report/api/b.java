@@ -1,26 +1,26 @@
 package com.tencent.mm.game.report.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
 {
-  public int gsc;
-  public String gsd;
+  public int guD;
+  public String guE;
   
   public b() {}
   
   public b(int paramInt, String paramString)
   {
-    this.gsc = paramInt;
-    this.gsd = paramString;
+    this.guD = paramInt;
+    this.guE = paramString;
   }
   
   public static b c(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(117604);
     b localb = new b();
-    localb.gsc = paramInt;
+    localb.guD = paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
     int j = paramVarArgs.length - 1;
     int i = 0;
@@ -30,8 +30,8 @@ public final class b
       i += 1;
     }
     localStringBuilder.append(String.valueOf(paramVarArgs[j]));
-    localb.gsd = localStringBuilder.toString();
-    ad.d("MicroMsg.GameReportInfo", "appStat logID=%d, vals.size=%d, val = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramVarArgs.length), localStringBuilder.toString() });
+    localb.guE = localStringBuilder.toString();
+    ae.d("MicroMsg.GameReportInfo", "appStat logID=%d, vals.size=%d, val = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramVarArgs.length), localStringBuilder.toString() });
     AppMethodBeat.o(117604);
     return localb;
   }

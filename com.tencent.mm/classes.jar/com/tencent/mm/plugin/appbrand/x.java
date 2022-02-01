@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.xweb.WebView.PreInitCallback;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,16 +10,16 @@ import java.util.Set;
 
 public class x
 {
-  private static volatile boolean jAM;
-  private static volatile boolean jAN;
-  private static final Set<a> jAO;
+  private static volatile boolean jDx;
+  private static volatile boolean jDy;
+  private static final Set<a> jDz;
   
   static
   {
     AppMethodBeat.i(43976);
-    jAM = false;
-    jAN = false;
-    jAO = new HashSet();
+    jDx = false;
+    jDy = false;
+    jDz = new HashSet();
     AppMethodBeat.o(43976);
   }
   
@@ -31,20 +31,20 @@ public class x
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: ldc 2
     //   7: monitorenter
-    //   8: getstatic 26	com/tencent/mm/plugin/appbrand/x:jAM	Z
+    //   8: getstatic 26	com/tencent/mm/plugin/appbrand/x:jDx	Z
     //   11: istore_2
-    //   12: getstatic 28	com/tencent/mm/plugin/appbrand/x:jAN	Z
+    //   12: getstatic 28	com/tencent/mm/plugin/appbrand/x:jDy	Z
     //   15: istore_3
     //   16: iload_3
     //   17: ifne +21 -> 38
-    //   20: getstatic 35	com/tencent/mm/plugin/appbrand/x:jAO	Ljava/util/Set;
+    //   20: getstatic 35	com/tencent/mm/plugin/appbrand/x:jDz	Ljava/util/Set;
     //   23: aload_0
     //   24: invokeinterface 48 2 0
     //   29: pop
     //   30: iconst_1
-    //   31: putstatic 26	com/tencent/mm/plugin/appbrand/x:jAM	Z
+    //   31: putstatic 26	com/tencent/mm/plugin/appbrand/x:jDx	Z
     //   34: iconst_0
-    //   35: putstatic 28	com/tencent/mm/plugin/appbrand/x:jAN	Z
+    //   35: putstatic 28	com/tencent/mm/plugin/appbrand/x:jDy	Z
     //   38: iload_2
     //   39: ifeq +12 -> 51
     //   42: ldc 2
@@ -70,17 +70,17 @@ public class x
     //   80: athrow
     //   81: ldc 53
     //   83: ldc 55
-    //   85: invokestatic 60	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: invokestatic 60	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: invokestatic 66	android/os/Process:myTid	()I
     //   91: invokestatic 70	android/os/Process:getThreadPriority	(I)I
     //   94: istore_1
     //   95: bipush 254
-    //   97: invokestatic 75	com/tencent/mm/sdk/platformtools/aq:aay	(I)V
+    //   97: invokestatic 75	com/tencent/mm/sdk/platformtools/ar:abe	(I)V
     //   100: invokestatic 81	com/tencent/xweb/WebView:hasInited	()Z
     //   103: ifeq +16 -> 119
-    //   106: invokestatic 84	com/tencent/mm/plugin/appbrand/x:aXL	()V
+    //   106: invokestatic 84	com/tencent/mm/plugin/appbrand/x:aYe	()V
     //   109: iload_1
-    //   110: invokestatic 75	com/tencent/mm/sdk/platformtools/aq:aay	(I)V
+    //   110: invokestatic 75	com/tencent/mm/sdk/platformtools/ar:abe	(I)V
     //   113: ldc 42
     //   115: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: return
@@ -88,33 +88,33 @@ public class x
     //   122: dup
     //   123: invokespecial 87	com/tencent/mm/pointers/PBool:<init>	()V
     //   126: astore_0
-    //   127: getstatic 93	com/tencent/xweb/WebView$c:Mqu	Lcom/tencent/xweb/WebView$c;
+    //   127: getstatic 93	com/tencent/xweb/WebView$c:MNy	Lcom/tencent/xweb/WebView$c;
     //   130: new 6	com/tencent/mm/plugin/appbrand/x$1
     //   133: dup
     //   134: aload_0
     //   135: invokespecial 96	com/tencent/mm/plugin/appbrand/x$1:<init>	(Lcom/tencent/mm/pointers/PBool;)V
-    //   138: invokestatic 101	com/tencent/mm/cq/d:a	(Lcom/tencent/xweb/WebView$c;Lcom/tencent/xweb/WebView$PreInitCallback;)V
+    //   138: invokestatic 101	com/tencent/mm/cp/d:a	(Lcom/tencent/xweb/WebView$c;Lcom/tencent/xweb/WebView$PreInitCallback;)V
     //   141: aload_0
     //   142: getfield 104	com/tencent/mm/pointers/PBool:value	Z
     //   145: ifeq +16 -> 161
-    //   148: invokestatic 84	com/tencent/mm/plugin/appbrand/x:aXL	()V
+    //   148: invokestatic 84	com/tencent/mm/plugin/appbrand/x:aYe	()V
     //   151: iload_1
-    //   152: invokestatic 75	com/tencent/mm/sdk/platformtools/aq:aay	(I)V
+    //   152: invokestatic 75	com/tencent/mm/sdk/platformtools/ar:abe	(I)V
     //   155: ldc 42
     //   157: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: return
     //   161: ldc 2
     //   163: monitorenter
     //   164: iconst_0
-    //   165: putstatic 28	com/tencent/mm/plugin/appbrand/x:jAN	Z
+    //   165: putstatic 28	com/tencent/mm/plugin/appbrand/x:jDy	Z
     //   168: iconst_0
-    //   169: putstatic 26	com/tencent/mm/plugin/appbrand/x:jAM	Z
+    //   169: putstatic 26	com/tencent/mm/plugin/appbrand/x:jDx	Z
     //   172: new 30	java/util/HashSet
     //   175: dup
-    //   176: getstatic 35	com/tencent/mm/plugin/appbrand/x:jAO	Ljava/util/Set;
+    //   176: getstatic 35	com/tencent/mm/plugin/appbrand/x:jDz	Ljava/util/Set;
     //   179: invokespecial 107	java/util/HashSet:<init>	(Ljava/util/Collection;)V
     //   182: astore_0
-    //   183: getstatic 35	com/tencent/mm/plugin/appbrand/x:jAO	Ljava/util/Set;
+    //   183: getstatic 35	com/tencent/mm/plugin/appbrand/x:jDz	Ljava/util/Set;
     //   186: invokeinterface 110 1 0
     //   191: ldc 2
     //   193: monitorexit
@@ -128,7 +128,7 @@ public class x
     //   205: invokeinterface 115 1 0
     //   210: invokestatic 121	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   213: aastore
-    //   214: invokestatic 124	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   214: invokestatic 124	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   217: aload_0
     //   218: invokeinterface 128 1 0
     //   223: astore_0
@@ -142,7 +142,7 @@ public class x
     //   247: goto -23 -> 224
     //   250: astore_0
     //   251: iload_1
-    //   252: invokestatic 75	com/tencent/mm/sdk/platformtools/aq:aay	(I)V
+    //   252: invokestatic 75	com/tencent/mm/sdk/platformtools/ar:abe	(I)V
     //   255: ldc 42
     //   257: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   260: aload_0
@@ -177,29 +177,29 @@ public class x
     //   263	266	262	finally
   }
   
-  public static boolean aXK()
+  public static boolean aYd()
   {
     try
     {
-      boolean bool = jAN;
+      boolean bool = jDy;
       return bool;
     }
     finally {}
   }
   
-  private static void aXL()
+  private static void aYe()
   {
     AppMethodBeat.i(43975);
     try
     {
-      jAN = true;
-      jAM = false;
-      Object localObject1 = new HashSet(jAO);
-      jAO.clear();
-      ad.i("MicroMsg.AppBrandXWebPreloader[preload]", "notifyPreloadDone callbacks[%d]", new Object[] { Integer.valueOf(((Set)localObject1).size()) });
+      jDy = true;
+      jDx = false;
+      Object localObject1 = new HashSet(jDz);
+      jDz.clear();
+      ae.i("MicroMsg.AppBrandXWebPreloader[preload]", "notifyPreloadDone callbacks[%d]", new Object[] { Integer.valueOf(((Set)localObject1).size()) });
       localObject1 = ((Set)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((a)((Iterator)localObject1).next()).aWv();
+        ((a)((Iterator)localObject1).next()).aWX();
       }
       AppMethodBeat.o(43975);
     }
@@ -211,14 +211,14 @@ public class x
   
   public static abstract interface a
   {
-    public abstract void aWv();
+    public abstract void aWX();
     
-    public abstract void aWw();
+    public abstract void aWY();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.x
  * JD-Core Version:    0.7.0.1
  */

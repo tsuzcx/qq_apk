@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(35267);
-    JIy = new a("hide", 0);
-    JIz = new a("show", 1);
-    JIA = new a[] { JIy, JIz };
+    Kdu = new a("hide", 0);
+    Kdv = new a("show", 1);
+    Kdw = new a[] { Kdu, Kdv };
     AppMethodBeat.o(35267);
   }
   

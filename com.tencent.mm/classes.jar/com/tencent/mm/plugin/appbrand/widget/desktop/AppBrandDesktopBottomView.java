@@ -11,29 +11,29 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "drawColor", "leftArcRectF", "Landroid/graphics/RectF;", "mContext", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "radii", "", "radius", "", "rightArcRectF", "computeRadius", "", "dp", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setDrawColor", "color", "setTopRoundRadius", "topRadius", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "drawColor", "leftArcRectF", "Landroid/graphics/RectF;", "mContext", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "radii", "", "radius", "", "rightArcRectF", "computeRadius", "", "dp", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setDrawColor", "color", "setTopRoundRadius", "topRadius", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandDesktopBottomView
   extends View
 {
-  public static final AppBrandDesktopBottomView.a mVG;
+  public static final AppBrandDesktopBottomView.a naM;
   private Context mContext;
   private Paint mPaint;
-  private int mVC;
-  private float[] mVD;
-  private RectF mVE;
-  private RectF mVF;
+  private int naI;
+  private float[] naJ;
+  private RectF naK;
+  private RectF naL;
   private float radius;
   private Path xN;
   
   static
   {
     AppMethodBeat.i(51414);
-    mVG = new AppBrandDesktopBottomView.a((byte)0);
+    naM = new AppBrandDesktopBottomView.a((byte)0);
     AppMethodBeat.o(51414);
   }
   
@@ -43,9 +43,9 @@ public final class AppBrandDesktopBottomView
     AppMethodBeat.i(51412);
     this.mPaint = new Paint();
     this.xN = new Path();
-    this.mVD = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.mVE = new RectF();
-    this.mVF = new RectF();
+    this.naJ = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+    this.naK = new RectF();
+    this.naL = new RectF();
     init(paramContext);
     AppMethodBeat.o(51412);
   }
@@ -56,9 +56,9 @@ public final class AppBrandDesktopBottomView
     AppMethodBeat.i(51413);
     this.mPaint = new Paint();
     this.xN = new Path();
-    this.mVD = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.mVE = new RectF();
-    this.mVF = new RectF();
+    this.naJ = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+    this.naK = new RectF();
+    this.naL = new RectF();
     init(paramContext);
     AppMethodBeat.o(51413);
   }
@@ -67,20 +67,20 @@ public final class AppBrandDesktopBottomView
   {
     AppMethodBeat.i(51407);
     this.mContext = paramContext;
-    this.mVC = getResources().getColor(2131099930);
-    vZ(8);
+    this.naI = getResources().getColor(2131099930);
+    we(8);
     AppMethodBeat.o(51407);
   }
   
-  private final void vZ(int paramInt)
+  private final void we(int paramInt)
   {
     AppMethodBeat.i(51408);
     this.radius = a.fromDPToPix(getContext(), paramInt);
-    this.mVD[0] = this.radius;
-    this.mVD[1] = this.radius;
-    this.mVD[2] = this.radius;
-    this.mVD[3] = this.radius;
-    ad.i("Mp.AppBrandDesktopBottomView", "alvinluo computeRadius radius: %f", new Object[] { Float.valueOf(this.radius) });
+    this.naJ[0] = this.radius;
+    this.naJ[1] = this.radius;
+    this.naJ[2] = this.radius;
+    this.naJ[3] = this.radius;
+    ae.i("Mp.AppBrandDesktopBottomView", "alvinluo computeRadius radius: %f", new Object[] { Float.valueOf(this.radius) });
     AppMethodBeat.o(51408);
   }
   
@@ -88,11 +88,11 @@ public final class AppBrandDesktopBottomView
   {
     AppMethodBeat.i(51411);
     super.onDraw(paramCanvas);
-    this.mPaint.setColor(this.mVC);
+    this.mPaint.setColor(this.naI);
     this.mPaint.setStyle(Paint.Style.FILL);
-    if (d.lA(20))
+    if (d.lC(20))
     {
-      this.xN.addRoundRect(getLeft(), getTop(), getRight(), getBottom(), this.mVD, Path.Direction.CCW);
+      this.xN.addRoundRect(getLeft(), getTop(), getRight(), getBottom(), this.naJ, Path.Direction.CCW);
       if (paramCanvas != null) {
         paramCanvas.drawPath(this.xN, this.mPaint);
       }
@@ -100,13 +100,13 @@ public final class AppBrandDesktopBottomView
       AppMethodBeat.o(51411);
       return;
     }
-    this.mVE.set(getLeft(), getTop(), getLeft() + this.radius * 2.0F, getTop() + this.radius * 2.0F);
-    this.mVF.set(getRight() - this.radius * 2.0F, getTop(), getRight(), getTop() + this.radius * 2.0F);
+    this.naK.set(getLeft(), getTop(), getLeft() + this.radius * 2.0F, getTop() + this.radius * 2.0F);
+    this.naL.set(getRight() - this.radius * 2.0F, getTop(), getRight(), getTop() + this.radius * 2.0F);
     if (paramCanvas != null) {
-      paramCanvas.drawArc(this.mVE, 180.0F, 90.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.naK, 180.0F, 90.0F, true, this.mPaint);
     }
     if (paramCanvas != null) {
-      paramCanvas.drawArc(this.mVF, 270.0F, 90.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.naL, 270.0F, 90.0F, true, this.mPaint);
     }
     float f1;
     if (paramCanvas != null)
@@ -128,7 +128,7 @@ public final class AppBrandDesktopBottomView
   public final void setDrawColor(int paramInt)
   {
     AppMethodBeat.i(51410);
-    this.mVC = paramInt;
+    this.naI = paramInt;
     invalidate();
     AppMethodBeat.o(51410);
   }
@@ -136,7 +136,7 @@ public final class AppBrandDesktopBottomView
   public final void setTopRoundRadius(int paramInt)
   {
     AppMethodBeat.i(51409);
-    vZ(paramInt);
+    we(paramInt);
     AppMethodBeat.o(51409);
   }
 }

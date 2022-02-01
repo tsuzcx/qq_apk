@@ -1,6 +1,5 @@
 package com.tencent.mm.network;
 
-import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
@@ -9,72 +8,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface g
   extends IInterface
 {
-  public abstract void hr(int paramInt);
+  public abstract void hs(int paramInt);
   
-  public static abstract class a
-    extends Binder
+  static final class a$a
     implements g
   {
-    public a()
+    private IBinder mRemote;
+    
+    a$a(IBinder paramIBinder)
     {
-      attachInterface(this, "com.tencent.mm.network.IIpxxCallback_AIDL");
+      this.mRemote = paramIBinder;
     }
     
-    public IBinder asBinder()
+    public final IBinder asBinder()
     {
-      return this;
+      return this.mRemote;
     }
     
-    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    public final void hs(int paramInt)
     {
-      switch (paramInt1)
+      AppMethodBeat.i(132738);
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      try
       {
-      default: 
-        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-      case 1598968902: 
-        paramParcel2.writeString("com.tencent.mm.network.IIpxxCallback_AIDL");
-        return true;
+        localParcel1.writeInterfaceToken("com.tencent.mm.network.IIpxxCallback_AIDL");
+        localParcel1.writeInt(paramInt);
+        this.mRemote.transact(1, localParcel1, localParcel2, 0);
+        localParcel2.readException();
+        return;
       }
-      paramParcel1.enforceInterface("com.tencent.mm.network.IIpxxCallback_AIDL");
-      hr(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    
-    static final class a
-      implements g
-    {
-      private IBinder mRemote;
-      
-      a(IBinder paramIBinder)
+      finally
       {
-        this.mRemote = paramIBinder;
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final void hr(int paramInt)
-      {
-        AppMethodBeat.i(132738);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IIpxxCallback_AIDL");
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(132738);
-        }
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(132738);
       }
     }
   }

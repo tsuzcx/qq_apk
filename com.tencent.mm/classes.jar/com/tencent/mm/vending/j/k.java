@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends j
 {
-  public static k J(Object... paramVarArgs)
+  public static k I(Object... paramVarArgs)
   {
     AppMethodBeat.i(74897);
     k localk = new k();
-    localk.LiZ = paramVarArgs;
+    localk.LFB = paramVarArgs;
     paramVarArgs = (k)localk;
     AppMethodBeat.o(74897);
     return paramVarArgs;

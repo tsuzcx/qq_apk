@@ -36,8 +36,8 @@ public class TbsDownloadUpload
   private static File a(Context paramContext, String paramString)
   {
     AppMethodBeat.i(54661);
-    o.a();
-    paramContext = o.s(paramContext);
+    q.a();
+    paramContext = q.t(paramContext);
     if (paramContext == null)
     {
       AppMethodBeat.o(54661);

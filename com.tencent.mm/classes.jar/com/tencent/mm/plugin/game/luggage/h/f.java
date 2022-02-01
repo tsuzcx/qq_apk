@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.game.luggage.h;
 
 import com.tencent.luggage.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class f
 {
-  com.tencent.luggage.d.f tVV;
-  boolean tWo;
-  boolean tWp;
-  LinkedList<d> tWq;
-  LinkedList<g> tWr;
+  com.tencent.luggage.d.f ugT;
+  boolean uhm;
+  boolean uhn;
+  LinkedList<d> uho;
+  LinkedList<g> uhp;
   
   public f(com.tencent.luggage.d.f paramf)
   {
-    AppMethodBeat.i(211725);
-    this.tWq = new LinkedList();
-    this.tWr = new LinkedList();
-    this.tVV = paramf;
-    AppMethodBeat.o(211725);
+    AppMethodBeat.i(193124);
+    this.uho = new LinkedList();
+    this.uhp = new LinkedList();
+    this.ugT = paramf;
+    AppMethodBeat.o(193124);
   }
   
   public final void b(d paramd)
   {
-    AppMethodBeat.i(211726);
-    ad.i("MicroMsg.Page2JsCoreMsgDispatch", "dispatchEvent, hasDestroyed = %b, hasReady = %b", new Object[] { Boolean.valueOf(this.tWp), Boolean.valueOf(this.tWo) });
-    if (this.tWp)
+    AppMethodBeat.i(193125);
+    ae.i("MicroMsg.Page2JsCoreMsgDispatch", "dispatchEvent, hasDestroyed = %b, hasReady = %b", new Object[] { Boolean.valueOf(this.uhn), Boolean.valueOf(this.uhm) });
+    if (this.uhn)
     {
-      AppMethodBeat.o(211726);
+      AppMethodBeat.o(193125);
       return;
     }
-    if (!this.tWo)
+    if (!this.uhm)
     {
-      this.tWq.add(paramd);
-      AppMethodBeat.o(211726);
+      this.uho.add(paramd);
+      AppMethodBeat.o(193125);
       return;
     }
-    this.tVV.a(paramd);
-    AppMethodBeat.o(211726);
+    this.ugT.a(paramd);
+    AppMethodBeat.o(193125);
   }
 }
 

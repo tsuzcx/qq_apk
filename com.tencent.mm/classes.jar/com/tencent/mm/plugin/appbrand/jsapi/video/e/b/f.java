@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  volatile boolean lrk;
-  int lrl;
-  Handler lrm;
-  b lrn;
-  a lro;
+  volatile boolean lvK;
+  int lvL;
+  Handler lvM;
+  b lvN;
+  a lvO;
   
   f(Handler paramHandler)
   {
-    AppMethodBeat.i(206345);
-    this.lrk = false;
-    this.lrl = 1000;
-    this.lro = new a((byte)0);
-    this.lrm = paramHandler;
-    AppMethodBeat.o(206345);
+    AppMethodBeat.i(211375);
+    this.lvK = false;
+    this.lvL = 1000;
+    this.lvO = new a((byte)0);
+    this.lvM = paramHandler;
+    AppMethodBeat.o(211375);
   }
   
   final void start()
   {
-    AppMethodBeat.i(206346);
-    if (!this.lrk)
+    AppMethodBeat.i(211376);
+    if (!this.lvK)
     {
-      this.lrk = true;
-      this.lro.bow();
+      this.lvK = true;
+      this.lvO.bpg();
     }
-    AppMethodBeat.o(206346);
+    AppMethodBeat.o(211376);
   }
   
   final class a
@@ -37,29 +37,29 @@ public final class f
   {
     private a() {}
     
-    final void bow()
+    final void bpg()
     {
-      AppMethodBeat.i(206344);
-      f.this.lrm.postDelayed(f.this.lro, f.this.lrl);
-      AppMethodBeat.o(206344);
+      AppMethodBeat.i(211374);
+      f.this.lvM.postDelayed(f.this.lvO, f.this.lvL);
+      AppMethodBeat.o(211374);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(206343);
-      if (f.this.lrn != null) {
-        f.this.lrn.agl();
+      AppMethodBeat.i(211373);
+      if (f.this.lvN != null) {
+        f.this.lvN.agz();
       }
-      if (f.this.lrk) {
-        bow();
+      if (f.this.lvK) {
+        bpg();
       }
-      AppMethodBeat.o(206343);
+      AppMethodBeat.o(211373);
     }
   }
   
   static abstract interface b
   {
-    public abstract void agl();
+    public abstract void agz();
   }
 }
 

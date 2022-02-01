@@ -3,71 +3,128 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class clp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int HeQ;
-  public int HeR;
-  public String HeS;
+  public float GgZ;
+  public float Gha;
+  public String Hdi;
+  public String HxI;
+  public String HxJ;
+  public long HxK;
+  public String jfX;
+  public String jge;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125754);
+    AppMethodBeat.i(117892);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HeQ);
-      paramVarArgs.aS(2, this.HeR);
-      if (this.HeS != null) {
-        paramVarArgs.d(3, this.HeS);
+      if (this.HxI != null) {
+        paramVarArgs.d(1, this.HxI);
       }
-      AppMethodBeat.o(125754);
+      if (this.jge != null) {
+        paramVarArgs.d(2, this.jge);
+      }
+      if (this.jfX != null) {
+        paramVarArgs.d(3, this.jfX);
+      }
+      if (this.Hdi != null) {
+        paramVarArgs.d(4, this.Hdi);
+      }
+      paramVarArgs.y(5, this.Gha);
+      paramVarArgs.y(6, this.GgZ);
+      if (this.HxJ != null) {
+        paramVarArgs.d(7, this.HxJ);
+      }
+      paramVarArgs.aZ(8, this.HxK);
+      AppMethodBeat.o(117892);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.HxI == null) {
+        break label588;
+      }
+    }
+    label588:
+    for (int i = f.a.a.b.b.a.e(1, this.HxI) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bz(1, this.HeQ) + 0 + f.a.a.b.b.a.bz(2, this.HeR);
       paramInt = i;
-      if (this.HeS != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.HeS);
+      if (this.jge != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.jge);
       }
-      AppMethodBeat.o(125754);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
+      i = paramInt;
+      if (this.jfX != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.jfX);
       }
-      AppMethodBeat.o(125754);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      clp localclp = (clp)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.Hdi != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Hdi);
+      }
+      i = paramInt + f.a.a.b.b.a.amE(5) + f.a.a.b.b.a.amE(6);
+      paramInt = i;
+      if (this.HxJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.HxJ);
+      }
+      i = f.a.a.b.b.a.p(8, this.HxK);
+      AppMethodBeat.o(117892);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(125754);
-        return -1;
-      case 1: 
-        localclp.HeQ = locala.NPN.zc();
-        AppMethodBeat.o(125754);
-        return 0;
-      case 2: 
-        localclp.HeR = locala.NPN.zc();
-        AppMethodBeat.o(125754);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(117892);
         return 0;
       }
-      localclp.HeS = locala.NPN.readString();
-      AppMethodBeat.o(125754);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        clp localclp = (clp)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(117892);
+          return -1;
+        case 1: 
+          localclp.HxI = locala.OmT.readString();
+          AppMethodBeat.o(117892);
+          return 0;
+        case 2: 
+          localclp.jge = locala.OmT.readString();
+          AppMethodBeat.o(117892);
+          return 0;
+        case 3: 
+          localclp.jfX = locala.OmT.readString();
+          AppMethodBeat.o(117892);
+          return 0;
+        case 4: 
+          localclp.Hdi = locala.OmT.readString();
+          AppMethodBeat.o(117892);
+          return 0;
+        case 5: 
+          localclp.Gha = Float.intBitsToFloat(locala.OmT.gwb());
+          AppMethodBeat.o(117892);
+          return 0;
+        case 6: 
+          localclp.GgZ = Float.intBitsToFloat(locala.OmT.gwb());
+          AppMethodBeat.o(117892);
+          return 0;
+        case 7: 
+          localclp.HxJ = locala.OmT.readString();
+          AppMethodBeat.o(117892);
+          return 0;
+        }
+        localclp.HxK = locala.OmT.zd();
+        AppMethodBeat.o(117892);
+        return 0;
+      }
+      AppMethodBeat.o(117892);
+      return -1;
     }
-    AppMethodBeat.o(125754);
-    return -1;
   }
 }
 

@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 
 public class k$b
 {
   public byte[] buffer;
   public int cmdId;
-  public int dDp = -1;
-  public long hYr;
+  public int dEu = -1;
+  public long ibj;
   public int id;
-  public int vKi;
-  public long vKj;
-  public String vKk;
-  public String vKl;
-  public a vKm;
+  public int vWm;
+  public long vWn;
+  public String vWo;
+  public String vWp;
+  public a vWq;
   
   public k$b(int paramInt)
   {
     this.cmdId = paramInt;
   }
   
-  public final a dmd()
+  public final a dpc()
   {
-    return this.vKm;
+    return this.vWq;
   }
   
   public final byte[] getBuffer()
   {
     AppMethodBeat.i(43081);
-    if ((this.buffer == null) && (this.vKm != null)) {}
+    if ((this.buffer == null) && (this.vWq != null)) {}
     try
     {
-      this.buffer = this.vKm.toByteArray();
+      this.buffer = this.vWq.toByteArray();
       byte[] arrayOfByte = this.buffer;
       AppMethodBeat.o(43081);
       return arrayOfByte;
@@ -43,7 +43,7 @@ public class k$b
     {
       for (;;)
       {
-        ad.e("MicroMsg.OpLog.Operation", "summeroplog Operation toByteArray err: " + localIOException.getMessage());
+        ae.e("MicroMsg.OpLog.Operation", "summeroplog Operation toByteArray err: " + localIOException.getMessage());
       }
     }
   }

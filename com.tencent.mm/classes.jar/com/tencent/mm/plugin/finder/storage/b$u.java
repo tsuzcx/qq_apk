@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
+import d.g.a.b;
 import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "index", "", "invoke"})
 final class b$u
   extends q
-  implements a<z>
+  implements b<Integer, z>
 {
-  public static final u sxv;
+  public static final u sIk;
   
   static
   {
-    AppMethodBeat.i(203593);
-    sxv = new u();
-    AppMethodBeat.o(203593);
+    AppMethodBeat.i(204153);
+    sIk = new u();
+    AppMethodBeat.o(204153);
   }
   
   b$u()
   {
-    super(0);
+    super(1);
   }
 }
 

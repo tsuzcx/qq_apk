@@ -4,30 +4,30 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.plugin.appbrand.r.a.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.j;
 import d.g.b.q;
 import d.l;
 import d.z;
 import junit.framework.Assert;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "Landroid/content/ServiceConnection;", "pendingIntentKey", "", "TAG", "", "onProgressLoadSuccess", "Lkotlin/Function0;", "", "(ILjava/lang/String;Lkotlin/jvm/functions/Function0;)V", "getTAG", "()Ljava/lang/String;", "getOnProgressLoadSuccess", "()Lkotlin/jvm/functions/Function0;", "onServiceConnected", "name", "Landroid/content/ComponentName;", "service", "Landroid/os/IBinder;", "onServiceDisconnected", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "Landroid/content/ServiceConnection;", "pendingIntentKey", "", "TAG", "", "onProgressLoadSuccess", "Lkotlin/Function0;", "", "(ILjava/lang/String;Lkotlin/jvm/functions/Function0;)V", "getTAG", "()Ljava/lang/String;", "getOnProgressLoadSuccess", "()Lkotlin/jvm/functions/Function0;", "onServiceConnected", "name", "Landroid/content/ComponentName;", "service", "Landroid/os/IBinder;", "onServiceDisconnected", "plugin-appbrand-integration_release"})
 public final class b
   implements ServiceConnection
 {
   private final String TAG;
-  private final int lNK;
-  private final d.g.a.a<z> lNS;
+  private final int lSl;
+  private final d.g.a.a<z> lSt;
   
   public b(int paramInt, String paramString, d.g.a.a<z> parama)
   {
     AppMethodBeat.i(50822);
-    this.lNK = paramInt;
+    this.lSl = paramInt;
     this.TAG = paramString;
-    this.lNS = parama;
-    if (i.IS_FLAVOR_RED) {
-      if (this.lNK <= 0) {
+    this.lSt = parama;
+    if (j.IS_FLAVOR_RED) {
+      if (this.lSl <= 0) {
         break label63;
       }
     }
@@ -43,22 +43,22 @@ public final class b
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     AppMethodBeat.i(50821);
-    ad.i(this.TAG, "onServiceConnected: name = ".concat(String.valueOf(paramComponentName)));
-    paramComponentName = a.a.r(paramIBinder);
+    ae.i(this.TAG, "onServiceConnected: name = ".concat(String.valueOf(paramComponentName)));
+    paramComponentName = a.a.s(paramIBinder);
     try
     {
-      if (paramComponentName.ur(0) == 1)
+      if (paramComponentName.ux(0) == 1)
       {
-        this.lNS.invoke();
-        ad.i(this.TAG, "onServiceConnected: IPC_TRIGGER_PROGRESS_SUCCESS");
+        this.lSt.invoke();
+        ae.i(this.TAG, "onServiceConnected: IPC_TRIGGER_PROGRESS_SUCCESS");
         AppMethodBeat.o(50821);
         return;
       }
     }
     catch (Exception paramComponentName)
     {
-      ad.e(this.TAG, "onServiceConnected: ", new Object[] { paramComponentName });
-      c.lNX.uu(this.lNK);
+      ae.e(this.TAG, "onServiceConnected: ", new Object[] { paramComponentName });
+      c.lSy.uA(this.lSl);
       AppMethodBeat.o(50821);
     }
   }
@@ -66,7 +66,7 @@ public final class b
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
     AppMethodBeat.i(50820);
-    ad.i(this.TAG, "disconnected");
+    ae.i(this.TAG, "disconnected");
     AppMethodBeat.o(50820);
   }
 }

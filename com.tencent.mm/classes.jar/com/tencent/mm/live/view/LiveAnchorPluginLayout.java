@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -19,7 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.live.api.LiveConfig;
 import com.tencent.mm.live.b.a.u;
 import com.tencent.mm.live.b.b.a.a;
@@ -27,7 +26,6 @@ import com.tencent.mm.live.b.g.b;
 import com.tencent.mm.live.b.g.c;
 import com.tencent.mm.live.b.g.d;
 import com.tencent.mm.live.c.ac;
-import com.tencent.mm.live.c.ae;
 import com.tencent.mm.live.c.ag;
 import com.tencent.mm.live.c.ai;
 import com.tencent.mm.live.c.ak;
@@ -51,12 +49,12 @@ import com.tencent.mm.live.core.core.c.c;
 import com.tencent.mm.live.core.view.LivePreviewView;
 import com.tencent.mm.live.core.view.TRTCVideoLayoutManager;
 import com.tencent.mm.live.ui.dialog.LiveAnchorMicUserListView;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.plugin.mmsight.model.d.a;
-import com.tencent.mm.protocal.protobuf.bun;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bvh;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
 import d.g.a.s;
@@ -64,76 +62,76 @@ import d.v;
 import d.z;
 import java.util.ArrayList;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/LiveAnchorPluginLayout;", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/mmsight/model/DeviceOrientationListener$OrienChangeCallback;", "Lcom/tencent/mm/live/core/core/LiveCallback;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "curNetworkQuality", "", "curStatus", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "fromForcelockOrientation", "", "lastRotationFromSensor", "liveAfterPlugin", "Lcom/tencent/mm/live/plugin/LiveAfterPlugin;", "liveAnchorClosePlugin", "Lcom/tencent/mm/live/plugin/LiveAnchorClosePlugin;", "liveAnchorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveAnchorMicPlugin;", "liveBanCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveBanCommentPlugin;", "liveBeforePlugin", "Lcom/tencent/mm/live/plugin/LiveBeforePlugin;", "liveCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveCommentPlugin;", "liveCommonInfoPlugin", "Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "liveCore", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "liveExceptionPlugin", "Lcom/tencent/mm/live/plugin/LiveExceptionPlugin;", "liveFaceVerifyPlugin", "Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin;", "liveLikeConfettiPlugin", "Lcom/tencent/mm/live/plugin/LiveLikeConfettiPlugin;", "liveLoadingPlugin", "Lcom/tencent/mm/live/plugin/LiveLoadingPlugin;", "liveMemberListPlugin", "Lcom/tencent/mm/live/plugin/LiveMembersListPlugin;", "liveMemberProfilePlugin", "Lcom/tencent/mm/live/plugin/LiveMemberProfilePlugin;", "liveMessageCallback", "Lkotlin/Function0;", "", "liveMicUserHeaderPlugin", "Lcom/tencent/mm/live/plugin/LiveMicHeaderPlugin;", "liveMinimizePlugin", "Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "livePreviewPlugin", "Lcom/tencent/mm/live/plugin/LivePreviewPlugin;", "liveReadyPlugin", "Lcom/tencent/mm/live/plugin/LiveReadyPlugin;", "liveRightPanelPlugin", "Lcom/tencent/mm/live/plugin/LiveHostRightPanelPlugin;", "liveShadowPlugin", "Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "liveShareRoomsPlugin", "Lcom/tencent/mm/live/plugin/LiveShareRoomsPlugin;", "liveTitlePlugin", "Lcom/tencent/mm/live/plugin/LiveTitleInfoPlugin;", "liveVerifyPlugin", "Lcom/tencent/mm/live/plugin/LiveVerifyPlugin;", "navigation", "Lcom/tencent/mm/live/controller/ILiveUINavigation;", "nextStatus", "orientationEventListener", "Lcom/tencent/mm/plugin/mmsight/model/DeviceOrientationListener;", "pluginShow", "rotationEnable", "shareLiveRetryCount", "tempHidePlugins", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lkotlin/collections/ArrayList;", "callback", "errorCode", "param", "Landroid/os/Bundle;", "checkClickArea", "x", "", "y", "validCallback", "checkInitStatus", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "checkVerify", "createNewLive", "liveName", "wechatRoomId", "getLiveRole", "getRelativeLayoutId", "handleErrForeigner", "handleJoinLiveFail", "errCode", "errMsg", "initLogic", "router", "isFinished", "joinLive", "lockOrientation", "mount", "name", "onBackPress", "onCallStateChanged", "state", "incomingNumber", "onOrientationChange", "orientation", "onRotationSwitchChange", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "orientationChanged", "pause", "refreshCamera", "resume", "start", "startLive", "liveId", "", "statusChange", "status", "stopLive", "toggleShowPlugins", "tryResumeLive", "unMount", "updatePlugin", "plugin-logic_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/LiveAnchorPluginLayout;", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/mmsight/model/DeviceOrientationListener$OrienChangeCallback;", "Lcom/tencent/mm/live/core/core/LiveCallback;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "curNetworkQuality", "", "curStatus", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "fromForcelockOrientation", "", "lastRotationFromSensor", "liveAfterPlugin", "Lcom/tencent/mm/live/plugin/LiveAfterPlugin;", "liveAnchorClosePlugin", "Lcom/tencent/mm/live/plugin/LiveAnchorClosePlugin;", "liveAnchorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveAnchorMicPlugin;", "liveBanCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveBanCommentPlugin;", "liveBeforePlugin", "Lcom/tencent/mm/live/plugin/LiveBeforePlugin;", "liveCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveCommentPlugin;", "liveCommonInfoPlugin", "Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "liveCore", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "liveExceptionPlugin", "Lcom/tencent/mm/live/plugin/LiveExceptionPlugin;", "liveFaceVerifyPlugin", "Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin;", "liveLikeConfettiPlugin", "Lcom/tencent/mm/live/plugin/LiveLikeConfettiPlugin;", "liveLoadingPlugin", "Lcom/tencent/mm/live/plugin/LiveLoadingPlugin;", "liveMemberListPlugin", "Lcom/tencent/mm/live/plugin/LiveMembersListPlugin;", "liveMemberProfilePlugin", "Lcom/tencent/mm/live/plugin/LiveMemberProfilePlugin;", "liveMessageCallback", "Lkotlin/Function0;", "", "liveMicUserHeaderPlugin", "Lcom/tencent/mm/live/plugin/LiveMicHeaderPlugin;", "liveMinimizePlugin", "Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "livePreviewPlugin", "Lcom/tencent/mm/live/plugin/LivePreviewPlugin;", "liveReadyPlugin", "Lcom/tencent/mm/live/plugin/LiveReadyPlugin;", "liveRightPanelPlugin", "Lcom/tencent/mm/live/plugin/LiveHostRightPanelPlugin;", "liveShadowPlugin", "Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "liveShareRoomsPlugin", "Lcom/tencent/mm/live/plugin/LiveShareRoomsPlugin;", "liveTitlePlugin", "Lcom/tencent/mm/live/plugin/LiveTitleInfoPlugin;", "liveVerifyPlugin", "Lcom/tencent/mm/live/plugin/LiveVerifyPlugin;", "navigation", "Lcom/tencent/mm/live/controller/ILiveUINavigation;", "nextStatus", "orientationEventListener", "Lcom/tencent/mm/plugin/mmsight/model/DeviceOrientationListener;", "pluginShow", "rotationEnable", "shareLiveRetryCount", "tempHidePlugins", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lkotlin/collections/ArrayList;", "callback", "errorCode", "param", "Landroid/os/Bundle;", "checkClickArea", "x", "", "y", "validCallback", "checkInitStatus", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "checkVerify", "createNewLive", "liveName", "wechatRoomId", "getLiveRole", "getRelativeLayoutId", "handleErrForeigner", "handleJoinLiveFail", "errCode", "errMsg", "initLogic", "router", "isFinished", "joinLive", "lockOrientation", "mount", "name", "onBackPress", "onCallStateChanged", "state", "incomingNumber", "onOrientationChange", "orientation", "onRotationSwitchChange", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "orientationChanged", "pause", "refreshCamera", "resume", "start", "startLive", "liveId", "", "statusChange", "status", "stopLive", "toggleShowPlugins", "tryResumeLive", "unMount", "updatePlugin", "plugin-logic_release"})
 public final class LiveAnchorPluginLayout
   extends BaseLivePluginLayout
-  implements com.tencent.mm.al.f, com.tencent.mm.live.core.core.b, d.a
+  implements com.tencent.mm.ak.f, com.tencent.mm.live.core.core.b, d.a
 {
   private final String TAG;
-  private d.g.a.a<z> gUY;
-  private com.tencent.mm.live.core.core.a.a gWE;
-  private com.tencent.mm.plugin.mmsight.model.d gXX;
-  private com.tencent.mm.live.c.r haA;
-  private com.tencent.mm.live.a.a haB;
-  private b.c haC;
-  private b.c haD;
-  private int haE;
-  private final ArrayList<com.tencent.mm.live.c.a> haF;
-  private boolean haG;
-  private boolean haH;
-  private final com.tencent.mm.model.d haI;
-  private int haJ;
-  private boolean haK;
-  private int haL;
-  private ba haf;
-  private com.tencent.mm.live.c.t hag;
-  private k hah;
-  private com.tencent.mm.live.c.c hai;
-  private com.tencent.mm.live.c.ao haj;
-  private as hak;
-  private com.tencent.mm.live.c.m hal;
-  private aq ham;
-  private ay han;
-  private ai hao;
-  private x hap;
-  private com.tencent.mm.live.c.g haq;
-  private com.tencent.mm.live.c.i har;
-  private com.tencent.mm.live.c.o has;
-  private am hat;
-  private au hau;
-  private ae hav;
-  private ak haw;
-  private ac hax;
-  private ag hay;
-  private com.tencent.mm.live.c.e haz;
+  private d.g.a.a<z> gXH;
+  private com.tencent.mm.live.core.core.a.a gZr;
+  private com.tencent.mm.plugin.mmsight.model.d haJ;
+  private ba hcS;
+  private com.tencent.mm.live.c.t hcT;
+  private k hcU;
+  private com.tencent.mm.live.c.c hcV;
+  private com.tencent.mm.live.c.ao hcW;
+  private as hcX;
+  private com.tencent.mm.live.c.m hcY;
+  private aq hcZ;
+  private ay hda;
+  private ai hdb;
+  private x hdc;
+  private com.tencent.mm.live.c.g hdd;
+  private com.tencent.mm.live.c.i hde;
+  private com.tencent.mm.live.c.o hdf;
+  private am hdg;
+  private au hdh;
+  private com.tencent.mm.live.c.ae hdi;
+  private ak hdj;
+  private ac hdk;
+  private ag hdl;
+  private com.tencent.mm.live.c.e hdm;
+  private com.tencent.mm.live.c.r hdn;
+  private com.tencent.mm.live.a.a hdo;
+  private b.c hdp;
+  private b.c hdq;
+  private int hdr;
+  private final ArrayList<com.tencent.mm.live.c.a> hds;
+  private boolean hdt;
+  private boolean hdu;
+  private final com.tencent.mm.model.d hdv;
+  private int hdw;
+  private boolean hdx;
+  private int hdy;
   
   public LiveAnchorPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(212952);
+    AppMethodBeat.i(216582);
     this.TAG = "MicroMsg.LiveAnchorPluginLayout";
-    this.haC = b.c.gRr;
-    this.haD = b.c.gRr;
-    paramContext = c.c.gHi;
-    this.haE = c.c.alv();
-    this.haF = new ArrayList();
-    this.haG = true;
-    this.haI = com.tencent.mm.model.d.azW();
-    this.haJ = -1;
-    this.gUY = ((d.g.a.a)new m(this));
-    AppMethodBeat.o(212952);
+    this.hdp = b.c.gTZ;
+    this.hdq = b.c.gTZ;
+    paramContext = c.c.gJR;
+    this.hdr = c.c.alK();
+    this.hds = new ArrayList();
+    this.hdt = true;
+    this.hdv = com.tencent.mm.model.d.aAm();
+    this.hdw = -1;
+    this.gXH = ((d.g.a.a)new n(this));
+    AppMethodBeat.o(216582);
   }
   
   private final void a(float paramFloat1, float paramFloat2, d.g.a.a<z> parama)
   {
-    AppMethodBeat.i(212938);
-    Object localObject = this.hak;
+    AppMethodBeat.i(216568);
+    Object localObject = this.hcX;
     int j;
     label35:
     int k;
     if (localObject != null)
     {
-      localObject = ((as)localObject).aoT();
+      localObject = ((as)localObject).aph();
       if (localObject == null) {
         break label81;
       }
@@ -161,547 +159,549 @@ public final class LiveAnchorPluginLayout
       if (k == 0) {
         parama.invoke();
       }
-      AppMethodBeat.o(212938);
+      AppMethodBeat.o(216568);
       return;
     }
   }
   
-  private final void aqA()
+  private final void aqO()
   {
-    AppMethodBeat.i(212946);
-    com.tencent.mm.ui.widget.a.f.a locala = new com.tencent.mm.ui.widget.a.f.a(getContext()).fMj();
-    Context localContext = getContext();
-    d.g.b.p.g(localContext, "context");
-    locala.av((CharSequence)localContext.getResources().getString(2131766582)).afp(2131755792).b((f.c)LiveAnchorPluginLayout.c.haQ).b((DialogInterface.OnDismissListener)new d(this)).show();
-    AppMethodBeat.o(212946);
-  }
-  
-  private final boolean aqB()
-  {
-    AppMethodBeat.i(212947);
-    Object localObject = com.tencent.mm.live.b.g.gOr;
-    if (com.tencent.mm.live.b.g.anG().gOA)
-    {
-      localObject = com.tencent.mm.live.b.c.a.gRa;
-      localObject = com.tencent.mm.live.b.c.a.aow();
-      if ((((bun)localObject).rotation != -1) && (((bun)localObject).rotation != getCurrentOrientation()))
-      {
-        AppMethodBeat.o(212947);
-        return true;
-      }
-      AppMethodBeat.o(212947);
-      return false;
-    }
-    localObject = com.tencent.mm.live.b.g.gOr;
-    if (com.tencent.mm.live.b.g.anB() != -1)
-    {
-      localObject = com.tencent.mm.live.b.g.gOr;
-      if (com.tencent.mm.live.b.g.anB() != getCurrentOrientation())
-      {
-        AppMethodBeat.o(212947);
-        return true;
-      }
-    }
-    AppMethodBeat.o(212947);
-    return false;
-  }
-  
-  private final void aqz()
-  {
-    AppMethodBeat.i(212945);
-    ad.i("MicroMsg.LiveCoreAnchor", "stopLive");
-    com.tencent.mm.live.core.core.a.a locala = this.gWE;
+    AppMethodBeat.i(216575);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreAnchor", "stopLive");
+    com.tencent.mm.live.core.core.a.a locala = this.gZr;
     if (locala != null)
     {
-      locala.b((com.tencent.mm.live.core.core.b)new q());
-      AppMethodBeat.o(212945);
+      locala.b((com.tencent.mm.live.core.core.b)new r());
+      AppMethodBeat.o(216575);
       return;
     }
-    AppMethodBeat.o(212945);
+    AppMethodBeat.o(216575);
+  }
+  
+  private final void aqP()
+  {
+    AppMethodBeat.i(216576);
+    f.a locala = new f.a(getContext()).fQD();
+    Context localContext = getContext();
+    d.g.b.p.g(localContext, "context");
+    locala.au((CharSequence)localContext.getResources().getString(2131766582)).afY(2131755792).b((f.c)LiveAnchorPluginLayout.c.hdD).b((DialogInterface.OnDismissListener)new d(this)).show();
+    AppMethodBeat.o(216576);
+  }
+  
+  private final boolean aqQ()
+  {
+    AppMethodBeat.i(216577);
+    Object localObject = com.tencent.mm.live.b.g.gQZ;
+    if (com.tencent.mm.live.b.g.anV().gRi)
+    {
+      localObject = com.tencent.mm.live.b.c.a.gTI;
+      localObject = com.tencent.mm.live.b.c.a.aoL();
+      if ((((bvh)localObject).rotation != -1) && (((bvh)localObject).rotation != getCurrentOrientation()))
+      {
+        AppMethodBeat.o(216577);
+        return true;
+      }
+      AppMethodBeat.o(216577);
+      return false;
+    }
+    localObject = com.tencent.mm.live.b.g.gQZ;
+    if (com.tencent.mm.live.b.g.anQ() != -1)
+    {
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      if (com.tencent.mm.live.b.g.anQ() != getCurrentOrientation())
+      {
+        AppMethodBeat.o(216577);
+        return true;
+      }
+    }
+    AppMethodBeat.o(216577);
+    return false;
   }
   
   @SuppressLint({"SourceLockedOrientationActivity"})
   public final void a(com.tencent.mm.live.a.a parama, LiveConfig paramLiveConfig, boolean paramBoolean)
   {
-    AppMethodBeat.i(212936);
+    AppMethodBeat.i(216566);
     d.g.b.p.h(parama, "router");
     d.g.b.p.h(paramLiveConfig, "config");
-    this.haK = false;
-    this.gXX = new com.tencent.mm.plugin.mmsight.model.d(getContext(), (byte)0);
-    this.haB = parama;
-    parama = com.tencent.mm.live.core.core.a.b.gHl;
+    this.hdx = false;
+    this.haJ = new com.tencent.mm.plugin.mmsight.model.d(getContext(), (byte)0);
+    this.hdo = parama;
+    parama = com.tencent.mm.live.core.core.a.b.gJU;
     parama = getContext();
     d.g.b.p.g(parama, "context");
-    this.gWE = ((com.tencent.mm.live.core.core.a.a)b.a.cq(parama));
-    parama = this.gWE;
+    this.gZr = ((com.tencent.mm.live.core.core.a.a)b.a.cs(parama));
+    parama = this.gZr;
     if (parama != null) {
       parama.c((com.tencent.mm.live.core.core.b)this);
     }
-    com.tencent.mm.live.b.i.gPh.release();
-    if (paramLiveConfig.akX() != 0L)
+    com.tencent.mm.live.b.i.gRP.release();
+    if (paramLiveConfig.alm() != 0L)
     {
-      parama = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.ans().Fsa = paramLiveConfig.akX();
+      parama = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.anH().FKy = paramLiveConfig.alm();
     }
-    if (!bt.isNullOrNil(paramLiveConfig.akV()))
+    if (!bu.isNullOrNil(paramLiveConfig.alk()))
     {
-      parama = com.tencent.mm.live.b.g.gOr;
-      parama = paramLiveConfig.akV();
+      parama = com.tencent.mm.live.b.g.gQZ;
+      parama = paramLiveConfig.alk();
       d.g.b.p.g(parama, "config.hostRoomId");
-      com.tencent.mm.live.b.g.xE(parama);
+      com.tencent.mm.live.b.g.yn(parama);
     }
-    parama = com.tencent.mm.live.b.g.gOr;
-    parama = paramLiveConfig.akZ();
+    parama = com.tencent.mm.live.b.g.gQZ;
+    parama = paramLiveConfig.alo();
     d.g.b.p.g(parama, "config.anchorUsername");
-    com.tencent.mm.live.b.g.xG(parama);
+    com.tencent.mm.live.b.g.yp(parama);
     parama = findViewById(2131307825);
     d.g.b.p.g(parama, "findViewById(R.id.live_verify_ui_root)");
-    this.haf = new ba((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
+    this.hcS = new ba((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307634);
     d.g.b.p.g(parama, "findViewById(R.id.live_face_verify_ui_root)");
-    this.hag = new com.tencent.mm.live.c.t((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
+    this.hcT = new com.tencent.mm.live.c.t((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307594);
     d.g.b.p.g(parama, "findViewById(R.id.live_before_ui_root)");
-    this.hah = new k((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
+    this.hcU = new k((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307549);
     d.g.b.p.g(parama, "findViewById(R.id.live_after_ui_root)");
-    this.hai = new com.tencent.mm.live.c.c((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
+    this.hcV = new com.tencent.mm.live.c.c((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307719);
     d.g.b.p.g(parama, "findViewById(R.id.live_preview_ui_root)");
-    this.haj = new com.tencent.mm.live.c.ao((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hcW = new com.tencent.mm.live.c.ao((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307771);
     d.g.b.p.g(parama, "findViewById(R.id.live_shadow_ui_root)");
-    this.hak = new as((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hcX = new as((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307606);
     d.g.b.p.g(parama, "findViewById(R.id.live_comment_ui_root)");
-    this.hal = new com.tencent.mm.live.c.m((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hcY = new com.tencent.mm.live.c.m((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307725);
     d.g.b.p.g(parama, "findViewById(R.id.live_ready_ui_root)");
-    this.ham = new aq((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hcZ = new aq((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307809);
     d.g.b.p.g(parama, "findViewById(R.id.live_title_ui_root)");
-    this.han = new ay((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hda = new ay((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307768);
     d.g.b.p.g(parama, "findViewById(R.id.live_right_panel_ui_root)");
-    this.hap = new x((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdc = new x((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307760);
     d.g.b.p.g(parama, "findViewById(R.id.live_right_panel_btn4_parent)");
-    this.haq = new com.tencent.mm.live.c.g((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdd = new com.tencent.mm.live.c.g((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307678);
     d.g.b.p.g(parama, "findViewById(R.id.live_members_list_ui_root)");
-    this.hao = new ai((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdb = new ai((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307583);
     d.g.b.p.g(parama, "findViewById(R.id.live_ban_comment_ui_root)");
-    this.har = new com.tencent.mm.live.c.i((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hde = new com.tencent.mm.live.c.i((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307617);
     d.g.b.p.g(parama, "findViewById(R.id.live_common_info_ui_root)");
-    this.has = new com.tencent.mm.live.c.o((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdf = new com.tencent.mm.live.c.o((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307717);
     d.g.b.p.g(parama, "findViewById(R.id.live_minimize_ui_root)");
-    this.hat = new am((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdg = new am((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307786);
     d.g.b.p.g(parama, "findViewById(R.id.live_share_rooms_ui_root)");
-    this.hau = new au((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdh = new au((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307652);
     d.g.b.p.g(parama, "findViewById(R.id.live_loading_view_root)");
-    this.hav = new ae((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdi = new com.tencent.mm.live.c.ae((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307709);
     d.g.b.p.g(parama, "findViewById(R.id.live_mic_visitor_header_root)");
-    this.haw = new ak((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdj = new ak((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307648);
     d.g.b.p.g(parama, "findViewById(R.id.live_like_confetti_ui_root)");
-    this.hax = new ac((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdk = new ac((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307691);
     d.g.b.p.g(parama, "findViewById(R.id.live_members_profile_ui_root)");
-    this.hay = new ag((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdl = new ag((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307555);
     d.g.b.p.g(parama, "findViewById(R.id.live_anchor_close_ui_root)");
-    this.haz = new com.tencent.mm.live.c.e((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    this.hdm = new com.tencent.mm.live.c.e((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
     parama = findViewById(2131307628);
     d.g.b.p.g(parama, "findViewById(R.id.live_exception_ui_root)");
-    this.haA = new com.tencent.mm.live.c.r((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = this.haj;
+    this.hdn = new com.tencent.mm.live.c.r((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
+    parama = this.hcW;
     Object localObject;
     if (parama != null)
     {
       localObject = (d.g.a.m)new j(this);
-      parama.gIn.setPreviewMoveListener((d.g.a.m)localObject);
+      parama.gKW.setPreviewMoveListener((d.g.a.m)localObject);
     }
-    parama = com.tencent.mm.live.b.i.gPh;
+    parama = com.tencent.mm.live.b.i.gRP;
     com.tencent.mm.live.b.i.a(paramLiveConfig);
-    parama = this.hap;
+    parama = this.hdc;
     if (parama != null)
     {
       d.g.b.p.h(paramLiveConfig, "config");
-      localObject = parama.gUN;
+      localObject = parama.gXw;
       d.g.b.p.g(localObject, "shareBtn");
       ((ImageView)localObject).setVisibility(0);
-      localObject = parama.gUP;
+      localObject = parama.gXy;
       d.g.b.p.g(localObject, "switchCameraBtn");
       ((ImageView)localObject).setVisibility(0);
-      parama.gUN.setImageDrawable(com.tencent.mm.ui.ao.e(parama.gGK.getResources().getDrawable(2131690478), -1));
-      parama.gUP.setImageDrawable(com.tencent.mm.ui.ao.e(parama.gGK.getResources().getDrawable(2131690362), -1));
-      parama.gUO.setOnClickListener((View.OnClickListener)new x.b(parama));
-      parama.gUQ.setOnClickListener((View.OnClickListener)new x.c(parama));
-      localObject = parama.gUO;
+      parama.gXw.setImageDrawable(com.tencent.mm.ui.ao.e(parama.gJt.getResources().getDrawable(2131690478), -1));
+      parama.gXy.setImageDrawable(com.tencent.mm.ui.ao.e(parama.gJt.getResources().getDrawable(2131690362), -1));
+      parama.gXx.setOnClickListener((View.OnClickListener)new x.b(parama));
+      parama.gXz.setOnClickListener((View.OnClickListener)new x.c(parama));
+      localObject = parama.gXx;
       d.g.b.p.g(localObject, "shareBtnClickArea");
       ((RelativeLayout)localObject).setVisibility(8);
-      localObject = parama.gUR;
+      localObject = parama.gXA;
       d.g.b.p.g(localObject, "shareDescTv");
       ((TextView)localObject).setVisibility(8);
-      parama = parama.gUU;
+      parama = parama.gXD;
       d.g.b.p.g(parama, "shareBtnLayout");
       parama.setVisibility(8);
     }
-    parama = this.hao;
+    parama = this.hdb;
     if (parama != null) {
       parama.a(paramLiveConfig);
     }
-    parama = this.hai;
+    parama = this.hcV;
     if (parama != null) {
       parama.a(paramLiveConfig);
     }
-    parama = this.hal;
+    parama = this.hcY;
     if (parama != null) {
       parama.a(paramLiveConfig);
     }
-    parama = this.hax;
+    parama = this.hdk;
     if (parama != null) {
       parama.a(paramLiveConfig);
     }
-    parama = this.hai;
+    parama = this.hcV;
     if (parama != null) {
-      parama.aoD();
+      parama.aoR();
     }
-    parama = this.hay;
-    if (parama != null) {
-      parama.a(paramLiveConfig);
-    }
-    parama = this.has;
+    parama = this.hdl;
     if (parama != null) {
       parama.a(paramLiveConfig);
     }
-    parama = this.haz;
+    parama = this.hdf;
     if (parama != null) {
-      parama.nI(8);
+      parama.a(paramLiveConfig);
     }
-    parama = this.haf;
+    parama = this.hdm;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hag;
+    parama = this.hcS;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hah;
+    parama = this.hcT;
     if (parama != null) {
-      parama.nI(0);
+      parama.nL(8);
     }
-    parama = this.haj;
+    parama = this.hcU;
     if (parama != null) {
-      parama.nI(0);
+      parama.nL(0);
     }
-    parama = this.hak;
+    parama = this.hcW;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(0);
     }
-    parama = this.hai;
+    parama = this.hcX;
     if (parama != null) {
-      parama.nI(4);
+      parama.nL(8);
     }
-    parama = this.hal;
+    parama = this.hcV;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(4);
     }
-    parama = this.ham;
+    parama = this.hcY;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.han;
+    parama = this.hcZ;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hao;
+    parama = this.hda;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hap;
+    parama = this.hdb;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.har;
+    parama = this.hdc;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.has;
+    parama = this.hde;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hat;
+    parama = this.hdf;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hau;
+    parama = this.hdg;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.hav;
+    parama = this.hdh;
+    if (parama != null) {
+      parama.nL(8);
+    }
+    parama = this.hdi;
     if (parama != null)
     {
-      localObject = com.tencent.mm.live.b.g.gOr;
-      parama.xT(com.tencent.mm.live.b.g.anu());
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      parama.yD(com.tencent.mm.live.b.g.anJ());
     }
-    parama = this.hay;
+    parama = this.hdl;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.haA;
+    parama = this.hdn;
     if (parama != null) {
-      parama.nI(8);
+      parama.nL(8);
     }
-    parama = this.haj;
+    parama = this.hcW;
     if (parama != null)
     {
       localObject = (d.g.a.m)new k(this);
-      parama.gIn.setPreviewTouchListener((d.g.a.m)localObject);
+      parama.gKW.setPreviewTouchListener((d.g.a.m)localObject);
     }
     if (paramBoolean)
     {
-      parama = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.ans().Gbw = paramLiveConfig.akY();
-      parama = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.ans().Fsa = paramLiveConfig.akX();
-      parama = com.tencent.mm.live.b.g.gOr;
-      parama = paramLiveConfig.akV();
+      parama = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.anH().Gud = paramLiveConfig.aln();
+      parama = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.anH().FKy = paramLiveConfig.alm();
+      parama = com.tencent.mm.live.b.g.gQZ;
+      parama = paramLiveConfig.alk();
       d.g.b.p.g(parama, "config.hostRoomId");
-      com.tencent.mm.live.b.g.xE(parama);
-      b.b.a(this, b.c.gRO);
-      parama = this.gXX;
+      com.tencent.mm.live.b.g.yn(parama);
+      b.b.a(this, b.c.gUw);
+      parama = this.haJ;
       if (parama != null) {
         parama.a(null);
       }
-      parama = this.gXX;
+      parama = this.haJ;
       if (parama != null) {
         parama.disable();
       }
-      this.gXX = null;
+      this.haJ = null;
     }
     for (;;)
     {
-      parama = com.tencent.mm.live.b.c.gMO;
-      com.tencent.mm.live.b.c.d(name(), this.gUY);
-      AppMethodBeat.o(212936);
+      parama = com.tencent.mm.live.b.c.gPx;
+      com.tencent.mm.live.b.c.d(name(), this.gXH);
+      parama = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.aos().gTr = ((d.g.a.b)new l(this));
+      AppMethodBeat.o(216566);
       return;
-      parama = com.tencent.mm.live.b.g.gOr;
-      parama = com.tencent.mm.live.b.g.ans();
-      if ((parama == null) || (parama.Fsa != 0L))
+      parama = com.tencent.mm.live.b.g.gQZ;
+      parama = com.tencent.mm.live.b.g.anH();
+      if ((parama == null) || (parama.FKy != 0L))
       {
-        parama = com.tencent.mm.live.b.g.gOr;
-        if (!bt.isNullOrNil(com.tencent.mm.live.b.g.anm()))
+        parama = com.tencent.mm.live.b.g.gQZ;
+        if (!bu.isNullOrNil(com.tencent.mm.live.b.g.anC()))
         {
           localObject = this.TAG;
           StringBuilder localStringBuilder = new StringBuilder("init anchor plugin with live data, liveId:");
-          parama = com.tencent.mm.live.b.g.gOr;
-          parama = com.tencent.mm.live.b.g.ans();
+          parama = com.tencent.mm.live.b.g.gQZ;
+          parama = com.tencent.mm.live.b.g.anH();
           if (parama != null)
           {
-            parama = Long.valueOf(parama.Fsa);
-            label1759:
-            ad.i((String)localObject, parama.longValue() + ", liveName:" + paramLiveConfig.akY() + ", roomId:" + paramLiveConfig.akV());
-            paramLiveConfig = this.han;
+            parama = Long.valueOf(parama.FKy);
+            label1780:
+            com.tencent.mm.sdk.platformtools.ae.i((String)localObject, parama.longValue() + ", liveName:" + paramLiveConfig.aln() + ", roomId:" + paramLiveConfig.alk());
+            paramLiveConfig = this.hda;
             if (paramLiveConfig != null)
             {
-              parama = com.tencent.mm.live.b.g.gOr;
-              parama = com.tencent.mm.live.b.g.ans().Gbw;
+              parama = com.tencent.mm.live.b.g.gQZ;
+              parama = com.tencent.mm.live.b.g.anH().Gud;
               if (parama == null) {
-                break label1888;
+                break label1909;
               }
               parama = (CharSequence)parama;
-              label1831:
-              localObject = com.tencent.mm.live.b.g.gOr;
-              paramLiveConfig.a(parama, com.tencent.mm.live.b.g.anu());
+              label1852:
+              localObject = com.tencent.mm.live.b.g.gQZ;
+              paramLiveConfig.a(parama, com.tencent.mm.live.b.g.anJ());
             }
           }
         }
       }
-      for (this.haD = b.c.gSp;; this.haD = b.c.gRr)
+      for (this.hdq = b.c.gUX;; this.hdq = b.c.gTZ)
       {
-        if ((this.haf == null) || (ba.aoX() != true)) {
-          break label1929;
+        if ((this.hcS == null) || (ba.apl() != true)) {
+          break label1950;
         }
-        a(this.haD, new Bundle());
+        a(this.hdq, new Bundle());
         break;
         parama = null;
-        break label1759;
-        label1888:
+        break label1780;
+        label1909:
         parama = (CharSequence)"";
-        break label1831;
-        ad.i(this.TAG, "init logic from directly start");
-        parama = com.tencent.mm.live.b.g.gOr;
-        com.tencent.mm.live.b.g.ans().Fsa = 0L;
+        break label1852;
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "init logic from directly start");
+        parama = com.tencent.mm.live.b.g.gQZ;
+        com.tencent.mm.live.b.g.anH().FKy = 0L;
       }
-      label1929:
-      parama = this.haf;
+      label1950:
+      parama = this.hcS;
       if (parama != null) {
-        parama.nI(0);
+        parama.nL(0);
       }
-      parama = this.hag;
+      parama = this.hcT;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      parama = this.hai;
+      parama = this.hcV;
       if (parama != null) {
-        parama.nI(4);
+        parama.nL(4);
       }
-      parama = this.hal;
+      parama = this.hcY;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      parama = this.hap;
+      parama = this.hdc;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      parama = this.han;
+      parama = this.hda;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      parama = this.hak;
+      parama = this.hcX;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      parama = this.har;
+      parama = this.hde;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      parama = this.hav;
+      parama = this.hdi;
       if (parama != null) {
-        parama.nI(8);
+        parama.nL(8);
       }
-      a(b.c.gRn, new Bundle());
+      a(b.c.gTV, new Bundle());
     }
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(212935);
+    AppMethodBeat.i(216565);
     d.g.b.p.h(paramc, "status");
-    ad.i(this.TAG, "statusChange:" + paramc.name());
-    this.haC = paramc;
-    switch (b.gnp[paramc.ordinal()])
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "statusChange:" + paramc.name());
+    this.hdp = paramc;
+    switch (b.gpL[paramc.ordinal()])
     {
     }
     for (;;)
     {
       super.a(paramc, paramBundle);
-      AppMethodBeat.o(212935);
+      AppMethodBeat.o(216565);
       return;
-      if (this.haH)
+      if (this.hdu)
       {
         localObject1 = getContext();
         if (localObject1 == null)
         {
           paramc = new v("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(212935);
+          AppMethodBeat.o(216565);
           throw paramc;
         }
         ((Activity)localObject1).setRequestedOrientation(4);
       }
-      Object localObject1 = this.haD;
+      Object localObject1 = this.hdq;
       Object localObject2;
       Object localObject3;
-      switch (b.cpQ[localObject1.ordinal()])
+      switch (b.cqt[localObject1.ordinal()])
       {
       default: 
         break;
       case 1: 
-        localObject1 = com.tencent.mm.live.b.i.gPh;
-        com.tencent.mm.live.b.i.nH(0);
-        localObject1 = this.haj;
+        localObject1 = com.tencent.mm.live.b.i.gRP;
+        com.tencent.mm.live.b.i.nK(0);
+        localObject1 = this.hcW;
         if (localObject1 != null) {
-          ((com.tencent.mm.live.c.ao)localObject1).nI(0);
+          ((com.tencent.mm.live.c.ao)localObject1).nL(0);
         }
-        localObject1 = this.haf;
+        localObject1 = this.hcS;
         if (localObject1 != null) {
-          ((ba)localObject1).nI(8);
+          ((ba)localObject1).nL(8);
         }
-        localObject1 = this.hag;
+        localObject1 = this.hcT;
         if (localObject1 != null) {
-          ((com.tencent.mm.live.c.t)localObject1).nI(8);
+          ((com.tencent.mm.live.c.t)localObject1).nL(8);
         }
-        localObject1 = this.hah;
+        localObject1 = this.hcU;
         if (localObject1 != null) {
-          ((k)localObject1).nI(8);
+          ((k)localObject1).nL(8);
         }
-        localObject1 = this.hai;
+        localObject1 = this.hcV;
         if (localObject1 != null) {
-          ((com.tencent.mm.live.c.c)localObject1).nI(8);
+          ((com.tencent.mm.live.c.c)localObject1).nL(8);
         }
-        localObject1 = this.hal;
+        localObject1 = this.hcY;
         if (localObject1 != null) {
-          ((com.tencent.mm.live.c.m)localObject1).nI(8);
+          ((com.tencent.mm.live.c.m)localObject1).nL(8);
         }
-        localObject1 = this.hap;
+        localObject1 = this.hdc;
         if (localObject1 != null) {
-          ((x)localObject1).nI(8);
+          ((x)localObject1).nL(8);
         }
-        localObject1 = this.han;
+        localObject1 = this.hda;
         if (localObject1 != null) {
-          ((ay)localObject1).nI(8);
+          ((ay)localObject1).nL(8);
         }
-        localObject1 = this.hak;
+        localObject1 = this.hcX;
         if (localObject1 != null) {
-          ((as)localObject1).nI(8);
+          ((as)localObject1).nL(8);
         }
-        localObject1 = this.har;
+        localObject1 = this.hde;
         if (localObject1 != null) {
-          ((com.tencent.mm.live.c.i)localObject1).nI(8);
+          ((com.tencent.mm.live.c.i)localObject1).nL(8);
         }
-        localObject2 = this.han;
+        localObject2 = this.hda;
         if (localObject2 != null)
         {
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject1 = com.tencent.mm.live.b.g.ans().Gbw;
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject1 = com.tencent.mm.live.b.g.anH().Gud;
           if (localObject1 == null) {
             break label519;
           }
         }
         for (localObject1 = (CharSequence)localObject1;; localObject1 = (CharSequence)"")
         {
-          localObject3 = com.tencent.mm.live.b.g.gOr;
-          ((ay)localObject2).a((CharSequence)localObject1, com.tencent.mm.live.b.g.anu());
-          a(b.c.gSp, new Bundle());
+          localObject3 = com.tencent.mm.live.b.g.gQZ;
+          ((ay)localObject2).a((CharSequence)localObject1, com.tencent.mm.live.b.g.anJ());
+          a(b.c.gUX, new Bundle());
           break;
         }
       case 2: 
         label519:
-        a(b.c.gRr, new Bundle());
+        a(b.c.gTZ, new Bundle());
         continue;
-        localObject1 = this.gXX;
+        localObject1 = this.haJ;
         if (localObject1 != null) {
           ((com.tencent.mm.plugin.mmsight.model.d)localObject1).disable();
         }
-        localObject1 = this.gXX;
+        localObject1 = this.haJ;
         if (localObject1 != null) {
           ((com.tencent.mm.plugin.mmsight.model.d)localObject1).a(null);
         }
-        this.gXX = null;
-        localObject1 = com.tencent.mm.live.b.c.a.gRa;
-        localObject1 = com.tencent.mm.live.b.c.a.aow();
-        ad.i(this.TAG, "lockOrientation liveRotation:" + ((bun)localObject1).rotation + ", curRotation:" + getCurrentOrientation());
+        this.haJ = null;
+        localObject1 = com.tencent.mm.live.b.c.a.gTI;
+        localObject1 = com.tencent.mm.live.b.c.a.aoL();
+        com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "lockOrientation liveRotation:" + ((bvh)localObject1).rotation + ", curRotation:" + getCurrentOrientation());
         boolean bool1;
-        if ((((bun)localObject1).rotation == -1) || (((bun)localObject1).rotation == getCurrentOrientation()))
+        if ((((bvh)localObject1).rotation == -1) || (((bvh)localObject1).rotation == getCurrentOrientation()))
         {
           localObject1 = getContext();
           if (localObject1 == null)
           {
             paramc = new v("null cannot be cast to non-null type android.app.Activity");
-            AppMethodBeat.o(212935);
+            AppMethodBeat.o(216565);
             throw paramc;
           }
           ((Activity)localObject1).setRequestedOrientation(14);
-          localObject1 = com.tencent.mm.live.core.core.trtc.a.a.alJ();
+          localObject1 = com.tencent.mm.live.core.core.trtc.a.a.alY();
           d.g.b.p.g(localObject1, "ConfigHelper.getInstance()");
-          localObject1 = ((com.tencent.mm.live.core.core.trtc.a.a)localObject1).alK();
+          localObject1 = ((com.tencent.mm.live.core.core.trtc.a.a)localObject1).alZ();
           d.g.b.p.g(localObject1, "ConfigHelper.getInstance().videoConfig");
           localObject2 = getContext();
           d.g.b.p.g(localObject2, "context");
@@ -712,16 +712,16 @@ public final class LiveAnchorPluginLayout
           }
           bool1 = true;
           label769:
-          ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject1).dH(bool1);
+          ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject1).dI(bool1);
           localObject1 = this.TAG;
           localObject2 = new StringBuilder("create live, isVideoVertical:");
-          localObject3 = com.tencent.mm.live.core.core.trtc.a.a.alJ();
+          localObject3 = com.tencent.mm.live.core.core.trtc.a.a.alY();
           d.g.b.p.g(localObject3, "ConfigHelper.getInstance()");
-          localObject3 = ((com.tencent.mm.live.core.core.trtc.a.a)localObject3).alK();
+          localObject3 = ((com.tencent.mm.live.core.core.trtc.a.a)localObject3).alZ();
           d.g.b.p.g(localObject3, "ConfigHelper.getInstance().videoConfig");
-          ad.i((String)localObject1, ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject3).alY());
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject3 = com.tencent.mm.live.b.g.ans();
+          com.tencent.mm.sdk.platformtools.ae.i((String)localObject1, ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject3).amn());
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject3 = com.tencent.mm.live.b.g.anH();
           if (paramBundle != null)
           {
             localObject2 = paramBundle.getString("PARAM_START_LIVE_TITLE");
@@ -732,58 +732,58 @@ public final class LiveAnchorPluginLayout
           {
             localObject1 = "";
           }
-          ((buq)localObject3).Gbw = ((String)localObject1);
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject1 = com.tencent.mm.live.b.g.ans().Gbw;
+          ((bvk)localObject3).Gud = ((String)localObject1);
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject1 = com.tencent.mm.live.b.g.anH().Gud;
           d.g.b.p.g(localObject1, "LiveDataManager.liveInfo.live_name");
-          localObject2 = com.tencent.mm.live.b.g.gOr;
-          l = com.tencent.mm.live.b.g.ans().Fsa;
-          localObject2 = com.tencent.mm.live.b.g.gOr;
-          localObject2 = com.tencent.mm.live.b.g.anm();
-          ad.i(this.TAG, "startLive, name:" + (String)localObject1 + ", roomId:" + l);
-          if ((l == 0L) || (bt.isNullOrNil((String)localObject2))) {
+          localObject2 = com.tencent.mm.live.b.g.gQZ;
+          l = com.tencent.mm.live.b.g.anH().FKy;
+          localObject2 = com.tencent.mm.live.b.g.gQZ;
+          localObject2 = com.tencent.mm.live.b.g.anC();
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "startLive, name:" + (String)localObject1 + ", roomId:" + l);
+          if ((l == 0L) || (bu.isNullOrNil((String)localObject2))) {
             break label1284;
           }
-          ad.i(this.TAG, "try resume live, liveId:" + l + ", liveName:" + (String)localObject1 + ", roomId:" + (String)localObject2);
-          localObject3 = com.tencent.mm.live.b.g.gOr;
-          localObject3 = com.tencent.mm.live.b.g.anw();
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "try resume live, liveId:" + l + ", liveName:" + (String)localObject1 + ", roomId:" + (String)localObject2);
+          localObject3 = com.tencent.mm.live.b.g.gQZ;
+          localObject3 = com.tencent.mm.live.b.g.anL();
           if (localObject3 != null) {
             break label1231;
           }
-          new com.tencent.mm.live.b.a(l, (String)localObject2, (String)localObject1, (byte)0).a((d.g.a.r)new s(this));
+          new com.tencent.mm.live.b.a(l, (String)localObject2, (String)localObject1, (byte)0).a((d.g.a.r)new t(this));
         }
         for (;;)
         {
-          localObject1 = this.gWE;
+          localObject1 = this.gZr;
           if (localObject1 == null) {
             break;
           }
-          ((com.tencent.mm.live.core.core.a.a)localObject1).alj();
+          ((com.tencent.mm.live.core.core.a.a)localObject1).aly();
           break;
-          switch (((bun)localObject1).rotation)
+          switch (((bvh)localObject1).rotation)
           {
           default: 
             break;
           case 0: 
           case 2: 
-            this.haK = true;
+            this.hdx = true;
             localObject1 = getContext();
             if (localObject1 == null)
             {
               paramc = new v("null cannot be cast to non-null type android.app.Activity");
-              AppMethodBeat.o(212935);
+              AppMethodBeat.o(216565);
               throw paramc;
             }
             ((Activity)localObject1).setRequestedOrientation(1);
             break;
           case 1: 
           case 3: 
-            this.haK = true;
+            this.hdx = true;
             localObject1 = getContext();
             if (localObject1 == null)
             {
               paramc = new v("null cannot be cast to non-null type android.app.Activity");
-              AppMethodBeat.o(212935);
+              AppMethodBeat.o(216565);
               throw paramc;
             }
             ((Activity)localObject1).setRequestedOrientation(0);
@@ -792,185 +792,185 @@ public final class LiveAnchorPluginLayout
             bool1 = false;
             break label769;
             label1231:
-            localObject1 = this.gWE;
+            localObject1 = this.gZr;
             if (localObject1 != null) {
               ((com.tencent.mm.live.core.core.a.a)localObject1).a((com.tencent.mm.live.core.core.b.d)localObject3);
             }
-            localObject1 = this.gWE;
+            localObject1 = this.gZr;
             if (localObject1 != null)
             {
-              ((com.tencent.mm.live.core.core.a.a)localObject1).a((com.tencent.mm.live.core.core.b)new t(this));
+              ((com.tencent.mm.live.core.core.a.a)localObject1).a((com.tencent.mm.live.core.core.b)new u(this));
               continue;
               label1284:
-              ad.i("MicroMsg.LiveCoreAnchor", "createNewLive, liveName:" + (String)localObject1 + ", wechatRoomId:" + (String)localObject2);
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreAnchor", "createNewLive, liveName:" + (String)localObject1 + ", wechatRoomId:" + (String)localObject2);
               localObject3 = getContext();
               d.g.b.p.g(localObject3, "context");
               localObject1 = new com.tencent.mm.live.b.b((String)localObject1, (String)localObject2, (Context)localObject3);
               localObject2 = (s)new b(this);
-              localObject3 = com.tencent.mm.kernel.g.ajB();
+              localObject3 = com.tencent.mm.kernel.g.ajQ();
               d.g.b.p.g(localObject3, "MMKernel.network()");
-              ((com.tencent.mm.kernel.b)localObject3).aiU().a(3501, (com.tencent.mm.al.f)localObject1);
+              ((com.tencent.mm.kernel.b)localObject3).ajj().a(3501, (com.tencent.mm.ak.f)localObject1);
               localObject3 = new com.tencent.mm.live.b.a.l(((com.tencent.mm.live.b.b)localObject1).name, ((com.tencent.mm.live.b.b)localObject1).roomId);
-              localObject4 = com.tencent.mm.kernel.g.ajB();
+              localObject4 = com.tencent.mm.kernel.g.ajQ();
               d.g.b.p.g(localObject4, "MMKernel.network()");
-              ((com.tencent.mm.kernel.b)localObject4).aiU().b((n)localObject3);
-              ((com.tencent.mm.live.b.b)localObject1).gMG = ((s)localObject2);
+              ((com.tencent.mm.kernel.b)localObject4).ajj().b((n)localObject3);
+              ((com.tencent.mm.live.b.b)localObject1).gPp = ((s)localObject2);
             }
             break;
           }
         }
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        localObject1 = com.tencent.mm.live.b.g.ans().Gbw;
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        localObject1 = com.tencent.mm.live.b.g.anH().Gud;
         d.g.b.p.g(localObject1, "LiveDataManager.liveInfo.live_name");
-        localObject2 = com.tencent.mm.live.b.g.gOr;
-        localObject2 = com.tencent.mm.live.b.g.anm();
+        localObject2 = com.tencent.mm.live.b.g.gQZ;
+        localObject2 = com.tencent.mm.live.b.g.anC();
         localObject3 = getContext();
         d.g.b.p.g(localObject3, "context");
         localObject1 = new com.tencent.mm.live.b.b((String)localObject1, (String)localObject2, (Context)localObject3);
-        localObject2 = (s)new l(this);
-        localObject3 = com.tencent.mm.kernel.g.ajB();
+        localObject2 = (s)new m(this);
+        localObject3 = com.tencent.mm.kernel.g.ajQ();
         d.g.b.p.g(localObject3, "MMKernel.network()");
-        ((com.tencent.mm.kernel.b)localObject3).aiU().a(3797, (com.tencent.mm.al.f)localObject1);
-        localObject3 = com.tencent.mm.live.b.g.gOr;
-        long l = com.tencent.mm.live.b.g.ans().Fsa;
+        ((com.tencent.mm.kernel.b)localObject3).ajj().a(3797, (com.tencent.mm.ak.f)localObject1);
+        localObject3 = com.tencent.mm.live.b.g.gQZ;
+        long l = com.tencent.mm.live.b.g.anH().FKy;
         localObject3 = ((com.tencent.mm.live.b.b)localObject1).roomId;
-        Object localObject4 = com.tencent.mm.live.b.g.gOr;
-        localObject3 = new com.tencent.mm.live.b.a.o(l, (String)localObject3, com.tencent.mm.live.b.g.anq());
-        localObject4 = com.tencent.mm.kernel.g.ajB();
+        Object localObject4 = com.tencent.mm.live.b.g.gQZ;
+        localObject3 = new com.tencent.mm.live.b.a.o(l, (String)localObject3, com.tencent.mm.live.b.g.anG());
+        localObject4 = com.tencent.mm.kernel.g.ajQ();
         d.g.b.p.g(localObject4, "MMKernel.network()");
-        ((com.tencent.mm.kernel.b)localObject4).aiU().b((n)localObject3);
-        ((com.tencent.mm.live.b.b)localObject1).gMH = ((s)localObject2);
+        ((com.tencent.mm.kernel.b)localObject4).ajj().b((n)localObject3);
+        ((com.tencent.mm.live.b.b)localObject1).gPq = ((s)localObject2);
         continue;
-        this.haI.azX();
-        localObject1 = this.hav;
+        this.hdv.aAn();
+        localObject1 = this.hdi;
         if (localObject1 != null) {
-          ((ae)localObject1).nI(8);
+          ((com.tencent.mm.live.c.ae)localObject1).nL(8);
         }
-        localObject1 = (Runnable)new p(this);
-        localObject2 = ae.gVG;
-        postDelayed((Runnable)localObject1, ae.aoQ() + 50L);
-        com.tencent.mm.live.b.i.gPh.aos();
-        localObject1 = com.tencent.mm.live.b.i.gPh;
-        com.tencent.mm.live.b.i.aon();
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        if (com.tencent.mm.live.b.g.ans().FHr == 0)
+        localObject1 = (Runnable)new q(this);
+        localObject2 = com.tencent.mm.live.c.ae.gYp;
+        postDelayed((Runnable)localObject1, com.tencent.mm.live.c.ae.ape() + 50L);
+        com.tencent.mm.live.b.i.gRP.aoH();
+        localObject1 = com.tencent.mm.live.b.i.gRP;
+        com.tencent.mm.live.b.i.aoC();
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        if (com.tencent.mm.live.b.g.anH().FZN == 0)
         {
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.b.g.ans().FHr = cf.aCN();
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.b.g.anH().FZN = ch.aDd();
         }
-        localObject1 = com.tencent.mm.live.b.c.a.gRa;
-        if (com.tencent.mm.live.b.c.a.aow().Fsa != 0L) {}
+        localObject1 = com.tencent.mm.live.b.c.a.gTI;
+        if (com.tencent.mm.live.b.c.a.aoL().FKy != 0L) {}
         int j;
         for (int i = 1;; i = 0)
         {
           if (i == 0)
           {
-            localObject1 = com.tencent.mm.live.b.c.a.gRa;
-            localObject1 = com.tencent.mm.live.b.g.gOr;
-            l = com.tencent.mm.live.b.g.ans().Fsa;
-            localObject1 = com.tencent.mm.live.b.g.gOr;
-            localObject1 = com.tencent.mm.live.b.g.anm();
+            localObject1 = com.tencent.mm.live.b.c.a.gTI;
+            localObject1 = com.tencent.mm.live.b.g.gQZ;
+            l = com.tencent.mm.live.b.g.anH().FKy;
+            localObject1 = com.tencent.mm.live.b.g.gQZ;
+            localObject1 = com.tencent.mm.live.b.g.anC();
             i = getCurrentOrientation();
-            localObject2 = com.tencent.mm.live.b.g.gOr;
-            localObject2 = com.tencent.mm.live.b.g.aog();
-            localObject3 = com.tencent.mm.live.b.g.gOr;
-            j = com.tencent.mm.live.b.g.ans().FHr;
-            localObject3 = com.tencent.mm.live.b.g.gOr;
-            com.tencent.mm.live.b.c.a.a(l, (String)localObject1, i, (String)localObject2, j, com.tencent.mm.live.b.g.anu());
+            localObject2 = com.tencent.mm.live.b.g.gQZ;
+            localObject2 = com.tencent.mm.live.b.g.aov();
+            localObject3 = com.tencent.mm.live.b.g.gQZ;
+            j = com.tencent.mm.live.b.g.anH().FZN;
+            localObject3 = com.tencent.mm.live.b.g.gQZ;
+            com.tencent.mm.live.b.c.a.a(l, (String)localObject1, i, (String)localObject2, j, com.tencent.mm.live.b.g.anJ());
           }
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.b.g.aoh();
-          localObject1 = com.tencent.mm.live.b.i.gPh;
-          com.tencent.mm.live.b.i.nH(0);
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.b.g.aow();
+          localObject1 = com.tencent.mm.live.b.i.gRP;
+          com.tencent.mm.live.b.i.nK(0);
           break;
         }
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        com.tencent.mm.live.b.g.anA();
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        com.tencent.mm.live.b.g.anP();
         localObject1 = getContext();
         if (localObject1 == null)
         {
           paramc = new v("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(212935);
+          AppMethodBeat.o(216565);
           throw paramc;
         }
         ((Activity)localObject1).finishAndRemoveTask();
         continue;
-        localObject1 = this.haq;
-        if ((localObject1 != null) && (((com.tencent.mm.live.c.g)localObject1).gTk.isShowing())) {
-          ((com.tencent.mm.live.c.g)localObject1).gTk.dismiss();
+        localObject1 = this.hdd;
+        if ((localObject1 != null) && (((com.tencent.mm.live.c.g)localObject1).gVT.isShowing())) {
+          ((com.tencent.mm.live.c.g)localObject1).gVT.dismiss();
         }
-        localObject1 = this.hav;
+        localObject1 = this.hdi;
         if (localObject1 != null) {
-          ((ae)localObject1).nI(8);
+          ((com.tencent.mm.live.c.ae)localObject1).nL(8);
         }
-        aqz();
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        com.tencent.mm.live.b.g.aoj();
-        localObject1 = com.tencent.mm.live.b.i.gPh;
-        com.tencent.mm.live.b.i.aop();
-        localObject1 = com.tencent.mm.live.b.i.gPh;
-        com.tencent.mm.live.b.i.aoq();
-        com.tencent.mm.live.b.i.gPh.release();
-        localObject1 = com.tencent.mm.live.b.c.gMO;
-        com.tencent.mm.live.b.c.amR();
-        localObject1 = com.tencent.mm.live.b.c.a.gRa;
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        com.tencent.mm.live.b.c.a.rm(com.tencent.mm.live.b.g.ans().Fsa);
+        aqO();
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        com.tencent.mm.live.b.g.aoy();
+        localObject1 = com.tencent.mm.live.b.i.gRP;
+        com.tencent.mm.live.b.i.aoE();
+        localObject1 = com.tencent.mm.live.b.i.gRP;
+        com.tencent.mm.live.b.i.aoF();
+        com.tencent.mm.live.b.i.gRP.release();
+        localObject1 = com.tencent.mm.live.b.c.gPx;
+        com.tencent.mm.live.b.c.ang();
+        localObject1 = com.tencent.mm.live.b.c.a.gTI;
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        com.tencent.mm.live.b.c.a.rz(com.tencent.mm.live.b.g.anH().FKy);
         continue;
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        if (!com.tencent.mm.live.b.g.anG().gOz)
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        if (!com.tencent.mm.live.b.g.anV().gRh)
         {
-          localObject1 = this.ham;
+          localObject1 = this.hcZ;
           if (localObject1 != null) {
-            ((aq)localObject1).nI(8);
+            ((aq)localObject1).nL(8);
           }
-          localObject1 = this.haj;
+          localObject1 = this.hcW;
           if (localObject1 != null) {
-            ((com.tencent.mm.live.c.ao)localObject1).nI(8);
+            ((com.tencent.mm.live.c.ao)localObject1).nL(8);
           }
-          localObject1 = this.haf;
+          localObject1 = this.hcS;
           if (localObject1 != null) {
-            ((ba)localObject1).nI(8);
+            ((ba)localObject1).nL(8);
           }
-          localObject1 = this.hag;
+          localObject1 = this.hcT;
           if (localObject1 != null) {
-            ((com.tencent.mm.live.c.t)localObject1).nI(8);
+            ((com.tencent.mm.live.c.t)localObject1).nL(8);
           }
-          localObject1 = this.hah;
+          localObject1 = this.hcU;
           if (localObject1 != null) {
-            ((k)localObject1).nI(8);
+            ((k)localObject1).nL(8);
           }
-          localObject1 = this.hav;
+          localObject1 = this.hdi;
           if (localObject1 != null)
           {
-            localObject2 = com.tencent.mm.live.b.g.gOr;
-            localObject2 = com.tencent.mm.live.b.g.anu();
+            localObject2 = com.tencent.mm.live.b.g.gQZ;
+            localObject2 = com.tencent.mm.live.b.g.anJ();
             localObject3 = getContext();
             d.g.b.p.g(localObject3, "context");
             localObject3 = ((Context)localObject3).getResources().getString(2131766622);
             d.g.b.p.g(localObject3, "context.resources.getStr…_local_network_error_tip)");
-            ((ae)localObject1).at((String)localObject2, (String)localObject3);
+            ((com.tencent.mm.live.c.ae)localObject1).au((String)localObject2, (String)localObject3);
           }
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.b.g.aoi();
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.b.g.aox();
           continue;
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          if (!com.tencent.mm.live.b.g.anG().gOz)
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          if (!com.tencent.mm.live.b.g.anV().gRh)
           {
-            localObject1 = this.haj;
+            localObject1 = this.hcW;
             if (localObject1 != null) {
-              ((com.tencent.mm.live.c.ao)localObject1).nI(0);
+              ((com.tencent.mm.live.c.ao)localObject1).nL(0);
             }
-            localObject1 = com.tencent.mm.live.b.g.gOr;
-            com.tencent.mm.live.b.g.anG().gOB = false;
+            localObject1 = com.tencent.mm.live.b.g.gQZ;
+            com.tencent.mm.live.b.g.anV().gRj = false;
             continue;
-            if (this.haH)
+            if (this.hdu)
             {
               localObject1 = getContext();
               if (localObject1 == null)
               {
                 paramc = new v("null cannot be cast to non-null type android.app.Activity");
-                AppMethodBeat.o(212935);
+                AppMethodBeat.o(216565);
                 throw paramc;
               }
               ((Activity)localObject1).setRequestedOrientation(4);
@@ -985,49 +985,49 @@ public final class LiveAnchorPluginLayout
               {
                 localObject1 = "";
               }
-              localObject2 = com.tencent.mm.live.b.i.gPh;
-              com.tencent.mm.live.b.i.xO((String)localObject1);
+              localObject2 = com.tencent.mm.live.b.i.gRP;
+              com.tencent.mm.live.b.i.yx((String)localObject1);
               continue;
-              localObject1 = com.tencent.mm.live.b.g.gOr;
-              com.tencent.mm.live.b.g.anG().gOC = true;
+              localObject1 = com.tencent.mm.live.b.g.gQZ;
+              com.tencent.mm.live.b.g.anV().gRk = true;
               continue;
-              localObject1 = this.hav;
+              localObject1 = this.hdi;
               if (localObject1 != null) {
-                ((ae)localObject1).nI(8);
+                ((com.tencent.mm.live.c.ae)localObject1).nL(8);
               }
-              localObject1 = this.gXX;
+              localObject1 = this.haJ;
               if (localObject1 != null) {
                 ((com.tencent.mm.plugin.mmsight.model.d)localObject1).a((d.a)this);
               }
-              localObject1 = this.gXX;
+              localObject1 = this.haJ;
               if (localObject1 != null) {
                 ((com.tencent.mm.plugin.mmsight.model.d)localObject1).enable();
               }
-              localObject1 = com.tencent.mm.live.b.g.gOr;
-              if (com.tencent.mm.live.b.g.anH().gOw)
+              localObject1 = com.tencent.mm.live.b.g.gQZ;
+              if (com.tencent.mm.live.b.g.anW().gRe)
               {
-                localObject1 = this.hag;
+                localObject1 = this.hcT;
                 if (localObject1 != null) {
-                  ((com.tencent.mm.live.c.t)localObject1).nI(0);
+                  ((com.tencent.mm.live.c.t)localObject1).nL(0);
                 }
-                a(b.c.gRp, new Bundle());
-                localObject1 = com.tencent.mm.live.b.g.gOr;
-                com.tencent.mm.live.b.g.anH().gOw = false;
+                a(b.c.gTX, new Bundle());
+                localObject1 = com.tencent.mm.live.b.g.gQZ;
+                com.tencent.mm.live.b.g.anW().gRe = false;
                 continue;
-                localObject1 = com.tencent.mm.live.b.g.gOr;
-                if (com.tencent.mm.live.b.g.anO()) {}
+                localObject1 = com.tencent.mm.live.b.g.gQZ;
+                if (com.tencent.mm.live.b.g.aod()) {}
                 for (i = 4;; i = 5)
                 {
-                  localObject1 = com.tencent.mm.live.b.g.gOr;
-                  localObject1 = com.tencent.mm.live.b.g.anm();
-                  localObject2 = com.tencent.mm.live.b.g.gOr;
-                  bool1 = com.tencent.mm.live.b.g.anL();
-                  localObject2 = com.tencent.mm.live.b.g.gOr;
-                  bool2 = com.tencent.mm.live.b.g.anM();
-                  localObject2 = com.tencent.mm.live.b.g.gOr;
-                  localObject2 = com.tencent.mm.live.b.g.ans().Gbw;
-                  localObject3 = com.tencent.mm.live.b.g.gOr;
-                  bool3 = com.tencent.mm.live.b.g.anK();
+                  localObject1 = com.tencent.mm.live.b.g.gQZ;
+                  localObject1 = com.tencent.mm.live.b.g.anC();
+                  localObject2 = com.tencent.mm.live.b.g.gQZ;
+                  bool1 = com.tencent.mm.live.b.g.aoa();
+                  localObject2 = com.tencent.mm.live.b.g.gQZ;
+                  bool2 = com.tencent.mm.live.b.g.aob();
+                  localObject2 = com.tencent.mm.live.b.g.gQZ;
+                  localObject2 = com.tencent.mm.live.b.g.anH().Gud;
+                  localObject3 = com.tencent.mm.live.b.g.gQZ;
+                  bool3 = com.tencent.mm.live.b.g.anZ();
                   localObject3 = getContext();
                   d.g.b.p.g(localObject3, "context");
                   localObject3 = ((Context)localObject3).getResources();
@@ -1040,59 +1040,59 @@ public final class LiveAnchorPluginLayout
                   if (((Resources)localObject1).getConfiguration().orientation != 2) {
                     break label2623;
                   }
-                  com.tencent.mm.live.d.a.aps();
+                  com.tencent.mm.live.d.a.apG();
                   break;
                 }
                 label2623:
-                com.tencent.mm.live.d.a.apt();
+                com.tencent.mm.live.d.a.apH();
                 continue;
-                localObject1 = com.tencent.mm.live.b.g.gOr;
-                if (!com.tencent.mm.live.b.g.anG().gOz)
+                localObject1 = com.tencent.mm.live.b.g.gQZ;
+                if (!com.tencent.mm.live.b.g.anV().gRh)
                 {
-                  localObject1 = this.ham;
+                  localObject1 = this.hcZ;
                   if (localObject1 != null) {
-                    ((aq)localObject1).nI(8);
+                    ((aq)localObject1).nL(8);
                   }
-                  localObject1 = this.haj;
+                  localObject1 = this.hcW;
                   if (localObject1 != null) {
-                    ((com.tencent.mm.live.c.ao)localObject1).nI(8);
+                    ((com.tencent.mm.live.c.ao)localObject1).nL(8);
                   }
-                  localObject1 = this.haf;
+                  localObject1 = this.hcS;
                   if (localObject1 != null) {
-                    ((ba)localObject1).nI(8);
+                    ((ba)localObject1).nL(8);
                   }
-                  localObject1 = this.hag;
+                  localObject1 = this.hcT;
                   if (localObject1 != null) {
-                    ((com.tencent.mm.live.c.t)localObject1).nI(8);
+                    ((com.tencent.mm.live.c.t)localObject1).nL(8);
                   }
-                  localObject1 = this.hah;
+                  localObject1 = this.hcU;
                   if (localObject1 != null) {
-                    ((k)localObject1).nI(8);
+                    ((k)localObject1).nL(8);
                   }
-                  localObject1 = this.hav;
+                  localObject1 = this.hdi;
                   if (localObject1 != null)
                   {
-                    localObject2 = com.tencent.mm.live.b.g.gOr;
-                    localObject2 = com.tencent.mm.live.b.g.anu();
+                    localObject2 = com.tencent.mm.live.b.g.gQZ;
+                    localObject2 = com.tencent.mm.live.b.g.anJ();
                     localObject3 = getContext();
                     d.g.b.p.g(localObject3, "context");
                     localObject3 = ((Context)localObject3).getResources().getString(2131766622);
                     d.g.b.p.g(localObject3, "context.resources.getStr…_local_network_error_tip)");
-                    ((ae)localObject1).at((String)localObject2, (String)localObject3);
+                    ((com.tencent.mm.live.c.ae)localObject1).au((String)localObject2, (String)localObject3);
                   }
-                  localObject1 = com.tencent.mm.live.b.g.gOr;
-                  com.tencent.mm.live.b.g.aoi();
+                  localObject1 = com.tencent.mm.live.b.g.gQZ;
+                  com.tencent.mm.live.b.g.aox();
                 }
-                localObject1 = com.tencent.mm.live.b.g.gOr;
-                localObject1 = com.tencent.mm.live.b.g.anm();
-                localObject2 = com.tencent.mm.live.b.g.gOr;
-                bool1 = com.tencent.mm.live.b.g.anL();
-                localObject2 = com.tencent.mm.live.b.g.gOr;
-                boolean bool2 = com.tencent.mm.live.b.g.anM();
-                localObject2 = com.tencent.mm.live.b.g.gOr;
-                localObject2 = com.tencent.mm.live.b.g.ans().Gbw;
-                localObject3 = com.tencent.mm.live.b.g.gOr;
-                boolean bool3 = com.tencent.mm.live.b.g.anK();
+                localObject1 = com.tencent.mm.live.b.g.gQZ;
+                localObject1 = com.tencent.mm.live.b.g.anC();
+                localObject2 = com.tencent.mm.live.b.g.gQZ;
+                bool1 = com.tencent.mm.live.b.g.aoa();
+                localObject2 = com.tencent.mm.live.b.g.gQZ;
+                boolean bool2 = com.tencent.mm.live.b.g.aob();
+                localObject2 = com.tencent.mm.live.b.g.gQZ;
+                localObject2 = com.tencent.mm.live.b.g.anH().Gud;
+                localObject3 = com.tencent.mm.live.b.g.gQZ;
+                boolean bool3 = com.tencent.mm.live.b.g.anZ();
                 localObject3 = getContext();
                 d.g.b.p.g(localObject3, "context");
                 localObject3 = ((Context)localObject3).getResources();
@@ -1104,164 +1104,168 @@ public final class LiveAnchorPluginLayout
                   com.tencent.mm.live.d.e.a((String)localObject1, bool1, bool2, (String)localObject2, bool3, j, 6, i);
                   break;
                 }
-                localObject1 = this.haj;
+                localObject1 = this.hcW;
                 if (localObject1 != null) {
-                  ((com.tencent.mm.live.c.ao)localObject1).gIn.gLW.amM();
+                  ((com.tencent.mm.live.c.ao)localObject1).gKW.gOF.anb();
                 }
-                localObject1 = this.gWE;
+                localObject1 = this.gZr;
                 if (localObject1 != null)
                 {
-                  localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
-                  if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.e)localObject1).alF() == true))
+                  localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
+                  if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.e)localObject1).alU() == true))
                   {
-                    localObject1 = this.gWE;
+                    localObject1 = this.gZr;
                     if (localObject1 != null)
                     {
-                      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+                      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
                       if (localObject1 != null)
                       {
-                        ((com.tencent.mm.live.core.core.b.e)localObject1).gHK = e.b.gHV;
+                        ((com.tencent.mm.live.core.core.b.e)localObject1).gKt = e.b.gKE;
                         continue;
-                        localObject1 = this.gWE;
+                        localObject1 = this.gZr;
                         if (localObject1 != null)
                         {
-                          localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+                          localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
                           if (localObject1 != null)
                           {
-                            ((com.tencent.mm.live.core.core.b.e)localObject1).gHL = e.d.gIb;
+                            ((com.tencent.mm.live.core.core.b.e)localObject1).gKu = e.d.gKK;
                             continue;
-                            localObject1 = this.gWE;
+                            localObject1 = this.gZr;
                             if (localObject1 != null)
                             {
-                              localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+                              localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
                               if (localObject1 != null)
                               {
-                                ((com.tencent.mm.live.core.core.b.e)localObject1).gHL = e.d.gId;
+                                ((com.tencent.mm.live.core.core.b.e)localObject1).gKu = e.d.gKM;
                                 continue;
-                                localObject1 = this.gWE;
+                                localObject1 = this.gZr;
                                 if (localObject1 != null)
                                 {
-                                  localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+                                  localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
                                   if ((localObject1 != null) && (!((com.tencent.mm.live.core.core.b.e)localObject1).isFloatMode()))
                                   {
-                                    localObject1 = this.gWE;
+                                    localObject1 = this.gZr;
                                     if (localObject1 != null)
                                     {
                                       localObject2 = getContext();
                                       d.g.b.p.g(localObject2, "context");
-                                      ((com.tencent.mm.live.core.core.a.a)localObject1).cp((Context)localObject2);
+                                      ((com.tencent.mm.live.core.core.a.a)localObject1).cr((Context)localObject2);
                                     }
-                                    localObject1 = com.tencent.mm.live.b.g.gOr;
-                                    localObject1 = com.tencent.mm.live.b.g.anm();
-                                    localObject2 = com.tencent.mm.live.b.g.gOr;
-                                    l = com.tencent.mm.live.b.g.ans().Fsa;
-                                    localObject2 = com.tencent.mm.live.b.g.gOr;
-                                    com.tencent.mm.live.d.e.a((String)localObject1, l, com.tencent.mm.live.b.g.anu(), 2, 1);
-                                    com.tencent.mm.live.d.a.apq();
+                                    localObject1 = com.tencent.mm.live.b.g.gQZ;
+                                    localObject1 = com.tencent.mm.live.b.g.anC();
+                                    localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                    l = com.tencent.mm.live.b.g.anH().FKy;
+                                    localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                    localObject2 = com.tencent.mm.live.b.g.anJ();
+                                    localObject3 = com.tencent.mm.live.b.g.gQZ;
+                                    com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 2, 1, com.tencent.mm.live.b.g.anH().GTv);
+                                    com.tencent.mm.live.d.a.apE();
                                     continue;
-                                    localObject1 = com.tencent.mm.live.b.g.gOr;
-                                    localObject1 = com.tencent.mm.live.b.g.anm();
-                                    localObject2 = com.tencent.mm.live.b.g.gOr;
-                                    l = com.tencent.mm.live.b.g.ans().Fsa;
-                                    localObject2 = com.tencent.mm.live.b.g.gOr;
-                                    com.tencent.mm.live.d.e.a((String)localObject1, l, com.tencent.mm.live.b.g.anu(), 2, 0);
-                                    com.tencent.mm.live.d.a.apr();
+                                    localObject1 = com.tencent.mm.live.b.g.gQZ;
+                                    localObject1 = com.tencent.mm.live.b.g.anC();
+                                    localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                    l = com.tencent.mm.live.b.g.anH().FKy;
+                                    localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                    localObject2 = com.tencent.mm.live.b.g.anJ();
+                                    localObject3 = com.tencent.mm.live.b.g.gQZ;
+                                    com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 2, 0, com.tencent.mm.live.b.g.anH().GTv);
+                                    com.tencent.mm.live.d.a.apF();
                                     continue;
-                                    localObject1 = this.gWE;
+                                    localObject1 = this.gZr;
                                     if (localObject1 != null)
                                     {
-                                      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+                                      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
                                       if (localObject1 != null)
                                       {
-                                        ((com.tencent.mm.live.core.core.b.e)localObject1).gHK = e.b.gHU;
+                                        ((com.tencent.mm.live.core.core.b.e)localObject1).gKt = e.b.gKD;
                                         continue;
-                                        localObject1 = this.gWE;
+                                        localObject1 = this.gZr;
                                         if (localObject1 != null)
                                         {
-                                          localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+                                          localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
                                           if (localObject1 != null) {
-                                            ((com.tencent.mm.live.core.core.b.e)localObject1).gHK = e.b.gHT;
+                                            ((com.tencent.mm.live.core.core.b.e)localObject1).gKt = e.b.gKC;
                                           }
                                         }
-                                        localObject1 = this.haw;
+                                        localObject1 = this.hdj;
                                         if (localObject1 != null)
                                         {
-                                          this.haF.remove(localObject1);
+                                          this.hds.remove(localObject1);
                                           continue;
-                                          localObject1 = com.tencent.mm.live.core.core.trtc.a.a.alJ();
+                                          localObject1 = com.tencent.mm.live.core.core.trtc.a.a.alY();
                                           d.g.b.p.g(localObject1, "ConfigHelper.getInstance()");
-                                          localObject1 = ((com.tencent.mm.live.core.core.trtc.a.a)localObject1).alK();
+                                          localObject1 = ((com.tencent.mm.live.core.core.trtc.a.a)localObject1).alZ();
                                           d.g.b.p.g(localObject1, "ConfigHelper.getInstance().videoConfig");
-                                          localObject2 = com.tencent.mm.live.b.g.gOr;
-                                          if (!com.tencent.mm.live.b.g.anJ().aol())
+                                          localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                          if (!com.tencent.mm.live.b.g.anY().aoA())
                                           {
                                             bool1 = true;
-                                            label3398:
-                                            ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject1).dI(bool1);
-                                            localObject1 = this.gWE;
+                                            label3428:
+                                            ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject1).dJ(bool1);
+                                            localObject1 = this.gZr;
                                             if (localObject1 != null) {
                                               ((com.tencent.mm.live.core.core.a.a)localObject1).y(0.0F, 0.0F);
                                             }
-                                            localObject1 = this.haj;
+                                            localObject1 = this.hcW;
                                             if (localObject1 == null) {
                                               continue;
                                             }
-                                            localObject2 = com.tencent.mm.live.b.g.gOr;
-                                            if (!com.tencent.mm.live.b.g.anJ().aol()) {
-                                              break label3508;
+                                            localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                            if (!com.tencent.mm.live.b.g.anY().aoA()) {
+                                              break label3538;
                                             }
                                           }
-                                          label3508:
+                                          label3538:
                                           for (i = 2;; i = 1)
                                           {
-                                            localObject2 = com.tencent.mm.live.b.g.gOr;
-                                            localObject2 = com.tencent.mm.live.b.g.anJ().userId;
-                                            localObject3 = com.tencent.mm.live.b.g.gOr;
-                                            j = com.tencent.mm.live.b.g.anJ().streamType;
+                                            localObject2 = com.tencent.mm.live.b.g.gQZ;
+                                            localObject2 = com.tencent.mm.live.b.g.anY().userId;
+                                            localObject3 = com.tencent.mm.live.b.g.gQZ;
+                                            j = com.tencent.mm.live.b.g.anY().streamType;
                                             d.g.b.p.h(localObject2, "userId");
-                                            ((com.tencent.mm.live.c.ao)localObject1).gIn.c(i, (String)localObject2, j);
+                                            ((com.tencent.mm.live.c.ao)localObject1).gKW.c(i, (String)localObject2, j);
                                             break;
                                             bool1 = false;
-                                            break label3398;
+                                            break label3428;
                                           }
-                                          localObject1 = com.tencent.mm.live.b.g.gOr;
-                                          if (!com.tencent.mm.live.b.g.anG().gOz)
+                                          localObject1 = com.tencent.mm.live.b.g.gQZ;
+                                          if (!com.tencent.mm.live.b.g.anV().gRh)
                                           {
-                                            localObject1 = this.ham;
+                                            localObject1 = this.hcZ;
                                             if (localObject1 != null) {
-                                              ((aq)localObject1).nI(8);
+                                              ((aq)localObject1).nL(8);
                                             }
-                                            localObject1 = this.haj;
+                                            localObject1 = this.hcW;
                                             if (localObject1 != null) {
-                                              ((com.tencent.mm.live.c.ao)localObject1).nI(8);
+                                              ((com.tencent.mm.live.c.ao)localObject1).nL(8);
                                             }
-                                            localObject1 = this.haf;
+                                            localObject1 = this.hcS;
                                             if (localObject1 != null) {
-                                              ((ba)localObject1).nI(8);
+                                              ((ba)localObject1).nL(8);
                                             }
-                                            localObject1 = this.hag;
+                                            localObject1 = this.hcT;
                                             if (localObject1 != null) {
-                                              ((com.tencent.mm.live.c.t)localObject1).nI(8);
+                                              ((com.tencent.mm.live.c.t)localObject1).nL(8);
                                             }
-                                            localObject1 = this.hah;
+                                            localObject1 = this.hcU;
                                             if (localObject1 != null) {
-                                              ((k)localObject1).nI(8);
+                                              ((k)localObject1).nL(8);
                                             }
-                                            localObject1 = this.hav;
+                                            localObject1 = this.hdi;
                                             if (localObject1 != null) {
-                                              ((ae)localObject1).nI(8);
+                                              ((com.tencent.mm.live.c.ae)localObject1).nL(8);
                                             }
-                                            localObject1 = this.haA;
+                                            localObject1 = this.hdn;
                                             if (localObject1 != null) {
-                                              ((com.tencent.mm.live.c.r)localObject1).nI(0);
+                                              ((com.tencent.mm.live.c.r)localObject1).nL(0);
                                             }
-                                            localObject1 = com.tencent.mm.live.b.g.gOr;
-                                            com.tencent.mm.live.b.g.aoi();
+                                            localObject1 = com.tencent.mm.live.b.g.gQZ;
+                                            com.tencent.mm.live.b.g.aox();
                                             localObject1 = getContext();
                                             if (localObject1 == null)
                                             {
                                               paramc = new v("null cannot be cast to non-null type android.app.Activity");
-                                              AppMethodBeat.o(212935);
+                                              AppMethodBeat.o(216565);
                                               throw paramc;
                                             }
                                             ((Activity)localObject1).setRequestedOrientation(1);
@@ -1288,111 +1292,111 @@ public final class LiveAnchorPluginLayout
     }
   }
   
-  public final void aoA()
+  public final void aoO()
   {
-    AppMethodBeat.i(212941);
-    super.aoA();
-    Object localObject = com.tencent.mm.kernel.g.ajB();
+    AppMethodBeat.i(216570);
+    super.aoO();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajQ();
+    d.g.b.p.g(localb, "MMKernel.network()");
+    localb.ajj().a(3806, (com.tencent.mm.ak.f)this);
+    localb = com.tencent.mm.kernel.g.ajQ();
+    d.g.b.p.g(localb, "MMKernel.network()");
+    localb.ajj().a(3559, (com.tencent.mm.ak.f)this);
+    localb = com.tencent.mm.kernel.g.ajQ();
+    d.g.b.p.g(localb, "MMKernel.network()");
+    localb.ajj().a(3557, (com.tencent.mm.ak.f)this);
+    AppMethodBeat.o(216570);
+  }
+  
+  public final void aoP()
+  {
+    AppMethodBeat.i(216571);
+    super.aoP();
+    Object localObject = com.tencent.mm.kernel.g.ajQ();
     d.g.b.p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).aiU().b(3806, (com.tencent.mm.al.f)this);
-    localObject = com.tencent.mm.kernel.g.ajB();
+    ((com.tencent.mm.kernel.b)localObject).ajj().b(3806, (com.tencent.mm.ak.f)this);
+    localObject = com.tencent.mm.kernel.g.ajQ();
     d.g.b.p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).aiU().b(3559, (com.tencent.mm.al.f)this);
-    localObject = com.tencent.mm.kernel.g.ajB();
+    ((com.tencent.mm.kernel.b)localObject).ajj().b(3559, (com.tencent.mm.ak.f)this);
+    localObject = com.tencent.mm.kernel.g.ajQ();
     d.g.b.p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).aiU().b(3557, (com.tencent.mm.al.f)this);
-    if ((!aqB()) && (!this.haK))
+    ((com.tencent.mm.kernel.b)localObject).ajj().b(3557, (com.tencent.mm.ak.f)this);
+    if ((!aqQ()) && (!this.hdx))
     {
-      localObject = this.gWE;
+      localObject = this.gZr;
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.live.core.core.a.a)localObject).alf();
-        if ((localObject != null) && (((com.tencent.mm.live.core.core.b.e)localObject).alF() == true)) {}
+        localObject = ((com.tencent.mm.live.core.core.a.a)localObject).alu();
+        if ((localObject != null) && (((com.tencent.mm.live.core.core.b.e)localObject).alU() == true)) {}
       }
       else
       {
-        localObject = this.gWE;
+        localObject = this.gZr;
         if (localObject == null) {
           break label191;
         }
-        localObject = ((com.tencent.mm.live.core.core.a.a)localObject).alf();
-        if ((localObject == null) || (((com.tencent.mm.live.core.core.b.e)localObject).alE() != true)) {
+        localObject = ((com.tencent.mm.live.core.core.a.a)localObject).alu();
+        if ((localObject == null) || (((com.tencent.mm.live.core.core.b.e)localObject).alT() != true)) {
           break label191;
         }
       }
-      localObject = this.haq;
+      localObject = this.hdd;
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.live.c.g)localObject).gTj.getSelectUser();
+        localObject = ((com.tencent.mm.live.c.g)localObject).gVS.getSelectUser();
         if (localObject != null)
         {
-          com.tencent.mm.live.b.i locali = com.tencent.mm.live.b.i.gPh;
-          com.tencent.mm.live.b.i.as(((a.a)localObject).gQS, ((a.a)localObject).gQU);
+          com.tencent.mm.live.b.i locali = com.tencent.mm.live.b.i.gRP;
+          com.tencent.mm.live.b.i.at(((a.a)localObject).gTA, ((a.a)localObject).gTC);
         }
       }
       label191:
-      localObject = com.tencent.mm.live.b.i.gPh;
-      com.tencent.mm.live.b.i.nH(1);
-      aqz();
-      com.tencent.mm.live.b.i.gPh.release();
-      localObject = com.tencent.mm.live.b.c.gMO;
-      com.tencent.mm.live.b.c.amR();
-      localObject = this.gWE;
+      localObject = com.tencent.mm.live.b.i.gRP;
+      com.tencent.mm.live.b.i.nK(1);
+      aqO();
+      com.tencent.mm.live.b.i.gRP.release();
+      localObject = com.tencent.mm.live.b.c.gPx;
+      com.tencent.mm.live.b.c.ang();
+      localObject = this.gZr;
       if (localObject != null) {
-        ((com.tencent.mm.live.core.core.a.a)localObject).alh();
+        ((com.tencent.mm.live.core.core.a.a)localObject).alw();
       }
-      localObject = com.tencent.mm.live.core.core.a.b.gHl;
+      localObject = com.tencent.mm.live.core.core.a.b.gJU;
       b.a.releaseInstance();
-      localObject = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.Zh();
-      this.haI.abe();
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.Zq();
+      this.hdv.abn();
     }
-    AppMethodBeat.o(212941);
+    AppMethodBeat.o(216571);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
-    AppMethodBeat.i(212943);
-    boolean bool2 = super.aoB();
+    AppMethodBeat.i(216573);
+    boolean bool2 = super.aoQ();
     boolean bool1 = bool2;
     if (!bool2)
     {
-      com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gOr;
+      com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
       bool1 = bool2;
-      if (!com.tencent.mm.live.b.g.anG().gOB)
+      if (!com.tencent.mm.live.b.g.anV().gRj)
       {
-        localg = com.tencent.mm.live.b.g.gOr;
+        localg = com.tencent.mm.live.b.g.gQZ;
         bool1 = bool2;
-        if (com.tencent.mm.live.b.g.anG().gOA)
+        if (com.tencent.mm.live.b.g.anV().gRi)
         {
-          b.b.a(this, b.c.gRv);
+          b.b.a(this, b.c.gUd);
           bool1 = true;
         }
       }
     }
-    AppMethodBeat.o(212943);
+    AppMethodBeat.o(216573);
     return bool1;
   }
   
-  public final void aoz()
+  public final void dY(boolean paramBoolean)
   {
-    AppMethodBeat.i(212940);
-    super.aoz();
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
-    d.g.b.p.g(localb, "MMKernel.network()");
-    localb.aiU().a(3806, (com.tencent.mm.al.f)this);
-    localb = com.tencent.mm.kernel.g.ajB();
-    d.g.b.p.g(localb, "MMKernel.network()");
-    localb.aiU().a(3559, (com.tencent.mm.al.f)this);
-    localb = com.tencent.mm.kernel.g.ajB();
-    d.g.b.p.g(localb, "MMKernel.network()");
-    localb.aiU().a(3557, (com.tencent.mm.al.f)this);
-    AppMethodBeat.o(212940);
-  }
-  
-  public final void dW(boolean paramBoolean)
-  {
-    this.haH = paramBoolean;
+    this.hdu = paramBoolean;
   }
   
   public final void f(int paramInt, Bundle paramBundle)
@@ -1402,59 +1406,59 @@ public final class LiveAnchorPluginLayout
     Object localObject1 = null;
     int j = 1;
     int i = 0;
-    AppMethodBeat.i(212951);
-    Object localObject4 = c.b.gHd;
-    if (paramInt == c.b.alm())
+    AppMethodBeat.i(216581);
+    Object localObject4 = c.b.gJM;
+    if (paramInt == c.b.alB())
     {
-      b.b.a(this, b.c.gRR);
-      paramBundle = this.haq;
+      b.b.a(this, b.c.gUz);
+      paramBundle = this.hdd;
       if (paramBundle != null)
       {
-        paramBundle.aoG();
-        AppMethodBeat.o(212951);
+        paramBundle.aoU();
+        AppMethodBeat.o(216581);
         return;
       }
-      AppMethodBeat.o(212951);
+      AppMethodBeat.o(216581);
       return;
     }
-    localObject4 = c.b.gHd;
-    if (paramInt == c.b.alr())
+    localObject4 = c.b.gJM;
+    if (paramInt == c.b.alG())
     {
-      paramBundle = this.gWE;
+      paramBundle = this.gZr;
       if (paramBundle != null)
       {
-        paramBundle = paramBundle.alf();
+        paramBundle = paramBundle.alu();
         if (paramBundle != null)
         {
-          if (paramBundle.alE() != true) {
+          if (paramBundle.alT() != true) {
             break label1339;
           }
-          paramBundle = this.gWE;
+          paramBundle = this.gZr;
           if (paramBundle != null)
           {
-            paramBundle = paramBundle.alf();
+            paramBundle = paramBundle.alu();
             if (paramBundle != null) {
-              paramBundle.gHK = e.b.gHU;
+              paramBundle.gKt = e.b.gKD;
             }
           }
-          paramBundle = this.haq;
+          paramBundle = this.hdd;
           if (paramBundle == null) {
             break label160;
           }
-          paramBundle.aoF();
-          AppMethodBeat.o(212951);
+          paramBundle.aoT();
+          AppMethodBeat.o(216581);
           return;
         }
       }
-      AppMethodBeat.o(212951);
+      AppMethodBeat.o(216581);
       return;
       label160:
-      AppMethodBeat.o(212951);
+      AppMethodBeat.o(216581);
     }
     else
     {
-      localObject4 = c.b.gHd;
-      if (paramInt == c.b.aln())
+      localObject4 = c.b.gJM;
+      if (paramInt == c.b.alC())
       {
         if (paramBundle != null)
         {
@@ -1462,198 +1466,198 @@ public final class LiveAnchorPluginLayout
           paramBundle.getString("live_user_exit_reason");
           localObject3 = this.TAG;
           localObject4 = new StringBuilder("EVT_ROOM_USER_EXIT sdkUid:").append((String)localObject2).append(" micUid:");
-          paramBundle = com.tencent.mm.live.b.g.gOr;
-          paramBundle = com.tencent.mm.live.b.g.aod().gQP;
+          paramBundle = com.tencent.mm.live.b.g.gQZ;
+          paramBundle = com.tencent.mm.live.b.g.aos().gTx;
           if (paramBundle != null) {}
-          for (paramBundle = paramBundle.gQU;; paramBundle = null)
+          for (paramBundle = paramBundle.gTC;; paramBundle = null)
           {
-            ad.i((String)localObject3, paramBundle);
-            paramBundle = com.tencent.mm.live.b.g.gOr;
-            localObject3 = com.tencent.mm.live.b.g.aod().gQP;
+            com.tencent.mm.sdk.platformtools.ae.i((String)localObject3, paramBundle);
+            paramBundle = com.tencent.mm.live.b.g.gQZ;
+            localObject3 = com.tencent.mm.live.b.g.aos().gTx;
             paramBundle = (Bundle)localObject1;
             if (localObject3 != null) {
-              paramBundle = ((a.a)localObject3).gQU;
+              paramBundle = ((a.a)localObject3).gTC;
             }
             if (!d.g.b.p.i(localObject2, paramBundle)) {
               break;
             }
-            paramBundle = this.gWE;
+            paramBundle = this.gZr;
             if (paramBundle != null)
             {
-              localObject1 = com.tencent.mm.cc.a.az(getContext(), 2131766706);
+              localObject1 = com.tencent.mm.cb.a.az(getContext(), 2131766706);
               d.g.b.p.g(localObject1, "ResourceHelper.getString…ring.live_room_mini_live)");
-              paramBundle.xl((String)localObject1);
+              paramBundle.xU((String)localObject1);
             }
-            b.b.a(this, b.c.gRE);
-            paramBundle = com.tencent.mm.live.b.g.gOr;
-            paramBundle = com.tencent.mm.live.b.g.aod().gQP;
+            b.b.a(this, b.c.gUm);
+            paramBundle = com.tencent.mm.live.b.g.gQZ;
+            paramBundle = com.tencent.mm.live.b.g.aos().gTx;
             if (paramBundle == null) {
               break;
             }
-            localObject1 = com.tencent.mm.live.b.g.gOr;
-            com.tencent.mm.live.b.g.aod().a(paramBundle.gGy, paramBundle.gQT, paramBundle.gQS);
-            AppMethodBeat.o(212951);
+            localObject1 = com.tencent.mm.live.b.g.gQZ;
+            com.tencent.mm.live.b.g.aos().a(paramBundle.gJh, paramBundle.gTB, paramBundle.gTA);
+            AppMethodBeat.o(216581);
             return;
           }
-          AppMethodBeat.o(212951);
+          AppMethodBeat.o(216581);
           return;
         }
-        AppMethodBeat.o(212951);
+        AppMethodBeat.o(216581);
         return;
       }
-      localObject1 = c.b.gHd;
-      if (paramInt == c.b.alo())
+      localObject1 = c.b.gJM;
+      if (paramInt == c.b.alD())
       {
         if (paramBundle != null)
         {
           localObject1 = paramBundle.getString("live_user_id");
           boolean bool = paramBundle.getBoolean("live_media_enable");
-          paramBundle = com.tencent.mm.live.b.g.gOr;
-          localObject2 = com.tencent.mm.live.b.g.aod().gQP;
+          paramBundle = com.tencent.mm.live.b.g.gQZ;
+          localObject2 = com.tencent.mm.live.b.g.aos().gTx;
           paramBundle = (Bundle)localObject3;
           if (localObject2 != null) {
-            paramBundle = ((a.a)localObject2).gQU;
+            paramBundle = ((a.a)localObject2).gTC;
           }
           if (d.g.b.p.i(localObject1, paramBundle))
           {
             if (bool)
             {
-              paramBundle = this.gWE;
+              paramBundle = this.gZr;
               if (paramBundle != null)
               {
-                localObject1 = com.tencent.mm.cc.a.az(getContext(), 2131766707);
+                localObject1 = com.tencent.mm.cb.a.az(getContext(), 2131766707);
                 d.g.b.p.g(localObject1, "ResourceHelper.getString…tring.live_room_mini_mic)");
-                paramBundle.xl((String)localObject1);
+                paramBundle.xU((String)localObject1);
               }
-              b.b.a(this, b.c.gRB);
-              AppMethodBeat.o(212951);
+              b.b.a(this, b.c.gUj);
+              AppMethodBeat.o(216581);
               return;
             }
-            paramBundle = this.gWE;
+            paramBundle = this.gZr;
             if (paramBundle != null)
             {
-              localObject1 = com.tencent.mm.cc.a.az(getContext(), 2131766706);
+              localObject1 = com.tencent.mm.cb.a.az(getContext(), 2131766706);
               d.g.b.p.g(localObject1, "ResourceHelper.getString…ring.live_room_mini_live)");
-              paramBundle.xl((String)localObject1);
+              paramBundle.xU((String)localObject1);
             }
-            paramBundle = this.haq;
+            paramBundle = this.hdd;
             if (paramBundle != null)
             {
-              LiveAnchorMicUserListView.a(paramBundle.gTj);
-              AppMethodBeat.o(212951);
+              LiveAnchorMicUserListView.a(paramBundle.gVS);
+              AppMethodBeat.o(216581);
               return;
             }
           }
-          AppMethodBeat.o(212951);
+          AppMethodBeat.o(216581);
           return;
         }
-        AppMethodBeat.o(212951);
+        AppMethodBeat.o(216581);
         return;
       }
-      localObject1 = c.b.gHd;
-      if (paramInt == c.b.alp())
+      localObject1 = c.b.gJM;
+      if (paramInt == c.b.alE())
       {
-        i = this.haE;
-        paramBundle = this.gWE;
+        i = this.hdr;
+        paramBundle = this.gZr;
         if (paramBundle != null)
         {
-          paramBundle = paramBundle.alf();
+          paramBundle = paramBundle.alu();
           if (paramBundle != null)
           {
-            paramInt = paramBundle.gHR;
-            this.haE = paramInt;
-            paramBundle = c.c.gHi;
-            if (i == c.c.alx()) {
+            paramInt = paramBundle.gKA;
+            this.hdr = paramInt;
+            paramBundle = c.c.gJR;
+            if (i == c.c.alM()) {
               break label730;
             }
-            paramInt = this.haE;
-            paramBundle = c.c.gHi;
-            if (paramInt != c.c.alx()) {
+            paramInt = this.hdr;
+            paramBundle = c.c.gJR;
+            if (paramInt != c.c.alM()) {
               break label730;
             }
-            b.b.a(this, b.c.gSg);
-            if (this.haj != null) {}
+            b.b.a(this, b.c.gUO);
+            if (this.hcW != null) {}
           }
         }
         for (;;)
         {
-          paramInt = this.haE;
-          paramBundle = c.c.gHi;
-          if (paramInt != c.c.alu()) {
+          paramInt = this.hdr;
+          paramBundle = c.c.gJR;
+          if (paramInt != c.c.alJ()) {
             break label787;
           }
-          com.tencent.mm.live.core.c.a.amz();
-          AppMethodBeat.o(212951);
+          com.tencent.mm.live.core.c.a.amO();
+          AppMethodBeat.o(216581);
           return;
-          paramBundle = c.c.gHi;
-          paramInt = c.c.alv();
+          paramBundle = c.c.gJR;
+          paramInt = c.c.alK();
           break;
           label730:
-          paramBundle = c.c.gHi;
-          if (i == c.c.alx())
+          paramBundle = c.c.gJR;
+          if (i == c.c.alM())
           {
-            paramInt = this.haE;
-            paramBundle = c.c.gHi;
-            if (paramInt != c.c.alx())
+            paramInt = this.hdr;
+            paramBundle = c.c.gJR;
+            if (paramInt != c.c.alM())
             {
-              b.b.a(this, b.c.gSh);
-              paramBundle = this.haj;
+              b.b.a(this, b.c.gUP);
+              paramBundle = this.hcW;
               if (paramBundle != null) {
                 paramBundle.resume();
               }
-              paramBundle = com.tencent.mm.live.b.i.gPh;
-              com.tencent.mm.live.b.i.aoq();
+              paramBundle = com.tencent.mm.live.b.i.gRP;
+              com.tencent.mm.live.b.i.aoF();
             }
           }
         }
         label787:
-        paramBundle = c.c.gHi;
-        if (paramInt == c.c.alv())
+        paramBundle = c.c.gJR;
+        if (paramInt == c.c.alK())
         {
-          com.tencent.mm.live.core.c.a.amA();
-          AppMethodBeat.o(212951);
+          com.tencent.mm.live.core.c.a.amP();
+          AppMethodBeat.o(216581);
           return;
         }
-        paramBundle = c.c.gHi;
-        if (paramInt == c.c.alw())
+        paramBundle = c.c.gJR;
+        if (paramInt == c.c.alL())
         {
-          com.tencent.mm.live.core.c.a.amB();
-          AppMethodBeat.o(212951);
+          com.tencent.mm.live.core.c.a.amQ();
+          AppMethodBeat.o(216581);
           return;
         }
-        paramBundle = c.c.gHi;
-        if (paramInt == c.c.alx())
+        paramBundle = c.c.gJR;
+        if (paramInt == c.c.alM())
         {
-          com.tencent.mm.live.core.c.a.amC();
-          AppMethodBeat.o(212951);
+          com.tencent.mm.live.core.c.a.amR();
+          AppMethodBeat.o(216581);
           return;
         }
-        AppMethodBeat.o(212951);
+        AppMethodBeat.o(216581);
         return;
       }
-      localObject1 = c.b.gHd;
+      localObject1 = c.b.gJM;
       long l;
-      if (paramInt == c.b.alq())
+      if (paramInt == c.b.alF())
       {
-        paramBundle = this.gWE;
+        paramBundle = this.gZr;
         if (paramBundle != null)
         {
-          paramBundle = paramBundle.alf();
-          if ((paramBundle != null) && (paramBundle.alF() == true)) {
+          paramBundle = paramBundle.alu();
+          if ((paramBundle != null) && (paramBundle.alU() == true)) {
             i = j;
           }
         }
         for (;;)
         {
-          paramBundle = com.tencent.mm.live.b.g.gOr;
-          localObject2 = com.tencent.mm.live.b.g.anm();
-          paramBundle = com.tencent.mm.live.b.g.gOr;
-          l = com.tencent.mm.live.b.g.ans().Fsa;
-          paramBundle = com.tencent.mm.live.b.g.gOr;
-          paramBundle = com.tencent.mm.live.b.g.aod().gQP;
+          paramBundle = com.tencent.mm.live.b.g.gQZ;
+          localObject2 = com.tencent.mm.live.b.g.anC();
+          paramBundle = com.tencent.mm.live.b.g.gQZ;
+          l = com.tencent.mm.live.b.g.anH().FKy;
+          paramBundle = com.tencent.mm.live.b.g.gQZ;
+          paramBundle = com.tencent.mm.live.b.g.aos().gTx;
           if (paramBundle != null)
           {
-            localObject1 = paramBundle.gQS;
+            localObject1 = paramBundle.gTA;
             paramBundle = (Bundle)localObject1;
             if (localObject1 != null) {}
           }
@@ -1661,15 +1665,15 @@ public final class LiveAnchorPluginLayout
           {
             paramBundle = "";
           }
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.d.e.b((String)localObject2, l, paramBundle, com.tencent.mm.live.b.g.anu(), i, 0, paramInt);
-          AppMethodBeat.o(212951);
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.d.e.b((String)localObject2, l, paramBundle, com.tencent.mm.live.b.g.anJ(), i, 0, paramInt);
+          AppMethodBeat.o(216581);
           return;
-          paramBundle = this.gWE;
+          paramBundle = this.gZr;
           if (paramBundle != null)
           {
-            paramBundle = paramBundle.alf();
-            if ((paramBundle != null) && (paramBundle.alE() == true))
+            paramBundle = paramBundle.alu();
+            if ((paramBundle != null) && (paramBundle.alT() == true))
             {
               i = 2;
               continue;
@@ -1678,22 +1682,22 @@ public final class LiveAnchorPluginLayout
           i = 0;
         }
       }
-      localObject1 = c.b.gHd;
-      if (paramInt == c.b.als())
+      localObject1 = c.b.gJM;
+      if (paramInt == c.b.alH())
       {
-        paramBundle = com.tencent.mm.live.b.g.gOr;
-        l = com.tencent.mm.live.b.g.ans().Fsa;
-        paramBundle = com.tencent.mm.live.b.g.gOr;
-        paramBundle = com.tencent.mm.live.b.g.anm();
-        localObject1 = com.tencent.mm.live.b.g.gOr;
-        localObject1 = com.tencent.mm.live.b.g.ans().Gbw;
+        paramBundle = com.tencent.mm.live.b.g.gQZ;
+        l = com.tencent.mm.live.b.g.anH().FKy;
+        paramBundle = com.tencent.mm.live.b.g.gQZ;
+        paramBundle = com.tencent.mm.live.b.g.anC();
+        localObject1 = com.tencent.mm.live.b.g.gQZ;
+        localObject1 = com.tencent.mm.live.b.g.anH().Gud;
         d.g.b.p.g(localObject1, "LiveDataManager.liveInfo.live_name");
         new com.tencent.mm.live.b.a(l, paramBundle, (String)localObject1, (byte)0).a((d.g.a.r)new a(this));
-        AppMethodBeat.o(212951);
+        AppMethodBeat.o(216581);
         return;
       }
-      localObject1 = c.b.gHd;
-      if (paramInt == c.b.alt())
+      localObject1 = c.b.gJM;
+      if (paramInt == c.b.alI())
       {
         localObject4 = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder("EVENT_RENDER_FIRST_I_FRAME, userId:");
@@ -1707,15 +1711,15 @@ public final class LiveAnchorPluginLayout
         {
           localObject1 = "";
         }
-        ad.i((String)localObject4, (String)localObject1);
+        com.tencent.mm.sdk.platformtools.ae.i((String)localObject4, (String)localObject1);
         localObject1 = localObject2;
         if (paramBundle != null) {
           localObject1 = paramBundle.getString("live_user_id");
         }
-        if (!bt.isNullOrNil((String)localObject1))
+        if (!bu.isNullOrNil((String)localObject1))
         {
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject3 = com.tencent.mm.live.b.g.anJ();
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject3 = com.tencent.mm.live.b.g.anY();
           if (paramBundle != null)
           {
             localObject2 = paramBundle.getString("live_user_id");
@@ -1727,15 +1731,15 @@ public final class LiveAnchorPluginLayout
             localObject1 = "";
           }
           ((g.c)localObject3).setUserId((String)localObject1);
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject1 = com.tencent.mm.live.b.g.anJ();
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject1 = com.tencent.mm.live.b.g.anY();
           if (paramBundle == null) {
             break label1346;
           }
           paramInt = paramBundle.getInt("live_stream_type");
           ((g.c)localObject1).streamType = paramInt;
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject1 = com.tencent.mm.live.b.g.anJ();
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject1 = com.tencent.mm.live.b.g.anY();
           if (paramBundle == null) {
             break label1351;
           }
@@ -1748,15 +1752,15 @@ public final class LiveAnchorPluginLayout
     for (paramInt = paramBundle.getInt("live_first_frame_width");; paramInt = 0)
     {
       ((g.c)localObject1).width = paramInt;
-      localObject1 = com.tencent.mm.live.b.g.gOr;
-      localObject1 = com.tencent.mm.live.b.g.anJ();
+      localObject1 = com.tencent.mm.live.b.g.gQZ;
+      localObject1 = com.tencent.mm.live.b.g.anY();
       paramInt = i;
       if (paramBundle != null) {
         paramInt = paramBundle.getInt("live_first_frame_height");
       }
       ((g.c)localObject1).height = paramInt;
-      b.b.a(this, b.c.gSq);
-      AppMethodBeat.o(212951);
+      b.b.a(this, b.c.gUY);
+      AppMethodBeat.o(216581);
       return;
       paramInt = 0;
       break;
@@ -1773,48 +1777,48 @@ public final class LiveAnchorPluginLayout
     return 2131496301;
   }
   
-  public final void nL(int paramInt)
+  public final void nO(int paramInt)
   {
-    AppMethodBeat.i(212950);
-    if ((this.haJ == -1) || (this.haJ != paramInt))
+    AppMethodBeat.i(216580);
+    if ((this.hdw == -1) || (this.hdw != paramInt))
     {
-      ad.i(this.TAG, "onOrientationChange orientation:".concat(String.valueOf(paramInt)));
-      this.haJ = paramInt;
-      ad.i(this.TAG, "refreshCamera");
-      com.tencent.mm.live.core.core.a.a locala = this.gWE;
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "onOrientationChange orientation:".concat(String.valueOf(paramInt)));
+      this.hdw = paramInt;
+      com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "refreshCamera");
+      com.tencent.mm.live.core.core.a.a locala = this.gZr;
       if (locala != null)
       {
-        locala.ald();
-        AppMethodBeat.o(212950);
+        locala.als();
+        AppMethodBeat.o(216580);
         return;
       }
     }
-    AppMethodBeat.o(212950);
+    AppMethodBeat.o(216580);
   }
   
   public final String name()
   {
-    AppMethodBeat.i(212939);
+    AppMethodBeat.i(216569);
     String str = getClass().getSimpleName();
     d.g.b.p.g(str, "this.javaClass.simpleName");
-    AppMethodBeat.o(212939);
+    AppMethodBeat.o(216569);
     return str;
   }
   
   public final void onCallStateChanged(int paramInt, String paramString)
   {
-    AppMethodBeat.i(212937);
+    AppMethodBeat.i(216567);
     d.g.b.p.h(paramString, "incomingNumber");
     Object localObject = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("onCallStateChanged state:").append(paramInt).append(", isFloatMode:");
-    paramString = this.gWE;
+    paramString = this.gZr;
     if (paramString != null)
     {
-      paramString = paramString.alf();
+      paramString = paramString.alu();
       if (paramString != null)
       {
         paramString = Boolean.valueOf(paramString.isFloatMode());
-        ad.i((String)localObject, paramString);
+        com.tencent.mm.sdk.platformtools.ae.i((String)localObject, paramString);
         switch (paramInt)
         {
         }
@@ -1824,125 +1828,125 @@ public final class LiveAnchorPluginLayout
     {
       do
       {
-        AppMethodBeat.o(212937);
+        AppMethodBeat.o(216567);
         return;
         paramString = null;
         break;
-        AppMethodBeat.o(212937);
+        AppMethodBeat.o(216567);
         return;
-        paramString = com.tencent.mm.live.b.i.gPh;
-        com.tencent.mm.live.b.i.nH(2);
-        paramString = this.gWE;
+        paramString = com.tencent.mm.live.b.i.gRP;
+        com.tencent.mm.live.b.i.nK(2);
+        paramString = this.gZr;
         if (paramString != null)
         {
-          paramString = paramString.alf();
+          paramString = paramString.alu();
           if ((paramString != null) && (paramString.isFloatMode() == true))
           {
-            paramString = com.tencent.mm.live.b.g.gOr;
-            com.tencent.mm.live.b.g.anA();
-            paramString = this.gWE;
+            paramString = com.tencent.mm.live.b.g.gQZ;
+            com.tencent.mm.live.b.g.anP();
+            paramString = this.gZr;
             if (paramString != null) {
-              paramString.alc();
+              paramString.alr();
             }
-            paramString = this.gWE;
+            paramString = this.gZr;
             if (paramString != null)
             {
-              paramString.alg();
-              AppMethodBeat.o(212937);
+              paramString.alv();
+              AppMethodBeat.o(216567);
               return;
             }
-            AppMethodBeat.o(212937);
+            AppMethodBeat.o(216567);
             return;
           }
         }
-        paramString = this.gWE;
+        paramString = this.gZr;
         if (paramString != null) {
-          paramString.alc();
+          paramString.alr();
         }
-        paramString = this.gWE;
+        paramString = this.gZr;
         if (paramString != null)
         {
-          paramString.ali();
-          AppMethodBeat.o(212937);
+          paramString.alx();
+          AppMethodBeat.o(216567);
           return;
         }
-        AppMethodBeat.o(212937);
+        AppMethodBeat.o(216567);
         return;
-        paramString = com.tencent.mm.live.b.i.gPh;
-        com.tencent.mm.live.b.i.nH(0);
-        paramString = this.gWE;
+        paramString = com.tencent.mm.live.b.i.gRP;
+        com.tencent.mm.live.b.i.nK(0);
+        paramString = this.gZr;
         if (paramString == null) {
           break label346;
         }
-        paramString = paramString.alf();
+        paramString = paramString.alu();
         if (paramString == null) {
           break label346;
         }
-        localObject = com.tencent.mm.live.b.g.gOr;
-      } while (paramString.b(Long.valueOf(com.tencent.mm.live.b.g.ans().Fsa)) != true);
-      paramString = this.haj;
+        localObject = com.tencent.mm.live.b.g.gQZ;
+      } while (paramString.b(Long.valueOf(com.tencent.mm.live.b.g.anH().FKy)) != true);
+      paramString = this.hcW;
       if (paramString != null) {
         paramString.startPreview();
       }
-      paramString = this.gWE;
+      paramString = this.gZr;
     } while (paramString == null);
-    paramString.alj();
-    AppMethodBeat.o(212937);
+    paramString.aly();
+    AppMethodBeat.o(216567);
     return;
     label346:
-    AppMethodBeat.o(212937);
+    AppMethodBeat.o(216567);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(212944);
-    ad.i(this.TAG, "errType:" + paramInt1 + " errCode:" + paramInt2);
+    AppMethodBeat.i(216574);
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "errType:" + paramInt1 + " errCode:" + paramInt2);
     if ((paramn instanceof com.tencent.mm.live.b.a.b))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = com.tencent.mm.live.b.g.gOr;
-        if (!com.tencent.mm.live.b.g.anG().gOz)
+        paramString = com.tencent.mm.live.b.g.gQZ;
+        if (!com.tencent.mm.live.b.g.anV().gRh)
         {
-          paramString = com.tencent.mm.live.b.g.gOr;
-          if (!com.tencent.mm.live.b.g.anG().gOB) {}
+          paramString = com.tencent.mm.live.b.g.gQZ;
+          if (!com.tencent.mm.live.b.g.anV().gRj) {}
         }
         else
         {
-          AppMethodBeat.o(212944);
+          AppMethodBeat.o(216574);
           return;
         }
-        paramString = this.har;
+        paramString = this.hde;
         if (paramString != null)
         {
-          paramn = com.tencent.mm.live.b.g.gOr;
-          paramString.gTs = com.tencent.mm.live.b.g.ans().FBr;
+          paramn = com.tencent.mm.live.b.g.gQZ;
+          paramString.gWb = com.tencent.mm.live.b.g.anH().FTM;
         }
-        paramString = this.har;
+        paramString = this.hde;
         if (paramString != null) {
-          paramString.aoH();
+          paramString.aoV();
         }
-        paramString = com.tencent.mm.live.b.g.gOr;
-        paramString = com.tencent.mm.live.b.g.gOr;
+        paramString = com.tencent.mm.live.b.g.gQZ;
+        paramString = com.tencent.mm.live.b.g.gQZ;
         paramInt1 = i;
-        if (!com.tencent.mm.live.b.g.ans().FBr) {
-          paramInt1 = cf.aCN();
+        if (!com.tencent.mm.live.b.g.anH().FTM) {
+          paramInt1 = ch.aDd();
         }
-        com.tencent.mm.live.b.g.nt(paramInt1);
-        paramString = com.tencent.mm.live.b.g.gOr;
-        if (com.tencent.mm.live.b.g.ans().oxQ > 0) {
-          b.b.a(this, b.c.gRO);
+        com.tencent.mm.live.b.g.nw(paramInt1);
+        paramString = com.tencent.mm.live.b.g.gQZ;
+        if (com.tencent.mm.live.b.g.anH().oEs > 0) {
+          b.b.a(this, b.c.gUw);
         }
-        AppMethodBeat.o(212944);
+        AppMethodBeat.o(216574);
       }
     }
     else
     {
       if ((paramn instanceof com.tencent.mm.live.b.a.p))
       {
-        paramString = this.hao;
+        paramString = this.hdb;
         if (paramString != null)
         {
           i = j;
@@ -1953,68 +1957,68 @@ public final class LiveAnchorPluginLayout
               i = 1;
             }
           }
-          paramn = paramString.gWk;
+          paramn = paramString.gYX;
           if (paramn != null) {
             paramn.dismiss();
           }
           if (i != 0)
           {
-            paramn = paramString.gGK.getContext();
-            paramString = paramString.gGK.getContext();
+            paramn = paramString.gJt.getContext();
+            paramString = paramString.gJt.getContext();
             d.g.b.p.g(paramString, "root.context");
-            com.tencent.mm.ui.base.t.cm(paramn, paramString.getResources().getString(2131766628));
-            AppMethodBeat.o(212944);
+            com.tencent.mm.ui.base.t.cn(paramn, paramString.getResources().getString(2131766628));
+            AppMethodBeat.o(216574);
             return;
           }
-          paramn = paramString.gGK.getContext();
-          paramString = paramString.gGK.getContext();
+          paramn = paramString.gJt.getContext();
+          paramString = paramString.gJt.getContext();
           d.g.b.p.g(paramString, "root.context");
-          com.tencent.mm.ui.base.t.cn(paramn, paramString.getResources().getString(2131766627));
-          AppMethodBeat.o(212944);
+          com.tencent.mm.ui.base.t.co(paramn, paramString.getResources().getString(2131766627));
+          AppMethodBeat.o(216574);
           return;
         }
-        AppMethodBeat.o(212944);
+        AppMethodBeat.o(216574);
         return;
       }
       if (((paramn instanceof u)) && ((paramInt1 != 0) || (paramInt2 != 0)))
       {
-        paramInt1 = this.haL;
-        paramString = com.tencent.mm.live.b.f.gMV;
-        if (paramInt1 < com.tencent.mm.live.b.f.amV())
+        paramInt1 = this.hdy;
+        paramString = com.tencent.mm.live.b.f.gPE;
+        if (paramInt1 < com.tencent.mm.live.b.f.ank())
         {
-          this.haL += 1;
-          ad.i(this.TAG, "will retry share live, delay:" + this.haL * 1000L);
-          postDelayed((Runnable)LiveAnchorPluginLayout.n.haV, this.haL * 1000L);
+          this.hdy += 1;
+          com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "will retry share live, delay:" + this.hdy * 1000L);
+          postDelayed((Runnable)LiveAnchorPluginLayout.o.hdJ, this.hdy * 1000L);
         }
       }
     }
-    AppMethodBeat.o(212944);
+    AppMethodBeat.o(216574);
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(212949);
+    AppMethodBeat.i(216579);
     super.pause();
-    boolean bool = aqB();
-    ad.i(this.TAG, "pause orientationChanged:" + bool + ", currentOrientation:" + getCurrentOrientation());
+    boolean bool = aqQ();
+    com.tencent.mm.sdk.platformtools.ae.i(this.TAG, "pause orientationChanged:" + bool + ", currentOrientation:" + getCurrentOrientation());
     Object localObject;
     if (!bool)
     {
-      localObject = com.tencent.mm.live.b.g.gOr;
-      if (!com.tencent.mm.live.b.g.anG().gOB)
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      if (!com.tencent.mm.live.b.g.anV().gRj)
       {
-        localObject = com.tencent.mm.live.b.g.gOr;
-        if (!com.tencent.mm.live.b.g.anG().gOz)
+        localObject = com.tencent.mm.live.b.g.gQZ;
+        if (!com.tencent.mm.live.b.g.anV().gRh)
         {
-          localObject = com.tencent.mm.live.b.g.gOr;
-          if (!com.tencent.mm.live.b.g.anG().gOC)
+          localObject = com.tencent.mm.live.b.g.gQZ;
+          if (!com.tencent.mm.live.b.g.anV().gRk)
           {
-            localObject = com.tencent.mm.live.b.g.gOr;
-            if (com.tencent.mm.live.b.g.anG().gOA)
+            localObject = com.tencent.mm.live.b.g.gQZ;
+            if (com.tencent.mm.live.b.g.anV().gRi)
             {
-              localObject = com.tencent.mm.live.b.g.gOr;
-              if ((!com.tencent.mm.live.b.g.anz()) && (!this.haK) && (com.tencent.mm.compatible.d.b.ca(getContext()))) {
-                b.b.a(this, b.c.gRJ);
+              localObject = com.tencent.mm.live.b.g.gQZ;
+              if ((!com.tencent.mm.live.b.g.anO()) && (!this.hdx) && (com.tencent.mm.compatible.d.b.cc(getContext()))) {
+                b.b.a(this, b.c.gUr);
               }
             }
           }
@@ -2023,30 +2027,30 @@ public final class LiveAnchorPluginLayout
     }
     for (;;)
     {
-      localObject = this.gXX;
+      localObject = this.haJ;
       if (localObject != null) {
         ((com.tencent.mm.plugin.mmsight.model.d)localObject).disable();
       }
-      localObject = this.gXX;
+      localObject = this.haJ;
       if (localObject != null) {
         ((com.tencent.mm.plugin.mmsight.model.d)localObject).a(null);
       }
-      this.gXX = null;
-      AppMethodBeat.o(212949);
+      this.haJ = null;
+      AppMethodBeat.o(216579);
       return;
-      localObject = this.gWE;
+      localObject = this.gZr;
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.live.core.core.a.a)localObject).alf();
-        if ((localObject != null) && (((com.tencent.mm.live.core.core.b.e)localObject).alC() == true) && (!this.haK))
+        localObject = ((com.tencent.mm.live.core.core.a.a)localObject).alu();
+        if ((localObject != null) && (((com.tencent.mm.live.core.core.b.e)localObject).alR() == true) && (!this.hdx))
         {
-          localObject = this.gWE;
+          localObject = this.gZr;
           if (localObject != null) {
-            ((com.tencent.mm.live.core.core.a.a)localObject).alc();
+            ((com.tencent.mm.live.core.core.a.a)localObject).alr();
           }
-          localObject = this.gWE;
+          localObject = this.gZr;
           if (localObject != null) {
-            ((com.tencent.mm.live.core.core.a.a)localObject).ali();
+            ((com.tencent.mm.live.core.core.a.a)localObject).alx();
           }
         }
       }
@@ -2055,87 +2059,87 @@ public final class LiveAnchorPluginLayout
   
   public final void resume()
   {
-    AppMethodBeat.i(212948);
+    AppMethodBeat.i(216578);
     super.resume();
-    ad.d(this.TAG, "resume curRotation:" + getCurrentOrientation());
-    Object localObject1 = com.tencent.mm.live.b.g.gOr;
-    com.tencent.mm.live.b.g.anG().gOC = false;
-    localObject1 = com.tencent.mm.live.b.g.gOr;
+    com.tencent.mm.sdk.platformtools.ae.d(this.TAG, "resume curRotation:" + getCurrentOrientation());
+    Object localObject1 = com.tencent.mm.live.b.g.gQZ;
+    com.tencent.mm.live.b.g.anV().gRk = false;
+    localObject1 = com.tencent.mm.live.b.g.gQZ;
     Object localObject2;
-    if (com.tencent.mm.live.b.g.ans().Fsa != 0L)
+    if (com.tencent.mm.live.b.g.anH().FKy != 0L)
     {
-      localObject1 = com.tencent.mm.live.b.g.gOr;
-      if (!com.tencent.mm.live.b.g.anG().gOz)
+      localObject1 = com.tencent.mm.live.b.g.gQZ;
+      if (!com.tencent.mm.live.b.g.anV().gRh)
       {
-        localObject1 = com.tencent.mm.kernel.g.aiU();
+        localObject1 = com.tencent.mm.kernel.g.ajj();
         d.g.b.p.g(localObject1, "MMKernel.getNetSceneQueue()");
-        if (((com.tencent.mm.al.q)localObject1).aiY() != null)
+        if (((com.tencent.mm.ak.q)localObject1).ajn() != null)
         {
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          long l = com.tencent.mm.live.b.g.ans().Fsa;
-          localObject1 = com.tencent.mm.live.b.g.gOr;
-          localObject1 = new com.tencent.mm.live.b.a.b(l, com.tencent.mm.live.b.g.anm(), true);
-          localObject2 = com.tencent.mm.kernel.g.aiU();
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          long l = com.tencent.mm.live.b.g.anH().FKy;
+          localObject1 = com.tencent.mm.live.b.g.gQZ;
+          localObject1 = new com.tencent.mm.live.b.a.b(l, com.tencent.mm.live.b.g.anC(), true);
+          localObject2 = com.tencent.mm.kernel.g.ajj();
           d.g.b.p.g(localObject2, "MMKernel.getNetSceneQueue()");
-          ((com.tencent.mm.live.b.a.b)localObject1).doScene(((com.tencent.mm.al.q)localObject2).aiY(), (com.tencent.mm.al.f)new o(this));
+          ((com.tencent.mm.live.b.a.b)localObject1).doScene(((com.tencent.mm.ak.q)localObject2).ajn(), (com.tencent.mm.ak.f)new p(this));
         }
-        localObject1 = this.gWE;
+        localObject1 = this.gZr;
         if (localObject1 == null) {
           break label318;
         }
-        localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
-        if ((localObject1 == null) || (((com.tencent.mm.live.core.core.b.e)localObject1).gHI)) {
+        localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
+        if ((localObject1 == null) || (((com.tencent.mm.live.core.core.b.e)localObject1).gKr)) {
           break label318;
         }
-        localObject1 = this.gWE;
+        localObject1 = this.gZr;
         if (localObject1 != null) {
-          ((com.tencent.mm.live.core.core.a.a)localObject1).ale();
+          ((com.tencent.mm.live.core.core.a.a)localObject1).alt();
         }
       }
     }
     for (;;)
     {
-      localObject1 = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.nu(getCurrentOrientation());
-      AppMethodBeat.o(212948);
+      localObject1 = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.nx(getCurrentOrientation());
+      AppMethodBeat.o(216578);
       return;
-      localObject1 = this.haj;
+      localObject1 = this.hcW;
       if (localObject1 != null) {
         ((com.tencent.mm.live.c.ao)localObject1).startPreview();
       }
-      localObject1 = this.gWE;
+      localObject1 = this.gZr;
       if (localObject1 == null) {
         break;
       }
-      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
-      if ((localObject1 == null) || (((com.tencent.mm.live.core.core.b.e)localObject1).alC() != true)) {
+      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
+      if ((localObject1 == null) || (((com.tencent.mm.live.core.core.b.e)localObject1).alR() != true)) {
         break;
       }
-      localObject1 = this.gWE;
+      localObject1 = this.gZr;
       if (localObject1 == null) {
         break;
       }
-      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+      localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
       if (localObject1 == null) {
         break;
       }
-      localObject2 = com.tencent.mm.live.b.g.gOr;
-      if (((com.tencent.mm.live.core.core.b.e)localObject1).b(Long.valueOf(com.tencent.mm.live.b.g.ans().Fsa)) != true) {
+      localObject2 = com.tencent.mm.live.b.g.gQZ;
+      if (((com.tencent.mm.live.core.core.b.e)localObject1).b(Long.valueOf(com.tencent.mm.live.b.g.anH().FKy)) != true) {
         break;
       }
-      localObject1 = this.gWE;
+      localObject1 = this.gZr;
       if (localObject1 == null) {
         break;
       }
-      ((com.tencent.mm.live.core.core.a.a)localObject1).alj();
+      ((com.tencent.mm.live.core.core.a.a)localObject1).aly();
       break;
       label318:
-      localObject1 = this.gWE;
+      localObject1 = this.gZr;
       if (localObject1 != null)
       {
-        localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alf();
+        localObject1 = ((com.tencent.mm.live.core.core.a.a)localObject1).alu();
         if (localObject1 != null) {
-          ((com.tencent.mm.live.core.core.b.e)localObject1).gHI = false;
+          ((com.tencent.mm.live.core.core.b.e)localObject1).gKr = false;
         }
       }
     }
@@ -2143,27 +2147,27 @@ public final class LiveAnchorPluginLayout
   
   public final void start()
   {
-    AppMethodBeat.i(212942);
+    AppMethodBeat.i(216572);
     super.start();
-    Object localObject = com.tencent.mm.live.b.i.gPh;
-    com.tencent.mm.live.b.i.aoq();
-    localObject = com.tencent.mm.live.b.g.gOr;
-    if ((com.tencent.mm.live.b.g.ans().Fsa == 0L) && (this.haH))
+    Object localObject = com.tencent.mm.live.b.i.gRP;
+    com.tencent.mm.live.b.i.aoF();
+    localObject = com.tencent.mm.live.b.g.gQZ;
+    if ((com.tencent.mm.live.b.g.anH().FKy == 0L) && (this.hdu))
     {
-      localObject = com.tencent.mm.live.b.g.gOr;
-      if (!com.tencent.mm.live.b.g.anG().gOz)
+      localObject = com.tencent.mm.live.b.g.gQZ;
+      if (!com.tencent.mm.live.b.g.anV().gRh)
       {
-        localObject = com.tencent.mm.live.b.g.gOr;
-        if (!com.tencent.mm.live.b.g.anG().gOC)
+        localObject = com.tencent.mm.live.b.g.gQZ;
+        if (!com.tencent.mm.live.b.g.anV().gRk)
         {
-          localObject = com.tencent.mm.live.b.g.gOr;
-          if (!com.tencent.mm.live.b.g.anG().gOB)
+          localObject = com.tencent.mm.live.b.g.gQZ;
+          if (!com.tencent.mm.live.b.g.anV().gRj)
           {
             localObject = getContext();
             if (localObject == null)
             {
               localObject = new v("null cannot be cast to non-null type android.app.Activity");
-              AppMethodBeat.o(212942);
+              AppMethodBeat.o(216572);
               throw ((Throwable)localObject);
             }
             ((Activity)localObject).setRequestedOrientation(4);
@@ -2171,10 +2175,10 @@ public final class LiveAnchorPluginLayout
         }
       }
     }
-    AppMethodBeat.o(212942);
+    AppMethodBeat.o(216572);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
   static final class a
     extends d.g.b.q
     implements d.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, z>
@@ -2185,7 +2189,7 @@ public final class LiveAnchorPluginLayout
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "needFaceVerify", "verifyUrl", "", "errCode", "", "errMsg", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "needFaceVerify", "verifyUrl", "", "errCode", "", "errMsg", "invoke"})
   static final class b
     extends d.g.b.q
     implements s<Boolean, Boolean, String, Integer, String, z>
@@ -2194,28 +2198,9 @@ public final class LiveAnchorPluginLayout
     {
       super();
     }
-    
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/view/LiveAnchorPluginLayout$createNewLive$1$clickSpan$1", "Lcom/tencent/mm/plugin/messenger/api/AvoidDuplicatedPressableSpan;", "onClickImp", "", "widget", "Landroid/view/View;", "plugin-logic_release"})
-    public static final class a
-      extends com.tencent.mm.plugin.messenger.a.a
-    {
-      a(int paramInt) {}
-      
-      public final void onClickImp(View paramView)
-      {
-        AppMethodBeat.i(212911);
-        d.g.b.p.h(paramView, "widget");
-        paramView = new Intent();
-        com.tencent.mm.live.b.f.a locala = com.tencent.mm.live.b.f.gMV;
-        paramView.putExtra("rawUrl", com.tencent.mm.live.b.f.amU());
-        paramView.putExtra("showShare", false);
-        com.tencent.mm.bs.d.f(this.haO.haM.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
-        AppMethodBeat.o(212911);
-      }
-    }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class d
     implements DialogInterface.OnDismissListener
   {
@@ -2223,13 +2208,13 @@ public final class LiveAnchorPluginLayout
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(212914);
-      b.b.a(this.haM, b.c.gRw);
-      AppMethodBeat.o(212914);
+      AppMethodBeat.i(216542);
+      b.b.a(this.hdz, b.c.gUe);
+      AppMethodBeat.o(216542);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class f
     implements DialogInterface.OnDismissListener
   {
@@ -2237,15 +2222,15 @@ public final class LiveAnchorPluginLayout
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(212916);
-      paramDialogInterface = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.aoi();
-      b.b.a(this.haM, b.c.gRw);
-      AppMethodBeat.o(212916);
+      AppMethodBeat.i(216544);
+      paramDialogInterface = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.aox();
+      b.b.a(this.hdz, b.c.gUe);
+      AppMethodBeat.o(216544);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class h
     implements DialogInterface.OnDismissListener
   {
@@ -2253,34 +2238,15 @@ public final class LiveAnchorPluginLayout
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(212918);
-      paramDialogInterface = com.tencent.mm.live.b.g.gOr;
-      com.tencent.mm.live.b.g.aoi();
-      b.b.a(this.haM, b.c.gRw);
-      AppMethodBeat.o(212918);
+      AppMethodBeat.i(216546);
+      paramDialogInterface = com.tencent.mm.live.b.g.gQZ;
+      com.tencent.mm.live.b.g.aox();
+      b.b.a(this.hdz, b.c.gUe);
+      AppMethodBeat.o(216546);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/view/LiveAnchorPluginLayout$handleJoinLiveFail$clickSpan$1", "Lcom/tencent/mm/plugin/messenger/api/AvoidDuplicatedPressableSpan;", "onClickImp", "", "widget", "Landroid/view/View;", "plugin-logic_release"})
-  public static final class i
-    extends com.tencent.mm.plugin.messenger.a.a
-  {
-    i(int paramInt) {}
-    
-    public final void onClickImp(View paramView)
-    {
-      AppMethodBeat.i(212919);
-      d.g.b.p.h(paramView, "widget");
-      paramView = new Intent();
-      com.tencent.mm.live.b.f.a locala = com.tencent.mm.live.b.f.gMV;
-      paramView.putExtra("rawUrl", com.tencent.mm.live.b.f.amU());
-      paramView.putExtra("showShare", false);
-      com.tencent.mm.bs.d.f(this.haM.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
-      AppMethodBeat.o(212919);
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "xOffset", "", "yOffset", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "xOffset", "", "yOffset", "invoke"})
   static final class j
     extends d.g.b.q
     implements d.g.a.m<Float, Float, z>
@@ -2291,7 +2257,7 @@ public final class LiveAnchorPluginLayout
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "x", "", "y", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "x", "", "y", "invoke"})
   static final class k
     extends d.g.b.q
     implements d.g.a.m<Float, Float, z>
@@ -2302,190 +2268,190 @@ public final class LiveAnchorPluginLayout
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "liveID", "", "invoke"})
   static final class l
     extends d.g.b.q
-    implements s<Boolean, Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, z>
+    implements d.g.a.b<Long, z>
   {
     l(LiveAnchorPluginLayout paramLiveAnchorPluginLayout)
     {
       super();
     }
-    
-    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/view/LiveAnchorPluginLayout$joinLive$1$1$1", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
-    public static final class a
-      implements com.tencent.mm.live.core.core.b
-    {
-      a(LiveAnchorPluginLayout.l paraml) {}
-      
-      public final void f(int paramInt, Bundle paramBundle)
-      {
-        AppMethodBeat.i(212922);
-        ad.i("MicroMsg.LiveCoreAnchor", "on enterRoom finish");
-        if (paramInt >= 0)
-        {
-          b.b.a(this.haT.haM, b.c.gRu);
-          paramBundle = LiveAnchorPluginLayout.b(this.haT.haM);
-          if (paramBundle != null)
-          {
-            String str = com.tencent.mm.cc.a.az(this.haT.haM.getContext(), 2131766706);
-            d.g.b.p.g(str, "ResourceHelper.getString…ring.live_room_mini_live)");
-            paramBundle.xl(str);
-          }
-          paramBundle = com.tencent.mm.live.b.i.gPh;
-          paramBundle = com.tencent.mm.live.b.g.gOr;
-          com.tencent.mm.live.b.i.xN(com.tencent.mm.live.b.g.anm());
-          b.b.a(this.haT.haM, b.c.gSk);
-          AppMethodBeat.o(212922);
-          return;
-        }
-        ad.w("MicroMsg.LiveCoreAnchor", "enter room fail");
-        com.tencent.mm.ui.base.t.makeText(this.haT.haM.getContext(), (CharSequence)"enter room fail", 0).show();
-        b.b.a(this.haT.haM, b.c.gRr);
-        paramBundle = new Bundle();
-        paramBundle.putInt("live_user_exit_reason", paramInt);
-        this.haT.haM.a(b.c.gSj, paramBundle);
-        AppMethodBeat.o(212922);
-      }
-    }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
   static final class m
     extends d.g.b.q
-    implements d.g.a.a<z>
+    implements s<Boolean, Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, z>
   {
     m(LiveAnchorPluginLayout paramLiveAnchorPluginLayout)
     {
       super();
     }
+    
+    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/view/LiveAnchorPluginLayout$joinLive$1$1$1", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+    public static final class a
+      implements com.tencent.mm.live.core.core.b
+    {
+      a(LiveAnchorPluginLayout.m paramm) {}
+      
+      public final void f(int paramInt, Bundle paramBundle)
+      {
+        AppMethodBeat.i(216552);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreAnchor", "on enterRoom finish");
+        if (paramInt >= 0)
+        {
+          b.b.a(this.hdH.hdz, b.c.gUc);
+          paramBundle = LiveAnchorPluginLayout.b(this.hdH.hdz);
+          if (paramBundle != null)
+          {
+            String str = com.tencent.mm.cb.a.az(this.hdH.hdz.getContext(), 2131766706);
+            d.g.b.p.g(str, "ResourceHelper.getString…ring.live_room_mini_live)");
+            paramBundle.xU(str);
+          }
+          paramBundle = com.tencent.mm.live.b.i.gRP;
+          paramBundle = com.tencent.mm.live.b.g.gQZ;
+          com.tencent.mm.live.b.i.yw(com.tencent.mm.live.b.g.anC());
+          b.b.a(this.hdH.hdz, b.c.gUS);
+          AppMethodBeat.o(216552);
+          return;
+        }
+        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.LiveCoreAnchor", "enter room fail");
+        com.tencent.mm.ui.base.t.makeText(this.hdH.hdz.getContext(), (CharSequence)"enter room fail", 0).show();
+        b.b.a(this.hdH.hdz, b.c.gTZ);
+        paramBundle = new Bundle();
+        paramBundle.putInt("live_user_exit_reason", paramInt);
+        this.hdH.hdz.a(b.c.gUR, paramBundle);
+        AppMethodBeat.o(216552);
+      }
+    }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
-  static final class o
-    implements com.tencent.mm.al.f
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class n
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
-    o(LiveAnchorPluginLayout paramLiveAnchorPluginLayout) {}
+    n(LiveAnchorPluginLayout paramLiveAnchorPluginLayout)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
+  static final class p
+    implements com.tencent.mm.ak.f
+  {
+    p(LiveAnchorPluginLayout paramLiveAnchorPluginLayout) {}
     
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      AppMethodBeat.i(212928);
+      AppMethodBeat.i(216558);
       paramn.setHasCallbackToQueue(true);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if (paramn == null)
         {
           paramString = new v("null cannot be cast to non-null type com.tencent.mm.live.model.cgi.NetSceneGetLiveInfo");
-          AppMethodBeat.o(212928);
+          AppMethodBeat.o(216558);
           throw paramString;
         }
-        paramString = ((com.tencent.mm.live.b.a.b)paramn).ans();
+        paramString = ((com.tencent.mm.live.b.a.b)paramn).anH();
         if (paramString != null)
         {
-          if (paramString.oxQ != 0) {
+          if (paramString.oEs != 0) {
             break label209;
           }
-          paramString = com.tencent.mm.live.b.g.gOr;
-          if (com.tencent.mm.live.b.g.anG().gOz) {
+          paramString = com.tencent.mm.live.b.g.gQZ;
+          if (com.tencent.mm.live.b.g.anV().gRh) {
             break label209;
           }
-          paramString = LiveAnchorPluginLayout.d(this.haM);
+          paramString = LiveAnchorPluginLayout.f(this.hdz);
           if (paramString != null) {
             paramString.startPreview();
           }
-          paramString = LiveAnchorPluginLayout.b(this.haM);
+          paramString = LiveAnchorPluginLayout.b(this.hdz);
           if (paramString != null)
           {
-            paramString = paramString.alf();
+            paramString = paramString.alu();
             if (paramString != null)
             {
-              if (paramString.alC() != true) {
+              if (paramString.alR() != true) {
                 break label209;
               }
-              paramString = LiveAnchorPluginLayout.b(this.haM);
+              paramString = LiveAnchorPluginLayout.b(this.hdz);
               if (paramString == null) {
                 break label203;
               }
-              paramString = paramString.alf();
+              paramString = paramString.alu();
               if (paramString == null) {
                 break label203;
               }
-              paramn = com.tencent.mm.live.b.g.gOr;
-              if (paramString.b(Long.valueOf(com.tencent.mm.live.b.g.ans().Fsa)) != true) {
+              paramn = com.tencent.mm.live.b.g.gQZ;
+              if (paramString.b(Long.valueOf(com.tencent.mm.live.b.g.anH().FKy)) != true) {
                 break label209;
               }
-              paramString = LiveAnchorPluginLayout.b(this.haM);
+              paramString = LiveAnchorPluginLayout.b(this.hdz);
               if (paramString == null) {
                 break label209;
               }
-              paramString.alj();
-              AppMethodBeat.o(212928);
+              paramString.aly();
+              AppMethodBeat.o(216558);
             }
           }
         }
         else
         {
-          AppMethodBeat.o(212928);
+          AppMethodBeat.o(216558);
           return;
         }
-        AppMethodBeat.o(212928);
+        AppMethodBeat.o(216558);
         return;
         label203:
-        AppMethodBeat.o(212928);
+        AppMethodBeat.o(216558);
         return;
       }
       label209:
-      AppMethodBeat.o(212928);
+      AppMethodBeat.o(216558);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class p
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  static final class q
     implements Runnable
   {
-    p(LiveAnchorPluginLayout paramLiveAnchorPluginLayout) {}
+    q(LiveAnchorPluginLayout paramLiveAnchorPluginLayout) {}
     
     public final void run()
     {
-      AppMethodBeat.i(212929);
-      ae localae = LiveAnchorPluginLayout.a(this.haM);
+      AppMethodBeat.i(216559);
+      com.tencent.mm.live.c.ae localae = LiveAnchorPluginLayout.a(this.hdz);
       if (localae != null)
       {
-        localae.gGK.setVisibility(8);
-        AppMethodBeat.o(212929);
+        localae.gJt.setVisibility(8);
+        AppMethodBeat.o(216559);
         return;
       }
-      AppMethodBeat.o(212929);
+      AppMethodBeat.o(216559);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/view/LiveAnchorPluginLayout$stopLive$1", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
-  public static final class q
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/view/LiveAnchorPluginLayout$stopLive$1", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+  public static final class r
     implements com.tencent.mm.live.core.core.b
   {
     public final void f(int paramInt, Bundle paramBundle)
     {
-      AppMethodBeat.i(212930);
-      ad.i("MicroMsg.LiveCoreAnchor", "on exitRoom finish");
-      AppMethodBeat.o(212930);
+      AppMethodBeat.i(216560);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreAnchor", "on exitRoom finish");
+      AppMethodBeat.o(216560);
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class r
-    extends d.g.b.q
-    implements d.g.a.a<z>
-  {
-    r(LiveAnchorPluginLayout paramLiveAnchorPluginLayout)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "ret", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class s
     extends d.g.b.q
-    implements d.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, z>
+    implements d.g.a.a<z>
   {
     s(LiveAnchorPluginLayout paramLiveAnchorPluginLayout)
     {
@@ -2493,30 +2459,41 @@ public final class LiveAnchorPluginLayout
     }
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/view/LiveAnchorPluginLayout$tryResumeLive$2", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
-  public static final class t
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ret", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
+  static final class t
+    extends d.g.b.q
+    implements d.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, z>
+  {
+    t(LiveAnchorPluginLayout paramLiveAnchorPluginLayout)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/view/LiveAnchorPluginLayout$tryResumeLive$2", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+  public static final class u
     implements com.tencent.mm.live.core.core.b
   {
     public final void f(int paramInt, Bundle paramBundle)
     {
-      AppMethodBeat.i(212934);
-      ad.i("MicroMsg.LiveCoreAnchor", "try resume live on enterRoom finish");
+      AppMethodBeat.i(216564);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreAnchor", "try resume live on enterRoom finish");
       if (paramInt >= 0)
       {
-        b.b.a(this.haM, b.c.gRu);
-        AppMethodBeat.o(212934);
+        b.b.a(this.hdz, b.c.gUc);
+        AppMethodBeat.o(216564);
         return;
       }
-      ad.w("MicroMsg.LiveCoreAnchor", "try resume live senter room fail");
-      com.tencent.mm.ui.base.t.makeText(this.haM.getContext(), (CharSequence)"enter room fail", 0).show();
-      b.b.a(this.haM, b.c.gRr);
-      AppMethodBeat.o(212934);
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.LiveCoreAnchor", "try resume live senter room fail");
+      com.tencent.mm.ui.base.t.makeText(this.hdz.getContext(), (CharSequence)"enter room fail", 0).show();
+      b.b.a(this.hdz, b.c.gTZ);
+      AppMethodBeat.o(216564);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.live.view.LiveAnchorPluginLayout
  * JD-Core Version:    0.7.0.1
  */

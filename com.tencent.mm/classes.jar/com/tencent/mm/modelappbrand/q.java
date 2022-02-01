@@ -1,47 +1,47 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.dli;
+import com.tencent.mm.protocal.protobuf.dmf;
 import com.tencent.mm.protocal.protobuf.ko;
 import com.tencent.mm.protocal.protobuf.kp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class q
   extends n
   implements k
 {
-  private f gzH;
-  private final b hKw;
+  private f gCo;
+  private final b hNp;
   
-  public q(LinkedList<dli> paramLinkedList)
+  public q(LinkedList<dmf> paramLinkedList)
   {
     AppMethodBeat.i(121053);
     b.a locala = new b.a();
-    locala.hNM = new ko();
-    locala.hNN = new kp();
+    locala.hQF = new ko();
+    locala.hQG = new kp();
     locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/batchswitchservicenotifyoption";
     locala.funcId = getType();
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.hKw = locala.aDC();
-    ((ko)this.hKw.hNK.hNQ).FCU = paramLinkedList;
+    this.hNp = locala.aDS();
+    ((ko)this.hNp.hQD.hQJ).FVp = paramLinkedList;
     AppMethodBeat.o(121053);
   }
   
   public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(121055);
-    ad.i("MicroMsg.NetSceneBatchSwitchServiceNotifyOption", "doScene");
-    this.gzH = paramf;
-    int i = dispatch(parame, this.hKw, this);
+    ae.i("MicroMsg.NetSceneBatchSwitchServiceNotifyOption", "doScene");
+    this.gCo = paramf;
+    int i = dispatch(parame, this.hNp, this);
     AppMethodBeat.o(121055);
     return i;
   }
@@ -54,9 +54,9 @@ public final class q
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121054);
-    ad.i("MicroMsg.NetSceneBatchSwitchServiceNotifyOption", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gzH != null) {
-      this.gzH.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ae.i("MicroMsg.NetSceneBatchSwitchServiceNotifyOption", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gCo != null) {
+      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(121054);
   }

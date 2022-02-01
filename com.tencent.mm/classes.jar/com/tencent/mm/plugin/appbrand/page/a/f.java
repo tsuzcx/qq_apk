@@ -1,170 +1,105 @@
 package com.tencent.mm.plugin.appbrand.page.a;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.ae;
 
-public abstract class f
-  extends a
+public abstract interface f
 {
-  public final LinkedList<a> mgc = new LinkedList()
-  {
-    public final boolean remove(Object paramAnonymousObject)
-    {
-      AppMethodBeat.i(135289);
-      boolean bool = super.remove(paramAnonymousObject);
-      f.a(f.this);
-      AppMethodBeat.o(135289);
-      return bool;
-    }
-  };
+  public abstract void Uh(String paramString);
   
-  public final c.a bvC()
-  {
-    a locala = new a();
-    this.mgc.addFirst(locala);
-    return locala;
-  }
+  public abstract void a(a parama, int paramInt);
   
-  public final void destroy()
-  {
-    this.mgc.clear();
-  }
+  public abstract void bvZ();
   
-  protected final class a
-    implements c.a
+  public abstract void bwa();
+  
+  public abstract void el(String paramString1, String paramString2);
+  
+  public abstract void hi(boolean paramBoolean);
+  
+  public abstract void hk(boolean paramBoolean);
+  
+  public abstract void requestDisallowInterceptTouchEvent(boolean paramBoolean);
+  
+  public abstract void setPullDownText(String paramString);
+  
+  public static enum a
   {
-    CharSequence LU = null;
-    Drawable mDrawable = null;
-    int mStatus = -2147483648;
-    
-    protected a() {}
-    
-    public final void dismiss()
+    static
     {
-      AppMethodBeat.i(135301);
-      f.this.M(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(135295);
-          f.b(f.this).remove(f.a.this);
-          AppMethodBeat.o(135295);
-        }
-      });
-      AppMethodBeat.o(135301);
+      AppMethodBeat.i(135307);
+      mlg = new a("LIGHT", 0);
+      mlh = new a("DARK", 1);
+      mli = new a("IGNORE", 2);
+      mlj = new a[] { mlg, mlh, mli };
+      AppMethodBeat.o(135307);
     }
     
-    public final void setDescription(final CharSequence paramCharSequence)
+    private a() {}
+    
+    public static a ay(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(135298);
-      f.this.M(new Runnable()
+      AppMethodBeat.i(207886);
+      if (TextUtils.isEmpty(paramString))
       {
-        public final void run()
+        if (paramBoolean)
         {
-          AppMethodBeat.i(135292);
-          f.a.this.LU = paramCharSequence;
-          if (f.a.a(f.a.this)) {
-            f.this.A(paramCharSequence);
-          }
-          AppMethodBeat.o(135292);
+          paramString = mlg;
+          AppMethodBeat.o(207886);
+          return paramString;
         }
-      });
-      AppMethodBeat.o(135298);
+        paramString = mlh;
+        AppMethodBeat.o(207886);
+        return paramString;
+      }
+      a[] arrayOfa = values();
+      int j = arrayOfa.length;
+      int i = 0;
+      while (i < j)
+      {
+        a locala = arrayOfa[i];
+        String str = locala.name().toLowerCase();
+        boolean bool;
+        if (str == null) {
+          if (paramString == null) {
+            bool = true;
+          }
+        }
+        while (bool)
+        {
+          AppMethodBeat.o(207886);
+          return locala;
+          bool = false;
+          continue;
+          bool = str.equalsIgnoreCase(paramString);
+        }
+        i += 1;
+      }
+      ae.e("Luggage.AppBrandPageViewPullDownExtension.BackgroundTextStyle", "fromString(%s), unrecognized", new Object[] { paramString });
+      if (paramBoolean)
+      {
+        paramString = mlg;
+        AppMethodBeat.o(207886);
+        return paramString;
+      }
+      paramString = mlh;
+      AppMethodBeat.o(207886);
+      return paramString;
     }
     
-    public final void setLogo(final int paramInt)
+    public final String bwu()
     {
-      AppMethodBeat.i(135297);
-      f.this.M(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(135291);
-          try
-          {
-            f.a.this.setLogo(b.l(f.this.getContext(), paramInt));
-            AppMethodBeat.o(135291);
-            return;
-          }
-          catch (Resources.NotFoundException localNotFoundException)
-          {
-            f.a.this.setLogo(null);
-            AppMethodBeat.o(135291);
-          }
-        }
-      });
-      AppMethodBeat.o(135297);
-    }
-    
-    public final void setLogo(final Drawable paramDrawable)
-    {
-      AppMethodBeat.i(135296);
-      f.this.M(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(135290);
-          f.a.this.mDrawable = paramDrawable;
-          if (f.a.a(f.a.this)) {
-            f.this.x(f.a.this.mDrawable);
-          }
-          AppMethodBeat.o(135290);
-        }
-      });
-      AppMethodBeat.o(135296);
-    }
-    
-    public final void setStatus(final int paramInt)
-    {
-      AppMethodBeat.i(135300);
-      f.this.M(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(135294);
-          f.a.this.mStatus = paramInt;
-          if (f.a.a(f.a.this)) {
-            f.this.uK(paramInt);
-          }
-          AppMethodBeat.o(135294);
-        }
-      });
-      AppMethodBeat.o(135300);
-    }
-    
-    public final void uW(final int paramInt)
-    {
-      AppMethodBeat.i(135299);
-      f.this.M(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(135293);
-          try
-          {
-            f.a.this.setDescription(f.this.getContext().getResources().getString(paramInt));
-            AppMethodBeat.o(135293);
-            return;
-          }
-          catch (Resources.NotFoundException localNotFoundException)
-          {
-            f.a.this.setDescription(null);
-            AppMethodBeat.o(135293);
-          }
-        }
-      });
-      AppMethodBeat.o(135299);
+      AppMethodBeat.i(224486);
+      String str = name().toLowerCase();
+      AppMethodBeat.o(224486);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.f
  * JD-Core Version:    0.7.0.1
  */

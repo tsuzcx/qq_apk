@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.fav.a;
 
 public abstract interface o
 {
-  public abstract void agt(String paramString);
+  public abstract void ahq(String paramString);
   
-  public abstract void agu(String paramString);
+  public abstract void ahr(String paramString);
   
   public abstract void d(c paramc);
   

@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.record.b;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.dop;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.dpm;
 import com.tencent.mm.protocal.protobuf.ks;
 import com.tencent.mm.protocal.protobuf.kt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -28,40 +28,40 @@ public final class g
   implements com.tencent.mm.network.k
 {
   private f callback;
+  private int rBH;
+  private int rBL;
   private final b rr;
-  private int rtv;
-  private int rtz;
-  String xqI;
-  com.tencent.mm.plugin.record.a.k xqJ;
-  private SparseArray<ajn> xqK;
-  private SparseBooleanArray xqL;
+  String xGF;
+  com.tencent.mm.plugin.record.a.k xGG;
+  private SparseArray<ajx> xGH;
+  private SparseBooleanArray xGI;
   
   public g(com.tencent.mm.plugin.record.a.k paramk)
   {
     AppMethodBeat.i(9484);
     this.callback = null;
-    this.xqI = "";
-    this.xqJ = null;
-    this.xqK = new SparseArray();
-    this.xqL = new SparseBooleanArray();
-    this.rtz = 0;
-    this.rtv = 0;
+    this.xGF = "";
+    this.xGG = null;
+    this.xGH = new SparseArray();
+    this.xGI = new SparseBooleanArray();
+    this.rBL = 0;
+    this.rBH = 0;
     b.a locala = new b.a();
-    locala.hNM = new ks();
-    locala.hNN = new kt();
+    locala.hQF = new ks();
+    locala.hQG = new kt();
     locala.uri = "/cgi-bin/micromsg-bin/batchtranscdnitem";
     locala.funcId = 632;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
-    this.xqJ = paramk;
+    this.rr = locala.aDS();
+    this.xGG = paramk;
     AppMethodBeat.o(9484);
   }
   
-  private void dEk()
+  private void dHB()
   {
     AppMethodBeat.i(9485);
-    this.xqI = k.b.a(p.a(this.xqJ.field_title, this.xqJ.field_desc, this.xqJ.field_dataProto), null, null);
+    this.xGF = k.b.a(p.a(this.xGG.field_title, this.xGG.field_desc, this.xGG.field_dataProto), null, null);
     AppMethodBeat.o(9485);
   }
   
@@ -69,64 +69,64 @@ public final class g
   {
     AppMethodBeat.i(9487);
     this.callback = paramf;
-    paramf = (ks)this.rr.hNK.hNQ;
-    this.xqK.clear();
-    this.xqL.clear();
-    if (this.xqJ.field_dataProto.nZa.size() == 0)
+    paramf = (ks)this.rr.hQD.hQJ;
+    this.xGH.clear();
+    this.xGI.clear();
+    if (this.xGG.field_dataProto.oeJ.size() == 0)
     {
-      ad.e("MicroMsg.NetSceneTransCDN", "doScene data list null");
-      this.rtz = -100;
+      ae.e("MicroMsg.NetSceneTransCDN", "doScene data list null");
+      this.rBL = -100;
       AppMethodBeat.o(9487);
       return -100;
     }
     LinkedList localLinkedList = new LinkedList();
-    int i = this.rtv;
-    ajn localajn;
-    if (i < this.xqJ.field_dataProto.nZa.size())
+    int i = this.rBH;
+    ajx localajx;
+    if (i < this.xGG.field_dataProto.oeJ.size())
     {
-      localajn = (ajn)this.xqJ.field_dataProto.nZa.get(i);
-      if ((!localajn.Ghj) || (!bt.isNullOrNil(localajn.GgR))) {}
+      localajx = (ajx)this.xGG.field_dataProto.oeJ.get(i);
+      if ((!localajx.GzS) || (!bu.isNullOrNil(localajx.GzA))) {}
     }
     for (int j = 0;; j = 1)
     {
-      this.rtv = (i + 1);
-      paramf.nDi = localLinkedList.size();
-      paramf.nDj.clear();
-      paramf.nDj.addAll(localLinkedList);
-      ad.i("MicroMsg.NetSceneTransCDN", "ashutest::data list size %d, need check size %d, nextIndex %d", new Object[] { Integer.valueOf(this.xqJ.field_dataProto.nZa.size()), Integer.valueOf(this.xqK.size()), Integer.valueOf(this.rtv) });
-      if ((paramf.nDi <= 0) || (j == 0))
+      this.rBH = (i + 1);
+      paramf.nID = localLinkedList.size();
+      paramf.nIE.clear();
+      paramf.nIE.addAll(localLinkedList);
+      ae.i("MicroMsg.NetSceneTransCDN", "ashutest::data list size %d, need check size %d, nextIndex %d", new Object[] { Integer.valueOf(this.xGG.field_dataProto.oeJ.size()), Integer.valueOf(this.xGH.size()), Integer.valueOf(this.rBH) });
+      if ((paramf.nID <= 0) || (j == 0))
       {
-        dEk();
-        ad.w("MicroMsg.NetSceneTransCDN", "doScene no more data");
-        this.rtz = -100;
+        dHB();
+        ae.w("MicroMsg.NetSceneTransCDN", "doScene no more data");
+        this.rBL = -100;
         AppMethodBeat.o(9487);
         return -100;
-        dop localdop;
-        if (!bt.isNullOrNil(localajn.GgR))
+        dpm localdpm;
+        if (!bu.isNullOrNil(localajx.GzA))
         {
-          localdop = new dop();
-          localdop.FAe = localajn.GgR;
-          localdop.AesKey = localajn.GgT;
-          localdop.HCZ = localajn.dataType;
-          localdop.tSu = ((int)localajn.Ghm);
-          localdop.HCY = bt.bI(localajn.dsU, "").hashCode();
-          ad.d("MicroMsg.NetSceneTransCDN", "add cdnitem, clientID[%d] dataID[%s] datatype[%d] dataurl[%s] size[%d]", new Object[] { Integer.valueOf(localdop.HCY), localajn.dsU, Integer.valueOf(localdop.HCZ), localajn.GgR, Long.valueOf(localajn.Ghm) });
-          localLinkedList.add(localdop);
-          this.xqK.put(localdop.HCY, localajn);
-          this.xqL.put(localdop.HCY, false);
+          localdpm = new dpm();
+          localdpm.FSC = localajx.GzA;
+          localdpm.AesKey = localajx.GzC;
+          localdpm.HWM = localajx.dataType;
+          localdpm.udl = ((int)localajx.GzV);
+          localdpm.HWL = bu.bI(localajx.dua, "").hashCode();
+          ae.d("MicroMsg.NetSceneTransCDN", "add cdnitem, clientID[%d] dataID[%s] datatype[%d] dataurl[%s] size[%d]", new Object[] { Integer.valueOf(localdpm.HWL), localajx.dua, Integer.valueOf(localdpm.HWM), localajx.GzA, Long.valueOf(localajx.GzV) });
+          localLinkedList.add(localdpm);
+          this.xGH.put(localdpm.HWL, localajx);
+          this.xGI.put(localdpm.HWL, false);
         }
-        if (!bt.isNullOrNil(localajn.hAe))
+        if (!bu.isNullOrNil(localajx.hCS))
         {
-          localdop = new dop();
-          localdop.FAe = localajn.hAe;
-          localdop.AesKey = localajn.GgN;
-          localdop.HCZ = 2;
-          localdop.tSu = ((int)localajn.Ghx);
-          localdop.HCY = (bt.bI(localajn.dsU, "") + "@thumb").hashCode();
-          ad.d("MicroMsg.NetSceneTransCDN", "add cdnitem, clientID[%d] thumbID[%s_t] datatype[%d] thumburl[%s] size[%d]", new Object[] { Integer.valueOf(localdop.HCY), localajn.dsU, Integer.valueOf(localdop.HCZ), localajn.hAe, Long.valueOf(localajn.Ghx) });
-          localLinkedList.add(localdop);
-          this.xqK.put(localdop.HCY, localajn);
-          this.xqL.put(localdop.HCY, true);
+          localdpm = new dpm();
+          localdpm.FSC = localajx.hCS;
+          localdpm.AesKey = localajx.Gzw;
+          localdpm.HWM = 2;
+          localdpm.udl = ((int)localajx.GAg);
+          localdpm.HWL = (bu.bI(localajx.dua, "") + "@thumb").hashCode();
+          ae.d("MicroMsg.NetSceneTransCDN", "add cdnitem, clientID[%d] thumbID[%s_t] datatype[%d] thumburl[%s] size[%d]", new Object[] { Integer.valueOf(localdpm.HWL), localajx.dua, Integer.valueOf(localdpm.HWM), localajx.hCS, Long.valueOf(localajx.GAg) });
+          localLinkedList.add(localdpm);
+          this.xGH.put(localdpm.HWL, localajx);
+          this.xGI.put(localdpm.HWL, true);
         }
         if (localLinkedList.size() >= 20) {
           continue;
@@ -148,10 +148,10 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(9486);
-    ad.i("MicroMsg.NetSceneTransCDN", "netId %d errType %d errCode %d localErrCode %d begIndex %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.rtz), Integer.valueOf(this.rtv), paramString });
-    if ((paramInt2 == 3) && (this.rtz == -100))
+    ae.i("MicroMsg.NetSceneTransCDN", "netId %d errType %d errCode %d localErrCode %d begIndex %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.rBL), Integer.valueOf(this.rBH), paramString });
+    if ((paramInt2 == 3) && (this.rBL == -100))
     {
-      dEk();
+      dHB();
       this.callback.onSceneEnd(0, 0, paramString, this);
       AppMethodBeat.o(9486);
       return;
@@ -162,49 +162,49 @@ public final class g
       AppMethodBeat.o(9486);
       return;
     }
-    paramq = ((kt)((b)paramq).hNL.hNQ).nDj.iterator();
+    paramq = ((kt)((b)paramq).hQE.hQJ).nIE.iterator();
     while (paramq.hasNext())
     {
-      paramArrayOfByte = (dop)paramq.next();
-      ajn localajn = (ajn)this.xqK.get(paramArrayOfByte.HCY);
-      if (localajn != null) {
-        if (this.xqL.get(paramArrayOfByte.HCY))
+      paramArrayOfByte = (dpm)paramq.next();
+      ajx localajx = (ajx)this.xGH.get(paramArrayOfByte.HWL);
+      if (localajx != null) {
+        if (this.xGI.get(paramArrayOfByte.HWL))
         {
-          ad.i("MicroMsg.NetSceneTransCDN", "trans end, client id[%d], dataId[%s], isThumb[true], old thumb url[%s], new thumb url[%s], old size[%d], new size[%d]", new Object[] { Integer.valueOf(paramArrayOfByte.HCY), localajn.dsU, localajn.hAe, paramArrayOfByte.FAe, Long.valueOf(localajn.Ghx), Long.valueOf(paramArrayOfByte.tSu) });
-          localajn.aOh(paramArrayOfByte.FAe);
-          localajn.aOi(paramArrayOfByte.AesKey);
-          if ((!bt.isNullOrNil(paramArrayOfByte.FAe)) && (!bt.isNullOrNil(paramArrayOfByte.AesKey)) && (paramArrayOfByte.tSu > 0L))
+          ae.i("MicroMsg.NetSceneTransCDN", "trans end, client id[%d], dataId[%s], isThumb[true], old thumb url[%s], new thumb url[%s], old size[%d], new size[%d]", new Object[] { Integer.valueOf(paramArrayOfByte.HWL), localajx.dua, localajx.hCS, paramArrayOfByte.FSC, Long.valueOf(localajx.GAg), Long.valueOf(paramArrayOfByte.udl) });
+          localajx.aPE(paramArrayOfByte.FSC);
+          localajx.aPF(paramArrayOfByte.AesKey);
+          if ((!bu.isNullOrNil(paramArrayOfByte.FSC)) && (!bu.isNullOrNil(paramArrayOfByte.AesKey)) && (paramArrayOfByte.udl > 0L))
           {
-            localajn.CH(paramArrayOfByte.tSu);
+            localajx.Df(paramArrayOfByte.udl);
           }
           else
           {
-            ad.w("MicroMsg.NetSceneTransCDN", "match error server return");
+            ae.w("MicroMsg.NetSceneTransCDN", "match error server return");
             paramInt2 = 3;
           }
         }
         else
         {
-          ad.i("MicroMsg.NetSceneTransCDN", "trans end, client id[%d], dataId[%s], isThumb[false], old url[%s], new url[%s], old size[%d], new size[%d]", new Object[] { Integer.valueOf(paramArrayOfByte.HCY), localajn.dsU, localajn.GgR, paramArrayOfByte.FAe, Long.valueOf(localajn.Ghm), Long.valueOf(paramArrayOfByte.tSu) });
-          localajn.aOj(paramArrayOfByte.FAe);
-          localajn.aOk(paramArrayOfByte.AesKey);
-          if ((!bt.isNullOrNil(paramArrayOfByte.FAe)) && (!bt.isNullOrNil(paramArrayOfByte.AesKey)) && (paramArrayOfByte.tSu > 0L))
+          ae.i("MicroMsg.NetSceneTransCDN", "trans end, client id[%d], dataId[%s], isThumb[false], old url[%s], new url[%s], old size[%d], new size[%d]", new Object[] { Integer.valueOf(paramArrayOfByte.HWL), localajx.dua, localajx.GzA, paramArrayOfByte.FSC, Long.valueOf(localajx.GzV), Long.valueOf(paramArrayOfByte.udl) });
+          localajx.aPG(paramArrayOfByte.FSC);
+          localajx.aPH(paramArrayOfByte.AesKey);
+          if ((!bu.isNullOrNil(paramArrayOfByte.FSC)) && (!bu.isNullOrNil(paramArrayOfByte.AesKey)) && (paramArrayOfByte.udl > 0L))
           {
-            localajn.CG(paramArrayOfByte.tSu);
+            localajx.De(paramArrayOfByte.udl);
           }
           else
           {
-            ad.w("MicroMsg.NetSceneTransCDN", "match error server return");
+            ae.w("MicroMsg.NetSceneTransCDN", "match error server return");
             paramInt2 = 3;
           }
         }
       }
     }
     boolean bool;
-    if (this.rtv < this.xqJ.field_dataProto.nZa.size())
+    if (this.rBH < this.xGG.field_dataProto.oeJ.size())
     {
       bool = true;
-      ad.i("MicroMsg.NetSceneTransCDN", "check need continue, indexOK %B", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.NetSceneTransCDN", "check need continue, indexOK %B", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break label631;
       }
@@ -217,8 +217,8 @@ public final class g
     {
       if (paramInt1 != 0)
       {
-        ad.i("MicroMsg.NetSceneTransCDN", "do callback");
-        dEk();
+        ae.i("MicroMsg.NetSceneTransCDN", "do callback");
+        dHB();
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
       AppMethodBeat.o(9486);
@@ -240,7 +240,7 @@ public final class g
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
 }
 

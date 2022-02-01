@@ -9,44 +9,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.q.g;
 import com.tencent.mm.plugin.appbrand.jsapi.q.h;
 import com.tencent.mm.plugin.appbrand.jsapi.q.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class d
-  extends com.tencent.luggage.xweb_ext.extendplugin.component.c<com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.c, View>
+  extends com.tencent.luggage.xweb_ext.extendplugin.component.c<com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.c, View>
 {
-  private h.a<com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.c, View> csV;
-  final a csW;
-  private final c csX;
+  final a ctA;
+  private final c ctB;
+  private h.a<com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.c, View> ctz;
   
   protected d(a parama)
   {
     super(parama);
-    AppMethodBeat.i(186784);
-    this.csV = new h.a() {};
-    this.csW = parama;
-    this.csX = new c(parama);
-    AppMethodBeat.o(186784);
+    AppMethodBeat.i(220467);
+    this.ctz = new h.a() {};
+    this.ctA = parama;
+    this.ctB = new c(parama);
+    AppMethodBeat.o(220467);
   }
   
-  public final g FT()
+  public final g FZ()
   {
-    return this.csX.csQ;
+    return this.ctB.ctt;
   }
   
-  public final h.a<com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.c, View> FU()
+  public final h.a<com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.c, View> Ga()
   {
-    return this.csV;
+    return this.ctz;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.q.c FV()
+  public final com.tencent.mm.plugin.appbrand.jsapi.q.c Gb()
   {
-    return c.csP;
+    return c.cts;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.a.a.d
  * JD-Core Version:    0.7.0.1
  */

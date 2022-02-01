@@ -5,38 +5,38 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.e.i.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
 abstract class be<T>
   implements g, Callable<T>
 {
-  protected volatile long lKV = 0L;
-  protected volatile long lKW = 0L;
-  protected volatile long lKX = 0L;
-  private boolean lKY = true;
+  protected volatile long lPv = 0L;
+  protected volatile long lPw = 0L;
+  protected volatile long lPx = 0L;
+  private boolean lPy = true;
   
-  public final void RO(String paramString)
+  public final void Sx(String paramString)
   {
-    if (!this.lKY)
+    if (!this.lPy)
     {
-      ad.e(getTag(), "silent toast: %s", new Object[] { paramString });
+      ae.e(getTag(), "silent toast: %s", new Object[] { paramString });
       return;
     }
-    bf.RO(paramString);
+    bf.Sx(paramString);
   }
   
-  final Future<T> brC()
+  final Future<T> bsn()
   {
-    return h.LTJ.d(new a());
+    return h.MqF.d(new a());
   }
   
-  public final T brD()
+  public final T bso()
   {
-    this.lKV = bt.flT();
+    this.lPv = bu.fpO();
     try
     {
       Object localObject1 = call();
@@ -44,14 +44,14 @@ abstract class be<T>
     }
     finally
     {
-      this.lKW = bt.flT();
-      this.lKX = (this.lKW - this.lKV);
+      this.lPw = bu.fpO();
+      this.lPx = (this.lPw - this.lPv);
     }
   }
   
   public void gZ(boolean paramBoolean)
   {
-    this.lKY = paramBoolean;
+    this.lPy = paramBoolean;
   }
   
   public final String getKey()
@@ -61,9 +61,9 @@ abstract class be<T>
   
   abstract String getTag();
   
-  public final void uk(int paramInt)
+  public final void uq(int paramInt)
   {
-    RO(aj.getResources().getString(paramInt));
+    Sx(ak.getResources().getString(paramInt));
   }
   
   final class a
@@ -73,8 +73,8 @@ abstract class be<T>
     
     public final T call()
     {
-      AppMethodBeat.i(188624);
-      be.this.lKV = bt.flT();
+      AppMethodBeat.i(222783);
+      be.this.lPv = bu.fpO();
       try
       {
         Object localObject1 = be.this.call();
@@ -82,17 +82,17 @@ abstract class be<T>
       }
       finally
       {
-        be.this.lKW = bt.flT();
-        be.this.lKX = (be.this.lKW - be.this.lKV);
-        AppMethodBeat.o(188624);
+        be.this.lPw = bu.fpO();
+        be.this.lPx = (be.this.lPw - be.this.lPv);
+        AppMethodBeat.o(222783);
       }
     }
     
     public final String getKey()
     {
-      AppMethodBeat.i(188623);
+      AppMethodBeat.i(222782);
       String str = be.this.getTag();
-      AppMethodBeat.o(188623);
+      AppMethodBeat.o(222782);
       return str;
     }
   }

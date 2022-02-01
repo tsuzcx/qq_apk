@@ -5,12 +5,12 @@ import rx.j;
 
 public final class d
 {
-  private static final a ObU;
+  private static final a OyZ;
   
   static
   {
     AppMethodBeat.i(90455);
-    ObU = new a();
+    OyZ = new a();
     AppMethodBeat.o(90455);
   }
   
@@ -22,25 +22,25 @@ public final class d
     return parama;
   }
   
-  public static j gzC()
+  public static j gEe()
   {
     AppMethodBeat.i(90453);
-    a locala = a.gzA();
+    a locala = a.gEc();
     AppMethodBeat.o(90453);
     return locala;
   }
   
-  public static j gzD()
+  public static j gEf()
   {
-    return ObU;
+    return OyZ;
   }
   
   static final class a
     implements j
   {
-    public final void gyQ() {}
+    public final void gDs() {}
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
       return true;
     }
@@ -48,7 +48,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.f.d
  * JD-Core Version:    0.7.0.1
  */

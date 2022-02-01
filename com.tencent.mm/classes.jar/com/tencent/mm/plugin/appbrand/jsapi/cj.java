@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.n;
 import com.tencent.mm.plugin.appbrand.jsruntime.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class cj
 {
   public static void a(o paramo, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(187612);
+    AppMethodBeat.i(201179);
     if ((paramo instanceof i))
     {
       n localn = (n)((i)paramo).P(n.class);
       if (localn != null)
       {
-        localn.d(paramString1, paramString2, paramInt, aim());
-        AppMethodBeat.o(187612);
+        localn.d(paramString1, paramString2, paramInt, aiB());
+        AppMethodBeat.o(201179);
         return;
       }
     }
     paramo.evaluateJavascript(z(paramString1, paramString2, paramInt), null);
-    AppMethodBeat.o(187612);
+    AppMethodBeat.o(201179);
   }
   
-  public static String aim()
+  public static String aiB()
   {
     AppMethodBeat.i(140650);
     try
@@ -37,7 +37,7 @@ public final class cj
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.JsScriptEvaluator", "makeExtStatJson e = %s", new Object[] { localException });
+      ae.e("MicroMsg.JsScriptEvaluator", "makeExtStatJson e = %s", new Object[] { localException });
       AppMethodBeat.o(140650);
     }
     return "{}";
@@ -52,7 +52,7 @@ public final class cj
     //   5: aload_1
     //   6: astore_3
     //   7: aload_1
-    //   8: invokestatic 88	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   8: invokestatic 88	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   11: ifeq +6 -> 17
     //   14: ldc 79
     //   16: astore_3
@@ -80,7 +80,7 @@ public final class cj
     //   48: aastore
     //   49: dup
     //   50: iconst_3
-    //   51: invokestatic 25	com/tencent/mm/plugin/appbrand/jsapi/cj:aim	()Ljava/lang/String;
+    //   51: invokestatic 25	com/tencent/mm/plugin/appbrand/jsapi/cj:aiB	()Ljava/lang/String;
     //   54: aastore
     //   55: invokestatic 104	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   58: astore_1
@@ -109,7 +109,7 @@ public final class cj
     //   95: dup
     //   96: iconst_2
     //   97: aload_3
-    //   98: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   98: invokestatic 117	com/tencent/mm/sdk/platformtools/bu:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
     //   101: invokevirtual 121	java/lang/String:length	()I
     //   104: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   107: aastore
@@ -123,7 +123,7 @@ public final class cj
     //   121: iconst_0
     //   122: aload_0
     //   123: aastore
-    //   124: invokestatic 77	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: new 81	java/lang/OutOfMemoryError
     //   130: dup
     //   131: aload_0
@@ -148,7 +148,7 @@ public final class cj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cj
  * JD-Core Version:    0.7.0.1
  */

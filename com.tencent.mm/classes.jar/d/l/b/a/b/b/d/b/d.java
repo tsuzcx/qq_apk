@@ -8,17 +8,17 @@ import java.lang.annotation.Annotation;
 public abstract class d
   implements d.l.b.a.b.d.a.e.b
 {
-  public static final a Nap = new a((byte)0);
-  private final f MXf;
+  public static final a Nxv = new a((byte)0);
+  private final f Nul;
   
   public d(f paramf)
   {
-    this.MXf = paramf;
+    this.Nul = paramf;
   }
   
-  public final f giD()
+  public final f gnf()
   {
-    return this.MXf;
+    return this.Nul;
   }
   
   public static final class a
@@ -59,7 +59,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class el
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String duW;
+  public String dwb;
   public int status;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -15,26 +15,26 @@ public final class el
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.duW == null)
+      if (this.dwb == null)
       {
         paramVarArgs = new b("Not all required fields were included: appid");
         AppMethodBeat.o(122485);
         throw paramVarArgs;
       }
-      if (this.duW != null) {
-        paramVarArgs.d(1, this.duW);
+      if (this.dwb != null) {
+        paramVarArgs.d(1, this.dwb);
       }
       paramVarArgs.aS(2, this.status);
       AppMethodBeat.o(122485);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.duW == null) {
+      if (this.dwb == null) {
         break label306;
       }
     }
     label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.duW) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.dwb) + 0;; paramInt = 0)
     {
       int i = f.a.a.b.b.a.bz(2, this.status);
       AppMethodBeat.o(122485);
@@ -42,12 +42,12 @@ public final class el
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.duW == null)
+        if (this.dwb == null)
         {
           paramVarArgs = new b("Not all required fields were included: appid");
           AppMethodBeat.o(122485);
@@ -66,11 +66,11 @@ public final class el
           AppMethodBeat.o(122485);
           return -1;
         case 1: 
-          localel.duW = locala.NPN.readString();
+          localel.dwb = locala.OmT.readString();
           AppMethodBeat.o(122485);
           return 0;
         }
-        localel.status = locala.NPN.zc();
+        localel.status = locala.OmT.zc();
         AppMethodBeat.o(122485);
         return 0;
       }

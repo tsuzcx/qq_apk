@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.protocal.protobuf.caj;
 import com.tencent.mm.vending.b.b;
 
 public abstract interface e
@@ -9,7 +9,7 @@ public abstract interface e
 {
   public abstract b addContactAssembler(d paramd);
   
-  public abstract void processModContact(bzp parambzp, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public abstract void processModContact(caj paramcaj, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

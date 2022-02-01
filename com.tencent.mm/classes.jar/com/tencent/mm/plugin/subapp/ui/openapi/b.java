@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.e.k.a;
@@ -20,17 +20,17 @@ public final class b
   extends BaseAdapter
   implements k.a
 {
-  boolean Bkd = false;
+  boolean BBC = false;
   private Context context;
-  private List<g> yHm;
+  private List<g> yXw;
   
   public b(Context paramContext, List<g> paramList)
   {
     this.context = paramContext;
-    this.yHm = paramList;
+    this.yXw = paramList;
   }
   
-  private int dac()
+  private int dcN()
   {
     AppMethodBeat.i(29163);
     int i = getRealCount();
@@ -41,16 +41,16 @@ public final class b
   private int getRealCount()
   {
     AppMethodBeat.i(29162);
-    int i = this.yHm.size();
+    int i = this.yXw.size();
     AppMethodBeat.o(29162);
     return i;
   }
   
-  public final boolean HY(int paramInt)
+  public final boolean Iw(int paramInt)
   {
     AppMethodBeat.i(29160);
-    int i = this.yHm.size();
-    if ((paramInt >= i) && (paramInt < i + dac()))
+    int i = this.yXw.size();
+    if ((paramInt >= i) && (paramInt < i + dcN()))
     {
       AppMethodBeat.o(29160);
       return true;
@@ -70,7 +70,7 @@ public final class b
   {
     AppMethodBeat.i(29159);
     int i = getRealCount();
-    int j = dac();
+    int j = dcN();
     AppMethodBeat.o(29159);
     return i + j;
   }
@@ -78,12 +78,12 @@ public final class b
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(29161);
-    if (HY(paramInt))
+    if (Iw(paramInt))
     {
       AppMethodBeat.o(29161);
       return null;
     }
-    Object localObject = this.yHm.get(paramInt);
+    Object localObject = this.yXw.get(paramInt);
     AppMethodBeat.o(29161);
     return localObject;
   }
@@ -100,60 +100,60 @@ public final class b
     {
       paramViewGroup = new c();
       paramView = View.inflate(this.context, 2131493084, null);
-      paramViewGroup.fUN = ((ImageView)paramView.findViewById(2131296905));
-      paramViewGroup.Bky = ((TextView)paramView.findViewById(2131296904));
-      paramViewGroup.fQd = ((TextView)paramView.findViewById(2131296906));
-      paramViewGroup.Bkz = paramView.findViewById(2131296907);
+      paramViewGroup.fWT = ((ImageView)paramView.findViewById(2131296905));
+      paramViewGroup.BBX = ((TextView)paramView.findViewById(2131296904));
+      paramViewGroup.fSj = ((TextView)paramView.findViewById(2131296906));
+      paramViewGroup.BBY = paramView.findViewById(2131296907);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.Bkz.setVisibility(4);
-      if (!HY(paramInt)) {
+      paramViewGroup.BBY.setVisibility(4);
+      if (!Iw(paramInt)) {
         break;
       }
-      paramViewGroup.fUN.setVisibility(4);
-      paramViewGroup.Bky.setVisibility(4);
-      paramViewGroup.fQd.setVisibility(4);
+      paramViewGroup.fWT.setVisibility(4);
+      paramViewGroup.BBX.setVisibility(4);
+      paramViewGroup.fSj.setVisibility(4);
       AppMethodBeat.o(29158);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
     }
     g localg = (g)getItem(paramInt);
-    paramViewGroup.fUN.setVisibility(0);
+    paramViewGroup.fWT.setVisibility(0);
     Bitmap localBitmap = h.c(localg.field_appId, 5, a.getDensity(this.context));
     if (localBitmap == null)
     {
-      paramViewGroup.fUN.setBackgroundResource(2131231052);
-      paramViewGroup.fQd.setVisibility(0);
-      paramViewGroup.fQd.setText(h.a(this.context, localg, null));
-      if (!this.Bkd) {
+      paramViewGroup.fWT.setBackgroundResource(2131231052);
+      paramViewGroup.fSj.setVisibility(0);
+      paramViewGroup.fSj.setText(h.a(this.context, localg, null));
+      if (!this.BBC) {
         break label259;
       }
-      paramViewGroup.Bky.setVisibility(0);
+      paramViewGroup.BBX.setVisibility(0);
     }
     for (;;)
     {
       AppMethodBeat.o(29158);
       return paramView;
-      paramViewGroup.fUN.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      paramViewGroup.fWT.setBackgroundDrawable(new BitmapDrawable(localBitmap));
       break;
       label259:
-      paramViewGroup.Bky.setVisibility(8);
+      paramViewGroup.BBX.setVisibility(8);
     }
   }
   
-  public final void sD(boolean paramBoolean)
+  public final void sK(boolean paramBoolean)
   {
     AppMethodBeat.i(29157);
-    this.Bkd = paramBoolean;
+    this.BBC = paramBoolean;
     notifyDataSetChanged();
     AppMethodBeat.o(29157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.b
  * JD-Core Version:    0.7.0.1
  */

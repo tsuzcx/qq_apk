@@ -2,7 +2,7 @@ package d.a;
 
 import d.l;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"iterator", "", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"iterator", "", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, gkc=1)
 public class n
   extends m
 {}

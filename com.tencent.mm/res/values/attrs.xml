@@ -1876,4 +1876,8 @@
     <attr name="a46" format="dimension" />
     <attr name="a47" format="dimension" />
     <attr name="a48" format="dimension" />
+    <attr name="a49" format="integer" />
+    <attr name="a4_" format="color" />
+    <attr name="a4a" format="integer" />
+    <attr name="a4b" format="integer" />
 </resources>

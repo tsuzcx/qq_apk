@@ -3,55 +3,55 @@ package com.tencent.mm.ui.chatting.n;
 import android.database.Cursor;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.b.b;
+import com.tencent.mm.as.b.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.h.d.a;
 import com.tencent.mm.ui.chatting.h.d.b;
 import com.tencent.mm.ui.chatting.h.d.d;
 import java.util.List;
 
 public final class b
-  implements e<bu>
+  implements e<bv>
 {
-  private d.a JWB;
-  long JWC;
-  long JWD;
-  private long JWE;
-  int JWF;
-  private Bundle JWG;
-  private d.d JWH;
+  private d.a KsS;
+  long KsT;
+  long KsU;
+  private long KsV;
+  int KsW;
+  private Bundle KsX;
+  private d.d KsY;
   Cursor Tc;
-  String fTa;
-  private boolean vgw;
+  String fVg;
+  private boolean vsD;
   
   public b(String paramString, d.a parama, Bundle paramBundle, long paramLong1, long paramLong2, long paramLong3, int paramInt, d.d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(36633);
-    this.JWE = paramLong1;
-    this.JWC = paramLong2;
-    this.JWD = paramLong3;
-    this.JWF = paramInt;
-    this.fTa = paramString;
-    this.JWB = parama;
-    this.JWG = paramBundle;
-    this.JWH = paramd;
-    this.vgw = paramBoolean;
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[ChattingGetDataSource] mLastTopCreateTime:" + this.JWC + " mLastBottomCreateTime:" + this.JWD + " isFromSearch:" + paramBoolean + " mLastCount:" + this.JWF + " mLastBottomMsgSeq:" + this.JWE + " mTalker:" + this.fTa + " action:" + parama);
+    this.KsV = paramLong1;
+    this.KsT = paramLong2;
+    this.KsU = paramLong3;
+    this.KsW = paramInt;
+    this.fVg = paramString;
+    this.KsS = parama;
+    this.KsX = paramBundle;
+    this.KsY = paramd;
+    this.vsD = paramBoolean;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[ChattingGetDataSource] mLastTopCreateTime:" + this.KsT + " mLastBottomCreateTime:" + this.KsU + " isFromSearch:" + paramBoolean + " mLastCount:" + this.KsW + " mLastBottomMsgSeq:" + this.KsV + " mTalker:" + this.fVg + " action:" + parama);
     AppMethodBeat.o(36633);
   }
   
   private void b(d.b paramb)
   {
     AppMethodBeat.i(36635);
-    long l1 = fGZ();
-    long l2 = fHc();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleEnter] from:%d to:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-    this.Tc = ((l)g.ab(l.class)).dlK().d(this.fTa, l1, l2, 18);
+    long l1 = fLr();
+    long l2 = fLu();
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleEnter] from:%d to:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+    this.Tc = ((l)g.ab(l.class)).doJ().d(this.fVg, l1, l2, 18);
     paramb.next();
     AppMethodBeat.o(36635);
   }
@@ -60,10 +60,10 @@ public final class b
   {
     AppMethodBeat.i(36636);
     boolean bool;
-    if ((this.JWH.JVk != null) && (this.JWH.JVk.getBoolean("has_position_tongue", false)))
+    if ((this.KsY.KrC != null) && (this.KsY.KrC.getBoolean("has_position_tongue", false)))
     {
       bool = true;
-      if ((this.JWH.JVk == null) || (!this.JWH.JVk.getBoolean("has_position_search", false))) {
+      if ((this.KsY.KrC == null) || (!this.KsY.KrC.getBoolean("has_position_search", false))) {
         break label173;
       }
     }
@@ -73,100 +73,100 @@ public final class b
       if (!bool) {
         break label178;
       }
-      bu localbu = ((l)g.ab(l.class)).dlK().apX(this.fTa);
-      if ((localbu == null) || (localbu.field_isSend != 1) || (localbu.field_msgSeq != 0L)) {
+      bv localbv = ((l)g.ab(l.class)).doJ().arc(this.fVg);
+      if ((localbv == null) || (localbv.field_isSend != 1) || (localbv.field_msgSeq != 0L)) {
         break label178;
       }
       b(paramb);
-      if (this.JWH.JVk == null) {
-        this.JWH.JVk = new Bundle();
+      if (this.KsY.KrC == null) {
+        this.KsY.KrC = new Bundle();
       }
-      this.JWH.JVk.putBoolean("need_scroll_to_bottom", true);
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleUpdate] send msg! need scroll to bottom!");
+      this.KsY.KrC.putBoolean("need_scroll_to_bottom", true);
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleUpdate] send msg! need scroll to bottom!");
       AppMethodBeat.o(36636);
       return;
       bool = false;
       break;
     }
     label178:
-    long l2 = fHb();
+    long l2 = fLt();
     if ((!bool) && (i != 0)) {}
-    for (long l1 = this.JWD;; l1 = fHa())
+    for (long l1 = this.KsU;; l1 = fLs())
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleUpdate] talker:" + this.fTa + " from:" + l2 + " to:" + l1 + " hasTongue:" + bool);
-      this.Tc = ((l)g.ab(l.class)).dlK().d(this.fTa, l2, l1, 2147483647);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleUpdate] talker:" + this.fVg + " from:" + l2 + " to:" + l1 + " hasTongue:" + bool);
+      this.Tc = ((l)g.ab(l.class)).doJ().d(this.fVg, l2, l1, 2147483647);
       paramb.next();
       AppMethodBeat.o(36636);
       return;
     }
   }
   
-  private long fHa()
+  private long fLs()
   {
     AppMethodBeat.i(36642);
-    com.tencent.mm.storage.ad localad = ((l)g.ab(l.class)).dlF().apH(this.fTa);
-    if (this.JWE > 0L)
+    com.tencent.mm.storage.ae localae = ((l)g.ab(l.class)).doE().aqM(this.fVg);
+    if (this.KsV > 0L)
     {
-      Object localObject = localad.DD(this.JWE);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findUpdateLastCreateTime] list size=", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      Object localObject = localae.Ec(this.KsV);
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findUpdateLastCreateTime] list size=", new Object[] { Integer.valueOf(((List)localObject).size()) });
       if (((List)localObject).size() > 0)
       {
-        localObject = fHd();
+        localObject = fLv();
         l = ((ei)localObject).field_createTime;
         StringBuilder localStringBuilder = new StringBuilder("[findUpdateLastCreateTime]isSender=");
         if (((ei)localObject).field_isSend == 1) {}
         for (boolean bool = true;; bool = false)
         {
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingLoader.ChattingGetDataSource", bool + " mLastBottomMsgSeq=" + this.JWE + " chatroomMsgSeq:" + localad + " mLastBottomCreateTime=" + this.JWD + " localLastMsgCreateTime=" + l);
+          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingLoader.ChattingGetDataSource", bool + " mLastBottomMsgSeq=" + this.KsV + " chatroomMsgSeq:" + localae + " mLastBottomCreateTime=" + this.KsU + " localLastMsgCreateTime=" + l);
           if (((ei)localObject).field_isSend != 1) {
             break;
           }
           AppMethodBeat.o(36642);
           return l;
         }
-        l = this.JWD;
+        l = this.KsU;
         AppMethodBeat.o(36642);
         return l;
       }
     }
-    long l = fHc();
+    long l = fLu();
     AppMethodBeat.o(36642);
     return l;
   }
   
-  private long fHb()
+  private long fLt()
   {
     AppMethodBeat.i(36643);
-    if (this.JWC == 0L)
+    if (this.KsT == 0L)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findUpdateFirstCreateTime] mLastTopCreateTime == 0");
-      this.JWC = ((l)g.ab(l.class)).dlK().i(this.fTa, fHc(), 18);
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findUpdateFirstCreateTime] mLastTopCreateTime == 0");
+      this.KsT = ((l)g.ab(l.class)).doJ().i(this.fVg, fLu(), 18);
     }
-    long l = this.JWC;
+    long l = this.KsT;
     AppMethodBeat.o(36643);
     return l;
   }
   
-  private bu fHd()
+  private bv fLv()
   {
     AppMethodBeat.i(36645);
-    bu localbu = ((l)g.ab(l.class)).dlK().apX(this.fTa);
+    bv localbv = ((l)g.ab(l.class)).doJ().arc(this.fVg);
     AppMethodBeat.o(36645);
-    return localbu;
+    return localbv;
   }
   
-  final long Em(long paramLong)
+  final long EO(long paramLong)
   {
     AppMethodBeat.i(36641);
-    com.tencent.mm.k.a.a.c localc = ((l)g.ab(l.class)).dlF().e(this.fTa, paramLong, true);
+    com.tencent.mm.k.a.a.c localc = ((l)g.ab(l.class)).doE().e(this.fVg, paramLong, true);
     if (localc != null)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findLastBlockFirstCreateTime] has block! so return just lastBlock of lastCreateTime! firstCreateTime:" + localc.fVo + " time:" + paramLong);
-      paramLong = localc.fVo;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findLastBlockFirstCreateTime] has block! so return just lastBlock of lastCreateTime! firstCreateTime:" + localc.fXu + " time:" + paramLong);
+      paramLong = localc.fXu;
       AppMethodBeat.o(36641);
       return paramLong;
     }
-    paramLong = fHc();
+    paramLong = fLu();
     AppMethodBeat.o(36641);
     return paramLong;
   }
@@ -174,7 +174,7 @@ public final class b
   public final void a(final d.b paramb)
   {
     AppMethodBeat.i(36634);
-    switch (6.JWs[this.JWB.ordinal()])
+    switch (6.KsJ[this.KsS.ordinal()])
     {
     }
     for (;;)
@@ -184,22 +184,22 @@ public final class b
       b(paramb);
       AppMethodBeat.o(36634);
       return;
-      if ((this.JWG != null) && (this.JWG.getBoolean("load_bottom", false)))
+      if ((this.KsX != null) && (this.KsX.getBoolean("load_bottom", false)))
       {
-        localObject = ((l)g.ab(l.class)).dlF().apH(this.fTa);
-        l1 = ((com.tencent.mm.storage.ad)localObject).field_lastPushSeq;
-        l2 = ((com.tencent.mm.storage.ad)localObject).field_lastLocalSeq;
-        com.tencent.mm.at.b.aHW().a(this.fTa, l1, 1L + l2, 1, new b.b()
+        localObject = ((l)g.ab(l.class)).doE().aqM(this.fVg);
+        l1 = ((com.tencent.mm.storage.ae)localObject).field_lastPushSeq;
+        l2 = ((com.tencent.mm.storage.ae)localObject).field_lastLocalSeq;
+        com.tencent.mm.as.b.aIn().a(this.fVg, l1, 1L + l2, 1, new b.b()
         {
-          public final void b(int paramAnonymousInt, List<bu> paramAnonymousList)
+          public final void b(int paramAnonymousInt, List<bv> paramAnonymousList)
           {
             AppMethodBeat.i(36628);
             if ((paramAnonymousInt >= 0) && (paramAnonymousList.size() > 0))
             {
-              long l1 = b.this.fGZ();
-              long l2 = b.this.fHc();
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleBottomAfterEnter] talker:" + b.this.fTa + " from:" + l1 + " to:" + l2);
-              b.this.Tc = ((l)g.ab(l.class)).dlK().d(b.this.fTa, l1, l2, 18);
+              long l1 = b.this.fLr();
+              long l2 = b.this.fLu();
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleBottomAfterEnter] talker:" + b.this.fVg + " from:" + l1 + " to:" + l2);
+              b.this.Tc = ((l)g.ab(l.class)).doJ().d(b.this.fVg, l1, l2, 18);
               paramb.next();
               AppMethodBeat.o(36628);
               return;
@@ -211,22 +211,22 @@ public final class b
         AppMethodBeat.o(36634);
         return;
       }
-      Object localObject = ((l)g.ab(l.class)).dlF();
-      com.tencent.mm.k.a.a.c localc = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).e(this.fTa, this.JWD, true);
+      Object localObject = ((l)g.ab(l.class)).doE();
+      com.tencent.mm.k.a.a.c localc = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).e(this.fVg, this.KsU, true);
       if (localc != null)
       {
-        com.tencent.mm.at.b.aHW().a(this.fTa, localc.fVm, localc.fVn, 0, new b.b()
+        com.tencent.mm.as.b.aIn().a(this.fVg, localc.fXs, localc.fXt, 0, new b.b()
         {
-          public final void b(int paramAnonymousInt, List<bu> paramAnonymousList)
+          public final void b(int paramAnonymousInt, List<bv> paramAnonymousList)
           {
             AppMethodBeat.i(36629);
             if ((paramAnonymousInt >= 0) && (paramAnonymousList.size() > 0))
             {
-              long l1 = b.this.JWC;
-              paramAnonymousList = (bu)paramAnonymousList.get(paramAnonymousList.size() - 1);
-              long l2 = b.this.Em(paramAnonymousList.field_createTime);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] talker:" + b.this.fTa + " from:" + l1 + " to:" + l2 + " addMsg.CreateTime:" + paramAnonymousList.field_createTime);
-              b.this.Tc = ((l)g.ab(l.class)).dlK().d(b.this.fTa, l1, l2, 2147483647);
+              long l1 = b.this.KsT;
+              paramAnonymousList = (bv)paramAnonymousList.get(paramAnonymousList.size() - 1);
+              long l2 = b.this.EO(paramAnonymousList.field_createTime);
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] talker:" + b.this.fVg + " from:" + l1 + " to:" + l2 + " addMsg.CreateTime:" + paramAnonymousList.field_createTime);
+              b.this.Tc = ((l)g.ab(l.class)).doJ().d(b.this.fVg, l1, l2, 2147483647);
               paramb.next();
               AppMethodBeat.o(36629);
               return;
@@ -238,42 +238,42 @@ public final class b
         AppMethodBeat.o(36634);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] null == seqBlock talker:" + this.fTa + " mLastBottomCreateTime:" + this.JWD);
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).apH(this.fTa);
-      long l1 = ((com.tencent.mm.storage.ad)localObject).field_lastPushSeq;
-      final long l2 = ((com.tencent.mm.storage.ad)localObject).field_lastLocalSeq;
-      com.tencent.mm.at.b.aHW().a(this.fTa, 1L + l2, l1, 0, new b.b()
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] null == seqBlock talker:" + this.fVg + " mLastBottomCreateTime:" + this.KsU);
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).aqM(this.fVg);
+      long l1 = ((com.tencent.mm.storage.ae)localObject).field_lastPushSeq;
+      final long l2 = ((com.tencent.mm.storage.ae)localObject).field_lastLocalSeq;
+      com.tencent.mm.as.b.aIn().a(this.fVg, 1L + l2, l1, 0, new b.b()
       {
-        public final void b(int paramAnonymousInt, List<bu> paramAnonymousList)
+        public final void b(int paramAnonymousInt, List<bv> paramAnonymousList)
         {
           AppMethodBeat.i(36630);
           if ((paramAnonymousInt >= 0) && (paramAnonymousList.size() > 0))
           {
-            long l1 = b.this.JWC;
-            bu localbu = (bu)paramAnonymousList.get(paramAnonymousList.size() - 1);
-            long l2 = b.this.Em(localbu.field_createTime);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] talker:" + b.this.fTa + " from:" + l1 + " to:" + l2 + " size:" + paramAnonymousList.size());
-            b.this.Tc = ((l)g.ab(l.class)).dlK().d(b.this.fTa, l1, l2, 2147483647);
+            long l1 = b.this.KsT;
+            bv localbv = (bv)paramAnonymousList.get(paramAnonymousList.size() - 1);
+            long l2 = b.this.EO(localbv.field_createTime);
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] talker:" + b.this.fVg + " from:" + l1 + " to:" + l2 + " size:" + paramAnonymousList.size());
+            b.this.Tc = ((l)g.ab(l.class)).doJ().d(b.this.fVg, l1, l2, 2147483647);
             paramb.next();
             AppMethodBeat.o(36630);
             return;
           }
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] null == seqBlock ret:".concat(String.valueOf(paramAnonymousInt)));
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadBottom] null == seqBlock ret:".concat(String.valueOf(paramAnonymousInt)));
           b.this.d(paramb);
           AppMethodBeat.o(36630);
         }
       });
       AppMethodBeat.o(36634);
       return;
-      localObject = ((l)g.ab(l.class)).dlF();
-      localc = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).aE(this.fTa, this.JWC);
+      localObject = ((l)g.ab(l.class)).doE();
+      localc = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).aF(this.fVg, this.KsT);
       StringBuilder localStringBuilder;
       if (localc == null)
       {
         l1 = 0L;
-        l2 = this.JWC;
-        i = ((l)g.ab(l.class)).dlK().D(this.fTa, l1, l2);
-        localStringBuilder = new StringBuilder("[handleLoadTop] talker:").append(this.fTa).append(" from:").append(l1).append(" to:").append(l2).append(" count:").append(i).append(" seqBlock is null? ");
+        l2 = this.KsT;
+        i = ((l)g.ab(l.class)).doJ().D(this.fVg, l1, l2);
+        localStringBuilder = new StringBuilder("[handleLoadTop] talker:").append(this.fVg).append(" from:").append(l1).append(" to:").append(l2).append(" count:").append(i).append(" seqBlock is null? ");
         if (localc != null) {
           break label614;
         }
@@ -281,29 +281,29 @@ public final class b
       label614:
       for (boolean bool = true;; bool = false)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", bool);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", bool);
         if ((i < 18) && (localc != null)) {
           break label620;
         }
-        l2 = this.JWD;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadTop] talker:" + this.fTa + " from:" + l1 + " to:" + l2 + " count:" + (this.JWF + 18));
-        this.Tc = ((l)g.ab(l.class)).dlK().d(this.fTa, l1, l2, this.JWF + 18);
+        l2 = this.KsU;
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadTop] talker:" + this.fVg + " from:" + l1 + " to:" + l2 + " count:" + (this.KsW + 18));
+        this.Tc = ((l)g.ab(l.class)).doJ().d(this.fVg, l1, l2, this.KsW + 18);
         paramb.next();
         AppMethodBeat.o(36634);
         return;
-        l1 = localc.fVp;
+        l1 = localc.fXv;
         break;
       }
       label620:
       if (localc != null)
       {
-        l1 = localc.fVn;
-        l2 = localc.fVm;
-        l3 = localc.fVp;
-        l4 = localc.fVo;
-        com.tencent.mm.at.b.aHW().a(this.fTa, l1, l2, 1, new b.b()
+        l1 = localc.fXt;
+        l2 = localc.fXs;
+        l3 = localc.fXv;
+        l4 = localc.fXu;
+        com.tencent.mm.as.b.aIn().a(this.fVg, l1, l2, 1, new b.b()
         {
-          public final void b(int paramAnonymousInt, List<bu> paramAnonymousList)
+          public final void b(int paramAnonymousInt, List<bv> paramAnonymousList)
           {
             AppMethodBeat.i(36631);
             long l2;
@@ -313,29 +313,29 @@ public final class b
               if (paramAnonymousList.size() <= 0) {
                 break label273;
               }
-              l2 = ((bu)paramAnonymousList.get(0)).field_createTime;
+              l2 = ((bv)paramAnonymousList.get(0)).field_createTime;
             }
             label273:
             for (;;)
             {
               long l1 = l2;
-              if (l3.aE(b.this.fTa, l2) == null)
+              if (l3.aF(b.this.fVg, l2) == null)
               {
                 l1 = l2;
                 if (paramAnonymousList.size() < 18) {
-                  l1 = ((l)g.ab(l.class)).dlK().i(b.this.fTa, l2, 18 - paramAnonymousList.size());
+                  l1 = ((l)g.ab(l.class)).doJ().i(b.this.fVg, l2, 18 - paramAnonymousList.size());
                 }
               }
               l2 = l1;
               if (l1 <= 0L) {
                 l2 = l4;
               }
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadTop#fetch] talker:" + b.this.fTa + " firstCreateTime:" + l4 + " lastCreateTime:" + paramb + " from:" + l2);
-              b.this.Tc = ((l)g.ab(l.class)).dlK().d(b.this.fTa, l2, b.this.JWD, b.this.JWF + 18);
-              this.JUZ.next();
+              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handleLoadTop#fetch] talker:" + b.this.fVg + " firstCreateTime:" + l4 + " lastCreateTime:" + paramb + " from:" + l2);
+              b.this.Tc = ((l)g.ab(l.class)).doJ().d(b.this.fVg, l2, b.this.KsU, b.this.KsW + 18);
+              this.Krr.next();
               AppMethodBeat.o(36631);
               return;
-              b.this.d(this.JUZ);
+              b.this.d(this.Krr);
               AppMethodBeat.o(36631);
               return;
             }
@@ -347,62 +347,62 @@ public final class b
       c(paramb);
       AppMethodBeat.o(36634);
       return;
-      if (this.vgw)
+      if (this.vsD)
       {
-        l1 = this.JWG.getLong("MSG_ID");
-        bool = this.JWG.getBoolean("IS_LOAD_ALL", false);
-        ba.aBQ();
-        localObject = com.tencent.mm.model.c.azs().xY(l1);
+        l1 = this.KsX.getLong("MSG_ID");
+        bool = this.KsX.getBoolean("IS_LOAD_ALL", false);
+        bc.aCg();
+        localObject = com.tencent.mm.model.c.azI().ys(l1);
         if (((ei)localObject).field_msgId != l1)
         {
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "get msg info by id %d error", new Object[] { Long.valueOf(l1) });
+          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "get msg info by id %d error", new Object[] { Long.valueOf(l1) });
           paramb.next();
           AppMethodBeat.o(36634);
           return;
         }
         l2 = ((ei)localObject).field_createTime;
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePositionForSearch] targetCreateTime:%s [%s:%s]", new Object[] { Long.valueOf(l2), Long.valueOf(this.JWC), Long.valueOf(this.JWD) });
-        if ((l2 < this.JWC) || (l2 > this.JWD))
+        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePositionForSearch] targetCreateTime:%s [%s:%s]", new Object[] { Long.valueOf(l2), Long.valueOf(this.KsT), Long.valueOf(this.KsU) });
+        if ((l2 < this.KsT) || (l2 > this.KsU))
         {
           l2 = ((ei)localObject).field_createTime;
-          ba.aBQ();
-          l3 = com.tencent.mm.model.c.azs().j(this.fTa, l2, 18);
-          l3 = Math.min(Em(((ei)localObject).field_createTime), l3);
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePositionForSearch] [from:%s to:%s] messageId:%s isLoadAllBottomMsg:%s selection:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l1), Boolean.valueOf(bool), Integer.valueOf(0) });
-          this.Tc = ((l)g.ab(l.class)).dlK().d(this.fTa, l2, l3, 2147483647);
+          bc.aCg();
+          l3 = com.tencent.mm.model.c.azI().j(this.fVg, l2, 18);
+          l3 = Math.min(EO(((ei)localObject).field_createTime), l3);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePositionForSearch] [from:%s to:%s] messageId:%s isLoadAllBottomMsg:%s selection:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l1), Boolean.valueOf(bool), Integer.valueOf(0) });
+          this.Tc = ((l)g.ab(l.class)).doJ().d(this.fVg, l2, l3, 2147483647);
           i = 0;
         }
         for (;;)
         {
-          this.JWH.selection = Math.max(0, i);
+          this.KsY.selection = Math.max(0, i);
           paramb.next();
           AppMethodBeat.o(36634);
           return;
-          this.Tc = ((l)g.ab(l.class)).dlK().d(this.fTa, this.JWC, this.JWD, 2147483647);
-          ba.aBQ();
-          i = com.tencent.mm.model.c.azs().D(this.fTa, this.JWC, l2) - 1;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePositionForSearch] selection:%s messageId:%s isLoadAllBottomMsg:%s", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Boolean.valueOf(bool) });
+          this.Tc = ((l)g.ab(l.class)).doJ().d(this.fVg, this.KsT, this.KsU, 2147483647);
+          bc.aCg();
+          i = com.tencent.mm.model.c.azI().D(this.fVg, this.KsT, l2) - 1;
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePositionForSearch] selection:%s messageId:%s isLoadAllBottomMsg:%s", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Boolean.valueOf(bool) });
         }
       }
-      localObject = ((l)g.ab(l.class)).dlF();
-      if (this.JWG == null)
+      localObject = ((l)g.ab(l.class)).doE();
+      if (this.KsX == null)
       {
         bool = true;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "null == mSourceArgs?%s", new Object[] { Boolean.valueOf(bool) });
-        if (this.JWG != null) {
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "null == mSourceArgs?%s", new Object[] { Boolean.valueOf(bool) });
+        if (this.KsX != null) {
           break label1300;
         }
       }
       label1300:
-      for (int i = 0;; i = this.JWG.getInt("MSG_POSITION_UNREAD_COUNT"))
+      for (int i = 0;; i = this.KsX.getInt("MSG_POSITION_UNREAD_COUNT"))
       {
         if (i <= 0) {
           break label1314;
         }
-        l1 = fHa();
-        l2 = ((l)g.ab(l.class)).dlK().i(this.fTa, l1, i);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePosition] talker:" + this.fTa + " from:" + l2 + " to:" + l1 + " unreadCount:" + i);
-        this.Tc = ((l)g.ab(l.class)).dlK().d(this.fTa, l2, l1, 2147483647);
+        l1 = fLs();
+        l2 = ((l)g.ab(l.class)).doJ().i(this.fVg, l1, i);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePosition] talker:" + this.fVg + " from:" + l2 + " to:" + l1 + " unreadCount:" + i);
+        this.Tc = ((l)g.ab(l.class)).doJ().d(this.fVg, l2, l1, 2147483647);
         paramb.next();
         AppMethodBeat.o(36634);
         return;
@@ -410,36 +410,36 @@ public final class b
         break;
       }
       label1314:
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).apG(this.fTa);
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.b)localObject).aqL(this.fVg);
       if (localObject == null)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePosition] lastSeqBlock == null！mTalker:%s", new Object[] { this.fTa });
+        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePosition] lastSeqBlock == null！mTalker:%s", new Object[] { this.fVg });
         d(paramb);
         AppMethodBeat.o(36634);
         return;
       }
-      l1 = ((com.tencent.mm.k.a.a.c)localObject).fVm;
-      l2 = ((com.tencent.mm.k.a.a.c)localObject).fVo;
-      final long l3 = ((com.tencent.mm.k.a.a.c)localObject).fVn;
-      final long l4 = ((com.tencent.mm.k.a.a.c)localObject).fVp;
-      com.tencent.mm.at.b.aHW().a(this.fTa, l1, l3, 0, new b.b()
+      l1 = ((com.tencent.mm.k.a.a.c)localObject).fXs;
+      l2 = ((com.tencent.mm.k.a.a.c)localObject).fXu;
+      final long l3 = ((com.tencent.mm.k.a.a.c)localObject).fXt;
+      final long l4 = ((com.tencent.mm.k.a.a.c)localObject).fXv;
+      com.tencent.mm.as.b.aIn().a(this.fVg, l1, l3, 0, new b.b()
       {
-        public final void b(int paramAnonymousInt, List<bu> paramAnonymousList)
+        public final void b(int paramAnonymousInt, List<bv> paramAnonymousList)
         {
           AppMethodBeat.i(36627);
           if ((paramAnonymousInt >= 0) && (paramAnonymousList.size() > 0))
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePosition] talker:" + b.this.fTa + " fromCreateTime:" + l2 + " toCreateTime:" + paramb + " addSize:" + paramAnonymousList.size());
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[handlePosition] talker:" + b.this.fVg + " fromCreateTime:" + l2 + " toCreateTime:" + paramb + " addSize:" + paramAnonymousList.size());
             long l = paramb;
             if (paramAnonymousList.size() <= 18) {
-              l = b.this.Em(((bu)paramAnonymousList.get(paramAnonymousList.size() - 1)).field_createTime);
+              l = b.this.EO(((bv)paramAnonymousList.get(paramAnonymousList.size() - 1)).field_createTime);
             }
-            b.this.Tc = ((l)g.ab(l.class)).dlK().d(b.this.fTa, l2, l, 36);
-            this.JUZ.next();
+            b.this.Tc = ((l)g.ab(l.class)).doJ().d(b.this.fVg, l2, l, 36);
+            this.Krr.next();
             AppMethodBeat.o(36627);
             return;
           }
-          b.this.d(this.JUZ);
+          b.this.d(this.Krr);
           AppMethodBeat.o(36627);
         }
       });
@@ -458,50 +458,50 @@ public final class b
   final void d(d.b paramb)
   {
     AppMethodBeat.i(36646);
-    com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ChattingLoader.ChattingGetDataSource", "[fallback]");
+    com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.ChattingLoader.ChattingGetDataSource", "[fallback]");
     c(paramb);
     AppMethodBeat.o(36646);
   }
   
-  final long fGZ()
+  final long fLr()
   {
     AppMethodBeat.i(36640);
-    com.tencent.mm.k.a.a.c localc = ((l)g.ab(l.class)).dlF().apG(this.fTa);
+    com.tencent.mm.k.a.a.c localc = ((l)g.ab(l.class)).doE().aqL(this.fVg);
     if (localc != null)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findLastBlockLastSeq] has block! so return just lastBlock of lastCreateTime! lastCreateTime:" + localc.fVp + " seq:" + localc.fVm + "~" + localc.fVn);
-      l = localc.fVp;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.ChattingLoader.ChattingGetDataSource", "[findLastBlockLastSeq] has block! so return just lastBlock of lastCreateTime! lastCreateTime:" + localc.fXv + " seq:" + localc.fXs + "~" + localc.fXt);
+      l = localc.fXv;
       AppMethodBeat.o(36640);
       return l;
     }
-    long l = this.JWC;
+    long l = this.KsT;
     AppMethodBeat.o(36640);
     return l;
   }
   
-  final long fHc()
+  final long fLu()
   {
     AppMethodBeat.i(36644);
-    long l = ((l)g.ab(l.class)).dlK().aqq(this.fTa);
+    long l = ((l)g.ab(l.class)).doJ().arv(this.fVg);
     AppMethodBeat.o(36644);
     return l;
   }
   
-  public final int fpw()
+  public final int ftv()
   {
     AppMethodBeat.i(36637);
-    ba.aBQ();
-    int i = com.tencent.mm.model.c.azs().aqm(this.fTa);
+    bc.aCg();
+    int i = com.tencent.mm.model.c.azI().arr(this.fVg);
     AppMethodBeat.o(36637);
     return i;
   }
   
-  public final void in(List<bu> paramList)
+  public final void ix(List<bv> paramList)
   {
     AppMethodBeat.i(36638);
     if (this.Tc == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ChattingLoader.ChattingGetDataSource", "[fillItem] cursor is null");
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.ChattingLoader.ChattingGetDataSource", "[fillItem] cursor is null");
       AppMethodBeat.o(36638);
       return;
     }
@@ -510,16 +510,16 @@ public final class b
     {
       while (!this.Tc.isAfterLast())
       {
-        bu localbu = new bu();
-        localbu.convertFrom(this.Tc);
-        paramList.add(localbu);
+        bv localbv = new bv();
+        localbv.convertFrom(this.Tc);
+        paramList.add(localbv);
         this.Tc.moveToNext();
       }
       AppMethodBeat.o(36638);
     }
     catch (IllegalStateException paramList)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.ChattingLoader.ChattingGetDataSource", paramList, "", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.ChattingLoader.ChattingGetDataSource", paramList, "", new Object[0]);
       AppMethodBeat.o(36638);
       return;
     }

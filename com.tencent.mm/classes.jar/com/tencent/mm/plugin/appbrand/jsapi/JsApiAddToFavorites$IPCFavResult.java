@@ -13,18 +13,18 @@ final class JsApiAddToFavorites$IPCFavResult
   
   static
   {
-    AppMethodBeat.i(188256);
+    AppMethodBeat.i(222382);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(188256);
+    AppMethodBeat.o(222382);
   }
   
   protected JsApiAddToFavorites$IPCFavResult() {}
   
   protected JsApiAddToFavorites$IPCFavResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(188253);
+    AppMethodBeat.i(222379);
     j(paramParcel);
-    AppMethodBeat.o(188253);
+    AppMethodBeat.o(222379);
   }
   
   public final int describeContents()
@@ -34,16 +34,16 @@ final class JsApiAddToFavorites$IPCFavResult
   
   public final void j(Parcel paramParcel)
   {
-    AppMethodBeat.i(188254);
+    AppMethodBeat.i(222380);
     this.ret = paramParcel.readInt();
-    AppMethodBeat.o(188254);
+    AppMethodBeat.o(222380);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(188255);
+    AppMethodBeat.i(222381);
     paramParcel.writeInt(this.ret);
-    AppMethodBeat.o(188255);
+    AppMethodBeat.o(222381);
   }
 }
 

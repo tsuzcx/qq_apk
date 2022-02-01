@@ -5,75 +5,76 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class beo
-  extends cvp
+  extends cwj
 {
-  public dmy GAG;
-  public String GAH;
-  public boolean GAI;
+  public String MD5;
+  public int nID;
+  public LinkedList<bwx> uuU;
+  
+  public beo()
+  {
+    AppMethodBeat.i(155410);
+    this.uuU = new LinkedList();
+    AppMethodBeat.o(155410);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(176146);
+    AppMethodBeat.i(155411);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseResponse == null)
       {
         paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(176146);
+        AppMethodBeat.o(155411);
         throw paramVarArgs;
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.lC(1, this.BaseResponse.computeSize());
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.GAG != null)
-      {
-        paramVarArgs.lC(2, this.GAG.computeSize());
-        this.GAG.writeFields(paramVarArgs);
+      paramVarArgs.aS(2, this.nID);
+      paramVarArgs.e(3, 8, this.uuU);
+      if (this.MD5 != null) {
+        paramVarArgs.d(4, this.MD5);
       }
-      if (this.GAH != null) {
-        paramVarArgs.d(3, this.GAH);
-      }
-      paramVarArgs.bt(4, this.GAI);
-      AppMethodBeat.o(176146);
+      AppMethodBeat.o(155411);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseResponse == null) {
-        break label614;
+        break label602;
       }
     }
-    label614:
-    for (int i = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    label602:
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.nID) + f.a.a.a.c(3, 8, this.uuU);
       paramInt = i;
-      if (this.GAG != null) {
-        paramInt = i + f.a.a.a.lB(2, this.GAG.computeSize());
+      if (this.MD5 != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.MD5);
       }
-      i = paramInt;
-      if (this.GAH != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GAH);
-      }
-      paramInt = f.a.a.b.b.a.alV(4);
-      AppMethodBeat.o(176146);
-      return i + paramInt;
+      AppMethodBeat.o(155411);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.uuU.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.BaseResponse == null)
         {
           paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(176146);
+          AppMethodBeat.o(155411);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(176146);
+        AppMethodBeat.o(155411);
         return 0;
       }
       if (paramInt == 3)
@@ -86,10 +87,10 @@ public final class beo
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(176146);
+          AppMethodBeat.o(155411);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -97,37 +98,37 @@ public final class beo
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localbeo.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(176146);
+          AppMethodBeat.o(155411);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          localbeo.nID = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(155411);
+          return 0;
+        case 3: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dmy();
+            localObject1 = new bwx();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dmy)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbeo.GAG = ((dmy)localObject1);
+            for (bool = true; bool; bool = ((bwx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbeo.uuU.add(localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(176146);
-          return 0;
-        case 3: 
-          localbeo.GAH = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(176146);
+          AppMethodBeat.o(155411);
           return 0;
         }
-        localbeo.GAI = ((f.a.a.a.a)localObject1).NPN.grw();
-        AppMethodBeat.o(176146);
+        localbeo.MD5 = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(155411);
         return 0;
       }
-      AppMethodBeat.o(176146);
+      AppMethodBeat.o(155411);
       return -1;
     }
   }

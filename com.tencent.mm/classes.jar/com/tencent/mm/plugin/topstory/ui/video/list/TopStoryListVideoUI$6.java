@@ -12,7 +12,7 @@ final class TopStoryListVideoUI$6
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(126507);
-    this.Byf.finish();
+    this.BPD.finish();
     AppMethodBeat.o(126507);
   }
 }

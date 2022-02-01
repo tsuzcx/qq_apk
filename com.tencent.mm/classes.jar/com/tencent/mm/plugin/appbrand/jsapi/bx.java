@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class bx
   extends a<h>
@@ -15,7 +15,7 @@ public class bx
   private void a(h paramh, int paramInt, String paramString)
   {
     AppMethodBeat.i(45617);
-    ad.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
+    ae.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
     if (paramh != null) {
       paramh.h(paramInt, e(paramString, null));
     }
@@ -24,16 +24,16 @@ public class bx
   
   protected void a(Context paramContext, Intent paramIntent, h paramh, int paramInt)
   {
-    AppMethodBeat.i(188273);
+    AppMethodBeat.i(222399);
     if (paramContext != null)
     {
       d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
       a(paramh, paramInt, "ok");
-      AppMethodBeat.o(188273);
+      AppMethodBeat.o(222399);
       return;
     }
     a(paramh, paramInt, "fail");
-    AppMethodBeat.o(188273);
+    AppMethodBeat.o(222399);
   }
 }
 

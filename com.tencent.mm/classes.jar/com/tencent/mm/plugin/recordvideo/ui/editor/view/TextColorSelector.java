@@ -11,28 +11,28 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
 import d.g.b.p;
-import d.k.a;
-import d.k.d;
-import d.k.h;
+import d.k.c;
+import d.k.f;
+import d.k.j;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/TextColorSelector;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "colorArray", "", "colorSelectedCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "index", "", "getColorSelectedCallback", "()Lkotlin/jvm/functions/Function1;", "setColorSelectedCallback", "(Lkotlin/jvm/functions/Function1;)V", "dotInterval", "", "outerColor", "paint", "Landroid/graphics/Paint;", "radiusNormalInner", "getRadiusNormalInner", "()F", "setRadiusNormalInner", "(F)V", "radiusNormalOuter", "getRadiusNormalOuter", "setRadiusNormalOuter", "radiusSelectInner", "getRadiusSelectInner", "setRadiusSelectInner", "radiusSelectOuter", "getRadiusSelectOuter", "setRadiusSelectOuter", "selectedIndex", "touchDownIndex", "getNearestIndex", "x", "y", "getSelected", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "setColorList", "setSelected", "select", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/TextColorSelector;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "colorArray", "", "colorSelectedCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "index", "", "getColorSelectedCallback", "()Lkotlin/jvm/functions/Function1;", "setColorSelectedCallback", "(Lkotlin/jvm/functions/Function1;)V", "dotInterval", "", "outerColor", "paint", "Landroid/graphics/Paint;", "radiusNormalInner", "getRadiusNormalInner", "()F", "setRadiusNormalInner", "(F)V", "radiusNormalOuter", "getRadiusNormalOuter", "setRadiusNormalOuter", "radiusSelectInner", "getRadiusSelectInner", "setRadiusSelectInner", "radiusSelectOuter", "getRadiusSelectOuter", "setRadiusSelectOuter", "selectedIndex", "touchDownIndex", "getNearestIndex", "x", "y", "getSelected", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "setColorList", "setSelected", "select", "plugin-recordvideo_release"})
 public final class TextColorSelector
   extends View
 {
   private final String TAG;
   private int bxN;
   private Paint paint;
-  private final int xQW;
-  private float xQX;
-  private int[] xQY;
-  private int xQZ;
-  private float xRa;
-  private float xRb;
-  private float xRc;
-  private float xRd;
-  private b<? super Integer, z> xRe;
+  private final int ygP;
+  private float ygQ;
+  private int[] ygR;
+  private int ygS;
+  private float ygT;
+  private float ygU;
+  private float ygV;
+  private float ygW;
+  private b<? super Integer, z> ygX;
   
   public TextColorSelector(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,60 +42,60 @@ public final class TextColorSelector
   public TextColorSelector(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200872);
+    AppMethodBeat.i(207130);
     this.TAG = "TextColorSelector";
-    this.xQW = -1;
+    this.ygP = -1;
     this.paint = new Paint(1);
-    this.xQY = new int[0];
-    this.xQZ = -1;
+    this.ygR = new int[0];
+    this.ygS = -1;
     this.bxN = -1;
-    this.xRa = getResources().getDimension(2131166174);
-    this.xRb = getResources().getDimension(2131166175);
-    this.xRc = getResources().getDimension(2131166176);
-    this.xRd = getResources().getDimension(2131166177);
+    this.ygT = getResources().getDimension(2131166174);
+    this.ygU = getResources().getDimension(2131166175);
+    this.ygV = getResources().getDimension(2131166176);
+    this.ygW = getResources().getDimension(2131166177);
     this.paint.setStyle(Paint.Style.FILL);
-    AppMethodBeat.o(200872);
+    AppMethodBeat.o(207130);
   }
   
   private final int ac(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(200871);
-    if (h.a((a)new d(0, getMeasuredHeight()), paramFloat2))
+    AppMethodBeat.i(207129);
+    if (j.a((c)new f(0, getMeasuredHeight()), paramFloat2))
     {
-      int i = Math.round((paramFloat1 - getPaddingLeft() - this.xRb) / this.xQX);
-      if ((i >= 0) && (i < this.xQY.length))
+      int i = Math.round((paramFloat1 - getPaddingLeft() - this.ygU) / this.ygQ);
+      if ((i >= 0) && (i < this.ygR.length))
       {
-        AppMethodBeat.o(200871);
+        AppMethodBeat.o(207129);
         return i;
       }
     }
-    AppMethodBeat.o(200871);
+    AppMethodBeat.o(207129);
     return -1;
   }
   
   public final b<Integer, z> getColorSelectedCallback()
   {
-    return this.xRe;
+    return this.ygX;
   }
   
   public final float getRadiusNormalInner()
   {
-    return this.xRa;
+    return this.ygT;
   }
   
   public final float getRadiusNormalOuter()
   {
-    return this.xRb;
+    return this.ygU;
   }
   
   public final float getRadiusSelectInner()
   {
-    return this.xRc;
+    return this.ygV;
   }
   
   public final float getRadiusSelectOuter()
   {
-    return this.xRd;
+    return this.ygW;
   }
   
   public final int getSelected()
@@ -105,100 +105,100 @@ public final class TextColorSelector
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(200869);
+    AppMethodBeat.i(207127);
     p.h(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    this.xQX = ((getWidth() - getPaddingLeft() - getPaddingRight() - this.xRb * 2.0F) / (this.xQY.length - 1));
+    this.ygQ = ((getWidth() - getPaddingLeft() - getPaddingRight() - this.ygU * 2.0F) / (this.ygR.length - 1));
     float f1 = getHeight() / 2.0F;
     int i = 0;
-    int j = this.xQY.length;
+    int j = this.ygR.length;
     if (i < j)
     {
-      float f2 = this.xQX * i + this.xRb + getPaddingLeft();
-      this.paint.setColor(this.xQW);
+      float f2 = this.ygQ * i + this.ygU + getPaddingLeft();
+      this.paint.setColor(this.ygP);
       if (i == this.bxN)
       {
-        paramCanvas.drawCircle(f2, f1, this.xRd, this.paint);
+        paramCanvas.drawCircle(f2, f1, this.ygW, this.paint);
         label130:
-        this.paint.setColor(this.xQY[i]);
+        this.paint.setColor(this.ygR[i]);
         if (i != this.bxN) {
           break label193;
         }
-        paramCanvas.drawCircle(f2, f1, this.xRc, this.paint);
+        paramCanvas.drawCircle(f2, f1, this.ygV, this.paint);
       }
       for (;;)
       {
         i += 1;
         break;
-        paramCanvas.drawCircle(f2, f1, this.xRb, this.paint);
+        paramCanvas.drawCircle(f2, f1, this.ygU, this.paint);
         break label130;
         label193:
-        paramCanvas.drawCircle(f2, f1, this.xRa, this.paint);
+        paramCanvas.drawCircle(f2, f1, this.ygT, this.paint);
       }
     }
-    AppMethodBeat.o(200869);
+    AppMethodBeat.o(207127);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200870);
+    AppMethodBeat.i(207128);
     p.h(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(200870);
+      AppMethodBeat.o(207128);
       return true;
-      this.xQZ = ac(paramMotionEvent.getX(), paramMotionEvent.getY());
+      this.ygS = ac(paramMotionEvent.getX(), paramMotionEvent.getY());
       continue;
-      this.xQZ = -1;
+      this.ygS = -1;
       continue;
       int i = ac(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if ((i >= 0) && (i == this.xQZ))
+      if ((i >= 0) && (i == this.ygS))
       {
         this.bxN = i;
-        paramMotionEvent = this.xRe;
+        paramMotionEvent = this.ygX;
         if (paramMotionEvent != null) {
           paramMotionEvent.invoke(Integer.valueOf(this.bxN));
         }
       }
-      this.xQZ = -1;
+      this.ygS = -1;
       postInvalidate();
     }
   }
   
   public final void setColorList(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200868);
+    AppMethodBeat.i(207126);
     p.h(paramArrayOfInt, "colorArray");
-    this.xQY = paramArrayOfInt;
-    AppMethodBeat.o(200868);
+    this.ygR = paramArrayOfInt;
+    AppMethodBeat.o(207126);
   }
   
   public final void setColorSelectedCallback(b<? super Integer, z> paramb)
   {
-    this.xRe = paramb;
+    this.ygX = paramb;
   }
   
   public final void setRadiusNormalInner(float paramFloat)
   {
-    this.xRa = paramFloat;
+    this.ygT = paramFloat;
   }
   
   public final void setRadiusNormalOuter(float paramFloat)
   {
-    this.xRb = paramFloat;
+    this.ygU = paramFloat;
   }
   
   public final void setRadiusSelectInner(float paramFloat)
   {
-    this.xRc = paramFloat;
+    this.ygV = paramFloat;
   }
   
   public final void setRadiusSelectOuter(float paramFloat)
   {
-    this.xRd = paramFloat;
+    this.ygW = paramFloat;
   }
   
   public final void setSelected(int paramInt)
@@ -208,7 +208,7 @@ public final class TextColorSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.view.TextColorSelector
  * JD-Core Version:    0.7.0.1
  */

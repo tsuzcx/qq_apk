@@ -16,15 +16,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper;", "", "()V", "getSubscribeMsgInfoByNetScene", "", "userName", "", "receiver", "Lkotlin/Function1;", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "syncSetting2Server", "data", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper;", "", "()V", "getSubscribeMsgInfoByNetScene", "", "userName", "", "receiver", "Lkotlin/Function1;", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "syncSetting2Server", "data", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
 public final class c
 {
-  public static final c iEf;
+  public static final c iGY;
   
   static
   {
     AppMethodBeat.i(149823);
-    iEf = new c();
+    iGY = new c();
     AppMethodBeat.o(149823);
   }
   
@@ -34,28 +34,28 @@ public final class c
     p.h(paramString, "userName");
     p.h(paramSubscribeMsgSettingData, "data");
     p.h(paramb, "receiver");
-    Object localObject = b.a.iAW;
+    Object localObject = b.a.iDP;
     List localList = (List)new ArrayList();
-    Iterator localIterator1 = ((Iterable)paramSubscribeMsgSettingData.hJj).iterator();
+    Iterator localIterator1 = ((Iterable)paramSubscribeMsgSettingData.hMc).iterator();
     label137:
     label187:
     label190:
     while (localIterator1.hasNext())
     {
       SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)localIterator1.next();
-      Iterator localIterator2 = ((Iterable)paramSubscribeMsgSettingData.iAZ.iAc).iterator();
+      Iterator localIterator2 = ((Iterable)paramSubscribeMsgSettingData.iDS.iCV).iterator();
       for (;;)
       {
         if (localIterator2.hasNext())
         {
           localObject = localIterator2.next();
-          if (TextUtils.equals((CharSequence)((SubscribeMsgTmpItem)localObject).hAT, (CharSequence)localSubscribeMsgTmpItem.hAT))
+          if (TextUtils.equals((CharSequence)((SubscribeMsgTmpItem)localObject).hDH, (CharSequence)localSubscribeMsgTmpItem.hDH))
           {
             localObject = (SubscribeMsgTmpItem)localObject;
             if (localObject == null) {
               break;
             }
-            if (((SubscribeMsgTmpItem)localObject).iAs == localSubscribeMsgTmpItem.iAs) {
+            if (((SubscribeMsgTmpItem)localObject).iDl == localSubscribeMsgTmpItem.iDl) {
               break label187;
             }
           }
@@ -72,7 +72,7 @@ public final class c
         break label137;
       }
     }
-    b.a.a.a(paramString, localList, (b.c)new b(paramb, paramString), paramSubscribeMsgSettingData.hSy).a((a.a)com.tencent.mm.msgsubscription.a.a.iAL);
+    b.a.a.a(paramString, localList, (b.c)new b(paramb, paramString), paramSubscribeMsgSettingData.hVq).a((a.a)com.tencent.mm.msgsubscription.a.a.iDE);
     AppMethodBeat.o(149822);
   }
   
@@ -81,12 +81,12 @@ public final class c
     AppMethodBeat.i(149821);
     p.h(paramString, "userName");
     p.h(paramb, "receiver");
-    b.a.a locala = b.a.iAW;
-    b.a.a.a(paramString, (b.c)new a(paramString, paramb)).a((a.a)com.tencent.mm.msgsubscription.a.a.iAL);
+    b.a.a locala = b.a.iDP;
+    b.a.a.a(paramString, (b.c)new a(paramString, paramb)).a((a.a)com.tencent.mm.msgsubscription.a.a.iDE);
     AppMethodBeat.o(149821);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$getSubscribeMsgInfoByNetScene$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$getSubscribeMsgInfoByNetScene$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
   public static final class a
     implements b.c
   {
@@ -100,10 +100,10 @@ public final class c
       {
         if (paramSubscribeMsgRequestResult != null)
         {
-          paramString = f.iBR;
-          paramString = f.Ig("name_wxa");
+          paramString = f.iEK;
+          paramString = f.II("name_wxa");
           if (paramString != null) {
-            paramString.a(this.iEg, (List)paramSubscribeMsgRequestResult.iAc, paramSubscribeMsgRequestResult.iAf, true, false);
+            paramString.a(this.iGZ, (List)paramSubscribeMsgRequestResult.iCV, paramSubscribeMsgRequestResult.iCY, true, false);
           }
           paramb.invoke(new SubscribeMsgSettingData(paramSubscribeMsgRequestResult, (byte)0));
           AppMethodBeat.o(149819);
@@ -118,7 +118,7 @@ public final class c
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$syncSetting2Server$netSceneSubscribeMsg$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/util/WxaSubscribeMsgSettingDataHelper$syncSetting2Server$netSceneSubscribeMsg$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
   public static final class b
     implements b.c
   {
@@ -130,16 +130,16 @@ public final class c
       p.h(paramString, "errMsg");
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        this.iEh.invoke(null);
+        this.iHa.invoke(null);
         AppMethodBeat.o(149820);
         return;
       }
-      paramString = f.iBR;
-      paramString = f.Ig("name_wxa");
+      paramString = f.iEK;
+      paramString = f.II("name_wxa");
       if ((paramString != null) && (paramSubscribeMsgRequestResult != null)) {
-        paramString.a(paramString, (List)paramSubscribeMsgRequestResult.iAc, paramSubscribeMsgRequestResult.iAf, true, false);
+        paramString.a(paramString, (List)paramSubscribeMsgRequestResult.iCV, paramSubscribeMsgRequestResult.iCY, true, false);
       }
-      this.iEh.invoke(paramSubscribeMsgRequestResult);
+      this.iHa.invoke(paramSubscribeMsgRequestResult);
       AppMethodBeat.o(149820);
     }
   }

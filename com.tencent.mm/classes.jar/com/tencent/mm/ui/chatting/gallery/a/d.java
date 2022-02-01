@@ -1,15 +1,11 @@
 package com.tencent.mm.ui.chatting.gallery.a;
 
-import com.tencent.mm.g.a.qd;
-import com.tencent.mm.g.a.qe;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeCallback;", "", "onScanFailed", "", "event", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileFailedEvent;", "onScanSuccess", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/IImageScanCodeHandler;", "", "handleCode", "", "codeResult", "Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeResult;", "app_release"})
 public abstract interface d
 {
-  public abstract void b(qd paramqd);
-  
-  public abstract void b(qe paramqe);
+  public abstract void a(n paramn);
 }
 
 

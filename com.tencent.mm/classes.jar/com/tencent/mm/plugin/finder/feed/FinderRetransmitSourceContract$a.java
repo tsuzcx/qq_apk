@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.ui.MMActivity;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "loadMoreData", "", "requestRefresh", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "loadMoreData", "", "requestRefresh", "plugin-finder_release"})
 public final class FinderRetransmitSourceContract$a
   extends u.a
 {
@@ -16,10 +16,10 @@ public final class FinderRetransmitSourceContract$a
     AppMethodBeat.o(165848);
   }
   
-  public final void aTt()
+  public final void aTS()
   {
     AppMethodBeat.i(165847);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.scw;
     if (localBaseFinderFeedLoader != null)
     {
       localBaseFinderFeedLoader.requestLoadMore();
@@ -32,7 +32,7 @@ public final class FinderRetransmitSourceContract$a
   public final void requestRefresh()
   {
     AppMethodBeat.i(165846);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.scw;
     if (localBaseFinderFeedLoader != null)
     {
       localBaseFinderFeedLoader.requestRefresh();
@@ -44,7 +44,7 @@ public final class FinderRetransmitSourceContract$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.FinderRetransmitSourceContract.a
  * JD-Core Version:    0.7.0.1
  */

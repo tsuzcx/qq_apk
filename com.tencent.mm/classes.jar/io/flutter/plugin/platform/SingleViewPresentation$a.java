@@ -10,33 +10,33 @@ import io.flutter.view.AccessibilityViewEmbedder;
 final class SingleViewPresentation$a
   extends FrameLayout
 {
-  private final View MGP;
+  private final View NdT;
   private final a accessibilityEventsDelegate;
   
   public SingleViewPresentation$a(Context paramContext, a parama, View paramView)
   {
     super(paramContext);
     this.accessibilityEventsDelegate = parama;
-    this.MGP = paramView;
+    this.NdT = paramView;
   }
   
   public final boolean requestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
     AppMethodBeat.i(9888);
     Object localObject = this.accessibilityEventsDelegate;
-    View localView = this.MGP;
-    if (((a)localObject).MBQ == null)
+    View localView = this.NdT;
+    if (((a)localObject).MYV == null)
     {
       AppMethodBeat.o(9888);
       return false;
     }
-    localObject = ((a)localObject).MBQ;
-    if (!((io.flutter.view.a)localObject).MHf.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
+    localObject = ((a)localObject).MYV;
+    if (!((io.flutter.view.a)localObject).Nej.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
     {
       AppMethodBeat.o(9888);
       return false;
     }
-    paramView = ((io.flutter.view.a)localObject).MHf.getRecordFlutterId(localView, paramAccessibilityEvent);
+    paramView = ((io.flutter.view.a)localObject).Nej.getRecordFlutterId(localView, paramAccessibilityEvent);
     if (paramView == null)
     {
       AppMethodBeat.o(9888);
@@ -49,16 +49,16 @@ final class SingleViewPresentation$a
     {
       AppMethodBeat.o(9888);
       return true;
-      ((io.flutter.view.a)localObject).MHp = null;
+      ((io.flutter.view.a)localObject).Net = null;
       continue;
-      ((io.flutter.view.a)localObject).MHk = paramView;
-      ((io.flutter.view.a)localObject).MHj = null;
+      ((io.flutter.view.a)localObject).Neo = paramView;
+      ((io.flutter.view.a)localObject).Nen = null;
       continue;
-      ((io.flutter.view.a)localObject).MHl = null;
-      ((io.flutter.view.a)localObject).MHk = null;
+      ((io.flutter.view.a)localObject).Nep = null;
+      ((io.flutter.view.a)localObject).Neo = null;
       continue;
-      ((io.flutter.view.a)localObject).MHl = paramView;
-      ((io.flutter.view.a)localObject).MHn = null;
+      ((io.flutter.view.a)localObject).Nep = paramView;
+      ((io.flutter.view.a)localObject).Ner = null;
     }
   }
 }

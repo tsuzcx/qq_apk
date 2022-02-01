@@ -4,11 +4,11 @@ import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.ui.chatting.d.ad;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "attachFooter", "", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "detachFooter", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "attachFooter", "", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "detachFooter", "app_release"})
 public abstract interface r
   extends ad
 {
-  public abstract void bA(ChatFooter paramChatFooter);
+  public abstract void bC(ChatFooter paramChatFooter);
 }
 
 

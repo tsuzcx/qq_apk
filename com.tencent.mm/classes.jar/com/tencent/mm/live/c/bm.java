@@ -2,7 +2,7 @@ package com.tencent.mm.live.c;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/ShareRoomsLoader;", "", "()V", "load", "", "UIcallback", "Lkotlin/Function1;", "", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/ShareRoomsLoader;", "", "()V", "load", "", "UIcallback", "Lkotlin/Function1;", "", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "plugin-logic_release"})
 public final class bm {}
 
 

@@ -14,17 +14,17 @@ public class IPCSmcLogic
       localArrayList.add(new IDKey(paramArrayOfInt1[i], paramArrayOfInt2[i], paramArrayOfInt3[i]));
       i += 1;
     }
-    e.ygI.b(localArrayList, paramBoolean);
+    e.ywz.b(localArrayList, paramBoolean);
   }
   
   private static void reportIDKey(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    e.ygI.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
+    e.ywz.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
   }
   
   private static void reportKV(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    e.ygI.a((int)paramLong, paramString, paramBoolean2, paramBoolean1);
+    e.ywz.a((int)paramLong, paramString, paramBoolean2, paramBoolean1);
   }
 }
 

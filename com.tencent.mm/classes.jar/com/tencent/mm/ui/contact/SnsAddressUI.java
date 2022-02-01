@@ -11,10 +11,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ak;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.al;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
@@ -26,18 +26,18 @@ import java.util.List;
 public class SnsAddressUI
   extends MMBaseSelectContactUI
 {
-  private List<String> fSL;
-  private HashSet<String> iVx;
+  private List<String> fUR;
+  private HashSet<String> iYq;
   
-  private void Zm()
+  private void Zv()
   {
     AppMethodBeat.i(38056);
     String str;
-    if (this.iVx.size() == 0)
+    if (this.iYq.size() == 0)
     {
       str = String.format("%s", new Object[] { getString(2131755835) });
       updateOptionMenuText(1, str);
-      if (this.iVx.size() < 0) {
+      if (this.iYq.size() < 0) {
         break label108;
       }
     }
@@ -47,7 +47,7 @@ public class SnsAddressUI
       enableOptionMenu(1, bool);
       AppMethodBeat.o(38056);
       return;
-      str = String.format("%s(%d/%d)", new Object[] { getString(2131755835), Integer.valueOf(this.iVx.size()), Integer.valueOf(ak.IpM) });
+      str = String.format("%s(%d/%d)", new Object[] { getString(2131755835), Integer.valueOf(this.iYq.size()), Integer.valueOf(al.IKg) });
       break;
     }
   }
@@ -57,27 +57,27 @@ public class SnsAddressUI
     AppMethodBeat.i(38060);
     if (paramInt == 1)
     {
-      this.iVx.remove(paramString);
-      fId().notifyDataSetChanged();
-      Zm();
+      this.iYq.remove(paramString);
+      fMv().notifyDataSetChanged();
+      Zv();
     }
     AppMethodBeat.o(38060);
   }
   
-  protected final void Zd()
+  protected final void Zm()
   {
     AppMethodBeat.i(38050);
-    super.Zd();
-    this.fSL = new ArrayList();
-    Object localObject = bt.U(bt.bI(getIntent().getStringExtra("Block_list"), "").split(","));
-    HashSet localHashSet = u.fIp();
+    super.Zm();
+    this.fUR = new ArrayList();
+    Object localObject = bu.U(bu.bI(getIntent().getStringExtra("Block_list"), "").split(","));
+    HashSet localHashSet = u.fMH();
     localHashSet.addAll((Collection)localObject);
-    this.fSL.addAll(localHashSet);
-    this.fSL.addAll(u.fIq());
-    this.iVx = new HashSet();
-    localObject = bt.bI(getIntent().getStringExtra("Select_Contact"), "");
-    if (!bt.isNullOrNil((String)localObject)) {
-      this.iVx.addAll(bt.U(((String)localObject).split(",")));
+    this.fUR.addAll(localHashSet);
+    this.fUR.addAll(u.fMI());
+    this.iYq = new HashSet();
+    localObject = bu.bI(getIntent().getStringExtra("Select_Contact"), "");
+    if (!bu.isNullOrNil((String)localObject)) {
+      this.iYq.addAll(bu.U(((String)localObject).split(",")));
     }
     AppMethodBeat.o(38050);
   }
@@ -85,9 +85,9 @@ public class SnsAddressUI
   public final boolean a(a parama)
   {
     AppMethodBeat.i(38059);
-    if ((parama.KmP) && (parama.contact != null))
+    if ((parama.KJj) && (parama.contact != null))
     {
-      boolean bool = this.iVx.contains(parama.contact.field_username);
+      boolean bool = this.iYq.contains(parama.contact.field_username);
       AppMethodBeat.o(38059);
       return bool;
     }
@@ -95,66 +95,66 @@ public class SnsAddressUI
     return false;
   }
   
-  protected final boolean aRu()
+  protected final boolean aRT()
   {
     return false;
   }
   
-  protected final boolean aRv()
+  protected final boolean aRU()
   {
     return true;
   }
   
-  protected final String aRw()
+  protected final String aRV()
   {
     AppMethodBeat.i(38053);
-    String str = bt.bI(getIntent().getStringExtra("Add_address_titile"), "");
+    String str = bu.bI(getIntent().getStringExtra("Add_address_titile"), "");
     AppMethodBeat.o(38053);
     return str;
   }
   
-  protected final q aRx()
+  protected final q aRW()
   {
     AppMethodBeat.i(38054);
     Object localObject = new c.a();
-    ((c.a)localObject).Kkv = true;
-    ((c.a)localObject).KkD = true;
+    ((c.a)localObject).KGP = true;
+    ((c.a)localObject).KGX = true;
     ((c.a)localObject).customHeader = getString(2131755217);
-    ((c.a)localObject).KkE = bt.bI(getIntent().getStringExtra("Add_get_from_sns"), "");
-    ((c.a)localObject).KiP = "@all.contact.without.chatroom.without.openim.without.openimfavour";
-    localObject = new c(this, this.fSL, true, (c.a)localObject, (byte)0);
+    ((c.a)localObject).KGY = bu.bI(getIntent().getStringExtra("Add_get_from_sns"), "");
+    ((c.a)localObject).KFj = "@all.contact.without.chatroom.without.openim.without.openimfavour";
+    localObject = new c(this, this.fUR, true, (c.a)localObject, (byte)0);
     AppMethodBeat.o(38054);
     return localObject;
   }
   
-  protected final o aRy()
+  protected final o aRX()
   {
     AppMethodBeat.i(38055);
-    s locals = new s(this, this.fSL, true, this.scene);
+    s locals = new s(this, this.fUR, true, this.scene);
     AppMethodBeat.o(38055);
     return locals;
   }
   
-  protected final void apt(String paramString)
+  protected final void aqy(String paramString)
   {
     AppMethodBeat.i(38058);
     Intent localIntent = new Intent();
     localIntent.setClassName(this, "com.tencent.mm.ui.contact.SelectLabelContactUI");
     localIntent.putExtra("label", paramString);
     paramString = new HashSet();
-    paramString.addAll(this.iVx);
-    localIntent.putExtra("always_select_contact", bt.m(new ArrayList(paramString), ","));
-    localIntent.putExtra("list_attr", u.I(new int[] { 16384, 64 }));
+    paramString.addAll(this.iYq);
+    localIntent.putExtra("always_select_contact", bu.m(new ArrayList(paramString), ","));
+    localIntent.putExtra("list_attr", u.J(new int[] { 16384, 64 }));
     startActivityForResult(localIntent, 3);
     AppMethodBeat.o(38058);
   }
   
-  public final int[] djJ()
+  public final int[] dmI()
   {
     return new int[] { 131072 };
   }
   
-  protected final boolean dlz()
+  protected final boolean doz()
   {
     return true;
   }
@@ -177,26 +177,26 @@ public class SnsAddressUI
       AppMethodBeat.o(38057);
       return;
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      if (bt.isNullOrNil(paramIntent))
+      if (bu.isNullOrNil(paramIntent))
       {
-        ad.i("MicroMsg.SnsAddressUI", "GET_LABEL_USERS return usernames is null or empty");
+        ae.i("MicroMsg.SnsAddressUI", "GET_LABEL_USERS return usernames is null or empty");
         AppMethodBeat.o(38057);
         return;
       }
-      ad.i("MicroMsg.SnsAddressUI", "GET_LABEL_USERS select username=%s", new Object[] { paramIntent });
+      ae.i("MicroMsg.SnsAddressUI", "GET_LABEL_USERS select username=%s", new Object[] { paramIntent });
       paramIntent = paramIntent.split(",");
       paramInt2 = paramIntent.length;
       paramInt1 = i;
       while (paramInt1 < paramInt2)
       {
         Object localObject = paramIntent[paramInt1];
-        if (this.iVx.add(localObject)) {
-          this.vIo.aMx(localObject);
+        if (this.iYq.add(localObject)) {
+          this.vUs.aNT(localObject);
         }
         paramInt1 += 1;
       }
-      Zm();
-      fId().notifyDataSetChanged();
+      Zv();
+      fMv().notifyDataSetChanged();
     }
   }
   
@@ -204,14 +204,14 @@ public class SnsAddressUI
   {
     AppMethodBeat.i(38051);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.SnsAddressUI", "Create!");
+    ae.i("MicroMsg.SnsAddressUI", "Create!");
     addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(38047);
         paramAnonymousMenuItem = new Intent();
-        ArrayList localArrayList = bt.U((String[])SnsAddressUI.a(SnsAddressUI.this).toArray(new String[0]));
+        ArrayList localArrayList = bu.U((String[])SnsAddressUI.a(SnsAddressUI.this).toArray(new String[0]));
         if ((localArrayList == null) || (localArrayList.size() == 0)) {
           paramAnonymousMenuItem.putExtra("Select_Contact", "");
         }
@@ -219,7 +219,7 @@ public class SnsAddressUI
         {
           SnsAddressUI.this.setResult(-1, paramAnonymousMenuItem);
           SnsAddressUI.this.finish();
-          aq.o(new Runnable()
+          ar.o(new Runnable()
           {
             public final void run()
             {
@@ -233,10 +233,10 @@ public class SnsAddressUI
           SnsAddressUI.this.hideVKB();
           AppMethodBeat.o(38047);
           return true;
-          paramAnonymousMenuItem.putExtra("Select_Contact", bt.m(localArrayList, ","));
+          paramAnonymousMenuItem.putExtra("Select_Contact", bu.m(localArrayList, ","));
         }
       }
-    }, null, s.b.JbS);
+    }, null, s.b.JwA);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -250,13 +250,13 @@ public class SnsAddressUI
         return true;
       }
     });
-    paramBundle = this.iVx.iterator();
+    paramBundle = this.iYq.iterator();
     while (paramBundle.hasNext())
     {
       String str = (String)paramBundle.next();
-      this.vIo.aMx(str);
+      this.vUs.aNT(str);
     }
-    this.vIo.setOnContactDeselectListener(new MultiSelectContactView.c()
+    this.vUs.setOnContactDeselectListener(new MultiSelectContactView.c()
     {
       public final void Q(int paramAnonymousInt, String paramAnonymousString)
       {
@@ -269,7 +269,7 @@ public class SnsAddressUI
         AppMethodBeat.o(38049);
       }
     });
-    Zm();
+    Zv();
     AppMethodBeat.o(38051);
   }
   
@@ -279,11 +279,11 @@ public class SnsAddressUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void rg(int paramInt)
+  public final void rj(int paramInt)
   {
     AppMethodBeat.i(38052);
-    p localp = fId();
-    Object localObject = localp.aen(paramInt - getContentLV().getHeaderViewsCount());
+    p localp = fMv();
+    Object localObject = localp.aeW(paramInt - getContentLV().getHeaderViewsCount());
     if (localObject == null)
     {
       AppMethodBeat.o(38052);
@@ -294,29 +294,29 @@ public class SnsAddressUI
       AppMethodBeat.o(38052);
       return;
     }
-    ad.i("MicroMsg.SnsAddressUI", "ClickUser=%s", new Object[] { ((a)localObject).contact.field_username });
+    ae.i("MicroMsg.SnsAddressUI", "ClickUser=%s", new Object[] { ((a)localObject).contact.field_username });
     localObject = ((a)localObject).contact.field_username;
-    fIk();
-    if (this.iVx.contains(localObject))
+    fMC();
+    if (this.iYq.contains(localObject))
     {
-      this.iVx.remove(localObject);
-      this.vIo.aMx((String)localObject);
+      this.iYq.remove(localObject);
+      this.vUs.aNT((String)localObject);
     }
     for (;;)
     {
-      Zm();
+      Zv();
       localp.notifyDataSetChanged();
       AppMethodBeat.o(38052);
       return;
-      if (this.iVx.size() < ak.IpM)
+      if (this.iYq.size() < al.IKg)
       {
-        this.iVx.add(localObject);
-        this.vIo.aMx((String)localObject);
+        this.iYq.add(localObject);
+        this.vUs.aNT((String)localObject);
       }
       else
       {
         Toast.makeText(this, 2131763910, 0).show();
-        ad.i("MicroMsg.SnsAddressUI", "select user size equal max size:%d", new Object[] { Integer.valueOf(ak.IpM) });
+        ae.i("MicroMsg.SnsAddressUI", "select user size equal max size:%d", new Object[] { Integer.valueOf(al.IKg) });
       }
     }
   }

@@ -5,21 +5,21 @@ import com.tencent.mars.cdn.CdnLogic.BatchSnsReqImageData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.memory.n;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
-import com.tencent.mm.plugin.sns.model.b.c;
-import com.tencent.mm.plugin.sns.model.ba;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.mm.plugin.sns.model.bb;
+import com.tencent.mm.plugin.sns.model.c.c;
+import com.tencent.mm.pluginsdk.model.m;
+import com.tencent.mm.protocal.protobuf.bzh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,28 +33,28 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 
 public abstract class c
-  extends com.tencent.mm.pluginsdk.model.m<String, Integer, Integer>
+  extends m<String, Integer, Integer>
 {
-  private static HashSet<String> zov = new HashSet();
-  protected byn dIQ = null;
+  private static HashSet<String> zFK = new HashSet();
+  protected bzh dKe = null;
   private long dnsCostTime = -1L;
   private String host = "";
-  private int iEz = -1;
-  protected a zoc;
-  protected n zod = null;
-  protected a zoe = null;
-  int zox = 0;
-  protected SparseArray<n> zoy = new SparseArray();
+  private int iHs = -1;
+  int zFM = 0;
+  protected SparseArray<com.tencent.mm.memory.n> zFN = new SparseArray();
+  protected a zFr;
+  protected com.tencent.mm.memory.n zFs = null;
+  protected a zFt = null;
   
   public c(a parama, a parama1)
   {
-    this.zoc = parama;
-    this.zoe = parama1;
+    this.zFr = parama;
+    this.zFt = parama1;
     if (parama1 == null) {
       return;
     }
-    this.dIQ = parama1.zhs;
-    zov.add(parama1.zhr);
+    this.dKe = parama1.zyh;
+    zFK.add(parama1.zyg);
     parama1.init();
   }
   
@@ -64,46 +64,46 @@ public abstract class c
     {
       try
       {
-        this.host = new URL(this.zoe.url).getHost();
+        this.host = new URL(this.zFt.url).getHost();
         ArrayList localArrayList1 = new ArrayList();
-        this.iEz = com.tencent.mm.network.b.a(this.host, false, localArrayList1);
+        this.iHs = com.tencent.mm.network.b.a(this.host, false, localArrayList1);
         ArrayList localArrayList2 = new ArrayList();
         int j = com.tencent.mm.network.b.a(this.host, true, localArrayList2);
         Object localObject;
-        if (9 == this.zoe.znZ)
+        if (9 == this.zFt.zFo)
         {
-          parame.field_mediaId = (this.zoe.dzb + "_" + this.zoe.znZ);
+          parame.field_mediaId = (this.zFt.dAg + "_" + this.zFt.zFo);
           if ((parame instanceof com.tencent.mm.i.f))
           {
             com.tencent.mm.i.f localf = (com.tencent.mm.i.f)parame;
-            localf.dzb = this.zoe.dzb;
-            localf.fJe = this.zoe.size;
-            localf.fJf = this.zoe.zdw.size();
-            localf.fIX = new CdnLogic.BatchSnsReqImageData[localf.fJf];
+            localf.dAg = this.zFt.dAg;
+            localf.fLi = this.zFt.size;
+            localf.fLj = this.zFt.zum.size();
+            localf.fLb = new CdnLogic.BatchSnsReqImageData[localf.fLj];
             int i = 0;
-            if (i < localf.fJf)
+            if (i < localf.fLj)
             {
-              int k = this.zoe.zdw.keyAt(i);
-              byn localbyn = (byn)this.zoe.zdw.get(k);
+              int k = this.zFt.zum.keyAt(i);
+              bzh localbzh = (bzh)this.zFt.zum.get(k);
               CdnLogic.BatchSnsReqImageData localBatchSnsReqImageData = new CdnLogic.BatchSnsReqImageData();
-              String str = localbyn.GSI;
+              String str = localbzh.Hmj;
               localObject = str;
-              if (bt.isNullOrNil(str))
+              if (bu.isNullOrNil(str))
               {
                 localObject = str;
-                if (localbyn.nEf == 2) {
-                  localObject = localbyn.Url;
+                if (localbzh.nJA == 2) {
+                  localObject = localbzh.Url;
                 }
               }
-              localBatchSnsReqImageData.url = b((String)localObject, localbyn);
+              localBatchSnsReqImageData.url = b((String)localObject, localbzh);
               localBatchSnsReqImageData.picIndex = k;
               localBatchSnsReqImageData.totalFileSize = 0;
-              localBatchSnsReqImageData.decryptKey = localbyn.GTc;
+              localBatchSnsReqImageData.decryptKey = localbzh.HmD;
               localObject = new StringBuilder();
-              str = localbyn.Id;
-              localBatchSnsReqImageData.imageCachePath = i.k(ao.jo(ag.getAccSnsPath(), str) + q.m(localbyn), false);
-              localBatchSnsReqImageData.fileKey = (localbyn.Id + "_" + this.zoe.znZ);
-              localf.fIX[i] = localBatchSnsReqImageData;
+              str = localbzh.Id;
+              localBatchSnsReqImageData.imageCachePath = o.k(ap.jv(ah.getAccSnsPath(), str) + r.m(localbzh), false);
+              localBatchSnsReqImageData.fileKey = (localbzh.Id + "_" + this.zFt.zFo);
+              localf.fLb[i] = localBatchSnsReqImageData;
               i += 1;
               continue;
             }
@@ -111,67 +111,67 @@ public abstract class c
         }
         else
         {
-          parame.field_mediaId = (this.zoe.mediaId + "_" + this.zoe.znZ);
-          parame.fIZ = (this.zoe.getPath() + this.zoe.dVg());
-          if (this.zoe.zhs != null)
+          parame.field_mediaId = (this.zFt.mediaId + "_" + this.zFt.zFo);
+          parame.fLd = (this.zFt.getPath() + this.zFt.dYH());
+          if (this.zFt.zyh != null)
           {
-            if (!this.zoe.znX) {
+            if (!this.zFt.zFm) {
               continue;
             }
-            localObject = this.zoe.zhs.GTc;
+            localObject = this.zFt.zyh.HmD;
             parame.snsCipherKey = ((String)localObject);
           }
         }
-        parame.url = this.zoe.url;
+        parame.url = this.zFt.url;
         parame.host = this.host;
         parame.referer = paramString;
-        parame.fJa = dF(localArrayList1);
-        parame.fJb = dF(localArrayList2);
-        parame.fJc = this.iEz;
-        parame.fJd = j;
+        parame.fLe = dI(localArrayList1);
+        parame.fLf = dI(localArrayList2);
+        parame.fLg = this.iHs;
+        parame.fLh = j;
         parame.isColdSnsData = paramBoolean;
-        parame.signalQuality = ay.getStrength(aj.getContext());
-        parame.snsScene = this.zoe.zoa.tag;
-        if (this.zoe.znZ == 8)
+        parame.signalQuality = az.getStrength(ak.getContext());
+        parame.snsScene = this.zFt.zFp.tag;
+        if (this.zFt.zFo == 8)
         {
-          parame.ePC = 3;
+          parame.eRn = 3;
           parame.appType = 109;
           parame.fileType = 20204;
-          ad.i("MicroMsg.SnsCdnDownloadBase", "attachSnsImgTaskInfo reqDownType:%d taskInfo:%s", new Object[] { Integer.valueOf(this.zoe.znZ), parame });
+          ae.i("MicroMsg.SnsCdnDownloadBase", "attachSnsImgTaskInfo reqDownType:%d taskInfo:%s", new Object[] { Integer.valueOf(this.zFt.zFo), parame });
           return true;
-          localObject = this.zoe.zhs.GSZ;
+          localObject = this.zFt.zyh.HmA;
           continue;
         }
-        if ((this.zoe.znZ == 6) || (this.zoe.znZ == 4))
+        if ((this.zFt.zFo == 6) || (this.zFt.zFo == 4))
         {
-          parame.ePC = 3;
+          parame.eRn = 3;
           parame.appType = 105;
           parame.fileType = 20210;
           continue;
         }
-        if (this.zoe.znZ != 5) {
+        if (this.zFt.zFo != 5) {
           break label810;
         }
       }
       catch (MalformedURLException parame)
       {
-        ad.printErrStackTrace("MicroMsg.SnsCdnDownloadBase", parame, "", new Object[0]);
-        ad.w("MicroMsg.SnsCdnDownloadBase", "attachSnsImgTaskInfo fail:".concat(String.valueOf(parame)));
+        ae.printErrStackTrace("MicroMsg.SnsCdnDownloadBase", parame, "", new Object[0]);
+        ae.w("MicroMsg.SnsCdnDownloadBase", "attachSnsImgTaskInfo fail:".concat(String.valueOf(parame)));
         return false;
       }
-      parame.ePC = 3;
+      parame.eRn = 3;
       parame.appType = 150;
       parame.fileType = 20250;
       continue;
       label810:
-      if ((this.zoe.znZ == 2) || (this.zoe.znZ == 1) || (this.zoe.znZ == 3) || (this.zoe.znZ == 9))
+      if ((this.zFt.zFo == 2) || (this.zFt.zFo == 1) || (this.zFt.zFo == 3) || (this.zFt.zFo == 9))
       {
-        parame.ePC = 3;
+        parame.eRn = 3;
         parame.appType = 100;
         parame.fileType = 20201;
-        if ((this.zoe.znZ == 1) && ((this.zoe.url.startsWith("http://wxapp.tc.qq.com")) || (this.zoe.url.startsWith("https://wxapp.tc.qq.com"))) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBk, 1) == 1))
+        if ((this.zFt.zFo == 1) && ((this.zFt.url.startsWith("http://wxapp.tc.qq.com")) || (this.zFt.url.startsWith("https://wxapp.tc.qq.com"))) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qID, 1) == 1))
         {
-          parame.ePC = 3;
+          parame.eRn = 3;
           parame.appType = 150;
           parame.fileType = 20201;
         }
@@ -179,16 +179,16 @@ public abstract class c
     }
   }
   
-  public static boolean azx(String paramString)
+  public static boolean aAO(String paramString)
   {
-    if (zov.contains(q.ca(1, paramString))) {}
-    while (zov.contains(q.ca(5, paramString))) {
+    if (zFK.contains(r.ca(1, paramString))) {}
+    while (zFK.contains(r.ca(5, paramString))) {
       return true;
     }
     return false;
   }
   
-  private static String[] dF(List<String> paramList)
+  private static String[] dI(List<String> paramList)
   {
     String[] arrayOfString = new String[paramList.size()];
     int i = 0;
@@ -200,30 +200,30 @@ public abstract class c
     return arrayOfString;
   }
   
-  public boolean Qi(int paramInt)
+  public boolean QP(int paramInt)
   {
     return false;
   }
   
-  public final void Qj(int paramInt)
+  public final void QQ(int paramInt)
   {
-    if (ag.dTN()) {
+    if (ah.dXn()) {
       return;
     }
-    Object localObject = (com.tencent.mm.plugin.sns.data.m)this.zoe.zcH.get(paramInt);
-    byn localbyn = (byn)this.zoe.zdw.get(paramInt);
-    ad.i("MicroMsg.SnsCdnDownloadBase", "thumbAddDecode index: %d decodeType: %d.", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((com.tencent.mm.plugin.sns.data.m)localObject).zds) });
-    ag.dUb().a(localbyn.Id, (n)this.zoy.get(paramInt), ((com.tencent.mm.plugin.sns.data.m)localObject).zds);
-    if (((com.tencent.mm.plugin.sns.data.m)localObject).zds == 0) {}
-    for (localObject = q.bZ(0, ((com.tencent.mm.plugin.sns.data.m)localObject).dwW);; localObject = null)
+    Object localObject = (com.tencent.mm.plugin.sns.data.n)this.zFt.ztx.get(paramInt);
+    bzh localbzh = (bzh)this.zFt.zum.get(paramInt);
+    ae.i("MicroMsg.SnsCdnDownloadBase", "thumbAddDecode index: %d decodeType: %d.", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((com.tencent.mm.plugin.sns.data.n)localObject).zui) });
+    ah.dXB().a(localbzh.Id, (com.tencent.mm.memory.n)this.zFN.get(paramInt), ((com.tencent.mm.plugin.sns.data.n)localObject).zui);
+    if (((com.tencent.mm.plugin.sns.data.n)localObject).zui == 0) {}
+    for (localObject = r.bZ(0, ((com.tencent.mm.plugin.sns.data.n)localObject).dyb);; localObject = null)
     {
-      ad.i("MicroMsg.SnsCdnDownloadBase", "thumbAddDecode cacheName: %s.", new Object[] { localObject });
-      ag.dUb().ayL((String)localObject);
+      ae.i("MicroMsg.SnsCdnDownloadBase", "thumbAddDecode cacheName: %s.", new Object[] { localObject });
+      ah.dXB().aAc((String)localObject);
       return;
     }
   }
   
-  public boolean a(bj parambj, String paramString1, long paramLong, String paramString2)
+  public boolean a(bk parambk, String paramString1, long paramLong, String paramString2)
   {
     if (paramString1 == null) {}
     for (;;)
@@ -232,28 +232,28 @@ public abstract class c
       try
       {
         paramString1 = new URL(paramString1);
-        if ((parambj != null) && (paramString2 != null) && (paramString2.indexOf(paramString1.getHost()) != -1) && (parambj.hbR != 0))
+        if ((parambk != null) && (paramString2 != null) && (paramString2.indexOf(paramString1.getHost()) != -1) && (parambk.heF != 0))
         {
-          long l = bt.rM(parambj.hbR);
+          long l = bu.rZ(parambk.heF);
           if (l > paramLong) {
             return true;
           }
         }
       }
-      catch (Exception parambj)
+      catch (Exception parambk)
       {
-        ad.e("MicroMsg.SnsCdnDownloadBase", "error for check dcip %s", new Object[] { parambj.getMessage() });
+        ae.e("MicroMsg.SnsCdnDownloadBase", "error for check dcip %s", new Object[] { parambk.getMessage() });
       }
     }
     return false;
   }
   
-  public String azv(String paramString)
+  public String aAM(String paramString)
   {
     return paramString;
   }
   
-  public String b(String paramString, byn parambyn)
+  public String b(String paramString, bzh parambzh)
   {
     return paramString;
   }
@@ -272,17 +272,17 @@ public abstract class c
       return;
     case 1: 
       localObject1 = "100105";
-      localObject2 = com.tencent.mm.model.c.d.aDs().wz((String)localObject1);
+      localObject2 = com.tencent.mm.model.c.d.aDI().xi((String)localObject1);
       if (((com.tencent.mm.storage.c)localObject2).isValid())
       {
-        i = bt.getInt((String)((com.tencent.mm.storage.c)localObject2).foF().get("needUploadData"), 1);
+        i = bu.getInt((String)((com.tencent.mm.storage.c)localObject2).fsy().get("needUploadData"), 1);
         str = ((com.tencent.mm.storage.c)localObject2).field_expId;
       }
       break;
     }
     while (i != 0)
     {
-      if (this.zoe.znZ == 8) {
+      if (this.zFt.zFo == 8) {
         i = 1;
       }
       for (;;)
@@ -292,7 +292,7 @@ public abstract class c
         ((com.tencent.mm.modelsns.g)localObject2).m("20ImgSize", paramd.field_fileLength + ",");
         StringBuilder localStringBuilder = new StringBuilder();
         int j;
-        if (ay.isWifi(aj.getContext()))
+        if (az.isWifi(ak.getContext()))
         {
           j = 1;
           label170:
@@ -306,8 +306,8 @@ public abstract class c
           ((com.tencent.mm.modelsns.g)localObject2).m("28ReceiveCostTime", paramd.field_receiveCostTime + ",");
           ((com.tencent.mm.modelsns.g)localObject2).m("29ClientAddrIP(uint)", paramd.field_clientHostIP + ",");
           ((com.tencent.mm.modelsns.g)localObject2).m("30ServerAddrIP(uint)", paramd.field_serverHostIP + ",");
-          ((com.tencent.mm.modelsns.g)localObject2).m("31dnstype", this.iEz + ",");
-          ((com.tencent.mm.modelsns.g)localObject2).m("32signal(int)", ay.getStrength(aj.getContext()) + ",");
+          ((com.tencent.mm.modelsns.g)localObject2).m("31dnstype", this.iHs + ",");
+          ((com.tencent.mm.modelsns.g)localObject2).m("32signal(int)", az.getStrength(ak.getContext()) + ",");
           ((com.tencent.mm.modelsns.g)localObject2).m("33host(string)", this.host + ",");
           ((com.tencent.mm.modelsns.g)localObject2).m("34MediaType", k + ",");
           ((com.tencent.mm.modelsns.g)localObject2).m("35X_Errno(string)", paramd.field_xErrorNo + ",");
@@ -328,28 +328,28 @@ public abstract class c
         for (i = 1;; i = 0)
         {
           ((com.tencent.mm.modelsns.g)localObject2).m("44isPrivate(uint)", i + ",");
-          ad.i("MicroMsg.SnsCdnDownloadBase", "report logbuffer(13480 TLMediaFielDownloadRecord): " + ((com.tencent.mm.modelsns.g)localObject2).RE());
-          com.tencent.mm.plugin.report.service.g.yhR.f(13480, new Object[] { localObject2 });
+          ae.i("MicroMsg.SnsCdnDownloadBase", "report logbuffer(13480 TLMediaFielDownloadRecord): " + ((com.tencent.mm.modelsns.g)localObject2).RD());
+          com.tencent.mm.plugin.report.service.g.yxI.f(13480, new Object[] { localObject2 });
           if ((paramd.field_retCode == 200) || (paramd.field_retCode == 0)) {
             break;
           }
-          com.tencent.mm.plugin.report.service.g.yhR.f(14071, new Object[] { localObject2 });
+          com.tencent.mm.plugin.report.service.g.yxI.f(14071, new Object[] { localObject2 });
           return;
           localObject1 = "100106";
           break label46;
           localObject1 = "100100";
           break label46;
-          if ((this.zoe.znZ == 6) || (this.zoe.znZ == 4))
+          if ((this.zFt.zFo == 6) || (this.zFt.zFo == 4))
           {
             i = 2;
             break label110;
           }
-          if (this.zoe.znZ == 5)
+          if (this.zFt.zFo == 5)
           {
             i = 4;
             break label110;
           }
-          if ((this.zoe.znZ != 2) && (this.zoe.znZ != 1) && (this.zoe.znZ != 3)) {
+          if ((this.zFt.zFo != 2) && (this.zFt.zFo != 1) && (this.zFt.zFo != 3)) {
             break label998;
           }
           i = 0;
@@ -364,46 +364,46 @@ public abstract class c
     }
   }
   
-  public ExecutorService dCe()
+  public ExecutorService dFv()
   {
-    return ag.dTO();
+    return ah.dXo();
   }
   
-  public boolean dVh()
+  public boolean dYI()
   {
     return true;
   }
   
-  public abstract boolean dVi();
+  public abstract boolean dYJ();
   
-  public Integer dVk()
+  public Integer dYL()
   {
-    com.tencent.mm.kernel.g.ajD();
-    if ((!com.tencent.mm.kernel.g.ajC().isSDCardAvailable()) || (this.zoe == null)) {
+    com.tencent.mm.kernel.g.ajS();
+    if ((!com.tencent.mm.kernel.g.ajR().isSDCardAvailable()) || (this.zFt == null)) {
       return Integer.valueOf(2);
     }
     Object localObject1;
     Object localObject3;
     Object localObject4;
-    if (dVh())
+    if (dYI())
     {
-      if (9 == this.zoe.znZ)
+      if (9 == this.zFt.zFo)
       {
         i = 0;
-        while (i < this.zoe.zdw.size())
+        while (i < this.zFt.zum.size())
         {
-          localObject1 = (byn)this.zoe.zdw.valueAt(i);
+          localObject1 = (bzh)this.zFt.zum.valueAt(i);
           localObject3 = new StringBuilder();
-          localObject4 = ((byn)localObject1).Id;
-          localObject1 = ao.jo(ag.getAccSnsPath(), (String)localObject4) + q.m((byn)localObject1);
-          ad.i("MicroMsg.SnsCdnDownloadBase", "pennqin, delete sns thumb: [%s].", new Object[] { localObject1 });
-          i.deleteFile((String)localObject1);
+          localObject4 = ((bzh)localObject1).Id;
+          localObject1 = ap.jv(ah.getAccSnsPath(), (String)localObject4) + r.m((bzh)localObject1);
+          ae.i("MicroMsg.SnsCdnDownloadBase", "pennqin, delete sns thumb: [%s].", new Object[] { localObject1 });
+          o.deleteFile((String)localObject1);
           i += 1;
         }
       }
-      localObject1 = this.zoe.zhn + this.zoe.dVg();
-      ad.i("MicroMsg.SnsCdnDownloadBase", "[tomys] delete img: %s", new Object[] { localObject1 });
-      i.deleteFile((String)localObject1);
+      localObject1 = this.zFt.zyc + this.zFt.dYH();
+      ae.i("MicroMsg.SnsCdnDownloadBase", "[tomys] delete img: %s", new Object[] { localObject1 });
+      o.deleteFile((String)localObject1);
     }
     final long l3 = System.currentTimeMillis();
     String str;
@@ -412,58 +412,58 @@ public abstract class c
     {
       try
       {
-        localObject1 = ag.dTZ();
-        localObject3 = this.zoe.mediaId;
-        if (bt.isNullOrNil((String)localObject3)) {
+        localObject1 = ah.dXz();
+        localObject3 = this.zFt.mediaId;
+        if (bu.isNullOrNil((String)localObject3)) {
           continue;
         }
-        localObject1 = (b.c)((com.tencent.mm.plugin.sns.model.b)localObject1).zfQ.get(localObject3);
-        if ((localObject1 != null) && (!((b.c)localObject1).zfV)) {
-          ((b.c)localObject1).setStartTime(l3);
+        localObject1 = (c.c)((com.tencent.mm.plugin.sns.model.c)localObject1).zwG.get(localObject3);
+        if ((localObject1 != null) && (!((c.c)localObject1).zwL)) {
+          ((c.c)localObject1).setStartTime(l3);
         }
       }
       catch (Exception localException)
       {
         long l2;
         long l1;
-        ad.e("MicroMsg.SnsCdnDownloadBase", "exception msg: %s.", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.SnsCdnDownloadBase", "exception msg: %s.", new Object[] { localException.getMessage() });
         continue;
-        if (!((bj)localObject4).equals(bj.ILO)) {
+        if (!((bk)localObject4).equals(bk.Jgv)) {
           continue;
         }
         localObject2 = "album_friend";
         continue;
-        if (!((bj)localObject4).equals(bj.ILP)) {
+        if (!((bk)localObject4).equals(bk.Jgw)) {
           continue;
         }
         localObject2 = "album_self";
         continue;
-        if (!((bj)localObject4).equals(bj.ILQ)) {
+        if (!((bk)localObject4).equals(bk.Jgx)) {
           continue;
         }
         localObject2 = "album_stranger";
         continue;
-        if (!((bj)localObject4).equals(bj.ILR)) {
+        if (!((bk)localObject4).equals(bk.Jgy)) {
           continue;
         }
         localObject2 = "profile_friend";
         continue;
-        if (!((bj)localObject4).equals(bj.ILS)) {
+        if (!((bk)localObject4).equals(bk.Jgz)) {
           continue;
         }
         localObject2 = "profile_stranger";
         continue;
-        if (!((bj)localObject4).equals(bj.ILT)) {
+        if (!((bk)localObject4).equals(bk.JgA)) {
           continue;
         }
         localObject2 = "comment";
         continue;
-        if (!((bj)localObject4).equals(bj.ILN)) {
+        if (!((bk)localObject4).equals(bk.Jgu)) {
           continue;
         }
         localObject2 = "timeline";
         continue;
-        this.zoe.url = azv(this.zoe.url);
+        this.zFt.url = aAM(this.zFt.url);
         continue;
         localObject2 = "SnsAlbumDomainList";
         continue;
@@ -471,54 +471,54 @@ public abstract class c
         continue;
       }
       i = 0;
-      if (this.zoe.zdw != null) {
-        i = this.zoe.zdw.size();
+      if (this.zFt.zum != null) {
+        i = this.zFt.zum.size();
       }
-      ad.d("MicroMsg.SnsCdnDownloadBase", "to downloadBitmap pack.mediaId: " + this.zoe.mediaId + " pack.mediaObjs.size: " + i + " pack.snsId: " + this.zoe.dzb + " pack.isthumb: " + this.zoe.znX + " type: " + this.zoe.znZ);
-      localObject4 = this.zoe.zoa;
+      ae.d("MicroMsg.SnsCdnDownloadBase", "to downloadBitmap pack.mediaId: " + this.zFt.mediaId + " pack.mediaObjs.size: " + i + " pack.snsId: " + this.zFt.dAg + " pack.isthumb: " + this.zFt.zFm + " type: " + this.zFt.zFo);
+      localObject4 = this.zFt.zFp;
       localObject1 = "";
       if (localObject4 != null) {
         continue;
       }
       localObject1 = "";
       localObject3 = localObject1;
-      if (!bt.isNullOrNil((String)localObject1)) {
+      if (!bu.isNullOrNil((String)localObject1)) {
         localObject3 = "&scene=".concat(String.valueOf(localObject1));
       }
-      str = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Fnj), p.getString(ag.dTK()), Integer.valueOf(ay.getNetTypeForStat(aj.getContext())), Integer.valueOf(ay.getStrength(aj.getContext())), localObject3 });
-      if (9 != this.zoe.znZ) {
+      str = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.FFH), p.getString(ah.dXk()), Integer.valueOf(az.getNetTypeForStat(ak.getContext())), Integer.valueOf(az.getStrength(ak.getContext())), localObject3 });
+      if (9 != this.zFt.zFo) {
         continue;
       }
-      this.zoe.url = b(this.zoe.url, (byn)this.zoe.zdw.get(0));
-      this.dnsCostTime = bt.flT();
-      if (!this.zoe.znY) {
+      this.zFt.url = b(this.zFt.url, (bzh)this.zFt.zum.get(0));
+      this.dnsCostTime = bu.fpO();
+      if (!this.zFt.zFn) {
         continue;
       }
       localObject1 = "SnsSightDomainList";
-      if (!this.zoe.znY) {
+      if (!this.zFt.zFn) {
         continue;
       }
       localObject3 = "SnsSightMainStandbyIpSwitchTime";
-      localObject1 = com.tencent.mm.n.g.acA().getValue((String)localObject1);
-      l2 = com.tencent.mm.n.g.acA().getInt((String)localObject3, 0);
-      ad.i("MicroMsg.SnsCdnDownloadBase", "pack.isAlbum %s pack.isthumb %s hostvalue %s dcipTime %s", new Object[] { Boolean.valueOf(this.zoe.znY), Boolean.valueOf(this.zoe.znX), localObject1, Long.valueOf(l2) });
+      localObject1 = com.tencent.mm.n.g.acL().getValue((String)localObject1);
+      l2 = com.tencent.mm.n.g.acL().getInt((String)localObject3, 0);
+      ae.i("MicroMsg.SnsCdnDownloadBase", "pack.isAlbum %s pack.isthumb %s hostvalue %s dcipTime %s", new Object[] { Boolean.valueOf(this.zFt.zFn), Boolean.valueOf(this.zFt.zFm), localObject1, Long.valueOf(l2) });
       l1 = l2;
       if (l2 <= 0L) {
         l1 = 259200L;
       }
-      bool = a((bj)localObject4, this.zoe.url, l1, (String)localObject1);
-      this.dnsCostTime = bt.Df(this.dnsCostTime);
-      if (9 != this.zoe.znZ) {
+      bool = a((bk)localObject4, this.zFt.url, l1, (String)localObject1);
+      this.dnsCostTime = bu.DD(this.dnsCostTime);
+      if (9 != this.zFt.zFo) {
         break label1024;
       }
       localObject1 = new com.tencent.mm.i.f();
-      ((com.tencent.mm.i.e)localObject1).fJi = "task_SnsCdnDownloadBase_1";
+      ((com.tencent.mm.i.e)localObject1).fLl = "task_SnsCdnDownloadBase_1";
       i = 0;
-      if (i >= this.zoe.zdw.size()) {
+      if (i >= this.zFt.zum.size()) {
         break label966;
       }
-      localObject3 = ((byn)this.zoe.zdw.valueAt(i)).Id;
-      i.aYg(ao.jo(ag.getAccSnsPath(), (String)localObject3));
+      localObject3 = ((bzh)this.zFt.zum.valueAt(i)).Id;
+      o.aZI(ap.jv(ah.getAccSnsPath(), (String)localObject3));
       i += 1;
       continue;
       localObject1 = null;
@@ -527,14 +527,14 @@ public abstract class c
     label966:
     if (a((com.tencent.mm.i.e)localObject2, bool, str))
     {
-      ((com.tencent.mm.i.e)localObject2).fJj = new g.a()
+      ((com.tencent.mm.i.e)localObject2).fLm = new g.a()
       {
         public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, final com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(96067);
-          if (c.this.zoe == null)
+          if (c.this.zFt == null)
           {
-            ad.e("MicroMsg.SnsCdnDownloadBase", "pack is null.");
+            ae.e("MicroMsg.SnsCdnDownloadBase", "pack is null.");
             AppMethodBeat.o(96067);
             return 0;
           }
@@ -542,22 +542,22 @@ public abstract class c
           final int i;
           Object localObject;
           int k;
-          com.tencent.mm.plugin.sns.data.m localm;
+          com.tencent.mm.plugin.sns.data.n localn;
           if (paramAnonymousd != null) {
             if (paramAnonymousd.field_retCode != 0)
             {
-              ad.e("MicroMsg.SnsCdnDownloadBase", "download err, retCode: %d reqDownType: %d.", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), Integer.valueOf(c.this.zoe.znZ) });
+              ae.e("MicroMsg.SnsCdnDownloadBase", "download err, retCode: %d reqDownType: %d.", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), Integer.valueOf(c.this.zFt.zFo) });
               com.tencent.mm.network.b.reportFailIp(paramAnonymousd.field_serverIP);
-              if (9 != c.this.zoe.znZ) {
+              if (9 != c.this.zFt.zFo) {
                 break label1035;
               }
-              paramAnonymousString = paramAnonymousd.fIX;
+              paramAnonymousString = paramAnonymousd.fLb;
               if ((paramAnonymousString != null) && (paramAnonymousString.length > 0))
               {
-                com.tencent.mm.plugin.report.service.g.yhR.dD(1040, 12);
-                paramAnonymousc = (com.tencent.mm.i.f)this.zoz;
-                ad.e("MicroMsg.SnsCdnDownloadBase", "download err, taskInfo2 need inc counter, before: %d, inc: %d, count: %d.", new Object[] { Integer.valueOf(paramAnonymousc.fJg), Integer.valueOf(paramAnonymousString.length), Integer.valueOf(paramAnonymousc.fJf) });
-                paramAnonymousc.fJg += paramAnonymousString.length;
+                com.tencent.mm.plugin.report.service.g.yxI.dD(1040, 12);
+                paramAnonymousc = (com.tencent.mm.i.f)this.zFO;
+                ae.e("MicroMsg.SnsCdnDownloadBase", "download err, taskInfo2 need inc counter, before: %d, inc: %d, count: %d.", new Object[] { Integer.valueOf(paramAnonymousc.cpF), Integer.valueOf(paramAnonymousString.length), Integer.valueOf(paramAnonymousc.fLj) });
+                paramAnonymousc.cpF += paramAnonymousString.length;
                 j = paramAnonymousString.length;
                 i = 0;
                 while (i < j)
@@ -566,10 +566,10 @@ public abstract class c
                   if (((CdnLogic.BatchSnsReqImageData)localObject).retry)
                   {
                     k = ((CdnLogic.BatchSnsReqImageData)localObject).picIndex;
-                    localObject = (byn)c.this.zoe.zdw.get(k);
-                    localm = (com.tencent.mm.plugin.sns.data.m)c.this.zoe.zcH.get(k);
-                    ag.dTZ().a((byn)localObject, 1, localm, c.this.zoe.zoa, paramAnonymousc.dzb);
-                    ad.i("MicroMsg.SnsCdnDownloadBase", "group download err, retry single download. index: %d.", new Object[] { Integer.valueOf(k) });
+                    localObject = (bzh)c.this.zFt.zum.get(k);
+                    localn = (com.tencent.mm.plugin.sns.data.n)c.this.zFt.ztx.get(k);
+                    ah.dXz().a((bzh)localObject, 1, localn, c.this.zFt.zFp, paramAnonymousc.dAg);
+                    ae.i("MicroMsg.SnsCdnDownloadBase", "group download err, retry single download. index: %d.", new Object[] { Integer.valueOf(k) });
                   }
                   i += 1;
                 }
@@ -580,79 +580,79 @@ public abstract class c
           for (;;)
           {
             c.this.c(paramAnonymousd);
-            ag.cVf().post(new Runnable()
+            ah.cXK().post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(96066);
-                if (9 == c.this.zoe.znZ)
+                if (9 == c.this.zFt.zFo)
                 {
-                  if (((com.tencent.mm.i.f)c.1.this.zoz).XQ()) {
-                    c.dVn().remove(c.this.zoe.zhr);
+                  if (((com.tencent.mm.i.f)c.1.this.zFO).Ya()) {
+                    c.dYO().remove(c.this.zFt.zyg);
                   }
-                  ad.i("MicroMsg.SnsCdnDownloadBase", "download done result: %d, url:%s, mediaID:%s, totalSize: %d, runningTasksSize: %d", new Object[] { Integer.valueOf(i), c.this.zoe.url, c.this.zoe.mediaId, Long.valueOf(paramAnonymousd.field_fileLength), Integer.valueOf(c.dVn().size()) });
-                  if ((!c.this.zoe.znX) || (i == 2)) {
+                  ae.i("MicroMsg.SnsCdnDownloadBase", "download done result: %d, url:%s, mediaID:%s, totalSize: %d, runningTasksSize: %d", new Object[] { Integer.valueOf(i), c.this.zFt.url, c.this.zFt.mediaId, Long.valueOf(paramAnonymousd.field_fileLength), Integer.valueOf(c.dYO().size()) });
+                  if ((!c.this.zFt.zFm) || (i == 2)) {
                     break label553;
                   }
-                  if (9 != c.this.zoe.znZ) {
+                  if (9 != c.this.zFt.zFo) {
                     break label511;
                   }
-                  ba.eY(((byn)c.this.zoe.zdw.get(paramAnonymousd.index)).Id, c.this.zoe.mediaType);
-                  c.this.Qj(paramAnonymousd.index);
+                  bb.fh(((bzh)c.this.zFt.zum.get(paramAnonymousd.index)).Id, c.this.zFt.mediaType);
+                  c.this.QQ(paramAnonymousd.index);
                 }
                 Object localObject1;
                 Object localObject2;
                 long l;
                 for (;;)
                 {
-                  if (9 != c.this.zoe.znZ) {
+                  if (9 != c.this.zFt.zFo) {
                     break label671;
                   }
-                  localObject1 = (byn)c.this.zoe.zdw.get(paramAnonymousd.index);
-                  localObject2 = (com.tencent.mm.i.f)c.1.this.zoz;
-                  if ((((com.tencent.mm.i.f)localObject2).XQ()) && (!((com.tencent.mm.i.f)localObject2).fJh))
+                  localObject1 = (bzh)c.this.zFt.zum.get(paramAnonymousd.index);
+                  localObject2 = (com.tencent.mm.i.f)c.1.this.zFO;
+                  if ((((com.tencent.mm.i.f)localObject2).Ya()) && (!((com.tencent.mm.i.f)localObject2).fLk))
                   {
-                    ((com.tencent.mm.i.f)localObject2).fJh = true;
-                    l = bt.Df(c.1.this.zoA);
-                    ad.d("MicroMsg.SnsCdnDownloadBase", "group download, feed cost: %d.", new Object[] { Long.valueOf(l) });
-                    com.tencent.mm.plugin.report.service.g.yhR.n(1040L, 3L, l);
-                    com.tencent.mm.plugin.report.service.g.yhR.dD(1040, 4);
-                    com.tencent.mm.plugin.report.service.g.yhR.n(1040L, 9L, l);
-                    com.tencent.mm.plugin.report.service.g.yhR.n(1040L, 10L, ((com.tencent.mm.i.f)localObject2).fJf);
+                    ((com.tencent.mm.i.f)localObject2).fLk = true;
+                    l = bu.DD(c.1.this.zFP);
+                    ae.d("MicroMsg.SnsCdnDownloadBase", "group download, feed cost: %d.", new Object[] { Long.valueOf(l) });
+                    com.tencent.mm.plugin.report.service.g.yxI.n(1040L, 3L, l);
+                    com.tencent.mm.plugin.report.service.g.yxI.dD(1040, 4);
+                    com.tencent.mm.plugin.report.service.g.yxI.n(1040L, 9L, l);
+                    com.tencent.mm.plugin.report.service.g.yxI.n(1040L, 10L, ((com.tencent.mm.i.f)localObject2).fLj);
                   }
-                  c.this.zoc.a(i, (byn)localObject1, c.this.zoe.znZ, c.this.zoe.znX, c.this.zoe.zhr, (int)paramAnonymousd.field_fileLength, paramAnonymousd.index, ((com.tencent.mm.i.f)localObject2).XQ());
+                  c.this.zFr.a(i, (bzh)localObject1, c.this.zFt.zFo, c.this.zFt.zFm, c.this.zFt.zyg, (int)paramAnonymousd.field_fileLength, paramAnonymousd.index, ((com.tencent.mm.i.f)localObject2).Ya());
                   AppMethodBeat.o(96066);
                   return;
-                  c.dVn().remove(c.this.zoe.zhr);
+                  c.dYO().remove(c.this.zFt.zyg);
                   break;
                   label511:
-                  ba.eY(c.this.zoe.mediaId, c.this.zoe.mediaType);
-                  c.this.dVl();
+                  bb.fh(c.this.zFt.mediaId, c.this.zFt.mediaType);
+                  c.this.dYM();
                   continue;
                   label553:
-                  if ((!c.this.zoe.znX) && ((c.this.zoe.znZ == 4) || (c.this.zoe.znZ == 6)))
+                  if ((!c.this.zFt.zFm) && ((c.this.zFt.zFo == 4) || (c.this.zFt.zFo == 6)))
                   {
-                    localObject1 = c.this.zoe.getPath() + q.i(c.this.dIQ);
-                    ag.dUb().jl(c.this.zoe.mediaId, (String)localObject1);
+                    localObject1 = c.this.zFt.getPath() + r.i(c.this.dKe);
+                    ah.dXB().js(c.this.zFt.mediaId, (String)localObject1);
                   }
                 }
                 label671:
-                if (1 == c.this.zoe.znZ)
+                if (1 == c.this.zFt.zFo)
                 {
-                  localObject1 = ag.dTZ();
-                  localObject2 = c.this.zoe.mediaId;
-                  if (((com.tencent.mm.plugin.sns.model.b)localObject1).zfR.remove(localObject2))
+                  localObject1 = ah.dXz();
+                  localObject2 = c.this.zFt.mediaId;
+                  if (((com.tencent.mm.plugin.sns.model.c)localObject1).zwH.remove(localObject2))
                   {
-                    l = bt.Df(c.1.this.zoA);
-                    ad.d("MicroMsg.SnsCdnDownloadBase", "single download cost: %d.", new Object[] { Long.valueOf(l) });
-                    com.tencent.mm.plugin.report.service.g.yhR.n(1040L, 6L, l);
-                    com.tencent.mm.plugin.report.service.g.yhR.dD(1040, 7);
+                    l = bu.DD(c.1.this.zFP);
+                    ae.d("MicroMsg.SnsCdnDownloadBase", "single download cost: %d.", new Object[] { Long.valueOf(l) });
+                    com.tencent.mm.plugin.report.service.g.yxI.n(1040L, 6L, l);
+                    com.tencent.mm.plugin.report.service.g.yxI.dD(1040, 7);
                   }
                 }
-                if (c.this.zoe.znZ == 4) {
-                  ad.i("MicroMsg.SnsCdnDownloadBase", "sight download cost=" + bt.Df(c.1.this.zoA) + ", mediaId=" + c.this.zoe.mediaId);
+                if (c.this.zFt.zFo == 4) {
+                  ae.i("MicroMsg.SnsCdnDownloadBase", "sight download cost=" + bu.DD(c.1.this.zFP) + ", mediaId=" + c.this.zFt.mediaId);
                 }
-                c.this.zoc.a(i, c.this.dIQ, c.this.zoe.znZ, c.this.zoe.znX, c.this.zoe.zhr, (int)paramAnonymousd.field_fileLength, -1, true);
+                c.this.zFr.a(i, c.this.dKe, c.this.zFt.zFo, c.this.zFt.zFm, c.this.zFt.zyg, (int)paramAnonymousd.field_fileLength, -1, true);
                 AppMethodBeat.o(96066);
               }
             });
@@ -661,53 +661,53 @@ public abstract class c
               if (paramAnonymousInt == 0) {
                 break label1028;
               }
-              ad.e("MicroMsg.SnsCdnDownloadBase", "task build error! startRet: %d, type: %d.", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(c.this.zoe.znZ) });
-              if (9 != c.this.zoe.znZ) {
+              ae.e("MicroMsg.SnsCdnDownloadBase", "task build error! startRet: %d, type: %d.", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(c.this.zFt.zFo) });
+              if (9 != c.this.zFt.zFo) {
                 break label1028;
               }
-              com.tencent.mm.plugin.report.service.g.yhR.dD(1040, 13);
-              c.dVn().remove(c.this.zoe.zhr);
-              c.this.zoc.a(2, null, c.this.zoe.znZ, c.this.zoe.znX, c.this.zoe.zhr, -1, -1, true);
-              paramAnonymousString = (com.tencent.mm.i.f)this.zoz;
-              paramAnonymousc = paramAnonymousString.fIX;
+              com.tencent.mm.plugin.report.service.g.yxI.dD(1040, 13);
+              c.dYO().remove(c.this.zFt.zyg);
+              c.this.zFr.a(2, null, c.this.zFt.zFo, c.this.zFt.zFm, c.this.zFt.zyg, -1, -1, true);
+              paramAnonymousString = (com.tencent.mm.i.f)this.zFO;
+              paramAnonymousc = paramAnonymousString.fLb;
               i = paramAnonymousc.length;
               paramAnonymousInt = 0;
               while (paramAnonymousInt < i)
               {
                 j = paramAnonymousc[paramAnonymousInt].picIndex;
-                paramAnonymousd = (byn)c.this.zoe.zdw.get(j);
-                localObject = (com.tencent.mm.plugin.sns.data.m)c.this.zoe.zcH.get(j);
-                ag.dTZ().a(paramAnonymousd, 1, (com.tencent.mm.plugin.sns.data.m)localObject, c.this.zoe.zoa, paramAnonymousString.dzb);
-                ad.i("MicroMsg.SnsCdnDownloadBase", "group download err, retry single download. index: %d.", new Object[] { Integer.valueOf(j) });
+                paramAnonymousd = (bzh)c.this.zFt.zum.get(j);
+                localObject = (com.tencent.mm.plugin.sns.data.n)c.this.zFt.ztx.get(j);
+                ah.dXz().a(paramAnonymousd, 1, (com.tencent.mm.plugin.sns.data.n)localObject, c.this.zFt.zFp, paramAnonymousString.dAg);
+                ae.i("MicroMsg.SnsCdnDownloadBase", "group download err, retry single download. index: %d.", new Object[] { Integer.valueOf(j) });
                 paramAnonymousInt += 1;
               }
-              com.tencent.mm.plugin.report.service.g.yhR.dD(1040, 14);
-              ad.e("MicroMsg.SnsCdnDownloadBase", "download error, totally re-download by single.");
-              paramAnonymousString = (com.tencent.mm.i.f)this.zoz;
-              paramAnonymousString.fJg = paramAnonymousString.fJf;
-              paramAnonymousc = paramAnonymousString.fIX;
+              com.tencent.mm.plugin.report.service.g.yxI.dD(1040, 14);
+              ae.e("MicroMsg.SnsCdnDownloadBase", "download error, totally re-download by single.");
+              paramAnonymousString = (com.tencent.mm.i.f)this.zFO;
+              paramAnonymousString.cpF = paramAnonymousString.fLj;
+              paramAnonymousc = paramAnonymousString.fLb;
               j = paramAnonymousc.length;
               i = 0;
               while (i < j)
               {
                 k = paramAnonymousc[i].picIndex;
-                localObject = (byn)c.this.zoe.zdw.get(k);
-                localm = (com.tencent.mm.plugin.sns.data.m)c.this.zoe.zcH.get(k);
-                ag.dTZ().a((byn)localObject, 1, localm, c.this.zoe.zoa, paramAnonymousString.dzb);
-                ad.i("MicroMsg.SnsCdnDownloadBase", "group download err, retry single download. index: %d.", new Object[] { Integer.valueOf(k) });
+                localObject = (bzh)c.this.zFt.zum.get(k);
+                localn = (com.tencent.mm.plugin.sns.data.n)c.this.zFt.ztx.get(k);
+                ah.dXz().a((bzh)localObject, 1, localn, c.this.zFt.zFp, paramAnonymousString.dAg);
+                ae.i("MicroMsg.SnsCdnDownloadBase", "group download err, retry single download. index: %d.", new Object[] { Integer.valueOf(k) });
                 i += 1;
               }
               i = 2;
               break;
-              ad.d("MicroMsg.SnsCdnDownloadBase", "download succ, type: %d.", new Object[] { Integer.valueOf(c.this.zoe.znZ) });
-              c.this.zox = ((int)paramAnonymousd.field_fileLength);
-              if (9 == c.this.zoe.znZ)
+              ae.d("MicroMsg.SnsCdnDownloadBase", "download succ, type: %d.", new Object[] { Integer.valueOf(c.this.zFt.zFo) });
+              c.this.zFM = ((int)paramAnonymousd.field_fileLength);
+              if (9 == c.this.zFt.zFo)
               {
-                paramAnonymousString = (com.tencent.mm.i.f)this.zoz;
-                paramAnonymousString.fJg += 1;
-                ad.d("MicroMsg.SnsCdnDownloadBase", "download succ, counter++, res: %d, count: %d.", new Object[] { Integer.valueOf(paramAnonymousString.fJg), Integer.valueOf(paramAnonymousString.fJf) });
+                paramAnonymousString = (com.tencent.mm.i.f)this.zFO;
+                paramAnonymousString.cpF += 1;
+                ae.d("MicroMsg.SnsCdnDownloadBase", "download succ, counter++, res: %d, count: %d.", new Object[] { Integer.valueOf(paramAnonymousString.cpF), Integer.valueOf(paramAnonymousString.fLj) });
               }
-              for (paramAnonymousBoolean = c.this.Qi(paramAnonymousd.index);; paramAnonymousBoolean = c.this.dVi())
+              for (paramAnonymousBoolean = c.this.QP(paramAnonymousd.index);; paramAnonymousBoolean = c.this.dYJ())
               {
                 if (paramAnonymousBoolean) {
                   break label903;
@@ -716,7 +716,7 @@ public abstract class c
                 break;
               }
               label903:
-              if (c.this.zoe.znX)
+              if (c.this.zFt.zFm)
               {
                 i = 3;
                 break;
@@ -726,10 +726,10 @@ public abstract class c
               if (paramAnonymousc != null)
               {
                 float f = (float)paramAnonymousc.field_finishedLength / (float)paramAnonymousc.field_toltalLength;
-                if (c.this.zoe.zob < f)
+                if (c.this.zFt.zFq < f)
                 {
-                  c.this.zoe.zob = f;
-                  ad.d("MicroMsg.SnsCdnDownloadBase", "Download sns image type: %d, mediaId: %s, progress: %f, url: %s", new Object[] { Integer.valueOf(c.this.zoe.znZ), paramAnonymousString, Float.valueOf(f), c.this.zoe.url });
+                  c.this.zFt.zFq = f;
+                  ae.d("MicroMsg.SnsCdnDownloadBase", "Download sns image type: %d, mediaId: %s, progress: %f, url: %s", new Object[] { Integer.valueOf(c.this.zFt.zFo), paramAnonymousString, Float.valueOf(f), c.this.zFt.url });
                 }
               }
             }
@@ -748,101 +748,101 @@ public abstract class c
           return new byte[0];
         }
       };
-      if (com.tencent.mm.ao.f.aGI().b((com.tencent.mm.i.g)localObject2, -1)) {
-        ad.i("MicroMsg.SnsCdnDownloadBase", "SubCoreCdnTransport addRecvTask suc");
+      if (com.tencent.mm.an.f.aGZ().b((com.tencent.mm.i.g)localObject2, -1)) {
+        ae.i("MicroMsg.SnsCdnDownloadBase", "SubCoreCdnTransport addRecvTask suc");
       }
     }
     for (int i = 1;; i = 2)
     {
       return Integer.valueOf(i);
       label1024:
-      i.aYg(this.zoe.getPath());
+      o.aZI(this.zFt.getPath());
       localObject2 = new com.tencent.mm.i.e();
-      ((com.tencent.mm.i.e)localObject2).fJi = "task_SnsCdnDownloadBase_2";
+      ((com.tencent.mm.i.e)localObject2).fLl = "task_SnsCdnDownloadBase_2";
       break;
-      ad.w("MicroMsg.SnsCdnDownloadBase", "SubCoreCdnTransport addRecvTask failed");
+      ae.w("MicroMsg.SnsCdnDownloadBase", "SubCoreCdnTransport addRecvTask failed");
     }
   }
   
-  public void dVl()
+  public void dYM()
   {
-    if (ag.dTN()) {
+    if (ah.dXn()) {
       return;
     }
     System.currentTimeMillis();
     Object localObject1;
     Object localObject2;
-    if (this.zoe.zcG.zds == 4)
+    if (this.zFt.ztw.zui == 4)
     {
-      ad.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur thumb");
-      localObject1 = q.d(this.dIQ);
-      localObject2 = q.f(this.dIQ);
-      this.zod = com.tencent.mm.plugin.sns.lucky.a.a.jj(this.zoe.getPath() + (String)localObject1, this.zoe.getPath() + (String)localObject2);
-      ag.dUb().a(this.zoe.mediaId, this.zod, this.zoe.zcG.zds);
+      ae.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur thumb");
+      localObject1 = r.d(this.dKe);
+      localObject2 = r.f(this.dKe);
+      this.zFs = com.tencent.mm.plugin.sns.lucky.a.a.jq(this.zFt.getPath() + (String)localObject1, this.zFt.getPath() + (String)localObject2);
+      ah.dXB().a(this.zFt.mediaId, this.zFs, this.zFt.ztw.zui);
       label133:
       localObject1 = null;
-      if (this.zoe.zcG.zds != 0) {
+      if (this.zFt.ztw.zui != 0) {
         break label597;
       }
-      localObject1 = "0-" + this.zoe.zcG.dwW;
+      localObject1 = "0-" + this.zFt.ztw.dyb;
     }
     for (;;)
     {
-      ag.dUb().ayL((String)localObject1);
+      ah.dXB().aAc((String)localObject1);
       return;
-      if (this.zoe.zcG.zds == 5)
+      if (this.zFt.ztw.zui == 5)
       {
-        ad.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur grid");
-        localObject1 = q.d(this.dIQ);
-        localObject2 = q.g(this.dIQ);
-        this.zod = com.tencent.mm.plugin.sns.lucky.a.a.jj(this.zoe.getPath() + (String)localObject1, this.zoe.getPath() + (String)localObject2);
-        ag.dUb().a(this.zoe.mediaId, this.zod, this.zoe.zcG.zds);
+        ae.i("MicroMsg.SnsCdnDownloadBase", "decodeType blur grid");
+        localObject1 = r.d(this.dKe);
+        localObject2 = r.g(this.dKe);
+        this.zFs = com.tencent.mm.plugin.sns.lucky.a.a.jq(this.zFt.getPath() + (String)localObject1, this.zFt.getPath() + (String)localObject2);
+        ah.dXB().a(this.zFt.mediaId, this.zFs, this.zFt.ztw.zui);
         break label133;
       }
-      if (this.zoe.zcG.list.size() <= 1)
+      if (this.zFt.ztw.list.size() <= 1)
       {
-        ag.dUb().a(this.zoe.mediaId, this.zod, this.zoe.zcG.zds);
+        ah.dXB().a(this.zFt.mediaId, this.zFs, this.zFt.ztw.zui);
         break label133;
       }
-      ag.dUb().a(this.zoe.mediaId, this.zod, 0);
+      ah.dXB().a(this.zFt.mediaId, this.zFs, 0);
       localObject1 = new LinkedList();
       int i = 0;
       for (;;)
       {
-        if ((i >= this.zoe.zcG.list.size()) || (i >= 4)) {
+        if ((i >= this.zFt.ztw.list.size()) || (i >= 4)) {
           break label504;
         }
-        localObject2 = (byn)this.zoe.zcG.list.get(i);
-        n localn = ag.dUb().ayM(((byn)localObject2).Id);
-        if (!q.b(localn)) {
+        localObject2 = (bzh)this.zFt.ztw.list.get(i);
+        com.tencent.mm.memory.n localn = ah.dXB().aAd(((bzh)localObject2).Id);
+        if (!r.b(localn)) {
           break;
         }
         ((List)localObject1).add(localn);
-        ad.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap from " + localn + " " + ((byn)localObject2).Id);
+        ae.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap from " + localn + " " + ((bzh)localObject2).Id);
         i += 1;
       }
       label504:
-      this.zod = n.D(q.u((List)localObject1, ag.dUp()));
-      ad.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap " + this.zoe.zcG.dwW + " " + this.zod);
-      ag.dUb().a(this.zoe.zcG.dwW, this.zod, this.zoe.zcG.zds);
+      this.zFs = com.tencent.mm.memory.n.E(r.v((List)localObject1, ah.dXP()));
+      ae.i("MicroMsg.SnsCdnDownloadBase", "merge bitmap " + this.zFt.ztw.dyb + " " + this.zFs);
+      ah.dXB().a(this.zFt.ztw.dyb, this.zFs, this.zFt.ztw.zui);
       break label133;
       label597:
-      if (this.zoe.zcG.zds == 1) {
-        localObject1 = "1-" + this.zoe.zcG.dwW;
-      } else if (this.zoe.zcG.zds == 4) {
-        localObject1 = "4-" + this.zoe.zcG.dwW;
-      } else if (this.zoe.zcG.zds == 5) {
-        localObject1 = "5-" + this.zoe.zcG.dwW;
-      } else if (this.zoe.zcG.zds == 3) {
-        localObject1 = q.bZ(3, this.zoe.zcG.dwW);
+      if (this.zFt.ztw.zui == 1) {
+        localObject1 = "1-" + this.zFt.ztw.dyb;
+      } else if (this.zFt.ztw.zui == 4) {
+        localObject1 = "4-" + this.zFt.ztw.dyb;
+      } else if (this.zFt.ztw.zui == 5) {
+        localObject1 = "5-" + this.zFt.ztw.dyb;
+      } else if (this.zFt.ztw.zui == 3) {
+        localObject1 = r.bZ(3, this.zFt.ztw.dyb);
       }
     }
   }
   
-  public final void dVm()
+  public final void dYN()
   {
-    if (this.zoe != null) {
-      ad.i("MicroMsg.SnsCdnDownloadBase", "checkCdnPath: %s", new Object[] { Boolean.valueOf(i.aYg(this.zoe.getPath())) });
+    if (this.zFt != null) {
+      ae.i("MicroMsg.SnsCdnDownloadBase", "checkCdnPath: %s", new Object[] { Boolean.valueOf(o.aZI(this.zFt.getPath())) });
     }
   }
   
@@ -855,7 +855,7 @@ public abstract class c
   
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, byn parambyn, int paramInt2, boolean paramBoolean1, String paramString, int paramInt3, int paramInt4, boolean paramBoolean2);
+    public abstract void a(int paramInt1, bzh parambzh, int paramInt2, boolean paramBoolean1, String paramString, int paramInt3, int paramInt4, boolean paramBoolean2);
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mm.j;
 
 public abstract interface a$d
 {
-  public abstract void ZD();
+  public abstract void ZM();
   
-  public abstract void ZE();
+  public abstract void ZN();
 }
 
 

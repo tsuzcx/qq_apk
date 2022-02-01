@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.protocal.protobuf.cvp;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.protocal.protobuf.cwj;
 import java.util.Locale;
 
 public final class a
 {
-  public static boolean a(int paramInt1, int paramInt2, cvp paramcvp)
+  public static boolean a(int paramInt1, int paramInt2, cwj paramcwj)
   {
-    return (paramInt1 == 0) && (paramInt2 == 0) && (paramcvp != null);
+    return (paramInt1 == 0) && (paramInt2 == 0) && (paramcwj != null);
   }
   
   public static boolean e(a.a<?> parama)
   {
     AppMethodBeat.i(180325);
-    if ((parama != null) && (a(parama.errType, parama.errCode, parama.hNC)))
+    if ((parama != null) && (a(parama.errType, parama.errCode, parama.hQv)))
     {
       AppMethodBeat.o(180325);
       return true;

@@ -23,7 +23,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.sport.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,226 +34,226 @@ import java.util.List;
 public class SportChartView
   extends View
 {
-  private GestureDetector.OnGestureListener AHA;
-  private SimpleDateFormat AHq;
-  private SimpleDateFormat AHr;
-  private boolean AHs;
-  private int AHt;
-  private SportChartView.a AHu;
-  private int AHv;
-  private List<d> AHw;
-  private b[] AHx;
-  private int AHy;
-  private boolean AHz;
-  private int gfT;
-  private int gfU;
-  private GestureDetector iKD;
+  private SimpleDateFormat AYT;
+  private SimpleDateFormat AYU;
+  private boolean AYV;
+  private int AYW;
+  private SportChartView.a AYX;
+  private int AYY;
+  private List<d> AYZ;
+  private b[] AZa;
+  private int AZb;
+  private boolean AZc;
+  private GestureDetector.OnGestureListener AZd;
+  private int gil;
+  private int gim;
+  private GestureDetector iNw;
   Paint paint;
-  private final float qnB;
-  private final int qnC;
-  private final float qnD;
-  private final int qnE;
-  private final float qnF;
-  private final int qnG;
-  private final float qnH;
-  private final int qnI;
-  private final float qnJ;
-  private final int qnK;
-  private final float qnL;
-  private final int qnM;
-  private final float qnN;
-  private final int qnO;
-  private final float qnP;
-  private final int qnQ;
-  private final float qnR;
-  private final int qnS;
-  private final float qnT;
-  private final int qnU;
-  private final float qnV;
-  private final int qnW;
-  private final float qnX;
-  private final int qnY;
-  private final float qnZ;
-  private final int qnn;
-  private final int qno;
-  private final int qnp;
-  private final float qnq;
-  private final float qnr;
-  private final float qns;
-  private final float qnt;
-  private final float qnu;
-  private final int qnv;
-  private final int qnw;
-  private final int qnx;
-  private final int qny;
-  private final Typeface qoA;
-  private final Typeface qoB;
-  private int qoC;
-  private int qoD;
-  Path qoJ;
-  Path qoK;
-  private int qoO;
-  private boolean qoP;
-  private final float qoa;
-  private final float qob;
-  private final float qoc;
-  private final int qod;
-  private final int qoe;
-  private final int qof;
-  private final int qog;
-  private final float qoh;
-  private final int qoi;
-  private final float qoj;
-  private final int qok;
-  private final float qol;
-  private final int qom;
-  private final float qon;
-  private final int qoo;
-  private final float qop;
-  private final int qoq;
-  private final int qor;
-  private final int qos;
-  private final int qot;
-  private final int qou;
-  private final int qov;
-  private final int qow;
-  private final int qox;
-  private final int qoy;
-  private int qoz;
-  private int spf;
+  private final int qtS;
+  private final int qtT;
+  private final int qtU;
+  private final float qtV;
+  private final float qtW;
+  private final float qtX;
+  private final float qtY;
+  private final float qtZ;
+  private final int quA;
+  private final float quB;
+  private final int quC;
+  private final float quD;
+  private final int quE;
+  private final float quF;
+  private final float quG;
+  private final float quH;
+  private final float quI;
+  private final int quJ;
+  private final int quK;
+  private final int quL;
+  private final int quM;
+  private final float quN;
+  private final int quO;
+  private final float quP;
+  private final int quQ;
+  private final float quR;
+  private final int quS;
+  private final float quT;
+  private final int quU;
+  private final float quV;
+  private final int quW;
+  private final int quX;
+  private final int quY;
+  private final int quZ;
+  private final int qub;
+  private final int quc;
+  private final int qud;
+  private final int que;
+  private final float quh;
+  private final int qui;
+  private final float quj;
+  private final int quk;
+  private final float qul;
+  private final int qum;
+  private final float qun;
+  private final int quo;
+  private final float qup;
+  private final int quq;
+  private final float qur;
+  private final int qus;
+  private final float qut;
+  private final int quu;
+  private final float quv;
+  private final int quw;
+  private final float qux;
+  private final int quy;
+  private final float quz;
+  private final int qva;
+  private final int qvb;
+  private final int qvc;
+  private final int qvd;
+  private final int qve;
+  private int qvf;
+  private final Typeface qvg;
+  private final Typeface qvh;
+  private int qvi;
+  private int qvj;
+  Path qvp;
+  Path qvq;
+  private int qvu;
+  private boolean qvv;
   private int startY;
-  private int vnp;
+  private int szq;
+  private int vzu;
   
   public SportChartView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(103531);
-    this.AHq = new SimpleDateFormat(getResources().getString(2131764119));
-    this.AHr = new SimpleDateFormat("d");
-    this.qnn = -1;
-    this.qno = -1;
-    this.qnp = getResources().getColor(2131100945);
-    this.qnq = 12.0F;
-    this.qnr = 24.0F;
-    this.qns = 28.0F;
-    this.qnt = 12.0F;
-    this.qnu = 12.0F;
-    this.qnv = getResources().getColor(2131100946);
-    this.qnw = -1;
-    this.qnx = getResources().getColor(2131100946);
-    this.qny = -1;
-    this.vnp = 2147483647;
-    this.gfT = 0;
-    this.gfU = 0;
-    this.qnB = 2.5F;
-    this.qnC = ((int)p(1, 2.5F));
-    this.qnD = 4.0F;
-    this.qnE = ((int)p(1, 4.0F));
-    this.qnF = 1.8F;
-    this.qnG = ((int)p(1, 1.8F));
-    this.qnH = 1.0F;
-    this.qnI = ((int)p(1, 1.0F));
-    this.qnJ = 8.0F;
-    this.qnK = ((int)p(1, 8.0F));
-    this.qnL = 22.0F;
-    this.qnM = ((int)p(1, 22.0F));
-    this.qnN = 67.0F;
-    this.qnO = ((int)p(1, 67.0F));
-    this.qnP = 40.0F;
-    this.qnQ = ((int)p(1, 40.0F));
-    this.qnR = 22.0F;
-    this.qnS = ((int)p(1, 22.0F));
-    this.qnT = 55.0F;
-    this.qnU = ((int)p(1, 55.0F));
-    this.qnV = 35.0F;
-    this.qnW = ((int)p(1, 35.0F));
-    this.qnX = 45.0F;
-    this.qnY = ((int)p(1, 45.0F));
-    this.qnZ = 8.0F;
-    this.qoa = ((int)p(1, 8.0F));
-    this.qob = 8.0F;
-    this.qoc = ((int)p(1, 8.0F));
-    this.qod = 2;
-    this.qoe = ((int)p(1, 2.0F));
-    this.qof = 15;
-    this.qog = ((int)p(1, 15.0F));
-    this.qoh = 33.0F;
-    this.qoi = ((int)p(1, 33.0F));
-    this.qoj = 8.0F;
-    this.qok = ((int)p(1, 8.0F));
-    this.qol = 35.0F;
-    this.qom = ((int)p(1, 35.0F));
-    this.qon = 10.0F;
-    this.qoo = ((int)p(1, 10.0F));
-    this.qop = 58.0F;
-    this.qoq = ((int)p(1, 58.0F));
-    this.qor = ((int)p(1, 1.0F));
-    this.qos = 102;
-    this.qot = 102;
-    this.qou = 153;
-    this.qov = 102;
-    this.qow = 102;
-    this.qox = 102;
-    this.qoy = 204;
-    this.qoz = 0;
-    this.qoA = Typeface.create(Typeface.DEFAULT_BOLD, 0);
-    this.qoB = Typeface.create(Typeface.DEFAULT_BOLD, 1);
-    this.qoC = 0;
-    this.qoD = 0;
-    this.AHt = -1;
-    this.spf = -1;
-    this.AHu = SportChartView.a.AHD;
-    this.AHv = 7;
-    this.AHx = new b[this.AHv];
-    this.AHA = new GestureDetector.SimpleOnGestureListener()
+    this.AYT = new SimpleDateFormat(getResources().getString(2131764119));
+    this.AYU = new SimpleDateFormat("d");
+    this.qtS = -1;
+    this.qtT = -1;
+    this.qtU = getResources().getColor(2131100945);
+    this.qtV = 12.0F;
+    this.qtW = 24.0F;
+    this.qtX = 28.0F;
+    this.qtY = 12.0F;
+    this.qtZ = 12.0F;
+    this.qub = getResources().getColor(2131100946);
+    this.quc = -1;
+    this.qud = getResources().getColor(2131100946);
+    this.que = -1;
+    this.vzu = 2147483647;
+    this.gil = 0;
+    this.gim = 0;
+    this.quh = 2.5F;
+    this.qui = ((int)p(1, 2.5F));
+    this.quj = 4.0F;
+    this.quk = ((int)p(1, 4.0F));
+    this.qul = 1.8F;
+    this.qum = ((int)p(1, 1.8F));
+    this.qun = 1.0F;
+    this.quo = ((int)p(1, 1.0F));
+    this.qup = 8.0F;
+    this.quq = ((int)p(1, 8.0F));
+    this.qur = 22.0F;
+    this.qus = ((int)p(1, 22.0F));
+    this.qut = 67.0F;
+    this.quu = ((int)p(1, 67.0F));
+    this.quv = 40.0F;
+    this.quw = ((int)p(1, 40.0F));
+    this.qux = 22.0F;
+    this.quy = ((int)p(1, 22.0F));
+    this.quz = 55.0F;
+    this.quA = ((int)p(1, 55.0F));
+    this.quB = 35.0F;
+    this.quC = ((int)p(1, 35.0F));
+    this.quD = 45.0F;
+    this.quE = ((int)p(1, 45.0F));
+    this.quF = 8.0F;
+    this.quG = ((int)p(1, 8.0F));
+    this.quH = 8.0F;
+    this.quI = ((int)p(1, 8.0F));
+    this.quJ = 2;
+    this.quK = ((int)p(1, 2.0F));
+    this.quL = 15;
+    this.quM = ((int)p(1, 15.0F));
+    this.quN = 33.0F;
+    this.quO = ((int)p(1, 33.0F));
+    this.quP = 8.0F;
+    this.quQ = ((int)p(1, 8.0F));
+    this.quR = 35.0F;
+    this.quS = ((int)p(1, 35.0F));
+    this.quT = 10.0F;
+    this.quU = ((int)p(1, 10.0F));
+    this.quV = 58.0F;
+    this.quW = ((int)p(1, 58.0F));
+    this.quX = ((int)p(1, 1.0F));
+    this.quY = 102;
+    this.quZ = 102;
+    this.qva = 153;
+    this.qvb = 102;
+    this.qvc = 102;
+    this.qvd = 102;
+    this.qve = 204;
+    this.qvf = 0;
+    this.qvg = Typeface.create(Typeface.DEFAULT_BOLD, 0);
+    this.qvh = Typeface.create(Typeface.DEFAULT_BOLD, 1);
+    this.qvi = 0;
+    this.qvj = 0;
+    this.AYW = -1;
+    this.szq = -1;
+    this.AYX = SportChartView.a.AZg;
+    this.AYY = 7;
+    this.AZa = new b[this.AYY];
+    this.AZd = new GestureDetector.SimpleOnGestureListener()
     {
-      private long AHB;
+      private long AZe;
       
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(211011);
+        AppMethodBeat.i(210888);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(211011);
+        AppMethodBeat.o(210888);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(211010);
+        AppMethodBeat.i(210887);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(211010);
+        AppMethodBeat.o(210887);
         return bool;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(211009);
+        AppMethodBeat.i(210886);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(211009);
+        AppMethodBeat.o(210886);
       }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(103525);
-        ad.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
-        if ((System.currentTimeMillis() - this.AHB < 500L) || (!SportChartView.d(SportChartView.this)))
+        ae.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
+        if ((System.currentTimeMillis() - this.AZe < 500L) || (!SportChartView.d(SportChartView.this)))
         {
           AppMethodBeat.o(103525);
           return false;
         }
-        this.AHB = System.currentTimeMillis();
+        this.AZe = System.currentTimeMillis();
         if (paramAnonymousFloat1 > 0.0F)
         {
           SportChartView.e(SportChartView.this);
@@ -285,20 +285,20 @@ public class SportChartView
         AppMethodBeat.i(103524);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         float f1 = paramAnonymousMotionEvent.getX();
         float f2 = paramAnonymousMotionEvent.getY();
         SportChartView.a(SportChartView.this, SportChartView.a(SportChartView.this, f1));
         SportChartView.a(SportChartView.this);
         SportChartView.b(SportChartView.this);
-        ad.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
+        ae.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
         SportChartView.this.invalidate();
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(103524);
         return true;
       }
     };
-    cmC();
+    cnS();
     AppMethodBeat.o(103531);
   }
   
@@ -306,132 +306,132 @@ public class SportChartView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(103532);
-    this.AHq = new SimpleDateFormat(getResources().getString(2131764119));
-    this.AHr = new SimpleDateFormat("d");
-    this.qnn = -1;
-    this.qno = -1;
-    this.qnp = getResources().getColor(2131100945);
-    this.qnq = 12.0F;
-    this.qnr = 24.0F;
-    this.qns = 28.0F;
-    this.qnt = 12.0F;
-    this.qnu = 12.0F;
-    this.qnv = getResources().getColor(2131100946);
-    this.qnw = -1;
-    this.qnx = getResources().getColor(2131100946);
-    this.qny = -1;
-    this.vnp = 2147483647;
-    this.gfT = 0;
-    this.gfU = 0;
-    this.qnB = 2.5F;
-    this.qnC = ((int)p(1, 2.5F));
-    this.qnD = 4.0F;
-    this.qnE = ((int)p(1, 4.0F));
-    this.qnF = 1.8F;
-    this.qnG = ((int)p(1, 1.8F));
-    this.qnH = 1.0F;
-    this.qnI = ((int)p(1, 1.0F));
-    this.qnJ = 8.0F;
-    this.qnK = ((int)p(1, 8.0F));
-    this.qnL = 22.0F;
-    this.qnM = ((int)p(1, 22.0F));
-    this.qnN = 67.0F;
-    this.qnO = ((int)p(1, 67.0F));
-    this.qnP = 40.0F;
-    this.qnQ = ((int)p(1, 40.0F));
-    this.qnR = 22.0F;
-    this.qnS = ((int)p(1, 22.0F));
-    this.qnT = 55.0F;
-    this.qnU = ((int)p(1, 55.0F));
-    this.qnV = 35.0F;
-    this.qnW = ((int)p(1, 35.0F));
-    this.qnX = 45.0F;
-    this.qnY = ((int)p(1, 45.0F));
-    this.qnZ = 8.0F;
-    this.qoa = ((int)p(1, 8.0F));
-    this.qob = 8.0F;
-    this.qoc = ((int)p(1, 8.0F));
-    this.qod = 2;
-    this.qoe = ((int)p(1, 2.0F));
-    this.qof = 15;
-    this.qog = ((int)p(1, 15.0F));
-    this.qoh = 33.0F;
-    this.qoi = ((int)p(1, 33.0F));
-    this.qoj = 8.0F;
-    this.qok = ((int)p(1, 8.0F));
-    this.qol = 35.0F;
-    this.qom = ((int)p(1, 35.0F));
-    this.qon = 10.0F;
-    this.qoo = ((int)p(1, 10.0F));
-    this.qop = 58.0F;
-    this.qoq = ((int)p(1, 58.0F));
-    this.qor = ((int)p(1, 1.0F));
-    this.qos = 102;
-    this.qot = 102;
-    this.qou = 153;
-    this.qov = 102;
-    this.qow = 102;
-    this.qox = 102;
-    this.qoy = 204;
-    this.qoz = 0;
-    this.qoA = Typeface.create(Typeface.DEFAULT_BOLD, 0);
-    this.qoB = Typeface.create(Typeface.DEFAULT_BOLD, 1);
-    this.qoC = 0;
-    this.qoD = 0;
-    this.AHt = -1;
-    this.spf = -1;
-    this.AHu = SportChartView.a.AHD;
-    this.AHv = 7;
-    this.AHx = new b[this.AHv];
-    this.AHA = new GestureDetector.SimpleOnGestureListener()
+    this.AYT = new SimpleDateFormat(getResources().getString(2131764119));
+    this.AYU = new SimpleDateFormat("d");
+    this.qtS = -1;
+    this.qtT = -1;
+    this.qtU = getResources().getColor(2131100945);
+    this.qtV = 12.0F;
+    this.qtW = 24.0F;
+    this.qtX = 28.0F;
+    this.qtY = 12.0F;
+    this.qtZ = 12.0F;
+    this.qub = getResources().getColor(2131100946);
+    this.quc = -1;
+    this.qud = getResources().getColor(2131100946);
+    this.que = -1;
+    this.vzu = 2147483647;
+    this.gil = 0;
+    this.gim = 0;
+    this.quh = 2.5F;
+    this.qui = ((int)p(1, 2.5F));
+    this.quj = 4.0F;
+    this.quk = ((int)p(1, 4.0F));
+    this.qul = 1.8F;
+    this.qum = ((int)p(1, 1.8F));
+    this.qun = 1.0F;
+    this.quo = ((int)p(1, 1.0F));
+    this.qup = 8.0F;
+    this.quq = ((int)p(1, 8.0F));
+    this.qur = 22.0F;
+    this.qus = ((int)p(1, 22.0F));
+    this.qut = 67.0F;
+    this.quu = ((int)p(1, 67.0F));
+    this.quv = 40.0F;
+    this.quw = ((int)p(1, 40.0F));
+    this.qux = 22.0F;
+    this.quy = ((int)p(1, 22.0F));
+    this.quz = 55.0F;
+    this.quA = ((int)p(1, 55.0F));
+    this.quB = 35.0F;
+    this.quC = ((int)p(1, 35.0F));
+    this.quD = 45.0F;
+    this.quE = ((int)p(1, 45.0F));
+    this.quF = 8.0F;
+    this.quG = ((int)p(1, 8.0F));
+    this.quH = 8.0F;
+    this.quI = ((int)p(1, 8.0F));
+    this.quJ = 2;
+    this.quK = ((int)p(1, 2.0F));
+    this.quL = 15;
+    this.quM = ((int)p(1, 15.0F));
+    this.quN = 33.0F;
+    this.quO = ((int)p(1, 33.0F));
+    this.quP = 8.0F;
+    this.quQ = ((int)p(1, 8.0F));
+    this.quR = 35.0F;
+    this.quS = ((int)p(1, 35.0F));
+    this.quT = 10.0F;
+    this.quU = ((int)p(1, 10.0F));
+    this.quV = 58.0F;
+    this.quW = ((int)p(1, 58.0F));
+    this.quX = ((int)p(1, 1.0F));
+    this.quY = 102;
+    this.quZ = 102;
+    this.qva = 153;
+    this.qvb = 102;
+    this.qvc = 102;
+    this.qvd = 102;
+    this.qve = 204;
+    this.qvf = 0;
+    this.qvg = Typeface.create(Typeface.DEFAULT_BOLD, 0);
+    this.qvh = Typeface.create(Typeface.DEFAULT_BOLD, 1);
+    this.qvi = 0;
+    this.qvj = 0;
+    this.AYW = -1;
+    this.szq = -1;
+    this.AYX = SportChartView.a.AZg;
+    this.AYY = 7;
+    this.AZa = new b[this.AYY];
+    this.AZd = new GestureDetector.SimpleOnGestureListener()
     {
-      private long AHB;
+      private long AZe;
       
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(211011);
+        AppMethodBeat.i(210888);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(211011);
+        AppMethodBeat.o(210888);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(211010);
+        AppMethodBeat.i(210887);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(211010);
+        AppMethodBeat.o(210887);
         return bool;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(211009);
+        AppMethodBeat.i(210886);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(211009);
+        AppMethodBeat.o(210886);
       }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(103525);
-        ad.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
-        if ((System.currentTimeMillis() - this.AHB < 500L) || (!SportChartView.d(SportChartView.this)))
+        ae.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
+        if ((System.currentTimeMillis() - this.AZe < 500L) || (!SportChartView.d(SportChartView.this)))
         {
           AppMethodBeat.o(103525);
           return false;
         }
-        this.AHB = System.currentTimeMillis();
+        this.AZe = System.currentTimeMillis();
         if (paramAnonymousFloat1 > 0.0F)
         {
           SportChartView.e(SportChartView.this);
@@ -463,20 +463,20 @@ public class SportChartView
         AppMethodBeat.i(103524);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         float f1 = paramAnonymousMotionEvent.getX();
         float f2 = paramAnonymousMotionEvent.getY();
         SportChartView.a(SportChartView.this, SportChartView.a(SportChartView.this, f1));
         SportChartView.a(SportChartView.this);
         SportChartView.b(SportChartView.this);
-        ad.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
+        ae.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
         SportChartView.this.invalidate();
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/sport/ui/SportChartView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(103524);
         return true;
       }
     };
-    cmC();
+    cnS();
     AppMethodBeat.o(103532);
   }
   
@@ -486,96 +486,96 @@ public class SportChartView
     AppMethodBeat.i(103533);
     if (paramBoolean)
     {
-      this.qoK.reset();
-      this.qoK.moveTo(this.AHx[0].x, this.AHx[0].y);
+      this.qvq.reset();
+      this.qvq.moveTo(this.AZa[0].x, this.AZa[0].y);
       i = 0;
-      while (i < this.AHx.length)
+      while (i < this.AZa.length)
       {
-        this.qoK.lineTo(this.AHx[i].x, this.AHx[i].y);
+        this.qvq.lineTo(this.AZa[i].x, this.AZa[i].y);
         i += 1;
       }
-      this.qoK.lineTo(this.AHx[(this.AHx.length - 1)].x, this.gfU - this.qnW - 1);
-      this.qoK.lineTo(this.qnK, this.gfU - this.qnW - 1);
-      this.qoK.lineTo(this.qnK, this.AHx[0].y);
-      paramCanvas.drawPath(this.qoK, this.paint);
+      this.qvq.lineTo(this.AZa[(this.AZa.length - 1)].x, this.gim - this.quC - 1);
+      this.qvq.lineTo(this.quq, this.gim - this.quC - 1);
+      this.qvq.lineTo(this.quq, this.AZa[0].y);
+      paramCanvas.drawPath(this.qvq, this.paint);
       AppMethodBeat.o(103533);
       return;
     }
-    this.qoK.reset();
-    this.qoK.moveTo(this.AHx[0].x, this.AHx[0].y);
-    if (i < this.AHx.length)
+    this.qvq.reset();
+    this.qvq.moveTo(this.AZa[0].x, this.AZa[0].y);
+    if (i < this.AZa.length)
     {
       if (i > 0) {
-        if (this.AHx[(i - 1)].y == this.gfU - this.qnQ)
+        if (this.AZa[(i - 1)].y == this.gim - this.quw)
         {
           this.paint.reset();
           DashPathEffect localDashPathEffect = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
           this.paint.setPathEffect(localDashPathEffect);
           this.paint.setAntiAlias(true);
-          this.paint.setStrokeWidth(this.qnG);
+          this.paint.setStrokeWidth(this.qum);
           this.paint.setStyle(Paint.Style.STROKE);
           this.paint.setColor(-1);
         }
       }
       for (;;)
       {
-        this.qoK.lineTo(this.AHx[i].x, this.AHx[i].y);
-        paramCanvas.drawPath(this.qoK, this.paint);
-        this.qoK.reset();
-        this.qoK.moveTo(this.AHx[i].x, this.AHx[i].y);
+        this.qvq.lineTo(this.AZa[i].x, this.AZa[i].y);
+        paramCanvas.drawPath(this.qvq, this.paint);
+        this.qvq.reset();
+        this.qvq.moveTo(this.AZa[i].x, this.AZa[i].y);
         i += 1;
         break;
-        cmE();
+        cnU();
         continue;
-        cmE();
+        cnU();
       }
     }
     AppMethodBeat.o(103533);
   }
   
-  private void cmC()
+  private void cnS()
   {
     AppMethodBeat.i(103538);
     this.paint = new Paint();
-    this.qoJ = new Path();
-    this.qoK = new Path();
-    this.AHx = new b[this.AHv];
-    egE();
-    egF();
-    this.iKD = new GestureDetector(getContext(), this.AHA);
+    this.qvp = new Path();
+    this.qvq = new Path();
+    this.AZa = new b[this.AYY];
+    ekm();
+    ekn();
+    this.iNw = new GestureDetector(getContext(), this.AZd);
     AppMethodBeat.o(103538);
   }
   
-  private void cmE()
+  private void cnU()
   {
     AppMethodBeat.i(103539);
     this.paint.reset();
     this.paint.setAntiAlias(true);
-    this.paint.setStrokeWidth(this.qnG);
+    this.paint.setStrokeWidth(this.qum);
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setColor(-1);
     AppMethodBeat.o(103539);
   }
   
-  private void egE()
+  private void ekm()
   {
     AppMethodBeat.i(103530);
     int i = 0;
-    while (i < this.AHx.length)
+    while (i < this.AZa.length)
     {
-      this.AHx[i] = new b(0);
+      this.AZa[i] = new b(0);
       i += 1;
     }
     AppMethodBeat.o(103530);
   }
   
-  private void egF()
+  private void ekn()
   {
     int i = 0;
-    if (i < this.AHv)
+    if (i < this.AYY)
     {
-      if (i == this.AHv - 1) {}
-      for (this.AHx[i].AHG = true;; this.AHx[i].AHG = false)
+      if (i == this.AYY - 1) {}
+      for (this.AZa[i].AZj = true;; this.AZa[i].AZj = false)
       {
         i += 1;
         break;
@@ -592,16 +592,16 @@ public class SportChartView
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
     int i = 0;
-    if (i < this.AHx.length)
+    if (i < this.AZa.length)
     {
-      if (i == this.AHx.length - 1) {
-        paramCanvas.drawCircle(this.AHx[i].x, this.AHx[i].y, this.qnE, this.paint);
+      if (i == this.AZa.length - 1) {
+        paramCanvas.drawCircle(this.AZa[i].x, this.AZa[i].y, this.quk, this.paint);
       }
       for (;;)
       {
         i += 1;
         break;
-        paramCanvas.drawCircle(this.AHx[i].x, this.AHx[i].y, this.qnC, this.paint);
+        paramCanvas.drawCircle(this.AZa[i].x, this.AZa[i].y, this.qui, this.paint);
       }
     }
     AppMethodBeat.o(103534);
@@ -616,26 +616,26 @@ public class SportChartView
     this.paint.setTextSize(p(2, 12.0F));
     this.paint.setAlpha(153);
     int i = 0;
-    if (i < this.AHx.length)
+    if (i < this.AZa.length)
     {
       if (i == 0)
       {
         this.paint.setTextAlign(Paint.Align.LEFT);
         label78:
-        if (!this.AHx[i].AHG) {
+        if (!this.AZa[i].AZj) {
           break label154;
         }
         this.paint.setColor(-1);
       }
       for (;;)
       {
-        paramCanvas.drawText(this.AHx[i].xbO, this.AHx[i].x, this.gfU - this.qog, this.paint);
+        paramCanvas.drawText(this.AZa[i].xrF, this.AZa[i].x, this.gim - this.quM, this.paint);
         i += 1;
         break;
         this.paint.setTextAlign(Paint.Align.CENTER);
         break label78;
         label154:
-        this.paint.setColor(this.qnv);
+        this.paint.setColor(this.qub);
       }
     }
     AppMethodBeat.o(103537);
@@ -654,61 +654,61 @@ public class SportChartView
     }
   }
   
-  private void sf(boolean paramBoolean)
+  private void sm(boolean paramBoolean)
   {
     int k = 0;
     AppMethodBeat.i(103541);
-    this.vnp = 2147483647;
+    this.vzu = 2147483647;
     Object localObject1 = Calendar.getInstance();
-    this.AHx = new b[this.AHv];
-    egE();
+    this.AZa = new b[this.AYY];
+    ekm();
     int i;
-    if ((this.AHw == null) || (this.AHw.size() <= 0))
+    if ((this.AYZ == null) || (this.AYZ.size() <= 0))
     {
-      this.AHs = true;
-      ((Calendar)localObject1).add(5, -this.AHv);
+      this.AYV = true;
+      ((Calendar)localObject1).add(5, -this.AYY);
       i = 0;
-      while (i < this.AHx.length)
+      while (i < this.AZa.length)
       {
         ((Calendar)localObject1).add(5, 1);
-        this.AHx[i].timestamp = ((Calendar)localObject1).getTimeInMillis();
-        this.AHx[i].kuN = 0;
+        this.AZa[i].timestamp = ((Calendar)localObject1).getTimeInMillis();
+        this.AZa[i].kyd = 0;
         i += 1;
       }
       AppMethodBeat.o(103541);
       return;
     }
-    this.AHs = false;
+    this.AYV = false;
     Object localObject2 = new ArrayList();
-    ((List)localObject2).addAll(this.AHw);
+    ((List)localObject2).addAll(this.AYZ);
     Collections.sort((List)localObject2);
     int m = ((List)localObject2).size();
-    if ((paramBoolean) || (this.spf == -1))
+    if ((paramBoolean) || (this.szq == -1))
     {
-      i = m / this.AHv;
-      if (m % this.AHv == 0) {
+      i = m / this.AYY;
+      if (m % this.AYY == 0) {
         break label413;
       }
     }
     int j;
     label413:
-    for (this.spf = (i + 1);; this.spf = i)
+    for (this.szq = (i + 1);; this.szq = i)
     {
-      if (this.spf > 4) {
-        this.spf = 4;
+      if (this.szq > 4) {
+        this.szq = 4;
       }
-      this.AHt = this.spf;
-      j = m - this.AHv * (this.spf - this.AHt + 1);
+      this.AYW = this.szq;
+      j = m - this.AYY * (this.szq - this.AYW + 1);
       i = j;
       if (j < 0) {
         i = 0;
       }
-      j = m - this.AHv * (this.spf - this.AHt);
-      ad.i("MicroMsg.Sport.SportChartView", "updateViewItems beginIndex:%d endIndex:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      j = m - this.AYY * (this.szq - this.AYW);
+      ae.i("MicroMsg.Sport.SportChartView", "updateViewItems beginIndex:%d endIndex:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       localObject2 = ((List)localObject2).subList(i, j);
       m = ((List)localObject2).size();
       j = k;
-      if (m >= this.AHv) {
+      if (m >= this.AYY) {
         break;
       }
       ((Calendar)localObject1).setTimeInMillis(((d)((List)localObject2).get(0)).field_timestamp);
@@ -716,7 +716,7 @@ public class SportChartView
       for (;;)
       {
         j = k;
-        if (i >= this.AHv - m) {
+        if (i >= this.AYY - m) {
           break;
         }
         ((Calendar)localObject1).add(5, -1);
@@ -727,11 +727,11 @@ public class SportChartView
         i += 1;
       }
     }
-    while (j < this.AHv)
+    while (j < this.AYY)
     {
       localObject1 = (d)((List)localObject2).get(j);
-      this.AHx[j].kuN = ((d)localObject1).field_step;
-      this.AHx[j].timestamp = ((d)localObject1).field_timestamp;
+      this.AZa[j].kyd = ((d)localObject1).field_step;
+      this.AZa[j].timestamp = ((d)localObject1).field_timestamp;
       j += 1;
     }
     AppMethodBeat.o(103541);
@@ -740,22 +740,22 @@ public class SportChartView
   public final void a(SportChartView.a parama)
   {
     AppMethodBeat.i(103529);
-    this.AHu = parama;
-    if (parama == SportChartView.a.AHD) {}
-    for (this.AHv = 7;; this.AHv = 30)
+    this.AYX = parama;
+    if (parama == SportChartView.a.AZg) {}
+    for (this.AYY = 7;; this.AYY = 30)
     {
-      this.AHx = new b[this.AHv];
-      egE();
+      this.AZa = new b[this.AYY];
+      ekm();
       AppMethodBeat.o(103529);
       return;
     }
   }
   
-  public final void gj(List<d> paramList)
+  public final void gs(List<d> paramList)
   {
     AppMethodBeat.i(103535);
-    this.AHw = paramList;
-    sf(true);
+    this.AYZ = paramList;
+    sm(true);
     invalidate();
     AppMethodBeat.o(103535);
   }
@@ -763,34 +763,34 @@ public class SportChartView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(103540);
-    this.gfT = getWidth();
-    this.gfU = getHeight();
-    this.qoC = ((this.gfT - this.qnK - this.qnM) / (this.AHv - 1));
-    this.qoD = ((this.gfU - this.qnO - this.qnQ) / 2);
+    this.gil = getWidth();
+    this.gim = getHeight();
+    this.qvi = ((this.gil - this.quq - this.qus) / (this.AYY - 1));
+    this.qvj = ((this.gim - this.quu - this.quw) / 2);
     int i = 0;
-    while (i < this.AHx.length)
+    while (i < this.AZa.length)
     {
-      this.AHx[i].x = (this.qnK + this.qoC * i);
+      this.AZa[i].x = (this.quq + this.qvi * i);
       i += 1;
     }
-    i = this.AHx.length;
+    i = this.AZa.length;
     int k = i;
-    if (i > this.AHv) {
-      k = this.AHv;
+    if (i > this.AYY) {
+      k = this.AYY;
     }
     int j = 0;
     i = 0;
     while (i < k)
     {
-      if (this.AHx[i].kuN > 100000) {
-        this.AHx[i].kuN = 100000;
+      if (this.AZa[i].kyd > 100000) {
+        this.AZa[i].kyd = 100000;
       }
-      if (this.AHx[i].kuN < 0) {
-        this.AHx[i].kuN = 0;
+      if (this.AZa[i].kyd < 0) {
+        this.AZa[i].kyd = 0;
       }
       int m = j;
-      if (this.AHx[i].kuN > j) {
-        m = this.AHx[i].kuN;
+      if (this.AZa[i].kyd > j) {
+        m = this.AZa[i].kyd;
       }
       i += 1;
       j = m;
@@ -800,14 +800,14 @@ public class SportChartView
     }
     for (;;)
     {
-      this.qoz = ((this.gfU - this.qnO - this.qnQ) * 10000 / i);
-      this.qoz = (this.gfU - this.qnQ - this.qoz);
+      this.qvf = ((this.gim - this.quu - this.quw) * 10000 / i);
+      this.qvf = (this.gim - this.quw - this.qvf);
       j = 0;
       for (;;)
       {
         if (j < k)
         {
-          this.AHx[j].y = (this.gfU - this.qnQ - this.AHx[j].kuN / i * (this.gfU - this.qnO - this.qnQ));
+          this.AZa[j].y = (this.gim - this.quw - this.AZa[j].kyd / i * (this.gim - this.quu - this.quw));
           j += 1;
           continue;
           if ((j <= 15000) || (j > 100000)) {
@@ -825,37 +825,37 @@ public class SportChartView
       if (i < k)
       {
         if (i == 0) {
-          this.AHx[i].xbO = this.AHq.format(new Date(this.AHx[i].timestamp));
+          this.AZa[i].xrF = this.AYT.format(new Date(this.AZa[i].timestamp));
         }
         for (;;)
         {
           i += 1;
           break;
-          if (this.AHu == SportChartView.a.AHE)
+          if (this.AYX == SportChartView.a.AZh)
           {
             if (i % 6 == 5) {
-              this.AHx[i].xbO = this.AHr.format(new Date(this.AHx[i].timestamp));
+              this.AZa[i].xrF = this.AYU.format(new Date(this.AZa[i].timestamp));
             } else {
-              this.AHx[i].xbO = "";
+              this.AZa[i].xrF = "";
             }
           }
           else {
-            this.AHx[i].xbO = this.AHr.format(new Date(this.AHx[i].timestamp));
+            this.AZa[i].xrF = this.AYU.format(new Date(this.AZa[i].timestamp));
           }
         }
       }
       super.onDraw(paramCanvas);
       float f;
-      if (!this.AHs)
+      if (!this.AYV)
       {
         m(paramCanvas);
-        if (this.vnp != 2147483647)
+        if (this.vzu != 2147483647)
         {
-          i = this.vnp;
-          if ((i >= 0) && (i <= this.AHv - 1))
+          i = this.vzu;
+          if ((i >= 0) && (i <= this.AYY - 1))
           {
             this.paint.reset();
-            this.paint.setColor(this.qnv);
+            this.paint.setColor(this.qub);
             this.paint.setAntiAlias(true);
             this.paint.setStrokeWidth(0.0F);
             this.paint.setTextSize(p(2, 12.0F));
@@ -863,120 +863,120 @@ public class SportChartView
             if (i == 0) {
               this.paint.setTextAlign(Paint.Align.LEFT);
             }
-            if (i == this.AHv - 1) {
+            if (i == this.AYY - 1) {
               this.paint.setTextAlign(Paint.Align.RIGHT);
             }
-            if (!this.qoP)
+            if (!this.qvv)
             {
-              this.qoO = ((int)this.AHx[i].y - this.qoq);
-              this.startY = this.qoO;
-              this.qoP = true;
+              this.qvu = ((int)this.AZa[i].y - this.quW);
+              this.startY = this.qvu;
+              this.qvv = true;
             }
-            if (this.qoP)
+            if (this.qvv)
             {
               f = (float)(this.startY / 8.0D);
-              if (this.qoO > 0) {
-                this.paint.setAlpha((this.startY - this.qoO) * 255 / this.startY);
+              if (this.qvu > 0) {
+                this.paint.setAlpha((this.startY - this.qvu) * 255 / this.startY);
               }
-              paramCanvas.drawText(this.AHx[i].kuN, this.AHx[i].x, this.qoO + this.qoq, this.paint);
-              if (this.AHu == SportChartView.a.AHE)
+              paramCanvas.drawText(this.AZa[i].kyd, this.AZa[i].x, this.qvu + this.quW, this.paint);
+              if (this.AYX == SportChartView.a.AZh)
               {
                 this.paint.reset();
-                this.qoJ.reset();
+                this.qvp.reset();
                 localObject = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
                 this.paint.setPathEffect((PathEffect)localObject);
-                this.paint.setColor(this.qnp);
-                this.paint.setStrokeWidth(this.qnI);
+                this.paint.setColor(this.qtU);
+                this.paint.setStrokeWidth(this.quo);
                 this.paint.setStyle(Paint.Style.STROKE);
                 this.paint.setAlpha(102);
-                this.qoJ.moveTo(this.AHx[i].x, this.gfU - this.qnW);
-                this.qoJ.lineTo(this.AHx[i].x, this.qoO + this.qoq + this.qnE);
-                paramCanvas.drawPath(this.qoJ, this.paint);
+                this.qvp.moveTo(this.AZa[i].x, this.gim - this.quC);
+                this.qvp.lineTo(this.AZa[i].x, this.qvu + this.quW + this.quk);
+                paramCanvas.drawPath(this.qvp, this.paint);
               }
-              if (this.qoO <= 0) {
+              if (this.qvu <= 0) {
                 break label1844;
               }
-              if (this.qoO / this.startY > 1.0F / f) {
+              if (this.qvu / this.startY > 1.0F / f) {
                 break label1817;
               }
-              this.qoO -= 1;
+              this.qvu -= 1;
               invalidate();
             }
           }
           label1050:
-          i = this.vnp;
-          if ((i >= 0) && (i <= this.AHv - 1)) {
-            this.AHx[i].AHG = true;
+          i = this.vzu;
+          if ((i >= 0) && (i <= this.AYY - 1)) {
+            this.AZa[i].AZj = true;
           }
         }
       }
       this.paint.reset();
-      this.qoJ.reset();
+      this.qvp.reset();
       Object localObject = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
       this.paint.setPathEffect((PathEffect)localObject);
-      this.paint.setColor(this.qnp);
-      this.paint.setStrokeWidth(this.qnI);
+      this.paint.setColor(this.qtU);
+      this.paint.setStrokeWidth(this.quo);
       this.paint.setAlpha(102);
       this.paint.setStyle(Paint.Style.STROKE);
-      if ((this.qoz != 0) && (!this.AHs))
+      if ((this.qvf != 0) && (!this.AYV))
       {
-        this.qoJ.moveTo(this.qnK, this.qoz);
-        this.qoJ.lineTo(this.gfT - this.qnS, this.qoz);
-        paramCanvas.drawPath(this.qoJ, this.paint);
+        this.qvp.moveTo(this.quq, this.qvf);
+        this.qvp.lineTo(this.gil - this.quy, this.qvf);
+        paramCanvas.drawPath(this.qvp, this.paint);
       }
       this.paint.reset();
-      this.qoJ.reset();
-      this.paint.setColor(this.qnp);
-      this.paint.setStrokeWidth(this.qnI);
+      this.qvp.reset();
+      this.paint.setColor(this.qtU);
+      this.paint.setStrokeWidth(this.quo);
       this.paint.setStyle(Paint.Style.STROKE);
       this.paint.setAlpha(102);
-      this.qoJ.reset();
-      this.qoJ.moveTo(this.qoa, this.gfU - this.qnW);
-      this.qoJ.lineTo(this.gfT - this.qoc, this.gfU - this.qnW);
-      this.qoJ.moveTo(this.qoa, this.qnY);
-      this.qoJ.lineTo(this.gfT - this.qoc, this.qnY);
-      paramCanvas.drawPath(this.qoJ, this.paint);
-      if (!this.AHs)
+      this.qvp.reset();
+      this.qvp.moveTo(this.quG, this.gim - this.quC);
+      this.qvp.lineTo(this.gil - this.quI, this.gim - this.quC);
+      this.qvp.moveTo(this.quG, this.quE);
+      this.qvp.lineTo(this.gil - this.quI, this.quE);
+      paramCanvas.drawPath(this.qvp, this.paint);
+      if (!this.AYV)
       {
         this.paint.reset();
-        this.paint.setColor(this.qnx);
+        this.paint.setColor(this.qud);
         this.paint.setAntiAlias(true);
         this.paint.setAlpha(102);
         this.paint.setStrokeWidth(0.0F);
         this.paint.setTextSize(p(2, 12.0F));
         this.paint.setTextAlign(Paint.Align.RIGHT);
-        paramCanvas.drawText(getResources().getString(2131764118), this.gfT - this.qoe, (float)(this.qoz + this.paint.getTextSize() * 0.34D), this.paint);
+        paramCanvas.drawText(getResources().getString(2131764118), this.gil - this.quK, (float)(this.qvf + this.paint.getTextSize() * 0.34D), this.paint);
       }
-      if (this.AHz)
+      if (this.AZc)
       {
         this.paint.reset();
         this.paint.setColor(-1);
         this.paint.setAntiAlias(true);
         this.paint.setStrokeWidth(0.0F);
-        this.paint.setTypeface(this.qoA);
+        this.paint.setTypeface(this.qvg);
         this.paint.setTextAlign(Paint.Align.RIGHT);
         this.paint.setTextSize(p(2, 28.0F));
-        localObject = String.valueOf(this.AHy);
-        paramCanvas.drawText((String)localObject, this.gfT - this.qoo, this.qom, this.paint);
+        localObject = String.valueOf(this.AZb);
+        paramCanvas.drawText((String)localObject, this.gil - this.quU, this.quS, this.paint);
         f = this.paint.measureText((String)localObject);
         this.paint.setTextSize(p(2, 24.0F));
-        paramCanvas.drawText(getResources().getString(2131764121), this.gfT - this.qoo - f, this.qoi, this.paint);
+        paramCanvas.drawText(getResources().getString(2131764121), this.gil - this.quU - f, this.quO, this.paint);
       }
       for (;;)
       {
-        if (this.AHx.length > 2)
+        if (this.AZa.length > 2)
         {
           this.paint.reset();
           this.paint.setAntiAlias(true);
           this.paint.setStrokeWidth(0.0F);
           this.paint.setAlpha(102);
           this.paint.setStyle(Paint.Style.FILL_AND_STROKE);
-          localObject = new LinearGradient(0.0F, 0.0F, 0.0F, this.gfU - this.qnW, -1, 16777215, Shader.TileMode.REPEAT);
+          localObject = new LinearGradient(0.0F, 0.0F, 0.0F, this.gim - this.quC, -1, 16777215, Shader.TileMode.REPEAT);
           this.paint.setShader((Shader)localObject);
           this.paint.setColor(-1);
           c(paramCanvas, true);
-          cmE();
-          if (!this.AHs) {
+          cnU();
+          if (!this.AYV) {
             c(paramCanvas, false);
           }
         }
@@ -984,22 +984,22 @@ public class SportChartView
         AppMethodBeat.o(103540);
         return;
         label1817:
-        this.qoO = ((int)(this.qoO - f * (this.qoO / this.startY)));
+        this.qvu = ((int)(this.qvu - f * (this.qvu / this.startY)));
         break;
         label1844:
-        this.qoP = false;
+        this.qvv = false;
         break label1050;
         this.paint.reset();
         this.paint.setColor(-1);
         this.paint.setAntiAlias(true);
         this.paint.setStrokeWidth(0.0F);
-        this.paint.setTypeface(this.qoA);
+        this.paint.setTypeface(this.qvg);
         this.paint.setTextSize(p(2, 24.0F));
         this.paint.setTextAlign(Paint.Align.LEFT);
-        paramCanvas.drawText(getResources().getString(2131764120), this.qok, this.qoi, this.paint);
+        paramCanvas.drawText(getResources().getString(2131764120), this.quQ, this.quO, this.paint);
         this.paint.setTextAlign(Paint.Align.RIGHT);
         this.paint.setTextSize(p(2, 28.0F));
-        paramCanvas.drawText(this.AHy, this.gfT - this.qoo, this.qom, this.paint);
+        paramCanvas.drawText(this.AZb, this.gil - this.quU, this.quS, this.paint);
       }
       label2014:
       i = 0;
@@ -1009,31 +1009,31 @@ public class SportChartView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(103542);
-    GestureDetector localGestureDetector = this.iKD;
+    GestureDetector localGestureDetector = this.iNw;
     paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahp(), "com/tencent/mm/plugin/sport/ui/SportChartView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/plugin/sport/ui/SportChartView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahE(), "com/tencent/mm/plugin/sport/ui/SportChartView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mt(0)), "com/tencent/mm/plugin/sport/ui/SportChartView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(103542);
     return true;
   }
   
   public void setHasSwitchBtn(boolean paramBoolean)
   {
-    this.AHz = paramBoolean;
+    this.AZc = paramBoolean;
   }
   
   public void setTodayStep(int paramInt)
   {
-    this.AHy = paramInt;
+    this.AZb = paramInt;
   }
   
   final class b
   {
-    boolean AHG;
-    int kuN;
+    boolean AZj;
+    int kyd;
     long timestamp;
     float x;
-    String xbO = "";
+    String xrF = "";
     float y;
     
     private b() {}

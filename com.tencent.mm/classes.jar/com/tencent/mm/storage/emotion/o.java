@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.io.IOException;
@@ -37,13 +37,13 @@ public final class o
     return 0;
   }
   
-  public final GetEmotionRewardResponse aUU(String paramString)
+  public final GetEmotionRewardResponse aWv(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(105119);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
+      ae.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
       AppMethodBeat.o(105119);
       return null;
     }
@@ -68,7 +68,7 @@ public final class o
     {
       for (;;)
       {
-        ad.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bt.n(paramString) });
+        ae.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bu.o(paramString) });
         paramString = localObject;
       }
     }
@@ -76,7 +76,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.o
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ public abstract interface d
   
   public abstract AppBrandRecentView a(Context paramContext, d.b paramb, d.a parama);
   
-  public abstract void bCb();
+  public abstract void bCV();
   
-  public abstract b bCc();
+  public abstract b bCW();
   
-  public abstract void bCd();
+  public abstract void bCX();
   
-  public abstract boolean bCe();
+  public abstract boolean bCY();
   
-  public abstract HeaderContainer dU(Context paramContext);
+  public abstract HeaderContainer dY(Context paramContext);
   
-  public abstract View dV(Context paramContext);
+  public abstract View dZ(Context paramContext);
 }
 
 

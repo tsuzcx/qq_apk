@@ -5,43 +5,43 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class n
 {
-  ListView KrJ;
-  i KsY;
-  boolean Kxp;
-  private ap Kxq;
-  private Runnable Kxr;
-  int Kxs;
-  e fMX;
+  ListView KOd;
+  i KPs;
+  boolean KTJ;
+  private aq KTK;
+  private Runnable KTL;
+  int KTM;
+  e fPf;
   
   public n()
   {
     AppMethodBeat.i(38706);
-    this.Kxp = false;
-    this.Kxs = -1;
-    this.fMX = new e(new AbsListView.OnScrollListener()
+    this.KTJ = false;
+    this.KTM = -1;
+    this.fPf = new e(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(194757);
-        paramAnonymousAbsListView = d.Ksp;
-        d.a(n.this.KrJ, n.this.KsY, true, true);
-        AppMethodBeat.o(194757);
+        AppMethodBeat.i(188159);
+        paramAnonymousAbsListView = d.KOJ;
+        d.a(n.this.KOd, n.this.KPs, true, true);
+        AppMethodBeat.o(188159);
       }
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
         AppMethodBeat.i(38703);
         if (paramAnonymousInt == 2) {
-          com.tencent.mm.cj.d.fux().gt(MainUI.class.getName() + ".Listview", 4);
+          com.tencent.mm.ci.d.fyy().gC(MainUI.class.getName() + ".Listview", 4);
         }
         if (paramAnonymousInt == 0)
         {
-          if (n.this.KrJ == null)
+          if (n.this.KOd == null)
           {
             AppMethodBeat.o(38703);
             return;
@@ -50,28 +50,28 @@ public final class n
           AppMethodBeat.o(38703);
           return;
         }
-        n.this.fJv();
+        n.this.fNM();
         AppMethodBeat.o(38703);
       }
     });
     AppMethodBeat.o(38706);
   }
   
-  final void fJv()
+  final void fNM()
   {
     AppMethodBeat.i(38707);
-    if (!this.Kxp)
+    if (!this.KTJ)
     {
-      ad.d("MicroMsg.PreLoadHelper", "Jacks cancel PreLoad.");
-      this.Kxp = true;
+      ae.d("MicroMsg.PreLoadHelper", "Jacks cancel PreLoad.");
+      this.KTJ = true;
     }
-    if ((this.Kxq != null) && (this.Kxr != null)) {
-      this.Kxq.removeCallbacks(this.Kxr);
+    if ((this.KTK != null) && (this.KTL != null)) {
+      this.KTK.removeCallbacks(this.KTL);
     }
-    if (this.Kxq != null)
+    if (this.KTK != null)
     {
-      this.Kxq.quit();
-      this.Kxq = null;
+      this.KTK.quit();
+      this.KTK = null;
     }
     AppMethodBeat.o(38707);
   }

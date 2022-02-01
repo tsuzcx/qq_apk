@@ -10,23 +10,23 @@ public final class d
   extends j<c>
 {
   public e db;
-  public f<String, c> wlP;
+  public f<String, c> wBy;
   
   public d(e parame)
   {
     super(parame, c.info, "PieceMusicInfo", null);
     AppMethodBeat.i(63179);
     this.db = parame;
-    this.wlP = new com.tencent.mm.memory.a.c(20);
+    this.wBy = new com.tencent.mm.memory.a.c(20);
     AppMethodBeat.o(63179);
   }
   
-  public final c asK(String paramString)
+  public final c atX(String paramString)
   {
     AppMethodBeat.i(63180);
-    if (this.wlP.get(paramString) != null)
+    if (this.wBy.get(paramString) != null)
     {
-      paramString = (c)this.wlP.get(paramString);
+      paramString = (c)this.wBy.get(paramString);
       AppMethodBeat.o(63180);
       return paramString;
     }
@@ -37,7 +37,7 @@ public final class d
       c localc = new c();
       localc.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.wlP.put(paramString, localc);
+      this.wBy.put(paramString, localc);
       AppMethodBeat.o(63180);
       return localc;
     }

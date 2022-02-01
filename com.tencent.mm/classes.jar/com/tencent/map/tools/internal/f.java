@@ -102,7 +102,7 @@ public final class f
   
   public final Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(195077);
+    AppMethodBeat.i(209788);
     Object localObject = null;
     try
     {
@@ -110,7 +110,7 @@ public final class f
       try
       {
         paramClass = b.a(paramClass, paramString, paramArrayOfObject);
-        AppMethodBeat.o(195077);
+        AppMethodBeat.o(209788);
         return paramClass;
       }
       catch (Exception paramClass)
@@ -118,11 +118,11 @@ public final class f
         if ((paramClass instanceof InvocationTargetException))
         {
           paramClass = new RuntimeException(((InvocationTargetException)paramClass).getTargetException());
-          AppMethodBeat.o(195077);
+          AppMethodBeat.o(209788);
           throw paramClass;
         }
         paramClass = new RuntimeException(paramClass);
-        AppMethodBeat.o(195077);
+        AppMethodBeat.o(209788);
         throw paramClass;
       }
     }
@@ -138,25 +138,17 @@ public final class f
   public final Class findSheet(String paramString)
   {
     AppMethodBeat.i(180782);
-    DexClassLoader localDexClassLoader;
     try
     {
-      localDexClassLoader = this.a.a.a();
-      if (localDexClassLoader == null)
-      {
-        paramString = new NullPointerException("load class failed");
-        AppMethodBeat.o(180782);
-        throw paramString;
-      }
+      paramString = this.a.a(paramString);
+      AppMethodBeat.o(180782);
+      return paramString;
     }
     catch (Exception paramString)
     {
       AppMethodBeat.o(180782);
-      return null;
     }
-    paramString = localDexClassLoader.loadClass(paramString);
-    AppMethodBeat.o(180782);
-    return paramString;
+    return null;
   }
   
   public final <T> Class<? extends T> findSheet(String paramString, Class<T> paramClass)
@@ -175,7 +167,7 @@ public final class f
   public final ClassLoader getSheetLoader()
   {
     AppMethodBeat.i(180786);
-    DexClassLoader localDexClassLoader = this.a.a.a();
+    DexClassLoader localDexClassLoader = this.a.b();
     AppMethodBeat.o(180786);
     return localDexClassLoader;
   }
@@ -183,7 +175,7 @@ public final class f
   public final int loadSheetGroups()
   {
     AppMethodBeat.i(180789);
-    int i = this.a.a.a(a.f);
+    int i = this.a.c();
     AppMethodBeat.o(180789);
     return i;
   }

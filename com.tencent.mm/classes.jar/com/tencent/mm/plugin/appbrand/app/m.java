@@ -8,26 +8,26 @@ import com.tencent.mm.plugin.appbrand.widget.o;
 public final class m
   implements b
 {
-  public final com.tencent.mm.plugin.appbrand.widget.j aYR()
+  public final com.tencent.mm.plugin.appbrand.widget.j aZn()
   {
     AppMethodBeat.i(44231);
-    com.tencent.mm.plugin.appbrand.widget.j localj = j.aYR();
+    com.tencent.mm.plugin.appbrand.widget.j localj = j.aZn();
     AppMethodBeat.o(44231);
     return localj;
   }
   
-  public final o aYT()
+  public final o aZq()
   {
     AppMethodBeat.i(44232);
-    o localo = j.aYT();
+    o localo = j.aZq();
     AppMethodBeat.o(44232);
     return localo;
   }
   
-  public final g aYY()
+  public final g aZv()
   {
     AppMethodBeat.i(44233);
-    g localg = j.aYY();
+    g localg = j.aZv();
     AppMethodBeat.o(44233);
     return localg;
   }

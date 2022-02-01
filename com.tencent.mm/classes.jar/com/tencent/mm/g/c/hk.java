@@ -8,34 +8,28 @@ public abstract class hk
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEU = "appId".hashCode();
-  private static final int eFq;
-  private static final int fBG = "commLibVersionId".hashCode();
-  private static final int fBH = "appVersionId".hashCode();
-  private static final int fBI = "pageURL".hashCode();
-  private static final int fBJ = "cacheFilePath".hashCode();
-  private static final int fBf;
+  private static final int eEF = "msgId".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eHf = "path".hashCode();
+  private static final int eHv = "size".hashCode();
+  private static final int eKz = "msgType".hashCode();
+  private static final int fDA = "msgSubType".hashCode();
+  private static final int fDB = "msgtime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean eFn = true;
-  private boolean fAR = true;
-  private boolean fBC = true;
-  private boolean fBD = true;
-  private boolean fBE = true;
-  private boolean fBF = true;
-  public long field_accessTime;
-  public String field_appId;
-  public String field_appVersionId;
-  public String field_cacheFilePath;
-  public String field_commLibVersionId;
-  public String field_pageURL;
-  public long field_updateTime;
-  
-  static
-  {
-    eFq = "updateTime".hashCode();
-    fBf = "accessTime".hashCode();
-  }
+  private boolean eEB = true;
+  private boolean eGV = true;
+  private boolean eHb = true;
+  private boolean eHt = true;
+  private boolean eKk = true;
+  private boolean fDy = true;
+  private boolean fDz = true;
+  public long field_msgId;
+  public int field_msgSubType;
+  public int field_msgType;
+  public long field_msgtime;
+  public String field_path;
+  public long field_size;
+  public String field_username;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -50,10 +44,10 @@ public abstract class hk
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eEF != k) {
         break label60;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
     }
     for (;;)
     {
@@ -61,18 +55,18 @@ public abstract class hk
       break label20;
       break;
       label60:
-      if (fBG == k) {
-        this.field_commLibVersionId = paramCursor.getString(i);
-      } else if (fBH == k) {
-        this.field_appVersionId = paramCursor.getString(i);
-      } else if (fBI == k) {
-        this.field_pageURL = paramCursor.getString(i);
-      } else if (eFq == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (fBf == k) {
-        this.field_accessTime = paramCursor.getLong(i);
-      } else if (fBJ == k) {
-        this.field_cacheFilePath = paramCursor.getString(i);
+      if (eGY == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eKz == k) {
+        this.field_msgType = paramCursor.getInt(i);
+      } else if (fDA == k) {
+        this.field_msgSubType = paramCursor.getInt(i);
+      } else if (eHf == k) {
+        this.field_path = paramCursor.getString(i);
+      } else if (eHv == k) {
+        this.field_size = paramCursor.getLong(i);
+      } else if (fDB == k) {
+        this.field_msgtime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -82,26 +76,26 @@ public abstract class hk
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eEB) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.fBC) {
-      localContentValues.put("commLibVersionId", this.field_commLibVersionId);
+    if (this.eGV) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.fBD) {
-      localContentValues.put("appVersionId", this.field_appVersionId);
+    if (this.eKk) {
+      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
     }
-    if (this.fBE) {
-      localContentValues.put("pageURL", this.field_pageURL);
+    if (this.fDy) {
+      localContentValues.put("msgSubType", Integer.valueOf(this.field_msgSubType));
     }
-    if (this.eFn) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.eHb) {
+      localContentValues.put("path", this.field_path);
     }
-    if (this.fAR) {
-      localContentValues.put("accessTime", Long.valueOf(this.field_accessTime));
+    if (this.eHt) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.fBF) {
-      localContentValues.put("cacheFilePath", this.field_cacheFilePath);
+    if (this.fDz) {
+      localContentValues.put("msgtime", Long.valueOf(this.field_msgtime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -111,7 +105,7 @@ public abstract class hk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.hk
  * JD-Core Version:    0.7.0.1
  */

@@ -7,33 +7,33 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.f.a.a;
-import com.tencent.mm.plugin.sns.ad.f.a.c;
-import com.tencent.mm.plugin.sns.ad.f.a.d;
-import com.tencent.mm.plugin.sns.ad.f.a.e;
-import com.tencent.mm.plugin.sns.ad.f.a.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.sns.ad.g.a.a;
+import com.tencent.mm.plugin.sns.ad.g.a.c;
+import com.tencent.mm.plugin.sns.ad.g.a.d;
+import com.tencent.mm.plugin.sns.ad.g.a.e;
+import com.tencent.mm.plugin.sns.ad.g.a.f;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class SnsAdSphereAnimView
   extends FrameLayout
 {
-  public static int ACl = 1;
-  public static int ACm = 2;
-  public static int ACn = 3;
-  public static int ACo = 4;
-  public a ACp;
-  public int ACq;
-  public Handler AwR;
-  private long jSO;
+  public static int ATM = 1;
+  public static int ATN = 2;
+  public static int ATO = 3;
+  public static int ATP = 4;
+  public Handler AOj;
+  public a ATQ;
+  public int ATR;
+  private long jWf;
   public Context mContext;
   
   public SnsAdSphereAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(179378);
-    this.ACq = 0;
-    this.jSO = 0L;
-    this.AwR = new Handler(Looper.getMainLooper());
+    this.ATR = 0;
+    this.jWf = 0L;
+    this.AOj = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
     AppMethodBeat.o(179378);
   }
@@ -42,9 +42,9 @@ public class SnsAdSphereAnimView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(179379);
-    this.ACq = 0;
-    this.jSO = 0L;
-    this.AwR = new Handler(Looper.getMainLooper());
+    this.ATR = 0;
+    this.jWf = 0L;
+    this.AOj = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
     AppMethodBeat.o(179379);
   }
@@ -52,13 +52,13 @@ public class SnsAdSphereAnimView
   public final void clear()
   {
     AppMethodBeat.i(179380);
-    ad.i("SnsAdSphereAnimView", "clear");
-    if (this.ACp != null)
+    ae.i("SnsAdSphereAnimView", "clear");
+    if (this.ATQ != null)
     {
-      this.ACp.clear();
-      this.ACp = null;
+      this.ATQ.clear();
+      this.ATQ = null;
     }
-    this.AwR.removeCallbacksAndMessages(null);
+    this.AOj.removeCallbacksAndMessages(null);
     AppMethodBeat.o(179380);
   }
   

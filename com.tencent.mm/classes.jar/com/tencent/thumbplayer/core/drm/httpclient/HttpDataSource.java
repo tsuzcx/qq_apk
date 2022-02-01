@@ -131,9 +131,9 @@ public abstract interface HttpDataSource
     public InvalidContentTypeException(String paramString, DataSpec paramDataSpec)
     {
       super(paramDataSpec, 1);
-      AppMethodBeat.i(220634);
+      AppMethodBeat.i(197573);
       this.contentType = paramString;
-      AppMethodBeat.o(220634);
+      AppMethodBeat.o(197573);
     }
   }
   
@@ -147,11 +147,11 @@ public abstract interface HttpDataSource
     public InvalidResponseCodeException(int paramInt, String paramString, Map<String, List<String>> paramMap, DataSpec paramDataSpec)
     {
       super(paramDataSpec, 1);
-      AppMethodBeat.i(220635);
+      AppMethodBeat.i(197574);
       this.responseCode = paramInt;
       this.responseMessage = paramString;
       this.headerFields = paramMap;
-      AppMethodBeat.o(220635);
+      AppMethodBeat.o(197574);
     }
   }
   
@@ -162,19 +162,19 @@ public abstract interface HttpDataSource
     
     public RequestProperties()
     {
-      AppMethodBeat.i(220636);
+      AppMethodBeat.i(197575);
       this.requestProperties = new HashMap();
-      AppMethodBeat.o(220636);
+      AppMethodBeat.o(197575);
     }
     
     public final void clear()
     {
       try
       {
-        AppMethodBeat.i(220641);
+        AppMethodBeat.i(197580);
         this.requestPropertiesSnapshot = null;
         this.requestProperties.clear();
-        AppMethodBeat.o(220641);
+        AppMethodBeat.o(197580);
         return;
       }
       finally
@@ -188,11 +188,11 @@ public abstract interface HttpDataSource
     {
       try
       {
-        AppMethodBeat.i(220639);
+        AppMethodBeat.i(197578);
         this.requestPropertiesSnapshot = null;
         this.requestProperties.clear();
         this.requestProperties.putAll(paramMap);
-        AppMethodBeat.o(220639);
+        AppMethodBeat.o(197578);
         return;
       }
       finally
@@ -206,12 +206,12 @@ public abstract interface HttpDataSource
     {
       try
       {
-        AppMethodBeat.i(220642);
+        AppMethodBeat.i(197581);
         if (this.requestPropertiesSnapshot == null) {
           this.requestPropertiesSnapshot = Collections.unmodifiableMap(new HashMap(this.requestProperties));
         }
         Map localMap = this.requestPropertiesSnapshot;
-        AppMethodBeat.o(220642);
+        AppMethodBeat.o(197581);
         return localMap;
       }
       finally {}
@@ -221,10 +221,10 @@ public abstract interface HttpDataSource
     {
       try
       {
-        AppMethodBeat.i(220640);
+        AppMethodBeat.i(197579);
         this.requestPropertiesSnapshot = null;
         this.requestProperties.remove(paramString);
-        AppMethodBeat.o(220640);
+        AppMethodBeat.o(197579);
         return;
       }
       finally
@@ -238,10 +238,10 @@ public abstract interface HttpDataSource
     {
       try
       {
-        AppMethodBeat.i(220637);
+        AppMethodBeat.i(197576);
         this.requestPropertiesSnapshot = null;
         this.requestProperties.put(paramString1, paramString2);
-        AppMethodBeat.o(220637);
+        AppMethodBeat.o(197576);
         return;
       }
       finally
@@ -255,10 +255,10 @@ public abstract interface HttpDataSource
     {
       try
       {
-        AppMethodBeat.i(220638);
+        AppMethodBeat.i(197577);
         this.requestPropertiesSnapshot = null;
         this.requestProperties.putAll(paramMap);
-        AppMethodBeat.o(220638);
+        AppMethodBeat.o(197577);
         return;
       }
       finally

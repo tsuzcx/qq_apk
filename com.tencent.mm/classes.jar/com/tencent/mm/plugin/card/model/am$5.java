@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ru;
+import com.tencent.mm.g.a.rv;
 import com.tencent.mm.sdk.b.c;
 
 final class am$5
-  extends c<ru>
+  extends c<rv>
 {
   am$5(am paramam)
   {
     AppMethodBeat.i(161197);
-    this.__eventId = ru.class.getName().hashCode();
+    this.__eventId = rv.class.getName().hashCode();
     AppMethodBeat.o(161197);
   }
 }

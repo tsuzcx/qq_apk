@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fx;
+import com.tencent.mm.g.c.fy;
 import com.tencent.mm.plugin.sns.b.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storagebase.h;
 
 public final class k
@@ -13,7 +13,7 @@ public final class k
   implements e
 {
   public static final String[] SQL_CREATE;
-  public h hHS;
+  public h hKK;
   
   static
   {
@@ -24,44 +24,44 @@ public final class k
   
   public k(h paramh)
   {
-    super(paramh, j.info, "SnsComment", fx.INDEX_CREATE);
-    this.hHS = paramh;
+    super(paramh, j.info, "SnsComment", fy.INDEX_CREATE);
+    this.hKK = paramh;
   }
   
-  public static String dYv()
+  public static String ebZ()
   {
     return "select *, rowid from SnsComment";
   }
   
-  public final boolean Ad(long paramLong)
+  public final boolean AB(long paramLong)
   {
     AppMethodBeat.i(97460);
     String str = "delete from SnsComment where snsID = ".concat(String.valueOf(paramLong));
-    boolean bool = this.hHS.execSQL("SnsComment", str);
+    boolean bool = this.hKK.execSQL("SnsComment", str);
     AppMethodBeat.o(97460);
     return bool;
   }
   
-  public final boolean E(long paramLong, boolean paramBoolean)
+  public final boolean G(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(97463);
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
       String str = " update SnsComment set isSilence = " + i + " where isSilence != " + i + " and  snsID = " + paramLong;
-      ad.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
-      paramBoolean = this.hHS.execSQL("SnsComment", str);
+      ae.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
+      paramBoolean = this.hKK.execSQL("SnsComment", str);
       AppMethodBeat.o(97463);
       return paramBoolean;
     }
   }
   
-  public final Cursor QL(int paramInt)
+  public final Cursor Rs(int paramInt)
   {
     AppMethodBeat.i(97455);
     Object localObject = "select *, rowid from SnsComment where isSend = 0 order by createTime desc LIMIT ".concat(String.valueOf(paramInt));
-    ad.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
-    localObject = this.hHS.a((String)localObject, null, 0);
+    ae.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
+    localObject = this.hKK.a((String)localObject, null, 0);
     AppMethodBeat.o(97455);
     return localObject;
   }
@@ -69,7 +69,7 @@ public final class k
   public final boolean a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(97457);
-    if (bt.isNullOrNil(paramString2)) {}
+    if (bu.isNullOrNil(paramString2)) {}
     for (paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and createTime = " + paramInt + " and talker = '" + paramString1 + "'";; paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and clientId = '" + paramString2 + "'")
     {
       paramString1 = rawQuery(paramString1, new String[0]);
@@ -92,11 +92,11 @@ public final class k
     return false;
   }
   
-  public final int bUJ()
+  public final int bVY()
   {
     int i = 0;
     AppMethodBeat.i(97454);
-    Cursor localCursor = this.hHS.a(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
+    Cursor localCursor = this.hKK.a(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(97454);
@@ -110,30 +110,30 @@ public final class k
     return i;
   }
   
-  public final boolean bUK()
+  public final boolean bVZ()
   {
     AppMethodBeat.i(97462);
-    boolean bool = this.hHS.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
+    boolean bool = this.hKK.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
     AppMethodBeat.o(97462);
     return bool;
   }
   
-  public final void dEM()
+  public final void dId()
   {
     AppMethodBeat.i(97464);
-    this.hHS.aVb("SnsComment");
+    this.hKK.aWC("SnsComment");
     AppMethodBeat.o(97464);
   }
   
-  public final Cursor dYw()
+  public final Cursor eca()
   {
     AppMethodBeat.i(97456);
-    Cursor localCursor = this.hHS.a("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" }, 0);
+    Cursor localCursor = this.hKK.a("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" }, 0);
     AppMethodBeat.o(97456);
     return localCursor;
   }
   
-  public final int dYx()
+  public final int ecb()
   {
     AppMethodBeat.i(97458);
     Cursor localCursor = rawQuery("select count(*) from SnsComment where isSend = 0", new String[0]);
@@ -191,7 +191,7 @@ public final class k
       str2 = str1 + "(8,16)";
     }
     str1 = "delete from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + str2;
-    boolean bool = this.hHS.execSQL("SnsComment", str1);
+    boolean bool = this.hKK.execSQL("SnsComment", str1);
     AppMethodBeat.o(97461);
     return bool;
   }

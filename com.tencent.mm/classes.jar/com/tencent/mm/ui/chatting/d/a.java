@@ -10,38 +10,38 @@ public class a
   extends k
   implements ae, l
 {
-  protected com.tencent.mm.ui.chatting.e.a cWM;
+  protected com.tencent.mm.ui.chatting.e.a cXJ;
   
   public void a(com.tencent.mm.ui.chatting.e.a parama)
   {
     AppMethodBeat.i(35067);
-    this.cWM = parama;
-    ((j)this.cWM.bh(j.class)).a(this);
-    ((n)this.cWM.bh(n.class)).a(this);
+    this.cXJ = parama;
+    ((j)this.cXJ.bh(j.class)).a(this);
+    ((n)this.cXJ.bh(n.class)).a(this);
     AppMethodBeat.o(35067);
   }
   
-  public void fCC()
+  public void fAs() {}
+  
+  public void fAt() {}
+  
+  public void fAu() {}
+  
+  public void fAv() {}
+  
+  public void fAw() {}
+  
+  public void fAx() {}
+  
+  public void fAy() {}
+  
+  public void fGE()
   {
     AppMethodBeat.i(35068);
-    ((j)this.cWM.bh(j.class)).b(this);
-    ((n)this.cWM.bh(n.class)).b(this);
+    ((j)this.cXJ.bh(j.class)).b(this);
+    ((n)this.cXJ.bh(n.class)).b(this);
     AppMethodBeat.o(35068);
   }
-  
-  public void fws() {}
-  
-  public void fwt() {}
-  
-  public void fwu() {}
-  
-  public void fwv() {}
-  
-  public void fww() {}
-  
-  public void fwx() {}
-  
-  public void fwy() {}
 }
 
 

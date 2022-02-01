@@ -6,7 +6,7 @@ public enum OfflineStatus
 {
   static
   {
-    AppMethodBeat.i(195069);
+    AppMethodBeat.i(209773);
     ERROR = new OfflineStatus("ERROR", 0);
     READY = new OfflineStatus("READY", 1);
     START = new OfflineStatus("START", 2);
@@ -16,7 +16,7 @@ public enum OfflineStatus
     OPEN = new OfflineStatus("OPEN", 6);
     CLOSE = new OfflineStatus("CLOSE", 7);
     $VALUES = new OfflineStatus[] { ERROR, READY, START, DOWNLOADING, CANCEL, COMPLETED, OPEN, CLOSE };
-    AppMethodBeat.o(195069);
+    AppMethodBeat.o(209773);
   }
   
   private OfflineStatus() {}

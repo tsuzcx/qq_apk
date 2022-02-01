@@ -5,7 +5,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.widget.base.MMKView;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -231,7 +231,7 @@ public class KindaAnimatorViewProxy
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
+        ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
       }
     }
     if ((paramObject instanceof KView))
@@ -344,7 +344,7 @@ public class KindaAnimatorViewProxy
     }
     catch (InvocationTargetException paramObject)
     {
-      ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+      ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       AppMethodBeat.o(18311);
       return null;
     }
@@ -352,14 +352,14 @@ public class KindaAnimatorViewProxy
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
     catch (IllegalArgumentException paramObject)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
   }

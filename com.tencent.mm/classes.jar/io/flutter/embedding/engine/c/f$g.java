@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum f$g
 {
-  private final String MEk;
+  private final String Nbq;
   
   static
   {
     AppMethodBeat.i(10289);
-    MEz = new g("CLICK", "SystemSoundType.click");
-    MEA = new g[] { MEz };
+    NbF = new g("CLICK", "SystemSoundType.click");
+    NbG = new g[] { NbF };
     AppMethodBeat.o(10289);
   }
   
   private f$g(String paramString)
   {
     Object localObject;
-    this.MEk = localObject;
+    this.Nbq = localObject;
   }
   
-  static g bbU(String paramString)
+  static g bdy(String paramString)
   {
     AppMethodBeat.i(10288);
     g[] arrayOfg = values();
@@ -29,7 +29,7 @@ public enum f$g
     while (i < j)
     {
       g localg = arrayOfg[i];
-      if (localg.MEk.equals(paramString))
+      if (localg.Nbq.equals(paramString))
       {
         AppMethodBeat.o(10288);
         return localg;

@@ -1,6 +1,6 @@
 package com.tencent.tinker.loader;
 
-import androidx.annotation.Keep;
+import com.tencent.tinker.anno.Keep;
 
 @Keep
 public class TinkerTestDexLoad

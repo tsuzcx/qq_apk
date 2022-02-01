@@ -5,18 +5,18 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class gn
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> FyE;
-  public long FyF;
-  public String dpf;
-  public String dvs;
-  public String iia;
+  public LinkedList<String> FRc;
+  public long FRd;
+  public String dqk;
+  public String dwx;
+  public String ikT;
   
   public gn()
   {
     AppMethodBeat.i(138168);
-    this.FyE = new LinkedList();
+    this.FRc = new LinkedList();
     AppMethodBeat.o(138168);
   }
   
@@ -26,57 +26,57 @@ public final class gn
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dvs == null)
+      if (this.dwx == null)
       {
         paramVarArgs = new b("Not all required fields were included: roomname");
         AppMethodBeat.o(138169);
         throw paramVarArgs;
       }
-      if (this.dvs != null) {
-        paramVarArgs.d(1, this.dvs);
+      if (this.dwx != null) {
+        paramVarArgs.d(1, this.dwx);
       }
-      if (this.dpf != null) {
-        paramVarArgs.d(2, this.dpf);
+      if (this.dqk != null) {
+        paramVarArgs.d(2, this.dqk);
       }
-      if (this.iia != null) {
-        paramVarArgs.d(3, this.iia);
+      if (this.ikT != null) {
+        paramVarArgs.d(3, this.ikT);
       }
-      paramVarArgs.e(4, 1, this.FyE);
-      paramVarArgs.aY(5, this.FyF);
+      paramVarArgs.e(4, 1, this.FRc);
+      paramVarArgs.aZ(5, this.FRd);
       AppMethodBeat.o(138169);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dvs == null) {
+      if (this.dwx == null) {
         break label486;
       }
     }
     label486:
-    for (int i = f.a.a.b.b.a.e(1, this.dvs) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.dwx) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.dpf != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dpf);
+      if (this.dqk != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dqk);
       }
       i = paramInt;
-      if (this.iia != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.iia);
+      if (this.ikT != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ikT);
       }
-      paramInt = f.a.a.a.c(4, 1, this.FyE);
-      int j = f.a.a.b.b.a.p(5, this.FyF);
+      paramInt = f.a.a.a.c(4, 1, this.FRc);
+      int j = f.a.a.b.b.a.p(5, this.FRd);
       AppMethodBeat.o(138169);
       return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.FyE.clear();
+        this.FRc.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.dvs == null)
+        if (this.dwx == null)
         {
           paramVarArgs = new b("Not all required fields were included: roomname");
           AppMethodBeat.o(138169);
@@ -95,23 +95,23 @@ public final class gn
           AppMethodBeat.o(138169);
           return -1;
         case 1: 
-          localgn.dvs = locala.NPN.readString();
+          localgn.dwx = locala.OmT.readString();
           AppMethodBeat.o(138169);
           return 0;
         case 2: 
-          localgn.dpf = locala.NPN.readString();
+          localgn.dqk = locala.OmT.readString();
           AppMethodBeat.o(138169);
           return 0;
         case 3: 
-          localgn.iia = locala.NPN.readString();
+          localgn.ikT = locala.OmT.readString();
           AppMethodBeat.o(138169);
           return 0;
         case 4: 
-          localgn.FyE.add(locala.NPN.readString());
+          localgn.FRc.add(locala.OmT.readString());
           AppMethodBeat.o(138169);
           return 0;
         }
-        localgn.FyF = locala.NPN.zd();
+        localgn.FRd = locala.OmT.zd();
         AppMethodBeat.o(138169);
         return 0;
       }

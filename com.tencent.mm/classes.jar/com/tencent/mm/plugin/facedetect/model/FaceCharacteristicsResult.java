@@ -12,7 +12,7 @@ public class FaceCharacteristicsResult
   public static final Parcelable.Creator<FaceCharacteristicsResult> CREATOR;
   public int errCode;
   public String errMsg;
-  public FaceProNative.FaceStatus rhe;
+  public FaceProNative.FaceStatus rpi;
   
   static
   {
@@ -31,22 +31,22 @@ public class FaceCharacteristicsResult
     AppMethodBeat.o(103703);
   }
   
-  public static boolean DH(int paramInt)
+  public static boolean DU(int paramInt)
   {
     return (paramInt >= 10) && (paramInt < 100);
   }
   
-  public static boolean DI(int paramInt)
+  public static boolean DV(int paramInt)
   {
     return (paramInt > 0) && (paramInt < 10);
   }
   
-  public static boolean DJ(int paramInt)
+  public static boolean DW(int paramInt)
   {
     return paramInt <= 0;
   }
   
-  public final void aU(int paramInt, String paramString)
+  public final void aT(int paramInt, String paramString)
   {
     this.errCode = paramInt;
     this.errMsg = paramString;
@@ -60,7 +60,7 @@ public class FaceCharacteristicsResult
   public String toString()
   {
     AppMethodBeat.i(103705);
-    String str = "FaceCharacteristicsResult{mStatus=" + this.rhe + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
+    String str = "FaceCharacteristicsResult{mStatus=" + this.rpi + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
     AppMethodBeat.o(103705);
     return str;
   }
@@ -68,7 +68,7 @@ public class FaceCharacteristicsResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(103704);
-    paramParcel.writeParcelable(this.rhe, paramInt);
+    paramParcel.writeParcelable(this.rpi, paramInt);
     paramParcel.writeInt(this.errCode);
     paramParcel.writeString(this.errMsg);
     AppMethodBeat.o(103704);

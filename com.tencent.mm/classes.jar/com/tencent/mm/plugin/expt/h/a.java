@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.expt.h;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -12,26 +12,26 @@ public final class a
   public int adG;
   public HashMap<String, String> cache = null;
   public long endTime;
-  public int rbA;
-  public int rbB;
-  public String rbC;
-  public int rbx;
-  public int rby;
-  public String rbz;
+  public int rjD;
+  public int rjE;
+  public String rjF;
+  public int rjG;
+  public int rjH;
+  public String rjI;
   public long startTime;
   
   private static void a(HashMap<String, String> paramHashMap, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(195152);
+    AppMethodBeat.i(196714);
     if (paramJSONObject == null)
     {
-      AppMethodBeat.o(195152);
+      AppMethodBeat.o(196714);
       return;
     }
     String str = paramJSONObject.optString("Key");
     paramJSONObject = paramJSONObject.optString("Val");
     Object localObject;
-    if ((!bt.isNullOrNil(str)) && (!bt.isNullOrNil(paramJSONObject)))
+    if ((!bu.isNullOrNil(str)) && (!bu.isNullOrNil(paramJSONObject)))
     {
       localObject = Base64.decode(paramJSONObject, 0);
       if ((localObject == null) || (localObject.length <= 0)) {
@@ -59,48 +59,48 @@ public final class a
         continue;
       }
       paramHashMap.put(str, paramJSONObject);
-      AppMethodBeat.o(195152);
+      AppMethodBeat.o(196714);
       return;
-      ad.e("MicroMsg.ExptAppItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str });
+      ae.e("MicroMsg.ExptAppItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str });
       paramJSONObject = "";
     }
   }
   
-  public final boolean afB(String paramString)
+  public final boolean agx(String paramString)
   {
-    AppMethodBeat.i(195150);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(196712);
+    if (bu.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(195150);
+      AppMethodBeat.o(196712);
       return false;
     }
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      this.rbx = localJSONObject.optInt("ExptId");
+      this.rjD = localJSONObject.optInt("ExptId");
       this.adG = localJSONObject.optInt("GroupId");
-      this.rby = localJSONObject.optInt("ExptSequence");
-      this.rbz = paramString;
+      this.rjE = localJSONObject.optInt("ExptSequence");
+      this.rjF = paramString;
       this.startTime = localJSONObject.optLong("StartTime");
       this.endTime = localJSONObject.optLong("EndTime");
-      this.rbA = localJSONObject.optInt("ExptType");
-      this.rbB = localJSONObject.optInt("SvrType");
-      this.rbC = localJSONObject.optString("ExptCheckSum");
-      cry();
-      ad.v("MicroMsg.ExptAppItem", "convertFrom new [%s] args[%s]", new Object[] { toString(), paramString });
-      AppMethodBeat.o(195150);
+      this.rjG = localJSONObject.optInt("ExptType");
+      this.rjH = localJSONObject.optInt("SvrType");
+      this.rjI = localJSONObject.optString("ExptCheckSum");
+      cta();
+      ae.v("MicroMsg.ExptAppItem", "convertFrom new [%s] args[%s]", new Object[] { toString(), paramString });
+      AppMethodBeat.o(196712);
       return true;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ExptAppItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
-      AppMethodBeat.o(195150);
+      ae.e("MicroMsg.ExptAppItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
+      AppMethodBeat.o(196712);
     }
     return false;
   }
   
   /* Error */
-  public final HashMap<String, String> cry()
+  public final HashMap<String, String> cta()
   {
     // Byte code:
     //   0: ldc 166
@@ -116,13 +116,13 @@ public final class a
     //   22: aload_2
     //   23: areturn
     //   24: aload_0
-    //   25: getfield 115	com/tencent/mm/plugin/expt/h/a:rbz	Ljava/lang/String;
-    //   28: invokestatic 58	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   25: getfield 115	com/tencent/mm/plugin/expt/h/a:rjF	Ljava/lang/String;
+    //   28: invokestatic 58	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   31: ifne +154 -> 185
     //   34: new 46	org/json/JSONObject
     //   37: dup
     //   38: aload_0
-    //   39: getfield 115	com/tencent/mm/plugin/expt/h/a:rbz	Ljava/lang/String;
+    //   39: getfield 115	com/tencent/mm/plugin/expt/h/a:rjF	Ljava/lang/String;
     //   42: invokespecial 97	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   45: ldc 168
     //   47: invokevirtual 172	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
@@ -194,10 +194,10 @@ public final class a
     //   165: dup
     //   166: iconst_1
     //   167: aload_0
-    //   168: getfield 105	com/tencent/mm/plugin/expt/h/a:rbx	I
+    //   168: getfield 105	com/tencent/mm/plugin/expt/h/a:rjD	I
     //   171: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   174: aastore
-    //   175: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   175: invokestatic 88	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   178: goto -66 -> 112
     //   181: astore_3
     //   182: goto -32 -> 150
@@ -224,16 +224,16 @@ public final class a
   public final boolean isReady()
   {
     boolean bool2 = false;
-    AppMethodBeat.i(195154);
+    AppMethodBeat.i(196716);
     boolean bool1;
-    if (this.rby < 0) {
+    if (this.rjE < 0) {
       bool1 = bool2;
     }
     for (;;)
     {
-      AppMethodBeat.o(195154);
+      AppMethodBeat.o(196716);
       return bool1;
-      long l = bt.aQJ();
+      long l = bu.aRi();
       bool1 = bool2;
       if (l >= this.startTime) {
         if (this.endTime > 0L)
@@ -251,9 +251,9 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(195153);
-    String str = "ExptAppItem{exptId=" + this.rbx + ", groupId=" + this.adG + ", exptSeq=" + this.rby + ", exptContent='" + this.rbz + '\'' + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ", exptType=" + this.rbA + ", svrType=" + this.rbB + ", exptCheckSum='" + this.rbC + '\'' + '}';
-    AppMethodBeat.o(195153);
+    AppMethodBeat.i(196715);
+    String str = "ExptAppItem{exptId=" + this.rjD + ", groupId=" + this.adG + ", exptSeq=" + this.rjE + ", exptContent='" + this.rjF + '\'' + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ", exptType=" + this.rjG + ", svrType=" + this.rjH + ", exptCheckSum='" + this.rjI + '\'' + '}';
+    AppMethodBeat.o(196715);
     return str;
   }
 }

@@ -4,39 +4,39 @@ import android.app.Activity;
 
 public abstract class a
 {
-  public abstract void CS(int paramInt);
+  public abstract void Df(int paramInt);
   
-  public abstract void aa(Activity paramActivity);
+  public abstract void ab(Activity paramActivity);
   
-  public abstract void adT(String paramString);
+  public abstract void aeN(String paramString);
   
-  public abstract void adU(String paramString);
+  public abstract void aeO(String paramString);
   
-  public abstract void adV(String paramString);
+  public abstract void aeP(String paramString);
   
-  public abstract void adW(String paramString);
+  public abstract void aeQ(String paramString);
   
-  public abstract boolean adX(String paramString);
+  public abstract boolean aeR(String paramString);
   
-  public abstract boolean adY(String paramString);
+  public abstract boolean aeS(String paramString);
   
-  abstract void adZ(String paramString);
+  abstract void aeT(String paramString);
   
   public abstract void b(String paramString1, boolean paramBoolean, String paramString2);
   
-  public abstract int cnY();
+  public abstract int cpA();
   
-  public abstract boolean cnZ();
+  public abstract boolean cpB();
   
-  public abstract boolean coa();
+  public abstract boolean cpC();
   
-  public abstract String cob();
+  public abstract String cpD();
   
   abstract void reset();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.edx;
+import com.tencent.mm.protocal.protobuf.efo;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public final class l
   extends c
 {
-  private int ikW;
+  private int inP;
   private String talker;
   
   public l(int paramInt, String paramString)
   {
-    this.ikW = paramInt;
+    this.inP = paramInt;
     this.talker = paramString;
   }
   
@@ -28,20 +28,20 @@ public final class l
   protected final void send()
   {
     AppMethodBeat.i(30134);
-    switch (this.ikW)
+    switch (this.inP)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(30134);
       return;
-      edx localedx = new edx();
-      localedx.Hnp = this.talker;
-      localedx.nEt = h.aFs(this.talker);
+      efo localefo = new efo();
+      localefo.HGP = this.talker;
+      localefo.nJO = h.aGM(this.talker);
       try
       {
-        a.eKz();
-        r.a(this.ikW, localedx.toByteArray(), false);
+        a.eOh();
+        r.a(this.inP, localefo.toByteArray(), false);
         AppMethodBeat.o(30134);
         return;
       }
@@ -52,8 +52,8 @@ public final class l
       }
       try
       {
-        a.eKz();
-        r.a(this.ikW, this.talker.getBytes("utf8"), false);
+        a.eOh();
+        r.a(this.inP, this.talker.getBytes("utf8"), false);
         AppMethodBeat.o(30134);
         return;
       }

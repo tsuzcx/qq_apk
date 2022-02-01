@@ -6,33 +6,33 @@ import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseGameLifeContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "username", "", "", "", "insertContact", "", "contact", "replaceContact", "", "updateContact", "Companion", "plugin-gamelife_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseGameLifeContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "username", "", "", "", "insertContact", "", "contact", "replaceContact", "", "updateContact", "Companion", "plugin-gamelife_release"})
 public final class c
   extends j<cu>
 {
   private static final String[] SQL_CREATE;
-  public static final a uxX;
-  final e sxB;
+  public static final a uJA;
+  final e sIs;
   
   static
   {
-    AppMethodBeat.i(211318);
-    uxX = new a((byte)0);
-    a.a locala = a.uxL;
+    AppMethodBeat.i(212087);
+    uJA = new a((byte)0);
+    a.a locala = a.uJo;
     SQL_CREATE = new String[] { j.getCreateSQLs(a.access$getInfo$cp(), "GameLifeContact") };
-    AppMethodBeat.o(211318);
+    AppMethodBeat.o(212087);
   }
   
   public c(e parame)
   {
     super(parame, a.access$getInfo$cp(), "GameLifeContact", cu.INDEX_CREATE);
-    AppMethodBeat.i(211317);
-    this.sxB = parame;
-    AppMethodBeat.o(211317);
+    AppMethodBeat.i(212086);
+    this.sIs = parame;
+    AppMethodBeat.o(212086);
   }
   
   /* Error */
-  public final a amF(String paramString)
+  public final a anG(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -47,12 +47,12 @@ public final class c
     //   17: ldc 109
     //   19: invokespecial 112	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   22: aload_1
-    //   23: invokestatic 118	com/tencent/mm/storagebase/h:wo	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: invokestatic 118	com/tencent/mm/storagebase/h:wX	(Ljava/lang/String;)Ljava/lang/String;
     //   26: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: astore_1
     //   33: aload_0
-    //   34: getfield 97	com/tencent/mm/plugin/gamelife/d/c:sxB	Lcom/tencent/mm/sdk/e/e;
+    //   34: getfield 97	com/tencent/mm/plugin/gamelife/d/c:sIs	Lcom/tencent/mm/sdk/e/e;
     //   37: aload_1
     //   38: aconst_null
     //   39: iconst_2
@@ -75,7 +75,7 @@ public final class c
     //   79: aload_1
     //   80: aload 4
     //   82: invokevirtual 145	com/tencent/mm/plugin/gamelife/d/a:convertFrom	(Landroid/database/Cursor;)V
-    //   85: getstatic 151	d/z:MKo	Ld/z;
+    //   85: getstatic 151	d/z:Nhr	Ld/z;
     //   88: astore 4
     //   90: aload_3
     //   91: aconst_null
@@ -125,7 +125,7 @@ public final class c
   }
   
   /* Error */
-  public final java.util.Map<String, a> eg(java.util.List<String> paramList)
+  public final java.util.Map<String, a> ek(java.util.List<String> paramList)
   {
     // Byte code:
     //   0: ldc 159
@@ -138,11 +138,11 @@ public final class c
     //   15: ldc 161
     //   17: invokespecial 112	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   20: astore_2
-    //   21: getstatic 167	com/tencent/mm/plugin/gamelife/b:uwo	Lcom/tencent/mm/plugin/gamelife/b$a;
+    //   21: getstatic 167	com/tencent/mm/plugin/gamelife/b:uHN	Lcom/tencent/mm/plugin/gamelife/b$a;
     //   24: astore_3
     //   25: aload_2
     //   26: aload_1
-    //   27: invokestatic 173	com/tencent/mm/plugin/gamelife/b$a:ef	(Ljava/util/List;)Ljava/lang/String;
+    //   27: invokestatic 173	com/tencent/mm/plugin/gamelife/b$a:ej	(Ljava/util/List;)Ljava/lang/String;
     //   30: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   36: astore_2
@@ -151,7 +151,7 @@ public final class c
     //   41: invokespecial 176	java/util/HashMap:<init>	()V
     //   44: astore_1
     //   45: aload_0
-    //   46: getfield 97	com/tencent/mm/plugin/gamelife/d/c:sxB	Lcom/tencent/mm/sdk/e/e;
+    //   46: getfield 97	com/tencent/mm/plugin/gamelife/d/c:sIs	Lcom/tencent/mm/sdk/e/e;
     //   49: aload_2
     //   50: aconst_null
     //   51: iconst_2
@@ -208,7 +208,7 @@ public final class c
     //   163: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   166: aload_1
     //   167: athrow
-    //   168: getstatic 151	d/z:MKo	Ld/z;
+    //   168: getstatic 151	d/z:Nhr	Ld/z;
     //   171: astore_2
     //   172: aload_3
     //   173: aconst_null
@@ -246,7 +246,7 @@ public final class c
     //   168	172	189	finally
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "plugin-gamelife_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "plugin-gamelife_release"})
   public static final class a {}
 }
 

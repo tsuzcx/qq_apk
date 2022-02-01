@@ -13,8 +13,8 @@ public class DrawnCallBackLinearLayout
   extends LinearLayout
 {
   public final boolean DEBUG = true;
-  private a KQd;
-  private b KQe;
+  private a LmB;
+  private b LmC;
   public final String TAG = "MicroMsg.TestTimeForChatting";
   
   public DrawnCallBackLinearLayout(Context paramContext)
@@ -37,10 +37,10 @@ public class DrawnCallBackLinearLayout
   {
     AppMethodBeat.i(143316);
     super.dispatchDraw(paramCanvas);
-    if (this.KQd != null)
+    if (this.LmB != null)
     {
-      this.KQd.fER();
-      this.KQd = null;
+      this.LmB.fIU();
+      this.LmB = null;
     }
     AppMethodBeat.o(143316);
   }
@@ -48,8 +48,8 @@ public class DrawnCallBackLinearLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143314);
-    if (this.KQe != null) {
-      this.KQe = null;
+    if (this.LmC != null) {
+      this.LmC = null;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(143314);
@@ -67,17 +67,17 @@ public class DrawnCallBackLinearLayout
   
   public void setListener(a parama)
   {
-    this.KQd = parama;
+    this.LmB = parama;
   }
   
   public void setTouchedCallback(b paramb)
   {
-    this.KQe = paramb;
+    this.LmC = paramb;
   }
   
   public static abstract interface a
   {
-    public abstract void fER();
+    public abstract void fIU();
   }
   
   public static abstract interface b {}

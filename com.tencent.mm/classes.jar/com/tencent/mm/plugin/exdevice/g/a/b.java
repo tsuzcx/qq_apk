@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.IOException;
 
 public final class b
 {
-  public static String acz(String paramString)
+  public static String adq(String paramString)
   {
     AppMethodBeat.i(23501);
-    if ((bt.isNullOrNil(paramString)) || ("#".equals(paramString)))
+    if ((bu.isNullOrNil(paramString)) || ("#".equals(paramString)))
     {
       AppMethodBeat.o(23501);
       return "";
     }
-    Object localObject = ai.ee(paramString);
-    localObject = new e(d.clG(), (String)localObject);
-    if (((e)localObject).exists())
+    Object localObject = aj.ej(paramString);
+    localObject = new k(d.cmW(), (String)localObject);
+    if (((k)localObject).exists())
     {
-      paramString = q.B(((e)localObject).fOK());
+      paramString = w.B(((k)localObject).fTh());
       AppMethodBeat.o(23501);
       return paramString;
     }
     try
     {
-      ((e)localObject).createNewFile();
-      ba.ajF().ay(new a(paramString, (e)localObject));
+      ((k)localObject).createNewFile();
+      bc.ajU().aw(new a(paramString, (k)localObject));
       AppMethodBeat.o(23501);
       return "";
     }
@@ -40,7 +40,7 @@ public final class b
     {
       for (;;)
       {
-        ad.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
+        ae.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
       }
     }
   }
@@ -48,21 +48,21 @@ public final class b
   static final class a
     implements Runnable
   {
-    private e qeG;
+    private k qll;
     private String url;
     
-    a(String paramString, e parame)
+    a(String paramString, k paramk)
     {
       this.url = paramString;
-      this.qeG = parame;
+      this.qll = paramk;
     }
     
     public final void run()
     {
       AppMethodBeat.i(23499);
-      byte[] arrayOfByte = bt.aRi(this.url);
+      byte[] arrayOfByte = bu.aSF(this.url);
       if (arrayOfByte != null) {
-        i.f(q.B(this.qeG.mUri), arrayOfByte, arrayOfByte.length);
+        o.f(w.B(this.qll.mUri), arrayOfByte, arrayOfByte.length);
       }
       AppMethodBeat.o(23499);
     }

@@ -10,13 +10,13 @@ public abstract interface h
   
   public abstract Bitmap getBitmap(String paramString);
   
-  public abstract MCacheItem uk(String paramString);
+  public abstract MCacheItem uF(String paramString);
   
-  public abstract void ul(String paramString);
+  public abstract void uG(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.cache.h
  * JD-Core Version:    0.7.0.1
  */

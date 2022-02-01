@@ -10,9 +10,9 @@ public abstract interface ab
 {
   public abstract int O(byte[] paramArrayOfByte);
   
-  public abstract byte[] aiW();
+  public abstract byte[] ajl();
   
-  public abstract byte[] aiX();
+  public abstract byte[] ajm();
   
   public static final class a$a
     implements ab
@@ -46,7 +46,7 @@ public abstract interface ab
       }
     }
     
-    public final byte[] aiW()
+    public final byte[] ajl()
     {
       AppMethodBeat.i(133129);
       Parcel localParcel1 = Parcel.obtain();
@@ -67,7 +67,7 @@ public abstract interface ab
       }
     }
     
-    public final byte[] aiX()
+    public final byte[] ajm()
     {
       AppMethodBeat.i(133130);
       Parcel localParcel1 = Parcel.obtain();

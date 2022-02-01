@@ -28,8 +28,8 @@ import com.tencent.mm.plugin.qqmail.d.m;
 import com.tencent.mm.plugin.qqmail.d.m.a;
 import com.tencent.mm.plugin.qqmail.d.v;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -46,30 +46,30 @@ import java.util.Set;
 public class MailAddrListUI
   extends MMActivity
 {
-  private TextView jgB;
-  private m xbZ;
-  private p xfV;
-  private ListView xfW;
-  private a xfX;
-  private List<l> xfY;
-  private m.a xfZ;
+  private TextView jju;
+  private m xrQ;
+  private p xvN;
+  private ListView xvO;
+  private a xvP;
+  private List<l> xvQ;
+  private m.a xvR;
   
   public MailAddrListUI()
   {
     AppMethodBeat.i(123053);
-    this.xfV = null;
-    this.jgB = null;
-    this.xbZ = null;
-    this.xfZ = new m.a()
+    this.xvN = null;
+    this.jju = null;
+    this.xrQ = null;
+    this.xvR = new m.a()
     {
       public final void onComplete()
       {
         AppMethodBeat.i(123037);
-        ad.i("MicroMsg.MailAddrListUI", "sync addr complete");
+        ae.i("MicroMsg.MailAddrListUI", "sync addr complete");
         if (MailAddrListUI.a(MailAddrListUI.this) != null) {
           MailAddrListUI.a(MailAddrListUI.this).dismiss();
         }
-        MailAddrListUI.a(MailAddrListUI.this, MailAddrListUI.b(MailAddrListUI.this).auW(null));
+        MailAddrListUI.a(MailAddrListUI.this, MailAddrListUI.b(MailAddrListUI.this).awl(null));
         if (MailAddrListUI.c(MailAddrListUI.this).size() == 0)
         {
           MailAddrListUI.d(MailAddrListUI.this).setText(2131763379);
@@ -77,8 +77,8 @@ public class MailAddrListUI
         }
         Object localObject2 = MailAddrListUI.this;
         Object localObject3 = new StringBuilder().append(MailAddrListUI.this.getString(2131761948));
-        if (MailAddrListUI.e(MailAddrListUI.this).dCM() > 0) {}
-        for (Object localObject1 = "(" + MailAddrListUI.e(MailAddrListUI.this).dCM() + ")";; localObject1 = "")
+        if (MailAddrListUI.e(MailAddrListUI.this).dGd() > 0) {}
+        for (Object localObject1 = "(" + MailAddrListUI.e(MailAddrListUI.this).dGd() + ")";; localObject1 = "")
         {
           ((MailAddrListUI)localObject2).setMMTitle((String)localObject1);
           localObject2 = MailAddrListUI.this.getIntent().getStringArrayExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA");
@@ -101,8 +101,8 @@ public class MailAddrListUI
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (l)((Iterator)localObject2).next();
-          if (((Set)localObject1).contains(((l)localObject3).uZn)) {
-            MailAddrListUI.e(MailAddrListUI.this).xgb.put(((l)localObject3).uZn, localObject3);
+          if (((Set)localObject1).contains(((l)localObject3).vly)) {
+            MailAddrListUI.e(MailAddrListUI.this).xvT.put(((l)localObject3).vly, localObject3);
           }
         }
         label330:
@@ -121,22 +121,22 @@ public class MailAddrListUI
   public void initView()
   {
     AppMethodBeat.i(123055);
-    this.xfW = ((ListView)findViewById(2131303581));
-    this.jgB = ((TextView)findViewById(2131299475));
-    this.xfX = new a(this);
+    this.xvO = ((ListView)findViewById(2131303581));
+    this.jju = ((TextView)findViewById(2131299475));
+    this.xvP = new a(this);
     Object localObject = new r((byte)0);
-    ((r)localObject).KKQ = new r.b()
+    ((r)localObject).Lhk = new r.b()
     {
-      public final boolean Jp(String paramAnonymousString)
+      public final boolean JO(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void Jq(String paramAnonymousString)
+      public final void JP(String paramAnonymousString)
       {
         AppMethodBeat.i(123038);
-        paramAnonymousString = bt.bI(paramAnonymousString, "");
-        MailAddrListUI.a(MailAddrListUI.this, MailAddrListUI.b(MailAddrListUI.this).auW(paramAnonymousString.toLowerCase().trim()));
+        paramAnonymousString = bu.bI(paramAnonymousString, "");
+        MailAddrListUI.a(MailAddrListUI.this, MailAddrListUI.b(MailAddrListUI.this).awl(paramAnonymousString.toLowerCase().trim()));
         if (MailAddrListUI.c(MailAddrListUI.this).size() == 0)
         {
           MailAddrListUI.d(MailAddrListUI.this).setText(2131761957);
@@ -153,17 +153,17 @@ public class MailAddrListUI
         }
       }
       
-      public final void aSm() {}
+      public final void aSL() {}
       
-      public final void aSn() {}
+      public final void aSM() {}
       
-      public final void aSo() {}
+      public final void aSN() {}
       
-      public final void aSp() {}
+      public final void aSO() {}
     };
     addSearchMenu(true, (r)localObject);
-    this.xfW.setAdapter(this.xfX);
-    this.xfW.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.xvO.setAdapter(this.xvP);
+    this.xvO.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -171,35 +171,35 @@ public class MailAddrListUI
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousAdapterView);
         ((b)localObject).bd(paramAnonymousView);
-        ((b)localObject).mr(paramAnonymousInt);
-        ((b)localObject).qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahq());
+        ((b)localObject).mu(paramAnonymousInt);
+        ((b)localObject).rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
         paramAnonymousAdapterView = MailAddrListUI.e(MailAddrListUI.this);
-        paramAnonymousView = paramAnonymousAdapterView.Nn(paramAnonymousInt - MailAddrListUI.f(MailAddrListUI.this).getHeaderViewsCount());
-        localObject = paramAnonymousView.uZn;
-        if (paramAnonymousAdapterView.xgb.containsKey(localObject))
+        paramAnonymousView = paramAnonymousAdapterView.NT(paramAnonymousInt - MailAddrListUI.f(MailAddrListUI.this).getHeaderViewsCount());
+        localObject = paramAnonymousView.vly;
+        if (paramAnonymousAdapterView.xvT.containsKey(localObject))
         {
-          paramAnonymousAdapterView.xgb.remove(localObject);
+          paramAnonymousAdapterView.xvT.remove(localObject);
           paramAnonymousAdapterView.notifyDataSetChanged();
           paramAnonymousView = MailAddrListUI.this;
           localObject = new StringBuilder().append(MailAddrListUI.this.getString(2131761948));
-          if (MailAddrListUI.e(MailAddrListUI.this).dCM() <= 0) {
+          if (MailAddrListUI.e(MailAddrListUI.this).dGd() <= 0) {
             break label234;
           }
         }
         label234:
-        for (paramAnonymousAdapterView = "(" + MailAddrListUI.e(MailAddrListUI.this).dCM() + ")";; paramAnonymousAdapterView = "")
+        for (paramAnonymousAdapterView = "(" + MailAddrListUI.e(MailAddrListUI.this).dGd() + ")";; paramAnonymousAdapterView = "")
         {
           paramAnonymousView.setMMTitle(paramAnonymousAdapterView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(123039);
           return;
-          paramAnonymousAdapterView.xgb.put(localObject, paramAnonymousView);
+          paramAnonymousAdapterView.xvT.put(localObject, paramAnonymousView);
           break;
         }
       }
     });
-    this.xfW.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.xvO.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -212,8 +212,8 @@ public class MailAddrListUI
         AppMethodBeat.o(123040);
       }
     });
-    this.xfY = this.xbZ.auW(null);
-    this.xfX.notifyDataSetChanged();
+    this.xvQ = this.xrQ.awl(null);
+    this.xvP.notifyDataSetChanged();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -232,12 +232,12 @@ public class MailAddrListUI
         AppMethodBeat.i(123042);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         paramAnonymousView = MailAddrListUI.f(MailAddrListUI.this);
         paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
         localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/MailAddrListUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(123042);
@@ -250,26 +250,26 @@ public class MailAddrListUI
         AppMethodBeat.i(123043);
         paramAnonymousMenuItem = MailAddrListUI.e(MailAddrListUI.this);
         ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = paramAnonymousMenuItem.xgb.keySet().iterator();
+        Iterator localIterator = paramAnonymousMenuItem.xvT.keySet().iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          localArrayList.add(paramAnonymousMenuItem.xgb.get(str));
+          localArrayList.add(paramAnonymousMenuItem.xvT.get(str));
         }
-        ComposeUI.eS(localArrayList);
+        ComposeUI.fa(localArrayList);
         MailAddrListUI.this.setResult(-1);
         MailAddrListUI.this.finish();
         AppMethodBeat.o(123043);
         return true;
       }
     });
-    if (!this.xfY.isEmpty()) {}
+    if (!this.xvQ.isEmpty()) {}
     for (boolean bool = true;; bool = false)
     {
       enableOptionMenu(bool);
       localObject = getContext();
       getString(2131755906);
-      this.xfV = h.b((Context)localObject, getString(2131761946), true, new DialogInterface.OnCancelListener()
+      this.xvN = h.b((Context)localObject, getString(2131761946), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
@@ -283,11 +283,11 @@ public class MailAddrListUI
     AppMethodBeat.i(123054);
     super.onCreate(paramBundle);
     setMMTitle(2131761948);
-    this.xfY = new ArrayList();
-    this.xbZ = ((k)g.ad(k.class)).getNormalMailAppService().xbZ;
+    this.xvQ = new ArrayList();
+    this.xrQ = ((k)g.ad(k.class)).getNormalMailAppService().xrQ;
     initView();
-    this.xbZ.a(this.xfZ);
-    this.xbZ.dCh();
+    this.xrQ.a(this.xvR);
+    this.xrQ.dFy();
     AppMethodBeat.o(123054);
   }
   
@@ -295,7 +295,7 @@ public class MailAddrListUI
   {
     AppMethodBeat.i(123058);
     super.onDestroy();
-    this.xbZ.b(this.xfZ);
+    this.xrQ.b(this.xvR);
     AppMethodBeat.o(123058);
   }
   
@@ -310,7 +310,7 @@ public class MailAddrListUI
   {
     AppMethodBeat.i(123057);
     super.onResume();
-    this.xfX.notifyDataSetChanged();
+    this.xvP.notifyDataSetChanged();
     AppMethodBeat.o(123057);
   }
   
@@ -324,12 +324,12 @@ public class MailAddrListUI
     extends BaseAdapter
   {
     private final Context context;
-    Map<String, l> xgb;
+    Map<String, l> xvT;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(123044);
-      this.xgb = new HashMap();
+      this.xvT = new HashMap();
       this.context = paramContext;
       AppMethodBeat.o(123044);
     }
@@ -350,7 +350,7 @@ public class MailAddrListUI
         case '|': 
         case '}': 
         default: 
-          if (!bt.F(c)) {
+          if (!bu.F(c)) {
             break label130;
           }
           AppMethodBeat.o(123050);
@@ -358,7 +358,7 @@ public class MailAddrListUI
         }
       }
       c = paraml.charAt(1);
-      if (bt.G(c))
+      if (bu.G(c))
       {
         AppMethodBeat.o(123050);
         return String.valueOf(c);
@@ -372,7 +372,7 @@ public class MailAddrListUI
       return "~";
     }
     
-    public final l Nn(int paramInt)
+    public final l NT(int paramInt)
     {
       AppMethodBeat.i(123051);
       l locall = (l)MailAddrListUI.c(MailAddrListUI.this).get(paramInt);
@@ -380,10 +380,10 @@ public class MailAddrListUI
       return locall;
     }
     
-    public final int dCM()
+    public final int dGd()
     {
       AppMethodBeat.i(123046);
-      int i = this.xgb.size();
+      int i = this.xvT.size();
       AppMethodBeat.o(123046);
       return i;
     }
@@ -409,32 +409,32 @@ public class MailAddrListUI
       {
         paramViewGroup = new a();
         paramView = View.inflate(this.context, 2131495155, null);
-        paramViewGroup.xgc = ((TextView)paramView.findViewById(2131303577));
-        paramViewGroup.jfJ = ((TextView)paramView.findViewById(2131303579));
-        paramViewGroup.xgd = ((TextView)paramView.findViewById(2131303576));
-        paramViewGroup.iVs = ((CheckBox)paramView.findViewById(2131303580));
+        paramViewGroup.xvU = ((TextView)paramView.findViewById(2131303577));
+        paramViewGroup.jiC = ((TextView)paramView.findViewById(2131303579));
+        paramViewGroup.xvV = ((TextView)paramView.findViewById(2131303576));
+        paramViewGroup.iYl = ((CheckBox)paramView.findViewById(2131303580));
         paramView.setTag(paramViewGroup);
-        locall = Nn(paramInt);
+        locall = NT(paramInt);
         if (paramInt <= 0) {
           break label265;
         }
       }
       label259:
       label265:
-      for (Object localObject = Nn(paramInt - 1);; localObject = null)
+      for (Object localObject = NT(paramInt - 1);; localObject = null)
       {
         String str = a(locall);
         localObject = a((l)localObject);
         if (str != null) {
           if (!str.equals(localObject))
           {
-            paramViewGroup.xgc.setText(str.toUpperCase());
-            paramViewGroup.xgc.setVisibility(0);
+            paramViewGroup.xvU.setText(str.toUpperCase());
+            paramViewGroup.xvU.setVisibility(0);
             label162:
-            paramViewGroup.jfJ.setText(locall.name);
-            paramViewGroup.xgd.setText(locall.uZn);
-            paramViewGroup = paramViewGroup.iVs;
-            if (this.xgb.get(locall.uZn) == null) {
+            paramViewGroup.jiC.setText(locall.name);
+            paramViewGroup.xvV.setText(locall.vly);
+            paramViewGroup = paramViewGroup.iYl;
+            if (this.xvT.get(locall.vly) == null) {
               break label259;
             }
           }
@@ -446,9 +446,9 @@ public class MailAddrListUI
           return paramView;
           paramViewGroup = (a)paramView.getTag();
           break;
-          paramViewGroup.xgc.setVisibility(8);
+          paramViewGroup.xvU.setVisibility(8);
           break label162;
-          paramViewGroup.xgc.setVisibility(8);
+          paramViewGroup.xvU.setVisibility(8);
           break label162;
         }
       }
@@ -456,10 +456,10 @@ public class MailAddrListUI
     
     final class a
     {
-      CheckBox iVs;
-      TextView jfJ;
-      TextView xgc;
-      TextView xgd;
+      CheckBox iYl;
+      TextView jiC;
+      TextView xvU;
+      TextView xvV;
       
       a() {}
     }
@@ -467,7 +467,7 @@ public class MailAddrListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrListUI
  * JD-Core Version:    0.7.0.1
  */

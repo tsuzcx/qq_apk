@@ -10,7 +10,7 @@ public final class e
   extends f
   implements a
 {
-  private c crU = null;
+  private c csx = null;
   
   public e(Context paramContext)
   {
@@ -19,7 +19,7 @@ public final class e
   
   public final c getReferrerPolicy()
   {
-    return this.crU;
+    return this.csx;
   }
   
   public final View getView()
@@ -33,12 +33,12 @@ public final class e
   
   public final void setReferrerPolicy(c paramc)
   {
-    this.crU = paramc;
+    this.csx = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import org.b.d.i;
 
 public abstract interface a
 {
-  public abstract i bea(String paramString);
+  public abstract i bfE(String paramString);
 }
 
 

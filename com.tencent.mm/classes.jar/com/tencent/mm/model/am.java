@@ -1,14 +1,14 @@
 package com.tencent.mm.model;
 
-public abstract class am
+import android.content.Context;
+
+public abstract interface am
 {
-  public long hFN = 0L;
+  public abstract void E(Context paramContext, String paramString);
   
-  public abstract String getTag();
+  public abstract am a(p paramp);
   
-  public abstract boolean op(int paramInt);
-  
-  public abstract void transfer(int paramInt);
+  public abstract am b(p paramp);
 }
 
 

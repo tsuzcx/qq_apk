@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.websocket;
 
-import com.tencent.mm.plugin.appbrand.aa.e.a;
-import com.tencent.mm.plugin.appbrand.aa.e.h;
+import com.tencent.mm.plugin.appbrand.z.e.a;
+import com.tencent.mm.plugin.appbrand.z.e.h;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.Map;
@@ -9,11 +9,11 @@ import java.util.Timer;
 
 public abstract interface e
 {
-  public static final String iFB = null;
+  public static final String iIu = null;
   
-  public abstract void Rl(String paramString);
+  public abstract void RU(String paramString);
   
-  public abstract void Rm(String paramString);
+  public abstract void RV(String paramString);
   
   public abstract void a(a parama);
   
@@ -21,11 +21,11 @@ public abstract interface e
   
   public abstract void a(Timer paramTimer);
   
-  public abstract String aOC();
+  public abstract String aOZ();
   
-  public abstract void bI(String paramString, int paramInt);
+  public abstract void bL(String paramString, int paramInt);
   
-  public abstract Timer boX();
+  public abstract Timer bpH();
   
   public abstract void close();
   
@@ -41,9 +41,9 @@ public abstract interface e
   
   public static abstract interface a
   {
-    public abstract void Ob(String paramString);
+    public abstract void OI(String paramString);
     
-    public abstract void Qh(String paramString);
+    public abstract void QQ(String paramString);
     
     public abstract void a(a parama);
     

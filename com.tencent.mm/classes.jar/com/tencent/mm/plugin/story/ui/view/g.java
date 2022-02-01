@@ -7,50 +7,50 @@ import d.g.a.b;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/ViewClickHelper;", "", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "clickDelay", "", "clickRecord", "", "endRecordRunnable", "Ljava/lang/Runnable;", "isRecording", "", "onClickListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "getOnClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onDoubleClickListener", "getOnDoubleClickListener", "setOnDoubleClickListener", "onTripleClickListener", "getOnTripleClickListener", "setOnTripleClickListener", "checkDispatch", "dispatchClickEvent", "recordClick", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/ViewClickHelper;", "", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "clickDelay", "", "clickRecord", "", "endRecordRunnable", "Ljava/lang/Runnable;", "isRecording", "", "onClickListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "getOnClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onDoubleClickListener", "getOnDoubleClickListener", "setOnDoubleClickListener", "onTripleClickListener", "getOnTripleClickListener", "setOnTripleClickListener", "checkDispatch", "dispatchClickEvent", "recordClick", "plugin-story_release"})
 public final class g
 {
-  b<? super View, z> Bcb;
-  public b<? super View, z> Bcc;
-  b<? super View, z> Bcd;
-  int Bce;
-  final long Bcf;
-  Runnable Bcg;
-  boolean htg;
+  public b<? super View, z> BtA;
+  b<? super View, z> BtB;
+  int BtC;
+  final long BtD;
+  Runnable BtE;
+  b<? super View, z> Btz;
+  boolean hvU;
   private final View view;
   
   public g(View paramView)
   {
     AppMethodBeat.i(120316);
     this.view = paramView;
-    this.Bcf = ViewConfiguration.getDoubleTapTimeout();
-    this.Bcg = ((Runnable)new a(this));
+    this.BtD = ViewConfiguration.getDoubleTapTimeout();
+    this.BtE = ((Runnable)new a(this));
     AppMethodBeat.o(120316);
   }
   
-  final void emb()
+  final void epK()
   {
     AppMethodBeat.i(120315);
-    switch (this.Bce)
+    switch (this.BtC)
     {
     }
     for (;;)
     {
-      this.Bce = 0;
-      this.htg = false;
+      this.BtC = 0;
+      this.hvU = false;
       AppMethodBeat.o(120315);
       return;
-      b localb = this.Bcb;
+      b localb = this.Btz;
       if (localb != null)
       {
         localb.invoke(this.view);
         continue;
-        localb = this.Bcc;
+        localb = this.BtA;
         if (localb != null)
         {
           localb.invoke(this.view);
           continue;
-          localb = this.Bcd;
+          localb = this.BtB;
           if (localb != null) {
             localb.invoke(this.view);
           }
@@ -59,7 +59,7 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -68,14 +68,14 @@ public final class g
     public final void run()
     {
       AppMethodBeat.i(120314);
-      this.Bch.emb();
+      this.BtF.epK();
       AppMethodBeat.o(120314);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.g
  * JD-Core Version:    0.7.0.1
  */

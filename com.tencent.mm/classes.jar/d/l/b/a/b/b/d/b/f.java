@@ -11,7 +11,7 @@ import java.util.List;
 public abstract interface f
   extends d
 {
-  public abstract AnnotatedElement gkC();
+  public abstract AnnotatedElement gpe();
   
   public static final class a
   {
@@ -19,7 +19,7 @@ public abstract interface f
     {
       AppMethodBeat.i(57419);
       p.h(paramb, "fqName");
-      paramf = paramf.gkC();
+      paramf = paramf.gpe();
       if (paramf != null)
       {
         paramf = paramf.getDeclaredAnnotations();
@@ -37,7 +37,7 @@ public abstract interface f
     public static List<c> a(f paramf)
     {
       AppMethodBeat.i(57418);
-      paramf = paramf.gkC();
+      paramf = paramf.gpe();
       if (paramf != null)
       {
         paramf = paramf.getDeclaredAnnotations();
@@ -48,7 +48,7 @@ public abstract interface f
           return paramf;
         }
       }
-      paramf = (List)v.MKE;
+      paramf = (List)v.NhH;
       AppMethodBeat.o(57418);
       return paramf;
     }
@@ -56,7 +56,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.f
  * JD-Core Version:    0.7.0.1
  */

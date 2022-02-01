@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 
@@ -21,12 +21,12 @@ public class ProfileEditPhoneNumberView
   extends ProfileItemView
   implements MMPhoneNumberEditText.a
 {
-  public a ETA;
-  public String ETv;
-  public String ETw;
-  public String[] ETx;
-  private LinearLayout ETy;
-  private boolean ETz = false;
+  public String FlQ;
+  public String FlR;
+  public String[] FlS;
+  private LinearLayout FlT;
+  private boolean FlU = false;
+  public a FlV;
   
   public ProfileEditPhoneNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,28 +38,28 @@ public class ProfileEditPhoneNumberView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void cA(String paramString, boolean paramBoolean)
+  private void cE(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(31222);
     MMPhoneNumberEditText localMMPhoneNumberEditText = (MMPhoneNumberEditText)LayoutInflater.from(getContext()).inflate(2131495136, null);
-    localMMPhoneNumberEditText.setHint(aj.getResources().getString(2131755149));
+    localMMPhoneNumberEditText.setHint(ak.getResources().getString(2131755149));
     if (paramBoolean) {
-      localMMPhoneNumberEditText.fbN();
+      localMMPhoneNumberEditText.ffB();
     }
     localMMPhoneNumberEditText.setCallback(this);
     localMMPhoneNumberEditText.setText(paramString);
     localMMPhoneNumberEditText.setSelection(localMMPhoneNumberEditText.getText().length());
     paramString = new LinearLayout.LayoutParams(-1, -2);
-    paramString.setMargins(com.tencent.mm.cc.a.fromDPToPix(getContext(), 16), com.tencent.mm.cc.a.fromDPToPix(getContext(), 0), 0, 0);
-    this.ETy.addView(localMMPhoneNumberEditText, paramString);
+    paramString.setMargins(com.tencent.mm.cb.a.fromDPToPix(getContext(), 16), com.tencent.mm.cb.a.fromDPToPix(getContext(), 0), 0, 0);
+    this.FlT.addView(localMMPhoneNumberEditText, paramString);
     AppMethodBeat.o(31222);
   }
   
-  private void fbX()
+  private void ffL()
   {
     AppMethodBeat.i(31217);
-    if (this.ETA != null) {
-      this.ETA.onChange();
+    if (this.FlV != null) {
+      this.FlV.onChange();
     }
     AppMethodBeat.o(31217);
   }
@@ -67,14 +67,14 @@ public class ProfileEditPhoneNumberView
   private void h(MMPhoneNumberEditText paramMMPhoneNumberEditText)
   {
     AppMethodBeat.i(31223);
-    this.ETy.removeView(paramMMPhoneNumberEditText);
-    this.ETy.getChildAt(this.ETy.getChildCount() - 1).requestFocus();
+    this.FlT.removeView(paramMMPhoneNumberEditText);
+    this.FlT.getChildAt(this.FlT.getChildCount() - 1).requestFocus();
     AppMethodBeat.o(31223);
   }
   
-  public final boolean aa(am paramam)
+  public final boolean ah(an paraman)
   {
-    this.pMt = paramam;
+    this.pSY = paraman;
     return true;
   }
   
@@ -82,46 +82,46 @@ public class ProfileEditPhoneNumberView
   {
     AppMethodBeat.i(31214);
     int i = 1;
-    while (i < this.ETy.getChildCount())
+    while (i < this.FlT.getChildCount())
     {
-      this.ETy.getChildAt(i).clearFocus();
+      this.FlT.getChildAt(i).clearFocus();
       i += 1;
     }
     AppMethodBeat.o(31214);
   }
   
-  public final boolean dBj()
+  public final boolean dEA()
   {
     AppMethodBeat.i(31215);
     int j;
-    if (!bt.isNullOrNil(this.ETv))
+    if (!bu.isNullOrNil(this.FlQ))
     {
-      cA(this.ETv, true);
+      cE(this.FlQ, true);
       j = 1;
     }
     for (int i = 1;; i = 0)
     {
       int k = i;
-      if (!bt.isNullOrNil(this.ETw))
+      if (!bu.isNullOrNil(this.FlR))
       {
-        this.ETx = com.tencent.mm.o.a.a(this.pMt, this.ETw);
+        this.FlS = com.tencent.mm.contact.a.a(this.pSY, this.FlR);
         k = i;
-        if (this.ETx != null) {
+        if (this.FlS != null) {
           for (;;)
           {
             k = i;
-            if (i >= this.ETx.length + j) {
+            if (i >= this.FlS.length + j) {
               break;
             }
-            cA(this.ETx[(i - j)].trim(), false);
+            cE(this.FlS[(i - j)].trim(), false);
             i += 1;
           }
         }
       }
       if (k < 5) {
-        cA(null, false);
+        cE(null, false);
       }
-      for (this.ETz = false;; this.ETz = true)
+      for (this.FlU = false;; this.FlU = true)
       {
         AppMethodBeat.o(31215);
         return false;
@@ -133,15 +133,15 @@ public class ProfileEditPhoneNumberView
   public final void f(final MMPhoneNumberEditText paramMMPhoneNumberEditText)
   {
     AppMethodBeat.i(31218);
-    if (paramMMPhoneNumberEditText.ETc)
+    if (paramMMPhoneNumberEditText.Flx)
     {
       h.a(getContext(), 2131760245, 0, 2131760244, 2131760243, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(31212);
-          ProfileEditPhoneNumberView.this.ETv = "";
-          ProfileEditPhoneNumberView.this.ETA.fbY();
+          ProfileEditPhoneNumberView.this.FlQ = "";
+          ProfileEditPhoneNumberView.this.FlV.ffM();
           ProfileEditPhoneNumberView.a(ProfileEditPhoneNumberView.this, paramMMPhoneNumberEditText);
           if (!ProfileEditPhoneNumberView.a(ProfileEditPhoneNumberView.this)) {
             ProfileEditPhoneNumberView.b(ProfileEditPhoneNumberView.this);
@@ -153,51 +153,51 @@ public class ProfileEditPhoneNumberView
       return;
     }
     h(paramMMPhoneNumberEditText);
-    if (this.ETz)
+    if (this.FlU)
     {
-      cA(null, false);
-      this.ETz = false;
+      cE(null, false);
+      this.FlU = false;
     }
-    fbX();
+    ffL();
     AppMethodBeat.o(31218);
   }
   
-  public final void fbR()
+  public final void ffF()
   {
     AppMethodBeat.i(31220);
-    if (this.ETy.getChildCount() < 5) {
-      cA(null, false);
+    if (this.FlT.getChildCount() < 5) {
+      cE(null, false);
     }
     for (;;)
     {
-      fbX();
+      ffL();
       AppMethodBeat.o(31220);
       return;
-      this.ETz = true;
+      this.FlU = true;
     }
   }
   
-  public final void fbS()
+  public final void ffG()
   {
     AppMethodBeat.i(31219);
-    fbX();
+    ffL();
     AppMethodBeat.o(31219);
   }
   
   public final void g(MMPhoneNumberEditText paramMMPhoneNumberEditText)
   {
     AppMethodBeat.i(31221);
-    if (this.ETy.getChildCount() - 1 == 1)
+    if (this.FlT.getChildCount() - 1 == 1)
     {
       AppMethodBeat.o(31221);
       return;
     }
     h(paramMMPhoneNumberEditText);
-    if (this.ETz) {
-      cA(null, false);
+    if (this.FlU) {
+      cE(null, false);
     }
-    this.ETz = false;
-    fbX();
+    this.FlU = false;
+    ffL();
     AppMethodBeat.o(31221);
   }
   
@@ -209,7 +209,7 @@ public class ProfileEditPhoneNumberView
   public ArrayList<String> getPhoneNumberList()
   {
     AppMethodBeat.i(31216);
-    int j = this.ETy.getChildCount();
+    int j = this.FlT.getChildCount();
     if (j == 0)
     {
       AppMethodBeat.o(31216);
@@ -219,13 +219,13 @@ public class ProfileEditPhoneNumberView
     int i = 0;
     while (i < j)
     {
-      String str = ((MMPhoneNumberEditText)this.ETy.getChildAt(i)).getText().toString();
-      if ((!bt.isNullOrNil(str)) && (!str.trim().equals(""))) {
+      String str = ((MMPhoneNumberEditText)this.FlT.getChildAt(i)).getText().toString();
+      if ((!bu.isNullOrNil(str)) && (!str.trim().equals(""))) {
         localArrayList.add(str);
       }
       i += 1;
     }
-    if ((!bt.isNullOrNil(this.ETv)) && (localArrayList.size() > 0)) {
+    if ((!bu.isNullOrNil(this.FlQ)) && (localArrayList.size() > 0)) {
       localArrayList.remove(0);
     }
     AppMethodBeat.o(31216);
@@ -235,13 +235,13 @@ public class ProfileEditPhoneNumberView
   public final void init()
   {
     AppMethodBeat.i(31213);
-    this.ETy = ((LinearLayout)findViewById(2131301989));
+    this.FlT = ((LinearLayout)findViewById(2131301989));
     AppMethodBeat.o(31213);
   }
   
   public static abstract interface a
   {
-    public abstract void fbY();
+    public abstract void ffM();
     
     public abstract void onChange();
   }

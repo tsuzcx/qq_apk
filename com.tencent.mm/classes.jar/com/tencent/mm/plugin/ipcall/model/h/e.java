@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ipcall.model.h;
 public final class e
 {
   public String Id;
-  public String uOt;
+  public String urq;
 }
 
 

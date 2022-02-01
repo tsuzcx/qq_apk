@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
-import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
+import com.tencent.mm.plugin.appbrand.h.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class j
 {
   private static void a(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong)
   {
     AppMethodBeat.i(46635);
-    long l = bt.flT();
-    String str1 = ay.iV(aj.getContext());
-    String str2 = ay.iW(aj.getContext());
-    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + blr() + "," + str1 + "," + str2 + ",,";
-    ad.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    long l = bu.fpO();
+    String str1 = az.ja(ak.getContext());
+    String str2 = az.jb(ak.getContext());
+    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + bma() + "," + str1 + "," + str2 + ",,";
+    ae.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     AdReportCgiHelper.a(16004, paramString1, null);
     AppMethodBeat.o(46635);
   }
@@ -33,24 +33,24 @@ public final class j
       AppMethodBeat.o(46633);
       return;
     }
-    final String str = paramAppBrandStatObject.kVU;
-    if (bt.isNullOrNil(str))
+    final String str = paramAppBrandStatObject.kZC;
+    if (bu.isNullOrNil(str))
     {
       AppMethodBeat.o(46633);
       return;
     }
-    g.a(paramString1, new g.c()
+    h.a(paramString1, new h.c()
     {
-      private void a(g.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
+      private void a(h.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
       {
         AppMethodBeat.i(46631);
-        j.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, bt.flT() - this.iaJ);
-        this.kWn.kVU = null;
-        g.b(paramAnonymousString1, this);
+        j.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, bu.fpO() - this.idC);
+        this.kZV.kZC = null;
+        h.b(paramAnonymousString1, this);
         AppMethodBeat.o(46631);
       }
       
-      public final void a(g.d paramAnonymousd)
+      public final void a(h.d paramAnonymousd)
       {
         AppMethodBeat.i(46629);
         a(paramAnonymousd, this.val$appId, paramString2, str);
@@ -60,7 +60,7 @@ public final class j
       public final void onDestroy()
       {
         AppMethodBeat.i(46630);
-        a(g.Kv(this.val$appId), this.val$appId, paramString2, str);
+        a(h.KU(this.val$appId), this.val$appId, paramString2, str);
         AppMethodBeat.o(46630);
       }
     });
@@ -75,19 +75,19 @@ public final class j
       AppMethodBeat.o(46634);
       return;
     }
-    if (bt.isNullOrNil(paramAppBrandStatObject.kVU))
+    if (bu.isNullOrNil(paramAppBrandStatObject.kZC))
     {
       AppMethodBeat.o(46634);
       return;
     }
-    a(4, paramString1, paramString2, paramAppBrandStatObject.kVU, 0L);
+    a(4, paramString1, paramString2, paramAppBrandStatObject.kZC, 0L);
     AppMethodBeat.o(46634);
   }
   
-  private static int blr()
+  private static int bma()
   {
     AppMethodBeat.i(46636);
-    switch (ay.getNetType(aj.getContext()))
+    switch (az.getNetType(ak.getContext()))
     {
     case 9: 
     default: 
@@ -120,7 +120,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.j
  * JD-Core Version:    0.7.0.1
  */

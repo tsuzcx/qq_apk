@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.expt.d.h.a;
 
 import com.eclipsesource.v8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.apache.commons.b.g;
 
 public final class a
   implements b
 {
-  private V8 qQr;
+  private V8 qYn;
   
   public a()
   {
-    AppMethodBeat.i(210280);
+    AppMethodBeat.i(195935);
     try
     {
-      this.qQr = V8.createV8Runtime();
+      this.qYn = V8.createV8Runtime();
       com.tencent.mm.plugin.expt.d.f.a.kT(true);
-      AppMethodBeat.o(210280);
+      AppMethodBeat.o(195935);
       return;
     }
     catch (Throwable localThrowable)
     {
       com.tencent.mm.plugin.expt.d.f.a.kT(false);
-      ad.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] init V8 fail for : %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(210280);
+      ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] init V8 fail for : %s", new Object[] { localThrowable.getMessage() });
+      AppMethodBeat.o(195935);
     }
   }
   
   /* Error */
-  public final java.util.List<String> V(String paramString1, String paramString2, String paramString3)
+  public final java.util.List<String> W(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
     //   0: iconst_0
@@ -37,20 +37,20 @@ public final class a
     //   3: ldc 56
     //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 62	org/apache/commons/b/g:ea	(Ljava/lang/String;)Z
+    //   9: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
     //   12: ifne +34 -> 46
     //   15: aload_2
-    //   16: invokestatic 62	org/apache/commons/b/g:ea	(Ljava/lang/String;)Z
+    //   16: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
     //   19: ifne +27 -> 46
     //   22: aload_0
-    //   23: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qQr	Lcom/eclipsesource/v8/V8;
+    //   23: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
     //   26: ifnull +20 -> 46
     //   29: aload_0
-    //   30: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qQr	Lcom/eclipsesource/v8/V8;
+    //   30: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
     //   33: invokevirtual 66	com/eclipsesource/v8/V8:isReleased	()Z
     //   36: ifne +10 -> 46
     //   39: aload_3
-    //   40: invokestatic 62	org/apache/commons/b/g:ea	(Ljava/lang/String;)Z
+    //   40: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
     //   43: ifeq +10 -> 53
     //   46: ldc 56
     //   48: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -59,7 +59,7 @@ public final class a
     //   53: new 68	com/eclipsesource/v8/V8Array
     //   56: dup
     //   57: aload_0
-    //   58: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qQr	Lcom/eclipsesource/v8/V8;
+    //   58: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
     //   61: invokespecial 71	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
     //   64: aload_2
     //   65: invokevirtual 75	com/eclipsesource/v8/V8Array:push	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Array;
@@ -67,7 +67,7 @@ public final class a
     //   69: invokevirtual 75	com/eclipsesource/v8/V8Array:push	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Array;
     //   72: astore_2
     //   73: aload_0
-    //   74: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qQr	Lcom/eclipsesource/v8/V8;
+    //   74: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
     //   77: aload_1
     //   78: aload_2
     //   79: invokevirtual 79	com/eclipsesource/v8/V8:executeArrayFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Lcom/eclipsesource/v8/V8Array;
@@ -110,7 +110,7 @@ public final class a
     //   147: aload_2
     //   148: astore 5
     //   150: aload 8
-    //   152: invokestatic 62	org/apache/commons/b/g:ea	(Ljava/lang/String;)Z
+    //   152: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
     //   155: ifne +224 -> 379
     //   158: aload_3
     //   159: astore 6
@@ -173,7 +173,7 @@ public final class a
     //   261: aload 7
     //   263: invokevirtual 46	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   266: aastore
-    //   267: invokestatic 52	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   267: invokestatic 52	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   270: aload_2
     //   271: ifnull +14 -> 285
     //   274: aload_2
@@ -273,51 +273,73 @@ public final class a
     //   193	197	374	java/lang/Throwable
   }
   
-  public final boolean adn(String paramString)
+  public final boolean a(com.tencent.mm.plugin.expt.d.h.b.a parama)
   {
-    AppMethodBeat.i(210281);
-    if ((g.ea(paramString)) || (this.qQr == null) || (this.qQr.isReleased()))
+    AppMethodBeat.i(195936);
+    if ((this.qYn == null) || (this.qYn.isReleased()) || (parama == null))
     {
-      AppMethodBeat.o(210281);
+      AppMethodBeat.o(195936);
       return false;
     }
     try
     {
-      this.qQr.executeVoidScript(paramString);
-      AppMethodBeat.o(210281);
+      this.qYn.registerJavaMethod(parama, parama.coO());
+      AppMethodBeat.o(195936);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] registerJsApi fail, jsApi : %s, msg : %s", new Object[] { parama.coO(), localThrowable.getMessage() });
+      AppMethodBeat.o(195936);
+    }
+    return false;
+  }
+  
+  public final boolean aeh(String paramString)
+  {
+    AppMethodBeat.i(195937);
+    if ((g.ef(paramString)) || (this.qYn == null) || (this.qYn.isReleased()))
+    {
+      AppMethodBeat.o(195937);
+      return false;
+    }
+    try
+    {
+      this.qYn.executeVoidScript(paramString);
+      AppMethodBeat.o(195937);
       return true;
     }
     catch (Throwable paramString)
     {
-      ad.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] loadScript throw Throwable e : %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(210281);
+      ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] loadScript throw Throwable e : %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(195937);
     }
     return false;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(210283);
-    if ((this.qQr != null) && (!this.qQr.isReleased())) {}
+    AppMethodBeat.i(195939);
+    if ((this.qYn != null) && (!this.qYn.isReleased())) {}
     try
     {
-      this.qQr.release(true);
-      this.qQr = null;
-      AppMethodBeat.o(210283);
+      this.qYn.release(true);
+      this.qYn = null;
+      AppMethodBeat.o(195939);
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ad.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] release throw Throwable : " + localThrowable.getMessage());
+        ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] release throw Throwable : " + localThrowable.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.h.a.a
  * JD-Core Version:    0.7.0.1
  */

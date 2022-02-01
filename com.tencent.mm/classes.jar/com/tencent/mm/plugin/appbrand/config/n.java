@@ -1,47 +1,67 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.networking.a;
-import com.tencent.mm.protocal.protobuf.egn;
+import com.tencent.mm.plugin.appbrand.networking.b;
+import com.tencent.mm.protocal.protobuf.eie;
 import com.tencent.mm.protocal.protobuf.ku;
 import com.tencent.mm.protocal.protobuf.kv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class n
-  extends a<kv>
+public class n
+  extends b<kv>
 {
+  public n(String paramString)
+  {
+    super((byte)0);
+    AppMethodBeat.i(222220);
+    ku localku = new ku();
+    localku.Scene = a.kbZ.intValue;
+    eie localeie = new eie();
+    localeie.phf = paramString;
+    localku.FUO.add(localeie);
+    a(localku);
+    AppMethodBeat.o(222220);
+  }
+  
   n(List<String> paramList, a parama)
   {
     super((byte)0);
     AppMethodBeat.i(44852);
-    ad.i("MicroMsg.AppBrand.CgiBatchWxaAttrSync", "create sync request, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(paramList.size()), parama.name(), Integer.valueOf(parama.intValue) });
+    ae.i("MicroMsg.AppBrand.CgiBatchWxaAttrSync", "create sync request, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(paramList.size()), parama.name(), Integer.valueOf(parama.intValue) });
     ku localku = new ku();
     localku.Scene = parama.intValue;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       parama = (String)paramList.next();
-      if (!bt.isNullOrNil(parama))
+      if (!bu.isNullOrNil(parama))
       {
-        egn localegn = new egn();
-        localegn.GNH = parama;
-        localegn.FGF = j.aYP().Nw(parama);
-        localku.FCt.add(localegn);
+        eie localeie = new eie();
+        localeie.Hhh = parama;
+        localeie.FZb = j.aZl().Oe(parama);
+        localku.FUO.add(localeie);
       }
     }
-    paramList = new b.a();
-    paramList.hNM = localku;
-    paramList.hNN = new kv();
-    paramList.funcId = 1192;
-    paramList.uri = "/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync";
-    c(paramList.aDC());
+    a(localku);
     AppMethodBeat.o(44852);
+  }
+  
+  private void a(ku paramku)
+  {
+    AppMethodBeat.i(222221);
+    b.a locala = new b.a();
+    locala.hQF = paramku;
+    locala.hQG = new kv();
+    locala.funcId = 1192;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync";
+    c(locala.aDS());
+    AppMethodBeat.o(222221);
   }
   
   public static enum a
@@ -51,20 +71,21 @@ public final class n
     static
     {
       AppMethodBeat.i(44851);
-      jYx = new a("DEFAULT", 0, 100);
-      jYy = new a("RECENTS_LIST", 1, 101);
-      jYz = new a("TASK_BAR", 2, 102);
-      jYA = new a("STAR_LIST", 3, 103);
-      jYB = new a("MP_PRELOAD", 4, 104);
-      jYC = new a("BIZ_BIND_WXA", 5, 105);
-      jYD = new a("WXA_CUSTOMER_SERVICE", 6, 106);
-      jYE = new a("WXA_PLUGIN_JSAPI", 7, 107);
-      jYF = new a("WXA_RECOMMEND_LIST", 8, 108);
-      jYG = new a("WXA_RECOMMEND_CARD_LIST", 9, 109);
-      jYH = new a("WALLET_MALL_INDEX", 10, 110);
-      jYI = new a("CHATTING", 11, 111);
-      jYJ = new a("QRCODE", 12, 112);
-      jYK = new a[] { jYx, jYy, jYz, jYA, jYB, jYC, jYD, jYE, jYF, jYG, jYH, jYI, jYJ };
+      kbM = new a("DEFAULT", 0, 100);
+      kbN = new a("RECENTS_LIST", 1, 101);
+      kbO = new a("TASK_BAR", 2, 102);
+      kbP = new a("STAR_LIST", 3, 103);
+      kbQ = new a("MP_PRELOAD", 4, 104);
+      kbR = new a("BIZ_BIND_WXA", 5, 105);
+      kbS = new a("WXA_CUSTOMER_SERVICE", 6, 106);
+      kbT = new a("WXA_PLUGIN_JSAPI", 7, 107);
+      kbU = new a("WXA_RECOMMEND_LIST", 8, 108);
+      kbV = new a("WXA_RECOMMEND_CARD_LIST", 9, 109);
+      kbW = new a("WALLET_MALL_INDEX", 10, 110);
+      kbX = new a("CHATTING", 11, 111);
+      kbY = new a("QRCODE", 12, 112);
+      kbZ = new a("QRCODE_PRE", 13, 113);
+      kca = new a[] { kbM, kbN, kbO, kbP, kbQ, kbR, kbS, kbT, kbU, kbV, kbW, kbX, kbY, kbZ };
       AppMethodBeat.o(44851);
     }
     

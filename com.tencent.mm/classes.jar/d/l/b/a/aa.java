@@ -19,17 +19,17 @@ import d.l.b.a.b.m.bh;
 import d.l.j.a;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/jvm/internal/ReflectionObjectRenderer;", "", "()V", "renderer", "Lkotlin/reflect/jvm/internal/impl/renderer/DescriptorRenderer;", "renderCallable", "", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableDescriptor;", "renderFunction", "Lkotlin/reflect/jvm/internal/impl/descriptors/FunctionDescriptor;", "renderLambda", "invoke", "renderParameter", "parameter", "Lkotlin/reflect/jvm/internal/KParameterImpl;", "renderProperty", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "renderType", "type", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "renderTypeParameter", "typeParameter", "Lkotlin/reflect/jvm/internal/impl/descriptors/TypeParameterDescriptor;", "appendReceiverType", "", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "receiver", "Lkotlin/reflect/jvm/internal/impl/descriptors/ReceiverParameterDescriptor;", "appendReceivers", "callable", "kotlin-reflection"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/reflect/jvm/internal/ReflectionObjectRenderer;", "", "()V", "renderer", "Lkotlin/reflect/jvm/internal/impl/renderer/DescriptorRenderer;", "renderCallable", "", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableDescriptor;", "renderFunction", "Lkotlin/reflect/jvm/internal/impl/descriptors/FunctionDescriptor;", "renderLambda", "invoke", "renderParameter", "parameter", "Lkotlin/reflect/jvm/internal/KParameterImpl;", "renderProperty", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "renderType", "type", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "renderTypeParameter", "typeParameter", "Lkotlin/reflect/jvm/internal/impl/descriptors/TypeParameterDescriptor;", "appendReceiverType", "", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "receiver", "Lkotlin/reflect/jvm/internal/impl/descriptors/ReceiverParameterDescriptor;", "appendReceivers", "callable", "kotlin-reflection"})
 public final class aa
 {
-  private static final c MOR;
-  public static final aa MOS;
+  private static final c NlW;
+  public static final aa NlX;
   
   static
   {
     AppMethodBeat.i(56544);
-    MOS = new aa();
-    MOR = c.Ntc;
+    NlX = new aa();
+    NlW = c.NQi;
     AppMethodBeat.o(56544);
   }
   
@@ -38,13 +38,13 @@ public final class aa
     AppMethodBeat.i(56542);
     p.h(paramas, "typeParameter");
     StringBuilder localStringBuilder = new StringBuilder();
-    bh localbh = paramas.giF();
-    switch (ab.gnp[localbh.ordinal()])
+    bh localbh = paramas.gnh();
+    switch (ab.gpL[localbh.ordinal()])
     {
     }
     for (;;)
     {
-      localStringBuilder.append(paramas.giD());
+      localStringBuilder.append(paramas.gnf());
       paramas = localStringBuilder.toString();
       p.g(paramas, "StringBuilder().apply(builderAction).toString()");
       AppMethodBeat.o(56542);
@@ -62,17 +62,17 @@ public final class aa
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("fun ");
     a(localStringBuilder, (a)paramt);
-    Object localObject = MOR;
-    f localf = paramt.giD();
+    Object localObject = NlW;
+    f localf = paramt.gnf();
     p.g(localf, "descriptor.name");
     localStringBuilder.append(((c)localObject).b(localf, true));
-    localObject = paramt.gis();
+    localObject = paramt.gmU();
     p.g(localObject, "descriptor.valueParameters");
-    j.a((Iterable)localObject, (Appendable)localStringBuilder, (CharSequence)", ", (CharSequence)"(", (CharSequence)")", 0, null, (b)a.MOT, 48);
+    j.a((Iterable)localObject, (Appendable)localStringBuilder, (CharSequence)", ", (CharSequence)"(", (CharSequence)")", 0, null, (b)a.NlY, 48);
     localStringBuilder.append(": ");
-    paramt = paramt.giq();
+    paramt = paramt.gmS();
     if (paramt == null) {
-      p.gfZ();
+      p.gkB();
     }
     p.g(paramt, "descriptor.returnType!!");
     localStringBuilder.append(b(paramt));
@@ -86,7 +86,7 @@ public final class aa
   {
     AppMethodBeat.i(56537);
     ak localak = ae.a(parama);
-    parama = parama.gin();
+    parama = parama.gmP();
     a(paramStringBuilder, localak);
     if ((localak != null) && (parama != null)) {}
     for (int i = 1;; i = 0)
@@ -108,7 +108,7 @@ public final class aa
     AppMethodBeat.i(56536);
     if (paramak != null)
     {
-      paramak = paramak.gju();
+      paramak = paramak.gnW();
       p.g(paramak, "receiver.type");
       paramStringBuilder.append(b(paramak));
       paramStringBuilder.append(".");
@@ -121,17 +121,17 @@ public final class aa
     AppMethodBeat.i(56538);
     p.h(paramah, "descriptor");
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramah.gjB()) {}
+    if (paramah.god()) {}
     for (Object localObject = "var ";; localObject = "val ")
     {
       localStringBuilder.append((String)localObject);
       a(localStringBuilder, (a)paramah);
-      localObject = MOR;
-      f localf = paramah.giD();
+      localObject = NlW;
+      f localf = paramah.gnf();
       p.g(localf, "descriptor.name");
       localStringBuilder.append(((c)localObject).b(localf, true));
       localStringBuilder.append(": ");
-      paramah = paramah.gju();
+      paramah = paramah.gnW();
       p.g(paramah, "descriptor.type");
       localStringBuilder.append(b(paramah));
       paramah = localStringBuilder.toString();
@@ -147,13 +147,13 @@ public final class aa
     p.h(paramt, "invoke");
     StringBuilder localStringBuilder = new StringBuilder();
     a(localStringBuilder, (a)paramt);
-    List localList = paramt.gis();
+    List localList = paramt.gmU();
     p.g(localList, "invoke.valueParameters");
-    j.a((Iterable)localList, (Appendable)localStringBuilder, (CharSequence)", ", (CharSequence)"(", (CharSequence)")", 0, null, (b)b.MOU, 48);
+    j.a((Iterable)localList, (Appendable)localStringBuilder, (CharSequence)", ", (CharSequence)"(", (CharSequence)")", 0, null, (b)b.NlZ, 48);
     localStringBuilder.append(" -> ");
-    paramt = paramt.giq();
+    paramt = paramt.gmS();
     if (paramt == null) {
-      p.gfZ();
+      p.gkB();
     }
     p.g(paramt, "invoke.returnType!!");
     localStringBuilder.append(b(paramt));
@@ -167,7 +167,7 @@ public final class aa
   {
     AppMethodBeat.i(56543);
     p.h(paramab, "type");
-    paramab = MOR.b(paramab);
+    paramab = NlW.b(paramab);
     AppMethodBeat.o(56543);
     return paramab;
   }
@@ -177,12 +177,12 @@ public final class aa
     AppMethodBeat.i(56541);
     p.h(paramn, "parameter");
     StringBuilder localStringBuilder = new StringBuilder();
-    j.a locala = paramn.MOg;
-    switch (ab.cpQ[locala.ordinal()])
+    j.a locala = paramn.Nll;
+    switch (ab.cqt[locala.ordinal()])
     {
     default: 
       localStringBuilder.append(" of ");
-      paramn = (a)paramn.MOf.ggn();
+      paramn = (a)paramn.Nlk.gkP();
       if (!(paramn instanceof ah)) {
         break;
       }
@@ -210,17 +210,17 @@ public final class aa
     throw paramn;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lkotlin/reflect/jvm/internal/impl/descriptors/ValueParameterDescriptor;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lkotlin/reflect/jvm/internal/impl/descriptors/ValueParameterDescriptor;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
     implements b<av, String>
   {
-    public static final a MOT;
+    public static final a NlY;
     
     static
     {
       AppMethodBeat.i(56533);
-      MOT = new a();
+      NlY = new a();
       AppMethodBeat.o(56533);
     }
     
@@ -230,17 +230,17 @@ public final class aa
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lkotlin/reflect/jvm/internal/impl/descriptors/ValueParameterDescriptor;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lkotlin/reflect/jvm/internal/impl/descriptors/ValueParameterDescriptor;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements b<av, String>
   {
-    public static final b MOU;
+    public static final b NlZ;
     
     static
     {
       AppMethodBeat.i(56535);
-      MOU = new b();
+      NlZ = new b();
       AppMethodBeat.o(56535);
     }
     
@@ -252,7 +252,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.aa
  * JD-Core Version:    0.7.0.1
  */

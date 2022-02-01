@@ -9,18 +9,18 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 public final class e
   extends ReentrantReadWriteLock
 {
-  public Condition Mcv;
+  public Condition Mzq;
   
   public e()
   {
-    AppMethodBeat.i(192179);
-    this.Mcv = writeLock().newCondition();
-    AppMethodBeat.o(192179);
+    AppMethodBeat.i(194857);
+    this.Mzq = writeLock().newCondition();
+    AppMethodBeat.o(194857);
   }
   
-  public final boolean fXL()
+  public final boolean gck()
   {
-    AppMethodBeat.i(192180);
+    AppMethodBeat.i(194858);
     boolean bool2 = false;
     int i = 3;
     for (;;)
@@ -30,8 +30,8 @@ public final class e
       if (i >= 0) {}
       try
       {
-        bool1 = this.Mcv.await(500L, TimeUnit.MILLISECONDS);
-        AppMethodBeat.o(192180);
+        bool1 = this.Mzq.await(500L, TimeUnit.MILLISECONDS);
+        AppMethodBeat.o(194858);
         return bool1;
       }
       catch (InterruptedException localInterruptedException)

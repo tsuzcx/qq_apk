@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.wepkg.utils;
 
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class WepkgRunCgi
 {
-  static com.tencent.mm.al.b o(Parcel paramParcel)
+  static com.tencent.mm.ak.b o(Parcel paramParcel)
   {
     AppMethodBeat.i(110806);
     b.a locala = new b.a();
@@ -18,19 +18,19 @@ public final class WepkgRunCgi
     paramParcel.readByteArray(arrayOfByte);
     try
     {
-      locala.hNM = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
+      locala.hQF = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
       label48:
       str = paramParcel.readString();
       arrayOfByte = new byte[paramParcel.readInt()];
       paramParcel.readByteArray(arrayOfByte);
       try
       {
-        locala.hNN = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
+        locala.hQG = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
         locala.uri = paramParcel.readString();
         locala.funcId = paramParcel.readInt();
-        locala.hNO = paramParcel.readInt();
+        locala.hQH = paramParcel.readInt();
         locala.respCmdId = paramParcel.readInt();
-        paramParcel = locala.aDC();
+        paramParcel = locala.aDS();
         AppMethodBeat.o(110806);
         return paramParcel;
       }
@@ -41,11 +41,11 @@ public final class WepkgRunCgi
           if ((localException3 instanceof f.a.a.b)) {
             try
             {
-              locala.hNN = ((a)Class.forName(str).newInstance());
+              locala.hQG = ((a)Class.forName(str).newInstance());
             }
             catch (Exception localException1)
             {
-              ad.e("MicroMsg.Wepkg.WepkgRunCgi", "readCommReqRespFromParcel, resp fields not ready, re-create one but exp = %s", new Object[] { bt.n(localException1) });
+              ae.e("MicroMsg.Wepkg.WepkgRunCgi", "readCommReqRespFromParcel, resp fields not ready, re-create one but exp = %s", new Object[] { bu.o(localException1) });
             }
           }
         }

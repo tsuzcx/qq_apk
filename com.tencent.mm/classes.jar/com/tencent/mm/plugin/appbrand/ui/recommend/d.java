@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.service.s;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.f;
 import d.g.a.a;
 import d.l;
 import java.util.concurrent.TimeUnit;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativePredownloadPeriodCheckLogic;", "", "()V", "INTERVAL", "", "getINTERVAL", "()J", "KEY_LAST_CHECK_TIMESTAMP", "", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV$delegate", "Lkotlin/Lazy;", "SP", "hitFrequencyLimit", "", "triggerCheck", "", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativePredownloadPeriodCheckLogic;", "", "()V", "INTERVAL", "", "getINTERVAL", "()J", "KEY_LAST_CHECK_TIMESTAMP", "", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV$delegate", "Lkotlin/Lazy;", "SP", "hitFrequencyLimit", "", "triggerCheck", "", "plugin-appbrand-integration_release"})
 public final class d
 {
-  private static final f mMX;
-  public static final d mMY;
+  private static final f mSa;
+  public static final d mSb;
   
   static
   {
     AppMethodBeat.i(51351);
-    mMY = new d();
-    mMX = d.g.O((a)d.a.mMZ);
+    mSb = new d();
+    mSa = d.g.O((a)d.a.mSc);
     AppMethodBeat.o(51351);
   }
   
-  private static ax Lv()
+  private static ay LD()
   {
     AppMethodBeat.i(51352);
-    ax localax = (ax)mMX.getValue();
+    ay localay = (ay)mSa.getValue();
     AppMethodBeat.o(51352);
-    return localax;
+    return localay;
   }
   
-  public static void bAZ()
+  public static void bBT()
   {
     AppMethodBeat.i(51353);
-    if (!c.bAW())
+    if (!c.bBQ())
     {
       AppMethodBeat.o(51353);
       return;
     }
-    if (!c.bAY())
+    if (!c.bBS())
     {
       AppMethodBeat.o(51353);
       return;
     }
-    long l = Lv().getLong("KEY_LAST_CHECK_TIMESTAMP", 0L);
-    if (bt.flT() - l <= TimeUnit.MINUTES.toMillis(((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qxF, 60L))) {}
+    long l = LD().getLong("KEY_LAST_CHECK_TIMESTAMP", 0L);
+    if (bu.fpO() - l <= TimeUnit.MINUTES.toMillis(((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qEL, 60L))) {}
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(51353);
       return;
     }
-    Lv().putLong("KEY_LAST_CHECK_TIMESTAMP", bt.flT());
-    ((r)com.tencent.mm.kernel.g.ab(r.class)).LO("gh_b489f391e008@app");
+    LD().putLong("KEY_LAST_CHECK_TIMESTAMP", bu.fpO());
+    ((s)com.tencent.mm.kernel.g.ab(s.class)).Mr("gh_b489f391e008@app");
     AppMethodBeat.o(51353);
   }
 }

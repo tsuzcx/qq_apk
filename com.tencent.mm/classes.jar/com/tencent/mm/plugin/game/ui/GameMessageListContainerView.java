@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.game.model.o.k;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 
 public class GameMessageListContainerView
@@ -24,10 +24,10 @@ public class GameMessageListContainerView
     this.mContext = paramContext;
   }
   
-  public final void a(o paramo, LinkedList<o.j> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
+  public final void a(o paramo, LinkedList<o.k> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
   {
     AppMethodBeat.i(42284);
-    if ((paramo == null) || (bt.hj(paramLinkedList)))
+    if ((paramo == null) || (bu.ht(paramLinkedList)))
     {
       setVisibility(8);
       AppMethodBeat.o(42284);
@@ -85,7 +85,7 @@ public class GameMessageListContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMessageListContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import java.util.Date;
 
 public final class d
 {
-  private static final ThreadLocal<MessageDigest> cNT = new ThreadLocal()
+  private static final ThreadLocal<MessageDigest> cOD = new ThreadLocal()
   {
-    private static MessageDigest Jv()
+    private static MessageDigest JD()
     {
       try
       {
@@ -25,9 +25,9 @@ public final class d
       }
     }
   };
-  private static final ThreadLocal<MessageDigest> cNU = new ThreadLocal()
+  private static final ThreadLocal<MessageDigest> cOE = new ThreadLocal()
   {
-    private static MessageDigest Jv()
+    private static MessageDigest JD()
     {
       try
       {
@@ -59,10 +59,10 @@ public final class d
     catch (IOException paramCloseable) {}
   }
   
-  public static String ee(String paramString)
+  public static String ej(String paramString)
   {
     paramString = paramString.getBytes();
-    paramString = ((MessageDigest)cNT.get()).digest(paramString);
+    paramString = ((MessageDigest)cOD.get()).digest(paramString);
     int j = paramString.length;
     StringBuffer localStringBuffer = new StringBuffer(j * 2);
     int i = 0;
@@ -78,7 +78,7 @@ public final class d
     return localStringBuffer.toString();
   }
   
-  public static long ef(String paramString)
+  public static long ek(String paramString)
   {
     try
     {

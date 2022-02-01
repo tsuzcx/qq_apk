@@ -5,33 +5,33 @@ import com.tencent.mm.b.l;
 import com.tencent.mm.plugin.backup.b.c;
 import com.tencent.mm.plugin.backup.i.v;
 import com.tencent.mm.plugin.backup.i.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
   extends b
 {
   final String authId;
-  public v nyP;
-  public w nyQ;
-  final int nyR;
-  final String nyS;
-  final byte[] nyT;
+  public v nEk;
+  public w nEl;
+  final int nEm;
+  final String nEn;
+  final byte[] nEo;
   
   public a(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(21695);
-    this.nyP = new v();
-    this.nyQ = new w();
-    ad.i("MicroMsg.BackupAuthScene", "BackupAuthScene init, backupType[%d], stack:%s", new Object[] { Integer.valueOf(paramInt2), bt.flS() });
-    this.nyP.nCV = new com.tencent.mm.bx.b(l.e(paramString1.getBytes(), paramArrayOfByte));
-    this.nyP.nEe = 0;
-    this.nyP.ID = paramString3;
-    this.nyP.Version = paramInt1;
-    this.nyS = paramString2;
+    this.nEk = new v();
+    this.nEl = new w();
+    ae.i("MicroMsg.BackupAuthScene", "BackupAuthScene init, backupType[%d], stack:%s", new Object[] { Integer.valueOf(paramInt2), bu.fpN() });
+    this.nEk.nIq = new com.tencent.mm.bw.b(l.e(paramString1.getBytes(), paramArrayOfByte));
+    this.nEk.nJz = 0;
+    this.nEk.ID = paramString3;
+    this.nEk.Version = paramInt1;
+    this.nEn = paramString2;
     this.authId = paramString3;
-    this.nyT = paramArrayOfByte;
-    this.nyR = paramInt2;
+    this.nEo = paramArrayOfByte;
+    this.nEm = paramInt2;
     AppMethodBeat.o(21695);
   }
   
@@ -39,28 +39,28 @@ public final class a
   {
     if (paramBoolean1)
     {
-      localv = this.nyP;
-      localv.nEg |= c.nsx;
+      localv = this.nEk;
+      localv.nJB |= c.nxS;
     }
-    v localv = this.nyP;
-    localv.nEg |= c.nsy;
-    localv = this.nyP;
-    localv.nEg |= c.nsz;
+    v localv = this.nEk;
+    localv.nJB |= c.nxT;
+    localv = this.nEk;
+    localv.nJB |= c.nxU;
     if (paramBoolean2)
     {
-      localv = this.nyP;
-      localv.nEg |= c.nsA;
+      localv = this.nEk;
+      localv.nJB |= c.nxV;
     }
   }
   
-  public final com.tencent.mm.bx.a bIA()
+  public final com.tencent.mm.bw.a bJx()
   {
-    return this.nyP;
+    return this.nEl;
   }
   
-  public final com.tencent.mm.bx.a bIz()
+  public final com.tencent.mm.bw.a bJy()
   {
-    return this.nyQ;
+    return this.nEk;
   }
   
   public final int getType()
@@ -68,55 +68,55 @@ public final class a
     return 1;
   }
   
-  public final void xC(int paramInt)
+  public final void xG(int paramInt)
   {
     AppMethodBeat.i(21696);
-    if (this.nyQ.nDG != 0)
+    if (this.nEl.nJb != 0)
     {
-      ad.e("MicroMsg.BackupAuthScene", "onSceneEnd errType[%d]", new Object[] { Integer.valueOf(this.nyQ.nDG) });
-      q(4, this.nyQ.nDG, "onSceneEnd status failed");
+      ae.e("MicroMsg.BackupAuthScene", "onSceneEnd errType[%d]", new Object[] { Integer.valueOf(this.nEl.nJb) });
+      q(4, this.nEl.nJb, "onSceneEnd status failed");
       AppMethodBeat.o(21696);
       return;
     }
-    if (!this.authId.equals(this.nyQ.ID))
+    if (!this.authId.equals(this.nEl.ID))
     {
-      ad.e("MicroMsg.BackupAuthScene", "onSceneEnd not the same id");
+      ae.e("MicroMsg.BackupAuthScene", "onSceneEnd not the same id");
       q(4, -1, "onSceneEnd not the same id");
       AppMethodBeat.o(21696);
       return;
     }
-    String str = new String(l.d(this.nyQ.nCV.zr, this.nyT));
-    if (str.length() != this.nyS.length()) {}
-    for (boolean bool = false;; bool = str.equals(this.nyS))
+    String str = new String(l.d(this.nEl.nIq.zr, this.nEo));
+    if (str.length() != this.nEn.length()) {}
+    for (boolean bool = false;; bool = str.equals(this.nEn))
     {
-      ad.i("MicroMsg.BackupAuthScene", "onSceneEnd check ok result[%b]", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.BackupAuthScene", "onSceneEnd check ok result[%b]", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
         break;
       }
-      ad.e("MicroMsg.BackupAuthScene", "onSceneEnd check ok failed");
+      ae.e("MicroMsg.BackupAuthScene", "onSceneEnd check ok failed");
       q(4, -3, "onSceneEnd check ok failed");
       AppMethodBeat.o(21696);
       return;
     }
     q(0, 0, "onSceneEnd auth success");
-    if ((this.nyR == 22) && (this.nyQ.Version < c.nst))
+    if ((this.nEm == 22) && (this.nEl.Version < c.nxO))
     {
       AppMethodBeat.o(21696);
       return;
     }
-    this.nyP.nCV = new com.tencent.mm.bx.b(l.e(this.nyS.getBytes(), this.nyT));
-    this.nyP.nEe = 1;
-    this.nyP.ID = this.authId;
+    this.nEk.nIq = new com.tencent.mm.bw.b(l.e(this.nEn.getBytes(), this.nEo));
+    this.nEk.nJz = 1;
+    this.nEk.ID = this.authId;
     try
     {
-      ad.i("MicroMsg.BackupAuthScene", "directSendAuthOk");
-      b.t(this.nyP.toByteArray(), getType(), paramInt);
+      ae.i("MicroMsg.BackupAuthScene", "directSendAuthOk");
+      b.t(this.nEk.toByteArray(), getType(), paramInt);
       AppMethodBeat.o(21696);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.BackupAuthScene", localException, "directSendAuthOk req to bur err.", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.BackupAuthScene", localException, "directSendAuthOk req to bur err.", new Object[0]);
       AppMethodBeat.o(21696);
     }
   }

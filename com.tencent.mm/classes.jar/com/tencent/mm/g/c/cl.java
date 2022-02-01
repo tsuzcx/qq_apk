@@ -8,23 +8,23 @@ public abstract class cl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int far = "ForcePushId".hashCode();
-  private static final int fas = "CreateTime".hashCode();
-  private static final int fat = "ExpiredTime".hashCode();
-  private static final int fau = "Description".hashCode();
-  private static final int fav = "UserIcon".hashCode();
-  private static final int faw = "UserName".hashCode();
-  private static final int fax = "ExtInfo".hashCode();
-  private static final int fay = "Status".hashCode();
+  private static final int fcg = "ForcePushId".hashCode();
+  private static final int fch = "CreateTime".hashCode();
+  private static final int fci = "ExpiredTime".hashCode();
+  private static final int fcj = "Description".hashCode();
+  private static final int fck = "UserIcon".hashCode();
+  private static final int fcl = "UserName".hashCode();
+  private static final int fcm = "ExtInfo".hashCode();
+  private static final int fcn = "Status".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean faj = true;
-  private boolean fak = true;
-  private boolean fal = true;
-  private boolean fam = true;
-  private boolean fan = true;
-  private boolean fao = true;
-  private boolean fap = true;
-  private boolean faq = true;
+  private boolean fbY = true;
+  private boolean fbZ = true;
+  private boolean fca = true;
+  private boolean fcb = true;
+  private boolean fcc = true;
+  private boolean fcd = true;
+  private boolean fce = true;
+  private boolean fcf = true;
   public long field_CreateTime;
   public String field_Description;
   public long field_ExpiredTime;
@@ -47,11 +47,11 @@ public abstract class cl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (far != k) {
+      if (fcg != k) {
         break label65;
       }
       this.field_ForcePushId = paramCursor.getString(i);
-      this.faj = true;
+      this.fbY = true;
     }
     for (;;)
     {
@@ -59,19 +59,19 @@ public abstract class cl
       break label20;
       break;
       label65:
-      if (fas == k) {
+      if (fch == k) {
         this.field_CreateTime = paramCursor.getLong(i);
-      } else if (fat == k) {
+      } else if (fci == k) {
         this.field_ExpiredTime = paramCursor.getLong(i);
-      } else if (fau == k) {
+      } else if (fcj == k) {
         this.field_Description = paramCursor.getString(i);
-      } else if (fav == k) {
+      } else if (fck == k) {
         this.field_UserIcon = paramCursor.getString(i);
-      } else if (faw == k) {
+      } else if (fcl == k) {
         this.field_UserName = paramCursor.getString(i);
-      } else if (fax == k) {
+      } else if (fcm == k) {
         this.field_ExtInfo = paramCursor.getString(i);
-      } else if (fay == k) {
+      } else if (fcn == k) {
         this.field_Status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -82,28 +82,28 @@ public abstract class cl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.faj) {
+    if (this.fbY) {
       localContentValues.put("ForcePushId", this.field_ForcePushId);
     }
-    if (this.fak) {
+    if (this.fbZ) {
       localContentValues.put("CreateTime", Long.valueOf(this.field_CreateTime));
     }
-    if (this.fal) {
+    if (this.fca) {
       localContentValues.put("ExpiredTime", Long.valueOf(this.field_ExpiredTime));
     }
-    if (this.fam) {
+    if (this.fcb) {
       localContentValues.put("Description", this.field_Description);
     }
-    if (this.fan) {
+    if (this.fcc) {
       localContentValues.put("UserIcon", this.field_UserIcon);
     }
-    if (this.fao) {
+    if (this.fcd) {
       localContentValues.put("UserName", this.field_UserName);
     }
-    if (this.fap) {
+    if (this.fce) {
       localContentValues.put("ExtInfo", this.field_ExtInfo);
     }
-    if (this.faq) {
+    if (this.fcf) {
       localContentValues.put("Status", Integer.valueOf(this.field_Status));
     }
     if (this.systemRowid > 0L) {
@@ -114,7 +114,7 @@ public abstract class cl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.c.cl
  * JD-Core Version:    0.7.0.1
  */

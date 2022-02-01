@@ -12,11 +12,11 @@ import java.util.List;
 public class t
   extends aj
 {
-  private final List<av> MUP;
-  private final h MYK;
-  private final at NBJ;
-  private final String NBK;
-  private final boolean Nwk;
+  private final boolean NTq;
+  private final at NYQ;
+  private final String NYR;
+  private final List<av> NrU;
+  private final h NvQ;
   
   public t(at paramat, h paramh)
   {
@@ -32,19 +32,19 @@ public class t
   
   private t(at paramat, h paramh, List<? extends av> paramList, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(187792);
-    this.NBJ = paramat;
-    this.MYK = paramh;
-    this.MUP = paramList;
-    this.Nwk = paramBoolean;
-    this.NBK = paramString;
-    AppMethodBeat.o(187792);
+    AppMethodBeat.i(193316);
+    this.NYQ = paramat;
+    this.NvQ = paramh;
+    this.NrU = paramList;
+    this.NTq = paramBoolean;
+    this.NYR = paramString;
+    AppMethodBeat.o(193316);
   }
   
-  public aj Ac(boolean paramBoolean)
+  public aj Ap(boolean paramBoolean)
   {
     AppMethodBeat.i(60659);
-    aj localaj = (aj)new t(this.NBJ, this.MYK, this.MUP, paramBoolean, null, 16);
+    aj localaj = (aj)new t(this.NYQ, this.NvQ, this.NrU, paramBoolean, null, 16);
     AppMethodBeat.o(60659);
     return localaj;
   }
@@ -58,38 +58,38 @@ public class t
     return paramg;
   }
   
-  public final g ghH()
+  public final h gmN()
+  {
+    return this.NvQ;
+  }
+  
+  public final g gmj()
   {
     AppMethodBeat.i(60655);
-    Object localObject = g.MVP;
-    localObject = g.a.gjL();
+    Object localObject = g.NsU;
+    localObject = g.a.gon();
     AppMethodBeat.o(60655);
     return localObject;
   }
   
-  public final h gil()
+  public final boolean gqy()
   {
-    return this.MYK;
+    return this.NTq;
   }
   
-  public final boolean glW()
+  public final at gxB()
   {
-    return this.Nwk;
+    return this.NYQ;
   }
   
-  public final List<av> gsW()
+  public final List<av> gxy()
   {
-    return this.MUP;
+    return this.NrU;
   }
   
-  public final at gsZ()
+  public String gyw()
   {
-    return this.NBJ;
-  }
-  
-  public String gtU()
-  {
-    return this.NBK;
+    return this.NYR;
   }
   
   public t j(i parami)
@@ -103,9 +103,9 @@ public class t
   public String toString()
   {
     AppMethodBeat.i(60656);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.NBJ.toString());
-    if (this.MUP.isEmpty()) {}
-    for (String str = "";; str = j.a((Iterable)this.MUP, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
+    StringBuilder localStringBuilder = new StringBuilder().append(this.NYQ.toString());
+    if (this.NrU.isEmpty()) {}
+    for (String str = "";; str = j.a((Iterable)this.NrU, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
     {
       str = str;
       AppMethodBeat.o(60656);
@@ -115,7 +115,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.t
  * JD-Core Version:    0.7.0.1
  */

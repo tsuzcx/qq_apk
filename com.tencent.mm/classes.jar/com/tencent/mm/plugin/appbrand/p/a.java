@@ -8,77 +8,77 @@ import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.a.d;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class a
   extends com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c
 {
-  private volatile b lXt;
-  private c.a lXu;
-  private Intent lXv;
+  private volatile b mca;
+  private c.a mcb;
+  private Intent mcc;
   
   public a(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
     super(paramString, paramActivity, paramc);
-    AppMethodBeat.i(198650);
-    this.lXt = b.jKO;
-    this.lXu = null;
-    this.lXv = null;
-    G(this.kjg);
-    AppMethodBeat.o(198650);
+    AppMethodBeat.i(209709);
+    this.mca = b.jOa;
+    this.mcb = null;
+    this.mcc = null;
+    H(this.kmw);
+    AppMethodBeat.o(209709);
   }
   
-  private void G(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  private void H(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    AppMethodBeat.i(198653);
-    paramc = H(paramc);
+    AppMethodBeat.i(209712);
+    paramc = I(paramc);
     if (paramc == null)
     {
-      ad.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryListenRunningStateChange, runningStateController is null");
-      AppMethodBeat.o(198653);
+      ae.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryListenRunningStateChange, runningStateController is null");
+      AppMethodBeat.o(209712);
       return;
     }
-    b localb = paramc.jKT.bbg();
-    ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryListenRunningStateChange, curRunningState: ".concat(String.valueOf(localb)));
-    this.lXt = localb;
-    paramc.a(bty());
-    AppMethodBeat.o(198653);
+    b localb = paramc.jOf.bbI();
+    ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryListenRunningStateChange, curRunningState: ".concat(String.valueOf(localb)));
+    this.mca = localb;
+    paramc.a(buj());
+    AppMethodBeat.o(209712);
   }
   
-  private static com.tencent.mm.plugin.appbrand.a.c H(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  private static com.tencent.mm.plugin.appbrand.a.c I(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    AppMethodBeat.i(198656);
+    AppMethodBeat.i(209715);
     if (!(paramc instanceof h))
     {
-      ad.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "getRunningStateController, component is not AppBrandComponentWithExtra");
-      AppMethodBeat.o(198656);
+      ae.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "getRunningStateController, component is not AppBrandComponentWithExtra");
+      AppMethodBeat.o(209715);
       return null;
     }
     paramc = ((h)paramc).getRuntime();
     if (paramc == null)
     {
-      ad.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "getRunningStateController, runtime is null");
-      AppMethodBeat.o(198656);
+      ae.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "getRunningStateController, runtime is null");
+      AppMethodBeat.o(209715);
       return null;
     }
-    paramc = paramc.jwS;
-    AppMethodBeat.o(198656);
+    paramc = paramc.jzQ;
+    AppMethodBeat.o(209715);
     return paramc;
   }
   
   private void J(Intent paramIntent)
   {
-    AppMethodBeat.i(198654);
-    ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "realTryDispatchNfcTagDiscovered");
+    AppMethodBeat.i(209713);
+    ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "realTryDispatchNfcTagDiscovered");
     super.E(paramIntent);
-    AppMethodBeat.o(198654);
+    AppMethodBeat.o(209713);
   }
   
-  private c.a btx()
+  private c.a bui()
   {
     try
     {
-      c.a locala = this.lXu;
+      c.a locala = this.mcb;
       return locala;
     }
     finally
@@ -88,35 +88,35 @@ final class a
     }
   }
   
-  private c.a bty()
+  private c.a buj()
   {
     try
     {
-      AppMethodBeat.i(198655);
-      if (this.lXu == null) {
-        this.lXu = new c.a()
+      AppMethodBeat.i(209714);
+      if (this.mcb == null) {
+        this.mcb = new c.a()
         {
           public final void a(String paramAnonymousString, b paramAnonymousb)
           {
-            AppMethodBeat.i(198649);
-            ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "onRunningStateChanged, appId: %s, state: %s", new Object[] { paramAnonymousString, paramAnonymousb });
+            AppMethodBeat.i(209708);
+            ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "onRunningStateChanged, appId: %s, state: %s", new Object[] { paramAnonymousString, paramAnonymousb });
             if (!a.a(a.this).equals(paramAnonymousString))
             {
-              AppMethodBeat.o(198649);
+              AppMethodBeat.o(209708);
               return;
             }
             a.a(a.this, paramAnonymousb);
-            if ((a.b(a.this) != null) && (b.jKO == paramAnonymousb))
+            if ((a.b(a.this) != null) && (b.jOa == paramAnonymousb))
             {
               a.a(a.this, a.b(a.this));
               a.c(a.this);
             }
-            AppMethodBeat.o(198649);
+            AppMethodBeat.o(209708);
           }
         };
       }
-      c.a locala = this.lXu;
-      AppMethodBeat.o(198655);
+      c.a locala = this.mcb;
+      AppMethodBeat.o(209714);
       return locala;
     }
     finally {}
@@ -124,49 +124,49 @@ final class a
   
   public final void E(Intent paramIntent)
   {
-    AppMethodBeat.i(198652);
-    b localb = this.lXt;
-    ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryDispatchNfcTagDiscovered, curRunningState: ".concat(String.valueOf(localb)));
-    if (b.jKO == localb)
+    AppMethodBeat.i(209711);
+    b localb = this.mca;
+    ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryDispatchNfcTagDiscovered, curRunningState: ".concat(String.valueOf(localb)));
+    if (b.jOa == localb)
     {
       J(paramIntent);
-      AppMethodBeat.o(198652);
+      AppMethodBeat.o(209711);
       return;
     }
-    ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryDispatchNfcTagDiscovered, dispatch pending");
-    this.lXv = paramIntent;
-    AppMethodBeat.o(198652);
+    ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "tryDispatchNfcTagDiscovered, dispatch pending");
+    this.mcc = paramIntent;
+    AppMethodBeat.o(209711);
   }
   
-  public final void gO(boolean paramBoolean)
+  public final void gN(boolean paramBoolean)
   {
-    AppMethodBeat.i(198651);
-    ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "setRequireForegroundDispatch, requireForegroundDispatch: ".concat(String.valueOf(paramBoolean)));
-    super.gO(paramBoolean);
+    AppMethodBeat.i(209710);
+    ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "setRequireForegroundDispatch, requireForegroundDispatch: ".concat(String.valueOf(paramBoolean)));
+    super.gN(paramBoolean);
     if (paramBoolean)
     {
-      G(this.kjg);
-      AppMethodBeat.o(198651);
+      H(this.kmw);
+      AppMethodBeat.o(209710);
       return;
     }
-    Object localObject = this.kjg;
-    c.a locala = btx();
+    Object localObject = this.kmw;
+    c.a locala = bui();
     if (locala == null)
     {
-      ad.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "stopListenRunningStateChangeIfNeed, not need");
-      AppMethodBeat.o(198651);
+      ae.i("MicroMsg.AppBrand.WxaNFCReadWriteManager", "stopListenRunningStateChangeIfNeed, not need");
+      AppMethodBeat.o(209710);
       return;
     }
-    localObject = H((com.tencent.mm.plugin.appbrand.jsapi.c)localObject);
+    localObject = I((com.tencent.mm.plugin.appbrand.jsapi.c)localObject);
     if (localObject == null)
     {
-      ad.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "stopListenRunningStateChangeIfNeed, runningStateController is null");
-      AppMethodBeat.o(198651);
+      ae.w("MicroMsg.AppBrand.WxaNFCReadWriteManager", "stopListenRunningStateChangeIfNeed, runningStateController is null");
+      AppMethodBeat.o(209710);
       return;
     }
-    this.lXt = b.jKO;
+    this.mca = b.jOa;
     ((com.tencent.mm.plugin.appbrand.a.c)localObject).b(locala);
-    AppMethodBeat.o(198651);
+    AppMethodBeat.o(209710);
   }
 }
 

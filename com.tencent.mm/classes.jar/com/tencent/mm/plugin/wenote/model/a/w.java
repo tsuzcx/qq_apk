@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 public final class w
 {
-  public String ptY;
-  public ArrayList<o> ptZ;
-  public boolean pua;
+  public String pAC;
+  public ArrayList<o> pAD;
+  public boolean pAE;
   
   public w()
   {
     AppMethodBeat.i(30378);
-    this.ptY = "";
-    this.ptZ = new ArrayList();
-    this.pua = false;
+    this.pAC = "";
+    this.pAD = new ArrayList();
+    this.pAE = false;
     AppMethodBeat.o(30378);
   }
 }

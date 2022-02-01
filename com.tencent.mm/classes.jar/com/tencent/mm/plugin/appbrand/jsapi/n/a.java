@@ -3,39 +3,51 @@ package com.tencent.mm.plugin.appbrand.jsapi.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/NavigateBackInterceptionConstant;", "()V", "Companion", "luggage-wxa-app-jsapi_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/NavigateBackInterceptionConstant;", "()V", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class a
   extends com.tencent.mm.plugin.appbrand.jsapi.p
 {
   private static final int CTRL_INDEX = 881;
   private static final String NAME = "onNavigateBackIntercept";
-  public static final a lbk;
+  public static final a leU;
   
   static
   {
-    AppMethodBeat.i(198663);
-    lbk = new a((byte)0);
-    AppMethodBeat.o(198663);
+    AppMethodBeat.i(209702);
+    leU = new a((byte)0);
+    AppMethodBeat.o(209702);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "dispatch", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "type", "luggage-wxa-app-jsapi_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "dispatch", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "type", "luggage-wxa-app-jsapi_release"})
   public static final class a
   {
     public static void a(AppBrandRuntime paramAppBrandRuntime, int paramInt)
     {
-      AppMethodBeat.i(198662);
+      AppMethodBeat.i(209701);
       d.g.b.p.h(paramAppBrandRuntime, "rt");
       a locala = new a((byte)0);
-      ad.i("AppBrandOnNavigateBackInterceptEvent", "[dispatch] type=".concat(String.valueOf(paramInt)));
+      ae.i("AppBrandOnNavigateBackInterceptEvent", "[dispatch] type=".concat(String.valueOf(paramInt)));
       HashMap localHashMap = new HashMap(1);
       ((Map)localHashMap).put("type", Integer.valueOf(paramInt));
-      locala.A((Map)localHashMap).g((c)paramAppBrandRuntime.Ew()).bir();
-      AppMethodBeat.o(198662);
+      locala.H((Map)localHashMap).g((c)paramAppBrandRuntime.Ey()).bja();
+      paramAppBrandRuntime = paramAppBrandRuntime.aWm();
+      if (paramAppBrandRuntime != null)
+      {
+        paramAppBrandRuntime = paramAppBrandRuntime.getPageView();
+        if (paramAppBrandRuntime != null)
+        {
+          locala.H((Map)localHashMap).g((c)paramAppBrandRuntime).bja();
+          AppMethodBeat.o(209701);
+          return;
+        }
+      }
+      AppMethodBeat.o(209701);
     }
   }
 }

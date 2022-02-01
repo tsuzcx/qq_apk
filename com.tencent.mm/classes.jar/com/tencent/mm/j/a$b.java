@@ -2,9 +2,9 @@ package com.tencent.mm.j;
 
 public abstract interface a$b
 {
-  public abstract void ZB();
+  public abstract void ZK();
   
-  public abstract boolean ZC();
+  public abstract boolean ZL();
 }
 
 

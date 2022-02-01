@@ -4,61 +4,63 @@ import android.os.Parcelable;
 import com.tencent.luggage.sdk.launching.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.sdk.platformtools.ae;
+import d.v;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WebInvokeProcess;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "CALLBACK_ID", "", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "transitiveData", "", "navigateBack", "", "invokeResult", "onCallback", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "data", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "Companion", "plugin-appbrand-integration_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WebInvokeProcess;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "CALLBACK_ID", "", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "transitiveData", "", "navigateBack", "", "invokeResult", "onCallback", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "data", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "Companion", "plugin-appbrand-integration_release"})
 final class r
   implements o
 {
   @Deprecated
-  public static final r.a lOW;
-  private String jXV;
-  private final int lOI;
-  private final l lOq;
+  public static final a lTx;
+  private String kbk;
+  private final l lSR;
+  private final int lTj;
   
   static
   {
-    AppMethodBeat.i(189403);
-    lOW = new r.a((byte)0);
-    AppMethodBeat.o(189403);
+    AppMethodBeat.i(223663);
+    lTx = new a((byte)0);
+    AppMethodBeat.o(223663);
   }
   
   public r(l paraml)
   {
-    AppMethodBeat.i(189402);
-    this.lOq = paraml;
-    this.lOI = (hashCode() & 0xFFFF);
-    AppMethodBeat.o(189402);
+    AppMethodBeat.i(223662);
+    this.lSR = paraml;
+    this.lTj = (hashCode() & 0xFFFF);
+    AppMethodBeat.o(223662);
   }
   
-  private final void dW(String paramString1, String paramString2)
+  private final void dY(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189401);
-    ad.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.WebInvokeProcess", "navigateBack, instance(" + hashCode() + "), invokeResult(" + paramString2 + ')');
-    a locala = this.lOq.aXc().cmA;
+    AppMethodBeat.i(223661);
+    ae.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.WebInvokeProcess", "navigateBack, instance(" + hashCode() + "), invokeResult(" + paramString2 + ')');
+    a locala = this.lSR.aXx().cmC;
     if (locala != null)
     {
       if (locala == null)
       {
-        paramString1 = new d.v("null cannot be cast to non-null type com.tencent.luggage.sdk.launching.OnWXAppResultListener<com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.ByRuntimeQrcodeResult>");
-        AppMethodBeat.o(189401);
+        paramString1 = new v("null cannot be cast to non-null type com.tencent.luggage.sdk.launching.OnWXAppResultListener<com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.ByRuntimeQrcodeResult>");
+        AppMethodBeat.o(223661);
         throw paramString1;
       }
       locala.b((Parcelable)new ByRuntimeQrcodeResult(paramString2, paramString1));
-      this.lOq.finish();
-      AppMethodBeat.o(189401);
+      this.lSR.finish();
+      AppMethodBeat.o(223661);
       return;
     }
-    AppMethodBeat.o(189401);
+    AppMethodBeat.o(223661);
   }
   
-  public final void Se(String paramString)
+  public final void SN(String paramString)
   {
-    AppMethodBeat.i(189398);
+    AppMethodBeat.i(223658);
     d.g.b.p.h(paramString, "invokeData");
-    ad.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.WebInvokeProcess", "performInvoke with instance(" + hashCode() + "), appId(" + this.lOq.getAppId() + ") data(" + paramString + ')');
+    ae.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.WebInvokeProcess", "performInvoke with instance(" + hashCode() + "), appId(" + this.lSR.getAppId() + ") data(" + paramString + ')');
     Object localObject;
     String str1;
     String str2;
@@ -82,28 +84,28 @@ final class r
       do
       {
         CharSequence localCharSequence;
-        ad.e("MicroMsg.AppBrand.FunctionalAPIInvokeManager", "performInvoke, json parse e = ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(189398);
+        ae.e("MicroMsg.AppBrand.FunctionalAPIInvokeManager", "performInvoke, json parse e = ".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(223658);
         return;
         switch (((String)localObject).hashCode())
         {
         }
       } while (!((String)localObject).equals("webview"));
-      paramString = this.lOq.aXd();
+      paramString = this.lSR.aXy();
       d.g.b.p.g(paramString, "runtime.pageContainer");
       paramString = paramString.getPageView();
       if (paramString != null) {
         break label385;
       }
-      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalPageView");
-      AppMethodBeat.o(189398);
+      paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalPageView");
+      AppMethodBeat.o(223658);
       throw paramString;
     }
     catch (RuntimeException paramString)
     {
       label152:
       label165:
-      AppMethodBeat.o(189398);
+      AppMethodBeat.o(223658);
       return;
     }
     if (i == 0)
@@ -117,36 +119,36 @@ final class r
     }
     else
     {
-      dW(paramString, "fail invalid args");
-      AppMethodBeat.o(189398);
+      dY(paramString, "fail invalid args");
+      AppMethodBeat.o(223658);
       return;
       localObject = ((JSONObject)localObject).optString("jsapiType");
       if (localObject != null) {}
     }
     for (;;)
     {
-      dW(paramString, d.dU("fail invalid jsapiType", str1));
+      dY(paramString, d.dW("fail invalid jsapiType", str1));
       paramString = (Throwable)new RuntimeException();
-      AppMethodBeat.o(189398);
+      AppMethodBeat.o(223658);
       throw paramString;
       if (((String)localObject).equals("appservice"))
       {
-        paramString = this.lOq.aXe();
+        paramString = this.lSR.aXz();
         if (paramString == null)
         {
-          paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
-          AppMethodBeat.o(189398);
+          paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
+          AppMethodBeat.o(223658);
           throw paramString;
         }
         label385:
         for (paramString = (p)paramString; paramString == null; paramString = (p)paramString)
         {
-          paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.AppBrandComponentImpl");
-          AppMethodBeat.o(189398);
+          paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.AppBrandComponentImpl");
+          AppMethodBeat.o(223658);
           throw paramString;
         }
-        ((com.tencent.mm.plugin.appbrand.jsapi.d)paramString).y(str1, str2, this.lOI);
-        AppMethodBeat.o(189398);
+        ((com.tencent.mm.plugin.appbrand.jsapi.d)paramString).y(str1, str2, this.lTj);
+        AppMethodBeat.o(223658);
         return;
         label417:
         i = 1;
@@ -170,28 +172,31 @@ final class r
   
   public final void a(p paramp, int paramInt, String paramString)
   {
-    AppMethodBeat.i(189399);
+    AppMethodBeat.i(223659);
     d.g.b.p.h(paramp, "component");
     d.g.b.p.h(paramString, "data");
-    if (this.lOI == paramInt) {
-      dW(this.jXV, paramString);
+    if (this.lTj == paramInt) {
+      dY(this.kbk, paramString);
     }
-    AppMethodBeat.o(189399);
+    AppMethodBeat.o(223659);
   }
   
   public final void b(p paramp, int paramInt, String paramString)
   {
-    AppMethodBeat.i(189400);
+    AppMethodBeat.i(223660);
     d.g.b.p.h(paramp, "component");
     d.g.b.p.h(paramString, "callbackStr");
-    ad.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.WebInvokeProcess", "onPayAheadCallback, instance(" + hashCode() + ", callbackId(" + paramInt + "), callbackStr(" + paramString + ')');
-    dW(this.jXV, paramString);
-    AppMethodBeat.o(189400);
+    ae.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.WebInvokeProcess", "onPayAheadCallback, instance(" + hashCode() + ", callbackId(" + paramInt + "), callbackStr(" + paramString + ')');
+    dY(this.kbk, paramString);
+    AppMethodBeat.o(223660);
   }
+  
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WebInvokeProcess$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.r
  * JD-Core Version:    0.7.0.1
  */

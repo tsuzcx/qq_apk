@@ -21,18 +21,18 @@ public final class m
 {
   private final Paint mPaint;
   private final Rect mTempRect;
-  final Rect mTm;
-  private int mTn;
-  public int mTo;
+  final Rect mYu;
+  private int mYv;
+  public int mYw;
   
   public m()
   {
     AppMethodBeat.i(49371);
-    this.mTm = new Rect();
+    this.mYu = new Rect();
     this.mTempRect = new Rect();
     this.mPaint = new Paint();
-    this.mTn = 0;
-    this.mTo = 0;
+    this.mYv = 0;
+    this.mYw = 0;
     AppMethodBeat.o(49371);
   }
   
@@ -52,7 +52,7 @@ public final class m
       public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
       {
         AppMethodBeat.i(49370);
-        this.mTp.mTm.set(paramAnonymousWindowInsets.getSystemWindowInsetLeft(), paramAnonymousWindowInsets.getSystemWindowInsetTop(), paramAnonymousWindowInsets.getSystemWindowInsetRight(), paramAnonymousWindowInsets.getSystemWindowInsetBottom());
+        this.mYx.mYu.set(paramAnonymousWindowInsets.getSystemWindowInsetLeft(), paramAnonymousWindowInsets.getSystemWindowInsetTop(), paramAnonymousWindowInsets.getSystemWindowInsetRight(), paramAnonymousWindowInsets.getSystemWindowInsetBottom());
         t.W(paramAnonymousView);
         if (localView == paramAnonymousView)
         {
@@ -65,12 +65,12 @@ public final class m
       }
     };
     if (localView == paramView) {
-      am.bg(paramActivity).a(local1);
+      am.bh(paramActivity).a(local1);
     }
     for (;;)
     {
-      localm.mTn = 0;
-      localm.mTo = paramActivity.getWindow().getNavigationBarColor();
+      localm.mYv = 0;
+      localm.mYw = paramActivity.getWindow().getNavigationBarColor();
       AppMethodBeat.o(49372);
       return;
       paramView.setOnApplyWindowInsetsListener(local1);
@@ -86,34 +86,34 @@ public final class m
       AppMethodBeat.o(49373);
       return;
     }
-    int i = Math.min(localRect.top + this.mTm.top, localRect.bottom);
-    int j = Math.min(localRect.left + this.mTm.left, localRect.right);
-    int k = Math.max(localRect.right - this.mTm.right, localRect.left);
-    int m = Math.max(localRect.bottom - this.mTm.bottom, localRect.top);
-    if ((this.mTn != 0) && (this.mTm.top > 0))
+    int i = Math.min(localRect.top + this.mYu.top, localRect.bottom);
+    int j = Math.min(localRect.left + this.mYu.left, localRect.right);
+    int k = Math.max(localRect.right - this.mYu.right, localRect.left);
+    int m = Math.max(localRect.bottom - this.mYu.bottom, localRect.top);
+    if ((this.mYv != 0) && (this.mYu.top > 0))
     {
       this.mTempRect.set(j, localRect.top, k, i);
-      this.mPaint.setColor(this.mTn);
+      this.mPaint.setColor(this.mYv);
       paramCanvas.drawRect(this.mTempRect, this.mPaint);
     }
-    if (this.mTo != 0)
+    if (this.mYw != 0)
     {
-      if (this.mTm.left > 0)
+      if (this.mYu.left > 0)
       {
         this.mTempRect.set(localRect.left, i, j, m);
-        this.mPaint.setColor(this.mTo);
+        this.mPaint.setColor(this.mYw);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
-      if (this.mTm.right > 0)
+      if (this.mYu.right > 0)
       {
         this.mTempRect.set(k, i, localRect.right, m);
-        this.mPaint.setColor(this.mTo);
+        this.mPaint.setColor(this.mYw);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
-      if (this.mTm.bottom > 0)
+      if (this.mYu.bottom > 0)
       {
         this.mTempRect.set(j, m, k, localRect.bottom);
-        this.mPaint.setColor(this.mTo);
+        this.mPaint.setColor(this.mYw);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
     }

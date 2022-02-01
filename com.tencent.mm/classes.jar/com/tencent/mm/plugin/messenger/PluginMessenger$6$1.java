@@ -15,26 +15,26 @@ final class PluginMessenger$6$1
   
   public final void onClickImp(View paramView)
   {
-    AppMethodBeat.i(211825);
+    AppMethodBeat.i(218134);
     try
     {
-      if (this.fKx.get() != null)
+      if (this.fMA.get() != null)
       {
         paramView = new LiveConfig.a();
-        paramView.gGx = LiveConfig.gGt;
-        paramView.gGz = this.vIP;
-        paramView.gGC = this.vIQ;
-        paramView.gGy = this.vIR;
-        paramView.scene = LiveConfig.gGp;
-        paramView = paramView.alb();
-        ((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).liveEntranceJumper().d((Context)this.fKx.get(), paramView);
+        paramView.gJg = LiveConfig.gJc;
+        paramView.gJi = this.vUT;
+        paramView.gJl = this.vUU;
+        paramView.gJh = this.vUV;
+        paramView.scene = LiveConfig.gIY;
+        paramView = paramView.alq();
+        ((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).liveEntranceJumper().d((Context)this.fMA.get(), paramView);
       }
-      AppMethodBeat.o(211825);
+      AppMethodBeat.o(218134);
       return;
     }
     catch (Throwable paramView)
     {
-      AppMethodBeat.o(211825);
+      AppMethodBeat.o(218134);
     }
   }
 }

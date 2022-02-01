@@ -2,7 +2,7 @@ package com.tencent.mm.recoveryv2;
 
 public abstract interface d
 {
-  public abstract void ZV(int paramInt);
+  public abstract void aaB(int paramInt);
 }
 
 

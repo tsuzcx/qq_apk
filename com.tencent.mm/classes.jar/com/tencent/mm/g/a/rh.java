@@ -1,15 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rh
   extends b
 {
-  public a dFR;
-  public b dFS;
+  public a dGV;
   
   public rh()
   {
@@ -18,28 +17,17 @@ public final class rh
   
   private rh(byte paramByte)
   {
-    AppMethodBeat.i(149883);
-    this.dFR = new a();
-    this.dFS = new b();
-    this.IbR = false;
+    AppMethodBeat.i(91217);
+    this.dGV = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149883);
+    AppMethodBeat.o(91217);
   }
   
   public static final class a
   {
-    public String dFT;
-    public String dFU;
-    public Activity dsa;
-    public String packageName;
-    public int requestCode;
-    public int scene;
-  }
-  
-  public static final class b
-  {
-    public boolean dFV;
-    public Bundle extras;
+    public Context context;
+    public Intent intent;
   }
 }
 

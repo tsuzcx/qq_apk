@@ -10,16 +10,16 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 
 public class EditPreference
   extends Preference
 {
-  private Preference.a JrJ;
-  a JrO;
-  private d jcs;
+  a JMD;
+  private Preference.a JMy;
+  private d jfl;
   String value;
   private EditText vr;
   
@@ -35,7 +35,7 @@ public class EditPreference
   
   public final void a(Preference.a parama)
   {
-    this.JrJ = parama;
+    this.JMy = parama;
   }
   
   public final void showDialog()
@@ -60,7 +60,7 @@ public class EditPreference
       if (localEditText.getParent() != null) {
         ((ViewGroup)localEditText.getParent()).removeView(localEditText);
       }
-      this.jcs = h.a(this.mContext, getTitle().toString(), localEditText, a.az(this.mContext, 2131755835), a.az(this.mContext, 2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.jfl = h.a(this.mContext, getTitle().toString(), localEditText, a.az(this.mContext, 2131755835), a.az(this.mContext, 2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -70,7 +70,7 @@ public class EditPreference
           }
           EditPreference.this.value = localEditText.getText().toString();
           if (EditPreference.b(EditPreference.this) != null) {
-            EditPreference.b(EditPreference.this).fzy();
+            EditPreference.b(EditPreference.this).fDA();
           }
           if (EditPreference.c(EditPreference.this) != null) {
             EditPreference.c(EditPreference.this).a(EditPreference.this, EditPreference.d(EditPreference.this));
@@ -99,7 +99,7 @@ public class EditPreference
   
   public static abstract interface a
   {
-    public abstract void fzy();
+    public abstract void fDA();
   }
 }
 

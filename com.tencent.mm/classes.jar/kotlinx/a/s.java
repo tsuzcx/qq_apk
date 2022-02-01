@@ -6,7 +6,7 @@ import d.g.b.z;
 import d.l;
 import d.l.b;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/SerialKind;", "", "()V", "toString", "", "Lkotlinx/serialization/PrimitiveKind;", "Lkotlinx/serialization/StructureKind;", "Lkotlinx/serialization/UnionKind;", "Lkotlinx/serialization/PolymorphicKind;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/SerialKind;", "", "()V", "toString", "", "Lkotlinx/serialization/PrimitiveKind;", "Lkotlinx/serialization/StructureKind;", "Lkotlinx/serialization/UnionKind;", "Lkotlinx/serialization/PolymorphicKind;", "kotlinx-serialization-runtime"})
 public abstract class s
 {
   public String toString()
@@ -15,7 +15,7 @@ public abstract class s
     p.h(localObject, "$this$simpleName");
     localObject = a.a((b)localObject).getSimpleName();
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     return localObject;
   }

@@ -22,71 +22,71 @@ public final class c
   extends f
   implements Application.ActivityLifecycleCallbacks
 {
-  private final com.tencent.matrix.trace.a.b cJL;
-  public a cLh;
-  public int cLi = 0;
-  private final long cLj;
-  private long cLk;
-  private boolean cLl;
-  private long cLm;
-  private long cLn;
-  private long cLo;
-  private long cLp;
-  public int cLq = 0;
-  private long cLr = 0L;
-  private Map<String, Long> cLs = new HashMap();
+  private final com.tencent.matrix.trace.a.b cKu;
+  public a cLQ;
+  public int cLR = 0;
+  private final long cLS;
+  private long cLT;
+  private boolean cLU;
+  private long cLV;
+  private long cLW;
+  private long cLX;
+  private long cLY;
+  public int cLZ = 0;
+  private long cMa = 0L;
+  private Map<String, Long> cMb = new HashMap();
   private final HashSet<com.tencent.matrix.trace.e.b> listeners = new HashSet();
   
   public c(com.tencent.matrix.trace.a.b paramb)
   {
-    this.cJL = paramb;
-    this.cLj = com.tencent.matrix.trace.core.b.Ja().cAz;
-    if (paramb.cEm == null)
+    this.cKu = paramb;
+    this.cLS = com.tencent.matrix.trace.core.b.Ji().cBg;
+    if (paramb.cET == null)
     {
       i = 10000;
-      this.cLk = i;
-      this.cLl = paramb.cJD;
-      if (paramb.cEm != null) {
+      this.cLT = i;
+      this.cLU = paramb.cKm;
+      if (paramb.cET != null) {
         break label218;
       }
       i = 42;
       label91:
-      this.cLm = i;
-      if (paramb.cEm != null) {
+      this.cLV = i;
+      if (paramb.cET != null) {
         break label239;
       }
       i = 24;
       label107:
-      this.cLn = i;
-      if (paramb.cEm != null) {
+      this.cLW = i;
+      if (paramb.cET != null) {
         break label260;
       }
       i = 3;
       label122:
-      this.cLp = i;
-      if (paramb.cEm != null) {
+      this.cLY = i;
+      if (paramb.cET != null) {
         break label280;
       }
     }
     label260:
     label280:
-    for (int i = 9;; i = paramb.cEm.get(a.a.LCt.name(), 9))
+    for (int i = 9;; i = paramb.cET.get(a.a.LZx.name(), 9))
     {
-      this.cLo = i;
-      com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[init] frameIntervalMs:%s isFPSEnable:%s", new Object[] { Long.valueOf(this.cLj), Boolean.valueOf(this.cLl) });
-      if (this.cLl) {
+      this.cLX = i;
+      com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[init] frameIntervalMs:%s isFPSEnable:%s", new Object[] { Long.valueOf(this.cLS), Boolean.valueOf(this.cLU) });
+      if (this.cLU) {
         a(new c((byte)0));
       }
       return;
-      i = paramb.cEm.get(a.a.LCq.name(), 10000);
+      i = paramb.cET.get(a.a.LZu.name(), 10000);
       break;
       label218:
-      i = paramb.cEm.get(a.a.LCv.name(), 42);
+      i = paramb.cET.get(a.a.LZz.name(), 42);
       break label91;
       label239:
-      i = paramb.cEm.get(a.a.LCu.name(), 24);
+      i = paramb.cET.get(a.a.LZy.name(), 24);
       break label107;
-      i = paramb.cEm.get(a.a.LCs.name(), 3);
+      i = paramb.cET.get(a.a.LZw.name(), 3);
       break label122;
     }
   }
@@ -104,8 +104,8 @@ public final class c
   public final void a(final String paramString, final long paramLong1, long paramLong2, boolean paramBoolean, final long paramLong3, final long paramLong4, final long paramLong5, long paramLong6)
   {
     // Byte code:
-    //   0: getstatic 173	com/tencent/matrix/a:cAS	Lcom/tencent/matrix/a;
-    //   3: getfield 176	com/tencent/matrix/a:cAU	Z
+    //   0: getstatic 173	com/tencent/matrix/a:cBz	Lcom/tencent/matrix/a;
+    //   3: getfield 176	com/tencent/matrix/a:cBB	Z
     //   6: ifeq +625 -> 631
     //   9: invokestatic 182	java/lang/System:currentTimeMillis	()J
     //   12: lstore 17
@@ -115,49 +115,49 @@ public final class c
     //   19: lstore 19
     //   21: lload 19
     //   23: aload_0
-    //   24: getfield 79	com/tencent/matrix/trace/f/c:cLj	J
+    //   24: getfield 79	com/tencent/matrix/trace/f/c:cLS	J
     //   27: ldiv
     //   28: l2i
     //   29: istore 15
     //   31: aload_0
-    //   32: getfield 184	com/tencent/matrix/trace/f/c:cLh	Lcom/tencent/matrix/trace/f/c$a;
+    //   32: getfield 184	com/tencent/matrix/trace/f/c:cLQ	Lcom/tencent/matrix/trace/f/c$a;
     //   35: ifnull +58 -> 93
     //   38: aload_0
-    //   39: getfield 57	com/tencent/matrix/trace/f/c:cLi	I
+    //   39: getfield 57	com/tencent/matrix/trace/f/c:cLR	I
     //   42: istore 16
     //   44: iload 15
     //   46: iload 16
     //   48: if_icmple +45 -> 93
-    //   51: invokestatic 187	com/tencent/matrix/a:HJ	()Ljava/lang/String;
+    //   51: invokestatic 187	com/tencent/matrix/a:HR	()Ljava/lang/String;
     //   54: ifnull +39 -> 93
     //   57: aload_0
-    //   58: getfield 66	com/tencent/matrix/trace/f/c:cLs	Ljava/util/Map;
-    //   61: invokestatic 187	com/tencent/matrix/a:HJ	()Ljava/lang/String;
+    //   58: getfield 66	com/tencent/matrix/trace/f/c:cMb	Ljava/util/Map;
+    //   61: invokestatic 187	com/tencent/matrix/a:HR	()Ljava/lang/String;
     //   64: invokeinterface 192 2 0
     //   69: checkcast 108	java/lang/Long
     //   72: invokevirtual 195	java/lang/Long:longValue	()J
     //   75: lstore 21
     //   77: aload_0
-    //   78: getfield 184	com/tencent/matrix/trace/f/c:cLh	Lcom/tencent/matrix/trace/f/c$a;
+    //   78: getfield 184	com/tencent/matrix/trace/f/c:cLQ	Lcom/tencent/matrix/trace/f/c$a;
     //   81: iload 15
-    //   83: invokestatic 187	com/tencent/matrix/a:HJ	()Ljava/lang/String;
+    //   83: invokestatic 187	com/tencent/matrix/a:HR	()Ljava/lang/String;
     //   86: lload 21
     //   88: invokeinterface 198 5 0
     //   93: aload_0
     //   94: aload_0
-    //   95: getfield 59	com/tencent/matrix/trace/f/c:cLq	I
+    //   95: getfield 59	com/tencent/matrix/trace/f/c:cLZ	I
     //   98: iload 15
     //   100: iadd
-    //   101: putfield 59	com/tencent/matrix/trace/f/c:cLq	I
+    //   101: putfield 59	com/tencent/matrix/trace/f/c:cLZ	I
     //   104: aload_0
     //   105: aload_0
-    //   106: getfield 61	com/tencent/matrix/trace/f/c:cLr	J
+    //   106: getfield 61	com/tencent/matrix/trace/f/c:cMa	J
     //   109: lload 19
     //   111: aload_0
-    //   112: getfield 79	com/tencent/matrix/trace/f/c:cLj	J
+    //   112: getfield 79	com/tencent/matrix/trace/f/c:cLS	J
     //   115: invokestatic 204	java/lang/Math:max	(JJ)J
     //   118: ladd
-    //   119: putfield 61	com/tencent/matrix/trace/f/c:cLr	J
+    //   119: putfield 61	com/tencent/matrix/trace/f/c:cMa	J
     //   122: aload_0
     //   123: getfield 55	com/tencent/matrix/trace/f/c:listeners	Ljava/util/HashSet;
     //   126: astore 23
@@ -175,8 +175,8 @@ public final class c
     //   157: checkcast 220	com/tencent/matrix/trace/e/b
     //   160: astore 25
     //   162: aload_0
-    //   163: getfield 68	com/tencent/matrix/trace/f/c:cJL	Lcom/tencent/matrix/trace/a/b;
-    //   166: getfield 223	com/tencent/matrix/trace/a/b:cJH	Z
+    //   163: getfield 68	com/tencent/matrix/trace/f/c:cKu	Lcom/tencent/matrix/trace/a/b;
+    //   166: getfield 223	com/tencent/matrix/trace/a/b:cKq	Z
     //   169: ifeq +11 -> 180
     //   172: aload 25
     //   174: invokestatic 228	android/os/SystemClock:uptimeMillis	()J
@@ -185,37 +185,37 @@ public final class c
     //   182: invokevirtual 235	com/tencent/matrix/trace/e/b:getExecutor	()Ljava/util/concurrent/Executor;
     //   185: ifnull +357 -> 542
     //   188: aload 25
-    //   190: invokevirtual 239	com/tencent/matrix/trace/e/b:Jh	()I
+    //   190: invokevirtual 239	com/tencent/matrix/trace/e/b:Jp	()I
     //   193: ifle +310 -> 503
-    //   196: invokestatic 245	com/tencent/matrix/trace/e/b$a:Jj	()Lcom/tencent/matrix/trace/e/b$a;
+    //   196: invokestatic 245	com/tencent/matrix/trace/e/b$a:Jr	()Lcom/tencent/matrix/trace/e/b$a;
     //   199: astore 26
     //   201: aload 26
     //   203: aload_1
-    //   204: putfield 249	com/tencent/matrix/trace/e/b$a:cKI	Ljava/lang/String;
+    //   204: putfield 249	com/tencent/matrix/trace/e/b$a:cLr	Ljava/lang/String;
     //   207: aload 26
     //   209: lload_2
-    //   210: putfield 252	com/tencent/matrix/trace/e/b$a:cKJ	J
+    //   210: putfield 252	com/tencent/matrix/trace/e/b$a:cLs	J
     //   213: aload 26
     //   215: lload 4
-    //   217: putfield 255	com/tencent/matrix/trace/e/b$a:cKK	J
+    //   217: putfield 255	com/tencent/matrix/trace/e/b$a:cLt	J
     //   220: aload 26
     //   222: iload 15
-    //   224: putfield 258	com/tencent/matrix/trace/e/b$a:cKL	I
+    //   224: putfield 258	com/tencent/matrix/trace/e/b$a:cLu	I
     //   227: aload 26
     //   229: iload 6
-    //   231: putfield 261	com/tencent/matrix/trace/e/b$a:cKg	Z
+    //   231: putfield 261	com/tencent/matrix/trace/e/b$a:cKP	Z
     //   234: aload 26
     //   236: lload 7
-    //   238: putfield 264	com/tencent/matrix/trace/e/b$a:cKM	J
+    //   238: putfield 264	com/tencent/matrix/trace/e/b$a:cLv	J
     //   241: aload 26
     //   243: lload 9
-    //   245: putfield 267	com/tencent/matrix/trace/e/b$a:cKN	J
+    //   245: putfield 267	com/tencent/matrix/trace/e/b$a:cLw	J
     //   248: aload 26
     //   250: lload 11
-    //   252: putfield 270	com/tencent/matrix/trace/e/b$a:cKO	J
+    //   252: putfield 270	com/tencent/matrix/trace/e/b$a:cLx	J
     //   255: aload 26
     //   257: lload 13
-    //   259: putfield 273	com/tencent/matrix/trace/e/b$a:cKP	J
+    //   259: putfield 273	com/tencent/matrix/trace/e/b$a:cLy	J
     //   262: aload 25
     //   264: getfield 277	com/tencent/matrix/trace/e/b:list	Ljava/util/List;
     //   267: aload 26
@@ -225,7 +225,7 @@ public final class c
     //   277: getfield 277	com/tencent/matrix/trace/e/b:list	Ljava/util/List;
     //   280: invokeinterface 283 1 0
     //   285: aload 25
-    //   287: getfield 286	com/tencent/matrix/trace/e/b:cKE	I
+    //   287: getfield 286	com/tencent/matrix/trace/e/b:cLn	I
     //   290: if_icmplt +56 -> 346
     //   293: aload 25
     //   295: invokevirtual 235	com/tencent/matrix/trace/e/b:getExecutor	()Ljava/util/concurrent/Executor;
@@ -248,8 +248,8 @@ public final class c
     //   338: invokespecial 299	com/tencent/matrix/trace/e/b$1:<init>	(Lcom/tencent/matrix/trace/e/b;Ljava/util/List;)V
     //   341: invokeinterface 305 2 0
     //   346: aload_0
-    //   347: getfield 68	com/tencent/matrix/trace/f/c:cJL	Lcom/tencent/matrix/trace/a/b;
-    //   350: getfield 223	com/tencent/matrix/trace/a/b:cJH	Z
+    //   347: getfield 68	com/tencent/matrix/trace/f/c:cKu	Lcom/tencent/matrix/trace/a/b;
+    //   350: getfield 223	com/tencent/matrix/trace/a/b:cKq	Z
     //   353: ifeq -213 -> 140
     //   356: aload 25
     //   358: invokestatic 228	android/os/SystemClock:uptimeMillis	()J
@@ -284,12 +284,12 @@ public final class c
     //   413: lsub
     //   414: lstore_2
     //   415: aload_0
-    //   416: getfield 68	com/tencent/matrix/trace/f/c:cJL	Lcom/tencent/matrix/trace/a/b;
-    //   419: getfield 312	com/tencent/matrix/trace/a/b:cFj	Z
+    //   416: getfield 68	com/tencent/matrix/trace/f/c:cKu	Lcom/tencent/matrix/trace/a/b;
+    //   419: getfield 312	com/tencent/matrix/trace/a/b:cFS	Z
     //   422: ifeq +44 -> 466
     //   425: lload_2
     //   426: aload_0
-    //   427: getfield 79	com/tencent/matrix/trace/f/c:cLj	J
+    //   427: getfield 79	com/tencent/matrix/trace/f/c:cLS	J
     //   430: lcmp
     //   431: ifle +35 -> 466
     //   434: ldc 102
@@ -364,12 +364,12 @@ public final class c
     //   578: lsub
     //   579: lstore_2
     //   580: aload_0
-    //   581: getfield 68	com/tencent/matrix/trace/f/c:cJL	Lcom/tencent/matrix/trace/a/b;
-    //   584: getfield 312	com/tencent/matrix/trace/a/b:cFj	Z
+    //   581: getfield 68	com/tencent/matrix/trace/f/c:cKu	Lcom/tencent/matrix/trace/a/b;
+    //   584: getfield 312	com/tencent/matrix/trace/a/b:cFS	Z
     //   587: ifeq +44 -> 631
     //   590: lload_2
     //   591: aload_0
-    //   592: getfield 79	com/tencent/matrix/trace/f/c:cLj	J
+    //   592: getfield 79	com/tencent/matrix/trace/f/c:cLS	J
     //   595: lcmp
     //   596: ifle +35 -> 631
     //   599: ldc 102
@@ -445,7 +445,7 @@ public final class c
   
   public final void onActivityResumed(Activity paramActivity)
   {
-    this.cLs.put(paramActivity.getClass().getName(), Long.valueOf(System.currentTimeMillis()));
+    this.cMb.put(paramActivity.getClass().getName(), Long.valueOf(System.currentTimeMillis()));
   }
   
   public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
@@ -457,19 +457,19 @@ public final class c
   public final void onAlive()
   {
     super.onAlive();
-    com.tencent.matrix.trace.core.b.Ja().a(this);
-    if (this.cLl) {
-      com.tencent.matrix.b.HL().application.registerActivityLifecycleCallbacks(this);
+    com.tencent.matrix.trace.core.b.Ji().a(this);
+    if (this.cLU) {
+      com.tencent.matrix.b.HT().application.registerActivityLifecycleCallbacks(this);
     }
   }
   
   public final void onDead()
   {
     super.onDead();
-    com.tencent.matrix.trace.core.b.Ja().b(this);
-    this.cLh = null;
-    if (this.cLl) {
-      com.tencent.matrix.b.HL().application.unregisterActivityLifecycleCallbacks(this);
+    com.tencent.matrix.trace.core.b.Ji().b(this);
+    this.cLQ = null;
+    if (this.cLU) {
+      com.tencent.matrix.b.HT().application.unregisterActivityLifecycleCallbacks(this);
     }
   }
   
@@ -491,8 +491,8 @@ public final class c
   final class c
     extends com.tencent.matrix.trace.e.b
   {
-    private HashMap<String, c.d> cDF = new HashMap();
-    private Handler cLJ = new Handler(com.tencent.matrix.g.b.Jt().getLooper());
+    private HashMap<String, c.d> cEm = new HashMap();
+    private Handler cMs = new Handler(com.tencent.matrix.g.b.JB().getLooper());
     Executor executor = new Executor()
     {
       public final void execute(Runnable paramAnonymousRunnable)
@@ -512,17 +512,17 @@ public final class c
       while (localIterator.hasNext())
       {
         paramList = (b.a)localIterator.next();
-        localObject2 = paramList.cKI;
-        i = paramList.cKL;
-        boolean bool = paramList.cKg;
-        if ((!com.tencent.matrix.trace.g.b.ea((String)localObject2)) && (bool))
+        localObject2 = paramList.cLr;
+        i = paramList.cLu;
+        boolean bool = paramList.cKP;
+        if ((!com.tencent.matrix.trace.g.b.ef((String)localObject2)) && (bool))
         {
-          paramList = (c.d)this.cDF.get(localObject2);
+          paramList = (c.d)this.cEm.get(localObject2);
           if (paramList != null) {
             break label1024;
           }
           paramList = new c.d(c.this, (String)localObject2);
-          this.cDF.put(localObject2, paramList);
+          this.cEm.put(localObject2, paramList);
         }
       }
       label1024:
@@ -530,123 +530,123 @@ public final class c
       {
         for (;;)
         {
-          float f1 = 1.0F * (float)com.tencent.matrix.trace.core.b.Ja().cAz / 1000000.0F;
-          float f2 = (float)paramList.cLL;
-          paramList.cLL = ((f1 * (i + 1) + f2));
-          paramList.cLN += i;
-          paramList.cLM += 1;
+          float f1 = 1.0F * (float)com.tencent.matrix.trace.core.b.Ji().cBg / 1000000.0F;
+          float f2 = (float)paramList.cMu;
+          paramList.cMu = ((f1 * (i + 1) + f2));
+          paramList.cMw += i;
+          paramList.cMv += 1;
           Object localObject3;
           int j;
-          if (i >= c.b(paramList.cLC))
+          if (i >= c.b(paramList.cMl))
           {
-            localObject3 = paramList.cLO;
-            j = c.b.cLD.index;
+            localObject3 = paramList.cMx;
+            j = c.b.cMm.index;
             localObject3[j] += 1;
-            localObject3 = paramList.cLP;
-            j = c.b.cLD.index;
+            localObject3 = paramList.cMy;
+            j = c.b.cMm.index;
             localObject3[j] = (i + localObject3[j]);
             label228:
-            if (paramList.cLL < c.a(c.this)) {
+            if (paramList.cMu < c.a(c.this)) {
               break;
             }
-            this.cDF.remove(localObject2);
-            f1 = Math.min(60.0F, 1000.0F * paramList.cLM / (float)paramList.cLL);
+            this.cEm.remove(localObject2);
+            f1 = Math.min(60.0F, 1000.0F * paramList.cMv / (float)paramList.cMu);
             com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[report] FPS:%s %s", new Object[] { Float.valueOf(f1), paramList.toString() });
           }
           try
           {
-            localObject2 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class);
+            localObject2 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.trace.a.class);
             if (localObject2 == null)
             {
-              paramList.cLM = 0;
-              paramList.cLN = 0;
-              paramList.cLL = 0L;
+              paramList.cMv = 0;
+              paramList.cMw = 0;
+              paramList.cMu = 0L;
               break;
-              if (i >= c.c(paramList.cLC))
+              if (i >= c.c(paramList.cMl))
               {
-                localObject3 = paramList.cLO;
-                j = c.b.cLE.index;
+                localObject3 = paramList.cMx;
+                j = c.b.cMn.index;
                 localObject3[j] += 1;
-                localObject3 = paramList.cLP;
-                j = c.b.cLE.index;
+                localObject3 = paramList.cMy;
+                j = c.b.cMn.index;
                 localObject3[j] = (i + localObject3[j]);
                 break label228;
               }
-              if (i >= c.d(paramList.cLC))
+              if (i >= c.d(paramList.cMl))
               {
-                localObject3 = paramList.cLO;
-                j = c.b.cLF.index;
+                localObject3 = paramList.cMx;
+                j = c.b.cMo.index;
                 localObject3[j] += 1;
-                localObject3 = paramList.cLP;
-                j = c.b.cLF.index;
+                localObject3 = paramList.cMy;
+                j = c.b.cMo.index;
                 localObject3[j] = (i + localObject3[j]);
                 break label228;
               }
-              if (i >= c.e(paramList.cLC))
+              if (i >= c.e(paramList.cMl))
               {
-                localObject3 = paramList.cLO;
-                j = c.b.cLG.index;
+                localObject3 = paramList.cMx;
+                j = c.b.cMp.index;
                 localObject3[j] += 1;
-                localObject3 = paramList.cLP;
-                j = c.b.cLG.index;
+                localObject3 = paramList.cMy;
+                j = c.b.cMp.index;
                 localObject3[j] = (i + localObject3[j]);
                 break label228;
               }
-              localObject3 = paramList.cLO;
-              j = c.b.cLH.index;
+              localObject3 = paramList.cMx;
+              j = c.b.cMq.index;
               localObject3[j] += 1;
-              localObject3 = paramList.cLP;
-              j = c.b.cLH.index;
+              localObject3 = paramList.cMy;
+              j = c.b.cMq.index;
               int k = localObject3[j];
               localObject3[j] = (Math.max(i, 0) + k);
               break label228;
             }
             Object localObject4 = new JSONObject();
-            ((JSONObject)localObject4).put(c.b.cLD.name(), paramList.cLO[c.b.cLD.index]);
-            ((JSONObject)localObject4).put(c.b.cLE.name(), paramList.cLO[c.b.cLE.index]);
-            ((JSONObject)localObject4).put(c.b.cLF.name(), paramList.cLO[c.b.cLF.index]);
-            ((JSONObject)localObject4).put(c.b.cLG.name(), paramList.cLO[c.b.cLG.index]);
-            ((JSONObject)localObject4).put(c.b.cLH.name(), paramList.cLO[c.b.cLH.index]);
+            ((JSONObject)localObject4).put(c.b.cMm.name(), paramList.cMx[c.b.cMm.index]);
+            ((JSONObject)localObject4).put(c.b.cMn.name(), paramList.cMx[c.b.cMn.index]);
+            ((JSONObject)localObject4).put(c.b.cMo.name(), paramList.cMx[c.b.cMo.index]);
+            ((JSONObject)localObject4).put(c.b.cMp.name(), paramList.cMx[c.b.cMp.index]);
+            ((JSONObject)localObject4).put(c.b.cMq.name(), paramList.cMx[c.b.cMq.index]);
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put(c.b.cLD.name(), paramList.cLP[c.b.cLD.index]);
-            localJSONObject.put(c.b.cLE.name(), paramList.cLP[c.b.cLE.index]);
-            localJSONObject.put(c.b.cLF.name(), paramList.cLP[c.b.cLF.index]);
-            localJSONObject.put(c.b.cLG.name(), paramList.cLP[c.b.cLG.index]);
-            localJSONObject.put(c.b.cLH.name(), paramList.cLP[c.b.cLH.index]);
+            localJSONObject.put(c.b.cMm.name(), paramList.cMy[c.b.cMm.index]);
+            localJSONObject.put(c.b.cMn.name(), paramList.cMy[c.b.cMn.index]);
+            localJSONObject.put(c.b.cMo.name(), paramList.cMy[c.b.cMo.index]);
+            localJSONObject.put(c.b.cMp.name(), paramList.cMy[c.b.cMp.index]);
+            localJSONObject.put(c.b.cMq.name(), paramList.cMy[c.b.cMq.index]);
             localObject3 = com.tencent.matrix.g.a.a(new JSONObject(), ((com.tencent.matrix.trace.a)localObject2).getApplication());
-            ((JSONObject)localObject3).put("scene", paramList.cAV);
+            ((JSONObject)localObject3).put("scene", paramList.cBC);
             ((JSONObject)localObject3).put("dropLevel", localObject4);
             ((JSONObject)localObject3).put("dropSum", localJSONObject);
             ((JSONObject)localObject3).put("fps", f1);
             localObject4 = new com.tencent.matrix.report.c();
             ((com.tencent.matrix.report.c)localObject4).tag = "Trace_FPS";
-            ((com.tencent.matrix.report.c)localObject4).cEZ = ((JSONObject)localObject3);
+            ((com.tencent.matrix.report.c)localObject4).cFG = ((JSONObject)localObject3);
             ((com.tencent.matrix.trace.a)localObject2).onDetectIssue((com.tencent.matrix.report.c)localObject4);
-            paramList.cLM = 0;
-            paramList.cLN = 0;
-            paramList.cLL = 0L;
+            paramList.cMv = 0;
+            paramList.cMw = 0;
+            paramList.cMu = 0L;
             break;
           }
           catch (JSONException localJSONException)
           {
             com.tencent.matrix.g.c.e("Matrix.FrameTracer", "json error", new Object[] { localJSONException });
-            paramList.cLM = 0;
-            paramList.cLN = 0;
-            paramList.cLL = 0L;
+            paramList.cMv = 0;
+            paramList.cMw = 0;
+            paramList.cMu = 0L;
             break;
           }
           finally
           {
-            paramList.cLM = 0;
-            paramList.cLN = 0;
-            paramList.cLL = 0L;
+            paramList.cMv = 0;
+            paramList.cMw = 0;
+            paramList.cMu = 0L;
           }
         }
         return;
       }
     }
     
-    public final int Jh()
+    public final int Jp()
     {
       return 300;
     }
@@ -659,21 +659,21 @@ public final class c
   
   final class d
   {
-    String cAV;
-    long cLL;
-    int cLM = 0;
-    int cLN;
-    int[] cLO = new int[c.b.values().length];
-    int[] cLP = new int[c.b.values().length];
+    String cBC;
+    long cMu;
+    int cMv = 0;
+    int cMw;
+    int[] cMx = new int[c.b.values().length];
+    int[] cMy = new int[c.b.values().length];
     
     d(String paramString)
     {
-      this.cAV = paramString;
+      this.cBC = paramString;
     }
     
     public final String toString()
     {
-      return "visibleScene=" + this.cAV + ", sumFrame=" + this.cLM + ", sumDroppedFrames=" + this.cLN + ", sumFrameCost=" + this.cLL + ", dropLevel=" + Arrays.toString(this.cLO);
+      return "visibleScene=" + this.cBC + ", sumFrame=" + this.cMv + ", sumDroppedFrames=" + this.cMw + ", sumFrameCost=" + this.cMu + ", dropLevel=" + Arrays.toString(this.cMx);
     }
   }
 }

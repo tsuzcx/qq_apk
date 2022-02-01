@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends e<Boolean, BoldSpan>
 {
-  public final boolean cV(Object paramObject)
+  public final boolean cW(Object paramObject)
   {
     AppMethodBeat.i(181926);
     if (((paramObject instanceof BoldSpan)) || (((paramObject instanceof StyleSpan)) && (((StyleSpan)paramObject).getStyle() == 1)))
@@ -18,7 +18,7 @@ public final class b
     return false;
   }
   
-  public final int cfm()
+  public final int cgC()
   {
     return 0;
   }

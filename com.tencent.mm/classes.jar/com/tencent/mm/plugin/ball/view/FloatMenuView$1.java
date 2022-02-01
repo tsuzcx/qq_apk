@@ -16,8 +16,8 @@ final class FloatMenuView$1
     AppMethodBeat.i(106484);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/ball/view/FloatMenuView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    FloatMenuView.a(this.nMn);
+    a.b("com/tencent/mm/plugin/ball/view/FloatMenuView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    FloatMenuView.a(this.nRS);
     a.a(this, "com/tencent/mm/plugin/ball/view/FloatMenuView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(106484);
   }

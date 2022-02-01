@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.appbrand.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
   implements d
 {
-  public float dAp;
-  public float dyz;
-  public String jDf;
+  public float dBu;
+  public float dzE;
+  public String jGd;
   
-  public final String aYt()
+  public final String aYO()
   {
     AppMethodBeat.i(153193);
     try
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("latitude", this.dyz);
-      ((JSONObject)localObject).put("longitude", this.dAp);
-      ((JSONObject)localObject).put("name", this.jDf);
+      ((JSONObject)localObject).put("latitude", this.dzE);
+      ((JSONObject)localObject).put("longitude", this.dBu);
+      ((JSONObject)localObject).put("name", this.jGd);
       localObject = new JSONObject().put("location", localObject).toString();
       AppMethodBeat.o(153193);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      ad.printErrStackTrace("MicroMsg.WeAppOpenPoiNativeExtraData", localJSONException, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.WeAppOpenPoiNativeExtraData", localJSONException, "", new Object[0]);
       AppMethodBeat.o(153193);
     }
     return "{}";

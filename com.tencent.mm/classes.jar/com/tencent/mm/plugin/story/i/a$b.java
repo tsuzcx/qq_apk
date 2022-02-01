@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.story.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryCommentSyncFlag;", "", "()V", "STORY_COMMENT_SYNC_FLAG_UNREAD", "", "getSTORY_COMMENT_SYNC_FLAG_UNREAD", "()I", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryCommentSyncFlag;", "", "()V", "STORY_COMMENT_SYNC_FLAG_UNREAD", "", "getSTORY_COMMENT_SYNC_FLAG_UNREAD", "()I", "plugin-story_release"})
 public final class a$b
 {
-  private static final int ATq = 1;
-  public static final b ATr;
+  private static final int BkO = 1;
+  public static final b BkP;
   
   static
   {
     AppMethodBeat.i(119468);
-    ATr = new b();
-    ATq = 1;
+    BkP = new b();
+    BkO = 1;
     AppMethodBeat.o(119468);
   }
   
-  public static int elb()
+  public static int eoK()
   {
-    return ATq;
+    return BkO;
   }
 }
 

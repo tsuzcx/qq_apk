@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.h;
+import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import d.z;
@@ -17,26 +17,26 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerManager;", "", "()V", "MAX_PERIPHERAL_BLE_SERVER_COUNT", "", "TAG", "", "bleServers", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "isDestroying", "", "listener", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$Listener;", "clear", "", "closeServerById", "serverId", "genServerId", "newPeripheralServer", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "retrieveServer", "willOutOfBound", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerManager;", "", "()V", "MAX_PERIPHERAL_BLE_SERVER_COUNT", "", "TAG", "", "bleServers", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "isDestroying", "", "listener", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$Listener;", "clear", "", "closeServerById", "serverId", "genServerId", "newPeripheralServer", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "retrieveServer", "willOutOfBound", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class o
 {
-  static final Map<Integer, n> kEc;
-  private static g.c kEd;
-  private static volatile boolean kEe;
-  public static final o kEf;
+  static final Map<Integer, n> kHr;
+  private static h.c kHs;
+  private static volatile boolean kHt;
+  public static final o kHu;
   
   static
   {
     AppMethodBeat.i(144787);
-    kEf = new o();
-    kEc = (Map)new ConcurrentHashMap();
+    kHu = new o();
+    kHr = (Map)new ConcurrentHashMap();
     AppMethodBeat.o(144787);
   }
   
-  public static boolean bjl()
+  public static boolean bjU()
   {
     AppMethodBeat.i(144783);
-    if (kEc.size() + 1 > 10)
+    if (kHr.size() + 1 > 10)
     {
       AppMethodBeat.o(144783);
       return true;
@@ -45,22 +45,22 @@ public final class o
     return false;
   }
   
-  public static boolean sQ(int paramInt)
+  public static boolean sT(int paramInt)
   {
     AppMethodBeat.i(144785);
-    if (kEe)
+    if (kHt)
     {
       AppMethodBeat.o(144785);
       return false;
     }
-    n localn = (n)kEc.get(Integer.valueOf(paramInt));
+    n localn = (n)kHr.get(Integer.valueOf(paramInt));
     if (localn == null)
     {
       AppMethodBeat.o(144785);
       return false;
     }
     localn.onDestroy();
-    if (kEc.remove(Integer.valueOf(paramInt)) != null)
+    if (kHr.remove(Integer.valueOf(paramInt)) != null)
     {
       AppMethodBeat.o(144785);
       return true;
@@ -69,15 +69,15 @@ public final class o
     return false;
   }
   
-  public static n sR(int paramInt)
+  public static n sU(int paramInt)
   {
     AppMethodBeat.i(144786);
-    if (kEe)
+    if (kHt)
     {
       AppMethodBeat.o(144786);
       return null;
     }
-    n localn = (n)kEc.get(Integer.valueOf(paramInt));
+    n localn = (n)kHr.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(144786);
     return localn;
   }
@@ -88,24 +88,24 @@ public final class o
     p.h(paramc, "component");
     try
     {
-      if (kEd == null)
+      if (kHs == null)
       {
-        kEd = (g.c)new a();
-        g.a(paramc.getAppId(), kEd);
+        kHs = (h.c)new a();
+        h.a(paramc.getAppId(), kHs);
       }
-      boolean bool = kEe;
+      boolean bool = kHt;
       if (bool) {
         return -1;
       }
-      Object localObject = z.MKo;
+      Object localObject = z.Nhr;
       int i;
       do
       {
-        i = b.bjv();
-      } while (kEc.containsKey(Integer.valueOf(i)));
+        i = b.bke();
+      } while (kHr.containsKey(Integer.valueOf(i)));
       localObject = new n();
       ((n)localObject).c(paramc, i);
-      kEc.put(Integer.valueOf(i), localObject);
+      kHr.put(Integer.valueOf(i), localObject);
       AppMethodBeat.o(144784);
       return i;
     }
@@ -115,21 +115,21 @@ public final class o
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerManager$newPeripheralServer$1$1", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$Listener;", "onDestroy", "", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerManager$newPeripheralServer$1$1", "Lcom/tencent/mm/plugin/appbrand/AppBrandLifeCycle$Listener;", "onDestroy", "", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a
-    extends g.c
+    extends h.c
   {
     public final void onDestroy()
     {
       AppMethodBeat.i(144782);
       super.onDestroy();
-      ad.i("MicroMsg.BLE.PeripheralBleServerManager", "onDestroy: ");
-      ??? = o.kEf;
-      o.gt(true);
+      ae.i("MicroMsg.BLE.PeripheralBleServerManager", "onDestroy: ");
+      ??? = o.kHu;
+      o.gr(true);
       Object localObject3;
-      synchronized (o.kEf)
+      synchronized (o.kHu)
       {
-        localObject3 = o.kEc;
+        localObject3 = o.kHr;
         Collection localCollection = (Collection)new ArrayList(((Map)localObject3).size());
         localObject3 = ((Map)localObject3).entrySet().iterator();
         if (((Iterator)localObject3).hasNext()) {
@@ -140,15 +140,15 @@ public final class o
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (n)((Iterator)localObject2).next();
-        ad.i("MicroMsg.BLE.PeripheralBleServerManager", "destroy server #" + ((n)localObject3).jsi);
+        ae.i("MicroMsg.BLE.PeripheralBleServerManager", "destroy server #" + ((n)localObject3).jvb);
         ((n)localObject3).onDestroy();
       }
-      o.kEc.clear();
-      localObject2 = z.MKo;
-      ??? = o.kEf;
-      o.bjm();
-      ??? = o.kEf;
-      o.gt(false);
+      o.kHr.clear();
+      localObject2 = z.Nhr;
+      ??? = o.kHu;
+      o.bjV();
+      ??? = o.kHu;
+      o.gr(false);
       AppMethodBeat.o(144782);
     }
   }

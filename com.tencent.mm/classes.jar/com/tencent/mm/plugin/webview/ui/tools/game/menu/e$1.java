@@ -16,9 +16,9 @@ final class e$1
     AppMethodBeat.i(80989);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (this.EkE.isShowing()) {
-      this.EkE.cancel();
+    a.b("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (this.ECI.isShowing()) {
+      this.ECI.cancel();
     }
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(80989);

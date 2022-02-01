@@ -7,15 +7,15 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.patmsg.a.c;
 import com.tencent.mm.plugin.patmsg.a.c.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class AvatarPatImageView
   extends AppCompatImageView
   implements c
 {
-  private c.a wFN;
-  private View.OnClickListener wFO;
-  public a wFP;
+  private View.OnClickListener wVA;
+  public a wVB;
+  private c.a wVz;
   
   public AvatarPatImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,99 +25,99 @@ public class AvatarPatImageView
   public AvatarPatImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(215718);
-    this.wFP = new a();
-    this.wFP.wFU = this;
-    AppMethodBeat.o(215718);
+    AppMethodBeat.i(220352);
+    this.wVB = new a();
+    this.wVB.wVG = this;
+    AppMethodBeat.o(220352);
   }
   
   public c.a getDoubleClickListener()
   {
-    return this.wFN;
+    return this.wVz;
   }
   
   public View.OnClickListener getOnClickListener()
   {
-    return this.wFO;
+    return this.wVA;
   }
   
   public int getTagScene()
   {
-    AppMethodBeat.i(215724);
+    AppMethodBeat.i(220358);
     if (getTag(2131308174) == null)
     {
-      AppMethodBeat.o(215724);
+      AppMethodBeat.o(220358);
       return 0;
     }
     int i = ((Integer)getTag(2131308174)).intValue();
-    AppMethodBeat.o(215724);
+    AppMethodBeat.o(220358);
     return i;
   }
   
   public String getTagTalker()
   {
-    AppMethodBeat.i(215722);
+    AppMethodBeat.i(220356);
     if (getTag(2131308175) == null)
     {
-      AppMethodBeat.o(215722);
+      AppMethodBeat.o(220356);
       return "";
     }
     String str = (String)getTag(2131308175);
-    AppMethodBeat.o(215722);
+    AppMethodBeat.o(220356);
     return str;
   }
   
   public String getTagUsername()
   {
-    AppMethodBeat.i(215720);
+    AppMethodBeat.i(220354);
     String str = (String)getTag(2131308176);
-    AppMethodBeat.o(215720);
+    AppMethodBeat.o(220354);
     return str;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(215726);
+    AppMethodBeat.i(220360);
     super.onDetachedFromWindow();
-    this.wFP.dyp();
-    AppMethodBeat.o(215726);
+    this.wVB.dBF();
+    AppMethodBeat.o(220360);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(215725);
-    this.wFO = paramOnClickListener;
-    super.setOnClickListener(this.wFP.wFW);
-    AppMethodBeat.o(215725);
+    AppMethodBeat.i(220359);
+    this.wVA = paramOnClickListener;
+    super.setOnClickListener(this.wVB.wVI);
+    AppMethodBeat.o(220359);
   }
   
   public void setOnDoubleClickListener(c.a parama)
   {
-    this.wFN = parama;
+    this.wVz = parama;
   }
   
   public void setTagScene(int paramInt)
   {
-    AppMethodBeat.i(215723);
+    AppMethodBeat.i(220357);
     setTag(2131308174, Integer.valueOf(paramInt));
-    AppMethodBeat.o(215723);
+    AppMethodBeat.o(220357);
   }
   
   public void setTagTalker(String paramString)
   {
-    AppMethodBeat.i(215721);
+    AppMethodBeat.i(220355);
     setTag(2131308175, paramString);
-    AppMethodBeat.o(215721);
+    AppMethodBeat.o(220355);
   }
   
   public void setTagUsername(String paramString)
   {
-    AppMethodBeat.i(215719);
-    if (!bt.nullAsNil(getTagUsername()).equals(paramString)) {
-      this.wFP.dyp();
+    AppMethodBeat.i(220353);
+    if (!bu.nullAsNil(getTagUsername()).equals(paramString)) {
+      this.wVB.dBF();
     }
     setTag(2131308176, paramString);
-    AppMethodBeat.o(215719);
+    AppMethodBeat.o(220353);
   }
 }
 

@@ -8,7 +8,7 @@ public abstract interface e
 {
   public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "RecordCDNInfo") };
   
-  public abstract List<j> Ny(int paramInt);
+  public abstract List<j> Oe(int paramInt);
   
   public abstract void a(d paramd);
   
@@ -16,7 +16,7 @@ public abstract interface e
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract j avq(String paramString);
+  public abstract j awF(String paramString);
   
   public abstract void b(d paramd);
   
@@ -24,7 +24,7 @@ public abstract interface e
   
   public abstract boolean b(j paramj, String... paramVarArgs);
   
-  public abstract List<j> dEg();
+  public abstract List<j> dHx();
 }
 
 

@@ -10,37 +10,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends LinearLayout
 {
-  private final TextView KUC;
-  private final ImageView kAX;
-  private final TextView lCL;
+  private final TextView Lra;
+  private final ImageView kEm;
+  private final TextView lHk;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(143518);
     LayoutInflater.from(paramContext).inflate(2131493236, this);
-    this.kAX = ((ImageView)findViewById(2131300874));
-    this.KUC = ((TextView)findViewById(2131305529));
-    this.lCL = ((TextView)findViewById(2131305902));
+    this.kEm = ((ImageView)findViewById(2131300874));
+    this.Lra = ((TextView)findViewById(2131305529));
+    this.lHk = ((TextView)findViewById(2131305902));
     AppMethodBeat.o(143518);
   }
   
   public final ImageView getIcon()
   {
-    return this.kAX;
+    return this.kEm;
   }
   
   public final void setSubtitle(String paramString)
   {
     AppMethodBeat.i(143519);
-    this.KUC.setText(paramString);
+    this.Lra.setText(paramString);
     AppMethodBeat.o(143519);
   }
   
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(143520);
-    this.lCL.setText(paramString);
+    this.lHk.setText(paramString);
     AppMethodBeat.o(143520);
   }
 }

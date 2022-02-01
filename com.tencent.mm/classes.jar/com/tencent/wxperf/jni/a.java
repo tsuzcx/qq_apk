@@ -2,9 +2,9 @@ package com.tencent.wxperf.jni;
 
 public abstract class a
 {
-  protected abstract void gaf();
+  protected abstract void geH();
   
-  protected abstract void gag();
+  protected abstract void geI();
 }
 
 

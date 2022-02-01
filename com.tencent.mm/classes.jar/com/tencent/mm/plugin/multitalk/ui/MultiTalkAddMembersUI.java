@@ -9,19 +9,19 @@ import com.tencent.mm.plugin.multitalk.model.o;
 import com.tencent.mm.plugin.multitalk.model.z;
 import com.tencent.mm.plugin.multitalk.ui.widget.f;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 
 public class MultiTalkAddMembersUI
   extends MultiTalkSelectContactUI
 {
-  private boolean wdM = false;
+  private boolean wtp = false;
   
-  public final void djK()
+  public final void dmJ()
   {
     AppMethodBeat.i(178894);
-    this.wed = false;
-    super.djK();
+    this.wtG = false;
+    super.dmJ();
     AppMethodBeat.o(178894);
   }
   
@@ -29,10 +29,10 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(114651);
     super.initView();
-    this.vIo.setBackgroundResource(2131100208);
-    MultiSelectContactView localMultiSelectContactView = this.vIo;
-    int i = f.wfC;
-    localMultiSelectContactView.setPadding(i, i, f.wfC, 0);
+    this.vUs.setBackgroundResource(2131100208);
+    MultiSelectContactView localMultiSelectContactView = this.vUs;
+    int i = f.wvf;
+    localMultiSelectContactView.setPadding(i, i, f.wvf, 0);
     AppMethodBeat.o(114651);
   }
   
@@ -40,15 +40,15 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(178895);
     super.onPause();
-    KeyguardManager localKeyguardManager = (KeyguardManager)aj.getContext().getSystemService("keyguard");
-    PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
+    KeyguardManager localKeyguardManager = (KeyguardManager)ak.getContext().getSystemService("keyguard");
+    PowerManager localPowerManager = (PowerManager)ak.getContext().getSystemService("power");
     boolean bool1 = localKeyguardManager.inKeyguardRestrictedInputMode();
     boolean bool2 = hasWindowFocus();
     boolean bool3 = localPowerManager.isScreenOn();
     if (((bool2) || (!bool1)) && (bool3)) {}
     for (bool1 = true;; bool1 = false)
     {
-      this.wdM = bool1;
+      this.wtp = bool1;
       AppMethodBeat.o(178895);
       return;
     }
@@ -58,11 +58,11 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(178896);
     super.onStop();
-    if (this.wed)
+    if (this.wtG)
     {
-      this.wed = false;
-      djK();
-      z.dqx().oT(false);
+      this.wtG = false;
+      dmJ();
+      z.dtK().pa(false);
     }
     AppMethodBeat.o(178896);
   }

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.game.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class GameDetailRankLikeView$1
   implements x.a
@@ -16,7 +16,7 @@ final class GameDetailRankLikeView$1
     AppMethodBeat.i(41986);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.GameDetailRankLikeView", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ae.e("MicroMsg.GameDetailRankLikeView", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       AppMethodBeat.o(41986);
       return 0;
     }

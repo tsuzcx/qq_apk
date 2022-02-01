@@ -8,15 +8,15 @@ import d.l;
 import java.util.Iterator;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
 public final class b
 {
-  public static final b cpL;
+  public static final b cqo;
   
   static
   {
     AppMethodBeat.i(135552);
-    cpL = new b();
+    cqo = new b();
     AppMethodBeat.o(135552);
   }
   

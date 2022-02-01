@@ -8,28 +8,28 @@ import java.util.concurrent.Executors;
 
 public class c
 {
-  private static c LOV;
-  public ExecutorService LOU;
+  private static c MlT;
+  public ExecutorService MlS;
   private Handler handler;
   
   private c()
   {
     AppMethodBeat.i(174600);
-    this.LOU = Executors.newSingleThreadExecutor();
+    this.MlS = Executors.newSingleThreadExecutor();
     this.handler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(174600);
   }
   
-  public static c fUp()
+  public static c fYO()
   {
     AppMethodBeat.i(174601);
-    if (LOV == null) {}
+    if (MlT == null) {}
     try
     {
-      if (LOV == null) {
-        LOV = new c();
+      if (MlT == null) {
+        MlT = new c();
       }
-      c localc = LOV;
+      c localc = MlT;
       AppMethodBeat.o(174601);
       return localc;
     }

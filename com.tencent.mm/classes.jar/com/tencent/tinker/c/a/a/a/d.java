@@ -9,36 +9,36 @@ import com.tencent.tinker.c.a.c.c;
 public final class d
   extends i<com.tencent.tinker.a.a.d>
 {
-  private s.a MeW = null;
-  private i.e MeX = null;
+  private s.a MBT = null;
+  private i.e MBU = null;
   
   public d(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami1, com.tencent.tinker.a.a.i parami2, c paramc)
   {
     super(parama, parami1, paramc);
     if (parami2 != null)
     {
-      this.MeW = parami2.Mdl.MdW;
-      this.MeX = parami2.a(this.MeW);
+      this.MBT = parami2.MAg.MAS;
+      this.MBU = parami2.a(this.MBT);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2)
   {
     if (paramInt2 >= 0) {
-      paramc.Mgv.ahU(paramInt2);
+      paramc.MDs.aiD(paramInt2);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 != paramInt4) {
-      paramc.Mgh.put(paramInt2, paramInt4);
+      paramc.MDe.put(paramInt2, paramInt4);
     }
   }
   
   protected final s.a c(com.tencent.tinker.a.a.i parami)
   {
-    return parami.Mdl.MdW;
+    return parami.MAg.MAS;
   }
 }
 

@@ -5,7 +5,7 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.xweb.c;
 import com.tencent.xweb.d;
 import java.io.BufferedOutputStream;
@@ -50,7 +50,7 @@ public final class f
     AppMethodBeat.o(152842);
   }
   
-  private static Bundle aXc(String paramString)
+  private static Bundle aYD(String paramString)
   {
     AppMethodBeat.i(152836);
     Bundle localBundle = new Bundle();
@@ -70,15 +70,15 @@ public final class f
     return localBundle;
   }
   
-  public static Bundle aXd(String paramString)
+  public static Bundle aYE(String paramString)
   {
     AppMethodBeat.i(152837);
     paramString = paramString.replace("fbconnect", "http");
     try
     {
       paramString = new URL(paramString);
-      Bundle localBundle = aXc(paramString.getQuery());
-      localBundle.putAll(aXc(paramString.getRef()));
+      Bundle localBundle = aYD(paramString.getQuery());
+      localBundle.putAll(aYD(paramString.getRef()));
       AppMethodBeat.o(152837);
       return localBundle;
     }
@@ -90,7 +90,7 @@ public final class f
     return paramString;
   }
   
-  public static JSONObject aXe(String paramString)
+  public static JSONObject aYF(String paramString)
   {
     AppMethodBeat.i(152841);
     if (paramString.equals("false"))
@@ -139,7 +139,7 @@ public final class f
     return paramString;
   }
   
-  public static String bi(Bundle paramBundle)
+  public static String bj(Bundle paramBundle)
   {
     AppMethodBeat.i(152835);
     if (paramBundle == null)
@@ -173,9 +173,9 @@ public final class f
     AppMethodBeat.i(152838);
     Object localObject1 = paramString1;
     if (paramString2.equals("GET")) {
-      localObject1 = paramString1 + "?" + bi(paramBundle);
+      localObject1 = paramString1 + "?" + bj(paramBundle);
     }
-    ad.d("Facebook-Util", paramString2 + " URL: " + (String)localObject1);
+    ae.d("Facebook-Util", paramString2 + " URL: " + (String)localObject1);
     localObject1 = (HttpURLConnection)new URL((String)localObject1).openConnection();
     ((HttpURLConnection)localObject1).setConnectTimeout(20000);
     ((HttpURLConnection)localObject1).setReadTimeout(20000);
@@ -243,17 +243,17 @@ public final class f
       {
         for (;;)
         {
-          ad.e("FacebookUtil", paramString2.getMessage());
+          ae.e("FacebookUtil", paramString2.getMessage());
         }
       }
     }
   }
   
-  public static void kx(Context paramContext)
+  public static void kE(Context paramContext)
   {
     AppMethodBeat.i(152840);
-    d.lv(paramContext);
-    c.gaw().removeAllCookie();
+    d.lB(paramContext);
+    c.geY().removeAllCookie();
     AppMethodBeat.o(152840);
   }
   

@@ -14,13 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class y
   extends d
 {
-  private final Set<Class<? extends a>> jAQ;
-  private volatile d.a jAR;
+  private final Set<Class<? extends a>> jDB;
+  private volatile d.a jDC;
   
   public y()
   {
     AppMethodBeat.i(134622);
-    this.jAQ = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jDB = Collections.newSetFromMap(new ConcurrentHashMap());
     super.a(new d.a()
     {
       public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
@@ -59,14 +59,14 @@ public final class y
   
   public final void a(d.a parama)
   {
-    this.jAR = parama;
+    this.jDC = parama;
   }
   
   public final void unregisterAll()
   {
     AppMethodBeat.i(134623);
-    Object localObject = new HashSet(this.jAQ);
-    this.jAQ.clear();
+    Object localObject = new HashSet(this.jDB);
+    this.jDB.clear();
     localObject = ((Set)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       super.ac((Class)((Iterator)localObject).next());

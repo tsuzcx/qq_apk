@@ -2,8 +2,8 @@ package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -13,16 +13,16 @@ public final class aa
     extends l.d
     implements l.b
   {
-    public int FnX;
-    public byte[] gAT;
-    public byte[] ieX;
+    public int FGv;
+    public byte[] gDA;
+    public byte[] ihP;
     public int netType;
     private int uin;
     
     public a()
     {
       AppMethodBeat.i(133125);
-      this.ieX = new byte[0];
+      this.ihP = new byte[0];
       this.uin = 0;
       AppMethodBeat.o(133125);
     }
@@ -56,20 +56,20 @@ public final class aa
     {
       AppMethodBeat.i(133126);
       int j = this.uin;
-      if (this.ieX == null) {}
-      for (int i = -1;; i = this.ieX.length)
+      if (this.ihP == null) {}
+      for (int i = -1;; i = this.ihP.length)
       {
-        ad.d("MicroMsg.MMSyncCheck", "toProtoBuf dksynccheck uin:%d keybuf:%d, stack[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bt.flS() });
-        if ((this.uin != 0) && (!bt.cC(this.ieX))) {
+        ae.d("MicroMsg.MMSyncCheck", "toProtoBuf dksynccheck uin:%d keybuf:%d, stack[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bu.fpN() });
+        if ((this.uin != 0) && (!bu.cF(this.ihP))) {
           break;
         }
         AppMethodBeat.o(133126);
         return new byte[0];
       }
-      i = (this.uin >> 13 & 0x7FFFF | this.ieX.length << 19) ^ 0x5601F281;
-      j = 0x5601F281 ^ (this.ieX.length >> 13 & 0x7FFFF | this.uin << 19);
-      byte[] arrayOfByte = new byte[this.ieX.length + 32];
-      ad.d("MicroMsg.MMSyncCheck", "dksynccheck uin=[%d/%d], keyBufLen=[%d/%d] outBuf=[%d]", new Object[] { Integer.valueOf(this.uin), Integer.valueOf(i), Integer.valueOf(this.ieX.length), Integer.valueOf(j), Integer.valueOf(arrayOfByte.length) });
+      i = (this.uin >> 13 & 0x7FFFF | this.ihP.length << 19) ^ 0x5601F281;
+      j = 0x5601F281 ^ (this.ihP.length >> 13 & 0x7FFFF | this.uin << 19);
+      byte[] arrayOfByte = new byte[this.ihP.length + 32];
+      ae.d("MicroMsg.MMSyncCheck", "dksynccheck uin=[%d/%d], keyBufLen=[%d/%d] outBuf=[%d]", new Object[] { Integer.valueOf(this.uin), Integer.valueOf(i), Integer.valueOf(this.ihP.length), Integer.valueOf(j), Integer.valueOf(arrayOfByte.length) });
       arrayOfByte[0] = ((byte)(i >> 24 & 0xFF));
       arrayOfByte[1] = ((byte)(i >> 16 & 0xFF));
       arrayOfByte[2] = ((byte)(i >> 8 & 0xFF));
@@ -78,11 +78,11 @@ public final class aa
       arrayOfByte[5] = ((byte)(j >> 16 & 0xFF));
       arrayOfByte[6] = ((byte)(j >> 8 & 0xFF));
       arrayOfByte[7] = ((byte)(j & 0xFF));
-      System.arraycopy(this.ieX, 0, arrayOfByte, 8, this.ieX.length);
-      arrayOfByte[(arrayOfByte.length - 24)] = ((byte)(d.Fnj >> 24 & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 23)] = ((byte)(d.Fnj >> 16 & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 22)] = ((byte)(d.Fnj >> 8 & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 21)] = ((byte)(d.Fnj & 0xFF));
+      System.arraycopy(this.ihP, 0, arrayOfByte, 8, this.ihP.length);
+      arrayOfByte[(arrayOfByte.length - 24)] = ((byte)(d.FFH >> 24 & 0xFF));
+      arrayOfByte[(arrayOfByte.length - 23)] = ((byte)(d.FFH >> 16 & 0xFF));
+      arrayOfByte[(arrayOfByte.length - 22)] = ((byte)(d.FFH >> 8 & 0xFF));
+      arrayOfByte[(arrayOfByte.length - 21)] = ((byte)(d.FFH & 0xFF));
       String str = Locale.getDefault().toString();
       Object localObject = str;
       if (str.length() > 8) {
@@ -90,7 +90,7 @@ public final class aa
       }
       localObject = ((String)localObject).getBytes();
       System.arraycopy(localObject, 0, arrayOfByte, arrayOfByte.length - 20, localObject.length);
-      ad.d("MicroMsg.MMSyncCheck", "language:%x" + Arrays.toString((byte[])localObject));
+      ae.d("MicroMsg.MMSyncCheck", "language:%x" + Arrays.toString((byte[])localObject));
       arrayOfByte[(arrayOfByte.length - 12)] = 0;
       arrayOfByte[(arrayOfByte.length - 11)] = 0;
       arrayOfByte[(arrayOfByte.length - 10)] = 0;
@@ -99,12 +99,12 @@ public final class aa
       arrayOfByte[(arrayOfByte.length - 7)] = ((byte)(this.netType >> 16 & 0xFF));
       arrayOfByte[(arrayOfByte.length - 6)] = ((byte)(this.netType >> 8 & 0xFF));
       arrayOfByte[(arrayOfByte.length - 5)] = ((byte)(this.netType & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 4)] = ((byte)(this.FnX >> 24 & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 3)] = ((byte)(this.FnX >> 16 & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 2)] = ((byte)(this.FnX >> 8 & 0xFF));
-      arrayOfByte[(arrayOfByte.length - 1)] = ((byte)(this.FnX & 0xFF));
-      ad.d("MicroMsg.MMSyncCheck", "outbuf:%x" + Arrays.toString(arrayOfByte));
-      this.gAT = g.C(arrayOfByte);
+      arrayOfByte[(arrayOfByte.length - 4)] = ((byte)(this.FGv >> 24 & 0xFF));
+      arrayOfByte[(arrayOfByte.length - 3)] = ((byte)(this.FGv >> 16 & 0xFF));
+      arrayOfByte[(arrayOfByte.length - 2)] = ((byte)(this.FGv >> 8 & 0xFF));
+      arrayOfByte[(arrayOfByte.length - 1)] = ((byte)(this.FGv & 0xFF));
+      ae.d("MicroMsg.MMSyncCheck", "outbuf:%x" + Arrays.toString(arrayOfByte));
+      this.gDA = g.C(arrayOfByte);
       AppMethodBeat.o(133126);
       return arrayOfByte;
     }

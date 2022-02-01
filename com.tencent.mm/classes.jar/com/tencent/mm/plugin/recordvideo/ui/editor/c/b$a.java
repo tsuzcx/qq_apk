@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator$Companion;", "", "()V", "clampScale", "", "matrix", "Landroid/graphics/Matrix;", "pivotSrc", "", "minScale", "", "maxScale", "getScale", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator$Companion;", "", "()V", "clampScale", "", "matrix", "Landroid/graphics/Matrix;", "pivotSrc", "", "minScale", "", "maxScale", "getScale", "plugin-recordvideo_release"})
 public final class b$a
 {
   public static void a(Matrix paramMatrix, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(200829);
+    AppMethodBeat.i(207087);
     p.h(paramMatrix, "matrix");
     p.h(paramArrayOfFloat, "pivotSrc");
     p.h(paramMatrix, "matrix");
@@ -37,14 +37,14 @@ public final class b$a
       paramMatrix.postScale(paramFloat1, paramFloat1);
       paramMatrix.postRotate(paramFloat2);
       paramMatrix.postTranslate(paramArrayOfFloat[0], paramArrayOfFloat[1]);
-      AppMethodBeat.o(200829);
+      AppMethodBeat.o(207087);
       return;
       if (f <= paramFloat2) {
         break;
       }
       paramFloat1 = paramFloat2;
     }
-    AppMethodBeat.o(200829);
+    AppMethodBeat.o(207087);
   }
 }
 

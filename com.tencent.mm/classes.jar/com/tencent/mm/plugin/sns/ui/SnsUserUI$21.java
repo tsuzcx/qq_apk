@@ -14,15 +14,15 @@ final class SnsUserUI$21
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(198499);
+    AppMethodBeat.i(220041);
     b localb = new b();
     localb.bd(paramAdapterView);
     localb.bd(paramView);
-    localb.mr(paramInt);
-    localb.qY(paramLong);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsUserUI$9", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    localb.mu(paramInt);
+    localb.rl(paramLong);
+    a.b("com/tencent/mm/plugin/sns/ui/SnsUserUI$9", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
     a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUserUI$9", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-    AppMethodBeat.o(198499);
+    AppMethodBeat.o(220041);
   }
 }
 

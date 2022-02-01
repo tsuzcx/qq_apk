@@ -12,7 +12,7 @@ import org.b.g.e;
 
 public final class g
 {
-  private String NWr;
+  private String Otw;
   private InputStream aFw;
   public int code;
   private Map<String, String> headers;
@@ -107,14 +107,14 @@ public final class g
   public final String getBody()
   {
     AppMethodBeat.i(40513);
-    if (this.NWr != null)
+    if (this.Otw != null)
     {
-      str = this.NWr;
+      str = this.Otw;
       AppMethodBeat.o(40513);
       return str;
     }
-    this.NWr = e.aa(this.aFw);
-    String str = this.NWr;
+    this.Otw = e.aa(this.aFw);
+    String str = this.Otw;
     AppMethodBeat.o(40513);
     return str;
   }

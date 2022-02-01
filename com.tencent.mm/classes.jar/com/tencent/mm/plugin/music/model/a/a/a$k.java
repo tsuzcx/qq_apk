@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a$k
   implements k<IPCAudioParamRequest, IPCVoid>
@@ -21,28 +21,28 @@ public final class a$k
     {
       try
       {
-        Object localObject = paramIPCAudioParamRequest.dzL;
-        if (paramIPCAudioParamRequest.ihI == null) {
+        Object localObject = paramIPCAudioParamRequest.dAQ;
+        if (paramIPCAudioParamRequest.ikB == null) {
           continue;
         }
-        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
-        localObject = paramIPCAudioParamRequest.dzL;
-        paramIPCAudioParamRequest = paramIPCAudioParamRequest.ihI;
-        d locald = com.tencent.mm.plugin.music.model.f.dth();
+        ae.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
+        localObject = paramIPCAudioParamRequest.dAQ;
+        paramIPCAudioParamRequest = paramIPCAudioParamRequest.ikB;
+        d locald = com.tencent.mm.plugin.music.model.f.dww();
         ContentValues localContentValues = new ContentValues();
         localContentValues.put("indexBitData", paramIPCAudioParamRequest);
         int i = locald.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject });
         if (i <= 0) {
-          ad.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
+          ae.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
         }
-        localObject = (c)locald.wlP.get(localObject);
+        localObject = (c)locald.wBy.get(localObject);
         if (localObject != null) {
           ((c)localObject).field_indexBitData = paramIPCAudioParamRequest;
         }
       }
       catch (Exception paramIPCAudioParamRequest)
       {
-        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileIndexBitCache task", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileIndexBitCache task", new Object[0]);
         continue;
       }
       paramIPCAudioParamRequest = new IPCVoid();

@@ -5,7 +5,7 @@ public final class p
 {
   public p()
   {
-    this.NQs = 270;
+    this.Ony = 270;
   }
 }
 

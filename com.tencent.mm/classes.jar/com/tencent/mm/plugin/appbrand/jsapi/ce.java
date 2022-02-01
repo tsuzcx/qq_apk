@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "PREFIX", "", "PREFIX$annotations", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getPREFIX", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)Ljava/lang/String;", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "PREFIX", "", "PREFIX$annotations", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getPREFIX", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)Ljava/lang/String;", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app_release"})
 public final class ce
   extends a<c>
 {
   public static final int CTRL_INDEX = 65;
   public static final String NAME = "systemLog";
-  public static final a kuI;
+  public static final a kxY;
   
   static
   {
-    AppMethodBeat.i(197497);
-    kuI = new a((byte)0);
-    AppMethodBeat.o(197497);
+    AppMethodBeat.i(208068);
+    kxY = new a((byte)0);
+    AppMethodBeat.o(208068);
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
@@ -31,23 +31,23 @@ public final class ce
     String str2 = paramJSONObject.optString("message");
     StringBuilder localStringBuilder = new StringBuilder();
     String str1 = "appId[" + paramc.getAppId() + ']';
-    if ((paramc instanceof q)) {
+    if ((paramc instanceof r)) {
       paramJSONObject = "Service ".concat(String.valueOf(str1));
     }
     for (;;)
     {
-      ad.i("AppBrandLog", new StringBuilder().append(paramJSONObject).append(" print:").toString() + str2);
-      paramc.h(paramInt, Pg("ok"));
+      ae.i("AppBrandLog", new StringBuilder().append(paramJSONObject).append(" print:").toString() + str2);
+      paramc.h(paramInt, PO("ok"));
       AppMethodBeat.o(139845);
       return;
       paramJSONObject = str1;
-      if ((paramc instanceof aa)) {
-        paramJSONObject = "Page " + str1 + " url[" + ((aa)paramc).getURL() + ']';
+      if ((paramc instanceof z)) {
+        paramJSONObject = "Page " + str1 + " url[" + ((z)paramc).getURL() + ']';
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app_release"})
   public static final class a {}
 }
 

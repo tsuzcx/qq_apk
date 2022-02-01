@@ -25,21 +25,21 @@ import java.util.Iterator;
 public class LargeTouchableAreasItemView
   extends LinearLayout
 {
-  private static final int fOT;
-  private final ArrayList<b> fOU;
-  private ah fOV;
-  private a fOW;
-  private int fOX;
-  private boolean fOY;
-  private int fOZ;
-  private int fPa;
-  private ImageButton fPb;
+  private static final int fQZ;
+  private final ArrayList<b> fRa;
+  private ah fRb;
+  private a fRc;
+  private int fRd;
+  private boolean fRe;
+  private int fRf;
+  private int fRg;
+  private ImageButton fRh;
   private final Paint mPaint;
   
   static
   {
     AppMethodBeat.i(12655);
-    fOT = Color.argb(0, 0, 0, 0);
+    fQZ = Color.argb(0, 0, 0, 0);
     AppMethodBeat.o(12655);
   }
   
@@ -47,15 +47,15 @@ public class LargeTouchableAreasItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(12650);
-    this.fOU = new ArrayList();
+    this.fRa = new ArrayList();
     this.mPaint = new Paint();
-    this.fOZ = -1;
-    this.fPa = -1;
+    this.fRf = -1;
+    this.fRg = -1;
     setOrientation(0);
     setDescendantFocusability(393216);
-    this.fOV = new ah(this);
+    this.fRb = new ah(this);
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.fOX = ((int)(paramContext.getResources().getDisplayMetrics().density * 66.0F + 0.5F));
+    this.fRd = ((int)(paramContext.getResources().getDisplayMetrics().density * 66.0F + 0.5F));
     LayoutInflater.from(paramContext).inflate(2131493529, this);
     AppMethodBeat.o(12650);
   }
@@ -63,7 +63,7 @@ public class LargeTouchableAreasItemView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(12653);
-    Iterator localIterator = this.fOU.iterator();
+    Iterator localIterator = this.fRa.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
@@ -76,22 +76,22 @@ public class LargeTouchableAreasItemView
   
   public boolean getSelected()
   {
-    return this.fOY;
+    return this.fRe;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(12651);
     super.onFinishInflate();
-    this.fPb = ((ImageButton)findViewById(2131297595));
-    this.fPb.setOnClickListener(new View.OnClickListener()
+    this.fRh = ((ImageButton)findViewById(2131297595));
+    this.fRh.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(12649);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/chatroom/ui/LargeTouchableAreasItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/chatroom/ui/LargeTouchableAreasItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = LargeTouchableAreasItemView.this;
         if (!LargeTouchableAreasItemView.a(LargeTouchableAreasItemView.this)) {}
         for (boolean bool = true;; bool = false)
@@ -117,21 +117,21 @@ public class LargeTouchableAreasItemView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt3 - paramInt1;
     paramInt2 = paramInt4 - paramInt2;
-    if ((paramInt1 != this.fOZ) || (paramInt2 != this.fPa))
+    if ((paramInt1 != this.fRf) || (paramInt2 != this.fRg))
     {
-      this.fOZ = paramInt1;
-      this.fPa = paramInt2;
-      Object localObject = this.fOV;
-      if (((ah)localObject).Jgm != null) {
-        ((ah)localObject).Jgm.clear();
+      this.fRf = paramInt1;
+      this.fRg = paramInt2;
+      Object localObject = this.fRb;
+      if (((ah)localObject).JAX != null) {
+        ((ah)localObject).JAX.clear();
       }
-      ((ah)localObject).Jgn = null;
-      localObject = new Rect(paramInt1 - this.fPb.getWidth() - this.fOX, 0, paramInt1, paramInt2);
-      paramInt1 = fOT;
-      ImageButton localImageButton = this.fPb;
-      this.fOV.a(new ai((Rect)localObject, localImageButton));
-      this.fOU.add(new b((Rect)localObject, paramInt1));
-      setTouchDelegate(this.fOV);
+      ((ah)localObject).JAY = null;
+      localObject = new Rect(paramInt1 - this.fRh.getWidth() - this.fRd, 0, paramInt1, paramInt2);
+      paramInt1 = fQZ;
+      ImageButton localImageButton = this.fRh;
+      this.fRb.a(new ai((Rect)localObject, localImageButton));
+      this.fRa.add(new b((Rect)localObject, paramInt1));
+      setTouchDelegate(this.fRb);
     }
     AppMethodBeat.o(12652);
   }
@@ -140,11 +140,11 @@ public class LargeTouchableAreasItemView
   {
     AppMethodBeat.i(12654);
     ImageButton localImageButton;
-    if (this.fOY != paramBoolean)
+    if (this.fRe != paramBoolean)
     {
-      this.fOY = paramBoolean;
-      localImageButton = this.fPb;
-      if (!this.fOY) {
+      this.fRe = paramBoolean;
+      localImageButton = this.fRh;
+      if (!this.fRe) {
         break label46;
       }
     }
@@ -159,7 +159,7 @@ public class LargeTouchableAreasItemView
   
   public void setOnLargeTouchableAreasListener(a parama)
   {
-    this.fOW = parama;
+    this.fRc = parama;
   }
   
   public static abstract interface a {}
@@ -178,7 +178,7 @@ public class LargeTouchableAreasItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.LargeTouchableAreasItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import java.util.List;
 
 public final class f
 {
-  public static final bg jw(List<? extends bg> paramList)
+  public static final bg jF(List<? extends bg> paramList)
   {
     AppMethodBeat.i(61045);
     p.h(paramList, "types");
@@ -55,7 +55,7 @@ public final class f
       paramList = (Throwable)new IllegalStateException("Expected some types".toString());
       AppMethodBeat.o(61045);
       throw paramList;
-      paramList = (bg)j.jg(paramList);
+      paramList = (bg)j.jp(paramList);
       AppMethodBeat.o(61045);
       return paramList;
       i = 0;
@@ -69,7 +69,7 @@ public final class f
         AppMethodBeat.o(61045);
         return localObject1;
       }
-      localObject1 = ((v)localObject1).NBV;
+      localObject1 = ((v)localObject1).NZc;
       j = 1;
     }
     label216:
@@ -80,7 +80,7 @@ public final class f
     Object localObject1 = (List)localObject2;
     if (i != 0)
     {
-      paramList = u.bcU("Intersection of error types: ".concat(String.valueOf(paramList)));
+      paramList = u.bey("Intersection of error types: ".concat(String.valueOf(paramList)));
       p.g(paramList, "ErrorUtils.createErrorTy… of error types: $types\")");
       paramList = (bg)paramList;
       AppMethodBeat.o(61045);
@@ -88,7 +88,7 @@ public final class f
     }
     if (j == 0)
     {
-      paramList = (bg)y.NDE.jx((List)localObject1);
+      paramList = (bg)y.OaL.jG((List)localObject1);
       AppMethodBeat.o(61045);
       return paramList;
     }
@@ -99,14 +99,14 @@ public final class f
       paramList.add(d.l.b.a.b.m.y.ap((ab)((Iterator)localObject2).next()));
     }
     paramList = (List)paramList;
-    paramList = ac.a(y.NDE.jx((List)localObject1), y.NDE.jx(paramList));
+    paramList = ac.a(y.OaL.jG((List)localObject1), y.OaL.jG(paramList));
     AppMethodBeat.o(61045);
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import java.io.File;
 
 public final class a
 {
-  public static String lK(Context paramContext)
+  public static String lQ(Context paramContext)
   {
     AppMethodBeat.i(9593);
     if (Build.VERSION.SDK_INT >= 21)

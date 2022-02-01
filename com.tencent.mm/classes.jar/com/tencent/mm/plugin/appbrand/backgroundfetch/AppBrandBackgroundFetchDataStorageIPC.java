@@ -8,8 +8,8 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCLong;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class AppBrandBackgroundFetchDataStorageIPC
   implements k
@@ -17,7 +17,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
   public final boolean a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(44728);
-    ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC set");
+    ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC set");
     paramString1 = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new WxappParams(paramString1, paramInt1, paramString2, paramString3, paramString4, paramInt2, paramLong), c.class);
     if ((paramString1 != null) && (paramString1.value))
     {
@@ -28,10 +28,10 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     return false;
   }
   
-  public final long bm(String paramString, int paramInt)
+  public final long bp(String paramString, int paramInt)
   {
     AppMethodBeat.i(44729);
-    ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC getUpdateTime");
+    ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC getUpdateTime");
     paramString = (IPCLong)XIPCInvoker.a("com.tencent.mm", new WxappIdentity(paramString, paramInt), b.class);
     if (paramString != null)
     {
@@ -43,10 +43,10 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     return 0L;
   }
   
-  public final AppBrandBackgroundFetchDataParcel bn(String paramString, int paramInt)
+  public final AppBrandBackgroundFetchDataParcel bq(String paramString, int paramInt)
   {
     AppMethodBeat.i(44730);
-    ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC getByAppId");
+    ae.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "AppBrandBackgroundFetchDataStorageIPC getByAppId");
     paramString = (AppBrandBackgroundFetchDataParcel)XIPCInvoker.a("com.tencent.mm", new WxappIdentityWithAppId(paramString, paramInt), a.class);
     AppMethodBeat.o(44730);
     return paramString;
@@ -56,7 +56,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     implements Parcelable
   {
     public static final Parcelable.Creator<WxappIdentity> CREATOR;
-    public int jRB;
+    public int jUT;
     public String username;
     
     static
@@ -72,14 +72,14 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44718);
       this.username = paramParcel.readString();
-      this.jRB = paramParcel.readInt();
+      this.jUT = paramParcel.readInt();
       AppMethodBeat.o(44718);
     }
     
     public WxappIdentity(String paramString, int paramInt)
     {
       this.username = paramString;
-      this.jRB = paramInt;
+      this.jUT = paramInt;
     }
     
     public int describeContents()
@@ -91,7 +91,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44717);
       paramParcel.writeString(this.username);
-      paramParcel.writeInt(this.jRB);
+      paramParcel.writeInt(this.jUT);
       AppMethodBeat.o(44717);
     }
   }
@@ -100,8 +100,8 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     implements Parcelable
   {
     public static final Parcelable.Creator<WxappIdentityWithAppId> CREATOR;
-    public String duW;
-    public int jRB;
+    public String dwb;
+    public int jUT;
     
     static
     {
@@ -115,15 +115,15 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     protected WxappIdentityWithAppId(Parcel paramParcel)
     {
       AppMethodBeat.i(44722);
-      this.duW = paramParcel.readString();
-      this.jRB = paramParcel.readInt();
+      this.dwb = paramParcel.readString();
+      this.jUT = paramParcel.readInt();
       AppMethodBeat.o(44722);
     }
     
     public WxappIdentityWithAppId(String paramString, int paramInt)
     {
-      this.duW = paramString;
-      this.jRB = paramInt;
+      this.dwb = paramString;
+      this.jUT = paramInt;
     }
     
     public int describeContents()
@@ -134,8 +134,8 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(44721);
-      paramParcel.writeString(this.duW);
-      paramParcel.writeInt(this.jRB);
+      paramParcel.writeString(this.dwb);
+      paramParcel.writeInt(this.jUT);
       AppMethodBeat.o(44721);
     }
   }
@@ -145,7 +145,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
   {
     public static final Parcelable.Creator<WxappParams> CREATOR;
     public String data;
-    public int jRB;
+    public int jUT;
     public String path;
     public String query;
     public int scene;
@@ -165,7 +165,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44726);
       this.username = paramParcel.readString();
-      this.jRB = paramParcel.readInt();
+      this.jUT = paramParcel.readInt();
       this.data = paramParcel.readString();
       this.path = paramParcel.readString();
       this.query = paramParcel.readString();
@@ -177,7 +177,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     public WxappParams(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, long paramLong)
     {
       this.username = paramString1;
-      this.jRB = paramInt1;
+      this.jUT = paramInt1;
       this.data = paramString2;
       this.path = paramString3;
       this.query = paramString4;
@@ -194,7 +194,7 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     {
       AppMethodBeat.i(44725);
       paramParcel.writeString(this.username);
-      paramParcel.writeInt(this.jRB);
+      paramParcel.writeInt(this.jUT);
       paramParcel.writeString(this.data);
       paramParcel.writeString(this.path);
       paramParcel.writeString(this.query);
@@ -210,21 +210,21 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     private static AppBrandBackgroundFetchDataParcel a(AppBrandBackgroundFetchDataStorageIPC.WxappIdentityWithAppId paramWxappIdentityWithAppId)
     {
       AppMethodBeat.i(44710);
-      if ((paramWxappIdentityWithAppId == null) || (bt.isNullOrNil(paramWxappIdentityWithAppId.duW)))
+      if ((paramWxappIdentityWithAppId == null) || (bu.isNullOrNil(paramWxappIdentityWithAppId.dwb)))
       {
-        ad.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetByAppIdCall:data or appid is null");
+        ae.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetByAppIdCall:data or appid is null");
         AppMethodBeat.o(44710);
         return null;
       }
       try
       {
-        paramWxappIdentityWithAppId = ((k)g.ab(k.class)).bn(paramWxappIdentityWithAppId.duW, paramWxappIdentityWithAppId.jRB);
+        paramWxappIdentityWithAppId = ((k)g.ab(k.class)).bq(paramWxappIdentityWithAppId.dwb, paramWxappIdentityWithAppId.jUT);
         AppMethodBeat.o(44710);
         return paramWxappIdentityWithAppId;
       }
       catch (Exception paramWxappIdentityWithAppId)
       {
-        ad.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetByAppIdCall fail", new Object[] { paramWxappIdentityWithAppId });
+        ae.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetByAppIdCall fail", new Object[] { paramWxappIdentityWithAppId });
         AppMethodBeat.o(44710);
       }
       return null;
@@ -237,22 +237,22 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     private static IPCLong a(AppBrandBackgroundFetchDataStorageIPC.WxappIdentity paramWxappIdentity)
     {
       AppMethodBeat.i(44712);
-      if ((paramWxappIdentity == null) || (bt.isNullOrNil(paramWxappIdentity.username)))
+      if ((paramWxappIdentity == null) || (bu.isNullOrNil(paramWxappIdentity.username)))
       {
-        ad.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetUpdateTimeCall:data or username is null");
+        ae.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetUpdateTimeCall:data or username is null");
         paramWxappIdentity = new IPCLong(0L);
         AppMethodBeat.o(44712);
         return paramWxappIdentity;
       }
       try
       {
-        paramWxappIdentity = new IPCLong(((k)g.ab(k.class)).bm(paramWxappIdentity.username, paramWxappIdentity.jRB));
+        paramWxappIdentity = new IPCLong(((k)g.ab(k.class)).bp(paramWxappIdentity.username, paramWxappIdentity.jUT));
         AppMethodBeat.o(44712);
         return paramWxappIdentity;
       }
       catch (Exception paramWxappIdentity)
       {
-        ad.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetUpdateTimeCall fail", new Object[] { paramWxappIdentity });
+        ae.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetUpdateTimeCall fail", new Object[] { paramWxappIdentity });
         paramWxappIdentity = new IPCLong(0L);
         AppMethodBeat.o(44712);
       }
@@ -266,22 +266,22 @@ public final class AppBrandBackgroundFetchDataStorageIPC
     private static IPCBoolean a(AppBrandBackgroundFetchDataStorageIPC.WxappParams paramWxappParams)
     {
       AppMethodBeat.i(44714);
-      if ((paramWxappParams == null) || (bt.isNullOrNil(paramWxappParams.username)))
+      if ((paramWxappParams == null) || (bu.isNullOrNil(paramWxappParams.username)))
       {
-        ad.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "SetCall:data or username is null");
+        ae.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "SetCall:data or username is null");
         paramWxappParams = new IPCBoolean(false);
         AppMethodBeat.o(44714);
         return paramWxappParams;
       }
       try
       {
-        paramWxappParams = new IPCBoolean(((k)g.ab(k.class)).a(paramWxappParams.username, paramWxappParams.jRB, paramWxappParams.data, paramWxappParams.path, paramWxappParams.query, paramWxappParams.scene, paramWxappParams.time));
+        paramWxappParams = new IPCBoolean(((k)g.ab(k.class)).a(paramWxappParams.username, paramWxappParams.jUT, paramWxappParams.data, paramWxappParams.path, paramWxappParams.query, paramWxappParams.scene, paramWxappParams.time));
         AppMethodBeat.o(44714);
         return paramWxappParams;
       }
       catch (Exception paramWxappParams)
       {
-        ad.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "SetCall fail", new Object[] { paramWxappParams });
+        ae.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "SetCall fail", new Object[] { paramWxappParams });
         paramWxappParams = new IPCBoolean(false);
         AppMethodBeat.o(44714);
       }

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.shake.d.a;
 
 public final class h$a
 {
-  public double ikO = 0.0D;
+  public double inH = 0.0D;
   public int major = 0;
   public int minor = 0;
   public String uuid = null;
-  public String yNS = "";
-  public double yNT = 0.0D;
-  public int yNU = 0;
+  public String zec = "";
+  public double zed = 0.0D;
+  public int zee = 0;
 }
 
 

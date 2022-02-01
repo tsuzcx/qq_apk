@@ -1,42 +1,44 @@
 package com.tencent.mm.plugin.wepkg;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.bb;
-import com.tencent.mm.plugin.game.d.o;
+import com.tencent.mm.plugin.game.d.bi;
+import com.tencent.mm.plugin.game.d.r;
 import com.tencent.mm.plugin.wepkg.model.BaseWepkgProcessTask;
 import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.plugin.wepkg.model.f;
 import com.tencent.mm.plugin.wepkg.model.g;
 import com.tencent.mm.plugin.wepkg.model.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.wepkg.model.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import com.tencent.xweb.WebResourceResponse;
 
 public final class a
 {
-  private static g EDb;
-  private static boolean EDc = false;
+  private static g EVx;
+  private static boolean EVy = false;
   
-  public static void aKm(String paramString)
+  public static void aLI(String paramString)
   {
     AppMethodBeat.i(110512);
-    if (eXu().equals(paramString)) {
-      EDc = true;
+    if (fbg().equals(paramString)) {
+      EVy = true;
     }
     AppMethodBeat.o(110512);
   }
   
-  public static WebResourceResponse aKn(String paramString)
+  public static WebResourceResponse aLJ(String paramString)
   {
     AppMethodBeat.i(110515);
-    if ((c.eXB() != 0) || (EDb == null))
+    if ((c.fbn() != 0) || (EVx == null))
     {
-      ad.e("MicroMsg.CommJsLoader", "nativeJsCache is null");
+      ae.e("MicroMsg.CommJsLoader", "nativeJsCache is null");
       AppMethodBeat.o(110515);
       return null;
     }
-    paramString = EDb.aKM(paramString);
+    paramString = EVx.aMi(paramString);
     if (paramString != null)
     {
       AppMethodBeat.o(110515);
@@ -46,19 +48,19 @@ public final class a
     return null;
   }
   
-  public static void cda()
+  public static void cep()
   {
     AppMethodBeat.i(110511);
     vw();
     AppMethodBeat.o(110511);
   }
   
-  public static void cu(String paramString, boolean paramBoolean)
+  public static void cy(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(110513);
-    if ((eXu().equals(paramString)) && ((EDc) || (c.eXz() == 0)))
+    if ((fbg().equals(paramString)) && ((EVy) || (c.fbl() == 0)))
     {
-      EDc = false;
+      EVy = false;
       if (paramBoolean) {
         vw();
       }
@@ -66,29 +68,29 @@ public final class a
     AppMethodBeat.o(110513);
   }
   
-  public static String eXu()
+  public static String fbg()
   {
     AppMethodBeat.i(110510);
-    if (com.tencent.mm.plugin.game.commlib.a.tSI != null) {
-      if (com.tencent.mm.plugin.game.commlib.a.tSI.uhD == null) {
+    if (com.tencent.mm.plugin.game.commlib.a.udz != null) {
+      if (com.tencent.mm.plugin.game.commlib.a.udz.utb == null) {
         break label47;
       }
     }
     label47:
-    for (String str = com.tencent.mm.plugin.game.commlib.a.tSI.uhD.ufQ; !bt.isNullOrNil(str); str = null)
+    for (String str = com.tencent.mm.plugin.game.commlib.a.udz.utb.urm; !bu.isNullOrNil(str); str = null)
     {
       AppMethodBeat.o(110510);
       return str;
-      com.tencent.mm.plugin.game.commlib.a.cWO();
+      com.tencent.mm.plugin.game.commlib.a.cZs();
     }
     AppMethodBeat.o(110510);
     return "commlib";
   }
   
-  public static String eXv()
+  public static String fbh()
   {
-    if ((EDb != null) && (EDb.EET != null)) {
-      return EDb.EET.version;
+    if ((EVx != null) && (EVx.EXp != null)) {
+      return EVx.EXp.version;
     }
     return "";
   }
@@ -96,43 +98,43 @@ public final class a
   public static void vw()
   {
     AppMethodBeat.i(110514);
-    ad.i("MicroMsg.CommJsLoader", "load");
-    com.tencent.mm.plugin.wepkg.model.i.a(eXu(), new com.tencent.mm.plugin.wepkg.model.a()
+    ae.i("MicroMsg.CommJsLoader", "load");
+    i.a(fbg(), new com.tencent.mm.plugin.wepkg.model.a()
     {
       public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask)
       {
         AppMethodBeat.i(110509);
-        paramAnonymousBaseWepkgProcessTask = ((WepkgCrossProcessTask)paramAnonymousBaseWepkgProcessTask).EET;
+        paramAnonymousBaseWepkgProcessTask = ((WepkgCrossProcessTask)paramAnonymousBaseWepkgProcessTask).EXp;
         if (paramAnonymousBaseWepkgProcessTask == null)
         {
-          ad.e("MicroMsg.CommJsLoader", "wepkgVersion is null");
+          ae.e("MicroMsg.CommJsLoader", "wepkgVersion is null");
           a.a(null);
           AppMethodBeat.o(110509);
           return;
         }
         if (paramAnonymousBaseWepkgProcessTask.version == null)
         {
-          ad.e("MicroMsg.CommJsLoader", "version is null");
+          ae.e("MicroMsg.CommJsLoader", "version is null");
           a.a(null);
           AppMethodBeat.o(110509);
           return;
         }
-        if ((a.eXw() != null) && (paramAnonymousBaseWepkgProcessTask.version.equals(a.eXw().EET.version)))
+        if ((a.fbi() != null) && (paramAnonymousBaseWepkgProcessTask.version.equals(a.fbi().EXp.version)))
         {
           AppMethodBeat.o(110509);
           return;
         }
-        if (!paramAnonymousBaseWepkgProcessTask.EFI)
+        if (!paramAnonymousBaseWepkgProcessTask.EYe)
         {
-          ad.e("MicroMsg.CommJsLoader", "bigPackage is not ready");
+          ae.e("MicroMsg.CommJsLoader", "bigPackage is not ready");
           a.a(null);
           AppMethodBeat.o(110509);
           return;
         }
-        f localf = h.b(a.eXu(), paramAnonymousBaseWepkgProcessTask.version, paramAnonymousBaseWepkgProcessTask.pkgPath, paramAnonymousBaseWepkgProcessTask.md5, paramAnonymousBaseWepkgProcessTask.EFG);
-        if ((localf == null) || (bt.isNullOrNil(paramAnonymousBaseWepkgProcessTask.pkgPath)) || (!com.tencent.mm.vfs.i.fv(paramAnonymousBaseWepkgProcessTask.pkgPath)))
+        f localf = h.b(a.fbg(), paramAnonymousBaseWepkgProcessTask.version, paramAnonymousBaseWepkgProcessTask.pkgPath, paramAnonymousBaseWepkgProcessTask.md5, paramAnonymousBaseWepkgProcessTask.EYc);
+        if ((localf == null) || (bu.isNullOrNil(paramAnonymousBaseWepkgProcessTask.pkgPath)) || (!o.fB(paramAnonymousBaseWepkgProcessTask.pkgPath)))
         {
-          ad.e("MicroMsg.CommJsLoader", "path not exist");
+          ae.e("MicroMsg.CommJsLoader", "path not exist");
           a.a(null);
           AppMethodBeat.o(110509);
           return;

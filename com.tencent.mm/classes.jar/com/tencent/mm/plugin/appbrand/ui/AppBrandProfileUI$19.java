@@ -16,8 +16,8 @@ final class AppBrandProfileUI$19
     AppMethodBeat.i(48725);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    AppBrandProfileUI.c(this.mDY);
+    a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    AppBrandProfileUI.c(this.mJd);
     a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(48725);
   }

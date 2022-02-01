@@ -1,214 +1,114 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.net.Uri;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
+import com.tencent.mm.loader.j.a;
 
 public final class j
 {
-  public static boolean IcA;
-  public static int Icu;
-  public static int Icv;
-  public static String Icw;
-  public static boolean Icx;
-  public static boolean Icy;
-  public static boolean Icz;
-  public static int cSc;
-  public static String cSd;
-  public static int cSe;
-  public static int cSi;
+  public static String BUILD_TAG;
+  public static String COMMAND;
+  public static boolean DEBUG;
+  public static boolean ENABLE_FPS_ANALYSE;
+  public static boolean ENABLE_MATRIX;
+  public static boolean ENABLE_MATRIX_TRACE;
+  public static boolean EX_DEVICE_LOGIN;
+  public static String HOSTNAME;
+  public static boolean IS_FLAVOR_BLUE;
+  public static boolean IS_FLAVOR_PURPLE;
+  public static boolean IS_FLAVOR_RED;
+  public static boolean IS_UAT;
+  public static int IwD;
+  public static final v IwE;
+  public static String KINDA_DEFAULT;
+  public static String MATRIX_VERSION;
+  public static String OWNER;
+  public static boolean PRE_RELEASE;
+  public static boolean REDESIGN_ENTRANCE;
+  public static String REV;
+  public static String SVNPATH;
+  public static String TIME;
+  public static String TINKER_VERSION;
+  public static String hju;
+  public static boolean hjx;
   
   static
   {
-    AppMethodBeat.i(125212);
-    cSe = 0;
-    cSc = 0;
-    Icu = 0;
-    cSi = 0;
-    cSd = Build.VERSION.SDK_INT;
-    Icv = 0;
-    Icw = "market://details?id=" + aj.getPackageName();
-    Icx = false;
-    Icy = true;
-    Icz = false;
-    IcA = false;
-    AppMethodBeat.o(125212);
+    AppMethodBeat.i(125205);
+    IwE = new v();
+    AppMethodBeat.o(125205);
   }
   
-  public static String aD(Context paramContext, int paramInt)
+  public static String info()
   {
-    AppMethodBeat.i(125210);
-    paramContext = c(paramContext, paramInt, Icx);
-    AppMethodBeat.o(125210);
-    return paramContext;
-  }
-  
-  public static String c(Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(125211);
-    int i = paramInt >> 8 & 0xFF;
-    if (i == 0) {}
-    String str2;
-    for (String str1 = (paramInt >> 24 & 0xF) + "." + (paramInt >> 16 & 0xFF);; str1 = (paramInt >> 24 & 0xF) + "." + (paramInt >> 16 & 0xFF) + "." + i)
+    AppMethodBeat.i(125204);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.format("[b.ver] %s\n", new Object[] { a.lR(hju, a.hju) }));
+    localStringBuilder.append(String.format("[tag  ] %s\n", new Object[] { a.lR(BUILD_TAG, a.BUILD_TAG) }));
+    localStringBuilder.append(String.format("[by   ] %s\n", new Object[] { a.lR(OWNER, a.OWNER) }));
+    localStringBuilder.append(String.format("[host ] %s\n", new Object[] { a.lR(HOSTNAME, a.HOSTNAME) }));
+    localStringBuilder.append(String.format("[time ] %s\n", new Object[] { a.lR(TIME, a.TIME) }));
+    localStringBuilder.append(String.format("[cmd  ] %s\n", new Object[] { a.lR(COMMAND, a.COMMAND) }));
+    localStringBuilder.append(String.format("[path ] %s\n", new Object[] { a.lR(a.lQ(SVNPATH, "MicroMsg_proj"), a.lQ(a.SVNPATH, "MicroMsg_proj")) }));
+    localStringBuilder.append(String.format("[rev  ] %s\n", new Object[] { a.lR(REV, a.REV) }));
+    if (a.arY())
     {
-      ad.d("MicroMsg.SDK.ChannelUtil", "minminor ".concat(String.valueOf(i)));
-      i = 0xFFFFFFF & paramInt;
-      str2 = str1;
-      paramInt = i;
-      if (paramContext != null) {
-        paramInt = i;
+      str = a.arV();
+      localStringBuilder.append(String.format("[p.rev] %s\n", new Object[] { str }));
+      if (!hjx) {
+        break label329;
       }
-      try
+    }
+    label329:
+    for (String str = "arm64-v8a";; str = "armeabi-v7a")
+    {
+      localStringBuilder.append(String.format("[eabi ] %s\n", new Object[] { str }));
+      localStringBuilder.append(String.format("[feature_id] %s\n", new Object[] { IwE.getString("FEATURE_ID") }));
+      str = localStringBuilder.toString();
+      AppMethodBeat.o(125204);
+      return str;
+      str = "disabled";
+      break;
+    }
+  }
+  
+  static final class a
+  {
+    public static String lQ(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(125202);
+      if (paramString1 == null)
       {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 128);
-        str2 = str1;
-        paramInt = i;
-        if (paramContext != null)
-        {
-          paramInt = i;
-          i = paramContext.versionCode;
-          paramInt = i;
-          str2 = paramContext.versionName;
-          paramInt = i;
-        }
+        AppMethodBeat.o(125202);
+        return null;
       }
-      catch (Exception paramContext)
+      int i = paramString1.indexOf(paramString2);
+      if (i < 0)
       {
-        for (;;)
-        {
-          ad.printErrStackTrace("MicroMsg.SDK.ChannelUtil", paramContext, "", new Object[0]);
-          str2 = str1;
-        }
-        paramContext = str2.split("\\.");
-        if ((paramContext != null) && (paramContext.length >= 4)) {
-          break label275;
-        }
-        AppMethodBeat.o(125211);
-        return str2;
-        str1 = paramContext[0] + "." + paramContext[1];
-        if (!paramContext[2].trim().equals("0")) {
-          break label326;
-        }
-        AppMethodBeat.o(125211);
-        return str1;
-        paramContext = str1 + "." + paramContext[2];
-        AppMethodBeat.o(125211);
+        AppMethodBeat.o(125202);
+        return paramString1;
       }
-      if (!paramBoolean) {
-        break;
+      paramString1 = paramString1.substring(i);
+      AppMethodBeat.o(125202);
+      return paramString1;
+    }
+    
+    public static String lR(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(125203);
+      if (paramString1 == null)
+      {
+        AppMethodBeat.o(125203);
+        return null;
       }
-      paramContext = str2 + "_" + paramInt;
-      ad.d("MicroMsg.SDK.ChannelUtil", "full version: ".concat(String.valueOf(paramContext)));
-      AppMethodBeat.o(125211);
-      return paramContext;
-    }
-    label275:
-    label326:
-    return paramContext;
-  }
-  
-  public static boolean fjZ()
-  {
-    return cSc == 1;
-  }
-  
-  public static boolean fka()
-  {
-    return cSc == 1001;
-  }
-  
-  public static void iA(Context paramContext)
-  {
-    AppMethodBeat.i(125207);
-    try
-    {
-      paramContext = w.aQo(bt.convertStreamToString(paramContext.getAssets().open("profile.ini")));
-      String str = bt.nullAsNil((String)paramContext.get("PROFILE_DEVICE_TYPE"));
-      cSd = str;
-      if (str.length() <= 0) {
-        cSd = Build.VERSION.SDK_INT;
+      if (paramString1.equals(paramString2))
+      {
+        AppMethodBeat.o(125203);
+        return paramString1;
       }
-      cSe = parseInt((String)paramContext.get("UPDATE_MODE"));
-      Icv = parseInt((String)paramContext.get("BUILD_REVISION"));
-      Icz = parseBoolean((String)paramContext.get("GPRS_ALERT"));
-      cSi = parseInt((String)paramContext.get("AUTO_ADD_ACOUNT"));
-      IcA = parseBoolean((String)paramContext.get("NOKIA_AOL"));
-      ad.w("MicroMsg.SDK.ChannelUtil", "profileDeviceType=" + cSd);
-      ad.w("MicroMsg.SDK.ChannelUtil", "updateMode=" + cSe);
-      ad.w("MicroMsg.SDK.ChannelUtil", "shouldShowGprsAlert=" + Icz);
-      ad.w("MicroMsg.SDK.ChannelUtil", "autoAddAccount=" + cSi);
-      ad.w("MicroMsg.SDK.ChannelUtil", "isNokiaol=" + IcA);
-      paramContext = (String)paramContext.get("MARKET_URL");
-      if ((paramContext != null) && (paramContext.trim().length() != 0) && (Uri.parse(paramContext) != null)) {
-        Icw = paramContext;
-      }
-      ad.w("MicroMsg.SDK.ChannelUtil", "marketURL=" + Icw);
-      AppMethodBeat.o(125207);
-      return;
+      paramString1 = String.format("%s(%s)", new Object[] { paramString1, paramString2 });
+      AppMethodBeat.o(125203);
+      return paramString1;
     }
-    catch (Exception paramContext)
-    {
-      ad.e("MicroMsg.SDK.ChannelUtil", "setup profile from profile.ini failed");
-      ad.printErrStackTrace("MicroMsg.SDK.ChannelUtil", paramContext, "", new Object[0]);
-      AppMethodBeat.o(125207);
-    }
-  }
-  
-  public static void iz(Context paramContext)
-  {
-    AppMethodBeat.i(125206);
-    try
-    {
-      cSc = Integer.parseInt((String)w.aQo(bt.convertStreamToString(paramContext.getAssets().open("channel.ini"))).get("CHANNEL"));
-      AppMethodBeat.o(125206);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      ad.e("MicroMsg.SDK.ChannelUtil", "setup channel id from channel.ini failed");
-      ad.printErrStackTrace("MicroMsg.SDK.ChannelUtil", paramContext, "", new Object[0]);
-      AppMethodBeat.o(125206);
-    }
-  }
-  
-  private static boolean parseBoolean(String paramString)
-  {
-    AppMethodBeat.i(125209);
-    try
-    {
-      boolean bool = Boolean.parseBoolean(paramString);
-      AppMethodBeat.o(125209);
-      return bool;
-    }
-    catch (Exception paramString)
-    {
-      ad.printErrStackTrace("MicroMsg.SDK.ChannelUtil", paramString, "", new Object[0]);
-      ad.w("MicroMsg.SDK.ChannelUtil", paramString.getMessage());
-      AppMethodBeat.o(125209);
-    }
-    return false;
-  }
-  
-  private static int parseInt(String paramString)
-  {
-    AppMethodBeat.i(125208);
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      AppMethodBeat.o(125208);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      ad.w("MicroMsg.SDK.ChannelUtil", paramString.getMessage());
-      AppMethodBeat.o(125208);
-    }
-    return 0;
   }
 }
 

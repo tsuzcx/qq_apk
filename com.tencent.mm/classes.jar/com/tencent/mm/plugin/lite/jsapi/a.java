@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.lite.jsapi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
@@ -10,10 +11,10 @@ import org.json.JSONObject;
 public abstract class a
   implements com.tencent.mm.ipcinvoker.b<Bundle, IPCCallbackData>
 {
-  private Map<String, Integer> uYA = new HashMap() {};
-  private Map<String, Integer> uYB = new HashMap() {};
-  public b uYy = null;
-  public a uYz = null;
+  public b vkn = null;
+  public a vko = null;
+  private Map<String, Integer> vkp = new HashMap() {};
+  private Map<String, Integer> vkq = new HashMap() {};
   
   protected final int ay(JSONObject paramJSONObject)
   {
@@ -22,8 +23,8 @@ public abstract class a
     {
       return 2130772144;
       paramJSONObject = paramJSONObject.getString("nextAnimIn");
-    } while (!this.uYA.containsKey(paramJSONObject));
-    return ((Integer)this.uYA.get(paramJSONObject)).intValue();
+    } while (!this.vkp.containsKey(paramJSONObject));
+    return ((Integer)this.vkp.get(paramJSONObject)).intValue();
   }
   
   protected final int az(JSONObject paramJSONObject)
@@ -33,68 +34,70 @@ public abstract class a
     {
       return 2130772141;
       paramJSONObject = paramJSONObject.getString("currentAnimOut");
-    } while (!this.uYA.containsKey(paramJSONObject));
-    return ((Integer)this.uYB.get(paramJSONObject)).intValue();
+    } while (!this.vkp.containsKey(paramJSONObject));
+    return ((Integer)this.vkq.get(paramJSONObject)).intValue();
   }
   
-  public int cXg()
+  public int cZP()
   {
     return 0;
   }
+  
+  public void e(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public abstract void j(String paramString, JSONObject paramJSONObject);
   
   public static final class a
   {
-    public d<IPCCallbackData> uYD = null;
-    public b uYy;
+    public b vkn;
+    public d<IPCCallbackData> vks = null;
     
-    public final void YL(String paramString)
+    public final void ZC(String paramString)
     {
-      AppMethodBeat.i(214617);
-      if (this.uYy != null)
+      AppMethodBeat.i(212370);
+      if (this.vkn != null)
       {
-        this.uYy.aov(paramString);
-        AppMethodBeat.o(214617);
+        this.vkn.apy(paramString);
+        AppMethodBeat.o(212370);
         return;
       }
       IPCCallbackData localIPCCallbackData = new IPCCallbackData();
-      localIPCCallbackData.uYv = false;
-      localIPCCallbackData.uYw = paramString;
-      this.uYD.be(localIPCCallbackData);
-      AppMethodBeat.o(214617);
+      localIPCCallbackData.vkk = false;
+      localIPCCallbackData.vkl = paramString;
+      this.vks.be(localIPCCallbackData);
+      AppMethodBeat.o(212370);
     }
     
     public final void aA(JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(214620);
-      if (this.uYy != null)
+      AppMethodBeat.i(212373);
+      if (this.vkn != null)
       {
-        this.uYy.aB(paramJSONObject);
-        AppMethodBeat.o(214620);
+        this.vkn.aB(paramJSONObject);
+        AppMethodBeat.o(212373);
         return;
       }
       IPCCallbackData localIPCCallbackData = new IPCCallbackData();
-      localIPCCallbackData.uYv = true;
+      localIPCCallbackData.vkk = true;
       if (paramJSONObject != null) {
-        localIPCCallbackData.uYx = paramJSONObject.toString();
+        localIPCCallbackData.vkm = paramJSONObject.toString();
       }
-      this.uYD.be(localIPCCallbackData);
-      AppMethodBeat.o(214620);
+      this.vks.be(localIPCCallbackData);
+      AppMethodBeat.o(212373);
     }
     
-    public final void ai(Map<String, Object> paramMap)
+    public final void ao(Map<String, Object> paramMap)
     {
-      AppMethodBeat.i(214619);
+      AppMethodBeat.i(212372);
       aA(new JSONObject(paramMap));
-      AppMethodBeat.o(214619);
+      AppMethodBeat.o(212372);
     }
     
-    public final void cXe()
+    public final void cZN()
     {
-      AppMethodBeat.i(214618);
+      AppMethodBeat.i(212371);
       aA(new JSONObject());
-      AppMethodBeat.o(214618);
+      AppMethodBeat.o(212371);
     }
   }
 }

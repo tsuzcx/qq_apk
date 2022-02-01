@@ -4,19 +4,18 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.mmsight.d;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.aip;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.g.b.p;
 import d.l;
 import d.n.n;
@@ -25,61 +24,61 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/MediaFileUtil;", "", "()V", "MEDIA_FILE_DELETE_SET", "", "MEDIA_FILE_KEY", "MEDIA_TIMING_DELETE_SET", "MIX_AUDIO_FILE", "MIX_BLUR_BG_FILE", "MIX_THUMB_FILE", "MIX_VIDEO_FILE", "PHOTO_EDIT_PREFIX", "PIC_FILE", "TAG", "VIDEO_FILE", "VIDEP_EDOT_PREFIX", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "videoMixPath", "videoRecordRootPath", "videoRecordTempPath", "audioEnsurePath", "parentPath", "mediaId", "checkAndMarkDeletePhotoFile", "", "key", "filePath", "checkConfigProviderCapturePath", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "checkConfigProviderPhotoEditPath", "checkConfigProviderVideoEditPath", "checkThumbSize", "Landroid/graphics/Bitmap;", "bitmap", "shortSide", "", "checkToCreateDir", "newVideoPath", "noMedia", "", "clearTimingFile", "deleteBizFile", "deleteDaemonMediaFile", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "deleteFile", "deleteMarkFileByKey", "deleteMarkFilePath", "deleteVideoFileWithCheckPath", "exportVideo", "videoPath", "getAudioTmpPath", "getBlurBgPath", "localId", "getCaptureEditVideoPath", "getCaptureImagePath", "getCaptureThumbPath", "getCaptureVideoPath", "getEditImagePath", "getMixAudioPath", "getMixThumbPath", "getMixVideoPath", "getRecordThumbTempPath", "timeStamp", "", "getSubCaptureVideoParent", "getSubCaptureVideoPath", "handleDaemonNoNeedRemuxCaptureVideo", "isCaptureMedia", "handleMultiPhotoResult", "photoPath", "handleMultiVideoResult", "handleNoNeedRemuxCaptureVideo", "handleRemuxImage", "change", "handleRemuxVideo", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "handleSubRecordMux", "captureInfo", "markDeleteMediaFile", "file", "markDeletePhotoEditFile", "imagePathList", "Ljava/util/ArrayList;", "markTimingDeleteFile", "saveThumb", "thumbPath", "thumbSize", "thumbEnsurePath", "videoEnsurePath", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/MediaFileUtil;", "", "()V", "MEDIA_FILE_DELETE_SET", "", "MEDIA_FILE_KEY", "MEDIA_TIMING_DELETE_SET", "MIX_AUDIO_FILE", "MIX_BLUR_BG_FILE", "MIX_THUMB_FILE", "MIX_VIDEO_FILE", "PHOTO_EDIT_PREFIX", "PIC_FILE", "TAG", "VIDEO_FILE", "VIDEP_EDOT_PREFIX", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "videoMixPath", "videoRecordRootPath", "videoRecordTempPath", "audioEnsurePath", "parentPath", "mediaId", "checkAndMarkDeletePhotoFile", "", "key", "filePath", "checkConfigProviderCapturePath", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "checkConfigProviderPhotoEditPath", "checkConfigProviderVideoEditPath", "checkThumbSize", "Landroid/graphics/Bitmap;", "bitmap", "shortSide", "", "checkToCreateDir", "newVideoPath", "noMedia", "", "clearTimingFile", "deleteBizFile", "deleteDaemonMediaFile", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "deleteFile", "deleteMarkFileByKey", "deleteMarkFilePath", "deleteVideoFileWithCheckPath", "exportVideo", "videoPath", "getAudioTmpPath", "getBlurBgPath", "localId", "getCaptureEditVideoPath", "getCaptureImagePath", "getCaptureThumbPath", "getCaptureVideoPath", "getEditImagePath", "getMixAudioPath", "getMixThumbPath", "getMixVideoPath", "getRecordThumbTempPath", "timeStamp", "", "getSubCaptureVideoParent", "getSubCaptureVideoPath", "handleDaemonNoNeedRemuxCaptureVideo", "isCaptureMedia", "handleMultiPhotoResult", "photoPath", "handleMultiVideoResult", "handleNoNeedRemuxCaptureVideo", "handleRemuxImage", "change", "handleRemuxVideo", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "handleSubRecordMux", "captureInfo", "markDeleteMediaFile", "file", "markDeletePhotoEditFile", "imagePathList", "Ljava/util/ArrayList;", "markTimingDeleteFile", "saveThumb", "thumbPath", "thumbSize", "thumbEnsurePath", "videoEnsurePath", "plugin-recordvideo_release"})
 public final class b
 {
-  private static final ax cBy;
-  private static final String xRi;
-  private static final String xRj;
-  public static final String xRk;
-  public static final b xRl;
+  private static final ay cCf;
+  private static final String yhb;
+  private static final String yhc;
+  public static final String yhd;
+  public static final b yhe;
   
   static
   {
     AppMethodBeat.i(76218);
-    xRl = new b();
+    yhe = new b();
     StringBuilder localStringBuilder = new StringBuilder();
-    e locale = g.ajC();
+    e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
-    xRi = locale.getAccPath() + "recordPlugin/";
-    xRj = xRi + "temp/";
-    xRk = xRi + "mix/";
-    cBy = ax.aQz("media_file_key");
+    yhb = locale.getAccPath() + "recordPlugin/";
+    yhc = yhb + "temp/";
+    yhd = yhb + "mix/";
+    cCf = ay.aRW("media_file_key");
     AppMethodBeat.o(76218);
   }
   
   public static void a(final RecordConfigProvider paramRecordConfigProvider, final boolean paramBoolean1, final boolean paramBoolean2)
   {
     AppMethodBeat.i(76203);
-    ad.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:" + paramBoolean1 + "   change:" + paramBoolean2);
+    ae.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:" + paramBoolean1 + "   change:" + paramBoolean2);
     if (paramRecordConfigProvider != null)
     {
-      h.LTJ.f((Runnable)new k(paramRecordConfigProvider, paramRecordConfigProvider, paramBoolean1, paramBoolean2), "mux_save_work");
+      h.MqF.f((Runnable)new k(paramRecordConfigProvider, paramRecordConfigProvider, paramBoolean1, paramBoolean2), "mux_save_work");
       AppMethodBeat.o(76203);
       return;
     }
     AppMethodBeat.o(76203);
   }
   
-  public static void a(aif paramaif)
+  public static void a(aip paramaip)
   {
     AppMethodBeat.i(76205);
-    if (paramaif != null) {
-      h.LTJ.f((Runnable)new l(paramaif), "mux_save_work");
+    if (paramaip != null) {
+      h.MqF.f((Runnable)new l(paramaip), "mux_save_work");
     }
     AppMethodBeat.o(76205);
   }
   
-  public static void ast(String paramString)
+  public static void atH(String paramString)
   {
     AppMethodBeat.i(76192);
     if (!TextUtils.isEmpty((CharSequence)paramString)) {
-      h.LTJ.f((Runnable)new b.c(paramString), "MediaFileUtil_deleteMediaFile");
+      h.MqF.f((Runnable)new b.c(paramString), "MediaFileUtil_deleteMediaFile");
     }
     AppMethodBeat.o(76192);
   }
   
-  public static void at(ArrayList<String> paramArrayList)
+  public static void au(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(76194);
     p.h(paramArrayList, "imagePathList");
@@ -90,77 +89,77 @@ public final class b
       if (str1 != null)
       {
         CharSequence localCharSequence = (CharSequence)str1;
-        String str2 = q.aIF().getFullPath("photoEdited_");
+        String str2 = q.aIX().getFullPath("photoEdited_");
         p.g(str2, "SubCoreImage.getImgStg()…llPath(PHOTO_EDIT_PREFIX)");
         if (n.a(localCharSequence, (CharSequence)str2, false) == true)
         {
-          ad.i("MicroMsg.MediaFileUtil", "markDeletePhotoEditFile: ".concat(String.valueOf(str1)));
-          avR(str1);
+          ae.i("MicroMsg.MediaFileUtil", "markDeletePhotoEditFile: ".concat(String.valueOf(str1)));
+          axg(str1);
         }
       }
     }
     AppMethodBeat.o(76194);
   }
   
-  public static void avP(String paramString)
+  public static void axe(String paramString)
   {
-    AppMethodBeat.i(200878);
-    ad.i("MicroMsg.MediaFileUtil", "markTimingDeleteFile file ".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(207136);
+    ae.i("MicroMsg.MediaFileUtil", "markTimingDeleteFile file ".concat(String.valueOf(paramString)));
     if (TextUtils.isEmpty((CharSequence)paramString))
     {
-      AppMethodBeat.o(200878);
+      AppMethodBeat.o(207136);
       return;
     }
-    Set localSet = cBy.decodeStringSet("media_timing_delete_set", (Set)new HashSet());
+    Set localSet = cCf.decodeStringSet("media_timing_delete_set", (Set)new HashSet());
     localSet.add(paramString);
-    cBy.encode("media_timing_delete_set", localSet);
-    AppMethodBeat.o(200878);
+    cCf.encode("media_timing_delete_set", localSet);
+    AppMethodBeat.o(207136);
   }
   
-  public static void avQ(String paramString)
+  public static void axf(String paramString)
   {
     AppMethodBeat.i(76189);
     if (paramString != null)
     {
-      paramString = cBy.decodeString(paramString, "");
+      paramString = cCf.decodeString(paramString, "");
       if (!TextUtils.isEmpty((CharSequence)paramString)) {
-        h.LTJ.f((Runnable)new b.d(paramString), "MediaFileUtil_deleteMediaFile");
+        h.MqF.f((Runnable)new b.d(paramString), "MediaFileUtil_deleteMediaFile");
       }
     }
     AppMethodBeat.o(76189);
   }
   
-  public static void avR(String paramString)
+  public static void axg(String paramString)
   {
     AppMethodBeat.i(76190);
     if (!TextUtils.isEmpty((CharSequence)paramString))
     {
-      ad.i("MicroMsg.MediaFileUtil", "cache delete file ".concat(String.valueOf(paramString)));
-      Set localSet = cBy.decodeStringSet("media_file_delete_set", (Set)new HashSet());
+      ae.i("MicroMsg.MediaFileUtil", "cache delete file ".concat(String.valueOf(paramString)));
+      Set localSet = cCf.decodeStringSet("media_file_delete_set", (Set)new HashSet());
       localSet.add(paramString);
-      cBy.encode("media_file_delete_set", localSet);
+      cCf.encode("media_file_delete_set", localSet);
     }
     AppMethodBeat.o(76190);
   }
   
-  public static void avS(String paramString)
+  public static void axh(String paramString)
   {
     AppMethodBeat.i(76191);
     if (!TextUtils.isEmpty((CharSequence)paramString))
     {
-      Set localSet = cBy.decodeStringSet("media_file_delete_set", (Set)new HashSet());
+      Set localSet = cCf.decodeStringSet("media_file_delete_set", (Set)new HashSet());
       if (localSet.contains(paramString))
       {
         localSet.remove(paramString);
         if (!TextUtils.isEmpty((CharSequence)paramString)) {
-          h.LTJ.f((Runnable)new b.e(paramString), "MediaFileUtil_deleteMediaFile");
+          h.MqF.f((Runnable)new b.e(paramString), "MediaFileUtil_deleteMediaFile");
         }
       }
     }
     AppMethodBeat.o(76191);
   }
   
-  public static void avT(String paramString)
+  public static void axi(String paramString)
   {
     AppMethodBeat.i(76193);
     if (!TextUtils.isEmpty((CharSequence)paramString))
@@ -169,11 +168,11 @@ public final class b
         break label69;
       }
       CharSequence localCharSequence = (CharSequence)paramString;
-      p.g(o.aMI(), "SubCoreVideo.getCore()");
-      String str = o.getAccVideoPath();
+      p.g(com.tencent.mm.modelvideo.o.aNg(), "SubCoreVideo.getCore()");
+      String str = com.tencent.mm.modelvideo.o.getAccVideoPath();
       p.g(str, "SubCoreVideo.getCore().accVideoPath");
       if (n.a(localCharSequence, (CharSequence)str, false) == true) {
-        ast(paramString);
+        atH(paramString);
       }
     }
     AppMethodBeat.o(76193);
@@ -182,18 +181,18 @@ public final class b
     AppMethodBeat.o(76193);
   }
   
-  public static void avU(String paramString)
+  public static void axj(String paramString)
   {
     AppMethodBeat.i(76195);
     if (paramString != null)
     {
       CharSequence localCharSequence = (CharSequence)paramString;
-      String str = q.aIF().getFullPath("photoEdited_");
+      String str = q.aIX().getFullPath("photoEdited_");
       p.g(str, "SubCoreImage.getImgStg()…llPath(PHOTO_EDIT_PREFIX)");
       if (n.a(localCharSequence, (CharSequence)str, false) == true)
       {
-        ad.i("MicroMsg.MediaFileUtil", "markDeletePhotoEditFile: ".concat(String.valueOf(paramString)));
-        avR(paramString);
+        ae.i("MicroMsg.MediaFileUtil", "markDeletePhotoEditFile: ".concat(String.valueOf(paramString)));
+        axg(paramString);
       }
       AppMethodBeat.o(76195);
       return;
@@ -201,35 +200,35 @@ public final class b
     AppMethodBeat.o(76195);
   }
   
-  public static String avV(String paramString)
+  public static String axk(String paramString)
   {
     AppMethodBeat.i(76200);
     p.h(paramString, "videoPath");
-    paramString = d.aqL(paramString);
+    paramString = d.arQ(paramString);
     p.g(paramString, "MMSightUtil.getThumbName(videoPath)");
     AppMethodBeat.o(76200);
     return paramString;
   }
   
-  public static void avW(String paramString)
+  public static void axl(String paramString)
   {
-    AppMethodBeat.i(200881);
-    if ((!TextUtils.isEmpty((CharSequence)paramString)) && (com.tencent.mm.vfs.i.fv(paramString))) {
-      h.LTJ.aR((Runnable)new b.h(paramString));
+    AppMethodBeat.i(207139);
+    if ((!TextUtils.isEmpty((CharSequence)paramString)) && (com.tencent.mm.vfs.o.fB(paramString))) {
+      h.MqF.aO((Runnable)new b.h(paramString));
     }
-    AppMethodBeat.o(200881);
+    AppMethodBeat.o(207139);
   }
   
-  public static void avX(String paramString)
+  public static void axm(String paramString)
   {
-    AppMethodBeat.i(200882);
-    if ((!TextUtils.isEmpty((CharSequence)paramString)) && (com.tencent.mm.vfs.i.fv(paramString))) {
-      h.LTJ.aR((Runnable)new b.g(paramString));
+    AppMethodBeat.i(207140);
+    if ((!TextUtils.isEmpty((CharSequence)paramString)) && (com.tencent.mm.vfs.o.fB(paramString))) {
+      h.MqF.aO((Runnable)new b.g(paramString));
     }
-    AppMethodBeat.o(200882);
+    AppMethodBeat.o(207140);
   }
   
-  public static String avY(String paramString)
+  public static String axn(String paramString)
   {
     AppMethodBeat.i(76213);
     if (paramString == null)
@@ -238,7 +237,7 @@ public final class b
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    String str = xRk;
+    String str = yhd;
     if (paramString == null) {}
     for (paramString = "";; paramString = str + paramString + ".v")
     {
@@ -248,7 +247,7 @@ public final class b
     }
   }
   
-  public static String avZ(String paramString)
+  public static String axo(String paramString)
   {
     AppMethodBeat.i(76214);
     if (paramString == null)
@@ -256,12 +255,12 @@ public final class b
       AppMethodBeat.o(76214);
       return "";
     }
-    paramString = iN(xRk, paramString) + ".mixt";
+    paramString = iT(yhd, paramString) + ".mixt";
     AppMethodBeat.o(76214);
     return paramString;
   }
   
-  public static String awa(String paramString)
+  public static String axp(String paramString)
   {
     AppMethodBeat.i(163472);
     if (paramString == null)
@@ -269,12 +268,12 @@ public final class b
       AppMethodBeat.o(163472);
       return "";
     }
-    paramString = iN(xRk, paramString) + ".blurt";
+    paramString = iT(yhd, paramString) + ".blurt";
     AppMethodBeat.o(163472);
     return paramString;
   }
   
-  public static void awb(String paramString)
+  public static void axq(String paramString)
   {
     AppMethodBeat.i(76215);
     p.h(paramString, "newVideoPath");
@@ -284,33 +283,33 @@ public final class b
       AppMethodBeat.o(76215);
       return;
     }
-    paramString = com.tencent.mm.vfs.i.aYr(paramString);
-    com.tencent.mm.vfs.i.aYg(paramString);
-    com.tencent.mm.vfs.i.aYu(paramString);
+    paramString = com.tencent.mm.vfs.o.aZU(paramString);
+    com.tencent.mm.vfs.o.aZI(paramString);
+    com.tencent.mm.vfs.o.aZX(paramString);
     AppMethodBeat.o(76215);
   }
   
   public static void b(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
-    AppMethodBeat.i(200883);
+    AppMethodBeat.i(207141);
     if (paramb != null)
     {
-      if (paramb.htP == true) {
-        h.LTJ.aR((Runnable)new n(paramb));
+      if (paramb.hwD == true) {
+        h.MqF.aO((Runnable)new b.n(paramb));
       }
-      AppMethodBeat.o(200883);
+      AppMethodBeat.o(207141);
       return;
     }
-    AppMethodBeat.o(200883);
+    AppMethodBeat.o(207141);
   }
   
   public static void b(final RecordConfigProvider paramRecordConfigProvider, final boolean paramBoolean1, final boolean paramBoolean2)
   {
     AppMethodBeat.i(76206);
-    ad.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:" + paramBoolean1 + "   change:" + paramBoolean2);
+    ae.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:" + paramBoolean1 + "   change:" + paramBoolean2);
     if (paramRecordConfigProvider != null)
     {
-      h.LTJ.f((Runnable)new j(paramRecordConfigProvider, paramBoolean1, paramRecordConfigProvider, paramBoolean2), "mux_save_work");
+      h.MqF.f((Runnable)new j(paramRecordConfigProvider, paramBoolean1, paramRecordConfigProvider, paramBoolean2), "mux_save_work");
       AppMethodBeat.o(76206);
       return;
     }
@@ -322,7 +321,7 @@ public final class b
     AppMethodBeat.i(76217);
     if (paramb != null)
     {
-      h.LTJ.f((Runnable)new b(paramb), "deleteDaemonMediaFile");
+      h.MqF.f((Runnable)new b.b(paramb), "deleteDaemonMediaFile");
       AppMethodBeat.o(76217);
       return;
     }
@@ -332,19 +331,19 @@ public final class b
   public static void c(CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(76204);
-    if ((paramCaptureVideoNormalModel == null) || (!paramCaptureVideoNormalModel.dFC().booleanValue()))
+    if ((paramCaptureVideoNormalModel == null) || (!paramCaptureVideoNormalModel.dIT().booleanValue()))
     {
       AppMethodBeat.o(76204);
       return;
     }
-    e locale = g.ajC();
+    e locale = g.ajR();
     p.g(locale, "MMKernel.storage()");
-    if (!locale.ajl().getBoolean(al.a.Ixw, true))
+    if (!locale.ajA().getBoolean(am.a.IRU, true))
     {
       AppMethodBeat.o(76204);
       return;
     }
-    h.LTJ.f((Runnable)new m(paramCaptureVideoNormalModel), "mux_save_work");
+    h.MqF.f((Runnable)new b.m(paramCaptureVideoNormalModel), "mux_save_work");
     AppMethodBeat.o(76204);
   }
   
@@ -352,55 +351,55 @@ public final class b
   {
     AppMethodBeat.i(76197);
     p.h(paramRecordConfigProvider, "configProvider");
-    if (TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.xyz))
+    if (TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.xOv))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      p.g(o.aMI(), "SubCoreVideo.getCore()");
-      paramRecordConfigProvider.xyz = (o.getAccVideoPath() + "vsg_output_" + System.currentTimeMillis());
+      p.g(com.tencent.mm.modelvideo.o.aNg(), "SubCoreVideo.getCore()");
+      paramRecordConfigProvider.xOv = (com.tencent.mm.modelvideo.o.getAccVideoPath() + "vsg_output_" + System.currentTimeMillis());
     }
     AppMethodBeat.o(76197);
   }
   
-  public static void dIs()
+  public static void dLJ()
   {
-    AppMethodBeat.i(200879);
-    h.LTJ.aR((Runnable)a.xRm);
-    AppMethodBeat.o(200879);
+    AppMethodBeat.i(207137);
+    h.MqF.aO((Runnable)a.yhf);
+    AppMethodBeat.o(207137);
   }
   
-  public static String dIt()
+  public static String dLK()
   {
     AppMethodBeat.i(76199);
-    p.g(o.aMI(), "SubCoreVideo.getCore()");
-    String str = d.aqJ(o.getAccVideoPath());
+    p.g(com.tencent.mm.modelvideo.o.aNg(), "SubCoreVideo.getCore()");
+    String str = d.arO(com.tencent.mm.modelvideo.o.getAccVideoPath());
     p.g(str, "MMSightUtil.getTempFileN…o.getCore().accVideoPath)");
     AppMethodBeat.o(76199);
     return str;
   }
   
-  public static String dIu()
+  public static String dLL()
   {
-    AppMethodBeat.i(200880);
-    p.g(o.aMI(), "SubCoreVideo.getCore()");
-    String str = o.aMR();
+    AppMethodBeat.i(207138);
+    p.g(com.tencent.mm.modelvideo.o.aNg(), "SubCoreVideo.getCore()");
+    String str = com.tencent.mm.modelvideo.o.aNp();
     p.g(str, "SubCoreVideo.getCore().subVideoPath");
-    AppMethodBeat.o(200880);
+    AppMethodBeat.o(207138);
     return str;
   }
   
-  public static String dIv()
+  public static String dLM()
   {
     AppMethodBeat.i(76201);
-    String str = q.aIF().getFullPath("photoEdited_" + System.currentTimeMillis());
+    String str = q.aIX().getFullPath("photoEdited_" + System.currentTimeMillis());
     p.g(str, "SubCoreImage.getImgStg()…stem.currentTimeMillis())");
     AppMethodBeat.o(76201);
     return str;
   }
   
-  public static String dIw()
+  public static String dLN()
   {
     AppMethodBeat.i(76202);
-    String str = q.aIF().getFullPath("photoCapture_" + System.currentTimeMillis());
+    String str = q.aIX().getFullPath("photoCapture_" + System.currentTimeMillis());
     p.g(str, "SubCoreImage.getImgStg()…currentTimeMillis() + \"\")");
     AppMethodBeat.o(76202);
     return str;
@@ -414,14 +413,14 @@ public final class b
     if (TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.thumbPath))
     {
       localStringBuilder = new StringBuilder();
-      p.g(o.aMI(), "SubCoreVideo.getCore()");
-      paramRecordConfigProvider.thumbPath = (o.getAccVideoPath() + "vsg_thumb_" + System.currentTimeMillis());
+      p.g(com.tencent.mm.modelvideo.o.aNg(), "SubCoreVideo.getCore()");
+      paramRecordConfigProvider.thumbPath = (com.tencent.mm.modelvideo.o.getAccVideoPath() + "vsg_thumb_" + System.currentTimeMillis());
     }
-    if (TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.xyx))
+    if (TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.xOt))
     {
       localStringBuilder = new StringBuilder();
-      p.g(o.aMI(), "SubCoreVideo.getCore()");
-      paramRecordConfigProvider.xyx = (o.getAccVideoPath() + "vsg_output_" + System.currentTimeMillis());
+      p.g(com.tencent.mm.modelvideo.o.aNg(), "SubCoreVideo.getCore()");
+      paramRecordConfigProvider.xOt = (com.tencent.mm.modelvideo.o.getAccVideoPath() + "vsg_output_" + System.currentTimeMillis());
     }
     AppMethodBeat.o(76198);
   }
@@ -429,9 +428,9 @@ public final class b
   public static boolean f(RecordConfigProvider paramRecordConfigProvider)
   {
     AppMethodBeat.i(76207);
-    ad.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:true  ");
+    ae.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:true  ");
     if (paramRecordConfigProvider != null) {
-      h.LTJ.f((Runnable)new f(paramRecordConfigProvider), "mux_save_work_daemon");
+      h.MqF.f((Runnable)new f(paramRecordConfigProvider), "mux_save_work_daemon");
     }
     AppMethodBeat.o(76207);
     return true;
@@ -440,13 +439,13 @@ public final class b
   public static boolean g(RecordConfigProvider paramRecordConfigProvider)
   {
     AppMethodBeat.i(76208);
-    ad.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:true  ");
+    ae.i("MicroMsg.MediaFileUtil", "configProvider : " + paramRecordConfigProvider + "  isCaptureMedia:true  ");
     if (paramRecordConfigProvider != null)
     {
-      if (com.tencent.mm.vfs.i.fv(paramRecordConfigProvider.xyw)) {
-        com.tencent.mm.vfs.i.mz(paramRecordConfigProvider.xyw, paramRecordConfigProvider.xyx);
+      if (com.tencent.mm.vfs.o.fB(paramRecordConfigProvider.xOs)) {
+        com.tencent.mm.vfs.o.mF(paramRecordConfigProvider.xOs, paramRecordConfigProvider.xOt);
       }
-      h.LTJ.f((Runnable)new i(paramRecordConfigProvider), "handleNoNeedRemuxCaptureVideo");
+      h.MqF.f((Runnable)new i(paramRecordConfigProvider), "handleNoNeedRemuxCaptureVideo");
     }
     AppMethodBeat.o(76208);
     return true;
@@ -483,20 +482,20 @@ public final class b
     return paramBitmap;
   }
   
-  public static void iL(String paramString1, String paramString2)
+  public static void iR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(76188);
-    ad.i("MicroMsg.MediaFileUtil", "cache delete key: " + paramString1 + " , file " + paramString2);
+    ae.i("MicroMsg.MediaFileUtil", "cache delete key: " + paramString1 + " , file " + paramString2);
     if ((paramString1 == null) || (paramString2 == null))
     {
       AppMethodBeat.o(76188);
       return;
     }
-    cBy.encode(paramString1, paramString2);
+    cCf.encode(paramString1, paramString2);
     AppMethodBeat.o(76188);
   }
   
-  public static void iM(String paramString1, String paramString2)
+  public static void iS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(76196);
     if ((TextUtils.isEmpty((CharSequence)paramString1)) || (TextUtils.isEmpty((CharSequence)paramString2)))
@@ -505,18 +504,18 @@ public final class b
       return;
     }
     if (paramString2 == null) {
-      p.gfZ();
+      p.gkB();
     }
     CharSequence localCharSequence = (CharSequence)paramString2;
-    String str = q.aIF().getFullPath("photoEdited_");
+    String str = q.aIX().getFullPath("photoEdited_");
     p.g(str, "SubCoreImage.getImgStg()…llPath(PHOTO_EDIT_PREFIX)");
     if (n.a(localCharSequence, (CharSequence)str, false)) {
-      iL(paramString1, paramString2);
+      iR(paramString1, paramString2);
     }
     AppMethodBeat.o(76196);
   }
   
-  private static String iN(String paramString1, String paramString2)
+  private static String iT(String paramString1, String paramString2)
   {
     AppMethodBeat.i(76211);
     if (paramString2 == null)
@@ -529,7 +528,7 @@ public final class b
     return paramString1;
   }
   
-  public static String iO(String paramString1, String paramString2)
+  public static String iU(String paramString1, String paramString2)
   {
     AppMethodBeat.i(76212);
     if (paramString2 == null)
@@ -542,62 +541,46 @@ public final class b
     return paramString1;
   }
   
-  public static String yR(long paramLong)
+  public static String zp(long paramLong)
   {
     AppMethodBeat.i(76210);
-    com.tencent.mm.vfs.i.aYg(xRj);
-    String str = xRj + "thumb" + paramLong + ".jpg";
+    com.tencent.mm.vfs.o.aZI(yhc);
+    String str = yhc + "thumb" + paramLong + ".jpg";
     AppMethodBeat.o(76210);
     return str;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    public static final a xRm;
+    public static final a yhf;
     
     static
     {
-      AppMethodBeat.i(200874);
-      xRm = new a();
-      AppMethodBeat.o(200874);
+      AppMethodBeat.i(207132);
+      yhf = new a();
+      AppMethodBeat.o(207132);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(200873);
-      Object localObject1 = b.xRl;
-      localObject1 = b.dIx().decodeStringSet("media_file_delete_set", (Set)new HashSet());
+      AppMethodBeat.i(207131);
+      Object localObject1 = b.yhe;
+      localObject1 = b.dLO().decodeStringSet("media_file_delete_set", (Set)new HashSet());
       p.g(localObject1, "set");
       Object localObject2 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        com.tencent.mm.vfs.i.deleteFile((String)((Iterator)localObject2).next());
+        com.tencent.mm.vfs.o.deleteFile((String)((Iterator)localObject2).next());
       }
       ((Set)localObject1).clear();
-      localObject2 = b.xRl;
-      b.dIx().encode("media_timing_delete_set", (Set)localObject1);
-      AppMethodBeat.o(200873);
+      localObject2 = b.yhe;
+      b.dLO().encode("media_timing_delete_set", (Set)localObject1);
+      AppMethodBeat.o(207131);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(com.tencent.mm.media.widget.camerarecordview.b.b paramb) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(76178);
-      ad.i("MicroMsg.MediaFileUtil", "deleteDaemonMediaFile");
-      com.tencent.mm.vfs.i.deleteFile(this.xRn.htR);
-      com.tencent.mm.vfs.i.deleteFile(this.xRn.htS);
-      AppMethodBeat.o(76178);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -606,22 +589,22 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(76182);
-      Object localObject = g.ajC();
+      Object localObject = g.ajR();
       p.g(localObject, "MMKernel.storage()");
-      boolean bool = ((e)localObject).ajl().getBoolean(al.a.Ixw, true);
-      ad.i("MicroMsg.MediaFileUtil", "handleDaemonNoNeedRemuxCaptureVideo videoState : " + bool + ' ');
+      boolean bool = ((e)localObject).ajA().getBoolean(am.a.IRU, true);
+      ae.i("MicroMsg.MediaFileUtil", "handleDaemonNoNeedRemuxCaptureVideo videoState : " + bool + ' ');
       if (bool)
       {
-        localObject = d.aqN("mp4");
-        com.tencent.mm.vfs.i.mz(this.xCb.xyx, (String)localObject);
-        com.tencent.mm.sdk.f.b.k((String)localObject, aj.getContext());
+        localObject = d.arS("mp4");
+        com.tencent.mm.vfs.o.mF(this.xRW.xOt, (String)localObject);
+        com.tencent.mm.sdk.f.b.k((String)localObject, ak.getContext());
       }
-      com.tencent.mm.vfs.i.deleteFile(this.xCb.xyw);
+      com.tencent.mm.vfs.o.deleteFile(this.xRW.xOs);
       AppMethodBeat.o(76182);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class i
     implements Runnable
   {
@@ -630,23 +613,23 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(76183);
-      ad.i("MicroMsg.MediaFileUtil", "handleNoNeedRemuxCaptureVideo");
-      Object localObject = g.ajC();
+      ae.i("MicroMsg.MediaFileUtil", "handleNoNeedRemuxCaptureVideo");
+      Object localObject = g.ajR();
       p.g(localObject, "MMKernel.storage()");
-      boolean bool = ((e)localObject).ajl().getBoolean(al.a.Ixw, true);
-      ad.i("MicroMsg.MediaFileUtil", "handleNoNeedRemuxCaptureVideo videoState : " + bool + ' ');
+      boolean bool = ((e)localObject).ajA().getBoolean(am.a.IRU, true);
+      ae.i("MicroMsg.MediaFileUtil", "handleNoNeedRemuxCaptureVideo videoState : " + bool + ' ');
       if (bool)
       {
-        localObject = d.aqN("mp4");
-        com.tencent.mm.vfs.i.mz(this.xCb.xyx, (String)localObject);
-        com.tencent.mm.sdk.f.b.k((String)localObject, aj.getContext());
+        localObject = d.arS("mp4");
+        com.tencent.mm.vfs.o.mF(this.xRW.xOt, (String)localObject);
+        com.tencent.mm.sdk.f.b.k((String)localObject, ak.getContext());
       }
-      com.tencent.mm.vfs.i.deleteFile(this.xCb.xyw);
+      com.tencent.mm.vfs.o.deleteFile(this.xRW.xOs);
       AppMethodBeat.o(76183);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/util/MediaFileUtil$handleRemuxImage$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/util/MediaFileUtil$handleRemuxImage$1$1"})
   static final class j
     implements Runnable
   {
@@ -655,33 +638,33 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(76184);
-      if (!this.xCb.xyu) {
-        com.tencent.mm.vfs.i.deleteFile(this.xCb.xyy);
+      if (!this.xRW.xOq) {
+        com.tencent.mm.vfs.o.deleteFile(this.xRW.xOu);
       }
-      Object localObject = g.ajC();
+      Object localObject = g.ajR();
       p.g(localObject, "MMKernel.storage()");
-      boolean bool = ((e)localObject).ajl().getBoolean(al.a.Ixv, true);
-      ad.i("MicroMsg.MediaFileUtil", "imageState : " + bool + ' ');
+      boolean bool = ((e)localObject).ajA().getBoolean(am.a.IRT, true);
+      ae.i("MicroMsg.MediaFileUtil", "imageState : " + bool + ' ');
       if (!bool)
       {
         AppMethodBeat.o(76184);
         return;
       }
-      if (((paramBoolean1) && (bool)) || ((!paramBoolean1) && (paramRecordConfigProvider.xyv) && (paramBoolean2)))
+      if (((paramBoolean1) && (bool)) || ((!paramBoolean1) && (paramRecordConfigProvider.xOr) && (paramBoolean2)))
       {
-        localObject = d.aqN("jpg");
+        localObject = d.arS("jpg");
         if (!paramBoolean1) {
-          localObject = com.tencent.mm.sdk.f.b.aqN("jpg");
+          localObject = com.tencent.mm.sdk.f.b.arS("jpg");
         }
-        ad.i("MicroMsg.MediaFileUtil", "auto save pic src " + paramRecordConfigProvider.xyz + " dest " + (String)localObject + ' ');
-        com.tencent.mm.vfs.i.mz(paramRecordConfigProvider.xyz, (String)localObject);
-        com.tencent.mm.sdk.f.b.k((String)localObject, aj.getContext());
+        ae.i("MicroMsg.MediaFileUtil", "auto save pic src " + paramRecordConfigProvider.xOv + " dest " + (String)localObject + ' ');
+        com.tencent.mm.vfs.o.mF(paramRecordConfigProvider.xOv, (String)localObject);
+        com.tencent.mm.sdk.f.b.k((String)localObject, ak.getContext());
       }
       AppMethodBeat.o(76184);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/util/MediaFileUtil$handleRemuxVideo$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/util/MediaFileUtil$handleRemuxVideo$1$1"})
   static final class k
     implements Runnable
   {
@@ -690,103 +673,67 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(76185);
-      if (!paramRecordConfigProvider.xyu) {
-        com.tencent.mm.vfs.i.deleteFile(this.xCb.xyw);
+      if (!paramRecordConfigProvider.xOq) {
+        com.tencent.mm.vfs.o.deleteFile(this.xRW.xOs);
       }
-      Object localObject = g.ajC();
+      Object localObject = g.ajR();
       p.g(localObject, "MMKernel.storage()");
-      boolean bool = ((e)localObject).ajl().getBoolean(al.a.Ixw, true);
-      ad.i("MicroMsg.MediaFileUtil", "videoState : " + bool + ' ');
+      boolean bool = ((e)localObject).ajA().getBoolean(am.a.IRU, true);
+      ae.i("MicroMsg.MediaFileUtil", "videoState : " + bool + ' ');
       if (!bool)
       {
         AppMethodBeat.o(76185);
         return;
       }
-      if ((paramBoolean1) || ((!paramBoolean1) && (paramRecordConfigProvider.xyv) && (paramBoolean2)))
+      if ((paramBoolean1) || ((!paramBoolean1) && (paramRecordConfigProvider.xOr) && (paramBoolean2)))
       {
-        localObject = d.aqN("mp4");
+        localObject = d.arS("mp4");
         if (!paramBoolean1) {
-          localObject = com.tencent.mm.sdk.f.b.aqN("mp4");
+          localObject = com.tencent.mm.sdk.f.b.arS("mp4");
         }
-        ad.i("MicroMsg.MediaFileUtil", "auto save video :".concat(String.valueOf(localObject)));
-        com.tencent.mm.vfs.i.mz(this.xCb.xyx, (String)localObject);
-        com.tencent.mm.sdk.f.b.k((String)localObject, aj.getContext());
+        ae.i("MicroMsg.MediaFileUtil", "auto save video :".concat(String.valueOf(localObject)));
+        com.tencent.mm.vfs.o.mF(this.xRW.xOt, (String)localObject);
+        com.tencent.mm.sdk.f.b.k((String)localObject, ak.getContext());
       }
       AppMethodBeat.o(76185);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/util/MediaFileUtil$handleRemuxVideo$3$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/util/MediaFileUtil$handleRemuxVideo$3$1"})
   static final class l
     implements Runnable
   {
-    l(aif paramaif) {}
+    l(aip paramaip) {}
     
     public final void run()
     {
       AppMethodBeat.i(76186);
-      if (!this.xRt.xyu) {
-        com.tencent.mm.vfs.i.deleteFile(this.xRt.xyw);
+      if (!this.yhm.xOq) {
+        com.tencent.mm.vfs.o.deleteFile(this.yhm.xOs);
       }
-      Object localObject = g.ajC();
+      Object localObject = g.ajR();
       p.g(localObject, "MMKernel.storage()");
-      if (!((e)localObject).ajl().getBoolean(al.a.Ixw, true))
+      if (!((e)localObject).ajA().getBoolean(am.a.IRU, true))
       {
         AppMethodBeat.o(76186);
         return;
       }
-      if ((this.xRt.GfH) || ((!this.xRt.GfH) && (this.xRt.xyv) && (this.xRt.BDq)))
+      if ((this.yhm.Gyp) || ((!this.yhm.Gyp) && (this.yhm.xOr) && (this.yhm.BUO)))
       {
-        localObject = d.aqN("mp4");
-        if (!this.xRt.GfH) {
-          localObject = com.tencent.mm.sdk.f.b.aqN("mp4");
+        localObject = d.arS("mp4");
+        if (!this.yhm.Gyp) {
+          localObject = com.tencent.mm.sdk.f.b.arS("mp4");
         }
-        com.tencent.mm.vfs.i.mz(this.xRt.xyx, (String)localObject);
-        com.tencent.mm.sdk.f.b.k((String)localObject, aj.getContext());
+        com.tencent.mm.vfs.o.mF(this.yhm.xOt, (String)localObject);
+        com.tencent.mm.sdk.f.b.k((String)localObject, ak.getContext());
       }
       AppMethodBeat.o(76186);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class m
-    implements Runnable
-  {
-    m(CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(76187);
-      String str = com.tencent.mm.sdk.f.b.aqN("mp4");
-      com.tencent.mm.vfs.i.mz(this.xuc.getVideoPath(), str);
-      com.tencent.mm.sdk.f.b.k(str, aj.getContext());
-      AppMethodBeat.o(76187);
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
-  static final class n
-    implements Runnable
-  {
-    n(com.tencent.mm.media.widget.camerarecordview.b.b paramb) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(200877);
-      Iterator localIterator = ((Iterable)this.xRu.htX).iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        ad.i("MicroMsg.MediaFileUtil", "delete file:".concat(String.valueOf(str)));
-        com.tencent.mm.vfs.i.deleteFile(str);
-      }
-      AppMethodBeat.o(200877);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.b
  * JD-Core Version:    0.7.0.1
  */

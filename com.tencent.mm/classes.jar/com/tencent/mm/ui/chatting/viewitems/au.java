@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.g;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -16,18 +16,18 @@ import com.tencent.neattextview.textview.view.NeatTextView;
 public final class au
   extends c
 {
-  private av KfH;
-  private as KfI;
-  private aw KfJ;
-  private bf KfK;
+  private av KCa;
+  private as KCb;
+  private aw KCc;
+  private bf KCd;
   
   public au()
   {
     AppMethodBeat.i(37376);
-    this.KfH = new av();
-    this.KfI = new as();
-    this.KfJ = new aw();
-    this.KfK = new bf();
+    this.KCa = new av();
+    this.KCb = new as();
+    this.KCc = new aw();
+    this.KCd = new bf();
     AppMethodBeat.o(37376);
   }
   
@@ -44,85 +44,85 @@ public final class au
     {
       localView = paramLayoutInflater.inflate(2131493474, null);
       paramLayoutInflater = new b();
-      paramLayoutInflater.tPw = localView;
-      paramLayoutInflater.fTP = ((TextView)localView.findViewById(2131298178));
-      paramLayoutInflater.JYr = localView.findViewById(2131308258);
-      paramLayoutInflater.KfL = ((MMNeat7extView)localView.findViewById(2131298073));
-      paramLayoutInflater.KfL.setOnTouchListener(new g(paramLayoutInflater.KfL, new n(paramLayoutInflater.KfL.getContext())));
+      paramLayoutInflater.uan = localView;
+      paramLayoutInflater.fVV = ((TextView)localView.findViewById(2131298178));
+      paramLayoutInflater.KuK = localView.findViewById(2131308258);
+      paramLayoutInflater.KCe = ((MMNeat7extView)localView.findViewById(2131298073));
+      paramLayoutInflater.KCe.setOnTouchListener(new g(paramLayoutInflater.KCe, new n(paramLayoutInflater.KCe.getContext())));
       localView.setTag(paramLayoutInflater);
     }
     AppMethodBeat.o(37377);
     return localView;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bu parambu, String paramString)
+  public final void a(c.a parama, int paramInt, a parama1, bv parambv, String paramString)
   {
     AppMethodBeat.i(37378);
-    if (parambu.getType() == 10002) {
-      paramString = this.KfI;
+    if (parambv.getType() == 10002) {
+      paramString = this.KCb;
     }
     for (;;)
     {
-      paramString.b(parama, paramInt, parama1, parambu);
+      paramString.b(parama, paramInt, parama1, parambv);
       AppMethodBeat.o(37378);
       return;
-      if (parambu.getType() == 570425393) {
-        paramString = this.KfJ;
-      } else if (parambu.getType() == 603979825) {
-        paramString = this.KfK;
+      if (parambv.getType() == 570425393) {
+        paramString = this.KCc;
+      } else if (parambv.getType() == 603979825) {
+        paramString = this.KCd;
       } else {
-        paramString = this.KfH;
+        paramString = this.KCa;
       }
     }
   }
   
-  public final boolean a(MenuItem paramMenuItem, a parama, bu parambu)
+  public final boolean a(MenuItem paramMenuItem, a parama, bv parambv)
   {
     return false;
   }
   
-  public final boolean a(l paraml, View paramView, bu parambu)
+  public final boolean a(l paraml, View paramView, bv parambv)
   {
     return false;
   }
   
-  public final boolean b(View paramView, a parama, bu parambu)
+  public final boolean b(View paramView, a parama, bv parambv)
   {
     return false;
   }
   
-  public final boolean bi(int paramInt, boolean paramBoolean)
+  public final boolean br(int paramInt, boolean paramBoolean)
   {
     return (paramInt == 10000) || (paramInt == 10002) || (paramInt == 570425393) || (paramInt == 64) || (paramInt == 603979825);
   }
   
-  protected final boolean fHg()
+  protected final boolean fLy()
   {
     return false;
   }
   
-  public final boolean fHh()
+  public final boolean fLz()
   {
     return false;
   }
   
   static abstract interface a
   {
-    public abstract void b(c.a parama, int paramInt, a parama1, bu parambu);
+    public abstract void b(c.a parama, int paramInt, a parama1, bv parambv);
   }
   
   final class b
     extends c.a
   {
-    NeatTextView KfL;
-    View tPw;
+    NeatTextView KCe;
+    View uan;
     
     b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.au
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,17 @@ import d.g.a.b;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
 final class CropLayout$l
   extends q
   implements b<Matrix, Boolean>
 {
-  public static final l KVx;
+  public static final l LrV;
   
   static
   {
     AppMethodBeat.i(164393);
-    KVx = new l();
+    LrV = new l();
     AppMethodBeat.o(164393);
   }
   

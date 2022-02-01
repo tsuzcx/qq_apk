@@ -16,19 +16,19 @@ public final class s
   extends r
   implements q
 {
-  public final Method NaE;
+  public final Method NxK;
   
   public s(Method paramMethod)
   {
     AppMethodBeat.i(57490);
-    this.NaE = paramMethod;
+    this.NxK = paramMethod;
     AppMethodBeat.o(57490);
   }
   
-  public final List<x> gip()
+  public final List<x> gmR()
   {
     AppMethodBeat.i(57489);
-    Object localObject = this.NaE.getTypeParameters();
+    Object localObject = this.NxK.getTypeParameters();
     p.g(localObject, "member.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
@@ -43,26 +43,26 @@ public final class s
     return localObject;
   }
   
-  public final List<y> gis()
+  public final List<y> gmU()
   {
     AppMethodBeat.i(57486);
-    Object localObject = this.NaE.getGenericParameterTypes();
+    Object localObject = this.NxK.getGenericParameterTypes();
     p.g(localObject, "member.genericParameterTypes");
-    Annotation[][] arrayOfAnnotation = this.NaE.getParameterAnnotations();
+    Annotation[][] arrayOfAnnotation = this.NxK.getParameterAnnotations();
     p.g(arrayOfAnnotation, "member.parameterAnnotations");
-    localObject = a((Type[])localObject, arrayOfAnnotation, this.NaE.isVarArgs());
+    localObject = a((Type[])localObject, arrayOfAnnotation, this.NxK.isVarArgs());
     AppMethodBeat.o(57486);
     return localObject;
   }
   
-  public final b gla()
+  public final b gpC()
   {
     Object localObject1 = null;
     AppMethodBeat.i(57488);
-    Object localObject2 = this.NaE.getDefaultValue();
+    Object localObject2 = this.NxK.getDefaultValue();
     if (localObject2 != null)
     {
-      localObject1 = d.Nap;
+      localObject1 = d.Nxv;
       localObject1 = d.a.a(localObject2, null);
     }
     localObject1 = (b)localObject1;
@@ -70,10 +70,10 @@ public final class s
     return localObject1;
   }
   
-  public final boolean glb()
+  public final boolean gpD()
   {
     AppMethodBeat.i(57491);
-    if (gla() != null)
+    if (gpC() != null)
     {
       AppMethodBeat.o(57491);
       return true;
@@ -84,7 +84,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.s
  * JD-Core Version:    0.7.0.1
  */

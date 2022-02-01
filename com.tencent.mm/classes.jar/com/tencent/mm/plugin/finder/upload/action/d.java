@@ -6,57 +6,57 @@ import com.tencent.mm.loader.g.j;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "plugin-finder_release"})
 public final class d
   extends c
 {
-  public static final a sJX;
-  boolean sJV;
-  final e sJW;
+  public static final a sVk;
+  boolean sVi;
+  final e sVj;
   
   static
   {
-    AppMethodBeat.i(204371);
-    sJX = new a((byte)0);
-    AppMethodBeat.o(204371);
+    AppMethodBeat.i(204989);
+    sVk = new a((byte)0);
+    AppMethodBeat.o(204989);
   }
   
   public d(e parame)
   {
-    AppMethodBeat.i(204370);
-    this.sJW = parame;
-    AppMethodBeat.o(204370);
+    AppMethodBeat.i(204988);
+    this.sVj = parame;
+    AppMethodBeat.o(204988);
   }
   
-  public final String aeK()
+  public final String aeW()
   {
-    AppMethodBeat.i(204369);
-    String str = this.sJW.aeK();
-    AppMethodBeat.o(204369);
+    AppMethodBeat.i(204987);
+    String str = this.sVj.aeW();
+    AppMethodBeat.o(204987);
     return str;
   }
   
   public final void call()
   {
-    AppMethodBeat.i(204368);
-    this.sJW.a((h.b)new b(this));
-    AppMethodBeat.o(204368);
+    AppMethodBeat.i(204986);
+    this.sVj.a((h.b)new b(this));
+    AppMethodBeat.o(204986);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/action/FavActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/upload/action/FavActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
   public static final class b
     implements h.b
   {
     public final void a(j paramj, boolean paramBoolean)
     {
-      AppMethodBeat.i(204367);
+      AppMethodBeat.i(204985);
       p.h(paramj, "status");
-      this.sJY.sJV = paramBoolean;
-      this.sJY.a(paramj);
-      AppMethodBeat.o(204367);
+      this.sVl.sVi = paramBoolean;
+      this.sVl.a(paramj);
+      AppMethodBeat.o(204985);
     }
   }
 }

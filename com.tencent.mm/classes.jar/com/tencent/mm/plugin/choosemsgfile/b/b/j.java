@@ -5,30 +5,30 @@ import android.view.View;
 public final class j
   extends k
 {
-  public String fVf;
+  public String fXl;
   public String fileName;
   public int fileSize;
   public int iconRes;
-  public boolean oSk;
-  public boolean oSl;
-  public boolean oSm;
-  public boolean oSn;
-  public long oSo;
+  public boolean oYM;
+  public boolean oYN;
+  public boolean oYO;
+  public boolean oYP;
+  public long oYQ;
   public String username;
   
   public final void a(View paramView, a parama) {}
   
-  public final String bZn()
+  public final String caC()
   {
-    return this.fVf;
+    return this.fXl;
   }
   
-  public final int bZo()
+  public final int caD()
   {
     return this.fileSize;
   }
   
-  public final int bZv()
+  public final int caK()
   {
     return this.iconRes;
   }

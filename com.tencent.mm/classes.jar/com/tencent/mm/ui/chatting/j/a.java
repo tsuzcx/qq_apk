@@ -3,46 +3,46 @@ package com.tencent.mm.ui.chatting.j;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.modelsimple.v;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.modelsimple.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
 public final class a
-  extends com.tencent.mm.ba.a
+  extends com.tencent.mm.az.a
 {
-  public String JVx;
-  public long JVy = 0L;
+  public String KrP;
+  public long KrQ = 0L;
   
-  public a(Map<String, String> paramMap, bu parambu)
+  public a(Map<String, String> paramMap, bv parambv)
   {
-    super(paramMap, parambu);
+    super(paramMap, parambv);
   }
   
-  public final boolean aAc()
+  public final boolean aAs()
   {
     AppMethodBeat.i(36444);
     if (this.values == null)
     {
-      ad.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
+      ae.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
       AppMethodBeat.o(36444);
       return false;
     }
     if (this.values.containsKey(".sysmsg.invokeMessage.preContent")) {
-      this.JVx = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
+      this.KrP = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
     }
     if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
-      this.JVy = bt.aRf((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
+      this.KrQ = bu.aSC((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
     }
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.values.keySet().iterator();
@@ -60,12 +60,12 @@ public final class a
       }
       else
       {
-        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (bt.isNullOrNil((String)this.values.get(str)))) {
+        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (bu.isNullOrNil((String)this.values.get(str)))) {
           break label356;
         }
         str = (String)this.values.get(str);
         localStringBuilder.append(str);
-        this.ihQ.add(str);
+        this.ikJ.add(str);
         i = str.length();
       }
     }
@@ -73,20 +73,20 @@ public final class a
     for (;;)
     {
       break;
-      this.ihR.addFirst(Integer.valueOf(localStringBuilder.length() - i));
-      this.ihS.add(Integer.valueOf(localStringBuilder.length()));
-      this.ihO = localStringBuilder.toString();
-      if ((cf.aCL() - this.JVy >= 300000L) && (!bt.isNullOrNil(this.JVx))) {
+      this.ikK.addFirst(Integer.valueOf(localStringBuilder.length() - i));
+      this.ikL.add(Integer.valueOf(localStringBuilder.length()));
+      this.ikH = localStringBuilder.toString();
+      if ((ch.aDb() - this.KrQ >= 300000L) && (!bu.isNullOrNil(this.KrP))) {
         b.c(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(36443);
-            a.this.dBd.setType(10002);
-            v.a(aj.getContext().getString(2131757292), "", a.this.dBd, "");
-            ba.aBQ();
-            c.azs().a(a.this.dBd.field_msgId, a.this.dBd);
-            ad.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.dBd.field_msgId) });
+            a.this.dCi.setType(10002);
+            w.a(ak.getContext().getString(2131757292), "", a.this.dCi, "");
+            bc.aCg();
+            c.azI().a(a.this.dCi.field_msgId, a.this.dCi);
+            ae.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.dCi.field_msgId) });
             AppMethodBeat.o(36443);
           }
         }, "[checkExpired]");

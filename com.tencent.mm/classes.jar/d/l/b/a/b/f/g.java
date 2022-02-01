@@ -6,22 +6,22 @@ import d.n.k;
 
 public final class g
 {
-  private static final k Nqq;
-  public static final g Nqr;
+  private static final k NNw;
+  public static final g NNx;
   
   static
   {
     AppMethodBeat.i(59333);
-    Nqr = new g();
-    Nqq = new k("[^\\p{L}\\p{Digit}]");
+    NNx = new g();
+    NNw = new k("[^\\p{L}\\p{Digit}]");
     AppMethodBeat.o(59333);
   }
   
-  public static final String bcI(String paramString)
+  public static final String bem(String paramString)
   {
     AppMethodBeat.i(59332);
     p.h(paramString, "name");
-    paramString = Nqq.e((CharSequence)paramString, "_");
+    paramString = NNw.e((CharSequence)paramString, "_");
     AppMethodBeat.o(59332);
     return paramString;
   }

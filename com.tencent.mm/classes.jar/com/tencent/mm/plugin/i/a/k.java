@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.i.a;
 import com.tencent.mm.kernel.c.a;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedReproduce;", "Lcom/tencent/mm/kernel/service/IService;", "modifyFeedReproduce", "", "ifOpen", "", "finder-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedReproduce;", "Lcom/tencent/mm/kernel/service/IService;", "modifyFeedReproduce", "", "ifOpen", "", "finder-sdk_release"})
 public abstract interface k
   extends a
 {

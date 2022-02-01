@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wenote.model.a;
 public final class b
   extends l
 {
-  public boolean yRL = false;
+  public boolean zhV = false;
   
   public final int getType()
   {

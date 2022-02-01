@@ -57,7 +57,7 @@ public class SupportRequestManagerFragment
     {
       paramContext = getActivity();
       pO();
-      this.aMR = c.ad(paramContext).aCq.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
+      this.aMR = c.ae(paramContext).aCq.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
       if (!equals(this.aMR)) {
         this.aMR.aMD.add(this);
       }

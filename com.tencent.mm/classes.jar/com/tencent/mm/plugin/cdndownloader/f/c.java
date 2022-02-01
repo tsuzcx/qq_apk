@@ -21,7 +21,7 @@ public final class c
     super(parame, a.info, "CdnDownloadInfo", null);
   }
   
-  public final boolean Zz(String paramString)
+  public final boolean aaq(String paramString)
   {
     AppMethodBeat.i(120814);
     boolean bool = execSQL("CdnDownloadInfo", String.format("delete from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }));

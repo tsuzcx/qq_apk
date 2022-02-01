@@ -6,13 +6,13 @@ import d.l.b.a.b.b.a.g;
 
 final class c<T>
 {
-  final g NgW;
+  final g NEb;
   final T result;
   
   public c(T paramT, g paramg)
   {
     this.result = paramT;
-    this.NgW = paramg;
+    this.NEb = paramg;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,7 +23,7 @@ final class c<T>
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!p.i(this.result, paramObject.result)) || (!p.i(this.NgW, paramObject.NgW))) {}
+        if ((!p.i(this.result, paramObject.result)) || (!p.i(this.NEb, paramObject.NEb))) {}
       }
     }
     else
@@ -43,7 +43,7 @@ final class c<T>
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.NgW;
+      localObject = this.NEb;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -55,7 +55,7 @@ final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(58021);
-    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.NgW + ")";
+    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.NEb + ")";
     AppMethodBeat.o(58021);
     return str;
   }

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ public class SetShadowActionArg
 {
   public static final Parcelable.Creator<SetShadowActionArg> CREATOR;
   public int color;
-  public float jTC;
+  public float jWT;
   public float x;
   public float y;
   
@@ -55,7 +55,7 @@ public class SetShadowActionArg
       return false;
     }
     paramObject = (SetShadowActionArg)paramObject;
-    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.jTC, this.jTC) == 0) && (this.color == paramObject.color))
+    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.jWT, this.jWT) == 0) && (this.color == paramObject.color))
     {
       AppMethodBeat.o(145228);
       return true;
@@ -70,7 +70,7 @@ public class SetShadowActionArg
     super.h(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
-    this.jTC = paramParcel.readFloat();
+    this.jWT = paramParcel.readFloat();
     this.color = paramParcel.readInt();
     AppMethodBeat.o(145225);
   }
@@ -78,7 +78,7 @@ public class SetShadowActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145229);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.jTC), Integer.valueOf(this.color) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.jWT), Integer.valueOf(this.color) });
     AppMethodBeat.o(145229);
     return i;
   }
@@ -91,14 +91,14 @@ public class SetShadowActionArg
     paramJSONObject.length();
     this.x = g.f(paramJSONObject, 0);
     this.y = g.f(paramJSONObject, 1);
-    this.jTC = g.f(paramJSONObject, 2);
+    this.jWT = g.f(paramJSONObject, 2);
     paramJSONObject = paramJSONObject.optJSONArray(3);
     if ((paramJSONObject == null) || (paramJSONObject.length() < 4))
     {
       AppMethodBeat.o(145227);
       return;
     }
-    this.color = g.q(paramJSONObject);
+    this.color = g.r(paramJSONObject);
     AppMethodBeat.o(145227);
   }
   
@@ -108,7 +108,7 @@ public class SetShadowActionArg
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
-    paramParcel.writeFloat(this.jTC);
+    paramParcel.writeFloat(this.jWT);
     paramParcel.writeInt(this.color);
     AppMethodBeat.o(145226);
   }

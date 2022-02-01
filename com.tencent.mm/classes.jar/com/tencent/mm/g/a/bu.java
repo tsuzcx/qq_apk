@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bu
   extends b
 {
-  public a dmP;
+  public a dnR;
   
   public bu()
   {
@@ -17,8 +17,8 @@ public final class bu
   private bu(byte paramByte)
   {
     AppMethodBeat.i(19793);
-    this.dmP = new a();
-    this.IbR = false;
+    this.dnR = new a();
+    this.IvZ = false;
     this.callback = null;
     AppMethodBeat.o(19793);
   }
@@ -26,13 +26,13 @@ public final class bu
   public static final class a
   {
     public Context context;
-    public String[] djJ;
+    public String[] dkL;
     public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.bu
  * JD-Core Version:    0.7.0.1
  */

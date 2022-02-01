@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.modelsimple.t;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
 public final class f
   extends SecurityImage.b
 {
-  private static f jlG = null;
+  private static f joA = null;
   public String account = null;
-  public String jcu = null;
-  public byte[] jcv = null;
-  public String jcw = null;
-  public String jcx = null;
-  public String jlE = null;
-  public int jlF = 0;
+  public String jfn = null;
+  public byte[] jfo = null;
+  public String jfp = null;
+  public String jfq = null;
+  public String joy = null;
+  public int joz = 0;
   
   public static void a(f paramf)
   {
-    jlG = paramf;
+    joA = paramf;
   }
   
-  public static String aTY()
+  public static String aUx()
   {
-    if (jlG != null) {
-      return jlG.account;
+    if (joA != null) {
+      return joA.account;
     }
     return null;
   }
   
-  public static String aTZ()
+  public static String aUy()
   {
-    if (jlG != null) {
-      return jlG.jcu;
+    if (joA != null) {
+      return joA.jfn;
     }
     return null;
   }
   
-  public final void aSv()
+  public final void aSU()
   {
     AppMethodBeat.i(128184);
-    if (!bt.isNullOrNil(this.jlE))
+    if (!bu.isNullOrNil(this.joy))
     {
-      locals = new s(this.account, this.jlE, this.Jif.getSecCodeType(), "", "", "", 0, "", false, true);
-      g.aiU().a(locals, 0);
+      localt = new t(this.account, this.joy, this.JCQ.getSecCodeType(), "", "", "", 0, "", false, true);
+      g.ajj().a(localt, 0);
       AppMethodBeat.o(128184);
       return;
     }
-    s locals = new s(this.account, this.jcu, this.Jif.getSecCodeType(), "", "", "", 0, "", false, false);
-    g.aiU().a(locals, 0);
+    t localt = new t(this.account, this.jfn, this.JCQ.getSecCodeType(), "", "", "", 0, "", false, false);
+    g.ajj().a(localt, 0);
     AppMethodBeat.o(128184);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.f
  * JD-Core Version:    0.7.0.1
  */

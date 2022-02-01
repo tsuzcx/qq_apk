@@ -16,47 +16,47 @@ import java.util.Set;
 
 public final class m
 {
-  private static final Set<f> MSA;
-  public static final m MSB;
-  private static final Set<f> MSx;
-  private static final HashMap<a, a> MSy;
-  private static final HashMap<a, a> MSz;
+  private static final Set<f> NpC;
+  private static final HashMap<a, a> NpD;
+  private static final HashMap<a, a> NpE;
+  private static final Set<f> NpF;
+  public static final m NpG;
   
   static
   {
     int j = 0;
     AppMethodBeat.i(56704);
-    MSB = new m();
+    NpG = new m();
     l[] arrayOfl = l.values();
     Object localObject = (Collection)new ArrayList(arrayOfl.length);
     int k = arrayOfl.length;
     int i = 0;
     while (i < k)
     {
-      ((Collection)localObject).add(arrayOfl[i].MRQ);
+      ((Collection)localObject).add(arrayOfl[i].NoV);
       i += 1;
     }
-    MSx = j.n((Iterable)localObject);
-    MSy = new HashMap();
-    MSz = new HashMap();
+    NpC = j.n((Iterable)localObject);
+    NpD = new HashMap();
+    NpE = new HashMap();
     arrayOfl = l.values();
     localObject = (Collection)new LinkedHashSet();
     k = arrayOfl.length;
     i = 0;
     while (i < k)
     {
-      ((Collection)localObject).add(arrayOfl[i].MSv.grb());
+      ((Collection)localObject).add(arrayOfl[i].NpA.gvD());
       i += 1;
     }
-    MSA = (Set)localObject;
+    NpF = (Set)localObject;
     arrayOfl = l.values();
     k = arrayOfl.length;
     i = j;
     while (i < k)
     {
       localObject = arrayOfl[i];
-      ((Map)MSy).put(((l)localObject).MSv, ((l)localObject).MSw);
-      ((Map)MSz).put(((l)localObject).MSw, ((l)localObject).MSv);
+      ((Map)NpD).put(((l)localObject).NpA, ((l)localObject).NpB);
+      ((Map)NpE).put(((l)localObject).NpB, ((l)localObject).NpA);
       i += 1;
     }
     AppMethodBeat.o(56704);
@@ -71,7 +71,7 @@ public final class m
       AppMethodBeat.o(56703);
       return false;
     }
-    paramab = paramab.gsZ().ghO();
+    paramab = paramab.gxB().gmq();
     if (paramab == null)
     {
       AppMethodBeat.o(56703);
@@ -80,8 +80,8 @@ public final class m
     p.g(paramab, "type.constructor.declara…escriptor ?: return false");
     paramab = (d.l.b.a.b.b.l)paramab;
     p.h(paramab, "descriptor");
-    d.l.b.a.b.b.l locall = paramab.ghs();
-    if (((locall instanceof d.l.b.a.b.b.ab)) && (p.i(((d.l.b.a.b.b.ab)locall).gjg(), g.MPQ)) && (MSx.contains(paramab.giD())))
+    d.l.b.a.b.b.l locall = paramab.glU();
+    if (((locall instanceof d.l.b.a.b.b.ab)) && (p.i(((d.l.b.a.b.b.ab)locall).gnI(), g.NmV)) && (NpC.contains(paramab.gnf())))
     {
       AppMethodBeat.o(56703);
       return true;
@@ -94,7 +94,7 @@ public final class m
   {
     AppMethodBeat.i(56702);
     p.h(parama, "arrayClassId");
-    parama = (a)MSy.get(parama);
+    parama = (a)NpD.get(parama);
     AppMethodBeat.o(56702);
     return parama;
   }
@@ -103,14 +103,14 @@ public final class m
   {
     AppMethodBeat.i(56701);
     p.h(paramf, "name");
-    boolean bool = MSA.contains(paramf);
+    boolean bool = NpF.contains(paramf);
     AppMethodBeat.o(56701);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.m
  * JD-Core Version:    0.7.0.1
  */

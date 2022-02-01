@@ -10,53 +10,53 @@ import java.util.Map;
 public final class b
   implements com.tencent.thumbplayer.a.a.a, a.a
 {
-  private Map<Integer, d> EDW;
-  private FileDescriptor LZZ;
+  private Map<Integer, d> EWs;
+  private FileDescriptor MwU;
   private String mUrl;
   
   public b(FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(191867);
-    this.EDW = new HashMap();
-    this.LZZ = paramFileDescriptor;
-    AppMethodBeat.o(191867);
+    AppMethodBeat.i(194545);
+    this.EWs = new HashMap();
+    this.MwU = paramFileDescriptor;
+    AppMethodBeat.o(194545);
   }
   
   public b(String paramString)
   {
-    AppMethodBeat.i(191866);
-    this.EDW = new HashMap();
+    AppMethodBeat.i(194544);
+    this.EWs = new HashMap();
     this.mUrl = paramString;
-    AppMethodBeat.o(191866);
+    AppMethodBeat.o(194544);
   }
   
   public final void a(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, d paramd)
   {
-    AppMethodBeat.i(191868);
-    int i = a.fWK().a(this.mUrl, this.LZZ, paramLong, paramTPImageGeneratorParams.width, paramTPImageGeneratorParams.height, this);
-    this.EDW.put(Integer.valueOf(i), paramd);
-    AppMethodBeat.o(191868);
+    AppMethodBeat.i(194546);
+    int i = a.gbj().a(this.mUrl, this.MwU, paramLong, paramTPImageGeneratorParams.width, paramTPImageGeneratorParams.height, this);
+    this.EWs.put(Integer.valueOf(i), paramd);
+    AppMethodBeat.o(194546);
   }
   
-  public final void ahj(int paramInt)
+  public final void ahS(int paramInt)
   {
-    AppMethodBeat.i(191870);
-    this.EDW.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(191870);
+    AppMethodBeat.i(194548);
+    this.EWs.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(194548);
   }
   
-  public final void ahk(int paramInt)
+  public final void ahT(int paramInt)
   {
-    AppMethodBeat.i(191871);
-    this.EDW.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(191871);
+    AppMethodBeat.i(194549);
+    this.EWs.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(194549);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(191869);
-    this.EDW.clear();
-    AppMethodBeat.o(191869);
+    AppMethodBeat.i(194547);
+    this.EWs.clear();
+    AppMethodBeat.o(194547);
   }
 }
 

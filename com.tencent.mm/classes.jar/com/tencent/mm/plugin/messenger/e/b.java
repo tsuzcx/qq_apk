@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.messenger.e;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
+import com.tencent.mm.ak.e.a;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.d.e;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.u;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import java.util.Map;
 
 public final class b
@@ -21,46 +21,46 @@ public final class b
 {
   public final void b(Map<String, String> paramMap, e.a parama)
   {
-    AppMethodBeat.i(211870);
-    Object localObject = parama.gqE;
-    parama = z.a(((cv)localObject).Fvi);
-    localObject = ((l)g.ab(l.class)).dlK().aI(parama, ((cv)localObject).xbt);
+    AppMethodBeat.i(218179);
+    Object localObject = parama.gte;
+    parama = z.a(((cv)localObject).FNG);
+    localObject = ((l)g.ab(l.class)).doJ().aJ(parama, ((cv)localObject).xrk);
     String str = m(paramMap, "link_history");
-    if (bt.isNullOrNil(str))
+    if (bu.isNullOrNil(str))
     {
-      ad.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp head(LINK_TYPE_HISTORY) is null.(%s %s)", new Object[] { parama, Long.valueOf(((ei)localObject).field_msgSvrId) });
-      AppMethodBeat.o(211870);
+      ae.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp head(LINK_TYPE_HISTORY) is null.(%s %s)", new Object[] { parama, Long.valueOf(((ei)localObject).field_msgSvrId) });
+      AppMethodBeat.o(218179);
       return;
     }
-    ((u)g.ab(u.class)).a(((ei)localObject).field_msgId, paramMap, str);
-    paramMap = bt.bI((String)paramMap.get(str + ".historyid"), "");
-    ((bu)localObject).tU(paramMap);
-    ((l)g.ab(l.class)).dlK().a(((ei)localObject).field_msgId, (bu)localObject);
-    ((u)g.ab(u.class)).cq(paramMap, ((ei)localObject).field_msgId);
-    ad.i("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp msgId:%s historyId:%s", new Object[] { Long.valueOf(((ei)localObject).field_msgId), paramMap });
-    AppMethodBeat.o(211870);
+    ((v)g.ab(v.class)).a(((ei)localObject).field_msgId, paramMap, str);
+    paramMap = bu.bI((String)paramMap.get(str + ".historyid"), "");
+    ((bv)localObject).up(paramMap);
+    ((l)g.ab(l.class)).doJ().a(((ei)localObject).field_msgId, (bv)localObject);
+    ((v)g.ab(v.class)).aA(paramMap, ((ei)localObject).field_msgId);
+    ae.i("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp msgId:%s historyId:%s", new Object[] { Long.valueOf(((ei)localObject).field_msgId), paramMap });
+    AppMethodBeat.o(218179);
   }
   
   public final void c(String paramString, Map<String, String> paramMap, Bundle paramBundle)
   {
-    AppMethodBeat.i(211871);
-    if (bt.isNullOrNil(m(paramMap, "link_history")))
+    AppMethodBeat.i(218180);
+    if (bu.isNullOrNil(m(paramMap, "link_history")))
     {
-      ad.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onClickLinkImp head is null.");
-      AppMethodBeat.o(211871);
+      ae.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onClickLinkImp head is null.");
+      AppMethodBeat.o(218180);
       return;
     }
-    AppMethodBeat.o(211871);
+    AppMethodBeat.o(218180);
   }
   
-  public final String dmg()
+  public final String dpf()
   {
     return "tmpl_type_profile";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.e.b
  * JD-Core Version:    0.7.0.1
  */

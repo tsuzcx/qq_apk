@@ -8,21 +8,21 @@ public abstract class eq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEC;
-  private static final int eFp = "username".hashCode();
-  private static final int eKP;
-  private static final int eOW;
-  private static final int ePc = "encryptUsername".hashCode();
-  private static final int fnp = "oldUsername".hashCode();
-  private static final int fnq;
-  private static final int fnr;
-  private static final int fns = "seq".hashCode();
+  private static final int eGY = "username".hashCode();
+  private static final int eGl;
+  private static final int eMy;
+  private static final int eQH;
+  private static final int eQN = "encryptUsername".hashCode();
+  private static final int fpp = "oldUsername".hashCode();
+  private static final int fpq;
+  private static final int fpr;
+  private static final int fpt = "seq".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEA = true;
-  private boolean eFm = true;
-  private boolean eKL = true;
-  private boolean eOE = true;
-  private boolean eOK = true;
+  private boolean eGV = true;
+  private boolean eGj = true;
+  private boolean eMu = true;
+  private boolean eQp = true;
+  private boolean eQv = true;
   public int field_addState;
   public String field_encryptUsername;
   public String field_nickname;
@@ -32,18 +32,18 @@ public abstract class eq
   public int field_showHead;
   public String field_ticket;
   public String field_username;
-  private boolean fnl = true;
-  private boolean fnm = true;
-  private boolean fnn = true;
-  private boolean fno = true;
+  private boolean fpl = true;
+  private boolean fpm = true;
+  private boolean fpn = true;
+  private boolean fpo = true;
   
   static
   {
-    eEC = "ticket".hashCode();
-    eKP = "nickname".hashCode();
-    fnq = "addState".hashCode();
-    eOW = "showHead".hashCode();
-    fnr = "pinyinName".hashCode();
+    eGl = "ticket".hashCode();
+    eMy = "nickname".hashCode();
+    fpq = "addState".hashCode();
+    eQH = "showHead".hashCode();
+    fpr = "pinyinName".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -59,7 +59,7 @@ public abstract class eq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ePc != k) {
+      if (eQN != k) {
         break label60;
       }
       this.field_encryptUsername = paramCursor.getString(i);
@@ -70,21 +70,21 @@ public abstract class eq
       break label20;
       break;
       label60:
-      if (fnp == k) {
+      if (fpp == k) {
         this.field_oldUsername = paramCursor.getString(i);
-      } else if (eEC == k) {
+      } else if (eGl == k) {
         this.field_ticket = paramCursor.getString(i);
-      } else if (eKP == k) {
+      } else if (eMy == k) {
         this.field_nickname = paramCursor.getString(i);
-      } else if (fnq == k) {
+      } else if (fpq == k) {
         this.field_addState = paramCursor.getInt(i);
-      } else if (eOW == k) {
+      } else if (eQH == k) {
         this.field_showHead = paramCursor.getInt(i);
-      } else if (fnr == k) {
+      } else if (fpr == k) {
         this.field_pinyinName = paramCursor.getString(i);
-      } else if (eFp == k) {
+      } else if (eGY == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (fns == k) {
+      } else if (fpt == k) {
         this.field_seq = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -95,31 +95,31 @@ public abstract class eq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eOK) {
+    if (this.eQv) {
       localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.fnl) {
+    if (this.fpl) {
       localContentValues.put("oldUsername", this.field_oldUsername);
     }
-    if (this.eEA) {
+    if (this.eGj) {
       localContentValues.put("ticket", this.field_ticket);
     }
-    if (this.eKL) {
+    if (this.eMu) {
       localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.fnm) {
+    if (this.fpm) {
       localContentValues.put("addState", Integer.valueOf(this.field_addState));
     }
-    if (this.eOE) {
+    if (this.eQp) {
       localContentValues.put("showHead", Integer.valueOf(this.field_showHead));
     }
-    if (this.fnn) {
+    if (this.fpn) {
       localContentValues.put("pinyinName", this.field_pinyinName);
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.fno) {
+    if (this.fpo) {
       localContentValues.put("seq", Integer.valueOf(this.field_seq));
     }
     if (this.systemRowid > 0L) {
@@ -130,7 +130,7 @@ public abstract class eq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.eq
  * JD-Core Version:    0.7.0.1
  */

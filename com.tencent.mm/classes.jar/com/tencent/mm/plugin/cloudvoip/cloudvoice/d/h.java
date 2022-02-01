@@ -10,7 +10,7 @@ public final class h
     super(640, 480);
   }
   
-  public final boolean bZV()
+  public final boolean cbk()
   {
     return true;
   }

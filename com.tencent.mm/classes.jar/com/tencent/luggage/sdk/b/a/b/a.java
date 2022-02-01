@@ -3,99 +3,101 @@ package com.tencent.luggage.sdk.b.a.b;
 import android.content.Context;
 import android.content.res.Configuration;
 import com.tencent.luggage.sdk.b.a.a.a;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.bs;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.luggage.sdk.b.a.c;
+import com.tencent.luggage.sdk.d.d;
+import com.tencent.mm.plugin.appbrand.page.ab;
+import com.tencent.mm.plugin.appbrand.page.br;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
-public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
+public abstract class a<PAGE extends c>
   extends a.a<PAGE>
-  implements ac
+  implements ab
 {
   public a(PAGE paramPAGE)
   {
     super(paramPAGE);
   }
   
-  public void DE()
+  public void DH()
   {
-    Iterator localIterator = Em().iterator();
+    Iterator localIterator = Ep().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.b.b)) {
-        ((com.tencent.mm.plugin.appbrand.page.b.b)localObject).onForeground();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onForeground();
       }
     }
   }
   
-  public void DF()
+  public void DI()
   {
-    Iterator localIterator = Em().iterator();
+    Iterator localIterator = Ep().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.b.b)) {
-        ((com.tencent.mm.plugin.appbrand.page.b.b)localObject).onBackground();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onBackground();
       }
     }
   }
   
-  public com.tencent.luggage.sdk.d.c En()
+  public d Eq()
   {
-    com.tencent.luggage.sdk.b.a.c localc = (com.tencent.luggage.sdk.b.a.c)El();
+    c localc = (c)Eo();
     if (localc == null) {
       return null;
     }
-    return localc.En();
+    return localc.Eq();
   }
   
   public final <T extends com.tencent.luggage.a.b> T R(Class<T> paramClass)
   {
-    return ((com.tencent.luggage.sdk.b.a.c)El()).K(paramClass);
+    return ((c)Eo()).K(paramClass);
   }
   
-  public void a(Map<String, Object> paramMap, bs parambs) {}
+  public void a(Map<String, Object> paramMap, br parambr) {}
   
   public void b(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
   {
-    Iterator localIterator = Em().iterator();
+    Iterator localIterator = Ep().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.b.b)) {
-        ((com.tencent.mm.plugin.appbrand.page.b.b)localObject).a(paramb);
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).a(paramb);
       }
     }
   }
   
   public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
-    Iterator localIterator = Em().iterator();
+    Iterator localIterator = Ep().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.b.b)) {
-        ((com.tencent.mm.plugin.appbrand.page.b.b)localObject).onConfigurationChanged(paramConfiguration);
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onConfigurationChanged(paramConfiguration);
       }
     }
   }
   
   public void dispatchDestroy()
   {
-    ??? = Em().iterator();
+    ??? = Ep().iterator();
     while (((Iterator)???).hasNext())
     {
       Object localObject3 = ((Iterator)???).next();
-      if ((localObject3 instanceof com.tencent.mm.plugin.appbrand.page.b.b)) {
-        ((com.tencent.mm.plugin.appbrand.page.b.b)localObject3).onDestroy();
+      if ((localObject3 instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject3).onDestroy();
       }
     }
-    synchronized (this.cnm)
+    synchronized (this.cno)
     {
-      this.cnm.clear();
+      this.cno.clear();
     }
   }
   
@@ -103,17 +105,17 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
   
   public final Context getContext()
   {
-    Context localContext2 = ((com.tencent.luggage.sdk.b.a.c)El()).getContext();
+    Context localContext2 = ((c)Eo()).getContext();
     Context localContext1 = localContext2;
     if (localContext2 == null) {
-      localContext1 = aj.getContext();
+      localContext1 = ak.getContext();
     }
     return localContext1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.b.a
  * JD-Core Version:    0.7.0.1
  */

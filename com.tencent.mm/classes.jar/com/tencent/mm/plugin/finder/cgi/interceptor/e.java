@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.finder.cgi.interceptor;
 
-import com.tencent.mm.plugin.finder.cgi.m.f;
-import com.tencent.mm.plugin.finder.feed.model.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "", "onIntercept", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "onInterceptAfterStore", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onInterceptBeforeStore", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderRelStreamInterceptor;", "", "onIntercept", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "onInterceptAfterStore", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader$FinderFeedRelResponse;", "onInterceptBeforeStore", "plugin-finder_release"})
 public abstract interface e
 {
-  public abstract boolean a(m.f paramf);
+  public abstract boolean cAt();
   
-  public abstract boolean a(b paramb);
+  public abstract boolean cAu();
   
-  public abstract boolean b(b paramb);
+  public abstract boolean cAv();
 }
 
 

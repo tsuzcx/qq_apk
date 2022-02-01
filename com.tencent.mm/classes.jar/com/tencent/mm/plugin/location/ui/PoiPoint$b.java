@@ -7,9 +7,9 @@ public enum PoiPoint$b
   static
   {
     AppMethodBeat.i(55861);
-    vcs = new b("STAND", 0);
-    vct = new b("SIT", 1);
-    vcu = new b[] { vcs, vct };
+    voD = new b("STAND", 0);
+    voE = new b("SIT", 1);
+    voF = new b[] { voD, voE };
     AppMethodBeat.o(55861);
   }
   

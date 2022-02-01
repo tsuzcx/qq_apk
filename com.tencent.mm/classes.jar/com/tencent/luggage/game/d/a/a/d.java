@@ -7,61 +7,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsruntime.g;
 import com.tencent.mm.plugin.appbrand.jsruntime.t;
 import com.tencent.mm.plugin.appbrand.jsruntime.v;
-import com.tencent.mm.plugin.appbrand.utils.q.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.utils.s.a;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class d
   extends com.tencent.luggage.sdk.b.a.c.a<c>
   implements com.tencent.luggage.game.d.a.a
 {
-  private boolean ckt = false;
+  private boolean ckv = false;
   
   public d(c paramc, t paramt)
   {
     super(paramc, paramt);
   }
   
-  public final g Dj()
+  public final g Dm()
   {
     AppMethodBeat.i(130603);
-    g localg = super.Dj();
-    if ((localg == null) || (this.ckt)) {}
+    g localg = super.Dm();
+    if ((localg == null) || (this.ckv)) {}
     for (;;)
     {
       try
       {
         v localv = (v)localg.P(v.class);
-        b localb = (b)((c)Ew()).Q(b.class);
+        b localb = (b)((c)Ey()).Q(b.class);
         if (localb == null) {
           continue;
         }
-        localb.getMagicBrush().c((d.g.a.a)new d.f(localv.getIsolatePtr(), localv.NB(), localv.getUVLoopPtr()));
+        localb.getMagicBrush().d((d.g.a.a)new d.f(localv.getIsolatePtr(), localv.Nz(), localv.getUVLoopPtr()));
         bool = true;
       }
       catch (NullPointerException localNullPointerException)
       {
-        ad.e("MicroMsg.WAGameJsContextInterfaceLU", "injectNativeGlobal failed [%s]", new Object[] { localNullPointerException });
+        ae.e("MicroMsg.WAGameJsContextInterfaceLU", "injectNativeGlobal failed [%s]", new Object[] { localNullPointerException });
         bool = false;
         continue;
       }
-      ad.i("MicroMsg.WAGameJsContextInterfaceLU", "alloc injectNativeGlobal = [%b], ret = [%b]", new Object[] { Boolean.valueOf(this.ckt), Boolean.valueOf(bool) });
+      ae.i("MicroMsg.WAGameJsContextInterfaceLU", "alloc injectNativeGlobal = [%b], ret = [%b]", new Object[] { Boolean.valueOf(this.ckv), Boolean.valueOf(bool) });
       AppMethodBeat.o(130603);
       return localg;
-      ad.w("MicroMsg.WAGameJsContextInterfaceLU", "No extension found!");
+      ae.w("MicroMsg.WAGameJsContextInterfaceLU", "No extension found!");
       continue;
       boolean bool = true;
     }
   }
   
-  public final void Dk()
+  public final void Dn()
   {
     AppMethodBeat.i(130604);
-    super.Dk();
-    ad.i("MicroMsg.WAGameJsContextInterfaceLU", "hy: injected WAGameJSContextInterface");
+    super.Dn();
+    ae.i("MicroMsg.WAGameJsContextInterfaceLU", "hy: injected WAGameJSContextInterface");
     AppMethodBeat.o(130604);
   }
   
-  public final String Dl()
+  public final String Do()
   {
     return "WAGameSubContext.js";
   }
@@ -70,17 +70,17 @@ public class d
   public int allocNativeGlobal()
   {
     AppMethodBeat.i(130602);
-    this.ckt = true;
+    this.ckv = true;
     int i = super.alloc();
-    ad.i("MicroMsg.WAGameJsContextInterfaceLU", "alloc injectNativeGlobal = [%b], ret = [%d]", new Object[] { Boolean.valueOf(this.ckt), Integer.valueOf(i) });
-    this.ckt = false;
+    ae.i("MicroMsg.WAGameJsContextInterfaceLU", "alloc injectNativeGlobal = [%b], ret = [%d]", new Object[] { Boolean.valueOf(this.ckv), Integer.valueOf(i) });
+    this.ckv = false;
     AppMethodBeat.o(130602);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.d.a.a.d
  * JD-Core Version:    0.7.0.1
  */

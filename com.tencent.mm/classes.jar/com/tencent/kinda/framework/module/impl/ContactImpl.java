@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 
 public class ContactImpl
   implements KContact
 {
-  private am contact;
+  private an contact;
   
   public ContactImpl(String paramString)
   {
     AppMethodBeat.i(18620);
-    g.ajD();
-    this.contact = ((l)g.ab(l.class)).azp().Bf(paramString);
+    g.ajS();
+    this.contact = ((l)g.ab(l.class)).azF().BH(paramString);
     AppMethodBeat.o(18620);
   }
   
   public String displayName()
   {
     AppMethodBeat.i(18621);
-    String str = this.contact.adv();
+    String str = this.contact.adG();
     AppMethodBeat.o(18621);
     return str;
   }

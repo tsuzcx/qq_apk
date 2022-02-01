@@ -2,82 +2,82 @@ package com.tencent.mm.media.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/globject/GLLeakIDKeyReport;", "", "()V", "FBO_STEP", "", "ID", "", "KEY_ABSSURFACERENDERER", "KEY_FADEDRAWER", "KEY_GLTEXTURERENDERPROC", "KEY_GLTEXTURERENDERPROCBLEND", "KEY_GLTEXTURERENDERPROCYUVTORGB", "KEY_IMAGEDRAWER", "KEY_LIVE", "KEY_MULTITALK", "KEY_MULTI_VIDEO", "KEY_OTHER", "KEY_SCRIPTRENDER", "KEY_STICKERPREVIEWRENDER", "KEY_VLOGREMUXSURFACE", "KEY_VLogScriptTexCache", "KEY_VOIP", "KEY_XEFFECT_RENDERER", "KEY_XLABEFFECT", "NOT_DEFINED", "TAG", "", "markGLFBOCreated", "", "markGLFBOLeaked", "markGLFBOLeakedInErrorTid", "markGLFBOLeakedScene", "key", "markGLTextureCreated", "markGLTextureLeaked", "markGLTextureLeakedInErrorTid", "markGLTextureLeakedScene", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/globject/GLLeakIDKeyReport;", "", "()V", "FBO_STEP", "", "ID", "", "KEY_ABSSURFACERENDERER", "KEY_FADEDRAWER", "KEY_GLTEXTURERENDERPROC", "KEY_GLTEXTURERENDERPROCBLEND", "KEY_GLTEXTURERENDERPROCYUVTORGB", "KEY_IMAGEDRAWER", "KEY_LIVE", "KEY_MULTITALK", "KEY_MULTI_VIDEO", "KEY_OTHER", "KEY_SCRIPTRENDER", "KEY_STICKERPREVIEWRENDER", "KEY_VLOGREMUXSURFACE", "KEY_VLogScriptTexCache", "KEY_VOIP", "KEY_XEFFECT_RENDERER", "KEY_XLABEFFECT", "NOT_DEFINED", "TAG", "", "markGLFBOCreated", "", "markGLFBOLeaked", "markGLFBOLeakedInErrorTid", "markGLFBOLeakedScene", "key", "markGLTextureCreated", "markGLTextureLeaked", "markGLTextureLeakedInErrorTid", "markGLTextureLeakedScene", "plugin-mediaeditor_release"})
 public final class b
 {
-  public static final b hkk;
+  public static final b hmY;
   
   static
   {
     AppMethodBeat.i(93693);
-    hkk = new b();
+    hmY = new b();
     AppMethodBeat.o(93693);
   }
   
-  public static void atD()
+  public static void atS()
   {
     AppMethodBeat.i(93685);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureCreated");
-    g.yhR.n(1184L, 0L, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureCreated");
+    g.yxI.n(1184L, 0L, 1L);
     AppMethodBeat.o(93685);
   }
   
-  public static void atE()
+  public static void atT()
   {
     AppMethodBeat.i(93686);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeaked");
-    g.yhR.n(1184L, 1L, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeaked");
+    g.yxI.n(1184L, 1L, 1L);
     AppMethodBeat.o(93686);
   }
   
-  public static void atF()
+  public static void atU()
   {
     AppMethodBeat.i(93688);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOCreated");
-    g.yhR.n(1184L, 100L, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOCreated");
+    g.yxI.n(1184L, 100L, 1L);
     AppMethodBeat.o(93688);
   }
   
-  public static void atG()
+  public static void atV()
   {
     AppMethodBeat.i(93689);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeaked");
-    g.yhR.n(1184L, 101L, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeaked");
+    g.yxI.n(1184L, 101L, 1L);
     AppMethodBeat.o(93689);
   }
   
-  public static void atH()
+  public static void atW()
   {
     AppMethodBeat.i(93691);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedInErrorTid");
-    g.yhR.n(1184L, 200L, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedInErrorTid");
+    g.yxI.n(1184L, 200L, 1L);
     AppMethodBeat.o(93691);
   }
   
-  public static void atI()
+  public static void atX()
   {
     AppMethodBeat.i(93692);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedInErrorTid");
-    g.yhR.n(1184L, 201L, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedInErrorTid");
+    g.yxI.n(1184L, 201L, 1L);
     AppMethodBeat.o(93692);
   }
   
-  public static void ro(long paramLong)
+  public static void rB(long paramLong)
   {
     AppMethodBeat.i(93687);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedScene key:".concat(String.valueOf(paramLong)));
-    g.yhR.n(1184L, paramLong, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedScene key:".concat(String.valueOf(paramLong)));
+    g.yxI.n(1184L, paramLong, 1L);
     AppMethodBeat.o(93687);
   }
   
-  public static void rp(long paramLong)
+  public static void rC(long paramLong)
   {
     AppMethodBeat.i(93690);
-    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedScene key:".concat(String.valueOf(paramLong)));
-    g.yhR.n(1184L, 100L + paramLong, 1L);
+    ae.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedScene key:".concat(String.valueOf(paramLong)));
+    g.yxI.n(1184L, 100L + paramLong, 1L);
     AppMethodBeat.o(93690);
   }
 }

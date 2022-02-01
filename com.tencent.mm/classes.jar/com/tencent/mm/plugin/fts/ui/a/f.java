@@ -19,57 +19,57 @@ import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
 
 public class f
   extends k
 {
-  public int dlp;
-  protected CharSequence tAT;
-  protected String tAU;
-  protected CharSequence tAV;
-  protected String tAW;
-  public m tAX;
-  private a tAY;
-  b tAZ;
-  public String tvc;
+  public int dmr;
+  public String tFT;
+  protected CharSequence tLK;
+  protected String tLL;
+  protected CharSequence tLM;
+  protected String tLN;
+  public m tLO;
+  private a tLP;
+  b tLQ;
   
   public f(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112068);
-    this.tAY = new a();
-    this.tAZ = new b();
+    this.tLP = new a();
+    this.tLQ = new b();
     AppMethodBeat.o(112068);
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112069);
-    String str = this.tAX.tuh;
+    String str = this.tLO.tEY;
     boolean bool2 = false;
     boolean bool1 = false;
     boolean bool5 = false;
     boolean bool3 = false;
     boolean bool4 = false;
     parama = null;
-    switch (this.tAX.tug)
+    switch (this.tLO.tEX)
     {
     case 4: 
     default: 
       paramVarArgs = null;
       bool1 = false;
       bool3 = bool4;
-      if (this.dlp == 2)
+      if (this.dmr == 2)
       {
-        this.tAU = str;
-        if (!bt.isNullOrNil(paramVarArgs))
+        this.tLL = str;
+        if (!bu.isNullOrNil(paramVarArgs))
         {
-          this.tAT = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tAX.tun, bool3, bool1, b.c.tye, paramVarArgs + "(", ")")).tuE;
-          this.tAT = TextUtils.concat(new CharSequence[] { "\"", this.tAT, "\"" });
-          this.tAV = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.agg(this.tvc), b.c.tyg, 300.0F, TextUtils.TruncateAt.END), paramContext.getString(2131762968) });
-          this.tAW = this.tvc;
+          this.tLK = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, b.c.tIV, paramVarArgs + "(", ")")).tFv;
+          this.tLK = TextUtils.concat(new CharSequence[] { "\"", this.tLK, "\"" });
+          this.tLM = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.ahd(this.tFT), b.c.tIX, 300.0F, TextUtils.TruncateAt.END), paramContext.getString(2131762968) });
+          this.tLN = this.tFT;
           AppMethodBeat.o(112069);
           return;
         }
@@ -82,25 +82,25 @@ public class f
     label250:
     for (bool3 = true;; bool3 = bool5)
     {
-      parama = d.agg(str);
+      parama = d.ahd(str);
       paramVarArgs = null;
       break;
       bool1 = true;
       bool3 = true;
       bool2 = bool1;
-      parama = ((l)g.ab(l.class)).azp().Bf(str).field_nickname;
-      paramVarArgs = d.agg(str);
+      parama = ((l)g.ab(l.class)).azF().BH(str).field_nickname;
+      paramVarArgs = d.ahd(str);
       bool1 = bool2;
       break;
-      this.tAT = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tAX.tun, bool3, bool1, 400.0F, b.c.tye)).tuE;
+      this.tLK = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, 400.0F, b.c.tIV)).tFv;
       break label159;
-      this.tAT = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.agg(this.tvc), b.c.tyg, 300.0F, TextUtils.TruncateAt.END), "\"" });
-      this.tAU = this.tvc;
-      this.tAW = str;
-      if (!bt.isNullOrNil(paramVarArgs)) {}
-      for (this.tAV = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tAX.tun, bool3, bool1, b.c.tye, paramVarArgs + "(", ")")).tuE;; this.tAV = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tAX.tun, bool3, bool1, 400.0F, b.c.tye)).tuE)
+      this.tLK = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.ahd(this.tFT), b.c.tIX, 300.0F, TextUtils.TruncateAt.END), "\"" });
+      this.tLL = this.tFT;
+      this.tLN = str;
+      if (!bu.isNullOrNil(paramVarArgs)) {}
+      for (this.tLM = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, b.c.tIV, paramVarArgs + "(", ")")).tFv;; this.tLM = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, 400.0F, b.c.tIV)).tFv)
       {
-        this.tAV = TextUtils.concat(new CharSequence[] { "\"", this.tAV, paramContext.getString(2131762968) });
+        this.tLM = TextUtils.concat(new CharSequence[] { "\"", this.tLM, paramContext.getString(2131762968) });
         AppMethodBeat.o(112069);
         return;
       }
@@ -110,14 +110,14 @@ public class f
     }
   }
   
-  public com.tencent.mm.plugin.fts.a.d.a.a.b agC()
+  public com.tencent.mm.plugin.fts.a.d.a.a.b agQ()
   {
-    return this.tAY;
+    return this.tLP;
   }
   
-  public final a.a cTJ()
+  public final a.a cWo()
   {
-    return this.tAZ;
+    return this.tLQ;
   }
   
   public class a
@@ -132,14 +132,14 @@ public class f
     {
       AppMethodBeat.i(112066);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494194, paramViewGroup, false);
-      paramViewGroup = (f.b)f.this.tAZ;
-      paramViewGroup.tBb = ((TextView)paramContext.findViewById(2131300703));
-      paramViewGroup.tBc = ((ImageView)paramContext.findViewById(2131296999));
-      paramViewGroup.tBd = ((TextView)paramContext.findViewById(2131300704));
-      paramViewGroup.tBe = ((ImageView)paramContext.findViewById(2131297000));
-      paramViewGroup.tBf = ((TextView)paramContext.findViewById(2131301013));
+      paramViewGroup = (f.b)f.this.tLQ;
+      paramViewGroup.tLS = ((TextView)paramContext.findViewById(2131300703));
+      paramViewGroup.tLT = ((ImageView)paramContext.findViewById(2131296999));
+      paramViewGroup.tLU = ((TextView)paramContext.findViewById(2131300704));
+      paramViewGroup.tLV = ((ImageView)paramContext.findViewById(2131297000));
+      paramViewGroup.tLW = ((TextView)paramContext.findViewById(2131301013));
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
-      paramViewGroup.tAS = paramContext.findViewById(2131303131);
+      paramViewGroup.tLJ = paramContext.findViewById(2131303131);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112066);
       return paramContext;
@@ -149,28 +149,28 @@ public class f
     {
       AppMethodBeat.i(112067);
       paramContext = (f.b)parama;
-      n.a(f.this.tAT, paramContext.tBb);
-      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.tBc, f.this.tAU);
-      n.a(f.this.tAV, paramContext.tBd);
-      if (!bt.isNullOrNil(f.this.tAW))
+      n.a(f.this.tLK, paramContext.tLS);
+      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.tLT, f.this.tLL);
+      n.a(f.this.tLM, paramContext.tLU);
+      if (!bu.isNullOrNil(f.this.tLN))
       {
-        paramContext.tBe.setVisibility(0);
-        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.tBe, f.this.tAW);
-        n.r(paramContext.contentView, f.this.tvU);
+        paramContext.tLV.setVisibility(0);
+        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.tLV, f.this.tLN);
+        n.r(paramContext.contentView, f.this.tGL);
         if (f.this.position != 0) {
           break label148;
         }
-        paramContext.tAS.setVisibility(8);
+        paramContext.tLJ.setVisibility(8);
       }
       for (;;)
       {
-        paramContext.tBf.setVisibility(0);
+        paramContext.tLW.setVisibility(0);
         AppMethodBeat.o(112067);
         return;
-        paramContext.tBe.setVisibility(8);
+        paramContext.tLV.setVisibility(8);
         break;
         label148:
-        paramContext.tAS.setVisibility(0);
+        paramContext.tLJ.setVisibility(0);
       }
     }
     
@@ -184,12 +184,12 @@ public class f
     extends a.a
   {
     public View contentView;
-    public View tAS;
-    public TextView tBb;
-    public ImageView tBc;
-    public TextView tBd;
-    public ImageView tBe;
-    public TextView tBf;
+    public View tLJ;
+    public TextView tLS;
+    public ImageView tLT;
+    public TextView tLU;
+    public ImageView tLV;
+    public TextView tLW;
     
     public b()
     {
@@ -199,7 +199,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

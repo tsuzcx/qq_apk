@@ -14,22 +14,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class a
 {
-  public static final HashMap<String, Object> eKR()
-  {
-    AppMethodBeat.i(131327);
-    Object localObject1 = KeyPairGenerator.getInstance("RSA");
-    ((KeyPairGenerator)localObject1).initialize(1024);
-    Object localObject2 = ((KeyPairGenerator)localObject1).generateKeyPair();
-    localObject1 = (RSAPublicKey)((KeyPair)localObject2).getPublic();
-    localObject2 = (RSAPrivateKey)((KeyPair)localObject2).getPrivate();
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("RSAPublicKey", localObject1);
-    localHashMap.put("RSAPrivateKey", localObject2);
-    AppMethodBeat.o(131327);
-    return localHashMap;
-  }
-  
-  public static final byte[] eKS()
+  public static final byte[] eOA()
   {
     AppMethodBeat.i(131329);
     try
@@ -45,6 +30,21 @@ public final class a
       AppMethodBeat.o(131329);
     }
     return null;
+  }
+  
+  public static final HashMap<String, Object> eOz()
+  {
+    AppMethodBeat.i(131327);
+    Object localObject1 = KeyPairGenerator.getInstance("RSA");
+    ((KeyPairGenerator)localObject1).initialize(1024);
+    Object localObject2 = ((KeyPairGenerator)localObject1).generateKeyPair();
+    localObject1 = (RSAPublicKey)((KeyPair)localObject2).getPublic();
+    localObject2 = (RSAPrivateKey)((KeyPair)localObject2).getPrivate();
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("RSAPublicKey", localObject1);
+    localHashMap.put("RSAPrivateKey", localObject2);
+    AppMethodBeat.o(131327);
+    return localHashMap;
   }
   
   public static final byte[] j(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)

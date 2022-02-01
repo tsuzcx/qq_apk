@@ -1,61 +1,65 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.a;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.a;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.bix;
+import com.tencent.mm.protocal.protobuf.bjp;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 
 public final class ag
   extends n
   implements k
 {
   f callback;
-  public final q hON;
+  public final q hRG;
   
   public ag(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(131118);
     this.callback = null;
-    this.hON = new a();
-    u.a locala = (u.a)this.hON.getReqObj();
-    locala.jdX.GDt = paramString1;
-    locala.jdX.GDu = paramString2;
-    locala.jdX.nEt = paramString3;
-    locala.jdX.GDv = paramString4;
-    locala.jdX.GDw = paramString5;
-    locala.jdX.GDx = paramString6;
-    locala.jdX.GDy = paramInt;
-    locala.jdX.qei = com.tencent.mm.sdk.platformtools.ac.fks();
-    paramString1 = locala.jdX;
-    g.ajA();
-    paramString1.FzI = a.aiO();
+    this.hRG = new a();
+    u.a locala = (u.a)this.hRG.getReqObj();
+    locala.jgQ.GWW = paramString1;
+    locala.jgQ.GWX = paramString2;
+    locala.jgQ.nJO = paramString3;
+    locala.jgQ.GWY = paramString4;
+    locala.jgQ.GWZ = paramString5;
+    locala.jgQ.GXa = paramString6;
+    locala.jgQ.GXb = paramInt;
+    locala.jgQ.qkN = ad.fom();
+    paramString1 = locala.jgQ;
+    g.ajP();
+    paramString1.FSg = a.ajd();
     AppMethodBeat.o(131118);
   }
   
-  public final String aKL()
+  public final String aLi()
   {
     AppMethodBeat.i(131122);
-    String str = ((u.b)this.hON.getRespObj()).jdY.GDw;
+    String str = ((u.b)this.hRG.getRespObj()).jgR.GWZ;
     AppMethodBeat.o(131122);
     return str;
   }
   
-  public final byte[] aKM()
+  public final byte[] aLj()
   {
     AppMethodBeat.i(131121);
-    byte[] arrayOfByte = z.a(((u.b)this.hON.getRespObj()).jdY.GDz, new byte[0]);
+    byte[] arrayOfByte = z.a(((u.b)this.hRG.getRespObj()).jgR.GXc, new byte[0]);
     AppMethodBeat.o(131121);
     return arrayOfByte;
   }
@@ -64,7 +68,7 @@ public final class ag
   {
     AppMethodBeat.i(131119);
     this.callback = paramf;
-    int i = dispatch(parame, this.hON, this);
+    int i = dispatch(parame, this.hRG, this);
     AppMethodBeat.o(131119);
     return i;
   }
@@ -80,18 +84,18 @@ public final class ag
     if ((paramInt2 == 4) && (paramInt3 == -102))
     {
       paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ad.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      g.ajF().ay(new Runnable()
+      ae.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      g.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(131116);
-          new com.tencent.mm.modelsimple.l().doScene(ag.this.dispatcher(), new f()
+          new m().doScene(ag.this.dispatcher(), new f()
           {
             public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
             {
               AppMethodBeat.i(131115);
-              ad.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              ae.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 ag.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", ag.this);
@@ -119,22 +123,22 @@ public final class ag
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
   
   public final void setSecurityCheckError(n.a parama) {}
   
   public static final class a
-    extends com.tencent.mm.al.l
+    extends l
   {
-    private final u.a jeu;
-    private final u.b jev;
+    private final u.a jhn;
+    private final u.b jho;
     
     public a()
     {
       AppMethodBeat.i(131117);
-      this.jeu = new u.a();
-      this.jev = new u.b();
+      this.jhn = new u.a();
+      this.jho = new u.b();
       AppMethodBeat.o(131117);
     }
     
@@ -145,12 +149,12 @@ public final class ag
     
     public final l.d getReqObjImp()
     {
-      return this.jeu;
+      return this.jhn;
     }
     
     public final l.e getRespObj()
     {
-      return this.jev;
+      return this.jho;
     }
     
     public final int getType()

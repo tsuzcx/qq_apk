@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fav.a;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
@@ -17,11 +17,11 @@ public abstract interface ab
   
   public abstract void a(Context paramContext, String paramString, g paramg, boolean paramBoolean, y.a parama);
   
-  public abstract int agy(String paramString);
-  
-  public abstract void b(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract int ahv(String paramString);
   
   public abstract void b(Activity paramActivity, String paramString1, String paramString2);
+  
+  public abstract void c(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

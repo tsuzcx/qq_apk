@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"print", "", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "plugin-gamelife_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"print", "", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "plugin-gamelife_release"})
 public final class e
 {
   public static final String a(a parama)
   {
-    AppMethodBeat.i(211360);
+    AppMethodBeat.i(212131);
     p.h(parama, "$this$print");
     parama = "sessionId=" + parama.field_sessionId + " unReadCount=" + parama.field_unReadCount + " updateTime=" + parama.field_updateTime + ' ' + "digest=" + parama.field_digest + " lastMsgID=" + parama.field_lastMsgID + " unReadCount=" + parama.field_unReadCount + " systemRowid=" + parama.systemRowid + " digestFlag=" + parama.field_digestFlag;
-    AppMethodBeat.o(211360);
+    AppMethodBeat.o(212131);
     return parama;
   }
 }

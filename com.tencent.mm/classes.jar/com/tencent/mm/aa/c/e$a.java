@@ -1,0 +1,12 @@
+package com.tencent.mm.aa.c;
+
+public abstract interface e$a
+{
+  public abstract void Q(String paramString, int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.aa.c.e.a
+ * JD-Core Version:    0.7.0.1
+ */

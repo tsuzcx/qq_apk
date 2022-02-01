@@ -13,37 +13,35 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
 import com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView;
 import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
-import com.tencent.mm.protocal.protobuf.agn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.emotion.o;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.i;
 
 public class EmojiStoreV2RewardThanksUI
   extends MMActivity
 {
-  private ap mHandler;
-  private String pFt;
-  private GetEmotionRewardResponse pJQ;
-  private EmojiStoreV2RewardBannerView pNB;
-  private View pNC;
-  private MMCopiableTextView pND;
-  private TextView pNE;
-  private TextView pNF;
-  private AnimationDrawable pNG;
+  private aq mHandler;
+  private String pLX;
+  private GetEmotionRewardResponse pQv;
+  private EmojiStoreV2RewardBannerView pUg;
+  private View pUh;
+  private MMCopiableTextView pUi;
+  private TextView pUj;
+  private TextView pUk;
+  private AnimationDrawable pUl;
   
   public EmojiStoreV2RewardThanksUI()
   {
     AppMethodBeat.i(109266);
-    this.mHandler = new ap()
+    this.mHandler = new aq()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -56,7 +54,7 @@ public class EmojiStoreV2RewardThanksUI
           AppMethodBeat.o(109263);
           return;
           paramAnonymousMessage = (String)paramAnonymousMessage.obj;
-          if ((!bt.isNullOrNil(paramAnonymousMessage)) && (i.fv(paramAnonymousMessage)))
+          if ((!bu.isNullOrNil(paramAnonymousMessage)) && (com.tencent.mm.vfs.o.fB(paramAnonymousMessage)))
           {
             EmojiStoreV2RewardThanksUI.a(EmojiStoreV2RewardThanksUI.this).setImageFilePath(paramAnonymousMessage);
             EmojiStoreV2RewardThanksUI.a(EmojiStoreV2RewardThanksUI.this).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -68,7 +66,7 @@ public class EmojiStoreV2RewardThanksUI
           }
           else
           {
-            ad.i("MicroMsg.emoji.EmojiStoreV2RewardThanksUI", "path is null or file no exists");
+            ae.i("MicroMsg.emoji.EmojiStoreV2RewardThanksUI", "path is null or file no exists");
           }
         }
       }
@@ -100,13 +98,13 @@ public class EmojiStoreV2RewardThanksUI
         return false;
       }
     });
-    this.pNB = ((EmojiStoreV2RewardBannerView)findViewById(2131305764));
-    this.pNB.setScale(1.0F);
-    this.pNC = findViewById(2131301970);
-    this.pND = ((MMCopiableTextView)findViewById(2131301972));
-    this.pNE = ((TextView)findViewById(2131301969));
-    this.pNF = ((TextView)findViewById(2131301971));
-    this.pNG = ((AnimationDrawable)getResources().getDrawable(2131232019));
+    this.pUg = ((EmojiStoreV2RewardBannerView)findViewById(2131305764));
+    this.pUg.setScale(1.0F);
+    this.pUh = findViewById(2131301970);
+    this.pUi = ((MMCopiableTextView)findViewById(2131301972));
+    this.pUj = ((TextView)findViewById(2131301969));
+    this.pUk = ((TextView)findViewById(2131301971));
+    this.pUl = ((AnimationDrawable)getResources().getDrawable(2131232019));
     AppMethodBeat.o(109269);
   }
   
@@ -114,42 +112,42 @@ public class EmojiStoreV2RewardThanksUI
   {
     AppMethodBeat.i(109267);
     super.onCreate(paramBundle);
-    this.pFt = getIntent().getStringExtra("extra_id");
+    this.pLX = getIntent().getStringExtra("extra_id");
     initView();
-    this.pJQ = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().ILs.aUU(this.pFt);
+    this.pQv = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().JfZ.aWv(this.pLX);
     Object localObject;
-    if (this.pJQ != null) {
-      if ((this.pJQ.Reward != null) && (!bt.isNullOrNil(this.pJQ.Reward.Gex)))
+    if (this.pQv != null) {
+      if ((this.pQv.Reward != null) && (!bu.isNullOrNil(this.pQv.Reward.Gxf)))
       {
-        paramBundle = this.pJQ.Reward.Gey;
-        localObject = com.tencent.mm.emoji.d.a.gqn;
-        localObject = EmojiLogic.j(com.tencent.mm.emoji.d.a.agp(), this.pFt, paramBundle);
-        if (i.fv((String)localObject))
+        paramBundle = this.pQv.Reward.Gxg;
+        localObject = com.tencent.mm.emoji.d.a.gsI;
+        localObject = EmojiLogic.j(com.tencent.mm.emoji.d.a.agD(), this.pLX, paramBundle);
+        if (com.tencent.mm.vfs.o.fB((String)localObject))
         {
-          this.pNB.setImageFilePath((String)localObject);
-          this.pNB.setScaleType(ImageView.ScaleType.FIT_XY);
-          if ((this.pNG != null) && (this.pNG.isRunning())) {
-            this.pNG.stop();
+          this.pUg.setImageFilePath((String)localObject);
+          this.pUg.setScaleType(ImageView.ScaleType.FIT_XY);
+          if ((this.pUl != null) && (this.pUl.isRunning())) {
+            this.pUl.stop();
           }
         }
       }
     }
-    while ((this.pJQ != null) && (this.pJQ.Reward != null))
+    while ((this.pQv != null) && (this.pQv.Reward != null))
     {
-      this.pNC.setVisibility(0);
-      bt.isNullOrNil(this.pJQ.Reward.GeA);
-      this.pND.setVisibility(0);
-      this.pND.setText(2131758370);
-      this.pNE.setVisibility(8);
-      this.pNF.setVisibility(8);
+      this.pUh.setVisibility(0);
+      bu.isNullOrNil(this.pQv.Reward.Gxi);
+      this.pUi.setVisibility(0);
+      this.pUi.setText(2131758370);
+      this.pUj.setVisibility(8);
+      this.pUk.setVisibility(8);
       AppMethodBeat.o(109267);
       return;
-      q.aIJ().a(paramBundle, this.pNB, e.j(this.pFt, paramBundle, new Object[0]), new com.tencent.mm.aw.a.c.k()
+      q.aJb().a(paramBundle, this.pUg, e.j(this.pLX, paramBundle, new Object[0]), new com.tencent.mm.av.a.c.k()
       {
         public final void a(String paramAnonymousString, View paramAnonymousView, Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(109265);
-          if ((!bt.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equalsIgnoreCase(paramBundle)))
+          if ((!bu.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equalsIgnoreCase(paramBundle)))
           {
             paramAnonymousString = new Message();
             paramAnonymousString.what = 1001;
@@ -159,30 +157,30 @@ public class EmojiStoreV2RewardThanksUI
           AppMethodBeat.o(109265);
         }
       });
-      this.pNB.setBackgroundDrawable(getResources().getDrawable(2131232083));
-      this.pNB.setImageDrawable(this.pNG);
-      this.pNB.setScaleType(ImageView.ScaleType.CENTER);
-      this.pNG.start();
+      this.pUg.setBackgroundDrawable(getResources().getDrawable(2131232083));
+      this.pUg.setImageDrawable(this.pUl);
+      this.pUg.setScaleType(ImageView.ScaleType.CENTER);
+      this.pUl.start();
       continue;
-      this.pNB.setBackgroundDrawable(getResources().getDrawable(2131232083));
-      this.pNB.setImageDrawable(this.pNG);
-      this.pNB.setScaleType(ImageView.ScaleType.CENTER);
-      this.pNG.start();
+      this.pUg.setBackgroundDrawable(getResources().getDrawable(2131232083));
+      this.pUg.setImageDrawable(this.pUl);
+      this.pUg.setScaleType(ImageView.ScaleType.CENTER);
+      this.pUl.start();
       continue;
-      this.pNB.setBackgroundDrawable(getResources().getDrawable(2131232083));
-      this.pNB.setImageDrawable(this.pNG);
-      this.pNB.setScaleType(ImageView.ScaleType.CENTER);
-      this.pNG.start();
+      this.pUg.setBackgroundDrawable(getResources().getDrawable(2131232083));
+      this.pUg.setImageDrawable(this.pUl);
+      this.pUg.setScaleType(ImageView.ScaleType.CENTER);
+      this.pUl.start();
     }
-    this.pNC.setVisibility(8);
+    this.pUh.setVisibility(8);
     AppMethodBeat.o(109267);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(109268);
-    if ((this.pNG != null) && (this.pNG.isRunning())) {
-      this.pNG.stop();
+    if ((this.pUl != null) && (this.pUl.isRunning())) {
+      this.pUl.stop();
     }
     super.onDestroy();
     AppMethodBeat.o(109268);
@@ -196,7 +194,7 @@ public class EmojiStoreV2RewardThanksUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardThanksUI
  * JD-Core Version:    0.7.0.1
  */

@@ -14,39 +14,43 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.aa.model.b.b.a;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.protobuf.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.j.d;
+import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.h;
 import java.util.List;
 
 public class AAQueryListUI
   extends BaseAAPresenterActivity
 {
-  private com.tencent.mm.plugin.aa.model.b.b iVa;
-  private ListView iVb;
-  private b iVc;
-  private Dialog iVd;
-  private boolean iVe;
-  private boolean iVf;
-  private View iVg;
-  private AAQueryListH5UrlFooterView iVh;
-  private String iVi;
+  private com.tencent.mm.plugin.aa.model.b.b iXT;
+  private ListView iXU;
+  private b iXV;
+  private Dialog iXW;
+  private boolean iXX;
+  private boolean iXY;
+  private View iXZ;
+  private AAQueryListH5UrlFooterView iYa;
+  private String iYb;
   private int mode;
   
   public AAQueryListUI()
   {
     AppMethodBeat.i(63518);
-    this.iVa = ((com.tencent.mm.plugin.aa.model.b.b)am(com.tencent.mm.plugin.aa.model.b.b.class));
-    this.iVe = false;
-    this.iVf = false;
+    this.iXT = ((com.tencent.mm.plugin.aa.model.b.b)am(com.tencent.mm.plugin.aa.model.b.b.class));
+    this.iXX = false;
+    this.iXY = false;
     this.mode = 1;
     AppMethodBeat.o(63518);
   }
@@ -54,24 +58,24 @@ public class AAQueryListUI
   private void n(final boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(63520);
-    if (this.iVe)
+    if (this.iXX)
     {
-      ad.i("MicroMsg.AAQueryListUI", "getNextPage, loading");
+      ae.i("MicroMsg.AAQueryListUI", "getNextPage, loading");
       AppMethodBeat.o(63520);
       return;
     }
     if (paramBoolean)
     {
-      this.iVf = false;
-      this.iVb.removeFooterView(this.iVh);
+      this.iXY = false;
+      this.iXU.removeFooterView(this.iYa);
     }
-    this.iVe = true;
-    this.iVa.iUe.m(paramBoolean, paramInt).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
+    this.iXX = true;
+    this.iXT.iWX.m(paramBoolean, paramInt).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
     {
       public final void ce(Object paramAnonymousObject)
       {
         AppMethodBeat.i(63515);
-        ad.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramAnonymousObject });
+        ae.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramAnonymousObject });
         if (AAQueryListUI.g(AAQueryListUI.this) != null)
         {
           AAQueryListUI.g(AAQueryListUI.this).dismiss();
@@ -109,7 +113,7 @@ public class AAQueryListUI
       int j = paramIntent.getIntExtra("item_offset", 0);
       if (bool)
       {
-        this.iVb.setSelectionFromTop(i, j);
+        this.iXU.setSelectionFromTop(i, j);
         n(true, this.mode);
       }
     }
@@ -137,8 +141,8 @@ public class AAQueryListUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(63514);
-        paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(AAQueryListUI.this, 1, false);
-        paramAnonymousMenuItem.KJy = new n.d()
+        paramAnonymousMenuItem = new e(AAQueryListUI.this, 1, false);
+        paramAnonymousMenuItem.LfS = new n.d()
         {
           public final void onCreateMMMenu(l paramAnonymous2l)
           {
@@ -148,7 +152,7 @@ public class AAQueryListUI
             AppMethodBeat.o(63512);
           }
         };
-        paramAnonymousMenuItem.KJz = new n.e()
+        paramAnonymousMenuItem.LfT = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -160,7 +164,7 @@ public class AAQueryListUI
             {
               AppMethodBeat.o(63513);
               return;
-              ad.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
+              ae.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
               if (AAQueryListUI.e(AAQueryListUI.this) == 1)
               {
                 AppMethodBeat.o(63513);
@@ -169,12 +173,12 @@ public class AAQueryListUI
               AAQueryListUI.a(AAQueryListUI.this, 1);
               AAQueryListUI.this.setMMTitle(2131755060);
               AAQueryListUI.f(AAQueryListUI.this).mode = AAQueryListUI.e(AAQueryListUI.this);
-              AAQueryListUI.f(AAQueryListUI.this).aRr();
+              AAQueryListUI.f(AAQueryListUI.this).aRQ();
               AAQueryListUI.f(AAQueryListUI.this).notifyDataSetChanged();
               AAQueryListUI.a(AAQueryListUI.this, true, AAQueryListUI.e(AAQueryListUI.this));
               AppMethodBeat.o(63513);
               return;
-              ad.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
+              ae.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
               if (AAQueryListUI.e(AAQueryListUI.this) == 2)
               {
                 AppMethodBeat.o(63513);
@@ -182,20 +186,20 @@ public class AAQueryListUI
               }
               AAQueryListUI.this.setMMTitle(2131755063);
               AAQueryListUI.f(AAQueryListUI.this).mode = AAQueryListUI.e(AAQueryListUI.this);
-              AAQueryListUI.f(AAQueryListUI.this).aRr();
+              AAQueryListUI.f(AAQueryListUI.this).aRQ();
               AAQueryListUI.f(AAQueryListUI.this).notifyDataSetChanged();
               AAQueryListUI.a(AAQueryListUI.this, 2);
               AAQueryListUI.a(AAQueryListUI.this, true, AAQueryListUI.e(AAQueryListUI.this));
             }
           }
         };
-        paramAnonymousMenuItem.cMW();
+        paramAnonymousMenuItem.cPF();
         AppMethodBeat.o(63514);
         return true;
       }
     });
-    this.iVb = ((ListView)findViewById(2131296298));
-    this.iVb.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.iXU = ((ListView)findViewById(2131296298));
+    this.iXU.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -210,7 +214,7 @@ public class AAQueryListUI
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
     });
-    this.iVb.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.iXU.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -218,15 +222,15 @@ public class AAQueryListUI
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
         ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
         int i;
         if (AAQueryListUI.f(AAQueryListUI.this) != null)
         {
           if ((paramAnonymousInt < 0) || (paramAnonymousInt >= AAQueryListUI.f(AAQueryListUI.this).getCount()))
           {
-            ad.i("MicroMsg.AAQueryListUI", "click out of bound! %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            ae.i("MicroMsg.AAQueryListUI", "click out of bound! %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(63511);
             return;
@@ -235,30 +239,30 @@ public class AAQueryListUI
           paramAnonymousView = (k)AAQueryListUI.f(AAQueryListUI.this).getItem(paramAnonymousInt);
           if (paramAnonymousView != null)
           {
-            if (bt.isNullOrNil(paramAnonymousView.FpV)) {
+            if (bu.isNullOrNil(paramAnonymousView.FIt)) {
               break label215;
             }
-            com.tencent.mm.wallet_core.ui.e.o(AAQueryListUI.this.getContext(), paramAnonymousView.FpV, true);
+            f.p(AAQueryListUI.this.getContext(), paramAnonymousView.FIt, true);
           }
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(3) });
+          g.yxI.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(3) });
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(63511);
           return;
           label215:
-          if (!bt.isNullOrNil(paramAnonymousView.FpG))
+          if (!bu.isNullOrNil(paramAnonymousView.FIe))
           {
             paramAnonymousAdapterView = null;
             if (paramAnonymousView.role == 2) {
-              paramAnonymousAdapterView = u.aAm();
+              paramAnonymousAdapterView = v.aAC();
             }
             localObject = new Intent(AAQueryListUI.this, PaylistAAUI.class);
-            ((Intent)localObject).putExtra("bill_no", paramAnonymousView.FpG);
+            ((Intent)localObject).putExtra("bill_no", paramAnonymousView.FIe);
             ((Intent)localObject).putExtra("launcher_user_name", paramAnonymousAdapterView);
             ((Intent)localObject).putExtra("enter_scene", 4);
-            ((Intent)localObject).putExtra("chatroom", paramAnonymousView.FpH);
+            ((Intent)localObject).putExtra("chatroom", paramAnonymousView.FIf);
             ((Intent)localObject).putExtra("item_position", paramAnonymousInt);
             ((Intent)localObject).putExtra("item_offset", i);
             AAQueryListUI.this.startActivityForResult((Intent)localObject, 1);
@@ -266,12 +270,12 @@ public class AAQueryListUI
         }
       }
     });
-    this.iVg = new AAQueryListLoadingMoreView(this);
-    this.iVh = new AAQueryListH5UrlFooterView(this);
-    this.iVd = com.tencent.mm.wallet_core.ui.g.a(this, false, null);
-    this.iVc = new b(this, this.mode);
-    this.iVb.setAdapter(this.iVc);
-    this.iVb.setVisibility(4);
+    this.iXZ = new AAQueryListLoadingMoreView(this);
+    this.iYa = new AAQueryListH5UrlFooterView(this);
+    this.iXW = h.a(this, false, null);
+    this.iXV = new b(this, this.mode);
+    this.iXU.setAdapter(this.iXV);
+    this.iXU.setVisibility(4);
     n(false, this.mode);
     AppMethodBeat.o(63519);
   }

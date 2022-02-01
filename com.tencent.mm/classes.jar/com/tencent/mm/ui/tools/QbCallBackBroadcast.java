@@ -12,36 +12,36 @@ import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.handoff.model.HandOff;
 import com.tencent.mm.plugin.handoff.model.HandOffFile;
 import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import org.json.JSONObject;
 
 public class QbCallBackBroadcast
   extends BroadcastReceiver
 {
-  private static Runnable KKx;
+  private static Runnable LgR;
   
   static
   {
     AppMethodBeat.i(39123);
-    KKx = new Runnable()
+    LgR = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(39121);
-        if (f.ffc() != null)
+        if (f.fiS() != null)
         {
-          ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "foregroundRunnable, onEnterPage");
-          f.ffc().bgB();
-          f.ffc().iT(true);
-          f.ffc().bKD();
+          ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "foregroundRunnable, onEnterPage");
+          f.fiS().bhj();
+          f.fiS().iS(true);
+          f.fiS().bLA();
           AppMethodBeat.o(39121);
           return;
         }
-        ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "foregroundRunnable, FilesFloatBallHelper is null");
+        ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "foregroundRunnable, FilesFloatBallHelper is null");
         AppMethodBeat.o(39121);
       }
     };
@@ -53,18 +53,18 @@ public class QbCallBackBroadcast
     AppMethodBeat.i(39122);
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() intent == null");
+      ae.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() intent == null");
       AppMethodBeat.o(39122);
       return;
     }
-    g.ajD();
-    if (!g.ajA().aiK())
+    g.ajS();
+    if (!g.ajP().aiZ())
     {
-      ad.w("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "account not init.");
+      ae.w("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "account not init.");
       AppMethodBeat.o(39122);
       return;
     }
-    ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() %s %s", new Object[] { paramIntent, paramIntent.getExtras() });
+    ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() %s %s", new Object[] { paramIntent, paramIntent.getExtras() });
     String str1 = "";
     Object localObject5 = "";
     String str2 = "";
@@ -123,34 +123,34 @@ public class QbCallBackBroadcast
       {
         int k;
         int m;
-        ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() thirdCtx Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() thirdCtx Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         continue;
         i += 1;
       }
-      i = g.ajC().ajl().getInt(al.a.IGf, 0);
-      j = ((b)g.ab(b.class)).a(b.a.qBX, 0);
-      if (!bt.jx(j, 1)) {
+      i = g.ajR().ajA().getInt(am.a.JaF, 0);
+      j = ((b)g.ab(b.class)).a(b.a.qJs, 0);
+      if (!bu.jB(j, 1)) {
         break label568;
       }
-      ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "qb verify frequency use %s", new Object[] { Integer.valueOf(i) });
+      ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "qb verify frequency use %s", new Object[] { Integer.valueOf(i) });
       if (j < 50) {
         break label550;
       }
       AppMethodBeat.o(39122);
       return;
-      g.ajC().ajl().set(al.a.IGf, Integer.valueOf(i + 1));
+      g.ajR().ajA().set(am.a.JaF, Integer.valueOf(i + 1));
       if (!paramIntent.hasExtra("change_file")) {
-        break label1151;
+        break label1153;
       }
     }
-    ad.d("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() type:%s filePath:%s fileExt:%s sence:%s", new Object[] { localObject1, localObject2, localObject3, Integer.valueOf(i) });
+    ae.d("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() type:%s filePath:%s fileExt:%s sence:%s", new Object[] { localObject1, localObject2, localObject3, Integer.valueOf(i) });
     localObject3 = localObject1;
     localObject1 = localObject2;
     localObject2 = localObject4;
-    localObject4 = (String)g.ajC().ajl().get(al.a.IGd, "");
+    localObject4 = (String)g.ajR().ajA().get(am.a.JaD, "");
     k = 0;
     j = k;
-    if (!bt.isNullOrNil((String)localObject4))
+    if (!bu.isNullOrNil((String)localObject4))
     {
       localObject5 = ((String)localObject4).split(",");
       m = localObject5.length;
@@ -158,7 +158,7 @@ public class QbCallBackBroadcast
       j = k;
       if (i < m)
       {
-        if (!bt.lQ(localObject5[i], (String)localObject2)) {
+        if (!bu.lX(localObject5[i], (String)localObject2)) {
           break label470;
         }
         j = 1;
@@ -166,21 +166,20 @@ public class QbCallBackBroadcast
     }
     if (j == 0)
     {
-      ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() originVerify:%s verifyKey:%s", new Object[] { localObject4, localObject2 });
+      ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() originVerify:%s verifyKey:%s", new Object[] { localObject4, localObject2 });
       AppMethodBeat.o(39122);
       return;
     }
     label470:
-    label1151:
     for (localObject2 = paramIntent.getStringExtra("change_file");; localObject2 = "")
     {
       if (paramIntent.hasExtra("menuId")) {}
       for (i = paramIntent.getIntExtra("menuId", -1);; i = -1)
       {
-        if (bt.jx(i, 11)) {}
+        if (bu.jB(i, 11)) {}
         while (!com.tencent.mm.ui.chatting.g.a.isFileExist((String)localObject2))
         {
-          ad.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath(%s) not exitst", new Object[] { localObject2 });
+          ae.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath(%s) not exitst", new Object[] { localObject2 });
           AppMethodBeat.o(39122);
           return;
           localObject2 = localObject1;
@@ -188,10 +187,10 @@ public class QbCallBackBroadcast
         if (paramIntent.hasExtra("activity_status")) {}
         for (paramIntent = paramIntent.getStringExtra("activity_status");; paramIntent = "")
         {
-          if (bt.lQ((String)localObject3, "qb"))
+          if (bu.lX((String)localObject3, "qb"))
           {
-            localObject3 = f.ffc();
-            ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "id:%s hasCurrentBall:%s activityStatus:%s  curFilePath:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(((f)localObject3).bKz()), paramIntent, localObject2 });
+            localObject3 = f.fiS();
+            ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "id:%s hasCurrentBall:%s activityStatus:%s  curFilePath:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(((f)localObject3).bLw()), paramIntent, localObject2 });
             switch (i)
             {
             }
@@ -199,62 +198,62 @@ public class QbCallBackBroadcast
             {
               AppMethodBeat.o(39122);
               return;
-              if (bt.lQ((String)localObject2, ((f)localObject3).mFilePath))
+              if (bu.lX((String)localObject2, ((f)localObject3).mFilePath))
               {
-                if (!((f)localObject3).bKz())
+                if (!((f)localObject3).bLw())
                 {
-                  ((f)localObject3).gf(true);
+                  ((com.tencent.mm.plugin.ball.service.a)localObject3).o(true, 2);
                   f.E(paramContext, true);
                   AppMethodBeat.o(39122);
                   return;
                 }
-                ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall() == true", new Object[] { localObject1 });
+                ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall() == true", new Object[] { localObject1 });
                 AppMethodBeat.o(39122);
                 return;
-                if (bt.lQ((String)localObject2, ((f)localObject3).mFilePath))
+                if (bu.lX((String)localObject2, ((f)localObject3).mFilePath))
                 {
-                  if (((f)localObject3).bKz())
+                  if (((f)localObject3).bLw())
                   {
-                    ((f)localObject3).gf(false);
+                    ((com.tencent.mm.plugin.ball.service.a)localObject3).o(false, 2);
                     AppMethodBeat.o(39122);
                     return;
                   }
-                  ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall() == false", new Object[] { localObject1 });
+                  ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall() == false", new Object[] { localObject1 });
                   AppMethodBeat.o(39122);
                   return;
-                  if (bt.lQ((String)localObject2, ((f)localObject3).mFilePath))
+                  if (bu.lX((String)localObject2, ((f)localObject3).mFilePath))
                   {
-                    if (bt.lQ(paramIntent, "0"))
+                    if (bu.lX(paramIntent, "0"))
                     {
-                      ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "QBonBackground");
-                      aq.aA(KKx);
-                      ((f)localObject3).bgC();
-                      ((f)localObject3).ffe();
-                      ((f)localObject3).iT(false);
-                      if (!AppForegroundDelegate.cSQ.cAU) {
-                        ((f)localObject3).bKE();
+                      ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "QBonBackground");
+                      ar.ay(LgR);
+                      ((f)localObject3).bhk();
+                      ((f)localObject3).fiU();
+                      ((f)localObject3).iS(false);
+                      if (!AppForegroundDelegate.cTA.cBB) {
+                        ((f)localObject3).bLB();
                       }
-                      paramContext = HandOffFile.M(((com.tencent.mm.plugin.ball.service.a)localObject3).nGj);
-                      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).h(paramContext);
+                      paramContext = HandOffFile.O(((com.tencent.mm.plugin.ball.service.a)localObject3).nLK);
+                      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).i(paramContext);
                       AppMethodBeat.o(39122);
                       return;
                     }
-                    if (bt.lQ(paramIntent, "1"))
+                    if (bu.lX(paramIntent, "1"))
                     {
-                      ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "QBonForeground");
-                      aq.f(KKx);
-                      paramContext = HandOffFile.M(((com.tencent.mm.plugin.ball.service.a)localObject3).nGj);
-                      paramContext.uDJ = 1;
-                      paramContext.setKey(HandOff.Ik(1));
-                      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).g(paramContext);
+                      ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "QBonForeground");
+                      ar.f(LgR);
+                      paramContext = HandOffFile.O(((com.tencent.mm.plugin.ball.service.a)localObject3).nLK);
+                      paramContext.uPo = 1;
+                      paramContext.setKey(HandOff.II(1));
+                      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).h(paramContext);
                       AppMethodBeat.o(39122);
                       return;
-                      if (!bt.lQ((String)localObject2, ((f)localObject3).mFilePath))
+                      if (!bu.lX((String)localObject2, ((f)localObject3).mFilePath))
                       {
                         ((f)localObject3).onDestroy();
-                        ((f)localObject3).J((String)localObject2, f.ZF((String)localObject2), ((f)localObject3).oTR);
-                        ad.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "updateQbFloatBallMenu enterFloatBall:%s", new Object[] { Boolean.valueOf(((f)localObject3).bKz()) });
-                        f.E(paramContext, ((f)localObject3).bKz());
+                        ((f)localObject3).J((String)localObject2, f.aaw((String)localObject2), ((f)localObject3).pat);
+                        ae.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "updateQbFloatBallMenu enterFloatBall:%s", new Object[] { Boolean.valueOf(((f)localObject3).bLw()) });
+                        f.E(paramContext, ((f)localObject3).bLw());
                       }
                     }
                   }
@@ -262,7 +261,7 @@ public class QbCallBackBroadcast
               }
             }
           }
-          ad.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() unknow source(type:%s)", new Object[] { localObject3 });
+          ae.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() unknow source(type:%s)", new Object[] { localObject3 });
           AppMethodBeat.o(39122);
           return;
         }
@@ -272,7 +271,7 @@ public class QbCallBackBroadcast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.QbCallBackBroadcast
  * JD-Core Version:    0.7.0.1
  */

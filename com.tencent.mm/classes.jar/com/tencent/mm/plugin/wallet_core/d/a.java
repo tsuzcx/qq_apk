@@ -25,7 +25,7 @@ public final class a
     this.db = parame;
   }
   
-  public final boolean aSJ()
+  public final boolean aTi()
   {
     AppMethodBeat.i(70580);
     boolean bool = this.db.execSQL("LoanEntryInfo", "delete from LoanEntryInfo");
@@ -33,7 +33,7 @@ public final class a
     return bool;
   }
   
-  public final n eGZ()
+  public final n eKH()
   {
     n localn = null;
     AppMethodBeat.i(70579);
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.a
  * JD-Core Version:    0.7.0.1
  */

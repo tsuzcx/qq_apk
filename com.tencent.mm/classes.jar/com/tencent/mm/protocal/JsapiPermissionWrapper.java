@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,112 +14,112 @@ public class JsapiPermissionWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<JsapiPermissionWrapper> CREATOR;
-  public static final JsapiPermissionWrapper FnD;
-  public static final JsapiPermissionWrapper FnE;
-  public static final JsapiPermissionWrapper FnF;
-  public static final JsapiPermissionWrapper FnG;
-  public byte[] FnH;
-  public int FnI;
-  private Set<Integer> FnJ;
-  private Set<Integer> FnK;
+  public static final JsapiPermissionWrapper FGb;
+  public static final JsapiPermissionWrapper FGc;
+  public static final JsapiPermissionWrapper FGd;
+  public static final JsapiPermissionWrapper FGe;
+  public byte[] FGf;
+  public int FGg;
+  private Set<Integer> FGh;
+  private Set<Integer> FGi;
   
   static
   {
     AppMethodBeat.i(152466);
-    FnD = new JsapiPermissionWrapper(1);
-    FnE = new JsapiPermissionWrapper(2);
-    FnF = new JsapiPermissionWrapper(3);
-    FnG = new JsapiPermissionWrapper(4);
+    FGb = new JsapiPermissionWrapper(1);
+    FGc = new JsapiPermissionWrapper(2);
+    FGd = new JsapiPermissionWrapper(3);
+    FGe = new JsapiPermissionWrapper(4);
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(152466);
   }
   
   public JsapiPermissionWrapper()
   {
-    this.FnH = null;
-    this.FnI = 0;
-    this.FnH = null;
+    this.FGf = null;
+    this.FGg = 0;
+    this.FGf = null;
   }
   
   public JsapiPermissionWrapper(int paramInt)
   {
     AppMethodBeat.i(152452);
-    this.FnH = null;
-    this.FnI = 0;
-    this.FnI = paramInt;
-    this.FnH = new byte[0];
+    this.FGf = null;
+    this.FGg = 0;
+    this.FGg = paramInt;
+    this.FGf = new byte[0];
     AppMethodBeat.o(152452);
   }
   
   private JsapiPermissionWrapper(Parcel paramParcel)
   {
     AppMethodBeat.i(152458);
-    this.FnH = null;
-    this.FnI = 0;
-    this.FnH = paramParcel.createByteArray();
-    this.FnI = paramParcel.readInt();
-    G(paramParcel.createIntArray());
+    this.FGf = null;
+    this.FGg = 0;
+    this.FGf = paramParcel.createByteArray();
+    this.FGg = paramParcel.readInt();
     H(paramParcel.createIntArray());
+    I(paramParcel.createIntArray());
     AppMethodBeat.o(152458);
   }
   
   public JsapiPermissionWrapper(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(152451);
-    this.FnH = null;
-    this.FnI = 0;
+    this.FGf = null;
+    this.FGg = 0;
     if (paramArrayOfByte == null)
     {
-      this.FnH = null;
+      this.FGf = null;
       AppMethodBeat.o(152451);
       return;
     }
-    this.FnH = paramArrayOfByte;
+    this.FGf = paramArrayOfByte;
     AppMethodBeat.o(152451);
-  }
-  
-  private void G(int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(152461);
-    if (this.FnJ == null) {
-      this.FnJ = new HashSet();
-    }
-    while ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
-    {
-      int i = 0;
-      while (i < paramArrayOfInt.length)
-      {
-        this.FnJ.add(Integer.valueOf(paramArrayOfInt[i]));
-        i += 1;
-      }
-      this.FnJ.clear();
-    }
-    AppMethodBeat.o(152461);
   }
   
   private void H(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(152464);
-    if (this.FnK == null) {
-      this.FnK = new HashSet();
+    AppMethodBeat.i(152461);
+    if (this.FGh == null) {
+      this.FGh = new HashSet();
     }
     while ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
     {
       int i = 0;
       while (i < paramArrayOfInt.length)
       {
-        this.FnK.add(Integer.valueOf(paramArrayOfInt[i]));
+        this.FGh.add(Integer.valueOf(paramArrayOfInt[i]));
         i += 1;
       }
-      this.FnK.clear();
+      this.FGh.clear();
+    }
+    AppMethodBeat.o(152461);
+  }
+  
+  private void I(int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(152464);
+    if (this.FGi == null) {
+      this.FGi = new HashSet();
+    }
+    while ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+    {
+      int i = 0;
+      while (i < paramArrayOfInt.length)
+      {
+        this.FGi.add(Integer.valueOf(paramArrayOfInt[i]));
+        i += 1;
+      }
+      this.FGi.clear();
     }
     AppMethodBeat.o(152464);
   }
   
-  private boolean ZC(int paramInt)
+  private boolean aai(int paramInt)
   {
     AppMethodBeat.i(152462);
-    if ((this.FnJ != null) && (this.FnJ.contains(Integer.valueOf(paramInt))))
+    if ((this.FGh != null) && (this.FGh.contains(Integer.valueOf(paramInt))))
     {
       AppMethodBeat.o(152462);
       return true;
@@ -128,10 +128,10 @@ public class JsapiPermissionWrapper
     return false;
   }
   
-  private boolean ZD(int paramInt)
+  private boolean aaj(int paramInt)
   {
     AppMethodBeat.i(152465);
-    if ((this.FnK != null) && (this.FnK.contains(Integer.valueOf(paramInt))))
+    if ((this.FGi != null) && (this.FGi.contains(Integer.valueOf(paramInt))))
     {
       AppMethodBeat.o(152465);
       return true;
@@ -140,127 +140,56 @@ public class JsapiPermissionWrapper
     return false;
   }
   
-  public final int ZB(int paramInt)
-  {
-    AppMethodBeat.i(195459);
-    if (ZD(paramInt))
-    {
-      AppMethodBeat.o(195459);
-      return 1;
-    }
-    if (ZC(paramInt))
-    {
-      AppMethodBeat.o(195459);
-      return 0;
-    }
-    if (this.FnI == 1)
-    {
-      if ((paramInt == 34) || (paramInt == 75))
-      {
-        ad.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(195459);
-        return 0;
-      }
-      AppMethodBeat.o(195459);
-      return 1;
-    }
-    if (this.FnI == 2)
-    {
-      if (paramInt == -3)
-      {
-        AppMethodBeat.o(195459);
-        return 1;
-      }
-      AppMethodBeat.o(195459);
-      return 0;
-    }
-    if (this.FnI == 3)
-    {
-      if ((paramInt == 34) || (paramInt == 75) || (paramInt == 23))
-      {
-        ad.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(195459);
-        return 0;
-      }
-      AppMethodBeat.o(195459);
-      return 1;
-    }
-    if (this.FnI == 4)
-    {
-      if ((paramInt == 34) || (paramInt == 75))
-      {
-        ad.i("MicroMsg.JsapiPermissionWrapper", "hy: on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(195459);
-        return 0;
-      }
-      AppMethodBeat.o(195459);
-      return 1;
-    }
-    if ((paramInt == -2) || (paramInt == -3))
-    {
-      AppMethodBeat.o(195459);
-      return 1;
-    }
-    if ((this.FnH == null) || (paramInt < 0) || (paramInt >= this.FnH.length))
-    {
-      AppMethodBeat.o(195459);
-      return 0;
-    }
-    paramInt = this.FnH[paramInt];
-    AppMethodBeat.o(195459);
-    return paramInt;
-  }
-  
   /* Error */
   public final void a(int paramInt, byte paramByte)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 139
+    //   2: ldc 120
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   8: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   11: ifnull +7 -> 18
     //   14: iload_1
     //   15: ifge +29 -> 44
-    //   18: ldc 127
-    //   20: ldc 141
+    //   18: ldc 122
+    //   20: ldc 124
     //   22: iconst_1
     //   23: anewarray 4	java/lang/Object
     //   26: dup
     //   27: iconst_0
     //   28: iload_1
-    //   29: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   29: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   32: aastore
-    //   33: invokestatic 144	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   36: ldc 139
+    //   33: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   36: ldc 120
     //   38: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: aload_0
     //   42: monitorexit
     //   43: return
     //   44: iload_1
     //   45: aload_0
-    //   46: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   46: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   49: arraylength
     //   50: if_icmplt +63 -> 113
-    //   53: ldc 127
-    //   55: ldc 146
+    //   53: ldc 122
+    //   55: ldc 132
     //   57: iconst_2
     //   58: anewarray 4	java/lang/Object
     //   61: dup
     //   62: iconst_0
     //   63: iload_1
-    //   64: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   64: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   67: aastore
     //   68: dup
     //   69: iconst_1
     //   70: aload_0
-    //   71: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   71: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   74: arraylength
-    //   75: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   75: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   78: aastore
-    //   79: invokestatic 149	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   79: invokestatic 135	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   82: iload_1
     //   83: iconst_1
     //   84: iadd
@@ -268,25 +197,25 @@ public class JsapiPermissionWrapper
     //   87: astore_3
     //   88: aload_3
     //   89: iconst_2
-    //   90: invokestatic 155	java/util/Arrays:fill	([BB)V
+    //   90: invokestatic 141	java/util/Arrays:fill	([BB)V
     //   93: aload_0
-    //   94: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   94: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   97: iconst_0
     //   98: aload_3
     //   99: iconst_0
     //   100: aload_0
-    //   101: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   101: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   104: arraylength
-    //   105: invokestatic 161	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   105: invokestatic 147	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   108: aload_0
     //   109: aload_3
-    //   110: putfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   110: putfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   113: aload_0
-    //   114: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FnH	[B
+    //   114: getfield 55	com/tencent/mm/protocal/JsapiPermissionWrapper:FGf	[B
     //   117: iload_1
     //   118: iload_2
     //   119: bastore
-    //   120: ldc 139
+    //   120: ldc 120
     //   122: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   125: goto -84 -> 41
     //   128: astore_3
@@ -309,6 +238,77 @@ public class JsapiPermissionWrapper
     //   113	125	128	finally
   }
   
+  public final int aah(int paramInt)
+  {
+    AppMethodBeat.i(218912);
+    if (aaj(paramInt))
+    {
+      AppMethodBeat.o(218912);
+      return 1;
+    }
+    if (aai(paramInt))
+    {
+      AppMethodBeat.o(218912);
+      return 0;
+    }
+    if (this.FGg == 1)
+    {
+      if ((paramInt == 34) || (paramInt == 75))
+      {
+        ae.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(218912);
+        return 0;
+      }
+      AppMethodBeat.o(218912);
+      return 1;
+    }
+    if (this.FGg == 2)
+    {
+      if (paramInt == -3)
+      {
+        AppMethodBeat.o(218912);
+        return 1;
+      }
+      AppMethodBeat.o(218912);
+      return 0;
+    }
+    if (this.FGg == 3)
+    {
+      if ((paramInt == 34) || (paramInt == 75) || (paramInt == 23))
+      {
+        ae.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(218912);
+        return 0;
+      }
+      AppMethodBeat.o(218912);
+      return 1;
+    }
+    if (this.FGg == 4)
+    {
+      if ((paramInt == 34) || (paramInt == 75))
+      {
+        ae.i("MicroMsg.JsapiPermissionWrapper", "hy: on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(218912);
+        return 0;
+      }
+      AppMethodBeat.o(218912);
+      return 1;
+    }
+    if ((paramInt == -2) || (paramInt == -3))
+    {
+      AppMethodBeat.o(218912);
+      return 1;
+    }
+    if ((this.FGf == null) || (paramInt < 0) || (paramInt >= this.FGf.length))
+    {
+      AppMethodBeat.o(218912);
+      return 0;
+    }
+    paramInt = this.FGf[paramInt];
+    AppMethodBeat.o(218912);
+    return paramInt;
+  }
+  
   public int describeContents()
   {
     return 0;
@@ -321,17 +321,17 @@ public class JsapiPermissionWrapper
     {
       return false;
       paramObject = (JsapiPermissionWrapper)paramObject;
-      if (this.FnH == paramObject.FnH) {
+      if (this.FGf == paramObject.FGf) {
         return true;
       }
-    } while ((this.FnH == null) || (paramObject.FnH == null) || (this.FnH.length != paramObject.FnH.length));
+    } while ((this.FGf == null) || (paramObject.FGf == null) || (this.FGf.length != paramObject.FGf.length));
     int i = 0;
     for (;;)
     {
-      if (i >= this.FnH.length) {
+      if (i >= this.FGf.length) {
         break label87;
       }
-      if (this.FnH[i] != paramObject.FnH[i]) {
+      if (this.FGf[i] != paramObject.FGf[i]) {
         break;
       }
       i += 1;
@@ -340,13 +340,13 @@ public class JsapiPermissionWrapper
     return true;
   }
   
-  public final int[] fgs()
+  public final int[] fki()
   {
     AppMethodBeat.i(152460);
-    if (this.FnJ != null)
+    if (this.FGh != null)
     {
-      int[] arrayOfInt = new int[this.FnJ.size()];
-      Iterator localIterator = this.FnJ.iterator();
+      int[] arrayOfInt = new int[this.FGh.size()];
+      Iterator localIterator = this.FGh.iterator();
       int i = 0;
       if (localIterator.hasNext())
       {
@@ -366,13 +366,13 @@ public class JsapiPermissionWrapper
     return new int[0];
   }
   
-  public final int[] fgt()
+  public final int[] fkj()
   {
     AppMethodBeat.i(152463);
-    if (this.FnK != null)
+    if (this.FGi != null)
     {
-      int[] arrayOfInt = new int[this.FnK.size()];
-      Iterator localIterator = this.FnK.iterator();
+      int[] arrayOfInt = new int[this.FGi.size()];
+      Iterator localIterator = this.FGi.iterator();
       int i = 0;
       if (localIterator.hasNext())
       {
@@ -392,9 +392,9 @@ public class JsapiPermissionWrapper
     return new int[0];
   }
   
-  public final JsapiPermissionWrapper fgu()
+  public final JsapiPermissionWrapper fkk()
   {
-    AppMethodBeat.i(195460);
+    AppMethodBeat.i(218913);
     Object localObject1 = null;
     try
     {
@@ -410,24 +410,24 @@ public class JsapiPermissionWrapper
     finally
     {
       localObject1.recycle();
-      AppMethodBeat.o(195460);
+      AppMethodBeat.o(218913);
     }
   }
   
   public final void fromBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(152459);
-    this.FnH = paramBundle.getByteArray("jsapi_perm_wrapper_bytes");
-    this.FnI = paramBundle.getInt("jsapi_perm_wrapper_hardcodePermission");
-    G(paramBundle.getIntArray("jsapi_perm_wrapper_blacklist"));
-    H(paramBundle.getIntArray("jsapi_perm_wrapper_whitelist"));
+    this.FGf = paramBundle.getByteArray("jsapi_perm_wrapper_bytes");
+    this.FGg = paramBundle.getInt("jsapi_perm_wrapper_hardcodePermission");
+    H(paramBundle.getIntArray("jsapi_perm_wrapper_blacklist"));
+    I(paramBundle.getIntArray("jsapi_perm_wrapper_whitelist"));
     AppMethodBeat.o(152459);
   }
   
-  public final boolean mz(int paramInt)
+  public final boolean mC(int paramInt)
   {
     AppMethodBeat.i(152455);
-    if (ZB(paramInt) == 1)
+    if (aah(paramInt) == 1)
     {
       AppMethodBeat.o(152455);
       return true;
@@ -439,14 +439,14 @@ public class JsapiPermissionWrapper
   public String toString()
   {
     AppMethodBeat.i(152456);
-    if (this.FnH == null)
+    if (this.FGf == null)
     {
       AppMethodBeat.o(152456);
       return "null";
     }
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder(180);
-    byte[] arrayOfByte = this.FnH;
+    byte[] arrayOfByte = this.FGf;
     int j = arrayOfByte.length;
     int i = 0;
     while (i < j)
@@ -455,7 +455,7 @@ public class JsapiPermissionWrapper
       i += 1;
     }
     localObject = ((StringBuilder)localObject).toString();
-    ad.d("MicroMsg.JsapiPermissionWrapper", "toString cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ae.d("MicroMsg.JsapiPermissionWrapper", "toString cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(152456);
     return localObject;
   }
@@ -463,10 +463,10 @@ public class JsapiPermissionWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(152457);
-    paramParcel.writeByteArray(this.FnH);
-    paramParcel.writeInt(this.FnI);
-    paramParcel.writeIntArray(fgs());
-    paramParcel.writeIntArray(fgt());
+    paramParcel.writeByteArray(this.FGf);
+    paramParcel.writeInt(this.FGg);
+    paramParcel.writeIntArray(fki());
+    paramParcel.writeIntArray(fkj());
     AppMethodBeat.o(152457);
   }
 }

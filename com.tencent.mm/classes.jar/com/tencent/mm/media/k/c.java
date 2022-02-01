@@ -14,76 +14,57 @@ import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.a;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/util/GLEnvironmentUtil;", "", "()V", "Companion", "EGLEnvironment", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/util/GLEnvironmentUtil;", "", "()V", "Companion", "EGLEnvironment", "plugin-mediaeditor_release"})
 public final class c
 {
-  public static final float[] hoI;
-  public static final float[] hoJ;
-  public static final float[] hoK;
-  private static final int[] hoL;
-  private static final int[] hoM;
-  private static final int[] hoN;
-  private static final int[] hoO;
-  public static final a hoP;
+  private static final int[] hrA;
+  private static final int[] hrB;
+  private static final int[] hrC;
+  public static final a hrD;
+  public static final float[] hrw;
+  public static final float[] hrx;
+  public static final float[] hry;
+  private static final int[] hrz;
   
   static
   {
     AppMethodBeat.i(93890);
-    hoP = new a((byte)0);
-    hoI = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    hoJ = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    hoK = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    hoL = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12610, 1, 12344 };
-    hoM = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12338, 1, 12337, 4, 12352, 4, 12610, 1, 12344 };
-    hoN = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12344 };
-    hoO = new int[] { 12320, 32, 12321, 8, 12322, 8, 12323, 8, 12324, 8, 12352, 4, 12339, 4, 12344 };
+    hrD = new a((byte)0);
+    hrw = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    hrx = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    hry = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+    hrz = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12610, 1, 12344 };
+    hrA = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12338, 1, 12337, 4, 12352, 4, 12610, 1, 12344 };
+    hrB = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12344 };
+    hrC = new int[] { 12320, 32, 12321, 8, 12322, 8, 12323, 8, 12324, 8, 12352, 4, 12339, 4, 12344 };
     AppMethodBeat.o(93890);
   }
   
-  public static final void aug()
+  public static final void auv()
   {
     AppMethodBeat.i(93891);
-    a.aug();
+    a.auv();
     AppMethodBeat.o(93891);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/util/GLEnvironmentUtil$Companion;", "", "()V", "CUBE_PROTRAIT", "", "DEFAULT_EGL_CONTEXT_CLIENT_VERSION", "", "EGL_RECORDABLE_ANDROID", "HAS_REPORTED_EGL_VERSION", "", "MMKV_GL_KEY", "ROTATION_180", "ROTATION_270", "ROTATION_90", "SUPPORT_EGL_CONTEXT_CLIENT_VERSION", "TAG", "TEXTURE_COORD", "TEXTURE_COORD_VERTICAL_FLIP", "commonEGLAttributeList", "", "commonEGLAttributeListWithMSAA", "commonEGLAttributeListWithoutRecordable", "shareEGLSurfaceTypeAttributeList", "getShareEGLSurfaceTypeAttributeList", "()[I", "bindContextAndSurface", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "eglContext", "Landroid/opengl/EGLContext;", "surface", "width", "height", "bindFrameBuffer", "", "fbo", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "texture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "bindRenderBuffer", "buffer", "checkEglError", "", "msg", "tag", "checkGLError", "chooseConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "eGL", "Ljavax/microedition/khronos/egl/EGL10;", "eGLDisplay", "Ljavax/microedition/khronos/egl/EGLDisplay;", "redSize", "greenSize", "blueSize", "alphaSize", "withSample", "chooseConfigEGL14", "Landroid/opengl/EGLConfig;", "Landroid/opengl/EGLDisplay;", "clearGL", "deleteFrameBuffer", "deleteTexture", "deleteTextures", "textures", "drawBitmapToTexture", "bitmap", "Landroid/graphics/Bitmap;", "eglBindSurface", "mEGLContext", "mEGLDisplay", "mSurface", "eglCreateSurface", "Landroid/opengl/EGLSurface;", "eglSetupByShareGLContext", "mShareGLContext", "eglSetupBySurface", "Landroid/view/Surface;", "mSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "shareEGLContext", "eglSetupWithoutSurface", "eglUnbindSurface", "eglEnvironment", "backupSurface", "genFrameBuffer", "genRenderBuffer", "genTexture", "genTextureExternal", "loadShader", "shaderSource", "type", "loadShaderProgram", "vertexShaderSource", "fragmentShaderSource", "release", "eglSurface", "eglDisplay", "resolveMirror", "textureCoords", "resolveRotate", "rotation", "saveExternalTexture", "saveGLPixels", "saveTexture", "saveTextureExternal", "setupDeviceSupportGLVersion", "context", "Landroid/content/Context;", "swap", "prevIndex", "afterIndex", "swapBuffers", "uploadBitmapTexture", "texName", "plugin-mediaeditor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/util/GLEnvironmentUtil$Companion;", "", "()V", "CUBE_PROTRAIT", "", "DEFAULT_EGL_CONTEXT_CLIENT_VERSION", "", "EGL_RECORDABLE_ANDROID", "HAS_REPORTED_EGL_VERSION", "", "MMKV_GL_KEY", "ROTATION_180", "ROTATION_270", "ROTATION_90", "SUPPORT_EGL_CONTEXT_CLIENT_VERSION", "TAG", "TEXTURE_COORD", "TEXTURE_COORD_VERTICAL_FLIP", "commonEGLAttributeList", "", "commonEGLAttributeListWithMSAA", "commonEGLAttributeListWithoutRecordable", "shareEGLSurfaceTypeAttributeList", "getShareEGLSurfaceTypeAttributeList", "()[I", "bindContextAndSurface", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "eglContext", "Landroid/opengl/EGLContext;", "surface", "width", "height", "bindFrameBuffer", "", "fbo", "Lcom/tencent/mm/media/globject/GLFrameBufferObject;", "texture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "bindRenderBuffer", "buffer", "checkEglError", "", "msg", "tag", "checkGLError", "chooseConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "eGL", "Ljavax/microedition/khronos/egl/EGL10;", "eGLDisplay", "Ljavax/microedition/khronos/egl/EGLDisplay;", "redSize", "greenSize", "blueSize", "alphaSize", "withSample", "chooseConfigEGL14", "Landroid/opengl/EGLConfig;", "Landroid/opengl/EGLDisplay;", "clearGL", "deleteFrameBuffer", "deleteTexture", "deleteTextures", "textures", "drawBitmapToTexture", "bitmap", "Landroid/graphics/Bitmap;", "eglBindSurface", "mEGLContext", "mEGLDisplay", "mSurface", "eglCreateSurface", "Landroid/opengl/EGLSurface;", "eglSetupByShareGLContext", "mShareGLContext", "eglSetupBySurface", "Landroid/view/Surface;", "mSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "shareEGLContext", "eglSetupWithoutSurface", "eglUnbindSurface", "eglEnvironment", "backupSurface", "genFrameBuffer", "genRenderBuffer", "genTexture", "genTextureExternal", "loadShader", "shaderSource", "type", "loadShaderProgram", "vertexShaderSource", "fragmentShaderSource", "release", "eglSurface", "eglDisplay", "resolveMirror", "textureCoords", "resolveRotate", "rotation", "saveExternalTexture", "saveGLPixels", "saveTexture", "saveTextureExternal", "setupDeviceSupportGLVersion", "context", "Landroid/content/Context;", "swap", "prevIndex", "afterIndex", "swapBuffers", "uploadBitmapTexture", "texName", "plugin-mediaeditor_release"})
   public static final class a
   {
-    private static int Z(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(93874);
-      p.h(paramString, "shaderSource");
-      int[] arrayOfInt = new int[1];
-      paramInt = GLES30.glCreateShader(paramInt);
-      GLES30.glShaderSource(paramInt, paramString);
-      GLES30.glCompileShader(paramInt);
-      GLES30.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
-      if (arrayOfInt[0] == 0)
-      {
-        ad.e("MicroMsg.GLEnvironmentUtil", "loadShader error, infoLog: " + GLES30.glGetShaderInfoLog(paramInt));
-        AppMethodBeat.o(93874);
-        return 0;
-      }
-      AppMethodBeat.o(93874);
-      return paramInt;
-    }
-    
     public static EGLSurface a(EGLDisplay paramEGLDisplay, Object paramObject)
     {
-      AppMethodBeat.i(219315);
+      AppMethodBeat.i(217541);
       p.h(paramEGLDisplay, "mEGLDisplay");
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
       int[] arrayOfInt = new int[1];
-      EGL14.eglChooseConfig(paramEGLDisplay, c.auf(), 0, arrayOfEGLConfig, 0, 1, arrayOfInt, 0);
+      EGL14.eglChooseConfig(paramEGLDisplay, c.auu(), 0, arrayOfEGLConfig, 0, 1, arrayOfInt, 0);
       paramEGLDisplay = EGL14.eglCreateWindowSurface(paramEGLDisplay, arrayOfEGLConfig[0], paramObject, new int[] { 12344 }, 0);
       p.g(paramEGLDisplay, "EGL14.eglCreateWindowSur…rayOf(EGL14.EGL_NONE), 0)");
-      AppMethodBeat.o(219315);
+      AppMethodBeat.o(217541);
       return paramEGLDisplay;
     }
     
@@ -91,7 +72,7 @@ public final class c
     {
       AppMethodBeat.i(93885);
       p.h(paramEGLContext, "eglContext");
-      ad.i("MicroMsg.GLEnvironmentUtil", "bindContextAndSurface");
+      ae.i("MicroMsg.GLEnvironmentUtil", "bindContextAndSurface");
       if ((paramObject != null) && (!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceHolder)))
       {
         paramEGLContext = (Throwable)new IllegalArgumentException("unsupported surface");
@@ -114,14 +95,14 @@ public final class c
       }
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
       localObject = new int[1];
-      EGL14.eglChooseConfig(localEGLDisplay, c.auf(), 0, arrayOfEGLConfig, 0, 1, (int[])localObject, 0);
+      EGL14.eglChooseConfig(localEGLDisplay, c.auu(), 0, arrayOfEGLConfig, 0, 1, (int[])localObject, 0);
       if (arrayOfEGLConfig[0] == null)
       {
         paramEGLContext = (Throwable)new RuntimeException("chooseConfig failed");
         AppMethodBeat.o(93885);
         throw paramEGLContext;
       }
-      int i = ax.aQz("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3);
+      int i = ay.aRW("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3);
       localObject = EGL14.eglCreateContext(localEGLDisplay, arrayOfEGLConfig[0], paramEGLContext, new int[] { 12440, i, 12344 }, 0);
       if (p.i(localObject, EGL14.EGL_NO_CONTEXT))
       {
@@ -129,7 +110,7 @@ public final class c
         AppMethodBeat.o(93885);
         throw paramEGLContext;
       }
-      yh("eglCreateContext");
+      yR("eglCreateContext");
       if ((paramInt1 > 0) && (paramInt2 > 0))
       {
         paramEGLContext = new int[5];
@@ -147,20 +128,20 @@ public final class c
           for (paramEGLContext = EGL14.eglCreateWindowSurface(localEGLDisplay, arrayOfEGLConfig[0], paramObject, paramEGLContext, 0);; paramEGLContext = EGL14.eglCreatePbufferSurface(localEGLDisplay, arrayOfEGLConfig[0], paramEGLContext, 0))
           {
             if (paramObject == null) {
-              break label494;
+              break label491;
             }
-            yh("eglCreateWindowSurface");
+            yR("eglCreateWindowSurface");
             if (((paramEGLContext == null) || (paramEGLContext == EGL14.EGL_NO_SURFACE)) && (EGL14.eglGetError() == 12299)) {
-              ad.e("MicroMsg.GLEnvironmentUtil", "makeMyEGLCurrentSurface:returned EGL_BAD_NATIVE_WINDOW.");
+              ae.e("MicroMsg.GLEnvironmentUtil", "makeMyEGLCurrentSurface:returned EGL_BAD_NATIVE_WINDOW.");
             }
             if (paramEGLContext != null)
             {
               EGL14.eglMakeCurrent(localEGLDisplay, paramEGLContext, paramEGLContext, (EGLContext)localObject);
-              yh("eglMakeCurrent");
+              yR("eglMakeCurrent");
             }
             p.g(localEGLDisplay, "eglDisplay");
             if (paramEGLContext == null) {
-              p.gfZ();
+              p.gkB();
             }
             p.g(localObject, "outputEGLContext");
             paramEGLContext = new c.b(localEGLDisplay, paramEGLContext, (EGLContext)localObject);
@@ -175,11 +156,11 @@ public final class c
         {
           for (;;)
           {
-            ad.e("MicroMsg.GLEnvironmentUtil", "eglCreateWindowSurface", new Object[] { paramEGLContext });
+            ae.e("MicroMsg.GLEnvironmentUtil", "eglCreateWindowSurface", new Object[] { paramEGLContext });
             paramEGLContext = null;
             continue;
-            label494:
-            yh("eglCreatePbufferSurface");
+            label491:
+            yR("eglCreatePbufferSurface");
           }
         }
       }
@@ -187,33 +168,33 @@ public final class c
     
     public static c.b a(Surface paramSurface, SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, EGLContext paramEGLContext)
     {
-      AppMethodBeat.i(219313);
-      ad.i("MicroMsg.GLEnvironmentUtil", "eglSetupBySurface, surface:" + paramSurface + ", surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
+      AppMethodBeat.i(217539);
+      ae.i("MicroMsg.GLEnvironmentUtil", "eglSetupBySurface, surface:" + paramSurface + ", surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
       EGLDisplay localEGLDisplay = EGL14.eglGetDisplay(0);
       if (localEGLDisplay == EGL14.EGL_NO_DISPLAY)
       {
         paramSurface = (Throwable)new RuntimeException("unable to get EGL14 display");
-        AppMethodBeat.o(219313);
+        AppMethodBeat.o(217539);
         throw paramSurface;
       }
       Object localObject = new int[2];
       if (!EGL14.eglInitialize(localEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
       {
         paramSurface = (Throwable)new RuntimeException("unable to initialize EGL14");
-        AppMethodBeat.o(219313);
+        AppMethodBeat.o(217539);
         throw paramSurface;
       }
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
       localObject = new int[1];
       if ((paramSurface != null) || (paramSurfaceTexture != null))
       {
-        EGL14.eglChooseConfig(localEGLDisplay, c.auf(), 0, arrayOfEGLConfig, 0, 1, (int[])localObject, 0);
-        yh("eglCreateContext RGB888+recordable ES2");
-        int i = ax.aQz("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3);
+        EGL14.eglChooseConfig(localEGLDisplay, c.auu(), 0, arrayOfEGLConfig, 0, 1, (int[])localObject, 0);
+        yR("eglCreateContext RGB888+recordable ES2");
+        int i = ay.aRW("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3);
         localObject = EGL14.eglCreateContext(localEGLDisplay, arrayOfEGLConfig[0], paramEGLContext, new int[] { 12440, i, 12344 }, 0);
-        yh("eglCreateContext");
+        yR("eglCreateContext");
         if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-          break label382;
+          break label380;
         }
         paramEGLContext = new int[5];
         paramEGLContext[0] = 12375;
@@ -221,45 +202,45 @@ public final class c
         paramEGLContext[2] = 12374;
         paramEGLContext[3] = paramInt2;
         paramEGLContext[4] = 12344;
-        label276:
+        label274:
         if (paramSurface == null) {
-          break label397;
+          break label395;
         }
         paramSurfaceTexture = EGL14.eglCreateWindowSurface(localEGLDisplay, arrayOfEGLConfig[0], paramSurface, paramEGLContext, 0);
-        label294:
+        label292:
         if (paramSurface == null) {
-          break label434;
+          break label432;
         }
-        yh("eglCreateWindowSurface");
+        yR("eglCreateWindowSurface");
       }
       for (;;)
       {
         if (paramSurfaceTexture != null)
         {
           EGL14.eglMakeCurrent(localEGLDisplay, paramSurfaceTexture, paramSurfaceTexture, (EGLContext)localObject);
-          yh("eglMakeCurrent");
+          yR("eglMakeCurrent");
         }
         p.g(localEGLDisplay, "mEGLDisplay");
         p.g(localObject, "mEGLContext");
         paramSurface = new c.b(localEGLDisplay, paramSurfaceTexture, (EGLContext)localObject);
-        AppMethodBeat.o(219313);
+        AppMethodBeat.o(217539);
         return paramSurface;
-        EGL14.eglChooseConfig(localEGLDisplay, c.auf(), 0, arrayOfEGLConfig, 0, 1, (int[])localObject, 0);
+        EGL14.eglChooseConfig(localEGLDisplay, c.auu(), 0, arrayOfEGLConfig, 0, 1, (int[])localObject, 0);
         break;
-        label382:
+        label380:
         paramEGLContext = new int[1];
         paramEGLContext[0] = 12344;
-        break label276;
-        label397:
+        break label274;
+        label395:
         if (paramSurfaceTexture != null)
         {
           paramSurfaceTexture = EGL14.eglCreateWindowSurface(localEGLDisplay, arrayOfEGLConfig[0], paramSurfaceTexture, paramEGLContext, 0);
-          break label294;
+          break label292;
         }
         paramSurfaceTexture = EGL14.eglCreatePbufferSurface(localEGLDisplay, arrayOfEGLConfig[0], paramEGLContext, 0);
-        break label294;
-        label434:
-        yh("eglCreatePbufferSurface");
+        break label292;
+        label432:
+        yR("eglCreatePbufferSurface");
       }
     }
     
@@ -268,21 +249,21 @@ public final class c
       AppMethodBeat.i(93877);
       if (parama == null)
       {
-        ad.e("MicroMsg.GLEnvironmentUtil", "fbo is null !");
+        ae.e("MicroMsg.GLEnvironmentUtil", "fbo is null !");
         AppMethodBeat.o(93877);
         return;
       }
       if (paramd == null)
       {
-        ad.e("MicroMsg.GLEnvironmentUtil", "texture is null");
+        ae.e("MicroMsg.GLEnvironmentUtil", "texture is null");
         AppMethodBeat.o(93877);
         return;
       }
-      GLES30.glBindFramebuffer(36160, parama.hkh);
+      GLES30.glBindFramebuffer(36160, parama.hmV);
       if ((paramInt1 > 0) && (paramInt2 > 0)) {
         d.a(paramd, paramInt1, paramInt2, 0, null, 0, 0, 60);
       }
-      GLES30.glFramebufferTexture2D(36160, 36064, 3553, paramd.hko, 0);
+      GLES30.glFramebufferTexture2D(36160, 36064, 3553, paramd.hnc, 0);
       GLES30.glBindTexture(3553, 0);
       AppMethodBeat.o(93877);
     }
@@ -293,13 +274,13 @@ public final class c
       p.h(paramb, "eglEnvironment");
       if (paramb.eglSurface != EGL14.EGL_NO_DISPLAY)
       {
-        localObject = paramb.hoQ;
+        localObject = paramb.hrE;
         EGLSurface localEGLSurface = EGL14.EGL_NO_SURFACE;
         EGL14.eglMakeCurrent((EGLDisplay)localObject, localEGLSurface, localEGLSurface, EGL14.EGL_NO_CONTEXT);
-        EGL14.eglDestroySurface(paramb.hoQ, paramb.eglSurface);
-        EGL14.eglDestroyContext(paramb.hoQ, paramb.hoR);
+        EGL14.eglDestroySurface(paramb.hrE, paramb.eglSurface);
+        EGL14.eglDestroyContext(paramb.hrE, paramb.hrF);
         EGL14.eglReleaseThread();
-        EGL14.eglTerminate(paramb.hoQ);
+        EGL14.eglTerminate(paramb.hrE);
       }
       Object localObject = EGL14.EGL_NO_DISPLAY;
       p.g(localObject, "EGL14.EGL_NO_DISPLAY");
@@ -320,12 +301,47 @@ public final class c
         return false;
       }
       boolean bool = EGL14.eglSwapBuffers(paramEGLDisplay, paramEGLSurface);
-      yh("eglSwapBuffers");
+      yR("eglSwapBuffers");
       AppMethodBeat.o(93880);
       return bool;
     }
     
-    public static void aug()
+    private static boolean aA(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(93882);
+      p.h(paramString1, "msg");
+      p.h(paramString2, "tag");
+      int i = EGL14.eglGetError();
+      if (i != 12288)
+      {
+        ae.m(paramString2, paramString1 + ": EGL error: 0x" + Integer.toHexString(i), new Object[0]);
+        AppMethodBeat.o(93882);
+        return true;
+      }
+      AppMethodBeat.o(93882);
+      return false;
+    }
+    
+    private static int aa(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(93874);
+      p.h(paramString, "shaderSource");
+      int[] arrayOfInt = new int[1];
+      paramInt = GLES30.glCreateShader(paramInt);
+      GLES30.glShaderSource(paramInt, paramString);
+      GLES30.glCompileShader(paramInt);
+      GLES30.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
+      if (arrayOfInt[0] == 0)
+      {
+        ae.e("MicroMsg.GLEnvironmentUtil", "loadShader error, infoLog: " + GLES30.glGetShaderInfoLog(paramInt));
+        AppMethodBeat.o(93874);
+        return 0;
+      }
+      AppMethodBeat.o(93874);
+      return paramInt;
+    }
+    
+    public static void auv()
     {
       AppMethodBeat.i(93876);
       GLES30.glClear(16640);
@@ -334,7 +350,7 @@ public final class c
       AppMethodBeat.o(93876);
     }
     
-    public static int auh()
+    public static int auw()
     {
       AppMethodBeat.i(164119);
       int[] arrayOfInt = new int[1];
@@ -345,29 +361,29 @@ public final class c
       GLES30.glTexParameteri(3553, 10242, 33071);
       GLES30.glTexParameteri(3553, 10243, 33071);
       GLES30.glBindTexture(3553, 0);
-      yi("genTexture");
+      yS("genTexture");
       int i = arrayOfInt[0];
       AppMethodBeat.o(164119);
       return i;
     }
     
-    public static int ay(String paramString1, String paramString2)
+    public static int az(String paramString1, String paramString2)
     {
       AppMethodBeat.i(93875);
       p.h(paramString1, "vertexShaderSource");
       p.h(paramString2, "fragmentShaderSource");
       int[] arrayOfInt = new int[1];
-      int i = Z(paramString1, 35633);
+      int i = aa(paramString1, 35633);
       if (i == 0)
       {
-        ad.e("MicroMsg.GLEnvironmentUtil", "load vertex shader failed");
+        ae.e("MicroMsg.GLEnvironmentUtil", "load vertex shader failed");
         AppMethodBeat.o(93875);
         return 0;
       }
-      int j = Z(paramString2, 35632);
+      int j = aa(paramString2, 35632);
       if (j == 0)
       {
-        ad.e("MicroMsg.GLEnvironmentUtil", "load fragment shader failed");
+        ae.e("MicroMsg.GLEnvironmentUtil", "load fragment shader failed");
         AppMethodBeat.o(93875);
         return 0;
       }
@@ -378,7 +394,7 @@ public final class c
       GLES30.glGetProgramiv(k, 35714, arrayOfInt, 0);
       if (arrayOfInt[0] <= 0)
       {
-        ad.e("MicroMsg.GLEnvironmentUtil", "link program failed");
+        ae.e("MicroMsg.GLEnvironmentUtil", "link program failed");
         AppMethodBeat.o(93875);
         return 0;
       }
@@ -386,22 +402,6 @@ public final class c
       GLES30.glDeleteShader(j);
       AppMethodBeat.o(93875);
       return k;
-    }
-    
-    private static boolean az(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(93882);
-      p.h(paramString1, "msg");
-      p.h(paramString2, "tag");
-      int i = EGL14.eglGetError();
-      if (i != 12288)
-      {
-        ad.m(paramString2, paramString1 + ": EGL error: 0x" + Integer.toHexString(i), new Object[0]);
-        AppMethodBeat.o(93882);
-        return true;
-      }
-      AppMethodBeat.o(93882);
-      return false;
     }
     
     public static void b(Bitmap paramBitmap, int paramInt)
@@ -416,38 +416,38 @@ public final class c
     
     public static void swap(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(219316);
+      AppMethodBeat.i(217542);
       p.h(paramArrayOfFloat, "textureCoords");
       float f = paramArrayOfFloat[paramInt1];
       paramArrayOfFloat[paramInt1] = paramArrayOfFloat[paramInt2];
       paramArrayOfFloat[paramInt2] = f;
-      AppMethodBeat.o(219316);
+      AppMethodBeat.o(217542);
     }
     
-    public static void yi(String paramString)
+    public static void yS(String paramString)
     {
       AppMethodBeat.i(93884);
       int i = GLES30.glGetError();
       if (i != 0) {
-        ad.m("MicroMsg.GLEnvironmentUtil", paramString + ": GL error: 0x" + Integer.toHexString(i), new Object[0]);
+        ae.m("MicroMsg.GLEnvironmentUtil", paramString + ": GL error: 0x" + Integer.toHexString(i), new Object[0]);
       }
       AppMethodBeat.o(93884);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "", "disPlay", "Landroid/opengl/EGLDisplay;", "eglSurface", "Landroid/opengl/EGLSurface;", "eglContext", "Landroid/opengl/EGLContext;", "(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)V", "getDisPlay", "()Landroid/opengl/EGLDisplay;", "setDisPlay", "(Landroid/opengl/EGLDisplay;)V", "getEglContext", "()Landroid/opengl/EGLContext;", "setEglContext", "(Landroid/opengl/EGLContext;)V", "getEglSurface", "()Landroid/opengl/EGLSurface;", "setEglSurface", "(Landroid/opengl/EGLSurface;)V", "plugin-mediaeditor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "", "disPlay", "Landroid/opengl/EGLDisplay;", "eglSurface", "Landroid/opengl/EGLSurface;", "eglContext", "Landroid/opengl/EGLContext;", "(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)V", "getDisPlay", "()Landroid/opengl/EGLDisplay;", "setDisPlay", "(Landroid/opengl/EGLDisplay;)V", "getEglContext", "()Landroid/opengl/EGLContext;", "setEglContext", "(Landroid/opengl/EGLContext;)V", "getEglSurface", "()Landroid/opengl/EGLSurface;", "setEglSurface", "(Landroid/opengl/EGLSurface;)V", "plugin-mediaeditor_release"})
   public static final class b
   {
     public EGLSurface eglSurface;
-    public EGLDisplay hoQ;
-    public EGLContext hoR;
+    public EGLDisplay hrE;
+    public EGLContext hrF;
     
     public b(EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface, EGLContext paramEGLContext)
     {
       AppMethodBeat.i(93889);
-      this.hoQ = paramEGLDisplay;
+      this.hrE = paramEGLDisplay;
       this.eglSurface = paramEGLSurface;
-      this.hoR = paramEGLContext;
+      this.hrF = paramEGLContext;
       AppMethodBeat.o(93889);
     }
     
@@ -455,7 +455,7 @@ public final class c
     {
       AppMethodBeat.i(93888);
       p.h(paramEGLContext, "<set-?>");
-      this.hoR = paramEGLContext;
+      this.hrF = paramEGLContext;
       AppMethodBeat.o(93888);
     }
     
@@ -463,7 +463,7 @@ public final class c
     {
       AppMethodBeat.i(93886);
       p.h(paramEGLDisplay, "<set-?>");
-      this.hoQ = paramEGLDisplay;
+      this.hrE = paramEGLDisplay;
       AppMethodBeat.o(93886);
     }
   }

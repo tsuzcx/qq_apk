@@ -1,205 +1,195 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
-import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jc;
-import com.tencent.mm.g.a.jc.a;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import java.io.Serializable;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
+import com.tencent.mm.ui.base.CustomScrollView;
+import com.tencent.mm.ui.base.CustomScrollView.a;
+import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class t
-  extends p
-  implements Serializable
+  extends a
 {
-  protected g zEY;
-  protected boolean zEZ;
-  protected AdLandingPagesProxy.e zFa;
-  private c<jc> zFb;
+  List<m> aQH;
+  private l zUn;
+  private w zWb;
+  private CustomScrollView zWc;
   
-  public t(Context paramContext, g paramg, ViewGroup paramViewGroup)
+  public t(Context paramContext, w paramw, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramg, paramViewGroup);
-    AppMethodBeat.i(96577);
-    this.zEZ = false;
-    this.zFa = new AdLandingPagesProxy.e()
-    {
-      public final void be(Object paramAnonymousObject) {}
-      
-      public final void h(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(96573);
-        int i = ((Integer)paramAnonymousObject).intValue();
-        ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "onCallback, errType=" + paramAnonymousInt1 + ", errNo=" + paramAnonymousInt2 + ", state=" + i);
-        if (i == 0)
-        {
-          paramAnonymousObject = t.this.zEY.dvR + AdLandingPagesProxy.getInstance().getUin();
-          if (!TextUtils.isEmpty(paramAnonymousObject))
-          {
-            aj.getContext().getSharedPreferences("adLandingPageSp", 0).edit().putString(paramAnonymousObject, "0").commit();
-            ad.d("AdLandingPageSp", "saveString, key=" + paramAnonymousObject + ", value=" + "0");
-          }
-          paramAnonymousObject = new jc();
-          paramAnonymousObject.dvQ.dvR = t.this.zEY.dvR;
-          paramAnonymousObject.dvQ.state = i;
-          a.IbL.l(paramAnonymousObject);
-        }
-        AppMethodBeat.o(96573);
-      }
-    };
-    this.zFb = new c()
-    {
-      private boolean a(jc paramAnonymousjc)
-      {
-        AppMethodBeat.i(96575);
-        try
-        {
-          ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "GetHbCoverStateEvent callback, hbCoverId=" + paramAnonymousjc.dvQ.dvR + ", state=" + paramAnonymousjc.dvQ.state);
-          if ((t.this.zEY.dvR.equals(paramAnonymousjc.dvQ.dvR)) && (paramAnonymousjc.dvQ.state == 0)) {
-            aq.f(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(96574);
-                t.this.zEd.setText(t.this.zEY.zyC);
-                t.this.dXi();
-                AppMethodBeat.o(96574);
-              }
-            });
-          }
-          AppMethodBeat.o(96575);
-          return false;
-        }
-        catch (Exception paramAnonymousjc)
-        {
-          for (;;)
-          {
-            ad.e("MicroMsg.AdLandingPageGetHBCoverBtnComp", "GetHbCoverStateEvent exp:" + paramAnonymousjc.toString());
-          }
-        }
-      }
-    };
-    this.zEY = paramg;
-    this.zFb.alive();
-    AppMethodBeat.o(96577);
+    super(paramContext, paramw, paramViewGroup);
+    AppMethodBeat.i(96563);
+    this.zWb = paramw;
+    this.aQH = new ArrayList();
+    AppMethodBeat.o(96563);
   }
   
-  public static boolean Qp(int paramInt)
+  public final void a(y paramy)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(96581);
-    boolean bool1 = bool2;
-    if (paramInt != 1)
-    {
-      bool1 = bool2;
-      if (paramInt != 16) {
-        if (paramInt != 2) {
-          break label66;
-        }
-      }
+    AppMethodBeat.i(96572);
+    if ((paramy instanceof w)) {
+      this.zWb = ((w)paramy);
     }
-    label66:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "isFromSourcesSupportHbCover, source=" + paramInt + ", ret=" + bool1);
-      AppMethodBeat.o(96581);
-      return bool1;
-    }
+    super.a(paramy);
+    AppMethodBeat.o(96572);
   }
   
-  protected final void dRl()
+  protected final void dUJ()
   {
-    AppMethodBeat.i(96580);
-    super.dRl();
-    if (!Qp(dWZ().dnh))
+    AppMethodBeat.i(96564);
+    if (this.zUn == null)
     {
-      ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "fillItem, from source unSupport");
-      dXi();
-      AppMethodBeat.o(96580);
-      return;
-    }
-    String str2 = this.zEY.dvR + AdLandingPagesProxy.getInstance().getUin();
-    String str1;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
+      this.zUn = new l(this.zWb.aQH, this.context, this.zWc);
+      this.zUn.layout();
+      this.aQH = eaj();
     }
     for (;;)
     {
-      boolean bool = "0".equals(str1);
-      ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "fillItem, hasGetHbCober=".concat(String.valueOf(bool)));
-      if (!bool) {
-        break;
+      if (getGravity() == 0)
+      {
+        ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+          ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zUP.paddingLeft, (int)this.zUP.paddingTop, (int)this.zUP.paddingRight, (int)this.zUP.paddingBottom);
+        }
+        this.contentView.setLayoutParams(localLayoutParams);
       }
-      this.zEd.setText(this.zEY.zyC);
-      dXi();
-      AppMethodBeat.o(96580);
+      AppMethodBeat.o(96564);
       return;
-      str1 = aj.getContext().getSharedPreferences("adLandingPageSp", 0).getString(str2, "");
-      ad.d("AdLandingPageSp", "getString, key=" + str2 + ", value=" + str1);
+      this.zUn.fY(this.zWb.aQH);
     }
-    if (!this.zEY.isExpired())
+  }
+  
+  public final void dUK()
+  {
+    AppMethodBeat.i(96566);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext())
     {
-      ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "fillItem, doGetHbCoverState");
-      AdLandingPagesProxy.getInstance().doGetHbCoverState(this.zEY.dvR, this.zFa);
+      m localm = (m)localIterator.next();
+      if (localm.eay()) {
+        localm.dUK();
+      }
     }
-    AppMethodBeat.o(96580);
+    super.dUK();
+    AppMethodBeat.o(96566);
   }
   
-  public final void dRm()
+  public final void dUL()
   {
-    AppMethodBeat.i(96579);
-    super.dRm();
-    if (this.zEZ)
+    AppMethodBeat.i(96567);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).dUL();
+    }
+    super.dUL();
+    AppMethodBeat.o(96567);
+  }
+  
+  public final void dUM()
+  {
+    AppMethodBeat.i(96570);
+    super.dUM();
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).dUM();
+    }
+    AppMethodBeat.o(96570);
+  }
+  
+  public final void dZO()
+  {
+    AppMethodBeat.i(96568);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext())
     {
-      ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "viewWillAppear, isClicked=true, doGetHbCoverState");
-      this.zEZ = false;
-      AdLandingPagesProxy.getInstance().doGetHbCoverState(this.zEY.dvR, this.zFa);
+      m localm = (m)localIterator.next();
+      if (localm.eay()) {
+        localm.dZO();
+      }
     }
-    AppMethodBeat.o(96579);
+    super.dZO();
+    AppMethodBeat.o(96568);
   }
   
-  public final void dRo()
+  protected final View eae()
   {
-    AppMethodBeat.i(96583);
-    super.dRo();
-    this.zFb.dead();
-    ad.i("MicroMsg.AdLandingPageGetHBCoverBtnComp", "viewWillDestroy");
-    AppMethodBeat.o(96583);
+    AppMethodBeat.i(96565);
+    RoundedCornerFrameLayout localRoundedCornerFrameLayout = new RoundedCornerFrameLayout(this.context);
+    this.zWc = new CustomScrollView(this.context);
+    this.zWc.setOverScrollMode(2);
+    this.zWc.setHorizontalScrollBarEnabled(false);
+    this.zWc.setVerticalScrollBarEnabled(false);
+    this.zWc.setOnScrollChangeListener(new CustomScrollView.a()
+    {
+      public final void a(ScrollView paramAnonymousScrollView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(96562);
+        paramAnonymousScrollView = t.this.aQH.iterator();
+        while (paramAnonymousScrollView.hasNext())
+        {
+          m localm = (m)paramAnonymousScrollView.next();
+          if (localm.eay())
+          {
+            localm.dUK();
+            localm.dZO();
+          }
+          else
+          {
+            localm.dUL();
+          }
+        }
+        AppMethodBeat.o(96562);
+      }
+    });
+    localRoundedCornerFrameLayout.setBackgroundColor(this.backgroundColor);
+    localRoundedCornerFrameLayout.addView(this.zWc);
+    localRoundedCornerFrameLayout.setRadius(this.zWb.hF);
+    AppMethodBeat.o(96565);
+    return localRoundedCornerFrameLayout;
   }
   
-  protected final void dXg()
+  public final void eai()
   {
-    AppMethodBeat.i(96578);
-    super.dXg();
-    this.zEZ = true;
-    AppMethodBeat.o(96578);
+    AppMethodBeat.i(96569);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      if (localm.eay())
+      {
+        localm.dUK();
+        localm.dZO();
+      }
+      else
+      {
+        localm.dUL();
+      }
+    }
+    AppMethodBeat.o(96569);
   }
   
-  public final void dXi()
+  public final List<m> eaj()
   {
-    AppMethodBeat.i(96582);
-    this.zEd.setEnabled(false);
-    this.zEd.setTextColor(Color.parseColor("#33000000"));
-    this.zEd.setBackgroundColor(Color.parseColor("#0d000000"));
-    AppMethodBeat.o(96582);
+    AppMethodBeat.i(96571);
+    ArrayList localArrayList = new ArrayList(this.zUn.ebh());
+    AppMethodBeat.o(96571);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.t
  * JD-Core Version:    0.7.0.1
  */

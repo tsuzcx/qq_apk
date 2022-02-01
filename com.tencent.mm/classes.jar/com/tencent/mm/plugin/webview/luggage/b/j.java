@@ -16,7 +16,7 @@ public final class j
   {
     AppMethodBeat.i(78702);
     paramg.reload();
-    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 7);
+    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 7);
     AppMethodBeat.o(78702);
   }
   

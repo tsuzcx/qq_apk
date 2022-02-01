@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ball.f;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -64,7 +64,7 @@ public final class a
       AppMethodBeat.o(127557);
       return;
     }
-    ad.w("MicroMsg.FloatBallIntentUtil", "put not support type, key:%s, value:%s", new Object[] { paramString, paramObject });
+    ae.w("MicroMsg.FloatBallIntentUtil", "put not support type, key:%s, value:%s", new Object[] { paramString, paramObject });
     AppMethodBeat.o(127557);
   }
   

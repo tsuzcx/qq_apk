@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public final class f
   static void a(c paramc, int paramInt, String paramString)
   {
     AppMethodBeat.i(136106);
-    ad.i("MicroMsg.JsApiNFCSendHCEResponseCommand", "alvinluo sendHCEMessage callback json: %s", new Object[] { paramString });
+    ae.i("MicroMsg.JsApiNFCSendHCEResponseCommand", "alvinluo sendHCEMessage callback json: %s", new Object[] { paramString });
     if (paramc != null) {
       paramc.h(paramInt, paramString);
     }
@@ -43,10 +43,10 @@ public final class f
           Object localObject2 = paramJSONObject;
           HashMap localHashMap = new HashMap();
           localObject2 = ((JSONObject)localObject2).optString("data");
-          if (bt.isNullOrNil((String)localObject2))
+          if (bu.isNullOrNil((String)localObject2))
           {
             localHashMap.put("errCode", Integer.valueOf(13005));
-            f.a((c)localObject1, paramAnonymousInt, paramAnonymousString.m("fail", localHashMap));
+            f.a((c)localObject1, paramAnonymousInt, paramAnonymousString.n("fail", localHashMap));
             AppMethodBeat.o(136104);
             return;
           }
@@ -54,11 +54,11 @@ public final class f
           localBundle.putString("key_apdu_command", (String)localObject2);
           HCEEventLogic.a(((c)localObject1).getAppId(), 32, localBundle);
           localHashMap.put("errCode", Integer.valueOf(0));
-          ((c)localObject1).h(paramAnonymousInt, paramAnonymousString.m("ok", localHashMap));
+          ((c)localObject1).h(paramAnonymousInt, paramAnonymousString.n("ok", localHashMap));
           AppMethodBeat.o(136104);
           return;
         }
-        f.a(paramc, paramInt, f.this.m("fail: ".concat(String.valueOf(paramAnonymousString)), (Map)localObject1));
+        f.a(paramc, paramInt, f.this.n("fail: ".concat(String.valueOf(paramAnonymousString)), (Map)localObject1));
         AppMethodBeat.o(136104);
       }
     });
@@ -67,7 +67,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.f
  * JD-Core Version:    0.7.0.1
  */

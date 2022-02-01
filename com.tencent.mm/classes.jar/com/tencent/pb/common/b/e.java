@@ -12,11 +12,11 @@ import java.util.Vector;
 public final class e
   implements b
 {
-  private static e LFu = null;
-  private final SparseArray<Set<b>> LFv = new SparseArray();
-  private d LFw = null;
-  private Vector<d> hOx = new Vector();
-  private Vector<d> hOy = new Vector();
+  private static e Mcy = null;
+  private d McA = null;
+  private final SparseArray<Set<b>> Mcz = new SparseArray();
+  private Vector<d> hRq = new Vector();
+  private Vector<d> hRr = new Vector();
   private final Handler handler = new Handler(Looper.getMainLooper())
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -25,20 +25,20 @@ public final class e
     }
   };
   
-  private void aES()
+  private void aFi()
   {
-    if (this.hOy.size() > 0)
+    if (this.hRr.size() > 0)
     {
-      d locald = (d)this.hOy.get(0);
+      d locald = (d)this.hRr.get(0);
       int i = 1;
-      while (i < this.hOy.size())
+      while (i < this.hRr.size())
       {
-        this.hOy.get(i);
+        this.hRr.get(i);
         i += 1;
       }
-      if (fSS())
+      if (fXs())
       {
-        this.hOy.remove(locald);
+        this.hRr.remove(locald);
         b(locald);
       }
     }
@@ -46,9 +46,9 @@ public final class e
   
   private void b(final d paramd)
   {
-    if (fSS())
+    if (fXs())
     {
-      this.hOx.add(paramd);
+      this.hRq.add(paramd);
       int i = paramd.a(this);
       if (i < 0)
       {
@@ -65,34 +65,34 @@ public final class e
     }
     for (;;)
     {
-      aES();
+      aFi();
       return;
-      this.hOy.add(paramd);
+      this.hRr.add(paramd);
     }
   }
   
-  public static e fSR()
+  public static e fXr()
   {
-    if (LFu == null) {}
+    if (Mcy == null) {}
     try
     {
-      if (LFu == null) {
-        LFu = new e();
+      if (Mcy == null) {
+        Mcy = new e();
       }
-      return LFu;
+      return Mcy;
     }
     finally {}
   }
   
-  private boolean fSS()
+  private boolean fXs()
   {
-    return this.hOx.size() < 20;
+    return this.hRq.size() < 20;
   }
   
   public final void a(final int paramInt1, final int paramInt2, final String paramString, final d paramd)
   {
-    this.hOx.remove(paramd);
-    aES();
+    this.hRq.remove(paramd);
+    aFi();
     this.handler.post(new Runnable()
     {
       public final void run()
@@ -117,11 +117,11 @@ public final class e
   
   public final void a(int paramInt, b paramb)
   {
-    if (this.LFv.get(paramInt) == null) {
-      this.LFv.put(paramInt, new HashSet());
+    if (this.Mcz.get(paramInt) == null) {
+      this.Mcz.put(paramInt, new HashSet());
     }
-    if (!((Set)this.LFv.get(paramInt)).contains(paramb)) {
-      ((Set)this.LFv.get(paramInt)).add(paramb);
+    if (!((Set)this.Mcz.get(paramInt)).contains(paramb)) {
+      ((Set)this.Mcz.get(paramInt)).add(paramb);
     }
   }
   
@@ -133,7 +133,7 @@ public final class e
       if ((i == 102) || (i == 104) || (i == 103))
       {
         com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
-        this.LFw = paramd;
+        this.McA = paramd;
       }
     }
     if (paramd == null) {

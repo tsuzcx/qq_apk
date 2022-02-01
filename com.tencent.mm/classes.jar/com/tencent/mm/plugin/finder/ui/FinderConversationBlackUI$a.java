@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.ui;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$Companion;", "", "()V", "KEY_TALKER_TYPE", "", "PAGE_COUNT", "", "PAGE_INITIAL_COUNT", "PREFETCH_DISTANCE", "TAG", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$Companion;", "", "()V", "KEY_TALKER_TYPE", "", "PAGE_COUNT", "", "PAGE_INITIAL_COUNT", "PREFETCH_DISTANCE", "TAG", "plugin-finder_release"})
 public final class FinderConversationBlackUI$a {}
 
 

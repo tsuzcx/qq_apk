@@ -24,8 +24,8 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.modelappbrand.LogInfo;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,21 +33,21 @@ public class ConsolePanel
   extends FrameLayout
   implements com.tencent.mm.plugin.appbrand.wxawidget.a
 {
-  MRecyclerView mED;
-  final List<LogInfo> nqg;
-  EditText nqm;
-  Button[] nqn;
-  Button nqo;
-  Button nqp;
-  a nqq;
-  int nqr;
-  String nqs;
+  MRecyclerView mJI;
+  EditText nvF;
+  Button[] nvG;
+  Button nvH;
+  Button nvI;
+  a nvJ;
+  int nvK;
+  String nvL;
+  final List<LogInfo> nvz;
   
   public ConsolePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(121630);
-    this.nqg = new LinkedList();
+    this.nvz = new LinkedList();
     initialize();
     AppMethodBeat.o(121630);
   }
@@ -56,15 +56,15 @@ public class ConsolePanel
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(121631);
-    this.nqg = new LinkedList();
+    this.nvz = new LinkedList();
     initialize();
     AppMethodBeat.o(121631);
   }
   
-  private boolean VI(String paramString)
+  private boolean Wu(String paramString)
   {
     AppMethodBeat.i(121636);
-    if ((!bt.isNullOrNil(this.nqs)) && ((paramString == null) || (!paramString.toLowerCase().contains(this.nqs.toLowerCase()))))
+    if ((!bu.isNullOrNil(this.nvL)) && ((paramString == null) || (!paramString.toLowerCase().contains(this.nvL.toLowerCase()))))
     {
       AppMethodBeat.o(121636);
       return true;
@@ -84,18 +84,18 @@ public class ConsolePanel
         AppMethodBeat.i(121628);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         int i = 0;
-        if (i < ConsolePanel.this.nqn.length)
+        if (i < ConsolePanel.this.nvG.length)
         {
-          localObject = ConsolePanel.this.nqn[i];
+          localObject = ConsolePanel.this.nvG[i];
           if (localObject == paramAnonymousView) {}
           for (boolean bool = true;; bool = false)
           {
             ((Button)localObject).setSelected(bool);
-            if ((bool) && (ConsolePanel.this.nqr != i))
+            if ((bool) && (ConsolePanel.this.nvK != i))
             {
-              ConsolePanel.this.nqr = i;
+              ConsolePanel.this.nvK = i;
               ConsolePanel.a(ConsolePanel.this);
             }
             i += 1;
@@ -106,7 +106,7 @@ public class ConsolePanel
         AppMethodBeat.o(121628);
       }
     });
-    this.nqn[paramInt1] = localButton;
+    this.nvG[paramInt1] = localButton;
     AppMethodBeat.o(121634);
   }
   
@@ -114,47 +114,47 @@ public class ConsolePanel
   {
     AppMethodBeat.i(121632);
     LayoutInflater.from(getContext()).inflate(2131493597, this, true);
-    this.nqm = ((EditText)findViewById(2131298580));
-    this.nqm.clearFocus();
-    this.nqn = new Button[5];
+    this.nvF = ((EditText)findViewById(2131298580));
+    this.nvF.clearFocus();
+    this.nvG = new Button[5];
     eC(0, 2131301550);
     eC(1, 2131301553);
     eC(2, 2131301552);
     eC(3, 2131301556);
     eC(4, 2131301551);
-    this.nqn[0].setSelected(true);
-    this.nqr = 0;
-    this.nqo = ((Button)findViewById(2131298349));
-    this.nqp = ((Button)findViewById(2131304284));
-    this.nqp.setEnabled(false);
-    this.nqo.setOnClickListener(new View.OnClickListener()
+    this.nvG[0].setSelected(true);
+    this.nvK = 0;
+    this.nvH = ((Button)findViewById(2131298349));
+    this.nvI = ((Button)findViewById(2131304284));
+    this.nvI.setEnabled(false);
+    this.nvH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121622);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ConsolePanel.this.nqg.clear();
-        ConsolePanel.this.nqq.nqg.clear();
-        ConsolePanel.this.nqq.asY.notifyChanged();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ConsolePanel.this.nvz.clear();
+        ConsolePanel.this.nvJ.nvz.clear();
+        ConsolePanel.this.nvJ.asY.notifyChanged();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(121622);
       }
     });
-    this.nqp.setOnClickListener(new View.OnClickListener()
+    this.nvI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121623);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(121623);
       }
     });
-    this.nqm.addTextChangedListener(new TextWatcher()
+    this.nvF.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -162,19 +162,19 @@ public class ConsolePanel
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.nqm.setOnKeyListener(new View.OnKeyListener()
+    this.nvF.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(121624);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
+        localb.mu(paramAnonymousInt);
         localb.bd(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
         if (paramAnonymousInt == 66)
         {
-          ConsolePanel.this.nqs = ConsolePanel.this.nqm.getText().toString();
+          ConsolePanel.this.nvL = ConsolePanel.this.nvF.getText().toString();
           ConsolePanel.a(ConsolePanel.this);
           f.dv(paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
@@ -186,7 +186,7 @@ public class ConsolePanel
         return false;
       }
     });
-    this.nqm.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.nvF.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -204,8 +204,8 @@ public class ConsolePanel
         AppMethodBeat.i(121626);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        ConsolePanel.this.nqs = ConsolePanel.this.nqm.getText().toString();
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        ConsolePanel.this.nvL = ConsolePanel.this.nvF.getText().toString();
         ConsolePanel.a(ConsolePanel.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(121626);
@@ -219,24 +219,24 @@ public class ConsolePanel
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         f.dv(paramAnonymousView);
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(121627);
         return false;
       }
     });
-    this.mED = ((MRecyclerView)findViewById(2131301555));
-    this.nqq = new a(getContext());
-    MRecyclerView localMRecyclerView = this.mED;
+    this.mJI = ((MRecyclerView)findViewById(2131301555));
+    this.nvJ = new a(getContext());
+    MRecyclerView localMRecyclerView = this.mJI;
     getContext();
     localMRecyclerView.setLayoutManager(new LinearLayoutManager());
-    this.mED.setItemAnimator(null);
-    this.mED.setAdapter(this.nqq);
+    this.mJI.setItemAnimator(null);
+    this.mJI.setAdapter(this.nvJ);
     AppMethodBeat.o(121632);
   }
   
-  public final void bJ(List<LogInfo> paramList)
+  public final void bL(List<LogInfo> paramList)
   {
     AppMethodBeat.i(121635);
     if (paramList == null)
@@ -249,27 +249,27 @@ public class ConsolePanel
     while (i < paramList.size())
     {
       LogInfo localLogInfo = (LogInfo)paramList.get(i);
-      this.nqg.add(localLogInfo);
-      if (((localLogInfo.level == this.nqr) || (this.nqr == 0)) && (!VI(localLogInfo.message))) {
+      this.nvz.add(localLogInfo);
+      if (((localLogInfo.level == this.nvK) || (this.nvK == 0)) && (!Wu(localLogInfo.message))) {
         localLinkedList.add(localLogInfo);
       }
       i += 1;
     }
     if (!localLinkedList.isEmpty()) {
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(121629);
-          int i = ConsolePanel.this.nqq.getItemCount();
-          ConsolePanel.this.nqq.nqg.addAll(localLinkedList);
-          ConsolePanel.this.nqq.ar(i, localLinkedList.size());
-          if (((LinearLayoutManager)ConsolePanel.this.mED.getLayoutManager()).ko() == i - 1)
+          int i = ConsolePanel.this.nvJ.getItemCount();
+          ConsolePanel.this.nvJ.nvz.addAll(localLinkedList);
+          ConsolePanel.this.nvJ.ar(i, localLinkedList.size());
+          if (((LinearLayoutManager)ConsolePanel.this.mJI.getLayoutManager()).ko() == i - 1)
           {
-            MRecyclerView localMRecyclerView = ConsolePanel.this.mED;
-            com.tencent.mm.hellhoundlib.b.a locala = c.a(ConsolePanel.this.nqq.getItemCount() - 1, new com.tencent.mm.hellhoundlib.b.a());
-            com.tencent.mm.hellhoundlib.a.a.a(localMRecyclerView, locala.ahp(), "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$9", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-            localMRecyclerView.smoothScrollToPosition(((Integer)locala.mq(0)).intValue());
+            MRecyclerView localMRecyclerView = ConsolePanel.this.mJI;
+            com.tencent.mm.hellhoundlib.b.a locala = c.a(ConsolePanel.this.nvJ.getItemCount() - 1, new com.tencent.mm.hellhoundlib.b.a());
+            com.tencent.mm.hellhoundlib.a.a.a(localMRecyclerView, locala.ahE(), "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$9", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+            localMRecyclerView.smoothScrollToPosition(((Integer)locala.mt(0)).intValue());
             com.tencent.mm.hellhoundlib.a.a.a(localMRecyclerView, "com/tencent/mm/plugin/appbrand/wxawidget/console/ConsolePanel$9", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
           }
           AppMethodBeat.o(121629);
@@ -318,7 +318,7 @@ public class ConsolePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel
  * JD-Core Version:    0.7.0.1
  */

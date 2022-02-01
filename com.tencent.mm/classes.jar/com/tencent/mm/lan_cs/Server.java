@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class Server
 {
-  public static a gFV;
+  public static a gIC;
   
   public static class C2Java
   {
     public static void onConnect(String paramString, int paramInt)
     {
       AppMethodBeat.i(133661);
-      if (Server.gFV != null) {
-        Server.gFV.onConnect(paramString, paramInt);
+      if (Server.gIC != null) {
+        Server.gIC.onConnect(paramString, paramInt);
       }
       AppMethodBeat.o(133661);
     }
@@ -20,8 +20,8 @@ public final class Server
     public static void onDisconnect(String paramString, int paramInt)
     {
       AppMethodBeat.i(133662);
-      if (Server.gFV != null) {
-        Server.gFV.akQ();
+      if (Server.gIC != null) {
+        Server.gIC.alf();
       }
       AppMethodBeat.o(133662);
     }
@@ -29,8 +29,8 @@ public final class Server
     public static void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133660);
-      if (Server.gFV != null) {
-        Server.gFV.onRecv(paramString, paramInt, paramArrayOfByte);
+      if (Server.gIC != null) {
+        Server.gIC.onRecv(paramString, paramInt, paramArrayOfByte);
       }
       AppMethodBeat.o(133660);
     }
@@ -38,8 +38,8 @@ public final class Server
     public static void onSend(String paramString, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(133659);
-      if (Server.gFV != null) {
-        Server.gFV.mV(paramInt2);
+      if (Server.gIC != null) {
+        Server.gIC.mY(paramInt2);
       }
       AppMethodBeat.o(133659);
     }
@@ -56,9 +56,9 @@ public final class Server
   
   public static abstract interface a
   {
-    public abstract void akQ();
+    public abstract void alf();
     
-    public abstract void mV(int paramInt);
+    public abstract void mY(int paramInt);
     
     public abstract void onConnect(String paramString, int paramInt);
     

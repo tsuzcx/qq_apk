@@ -2,10 +2,10 @@ package kotlinx.coroutines.internal;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"systemProp", "", "propertyName", "", "defaultValue", "", "minValue", "maxValue", "", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"systemProp", "", "propertyName", "", "defaultValue", "", "minValue", "maxValue", "", "kotlinx-coroutines-core"})
 public final class w
 {
-  public static final boolean bdk(String arg0) {}
+  public static final boolean beO(String arg0) {}
   
   public static final long e(String arg0, long arg1, long arg3, long arg5) {}
 }

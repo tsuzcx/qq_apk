@@ -3,13 +3,13 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dn
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int dDp;
-  public String dxD;
-  public String kzK;
-  public String kzL;
-  public String paG;
+  public int dEu;
+  public String dyI;
+  public String kCZ;
+  public String kDa;
+  public String phk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,40 +17,40 @@ public final class dn
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.dDp);
-      if (this.dxD != null) {
-        paramVarArgs.d(2, this.dxD);
+      paramVarArgs.aS(1, this.dEu);
+      if (this.dyI != null) {
+        paramVarArgs.d(2, this.dyI);
       }
-      if (this.kzK != null) {
-        paramVarArgs.d(3, this.kzK);
+      if (this.kCZ != null) {
+        paramVarArgs.d(3, this.kCZ);
       }
-      if (this.kzL != null) {
-        paramVarArgs.d(4, this.kzL);
+      if (this.kDa != null) {
+        paramVarArgs.d(4, this.kDa);
       }
-      if (this.paG != null) {
-        paramVarArgs.d(5, this.paG);
+      if (this.phk != null) {
+        paramVarArgs.d(5, this.phk);
       }
       AppMethodBeat.o(72416);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.dDp) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.dEu) + 0;
       paramInt = i;
-      if (this.dxD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dxD);
+      if (this.dyI != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dyI);
       }
       i = paramInt;
-      if (this.kzK != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.kzK);
+      if (this.kCZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.kCZ);
       }
       paramInt = i;
-      if (this.kzL != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.kzL);
+      if (this.kDa != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.kDa);
       }
       i = paramInt;
-      if (this.paG != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.paG);
+      if (this.phk != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.phk);
       }
       AppMethodBeat.o(72416);
       return i;
@@ -58,9 +58,9 @@ public final class dn
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(72416);
@@ -76,23 +76,23 @@ public final class dn
         AppMethodBeat.o(72416);
         return -1;
       case 1: 
-        localdn.dDp = locala.NPN.zc();
+        localdn.dEu = locala.OmT.zc();
         AppMethodBeat.o(72416);
         return 0;
       case 2: 
-        localdn.dxD = locala.NPN.readString();
+        localdn.dyI = locala.OmT.readString();
         AppMethodBeat.o(72416);
         return 0;
       case 3: 
-        localdn.kzK = locala.NPN.readString();
+        localdn.kCZ = locala.OmT.readString();
         AppMethodBeat.o(72416);
         return 0;
       case 4: 
-        localdn.kzL = locala.NPN.readString();
+        localdn.kDa = locala.OmT.readString();
         AppMethodBeat.o(72416);
         return 0;
       }
-      localdn.paG = locala.NPN.readString();
+      localdn.phk = locala.OmT.readString();
       AppMethodBeat.o(72416);
       return 0;
     }
@@ -102,7 +102,7 @@ public final class dn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dn
  * JD-Core Version:    0.7.0.1
  */

@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.emojicapture.ui.editor.text;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer$Companion;", "", "()V", "ellipsisText", "", "getEllipsisText", "()Ljava/lang/String;", "plugin-emojicapture_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer$Companion;", "", "()V", "ellipsisText", "", "getEllipsisText", "()Ljava/lang/String;", "plugin-emojicapture_release"})
 public final class c$a
 {
-  private static final String pYm = "...";
+  private static final String qeR = "...";
   
   static
   {
     AppMethodBeat.i(827);
-    pYn = new a();
-    pYm = "...";
+    qeS = new a();
+    qeR = "...";
     AppMethodBeat.o(827);
   }
   
-  public static String ckA()
+  public static String clQ()
   {
-    return pYm;
+    return qeR;
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.e.a;
 
 abstract class bd$a
   extends c
 {
-  protected bd.h KgZ;
+  protected bd.h KDu;
   
-  public String b(a parama, bu parambu)
+  public String b(a parama, bv parambv)
   {
     return parama.getTalkerUserName();
   }
   
-  public boolean fHh()
+  public boolean fLz()
   {
     return false;
   }
   
   protected final bd.h o(a parama)
   {
-    if (this.KgZ == null) {
-      this.KgZ = new bd.h(parama);
+    if (this.KDu == null) {
+      this.KDu = new bd.h(parama);
     }
-    return this.KgZ;
+    return this.KDu;
   }
 }
 

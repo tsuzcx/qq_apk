@@ -1,75 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class cbf
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GDK;
-  public String GFO;
-  public String GFP;
-  public String dxg;
-  public String url;
+  public int Hoh;
+  public String Hol;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123628);
+    AppMethodBeat.i(43111);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GDK != null) {
-        paramVarArgs.d(1, this.GDK);
+      if (this.Hol == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ContactUsername");
+        AppMethodBeat.o(43111);
+        throw paramVarArgs;
       }
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+      if (this.Hol != null) {
+        paramVarArgs.d(1, this.Hol);
       }
-      if (this.dxg != null) {
-        paramVarArgs.d(3, this.dxg);
-      }
-      if (this.GFO != null) {
-        paramVarArgs.d(4, this.GFO);
-      }
-      if (this.GFP != null) {
-        paramVarArgs.d(5, this.GFP);
-      }
-      AppMethodBeat.o(123628);
+      paramVarArgs.aS(2, this.Hoh);
+      AppMethodBeat.o(43111);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GDK == null) {
-        break label454;
+      if (this.Hol == null) {
+        break label306;
       }
     }
-    label454:
-    for (int i = f.a.a.b.b.a.e(1, this.GDK) + 0;; i = 0)
+    label306:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Hol) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
-      }
-      i = paramInt;
-      if (this.dxg != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dxg);
-      }
-      paramInt = i;
-      if (this.GFO != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.GFO);
-      }
-      i = paramInt;
-      if (this.GFP != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.GFP);
-      }
-      AppMethodBeat.o(123628);
-      return i;
+      int i = f.a.a.b.b.a.bz(2, this.Hoh);
+      AppMethodBeat.o(43111);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(123628);
+        if (this.Hol == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ContactUsername");
+          AppMethodBeat.o(43111);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(43111);
         return 0;
       }
       if (paramInt == 3)
@@ -79,37 +63,25 @@ public final class cbf
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123628);
+          AppMethodBeat.o(43111);
           return -1;
         case 1: 
-          localcbf.GDK = locala.NPN.readString();
-          AppMethodBeat.o(123628);
-          return 0;
-        case 2: 
-          localcbf.url = locala.NPN.readString();
-          AppMethodBeat.o(123628);
-          return 0;
-        case 3: 
-          localcbf.dxg = locala.NPN.readString();
-          AppMethodBeat.o(123628);
-          return 0;
-        case 4: 
-          localcbf.GFO = locala.NPN.readString();
-          AppMethodBeat.o(123628);
+          localcbf.Hol = locala.OmT.readString();
+          AppMethodBeat.o(43111);
           return 0;
         }
-        localcbf.GFP = locala.NPN.readString();
-        AppMethodBeat.o(123628);
+        localcbf.Hoh = locala.OmT.zc();
+        AppMethodBeat.o(43111);
         return 0;
       }
-      AppMethodBeat.o(123628);
+      AppMethodBeat.o(43111);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cbf
  * JD-Core Version:    0.7.0.1
  */

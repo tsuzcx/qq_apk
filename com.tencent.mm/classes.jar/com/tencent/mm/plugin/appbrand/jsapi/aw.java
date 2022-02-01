@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.graphics.Rect;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.plugin.appbrand.r.a.c.d;
-import com.tencent.mm.plugin.appbrand.ui.z;
-import com.tencent.mm.plugin.appbrand.ui.z.a;
-import com.tencent.mm.plugin.appbrand.ui.z.b;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.plugin.appbrand.platform.window.c.c;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.ui.aa;
+import com.tencent.mm.plugin.appbrand.ui.aa.a;
+import com.tencent.mm.plugin.appbrand.ui.aa.b;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +22,7 @@ public class aw
 {
   public static final int CTRL_INDEX = 466;
   public static final String NAME = "getMenuButtonBoundingClientRect";
-  private static boolean ksn = false;
+  private static boolean kvD = false;
   
   private String c(d paramd)
   {
@@ -34,14 +34,14 @@ public class aw
       try
       {
         localObject1 = new int[2];
-        ((aa)localObject2).bux().getCapsuleView().getLocationInWindow((int[])localObject1);
-        i = ((aa)localObject2).bux().getCapsuleView().getWidth();
-        j = ((aa)localObject2).bux().getCapsuleView().getHeight();
+        ((z)localObject2).bvi().getCapsuleView().getLocationInWindow((int[])localObject1);
+        i = ((z)localObject2).bvi().getCapsuleView().getWidth();
+        j = ((z)localObject2).bvi().getCapsuleView().getHeight();
         k = localObject1[1];
         m = localObject1[0];
-        if (m == 0)
+        if ((m == 0) || (i == 0))
         {
-          ad.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] left==0, return null", new Object[] { ((aa)localObject2).getAppId() });
+          ae.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] left==0, return null", new Object[] { ((z)localObject2).getAppId() });
           localObject1 = null;
           if (localObject1 == null) {}
         }
@@ -56,7 +56,7 @@ public class aw
       }
       try
       {
-        if (ksn) {
+        if (kvD) {
           j(co.j(paramd));
         }
         localObject2 = localObject1;
@@ -64,23 +64,23 @@ public class aw
           localObject2 = j(co.j(paramd));
         }
         if (localObject2 == null) {
-          break label232;
+          break label236;
         }
-        paramd = m("ok", (Map)localObject2);
+        paramd = n("ok", (Map)localObject2);
         AppMethodBeat.o(139841);
         return paramd;
       }
       catch (Exception localException2)
       {
-        break label213;
+        break label217;
       }
-      Object localObject1 = k(new Rect(m, k, i + m, j + k));
-      ad.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] return %s", new Object[] { ((aa)localObject2).getAppId(), localObject1 });
+      Object localObject1 = k(new Rect(m, k, m + i, j + k));
+      ae.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] return %s", new Object[] { ((z)localObject2).getAppId(), localObject1 });
       continue;
-      label213:
-      ad.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy e=%s", new Object[] { localException1 });
+      label217:
+      ae.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy e=%s", new Object[] { localException1 });
       continue;
-      label232:
+      label236:
       paramd = e("fail:internal error", null);
       AppMethodBeat.o(139841);
       return paramd;
@@ -88,45 +88,45 @@ public class aw
     }
   }
   
-  public static void gn(boolean paramBoolean)
+  public static void gl(boolean paramBoolean)
   {
-    ksn = paramBoolean;
+    kvD = paramBoolean;
   }
   
-  private static int i(q paramq)
+  private static int i(r paramr)
   {
     AppMethodBeat.i(182224);
-    paramq = paramq.jzX.getStatusBar();
-    if ((paramq == null) || (8 == paramq.visibility))
+    paramr = paramr.jDa.getStatusBar();
+    if ((paramr == null) || (8 == paramr.visibility))
     {
       AppMethodBeat.o(182224);
       return 0;
     }
-    int i = paramq.height;
+    int i = paramr.height;
     AppMethodBeat.o(182224);
     return i;
   }
   
-  private Map<String, Object> j(q paramq)
+  private Map<String, Object> j(r paramr)
   {
     AppMethodBeat.i(182225);
-    Object localObject2 = h(paramq);
+    Object localObject2 = h(paramr);
     if (localObject2 == null)
     {
-      ad.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] NULL IMenuButtonLayoutPropertiesService", new Object[] { paramq.getAppId() });
+      ae.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] NULL IMenuButtonLayoutPropertiesService", new Object[] { paramr.getAppId() });
       AppMethodBeat.o(182225);
       return null;
     }
-    int m = i(paramq);
-    Object localObject1 = ((z)localObject2).bzN();
-    localObject2 = ((z)localObject2).DP();
-    int k = com.tencent.mm.plugin.appbrand.utils.af.l(paramq)[0];
-    int i = ((z.b)localObject1).width;
-    int j = ((z.b)localObject1).height;
-    m += ((z.a)localObject2).top;
-    k -= ((z.a)localObject2).right;
+    int m = i(paramr);
+    Object localObject1 = ((aa)localObject2).bAI();
+    localObject2 = ((aa)localObject2).DS();
+    int k = com.tencent.mm.plugin.appbrand.utils.ai.n(paramr)[0];
+    int i = ((aa.b)localObject1).width;
+    int j = ((aa.b)localObject1).height;
+    m += ((aa.a)localObject2).top;
+    k -= ((aa.a)localObject2).right;
     localObject1 = k(new Rect(k - i, m, k, j + m));
-    ad.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] return %s", new Object[] { paramq.getAppId(), localObject1 });
+    ae.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] return %s", new Object[] { paramr.getAppId(), localObject1 });
     AppMethodBeat.o(182225);
     return localObject1;
   }
@@ -134,10 +134,10 @@ public class aw
   private static Map<String, Object> k(Rect paramRect)
   {
     AppMethodBeat.i(182226);
-    paramRect.left = g.vH(paramRect.left);
-    paramRect.top = g.vH(paramRect.top);
-    paramRect.right = g.vH(paramRect.right);
-    paramRect.bottom = g.vH(paramRect.bottom);
+    paramRect.left = g.vM(paramRect.left);
+    paramRect.top = g.vM(paramRect.top);
+    paramRect.right = g.vM(paramRect.right);
+    paramRect.bottom = g.vM(paramRect.bottom);
     HashMap localHashMap = new HashMap(6);
     localHashMap.put("left", Integer.valueOf(paramRect.left));
     localHashMap.put("top", Integer.valueOf(paramRect.top));
@@ -149,17 +149,17 @@ public class aw
     return localHashMap;
   }
   
-  protected z h(q paramq)
+  protected aa h(r paramr)
   {
     AppMethodBeat.i(177248);
-    paramq = (z)paramq.K(z.class);
+    paramr = (aa)paramr.K(aa.class);
     AppMethodBeat.o(177248);
-    return paramq;
+    return paramr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.aw
  * JD-Core Version:    0.7.0.1
  */

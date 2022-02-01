@@ -20,10 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.clean.c.d;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
@@ -36,21 +36,21 @@ public class CleanChattingUI
   implements com.tencent.mm.plugin.clean.c.b
 {
   private List<c> dataList;
-  private ProgressDialog fMu;
-  private Button jis;
-  private TextView nwr;
-  private View oUX;
-  private CheckBox oUY;
-  private a oVe;
-  private ListView oVf;
-  private TextView oVg;
-  private TextView oVh;
-  private boolean oVi;
+  private ProgressDialog fOC;
+  private Button jll;
+  private TextView nBM;
+  private View pbA;
+  private CheckBox pbB;
+  private a pbH;
+  private ListView pbI;
+  private TextView pbJ;
+  private TextView pbK;
+  private boolean pbL;
   
   public CleanChattingUI()
   {
     AppMethodBeat.i(22898);
-    this.oVi = false;
+    this.pbL = false;
     this.dataList = new ArrayList();
     AppMethodBeat.o(22898);
   }
@@ -58,9 +58,9 @@ public class CleanChattingUI
   public final void a(HashSet<Integer> paramHashSet)
   {
     AppMethodBeat.i(22900);
-    if (this.oVe == null)
+    if (this.pbH == null)
     {
-      ad.w("MicroMsg.CleanChattingUI", "on click check box but adapter is null");
+      ae.w("MicroMsg.CleanChattingUI", "on click check box but adapter is null");
       AppMethodBeat.o(22900);
       return;
     }
@@ -70,7 +70,7 @@ public class CleanChattingUI
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      c localc = this.oVe.AU(i);
+      c localc = this.pbH.Bg(i);
       if (localc != null) {
         l = localc.size + l;
       } else {
@@ -83,28 +83,28 @@ public class CleanChattingUI
     }
     if ((paramHashSet.size() != 0) || (l > 0L))
     {
-      this.oVg.setText(getString(2131758037, new Object[] { bt.sy(l) }));
-      this.jis.setEnabled(true);
-      if (paramHashSet.size() == this.oVe.getCount())
+      this.pbJ.setText(getString(2131758037, new Object[] { bu.sL(l) }));
+      this.jll.setEnabled(true);
+      if (paramHashSet.size() == this.pbH.getCount())
       {
-        this.oUY.setChecked(true);
+        this.pbB.setChecked(true);
         AppMethodBeat.o(22900);
         return;
       }
-      this.oUY.setChecked(false);
+      this.pbB.setChecked(false);
       AppMethodBeat.o(22900);
       return;
     }
-    this.oVg.setText("");
-    this.jis.setEnabled(false);
-    this.oUY.setChecked(false);
+    this.pbJ.setText("");
+    this.jll.setEnabled(false);
+    this.pbB.setChecked(false);
     AppMethodBeat.o(22900);
   }
   
-  public final void fa(final int paramInt1, final int paramInt2)
+  public final void fb(final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(22903);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -139,13 +139,13 @@ public class CleanChattingUI
             break label121;
           }
           this.dataList.remove(i);
-          this.oVe.bZO();
+          this.pbH.cbd();
         }
       }
     }
     for (;;)
     {
-      this.oVe.notifyDataSetChanged();
+      this.pbH.notifyDataSetChanged();
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       AppMethodBeat.o(22905);
       return;
@@ -158,24 +158,24 @@ public class CleanChattingUI
   {
     AppMethodBeat.i(22899);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.CleanChattingUI", "Create!!");
+    ae.i("MicroMsg.CleanChattingUI", "Create!!");
     setMMTitle(2131757397);
-    this.oVf = ((ListView)findViewById(2131298341));
-    this.oVe = new a(this, this.dataList);
-    this.oVf.setAdapter(this.oVe);
-    this.oVf.setEmptyView(findViewById(2131299478));
-    this.oVh = ((TextView)$(2131299472));
-    this.oUX = findViewById(2131296648);
-    this.oVg = ((TextView)findViewById(2131298988));
-    this.oUY = ((CheckBox)findViewById(2131296647));
-    this.nwr = ((TextView)findViewById(2131296646));
-    if (!ac.fko())
+    this.pbI = ((ListView)findViewById(2131298341));
+    this.pbH = new a(this, this.dataList);
+    this.pbI.setAdapter(this.pbH);
+    this.pbI.setEmptyView(findViewById(2131299478));
+    this.pbK = ((TextView)$(2131299472));
+    this.pbA = findViewById(2131296648);
+    this.pbJ = ((TextView)findViewById(2131298988));
+    this.pbB = ((CheckBox)findViewById(2131296647));
+    this.nBM = ((TextView)findViewById(2131296646));
+    if (!ad.foi())
     {
-      this.oVg.setTextSize(1, 14.0F);
-      this.nwr.setTextSize(1, 14.0F);
+      this.pbJ.setTextSize(1, 14.0F);
+      this.nBM.setTextSize(1, 14.0F);
     }
-    this.jis = ((Button)findViewById(2131298954));
-    this.jis.setEnabled(false);
+    this.jll = ((Button)findViewById(2131298954));
+    this.jll.setEnabled(false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -186,7 +186,7 @@ public class CleanChattingUI
         return false;
       }
     });
-    this.oVf.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.pbI.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -194,37 +194,37 @@ public class CleanChattingUI
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousAdapterView);
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
-        localb.qY(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-        paramAnonymousAdapterView = CleanChattingUI.a(CleanChattingUI.this).AU(paramAnonymousInt);
+        localb.mu(paramAnonymousInt);
+        localb.rl(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        paramAnonymousAdapterView = CleanChattingUI.a(CleanChattingUI.this).Bg(paramAnonymousInt);
         if (paramAnonymousAdapterView != null)
         {
           paramAnonymousView = new Intent(CleanChattingUI.this, CleanChattingDetailUI.class);
           paramAnonymousView.putExtra("key_username", paramAnonymousAdapterView.username);
           paramAnonymousView.putExtra("key_pos", paramAnonymousInt);
           CleanChattingUI.this.startActivityForResult(paramAnonymousView, 0);
-          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(714L, 21L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(714L, 21L, 1L, false);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(22889);
       }
     });
-    this.jis.setOnClickListener(new View.OnClickListener()
+    this.jll.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(22891);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         h.e(CleanChattingUI.this, CleanChattingUI.this.getString(2131757554), "", CleanChattingUI.this.getString(2131758029), CleanChattingUI.this.getString(2131756766), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(22890);
             CleanChattingUI.b(CleanChattingUI.this);
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(714L, 22L, 1L, false);
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(714L, 22L, 1L, false);
             AppMethodBeat.o(22890);
           }
         }, new DialogInterface.OnClickListener()
@@ -235,49 +235,49 @@ public class CleanChattingUI
         AppMethodBeat.o(22891);
       }
     });
-    this.oUX.setOnClickListener(new View.OnClickListener()
+    this.pbA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(22892);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = CleanChattingUI.a(CleanChattingUI.this);
-        if (paramAnonymousView.nwm.size() == paramAnonymousView.getCount()) {
-          paramAnonymousView.nwm.clear();
+        if (paramAnonymousView.nBH.size() == paramAnonymousView.getCount()) {
+          paramAnonymousView.nBH.clear();
         }
         for (;;)
         {
           paramAnonymousView.notifyDataSetChanged();
-          paramAnonymousView.oUG.a(paramAnonymousView.nwm);
+          paramAnonymousView.pbj.a(paramAnonymousView.nBH);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(22892);
           return;
           int i = 0;
           while (i < paramAnonymousView.getCount())
           {
-            paramAnonymousView.nwm.add(Integer.valueOf(i));
+            paramAnonymousView.nBH.add(Integer.valueOf(i));
             i += 1;
           }
         }
       }
     });
     getString(2131755906);
-    this.fMu = h.b(this, getString(2131757384), false, new DialogInterface.OnCancelListener()
+    this.fOC = h.b(this, getString(2131757384), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    this.fMu.dismiss();
-    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(714L, 20L, 1L, false);
+    this.fOC.dismiss();
+    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(714L, 20L, 1L, false);
     AppMethodBeat.o(22899);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(22901);
-    if (this.fMu.isShowing()) {
-      this.fMu.dismiss();
+    if (this.fOC.isShowing()) {
+      this.fOC.dismiss();
     }
     super.onDestroy();
     AppMethodBeat.o(22901);
@@ -287,17 +287,17 @@ public class CleanChattingUI
   {
     AppMethodBeat.i(22902);
     super.onResume();
-    if ((this.oVe != null) && (this.dataList.isEmpty())) {
-      com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    if ((this.pbH != null) && (this.dataList.isEmpty())) {
+      com.tencent.mm.kernel.g.ajU().aw(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(22895);
           if (!CleanChattingUI.c(CleanChattingUI.this))
           {
-            ad.i("MicroMsg.CleanChattingUI", "load contact cursor now");
+            ae.i("MicroMsg.CleanChattingUI", "load contact cursor now");
             CleanChattingUI.d(CleanChattingUI.this);
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
@@ -308,7 +308,7 @@ public class CleanChattingUI
             });
             try
             {
-              Cursor localCursor = com.tencent.mm.plugin.f.b.bSU().bSV().bTe();
+              Cursor localCursor = com.tencent.mm.plugin.f.b.bUj().bUk().bUt();
               if (localCursor != null) {
                 while (localCursor.moveToNext())
                 {
@@ -322,8 +322,8 @@ public class CleanChattingUI
             }
             catch (NullPointerException localNullPointerException)
             {
-              ad.printErrStackTrace("MicroMsg.CleanChattingUI", localNullPointerException, "", new Object[0]);
-              aq.f(new Runnable()
+              ae.printErrStackTrace("MicroMsg.CleanChattingUI", localNullPointerException, "", new Object[0]);
+              ar.f(new Runnable()
               {
                 public final void run()
                 {
@@ -347,19 +347,19 @@ public class CleanChattingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void tI(final long paramLong)
+  public final void tZ(final long paramLong)
   {
     AppMethodBeat.i(22904);
-    ad.i("MicroMsg.CleanChattingUI", "%s onDeleteEnd [%d] ", new Object[] { hashCode(), Long.valueOf(paramLong) });
-    d.bZI().oTU -= paramLong;
-    d.bZI().oUj -= paramLong;
-    aq.f(new Runnable()
+    ae.i("MicroMsg.CleanChattingUI", "%s onDeleteEnd [%d] ", new Object[] { hashCode(), Long.valueOf(paramLong) });
+    d.caX().paw -= paramLong;
+    d.caX().paM -= paramLong;
+    ar.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(22897);
         CleanChattingUI.g(CleanChattingUI.this).dismiss();
-        h.c(CleanChattingUI.this, CleanChattingUI.this.getString(2131757385, new Object[] { bt.sy(paramLong) }), "", true);
+        h.c(CleanChattingUI.this, CleanChattingUI.this.getString(2131757385, new Object[] { bu.sL(paramLong) }), "", true);
         CleanChattingUI.e(CleanChattingUI.this).setText(CleanChattingUI.this.getString(2131755268, new Object[] { " " }));
         AppMethodBeat.o(22897);
       }
@@ -369,7 +369,7 @@ public class CleanChattingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanChattingUI
  * JD-Core Version:    0.7.0.1
  */

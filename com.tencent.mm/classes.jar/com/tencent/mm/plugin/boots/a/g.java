@@ -5,13 +5,13 @@ public final class g
   public String appId;
   public int errorCode;
   public int fileSize;
-  public String gHx;
-  public Integer nUd;
-  public Integer nUe;
-  public Integer nUf;
-  public String nUg;
-  public String nUh;
-  public String nUi;
+  public String gKg;
+  public Integer nZJ;
+  public Integer nZK;
+  public Integer nZL;
+  public String nZM;
+  public String nZN;
+  public String nZO;
 }
 
 

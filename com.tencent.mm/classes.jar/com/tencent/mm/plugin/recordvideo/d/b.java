@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.recordvideo.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.b.a.di;
 import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -12,30 +12,30 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  public static final b.a xGS;
-  public di xGR;
+  public static final b.a xWN;
+  public di xWM;
   
   static
   {
-    AppMethodBeat.i(200401);
-    xGS = new b.a((byte)0);
-    AppMethodBeat.o(200401);
+    AppMethodBeat.i(206662);
+    xWN = new b.a((byte)0);
+    AppMethodBeat.o(206662);
   }
   
   public b()
   {
-    AppMethodBeat.i(200400);
-    this.xGR = new di();
+    AppMethodBeat.i(206661);
+    this.xWM = new di();
     reset();
-    AppMethodBeat.o(200400);
+    AppMethodBeat.o(206661);
   }
   
   public final void h(List<? extends MediaEditReportInfo.EditItem> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(200398);
+    AppMethodBeat.i(206659);
     p.h(paramList, "editList");
     Object localObject2 = (Iterable)paramList;
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -58,7 +58,7 @@ public final class b
     {
       localObject4 = (MediaEditReportInfo.EditItem)((Iterator)localObject3).next();
       if (paramBoolean) {}
-      for (i = 0;; i = bt.Dg(((MediaEditReportInfo.EditItem)localObject4).targetDuration))
+      for (i = 0;; i = bu.DE(((MediaEditReportInfo.EditItem)localObject4).targetDuration))
       {
         ((Collection)localObject2).add(Integer.valueOf(i));
         break;
@@ -72,7 +72,7 @@ public final class b
     {
       localObject5 = (MediaEditReportInfo.EditItem)((Iterator)localObject4).next();
       if (paramBoolean) {}
-      for (i = 0;; i = bt.Dg(((MediaEditReportInfo.EditItem)localObject5).originDuration))
+      for (i = 0;; i = bu.DE(((MediaEditReportInfo.EditItem)localObject5).originDuration))
       {
         ((Collection)localObject3).add(Integer.valueOf(i));
         break;
@@ -135,26 +135,26 @@ public final class b
       paramList.add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject10).next()).type));
     }
     paramList = j.a((Iterable)paramList, (CharSequence)"#", null, null, 0, null, null, 62);
-    this.xGR.mA((String)localObject1);
-    this.xGR.mB((String)localObject2);
-    this.xGR.mC((String)localObject3);
-    this.xGR.mE((String)localObject4);
-    this.xGR.mF((String)localObject5);
-    this.xGR.mG((String)localObject6);
-    this.xGR.mH((String)localObject7);
-    this.xGR.mI((String)localObject8);
-    this.xGR.mJ((String)localObject9);
-    this.xGR.mK(paramList);
-    AppMethodBeat.o(200398);
+    this.xWM.mS((String)localObject1);
+    this.xWM.mT((String)localObject2);
+    this.xWM.mU((String)localObject3);
+    this.xWM.mW((String)localObject4);
+    this.xWM.mX((String)localObject5);
+    this.xWM.mY((String)localObject6);
+    this.xWM.mZ((String)localObject7);
+    this.xWM.na((String)localObject8);
+    this.xWM.nb((String)localObject9);
+    this.xWM.nc(paramList);
+    AppMethodBeat.o(206659);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(200399);
-    this.xGR = new di();
-    this.xGR.mD("");
-    this.xGR.mz("");
-    AppMethodBeat.o(200399);
+    AppMethodBeat.i(206660);
+    this.xWM = new di();
+    this.xWM.mV("");
+    this.xWM.mR("");
+    AppMethodBeat.o(206660);
   }
 }
 

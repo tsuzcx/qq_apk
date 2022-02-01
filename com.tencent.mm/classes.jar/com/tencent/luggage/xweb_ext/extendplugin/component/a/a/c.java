@@ -5,24 +5,24 @@ import com.tencent.luggage.xweb_ext.extendplugin.component.d;
 import com.tencent.luggage.xweb_ext.extendplugin.component.d.a;
 import com.tencent.luggage.xweb_ext.extendplugin.component.video.TextureImageViewLikeImpl;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.a.b;
 import com.tencent.mm.plugin.appbrand.jsapi.q.g;
 import com.tencent.mm.plugin.appbrand.jsapi.q.h.a;
 
 final class c
-  extends com.tencent.luggage.xweb_ext.extendplugin.component.c<com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.c, TextureImageViewLikeImpl>
+  extends com.tencent.luggage.xweb_ext.extendplugin.component.c<com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.c, TextureImageViewLikeImpl>
 {
-  protected static h.a<com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.c, TextureImageViewLikeImpl> csO;
-  static com.tencent.mm.plugin.appbrand.jsapi.q.c csP;
-  final g csQ;
+  protected static h.a<com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.c, TextureImageViewLikeImpl> ctr;
+  static com.tencent.mm.plugin.appbrand.jsapi.q.c cts;
+  final g ctt;
   
   static
   {
     AppMethodBeat.i(177147);
-    csO = new h.a() {};
-    csP = new com.tencent.mm.plugin.appbrand.jsapi.q.c()
+    ctr = new h.a() {};
+    cts = new com.tencent.mm.plugin.appbrand.jsapi.q.c()
     {
-      public final com.tencent.mm.plugin.appbrand.jsapi.q.a gG(int paramAnonymousInt)
+      public final com.tencent.mm.plugin.appbrand.jsapi.q.a gH(int paramAnonymousInt)
       {
         AppMethodBeat.i(177144);
         b localb = new b();
@@ -31,10 +31,10 @@ final class c
         return localb;
       }
       
-      public final com.tencent.mm.plugin.appbrand.jsapi.q.a gH(int paramAnonymousInt)
+      public final com.tencent.mm.plugin.appbrand.jsapi.q.a gI(int paramAnonymousInt)
       {
         AppMethodBeat.i(177145);
-        com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.a.c localc = new com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.a.c();
+        com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.a.c localc = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.a.c();
         localc.p("livePlayerId", Integer.valueOf(paramAnonymousInt));
         AppMethodBeat.o(177145);
         return localc;
@@ -47,28 +47,28 @@ final class c
   {
     super(parama);
     AppMethodBeat.i(177146);
-    this.csQ = new com.tencent.mm.plugin.appbrand.jsapi.ac.c.a.c(parama);
+    this.ctt = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.c(parama);
     AppMethodBeat.o(177146);
   }
   
-  public final g FT()
+  public final g FZ()
   {
-    return this.csQ;
+    return this.ctt;
   }
   
-  public final h.a FU()
+  public final h.a Ga()
   {
-    return csO;
+    return ctr;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.q.c FV()
+  public final com.tencent.mm.plugin.appbrand.jsapi.q.c Gb()
   {
-    return csP;
+    return cts;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.a.a.c
  * JD-Core Version:    0.7.0.1
  */

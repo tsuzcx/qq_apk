@@ -15,15 +15,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.product.b.e;
 import com.tencent.mm.plugin.product.b.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.t;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,47 +33,47 @@ public class MallProductSelectSkuUI
   extends MallBaseUI
   implements u.a
 {
-  private TextView lCL;
-  private com.tencent.mm.plugin.product.b.m wLH;
-  private e wLW;
-  private com.tencent.mm.plugin.product.b.c wNz;
-  private ImageView wOb;
-  private TextView wOc;
-  private TextView wOd;
-  private Button wOe;
-  private ListView wOf;
-  private MallProductSelectAmountView wOg = null;
-  private i wOh = null;
-  private f wOi;
+  private TextView lHk;
+  private e xbK;
+  private com.tencent.mm.plugin.product.b.m xbv;
+  private ImageView xdP;
+  private TextView xdQ;
+  private TextView xdR;
+  private Button xdS;
+  private ListView xdT;
+  private MallProductSelectAmountView xdU = null;
+  private i xdV = null;
+  private f xdW;
+  private com.tencent.mm.plugin.product.b.c xdn;
   
   private void updateView()
   {
     AppMethodBeat.i(67022);
-    if (this.wLH != null)
+    if (this.xbv != null)
     {
-      if ((this.wLW == null) || (this.wLH.wMl == null)) {
+      if ((this.xbK == null) || (this.xbv.xbZ == null)) {
         break label180;
       }
-      this.wOc.setText(com.tencent.mm.plugin.product.b.b.D(this.wLW.wMa, this.wLW.wMb, this.wLH.wMl.wCF));
+      this.xdQ.setText(com.tencent.mm.plugin.product.b.b.D(this.xbK.xbO, this.xbK.xbP, this.xbv.xbZ.wSq));
     }
     for (;;)
     {
-      if (this.wLH.wMl != null) {
-        this.lCL.setText(this.wLH.wMl.name);
+      if (this.xbv.xbZ != null) {
+        this.lHk.setText(this.xbv.xbZ.name);
       }
-      if (!bt.isNullOrNil(this.wNz.dzw()))
+      if (!bu.isNullOrNil(this.xdn.dCN()))
       {
-        Bitmap localBitmap = u.a(new c(this.wNz.dzw()));
-        this.wOb.setImageBitmap(localBitmap);
+        Bitmap localBitmap = u.a(new c(this.xdn.dCN()));
+        this.xdP.setImageBitmap(localBitmap);
         u.a(this);
       }
-      this.wOd.setVisibility(8);
-      this.wOg.hb(this.wNz.dzE(), this.wNz.wLH.wMk);
-      this.wOh.notifyDataSetChanged();
+      this.xdR.setVisibility(8);
+      this.xdU.hd(this.xdn.dCV(), this.xdn.xbv.xbY);
+      this.xdV.notifyDataSetChanged();
       AppMethodBeat.o(67022);
       return;
       label180:
-      this.wOc.setText(com.tencent.mm.plugin.product.b.b.D(this.wLH.wMl.wMw, this.wLH.wMl.wMx, this.wLH.wMl.wCF));
+      this.xdQ.setText(com.tencent.mm.plugin.product.b.b.D(this.xbv.xbZ.xck, this.xbv.xbZ.xcl, this.xbv.xbZ.wSq));
     }
   }
   
@@ -86,21 +86,21 @@ public class MallProductSelectSkuUI
   {
     AppMethodBeat.i(67021);
     setMMTitle(2131761130);
-    this.wOb = ((ImageView)findViewById(2131302100));
-    this.lCL = ((TextView)findViewById(2131302104));
-    this.wOc = ((TextView)findViewById(2131302102));
-    this.wOd = ((TextView)findViewById(2131302099));
-    this.wOe = ((Button)findViewById(2131302101));
-    this.wOf = ((ListView)findViewById(2131302107));
-    this.wOg = ((MallProductSelectAmountView)findViewById(2131304492));
-    this.wOg.setAmount(this.wNz.mCount);
-    this.wOh = new i(this);
-    if ((this.wLH != null) && (this.wLH.wMl != null) && (this.wLH.wMl.wME != null)) {
-      this.wOh.wOk = this.wLH.wMl.wME;
+    this.xdP = ((ImageView)findViewById(2131302100));
+    this.lHk = ((TextView)findViewById(2131302104));
+    this.xdQ = ((TextView)findViewById(2131302102));
+    this.xdR = ((TextView)findViewById(2131302099));
+    this.xdS = ((Button)findViewById(2131302101));
+    this.xdT = ((ListView)findViewById(2131302107));
+    this.xdU = ((MallProductSelectAmountView)findViewById(2131304492));
+    this.xdU.setAmount(this.xdn.mCount);
+    this.xdV = new i(this);
+    if ((this.xbv != null) && (this.xbv.xbZ != null) && (this.xbv.xbZ.xcs != null)) {
+      this.xdV.xdY = this.xbv.xbZ.xcs;
     }
     for (;;)
     {
-      this.wOh.wOl = new AdapterView.OnItemClickListener()
+      this.xdV.xdZ = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -109,27 +109,27 @@ public class MallProductSelectSkuUI
           Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject2).bd(paramAnonymousAdapterView);
           ((com.tencent.mm.hellhoundlib.b.b)localObject2).bd(paramAnonymousView);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject2).mr(paramAnonymousInt);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject2).qY(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductSelectSkuUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject2).ahq());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject2).mu(paramAnonymousInt);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject2).rl(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductSelectSkuUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject2).ahF());
           Object localObject3 = (Pair)paramAnonymousView.getTag();
           paramAnonymousView = MallProductSelectSkuUI.this;
           localObject2 = MallProductSelectSkuUI.b(MallProductSelectSkuUI.this);
           paramAnonymousAdapterView = (String)((Pair)localObject3).first;
           localObject3 = (String)((Pair)localObject3).second;
-          ad.d("MicroMsg.MallProductManager", "selectSkuInfo (" + paramAnonymousAdapterView + " , " + (String)localObject3 + ")");
-          if ((((com.tencent.mm.plugin.product.b.c)localObject2).wLT.containsKey(paramAnonymousAdapterView)) && (((String)((com.tencent.mm.plugin.product.b.c)localObject2).wLT.get(paramAnonymousAdapterView)).equals(localObject3)))
+          ae.d("MicroMsg.MallProductManager", "selectSkuInfo (" + paramAnonymousAdapterView + " , " + (String)localObject3 + ")");
+          if ((((com.tencent.mm.plugin.product.b.c)localObject2).xbH.containsKey(paramAnonymousAdapterView)) && (((String)((com.tencent.mm.plugin.product.b.c)localObject2).xbH.get(paramAnonymousAdapterView)).equals(localObject3)))
           {
-            ((com.tencent.mm.plugin.product.b.c)localObject2).wLT.remove(paramAnonymousAdapterView);
-            ((com.tencent.mm.plugin.product.b.c)localObject2).wLL = com.tencent.mm.plugin.product.b.c.az(((com.tencent.mm.plugin.product.b.c)localObject2).wLT);
-            if (((com.tencent.mm.plugin.product.b.c)localObject2).wLS != null) {
-              paramAnonymousAdapterView = (e)((com.tencent.mm.plugin.product.b.c)localObject2).wLS.get(((com.tencent.mm.plugin.product.b.c)localObject2).wLL);
+            ((com.tencent.mm.plugin.product.b.c)localObject2).xbH.remove(paramAnonymousAdapterView);
+            ((com.tencent.mm.plugin.product.b.c)localObject2).xbz = com.tencent.mm.plugin.product.b.c.aF(((com.tencent.mm.plugin.product.b.c)localObject2).xbH);
+            if (((com.tencent.mm.plugin.product.b.c)localObject2).xbG != null) {
+              paramAnonymousAdapterView = (e)((com.tencent.mm.plugin.product.b.c)localObject2).xbG.get(((com.tencent.mm.plugin.product.b.c)localObject2).xbz);
             }
           }
-          for (((com.tencent.mm.plugin.product.b.c)localObject2).wLW = paramAnonymousAdapterView;; ((com.tencent.mm.plugin.product.b.c)localObject2).wLW = ((e)((com.tencent.mm.plugin.product.b.c)localObject2).wLS.get(((com.tencent.mm.plugin.product.b.c)localObject2).wLL)))
+          for (((com.tencent.mm.plugin.product.b.c)localObject2).xbK = paramAnonymousAdapterView;; ((com.tencent.mm.plugin.product.b.c)localObject2).xbK = ((e)((com.tencent.mm.plugin.product.b.c)localObject2).xbG.get(((com.tencent.mm.plugin.product.b.c)localObject2).xbz)))
           {
-            ((com.tencent.mm.plugin.product.b.c)localObject2).dzK();
-            paramAnonymousAdapterView = ((com.tencent.mm.plugin.product.b.c)localObject2).wLW;
+            ((com.tencent.mm.plugin.product.b.c)localObject2).dDb();
+            paramAnonymousAdapterView = ((com.tencent.mm.plugin.product.b.c)localObject2).xbK;
             do
             {
               MallProductSelectSkuUI.a(paramAnonymousView, paramAnonymousAdapterView);
@@ -139,18 +139,18 @@ public class MallProductSelectSkuUI
               return;
               paramAnonymousAdapterView = null;
               break;
-              ((com.tencent.mm.plugin.product.b.c)localObject2).wLT.put(paramAnonymousAdapterView, localObject3);
-              ((com.tencent.mm.plugin.product.b.c)localObject2).wLL = com.tencent.mm.plugin.product.b.c.az(((com.tencent.mm.plugin.product.b.c)localObject2).wLT);
-              ad.d("MicroMsg.MallProductManager", "getSkuInfoId (" + ((com.tencent.mm.plugin.product.b.c)localObject2).wLL + ")");
+              ((com.tencent.mm.plugin.product.b.c)localObject2).xbH.put(paramAnonymousAdapterView, localObject3);
+              ((com.tencent.mm.plugin.product.b.c)localObject2).xbz = com.tencent.mm.plugin.product.b.c.aF(((com.tencent.mm.plugin.product.b.c)localObject2).xbH);
+              ae.d("MicroMsg.MallProductManager", "getSkuInfoId (" + ((com.tencent.mm.plugin.product.b.c)localObject2).xbz + ")");
               paramAnonymousAdapterView = localObject1;
-            } while (((com.tencent.mm.plugin.product.b.c)localObject2).wLS == null);
+            } while (((com.tencent.mm.plugin.product.b.c)localObject2).xbG == null);
           }
         }
       };
-      this.wOf.setAdapter(this.wOh);
-      this.wOg.setOnAmountChangeListener(new MallProductSelectAmountView.a()
+      this.xdT.setAdapter(this.xdV);
+      this.xdU.setOnAmountChangeListener(new MallProductSelectAmountView.a()
       {
-        public final void hD(int paramAnonymousInt)
+        public final void hF(int paramAnonymousInt)
         {
           AppMethodBeat.i(67014);
           MallProductSelectSkuUI.b(MallProductSelectSkuUI.this).mCount = paramAnonymousInt;
@@ -158,7 +158,7 @@ public class MallProductSelectSkuUI
           AppMethodBeat.o(67014);
         }
         
-        public final void hc(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void he(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(67015);
           switch (paramAnonymousInt2)
@@ -177,17 +177,17 @@ public class MallProductSelectSkuUI
           }
         }
       });
-      this.wOe.setOnClickListener(new View.OnClickListener()
+      this.xdS.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67016);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductSelectSkuUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductSelectSkuUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           localObject = MallProductSelectSkuUI.d(MallProductSelectSkuUI.this);
-          if (((f)localObject).wNx) {
-            t.makeText(((f)localObject).kbt, 2131761119, 1).show();
+          if (((f)localObject).xdl) {
+            t.makeText(((f)localObject).keK, 2131761119, 1).show();
           }
           label283:
           for (;;)
@@ -195,51 +195,51 @@ public class MallProductSelectSkuUI
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectSkuUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(67016);
             return;
-            if (((f)localObject).wNz.dzG())
+            if (((f)localObject).xdn.dCX())
             {
-              if (((f)localObject).wNz.wLN != null)
+              if (((f)localObject).xdn.xbB != null)
               {
-                g.ajD();
-                g.ajB().gAO.a(new j(((f)localObject).wNz.dzI(), f.mScene), 0);
+                g.ajS();
+                g.ajQ().gDv.a(new j(((f)localObject).xdn.dCZ(), f.mScene), 0);
               }
               else
               {
-                d.c(((f)localObject).kbt, "address", ".ui.WalletAddAddressUI", 2);
+                d.c(((f)localObject).keK, "address", ".ui.WalletAddAddressUI", 2);
               }
             }
             else
             {
-              paramAnonymousView = ((f)localObject).wNz;
+              paramAnonymousView = ((f)localObject).xdn;
               com.tencent.mm.plugin.product.c.m localm;
-              if ((paramAnonymousView.wLT != null) && (paramAnonymousView.wLT.size() < paramAnonymousView.wLR) && (paramAnonymousView.wLR > 0))
+              if ((paramAnonymousView.xbH != null) && (paramAnonymousView.xbH.size() < paramAnonymousView.xbF) && (paramAnonymousView.xbF > 0))
               {
-                Iterator localIterator = paramAnonymousView.wLH.wMl.wME.iterator();
+                Iterator localIterator = paramAnonymousView.xbv.xbZ.xcs.iterator();
                 do
                 {
                   if (!localIterator.hasNext()) {
                     break;
                   }
                   localm = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-                } while (paramAnonymousView.wLT.containsKey(localm.wMO));
+                } while (paramAnonymousView.xbH.containsKey(localm.xcC));
               }
-              for (paramAnonymousView = localm.wMP;; paramAnonymousView = null)
+              for (paramAnonymousView = localm.xcD;; paramAnonymousView = null)
               {
-                if (bt.isNullOrNil(paramAnonymousView)) {
+                if (bu.isNullOrNil(paramAnonymousView)) {
                   break label283;
                 }
-                t.makeText(((f)localObject).kbt, ((f)localObject).kbt.getString(2131761128, new Object[] { paramAnonymousView }), 0).show();
+                t.makeText(((f)localObject).keK, ((f)localObject).keK.getString(2131761128, new Object[] { paramAnonymousView }), 0).show();
                 break;
               }
             }
           }
         }
       });
-      this.wOb.setFocusable(true);
-      this.wOb.setFocusableInTouchMode(true);
-      this.wOb.requestFocus();
+      this.xdP.setFocusable(true);
+      this.xdP.setFocusableInTouchMode(true);
+      this.xdP.requestFocus();
       AppMethodBeat.o(67021);
       return;
-      ad.e("MicroMsg.MallProductSelectSkuUI", "Illage mProductInfo.base_attr.sku_table");
+      ae.e("MicroMsg.MallProductSelectSkuUI", "Illage mProductInfo.base_attr.sku_table");
     }
   }
   
@@ -250,14 +250,14 @@ public class MallProductSelectSkuUI
     if (paramBitmap == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.MallProductSelectSkuUI", bool);
-      if (!bt.isNullOrNil(this.wNz.dzw())) {
+      ae.d("MicroMsg.MallProductSelectSkuUI", bool);
+      if (!bu.isNullOrNil(this.xdn.dCN())) {
         break;
       }
       AppMethodBeat.o(67024);
       return;
     }
-    this.wOb.post(new Runnable()
+    this.xdP.post(new Runnable()
     {
       public final void run()
       {
@@ -273,7 +273,7 @@ public class MallProductSelectSkuUI
   {
     AppMethodBeat.i(67023);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.wOi.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.xdW.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(67023);
   }
   
@@ -281,7 +281,7 @@ public class MallProductSelectSkuUI
   {
     AppMethodBeat.i(67018);
     super.onCreate(paramBundle);
-    this.wOi = new f(getContext(), new f.a()
+    this.xdW = new f(getContext(), new f.a()
     {
       public final void E(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
       {
@@ -292,13 +292,13 @@ public class MallProductSelectSkuUI
           AppMethodBeat.o(67012);
           return;
         }
-        MallProductSelectSkuUI.this.auB(paramAnonymousString);
+        MallProductSelectSkuUI.this.avQ(paramAnonymousString);
         AppMethodBeat.o(67012);
       }
     });
-    com.tencent.mm.plugin.product.a.a.dzs();
-    this.wNz = com.tencent.mm.plugin.product.a.a.dzt();
-    this.wLH = this.wNz.wLH;
+    com.tencent.mm.plugin.product.a.a.dCJ();
+    this.xdn = com.tencent.mm.plugin.product.a.a.dCK();
+    this.xbv = this.xdn.xbv;
     initView();
     updateView();
     AppMethodBeat.o(67018);
@@ -307,7 +307,7 @@ public class MallProductSelectSkuUI
   public void onStart()
   {
     AppMethodBeat.i(67019);
-    this.wOi.onStart();
+    this.xdW.onStart();
     super.onStart();
     AppMethodBeat.o(67019);
   }
@@ -315,7 +315,7 @@ public class MallProductSelectSkuUI
   public void onStop()
   {
     AppMethodBeat.i(67020);
-    this.wOi.onStop();
+    this.xdW.onStop();
     super.onStop();
     AppMethodBeat.o(67020);
   }
@@ -328,7 +328,7 @@ public class MallProductSelectSkuUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductSelectSkuUI
  * JD-Core Version:    0.7.0.1
  */

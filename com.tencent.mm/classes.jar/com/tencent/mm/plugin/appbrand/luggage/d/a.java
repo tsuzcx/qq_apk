@@ -7,29 +7,29 @@ import com.tencent.mm.plugin.report.service.g;
 import java.util.ArrayList;
 
 public final class a
-  implements com.tencent.mm.plugin.appbrand.t.a
+  implements com.tencent.mm.plugin.appbrand.s.a
 {
-  private final long[] lQH;
+  private final long[] lVi;
   
   public a()
   {
     AppMethodBeat.i(47576);
-    this.lQH = new long[] { 1088L };
+    this.lVi = new long[] { 1088L };
     AppMethodBeat.o(47576);
   }
   
   public final void b(ArrayList<IDKey> paramArrayList, boolean paramBoolean)
   {
     AppMethodBeat.i(47579);
-    g.yhR.b(paramArrayList, paramBoolean);
+    g.yxI.b(paramArrayList, paramBoolean);
     AppMethodBeat.o(47579);
   }
   
   public final void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     AppMethodBeat.i(47578);
-    g.yhR.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
-    long[] arrayOfLong = this.lQH;
+    g.yxI.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
+    long[] arrayOfLong = this.lVi;
     int j = arrayOfLong.length;
     int i = 0;
     if (i < j) {
@@ -47,10 +47,10 @@ public final class a
     }
   }
   
-  public final void sT(long paramLong)
+  public final void tg(long paramLong)
   {
     AppMethodBeat.i(47577);
-    g.yhR.n(807L, paramLong, 1L);
+    g.yxI.n(807L, paramLong, 1L);
     AppMethodBeat.o(47577);
   }
 }

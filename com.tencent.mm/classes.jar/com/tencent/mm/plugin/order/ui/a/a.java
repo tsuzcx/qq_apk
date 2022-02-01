@@ -4,26 +4,29 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
-import com.tencent.mm.o.b;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 import com.tencent.mm.plugin.order.model.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
-import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class a
   implements a.a
 {
-  public com.tencent.mm.wallet_core.ui.c wEJ;
+  public com.tencent.mm.wallet_core.ui.c wUu;
   
-  public final List<Preference> a(Context paramContext, com.tencent.mm.ui.base.preference.f paramf, MallTransactionObject paramMallTransactionObject)
+  public final List<Preference> a(final Context paramContext, com.tencent.mm.ui.base.preference.f paramf, final MallTransactionObject paramMallTransactionObject)
   {
     AppMethodBeat.i(66800);
     ArrayList localArrayList = new ArrayList();
@@ -33,91 +36,91 @@ public final class a
     label153:
     label356:
     int j;
-    if (paramMallTransactionObject.dfR == 2)
+    if (paramMallTransactionObject.dgT == 2)
     {
       i = 1;
-      if ((!bt.isNullOrNil(paramMallTransactionObject.wCH)) && (!bt.isNullOrNil(paramMallTransactionObject.iAa)))
+      if ((!bu.isNullOrNil(paramMallTransactionObject.wSs)) && (!bu.isNullOrNil(paramMallTransactionObject.iCT)))
       {
         localObject1 = new d(paramContext);
-        ((d)localObject1).pFJ = paramMallTransactionObject.iAa;
-        ((d)localObject1).mName = paramMallTransactionObject.wCH;
+        ((d)localObject1).pMn = paramMallTransactionObject.iCT;
+        ((d)localObject1).mName = paramMallTransactionObject.wSs;
         ((d)localObject1).mOnClickListener = new a.1(this, paramMallTransactionObject, paramContext);
         localArrayList.add(localObject1);
         localArrayList.add(new PreferenceSmallCategory(paramContext));
       }
       localObject2 = new i(paramContext);
-      ((i)localObject2).wFj = e.d(paramMallTransactionObject.paV, paramMallTransactionObject.wCF);
+      ((i)localObject2).wUU = com.tencent.mm.wallet_core.ui.f.d(paramMallTransactionObject.phz, paramMallTransactionObject.wSq);
       if (i == 0) {
         break label1563;
       }
       localObject1 = paramContext.getString(2131765535);
       ((i)localObject2).setTitle((CharSequence)localObject1);
-      if (!bt.isNullOrNil(paramMallTransactionObject.wCx)) {
-        ((i)localObject2).auf(paramMallTransactionObject.wCx);
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSi)) {
+        ((i)localObject2).avu(paramMallTransactionObject.wSi);
       }
       localArrayList.add(localObject2);
       boolean bool = false;
-      if (paramMallTransactionObject.paV != paramMallTransactionObject.wCL)
+      if (paramMallTransactionObject.phz != paramMallTransactionObject.wSw)
       {
         localObject1 = new h(paramContext);
-        ((h)localObject1).wFg = false;
-        ((h)localObject1).wFh = true;
+        ((h)localObject1).wUR = false;
+        ((h)localObject1).wUS = true;
         localArrayList.add(localObject1);
         localObject1 = new f(paramContext);
-        ((f)localObject1).setContent(e.d(paramMallTransactionObject.wCL, paramMallTransactionObject.wCF));
+        ((f)localObject1).setContent(com.tencent.mm.wallet_core.ui.f.d(paramMallTransactionObject.wSw, paramMallTransactionObject.wSq));
         ((f)localObject1).setTitle(2131765561);
         localArrayList.add(localObject1);
         bool = true;
       }
-      if ((paramMallTransactionObject.paV != paramMallTransactionObject.wCL) && (!bt.isNullOrNil(paramMallTransactionObject.wCK)))
+      if ((paramMallTransactionObject.phz != paramMallTransactionObject.wSw) && (!bu.isNullOrNil(paramMallTransactionObject.wSv)))
       {
         localObject1 = new g(paramContext);
         ((g)localObject1).setTitle(2131765547);
-        ((g)localObject1).mzx = paramf;
-        localObject2 = paramMallTransactionObject.wCK.split("\n");
+        ((g)localObject1).mEx = paramf;
+        localObject2 = paramMallTransactionObject.wSv.split("\n");
         if (localObject2.length != 1) {
           break label1596;
         }
-        ((g)localObject1).wEZ = localObject2[0];
+        ((g)localObject1).wUK = localObject2[0];
         localArrayList.add(localObject1);
       }
       localObject1 = new h(paramContext);
-      ((h)localObject1).wFg = bool;
-      ((h)localObject1).wFh = true;
+      ((h)localObject1).wUR = bool;
+      ((h)localObject1).wUS = true;
       localArrayList.add(localObject1);
-      if ((i == 0) && (!bt.isNullOrNil(paramMallTransactionObject.wCU)))
+      if ((i == 0) && (!bu.isNullOrNil(paramMallTransactionObject.wSF)))
       {
-        com.tencent.mm.kernel.g.ajD();
-        localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramMallTransactionObject.wCU);
-        if ((localObject1 != null) && ((int)((b)localObject1).gfj > 0))
+        com.tencent.mm.kernel.g.ajS();
+        localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramMallTransactionObject.wSF);
+        if ((localObject1 != null) && ((int)((com.tencent.mm.contact.c)localObject1).ght > 0))
         {
-          localObject1 = ((b)localObject1).adv();
+          localObject1 = ((com.tencent.mm.contact.c)localObject1).adG();
           localObject2 = new f(paramContext);
           ((f)localObject2).setTitle(2131765575);
           ((f)localObject2).setContent((String)localObject1);
           localArrayList.add(localObject2);
         }
       }
-      if ((paramMallTransactionObject.dMF == 31) && (i != 0) && (!bt.isNullOrNil(paramMallTransactionObject.wDb)))
+      if ((paramMallTransactionObject.dNV == 31) && (i != 0) && (!bu.isNullOrNil(paramMallTransactionObject.wSM)))
       {
-        com.tencent.mm.kernel.g.ajD();
-        localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramMallTransactionObject.wDb);
-        if ((localObject1 != null) && ((int)((b)localObject1).gfj > 0))
+        com.tencent.mm.kernel.g.ajS();
+        localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramMallTransactionObject.wSM);
+        if ((localObject1 != null) && ((int)((com.tencent.mm.contact.c)localObject1).ght > 0))
         {
-          localObject1 = ((b)localObject1).adv();
+          localObject1 = ((com.tencent.mm.contact.c)localObject1).adG();
           localObject2 = new f(paramContext);
           ((f)localObject2).setTitle(2131765559);
           ((f)localObject2).setContent((String)localObject1);
           localArrayList.add(localObject2);
         }
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.desc))
+      if (!bu.isNullOrNil(paramMallTransactionObject.desc))
       {
         if (i == 0) {
           break label1663;
         }
         paramf = new f(paramContext);
-        if ((paramMallTransactionObject.dMF != 32) && (paramMallTransactionObject.dMF != 33) && (paramMallTransactionObject.dMF != 31)) {
+        if ((paramMallTransactionObject.dNV != 32) && (paramMallTransactionObject.dNV != 33) && (paramMallTransactionObject.dNV != 31)) {
           break label1653;
         }
         paramf.setTitle(2131765539);
@@ -125,125 +128,169 @@ public final class a
         paramf.setContent(paramMallTransactionObject.desc);
         localArrayList.add(paramf);
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.wDf))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSQ))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765587);
-        paramf.setContent(paramMallTransactionObject.wDf);
+        paramf.setContent(paramMallTransactionObject.wSQ);
         localArrayList.add(paramf);
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.wDe))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSP))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765588);
-        paramf.setContent(paramMallTransactionObject.wDe);
+        paramf.setContent(paramMallTransactionObject.wSP);
         localArrayList.add(paramf);
       }
-      if (!TextUtils.isEmpty(paramMallTransactionObject.wCW))
+      if (!TextUtils.isEmpty(paramMallTransactionObject.wSH))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765537);
-        paramf.setContent(paramMallTransactionObject.wCW);
+        paramf.setContent(paramMallTransactionObject.wSH);
         localArrayList.add(paramf);
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.wCu))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSf))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765560);
-        paramf.setContent(paramMallTransactionObject.wCu);
+        paramf.setContent(paramMallTransactionObject.wSf);
         localArrayList.add(paramf);
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.wCz))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSk))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765576);
-        if ((paramMallTransactionObject.dMF != 31) || (u.aAm().equals(paramMallTransactionObject.wCU)) || (paramMallTransactionObject.wCV <= 0) || (bt.isNullOrNil(paramMallTransactionObject.wCU)) || (bt.isNullOrNil(paramMallTransactionObject.dlv))) {
+        if ((paramMallTransactionObject.dNV != 31) || (v.aAC().equals(paramMallTransactionObject.wSF)) || (paramMallTransactionObject.wSG <= 0) || (bu.isNullOrNil(paramMallTransactionObject.wSF)) || (bu.isNullOrNil(paramMallTransactionObject.dmx))) {
           break label1826;
         }
         localObject1 = paramContext.getString(2131762520);
-        localObject2 = paramMallTransactionObject.wCz + " " + (String)localObject1;
-        i = paramMallTransactionObject.wCz.length();
-        j = paramMallTransactionObject.wCz.length();
+        localObject2 = paramMallTransactionObject.wSk + " " + (String)localObject1;
+        i = paramMallTransactionObject.wSk.length();
+        j = paramMallTransactionObject.wSk.length();
         paramf.a((String)localObject2, i + 1, ((String)localObject1).length() + j + 1, new a.3(this, paramContext, paramMallTransactionObject));
         label1017:
         localArrayList.add(paramf);
       }
       paramf = new f(paramContext);
       paramf.setTitle(2131765542);
-      paramf.setContent(e.ov(paramMallTransactionObject.hZE));
+      paramf.setContent(com.tencent.mm.wallet_core.ui.f.oy(paramMallTransactionObject.icw));
       localArrayList.add(paramf);
-      if (!bt.isNullOrNil(paramMallTransactionObject.wCD))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSo))
       {
         localObject2 = new f(paramContext);
         ((f)localObject2).setTitle(2131765563);
-        localObject1 = paramMallTransactionObject.wCD;
+        localObject1 = paramMallTransactionObject.wSo;
         paramf = (com.tencent.mm.ui.base.preference.f)localObject1;
-        if (!bt.isNullOrNil(paramMallTransactionObject.wCE)) {
-          paramf = (String)localObject1 + "(" + paramMallTransactionObject.wCE + ")";
+        if (!bu.isNullOrNil(paramMallTransactionObject.wSp)) {
+          paramf = (String)localObject1 + "(" + paramMallTransactionObject.wSp + ")";
         }
         ((f)localObject2).setContent(paramf);
         localArrayList.add(localObject2);
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.dlv))
+      if (!bu.isNullOrNil(paramMallTransactionObject.dmx))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765583);
-        paramf.setContent(paramMallTransactionObject.dlv);
+        paramf.setContent(paramMallTransactionObject.dmx);
         localArrayList.add(paramf);
       }
-      if (!bt.isNullOrNil(paramMallTransactionObject.wCC))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSn))
       {
         paramf = new f(paramContext);
         paramf.setTitle(2131765573);
-        if (paramMallTransactionObject.dMF != 8) {
+        if (paramMallTransactionObject.dNV != 8) {
           break label1855;
         }
         paramf.setContent(paramContext.getString(2131765574));
         localObject1 = new c(paramContext);
-        localObject2 = com.tencent.mm.bz.a.a.b(paramContext, paramMallTransactionObject.wCC, 5, 0);
-        ((c)localObject1).wER = e.aYL(paramMallTransactionObject.wCC);
-        ((c)localObject1).hMs = ((Bitmap)localObject2);
+        localObject2 = com.tencent.mm.by.a.a.b(paramContext, paramMallTransactionObject.wSn, 5, 0);
+        ((c)localObject1).wUC = com.tencent.mm.wallet_core.ui.f.bao(paramMallTransactionObject.wSn);
+        ((c)localObject1).hPl = ((Bitmap)localObject2);
         ((c)localObject1).mOnClickListener = new a.4(this, (Bitmap)localObject2, paramMallTransactionObject);
         localArrayList.add(paramf);
         localArrayList.add(localObject1);
       }
       label1325:
-      if (paramMallTransactionObject.wCg.size() != 0) {
+      if (paramMallTransactionObject.wRR.size() != 0) {
         break label1875;
       }
       i = 0;
       label1340:
-      if ((i != 0) || ((bt.isNullOrNil(paramMallTransactionObject.wCP)) && (bt.isNullOrNil(paramMallTransactionObject.wCG)) && (bt.isNullOrNil(paramMallTransactionObject.wCj)))) {
+      if ((i != 0) || ((bu.isNullOrNil(paramMallTransactionObject.wSA)) && (bu.isNullOrNil(paramMallTransactionObject.wSr)) && (bu.isNullOrNil(paramMallTransactionObject.wRU)))) {
         break label1881;
       }
       paramf = new h(paramContext);
-      paramf.wFg = true;
+      paramf.wUR = true;
       localArrayList.add(paramf);
       localArrayList.add(com.tencent.mm.plugin.order.model.a.a(paramContext, paramMallTransactionObject));
       label1411:
       if (i != 0)
       {
         paramf = new j(paramContext);
-        if (paramMallTransactionObject.wCh != 1) {
+        if (paramMallTransactionObject.wRS != 1) {
           break label1926;
         }
-        if ((!bt.isNullOrNil(paramMallTransactionObject.wCP)) || (!bt.isNullOrNil(paramMallTransactionObject.wCG)) || (!bt.isNullOrNil(paramMallTransactionObject.wCj)))
+        if ((!bu.isNullOrNil(paramMallTransactionObject.wSA)) || (!bu.isNullOrNil(paramMallTransactionObject.wSr)) || (!bu.isNullOrNil(paramMallTransactionObject.wRU)))
         {
-          if (bt.isNullOrNil(paramMallTransactionObject.wCQ)) {
+          if (bu.isNullOrNil(paramMallTransactionObject.wSB)) {
             break label1912;
           }
-          paramf.wFk = paramMallTransactionObject.wCQ;
+          paramf.wUV = paramMallTransactionObject.wSB;
           label1481:
-          paramf.wFl = new a.5(this, paramMallTransactionObject, paramContext);
+          paramf.wUW = new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(66797);
+              Object localObject = new b();
+              ((b)localObject).bd(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+              paramAnonymousView = new LinkedList();
+              localObject = new LinkedList();
+              if (!bu.isNullOrNil(paramMallTransactionObject.wSr))
+              {
+                ((List)localObject).add(Integer.valueOf(0));
+                paramAnonymousView.add(paramContext.getString(2131765579));
+              }
+              if (!bu.isNullOrNil(paramMallTransactionObject.wRU))
+              {
+                ((List)localObject).add(Integer.valueOf(1));
+                paramAnonymousView.add(paramContext.getString(2131765580));
+              }
+              if (!bu.isNullOrNil(paramMallTransactionObject.wSA))
+              {
+                ((List)localObject).add(Integer.valueOf(2));
+                paramAnonymousView.add(paramContext.getString(2131765582));
+              }
+              if (((List)localObject).size() == 1)
+              {
+                com.tencent.mm.plugin.order.model.a.a(((Integer)((List)localObject).get(0)).intValue(), paramContext, paramMallTransactionObject);
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(66797);
+                return;
+              }
+              com.tencent.mm.ui.base.h.b(paramContext, null, paramAnonymousView, (List)localObject, null, new h.d()
+              {
+                public final void cv(int paramAnonymous2Int1, int paramAnonymous2Int2)
+                {
+                  AppMethodBeat.i(66796);
+                  com.tencent.mm.plugin.order.model.a.a(paramAnonymous2Int2, a.5.this.val$context, a.5.this.wRY);
+                  AppMethodBeat.o(66796);
+                }
+              });
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(66797);
+            }
+          };
         }
       }
     }
     for (;;)
     {
-      paramf.wCg = paramMallTransactionObject.wCg;
+      paramf.wRR = paramMallTransactionObject.wRR;
       paramf.mOnClickListener = new a.7(this, paramContext, paramMallTransactionObject);
       paramContext = new h(paramContext);
-      paramContext.wFg = true;
+      paramContext.wUR = true;
       localArrayList.add(paramContext);
       localArrayList.add(paramf);
       AppMethodBeat.o(66800);
@@ -251,7 +298,7 @@ public final class a
       i = 0;
       break;
       label1563:
-      if (paramMallTransactionObject.dMF == 11)
+      if (paramMallTransactionObject.dNV == 11)
       {
         localObject1 = paramContext.getString(2131765572);
         break label153;
@@ -259,7 +306,7 @@ public final class a
       localObject1 = paramContext.getString(2131765534);
       break label153;
       label1596:
-      ((g)localObject1).wEZ = paramContext.getString(2131765549, new Object[] { Integer.valueOf(localObject2.length), e.d(paramMallTransactionObject.wCL - paramMallTransactionObject.paV, paramMallTransactionObject.wCF) });
+      ((g)localObject1).wUK = paramContext.getString(2131765549, new Object[] { Integer.valueOf(localObject2.length), com.tencent.mm.wallet_core.ui.f.d(paramMallTransactionObject.wSw - paramMallTransactionObject.phz, paramMallTransactionObject.wSq) });
       ((g)localObject1).a((String[])localObject2, TextUtils.TruncateAt.MIDDLE);
       break label356;
       label1653:
@@ -267,11 +314,11 @@ public final class a
       break label666;
       label1663:
       localObject1 = new f(paramContext);
-      if (paramMallTransactionObject.dMF == 31)
+      if (paramMallTransactionObject.dNV == 31)
       {
         ((f)localObject1).setTitle(2131765568);
         label1690:
-        if (bt.isNullOrNil(paramMallTransactionObject.wCv)) {
+        if (bu.isNullOrNil(paramMallTransactionObject.wSg)) {
           break label1814;
         }
         localObject2 = paramContext.getString(2131765538);
@@ -290,14 +337,14 @@ public final class a
         ((f)localObject1).setContent(paramMallTransactionObject.desc);
       }
       label1826:
-      paramf.setContent(paramMallTransactionObject.wCz);
-      if (bt.isNullOrNil(paramMallTransactionObject.wCA)) {
+      paramf.setContent(paramMallTransactionObject.wSk);
+      if (bu.isNullOrNil(paramMallTransactionObject.wSl)) {
         break label1017;
       }
-      paramf.aue(paramMallTransactionObject.wCA);
+      paramf.avt(paramMallTransactionObject.wSl);
       break label1017;
       label1855:
-      paramf.setContent(paramMallTransactionObject.wCC);
+      paramf.setContent(paramMallTransactionObject.wSn);
       localArrayList.add(paramf);
       break label1325;
       label1875:
@@ -305,25 +352,25 @@ public final class a
       break label1340;
       label1881:
       paramf = new h(paramContext);
-      paramf.wFg = true;
-      paramf.nlS = false;
+      paramf.wUR = true;
+      paramf.nrc = false;
       localArrayList.add(paramf);
       break label1411;
       label1912:
-      paramf.wFk = paramContext.getString(2131765581);
+      paramf.wUV = paramContext.getString(2131765581);
       break label1481;
       label1926:
-      if (!bt.isNullOrNil(paramMallTransactionObject.wCQ))
+      if (!bu.isNullOrNil(paramMallTransactionObject.wSB))
       {
-        paramf.wFk = paramMallTransactionObject.wCQ;
-        paramf.wFl = new a.6(this, paramContext, paramMallTransactionObject);
+        paramf.wUV = paramMallTransactionObject.wSB;
+        paramf.wUW = new a.6(this, paramContext, paramMallTransactionObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

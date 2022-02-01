@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wi
   extends b
 {
-  public a dKF;
-  public b dKG;
+  public a dLN;
   
   public wi()
   {
@@ -16,23 +15,18 @@ public final class wi
   
   private wi(byte paramByte)
   {
-    AppMethodBeat.i(19840);
-    this.dKF = new a();
-    this.dKG = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149890);
+    this.dLN = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19840);
+    AppMethodBeat.o(149890);
   }
   
   public static final class a
   {
-    public int dDA = 0;
-    public String dDy;
-    public int dDz = 0;
-    public int opType = 0;
+    public String dLO;
+    public int dsO = 0;
   }
-  
-  public static final class b {}
 }
 
 

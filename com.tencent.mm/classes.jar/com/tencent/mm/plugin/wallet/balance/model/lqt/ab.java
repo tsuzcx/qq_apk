@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.clv;
-import com.tencent.mm.protocal.protobuf.cnl;
-import com.tencent.mm.protocal.protobuf.coq;
-import com.tencent.mm.protocal.protobuf.csl;
+import com.tencent.mm.protocal.protobuf.cmp;
+import com.tencent.mm.protocal.protobuf.cof;
+import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.protocal.protobuf.ctf;
 import com.tencent.mm.protocal.protobuf.in;
 import com.tencent.mm.vending.c.b;
 import com.tencent.mm.vending.h.e;
@@ -14,11 +14,11 @@ import com.tencent.mm.vending.j.g;
 public class ab
   implements b<aa>
 {
-  protected aa CxS;
-  public final d CxT;
-  public final b CxU;
-  public final c CxV;
-  public final a CxW;
+  public final c CPA;
+  public final a CPB;
+  protected aa CPx;
+  public final d CPy;
+  public final b CPz;
   
   public ab()
   {
@@ -30,53 +30,53 @@ public class ab
   private ab(aa paramaa)
   {
     AppMethodBeat.i(68522);
-    this.CxT = new d();
-    this.CxU = new b();
-    this.CxV = new c();
-    this.CxW = new a();
-    this.CxS = paramaa;
+    this.CPy = new d();
+    this.CPz = new b();
+    this.CPA = new c();
+    this.CPB = new a();
+    this.CPx = paramaa;
     AppMethodBeat.o(68522);
   }
   
   public final class a
-    implements e<clv, f<Integer, in, Integer, Integer, String>>
+    implements e<cmp, f<Integer, in, Integer, Integer, String>>
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.UI";
     }
   }
   
   public final class b
-    implements e<coq, g<String, String, Integer, Integer, String, Integer>>
+    implements e<cpk, g<String, String, Integer, Integer, String, Integer>>
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.UI";
     }
   }
   
   public final class c
-    implements e<csl, f<Integer, String, String, Integer, String>>
+    implements e<ctf, f<Integer, String, String, Integer, String>>
   {
     public c() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.UI";
     }
   }
   
   public final class d
-    implements e<cnl, g<String, String, Integer, Integer, String, Integer>>
+    implements e<cof, g<String, String, Integer, Integer, String, Integer>>
   {
     public d() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.UI";
     }

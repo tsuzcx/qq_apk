@@ -13,7 +13,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandActionSingleHeaderView
   extends LinearLayout
 {
-  private ImageView dsD;
+  private ImageView dtJ;
   private TextView vk;
   
   public AppBrandActionSingleHeaderView(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,27 +37,27 @@ public class AppBrandActionSingleHeaderView
   {
     AppMethodBeat.i(134942);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131493092, this);
-    this.dsD = ((ImageView)findViewById(2131296889));
+    this.dtJ = ((ImageView)findViewById(2131296889));
     this.vk = ((TextView)findViewById(2131296890));
     AppMethodBeat.o(134942);
   }
   
   public ImageView getImageView()
   {
-    return this.dsD;
+    return this.dtJ;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(134944);
-    this.dsD.setImageDrawable(paramDrawable);
+    this.dtJ.setImageDrawable(paramDrawable);
     AppMethodBeat.o(134944);
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(134943);
-    this.dsD.setImageResource(paramInt);
+    this.dtJ.setImageResource(paramInt);
     AppMethodBeat.o(134943);
   }
   

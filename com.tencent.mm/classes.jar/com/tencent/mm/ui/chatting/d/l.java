@@ -6,21 +6,21 @@ import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.p;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.model.q;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.x;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.d.b.d;
 import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.o;
 
 public final class l
 {
@@ -35,31 +35,31 @@ public final class l
     return paramMMFragment;
   }
   
-  public static void a(a parama, bu parambu, Intent paramIntent)
+  public static void a(a parama, bv parambv, Intent paramIntent)
   {
     AppMethodBeat.i(35189);
-    if ((parama == null) || (parambu == null))
+    if ((parama == null) || (parambv == null))
     {
       AppMethodBeat.o(35189);
       return;
     }
     String str1 = parama.getTalkerUserName();
-    String str2 = b(parama, parambu);
+    String str2 = b(parama, parambv);
     Bundle localBundle = new Bundle();
     int i;
-    if (parama.fFu()) {
+    if (parama.fJB()) {
       i = 2;
     }
     for (;;)
     {
       localBundle.putInt("stat_scene", i);
-      localBundle.putString("stat_msg_id", "msg_" + Long.toString(parambu.field_msgSvrId));
+      localBundle.putString("stat_msg_id", "msg_" + Long.toString(parambv.field_msgSvrId));
       localBundle.putString("stat_chat_talker_username", str1);
       localBundle.putString("stat_send_msg_user", str2);
       paramIntent.putExtra("_stat_obj", localBundle);
       AppMethodBeat.o(35189);
       return;
-      if (w.zE(str1)) {
+      if (x.Ao(str1)) {
         i = 7;
       } else {
         i = 1;
@@ -67,29 +67,29 @@ public final class l
     }
   }
   
-  public static boolean aWd(String paramString)
+  public static boolean aXE(String paramString)
   {
     AppMethodBeat.i(35194);
     int j;
     int i;
-    if ((!w.zD(paramString)) && (p.yF(paramString)) && (!u.za(paramString)))
+    if ((!x.An(paramString)) && (q.zp(paramString)) && (!v.zK(paramString)))
     {
-      ba.aBQ();
-      am localam = c.azp().Bf(paramString);
-      if (localam == null) {
+      bc.aCg();
+      an localan = c.azF().BH(paramString);
+      if (localan == null) {
         break label123;
       }
-      j = localam.field_type;
-      ba.aBQ();
-      localam = c.azp().Bf(localam.field_encryptUsername);
-      if (localam == null) {
+      j = localan.field_type;
+      bc.aCg();
+      localan = c.azF().BH(localan.field_encryptUsername);
+      if (localan == null) {
         break label118;
       }
-      i = localam.field_type;
+      i = localan.field_type;
     }
     for (;;)
     {
-      ad.i("MicroMsg.ChattingUI.ChattingLogic", "isStranger:%s type:%d etype:%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) });
+      ae.i("MicroMsg.ChattingUI.ChattingLogic", "isStranger:%s type:%d etype:%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) });
       AppMethodBeat.o(35194);
       return true;
       AppMethodBeat.o(35194);
@@ -103,10 +103,10 @@ public final class l
     }
   }
   
-  public static boolean ak(am paramam)
+  public static boolean ar(an paraman)
   {
     AppMethodBeat.i(35192);
-    if ((paramam.field_username.equals("medianote")) && ((u.aAq() & 0x4000) == 0))
+    if ((paraman.field_username.equals("medianote")) && ((v.aAG() & 0x4000) == 0))
     {
       AppMethodBeat.o(35192);
       return true;
@@ -115,19 +115,19 @@ public final class l
     return false;
   }
   
-  private static String b(a parama, bu parambu)
+  private static String b(a parama, bv parambv)
   {
     AppMethodBeat.i(35190);
-    String str = parama.BYG.field_username;
-    boolean bool = ((d)parama.bh(d.class)).fCH();
-    if ((!parama.fFu()) && (!bool))
+    String str = parama.Cqh.field_username;
+    boolean bool = ((d)parama.bh(d.class)).fGJ();
+    if ((!parama.fJB()) && (!bool))
     {
       AppMethodBeat.o(35190);
       return str;
     }
-    if (parama.fFu())
+    if (parama.fJB())
     {
-      parama = bj.Bk(parambu.field_content);
+      parama = bl.BM(parambv.field_content);
       if ((str == null) || (parama == null) || (parama.length() <= 0)) {
         break label95;
       }
@@ -136,8 +136,8 @@ public final class l
     {
       AppMethodBeat.o(35190);
       return parama;
-      if (parambu != null) {
-        parama = parambu.field_bizChatUserId;
+      if (parambv != null) {
+        parama = parambv.field_bizChatUserId;
       } else {
         label95:
         parama = str;
@@ -145,10 +145,10 @@ public final class l
     }
   }
   
-  public static boolean e(bu parambu, String paramString)
+  public static boolean f(bv parambv, String paramString)
   {
     AppMethodBeat.i(35191);
-    if ((System.currentTimeMillis() - parambu.field_createTime > 259200000L) && ((bt.isNullOrNil(paramString)) || (!i.fv(paramString))))
+    if ((System.currentTimeMillis() - parambv.field_createTime > 259200000L) && ((bu.isNullOrNil(paramString)) || (!o.fB(paramString))))
     {
       AppMethodBeat.o(35191);
       return true;

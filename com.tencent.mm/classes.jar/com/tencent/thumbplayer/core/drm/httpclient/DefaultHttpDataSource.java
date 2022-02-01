@@ -54,10 +54,10 @@ public class DefaultHttpDataSource
   
   static
   {
-    AppMethodBeat.i(220628);
+    AppMethodBeat.i(197567);
     CONTENT_RANGE_HEADER = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
     skipBufferReference = new AtomicReference();
-    AppMethodBeat.o(220628);
+    AppMethodBeat.o(197567);
   }
   
   public DefaultHttpDataSource(String paramString)
@@ -78,7 +78,7 @@ public class DefaultHttpDataSource
   public DefaultHttpDataSource(String paramString, Predicate<String> paramPredicate, int paramInt1, int paramInt2, boolean paramBoolean, HttpDataSource.RequestProperties paramRequestProperties)
   {
     super(true);
-    AppMethodBeat.i(220610);
+    AppMethodBeat.i(197549);
     this.userAgent = Assertions.checkNotEmpty(paramString);
     this.contentTypePredicate = paramPredicate;
     this.requestProperties = new HttpDataSource.RequestProperties();
@@ -86,7 +86,7 @@ public class DefaultHttpDataSource
     this.readTimeoutMillis = paramInt2;
     this.allowCrossProtocolRedirects = paramBoolean;
     this.defaultRequestProperties = paramRequestProperties;
-    AppMethodBeat.o(220610);
+    AppMethodBeat.o(197549);
   }
   
   @Deprecated
@@ -105,23 +105,23 @@ public class DefaultHttpDataSource
   public DefaultHttpDataSource(String paramString, Predicate<String> paramPredicate, TransferListener paramTransferListener, int paramInt1, int paramInt2, boolean paramBoolean, HttpDataSource.RequestProperties paramRequestProperties)
   {
     this(paramString, paramPredicate, paramInt1, paramInt2, paramBoolean, paramRequestProperties);
-    AppMethodBeat.i(220611);
+    AppMethodBeat.i(197550);
     if (paramTransferListener != null) {
       addTransferListener(paramTransferListener);
     }
-    AppMethodBeat.o(220611);
+    AppMethodBeat.o(197550);
   }
   
   private void closeConnectionQuietly()
   {
-    AppMethodBeat.i(220627);
+    AppMethodBeat.i(197566);
     if (this.connection != null) {}
     try
     {
       this.connection.disconnect();
       label19:
       this.connection = null;
-      AppMethodBeat.o(220627);
+      AppMethodBeat.o(197566);
       return;
     }
     catch (Exception localException)
@@ -132,7 +132,7 @@ public class DefaultHttpDataSource
   
   private static long getContentLength(HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(220623);
+    AppMethodBeat.i(197562);
     l2 = -1L;
     String str = paramHttpURLConnection.getHeaderField("Content-Length");
     l1 = l2;
@@ -168,7 +168,7 @@ public class DefaultHttpDataSource
           l2 = l1;
         }
       }
-      AppMethodBeat.o(220623);
+      AppMethodBeat.o(197562);
       return l2;
     }
     catch (NumberFormatException localNumberFormatException2)
@@ -191,11 +191,11 @@ public class DefaultHttpDataSource
   
   private static URL handleRedirect(URL paramURL, String paramString)
   {
-    AppMethodBeat.i(220622);
+    AppMethodBeat.i(197561);
     if (paramString == null)
     {
       paramURL = new ProtocolException("Null location redirect");
-      AppMethodBeat.o(220622);
+      AppMethodBeat.o(197561);
       throw paramURL;
     }
     paramURL = new URL(paramURL, paramString);
@@ -203,16 +203,16 @@ public class DefaultHttpDataSource
     if ((!"https".equals(paramString)) && (!"http".equals(paramString)))
     {
       paramURL = new ProtocolException("Unsupported protocol redirect: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(220622);
+      AppMethodBeat.o(197561);
       throw paramURL;
     }
-    AppMethodBeat.o(220622);
+    AppMethodBeat.o(197561);
     return paramURL;
   }
   
   private HttpURLConnection makeConnection(DataSpec paramDataSpec)
   {
-    AppMethodBeat.i(220620);
+    AppMethodBeat.i(197559);
     Object localObject = new URL(paramDataSpec.uri.toString());
     int j = paramDataSpec.httpMethod;
     byte[] arrayOfByte = paramDataSpec.httpBody;
@@ -223,7 +223,7 @@ public class DefaultHttpDataSource
     if (!this.allowCrossProtocolRedirects)
     {
       paramDataSpec = makeConnection((URL)localObject, j, arrayOfByte, l1, l2, bool1, bool2, true);
-      AppMethodBeat.o(220620);
+      AppMethodBeat.o(197559);
       return paramDataSpec;
     }
     int i = 0;
@@ -257,17 +257,17 @@ public class DefaultHttpDataSource
         i = k;
       }
     }
-    AppMethodBeat.o(220620);
+    AppMethodBeat.o(197559);
     return localHttpURLConnection;
     label276:
     paramDataSpec = new NoRouteToHostException("Too many redirects: ".concat(String.valueOf(k)));
-    AppMethodBeat.o(220620);
+    AppMethodBeat.o(197559);
     throw paramDataSpec;
   }
   
   private HttpURLConnection makeConnection(URL paramURL, int paramInt, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(220621);
+    AppMethodBeat.i(197560);
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection();
     localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
     localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
@@ -320,7 +320,7 @@ public class DefaultHttpDataSource
     }
     for (;;)
     {
-      AppMethodBeat.o(220621);
+      AppMethodBeat.o(197560);
       return localHttpURLConnection;
       paramBoolean1 = false;
       break;
@@ -331,10 +331,10 @@ public class DefaultHttpDataSource
   
   private static void maybeTerminateInputStream(HttpURLConnection paramHttpURLConnection, long paramLong)
   {
-    AppMethodBeat.i(220626);
+    AppMethodBeat.i(197565);
     if ((Build.VERSION.SDK_INT != 19) && (Build.VERSION.SDK_INT != 20))
     {
-      AppMethodBeat.o(220626);
+      AppMethodBeat.o(197565);
       return;
     }
     try
@@ -344,12 +344,12 @@ public class DefaultHttpDataSource
       {
         int i = paramHttpURLConnection.read();
         if (i == -1) {
-          AppMethodBeat.o(220626);
+          AppMethodBeat.o(197565);
         }
       }
       else if (paramLong <= 2048L)
       {
-        AppMethodBeat.o(220626);
+        AppMethodBeat.o(197565);
         return;
       }
       Object localObject = paramHttpURLConnection.getClass().getName();
@@ -359,21 +359,21 @@ public class DefaultHttpDataSource
         ((Method)localObject).setAccessible(true);
         ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
       }
-      AppMethodBeat.o(220626);
+      AppMethodBeat.o(197565);
       return;
     }
     catch (Exception paramHttpURLConnection)
     {
-      AppMethodBeat.o(220626);
+      AppMethodBeat.o(197565);
     }
   }
   
   private int readInternal(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220625);
+    AppMethodBeat.i(197564);
     if (paramInt2 == 0)
     {
-      AppMethodBeat.o(220625);
+      AppMethodBeat.o(197564);
       return 0;
     }
     int i = paramInt2;
@@ -382,7 +382,7 @@ public class DefaultHttpDataSource
       long l = this.bytesToRead - this.bytesRead;
       if (l == 0L)
       {
-        AppMethodBeat.o(220625);
+        AppMethodBeat.o(197564);
         return -1;
       }
       i = (int)Math.min(paramInt2, l);
@@ -393,24 +393,24 @@ public class DefaultHttpDataSource
       if (this.bytesToRead != -1L)
       {
         paramArrayOfByte = new EOFException();
-        AppMethodBeat.o(220625);
+        AppMethodBeat.o(197564);
         throw paramArrayOfByte;
       }
-      AppMethodBeat.o(220625);
+      AppMethodBeat.o(197564);
       return -1;
     }
     this.bytesRead += paramInt1;
     bytesTransferred(paramInt1);
-    AppMethodBeat.o(220625);
+    AppMethodBeat.o(197564);
     return paramInt1;
   }
   
   private void skipInternal()
   {
-    AppMethodBeat.i(220624);
+    AppMethodBeat.i(197563);
     if (this.bytesSkipped == this.bytesToSkip)
     {
-      AppMethodBeat.o(220624);
+      AppMethodBeat.o(197563);
       return;
     }
     byte[] arrayOfByte = (byte[])skipBufferReference.getAndSet(null);
@@ -425,20 +425,20 @@ public class DefaultHttpDataSource
       if (Thread.currentThread().isInterrupted())
       {
         localObject = new InterruptedIOException();
-        AppMethodBeat.o(220624);
+        AppMethodBeat.o(197563);
         throw ((Throwable)localObject);
       }
       if (i == -1)
       {
         localObject = new EOFException();
-        AppMethodBeat.o(220624);
+        AppMethodBeat.o(197563);
         throw ((Throwable)localObject);
       }
       this.bytesSkipped += i;
       bytesTransferred(i);
     }
     skipBufferReference.set(localObject);
-    AppMethodBeat.o(220624);
+    AppMethodBeat.o(197563);
   }
   
   protected final long bytesRead()
@@ -461,22 +461,22 @@ public class DefaultHttpDataSource
   
   public void clearAllRequestProperties()
   {
-    AppMethodBeat.i(220616);
+    AppMethodBeat.i(197555);
     this.requestProperties.clear();
-    AppMethodBeat.o(220616);
+    AppMethodBeat.o(197555);
   }
   
   public void clearRequestProperty(String paramString)
   {
-    AppMethodBeat.i(220615);
+    AppMethodBeat.i(197554);
     Assertions.checkNotNull(paramString);
     this.requestProperties.remove(paramString);
-    AppMethodBeat.o(220615);
+    AppMethodBeat.o(197554);
   }
   
   public void close()
   {
-    AppMethodBeat.i(220619);
+    AppMethodBeat.i(197558);
     try
     {
       if (this.inputStream != null) {
@@ -490,10 +490,10 @@ public class DefaultHttpDataSource
       catch (IOException localIOException)
       {
         HttpDataSource.HttpDataSourceException localHttpDataSourceException = new HttpDataSource.HttpDataSourceException(localIOException, this.dataSpec, 3);
-        AppMethodBeat.o(220619);
+        AppMethodBeat.o(197558);
         throw localHttpDataSourceException;
       }
-      AppMethodBeat.o(220619);
+      AppMethodBeat.o(197558);
     }
     finally
     {
@@ -504,7 +504,7 @@ public class DefaultHttpDataSource
         this.opened = false;
         transferEnded();
       }
-      AppMethodBeat.o(220619);
+      AppMethodBeat.o(197558);
     }
   }
   
@@ -515,27 +515,27 @@ public class DefaultHttpDataSource
   
   public Map<String, List<String>> getResponseHeaders()
   {
-    AppMethodBeat.i(220613);
+    AppMethodBeat.i(197552);
     if (this.connection == null)
     {
-      AppMethodBeat.o(220613);
+      AppMethodBeat.o(197552);
       return null;
     }
     Map localMap = this.connection.getHeaderFields();
-    AppMethodBeat.o(220613);
+    AppMethodBeat.o(197552);
     return localMap;
   }
   
   public Uri getUri()
   {
-    AppMethodBeat.i(220612);
+    AppMethodBeat.i(197551);
     if (this.connection == null)
     {
-      AppMethodBeat.o(220612);
+      AppMethodBeat.o(197551);
       return null;
     }
     Uri localUri = Uri.parse(this.connection.getURL().toString());
-    AppMethodBeat.o(220612);
+    AppMethodBeat.o(197551);
     return localUri;
   }
   
@@ -798,29 +798,29 @@ public class DefaultHttpDataSource
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220618);
+    AppMethodBeat.i(197557);
     try
     {
       skipInternal();
       paramInt1 = readInternal(paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(220618);
+      AppMethodBeat.o(197557);
       return paramInt1;
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new HttpDataSource.HttpDataSourceException(paramArrayOfByte, this.dataSpec, 2);
-      AppMethodBeat.o(220618);
+      AppMethodBeat.o(197557);
       throw paramArrayOfByte;
     }
   }
   
   public void setRequestProperty(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220614);
+    AppMethodBeat.i(197553);
     Assertions.checkNotNull(paramString1);
     Assertions.checkNotNull(paramString2);
     this.requestProperties.set(paramString1, paramString2);
-    AppMethodBeat.o(220614);
+    AppMethodBeat.o(197553);
   }
 }
 

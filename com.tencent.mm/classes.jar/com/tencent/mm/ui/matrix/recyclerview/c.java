@@ -6,24 +6,24 @@ import java.util.regex.Pattern;
 
 public final class c
 {
-  private static Pattern KCi;
+  private static Pattern KYC;
   
   static
   {
     AppMethodBeat.i(38932);
-    KCi = Pattern.compile("^((https|http|ftp|rtsp|mms)?://)?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?(([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-z_!~*'()-]+\\.)*([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\\.[a-z]{2,6})(:[0-9]{1,4})?((/?)|(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$");
+    KYC = Pattern.compile("^((https|http|ftp|rtsp|mms)?://)?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?(([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-z_!~*'()-]+\\.)*([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\\.[a-z]{2,6})(:[0-9]{1,4})?((/?)|(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$");
     AppMethodBeat.o(38932);
   }
   
-  public static boolean aXf(String paramString)
+  public static boolean aYG(String paramString)
   {
     AppMethodBeat.i(38930);
-    boolean bool = KCi.matcher(paramString).matches();
+    boolean bool = KYC.matcher(paramString).matches();
     AppMethodBeat.o(38930);
     return bool;
   }
   
-  public static String aeP(int paramInt)
+  public static String afy(int paramInt)
   {
     AppMethodBeat.i(38931);
     Object localObject = new StringBuilder();
@@ -40,7 +40,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.recyclerview.c
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ public final class a
 {
   private static final int CTRL_INDEX = 530;
   private static final String NAME = "onLocalServiceEvent";
-  private static a kXc;
+  private static a laL;
   
   static
   {
     AppMethodBeat.i(144183);
-    kXc = new a();
+    laL = new a();
     AppMethodBeat.o(144183);
   }
   
@@ -37,16 +37,16 @@ public final class a
       localHashMap.put("event", paramString);
       if ((TextUtils.equals(paramString, "found")) || (TextUtils.equals(paramString, "lost")) || (TextUtils.equals(paramString, "resolveFail")))
       {
-        localHashMap.put("serviceType", paramc1.hDZ);
-        localHashMap.put("serviceName", paramc1.lWT);
+        localHashMap.put("serviceType", paramc1.hGR);
+        localHashMap.put("serviceName", paramc1.mbz);
         if (!TextUtils.equals(paramString, "resolveFail"))
         {
           localHashMap.put("ip", paramc1.ip);
           localHashMap.put("port", Integer.valueOf(paramc1.port));
-          localHashMap.put("attributes", paramc1.lWS);
+          localHashMap.put("attributes", paramc1.mby);
         }
       }
-      kXc.B(localHashMap).h(paramc).bir();
+      laL.I(localHashMap).h(paramc).bja();
       AppMethodBeat.o(144182);
       return;
     }

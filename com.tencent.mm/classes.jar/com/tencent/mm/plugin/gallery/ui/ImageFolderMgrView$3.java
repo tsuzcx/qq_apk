@@ -16,8 +16,8 @@ final class ImageFolderMgrView$3
     AppMethodBeat.i(111532);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ImageFolderMgrView.c(this.tNX);
+    a.b("com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ImageFolderMgrView.c(this.tYO);
     a.a(this, "com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(111532);
   }

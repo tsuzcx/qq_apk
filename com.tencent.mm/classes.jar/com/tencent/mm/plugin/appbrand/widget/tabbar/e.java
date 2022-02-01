@@ -8,8 +8,8 @@ public class e
   public void a(Bitmap paramBitmap, d paramd)
   {
     AppMethodBeat.i(135543);
-    if ((paramd != null) && (paramd.npS != null)) {
-      paramd.npS.destroy(paramd.index);
+    if ((paramd != null) && (paramd.nvc != null)) {
+      paramd.nvc.destroy(paramd.index);
     }
     AppMethodBeat.o(135543);
   }

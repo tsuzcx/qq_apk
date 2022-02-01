@@ -5,7 +5,7 @@ import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.m;
+import com.tencent.mm.plugin.finder.model.n;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.view.recyclerview.b;
 import com.tencent.mm.view.recyclerview.e;
@@ -16,32 +16,32 @@ import d.g.b.p;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedBulletSubtitleConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "authorItemPaddingStart", "", "getAuthorItemPaddingStart", "()I", "authorItemPaddingStart$delegate", "Lkotlin/Lazy;", "normalPaddingStart", "getNormalPaddingStart", "normalPaddingStart$delegate", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedBulletSubtitleConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "authorItemPaddingStart", "", "getAuthorItemPaddingStart", "()I", "authorItemPaddingStart$delegate", "Lkotlin/Lazy;", "normalPaddingStart", "getNormalPaddingStart", "normalPaddingStart$delegate", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class d
-  extends b<m>
+  extends b<n>
 {
   final Context context;
-  private final f rMa;
-  private final f rMb;
+  private final f rUn;
+  private final f rUo;
   
   public d(Context paramContext)
   {
-    AppMethodBeat.i(201311);
+    AppMethodBeat.i(201738);
     this.context = paramContext;
-    this.rMa = g.O((a)new b(this));
-    this.rMb = g.O((a)new a(this));
-    AppMethodBeat.o(201311);
+    this.rUn = g.O((a)new b(this));
+    this.rUo = g.O((a)new a(this));
+    AppMethodBeat.o(201738);
   }
   
   public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
   {
-    AppMethodBeat.i(201309);
+    AppMethodBeat.i(201736);
     p.h(paramRecyclerView, "recyclerView");
     p.h(parame, "holder");
-    paramRecyclerView = (TextView)parame.Gd(2131308222);
+    paramRecyclerView = (TextView)parame.GD(2131308222);
     p.g(paramRecyclerView, "it");
     al.a((Paint)paramRecyclerView.getPaint(), 0.8F);
-    AppMethodBeat.o(201309);
+    AppMethodBeat.o(201736);
   }
   
   public final int getLayoutId()
@@ -49,7 +49,7 @@ public final class d
     return 2131496388;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements a<Integer>
@@ -60,7 +60,7 @@ public final class d
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements a<Integer>
@@ -73,7 +73,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.d
  * JD-Core Version:    0.7.0.1
  */

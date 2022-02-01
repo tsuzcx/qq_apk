@@ -3,60 +3,71 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eb
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String ukl;
+  public String ura;
+  public int urc;
+  public int uvt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(149419);
+    AppMethodBeat.i(221901);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ukl != null) {
-        paramVarArgs.d(1, this.ukl);
+      paramVarArgs.aS(1, this.uvt);
+      paramVarArgs.aS(2, this.urc);
+      if (this.ura != null) {
+        paramVarArgs.d(3, this.ura);
       }
-      AppMethodBeat.o(149419);
+      AppMethodBeat.o(221901);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.ukl == null) {
-        break label213;
-      }
-    }
-    label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ukl) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(149419);
+      int i = f.a.a.b.b.a.bz(1, this.uvt) + 0 + f.a.a.b.b.a.bz(2, this.urc);
+      paramInt = i;
+      if (this.ura != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.ura);
+      }
+      AppMethodBeat.o(221901);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
-          }
-        }
-        AppMethodBeat.o(149419);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        eb localeb = (eb)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(149419);
-          return -1;
-        }
-        localeb.ukl = locala.NPN.readString();
-        AppMethodBeat.o(149419);
-        return 0;
-      }
-      AppMethodBeat.o(149419);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gCg();
+        }
+      }
+      AppMethodBeat.o(221901);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      eb localeb = (eb)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(221901);
+        return -1;
+      case 1: 
+        localeb.uvt = locala.OmT.zc();
+        AppMethodBeat.o(221901);
+        return 0;
+      case 2: 
+        localeb.urc = locala.OmT.zc();
+        AppMethodBeat.o(221901);
+        return 0;
+      }
+      localeb.ura = locala.OmT.readString();
+      AppMethodBeat.o(221901);
+      return 0;
+    }
+    AppMethodBeat.o(221901);
+    return -1;
   }
 }
 

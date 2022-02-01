@@ -16,25 +16,25 @@ public final class i
   {
     super(paramView, paramk);
     AppMethodBeat.i(30864);
-    this.psv.setVisibility(0);
-    this.dsD.setVisibility(8);
-    this.jld.setVisibility(8);
-    this.psv.setTag(this);
-    this.psv.setOnClickListener(this.psK);
+    this.pzb.setVisibility(0);
+    this.dtJ.setVisibility(8);
+    this.jnX.setVisibility(8);
+    this.pzb.setTag(this);
+    this.pzb.setOnClickListener(this.pzq);
     AppMethodBeat.o(30864);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30865);
-    this.psy.setImageResource(2131689562);
-    this.psw.setText(((g)paramc).jDf);
-    this.psx.setText(((g)paramc).hWY);
+    this.pze.setImageResource(2131689562);
+    this.pzc.setText(((g)paramc).jGd);
+    this.pzd.setText(((g)paramc).hZQ);
     super.a(paramc, paramInt1, paramInt2);
     AppMethodBeat.o(30865);
   }
   
-  public final int cdT()
+  public final int cfi()
   {
     return 3;
   }

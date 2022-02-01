@@ -2,9 +2,9 @@ package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
 
 final class p$7
   implements Runnable
@@ -14,22 +14,22 @@ final class p$7
   public final void run()
   {
     AppMethodBeat.i(38729);
-    if (!aj.fkz())
+    if (!ak.fot())
     {
-      aj.wG(true);
-      aq.o(new Runnable()
+      ak.wO(true);
+      ar.o(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(38728);
-          ad.i("MicroMsg.RefreshHelper", "APPHasInitEvent begin");
+          ae.i("MicroMsg.RefreshHelper", "APPHasInitEvent begin");
           com.tencent.mm.g.a.a locala = new com.tencent.mm.g.a.a();
-          com.tencent.mm.sdk.b.a.IbL.l(locala);
+          com.tencent.mm.sdk.b.a.IvT.l(locala);
           AppMethodBeat.o(38728);
         }
       }, 100L);
     }
-    f.Ok(8);
+    f.OQ(8);
     AppMethodBeat.o(38729);
   }
 }

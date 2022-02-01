@@ -12,16 +12,16 @@ import com.tencent.mm.plugin.patmsg.a.c.a;
 
 public final class s
 {
-  private final View.OnTouchListener EWJ;
-  int EWO;
-  b EWP;
-  boolean EWb;
-  r EWc;
-  a EWi;
+  a FoD;
+  boolean Fow;
+  r Fox;
+  private final View.OnTouchListener Fpe;
+  int Fpj;
+  b Fpk;
   private int background;
-  boolean fMM;
+  boolean fOU;
   int index;
-  View kBS;
+  View kFh;
   View.OnClickListener km;
   int row;
   
@@ -29,7 +29,7 @@ public final class s
   {
     AppMethodBeat.i(152233);
     this.background = -1;
-    this.EWJ = new s.1(this);
+    this.Fpe = new s.1(this);
     this.km = new s.2(this);
     AppMethodBeat.o(152233);
   }
@@ -41,7 +41,7 @@ public final class s
   
   public static abstract interface b
   {
-    public abstract boolean le(int paramInt);
+    public abstract boolean lg(int paramInt);
   }
 }
 

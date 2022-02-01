@@ -3,28 +3,29 @@ package com.tencent.mm.plugin.translate;
 import android.os.Looper;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.wv;
-import com.tencent.mm.g.a.wv.a;
-import com.tencent.mm.g.a.wy;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.wz;
+import com.tencent.mm.g.a.wz.a;
+import com.tencent.mm.g.a.xb;
+import com.tencent.mm.g.a.xc;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.translate.a.c.a;
 import com.tencent.mm.plugin.translate.a.c.b;
 import com.tencent.mm.plugin.translate.a.c.c;
 import com.tencent.mm.plugin.translate.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bf.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,21 +33,21 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public final class a
-  implements ax
+  implements az
 {
-  com.tencent.mm.plugin.translate.a.c BAW;
-  be BAX;
-  private c.a BAY;
-  private com.tencent.mm.sdk.b.c BAZ;
-  private com.tencent.mm.sdk.b.c BBa;
-  ap handler;
+  com.tencent.mm.plugin.translate.a.c BSu;
+  bf BSv;
+  private c.a BSw;
+  private com.tencent.mm.sdk.b.c BSx;
+  private com.tencent.mm.sdk.b.c BSy;
+  aq handler;
   
   public a()
   {
     AppMethodBeat.i(29736);
-    this.BAW = c.b.BBk;
-    this.BAX = new be(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
-    this.BAY = new c.a()
+    this.BSu = c.b.BSI;
+    this.BSv = new bf(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
+    this.BSw = new c.a()
     {
       public final void a(final int paramAnonymousInt, SparseArray<c.c> paramAnonymousSparseArray)
       {
@@ -56,78 +57,78 @@ public final class a
         {
           final c.c localc = (c.c)paramAnonymousSparseArray.valueAt(i);
           if (localc != null) {
-            a.this.BAX.c(new be.a()
+            a.this.BSv.c(new bf.a()
             {
-              public final boolean aEm()
+              public final boolean aEC()
               {
                 AppMethodBeat.i(29731);
-                ad.d("MicroMsg.SubCoreTranslate", "finish translated, id: %s", new Object[] { localc.id });
+                ae.d("MicroMsg.SubCoreTranslate", "finish translated, id: %s", new Object[] { localc.id });
                 if (paramAnonymousInt != 0)
                 {
-                  ad.e("MicroMsg.SubCoreTranslate", "translate error");
+                  ae.e("MicroMsg.SubCoreTranslate", "translate error");
                   AppMethodBeat.o(29731);
                   return true;
                 }
                 if (localc.ret != 0)
                 {
-                  ad.e("MicroMsg.SubCoreTranslate", "translate ret not ok : %s", new Object[] { Integer.valueOf(localc.ret) });
+                  ae.e("MicroMsg.SubCoreTranslate", "translate ret not ok : %s", new Object[] { Integer.valueOf(localc.ret) });
                   AppMethodBeat.o(29731);
                   return true;
                 }
-                if (bt.isNullOrNil(localc.dLs))
+                if (bu.isNullOrNil(localc.dMH))
                 {
-                  ad.e("MicroMsg.SubCoreTranslate", "translate return null");
+                  ae.e("MicroMsg.SubCoreTranslate", "translate return null");
                   AppMethodBeat.o(29731);
                   return true;
                 }
-                bu localbu;
+                bv localbv;
                 if ((localc.type == 0) || (localc.type == 1))
                 {
-                  ad.d("MicroMsg.SubCoreTranslate", "we recieved one translated message");
+                  ae.d("MicroMsg.SubCoreTranslate", "we recieved one translated message");
                   c.c localc = localc;
-                  ba.aBQ();
-                  localbu = com.tencent.mm.model.c.azs().xY(bt.aRf(localc.id));
-                  localbu.tQ(bt.aQN(localc.dLs));
-                  localbu.field_transBrandWording = bt.aQN(bt.nullAsNil(localc.dJr));
-                  localbu.eLy = true;
-                  localbu.fkB = localc.fkB;
-                  localbu.eKU = true;
-                  if (localc.dLt != 1) {
+                  bc.aCg();
+                  localbv = com.tencent.mm.model.c.azI().ys(bu.aSC(localc.id));
+                  localbv.ul(bu.aSk(localc.dMH));
+                  localbv.field_transBrandWording = bu.aSk(bu.nullAsNil(localc.dKF));
+                  localbv.eNj = true;
+                  localbv.fmy = localc.fmy;
+                  localbv.eMD = true;
+                  if (localc.dMI != 1) {
                     break label273;
                   }
-                  if (localbu.frS()) {
-                    localbu.jY(localbu.eLr | 0x400);
+                  if (localbv.fvS()) {
+                    localbv.ka(localbv.eNc | 0x400);
                   }
                 }
                 for (;;)
                 {
-                  ((l)g.ab(l.class)).dlK().a(localbu.field_msgId, localbu);
+                  ((l)g.ab(l.class)).doJ().a(localbv.field_msgId, localbv);
                   AppMethodBeat.o(29731);
                   return true;
                   label273:
-                  if (localbu.frS()) {
-                    localbu.jY(localbu.eLr & 0xFFFFFBFF);
+                  if (localbv.fvS()) {
+                    localbv.ka(localbv.eNc & 0xFFFFFBFF);
                   }
                 }
               }
               
-              public final boolean aEn()
+              public final boolean aED()
               {
                 AppMethodBeat.i(29730);
                 if (paramAnonymousInt != 0) {}
                 for (int i = paramAnonymousInt;; i = localc.ret)
                 {
-                  wy localwy = new wy();
-                  localwy.dLr.ret = i;
-                  localwy.dLr.dLj = localc.dLj;
-                  localwy.dLr.id = localc.id;
-                  localwy.dLr.dLs = localc.dLs;
-                  localwy.dLr.type = localc.type;
-                  localwy.dLr.source = localc.source;
-                  localwy.dLr.dJr = localc.dJr;
-                  localwy.dLr.dLl = localc.fkB;
-                  localwy.dLr.dLt = localc.dLt;
-                  com.tencent.mm.sdk.b.a.IbL.l(localwy);
+                  xc localxc = new xc();
+                  localxc.dMG.ret = i;
+                  localxc.dMG.dMy = localc.dMy;
+                  localxc.dMG.id = localc.id;
+                  localxc.dMG.dMH = localc.dMH;
+                  localxc.dMG.type = localc.type;
+                  localxc.dMG.source = localc.source;
+                  localxc.dMG.dKF = localc.dKF;
+                  localxc.dMG.dMA = localc.fmy;
+                  localxc.dMG.dMI = localc.dMI;
+                  com.tencent.mm.sdk.b.a.IvT.l(localxc);
                   AppMethodBeat.o(29730);
                   return false;
                 }
@@ -139,9 +140,9 @@ public final class a
         AppMethodBeat.o(29732);
       }
     };
-    this.handler = new ap(Looper.getMainLooper());
-    this.BAZ = new com.tencent.mm.sdk.b.c() {};
-    this.BBa = new a.3(this);
+    this.handler = new aq(Looper.getMainLooper());
+    this.BSx = new com.tencent.mm.sdk.b.c() {};
+    this.BSy = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(29736);
   }
   
@@ -155,13 +156,13 @@ public final class a
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(29737);
-    com.tencent.mm.plugin.translate.a.c localc = this.BAW;
-    c.a locala = this.BAY;
+    com.tencent.mm.plugin.translate.a.c localc = this.BSu;
+    c.a locala = this.BSw;
     if ((locala == null) || (localc.listeners.contains(locala))) {}
     for (;;)
     {
-      com.tencent.mm.sdk.b.a.IbL.c(this.BAZ);
-      com.tencent.mm.sdk.b.a.IbL.c(this.BBa);
+      com.tencent.mm.sdk.b.a.IvT.c(this.BSx);
+      com.tencent.mm.sdk.b.a.IvT.c(this.BSy);
       AppMethodBeat.o(29737);
       return;
       localc.listeners.add(locala);
@@ -171,18 +172,18 @@ public final class a
   public final void onAccountRelease()
   {
     AppMethodBeat.i(29738);
-    com.tencent.mm.sdk.b.a.IbL.d(this.BAZ);
-    com.tencent.mm.sdk.b.a.IbL.d(this.BBa);
-    com.tencent.mm.plugin.translate.a.c localc = this.BAW;
-    Object localObject = this.BAY;
+    com.tencent.mm.sdk.b.a.IvT.d(this.BSx);
+    com.tencent.mm.sdk.b.a.IvT.d(this.BSy);
+    com.tencent.mm.plugin.translate.a.c localc = this.BSu;
+    Object localObject = this.BSw;
     if ((localObject == null) || (!localc.listeners.contains(localObject))) {}
     for (;;)
     {
-      localc = this.BAW;
-      if (localc.BBh == null) {
+      localc = this.BSu;
+      if (localc.BSF == null) {
         break;
       }
-      localObject = localc.BBh;
+      localObject = localc.BSF;
       int j = localObject.length;
       int i = 0;
       while (i < j)
@@ -190,23 +191,23 @@ public final class a
         f localf = localObject[i];
         if (localf != null)
         {
-          ba.aiU().b(631, localf);
-          if (localf.BBq != null)
+          bc.ajj().b(631, localf);
+          if (localf.BSO != null)
           {
-            localf.BBs.stopTimer();
-            ba.aiU().a(localf.BBq);
+            localf.BSQ.stopTimer();
+            bc.ajj().a(localf.BSO);
           }
-          localf.erp();
-          localf.BBo = null;
+          localf.euW();
+          localf.BSM = null;
         }
         i += 1;
       }
       localc.listeners.remove(localObject);
     }
-    localc.BBj.clear();
-    localc.BBi.clear();
+    localc.BSH.clear();
+    localc.BSG.clear();
     localc.listeners.clear();
-    localc.giC = 0;
+    localc.gkU = 0;
     AppMethodBeat.o(29738);
   }
   

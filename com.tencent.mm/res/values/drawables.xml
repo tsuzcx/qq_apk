@@ -240,6 +240,7 @@
     <item type="drawable" name="yi">false</item>
     <item type="drawable" name="yj">false</item>
     <item type="drawable" name="ym">false</item>
+    <item type="drawable" name="z_">false</item>
     <item type="drawable" name="zb">false</item>
     <item type="drawable" name="zd">false</item>
     <item type="drawable" name="zh">false</item>
@@ -482,6 +483,6 @@
     <item type="drawable" name="c_r">false</item>
     <item type="drawable" name="c_u">#ff314c68</item>
     <item type="drawable" name="c_w">#00000000</item>
-    <item type="drawable" name="APKTOOL_DUMMY_10c6" />
-    <item type="drawable" name="APKTOOL_DUMMY_10c7" />
+    <item type="drawable" name="ca5">false</item>
+    <item type="drawable" name="ca6">false</item>
 </resources>

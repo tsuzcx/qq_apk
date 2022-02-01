@@ -7,20 +7,20 @@ import java.util.List;
 public final class d
   implements i
 {
-  private h deo;
-  private int dep = 4;
+  private h dfq;
+  private int dfr = 4;
   
   public final com.tencent.mm.audio.mix.a.b J(List<e> paramList)
   {
     AppMethodBeat.i(136865);
-    if (this.deo == null)
+    if (this.dfq == null)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mixAlgorithm must be init, please call init() first");
       AppMethodBeat.o(136865);
       return null;
     }
-    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.Om().On();
-    if (!this.deo.a(localb, paramList))
+    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.Ok().Ol();
+    if (!this.dfq.a(localb, paramList))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mix audio fail");
       AppMethodBeat.o(136865);
@@ -34,8 +34,8 @@ public final class d
   {
     AppMethodBeat.i(136864);
     Object localObject;
-    if (this.deo == null) {
-      switch (this.dep)
+    if (this.dfq == null) {
+      switch (this.dfr)
       {
       default: 
         localObject = new j();
@@ -43,7 +43,7 @@ public final class d
     }
     for (;;)
     {
-      this.deo = ((h)localObject);
+      this.dfq = ((h)localObject);
       AppMethodBeat.o(136864);
       return;
       localObject = new n();
@@ -66,7 +66,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.d
  * JD-Core Version:    0.7.0.1
  */

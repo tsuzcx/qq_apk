@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface k
   extends a
 {
-  public abstract void addSyncDoCmdCallback(y paramy);
+  public abstract void addSyncDoCmdCallback(z paramz);
   
-  public abstract e.b processAddMsg(e.a parama, z paramz);
+  public abstract e.b processAddMsg(e.a parama, aa paramaa);
   
-  public abstract void removeSyncDoCmdCallback(y paramy);
+  public abstract void removeSyncDoCmdCallback(z paramz);
 }
 
 

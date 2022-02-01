@@ -11,45 +11,45 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PersonalPreference
   extends Preference
 {
-  private String dDx;
-  private TextView fPC;
-  private String ffB;
-  Bitmap hMs;
-  ImageView rDr;
-  String sjU;
+  private String dEC;
+  private TextView fRI;
+  private String fhy;
+  Bitmap hPl;
+  ImageView rLC;
+  String ssR;
   private String username;
-  private TextView yEk;
-  int yEl;
-  private View.OnClickListener yEm;
+  private TextView yUp;
+  int yUq;
+  private View.OnClickListener yUr;
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.fPC = null;
-    this.yEk = null;
-    this.rDr = null;
-    this.hMs = null;
-    this.yEl = -1;
-    this.sjU = null;
+    this.fRI = null;
+    this.yUp = null;
+    this.rLC = null;
+    this.hPl = null;
+    this.yUq = -1;
+    this.ssR = null;
   }
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73903);
-    this.fPC = null;
-    this.yEk = null;
-    this.rDr = null;
-    this.hMs = null;
-    this.yEl = -1;
-    this.sjU = null;
+    this.fRI = null;
+    this.yUp = null;
+    this.rLC = null;
+    this.hPl = null;
+    this.yUq = -1;
+    this.ssR = null;
     setLayoutResource(2131494804);
     setWidgetLayoutResource(2131494884);
     AppMethodBeat.o(73903);
@@ -58,41 +58,41 @@ public class PersonalPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(73905);
-    if (this.rDr == null) {
-      this.rDr = ((ImageView)paramView.findViewById(2131300943));
+    if (this.rLC == null) {
+      this.rLC = ((ImageView)paramView.findViewById(2131300943));
     }
-    if (this.hMs != null)
+    if (this.hPl != null)
     {
-      this.rDr.setImageBitmap(this.hMs);
-      this.rDr.setOnClickListener(this.yEm);
-      if ((this.fPC != null) && (this.dDx != null)) {
-        this.fPC.setText(k.b(this.mContext, this.dDx, this.fPC.getTextSize()));
+      this.rLC.setImageBitmap(this.hPl);
+      this.rLC.setOnClickListener(this.yUr);
+      if ((this.fRI != null) && (this.dEC != null)) {
+        this.fRI.setText(k.b(this.mContext, this.dEC, this.fRI.getTextSize()));
       }
-      if (this.yEk != null) {
-        if (!bt.isNullOrNil(this.ffB)) {
+      if (this.yUp != null) {
+        if (!bu.isNullOrNil(this.fhy)) {
           break label230;
         }
       }
     }
     label230:
-    for (String str = this.username;; str = this.ffB)
+    for (String str = this.username;; str = this.fhy)
     {
-      if ((bt.isNullOrNil(this.ffB)) && (am.aSX(this.username))) {
-        this.yEk.setVisibility(8);
+      if ((bu.isNullOrNil(this.fhy)) && (an.aUy(this.username))) {
+        this.yUp.setVisibility(8);
       }
-      this.yEk.setText(this.mContext.getString(2131755760) + str);
+      this.yUp.setText(this.mContext.getString(2131755760) + str);
       super.onBindView(paramView);
       AppMethodBeat.o(73905);
       return;
-      if (this.yEl > 0)
+      if (this.yUq > 0)
       {
-        this.rDr.setImageResource(this.yEl);
+        this.rLC.setImageResource(this.yUq);
         break;
       }
-      if (this.sjU == null) {
+      if (this.ssR == null) {
         break;
       }
-      a.b.c(this.rDr, this.sjU);
+      a.b.c(this.rLC, this.ssR);
       break;
     }
   }

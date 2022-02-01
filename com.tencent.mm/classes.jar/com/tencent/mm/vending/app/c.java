@@ -14,18 +14,18 @@ import junit.framework.Assert;
 public final class c
   implements com.tencent.mm.vending.e.b
 {
-  private b Lhh;
-  private a Lhi;
-  private com.tencent.mm.vending.c.b<? extends a> Lhj;
-  private int Lhk;
-  private com.tencent.mm.vending.e.c pIs;
+  private b LDJ;
+  private a LDK;
+  private com.tencent.mm.vending.c.b<? extends a> LDL;
+  private int LDM;
+  private com.tencent.mm.vending.e.c pOX;
   
   public c()
   {
     AppMethodBeat.i(74876);
-    this.Lhh = b.fNQ();
-    this.Lhk = 0;
-    this.pIs = new com.tencent.mm.vending.e.c();
+    this.LDJ = b.fSl();
+    this.LDM = 0;
+    this.pOX = new com.tencent.mm.vending.e.c();
     AppMethodBeat.o(74876);
   }
   
@@ -34,9 +34,9 @@ public final class c
     try
     {
       AppMethodBeat.i(177469);
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.Lhi);
-      this.Lhi.mContext = paramContext;
-      this.Lhi.LgX = new com.tencent.mm.vending.d.a(paramIntent);
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.LDK);
+      this.LDK.mContext = paramContext;
+      this.LDK.LDz = new com.tencent.mm.vending.d.a(paramIntent);
       AppMethodBeat.o(177469);
       return;
     }
@@ -52,10 +52,10 @@ public final class c
     try
     {
       AppMethodBeat.i(74877);
-      if (this.Lhj == null) {
+      if (this.LDL == null) {
         break label78;
       }
-      if (!paramClass.isInstance(this.Lhj))
+      if (!paramClass.isInstance(this.LDL))
       {
         paramClass = new IllegalAccessError("Only one interactor pair with one presenter! duplicate pairWith : " + paramClass.toString());
         AppMethodBeat.o(74877);
@@ -63,7 +63,7 @@ public final class c
       }
     }
     finally {}
-    paramClass = this.Lhj;
+    paramClass = this.LDL;
     AppMethodBeat.o(74877);
     for (;;)
     {
@@ -71,12 +71,12 @@ public final class c
       try
       {
         label78:
-        this.Lhj = ((com.tencent.mm.vending.c.b)paramClass.newInstance());
-        if (this.Lhi == null) {
-          this.Lhi = ((a)this.Lhj.aQZ());
+        this.LDL = ((com.tencent.mm.vending.c.b)paramClass.newInstance());
+        if (this.LDK == null) {
+          this.LDK = ((a)this.LDL.aRy());
         }
-        fNR();
-        com.tencent.mm.vending.c.b localb = this.Lhj;
+        fSm();
+        com.tencent.mm.vending.c.b localb = this.LDL;
         AppMethodBeat.o(74877);
         paramClass = localb;
       }
@@ -102,16 +102,16 @@ public final class c
       try
       {
         AppMethodBeat.i(74878);
-        if (this.Lhj != null)
+        if (this.LDL != null)
         {
-          paramClass = (a)this.Lhj.aQZ();
+          paramClass = (a)this.LDL.aRy();
           AppMethodBeat.o(74878);
           return paramClass;
         }
-        if (this.Lhi == null) {
+        if (this.LDK == null) {
           break label106;
         }
-        if (!paramClass.isInstance(this.Lhi))
+        if (!paramClass.isInstance(this.LDK))
         {
           paramClass = new IllegalAccessError("Only one interactor pair with one presenter! duplicate pairWith : " + paramClass.toString());
           AppMethodBeat.o(74878);
@@ -119,15 +119,15 @@ public final class c
         }
       }
       finally {}
-      paramClass = this.Lhi;
+      paramClass = this.LDK;
       AppMethodBeat.o(74878);
       continue;
       try
       {
         label106:
-        this.Lhi = ((a)paramClass.newInstance());
-        fNR();
-        a locala = this.Lhi;
+        this.LDK = ((a)paramClass.newInstance());
+        fSm();
+        a locala = this.LDK;
         AppMethodBeat.o(74878);
         paramClass = locala;
       }
@@ -146,11 +146,11 @@ public final class c
     throw paramClass;
   }
   
-  private void fNR()
+  private void fSm()
   {
     AppMethodBeat.i(177468);
-    if (this.Lhh != null) {
-      this.Lhh.a(this, this.Lhi);
+    if (this.LDJ != null) {
+      this.LDJ.a(this, this.LDK);
     }
     AppMethodBeat.o(177468);
   }
@@ -159,7 +159,7 @@ public final class c
   {
     AppMethodBeat.i(74885);
     A(paramIntent, paramContext);
-    afP(1);
+    agy(1);
     AppMethodBeat.o(74885);
   }
   
@@ -177,12 +177,12 @@ public final class c
     return paramActivity;
   }
   
-  public final void afP(int paramInt)
+  public final void agy(int paramInt)
   {
     AppMethodBeat.i(177470);
-    this.Lhk = paramInt;
-    b localb = this.Lhh;
-    a locala = (a)localb.Lhd.get(this);
+    this.LDM = paramInt;
+    b localb = this.LDJ;
+    a locala = (a)localb.LDF.get(this);
     if (locala != null) {
       switch (paramInt)
       {
@@ -196,25 +196,25 @@ public final class c
     }
     for (;;)
     {
-      localb.Lhf.sendMessage(localb.Lhf.obtainMessage(paramInt, locala));
-      localb.Lhe.put(hashCode(), paramInt);
+      localb.LDH.sendMessage(localb.LDH.obtainMessage(paramInt, locala));
+      localb.LDG.put(hashCode(), paramInt);
       AppMethodBeat.o(177470);
       return;
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "onDestroy interactor %s activity %s %s %s", new Object[] { locala, this, Integer.valueOf(hashCode()), Looper.myLooper() });
-      localb.Lhd.remove(this);
+      localb.LDF.remove(this);
     }
   }
   
-  public final a akA()
+  public final a akP()
   {
     try
     {
       AppMethodBeat.i(74881);
-      if ((this.Lhi == null) && (this.Lhh != null)) {
-        this.Lhi = ((a)this.Lhh.Lhd.get(this));
+      if ((this.LDK == null) && (this.LDJ != null)) {
+        this.LDK = ((a)this.LDJ.LDF.get(this));
       }
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.Lhi);
-      a locala = this.Lhi;
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.LDK);
+      a locala = this.LDK;
       AppMethodBeat.o(74881);
       return locala;
     }
@@ -239,15 +239,15 @@ public final class c
   {
     AppMethodBeat.i(74886);
     Assert.assertTrue("target must be a ILifeCycle", parama instanceof com.tencent.mm.vending.e.a);
-    this.pIs.keep(parama);
+    this.pOX.keep(parama);
     AppMethodBeat.o(74886);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(74887);
-    this.pIs.dead();
-    afP(4);
+    this.pOX.dead();
+    agy(4);
     AppMethodBeat.o(74887);
   }
 }

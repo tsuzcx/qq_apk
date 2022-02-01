@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class gl
-  extends cvc
+  extends cvw
 {
-  public String FyB;
-  public String dkR;
-  public String xSz;
+  public String FQZ;
+  public String dlT;
+  public String yis;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -18,17 +18,17 @@ public final class gl
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.xSz != null) {
-        paramVarArgs.d(2, this.xSz);
+      if (this.yis != null) {
+        paramVarArgs.d(2, this.yis);
       }
-      if (this.dkR != null) {
-        paramVarArgs.d(3, this.dkR);
+      if (this.dlT != null) {
+        paramVarArgs.d(3, this.dlT);
       }
-      if (this.FyB != null) {
-        paramVarArgs.d(4, this.FyB);
+      if (this.FQZ != null) {
+        paramVarArgs.d(4, this.FQZ);
       }
       AppMethodBeat.o(72417);
       return 0;
@@ -39,28 +39,28 @@ public final class gl
       }
     }
     label490:
-    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.xSz != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.xSz);
+      if (this.yis != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.yis);
       }
       i = paramInt;
-      if (this.dkR != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dkR);
+      if (this.dlT != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dlT);
       }
       paramInt = i;
-      if (this.FyB != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FyB);
+      if (this.FQZ != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FQZ);
       }
       AppMethodBeat.o(72417);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(72417);
@@ -77,7 +77,7 @@ public final class gl
           AppMethodBeat.o(72417);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -85,22 +85,22 @@ public final class gl
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localgl.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(72417);
           return 0;
         case 2: 
-          localgl.xSz = ((f.a.a.a.a)localObject1).NPN.readString();
+          localgl.yis = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(72417);
           return 0;
         case 3: 
-          localgl.dkR = ((f.a.a.a.a)localObject1).NPN.readString();
+          localgl.dlT = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(72417);
           return 0;
         }
-        localgl.FyB = ((f.a.a.a.a)localObject1).NPN.readString();
+        localgl.FQZ = ((f.a.a.a.a)localObject1).OmT.readString();
         AppMethodBeat.o(72417);
         return 0;
       }

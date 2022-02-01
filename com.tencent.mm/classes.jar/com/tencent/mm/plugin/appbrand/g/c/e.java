@@ -11,12 +11,12 @@ import java.util.List;
 public class e
 {
   private static final String TAG;
-  protected f kdP;
-  protected h kdQ;
-  protected List<NetworkInterface> kdR;
-  protected InetSocketAddress kdS;
-  protected MulticastSocket kdT;
-  protected MulticastSocket kdU;
+  protected f khg;
+  protected h khh;
+  protected List<NetworkInterface> khi;
+  protected InetSocketAddress khj;
+  protected MulticastSocket khk;
+  protected MulticastSocket khl;
   private int port;
   private boolean running;
   
@@ -31,7 +31,7 @@ public class e
   {
     AppMethodBeat.i(158980);
     this.running = false;
-    this.kdP = paramf;
+    this.khg = paramf;
     this.port = paramInt;
     a(paramList, paramh);
     AppMethodBeat.o(158980);
@@ -40,24 +40,24 @@ public class e
   private void a(List<NetworkInterface> paramList, h paramh)
   {
     AppMethodBeat.i(158981);
-    this.kdQ = paramh;
-    this.kdR = paramList;
+    this.khh = paramh;
+    this.khi = paramList;
     try
     {
-      this.kdT = new MulticastSocket(this.port);
-      this.kdT.setReuseAddress(true);
-      this.kdT.setReceiveBufferSize(32768);
-      a.i(TAG, "Creating wildcard socketNotify (for receiving multicast datagrams) on port: " + this.kdP.port);
-      this.kdS = new InetSocketAddress(this.kdP.kdX, this.kdP.port);
-      this.kdU = new MulticastSocket(this.kdP.port);
-      this.kdU.setReuseAddress(true);
-      this.kdU.setReceiveBufferSize(32768);
-      paramList = this.kdR.iterator();
+      this.khk = new MulticastSocket(this.port);
+      this.khk.setReuseAddress(true);
+      this.khk.setReceiveBufferSize(32768);
+      a.i(TAG, "Creating wildcard socketNotify (for receiving multicast datagrams) on port: " + this.khg.port);
+      this.khj = new InetSocketAddress(this.khg.kho, this.khg.port);
+      this.khl = new MulticastSocket(this.khg.port);
+      this.khl.setReuseAddress(true);
+      this.khl.setReceiveBufferSize(32768);
+      paramList = this.khi.iterator();
       while (paramList.hasNext())
       {
         paramh = (NetworkInterface)paramList.next();
-        a.i(TAG, "Joining multicast group: " + this.kdS + " on network interface: " + paramh.getDisplayName());
-        this.kdU.joinGroup(this.kdS, paramh);
+        a.i(TAG, "Joining multicast group: " + this.khj + " on network interface: " + paramh.getDisplayName());
+        this.khl.joinGroup(this.khj, paramh);
       }
       AppMethodBeat.o(158981);
     }
@@ -75,28 +75,28 @@ public class e
     {
       AppMethodBeat.i(158983);
       this.running = false;
-      if ((this.kdT != null) && (!this.kdT.isClosed())) {
-        this.kdT.close();
+      if ((this.khk != null) && (!this.khk.isClosed())) {
+        this.khk.close();
       }
-      if (this.kdU != null)
+      if (this.khl != null)
       {
-        boolean bool = this.kdU.isClosed();
+        boolean bool = this.khl.isClosed();
         if (!bool) {
           try
           {
             a.i(TAG, "Leaving multicast group");
-            Iterator localIterator = this.kdR.iterator();
+            Iterator localIterator = this.khi.iterator();
             while (localIterator.hasNext())
             {
               NetworkInterface localNetworkInterface = (NetworkInterface)localIterator.next();
-              this.kdU.leaveGroup(this.kdS, localNetworkInterface);
+              this.khl.leaveGroup(this.khj, localNetworkInterface);
             }
             AppMethodBeat.o(158983);
           }
           catch (Exception localException)
           {
             a.i(TAG, "Could not leave multicast group: ".concat(String.valueOf(localException)));
-            this.kdU.close();
+            this.khl.close();
           }
         }
       }
@@ -111,53 +111,53 @@ public class e
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 250
-    //   4: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 56	com/tencent/mm/plugin/appbrand/g/c/e:running	Z
-    //   11: ifeq +11 -> 22
-    //   14: ldc 250
-    //   16: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: iconst_1
-    //   24: putfield 56	com/tencent/mm/plugin/appbrand/g/c/e:running	Z
-    //   27: new 252	java/lang/Thread
-    //   30: dup
-    //   31: new 9	com/tencent/mm/plugin/appbrand/g/c/e$b
-    //   34: dup
-    //   35: aload_0
-    //   36: iconst_0
-    //   37: invokespecial 255	com/tencent/mm/plugin/appbrand/g/c/e$b:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/e;B)V
-    //   40: invokespecial 258	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
-    //   43: invokevirtual 260	java/lang/Thread:start	()V
-    //   46: new 252	java/lang/Thread
-    //   49: dup
-    //   50: new 6	com/tencent/mm/plugin/appbrand/g/c/e$a
-    //   53: dup
-    //   54: aload_0
-    //   55: iconst_0
-    //   56: invokespecial 261	com/tencent/mm/plugin/appbrand/g/c/e$a:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/e;B)V
-    //   59: invokespecial 258	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
-    //   62: invokevirtual 260	java/lang/Thread:start	()V
-    //   65: ldc 250
-    //   67: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   70: goto -51 -> 19
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
+    //   2: ldc_w 262
+    //   5: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 56	com/tencent/mm/plugin/appbrand/g/c/e:running	Z
+    //   12: ifeq +12 -> 24
+    //   15: ldc_w 262
+    //   18: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: return
+    //   24: aload_0
+    //   25: iconst_1
+    //   26: putfield 56	com/tencent/mm/plugin/appbrand/g/c/e:running	Z
+    //   29: new 264	java/lang/Thread
+    //   32: dup
+    //   33: new 9	com/tencent/mm/plugin/appbrand/g/c/e$b
+    //   36: dup
+    //   37: aload_0
+    //   38: iconst_0
+    //   39: invokespecial 267	com/tencent/mm/plugin/appbrand/g/c/e$b:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/e;B)V
+    //   42: invokespecial 270	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   45: invokevirtual 272	java/lang/Thread:start	()V
+    //   48: new 264	java/lang/Thread
+    //   51: dup
+    //   52: new 6	com/tencent/mm/plugin/appbrand/g/c/e$a
+    //   55: dup
+    //   56: aload_0
+    //   57: iconst_0
+    //   58: invokespecial 273	com/tencent/mm/plugin/appbrand/g/c/e$a:<init>	(Lcom/tencent/mm/plugin/appbrand/g/c/e;B)V
+    //   61: invokespecial 270	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   64: invokevirtual 272	java/lang/Thread:start	()V
+    //   67: ldc_w 262
+    //   70: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: goto -52 -> 21
+    //   76: astore_1
+    //   77: aload_0
+    //   78: monitorexit
+    //   79: aload_1
+    //   80: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	78	0	this	e
-    //   73	4	1	localObject	Object
+    //   0	81	0	this	e
+    //   76	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	19	73	finally
-    //   22	70	73	finally
+    //   2	21	76	finally
+    //   24	73	76	finally
   }
   
   final class a

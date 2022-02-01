@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.p;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
 public class MenuAppBrandRecentView
   extends BaseAppBrandRecentView
 {
-  private static final int nox = b.mVM - 1;
-  private static final int noy = b.mVM;
-  private AppBrandRecentView.b mZs;
+  private static final int ntH = b.naS - 1;
+  private static final int ntI = b.naS;
+  private AppBrandRecentView.b neA;
   
   public MenuAppBrandRecentView(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class MenuAppBrandRecentView
     if ((parama != null) && (parama.type == 2))
     {
       paramb.titleTv.setVisibility(0);
-      paramb.mYh.setVisibility(8);
+      paramb.ndo.setVisibility(8);
       paramb.titleTv.setText(2131761462);
-      paramb.lZa.setImageResource(2131689605);
+      paramb.mdt.setImageResource(2131689605);
       AppMethodBeat.o(50005);
       return;
     }
     if ((parama != null) && (parama.type == -1)) {
-      paramb.lZa.setImageResource(2131690013);
+      paramb.mdt.setImageResource(2131690013);
     }
     AppMethodBeat.o(50005);
   }
@@ -57,12 +57,12 @@ public class MenuAppBrandRecentView
   
   protected int getLoadCount()
   {
-    return noy;
+    return ntI;
   }
   
   protected int getShowCount()
   {
-    return nox;
+    return ntH;
   }
   
   protected String getType()
@@ -94,7 +94,7 @@ public class MenuAppBrandRecentView
           {
             paramAnonymousView = new AppBrandStatObject();
             paramAnonymousView.scene = 1090;
-            ((o)g.ab(o.class)).a(MenuAppBrandRecentView.this.getContext(), paramAnonymousa.mXW.username, null, paramAnonymousa.mXW.hQh, -1, null, paramAnonymousView);
+            ((p)g.ab(p.class)).a(MenuAppBrandRecentView.this.getContext(), paramAnonymousa.ndd.username, null, paramAnonymousa.ndd.hSZ, -1, null, paramAnonymousView);
           }
           AppMethodBeat.o(50002);
           return false;
@@ -117,7 +117,7 @@ public class MenuAppBrandRecentView
   
   public void setOnItemClickListener(AppBrandRecentView.b paramb)
   {
-    this.mZs = paramb;
+    this.neA = paramb;
   }
 }
 

@@ -41,7 +41,7 @@ public class f
   
   static
   {
-    AppMethodBeat.i(187243);
+    AppMethodBeat.i(221372);
     b = true;
     c = "";
     a = 0L;
@@ -52,16 +52,16 @@ public class f
     {
       public final b b()
       {
-        AppMethodBeat.i(187255);
+        AppMethodBeat.i(221384);
         b localb = new b();
-        AppMethodBeat.o(187255);
+        AppMethodBeat.o(221384);
         return localb;
       }
     });
     h = new Object();
     i = false;
     j = new int[] { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
-    AppMethodBeat.o(187243);
+    AppMethodBeat.o(221372);
   }
   
   public static int a(int paramInt)
@@ -80,7 +80,7 @@ public class f
   @TargetApi(16)
   public static MediaFormat a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(187239);
+    AppMethodBeat.i(221368);
     int k = a(paramInt1);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(2);
     localByteBuffer.put(0, (byte)(paramInt3 << 3 | k >> 1));
@@ -89,14 +89,14 @@ public class f
     localMediaFormat.setInteger("channel-count", paramInt2);
     localMediaFormat.setInteger("sample-rate", paramInt1);
     localMediaFormat.setByteBuffer("csd-0", localByteBuffer);
-    AppMethodBeat.o(187239);
+    AppMethodBeat.o(221368);
     return localMediaFormat;
   }
   
   @TargetApi(16)
   public static MediaFormat a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187242);
+    AppMethodBeat.i(221371);
     MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
     paramInt1 = 0;
     int i3 = 0;
@@ -158,7 +158,7 @@ public class f
           if ((i1 == 0) || (k == 0)) {
             break;
           }
-          AppMethodBeat.o(187242);
+          AppMethodBeat.o(221371);
           return localMediaFormat;
           i1 = paramInt2;
           if (i2 == 8)
@@ -172,16 +172,16 @@ public class f
         if ((paramInt2 != 0) && (paramInt1 == 8))
         {
           a("csd-1", localMediaFormat, paramArrayOfByte, m, i3);
-          AppMethodBeat.o(187242);
+          AppMethodBeat.o(221371);
           return localMediaFormat;
         }
         if ((k != 0) && (paramInt1 == 7))
         {
           a("csd-0", localMediaFormat, paramArrayOfByte, m, i3);
-          AppMethodBeat.o(187242);
+          AppMethodBeat.o(221371);
           return localMediaFormat;
         }
-        AppMethodBeat.o(187242);
+        AppMethodBeat.o(221371);
         return null;
         n = paramInt2;
         i3 = paramInt1;
@@ -194,7 +194,7 @@ public class f
   public static com.tencent.liteav.basic.d.a a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = 0;
-    AppMethodBeat.i(187235);
+    AppMethodBeat.i(221364);
     if (paramInt1 * paramInt4 >= paramInt2 * paramInt3)
     {
       paramInt3 = paramInt2 * paramInt3 / paramInt4;
@@ -210,7 +210,7 @@ public class f
         k = paramInt2 - paramInt4 >> 1;
       }
       com.tencent.liteav.basic.d.a locala = new com.tencent.liteav.basic.d.a(paramInt1, k, paramInt3, paramInt4);
-      AppMethodBeat.o(187235);
+      AppMethodBeat.o(221364);
       return locala;
       paramInt4 = paramInt1 * paramInt4 / paramInt3;
       paramInt3 = paramInt1;
@@ -220,32 +220,32 @@ public class f
   
   private static void a(String paramString, MediaFormat paramMediaFormat, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187241);
+    AppMethodBeat.i(221370);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 - paramInt1);
     localByteBuffer.put(paramArrayOfByte, paramInt1, paramInt2 - paramInt1);
     localByteBuffer.position(0);
     paramMediaFormat.setByteBuffer(paramString, localByteBuffer);
-    AppMethodBeat.o(187241);
+    AppMethodBeat.o(221370);
   }
   
   public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(187233);
+    AppMethodBeat.i(221362);
     if (paramWeakReference == null)
     {
-      AppMethodBeat.o(187233);
+      AppMethodBeat.o(221362);
       return;
     }
     paramWeakReference = (com.tencent.liteav.basic.c.a)paramWeakReference.get();
     if (paramWeakReference != null) {
       paramWeakReference.onNotifyEvent(paramInt, paramBundle);
     }
-    AppMethodBeat.o(187233);
+    AppMethodBeat.o(221362);
   }
   
   public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, int paramInt, String paramString)
   {
-    AppMethodBeat.i(187232);
+    AppMethodBeat.i(221361);
     Bundle localBundle = new Bundle();
     localBundle.putInt("EVT_ID", paramInt);
     localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
@@ -253,15 +253,15 @@ public class f
       localBundle.putCharSequence("EVT_MSG", paramString);
     }
     a(paramWeakReference, paramInt, localBundle);
-    AppMethodBeat.o(187232);
+    AppMethodBeat.o(221361);
   }
   
   public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, String paramString, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(187234);
+    AppMethodBeat.i(221363);
     if (paramWeakReference == null)
     {
-      AppMethodBeat.o(187234);
+      AppMethodBeat.o(221363);
       return;
     }
     paramWeakReference = (com.tencent.liteav.basic.c.a)paramWeakReference.get();
@@ -270,12 +270,12 @@ public class f
       paramBundle.putString("EVT_USERID", paramString);
       paramWeakReference.onNotifyEvent(paramInt, paramBundle);
     }
-    AppMethodBeat.o(187234);
+    AppMethodBeat.o(221363);
   }
   
   public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(187231);
+    AppMethodBeat.i(221360);
     Bundle localBundle = new Bundle();
     localBundle.putString("EVT_USERID", paramString1);
     localBundle.putInt("EVT_ID", paramInt);
@@ -284,15 +284,15 @@ public class f
       localBundle.putCharSequence("EVT_MSG", paramString2);
     }
     a(paramWeakReference, paramInt, localBundle);
-    AppMethodBeat.o(187231);
+    AppMethodBeat.o(221360);
   }
   
   public static boolean a(Context paramContext)
   {
-    AppMethodBeat.i(187224);
+    AppMethodBeat.i(221353);
     if (paramContext == null)
     {
-      AppMethodBeat.o(187224);
+      AppMethodBeat.o(221353);
       return false;
     }
     try
@@ -301,54 +301,54 @@ public class f
       if (((ActivityManager)localObject).getRunningTasks(1) == null)
       {
         TXCLog.e("TXCSystemUtil", "running task is null, ams is abnormal!!!");
-        AppMethodBeat.o(187224);
+        AppMethodBeat.o(221353);
         return false;
       }
       localObject = (ActivityManager.RunningTaskInfo)((ActivityManager)localObject).getRunningTasks(1).get(0);
       if ((localObject == null) || (((ActivityManager.RunningTaskInfo)localObject).topActivity == null))
       {
         TXCLog.e("TXCSystemUtil", "failed to get RunningTaskInfo");
-        AppMethodBeat.o(187224);
+        AppMethodBeat.o(221353);
         return false;
       }
       if (!((ActivityManager.RunningTaskInfo)localObject).topActivity.getPackageName().equals(paramContext.getPackageName()))
       {
-        AppMethodBeat.o(187224);
+        AppMethodBeat.o(221353);
         return true;
       }
-      AppMethodBeat.o(187224);
+      AppMethodBeat.o(221353);
       return false;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(187224);
+      AppMethodBeat.o(221353);
     }
     return false;
   }
   
   public static boolean a(String paramString)
   {
-    AppMethodBeat.i(187237);
+    AppMethodBeat.i(221366);
     boolean bool;
     try
     {
       new StringBuilder("load library ").append(paramString).append(" from system path ");
       System.loadLibrary(paramString);
-      AppMethodBeat.o(187237);
+      AppMethodBeat.o(221366);
       return true;
     }
     catch (Error localError)
     {
       new StringBuilder("load library : ").append(localError.toString());
       bool = b(c, paramString);
-      AppMethodBeat.o(187237);
+      AppMethodBeat.o(221366);
       return bool;
     }
     catch (Exception localException)
     {
       new StringBuilder("load library : ").append(localException.toString());
       bool = b(c, paramString);
-      AppMethodBeat.o(187237);
+      AppMethodBeat.o(221366);
     }
     return bool;
   }
@@ -500,26 +500,26 @@ public class f
   
   public static int[] a()
   {
-    AppMethodBeat.i(187222);
+    AppMethodBeat.i(221351);
     if (b)
     {
       b = false;
       ((b)g.a()).a();
-      AppMethodBeat.o(187222);
+      AppMethodBeat.o(221351);
       return new int[] { 0, 0 };
     }
     int[] arrayOfInt = ((b)g.a()).a();
-    AppMethodBeat.o(187222);
+    AppMethodBeat.o(221351);
     return arrayOfInt;
   }
   
   public static int b()
   {
-    AppMethodBeat.i(187223);
+    AppMethodBeat.i(221352);
     if ((f) || ((e != 0L) && (TXCTimeUtil.getTimeTick() - e < 15000L)))
     {
       k = d;
-      AppMethodBeat.o(187223);
+      AppMethodBeat.o(221352);
       return k;
     }
     f = true;
@@ -527,7 +527,7 @@ public class f
     {
       public final void run()
       {
-        AppMethodBeat.i(187254);
+        AppMethodBeat.i(221383);
         System.currentTimeMillis();
         f.a(false);
         try
@@ -537,25 +537,25 @@ public class f
           int i = localMemoryInfo.getTotalPss();
           f.a(TXCTimeUtil.getTimeTick());
           f.b(i / 1024);
-          AppMethodBeat.o(187254);
+          AppMethodBeat.o(221383);
           return;
         }
         catch (Exception localException)
         {
-          AppMethodBeat.o(187254);
+          AppMethodBeat.o(221383);
         }
       }
     });
     int k = d;
-    AppMethodBeat.o(187223);
+    AppMethodBeat.o(221352);
     return k;
   }
   
   public static String b(Context paramContext)
   {
-    AppMethodBeat.i(187225);
+    AppMethodBeat.i(221354);
     paramContext = TXCDRApi.getSimulateIDFA(paramContext);
-    AppMethodBeat.o(187225);
+    AppMethodBeat.o(221354);
     return paramContext;
   }
   
@@ -566,7 +566,7 @@ public class f
   
   private static boolean b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187238);
+    AppMethodBeat.i(221367);
     bool2 = false;
     bool1 = bool2;
     try
@@ -594,7 +594,7 @@ public class f
         bool1 = bool2;
       }
     }
-    AppMethodBeat.o(187238);
+    AppMethodBeat.o(221367);
     return bool1;
   }
   
@@ -605,14 +605,14 @@ public class f
   
   public static String c(Context paramContext)
   {
-    AppMethodBeat.i(187226);
+    AppMethodBeat.i(221355);
     String str2 = "";
     String str1 = str2;
     if (paramContext != null) {}
     try
     {
       str1 = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).packageName;
-      AppMethodBeat.o(187226);
+      AppMethodBeat.o(221355);
       return str1;
     }
     catch (Exception paramContext)
@@ -631,7 +631,7 @@ public class f
   
   public static boolean d(Context paramContext)
   {
-    AppMethodBeat.i(187227);
+    AppMethodBeat.i(221356);
     try
     {
       System.currentTimeMillis();
@@ -641,24 +641,24 @@ public class f
         if (paramContext != null)
         {
           boolean bool = paramContext.isAvailable();
-          AppMethodBeat.o(187227);
+          AppMethodBeat.o(221356);
           return bool;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(187227);
+      AppMethodBeat.o(221356);
     }
     return false;
   }
   
   public static int e(Context paramContext)
   {
-    AppMethodBeat.i(187228);
+    AppMethodBeat.i(221357);
     if (paramContext == null)
     {
-      AppMethodBeat.o(187228);
+      AppMethodBeat.o(221357);
       return 0;
     }
     Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -666,22 +666,22 @@ public class f
     localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
     if (localObject == null)
     {
-      AppMethodBeat.o(187228);
+      AppMethodBeat.o(221357);
       return 0;
     }
     if (!((NetworkInfo)localObject).isConnected())
     {
-      AppMethodBeat.o(187228);
+      AppMethodBeat.o(221357);
       return 0;
     }
     if (((NetworkInfo)localObject).getType() == 9)
     {
-      AppMethodBeat.o(187228);
+      AppMethodBeat.o(221357);
       return 5;
     }
     if (((NetworkInfo)localObject).getType() == 1)
     {
-      AppMethodBeat.o(187228);
+      AppMethodBeat.o(221357);
       return 1;
     }
     if (((NetworkInfo)localObject).getType() == 0)
@@ -689,14 +689,14 @@ public class f
       switch (paramContext.getNetworkType())
       {
       default: 
-        AppMethodBeat.o(187228);
+        AppMethodBeat.o(221357);
         return 2;
       case 1: 
       case 2: 
       case 4: 
       case 7: 
       case 11: 
-        AppMethodBeat.o(187228);
+        AppMethodBeat.o(221357);
         return 4;
       case 3: 
       case 5: 
@@ -707,35 +707,35 @@ public class f
       case 12: 
       case 14: 
       case 15: 
-        AppMethodBeat.o(187228);
+        AppMethodBeat.o(221357);
         return 3;
       }
-      AppMethodBeat.o(187228);
+      AppMethodBeat.o(221357);
       return 2;
     }
-    AppMethodBeat.o(187228);
+    AppMethodBeat.o(221357);
     return 0;
   }
   
   public static String e()
   {
-    AppMethodBeat.i(187229);
+    AppMethodBeat.i(221358);
     String str = UUID.randomUUID().toString();
-    AppMethodBeat.o(187229);
+    AppMethodBeat.o(221358);
     return str;
   }
   
   public static String f(Context paramContext)
   {
-    AppMethodBeat.i(187230);
+    AppMethodBeat.i(221359);
     paramContext = TXCDRApi.getDevUUID(paramContext, TXCDRApi.getSimulateIDFA(paramContext));
-    AppMethodBeat.o(187230);
+    AppMethodBeat.o(221359);
     return paramContext;
   }
   
   public static boolean f()
   {
-    AppMethodBeat.i(187236);
+    AppMethodBeat.i(221365);
     synchronized (h)
     {
       if (!i)
@@ -746,7 +746,7 @@ public class f
         new StringBuilder("load library liteavsdk ").append(i);
       }
       boolean bool = i;
-      AppMethodBeat.o(187236);
+      AppMethodBeat.o(221365);
       return bool;
     }
   }

@@ -7,19 +7,19 @@ import com.tencent.xweb.x.a;
 public final class g$d
   extends x.a
 {
-  public WebChromeClient.FileChooserParams MuU;
+  public WebChromeClient.FileChooserParams MRY;
   
   public g$d(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.MuU = paramFileChooserParams;
+    this.MRY = paramFileChooserParams;
   }
   
   public final String[] getAcceptTypes()
   {
     AppMethodBeat.i(153851);
-    if (this.MuU != null)
+    if (this.MRY != null)
     {
-      String[] arrayOfString = this.MuU.getAcceptTypes();
+      String[] arrayOfString = this.MRY.getAcceptTypes();
       AppMethodBeat.o(153851);
       return arrayOfString;
     }
@@ -30,9 +30,9 @@ public final class g$d
   public final int getMode()
   {
     AppMethodBeat.i(153850);
-    if (this.MuU != null)
+    if (this.MRY != null)
     {
-      int i = this.MuU.getMode();
+      int i = this.MRY.getMode();
       AppMethodBeat.o(153850);
       return i;
     }
@@ -43,9 +43,9 @@ public final class g$d
   public final boolean isCaptureEnabled()
   {
     AppMethodBeat.i(153852);
-    if (this.MuU != null)
+    if (this.MRY != null)
     {
-      boolean bool = this.MuU.isCaptureEnabled();
+      boolean bool = this.MRY.isCaptureEnabled();
       AppMethodBeat.o(153852);
       return bool;
     }

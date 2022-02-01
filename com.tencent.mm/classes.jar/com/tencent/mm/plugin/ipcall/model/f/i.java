@@ -8,7 +8,7 @@ public final class i
   public static void ah(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25509);
-    g.yhR.f(13254, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(-1) });
+    g.yxI.f(13254, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(-1) });
     AppMethodBeat.o(25509);
   }
 }

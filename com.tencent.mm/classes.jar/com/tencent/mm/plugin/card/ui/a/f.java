@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.st;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
@@ -14,15 +14,15 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean bXE()
+  public final boolean bYT()
   {
-    return this.oKn;
+    return this.oQP;
   }
   
-  public final boolean bXF()
+  public final boolean bYU()
   {
     AppMethodBeat.i(113648);
-    if ((this.owK.bTJ()) && (super.bXF()) && ((this.owK.bTH()) || (!bt.isNullOrNil(this.owK.bTO().code))))
+    if ((this.oDm.bUY()) && (super.bYU()) && ((this.oDm.bUW()) || (!bu.isNullOrNil(this.oDm.bVd().code))))
     {
       AppMethodBeat.o(113648);
       return true;
@@ -31,15 +31,15 @@ public final class f
     return false;
   }
   
-  public final boolean bXG()
+  public final boolean bYV()
   {
     return true;
   }
   
-  public final boolean bXJ()
+  public final boolean bYY()
   {
     AppMethodBeat.i(113649);
-    if ((this.owK.bTJ()) && (super.bXJ()))
+    if ((this.oDm.bUY()) && (super.bYY()))
     {
       AppMethodBeat.o(113649);
       return true;

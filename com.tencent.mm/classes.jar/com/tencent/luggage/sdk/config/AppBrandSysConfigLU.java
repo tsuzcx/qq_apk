@@ -19,40 +19,40 @@ public class AppBrandSysConfigLU
   implements Parcelable, j
 {
   public static final Parcelable.Creator<AppBrandSysConfigLU> CREATOR;
-  public String cmD;
-  public boolean cmE;
-  public boolean cmF;
-  @Deprecated
+  public String cmF;
   public boolean cmG;
   public boolean cmH;
-  public AppRuntimeApiPermissionBundle cmI;
-  public HashMap<String, AppRuntimeApiPermissionBundle> cmJ;
-  public String cmK;
-  public int cmL;
-  public int cmM;
+  @Deprecated
+  public boolean cmI;
+  public boolean cmJ;
+  public AppRuntimeApiPermissionBundle cmK;
+  public HashMap<String, AppRuntimeApiPermissionBundle> cmL;
+  public String cmM;
   public int cmN;
   public int cmO;
   public int cmP;
   public int cmQ;
-  public boolean cmR;
-  public boolean cmS;
-  public long cmT;
-  public int cmU;
-  public ArrayList<String> cmV;
-  public ArrayList<String> cmW;
+  public int cmR;
+  public int cmS;
+  public boolean cmT;
+  public boolean cmU;
+  public long cmV;
+  public int cmW;
   public ArrayList<String> cmX;
   public ArrayList<String> cmY;
   public ArrayList<String> cmZ;
-  public boolean cms;
-  public boolean cna;
-  public int cnb;
-  public int cnc;
+  public boolean cmu;
+  public ArrayList<String> cna;
+  public ArrayList<String> cnb;
+  public boolean cnc;
   public int cnd;
-  public long cne;
-  public AppBrandGlobalSystemConfig cnf;
-  public String[] cng;
-  public long cnh;
-  public List<WxaAttributes.WxaPluginCodeInfo> cni;
+  public int cne;
+  public int cnf;
+  public long cng;
+  public AppBrandGlobalSystemConfig cnh;
+  public String[] cni;
+  public long cnj;
+  public List<WxaAttributes.WxaPluginCodeInfo> cnk;
   
   static
   {
@@ -64,115 +64,115 @@ public class AppBrandSysConfigLU
   public AppBrandSysConfigLU()
   {
     AppMethodBeat.i(146705);
-    this.cmE = false;
-    this.cmF = false;
     this.cmG = false;
     this.cmH = false;
-    this.cms = false;
-    this.cne = 0L;
-    this.cng = new String[0];
+    this.cmI = false;
+    this.cmJ = false;
+    this.cmu = false;
+    this.cng = 0L;
+    this.cni = new String[0];
     AppMethodBeat.o(146705);
   }
   
   protected AppBrandSysConfigLU(Parcel paramParcel)
   {
     AppMethodBeat.i(146708);
-    this.cmE = false;
-    this.cmF = false;
     this.cmG = false;
     this.cmH = false;
-    this.cms = false;
-    this.cne = 0L;
-    this.cng = new String[0];
-    this.doD = paramParcel.readString();
-    this.cmD = paramParcel.readString();
+    this.cmI = false;
+    this.cmJ = false;
+    this.cmu = false;
+    this.cng = 0L;
+    this.cni = new String[0];
+    this.dpI = paramParcel.readString();
+    this.cmF = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.iAa = paramParcel.readString();
+    this.iCT = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.cmE = bool1;
+      this.cmG = bool1;
       if (paramParcel.readByte() == 0) {
         break label525;
       }
       bool1 = true;
       label104:
-      this.cmF = bool1;
+      this.cmH = bool1;
       if (paramParcel.readByte() == 0) {
         break label530;
       }
       bool1 = true;
       label118:
-      this.cmG = bool1;
-      this.cmI = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
-      this.jYa = paramParcel.readInt();
-      this.cmL = paramParcel.readInt();
-      this.cmM = paramParcel.readInt();
+      this.cmI = bool1;
+      this.cmK = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
+      this.kbp = paramParcel.readInt();
       this.cmN = paramParcel.readInt();
       this.cmO = paramParcel.readInt();
       this.cmP = paramParcel.readInt();
       this.cmQ = paramParcel.readInt();
+      this.cmR = paramParcel.readInt();
+      this.cmS = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label535;
       }
       bool1 = true;
       label204:
-      this.cmR = bool1;
+      this.cmT = bool1;
       if (paramParcel.readByte() == 0) {
         break label540;
       }
       bool1 = true;
       label218:
-      this.cmS = bool1;
-      this.cmT = paramParcel.readLong();
-      this.cmU = paramParcel.readInt();
-      this.cmV = paramParcel.createStringArrayList();
-      this.cmW = paramParcel.createStringArrayList();
+      this.cmU = bool1;
+      this.cmV = paramParcel.readLong();
+      this.cmW = paramParcel.readInt();
       this.cmX = paramParcel.createStringArrayList();
       this.cmY = paramParcel.createStringArrayList();
       this.cmZ = paramParcel.createStringArrayList();
-      this.jYh = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
-      this.cnf = ((AppBrandGlobalSystemConfig)paramParcel.readParcelable(AppBrandGlobalSystemConfig.class.getClassLoader()));
+      this.cna = paramParcel.createStringArrayList();
+      this.cnb = paramParcel.createStringArrayList();
+      this.kbw = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
+      this.cnh = ((AppBrandGlobalSystemConfig)paramParcel.readParcelable(AppBrandGlobalSystemConfig.class.getClassLoader()));
       if (paramParcel.readByte() <= 0) {
         break label545;
       }
       bool1 = true;
       label320:
-      this.jYb = bool1;
+      this.kbq = bool1;
       if (paramParcel.readByte() <= 0) {
         break label550;
       }
       bool1 = true;
       label334:
-      this.jYc = bool1;
-      this.jYf = paramParcel.readInt();
-      this.jYg = paramParcel.readInt();
-      this.cnb = paramParcel.readInt();
+      this.kbr = bool1;
+      this.kbu = paramParcel.readInt();
+      this.kbv = paramParcel.readInt();
+      this.cnd = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label555;
       }
       bool1 = true;
       label373:
-      this.cna = bool1;
-      this.cne = paramParcel.readLong();
-      this.cmK = paramParcel.readString();
-      this.cng = new String[paramParcel.readInt()];
-      paramParcel.readStringArray(this.cng);
-      this.cnc = paramParcel.readInt();
-      this.cnd = paramParcel.readInt();
-      this.jYi = paramParcel.readInt();
+      this.cnc = bool1;
+      this.cng = paramParcel.readLong();
+      this.cmM = paramParcel.readString();
+      this.cni = new String[paramParcel.readInt()];
+      paramParcel.readStringArray(this.cni);
+      this.cne = paramParcel.readInt();
+      this.cnf = paramParcel.readInt();
+      this.kbx = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label560;
       }
       bool1 = true;
       label447:
-      this.jYj = bool1;
+      this.kby = bool1;
       if (paramParcel.readInt() != 1) {
         break label565;
       }
       bool1 = true;
       label462:
-      this.jYd = bool1;
+      this.kbs = bool1;
       if (paramParcel.readInt() != 1) {
         break label570;
       }
@@ -189,10 +189,10 @@ public class AppBrandSysConfigLU
     label570:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jYe = bool1;
-      this.cnh = paramParcel.readLong();
-      this.cni = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-      this.cmJ = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
+      this.kbt = bool1;
+      this.cnj = paramParcel.readLong();
+      this.cnk = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
+      this.cmL = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
       AppMethodBeat.o(146708);
       return;
       bool1 = false;
@@ -226,9 +226,9 @@ public class AppBrandSysConfigLU
   public String toString()
   {
     AppMethodBeat.i(146706);
-    StringBuilder localStringBuilder = new StringBuilder("AppBrandSysConfigLU{, brandName='").append(this.doD).append('\'').append(", appId='").append(this.appId).append('\'').append(", appIconUrl='").append(this.iAa).append('\'').append(", debugEnabled=").append(this.cmE).append(", performancePanelEnabled=").append(this.cmF).append(", maxWebViewDepth=").append(this.jYa).append(", maxBackgroundLifeSpan=").append(this.cmL).append(", maxRequestConcurrent=").append(this.cmM).append(", maxUploadConcurrent=").append(this.cmN).append(", maxDownloadConcurrent=").append(this.cmO).append(", maxWebsocketConnect=").append(this.cmP).append(", websocketSkipPortCheck=").append(this.cmR).append(", requestDomains=").append(this.cmV).append(", socketDomains=").append(this.cmW).append(", uploadDomains=").append(this.cmX).append(", downloadDomains=").append(this.cmY).append(", downloadDomains=").append(this.cmZ).append(", appPkgInfo=").append(this.jYh).append(", systemSettings=").append(this.cnf).append(", runningFlag=").append(this.cnh).append(", operationInfo=").append(this.cmK).append(", kvStorageScheme=").append(this.jYi).append(", TLSSkipHostnameCheck=").append(this.cmS).append(", kvStoragePerformanceReportOn=").append(this.jYj).append(", pluginPermissionBundleMap=");
-    if (this.cmJ == null) {}
-    for (String str = "0";; str = String.valueOf(this.cmJ.size()))
+    StringBuilder localStringBuilder = new StringBuilder("AppBrandSysConfigLU{, brandName='").append(this.dpI).append('\'').append(", appId='").append(this.appId).append('\'').append(", appIconUrl='").append(this.iCT).append('\'').append(", debugEnabled=").append(this.cmG).append(", performancePanelEnabled=").append(this.cmH).append(", maxWebViewDepth=").append(this.kbp).append(", maxBackgroundLifeSpan=").append(this.cmN).append(", maxRequestConcurrent=").append(this.cmO).append(", maxUploadConcurrent=").append(this.cmP).append(", maxDownloadConcurrent=").append(this.cmQ).append(", maxWebsocketConnect=").append(this.cmR).append(", websocketSkipPortCheck=").append(this.cmT).append(", requestDomains=").append(this.cmX).append(", socketDomains=").append(this.cmY).append(", uploadDomains=").append(this.cmZ).append(", downloadDomains=").append(this.cna).append(", downloadDomains=").append(this.cnb).append(", appPkgInfo=").append(this.kbw).append(", systemSettings=").append(this.cnh).append(", runningFlag=").append(this.cnj).append(", operationInfo=").append(this.cmM).append(", kvStorageScheme=").append(this.kbx).append(", TLSSkipHostnameCheck=").append(this.cmU).append(", kvStoragePerformanceReportOn=").append(this.kby).append(", pluginPermissionBundleMap=");
+    if (this.cmL == null) {}
+    for (String str = "0";; str = String.valueOf(this.cmL.size()))
     {
       str = str + '}';
       AppMethodBeat.o(146706);
@@ -240,97 +240,97 @@ public class AppBrandSysConfigLU
   {
     int i = 1;
     AppMethodBeat.i(146707);
-    paramParcel.writeString(this.doD);
-    paramParcel.writeString(this.cmD);
+    paramParcel.writeString(this.dpI);
+    paramParcel.writeString(this.cmF);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.iAa);
+    paramParcel.writeString(this.iCT);
     byte b;
-    if (this.cmE)
+    if (this.cmG)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.cmF) {
+      if (!this.cmH) {
         break label452;
       }
       b = 1;
       label64:
       paramParcel.writeByte(b);
-      if (!this.cmG) {
+      if (!this.cmI) {
         break label457;
       }
       b = 1;
       label78:
       paramParcel.writeByte(b);
-      paramParcel.writeParcelable(this.cmI, paramInt);
-      paramParcel.writeInt(this.jYa);
-      paramParcel.writeInt(this.cmL);
-      paramParcel.writeInt(this.cmM);
+      paramParcel.writeParcelable(this.cmK, paramInt);
+      paramParcel.writeInt(this.kbp);
       paramParcel.writeInt(this.cmN);
       paramParcel.writeInt(this.cmO);
       paramParcel.writeInt(this.cmP);
       paramParcel.writeInt(this.cmQ);
-      if (!this.cmR) {
+      paramParcel.writeInt(this.cmR);
+      paramParcel.writeInt(this.cmS);
+      if (!this.cmT) {
         break label462;
       }
       b = 1;
       label157:
       paramParcel.writeByte(b);
-      if (!this.cmS) {
+      if (!this.cmU) {
         break label467;
       }
       b = 1;
       label171:
       paramParcel.writeByte(b);
-      paramParcel.writeLong(this.cmT);
-      paramParcel.writeInt(this.cmU);
-      paramParcel.writeStringList(this.cmV);
-      paramParcel.writeStringList(this.cmW);
+      paramParcel.writeLong(this.cmV);
+      paramParcel.writeInt(this.cmW);
       paramParcel.writeStringList(this.cmX);
       paramParcel.writeStringList(this.cmY);
       paramParcel.writeStringList(this.cmZ);
-      paramParcel.writeParcelable(this.jYh, paramInt);
-      paramParcel.writeParcelable(this.cnf, paramInt);
-      if (!this.jYb) {
+      paramParcel.writeStringList(this.cna);
+      paramParcel.writeStringList(this.cnb);
+      paramParcel.writeParcelable(this.kbw, paramInt);
+      paramParcel.writeParcelable(this.cnh, paramInt);
+      if (!this.kbq) {
         break label472;
       }
       b = 1;
       label259:
       paramParcel.writeByte(b);
-      if (!this.jYc) {
+      if (!this.kbr) {
         break label477;
       }
       b = 1;
       label273:
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.jYf);
-      paramParcel.writeInt(this.jYg);
-      paramParcel.writeInt(this.cnb);
-      if (!this.cna) {
+      paramParcel.writeInt(this.kbu);
+      paramParcel.writeInt(this.kbv);
+      paramParcel.writeInt(this.cnd);
+      if (!this.cnc) {
         break label482;
       }
       paramInt = 1;
       label311:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.cne);
-      paramParcel.writeString(this.cmK);
-      paramParcel.writeInt(this.cng.length);
-      paramParcel.writeStringArray(this.cng);
-      paramParcel.writeInt(this.cnc);
-      paramParcel.writeInt(this.cnd);
-      paramParcel.writeInt(this.jYi);
-      if (!this.jYj) {
+      paramParcel.writeLong(this.cng);
+      paramParcel.writeString(this.cmM);
+      paramParcel.writeInt(this.cni.length);
+      paramParcel.writeStringArray(this.cni);
+      paramParcel.writeInt(this.cne);
+      paramParcel.writeInt(this.cnf);
+      paramParcel.writeInt(this.kbx);
+      if (!this.kby) {
         break label487;
       }
       paramInt = 1;
       label382:
       paramParcel.writeInt(paramInt);
-      if (!this.jYd) {
+      if (!this.kbs) {
         break label492;
       }
       paramInt = 1;
       label396:
       paramParcel.writeInt(paramInt);
-      if (!this.jYe) {
+      if (!this.kbt) {
         break label497;
       }
     }
@@ -347,9 +347,9 @@ public class AppBrandSysConfigLU
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.cnh);
-      paramParcel.writeTypedList(this.cni);
-      paramParcel.writeMap(this.cmJ);
+      paramParcel.writeLong(this.cnj);
+      paramParcel.writeTypedList(this.cnk);
+      paramParcel.writeMap(this.cmL);
       AppMethodBeat.o(146707);
       return;
       b = 0;

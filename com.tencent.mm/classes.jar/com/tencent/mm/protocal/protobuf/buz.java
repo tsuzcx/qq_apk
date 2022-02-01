@@ -3,44 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class buz
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String GOM;
-  public int GPo;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(211973);
+    AppMethodBeat.i(72512);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GOM != null) {
-        paramVarArgs.d(1, this.GOM);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      paramVarArgs.aS(2, this.GPo);
-      AppMethodBeat.o(211973);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
+      }
+      AppMethodBeat.o(72512);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GOM == null) {
-        break label258;
+      if (this.title == null) {
+        break label274;
       }
     }
-    label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GOM) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.GPo);
-      AppMethodBeat.o(211973);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.url != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.url);
+      }
+      AppMethodBeat.o(72512);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(211973);
+        AppMethodBeat.o(72512);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +55,18 @@ public final class buz
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(211973);
+          AppMethodBeat.o(72512);
           return -1;
         case 1: 
-          localbuz.GOM = locala.NPN.readString();
-          AppMethodBeat.o(211973);
+          localbuz.title = locala.OmT.readString();
+          AppMethodBeat.o(72512);
           return 0;
         }
-        localbuz.GPo = locala.NPN.zc();
-        AppMethodBeat.o(211973);
+        localbuz.url = locala.OmT.readString();
+        AppMethodBeat.o(72512);
         return 0;
       }
-      AppMethodBeat.o(211973);
+      AppMethodBeat.o(72512);
       return -1;
     }
   }

@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String desc;
-  public String ozD;
+  public String oGf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,8 +17,8 @@ public final class f
       if (this.desc != null) {
         paramVarArgs.d(1, this.desc);
       }
-      if (this.ozD != null) {
-        paramVarArgs.d(2, this.ozD);
+      if (this.oGf != null) {
+        paramVarArgs.d(2, this.oGf);
       }
       AppMethodBeat.o(153047);
       return 0;
@@ -32,17 +32,17 @@ public final class f
     for (paramInt = f.a.a.b.b.a.e(1, this.desc) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.ozD != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ozD);
+      if (this.oGf != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.oGf);
       }
       AppMethodBeat.o(153047);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(153047);
@@ -58,11 +58,11 @@ public final class f
           AppMethodBeat.o(153047);
           return -1;
         case 1: 
-          localf.desc = locala.NPN.readString();
+          localf.desc = locala.OmT.readString();
           AppMethodBeat.o(153047);
           return 0;
         }
-        localf.ozD = locala.NPN.readString();
+        localf.oGf = locala.OmT.readString();
         AppMethodBeat.o(153047);
         return 0;
       }

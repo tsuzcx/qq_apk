@@ -6,18 +6,18 @@ import java.util.Arrays;
 
 public final class b
 {
-  public static boolean dcv = false;
+  public static boolean ddx = false;
   
-  public static void Oy()
+  public static void Ow()
   {
     AppMethodBeat.i(136756);
     if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
     {
-      dcv = true;
+      ddx = true;
       AppMethodBeat.o(136756);
       return;
     }
-    dcv = false;
+    ddx = false;
     AppMethodBeat.o(136756);
   }
   
@@ -88,7 +88,7 @@ public final class b
         paramInt1 = 0;
         while (paramInt1 < j)
         {
-          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), dcv);
+          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), ddx);
           arrayOfByte1[(paramInt1 * 2)] = arrayOfByte2[0];
           arrayOfByte1[(paramInt1 * 2 + 1)] = arrayOfByte2[1];
           paramInt1 += 1;
@@ -106,7 +106,7 @@ public final class b
     paramInt1 = i;
     while (paramInt1 < paramInt2)
     {
-      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], dcv) / 256));
+      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], ddx) / 256));
       paramInt1 += 1;
     }
     AppMethodBeat.o(136757);
@@ -249,7 +249,7 @@ public final class b
         b2 = paramArrayOfByte[(paramInt1 * 2 + 1)];
         byte b3 = paramArrayOfByte[(paramInt1 * 2 + 2)];
         byte b4 = paramArrayOfByte[(paramInt1 * 2 + 3)];
-        boolean bool = dcv;
+        boolean bool = ddx;
         paramInt3 = a.a(b1, b2, bool);
         i = a.a(b3, b4, bool);
         byte[] arrayOfByte2 = a.getBytes((short)(paramInt3 / 2 + i / 2), bool);
@@ -262,7 +262,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.b
  * JD-Core Version:    0.7.0.1
  */

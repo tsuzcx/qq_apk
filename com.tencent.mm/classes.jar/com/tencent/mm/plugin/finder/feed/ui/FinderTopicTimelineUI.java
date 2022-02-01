@@ -15,9 +15,9 @@ import com.tencent.mm.plugin.finder.feed.a.b;
 import com.tencent.mm.plugin.finder.feed.model.internal.h;
 import com.tencent.mm.plugin.finder.view.manager.FinderLayoutManager;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.arg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import d.g.b.p;
@@ -27,25 +27,25 @@ import d.v;
 import d.z;
 import java.util.HashMap;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTopicTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Presenter;", "()V", "TAG", "", "commentScene", "", "feedLoader", "location", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "presenter", "scene", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "topic", "type", "viewCallback", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "onDestroy", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTopicTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicTimelineUIContract$Presenter;", "()V", "TAG", "", "commentScene", "", "feedLoader", "location", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "presenter", "scene", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "topic", "type", "viewCallback", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "onDestroy", "plugin-finder_release"})
 public final class FinderTopicTimelineUI
   extends FinderLoaderFeedUI<FinderTopicTimelineUIContract.Loader, FinderTopicTimelineUIContract.c, FinderTopicTimelineUIContract.a>
 {
   private final String TAG = "Finder.FinderTopicTimelineUI";
   private HashMap _$_findViewCache;
-  private String dzZ = "";
-  private aoy location;
-  private arg rJv;
-  private final int rTD = 9;
+  private String dBe = "";
+  private apl location;
+  private arv rRJ;
   private final int scene = 2;
-  private FinderTopicTimelineUIContract.a shY;
-  private FinderTopicTimelineUIContract.c shZ;
-  private FinderTopicTimelineUIContract.Loader sia;
+  private final int sch = 9;
+  private FinderTopicTimelineUIContract.a sqT;
+  private FinderTopicTimelineUIContract.c sqU;
+  private FinderTopicTimelineUIContract.Loader sqV;
   private int type;
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(202906);
+    AppMethodBeat.i(203385);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -56,23 +56,23 @@ public final class FinderTopicTimelineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(202906);
+    AppMethodBeat.o(203385);
     return localView1;
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
-    AppMethodBeat.i(202904);
+    AppMethodBeat.i(203383);
     if (getIntent().getIntExtra("key_topic_type", 1) == 1)
     {
-      AppMethodBeat.o(202904);
+      AppMethodBeat.o(203383);
       return 9;
     }
-    AppMethodBeat.o(202904);
+    AppMethodBeat.o(203383);
     return 27;
   }
   
-  public final int cBZ()
+  public final int cDL()
   {
     return 2;
   }
@@ -88,64 +88,64 @@ public final class FinderTopicTimelineUI
     this.type = getIntent().getIntExtra("key_topic_type", 1);
     Object localObject1 = getIntent().getStringExtra("key_topic_title");
     p.g(localObject1, "intent.getStringExtra(Co…icFeedUI.KEY_TOPIC_TITLE)");
-    this.dzZ = ((String)localObject1);
+    this.dBe = ((String)localObject1);
     switch (this.type)
     {
     default: 
-      setMMTitle(String.valueOf(this.dzZ));
+      setMMTitle(String.valueOf(this.dBe));
     }
     for (;;)
     {
-      this.location = new aoy();
+      this.location = new apl();
       localObject1 = getIntent().getByteArrayExtra("KEY_FINDER_LOCATION");
       if (localObject1 != null)
       {
         localObject3 = this.location;
         if (localObject3 == null) {
-          p.bcb("location");
+          p.bdF("location");
         }
-        ((aoy)localObject3).parseFrom((byte[])localObject1);
+        ((apl)localObject3).parseFrom((byte[])localObject1);
       }
-      localObject1 = (com.tencent.mm.bx.a)new arg();
+      localObject1 = (com.tencent.mm.bw.a)new arv();
       Object localObject3 = getIntent().getByteArrayExtra("KEY_SECTION_INFO");
       try
       {
-        ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject3);
-        this.rJv = ((arg)localObject1);
-        ad.i(this.TAG, "type:" + this.type + ", topic:" + this.dzZ + ',');
-        this.shY = new FinderTopicTimelineUIContract.a((MMActivity)this, this.scene);
+        ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject3);
+        this.rRJ = ((arv)localObject1);
+        ae.i(this.TAG, "type:" + this.type + ", topic:" + this.dBe + ',');
+        this.sqT = new FinderTopicTimelineUIContract.a((MMActivity)this, this.scene);
         localObject1 = (MMActivity)this;
-        localObject3 = this.shY;
+        localObject3 = this.sqT;
         if (localObject3 == null) {
-          p.bcb("presenter");
+          p.bdF("presenter");
         }
-        this.shZ = new FinderTopicTimelineUIContract.c((MMActivity)localObject1, (FinderTopicTimelineUIContract.a)localObject3, this.scene, this.rTD);
+        this.sqU = new FinderTopicTimelineUIContract.c((MMActivity)localObject1, (FinderTopicTimelineUIContract.a)localObject3, this.scene, this.sch);
         int i = this.type;
-        localObject1 = this.dzZ;
+        localObject1 = this.dBe;
         localObject3 = this.location;
         if (localObject3 == null) {
-          p.bcb("location");
+          p.bdF("location");
         }
-        com.tencent.mm.plugin.finder.feed.model.internal.e locale = com.tencent.mm.plugin.finder.feed.model.internal.e.scP;
-        arg localarg = this.rJv;
-        com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KiD;
-        localObject1 = new FinderTopicTimelineUIContract.Loader(i, (String)localObject1, (aoy)localObject3, locale, localarg, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cOu());
+        com.tencent.mm.plugin.finder.feed.model.internal.e locale = com.tencent.mm.plugin.finder.feed.model.internal.e.slG;
+        arv localarv = this.rRJ;
+        com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KEX;
+        localObject1 = new FinderTopicTimelineUIContract.Loader(i, (String)localObject1, (apl)localObject3, locale, localarv, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cQZ());
         localObject3 = getIntent();
         p.g(localObject3, "intent");
         ((FinderTopicTimelineUIContract.Loader)localObject1).initFromCache((Intent)localObject3);
         ((FinderTopicTimelineUIContract.Loader)localObject1).setInitDone((h)new a((FinderTopicTimelineUIContract.Loader)localObject1, this));
         ((FinderTopicTimelineUIContract.Loader)localObject1).refObjectId = getIntent().getLongExtra("key_ref_object_id", 0L);
-        ((FinderTopicTimelineUIContract.Loader)localObject1).rTm = ((d.g.a.a)new b(this));
-        this.sia = ((FinderTopicTimelineUIContract.Loader)localObject1);
+        ((FinderTopicTimelineUIContract.Loader)localObject1).sbQ = ((d.g.a.a)new b(this));
+        this.sqV = ((FinderTopicTimelineUIContract.Loader)localObject1);
         AppMethodBeat.o(166284);
         return;
-        setMMTitle("#" + this.dzZ + '#');
+        setMMTitle("#" + this.dBe + '#');
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException });
+          ae.l("safeParser", "", new Object[] { localException });
           Object localObject2 = null;
         }
       }
@@ -165,7 +165,7 @@ public final class FinderTopicTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/ui/FinderTopicTimelineUI$initOnCreate$2$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/ui/FinderTopicTimelineUI$initOnCreate$2$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
   public static final class a
     implements h
   {
@@ -173,32 +173,32 @@ public final class FinderTopicTimelineUI
     
     public final void call(int paramInt)
     {
-      AppMethodBeat.i(202902);
-      Object localObject = FinderTopicTimelineUI.a(jdField_this).rTF.getRecyclerView().getLayoutManager();
+      AppMethodBeat.i(203381);
+      Object localObject = FinderTopicTimelineUI.a(jdField_this).scj.getRecyclerView().getLayoutManager();
       if (localObject != null)
       {
         if (localObject == null)
         {
           localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.manager.FinderLayoutManager");
-          AppMethodBeat.o(202902);
+          AppMethodBeat.o(203381);
           throw ((Throwable)localObject);
         }
-        ((FinderLayoutManager)localObject).ag(this.sib.getInitPos(), 0);
+        ((FinderLayoutManager)localObject).ag(this.sqW.getInitPos(), 0);
       }
-      localObject = this.sib.getCache();
+      localObject = this.sqW.getCache();
       if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.finder.feed.model.e)localObject).scs;; localObject = null)
+      for (localObject = ((com.tencent.mm.plugin.finder.feed.model.e)localObject).slj;; localObject = null)
       {
         if ((localObject instanceof FinderTopicTimelineUIContract.b)) {
-          FinderTopicTimelineUI.b(jdField_this).saJ = ((FinderTopicTimelineUIContract.b)localObject).saM;
+          FinderTopicTimelineUI.b(jdField_this).sjy = ((FinderTopicTimelineUIContract.b)localObject).sjB;
         }
-        AppMethodBeat.o(202902);
+        AppMethodBeat.o(203381);
         return;
       }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderTopicTimelineUI$initOnCreate$2$2"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderTopicTimelineUI$initOnCreate$2$2"})
   static final class b
     extends q
     implements d.g.a.a<z>
@@ -211,7 +211,7 @@ public final class FinderTopicTimelineUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI
  * JD-Core Version:    0.7.0.1
  */

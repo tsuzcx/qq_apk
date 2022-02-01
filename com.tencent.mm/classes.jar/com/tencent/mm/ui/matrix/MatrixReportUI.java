@@ -18,7 +18,7 @@ import com.tencent.matrix.report.h;
 import com.tencent.matrix.report.h.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.matrix.recyclerview.JsonRecyclerView;
 import java.util.Iterator;
@@ -28,12 +28,12 @@ import org.json.JSONArray;
 public class MatrixReportUI
   extends MMActivity
 {
-  private JSONArray KBz;
+  private JSONArray KXT;
   
   public MatrixReportUI()
   {
     AppMethodBeat.i(38877);
-    this.KBz = new JSONArray();
+    this.KXT = new JSONArray();
     AppMethodBeat.o(38877);
   }
   
@@ -57,27 +57,27 @@ public class MatrixReportUI
         return true;
       }
     });
-    paramBundle = d.cBd.cBe.cFp.iterator();
+    paramBundle = d.cBK.cBL.cFY.iterator();
     while (paramBundle.hasNext())
     {
       localObject = (h.d)paramBundle.next();
-      this.KBz.put(((c)localObject).cEZ);
+      this.KXT.put(((c)localObject).cFG);
     }
     paramBundle = (JsonRecyclerView)findViewById(2131301234);
-    Object localObject = new com.tencent.mm.ui.matrix.recyclerview.b(this.KBz);
+    Object localObject = new com.tencent.mm.ui.matrix.recyclerview.b(this.KXT);
     paramBundle.setAdapter((RecyclerView.a)localObject);
-    ((com.tencent.mm.ui.matrix.recyclerview.b)localObject).rAj = new View.OnLongClickListener()
+    ((com.tencent.mm.ui.matrix.recyclerview.b)localObject).rIu = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38876);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/matrix/MatrixReportUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/ui/matrix/MatrixReportUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
         if (paramAnonymousView.getTag() != null)
         {
-          ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setText(paramAnonymousView.getTag().toString());
-          Toast.makeText(aj.getContext(), MatrixReportUI.this.getContext().getResources().getString(2131755702), 0).show();
+          ((ClipboardManager)ak.getContext().getSystemService("clipboard")).setText(paramAnonymousView.getTag().toString());
+          Toast.makeText(ak.getContext(), MatrixReportUI.this.getContext().getResources().getString(2131755702), 0).show();
         }
         a.a(true, this, "com/tencent/mm/ui/matrix/MatrixReportUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(38876);

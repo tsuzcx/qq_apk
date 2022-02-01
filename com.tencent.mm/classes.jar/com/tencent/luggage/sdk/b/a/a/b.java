@@ -3,11 +3,11 @@ package com.tencent.luggage.sdk.b.a.a;
 public abstract interface b
   extends com.tencent.luggage.a.b
 {
-  public abstract boolean Ey();
+  public abstract boolean EA();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

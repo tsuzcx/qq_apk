@@ -7,13 +7,13 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class WAGamePageViewContainerLayout
   extends FrameLayout
 {
-  private b ckP = null;
-  private a ckQ = null;
+  private b ckR = null;
+  private a ckS = null;
   
   public WAGamePageViewContainerLayout(Context paramContext)
   {
@@ -41,31 +41,31 @@ public class WAGamePageViewContainerLayout
       switch (paramInt1)
       {
       default: 
-        ad.e("MicroMsg.WAContainerView", "hy: invalid rotate: %d!", new Object[] { Integer.valueOf(paramInt1) });
-        localb = b.ckR;
+        ae.e("MicroMsg.WAContainerView", "hy: invalid rotate: %d!", new Object[] { Integer.valueOf(paramInt1) });
+        localb = b.ckT;
       }
     }
     for (;;)
     {
-      if (this.ckQ != null) {
-        this.ckQ.a(this.ckP, localb);
+      if (this.ckS != null) {
+        this.ckS.a(this.ckR, localb);
       }
-      this.ckP = localb;
+      this.ckR = localb;
       AppMethodBeat.o(130643);
       return;
-      localb = b.ckS;
-      continue;
-      localb = b.ckT;
-      continue;
       localb = b.ckU;
       continue;
       localb = b.ckV;
+      continue;
+      localb = b.ckW;
+      continue;
+      localb = b.ckX;
     }
   }
   
   public void setOnConfigurationChangedListener(a parama)
   {
-    this.ckQ = parama;
+    this.ckS = parama;
   }
   
   public static abstract interface a
@@ -78,12 +78,12 @@ public class WAGamePageViewContainerLayout
     static
     {
       AppMethodBeat.i(130642);
-      ckR = new b("UNDEFINED", 0);
-      ckS = new b("PORTRAIT", 1);
-      ckT = new b("LANDSCAPE", 2);
-      ckU = new b("PORTRAIT_REVERSE", 3);
-      ckV = new b("LANDSCAPE_REVERSE", 4);
-      ckW = new b[] { ckR, ckS, ckT, ckU, ckV };
+      ckT = new b("UNDEFINED", 0);
+      ckU = new b("PORTRAIT", 1);
+      ckV = new b("LANDSCAPE", 2);
+      ckW = new b("PORTRAIT_REVERSE", 3);
+      ckX = new b("LANDSCAPE_REVERSE", 4);
+      ckY = new b[] { ckT, ckU, ckV, ckW, ckX };
       AppMethodBeat.o(130642);
     }
     
@@ -92,7 +92,7 @@ public class WAGamePageViewContainerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.page.WAGamePageViewContainerLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -24,18 +24,18 @@ public class aj
   extends ak
   implements av
 {
-  public static final a MZK;
-  private final av MZF;
-  private final boolean MZG;
-  final boolean MZH;
-  final boolean MZI;
-  final ab MZJ;
+  public static final a NwQ;
+  private final av NwL;
+  private final boolean NwM;
+  final boolean NwN;
+  final boolean NwO;
+  final ab NwP;
   private final int index;
   
   static
   {
     AppMethodBeat.i(57348);
-    MZK = new a((byte)0);
+    NwQ = new a((byte)0);
     AppMethodBeat.o(57348);
   }
   
@@ -44,14 +44,14 @@ public class aj
     super((l)parama, paramg, paramf, paramab1, paraman);
     AppMethodBeat.i(57347);
     this.index = paramInt;
-    this.MZG = paramBoolean1;
-    this.MZH = paramBoolean2;
-    this.MZI = paramBoolean3;
-    this.MZJ = paramab2;
+    this.NwM = paramBoolean1;
+    this.NwN = paramBoolean2;
+    this.NwO = paramBoolean3;
+    this.NwP = paramab2;
     if (paramav == null) {}
     for (parama = (av)this;; parama = paramav)
     {
-      this.MZF = parama;
+      this.NwL = parama;
       AppMethodBeat.o(57347);
       return;
     }
@@ -81,15 +81,15 @@ public class aj
     AppMethodBeat.i(57344);
     p.h(parama, "newOwner");
     p.h(paramf, "newName");
-    d.l.b.a.b.b.a.g localg = ghH();
+    d.l.b.a.b.b.a.g localg = gmj();
     p.g(localg, "annotations");
-    ab localab1 = gju();
+    ab localab1 = gnW();
     p.g(localab1, "type");
-    boolean bool1 = gjw();
-    boolean bool2 = this.MZH;
-    boolean bool3 = this.MZI;
-    ab localab2 = this.MZJ;
-    an localan = an.MUX;
+    boolean bool1 = gnY();
+    boolean bool2 = this.NwN;
+    boolean bool3 = this.NwO;
+    ab localab2 = this.NwP;
+    an localan = an.Nsc;
     p.g(localan, "SourceElement.NO_SOURCE");
     parama = (av)new aj(parama, null, paramInt, localg, paramf, localab1, bool1, bool2, bool3, localab2, localan);
     AppMethodBeat.o(57344);
@@ -110,19 +110,10 @@ public class aj
     return this.index;
   }
   
-  public final ba ghz()
-  {
-    AppMethodBeat.i(57345);
-    ba localba = az.MVi;
-    p.g(localba, "Visibilities.LOCAL");
-    AppMethodBeat.o(57345);
-    return localba;
-  }
-  
-  public final Collection<av> giu()
+  public final Collection<av> gmW()
   {
     AppMethodBeat.i(57346);
-    Collection localCollection = gjv().giu();
+    Collection localCollection = gnX().gmW();
     p.g(localCollection, "containingDeclaration.overriddenDescriptors");
     Object localObject = (Iterable)localCollection;
     localCollection = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
@@ -131,32 +122,26 @@ public class aj
     {
       d.l.b.a.b.b.a locala = (d.l.b.a.b.b.a)((Iterator)localObject).next();
       p.g(locala, "it");
-      localCollection.add((av)locala.gis().get(this.index));
+      localCollection.add((av)locala.gmU().get(this.index));
     }
     localCollection = (Collection)localCollection;
     AppMethodBeat.o(57346);
     return localCollection;
   }
   
-  public final boolean gjA()
+  public final ba gmb()
   {
-    return this.MZI;
+    AppMethodBeat.i(57345);
+    ba localba = az.Nsn;
+    p.g(localba, "Visibilities.LOCAL");
+    AppMethodBeat.o(57345);
+    return localba;
   }
   
-  public final boolean gjB()
-  {
-    return false;
-  }
-  
-  public final boolean gjE()
-  {
-    return false;
-  }
-  
-  public final d.l.b.a.b.b.a gjv()
+  public final d.l.b.a.b.b.a gnX()
   {
     AppMethodBeat.i(57334);
-    Object localObject = super.ghs();
+    Object localObject = super.glU();
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.CallableDescriptor");
@@ -168,21 +153,21 @@ public class aj
     return localObject;
   }
   
-  public final boolean gjw()
+  public final boolean gnY()
   {
     AppMethodBeat.i(57336);
-    if (this.MZG)
+    if (this.NwM)
     {
-      Object localObject = gjv();
+      Object localObject = gnX();
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.CallableMemberDescriptor");
         AppMethodBeat.o(57336);
         throw ((Throwable)localObject);
       }
-      localObject = ((b)localObject).giw();
+      localObject = ((b)localObject).gmY();
       p.g(localObject, "(containingDeclaration a…bleMemberDescriptor).kind");
-      if (((b.a)localObject).gix())
+      if (((b.a)localObject).gmZ())
       {
         AppMethodBeat.o(57336);
         return true;
@@ -192,28 +177,43 @@ public class aj
     return false;
   }
   
-  public final ab gjx()
+  public final ab gnZ()
   {
-    return this.MZJ;
+    return this.NwP;
   }
   
-  public final av gjy()
+  public final av goa()
   {
     AppMethodBeat.i(57337);
-    if (this.MZF == (aj)this)
+    if (this.NwL == (aj)this)
     {
       localav = (av)this;
       AppMethodBeat.o(57337);
       return localav;
     }
-    av localav = this.MZF.gjy();
+    av localav = this.NwL.goa();
     AppMethodBeat.o(57337);
     return localav;
   }
   
-  public final boolean gjz()
+  public final boolean gob()
   {
-    return this.MZH;
+    return this.NwN;
+  }
+  
+  public final boolean goc()
+  {
+    return this.NwO;
+  }
+  
+  public final boolean god()
+  {
+    return false;
+  }
+  
+  public final boolean gog()
+  {
+    return false;
   }
   
   public static final class a {}
@@ -221,13 +221,13 @@ public class aj
   public static final class b
     extends aj
   {
-    private final d.f MZL;
+    private final d.f NwR;
     
     public b(d.l.b.a.b.b.a parama, av paramav, int paramInt, d.l.b.a.b.b.a.g paramg, d.l.b.a.b.f.f paramf, ab paramab1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, ab paramab2, an paraman, d.g.a.a<? extends List<? extends ax>> parama1)
     {
       super(paramav, paramInt, paramg, paramf, paramab1, paramBoolean1, paramBoolean2, paramBoolean3, paramab2, paraman);
       AppMethodBeat.i(57333);
-      this.MZL = d.g.O(parama1);
+      this.NwR = d.g.O(parama1);
       AppMethodBeat.o(57333);
     }
     
@@ -236,25 +236,25 @@ public class aj
       AppMethodBeat.i(57332);
       p.h(parama, "newOwner");
       p.h(paramf, "newName");
-      d.l.b.a.b.b.a.g localg = ghH();
+      d.l.b.a.b.b.a.g localg = gmj();
       p.g(localg, "annotations");
-      ab localab1 = gju();
+      ab localab1 = gnW();
       p.g(localab1, "type");
-      boolean bool1 = gjw();
-      boolean bool2 = this.MZH;
-      boolean bool3 = this.MZI;
-      ab localab2 = this.MZJ;
-      an localan = an.MUX;
+      boolean bool1 = gnY();
+      boolean bool2 = this.NwN;
+      boolean bool3 = this.NwO;
+      ab localab2 = this.NwP;
+      an localan = an.Nsc;
       p.g(localan, "SourceElement.NO_SOURCE");
       parama = (av)new b(parama, null, paramInt, localg, paramf, localab1, bool1, bool2, bool3, localab2, localan, (d.g.a.a)new a(this));
       AppMethodBeat.o(57332);
       return parama;
     }
     
-    public final List<ax> gkv()
+    public final List<ax> goX()
     {
       AppMethodBeat.i(57331);
-      List localList = (List)this.MZL.getValue();
+      List localList = (List)this.NwR.getValue();
       AppMethodBeat.o(57331);
       return localList;
     }
@@ -272,7 +272,7 @@ public class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.aj
  * JD-Core Version:    0.7.0.1
  */

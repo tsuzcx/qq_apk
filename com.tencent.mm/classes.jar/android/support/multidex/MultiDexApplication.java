@@ -9,7 +9,7 @@ public class MultiDexApplication
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
-    a.J(this);
+    a.K(this);
   }
 }
 

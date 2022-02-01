@@ -3,7 +3,7 @@ package com.tencent.mm.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
 final class t$b
   implements Runnable
 {
@@ -11,10 +11,10 @@ final class t$b
   
   public final void run()
   {
-    AppMethodBeat.i(207350);
-    t localt = t.Ioj;
-    t.aQ(this.gmd, this.odE, this.Iok);
-    AppMethodBeat.o(207350);
+    AppMethodBeat.i(188822);
+    t localt = t.IIz;
+    t.aT(this.goz, this.ojs, this.IIA);
+    AppMethodBeat.o(188822);
   }
 }
 

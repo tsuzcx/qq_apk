@@ -18,24 +18,24 @@ public class d
   
   public d(Context paramContext)
   {
-    AppMethodBeat.i(190433);
+    AppMethodBeat.i(210698);
     this.b = null;
     this.c = null;
     this.b = paramContext;
     this.c = new HashMap(5);
-    AppMethodBeat.o(190433);
+    AppMethodBeat.o(210698);
   }
   
   public static d a(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(190434);
+      AppMethodBeat.i(210699);
       if (a == null) {
         a = new d(paramContext);
       }
       paramContext = a;
-      AppMethodBeat.o(190434);
+      AppMethodBeat.o(210699);
       return paramContext;
     }
     finally {}
@@ -45,7 +45,7 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(190437);
+      AppMethodBeat.i(210702);
       try
       {
         File localFile = this.b.getFilesDir();
@@ -66,7 +66,7 @@ public class d
           paramString = null;
         }
       }
-      AppMethodBeat.o(190437);
+      AppMethodBeat.o(210702);
       return paramString;
     }
     finally {}
@@ -81,13 +81,13 @@ public class d
       FileChannel localFileChannel1;
       try
       {
-        AppMethodBeat.i(190435);
+        AppMethodBeat.i(210700);
         if ((paramString != null) && (paramString.trim().length() > 0))
         {
           localFile = a(paramString);
           if (localFile == null)
           {
-            AppMethodBeat.o(190435);
+            AppMethodBeat.o(210700);
             bool = true;
             return bool;
           }
@@ -113,7 +113,7 @@ public class d
           bool = paramString.isValid();
           if (bool)
           {
-            AppMethodBeat.o(190435);
+            AppMethodBeat.o(210700);
             bool = true;
           }
         }
@@ -122,10 +122,10 @@ public class d
       {
         continue;
       }
-      AppMethodBeat.o(190435);
+      AppMethodBeat.o(210700);
       boolean bool = false;
       continue;
-      AppMethodBeat.o(190435);
+      AppMethodBeat.o(210700);
       bool = false;
     }
   }
@@ -136,7 +136,7 @@ public class d
     {
       try
       {
-        AppMethodBeat.i(190436);
+        AppMethodBeat.i(210701);
         if (paramString != null)
         {
           int i = paramString.trim().length();
@@ -149,11 +149,11 @@ public class d
                 continue;
               }
               paramString.close();
-              AppMethodBeat.o(190436);
+              AppMethodBeat.o(210701);
             }
             catch (Throwable paramString)
             {
-              AppMethodBeat.o(190436);
+              AppMethodBeat.o(210701);
               continue;
             }
             return;
@@ -161,7 +161,7 @@ public class d
         }
       }
       finally {}
-      AppMethodBeat.o(190436);
+      AppMethodBeat.o(210701);
     }
   }
 }

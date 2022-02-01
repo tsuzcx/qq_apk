@@ -54,10 +54,10 @@ public class GeoPoint
   
   public GeoPoint(LatLng paramLatLng)
   {
-    AppMethodBeat.i(195056);
+    AppMethodBeat.i(209760);
     this.mLatitudeE6 = ((int)(paramLatLng.latitude * 1000000.0D));
     this.mLongitudeE6 = ((int)(paramLatLng.longitude * 1000000.0D));
-    AppMethodBeat.o(195056);
+    AppMethodBeat.o(209760);
   }
   
   public static GeoPoint formString(String paramString)
@@ -85,25 +85,25 @@ public class GeoPoint
   
   public static GeoPoint from(LatLng paramLatLng)
   {
-    AppMethodBeat.i(195057);
+    AppMethodBeat.i(209761);
     if (paramLatLng == null)
     {
-      AppMethodBeat.o(195057);
+      AppMethodBeat.o(209761);
       return null;
     }
     paramLatLng = new GeoPoint(paramLatLng);
-    AppMethodBeat.o(195057);
+    AppMethodBeat.o(209761);
     return paramLatLng;
   }
   
   public static List<GeoPoint> from(List<LatLng> paramList)
   {
     int i = 0;
-    AppMethodBeat.i(195058);
+    AppMethodBeat.i(209762);
     if ((paramList == null) || (paramList.isEmpty()))
     {
       paramList = new ArrayList(0);
-      AppMethodBeat.o(195058);
+      AppMethodBeat.o(209762);
       return paramList;
     }
     int j = paramList.size();
@@ -116,7 +116,7 @@ public class GeoPoint
       }
       i += 1;
     }
-    AppMethodBeat.o(195058);
+    AppMethodBeat.o(209762);
     return localArrayList;
   }
   
@@ -182,9 +182,9 @@ public class GeoPoint
   
   public Point toPoint()
   {
-    AppMethodBeat.i(195059);
+    AppMethodBeat.i(209763);
     Point localPoint = new Point(getLongitudeE6(), getLatitudeE6());
-    AppMethodBeat.o(195059);
+    AppMethodBeat.o(209763);
     return localPoint;
   }
   

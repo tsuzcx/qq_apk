@@ -3,9 +3,9 @@ package com.tencent.mm.ui.chatting.h;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.chatting.d.b.s;
 import com.tencent.mm.ui.chatting.d.b.u;
@@ -14,68 +14,68 @@ import com.tencent.mm.ui.chatting.view.MMChattingListView;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b
-  implements f<bu>
+  implements f<bv>
 {
-  private MMChattingListView JVb;
-  public a JVc;
-  private a cWM;
+  private MMChattingListView Krt;
+  public a Kru;
+  private a cXJ;
   
   public b(a parama, MMChattingListView paramMMChattingListView)
   {
-    this.JVb = paramMMChattingListView;
-    this.cWM = parama;
+    this.Krt = paramMMChattingListView;
+    this.cXJ = parama;
   }
   
   public final void a(d.d paramd)
   {
     AppMethodBeat.i(36420);
-    this.cWM.JOY = false;
-    ad.i("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
-    Object localObject = (s)this.cWM.bh(s.class);
-    if ((localObject != null) && (((s)localObject).fDC() != null) && (((s)localObject).fDC().uCj))
+    this.cXJ.Kkk = false;
+    ae.i("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
+    Object localObject = (s)this.cXJ.bh(s.class);
+    if ((localObject != null) && (((s)localObject).fHF() != null) && (((s)localObject).fHF().uNO))
     {
-      ad.i("MicroMsg.ChattingLoader.ChattingViewCallback", "keyboard is shown! scroll to last");
-      this.cWM.xR(true);
+      ae.i("MicroMsg.ChattingLoader.ChattingViewCallback", "keyboard is shown! scroll to last");
+      this.cXJ.xY(true);
     }
-    if (paramd.JVl != d.a.JVf)
+    if (paramd.KrD != d.a.Krx)
     {
-      localObject = this.JVb;
-      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).JmB, 4);
-      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).BKV, 4);
+      localObject = this.Krt;
+      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).JHq, 4);
+      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).Ccu, 4);
     }
-    ((u)this.cWM.bh(u.class)).startTimer();
-    if (this.JVc != null) {
-      this.JVc.a(this.JVb, paramd);
+    ((u)this.cXJ.bh(u.class)).startTimer();
+    if (this.Kru != null) {
+      this.Kru.a(this.Krt, paramd);
     }
     AppMethodBeat.o(36420);
   }
   
   public final boolean b(d.a parama)
   {
-    AppMethodBeat.i(194226);
-    if (!this.cWM.cBJ)
+    AppMethodBeat.i(187617);
+    if (!this.cXJ.cCq)
     {
-      ad.e("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] this ChattingUI has been in background!");
-      AppMethodBeat.o(194226);
+      ae.e("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] this ChattingUI has been in background!");
+      AppMethodBeat.o(187617);
       return false;
     }
-    if (!this.cWM.JOX)
+    if (!this.cXJ.Kkj)
     {
-      ad.e("MicroMsg.ChattingLoader.ChattingViewCallback", "current ChattingUI lose focus! action=%s", new Object[] { parama });
-      a locala = this.cWM;
-      ad.i("MicroMsg.ChattingContext", "trace setNeedUpdateUI, needUpdateUI %s, trace %s", new Object[] { Boolean.TRUE, bt.flS() });
-      locala.JOY = true;
-      locala.JPb.add(parama);
-      AppMethodBeat.o(194226);
+      ae.e("MicroMsg.ChattingLoader.ChattingViewCallback", "current ChattingUI lose focus! action=%s", new Object[] { parama });
+      a locala = this.cXJ;
+      ae.i("MicroMsg.ChattingContext", "trace setNeedUpdateUI, needUpdateUI %s, trace %s", new Object[] { Boolean.TRUE, bu.fpN() });
+      locala.Kkk = true;
+      locala.Kkn.add(parama);
+      AppMethodBeat.o(187617);
       return false;
     }
-    AppMethodBeat.o(194226);
+    AppMethodBeat.o(187617);
     return true;
   }
   
   public static abstract interface a
   {
-    public abstract void a(MMChattingListView paramMMChattingListView, d.d<bu> paramd);
+    public abstract void a(MMChattingListView paramMMChattingListView, d.d<bv> paramd);
   }
 }
 

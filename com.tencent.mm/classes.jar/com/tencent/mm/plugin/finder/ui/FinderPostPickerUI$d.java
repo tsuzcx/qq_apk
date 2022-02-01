@@ -7,27 +7,27 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class FinderPostPickerUI$d
   implements View.OnLongClickListener
 {
-  public static final d sEH;
+  public static final d sPG;
   
   static
   {
     AppMethodBeat.i(167487);
-    sEH = new d();
+    sPG = new d();
     AppMethodBeat.o(167487);
   }
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(204081);
+    AppMethodBeat.i(204677);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/finder/ui/FinderPostPickerUI$initView$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/finder/ui/FinderPostPickerUI$initView$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
     a.a(true, this, "com/tencent/mm/plugin/finder/ui/FinderPostPickerUI$initView$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(204081);
+    AppMethodBeat.o(204677);
     return true;
   }
 }

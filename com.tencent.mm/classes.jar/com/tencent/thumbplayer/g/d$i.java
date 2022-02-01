@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.b.n;
 
 final class d$i
 {
-  n[] Mci;
+  n[] Mzd;
 }
 
 

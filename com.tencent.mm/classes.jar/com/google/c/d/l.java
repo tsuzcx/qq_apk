@@ -10,10 +10,10 @@ public final class l
   
   static
   {
-    int[] arrayOfInt1 = { 3, 1, 1, 1, 3 };
-    int[] arrayOfInt2 = { 3, 3, 1, 1, 1 };
+    int[] arrayOfInt1 = { 1, 1, 3, 1, 3 };
+    int[] arrayOfInt2 = { 3, 1, 3, 1, 1 };
     int[] arrayOfInt3 = { 1, 1, 1, 3, 3 };
-    bTT = new int[][] { { 1, 1, 3, 3, 1 }, arrayOfInt1, { 1, 3, 1, 1, 3 }, arrayOfInt2, { 1, 1, 3, 1, 3 }, { 3, 1, 3, 1, 1 }, { 1, 3, 3, 1, 1 }, arrayOfInt3, { 3, 1, 1, 3, 1 }, { 1, 3, 1, 3, 1 } };
+    bTT = new int[][] { { 1, 1, 3, 3, 1 }, { 3, 1, 1, 1, 3 }, { 1, 3, 1, 1, 3 }, { 3, 3, 1, 1, 1 }, arrayOfInt1, arrayOfInt2, { 1, 3, 3, 1, 1 }, arrayOfInt3, { 3, 1, 1, 3, 1 }, { 1, 3, 1, 3, 1 } };
   }
 }
 

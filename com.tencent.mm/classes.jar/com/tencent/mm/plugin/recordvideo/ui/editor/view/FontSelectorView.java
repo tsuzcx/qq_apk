@@ -13,8 +13,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.res.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -26,22 +26,22 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "configList", "Ljava/util/ArrayList;", "Lorg/json/JSONObject;", "Lkotlin/collections/ArrayList;", "fontSelectCallback", "Lkotlin/Function1;", "", "", "getFontSelectCallback", "()Lkotlin/jvm/functions/Function1;", "setFontSelectCallback", "(Lkotlin/jvm/functions/Function1;)V", "fontSelectViewList", "Landroid/view/View;", "initFontResource", "initFontSelectView", "onFontSelect", "index", "selectFontViewState", "setSelectFont", "font", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "configList", "Ljava/util/ArrayList;", "Lorg/json/JSONObject;", "Lkotlin/collections/ArrayList;", "fontSelectCallback", "Lkotlin/Function1;", "", "", "getFontSelectCallback", "()Lkotlin/jvm/functions/Function1;", "setFontSelectCallback", "(Lkotlin/jvm/functions/Function1;)V", "fontSelectViewList", "Landroid/view/View;", "initFontResource", "initFontSelectView", "onFontSelect", "index", "selectFontViewState", "setSelectFont", "font", "Companion", "plugin-recordvideo_release"})
 public final class FontSelectorView
   extends LinearLayout
 {
   private static final String TAG = "MicroMsg.FontSelectorView";
-  public static final a xQU;
-  private final ArrayList<View> xQR;
-  private ArrayList<JSONObject> xQS;
-  private d.g.a.b<? super String, z> xQT;
+  public static final a ygN;
+  private final ArrayList<View> ygK;
+  private ArrayList<JSONObject> ygL;
+  private d.g.a.b<? super String, z> ygM;
   
   static
   {
-    AppMethodBeat.i(200863);
-    xQU = new a((byte)0);
+    AppMethodBeat.i(207121);
+    ygN = new a((byte)0);
     TAG = "MicroMsg.FontSelectorView";
-    AppMethodBeat.o(200863);
+    AppMethodBeat.o(207121);
   }
   
   public FontSelectorView(Context paramContext, AttributeSet paramAttributeSet)
@@ -52,19 +52,19 @@ public final class FontSelectorView
   public FontSelectorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200862);
-    this.xQR = new ArrayList();
-    this.xQS = new ArrayList();
+    AppMethodBeat.i(207120);
+    this.ygK = new ArrayList();
+    this.ygL = new ArrayList();
     setOrientation(0);
     setGravity(16);
-    dIn();
-    AppMethodBeat.o(200862);
+    dLE();
+    AppMethodBeat.o(207120);
   }
   
-  private final void NU(int paramInt)
+  private final void OA(int paramInt)
   {
-    AppMethodBeat.i(200860);
-    Object localObject1 = (Iterable)this.xQR;
+    AppMethodBeat.i(207118);
+    Object localObject1 = (Iterable)this.ygK;
     int i = 0;
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -72,7 +72,7 @@ public final class FontSelectorView
       Object localObject2 = ((Iterator)localObject1).next();
       int j = i + 1;
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       localObject2 = (View)localObject2;
       if (i == paramInt)
@@ -86,58 +86,63 @@ public final class FontSelectorView
         i = j;
       }
     }
-    AppMethodBeat.o(200860);
+    AppMethodBeat.o(207118);
   }
   
-  private final void dIn()
+  private final void dLE()
   {
-    AppMethodBeat.i(200858);
-    if (e.xHB.xHn)
+    AppMethodBeat.i(207116);
+    if (e.xXw.xXi)
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("name", com.tencent.mm.cc.a.az(getContext(), 2131767054));
-      ((JSONObject)localObject).put("key", "");
-      ((JSONObject)localObject).put("path", "");
-      this.xQS.add(localObject);
-      localObject = e.xHB.dGY();
+      ((JSONObject)localObject).put("name", com.tencent.mm.cb.a.az(getContext(), 2131767054));
+      ((JSONObject)localObject).put("key", "default");
+      ((JSONObject)localObject).put("path", "default");
+      this.ygL.add(localObject);
+      localObject = e.xXw.dKp();
       if (localObject != null)
       {
         int i = 0;
         int j = ((JSONArray)localObject).length();
         while (i < j)
         {
-          this.xQS.add(((JSONArray)localObject).optJSONObject(i));
+          this.ygL.add(((JSONArray)localObject).optJSONObject(i));
           i += 1;
         }
       }
-      dIo();
+      dLF();
     }
-    AppMethodBeat.o(200858);
+    AppMethodBeat.o(207116);
   }
   
-  private final void dIo()
+  private final void dLF()
   {
-    AppMethodBeat.i(200859);
+    AppMethodBeat.i(207117);
     try
     {
-      Iterator localIterator = ((Iterable)this.xQS).iterator();
+      Iterator localIterator = ((Iterable)this.ygL).iterator();
       int i = 0;
       if (localIterator.hasNext())
       {
-        localObject1 = localIterator.next();
+        Object localObject1 = localIterator.next();
         if (i < 0) {
-          j.gfB();
+          j.gkd();
         }
         localObject1 = (JSONObject)localObject1;
         TextView localTextView = new TextView(getContext());
-        Object localObject2 = ((JSONObject)localObject1).optString("name");
-        if (TextUtils.isEmpty((CharSequence)((JSONObject)localObject1).optString("path"))) {}
-        for (localObject1 = "";; localObject1 = e.xHB.dGV() + ((JSONObject)localObject1).optString("path"))
+        Object localObject3 = ((JSONObject)localObject1).optString("name");
+        if (TextUtils.isEmpty((CharSequence)((JSONObject)localObject1).optString("path")))
         {
-          localTextView.setText((CharSequence)localObject2);
-          if (i.fv((String)localObject1)) {
-            localTextView.setTypeface(Typeface.createFromFile((String)localObject1));
+          localObject1 = "";
+          label87:
+          localTextView.setText((CharSequence)localObject3);
+          if (!o.fB((String)localObject1)) {
+            break label373;
           }
+          localTextView.setTypeface(Typeface.createFromFile((String)localObject1));
+        }
+        for (;;)
+        {
           localTextView.setBackground(getContext().getDrawable(2131235054));
           localObject1 = getContext();
           p.g(localObject1, "context");
@@ -146,65 +151,70 @@ public final class FontSelectorView
           p.g(localObject1, "context");
           localTextView.setTextSize(0, ((Context)localObject1).getResources().getDimensionPixelSize(2131165289));
           localObject1 = new LinearLayout.LayoutParams(-2, -2);
-          localObject2 = getContext();
-          p.g(localObject2, "context");
-          ((LinearLayout.LayoutParams)localObject1).width = ((Context)localObject2).getResources().getDimensionPixelSize(2131165301);
-          ((LinearLayout.LayoutParams)localObject1).height = com.tencent.mm.cc.a.fromDPToPix(getContext(), 30);
-          if (i != this.xQS.size() - 1)
+          localObject3 = getContext();
+          p.g(localObject3, "context");
+          ((LinearLayout.LayoutParams)localObject1).width = ((Context)localObject3).getResources().getDimensionPixelSize(2131165301);
+          ((LinearLayout.LayoutParams)localObject1).height = com.tencent.mm.cb.a.fromDPToPix(getContext(), 30);
+          if (i != this.ygL.size() - 1)
           {
-            localObject2 = getContext();
-            p.g(localObject2, "context");
-            ((LinearLayout.LayoutParams)localObject1).setMarginEnd(((Context)localObject2).getResources().getDimensionPixelSize(2131165294));
+            localObject3 = getContext();
+            p.g(localObject3, "context");
+            ((LinearLayout.LayoutParams)localObject1).setMarginEnd(((Context)localObject3).getResources().getDimensionPixelSize(2131165294));
           }
           localTextView.setGravity(17);
           addView((View)localTextView, (ViewGroup.LayoutParams)localObject1);
-          this.xQR.add(localTextView);
+          this.ygK.add(localTextView);
           localTextView.setTag(Integer.valueOf(i));
           localTextView.setOnClickListener((View.OnClickListener)new b(this));
           i += 1;
           break;
+          localObject1 = e.xXw.dKm() + ((JSONObject)localObject1).optString("path");
+          break label87;
+          label373:
+          localTextView.setTypeface(Typeface.DEFAULT);
         }
       }
-      Object localObject1 = this.xQR.get(0);
-      p.g(localObject1, "fontSelectViewList[0]");
-      ((View)localObject1).setBackground(getContext().getDrawable(2131235055));
-      AppMethodBeat.o(200859);
-      return;
+      localObject2 = this.ygK.get(0);
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(TAG, (Throwable)localException, "parse font error", new Object[0]);
-      AppMethodBeat.o(200859);
+      ae.printErrStackTrace(TAG, (Throwable)localException, "parse font error", new Object[0]);
+      AppMethodBeat.o(207117);
+      return;
     }
+    Object localObject2;
+    p.g(localObject2, "fontSelectViewList[0]");
+    ((View)localObject2).setBackground(getContext().getDrawable(2131235055));
+    AppMethodBeat.o(207117);
   }
   
   public final d.g.a.b<String, z> getFontSelectCallback()
   {
-    return this.xQT;
+    return this.ygM;
   }
   
   public final void setFontSelectCallback(d.g.a.b<? super String, z> paramb)
   {
-    this.xQT = paramb;
+    this.ygM = paramb;
   }
   
   public final void setSelectFont(String paramString)
   {
-    AppMethodBeat.i(200861);
+    AppMethodBeat.i(207119);
     if (TextUtils.isEmpty((CharSequence)paramString))
     {
-      NU(0);
-      AppMethodBeat.o(200861);
+      OA(0);
+      AppMethodBeat.o(207119);
       return;
     }
-    Iterator localIterator = ((Iterable)this.xQS).iterator();
+    Iterator localIterator = ((Iterable)this.ygL).iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject1 = localIterator.next();
       int j = i + 1;
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       Object localObject2 = (JSONObject)localObject1;
       if (paramString != null)
@@ -213,7 +223,7 @@ public final class FontSelectorView
         localObject2 = ((JSONObject)localObject2).optString("path");
         p.g(localObject2, "jsonObject.optString(\"path\")");
         if (n.a((CharSequence)localObject1, (CharSequence)localObject2, false) == true) {
-          NU(i);
+          OA(i);
         }
         i = j;
       }
@@ -222,13 +232,13 @@ public final class FontSelectorView
         i = j;
       }
     }
-    AppMethodBeat.o(200861);
+    AppMethodBeat.o(207119);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$initFontSelectView$1$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$initFontSelectView$1$1"})
   static final class b
     implements View.OnClickListener
   {
@@ -236,22 +246,22 @@ public final class FontSelectorView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(200857);
+      AppMethodBeat.i(207115);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$initFontSelectView$$inlined$forEachIndexed$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-      localObject = this.xQV;
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$initFontSelectView$$inlined$forEachIndexed$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      localObject = this.ygO;
       p.g(paramView, "it");
       paramView = paramView.getTag();
       if (paramView == null)
       {
         paramView = new v("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(200857);
+        AppMethodBeat.o(207115);
         throw paramView;
       }
       FontSelectorView.a((FontSelectorView)localObject, ((Integer)paramView).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/view/FontSelectorView$initFontSelectView$$inlined$forEachIndexed$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(200857);
+      AppMethodBeat.o(207115);
     }
   }
 }

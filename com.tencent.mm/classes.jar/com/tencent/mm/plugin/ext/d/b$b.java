@@ -7,10 +7,10 @@ public enum b$b
   static
   {
     AppMethodBeat.i(24473);
-    rei = new b("BLACK", 0);
-    rej = new b("WHITE", 1);
-    rek = new b("NONE", 2);
-    rel = new b[] { rei, rej, rek };
+    rmn = new b("BLACK", 0);
+    rmo = new b("WHITE", 1);
+    rmp = new b("NONE", 2);
+    rmq = new b[] { rmn, rmo, rmp };
     AppMethodBeat.o(24473);
   }
   
@@ -18,7 +18,7 @@ public enum b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.d.b.b
  * JD-Core Version:    0.7.0.1
  */

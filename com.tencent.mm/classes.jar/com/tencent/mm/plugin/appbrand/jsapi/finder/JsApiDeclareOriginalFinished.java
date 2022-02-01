@@ -3,14 +3,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.finder.cgi.be;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.finder.cgi.bf;
 
 public final class JsApiDeclareOriginalFinished
-  extends a<com.tencent.mm.plugin.appbrand.q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "declareOriginalFinished";
@@ -22,28 +24,28 @@ public final class JsApiDeclareOriginalFinished
     
     static
     {
-      AppMethodBeat.i(188406);
+      AppMethodBeat.i(222533);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(188406);
+      AppMethodBeat.o(222533);
     }
     
     public RefreshFinderUserpageTask() {}
     
     public RefreshFinderUserpageTask(Parcel paramParcel)
     {
-      AppMethodBeat.i(188404);
+      AppMethodBeat.i(222531);
       e(paramParcel);
-      AppMethodBeat.o(188404);
+      AppMethodBeat.o(222531);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
-      AppMethodBeat.i(188405);
-      be localbe = new be(u.aAu(), 0L, null, 0, null);
-      localbe.rKg = true;
-      g.aiU().a(localbe, 0);
-      bhX();
-      AppMethodBeat.o(188405);
+      AppMethodBeat.i(222532);
+      bf localbf = new bf(v.aAK(), 0L, null, 0, null);
+      localbf.rSt = true;
+      g.ajj().a(localbf, 0);
+      biG();
+      AppMethodBeat.o(222532);
     }
   }
 }

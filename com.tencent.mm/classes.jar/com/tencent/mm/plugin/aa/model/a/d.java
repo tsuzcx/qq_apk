@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +13,16 @@ public final class d
   extends j<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iTS;
-  public static Map<String, c> iTT;
+  private static final String[] iWL;
+  public static Map<String, c> iWM;
   private e db;
   
   static
   {
     AppMethodBeat.i(63431);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "AARecord") };
-    iTS = new String[] { "*", "rowid" };
-    iTT = new HashMap();
+    iWL = new String[] { "*", "rowid" };
+    iWM = new HashMap();
     AppMethodBeat.o(63431);
   }
   
@@ -32,15 +32,15 @@ public final class d
     this.db = parame;
   }
   
-  public final c Jg(String paramString)
+  public final c JF(String paramString)
   {
     AppMethodBeat.i(63424);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
       AppMethodBeat.o(63424);
       return null;
     }
-    paramString = this.db.a("AARecord", iTS, "billNo=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("AARecord", iWL, "billNo=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -57,7 +57,7 @@ public final class d
     {
       for (;;)
       {
-        ad.e("MicroMsg.AARecordStorage", "getRecordByBillno error: %s", new Object[] { localException.getMessage() });
+        ae.e("MicroMsg.AARecordStorage", "getRecordByBillno error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
@@ -78,8 +78,8 @@ public final class d
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(63425);
-    if ((paramc != null) && (iTT.containsKey(paramc.field_billNo))) {
-      iTT.put(paramc.field_billNo, paramc);
+    if ((paramc != null) && (iWM.containsKey(paramc.field_billNo))) {
+      iWM.put(paramc.field_billNo, paramc);
     }
     boolean bool = super.insert(paramc);
     AppMethodBeat.o(63425);
@@ -89,8 +89,8 @@ public final class d
   public final boolean a(c paramc, String... paramVarArgs)
   {
     AppMethodBeat.i(63426);
-    if ((paramc != null) && (iTT.containsKey(paramc.field_billNo))) {
-      iTT.remove(paramc.field_billNo);
+    if ((paramc != null) && (iWM.containsKey(paramc.field_billNo))) {
+      iWM.remove(paramc.field_billNo);
     }
     boolean bool = super.delete(paramc, paramVarArgs);
     AppMethodBeat.o(63426);
@@ -100,8 +100,8 @@ public final class d
   public final boolean b(c paramc)
   {
     AppMethodBeat.i(63427);
-    if ((paramc != null) && (iTT.containsKey(paramc.field_billNo))) {
-      iTT.put(paramc.field_billNo, paramc);
+    if ((paramc != null) && (iWM.containsKey(paramc.field_billNo))) {
+      iWM.put(paramc.field_billNo, paramc);
     }
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(63427);

@@ -1,37 +1,34 @@
 package com.tencent.mm.plugin.collect.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.cg;
 import com.tencent.mm.g.a.k;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.cd;
-import com.tencent.mm.model.cd.a;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.cf;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.cf.a;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.collect.model.d.a;
 import com.tencent.mm.plugin.collect.model.p;
-import com.tencent.mm.plugin.collect.model.v;
 import com.tencent.mm.plugin.collect.model.voice.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
-import com.tencent.mm.protocal.protobuf.caf;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.protocal.protobuf.caz;
 import com.tencent.mm.protocal.protobuf.cv;
 import com.tencent.mm.sdk.b.c;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,60 +37,60 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class a
-  implements ax
+  implements az
 {
-  private cd.a oZH;
-  private com.tencent.mm.plugin.collect.model.g oZI;
-  private v oZJ;
-  public boolean oZK;
-  private c<k> oZL;
+  private cf.a pgl;
+  private com.tencent.mm.plugin.collect.model.g pgm;
+  private com.tencent.mm.plugin.collect.model.v pgn;
+  public boolean pgo;
+  private c<k> pgp;
   
   public a()
   {
     AppMethodBeat.i(63760);
-    this.oZH = new cd.a()
+    this.pgl = new cf.a()
     {
       public final void a(e.a paramAnonymousa)
       {
         AppMethodBeat.i(63757);
-        a.cag();
-        if (a.cah() != null)
+        a.cbv();
+        if (a.cbw() != null)
         {
-          String str1 = z.a(paramAnonymousa.gqE.Fvk);
-          a.cag();
-          Object localObject1 = a.cah();
-          long l = paramAnonymousa.gqE.CreateTime;
-          ad.v("MicroMsg.CollectPayerMsgMgr", "func[onResvMsg] content:".concat(String.valueOf(str1)));
-          if (bt.isNullOrNil(str1))
+          String str1 = z.a(paramAnonymousa.gte.FNI);
+          a.cbv();
+          Object localObject1 = a.cbw();
+          long l = paramAnonymousa.gte.CreateTime;
+          ae.v("MicroMsg.CollectPayerMsgMgr", "func[onResvMsg] content:".concat(String.valueOf(str1)));
+          if (bu.isNullOrNil(str1))
           {
-            ad.d("MicroMsg.CollectPayerMsgMgr", "func[onResvMsg] Msg content empty");
+            ae.d("MicroMsg.CollectPayerMsgMgr", "func[onResvMsg] Msg content empty");
             AppMethodBeat.o(63757);
             return;
           }
-          Object localObject2 = bw.M(str1, "sysmsg");
-          int i = bt.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.PayMsgType"), 0);
+          Object localObject2 = bx.M(str1, "sysmsg");
+          int i = bu.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.PayMsgType"), 0);
           if ((i != 9) && (i != 26))
           {
-            ad.i("MicroMsg.CollectPayerMsgMgr", "Not ftf collect msg type, ignore; type=".concat(String.valueOf(i)));
+            ae.i("MicroMsg.CollectPayerMsgMgr", "Not ftf collect msg type, ignore; type=".concat(String.valueOf(i)));
             AppMethodBeat.o(63757);
             return;
           }
           paramAnonymousa = new com.tencent.mm.plugin.collect.model.u();
-          paramAnonymousa.username = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.username"));
-          paramAnonymousa.paV = (bt.getDouble((String)((Map)localObject2).get(".sysmsg.paymsg.fee"), 0.0D) / 100.0D);
-          paramAnonymousa.dne = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.feetype"));
-          paramAnonymousa.paX = bt.getInt((String)((Map)localObject2).get(".sysmsg.paymsgtimestamp"), (int)bt.aQJ());
-          paramAnonymousa.dlv = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.transid"));
-          paramAnonymousa.fVj = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.displayname"));
-          paramAnonymousa.scene = bt.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.scene"), 1);
-          paramAnonymousa.status = bt.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.status"), 0);
+          paramAnonymousa.username = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.username"));
+          paramAnonymousa.phz = (bu.getDouble((String)((Map)localObject2).get(".sysmsg.paymsg.fee"), 0.0D) / 100.0D);
+          paramAnonymousa.dog = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.feetype"));
+          paramAnonymousa.phB = bu.getInt((String)((Map)localObject2).get(".sysmsg.paymsgtimestamp"), (int)bu.aRi());
+          paramAnonymousa.dmx = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.transid"));
+          paramAnonymousa.fXp = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.displayname"));
+          paramAnonymousa.scene = bu.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.scene"), 1);
+          paramAnonymousa.status = bu.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.status"), 0);
           paramAnonymousa.msgType = i;
-          paramAnonymousa.paY = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.outtradeno"));
-          paramAnonymousa.type = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.type"));
-          str1 = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.voice_content"));
-          String str2 = bt.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.expire_voice_timestamp"));
-          i = bt.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.need_failover"), 1);
-          localObject1 = ((com.tencent.mm.plugin.collect.model.d)localObject1).owv.iterator();
+          paramAnonymousa.phC = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.outtradeno"));
+          paramAnonymousa.type = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.type"));
+          str1 = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.voice_content"));
+          String str2 = bu.nullAsNil((String)((Map)localObject2).get(".sysmsg.paymsg.expire_voice_timestamp"));
+          i = bu.getInt((String)((Map)localObject2).get(".sysmsg.paymsg.need_failover"), 1);
+          localObject1 = ((com.tencent.mm.plugin.collect.model.d)localObject1).oCX.iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (d.a)((Iterator)localObject1).next();
@@ -104,91 +101,79 @@ public class a
           if (paramAnonymousa.status == 1)
           {
             localObject1 = new cg();
-            ((cg)localObject1).dnc.dnd = ((int)Math.round(paramAnonymousa.paV * 100.0D));
-            ((cg)localObject1).dnc.dne = paramAnonymousa.dne;
-            ((cg)localObject1).dnc.dng = paramAnonymousa.type;
-            ((cg)localObject1).dnc.dnf = paramAnonymousa.paY;
-            ((cg)localObject1).dnc.gW = (cf.aCL() - l * 1000L);
-            ((cg)localObject1).dnc.dnh = 1;
-            ((cg)localObject1).dnc.dni = str1;
-            ((cg)localObject1).dnc.dnj = str2;
+            ((cg)localObject1).doe.dof = ((int)Math.round(paramAnonymousa.phz * 100.0D));
+            ((cg)localObject1).doe.dog = paramAnonymousa.dog;
+            ((cg)localObject1).doe.doi = paramAnonymousa.type;
+            ((cg)localObject1).doe.doh = paramAnonymousa.phC;
+            ((cg)localObject1).doe.gW = (ch.aDb() - l * 1000L);
+            ((cg)localObject1).doe.doj = 1;
+            ((cg)localObject1).doe.dok = str1;
+            ((cg)localObject1).doe.dol = str2;
             if (i != 0) {
               break label601;
             }
           }
           label601:
-          for (((cg)localObject1).dnc.dnk = false;; ((cg)localObject1).dnc.dnk = true)
+          for (((cg)localObject1).doe.dom = false;; ((cg)localObject1).doe.dom = true)
           {
-            com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+            com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
             AppMethodBeat.o(63757);
             return;
           }
         }
-        ad.w("MicroMsg.SubCoreCollect", "func[onRecieveMsg] payerMsgMgr null");
+        ae.w("MicroMsg.SubCoreCollect", "func[onRecieveMsg] payerMsgMgr null");
         AppMethodBeat.o(63757);
       }
       
       public final void a(e.c paramAnonymousc) {}
     };
-    this.oZI = new com.tencent.mm.plugin.collect.model.g();
-    this.oZJ = new v();
-    this.oZK = false;
-    this.oZL = new c() {};
+    this.pgm = new com.tencent.mm.plugin.collect.model.g();
+    this.pgn = new com.tencent.mm.plugin.collect.model.v();
+    this.pgo = false;
+    this.pgp = new a.3(this);
     AppMethodBeat.o(63760);
   }
   
-  private void ZN(String paramString)
+  private void aaE(String paramString)
   {
     AppMethodBeat.i(63768);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.a(304, new f()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-      {
-        AppMethodBeat.i(63758);
-        com.tencent.mm.kernel.g.ajD();
-        com.tencent.mm.kernel.g.ajB().gAO.b(304, this);
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-          ad.i("MicroMsg.SubCoreCollect", "set sound fail!");
-        }
-        AppMethodBeat.o(63758);
-      }
-    });
-    paramString = new p(bt.bI(paramString, ""));
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.a(paramString, 0);
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.a(304, new a.2(this));
+    paramString = new p(bu.bI(paramString, ""));
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
     AppMethodBeat.o(63768);
   }
   
-  public static a cag()
+  public static a cbv()
   {
     AppMethodBeat.i(63761);
-    a locala = (a)t.ap(a.class);
+    a locala = (a)com.tencent.mm.model.u.ap(a.class);
     AppMethodBeat.o(63761);
     return locala;
   }
   
-  public static com.tencent.mm.plugin.collect.model.d cah()
+  public static com.tencent.mm.plugin.collect.model.d cbw()
   {
     AppMethodBeat.i(63764);
-    com.tencent.mm.kernel.g.ajA().aiF();
-    com.tencent.mm.plugin.collect.model.d locald = com.tencent.mm.plugin.collect.model.d.oZR;
+    com.tencent.mm.kernel.g.ajP().aiU();
+    com.tencent.mm.plugin.collect.model.d locald = com.tencent.mm.plugin.collect.model.d.pgv;
     AppMethodBeat.o(63764);
     return locald;
   }
   
-  public static boolean cai()
+  public static boolean cbx()
   {
     AppMethodBeat.i(63765);
-    Object localObject = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IxH, "");
-    long l = com.tencent.mm.model.u.aAr();
-    if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).equals("in.caf")))
+    Object localObject = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.ISf, "");
+    long l = com.tencent.mm.model.v.aAH();
+    if ((!bu.isNullOrNil((String)localObject)) && (!((String)localObject).equals("in.caf")))
     {
-      ad.i("MicroMsg.SubCoreCollect", "old version switch is open, sync to new version");
-      com.tencent.mm.kernel.g.ajC().ajl().set(147457, Long.valueOf(l | 0x8000));
-      localObject = new caf();
-      ((caf)localObject).yho = 1;
-      ((l)com.tencent.mm.kernel.g.ab(l.class)).azo().c(new k.a(209, (com.tencent.mm.bx.a)localObject));
+      ae.i("MicroMsg.SubCoreCollect", "old version switch is open, sync to new version");
+      com.tencent.mm.kernel.g.ajR().ajA().set(147457, Long.valueOf(l | 0x8000));
+      localObject = new caz();
+      ((caz)localObject).yxf = 1;
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).azE().d(new k.a(209, (com.tencent.mm.bw.a)localObject));
       AppMethodBeat.o(63765);
       return true;
     }
@@ -201,19 +186,19 @@ public class a
     return false;
   }
   
-  public final void caj()
+  public final void cby()
   {
     AppMethodBeat.i(63766);
-    ZN("cash.caf");
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IxH, "cash.caf");
+    aaE("cash.caf");
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.ISf, "cash.caf");
     AppMethodBeat.o(63766);
   }
   
-  public final void cak()
+  public final void cbz()
   {
     AppMethodBeat.i(63767);
-    ZN("in.caf");
-    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IxH, "in.caf");
+    aaE("in.caf");
+    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.ISf, "in.caf");
     AppMethodBeat.o(63767);
   }
   
@@ -227,51 +212,51 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(63762);
-    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("paymsg", this.oZH, true);
-    this.oZL.alive();
-    com.tencent.mm.plugin.collect.model.g localg = this.oZI;
+    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().a("paymsg", this.pgl, true);
+    this.pgp.alive();
+    com.tencent.mm.plugin.collect.model.g localg = this.pgm;
     localg.alive();
-    localg.oZX = new ConcurrentLinkedQueue();
-    com.tencent.mm.plugin.collect.model.voice.a locala = com.tencent.mm.plugin.collect.model.voice.a.cax();
-    locala.pbl = localg;
-    locala.pbm = new a.b(locala, locala.pbl);
-    com.tencent.mm.kernel.g.ajC().ajl().a(locala);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.a(1384, localg);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.a(1317, localg);
-    this.oZJ.alive();
+    localg.pgB = new ConcurrentLinkedQueue();
+    com.tencent.mm.plugin.collect.model.voice.a locala = com.tencent.mm.plugin.collect.model.voice.a.cbM();
+    locala.phP = localg;
+    locala.phQ = new a.b(locala, locala.phP);
+    com.tencent.mm.kernel.g.ajR().ajA().a(locala);
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.a(1384, localg);
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.a(1317, localg);
+    this.pgn.alive();
     AppMethodBeat.o(63762);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(63763);
-    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("paymsg", this.oZH, true);
-    Object localObject = this.oZI;
+    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().b("paymsg", this.pgl, true);
+    Object localObject = this.pgm;
     ((com.tencent.mm.plugin.collect.model.g)localObject).dead();
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.b(1384, (f)localObject);
-    com.tencent.mm.kernel.g.ajD();
-    com.tencent.mm.kernel.g.ajB().gAO.b(1317, (f)localObject);
-    com.tencent.mm.plugin.collect.model.g.cam();
-    localObject = com.tencent.mm.plugin.collect.model.voice.a.cax();
-    ad.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "destroy()");
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.b(1384, (f)localObject);
+    com.tencent.mm.kernel.g.ajS();
+    com.tencent.mm.kernel.g.ajQ().gDv.b(1317, (f)localObject);
+    com.tencent.mm.plugin.collect.model.g.cbB();
+    localObject = com.tencent.mm.plugin.collect.model.voice.a.cbM();
+    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "destroy()");
     try
     {
-      if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).pbk != null) {
-        ((com.tencent.mm.plugin.collect.model.voice.a)localObject).pbk.pbE.destroy();
+      if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).phO != null) {
+        ((com.tencent.mm.plugin.collect.model.voice.a)localObject).phO.pij.destroy();
       }
-      if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).pbq != null) {
-        ((com.tencent.mm.plugin.collect.model.voice.a)localObject).pbq.dead();
+      if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).phU != null) {
+        ((com.tencent.mm.plugin.collect.model.voice.a)localObject).phU.dead();
       }
-      if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).pbr != null) {
-        ((com.tencent.mm.plugin.collect.model.voice.a)localObject).pbr.dead();
+      if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).phV != null) {
+        ((com.tencent.mm.plugin.collect.model.voice.a)localObject).phV.dead();
       }
-      com.tencent.mm.kernel.g.ajC().ajl().b((n.b)localObject);
-      com.tencent.mm.plugin.collect.model.voice.a.pbf = false;
-      this.oZJ.dead();
-      this.oZL.dead();
+      com.tencent.mm.kernel.g.ajR().ajA().b((n.b)localObject);
+      com.tencent.mm.plugin.collect.model.voice.a.phJ = false;
+      this.pgn.dead();
+      this.pgp.dead();
       AppMethodBeat.o(63763);
       return;
     }
@@ -279,7 +264,7 @@ public class a
     {
       for (;;)
       {
-        ad.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "destroy() synthesizer.destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "destroy() synthesizer.destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
       }
     }
   }

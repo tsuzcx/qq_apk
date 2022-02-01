@@ -3,10 +3,10 @@ package rx;
 public abstract class i<T>
   implements e<T>, j
 {
-  public final rx.internal.util.i NXn;
-  private final i<?> NXo;
-  private f NXp;
-  private long NXq = -9223372036854775808L;
+  public final rx.internal.util.i Ous;
+  private final i<?> Out;
+  private f Ouu;
+  private long Ouv = -9223372036854775808L;
   
   protected i()
   {
@@ -20,16 +20,16 @@ public abstract class i<T>
   
   private i(i<?> parami, boolean paramBoolean)
   {
-    this.NXo = parami;
+    this.Out = parami;
     if ((paramBoolean) && (parami != null)) {}
-    for (parami = parami.NXn;; parami = new rx.internal.util.i())
+    for (parami = parami.Ous;; parami = new rx.internal.util.i())
     {
-      this.NXn = parami;
+      this.Ous = parami;
       return;
     }
   }
   
-  protected final void FO(long paramLong)
+  protected final void Gq(long paramLong)
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("number requested cannot be negative: ".concat(String.valueOf(paramLong)));
@@ -38,24 +38,24 @@ public abstract class i<T>
     {
       try
       {
-        if (this.NXp != null)
+        if (this.Ouu != null)
         {
-          f localf = this.NXp;
-          localf.FO(paramLong);
+          f localf = this.Ouu;
+          localf.Gq(paramLong);
           return;
         }
-        if (this.NXq == -9223372036854775808L)
+        if (this.Ouv == -9223372036854775808L)
         {
-          this.NXq = paramLong;
+          this.Ouv = paramLong;
           return;
         }
       }
       finally {}
-      paramLong = this.NXq + paramLong;
+      paramLong = this.Ouv + paramLong;
       if (paramLong < 0L) {
-        this.NXq = 9223372036854775807L;
+        this.Ouv = 9223372036854775807L;
       } else {
-        this.NXq = paramLong;
+        this.Ouv = paramLong;
       }
     }
   }
@@ -66,10 +66,10 @@ public abstract class i<T>
     long l;
     try
     {
-      l = this.NXq;
-      this.NXp = paramf;
+      l = this.Ouv;
+      this.Ouu = paramf;
       int i = j;
-      if (this.NXo != null)
+      if (this.Out != null)
       {
         i = j;
         if (l == -9223372036854775808L) {
@@ -78,39 +78,39 @@ public abstract class i<T>
       }
       if (i != 0)
       {
-        this.NXo.a(this.NXp);
+        this.Out.a(this.Ouu);
         return;
       }
     }
     finally {}
     if (l == -9223372036854775808L)
     {
-      this.NXp.FO(9223372036854775807L);
+      this.Ouu.Gq(9223372036854775807L);
       return;
     }
-    this.NXp.FO(l);
+    this.Ouu.Gq(l);
   }
   
   public final void b(j paramj)
   {
-    this.NXn.b(paramj);
+    this.Ous.b(paramj);
   }
   
-  public final void gyQ()
+  public final void gDs()
   {
-    this.NXn.gyQ();
+    this.Ous.gDs();
   }
   
-  public final boolean gyR()
+  public final boolean gDt()
   {
-    return this.NXn.OaI;
+    return this.Ous.OxN;
   }
   
   public void onStart() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.i
  * JD-Core Version:    0.7.0.1
  */

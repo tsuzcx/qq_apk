@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,30 +14,30 @@ import java.util.Set;
 public final class a
 {
   private int scene;
-  public int tFm;
-  public int tFn;
-  public int tFo;
-  private int tFp;
-  private int tFq;
-  private int tFr;
-  private int tFs;
-  private int tFt;
-  public List<String> tFu;
-  public List<String> tFv;
-  public List<String> tFw;
-  public List<String> tFx;
-  public List<String> tFy;
-  public HashMap<String, Integer> tFz;
+  public int tQd;
+  public int tQe;
+  public int tQf;
+  private int tQg;
+  private int tQh;
+  private int tQi;
+  private int tQj;
+  private int tQk;
+  public List<String> tQl;
+  public List<String> tQm;
+  public List<String> tQn;
+  public List<String> tQo;
+  public List<String> tQp;
+  public HashMap<String, Integer> tQq;
   
   private a()
   {
     AppMethodBeat.i(111226);
-    this.tFu = new ArrayList(9);
-    this.tFv = new ArrayList(9);
-    this.tFw = new ArrayList(9);
-    this.tFx = new ArrayList(9);
-    this.tFy = new ArrayList(9);
-    this.tFz = new HashMap(9);
+    this.tQl = new ArrayList(9);
+    this.tQm = new ArrayList(9);
+    this.tQn = new ArrayList(9);
+    this.tQo = new ArrayList(9);
+    this.tQp = new ArrayList(9);
+    this.tQq = new HashMap(9);
     AppMethodBeat.o(111226);
   }
   
@@ -47,94 +47,94 @@ public final class a
     AppMethodBeat.i(173726);
     if ((paramInt1 < 0) || (paramInt1 > 4))
     {
-      ad.e("MicroMsg.GalleryReporter", "type error, %d.", new Object[] { Integer.valueOf(paramInt1) });
+      ae.e("MicroMsg.GalleryReporter", "type error, %d.", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(173726);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.GalleryReporter", "path is invalid!");
+      ae.e("MicroMsg.GalleryReporter", "path is invalid!");
       AppMethodBeat.o(173726);
       return;
     }
-    ad.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
-    if (this.tFu.contains(paramString))
+    ae.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
+    if (this.tQl.contains(paramString))
     {
-      this.tFu.remove(paramString);
-      ad.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
+      this.tQl.remove(paramString);
+      ae.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
       paramInt1 = i;
     }
     for (;;)
     {
       if (paramInt1 != 0) {
-        this.tFz.remove(paramString);
+        this.tQq.remove(paramString);
       }
       AppMethodBeat.o(173726);
       return;
-      if (this.tFv.contains(paramString))
+      if (this.tQm.contains(paramString))
       {
-        this.tFv.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
+        this.tQm.remove(paramString);
+        ae.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
         paramInt1 = i;
       }
-      else if (this.tFw.contains(paramString))
+      else if (this.tQn.contains(paramString))
       {
-        this.tFw.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
+        this.tQn.remove(paramString);
+        ae.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
         paramInt1 = i;
       }
-      else if (this.tFx.contains(paramString))
+      else if (this.tQo.contains(paramString))
       {
-        this.tFx.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
+        this.tQo.remove(paramString);
+        ae.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
         paramInt1 = i;
       }
       else
       {
-        if (!this.tFy.contains(paramString)) {
+        if (!this.tQp.contains(paramString)) {
           break;
         }
-        this.tFy.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
+        this.tQp.remove(paramString);
+        ae.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
         paramInt1 = i;
       }
     }
-    ad.i("MicroMsg.GalleryReporter", "add!!!");
+    ae.i("MicroMsg.GalleryReporter", "add!!!");
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      this.tFz.put(paramString, Integer.valueOf(paramInt2));
+      this.tQq.put(paramString, Integer.valueOf(paramInt2));
       paramInt1 = 0;
       break;
-      this.tFu.add(paramString);
+      this.tQl.add(paramString);
       continue;
-      this.tFv.add(paramString);
+      this.tQm.add(paramString);
       continue;
-      this.tFw.add(paramString);
+      this.tQn.add(paramString);
       continue;
-      this.tFx.add(paramString);
+      this.tQo.add(paramString);
       continue;
-      this.tFy.add(paramString);
+      this.tQp.add(paramString);
     }
   }
   
   public final void report()
   {
     AppMethodBeat.i(173728);
-    this.tFp = this.tFu.size();
-    this.tFq = this.tFv.size();
-    this.tFr = this.tFw.size();
-    this.tFs = this.tFx.size();
-    this.tFt = this.tFy.size();
+    this.tQg = this.tQl.size();
+    this.tQh = this.tQm.size();
+    this.tQi = this.tQn.size();
+    this.tQj = this.tQo.size();
+    this.tQk = this.tQp.size();
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.tFz.entrySet().iterator();
+    Iterator localIterator = this.tQq.entrySet().iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append(((Map.Entry)localIterator.next()).getValue()).append("|");
     }
-    ad.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
-    g.yhR.f(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.tFm), Integer.valueOf(this.tFn), Integer.valueOf(this.tFo), Integer.valueOf(this.tFp), Integer.valueOf(this.tFq), Integer.valueOf(this.tFr), Integer.valueOf(this.tFs), Integer.valueOf(this.tFt), localStringBuilder });
+    ae.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
+    g.yxI.f(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.tQd), Integer.valueOf(this.tQe), Integer.valueOf(this.tQf), Integer.valueOf(this.tQg), Integer.valueOf(this.tQh), Integer.valueOf(this.tQi), Integer.valueOf(this.tQj), Integer.valueOf(this.tQk), localStringBuilder });
     reset();
     AppMethodBeat.o(173728);
   }
@@ -143,20 +143,20 @@ public final class a
   {
     AppMethodBeat.i(173727);
     this.scene = 0;
-    this.tFm = 0;
-    this.tFn = 0;
-    this.tFo = 0;
-    this.tFp = 0;
-    this.tFq = 0;
-    this.tFr = 0;
-    this.tFs = 0;
-    this.tFt = 0;
-    this.tFu.clear();
-    this.tFv.clear();
-    this.tFw.clear();
-    this.tFx.clear();
-    this.tFy.clear();
-    this.tFz.clear();
+    this.tQd = 0;
+    this.tQe = 0;
+    this.tQf = 0;
+    this.tQg = 0;
+    this.tQh = 0;
+    this.tQi = 0;
+    this.tQj = 0;
+    this.tQk = 0;
+    this.tQl.clear();
+    this.tQm.clear();
+    this.tQn.clear();
+    this.tQo.clear();
+    this.tQp.clear();
+    this.tQq.clear();
     AppMethodBeat.o(173727);
   }
   
@@ -217,19 +217,19 @@ public final class a
   
   public static final class a
   {
-    public static a tFA;
+    public static a tQr;
     
     static
     {
       AppMethodBeat.i(111225);
-      tFA = new a((byte)0);
+      tQr = new a((byte)0);
       AppMethodBeat.o(111225);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a
  * JD-Core Version:    0.7.0.1
  */

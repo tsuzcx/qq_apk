@@ -4,16 +4,16 @@ import java.util.LinkedList;
 
 public final class l
 {
-  public boolean dIh = false;
-  public boolean dIi = false;
-  public LinkedList<m> oBJ;
-  public LinkedList<m> oBK;
-  public String oBL = "";
-  public boolean oBM = true;
-  public boolean oBN = true;
-  public LinkedList<String> oBO;
-  public String oBP = "";
-  public int oBQ;
+  public boolean dJl = false;
+  public boolean dJm = false;
+  public LinkedList<m> oIl;
+  public LinkedList<m> oIm;
+  public String oIn = "";
+  public boolean oIo = true;
+  public boolean oIp = true;
+  public LinkedList<String> oIq;
+  public String oIr = "";
+  public int oIs;
 }
 
 

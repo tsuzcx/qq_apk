@@ -7,9 +7,9 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -25,56 +25,56 @@ public final class c
   implements com.tencent.mm.plugin.fts.a.d.c
 {
   private static int MAX_CACHE_SIZE = 32;
-  private ap gIf;
-  private Vector<String> trA;
-  private boolean trB;
-  private int trC;
-  private ap[] trD;
-  private ConcurrentHashMap<Long, ByteArrayOutputStream> trE;
-  private ConcurrentHashMap<Long, byte[]> trF;
-  private ap trG;
-  private Set<String> trH;
-  private ConcurrentHashMap<String, c.a> trz;
+  private aq gKO;
+  private ConcurrentHashMap<String, c.a> tCq;
+  private Vector<String> tCr;
+  private boolean tCs;
+  private int tCt;
+  private aq[] tCu;
+  private ConcurrentHashMap<Long, ByteArrayOutputStream> tCv;
+  private ConcurrentHashMap<Long, byte[]> tCw;
+  private aq tCx;
+  private Set<String> tCy;
   
   public c()
   {
     AppMethodBeat.i(52509);
-    this.trB = true;
-    this.trC = 0;
-    this.gIf = new ap(Looper.getMainLooper());
-    this.trD = new ap[2];
-    this.trE = null;
-    this.trF = null;
-    this.trG = null;
-    ad.i("MicroMsg.FTS.FTSImageLoader", "create SearchImageLoader");
-    if (d.ly(19)) {}
+    this.tCs = true;
+    this.tCt = 0;
+    this.gKO = new aq(Looper.getMainLooper());
+    this.tCu = new aq[2];
+    this.tCv = null;
+    this.tCw = null;
+    this.tCx = null;
+    ae.i("MicroMsg.FTS.FTSImageLoader", "create SearchImageLoader");
+    if (d.lA(19)) {}
     for (MAX_CACHE_SIZE = 64;; MAX_CACHE_SIZE = 32)
     {
-      this.trz = new ConcurrentHashMap();
-      this.trA = new Vector();
-      this.trE = new ConcurrentHashMap();
-      this.trF = new ConcurrentHashMap();
-      this.trH = Collections.synchronizedSet(new HashSet());
+      this.tCq = new ConcurrentHashMap();
+      this.tCr = new Vector();
+      this.tCv = new ConcurrentHashMap();
+      this.tCw = new ConcurrentHashMap();
+      this.tCy = Collections.synchronizedSet(new HashSet());
       while (i < 2)
       {
-        if (this.trD[i] == null) {
-          this.trD[i] = new ap("SearchImageLoader_loadImage_handler");
+        if (this.tCu[i] == null) {
+          this.tCu[i] = new aq("SearchImageLoader_loadImage_handler");
         }
         i += 1;
       }
     }
-    this.trG = new ap("SearchImageLoader_saveImage_handler");
+    this.tCx = new aq("SearchImageLoader_saveImage_handler");
     AppMethodBeat.o(52509);
   }
   
-  private Bitmap FD(String paramString)
+  private Bitmap Gf(String paramString)
   {
     AppMethodBeat.i(52518);
-    c.a locala = (c.a)this.trz.get(paramString);
+    c.a locala = (c.a)this.tCq.get(paramString);
     if ((locala != null) && (locala.bitmap != null) && (!locala.bitmap.isRecycled()))
     {
-      this.trA.remove(paramString);
-      this.trA.add(0, paramString);
+      this.tCr.remove(paramString);
+      this.tCr.add(0, paramString);
     }
     if (locala == null)
     {
@@ -86,17 +86,17 @@ public final class c
     return paramString;
   }
   
-  private void akd(String paramString)
+  private void alb(String paramString)
   {
     AppMethodBeat.i(52522);
-    c.a locala = (c.a)this.trz.get(paramString);
-    this.trA.remove(paramString);
-    this.trz.remove(paramString);
+    c.a locala = (c.a)this.tCq.get(paramString);
+    this.tCr.remove(paramString);
+    this.tCq.remove(paramString);
     if ((locala != null) && (locala.bitmap != null))
     {
       if (!locala.bitmap.isRecycled())
       {
-        ad.i("MicroMsg.FTS.FTSImageLoader", "bitmap recycle %s", new Object[] { locala.bitmap });
+        ae.i("MicroMsg.FTS.FTSImageLoader", "bitmap recycle %s", new Object[] { locala.bitmap });
         locala.bitmap.recycle();
       }
       locala.bitmap = null;
@@ -111,14 +111,14 @@ public final class c
     //   0: ldc_w 261
     //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 215	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   7: invokestatic 215	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   10: ifeq +11 -> 21
     //   13: ldc_w 261
     //   16: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: aconst_null
     //   20: areturn
     //   21: aload_0
-    //   22: getfield 79	com/tencent/mm/plugin/fts/c:trE	Ljava/util/concurrent/ConcurrentHashMap;
+    //   22: getfield 79	com/tencent/mm/plugin/fts/c:tCv	Ljava/util/concurrent/ConcurrentHashMap;
     //   25: invokestatic 267	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   28: invokevirtual 271	java/lang/Thread:getId	()J
     //   31: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
@@ -135,7 +135,7 @@ public final class c
     //   58: invokespecial 282	java/io/ByteArrayOutputStream:<init>	(I)V
     //   61: astore 9
     //   63: aload_0
-    //   64: getfield 79	com/tencent/mm/plugin/fts/c:trE	Ljava/util/concurrent/ConcurrentHashMap;
+    //   64: getfield 79	com/tencent/mm/plugin/fts/c:tCv	Ljava/util/concurrent/ConcurrentHashMap;
     //   67: invokestatic 267	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   70: invokevirtual 271	java/lang/Thread:getId	()J
     //   73: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
@@ -164,7 +164,7 @@ public final class c
     //   124: iconst_0
     //   125: aload_1
     //   126: aastore
-    //   127: invokestatic 299	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   127: invokestatic 299	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   130: aload 8
     //   132: ifnull +8 -> 140
     //   135: aload 8
@@ -179,7 +179,7 @@ public final class c
     //   152: ldc_w 306
     //   155: iconst_0
     //   156: anewarray 4	java/lang/Object
-    //   159: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   159: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   162: goto -22 -> 140
     //   165: aload 8
     //   167: astore 7
@@ -210,7 +210,7 @@ public final class c
     //   218: ldc_w 306
     //   221: iconst_0
     //   222: anewarray 4	java/lang/Object
-    //   225: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   225: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   228: aload 8
     //   230: astore 7
     //   232: ldc 85
@@ -221,7 +221,7 @@ public final class c
     //   242: iconst_0
     //   243: aload_1
     //   244: aastore
-    //   245: invokestatic 299	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   245: invokestatic 299	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   248: aload 8
     //   250: ifnull +8 -> 258
     //   253: aload 8
@@ -244,7 +244,7 @@ public final class c
     //   290: aload 9
     //   292: iload_3
     //   293: iload 4
-    //   295: invokestatic 329	com/tencent/mm/sdk/platformtools/g:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   295: invokestatic 329	com/tencent/mm/sdk/platformtools/h:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   298: astore 9
     //   300: aload 8
     //   302: astore 7
@@ -273,7 +273,7 @@ public final class c
     //   340: invokevirtual 342	android/graphics/Bitmap:getHeight	()I
     //   343: invokestatic 336	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   346: aastore
-    //   347: invokestatic 345	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   347: invokestatic 345	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   350: iload_2
     //   351: ifeq +71 -> 422
     //   354: aload 8
@@ -283,7 +283,7 @@ public final class c
     //   361: aload 9
     //   363: invokevirtual 339	android/graphics/Bitmap:getWidth	()I
     //   366: i2f
-    //   367: invokestatic 348	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ZF)Landroid/graphics/Bitmap;
+    //   367: invokestatic 348	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ZF)Landroid/graphics/Bitmap;
     //   370: astore 9
     //   372: aload 8
     //   374: ifnull +8 -> 382
@@ -296,7 +296,7 @@ public final class c
     //   391: aload 8
     //   393: astore 7
     //   395: aload 9
-    //   397: invokestatic 352	com/tencent/mm/sdk/platformtools/g:cr	([B)Landroid/graphics/Bitmap;
+    //   397: invokestatic 352	com/tencent/mm/sdk/platformtools/h:cu	([B)Landroid/graphics/Bitmap;
     //   400: astore 9
     //   402: goto -102 -> 300
     //   405: astore_1
@@ -305,7 +305,7 @@ public final class c
     //   409: ldc_w 306
     //   412: iconst_0
     //   413: anewarray 4	java/lang/Object
-    //   416: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   416: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   419: goto -37 -> 382
     //   422: aload 8
     //   424: ifnull +8 -> 432
@@ -321,7 +321,7 @@ public final class c
     //   445: ldc_w 306
     //   448: iconst_0
     //   449: anewarray 4	java/lang/Object
-    //   452: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   452: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   455: goto -23 -> 432
     //   458: astore_1
     //   459: ldc 85
@@ -329,7 +329,7 @@ public final class c
     //   462: ldc_w 306
     //   465: iconst_0
     //   466: anewarray 4	java/lang/Object
-    //   469: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   469: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   472: goto -214 -> 258
     //   475: astore_1
     //   476: aconst_null
@@ -348,7 +348,7 @@ public final class c
     //   503: ldc_w 306
     //   506: iconst_0
     //   507: anewarray 4	java/lang/Object
-    //   510: invokestatic 310	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   510: invokestatic 310	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   513: goto -24 -> 489
     //   516: astore_1
     //   517: goto -38 -> 479
@@ -408,7 +408,7 @@ public final class c
   private static String c(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(52520);
-    paramString1 = bt.bI(paramString1, "null") + bt.bI(paramString2, "null") + paramBoolean + paramInt1 + "_" + paramInt2;
+    paramString1 = bu.bI(paramString1, "null") + bu.bI(paramString2, "null") + paramBoolean + paramInt1 + "_" + paramInt2;
     paramString1 = "fts_search_" + g.getMessageDigest(paramString1.getBytes());
     AppMethodBeat.o(52520);
     return paramString1;
@@ -419,12 +419,12 @@ public final class c
     try
     {
       AppMethodBeat.i(52519);
-      byte[] arrayOfByte2 = (byte[])this.trF.get(Long.valueOf(Thread.currentThread().getId()));
+      byte[] arrayOfByte2 = (byte[])this.tCw.get(Long.valueOf(Thread.currentThread().getId()));
       byte[] arrayOfByte1 = arrayOfByte2;
       if (arrayOfByte2 == null)
       {
         arrayOfByte1 = new byte[1024];
-        this.trF.put(Long.valueOf(Thread.currentThread().getId()), arrayOfByte1);
+        this.tCw.put(Long.valueOf(Thread.currentThread().getId()), arrayOfByte1);
       }
       AppMethodBeat.o(52519);
       return arrayOfByte1;
@@ -437,7 +437,7 @@ public final class c
     AppMethodBeat.i(52511);
     paramString1 = c(paramString1, paramString2, paramBoolean, paramInt1, paramInt2);
     paramImageView.setTag(paramString1);
-    ad.d("MicroMsg.FTS.FTSImageLoader", "update image view cache key: hashcode=%d | cacheKey=%s", new Object[] { Integer.valueOf(paramImageView.hashCode()), paramString1 });
+    ae.d("MicroMsg.FTS.FTSImageLoader", "update image view cache key: hashcode=%d | cacheKey=%s", new Object[] { Integer.valueOf(paramImageView.hashCode()), paramString1 });
     AppMethodBeat.o(52511);
     return paramString1;
   }
@@ -446,17 +446,17 @@ public final class c
   {
     AppMethodBeat.i(52510);
     String str = a(paramImageView, paramString1, paramString2, paramBoolean, paramInt1, paramInt2);
-    if (!this.trB)
+    if (!this.tCs)
     {
       AppMethodBeat.o(52510);
       return;
     }
     paramContext = new b(str, paramString1, paramString2, paramBoolean, paramInt1, paramInt2, new c()
     {
-      public final void bj(final String paramAnonymousString, boolean paramAnonymousBoolean)
+      public final void bm(final String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(183537);
-        ad.v("MicroMsg.FTS.FTSImageLoader", "LoadBitmapJob finish: %s %b", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+        ae.v("MicroMsg.FTS.FTSImageLoader", "LoadBitmapJob finish: %s %b", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
         c.a(c.this).remove(paramAnonymousString);
         if (!paramAnonymousBoolean)
         {
@@ -470,8 +470,8 @@ public final class c
             public final void run()
             {
               AppMethodBeat.i(183536);
-              if (paramAnonymousString.equals(c.1.this.trI.getTag())) {
-                com.tencent.mm.plugin.fts.a.d.c.a.a(c.1.this.val$context.getResources(), localBitmap, c.1.this.trI);
+              if (paramAnonymousString.equals(c.1.this.tCz.getTag())) {
+                com.tencent.mm.plugin.fts.a.d.c.a.a(c.1.this.val$context.getResources(), localBitmap, c.1.this.tCz);
               }
               AppMethodBeat.o(183536);
             }
@@ -480,54 +480,91 @@ public final class c
         AppMethodBeat.o(183537);
       }
     });
-    if (this.trH.add(str))
+    if (this.tCy.add(str))
     {
-      this.trC += 1;
-      this.trC %= 2;
-      this.trD[this.trC].post(paramContext);
+      this.tCt += 1;
+      this.tCt %= 2;
+      this.tCu[this.tCt].post(paramContext);
       AppMethodBeat.o(52510);
       return;
     }
-    ad.v("MicroMsg.FTS.FTSImageLoader", "cacheKey: %s | runningJobTask: %s", new Object[] { str, this.trH.toString() });
+    ae.v("MicroMsg.FTS.FTSImageLoader", "cacheKey: %s | runningJobTask: %s", new Object[] { str, this.tCy.toString() });
     AppMethodBeat.o(52510);
   }
   
   public final Bitmap b(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(52517);
-    paramString1 = FD(c(paramString1, paramString2, paramBoolean, paramInt1, paramInt2));
+    paramString1 = Gf(c(paramString1, paramString2, paramBoolean, paramInt1, paramInt2));
     AppMethodBeat.o(52517);
     return paramString1;
   }
   
-  public final void cSA()
+  public final void cVb()
   {
-    AppMethodBeat.i(52515);
-    ad.d("MicroMsg.FTS.FTSImageLoader", "clearCacheAndTask %s", new Object[] { Integer.valueOf(this.trz.size()) });
-    cSw();
-    Iterator localIterator = this.trz.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      akd((String)((Map.Entry)localIterator.next()).getKey());
-    }
-    this.trA.clear();
-    this.trH.clear();
-    AppMethodBeat.o(52515);
-  }
-  
-  public final void cSB()
-  {
-    AppMethodBeat.i(52516);
-    cSA();
-    ad.d("MicroMsg.FTS.FTSImageLoader", "destoryLoader");
+    AppMethodBeat.i(52512);
+    ae.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImageTask");
     int i = 0;
     while (i < 2)
     {
-      if (this.trD[i] != null) {
-        this.trD[i].quit();
+      if (this.tCu[i] != null) {
+        this.tCu[i].removeCallbacksAndMessages(null);
       }
       i += 1;
     }
-    Iterator localIterator = this.trE.values().iterator();
+    AppMethodBeat.o(52512);
+  }
+  
+  public final void cVc()
+  {
+    AppMethodBeat.i(52513);
+    ae.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImage");
+    this.tCs = false;
+    cVb();
+    AppMethodBeat.o(52513);
+  }
+  
+  public final boolean cVd()
+  {
+    return this.tCs;
+  }
+  
+  public final void cVe()
+  {
+    AppMethodBeat.i(52514);
+    ae.d("MicroMsg.FTS.FTSImageLoader", "startLoadImage");
+    this.tCs = true;
+    AppMethodBeat.o(52514);
+  }
+  
+  public final void cVf()
+  {
+    AppMethodBeat.i(52515);
+    ae.d("MicroMsg.FTS.FTSImageLoader", "clearCacheAndTask %s", new Object[] { Integer.valueOf(this.tCq.size()) });
+    cVb();
+    Iterator localIterator = this.tCq.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      alb((String)((Map.Entry)localIterator.next()).getKey());
+    }
+    this.tCr.clear();
+    this.tCy.clear();
+    AppMethodBeat.o(52515);
+  }
+  
+  public final void cVg()
+  {
+    AppMethodBeat.i(52516);
+    cVf();
+    ae.d("MicroMsg.FTS.FTSImageLoader", "destoryLoader");
+    int i = 0;
+    while (i < 2)
+    {
+      if (this.tCu[i] != null) {
+        this.tCu[i].quit();
+      }
+      i += 1;
+    }
+    Iterator localIterator = this.tCv.values().iterator();
     while (localIterator.hasNext())
     {
       ByteArrayOutputStream localByteArrayOutputStream = (ByteArrayOutputStream)localIterator.next();
@@ -537,57 +574,20 @@ public final class c
       }
       catch (IOException localIOException) {}
     }
-    this.trE.clear();
-    this.trF.clear();
-    this.trG.quit();
+    this.tCv.clear();
+    this.tCw.clear();
+    this.tCx.quit();
     AppMethodBeat.o(52516);
-  }
-  
-  public final void cSw()
-  {
-    AppMethodBeat.i(52512);
-    ad.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImageTask");
-    int i = 0;
-    while (i < 2)
-    {
-      if (this.trD[i] != null) {
-        this.trD[i].removeCallbacksAndMessages(null);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(52512);
-  }
-  
-  public final void cSx()
-  {
-    AppMethodBeat.i(52513);
-    ad.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImage");
-    this.trB = false;
-    cSw();
-    AppMethodBeat.o(52513);
-  }
-  
-  public final boolean cSy()
-  {
-    return this.trB;
-  }
-  
-  public final void cSz()
-  {
-    AppMethodBeat.i(52514);
-    ad.d("MicroMsg.FTS.FTSImageLoader", "startLoadImage");
-    this.trB = true;
-    AppMethodBeat.o(52514);
   }
   
   final class b
     implements Runnable
   {
     private String cacheKey;
-    private String dBx;
-    private boolean hdW;
+    private String dCC;
     private int height;
-    private c.c trL;
+    private boolean hgK;
+    private c.c tCC;
     private String url;
     private int width;
     
@@ -595,9 +595,9 @@ public final class c
     {
       this.cacheKey = paramString1;
       this.url = paramString2;
-      this.dBx = paramString3;
-      this.trL = paramc;
-      this.hdW = paramBoolean;
+      this.dCC = paramString3;
+      this.tCC = paramc;
+      this.hgK = paramBoolean;
       this.width = paramInt1;
       this.height = paramInt2;
     }
@@ -605,39 +605,39 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(52507);
-      ad.d("MicroMsg.FTS.FTSImageLoader", "Start to run load bitmap job %s", new Object[] { this.cacheKey });
-      if (bt.isNullOrNil(this.dBx)) {
-        this.dBx = c.ake(this.cacheKey);
+      ae.d("MicroMsg.FTS.FTSImageLoader", "Start to run load bitmap job %s", new Object[] { this.cacheKey });
+      if (bu.isNullOrNil(this.dCC)) {
+        this.dCC = c.alc(this.cacheKey);
       }
       long l2 = System.currentTimeMillis();
-      Bitmap localBitmap = c.ag(this.dBx, this.width, this.height);
+      Bitmap localBitmap = c.ag(this.dCC, this.width, this.height);
       long l1 = System.currentTimeMillis();
       if (localBitmap != null)
       {
-        ad.d("MicroMsg.FTS.FTSImageLoader", "Found image in local %s | localPath %s | use time %d", new Object[] { this.url, this.dBx, Long.valueOf(l1 - l2) });
-        c.a(c.this, this.cacheKey, this.dBx, localBitmap);
-        this.trL.bj(this.cacheKey, true);
+        ae.d("MicroMsg.FTS.FTSImageLoader", "Found image in local %s | localPath %s | use time %d", new Object[] { this.url, this.dCC, Long.valueOf(l1 - l2) });
+        c.a(c.this, this.cacheKey, this.dCC, localBitmap);
+        this.tCC.bm(this.cacheKey, true);
         AppMethodBeat.o(52507);
         return;
       }
-      localBitmap = c.a(c.this, this.url, this.hdW, this.width, this.height);
+      localBitmap = c.a(c.this, this.url, this.hgK, this.width, this.height);
       l2 = System.currentTimeMillis();
-      ad.d("MicroMsg.FTS.FTSImageLoader", "Get image from net %s | localPath %s | use time %d", new Object[] { this.url, this.dBx, Long.valueOf(l2 - l1) });
+      ae.d("MicroMsg.FTS.FTSImageLoader", "Get image from net %s | localPath %s | use time %d", new Object[] { this.url, this.dCC, Long.valueOf(l2 - l1) });
       if (localBitmap != null)
       {
-        c.a(c.this, this.cacheKey, this.dBx, localBitmap);
-        this.trL.bj(this.cacheKey, true);
+        c.a(c.this, this.cacheKey, this.dCC, localBitmap);
+        this.tCC.bm(this.cacheKey, true);
         AppMethodBeat.o(52507);
         return;
       }
-      this.trL.bj(this.cacheKey, false);
+      this.tCC.bm(this.cacheKey, false);
       AppMethodBeat.o(52507);
     }
   }
   
   static abstract interface c
   {
-    public abstract void bj(String paramString, boolean paramBoolean);
+    public abstract void bm(String paramString, boolean paramBoolean);
   }
 }
 

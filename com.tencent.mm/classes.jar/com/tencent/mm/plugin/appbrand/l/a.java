@@ -8,7 +8,7 @@ import java.util.List;
 
 final class a
 {
-  static final String[] koE;
+  static final String[] krU;
   
   static
   {
@@ -31,7 +31,7 @@ final class a
         label85:
         i += 1;
         continue;
-        koE = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
+        krU = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
         AppMethodBeat.o(138799);
         return;
       }
@@ -45,7 +45,7 @@ final class a
   static void a(android.support.e.a parama1, android.support.e.a parama2)
   {
     AppMethodBeat.i(138798);
-    String[] arrayOfString = koE;
+    String[] arrayOfString = krU;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -63,7 +63,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l.a
  * JD-Core Version:    0.7.0.1
  */

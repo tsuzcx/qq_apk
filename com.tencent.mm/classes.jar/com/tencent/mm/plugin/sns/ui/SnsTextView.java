@@ -7,16 +7,14 @@ import android.text.style.MetricAffectingSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class SnsTextView
   extends TextView
 {
-  private char AjC = '\000';
-  private String vdt = "";
+  private char AAO = '\000';
+  private String vpE = "";
   
   public SnsTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +32,7 @@ public class SnsTextView
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(99220);
     }
     return -1;
@@ -51,7 +49,7 @@ public class SnsTextView
     }
     catch (Throwable paramCanvas)
     {
-      ad.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(99219);
     }
   }
@@ -66,17 +64,17 @@ public class SnsTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(99218);
-    if ((ae.gcP.fZt == 1) || (ae.gcP.fZt == -1)) {
+    if ((com.tencent.mm.compatible.deviceinfo.ae.geX.gbA == 1) || (com.tencent.mm.compatible.deviceinfo.ae.geX.gbA == -1)) {
       try
       {
         super.onMeasure(paramInt1, paramInt2);
-        this.AjC = '\000';
+        this.AAO = '\000';
         AppMethodBeat.o(99218);
         return;
       }
       catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
       {
-        if (this.AjC < '\003')
+        if (this.AAO < '\003')
         {
           try
           {
@@ -85,33 +83,33 @@ public class SnsTextView
             if ((arrayOfMetricAffectingSpan != null) && (arrayOfMetricAffectingSpan.length > 0)) {
               localSpannableStringBuilder.insert(localSpannableStringBuilder.getSpanStart(arrayOfMetricAffectingSpan[0]) - 1, " ");
             }
-            for (this.AjC = ((char)(this.AjC + '\001'));; this.AjC = 'd')
+            for (this.AAO = ((char)(this.AAO + '\001'));; this.AAO = 'd')
             {
               setText(localSpannableStringBuilder);
               onMeasure(paramInt1, paramInt2);
               AppMethodBeat.o(99218);
               return;
             }
-            if (this.AjC != '\003') {
+            if (this.AAO != '\003') {
               break label269;
             }
           }
           catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
           {
-            ad.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bt.isNullOrNil(this.vdt));
-            setText(this.vdt);
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bu.isNullOrNil(this.vpE));
+            setText(this.vpE);
             onMeasure(paramInt1, paramInt2);
-            this.AjC = ((char)(this.AjC + '\001'));
+            this.AAO = ((char)(this.AAO + '\001'));
             AppMethodBeat.o(99218);
             return;
           }
         }
         else
         {
-          ad.i("MicroMsg.SnsTextView", "fix error set origintext " + bt.isNullOrNil(this.vdt));
-          setText(this.vdt);
+          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsTextView", "fix error set origintext " + bu.isNullOrNil(this.vpE));
+          setText(this.vpE);
           onMeasure(paramInt1, paramInt2);
-          this.AjC = ((char)(this.AjC + '\001'));
+          this.AAO = ((char)(this.AAO + '\001'));
           AppMethodBeat.o(99218);
           return;
         }
@@ -150,7 +148,7 @@ public class SnsTextView
   
   public void setOriginText(String paramString)
   {
-    this.vdt = paramString;
+    this.vpE = paramString;
   }
 }
 

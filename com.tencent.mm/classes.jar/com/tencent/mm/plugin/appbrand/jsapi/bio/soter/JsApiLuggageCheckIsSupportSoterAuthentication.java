@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,15 +16,15 @@ public final class JsApiLuggageCheckIsSupportSoterAuthentication
 {
   public static final int CTRL_INDEX = 276;
   public static final String NAME = "checkIsSupportSoterAuthentication";
-  private GetIsSupportSoterTask kCG;
+  private GetIsSupportSoterTask kFV;
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(159049);
-    ad.i("MicroMsg.JsApiLuggageCheckIsSupportSoterAuthentication", "hy: subapp start do check is support soter authentication");
-    this.kCG = new GetIsSupportSoterTask(paramc, paramInt, this);
-    this.kCG.bhN();
-    AppBrandMainProcessService.a(this.kCG);
+    ae.i("MicroMsg.JsApiLuggageCheckIsSupportSoterAuthentication", "hy: subapp start do check is support soter authentication");
+    this.kFV = new GetIsSupportSoterTask(paramc, paramInt, this);
+    this.kFV.biw();
+    AppBrandMainProcessService.a(this.kFV);
     AppMethodBeat.o(159049);
   }
   
@@ -33,9 +33,9 @@ public final class JsApiLuggageCheckIsSupportSoterAuthentication
   {
     public static final Parcelable.Creator<GetIsSupportSoterTask> CREATOR;
     private int cgA;
-    private JsApiLuggageCheckIsSupportSoterAuthentication kCH;
-    private String kCI;
-    private c kuU;
+    private c jQp;
+    private JsApiLuggageCheckIsSupportSoterAuthentication kFW;
+    private String kFX;
     
     static
     {
@@ -47,43 +47,43 @@ public final class JsApiLuggageCheckIsSupportSoterAuthentication
     protected GetIsSupportSoterTask(Parcel paramParcel)
     {
       AppMethodBeat.i(159046);
-      this.kuU = null;
+      this.jQp = null;
       this.cgA = -1;
-      this.kCI = "";
+      this.kFX = "";
       e(paramParcel);
       AppMethodBeat.o(159046);
     }
     
     public GetIsSupportSoterTask(c paramc, int paramInt, JsApiLuggageCheckIsSupportSoterAuthentication paramJsApiLuggageCheckIsSupportSoterAuthentication)
     {
-      this.kuU = null;
+      this.jQp = null;
       this.cgA = -1;
-      this.kCI = "";
-      this.kuU = paramc;
+      this.kFX = "";
+      this.jQp = paramc;
       this.cgA = paramInt;
-      this.kCH = paramJsApiLuggageCheckIsSupportSoterAuthentication;
+      this.kFW = paramJsApiLuggageCheckIsSupportSoterAuthentication;
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(159044);
-      this.kCI = com.tencent.soter.core.a.fUF();
-      ad.i("MicroMsg.GetIsSupportSoterTask", "hy: verifyRemoteStr: %s", new Object[] { this.kCI });
-      bhX();
+      this.kFX = com.tencent.soter.core.a.fZe();
+      ae.i("MicroMsg.GetIsSupportSoterTask", "hy: verifyRemoteStr: %s", new Object[] { this.kFX });
+      biG();
       AppMethodBeat.o(159044);
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(159043);
-      super.aOB();
-      ad.d("MicroMsg.GetIsSupportSoterTask", "hy: callback. verifyRemoteStr: %s", new Object[] { this.kCI });
+      super.aOY();
+      ae.d("MicroMsg.GetIsSupportSoterTask", "hy: callback. verifyRemoteStr: %s", new Object[] { this.kFX });
       HashMap localHashMap = new HashMap(2);
-      localHashMap.put("verifyRemote", this.kCI);
-      localHashMap.put("nativeSupport", Boolean.valueOf(com.tencent.soter.core.a.fUz()));
-      ad.i("MicroMsg.GetIsSupportSoterTask", "hy: nativeSupport:" + com.tencent.soter.core.a.fUz());
-      this.kuU.h(this.cgA, this.kCH.m("ok", localHashMap));
-      bhO();
+      localHashMap.put("verifyRemote", this.kFX);
+      localHashMap.put("nativeSupport", Boolean.valueOf(com.tencent.soter.core.a.fYY()));
+      ae.i("MicroMsg.GetIsSupportSoterTask", "hy: nativeSupport:" + com.tencent.soter.core.a.fYY());
+      this.jQp.h(this.cgA, this.kFW.n("ok", localHashMap));
+      bix();
       AppMethodBeat.o(159043);
     }
     
@@ -96,7 +96,7 @@ public final class JsApiLuggageCheckIsSupportSoterAuthentication
     {
       AppMethodBeat.i(159047);
       super.e(paramParcel);
-      this.kCI = paramParcel.readString();
+      this.kFX = paramParcel.readString();
       AppMethodBeat.o(159047);
     }
     
@@ -104,7 +104,7 @@ public final class JsApiLuggageCheckIsSupportSoterAuthentication
     {
       AppMethodBeat.i(159045);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.kCI);
+      paramParcel.writeString(this.kFX);
       AppMethodBeat.o(159045);
     }
   }

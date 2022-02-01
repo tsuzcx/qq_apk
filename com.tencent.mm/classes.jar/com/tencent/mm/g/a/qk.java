@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qk
   extends b
 {
-  public a dFf;
+  public a dGj;
   
   public qk()
   {
@@ -15,16 +15,17 @@ public final class qk
   
   private qk(byte paramByte)
   {
-    AppMethodBeat.i(19826);
-    this.dFf = new a();
-    this.IbR = false;
+    AppMethodBeat.i(184120);
+    this.dGj = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(19826);
+    AppMethodBeat.o(184120);
   }
   
   public static final class a
   {
-    public int action;
+    public int type = 0;
+    public String username;
   }
 }
 

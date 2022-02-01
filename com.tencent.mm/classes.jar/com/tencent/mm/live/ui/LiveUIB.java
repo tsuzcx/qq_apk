@@ -21,21 +21,21 @@ import com.tencent.mm.live.view.LiveReplayVideoView;
 import com.tencent.mm.live.view.LiveReplayVideoView.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar;
-import com.tencent.mm.protocal.protobuf.buq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import d.g.a.b;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/LiveUIB;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "fromSence", "", "liveReplayVideoView", "Lcom/tencent/mm/live/view/LiveReplayVideoView;", "mReplayStatusBegin", "getLayoutId", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "setWindowStyle", "plugin-logic_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/LiveUIB;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "fromSence", "", "liveReplayVideoView", "Lcom/tencent/mm/live/view/LiveReplayVideoView;", "mReplayStatusBegin", "getLayoutId", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "setWindowStyle", "plugin-logic_release"})
 public final class LiveUIB
   extends MMActivity
 {
   private final String TAG = "MicroMsg.LiveUIB";
-  private LiveReplayVideoView gYn;
-  private int gYo;
-  private int gYp;
+  private LiveReplayVideoView hba;
+  private int hbb;
+  private int hbc;
   
   public final int getLayoutId()
   {
@@ -45,8 +45,8 @@ public final class LiveUIB
   public final void onCreate(Bundle paramBundle)
   {
     int j = 0;
-    AppMethodBeat.i(212790);
-    ad.i(this.TAG, "onCreate (" + hashCode() + ')');
+    AppMethodBeat.i(216418);
+    ae.i(this.TAG, "onCreate (" + hashCode() + ')');
     setTheme(2131820571);
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
@@ -68,39 +68,39 @@ public final class LiveUIB
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(3);
-    this.gYp = getIntent().getIntExtra("FROM_SENCE", 2);
-    paramBundle = g.gOr;
-    if (g.ans().GOH) {}
+    this.hbc = getIntent().getIntExtra("FROM_SENCE", 2);
+    paramBundle = g.gQZ;
+    if (g.anH().Hih) {}
     for (int i = 1;; i = 0)
     {
-      this.gYo = i;
-      this.gYn = ((LiveReplayVideoView)findViewById(2131307748));
-      paramBundle = this.gYn;
+      this.hbb = i;
+      this.hba = ((LiveReplayVideoView)findViewById(2131307748));
+      paramBundle = this.hba;
       if (paramBundle != null) {
         paramBundle.setOnCloseClickListener((b)new LiveUIB.a(this));
       }
-      paramBundle = this.gYn;
+      paramBundle = this.hba;
       if (paramBundle != null)
       {
-        Object localObject1 = g.gOr;
-        localObject1 = g.ans().GOF;
-        Object localObject2 = paramBundle.hbm;
+        Object localObject1 = g.gQZ;
+        localObject1 = g.anH().Hif;
+        Object localObject2 = paramBundle.hea;
         if (localObject2 != null) {
           ((RedesignVideoPlayerSeekBar)localObject2).setIsPlay(true);
         }
-        localObject2 = paramBundle.hbj;
+        localObject2 = paramBundle.hdX;
         if (localObject2 != null) {
           ((v)localObject2).seekTo(0L);
         }
-        localObject2 = paramBundle.hbj;
+        localObject2 = paramBundle.hdX;
         if (localObject2 != null) {
           ((v)localObject2).aP(false);
         }
-        paramBundle.hbp = false;
+        paramBundle.hed = false;
         localObject2 = paramBundle.titleTv;
         Context localContext = paramBundle.getContext();
-        g localg = g.gOr;
-        ((TextView)localObject2).setText((CharSequence)k.c(localContext, (CharSequence)g.ans().Gbw));
+        g localg = g.gQZ;
+        ((TextView)localObject2).setText((CharSequence)k.c(localContext, (CharSequence)g.anH().Gud));
         paramBundle.setVisibility(0);
         localObject2 = (CharSequence)localObject1;
         if (localObject2 != null)
@@ -115,34 +115,34 @@ public final class LiveUIB
         if (i == 0)
         {
           localObject1 = new h(Uri.parse((String)localObject1), paramBundle.bwq, paramBundle.eventHandler, (com.google.android.exoplayer2.source.a)new LiveReplayVideoView.a(paramBundle));
-          localObject2 = paramBundle.hbj;
+          localObject2 = paramBundle.hdX;
           if (localObject2 != null) {
             ((v)localObject2).a((i)localObject1);
           }
-          localObject1 = paramBundle.hbj;
+          localObject1 = paramBundle.hdX;
           if (localObject1 != null) {
             ((v)localObject1).aP(true);
           }
-          paramBundle.aqC();
+          paramBundle.aqR();
         }
       }
-      paramBundle = this.gYn;
+      paramBundle = this.hba;
       if (paramBundle == null) {
         break;
       }
       paramBundle.setVideoSeekBarDragCallback((d.g.a.a)new LiveUIB.b(this));
-      AppMethodBeat.o(212790);
+      AppMethodBeat.o(216418);
       return;
     }
-    AppMethodBeat.o(212790);
+    AppMethodBeat.o(216418);
   }
   
   public final void onDestroy()
   {
     long l2 = 0L;
-    AppMethodBeat.i(212793);
-    ad.i(this.TAG, "onDestroy (" + hashCode() + ')');
-    Object localObject1 = this.gYn;
+    AppMethodBeat.i(216421);
+    ae.i(this.TAG, "onDestroy (" + hashCode() + ')');
+    Object localObject1 = this.hba;
     Object localObject2;
     Object localObject3;
     Object localObject4;
@@ -150,19 +150,19 @@ public final class LiveUIB
     int j;
     if (localObject1 != null)
     {
-      localObject2 = g.gOr;
-      localObject2 = g.anm();
-      localObject3 = g.gOr;
-      long l3 = g.ans().Fsa;
-      localObject3 = g.gOr;
-      localObject3 = g.ans().Gbw;
-      localObject4 = g.gOr;
-      localObject4 = g.anu();
-      v localv = ((LiveReplayVideoView)localObject1).hbj;
+      localObject2 = g.gQZ;
+      localObject2 = g.anC();
+      localObject3 = g.gQZ;
+      long l3 = g.anH().FKy;
+      localObject3 = g.gQZ;
+      localObject3 = g.anH().Gud;
+      localObject4 = g.gQZ;
+      localObject4 = g.anJ();
+      v localv = ((LiveReplayVideoView)localObject1).hdX;
       if (localv != null)
       {
         l1 = localv.getDuration();
-        localObject1 = ((LiveReplayVideoView)localObject1).hbj;
+        localObject1 = ((LiveReplayVideoView)localObject1).hdX;
         if (localObject1 != null) {
           l2 = ((v)localObject1).getCurrentPosition();
         }
@@ -172,69 +172,69 @@ public final class LiveUIB
     else
     {
       super.onDestroy();
-      localObject1 = g.gOr;
-      localObject1 = g.anm();
-      localObject2 = g.gOr;
-      l1 = g.ans().Fsa;
-      localObject2 = g.gOr;
-      localObject2 = g.ans().Gbw;
-      localObject3 = g.gOr;
-      localObject3 = g.anu();
-      j = this.gYp;
-      localObject4 = g.gOr;
-      if (!g.ans().GOH) {
+      localObject1 = g.gQZ;
+      localObject1 = g.anC();
+      localObject2 = g.gQZ;
+      l1 = g.anH().FKy;
+      localObject2 = g.gQZ;
+      localObject2 = g.anH().Gud;
+      localObject3 = g.gQZ;
+      localObject3 = g.anJ();
+      j = this.hbc;
+      localObject4 = g.gQZ;
+      if (!g.anH().Hih) {
         break label319;
       }
     }
     label319:
     for (int i = 1;; i = 0)
     {
-      e.a((String)localObject1, l1, (String)localObject2, (String)localObject3, j, i, this.gYo);
-      localObject1 = this.gYn;
+      e.a((String)localObject1, l1, (String)localObject2, (String)localObject3, j, i, this.hbb);
+      localObject1 = this.hba;
       if (localObject1 == null) {
         break label324;
       }
-      ((LiveReplayVideoView)localObject1).hbr.removeCallbacks((Runnable)((LiveReplayVideoView)localObject1).hbt);
-      localObject2 = ((LiveReplayVideoView)localObject1).hbj;
+      ((LiveReplayVideoView)localObject1).hef.removeCallbacks((Runnable)((LiveReplayVideoView)localObject1).heh);
+      localObject2 = ((LiveReplayVideoView)localObject1).hdX;
       if (localObject2 != null) {
         ((v)localObject2).release();
       }
-      localObject2 = ((LiveReplayVideoView)localObject1).hbj;
+      localObject2 = ((LiveReplayVideoView)localObject1).hdX;
       if (localObject2 != null) {
         ((v)localObject2).b((q.a)localObject1);
       }
-      ((LiveReplayVideoView)localObject1).hbj = null;
-      AppMethodBeat.o(212793);
+      ((LiveReplayVideoView)localObject1).hdX = null;
+      AppMethodBeat.o(216421);
       return;
       l1 = 0L;
       break;
     }
     label324:
-    AppMethodBeat.o(212793);
+    AppMethodBeat.o(216421);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(212794);
-    ad.i(this.TAG, "onNewIntent (" + hashCode() + ')');
+    AppMethodBeat.i(216422);
+    ae.i(this.TAG, "onNewIntent (" + hashCode() + ')');
     super.onNewIntent(paramIntent);
-    AppMethodBeat.o(212794);
+    AppMethodBeat.o(216422);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(212792);
-    ad.i(this.TAG, "onPause (" + hashCode() + ')');
+    AppMethodBeat.i(216420);
+    ae.i(this.TAG, "onPause (" + hashCode() + ')');
     super.onPause();
-    AppMethodBeat.o(212792);
+    AppMethodBeat.o(216420);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(212791);
-    ad.i(this.TAG, "onResume (" + hashCode() + ')');
+    AppMethodBeat.i(216419);
+    ae.i(this.TAG, "onResume (" + hashCode() + ')');
     super.onResume();
-    AppMethodBeat.o(212791);
+    AppMethodBeat.o(216419);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

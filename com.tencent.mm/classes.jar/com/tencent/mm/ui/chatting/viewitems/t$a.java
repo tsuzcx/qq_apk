@@ -6,65 +6,65 @@ import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.pluginsdk.ui.span.g;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 final class t$a
   extends c.a
 {
-  private MMNeat7extView Kct;
+  private MMNeat7extView KyL;
   
-  public static void a(a parama, int paramInt, a parama1, bu parambu, c paramc)
+  public static void a(a parama, int paramInt, a parama1, bv parambv, c paramc)
   {
     AppMethodBeat.i(36984);
     k.b localb = null;
-    Object localObject2 = parambu.field_content;
+    Object localObject2 = parambv.field_content;
     Object localObject1 = localObject2;
-    if (parama1.fFv())
+    if (parama1.fJC())
     {
-      int i = parambu.field_content.indexOf(':');
+      int i = parambv.field_content.indexOf(':');
       localObject1 = localObject2;
       if (i != -1) {
-        localObject1 = parambu.field_content.substring(i + 1);
+        localObject1 = parambv.field_content.substring(i + 1);
       }
     }
     if (localObject1 != null) {
-      localb = k.b.aA((String)localObject1, parambu.field_reserved);
+      localb = k.b.aB((String)localObject1, parambv.field_reserved);
     }
     if ((localb != null) && (localb.type == 47))
     {
       localObject1 = localb.content;
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("rawUrl", localb.url);
-      ((Bundle)localObject2).putString("sender_name", parambu.field_talker);
-      localObject1 = k.a(aj.getContext(), (CharSequence)localObject1, (int)parama.Kct.getTextSize(), 4, localObject2, true);
-      parama.Kct.a((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-      parama.Kct.setTag(new bk(parambu, parama1.fFv(), paramInt, parambu.field_talker, '\000'));
-      ba.aBQ();
+      ((Bundle)localObject2).putString("sender_name", parambv.field_talker);
+      localObject1 = k.a(ak.getContext(), (CharSequence)localObject1, (int)parama.KyL.getTextSize(), 4, localObject2, true);
+      parama.KyL.a((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
+      parama.KyL.setTag(new bk(parambv, parama1.fJC(), paramInt, parambv.field_talker, '\000'));
+      bc.aCg();
       if (com.tencent.mm.model.c.isSDCardAvailable()) {
-        parama.Kct.setOnLongClickListener(paramc.c(parama1));
+        parama.KyL.setOnLongClickListener(paramc.c(parama1));
       }
     }
     AppMethodBeat.o(36984);
   }
   
-  public final a gz(View paramView)
+  public final a gE(View paramView)
   {
     AppMethodBeat.i(36983);
-    super.gn(paramView);
-    this.Kct = ((MMNeat7extView)paramView.findViewById(2131298073));
-    this.Kct.setOnTouchListener(new g(this.Kct, new n(this.Kct.getContext())));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
-    this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
+    super.gs(paramView);
+    this.KyL = ((MMNeat7extView)paramView.findViewById(2131298073));
+    this.KyL.setOnTouchListener(new g(this.KyL, new n(this.KyL.getContext())));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
+    this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
     AppMethodBeat.o(36983);
     return this;
   }

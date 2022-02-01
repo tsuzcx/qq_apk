@@ -7,16 +7,16 @@ public final class a
 {
   public a()
   {
-    this.dsU = "";
-    this.ptS = "";
-    this.dBx = "";
+    this.dua = "";
+    this.pAw = "";
+    this.dCC = "";
     this.type = -2;
   }
   
-  public final String eWO()
+  public final String faA()
   {
     AppMethodBeat.i(30373);
-    String str = super.eWO();
+    String str = super.faA();
     AppMethodBeat.o(30373);
     return str;
   }

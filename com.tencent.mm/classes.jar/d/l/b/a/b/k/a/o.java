@@ -11,12 +11,12 @@ import java.util.List;
 public final class o
   implements i
 {
-  private final ac NyM;
+  private final ac NVT;
   
   public o(ac paramac)
   {
     AppMethodBeat.i(60311);
-    this.NyM = paramac;
+    this.NVT = paramac;
     AppMethodBeat.o(60311);
   }
   
@@ -24,8 +24,8 @@ public final class o
   {
     AppMethodBeat.i(60310);
     d.g.b.p.h(parama, "classId");
-    Object localObject1 = this.NyM;
-    Object localObject2 = parama.gqZ();
+    Object localObject1 = this.NVT;
+    Object localObject2 = parama.gvB();
     d.g.b.p.g(localObject2, "classId.packageFqName");
     localObject1 = ((ac)localObject1).f((b)localObject2).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -33,7 +33,7 @@ public final class o
       localObject2 = (ab)((Iterator)localObject1).next();
       if ((localObject2 instanceof p))
       {
-        localObject2 = ((p)localObject2).gtz().d(parama);
+        localObject2 = ((p)localObject2).gyb().d(parama);
         if (localObject2 != null)
         {
           AppMethodBeat.o(60310);
@@ -47,7 +47,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.o
  * JD-Core Version:    0.7.0.1
  */

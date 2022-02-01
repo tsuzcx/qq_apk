@@ -12,9 +12,9 @@ import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.WiFiConnector.2;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -23,29 +23,29 @@ import java.util.List;
 
 public final class e
 {
-  private static boolean lws = false;
-  private static WeakReference<com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a> lwt = null;
-  private static c lwu = null;
-  private static a lwv;
-  private static BroadcastReceiver lww = null;
-  private static volatile b lwx = null;
+  private static boolean lAQ = false;
+  private static WeakReference<com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a> lAR = null;
+  private static c lAS = null;
+  private static a lAT;
+  private static BroadcastReceiver lAU = null;
+  private static volatile b lAV = null;
   private static Context mContext;
   
   public static void G(String paramString1, String paramString2, String paramString3)
   {
     String str = null;
     AppMethodBeat.i(144701);
-    if (lwt != null)
+    if (lAR != null)
     {
-      locala = (com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a)lwt.get();
-      if ((locala != null) && (!locala.bpw())) {
-        locala.Ru("duplicated request");
+      locala = (com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a)lAR.get();
+      if ((locala != null) && (!locala.bqg())) {
+        locala.Sd("duplicated request");
       }
     }
-    com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a locala = new com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a(lwv, mContext);
-    ad.i("MicroMsg.WiFiConnector", "ssid:" + paramString1 + " bssid:" + paramString2);
-    locala.lwl = paramString1;
-    locala.lwm = paramString2;
+    com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a locala = new com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a(lAT, mContext);
+    ae.i("MicroMsg.WiFiConnector", "ssid:" + paramString1 + " bssid:" + paramString2);
+    locala.lAJ = paramString1;
+    locala.lAK = paramString2;
     if (TextUtils.isEmpty(paramString3))
     {
       i = 0;
@@ -58,14 +58,14 @@ public final class e
       if (localList != null) {
         paramString3 = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b.a(paramString1, i, localList);
       }
-      ad.i("MicroMsg.WiFiConnector", "connect, config exists: %b, oldConfig exists: %b", new Object[] { paramString2, paramString3 });
+      ae.i("MicroMsg.WiFiConnector", "connect, config exists: %b, oldConfig exists: %b", new Object[] { paramString2, paramString3 });
       if (paramString2 == null) {
         break label589;
       }
       str = paramString2;
       if (paramString3 != null)
       {
-        if (!com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b.bJ(paramString1, i)) {
+        if (!com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b.bM(paramString1, i)) {
           break label620;
         }
         com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.saveConfiguration();
@@ -79,40 +79,40 @@ public final class e
       str = paramString2;
       if (i == 0)
       {
-        ad.i("MicroMsg.WiFiConnector", "connect, forgotWifi fail");
+        ae.i("MicroMsg.WiFiConnector", "connect, forgotWifi fail");
         paramString2.networkId = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b.c(paramString2);
         str = paramString2;
-        if (paramString2.networkId == com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.lwI)
+        if (paramString2.networkId == com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.lBg)
         {
-          ad.i("MicroMsg.WiFiConnector", "connect, addConfig fail, use oldConfig");
-          locala.lwF = true;
+          ae.i("MicroMsg.WiFiConnector", "connect, addConfig fail, use oldConfig");
+          locala.lBd = true;
           str = paramString3;
         }
       }
-      if (str.networkId == com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.lwI) {
+      if (str.networkId == com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.lBg) {
         str.networkId = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b.c(str);
       }
-      if (str.networkId != com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.lwI)
+      if (str.networkId != com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.lBg)
       {
         if (locala.a(str))
         {
-          ad.i("MicroMsg.wifi_event", "CONNECTING");
-          locala.tK(1);
-          locala.lwB = str;
-          if (!locala.lwi)
+          ae.i("MicroMsg.wifi_event", "CONNECTING");
+          locala.tP(1);
+          locala.lAZ = str;
+          if (!locala.lAG)
           {
             paramString1 = new IntentFilter();
             paramString1.addAction("android.net.wifi.supplicant.STATE_CHANGE");
             paramString1.addAction("android.net.wifi.STATE_CHANGE");
             paramString1.addAction("android.net.conn.CONNECTIVITY_CHANGE");
             paramString1.setPriority(2147483647);
-            locala.lwj = new WiFiConnector.2(locala);
-            locala.lwy.registerReceiver(locala.lwj, paramString1);
-            locala.lwi = true;
-            ad.i("MicroMsg.WiFiConnector", "startMonitorWiFiEvent");
+            locala.lAH = new WiFiConnector.2(locala);
+            locala.lAW.registerReceiver(locala.lAH, paramString1);
+            locala.lAG = true;
+            ae.i("MicroMsg.WiFiConnector", "startMonitorWiFiEvent");
           }
           locala.mHandler.sendEmptyMessageDelayed(1, 13000L);
-          lwt = new WeakReference(locala);
+          lAR = new WeakReference(locala);
           AppMethodBeat.o(144701);
           return;
           i = 2;
@@ -143,47 +143,47 @@ public final class e
             }
           }
         }
-        ad.i("MicroMsg.WiFiConnector", "connect, connectWifi fail");
+        ae.i("MicroMsg.WiFiConnector", "connect, connectWifi fail");
       }
       for (;;)
       {
         locala.q(false, "fail to connect wifi:invalid network id");
-        ad.i("MicroMsg.wifi_event", "connect args wrong FAIL.");
+        ae.i("MicroMsg.wifi_event", "connect args wrong FAIL.");
         break;
-        ad.i("MicroMsg.WiFiConnector", "connect, addConfig fail");
+        ae.i("MicroMsg.WiFiConnector", "connect, addConfig fail");
       }
     }
   }
   
   public static void a(a parama)
   {
-    lwv = parama;
+    lAT = parama;
   }
   
   public static void a(b paramb)
   {
-    AppMethodBeat.i(195113);
-    ad.i("MicroMsg.WiFiManagerWrapper", "getWifiListAsync");
-    lwu = null;
-    if ((lws) && (com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.isWifiEnabled()))
+    AppMethodBeat.i(208362);
+    ae.i("MicroMsg.WiFiManagerWrapper", "getWifiListAsync");
+    lAS = null;
+    if ((lAQ) && (com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.isWifiEnabled()))
     {
-      ad.i("MicroMsg.WiFiManagerWrapper", "getWifiListAsync, startScan");
+      ae.i("MicroMsg.WiFiManagerWrapper", "getWifiListAsync, startScan");
       com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.startScan();
-      lwx = paramb;
-      AppMethodBeat.o(195113);
+      lAV = paramb;
+      AppMethodBeat.o(208362);
       return;
     }
     d locald = new d();
-    if (lws) {}
-    for (locald.iFQ = "wifi is disable";; locald.iFQ = "sdk not init")
+    if (lAQ) {}
+    for (locald.iIJ = "wifi is disable";; locald.iIJ = "sdk not init")
     {
       paramb.a(locald);
-      AppMethodBeat.o(195113);
+      AppMethodBeat.o(208362);
       return;
     }
   }
   
-  public static c bpq()
+  public static c bqa()
   {
     AppMethodBeat.i(144699);
     WifiInfo localWifiInfo = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.getConnectionInfo();
@@ -197,21 +197,21 @@ public final class e
       localObject = str2;
       if (!TextUtils.isEmpty(localWifiInfo.getSSID()))
       {
-        localObject = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.Rv(localWifiInfo.getSSID());
-        str1 = bt.bI(localWifiInfo.getBSSID(), "");
+        localObject = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.Se(localWifiInfo.getSSID());
+        str1 = bu.bI(localWifiInfo.getBSSID(), "");
       }
     }
-    if ((lwu != null) && (((String)localObject).compareTo(lwu.lwl) == 0) && (str1.compareTo(lwu.lwm) == 0))
+    if ((lAS != null) && (((String)localObject).compareTo(lAS.lAJ) == 0) && (str1.compareTo(lAS.lAK) == 0))
     {
-      localObject = lwu;
+      localObject = lAS;
       AppMethodBeat.o(144699);
       return localObject;
     }
     if (localWifiInfo != null)
     {
-      ad.i("MicroMsg.WiFiManagerWrapper", "getCurrentWiFi, currentWiFiInfo is null, try getWifiList");
+      ae.i("MicroMsg.WiFiManagerWrapper", "getCurrentWiFi, currentWiFiInfo is null, try getWifiList");
       gU(true);
-      localObject = lwu;
+      localObject = lAS;
       AppMethodBeat.o(144699);
       return localObject;
     }
@@ -219,38 +219,38 @@ public final class e
     return null;
   }
   
-  public static d bpr()
+  public static d bqb()
   {
-    AppMethodBeat.i(221706);
+    AppMethodBeat.i(224572);
     d locald = gU(true);
-    AppMethodBeat.o(221706);
+    AppMethodBeat.o(224572);
     return locald;
   }
   
-  public static void bps()
+  public static void bqc()
   {
-    AppMethodBeat.i(195112);
-    ad.i("MicroMsg.WiFiManagerWrapper", "releaseGetWiFiListCallback");
-    lwx = null;
-    AppMethodBeat.o(195112);
+    AppMethodBeat.i(208361);
+    ae.i("MicroMsg.WiFiManagerWrapper", "releaseGetWiFiListCallback");
+    lAV = null;
+    AppMethodBeat.o(208361);
   }
   
-  public static void dC(Context paramContext)
+  public static void dG(Context paramContext)
   {
     AppMethodBeat.i(144698);
-    if ((!lws) && (paramContext != null))
+    if ((!lAQ) && (paramContext != null))
     {
-      mContext = aj.getContext();
-      ad.i("MicroMsg.WiFiManagerWrapper", "initSdk, register WifiScanResultBroadcastReceiver");
-      if (lww == null) {
-        lww = new a((byte)0);
+      mContext = ak.getContext();
+      ae.i("MicroMsg.WiFiManagerWrapper", "initSdk, register WifiScanResultBroadcastReceiver");
+      if (lAU == null) {
+        lAU = new a((byte)0);
       }
-      mContext.registerReceiver(lww, new IntentFilter("android.net.wifi.SCAN_RESULTS"));
+      mContext.registerReceiver(lAU, new IntentFilter("android.net.wifi.SCAN_RESULTS"));
       paramContext = (WifiManager)mContext.getSystemService("wifi");
       if (paramContext != null)
       {
         com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.bWU = paramContext;
-        lws = true;
+        lAQ = true;
       }
     }
     AppMethodBeat.o(144698);
@@ -258,30 +258,30 @@ public final class e
   
   private static d gU(boolean paramBoolean)
   {
-    AppMethodBeat.i(195111);
+    AppMethodBeat.i(208360);
     d locald = new d();
-    lwu = null;
+    lAS = null;
     Object localObject2;
     Object localObject1;
     String str;
-    if ((lws) && (com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.isWifiEnabled()))
+    if ((lAQ) && (com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.isWifiEnabled()))
     {
       if (paramBoolean) {
         com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.startScan();
       }
       localObject2 = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.getScanResults();
-      locald.lwr = new ArrayList();
-      locald.iFQ = "ok";
+      locald.lAP = new ArrayList();
+      locald.iIJ = "ok";
       if (localObject2 != null)
       {
-        ad.d("MicroMsg.WiFiManagerWrapper", "[getWifiList] ScanResult:%s, size:%d", new Object[] { localObject2, Integer.valueOf(((List)localObject2).size()) });
+        ae.d("MicroMsg.WiFiManagerWrapper", "[getWifiList] ScanResult:%s, size:%d", new Object[] { localObject2, Integer.valueOf(((List)localObject2).size()) });
         localObject1 = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.getConnectionInfo();
-        ad.d("MicroMsg.WiFiManagerWrapper", "[getWifiList] currentWiFiInfo:%s", new Object[] { localObject1 });
+        ae.d("MicroMsg.WiFiManagerWrapper", "[getWifiList] currentWiFiInfo:%s", new Object[] { localObject1 });
         if ((localObject1 == null) || (TextUtils.isEmpty(((WifiInfo)localObject1).getSSID()))) {
           break label425;
         }
-        str = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.Rv(((WifiInfo)localObject1).getSSID());
-        localObject1 = bt.bI(((WifiInfo)localObject1).getBSSID(), "");
+        str = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.Se(((WifiInfo)localObject1).getSSID());
+        localObject1 = bu.bI(((WifiInfo)localObject1).getBSSID(), "");
       }
     }
     for (;;)
@@ -294,16 +294,16 @@ public final class e
         {
           int j = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.a(localScanResult);
           c localc = new c();
-          localc.lwl = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.Rv(localScanResult.SSID);
-          localc.lwm = bt.bI(localScanResult.BSSID, "");
-          localc.lwn = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.tO(localScanResult.level);
+          localc.lAJ = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d.Se(localScanResult.SSID);
+          localc.lAK = bu.bI(localScanResult.BSSID, "");
+          localc.lAL = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.tT(localScanResult.level);
           if (j == 2)
           {
             paramBoolean = true;
             label255:
-            localc.lwo = paramBoolean;
+            localc.lAM = paramBoolean;
             localc.frequency = localScanResult.frequency;
-            if ((str == null) || (localObject1 == null) || (localc.lwl.compareTo(str) != 0) || (localc.lwm.compareTo((String)localObject1) != 0)) {
+            if ((str == null) || (localObject1 == null) || (localc.lAJ.compareTo(str) != 0) || (localc.lAK.compareTo((String)localObject1) != 0)) {
               break label346;
             }
           }
@@ -311,29 +311,29 @@ public final class e
           for (int i = 1;; i = 0)
           {
             if (i != 0) {
-              lwu = localc;
+              lAS = localc;
             }
             if ((j != 0) && (j != 2)) {
               break;
             }
-            locald.lwr.add(localc);
+            locald.lAP.add(localc);
             break;
             paramBoolean = false;
             break label255;
           }
         }
       }
-      ad.i("MicroMsg.WiFiManagerWrapper", "[getWifiList] mCurrentWiFi: " + lwu);
+      ae.i("MicroMsg.WiFiManagerWrapper", "[getWifiList] mCurrentWiFi: " + lAS);
       for (;;)
       {
-        AppMethodBeat.o(195111);
+        AppMethodBeat.o(208360);
         return locald;
-        ad.e("MicroMsg.WiFiManagerWrapper", "wifiList is null");
+        ae.e("MicroMsg.WiFiManagerWrapper", "wifiList is null");
         continue;
-        if (lws) {
-          locald.iFQ = "wifi is disable";
+        if (lAQ) {
+          locald.iIJ = "wifi is disable";
         } else {
-          locald.iFQ = "sdk not init";
+          locald.iIJ = "sdk not init";
         }
       }
       label425:
@@ -347,29 +347,29 @@ public final class e
   {
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(195109);
-      ad.i("MicroMsg.WiFiManagerWrapper", "onReceive");
+      AppMethodBeat.i(208358);
+      ae.i("MicroMsg.WiFiManagerWrapper", "onReceive");
       if ((paramIntent == null) || (!"android.net.wifi.SCAN_RESULTS".equals(paramIntent.getAction())))
       {
-        ad.w("MicroMsg.WiFiManagerWrapper", "onReceive, action not match");
-        AppMethodBeat.o(195109);
+        ae.w("MicroMsg.WiFiManagerWrapper", "onReceive, action not match");
+        AppMethodBeat.o(208358);
         return;
       }
-      paramContext = e.bpt();
+      paramContext = e.bqd();
       if (paramContext == null)
       {
-        ad.i("MicroMsg.WiFiManagerWrapper", "onReceive, getWiFiListCallback is null");
-        AppMethodBeat.o(195109);
+        ae.i("MicroMsg.WiFiManagerWrapper", "onReceive, getWiFiListCallback is null");
+        AppMethodBeat.o(208358);
         return;
       }
-      paramContext.a(e.bpu());
-      AppMethodBeat.o(195109);
+      paramContext.a(e.bqe());
+      AppMethodBeat.o(208358);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.e
  * JD-Core Version:    0.7.0.1
  */

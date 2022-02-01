@@ -7,9 +7,9 @@ public enum y$c
   static
   {
     AppMethodBeat.i(149431);
-    cRT = new c("VIDEO", 0);
-    cRU = new c("PHOTO", 1);
-    cRV = new c[] { cRT, cRU };
+    cSD = new c("VIDEO", 0);
+    cSE = new c("PHOTO", 1);
+    cSF = new c[] { cSD, cSE };
     AppMethodBeat.o(149431);
   }
   
@@ -17,7 +17,7 @@ public enum y$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.y.c
  * JD-Core Version:    0.7.0.1
  */

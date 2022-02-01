@@ -6,13 +6,13 @@ import java.io.Serializable;
 public final class y$b
   implements Serializable
 {
-  public double MLR;
+  public double NiU;
   
   public final String toString()
   {
-    AppMethodBeat.i(199604);
-    double d = this.MLR;
-    AppMethodBeat.o(199604);
+    AppMethodBeat.i(188696);
+    double d = this.NiU;
+    AppMethodBeat.o(188696);
     return String.valueOf(d);
   }
 }

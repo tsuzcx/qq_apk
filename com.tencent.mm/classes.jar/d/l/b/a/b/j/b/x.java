@@ -25,12 +25,12 @@ public final class x
   {
     AppMethodBeat.i(60120);
     p.h(paramy, "module");
-    a locala = g.MQb.MRy;
+    a locala = g.Nng.NoD;
     p.g(locala, "KotlinBuiltIns.FQ_NAMES.uInt");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.giC();
+      paramy = paramy.gne();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -38,7 +38,7 @@ public final class x
         return paramy;
       }
     }
-    paramy = u.bcU("Unsigned type UInt not found");
+    paramy = u.bey("Unsigned type UInt not found");
     p.g(paramy, "ErrorUtils.createErrorTy…ned type UInt not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60120);
@@ -55,7 +55,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.x
  * JD-Core Version:    0.7.0.1
  */

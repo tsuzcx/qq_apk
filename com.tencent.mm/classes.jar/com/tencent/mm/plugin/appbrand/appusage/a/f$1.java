@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.zb;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.protocal.protobuf.ze;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.LinkedList;
 
 public final class f$1
@@ -14,17 +14,17 @@ public final class f$1
   public final void run()
   {
     AppMethodBeat.i(44674);
-    zb localzb = new zb();
-    localzb.FYG = ay.getNetTypeString(aj.getContext());
-    localzb.latitude = c.bcI();
-    localzb.longitude = c.bcH();
-    new j(this.jRa, this.jRb, this.jRc, this.jRd, this.jRe, this.jRf, localzb) {}.aED();
+    ze localze = new ze();
+    localze.Grf = az.getNetTypeString(ak.getContext());
+    localze.latitude = c.bdn();
+    localze.longitude = c.bdm();
+    new j(this.jUs, this.jUt, this.jUu, this.jUv, this.jUw, this.jUx, localze) {}.aET();
     AppMethodBeat.o(44674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.f.1
  * JD-Core Version:    0.7.0.1
  */

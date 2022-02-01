@@ -15,7 +15,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aq
 {
-  private static SparseIntArray HVk;
+  private static SparseIntArray Ips;
   private static float density;
   private static float scale;
   
@@ -24,7 +24,7 @@ public final class aq
     AppMethodBeat.i(159132);
     density = -1.0F;
     scale = 0.0F;
-    HVk = new SparseIntArray();
+    Ips = new SparseIntArray();
     AppMethodBeat.o(159132);
   }
   
@@ -57,18 +57,18 @@ public final class aq
       AppMethodBeat.o(159126);
       return 0;
     }
-    int j = HVk.get(paramInt, 0);
+    int j = Ips.get(paramInt, 0);
     int i = j;
     if (j == 0)
     {
       i = paramContext.getResources().getDimensionPixelSize(paramInt);
-      HVk.put(paramInt, i);
+      Ips.put(paramInt, i);
     }
     AppMethodBeat.o(159126);
     return i;
   }
   
-  public static float eb(Context paramContext)
+  public static float ef(Context paramContext)
   {
     AppMethodBeat.i(159128);
     if (scale == 0.0F) {
@@ -104,7 +104,7 @@ public final class aq
     return f;
   }
   
-  public static ColorStateList jV(Context paramContext)
+  public static ColorStateList kc(Context paramContext)
   {
     AppMethodBeat.i(159131);
     TypedValue localTypedValue = new TypedValue();

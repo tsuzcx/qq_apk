@@ -135,7 +135,7 @@ public final class g<V>
     return k;
   }
   
-  public final int[] BC()
+  public final int[] BD()
   {
     int[] arrayOfInt1 = new int[size()];
     int[] arrayOfInt2 = this.cfQ;

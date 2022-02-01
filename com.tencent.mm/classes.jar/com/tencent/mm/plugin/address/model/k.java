@@ -1,83 +1,83 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.am.g;
-import com.tencent.mm.g.a.pq;
-import com.tencent.mm.g.a.pq.a;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.al.g;
+import com.tencent.mm.g.a.pr;
+import com.tencent.mm.g.a.pr.a;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.address.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 
 public final class k
-  extends com.tencent.mm.sdk.b.c<pq>
+  extends com.tencent.mm.sdk.b.c<pr>
   implements f
 {
-  private pq jrL;
-  private com.tencent.mm.api.c jrM;
+  private pr juE;
+  private com.tencent.mm.api.c juF;
   
   public k()
   {
     AppMethodBeat.i(161286);
-    this.__eventId = pq.class.getName().hashCode();
+    this.__eventId = pr.class.getName().hashCode();
     AppMethodBeat.o(161286);
   }
   
   private void G(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(20795);
-    ad.d("MicroMsg.RcptGetAddrEventListener", "setResult errCode[%s], isAccept[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    this.jrL.dDU.errCode = paramInt;
+    ae.d("MicroMsg.RcptGetAddrEventListener", "setResult errCode[%s], isAccept[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    this.juE.dEZ.errCode = paramInt;
     if (paramInt != 0) {
-      this.jrL.dDU.dDV = false;
+      this.juE.dEZ.dFa = false;
     }
     for (;;)
     {
-      if (this.jrL.callback != null) {
-        this.jrL.callback.run();
+      if (this.juE.callback != null) {
+        this.juE.callback.run();
       }
-      ba.aiU().b(417, this);
+      bc.ajj().b(417, this);
       AppMethodBeat.o(20795);
       return;
       if (!paramBoolean)
       {
-        g.k(this.jrM);
-        this.jrL.dDU.dDV = false;
+        g.k(this.juF);
+        this.juE.dEZ.dFa = false;
       }
       else
       {
-        g.j(this.jrM);
-        this.jrL.dDU.dDV = true;
-        com.tencent.mm.plugin.address.a.a.aUR();
-        Object localObject = com.tencent.mm.plugin.address.a.a.aUT().jrP;
-        if (((com.tencent.mm.plugin.address.d.a)localObject).jrY.size() > 0)
+        g.j(this.juF);
+        this.juE.dEZ.dFa = true;
+        com.tencent.mm.plugin.address.a.a.aVq();
+        Object localObject = com.tencent.mm.plugin.address.a.a.aVs().juI;
+        if (((com.tencent.mm.plugin.address.d.a)localObject).juR.size() > 0)
         {
-          localObject = (b)((com.tencent.mm.plugin.address.d.a)localObject).jrY.getFirst();
-          this.jrL.dDU.dDW = ((b)localObject).jsh;
-          this.jrL.dDU.userName = ((b)localObject).jsf;
-          this.jrL.dDU.dDX = ((b)localObject).jsg;
-          this.jrL.dDU.dDY = ((b)localObject).jsd;
-          this.jrL.dDU.dDZ = ((b)localObject).jsa;
-          this.jrL.dDU.dEa = ((b)localObject).jsb;
-          this.jrL.dDU.dEb = ((b)localObject).jsc;
-          this.jrL.dDU.dEc = ((b)localObject).jse;
+          localObject = (b)((com.tencent.mm.plugin.address.d.a)localObject).juR.getFirst();
+          this.juE.dEZ.dFb = ((b)localObject).jva;
+          this.juE.dEZ.userName = ((b)localObject).juY;
+          this.juE.dEZ.dFc = ((b)localObject).juZ;
+          this.juE.dEZ.dFd = ((b)localObject).juW;
+          this.juE.dEZ.dFe = ((b)localObject).juT;
+          this.juE.dEZ.dFf = ((b)localObject).juU;
+          this.juE.dEZ.dFg = ((b)localObject).juV;
+          this.juE.dEZ.dFh = ((b)localObject).juX;
         }
       }
     }
   }
   
-  private boolean a(pq parampq)
+  private boolean a(pr parampr)
   {
     AppMethodBeat.i(20793);
-    if ((parampq instanceof pq))
+    if ((parampr instanceof pr))
     {
-      this.jrL = parampq;
-      ba.aiU().a(417, this);
-      parampq = new e(this.jrL.dDT.url, this.jrL.dDT.appId, 1);
-      ba.aiU().a(parampq, 0);
+      this.juE = parampr;
+      bc.ajj().a(417, this);
+      parampr = new e(this.juE.dEY.url, this.juE.dEY.appId, 1);
+      bc.ajj().a(parampr, 0);
     }
     AppMethodBeat.o(20793);
     return true;
@@ -86,7 +86,7 @@ public final class k
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(20794);
-    ad.d("MicroMsg.RcptGetAddrEventListener", "onSceneEnd errType[%s], errCode[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.d("MicroMsg.RcptGetAddrEventListener", "onSceneEnd errType[%s], errCode[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramn instanceof e))
     {
       if (paramInt2 == 0)
@@ -102,7 +102,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.k
  * JD-Core Version:    0.7.0.1
  */

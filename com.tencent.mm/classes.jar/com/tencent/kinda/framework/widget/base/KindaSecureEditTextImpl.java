@@ -22,9 +22,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.aq;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public class KindaSecureEditTextImpl
@@ -41,17 +41,17 @@ public class KindaSecureEditTextImpl
   
   private void setregExFilterInput(KeyboardType paramKeyboardType)
   {
-    AppMethodBeat.i(199489);
+    AppMethodBeat.i(193205);
     if ((paramKeyboardType == KeyboardType.ID) || (paramKeyboardType == KeyboardType.CRETAIL))
     {
       this.editText.setregExFilterInput("[^a-zA-Z0-9]");
-      AppMethodBeat.o(199489);
+      AppMethodBeat.o(193205);
       return;
     }
     if (paramKeyboardType == KeyboardType.NUMBER) {
       this.editText.setregExFilterInput("[^0-9]");
     }
-    AppMethodBeat.o(199489);
+    AppMethodBeat.o(193205);
   }
   
   public LinearLayout createView(Context paramContext)
@@ -62,8 +62,8 @@ public class KindaSecureEditTextImpl
     this.editText = new TenpaySecureEditText(paramContext);
     this.editText.setSingleLine();
     this.editText.setBackground(null);
-    this.editText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), 17.0F));
-    TenpaySecureEditText.setSalt(e.fSb());
+    this.editText.setTextSize(0, MMKViewUtil.dpToPx(ak.getContext(), 17.0F));
+    TenpaySecureEditText.setSalt(f.fWx());
     this.editText.setPadding(0, 0, 0, 0);
     this.editText.setCursorStyle(2131232606);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
@@ -91,7 +91,7 @@ public class KindaSecureEditTextImpl
         AppMethodBeat.i(18946);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         KindaSecureEditTextImpl.this.editText.setText("");
         a.a(this, "com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(18946);
@@ -311,12 +311,12 @@ public class KindaSecureEditTextImpl
   @SuppressLint({"ResourceType"})
   public void setViewId(String paramString)
   {
-    AppMethodBeat.i(199488);
+    AppMethodBeat.i(193204);
     super.setViewId(paramString);
     if (this.iconImageView != null) {
       MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
     }
-    AppMethodBeat.o(199488);
+    AppMethodBeat.o(193204);
   }
   
   public void setVisibleClearIcon(boolean paramBoolean)
@@ -334,7 +334,7 @@ public class KindaSecureEditTextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaSecureEditTextImpl
  * JD-Core Version:    0.7.0.1
  */

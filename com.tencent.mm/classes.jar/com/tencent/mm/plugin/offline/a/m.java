@@ -6,11 +6,11 @@ import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.g.b.a.c;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.offline.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.wallet_core.c.b;
 import com.tencent.xweb.util.d;
 import java.util.HashMap;
@@ -20,21 +20,21 @@ import org.json.JSONObject;
 public final class m
   extends h
 {
-  String dyV;
+  String dAa;
   public String token;
-  public String wyl;
-  public String wym;
-  public String wyn;
-  public String wyp;
-  public int wyq;
-  public String wyr;
-  public String wys;
-  public String wyt;
-  private String wyv;
-  private int wyw;
-  public String wyx;
-  public int wyy;
-  int wyz;
+  public String wNW;
+  public String wNX;
+  public String wNY;
+  public String wOa;
+  public int wOb;
+  public String wOc;
+  public String wOd;
+  public String wOe;
+  private String wOg;
+  private int wOh;
+  public String wOi;
+  public int wOj;
+  int wOk;
   
   public m(String paramString, int paramInt)
   {
@@ -47,77 +47,77 @@ public final class m
   {
     AppMethodBeat.i(66307);
     this.token = "";
-    this.wyl = "";
-    this.wym = "";
-    this.wyn = "";
-    this.wyp = "";
-    this.wyq = 0;
-    this.wyr = "";
-    this.wys = "";
-    this.wyt = "";
-    this.wyy = 0;
-    this.wyz = 0;
-    this.dyV = d.getMessageDigest(System.currentTimeMillis().getBytes());
-    ad.v("MicroMsg.NetSceneTenpayWxOfflineGetToken", "scene %s stack %s ", new Object[] { Integer.valueOf(paramInt1), bt.flS().toString() });
+    this.wNW = "";
+    this.wNX = "";
+    this.wNY = "";
+    this.wOa = "";
+    this.wOb = 0;
+    this.wOc = "";
+    this.wOd = "";
+    this.wOe = "";
+    this.wOj = 0;
+    this.wOk = 0;
+    this.dAa = d.getMessageDigest(System.currentTimeMillis().getBytes());
+    ae.v("MicroMsg.NetSceneTenpayWxOfflineGetToken", "scene %s stack %s ", new Object[] { Integer.valueOf(paramInt1), bu.fpN().toString() });
     Object localObject2 = a.getToken();
-    com.tencent.mm.plugin.offline.k.dwq();
-    String str = com.tencent.mm.plugin.offline.k.Mi(196628);
+    com.tencent.mm.plugin.offline.k.dzG();
+    String str = com.tencent.mm.plugin.offline.k.MN(196628);
     Object localObject1 = str;
     if (TextUtils.isEmpty(str)) {
-      localObject1 = q.aay();
+      localObject1 = q.aaH();
     }
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
       paramString = (String)localObject1 + "&" + paramString + "&" + ((int)(Math.random() * 1000000.0D) + 1000000);
       localObject1 = new HashMap();
       ((Map)localObject1).put("token_src", paramString);
-      com.tencent.mm.plugin.offline.k.dwq();
-      str = com.tencent.mm.plugin.offline.k.Mi(196617);
+      com.tencent.mm.plugin.offline.k.dzG();
+      str = com.tencent.mm.plugin.offline.k.MN(196617);
       switch (paramInt2)
       {
       default: 
         paramInt2 = 12;
         label303:
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, paramInt2, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, paramInt2, 1L, true);
         localObject2 = new c();
-        ((c)localObject2).gD(this.dyV);
-        ((c)localObject2).dPH = 1L;
-        b.fRq();
+        ((c)localObject2).gJ(this.dAa);
+        ((c)localObject2).dQX = 1L;
+        b.fVM();
         if (b.isCertExist(str))
         {
-          ((c)localObject2).dPI = 1;
-          b.fRq();
-          ((c)localObject2).dPJ = b.getLastError();
-          ((c)localObject2).aLk();
+          ((c)localObject2).dQY = 1;
+          b.fVM();
+          ((c)localObject2).dQZ = b.getLastError();
+          ((c)localObject2).aLH();
           localObject2 = new c();
-          ((c)localObject2).gD(this.dyV);
-          ((c)localObject2).dPH = 3L;
-          b.fRq();
+          ((c)localObject2).gJ(this.dAa);
+          ((c)localObject2).dQX = 3L;
+          b.fVM();
           paramString = b.genUserSig(str, paramString);
-          if (bt.isNullOrNil(paramString))
+          if (bu.isNullOrNil(paramString))
           {
-            ((c)localObject2).dPI = 0;
-            b.fRq();
-            ((c)localObject2).dPJ = b.getLastError();
-            ((c)localObject2).aLk();
+            ((c)localObject2).dQY = 0;
+            b.fVM();
+            ((c)localObject2).dQZ = b.getLastError();
+            ((c)localObject2).aLH();
             label448:
-            ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "CertUtil.getInstance().isCertExist(cn) true");
+            ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "CertUtil.getInstance().isCertExist(cn) true");
             if (!TextUtils.isEmpty(paramString)) {
               break label1012;
             }
-            ad.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken sign is empty!");
-            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 4L, 1L, true);
+            ae.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken sign is empty!");
+            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 4L, 1L, true);
             label483:
             ((Map)localObject1).put("sign", paramString);
             ((Map)localObject1).put("cert_no", str);
-            ((Map)localObject1).put("type", k.wyo);
-            ((Map)localObject1).put("version_number", k.wyo);
-            if (a.dxw() != 2) {
+            ((Map)localObject1).put("type", k.wNZ);
+            ((Map)localObject1).put("version_number", k.wNZ);
+            if (a.dAM() != 2) {
               break label1023;
             }
-            ((Map)localObject1).put("last_token", a.dxx());
+            ((Map)localObject1).put("last_token", a.dAN());
             label554:
-            ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "inOfflineUI: %B", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.offline.k.wxG) });
+            ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "inOfflineUI: %B", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.offline.k.wNr) });
             if (paramInt1 != 65281) {
               break label1040;
             }
@@ -161,51 +161,51 @@ public final class m
       break label303;
       paramInt2 = 72;
       break label303;
-      ((c)localObject2).dPI = 1;
-      b.fRq();
-      ((c)localObject2).dPJ = b.getLastError();
-      ((c)localObject2).aLk();
+      ((c)localObject2).dQY = 1;
+      b.fVM();
+      ((c)localObject2).dQZ = b.getLastError();
+      ((c)localObject2).aLH();
       break label448;
       paramString = new StringBuilder("NetSceneTenpayWxOfflineGetToken CertUtil.getInstance().getLastError():");
-      b.fRq();
-      ad.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", b.getLastError());
-      ((c)localObject2).dPI = 0;
-      b.fRq();
-      ((c)localObject2).dPJ = b.getLastError();
-      ((c)localObject2).aLk();
-      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 6L, 1L, true);
+      b.fVM();
+      ae.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", b.getLastError());
+      ((c)localObject2).dQY = 0;
+      b.fVM();
+      ((c)localObject2).dQZ = b.getLastError();
+      ((c)localObject2).aLH();
+      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 6L, 1L, true);
       paramString = new c();
-      paramString.gD(this.dyV);
-      paramString.dPH = 2L;
-      com.tencent.mm.kernel.g.ajD();
-      localObject2 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IpV, "");
+      paramString.gJ(this.dAa);
+      paramString.dQX = 2L;
+      com.tencent.mm.kernel.g.ajS();
+      localObject2 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IKp, "");
       if ((localObject2 != null) && (((String)localObject2).equals(q.cH(true))))
       {
-        ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken iemi is same between create and getToken");
-        paramString.dPI = 1;
-        b.fRq();
-        paramString.dPJ = b.getLastError();
+        ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken iemi is same between create and getToken");
+        paramString.dQY = 1;
+        b.fVM();
+        paramString.dQZ = b.getLastError();
       }
       for (;;)
       {
-        paramString.aLk();
-        ad.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken CertUtil.getInstance().isCertExist return false! cn: ".concat(String.valueOf(str)));
+        paramString.aLH();
+        ae.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken CertUtil.getInstance().isCertExist return false! cn: ".concat(String.valueOf(str)));
         paramString = "";
         break;
-        paramString.dPI = 0;
-        b.fRq();
-        paramString.dPJ = b.getLastError();
-        ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken iemi is diff between create and getToken");
-        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 5L, 1L, true);
+        paramString.dQY = 0;
+        b.fVM();
+        paramString.dQZ = b.getLastError();
+        ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", " NetSceneTenpayWxOfflineGetToken iemi is diff between create and getToken");
+        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 5L, 1L, true);
       }
       label1012:
-      ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "sign is valid");
+      ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "sign is valid");
       break label483;
       label1023:
       ((Map)localObject1).put("last_token", a.getToken());
       break label554;
       label1040:
-      if (com.tencent.mm.plugin.offline.k.wxG) {
+      if (com.tencent.mm.plugin.offline.k.wNr) {
         ((Map)localObject1).put("fetch_tag", "1");
       } else {
         ((Map)localObject1).put("fetch_tag", "0");
@@ -213,69 +213,69 @@ public final class m
     }
   }
   
-  public final boolean dwv()
+  public final boolean dzL()
   {
     AppMethodBeat.i(66309);
-    ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "do save token");
-    com.tencent.mm.plugin.offline.k.dwq();
-    com.tencent.mm.plugin.offline.k.bz(196626, this.wyl);
-    com.tencent.mm.plugin.offline.k.dwq();
-    com.tencent.mm.plugin.offline.k.bz(196627, this.wym);
-    com.tencent.mm.plugin.offline.k.dwq();
-    com.tencent.mm.plugin.offline.k.bz(196628, this.wyn);
-    com.tencent.mm.plugin.offline.k.dwq();
+    ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "do save token");
+    com.tencent.mm.plugin.offline.k.dzG();
+    com.tencent.mm.plugin.offline.k.bz(196626, this.wNW);
+    com.tencent.mm.plugin.offline.k.dzG();
+    com.tencent.mm.plugin.offline.k.bz(196627, this.wNX);
+    com.tencent.mm.plugin.offline.k.dzG();
+    com.tencent.mm.plugin.offline.k.bz(196628, this.wNY);
+    com.tencent.mm.plugin.offline.k.dzG();
     com.tencent.mm.plugin.offline.k.bz(196632, System.currentTimeMillis() / 1000L);
-    a.s(this.token, this.wyp, this.wyr, this.wys);
-    a.Mq(this.wyq);
-    com.tencent.mm.plugin.offline.k.dwq();
-    com.tencent.mm.plugin.offline.k.bz(196647, this.wyt);
-    com.tencent.mm.plugin.offline.k.dwq();
-    Object localObject1 = com.tencent.mm.plugin.offline.k.Mi(196617);
-    b.fRq();
+    a.s(this.token, this.wOa, this.wOc, this.wOd);
+    a.MV(this.wOb);
+    com.tencent.mm.plugin.offline.k.dzG();
+    com.tencent.mm.plugin.offline.k.bz(196647, this.wOe);
+    com.tencent.mm.plugin.offline.k.dzG();
+    Object localObject1 = com.tencent.mm.plugin.offline.k.MN(196617);
+    b.fVM();
     b.clearToken((String)localObject1);
-    b.fRq();
-    Object localObject2 = this.wyv;
+    b.fVM();
+    Object localObject2 = this.wOg;
     boolean bool;
-    if (this.wyz == 1)
+    if (this.wOk == 1)
     {
       bool = true;
       bool = b.F((String)localObject1, (String)localObject2, bool);
       localObject1 = new c();
-      ((c)localObject1).gD(this.dyV);
-      ((c)localObject1).dPH = 3L;
+      ((c)localObject1).gJ(this.dAa);
+      ((c)localObject1).dQX = 3L;
       if (bool) {
         break label317;
       }
-      ((c)localObject1).dPI = 0;
-      b.fRq();
-      ((c)localObject1).dPJ = b.getLastError();
-      ad.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", "CertUtil.getInstance().setTokens failed!");
+      ((c)localObject1).dQY = 0;
+      b.fVM();
+      ((c)localObject1).dQZ = b.getLastError();
+      ae.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", "CertUtil.getInstance().setTokens failed!");
       localObject2 = new StringBuilder("WalletOfflineEntranceUI CertUtil.getInstance().getLastError():");
-      b.fRq();
-      ad.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", b.getLastError());
+      b.fVM();
+      ae.e("MicroMsg.NetSceneTenpayWxOfflineGetToken", b.getLastError());
     }
     for (;;)
     {
-      ((c)localObject1).aLk();
-      com.tencent.mm.plugin.offline.k.dwq();
-      com.tencent.mm.plugin.offline.k.bz(196649, this.wyw);
-      com.tencent.mm.kernel.g.ajD();
-      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IpW, this.wyx);
+      ((c)localObject1).aLH();
+      com.tencent.mm.plugin.offline.k.dzG();
+      com.tencent.mm.plugin.offline.k.bz(196649, this.wOh);
+      com.tencent.mm.kernel.g.ajS();
+      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKq, this.wOi);
       AppMethodBeat.o(66309);
       return bool;
       bool = false;
       break;
       label317:
-      ((c)localObject1).dPI = 1;
-      b.fRq();
-      ((c)localObject1).dPJ = b.getLastError();
-      ad.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "CertUtil.getInstance().setTokens success!");
+      ((c)localObject1).dQY = 1;
+      b.fVM();
+      ((c)localObject1).dQZ = b.getLastError();
+      ae.i("MicroMsg.NetSceneTenpayWxOfflineGetToken", "CertUtil.getInstance().setTokens success!");
     }
   }
   
   public final int getFuncId()
   {
-    if (com.tencent.mm.plugin.offline.k.wxG) {
+    if (com.tencent.mm.plugin.offline.k.wNr) {
       return 571;
     }
     return 1725;
@@ -283,7 +283,7 @@ public final class m
   
   public final int getTenpayCgicmd()
   {
-    if (com.tencent.mm.plugin.offline.k.wxG) {
+    if (com.tencent.mm.plugin.offline.k.wNr) {
       return 52;
     }
     return 1725;
@@ -291,7 +291,7 @@ public final class m
   
   public final String getUri()
   {
-    if (com.tencent.mm.plugin.offline.k.wxG) {
+    if (com.tencent.mm.plugin.offline.k.wNr) {
       return "/cgi-bin/mmpay-bin/tenpay/offlinegettoken";
     }
     return "/cgi-bin/mmpay-bin/tenpay/offlinegettokenbackground";
@@ -300,32 +300,32 @@ public final class m
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66308);
-    ad.d("MicroMsg.NetSceneTenpayWxOfflineGetToken", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ae.d("MicroMsg.NetSceneTenpayWxOfflineGetToken", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     if (paramInt == 0)
     {
       this.token = paramJSONObject.optString("token");
-      this.wyl = paramJSONObject.optString("valid_end");
-      this.wym = paramJSONObject.optString("encrypt_str");
-      this.wyn = paramJSONObject.optString("deviceid");
-      this.wyp = paramJSONObject.optString("token_v2");
-      this.wyq = paramJSONObject.optInt("algorithm_type");
-      this.wyr = paramJSONObject.optString("card_list");
-      this.wys = paramJSONObject.optString("key_list");
-      this.wyt = paramJSONObject.optString("token_pin");
-      this.wyv = paramJSONObject.optString("auth_codes");
-      this.wyw = paramJSONObject.optInt("update_interval");
-      this.wyx = paramJSONObject.optString("code_ver");
-      this.wyy = paramJSONObject.optInt("reget_token_num", 0);
-      this.wyz = paramJSONObject.optInt("cipher_type", 0);
-      a.Ms(this.wyy);
-      ad.d("MicroMsg.NetSceneTenpayWxOfflineGetToken", "json: %s", new Object[] { paramJSONObject.toString() });
+      this.wNW = paramJSONObject.optString("valid_end");
+      this.wNX = paramJSONObject.optString("encrypt_str");
+      this.wNY = paramJSONObject.optString("deviceid");
+      this.wOa = paramJSONObject.optString("token_v2");
+      this.wOb = paramJSONObject.optInt("algorithm_type");
+      this.wOc = paramJSONObject.optString("card_list");
+      this.wOd = paramJSONObject.optString("key_list");
+      this.wOe = paramJSONObject.optString("token_pin");
+      this.wOg = paramJSONObject.optString("auth_codes");
+      this.wOh = paramJSONObject.optInt("update_interval");
+      this.wOi = paramJSONObject.optString("code_ver");
+      this.wOj = paramJSONObject.optInt("reget_token_num", 0);
+      this.wOk = paramJSONObject.optInt("cipher_type", 0);
+      a.MX(this.wOj);
+      ae.d("MicroMsg.NetSceneTenpayWxOfflineGetToken", "json: %s", new Object[] { paramJSONObject.toString() });
     }
     AppMethodBeat.o(66308);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.m
  * JD-Core Version:    0.7.0.1
  */

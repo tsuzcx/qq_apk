@@ -6,55 +6,47 @@ import com.tencent.mm.plugin.report.a;
 public final class hl
   extends a
 {
-  public long erT = 0L;
-  private String erZ = "";
-  public long esa = 0L;
+  public long dQB = 0L;
+  private String etE = "";
+  public long etF = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(91248);
+    AppMethodBeat.i(149944);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.erT);
+    ((StringBuffer)localObject).append(this.dQB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.erZ);
+    ((StringBuffer)localObject).append(this.etE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.esa);
+    ((StringBuffer)localObject).append(this.etF);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(91248);
+    axO((String)localObject);
+    AppMethodBeat.o(149944);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(91249);
+    AppMethodBeat.i(149945);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ReportScene:").append(this.erT);
+    ((StringBuffer)localObject).append("Action:").append(this.dQB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransferUserName:").append(this.erZ);
+    ((StringBuffer)localObject).append("ReqKey:").append(this.etE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransferAmount:").append(this.esa);
+    ((StringBuffer)localObject).append("EnterSettingScene:").append(this.etF);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91249);
+    AppMethodBeat.o(149945);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16016;
-  }
-  
-  public final hl qc(String paramString)
-  {
-    AppMethodBeat.i(91247);
-    this.erZ = t("TransferUserName", paramString, true);
-    AppMethodBeat.o(91247);
-    return this;
+    return 18262;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hl
  * JD-Core Version:    0.7.0.1
  */

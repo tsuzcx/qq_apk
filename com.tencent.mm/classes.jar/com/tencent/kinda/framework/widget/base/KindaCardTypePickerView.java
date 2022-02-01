@@ -84,7 +84,7 @@ public class KindaCardTypePickerView
         localArrayList.add(((Option)localIterator.next()).mContent);
       }
       this.mOptionPiker = new c(this.mContext, localArrayList);
-      this.mOptionPiker.LaQ = new c.a()
+      this.mOptionPiker.Lxq = new c.a()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -94,14 +94,14 @@ public class KindaCardTypePickerView
           {
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             KindaCardTypePickerView.this.mEditText.setText(paramAnonymousObject1);
-            KindaCardTypePickerView.access$202(KindaCardTypePickerView.this, KindaCardTypePickerView.this.mOptionPiker.fMM());
-            KindaCardTypePickerView.this.mCallBack.onSelect(KindaCardTypePickerView.this.mOptionPiker.fMM());
+            KindaCardTypePickerView.access$202(KindaCardTypePickerView.this, KindaCardTypePickerView.this.mOptionPiker.fRg());
+            KindaCardTypePickerView.this.mCallBack.onSelect(KindaCardTypePickerView.this.mOptionPiker.fRg());
           }
           AppMethodBeat.o(18887);
         }
       };
       if (this.selected != -1) {
-        this.mOptionPiker.afD(this.selected);
+        this.mOptionPiker.agm(this.selected);
       }
       this.mOptionPiker.show();
     }
@@ -132,7 +132,7 @@ public class KindaCardTypePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaCardTypePickerView
  * JD-Core Version:    0.7.0.1
  */

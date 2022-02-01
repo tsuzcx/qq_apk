@@ -22,11 +22,11 @@ public abstract class o
   {
     if (TextUtils.isEmpty(this.mKey))
     {
-      a(paramm, paramm.NA().getGlobalObject());
+      a(paramm, paramm.Ny().getGlobalObject());
       return this;
     }
-    V8Object localV8Object = paramm.NA().newV8Object();
-    paramm.NA().add(this.mKey, localV8Object);
+    V8Object localV8Object = paramm.Ny().newV8Object();
+    paramm.Ny().add(this.mKey, localV8Object);
     a(paramm, localV8Object);
     localV8Object.release();
     return this;
@@ -38,7 +38,7 @@ public abstract class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.o
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,14 @@ public class PAGSurface
   
   static
   {
-    AppMethodBeat.i(220208);
+    AppMethodBeat.i(216962);
     b.loadLibrary("libpag");
     nativeInit();
     PAGFont.loadSystemFonts();
     if (b.getAppContext() != null) {
       AVReportCenter.getInstance().init(b.getAppContext());
     }
-    AppMethodBeat.o(220208);
+    AppMethodBeat.o(216962);
   }
   
   private PAGSurface(long paramLong)
@@ -35,18 +35,18 @@ public class PAGSurface
   
   public static PAGSurface FromSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(220201);
+    AppMethodBeat.i(216955);
     paramSurface = FromSurface(paramSurface, EGL14.EGL_NO_CONTEXT);
-    AppMethodBeat.o(220201);
+    AppMethodBeat.o(216955);
     return paramSurface;
   }
   
   public static PAGSurface FromSurface(Surface paramSurface, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(220202);
+    AppMethodBeat.i(216956);
     if (paramSurface == null)
     {
-      AppMethodBeat.o(220202);
+      AppMethodBeat.o(216956);
       return null;
     }
     long l;
@@ -60,7 +60,7 @@ public class PAGSurface
       l = SetupFromSurfaceWithGLContext(paramSurface, l);
       if (l == 0L)
       {
-        AppMethodBeat.o(220202);
+        AppMethodBeat.o(216956);
         return null;
         l = paramEGLContext.getHandle();
       }
@@ -68,7 +68,7 @@ public class PAGSurface
       {
         paramEGLContext = new PAGSurface(l);
         paramEGLContext.surface = paramSurface;
-        AppMethodBeat.o(220202);
+        AppMethodBeat.o(216956);
         return paramEGLContext;
         l = 0L;
       }
@@ -77,58 +77,58 @@ public class PAGSurface
   
   public static PAGSurface FromSurfaceTexture(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(220199);
+    AppMethodBeat.i(216953);
     paramSurfaceTexture = FromSurfaceTexture(paramSurfaceTexture, EGL14.EGL_NO_CONTEXT);
-    AppMethodBeat.o(220199);
+    AppMethodBeat.o(216953);
     return paramSurfaceTexture;
   }
   
   public static PAGSurface FromSurfaceTexture(SurfaceTexture paramSurfaceTexture, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(220200);
+    AppMethodBeat.i(216954);
     if (paramSurfaceTexture == null)
     {
-      AppMethodBeat.o(220200);
+      AppMethodBeat.o(216954);
       return null;
     }
     paramSurfaceTexture = FromSurface(new Surface(paramSurfaceTexture), paramEGLContext);
-    AppMethodBeat.o(220200);
+    AppMethodBeat.o(216954);
     return paramSurfaceTexture;
   }
   
   public static PAGSurface FromTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(220203);
+    AppMethodBeat.i(216957);
     PAGSurface localPAGSurface = FromTexture(paramInt1, paramInt2, paramInt3, false);
-    AppMethodBeat.o(220203);
+    AppMethodBeat.o(216957);
     return localPAGSurface;
   }
   
   public static PAGSurface FromTexture(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(220204);
+    AppMethodBeat.i(216958);
     long l = SetupFromTexture(paramInt1, paramInt2, paramInt3, paramBoolean);
     if (l == 0L)
     {
-      AppMethodBeat.o(220204);
+      AppMethodBeat.o(216958);
       return null;
     }
     PAGSurface localPAGSurface = new PAGSurface(l);
     localPAGSurface.textureID = paramInt1;
-    AppMethodBeat.o(220204);
+    AppMethodBeat.o(216958);
     return localPAGSurface;
   }
   
   public static void OnReportData(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(220207);
+    AppMethodBeat.i(216961);
     if ((paramHashMap == null) || (paramHashMap.isEmpty()))
     {
-      AppMethodBeat.o(220207);
+      AppMethodBeat.o(216961);
       return;
     }
     AVReportCenter.getInstance().commit(paramHashMap);
-    AppMethodBeat.o(220207);
+    AppMethodBeat.o(216961);
   }
   
   private static native long SetupFromSurfaceWithGLContext(Surface paramSurface, long paramLong);
@@ -143,9 +143,9 @@ public class PAGSurface
   
   protected void finalize()
   {
-    AppMethodBeat.i(220206);
+    AppMethodBeat.i(216960);
     nativeFinalize();
-    AppMethodBeat.o(220206);
+    AppMethodBeat.o(216960);
   }
   
   public native void freeCache();
@@ -156,9 +156,9 @@ public class PAGSurface
   
   public void release()
   {
-    AppMethodBeat.i(220205);
+    AppMethodBeat.i(216959);
     nativeRelease();
-    AppMethodBeat.o(220205);
+    AppMethodBeat.o(216959);
   }
   
   public native void updateSize();

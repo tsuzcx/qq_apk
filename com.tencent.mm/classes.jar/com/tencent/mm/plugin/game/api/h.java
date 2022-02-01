@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.game.api;
 
 public abstract interface h
 {
-  public abstract void dI(String paramString, int paramInt);
+  public abstract void dM(String paramString, int paramInt);
   
   public abstract void h(String paramString, float paramFloat);
 }

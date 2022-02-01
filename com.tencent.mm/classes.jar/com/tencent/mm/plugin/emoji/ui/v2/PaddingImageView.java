@@ -5,14 +5,14 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 
 public class PaddingImageView
   extends FrameLayout
 {
-  ImageView cum;
-  private int pPA;
-  ImageView pPz;
+  ImageView cuP;
+  ImageView pWe;
+  private int pWf;
   
   public PaddingImageView(Context paramContext)
   {
@@ -41,26 +41,26 @@ public class PaddingImageView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(109411);
-    this.pPA = a.ax(getContext(), 2131165516);
-    this.cum = new ImageView(paramContext);
-    this.cum.setPadding(this.pPA, this.pPA, this.pPA, this.pPA);
-    this.pPz = new ImageView(paramContext);
+    this.pWf = a.ax(getContext(), 2131165516);
+    this.cuP = new ImageView(paramContext);
+    this.cuP.setPadding(this.pWf, this.pWf, this.pWf, this.pWf);
+    this.pWe = new ImageView(paramContext);
     AppMethodBeat.o(109411);
   }
   
   public ImageView getImageView()
   {
-    return this.cum;
+    return this.cuP;
   }
   
   public ImageView getImageViewFG()
   {
-    return this.pPz;
+    return this.pWe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.PaddingImageView
  * JD-Core Version:    0.7.0.1
  */

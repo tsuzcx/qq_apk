@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.h.b;
-import com.tencent.mm.protocal.protobuf.bhn;
+import com.tencent.mm.protocal.protobuf.bid;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,12 +25,12 @@ public final class g
     AppMethodBeat.o(49299);
   }
   
-  public static void a(long paramLong, bhn parambhn)
+  public static void a(long paramLong, bid parambid)
   {
     AppMethodBeat.i(49297);
     int i;
     ArrayList localArrayList;
-    if ((parambhn == null) || (parambhn.GCT == null))
+    if ((parambid == null) || (parambid.GWt == null))
     {
       i = 0;
       b.i("MicroMsg.Recommend.AppBrandRecommendIdkeyReport", "doReportCgiGet costTime:%d, list size:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i) });
@@ -40,54 +40,54 @@ public final class g
       localIDKey.SetValue(1L);
       localArrayList = new ArrayList();
       localArrayList.add(localIDKey);
-      if (parambhn != null) {
+      if (parambid != null) {
         break label223;
       }
-      parambhn = new IDKey();
-      parambhn.SetID(1043);
-      parambhn.SetKey(1);
-      parambhn.SetValue(1L);
-      localArrayList.add(parambhn);
+      parambid = new IDKey();
+      parambid.SetID(1043);
+      parambid.SetKey(1);
+      parambid.SetValue(1L);
+      localArrayList.add(parambid);
     }
     for (;;)
     {
-      parambhn = new IDKey();
-      parambhn.SetID(1043);
-      parambhn.SetKey(5);
-      parambhn.SetValue(1L);
-      localArrayList.add(parambhn);
-      parambhn = new IDKey();
-      parambhn.SetID(1043);
-      parambhn.SetKey(sX(paramLong));
-      parambhn.SetValue(1L);
-      localArrayList.add(parambhn);
-      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+      parambid = new IDKey();
+      parambid.SetID(1043);
+      parambid.SetKey(5);
+      parambid.SetValue(1L);
+      localArrayList.add(parambid);
+      parambid = new IDKey();
+      parambid.SetID(1043);
+      parambid.SetKey(tk(paramLong));
+      parambid.SetValue(1L);
+      localArrayList.add(parambid);
+      com.tencent.mm.plugin.report.service.g.yxI.b(localArrayList, true);
       G(localArrayList);
       AppMethodBeat.o(49297);
       return;
-      i = parambhn.GCT.size();
+      i = parambid.GWt.size();
       break;
       label223:
-      if ((parambhn.GCT == null) || (parambhn.GCT.size() == 0))
+      if ((parambid.GWt == null) || (parambid.GWt.size() == 0))
       {
-        parambhn = new IDKey();
-        parambhn.SetID(1043);
-        parambhn.SetKey(2);
-        parambhn.SetValue(1L);
-        localArrayList.add(parambhn);
+        parambid = new IDKey();
+        parambid.SetID(1043);
+        parambid.SetKey(2);
+        parambid.SetValue(1L);
+        localArrayList.add(parambid);
       }
       else
       {
-        parambhn = new IDKey();
-        parambhn.SetID(1043);
-        parambhn.SetKey(3);
-        parambhn.SetValue(1L);
-        localArrayList.add(parambhn);
+        parambid = new IDKey();
+        parambid.SetID(1043);
+        parambid.SetKey(3);
+        parambid.SetValue(1L);
+        localArrayList.add(parambid);
       }
     }
   }
   
-  private static int sX(long paramLong)
+  private static int tk(long paramLong)
   {
     if (paramLong <= 1L) {
       return 6;
@@ -107,7 +107,7 @@ public final class g
     return 11;
   }
   
-  public static void vF(int paramInt)
+  public static void vK(int paramInt)
   {
     AppMethodBeat.i(49298);
     b.i("MicroMsg.Recommend.AppBrandRecommendIdkeyReport", "doReportDataSource");
@@ -126,7 +126,7 @@ public final class g
     {
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yxI.b(localArrayList, true);
       G(localArrayList);
       AppMethodBeat.o(49298);
       return;
@@ -136,7 +136,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.g
  * JD-Core Version:    0.7.0.1
  */

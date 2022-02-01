@@ -15,18 +15,18 @@ public final class j
   extends BaseAdapter
 {
   private Context mContext;
-  m wOq;
-  String wOr;
+  m xee;
+  String xef;
   
   public j(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private h MD(int paramInt)
+  private h Nj(int paramInt)
   {
     AppMethodBeat.i(67032);
-    h localh = (h)this.wOq.wMQ.get(paramInt);
+    h localh = (h)this.xee.xcE.get(paramInt);
     AppMethodBeat.o(67032);
     return localh;
   }
@@ -34,9 +34,9 @@ public final class j
   public final int getCount()
   {
     AppMethodBeat.i(67031);
-    if (this.wOq.wMQ != null)
+    if (this.xee.xcE != null)
     {
-      int i = this.wOq.wMQ.size();
+      int i = this.xee.xcE.size();
       AppMethodBeat.o(67031);
       return i;
     }
@@ -52,7 +52,7 @@ public final class j
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(67034);
-    paramViewGroup = MD(paramInt);
+    paramViewGroup = Nj(paramInt);
     if ((paramView == null) || (paramView.getTag() == null)) {
       paramView = View.inflate(this.mContext, 2131495126, null);
     }
@@ -61,16 +61,16 @@ public final class j
       CheckBox localCheckBox = (CheckBox)paramView;
       localCheckBox.setText(paramViewGroup.name);
       localCheckBox.setEnabled(paramViewGroup.iH);
-      localCheckBox.setChecked(paramViewGroup.id.equals(this.wOr));
+      localCheckBox.setChecked(paramViewGroup.id.equals(this.xef));
       if (!paramViewGroup.iH) {
         paramView.setBackgroundResource(2131233649);
       }
       for (;;)
       {
-        paramView.setTag(new Pair(this.wOq.wMO, paramViewGroup.id));
+        paramView.setTag(new Pair(this.xee.xcC, paramViewGroup.id));
         AppMethodBeat.o(67034);
         return paramView;
-        if (paramViewGroup.id.equals(this.wOr)) {
+        if (paramViewGroup.id.equals(this.xef)) {
           paramView.setBackgroundResource(2131233651);
         } else {
           paramView.setBackgroundResource(2131233650);
@@ -82,7 +82,7 @@ public final class j
   public final boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(67033);
-    boolean bool = MD(paramInt).iH;
+    boolean bool = Nj(paramInt).iH;
     AppMethodBeat.o(67033);
     return bool;
   }

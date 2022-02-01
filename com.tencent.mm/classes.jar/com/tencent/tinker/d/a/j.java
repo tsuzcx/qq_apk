@@ -12,7 +12,7 @@ public final class j
     paramg = new g(paramg);
     paramg.setMethod(0);
     paramg.setSize(paramFile.length());
-    paramg.MhO = paramFile.length();
+    paramg.MEL = paramFile.length();
     if ((paramLong >= 0L) && (paramLong <= 4294967295L)) {
       paramg.crc = paramLong;
     }

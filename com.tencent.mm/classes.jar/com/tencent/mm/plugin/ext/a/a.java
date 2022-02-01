@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ext.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hp;
+import com.tencent.mm.g.c.hr;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
@@ -10,18 +10,18 @@ import com.tencent.mm.storagebase.h;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ext/db/ManufacturerWxaTokenInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/ext/db/WxaTokenInfo;", "dataDB", "Lcom/tencent/mm/storagebase/SqliteDB;", "(Lcom/tencent/mm/storagebase/SqliteDB;)V", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "dbInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "table", "", "indexCreate", "", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;Ljava/lang/String;[Ljava/lang/String;)V", "addToken", "", "token", "userName", "uin", "", "appid", "getAllInfo", "", "getInfo", "Companion", "app_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/ext/db/ManufacturerWxaTokenInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/ext/db/WxaTokenInfo;", "dataDB", "Lcom/tencent/mm/storagebase/SqliteDB;", "(Lcom/tencent/mm/storagebase/SqliteDB;)V", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "dbInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "table", "", "indexCreate", "", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;Ljava/lang/String;[Ljava/lang/String;)V", "addToken", "", "token", "userName", "uin", "", "appid", "getAllInfo", "", "getInfo", "Companion", "app_release"})
 public final class a
   extends j<b>
 {
   public static final String[] SQL_CREATE;
-  public static final a rcJ;
+  public static final a rkP;
   
   static
   {
     AppMethodBeat.i(39597);
-    rcJ = new a((byte)0);
-    SQL_CREATE = new String[] { j.getCreateSQLs(hp.Vv(), "WxaTokenInfo") };
+    rkP = new a((byte)0);
+    SQL_CREATE = new String[] { j.getCreateSQLs(hr.VD(), "WxaTokenInfo") };
     AppMethodBeat.o(39597);
   }
   
@@ -37,7 +37,7 @@ public final class a
     AppMethodBeat.o(39596);
   }
   
-  public final b afG(String paramString)
+  public final b agC(String paramString)
   {
     AppMethodBeat.i(39595);
     p.h(paramString, "token");
@@ -52,7 +52,7 @@ public final class a
     return localb;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ext/db/ManufacturerWxaTokenInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "app_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/ext/db/ManufacturerWxaTokenInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "app_release"})
   public static final class a {}
 }
 

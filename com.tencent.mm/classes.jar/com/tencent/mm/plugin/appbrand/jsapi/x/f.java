@@ -13,7 +13,7 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,52 +28,52 @@ public class f
 {
   public static final int CTRL_INDEX = 39;
   public static final String NAME = "getNetworkType";
-  private final AtomicBoolean ljj;
-  private Method ljk;
-  volatile int ljl;
-  private final AtomicBoolean ljm;
-  final b ljn;
+  private final AtomicBoolean lmV;
+  private Method lmW;
+  volatile int lmX;
+  private final AtomicBoolean lmY;
+  final b lmZ;
   
   public f()
   {
-    AppMethodBeat.i(195032);
-    this.ljj = new AtomicBoolean(false);
-    this.ljk = null;
-    this.ljl = 2147483647;
-    this.ljm = new AtomicBoolean(false);
-    this.ljn = new b((byte)0);
-    AppMethodBeat.o(195032);
+    AppMethodBeat.i(197263);
+    this.lmV = new AtomicBoolean(false);
+    this.lmW = null;
+    this.lmX = 2147483647;
+    this.lmY = new AtomicBoolean(false);
+    this.lmZ = new b((byte)0);
+    AppMethodBeat.o(197263);
   }
   
   private static int b(SignalStrength paramSignalStrength)
   {
-    AppMethodBeat.i(195035);
+    AppMethodBeat.i(197266);
     if (paramSignalStrength.isGsm()) {}
     for (int i = c(paramSignalStrength);; i = paramSignalStrength.getCdmaDbm())
     {
-      ad.i("MicroMsg.JsApiGetNetworkType", "getDbmFallback, dBm: ".concat(String.valueOf(i)));
-      AppMethodBeat.o(195035);
+      ae.i("MicroMsg.JsApiGetNetworkType", "getDbmFallback, dBm: ".concat(String.valueOf(i)));
+      AppMethodBeat.o(197266);
       return i;
     }
   }
   
-  private Method bmC()
+  private Method bnl()
   {
-    AppMethodBeat.i(195034);
-    if (!this.ljj.getAndSet(true)) {}
+    AppMethodBeat.i(197265);
+    if (!this.lmV.getAndSet(true)) {}
     try
     {
-      this.ljk = SignalStrength.class.getMethod("getDbm", new Class[0]);
-      Method localMethod = this.ljk;
-      AppMethodBeat.o(195034);
+      this.lmW = SignalStrength.class.getMethod("getDbm", new Class[0]);
+      Method localMethod = this.lmW;
+      AppMethodBeat.o(197265);
       return localMethod;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.w("MicroMsg.JsApiGetNetworkType", "getGetDbmMethod, reflect getDbm fail since ".concat(String.valueOf(localException)));
-        this.ljk = null;
+        ae.w("MicroMsg.JsApiGetNetworkType", "getGetDbmMethod, reflect getDbm fail since ".concat(String.valueOf(localException)));
+        this.lmW = null;
       }
     }
   }
@@ -81,7 +81,7 @@ public class f
   private static int c(SignalStrength paramSignalStrength)
   {
     int j = -1;
-    AppMethodBeat.i(195036);
+    AppMethodBeat.i(197267);
     int k = paramSignalStrength.getGsmSignalStrength();
     if (k == 99) {}
     for (int i = -1;; i = k)
@@ -89,12 +89,12 @@ public class f
       if (i != -1) {
         j = k * 2 - 113;
       }
-      AppMethodBeat.o(195036);
+      AppMethodBeat.o(197267);
       return j;
     }
   }
   
-  public static c dt(Context paramContext)
+  public static f.c dx(Context paramContext)
   {
     AppMethodBeat.i(137666);
     try
@@ -102,87 +102,87 @@ public class f
       paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
       if (paramContext == null)
       {
-        paramContext = c.ljA;
+        paramContext = f.c.lnn;
         AppMethodBeat.o(137666);
         return paramContext;
       }
       paramContext = paramContext.getActiveNetworkInfo();
       if ((paramContext == null) || (!paramContext.isConnected()))
       {
-        paramContext = c.lju;
+        paramContext = f.c.lnh;
         AppMethodBeat.o(137666);
         return paramContext;
       }
       if (paramContext.getType() == 1)
       {
-        paramContext = c.ljz;
+        paramContext = f.c.lnm;
         AppMethodBeat.o(137666);
         return paramContext;
       }
       if ((paramContext.getSubtype() == 2) || (paramContext.getSubtype() == 1) || (paramContext.getSubtype() == 4))
       {
-        paramContext = c.ljv;
+        paramContext = f.c.lni;
         AppMethodBeat.o(137666);
         return paramContext;
       }
       if ((paramContext.getSubtype() >= 5) && (paramContext.getSubtype() < 13))
       {
-        paramContext = c.ljw;
+        paramContext = f.c.lnj;
         AppMethodBeat.o(137666);
         return paramContext;
       }
       if ((paramContext.getSubtype() >= 13) && (paramContext.getSubtype() < 20))
       {
-        paramContext = c.ljx;
+        paramContext = f.c.lnk;
         AppMethodBeat.o(137666);
         return paramContext;
       }
       if (paramContext.getSubtype() >= 20)
       {
-        paramContext = c.ljy;
+        paramContext = f.c.lnl;
         AppMethodBeat.o(137666);
         return paramContext;
       }
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.JsApiGetNetworkType", paramContext, "", new Object[0]);
-      paramContext = c.ljA;
+      ae.printErrStackTrace("MicroMsg.JsApiGetNetworkType", paramContext, "", new Object[0]);
+      paramContext = f.c.lnn;
       AppMethodBeat.o(137666);
     }
     return paramContext;
   }
   
-  protected c C(c paramc)
+  protected f.c C(c paramc)
   {
     AppMethodBeat.i(137665);
-    paramc = dt(paramc.getContext());
+    paramc = dx(paramc.getContext());
     AppMethodBeat.o(137665);
     return paramc;
   }
   
   final int a(SignalStrength paramSignalStrength)
   {
-    AppMethodBeat.i(195033);
-    Method localMethod = bmC();
+    AppMethodBeat.i(197264);
+    Method localMethod = bnl();
     int i;
     if (localMethod == null)
     {
       i = b(paramSignalStrength);
-      AppMethodBeat.o(195033);
+      AppMethodBeat.o(197264);
       return i;
     }
     try
     {
       i = ((Integer)localMethod.invoke(paramSignalStrength, new Object[0])).intValue();
-      AppMethodBeat.o(195033);
+      AppMethodBeat.o(197264);
       return i;
     }
     catch (Exception localException)
     {
-      ad.w("MicroMsg.JsApiGetNetworkType", "getDbm, reflect getDbm fail since ".concat(String.valueOf(localException)));
+      ae.w("MicroMsg.JsApiGetNetworkType", "getDbm, reflect getDbm fail since ".concat(String.valueOf(localException)));
       i = b(paramSignalStrength);
-      AppMethodBeat.o(195033);
+      AppMethodBeat.o(197264);
     }
     return i;
   }
@@ -191,10 +191,10 @@ public class f
   {
     AppMethodBeat.i(137664);
     paramJSONObject = new HashMap();
-    c localc = C(paramc);
-    ad.i("MicroMsg.JsApiGetNetworkType", "invoke appId:%s, networkType:%s", new Object[] { paramc.getAppId(), localc });
+    f.c localc = C(paramc);
+    ae.i("MicroMsg.JsApiGetNetworkType", "invoke appId:%s, networkType:%s", new Object[] { paramc.getAppId(), localc });
     paramJSONObject.put("networkType", localc.value);
-    switch (4.ljp[localc.ordinal()])
+    switch (f.4.lnb[localc.ordinal()])
     {
     }
     for (;;)
@@ -203,75 +203,75 @@ public class f
       return;
       paramJSONObject = new a()
       {
-        public final void to(int paramAnonymousInt)
+        public final void tr(int paramAnonymousInt)
         {
-          AppMethodBeat.i(195025);
-          ad.i("MicroMsg.JsApiGetNetworkType", "onGetSignalStrength, dbm: ".concat(String.valueOf(paramAnonymousInt)));
+          AppMethodBeat.i(197256);
+          ae.i("MicroMsg.JsApiGetNetworkType", "onGetSignalStrength, dbm: ".concat(String.valueOf(paramAnonymousInt)));
           if (2147483647 != paramAnonymousInt) {
             paramJSONObject.put("signalStrength", Integer.valueOf(paramAnonymousInt));
           }
-          paramc.h(paramInt, f.this.m("ok", paramJSONObject));
-          AppMethodBeat.o(195025);
+          paramc.h(paramInt, f.this.n("ok", paramJSONObject));
+          AppMethodBeat.o(197256);
         }
       };
-      if (!this.ljm.getAndSet(true)) {
-        h.LTJ.aP(new Runnable()
+      if (!this.lmY.getAndSet(true)) {
+        h.MqF.aM(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195027);
-            ((TelephonyManager)paramc.getContext().getApplicationContext().getSystemService("phone")).listen(f.this.ljn.bmD(), 256);
-            AppMethodBeat.o(195027);
+            AppMethodBeat.i(197258);
+            ((TelephonyManager)paramc.getContext().getApplicationContext().getSystemService("phone")).listen(f.this.lmZ.bnm(), 256);
+            AppMethodBeat.o(197258);
           }
         });
       }
-      if (this.ljn.bmE())
+      if (this.lmZ.bnn())
       {
-        paramJSONObject.to(this.ljl);
+        paramJSONObject.tr(this.lmX);
         AppMethodBeat.o(137664);
         return;
       }
-      this.ljn.a(paramJSONObject);
+      this.lmZ.a(paramJSONObject);
       AppMethodBeat.o(137664);
       return;
       paramJSONObject = new a()
       {
-        public final void to(int paramAnonymousInt)
+        public final void tr(int paramAnonymousInt)
         {
-          AppMethodBeat.i(195026);
-          ad.i("MicroMsg.JsApiGetNetworkType", "onGetSignalStrength, dbm: ".concat(String.valueOf(paramAnonymousInt)));
+          AppMethodBeat.i(197257);
+          ae.i("MicroMsg.JsApiGetNetworkType", "onGetSignalStrength, dbm: ".concat(String.valueOf(paramAnonymousInt)));
           if (2147483647 != paramAnonymousInt) {
             paramJSONObject.put("signalStrength", Integer.valueOf(paramAnonymousInt));
           }
-          paramc.h(paramInt, f.this.m("ok", paramJSONObject));
-          AppMethodBeat.o(195026);
+          paramc.h(paramInt, f.this.n("ok", paramJSONObject));
+          AppMethodBeat.o(197257);
         }
       };
       paramc = ((WifiManager)paramc.getContext().getApplicationContext().getSystemService("wifi")).getConnectionInfo();
       if ((paramc != null) && (paramc.getBSSID() != null))
       {
-        paramJSONObject.to(paramc.getRssi());
+        paramJSONObject.tr(paramc.getRssi());
         AppMethodBeat.o(137664);
         return;
       }
-      ad.w("MicroMsg.JsApiGetNetworkType", "getWifiSignalStrength, getConnectionInfo is invalid");
-      paramJSONObject.to(2147483647);
+      ae.w("MicroMsg.JsApiGetNetworkType", "getWifiSignalStrength, getConnectionInfo is invalid");
+      paramJSONObject.tr(2147483647);
       AppMethodBeat.o(137664);
       return;
-      paramc.h(paramInt, m("ok", paramJSONObject));
+      paramc.h(paramInt, n("ok", paramJSONObject));
     }
   }
   
   static abstract interface a
   {
-    public abstract void to(int paramInt);
+    public abstract void tr(int paramInt);
   }
   
   final class b
   {
-    private PhoneStateListener ljq = null;
-    boolean ljr = false;
-    List<f.a> ljs = null;
+    private PhoneStateListener lnc = null;
+    boolean lnd = false;
+    List<f.a> lne = null;
     
     private b() {}
     
@@ -279,65 +279,65 @@ public class f
     {
       try
       {
-        AppMethodBeat.i(195031);
-        if (this.ljs == null) {
-          this.ljs = new ArrayList();
+        AppMethodBeat.i(197262);
+        if (this.lne == null) {
+          this.lne = new ArrayList();
         }
-        this.ljs.add(parama);
-        AppMethodBeat.o(195031);
+        this.lne.add(parama);
+        AppMethodBeat.o(197262);
         return;
       }
       finally {}
     }
     
-    public final PhoneStateListener bmD()
+    public final PhoneStateListener bnm()
     {
       try
       {
-        AppMethodBeat.i(195030);
-        if (this.ljq == null) {
-          this.ljq = new PhoneStateListener()
+        AppMethodBeat.i(197261);
+        if (this.lnc == null) {
+          this.lnc = new PhoneStateListener()
           {
             public final void onSignalStrengthsChanged(SignalStrength arg1)
             {
-              AppMethodBeat.i(195029);
+              AppMethodBeat.i(197260);
               super.onSignalStrengthsChanged(???);
               int i = f.this.a(???);
-              ad.i("MicroMsg.JsApiGetNetworkType", "onSignalStrengthsChanged, dbm: ".concat(String.valueOf(i)));
-              f.this.ljl = i;
+              ae.i("MicroMsg.JsApiGetNetworkType", "onSignalStrengthsChanged, dbm: ".concat(String.valueOf(i)));
+              f.this.lmX = i;
               synchronized (f.b.this)
               {
-                if (f.b.this.ljr) {
+                if (f.b.this.lnd) {
                   break label152;
                 }
-                f.b.this.ljr = true;
-                if (f.b.this.ljs == null) {
+                f.b.this.lnd = true;
+                if (f.b.this.lne == null) {
                   break label152;
                 }
-                Iterator localIterator = f.b.this.ljs.iterator();
+                Iterator localIterator = f.b.this.lne.iterator();
                 if (localIterator.hasNext()) {
-                  ((f.a)localIterator.next()).to(i);
+                  ((f.a)localIterator.next()).tr(i);
                 }
               }
-              f.b.this.ljs.clear();
-              f.b.this.ljs = null;
+              f.b.this.lne.clear();
+              f.b.this.lne = null;
               label152:
-              AppMethodBeat.o(195029);
+              AppMethodBeat.o(197260);
             }
           };
         }
-        PhoneStateListener localPhoneStateListener = this.ljq;
-        AppMethodBeat.o(195030);
+        PhoneStateListener localPhoneStateListener = this.lnc;
+        AppMethodBeat.o(197261);
         return localPhoneStateListener;
       }
       finally {}
     }
     
-    public final boolean bmE()
+    public final boolean bnn()
     {
       try
       {
-        boolean bool = this.ljr;
+        boolean bool = this.lnd;
         return bool;
       }
       finally
@@ -345,30 +345,6 @@ public class f
         localObject = finally;
         throw localObject;
       }
-    }
-  }
-  
-  public static enum c
-  {
-    public final String value;
-    
-    static
-    {
-      AppMethodBeat.i(137663);
-      lju = new c("None", 0, "none");
-      ljv = new c("Mobile_2g", 1, "2g");
-      ljw = new c("Mobile_3g", 2, "3g");
-      ljx = new c("Mobile_4g", 3, "4g");
-      ljy = new c("Mobile_5g", 4, "5g");
-      ljz = new c("Wifi", 5, "wifi");
-      ljA = new c("Unknown", 6, "unknown");
-      ljB = new c[] { lju, ljv, ljw, ljx, ljy, ljz, ljA };
-      AppMethodBeat.o(137663);
-    }
-    
-    private c(String paramString)
-    {
-      this.value = paramString;
     }
   }
 }

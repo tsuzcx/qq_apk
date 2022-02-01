@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.downloader_app.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import org.json.JSONException;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static int Bu(int paramInt)
+  public static int BG(int paramInt)
   {
     switch (paramInt)
     {
@@ -31,30 +31,30 @@ public final class a
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(8921);
-    ad.d("MicroMsg.DownloadReporter", "kv16099, sceneId = %d, areaId = %d, positionId = %d, actionId = %d, appId = %s,noticeId = %s, extInfo = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
-    g.yhR.f(16099, new Object[] { Integer.valueOf(beW()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    ae.d("MicroMsg.DownloadReporter", "kv16099, sceneId = %d, areaId = %d, positionId = %d, actionId = %d, appId = %s,noticeId = %s, extInfo = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    g.yxI.f(16099, new Object[] { Integer.valueOf(bfE()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
     AppMethodBeat.o(8921);
   }
   
-  public static int beW()
+  public static int bfE()
   {
     AppMethodBeat.i(8922);
-    if (ay.isWifi(aj.getContext()))
+    if (az.isWifi(ak.getContext()))
     {
       AppMethodBeat.o(8922);
       return 0;
     }
-    if (ay.is4G(aj.getContext()))
+    if (az.is4G(ak.getContext()))
     {
       AppMethodBeat.o(8922);
       return 4;
     }
-    if (ay.is3G(aj.getContext()))
+    if (az.is3G(ak.getContext()))
     {
       AppMethodBeat.o(8922);
       return 3;
     }
-    if (ay.is2G(aj.getContext()))
+    if (az.is2G(ak.getContext()))
     {
       AppMethodBeat.o(8922);
       return 2;
@@ -63,7 +63,7 @@ public final class a
     return 1;
   }
   
-  public static String fm(String paramString1, String paramString2)
+  public static String fq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(8923);
     JSONObject localJSONObject = new JSONObject();

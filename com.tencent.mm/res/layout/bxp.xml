@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/cwb" android:background="@drawable/icon" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_marginTop="97.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="22.0sp" android:textColor="@color/fg" android:id="@id/ggz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="33.0dip" android:layout_marginBottom="16.0dip" android:text="@string/egi" android:layout_below="@id/cwb" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/goz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/gos" android:layout_below="@id/ggz">
+        <TextView android:textSize="17.0sp" android:textColor="@color/fg" android:gravity="center_horizontal" android:id="@id/ghl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/egl" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/gos" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginBottom="96.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:id="@id/a9_" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/egg" />
+        <ProgressBar android:id="@id/ekr" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    </LinearLayout>
+</RelativeLayout>

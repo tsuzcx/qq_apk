@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/render/LiveVisitorRenderer$Companion;", "", "()V", "RENDER_TYPE_I420", "", "RENDER_TYPE_TEXTURE", "TAG", "", "plugin-core_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/render/LiveVisitorRenderer$Companion;", "", "()V", "RENDER_TYPE_I420", "", "RENDER_TYPE_TEXTURE", "TAG", "", "plugin-core_release"})
 public final class h$a {}
 
 

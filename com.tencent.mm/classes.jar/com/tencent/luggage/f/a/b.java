@@ -1,6 +1,7 @@
 package com.tencent.luggage.f.a;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.a;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
@@ -33,28 +34,35 @@ public class b
       return null;
     }
     Context localContext = paramc.getContext();
-    String str1 = paramJSONObject.optString("theme", "");
+    String str2 = paramJSONObject.optString("theme", "");
     int i = paramJSONObject.optInt("mapType", 1);
-    String str2 = paramJSONObject.optString("subKey", "");
-    String str3 = paramc.getAppId();
-    int j = paramJSONObject.optInt("styleId", 0);
-    paramc = f.i(paramc, paramJSONObject);
-    int k = paramJSONObject.optInt("enableDarkMode", 0);
-    paramJSONObject = new HashMap(5);
-    paramJSONObject.put("theme", str1);
-    paramJSONObject.put("mapType", Integer.valueOf(i));
-    paramJSONObject.put("subKey", str2);
-    paramJSONObject.put("subId", str3);
-    paramJSONObject.put("styleId", Integer.valueOf(j));
-    paramJSONObject.put("enableDarkMode", Integer.valueOf(k));
-    paramc = new a(localContext, paramc, paramJSONObject);
-    AppMethodBeat.o(146456);
-    return paramc;
+    String str3 = paramJSONObject.optString("subKey", "");
+    Object localObject = paramc.getAppId();
+    String str1 = paramJSONObject.optString("pluginId", "");
+    if (!TextUtils.isEmpty(str1)) {
+      localObject = str1;
+    }
+    for (;;)
+    {
+      int j = paramJSONObject.optInt("styleId", 0);
+      paramc = f.i(paramc, paramJSONObject);
+      int k = paramJSONObject.optInt("enableDarkMode", 0);
+      paramJSONObject = new HashMap(5);
+      paramJSONObject.put("theme", str2);
+      paramJSONObject.put("mapType", Integer.valueOf(i));
+      paramJSONObject.put("subKey", str3);
+      paramJSONObject.put("subId", localObject);
+      paramJSONObject.put("styleId", Integer.valueOf(j));
+      paramJSONObject.put("enableDarkMode", Integer.valueOf(k));
+      paramc = new a(localContext, paramc, paramJSONObject);
+      AppMethodBeat.o(146456);
+      return paramc;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.f.a.b
  * JD-Core Version:    0.7.0.1
  */

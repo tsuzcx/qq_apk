@@ -12,20 +12,20 @@ public class PAGPlayer
   
   static
   {
-    AppMethodBeat.i(220186);
+    AppMethodBeat.i(216940);
     b.loadLibrary("libpag");
     nativeInit();
     PAGFont.loadSystemFonts();
-    AppMethodBeat.o(220186);
+    AppMethodBeat.o(216940);
   }
   
   public PAGPlayer()
   {
-    AppMethodBeat.i(220180);
+    AppMethodBeat.i(216934);
     this.pagSurface = null;
     this.nativeContext = 0L;
     nativeSetup();
-    AppMethodBeat.o(220180);
+    AppMethodBeat.o(216934);
   }
   
   private native void nativeFinalize();
@@ -50,9 +50,9 @@ public class PAGPlayer
   
   protected void finalize()
   {
-    AppMethodBeat.i(220185);
+    AppMethodBeat.i(216939);
     nativeFinalize();
-    AppMethodBeat.o(220185);
+    AppMethodBeat.o(216939);
   }
   
   public native boolean flush();
@@ -74,12 +74,12 @@ public class PAGPlayer
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(220182);
+    AppMethodBeat.i(216936);
     float[] arrayOfFloat = new float[9];
     nativeGetMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(220182);
+    AppMethodBeat.o(216936);
     return localMatrix;
   }
   
@@ -87,9 +87,9 @@ public class PAGPlayer
   
   public void release()
   {
-    AppMethodBeat.i(220184);
+    AppMethodBeat.i(216938);
     nativeRelease();
-    AppMethodBeat.o(220184);
+    AppMethodBeat.o(216938);
   }
   
   public native int scaleMode();
@@ -102,11 +102,11 @@ public class PAGPlayer
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(220183);
+    AppMethodBeat.i(216937);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
-    AppMethodBeat.o(220183);
+    AppMethodBeat.o(216937);
   }
   
   public native void setMaxFrameRate(float paramFloat);
@@ -117,16 +117,16 @@ public class PAGPlayer
   
   public void setSurface(PAGSurface paramPAGSurface)
   {
-    AppMethodBeat.i(220181);
+    AppMethodBeat.i(216935);
     this.pagSurface = paramPAGSurface;
     if (paramPAGSurface == null)
     {
       nativeSetSurface(0L);
-      AppMethodBeat.o(220181);
+      AppMethodBeat.o(216935);
       return;
     }
     nativeSetSurface(paramPAGSurface.nativeSurface);
-    AppMethodBeat.o(220181);
+    AppMethodBeat.o(216935);
   }
   
   public native void setVideoEnabled(boolean paramBoolean);

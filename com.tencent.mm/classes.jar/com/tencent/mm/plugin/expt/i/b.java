@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.expt.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +30,7 @@ public final class b
   }
   
   /* Error */
-  public final a afE(String paramString)
+  public final a agA(String paramString)
   {
     // Byte code:
     //   0: ldc 53
@@ -104,7 +104,7 @@ public final class b
     //   120: aload 5
     //   122: invokevirtual 91	java/lang/Exception:toString	()Ljava/lang/String;
     //   125: aastore
-    //   126: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload_2
     //   130: astore 4
     //   132: aload_3
@@ -160,7 +160,7 @@ public final class b
   }
   
   /* Error */
-  public final int afy(String paramString)
+  public final int agu(String paramString)
   {
     // Byte code:
     //   0: ldc 100
@@ -229,7 +229,7 @@ public final class b
     //   118: aload 6
     //   120: invokevirtual 91	java/lang/Exception:toString	()Ljava/lang/String;
     //   123: aastore
-    //   124: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: aload 5
     //   129: ifnull +10 -> 139
     //   132: aload 5
@@ -276,7 +276,7 @@ public final class b
     //   63	72	171	java/lang/Exception
   }
   
-  public final int crQ()
+  public final int cts()
   {
     int i = 0;
     AppMethodBeat.i(122451);
@@ -289,14 +289,14 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
+        ae.e("MicroMsg.ExptKeyMapIdStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
       }
     }
     AppMethodBeat.o(122451);
     return i;
   }
   
-  public final int df(List<a> paramList)
+  public final int di(List<a> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122448);
@@ -309,7 +309,7 @@ public final class b
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.xO(-1L);
+      l = localh.yi(-1L);
     }
     for (;;)
     {
@@ -325,25 +325,25 @@ public final class b
       {
         localException1 = localException1;
         i = 0;
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "insert expt key map id [%s]", new Object[] { localException1.toString() });
+        ae.e("MicroMsg.ExptKeyMapIdStorage", "insert expt key map id [%s]", new Object[] { localException1.toString() });
         j = i;
         if (localh != null)
         {
-          localh.sJ(l);
+          localh.sW(l);
           j = i;
         }
       }
       finally
       {
         if (localh != null) {
-          localh.sJ(l);
+          localh.sW(l);
         }
         AppMethodBeat.o(122448);
       }
     }
   }
   
-  public final int dg(List<a> paramList)
+  public final int dj(List<a> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122449);
@@ -356,7 +356,7 @@ public final class b
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.xO(-1L);
+      l = localh.yi(-1L);
     }
     for (;;)
     {
@@ -373,25 +373,25 @@ public final class b
       {
         localException1 = localException1;
         i = 0;
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "update expt key map id [%s]", new Object[] { localException1.toString() });
+        ae.e("MicroMsg.ExptKeyMapIdStorage", "update expt key map id [%s]", new Object[] { localException1.toString() });
         j = i;
         if (localh != null)
         {
-          localh.sJ(l);
+          localh.sW(l);
           j = i;
         }
       }
       finally
       {
         if (localh != null) {
-          localh.sJ(l);
+          localh.sW(l);
         }
         AppMethodBeat.o(122449);
       }
     }
   }
   
-  public final int dh(List<Integer> paramList)
+  public final int dk(List<Integer> paramList)
   {
     AppMethodBeat.i(122450);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -406,7 +406,7 @@ public final class b
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.xO(-1L);
+      l = localh.yi(-1L);
     }
     for (;;)
     {
@@ -430,18 +430,18 @@ public final class b
         k = i;
         if (localh != null)
         {
-          localh.sJ(l);
+          localh.sW(l);
           k = i;
         }
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "delete expt by id id [%s] ret[%d]", new Object[] { localException.toString(), Integer.valueOf(j) });
+        ae.e("MicroMsg.ExptKeyMapIdStorage", "delete expt by id id [%s] ret[%d]", new Object[] { localException.toString(), Integer.valueOf(j) });
         int k = j;
         if (localh == null) {
           continue;
         }
-        localh.sJ(l);
+        localh.sW(l);
         k = j;
         continue;
       }
@@ -450,10 +450,10 @@ public final class b
         if (localh == null) {
           continue;
         }
-        localh.sJ(l);
+        localh.sW(l);
         AppMethodBeat.o(122450);
       }
-      ad.i("MicroMsg.ExptKeyMapIdStorage", "deleteExptKeyMapIdById exptIds size[%d] ret[%d]", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(k) });
+      ae.i("MicroMsg.ExptKeyMapIdStorage", "deleteExptKeyMapIdById exptIds size[%d] ret[%d]", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(k) });
       AppMethodBeat.o(122450);
       return k;
       localh = null;

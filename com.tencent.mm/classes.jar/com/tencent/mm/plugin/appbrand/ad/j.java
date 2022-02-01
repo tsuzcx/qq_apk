@@ -1,21 +1,16 @@
 package com.tencent.mm.plugin.appbrand.ad;
 
-import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
-
 public abstract interface j
-  extends b
 {
-  public abstract boolean J(AppBrandRuntime paramAppBrandRuntime);
+  public abstract void Lt(String paramString);
   
-  public abstract boolean KO(String paramString);
+  public abstract void aYF();
   
-  public abstract p aYb();
+  public abstract void aYG();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.j
  * JD-Core Version:    0.7.0.1
  */

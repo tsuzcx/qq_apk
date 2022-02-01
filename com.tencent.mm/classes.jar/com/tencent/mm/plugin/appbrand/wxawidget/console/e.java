@@ -14,14 +14,14 @@ import java.util.List;
 
 public final class e
 {
-  private static final List<WeakReference<ControlBoardPanel>> nqv;
-  private static final ControlBoardPanel.a nqw;
+  private static final List<WeakReference<ControlBoardPanel>> nvO;
+  private static final ControlBoardPanel.a nvP;
   
   static
   {
     AppMethodBeat.i(121642);
-    nqv = new LinkedList();
-    nqw = new ControlBoardPanel.a()
+    nvO = new LinkedList();
+    nvP = new ControlBoardPanel.a()
     {
       public final void a(ControlBoardPanel paramAnonymousControlBoardPanel, boolean paramAnonymousBoolean)
       {
@@ -35,7 +35,7 @@ public final class e
     AppMethodBeat.o(121642);
   }
   
-  public static void eg(Context paramContext)
+  public static void ek(Context paramContext)
   {
     AppMethodBeat.i(121640);
     int i;
@@ -43,9 +43,9 @@ public final class e
     if (paramContext != null)
     {
       i = 0;
-      if (i < nqv.size())
+      if (i < nvO.size())
       {
-        localObject = (WeakReference)nqv.get(i);
+        localObject = (WeakReference)nvO.get(i);
         if (localObject != null)
         {
           localObject = (ControlBoardPanel)((WeakReference)localObject).get();
@@ -56,28 +56,28 @@ public final class e
               break label242;
             }
             paramContext = new ControlBoardPanel(paramContext);
-            nqv.add(new WeakReference(paramContext));
+            nvO.add(new WeakReference(paramContext));
           }
         }
       }
     }
     for (;;)
     {
-      localObject = nqw;
-      if (!paramContext.nqF)
+      localObject = nvP;
+      if (!paramContext.nvY)
       {
-        paramContext.nqF = true;
+        paramContext.nvY = true;
         Activity localActivity = (Activity)paramContext.getContext();
-        paramContext.nqE = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
-        paramContext.nqE.y = a.u(localActivity);
-        paramContext.nqE.token = localActivity.getWindow().getDecorView().getWindowToken();
-        paramContext.nqE.gravity = 51;
-        paramContext.nqE.softInputMode = 16;
-        paramContext.nqD.addView(paramContext, paramContext.nqE);
+        paramContext.nvX = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
+        paramContext.nvX.y = a.u(localActivity);
+        paramContext.nvX.token = localActivity.getWindow().getDecorView().getWindowToken();
+        paramContext.nvX.gravity = 51;
+        paramContext.nvX.softInputMode = 16;
+        paramContext.nvW.addView(paramContext, paramContext.nvX);
         paramContext.reset();
-        paramContext.nqw = ((ControlBoardPanel.a)localObject);
-        if (paramContext.nqw != null) {
-          paramContext.nqw.a(paramContext, true);
+        paramContext.nvP = ((ControlBoardPanel.a)localObject);
+        if (paramContext.nvP != null) {
+          paramContext.nvP.a(paramContext, true);
         }
       }
       AppMethodBeat.o(121640);

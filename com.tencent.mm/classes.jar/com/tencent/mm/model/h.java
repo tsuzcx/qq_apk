@@ -1,16 +1,17 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -24,8 +25,8 @@ public final class h
     paramString = (String)paramMap.get(".sysmsg.brand_username");
     Object localObject = (String)paramMap.get(".sysmsg.revoke_climsgid");
     paramMap = (String)paramMap.get(".sysmsg.replacemsg");
-    ba.aBQ();
-    localObject = c.azs().hT(paramString, (String)localObject);
+    bc.aCg();
+    localObject = c.azI().ia(paramString, (String)localObject);
     if ((localObject == null) || (((LinkedList)localObject).isEmpty()))
     {
       AppMethodBeat.o(20316);
@@ -34,43 +35,43 @@ public final class h
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      final bu localbu = (bu)((Iterator)localObject).next();
-      if ((localbu.eLr & 0x4) != 4)
+      final bv localbv = (bv)((Iterator)localObject).next();
+      if ((localbv.eNc & 0x4) != 4)
       {
-        localbu.setContent(paramMap);
-        localbu.setType(10000);
-        bj.a(localbu, parama);
-        ba.aBQ();
-        c.azs().a(localbu.field_msgId, localbu);
+        localbv.setContent(paramMap);
+        localbv.setType(10000);
+        bl.a(localbv, parama);
+        bc.aCg();
+        c.azI().a(localbv.field_msgId, localbv);
       }
-      ba.aBQ();
-      at localat = c.azv().aTz(paramString);
-      if ((localat != null) && (localat.field_unReadCount > 0))
+      bc.aCg();
+      au localau = c.azL().aVa(paramString);
+      if ((localau != null) && (localau.field_unReadCount > 0))
       {
-        ba.aBQ();
-        int i = c.azs().ar(localbu);
-        if (localat.field_unReadCount >= i)
+        bc.aCg();
+        int i = c.azI().aq(localbv);
+        if (localau.field_unReadCount >= i)
         {
-          localat.kp(localat.field_unReadCount - 1);
-          ba.aBQ();
-          c.azv().a(localat, localat.field_username);
+          localau.kr(localau.field_unReadCount - 1);
+          bc.aCg();
+          c.azL().a(localau, localau.field_username);
         }
       }
-      if (localbu != null) {
-        g.ajF().ay(new Runnable()
+      if (localbv != null) {
+        g.ajU().aw(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(193114);
-            ad.i("MicroMsg.BizChatSysCmdMsgConsumerHandleRevokeMsg", "[deleteLocalFile] id:%s type:%s", new Object[] { Long.valueOf(localbu.field_msgId), Integer.valueOf(localbu.getType()) });
-            switch (localbu.getType())
+            AppMethodBeat.i(186355);
+            ae.i("MicroMsg.BizChatSysCmdMsgConsumerHandleRevokeMsg", "[deleteLocalFile] id:%s type:%s", new Object[] { Long.valueOf(localbv.field_msgId), Integer.valueOf(localbv.getType()) });
+            switch (localbv.getType())
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(193114);
+              AppMethodBeat.o(186355);
               return;
-              bj.x(localbu);
+              bl.x(localbv);
             }
           }
         });

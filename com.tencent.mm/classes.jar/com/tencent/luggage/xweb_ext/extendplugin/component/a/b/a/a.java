@@ -5,15 +5,15 @@ import android.os.Bundle;
 
 public abstract interface a
 {
-  public abstract b Go();
+  public abstract b Gu();
   
-  public abstract c Gp();
+  public abstract c Gv();
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Bitmap paramBitmap);
   
-  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, a parama1);
+  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, a.a parama1);
   
-  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, String paramString1, String paramString2, a parama1);
+  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, String paramString1, String paramString2, a.a parama1);
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
   
@@ -23,18 +23,13 @@ public abstract interface a
   
   public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.a parama, Bundle paramBundle);
   
-  public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.a parama, a parama1);
+  public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.a parama, a.a parama1);
   
   public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
   
   public abstract String c(com.tencent.luggage.xweb_ext.extendplugin.a parama, Bundle paramBundle);
   
   public abstract void c(com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
-  
-  public static abstract interface a
-  {
-    public abstract void F(String paramString1, String paramString2);
-  }
 }
 
 

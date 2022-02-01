@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class hd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String desc;
   public String title;
@@ -40,9 +40,9 @@ public final class hd
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(123545);
@@ -58,11 +58,11 @@ public final class hd
           AppMethodBeat.o(123545);
           return -1;
         case 1: 
-          localhd.title = locala.NPN.readString();
+          localhd.title = locala.OmT.readString();
           AppMethodBeat.o(123545);
           return 0;
         }
-        localhd.desc = locala.NPN.readString();
+        localhd.desc = locala.OmT.readString();
         AppMethodBeat.o(123545);
         return 0;
       }

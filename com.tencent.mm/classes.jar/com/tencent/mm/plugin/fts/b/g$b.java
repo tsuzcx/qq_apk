@@ -4,25 +4,25 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.a.e.a;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.d;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ar;
 
 final class g$b
   extends a
 {
-  private j trv;
+  private j tCm;
   
   public g$b(g paramg, j paramj)
   {
-    this.trv = paramj;
+    this.tCm = paramj;
   }
   
-  private static long cTg()
+  private static long cVL()
   {
     AppMethodBeat.i(52770);
     Object localObject1 = String.format("SELECT count(docid) FROM %s WHERE subtype = %d", new Object[] { "FTS5MetaFavorite", Integer.valueOf(9) });
@@ -43,7 +43,7 @@ final class g$b
     }
   }
   
-  private static long cTh()
+  private static long cVM()
   {
     AppMethodBeat.i(52771);
     Object localObject1 = String.format("SELECT count(docid) FROM %s", new Object[] { "FTS5MetaMessage" });
@@ -64,7 +64,7 @@ final class g$b
     }
   }
   
-  private static long cTi()
+  private static long cVN()
   {
     AppMethodBeat.i(52772);
     Object localObject1 = String.format("SELECT count(docid) FROM %s WHERE type = %d AND subtype = %d", new Object[] { "FTS5MetaContact", Integer.valueOf(131072), Integer.valueOf(1) });
@@ -85,7 +85,7 @@ final class g$b
     }
   }
   
-  private static long cTj()
+  private static long cVO()
   {
     AppMethodBeat.i(52773);
     Object localObject1 = String.format("SELECT count(docid) FROM %s WHERE type = %d AND subtype = %d", new Object[] { "FTS5MetaContact", Integer.valueOf(131075), Integer.valueOf(38) });
@@ -109,23 +109,23 @@ final class g$b
   public final boolean execute()
   {
     AppMethodBeat.i(52769);
-    com.tencent.mm.plugin.fts.a.e.ttv.tty = (d.cSD().length() / 1048576L);
-    com.tencent.mm.plugin.fts.a.e.ttv.ttz = cTi();
-    com.tencent.mm.plugin.fts.a.e.ttv.ttA = cTj();
-    com.tencent.mm.plugin.fts.a.e.ttv.ttC = cTg();
-    com.tencent.mm.plugin.fts.a.e.ttv.ttB = cTh();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().S(-301L, com.tencent.mm.plugin.fts.a.e.ttv.ttz);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().S(-302L, com.tencent.mm.plugin.fts.a.e.ttv.ttA);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().S(-303L, com.tencent.mm.plugin.fts.a.e.ttv.ttC);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().S(-304L, com.tencent.mm.plugin.fts.a.e.ttv.ttB);
-    final k localk = new k(this.trv);
-    if (this.trv.tvj != null) {
-      aq.f(new Runnable()
+    e.tEm.tEp = (d.cVi().length() / 1048576L);
+    e.tEm.tEq = cVN();
+    e.tEm.tEr = cVO();
+    e.tEm.tEt = cVL();
+    e.tEm.tEs = cVM();
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().R(-301L, e.tEm.tEq);
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().R(-302L, e.tEm.tEr);
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().R(-303L, e.tEm.tEt);
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSIndexDB().R(-304L, e.tEm.tEs);
+    final com.tencent.mm.plugin.fts.a.a.k localk = new com.tencent.mm.plugin.fts.a.a.k(this.tCm);
+    if (this.tCm.tGa != null) {
+      ar.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(52768);
-          g.b.a(g.b.this).tvj.b(localk);
+          g.b.a(g.b.this).tGa.b(localk);
           AppMethodBeat.o(52768);
         }
       });
@@ -141,7 +141,7 @@ final class g$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.g.b
  * JD-Core Version:    0.7.0.1
  */

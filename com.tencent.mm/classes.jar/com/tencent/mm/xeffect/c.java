@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/xeffect/PAGTextInfo;", "", "text", "", "fontSize", "", "fontFamily", "italic", "", "bold", "(Ljava/lang/String;FLjava/lang/String;ZZ)V", "getBold", "()Z", "setBold", "(Z)V", "getFontFamily", "()Ljava/lang/String;", "setFontFamily", "(Ljava/lang/String;)V", "getFontSize", "()F", "setFontSize", "(F)V", "getItalic", "setItalic", "getText", "setText", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "", "toString", "renderlib_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/xeffect/PAGTextInfo;", "", "text", "", "fontSize", "", "fontFamily", "italic", "", "bold", "(Ljava/lang/String;FLjava/lang/String;ZZ)V", "getBold", "()Z", "setBold", "(Z)V", "getFontFamily", "()Ljava/lang/String;", "setFontFamily", "(Ljava/lang/String;)V", "getFontSize", "()F", "setFontSize", "(F)V", "getItalic", "setItalic", "getText", "setText", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "", "toString", "renderlib_release"})
 public final class c
 {
-  boolean LBk;
+  boolean LYk;
   String fontFamily;
   float fontSize;
-  boolean sWe;
+  boolean ryR;
   String text;
   
   public c()
@@ -20,18 +20,18 @@ public final class c
   
   private c(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220318);
+    AppMethodBeat.i(217071);
     this.text = paramString1;
     this.fontSize = 0.0F;
     this.fontFamily = paramString2;
-    this.LBk = false;
-    this.sWe = false;
-    AppMethodBeat.o(220318);
+    this.LYk = false;
+    this.ryR = false;
+    AppMethodBeat.o(217071);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(220322);
+    AppMethodBeat.i(217075);
     if (this != paramObject)
     {
       if (!(paramObject instanceof c)) {
@@ -41,14 +41,14 @@ public final class c
       if ((!p.i(this.text, paramObject.text)) || (Float.compare(this.fontSize, paramObject.fontSize) != 0) || (!p.i(this.fontFamily, paramObject.fontFamily))) {
         break label115;
       }
-      if (this.LBk != paramObject.LBk) {
+      if (this.LYk != paramObject.LYk) {
         break label105;
       }
       i = 1;
       if (i == 0) {
         break label115;
       }
-      if (this.sWe != paramObject.sWe) {
+      if (this.ryR != paramObject.ryR) {
         break label110;
       }
     }
@@ -59,13 +59,13 @@ public final class c
       if (i == 0) {
         break label115;
       }
-      AppMethodBeat.o(220322);
+      AppMethodBeat.o(217075);
       return true;
       i = 0;
       break;
     }
     label115:
-    AppMethodBeat.o(220322);
+    AppMethodBeat.o(217075);
     return false;
   }
   
@@ -76,15 +76,15 @@ public final class c
   
   public final String toString()
   {
-    AppMethodBeat.i(220320);
-    String str = "PAGTextInfo(text=" + this.text + ", fontSize=" + this.fontSize + ", fontFamily=" + this.fontFamily + ", italic=" + this.LBk + ", bold=" + this.sWe + ")";
-    AppMethodBeat.o(220320);
+    AppMethodBeat.i(217073);
+    String str = "PAGTextInfo(text=" + this.text + ", fontSize=" + this.fontSize + ", fontFamily=" + this.fontFamily + ", italic=" + this.LYk + ", bold=" + this.ryR + ")";
+    AppMethodBeat.o(217073);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.xeffect.c
  * JD-Core Version:    0.7.0.1
  */

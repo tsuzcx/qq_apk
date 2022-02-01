@@ -9,19 +9,19 @@ import com.tencent.mm.remoteservice.f;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "getAccPath", "", "getAccPathRemote", "Companion", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "getAccPath", "", "getAccPathRemote", "Companion", "plugin-mediaeditor_release"})
 public final class MediaEditorProxy
   extends a
 {
   private static final String RESULT_KEY = "result_key";
   private static final String TAG = "MicroMsg.StoryCaptureProxy";
-  public static MediaEditorProxy hkQ;
-  public static final a hkR;
+  public static MediaEditorProxy hnE;
+  public static final a hnF;
   
   static
   {
     AppMethodBeat.i(93729);
-    hkR = new a((byte)0);
+    hnF = new a((byte)0);
     TAG = "MicroMsg.StoryCaptureProxy";
     RESULT_KEY = "result_key";
     AppMethodBeat.o(93729);
@@ -44,7 +44,7 @@ public final class MediaEditorProxy
   public final String getAccPath()
   {
     AppMethodBeat.i(93727);
-    Object localObject = g.ajC();
+    Object localObject = g.ajR();
     p.g(localObject, "MMKernel.storage()");
     localObject = ((e)localObject).getAccPath();
     p.g(localObject, "MMKernel.storage().accPath");
@@ -56,7 +56,7 @@ public final class MediaEditorProxy
   public final String getAccPathRemote()
   {
     AppMethodBeat.i(93728);
-    Object localObject = g.ajC();
+    Object localObject = g.ajR();
     p.g(localObject, "MMKernel.storage()");
     localObject = ((e)localObject).getAccPath();
     p.g(localObject, "MMKernel.storage().accPath");
@@ -64,7 +64,7 @@ public final class MediaEditorProxy
     return localObject;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/proxy/MediaEditorProxy$Companion;", "", "()V", "RESULT_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "getInstance", "()Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "setInstance", "(Lcom/tencent/mm/media/proxy/MediaEditorProxy;)V", "createInstance", "", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "plugin-mediaeditor_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/proxy/MediaEditorProxy$Companion;", "", "()V", "RESULT_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "getInstance", "()Lcom/tencent/mm/media/proxy/MediaEditorProxy;", "setInstance", "(Lcom/tencent/mm/media/proxy/MediaEditorProxy;)V", "createInstance", "", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "plugin-mediaeditor_release"})
   public static final class a {}
 }
 

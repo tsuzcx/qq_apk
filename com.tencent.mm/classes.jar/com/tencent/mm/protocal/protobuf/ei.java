@@ -3,13 +3,13 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ei
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Fwf;
-  public String duW;
-  public String hXi;
-  public String mri;
-  public String mrm;
+  public int FOD;
+  public String dwb;
+  public String iaa;
+  public String mwg;
+  public String mwk;
   public int position;
   public String username;
   
@@ -22,20 +22,20 @@ public final class ei
       if (this.username != null) {
         paramVarArgs.d(1, this.username);
       }
-      if (this.hXi != null) {
-        paramVarArgs.d(2, this.hXi);
+      if (this.iaa != null) {
+        paramVarArgs.d(2, this.iaa);
       }
-      if (this.mri != null) {
-        paramVarArgs.d(3, this.mri);
+      if (this.mwg != null) {
+        paramVarArgs.d(3, this.mwg);
       }
-      if (this.duW != null) {
-        paramVarArgs.d(4, this.duW);
+      if (this.dwb != null) {
+        paramVarArgs.d(4, this.dwb);
       }
-      if (this.mrm != null) {
-        paramVarArgs.d(5, this.mrm);
+      if (this.mwk != null) {
+        paramVarArgs.d(5, this.mwk);
       }
       paramVarArgs.aS(6, this.position);
-      paramVarArgs.aS(7, this.Fwf);
+      paramVarArgs.aS(7, this.FOD);
       AppMethodBeat.o(50080);
       return 0;
     }
@@ -48,31 +48,31 @@ public final class ei
     for (int i = f.a.a.b.b.a.e(1, this.username) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.hXi != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.hXi);
+      if (this.iaa != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.iaa);
       }
       i = paramInt;
-      if (this.mri != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.mri);
+      if (this.mwg != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.mwg);
       }
       paramInt = i;
-      if (this.duW != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.duW);
+      if (this.dwb != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.dwb);
       }
       i = paramInt;
-      if (this.mrm != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.mrm);
+      if (this.mwk != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.mwk);
       }
       paramInt = f.a.a.b.b.a.bz(6, this.position);
-      int j = f.a.a.b.b.a.bz(7, this.Fwf);
+      int j = f.a.a.b.b.a.bz(7, this.FOD);
       AppMethodBeat.o(50080);
       return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(50080);
@@ -88,31 +88,31 @@ public final class ei
           AppMethodBeat.o(50080);
           return -1;
         case 1: 
-          localei.username = locala.NPN.readString();
+          localei.username = locala.OmT.readString();
           AppMethodBeat.o(50080);
           return 0;
         case 2: 
-          localei.hXi = locala.NPN.readString();
+          localei.iaa = locala.OmT.readString();
           AppMethodBeat.o(50080);
           return 0;
         case 3: 
-          localei.mri = locala.NPN.readString();
+          localei.mwg = locala.OmT.readString();
           AppMethodBeat.o(50080);
           return 0;
         case 4: 
-          localei.duW = locala.NPN.readString();
+          localei.dwb = locala.OmT.readString();
           AppMethodBeat.o(50080);
           return 0;
         case 5: 
-          localei.mrm = locala.NPN.readString();
+          localei.mwk = locala.OmT.readString();
           AppMethodBeat.o(50080);
           return 0;
         case 6: 
-          localei.position = locala.NPN.zc();
+          localei.position = locala.OmT.zc();
           AppMethodBeat.o(50080);
           return 0;
         }
-        localei.Fwf = locala.NPN.zc();
+        localei.FOD = locala.OmT.zc();
         AppMethodBeat.o(50080);
         return 0;
       }
@@ -123,7 +123,7 @@ public final class ei
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ei
  * JD-Core Version:    0.7.0.1
  */

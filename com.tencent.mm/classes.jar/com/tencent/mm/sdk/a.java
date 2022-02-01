@@ -2,8 +2,8 @@ package com.tencent.mm.sdk;
 
 public final class a
 {
-  public static String IbB = "matrixmrs";
-  public static String IbC = "andromeda";
+  public static String IvJ = "matrixmrs";
+  public static String IvK = "andromeda";
 }
 
 

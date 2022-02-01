@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class b
-  extends y<aa>
+  extends y<z>
 {
   private static final int CTRL_INDEX = 583;
   private static final String NAME = "getSelectedTextRange";

@@ -1,115 +1,88 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import d.a.j;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.sdk.platformtools.ak;
+import d.g.b.p;
 import d.l;
-import java.lang.Class<+Landroid.app.Activity;>;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "genAppBrandInstanceId", "", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "appId", "generateInstanceId", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter;", "Lcom/tencent/mm/plugin/appbrand/utils/IOrientationGetter;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "curOrientation", "Lcom/tencent/mm/plugin/appbrand/utils/Orientation;", "getCurOrientation", "()Lcom/tencent/mm/plugin/appbrand/utils/Orientation;", "name", "", "getName", "()Ljava/lang/String;", "androidOrientation2Orientation", "androidOrientation", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
 public final class a
+  implements q
 {
-  public static final a mOv;
+  public static final a mTz;
+  private final Context context;
   
   static
   {
-    AppMethodBeat.i(51400);
-    mOv = new a();
-    AppMethodBeat.o(51400);
+    AppMethodBeat.i(197218);
+    mTz = new a((byte)0);
+    AppMethodBeat.o(197218);
   }
   
-  public static final boolean UY(String paramString)
+  public a(Context paramContext)
   {
-    AppMethodBeat.i(189664);
-    paramString = (CharSequence)paramString;
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(197217);
+    this.context = paramContext;
+    AppMethodBeat.o(197217);
+  }
+  
+  public final ac bxC()
+  {
+    AppMethodBeat.i(197216);
+    Object localObject = this.context.getResources();
+    p.g(localObject, "context.resources");
+    switch (((Resources)localObject).getConfiguration().orientation)
     {
-      AppMethodBeat.o(189664);
-      return true;
+    default: 
+      localObject = ac.mUt;
+      AppMethodBeat.o(197216);
+      return localObject;
+    case 1: 
+      localObject = ac.mUu;
+      AppMethodBeat.o(197216);
+      return localObject;
     }
-    AppMethodBeat.o(189664);
-    return false;
+    localObject = ac.mUv;
+    AppMethodBeat.o(197216);
+    return localObject;
   }
   
-  public static final boolean aI(Class<? extends Activity> paramClass)
+  public final String getName()
   {
-    AppMethodBeat.i(51397);
-    d.g.b.p.h(paramClass, "clazz");
-    try
+    return "AndroidOrientationGetter";
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter$Companion;", "Lcom/tencent/mm/plugin/appbrand/utils/IOrientationGetter$IFactory;", "()V", "create", "Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter;", "componentView", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "luggage-commons-jsapi-default-impl_release"})
+  public static final class a
+    implements q.a
+  {
+    public static a b(e parame)
     {
-      Context localContext = aj.getContext();
-      if (localContext != null)
+      AppMethodBeat.i(197214);
+      if (parame != null)
       {
-        Object localObject = localContext.getPackageManager();
-        if (localObject != null)
-        {
-          paramClass = ((PackageManager)localObject).getActivityInfo(new ComponentName(localContext, paramClass), 128);
-          if (paramClass != null)
-          {
-            localObject = paramClass.taskAffinity;
-            paramClass = (Class<? extends Activity>)localObject;
-            if (localObject != null) {
-              break label71;
-            }
-          }
-        }
+        Context localContext = parame.getContext();
+        parame = localContext;
+        if (localContext != null) {}
       }
-      d.g.b.p.g(localContext, "appContext");
-      paramClass = localContext.getPackageName();
-      label71:
-      boolean bool = d.g.b.p.i(paramClass, localContext.getPackageName());
-      AppMethodBeat.o(51397);
-      return bool ^ true;
+      else
+      {
+        parame = ak.getContext();
+        p.g(parame, "MMApplicationContext.getContext()");
+      }
+      parame = new a(parame);
+      AppMethodBeat.o(197214);
+      return parame;
     }
-    catch (PackageManager.NameNotFoundException paramClass)
-    {
-      AppMethodBeat.o(51397);
-    }
-    return false;
-  }
-  
-  public static final String c(LaunchParcel paramLaunchParcel, String paramString)
-  {
-    AppMethodBeat.i(51398);
-    d.g.b.p.h(paramLaunchParcel, "parcel");
-    paramString = f.cb(paramString, paramLaunchParcel.hQh);
-    paramLaunchParcel = paramString;
-    if (paramString == null)
-    {
-      d.g.b.p.g(g.ajA(), "MMKernel.account()");
-      paramLaunchParcel = vL(com.tencent.mm.kernel.a.getUin());
-    }
-    if (paramLaunchParcel == null) {
-      d.g.b.p.gfZ();
-    }
-    AppMethodBeat.o(51398);
-    return paramLaunchParcel;
-  }
-  
-  public static final String vL(int paramInt)
-  {
-    AppMethodBeat.i(51399);
-    String str = com.tencent.mm.b.p.getString(paramInt);
-    d.g.b.p.g(str, "UIN.getString(uin)");
-    str = j.a((Iterable)j.listOf(new String[] { str, String.valueOf(bt.flT()) }), (CharSequence)"_", null, null, 0, null, null, 62);
-    AppMethodBeat.o(51399);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.a
  * JD-Core Version:    0.7.0.1
  */

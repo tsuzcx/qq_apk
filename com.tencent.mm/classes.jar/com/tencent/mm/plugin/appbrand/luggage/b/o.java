@@ -1,140 +1,111 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.luggage.bridge.impl.a.a;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.f.a.b;
-import com.tencent.mm.plugin.appbrand.f.a.c;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.al;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class o
-  extends a
-  implements com.tencent.mm.plugin.appbrand.f.b
+  extends com.tencent.luggage.f.a.b
 {
-  private final AppBrandRuntime jzY;
+  public static Integer lSM;
   
-  o(AppBrandRuntime paramAppBrandRuntime)
+  private static int getMapType()
   {
-    this.jzY = paramAppBrandRuntime;
-  }
-  
-  private static Pair<String, String> Sa(String paramString)
-  {
-    AppMethodBeat.i(197291);
-    paramString = Uri.parse(paramString);
-    paramString = Pair.create(paramString.getQueryParameter("appId"), paramString.getQueryParameter("path"));
-    AppMethodBeat.o(197291);
-    return paramString;
-  }
-  
-  public final String BM()
-  {
-    return "WxaPkgImageReader";
-  }
-  
-  public final void a(String paramString, a.c paramc)
-  {
-    AppMethodBeat.i(197292);
-    if (paramc == null)
+    AppMethodBeat.i(47493);
+    if (lSM != null)
     {
-      AppMethodBeat.o(197292);
-      return;
+      i = lSM.intValue();
+      AppMethodBeat.o(47493);
+      return i;
     }
-    paramString = (String)Sa(paramString).second;
-    if (TextUtils.isEmpty(paramString))
+    Object localObject = a.a.gAX;
+    localObject = a.xi("100487");
+    if ((localObject == null) || (!((com.tencent.mm.storage.c)localObject).isValid()))
     {
-      paramc.D(null);
-      AppMethodBeat.o(197292);
-      return;
+      ae.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
+      AppMethodBeat.o(47493);
+      return 1;
     }
-    paramc.D(bf.f(this.jzY, paramString));
-    AppMethodBeat.o(197292);
+    lSM = Integer.valueOf(bu.getInt((String)((com.tencent.mm.storage.c)localObject).fsy().get("MapType"), 1));
+    ae.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { lSM });
+    int i = lSM.intValue();
+    AppMethodBeat.o(47493);
+    return i;
   }
   
-  public final boolean a(c paramc, String paramString)
+  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(134914);
-    if ((paramc == null) || (paramString == null) || (paramString.length() == 0))
+    int i = 0;
+    AppMethodBeat.i(47495);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(134914);
-      return false;
-    }
-    if ((!paramString.startsWith("wxapkg://")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")) && (!paramString.startsWith("wxfile://")) && (!paramString.contains("://")))
-    {
-      AppMethodBeat.o(134914);
-      return true;
-    }
-    AppMethodBeat.o(134914);
-    return false;
-  }
-  
-  public final Bitmap b(String paramString, Rect paramRect, a.b paramb)
-  {
-    AppMethodBeat.i(134913);
-    if (!match(paramString))
-    {
-      AppMethodBeat.o(134913);
+      AppMethodBeat.o(47495);
       return null;
     }
-    paramString = (String)Sa(paramString).second;
-    if (TextUtils.isEmpty(paramString))
+    int k = f.a(paramMap, "mapType", getMapType());
+    int j = f.a(paramMap, "enableDarkMode", 0);
+    if (!al.isDarkMode()) {}
+    for (;;)
     {
-      AppMethodBeat.o(134913);
-      return null;
+      paramMap.put("enableDarkMode", Integer.valueOf(i));
+      if (k == 2)
+      {
+        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.ad.d.b(paramContext, paramString, paramMap);
+        AppMethodBeat.o(47495);
+        return paramContext;
+      }
+      paramContext = super.a(paramContext, paramString, paramMap);
+      AppMethodBeat.o(47495);
+      return paramContext;
+      i = j;
     }
-    paramb = x.k(this.jzY, Uri.decode(paramString));
-    paramString = paramb;
-    if (paramRect != null) {
-      paramString = new com.tencent.mm.plugin.appbrand.luggage.a.b(paramRect.left, paramRect.top, paramRect.width(), paramRect.height()).F(paramb);
-    }
-    AppMethodBeat.o(134913);
-    return paramString;
   }
   
-  public final String b(c paramc, String paramString)
+  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(134915);
-    if (!a(paramc, paramString))
+    AppMethodBeat.i(47494);
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      AppMethodBeat.o(134915);
-      return paramString;
+      try
+      {
+        paramJSONObject.put("mapType", getMapType());
+        bool = paramJSONObject.optBoolean("enableDarkMode", false);
+        if (al.isDarkMode()) {
+          continue;
+        }
+        bool = false;
+      }
+      catch (JSONException localJSONException)
+      {
+        boolean bool;
+        ae.m("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
+        continue;
+        if (!bool) {
+          continue;
+        }
+        int i = 1;
+        continue;
+      }
+      paramJSONObject.put("enableDarkMode", i);
+      paramc = super.b(paramc, paramJSONObject);
+      AppMethodBeat.o(47494);
+      return paramc;
+      i = 0;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("wxapkg://");
-    localStringBuilder.append("icon?");
-    localStringBuilder.append("appId=");
-    localStringBuilder.append(paramc.getAppId());
-    localStringBuilder.append("&");
-    localStringBuilder.append("path=");
-    localStringBuilder.append(Uri.encode(paramString));
-    paramc = localStringBuilder.toString();
-    AppMethodBeat.o(134915);
-    return paramc;
-  }
-  
-  public final boolean match(String paramString)
-  {
-    AppMethodBeat.i(134912);
-    if ((paramString != null) && (paramString.startsWith("wxapkg://")))
-    {
-      AppMethodBeat.o(134912);
-      return true;
-    }
-    AppMethodBeat.o(134912);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.o
  * JD-Core Version:    0.7.0.1
  */

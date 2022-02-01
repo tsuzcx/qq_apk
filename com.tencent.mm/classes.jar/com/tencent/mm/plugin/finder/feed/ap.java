@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.finder.feed;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract;", "", "()V", "TopicFeedPresenter", "TopicFeedViewCallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract;", "", "()V", "TopicFeedPresenter", "TopicFeedViewCallback", "plugin-finder_release"})
 public final class ap
 {
-  public static final ap saq;
+  public static final ap sjf;
   
   static
   {
     AppMethodBeat.i(165979);
-    saq = new ap();
+    sjf = new ap();
     AppMethodBeat.o(165979);
   }
 }

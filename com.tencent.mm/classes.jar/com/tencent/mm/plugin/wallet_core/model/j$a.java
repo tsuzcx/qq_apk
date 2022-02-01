@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public final class j$a
 {
-  public Orders.ShowInfo CWT;
+  public Orders.ShowInfo Doy;
   public int id;
   
   public static a bi(JSONObject paramJSONObject)
@@ -24,10 +24,10 @@ public final class j$a
       Orders.ShowInfo localShowInfo = new Orders.ShowInfo();
       localShowInfo.name = paramJSONObject.optString("name");
       localShowInfo.value = paramJSONObject.optString("value");
-      localShowInfo.CZE = paramJSONObject.optInt("value_attr");
-      localShowInfo.uaQ = paramJSONObject.optString("name_color");
-      localShowInfo.CZz = paramJSONObject.optString("value_color");
-      locala.CWT = localShowInfo;
+      localShowInfo.Drj = paramJSONObject.optInt("value_attr");
+      localShowInfo.ulS = paramJSONObject.optString("name_color");
+      localShowInfo.Dre = paramJSONObject.optString("value_color");
+      locala.Doy = localShowInfo;
     }
     AppMethodBeat.o(70281);
     return locala;

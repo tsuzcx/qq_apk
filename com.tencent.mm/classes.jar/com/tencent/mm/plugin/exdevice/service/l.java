@@ -19,7 +19,7 @@ public abstract interface l
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnTaskEnd_AIDL");
     }
     
-    public static l z(IBinder paramIBinder)
+    public static l A(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -47,7 +47,7 @@ public abstract interface l
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTOnTaskEnd_AIDL");
-      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), p.a.B(paramParcel1.readStrongBinder()));
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), p.a.C(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       return true;
     }

@@ -11,7 +11,7 @@ public final class Metadata
   implements Parcelable
 {
   public static final Parcelable.Creator<Metadata> CREATOR;
-  public final Metadata.Entry[] buc;
+  public final Entry[] buc;
   
   static
   {
@@ -23,25 +23,25 @@ public final class Metadata
   Metadata(Parcel paramParcel)
   {
     AppMethodBeat.i(92464);
-    this.buc = new Metadata.Entry[paramParcel.readInt()];
+    this.buc = new Entry[paramParcel.readInt()];
     int i = 0;
     while (i < this.buc.length)
     {
-      this.buc[i] = ((Metadata.Entry)paramParcel.readParcelable(Metadata.Entry.class.getClassLoader()));
+      this.buc[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
       i += 1;
     }
     AppMethodBeat.o(92464);
   }
   
-  public Metadata(List<? extends Metadata.Entry> paramList)
+  public Metadata(List<? extends Entry> paramList)
   {
     AppMethodBeat.i(92463);
-    this.buc = new Metadata.Entry[paramList.size()];
+    this.buc = new Entry[paramList.size()];
     paramList.toArray(this.buc);
     AppMethodBeat.o(92463);
   }
   
-  public Metadata(Metadata.Entry... paramVarArgs)
+  public Metadata(Entry... paramVarArgs)
   {
     this.buc = paramVarArgs;
   }
@@ -82,7 +82,7 @@ public final class Metadata
   {
     AppMethodBeat.i(92467);
     paramParcel.writeInt(this.buc.length);
-    Metadata.Entry[] arrayOfEntry = this.buc;
+    Entry[] arrayOfEntry = this.buc;
     int i = arrayOfEntry.length;
     paramInt = 0;
     while (paramInt < i)
@@ -92,10 +92,14 @@ public final class Metadata
     }
     AppMethodBeat.o(92467);
   }
+  
+  public static abstract interface Entry
+    extends Parcelable
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.Metadata
  * JD-Core Version:    0.7.0.1
  */

@@ -9,53 +9,53 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.exdevice.b.b;
 import com.tencent.mm.plugin.exdevice.d.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 
 public class ExdeviceConnectedRouterActivateStateUI
   extends MMActivity
 {
   private String appId;
-  private String cUi;
-  private String dow;
-  private String qao;
-  private final int qjM;
-  private ExdeviceConnectedRouterStateView qjN;
-  private TextView qjO;
-  private TextView qjP;
-  private b<a> qjQ;
+  private String cVh;
+  private String dpB;
+  private String qgT;
+  private final int qqr;
+  private ExdeviceConnectedRouterStateView qqs;
+  private TextView qqt;
+  private TextView qqu;
+  private b<a> qqv;
   private String ssid;
   
   public ExdeviceConnectedRouterActivateStateUI()
   {
     AppMethodBeat.i(23989);
-    this.qjM = 90000;
-    this.qjQ = new b() {};
+    this.qqr = 90000;
+    this.qqv = new b() {};
     AppMethodBeat.o(23989);
   }
   
-  private void cmf()
+  private void cnv()
   {
     AppMethodBeat.i(23995);
     finish();
     Intent localIntent = new Intent();
     localIntent.putExtra("From_fail_notify", true);
-    ad.d("MicroMsg.ConnectedRouterActivateStateUi", "startMainUI");
+    ae.d("MicroMsg.ConnectedRouterActivateStateUi", "startMainUI");
     d.f(this, "com.tencent.mm.ui.LauncherUI", localIntent);
     AppMethodBeat.o(23995);
   }
   
-  protected final void CH(int paramInt)
+  protected final void CT(int paramInt)
   {
     AppMethodBeat.i(23992);
-    this.qjN.setOnClickListener(null);
-    ad.d("MicroMsg.ConnectedRouterActivateStateUi", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
+    this.qqs.setOnClickListener(null);
+    ae.d("MicroMsg.ConnectedRouterActivateStateUi", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -63,30 +63,30 @@ public class ExdeviceConnectedRouterActivateStateUI
     {
       AppMethodBeat.o(23992);
       return;
-      this.qjN.setImageResource(2131689986);
-      this.qjN.setState(3);
-      this.qjN.qjT = 2;
-      this.qjO.setText(2131758521);
-      this.qjP.setText(getString(2131758522, new Object[] { this.ssid }));
+      this.qqs.setImageResource(2131689986);
+      this.qqs.setState(3);
+      this.qqs.qqy = 2;
+      this.qqt.setText(2131758521);
+      this.qqu.setText(getString(2131758522, new Object[] { this.ssid }));
       AppMethodBeat.o(23992);
       return;
-      this.qjN.setImageResource(2131689986);
-      this.qjN.setState(3);
-      this.qjN.qjT = 2;
-      this.qjO.setText(2131758521);
-      this.qjP.setText(getString(2131758523));
+      this.qqs.setImageResource(2131689986);
+      this.qqs.setState(3);
+      this.qqs.qqy = 2;
+      this.qqt.setText(2131758521);
+      this.qqu.setText(getString(2131758523));
       AppMethodBeat.o(23992);
       return;
-      this.qjN.setImageResource(2131689986);
-      this.qjN.setState(3);
-      this.qjN.qjT = 2;
-      this.qjO.setText(2131758521);
-      this.qjP.setText(getString(2131758525));
+      this.qqs.setImageResource(2131689986);
+      this.qqs.setState(3);
+      this.qqs.qqy = 2;
+      this.qqt.setText(2131758521);
+      this.qqu.setText(getString(2131758525));
       AppMethodBeat.o(23992);
       return;
-      this.qjN.setImageResource(2131689988);
-      this.qjN.setState(2);
-      this.qjO.setText(getString(2131758524, new Object[] { this.ssid }));
+      this.qqs.setImageResource(2131689988);
+      this.qqs.setState(2);
+      this.qqt.setText(getString(2131758524, new Object[] { this.ssid }));
       addTextOptionMenu(0, getString(2131758519), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -99,9 +99,9 @@ public class ExdeviceConnectedRouterActivateStateUI
       });
       AppMethodBeat.o(23992);
       return;
-      this.qjN.setImageResource(2131689987);
-      this.qjN.setState(1);
-      this.qjO.setText(2131758520);
+      this.qqs.setImageResource(2131689987);
+      this.qqs.setState(1);
+      this.qqt.setText(2131758520);
     }
   }
   
@@ -119,7 +119,7 @@ public class ExdeviceConnectedRouterActivateStateUI
   {
     AppMethodBeat.i(23990);
     super.onCreate(paramBundle);
-    ad.d("MicroMsg.ConnectedRouterActivateStateUi", "create activity");
+    ae.d("MicroMsg.ConnectedRouterActivateStateUi", "create activity");
     setMMTitle(2131758526);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -131,23 +131,23 @@ public class ExdeviceConnectedRouterActivateStateUI
         return true;
       }
     });
-    this.qjN = ((ExdeviceConnectedRouterStateView)findViewById(2131299547));
-    this.qjO = ((TextView)findViewById(2131299546));
-    this.qjP = ((TextView)findViewById(2131299548));
+    this.qqs = ((ExdeviceConnectedRouterStateView)findViewById(2131299547));
+    this.qqt = ((TextView)findViewById(2131299546));
+    this.qqu = ((TextView)findViewById(2131299548));
     try
     {
       paramBundle = Uri.parse(getIntent().getStringExtra("key_connected_router"));
-      this.cUi = paramBundle.getQueryParameter("deviceid");
-      this.dow = paramBundle.getQueryParameter("devicetype");
-      this.qao = paramBundle.getQueryParameter("clientinfo");
+      this.cVh = paramBundle.getQueryParameter("deviceid");
+      this.dpB = paramBundle.getQueryParameter("devicetype");
+      this.qgT = paramBundle.getQueryParameter("clientinfo");
       this.appId = paramBundle.getQueryParameter("appid");
-      if ((bt.isNullOrNil(this.cUi)) || (bt.isNullOrNil(this.dow)) || (bt.isNullOrNil(this.qao)) || (bt.isNullOrNil(this.appId)))
+      if ((bu.isNullOrNil(this.cVh)) || (bu.isNullOrNil(this.dpB)) || (bu.isNullOrNil(this.qgT)) || (bu.isNullOrNil(this.appId)))
       {
-        ad.e("MicroMsg.ConnectedRouterActivateStateUi", "loss param %s", new Object[] { paramBundle.toString() });
+        ae.e("MicroMsg.ConnectedRouterActivateStateUi", "loss param %s", new Object[] { paramBundle.toString() });
         finish();
       }
       this.ssid = paramBundle.getQueryParameter("ssid");
-      ad.d("MicroMsg.ConnectedRouterActivateStateUi", "uri: %s, deviceid: %s, devicetype: %s, clientinfo: %s. ssid: %s", new Object[] { paramBundle.toString(), this.cUi, this.dow, this.qao, this.ssid });
+      ae.d("MicroMsg.ConnectedRouterActivateStateUi", "uri: %s, deviceid: %s, devicetype: %s, clientinfo: %s. ssid: %s", new Object[] { paramBundle.toString(), this.cVh, this.dpB, this.qgT, this.ssid });
       if (this.ssid == null) {
         this.ssid = "";
       }
@@ -156,11 +156,11 @@ public class ExdeviceConnectedRouterActivateStateUI
     {
       for (;;)
       {
-        ad.d("MicroMsg.ConnectedRouterActivateStateUi", paramBundle.toString());
+        ae.d("MicroMsg.ConnectedRouterActivateStateUi", paramBundle.toString());
       }
     }
-    CH(1);
-    ba.aiU().a(new a(this.cUi, this.dow, this.qao, this.appId, this.qjQ), 0);
+    CT(1);
+    bc.ajj().a(new a(this.cVh, this.dpB, this.qgT, this.appId, this.qqv), 0);
     AppMethodBeat.o(23990);
   }
   
@@ -176,7 +176,7 @@ public class ExdeviceConnectedRouterActivateStateUI
     AppMethodBeat.i(23994);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      cmf();
+      cnv();
       AppMethodBeat.o(23994);
       return true;
     }

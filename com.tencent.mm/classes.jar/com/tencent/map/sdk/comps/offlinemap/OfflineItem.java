@@ -12,15 +12,15 @@ public class OfflineItem
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(195064);
+    AppMethodBeat.i(209768);
     if (this == paramObject)
     {
-      AppMethodBeat.o(195064);
+      AppMethodBeat.o(209768);
       return true;
     }
     if (!(paramObject instanceof OfflineItem))
     {
-      AppMethodBeat.o(195064);
+      AppMethodBeat.o(209768);
       return false;
     }
     paramObject = (OfflineItem)paramObject;
@@ -31,22 +31,22 @@ public class OfflineItem
     else {
       while (paramObject.name != null)
       {
-        AppMethodBeat.o(195064);
+        AppMethodBeat.o(209768);
         return false;
       }
     }
     if (this.pinyin != null)
     {
       boolean bool = this.pinyin.equals(paramObject.pinyin);
-      AppMethodBeat.o(195064);
+      AppMethodBeat.o(209768);
       return bool;
     }
     if (paramObject.pinyin == null)
     {
-      AppMethodBeat.o(195064);
+      AppMethodBeat.o(209768);
       return true;
     }
-    AppMethodBeat.o(195064);
+    AppMethodBeat.o(209768);
     return false;
   }
   
@@ -73,14 +73,14 @@ public class OfflineItem
   public int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(195065);
+    AppMethodBeat.i(209769);
     if (this.name != null) {}
     for (int i = this.name.hashCode();; i = 0)
     {
       if (this.pinyin != null) {
         j = this.pinyin.hashCode();
       }
-      AppMethodBeat.o(195065);
+      AppMethodBeat.o(209769);
       return i * 31 + j;
     }
   }
@@ -117,7 +117,7 @@ public class OfflineItem
   
   public String toString()
   {
-    AppMethodBeat.i(195066);
+    AppMethodBeat.i(209770);
     Object localObject = new StringBuffer("OfflineItem{");
     ((StringBuffer)localObject).append("name='").append(this.name).append('\'');
     ((StringBuffer)localObject).append(", pinyin='").append(this.pinyin).append('\'');
@@ -126,7 +126,7 @@ public class OfflineItem
     ((StringBuffer)localObject).append(", percentage=").append(this.percentage);
     ((StringBuffer)localObject).append('}');
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(195066);
+    AppMethodBeat.o(209770);
     return localObject;
   }
 }

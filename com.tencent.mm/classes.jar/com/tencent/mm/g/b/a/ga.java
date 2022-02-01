@@ -6,244 +6,300 @@ import com.tencent.mm.plugin.report.a;
 public final class ga
   extends a
 {
-  private long dQy = 0L;
-  private long dUB = 0L;
-  private long dWq = 0L;
-  private long elA = 0L;
-  private long elB = 2L;
-  private long elC = 0L;
-  private long elE = 0L;
-  private long elF = 0L;
-  private String elo = "";
-  private long elr = 0L;
-  private long els = 0L;
-  private long ely = 0L;
-  private long elz = 0L;
-  private long emP = 0L;
-  private long emQ = 0L;
-  private long emR = 0L;
-  private long emS = 0L;
-  private long emT = 0L;
-  private long emU = 0L;
-  private String emV = "";
+  private long dRO = 0L;
+  private String dTr = "";
+  private String dVH = "";
+  private long dVR = 0L;
+  public long emO = 0L;
+  public long emP = 0L;
+  private String ens = "";
+  public long ent = 0L;
+  public long eog = 0L;
+  private long eoh = 0L;
+  private long eoi = 0L;
+  private long eoj = 0L;
+  private long eok = 0L;
+  private long eol = 0L;
+  private long eom = 0L;
+  private long eon = 0L;
+  private long eoo = 0L;
+  public long eop = 0L;
+  private long eoq = 0L;
+  private long eor = 0L;
   
-  public final String RD()
+  public final String RC()
   {
-    AppMethodBeat.i(74986);
+    AppMethodBeat.i(118508);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dQy);
+    ((StringBuffer)localObject).append(this.dRO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elo);
+    ((StringBuffer)localObject).append(this.emO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWq);
+    ((StringBuffer)localObject).append(this.eog);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUB);
+    ((StringBuffer)localObject).append(this.ens);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ent);
     ((StringBuffer)localObject).append(",");
     ((StringBuffer)localObject).append(this.emP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emQ);
+    ((StringBuffer)localObject).append(this.dVR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emR);
+    ((StringBuffer)localObject).append(this.eoh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elr);
+    ((StringBuffer)localObject).append(this.eoi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.els);
+    ((StringBuffer)localObject).append(this.eoj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emS);
+    ((StringBuffer)localObject).append(this.eok);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emT);
+    ((StringBuffer)localObject).append(this.eol);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emU);
+    ((StringBuffer)localObject).append(this.eom);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emV);
+    ((StringBuffer)localObject).append(this.eon);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ely);
+    ((StringBuffer)localObject).append(this.dVH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elz);
+    ((StringBuffer)localObject).append(this.eoo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elA);
+    ((StringBuffer)localObject).append(this.dTr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elB);
+    ((StringBuffer)localObject).append(this.eop);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elC);
+    ((StringBuffer)localObject).append(this.eoq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elF);
+    ((StringBuffer)localObject).append(this.eor);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
-    AppMethodBeat.o(74986);
+    axO((String)localObject);
+    AppMethodBeat.o(118508);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
-    AppMethodBeat.i(74987);
+    AppMethodBeat.i(118509);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("NetType:").append(this.dQy);
+    ((StringBuffer)localObject).append("NetType:").append(this.dRO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PublishObjectId:").append(this.elo);
+    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.emO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterScene:").append(this.dWq);
+    ((StringBuffer)localObject).append("ProfileSource:").append(this.eog);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterTime:").append(this.dUB);
+    ((StringBuffer)localObject).append("SourceUserName:").append(this.ens);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("QuitTime:").append(this.emP);
+    ((StringBuffer)localObject).append("SourceContactType:").append(this.ent);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasRecordVideo:").append(this.emQ);
+    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.emP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasEnterAllbum:").append(this.emR);
+    ((StringBuffer)localObject).append("EnterTime:").append(this.dVR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EmojiWidgetCount:").append(this.elr);
+    ((StringBuffer)localObject).append("ExitTime:").append(this.eoh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TextWidgetCount:").append(this.els);
+    ((StringBuffer)localObject).append("TotalUserNameCount:").append(this.eoi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isAddMusic:").append(this.emS);
+    ((StringBuffer)localObject).append("FriendUserNameCount:").append(this.eoj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isAddPosition:").append(this.emT);
+    ((StringBuffer)localObject).append("TotalStoryCount:").append(this.eok);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionTrace:").append(this.emU);
+    ((StringBuffer)localObject).append("FriendStoryCount:").append(this.eol);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewActionTrace:").append(this.emV);
+    ((StringBuffer)localObject).append("TotalBrowserCount:").append(this.eom);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoObjectId:").append(this.ely);
+    ((StringBuffer)localObject).append("FriendBrowserCount:").append(this.eon);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsClickSearchMusic:").append(this.elz);
+    ((StringBuffer)localObject).append("ActionTrace:").append(this.dVH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsPublicTimeLine:").append(this.elA);
+    ((StringBuffer)localObject).append("AllVideoBrowserCountWithRepeat:").append(this.eoo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PublishVideoType:").append(this.elB);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PhotoCount:").append(this.elC);
+    ((StringBuffer)localObject).append("WaitPlayFriendCount:").append(this.eop);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsAddTextIntro:").append(this.elE);
+    ((StringBuffer)localObject).append("IsShowComment:").append(this.eoq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AddTextIntroWordCount:").append(this.elF);
+    ((StringBuffer)localObject).append("IsInformComment:").append(this.eor);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(74987);
+    AppMethodBeat.o(118509);
     return localObject;
   }
   
-  public final ga TQ()
+  public final long TG()
   {
-    this.emQ = 1L;
-    return this;
+    return this.dRO;
   }
   
-  public final ga TR()
+  public final long TH()
   {
-    this.emR = 1L;
-    return this;
+    return this.emO;
   }
   
-  public final ga TS()
+  public final long TI()
   {
-    this.emT = 1L;
-    return this;
+    return this.eog;
   }
   
-  public final ga TT()
+  public final long TJ()
   {
-    this.elz = 1L;
-    return this;
+    return this.dVR;
   }
   
-  public final ga TU()
+  public final long TK()
   {
-    this.elE = 1L;
-    return this;
+    return this.eoi;
+  }
+  
+  public final long TL()
+  {
+    return this.eoj;
+  }
+  
+  public final long TM()
+  {
+    return this.eok;
+  }
+  
+  public final long TN()
+  {
+    return this.eol;
+  }
+  
+  public final long TO()
+  {
+    return this.eom;
+  }
+  
+  public final long TP()
+  {
+    return this.eon;
+  }
+  
+  public final long TQ()
+  {
+    return this.eoo;
   }
   
   public final int getId()
   {
-    return 16639;
+    return 16658;
   }
   
-  public final ga lo(long paramLong)
+  public final String getSessionId()
   {
-    this.dQy = paramLong;
+    return this.dTr;
+  }
+  
+  public final ga li(long paramLong)
+  {
+    this.dRO = paramLong;
     return this;
   }
   
-  public final ga lp(long paramLong)
+  public final ga lj(long paramLong)
   {
-    this.dWq = paramLong;
+    this.emO = paramLong;
     return this;
   }
   
-  public final ga lq(long paramLong)
-  {
-    this.dUB = paramLong;
-    return this;
-  }
-  
-  public final ga lr(long paramLong)
+  public final ga lk(long paramLong)
   {
     this.emP = paramLong;
     return this;
   }
   
+  public final ga ll(long paramLong)
+  {
+    this.dVR = paramLong;
+    return this;
+  }
+  
+  public final ga lm(long paramLong)
+  {
+    this.eoh = paramLong;
+    return this;
+  }
+  
+  public final ga ln(long paramLong)
+  {
+    this.eoi = paramLong;
+    return this;
+  }
+  
+  public final ga lo(long paramLong)
+  {
+    this.eoj = paramLong;
+    return this;
+  }
+  
+  public final ga lp(long paramLong)
+  {
+    this.eok = paramLong;
+    return this;
+  }
+  
+  public final ga lq(long paramLong)
+  {
+    this.eol = paramLong;
+    return this;
+  }
+  
+  public final ga lr(long paramLong)
+  {
+    this.eom = paramLong;
+    return this;
+  }
+  
   public final ga ls(long paramLong)
   {
-    this.elr = paramLong;
+    this.eon = paramLong;
     return this;
   }
   
   public final ga lt(long paramLong)
   {
-    this.els = paramLong;
+    this.eoo = paramLong;
     return this;
   }
   
   public final ga lu(long paramLong)
   {
-    this.emS = paramLong;
+    this.eop = paramLong;
     return this;
   }
   
   public final ga lv(long paramLong)
   {
-    this.ely = paramLong;
+    this.eoq = paramLong;
     return this;
   }
   
-  public final ga lw(long paramLong)
+  public final ga pj(String paramString)
   {
-    this.elA = paramLong;
+    AppMethodBeat.i(118505);
+    this.ens = t("SourceUserName", paramString, false);
+    AppMethodBeat.o(118505);
     return this;
   }
   
-  public final ga lx(long paramLong)
+  public final ga pk(String paramString)
   {
-    this.elB = paramLong;
+    AppMethodBeat.i(118506);
+    this.dVH = t("ActionTrace", paramString, true);
+    AppMethodBeat.o(118506);
     return this;
   }
   
-  public final ga ly(long paramLong)
+  public final ga pl(String paramString)
   {
-    this.elC = paramLong;
-    return this;
-  }
-  
-  public final ga oR(String paramString)
-  {
-    AppMethodBeat.i(74984);
-    this.elo = t("PublishObjectId", paramString, true);
-    AppMethodBeat.o(74984);
-    return this;
-  }
-  
-  public final ga oS(String paramString)
-  {
-    AppMethodBeat.i(74985);
-    this.emV = t("NewActionTrace", paramString, true);
-    AppMethodBeat.o(74985);
+    AppMethodBeat.i(118507);
+    this.dTr = t("SessionId", paramString, true);
+    AppMethodBeat.o(118507);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ga
  * JD-Core Version:    0.7.0.1
  */

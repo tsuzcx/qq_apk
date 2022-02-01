@@ -7,9 +7,9 @@ import com.tencent.mm.vending.j.d;
 public final class k
   implements b<j>
 {
-  protected j iSS;
-  public final b iST;
-  public final a iSU;
+  protected j iVL;
+  public final b iVM;
+  public final a iVN;
   
   public k()
   {
@@ -21,15 +21,15 @@ public final class k
   private k(j paramj)
   {
     AppMethodBeat.i(63362);
-    this.iST = new b();
-    this.iSU = new a();
-    this.iSS = paramj;
+    this.iVM = new b();
+    this.iVN = new a();
+    this.iVL = paramj;
     AppMethodBeat.o(63362);
   }
   
-  public final j aRi()
+  public final j aRH()
   {
-    return this.iSS;
+    return this.iVL;
   }
   
   public final class a
@@ -37,7 +37,7 @@ public final class k
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -48,7 +48,7 @@ public final class k
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

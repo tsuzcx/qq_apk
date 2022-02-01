@@ -41,7 +41,7 @@ public class SettingDeleteAccountUI
         AppMethodBeat.i(74001);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(74001);
       }

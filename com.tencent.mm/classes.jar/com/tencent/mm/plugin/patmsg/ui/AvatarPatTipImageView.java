@@ -10,14 +10,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.patmsg.a.d;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public class AvatarPatTipImageView
   extends AvatarPatImageView
   implements d
 {
-  public PatPopupWindow wFQ;
+  public PatPopupWindow wVC;
   
   public AvatarPatTipImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,74 +27,74 @@ public class AvatarPatTipImageView
   public AvatarPatTipImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(215728);
-    this.wFQ = new PatPopupWindow(View.inflate(aj.getContext(), 2131496417, null));
-    this.wFQ.setAnimationStyle(2131821787);
-    this.wFQ.setOutsideTouchable(true);
-    AppMethodBeat.o(215728);
+    AppMethodBeat.i(220362);
+    this.wVC = new PatPopupWindow(View.inflate(ak.getContext(), 2131496417, null));
+    this.wVC.setAnimationStyle(2131821787);
+    this.wVC.setOutsideTouchable(true);
+    AppMethodBeat.o(220362);
   }
   
-  public void aul(String paramString)
+  public void avA(String paramString)
   {
-    AppMethodBeat.i(215731);
+    AppMethodBeat.i(220365);
     final int[] arrayOfInt = new int[2];
     getLocationOnScreen(arrayOfInt);
-    int i = aj.getResources().getDimensionPixelSize(2131165290);
+    int i = ak.getResources().getDimensionPixelSize(2131165290);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = i;
     localLayoutParams.leftMargin = i;
-    ((TextView)this.wFQ.getContentView().findViewById(2131308171)).setText(k.c(aj.getContext(), paramString));
-    this.wFQ.a(this, localLayoutParams);
+    ((TextView)this.wVC.getContentView().findViewById(2131308171)).setText(k.c(ak.getContext(), paramString));
+    this.wVC.a(this, localLayoutParams);
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(215727);
+        AppMethodBeat.i(220361);
         int[] arrayOfInt = new int[2];
-        View localView = AvatarPatTipImageView.this.wFQ.getContentView();
+        View localView = AvatarPatTipImageView.this.wVC.getContentView();
         localView.getLocationOnScreen(arrayOfInt);
         localView = localView.findViewById(2131308443);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
         localLayoutParams.leftMargin = (arrayOfInt[0] + AvatarPatTipImageView.this.getWidth() / 2 - arrayOfInt[0] - localView.getWidth() / 2);
         localView.setLayoutParams(localLayoutParams);
-        AppMethodBeat.o(215727);
+        AppMethodBeat.o(220361);
       }
     });
-    AppMethodBeat.o(215731);
+    AppMethodBeat.o(220365);
   }
   
-  public final void dyo()
+  public final void dBE()
   {
-    AppMethodBeat.i(215732);
-    this.wFQ.dismiss();
-    AppMethodBeat.o(215732);
+    AppMethodBeat.i(220366);
+    this.wVC.dismiss();
+    AppMethodBeat.o(220366);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(215730);
+    AppMethodBeat.i(220364);
     super.onAttachedToWindow();
-    this.wFP.wFV = this;
-    AppMethodBeat.o(215730);
+    this.wVB.wVH = this;
+    AppMethodBeat.o(220364);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(215733);
+    AppMethodBeat.i(220367);
     super.onDetachedFromWindow();
-    this.wFP.dyq();
-    this.wFQ.dismiss();
-    AppMethodBeat.o(215733);
+    this.wVB.dBG();
+    this.wVC.dismiss();
+    AppMethodBeat.o(220367);
   }
   
   public void setTagUsername(String paramString)
   {
-    AppMethodBeat.i(215729);
-    if (!bt.nullAsNil(getTagUsername()).equals(paramString)) {
-      this.wFP.dyq();
+    AppMethodBeat.i(220363);
+    if (!bu.nullAsNil(getTagUsername()).equals(paramString)) {
+      this.wVB.dBG();
     }
     super.setTagUsername(paramString);
-    AppMethodBeat.o(215729);
+    AppMethodBeat.o(220363);
   }
 }
 

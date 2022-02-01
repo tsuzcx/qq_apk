@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appusage.y;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,13 +16,13 @@ final class a
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(45009);
-    if (j.aYV() == null)
+    if (j.aZs() == null)
     {
-      ad.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
+      ae.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
       AppMethodBeat.o(45009);
       return;
     }
-    switch (paramm.dtK)
+    switch (paramm.duP)
     {
     }
     for (;;)
@@ -38,16 +38,16 @@ final class a
           while (paramString.hasNext())
           {
             paramm = (String)paramString.next();
-            localLinkedList.addAll(j.aYV().MI(paramm));
+            localLinkedList.addAll(j.aZs().Np(paramm));
           }
         }
       }
       else
       {
-        localLinkedList.addAll(j.aYV().MI(paramm.obj.toString()));
+        localLinkedList.addAll(j.aZs().Np(paramm.obj.toString()));
         if (!localLinkedList.isEmpty())
         {
-          j.aYV().doNotify("batch", 3, localLinkedList);
+          j.aZs().doNotify("batch", 3, localLinkedList);
           AppMethodBeat.o(45009);
           return;
           localLinkedList = new LinkedList();
@@ -59,15 +59,15 @@ final class a
               while (paramString.hasNext())
               {
                 paramm = (String)paramString.next();
-                localLinkedList.addAll(j.aYV().MI(paramm));
+                localLinkedList.addAll(j.aZs().Np(paramm));
               }
             }
           }
           else
           {
-            localLinkedList.addAll(j.aYV().MI(paramm.obj.toString()));
+            localLinkedList.addAll(j.aZs().Np(paramm.obj.toString()));
             if (!localLinkedList.isEmpty()) {
-              j.aYV().doNotify("batch", 5, localLinkedList);
+              j.aZs().doNotify("batch", 5, localLinkedList);
             }
           }
         }

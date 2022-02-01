@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.csu;
-import com.tencent.mm.protocal.protobuf.csv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cto;
+import com.tencent.mm.protocal.protobuf.ctp;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k, e
 {
   private f callback;
-  private boolean rgp;
-  private String rgs;
+  private boolean ros;
+  private String rov;
   private b rr;
   
   public n(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(103610);
-    this.rgp = false;
-    this.rgs = null;
+    this.ros = false;
+    this.rov = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new csu();
-    ((b.a)localObject).hNN = new csv();
+    ((b.a)localObject).hQF = new cto();
+    ((b.a)localObject).hQG = new ctp();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/registerface";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (csu)this.rr.hNK.hNQ;
-    ((csu)localObject).Gvx = paramLong;
-    ((csu)localObject).Hlc = paramString1;
-    ((csu)localObject).Hld = paramString2;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (cto)this.rr.hQD.hQJ;
+    ((cto)localObject).GOW = paramLong;
+    ((cto)localObject).HEC = paramString1;
+    ((cto)localObject).HED = paramString2;
     AppMethodBeat.o(103610);
   }
   
-  public final boolean csE()
+  public final boolean cuf()
   {
     return true;
   }
   
-  public final String csF()
+  public final String cug()
   {
-    return this.rgs;
+    return this.rov;
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
@@ -68,16 +68,16 @@ public final class n
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103612);
-    paramq = (csv)((b)paramq).hNL.hNQ;
+    paramq = (ctp)((b)paramq).hQE.hQJ;
     boolean bool;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (paramq.Hlf == 0)
+      if (paramq.HEF == 0)
       {
         bool = true;
-        this.rgp = bool;
-        this.rgs = paramq.Hle;
-        paramInt1 = paramq.Hlf;
-        ad.i("MicroMsg.NetSceneFaceRegFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.rgp) });
+        this.ros = bool;
+        this.rov = paramq.HEE;
+        paramInt1 = paramq.HEF;
+        ae.i("MicroMsg.NetSceneFaceRegFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.ros) });
       }
     }
     for (;;)
@@ -93,10 +93,10 @@ public final class n
       if (paramq != null)
       {
         paramInt1 = paramInt3;
-        if (paramq.Hlf != 0)
+        if (paramq.HEF != 0)
         {
-          ad.i("MicroMsg.NetSceneFaceRegFace", "hy: has detail ret. use");
-          paramInt1 = paramq.Hlf;
+          ae.i("MicroMsg.NetSceneFaceRegFace", "hy: has detail ret. use");
+          paramInt1 = paramq.HEF;
         }
       }
     }

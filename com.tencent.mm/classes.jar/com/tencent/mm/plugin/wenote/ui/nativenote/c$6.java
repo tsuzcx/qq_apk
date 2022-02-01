@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.SightParams;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class c$6
   implements View.OnClickListener
@@ -21,9 +21,9 @@ final class c$6
     AppMethodBeat.i(30817);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
     ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
-    ad.i("MicroMsg.WNNoteFootPannel", "go to GalleryEntryUI");
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().X(-1, false);
+    a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+    ae.i("MicroMsg.WNNoteFootPannel", "go to GalleryEntryUI");
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().Z(-1, false);
     Intent localIntent = new Intent();
     localIntent.putExtra("max_select_count", 9);
     localIntent.putExtra("query_source_type", 13);
@@ -36,17 +36,17 @@ final class c$6
       paramView = new SightParams(4, 0);
     }
     localObject = "micromsg_" + System.currentTimeMillis();
-    String str1 = com.tencent.mm.loader.j.b.asg() + (String)localObject + ".mp4";
-    String str2 = com.tencent.mm.loader.j.b.asg() + (String)localObject + ".jpeg";
+    String str1 = com.tencent.mm.loader.j.b.asv() + (String)localObject + ".mp4";
+    String str2 = com.tencent.mm.loader.j.b.asv() + (String)localObject + ".jpeg";
     int i = localIntent.getIntExtra("key_pick_local_media_duration", 60);
     SightParams localSightParams = new SightParams(4, 1);
-    localSightParams.vMB = 2;
+    localSightParams.vYF = 2;
     localSightParams.mode = 0;
-    if (localSightParams.hvh == null) {
-      localSightParams.hvh = new VideoTransPara();
+    if (localSightParams.hxV == null) {
+      localSightParams.hxV = new VideoTransPara();
     }
-    localSightParams.hvh.duration = i;
-    localSightParams.r((String)localObject, str1, str2, com.tencent.mm.loader.j.b.asg() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+    localSightParams.hxV.duration = i;
+    localSightParams.r((String)localObject, str1, str2, com.tencent.mm.loader.j.b.asv() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
     localIntent.putExtra("KEY_SIGHT_PARAMS", paramView);
     localIntent.putExtra("record_video_force_sys_camera", false);
     localIntent.putExtra("record_video_is_sight_capture", true);

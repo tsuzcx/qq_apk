@@ -19,7 +19,7 @@ public final class g
 {
   public final boolean a(Context paramContext, String paramString, com.tencent.tinker.lib.service.a parama)
   {
-    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lk(paramContext);
+    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lq(paramContext);
     File localFile1 = new File(paramString);
     if ((!ShareTinkerInternals.isTinkerEnabled(locala.tinkerFlags)) || (!ShareTinkerInternals.isTinkerEnableWithSharedPreferences(paramContext)))
     {
@@ -36,7 +36,7 @@ public final class g
     if (i != 0)
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:onPatchPackageCheckFail", new Object[0]);
-      locala.MgW.e(localFile1, i);
+      locala.MDT.e(localFile1, i);
       return false;
     }
     String str = SharePatchFileUtil.getMD5(localFile1);
@@ -45,9 +45,9 @@ public final class g
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:patch md5 is null, just return", new Object[0]);
       return false;
     }
-    parama.MgN = str;
+    parama.MDK = str;
     ShareTinkerLog.i("Tinker.UpgradePatch", "UpgradePatch tryPatch:patchMd5:%s", new Object[] { str });
-    Object localObject1 = locala.MgT.getAbsolutePath();
+    Object localObject1 = locala.MDQ.getAbsolutePath();
     File localFile2 = SharePatchFileUtil.getPatchInfoLockFile((String)localObject1);
     File localFile3 = SharePatchFileUtil.getPatchInfoFile((String)localObject1);
     paramString = localShareSecurityCheck.getPackagePropertiesIfPresent();
@@ -63,33 +63,33 @@ public final class g
     {
       localObject2 = SharePatchInfo.readAndCheckPropertyWithLock(localFile3, localFile2);
       if (localObject2 == null) {
-        break label676;
+        break label677;
       }
       if ((((SharePatchInfo)localObject2).oldVersion != null) && (((SharePatchInfo)localObject2).newVersion != null) && (((SharePatchInfo)localObject2).oatDir != null)) {
         break;
       }
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:onPatchInfoCorrupted", new Object[0]);
-      locala.MgW.b(localFile1, ((SharePatchInfo)localObject2).oldVersion, ((SharePatchInfo)localObject2).newVersion);
+      locala.MDT.b(localFile1, ((SharePatchInfo)localObject2).oldVersion, ((SharePatchInfo)localObject2).newVersion);
       return false;
     }
     if (!SharePatchFileUtil.checkIfMd5Valid(str))
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:onPatchVersionCheckFail md5 %s is valid", new Object[] { str });
-      locala.MgW.a(localFile1, (SharePatchInfo)localObject2, str);
+      locala.MDT.a(localFile1, (SharePatchInfo)localObject2, str);
       return false;
     }
     boolean bool2 = ((SharePatchInfo)localObject2).oatDir.equals("interpet");
     if ((!bool2) && (!ShareTinkerInternals.isNullOrNil(((SharePatchInfo)localObject2).newVersion)) && (((SharePatchInfo)localObject2).newVersion.equals(str)) && (!((SharePatchInfo)localObject2).isRemoveNewVersion))
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "patch already applied, md5: %s", new Object[] { str });
-      c.lp(paramContext).aZS(str);
+      c.lv(paramContext).bbv(str);
       return true;
     }
     if (bool2) {
       paramString = "changing";
     }
-    label676:
-    for (paramString = new SharePatchInfo(((SharePatchInfo)localObject2).oldVersion, str, bool1, false, Build.FINGERPRINT, paramString);; paramString = new SharePatchInfo("", str, bool1, false, Build.FINGERPRINT, "odex"))
+    label677:
+    for (paramString = new SharePatchInfo(((SharePatchInfo)localObject2).oldVersion, str, bool1, false, Build.FINGERPRINT, paramString, false);; paramString = new SharePatchInfo("", str, bool1, false, Build.FINGERPRINT, "odex", false))
     {
       localObject2 = SharePatchFileUtil.getPatchVersionDirectory(str);
       localObject2 = (String)localObject1 + "/" + (String)localObject2;
@@ -103,7 +103,7 @@ public final class g
           ShareTinkerLog.w("Tinker.UpgradePatch", "UpgradePatch copy patch file, src file: %s size: %d, dest file: %s size:%d", new Object[] { localFile1.getAbsolutePath(), Long.valueOf(localFile1.length()), ((File)localObject1).getAbsolutePath(), Long.valueOf(((File)localObject1).length()) });
         }
         if (e.a(locala, localShareSecurityCheck, paramContext, (String)localObject2, (File)localObject1, parama)) {
-          break label749;
+          break label751;
         }
         ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:new patch recover, try patch dex failed", new Object[0]);
         return false;
@@ -111,13 +111,13 @@ public final class g
       catch (IOException paramContext)
       {
         ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:copy patch file fail from %s to %s", new Object[] { localFile1.getPath(), ((File)localObject1).getPath() });
-        locala.MgW.a(localFile1, (File)localObject1, localFile1.getName(), 1);
+        locala.MDT.a(localFile1, (File)localObject1, localFile1.getName(), 1);
         return false;
       }
       paramString = ((SharePatchInfo)localObject2).oatDir;
       break;
     }
-    label749:
+    label751:
     b.a(localShareSecurityCheck, paramContext, (String)localObject2, (File)localObject1);
     if (!ShareTinkerInternals.isTinkerEnabledForNativeLib(locala.tinkerFlags))
     {
@@ -178,10 +178,10 @@ public final class g
     if (!SharePatchInfo.rewritePatchInfoFileWithLock(localFile3, paramString, localFile2))
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:new patch recover, rewrite patch info failed", new Object[0]);
-      locala.MgW.b(localFile1, paramString.oldVersion, paramString.newVersion);
+      locala.MDT.b(localFile1, paramString.oldVersion, paramString.newVersion);
       return false;
     }
-    c.lp(paramContext).aZS(str);
+    c.lv(paramContext).bbv(str);
     ShareTinkerLog.w("Tinker.UpgradePatch", "UpgradePatch tryPatch: done, it is ok", new Object[0]);
     return true;
   }

@@ -15,19 +15,19 @@ public final class a
   {
     AppMethodBeat.i(23551);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.IhC.put("username", "TEXT");
+    locala.IBN.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "championUrl";
-    locala.IhC.put("championUrl", "TEXT");
+    locala.IBN.put("championUrl", "TEXT");
     localStringBuilder.append(" championUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "championMotto";
-    locala.IhC.put("championMotto", "TEXT");
+    locala.IBN.put("championMotto", "TEXT");
     localStringBuilder.append(" championMotto TEXT");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

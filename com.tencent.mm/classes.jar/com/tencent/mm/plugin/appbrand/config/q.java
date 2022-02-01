@@ -7,45 +7,45 @@ import com.tencent.mm.sdk.e.k.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/MStorageProxyForWxaAttrStorage;", "Lcom/tencent/mm/sdk/storage/IStorage;", "()V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "Lcom/tencent/threadpool/serial/Serial;", "", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "doNotify", "", "p2", "", "lock", "lockCount", "remove", "removeLoadedListener", "unlock", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/config/MStorageProxyForWxaAttrStorage;", "Lcom/tencent/mm/sdk/storage/IStorage;", "()V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "Lcom/tencent/threadpool/serial/Serial;", "", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "doNotify", "", "p2", "", "lock", "lockCount", "remove", "removeLoadedListener", "unlock", "plugin-appbrand-integration_release"})
 public abstract class q
   implements g
 {
   public q()
   {
-    w localw = j.aYP();
+    w localw = j.aZl();
     p.g(localw, "SubCoreAppBrand.getWxaContactStorage()");
-    this.jYO = localw;
+    this.kcf = localw;
   }
   
   public void add(k.a parama)
   {
-    this.jYO.add(parama);
+    this.kcf.add(parama);
   }
   
   public void add(k.a parama, Looper paramLooper)
   {
-    this.jYO.add(parama, paramLooper);
+    this.kcf.add(parama, paramLooper);
   }
   
   public void add(String paramString, k.a parama)
   {
-    this.jYO.add(paramString, parama);
+    this.kcf.add(paramString, parama);
   }
   
   public void doNotify(String paramString)
   {
-    this.jYO.doNotify(paramString);
+    this.kcf.doNotify(paramString);
   }
   
   public final void n(String paramString, Object paramObject)
   {
-    this.jYO.doNotify(paramString, 3, paramObject);
+    this.kcf.doNotify(paramString, 3, paramObject);
   }
   
   public void remove(k.a parama)
   {
-    this.jYO.remove(parama);
+    this.kcf.remove(parama);
   }
 }
 

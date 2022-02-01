@@ -26,7 +26,7 @@ public final class o
     this.db = parame;
   }
   
-  public final Cursor dPt()
+  public final Cursor dSQ()
   {
     AppMethodBeat.i(28348);
     Object localObject = new StringBuilder();

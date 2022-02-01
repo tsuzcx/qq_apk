@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,29 +17,29 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class j
 {
-  public static int xbC = 100;
+  public static int xrt = 100;
   private int maxCount;
-  public String xbD;
+  public String xru;
   
   public j(String paramString, int paramInt)
   {
     AppMethodBeat.i(122667);
-    this.xbD = null;
-    this.maxCount = xbC;
-    ad.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
-    this.xbD = paramString;
-    i.aYg(this.xbD);
+    this.xru = null;
+    this.maxCount = xrt;
+    ae.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
+    this.xru = paramString;
+    o.aZI(this.xru);
     if (paramInt > 0) {}
     for (;;)
     {
       this.maxCount = paramInt;
       AppMethodBeat.o(122667);
       return;
-      paramInt = xbC;
+      paramInt = xrt;
     }
   }
   
-  static String D(String paramString, Map<String, String> paramMap)
+  static String E(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(122670);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -61,7 +61,7 @@ public final class j
     return paramString;
   }
   
-  static byte[] auV(String paramString)
+  static byte[] awk(String paramString)
   {
     AppMethodBeat.i(122671);
     paramString = g.getMessageDigest(paramString.toString().getBytes()).substring(8, 16).getBytes();
@@ -86,7 +86,7 @@ public final class j
     {
       for (;;)
       {
-        ad.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        ae.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
         paramArrayOfByte1 = null;
       }
     }
@@ -109,7 +109,7 @@ public final class j
     {
       for (;;)
       {
-        ad.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        ae.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
         paramArrayOfByte1 = null;
       }
     }
@@ -118,7 +118,7 @@ public final class j
   public static byte[] readFromFile(String paramString)
   {
     AppMethodBeat.i(185979);
-    paramString = i.aY(paramString, 0, -1);
+    paramString = o.bb(paramString, 0, -1);
     AppMethodBeat.o(185979);
     return paramString;
   }
@@ -126,7 +126,7 @@ public final class j
   public static boolean u(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(122677);
-    if (bt.jx(i.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
+    if (bu.jB(o.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
     {
       AppMethodBeat.o(122677);
       return true;
@@ -135,29 +135,29 @@ public final class j
     return false;
   }
   
-  public final void dCg()
+  public final void dFx()
   {
     int j = 0;
     AppMethodBeat.i(122673);
-    Object localObject = new e(this.xbD).list();
+    Object localObject = new k(this.xru).list();
     if (localObject != null) {}
     for (int i = localObject.length; i < this.maxCount; i = 0)
     {
       AppMethodBeat.o(122673);
       return;
     }
-    String[] arrayOfString = new e(this.xbD).list();
+    String[] arrayOfString = new k(this.xru).list();
     localObject = null;
     int k = arrayOfString.length;
     i = j;
     while (i < k)
     {
-      localObject = new e(arrayOfString[i]);
-      ((e)localObject).lastModified();
+      localObject = new k(arrayOfString[i]);
+      ((k)localObject).lastModified();
       i += 1;
     }
-    if (((e)localObject).exists()) {
-      ((e)localObject).delete();
+    if (((k)localObject).exists()) {
+      ((k)localObject).delete();
     }
     AppMethodBeat.o(122673);
   }

@@ -4,14 +4,14 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract class b
 {
-  protected a AsL;
+  protected a AJZ;
   protected MMActivity activity;
   
-  public abstract void At(long paramLong);
+  public abstract void AR(long paramLong);
   
   public final void a(a parama)
   {
-    this.AsL = parama;
+    this.AJZ = parama;
   }
   
   public static abstract interface a

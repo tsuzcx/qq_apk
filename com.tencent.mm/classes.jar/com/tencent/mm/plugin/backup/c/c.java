@@ -5,11 +5,12 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.backup.b.b.b;
 import com.tencent.mm.plugin.backup.b.e;
@@ -19,17 +20,16 @@ import com.tencent.mm.plugin.backup.g.l;
 import com.tencent.mm.plugin.backup.g.l.a;
 import com.tencent.mm.plugin.backup.i.aa;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.plugin.backup.i.x;
 import com.tencent.mm.pointers.PLong;
 import com.tencent.mm.protocal.protobuf.if;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -44,19 +44,19 @@ import junit.framework.Assert;
 
 public final class c
 {
-  private int nsF;
-  public boolean ntu = false;
-  b.b ntv;
-  com.tencent.mm.plugin.backup.b.d ntw;
-  long ntx = 0L;
-  public long nty = 0L;
+  public boolean nyP = false;
+  b.b nyQ;
+  com.tencent.mm.plugin.backup.b.d nyR;
+  long nyS = 0L;
+  public long nyT = 0L;
+  private int nya;
   
   public c(com.tencent.mm.plugin.backup.b.d paramd, int paramInt, b.b paramb)
   {
-    this.ntw = paramd;
-    this.nsF = paramInt;
-    this.ntv = paramb;
-    this.ntu = false;
+    this.nyR = paramd;
+    this.nya = paramInt;
+    this.nyQ = paramb;
+    this.nyP = false;
   }
   
   public final void a(final LinkedList<f.a> paramLinkedList, final long paramLong, boolean paramBoolean)
@@ -65,7 +65,7 @@ public final class c
     if (paramLinkedList == null) {}
     for (int i = -1;; i = paramLinkedList.size())
     {
-      ad.i("MicroMsg.BackupPackAndSend", "startBackup, backupSessionList size[%d], bigFileSize[%d], isOnlyText[%b]", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) });
+      ae.i("MicroMsg.BackupPackAndSend", "startBackup, backupSessionList size[%d], bigFileSize[%d], isOnlyText[%b]", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) });
       paramLinkedList = new com.tencent.e.i.h()
       {
         public final String getKey()
@@ -78,26 +78,26 @@ public final class c
           AppMethodBeat.i(21232);
           if (paramLinkedList == null)
           {
-            ad.e("MicroMsg.BackupPackAndSend", "backupChatRunnable backupSessionList is null.");
-            if (c.this.ntv != null)
+            ae.e("MicroMsg.BackupPackAndSend", "backupChatRunnable backupSessionList is null.");
+            if (c.this.nyQ != null)
             {
-              c.this.ntv.bGU();
-              c.this.ntw.bGX().nsJ = -21;
-              c.this.ntv.xp(-21);
+              c.this.nyQ.bHS();
+              c.this.nyR.bHV().nye = -21;
+              c.this.nyQ.xu(-21);
             }
             AppMethodBeat.o(21232);
             return;
           }
-          com.tencent.mm.plugin.backup.g.b.bID();
+          com.tencent.mm.plugin.backup.g.b.bJB();
           Object localObject2 = paramLinkedList;
           Object localObject1 = new HashSet();
           if (localObject2 == null) {}
           for (int i = 0;; i = ((HashSet)localObject1).size())
           {
-            c.this.ntw.bGX().R(14, 1, i);
-            c.this.ntv.xp(14);
-            localObject1 = (String)com.tencent.mm.plugin.backup.h.d.bIY().bIZ().ajl().get(2, null);
-            c.this.nty = bt.flT();
+            c.this.nyR.bHV().R(14, 1, i);
+            c.this.nyQ.xu(14);
+            localObject1 = (String)com.tencent.mm.plugin.backup.h.d.bJW().bJX().ajA().get(2, null);
+            c.this.nyT = bu.fpO();
             localObject2 = new c.c(c.this);
             Iterator localIterator = paramLinkedList.iterator();
             do
@@ -106,38 +106,38 @@ public final class c
                 break;
               }
               f.a locala = (f.a)localIterator.next();
-              c.this.a(locala, (c.c)localObject2, (String)localObject1, paramLong, this.ntB);
-            } while (!c.this.ntu);
-            if (!c.this.ntu) {
+              c.this.a(locala, (c.c)localObject2, (String)localObject1, paramLong, this.nyW);
+            } while (!c.this.nyP);
+            if (!c.this.nyP) {
               break;
             }
-            ad.e("MicroMsg.BackupPackAndSend", "backupChatRunnable cancel!");
+            ae.e("MicroMsg.BackupPackAndSend", "backupChatRunnable cancel!");
             AppMethodBeat.o(21232);
             return;
             localObject2 = ((LinkedList)localObject2).iterator();
             while (((Iterator)localObject2).hasNext()) {
-              ((HashSet)localObject1).add(((f.a)((Iterator)localObject2).next()).nsV);
+              ((HashSet)localObject1).add(((f.a)((Iterator)localObject2).next()).nyq);
             }
           }
-          long l1 = bt.flT();
-          long l2 = bt.flT();
-          ((c.c)localObject2).nub.offer(((c.c)localObject2).nuc);
-          ((c.c)localObject2).nuc.block();
-          ad.i("MicroMsg.BackupPackAndSend.TagQueueSucker", "waitFinish Finish Now:%d", new Object[] { Long.valueOf(bt.Df(l2)) });
-          Assert.assertTrue(((c.c)localObject2).nub.isEmpty());
-          ad.i("MicroMsg.BackupPackAndSend", "backupChatRunnable finish, Session[%d], loopTime[%d], waitSendTime[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(bt.Df(c.this.nty)), Long.valueOf(bt.Df(l1)) });
-          c.this.bHq();
-          c.this.ntw.bGX().R(15, i, i);
-          c.this.ntv.xp(15);
-          c.this.iz(true);
-          com.tencent.mm.plugin.backup.g.b.bIC();
-          com.tencent.mm.plugin.backup.g.b.bIE();
-          c.this.ntv.bGT();
-          ad.i("MicroMsg.BackupPackAndSend", "backupChatRunnable backupfinish, backupDataSize[%d], backupCostTime[%d], backupStartTime[%d]", new Object[] { Long.valueOf(c.this.ntx), Long.valueOf(bt.Df(c.this.nty)), Long.valueOf(c.this.nty) });
+          long l1 = bu.fpO();
+          long l2 = bu.fpO();
+          ((c.c)localObject2).nzw.offer(((c.c)localObject2).nzx);
+          ((c.c)localObject2).nzx.block();
+          ae.i("MicroMsg.BackupPackAndSend.TagQueueSucker", "waitFinish Finish Now:%d", new Object[] { Long.valueOf(bu.DD(l2)) });
+          Assert.assertTrue(((c.c)localObject2).nzw.isEmpty());
+          ae.i("MicroMsg.BackupPackAndSend", "backupChatRunnable finish, Session[%d], loopTime[%d], waitSendTime[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(bu.DD(c.this.nyT)), Long.valueOf(bu.DD(l1)) });
+          c.this.bIo();
+          c.this.nyR.bHV().R(15, i, i);
+          c.this.nyQ.xu(15);
+          c.this.ix(true);
+          com.tencent.mm.plugin.backup.g.b.bJA();
+          com.tencent.mm.plugin.backup.g.b.bJC();
+          c.this.nyQ.bHR();
+          ae.i("MicroMsg.BackupPackAndSend", "backupChatRunnable backupfinish, backupDataSize[%d], backupCostTime[%d], backupStartTime[%d]", new Object[] { Long.valueOf(c.this.nyS), Long.valueOf(bu.DD(c.this.nyT)), Long.valueOf(c.this.nyT) });
           AppMethodBeat.o(21232);
         }
       };
-      com.tencent.e.h.LTJ.aU(paramLinkedList);
+      com.tencent.e.h.MqF.aR(paramLinkedList);
       AppMethodBeat.o(21254);
       return;
     }
@@ -146,7 +146,7 @@ public final class c
   final boolean a(f.a parama, c paramc, String paramString, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(21255);
-    Object localObject1 = com.tencent.mm.plugin.backup.h.d.bIY().bIZ().azv().aTz(parama.nsV);
+    Object localObject1 = com.tencent.mm.plugin.backup.h.d.bJW().bJX().azL().aVa(parama.nyq);
     int i;
     long l5;
     int k;
@@ -155,9 +155,9 @@ public final class c
     int j;
     if (localObject1 != null)
     {
-      i = ((com.tencent.mm.g.c.ba)localObject1).field_unReadCount;
-      ad.i("MicroMsg.BackupPackAndSend", "backupPackSessionMsg index[%d], sessionName[%s], startTime[%d], endTime[%d], unReadCount[%d]", new Object[] { Integer.valueOf(parama.nsW), parama.nsV, Long.valueOf(parama.startTime), Long.valueOf(parama.endTime), Integer.valueOf(i) });
-      l5 = bt.flT();
+      i = ((ba)localObject1).field_unReadCount;
+      ae.i("MicroMsg.BackupPackAndSend", "backupPackSessionMsg index[%d], sessionName[%s], startTime[%d], endTime[%d], unReadCount[%d]", new Object[] { Integer.valueOf(parama.nyr), parama.nyq, Long.valueOf(parama.startTime), Long.valueOf(parama.endTime), Integer.valueOf(i) });
+      l5 = bu.fpO();
       k = 0;
       l1 = 0L;
       l2 = 0L;
@@ -169,8 +169,8 @@ public final class c
     for (;;)
     {
       LinkedList localLinkedList = new LinkedList();
-      l4 = bt.flT();
-      Object localObject2 = com.tencent.mm.plugin.backup.h.d.bIY().bIZ().azs().c(parama.nsV, parama.startTime, parama.endTime, i);
+      l4 = bu.fpO();
+      Object localObject2 = com.tencent.mm.plugin.backup.h.d.bJW().bJX().azI().c(parama.nyq, parama.startTime, parama.endTime, i);
       Object localObject3;
       for (;;)
       {
@@ -178,27 +178,27 @@ public final class c
           break label334;
         }
         k = i + 1;
-        if (this.ntu)
+        if (this.nyP)
         {
-          ad.e("MicroMsg.BackupPackAndSend", "backupPackSessionMsg add msgInfoLinkedList is CANCELED!");
+          ae.e("MicroMsg.BackupPackAndSend", "backupPackSessionMsg add msgInfoLinkedList is CANCELED!");
           ((Cursor)localObject2).close();
           AppMethodBeat.o(21255);
           return false;
           i = 0;
           break;
         }
-        localObject3 = new bu();
-        ((bu)localObject3).convertFrom((Cursor)localObject2);
+        localObject3 = new bv();
+        ((bv)localObject3).convertFrom((Cursor)localObject2);
         if (paramBoolean)
         {
           i = k;
-          if (((bu)localObject3).getType() != 1) {}
+          if (((bv)localObject3).getType() != 1) {}
         }
         else
         {
-          if (((bu)localObject3).getType() == 922746929)
+          if (((bv)localObject3).getType() == 922746929)
           {
-            localObject1 = ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).ys(((ei)localObject3).field_msgId);
+            localObject1 = ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).yM(((ei)localObject3).field_msgId);
             if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {}
           }
           for (;;)
@@ -218,20 +218,20 @@ public final class c
       }
       label334:
       ((Cursor)localObject2).close();
-      l4 = l3 - l4 + bt.flT();
+      l4 = l3 - l4 + bu.fpO();
       if (localLinkedList.size() == 0) {
         break label776;
       }
       k = 0;
       if (k < localLinkedList.size())
       {
-        if (this.ntu)
+        if (this.nyP)
         {
-          ad.e("MicroMsg.BackupPackAndSend", "backupPackSessionMsg packMsg is CANCELED!");
+          ae.e("MicroMsg.BackupPackAndSend", "backupPackSessionMsg packMsg is CANCELED!");
           AppMethodBeat.o(21255);
           return false;
         }
-        Object localObject4 = (bu)localLinkedList.get(k);
+        Object localObject4 = (bv)localLinkedList.get(k);
         PLong localPLong = new PLong();
         localObject3 = new LinkedList();
         HashMap localHashMap = new HashMap();
@@ -243,12 +243,12 @@ public final class c
             boolean bool;
             try
             {
-              l2 -= bt.flT();
+              l2 -= bu.fpO();
               if (j > 0)
               {
                 bool = true;
                 l3 = l2;
-                localObject1 = com.tencent.mm.plugin.backup.f.h.a((bu)localObject4, false, paramString, localPLong, (LinkedList)localObject3, localHashMap, bool, false, paramLong);
+                localObject1 = com.tencent.mm.plugin.backup.f.h.a((bv)localObject4, false, paramString, localPLong, (LinkedList)localObject3, localHashMap, bool, false, paramLong);
               }
             }
             catch (Exception localException1)
@@ -259,32 +259,32 @@ public final class c
             }
             try
             {
-              l3 = bt.flT();
+              l3 = bu.fpO();
               l2 = l3 + l2;
               if (localObject1 != null) {
                 break label763;
               }
               bool = true;
-              ad.i("MicroMsg.BackupPackAndSend", "backupPackSessionMsg, bakitem null[%b], addupMediaList[%d], addupSize[%d], bigFile[%d], msgSvrId[%d], type[%d], createTime[%d], talker[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(((LinkedList)localObject3).size()), Long.valueOf(localPLong.value), Integer.valueOf(localHashMap.size()), Long.valueOf(((ei)localObject4).field_msgSvrId), Integer.valueOf(((bu)localObject4).getType()), Long.valueOf(((ei)localObject4).field_createTime), ((ei)localObject4).field_talker });
+              ae.i("MicroMsg.BackupPackAndSend", "backupPackSessionMsg, bakitem null[%b], addupMediaList[%d], addupSize[%d], bigFile[%d], msgSvrId[%d], type[%d], createTime[%d], talker[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(((LinkedList)localObject3).size()), Long.valueOf(localPLong.value), Integer.valueOf(localHashMap.size()), Long.valueOf(((ei)localObject4).field_msgSvrId), Integer.valueOf(((bv)localObject4).getType()), Long.valueOf(((ei)localObject4).field_createTime), ((ei)localObject4).field_talker });
               l3 = l1;
               m = j;
               if (localObject1 != null)
               {
                 m = j - 1;
-                l3 = bt.flT();
+                l3 = bu.fpO();
                 long l6 = localPLong.value;
                 long l7 = ((ei)localObject4).field_createTime;
-                if (paramc.nud == null)
+                if (paramc.nzy == null)
                 {
-                  localObject2 = paramc.nub;
-                  localObject4 = new b(paramc.ntC, paramc.ntH, parama);
-                  paramc.nud = ((b)localObject4);
+                  localObject2 = paramc.nzw;
+                  localObject4 = new b(paramc.nyX, paramc.nzc, parama);
+                  paramc.nzy = ((b)localObject4);
                   ((LinkedBlockingQueue)localObject2).offer(localObject4);
                 }
-                if (paramc.nud.a((if)localObject1, l6, l7, (LinkedList)localObject3, localHashMap)) {
-                  paramc.nud = null;
+                if (paramc.nzy.a((if)localObject1, l6, l7, (LinkedList)localObject3, localHashMap)) {
+                  paramc.nzy = null;
                 }
-                l3 = l1 - l3 + bt.flT();
+                l3 = l1 - l3 + bu.fpO();
               }
               k += 1;
               l1 = l3;
@@ -299,7 +299,7 @@ public final class c
           }
           bool = false;
           continue;
-          ad.printErrStackTrace("MicroMsg.BackupPackAndSend", localException1, "backupPackSessionMsg packedMsg", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.BackupPackAndSend", localException1, "backupPackSessionMsg packedMsg", new Object[0]);
           continue;
           bool = false;
         }
@@ -307,33 +307,33 @@ public final class c
       l3 = l4;
     }
     label776:
-    paramLong = bt.flT();
-    if (paramc.nud == null)
+    paramLong = bu.fpO();
+    if (paramc.nzy == null)
     {
-      paramString = paramc.nub;
-      localObject1 = new b(paramc.ntC, paramc.ntH, parama);
-      paramc.nud = ((b)localObject1);
+      paramString = paramc.nzw;
+      localObject1 = new b(paramc.nyX, paramc.nzc, parama);
+      paramc.nzy = ((b)localObject1);
       paramString.offer(localObject1);
     }
-    paramc.nud.bHr();
-    paramc.nud = null;
-    long l3 = bt.flT();
-    ad.i("MicroMsg.BackupPackAndSend", "backupPackSessionMsg finish Cursor Session[%d], convName[%s], msgCnt[%d], time[%d], [%d,%d,%d]", new Object[] { Integer.valueOf(parama.nsW), parama.nsV, Integer.valueOf(i), Long.valueOf(bt.Df(l5)), Long.valueOf(l4), Long.valueOf(l2), Long.valueOf(l1 - paramLong + l3) });
+    paramc.nzy.bIp();
+    paramc.nzy = null;
+    long l3 = bu.fpO();
+    ae.i("MicroMsg.BackupPackAndSend", "backupPackSessionMsg finish Cursor Session[%d], convName[%s], msgCnt[%d], time[%d], [%d,%d,%d]", new Object[] { Integer.valueOf(parama.nyr), parama.nyq, Integer.valueOf(i), Long.valueOf(bu.DD(l5)), Long.valueOf(l4), Long.valueOf(l2), Long.valueOf(l1 - paramLong + l3) });
     AppMethodBeat.o(21255);
     return true;
   }
   
-  public final long bHp()
+  public final long bIn()
   {
-    return this.ntx / 1024L;
+    return this.nyS / 1024L;
   }
   
-  public final void bHq()
+  public final void bIo()
   {
     AppMethodBeat.i(21253);
-    ad.i("MicroMsg.BackupPackAndSend", "backupSendFinishRequest.");
+    ae.i("MicroMsg.BackupPackAndSend", "backupSendFinishRequest.");
     com.tencent.mm.plugin.backup.i.d locald = new com.tencent.mm.plugin.backup.i.d();
-    locald.ID = this.ntw.nsB;
+    locald.ID = this.nyR.nxW;
     try
     {
       com.tencent.mm.plugin.backup.g.b.L(locald.toByteArray(), 8);
@@ -342,7 +342,7 @@ public final class c
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.BackupPackAndSend", localException, "BackupFinishRequest to buf err.", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.BackupPackAndSend", localException, "BackupFinishRequest to buf err.", new Object[0]);
       AppMethodBeat.o(21253);
     }
   }
@@ -350,25 +350,25 @@ public final class c
   public final void cancel()
   {
     AppMethodBeat.i(21251);
-    ad.e("MicroMsg.BackupPackAndSend", "cancel, caller:%s", new Object[] { at.fkV() });
-    this.ntu = true;
+    ae.e("MicroMsg.BackupPackAndSend", "cancel, caller:%s", new Object[] { au.foQ() });
+    this.nyP = true;
     AppMethodBeat.o(21251);
   }
   
-  public final void iz(boolean paramBoolean)
+  public final void ix(boolean paramBoolean)
   {
     AppMethodBeat.i(21252);
-    ad.i("MicroMsg.BackupPackAndSend", "clearContinueBackupData.");
+    ae.i("MicroMsg.BackupPackAndSend", "clearContinueBackupData.");
     SharedPreferences.Editor localEditor;
-    if (this.nsF == 1)
+    if (this.nya == 1)
     {
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Ixc, Boolean.FALSE);
-      localEditor = com.tencent.mm.plugin.backup.b.d.bHc().edit();
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IRA, Boolean.FALSE);
+      localEditor = com.tencent.mm.plugin.backup.b.d.bIa().edit();
       localEditor.putString("BACKUP_PC_CHOOSE_SESSION", null);
       if (paramBoolean)
       {
-        if (this.nsF != 1) {
+        if (this.nya != 1) {
           break label155;
         }
         localEditor.putInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0);
@@ -382,14 +382,14 @@ public final class c
       localEditor.commit();
       AppMethodBeat.o(21252);
       return;
-      if (this.nsF != 2) {
+      if (this.nya != 2) {
         break;
       }
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.ajl().set(al.a.Ixf, Boolean.FALSE);
+      bc.aCg();
+      com.tencent.mm.model.c.ajA().set(am.a.IRD, Boolean.FALSE);
       break;
       label155:
-      if (this.nsF == 2)
+      if (this.nya == 2)
       {
         localEditor.putInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0);
         localEditor.putInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0);
@@ -401,16 +401,16 @@ public final class c
   
   final class a
   {
-    volatile AtomicLong ntD;
-    am ntE;
-    am ntF;
+    volatile AtomicLong nyY;
+    an nyZ;
+    an nza;
     
     private a()
     {
       AppMethodBeat.i(21233);
-      this.ntD = new AtomicLong(0L);
-      this.ntE = new am(true);
-      this.ntF = new am(true);
+      this.nyY = new AtomicLong(0L);
+      this.nyZ = new an(true);
+      this.nza = new an(true);
       AppMethodBeat.o(21233);
     }
   }
@@ -419,66 +419,66 @@ public final class c
   {
     String TAG;
     String bVF;
-    boolean kbJ;
-    int nsW;
-    long nsY;
-    long nsZ;
-    LinkedBlockingQueue<Runnable> ntG;
-    c.a ntH;
-    private long ntI;
-    String ntJ;
-    Vector<String> ntK;
-    private Vector<if> ntL;
-    HashMap<Long, h.a> ntM;
-    long ntN;
-    private final com.tencent.mm.plugin.backup.g.c.b ntO;
-    private final Runnable ntP;
-    final Runnable ntQ;
+    boolean kfa;
+    int nyr;
+    long nyt;
+    long nyu;
+    LinkedBlockingQueue<Runnable> nzb;
+    c.a nzc;
+    private long nzd;
+    String nze;
+    Vector<String> nzf;
+    private Vector<if> nzg;
+    HashMap<Long, h.a> nzh;
+    long nzi;
+    private final com.tencent.mm.plugin.backup.g.c.b nzj;
+    private final Runnable nzk;
+    final Runnable nzl;
     String talker;
     
     public b(c.a parama, f.a parama1)
     {
       AppMethodBeat.i(21245);
       this.TAG = "";
-      this.ntG = new LinkedBlockingQueue();
-      this.nsY = 0L;
-      this.nsZ = 0L;
-      this.ntI = 0L;
-      this.ntJ = "";
-      this.ntK = new Vector();
-      this.ntL = new Vector();
-      this.ntM = new HashMap();
-      this.ntN = 0L;
-      this.kbJ = false;
-      this.ntO = new com.tencent.mm.plugin.backup.g.c.b()
+      this.nzb = new LinkedBlockingQueue();
+      this.nyt = 0L;
+      this.nyu = 0L;
+      this.nzd = 0L;
+      this.nze = "";
+      this.nzf = new Vector();
+      this.nzg = new Vector();
+      this.nzh = new HashMap();
+      this.nzi = 0L;
+      this.kfa = false;
+      this.nzj = new com.tencent.mm.plugin.backup.g.c.b()
       {
         public final void g(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
         {
           AppMethodBeat.i(21234);
-          c.a locala = c.b.this.ntH;
+          c.a locala = c.b.this.nzc;
           long l1 = paramAnonymousInt;
-          locala.ntD.addAndGet(0L - l1);
-          if (locala.ntD.get() < 8388608L) {
-            locala.ntE.open();
+          locala.nyY.addAndGet(0L - l1);
+          if (locala.nyY.get() < 8388608L) {
+            locala.nyZ.open();
           }
-          if (locala.ntD.get() < 16777216L) {
-            locala.ntF.open();
+          if (locala.nyY.get() < 16777216L) {
+            locala.nza.open();
           }
-          long l2 = locala.ntD.get();
+          long l2 = locala.nyY.get();
           boolean bool1;
-          if (locala.ntD.get() >= 8388608L)
+          if (locala.nyY.get() >= 8388608L)
           {
             bool1 = true;
-            if (locala.ntD.get() < 16777216L) {
+            if (locala.nyY.get() < 16777216L) {
               break label266;
             }
           }
           label266:
           for (boolean bool2 = true;; bool2 = false)
           {
-            ad.v("MicroMsg.BackupPackAndSend", "MemoryChecker.release size:%d sum:%d [%b,%b] [%b,%b]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(locala.ntE.IdF), Boolean.valueOf(locala.ntF.IdF) });
-            c.this.ntx += paramAnonymousInt;
-            ad.i(c.b.this.TAG, "OnfinishIdCallback size[%d], isIdFinish[%b], id[%s] ", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString });
+            ae.v("MicroMsg.BackupPackAndSend", "MemoryChecker.release size:%d sum:%d [%b,%b] [%b,%b]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(locala.nyZ.IxQ), Boolean.valueOf(locala.nza.IxQ) });
+            c.this.nyS += paramAnonymousInt;
+            ae.i(c.b.this.TAG, "OnfinishIdCallback size[%d], isIdFinish[%b], id[%s] ", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString });
             AppMethodBeat.o(21234);
             return;
             bool1 = false;
@@ -486,15 +486,15 @@ public final class c
           }
         }
       };
-      this.ntP = new Runnable()
+      this.nzk = new Runnable()
       {
         public final void run()
         {
           boolean bool = true;
           AppMethodBeat.i(21241);
-          Assert.assertTrue(toString() + ", check running. ", c.b.this.kbJ);
-          ad.i(c.b.this.TAG, "requestBigFileList svrIdCnt:%d timeDiff:%d caller:%s", new Object[] { Integer.valueOf(c.b.this.ntM.size()), Long.valueOf(bt.Df(c.b.this.ntN)), at.fkV() });
-          if (!c.b.this.ntM.isEmpty()) {}
+          Assert.assertTrue(toString() + ", check running. ", c.b.this.kfa);
+          ae.i(c.b.this.TAG, "requestBigFileList svrIdCnt:%d timeDiff:%d caller:%s", new Object[] { Integer.valueOf(c.b.this.nzh.size()), Long.valueOf(bu.DD(c.b.this.nzi)), au.foQ() });
+          if (!c.b.this.nzh.isEmpty()) {}
           for (;;)
           {
             Assert.assertTrue("BigFileMap should not Empty", bool);
@@ -503,7 +503,7 @@ public final class c
               public final void E(final LinkedList<Long> paramAnonymous2LinkedList)
               {
                 AppMethodBeat.i(21239);
-                com.tencent.e.h.LTJ.aU(new com.tencent.e.i.h()
+                com.tencent.e.h.MqF.aR(new com.tencent.e.i.h()
                 {
                   public final String getKey()
                   {
@@ -517,7 +517,7 @@ public final class c
                     if ((paramAnonymous2LinkedList != null) && (i < paramAnonymous2LinkedList.size()))
                     {
                       Long localLong = (Long)paramAnonymous2LinkedList.get(i);
-                      h.a locala = (h.a)c.b.this.ntM.get(localLong);
+                      h.a locala = (h.a)c.b.this.nzh.get(localLong);
                       String str3 = c.b.this.TAG;
                       int j = paramAnonymous2LinkedList.size();
                       String str1;
@@ -530,28 +530,28 @@ public final class c
                         }
                       }
                       label220:
-                      for (String str2 = "null";; str2 = locala.nxq.path)
+                      for (String str2 = "null";; str2 = locala.nCL.path)
                       {
-                        ad.i(str3, "backupBigDataFiles svrIdIndex:%d(%d), svrId:%d media:%s item:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localLong, str1, str2 });
+                        ae.i(str3, "backupBigDataFiles svrIdIndex:%d(%d), svrId:%d media:%s item:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localLong, str1, str2 });
                         if (locala != null)
                         {
-                          c.b.this.ntK.add(locala.nxq.mediaId);
-                          c.b.this.l(locala.nxq.mediaId, locala.nxq.path, true);
+                          c.b.this.nzf.add(locala.nCL.mediaId);
+                          c.b.this.l(locala.nCL.mediaId, locala.nCL.path, true);
                         }
                         i += 1;
                         break;
-                        str1 = locala.nxq.mediaId;
+                        str1 = locala.nCL.mediaId;
                         break label93;
                       }
                     }
-                    c.b.this.ntG.offer(c.b.this.ntQ);
+                    c.b.this.nzb.offer(c.b.this.nzl);
                     AppMethodBeat.o(21238);
                   }
                 });
                 AppMethodBeat.o(21239);
               }
             };
-            new l(c.b.this.talker, c.b.this.ntM, local1).bIJ();
+            new l(c.b.this.talker, c.b.this.nzh, local1).bJH();
             AppMethodBeat.o(21241);
             return;
             bool = false;
@@ -566,17 +566,17 @@ public final class c
           return str;
         }
       };
-      this.ntQ = new Runnable()
+      this.nzl = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(21244);
-          Assert.assertTrue(toString() + ", check running. ", c.b.this.kbJ);
+          Assert.assertTrue(toString() + ", check running. ", c.b.this.kfa);
           final boolean bool1;
-          switch (com.tencent.mm.plugin.backup.b.d.bHa())
+          switch (com.tencent.mm.plugin.backup.b.d.bHY())
           {
           default: 
-            if (c.b.this.nsW == c.this.ntw.bGX().nsL - 1)
+            if (c.b.this.nyr == c.this.nyR.bHV().nyg - 1)
             {
               bool1 = true;
               label106:
@@ -589,56 +589,56 @@ public final class c
           label767:
           for (boolean bool2 = true;; bool2 = false)
           {
-            Object localObject = new am(bool2);
+            Object localObject = new an(bool2);
             f local1 = new f()
             {
               public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
               {
                 AppMethodBeat.i(21242);
-                paramAnonymous2n = ((aa)((com.tencent.mm.plugin.backup.g.d)paramAnonymous2n).nzq).nEs;
-                ad.i(c.b.this.TAG, "Send Tag finish last:%b  cv:%s [%d,%d,%s] tag[%s,%s]", new Object[] { Boolean.valueOf(bool1), this.ntZ, Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, c.b.this.ntJ, paramAnonymous2n });
-                if ((bool1) && (c.b.this.ntJ.equals(paramAnonymous2n))) {
-                  this.ntZ.open();
+                paramAnonymous2n = ((aa)((com.tencent.mm.plugin.backup.g.d)paramAnonymous2n).nEL).nJN;
+                ae.i(c.b.this.TAG, "Send Tag finish last:%b  cv:%s [%d,%d,%s] tag[%s,%s]", new Object[] { Boolean.valueOf(bool1), this.nzu, Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String, c.b.this.nze, paramAnonymous2n });
+                if ((bool1) && (c.b.this.nze.equals(paramAnonymous2n))) {
+                  this.nzu.open();
                 }
                 AppMethodBeat.o(21242);
               }
             };
-            new com.tencent.mm.plugin.backup.g.d(c.b.this.talker, c.b.this.nsY, c.b.this.nsZ, c.b.this.ntJ, c.b.this.bVF, new LinkedList(c.b.this.ntK), local1).bIJ();
+            new com.tencent.mm.plugin.backup.g.d(c.b.this.talker, c.b.this.nyt, c.b.this.nyu, c.b.this.nze, c.b.this.bVF, new LinkedList(c.b.this.nzf), local1).bJH();
             if (bool1)
             {
-              ad.w(c.b.this.TAG, "sendTag last Session :[%d/%d] wait tag resp callback .", new Object[] { Integer.valueOf(c.b.this.nsW), Integer.valueOf(c.this.ntw.bGX().nsL - 1) });
-              ((am)localObject).block();
+              ae.w(c.b.this.TAG, "sendTag last Session :[%d/%d] wait tag resp callback .", new Object[] { Integer.valueOf(c.b.this.nyr), Integer.valueOf(c.this.nyR.bHV().nyg - 1) });
+              ((an)localObject).block();
             }
-            c.b.this.kbJ = false;
+            c.b.this.kfa = false;
             AppMethodBeat.o(21244);
             return;
-            ad.i(c.b.this.TAG, "sendTag session:%d time[%d,%d] media:%d nick:%s id:%s timeDiff:%s", new Object[] { Integer.valueOf(c.this.ntw.bGX().nsK), Long.valueOf(c.b.this.nsY), Long.valueOf(c.b.this.nsZ), Integer.valueOf(c.b.this.ntK.size()), c.b.this.bVF, c.b.this.ntJ, Long.valueOf(bt.Df(c.b.this.ntN)) });
-            if (c.this.ntw.bGX().nsK >= c.b.this.nsW + 1) {
+            ae.i(c.b.this.TAG, "sendTag session:%d time[%d,%d] media:%d nick:%s id:%s timeDiff:%s", new Object[] { Integer.valueOf(c.this.nyR.bHV().nyf), Long.valueOf(c.b.this.nyt), Long.valueOf(c.b.this.nyu), Integer.valueOf(c.b.this.nzf.size()), c.b.this.bVF, c.b.this.nze, Long.valueOf(bu.DD(c.b.this.nzi)) });
+            if (c.this.nyR.bHV().nyf >= c.b.this.nyr + 1) {
               break;
             }
-            int i = c.this.ntw.bGX().nsL;
-            localObject = c.this.ntw.bGX();
-            if (c.b.this.nsW + 1 > i) {}
+            int i = c.this.nyR.bHV().nyg;
+            localObject = c.this.nyR.bHV();
+            if (c.b.this.nyr + 1 > i) {}
             for (;;)
             {
-              ((e)localObject).nsK = i;
-              c.this.ntv.xp(c.this.ntw.bGX().nsJ);
+              ((e)localObject).nyf = i;
+              c.this.nyQ.xu(c.this.nyR.bHV().nye);
               break;
-              i = c.b.this.nsW + 1;
+              i = c.b.this.nyr + 1;
             }
-            ad.i(c.b.this.TAG, "sendTag session:%d time[%d,%d] media:%d nick:%s id:%s timeDiff:%s", new Object[] { Integer.valueOf(c.this.ntw.bGX().nsK), Long.valueOf(c.b.this.nsY), Long.valueOf(c.b.this.nsZ), Integer.valueOf(c.b.this.ntK.size()), c.b.this.bVF, c.b.this.ntJ, Long.valueOf(bt.Df(c.b.this.ntN)) });
-            if (c.this.ntw.bGX().nsK >= c.b.this.nsW + 1) {
+            ae.i(c.b.this.TAG, "sendTag session:%d time[%d,%d] media:%d nick:%s id:%s timeDiff:%s", new Object[] { Integer.valueOf(c.this.nyR.bHV().nyf), Long.valueOf(c.b.this.nyt), Long.valueOf(c.b.this.nyu), Integer.valueOf(c.b.this.nzf.size()), c.b.this.bVF, c.b.this.nze, Long.valueOf(bu.DD(c.b.this.nzi)) });
+            if (c.this.nyR.bHV().nyf >= c.b.this.nyr + 1) {
               break;
             }
-            i = c.this.ntw.bGX().nsL;
-            localObject = c.this.ntw.bGX();
-            if (c.b.this.nsW + 1 > i) {}
+            i = c.this.nyR.bHV().nyg;
+            localObject = c.this.nyR.bHV();
+            if (c.b.this.nyr + 1 > i) {}
             for (;;)
             {
-              ((e)localObject).nsK = i;
-              c.this.ntv.xp(c.this.ntw.bGX().nsJ);
+              ((e)localObject).nyf = i;
+              c.this.nyQ.xu(c.this.nyR.bHV().nye);
               break;
-              i = c.b.this.nsW + 1;
+              i = c.b.this.nyr + 1;
             }
             bool1 = false;
             break label106;
@@ -653,27 +653,27 @@ public final class c
           return str;
         }
       };
-      this.ntN = bt.flT();
-      this.ntH = parama;
-      this.talker = parama1.nsV;
-      this.nsW = parama1.nsW;
-      if (w.vF(this.talker))
+      this.nzi = bu.fpO();
+      this.nzc = parama;
+      this.talker = parama1.nyq;
+      this.nyr = parama1.nyr;
+      if (com.tencent.mm.model.x.wb(this.talker))
       {
-        this$1 = v.getDisplayName(this.talker, this.talker);
+        this$1 = w.getDisplayName(this.talker, this.talker);
         this.bVF = c.this;
         parama = new StringBuilder("MicroMsg.BackupPackAndSend.tag.");
-        if (!this.kbJ) {
+        if (!this.kfa) {
           break label299;
         }
       }
       label299:
       for (this$1 = "S.";; this$1 = "W.")
       {
-        this.TAG = (c.this + this.nsW + "." + this.bVF);
-        ad.i(this.TAG, "initTagNow [%d,%s,%s] [%s]", new Object[] { Integer.valueOf(this.nsW), this.bVF, this.talker, at.fkV() });
+        this.TAG = (c.this + this.nyr + "." + this.bVF);
+        ae.i(this.TAG, "initTagNow [%d,%s,%s] [%s]", new Object[] { Integer.valueOf(this.nyr), this.bVF, this.talker, au.foQ() });
         AppMethodBeat.o(21245);
         return;
-        this$1 = v.zf(this.talker);
+        this$1 = w.zP(this.talker);
         break;
       }
     }
@@ -681,17 +681,17 @@ public final class c
     public final boolean a(if paramif, long paramLong1, long paramLong2, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap)
     {
       AppMethodBeat.i(21246);
-      this.ntL.add(paramif);
-      long l2 = this.ntI;
+      this.nzg.add(paramif);
+      long l2 = this.nzd;
       if (paramLong1 > 0L) {}
       for (long l1 = paramLong1;; l1 = 0L)
       {
-        this.ntI = (l1 + l2);
-        if (this.nsY == 0L) {
-          this.nsY = paramLong2;
+        this.nzd = (l1 + l2);
+        if (this.nyt == 0L) {
+          this.nyt = paramLong2;
         }
-        this.nsZ = paramLong2;
-        this.ntM.putAll(paramHashMap);
+        this.nyu = paramLong2;
+        this.nzh.putAll(paramHashMap);
         paramif = paramLinkedList.iterator();
         while (paramif.hasNext())
         {
@@ -699,10 +699,10 @@ public final class c
           l(paramHashMap.mediaId, paramHashMap.path, false);
         }
       }
-      ad.i(this.TAG, "addToTag msgtime[%d,%d] size[%d,%d] baklist:%d media:%d timeDiff:%d", new Object[] { Long.valueOf(this.nsY), Long.valueOf(this.nsZ), Long.valueOf(paramLong1), Long.valueOf(this.ntI), Integer.valueOf(this.ntL.size()), Integer.valueOf(paramLinkedList.size()), Long.valueOf(bt.Df(this.ntN)) });
-      if ((this.ntI > 83886080L) || (this.ntL.size() > 80))
+      ae.i(this.TAG, "addToTag msgtime[%d,%d] size[%d,%d] baklist:%d media:%d timeDiff:%d", new Object[] { Long.valueOf(this.nyt), Long.valueOf(this.nyu), Long.valueOf(paramLong1), Long.valueOf(this.nzd), Integer.valueOf(this.nzg.size()), Integer.valueOf(paramLinkedList.size()), Long.valueOf(bu.DD(this.nzi)) });
+      if ((this.nzd > 83886080L) || (this.nzg.size() > 80))
       {
-        bHr();
+        bIp();
         AppMethodBeat.o(21246);
         return true;
       }
@@ -710,29 +710,29 @@ public final class c
       return false;
     }
     
-    public final void bHr()
+    public final void bIp()
     {
       AppMethodBeat.i(21247);
-      this.ntJ = ("MSG_" + this.ntL.size() + "_" + this.talker + "_" + bt.flT());
-      ad.i(this.TAG, "setTagEnd msgtime[%d,%d], size:%d baklist:%d bigfile:%d id:%s timeDiff:%d", new Object[] { Long.valueOf(this.nsY), Long.valueOf(this.nsZ), Long.valueOf(this.ntI), Integer.valueOf(this.ntL.size()), Integer.valueOf(this.ntM.size()), this.ntJ, Long.valueOf(bt.Df(this.ntN)) });
-      if (this.ntL.size() > 0)
+      this.nze = ("MSG_" + this.nzg.size() + "_" + this.talker + "_" + bu.fpO());
+      ae.i(this.TAG, "setTagEnd msgtime[%d,%d], size:%d baklist:%d bigfile:%d id:%s timeDiff:%d", new Object[] { Long.valueOf(this.nyt), Long.valueOf(this.nyu), Long.valueOf(this.nzd), Integer.valueOf(this.nzg.size()), Integer.valueOf(this.nzh.size()), this.nze, Long.valueOf(bu.DD(this.nzi)) });
+      if (this.nzg.size() > 0)
       {
-        l(this.ntJ, null, false);
-        if (this.ntM.isEmpty())
+        l(this.nze, null, false);
+        if (this.nzh.isEmpty())
         {
-          this.ntG.offer(this.ntQ);
+          this.nzb.offer(this.nzl);
           AppMethodBeat.o(21247);
           return;
         }
-        this.ntG.offer(this.ntP);
+        this.nzb.offer(this.nzk);
         AppMethodBeat.o(21247);
         return;
       }
-      ad.w(this.TAG, "setTagEnd NoFileSend, Go Send Tag: Direct. baklist:%d media:%d bigFileMap:%d ", new Object[] { Integer.valueOf(this.ntL.size()), Integer.valueOf(this.ntK.size()), Integer.valueOf(this.ntM.size()) });
-      Assert.assertTrue("cursorEnd NOMsg, chatMsgList should empty", this.ntL.isEmpty());
-      Assert.assertTrue("cursorEnd NOMsg, MediaList should empty", this.ntK.isEmpty());
-      Assert.assertTrue("cursorEnd NOMsg, BigFileList should empty", this.ntM.isEmpty());
-      this.ntG.offer(this.ntQ);
+      ae.w(this.TAG, "setTagEnd NoFileSend, Go Send Tag: Direct. baklist:%d media:%d bigFileMap:%d ", new Object[] { Integer.valueOf(this.nzg.size()), Integer.valueOf(this.nzf.size()), Integer.valueOf(this.nzh.size()) });
+      Assert.assertTrue("cursorEnd NOMsg, chatMsgList should empty", this.nzg.isEmpty());
+      Assert.assertTrue("cursorEnd NOMsg, MediaList should empty", this.nzf.isEmpty());
+      Assert.assertTrue("cursorEnd NOMsg, BigFileList should empty", this.nzh.isEmpty());
+      this.nzb.offer(this.nzl);
       AppMethodBeat.o(21247);
     }
     
@@ -745,32 +745,32 @@ public final class c
         public final void a(final com.tencent.mm.plugin.backup.g.c paramAnonymousc)
         {
           AppMethodBeat.i(21237);
-          final long l2 = bt.flT();
-          c.a locala = c.b.this.ntH;
-          long l3 = paramAnonymousc.bIQ();
-          boolean bool3 = c.b.this.kbJ;
-          long l1 = locala.ntD.get();
+          final long l2 = bu.fpO();
+          c.a locala = c.b.this.nzc;
+          long l3 = paramAnonymousc.bJO();
+          boolean bool3 = c.b.this.kfa;
+          long l1 = locala.nyY.get();
           boolean bool1;
           label81:
           long l4;
-          if (locala.ntD.get() >= 8388608L)
+          if (locala.nyY.get() >= 8388608L)
           {
             bool1 = true;
-            if (locala.ntD.get() < 16777216L) {
+            if (locala.nyY.get() < 16777216L) {
               break label379;
             }
             bool2 = true;
-            ad.v("MicroMsg.BackupPackAndSend", "MemoryChecker.waitMemoryValid %b inSize:%d sum:%d  [%b,%b]", new Object[] { Boolean.valueOf(bool3), Long.valueOf(l3), Long.valueOf(l1), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-            if (locala.ntD.get() + l3 >= 8388608L) {
-              locala.ntE.close();
+            ae.v("MicroMsg.BackupPackAndSend", "MemoryChecker.waitMemoryValid %b inSize:%d sum:%d  [%b,%b]", new Object[] { Boolean.valueOf(bool3), Long.valueOf(l3), Long.valueOf(l1), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+            if (locala.nyY.get() + l3 >= 8388608L) {
+              locala.nyZ.close();
             }
-            if (locala.ntD.get() >= 16777216L) {
-              locala.ntF.close();
+            if (locala.nyY.get() >= 16777216L) {
+              locala.nza.close();
             }
-            l4 = bt.flT();
-            if (!locala.ntC.ntu)
+            l4 = bu.fpO();
+            if (!locala.nyX.nyP)
             {
-              long l5 = locala.ntD.get();
+              long l5 = locala.nyY.get();
               if (!bool3) {
                 break label385;
               }
@@ -779,15 +779,15 @@ public final class c
               if (l5 >= l1) {
                 break label404;
               }
-              locala.ntD.addAndGet(l3);
-              l1 = bt.Df(l4);
-              l4 = locala.ntD.get();
-              if (locala.ntD.get() < 8388608L) {
+              locala.nyY.addAndGet(l3);
+              l1 = bu.DD(l4);
+              l4 = locala.nyY.get();
+              if (locala.nyY.get() < 8388608L) {
                 break label392;
               }
               bool1 = true;
               label267:
-              if (locala.ntD.get() < 16777216L) {
+              if (locala.nyY.get() < 16777216L) {
                 break label398;
               }
             }
@@ -797,17 +797,17 @@ public final class c
           label398:
           for (boolean bool2 = true;; bool2 = false)
           {
-            ad.v("MicroMsg.BackupPackAndSend", "MemoryChecker.waitMemoryValid Out:%d %b inSize:%d sum:%d  [%b,%b]", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool3), Long.valueOf(l3), Long.valueOf(l4), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-            c.b.this.ntG.offer(new Runnable()
+            ae.v("MicroMsg.BackupPackAndSend", "MemoryChecker.waitMemoryValid Out:%d %b inSize:%d sum:%d  [%b,%b]", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool3), Long.valueOf(l3), Long.valueOf(l4), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+            c.b.this.nzb.offer(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(21236);
-                Assert.assertTrue(toString() + ", check running. ", c.b.this.kbJ);
-                long l1 = bt.flT();
-                paramAnonymousc.bIJ();
-                long l2 = bt.flT();
-                ad.i(c.b.this.TAG, "SendFileScene size:%d waitTime:%d netTime:%d [%s]", new Object[] { Integer.valueOf(paramAnonymousc.bIQ()), Long.valueOf(l2 - l2), Long.valueOf(l2 - l1), paramAnonymousc.nzh.nEj });
+                Assert.assertTrue(toString() + ", check running. ", c.b.this.kfa);
+                long l1 = bu.fpO();
+                paramAnonymousc.bJH();
+                long l2 = bu.fpO();
+                ae.i(c.b.this.TAG, "SendFileScene size:%d waitTime:%d netTime:%d [%s]", new Object[] { Integer.valueOf(paramAnonymousc.bJO()), Long.valueOf(l2 - l2), Long.valueOf(l2 - l1), paramAnonymousc.nEC.nJE });
                 AppMethodBeat.o(21236);
               }
               
@@ -833,26 +833,26 @@ public final class c
           }
           label404:
           if (bool3) {}
-          for (am localam = locala.ntF;; localam = locala.ntE)
+          for (an localan = locala.nza;; localan = locala.nyZ)
           {
-            localam.fkQ();
+            localan.foL();
             break;
           }
         }
       };
-      ad.i(this.TAG, "postSendFile isBigFile[%b], baklst:%d Id:%s path:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.ntL.size()), paramString1, paramString2 });
+      ae.i(this.TAG, "postSendFile isBigFile[%b], baklst:%d Id:%s path:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.nzg.size()), paramString1, paramString2 });
       if (!TextUtils.isEmpty(paramString2))
       {
-        this.ntK.add(paramString1);
+        this.nzf.add(paramString1);
         if (paramString1 != null)
         {
-          com.tencent.mm.plugin.backup.g.c.a(this.ntO, local2, paramString1, paramString2, c.this.ntw.nsH);
+          com.tencent.mm.plugin.backup.g.c.a(this.nzj, local2, paramString1, paramString2, c.this.nyR.nyc);
           AppMethodBeat.o(21248);
         }
       }
       else
       {
-        if (this.ntL.isEmpty()) {
+        if (this.nzg.isEmpty()) {
           break label171;
         }
       }
@@ -861,7 +861,7 @@ public final class c
       {
         Assert.assertTrue("chatMsgList should not empty", paramBoolean);
         if (paramString1 != null) {
-          com.tencent.mm.plugin.backup.g.c.a(this.ntO, local2, paramString1, new LinkedList(this.ntL), c.this.ntw.nsH);
+          com.tencent.mm.plugin.backup.g.c.a(this.nzj, local2, paramString1, new LinkedList(this.nzg), c.this.nyR.nyc);
         }
         AppMethodBeat.o(21248);
         return;
@@ -876,20 +876,20 @@ public final class c
   
   final class c
   {
-    c.a ntH;
-    LinkedBlockingQueue<Object> nub;
-    am nuc;
-    c.b nud;
-    private Runnable nue;
+    c.a nzc;
+    LinkedBlockingQueue<Object> nzw;
+    an nzx;
+    c.b nzy;
+    private Runnable nzz;
     
     public c()
     {
       AppMethodBeat.i(21250);
-      this.nub = new LinkedBlockingQueue();
-      this.ntH = new c.a(c.this, (byte)0);
-      this.nuc = new am();
-      this.nud = null;
-      this.nue = new com.tencent.e.i.h()
+      this.nzw = new LinkedBlockingQueue();
+      this.nzc = new c.a(c.this, (byte)0);
+      this.nzx = new an();
+      this.nzy = null;
+      this.nzz = new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -899,13 +899,13 @@ public final class c
         public final void run()
         {
           AppMethodBeat.i(21249);
-          while (!c.this.ntu)
+          while (!c.this.nyP)
           {
             Object localObject1 = null;
             label273:
             try
             {
-              localObject2 = c.c.this.nub.poll(500L, TimeUnit.MILLISECONDS);
+              localObject2 = c.c.this.nzw.poll(500L, TimeUnit.MILLISECONDS);
               localObject1 = localObject2;
             }
             catch (Exception localException2)
@@ -918,28 +918,28 @@ public final class c
               label221:
               break label44;
             }
-            ad.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "TagQueue(%d)startNext obj:%s", new Object[] { Integer.valueOf(c.c.this.nub.size()), localObject1 });
+            ae.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "TagQueue(%d)startNext obj:%s", new Object[] { Integer.valueOf(c.c.this.nzw.size()), localObject1 });
             if (localObject1 != null)
             {
-              if (localObject1 == c.c.this.nuc)
+              if (localObject1 == c.c.this.nzx)
               {
-                c.c.this.nuc.open();
+                c.c.this.nzx.open();
                 AppMethodBeat.o(21249);
                 return;
               }
               localb = (c.b)localObject1;
-              localb.kbJ = true;
+              localb.kfa = true;
               localObject2 = new StringBuilder("MicroMsg.BackupPackAndSend.tag");
-              if (localb.kbJ)
+              if (localb.kfa)
               {
                 localObject1 = "S.";
-                localb.TAG = ((String)localObject1 + localb.nsW + "." + localb.bVF);
-                while (!c.this.ntu)
+                localb.TAG = ((String)localObject1 + localb.nyr + "." + localb.bVF);
+                while (!c.this.nyP)
                 {
                   localObject1 = null;
                   try
                   {
-                    localObject2 = (Runnable)localb.ntG.poll(500L, TimeUnit.MILLISECONDS);
+                    localObject2 = (Runnable)localb.nzb.poll(500L, TimeUnit.MILLISECONDS);
                     localObject1 = localObject2;
                   }
                   catch (Exception localException1)
@@ -953,10 +953,10 @@ public final class c
                   }
                   if (localObject1 != null)
                   {
-                    l1 = bt.flT();
+                    l1 = bu.fpO();
                     ((Runnable)localObject1).run();
-                    k = localb.ntG.size();
-                    l2 = c.c.this.ntH.ntD.get();
+                    k = localb.nzb.size();
+                    l2 = c.c.this.nzc.nyY.get();
                     if (l2 < 8388608L) {
                       break label389;
                     }
@@ -971,8 +971,8 @@ public final class c
               label394:
               for (j = 1;; j = 0)
               {
-                ad.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "workerQueue poll q:%d mem:%s rt:%d [%s,%s,%s]", new Object[] { Integer.valueOf(k), String.format("[%s,%s,%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j) }), Long.valueOf(bt.Df(l1)), localObject1, localb, c.c.this.nud });
-                if (localb.kbJ) {
+                ae.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "workerQueue poll q:%d mem:%s rt:%d [%s,%s,%s]", new Object[] { Integer.valueOf(k), String.format("[%s,%s,%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j) }), Long.valueOf(bu.DD(l1)), localObject1, localb, c.c.this.nzy });
+                if (localb.kfa) {
                   break label182;
                 }
                 System.gc();
@@ -987,7 +987,7 @@ public final class c
           AppMethodBeat.o(21249);
         }
       };
-      com.tencent.e.h.LTJ.aU(this.nue);
+      com.tencent.e.h.MqF.aR(this.nzz);
       AppMethodBeat.o(21250);
     }
   }

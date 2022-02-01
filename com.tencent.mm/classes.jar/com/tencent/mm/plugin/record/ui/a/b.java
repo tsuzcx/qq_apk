@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.record.ui.a;
 
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajx;
 
 public class b
 {
-  public String dEP;
+  public String dFU;
   public int dataType;
-  public ajn dsC;
+  public ajx dtI;
   public int fromScene;
   public long msgId;
-  public g prW;
+  public g pyC;
 }
 
 

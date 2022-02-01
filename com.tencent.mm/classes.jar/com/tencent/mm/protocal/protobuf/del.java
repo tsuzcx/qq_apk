@@ -1,108 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class del
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public String AesKey;
-  public int FMu;
-  public String FxN;
-  public int GDa;
-  public int GDf;
-  public btn GRt;
-  public String GRx;
-  public String HbT;
-  public int HsO;
-  public String HsP;
-  public String Md5;
+  public LinkedList<Integer> FUE;
+  public String HLG;
   public int Scene;
+  public int nID;
+  
+  public del()
+  {
+    AppMethodBeat.i(127502);
+    this.FUE = new LinkedList();
+    AppMethodBeat.o(127502);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117925);
+    AppMethodBeat.i(127503);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Md5 != null) {
-        paramVarArgs.d(1, this.Md5);
-      }
-      paramVarArgs.aS(2, this.FMu);
-      paramVarArgs.aS(3, this.Scene);
-      if (this.GRx != null) {
-        paramVarArgs.d(4, this.GRx);
-      }
-      if (this.FxN != null) {
-        paramVarArgs.d(5, this.FxN);
-      }
-      paramVarArgs.aS(6, this.GDa);
-      if (this.GRt != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.lC(7, this.GRt.computeSize());
-        this.GRt.writeFields(paramVarArgs);
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(8, this.HsO);
-      if (this.HbT != null) {
-        paramVarArgs.d(9, this.HbT);
+      if (this.HLG != null) {
+        paramVarArgs.d(2, this.HLG);
       }
-      paramVarArgs.aS(10, this.GDf);
-      if (this.HsP != null) {
-        paramVarArgs.d(11, this.HsP);
-      }
-      if (this.AesKey != null) {
-        paramVarArgs.d(12, this.AesKey);
-      }
-      AppMethodBeat.o(117925);
+      paramVarArgs.aS(3, this.Scene);
+      paramVarArgs.aS(4, this.nID);
+      paramVarArgs.f(5, 2, this.FUE);
+      AppMethodBeat.o(127503);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Md5 == null) {
-        break label902;
+      if (this.BaseRequest == null) {
+        break label537;
       }
     }
-    label902:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Md5) + 0;; paramInt = 0)
+    label537:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.FMu) + f.a.a.b.b.a.bz(3, this.Scene);
-      paramInt = i;
-      if (this.GRx != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.GRx);
+      int i = paramInt;
+      if (this.HLG != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HLG);
       }
-      i = paramInt;
-      if (this.FxN != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.FxN);
-      }
-      i += f.a.a.b.b.a.bz(6, this.GDa);
-      paramInt = i;
-      if (this.GRt != null) {
-        paramInt = i + f.a.a.a.lB(7, this.GRt.computeSize());
-      }
-      i = paramInt + f.a.a.b.b.a.bz(8, this.HsO);
-      paramInt = i;
-      if (this.HbT != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.HbT);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(10, this.GDf);
-      paramInt = i;
-      if (this.HsP != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.HsP);
-      }
-      i = paramInt;
-      if (this.AesKey != null) {
-        i = paramInt + f.a.a.b.b.a.e(12, this.AesKey);
-      }
-      AppMethodBeat.o(117925);
-      return i;
+      paramInt = f.a.a.b.b.a.bz(3, this.Scene);
+      int j = f.a.a.b.b.a.bz(4, this.nID);
+      int k = f.a.a.a.d(5, 2, this.FUE);
+      AppMethodBeat.o(127503);
+      return i + paramInt + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.FUE.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(117925);
+        AppMethodBeat.o(127503);
         return 0;
       }
       if (paramInt == 3)
@@ -113,76 +77,48 @@ public final class del
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(117925);
+          AppMethodBeat.o(127503);
           return -1;
         case 1: 
-          localdel.Md5 = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 2: 
-          localdel.FMu = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 3: 
-          localdel.Scene = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 4: 
-          localdel.GRx = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 5: 
-          localdel.FxN = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 6: 
-          localdel.GDa = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 7: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new btn();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((btn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdel.GRt = ((btn)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdel.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(117925);
+          AppMethodBeat.o(127503);
           return 0;
-        case 8: 
-          localdel.HsO = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(117925);
+        case 2: 
+          localdel.HLG = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(127503);
           return 0;
-        case 9: 
-          localdel.HbT = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(117925);
+        case 3: 
+          localdel.Scene = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(127503);
           return 0;
-        case 10: 
-          localdel.GDf = ((f.a.a.a.a)localObject1).NPN.zc();
-          AppMethodBeat.o(117925);
-          return 0;
-        case 11: 
-          localdel.HsP = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(117925);
+        case 4: 
+          localdel.nID = ((f.a.a.a.a)localObject1).OmT.zc();
+          AppMethodBeat.o(127503);
           return 0;
         }
-        localdel.AesKey = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(117925);
+        localdel.FUE = new f.a.a.a.a(((f.a.a.a.a)localObject1).OmT.gCk().zr, unknownTagHandler).OmT.gCi();
+        AppMethodBeat.o(127503);
         return 0;
       }
-      AppMethodBeat.o(117925);
+      AppMethodBeat.o(127503);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.del
  * JD-Core Version:    0.7.0.1
  */

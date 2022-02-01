@@ -28,20 +28,20 @@ public final class d
     }
   }
   
-  private static String agD(int paramInt)
+  private static String ahm(int paramInt)
   {
     AppMethodBeat.i(138365);
     String str = "";
     try
     {
-      Object localObject = a.gS(String.format(Locale.ENGLISH, "/proc/%d/cmdline", new Object[] { Integer.valueOf(paramInt) }), 100);
+      Object localObject = a.hb(String.format(Locale.ENGLISH, "/proc/%d/cmdline", new Object[] { Integer.valueOf(paramInt) }), 100);
       if (localObject != null) {
         str = new String((byte[])localObject, 0, a((byte[])localObject, 0, '\000'));
       }
       localObject = str;
       if (TextUtils.isEmpty(str))
       {
-        byte[] arrayOfByte = a.gS(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
+        byte[] arrayOfByte = a.hb(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
         localObject = str;
         if (arrayOfByte != null)
         {
@@ -64,12 +64,12 @@ public final class d
     return "";
   }
   
-  private static a agE(int paramInt)
+  private static a ahn(int paramInt)
   {
     AppMethodBeat.i(138366);
     try
     {
-      str1 = agD(paramInt);
+      str1 = ahm(paramInt);
     }
     catch (Exception localException1)
     {
@@ -78,7 +78,7 @@ public final class d
         for (;;)
         {
           String str1;
-          Object localObject2 = new String(a.aZj(String.format(Locale.ENGLISH, "/proc/%d/attr/current", new Object[] { Integer.valueOf(paramInt) }))).trim();
+          Object localObject2 = new String(a.baM(String.format(Locale.ENGLISH, "/proc/%d/attr/current", new Object[] { Integer.valueOf(paramInt) }))).trim();
           if ((str1 != null) && (i != -1) && (k != -1)) {
             break;
           }
@@ -107,7 +107,7 @@ public final class d
     {
       try
       {
-        localObject2 = a.gS(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
+        localObject2 = a.hb(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
         if (localObject2 == null) {
           continue;
         }
@@ -155,7 +155,7 @@ public final class d
     i = j;
   }
   
-  public static List<a> fTN()
+  public static List<a> fYn()
   {
     int i = 0;
     AppMethodBeat.i(138364);
@@ -179,7 +179,7 @@ public final class d
             if ((k > 57) || (k < 48)) {
               break label125;
             }
-            localObject = agE(Integer.parseInt((String)localObject));
+            localObject = ahn(Integer.parseInt((String)localObject));
             if (localObject == null) {
               break label125;
             }
@@ -200,8 +200,8 @@ public final class d
   
   public static final class a
   {
-    public int LMW;
-    public String LMX;
+    public int MjV;
+    public String MjW;
     public String name = "";
     public int pid;
     public int uid;
@@ -209,16 +209,16 @@ public final class d
     a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
     {
       this.pid = paramInt1;
-      this.LMW = paramInt2;
+      this.MjV = paramInt2;
       this.name = paramString1;
       this.uid = paramInt3;
-      this.LMX = paramString2;
+      this.MjW = paramString2;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(138363);
-      String str = "PID=" + this.pid + " PPID=" + this.LMW + " NAME=" + this.name + " UID=" + this.uid + " CONTEXT=" + this.LMX;
+      String str = "PID=" + this.pid + " PPID=" + this.MjV + " NAME=" + this.name + " UID=" + this.uid + " CONTEXT=" + this.MjW;
       AppMethodBeat.o(138363);
       return str;
     }

@@ -13,26 +13,26 @@ import com.tencent.thumbplayer.utils.d;
 public final class h
 {
   public static Context IR;
-  private static boolean cAX;
+  private static boolean cBE;
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(191852);
+    AppMethodBeat.i(194530);
     d.a(parama);
-    AppMethodBeat.o(191852);
+    AppMethodBeat.o(194530);
   }
   
-  public static void cB(Context paramContext, String paramString)
+  public static void cC(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(191851);
-    if (!cAX)
+    AppMethodBeat.i(194529);
+    if (!cBE)
     {
       d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk");
-      cAX = true;
+      cBE = true;
       IR = paramContext.getApplicationContext();
-      com.tencent.thumbplayer.e.a.aZL(paramString);
-      com.tencent.thumbplayer.e.a.fWW();
-      paramString = TPNetworkChangeMonitor.fXH();
+      com.tencent.thumbplayer.e.a.bbo(paramString);
+      com.tencent.thumbplayer.e.a.gbv();
+      paramString = TPNetworkChangeMonitor.gcg();
       Context localContext = IR;
       paramContext = "context can not be null!";
       if (localContext == null)
@@ -41,38 +41,38 @@ public final class h
         for (;;)
         {
           paramContext = new IllegalArgumentException(paramContext);
-          AppMethodBeat.o(191851);
+          AppMethodBeat.o(194529);
           throw paramContext;
           paramContext = "this argument should not be null!";
         }
       }
-      paramString.cK(localContext);
-      paramString.lj(localContext);
+      paramString.cM(localContext);
+      paramString.lp(localContext);
       d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for monitor");
       d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for report");
       TPNativeLog.setLogCallback(new ITPNativeLogCallback()
       {
         public final void onPrintLog(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(191850);
+          AppMethodBeat.i(194528);
           switch (paramAnonymousInt)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(191850);
+            AppMethodBeat.o(194528);
             return;
             d.v(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(191850);
+            AppMethodBeat.o(194528);
             return;
             d.d(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(191850);
+            AppMethodBeat.o(194528);
             return;
             d.i(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(191850);
+            AppMethodBeat.o(194528);
             return;
             d.w(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(191850);
+            AppMethodBeat.o(194528);
             return;
             d.e(paramAnonymousString1, paramAnonymousString2);
           }
@@ -87,7 +87,7 @@ public final class h
       d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for drm cap");
       TPThumbplayerCapabilityHelper.init(IR, true);
       d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk DONE");
-      AppMethodBeat.o(191851);
+      AppMethodBeat.o(194529);
       return;
     }
     catch (UnsupportedOperationException paramContext)
@@ -99,18 +99,18 @@ public final class h
     }
   }
   
-  public static void fWv()
+  public static void gaU()
   {
-    AppMethodBeat.i(191853);
-    com.tencent.thumbplayer.e.a.fWM();
-    AppMethodBeat.o(191853);
+    AppMethodBeat.i(194531);
+    com.tencent.thumbplayer.e.a.gbl();
+    AppMethodBeat.o(194531);
   }
   
-  public static void fWw()
+  public static void gaV()
   {
-    AppMethodBeat.i(191854);
-    com.tencent.thumbplayer.e.a.fWw();
-    AppMethodBeat.o(191854);
+    AppMethodBeat.i(194532);
+    com.tencent.thumbplayer.e.a.gaV();
+    AppMethodBeat.o(194532);
   }
   
   public static abstract interface a

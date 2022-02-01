@@ -3,23 +3,23 @@ package com.tencent.mm.pluginsdk.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.g.b;
 import com.tencent.mm.pluginsdk.g.b.a;
-import com.tencent.mm.protocal.protobuf.chw;
-import com.tencent.mm.protocal.protobuf.chx;
+import com.tencent.mm.protocal.protobuf.ciq;
+import com.tencent.mm.protocal.protobuf.cir;
 
 public final class f
 {
-  public String EKL;
-  public chx EKM = null;
-  e EKN = null;
-  private b EKO = null;
-  h EKP;
+  public String Fdj;
+  public cir Fdk = null;
+  e Fdl = null;
+  private b Fdm = null;
+  h Fdn;
   boolean isRunning = false;
   public int retryCount;
   public int taskId;
-  int uEz = 3;
+  int uQm = 3;
   
   /* Error */
-  public final void eZj()
+  public final void fcX()
   {
     // Byte code:
     //   0: ldc 43
@@ -34,14 +34,14 @@ public final class f
     //   20: dup
     //   21: iconst_0
     //   22: aload_0
-    //   23: getfield 30	com/tencent/mm/pluginsdk/f/f:EKN	Lcom/tencent/mm/pluginsdk/f/e;
+    //   23: getfield 30	com/tencent/mm/pluginsdk/f/f:Fdl	Lcom/tencent/mm/pluginsdk/f/e;
     //   26: aastore
     //   27: dup
     //   28: iconst_1
     //   29: aload_0
-    //   30: getfield 55	com/tencent/mm/pluginsdk/f/f:EKL	Ljava/lang/String;
+    //   30: getfield 55	com/tencent/mm/pluginsdk/f/f:Fdj	Ljava/lang/String;
     //   33: aastore
-    //   34: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   37: ldc 43
     //   39: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: return
@@ -50,49 +50,49 @@ public final class f
     //   45: putfield 32	com/tencent/mm/pluginsdk/f/f:isRunning	Z
     //   48: aconst_null
     //   49: astore_1
-    //   50: new 66	com/tencent/mm/vfs/h
+    //   50: new 66	com/tencent/mm/vfs/n
     //   53: dup
-    //   54: new 68	com/tencent/mm/vfs/e
+    //   54: new 68	com/tencent/mm/vfs/k
     //   57: dup
     //   58: aload_0
-    //   59: getfield 30	com/tencent/mm/pluginsdk/f/f:EKN	Lcom/tencent/mm/pluginsdk/f/e;
+    //   59: getfield 30	com/tencent/mm/pluginsdk/f/f:Fdl	Lcom/tencent/mm/pluginsdk/f/e;
     //   62: getfield 73	com/tencent/mm/pluginsdk/f/e:filePath	Ljava/lang/String;
-    //   65: invokespecial 76	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   68: invokespecial 79	com/tencent/mm/vfs/h:<init>	(Lcom/tencent/mm/vfs/e;)V
+    //   65: invokespecial 76	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   68: invokespecial 79	com/tencent/mm/vfs/n:<init>	(Lcom/tencent/mm/vfs/k;)V
     //   71: astore_2
     //   72: aload_0
-    //   73: getfield 30	com/tencent/mm/pluginsdk/f/f:EKN	Lcom/tencent/mm/pluginsdk/f/e;
-    //   76: getfield 82	com/tencent/mm/pluginsdk/f/e:EKi	I
+    //   73: getfield 30	com/tencent/mm/pluginsdk/f/f:Fdl	Lcom/tencent/mm/pluginsdk/f/e;
+    //   76: getfield 82	com/tencent/mm/pluginsdk/f/e:FcG	I
     //   79: newarray byte
     //   81: astore_1
     //   82: aload_2
     //   83: aload_0
-    //   84: getfield 30	com/tencent/mm/pluginsdk/f/f:EKN	Lcom/tencent/mm/pluginsdk/f/e;
-    //   87: getfield 85	com/tencent/mm/pluginsdk/f/e:EKK	I
+    //   84: getfield 30	com/tencent/mm/pluginsdk/f/f:Fdl	Lcom/tencent/mm/pluginsdk/f/e;
+    //   87: getfield 85	com/tencent/mm/pluginsdk/f/e:Fdi	I
     //   90: i2l
-    //   91: invokevirtual 89	com/tencent/mm/vfs/h:skip	(J)J
+    //   91: invokevirtual 89	com/tencent/mm/vfs/n:skip	(J)J
     //   94: pop2
     //   95: iconst_m1
     //   96: aload_2
     //   97: aload_1
     //   98: iconst_0
     //   99: aload_0
-    //   100: getfield 30	com/tencent/mm/pluginsdk/f/f:EKN	Lcom/tencent/mm/pluginsdk/f/e;
-    //   103: getfield 82	com/tencent/mm/pluginsdk/f/e:EKi	I
-    //   106: invokevirtual 93	com/tencent/mm/vfs/h:read	([BII)I
+    //   100: getfield 30	com/tencent/mm/pluginsdk/f/f:Fdl	Lcom/tencent/mm/pluginsdk/f/e;
+    //   103: getfield 82	com/tencent/mm/pluginsdk/f/e:FcG	I
+    //   106: invokevirtual 93	com/tencent/mm/vfs/n:read	([BII)I
     //   109: if_icmpne +34 -> 143
     //   112: ldc 51
     //   114: ldc 95
-    //   116: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   116: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   119: aload_2
-    //   120: invokevirtual 102	com/tencent/mm/vfs/h:close	()V
+    //   120: invokevirtual 102	com/tencent/mm/vfs/n:close	()V
     //   123: ldc 43
     //   125: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: return
     //   129: astore_1
     //   130: ldc 51
     //   132: ldc 104
-    //   134: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   134: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   137: ldc 43
     //   139: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   142: return
@@ -100,35 +100,35 @@ public final class f
     //   144: new 106	com/tencent/mm/pluginsdk/g/b
     //   147: dup
     //   148: aload_0
-    //   149: getfield 55	com/tencent/mm/pluginsdk/f/f:EKL	Ljava/lang/String;
+    //   149: getfield 55	com/tencent/mm/pluginsdk/f/f:Fdj	Ljava/lang/String;
     //   152: aload_0
-    //   153: getfield 28	com/tencent/mm/pluginsdk/f/f:EKM	Lcom/tencent/mm/protocal/protobuf/chx;
+    //   153: getfield 28	com/tencent/mm/pluginsdk/f/f:Fdk	Lcom/tencent/mm/protocal/protobuf/cir;
     //   156: aload_0
-    //   157: getfield 30	com/tencent/mm/pluginsdk/f/f:EKN	Lcom/tencent/mm/pluginsdk/f/e;
-    //   160: getfield 109	com/tencent/mm/pluginsdk/f/e:EKJ	I
+    //   157: getfield 30	com/tencent/mm/pluginsdk/f/f:Fdl	Lcom/tencent/mm/pluginsdk/f/e;
+    //   160: getfield 109	com/tencent/mm/pluginsdk/f/e:Fdh	I
     //   163: aload_1
     //   164: new 6	com/tencent/mm/pluginsdk/f/f$1
     //   167: dup
     //   168: aload_0
     //   169: aload_0
     //   170: invokespecial 112	com/tencent/mm/pluginsdk/f/f$1:<init>	(Lcom/tencent/mm/pluginsdk/f/f;Lcom/tencent/mm/pluginsdk/f/f;)V
-    //   173: invokespecial 115	com/tencent/mm/pluginsdk/g/b:<init>	(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/chx;I[BLcom/tencent/mm/pluginsdk/g/b$a;)V
-    //   176: putfield 36	com/tencent/mm/pluginsdk/f/f:EKO	Lcom/tencent/mm/pluginsdk/g/b;
-    //   179: invokestatic 121	com/tencent/mm/kernel/g:aiU	()Lcom/tencent/mm/al/q;
+    //   173: invokespecial 115	com/tencent/mm/pluginsdk/g/b:<init>	(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/cir;I[BLcom/tencent/mm/pluginsdk/g/b$a;)V
+    //   176: putfield 36	com/tencent/mm/pluginsdk/f/f:Fdm	Lcom/tencent/mm/pluginsdk/g/b;
+    //   179: invokestatic 121	com/tencent/mm/kernel/g:ajj	()Lcom/tencent/mm/ak/q;
     //   182: aload_0
-    //   183: getfield 36	com/tencent/mm/pluginsdk/f/f:EKO	Lcom/tencent/mm/pluginsdk/g/b;
+    //   183: getfield 36	com/tencent/mm/pluginsdk/f/f:Fdm	Lcom/tencent/mm/pluginsdk/g/b;
     //   186: iconst_0
-    //   187: invokevirtual 127	com/tencent/mm/al/q:a	(Lcom/tencent/mm/al/n;I)Z
+    //   187: invokevirtual 127	com/tencent/mm/ak/q:a	(Lcom/tencent/mm/ak/n;I)Z
     //   190: pop
     //   191: aload_2
-    //   192: invokevirtual 102	com/tencent/mm/vfs/h:close	()V
+    //   192: invokevirtual 102	com/tencent/mm/vfs/n:close	()V
     //   195: ldc 43
     //   197: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   200: return
     //   201: astore_1
     //   202: ldc 51
     //   204: ldc 104
-    //   206: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   206: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   209: ldc 43
     //   211: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   214: return
@@ -142,16 +142,16 @@ public final class f
     //   228: invokevirtual 136	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   231: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   237: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   240: aload_1
-    //   241: invokevirtual 102	com/tencent/mm/vfs/h:close	()V
+    //   241: invokevirtual 102	com/tencent/mm/vfs/n:close	()V
     //   244: ldc 43
     //   246: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   249: return
     //   250: astore_1
     //   251: ldc 51
     //   253: ldc 104
-    //   255: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   258: ldc 43
     //   260: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   263: return
@@ -159,7 +159,7 @@ public final class f
     //   265: aconst_null
     //   266: astore_2
     //   267: aload_2
-    //   268: invokevirtual 102	com/tencent/mm/vfs/h:close	()V
+    //   268: invokevirtual 102	com/tencent/mm/vfs/n:close	()V
     //   271: ldc 43
     //   273: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   276: aload_1
@@ -167,7 +167,7 @@ public final class f
     //   278: astore_2
     //   279: ldc 51
     //   281: ldc 104
-    //   283: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   283: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   286: goto -15 -> 271
     //   289: astore_1
     //   290: goto -23 -> 267
@@ -193,7 +193,7 @@ public final class f
     //   264	13	1	localObject1	Object
     //   289	6	1	localObject2	Object
     //   297	7	1	localObject3	Object
-    //   71	121	2	localh	com.tencent.mm.vfs.h
+    //   71	121	2	localn	com.tencent.mm.vfs.n
     //   215	13	2	localException1	java.lang.Exception
     //   266	2	2	localObject4	Object
     //   278	1	2	localIOException4	java.io.IOException
@@ -215,10 +215,10 @@ public final class f
     //   143	191	301	java/lang/Exception
   }
   
-  public final void eZk()
+  public final void fcY()
   {
     this.isRunning = false;
-    this.EKO = null;
+    this.Fdm = null;
   }
 }
 

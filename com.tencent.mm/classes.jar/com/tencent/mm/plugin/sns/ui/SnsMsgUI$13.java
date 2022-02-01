@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
 final class SnsMsgUI$13
@@ -10,27 +10,27 @@ final class SnsMsgUI$13
 {
   SnsMsgUI$13(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void cP(Object paramObject)
+  public final void cQ(Object paramObject)
   {
-    AppMethodBeat.i(198369);
+    AppMethodBeat.i(219907);
     if (paramObject == null)
     {
-      ad.e("MicroMsg.SnsMsgUI", "onItemDel object null");
-      AppMethodBeat.o(198369);
+      ae.e("MicroMsg.SnsMsgUI", "onItemDel object null");
+      AppMethodBeat.o(219907);
       return;
     }
     try
     {
-      int i = bt.aRe(paramObject.toString());
-      SnsMsgUI.a(this.AfF, i);
-      AppMethodBeat.o(198369);
+      int i = bu.aSB(paramObject.toString());
+      SnsMsgUI.a(this.AwR, i);
+      AppMethodBeat.o(219907);
       return;
     }
     catch (Exception paramObject)
     {
-      ad.e("MicroMsg.SnsMsgUI", "onItemDel object not int");
-      ad.printErrStackTrace("MicroMsg.SnsMsgUI", paramObject, "", new Object[0]);
-      AppMethodBeat.o(198369);
+      ae.e("MicroMsg.SnsMsgUI", "onItemDel object not int");
+      ae.printErrStackTrace("MicroMsg.SnsMsgUI", paramObject, "", new Object[0]);
+      AppMethodBeat.o(219907);
     }
   }
 }

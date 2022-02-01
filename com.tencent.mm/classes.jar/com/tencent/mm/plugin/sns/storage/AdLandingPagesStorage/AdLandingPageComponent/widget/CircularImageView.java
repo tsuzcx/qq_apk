@@ -31,6 +31,15 @@ public class CircularImageView
   extends ImageView
 {
   private static final String TAG;
+  private boolean AaC;
+  private boolean AaD;
+  private int AaE;
+  private int AaF;
+  private BitmapShader AaG;
+  private Bitmap AaH;
+  private Paint AaI;
+  private Paint AaJ;
+  private ColorFilter AaK;
   private int borderWidth;
   private boolean isSelected;
   private boolean lW;
@@ -39,15 +48,6 @@ public class CircularImageView
   private Paint paint;
   private int shadowColor;
   private float shadowRadius;
-  private Bitmap zJA;
-  private Paint zJB;
-  private Paint zJC;
-  private ColorFilter zJD;
-  private boolean zJv;
-  private boolean zJw;
-  private int zJx;
-  private int zJy;
-  private BitmapShader zJz;
   
   static
   {
@@ -72,24 +72,24 @@ public class CircularImageView
     AppMethodBeat.i(97162);
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
-    this.zJB = new Paint();
-    this.zJB.setAntiAlias(true);
-    this.zJB.setStyle(Paint.Style.STROKE);
-    this.zJC = new Paint();
-    this.zJC.setAntiAlias(true);
+    this.AaI = new Paint();
+    this.AaI.setAntiAlias(true);
+    this.AaI.setStyle(Paint.Style.STROKE);
+    this.AaJ = new Paint();
+    this.AaJ.setAntiAlias(true);
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, i.a.CircularImageView, paramInt, 0);
-    this.zJv = paramAttributeSet.getBoolean(0, false);
-    this.zJw = paramAttributeSet.getBoolean(3, false);
+    this.AaC = paramAttributeSet.getBoolean(0, false);
+    this.AaD = paramAttributeSet.getBoolean(3, false);
     this.lW = paramAttributeSet.getBoolean(7, false);
-    if (this.zJv)
+    if (this.AaC)
     {
       setBorderWidth(paramAttributeSet.getDimensionPixelOffset(2, (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F)));
       setBorderColor(paramAttributeSet.getColor(1, -1));
     }
-    if (this.zJw)
+    if (this.AaD)
     {
       paramInt = (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F);
       setSelectorColor(paramAttributeSet.getColor(4, 0));
@@ -106,27 +106,6 @@ public class CircularImageView
     }
     paramAttributeSet.recycle();
     AppMethodBeat.o(97162);
-  }
-  
-  private void dXR()
-  {
-    AppMethodBeat.i(97177);
-    if (this.zJA == null)
-    {
-      AppMethodBeat.o(97177);
-      return;
-    }
-    Object localObject = this.zJA;
-    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.zJz = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
-    if ((this.zJx != this.zJA.getWidth()) || (this.zJx != this.zJA.getHeight()))
-    {
-      localObject = new Matrix();
-      float f = this.zJx / this.zJA.getWidth();
-      ((Matrix)localObject).setScale(f, f);
-      this.zJz.setLocalMatrix((Matrix)localObject);
-    }
-    AppMethodBeat.o(97177);
   }
   
   private static Bitmap drawableToBitmap(Drawable paramDrawable)
@@ -166,6 +145,27 @@ public class CircularImageView
     return null;
   }
   
+  private void ebv()
+  {
+    AppMethodBeat.i(97177);
+    if (this.AaH == null)
+    {
+      AppMethodBeat.o(97177);
+      return;
+    }
+    Object localObject = this.AaH;
+    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+    this.AaG = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
+    if ((this.AaE != this.AaH.getWidth()) || (this.AaE != this.AaH.getHeight()))
+    {
+      localObject = new Matrix();
+      float f = this.AaE / this.AaH.getWidth();
+      ((Matrix)localObject).setScale(f, f);
+      this.AaG.setLocalMatrix((Matrix)localObject);
+    }
+    AppMethodBeat.o(97177);
+  }
+  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(97170);
@@ -201,49 +201,49 @@ public class CircularImageView
   {
     int j = 0;
     AppMethodBeat.i(97169);
-    if (this.zJA == null)
+    if (this.AaH == null)
     {
       AppMethodBeat.o(97169);
       return;
     }
-    if ((this.zJA.getHeight() == 0) || (this.zJA.getWidth() == 0))
+    if ((this.AaH.getHeight() == 0) || (this.AaH.getWidth() == 0))
     {
       AppMethodBeat.o(97169);
       return;
     }
-    int k = this.zJx;
+    int k = this.AaE;
     int i;
     if (getWidth() < getHeight())
     {
       i = getWidth();
-      this.zJx = i;
-      if (k != this.zJx) {
-        dXR();
+      this.AaE = i;
+      if (k != this.AaE) {
+        ebv();
       }
-      this.paint.setShader(this.zJz);
-      i = this.zJx / 2;
-      if ((!this.zJw) || (!this.isSelected)) {
+      this.paint.setShader(this.AaG);
+      i = this.AaE / 2;
+      if ((!this.AaD) || (!this.isSelected)) {
         break label224;
       }
-      j = this.zJy;
-      i = (this.zJx - j * 2) / 2;
-      this.paint.setColorFilter(this.zJD);
-      paramCanvas.drawCircle(i + j, i + j, (this.zJx - j * 2) / 2 + j - 4.0F, this.zJC);
+      j = this.AaF;
+      i = (this.AaE - j * 2) / 2;
+      this.paint.setColorFilter(this.AaK);
+      paramCanvas.drawCircle(i + j, i + j, (this.AaE - j * 2) / 2 + j - 4.0F, this.AaJ);
     }
     for (;;)
     {
-      paramCanvas.drawCircle(i + j, i + j, (this.zJx - j * 2) / 2, this.paint);
+      paramCanvas.drawCircle(i + j, i + j, (this.AaE - j * 2) / 2, this.paint);
       AppMethodBeat.o(97169);
       return;
       i = getHeight();
       break;
       label224:
-      if (this.zJv)
+      if (this.AaC)
       {
         j = this.borderWidth;
-        i = (this.zJx - j * 2) / 2;
+        i = (this.AaE - j * 2) / 2;
         this.paint.setColorFilter(null);
-        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.zJx - j / 2, this.zJx - j / 2), 360.0F, 360.0F, false, this.zJB);
+        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.AaE - j / 2, this.AaE - j / 2), 360.0F, 360.0F, false, this.AaI);
       }
       else
       {
@@ -273,11 +273,11 @@ public class CircularImageView
       if (i == -2147483648) {
         break;
       }
-      paramInt1 = this.zJx;
+      paramInt1 = this.AaE;
       break;
       label70:
       if (i != -2147483648) {
-        paramInt2 = this.zJx;
+        paramInt2 = this.AaE;
       }
     }
   }
@@ -285,8 +285,8 @@ public class CircularImageView
   public void setBorderColor(int paramInt)
   {
     AppMethodBeat.i(97164);
-    if (this.zJB != null) {
-      this.zJB.setColor(paramInt);
+    if (this.AaI != null) {
+      this.AaI.setColor(paramInt);
     }
     invalidate();
     AppMethodBeat.o(97164);
@@ -296,8 +296,8 @@ public class CircularImageView
   {
     AppMethodBeat.i(97163);
     this.borderWidth = paramInt;
-    if (this.zJB != null) {
-      this.zJB.setStrokeWidth(paramInt);
+    if (this.AaI != null) {
+      this.AaI.setStrokeWidth(paramInt);
     }
     requestLayout();
     invalidate();
@@ -310,9 +310,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97174);
     super.setImageBitmap(paramBitmap);
-    this.zJA = paramBitmap;
-    if (this.zJx > 0) {
-      dXR();
+    this.AaH = paramBitmap;
+    if (this.AaE > 0) {
+      ebv();
     }
     AppMethodBeat.o(97174);
   }
@@ -321,9 +321,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97173);
     super.setImageDrawable(paramDrawable);
-    this.zJA = drawableToBitmap(getDrawable());
-    if (this.zJx > 0) {
-      dXR();
+    this.AaH = drawableToBitmap(getDrawable());
+    if (this.AaE > 0) {
+      ebv();
     }
     AppMethodBeat.o(97173);
   }
@@ -332,9 +332,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97172);
     super.setImageResource(paramInt);
-    this.zJA = drawableToBitmap(getDrawable());
-    if (this.zJx > 0) {
-      dXR();
+    this.AaH = drawableToBitmap(getDrawable());
+    if (this.AaE > 0) {
+      ebv();
     }
     AppMethodBeat.o(97172);
   }
@@ -343,9 +343,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97171);
     super.setImageURI(paramUri);
-    this.zJA = drawableToBitmap(getDrawable());
-    if (this.zJx > 0) {
-      dXR();
+    this.AaH = drawableToBitmap(getDrawable());
+    if (this.AaE > 0) {
+      ebv();
     }
     AppMethodBeat.o(97171);
   }
@@ -353,7 +353,7 @@ public class CircularImageView
   public void setSelectorColor(int paramInt)
   {
     AppMethodBeat.i(97165);
-    this.zJD = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.AaK = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     invalidate();
     AppMethodBeat.o(97165);
   }
@@ -361,8 +361,8 @@ public class CircularImageView
   public void setSelectorStrokeColor(int paramInt)
   {
     AppMethodBeat.i(97167);
-    if (this.zJC != null) {
-      this.zJC.setColor(paramInt);
+    if (this.AaJ != null) {
+      this.AaJ.setColor(paramInt);
     }
     invalidate();
     AppMethodBeat.o(97167);
@@ -371,7 +371,7 @@ public class CircularImageView
   public void setSelectorStrokeWidth(int paramInt)
   {
     AppMethodBeat.i(97166);
-    this.zJy = paramInt;
+    this.AaF = paramInt;
     requestLayout();
     invalidate();
     AppMethodBeat.o(97166);
@@ -384,8 +384,8 @@ public class CircularImageView
     if (this.lW) {}
     for (float f = this.shadowRadius;; f = 0.0F)
     {
-      this.zJB.setShadowLayer(f, this.lw, this.lx, this.shadowColor);
-      this.zJC.setShadowLayer(f, this.lw, this.lx, this.shadowColor);
+      this.AaI.setShadowLayer(f, this.lw, this.lx, this.shadowColor);
+      this.AaJ.setShadowLayer(f, this.lw, this.lx, this.shadowColor);
       AppMethodBeat.o(97168);
       return;
     }

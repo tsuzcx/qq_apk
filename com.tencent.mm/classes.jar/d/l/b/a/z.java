@@ -13,14 +13,14 @@ public class z
   private static i a(d.g.b.e parame)
   {
     AppMethodBeat.i(56530);
-    parame = parame.Hv();
+    parame = parame.HD();
     if ((parame instanceof i))
     {
       parame = (i)parame;
       AppMethodBeat.o(56530);
       return parame;
     }
-    parame = a.MMI;
+    parame = a.NjN;
     AppMethodBeat.o(56530);
     return parame;
   }
@@ -28,7 +28,7 @@ public class z
   public final d.l.e a(n paramn)
   {
     AppMethodBeat.i(56526);
-    paramn = new j(a(paramn), paramn.getName(), paramn.Hu(), paramn.gfP());
+    paramn = new j(a(paramn), paramn.getName(), paramn.HC(), paramn.gkr());
     AppMethodBeat.o(56526);
     return paramn;
   }
@@ -36,7 +36,7 @@ public class z
   public final h a(t paramt)
   {
     AppMethodBeat.i(56529);
-    paramt = new l(a(paramt), paramt.getName(), paramt.Hu(), paramt.gfP());
+    paramt = new l(a(paramt), paramt.getName(), paramt.HC(), paramt.gkr());
     AppMethodBeat.o(56529);
     return paramt;
   }
@@ -44,7 +44,7 @@ public class z
   public final d.l.m a(w paramw)
   {
     AppMethodBeat.i(56528);
-    paramw = new p(a(paramw), paramw.getName(), paramw.Hu(), paramw.gfP());
+    paramw = new p(a(paramw), paramw.getName(), paramw.HC(), paramw.gkr());
     AppMethodBeat.o(56528);
     return paramw;
   }
@@ -55,11 +55,11 @@ public class z
     Object localObject = d.l.b.b.a(paramm);
     if (localObject != null)
     {
-      localObject = ae.eZ(localObject);
+      localObject = ae.fc(localObject);
       if (localObject != null)
       {
-        paramm = aa.MOS;
-        paramm = aa.b(((j)localObject).ggz());
+        paramm = aa.NlX;
+        paramm = aa.b(((j)localObject).glb());
         AppMethodBeat.o(56525);
         return paramm;
       }
@@ -87,7 +87,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.z
  * JD-Core Version:    0.7.0.1
  */

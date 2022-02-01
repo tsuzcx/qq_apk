@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.exdevice.service;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -14,31 +14,31 @@ import junit.framework.Assert;
 public final class a
   implements r
 {
-  private static a qfy = null;
-  private Object dcK;
-  ap mHandler;
-  private g qfA;
-  private final HashMap<Long, Long> qfz;
+  private static a qmd = null;
+  private Object ddM;
+  aq mHandler;
+  private final HashMap<Long, Long> qme;
+  private g qmf;
   
   public a(g paramg)
   {
     AppMethodBeat.i(23590);
-    this.qfz = new HashMap();
-    this.qfA = null;
-    this.mHandler = new a(v.clW().imu.getSerialTag());
-    this.dcK = new Object();
-    this.qfA = paramg;
-    qfy = this;
+    this.qme = new HashMap();
+    this.qmf = null;
+    this.mHandler = new a(v.cnm().ipo.getSerialTag());
+    this.ddM = new Object();
+    this.qmf = paramg;
+    qmd = this;
     AppMethodBeat.o(23590);
   }
   
-  public static boolean CC(int paramInt)
+  public static boolean CO(int paramInt)
   {
     AppMethodBeat.i(23591);
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "------stopScan------");
-    if (!b.CC(paramInt))
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "------stopScan------");
+    if (!b.CO(paramInt))
     {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "BluetoothSDKAdapter.stopScan Failed!!!");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "BluetoothSDKAdapter.stopScan Failed!!!");
       AppMethodBeat.o(23591);
       return false;
     }
@@ -61,7 +61,7 @@ public final class a
     //   16: lload_1
     //   17: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   20: aastore
-    //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   24: aload_3
     //   25: invokestatic 126	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
     //   28: aload_3
@@ -74,33 +74,33 @@ public final class a
     //   48: ifne +125 -> 173
     //   51: ldc 91
     //   53: ldc 148
-    //   55: invokestatic 151	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: invokestatic 151	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   58: new 22	com/tencent/mm/plugin/exdevice/service/a$e
     //   61: dup
     //   62: invokespecial 152	com/tencent/mm/plugin/exdevice/service/a$e:<init>	()V
     //   65: astore_3
     //   66: aload_3
     //   67: lload_1
-    //   68: putfield 156	com/tencent/mm/plugin/exdevice/service/a$e:qfF	J
+    //   68: putfield 156	com/tencent/mm/plugin/exdevice/service/a$e:qmk	J
     //   71: aload_3
     //   72: iconst_m1
-    //   73: putfield 160	com/tencent/mm/plugin/exdevice/service/a$e:pZU	I
+    //   73: putfield 160	com/tencent/mm/plugin/exdevice/service/a$e:qgz	I
     //   76: aload_3
     //   77: iconst_m1
-    //   78: putfield 163	com/tencent/mm/plugin/exdevice/service/a$e:qag	I
+    //   78: putfield 163	com/tencent/mm/plugin/exdevice/service/a$e:qgL	I
     //   81: aload_3
     //   82: ldc 165
-    //   84: putfield 169	com/tencent/mm/plugin/exdevice/service/a$e:ksX	Ljava/lang/String;
-    //   87: getstatic 44	com/tencent/mm/plugin/exdevice/service/a:qfy	Lcom/tencent/mm/plugin/exdevice/service/a;
-    //   90: getfield 82	com/tencent/mm/plugin/exdevice/service/a:mHandler	Lcom/tencent/mm/sdk/platformtools/ap;
-    //   93: getstatic 44	com/tencent/mm/plugin/exdevice/service/a:qfy	Lcom/tencent/mm/plugin/exdevice/service/a;
-    //   96: getfield 82	com/tencent/mm/plugin/exdevice/service/a:mHandler	Lcom/tencent/mm/sdk/platformtools/ap;
+    //   84: putfield 169	com/tencent/mm/plugin/exdevice/service/a$e:kwn	Ljava/lang/String;
+    //   87: getstatic 44	com/tencent/mm/plugin/exdevice/service/a:qmd	Lcom/tencent/mm/plugin/exdevice/service/a;
+    //   90: getfield 82	com/tencent/mm/plugin/exdevice/service/a:mHandler	Lcom/tencent/mm/sdk/platformtools/aq;
+    //   93: getstatic 44	com/tencent/mm/plugin/exdevice/service/a:qmd	Lcom/tencent/mm/plugin/exdevice/service/a;
+    //   96: getfield 82	com/tencent/mm/plugin/exdevice/service/a:mHandler	Lcom/tencent/mm/sdk/platformtools/aq;
     //   99: iconst_3
     //   100: iconst_0
     //   101: iconst_0
     //   102: aload_3
-    //   103: invokevirtual 173	com/tencent/mm/sdk/platformtools/ap:obtainMessage	(IIILjava/lang/Object;)Landroid/os/Message;
-    //   106: invokevirtual 177	com/tencent/mm/sdk/platformtools/ap:sendMessage	(Landroid/os/Message;)Z
+    //   103: invokevirtual 173	com/tencent/mm/sdk/platformtools/aq:obtainMessage	(IIILjava/lang/Object;)Landroid/os/Message;
+    //   106: invokevirtual 177	com/tencent/mm/sdk/platformtools/aq:sendMessage	(Landroid/os/Message;)Z
     //   109: invokestatic 181	junit/framework/Assert:assertTrue	(Z)V
     //   112: sipush 23594
     //   115: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -116,15 +116,15 @@ public final class a
     //   131: aload_3
     //   132: invokevirtual 186	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   135: aastore
-    //   136: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   136: invokestatic 188	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   139: ldc 91
     //   141: aload_3
     //   142: ldc 190
     //   144: iconst_0
     //   145: anewarray 4	java/lang/Object
-    //   148: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   148: invokestatic 194	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   151: aload_0
-    //   152: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qfA	Lcom/tencent/mm/plugin/exdevice/service/g;
+    //   152: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qmf	Lcom/tencent/mm/plugin/exdevice/service/g;
     //   155: lload_1
     //   156: iconst_m1
     //   157: iconst_m1
@@ -135,7 +135,7 @@ public final class a
     //   171: iconst_m1
     //   172: ireturn
     //   173: aload_0
-    //   174: getfield 60	com/tencent/mm/plugin/exdevice/service/a:qfz	Ljava/util/HashMap;
+    //   174: getfield 60	com/tencent/mm/plugin/exdevice/service/a:qme	Ljava/util/HashMap;
     //   177: lload 5
     //   179: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   182: invokevirtual 205	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
@@ -149,9 +149,9 @@ public final class a
     //   198: lload 5
     //   200: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   203: aastore
-    //   204: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   204: invokestatic 188	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   207: aload_0
-    //   208: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qfA	Lcom/tencent/mm/plugin/exdevice/service/g;
+    //   208: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qmf	Lcom/tencent/mm/plugin/exdevice/service/g;
     //   211: lload_1
     //   212: iconst_m1
     //   213: iconst_m1
@@ -167,7 +167,7 @@ public final class a
     //   236: astore 7
     //   238: aload 7
     //   240: aload_0
-    //   241: getfield 60	com/tencent/mm/plugin/exdevice/service/a:qfz	Ljava/util/HashMap;
+    //   241: getfield 60	com/tencent/mm/plugin/exdevice/service/a:qme	Ljava/util/HashMap;
     //   244: lload 5
     //   246: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   249: invokevirtual 216	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -201,7 +201,7 @@ public final class a
     //   330: ifeq +126 -> 456
     //   333: ldc 91
     //   335: ldc 250
-    //   337: invokestatic 106	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   337: invokestatic 106	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   340: sipush 23594
     //   343: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   346: iconst_m1
@@ -216,15 +216,15 @@ public final class a
     //   359: aload_3
     //   360: invokevirtual 186	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   363: aastore
-    //   364: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   364: invokestatic 188	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   367: ldc 91
     //   369: aload_3
     //   370: ldc 190
     //   372: iconst_0
     //   373: anewarray 4	java/lang/Object
-    //   376: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   376: invokestatic 194	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   379: aload_0
-    //   380: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qfA	Lcom/tencent/mm/plugin/exdevice/service/g;
+    //   380: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qmf	Lcom/tencent/mm/plugin/exdevice/service/g;
     //   383: lload_1
     //   384: iconst_m1
     //   385: iconst_m1
@@ -244,15 +244,15 @@ public final class a
     //   413: aload_3
     //   414: invokevirtual 186	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   417: aastore
-    //   418: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   418: invokestatic 188	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   421: ldc 91
     //   423: aload_3
     //   424: ldc 190
     //   426: iconst_0
     //   427: anewarray 4	java/lang/Object
-    //   430: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   430: invokestatic 194	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   433: aload_0
-    //   434: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qfA	Lcom/tencent/mm/plugin/exdevice/service/g;
+    //   434: getfield 62	com/tencent/mm/plugin/exdevice/service/a:qmf	Lcom/tencent/mm/plugin/exdevice/service/g;
     //   437: lload_1
     //   438: iconst_m1
     //   439: iconst_m1
@@ -299,7 +299,7 @@ public final class a
     //   515: getfield 235	com/tencent/mm/plugin/exdevice/jni/Java2CExDevice$AccessoryCmd:respCmdID	I
     //   518: invokestatic 265	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   521: aastore
-    //   522: invokestatic 120	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   522: invokestatic 120	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   525: sipush 23594
     //   528: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   531: iconst_0
@@ -323,42 +323,42 @@ public final class a
   public static void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(23596);
-    Assert.assertNotNull(qfy);
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "onStateChange channelId = " + paramLong + " oldState = " + paramInt1 + " newState = " + paramInt2 + " errCode = " + paramInt3);
-    paramLong = qfy.uz(paramLong);
+    Assert.assertNotNull(qmd);
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "onStateChange channelId = " + paramLong + " oldState = " + paramInt1 + " newState = " + paramInt2 + " errCode = " + paramInt3);
+    paramLong = qmd.uQ(paramLong);
     if (-1L == paramLong)
     {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find deviceId by channelId");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find deviceId by channelId");
       AppMethodBeat.o(23596);
       return;
     }
     d locald = new d((byte)0);
-    locald.nTx = paramLong;
-    locald.pZU = paramInt3;
-    locald.qfE = paramInt2;
-    locald.qfD = paramInt1;
-    Assert.assertTrue(qfy.mHandler.sendMessage(qfy.mHandler.obtainMessage(4, 0, 0, locald)));
+    locald.nZd = paramLong;
+    locald.qgz = paramInt3;
+    locald.qmj = paramInt2;
+    locald.qmi = paramInt1;
+    Assert.assertTrue(qmd.mHandler.sendMessage(qmd.mHandler.obtainMessage(4, 0, 0, locald)));
     AppMethodBeat.o(23596);
   }
   
   public static void c(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(23595);
-    Assert.assertNotNull(qfy);
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "onTaskEnd taskId = " + paramLong + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    Assert.assertNotNull(qmd);
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "onTaskEnd taskId = " + paramLong + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     e locale = new e();
-    locale.qfF = paramLong;
-    locale.pZU = paramInt2;
-    locale.qag = paramInt1;
-    locale.ksX = paramString;
-    Assert.assertTrue(qfy.mHandler.sendMessage(qfy.mHandler.obtainMessage(3, 0, 0, locale)));
+    locale.qmk = paramLong;
+    locale.qgz = paramInt2;
+    locale.qgL = paramInt1;
+    locale.kwn = paramString;
+    Assert.assertTrue(qmd.mHandler.sendMessage(qmd.mHandler.obtainMessage(3, 0, 0, locale)));
     AppMethodBeat.o(23595);
   }
   
-  public static long[] clI()
+  public static long[] cmY()
   {
     AppMethodBeat.i(23592);
-    long[] arrayOfLong = com.tencent.mm.plugin.exdevice.i.a.acH("conneted_device");
+    long[] arrayOfLong = com.tencent.mm.plugin.exdevice.i.a.ady("conneted_device");
     AppMethodBeat.o(23592);
     return arrayOfLong;
   }
@@ -369,56 +369,56 @@ public final class a
     if (paramArrayOfByte == null) {}
     for (int i = -1;; i = paramArrayOfByte.length)
     {
-      ad.i("MicroMsg.exdevice.BTDeviceManager", "onDeviceRequest channelId = %d, seq = %d, cmdId =%d, datain len = %d, errCode = %d", new Object[] { Long.valueOf(paramLong), Short.valueOf(paramShort1), Short.valueOf(paramShort2), Integer.valueOf(i), Integer.valueOf(paramInt) });
-      Assert.assertNotNull(qfy);
-      ad.i("MicroMsg.exdevice.BTDeviceManager", "onDeviceRequest channelId = " + paramLong + " seq = " + paramShort1 + "cmdId = " + paramShort2 + "errCode = " + paramInt);
-      paramLong = qfy.uz(paramLong);
+      ae.i("MicroMsg.exdevice.BTDeviceManager", "onDeviceRequest channelId = %d, seq = %d, cmdId =%d, datain len = %d, errCode = %d", new Object[] { Long.valueOf(paramLong), Short.valueOf(paramShort1), Short.valueOf(paramShort2), Integer.valueOf(i), Integer.valueOf(paramInt) });
+      Assert.assertNotNull(qmd);
+      ae.i("MicroMsg.exdevice.BTDeviceManager", "onDeviceRequest channelId = " + paramLong + " seq = " + paramShort1 + "cmdId = " + paramShort2 + "errCode = " + paramInt);
+      paramLong = qmd.uQ(paramLong);
       if (-1L != paramLong) {
         break;
       }
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find deviceId by channelId");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find deviceId by channelId");
       AppMethodBeat.o(23598);
       return;
     }
     b localb = new b((byte)0);
-    localb.nTx = paramLong;
-    localb.pZV = paramArrayOfByte;
-    localb.qfC = paramShort2;
-    localb.qab = paramShort1;
-    Assert.assertTrue(qfy.mHandler.sendMessage(qfy.mHandler.obtainMessage(5, paramInt, 0, localb)));
+    localb.nZd = paramLong;
+    localb.qgA = paramArrayOfByte;
+    localb.qmh = paramShort2;
+    localb.qgG = paramShort1;
+    Assert.assertTrue(qmd.mHandler.sendMessage(qmd.mHandler.obtainMessage(5, paramInt, 0, localb)));
     AppMethodBeat.o(23598);
   }
   
-  private boolean uy(long paramLong)
+  private boolean uP(long paramLong)
   {
     AppMethodBeat.i(23593);
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "stopChannelImp deviceId = ".concat(String.valueOf(paramLong)));
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "remove the device from connected devices : [%d]", new Object[] { Long.valueOf(paramLong) });
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "stopChannelImp deviceId = ".concat(String.valueOf(paramLong)));
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "remove the device from connected devices : [%d]", new Object[] { Long.valueOf(paramLong) });
     if (!com.tencent.mm.plugin.exdevice.i.a.af("conneted_device", paramLong)) {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "removeFromSharedPreferences failed!!!");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "removeFromSharedPreferences failed!!!");
     }
-    if (!this.qfz.containsKey(Long.valueOf(paramLong)))
+    if (!this.qme.containsKey(Long.valueOf(paramLong)))
     {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find deviceId in the map");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find deviceId in the map");
       AppMethodBeat.o(23593);
       return false;
     }
-    Java2CExDevice.stopChannelService(((Long)this.qfz.get(Long.valueOf(paramLong))).longValue());
-    Java2CExDevice.destroyChannel(((Long)this.qfz.get(Long.valueOf(paramLong))).longValue());
+    Java2CExDevice.stopChannelService(((Long)this.qme.get(Long.valueOf(paramLong))).longValue());
+    Java2CExDevice.destroyChannel(((Long)this.qme.get(Long.valueOf(paramLong))).longValue());
     AppMethodBeat.o(23593);
     return true;
   }
   
-  private long uz(long paramLong)
+  private long uQ(long paramLong)
   {
     AppMethodBeat.i(23597);
-    if (!this.qfz.containsValue(Long.valueOf(paramLong)))
+    if (!this.qme.containsValue(Long.valueOf(paramLong)))
     {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find DeviceInfo by channelId");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "Cannot find DeviceInfo by channelId");
       AppMethodBeat.o(23597);
       return -1L;
     }
-    Iterator localIterator = this.qfz.entrySet().iterator();
+    Iterator localIterator = this.qme.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -434,10 +434,10 @@ public final class a
     return -1L;
   }
   
-  public final void WC(String paramString)
+  public final void Xo(String paramString)
   {
     AppMethodBeat.i(23601);
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "------onScanError------ error code = %d, error msg = %s", new Object[] { Integer.valueOf(-1), Integer.valueOf(-1) });
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "------onScanError------ error code = %d, error msg = %s", new Object[] { Integer.valueOf(-1), Integer.valueOf(-1) });
     if (!this.mHandler.post(new Runnable()
     {
       public final void run()
@@ -447,7 +447,7 @@ public final class a
         AppMethodBeat.o(23588);
       }
     })) {
-      ad.e("MicroMsg.exdevice.BTDeviceManager", "onScanError: mHandler.post failed!!!");
+      ae.e("MicroMsg.exdevice.BTDeviceManager", "onScanError: mHandler.post failed!!!");
     }
     AppMethodBeat.o(23601);
   }
@@ -458,7 +458,7 @@ public final class a
     if (paramArrayOfByte == null) {}
     for (int i = -1;; i = paramArrayOfByte.length)
     {
-      ad.d("MicroMsg.exdevice.BTDeviceManager", "------onScanFound------ aBluetoothVersion = %d, device mac = %s, device name = %s, rssi = %d, advertisment length = %d", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(i) });
+      ae.d("MicroMsg.exdevice.BTDeviceManager", "------onScanFound------ aBluetoothVersion = %d, device mac = %s, device name = %s, rssi = %d, advertisment length = %d", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(i) });
       paramString1 = new c(paramString1, paramString2, paramInt2, paramArrayOfByte);
       Assert.assertTrue(this.mHandler.sendMessage(this.mHandler.obtainMessage(1, 0, 0, paramString1)));
       AppMethodBeat.o(23600);
@@ -466,16 +466,16 @@ public final class a
     }
   }
   
-  public final void yV(int paramInt)
+  public final void ze(int paramInt)
   {
     AppMethodBeat.i(23599);
-    ad.i("MicroMsg.exdevice.BTDeviceManager", "******onScanFinished******aBluetoothVersion = ".concat(String.valueOf(paramInt)));
+    ae.i("MicroMsg.exdevice.BTDeviceManager", "******onScanFinished******aBluetoothVersion = ".concat(String.valueOf(paramInt)));
     Assert.assertTrue(this.mHandler.sendMessage(this.mHandler.obtainMessage(2, 0, 0, null)));
     AppMethodBeat.o(23599);
   }
   
   final class a
-    extends ap
+    extends aq
   {
     public a(String paramString)
     {
@@ -496,22 +496,22 @@ public final class a
         return;
       case 1: 
         paramMessage = (a.c)paramMessage.obj;
-        a.a(a.this).a(1, 0, null, paramMessage.nTB, paramMessage.mDeviceName, paramMessage.kGT, paramMessage.nTC);
+        a.a(a.this).a(1, 0, null, paramMessage.nZh, paramMessage.mDeviceName, paramMessage.kKi, paramMessage.nZi);
         AppMethodBeat.o(23589);
         return;
       case 3: 
         paramMessage = (a.e)paramMessage.obj;
-        a.a(a.this).c(paramMessage.qfF, paramMessage.qag, paramMessage.pZU, paramMessage.ksX);
+        a.a(a.this).c(paramMessage.qmk, paramMessage.qgL, paramMessage.qgz, paramMessage.kwn);
         AppMethodBeat.o(23589);
         return;
       case 4: 
         paramMessage = (a.d)paramMessage.obj;
-        a.a(a.this).a(paramMessage.nTx, paramMessage.qfD, paramMessage.qfE, paramMessage.pZU);
+        a.a(a.this).a(paramMessage.nZd, paramMessage.qmi, paramMessage.qmj, paramMessage.qgz);
         AppMethodBeat.o(23589);
         return;
       case 5: 
         ??? = (a.b)paramMessage.obj;
-        a.a(a.this).a(paramMessage.arg1, ((a.b)???).nTx, ((a.b)???).qab, ((a.b)???).qfC, ((a.b)???).pZV);
+        a.a(a.this).a(paramMessage.arg1, ((a.b)???).nZd, ((a.b)???).qgG, ((a.b)???).qmh, ((a.b)???).qgA);
         AppMethodBeat.o(23589);
         return;
       case 6: 
@@ -522,16 +522,16 @@ public final class a
         return;
       case 10: 
         paramMessage = (a.f)paramMessage.obj;
-        a.a(a.this, paramMessage.nTx, paramMessage.mData);
+        a.a(a.this, paramMessage.nZd, paramMessage.mData);
         AppMethodBeat.o(23589);
         return;
       case 8: 
         paramMessage = (a.g)paramMessage.obj;
-        a.a(a.this, paramMessage.qfF, paramMessage.qfG);
+        a.a(a.this, paramMessage.qmk, paramMessage.qml);
         AppMethodBeat.o(23589);
         return;
       case 9: 
-        a.uA(((Long)paramMessage.obj).longValue());
+        a.uR(((Long)paramMessage.obj).longValue());
         AppMethodBeat.o(23589);
         return;
       case 11: 
@@ -553,65 +553,65 @@ public final class a
   
   static final class b
   {
-    long nTx = 0L;
-    byte[] pZV = null;
-    short qab = 0;
-    short qfC = 0;
+    long nZd = 0L;
+    byte[] qgA = null;
+    short qgG = 0;
+    short qmh = 0;
   }
   
   static final class c
   {
-    int kGT;
+    int kKi;
     String mDeviceName;
-    String nTB;
-    byte[] nTC;
+    String nZh;
+    byte[] nZi;
     
     public c(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
     {
-      this.nTB = paramString1;
+      this.nZh = paramString1;
       this.mDeviceName = paramString2;
-      this.kGT = paramInt;
-      this.nTC = paramArrayOfByte;
+      this.kKi = paramInt;
+      this.nZi = paramArrayOfByte;
     }
   }
   
   static final class d
   {
-    long nTx = 0L;
-    int pZU = 0;
-    int qfD = 0;
-    int qfE = 0;
+    long nZd = 0L;
+    int qgz = 0;
+    int qmi = 0;
+    int qmj = 0;
   }
   
   static final class e
   {
-    String ksX = null;
-    int pZU = 0;
-    int qag = 0;
-    long qfF = 0L;
+    String kwn = null;
+    int qgL = 0;
+    int qgz = 0;
+    long qmk = 0L;
   }
   
   static final class f
   {
     byte[] mData;
-    long nTx;
+    long nZd;
     
     public f(long paramLong, byte[] paramArrayOfByte)
     {
-      this.nTx = paramLong;
+      this.nZd = paramLong;
       this.mData = paramArrayOfByte;
     }
   }
   
   static final class g
   {
-    long qfF;
-    p qfG;
+    long qmk;
+    p qml;
     
     public g(long paramLong, p paramp)
     {
-      this.qfF = paramLong;
-      this.qfG = paramp;
+      this.qmk = paramLong;
+      this.qml = paramp;
     }
   }
 }

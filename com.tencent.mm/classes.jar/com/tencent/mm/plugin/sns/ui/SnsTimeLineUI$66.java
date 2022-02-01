@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mu;
+import com.tencent.mm.g.a.mv;
 import com.tencent.mm.sdk.b.c;
 
 final class SnsTimeLineUI$66
-  extends c<mu>
+  extends c<mv>
 {
   SnsTimeLineUI$66(SnsTimeLineUI paramSnsTimeLineUI)
   {
     AppMethodBeat.i(160739);
-    this.__eventId = mu.class.getName().hashCode();
+    this.__eventId = mv.class.getName().hashCode();
     AppMethodBeat.o(160739);
   }
 }

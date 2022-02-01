@@ -7,7 +7,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public class bd
@@ -22,20 +22,20 @@ public class bd
     String str2 = paramb.chh.cgn.optString("icon_url");
     String str3 = paramb.chh.cgn.optString("jump_url");
     w localw = new w();
-    if (!bt.isNullOrNil(str1)) {
+    if (!bu.isNullOrNil(str1)) {
       localw.title = str1;
     }
-    if (!bt.isNullOrNil(str2)) {
+    if (!bu.isNullOrNil(str2)) {
       localw.iconUrl = str2;
     }
-    if (!bt.isNullOrNil(str3)) {
+    if (!bu.isNullOrNil(str3)) {
       localw.jumpUrl = str3;
     }
     paramb.a("", null);
     AppMethodBeat.o(78624);
   }
   
-  public final int ccO()
+  public final int ced()
   {
     return 0;
   }

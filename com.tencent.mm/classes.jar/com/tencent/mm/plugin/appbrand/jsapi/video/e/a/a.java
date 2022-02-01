@@ -14,14 +14,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/TransferListener;", "", "eventHandler", "Landroid/os/Handler;", "eventListener", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;", "maxWeight", "", "clock", "Lcom/google/android/exoplayer2/util/Clock;", "(Landroid/os/Handler;Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;ILcom/google/android/exoplayer2/util/Clock;)V", "bitrateEstimate", "", "sampleBytesTransferred", "sampleStartTimeMs", "slidingPercentile", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding;", "streamCount", "totalBytesTransferred", "totalElapsedTimeMs", "getBitrateEstimate", "notifyBandwidthSample", "", "elapsedMs", "bytes", "bitrate", "onBytesTransferred", "source", "onTransferEnd", "onTransferStart", "dataSpec", "Lcom/google/android/exoplayer2/upstream/DataSpec;", "resetBizrateEstimate", "Companion", "luggage-commons-jsapi-video-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/TransferListener;", "", "eventHandler", "Landroid/os/Handler;", "eventListener", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;", "maxWeight", "", "clock", "Lcom/google/android/exoplayer2/util/Clock;", "(Landroid/os/Handler;Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;ILcom/google/android/exoplayer2/util/Clock;)V", "bitrateEstimate", "", "sampleBytesTransferred", "sampleStartTimeMs", "slidingPercentile", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding;", "streamCount", "totalBytesTransferred", "totalElapsedTimeMs", "getBitrateEstimate", "notifyBandwidthSample", "", "elapsedMs", "bytes", "bitrate", "onBytesTransferred", "source", "onTransferEnd", "onTransferStart", "dataSpec", "Lcom/google/android/exoplayer2/upstream/DataSpec;", "resetBizrateEstimate", "Companion", "luggage-commons-jsapi-video-ext_release"})
 public final class a
   implements d, w<Object>
 {
-  private static final int lqr = 2000;
-  private static final long lqs = 2000L;
-  private static final long lqt = 524288L;
-  public static final a.a lqu;
+  private static final int luP = 2000;
+  private static final long luQ = 2000L;
+  private static final long luR = 524288L;
+  public static final a.a luS;
   private final d.a bES;
   private final c bEU;
   private int bEV;
@@ -31,16 +31,16 @@ public final class a
   private long bEZ;
   long bFa;
   private final Handler eventHandler;
-  private final b lqq;
+  private final b luO;
   
   static
   {
-    AppMethodBeat.i(206516);
-    lqu = new a.a((byte)0);
-    lqr = 2000;
-    lqs = 2000L;
-    lqt = 524288L;
-    AppMethodBeat.o(206516);
+    AppMethodBeat.i(211546);
+    luS = new a.a((byte)0);
+    luP = 2000;
+    luQ = 2000L;
+    luR = 524288L;
+    AppMethodBeat.o(211546);
   }
   
   public a(byte paramByte)
@@ -50,27 +50,27 @@ public final class a
   
   private a(int paramInt, c paramc)
   {
-    AppMethodBeat.i(206514);
+    AppMethodBeat.i(211544);
     this.eventHandler = null;
     this.bES = null;
     this.bEU = paramc;
-    this.lqq = new b(paramInt);
+    this.luO = new b(paramInt);
     this.bFa = -1L;
-    AppMethodBeat.o(206514);
+    AppMethodBeat.o(211544);
   }
   
   public final void a(Object paramObject, j paramj)
   {
     try
     {
-      AppMethodBeat.i(206511);
+      AppMethodBeat.i(211541);
       p.h(paramObject, "source");
       p.h(paramj, "dataSpec");
       if (this.bEV == 0) {
         this.bEW = this.bEU.elapsedRealtime();
       }
       this.bEV += 1;
-      AppMethodBeat.o(206511);
+      AppMethodBeat.o(211541);
       return;
     }
     finally {}
@@ -88,7 +88,7 @@ public final class a
       b localb;
       try
       {
-        AppMethodBeat.i(206513);
+        AppMethodBeat.i(211543);
         p.h(paramObject, "source");
         if (this.bEV > 0)
         {
@@ -102,7 +102,7 @@ public final class a
             break label554;
           }
           f1 = (float)(this.bEX * 8000L / j);
-          localb = this.lqq;
+          localb = this.luO;
           k = (int)Math.sqrt(this.bEX);
           if (localb.bHi != 1)
           {
@@ -112,11 +112,11 @@ public final class a
           if (localb.bHl <= 0) {
             break label372;
           }
-          paramObject = localb.lqz;
+          paramObject = localb.luX;
           localb.bHl -= 1;
           paramObject = paramObject[localb.bHl];
           if (paramObject == null) {
-            p.gfZ();
+            p.gkB();
           }
           int m = localb.bHj;
           localb.bHj = (m + 1);
@@ -140,7 +140,7 @@ public final class a
           if (localb.bHl >= 5) {
             continue;
           }
-          b.d[] arrayOfd = localb.lqz;
+          b.d[] arrayOfd = localb.luX;
           k = localb.bHl;
           localb.bHl = (k + 1);
           arrayOfd[k] = paramObject;
@@ -157,9 +157,9 @@ public final class a
       paramObject.weight -= k;
       localb.bHk -= k;
     }
-    if ((this.bEY >= lqs) || (this.bEZ >= lqt))
+    if ((this.bEY >= luQ) || (this.bEZ >= luR))
     {
-      paramObject = this.lqq;
+      paramObject = this.luO;
       k = ((Collection)paramObject.bHg).size();
       f1 = 0.0F;
       while (i < k)
@@ -198,7 +198,7 @@ public final class a
         this.bEW = l2;
       }
       this.bEX = 0L;
-      AppMethodBeat.o(206513);
+      AppMethodBeat.o(211543);
       return;
       label641:
       f1 = ((b.d)paramObject.bHg.get(paramObject.bHg.size() - 1)).value;
@@ -217,10 +217,10 @@ public final class a
   {
     try
     {
-      AppMethodBeat.i(206512);
+      AppMethodBeat.i(211542);
       p.h(paramObject, "source");
       this.bEX += paramInt;
-      AppMethodBeat.o(206512);
+      AppMethodBeat.o(211542);
       return;
     }
     finally
@@ -244,7 +244,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -252,9 +252,9 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(206510);
-      a.a(this.lqv);
-      AppMethodBeat.o(206510);
+      AppMethodBeat.i(211540);
+      a.a(this.luT);
+      AppMethodBeat.o(211540);
     }
   }
 }

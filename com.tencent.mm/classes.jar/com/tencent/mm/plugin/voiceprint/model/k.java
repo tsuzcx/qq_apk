@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class k
-  implements ax
+  implements az
 {
   public final void clearPluginData(int paramInt) {}
   

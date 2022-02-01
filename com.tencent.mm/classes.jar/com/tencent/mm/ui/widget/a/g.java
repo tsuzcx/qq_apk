@@ -31,109 +31,109 @@ import com.tencent.mm.hellhoundlib.b.b;
 public final class g
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private LinearLayout KWD;
-  private LinearLayout KWE;
-  private a KXA;
-  public a KXB;
-  private int KXr;
-  private int KXs;
-  private LinearLayout KXt;
-  private Button KXu;
-  private Button KXv;
-  private Button KXw;
-  private LinearLayout KXx;
-  private TextView KXy;
-  private a KXz;
+  private int LtP;
+  private int LtQ;
+  private LinearLayout LtR;
+  private Button LtS;
+  private Button LtT;
+  private Button LtU;
+  private LinearLayout LtV;
+  private TextView LtW;
+  private a LtX;
+  private a LtY;
+  public a LtZ;
+  private LinearLayout Ltb;
+  private LinearLayout Ltc;
   private ViewTreeObserver afv;
-  private int jbe;
-  public View kBS;
-  private Dialog lzA;
-  private BottomSheetBehavior lzD;
-  private boolean lzE;
-  private int lzF;
-  private boolean lzH;
+  private int jdX;
+  public View kFh;
+  private Dialog lDY;
+  private BottomSheetBehavior lEb;
+  private boolean lEc;
+  private int lEd;
+  private boolean lEf;
   private Context mContext;
   private boolean ov;
   private View qI;
-  private boolean sSh;
-  private boolean sSi;
+  private boolean tds;
+  private boolean tdt;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(192606);
-    this.lzE = false;
-    this.sSi = false;
-    this.lzH = false;
-    this.KXr = 0;
-    this.KXs = 0;
+    AppMethodBeat.i(200371);
+    this.lEc = false;
+    this.tdt = false;
+    this.lEf = false;
+    this.LtP = 0;
+    this.LtQ = 0;
     this.ov = true;
     this.mContext = paramContext;
-    this.KXr = 0;
-    this.KXs = 0;
-    aM(this.mContext);
-    AppMethodBeat.o(192606);
+    this.LtP = 0;
+    this.LtQ = 0;
+    aN(this.mContext);
+    AppMethodBeat.o(200371);
   }
   
   public g(Context paramContext, byte paramByte)
   {
-    AppMethodBeat.i(192608);
-    this.lzE = false;
-    this.sSi = false;
-    this.lzH = false;
-    this.KXr = 0;
-    this.KXs = 0;
+    AppMethodBeat.i(200373);
+    this.lEc = false;
+    this.tdt = false;
+    this.lEf = false;
+    this.LtP = 0;
+    this.LtQ = 0;
     this.ov = true;
     this.mContext = paramContext;
-    this.KXr = 1;
-    this.KXs = 2;
+    this.LtP = 1;
+    this.LtQ = 2;
     this.ov = false;
-    aM(this.mContext);
-    AppMethodBeat.o(192608);
+    aN(this.mContext);
+    AppMethodBeat.o(200373);
   }
   
   public g(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192607);
-    this.lzE = false;
-    this.sSi = false;
-    this.lzH = false;
-    this.KXr = 0;
-    this.KXs = 0;
+    AppMethodBeat.i(200372);
+    this.lEc = false;
+    this.tdt = false;
+    this.lEf = false;
+    this.LtP = 0;
+    this.LtQ = 0;
     this.ov = true;
     this.mContext = paramContext;
-    this.KXr = paramInt1;
-    this.KXs = paramInt2;
-    aM(this.mContext);
-    AppMethodBeat.o(192607);
+    this.LtP = paramInt1;
+    this.LtQ = paramInt2;
+    aN(this.mContext);
+    AppMethodBeat.o(200372);
   }
   
-  private void aM(Context paramContext)
+  private void aN(Context paramContext)
   {
-    AppMethodBeat.i(192611);
+    AppMethodBeat.i(200376);
     if ((this.mContext instanceof Activity)) {
       this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.lzA = new android.support.design.widget.a(paramContext, 2131820788);
-    this.kBS = View.inflate(paramContext, 2131494796, null);
-    this.KWD = ((LinearLayout)this.kBS.findViewById(2131297466));
-    this.KWE = ((LinearLayout)this.kBS.findViewById(2131297462));
-    this.KXx = ((LinearLayout)this.kBS.findViewById(2131297461));
-    fMm();
+    this.lDY = new android.support.design.widget.a(paramContext, 2131820788);
+    this.kFh = View.inflate(paramContext, 2131494796, null);
+    this.Ltb = ((LinearLayout)this.kFh.findViewById(2131297466));
+    this.Ltc = ((LinearLayout)this.kFh.findViewById(2131297462));
+    this.LtV = ((LinearLayout)this.kFh.findViewById(2131297461));
+    fQG();
     initHeaderView();
-    this.lzE = aol();
-    this.lzA.setContentView(this.kBS);
-    this.lzA.setCancelable(this.ov);
-    this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
-    this.lzD.setState(3);
-    this.lzD.oi = new BottomSheetBehavior.a()
+    this.lEc = aoA();
+    this.lDY.setContentView(this.kFh);
+    this.lDY.setCancelable(this.ov);
+    this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
+    this.lEb.setState(3);
+    this.lEb.oi = new BottomSheetBehavior.a()
     {
       public final void M(int paramAnonymousInt) {}
     };
-    this.lzA.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.lDY.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(192601);
+        AppMethodBeat.i(200366);
         if (g.a(g.this) != null)
         {
           if (!g.a(g.this).isAlive()) {
@@ -145,117 +145,117 @@ public final class g
         if (!g.c(g.this)) {
           g.d(g.this);
         }
-        AppMethodBeat.o(192601);
+        AppMethodBeat.o(200366);
       }
     });
-    AppMethodBeat.o(192611);
+    AppMethodBeat.o(200376);
   }
   
-  private boolean aol()
+  private boolean aoA()
   {
-    AppMethodBeat.i(192629);
+    AppMethodBeat.i(200394);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(192629);
+      AppMethodBeat.o(200394);
       return true;
     }
-    AppMethodBeat.o(192629);
+    AppMethodBeat.o(200394);
     return false;
   }
   
   @TargetApi(23)
-  private void eUs()
+  private void eYf()
   {
-    AppMethodBeat.i(192622);
-    if ((Build.VERSION.SDK_INT >= 23) && (this.lzA != null))
+    AppMethodBeat.i(200387);
+    if ((Build.VERSION.SDK_INT >= 23) && (this.lDY != null))
     {
-      this.lzA.getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.lzA.getWindow().setStatusBarColor(0);
+      this.lDY.getWindow().getDecorView().setSystemUiVisibility(9216);
+      this.lDY.getWindow().setStatusBarColor(0);
     }
-    AppMethodBeat.o(192622);
+    AppMethodBeat.o(200387);
   }
   
-  private void fMh()
+  private void fQB()
   {
-    AppMethodBeat.i(192628);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kBS.getLayoutParams();
-    if ((this.lzE) && (this.qI != null))
+    AppMethodBeat.i(200393);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kFh.getLayoutParams();
+    if ((this.lEc) && (this.qI != null))
     {
       Rect localRect = new Rect();
       this.qI.getWindowVisibleDisplayFrame(localRect);
       localLayoutParams.width = localRect.right;
     }
-    this.kBS.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(192628);
+    this.kFh.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(200393);
   }
   
-  private void fMm()
+  private void fQG()
   {
-    AppMethodBeat.i(192620);
-    this.KXt = ((LinearLayout)this.kBS.findViewById(2131297590));
-    this.KXu = ((Button)this.kBS.findViewById(2131297587));
-    this.KXv = ((Button)this.kBS.findViewById(2131297588));
-    this.KXw = ((Button)this.kBS.findViewById(2131297600));
-    switch (this.KXr)
+    AppMethodBeat.i(200385);
+    this.LtR = ((LinearLayout)this.kFh.findViewById(2131297590));
+    this.LtS = ((Button)this.kFh.findViewById(2131297587));
+    this.LtT = ((Button)this.kFh.findViewById(2131297588));
+    this.LtU = ((Button)this.kFh.findViewById(2131297600));
+    switch (this.LtP)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(192620);
+      AppMethodBeat.o(200385);
       return;
-      this.KXt.setVisibility(8);
-      AppMethodBeat.o(192620);
+      this.LtR.setVisibility(8);
+      AppMethodBeat.o(200385);
       return;
-      this.KXt.setVisibility(0);
-      this.KXw.setVisibility(8);
-      this.KXu.setOnClickListener(new View.OnClickListener()
+      this.LtR.setVisibility(0);
+      this.LtU.setVisibility(8);
+      this.LtS.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192602);
+          AppMethodBeat.i(200367);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (g.e(g.this) != null) {
             g.e(g.this).onClick();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(192602);
+          AppMethodBeat.o(200367);
         }
       });
-      this.KXv.setOnClickListener(new View.OnClickListener()
+      this.LtT.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192603);
+          AppMethodBeat.i(200368);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (g.f(g.this) != null) {
             g.f(g.this).onClick();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(192603);
+          AppMethodBeat.o(200368);
         }
       });
-      AppMethodBeat.o(192620);
+      AppMethodBeat.o(200385);
       return;
-      this.KXt.setVisibility(0);
-      this.KXu.setVisibility(8);
-      this.KXv.setVisibility(8);
-      this.KXw.setOnClickListener(new View.OnClickListener()
+      this.LtR.setVisibility(0);
+      this.LtS.setVisibility(8);
+      this.LtT.setVisibility(8);
+      this.LtU.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192604);
+          AppMethodBeat.i(200369);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (g.g(g.this) != null) {
             g.g(g.this).onClick();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(192604);
+          AppMethodBeat.o(200369);
         }
       });
     }
@@ -263,183 +263,173 @@ public final class g
   
   private int getRotation()
   {
-    AppMethodBeat.i(192610);
+    AppMethodBeat.i(200375);
     int i = 0;
     if ((this.mContext instanceof Activity)) {
       i = ((Activity)this.mContext).getWindow().getWindowManager().getDefaultDisplay().getRotation();
     }
-    AppMethodBeat.o(192610);
+    AppMethodBeat.o(200375);
     return i;
   }
   
   private void initHeaderView()
   {
-    AppMethodBeat.i(192621);
-    if (this.KWD != null)
+    AppMethodBeat.i(200386);
+    if (this.Ltb != null)
     {
-      this.KWD.setVisibility(0);
-      switch (this.KXs)
+      this.Ltb.setVisibility(0);
+      switch (this.LtQ)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(192621);
+      AppMethodBeat.o(200386);
       return;
-      this.KWD.setVisibility(8);
-      AppMethodBeat.o(192621);
+      this.Ltb.setVisibility(8);
+      AppMethodBeat.o(200386);
       return;
       View localView = LayoutInflater.from(this.mContext).inflate(2131494428, null);
-      localView.findViewById(2131298372).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(192605);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          g.this.bpT();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(192605);
-        }
-      });
-      this.KWD.removeAllViews();
-      this.KWD.setGravity(17);
-      this.KWD.addView(localView, -1, -2);
-      AppMethodBeat.o(192621);
+      localView.findViewById(2131298372).setOnClickListener(new g.6(this));
+      this.Ltb.removeAllViews();
+      this.Ltb.setGravity(17);
+      this.Ltb.addView(localView, -1, -2);
+      AppMethodBeat.o(200386);
       return;
       localView = LayoutInflater.from(this.mContext).inflate(2131494429, null);
-      this.KXy = ((TextView)localView.findViewById(2131305945));
-      this.KWD.removeAllViews();
-      this.KWD.setGravity(17);
-      this.KWD.addView(localView, -1, -2);
+      this.LtW = ((TextView)localView.findViewById(2131305945));
+      this.Ltb.removeAllViews();
+      this.Ltb.setGravity(17);
+      this.Ltb.addView(localView, -1, -2);
     }
   }
   
   public final void a(a parama1, a parama2)
   {
-    this.KXz = parama1;
-    this.KXA = parama2;
+    this.LtX = parama1;
+    this.LtY = parama2;
   }
   
-  public final void afr(int paramInt)
+  public final void aga(int paramInt)
   {
-    AppMethodBeat.i(192614);
-    if (this.KXu != null) {
-      this.KXu.setTextColor(paramInt);
+    AppMethodBeat.i(200379);
+    if (this.LtS != null) {
+      this.LtS.setTextColor(paramInt);
     }
-    AppMethodBeat.o(192614);
+    AppMethodBeat.o(200379);
   }
   
-  public final void afs(int paramInt)
+  public final void agb(int paramInt)
   {
-    AppMethodBeat.i(192617);
-    if (this.KXw != null) {
+    AppMethodBeat.i(200382);
+    if (this.LtU != null)
+    {
+      this.LtU.setTextColor(this.mContext.getResources().getColor(2131100161));
       switch (paramInt)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(192617);
+      AppMethodBeat.o(200382);
       return;
-      this.KXw.setBackgroundResource(2131231365);
-      AppMethodBeat.o(192617);
+      this.LtU.setBackgroundResource(2131231365);
+      AppMethodBeat.o(200382);
       return;
-      this.KXw.setBackgroundResource(2131231367);
-      this.KXw.setTextColor(this.mContext.getResources().getColor(2131101180));
-      AppMethodBeat.o(192617);
+      this.LtU.setBackgroundResource(2131231367);
+      this.LtU.setTextColor(this.mContext.getResources().getColor(2131101180));
+      AppMethodBeat.o(200382);
       return;
-      this.KXw.setBackgroundResource(2131231370);
-      AppMethodBeat.o(192617);
+      this.LtU.setBackgroundResource(2131231370);
+      AppMethodBeat.o(200382);
       return;
-      this.KXw.setBackgroundResource(2131231375);
-      AppMethodBeat.o(192617);
+      this.LtU.setBackgroundResource(2131231375);
+      AppMethodBeat.o(200382);
       return;
-      this.KXw.setBackgroundResource(2131231362);
-      AppMethodBeat.o(192617);
+      this.LtU.setBackgroundResource(2131231362);
+      AppMethodBeat.o(200382);
       return;
-      this.KXw.setBackgroundResource(2131231368);
+      this.LtU.setBackgroundResource(2131231368);
     }
   }
   
-  public final g aft(int paramInt)
+  public final g agc(int paramInt)
   {
-    AppMethodBeat.i(192623);
-    if (this.KXx != null)
+    AppMethodBeat.i(200388);
+    if (this.LtV != null)
     {
-      this.KXx.setVisibility(0);
-      LayoutInflater.from(this.kBS.getContext()).inflate(paramInt, this.KXx, true);
+      this.LtV.setVisibility(0);
+      LayoutInflater.from(this.kFh.getContext()).inflate(paramInt, this.LtV, true);
     }
-    AppMethodBeat.o(192623);
+    AppMethodBeat.o(200388);
     return this;
+  }
+  
+  public final void aw(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(200381);
+    if (this.LtU != null) {
+      this.LtU.setText(paramCharSequence);
+    }
+    AppMethodBeat.o(200381);
   }
   
   public final void ax(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(192616);
-    if (this.KXw != null) {
-      this.KXw.setText(paramCharSequence);
+    AppMethodBeat.i(200383);
+    if (this.LtW != null) {
+      this.LtW.setText(paramCharSequence);
     }
-    AppMethodBeat.o(192616);
+    AppMethodBeat.o(200383);
   }
   
-  public final void ay(CharSequence paramCharSequence)
+  public final void bqD()
   {
-    AppMethodBeat.i(192618);
-    if (this.KXy != null) {
-      this.KXy.setText(paramCharSequence);
-    }
-    AppMethodBeat.o(192618);
-  }
-  
-  public final void bpT()
-  {
-    AppMethodBeat.i(192626);
-    if (this.lzA != null)
+    AppMethodBeat.i(200391);
+    if (this.lDY != null)
     {
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lzA.dismiss();
+        this.lDY.dismiss();
       }
-      if (this.lzD != null) {
-        this.lzD.nZ = true;
+      if (this.lEb != null) {
+        this.lEb.nZ = true;
       }
     }
-    AppMethodBeat.o(192626);
+    AppMethodBeat.o(200391);
   }
   
   public final void c(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    AppMethodBeat.i(192613);
-    if ((this.KXu != null) && (this.KXv != null))
+    AppMethodBeat.i(200378);
+    if ((this.LtS != null) && (this.LtT != null))
     {
-      this.KXu.setText(paramCharSequence1);
-      this.KXv.setText(paramCharSequence2);
+      this.LtS.setText(paramCharSequence1);
+      this.LtT.setText(paramCharSequence2);
     }
-    AppMethodBeat.o(192613);
+    AppMethodBeat.o(200378);
   }
   
-  public final void cMW()
+  public final void cPF()
   {
-    AppMethodBeat.i(192625);
-    this.lzE = aol();
-    this.lzF = getRotation();
-    if (this.lzA != null)
+    AppMethodBeat.i(200390);
+    this.lEc = aoA();
+    this.lEd = getRotation();
+    if (this.lDY != null)
     {
-      ((ViewGroup)this.kBS.getParent()).setVisibility(0);
-      fMh();
+      ((ViewGroup)this.kFh.getParent()).setVisibility(0);
+      fQB();
       if (Build.VERSION.SDK_INT >= 21) {
-        this.lzA.getWindow().addFlags(-2147483648);
+        this.lDY.getWindow().addFlags(-2147483648);
       }
-      if (this.sSh) {
-        eUs();
+      if (this.tds) {
+        eYf();
       }
-      if (!this.lzH) {
+      if (!this.lEf) {
         break label219;
       }
-      this.lzA.getWindow().setFlags(8, 8);
-      this.lzA.getWindow().addFlags(131200);
-      this.lzA.getWindow().getDecorView().setSystemUiVisibility(6);
+      this.lDY.getWindow().setFlags(8, 8);
+      this.lDY.getWindow().addFlags(131200);
+      this.lDY.getWindow().getDecorView().setSystemUiVisibility(6);
       if (this.qI != null) {
         if (this.afv != null) {
           break label274;
@@ -454,103 +444,103 @@ public final class g
         this.afv.addOnGlobalLayoutListener(this);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.lzA.show();
+        this.lDY.show();
       }
-      if (this.lzD != null) {
-        this.lzD.nZ = false;
+      if (this.lEb != null) {
+        this.lEb.nZ = false;
       }
-      AppMethodBeat.o(192625);
+      AppMethodBeat.o(200390);
       return;
       label219:
-      this.lzA.getWindow().clearFlags(8);
-      this.lzA.getWindow().clearFlags(131072);
-      this.lzA.getWindow().clearFlags(128);
-      this.lzA.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.lDY.getWindow().clearFlags(8);
+      this.lDY.getWindow().clearFlags(131072);
+      this.lDY.getWindow().clearFlags(128);
+      this.lDY.getWindow().getDecorView().setSystemUiVisibility(0);
       break;
     }
   }
   
-  public final void fMl()
+  public final void fQF()
   {
-    AppMethodBeat.i(192615);
-    if (this.KXv != null) {
-      this.KXv.setBackgroundResource(2131231370);
+    AppMethodBeat.i(200380);
+    if (this.LtT != null) {
+      this.LtT.setBackgroundResource(2131231370);
     }
-    AppMethodBeat.o(192615);
+    AppMethodBeat.o(200380);
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(192627);
-    if ((this.lzA != null) && (this.lzA.isShowing()))
+    AppMethodBeat.i(200392);
+    if ((this.lDY != null) && (this.lDY.isShowing()))
     {
-      AppMethodBeat.o(192627);
+      AppMethodBeat.o(200392);
       return true;
     }
-    AppMethodBeat.o(192627);
+    AppMethodBeat.o(200392);
     return false;
   }
   
   public final void onGlobalLayout()
   {
-    AppMethodBeat.i(192609);
+    AppMethodBeat.i(200374);
     if (isShowing())
     {
       View localView = this.qI;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bpT();
-        AppMethodBeat.o(192609);
+        bqD();
+        AppMethodBeat.o(200374);
         return;
       }
-      if ((isShowing()) && ((this.lzE != aol()) || (this.lzF != getRotation()))) {
-        bpT();
+      if ((isShowing()) && ((this.lEc != aoA()) || (this.lEd != getRotation()))) {
+        bqD();
       }
     }
-    AppMethodBeat.o(192609);
+    AppMethodBeat.o(200374);
   }
   
   public final void setCustomView(View paramView)
   {
-    AppMethodBeat.i(192624);
-    if (this.KXx != null)
+    AppMethodBeat.i(200389);
+    if (this.LtV != null)
     {
-      this.KXx.setVisibility(0);
-      this.KXx.removeAllViews();
-      this.KXx.setGravity(17);
-      this.KXx.addView(paramView, -1, -2);
+      this.LtV.setVisibility(0);
+      this.LtV.removeAllViews();
+      this.LtV.setGravity(17);
+      this.LtV.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(192624);
+    AppMethodBeat.o(200389);
   }
   
   public final void setHeaderView(View paramView)
   {
-    AppMethodBeat.i(192619);
-    if (this.KWD != null)
+    AppMethodBeat.i(200384);
+    if (this.Ltb != null)
     {
-      this.KWD.setVisibility(0);
-      this.KWD.removeAllViews();
-      this.KWD.setGravity(17);
-      this.KWD.addView(paramView, -1, -2);
+      this.Ltb.setVisibility(0);
+      this.Ltb.removeAllViews();
+      this.Ltb.setGravity(17);
+      this.Ltb.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(192619);
+    AppMethodBeat.o(200384);
   }
   
   public final void setHeight(int paramInt)
   {
-    AppMethodBeat.i(192612);
+    AppMethodBeat.i(200377);
     if (paramInt != 0)
     {
-      this.jbe = paramInt;
-      if (this.jbe != 0) {
-        this.lzD.J(this.jbe);
+      this.jdX = paramInt;
+      if (this.jdX != 0) {
+        this.lEb.J(this.jdX);
       }
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kBS.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kFh.getLayoutParams();
       localLayoutParams.height = paramInt;
-      this.kBS.setLayoutParams(localLayoutParams);
-      this.kBS.invalidate();
+      this.kFh.setLayoutParams(localLayoutParams);
+      this.kFh.invalidate();
     }
-    AppMethodBeat.o(192612);
+    AppMethodBeat.o(200377);
   }
   
   public static abstract interface a
@@ -560,7 +550,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.g
  * JD-Core Version:    0.7.0.1
  */

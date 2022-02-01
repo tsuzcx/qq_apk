@@ -9,16 +9,18 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.ui.video.l;
 import com.tencent.mm.plugin.topstory.ui.video.o;
 import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.protocal.protobuf.aag;
-import com.tencent.mm.protocal.protobuf.dei;
-import com.tencent.mm.protocal.protobuf.doa;
-import com.tencent.mm.protocal.protobuf.dod;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.websearch.api.ad;
+import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.protocal.protobuf.dox;
+import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import java.util.Iterator;
@@ -29,89 +31,45 @@ public final class h
   extends com.tencent.mm.plugin.topstory.ui.video.h
   implements a
 {
-  public ImageView Buw;
-  public TextView BwC;
-  public View BwH;
-  public View BwI;
-  public View BwJ;
-  public TextView BwK;
-  public TextView BwL;
-  public ImageView BwM;
-  public ImageView BwN;
-  public View BwO;
-  public FrameLayout BwU;
-  public com.tencent.mm.plugin.topstory.ui.video.f BxK;
-  public View BxL;
-  public ImageView BxM;
-  public View BxN;
-  public View BxO;
-  public View BxP;
-  public TextView BxQ;
-  public View BxR;
-  public TextView BxS;
-  public ImageView BxT;
-  private boolean BxU;
-  public View Bxr;
-  public View Bxs;
-  public View oaY;
-  public MMNeat7extView opB;
-  public View qdo;
-  public TextView uuM;
+  public ImageView BLU;
+  public View BOP;
+  public View BOQ;
+  public TextView BOa;
+  public View BOf;
+  public View BOg;
+  public View BOh;
+  public TextView BOi;
+  public TextView BOj;
+  public ImageView BOk;
+  public ImageView BOl;
+  public View BOm;
+  public FrameLayout BOs;
+  public com.tencent.mm.plugin.topstory.ui.video.f BPi;
+  public View BPj;
+  public ImageView BPk;
+  public View BPl;
+  public View BPm;
+  public View BPn;
+  public TextView BPo;
+  public View BPp;
+  public TextView BPq;
+  public ImageView BPr;
+  private boolean BPs;
+  public View ogP;
+  public MMNeat7extView ovt;
+  public View qjT;
+  public TextView uGl;
   
   public h(View paramView, b paramb, boolean paramBoolean)
   {
     super(paramView, paramb);
-    this.BxU = paramBoolean;
+    this.BPs = paramBoolean;
   }
   
-  public final void ept()
-  {
-    AppMethodBeat.i(126492);
-    super.ept();
-    AppMethodBeat.o(126492);
-  }
-  
-  public final void epu()
-  {
-    AppMethodBeat.i(126491);
-    super.epu();
-    this.BxP.animate().cancel();
-    this.BxO.animate().cancel();
-    this.BxP.setAlpha(0.0F);
-    this.BxO.setAlpha(0.0F);
-    AppMethodBeat.o(126491);
-  }
-  
-  public final void eqP()
-  {
-    AppMethodBeat.i(126489);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.TopStory.TopStoryListVideoItemHolder", "showMaskView %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.BxP.animate().cancel();
-    this.BxO.animate().cancel();
-    this.BxN.animate().cancel();
-    this.BxN.setAlpha(0.8F);
-    this.BxP.setAlpha(0.8F);
-    this.BxO.setAlpha(0.8F);
-    AppMethodBeat.o(126489);
-  }
-  
-  public final void eqQ()
-  {
-    AppMethodBeat.i(126490);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.TopStory.TopStoryListVideoItemHolder", "hideMaskView %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.BxP.animate().cancel();
-    this.BxO.animate().cancel();
-    this.BxN.animate().cancel();
-    this.BxN.setAlpha(0.0F);
-    this.BxP.setAlpha(0.0F);
-    this.BxO.setAlpha(0.0F);
-    AppMethodBeat.o(126490);
-  }
-  
-  public final boolean eqf()
+  public final boolean etM()
   {
     AppMethodBeat.i(126493);
-    if ((this.BxP.getAlpha() != 0.0F) && (this.BxO.getAlpha() != 0.0F))
+    if ((this.BPn.getAlpha() != 0.0F) && (this.BPm.getAlpha() != 0.0F))
     {
       AppMethodBeat.o(126493);
       return true;
@@ -120,279 +78,323 @@ public final class h
     return false;
   }
   
-  public final void eqg()
+  public final void etN()
   {
     AppMethodBeat.i(126495);
-    if (!bt.isNullOrNil(this.Brz.title))
+    if (!bu.isNullOrNil(this.BIY.title))
     {
-      this.opB.ar(this.Brz.title);
-      this.opB.setVisibility(0);
-      this.opB.requestLayout();
-      this.opB.setOnClickListener(this.km);
-      this.uuM.setText(this.Brz.source);
-      if (bt.isNullOrNil(this.Brz.lox)) {
+      this.ovt.aq(this.BIY.title);
+      this.ovt.setVisibility(0);
+      this.ovt.requestLayout();
+      this.ovt.setOnClickListener(this.km);
+      this.uGl.setText(this.BIY.source);
+      if (bu.isNullOrNil(this.BIY.dJL)) {
         break label965;
       }
-      this.BwO.setVisibility(0);
+      this.BOm.setVisibility(0);
       label93:
-      this.Buw.setOnClickListener(this.km);
-      this.uuM.setOnClickListener(this.km);
-      this.BwO.setOnClickListener(this.km);
-      if (bt.isNullOrNil(this.Brz.HCz)) {
+      this.BLU.setOnClickListener(this.km);
+      this.uGl.setOnClickListener(this.km);
+      this.BOm.setOnClickListener(this.km);
+      if (bu.isNullOrNil(this.BIY.HWm)) {
         break label977;
       }
-      q.aIJ().a(this.Brz.HCz, this.Buw, com.tencent.mm.plugin.topstory.ui.d.BrQ);
+      q.aJb().a(this.BIY.HWm, this.BLU, com.tencent.mm.plugin.topstory.ui.d.BJp);
       label159:
-      if (!this.Bun.epF()) {
+      if (!this.BLL.etm()) {
         break label990;
       }
-      this.qdo.setVisibility(0);
-      this.qdo.setOnClickListener(this.km);
+      this.qjT.setVisibility(0);
+      this.qjT.setOnClickListener(this.km);
       label190:
-      if (!this.Bun.epG()) {
+      if (!this.BLL.etn()) {
         break label1002;
       }
-      this.Bxr.setTag(this.Brz);
-      this.Bxr.setOnClickListener(this.km);
-      this.Bxr.setVisibility(0);
-      this.Bxs.setVisibility(0);
+      this.BOP.setTag(this.BIY);
+      this.BOP.setOnClickListener(this.km);
+      this.BOP.setVisibility(0);
+      this.BOQ.setVisibility(0);
       label240:
-      this.Bxr.setTag(this.Brz);
-      this.Bxr.setOnClickListener(this.km);
-      this.oaY.setOnClickListener(this.km);
-      this.BxN.setVisibility(0);
-      this.BxO.setVisibility(0);
-      this.BxP.setVisibility(0);
-      if (this.BxK == null)
+      this.BOP.setTag(this.BIY);
+      this.BOP.setOnClickListener(this.km);
+      this.ogP.setOnClickListener(this.km);
+      this.BPl.setVisibility(0);
+      this.BPm.setVisibility(0);
+      this.BPn.setVisibility(0);
+      if (this.BPi == null)
       {
-        this.BxK = new f(this.Bun.dhO(), this.Bun, this);
-        this.BwU.removeAllViews();
-        localObject = this.BwU;
-        com.tencent.mm.plugin.topstory.ui.video.f localf = this.BxK;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "lxl getVideoViewLayoutParams: %s, %s", new Object[] { Integer.valueOf(this.Bun.getVideoWidth()), Integer.valueOf(this.Bun.getVideoHeight()) });
-        ((FrameLayout)localObject).addView(localf, new FrameLayout.LayoutParams(this.Bun.getVideoWidth(), this.Bun.getVideoHeight()));
+        this.BPi = new f(this.BLL.dkN(), this.BLL, this);
+        this.BOs.removeAllViews();
+        localObject = this.BOs;
+        com.tencent.mm.plugin.topstory.ui.video.f localf = this.BPi;
+        ae.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "lxl getVideoViewLayoutParams: %s, %s", new Object[] { Integer.valueOf(this.BLL.getVideoWidth()), Integer.valueOf(this.BLL.getVideoHeight()) });
+        ((FrameLayout)localObject).addView(localf, new FrameLayout.LayoutParams(this.BLL.getVideoWidth(), this.BLL.getVideoHeight()));
       }
-      this.BxK.a(this.Brz, epv());
-      if (this.Bun.epE() == epv()) {
-        super.ept();
+      this.BPi.a(this.BIY, etc());
+      if (this.BLL.etl() == etc()) {
+        super.eta();
       }
-      this.BxQ.setText(this.Brz.uaw);
-      if ((!this.BxU) || (this.Brz.tSj.size() <= 0)) {
+      this.BPo.setText(this.BIY.uly);
+      if ((!this.BPs) || (this.BIY.uda.size() <= 0)) {
         break label1065;
       }
-      this.BwH.setVisibility(0);
-      Object localObject = (dei)this.Brz.tSj.get(0);
-      this.BwK.setTag(localObject);
-      this.BwK.setText(((dei)localObject).dxD);
-      this.BwK.setVisibility(0);
-      this.BwK.setOnClickListener(this.km);
-      this.BwI.setVisibility(0);
-      this.BwM.setVisibility(8);
-      if (!bt.isNullOrNil(((dei)localObject).dDH))
+      this.BOf.setVisibility(0);
+      Object localObject = (dfc)this.BIY.uda.get(0);
+      this.BOi.setTag(localObject);
+      this.BOi.setText(((dfc)localObject).dyI);
+      this.BOi.setVisibility(0);
+      this.BOi.setOnClickListener(this.km);
+      this.BOg.setVisibility(0);
+      this.BOk.setVisibility(8);
+      if (!bu.isNullOrNil(((dfc)localObject).dEM))
       {
-        q.aIJ().a(((dei)localObject).dDH, this.BwM, com.tencent.mm.plugin.topstory.ui.d.BrR);
-        this.BwM.setVisibility(0);
+        q.aJb().a(((dfc)localObject).dEM, this.BOk, com.tencent.mm.plugin.topstory.ui.d.BJq);
+        this.BOk.setVisibility(0);
       }
-      if (this.Brz.tSj.size() <= 1) {
+      if (this.BIY.uda.size() <= 1) {
         break label1023;
       }
-      localObject = (dei)this.Brz.tSj.get(1);
-      this.BwL.setTag(localObject);
-      this.BwL.setText(((dei)localObject).dxD);
-      this.BwL.setOnClickListener(this.km);
-      this.BwL.setVisibility(0);
-      this.BwJ.setVisibility(0);
-      this.BwN.setVisibility(8);
-      if (!bt.isNullOrNil(((dei)localObject).dDH))
+      localObject = (dfc)this.BIY.uda.get(1);
+      this.BOj.setTag(localObject);
+      this.BOj.setText(((dfc)localObject).dyI);
+      this.BOj.setOnClickListener(this.km);
+      this.BOj.setVisibility(0);
+      this.BOh.setVisibility(0);
+      this.BOl.setVisibility(8);
+      if (!bu.isNullOrNil(((dfc)localObject).dEM))
       {
-        q.aIJ().a(((dei)localObject).dDH, this.BwN, com.tencent.mm.plugin.topstory.ui.d.BrR);
-        this.BwN.setVisibility(0);
+        q.aJb().a(((dfc)localObject).dEM, this.BOl, com.tencent.mm.plugin.topstory.ui.d.BJq);
+        this.BOl.setVisibility(0);
       }
       label718:
-      if (this.Brz.tSj.size() <= 2) {
+      if (this.BIY.uda.size() <= 2) {
         break label1044;
       }
-      localObject = (dei)this.Brz.tSj.get(2);
-      this.BxS.setTag(localObject);
-      this.BxS.setText(((dei)localObject).dxD);
-      this.BxS.setOnClickListener(this.km);
-      this.BxS.setVisibility(0);
-      this.BxR.setVisibility(0);
-      this.BxT.setVisibility(8);
-      if (!bt.isNullOrNil(((dei)localObject).dDH))
+      localObject = (dfc)this.BIY.uda.get(2);
+      this.BPq.setTag(localObject);
+      this.BPq.setText(((dfc)localObject).dyI);
+      this.BPq.setOnClickListener(this.km);
+      this.BPq.setVisibility(0);
+      this.BPp.setVisibility(0);
+      this.BPr.setVisibility(8);
+      if (!bu.isNullOrNil(((dfc)localObject).dEM))
       {
-        q.aIJ().a(((dei)localObject).dDH, this.BxT, com.tencent.mm.plugin.topstory.ui.d.BrR);
-        this.BxT.setVisibility(0);
+        q.aJb().a(((dfc)localObject).dEM, this.BPr, com.tencent.mm.plugin.topstory.ui.d.BJq);
+        this.BPr.setVisibility(0);
       }
       label837:
-      if (this.Bun.epE() != epv()) {
-        eqP();
+      if (this.BLL.etl() != etc()) {
+        euw();
       }
-      if ((this.Brz.HCD & 0x80) <= 0) {
+      if ((this.BIY.HWq & 0x80) <= 0) {
         break label1110;
       }
-      this.BxL.setVisibility(0);
-      this.BxL.setOnClickListener(this.km);
-      if (!this.Brz.HCI) {
+      this.BPj.setVisibility(0);
+      this.BPj.setOnClickListener(this.km);
+      if (!this.BIY.HWv) {
         break label1077;
       }
-      this.BxM.setImageResource(2131691329);
-      this.BwC.setTextColor(this.BwC.getResources().getColor(2131101051));
+      this.BPk.setImageResource(2131691329);
+      this.BOa.setTextColor(this.BOa.getResources().getColor(2131101051));
     }
     for (;;)
     {
-      this.BwC.setText(com.tencent.mm.plugin.topstory.ui.d.SU(this.Brz.HCN));
+      this.BOa.setText(com.tencent.mm.plugin.topstory.ui.d.TB(this.BIY.HWA));
       AppMethodBeat.o(126495);
       return;
-      this.opB.setVisibility(8);
+      this.ovt.setVisibility(8);
       break;
       label965:
-      this.BwO.setVisibility(8);
+      this.BOm.setVisibility(8);
       break label93;
       label977:
-      this.Buw.setImageResource(2131231875);
+      this.BLU.setImageResource(2131231875);
       break label159;
       label990:
-      this.qdo.setVisibility(8);
+      this.qjT.setVisibility(8);
       break label190;
       label1002:
-      this.Bxr.setVisibility(8);
-      this.Bxs.setVisibility(8);
+      this.BOP.setVisibility(8);
+      this.BOQ.setVisibility(8);
       break label240;
       label1023:
-      this.BwJ.setVisibility(8);
-      this.BwL.setVisibility(8);
+      this.BOh.setVisibility(8);
+      this.BOj.setVisibility(8);
       break label718;
       label1044:
-      this.BxR.setVisibility(8);
-      this.BxS.setVisibility(8);
+      this.BPp.setVisibility(8);
+      this.BPq.setVisibility(8);
       break label837;
       label1065:
-      this.BwH.setVisibility(8);
+      this.BOf.setVisibility(8);
       break label837;
       label1077:
-      this.BxM.setImageResource(2131691330);
-      this.BwC.setTextColor(this.BwC.getResources().getColor(2131101182));
+      this.BPk.setImageResource(2131691330);
+      this.BOa.setTextColor(this.BOa.getResources().getColor(2131101182));
     }
     label1110:
-    this.BxL.setVisibility(8);
+    this.BPj.setVisibility(8);
     AppMethodBeat.o(126495);
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f eqh()
+  public final com.tencent.mm.plugin.topstory.ui.video.f etO()
   {
-    return this.BxK;
+    return this.BPi;
+  }
+  
+  public final void eta()
+  {
+    AppMethodBeat.i(126492);
+    super.eta();
+    AppMethodBeat.o(126492);
+  }
+  
+  public final void etb()
+  {
+    AppMethodBeat.i(126491);
+    super.etb();
+    this.BPn.animate().cancel();
+    this.BPm.animate().cancel();
+    this.BPn.setAlpha(0.0F);
+    this.BPm.setAlpha(0.0F);
+    AppMethodBeat.o(126491);
+  }
+  
+  public final void euw()
+  {
+    AppMethodBeat.i(126489);
+    ae.d("MicroMsg.TopStory.TopStoryListVideoItemHolder", "showMaskView %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.BPn.animate().cancel();
+    this.BPm.animate().cancel();
+    this.BPl.animate().cancel();
+    this.BPl.setAlpha(0.8F);
+    this.BPn.setAlpha(0.8F);
+    this.BPm.setAlpha(0.8F);
+    AppMethodBeat.o(126489);
+  }
+  
+  public final void eux()
+  {
+    AppMethodBeat.i(126490);
+    ae.d("MicroMsg.TopStory.TopStoryListVideoItemHolder", "hideMaskView %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.BPn.animate().cancel();
+    this.BPm.animate().cancel();
+    this.BPl.animate().cancel();
+    this.BPl.setAlpha(0.0F);
+    this.BPn.setAlpha(0.0F);
+    this.BPm.setAlpha(0.0F);
+    AppMethodBeat.o(126490);
+  }
+  
+  public final void fC(View paramView)
+  {
+    AppMethodBeat.i(126488);
+    super.fC(paramView);
+    this.BOs = ((FrameLayout)paramView.findViewById(2131306411));
+    this.BLU = ((ImageView)paramView.findViewById(2131305130));
+    this.uGl = ((TextView)paramView.findViewById(2131305134));
+    this.ovt = ((MMNeat7extView)paramView.findViewById(2131305948));
+    this.BOm = paramView.findViewById(2131305129);
+    this.qjT = paramView.findViewById(2131304744);
+    this.BPj = paramView.findViewById(2131307019);
+    this.BPk = ((ImageView)paramView.findViewById(2131307018));
+    this.BOa = ((TextView)paramView.findViewById(2131307017));
+    this.BOQ = paramView.findViewById(2131302464);
+    this.BOP = paramView.findViewById(2131302474);
+    this.BOf = paramView.findViewById(2131297472);
+    this.BPo = ((TextView)paramView.findViewById(2131297445));
+    this.BOg = paramView.findViewById(2131305612);
+    this.BOh = paramView.findViewById(2131305616);
+    this.BPp = paramView.findViewById(2131305620);
+    this.BOi = ((TextView)paramView.findViewById(2131305613));
+    this.BOj = ((TextView)paramView.findViewById(2131305617));
+    this.BPq = ((TextView)paramView.findViewById(2131305621));
+    this.BOk = ((ImageView)paramView.findViewById(2131305611));
+    this.BOl = ((ImageView)paramView.findViewById(2131305615));
+    this.BPr = ((ImageView)paramView.findViewById(2131305619));
+    this.BPl = paramView.findViewById(2131297425);
+    this.BPm = paramView.findViewById(2131300722);
+    this.BPn = paramView.findViewById(2131300204);
+    this.ogP = paramView.findViewById(2131300202);
+    if (this.BPs)
+    {
+      this.BOf.setVisibility(0);
+      AppMethodBeat.o(126488);
+      return;
+    }
+    this.BOf.setVisibility(8);
+    AppMethodBeat.o(126488);
   }
   
   public final void fD(View paramView)
   {
-    AppMethodBeat.i(126488);
-    super.fD(paramView);
-    this.BwU = ((FrameLayout)paramView.findViewById(2131306411));
-    this.Buw = ((ImageView)paramView.findViewById(2131305130));
-    this.uuM = ((TextView)paramView.findViewById(2131305134));
-    this.opB = ((MMNeat7extView)paramView.findViewById(2131305948));
-    this.BwO = paramView.findViewById(2131305129);
-    this.qdo = paramView.findViewById(2131304744);
-    this.BxL = paramView.findViewById(2131307019);
-    this.BxM = ((ImageView)paramView.findViewById(2131307018));
-    this.BwC = ((TextView)paramView.findViewById(2131307017));
-    this.Bxs = paramView.findViewById(2131302464);
-    this.Bxr = paramView.findViewById(2131302474);
-    this.BwH = paramView.findViewById(2131297472);
-    this.BxQ = ((TextView)paramView.findViewById(2131297445));
-    this.BwI = paramView.findViewById(2131305612);
-    this.BwJ = paramView.findViewById(2131305616);
-    this.BxR = paramView.findViewById(2131305620);
-    this.BwK = ((TextView)paramView.findViewById(2131305613));
-    this.BwL = ((TextView)paramView.findViewById(2131305617));
-    this.BxS = ((TextView)paramView.findViewById(2131305621));
-    this.BwM = ((ImageView)paramView.findViewById(2131305611));
-    this.BwN = ((ImageView)paramView.findViewById(2131305615));
-    this.BxT = ((ImageView)paramView.findViewById(2131305619));
-    this.BxN = paramView.findViewById(2131297425);
-    this.BxO = paramView.findViewById(2131300722);
-    this.BxP = paramView.findViewById(2131300204);
-    this.oaY = paramView.findViewById(2131300202);
-    if (this.BxU)
-    {
-      this.BwH.setVisibility(0);
-      AppMethodBeat.o(126488);
-      return;
-    }
-    this.BwH.setVisibility(8);
-    AppMethodBeat.o(126488);
-  }
-  
-  public final void fE(View paramView)
-  {
     AppMethodBeat.i(126496);
-    if ((com.tencent.mm.plugin.topstory.a.h.eoK()) && (paramView.getId() == this.opB.getId())) {
-      this.Bun.epB().BvW = true;
+    if ((com.tencent.mm.plugin.topstory.a.h.esr()) && (paramView.getId() == this.ovt.getId())) {
+      this.BLL.eti().BNu = true;
     }
-    super.fE(paramView);
+    super.fD(paramView);
     AppMethodBeat.o(126496);
   }
   
-  public final void fF(View paramView)
+  public final void fE(View paramView)
   {
     int i = 1;
     AppMethodBeat.i(126497);
     Object localObject1;
     Object localObject2;
-    if (paramView.getId() == this.opB.getId())
+    if (paramView.getId() == this.ovt.getId())
     {
-      if ((this.Brz != null) && (!bt.isNullOrNil(this.Brz.DBP)))
+      if ((this.BIY != null) && (!bu.isNullOrNil(this.BIY.DTM)))
       {
-        paramView = this.Brz.DBP;
+        paramView = this.BIY.DTM;
         localObject1 = new Intent();
         ((Intent)localObject1).putExtra("rawUrl", paramView);
-        com.tencent.mm.bs.d.b(this.Bun.dhO(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject1);
-        if (this.Bun.epB().BvU)
+        com.tencent.mm.br.d.b(this.BLL.dkN(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject1);
+        if (this.BLL.eti().BNs)
         {
-          this.BxK.bSC();
-          this.Bun.epB().cxw();
+          this.BPi.bTP();
+          this.BLL.eti().cyX();
         }
-        this.Bun.epx().j(this.Brz);
-        ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Bun.epz(), this.Brz, epv(), 1, "");
+        this.BLL.ete().j(this.BIY);
+        ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.BLL.etg(), this.BIY, etc(), 1, "");
         AppMethodBeat.o(126497);
       }
     }
     else
     {
-      if (paramView.getId() == this.qdo.getId())
+      if (paramView.getId() == this.qjT.getId())
       {
-        com.tencent.mm.plugin.websearch.api.a.a.ma(8);
-        a(this.Bun, this.Bun.dhO(), this.BxK, epv());
+        com.tencent.mm.plugin.websearch.api.a.a.md(8);
+        a(this.BLL, this.BLL.dkN(), this.BPi, etc());
         AppMethodBeat.o(126497);
         return;
       }
-      if (paramView.getId() == this.Bxr.getId())
+      if (paramView.getId() == this.BOP.getId())
       {
-        this.Bun.at(this.Bxr, epv());
+        this.BLL.at(this.BOP, etc());
         AppMethodBeat.o(126497);
         return;
       }
-      if ((paramView.getId() == this.BwK.getId()) || (paramView.getId() == this.BwL.getId()))
+      if ((paramView.getId() == this.BOi.getId()) || (paramView.getId() == this.BOj.getId()))
       {
-        this.Bun.epw().Bvq = true;
-        this.Bun.epB().stopPlay();
-        this.BxK.epV();
-        paramView = (dei)paramView.getTag();
-        localObject1 = com.tencent.mm.plugin.topstory.a.h.a(this.Bun.epz());
-        ((doa)localObject1).qXu = UUID.randomUUID().toString();
-        ((doa)localObject1).HCb = this.Brz.tSk;
-        ((doa)localObject1).HCf = paramView.HsJ;
-        ((doa)localObject1).HCg = null;
-        ((doa)localObject1).HCh = paramView;
-        ((doa)localObject1).fMP = this.Bun.Pf();
-        ((doa)localObject1).HCi = this.Bun.epw().Bvq;
-        localObject2 = ((doa)localObject1).DBj.iterator();
+        this.BLL.etd().BMO = true;
+        this.BLL.eti().stopPlay();
+        this.BPi.etC();
+        paramView = (dfc)paramView.getTag();
+        localObject1 = com.tencent.mm.plugin.topstory.a.h.a(this.BLL.etg());
+        ((dox)localObject1).rfA = UUID.randomUUID().toString();
+        ((dox)localObject1).HVO = this.BIY.udb;
+        ((dox)localObject1).HVS = paramView.HMm;
+        ((dox)localObject1).HVT = null;
+        ((dox)localObject1).HVU = paramView;
+        ((dox)localObject1).fOX = this.BLL.Pd();
+        ((dox)localObject1).HVV = this.BLL.etd().BMO;
+        localObject2 = ((dox)localObject1).DTg.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          aag localaag = (aag)((Iterator)localObject2).next();
-          if ("show_tag_list".equals(localaag.key)) {
-            localaag.FZf = paramView.id;
+          aaj localaaj = (aaj)((Iterator)localObject2).next();
+          if ("show_tag_list".equals(localaaj.key)) {
+            localaaj.GrF = paramView.id;
           }
         }
       }
@@ -401,39 +403,39 @@ public final class h
     {
       if (i == 0)
       {
-        localObject2 = new aag();
-        ((aag)localObject2).key = "show_tag_list";
-        ((aag)localObject2).FZf = paramView.id;
-        ((doa)localObject1).DBj.add(localObject2);
+        localObject2 = new aaj();
+        ((aaj)localObject2).key = "show_tag_list";
+        ((aaj)localObject2).GrF = paramView.id;
+        ((dox)localObject1).DTg.add(localObject2);
       }
-      com.tencent.mm.plugin.websearch.api.ad.a(this.Bun.dhO(), (doa)localObject1, 10001);
-      com.tencent.mm.plugin.websearch.api.a.a.ma(28);
-      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Bun.epz(), this.Brz, epv(), 4, paramView.dxD + ":" + paramView.id);
+      ad.a(this.BLL.dkN(), (dox)localObject1, 10001);
+      com.tencent.mm.plugin.websearch.api.a.a.md(28);
+      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.BLL.etg(), this.BIY, etc(), 4, paramView.dyI + ":" + paramView.id);
       AppMethodBeat.o(126497);
       return;
-      if ((paramView.getId() == this.Buw.getId()) || (paramView.getId() == this.uuM.getId()) || (paramView.getId() == this.BwO.getId()))
+      if ((paramView.getId() == this.BLU.getId()) || (paramView.getId() == this.uGl.getId()) || (paramView.getId() == this.BOm.getId()))
       {
-        if ((this.Brz != null) && (!bt.isNullOrNil(this.Brz.lox)))
+        if ((this.BIY != null) && (!bu.isNullOrNil(this.BIY.dJL)))
         {
           paramView = new Intent();
-          paramView.putExtra("rawUrl", this.Brz.lox);
-          com.tencent.mm.bs.d.b(this.Bun.dhO().getApplicationContext(), "webview", ".ui.tools.WebViewUI", paramView);
-          ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Bun.epz(), this.Brz, epv(), 3, "");
+          paramView.putExtra("rawUrl", this.BIY.dJL);
+          com.tencent.mm.br.d.b(this.BLL.dkN().getApplicationContext(), "webview", ".ui.tools.WebViewUI", paramView);
+          ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.BLL.etg(), this.BIY, etc(), 3, "");
           AppMethodBeat.o(126497);
         }
       }
-      else if (paramView.getId() == this.BxL.getId())
+      else if (paramView.getId() == this.BPj.getId())
       {
-        this.Bun.a(this.Brz, paramView);
-        if (this.Brz.HCI)
+        this.BLL.a(this.BIY, paramView);
+        if (this.BIY.HWv)
         {
-          this.BxM.setImageResource(2131691329);
-          this.BwC.setTextColor(this.BwC.getResources().getColor(2131101051));
+          this.BPk.setImageResource(2131691329);
+          this.BOa.setTextColor(this.BOa.getResources().getColor(2131101051));
           AppMethodBeat.o(126497);
           return;
         }
-        this.BxM.setImageResource(2131691330);
-        this.BwC.setTextColor(this.BwC.getResources().getColor(2131101182));
+        this.BPk.setImageResource(2131691330);
+        this.BOa.setTextColor(this.BOa.getResources().getColor(2131101182));
       }
       AppMethodBeat.o(126497);
       return;
@@ -443,26 +445,26 @@ public final class h
   
   public final View getWowView()
   {
-    return this.BxL;
+    return this.BPj;
   }
   
-  public final void sJ(boolean paramBoolean)
+  public final void sQ(boolean paramBoolean)
   {
     AppMethodBeat.i(126494);
-    super.sJ(paramBoolean);
-    eqQ();
-    this.Bun.SY(epv());
-    if (this.BxK.aq(paramBoolean, false))
+    super.sQ(paramBoolean);
+    eux();
+    this.BLL.TF(etc());
+    if (this.BPi.ap(paramBoolean, false))
     {
-      epu();
-      super.ept();
+      etb();
+      super.eta();
     }
     AppMethodBeat.o(126494);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.h
  * JD-Core Version:    0.7.0.1
  */

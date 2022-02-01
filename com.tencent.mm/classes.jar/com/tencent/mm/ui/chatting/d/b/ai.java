@@ -1,38 +1,12 @@
 package com.tencent.mm.ui.chatting.d.b;
 
 import com.tencent.mm.ui.chatting.d.ad;
-import com.tencent.mm.ui.chatting.u;
-import java.util.ArrayList;
+import d.l;
 
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/component/api/IScanComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "app_release"})
 public abstract interface ai
   extends ad
-{
-  public abstract boolean DX(long paramLong);
-  
-  public abstract void adm(int paramInt);
-  
-  public abstract ArrayList<String> fEG();
-  
-  public abstract boolean fEH();
-  
-  public abstract void fEI();
-  
-  public abstract void fEJ();
-  
-  public abstract boolean fEK();
-  
-  public abstract u fEL();
-  
-  public abstract boolean fEM();
-  
-  public abstract boolean fEN();
-  
-  public abstract boolean fEO();
-  
-  public abstract boolean fEP();
-  
-  public abstract boolean fEQ();
-}
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

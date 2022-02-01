@@ -8,7 +8,7 @@ public final class c
 {
   private static String TAG = "MicroMsg.BackupModelFactory";
   
-  public static d xQ(int paramInt)
+  public static d xU(int paramInt)
   {
     AppMethodBeat.i(22163);
     switch (paramInt)
@@ -18,15 +18,15 @@ public final class c
       AppMethodBeat.o(22163);
       return null;
     case 1: 
-      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.bIj();
+      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.bJh();
       AppMethodBeat.o(22163);
       return localObject;
     case 2: 
-      localObject = com.tencent.mm.plugin.backup.d.b.bHG();
+      localObject = com.tencent.mm.plugin.backup.d.b.bIE();
       AppMethodBeat.o(22163);
       return localObject;
     }
-    Object localObject = a.bJi();
+    Object localObject = a.bKg();
     AppMethodBeat.o(22163);
     return localObject;
   }

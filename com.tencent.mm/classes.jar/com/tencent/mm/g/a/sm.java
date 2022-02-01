@@ -2,13 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.lang.ref.WeakReference;
 
 public final class sm
   extends b
 {
-  public a dGY;
-  public b dGZ;
+  public a dId;
   
   public sm()
   {
@@ -17,33 +15,21 @@ public final class sm
   
   private sm(byte paramByte)
   {
-    AppMethodBeat.i(91219);
-    this.dGY = new a();
-    this.dGZ = new b();
-    this.IbR = false;
+    AppMethodBeat.i(91039);
+    this.dId = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(91219);
+    AppMethodBeat.o(91039);
   }
   
   public static final class a
   {
-    public WeakReference aWN;
-    public Runnable callback;
-    public String dHa;
-    public int scene;
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public int actionType;
-    public String dHb;
-    public String errMsg;
+    public int dlO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.sm
  * JD-Core Version:    0.7.0.1
  */

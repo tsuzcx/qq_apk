@@ -7,18 +7,18 @@ import d.g.b.q;
 import d.l;
 import d.z;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "invoke"})
 final class c$m
   extends q
   implements b<PhoneItem, z>
 {
-  public static final m lQh;
+  public static final m lUI;
   
   static
   {
-    AppMethodBeat.i(189501);
-    lQh = new m();
-    AppMethodBeat.o(189501);
+    AppMethodBeat.i(223761);
+    lUI = new m();
+    AppMethodBeat.o(223761);
   }
   
   c$m()

@@ -15,9 +15,9 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class LoadMoreRecyclerView
   extends MRecyclerView
 {
-  private View fTl;
-  private a noY;
-  boolean noZ;
+  private View fVr;
+  private a nui;
+  boolean nuj;
   
   public LoadMoreRecyclerView(Context paramContext)
   {
@@ -46,22 +46,22 @@ public class LoadMoreRecyclerView
   private void init()
   {
     AppMethodBeat.i(131561);
-    final LinearLayoutManager localLinearLayoutManager = bAE();
+    final LinearLayoutManager localLinearLayoutManager = bBy();
     super.setLayoutManager(localLinearLayoutManager);
     a(new RecyclerView.m()
     {
-      int npa = 0;
+      int nuk = 0;
       
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(131555);
         b localb = new b();
         localb.bd(paramAnonymousRecyclerView);
-        localb.mr(paramAnonymousInt1);
-        localb.mr(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt1);
+        localb.mu(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        this.npa = localLinearLayoutManager.ko();
+        this.nuk = localLinearLayoutManager.ko();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
         AppMethodBeat.o(131555);
       }
@@ -71,24 +71,24 @@ public class LoadMoreRecyclerView
         AppMethodBeat.i(131554);
         b localb = new b();
         localb.bd(paramAnonymousRecyclerView);
-        localb.mr(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+        localb.mu(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-        if ((paramAnonymousInt == 0) && (LoadMoreRecyclerView.this.noZ) && (this.npa == LoadMoreRecyclerView.this.npd.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
-          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bAF();
+        if ((paramAnonymousInt == 0) && (LoadMoreRecyclerView.this.nuj) && (this.nuk == LoadMoreRecyclerView.this.nun.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
+          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bBz();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
         AppMethodBeat.o(131554);
       }
     });
-    this.npd.a(new RecyclerView.c()
+    this.nun.a(new RecyclerView.c()
     {
       public final void av(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(131556);
         super.av(paramAnonymousInt1, paramAnonymousInt2);
-        if ((LoadMoreRecyclerView.this.noZ) && (localLinearLayoutManager.ko() == LoadMoreRecyclerView.this.npd.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
-          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bAF();
+        if ((LoadMoreRecyclerView.this.nuj) && (localLinearLayoutManager.ko() == LoadMoreRecyclerView.this.nun.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
+          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bBz();
         }
         AppMethodBeat.o(131556);
       }
@@ -99,8 +99,8 @@ public class LoadMoreRecyclerView
   public final void addFooterView(View paramView)
   {
     AppMethodBeat.i(131562);
-    int i = this.npd.bFG() - 1;
-    if ((this.fTl == null) || (i < 0))
+    int i = this.nun.bGB() - 1;
+    if ((this.fVr == null) || (i < 0))
     {
       super.addFooterView(paramView);
       AppMethodBeat.o(131562);
@@ -110,7 +110,7 @@ public class LoadMoreRecyclerView
     AppMethodBeat.o(131562);
   }
   
-  protected LinearLayoutManager bAE()
+  protected LinearLayoutManager bBy()
   {
     AppMethodBeat.i(131560);
     getContext();
@@ -119,12 +119,12 @@ public class LoadMoreRecyclerView
     return localLinearLayoutManager;
   }
   
-  protected final boolean bFH()
+  protected final boolean bGC()
   {
     AppMethodBeat.i(131566);
-    if (this.fTl != null)
+    if (this.fVr != null)
     {
-      if ((this.npd.getItemCount() == 1) && (this.npd.bFG() == 1))
+      if ((this.nun.getItemCount() == 1) && (this.nun.bGB() == 1))
       {
         AppMethodBeat.o(131566);
         return true;
@@ -132,7 +132,7 @@ public class LoadMoreRecyclerView
       AppMethodBeat.o(131566);
       return false;
     }
-    boolean bool = super.bFH();
+    boolean bool = super.bGC();
     AppMethodBeat.o(131566);
     return bool;
   }
@@ -149,20 +149,20 @@ public class LoadMoreRecyclerView
   public void setLoadingView(View paramView)
   {
     AppMethodBeat.i(131563);
-    if (this.fTl == paramView)
+    if (this.fVr == paramView)
     {
       AppMethodBeat.o(131563);
       return;
     }
-    if ((this.fTl != null) && (!this.fTl.equals(paramView))) {
-      du(this.fTl);
+    if ((this.fVr != null) && (!this.fVr.equals(paramView))) {
+      du(this.fVr);
     }
-    this.fTl = paramView;
-    if (this.fTl != null)
+    this.fVr = paramView;
+    if (this.fVr != null)
     {
-      addFooterView(this.fTl);
-      paramView = this.fTl;
-      if (!this.noZ) {
+      addFooterView(this.fVr);
+      paramView = this.fVr;
+      if (!this.nuj) {
         break label90;
       }
     }
@@ -177,23 +177,23 @@ public class LoadMoreRecyclerView
   
   public void setOnLoadingStateChangedListener(a parama)
   {
-    this.noY = parama;
+    this.nui = parama;
   }
   
   public final void showLoading(boolean paramBoolean)
   {
     AppMethodBeat.i(131565);
-    if (this.noZ == paramBoolean)
+    if (this.nuj == paramBoolean)
     {
       AppMethodBeat.o(131565);
       return;
     }
-    this.noZ = paramBoolean;
+    this.nuj = paramBoolean;
     View localView;
-    if (this.fTl != null)
+    if (this.fVr != null)
     {
-      localView = this.fTl;
-      if (!this.noZ) {
+      localView = this.fVr;
+      if (!this.nuj) {
         break label56;
       }
     }
@@ -208,7 +208,7 @@ public class LoadMoreRecyclerView
   
   public static abstract interface a
   {
-    public abstract void bAF();
+    public abstract void bBz();
   }
 }
 

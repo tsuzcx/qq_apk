@@ -9,17 +9,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class br
   extends c.a
 {
-  protected ImageView KiB;
-  protected TextView iCV;
+  protected ImageView KEV;
+  protected TextView iFO;
   
-  public final br gO(View paramView)
+  public final br gT(View paramView)
   {
     AppMethodBeat.i(37564);
-    super.gn(paramView);
-    this.iCV = ((TextView)paramView.findViewById(2131298026));
-    this.KiB = ((ImageView)paramView.findViewById(2131298047));
-    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-    this.gZU = paramView.findViewById(2131298147);
+    super.gs(paramView);
+    this.iFO = ((TextView)paramView.findViewById(2131298026));
+    this.KEV = ((ImageView)paramView.findViewById(2131298047));
+    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+    this.hcH = paramView.findViewById(2131298147);
     AppMethodBeat.o(37564);
     return this;
   }

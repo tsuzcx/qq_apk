@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.remittance.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vm;
+import com.tencent.mm.g.a.vq;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.protocal.protobuf.rf;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.wallet_core.ui.f;
 
 final class RemittanceBusiResultUI$5
   implements View.OnClickListener
 {
-  RemittanceBusiResultUI$5(RemittanceBusiResultUI paramRemittanceBusiResultUI, rd paramrd) {}
+  RemittanceBusiResultUI$5(RemittanceBusiResultUI paramRemittanceBusiResultUI, rf paramrf) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(67994);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.i("MicroMsg.RemittanceBusiResultUI", "app type: %s", new Object[] { Integer.valueOf(this.yck.type) });
-    if (this.yck.type == 1)
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.i("MicroMsg.RemittanceBusiResultUI", "app type: %s", new Object[] { Integer.valueOf(this.ysb.type) });
+    if (this.ysb.type == 1)
     {
-      RemittanceBusiResultUI.i(this.ych);
-      paramView = new vm();
-      paramView.dJF.userName = this.yck.FNb;
-      paramView.dJF.dJH = bt.bI(this.yck.FNc, "");
-      paramView.dJF.scene = 1034;
-      paramView.dJF.dJI = 0;
-      com.tencent.mm.sdk.b.a.IbL.l(paramView);
+      RemittanceBusiResultUI.i(this.yrY);
+      paramView = new vq();
+      paramView.dKT.userName = this.ysb.GfA;
+      paramView.dKT.dKV = bu.bI(this.ysb.GfB, "");
+      paramView.dKT.scene = 1034;
+      paramView.dKT.dKW = 0;
+      com.tencent.mm.sdk.b.a.IvT.l(paramView);
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(67994);
       return;
-      if (this.yck.type == 2)
+      if (this.ysb.type == 2)
       {
-        RemittanceBusiResultUI.i(this.ych);
-        e.o(this.ych.getContext(), this.yck.url, true);
+        RemittanceBusiResultUI.i(this.yrY);
+        f.p(this.yrY.getContext(), this.ysb.url, true);
       }
     }
   }

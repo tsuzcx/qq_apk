@@ -1,34 +1,33 @@
 package com.tencent.mm.plugin.normsg.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.normsg.c.p;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.aw.b;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class e
 {
-  public static boolean wuX;
+  private static final Set<String> wKH;
   
   static
   {
-    AppMethodBeat.i(149091);
-    wuX = false;
-    long l = System.nanoTime();
-    try
+    AppMethodBeat.i(189728);
+    wKH = Collections.unmodifiableSet(new HashSet(Arrays.asList("US,JP,AU,CA,GB".split("\\s*,\\s*"))));
+    AppMethodBeat.o(189728);
+  }
+  
+  public static boolean auL(String paramString)
+  {
+    AppMethodBeat.i(189727);
+    if ((b.Gw(paramString)) || (wKH.contains(paramString.toUpperCase())))
     {
-      wuX = c.p.ag();
-      return;
+      AppMethodBeat.o(189727);
+      return true;
     }
-    catch (Throwable localThrowable)
-    {
-      ad.printErrStackTrace("MicroMsg.NormalMsgSource.DADH", localThrowable, "unexpected exception.", new Object[0]);
-      wuX = false;
-      return;
-    }
-    finally
-    {
-      ad.i("MicroMsg.NormalMsgSource.DADH", "CDA, result: %b, time: %d ns", new Object[] { Boolean.valueOf(wuX), Long.valueOf(System.nanoTime() - l) });
-      AppMethodBeat.o(149091);
-    }
+    AppMethodBeat.o(189727);
+    return false;
   }
 }
 

@@ -11,8 +11,8 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONObject;
 
 public final class JsApiGetLabInfo
@@ -26,15 +26,15 @@ public final class JsApiGetLabInfo
     AppMethodBeat.i(46365);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiGetLabInfo", "fail:data is null");
+      ae.e("MicroMsg.JsApiGetLabInfo", "fail:data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46365);
       return;
     }
     paramJSONObject = paramJSONObject.optString("labId");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bu.isNullOrNil(paramJSONObject))
     {
-      ad.e("MicroMsg.JsApiGetLabInfo", "fail:labId is null");
+      ae.e("MicroMsg.JsApiGetLabInfo", "fail:labId is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46365);
       return;
@@ -47,7 +47,7 @@ public final class JsApiGetLabInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<GetLabInfoResult> CREATOR;
-    private boolean dLd;
+    private boolean dMs;
     private boolean enabled;
     
     static
@@ -59,19 +59,19 @@ public final class JsApiGetLabInfo
     
     public GetLabInfoResult()
     {
-      this.dLd = false;
+      this.dMs = false;
       this.enabled = false;
     }
     
     protected GetLabInfoResult(Parcel paramParcel)
     {
       AppMethodBeat.i(46362);
-      this.dLd = false;
+      this.dMs = false;
       this.enabled = false;
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.dLd = bool1;
+        this.dMs = bool1;
         if (paramParcel.readByte() == 0) {
           break label60;
         }
@@ -96,7 +96,7 @@ public final class JsApiGetLabInfo
     {
       byte b2 = 1;
       AppMethodBeat.i(46361);
-      if (this.dLd)
+      if (this.dMs)
       {
         b1 = 1;
         paramParcel.writeByte(b1);

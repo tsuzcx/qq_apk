@@ -2,70 +2,78 @@ package com.tencent.mm.chatroom.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.aze;
-import com.tencent.mm.protocal.protobuf.azf;
-import com.tencent.mm.protocal.protobuf.vv;
-import com.tencent.mm.protocal.protobuf.vw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.azu;
+import com.tencent.mm.protocal.protobuf.azv;
+import com.tencent.mm.protocal.protobuf.vy;
+import com.tencent.mm.protocal.protobuf.vz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bq;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
   private f callback;
   final String chatroomName;
-  private int fKT;
-  private int fKU;
+  private int fMW;
+  private int fMX;
   private final b rr;
   
   public n(String paramString, int paramInt)
   {
     AppMethodBeat.i(12478);
     this.callback = null;
-    this.fKT = 0;
+    this.fMW = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new aze();
-    ((b.a)localObject).hNN = new azf();
+    ((b.a)localObject).hQF = new azu();
+    ((b.a)localObject).hQG = new azv();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getchatroommemberdetail";
     ((b.a)localObject).funcId = 551;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
+    this.rr = ((b.a)localObject).aDS();
     this.chatroomName = paramString;
-    int j = ((c)g.ab(c.class)).azz().AO(paramString).fpN();
-    ((aze)this.rr.hNK.hNQ).GwA = paramString;
-    localObject = (aze)this.rr.hNK.hNQ;
+    int j = ((c)g.ab(c.class)).azP().By(paramString).ftN();
+    ((azu)this.rr.hQD.hQJ).GQa = paramString;
+    localObject = (azu)this.rr.hQD.hQJ;
     if (j < paramInt) {}
     for (int i = paramInt;; i = j)
     {
-      ((aze)localObject).FCf = i;
-      ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom chatroomName:%s, oldVer:%d, localVer:%d, stack[%s]", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(j), bt.flS() });
+      ((azu)localObject).FUA = i;
+      ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom chatroomName:%s, oldVer:%d, localVer:%d, stack[%s]", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(j), bu.fpN() });
       AppMethodBeat.o(12478);
       return;
     }
+  }
+  
+  private static void a(ac paramac, int paramInt, List<vz> paramList)
+  {
+    AppMethodBeat.i(217115);
+    paramac.abv(paramInt);
+    paramac.C(v.aAC(), paramList);
+    AppMethodBeat.o(217115);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
@@ -82,231 +90,232 @@ public final class n
     return 551;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, final byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, final q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12480);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetSceneGetChatroomMemberDetail", "onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      ae.e("MicroMsg.NetSceneGetChatroomMemberDetail", "onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(12480);
       return;
     }
-    ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (azf)this.rr.hNL.hNQ;
-    paramArrayOfByte = ((c)g.ab(c.class)).azz().AO(this.chatroomName);
-    long l1 = paramArrayOfByte.fpN();
-    long l2 = 0xFFFFFFFF & paramq.nDf;
-    Object localObject = this.chatroomName;
-    int i = paramq.nDf;
-    if (paramq.GwB == null) {}
-    for (paramInt1 = 0;; paramInt1 = paramq.GwB.fLb)
+    ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    final azv localazv = (azv)this.rr.hQE.hQJ;
+    ac localac = ((c)g.ab(c.class)).azP().By(this.chatroomName);
+    long l1 = localac.ftN();
+    long l2 = localazv.nIA & 0xFFFFFFFF;
+    paramq = this.chatroomName;
+    int i = localazv.nIA;
+    if (localazv.GQb == null) {}
+    for (paramInt1 = 0;; paramInt1 = localazv.GQb.fNf)
     {
-      ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom chatroomName:%s svrVer:%d, modCnt:%d， localVer:%d", new Object[] { localObject, Integer.valueOf(i), Integer.valueOf(paramInt1), Long.valueOf(l1) });
+      ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom chatroomName:%s svrVer:%d, modCnt:%d， localVer:%d", new Object[] { paramq, Integer.valueOf(i), Integer.valueOf(paramInt1), Long.valueOf(l1) });
       if (l1 < l2) {
         break;
       }
-      ad.e("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom localVer[%d] serverVer[%d] is new and return", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+      ae.e("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom localVer[%d] serverVer[%d] is new and return", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(12480);
       return;
     }
-    paramArrayOfByte.aaN(paramq.nDf);
-    label312:
-    final bp localbp;
+    label302:
+    final bq localbq;
     final j localj;
-    final LinkedList localLinkedList;
+    final LinkedList localLinkedList1;
+    final LinkedList localLinkedList2;
     Iterator localIterator;
-    if (paramq.GwB == null)
+    if (localazv.GQb == null)
     {
       paramq = null;
       if (paramq != null) {
-        break label581;
+        break label561;
       }
       paramInt1 = -1;
-      ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom memInfoList size[%d]", new Object[] { Integer.valueOf(paramInt1) });
-      paramArrayOfByte.B(u.aAm(), paramq);
-      localbp = ((l)g.ab(l.class)).azp();
-      localj = p.aEx();
-      localObject = new LinkedList();
-      localLinkedList = new LinkedList();
+      ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom memInfoList size[%d]", new Object[] { Integer.valueOf(paramInt1) });
+      localbq = ((l)g.ab(l.class)).azF();
+      localj = p.aEN();
+      localLinkedList1 = new LinkedList();
+      localLinkedList2 = new LinkedList();
       if (paramInt1 <= WXHardCoderJNI.hcUpdateChatroomMemberCount) {
-        break label592;
+        break label572;
       }
       paramInt1 = 0;
-      this.fKU = paramInt1;
+      this.fMX = paramInt1;
       localIterator = paramq.iterator();
     }
     for (;;)
     {
-      label403:
+      label383:
       if (!localIterator.hasNext()) {
-        break label764;
+        break label744;
       }
-      vw localvw = (vw)localIterator.next();
-      if ((!bt.isNullOrNil(localvw.FVp)) && (!bt.isNullOrNil(localvw.nDo)))
+      vz localvz = (vz)localIterator.next();
+      if ((!bu.isNullOrNil(localvz.GnO)) && (!bu.isNullOrNil(localvz.nIJ)))
       {
-        paramq = localj.Dj(localvw.nDo);
-        if (paramq != null) {
-          break label657;
+        paramArrayOfByte = localj.DL(localvz.nIJ);
+        if (paramArrayOfByte != null) {
+          break label637;
         }
-        paramq = new com.tencent.mm.ak.i();
-        paramq.username = localvw.nDo;
-        label483:
-        paramq.hMX = localvw.FVo;
-        paramq.hMW = localvw.FVp;
-        paramq.ePj = 3;
-        if (bt.isNullOrNil(localvw.FVo)) {
-          break label674;
+        paramArrayOfByte = new com.tencent.mm.aj.i();
+        paramArrayOfByte.username = localvz.nIJ;
+        label463:
+        paramArrayOfByte.hPQ = localvz.GnN;
+        paramArrayOfByte.hPP = localvz.GnO;
+        paramArrayOfByte.eQU = 3;
+        if (bu.isNullOrNil(localvz.GnN)) {
+          break label654;
         }
       }
-      label657:
-      label674:
+      label654:
       for (boolean bool = true;; bool = false)
       {
-        paramq.eB(bool);
-        localLinkedList.add(paramq);
-        paramq = localbp.Bf(localvw.nDo);
-        if (paramq != null) {
-          break label680;
+        paramArrayOfByte.eD(bool);
+        localLinkedList2.add(paramArrayOfByte);
+        paramArrayOfByte = localbq.BH(localvz.nIJ);
+        if (paramArrayOfByte != null) {
+          break label660;
         }
-        ad.e("MicroMsg.NetSceneGetChatroomMemberDetail", "NetSceneGetChatroomMemberDetail memberlist username is null");
-        break label403;
-        paramq = paramq.GwB.FVk;
+        ae.e("MicroMsg.NetSceneGetChatroomMemberDetail", "NetSceneGetChatroomMemberDetail memberlist username is null");
+        break label383;
+        paramq = localazv.GQb.GnJ;
         break;
-        label581:
+        label561:
         paramInt1 = paramq.size();
-        break label312;
-        label592:
+        break label302;
+        label572:
         bool = WXHardCoderJNI.hcUpdateChatroomEnable;
         i = WXHardCoderJNI.hcUpdateChatroomDelay;
         int j = WXHardCoderJNI.hcUpdateChatroomCPU;
         int k = WXHardCoderJNI.hcUpdateChatroomIO;
         if (WXHardCoderJNI.hcUpdateChatroomThr) {}
-        for (paramInt1 = g.ajF().fkS();; paramInt1 = 0)
+        for (paramInt1 = g.ajU().foN();; paramInt1 = 0)
         {
           paramInt1 = WXHardCoderJNI.startPerformance(bool, i, j, k, paramInt1, WXHardCoderJNI.hcUpdateChatroomTimeout, 401, WXHardCoderJNI.hcUpdateChatroomAction, "MicroMsg.NetSceneGetChatroomMemberDetail");
           break;
         }
-        paramq.aEr().equals(localvw.FVp);
-        break label483;
+        label637:
+        paramArrayOfByte.aEH().equals(localvz.GnO);
+        break label463;
       }
-      label680:
-      if (paramq.adj())
+      label660:
+      if (paramArrayOfByte.adu())
       {
-        paramq.sT(localvw.nEt);
-        ((LinkedList)localObject).add(new Pair(localvw.nDo, paramq));
+        paramArrayOfByte.to(localvz.nJO);
+        localLinkedList1.add(new Pair(localvz.nIJ, paramArrayOfByte));
       }
       else
       {
-        ad.w("MicroMsg.NetSceneGetChatroomMemberDetail", "NetSceneGetChatroomMemberDetail isChatRoomContact == false, username %s nickname %s", new Object[] { bt.bI(localvw.nDo, ""), bt.bI(localvw.nEt, "") });
+        ae.w("MicroMsg.NetSceneGetChatroomMemberDetail", "NetSceneGetChatroomMemberDetail isChatRoomContact == false, username %s nickname %s", new Object[] { bu.bI(localvz.nIJ, ""), bu.bI(localvz.nJO, "") });
       }
     }
-    label764:
-    ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom update newImgFlagList size:%d, updateList size:%d", new Object[] { Integer.valueOf(localLinkedList.size()), Integer.valueOf(((LinkedList)localObject).size()) });
-    if (!localLinkedList.isEmpty())
+    label744:
+    ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom update newImgFlagList size:%d, updateList size:%d", new Object[] { Integer.valueOf(localLinkedList2.size()), Integer.valueOf(localLinkedList1.size()) });
+    if (!localLinkedList2.isEmpty())
     {
-      this.fKT |= 0x1;
-      paramq = new Runnable()
+      this.fMW |= 0x1;
+      paramArrayOfByte = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(213401);
+          AppMethodBeat.i(217113);
           int i;
-          if (localLinkedList.size() < 25)
+          if (localLinkedList2.size() < 25)
           {
-            i = localLinkedList.size();
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img list size:%d, loopCount:%d", new Object[] { n.this.chatroomName, Integer.valueOf(localLinkedList.size()), Integer.valueOf(i) });
+            i = localLinkedList2.size();
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img list size:%d, loopCount:%d", new Object[] { n.this.chatroomName, Integer.valueOf(localLinkedList2.size()), Integer.valueOf(i) });
             if (i != 0) {
-              break label136;
+              break label150;
             }
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img done loopCount is 0", new Object[] { n.this.chatroomName });
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img done loopCount is 0", new Object[] { n.this.chatroomName });
           }
-          label136:
-          label170:
+          label150:
+          label184:
           do
           {
             for (;;)
             {
-              n.a(n.this, 1, paramArrayOfByte);
-              ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img done newImgFlagList is empty", new Object[] { n.this.chatroomName });
-              AppMethodBeat.o(213401);
+              n.a(n.this, 1, n.this.chatroomName, localazv.nIA, paramq);
+              ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img done newImgFlagList is empty", new Object[] { n.this.chatroomName });
+              AppMethodBeat.o(217113);
               return;
               i = 25;
               break;
-              if (!localLinkedList.isEmpty()) {
-                break label170;
+              if (!localLinkedList2.isEmpty()) {
+                break label184;
               }
-              ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img done newImgFlagList is empty", new Object[] { n.this.chatroomName });
+              ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img done newImgFlagList is empty", new Object[] { n.this.chatroomName });
             }
             long l1 = System.currentTimeMillis();
-            long l2 = g.ajC().gBq.xO(Thread.currentThread().getId());
+            long l2 = g.ajR().gDX.yi(Thread.currentThread().getId());
             int j = 0;
             while (j < i)
             {
-              com.tencent.mm.ak.i locali = (com.tencent.mm.ak.i)localLinkedList.poll();
+              com.tencent.mm.aj.i locali = (com.tencent.mm.aj.i)localLinkedList2.poll();
               if (locali == null) {
                 break;
               }
               localj.b(locali);
               j += 1;
             }
-            g.ajC().gBq.sJ(l2);
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img loopCount:%d, take time:%d(ms), img list size:%d", new Object[] { n.this.chatroomName, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l1), Integer.valueOf(localLinkedList.size()) });
-          } while (localLinkedList.isEmpty());
-          com.tencent.e.h.LTJ.a(this, 100L, "chatroom_member_detail");
-          AppMethodBeat.o(213401);
+            g.ajR().gDX.sW(l2);
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update img loopCount:%d, take time:%d(ms), img list size:%d", new Object[] { n.this.chatroomName, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l1), Integer.valueOf(localLinkedList2.size()) });
+          } while (localLinkedList2.isEmpty());
+          com.tencent.e.h.MqF.a(this, 100L, "chatroom_member_detail");
+          AppMethodBeat.o(217113);
         }
       };
-      com.tencent.e.h.LTJ.a(paramq, 100L, "chatroom_member_detail");
+      com.tencent.e.h.MqF.a(paramArrayOfByte, 100L, "chatroom_member_detail");
     }
-    if (!((LinkedList)localObject).isEmpty())
+    if (!localLinkedList1.isEmpty())
     {
-      this.fKT |= 0x2;
-      paramq = new Runnable()
+      this.fMW |= 0x2;
+      paramArrayOfByte = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(213402);
+          AppMethodBeat.i(217114);
           int i;
-          if (this.fKZ.size() < 25)
+          if (localLinkedList1.size() < 25)
           {
-            i = this.fKZ.size();
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg list size:%d, loopCount:%d", new Object[] { n.this.chatroomName, Integer.valueOf(this.fKZ.size()), Integer.valueOf(i) });
+            i = localLinkedList1.size();
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg list size:%d, loopCount:%d", new Object[] { n.this.chatroomName, Integer.valueOf(localLinkedList1.size()), Integer.valueOf(i) });
             if (i != 0) {
-              break label136;
+              break label150;
             }
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg done loopCount is 0", new Object[] { n.this.chatroomName });
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg done loopCount is 0", new Object[] { n.this.chatroomName });
           }
-          label136:
+          label150:
           do
           {
-            n.a(n.this, 2, paramArrayOfByte);
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg done updateList is empty", new Object[] { n.this.chatroomName });
-            AppMethodBeat.o(213402);
+            n.a(n.this, 2, n.this.chatroomName, localazv.nIA, paramq);
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg done updateList is empty", new Object[] { n.this.chatroomName });
+            AppMethodBeat.o(217114);
             return;
             i = 25;
             break;
             long l1 = System.currentTimeMillis();
-            long l2 = g.ajC().gBq.xO(Thread.currentThread().getId());
+            long l2 = g.ajR().gDX.yi(Thread.currentThread().getId());
             int j = 0;
             while (j < i)
             {
-              Pair localPair = (Pair)this.fKZ.poll();
-              localbp.c((String)localPair.first, (am)localPair.second);
+              Pair localPair = (Pair)localLinkedList1.poll();
+              localbq.c((String)localPair.first, (an)localPair.second);
               j += 1;
             }
-            g.ajC().gBq.sJ(l2);
-            ad.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg loopCount:%d, take time:%d(ms), img list size:%d", new Object[] { n.this.chatroomName, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l1), Integer.valueOf(this.fKZ.size()) });
-          } while (this.fKZ.isEmpty());
-          com.tencent.e.h.LTJ.a(this, 100L, "chatroom_member_detail");
-          AppMethodBeat.o(213402);
+            g.ajR().gDX.sW(l2);
+            ae.i("MicroMsg.NetSceneGetChatroomMemberDetail", "summerChatRoom(%s) update ctg loopCount:%d, take time:%d(ms), img list size:%d", new Object[] { n.this.chatroomName, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l1), Integer.valueOf(localLinkedList1.size()) });
+          } while (localLinkedList1.isEmpty());
+          com.tencent.e.h.MqF.a(this, 100L, "chatroom_member_detail");
+          AppMethodBeat.o(217114);
         }
       };
-      com.tencent.e.h.LTJ.a(paramq, 100L, "chatroom_member_detail");
+      com.tencent.e.h.MqF.a(paramArrayOfByte, 100L, "chatroom_member_detail");
     }
-    if ((localLinkedList.isEmpty()) && (((LinkedList)localObject).isEmpty())) {
-      ((c)g.ab(c.class)).azz().replace(paramArrayOfByte);
+    if ((localLinkedList2.isEmpty()) && (localLinkedList1.isEmpty()))
+    {
+      a(localac, localazv.nIA, paramq);
+      ((c)g.ab(c.class)).azP().replace(localac);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12480);

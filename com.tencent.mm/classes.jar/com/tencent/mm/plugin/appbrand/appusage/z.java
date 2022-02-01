@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.widget.recentview.d;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.bit;
 import java.util.concurrent.TimeUnit;
 
 public final class z
-  extends com.tencent.mm.al.a<bid>
+  extends com.tencent.mm.ak.a<bit>
 {
-  private static final long jPD;
+  private static final long jSV;
   
   static
   {
     AppMethodBeat.i(44638);
-    jPD = TimeUnit.MINUTES.toSeconds(5L);
+    jSV = TimeUnit.MINUTES.toSeconds(5L);
     AppMethodBeat.o(44638);
   }
   
-  public static void bcy()
+  public static void bdd()
   {
     AppMethodBeat.i(44635);
-    if (!g.ajA().gAD)
+    if (!g.ajP().gDk)
     {
       AppMethodBeat.o(44635);
       return;
@@ -35,9 +35,9 @@ public final class z
     static
     {
       AppMethodBeat.i(44634);
-      jPE = new a("DAILY", 0);
-      jPF = new a("SEARCH", 1);
-      jPG = new a[] { jPE, jPF };
+      jSW = new a("DAILY", 0);
+      jSX = new a("SEARCH", 1);
+      jSY = new a[] { jSW, jSX };
       AppMethodBeat.o(44634);
     }
     

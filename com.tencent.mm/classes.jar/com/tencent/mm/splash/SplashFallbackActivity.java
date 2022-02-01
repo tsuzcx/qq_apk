@@ -10,25 +10,25 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 public class SplashFallbackActivity
   extends HellActivity
 {
-  private Runnable IkV;
+  private Runnable IFg;
   private Handler mHandler;
   
   public SplashFallbackActivity()
   {
     AppMethodBeat.i(40668);
-    this.IkV = new Runnable()
+    this.IFg = new Runnable()
     {
-      private long IkW = -1L;
+      private long IFh = -1L;
       
       public final void run()
       {
         AppMethodBeat.i(40667);
-        if (this.IkW == -1L) {
-          this.IkW = System.currentTimeMillis();
+        if (this.IFh == -1L) {
+          this.IFh = System.currentTimeMillis();
         }
-        if (!SplashFallbackActivity.fnC())
+        if (!SplashFallbackActivity.frv())
         {
-          if (System.currentTimeMillis() - this.IkW >= 80000L)
+          if (System.currentTimeMillis() - this.IFh >= 80000L)
           {
             h.b("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
             SplashFallbackActivity.this.finish();
@@ -64,7 +64,7 @@ public class SplashFallbackActivity
     paramBundle = new HandlerThread("splash-activity");
     paramBundle.start();
     this.mHandler = new Handler(paramBundle.getLooper());
-    this.mHandler.postDelayed(this.IkV, 100L);
+    this.mHandler.postDelayed(this.IFg, 100L);
     AppMethodBeat.o(40669);
   }
   

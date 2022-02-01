@@ -5,11 +5,11 @@ import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.z.b;
-import com.tencent.mm.plugin.appbrand.z.p.a;
+import com.tencent.mm.plugin.appbrand.y.b;
+import com.tencent.mm.plugin.appbrand.y.p.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.k;
 
 public final class f
   implements p.a
@@ -22,7 +22,7 @@ public final class f
     this.mContext = paramContext;
   }
   
-  public final String DW()
+  public final String DZ()
   {
     return " MicroMessenger/";
   }
@@ -39,15 +39,15 @@ public final class f
     }
     try
     {
-      localObject = b.getPackageInfo(this.mContext, aj.getPackageName());
+      localObject = b.getPackageInfo(this.mContext, ak.getPackageName());
       if (localObject != null)
       {
-        this.version += j.aD(null, d.Fnj);
+        this.version += k.aD(null, d.FFH);
         this.version = (this.version + "." + ((PackageInfo)localObject).versionCode);
-        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.Fnj) }) + ")");
+        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.FFH) }) + ")");
         StringBuilder localStringBuilder = new StringBuilder().append(this.version).append(" Process/");
-        localObject = aj.getPackageName().trim().toLowerCase();
-        str2 = aj.getProcessName().trim().toLowerCase();
+        localObject = ak.getPackageName().trim().toLowerCase();
+        str2 = ak.getProcessName().trim().toLowerCase();
         if (!str2.equals(localObject)) {
           break label312;
         }
@@ -59,7 +59,7 @@ public final class f
         }
         localObject = "arm64";
         this.version = ((String)localObject);
-        if (j.fjZ()) {
+        if (k.fnT()) {
           this.version += " GPVersion/1";
         }
       }

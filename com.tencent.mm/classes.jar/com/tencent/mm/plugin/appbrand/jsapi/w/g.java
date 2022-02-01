@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.w;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.utils.aa.a;
+import com.tencent.mm.plugin.appbrand.utils.ad.a;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,14 +12,14 @@ final class g
   static final int CTRL_INDEX = 473;
   static final String NAME = "onDeviceOrientationChange";
   
-  final void b(aa.a parama)
+  final void b(ad.a parama)
   {
     AppMethodBeat.i(137639);
     parama = parama.name().replace("_", "");
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("errMsg", "ok");
     localHashMap.put("value", parama);
-    B(localHashMap).bir();
+    I(localHashMap).bja();
     AppMethodBeat.o(137639);
   }
 }

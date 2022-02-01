@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.multitalk.model;
 import android.graphics.Bitmap;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "", "drawBitmap", "", "bm", "Landroid/graphics/Bitmap;", "angle", "", "mirror", "getSurface", "Landroid/view/Surface;", "getUsername", "", "plugin-multitalk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "", "drawBitmap", "", "bm", "Landroid/graphics/Bitmap;", "angle", "", "mirror", "getSurface", "Landroid/view/Surface;", "getUsername", "", "plugin-multitalk_release"})
 public abstract interface f
 {
   public abstract void e(Bitmap paramBitmap, int paramInt1, int paramInt2);

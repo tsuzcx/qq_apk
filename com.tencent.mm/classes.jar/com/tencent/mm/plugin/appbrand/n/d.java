@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.brg;
-import com.tencent.mm.protocal.protobuf.brh;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bsa;
+import com.tencent.mm.protocal.protobuf.bsb;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class d
   extends e
@@ -16,16 +16,16 @@ public final class d
     super(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramInt4, parama);
   }
   
-  protected final b.a btd()
+  protected final b.a btO()
   {
     AppMethodBeat.i(47752);
-    ad.d("MicroMsg.webview.NetSceneJSOperateImportantWxData", "getReqRespBuidler");
+    ae.d("MicroMsg.webview.NetSceneJSOperateImportantWxData", "getReqRespBuidler");
     b.a locala = new b.a();
-    locala.hNM = new brg();
-    locala.hNN = new brh();
+    locala.hQF = new bsa();
+    locala.hQG = new bsb();
     locala.uri = "/cgi-bin/mmbiz-bin/js-operatewxdata-vip";
     locala.funcId = 1912;
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
     AppMethodBeat.o(47752);
     return locala;
@@ -33,7 +33,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n.d
  * JD-Core Version:    0.7.0.1
  */

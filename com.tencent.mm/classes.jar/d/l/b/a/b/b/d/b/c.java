@@ -12,19 +12,19 @@ public final class c
   extends n
   implements d.l.b.a.b.d.a.e.a
 {
-  public final Annotation MZS;
+  public final Annotation NwY;
   
   public c(Annotation paramAnnotation)
   {
     AppMethodBeat.i(57414);
-    this.MZS = paramAnnotation;
+    this.NwY = paramAnnotation;
     AppMethodBeat.o(57414);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57411);
-    if (((paramObject instanceof c)) && (p.i(this.MZS, ((c)paramObject).MZS)))
+    if (((paramObject instanceof c)) && (p.i(this.NwY, ((c)paramObject).NwY)))
     {
       AppMethodBeat.o(57411);
       return true;
@@ -33,18 +33,18 @@ public final class c
     return false;
   }
   
-  public final d.l.b.a.b.f.a ggt()
+  public final d.l.b.a.b.f.a gkV()
   {
     AppMethodBeat.i(57409);
-    d.l.b.a.b.f.a locala = b.bB(d.g.a.a(d.g.a.a(this.MZS)));
+    d.l.b.a.b.f.a locala = b.bB(d.g.a.a(d.g.a.a(this.NwY)));
     AppMethodBeat.o(57409);
     return locala;
   }
   
-  public final Collection<d.l.b.a.b.d.a.e.b> gkz()
+  public final Collection<d.l.b.a.b.d.a.e.b> gpb()
   {
     AppMethodBeat.i(57408);
-    Object localObject1 = d.g.a.a(d.g.a.a(this.MZS)).getDeclaredMethods();
+    Object localObject1 = d.g.a.a(d.g.a.a(this.NwY)).getDeclaredMethods();
     p.g(localObject1, "annotation.annotationClass.java.declaredMethods");
     Collection localCollection = (Collection)new ArrayList(localObject1.length);
     int j = localObject1.length;
@@ -52,11 +52,11 @@ public final class c
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      Object localObject3 = d.Nap;
-      localObject3 = localObject2.invoke(this.MZS, new Object[0]);
+      Object localObject3 = d.Nxv;
+      localObject3 = localObject2.invoke(this.NwY, new Object[0]);
       p.g(localObject3, "method.invoke(annotation)");
       p.g(localObject2, "method");
-      localCollection.add(d.a.a(localObject3, f.bcE(localObject2.getName())));
+      localCollection.add(d.a.a(localObject3, f.bei(localObject2.getName())));
       i += 1;
     }
     localObject1 = (Collection)localCollection;
@@ -67,7 +67,7 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(57412);
-    int i = this.MZS.hashCode();
+    int i = this.NwY.hashCode();
     AppMethodBeat.o(57412);
     return i;
   }
@@ -75,14 +75,14 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(57413);
-    String str = getClass().getName() + ": " + this.MZS;
+    String str = getClass().getName() + ": " + this.NwY;
     AppMethodBeat.o(57413);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -404,7 +404,7 @@ public class a
   public static final String a(boolean paramBoolean)
   {
     AppMethodBeat.i(53857);
-    if (b.c())
+    if (b.d())
     {
       if (paramBoolean)
       {

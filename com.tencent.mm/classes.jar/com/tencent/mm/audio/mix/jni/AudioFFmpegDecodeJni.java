@@ -5,8 +5,8 @@ import com.tencent.mm.audio.mix.d.l;
 
 public class AudioFFmpegDecodeJni
 {
-  protected long ddO = 0L;
-  protected long ddP = 0L;
+  protected long deQ = 0L;
+  protected long deR = 0L;
   
   static
   {
@@ -25,7 +25,7 @@ public class AudioFFmpegDecodeJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.audio.mix.jni.AudioFFmpegDecodeJni
  * JD-Core Version:    0.7.0.1
  */

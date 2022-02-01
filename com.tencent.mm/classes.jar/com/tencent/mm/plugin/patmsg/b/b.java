@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.patmsg.b;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.b.a.ek;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.b.a.em;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.protocal.protobuf.dab;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dau;
+import com.tencent.mm.protocal.protobuf.dav;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends n
   implements k
 {
   private f callback;
-  public com.tencent.mm.al.b hWL;
-  public Pair<Long, Long> wFK;
-  public ek wFL;
+  public com.tencent.mm.ak.b hZD;
+  public Pair<Long, Long> wVv;
+  public em wVw;
   
   public b(Pair<Long, Long> paramPair, String paramString1, String paramString2)
   {
@@ -31,29 +31,29 @@ public final class b
   
   public b(Pair<Long, Long> paramPair, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(215714);
-    daa localdaa = new daa();
-    localdaa.Hgt = u.aAm();
-    localdaa.Hqt = paramString1;
-    localdaa.Hqu = paramString2;
-    localdaa.Fwt = ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).d(paramPair);
-    localdaa.Scene = paramInt;
-    this.wFK = paramPair;
+    AppMethodBeat.i(220348);
+    dau localdau = new dau();
+    localdau.HzT = v.aAC();
+    localdau.HJV = paramString1;
+    localdau.HJW = paramString2;
+    localdau.FOR = ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).d(paramPair);
+    localdau.Scene = paramInt;
+    this.wVv = paramPair;
     paramPair = new b.a();
-    paramPair.hNM = localdaa;
+    paramPair.hQF = localdau;
     paramPair.uri = "/cgi-bin/micromsg-bin/sendpat";
     paramPair.funcId = getType();
-    paramPair.hNN = new dab();
-    this.hWL = paramPair.aDC();
-    AppMethodBeat.o(215714);
+    paramPair.hQG = new dav();
+    this.hZD = paramPair.aDS();
+    AppMethodBeat.o(220348);
   }
   
   public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(215715);
+    AppMethodBeat.i(220349);
     this.callback = paramf;
-    int i = dispatch(parame, this.hWL, this);
-    AppMethodBeat.o(215715);
+    int i = dispatch(parame, this.hZD, this);
+    AppMethodBeat.o(220349);
     return i;
   }
   
@@ -64,15 +64,15 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215716);
-    ad.i("MicroMsg.NetSceneSendPat", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(220350);
+    ae.i("MicroMsg.NetSceneSendPat", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(215716);
+    AppMethodBeat.o(220350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.b.b
  * JD-Core Version:    0.7.0.1
  */

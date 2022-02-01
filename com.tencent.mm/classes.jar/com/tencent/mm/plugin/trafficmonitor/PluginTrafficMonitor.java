@@ -14,11 +14,11 @@ public class PluginTrafficMonitor
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(123901);
-    if ((paramg.akw()) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT > 19))
+    if ((paramg.akL()) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT > 19))
     {
       paramg.ca.registerReceiver(new TrafficClickFlowReceiver(), new IntentFilter("com.tencent.mm.Intent.ACTION_NET_STATS"));
-      g.erk();
-      g.erl();
+      g.euR();
+      g.euS();
     }
     AppMethodBeat.o(123901);
   }

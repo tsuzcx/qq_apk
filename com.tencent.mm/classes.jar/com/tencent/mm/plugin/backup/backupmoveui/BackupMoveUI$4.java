@@ -16,8 +16,8 @@ final class BackupMoveUI$4
     AppMethodBeat.i(21469);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    BackupMoveUI.g(this.nxd);
+    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    BackupMoveUI.g(this.nCy);
     a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(21469);
   }

@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class b
   extends j<a>
 {
-  public static final String[] hEf;
-  private final boolean kld;
+  public static final String[] hGX;
+  private final boolean kot;
   
   static
   {
     AppMethodBeat.i(45098);
-    hEf = new String[] { j.getCreateSQLs(a.info, "WxagGameInfo") };
+    hGX = new String[] { j.getCreateSQLs(a.info, "WxagGameInfo") };
     AppMethodBeat.o(45098);
   }
   
@@ -26,9 +26,9 @@ public final class b
     if (parame != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.kld = bool;
-      if (!this.kld) {
-        ad.e("MicroMsg.MiniGameInfoStorage", "storage can not work!!!");
+      this.kot = bool;
+      if (!this.kot) {
+        ae.e("MicroMsg.MiniGameInfoStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(45096);
       return;

@@ -8,12 +8,12 @@ import java.nio.ByteBuffer;
 public final class h
   extends c<ByteBuffer>
 {
-  public static h hwD;
+  public static h hzr;
   
   static
   {
     AppMethodBeat.i(156425);
-    hwD = new h();
+    hzr = new h();
     b.c(new Runnable()
     {
       public final void run()
@@ -22,7 +22,7 @@ public final class h
         int i = 0;
         while (i < 10)
         {
-          h.a(h.hwD, ByteBuffer.allocate(16384));
+          h.a(h.hzr, ByteBuffer.allocate(16384));
           i += 1;
         }
         AppMethodBeat.o(156424);

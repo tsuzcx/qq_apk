@@ -48,8 +48,8 @@ public final class xv
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       localPaint2 = c.a(localPaint2, paramVarArgs);
-      localPaint1.setColor(-13882324);
-      localPaint2.setColor(218103807);
+      localPaint1.setColor(-1);
+      localPaint2.setColor(838860800);
       localPaint2.setStrokeWidth(1.5F);
       arrayOfFloat = c.a(arrayOfFloat, -1.0F, 0.0F, 192.0F, 0.0F, 1.0F, 0.0F);
       ((Matrix)localObject).reset();

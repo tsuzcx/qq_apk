@@ -8,24 +8,24 @@ import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderEmptyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderEmptyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class b
   extends com.tencent.mm.view.recyclerview.b<a>
 {
   public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
   {
-    AppMethodBeat.i(201303);
+    AppMethodBeat.i(201730);
     p.h(paramRecyclerView, "recyclerView");
     p.h(parame, "holder");
-    AppMethodBeat.o(201303);
+    AppMethodBeat.o(201730);
   }
   
   public final void a(e parame, a parama, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(201304);
+    AppMethodBeat.i(201731);
     p.h(parame, "holder");
     p.h(parama, "item");
-    AppMethodBeat.o(201304);
+    AppMethodBeat.o(201731);
   }
   
   public final int getLayoutId()
@@ -35,7 +35,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.b
  * JD-Core Version:    0.7.0.1
  */

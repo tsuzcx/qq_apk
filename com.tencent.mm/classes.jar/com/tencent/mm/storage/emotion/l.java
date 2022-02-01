@@ -15,20 +15,20 @@ public final class l
   {
     AppMethodBeat.i(105115);
     c.a locala = new c.a();
-    locala.IhA = new Field[3];
+    locala.IBL = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "productID";
-    locala.IhC.put("productID", "TEXT PRIMARY KEY ");
+    locala.IBN.put("productID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" productID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "productID";
+    locala.IBM = "productID";
     locala.columns[1] = "content";
-    locala.IhC.put("content", "BLOB default '' ");
+    locala.IBN.put("content", "BLOB default '' ");
     localStringBuilder.append(" content BLOB default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "lan";
-    locala.IhC.put("lan", "TEXT default '' ");
+    locala.IBN.put("lan", "TEXT default '' ");
     localStringBuilder.append(" lan TEXT default '' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

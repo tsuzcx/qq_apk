@@ -4,10 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.g;
 import com.tencent.mm.g.a.bn;
 import com.tencent.mm.g.a.bn.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.FileSystem.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.l;
 import d.z;
@@ -15,21 +13,21 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "", "()V", "checkResUpdateCacheFileEventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "downloadFileSuccessCallback", "Lkotlin/Function0;", "", "getDownloadFileSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setDownloadFileSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "<set-?>", "", "fileExist", "getFileExist", "()Z", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "checkFile", "checkRes", "getConfigJson", "Lorg/json/JSONArray;", "getFileDirName", "", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResTmpPath", "getResType", "", "getSubType", "getTag", "init", "moveFileToTargetPath", "fileName", "reportEdit", "unInit", "unzipRes", "filePath", "type", "subType", "version", "Companion", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "", "()V", "checkResUpdateCacheFileEventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "downloadFileSuccessCallback", "Lkotlin/Function0;", "", "getDownloadFileSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setDownloadFileSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "<set-?>", "", "fileExist", "getFileExist", "()Z", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "checkFile", "checkRes", "getConfigJson", "Lorg/json/JSONArray;", "getFileDirName", "", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResTmpPath", "getResType", "", "getSubType", "getTag", "init", "moveFileToTargetPath", "fileName", "reportEdit", "unInit", "unzipRes", "filePath", "type", "subType", "version", "Companion", "plugin-recordvideo_release"})
 public abstract class a
 {
-  public static final a.a xHp = new a.a((byte)0);
-  final c<bn> hWH = (c)new b(this);
-  public boolean xHn;
-  public d.g.a.a<z> xHo;
+  public static final a.a xXk = new a.a((byte)0);
+  final com.tencent.mm.sdk.b.c<bn> hZz = (com.tencent.mm.sdk.b.c)new b(this);
+  public boolean xXi;
+  public d.g.a.a<z> xXj;
   
-  private final boolean aHr()
+  private final boolean aHI()
   {
-    Object localObject = dGV() + "config.json";
-    ad.i(getTag(), "absConfigPath is:".concat(String.valueOf(localObject)));
-    if (i.fv((String)localObject))
+    Object localObject = dKm() + "config.json";
+    ae.i(getTag(), "absConfigPath is:".concat(String.valueOf(localObject)));
+    if (o.fB((String)localObject))
     {
-      localObject = i.aYq((String)localObject);
+      localObject = o.aZT((String)localObject);
       try
       {
         localObject = new JSONArray((String)localObject);
@@ -38,17 +36,17 @@ public abstract class a
         while (i < k)
         {
           JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          String[] arrayOfString = dGU();
+          String[] arrayOfString = dKl();
           int m = arrayOfString.length;
           int j = 0;
           while (j < m)
           {
             String str = arrayOfString[j];
-            str = dGV() + localJSONObject.optString(str);
-            ad.i(getTag(), "file index:" + i + " path:" + str);
-            if (!i.fv(str))
+            str = dKm() + localJSONObject.optString(str);
+            ae.i(getTag(), "file index:" + i + " path:" + str);
+            if (!o.fB(str))
             {
-              ad.e(getTag(), "file not exist.path:".concat(String.valueOf(str)));
+              ae.e(getTag(), "file not exist.path:".concat(String.valueOf(str)));
               return false;
             }
             j += 1;
@@ -59,17 +57,17 @@ public abstract class a
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace(getTag(), (Throwable)localException, "video res parse config error!", new Object[0]);
+        ae.printErrStackTrace(getTag(), (Throwable)localException, "video res parse config error!", new Object[0]);
         return false;
       }
     }
-    ad.i(getTag(), "config not exist.");
+    ae.i(getTag(), "config not exist.");
     return false;
   }
   
-  private final String dGX()
+  private final String dKo()
   {
-    return dGV() + "temp/";
+    return dKm() + "temp/";
   }
   
   private final void n(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -78,21 +76,21 @@ public abstract class a
     Object localObject;
     try
     {
-      ad.i(getTag(), "unzipRes: %s", new Object[] { paramString });
-      if (!i.fv(paramString)) {
+      ae.i(getTag(), "unzipRes: %s", new Object[] { paramString });
+      if (!o.fB(paramString)) {
         break label626;
       }
-      i.aYg(dGX());
-      j = i.fz(paramString, dGX());
-      ad.i(getTag(), "unzip file ret:" + j + "  " + dGX());
-      paramString = i.de(dGX() + dGW(), false);
+      o.aZI(dKo());
+      j = o.fD(paramString, dKo());
+      ae.i(getTag(), "unzip file ret:" + j + "  " + dKo());
+      paramString = o.dh(dKo() + dKn(), false);
       if (paramString != null)
       {
         paramString = paramString.iterator();
         while (paramString.hasNext())
         {
-          localObject = (FileSystem.a)paramString.next();
-          ad.i(getTag(), "unzip file path:" + ((FileSystem.a)localObject).HZk + " name:" + ((FileSystem.a)localObject).name + " size:" + ((FileSystem.a)localObject).size);
+          localObject = (com.tencent.mm.vfs.c)paramString.next();
+          ae.i(getTag(), "unzip file path:" + ((com.tencent.mm.vfs.c)localObject).Itr + " name:" + ((com.tencent.mm.vfs.c)localObject).name + " size:" + ((com.tencent.mm.vfs.c)localObject).size);
         }
       }
       i = 0;
@@ -104,11 +102,11 @@ public abstract class a
     {
       try
       {
-        if (!i.fv(dGX() + dGW() + "config.json")) {
+        if (!o.fB(dKo() + dKn() + "config.json")) {
           break label797;
         }
-        paramString = i.aYq(dGX() + dGW() + "config.json");
-        ad.i(getTag(), "meta json: %s", new Object[] { paramString });
+        paramString = o.aZT(dKo() + dKn() + "config.json");
+        ae.i(getTag(), "meta json: %s", new Object[] { paramString });
         paramString = new JSONArray(paramString);
         i = 0;
         int k = paramString.length();
@@ -116,7 +114,7 @@ public abstract class a
           break label713;
         }
         localObject = paramString.getJSONObject(i);
-        String[] arrayOfString = dGU();
+        String[] arrayOfString = dKl();
         int m = arrayOfString.length;
         j = 0;
         if (j >= m) {
@@ -124,72 +122,72 @@ public abstract class a
         }
         str1 = ((JSONObject)localObject).optString(arrayOfString[j]);
         p.g(str1, "item.optString(it)");
-        String str2 = dGX() + dGW() + str1;
-        String str3 = dGV() + str1;
-        ad.i(getTag(), "file tmp:" + str2 + "  real:" + str3);
-        if (i.fv(str2)) {
-          if (!i.fv(str3))
+        String str2 = dKo() + dKn() + str1;
+        String str3 = dKm() + str1;
+        ae.i(getTag(), "file tmp:" + str2 + "  real:" + str3);
+        if (o.fB(str2)) {
+          if (!o.fB(str3))
           {
-            ad.i(getTag(), "move file ".concat(String.valueOf(str1)));
-            i.mA(str2, str3);
+            ae.i(getTag(), "move file ".concat(String.valueOf(str1)));
+            o.mG(str2, str3);
           }
           else if ((p.i(g.getMD5(str2), g.getMD5(str3)) ^ true))
           {
-            i.deleteFile(str3);
-            i.mA(str2, str3);
-            ad.i(getTag(), "replace file ".concat(String.valueOf(str1)));
+            o.deleteFile(str3);
+            o.mG(str2, str3);
+            ae.i(getTag(), "replace file ".concat(String.valueOf(str1)));
           }
         }
       }
       catch (Exception paramString)
       {
         String str1;
-        ad.printErrStackTrace(getTag(), (Throwable)paramString, "unzipRes error: %s", new Object[] { paramString.getMessage() });
-        dGS().dHg();
-        ad.i(getTag(), "unzip failed");
-        paramString = this.xHo;
+        ae.printErrStackTrace(getTag(), (Throwable)paramString, "unzipRes error: %s", new Object[] { paramString.getMessage() });
+        dKj().dKx();
+        ae.i(getTag(), "unzip failed");
+        paramString = this.xXj;
         if (paramString != null) {
           paramString.invoke();
         }
-        i.cZ(dGX(), true);
+        o.dd(dKo(), true);
         label626:
         return;
-        ad.i(getTag(), "already has file ".concat(String.valueOf(str1)));
+        ae.i(getTag(), "already has file ".concat(String.valueOf(str1)));
       }
       finally
       {
-        dGS().dHg();
-        ad.i(getTag(), "unzip failed");
-        localObject = this.xHo;
+        dKj().dKx();
+        ae.i(getTag(), "unzip failed");
+        localObject = this.xXj;
         if (localObject != null) {
           ((d.g.a.a)localObject).invoke();
         }
-        i.cZ(dGX(), true);
+        o.dd(dKo(), true);
       }
-      ad.e(getTag(), "fuck! config does not matching file list!!!!!!!!");
+      ae.e(getTag(), "fuck! config does not matching file list!!!!!!!!");
       break label886;
       label713:
-      i.deleteFile(dGV() + "config.json");
-      i.mA(dGX() + dGW() + "config.json", dGV() + "config.json");
+      o.deleteFile(dKm() + "config.json");
+      o.mG(dKo() + dKn() + "config.json", dKm() + "config.json");
       i = 1;
       label797:
       if (i == 0)
       {
-        dGS().dHg();
-        ad.i(getTag(), "unzip failed");
+        dKj().dKx();
+        ae.i(getTag(), "unzip failed");
       }
       for (;;)
       {
-        paramString = this.xHo;
+        paramString = this.xXj;
         if (paramString != null) {
           paramString.invoke();
         }
-        i.cZ(dGX(), true);
+        o.dd(dKo(), true);
         break;
-        dGS().dHf();
-        ad.i(getTag(), "unzip success");
-        com.tencent.mm.pluginsdk.j.a.a.b.faE().aG(paramInt1, paramInt2, paramInt3);
-        this.xHn = true;
+        dKj().dKw();
+        ae.i(getTag(), "unzip success");
+        com.tencent.mm.pluginsdk.j.a.a.b.fes().aH(paramInt1, paramInt2, paramInt3);
+        this.xXi = true;
       }
       label886:
       j += 1;
@@ -199,72 +197,72 @@ public abstract class a
     }
   }
   
-  public final void aHq()
+  public final void aHH()
   {
-    ad.i(getTag(), "checkRes " + dGT());
-    com.tencent.mm.pluginsdk.j.a.a.b.faE();
-    com.tencent.mm.pluginsdk.j.a.a.b.Yx(dGT());
-    dGS().aHq();
+    ae.i(getTag(), "checkRes " + dKk());
+    com.tencent.mm.pluginsdk.j.a.a.b.fes();
+    com.tencent.mm.pluginsdk.j.a.a.b.Zd(dKk());
+    dKj().aHH();
   }
   
-  public abstract b dGS();
+  public abstract b dKj();
   
-  public abstract int dGT();
+  public abstract int dKk();
   
-  public abstract String[] dGU();
+  public abstract String[] dKl();
   
-  public abstract String dGV();
+  public abstract String dKm();
   
-  public abstract String dGW();
+  public abstract String dKn();
   
-  public final JSONArray dGY()
+  public final JSONArray dKp()
   {
-    if (this.xHn) {
-      return new JSONArray(i.aYq(dGV() + "config.json"));
+    if (this.xXi) {
+      return new JSONArray(o.aZT(dKm() + "config.json"));
     }
     return null;
   }
   
-  public final void dGZ()
+  public final void dKq()
   {
-    if (this.xHn)
+    if (this.xXi)
     {
-      dGS().dHc();
+      dKj().dKt();
       return;
     }
-    dGS().dHd();
+    dKj().dKu();
   }
   
   public abstract String getTag();
   
   public final void init()
   {
-    ad.i(getTag(), "init");
-    this.hWH.alive();
-    if (aHr()) {
-      this.xHn = true;
+    ae.i(getTag(), "init");
+    this.hZz.alive();
+    if (aHI()) {
+      this.xXi = true;
     }
-    while (this.xHn)
+    while (this.xXi)
     {
-      dGS().dHa();
+      dKj().dKr();
       return;
-      com.tencent.mm.pluginsdk.j.a.a.b.faE();
-      String str = com.tencent.mm.pluginsdk.j.a.a.b.jm(dGT(), 1);
-      if (i.fv(str))
+      com.tencent.mm.pluginsdk.j.a.a.b.fes();
+      String str = com.tencent.mm.pluginsdk.j.a.a.b.jq(dKk(), 1);
+      if (o.fB(str))
       {
-        ad.i(getTag(), "cache file exist %s", new Object[] { str });
+        ae.i(getTag(), "cache file exist %s", new Object[] { str });
         p.g(str, "cacheFile");
-        n(str, dGT(), 1, 1);
+        n(str, dKk(), 1, 1);
       }
     }
-    dGS().dHb();
+    dKj().dKs();
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$checkResUpdateCacheFileEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$checkResUpdateCacheFileEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-recordvideo_release"})
   public static final class b
-    extends c<bn>
+    extends com.tencent.mm.sdk.b.c<bn>
   {
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -272,19 +270,19 @@ public abstract class a
       
       public final void run()
       {
-        AppMethodBeat.i(200403);
-        a locala = this.xHr.xHq;
-        String str = this.xHs.dmw.filePath;
+        AppMethodBeat.i(206664);
+        a locala = this.xXm.xXl;
+        String str = this.xXn.dny.filePath;
         p.g(str, "event.data.filePath");
-        a.a(locala, str, this.xHs.dmw.dmx, this.xHs.dmw.subType, this.xHs.dmw.dmy);
-        AppMethodBeat.o(200403);
+        a.a(locala, str, this.xXn.dny.dnz, this.xXn.dny.subType, this.xXn.dny.dnA);
+        AppMethodBeat.o(206664);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ai
 {
-  static ai.a[] h(TextView paramTextView)
+  static ai.a[] g(TextView paramTextView)
   {
     int i = 0;
     AppMethodBeat.i(131517);

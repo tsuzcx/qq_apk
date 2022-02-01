@@ -3,28 +3,28 @@ package com.tencent.mm.plugin.wepkg;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.c.a.a;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class PluginWePkg$2
   implements a.a
 {
   PluginWePkg$2(PluginWePkg paramPluginWePkg) {}
   
-  public final void ccc()
+  public final void cdr()
   {
-    AppMethodBeat.i(214440);
+    AppMethodBeat.i(209368);
     try
     {
-      c.cda();
-      ad.i("MicroMsg.GameJsServerCommLibPkg", "load");
-      AppMethodBeat.o(214440);
+      c.cep();
+      ae.i("MicroMsg.GameJsServerCommLibPkg", "load");
+      AppMethodBeat.o(209368);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.WePkg.PluginWePkg", localException, "", new Object[0]);
-      g.yhR.idkeyStat(859L, 19L, 1L, false);
-      AppMethodBeat.o(214440);
+      ae.printErrStackTrace("MicroMsg.WePkg.PluginWePkg", localException, "", new Object[0]);
+      g.yxI.idkeyStat(859L, 19L, 1L, false);
+      AppMethodBeat.o(209368);
     }
   }
 }

@@ -7,26 +7,26 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.au;
 import com.tencent.mm.plugin.account.friend.a.av;
 import com.tencent.mm.plugin.account.friend.a.av.1;
 import com.tencent.mm.plugin.account.friend.a.av.2;
 import com.tencent.mm.plugin.account.friend.widget.RecoverFriendSortView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 
 public class RecoverFriendUI
   extends MMActivity
 {
-  private av jgJ;
+  private av jjC;
   
   public RecoverFriendUI()
   {
     AppMethodBeat.i(184454);
-    this.jgJ = new av(this);
+    this.jjC = new av(this);
     AppMethodBeat.o(184454);
   }
   
@@ -41,18 +41,18 @@ public class RecoverFriendUI
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_session_id");
     String str = getIntent().getStringExtra("key_old_username");
-    this.jgJ.sessionId = paramBundle;
-    this.jgJ.jff = str;
+    this.jjC.sessionId = paramBundle;
+    this.jjC.jhY = str;
     setMMTitle(2131760328);
-    paramBundle = this.jgJ;
-    ad.i("MicroMsg.RecoverFriendPresenter", "onUICreate");
-    paramBundle.jfe = ((RecoverFriendSortView)paramBundle.activity.findViewById(2131300301));
-    g.aiU().a(3513, paramBundle);
-    paramBundle.rr(au.JL(paramBundle.jff));
-    paramBundle.jfe.getScrollBar().setVisibility(8);
-    paramBundle.jfe.getListView().setOnScrollListener(new av.1(paramBundle));
-    paramBundle.jfe.jff = paramBundle.jff;
-    paramBundle.jfe.setOnItemClickListener(new av.2(paramBundle));
+    paramBundle = this.jjC;
+    ae.i("MicroMsg.RecoverFriendPresenter", "onUICreate");
+    paramBundle.jhX = ((RecoverFriendSortView)paramBundle.activity.findViewById(2131300301));
+    g.ajj().a(3513, paramBundle);
+    paramBundle.ru(au.Kk(paramBundle.jhY));
+    paramBundle.jhX.getScrollBar().setVisibility(8);
+    paramBundle.jhX.getListView().setOnScrollListener(new av.1(paramBundle));
+    paramBundle.jhX.jhY = paramBundle.jhY;
+    paramBundle.jhX.setOnItemClickListener(new av.2(paramBundle));
     paramBundle.alive();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -71,9 +71,9 @@ public class RecoverFriendUI
   {
     AppMethodBeat.i(184456);
     super.onDestroy();
-    av localav = this.jgJ;
-    ad.i("MicroMsg.RecoverFriendPresenter", "onUIDestroy");
-    g.aiU().b(3513, localav);
+    av localav = this.jjC;
+    ae.i("MicroMsg.RecoverFriendPresenter", "onUIDestroy");
+    g.ajj().b(3513, localav);
     localav.dead();
     AppMethodBeat.o(184456);
   }

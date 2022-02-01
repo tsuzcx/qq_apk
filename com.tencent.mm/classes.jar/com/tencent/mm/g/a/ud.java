@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ud
   extends b
 {
-  public a dIC;
+  public a dJG;
   
   public ud()
   {
@@ -16,24 +15,21 @@ public final class ud
   
   private ud(byte paramByte)
   {
-    AppMethodBeat.i(197543);
-    this.dIC = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125632);
+    this.dJG = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(197543);
+    AppMethodBeat.o(125632);
   }
   
   public static final class a
   {
-    public int EN;
-    public int bZU;
-    public Intent dxy;
-    public int requestCode;
+    public boolean isStart;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ud
  * JD-Core Version:    0.7.0.1
  */

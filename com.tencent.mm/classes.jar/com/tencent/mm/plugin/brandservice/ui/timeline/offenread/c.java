@@ -15,32 +15,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends RecyclerView.h
 {
-  private static int ogY = 0;
-  private float ogX;
+  private static int omX = 0;
+  private float omW;
   int padding;
   Paint paint;
   
   public c(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(209553);
+    AppMethodBeat.i(208509);
     this.paint = new Paint();
-    ogY = com.tencent.mm.cc.a.fromDPToPix(paramContext, 4);
+    omX = com.tencent.mm.cb.a.fromDPToPix(paramContext, 4);
     this.padding = paramInt;
     this.paint.setColor(paramContext.getResources().getColor(2131099736));
     this.paint.setStyle(Paint.Style.FILL);
     this.paint.setFlags(1);
-    this.ogX = (com.tencent.mm.cc.a.fromDPToPix(paramContext, 32) * a.eb(paramContext));
-    AppMethodBeat.o(209553);
+    this.omW = (com.tencent.mm.cb.a.fromDPToPix(paramContext, 32) * a.ef(paramContext));
+    AppMethodBeat.o(208509);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
-    AppMethodBeat.i(209554);
+    AppMethodBeat.i(208510);
     super.a(paramCanvas, paramRecyclerView, paramt);
     paramt = (BizTimeLineHotListView)paramRecyclerView;
-    if ((!paramt.ogp) || (paramt.getDataCount() <= 2))
+    if ((!paramt.omo) || (paramt.getDataCount() <= 2))
     {
-      AppMethodBeat.o(209554);
+      AppMethodBeat.o(208510);
       return;
     }
     int j = paramRecyclerView.getChildCount();
@@ -54,19 +54,19 @@ public final class c
         View localView = paramRecyclerView.findViewById(2131297336);
         if (localView == null)
         {
-          AppMethodBeat.o(209554);
+          AppMethodBeat.o(208510);
           return;
         }
-        float f1 = Math.max(0.0F, (localView.getBottom() - localView.getTop() - this.ogX) / 2.0F);
+        float f1 = Math.max(0.0F, (localView.getBottom() - localView.getTop() - this.omW) / 2.0F);
         float f2 = paramRecyclerView.getRight();
         f2 = paramt.getItemPadding() / 2.0F + f2;
-        paramCanvas.drawRect(f2 - 0.35F, localView.getTop() + ogY + f1, 1.0F + f2, localView.getBottom() + ogY - f1, this.paint);
-        AppMethodBeat.o(209554);
+        paramCanvas.drawRect(f2 - 0.35F, localView.getTop() + omX + f1, 1.0F + f2, localView.getBottom() + omX - f1, this.paint);
+        AppMethodBeat.o(208510);
         return;
       }
       i += 1;
     }
-    AppMethodBeat.o(209554);
+    AppMethodBeat.o(208510);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)

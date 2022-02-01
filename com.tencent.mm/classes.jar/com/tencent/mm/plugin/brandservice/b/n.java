@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.aj;
-import com.tencent.mm.protocal.protobuf.dbs;
-import com.tencent.mm.protocal.protobuf.dbt;
-import com.tencent.mm.protocal.protobuf.pt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dcm;
+import com.tencent.mm.protocal.protobuf.dcn;
+import com.tencent.mm.protocal.protobuf.pv;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
   private f callback;
-  private final com.tencent.mm.al.b rr;
+  private final com.tencent.mm.ak.b rr;
   
-  public n(List<pt> paramList)
+  public n(List<pv> paramList)
   {
     AppMethodBeat.i(5593);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new dbs();
-    ((b.a)localObject).hNN = new dbt();
+    ((b.a)localObject).hQF = new dcm();
+    ((b.a)localObject).hQG = new dcn();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/setapplist";
     ((b.a)localObject).funcId = 386;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    localObject = (dbs)this.rr.hNK.hNQ;
+    this.rr = ((b.a)localObject).aDS();
+    localObject = (dcm)this.rr.hQD.hQJ;
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      pt localpt = (pt)paramList.next();
+      pv localpv = (pv)paramList.next();
       aj localaj = new aj();
-      localaj.nDo = localpt.userName;
+      localaj.nIJ = localpv.userName;
       localLinkedList.add(localaj);
     }
-    ((dbs)localObject).nDi = localLinkedList.size();
-    ((dbs)localObject).nDj = localLinkedList;
-    ad.i("MicroMsg.BrandService.NetSceneSetAppList", "info: upload size %d, toString %s", new Object[] { Integer.valueOf(localLinkedList.size()), localLinkedList.toString() });
+    ((dcm)localObject).nID = localLinkedList.size();
+    ((dcm)localObject).nIE = localLinkedList;
+    ae.i("MicroMsg.BrandService.NetSceneSetAppList", "info: upload size %d, toString %s", new Object[] { Integer.valueOf(localLinkedList.size()), localLinkedList.toString() });
     AppMethodBeat.o(5593);
   }
   
@@ -55,7 +55,7 @@ public final class n
   {
     AppMethodBeat.i(5595);
     this.callback = paramf;
-    ad.i("MicroMsg.BrandService.NetSceneSetAppList", "do scene");
+    ae.i("MicroMsg.BrandService.NetSceneSetAppList", "do scene");
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(5595);
     return i;
@@ -69,12 +69,12 @@ public final class n
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(5594);
-    ad.i("MicroMsg.BrandService.NetSceneSetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i("MicroMsg.BrandService.NetSceneSetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (dbt)this.rr.hNL.hNQ;
-      ad.i("MicroMsg.BrandService.NetSceneSetAppList", "ok, hash code is %d", new Object[] { Integer.valueOf(paramq.Guz) });
-      com.tencent.mm.plugin.brandservice.b.j(196610, Integer.valueOf(paramq.Guz));
+      paramq = (dcn)this.rr.hQE.hQJ;
+      ae.i("MicroMsg.BrandService.NetSceneSetAppList", "ok, hash code is %d", new Object[] { Integer.valueOf(paramq.GNY) });
+      com.tencent.mm.plugin.brandservice.b.j(196610, Integer.valueOf(paramq.GNY));
       com.tencent.mm.plugin.brandservice.b.j(196611, Boolean.FALSE);
     }
     for (;;)

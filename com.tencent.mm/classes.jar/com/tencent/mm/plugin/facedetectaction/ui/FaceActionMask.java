@@ -16,22 +16,22 @@ public class FaceActionMask
   extends RelativeLayout
 {
   private Rect rect;
-  private Paint rpS;
-  private Paint rpT;
-  private PorterDuffXfermode rpU;
-  private boolean rpV;
+  private Paint rxW;
+  private Paint rxX;
+  private PorterDuffXfermode rxY;
+  private boolean rxZ;
   
   public FaceActionMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104229);
     this.rect = new Rect();
-    this.rpV = false;
-    this.rpS = new Paint(1);
-    this.rpS.setStyle(Paint.Style.FILL);
-    this.rpT = new Paint(1);
+    this.rxZ = false;
+    this.rxW = new Paint(1);
+    this.rxW.setStyle(Paint.Style.FILL);
+    this.rxX = new Paint(1);
     setWillNotDraw(false);
-    this.rpU = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.rxY = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     setLayerType(1, null);
     AppMethodBeat.o(104229);
   }
@@ -47,14 +47,14 @@ public class FaceActionMask
     this.rect.right = getWidth();
     this.rect.top = 0;
     this.rect.bottom = getHeight();
-    this.rpS.setColor(getContext().getResources().getColor(2131101179));
+    this.rxW.setColor(getContext().getResources().getColor(2131101179));
     paramCanvas.drawARGB(255, 0, 0, 0);
-    paramCanvas.drawRect(this.rect, this.rpS);
-    if (!this.rpV)
+    paramCanvas.drawRect(this.rect, this.rxW);
+    if (!this.rxZ)
     {
-      this.rpT.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.rpT.setXfermode(this.rpU);
-      paramCanvas.drawCircle(f2, f3, f1, this.rpT);
+      this.rxX.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.rxX.setXfermode(this.rxY);
+      paramCanvas.drawCircle(f2, f3, f1, this.rxX);
     }
     paramCanvas.restore();
     AppMethodBeat.o(104230);

@@ -25,7 +25,7 @@ public final class c$p
       public final void run()
       {
         AppMethodBeat.i(62425);
-        System.loadLibrary(this.iHg);
+        System.loadLibrary(this.iJZ);
         localCountDownLatch.countDown();
         AppMethodBeat.o(62425);
       }

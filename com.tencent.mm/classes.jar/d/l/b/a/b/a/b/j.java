@@ -22,24 +22,24 @@ public final class j
     AppMethodBeat.i(56826);
     p.h(parame1, "from");
     p.h(parame2, "to");
-    if (parame1.ghK().size() == parame2.ghK().size()) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    if (parame1.gmm().size() == parame2.gmm().size()) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
-      parame1 = (Throwable)new AssertionError(parame1 + " and " + parame2 + " should have same number of type parameters, but " + parame1.ghK().size() + " / " + parame2.ghK().size() + " found");
+      parame1 = (Throwable)new AssertionError(parame1 + " and " + parame2 + " should have same number of type parameters, but " + parame1.gmm().size() + " / " + parame2.gmm().size() + " found");
       AppMethodBeat.o(56826);
       throw parame1;
     }
-    Object localObject1 = au.NCz;
-    parame1 = parame1.ghK();
+    Object localObject1 = au.NZG;
+    parame1 = parame1.gmm();
     p.g(parame1, "from.declaredTypeParameters");
     localObject1 = (Iterable)parame1;
     parame1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      parame1.add(((as)((Iterator)localObject1).next()).ghu());
+      parame1.add(((as)((Iterator)localObject1).next()).glW());
     }
     parame1 = (Iterable)parame1;
-    parame2 = parame2.ghK();
+    parame2 = parame2.gmm();
     p.g(parame2, "to.declaredTypeParameters");
     localObject1 = (Iterable)parame2;
     parame2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject1, 10));
@@ -48,18 +48,18 @@ public final class j
     {
       Object localObject2 = (as)((Iterator)localObject1).next();
       p.g(localObject2, "it");
-      localObject2 = ((as)localObject2).giC();
+      localObject2 = ((as)localObject2).gne();
       p.g(localObject2, "it.defaultType");
       parame2.add(a.aO((ab)localObject2));
     }
-    parame1 = au.a.ck(ae.A((Iterable)d.a.j.c(parame1, (Iterable)parame2)));
+    parame1 = au.a.cp(ae.A((Iterable)d.a.j.c(parame1, (Iterable)parame2)));
     AppMethodBeat.o(56826);
     return parame1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.b.j
  * JD-Core Version:    0.7.0.1
  */

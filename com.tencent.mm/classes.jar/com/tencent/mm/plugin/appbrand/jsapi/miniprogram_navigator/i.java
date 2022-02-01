@@ -8,14 +8,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
 import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.vending.g.b;
 import com.tencent.mm.vending.g.d.a;
 import org.json.JSONObject;
@@ -23,19 +23,19 @@ import org.json.JSONObject;
 public class i
   implements c
 {
-  static final i kWd;
+  static final i kZL;
   
   static
   {
     AppMethodBeat.i(147197);
-    kWd = new i();
+    kZL = new i();
     AppMethodBeat.o(147197);
   }
   
-  protected k.a Y(AppBrandRuntime paramAppBrandRuntime)
+  protected k.a X(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(147194);
-    paramAppBrandRuntime = new com.tencent.mm.plugin.appbrand.widget.dialog.g(com.tencent.mm.sdk.f.a.jq(paramAppBrandRuntime.mContext));
+    paramAppBrandRuntime = new com.tencent.mm.plugin.appbrand.widget.dialog.g(com.tencent.mm.sdk.f.a.jw(paramAppBrandRuntime.mContext));
     AppMethodBeat.o(147194);
     return paramAppBrandRuntime;
   }
@@ -43,7 +43,7 @@ public class i
   public com.tencent.mm.vending.g.c<AppBrandInitConfigLU> a(com.tencent.mm.plugin.appbrand.d paramd, LaunchParcel paramLaunchParcel, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(147195);
-    paramd = com.tencent.mm.vending.g.g.ei(null);
+    paramd = com.tencent.mm.vending.g.g.ej(null);
     AppMethodBeat.o(147195);
     return paramd;
   }
@@ -52,7 +52,7 @@ public class i
   {
     AppMethodBeat.i(147196);
     com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramString1);
-    com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramString1, String.format("Network:%s", new Object[] { ay.getNetTypeString(paramd.getRuntime().mContext) }));
+    com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramString1, String.format("Network:%s", new Object[] { az.getNetTypeString(paramd.getRuntime().mContext) }));
     Object localObject1 = paramd.getAppId();
     int i;
     JSONObject localJSONObject2;
@@ -60,13 +60,13 @@ public class i
     if (parama != null)
     {
       i = parama.sourceType;
-      ad.i("MicroMsg.MiniProgramNavigator", "navigateTo fromAppID(%s) targetAppID(%s) sourceType:%d", new Object[] { localObject1, paramString1, Integer.valueOf(i) });
+      ae.i("MicroMsg.MiniProgramNavigator", "navigateTo fromAppID(%s) targetAppID(%s) sourceType:%d", new Object[] { localObject1, paramString1, Integer.valueOf(i) });
       localJSONObject2 = paramJSONObject.optJSONObject("extraData");
       localJSONObject1 = paramJSONObject.optJSONObject("privateExtraData");
-      if (!(paramd instanceof aa)) {
+      if (!(paramd instanceof z)) {
         break label657;
       }
-      localObject1 = (aa)paramd;
+      localObject1 = (z)paramd;
       label116:
       if (localObject1 == null) {
         break label736;
@@ -78,52 +78,52 @@ public class i
     label724:
     label730:
     label736:
-    for (localObject1 = ((aa)localObject1).lYf;; localObject1 = "")
+    for (localObject1 = ((z)localObject1).mcM;; localObject1 = "")
     {
-      final com.tencent.luggage.sdk.d.c localc = (com.tencent.luggage.sdk.d.c)paramd.getRuntime();
-      String str = paramd.getAppId() + ":" + localc.Fb().Ec() + ":" + (localc.Fb().cmr + 1000);
-      Object localObject2 = localc.Fb().cmC;
+      final com.tencent.luggage.sdk.d.d locald = (com.tencent.luggage.sdk.d.d)paramd.getRuntime();
+      String str = paramd.getAppId() + ":" + locald.Fg().Ef() + ":" + (locald.Fg().cmt + 1000);
+      Object localObject2 = locald.Fg().cmE;
       AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
       if ((parama != null) && (parama.scene != 0))
       {
         i = parama.scene;
         label231:
         localAppBrandStatObject.scene = i;
-        localAppBrandStatObject.dJO = ((AppBrandStatObject)localObject2).dJO;
-        if ((parama == null) || (parama.scene == 0) || (bt.isNullOrNil(parama.dkh))) {
+        localAppBrandStatObject.dLd = ((AppBrandStatObject)localObject2).dLd;
+        if ((parama == null) || (parama.scene == 0) || (bu.isNullOrNil(parama.dlj))) {
           break label677;
         }
-        str = String.format("%s:%s", new Object[] { str, parama.dkh });
-        localAppBrandStatObject.dkh = str;
+        str = String.format("%s:%s", new Object[] { str, parama.dlj });
+        localAppBrandStatObject.dlj = str;
         if (parama == null) {
           break label680;
         }
-        i = parama.dJQ;
-        localAppBrandStatObject.dJQ = i;
+        i = parama.dLf;
+        localAppBrandStatObject.dLf = i;
         if (parama == null) {
           break label686;
         }
-        str = parama.dJR;
-        localAppBrandStatObject.dJR = str;
+        str = parama.dLg;
+        localAppBrandStatObject.dLg = str;
         if (parama == null) {
           break label692;
         }
-        str = parama.kVU;
+        str = parama.kZC;
         label353:
-        localAppBrandStatObject.kVU = str;
+        localAppBrandStatObject.kZC = str;
         localObject2 = new AppBrandLaunchReferrer();
         ((AppBrandLaunchReferrer)localObject2).appId = paramd.getAppId();
         if (localJSONObject2 != null) {
           break label698;
         }
         str = "{}";
-        ((AppBrandLaunchReferrer)localObject2).dzP = str;
+        ((AppBrandLaunchReferrer)localObject2).dAU = str;
         if (localJSONObject1 != null) {
           break label708;
         }
         str = "{}";
-        ((AppBrandLaunchReferrer)localObject2).jXS = str;
-        ((AppBrandLaunchReferrer)localObject2).jXR = 1;
+        ((AppBrandLaunchReferrer)localObject2).kbh = str;
+        ((AppBrandLaunchReferrer)localObject2).kbg = 1;
         ((AppBrandLaunchReferrer)localObject2).url = ((String)localObject1);
         if (parama == null) {
           break label718;
@@ -133,8 +133,8 @@ public class i
         if (parama == null) {
           break label724;
         }
-        localObject1 = parama.jXT;
-        ((AppBrandLaunchReferrer)localObject2).jXT = ((String)localObject1);
+        localObject1 = parama.kbi;
+        ((AppBrandLaunchReferrer)localObject2).kbi = ((String)localObject1);
         if (parama == null) {
           break label730;
         }
@@ -142,19 +142,19 @@ public class i
       for (parama = parama.businessType;; parama = null)
       {
         ((AppBrandLaunchReferrer)localObject2).businessType = parama;
-        long l = bt.flT();
+        long l = bu.fpO();
         parama = new LaunchParcel();
         parama.username = null;
         parama.appId = paramString1;
         parama.version = 0;
-        parama.hQh = paramInt;
-        parama.jCN = paramString2;
-        parama.lMZ = localAppBrandStatObject;
-        parama.cmv = ((AppBrandLaunchReferrer)localObject2);
-        parama.lNa = null;
-        parama.lNb = l;
-        paramString1 = new com.tencent.mm.plugin.appbrand.z.i();
-        com.tencent.mm.vending.g.g.fOf().b(localc).f(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
+        parama.hSZ = paramInt;
+        parama.jFL = paramString2;
+        parama.lRA = localAppBrandStatObject;
+        parama.cmx = ((AppBrandLaunchReferrer)localObject2);
+        parama.lRB = null;
+        parama.lRC = l;
+        paramString1 = new com.tencent.mm.plugin.appbrand.y.i();
+        com.tencent.mm.vending.g.g.fSA().b(locald).f(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
         {
           public final void ce(Object paramAnonymousObject)
           {
@@ -169,13 +169,13 @@ public class i
             for (;;)
             {
               paramc.o(false, paramAnonymousObject);
-              localc.j(new Runnable()
+              locald.j(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(147185);
-                  if (i.1.this.kWg.value != null) {
-                    ((com.tencent.mm.plugin.appbrand.m.d)i.1.this.kWg.value).dismiss();
+                  if (i.1.this.kZO.value != null) {
+                    ((com.tencent.mm.plugin.appbrand.m.d)i.1.this.kZO.value).dismiss();
                   }
                   AppMethodBeat.o(147185);
                 }
@@ -195,7 +195,7 @@ public class i
         return;
         i = 0;
         break;
-        localObject1 = ((q)paramd).getCurrentPageView();
+        localObject1 = ((r)paramd).getCurrentPageView();
         break label116;
         i = 1037;
         break label231;

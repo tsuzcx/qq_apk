@@ -12,7 +12,7 @@ final class FreeWifiFrontPageUI$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25019);
-    this.tpQ.finish();
+    this.tAH.finish();
     AppMethodBeat.o(25019);
   }
 }

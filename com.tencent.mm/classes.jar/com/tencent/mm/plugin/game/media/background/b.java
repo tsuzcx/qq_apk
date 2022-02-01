@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.plugin.recordvideo.background.c;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aip;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 
 public final class b
@@ -17,19 +17,19 @@ public final class b
   public final void a(String paramString, boolean paramBoolean, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(41213);
-    ad.i("MicroMsg.Haowan.VideoMixCallback", "onFinish, taskId:%s, success:%b, model:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean), paramCaptureVideoNormalModel });
+    ae.i("MicroMsg.Haowan.VideoMixCallback", "onFinish, taskId:%s, success:%b, model:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean), paramCaptureVideoNormalModel });
     if (paramString == null)
     {
       AppMethodBeat.o(41213);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.xuo;
+    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.xKl;
     p.h(paramString, "taskId");
-    localObject = com.tencent.mm.plugin.recordvideo.background.e.avy(paramString);
+    localObject = com.tencent.mm.plugin.recordvideo.background.e.awN(paramString);
     if (localObject == null) {}
-    for (localObject = new Bundle(); ((Bundle)localObject).getInt("key_game_haowan_flag", 0) != 10; localObject = com.tencent.mm.plugin.recordvideo.background.e.avE((String)localObject))
+    for (localObject = new Bundle(); ((Bundle)localObject).getInt("key_game_haowan_flag", 0) != 10; localObject = com.tencent.mm.plugin.recordvideo.background.e.awT((String)localObject))
     {
-      ad.i("MicroMsg.Haowan.VideoMixCallback", "not game haowan task");
+      ae.i("MicroMsg.Haowan.VideoMixCallback", "not game haowan task");
       AppMethodBeat.o(41213);
       return;
       localObject = ((c)localObject).field_userData;
@@ -38,24 +38,24 @@ public final class b
     a.a(paramCaptureVideoNormalModel, (Bundle)localObject);
     if ((paramBoolean) && (paramCaptureVideoNormalModel != null))
     {
-      localObject = com.tencent.mm.plugin.recordvideo.background.e.xuo;
-      localObject = com.tencent.mm.plugin.recordvideo.background.e.avD(paramString);
+      localObject = com.tencent.mm.plugin.recordvideo.background.e.xKl;
+      localObject = com.tencent.mm.plugin.recordvideo.background.e.awS(paramString);
       if (localObject != null)
       {
-        a.a(((aif)localObject).xyx, paramCaptureVideoNormalModel);
-        a.b(((aif)localObject).GfI, paramCaptureVideoNormalModel);
+        a.a(((aip)localObject).xOt, paramCaptureVideoNormalModel);
+        a.b(((aip)localObject).Gyq, paramCaptureVideoNormalModel);
       }
     }
-    paramCaptureVideoNormalModel = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWK();
+    paramCaptureVideoNormalModel = ((f)com.tencent.mm.kernel.g.ab(f.class)).cZo();
     paramString = String.format("select * from %s where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "bgMixTaskId", paramString });
-    ad.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryTaskByBgMixId, sql : %s", new Object[] { paramString });
+    ae.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryTaskByBgMixId, sql : %s", new Object[] { paramString });
     paramCaptureVideoNormalModel = paramCaptureVideoNormalModel.rawQuery(paramString, new String[0]);
     if (paramCaptureVideoNormalModel == null) {
       paramString = null;
     }
     while (paramString == null)
     {
-      ad.i("MicroMsg.Haowan.VideoMixCallback", "no perform publish action");
+      ae.i("MicroMsg.Haowan.VideoMixCallback", "no perform publish action");
       AppMethodBeat.o(41213);
       return;
       paramString = null;
@@ -68,32 +68,32 @@ public final class b
     }
     if (paramString.field_publishState == 2)
     {
-      ad.i("MicroMsg.Haowan.VideoMixCallback", "publish has finished");
+      ae.i("MicroMsg.Haowan.VideoMixCallback", "publish has finished");
       AppMethodBeat.o(41213);
       return;
     }
-    ((d)com.tencent.mm.kernel.g.ab(d.class)).alk(paramString.field_taskId);
+    ((d)com.tencent.mm.kernel.g.ab(d.class)).ami(paramString.field_taskId);
     AppMethodBeat.o(41213);
   }
   
-  public final void alO(String paramString)
+  public final void amO(String paramString)
   {
     AppMethodBeat.i(41210);
-    ad.i("MicroMsg.Haowan.VideoMixCallback", "onInit, taskId:%s", new Object[] { paramString });
+    ae.i("MicroMsg.Haowan.VideoMixCallback", "onInit, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(41210);
   }
   
-  public final void alP(String paramString)
+  public final void amP(String paramString)
   {
     AppMethodBeat.i(41212);
-    ad.i("MicroMsg.Haowan.VideoMixCallback", "onWait, taskId:%s", new Object[] { paramString });
+    ae.i("MicroMsg.Haowan.VideoMixCallback", "onWait, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(41212);
   }
   
-  public final void dO(String paramString, int paramInt)
+  public final void dS(String paramString, int paramInt)
   {
     AppMethodBeat.i(41211);
-    ad.i("MicroMsg.Haowan.VideoMixCallback", "onRun, taskId:%s, runNum:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.Haowan.VideoMixCallback", "onRun, taskId:%s, runNum:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(41211);
   }
 }

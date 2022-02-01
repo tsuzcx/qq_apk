@@ -16,17 +16,17 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.ar;
 
 public class BottomEntranceView
   extends RelativeLayout
 {
-  private f ppW;
-  private TextView ppX;
-  private int ppY;
-  private int ppZ;
+  private f pwC;
+  private TextView pwD;
+  private int pwE;
+  private int pwF;
   
   public BottomEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class BottomEntranceView
   private int getDisplayHeight()
   {
     AppMethodBeat.i(8975);
-    int i = ar.ci(getContext()).y;
+    int i = ar.ck(getContext()).y;
     AppMethodBeat.o(8975);
     return i;
   }
@@ -45,10 +45,10 @@ public class BottomEntranceView
   {
     AppMethodBeat.i(8973);
     super.onFinishInflate();
-    this.ppX = ((TextView)findViewById(2131299510));
-    this.ppZ = (getDisplayHeight() - ar.dT(getContext()) - ar.jG(getContext()) - ar.ej(getContext()));
-    this.ppY = getResources().getDimensionPixelSize(2131165922);
-    ad.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.ppZ) });
+    this.pwD = ((TextView)findViewById(2131299510));
+    this.pwF = (getDisplayHeight() - ar.dX(getContext()) - ar.jN(getContext()) - ar.en(getContext()));
+    this.pwE = getResources().getDimensionPixelSize(2131165922);
+    ae.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.pwF) });
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
@@ -65,11 +65,11 @@ public class BottomEntranceView
         AppMethodBeat.i(8972);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bt.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).ozD)))
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bu.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).oGf)))
         {
           paramAnonymousView = new Bundle();
-          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).ozD);
+          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).oGf);
           ((c)g.ab(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
           com.tencent.mm.plugin.downloader_app.b.a.a(10, 1005, 1, 40, "", "", "");
         }
@@ -83,15 +83,15 @@ public class BottomEntranceView
   public void setData(f paramf)
   {
     AppMethodBeat.i(8974);
-    if ((paramf == null) || (bt.isNullOrNil(paramf.desc)) || (bt.isNullOrNil(paramf.ozD)))
+    if ((paramf == null) || (bu.isNullOrNil(paramf.desc)) || (bu.isNullOrNil(paramf.oGf)))
     {
       setVisibility(8);
       AppMethodBeat.o(8974);
       return;
     }
-    this.ppW = paramf;
+    this.pwC = paramf;
     setVisibility(0);
-    this.ppX.setText(this.ppW.desc);
+    this.pwD.setText(this.pwC.desc);
     AppMethodBeat.o(8974);
   }
 }

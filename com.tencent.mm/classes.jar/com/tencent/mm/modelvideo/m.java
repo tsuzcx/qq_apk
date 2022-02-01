@@ -3,24 +3,24 @@ package com.tencent.mm.modelvideo;
 import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.ao.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.an.b;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.g.b.a.j;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.storage.bv;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,30 +30,30 @@ import java.util.Map;
 
 public final class m
 {
-  private static int diu = 0;
-  private boolean diq;
-  int dis;
-  private f.a diw;
-  private av dix;
-  private LinkedList<Long> itg;
-  private Map<Long, f.a> ith;
-  private Map<Long, String> iti;
-  private Object itj;
-  String itk;
+  private static int djw = 0;
+  private boolean djt;
+  int dju;
+  private f.a djy;
+  private aw djz;
+  private LinkedList<Long> iwa;
+  private Map<Long, f.a> iwb;
+  private Map<Long, String> iwc;
+  private Object iwd;
+  String iwe;
   private boolean running;
   
   public m()
   {
     AppMethodBeat.i(126906);
-    this.itg = new LinkedList();
-    this.ith = new HashMap();
-    this.iti = new HashMap();
-    this.itj = new Object();
-    this.diq = false;
+    this.iwa = new LinkedList();
+    this.iwb = new HashMap();
+    this.iwc = new HashMap();
+    this.iwd = new Object();
+    this.djt = false;
     this.running = false;
-    this.dis = 0;
-    this.diw = new f.a();
-    this.dix = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new av.a()
+    this.dju = 0;
+    this.djy = new f.a();
+    this.djz = new aw(com.tencent.mm.kernel.g.ajU().IxZ.getLooper(), new aw.a()
     {
       public final boolean onTimerExpired()
       {
@@ -74,15 +74,15 @@ public final class m
     AppMethodBeat.o(126906);
   }
   
-  private void Qe()
+  private void Qd()
   {
     AppMethodBeat.i(126911);
-    this.iti.clear();
-    this.ith.clear();
-    this.itg.clear();
-    this.diq = false;
+    this.iwc.clear();
+    this.iwb.clear();
+    this.iwa.clear();
+    this.djt = false;
     this.running = false;
-    ad.d("MicroMsg.SightMassSendService", "Finish service use time(ms):" + this.diw.abj());
+    ae.d("MicroMsg.SightMassSendService", "Finish service use time(ms):" + this.djy.abs());
     AppMethodBeat.o(126911);
   }
   
@@ -96,7 +96,7 @@ public final class m
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      u.Hp(((s)paramList.next()).getFileName());
+      u.HR(((s)paramList.next()).getFileName());
     }
     AppMethodBeat.o(126907);
   }
@@ -111,18 +111,18 @@ public final class m
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      u.Hq(((s)paramList.next()).getFileName());
+      u.HS(((s)paramList.next()).getFileName());
     }
     AppMethodBeat.o(126908);
   }
   
-  private String sq(long paramLong)
+  private String sD(long paramLong)
   {
     AppMethodBeat.i(126909);
-    Object localObject2 = o.aMJ().sr(paramLong);
+    Object localObject2 = o.aNh().sE(paramLong);
     if (((List)localObject2).isEmpty())
     {
-      ad.e("MicroMsg.SightMassSendService", "check use cdn fail: mass send video list empty");
+      ae.e("MicroMsg.SightMassSendService", "check use cdn fail: mass send video list empty");
       AppMethodBeat.o(126909);
       return null;
     }
@@ -130,17 +130,17 @@ public final class m
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (s)((Iterator)localObject1).next();
-      if (w.Aq(((s)localObject3).getUser()))
+      if (x.Ba(((s)localObject3).getUser()))
       {
-        ad.w("MicroMsg.SightMassSendService", "cdntra not use cdn user:%s, list %s, massSendId %d", new Object[] { ((s)localObject3).getUser(), ((s)localObject3).ium, Long.valueOf(paramLong) });
+        ae.w("MicroMsg.SightMassSendService", "cdntra not use cdn user:%s, list %s, massSendId %d", new Object[] { ((s)localObject3).getUser(), ((s)localObject3).ixg, Long.valueOf(paramLong) });
         AppMethodBeat.o(126909);
         return null;
       }
-      com.tencent.mm.ao.f.aGI();
-      if ((!b.pa(2)) && (((s)localObject3).iuj != 1))
+      com.tencent.mm.an.f.aGZ();
+      if ((!b.pd(2)) && (((s)localObject3).ixd != 1))
       {
-        com.tencent.mm.ao.f.aGI();
-        ad.w("MicroMsg.SightMassSendService", "cdntra not use cdn flag:%b getCdnInfo:%d, list %s, massSendId %d", new Object[] { Boolean.valueOf(b.pa(2)), Integer.valueOf(((s)localObject3).iuj), ((s)localObject3).ium, Long.valueOf(paramLong) });
+        com.tencent.mm.an.f.aGZ();
+        ae.w("MicroMsg.SightMassSendService", "cdntra not use cdn flag:%b getCdnInfo:%d, list %s, massSendId %d", new Object[] { Boolean.valueOf(b.pd(2)), Integer.valueOf(((s)localObject3).ixd), ((s)localObject3).ixg, Long.valueOf(paramLong) });
         AppMethodBeat.o(126909);
         return null;
       }
@@ -150,7 +150,7 @@ public final class m
     }
     while (localObject1 == null)
     {
-      ad.w("MicroMsg.SightMassSendService", "check use cdn fail: no valid info");
+      ae.w("MicroMsg.SightMassSendService", "check use cdn fail: no valid info");
       AppMethodBeat.o(126909);
       return null;
       int i = 0;
@@ -160,73 +160,73 @@ public final class m
           break label425;
         }
         localObject3 = (s)((List)localObject2).get(i);
-        localObject1 = u.Hy(((s)localObject3).getFileName());
+        localObject1 = u.Ia(((s)localObject3).getFileName());
         if (localObject1 != null)
         {
-          ad.i("MicroMsg.SightMassSendService", "check %s ok, index %d, size %d, massSendId %d, massSendList %s", new Object[] { ((s)localObject3).getFileName(), Integer.valueOf(i), Integer.valueOf(((List)localObject2).size()), Long.valueOf(paramLong), ((s)localObject3).ium });
+          ae.i("MicroMsg.SightMassSendService", "check %s ok, index %d, size %d, massSendId %d, massSendList %s", new Object[] { ((s)localObject3).getFileName(), Integer.valueOf(i), Integer.valueOf(((List)localObject2).size()), Long.valueOf(paramLong), ((s)localObject3).ixg });
           ((List)localObject2).remove(i);
           ((List)localObject2).add(i, localObject1);
           break;
         }
-        ad.w("MicroMsg.SightMassSendService", "check %s fail, index %d, size %d, massSendId %d, massSendList %s", new Object[] { ((s)localObject3).getFileName(), Integer.valueOf(i), Integer.valueOf(((List)localObject2).size()), Long.valueOf(paramLong), ((s)localObject3).ium });
+        ae.w("MicroMsg.SightMassSendService", "check %s fail, index %d, size %d, massSendId %d, massSendList %s", new Object[] { ((s)localObject3).getFileName(), Integer.valueOf(i), Integer.valueOf(((List)localObject2).size()), Long.valueOf(paramLong), ((s)localObject3).ixg });
         i += 1;
       }
       label425:
       localObject1 = null;
     }
-    Object localObject3 = com.tencent.mm.ao.c.a("upvideo", ((s)localObject1).createTime, ((s)localObject1).ium, ((s)localObject1).getFileName());
-    if (bt.isNullOrNil((String)localObject3))
+    Object localObject3 = com.tencent.mm.an.c.a("upvideo", ((s)localObject1).createTime, ((s)localObject1).ixg, ((s)localObject1).getFileName());
+    if (bu.isNullOrNil((String)localObject3))
     {
-      ad.w("MicroMsg.SightMassSendService", "cdntra genClientId failed not use cdn file:%s, massSendId %d, massSendList %s", new Object[] { ((s)localObject1).getFileName(), Long.valueOf(((s)localObject1).ist), ((s)localObject1).ium });
+      ae.w("MicroMsg.SightMassSendService", "cdntra genClientId failed not use cdn file:%s, massSendId %d, massSendList %s", new Object[] { ((s)localObject1).getFileName(), Long.valueOf(((s)localObject1).ivn), ((s)localObject1).ixg });
       AppMethodBeat.o(126909);
       return null;
     }
     Object localObject4 = ((s)localObject1).getFileName();
-    o.aMJ();
-    String str1 = t.Hi((String)localObject4);
-    o.aMJ();
-    String str2 = t.Hh((String)localObject4);
+    o.aNh();
+    String str1 = t.HK((String)localObject4);
+    o.aNh();
+    String str2 = t.HJ((String)localObject4);
     a locala = new a((byte)0);
-    locala.hJk = ((List)localObject2);
-    locala.ist = paramLong;
-    locala.itn = ((String)localObject3);
-    locala.startTime = bt.flT();
-    locala.isu = ((s)localObject1);
+    locala.hMd = ((List)localObject2);
+    locala.ivn = paramLong;
+    locala.iwh = ((String)localObject3);
+    locala.startTime = bu.fpO();
+    locala.ivo = ((s)localObject1);
     localObject4 = new com.tencent.mm.i.g();
-    ((com.tencent.mm.i.g)localObject4).fJi = "task_NetSceneUploadVideo_2";
-    ((com.tencent.mm.i.g)localObject4).fJj = locala;
+    ((com.tencent.mm.i.g)localObject4).fLl = "task_NetSceneUploadVideo_2";
+    ((com.tencent.mm.i.g)localObject4).fLm = locala;
     ((com.tencent.mm.i.g)localObject4).field_mediaId = ((String)localObject3);
     ((com.tencent.mm.i.g)localObject4).field_fullpath = str2;
     ((com.tencent.mm.i.g)localObject4).field_thumbpath = str1;
     ((com.tencent.mm.i.g)localObject4).field_fileType = com.tencent.mm.i.a.MediaType_VIDEO;
     ((com.tencent.mm.i.g)localObject4).field_smallVideoFlag = 1;
-    ((com.tencent.mm.i.g)localObject4).field_talker = ((s)localObject1).ium;
-    ((com.tencent.mm.i.g)localObject4).field_priority = com.tencent.mm.i.a.fIw;
+    ((com.tencent.mm.i.g)localObject4).field_talker = ((s)localObject1).ixg;
+    ((com.tencent.mm.i.g)localObject4).field_priority = com.tencent.mm.i.a.fKA;
     ((com.tencent.mm.i.g)localObject4).field_needStorage = false;
     ((com.tencent.mm.i.g)localObject4).field_isStreamMedia = false;
-    localObject1 = bw.M(((s)localObject1).aMV(), "msg");
+    localObject1 = bx.M(((s)localObject1).aNt(), "msg");
     if (localObject1 != null)
     {
       ((com.tencent.mm.i.g)localObject4).field_fileId = ((String)((Map)localObject1).get(".msg.videomsg.$cdnvideourl"));
       ((com.tencent.mm.i.g)localObject4).field_aesKey = ((String)((Map)localObject1).get(".msg.videomsg.$aeskey"));
     }
-    while (!com.tencent.mm.ao.f.aGI().f((com.tencent.mm.i.g)localObject4))
+    while (!com.tencent.mm.an.f.aGZ().f((com.tencent.mm.i.g)localObject4))
     {
-      ad.e("MicroMsg.SightMassSendService", "cdntra addSendTask failed.");
+      ae.e("MicroMsg.SightMassSendService", "cdntra addSendTask failed.");
       AppMethodBeat.o(126909);
       return null;
-      ad.i("MicroMsg.SightMassSendService", "cdntra parse video recv xml failed");
+      ae.i("MicroMsg.SightMassSendService", "cdntra parse video recv xml failed");
     }
     localObject1 = ((List)localObject2).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (s)((Iterator)localObject1).next();
-      if (((s)localObject2).iuj != 1)
+      if (((s)localObject2).ixd != 1)
       {
-        ((s)localObject2).iuj = 1;
-        ((s)localObject2).dDp = 524288;
+        ((s)localObject2).ixd = 1;
+        ((s)localObject2).dEu = 524288;
         boolean bool = u.f((s)localObject2);
-        ad.i("MicroMsg.SightMassSendService", "update %s useCDN, result %B", new Object[] { ((s)localObject2).getFileName(), Boolean.valueOf(bool) });
+        ae.i("MicroMsg.SightMassSendService", "update %s useCDN, result %B", new Object[] { ((s)localObject2).getFileName(), Boolean.valueOf(bool) });
       }
     }
     AppMethodBeat.o(126909);
@@ -236,12 +236,12 @@ public final class m
   public final void d(final long paramLong, int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(126910);
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126897);
-        m.aMF();
+        m.aNd();
         m.c(m.this);
         m.a(m.this, "");
         long l2 = 0L;
@@ -250,25 +250,25 @@ public final class m
         {
           l1 = l2;
           if (m.d(m.this).get(Long.valueOf(paramLong)) != null) {
-            l1 = ((f.a)m.d(m.this).get(Long.valueOf(paramLong))).abj();
+            l1 = ((f.a)m.d(m.this).get(Long.valueOf(paramLong))).abs();
           }
         }
-        ad.i("MicroMsg.SightMassSendService", "on ERROR massSendId: %d time: %d errType %d errCode %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l1), Integer.valueOf(paramInt2), Integer.valueOf(this.val$errCode) });
+        ae.i("MicroMsg.SightMassSendService", "on ERROR massSendId: %d time: %d errType %d errCode %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l1), Integer.valueOf(paramInt2), Integer.valueOf(this.val$errCode) });
         if ((paramInt2 != 0) || (this.val$errCode != 0)) {
           m.j(m.this);
         }
-        ad.i("MicroMsg.SightMassSendService", "onSceneEnd  inCnt: %d stop: %d running: %B sending: %B", new Object[] { Integer.valueOf(m.diu), Integer.valueOf(m.e(m.this)), Boolean.valueOf(m.f(m.this)), Boolean.valueOf(m.g(m.this)) });
+        ae.i("MicroMsg.SightMassSendService", "onSceneEnd  inCnt: %d stop: %d running: %B sending: %B", new Object[] { Integer.valueOf(m.djw), Integer.valueOf(m.e(m.this)), Boolean.valueOf(m.f(m.this)), Boolean.valueOf(m.g(m.this)) });
         if (m.e(m.this) > 0) {
           m.h(m.this);
         }
         while (m.g(m.this))
         {
-          m.aMG();
+          m.aNe();
           AppMethodBeat.o(126897);
           return;
         }
-        ad.w("MicroMsg.SightMassSendService", "StopFlag ERROR force do stop, fail all job");
-        t localt = o.aMJ();
+        ae.w("MicroMsg.SightMassSendService", "StopFlag ERROR force do stop, fail all job");
+        t localt = o.aNh();
         Object localObject2 = m.k(m.this);
         if ((localObject2 == null) || (((List)localObject2).isEmpty())) {}
         for (;;)
@@ -292,8 +292,8 @@ public final class m
           ((StringBuilder)localObject1).append(')');
           localObject1 = ((StringBuilder)localObject1).toString();
           localObject1 = "UPDATE videoinfo2 SET status=198, lastmodifytime=" + l1 + " WHERE masssendid IN " + (String)localObject1;
-          ad.i("MicroMsg.VideoInfoStorage", "fail all massSendInfos, sql %s", new Object[] { localObject1 });
-          localt.hHS.execSQL("videoinfo2", (String)localObject1);
+          ae.i("MicroMsg.VideoInfoStorage", "fail all massSendInfos, sql %s", new Object[] { localObject1 });
+          localt.hKK.execSQL("videoinfo2", (String)localObject1);
         }
       }
       
@@ -309,12 +309,12 @@ public final class m
   }
   
   final class a
-    implements com.tencent.mm.al.f, g.a
+    implements com.tencent.mm.ak.f, g.a
   {
-    List<s> hJk;
-    long ist;
-    s isu;
-    String itn;
+    List<s> hMd;
+    long ivn;
+    s ivo;
+    String iwh;
     long startTime;
     
     private a() {}
@@ -322,32 +322,32 @@ public final class m
     public final int a(String arg1, int paramInt, com.tencent.mm.i.c paramc, d paramd, boolean paramBoolean)
     {
       AppMethodBeat.i(126904);
-      ad.d("MicroMsg.SightMassSendService", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.itn, Integer.valueOf(paramInt), paramc, paramd });
+      ae.d("MicroMsg.SightMassSendService", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.iwh, Integer.valueOf(paramInt), paramc, paramd });
       if (paramInt == -21005)
       {
-        ad.d("MicroMsg.SightMassSendService", "cdntra  ERR_CNDCOM_MEDIA_IS_UPLOADING clientid:%s", new Object[] { this.itn });
+        ae.d("MicroMsg.SightMassSendService", "cdntra  ERR_CNDCOM_MEDIA_IS_UPLOADING clientid:%s", new Object[] { this.iwh });
         AppMethodBeat.o(126904);
         return 0;
       }
       if (paramInt != 0)
       {
-        m.ax(this.hJk);
-        ad.e("MicroMsg.SightMassSendService", "upload to CDN error, massSendId %d, errCode %d", new Object[] { Long.valueOf(this.ist), Integer.valueOf(paramInt) });
-        new j(com.tencent.mm.plugin.report.a.u(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bt.flT()), Integer.valueOf(com.tencent.mm.ao.c.cA(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_TinyVideo), Integer.valueOf(0), "" })).aLk();
-        m.this.d(this.ist, 3, paramInt);
+        m.ax(this.hMd);
+        ae.e("MicroMsg.SightMassSendService", "upload to CDN error, massSendId %d, errCode %d", new Object[] { Long.valueOf(this.ivn), Integer.valueOf(paramInt) });
+        new j(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bu.fpO()), Integer.valueOf(com.tencent.mm.an.c.cC(ak.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_TinyVideo), Integer.valueOf(0), "" })).aLH();
+        m.this.d(this.ivn, 3, paramInt);
         AppMethodBeat.o(126904);
         return 0;
       }
       if (paramc != null)
       {
-        ad.v("MicroMsg.SightMassSendService", "progress length %d", new Object[] { Long.valueOf(paramc.field_finishedLength) });
-        ??? = this.hJk.iterator();
+        ae.v("MicroMsg.SightMassSendService", "progress length %d", new Object[] { Long.valueOf(paramc.field_finishedLength) });
+        ??? = this.hMd.iterator();
         while (???.hasNext())
         {
           paramd = (s)???.next();
-          paramd.iud = bt.aQJ();
-          paramd.isJ = ((int)paramc.field_finishedLength);
-          paramd.dDp = 1032;
+          paramd.iwX = bu.aRi();
+          paramd.ivD = ((int)paramc.field_finishedLength);
+          paramd.dEu = 1032;
           u.f(paramd);
         }
         AppMethodBeat.o(126904);
@@ -357,12 +357,12 @@ public final class m
       {
         if (paramd.field_retCode != 0)
         {
-          ad.e("MicroMsg.SightMassSendService", "cdntra sceneResult.retCode :%d arg[%s] info[%s], massSendId[%d]", new Object[] { Integer.valueOf(paramd.field_retCode), paramd.field_arg, paramd.field_transInfo, Long.valueOf(this.ist) });
-          m.ax(this.hJk);
-          ??? = com.tencent.mm.plugin.report.a.u(new Object[] { Integer.valueOf(paramd.field_retCode), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bt.flT()), Integer.valueOf(com.tencent.mm.ao.c.cA(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_TinyVideo), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.fIT });
-          new j(???).aLk();
-          new com.tencent.mm.g.b.a.h(???).aLk();
-          m.this.d(this.ist, 3, paramd.field_retCode);
+          ae.e("MicroMsg.SightMassSendService", "cdntra sceneResult.retCode :%d arg[%s] info[%s], massSendId[%d]", new Object[] { Integer.valueOf(paramd.field_retCode), paramd.field_arg, paramd.field_transInfo, Long.valueOf(this.ivn) });
+          m.ax(this.hMd);
+          ??? = com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramd.field_retCode), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bu.fpO()), Integer.valueOf(com.tencent.mm.an.c.cC(ak.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_TinyVideo), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.fKX });
+          new j(???).aLH();
+          new com.tencent.mm.g.b.a.h(???).aLH();
+          m.this.d(this.ivn, 3, paramd.field_retCode);
         }
       }
       else
@@ -370,42 +370,42 @@ public final class m
         AppMethodBeat.o(126904);
         return 0;
       }
-      ad.i("MicroMsg.SightMassSendService", "uploadvideo by cdn, isHitCacheUpload[%d] massSendId[%d]", new Object[] { Integer.valueOf(paramd.field_UploadHitCacheType), Long.valueOf(this.ist) });
+      ae.i("MicroMsg.SightMassSendService", "uploadvideo by cdn, isHitCacheUpload[%d] massSendId[%d]", new Object[] { Integer.valueOf(paramd.field_UploadHitCacheType), Long.valueOf(this.ivn) });
       ??? = "<msg><videomsg aeskey=\"" + paramd.field_aesKey + "\" cdnthumbaeskey=\"" + paramd.field_aesKey + "\" cdnvideourl=\"" + paramd.field_fileId + "\" ";
       ??? = ??? + "cdnthumburl=\"" + paramd.field_fileId + "\" ";
       ??? = ??? + "length=\"" + paramd.field_fileLength + "\" ";
       ??? = ??? + "cdnthumblength=\"" + paramd.field_thumbimgLength + "\"/></msg>";
-      ad.i("MicroMsg.SightMassSendService", "cdn callback new build cdnInfo:%s", new Object[] { ??? });
-      paramc = this.hJk.iterator();
+      ae.i("MicroMsg.SightMassSendService", "cdn callback new build cdnInfo:%s", new Object[] { ??? });
+      paramc = this.hMd.iterator();
       while (paramc.hasNext())
       {
         s locals = (s)paramc.next();
-        if (bt.isNullOrNil(locals.aMV()))
+        if (bu.isNullOrNil(locals.aNt()))
         {
-          locals.iuk = ???;
-          locals.dDp = 2097152;
+          locals.ixe = ???;
+          locals.dEu = 2097152;
           paramBoolean = u.f(locals);
-          ad.i("MicroMsg.SightMassSendService", "massSendId[%d] info %s, update recv xml ret %B", new Object[] { Long.valueOf(this.ist), locals.getFileName(), Boolean.valueOf(paramBoolean) });
+          ae.i("MicroMsg.SightMassSendService", "massSendId[%d] info %s, update recv xml ret %B", new Object[] { Long.valueOf(this.ivn), locals.getFileName(), Boolean.valueOf(paramBoolean) });
         }
       }
       for (;;)
       {
         synchronized (m.a(m.this))
         {
-          paramc = (String)m.b(m.this).get(Long.valueOf(this.ist));
-          if (bt.isNullOrNil(paramc)) {
-            ad.i("MicroMsg.SightMassSendService", "check cdn client id FAIL do NOTHING, massSendId %d, oldClientId %s, selfClientId %s", new Object[] { Long.valueOf(this.ist), paramc, this.itn });
+          paramc = (String)m.b(m.this).get(Long.valueOf(this.ivn));
+          if (bu.isNullOrNil(paramc)) {
+            ae.i("MicroMsg.SightMassSendService", "check cdn client id FAIL do NOTHING, massSendId %d, oldClientId %s, selfClientId %s", new Object[] { Long.valueOf(this.ivn), paramc, this.iwh });
           }
         }
-        ad.i("MicroMsg.SightMassSendService", "check cdn client id ok do MASS SEND, massSendId %d, oldClientId %s, selfClientId %s", new Object[] { Long.valueOf(this.ist), paramc, this.itn });
-        m.b(m.this).put(Long.valueOf(this.ist), "done_upload_cdn_client_id");
-        com.tencent.mm.kernel.g.aiU().a(245, this);
-        paramc = new e(this.ist, this.isu, paramd, this.itn);
-        if (!com.tencent.mm.kernel.g.aiU().a(paramc, 0))
+        ae.i("MicroMsg.SightMassSendService", "check cdn client id ok do MASS SEND, massSendId %d, oldClientId %s, selfClientId %s", new Object[] { Long.valueOf(this.ivn), paramc, this.iwh });
+        m.b(m.this).put(Long.valueOf(this.ivn), "done_upload_cdn_client_id");
+        com.tencent.mm.kernel.g.ajj().a(245, this);
+        paramc = new e(this.ivn, this.ivo, paramd, this.iwh);
+        if (!com.tencent.mm.kernel.g.ajj().a(paramc, 0))
         {
-          ad.e("MicroMsg.SightMassSendService", "try to do NetSceneMassUploadSight fail");
-          com.tencent.mm.kernel.g.aiU().b(245, this);
-          m.this.d(this.ist, 3, 0);
+          ae.e("MicroMsg.SightMassSendService", "try to do NetSceneMassUploadSight fail");
+          com.tencent.mm.kernel.g.ajj().b(245, this);
+          m.this.d(this.ivn, 3, 0);
         }
       }
     }
@@ -420,86 +420,86 @@ public final class m
     public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
       AppMethodBeat.i(126905);
-      com.tencent.mm.kernel.g.aiU().b(245, this);
+      com.tencent.mm.kernel.g.ajj().b(245, this);
       if ((paramInt1 == 4) && (paramInt2 == -22))
       {
-        ad.e("MicroMsg.SightMassSendService", "ERR: onGYNetEnd BLACK  errtype:" + paramInt1 + " errCode:" + paramInt2 + " massSendId:" + this.ist);
-        m.ay(this.hJk);
-        m.this.d(this.ist, paramInt1, paramInt2);
+        ae.e("MicroMsg.SightMassSendService", "ERR: onGYNetEnd BLACK  errtype:" + paramInt1 + " errCode:" + paramInt2 + " massSendId:" + this.ivn);
+        m.ay(this.hMd);
+        m.this.d(this.ivn, paramInt1, paramInt2);
         AppMethodBeat.o(126905);
         return;
       }
       if ((paramInt1 == 4) && (paramInt2 != 0))
       {
-        ad.e("MicroMsg.SightMassSendService", "ERR: onGYNetEnd SERVER FAILED errtype:" + paramInt1 + " errCode:" + paramInt2 + "  massSendId:" + this.ist);
-        m.ax(this.hJk);
-        m.this.d(this.ist, paramInt1, paramInt2);
+        ae.e("MicroMsg.SightMassSendService", "ERR: onGYNetEnd SERVER FAILED errtype:" + paramInt1 + " errCode:" + paramInt2 + "  massSendId:" + this.ivn);
+        m.ax(this.hMd);
+        m.this.d(this.ivn, paramInt1, paramInt2);
         AppMethodBeat.o(126905);
         return;
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.SightMassSendService", "ERR: onGYNetEnd FAILED (WILL RETRY) errtype:" + paramInt1 + " errCode:" + paramInt2 + "  massSendId:" + this.ist);
-        m.ax(this.hJk);
-        m.this.d(this.ist, paramInt1, paramInt2);
+        ae.e("MicroMsg.SightMassSendService", "ERR: onGYNetEnd FAILED (WILL RETRY) errtype:" + paramInt1 + " errCode:" + paramInt2 + "  massSendId:" + this.ivn);
+        m.ax(this.hMd);
+        m.this.d(this.ivn, paramInt1, paramInt2);
         AppMethodBeat.o(126905);
         return;
       }
-      paramString = this.hJk.iterator();
+      paramString = this.hMd.iterator();
       if (paramString.hasNext())
       {
         paramn = (s)paramString.next();
-        paramn.iud = bt.aQJ();
+        paramn.iwX = bu.aRi();
         paramn.status = 199;
-        paramn.dDp = 1280;
+        paramn.dEu = 1280;
         if (u.f(paramn))
         {
           if (paramn != null) {
             break label378;
           }
-          ad.e("MicroMsg.VideoLogic", "video info is null");
+          ae.e("MicroMsg.VideoLogic", "video info is null");
         }
         for (;;)
         {
-          ad.v("MicroMsg.SightMassSendService", "massSendId %d, file %s, set status %d", new Object[] { Long.valueOf(this.ist), paramn.getFileName(), Integer.valueOf(199) });
+          ae.v("MicroMsg.SightMassSendService", "massSendId %d, file %s, set status %d", new Object[] { Long.valueOf(this.ivn), paramn.getFileName(), Integer.valueOf(199) });
           break;
           label378:
-          bu localbu;
-          if (paramn.iuf > 0)
+          bv localbv;
+          if (paramn.iwZ > 0)
           {
-            localbu = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().xY(paramn.iuf);
-            paramInt1 = localbu.getType();
-            ad.i("MicroMsg.VideoLogic", "ashutest::updateWriteFinMassMsgInfo, msg type %d", new Object[] { Integer.valueOf(paramInt1) });
+            localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramn.iwZ);
+            paramInt1 = localbv.getType();
+            ae.i("MicroMsg.VideoLogic", "ashutest::updateWriteFinMassMsgInfo, msg type %d", new Object[] { Integer.valueOf(paramInt1) });
             if ((43 == paramInt1) || (62 == paramInt1))
             {
-              localbu.kr(1);
-              localbu.tN(paramn.getUser());
-              localbu.qz(paramn.dAY);
-              localbu.setStatus(2);
-              localbu.setContent(q.b(paramn.aMS(), paramn.hHQ, false));
-              ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).dlK().a(paramn.iuf, localbu);
-              ad.d("MicroMsg.VideoLogic", "updateWriteFinMassMsgInfo msgId:%d", new Object[] { Long.valueOf(localbu.field_msgId) });
+              localbv.kt(1);
+              localbv.ui(paramn.getUser());
+              localbv.qM(paramn.dCd);
+              localbv.setStatus(2);
+              localbv.setContent(q.b(paramn.aNq(), paramn.hKI, false));
+              ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(paramn.iwZ, localbv);
+              ae.d("MicroMsg.VideoLogic", "updateWriteFinMassMsgInfo msgId:%d", new Object[] { Long.valueOf(localbv.field_msgId) });
             }
           }
           else
           {
-            localbu = new bu();
-            localbu.tN(paramn.getUser());
-            localbu.setType(62);
-            localbu.kr(1);
-            localbu.tO(paramn.getFileName());
-            localbu.setStatus(2);
-            localbu.qA(bj.Bo(paramn.getUser()));
-            paramn.iuf = ((int)bj.v(localbu));
-            paramn.dDp = 8192;
+            localbv = new bv();
+            localbv.ui(paramn.getUser());
+            localbv.setType(62);
+            localbv.kt(1);
+            localbv.uj(paramn.getFileName());
+            localbv.setStatus(2);
+            localbv.qN(bl.BQ(paramn.getUser()));
+            paramn.iwZ = ((int)bl.v(localbv));
+            paramn.dEu = 8192;
             u.f(paramn);
-            ad.d("MicroMsg.VideoLogic", "updateWriteFinMassMsgInfo insert msgId:%d", new Object[] { Long.valueOf(localbu.field_msgId) });
+            ae.d("MicroMsg.VideoLogic", "updateWriteFinMassMsgInfo insert msgId:%d", new Object[] { Long.valueOf(localbv.field_msgId) });
           }
         }
       }
       paramString = m.this;
-      long l = this.ist;
-      com.tencent.mm.kernel.g.ajF().ay(new m.1(paramString, l));
+      long l = this.ivn;
+      com.tencent.mm.kernel.g.ajU().aw(new m.1(paramString, l));
       AppMethodBeat.o(126905);
     }
   }

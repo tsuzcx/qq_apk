@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,9 +15,9 @@ final class b$2
   public final void run()
   {
     AppMethodBeat.i(21698);
-    synchronized (b.aaT())
+    synchronized (b.abc())
     {
-      Set localSet = (Set)b.aaT().get(Integer.valueOf(this.nzf.getType()));
+      Set localSet = (Set)b.abc().get(Integer.valueOf(this.nEA.getType()));
       if ((localSet != null) && (localSet.size() > 0))
       {
         ??? = new HashSet();
@@ -27,7 +27,7 @@ final class b$2
         {
           f localf = (f)((Iterator)???).next();
           if ((localf != null) && (localSet.contains(localf))) {
-            localf.onSceneEnd(this.val$errType, this.val$errCode, this.val$errMsg, this.nzf);
+            localf.onSceneEnd(this.val$errType, this.val$errCode, this.val$errMsg, this.nEA);
           }
         }
       }
@@ -37,7 +37,7 @@ final class b$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.b.2
  * JD-Core Version:    0.7.0.1
  */

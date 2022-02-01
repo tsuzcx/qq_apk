@@ -8,15 +8,15 @@ import java.io.RandomAccessFile;
 
 public final class a
 {
-  public a.a cRY;
-  public b cRZ = null;
+  public a cSI;
+  public b cSJ = null;
   
   public a(b paramb)
   {
-    this.cRZ = paramb;
+    this.cSJ = paramb;
   }
   
-  public static a eV(String paramString)
+  public static a fa(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(962);
@@ -42,25 +42,25 @@ public final class a
         AppMethodBeat.o(962);
       }
     }
-    localObject = a.a.G(k(paramString, i - 8, 8));
+    localObject = a.G(k(paramString, i - 8, 8));
     if (localObject == null)
     {
       AppMethodBeat.o(962);
       return null;
     }
-    if (((a.a)localObject).cSb >= 0)
+    if (((a)localObject).cSL >= 0)
     {
       localb = new b();
-      localb.parseFrom(k(paramString, i - ((a.a)localObject).cSb - 8, ((a.a)localObject).cSb));
+      localb.parseFrom(k(paramString, i - ((a)localObject).cSL - 8, ((a)localObject).cSL));
       paramString = new a(localb);
-      paramString.cRY = ((a.a)localObject);
+      paramString.cSI = ((a)localObject);
       AppMethodBeat.o(962);
       return paramString;
     }
     return null;
   }
   
-  public static boolean eW(String paramString)
+  public static boolean fb(String paramString)
   {
     AppMethodBeat.i(963);
     if (paramString == null)
@@ -74,14 +74,14 @@ public final class a
       AppMethodBeat.o(963);
       return false;
     }
-    a locala = eV(paramString);
-    if ((locala != null) && (locala.cRZ != null)) {
+    a locala = fa(paramString);
+    if ((locala != null) && (locala.cSJ != null)) {
       try
       {
         paramString = new File(paramString);
         if (paramString.exists())
         {
-          boolean bool = locala.cRZ.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cRY.cSb + 8) - 2L), new byte[] { 0, 0 }));
+          boolean bool = locala.cSJ.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cSI.cSL + 8) - 2L), new byte[] { 0, 0 }));
           AppMethodBeat.o(963);
           return bool;
         }
@@ -162,15 +162,15 @@ public final class a
     AppMethodBeat.i(961);
     try
     {
-      if (eV(paramFile.getAbsolutePath()) != null)
+      if (fa(paramFile.getAbsolutePath()) != null)
       {
         System.out.println("Error: duplicate append apk external info!");
         AppMethodBeat.o(961);
         return -1;
       }
-      byte[] arrayOfByte = this.cRZ.toByteArray();
-      Object localObject = new a.a(arrayOfByte.length);
-      localObject = a.a.be(a.a.cSa << 32 | ((a.a)localObject).cSb);
+      byte[] arrayOfByte = this.cSJ.toByteArray();
+      Object localObject = new a(arrayOfByte.length);
+      localObject = a.be(a.cSK << 32 | ((a)localObject).cSL);
       int i = (byte)((arrayOfByte.length + 8) % 256);
       int j = (byte)((arrayOfByte.length + 8) / 256);
       RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "rw");
@@ -191,10 +191,68 @@ public final class a
     }
     return -1;
   }
+  
+  public static final class a
+  {
+    static final long cSK;
+    public int cSL = 0;
+    
+    static
+    {
+      AppMethodBeat.i(959);
+      cSK = "Micromsg".hashCode();
+      AppMethodBeat.o(959);
+    }
+    
+    public a(int paramInt)
+    {
+      this.cSL = paramInt;
+    }
+    
+    public static a G(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(960);
+      long l;
+      int i;
+      if (paramArrayOfByte.length == 8)
+      {
+        l = 0L;
+        i = 0;
+        if (i >= paramArrayOfByte.length) {
+          if (l >> 32 != cSK) {
+            break label75;
+          }
+        }
+      }
+      label75:
+      for (paramArrayOfByte = new a((int)l);; paramArrayOfByte = null)
+      {
+        AppMethodBeat.o(960);
+        return paramArrayOfByte;
+        l |= (paramArrayOfByte[i] & 0xFF) << i * 8;
+        i += 1;
+        break;
+      }
+    }
+    
+    static byte[] be(long paramLong)
+    {
+      byte[] arrayOfByte = new byte[8];
+      int i = 0;
+      for (;;)
+      {
+        if (i >= 8) {
+          return arrayOfByte;
+        }
+        arrayOfByte[i] = ((byte)(int)(paramLong >> i * 8 & 0xFF));
+        i += 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth.entity;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.h;
+import com.tencent.mm.sdk.platformtools.ar;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$DeleteUserTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$DeleteUserTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
 final class b$b
   implements b<IPCInteger, IPCBoolean>
 {
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$DeleteUserTask$invoke$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$DeleteUserTask$invoke$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-appbrand-integration_release"})
   public static final class a
     implements f
   {
-    a(d paramd, com.tencent.mm.modelsimple.g paramg) {}
+    a(d paramd, h paramh) {}
     
     public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, n paramn)
     {
       AppMethodBeat.i(180456);
-      aq.f((Runnable)new a(this, paramInt1, paramInt2));
-      com.tencent.mm.kernel.g.aiU().b(this.kAf.getType(), (f)this);
+      ar.f((Runnable)new a(this, paramInt1, paramInt2));
+      g.ajj().b(this.kDu.getType(), (f)this);
       AppMethodBeat.o(180456);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -38,7 +40,7 @@ final class b$b
       public final void run()
       {
         AppMethodBeat.i(180455);
-        d locald = this.kAg.jDK;
+        d locald = this.kDv.jGI;
         if (locald != null)
         {
           if ((paramInt1 == 0) && (paramInt2 == 0)) {}

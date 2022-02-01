@@ -6,10 +6,10 @@ import com.tencent.mm.vending.j.f;
 public class b
   implements com.tencent.mm.vending.c.b<a>
 {
-  protected a AEd;
-  public final a AEe;
-  public final b AEf;
-  public final c AEg;
+  protected a AVG;
+  public final a AVH;
+  public final b AVI;
+  public final c AVJ;
   
   public b()
   {
@@ -21,16 +21,16 @@ public class b
   private b(a parama)
   {
     AppMethodBeat.i(100583);
-    this.AEe = new a();
-    this.AEf = new b();
-    this.AEg = new c();
-    this.AEd = parama;
+    this.AVH = new a();
+    this.AVI = new b();
+    this.AVJ = new c();
+    this.AVG = parama;
     AppMethodBeat.o(100583);
   }
   
-  public final a efh()
+  public final a eiO()
   {
-    return this.AEd;
+    return this.AVG;
   }
   
   public final class a
@@ -38,7 +38,7 @@ public class b
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -49,7 +49,7 @@ public class b
   {
     public b() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }
@@ -60,7 +60,7 @@ public class b
   {
     public c() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

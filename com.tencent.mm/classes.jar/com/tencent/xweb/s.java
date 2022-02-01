@@ -13,14 +13,14 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class s
 {
-  static boolean MpH;
-  static List<a> MpI;
+  static boolean MML;
+  static List<a> MMM;
   
   static
   {
     AppMethodBeat.i(185174);
-    MpH = false;
-    MpI = new ArrayList();
+    MML = false;
+    MMM = new ArrayList();
     AppMethodBeat.o(185174);
   }
   
@@ -37,40 +37,40 @@ public final class s
           AppMethodBeat.o(185168);
           return;
         }
-        if (MpI.contains(parama))
+        if (MMM.contains(parama))
         {
           AppMethodBeat.o(185168);
           continue;
         }
-        MpI.add(parama);
+        MMM.add(parama);
       }
       finally {}
       AppMethodBeat.o(185168);
     }
   }
   
-  static void aiA(int paramInt)
+  static void ajj(int paramInt)
   {
     try
     {
-      AppMethodBeat.i(197074);
-      Iterator localIterator = MpI.iterator();
+      AppMethodBeat.i(217392);
+      Iterator localIterator = MMM.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).xd(paramInt);
+        ((a)localIterator.next()).xi(paramInt);
       }
-      AppMethodBeat.o(197074);
+      AppMethodBeat.o(217392);
     }
     finally {}
   }
   
-  static void aiB(int paramInt)
+  static void ajk(int paramInt)
   {
     try
     {
       AppMethodBeat.i(185171);
-      Iterator localIterator = MpI.iterator();
+      Iterator localIterator = MMM.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).xc(paramInt);
+        ((a)localIterator.next()).xh(paramInt);
       }
       AppMethodBeat.o(185171);
     }
@@ -83,61 +83,61 @@ public final class s
     {
       try
       {
-        AppMethodBeat.i(197073);
+        AppMethodBeat.i(217391);
         init();
         if (parama == null)
         {
-          AppMethodBeat.o(197073);
+          AppMethodBeat.o(217391);
           return;
         }
-        if (!MpI.contains(parama))
+        if (!MMM.contains(parama))
         {
-          AppMethodBeat.o(197073);
+          AppMethodBeat.o(217391);
           continue;
         }
-        MpI.remove(parama);
+        MMM.remove(parama);
       }
       finally {}
-      AppMethodBeat.o(197073);
+      AppMethodBeat.o(217391);
     }
   }
   
-  static void gaD()
+  static void gff()
   {
     try
     {
       AppMethodBeat.i(185169);
-      Iterator localIterator = MpI.iterator();
+      Iterator localIterator = MMM.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).bGk();
+        ((a)localIterator.next()).bHg();
       }
       AppMethodBeat.o(185169);
     }
     finally {}
   }
   
-  static void gaE()
+  static void gfg()
   {
     try
     {
       AppMethodBeat.i(185172);
-      Iterator localIterator = MpI.iterator();
+      Iterator localIterator = MMM.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).bGl();
+        ((a)localIterator.next()).bHh();
       }
       AppMethodBeat.o(185172);
     }
     finally {}
   }
   
-  static void gaF()
+  static void gfh()
   {
     try
     {
       AppMethodBeat.i(185173);
-      Iterator localIterator = MpI.iterator();
+      Iterator localIterator = MMM.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).bGm();
+        ((a)localIterator.next()).bHi();
       }
       AppMethodBeat.o(185173);
     }
@@ -151,7 +151,7 @@ public final class s
       try
       {
         AppMethodBeat.i(185167);
-        if (MpH)
+        if (MML)
         {
           AppMethodBeat.o(185167);
           return;
@@ -162,7 +162,7 @@ public final class s
           try
           {
             XWalkEnvironment.getApplicationContext().registerReceiver(new b((byte)0), new IntentFilter("com.tencent.xweb.update"));
-            MpH = true;
+            MML = true;
             AppMethodBeat.o(185167);
           }
           catch (Exception localException)
@@ -178,15 +178,15 @@ public final class s
   
   public static abstract interface a
   {
-    public abstract void bGk();
+    public abstract void bHg();
     
-    public abstract void bGl();
+    public abstract void bHh();
     
-    public abstract void bGm();
+    public abstract void bHi();
     
-    public abstract void xc(int paramInt);
+    public abstract void xh(int paramInt);
     
-    public abstract void xd(int paramInt);
+    public abstract void xi(int paramInt);
   }
   
   static final class b
@@ -204,7 +204,7 @@ public final class s
       if ("start".equals(paramContext))
       {
         Log.i("updateReicever", "start update");
-        s.gaD();
+        s.gff();
         AppMethodBeat.o(185166);
         return;
       }
@@ -213,7 +213,7 @@ public final class s
       {
         i = paramIntent.getIntExtra("extra_data", 0);
         Log.i("updateReicever", "update progress = ".concat(String.valueOf(i)));
-        s.aiA(i);
+        s.ajj(i);
         AppMethodBeat.o(185166);
         return;
       }
@@ -221,21 +221,21 @@ public final class s
       {
         i = paramIntent.getIntExtra("extra_data", 0);
         Log.i("updateReicever", "update finished code = ".concat(String.valueOf(i)));
-        s.aiB(i);
+        s.ajk(i);
         AppMethodBeat.o(185166);
         return;
       }
       if ("cfg_update".equals(paramContext))
       {
         Log.i("updateReicever", "cfg_update");
-        s.gaE();
+        s.gfg();
         AppMethodBeat.o(185166);
         return;
       }
       if ("plugin_update".equals(paramContext))
       {
         Log.i("updateReicever", "plugin_update");
-        s.gaF();
+        s.gfh();
       }
       AppMethodBeat.o(185166);
     }

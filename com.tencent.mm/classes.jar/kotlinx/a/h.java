@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/KSerializer;", "T", "Lkotlinx/serialization/SerializationStrategy;", "Lkotlinx/serialization/DeserializationStrategy;", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "patch", "decoder", "Lkotlinx/serialization/Decoder;", "old", "(Lkotlinx/serialization/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/KSerializer;", "T", "Lkotlinx/serialization/SerializationStrategy;", "Lkotlinx/serialization/DeserializationStrategy;", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "patch", "decoder", "Lkotlinx/serialization/Decoder;", "old", "(Lkotlinx/serialization/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "kotlinx-serialization-runtime"})
 public abstract interface h<T>
   extends f<T>, v<T>
 {
-  public abstract n eLj();
+  public abstract n eOR();
   
-  @l(gfx={1, 1, 16})
+  @l(gjZ={1, 1, 16})
   public static final class a
   {
     public static <T> T a(h<T> paramh, c paramc)
     {
-      AppMethodBeat.i(191021);
+      AppMethodBeat.i(199609);
       p.h(paramc, "decoder");
-      paramh = (Throwable)new aa(paramh.eLj().gwQ());
-      AppMethodBeat.o(191021);
+      paramh = (Throwable)new aa(paramh.eOR().gBs());
+      AppMethodBeat.o(199609);
       throw paramh;
     }
   }

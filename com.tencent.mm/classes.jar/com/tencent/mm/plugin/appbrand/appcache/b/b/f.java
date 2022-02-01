@@ -2,64 +2,64 @@ package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.al;
 import com.tencent.mm.plugin.appbrand.appcache.am;
 import com.tencent.mm.plugin.appbrand.appcache.an;
 import com.tencent.mm.plugin.appbrand.appcache.ao;
-import com.tencent.mm.plugin.appbrand.appcache.az;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.ap;
+import com.tencent.mm.plugin.appbrand.appcache.ba;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.pointers.PLong;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.protocal.protobuf.eii;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.ejz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public class f
-  extends a<Boolean, eii>
+  extends a<Boolean, ejz>
 {
-  public static boolean a(al paramal, a parama)
+  public static boolean a(am paramam, a parama)
   {
     AppMethodBeat.i(44398);
-    boolean bool = a(paramal, parama, null);
+    boolean bool = a(paramam, parama, null);
     AppMethodBeat.o(44398);
     return bool;
   }
   
-  public static boolean a(al paramal, a parama, PLong paramPLong)
+  public static boolean a(am paramam, a parama, PLong paramPLong)
   {
     AppMethodBeat.i(44399);
-    an localan = ((ao)j.T(ao.class)).aK(paramal.field_appId, paramal.field_version);
-    if (localan == null)
+    ao localao = ((ap)j.T(ap.class)).aN(paramam.field_appId, paramam.field_version);
+    if (localao == null)
     {
-      ad.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave get null key with %s", new Object[] { paramal.toShortString() });
+      ae.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave get null key with %s", new Object[] { paramam.toShortString() });
       AppMethodBeat.o(44399);
       return false;
     }
     if (paramPLong != null) {
-      paramPLong.value = localan.field_reportId;
+      paramPLong.value = localao.field_reportId;
     }
-    boolean bool = a(paramal, localan.field_decryptKey, localan.field_pkgMd5, localan.field_reportId, parama);
+    boolean bool = a(paramam, localao.field_decryptKey, localao.field_pkgMd5, localao.field_reportId, parama);
     AppMethodBeat.o(44399);
     return bool;
   }
   
-  private static boolean a(al paramal, String paramString1, String paramString2, int paramInt, a parama)
+  private static boolean a(am paramam, String paramString1, String paramString2, int paramInt, a parama)
   {
     boolean bool1 = false;
     AppMethodBeat.i(44397);
     Object localObject;
-    switch (1.jKk[parama.ordinal()])
+    switch (1.jNw[parama.ordinal()])
     {
     default: 
       i = 127;
-      localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+      localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
       com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
-      localObject = az.aL(paramal.field_appId, paramal.field_version);
-      i = MMProtocalJni.aesDecryptFile(paramal.field_pkgPath, (String)localObject, paramString1.getBytes());
-      ad.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, appId(%s), version(%d), ret %d", new Object[] { paramal.field_appId, Integer.valueOf(paramal.field_version), Integer.valueOf(i) });
+      localObject = ba.aO(paramam.field_appId, paramam.field_version);
+      i = MMProtocalJni.aesDecryptFile(paramam.field_pkgPath, (String)localObject, paramString1.getBytes());
+      ae.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, appId(%s), version(%d), ret %d", new Object[] { paramam.field_appId, Integer.valueOf(paramam.field_version), Integer.valueOf(i) });
       if (i != 0) {
-        switch (1.jKk[parama.ordinal()])
+        switch (1.jNw[parama.ordinal()])
         {
         }
       }
@@ -67,7 +67,7 @@ public class f
     case 1: 
       for (i = 129;; i = 133)
       {
-        paramal = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+        paramam = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
         com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         AppMethodBeat.o(44397);
         return false;
@@ -75,45 +75,45 @@ public class f
         break;
       }
     }
-    paramString1 = i.aPK((String)localObject);
+    paramString1 = o.aRh((String)localObject);
     if (!paramString1.equals(paramString2))
     {
-      ad.e("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, file_md5(%s) expect_md5(%s) mismatch", new Object[] { paramString1, paramString2 });
-      switch (1.jKk[parama.ordinal()])
+      ae.e("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, file_md5(%s) expect_md5(%s) mismatch", new Object[] { paramString1, paramString2 });
+      switch (1.jNw[parama.ordinal()])
       {
       }
       for (i = 130;; i = 134)
       {
-        paramal = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+        paramam = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
         com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         AppMethodBeat.o(44397);
         return false;
       }
     }
-    j.aYX().m(paramal.field_appId, paramal.field_version, paramString2);
-    boolean bool2 = j.aYX().e(paramal.field_appId, 0, paramal.field_version, (String)localObject);
-    switch (1.jKk[parama.ordinal()])
+    j.aZu().o(paramam.field_appId, paramam.field_version, paramString2);
+    boolean bool2 = j.aZu().e(paramam.field_appId, 0, paramam.field_version, (String)localObject);
+    switch (1.jNw[parama.ordinal()])
     {
     default: 
       if (bool2)
       {
         i = 143;
-        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
         com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
-        i.deleteFile(paramal.field_pkgPath);
-        if (!((am)j.T(am.class)).delete(paramal, new String[0])) {
+        o.deleteFile(paramam.field_pkgPath);
+        if (!((an)j.T(an.class)).delete(paramam, new String[0])) {
           break label549;
         }
         i = 139;
         label398:
-        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
         com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
-        if (parama != a.jKm)
+        if (parama != a.jNy)
         {
-          paramString1 = (ao)j.T(ao.class);
-          paramString2 = paramal.field_appId;
-          i = paramal.field_version;
-          if (!bt.isNullOrNil(paramString2)) {
+          paramString1 = (ap)j.T(ap.class);
+          paramString2 = paramam.field_appId;
+          i = paramam.field_version;
+          if (!bu.isNullOrNil(paramString2)) {
             break label557;
           }
           label445:
@@ -122,10 +122,10 @@ public class f
           }
           i = 141;
           label455:
-          paramal = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+          paramam = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
           com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         }
-        switch (1.jKk[parama.ordinal()])
+        switch (1.jNw[parama.ordinal()])
         {
         }
       }
@@ -133,7 +133,7 @@ public class f
     }
     for (int i = 128;; i = 132)
     {
-      paramal = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+      paramam = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
       com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
       AppMethodBeat.o(44397);
       return true;
@@ -150,10 +150,10 @@ public class f
       i = 140;
       break label398;
       label557:
-      paramal = new an();
-      paramal.field_appId = paramString2;
-      paramal.field_appVersion = i;
-      bool1 = paramString1.delete(paramal, new String[0]);
+      paramam = new ao();
+      paramam.field_appId = paramString2;
+      paramam.field_appVersion = i;
+      bool1 = paramString1.delete(paramam, new String[0]);
       break label445;
       label590:
       i = 142;
@@ -161,7 +161,7 @@ public class f
     }
   }
   
-  final String bbb()
+  final String bbD()
   {
     return "CmdIssueDecryptKey";
   }
@@ -171,10 +171,10 @@ public class f
     static
     {
       AppMethodBeat.i(44396);
-      jKl = new a("WXA_LAUNCH", 0);
-      jKm = new a("ISSUE_DECRYPT", 1);
-      jKn = new a("GET_CODE", 2);
-      jKo = new a[] { jKl, jKm, jKn };
+      jNx = new a("WXA_LAUNCH", 0);
+      jNy = new a("ISSUE_DECRYPT", 1);
+      jNz = new a("GET_CODE", 2);
+      jNA = new a[] { jNx, jNy, jNz };
       AppMethodBeat.o(44396);
     }
     

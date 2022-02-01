@@ -20,25 +20,25 @@ final class LaunchAAByPersonAmountSelectUI$5
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/aa/ui/LaunchAAByPersonAmountSelectUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    if (!LaunchAAByPersonAmountSelectUI.l(this.iWk))
+    a.b("com/tencent/mm/plugin/aa/ui/LaunchAAByPersonAmountSelectUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    if (!LaunchAAByPersonAmountSelectUI.l(this.iZd))
     {
       a.a(true, this, "com/tencent/mm/plugin/aa/ui/LaunchAAByPersonAmountSelectUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(63593);
       return true;
     }
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      LaunchAAByPersonAmountSelectUI.m(this.iWk).setTextColor(this.iWk.getResources().getColor(2131100054));
+      LaunchAAByPersonAmountSelectUI.m(this.iZd).setTextColor(this.iZd.getResources().getColor(2131100054));
     }
     for (;;)
     {
       a.a(false, this, "com/tencent/mm/plugin/aa/ui/LaunchAAByPersonAmountSelectUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(63593);
       return false;
-      if (LaunchAAByPersonAmountSelectUI.l(this.iWk)) {
-        LaunchAAByPersonAmountSelectUI.m(this.iWk).setTextColor(this.iWk.getResources().getColor(2131100053));
+      if (LaunchAAByPersonAmountSelectUI.l(this.iZd)) {
+        LaunchAAByPersonAmountSelectUI.m(this.iZd).setTextColor(this.iZd.getResources().getColor(2131100053));
       } else {
-        LaunchAAByPersonAmountSelectUI.m(this.iWk).setTextColor(this.iWk.getResources().getColor(2131100052));
+        LaunchAAByPersonAmountSelectUI.m(this.iZd).setTextColor(this.iZd.getResources().getColor(2131100052));
       }
     }
   }

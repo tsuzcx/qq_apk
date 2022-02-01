@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String userName;
-  public String vol;
-  public String vpA;
-  public String vpB;
-  public String vpC;
-  public String vpD;
-  public long vpn;
-  public String vpo;
+  public String vAq;
+  public String vBF;
+  public String vBG;
+  public String vBH;
+  public String vBI;
+  public long vBs;
+  public String vBt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -20,24 +20,24 @@ public final class y
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.vpA != null) {
-        paramVarArgs.d(1, this.vpA);
+      if (this.vBF != null) {
+        paramVarArgs.d(1, this.vBF);
       }
-      if (this.vpB != null) {
-        paramVarArgs.d(2, this.vpB);
+      if (this.vBG != null) {
+        paramVarArgs.d(2, this.vBG);
       }
-      paramVarArgs.aY(3, this.vpn);
-      if (this.vpo != null) {
-        paramVarArgs.d(4, this.vpo);
+      paramVarArgs.aZ(3, this.vBs);
+      if (this.vBt != null) {
+        paramVarArgs.d(4, this.vBt);
       }
-      if (this.vpC != null) {
-        paramVarArgs.d(5, this.vpC);
+      if (this.vBH != null) {
+        paramVarArgs.d(5, this.vBH);
       }
-      if (this.vol != null) {
-        paramVarArgs.d(6, this.vol);
+      if (this.vAq != null) {
+        paramVarArgs.d(6, this.vAq);
       }
-      if (this.vpD != null) {
-        paramVarArgs.d(7, this.vpD);
+      if (this.vBI != null) {
+        paramVarArgs.d(7, this.vBI);
       }
       if (this.userName != null) {
         paramVarArgs.d(8, this.userName);
@@ -46,33 +46,33 @@ public final class y
       return 0;
     }
     if (paramInt == 1) {
-      if (this.vpA == null) {
+      if (this.vBF == null) {
         break label626;
       }
     }
     label626:
-    for (paramInt = f.a.a.b.b.a.e(1, this.vpA) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.vBF) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.vpB != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.vpB);
+      if (this.vBG != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.vBG);
       }
-      i += f.a.a.b.b.a.p(3, this.vpn);
+      i += f.a.a.b.b.a.p(3, this.vBs);
       paramInt = i;
-      if (this.vpo != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.vpo);
+      if (this.vBt != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.vBt);
       }
       i = paramInt;
-      if (this.vpC != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.vpC);
+      if (this.vBH != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.vBH);
       }
       paramInt = i;
-      if (this.vol != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.vol);
+      if (this.vAq != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.vAq);
       }
       i = paramInt;
-      if (this.vpD != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.vpD);
+      if (this.vBI != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.vBI);
       }
       paramInt = i;
       if (this.userName != null) {
@@ -83,9 +83,9 @@ public final class y
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91258);
@@ -101,35 +101,35 @@ public final class y
           AppMethodBeat.o(91258);
           return -1;
         case 1: 
-          localy.vpA = locala.NPN.readString();
+          localy.vBF = locala.OmT.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 2: 
-          localy.vpB = locala.NPN.readString();
+          localy.vBG = locala.OmT.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 3: 
-          localy.vpn = locala.NPN.zd();
+          localy.vBs = locala.OmT.zd();
           AppMethodBeat.o(91258);
           return 0;
         case 4: 
-          localy.vpo = locala.NPN.readString();
+          localy.vBt = locala.OmT.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 5: 
-          localy.vpC = locala.NPN.readString();
+          localy.vBH = locala.OmT.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 6: 
-          localy.vol = locala.NPN.readString();
+          localy.vAq = locala.OmT.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 7: 
-          localy.vpD = locala.NPN.readString();
+          localy.vBI = locala.OmT.readString();
           AppMethodBeat.o(91258);
           return 0;
         }
-        localy.userName = locala.NPN.readString();
+        localy.userName = locala.OmT.readString();
         AppMethodBeat.o(91258);
         return 0;
       }
@@ -140,7 +140,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.y
  * JD-Core Version:    0.7.0.1
  */

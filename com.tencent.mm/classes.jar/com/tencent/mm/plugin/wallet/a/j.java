@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public double CGY;
-  public LinkedList<t> CHa;
-  public double CHf;
-  public double CHg;
-  public int CHh;
-  public String CHi;
-  public String CHj;
-  public b CHo;
-  public String CHp;
-  public double CHq;
-  public LinkedList<f> CHr;
+  public double CYE;
+  public LinkedList<t> CYG;
+  public double CYL;
+  public double CYM;
+  public int CYN;
+  public String CYO;
+  public String CYP;
+  public b CYU;
+  public String CYV;
+  public double CYW;
+  public LinkedList<f> CYX;
   
   public j()
   {
     AppMethodBeat.i(91296);
-    this.CHr = new LinkedList();
-    this.CHa = new LinkedList();
+    this.CYX = new LinkedList();
+    this.CYG = new LinkedList();
     AppMethodBeat.o(91296);
   }
   
@@ -33,60 +33,60 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CHp != null) {
-        paramVarArgs.d(1, this.CHp);
+      if (this.CYV != null) {
+        paramVarArgs.d(1, this.CYV);
       }
-      paramVarArgs.e(2, this.CHq);
-      paramVarArgs.e(3, this.CGY);
-      paramVarArgs.e(4, 8, this.CHr);
-      paramVarArgs.e(5, 8, this.CHa);
-      paramVarArgs.e(6, this.CHf);
-      paramVarArgs.e(7, this.CHg);
-      paramVarArgs.aS(8, this.CHh);
-      if (this.CHi != null) {
-        paramVarArgs.d(9, this.CHi);
+      paramVarArgs.e(2, this.CYW);
+      paramVarArgs.e(3, this.CYE);
+      paramVarArgs.e(4, 8, this.CYX);
+      paramVarArgs.e(5, 8, this.CYG);
+      paramVarArgs.e(6, this.CYL);
+      paramVarArgs.e(7, this.CYM);
+      paramVarArgs.aS(8, this.CYN);
+      if (this.CYO != null) {
+        paramVarArgs.d(9, this.CYO);
       }
-      if (this.CHj != null) {
-        paramVarArgs.d(10, this.CHj);
+      if (this.CYP != null) {
+        paramVarArgs.d(10, this.CYP);
       }
-      if (this.CHo != null) {
-        paramVarArgs.c(11, this.CHo);
+      if (this.CYU != null) {
+        paramVarArgs.c(11, this.CYU);
       }
       AppMethodBeat.o(91297);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CHp == null) {
+      if (this.CYV == null) {
         break label894;
       }
     }
     label894:
-    for (paramInt = f.a.a.b.b.a.e(1, this.CHp) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.CYV) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.alT(2) + f.a.a.b.b.a.alT(3) + f.a.a.a.c(4, 8, this.CHr) + f.a.a.a.c(5, 8, this.CHa) + f.a.a.b.b.a.alT(6) + f.a.a.b.b.a.alT(7) + f.a.a.b.b.a.bz(8, this.CHh);
+      int i = paramInt + f.a.a.b.b.a.amD(2) + f.a.a.b.b.a.amD(3) + f.a.a.a.c(4, 8, this.CYX) + f.a.a.a.c(5, 8, this.CYG) + f.a.a.b.b.a.amD(6) + f.a.a.b.b.a.amD(7) + f.a.a.b.b.a.bz(8, this.CYN);
       paramInt = i;
-      if (this.CHi != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.CHi);
+      if (this.CYO != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.CYO);
       }
       i = paramInt;
-      if (this.CHj != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.CHj);
+      if (this.CYP != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.CYP);
       }
       paramInt = i;
-      if (this.CHo != null) {
-        paramInt = i + f.a.a.b.b.a.b(11, this.CHo);
+      if (this.CYU != null) {
+        paramInt = i + f.a.a.b.b.a.b(11, this.CYU);
       }
       AppMethodBeat.o(91297);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.CHr.clear();
-        this.CHa.clear();
+        this.CYX.clear();
+        this.CYG.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(91297);
@@ -105,19 +105,19 @@ public final class j
           AppMethodBeat.o(91297);
           return -1;
         case 1: 
-          localj.CHp = ((f.a.a.a.a)localObject1).NPN.readString();
+          localj.CYV = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91297);
           return 0;
         case 2: 
-          localj.CHq = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
+          localj.CYW = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
           AppMethodBeat.o(91297);
           return 0;
         case 3: 
-          localj.CGY = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
+          localj.CYE = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
           AppMethodBeat.o(91297);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -125,14 +125,14 @@ public final class j
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new f();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localj.CHr.add(localObject1);
+            for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localj.CYX.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91297);
           return 0;
         case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -140,34 +140,34 @@ public final class j
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new t();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localj.CHa.add(localObject1);
+            for (bool = true; bool; bool = ((t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localj.CYG.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91297);
           return 0;
         case 6: 
-          localj.CHf = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
+          localj.CYL = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
           AppMethodBeat.o(91297);
           return 0;
         case 7: 
-          localj.CHg = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
+          localj.CYM = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
           AppMethodBeat.o(91297);
           return 0;
         case 8: 
-          localj.CHh = ((f.a.a.a.a)localObject1).NPN.zc();
+          localj.CYN = ((f.a.a.a.a)localObject1).OmT.zc();
           AppMethodBeat.o(91297);
           return 0;
         case 9: 
-          localj.CHi = ((f.a.a.a.a)localObject1).NPN.readString();
+          localj.CYO = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91297);
           return 0;
         case 10: 
-          localj.CHj = ((f.a.a.a.a)localObject1).NPN.readString();
+          localj.CYP = ((f.a.a.a.a)localObject1).OmT.readString();
           AppMethodBeat.o(91297);
           return 0;
         }
-        localj.CHo = ((f.a.a.a.a)localObject1).NPN.gxI();
+        localj.CYU = ((f.a.a.a.a)localObject1).OmT.gCk();
         AppMethodBeat.o(91297);
         return 0;
       }
@@ -178,7 +178,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.al;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.io.File;
@@ -19,31 +19,31 @@ import java.util.Locale;
 public final class t
   extends j<s>
 {
-  private static final String ERc;
+  private static final String Fjx;
   @SuppressLint({"UseSparseArrays"})
-  private static final HashMap<Integer, h.b> ERd;
+  private static final HashMap<Integer, h.b> Fjy;
   private static final String[] SQL_CREATE;
-  private final HashMap<String, Object> ERe;
-  public final h hHS;
+  private final HashMap<String, Object> Fjz;
+  public final h hKK;
   
   static
   {
     AppMethodBeat.i(152080);
     SQL_CREATE = new String[] { j.getCreateSQLs(s.info, "ResDownloaderRecordTable") };
-    ERc = al.IpN + g.getMessageDigest(String.format(Locale.ENGLISH, "mm%d", new Object[] { Integer.valueOf(-2147483648) }).getBytes()) + "/";
+    Fjx = am.IKh + g.getMessageDigest(String.format(Locale.ENGLISH, "mm%d", new Object[] { Integer.valueOf(-2147483648) }).getBytes()) + "/";
     Object localObject = new HashMap();
-    ERd = (HashMap)localObject;
+    Fjy = (HashMap)localObject;
     ((HashMap)localObject).put(Integer.valueOf("RES_DOWNLOADER_RECORD_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
         AppMethodBeat.i(152072);
-        String[] arrayOfString = t.fbf();
+        String[] arrayOfString = t.feT();
         AppMethodBeat.o(152072);
         return arrayOfString;
       }
     });
-    localObject = r.fbd().iterator();
+    localObject = r.feR().iterator();
     while (((Iterator)localObject).hasNext()) {
       ((Iterator)localObject).next();
     }
@@ -54,28 +54,28 @@ public final class t
   {
     super(paramh, s.info, "ResDownloaderRecordTable", null);
     AppMethodBeat.i(152073);
-    this.ERe = new HashMap();
-    this.hHS = paramh;
-    paramh = r.fbd().iterator();
+    this.Fjz = new HashMap();
+    this.hKK = paramh;
+    paramh = r.feR().iterator();
     while (paramh.hasNext()) {
       paramh.next();
     }
     AppMethodBeat.o(152073);
   }
   
-  static t fbe()
+  static t feS()
   {
     AppMethodBeat.i(152074);
     try
     {
-      new File(ERc).mkdirs();
+      new File(Fjx).mkdirs();
       Object localObject = new h();
-      String str1 = ERc + "ResDown.db";
-      String str2 = ERc + "EnResDown.db";
+      String str1 = Fjx + "ResDown.db";
+      String str2 = Fjx + "EnResDown.db";
       q.cH(true);
-      if (!((h)localObject).a(str1, str2, -2147483648L, ERd))
+      if (!((h)localObject).a(str1, str2, -2147483648L, Fjy))
       {
-        ad.f("MicroMsg.ResDownloaderStorage", "res downloader db init failed");
+        ae.f("MicroMsg.ResDownloaderStorage", "res downloader db init failed");
         AppMethodBeat.o(152074);
         return null;
       }
@@ -85,18 +85,18 @@ public final class t
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ResDownloaderStorage", "new storage failed, exception = %s", new Object[] { localException });
+      ae.e("MicroMsg.ResDownloaderStorage", "new storage failed, exception = %s", new Object[] { localException });
       AppMethodBeat.o(152074);
     }
     return null;
   }
   
-  public final boolean CA(String paramString)
+  public final boolean Dc(String paramString)
   {
     AppMethodBeat.i(152075);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.ResDownloaderStorage", "delete with null or nil urlKey, return false");
+      ae.e("MicroMsg.ResDownloaderStorage", "delete with null or nil urlKey, return false");
       AppMethodBeat.o(152075);
       return false;
     }
@@ -107,13 +107,13 @@ public final class t
     return bool;
   }
   
-  public final s aMi(String paramString)
+  public final s aNE(String paramString)
   {
     boolean bool1 = false;
     AppMethodBeat.i(152078);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.ResDownloaderStorage", "query with null or nil urlKey, return null");
+      ae.e("MicroMsg.ResDownloaderStorage", "query with null or nil urlKey, return null");
       AppMethodBeat.o(152078);
       return null;
     }
@@ -132,10 +132,10 @@ public final class t
     }
     catch (com.tencent.wcdb.database.SQLiteDatabaseCorruptException localSQLiteDatabaseCorruptException)
     {
-      if ((this.hHS == null) || (!this.hHS.isOpen())) {
+      if ((this.hKK == null) || (!this.hKK.isOpen())) {
         bool1 = true;
       }
-      ad.e("MicroMsg.ResDownloaderStorage", "query with urlKey[%s], db.isClose[%s], dbFile.exists[%b], e=%s", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(new File(ERc + "EnResDown.db").exists()), localSQLiteDatabaseCorruptException });
+      ae.e("MicroMsg.ResDownloaderStorage", "query with urlKey[%s], db.isClose[%s], dbFile.exists[%b], e=%s", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(new File(Fjx + "EnResDown.db").exists()), localSQLiteDatabaseCorruptException });
       AppMethodBeat.o(152078);
       return null;
     }
@@ -149,7 +149,7 @@ public final class t
   public final boolean i(s params)
   {
     AppMethodBeat.i(152076);
-    if (bt.isNullOrNil(params.field_urlKey))
+    if (bu.isNullOrNil(params.field_urlKey))
     {
       AppMethodBeat.o(152076);
       return false;
@@ -163,7 +163,7 @@ public final class t
   public final boolean j(s params)
   {
     AppMethodBeat.i(152077);
-    if (bt.isNullOrNil(params.field_urlKey))
+    if (bu.isNullOrNil(params.field_urlKey))
     {
       AppMethodBeat.o(152077);
       return false;
@@ -176,7 +176,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.t
  * JD-Core Version:    0.7.0.1
  */

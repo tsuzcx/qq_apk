@@ -1,38 +1,38 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bfi;
-import com.tencent.mm.protocal.protobuf.bfj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bfy;
+import com.tencent.mm.protocal.protobuf.bfz;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class j
   extends n
   implements k
 {
   private f callback;
-  public String dCg;
+  public String dDl;
   private final b rr;
   
   public j(String paramString)
   {
     AppMethodBeat.i(151206);
     b.a locala = new b.a();
-    locala.hNM = new bfi();
-    locala.hNN = new bfj();
+    locala.hQF = new bfy();
+    locala.hQG = new bfz();
     locala.uri = "/cgi-bin/micromsg-bin/getopenurl";
     locala.funcId = 913;
-    this.rr = locala.aDC();
-    ad.i("MicroMsg.NetSceneGetOpenIMUrl", "NetSceneGetOpenIMUrl username: %s", new Object[] { paramString });
-    ((bfi)this.rr.hNK.hNQ).userName = paramString;
+    this.rr = locala.aDS();
+    ae.i("MicroMsg.NetSceneGetOpenIMUrl", "NetSceneGetOpenIMUrl username: %s", new Object[] { paramString });
+    ((bfy)this.rr.hQD.hQJ).userName = paramString;
     AppMethodBeat.o(151206);
   }
   
@@ -53,15 +53,15 @@ public final class j
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151208);
-    ad.i("MicroMsg.NetSceneGetOpenIMUrl", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.i("MicroMsg.NetSceneGetOpenIMUrl", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(151208);
       return;
     }
-    this.dCg = ((bfj)this.rr.hNL.hNQ).dCg;
-    ad.i("MicroMsg.NetSceneGetOpenIMUrl", "openUrl %s", new Object[] { this.dCg });
+    this.dDl = ((bfz)this.rr.hQE.hQJ).dDl;
+    ae.i("MicroMsg.NetSceneGetOpenIMUrl", "openUrl %s", new Object[] { this.dDl });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151208);
   }

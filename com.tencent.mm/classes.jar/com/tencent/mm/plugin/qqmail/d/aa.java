@@ -4,29 +4,29 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
 
 public final class aa
 {
-  public z xco;
+  public z xsf;
   
   public aa()
   {
     AppMethodBeat.i(122760);
-    String str = (String)g.ajC().ajl().get(282625, "");
+    String str = (String)g.ajR().ajA().get(282625, "");
     try
     {
-      this.xco = new z();
-      this.xco.parseFrom(Base64.decode(str, 0));
+      this.xsf = new z();
+      this.xsf.parseFrom(Base64.decode(str, 0));
       AppMethodBeat.o(122760);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localException, "", new Object[0]);
-      ad.w("MicroMsg.ShareMailInfoMgr", "parse from config fail");
-      this.xco = new z();
+      ae.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localException, "", new Object[0]);
+      ae.w("MicroMsg.ShareMailInfoMgr", "parse from config fail");
+      this.xsf = new z();
       AppMethodBeat.o(122760);
     }
   }

@@ -4,12 +4,12 @@ final class x
 {
   public String appId;
   public byte[] data;
-  public int ilN;
+  public int ioG;
   
   public x(String paramString, int paramInt, byte[] paramArrayOfByte)
   {
     this.appId = paramString;
-    this.ilN = paramInt;
+    this.ioG = paramInt;
     this.data = paramArrayOfByte;
   }
 }

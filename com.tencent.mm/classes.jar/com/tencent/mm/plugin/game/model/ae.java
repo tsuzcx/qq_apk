@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.bp;
-import com.tencent.mm.plugin.game.d.co;
-import com.tencent.mm.plugin.game.d.cx;
-import com.tencent.mm.plugin.game.d.cy;
-import com.tencent.mm.plugin.game.d.dl;
-import com.tencent.mm.plugin.game.d.n;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.game.api.f;
+import com.tencent.mm.plugin.game.d.bw;
+import com.tencent.mm.plugin.game.d.cw;
+import com.tencent.mm.plugin.game.d.df;
+import com.tencent.mm.plugin.game.d.dg;
+import com.tencent.mm.plugin.game.d.dt;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.d.q;
+import com.tencent.mm.plugin.game.f.d;
 import com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView.a;
-import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,38 +21,38 @@ import java.util.LinkedList;
 public final class ae
   extends x
 {
-  public bp udP;
-  public LinkedList<c> udQ;
-  public LinkedList<c> udR;
-  private int udv;
+  private int uoD;
+  public bw uoX;
+  public LinkedList<c> uoY;
+  public LinkedList<c> uoZ;
   
   public ae(a parama, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(41543);
-    this.udv = 0;
+    this.uoD = 0;
     if (parama == null)
     {
-      this.udP = new bp();
+      this.uoX = new bw();
       AppMethodBeat.o(41543);
       return;
     }
-    this.udP = ((bp)parama);
-    this.udv = paramInt;
-    this.udQ = cZy();
-    this.udR = cZz();
+    this.uoX = ((bw)parama);
+    this.uoD = paramInt;
+    this.uoY = dcj();
+    this.uoZ = dck();
     if (paramBoolean) {
-      ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWI().b("pb_library", parama);
+      ((f)com.tencent.mm.kernel.g.ab(f.class)).cZm().b("pb_library", parama);
     }
-    com.tencent.mm.plugin.game.f.d.aE(this.udQ);
-    com.tencent.mm.plugin.game.f.d.aE(this.udR);
+    d.aE(this.uoY);
+    d.aE(this.uoZ);
     AppMethodBeat.o(41543);
   }
   
   public ae(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41544);
-    this.udv = 0;
-    this.udP = new bp();
+    this.uoD = 0;
+    this.uoX = new bw();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41544);
@@ -59,11 +60,11 @@ public final class ae
     }
     try
     {
-      this.udP.parseFrom(paramArrayOfByte);
-      this.udQ = cZy();
-      this.udR = cZz();
-      com.tencent.mm.plugin.game.f.d.aE(this.udQ);
-      com.tencent.mm.plugin.game.f.d.aE(this.udR);
+      this.uoX.parseFrom(paramArrayOfByte);
+      this.uoY = dcj();
+      this.uoZ = dck();
+      d.aE(this.uoY);
+      d.aE(this.uoZ);
       AppMethodBeat.o(41544);
       return;
     }
@@ -71,31 +72,31 @@ public final class ae
     {
       for (;;)
       {
-        ad.e("MicroMsg.GamePBDataLibrary", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.GamePBDataLibrary", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private LinkedList<c> cZy()
+  private LinkedList<c> dcj()
   {
     AppMethodBeat.i(41545);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.udP.uiz == null) || (this.udP.uiz.ujg == null) || (this.udP.uiz.ujg.uju == null))
+    if ((this.uoX.utX == null) || (this.uoX.utX.uuE == null) || (this.uoX.utX.uuE.uuS == null))
     {
       AppMethodBeat.o(41545);
       return localLinkedList;
     }
-    Iterator localIterator = this.udP.uiz.ujg.uju.iterator();
+    Iterator localIterator = this.uoX.utX.uuE.uuS.iterator();
     int i = 1;
     while (localIterator.hasNext())
     {
-      cy localcy = (cy)localIterator.next();
-      c localc = a(localcy.ueZ);
+      dg localdg = (dg)localIterator.next();
+      c localc = a(localdg.uqg);
       if (localc != null)
       {
-        localc.uaK = localcy.ueZ.ufn;
+        localc.ulM = localdg.uqg.uqx;
         localc.scene = 11;
-        localc.dFG = 1110;
+        localc.dGL = 1110;
         localc.position = i;
         localLinkedList.add(localc);
         i += 1;
@@ -105,27 +106,27 @@ public final class ae
     return localLinkedList;
   }
   
-  private LinkedList<c> cZz()
+  private LinkedList<c> dck()
   {
     AppMethodBeat.i(41546);
     LinkedList localLinkedList = new LinkedList();
-    if (this.udP.uiA == null)
+    if (this.uoX.utY == null)
     {
       AppMethodBeat.o(41546);
       return localLinkedList;
     }
-    int j = this.udv + 1;
-    int i = this.udv / 15;
-    Iterator localIterator = this.udP.uiA.iterator();
+    int j = this.uoD + 1;
+    int i = this.uoD / 15;
+    Iterator localIterator = this.uoX.utY.iterator();
     i += 901;
     label272:
     for (;;)
     {
       if (localIterator.hasNext())
       {
-        com.tencent.mm.plugin.game.d.d locald = (com.tencent.mm.plugin.game.d.d)localIterator.next();
+        e locale = (e)localIterator.next();
         Object localObject = null;
-        switch (locald.nEf)
+        switch (locale.nJA)
         {
         }
         for (;;)
@@ -134,10 +135,10 @@ public final class ae
             break label272;
           }
           localObject.scene = 11;
-          localObject.dFG = 1111;
+          localObject.dGL = 1111;
           localLinkedList.add(localObject);
           break;
-          c localc = a(locald.ueZ);
+          c localc = a(locale.uqg);
           localObject = localc;
           if (localc != null)
           {
@@ -145,15 +146,15 @@ public final class ae
             j += 1;
             localObject = localc;
             continue;
-            if (locald.ufc != null)
+            if (locale.uqm != null)
             {
-              localc = a(locald.ufc.ueZ);
+              localc = a(locale.uqm.uqg);
               localObject = localc;
               if (localc != null)
               {
                 localc.type = 1;
-                localc.uaD = locald.ufc.ufb;
-                localc.uaE = locald.ufc.ufa;
+                localc.ulF = locale.uqm.uqi;
+                localc.ulG = locale.uqm.uqh;
                 int k = i + 1;
                 localc.position = i;
                 i = k;
@@ -168,44 +169,44 @@ public final class ae
     }
   }
   
-  public final HashMap<Integer, String> cZA()
+  public final HashMap<Integer, String> dcl()
   {
     AppMethodBeat.i(41547);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    if ((this.udP.uiz == null) || (this.udP.uiz.ujj == null))
+    if ((this.uoX.utX == null) || (this.uoX.utX.uuH == null))
     {
       AppMethodBeat.o(41547);
       return localLinkedHashMap;
     }
-    Iterator localIterator = this.udP.uiz.ujj.iterator();
+    Iterator localIterator = this.uoX.utX.uuH.iterator();
     while (localIterator.hasNext())
     {
-      dl localdl = (dl)localIterator.next();
-      localLinkedHashMap.put(Integer.valueOf(localdl.uix), localdl.Name);
+      dt localdt = (dt)localIterator.next();
+      localLinkedHashMap.put(Integer.valueOf(localdt.utV), localdt.Name);
     }
     AppMethodBeat.o(41547);
     return localLinkedHashMap;
   }
   
-  public final LinkedList<GameLibraryCategoriesView.a> cZB()
+  public final LinkedList<GameLibraryCategoriesView.a> dcm()
   {
     AppMethodBeat.i(41548);
-    if ((this.udP.uiz == null) || (this.udP.uiz.ujh == null))
+    if ((this.uoX.utX == null) || (this.uoX.utX.uuF == null))
     {
       AppMethodBeat.o(41548);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.udP.uiz.ujh.iterator();
+    Iterator localIterator = this.uoX.utX.uuF.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
-      n localn = (n)localIterator.next();
+      q localq = (q)localIterator.next();
       GameLibraryCategoriesView.a locala = new GameLibraryCategoriesView.a();
-      locala.uqf = localn.ufP;
-      locala.tHQ = localn.Name;
-      locala.uqg = localn.ufb;
-      locala.jPZ = localn.ufg;
+      locala.uBB = localq.urk;
+      locala.tSH = localq.Name;
+      locala.uBC = localq.uqi;
+      locala.jTr = localq.uqq;
       i += 1;
       locala.position = i;
       localLinkedList.add(locala);

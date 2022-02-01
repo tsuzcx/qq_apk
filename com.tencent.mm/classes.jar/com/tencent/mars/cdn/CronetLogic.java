@@ -1,6 +1,6 @@
 package com.tencent.mars.cdn;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -76,7 +76,7 @@ public class CronetLogic
   public static String getSystemProperty(String paramString)
   {
     String str = System.getProperty(paramString);
-    ad.d("cronet", "property " + paramString + " res " + str);
+    ae.d("cronet", "property " + paramString + " res " + str);
     return str;
   }
   
@@ -102,7 +102,7 @@ public class CronetLogic
     {
       try
       {
-        ad.i("cronet", "verifyCertWithUserCA");
+        ae.i("cronet", "verifyCertWithUserCA");
         KeyStore localKeyStore = KeyStore.getInstance("AndroidCAStore");
         localKeyStore.load(null, null);
         Object localObject2 = new ArrayList();
@@ -124,9 +124,9 @@ public class CronetLogic
       }
       catch (KeyStoreException paramArrayOfByte)
       {
-        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
-        ad.i("cronet", "alias list size %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
+        ae.i("cronet", "alias list size %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
         if (((List)localObject2).size() > 0)
         {
           localObject1 = new ArrayList();
@@ -140,7 +140,7 @@ public class CronetLogic
             }
             catch (CertificateException paramArrayOfByte)
             {
-              ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
+              ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
               return convertToCronetResult(new AndroidCertVerifyResult(-5));
             }
           }
@@ -158,7 +158,7 @@ public class CronetLogic
           try
           {
             localX509Certificate.verify(((X509Certificate)localObject2).getPublicKey());
-            ad.i("cronet", "do user verify success");
+            ae.i("cronet", "do user verify success");
             i = 1;
             if (i == 0) {
               break label438;
@@ -170,27 +170,27 @@ public class CronetLogic
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("cronet", localException, "Exception: check user verify certificate", new Object[0]);
+            ae.printErrStackTrace("cronet", localException, "Exception: check user verify certificate", new Object[0]);
           }
           continue;
         }
       }
       catch (NoSuchAlgorithmException paramArrayOfByte)
       {
-        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
-        ad.e("cronet", "checkServerTrusted self check aliasList null");
+        ae.e("cronet", "checkServerTrusted self check aliasList null");
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
       catch (CertificateException paramArrayOfByte)
       {
-        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
       catch (IOException paramArrayOfByte)
       {
-        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
     }

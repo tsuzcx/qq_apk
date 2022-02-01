@@ -18,25 +18,25 @@ import java.util.List;
 public abstract class e
   extends i
 {
-  private final d.l.b.a.b.l.f NxO;
-  protected final d.l.b.a.b.b.e NxP;
+  private final d.l.b.a.b.l.f NUV;
+  protected final d.l.b.a.b.b.e NUW;
   
   public e(j paramj, d.l.b.a.b.b.e parame)
   {
-    this.NxP = parame;
-    this.NxO = paramj.S((d.g.a.a)new a(this));
+    this.NUW = parame;
+    this.NUV = paramj.S((d.g.a.a)new a(this));
   }
   
-  private final List<l> gtt()
+  private final List<l> gxV()
   {
-    return (List)d.l.b.a.b.l.i.a(this.NxO, cwV[0]);
+    return (List)d.l.b.a.b.l.i.a(this.NUV, cxA[0]);
   }
   
   public final Collection<ah> a(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     p.h(paramf, "name");
     p.h(parama, "location");
-    Object localObject1 = (Iterable)gtt();
+    Object localObject1 = (Iterable)gxV();
     parama = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     Object localObject2;
@@ -53,7 +53,7 @@ public abstract class e
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      if (p.i(((ah)localObject2).giD(), paramf)) {
+      if (p.i(((ah)localObject2).gnf(), paramf)) {
         parama.add(localObject2);
       }
     }
@@ -64,17 +64,17 @@ public abstract class e
   {
     p.h(paramd, "kindFilter");
     p.h(paramb, "nameFilter");
-    if (!paramd.alm(d.NxC.Nxo)) {
-      return (Collection)v.MKE;
+    if (!paramd.alW(d.NUI.NUu)) {
+      return (Collection)v.NhH;
     }
-    return (Collection)gtt();
+    return (Collection)gxV();
   }
   
   public final Collection<am> b(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     p.h(paramf, "name");
     p.h(parama, "location");
-    Object localObject1 = (Iterable)gtt();
+    Object localObject1 = (Iterable)gxV();
     parama = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     Object localObject2;
@@ -91,14 +91,14 @@ public abstract class e
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      if (p.i(((am)localObject2).giD(), paramf)) {
+      if (p.i(((am)localObject2).gnf(), paramf)) {
         parama.add(localObject2);
       }
     }
     return (Collection)parama;
   }
   
-  protected abstract List<t> ghS();
+  protected abstract List<t> gmu();
   
   static final class a
     extends q
@@ -120,7 +120,7 @@ public abstract class e
       AppMethodBeat.i(60204);
       p.h(paramb1, "fromSuper");
       p.h(paramb2, "fromCurrent");
-      paramb1 = (Throwable)new IllegalStateException(("Conflict in scope of " + this.NxQ.NxP + ": " + paramb1 + " vs " + paramb2).toString());
+      paramb1 = (Throwable)new IllegalStateException(("Conflict in scope of " + this.NUX.NUW + ": " + paramb1 + " vs " + paramb2).toString());
       AppMethodBeat.o(60204);
       throw paramb1;
     }
@@ -130,14 +130,14 @@ public abstract class e
       AppMethodBeat.i(60203);
       p.h(paramb, "fakeOverride");
       d.l.b.a.b.j.i.a(paramb, null);
-      this.gYd.add(paramb);
+      this.haP.add(paramb);
       AppMethodBeat.o(60203);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.e
  * JD-Core Version:    0.7.0.1
  */

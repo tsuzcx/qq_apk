@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class o
-  extends x
+  extends y
 {
   public String jumpUrl;
-  public String zyQ;
-  public int zyR;
+  public String zQp;
+  public int zQq;
 }
 
 

@@ -12,77 +12,77 @@ import java.util.List;
 public class e
   implements com.tencent.mapsdk.raster.model.Marker
 {
-  private i Mzx;
+  private i MWE;
   private com.tencent.tencentmap.mapsdk.maps.model.Marker mMarker;
   
   public e(i parami, com.tencent.tencentmap.mapsdk.maps.model.Marker paramMarker)
   {
-    AppMethodBeat.i(199963);
-    this.Mzx = parami;
+    AppMethodBeat.i(212655);
+    this.MWE = parami;
     this.mMarker = paramMarker;
-    if ((this.Mzx != null) && (this.Mzx.MzC != null)) {
+    if ((this.MWE != null) && (this.MWE.MWJ != null)) {
       try
       {
-        this.Mzx.MzC.add(this.mMarker);
+        this.MWE.MWJ.add(this.mMarker);
         return;
       }
       finally
       {
-        AppMethodBeat.o(199963);
+        AppMethodBeat.o(212655);
       }
     }
-    AppMethodBeat.o(199963);
+    AppMethodBeat.o(212655);
   }
   
   public float getAlpha()
   {
-    AppMethodBeat.i(199964);
+    AppMethodBeat.i(212656);
     if (this.mMarker != null)
     {
       float f = this.mMarker.getAlpha();
-      AppMethodBeat.o(199964);
+      AppMethodBeat.o(212656);
       return f;
     }
-    AppMethodBeat.o(199964);
+    AppMethodBeat.o(212656);
     return 0.0F;
   }
   
   public String getContentDescription()
   {
-    AppMethodBeat.i(199994);
+    AppMethodBeat.i(212686);
     if (this.mMarker != null)
     {
       String str = this.mMarker.getContentDescription();
-      AppMethodBeat.o(199994);
+      AppMethodBeat.o(212686);
       return str;
     }
-    AppMethodBeat.o(199994);
+    AppMethodBeat.o(212686);
     return null;
   }
   
   public String getId()
   {
-    AppMethodBeat.i(199965);
+    AppMethodBeat.i(212657);
     if (this.mMarker != null)
     {
       String str = this.mMarker.getId();
-      AppMethodBeat.o(199965);
+      AppMethodBeat.o(212657);
       return str;
     }
-    AppMethodBeat.o(199965);
+    AppMethodBeat.o(212657);
     return "";
   }
   
   public int getLevel()
   {
-    AppMethodBeat.i(199992);
+    AppMethodBeat.i(212684);
     if (this.mMarker != null)
     {
       int i = this.mMarker.getLevel();
-      AppMethodBeat.o(199992);
+      AppMethodBeat.o(212684);
       return i;
     }
-    AppMethodBeat.o(199992);
+    AppMethodBeat.o(212684);
     return 0;
   }
   
@@ -93,170 +93,170 @@ public class e
   
   public LatLng getPosition()
   {
-    AppMethodBeat.i(199966);
+    AppMethodBeat.i(212658);
     if (this.mMarker != null)
     {
       LatLng localLatLng = l.a(this.mMarker.getPosition());
-      AppMethodBeat.o(199966);
+      AppMethodBeat.o(212658);
       return localLatLng;
     }
-    AppMethodBeat.o(199966);
+    AppMethodBeat.o(212658);
     return null;
   }
   
   public float getRotation()
   {
-    AppMethodBeat.i(199967);
+    AppMethodBeat.i(212659);
     if (this.mMarker != null)
     {
       float f = this.mMarker.getRotation();
-      AppMethodBeat.o(199967);
+      AppMethodBeat.o(212659);
       return f;
     }
-    AppMethodBeat.o(199967);
+    AppMethodBeat.o(212659);
     return 0.0F;
   }
   
   public String getSnippet()
   {
-    AppMethodBeat.i(199968);
+    AppMethodBeat.i(212660);
     if (this.mMarker != null)
     {
       String str = this.mMarker.getSnippet();
-      AppMethodBeat.o(199968);
+      AppMethodBeat.o(212660);
       return str;
     }
-    AppMethodBeat.o(199968);
+    AppMethodBeat.o(212660);
     return null;
   }
   
   public Object getTag()
   {
-    AppMethodBeat.i(199987);
+    AppMethodBeat.i(212679);
     if (this.mMarker != null)
     {
       Object localObject = this.mMarker.getTag();
-      AppMethodBeat.o(199987);
+      AppMethodBeat.o(212679);
       return localObject;
     }
-    AppMethodBeat.o(199987);
+    AppMethodBeat.o(212679);
     return null;
   }
   
   public String getTitle()
   {
-    AppMethodBeat.i(199969);
+    AppMethodBeat.i(212661);
     if (this.mMarker != null)
     {
       String str = this.mMarker.getTitle();
-      AppMethodBeat.o(199969);
+      AppMethodBeat.o(212661);
       return str;
     }
-    AppMethodBeat.o(199969);
+    AppMethodBeat.o(212661);
     return null;
   }
   
   public float getZIndex()
   {
-    AppMethodBeat.i(199990);
+    AppMethodBeat.i(212682);
     if (this.mMarker != null)
     {
       float f = this.mMarker.getZIndex();
-      AppMethodBeat.o(199990);
+      AppMethodBeat.o(212682);
       return f;
     }
-    AppMethodBeat.o(199990);
+    AppMethodBeat.o(212682);
     return 0.0F;
   }
   
   public void hideInfoWindow()
   {
-    AppMethodBeat.i(199970);
+    AppMethodBeat.i(212662);
     if (this.mMarker != null) {
       this.mMarker.hideInfoWindow();
     }
-    AppMethodBeat.o(199970);
+    AppMethodBeat.o(212662);
   }
   
   public boolean isDraggable()
   {
-    AppMethodBeat.i(199971);
+    AppMethodBeat.i(212663);
     if (this.mMarker != null)
     {
       boolean bool = this.mMarker.isDraggable();
-      AppMethodBeat.o(199971);
+      AppMethodBeat.o(212663);
       return bool;
     }
-    AppMethodBeat.o(199971);
+    AppMethodBeat.o(212663);
     return false;
   }
   
   public boolean isInfoWindowShown()
   {
-    AppMethodBeat.i(199972);
+    AppMethodBeat.i(212664);
     if (this.mMarker != null)
     {
       boolean bool = this.mMarker.isInfoWindowShown();
-      AppMethodBeat.o(199972);
+      AppMethodBeat.o(212664);
       return bool;
     }
-    AppMethodBeat.o(199972);
+    AppMethodBeat.o(212664);
     return false;
   }
   
   public boolean isVisible()
   {
-    AppMethodBeat.i(199973);
+    AppMethodBeat.i(212665);
     if (this.mMarker != null)
     {
       boolean bool = this.mMarker.isVisible();
-      AppMethodBeat.o(199973);
+      AppMethodBeat.o(212665);
       return bool;
     }
-    AppMethodBeat.o(199973);
+    AppMethodBeat.o(212665);
     return false;
   }
   
   public void refreshInfoWindow()
   {
-    AppMethodBeat.i(199995);
+    AppMethodBeat.i(212687);
     if (this.mMarker != null) {
       this.mMarker.refreshInfoWindow();
     }
-    AppMethodBeat.o(199995);
+    AppMethodBeat.o(212687);
   }
   
   public void remove()
   {
-    AppMethodBeat.i(199974);
+    AppMethodBeat.i(212666);
     if (this.mMarker != null) {}
     try
     {
-      if ((this.Mzx != null) && (this.Mzx.MzC != null)) {
-        this.Mzx.MzC.remove(this.mMarker);
+      if ((this.MWE != null) && (this.MWE.MWJ != null)) {
+        this.MWE.MWJ.remove(this.mMarker);
       }
       this.mMarker.remove();
-      AppMethodBeat.o(199974);
+      AppMethodBeat.o(212666);
       return;
     }
     finally
     {
-      AppMethodBeat.o(199974);
+      AppMethodBeat.o(212666);
     }
   }
   
   public void set2Top()
   {
-    AppMethodBeat.i(199985);
-    if ((this.Mzx == null) || (this.Mzx.MzC == null))
+    AppMethodBeat.i(212677);
+    if ((this.MWE == null) || (this.MWE.MWJ == null))
     {
-      AppMethodBeat.o(199985);
+      AppMethodBeat.o(212677);
       return;
     }
     try
     {
-      int i = this.Mzx.MzC.size();
-      Object localObject1 = this.Mzx.MzC.iterator();
+      int i = this.MWE.MWJ.size();
+      Object localObject1 = this.MWE.MWJ.iterator();
       for (;;)
       {
         if (((Iterator)localObject1).hasNext())
@@ -281,54 +281,54 @@ public class e
     }
     finally
     {
-      AppMethodBeat.o(199985);
+      AppMethodBeat.o(212677);
     }
     for (;;) {}
   }
   
   public void setAlpha(float paramFloat)
   {
-    AppMethodBeat.i(199975);
+    AppMethodBeat.i(212667);
     if (this.mMarker != null) {
       this.mMarker.setAlpha(paramFloat);
     }
-    AppMethodBeat.o(199975);
+    AppMethodBeat.o(212667);
   }
   
   public void setAnchor(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(199976);
+    AppMethodBeat.i(212668);
     if (this.mMarker != null) {
       this.mMarker.setAnchor(paramFloat1, paramFloat2);
     }
-    AppMethodBeat.o(199976);
+    AppMethodBeat.o(212668);
   }
   
   public void setContentDescription(String paramString)
   {
-    AppMethodBeat.i(199993);
+    AppMethodBeat.i(212685);
     if (this.mMarker != null) {
       this.mMarker.setContentDescription(paramString);
     }
-    AppMethodBeat.o(199993);
+    AppMethodBeat.o(212685);
   }
   
   public void setDraggable(boolean paramBoolean)
   {
-    AppMethodBeat.i(199977);
+    AppMethodBeat.i(212669);
     if (this.mMarker != null) {
       this.mMarker.setDraggable(paramBoolean);
     }
-    AppMethodBeat.o(199977);
+    AppMethodBeat.o(212669);
   }
   
   public void setIcon(BitmapDescriptor paramBitmapDescriptor)
   {
-    AppMethodBeat.i(199978);
+    AppMethodBeat.i(212670);
     if ((this.mMarker != null) && (paramBitmapDescriptor != null)) {
       this.mMarker.setIcon(BitmapDescriptorFactory.fromBitmap(paramBitmapDescriptor.getBitmap()));
     }
-    AppMethodBeat.o(199978);
+    AppMethodBeat.o(212670);
   }
   
   public void setInfoWindowHideAnimation(Animation paramAnimation) {}
@@ -337,92 +337,92 @@ public class e
   
   public void setLevel(int paramInt)
   {
-    AppMethodBeat.i(199991);
+    AppMethodBeat.i(212683);
     if (this.mMarker != null) {
       this.mMarker.setLevel(paramInt);
     }
-    AppMethodBeat.o(199991);
+    AppMethodBeat.o(212683);
   }
   
   public void setMarkerView(View paramView)
   {
-    AppMethodBeat.i(199986);
+    AppMethodBeat.i(212678);
     if (this.mMarker != null) {
       this.mMarker.setIcon(BitmapDescriptorFactory.fromView(paramView));
     }
-    AppMethodBeat.o(199986);
+    AppMethodBeat.o(212678);
   }
   
   public void setPosition(LatLng paramLatLng)
   {
-    AppMethodBeat.i(199979);
+    AppMethodBeat.i(212671);
     if (this.mMarker != null) {
       this.mMarker.setPosition(l.c(paramLatLng));
     }
-    AppMethodBeat.o(199979);
+    AppMethodBeat.o(212671);
   }
   
   public void setRotation(float paramFloat)
   {
-    AppMethodBeat.i(199980);
+    AppMethodBeat.i(212672);
     if (this.mMarker != null) {
       this.mMarker.setRotation(paramFloat);
     }
-    AppMethodBeat.o(199980);
+    AppMethodBeat.o(212672);
   }
   
   public void setSnippet(String paramString)
   {
-    AppMethodBeat.i(199981);
+    AppMethodBeat.i(212673);
     if (this.mMarker != null) {
       this.mMarker.setSnippet(paramString);
     }
-    AppMethodBeat.o(199981);
+    AppMethodBeat.o(212673);
   }
   
   public void setTag(Object paramObject)
   {
-    AppMethodBeat.i(199988);
+    AppMethodBeat.i(212680);
     if (this.mMarker != null) {
       this.mMarker.setTag(paramObject);
     }
-    AppMethodBeat.o(199988);
+    AppMethodBeat.o(212680);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(199982);
+    AppMethodBeat.i(212674);
     if (this.mMarker != null) {
       this.mMarker.setTitle(paramString);
     }
-    AppMethodBeat.o(199982);
+    AppMethodBeat.o(212674);
   }
   
   public void setVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(199983);
+    AppMethodBeat.i(212675);
     if (this.mMarker != null) {
       this.mMarker.setVisible(paramBoolean);
     }
-    AppMethodBeat.o(199983);
+    AppMethodBeat.o(212675);
   }
   
   public void setZIndex(float paramFloat)
   {
-    AppMethodBeat.i(199989);
+    AppMethodBeat.i(212681);
     if (this.mMarker != null) {
       this.mMarker.setZIndex(paramFloat);
     }
-    AppMethodBeat.o(199989);
+    AppMethodBeat.o(212681);
   }
   
   public void showInfoWindow()
   {
-    AppMethodBeat.i(199984);
+    AppMethodBeat.i(212676);
     if (this.mMarker != null) {
       this.mMarker.showInfoWindow();
     }
-    AppMethodBeat.o(199984);
+    AppMethodBeat.o(212676);
   }
 }
 

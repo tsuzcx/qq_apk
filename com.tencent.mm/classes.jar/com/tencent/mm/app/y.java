@@ -10,8 +10,8 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -19,18 +19,18 @@ import java.util.Iterator;
 
 public final class y
 {
-  public static final com.tencent.mm.splash.d cUN;
-  private static final HashSet cUO;
+  public static final com.tencent.mm.splash.d cVK;
+  private static final HashSet cVL;
   
   static
   {
     AppMethodBeat.i(160106);
-    cUN = new com.tencent.mm.splash.d()
+    cVK = new com.tencent.mm.splash.d()
     {
-      public final boolean fo(String paramAnonymousString)
+      public final boolean fu(String paramAnonymousString)
       {
         AppMethodBeat.i(160130);
-        boolean bool = y.fp(paramAnonymousString);
+        boolean bool = y.fv(paramAnonymousString);
         AppMethodBeat.o(160130);
         return bool;
       }
@@ -43,16 +43,16 @@ public final class y
         return paramAnonymousActivity;
       }
     };
-    cUO = new HashSet();
-    cUO.addAll(Arrays.asList(new String[] { "com.tencent.mm.plugin.card.ui.CardHomePageUI", "com.tencent.mm.plugin.card.ui.CardHomePageNewUI", "com.tencent.mm.plugin.sns.ui.SnsTimeLineUI", "com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2UI", "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", "com.tencent.mm.ui.chatting.ChattingUI", "com.tencent.mm.plugin.setting.ui.setting.SettingsUI", "com.tencent.mm.plugin.scanner.ui.BaseScanUI", "com.tencent.mm.plugin.readerapp.ui.ReaderAppUI", "com.tencent.mm.ui.SingleChatInfoUI", "com.tencent.mm.plugin.sns.ui.SnsUploadUI", "com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalInfoUI", "com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI", "com.tencent.mm.plugin.sns.ui.SnsBrowseUI", "com.tencent.mm.chatroom.ui.ChatroomInfoUI" }));
+    cVL = new HashSet();
+    cVL.addAll(Arrays.asList(new String[] { "com.tencent.mm.plugin.card.ui.CardHomePageUI", "com.tencent.mm.plugin.card.ui.CardHomePageNewUI", "com.tencent.mm.plugin.sns.ui.SnsTimeLineUI", "com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2UI", "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", "com.tencent.mm.ui.chatting.ChattingUI", "com.tencent.mm.plugin.setting.ui.setting.SettingsUI", "com.tencent.mm.plugin.scanner.ui.BaseScanUI", "com.tencent.mm.plugin.readerapp.ui.ReaderAppUI", "com.tencent.mm.ui.SingleChatInfoUI", "com.tencent.mm.plugin.sns.ui.SnsUploadUI", "com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalInfoUI", "com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI", "com.tencent.mm.plugin.sns.ui.SnsBrowseUI", "com.tencent.mm.chatroom.ui.ChatroomInfoUI" }));
     AppMethodBeat.o(160106);
   }
   
-  public static void Mz()
+  public static void Mu()
   {
     AppMethodBeat.i(160103);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = com.tencent.mm.splash.h.Iky.iterator();
+    Iterator localIterator = com.tencent.mm.splash.h.IEJ.iterator();
     if (localIterator.hasNext())
     {
       Message localMessage = (Message)localIterator.next();
@@ -70,13 +70,13 @@ public final class y
             if (i != 0)
             {
               com.tencent.mm.splash.h.t(localMessage);
-              ad.i("MicroMsg.PreventAccountNotReady", "replay message for %s", new Object[] { str });
+              ae.i("MicroMsg.PreventAccountNotReady", "replay message for %s", new Object[] { str });
             }
           }
         }
         catch (Throwable localThrowable)
         {
-          ad.printErrStackTrace("MicroMsg.PreventAccountNotReady", localThrowable, "", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.PreventAccountNotReady", localThrowable, "", new Object[0]);
           localArrayList.add(localMessage);
         }
         break;
@@ -84,26 +84,26 @@ public final class y
         int i = 0;
       }
     }
-    com.tencent.mm.splash.h.Iky.clear();
-    com.tencent.mm.splash.h.Iky.addAll(localArrayList);
+    com.tencent.mm.splash.h.IEJ.clear();
+    com.tencent.mm.splash.h.IEJ.addAll(localArrayList);
     AppMethodBeat.o(160103);
   }
   
-  private static boolean ce(boolean paramBoolean)
+  private static boolean cf(boolean paramBoolean)
   {
     AppMethodBeat.i(160101);
-    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
+    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).akL())
     {
       if (paramBoolean) {
-        ad.i("MicroMsg.PreventAccountNotReady", "not main process");
+        ae.i("MicroMsg.PreventAccountNotReady", "not main process");
       }
       AppMethodBeat.o(160101);
       return true;
     }
-    if ((com.tencent.mm.kernel.g.ajD().gBW) && (com.tencent.mm.kernel.g.ajA().aiK()))
+    if ((com.tencent.mm.kernel.g.ajS().gED) && (com.tencent.mm.kernel.g.ajP().aiZ()))
     {
       if (paramBoolean) {
-        ad.i("MicroMsg.PreventAccountNotReady", "account hasInitialized");
+        ae.i("MicroMsg.PreventAccountNotReady", "account hasInitialized");
       }
       AppMethodBeat.o(160101);
       return true;
@@ -112,31 +112,31 @@ public final class y
     return false;
   }
   
-  private static boolean fo(String paramString)
+  private static boolean fu(String paramString)
   {
     AppMethodBeat.i(160102);
-    ad.i("MicroMsg.PreventAccountNotReady", "eatActivity %s", new Object[] { paramString });
-    if (ce(true))
+    ae.i("MicroMsg.PreventAccountNotReady", "eatActivity %s", new Object[] { paramString });
+    if (cf(true))
     {
       AppMethodBeat.o(160102);
       return false;
     }
     if (paramString != null)
     {
-      if (cUO.contains(paramString))
+      if (cVL.contains(paramString))
       {
-        ad.w("MicroMsg.PreventAccountNotReady", "protect this activity %s", new Object[] { paramString });
+        ae.w("MicroMsg.PreventAccountNotReady", "protect this activity %s", new Object[] { paramString });
         AppMethodBeat.o(160102);
         return true;
       }
       try
       {
-        com.tencent.mm.kernel.g.ajz();
-        Object localObject = new ComponentName(aj.getPackageName(), paramString);
-        localObject = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).ca.getPackageManager().getActivityInfo((ComponentName)localObject, 128);
+        com.tencent.mm.kernel.g.ajO();
+        Object localObject = new ComponentName(ak.getPackageName(), paramString);
+        localObject = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).ca.getPackageManager().getActivityInfo((ComponentName)localObject, 128);
         if (localObject != null)
         {
-          ad.i("MicroMsg.PreventAccountNotReady", "%s info.exported = %s", new Object[] { paramString, Boolean.valueOf(((ActivityInfo)localObject).exported) });
+          ae.i("MicroMsg.PreventAccountNotReady", "%s info.exported = %s", new Object[] { paramString, Boolean.valueOf(((ActivityInfo)localObject).exported) });
           boolean bool = ((ActivityInfo)localObject).exported;
           if (!bool)
           {
@@ -147,7 +147,7 @@ public final class y
       }
       catch (PackageManager.NameNotFoundException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.PreventAccountNotReady", paramString, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.PreventAccountNotReady", paramString, "", new Object[0]);
       }
     }
     AppMethodBeat.o(160102);
@@ -156,7 +156,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.y
  * JD-Core Version:    0.7.0.1
  */

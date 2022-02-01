@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.recordvideo.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "", "width", "", "height", "duration", "rotate", "videoBitrate", "fps", "matchScreenRatio", "", "useABA", "bitrateAdaptiveUp", "useMinMaxQP", "(IIIIIIZIII)V", "getBitrateAdaptiveUp", "()I", "getDuration", "getFps", "getHeight", "getMatchScreenRatio", "()Z", "getRotate", "getUseABA", "getUseMinMaxQP", "getVideoBitrate", "getWidth", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "", "width", "", "height", "duration", "rotate", "videoBitrate", "fps", "matchScreenRatio", "", "useABA", "bitrateAdaptiveUp", "useMinMaxQP", "(IIIIIIZIII)V", "getBitrateAdaptiveUp", "()I", "getDuration", "getFps", "getHeight", "getMatchScreenRatio", "()Z", "getRotate", "getUseABA", "getUseMinMaxQP", "getVideoBitrate", "getWidth", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
 public final class c$a
 {
-  public final int dGc;
+  public final int dHi;
   public final int duration;
   public final int fps;
   public final int height;
   public final int videoBitrate;
   public final int width;
-  public final boolean xRw;
-  private final int xRx;
-  public final int xRy;
-  private final int xRz;
+  public final boolean yhp;
+  private final int yhq;
+  public final int yhr;
+  private final int yhs;
   
   public c$a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, int paramInt7, int paramInt8, int paramInt9)
   {
     this.width = paramInt1;
     this.height = paramInt2;
     this.duration = paramInt3;
-    this.dGc = paramInt4;
+    this.dHi = paramInt4;
     this.videoBitrate = paramInt5;
     this.fps = paramInt6;
-    this.xRw = paramBoolean;
-    this.xRx = paramInt7;
-    this.xRy = paramInt8;
-    this.xRz = paramInt9;
+    this.yhp = paramBoolean;
+    this.yhq = paramInt7;
+    this.yhr = paramInt8;
+    this.yhs = paramInt9;
   }
   
   public final boolean equals(Object paramObject)
@@ -38,7 +38,7 @@ public final class c$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.width != paramObject.width) || (this.height != paramObject.height) || (this.duration != paramObject.duration) || (this.dGc != paramObject.dGc) || (this.videoBitrate != paramObject.videoBitrate) || (this.fps != paramObject.fps) || (this.xRw != paramObject.xRw) || (this.xRx != paramObject.xRx) || (this.xRy != paramObject.xRy) || (this.xRz != paramObject.xRz)) {}
+        if ((this.width != paramObject.width) || (this.height != paramObject.height) || (this.duration != paramObject.duration) || (this.dHi != paramObject.dHi) || (this.videoBitrate != paramObject.videoBitrate) || (this.fps != paramObject.fps) || (this.yhp != paramObject.yhp) || (this.yhq != paramObject.yhq) || (this.yhr != paramObject.yhr) || (this.yhs != paramObject.yhs)) {}
       }
     }
     else {
@@ -55,14 +55,14 @@ public final class c$a
   public final String toString()
   {
     AppMethodBeat.i(76219);
-    String str = "VideoInfo(width=" + this.width + ", height=" + this.height + ", duration=" + this.duration + ", rotate=" + this.dGc + ", videoBitrate=" + this.videoBitrate + ", fps=" + this.fps + ", matchScreenRatio=" + this.xRw + ", useABA=" + this.xRx + ", bitrateAdaptiveUp=" + this.xRy + ", useMinMaxQP=" + this.xRz + ")";
+    String str = "VideoInfo(width=" + this.width + ", height=" + this.height + ", duration=" + this.duration + ", rotate=" + this.dHi + ", videoBitrate=" + this.videoBitrate + ", fps=" + this.fps + ", matchScreenRatio=" + this.yhp + ", useABA=" + this.yhq + ", bitrateAdaptiveUp=" + this.yhr + ", useMinMaxQP=" + this.yhs + ")";
     AppMethodBeat.o(76219);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.c.a
  * JD-Core Version:    0.7.0.1
  */

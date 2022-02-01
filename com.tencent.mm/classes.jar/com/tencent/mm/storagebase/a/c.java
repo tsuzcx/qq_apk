@@ -11,19 +11,19 @@ import com.tencent.wcdb.AbstractCursor;
 public final class c
   extends AbstractCursor
 {
-  SparseArray<Object[]> IPp;
-  public int IPq;
-  int IPr;
+  SparseArray<Object[]> JjX;
+  public int JjY;
+  int JjZ;
   final int columnCount;
   private final String[] columnNames;
   
   private c(String[] paramArrayOfString)
   {
     AppMethodBeat.i(133434);
-    this.IPq = 3000;
+    this.JjY = 3000;
     this.columnNames = paramArrayOfString;
     this.columnCount = paramArrayOfString.length;
-    this.IPp = new SparseArray();
+    this.JjX = new SparseArray();
     AppMethodBeat.o(133434);
   }
   
@@ -47,17 +47,17 @@ public final class c
       AppMethodBeat.o(133435);
       throw ((Throwable)localObject);
     }
-    if (this.mPos >= this.IPr)
+    if (this.mPos >= this.JjZ)
     {
       localObject = new CursorIndexOutOfBoundsException("After last row.");
       AppMethodBeat.o(133435);
       throw ((Throwable)localObject);
     }
-    int i = this.mPos / this.IPq;
+    int i = this.mPos / this.JjY;
     int j = this.mPos;
-    int k = this.IPq;
+    int k = this.JjY;
     int m = this.columnCount;
-    Object localObject = ((Object[])this.IPp.get(i))[(j % k * m + paramInt)];
+    Object localObject = ((Object[])this.JjX.get(i))[(j % k * m + paramInt)];
     AppMethodBeat.o(133435);
     return localObject;
   }
@@ -85,7 +85,7 @@ public final class c
   
   public final int getCount()
   {
-    return this.IPr;
+    return this.JjZ;
   }
   
   public final double getDouble(int paramInt)
@@ -224,7 +224,7 @@ public final class c
   
   public final class a
   {
-    Object[] IPs;
+    Object[] Jka;
     final int endIndex;
     int index;
     
@@ -232,7 +232,7 @@ public final class c
     {
       this.index = paramInt1;
       this.endIndex = paramInt2;
-      this.IPs = paramArrayOfObject;
+      this.Jka = paramArrayOfObject;
     }
   }
 }

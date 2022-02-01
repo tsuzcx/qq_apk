@@ -9,16 +9,16 @@ public enum e$a
   static
   {
     AppMethodBeat.i(121046);
-    qPa = new a("MM_DEFAULT", 0, 0);
-    qPb = new a("MMAppMgr_Activated", 1, 1);
-    qPc = new a("MMAppMgr_Deactivated", 2, 2);
-    qPd = new a("MMLifeCall_OnResume", 3, 3);
-    qPe = new a("MMLifeCall_OnPause", 4, 4);
-    qPf = new a("MMActivity_OnResume", 5, 5);
-    qPg = new a("MMActivity_OnPause", 6, 6);
-    qPh = new a("MMActivity_Back2Front", 7, 7);
-    qPi = new a("MMActivity_Front2Back", 8, 8);
-    qPj = new a[] { qPa, qPb, qPc, qPd, qPe, qPf, qPg, qPh, qPi };
+    qWV = new a("MM_DEFAULT", 0, 0);
+    qWW = new a("MMAppMgr_Activated", 1, 1);
+    qWX = new a("MMAppMgr_Deactivated", 2, 2);
+    qWY = new a("MMLifeCall_OnResume", 3, 3);
+    qWZ = new a("MMLifeCall_OnPause", 4, 4);
+    qXa = new a("MMActivity_OnResume", 5, 5);
+    qXb = new a("MMActivity_OnPause", 6, 6);
+    qXc = new a("MMActivity_Back2Front", 7, 7);
+    qXd = new a("MMActivity_Front2Back", 8, 8);
+    qXe = new a[] { qWV, qWW, qWX, qWY, qWZ, qXa, qXb, qXc, qXd };
     AppMethodBeat.o(121046);
   }
   
@@ -27,33 +27,33 @@ public enum e$a
     this.value = paramInt;
   }
   
-  public static a CO(int paramInt)
+  public static a Da(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return qPa;
+      return qWV;
     case 1: 
-      return qPb;
+      return qWW;
     case 2: 
-      return qPc;
+      return qWX;
     case 3: 
-      return qPd;
+      return qWY;
     case 4: 
-      return qPe;
+      return qWZ;
     case 5: 
-      return qPf;
+      return qXa;
     case 6: 
-      return qPg;
+      return qXb;
     case 7: 
-      return qPh;
+      return qXc;
     }
-    return qPi;
+    return qXd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.e.a
  * JD-Core Version:    0.7.0.1
  */

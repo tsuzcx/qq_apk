@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class oj
   extends b
 {
-  public a dCl;
+  public a dDo;
   
   public oj()
   {
@@ -15,25 +15,16 @@ public final class oj
   
   private oj(byte paramByte)
   {
-    AppMethodBeat.i(146134);
-    this.dCl = new a();
-    this.IbR = false;
+    AppMethodBeat.i(94812);
+    this.dDo = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(146134);
+    AppMethodBeat.o(94812);
   }
   
   public static final class a
   {
-    public int action;
-    public String appId;
-    public boolean dCm;
-    public int duration;
-    public int errCode;
-    public String errMsg;
-    public String filePath;
-    public int fileSize;
-    public byte[] frameBuffer;
-    public String state;
+    public String dDp;
   }
 }
 

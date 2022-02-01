@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public int CFh;
-  public String CFi;
+  public int CWN;
+  public String CWO;
   
   public a(String paramString1, String paramString2)
   {
@@ -45,19 +45,19 @@ public final class a
     {
       if (paramJSONObject != null)
       {
-        this.CFh = paramJSONObject.optInt("unbindbannerlevel", 0);
-        this.CFi = paramJSONObject.optString("unbindbannerwording");
+        this.CWN = paramJSONObject.optInt("unbindbannerlevel", 0);
+        this.CWO = paramJSONObject.optString("unbindbannerwording");
         AppMethodBeat.o(69062);
         return;
       }
-      ad.e("MicroMsg.NetSceneGetUnbindInfo", "json is null");
+      ae.e("MicroMsg.NetSceneGetUnbindInfo", "json is null");
     }
     AppMethodBeat.o(69062);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.a.a
  * JD-Core Version:    0.7.0.1
  */

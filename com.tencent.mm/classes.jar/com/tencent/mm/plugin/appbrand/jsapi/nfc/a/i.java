@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.a;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ad;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.g;
-import d.a.ae;
 import d.g.a.b;
 import d.g.b.p;
 import d.g.b.q;
@@ -16,18 +16,18 @@ import d.z;
 import java.util.Map;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCGetMaxTransceiveLength;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCGetMaxTransceiveLength;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class i
   extends a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   public static final int CTRL_INDEX = 791;
   public static final String NAME = "NFCGetMaxTransceiveLength";
-  public static final a kZf;
+  public static final a lcO;
   
   static
   {
     AppMethodBeat.i(183648);
-    kZf = new a((byte)0);
+    lcO = new a((byte)0);
     AppMethodBeat.o(183648);
   }
   
@@ -36,34 +36,34 @@ public final class i
     AppMethodBeat.i(183647);
     if (paramc == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, env is null");
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, env is null");
       AppMethodBeat.o(183647);
       return;
     }
     if (paramJSONObject == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, data is null");
-      paramc.h(paramInt, m("fail:invalid parameter", (Map)ae.c(new o[] { u.S("errCode", Integer.valueOf(13011)) })));
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, data is null");
+      paramc.h(paramInt, n("fail:invalid parameter", (Map)d.a.ae.c(new o[] { u.R("errCode", Integer.valueOf(13011)) })));
       AppMethodBeat.o(183647);
       return;
     }
-    Object localObject = (com.tencent.mm.plugin.appbrand.jsapi.ad)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.ad.class);
-    if ((localObject != null) && (!((com.tencent.mm.plugin.appbrand.jsapi.ad)localObject).bin()))
+    Object localObject = (ad)com.tencent.luggage.a.e.K(ad.class);
+    if ((localObject != null) && (!((ad)localObject).biW()))
     {
-      paramc.h(paramInt, m("fail:user is not authorized", (Map)ae.c(new o[] { u.S("errCode", Integer.valueOf(13019)) })));
+      paramc.h(paramInt, n("fail:user is not authorized", (Map)d.a.ae.c(new o[] { u.R("errCode", Integer.valueOf(13019)) })));
       AppMethodBeat.o(183647);
       return;
     }
-    localObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.kZM;
+    localObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.ldv;
     localObject = c.a.w(paramc);
     if (localObject == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, can not get activity");
-      paramc.h(paramInt, m("fail:unknown", (Map)ae.c(new o[] { u.S("errCode", Integer.valueOf(13010)) })));
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, can not get activity");
+      paramc.h(paramInt, n("fail:unknown", (Map)d.a.ae.c(new o[] { u.R("errCode", Integer.valueOf(13010)) })));
       AppMethodBeat.o(183647);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, appId: " + paramc.getAppId() + ", data: " + paramJSONObject);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "invoke, appId: " + paramc.getAppId() + ", data: " + paramJSONObject);
     try
     {
       paramJSONObject = paramJSONObject.getString("tech");
@@ -71,23 +71,23 @@ public final class i
       paramc = (b)new b(this, paramc, paramInt);
       p.h(paramJSONObject, "techName");
       p.h(paramc, "callback");
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "getMaxTransceiveLength, techName: ".concat(String.valueOf(paramJSONObject)));
-      h.LTJ.f((Runnable)new c.g((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c)localObject, paramc, paramJSONObject), "NFC-IO");
+      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.AppBrand.NFCReadWriteManager", "getMaxTransceiveLength, techName: ".concat(String.valueOf(paramJSONObject)));
+      h.MqF.f((Runnable)new c.g((com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c)localObject, paramc, paramJSONObject), "NFC-IO");
       AppMethodBeat.o(183647);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "parse tech failed");
-      paramc.h(paramInt, m("fail:invalid parameter", (Map)ae.c(new o[] { u.S("errCode", Integer.valueOf(13011)) })));
+      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.AppBrand.JsApiNFCGetMaxTransceiveLength", "parse tech failed");
+      paramc.h(paramInt, n("fail:invalid parameter", (Map)d.a.ae.c(new o[] { u.R("errCode", Integer.valueOf(13011)) })));
       AppMethodBeat.o(183647);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCGetMaxTransceiveLength$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TECH", "RESULT_LENGTH", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCGetMaxTransceiveLength$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TECH", "RESULT_LENGTH", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "invoke"})
   static final class b
     extends q
     implements b<com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.e<Integer>, z>

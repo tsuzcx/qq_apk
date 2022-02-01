@@ -11,33 +11,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface f
   extends IInterface
 {
-  public abstract boolean VX(int paramInt);
+  public abstract boolean WE(int paramInt);
   
   public abstract boolean a(d paramd);
   
   public abstract boolean a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean);
   
-  public abstract void aFG(String paramString);
+  public abstract void aA(Bundle paramBundle);
   
-  public abstract void ay(Bundle paramBundle);
+  public abstract void aHa(String paramString);
   
   public abstract void az(Bundle paramBundle);
   
-  public abstract String dWD();
-  
   public abstract void e(String paramString1, String paramString2, int paramInt1, int paramInt2);
   
-  public abstract void eLu();
+  public abstract void ePd();
   
-  public abstract String eLv();
+  public abstract String ePe();
   
-  public abstract String eLw();
+  public abstract String ePf();
   
-  public abstract int eLx();
+  public abstract int ePg();
   
-  public abstract void eLy();
+  public abstract void ePh();
   
-  public abstract Bundle eR(String paramString1, String paramString2);
+  public abstract Bundle eU(String paramString1, String paramString2);
+  
+  public abstract String eaf();
   
   public abstract boolean g(int paramInt, Bundle paramBundle);
   
@@ -45,17 +45,17 @@ public abstract interface f
   
   public abstract Bundle k(int paramInt, Bundle paramBundle);
   
-  public abstract void kA(String paramString1, String paramString2);
+  public abstract void kG(String paramString1, String paramString2);
   
-  public abstract void kz(String paramString1, String paramString2);
+  public abstract void kH(String paramString1, String paramString2);
   
   public abstract void u(int paramInt, Bundle paramBundle);
   
-  public abstract void uO(boolean paramBoolean);
+  public abstract void uW(boolean paramBoolean);
   
-  public abstract void uP(boolean paramBoolean);
+  public abstract void uX(boolean paramBoolean);
   
-  public abstract void uQ(boolean paramBoolean);
+  public abstract void uY(boolean paramBoolean);
   
   public static abstract class a
     extends Binder
@@ -66,7 +66,7 @@ public abstract interface f
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
     }
     
-    public static f H(IBinder paramIBinder)
+    public static f I(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -106,7 +106,7 @@ public abstract interface f
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        bool1 = VX(paramParcel1.readInt());
+        bool1 = WE(paramParcel1.readInt());
         paramParcel2.writeNoException();
         if (bool1) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -180,7 +180,7 @@ public abstract interface f
         }
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        paramParcel1 = eLv();
+        paramParcel1 = ePe();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -192,19 +192,19 @@ public abstract interface f
         return true;
       case 7: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        paramParcel1 = dWD();
+        paramParcel1 = eaf();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        paramParcel1 = eLw();
+        paramParcel1 = ePf();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        paramInt1 = eLx();
+        paramInt1 = ePg();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -213,7 +213,7 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        uO(bool1);
+        uW(bool1);
         paramParcel2.writeNoException();
         return true;
       case 11: 
@@ -222,7 +222,7 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        uP(bool1);
+        uX(bool1);
         paramParcel2.writeNoException();
         return true;
       case 12: 
@@ -237,7 +237,7 @@ public abstract interface f
         return true;
       case 13: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        eLu();
+        ePd();
         paramParcel2.writeNoException();
         return true;
       case 14: 
@@ -246,22 +246,22 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
         }
-        az((Bundle)localObject1);
+        aA((Bundle)localObject1);
         paramParcel2.writeNoException();
         return true;
       case 15: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        aFG(paramParcel1.readString());
+        aHa(paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 16: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        kz(paramParcel1.readString(), paramParcel1.readString());
+        kG(paramParcel1.readString(), paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 17: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        eLy();
+        ePh();
         paramParcel2.writeNoException();
         return true;
       case 18: 
@@ -292,7 +292,7 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
         }
-        ay((Bundle)localObject1);
+        az((Bundle)localObject1);
         paramParcel2.writeNoException();
         return true;
       case 21: 
@@ -301,17 +301,17 @@ public abstract interface f
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        uQ(bool1);
+        uY(bool1);
         paramParcel2.writeNoException();
         return true;
       case 22: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-        kA(paramParcel1.readString(), paramParcel1.readString());
+        kH(paramParcel1.readString(), paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      paramParcel1 = eR(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel1 = eU(paramParcel1.readString(), paramParcel1.readString());
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -334,7 +334,7 @@ public abstract interface f
       }
       
       /* Error */
-      public final boolean VX(int paramInt)
+      public final boolean WE(int paramInt)
       {
         // Byte code:
         //   0: iconst_1
@@ -526,7 +526,73 @@ public abstract interface f
         }
       }
       
-      public final void aFG(String paramString)
+      /* Error */
+      public final void aA(Bundle paramBundle)
+      {
+        // Byte code:
+        //   0: ldc 87
+        //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   8: astore_2
+        //   9: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   12: astore_3
+        //   13: aload_2
+        //   14: ldc 36
+        //   16: invokevirtual 40	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   19: aload_1
+        //   20: ifnull +47 -> 67
+        //   23: aload_2
+        //   24: iconst_1
+        //   25: invokevirtual 43	android/os/Parcel:writeInt	(I)V
+        //   28: aload_1
+        //   29: aload_2
+        //   30: iconst_0
+        //   31: invokevirtual 84	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+        //   34: aload_0
+        //   35: getfield 18	com/tencent/mm/plugin/webview/stub/f$a$a:mRemote	Landroid/os/IBinder;
+        //   38: bipush 14
+        //   40: aload_2
+        //   41: aload_3
+        //   42: iconst_0
+        //   43: invokeinterface 49 5 0
+        //   48: pop
+        //   49: aload_3
+        //   50: invokevirtual 52	android/os/Parcel:readException	()V
+        //   53: aload_3
+        //   54: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   57: aload_2
+        //   58: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   61: ldc 87
+        //   63: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   66: return
+        //   67: aload_2
+        //   68: iconst_0
+        //   69: invokevirtual 43	android/os/Parcel:writeInt	(I)V
+        //   72: goto -38 -> 34
+        //   75: astore_1
+        //   76: aload_3
+        //   77: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   80: aload_2
+        //   81: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   84: ldc 87
+        //   86: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   89: aload_1
+        //   90: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	91	0	this	a
+        //   0	91	1	paramBundle	Bundle
+        //   8	73	2	localParcel1	Parcel
+        //   12	65	3	localParcel2	Parcel
+        // Exception table:
+        //   from	to	target	type
+        //   13	19	75	finally
+        //   23	34	75	finally
+        //   34	53	75	finally
+        //   67	72	75	finally
+      }
+      
+      public final void aHa(String paramString)
       {
         AppMethodBeat.i(79520);
         Parcel localParcel1 = Parcel.obtain();
@@ -553,72 +619,6 @@ public abstract interface f
       }
       
       /* Error */
-      public final void ay(Bundle paramBundle)
-      {
-        // Byte code:
-        //   0: ldc 89
-        //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_2
-        //   9: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore_3
-        //   13: aload_2
-        //   14: ldc 36
-        //   16: invokevirtual 40	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   19: aload_1
-        //   20: ifnull +47 -> 67
-        //   23: aload_2
-        //   24: iconst_1
-        //   25: invokevirtual 43	android/os/Parcel:writeInt	(I)V
-        //   28: aload_1
-        //   29: aload_2
-        //   30: iconst_0
-        //   31: invokevirtual 84	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-        //   34: aload_0
-        //   35: getfield 18	com/tencent/mm/plugin/webview/stub/f$a$a:mRemote	Landroid/os/IBinder;
-        //   38: bipush 20
-        //   40: aload_2
-        //   41: aload_3
-        //   42: iconst_0
-        //   43: invokeinterface 49 5 0
-        //   48: pop
-        //   49: aload_3
-        //   50: invokevirtual 52	android/os/Parcel:readException	()V
-        //   53: aload_3
-        //   54: invokevirtual 59	android/os/Parcel:recycle	()V
-        //   57: aload_2
-        //   58: invokevirtual 59	android/os/Parcel:recycle	()V
-        //   61: ldc 89
-        //   63: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   66: return
-        //   67: aload_2
-        //   68: iconst_0
-        //   69: invokevirtual 43	android/os/Parcel:writeInt	(I)V
-        //   72: goto -38 -> 34
-        //   75: astore_1
-        //   76: aload_3
-        //   77: invokevirtual 59	android/os/Parcel:recycle	()V
-        //   80: aload_2
-        //   81: invokevirtual 59	android/os/Parcel:recycle	()V
-        //   84: ldc 89
-        //   86: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   89: aload_1
-        //   90: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	91	0	this	a
-        //   0	91	1	paramBundle	Bundle
-        //   8	73	2	localParcel1	Parcel
-        //   12	65	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   13	19	75	finally
-        //   23	34	75	finally
-        //   34	53	75	finally
-        //   67	72	75	finally
-      }
-      
-      /* Error */
       public final void az(Bundle paramBundle)
       {
         // Byte code:
@@ -642,7 +642,7 @@ public abstract interface f
         //   31: invokevirtual 84	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
         //   34: aload_0
         //   35: getfield 18	com/tencent/mm/plugin/webview/stub/f$a$a:mRemote	Landroid/os/IBinder;
-        //   38: bipush 14
+        //   38: bipush 20
         //   40: aload_2
         //   41: aload_3
         //   42: iconst_0
@@ -684,27 +684,6 @@ public abstract interface f
         //   67	72	75	finally
       }
       
-      public final String dWD()
-      {
-        AppMethodBeat.i(213999);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-          this.mRemote.transact(7, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          String str = localParcel2.readString();
-          return str;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(213999);
-        }
-      }
-      
       public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2)
       {
         AppMethodBeat.i(79523);
@@ -729,7 +708,7 @@ public abstract interface f
         }
       }
       
-      public final void eLu()
+      public final void ePd()
       {
         AppMethodBeat.i(79518);
         Parcel localParcel1 = Parcel.obtain();
@@ -749,7 +728,7 @@ public abstract interface f
         }
       }
       
-      public final String eLv()
+      public final String ePe()
       {
         AppMethodBeat.i(79511);
         Parcel localParcel1 = Parcel.obtain();
@@ -770,7 +749,7 @@ public abstract interface f
         }
       }
       
-      public final String eLw()
+      public final String ePf()
       {
         AppMethodBeat.i(79513);
         Parcel localParcel1 = Parcel.obtain();
@@ -791,7 +770,7 @@ public abstract interface f
         }
       }
       
-      public final int eLx()
+      public final int ePg()
       {
         AppMethodBeat.i(79514);
         Parcel localParcel1 = Parcel.obtain();
@@ -812,7 +791,7 @@ public abstract interface f
         }
       }
       
-      public final void eLy()
+      public final void ePh()
       {
         AppMethodBeat.i(79522);
         Parcel localParcel1 = Parcel.obtain();
@@ -833,10 +812,10 @@ public abstract interface f
       }
       
       /* Error */
-      public final Bundle eR(String paramString1, String paramString2)
+      public final Bundle eU(String paramString1, String paramString2)
       {
         // Byte code:
-        //   0: ldc 113
+        //   0: ldc 111
         //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   8: astore_3
@@ -864,16 +843,16 @@ public abstract interface f
         //   51: aload 4
         //   53: invokevirtual 56	android/os/Parcel:readInt	()I
         //   56: ifeq +33 -> 89
-        //   59: getstatic 117	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
+        //   59: getstatic 115	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
         //   62: aload 4
-        //   64: invokeinterface 123 2 0
+        //   64: invokeinterface 121 2 0
         //   69: checkcast 80	android/os/Bundle
         //   72: astore_1
         //   73: aload 4
         //   75: invokevirtual 59	android/os/Parcel:recycle	()V
         //   78: aload_3
         //   79: invokevirtual 59	android/os/Parcel:recycle	()V
-        //   82: ldc 113
+        //   82: ldc 111
         //   84: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   87: aload_1
         //   88: areturn
@@ -885,7 +864,7 @@ public abstract interface f
         //   97: invokevirtual 59	android/os/Parcel:recycle	()V
         //   100: aload_3
         //   101: invokevirtual 59	android/os/Parcel:recycle	()V
-        //   104: ldc 113
+        //   104: ldc 111
         //   106: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   109: aload_1
         //   110: athrow
@@ -899,6 +878,27 @@ public abstract interface f
         // Exception table:
         //   from	to	target	type
         //   14	73	94	finally
+      }
+      
+      public final String eaf()
+      {
+        AppMethodBeat.i(213830);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
+          this.mRemote.transact(7, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(213830);
+        }
       }
       
       public final boolean g(int paramInt, Bundle paramBundle)
@@ -1003,29 +1003,7 @@ public abstract interface f
         }
       }
       
-      public final void kA(String paramString1, String paramString2)
-      {
-        AppMethodBeat.i(79527);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-          localParcel1.writeString(paramString1);
-          localParcel1.writeString(paramString2);
-          this.mRemote.transact(22, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(79527);
-        }
-      }
-      
-      public final void kz(String paramString1, String paramString2)
+      public final void kG(String paramString1, String paramString2)
       {
         AppMethodBeat.i(79521);
         Parcel localParcel1 = Parcel.obtain();
@@ -1044,6 +1022,28 @@ public abstract interface f
           localParcel2.recycle();
           localParcel1.recycle();
           AppMethodBeat.o(79521);
+        }
+      }
+      
+      public final void kH(String paramString1, String paramString2)
+      {
+        AppMethodBeat.i(79527);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
+          localParcel1.writeString(paramString1);
+          localParcel1.writeString(paramString2);
+          this.mRemote.transact(22, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(79527);
         }
       }
       
@@ -1117,7 +1117,7 @@ public abstract interface f
         //   76	81	84	finally
       }
       
-      public final void uO(boolean paramBoolean)
+      public final void uW(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(79515);
@@ -1142,7 +1142,7 @@ public abstract interface f
         }
       }
       
-      public final void uP(boolean paramBoolean)
+      public final void uX(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(79516);
@@ -1167,7 +1167,7 @@ public abstract interface f
         }
       }
       
-      public final void uQ(boolean paramBoolean)
+      public final void uY(boolean paramBoolean)
       {
         int i = 0;
         AppMethodBeat.i(79526);

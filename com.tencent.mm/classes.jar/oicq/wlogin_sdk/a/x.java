@@ -5,7 +5,7 @@ public final class x
 {
   public x()
   {
-    this.NQs = 289;
+    this.Ony = 289;
   }
 }
 

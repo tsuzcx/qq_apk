@@ -1,58 +1,58 @@
 package com.tencent.mm.sdk.a;
 
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bv;
 
 public final class b
 {
-  public static String IbD = "unknow";
-  private static c IbE = null;
-  private static boolean IbF = false;
-  private static boolean IbG = false;
-  private static boolean IbH = false;
-  private static boolean IbI = false;
-  private static boolean IbJ = false;
+  public static String IvL = "unknow";
+  private static c IvM = null;
+  private static boolean IvN = false;
+  private static boolean IvO = false;
+  private static boolean IvP = false;
+  private static boolean IvQ = false;
+  private static boolean IvR = false;
   public static boolean foreground = false;
   
   public static void O(String paramString1, String paramString2)
   {
-    if (IbE != null) {
-      IbE.O(paramString1, paramString2);
+    if (IvM != null) {
+      IvM.O(paramString1, paramString2);
     }
   }
   
   public static void P(String paramString1, String paramString2)
   {
-    if (IbE != null) {
-      IbE.P(paramString1, paramString2);
+    if (IvM != null) {
+      IvM.P(paramString1, paramString2);
     }
   }
   
   public static void a(a parama)
   {
-    if (IbE != null) {
-      IbE.a(parama);
+    if (IvM != null) {
+      IvM.a(parama);
     }
   }
   
   public static void a(c paramc)
   {
-    IbE = paramc;
+    IvM = paramc;
   }
   
-  public static void aPW(String paramString)
+  public static void aRt(String paramString)
   {
-    IbD = paramString;
+    IvL = paramString;
   }
   
   @Deprecated
-  public static void aPX(String paramString)
+  public static void aRu(String paramString)
   {
-    bu.aRx(paramString);
+    bv.aSU(paramString);
   }
   
   public static void b(c.a parama)
   {
-    c localc = IbE;
+    c localc = IvM;
     if (localc != null) {
       localc.a(parama);
     }
@@ -60,16 +60,16 @@ public final class b
   
   public static void d(int paramInt, String paramString1, String paramString2)
   {
-    if (IbE != null) {
-      IbE.d(paramInt, paramString1, paramString2);
+    if (IvM != null) {
+      IvM.d(paramInt, paramString1, paramString2);
     }
   }
   
-  public static boolean duL()
+  public static boolean dyb()
   {
     try
     {
-      boolean bool = IbJ;
+      boolean bool = IvR;
       return bool;
     }
     finally
@@ -79,11 +79,11 @@ public final class b
     }
   }
   
-  public static boolean duM()
+  public static boolean dyc()
   {
     try
     {
-      boolean bool = IbH;
+      boolean bool = IvP;
       return bool;
     }
     finally
@@ -93,11 +93,11 @@ public final class b
     }
   }
   
-  public static boolean duN()
+  public static boolean dyd()
   {
     try
     {
-      boolean bool = IbI;
+      boolean bool = IvQ;
       return bool;
     }
     finally
@@ -107,66 +107,66 @@ public final class b
     }
   }
   
-  public static void eE(boolean paramBoolean)
+  public static void eG(boolean paramBoolean)
   {
     foreground = paramBoolean;
   }
   
-  public static void fjK() {}
+  public static void fnC() {}
   
   @Deprecated
-  public static boolean fjL()
+  public static boolean fnD()
   {
-    return bu.fjL();
-  }
-  
-  @Deprecated
-  public static void fjM() {}
-  
-  @Deprecated
-  public static boolean fjN()
-  {
-    return bu.flY();
+    return bv.fnD();
   }
   
   @Deprecated
-  public static String fjO()
+  public static void fnE() {}
+  
+  @Deprecated
+  public static boolean fnF()
   {
-    return bu.flZ();
+    return bv.fpT();
   }
   
-  public static boolean fjP()
+  @Deprecated
+  public static String fnG()
   {
-    return IbF;
+    return bv.fpU();
   }
   
-  public static boolean fjQ()
+  public static boolean fnH()
   {
-    return IbG;
+    return IvN;
   }
   
-  public static void fm(String paramString)
+  public static boolean fnI()
   {
-    if (IbE != null) {
-      IbE.fm(paramString);
+    return IvO;
+  }
+  
+  public static void fs(String paramString)
+  {
+    if (IvM != null) {
+      IvM.fs(paramString);
     }
   }
   
-  public static void wA(boolean paramBoolean)
+  public static void wI(boolean paramBoolean)
   {
-    IbF = paramBoolean;
+    IvN = paramBoolean;
   }
   
-  public static void wB(boolean paramBoolean)
+  public static void wJ(boolean paramBoolean)
   {
-    IbG = paramBoolean;
+    IvO = paramBoolean;
   }
   
-  public static void wC(boolean paramBoolean)
+  public static void wK(boolean paramBoolean)
   {
     try
     {
-      IbH = paramBoolean;
+      IvP = paramBoolean;
       return;
     }
     finally
@@ -176,11 +176,11 @@ public final class b
     }
   }
   
-  public static void wD(boolean paramBoolean)
+  public static void wL(boolean paramBoolean)
   {
     try
     {
-      IbI = paramBoolean;
+      IvQ = paramBoolean;
       return;
     }
     finally
@@ -190,11 +190,11 @@ public final class b
     }
   }
   
-  public static void wE(boolean paramBoolean)
+  public static void wM(boolean paramBoolean)
   {
     try
     {
-      IbJ = paramBoolean;
+      IvR = paramBoolean;
       return;
     }
     finally

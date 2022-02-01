@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.a.j;
 import d.g.b.p;
 import d.g.b.q;
@@ -38,46 +38,46 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTabView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "canScrollDefaultTab", "", "canVibrate", "getCanVibrate", "()Z", "setCanVibrate", "(Z)V", "container", "currentTranslationX", "", "dotView", "Landroid/view/View;", "dotViewWidth", "enableSwitchTab", "gestureDetector", "Landroid/view/GestureDetector;", "hasScrolledDefaultTab", "isFlingSwitchTab", "isScrollingX", "lastOffsetX", "mDownX", "mDownY", "mInterceptTracker", "Landroid/view/VelocityTracker;", "mInterceptXDown", "mInterceptYDown", "mTouchDownSelectedIndex", "mTouching", "onTabClickListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "onTabScrollListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnScrollListener;", "onTabSelectedListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "pendingSelectedIndex", "scrollInterpolator", "Landroid/view/animation/LinearInterpolator;", "scrollState", "selectedIndex", "tabTranslationInited", "tabTranslationXAreaList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "tabViewList", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "vibrator", "Landroid/os/Vibrator;", "viewWidth", "addTab", "", "tab", "addTabInternal", "animateScrollX", "targetIndex", "fromTransX", "toTransX", "duration", "", "onScrollEnd", "Lkotlin/Function0;", "changeScrollState", "state", "changeTab", "fromIndex", "toIndex", "needScrollAnimation", "tabSelectedAction", "computeTabTranslationXArea", "getIndexByTransX", "transX", "getMoveOffsetX", "offsetX", "getSelectedTab", "getTargetTransXByIndex", "handleScroll", "offsetY", "init", "initDotView", "initTabClickListener", "index", "initVibrator", "isIndexValid", "onAddTab", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onRemoveTab", "onScrollX", "currentTransX", "isTouching", "onTabSelected", "onTabUnselected", "onTouchEvent", "onTouchUp", "removeAllTabs", "removeTab", "removeTabInternal", "scrollDefaultTab", "setEnableSwitchTab", "enable", "setEnabled", "enabled", "setOnTabChangedListener", "tabOnSelectedListener", "setOnTabClickListener", "tabOnClickListener", "setOnTabScrollListener", "tabOnScrollListener", "setSelectedTab", "vibrate", "Companion", "plugin-scan_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTabView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "canScrollDefaultTab", "", "canVibrate", "getCanVibrate", "()Z", "setCanVibrate", "(Z)V", "container", "currentTranslationX", "", "dotView", "Landroid/view/View;", "dotViewWidth", "enableSwitchTab", "gestureDetector", "Landroid/view/GestureDetector;", "hasScrolledDefaultTab", "isFlingSwitchTab", "isScrollingX", "lastOffsetX", "mDownX", "mDownY", "mInterceptTracker", "Landroid/view/VelocityTracker;", "mInterceptXDown", "mInterceptYDown", "mTouchDownSelectedIndex", "mTouching", "onTabClickListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "onTabScrollListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnScrollListener;", "onTabSelectedListener", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "pendingSelectedIndex", "scrollInterpolator", "Landroid/view/animation/LinearInterpolator;", "scrollState", "selectedIndex", "tabTranslationInited", "tabTranslationXAreaList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "tabViewList", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "vibrator", "Landroid/os/Vibrator;", "viewWidth", "addTab", "", "tab", "addTabInternal", "animateScrollX", "targetIndex", "fromTransX", "toTransX", "duration", "", "onScrollEnd", "Lkotlin/Function0;", "changeScrollState", "state", "changeTab", "fromIndex", "toIndex", "needScrollAnimation", "tabSelectedAction", "computeTabTranslationXArea", "getIndexByTransX", "transX", "getMoveOffsetX", "offsetX", "getSelectedTab", "getTargetTransXByIndex", "handleScroll", "offsetY", "init", "initDotView", "initTabClickListener", "index", "initVibrator", "isIndexValid", "onAddTab", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onRemoveTab", "onScrollX", "currentTransX", "isTouching", "onTabSelected", "onTabUnselected", "onTouchEvent", "onTouchUp", "removeAllTabs", "removeTab", "removeTabInternal", "scrollDefaultTab", "setEnableSwitchTab", "enable", "setEnabled", "enabled", "setOnTabChangedListener", "tabOnSelectedListener", "setOnTabClickListener", "tabOnClickListener", "setOnTabScrollListener", "tabOnScrollListener", "setSelectedTab", "vibrate", "Companion", "plugin-scan_release"})
 public class BaseScrollTabView
   extends LinearLayout
 {
-  public static final BaseScrollTabView.a yxg;
+  public static final BaseScrollTabView.a yNg;
   private int bxN;
-  private int gfT;
-  private GestureDetector iKD;
-  private float mXI;
-  private Vibrator nKv;
-  private LinearLayout rEk;
+  private int gil;
+  private GestureDetector iNw;
+  private Vibrator nQa;
+  private float ncP;
+  private LinearLayout rMv;
   private int vi;
-  private float yjW;
-  private float yjX;
-  private float yjY;
-  private VelocityTracker yjZ;
-  private boolean ypB;
-  private View ywO;
-  private ArrayList<a> ywP;
-  private int ywQ;
-  private int ywR;
-  private boolean ywS;
-  private boolean ywT;
-  private LinearInterpolator ywU;
-  private ArrayList<o<Float, Float>> ywV;
-  private boolean ywW;
-  private e ywX;
-  private c ywY;
-  private d ywZ;
-  private float yxa;
-  private float yxb;
-  private int yxc;
-  private boolean yxd;
-  private boolean yxe;
-  private boolean yxf;
+  private boolean yFA;
+  private View yMO;
+  private ArrayList<a> yMP;
+  private int yMQ;
+  private int yMR;
+  private boolean yMS;
+  private boolean yMT;
+  private LinearInterpolator yMU;
+  private ArrayList<o<Float, Float>> yMV;
+  private boolean yMW;
+  private e yMX;
+  private c yMY;
+  private d yMZ;
+  private float yNa;
+  private float yNb;
+  private int yNc;
+  private boolean yNd;
+  private boolean yNe;
+  private boolean yNf;
+  private float yzV;
+  private float yzW;
+  private float yzX;
+  private VelocityTracker yzY;
   
   static
   {
     AppMethodBeat.i(52371);
-    yxg = new BaseScrollTabView.a((byte)0);
+    yNg = new BaseScrollTabView.a((byte)0);
     AppMethodBeat.o(52371);
   }
   
@@ -92,46 +92,46 @@ public class BaseScrollTabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52370);
-    this.ypB = true;
-    this.ywP = new ArrayList();
+    this.yFA = true;
+    this.yMP = new ArrayList();
     this.bxN = -1;
-    this.ywR = -1;
-    this.ywS = true;
-    this.ywU = new LinearInterpolator();
-    this.ywV = new ArrayList();
+    this.yMR = -1;
+    this.yMS = true;
+    this.yMU = new LinearInterpolator();
+    this.yMV = new ArrayList();
     this.vi = 1;
-    this.yxc = -1;
-    this.iKD = new GestureDetector(getContext(), (GestureDetector.OnGestureListener)new f(this));
+    this.yNc = -1;
+    this.iNw = new GestureDetector(getContext(), (GestureDetector.OnGestureListener)new f(this));
     paramContext = LayoutInflater.from(paramContext).inflate(2131494571, (ViewGroup)this, true);
     paramAttributeSet = paramContext.findViewById(2131304372);
     p.g(paramAttributeSet, "view.findViewById(R.id.scroll_tab_container)");
-    this.rEk = ((LinearLayout)paramAttributeSet);
+    this.rMv = ((LinearLayout)paramAttributeSet);
     paramContext = paramContext.findViewById(2131304373);
     p.g(paramContext, "view.findViewById(R.id.scroll_tab_dot)");
-    this.ywO = paramContext;
-    this.ywQ = getResources().getDimensionPixelSize(2131165187);
-    if (this.nKv == null)
+    this.yMO = paramContext;
+    this.yMQ = getResources().getDimensionPixelSize(2131165187);
+    if (this.nQa == null)
     {
       paramContext = getContext().getSystemService("vibrator");
       if (paramContext != null) {
-        this.nKv = ((Vibrator)paramContext);
+        this.nQa = ((Vibrator)paramContext);
       }
     }
     AppMethodBeat.o(52370);
   }
   
-  private final void OM(int paramInt)
+  private final void Pt(int paramInt)
   {
     AppMethodBeat.i(52361);
-    a locala = (a)j.E((List)this.ywP, paramInt);
+    a locala = (a)j.F((List)this.yMP, paramInt);
     if (locala != null)
     {
       b(locala, paramInt);
-      locala.dMt();
-      e locale = this.ywX;
+      locala.dPM();
+      e locale = this.yMX;
       if (locale != null)
       {
-        locale.OK(locala.getTabId());
+        locale.Pr(locala.getTabId());
         AppMethodBeat.o(52361);
         return;
       }
@@ -141,14 +141,14 @@ public class BaseScrollTabView
     AppMethodBeat.o(52361);
   }
   
-  private final void ON(int paramInt)
+  private final void Pu(int paramInt)
   {
     AppMethodBeat.i(52367);
     if (this.vi != paramInt)
     {
-      ad.d("MicroMsg.BaseScrollTabView", "alvinluo changeScrollState state: %d", new Object[] { Integer.valueOf(paramInt) });
+      ae.d("MicroMsg.BaseScrollTabView", "alvinluo changeScrollState state: %d", new Object[] { Integer.valueOf(paramInt) });
       this.vi = paramInt;
-      d locald = this.ywZ;
+      d locald = this.yMZ;
       if (locald != null)
       {
         locald.cp(paramInt);
@@ -159,10 +159,10 @@ public class BaseScrollTabView
     AppMethodBeat.o(52367);
   }
   
-  private final float OO(int paramInt)
+  private final float Pv(int paramInt)
   {
     AppMethodBeat.i(52368);
-    o localo = (o)j.E((List)this.ywV, paramInt);
+    o localo = (o)j.F((List)this.yMV, paramInt);
     if (localo != null)
     {
       float f = ((Number)localo.first).floatValue();
@@ -177,21 +177,21 @@ public class BaseScrollTabView
   private final void a(int paramInt, final float paramFloat1, final float paramFloat2, long paramLong, final d.g.a.a<z> parama)
   {
     AppMethodBeat.i(52362);
-    if (this.ywT)
+    if (this.yMT)
     {
       AppMethodBeat.o(52362);
       return;
     }
-    ad.i("MicroMsg.BaseScrollTabView", "alvinluo animateScrollX targetIndex: %d, fromTransX: %f, toTransX: %f", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-    this.ywT = true;
-    Object localObject = this.rEk;
+    ae.i("MicroMsg.BaseScrollTabView", "alvinluo animateScrollX targetIndex: %d, fromTransX: %f, toTransX: %f", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    this.yMT = true;
+    Object localObject = this.rMv;
     if (localObject == null) {
-      p.bcb("container");
+      p.bdF("container");
     }
     localObject = ((LinearLayout)localObject).animate();
     if (localObject != null)
     {
-      localObject = ((ViewPropertyAnimator)localObject).setInterpolator((TimeInterpolator)this.ywU);
+      localObject = ((ViewPropertyAnimator)localObject).setInterpolator((TimeInterpolator)this.yMU);
       if (localObject != null)
       {
         localObject = ((ViewPropertyAnimator)localObject).translationX(paramFloat2);
@@ -226,18 +226,18 @@ public class BaseScrollTabView
       AppMethodBeat.o(52359);
       return;
     }
-    OM(paramInt1);
-    LinearLayout localLinearLayout = this.rEk;
+    Pt(paramInt1);
+    LinearLayout localLinearLayout = this.rMv;
     if (localLinearLayout == null) {
-      p.bcb("container");
+      p.bdF("container");
     }
     float f1 = localLinearLayout.getTranslationX();
-    float f2 = OO(paramInt2);
-    localLinearLayout = this.rEk;
+    float f2 = Pv(paramInt2);
+    localLinearLayout = this.rMv;
     if (localLinearLayout == null) {
-      p.bcb("container");
+      p.bdF("container");
     }
-    ad.d("MicroMsg.BaseScrollTabView", "alvinluo changeTab from: %d, to: %d, currentTransX: %f, targetTransX: %f", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(localLinearLayout.getTranslationX()), Float.valueOf(f2) });
+    ae.d("MicroMsg.BaseScrollTabView", "alvinluo changeTab from: %d, to: %d, currentTransX: %f, targetTransX: %f", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(localLinearLayout.getTranslationX()), Float.valueOf(f2) });
     this.bxN = paramInt2;
     if (paramBoolean)
     {
@@ -245,22 +245,22 @@ public class BaseScrollTabView
       AppMethodBeat.o(52359);
       return;
     }
-    this.ywS = false;
-    localLinearLayout = this.rEk;
+    this.yMS = false;
+    localLinearLayout = this.rMv;
     if (localLinearLayout == null) {
-      p.bcb("container");
+      p.bdF("container");
     }
     localLinearLayout.setTranslationX(f2);
-    hp(paramInt2, paramInt3);
+    hr(paramInt2, paramInt3);
     AppMethodBeat.o(52359);
   }
   
-  private final void bLV()
+  private final void bMT()
   {
     AppMethodBeat.i(52349);
-    if (this.yxf)
+    if (this.yNf)
     {
-      Vibrator localVibrator = this.nKv;
+      Vibrator localVibrator = this.nQa;
       if (localVibrator != null)
       {
         localVibrator.vibrate(10L);
@@ -274,37 +274,37 @@ public class BaseScrollTabView
   private final void d(float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(52366);
-    this.yxf = true;
-    float f = OO(this.bxN);
-    d locald = this.ywZ;
+    this.yNf = true;
+    float f = Pv(this.bxN);
+    d locald = this.yMZ;
     if (locald != null) {
       locald.t(this.bxN, paramFloat - f);
     }
     if (paramBoolean)
     {
-      ON(2);
+      Pu(2);
       AppMethodBeat.o(52366);
       return;
     }
     if (!paramBoolean) {
-      ON(3);
+      Pu(3);
     }
     AppMethodBeat.o(52366);
   }
   
-  private final void hp(int paramInt1, int paramInt2)
+  private final void hr(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(52360);
-    a locala = (a)j.E((List)this.ywP, paramInt1);
+    a locala = (a)j.F((List)this.yMP, paramInt1);
     if (locala != null)
     {
       a(locala, paramInt1);
-      locala.dMs();
-      e locale = this.ywX;
+      locala.dPL();
+      e locale = this.yMX;
       if (locale != null) {
-        locale.hp(locala.getTabId(), paramInt2);
+        locale.hr(locala.getTabId(), paramInt2);
       }
-      bLV();
+      bMT();
       AppMethodBeat.o(52360);
       return;
     }
@@ -329,19 +329,19 @@ public class BaseScrollTabView
   {
     AppMethodBeat.i(52352);
     p.h(parama, "tab");
-    if (this.ywP.contains(parama))
+    if (this.yMP.contains(parama))
     {
-      ad.w("MicroMsg.BaseScrollTabView", "alvinluo addTab tab has been added and ignore, hashCode: %d", new Object[] { Integer.valueOf(parama.hashCode()) });
+      ae.w("MicroMsg.BaseScrollTabView", "alvinluo addTab tab has been added and ignore, hashCode: %d", new Object[] { Integer.valueOf(parama.hashCode()) });
       AppMethodBeat.o(52352);
       return;
     }
     parama = (View)parama;
-    ad.v("MicroMsg.BaseScrollTabView", "alvinluo addTabInternal size: %d", new Object[] { Integer.valueOf(this.ywP.size()) });
-    parama.setOnClickListener((View.OnClickListener)new g(this, this.ywP.size(), parama));
-    this.ywP.add((a)parama);
-    LinearLayout localLinearLayout = this.rEk;
+    ae.v("MicroMsg.BaseScrollTabView", "alvinluo addTabInternal size: %d", new Object[] { Integer.valueOf(this.yMP.size()) });
+    parama.setOnClickListener((View.OnClickListener)new g(this, this.yMP.size(), parama));
+    this.yMP.add((a)parama);
+    LinearLayout localLinearLayout = this.rMv;
     if (localLinearLayout == null) {
-      p.bcb("container");
+      p.bdF("container");
     }
     localLinearLayout.addView(parama, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-2, -2));
     a((a)parama);
@@ -357,15 +357,15 @@ public class BaseScrollTabView
   
   protected final boolean getCanVibrate()
   {
-    return this.yxf;
+    return this.yNf;
   }
   
   public a getSelectedTab()
   {
     AppMethodBeat.i(52357);
-    if ((this.bxN >= 0) && (this.bxN < this.ywP.size()))
+    if ((this.bxN >= 0) && (this.bxN < this.yMP.size()))
     {
-      a locala = (a)this.ywP.get(this.bxN);
+      a locala = (a)this.yMP.get(this.bxN);
       AppMethodBeat.o(52357);
       return locala;
     }
@@ -373,25 +373,25 @@ public class BaseScrollTabView
     return null;
   }
   
-  public final void hs(int paramInt1, int paramInt2)
+  public final void hu(int paramInt1, int paramInt2)
   {
     int i = 0;
     AppMethodBeat.i(52350);
-    ad.i("MicroMsg.BaseScrollTabView", "alvinluo setSelectedTab last: %d, selected: %d, isScrollingX: %b, tabTranslationInited: %b, tabSelectedAction: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(paramInt1), Boolean.valueOf(this.ywT), Boolean.valueOf(this.ywW), Integer.valueOf(paramInt2) });
-    if ((this.bxN == paramInt1) || (this.ywT))
+    ae.i("MicroMsg.BaseScrollTabView", "alvinluo setSelectedTab last: %d, selected: %d, isScrollingX: %b, tabTranslationInited: %b, tabSelectedAction: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(paramInt1), Boolean.valueOf(this.yMT), Boolean.valueOf(this.yMW), Integer.valueOf(paramInt2) });
+    if ((this.bxN == paramInt1) || (this.yMT))
     {
       AppMethodBeat.o(52350);
       return;
     }
     if (this.bxN == -1) {}
-    while (this.ywW)
+    while (this.yMW)
     {
       b(i, paramInt1, true, paramInt2);
       AppMethodBeat.o(52350);
       return;
       i = this.bxN;
     }
-    this.ywR = paramInt1;
+    this.yMR = paramInt1;
     AppMethodBeat.o(52350);
   }
   
@@ -402,7 +402,7 @@ public class BaseScrollTabView
     boolean bool;
     for (Object localObject = Integer.valueOf(paramMotionEvent.getAction());; localObject = null)
     {
-      ad.d("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent %s", new Object[] { localObject });
+      ae.d("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent %s", new Object[] { localObject });
       bool = super.onInterceptTouchEvent(paramMotionEvent);
       if (!bool) {
         break;
@@ -410,7 +410,7 @@ public class BaseScrollTabView
       AppMethodBeat.o(52364);
       return bool;
     }
-    if (!this.ypB)
+    if (!this.yFA)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(52364);
@@ -421,27 +421,27 @@ public class BaseScrollTabView
       AppMethodBeat.o(52364);
       return false;
     }
-    if (this.yjZ == null) {
-      this.yjZ = VelocityTracker.obtain();
+    if (this.yzY == null) {
+      this.yzY = VelocityTracker.obtain();
     }
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((VelocityTracker)localObject).addMovement(paramMotionEvent);
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     ((VelocityTracker)localObject).computeCurrentVelocity(1000);
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     int i = (int)((VelocityTracker)localObject).getXVelocity();
-    localObject = this.yjZ;
+    localObject = this.yzY;
     if (localObject == null) {
-      p.gfZ();
+      p.gkB();
     }
     int j = (int)((VelocityTracker)localObject).getYVelocity();
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -451,28 +451,28 @@ public class BaseScrollTabView
     }
     for (;;)
     {
-      ad.v("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent action: %s, isIntercept: %b", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(bool) });
+      ae.v("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent action: %s, isIntercept: %b", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(bool) });
       AppMethodBeat.o(52364);
       return bool;
       float f1 = paramMotionEvent.getRawX();
       float f2 = paramMotionEvent.getRawY();
-      localObject = this.rEk;
+      localObject = this.rMv;
       if (localObject == null) {
-        p.bcb("container");
+        p.bdF("container");
       }
-      ad.d("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent down: %f, %f, currentTranslationX: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(((LinearLayout)localObject).getTranslationX()) });
-      this.yjX = paramMotionEvent.getRawX();
-      this.yjY = paramMotionEvent.getRawY();
-      localObject = this.rEk;
+      ae.d("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent down: %f, %f, currentTranslationX: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(((LinearLayout)localObject).getTranslationX()) });
+      this.yzW = paramMotionEvent.getRawX();
+      this.yzX = paramMotionEvent.getRawY();
+      localObject = this.rMv;
       if (localObject == null) {
-        p.bcb("container");
+        p.bdF("container");
       }
-      this.yxa = ((LinearLayout)localObject).getTranslationX();
+      this.yNa = ((LinearLayout)localObject).getTranslationX();
       bool = false;
       continue;
-      f1 = paramMotionEvent.getRawX() - this.yjX;
-      f2 = paramMotionEvent.getRawY() - this.yjY;
-      ad.d("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
+      f1 = paramMotionEvent.getRawX() - this.yzW;
+      f2 = paramMotionEvent.getRawY() - this.yzX;
+      ae.d("MicroMsg.BaseScrollTabView", "alvinluo onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
       if ((Math.abs(i) <= Math.abs(j)) || (Math.abs(f1) <= Math.abs(f2)) || (Math.abs(f1) < 5.0F)) {
         break;
       }
@@ -485,33 +485,33 @@ public class BaseScrollTabView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(52358);
-    this.gfT = com.tencent.mm.cc.a.ip(getContext());
+    this.gil = com.tencent.mm.cb.a.iu(getContext());
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(536870911, -2147483648), paramInt2);
-    if ((getMeasuredWidth() != 0) && (getMeasuredWidth() < this.gfT)) {
-      super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.gfT, 1073741824), paramInt2);
+    if ((getMeasuredWidth() != 0) && (getMeasuredWidth() < this.gil)) {
+      super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.gil, 1073741824), paramInt2);
     }
     if (getMeasuredWidth() != 0)
     {
-      paramInt1 = this.gfT;
-      Object localObject1 = this.ywO;
+      paramInt1 = this.gil;
+      Object localObject1 = this.yMO;
       if (localObject1 == null) {
-        p.bcb("dotView");
+        p.bdF("dotView");
       }
-      ad.v("MicroMsg.BaseScrollTabView", "alvinluo initDotView viewWidth: %d, dotView width: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(((View)localObject1).getMeasuredWidth()) });
-      localObject1 = this.ywO;
+      ae.v("MicroMsg.BaseScrollTabView", "alvinluo initDotView viewWidth: %d, dotView width: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(((View)localObject1).getMeasuredWidth()) });
+      localObject1 = this.yMO;
       if (localObject1 == null) {
-        p.bcb("dotView");
+        p.bdF("dotView");
       }
-      float f1 = this.gfT / 2.0F;
-      Object localObject2 = this.ywO;
+      float f1 = this.gil / 2.0F;
+      Object localObject2 = this.yMO;
       if (localObject2 == null) {
-        p.bcb("dotView");
+        p.bdF("dotView");
       }
       ((View)localObject1).setTranslationX(f1 - ((View)localObject2).getMeasuredWidth());
-      ad.v("MicroMsg.BaseScrollTabView", "alvinluo computeTabTranslationXArea");
-      this.ywV.clear();
-      f1 = this.gfT / 2.0F;
-      localObject1 = (Iterable)this.ywP;
+      ae.v("MicroMsg.BaseScrollTabView", "alvinluo computeTabTranslationXArea");
+      this.yMV.clear();
+      f1 = this.gil / 2.0F;
+      localObject1 = (Iterable)this.yMP;
       paramInt1 = 0;
       localObject1 = ((Iterable)localObject1).iterator();
       paramInt2 = 0;
@@ -519,7 +519,7 @@ public class BaseScrollTabView
       {
         localObject2 = ((Iterator)localObject1).next();
         if (paramInt1 < 0) {
-          j.gfB();
+          j.gkd();
         }
         localObject2 = (a)localObject2;
         if (localObject2 == null)
@@ -532,31 +532,31 @@ public class BaseScrollTabView
         float f2 = f1 - paramInt2 - ((View)localObject2).getMeasuredWidth();
         float f3 = f1 - paramInt2;
         paramInt2 += ((View)localObject2).getMeasuredWidth();
-        this.ywV.add(new o(Float.valueOf(f2), Float.valueOf(f3)));
-        ad.d("MicroMsg.BaseScrollTabView", "alvinluo computeTabTranslationXArea index: %d, start: %f, end: %f, tabWidth: %d, accumulativeWidth: %d", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(f2), Float.valueOf(f3), Integer.valueOf(((View)localObject2).getMeasuredWidth()), Integer.valueOf(paramInt2) });
+        this.yMV.add(new o(Float.valueOf(f2), Float.valueOf(f3)));
+        ae.d("MicroMsg.BaseScrollTabView", "alvinluo computeTabTranslationXArea index: %d, start: %f, end: %f, tabWidth: %d, accumulativeWidth: %d", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(f2), Float.valueOf(f3), Integer.valueOf(((View)localObject2).getMeasuredWidth()), Integer.valueOf(paramInt2) });
         paramInt1 += 1;
       }
-      this.ywW = true;
-      localObject1 = (a)j.jd((List)this.ywP);
+      this.yMW = true;
+      localObject1 = (a)j.jm((List)this.yMP);
       if ((localObject1 != null) && (((View)localObject1).getMeasuredWidth() != 0))
       {
-        ad.v("MicroMsg.BaseScrollTabView", "alvinluo scrollDefaultTab selectedIndex: %d, pendingSelectedIndex: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(this.ywR) });
-        if (this.ywR != -1)
+        ae.v("MicroMsg.BaseScrollTabView", "alvinluo scrollDefaultTab selectedIndex: %d, pendingSelectedIndex: %d", new Object[] { Integer.valueOf(this.bxN), Integer.valueOf(this.yMR) });
+        if (this.yMR != -1)
         {
-          b(this.bxN, this.ywR, false, 0);
-          this.ywR = -1;
+          b(this.bxN, this.yMR, false, 0);
+          this.yMR = -1;
           AppMethodBeat.o(52358);
           return;
         }
         if ((this.bxN == -1) || (this.bxN == 0))
         {
-          f1 = OO(0);
-          localObject1 = this.rEk;
+          f1 = Pv(0);
+          localObject1 = this.rMv;
           if (localObject1 == null) {
-            p.bcb("container");
+            p.bdF("container");
           }
           ((LinearLayout)localObject1).setTranslationX(f1);
-          ad.v("MicroMsg.BaseScrollTabView", "alvinluo scrollDefaultTab set default tab %f", new Object[] { Float.valueOf(f1) });
+          ae.v("MicroMsg.BaseScrollTabView", "alvinluo scrollDefaultTab set default tab %f", new Object[] { Float.valueOf(f1) });
           b(this.bxN, 0, false, 0);
         }
       }
@@ -574,17 +574,17 @@ public class BaseScrollTabView
       AppMethodBeat.o(52365);
       return bool;
     }
-    if (!this.ypB)
+    if (!this.yFA)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(52365);
       return bool;
     }
-    ad.d("MicroMsg.BaseScrollTabView", "alvinluo onTouchEvent %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
-    Object localObject1 = this.iKD;
+    ae.d("MicroMsg.BaseScrollTabView", "alvinluo onTouchEvent %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
+    Object localObject1 = this.iNw;
     Object localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((GestureDetector)localObject1).onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0)), "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((GestureDetector)localObject1).onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0)), "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
@@ -593,59 +593,59 @@ public class BaseScrollTabView
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(52365);
       return bool;
-      this.yjW = paramMotionEvent.getRawX();
-      this.mXI = paramMotionEvent.getRawY();
-      localObject1 = this.rEk;
+      this.yzV = paramMotionEvent.getRawX();
+      this.ncP = paramMotionEvent.getRawY();
+      localObject1 = this.rMv;
       if (localObject1 == null) {
-        p.bcb("container");
+        p.bdF("container");
       }
-      this.yxa = ((LinearLayout)localObject1).getTranslationX();
-      this.yxc = this.bxN;
+      this.yNa = ((LinearLayout)localObject1).getTranslationX();
+      this.yNc = this.bxN;
       float f1 = paramMotionEvent.getRawX();
       float f2 = paramMotionEvent.getRawY();
-      paramMotionEvent = this.rEk;
+      paramMotionEvent = this.rMv;
       if (paramMotionEvent == null) {
-        p.bcb("container");
+        p.bdF("container");
       }
-      ad.d("MicroMsg.BaseScrollTabView", "alvinluo onTouch down: %f, %f, currentTranslationX: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(paramMotionEvent.getTranslationX()) });
-      this.yxe = true;
+      ae.d("MicroMsg.BaseScrollTabView", "alvinluo onTouch down: %f, %f, currentTranslationX: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(paramMotionEvent.getTranslationX()) });
+      this.yNe = true;
       AppMethodBeat.o(52365);
       return true;
-      this.yxe = true;
-      if ((this.yjW == 0.0F) && (this.mXI == 0.0F))
+      this.yNe = true;
+      if ((this.yzV == 0.0F) && (this.ncP == 0.0F))
       {
-        this.yjW = paramMotionEvent.getRawX();
-        this.mXI = paramMotionEvent.getRawY();
-        this.yxc = this.bxN;
+        this.yzV = paramMotionEvent.getRawX();
+        this.ncP = paramMotionEvent.getRawY();
+        this.yNc = this.bxN;
       }
       else
       {
-        f2 = paramMotionEvent.getRawX() - this.yjW;
+        f2 = paramMotionEvent.getRawX() - this.yzV;
         paramMotionEvent.getRawY();
-        localObject1 = this.rEk;
+        localObject1 = this.rMv;
         if (localObject1 == null) {
-          p.bcb("container");
+          p.bdF("container");
         }
         float f3 = ((LinearLayout)localObject1).getTranslationX();
-        localObject1 = (o)j.jd((List)this.ywV);
+        localObject1 = (o)j.jm((List)this.yMV);
         float f4;
         label566:
         int i;
         if (localObject1 != null) {
           if ((f3 >= ((Number)((o)localObject1).second).floatValue()) && (f2 > 0.0F))
           {
-            f1 = f2 - this.yxb;
+            f1 = f2 - this.yNb;
             f4 = Math.max(0.0F, Math.min(0.5F, (1.0F - (f3 - ((Number)((o)localObject1).second).floatValue()) / 30.0F) * 0.5F));
-            ad.v("MicroMsg.BaseScrollTabView", "alvinluo lastOffsetX: %f, addOffsetX: %f, factor: %f, offsetX: %f", new Object[] { Float.valueOf(this.yxb), Float.valueOf(f1), Float.valueOf(f4), Float.valueOf(f2) });
-            f1 = f4 * f1 + (f3 - this.yxa);
-            f1 += this.yxa;
-            this.yxb = f2;
-            localObject1 = this.rEk;
+            ae.v("MicroMsg.BaseScrollTabView", "alvinluo lastOffsetX: %f, addOffsetX: %f, factor: %f, offsetX: %f", new Object[] { Float.valueOf(this.yNb), Float.valueOf(f1), Float.valueOf(f4), Float.valueOf(f2) });
+            f1 = f4 * f1 + (f3 - this.yNa);
+            f1 += this.yNa;
+            this.yNb = f2;
+            localObject1 = this.rMv;
             if (localObject1 == null) {
-              p.bcb("container");
+              p.bdF("container");
             }
             ((LinearLayout)localObject1).setTranslationX(f1);
-            localObject1 = (o)j.jd((List)this.ywV);
+            localObject1 = (o)j.jm((List)this.yMV);
             if ((localObject1 == null) || (f1 < ((Number)((o)localObject1).second).floatValue())) {
               break label1205;
             }
@@ -654,63 +654,63 @@ public class BaseScrollTabView
         }
         for (;;)
         {
-          localObject1 = this.rEk;
+          localObject1 = this.rMv;
           if (localObject1 == null) {
-            p.bcb("container");
+            p.bdF("container");
           }
-          ad.i("MicroMsg.BaseScrollTabView", "alvinluo handleScroll offsetX: %f, targetTansX: %f, currentTransX: %f, lastScrollIndex: %d, index: %d", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Float.valueOf(((LinearLayout)localObject1).getTranslationX()), Integer.valueOf(this.bxN), Integer.valueOf(i) });
+          ae.i("MicroMsg.BaseScrollTabView", "alvinluo handleScroll offsetX: %f, targetTansX: %f, currentTransX: %f, lastScrollIndex: %d, index: %d", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Float.valueOf(((LinearLayout)localObject1).getTranslationX()), Integer.valueOf(this.bxN), Integer.valueOf(i) });
           if (this.bxN != -1) {
-            d(f1, this.yxe);
+            d(f1, this.yNe);
           }
           if (this.bxN == i) {
             break;
           }
-          OM(this.bxN);
+          Pt(this.bxN);
           this.bxN = i;
-          hp(i, 2);
+          hr(i, 2);
           break;
           f1 = ((Number)((o)localObject1).first).floatValue();
           if ((f3 >= (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F) && (f2 > 0.0F))
           {
             f1 = ((Number)((o)localObject1).first).floatValue();
-            f4 = (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F - this.yxa;
+            f4 = (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F - this.yNa;
             f1 = (f2 - f4) * 0.5F + f4;
-            ad.v("MicroMsg.BaseScrollTabView", "alvinluo getMoveOffsetX %f, maxOffset: %f, currentTransX: %f, moveOffset: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f4), Float.valueOf(f3), Float.valueOf(f1) });
+            ae.v("MicroMsg.BaseScrollTabView", "alvinluo getMoveOffsetX %f, maxOffset: %f, currentTransX: %f, moveOffset: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f4), Float.valueOf(f3), Float.valueOf(f1) });
             break label566;
           }
-          localObject1 = (o)j.jf((List)this.ywV);
+          localObject1 = (o)j.jo((List)this.yMV);
           if (localObject1 != null)
           {
             if ((f3 <= ((Number)((o)localObject1).first).floatValue()) && (f2 < 0.0F))
             {
-              f1 = f2 - this.yxb;
+              f1 = f2 - this.yNb;
               f4 = Math.max(0.0F, Math.min(0.5F, (1.0F - (((Number)((o)localObject1).first).floatValue() - f3) / 30.0F) * 0.5F));
-              ad.v("MicroMsg.BaseScrollTabView", "alvinluo lastOffsetX: %f, addOffsetX: %f, factor: %f, offsetX: %f", new Object[] { Float.valueOf(this.yxb), Float.valueOf(f1), Float.valueOf(f4), Float.valueOf(f2) });
-              f1 = f4 * f1 + (f3 - this.yxa);
+              ae.v("MicroMsg.BaseScrollTabView", "alvinluo lastOffsetX: %f, addOffsetX: %f, factor: %f, offsetX: %f", new Object[] { Float.valueOf(this.yNb), Float.valueOf(f1), Float.valueOf(f4), Float.valueOf(f2) });
+              f1 = f4 * f1 + (f3 - this.yNa);
               break label566;
             }
             f1 = ((Number)((o)localObject1).first).floatValue();
             if ((f3 <= (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F) && (f2 < 0.0F))
             {
               f1 = ((Number)((o)localObject1).first).floatValue();
-              f4 = (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F - this.yxa;
+              f4 = (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F - this.yNa;
               f1 = (f2 - f4) * 0.5F + f4;
-              ad.v("MicroMsg.BaseScrollTabView", "alvinluo getMoveOffsetX %f, maxOffset: %f, currentTransX: %f, moveOffset: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f4), Float.valueOf(f3), Float.valueOf(f1) });
+              ae.v("MicroMsg.BaseScrollTabView", "alvinluo getMoveOffsetX %f, maxOffset: %f, currentTransX: %f, moveOffset: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f4), Float.valueOf(f3), Float.valueOf(f1) });
               break label566;
             }
           }
-          ad.v("MicroMsg.BaseScrollTabView", "alvinluo getMoveOffsetX %f, currentTransX: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f3) });
+          ae.v("MicroMsg.BaseScrollTabView", "alvinluo getMoveOffsetX %f, currentTransX: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f3) });
           f1 = f2;
           break label566;
           label1205:
-          localObject1 = (o)j.jf((List)this.ywV);
+          localObject1 = (o)j.jo((List)this.yMV);
           if ((localObject1 != null) && (f1 <= ((Number)((o)localObject1).first).floatValue()))
           {
-            i = Math.max(this.ywV.size() - 1, 0);
+            i = Math.max(this.yMV.size() - 1, 0);
           }
           else
           {
-            localObject1 = ((Iterable)this.ywV).iterator();
+            localObject1 = ((Iterable)this.yMV).iterator();
             int j = 0;
             for (;;)
             {
@@ -719,7 +719,7 @@ public class BaseScrollTabView
               }
               localObject2 = ((Iterator)localObject1).next();
               if (j < 0) {
-                j.gfB();
+                j.gkd();
               }
               localObject2 = (o)localObject2;
               if (f1 >= ((Number)((o)localObject2).first).floatValue())
@@ -735,25 +735,25 @@ public class BaseScrollTabView
             i = -1;
           }
         }
-        this.yjW = 0.0F;
-        this.mXI = 0.0F;
-        this.yxe = false;
-        ad.v("MicroMsg.BaseScrollTabView", "alvinluo onTouchUp selectedIndex: %d, isFlingSwitchTab: %b", new Object[] { Integer.valueOf(this.bxN), Boolean.valueOf(this.yxd) });
-        if (this.yxd)
+        this.yzV = 0.0F;
+        this.ncP = 0.0F;
+        this.yNe = false;
+        ae.v("MicroMsg.BaseScrollTabView", "alvinluo onTouchUp selectedIndex: %d, isFlingSwitchTab: %b", new Object[] { Integer.valueOf(this.bxN), Boolean.valueOf(this.yNd) });
+        if (this.yNd)
         {
-          this.yxd = false;
+          this.yNd = false;
         }
         else
         {
-          localObject1 = (o)j.E((List)this.ywV, this.bxN);
+          localObject1 = (o)j.F((List)this.yMV, this.bxN);
           if (localObject1 != null)
           {
             f1 = ((Number)((o)localObject1).first).floatValue();
             f1 = (((Number)((o)localObject1).second).floatValue() + f1) / 2.0F;
             i = this.bxN;
-            localObject1 = this.rEk;
+            localObject1 = this.rMv;
             if (localObject1 == null) {
-              p.bcb("container");
+              p.bdF("container");
             }
             a(this, i, ((LinearLayout)localObject1).getTranslationX(), f1, 150L, null, 16);
           }
@@ -765,8 +765,8 @@ public class BaseScrollTabView
   public final void removeAllTabs()
   {
     AppMethodBeat.i(52353);
-    ad.i("MicroMsg.BaseScrollTabView", "alvinluo removeAllTabs");
-    Object localObject1 = ((Iterable)this.ywP).iterator();
+    ae.i("MicroMsg.BaseScrollTabView", "alvinluo removeAllTabs");
+    Object localObject1 = ((Iterable)this.yMP).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (a)((Iterator)localObject1).next();
@@ -777,37 +777,37 @@ public class BaseScrollTabView
         throw ((Throwable)localObject1);
       }
       localObject2 = (View)localObject2;
-      LinearLayout localLinearLayout = this.rEk;
+      LinearLayout localLinearLayout = this.rMv;
       if (localLinearLayout == null) {
-        p.bcb("container");
+        p.bdF("container");
       }
       localLinearLayout.removeView((View)localObject2);
     }
-    this.ywP.clear();
+    this.yMP.clear();
     AppMethodBeat.o(52353);
   }
   
   protected final void setCanVibrate(boolean paramBoolean)
   {
-    this.yxf = paramBoolean;
+    this.yNf = paramBoolean;
   }
   
   public void setEnableSwitchTab(boolean paramBoolean)
   {
-    this.ypB = paramBoolean;
+    this.yFA = paramBoolean;
   }
   
   public void setEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(170043);
     super.setEnabled(paramBoolean);
-    Object localObject = ((Iterable)this.ywP).iterator();
+    Object localObject = ((Iterable)this.yMP).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((a)((Iterator)localObject).next()).setTabEnabled(paramBoolean);
     }
-    localObject = this.ywO;
+    localObject = this.yMO;
     if (localObject == null) {
-      p.bcb("dotView");
+      p.bdF("dotView");
     }
     ((View)localObject).setEnabled(paramBoolean);
     AppMethodBeat.o(170043);
@@ -817,7 +817,7 @@ public class BaseScrollTabView
   {
     AppMethodBeat.i(52354);
     p.h(parame, "tabOnSelectedListener");
-    this.ywX = parame;
+    this.yMX = parame;
     AppMethodBeat.o(52354);
   }
   
@@ -825,7 +825,7 @@ public class BaseScrollTabView
   {
     AppMethodBeat.i(52355);
     p.h(paramc, "tabOnClickListener");
-    this.ywY = paramc;
+    this.yMY = paramc;
     AppMethodBeat.o(52355);
   }
   
@@ -833,18 +833,18 @@ public class BaseScrollTabView
   {
     AppMethodBeat.i(52356);
     p.h(paramd, "tabOnScrollListener");
-    this.ywZ = paramd;
+    this.yMZ = paramd;
     AppMethodBeat.o(52356);
   }
   
   public void setSelectedTab(int paramInt)
   {
     AppMethodBeat.i(52351);
-    hs(paramInt, 0);
+    hu(paramInt, 0);
     AppMethodBeat.o(52351);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class c
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -865,12 +865,12 @@ public class BaseScrollTabView
       float f2 = paramFloat1;
       float f3 = paramFloat2;
       float f4 = paramFloat1;
-      BaseScrollTabView.a(this.yxi, f1 * (f3 - f4) + f2, BaseScrollTabView.d(this.yxi));
+      BaseScrollTabView.a(this.yNi, f1 * (f3 - f4) + f2, BaseScrollTabView.d(this.yNi));
       AppMethodBeat.o(52341);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$animateScrollX$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$animateScrollX$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
@@ -882,10 +882,10 @@ public class BaseScrollTabView
     {
       AppMethodBeat.i(52342);
       parama.invoke();
-      BaseScrollTabView.e(this.yxi);
-      BaseScrollTabView.f(this.yxi);
-      ad.v("MicroMsg.BaseScrollTabView", "alvinluo animateScrollX onAnimationEnd %f", new Object[] { Float.valueOf(BaseScrollTabView.g(this.yxi).getTranslationX()) });
-      BaseScrollTabView.h(this.yxi);
+      BaseScrollTabView.e(this.yNi);
+      BaseScrollTabView.f(this.yNi);
+      ae.v("MicroMsg.BaseScrollTabView", "alvinluo animateScrollX onAnimationEnd %f", new Object[] { Float.valueOf(BaseScrollTabView.g(this.yNi).getTranslationX()) });
+      BaseScrollTabView.h(this.yNi);
       AppMethodBeat.o(52342);
     }
     
@@ -894,7 +894,7 @@ public class BaseScrollTabView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements d.g.a.a<z>
@@ -905,31 +905,31 @@ public class BaseScrollTabView
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "onFling", "", "e1", "Landroid/view/MotionEvent;", "e2", "velocityX", "", "velocityY", "plugin-scan_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "onFling", "", "e1", "Landroid/view/MotionEvent;", "e2", "velocityX", "", "velocityY", "plugin-scan_release"})
   public static final class f
     extends GestureDetector.SimpleOnGestureListener
   {
     public final boolean onContextClick(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(186392);
+      AppMethodBeat.i(189687);
       b localb = new b();
       localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
       boolean bool = super.onContextClick(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(186392);
+      AppMethodBeat.o(189687);
       return bool;
     }
     
     public final boolean onDoubleTap(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(186391);
+      AppMethodBeat.i(189686);
       b localb = new b();
       localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
       boolean bool = super.onDoubleTap(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(186391);
+      AppMethodBeat.o(189686);
       return bool;
     }
     
@@ -937,18 +937,18 @@ public class BaseScrollTabView
     {
       int i = 1;
       AppMethodBeat.i(52344);
-      ad.v("MicroMsg.BaseScrollTabView", "alvinluo onFling velocityX: %f, velocityY: %f, touchDownSelectedIndex: %d, selectedIndex: %d", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(BaseScrollTabView.i(this.yxi)), Integer.valueOf(BaseScrollTabView.j(this.yxi)) });
-      if (BaseScrollTabView.i(this.yxi) == BaseScrollTabView.j(this.yxi)) {
+      ae.v("MicroMsg.BaseScrollTabView", "alvinluo onFling velocityX: %f, velocityY: %f, touchDownSelectedIndex: %d, selectedIndex: %d", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(BaseScrollTabView.i(this.yNi)), Integer.valueOf(BaseScrollTabView.j(this.yNi)) });
+      if (BaseScrollTabView.i(this.yNi) == BaseScrollTabView.j(this.yNi)) {
         if ((Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (i != 0))
         {
           if (paramFloat1 > -100.0F) {
             break label167;
           }
-          i = BaseScrollTabView.j(this.yxi) + 1;
-          if (BaseScrollTabView.a(this.yxi, i))
+          i = BaseScrollTabView.j(this.yNi) + 1;
+          if (BaseScrollTabView.a(this.yNi, i))
           {
-            BaseScrollTabView.k(this.yxi);
-            this.yxi.hs(i, 2);
+            BaseScrollTabView.k(this.yNi);
+            this.yNi.hu(i, 2);
           }
         }
       }
@@ -962,11 +962,11 @@ public class BaseScrollTabView
         label167:
         if (paramFloat1 >= 100.0F)
         {
-          i = BaseScrollTabView.j(this.yxi) - 1;
-          if (BaseScrollTabView.a(this.yxi, i))
+          i = BaseScrollTabView.j(this.yNi) - 1;
+          if (BaseScrollTabView.a(this.yNi, i))
           {
-            BaseScrollTabView.k(this.yxi);
-            this.yxi.hs(i, 2);
+            BaseScrollTabView.k(this.yNi);
+            this.yNi.hu(i, 2);
           }
         }
       }
@@ -974,29 +974,29 @@ public class BaseScrollTabView
     
     public final void onLongPress(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(186390);
+      AppMethodBeat.i(189685);
       b localb = new b();
       localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
       super.onLongPress(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-      AppMethodBeat.o(186390);
+      AppMethodBeat.o(189685);
     }
     
     public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(186389);
+      AppMethodBeat.i(189684);
       b localb = new b();
       localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
       boolean bool = super.onSingleTapUp(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$gestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(186389);
+      AppMethodBeat.o(189684);
       return bool;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class g
     implements View.OnClickListener
   {
@@ -1007,23 +1007,23 @@ public class BaseScrollTabView
       AppMethodBeat.i(52345);
       b localb = new b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$initTabClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-      if (!BaseScrollTabView.a(this.yxi))
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$initTabClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      if (!BaseScrollTabView.a(this.yNi))
       {
-        ad.w("MicroMsg.BaseScrollTabView", "alvinluo onTabClick not enableSwitchTab");
+        ae.w("MicroMsg.BaseScrollTabView", "alvinluo onTabClick not enableSwitchTab");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$initTabClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(52345);
         return;
       }
-      this.yxi.setCanVibrate(true);
-      ad.i("MicroMsg.BaseScrollTabView", "alvinluo onTabClick index: %d", new Object[] { Integer.valueOf(this.odp) });
-      paramView = (a)j.E((List)BaseScrollTabView.b(this.yxi), this.odp);
+      this.yNi.setCanVibrate(true);
+      ae.i("MicroMsg.BaseScrollTabView", "alvinluo onTabClick index: %d", new Object[] { Integer.valueOf(this.ojd) });
+      paramView = (a)j.F((List)BaseScrollTabView.b(this.yNi), this.ojd);
       if (paramView != null)
       {
         paramView.getTabId();
-        BaseScrollTabView.c(this.yxi);
+        BaseScrollTabView.c(this.yNi);
       }
-      this.yxi.hs(this.odp, 1);
+      this.yNi.hu(this.ojd, 1);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView$initTabClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(52345);
     }

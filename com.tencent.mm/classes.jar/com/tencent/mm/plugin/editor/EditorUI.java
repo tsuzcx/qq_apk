@@ -21,7 +21,6 @@ import android.support.v7.widget.RecyclerView.m;
 import android.support.v7.widget.as;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,8 +36,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.g.a.gw.b;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.g.a.gx.b;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.plugin.editor.adapter.CollectEditorLinearLayoutManager;
 import com.tencent.mm.plugin.editor.model.a.l;
@@ -67,18 +66,20 @@ import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.s.b;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.ui.widget.imageview.WeImageButton;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,46 +91,46 @@ public class EditorUI
   extends MMActivity
   implements com.tencent.mm.plugin.editor.model.nativenote.a, com.tencent.mm.plugin.editor.model.nativenote.b.a, d.a
 {
-  private g.a ibn;
-  private ap jwD;
-  private float kbD;
-  private float kbE;
-  ProgressDialog nZt;
-  private RecyclerView prA;
-  private com.tencent.mm.plugin.editor.adapter.b prB;
-  private CollectEditorLinearLayoutManager prC;
-  private a prD;
-  private LinearLayout prE;
-  com.tencent.mm.plugin.editor.widget.a prF;
-  private LinearLayout prG;
-  private RelativeLayout prH;
-  private com.tencent.mm.plugin.editor.model.nativenote.manager.d prI;
-  private com.tencent.mm.plugin.editor.model.nativenote.manager.j prJ;
-  private boolean prK;
-  private int prL;
-  private RecyclerView.m prM;
-  private boolean prN;
-  private boolean prO;
-  private boolean prP;
-  private String prQ;
-  private boolean prR;
-  private int prS;
-  private boolean prT;
-  private ajn prU;
-  View.OnTouchListener prV;
-  com.tencent.mm.plugin.fav.a.g prW;
-  LinkedList<ajn> prX;
-  private ConcurrentHashMap<String, com.tencent.mm.plugin.fav.a.c> prY;
-  private ConcurrentHashMap<String, ajn> prZ;
-  private boolean prz;
+  private g.a ieg;
+  private aq jzz;
+  private float keU;
+  private float keV;
+  ProgressDialog ofc;
+  private ajx pyA;
+  View.OnTouchListener pyB;
+  com.tencent.mm.plugin.fav.a.g pyC;
+  LinkedList<ajx> pyD;
+  private ConcurrentHashMap<String, com.tencent.mm.plugin.fav.a.c> pyE;
+  private ConcurrentHashMap<String, ajx> pyF;
+  private boolean pyf;
+  private RecyclerView pyg;
+  private com.tencent.mm.plugin.editor.adapter.b pyh;
+  private CollectEditorLinearLayoutManager pyi;
+  private a pyj;
+  private LinearLayout pyk;
+  com.tencent.mm.plugin.editor.widget.a pyl;
+  private LinearLayout pym;
+  private RelativeLayout pyn;
+  private com.tencent.mm.plugin.editor.model.nativenote.manager.d pyo;
+  private com.tencent.mm.plugin.editor.model.nativenote.manager.j pyp;
+  private boolean pyq;
+  private int pyr;
+  private RecyclerView.m pys;
+  private boolean pyt;
+  private boolean pyu;
+  private boolean pyv;
+  private String pyw;
+  private boolean pyx;
+  private int pyy;
+  private boolean pyz;
   
   public EditorUI()
   {
     AppMethodBeat.i(181554);
-    this.prz = false;
-    this.prK = true;
-    this.prS = -1;
-    this.prV = new View.OnTouchListener()
+    this.pyf = false;
+    this.pyq = true;
+    this.pyy = -1;
+    this.pyB = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -137,7 +138,7 @@ public class EditorUI
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$22", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$22", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 0)
         {
           EditorUI.a(EditorUI.this, paramAnonymousMotionEvent.getX());
@@ -155,7 +156,7 @@ public class EditorUI
               break label221;
             }
             if (EditorUI.a(EditorUI.this) != null) {
-              EditorUI.a(EditorUI.this).puA.dismiss();
+              EditorUI.a(EditorUI.this).pBe.dismiss();
             }
             EditorUI.b(EditorUI.this).setVisibility(8);
           }
@@ -166,18 +167,18 @@ public class EditorUI
           AppMethodBeat.o(181531);
           return false;
           label221:
-          int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().size();
-          paramAnonymousView = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().BA(i - 1);
+          int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().size();
+          paramAnonymousView = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().BM(i - 1);
           if (paramAnonymousView != null)
           {
-            boolean bool = paramAnonymousView.ptF;
-            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cem();
-            paramAnonymousView.ptF = true;
-            paramAnonymousView.ptL = false;
-            paramAnonymousView.ptH = -1;
+            boolean bool = paramAnonymousView.pAj;
+            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfB();
+            paramAnonymousView.pAj = true;
+            paramAnonymousView.pAp = false;
+            paramAnonymousView.pAl = -1;
             EditorUI.g(EditorUI.this).cj(i - 1);
             EditorUI.this.e(true, 50L);
-            EditorUI.this.O(1, 0L);
+            EditorUI.this.N(1, 0L);
             if ((EditorUI.p(EditorUI.this)) && (bool))
             {
               EditorUI.q(EditorUI.this).postDelayed(new Runnable()
@@ -185,8 +186,8 @@ public class EditorUI
                 public final void run()
                 {
                   AppMethodBeat.i(181530);
-                  com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kl(true);
-                  com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kk(true);
+                  com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kk(true);
+                  com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kj(true);
                   AppMethodBeat.o(181530);
                 }
               }, 100L);
@@ -198,14 +199,14 @@ public class EditorUI
                 if ((f1 > 120.0F) || (f2 > 120.0F)) {
                   if (EditorUI.p(EditorUI.this))
                   {
-                    if (com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceO() == 1)
+                    if (com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgd() == 1)
                     {
-                      EditorUI.this.cdy();
-                      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceU();
+                      EditorUI.this.ceN();
+                      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgj();
                     }
                   }
                   else if (!EditorUI.r(EditorUI.this)) {
-                    EditorUI.this.cdy();
+                    EditorUI.this.ceN();
                   }
                 }
               }
@@ -214,31 +215,31 @@ public class EditorUI
         }
       }
     };
-    this.prX = new LinkedList();
-    this.prY = new ConcurrentHashMap();
-    this.prZ = new ConcurrentHashMap();
-    this.ibn = new g.a()
+    this.pyD = new LinkedList();
+    this.pyE = new ConcurrentHashMap();
+    this.pyF = new ConcurrentHashMap();
+    this.ieg = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(181537);
         if (paramAnonymousInt != 0)
         {
-          ad.e("MicroMsg.EditorUI", "transfer err! startRet: %s.", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ae.e("MicroMsg.EditorUI", "transfer err! startRet: %s.", new Object[] { Integer.valueOf(paramAnonymousInt) });
           AppMethodBeat.o(181537);
           return 0;
         }
         paramAnonymousc = (com.tencent.mm.plugin.fav.a.c)EditorUI.s(EditorUI.this).get(paramAnonymousString);
         if (paramAnonymousc == null)
         {
-          ad.e("MicroMsg.EditorUI", "cdn info is null!!!");
+          ae.e("MicroMsg.EditorUI", "cdn info is null!!!");
           AppMethodBeat.o(181537);
           return 0;
         }
-        ajn localajn = (ajn)EditorUI.t(EditorUI.this).get(paramAnonymousString);
-        if (localajn == null)
+        ajx localajx = (ajx)EditorUI.t(EditorUI.this).get(paramAnonymousString);
+        if (localajx == null)
         {
-          ad.e("MicroMsg.EditorUI", "data item is null!!!");
+          ae.e("MicroMsg.EditorUI", "data item is null!!!");
           AppMethodBeat.o(181537);
           return 0;
         }
@@ -258,11 +259,11 @@ public class EditorUI
           if (!paramAnonymousString.endsWith("_t")) {
             break label395;
           }
-          localajn.aOi(paramAnonymousc.field_cdnKey);
-          localajn.aOh(paramAnonymousc.field_cdnUrl);
+          localajx.aPF(paramAnonymousc.field_cdnKey);
+          localajx.aPE(paramAnonymousc.field_cdnUrl);
           label197:
           EditorUI.s(EditorUI.this).remove(paramAnonymousc.field_dataId);
-          ad.i("MicroMsg.EditorUI", "transfer done, mediaId=%s completeResult.mediaId=%s aesKey=%s completeInfo=%s", new Object[] { paramAnonymousString, paramAnonymousd.mediaId, paramAnonymousd.field_aesKey, paramAnonymousd.toString() });
+          ae.i("MicroMsg.EditorUI", "transfer done, mediaId=%s completeResult.mediaId=%s aesKey=%s completeInfo=%s", new Object[] { paramAnonymousString, paramAnonymousd.mediaId, paramAnonymousd.field_aesKey, paramAnonymousd.toString() });
           if (1 != paramAnonymousc.field_type) {
             break label462;
           }
@@ -273,30 +274,30 @@ public class EditorUI
           AppMethodBeat.o(181537);
           return 0;
           label273:
-          if ((paramAnonymousInt == -2) && (!EditorUI.aaK(str)) && (EditorUI.fn(str, (String)localObject)))
+          if ((paramAnonymousInt == -2) && (!EditorUI.abB(str)) && (EditorUI.fr(str, (String)localObject)))
           {
-            ad.i("MicroMsg.EditorUI", "renameAndCopyFile write amr head ok!");
+            ae.i("MicroMsg.EditorUI", "renameAndCopyFile write amr head ok!");
             break;
           }
-          com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(str);
-          localObject = new com.tencent.mm.vfs.e((String)localObject);
-          if (!locale.exists()) {
+          k localk = new k(str);
+          localObject = new k((String)localObject);
+          if (!localk.exists()) {
             break;
           }
-          ad.i("MicroMsg.EditorUI", "rename file suc:%b, old:%s, new:%s", new Object[] { Boolean.valueOf(locale.ag((com.tencent.mm.vfs.e)localObject)), str, localObject });
+          ae.i("MicroMsg.EditorUI", "rename file suc:%b, old:%s, new:%s", new Object[] { Boolean.valueOf(localk.ag((k)localObject)), str, localObject });
           break;
           label374:
           paramAnonymousc.field_cdnKey = paramAnonymousd.field_aesKey;
           paramAnonymousc.field_cdnUrl = paramAnonymousd.field_fileId;
           break;
           label395:
-          localajn.aOk(paramAnonymousc.field_cdnKey);
-          localajn.aOj(paramAnonymousc.field_cdnUrl);
-          if ((paramAnonymousc.field_type != 0) || (!paramAnonymousc.cuN())) {
+          localajx.aPH(paramAnonymousc.field_cdnKey);
+          localajx.aPG(paramAnonymousc.field_cdnUrl);
+          if ((paramAnonymousc.field_type != 0) || (!paramAnonymousc.cwo())) {
             break label197;
           }
-          ad.i("MicroMsg.EditorUI", "video stream, id:%s", new Object[] { paramAnonymousd.field_videoFileId });
-          localajn.aOy(paramAnonymousd.field_videoFileId);
+          ae.i("MicroMsg.EditorUI", "video stream, id:%s", new Object[] { paramAnonymousd.field_videoFileId });
+          localajx.aPV(paramAnonymousd.field_videoFileId);
           break label197;
           label462:
           EditorUI.v(EditorUI.this);
@@ -316,15 +317,15 @@ public class EditorUI
   private void L(final ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(181560);
-    if (com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().ff(0, paramArrayList.size()))
+    if (com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().fg(0, paramArrayList.size()))
     {
-      cds();
+      ceH();
       AppMethodBeat.o(181560);
       return;
     }
     AppCompatActivity localAppCompatActivity = getContext();
     getString(2131755906);
-    this.nZt = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131755936), true, new DialogInterface.OnCancelListener()
+    this.ofc = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131755936), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -337,7 +338,7 @@ public class EditorUI
         AppMethodBeat.o(181540);
       }
     });
-    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
     {
       public final void run()
       {
@@ -348,26 +349,26 @@ public class EditorUI
         {
           String str = (String)paramArrayList.get(i);
           com.tencent.mm.plugin.editor.model.a.h localh = new com.tencent.mm.plugin.editor.model.a.h();
-          localh.ptT = true;
+          localh.pAx = true;
           localh.type = 2;
-          localh.ptS = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cep();
-          localh.dsU = com.tencent.mm.plugin.editor.model.b.aaU(localh.toString());
-          EditorUI.a(EditorUI.this, new ajn());
-          EditorUI.e(EditorUI.this).aOs(localh.dsU);
-          localh.ptQ = b.fo(str, com.tencent.mm.plugin.editor.model.b.b(EditorUI.e(EditorUI.this)));
-          localh.dBx = b.fp(localh.ptQ, com.tencent.mm.plugin.editor.model.b.a(EditorUI.e(EditorUI.this)));
+          localh.pAw = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfE();
+          localh.dua = com.tencent.mm.plugin.editor.model.b.abL(localh.toString());
+          EditorUI.a(EditorUI.this, new ajx());
+          EditorUI.e(EditorUI.this).aPP(localh.dua);
+          localh.pAu = b.fs(str, com.tencent.mm.plugin.editor.model.b.b(EditorUI.e(EditorUI.this)));
+          localh.dCC = b.ft(localh.pAu, com.tencent.mm.plugin.editor.model.b.a(EditorUI.e(EditorUI.this)));
           localArrayList.add(localh);
           i += 1;
         }
         if ((EditorUI.c(EditorUI.this) != null) && (EditorUI.c(EditorUI.this).isShowing()))
         {
-          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().a(localArrayList, EditorUI.f(EditorUI.this).ceL(), true, false, true, false);
+          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().a(localArrayList, EditorUI.f(EditorUI.this).cga(), true, false, true, false);
           EditorUI.this.e(true, 100L);
-          EditorUI.this.O(1, 0L);
+          EditorUI.this.N(1, 0L);
           AppMethodBeat.o(181541);
           return;
         }
-        ad.i("MicroMsg.EditorUI", "user canceled");
+        ae.i("MicroMsg.EditorUI", "user canceled");
         AppMethodBeat.o(181541);
       }
     });
@@ -379,7 +380,7 @@ public class EditorUI
     AppMethodBeat.i(181604);
     if (paramc.field_totalLen > 26214400)
     {
-      paramInt = com.tencent.mm.i.a.fIB;
+      paramInt = com.tencent.mm.i.a.fKF;
       AppMethodBeat.o(181604);
       return paramInt;
     }
@@ -388,7 +389,7 @@ public class EditorUI
       AppMethodBeat.o(181604);
       return paramInt;
     }
-    ad.w("MicroMsg.EditorUI", "NEED To Exchange Type, defType %d", new Object[] { Integer.valueOf(paramInt) });
+    ae.w("MicroMsg.EditorUI", "NEED To Exchange Type, defType %d", new Object[] { Integer.valueOf(paramInt) });
     if (com.tencent.mm.i.a.MediaType_FAVORITE_VIDEO == paramInt)
     {
       paramInt = com.tencent.mm.i.a.MediaType_FAVORITE_FILE;
@@ -400,33 +401,33 @@ public class EditorUI
     return paramInt;
   }
   
-  private com.tencent.mm.plugin.fav.a.c a(ajn paramajn, int paramInt)
+  private com.tencent.mm.plugin.fav.a.c a(ajx paramajx, int paramInt)
   {
     AppMethodBeat.i(181603);
-    if ((1 == paramInt) && ((bt.isNullOrNil(paramajn.GgT)) || (bt.isNullOrNil(paramajn.GgR))))
+    if ((1 == paramInt) && ((bu.isNullOrNil(paramajx.GzC)) || (bu.isNullOrNil(paramajx.GzA))))
     {
-      ad.e("MicroMsg.EditorUI", "getCdnDataInfo, type recv, cdnDataUrl must not be null!");
+      ae.e("MicroMsg.EditorUI", "getCdnDataInfo, type recv, cdnDataUrl must not be null!");
       AppMethodBeat.o(181603);
       return null;
     }
-    if ((paramInt == 0) && (bt.isNullOrNil(com.tencent.mm.plugin.fav.a.b.d(paramajn))))
+    if ((paramInt == 0) && (bu.isNullOrNil(com.tencent.mm.plugin.fav.a.b.d(paramajx))))
     {
-      ad.e("MicroMsg.EditorUI", "getCdnDataInfo, type send, path must not be null!");
+      ae.e("MicroMsg.EditorUI", "getCdnDataInfo, type send, path must not be null!");
       AppMethodBeat.o(181603);
       return null;
     }
     com.tencent.mm.plugin.fav.a.c localc = new com.tencent.mm.plugin.fav.a.c();
-    localc.field_dataId = paramajn.dsU;
-    localc.field_totalLen = ((int)paramajn.Ghm);
+    localc.field_dataId = paramajx.dua;
+    localc.field_totalLen = ((int)paramajx.GzV);
     localc.field_type = paramInt;
-    localc.field_favLocalId = this.prW.field_localId;
-    localc.field_cdnKey = paramajn.GgT;
-    localc.field_cdnUrl = paramajn.GgR;
-    localc.field_path = com.tencent.mm.plugin.fav.a.b.d(paramajn);
-    if (paramajn.dataType == 3) {}
-    for (localc.field_dataType = com.tencent.mm.plugin.fav.a.b.agf(paramajn.Ghg);; localc.field_dataType = paramajn.dataType)
+    localc.field_favLocalId = this.pyC.field_localId;
+    localc.field_cdnKey = paramajx.GzC;
+    localc.field_cdnUrl = paramajx.GzA;
+    localc.field_path = com.tencent.mm.plugin.fav.a.b.d(paramajx);
+    if (paramajx.dataType == 3) {}
+    for (localc.field_dataType = com.tencent.mm.plugin.fav.a.b.ahc(paramajx.GzP);; localc.field_dataType = paramajx.dataType)
     {
-      localc.field_modifyTime = bt.flT();
+      localc.field_modifyTime = bu.fpO();
       localc.field_status = 1;
       AppMethodBeat.o(181603);
       return localc;
@@ -441,45 +442,45 @@ public class EditorUI
       AppMethodBeat.o(181602);
       return;
     }
-    ad.i("MicroMsg.EditorUI", "startTransfer, md5:%s", new Object[] { paramc.field_dataId });
+    ae.i("MicroMsg.EditorUI", "startTransfer, md5:%s", new Object[] { paramc.field_dataId });
     com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-    localg.fJi = "task_EditorUI";
-    localg.fJj = this.ibn;
+    localg.fLl = "task_EditorUI";
+    localg.fLm = this.ieg;
     localg.field_mediaId = paramc.field_dataId;
-    localg.field_priority = com.tencent.mm.i.a.fIx;
+    localg.field_priority = com.tencent.mm.i.a.fKB;
     if (paramc.field_type == 0)
     {
-      localg.dNR = true;
+      localg.dPh = true;
       localg.field_needStorage = true;
       localg.field_totalLen = paramc.field_totalLen;
       localg.field_aesKey = paramc.field_cdnKey;
       localg.field_fileId = paramc.field_cdnUrl;
-      localg.field_isStreamMedia = paramc.cuN();
+      localg.field_isStreamMedia = paramc.cwo();
       localg.field_fullpath = paramc.field_path;
-      if (!com.tencent.mm.vfs.i.fv(localg.field_fullpath)) {
-        ad.e("MicroMsg.EditorUI", "upload, but file not exist, filePath = %s", new Object[] { paramc.field_path });
+      if (!o.fB(localg.field_fullpath)) {
+        ae.e("MicroMsg.EditorUI", "upload, but file not exist, filePath = %s", new Object[] { paramc.field_path });
       }
-      if (paramc.cuN()) {}
+      if (paramc.cwo()) {}
       for (localg.field_fileType = a(paramc, com.tencent.mm.i.a.MediaType_FAVORITE_VIDEO);; localg.field_fileType = a(paramc, com.tencent.mm.i.a.MediaType_FAVORITE_FILE))
       {
         localg.field_force_aeskeycdn = true;
         localg.field_trysafecdn = false;
-        com.tencent.mm.ao.f.aGI().f(localg);
+        com.tencent.mm.an.f.aGZ().f(localg);
         AppMethodBeat.o(181602);
         return;
       }
     }
-    localg.dNR = false;
+    localg.dPh = false;
     localg.field_totalLen = paramc.field_totalLen;
     localg.field_aesKey = paramc.field_cdnKey;
     localg.field_fileId = paramc.field_cdnUrl;
     localg.field_fullpath = (paramc.field_path + ".temp");
     localg.field_needStorage = true;
-    localg.field_isStreamMedia = paramc.cuN();
-    if (paramc.cuN()) {}
+    localg.field_isStreamMedia = paramc.cwo();
+    if (paramc.cwo()) {}
     for (localg.field_fileType = a(paramc, com.tencent.mm.i.a.MediaType_FAVORITE_VIDEO);; localg.field_fileType = a(paramc, com.tencent.mm.i.a.MediaType_FAVORITE_FILE))
     {
-      com.tencent.mm.ao.f.aGI().b(localg, -1);
+      com.tencent.mm.an.f.aGZ().b(localg, -1);
       AppMethodBeat.o(181602);
       return;
     }
@@ -488,13 +489,13 @@ public class EditorUI
   private void a(final String paramString1, final l paraml, String paramString2, String paramString3)
   {
     AppMethodBeat.i(181562);
-    if (bt.isNullOrNil(paramString1))
+    if (bu.isNullOrNil(paramString1))
     {
-      ad.e("MicroMsg.EditorUI", "video is null");
+      ae.e("MicroMsg.EditorUI", "video is null");
       AppMethodBeat.o(181562);
       return;
     }
-    ad.v("MicroMsg.EditorUI", "compressNoteVideo path: %s", new Object[] { paramString1 });
+    ae.v("MicroMsg.EditorUI", "compressNoteVideo path: %s", new Object[] { paramString1 });
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString1);
     paramString1 = new com.tencent.mm.plugin.editor.model.nativenote.manager.e(localArrayList, paramString2, paramString3, paraml, new e.a()
@@ -502,8 +503,8 @@ public class EditorUI
       public final void a(String paramAnonymousString, l paramAnonymousl)
       {
         AppMethodBeat.i(181542);
-        ad.i("MicroMsg.EditorUI", "compressNoteVideo onImportFinish");
-        if ((!bt.isNullOrNil(paramAnonymousString)) && (com.tencent.mm.vfs.i.fv(paramAnonymousString)) && (paramAnonymousl != null)) {
+        ae.i("MicroMsg.EditorUI", "compressNoteVideo onImportFinish");
+        if ((!bu.isNullOrNil(paramAnonymousString)) && (o.fB(paramAnonymousString)) && (paramAnonymousl != null)) {
           paramAnonymousl.thumbPath = paramAnonymousString;
         }
         AppMethodBeat.o(181542);
@@ -512,34 +513,34 @@ public class EditorUI
       public final void b(String paramAnonymousString, l paramAnonymousl)
       {
         AppMethodBeat.i(181543);
-        ad.i("MicroMsg.EditorUI", "compressNoteVideo onExportFinish");
+        ae.i("MicroMsg.EditorUI", "compressNoteVideo onExportFinish");
         if (EditorUI.c(EditorUI.this) != null)
         {
           EditorUI.c(EditorUI.this).dismiss();
           EditorUI.d(EditorUI.this);
         }
-        if ((!bt.isNullOrNil(paramAnonymousString)) && (com.tencent.mm.vfs.i.fv(paramAnonymousString)) && (paramAnonymousl != null) && (!paramAnonymousl.pub)) {
-          if (new com.tencent.mm.vfs.e(paramAnonymousString).length() < ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimit(false))
+        if ((!bu.isNullOrNil(paramAnonymousString)) && (o.fB(paramAnonymousString)) && (paramAnonymousl != null) && (!paramAnonymousl.pAF)) {
+          if (new k(paramAnonymousString).length() < ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimit(false))
           {
-            paramAnonymousl.dBx = paramAnonymousString;
-            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().a(paramAnonymousl, EditorUI.f(EditorUI.this).ceL(), false, true, false);
+            paramAnonymousl.dCC = paramAnonymousString;
+            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().a(paramAnonymousl, EditorUI.f(EditorUI.this).cga(), false, true, false);
           }
         }
         for (;;)
         {
           EditorUI.this.e(true, 100L);
-          EditorUI.this.O(1, 0L);
+          EditorUI.this.N(1, 0L);
           AppMethodBeat.o(181543);
           return;
           Toast.makeText(EditorUI.this.getContext(), EditorUI.this.getString(2131759024), 1).show();
           continue;
-          ad.i("MicroMsg.EditorUI", "file not exist or user canceled");
+          ae.i("MicroMsg.EditorUI", "file not exist or user canceled");
         }
       }
     });
     paramString2 = getContext();
     getString(2131755906);
-    this.nZt = com.tencent.mm.ui.base.h.b(paramString2, getString(2131755936), true, new DialogInterface.OnCancelListener()
+    this.ofc = com.tencent.mm.ui.base.h.b(paramString2, getString(2131755936), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -547,9 +548,9 @@ public class EditorUI
         paramAnonymousDialogInterface = paramString1;
         paramAnonymousDialogInterface.isStop = true;
         paramAnonymousDialogInterface.interrupt();
-        paraml.pub = true;
+        paraml.pAF = true;
         EditorUI.this.e(true, 100L);
-        EditorUI.this.O(1, 0L);
+        EditorUI.this.N(1, 0L);
         AppMethodBeat.o(181544);
       }
     });
@@ -557,52 +558,25 @@ public class EditorUI
     AppMethodBeat.o(181562);
   }
   
-  private void aaI(String paramString)
-  {
-    AppMethodBeat.i(181561);
-    Object localObject = com.tencent.mm.plugin.sight.base.e.axx(paramString);
-    if (localObject == null)
-    {
-      ad.e("MicroMsg.EditorUI", "mediaInfo is null, videoPath is %s", new Object[] { bt.nullAsNil(paramString) });
-      AppMethodBeat.o(181561);
-      return;
-    }
-    int i = ((com.tencent.mm.plugin.sight.base.a)localObject).getVideoDuration();
-    localObject = new l();
-    ((l)localObject).ptT = true;
-    ((l)localObject).thumbPath = "";
-    ((l)localObject).dBx = "";
-    ((l)localObject).duration = i;
-    ((l)localObject).type = 6;
-    ((l)localObject).ptS = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cep();
-    ((l)localObject).ptU = com.tencent.mm.vfs.i.ZF(paramString);
-    ((l)localObject).dsU = com.tencent.mm.plugin.editor.model.b.aaU(localObject.toString());
-    this.prU = new ajn();
-    this.prU.aOs(((l)localObject).dsU);
-    this.prU.aOp(((l)localObject).ptU);
-    a(paramString, (l)localObject, com.tencent.mm.plugin.editor.model.b.a(this.prU), com.tencent.mm.plugin.editor.model.b.b(this.prU));
-    AppMethodBeat.o(181561);
-  }
-  
-  static boolean aaJ(String paramString)
+  static boolean abA(String paramString)
   {
     AppMethodBeat.i(181600);
-    boolean bool = bt.isNullOrNil(b.aaT(paramString));
+    boolean bool = bu.isNullOrNil(b.abK(paramString));
     AppMethodBeat.o(181600);
     return bool;
   }
   
   /* Error */
-  static boolean aaK(String paramString)
+  static boolean abB(String paramString)
   {
     // Byte code:
-    //   0: ldc_w 576
-    //   3: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 578	java/io/RandomAccessFile
+    //   0: ldc_w 494
+    //   3: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 496	java/io/RandomAccessFile
     //   9: dup
     //   10: aload_0
-    //   11: ldc_w 580
-    //   14: invokespecial 582	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   11: ldc_w 498
+    //   14: invokespecial 500	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: astore_3
     //   18: aload_3
     //   19: astore_0
@@ -615,91 +589,91 @@ public class EditorUI
     //   29: aload 4
     //   31: iconst_0
     //   32: bipush 6
-    //   34: invokevirtual 586	java/io/RandomAccessFile:read	([BII)I
+    //   34: invokevirtual 504	java/io/RandomAccessFile:read	([BII)I
     //   37: istore_1
     //   38: iload_1
     //   39: iconst_m1
     //   40: if_icmpne +32 -> 72
     //   43: aload_3
-    //   44: invokevirtual 589	java/io/RandomAccessFile:close	()V
-    //   47: ldc_w 576
-    //   50: invokestatic 168	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: invokevirtual 507	java/io/RandomAccessFile:close	()V
+    //   47: ldc_w 494
+    //   50: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   53: iconst_0
     //   54: ireturn
     //   55: astore_0
-    //   56: ldc 248
+    //   56: ldc 238
     //   58: aload_0
-    //   59: ldc_w 518
+    //   59: ldc_w 509
     //   62: iconst_0
-    //   63: anewarray 252	java/lang/Object
-    //   66: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   63: anewarray 242	java/lang/Object
+    //   66: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   69: goto -22 -> 47
     //   72: aload_3
     //   73: astore_0
-    //   74: new 595	java/lang/String
+    //   74: new 515	java/lang/String
     //   77: dup
     //   78: aload 4
-    //   80: invokespecial 598	java/lang/String:<init>	([B)V
+    //   80: invokespecial 518	java/lang/String:<init>	([B)V
     //   83: astore 4
     //   85: aload_3
     //   86: astore_0
-    //   87: ldc 248
-    //   89: new 445	java/lang/StringBuilder
+    //   87: ldc 238
+    //   89: new 435	java/lang/StringBuilder
     //   92: dup
-    //   93: ldc_w 600
-    //   96: invokespecial 602	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   93: ldc_w 520
+    //   96: invokespecial 523	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   99: aload 4
-    //   101: invokevirtual 450	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc_w 604
-    //   107: invokevirtual 450	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 606	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokevirtual 440	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: ldc_w 525
+    //   107: invokevirtual 440	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: invokevirtual 446	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokestatic 527	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload_3
     //   117: astore_0
     //   118: aload 4
-    //   120: ldc_w 608
-    //   123: invokevirtual 611	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   120: ldc_w 529
+    //   123: invokevirtual 532	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   126: istore_2
     //   127: aload_3
-    //   128: invokevirtual 589	java/io/RandomAccessFile:close	()V
-    //   131: ldc_w 576
-    //   134: invokestatic 168	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: invokevirtual 507	java/io/RandomAccessFile:close	()V
+    //   131: ldc_w 494
+    //   134: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   137: iload_2
     //   138: ireturn
     //   139: astore_0
-    //   140: ldc 248
+    //   140: ldc 238
     //   142: aload_0
-    //   143: ldc_w 518
+    //   143: ldc_w 509
     //   146: iconst_0
-    //   147: anewarray 252	java/lang/Object
-    //   150: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: anewarray 242	java/lang/Object
+    //   150: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   153: goto -22 -> 131
     //   156: astore 4
     //   158: aconst_null
     //   159: astore_3
     //   160: aload_3
     //   161: astore_0
-    //   162: ldc 248
+    //   162: ldc 238
     //   164: aload 4
-    //   166: ldc_w 518
+    //   166: ldc_w 509
     //   169: iconst_0
-    //   170: anewarray 252	java/lang/Object
-    //   173: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   170: anewarray 242	java/lang/Object
+    //   173: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   176: aload_3
     //   177: ifnull +7 -> 184
     //   180: aload_3
-    //   181: invokevirtual 589	java/io/RandomAccessFile:close	()V
-    //   184: ldc_w 576
-    //   187: invokestatic 168	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   181: invokevirtual 507	java/io/RandomAccessFile:close	()V
+    //   184: ldc_w 494
+    //   187: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: iconst_0
     //   191: ireturn
     //   192: astore_0
-    //   193: ldc 248
+    //   193: ldc 238
     //   195: aload_0
-    //   196: ldc_w 518
+    //   196: ldc_w 509
     //   199: iconst_0
-    //   200: anewarray 252	java/lang/Object
-    //   203: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   200: anewarray 242	java/lang/Object
+    //   203: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   206: goto -22 -> 184
     //   209: astore_3
     //   210: aconst_null
@@ -707,18 +681,18 @@ public class EditorUI
     //   212: aload_0
     //   213: ifnull +7 -> 220
     //   216: aload_0
-    //   217: invokevirtual 589	java/io/RandomAccessFile:close	()V
-    //   220: ldc_w 576
-    //   223: invokestatic 168	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   217: invokevirtual 507	java/io/RandomAccessFile:close	()V
+    //   220: ldc_w 494
+    //   223: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   226: aload_3
     //   227: athrow
     //   228: astore_0
-    //   229: ldc 248
+    //   229: ldc 238
     //   231: aload_0
-    //   232: ldc_w 518
+    //   232: ldc_w 509
     //   235: iconst_0
-    //   236: anewarray 252	java/lang/Object
-    //   239: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   236: anewarray 242	java/lang/Object
+    //   239: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   242: goto -22 -> 220
     //   245: astore_3
     //   246: goto -34 -> 212
@@ -756,12 +730,56 @@ public class EditorUI
     //   118	127	249	java/lang/Exception
   }
   
-  private boolean cdK()
+  private void abz(String paramString)
+  {
+    AppMethodBeat.i(181561);
+    Object localObject = com.tencent.mm.plugin.sight.base.e.ayN(paramString);
+    if (localObject == null)
+    {
+      ae.e("MicroMsg.EditorUI", "mediaInfo is null, videoPath is %s", new Object[] { bu.nullAsNil(paramString) });
+      AppMethodBeat.o(181561);
+      return;
+    }
+    int i = ((com.tencent.mm.plugin.sight.base.a)localObject).getVideoDuration();
+    localObject = new l();
+    ((l)localObject).pAx = true;
+    ((l)localObject).thumbPath = "";
+    ((l)localObject).dCC = "";
+    ((l)localObject).duration = i;
+    ((l)localObject).type = 6;
+    ((l)localObject).pAw = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfE();
+    ((l)localObject).pAy = o.aaw(paramString);
+    ((l)localObject).dua = com.tencent.mm.plugin.editor.model.b.abL(localObject.toString());
+    this.pyA = new ajx();
+    this.pyA.aPP(((l)localObject).dua);
+    this.pyA.aPM(((l)localObject).pAy);
+    a(paramString, (l)localObject, com.tencent.mm.plugin.editor.model.b.a(this.pyA), com.tencent.mm.plugin.editor.model.b.b(this.pyA));
+    AppMethodBeat.o(181561);
+  }
+  
+  private void ceE()
+  {
+    AppMethodBeat.i(181568);
+    try
+    {
+      this.pyh.asY.notifyChanged();
+      AppMethodBeat.o(181568);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ae.printErrStackTrace("MicroMsg.EditorUI", localException, "", new Object[0]);
+      ae.i("MicroMsg.EditorUI", "onNotifyDataChanged error");
+      AppMethodBeat.o(181568);
+    }
+  }
+  
+  private boolean ceZ()
   {
     AppMethodBeat.i(181598);
-    if ((this.prF != null) && (this.prF.pyc))
+    if ((this.pyl != null) && (this.pyl.pEG))
     {
-      cdu();
+      ceJ();
       AppMethodBeat.o(181598);
       return false;
     }
@@ -769,18 +787,18 @@ public class EditorUI
     return true;
   }
   
-  private void cdL()
+  private void cfa()
   {
     AppMethodBeat.i(181607);
-    if (this.prQ.isEmpty())
+    if (this.pyw.isEmpty())
     {
-      ad.i("MicroMsg.EditorUI", "no need update ui by xml!!! xml is empty.");
+      ae.i("MicroMsg.EditorUI", "no need update ui by xml!!! xml is empty.");
       AppMethodBeat.o(181607);
       return;
     }
     Object localObject1 = getContext();
     getString(2131755906);
-    this.nZt = com.tencent.mm.ui.base.h.b((Context)localObject1, getString(2131755936), true, new DialogInterface.OnCancelListener()
+    this.ofc = com.tencent.mm.ui.base.h.b((Context)localObject1, getString(2131755936), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -793,95 +811,95 @@ public class EditorUI
         AppMethodBeat.o(181538);
       }
     });
-    this.prW = com.tencent.mm.plugin.fav.a.b.agj(this.prQ);
-    if (this.prW != null)
+    this.pyC = com.tencent.mm.plugin.fav.a.b.ahg(this.pyw);
+    if (this.pyC != null)
     {
-      this.prX.clear();
-      this.prX.addAll(this.prW.field_favProto.nZa);
-      int i = this.prX.size();
+      this.pyD.clear();
+      this.pyD.addAll(this.pyC.field_favProto.oeJ);
+      int i = this.pyD.size();
       if (i == 0)
       {
-        ad.v("MicroMsg.EditorUI", "favItemInfo has no data!!!");
+        ae.v("MicroMsg.EditorUI", "favItemInfo has no data!!!");
         AppMethodBeat.o(181607);
         return;
       }
-      localObject1 = this.prW.field_favProto.nZa;
-      this.prY.clear();
-      this.prZ.clear();
+      localObject1 = this.pyC.field_favProto.oeJ;
+      this.pyE.clear();
+      this.pyF.clear();
       i -= 1;
       if (i >= 0)
       {
-        ajn localajn = (ajn)((List)localObject1).get(i);
+        ajx localajx = (ajx)((List)localObject1).get(i);
         Object localObject2;
-        if (!bt.isNullOrNil(localajn.Ghi))
+        if (!bu.isNullOrNil(localajx.GzR))
         {
-          localObject2 = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.d(localajn));
-          ad.i("MicroMsg.EditorUI", "dataFile: %s", new Object[] { ((com.tencent.mm.vfs.e)localObject2).getName() });
-          if (((com.tencent.mm.vfs.e)localObject2).exists()) {
+          localObject2 = new k(com.tencent.mm.plugin.fav.a.b.d(localajx));
+          ae.i("MicroMsg.EditorUI", "dataFile: %s", new Object[] { ((k)localObject2).getName() });
+          if (((k)localObject2).exists()) {
             break label392;
           }
-          if ((bt.isNullOrNil(localajn.GgT)) || (bt.isNullOrNil(localajn.GgR))) {
-            ad.e("MicroMsg.EditorUI", "data key or url null!!!");
+          if ((bu.isNullOrNil(localajx.GzC)) || (bu.isNullOrNil(localajx.GzA))) {
+            ae.e("MicroMsg.EditorUI", "data key or url null!!!");
           }
         }
         else
         {
           label259:
-          if (!bt.isNullOrNil(localajn.Ght))
+          if (!bu.isNullOrNil(localajx.GAc))
           {
-            if (new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.a(localajn)).exists()) {
+            if (new k(com.tencent.mm.plugin.fav.a.b.a(localajx)).exists()) {
               break label505;
             }
-            if ((!bt.isNullOrNil(localajn.GgN)) && (!bt.isNullOrNil(localajn.hAe))) {
+            if ((!bu.isNullOrNil(localajx.Gzw)) && (!bu.isNullOrNil(localajx.hCS))) {
               break label427;
             }
-            ad.w("MicroMsg.EditorUI", "thumb key or url null. favId: %d", new Object[] { Integer.valueOf(this.prW.field_id) });
+            ae.w("MicroMsg.EditorUI", "thumb key or url null. favId: %d", new Object[] { Integer.valueOf(this.pyC.field_id) });
           }
         }
         for (;;)
         {
           i -= 1;
           break;
-          ad.d("MicroMsg.EditorUI", "local data not exist, gen cdnInfo.");
-          localObject2 = a(localajn, 1);
-          this.prY.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localObject2);
-          this.prZ.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localajn);
+          ae.d("MicroMsg.EditorUI", "local data not exist, gen cdnInfo.");
+          localObject2 = a(localajx, 1);
+          this.pyE.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localObject2);
+          this.pyF.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localajx);
           a((com.tencent.mm.plugin.fav.a.c)localObject2);
           break label259;
           label392:
-          ad.d("MicroMsg.EditorUI", "file exist, favId:%d, dataIndex:%d", new Object[] { Integer.valueOf(this.prW.field_id), Integer.valueOf(i) });
+          ae.d("MicroMsg.EditorUI", "file exist, favId:%d, dataIndex:%d", new Object[] { Integer.valueOf(this.pyC.field_id), Integer.valueOf(i) });
           break label259;
           label427:
-          ad.d("MicroMsg.EditorUI", "local thumb not exist, insert cdnInfo, favId:%d, dataIndex:%d", new Object[] { Integer.valueOf(this.prW.field_id), Integer.valueOf(i) });
-          localObject2 = a(localajn, 1);
-          this.prY.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localObject2);
-          this.prZ.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localajn);
+          ae.d("MicroMsg.EditorUI", "local thumb not exist, insert cdnInfo, favId:%d, dataIndex:%d", new Object[] { Integer.valueOf(this.pyC.field_id), Integer.valueOf(i) });
+          localObject2 = a(localajx, 1);
+          this.pyE.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localObject2);
+          this.pyF.put(((com.tencent.mm.plugin.fav.a.c)localObject2).field_dataId, localajx);
           a((com.tencent.mm.plugin.fav.a.c)localObject2);
           continue;
           label505:
-          ad.d("MicroMsg.EditorUI", "thumb exist, favId:%d, dataIndex:%d", new Object[] { Integer.valueOf(this.prW.field_id), Integer.valueOf(i) });
+          ae.d("MicroMsg.EditorUI", "thumb exist, favId:%d, dataIndex:%d", new Object[] { Integer.valueOf(this.pyC.field_id), Integer.valueOf(i) });
         }
       }
-      cdM();
+      cfb();
     }
     AppMethodBeat.o(181607);
   }
   
-  private void cdM()
+  private void cfb()
   {
     AppMethodBeat.i(181608);
-    if (this.prY.isEmpty())
+    if (this.pyE.isEmpty())
     {
-      ad.i("MicroMsg.EditorUI", "download finish, notifyUpdateUI.");
-      Object localObject1 = cdN();
+      ae.i("MicroMsg.EditorUI", "download finish, notifyUpdateUI.");
+      Object localObject1 = cfc();
       if (localObject1 == null)
       {
-        ad.e("MicroMsg.EditorUI", "weNoteWrapData is null!!!");
+        ae.e("MicroMsg.EditorUI", "weNoteWrapData is null!!!");
         AppMethodBeat.o(181608);
         return;
       }
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cek();
-      localObject1 = ((com.tencent.mm.plugin.editor.model.a.g)localObject1).ptZ.iterator();
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfz();
+      localObject1 = ((com.tencent.mm.plugin.editor.model.a.g)localObject1).pAD.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (com.tencent.mm.plugin.editor.model.a.d)((Iterator)localObject1).next();
@@ -894,76 +912,76 @@ public class EditorUI
           break;
         case -1: 
           localObject2 = (com.tencent.mm.plugin.editor.model.a.i)localObject2;
-          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
+          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
           break;
         case 1: 
           localObject2 = (com.tencent.mm.plugin.editor.model.a.j)localObject2;
-          if (bt.isNullOrNil(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content)) {
+          if (bu.isNullOrNil(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content)) {
             ((com.tencent.mm.plugin.editor.model.a.j)localObject2).content = "";
           }
-          ((com.tencent.mm.plugin.editor.model.a.j)localObject2).content = a.aaH(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content);
+          ((com.tencent.mm.plugin.editor.model.a.j)localObject2).content = a.aby(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content);
           if (((com.tencent.mm.plugin.editor.model.a.j)localObject2).content.length() > 100) {
-            com.tencent.mm.plugin.editor.model.nativenote.a.a.aaV(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content);
+            com.tencent.mm.plugin.editor.model.nativenote.a.a.abM(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content);
           }
           for (;;)
           {
-            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
+            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
             break;
-            if (b.aaS(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content)) {
+            if (b.abJ(((com.tencent.mm.plugin.editor.model.a.j)localObject2).content)) {
               ((com.tencent.mm.plugin.editor.model.a.j)localObject2).content = ((com.tencent.mm.plugin.editor.model.a.j)localObject2).content.substring(0, ((com.tencent.mm.plugin.editor.model.a.j)localObject2).content.length() - 5);
             }
           }
         case 2: 
           localObject2 = (com.tencent.mm.plugin.editor.model.a.h)localObject2;
-          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
+          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
           break;
         case 4: 
           localObject2 = (m)localObject2;
-          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
+          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
           break;
         case 6: 
           localObject2 = (l)localObject2;
-          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
+          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject2);
         }
       }
-      cdp();
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cep();
-      if (this.nZt != null)
+      ceE();
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfE();
+      if (this.ofc != null)
       {
-        this.nZt.dismiss();
-        this.nZt = null;
+        this.ofc.dismiss();
+        this.ofc = null;
       }
     }
     AppMethodBeat.o(181608);
   }
   
-  private com.tencent.mm.plugin.editor.model.a.g cdN()
+  private com.tencent.mm.plugin.editor.model.a.g cfc()
   {
     AppMethodBeat.i(181609);
     com.tencent.mm.plugin.editor.model.a.g localg = new com.tencent.mm.plugin.editor.model.a.g();
-    Iterator localIterator = this.prX.iterator();
+    Iterator localIterator = this.pyD.iterator();
     Object localObject1 = null;
     Object localObject4;
     Object localObject5;
     Object localObject2;
     if (localIterator.hasNext())
     {
-      localObject4 = (ajn)localIterator.next();
+      localObject4 = (ajx)localIterator.next();
       localObject5 = new com.tencent.mm.plugin.editor.model.a.d();
-      ((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS = ((ajn)localObject4).GhT;
-      if (((ajn)localObject4).dataType == 1) {
-        ((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS = "-1";
+      ((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw = ((ajx)localObject4).GAC;
+      if (((ajx)localObject4).dataType == 1) {
+        ((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw = "-1";
       }
-      if (bt.isNullOrNil(((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS))
+      if (bu.isNullOrNil(((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw))
       {
-        ad.e("MicroMsg.EditorUI", "noteItemData.localEditorId is null or nil.");
+        ae.e("MicroMsg.EditorUI", "noteItemData.localEditorId is null or nil.");
         AppMethodBeat.o(181609);
         return null;
       }
-      if (((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS.equals("WeNoteHtmlFile"))
+      if (((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw.equals("WeNoteHtmlFile"))
       {
-        localObject2 = com.tencent.mm.plugin.fav.a.b.d((ajn)localObject4);
-        if ((bt.isNullOrNil((String)localObject2)) || (!com.tencent.mm.vfs.i.fv((String)localObject2))) {
+        localObject2 = com.tencent.mm.plugin.fav.a.b.d((ajx)localObject4);
+        if ((bu.isNullOrNil((String)localObject2)) || (!o.fB((String)localObject2))) {
           break label1050;
         }
       }
@@ -977,13 +995,13 @@ public class EditorUI
         {
           for (;;)
           {
-            localg.ptY = com.tencent.mm.vfs.i.aYq((String)localObject2);
-            localObject2 = b.aaQ(localg.ptY);
+            localg.pAC = o.aZT((String)localObject2);
+            localObject2 = b.abH(localg.pAC);
             localObject1 = localObject2;
             try
             {
-              ad.i("MicroMsg.EditorUI", "local html file exist, dataId: %s", new Object[] { ((ajn)localObject4).dsU });
-              ad.i("MicroMsg.EditorUI", "dealWNNoteInfo,WeNoteHtmlFile, cdnurl is null :%B, cdnkey is null : %B ", new Object[] { Boolean.valueOf(bt.isNullOrNil(((ajn)localObject4).GgR)), Boolean.valueOf(bt.isNullOrNil(((ajn)localObject4).GgT)) });
+              ae.i("MicroMsg.EditorUI", "local html file exist, dataId: %s", new Object[] { ((ajx)localObject4).dua });
+              ae.i("MicroMsg.EditorUI", "dealWNNoteInfo,WeNoteHtmlFile, cdnurl is null :%B, cdnkey is null : %B ", new Object[] { Boolean.valueOf(bu.isNullOrNil(((ajx)localObject4).GzA)), Boolean.valueOf(bu.isNullOrNil(((ajx)localObject4).GzC)) });
             }
             catch (Exception localException1) {}
           }
@@ -994,167 +1012,150 @@ public class EditorUI
           Object localObject6;
           continue;
         }
-        ad.printErrStackTrace("MicroMsg.EditorUI", localException1, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.EditorUI", localException1, "", new Object[0]);
         continue;
-        ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dsU = ((ajn)localObject4).dsU;
-        switch (((ajn)localObject4).dataType)
+        ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dua = ((ajx)localObject4).dua;
+        switch (((ajx)localObject4).dataType)
         {
         default: 
           break;
         case 1: 
-          if (bt.isNullOrNil(((ajn)localObject4).desc)) {
+          if (bu.isNullOrNil(((ajx)localObject4).desc)) {
             break;
           }
-          if ((localg.ptZ.size() > 0) && (localg.ptZ.get(localg.ptZ.size() - 1) != null) && (((com.tencent.mm.plugin.editor.model.a.d)localg.ptZ.get(localg.ptZ.size() - 1)).ptS.equals("-1")))
+          if ((localg.pAD.size() > 0) && (localg.pAD.get(localg.pAD.size() - 1) != null) && (((com.tencent.mm.plugin.editor.model.a.d)localg.pAD.get(localg.pAD.size() - 1)).pAw.equals("-1")))
           {
-            localObject3 = (com.tencent.mm.plugin.editor.model.a.e)localg.ptZ.get(localg.ptZ.size() - 1);
-            ((com.tencent.mm.plugin.editor.model.a.e)localObject3).content = ((com.tencent.mm.plugin.editor.model.a.e)localObject3).content.concat(((ajn)localObject4).desc);
+            localObject3 = (com.tencent.mm.plugin.editor.model.a.e)localg.pAD.get(localg.pAD.size() - 1);
+            ((com.tencent.mm.plugin.editor.model.a.e)localObject3).content = ((com.tencent.mm.plugin.editor.model.a.e)localObject3).content.concat(((ajx)localObject4).desc);
             break;
           }
           localObject3 = new com.tencent.mm.plugin.editor.model.a.j();
-          ((com.tencent.mm.plugin.editor.model.a.e)localObject3).ptS = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS;
-          ((com.tencent.mm.plugin.editor.model.a.e)localObject3).content = ((ajn)localObject4).desc;
-          localg.ptZ.add(localObject3);
+          ((com.tencent.mm.plugin.editor.model.a.e)localObject3).pAw = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw;
+          ((com.tencent.mm.plugin.editor.model.a.e)localObject3).content = ((ajx)localObject4).desc;
+          localg.pAD.add(localObject3);
           break;
         case 2: 
           localObject3 = new com.tencent.mm.plugin.editor.model.a.h();
-          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).ptS = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS;
+          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).pAw = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw;
           ((com.tencent.mm.plugin.editor.model.a.c)localObject3).type = 2;
-          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).dsU = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dsU;
-          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).ptR = ((ajn)localObject4);
-          localObject5 = com.tencent.mm.plugin.fav.a.b.d((ajn)localObject4);
-          if (bt.isNullOrNil((String)localObject5)) {
+          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).dua = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dua;
+          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).pAv = ((ajx)localObject4);
+          localObject5 = com.tencent.mm.plugin.fav.a.b.d((ajx)localObject4);
+          if (bu.isNullOrNil((String)localObject5)) {
             break;
           }
           localObject6 = (String)localObject5 + "_bigthumb";
-          com.tencent.mm.vfs.i.fv(com.tencent.mm.plugin.fav.a.b.a((ajn)localObject4));
-          if (com.tencent.mm.vfs.i.fv((String)localObject5))
+          o.fB(com.tencent.mm.plugin.fav.a.b.a((ajx)localObject4));
+          if (o.fB((String)localObject5))
           {
-            ((com.tencent.mm.plugin.editor.model.a.c)localObject3).ptT = true;
-            b.fp((String)localObject5, (String)localObject6);
+            ((com.tencent.mm.plugin.editor.model.a.c)localObject3).pAx = true;
+            b.ft((String)localObject5, (String)localObject6);
           }
-          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).dBx = ((String)localObject6);
-          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).ptQ = ((String)localObject5);
-          localg.ptZ.add(localObject3);
+          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).dCC = ((String)localObject6);
+          ((com.tencent.mm.plugin.editor.model.a.c)localObject3).pAu = ((String)localObject5);
+          localg.pAD.add(localObject3);
           break;
         case 3: 
           localObject3 = new m();
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).ptS = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS;
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).pAw = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw;
           ((com.tencent.mm.plugin.editor.model.a.f)localObject3).type = 4;
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dsU = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dsU;
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).ptR = ((ajn)localObject4);
-          localObject5 = com.tencent.mm.plugin.fav.a.b.d((ajn)localObject4);
-          if ((!bt.isNullOrNil((String)localObject5)) && (com.tencent.mm.vfs.i.fv((String)localObject5)))
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dua = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dua;
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).pAv = ((ajx)localObject4);
+          localObject5 = com.tencent.mm.plugin.fav.a.b.d((ajx)localObject4);
+          if ((!bu.isNullOrNil((String)localObject5)) && (o.fB((String)localObject5)))
           {
-            ((com.tencent.mm.plugin.editor.model.a.f)localObject3).ptT = true;
-            ((com.tencent.mm.plugin.editor.model.a.f)localObject3).kRE = com.tencent.mm.plugin.editor.model.a.pti;
-            ((com.tencent.mm.plugin.editor.model.a.f)localObject3).length = ((int)com.tencent.mm.plugin.editor.model.b.sv(((ajn)localObject4).duration));
+            ((com.tencent.mm.plugin.editor.model.a.f)localObject3).pAx = true;
+            ((com.tencent.mm.plugin.editor.model.a.f)localObject3).kVn = com.tencent.mm.plugin.editor.model.a.pzO;
+            ((com.tencent.mm.plugin.editor.model.a.f)localObject3).length = ((int)com.tencent.mm.plugin.editor.model.b.sI(((ajx)localObject4).duration));
           }
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dBx = ((String)localObject5);
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dCC = ((String)localObject5);
           localObject5 = getContext();
-          int i = (int)com.tencent.mm.plugin.editor.model.b.sv(((ajn)localObject4).duration);
-          localObject6 = new gw();
-          ((gw)localObject6).dsV.type = 21;
-          ((gw)localObject6).dsV.context = ((Context)localObject5);
-          ((gw)localObject6).dsV.dtd = i;
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject6);
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).ptW = ((gw)localObject6).dsW.path;
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dtd = ((ajn)localObject4).duration;
-          localObject5 = new gw();
-          ((gw)localObject5).dsV.type = 17;
-          ((gw)localObject5).dsV.dsX = ((ajn)localObject4);
-          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject5);
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dtc = ((gw)localObject5).dsW.ret;
-          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).ptU = ((ajn)localObject4).Ghg;
-          localg.ptZ.add(localObject3);
+          int i = (int)com.tencent.mm.plugin.editor.model.b.sI(((ajx)localObject4).duration);
+          localObject6 = new gx();
+          ((gx)localObject6).dub.type = 21;
+          ((gx)localObject6).dub.context = ((Context)localObject5);
+          ((gx)localObject6).dub.duj = i;
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject6);
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).pAA = ((gx)localObject6).duc.path;
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).duj = ((ajx)localObject4).duration;
+          localObject5 = new gx();
+          ((gx)localObject5).dub.type = 17;
+          ((gx)localObject5).dub.dud = ((ajx)localObject4);
+          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject5);
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).dui = ((gx)localObject5).duc.ret;
+          ((com.tencent.mm.plugin.editor.model.a.f)localObject3).pAy = ((ajx)localObject4).GzP;
+          localg.pAD.add(localObject3);
           break;
         case 4: 
           localObject3 = new l();
-          ((l)localObject3).ptS = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).ptS;
+          ((l)localObject3).pAw = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).pAw;
           ((l)localObject3).type = 6;
-          ((l)localObject3).dsU = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dsU;
-          ((l)localObject3).ptR = ((ajn)localObject4);
-          ((l)localObject3).duration = ((ajn)localObject4).duration;
-          ((l)localObject3).thumbPath = com.tencent.mm.plugin.fav.a.b.a((ajn)localObject4);
-          localObject4 = com.tencent.mm.plugin.fav.a.b.d((ajn)localObject4);
-          ((l)localObject3).dBx = ((String)localObject4);
-          if ((!bt.isNullOrNil(((l)localObject3).thumbPath)) && (!com.tencent.mm.vfs.i.fv(((l)localObject3).thumbPath)) && (com.tencent.mm.vfs.i.fv((String)localObject4)))
+          ((l)localObject3).dua = ((com.tencent.mm.plugin.editor.model.a.d)localObject5).dua;
+          ((l)localObject3).pAv = ((ajx)localObject4);
+          ((l)localObject3).duration = ((ajx)localObject4).duration;
+          ((l)localObject3).thumbPath = com.tencent.mm.plugin.fav.a.b.a((ajx)localObject4);
+          localObject4 = com.tencent.mm.plugin.fav.a.b.d((ajx)localObject4);
+          ((l)localObject3).dCC = ((String)localObject4);
+          if ((!bu.isNullOrNil(((l)localObject3).thumbPath)) && (!o.fB(((l)localObject3).thumbPath)) && (o.fB((String)localObject4)))
           {
-            localObject5 = com.tencent.mm.plugin.fav.ui.e.agH((String)localObject4);
+            localObject5 = com.tencent.mm.plugin.fav.ui.e.ahE((String)localObject4);
             if (localObject5 == null) {}
           }
           try
           {
-            ad.i("MicroMsg.EditorUI", "add fav service: create thumbPath bitmap, saveBitmapToImage ");
-            com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject5, 60, Bitmap.CompressFormat.JPEG, ((l)localObject3).thumbPath, true);
-            if ((!bt.isNullOrNil((String)localObject4)) && (com.tencent.mm.vfs.i.fv((String)localObject4))) {
-              ((l)localObject3).ptT = true;
+            ae.i("MicroMsg.EditorUI", "add fav service: create thumbPath bitmap, saveBitmapToImage ");
+            com.tencent.mm.sdk.platformtools.h.a((Bitmap)localObject5, 60, Bitmap.CompressFormat.JPEG, ((l)localObject3).thumbPath, true);
+            if ((!bu.isNullOrNil((String)localObject4)) && (o.fB((String)localObject4))) {
+              ((l)localObject3).pAx = true;
             }
-            localg.ptZ.add(localObject3);
+            localg.pAD.add(localObject3);
           }
           catch (Exception localException3)
           {
-            ad.printErrStackTrace("MicroMsg.EditorUI", localException3, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.EditorUI", localException3, "", new Object[0]);
           }
         }
       }
       if ((localObject1 != null) && (localObject1.size() > 0)) {
-        com.tencent.mm.plugin.editor.model.b.a(localg.ptZ, localObject1);
+        com.tencent.mm.plugin.editor.model.b.a(localg.pAD, localObject1);
       }
       AppMethodBeat.o(181609);
       return localg;
     }
   }
   
-  private void cdO()
+  private void cfd()
   {
     AppMethodBeat.i(181610);
-    if (bt.isNullOrNil(b.aaT(com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cer())))
+    if (bu.isNullOrNil(b.abK(com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfG())))
     {
-      if (this.prz)
+      if (this.pyf)
       {
-        this.prz = false;
+        this.pyf = false;
         enableOptionMenu(0, false);
         AppMethodBeat.o(181610);
       }
     }
-    else if (!this.prz)
+    else if (!this.pyf)
     {
-      this.prz = true;
+      this.pyf = true;
       enableOptionMenu(0, true);
     }
     AppMethodBeat.o(181610);
   }
   
-  private void cdp()
-  {
-    AppMethodBeat.i(181568);
-    try
-    {
-      this.prB.asY.notifyChanged();
-      AppMethodBeat.o(181568);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ad.printErrStackTrace("MicroMsg.EditorUI", localException, "", new Object[0]);
-      ad.i("MicroMsg.EditorUI", "onNotifyDataChanged error");
-      AppMethodBeat.o(181568);
-    }
-  }
-  
   /* Error */
-  static boolean fn(String paramString1, String paramString2)
+  static boolean fr(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 1001
-    //   3: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 991
+    //   3: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 1005	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   7: invokestatic 995	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   10: astore_0
     //   11: aload_1
     //   12: iconst_0
-    //   13: invokestatic 1009	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   13: invokestatic 999	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   16: astore_1
     //   17: aload_1
     //   18: astore 6
@@ -1168,16 +1169,16 @@ public class EditorUI
     //   33: aload_0
     //   34: astore 5
     //   36: aload_1
-    //   37: ldc_w 608
-    //   40: invokevirtual 1013	java/lang/String:getBytes	()[B
-    //   43: invokevirtual 1018	java/io/OutputStream:write	([B)V
+    //   37: ldc_w 529
+    //   40: invokevirtual 1003	java/lang/String:getBytes	()[B
+    //   43: invokevirtual 1008	java/io/OutputStream:write	([B)V
     //   46: aload_1
     //   47: astore 6
     //   49: aload_0
     //   50: astore 5
     //   52: aload_0
     //   53: aload 7
-    //   55: invokevirtual 1023	java/io/InputStream:read	([B)I
+    //   55: invokevirtual 1013	java/io/InputStream:read	([B)I
     //   58: istore_2
     //   59: iload_2
     //   60: iconst_m1
@@ -1190,31 +1191,31 @@ public class EditorUI
     //   71: aload 7
     //   73: iconst_0
     //   74: iload_2
-    //   75: invokevirtual 1026	java/io/OutputStream:write	([BII)V
+    //   75: invokevirtual 1016	java/io/OutputStream:write	([BII)V
     //   78: goto -32 -> 46
     //   81: astore 7
     //   83: aload_1
     //   84: astore 6
     //   86: aload_0
     //   87: astore 5
-    //   89: ldc 248
+    //   89: ldc 238
     //   91: aload 7
-    //   93: ldc_w 518
+    //   93: ldc_w 509
     //   96: iconst_0
-    //   97: anewarray 252	java/lang/Object
-    //   100: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   97: anewarray 242	java/lang/Object
+    //   100: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: aload_0
     //   104: ifnull +7 -> 111
     //   107: aload_0
-    //   108: invokevirtual 1027	java/io/InputStream:close	()V
+    //   108: invokevirtual 1017	java/io/InputStream:close	()V
     //   111: aload_1
     //   112: ifnull +221 -> 333
     //   115: aload_1
-    //   116: invokevirtual 1028	java/io/OutputStream:close	()V
+    //   116: invokevirtual 1018	java/io/OutputStream:close	()V
     //   119: iconst_0
     //   120: istore_3
-    //   121: ldc_w 1001
-    //   124: invokestatic 168	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: ldc_w 991
+    //   124: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: iload_3
     //   128: ireturn
     //   129: iconst_1
@@ -1224,7 +1225,7 @@ public class EditorUI
     //   134: aload_0
     //   135: ifnull +10 -> 145
     //   138: aload_0
-    //   139: invokevirtual 1027	java/io/InputStream:close	()V
+    //   139: invokevirtual 1017	java/io/InputStream:close	()V
     //   142: iload_3
     //   143: istore 4
     //   145: iload 4
@@ -1232,45 +1233,45 @@ public class EditorUI
     //   148: aload_1
     //   149: ifnull -28 -> 121
     //   152: aload_1
-    //   153: invokevirtual 1028	java/io/OutputStream:close	()V
+    //   153: invokevirtual 1018	java/io/OutputStream:close	()V
     //   156: iload 4
     //   158: istore_3
     //   159: goto -38 -> 121
     //   162: astore_0
-    //   163: ldc 248
+    //   163: ldc 238
     //   165: aload_0
-    //   166: ldc_w 518
+    //   166: ldc_w 509
     //   169: iconst_0
-    //   170: anewarray 252	java/lang/Object
-    //   173: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   170: anewarray 242	java/lang/Object
+    //   173: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   176: iconst_0
     //   177: istore_3
     //   178: goto -57 -> 121
     //   181: astore_0
-    //   182: ldc 248
+    //   182: ldc 238
     //   184: aload_0
-    //   185: ldc_w 518
+    //   185: ldc_w 509
     //   188: iconst_0
-    //   189: anewarray 252	java/lang/Object
-    //   192: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   189: anewarray 242	java/lang/Object
+    //   192: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   195: iconst_0
     //   196: istore 4
     //   198: goto -53 -> 145
     //   201: astore_0
-    //   202: ldc 248
+    //   202: ldc 238
     //   204: aload_0
-    //   205: ldc_w 518
+    //   205: ldc_w 509
     //   208: iconst_0
-    //   209: anewarray 252	java/lang/Object
-    //   212: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   209: anewarray 242	java/lang/Object
+    //   212: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   215: goto -104 -> 111
     //   218: astore_0
-    //   219: ldc 248
+    //   219: ldc 238
     //   221: aload_0
-    //   222: ldc_w 518
+    //   222: ldc_w 509
     //   225: iconst_0
-    //   226: anewarray 252	java/lang/Object
-    //   229: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   226: anewarray 242	java/lang/Object
+    //   229: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: iconst_0
     //   233: istore_3
     //   234: goto -113 -> 121
@@ -1282,30 +1283,30 @@ public class EditorUI
     //   243: aload_0
     //   244: ifnull +7 -> 251
     //   247: aload_0
-    //   248: invokevirtual 1027	java/io/InputStream:close	()V
+    //   248: invokevirtual 1017	java/io/InputStream:close	()V
     //   251: aload 6
     //   253: ifnull +8 -> 261
     //   256: aload 6
-    //   258: invokevirtual 1028	java/io/OutputStream:close	()V
-    //   261: ldc_w 1001
-    //   264: invokestatic 168	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   258: invokevirtual 1018	java/io/OutputStream:close	()V
+    //   261: ldc_w 991
+    //   264: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   267: aload_1
     //   268: athrow
     //   269: astore_0
-    //   270: ldc 248
+    //   270: ldc 238
     //   272: aload_0
-    //   273: ldc_w 518
+    //   273: ldc_w 509
     //   276: iconst_0
-    //   277: anewarray 252	java/lang/Object
-    //   280: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   277: anewarray 242	java/lang/Object
+    //   280: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   283: goto -32 -> 251
     //   286: astore_0
-    //   287: ldc 248
+    //   287: ldc 238
     //   289: aload_0
-    //   290: ldc_w 518
+    //   290: ldc_w 509
     //   293: iconst_0
-    //   294: anewarray 252	java/lang/Object
-    //   297: invokestatic 593	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   294: anewarray 242	java/lang/Object
+    //   297: invokestatic 513	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   300: goto -39 -> 261
     //   303: astore_1
     //   304: aconst_null
@@ -1364,73 +1365,73 @@ public class EditorUI
     //   11	17	326	java/lang/Exception
   }
   
-  public final void Bv(final int paramInt)
+  public final void BH(final int paramInt)
   {
     AppMethodBeat.i(181564);
-    this.jwD.postDelayed(new Runnable()
+    this.jzz.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(181545);
-        ad.i("MicroMsg.EditorUI", "huahuastart: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
+        ae.i("MicroMsg.EditorUI", "huahuastart: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
         EditorUI.g(EditorUI.this).cj(paramInt);
-        ad.i("MicroMsg.EditorUI", "huahuaend: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
+        ae.i("MicroMsg.EditorUI", "huahuaend: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(181545);
       }
     }, 0L);
     AppMethodBeat.o(181564);
   }
   
-  public final void Bw(int paramInt)
+  public final void BI(int paramInt)
   {
     AppMethodBeat.i(181565);
     try
     {
-      this.prB.ck(paramInt);
+      this.pyh.ck(paramInt);
       AppMethodBeat.o(181565);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.EditorUI", localException, "", new Object[0]);
-      ad.e("MicroMsg.EditorUI", "onNotifyItemInserted error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.printErrStackTrace("MicroMsg.EditorUI", localException, "", new Object[0]);
+      ae.e("MicroMsg.EditorUI", "onNotifyItemInserted error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(181565);
     }
   }
   
-  public final void Bx(int paramInt)
+  public final void BJ(int paramInt)
   {
     AppMethodBeat.i(181567);
     try
     {
-      this.prB.cl(paramInt);
+      this.pyh.cl(paramInt);
       AppMethodBeat.o(181567);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.EditorUI", "onNotifyItemRemoved error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
+      ae.e("MicroMsg.EditorUI", "onNotifyItemRemoved error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(181567);
     }
   }
   
-  public final void By(final int paramInt)
+  public final void BK(final int paramInt)
   {
     AppMethodBeat.i(181573);
-    if ((paramInt < 0) || (paramInt >= com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().size()))
+    if ((paramInt < 0) || (paramInt >= com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().size()))
     {
       AppMethodBeat.o(181573);
       return;
     }
-    this.jwD.post(new Runnable()
+    this.jzz.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(181518);
         RecyclerView localRecyclerView = EditorUI.h(EditorUI.this);
         com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahp(), "com/tencent/mm/plugin/editor/EditorUI$11", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        localRecyclerView.ca(((Integer)locala.mq(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahE(), "com/tencent/mm/plugin/editor/EditorUI$11", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
+        localRecyclerView.ca(((Integer)locala.mt(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, "com/tencent/mm/plugin/editor/EditorUI$11", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
         AppMethodBeat.o(181518);
       }
@@ -1438,15 +1439,15 @@ public class EditorUI
     AppMethodBeat.o(181573);
   }
   
-  public final void O(final int paramInt, long paramLong)
+  public final void N(final int paramInt, long paramLong)
   {
     AppMethodBeat.i(181579);
-    if (!this.prP)
+    if (!this.pyv)
     {
       AppMethodBeat.o(181579);
       return;
     }
-    this.jwD.postDelayed(new Runnable()
+    this.jzz.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -1461,7 +1462,7 @@ public class EditorUI
           AppMethodBeat.o(181525);
           return;
           EditorUI.k(EditorUI.this).setVisibility(8);
-          if (!EditorUI.l(EditorUI.this).pyc)
+          if (!EditorUI.l(EditorUI.this).pEG)
           {
             EditorUI.j(EditorUI.this).setVisibility(8);
             AppMethodBeat.o(181525);
@@ -1494,7 +1495,7 @@ public class EditorUI
   {
     AppMethodBeat.i(181571);
     if (paramWXRTEditText != null) {
-      if ((com.tencent.mm.plugin.editor.model.nativenote.manager.b.jfg == null) || (com.tencent.mm.plugin.editor.model.nativenote.manager.b.jfg.size() <= 0)) {
+      if ((com.tencent.mm.plugin.editor.model.nativenote.manager.b.jhZ == null) || (com.tencent.mm.plugin.editor.model.nativenote.manager.b.jhZ.size() <= 0)) {
         break label38;
       }
     }
@@ -1504,20 +1505,20 @@ public class EditorUI
       AppMethodBeat.o(181571);
       return;
     }
-    ArrayList localArrayList = com.tencent.mm.plugin.editor.model.nativenote.manager.b.cef();
-    if (com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().N(localArrayList))
+    ArrayList localArrayList = com.tencent.mm.plugin.editor.model.nativenote.manager.b.cfu();
+    if (com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().N(localArrayList))
     {
-      cds();
+      ceH();
       AppMethodBeat.o(181571);
       return;
     }
-    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().a(localArrayList, paramWXRTEditText, true, true, false, false);
+    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().a(localArrayList, paramWXRTEditText, true, true, false, false);
     i = paramWXRTEditText.getRecyclerItemPosition();
     int j = localArrayList.size();
-    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().fg(i, j + i + 1);
-    cdy();
-    if (this.prK) {
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceU();
+    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().fh(i, j + i + 1);
+    ceN();
+    if (this.pyq) {
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgj();
     }
     AppMethodBeat.o(181571);
   }
@@ -1525,17 +1526,17 @@ public class EditorUI
   public final void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(181563);
-    if (!this.prP)
+    if (!this.pyv)
     {
       AppMethodBeat.o(181563);
       return;
     }
-    ad.d("MicroMsg.EditorUI", "onFocusChanged, poi: %s, focus: %s, editor: %s.", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramWXRTEditText });
-    CollectEditorLinearLayoutManager localCollectEditorLinearLayoutManager = (CollectEditorLinearLayoutManager)this.prA.getLayoutManager();
+    ae.d("MicroMsg.EditorUI", "onFocusChanged, poi: %s, focus: %s, editor: %s.", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramWXRTEditText });
+    CollectEditorLinearLayoutManager localCollectEditorLinearLayoutManager = (CollectEditorLinearLayoutManager)this.pyg.getLayoutManager();
     if (localCollectEditorLinearLayoutManager != null)
     {
-      if (this.prN) {
-        localCollectEditorLinearLayoutManager.psm = false;
+      if (this.pyt) {
+        localCollectEditorLinearLayoutManager.pyS = false;
       }
     }
     else
@@ -1546,230 +1547,87 @@ public class EditorUI
       if ((paramWXRTEditText == null) || (paramWXRTEditText.getEditTextType() != 1)) {
         break label124;
       }
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().Y(paramInt, true);
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().aa(paramInt, true);
     }
     for (;;)
     {
-      cdO();
+      cfd();
       AppMethodBeat.o(181563);
       return;
-      localCollectEditorLinearLayoutManager.psm = paramBoolean;
+      localCollectEditorLinearLayoutManager.pyS = paramBoolean;
       break;
       label124:
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().Y(paramInt, false);
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().aa(paramInt, false);
       continue;
       label135:
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().X(-1, false);
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().Z(-1, false);
     }
   }
   
-  final void a(ajn paramajn, EditorUI.b paramb)
+  final void a(ajx paramajx, EditorUI.b paramb)
   {
     Object localObject2 = null;
     AppMethodBeat.i(181601);
     Object localObject1;
-    if (bt.isNullOrNil(paramajn.GgT))
+    if (bu.isNullOrNil(paramajx.GzC))
     {
-      com.tencent.mm.ao.f.aGJ();
-      localObject1 = com.tencent.mm.ao.a.aGz();
-      paramajn.aOk((String)localObject1);
-      ad.i("MicroMsg.EditorUI", "local not exist cdn data key, generate %s", new Object[] { localObject1 });
+      com.tencent.mm.an.f.aHa();
+      localObject1 = com.tencent.mm.an.a.aGP();
+      paramajx.aPH((String)localObject1);
+      ae.i("MicroMsg.EditorUI", "local not exist cdn data key, generate %s", new Object[] { localObject1 });
     }
-    if (EditorUI.b.psh == paramb) {
-      localObject1 = a(paramajn, 0);
+    if (EditorUI.b.pyN == paramb) {
+      localObject1 = a(paramajx, 0);
     }
     for (;;)
     {
       if (localObject1 != null)
       {
-        this.prY.put(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, localObject1);
-        this.prZ.put(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, paramajn);
+        this.pyE.put(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, localObject1);
+        this.pyF.put(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId, paramajx);
         a((com.tencent.mm.plugin.fav.a.c)localObject1);
       }
       AppMethodBeat.o(181601);
       return;
       localObject1 = localObject2;
-      if (EditorUI.b.psg == paramb) {
-        if (bt.isNullOrNil(com.tencent.mm.plugin.fav.a.b.a(paramajn)))
+      if (EditorUI.b.pyM == paramb) {
+        if (bu.isNullOrNil(com.tencent.mm.plugin.fav.a.b.a(paramajx)))
         {
-          ad.e("MicroMsg.EditorUI", "insertCdnThumbInfo, type send, path must not be null!");
+          ae.e("MicroMsg.EditorUI", "insertCdnThumbInfo, type send, path must not be null!");
           localObject1 = localObject2;
         }
         else
         {
-          paramb = com.tencent.mm.plugin.fav.a.b.agd(paramajn.dsU);
+          paramb = com.tencent.mm.plugin.fav.a.b.aha(paramajx.dua);
           localObject1 = new com.tencent.mm.plugin.fav.a.c();
-          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnKey = paramajn.GgN;
-          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnUrl = paramajn.hAe;
+          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnKey = paramajx.Gzw;
+          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnUrl = paramajx.hCS;
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId = paramb;
-          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_favLocalId = this.prW.field_localId;
-          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_totalLen = ((int)paramajn.Ghx);
+          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_favLocalId = this.pyC.field_localId;
+          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_totalLen = ((int)paramajx.GAg);
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_type = 0;
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_status = 1;
-          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_path = com.tencent.mm.plugin.fav.a.b.a(paramajn);
-          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_modifyTime = bt.flT();
+          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_path = com.tencent.mm.plugin.fav.a.b.a(paramajx);
+          ((com.tencent.mm.plugin.fav.a.c)localObject1).field_modifyTime = bu.fpO();
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_attrFlag |= 1L;
         }
       }
     }
   }
   
-  public final int cdA()
-  {
-    AppMethodBeat.i(181586);
-    int j = 0;
-    int i = j;
-    if (this.prE != null)
-    {
-      i = j;
-      if (this.prE.getVisibility() == 0) {
-        i = this.prL + 0;
-      }
-    }
-    j = i;
-    if (this.prG != null)
-    {
-      j = i;
-      if (this.prG.getVisibility() == 0) {
-        j = i + this.prL;
-      }
-    }
-    AppMethodBeat.o(181586);
-    return j;
-  }
-  
-  public final boolean cdB()
-  {
-    AppMethodBeat.i(181587);
-    if ((this.prJ != null) && (this.prJ.ceJ() != null))
-    {
-      AppMethodBeat.o(181587);
-      return true;
-    }
-    AppMethodBeat.o(181587);
-    return false;
-  }
-  
-  public final RecyclerView cdC()
-  {
-    return this.prA;
-  }
-  
-  public final RecyclerView cdD()
-  {
-    return this.prA;
-  }
-  
-  public final Context cdE()
-  {
-    AppMethodBeat.i(181588);
-    AppCompatActivity localAppCompatActivity = getContext();
-    AppMethodBeat.o(181588);
-    return localAppCompatActivity;
-  }
-  
-  public final com.tencent.mm.plugin.editor.model.nativenote.b.a cdF()
-  {
-    return this;
-  }
-  
-  public final void cdG()
-  {
-    AppMethodBeat.i(181589);
-    com.tencent.mm.plugin.editor.model.a.j localj = new com.tencent.mm.plugin.editor.model.a.j();
-    localj.content = "";
-    localj.ptF = true;
-    localj.ptL = false;
-    localj.ptH = 0;
-    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cek();
-    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e(localj);
-    cdp();
-    e(true, 50L);
-    O(1, 0L);
-    AppMethodBeat.o(181589);
-  }
-  
-  public final void cdH()
-  {
-    AppMethodBeat.i(181590);
-    com.tencent.mm.plugin.editor.model.nativenote.manager.b.c(getContext(), com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().ces());
-    AppMethodBeat.o(181590);
-  }
-  
-  public final void cdI()
-  {
-    AppMethodBeat.i(181591);
-    com.tencent.mm.plugin.editor.model.nativenote.manager.b.c(getContext(), com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().ces());
-    cdG();
-    AppMethodBeat.o(181591);
-  }
-  
-  public final void cdJ()
-  {
-    AppMethodBeat.i(181592);
-    getContext();
-    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.b.cei();
-    Object localObject;
-    if (i == 2)
-    {
-      if (com.tencent.mm.plugin.editor.model.nativenote.manager.b.ceh())
-      {
-        cds();
-        AppMethodBeat.o(181592);
-        return;
-      }
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cek();
-      com.tencent.mm.plugin.editor.model.nativenote.manager.b.clearData();
-      localObject = new com.tencent.mm.plugin.editor.model.a.j();
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).content = "";
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).ptF = false;
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).ptL = false;
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).ptH = 0;
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).ptN = true;
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject);
-      cdp();
-      AppMethodBeat.o(181592);
-      return;
-    }
-    if (i == 3)
-    {
-      localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.b.cef();
-      if (com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().N((ArrayList)localObject))
-      {
-        cds();
-        AppMethodBeat.o(181592);
-        return;
-      }
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cek();
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().a((ArrayList)localObject, null, false, false, false, false);
-      cdy();
-      AppMethodBeat.o(181592);
-      return;
-    }
-    ad.d("MicroMsg.EditorUI", "no data.");
-    AppMethodBeat.o(181592);
-  }
-  
-  public final void cdP()
-  {
-    AppMethodBeat.i(181611);
-    cdO();
-    AppMethodBeat.o(181611);
-  }
-  
-  public final void cdq()
+  public final void ceF()
   {
     AppMethodBeat.i(181570);
-    if (!this.prF.pyc)
+    if (!this.pyl.pEG)
     {
-      cdy();
+      ceN();
       final AppCompatActivity localAppCompatActivity = getContext();
-      this.jwD.postDelayed(new Runnable()
+      this.jzz.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(181546);
-          int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().size();
+          int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().size();
           int j = EditorUI.h(EditorUI.this).getChildCount();
           Object localObject;
           if (i == j)
@@ -1788,7 +1646,7 @@ public class EditorUI
                 f1 = ((View)localObject).getBottom() + f2;
               }
             }
-            if ((f1 < com.tencent.mm.compatible.util.i.eB(localAppCompatActivity)[1]) && (f1 > 0.0F))
+            if ((f1 < com.tencent.mm.compatible.util.i.eF(localAppCompatActivity)[1]) && (f1 > 0.0F))
             {
               localObject = (RelativeLayout.LayoutParams)EditorUI.b(EditorUI.this).getLayoutParams();
               ((RelativeLayout.LayoutParams)localObject).height = ((int)f1);
@@ -1806,7 +1664,7 @@ public class EditorUI
             tmp188_184[1] = 0;
             tmp188_184;
             ((com.tencent.mm.plugin.editor.model.nativenote.manager.d)localObject).mParentView.getLocationOnScreen(arrayOfInt);
-            ((com.tencent.mm.plugin.editor.model.nativenote.manager.d)localObject).puA.showAtLocation(((com.tencent.mm.plugin.editor.model.nativenote.manager.d)localObject).mParentView, 49, 0, arrayOfInt[1] + 50);
+            ((com.tencent.mm.plugin.editor.model.nativenote.manager.d)localObject).pBe.showAtLocation(((com.tencent.mm.plugin.editor.model.nativenote.manager.d)localObject).mParentView, 49, 0, arrayOfInt[1] + 50);
           }
           AppMethodBeat.o(181546);
         }
@@ -1815,10 +1673,10 @@ public class EditorUI
     AppMethodBeat.o(181570);
   }
   
-  public final void cdr()
+  public final void ceG()
   {
     AppMethodBeat.i(181574);
-    this.jwD.post(new Runnable()
+    this.jzz.post(new Runnable()
     {
       public final void run()
       {
@@ -1834,14 +1692,14 @@ public class EditorUI
     AppMethodBeat.o(181574);
   }
   
-  public final void cds()
+  public final void ceH()
   {
     AppMethodBeat.i(181575);
-    cdy();
-    if (this.prK) {
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceU();
+    ceN();
+    if (this.pyq) {
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgj();
     }
-    this.jwD.postDelayed(new Runnable()
+    this.jzz.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -1853,52 +1711,30 @@ public class EditorUI
     AppMethodBeat.o(181575);
   }
   
-  public final void cdt()
+  public final void ceI()
   {
     AppMethodBeat.i(181576);
-    com.tencent.mm.ui.base.h.a(this, getString(2131761871), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(181521);
-        paramAnonymousDialogInterface.dismiss();
-        paramAnonymousDialogInterface = EditorUI.this;
-        Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/editor/EditorUI$14", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/editor/EditorUI$14", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(181521);
-      }
-    }, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(181522);
-        paramAnonymousDialogInterface.dismiss();
-        AppMethodBeat.o(181522);
-      }
-    });
+    com.tencent.mm.ui.base.h.a(this, getString(2131761871), getString(2131761885), getString(2131760598), getString(2131755691), false, new EditorUI.5(this), new EditorUI.6(this));
     AppMethodBeat.o(181576);
   }
   
-  public final void cdu()
+  public final void ceJ()
   {
     AppMethodBeat.i(181580);
     com.tencent.mm.ui.base.h.c(getContext(), getString(2131762238), null, true);
     AppMethodBeat.o(181580);
   }
   
-  public final void cdv()
+  public final void ceK()
   {
     AppMethodBeat.i(181581);
-    if (this.prF != null) {
-      this.prF.a(null);
+    if (this.pyl != null) {
+      this.pyl.a(null);
     }
     AppMethodBeat.o(181581);
   }
   
-  public final void cdw()
+  public final void ceL()
   {
     AppMethodBeat.i(181582);
     com.tencent.mm.ui.base.h.e(this, getString(2131758035), "", getString(2131758034), getString(2131758033), new DialogInterface.OnClickListener()
@@ -1906,37 +1742,37 @@ public class EditorUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(181526);
-        com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().cfe();
+        com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgt();
         AppMethodBeat.o(181526);
       }
     }, null);
     AppMethodBeat.o(181582);
   }
   
-  public final void cdx()
+  public final void ceM()
   {
     AppMethodBeat.i(181583);
     Toast.makeText(getContext(), getString(2131761825), 0).show();
     AppMethodBeat.o(181583);
   }
   
-  public final void cdy()
+  public final void ceN()
   {
     AppMethodBeat.i(181584);
-    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().cel();
-    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().BA(i);
+    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfA();
+    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().BM(i);
     if (locala != null)
     {
-      locala.ptF = false;
-      locala.ptL = false;
-      Bv(i);
+      locala.pAj = false;
+      locala.pAp = false;
+      BH(i);
     }
-    this.jwD.post(new Runnable()
+    this.jzz.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(181528);
-        WXRTEditText localWXRTEditText = EditorUI.f(EditorUI.this).ceJ();
+        WXRTEditText localWXRTEditText = EditorUI.f(EditorUI.this).cfY();
         if (localWXRTEditText != null) {
           localWXRTEditText.clearFocus();
         }
@@ -1944,16 +1780,16 @@ public class EditorUI
       }
     });
     e(false, 0L);
-    O(0, 0L);
+    N(0, 0L);
     AppMethodBeat.o(181584);
   }
   
-  public final int cdz()
+  public final int ceO()
   {
     AppMethodBeat.i(181585);
-    if (this.prO)
+    if (this.pyu)
     {
-      int i = com.tencent.mm.compatible.util.i.iF(this);
+      int i = com.tencent.mm.compatible.util.i.iK(this);
       AppMethodBeat.o(181585);
       return i;
     }
@@ -1961,15 +1797,158 @@ public class EditorUI
     return 0;
   }
   
+  public final int ceP()
+  {
+    AppMethodBeat.i(181586);
+    int j = 0;
+    int i = j;
+    if (this.pyk != null)
+    {
+      i = j;
+      if (this.pyk.getVisibility() == 0) {
+        i = this.pyr + 0;
+      }
+    }
+    j = i;
+    if (this.pym != null)
+    {
+      j = i;
+      if (this.pym.getVisibility() == 0) {
+        j = i + this.pyr;
+      }
+    }
+    AppMethodBeat.o(181586);
+    return j;
+  }
+  
+  public final boolean ceQ()
+  {
+    AppMethodBeat.i(181587);
+    if ((this.pyp != null) && (this.pyp.cfY() != null))
+    {
+      AppMethodBeat.o(181587);
+      return true;
+    }
+    AppMethodBeat.o(181587);
+    return false;
+  }
+  
+  public final RecyclerView ceR()
+  {
+    return this.pyg;
+  }
+  
+  public final RecyclerView ceS()
+  {
+    return this.pyg;
+  }
+  
+  public final Context ceT()
+  {
+    AppMethodBeat.i(181588);
+    AppCompatActivity localAppCompatActivity = getContext();
+    AppMethodBeat.o(181588);
+    return localAppCompatActivity;
+  }
+  
+  public final com.tencent.mm.plugin.editor.model.nativenote.b.a ceU()
+  {
+    return this;
+  }
+  
+  public final void ceV()
+  {
+    AppMethodBeat.i(181589);
+    com.tencent.mm.plugin.editor.model.a.j localj = new com.tencent.mm.plugin.editor.model.a.j();
+    localj.content = "";
+    localj.pAj = true;
+    localj.pAp = false;
+    localj.pAl = 0;
+    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfz();
+    com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e(localj);
+    ceE();
+    e(true, 50L);
+    N(1, 0L);
+    AppMethodBeat.o(181589);
+  }
+  
+  public final void ceW()
+  {
+    AppMethodBeat.i(181590);
+    com.tencent.mm.plugin.editor.model.nativenote.manager.b.c(getContext(), com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfH());
+    AppMethodBeat.o(181590);
+  }
+  
+  public final void ceX()
+  {
+    AppMethodBeat.i(181591);
+    com.tencent.mm.plugin.editor.model.nativenote.manager.b.c(getContext(), com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfH());
+    ceV();
+    AppMethodBeat.o(181591);
+  }
+  
+  public final void ceY()
+  {
+    AppMethodBeat.i(181592);
+    getContext();
+    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.b.cfx();
+    Object localObject;
+    if (i == 2)
+    {
+      if (com.tencent.mm.plugin.editor.model.nativenote.manager.b.cfw())
+      {
+        ceH();
+        AppMethodBeat.o(181592);
+        return;
+      }
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfz();
+      com.tencent.mm.plugin.editor.model.nativenote.manager.b.clearData();
+      localObject = new com.tencent.mm.plugin.editor.model.a.j();
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).content = "";
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).pAj = false;
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).pAp = false;
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).pAl = 0;
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).pAr = true;
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject);
+      ceE();
+      AppMethodBeat.o(181592);
+      return;
+    }
+    if (i == 3)
+    {
+      localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.b.cfu();
+      if (com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().N((ArrayList)localObject))
+      {
+        ceH();
+        AppMethodBeat.o(181592);
+        return;
+      }
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().cfz();
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().a((ArrayList)localObject, null, false, false, false, false);
+      ceN();
+      AppMethodBeat.o(181592);
+      return;
+    }
+    ae.d("MicroMsg.EditorUI", "no data.");
+    AppMethodBeat.o(181592);
+  }
+  
+  public final void cfe()
+  {
+    AppMethodBeat.i(181611);
+    cfd();
+    AppMethodBeat.o(181611);
+  }
+  
   public final void e(final boolean paramBoolean, long paramLong)
   {
     AppMethodBeat.i(181578);
-    if (!this.prP)
+    if (!this.pyv)
     {
       AppMethodBeat.o(181578);
       return;
     }
-    this.jwD.postDelayed(new Runnable()
+    this.jzz.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -1989,46 +1968,46 @@ public class EditorUI
     AppMethodBeat.o(181578);
   }
   
-  public final void fc(int paramInt1, int paramInt2)
+  public final void fd(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181566);
     try
     {
-      this.prB.ar(paramInt1, paramInt2);
+      this.pyh.ar(paramInt1, paramInt2);
       AppMethodBeat.o(181566);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.EditorUI", localException, "", new Object[0]);
-      ad.e("MicroMsg.EditorUI", "onNotifyItemRangeInserted error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ae.printErrStackTrace("MicroMsg.EditorUI", localException, "", new Object[0]);
+      ae.e("MicroMsg.EditorUI", "onNotifyItemRangeInserted error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(181566);
-    }
-  }
-  
-  public final void fd(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(181569);
-    try
-    {
-      this.prB.ap(paramInt1, paramInt2);
-      AppMethodBeat.o(181569);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ad.e("MicroMsg.EditorUI", "onNotifyItemRangeChanged error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(181569);
     }
   }
   
   public final void fe(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(181569);
+    try
+    {
+      this.pyh.ap(paramInt1, paramInt2);
+      AppMethodBeat.o(181569);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ae.e("MicroMsg.EditorUI", "onNotifyItemRangeChanged error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(181569);
+    }
+  }
+  
+  public final void ff(int paramInt1, int paramInt2)
+  {
     AppMethodBeat.i(181572);
     if (Math.abs(paramInt2 - paramInt1) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.prN = bool;
+      this.pyt = bool;
       AppMethodBeat.o(181572);
       return;
     }
@@ -2042,20 +2021,12 @@ public class EditorUI
   public final void goBack()
   {
     AppMethodBeat.i(181599);
-    if (!cdK())
+    if (!ceZ())
     {
       AppMethodBeat.o(181599);
       return;
     }
-    com.tencent.mm.ui.base.h.a(this, getString(2131756769), "", getString(2131755939), getString(2131755831), true, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(181535);
-        EditorUI.this.finish();
-        AppMethodBeat.o(181535);
-      }
-    }, null);
+    com.tencent.mm.ui.base.h.a(this, getString(2131756769), "", getString(2131755939), getString(2131755831), true, new EditorUI.17(this), null);
     AppMethodBeat.o(181599);
   }
   
@@ -2065,39 +2036,30 @@ public class EditorUI
     super.initView();
     setActionbarColor(getContext().getResources().getColor(2131101179));
     setMMTitle("");
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(181527);
-        EditorUI.this.goBack();
-        AppMethodBeat.o(181527);
-        return true;
-      }
-    });
+    setBackBtn(new EditorUI.11(this));
     addTextOptionMenu(0, getString(2131755880), new MenuItem.OnMenuItemClickListener()
     {
       /* Error */
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      public final boolean onMenuItemClick(android.view.MenuItem paramAnonymousMenuItem)
       {
         // Byte code:
         //   0: ldc 25
         //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: ldc 33
         //   7: ldc 35
-        //   9: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   9: invokestatic 40	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   12: aload_0
-        //   13: getfield 14	com/tencent/mm/plugin/editor/EditorUI$21:psa	Lcom/tencent/mm/plugin/editor/EditorUI;
+        //   13: getfield 14	com/tencent/mm/plugin/editor/EditorUI$21:pyG	Lcom/tencent/mm/plugin/editor/EditorUI;
         //   16: astore 6
         //   18: aload 6
-        //   20: getfield 44	com/tencent/mm/plugin/editor/EditorUI:prF	Lcom/tencent/mm/plugin/editor/widget/a;
+        //   20: getfield 44	com/tencent/mm/plugin/editor/EditorUI:pyl	Lcom/tencent/mm/plugin/editor/widget/a;
         //   23: aload 6
         //   25: invokevirtual 50	com/tencent/mm/plugin/editor/widget/a:a	(Lcom/tencent/mm/plugin/editor/model/nativenote/b/a;)V
-        //   28: invokestatic 56	com/tencent/mm/plugin/editor/model/nativenote/manager/c:cej	()Lcom/tencent/mm/plugin/editor/model/nativenote/manager/c;
-        //   31: invokevirtual 60	com/tencent/mm/plugin/editor/model/nativenote/manager/c:cer	()Ljava/lang/String;
+        //   28: invokestatic 56	com/tencent/mm/plugin/editor/model/nativenote/manager/c:cfy	()Lcom/tencent/mm/plugin/editor/model/nativenote/manager/c;
+        //   31: invokevirtual 60	com/tencent/mm/plugin/editor/model/nativenote/manager/c:cfG	()Ljava/lang/String;
         //   34: astore_1
         //   35: aload_1
-        //   36: invokestatic 64	com/tencent/mm/plugin/editor/EditorUI:aaJ	(Ljava/lang/String;)Z
+        //   36: invokestatic 64	com/tencent/mm/plugin/editor/EditorUI:abA	(Ljava/lang/String;)Z
         //   39: ifne +64 -> 103
         //   42: aload 6
         //   44: invokevirtual 68	com/tencent/mm/plugin/editor/EditorUI:getContext	()Landroid/support/v7/app/AppCompatActivity;
@@ -2117,91 +2079,91 @@ public class EditorUI
         //   73: aload 6
         //   75: invokespecial 78	com/tencent/mm/plugin/editor/EditorUI$18:<init>	(Lcom/tencent/mm/plugin/editor/EditorUI;)V
         //   78: invokestatic 84	com/tencent/mm/ui/base/h:b	(Landroid/content/Context;Ljava/lang/String;ZLandroid/content/DialogInterface$OnCancelListener;)Lcom/tencent/mm/ui/base/p;
-        //   81: putfield 88	com/tencent/mm/plugin/editor/EditorUI:nZt	Landroid/app/ProgressDialog;
-        //   84: invokestatic 56	com/tencent/mm/plugin/editor/model/nativenote/manager/c:cej	()Lcom/tencent/mm/plugin/editor/model/nativenote/manager/c;
+        //   81: putfield 88	com/tencent/mm/plugin/editor/EditorUI:ofc	Landroid/app/ProgressDialog;
+        //   84: invokestatic 56	com/tencent/mm/plugin/editor/model/nativenote/manager/c:cfy	()Lcom/tencent/mm/plugin/editor/model/nativenote/manager/c;
         //   87: aload_1
-        //   88: invokevirtual 92	com/tencent/mm/plugin/editor/model/nativenote/manager/c:aaX	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/akd;
+        //   88: invokevirtual 92	com/tencent/mm/plugin/editor/model/nativenote/manager/c:abO	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/akn;
         //   91: astore_1
         //   92: aload_1
         //   93: ifnonnull +17 -> 110
         //   96: ldc 33
         //   98: ldc 94
-        //   100: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   100: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   103: ldc 25
         //   105: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   108: iconst_1
         //   109: ireturn
         //   110: aload 6
-        //   112: getfield 104	com/tencent/mm/plugin/editor/EditorUI:prX	Ljava/util/LinkedList;
+        //   112: getfield 104	com/tencent/mm/plugin/editor/EditorUI:pyD	Ljava/util/LinkedList;
         //   115: invokevirtual 109	java/util/LinkedList:clear	()V
         //   118: aload 6
-        //   120: getfield 104	com/tencent/mm/plugin/editor/EditorUI:prX	Ljava/util/LinkedList;
+        //   120: getfield 104	com/tencent/mm/plugin/editor/EditorUI:pyD	Ljava/util/LinkedList;
         //   123: aload_1
-        //   124: getfield 114	com/tencent/mm/protocal/protobuf/akd:nZa	Ljava/util/LinkedList;
+        //   124: getfield 114	com/tencent/mm/protocal/protobuf/akn:oeJ	Ljava/util/LinkedList;
         //   127: invokevirtual 118	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
         //   130: pop
         //   131: aload 6
         //   133: aload 6
-        //   135: getfield 104	com/tencent/mm/plugin/editor/EditorUI:prX	Ljava/util/LinkedList;
+        //   135: getfield 104	com/tencent/mm/plugin/editor/EditorUI:pyD	Ljava/util/LinkedList;
         //   138: invokestatic 124	java/lang/System:currentTimeMillis	()J
         //   141: invokestatic 129	com/tencent/mm/plugin/fav/ui/k:a	(Ljava/util/LinkedList;J)Lcom/tencent/mm/plugin/fav/a/g;
-        //   144: putfield 133	com/tencent/mm/plugin/editor/EditorUI:prW	Lcom/tencent/mm/plugin/fav/a/g;
+        //   144: putfield 133	com/tencent/mm/plugin/editor/EditorUI:pyC	Lcom/tencent/mm/plugin/fav/a/g;
         //   147: iconst_0
         //   148: istore_2
         //   149: iload_2
         //   150: aload 6
-        //   152: getfield 104	com/tencent/mm/plugin/editor/EditorUI:prX	Ljava/util/LinkedList;
+        //   152: getfield 104	com/tencent/mm/plugin/editor/EditorUI:pyD	Ljava/util/LinkedList;
         //   155: invokevirtual 137	java/util/LinkedList:size	()I
         //   158: if_icmpge -55 -> 103
         //   161: aload 6
-        //   163: getfield 104	com/tencent/mm/plugin/editor/EditorUI:prX	Ljava/util/LinkedList;
+        //   163: getfield 104	com/tencent/mm/plugin/editor/EditorUI:pyD	Ljava/util/LinkedList;
         //   166: iload_2
         //   167: invokevirtual 141	java/util/LinkedList:get	(I)Ljava/lang/Object;
-        //   170: checkcast 143	com/tencent/mm/protocal/protobuf/ajn
+        //   170: checkcast 143	com/tencent/mm/protocal/protobuf/ajx
         //   173: astore 7
         //   175: aload 7
-        //   177: getfield 147	com/tencent/mm/protocal/protobuf/ajn:dsU	Ljava/lang/String;
-        //   180: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+        //   177: getfield 147	com/tencent/mm/protocal/protobuf/ajx:dua	Ljava/lang/String;
+        //   180: invokestatic 152	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
         //   183: ifeq +25 -> 208
         //   186: aload 7
         //   188: aload 7
         //   190: invokevirtual 155	java/lang/Object:toString	()Ljava/lang/String;
         //   193: aload 6
-        //   195: getfield 133	com/tencent/mm/plugin/editor/EditorUI:prW	Lcom/tencent/mm/plugin/fav/a/g;
+        //   195: getfield 133	com/tencent/mm/plugin/editor/EditorUI:pyC	Lcom/tencent/mm/plugin/fav/a/g;
         //   198: getfield 161	com/tencent/mm/plugin/fav/a/g:field_type	I
-        //   201: invokestatic 167	com/tencent/mm/plugin/fav/a/b:di	(Ljava/lang/String;I)Ljava/lang/String;
-        //   204: invokevirtual 171	com/tencent/mm/protocal/protobuf/ajn:aOs	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   201: invokestatic 167	com/tencent/mm/plugin/fav/a/b:dm	(Ljava/lang/String;I)Ljava/lang/String;
+        //   204: invokevirtual 171	com/tencent/mm/protocal/protobuf/ajx:aPP	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   207: pop
         //   208: aload 7
-        //   210: getfield 174	com/tencent/mm/protocal/protobuf/ajn:Ghp	Ljava/lang/String;
+        //   210: getfield 174	com/tencent/mm/protocal/protobuf/ajx:GzY	Ljava/lang/String;
         //   213: astore_1
         //   214: aload_1
-        //   215: invokestatic 179	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+        //   215: invokestatic 179	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
         //   218: ifeq +236 -> 454
         //   221: aload_1
         //   222: invokestatic 185	com/tencent/mm/b/g:getMD5	(Ljava/lang/String;)Ljava/lang/String;
         //   225: astore 5
         //   227: aload_1
-        //   228: invokestatic 188	com/tencent/mm/b/g:ep	(Ljava/lang/String;)Ljava/lang/String;
+        //   228: invokestatic 188	com/tencent/mm/b/g:eu	(Ljava/lang/String;)Ljava/lang/String;
         //   231: astore 8
         //   233: aload 7
         //   235: aload 5
-        //   237: invokevirtual 191	com/tencent/mm/protocal/protobuf/ajn:aOq	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   237: invokevirtual 191	com/tencent/mm/protocal/protobuf/ajx:aPN	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   240: pop
         //   241: aload 7
         //   243: aload 8
-        //   245: invokevirtual 194	com/tencent/mm/protocal/protobuf/ajn:aOr	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   245: invokevirtual 194	com/tencent/mm/protocal/protobuf/ajx:aPO	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   248: pop
         //   249: aload 7
-        //   251: new 196	com/tencent/mm/vfs/e
+        //   251: new 196	com/tencent/mm/vfs/k
         //   254: dup
         //   255: aload_1
-        //   256: invokespecial 199	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-        //   259: invokevirtual 202	com/tencent/mm/vfs/e:length	()J
-        //   262: invokevirtual 206	com/tencent/mm/protocal/protobuf/ajn:CG	(J)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   256: invokespecial 199	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+        //   259: invokevirtual 202	com/tencent/mm/vfs/k:length	()J
+        //   262: invokevirtual 206	com/tencent/mm/protocal/protobuf/ajx:De	(J)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   265: pop
         //   266: aload 7
-        //   268: invokestatic 210	com/tencent/mm/plugin/fav/a/b:d	(Lcom/tencent/mm/protocal/protobuf/ajn;)Ljava/lang/String;
+        //   268: invokestatic 210	com/tencent/mm/plugin/fav/a/b:d	(Lcom/tencent/mm/protocal/protobuf/ajx;)Ljava/lang/String;
         //   271: astore 5
         //   273: aload_1
         //   274: aload 5
@@ -2209,34 +2171,34 @@ public class EditorUI
         //   279: ifne +10 -> 289
         //   282: aload_1
         //   283: aload 5
-        //   285: invokestatic 220	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
+        //   285: invokestatic 220	com/tencent/mm/vfs/o:mF	(Ljava/lang/String;Ljava/lang/String;)J
         //   288: pop2
         //   289: aload 6
         //   291: aload 7
-        //   293: getstatic 226	com/tencent/mm/plugin/editor/EditorUI$b:psh	Lcom/tencent/mm/plugin/editor/EditorUI$b;
-        //   296: invokevirtual 229	com/tencent/mm/plugin/editor/EditorUI:a	(Lcom/tencent/mm/protocal/protobuf/ajn;Lcom/tencent/mm/plugin/editor/EditorUI$b;)V
+        //   293: getstatic 226	com/tencent/mm/plugin/editor/EditorUI$b:pyN	Lcom/tencent/mm/plugin/editor/EditorUI$b;
+        //   296: invokevirtual 229	com/tencent/mm/plugin/editor/EditorUI:a	(Lcom/tencent/mm/protocal/protobuf/ajx;Lcom/tencent/mm/plugin/editor/EditorUI$b;)V
         //   299: aload 7
-        //   301: getfield 232	com/tencent/mm/protocal/protobuf/ajn:Ghr	Ljava/lang/String;
+        //   301: getfield 232	com/tencent/mm/protocal/protobuf/ajx:GAa	Ljava/lang/String;
         //   304: astore 8
         //   306: aload 8
-        //   308: invokestatic 179	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+        //   308: invokestatic 179	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
         //   311: ifeq +224 -> 535
         //   314: aconst_null
         //   315: astore_1
         //   316: aload 8
-        //   318: invokestatic 236	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+        //   318: invokestatic 236	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
         //   321: astore 5
         //   323: aload 5
         //   325: astore_1
         //   326: aload 5
         //   328: sipush 4096
         //   331: invokestatic 239	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-        //   334: invokestatic 242	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+        //   334: invokestatic 242	com/tencent/mm/sdk/platformtools/bu:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
         //   337: astore 9
         //   339: aload 5
         //   341: astore_1
         //   342: aload 8
-        //   344: invokestatic 246	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
+        //   344: invokestatic 246	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
         //   347: lstore_3
         //   348: aload 5
         //   350: astore_1
@@ -2247,24 +2209,24 @@ public class EditorUI
         //   360: astore_1
         //   361: aload 7
         //   363: aload 9
-        //   365: invokevirtual 253	com/tencent/mm/protocal/protobuf/ajn:aOv	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   365: invokevirtual 253	com/tencent/mm/protocal/protobuf/ajx:aPS	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   368: pop
         //   369: aload 5
         //   371: astore_1
         //   372: aload 7
         //   374: aload 10
-        //   376: invokevirtual 256	com/tencent/mm/protocal/protobuf/ajn:aOw	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   376: invokevirtual 256	com/tencent/mm/protocal/protobuf/ajx:aPT	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   379: pop
         //   380: aload 5
         //   382: astore_1
         //   383: aload 7
         //   385: lload_3
-        //   386: invokevirtual 259	com/tencent/mm/protocal/protobuf/ajn:CH	(J)Lcom/tencent/mm/protocal/protobuf/ajn;
+        //   386: invokevirtual 259	com/tencent/mm/protocal/protobuf/ajx:Df	(J)Lcom/tencent/mm/protocal/protobuf/ajx;
         //   389: pop
         //   390: aload 5
         //   392: astore_1
         //   393: aload 7
-        //   395: invokestatic 261	com/tencent/mm/plugin/fav/a/b:a	(Lcom/tencent/mm/protocal/protobuf/ajn;)Ljava/lang/String;
+        //   395: invokestatic 261	com/tencent/mm/plugin/fav/a/b:a	(Lcom/tencent/mm/protocal/protobuf/ajx;)Ljava/lang/String;
         //   398: astore 9
         //   400: aload 5
         //   402: astore_1
@@ -2276,14 +2238,14 @@ public class EditorUI
         //   415: astore_1
         //   416: aload 8
         //   418: aload 9
-        //   420: invokestatic 220	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
+        //   420: invokestatic 220	com/tencent/mm/vfs/o:mF	(Ljava/lang/String;Ljava/lang/String;)J
         //   423: pop2
         //   424: aload 5
         //   426: astore_1
         //   427: aload 6
         //   429: aload 7
-        //   431: getstatic 264	com/tencent/mm/plugin/editor/EditorUI$b:psg	Lcom/tencent/mm/plugin/editor/EditorUI$b;
-        //   434: invokevirtual 229	com/tencent/mm/plugin/editor/EditorUI:a	(Lcom/tencent/mm/protocal/protobuf/ajn;Lcom/tencent/mm/plugin/editor/EditorUI$b;)V
+        //   431: getstatic 264	com/tencent/mm/plugin/editor/EditorUI$b:pyM	Lcom/tencent/mm/plugin/editor/EditorUI$b;
+        //   434: invokevirtual 229	com/tencent/mm/plugin/editor/EditorUI:a	(Lcom/tencent/mm/protocal/protobuf/ajx;Lcom/tencent/mm/plugin/editor/EditorUI$b;)V
         //   437: aload 5
         //   439: ifnull +8 -> 447
         //   442: aload 5
@@ -2300,21 +2262,21 @@ public class EditorUI
         //   463: dup
         //   464: iconst_0
         //   465: aload 7
-        //   467: getfield 274	com/tencent/mm/protocal/protobuf/ajn:dataType	I
+        //   467: getfield 274	com/tencent/mm/protocal/protobuf/ajx:dataType	I
         //   470: invokestatic 280	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   473: aastore
         //   474: dup
         //   475: iconst_1
         //   476: aload_1
         //   477: aastore
-        //   478: invokestatic 283	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   478: invokestatic 283	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   481: goto -182 -> 299
         //   484: astore_1
         //   485: aconst_null
         //   486: astore_1
         //   487: ldc 33
         //   489: ldc_w 285
-        //   492: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   492: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   495: aload_1
         //   496: ifnull -49 -> 447
         //   499: aload_1
@@ -2343,7 +2305,7 @@ public class EditorUI
         //   545: iconst_0
         //   546: aload 8
         //   548: aastore
-        //   549: invokestatic 283	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   549: invokestatic 283	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   552: goto -105 -> 447
         //   555: astore_1
         //   556: goto -109 -> 447
@@ -2362,7 +2324,7 @@ public class EditorUI
         // Local variable table:
         //   start	length	slot	name	signature
         //   0	582	0	this	21
-        //   0	582	1	paramAnonymousMenuItem	MenuItem
+        //   0	582	1	paramAnonymousMenuItem	android.view.MenuItem
         //   148	303	2	i	int
         //   347	39	3	l	long
         //   47	396	5	localObject1	Object
@@ -2370,7 +2332,7 @@ public class EditorUI
         //   559	1	5	localException	Exception
         //   564	13	5	localObject3	Object
         //   16	552	6	localObject4	Object
-        //   173	293	7	localajn	ajn
+        //   173	293	7	localajx	ajx
         //   231	316	8	str1	String
         //   337	82	9	str2	String
         //   356	19	10	str3	String
@@ -2403,88 +2365,88 @@ public class EditorUI
         //   416	424	575	java/io/FileNotFoundException
         //   427	437	575	java/io/FileNotFoundException
       }
-    }, null, s.b.JbS);
-    enableOptionMenu(0, this.prz);
+    }, null, s.b.JwA);
+    enableOptionMenu(0, this.pyf);
     getContentView().getRootView().setBackgroundColor(getContext().getResources().getColor(2131101179));
-    this.prJ = new com.tencent.mm.plugin.editor.model.nativenote.manager.j(this);
-    this.prJ.pvV = this.prP;
-    this.prA = ((RecyclerView)findViewById(2131298448));
-    this.prE = ((LinearLayout)findViewById(2131298447));
-    this.prF = new com.tencent.mm.plugin.editor.widget.a();
-    Object localObject = this.prF;
-    LinearLayout localLinearLayout = this.prE;
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).oaY = localLinearLayout;
-    com.tencent.mm.plugin.editor.model.nativenote.manager.j.ceK().pvU = ((com.tencent.mm.plugin.editor.model.nativenote.b.b)localObject);
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxS = ((WeImageButton)localLinearLayout.findViewById(2131300627));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxT = ((WeImageButton)localLinearLayout.findViewById(2131300631));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxU = ((WeImageButton)localLinearLayout.findViewById(2131300630));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxV = ((WeImageButton)localLinearLayout.findViewById(2131300632));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxW = ((LinearLayout)localLinearLayout.findViewById(2131300633));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxX = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pxW.findViewById(2131307015));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxY = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pxW.findViewById(2131307013));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxZ = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pxW.findViewById(2131307014));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pya = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pxW.findViewById(2131302459));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pyb = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pxW.findViewById(2131307008));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxS.setOnClickListener(new a.1((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxT.setOnClickListener(new a.5((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pyi = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyu, true);
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxU.setOnClickListener(new a.6((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxV.setOnClickListener(new a.7((com.tencent.mm.plugin.editor.widget.a)localObject, this, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxX.setOnClickListener(new a.8((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxY.setOnClickListener(new a.9((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pxZ.setOnClickListener(new a.10((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pya.setOnClickListener(new a.11((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    ((com.tencent.mm.plugin.editor.widget.a)localObject).pyb.setOnClickListener(new a.12((com.tencent.mm.plugin.editor.widget.a)localObject, this));
-    this.prG = ((LinearLayout)this.prE.findViewById(2131300633));
-    this.prG.setVisibility(8);
-    this.prH = ((RelativeLayout)findViewById(2131306975));
-    this.prH.setOnClickListener(new View.OnClickListener()
+    this.pyp = new com.tencent.mm.plugin.editor.model.nativenote.manager.j(this);
+    this.pyp.pCz = this.pyv;
+    this.pyg = ((RecyclerView)findViewById(2131298448));
+    this.pyk = ((LinearLayout)findViewById(2131298447));
+    this.pyl = new com.tencent.mm.plugin.editor.widget.a();
+    Object localObject = this.pyl;
+    LinearLayout localLinearLayout = this.pyk;
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).ogP = localLinearLayout;
+    com.tencent.mm.plugin.editor.model.nativenote.manager.j.cfZ().pCy = ((com.tencent.mm.plugin.editor.model.nativenote.b.b)localObject);
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEw = ((WeImageButton)localLinearLayout.findViewById(2131300627));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEx = ((WeImageButton)localLinearLayout.findViewById(2131300631));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEy = ((WeImageButton)localLinearLayout.findViewById(2131300630));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEz = ((WeImageButton)localLinearLayout.findViewById(2131300632));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEA = ((LinearLayout)localLinearLayout.findViewById(2131300633));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEB = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pEA.findViewById(2131307015));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEC = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pEA.findViewById(2131307013));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pED = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pEA.findViewById(2131307014));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEE = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pEA.findViewById(2131302459));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEF = ((LinearLayout)((com.tencent.mm.plugin.editor.widget.a)localObject).pEA.findViewById(2131307008));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEw.setOnClickListener(new a.1((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEx.setOnClickListener(new a.5((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEM = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFA, true);
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEy.setOnClickListener(new a.6((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEz.setOnClickListener(new a.7((com.tencent.mm.plugin.editor.widget.a)localObject, this, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEB.setOnClickListener(new a.8((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEC.setOnClickListener(new a.9((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pED.setOnClickListener(new a.10((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEE.setOnClickListener(new a.11((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    ((com.tencent.mm.plugin.editor.widget.a)localObject).pEF.setOnClickListener(new a.12((com.tencent.mm.plugin.editor.widget.a)localObject, this));
+    this.pym = ((LinearLayout)this.pyk.findViewById(2131300633));
+    this.pym.setVisibility(8);
+    this.pyn = ((RelativeLayout)findViewById(2131306975));
+    this.pyn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181517);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (EditorUI.a(EditorUI.this) != null) {
-          EditorUI.a(EditorUI.this).puA.dismiss();
+          EditorUI.a(EditorUI.this).pBe.dismiss();
         }
         EditorUI.b(EditorUI.this).setVisibility(8);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/EditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181517);
       }
     });
-    this.prI = new com.tencent.mm.plugin.editor.model.nativenote.manager.d(this, this.prH);
-    this.prI.puB = this;
-    this.prC = new CollectEditorLinearLayoutManager();
-    this.prC.psl = com.tencent.mm.compatible.util.i.eB(this)[1];
-    this.prA.setLayoutManager(this.prC);
-    this.prA.setHasFixedSize(true);
-    this.prD = new a();
-    this.prA.a(this.prD);
-    this.prB = new com.tencent.mm.plugin.editor.adapter.b(this.prJ);
-    this.prA.setAdapter(this.prB);
-    if (this.prP)
+    this.pyo = new com.tencent.mm.plugin.editor.model.nativenote.manager.d(this, this.pyn);
+    this.pyo.pBf = this;
+    this.pyi = new CollectEditorLinearLayoutManager();
+    this.pyi.pyR = com.tencent.mm.compatible.util.i.eF(this)[1];
+    this.pyg.setLayoutManager(this.pyi);
+    this.pyg.setHasFixedSize(true);
+    this.pyj = new a();
+    this.pyg.a(this.pyj);
+    this.pyh = new com.tencent.mm.plugin.editor.adapter.b(this.pyp);
+    this.pyg.setAdapter(this.pyh);
+    if (this.pyv)
     {
       localObject = new com.tencent.mm.plugin.editor.model.a.j();
       ((com.tencent.mm.plugin.editor.model.a.j)localObject).content = "";
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).ptF = true;
-      ((com.tencent.mm.plugin.editor.model.a.j)localObject).ptL = false;
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().e((com.tencent.mm.plugin.editor.model.a.a)localObject);
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).pAj = true;
+      ((com.tencent.mm.plugin.editor.model.a.j)localObject).pAp = false;
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().e((com.tencent.mm.plugin.editor.model.a.a)localObject);
       e(true, 300L);
-      O(1, 0L);
-      this.prA.setOnTouchListener(this.prV);
+      N(1, 0L);
+      this.pyg.setOnTouchListener(this.pyB);
     }
     for (;;)
     {
-      this.prA.getItemAnimator().atc = 0L;
-      this.prA.getItemAnimator().atf = 0L;
-      this.prA.getItemAnimator().ate = 0L;
-      this.prA.getItemAnimator().atd = 120L;
-      ((as)this.prA.getItemAnimator()).awK = false;
+      this.pyg.getItemAnimator().atc = 0L;
+      this.pyg.getItemAnimator().atf = 0L;
+      this.pyg.getItemAnimator().ate = 0L;
+      this.pyg.getItemAnimator().atd = 120L;
+      ((as)this.pyg.getItemAnimator()).awK = false;
       AppMethodBeat.o(181556);
       return;
-      this.prE.setVisibility(8);
+      this.pyk.setVisibility(8);
     }
   }
   
@@ -2492,15 +2454,15 @@ public class EditorUI
   {
     AppMethodBeat.i(181559);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.EditorUI", "onActivityResult reqCode: %d, retCod: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.prS = paramInt1;
+    ae.i("MicroMsg.EditorUI", "onActivityResult reqCode: %d, retCod: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.pyy = paramInt1;
     if (paramInt2 != -1)
     {
-      this.prR = false;
+      this.pyx = false;
       AppMethodBeat.o(181559);
       return;
     }
-    this.prR = true;
+    this.pyx = true;
     switch (paramInt1)
     {
     }
@@ -2508,7 +2470,7 @@ public class EditorUI
     {
       AppMethodBeat.o(181559);
       return;
-      ad.i("MicroMsg.EditorUI", "onActivityResult back from gallery");
+      ae.i("MicroMsg.EditorUI", "onActivityResult back from gallery");
       Object localObject = paramIntent.getStringArrayListExtra("CropImage_OutputPath_List");
       if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
         L((ArrayList)localObject);
@@ -2518,7 +2480,7 @@ public class EditorUI
         localObject = paramIntent.getStringArrayListExtra("key_select_video_list");
         String str = paramIntent.getStringExtra("K_SEGMENTVIDEOPATH");
         paramIntent = (Intent)localObject;
-        if (!bt.isNullOrNil(str))
+        if (!bu.isNullOrNil(str))
         {
           paramIntent = (Intent)localObject;
           if (localObject == null)
@@ -2530,33 +2492,33 @@ public class EditorUI
         if ((paramIntent == null) || (paramIntent.size() <= 0)) {
           break label253;
         }
-        if (!com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej().ff(0, paramIntent.size())) {
+        if (!com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy().fg(0, paramIntent.size())) {
           break;
         }
-        cds();
+        ceH();
         AppMethodBeat.o(181559);
         return;
-        ad.i("MicroMsg.EditorUI", "no pic selected");
+        ae.i("MicroMsg.EditorUI", "no pic selected");
       }
-      aaI((String)paramIntent.get(0));
+      abz((String)paramIntent.get(0));
       AppMethodBeat.o(181559);
       return;
       label253:
-      ad.i("MicroMsg.EditorUI", "no video selected");
+      ae.i("MicroMsg.EditorUI", "no video selected");
       AppMethodBeat.o(181559);
       return;
       paramIntent = (CaptureDataManager.CaptureVideoNormalModel)paramIntent.getParcelableExtra("KSEGMENTMEDIAINFO");
       if (paramIntent == null)
       {
-        ad.e("MicroMsg.EditorUI", "sight capture result is null!");
+        ae.e("MicroMsg.EditorUI", "sight capture result is null!");
         AppMethodBeat.o(181559);
         return;
       }
       localObject = paramIntent.videoPath;
-      if (!bt.isNullOrNil((String)localObject)) {
-        aaI((String)localObject);
+      if (!bu.isNullOrNil((String)localObject)) {
+        abz((String)localObject);
       }
-      if ((paramIntent.xyb.booleanValue()) && (!bt.isNullOrNil(paramIntent.thumbPath)))
+      if ((paramIntent.xNY.booleanValue()) && (!bu.isNullOrNil(paramIntent.thumbPath)))
       {
         localObject = new ArrayList();
         ((ArrayList)localObject).add(paramIntent.thumbPath);
@@ -2566,18 +2528,18 @@ public class EditorUI
         paramIntent = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
         if (paramIntent == null)
         {
-          ad.e("MicroMsg.EditorUI", "sight capture result is null!");
+          ae.e("MicroMsg.EditorUI", "sight capture result is null!");
           AppMethodBeat.o(181559);
           return;
         }
-        localObject = paramIntent.vMu;
-        if (!bt.isNullOrNil((String)localObject)) {
-          aaI((String)localObject);
+        localObject = paramIntent.vYy;
+        if (!bu.isNullOrNil((String)localObject)) {
+          abz((String)localObject);
         }
-        if ((paramIntent.vMs) && (!bt.isNullOrNil(paramIntent.vMA)))
+        if ((paramIntent.vYw) && (!bu.isNullOrNil(paramIntent.vYE)))
         {
           localObject = new ArrayList();
-          ((ArrayList)localObject).add(paramIntent.vMA);
+          ((ArrayList)localObject).add(paramIntent.vYE);
           L((ArrayList)localObject);
         }
       }
@@ -2595,10 +2557,10 @@ public class EditorUI
   {
     AppMethodBeat.i(181596);
     super.onCancel();
-    if (this.prK)
+    if (this.pyq)
     {
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kl(false);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kk(false);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kk(false);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kj(false);
     }
     AppMethodBeat.o(181596);
   }
@@ -2607,116 +2569,116 @@ public class EditorUI
   {
     AppMethodBeat.i(181555);
     customfixStatusbar(true);
-    Object localObject1 = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej();
+    Object localObject1 = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy();
     ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).mDataList = new ArrayList();
-    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).puu = this;
-    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).puv = new ajn();
-    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).puw = 0;
-    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).pux = 0;
-    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).puy = 0;
+    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).pAY = this;
+    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).pAZ = new ajx();
+    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).pBa = 0;
+    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).pBb = 0;
+    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject1).pBc = 0;
     super.onCreate(paramBundle);
-    this.prP = getIntent().getBooleanExtra("KEY_EDITABLE", false);
-    this.prQ = getIntent().getStringExtra("KEY_CONTENT_XML");
-    if (bt.isNullOrNil(this.prQ))
+    this.pyv = getIntent().getBooleanExtra("KEY_EDITABLE", false);
+    this.pyw = getIntent().getStringExtra("KEY_CONTENT_XML");
+    if (bu.isNullOrNil(this.pyw))
     {
-      this.prQ = "";
-      this.prz = false;
+      this.pyw = "";
+      this.pyf = false;
     }
-    ad.i("MicroMsg.EditorUI", "mCollectEditable: %s, mCollectContentXml: %s", new Object[] { Boolean.valueOf(this.prP), this.prQ });
-    this.jwD = new ap();
+    ae.i("MicroMsg.EditorUI", "mCollectEditable: %s, mCollectContentXml: %s", new Object[] { Boolean.valueOf(this.pyv), this.pyw });
+    this.jzz = new aq();
     initView();
-    this.prL = com.tencent.mm.cc.a.fromDPToPix(this, 48);
-    if (this.prK)
+    this.pyr = com.tencent.mm.cb.a.fromDPToPix(this, 48);
+    if (this.pyq)
     {
-      ad.i("MicroMsg.EditorUI", "use multiselect");
+      ae.i("MicroMsg.EditorUI", "use multiselect");
       int i = getResources().getColor(2131100265);
-      paramBundle = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP();
-      boolean bool = this.prP;
-      ad.i("EditorSelectManager", "onInit start");
-      paramBundle.pwu = bool;
-      paramBundle.pwx = 14;
-      paramBundle.pwy = 32;
-      paramBundle.pwz = (com.tencent.mm.cc.a.fromDPToPix(this, 21) - paramBundle.pwy);
-      paramBundle.pwA = (com.tencent.mm.cc.a.fromDPToPix(this, 40) + paramBundle.pwy * 2);
-      paramBundle.pwB = (com.tencent.mm.cc.a.fromDPToPix(this, 240) + paramBundle.pwy * 2);
-      paramBundle.pwv = com.tencent.mm.cc.a.fromDPToPix(this, 22);
-      paramBundle.pww = com.tencent.mm.cc.a.fromDPToPix(this, 1);
+      paramBundle = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge();
+      boolean bool = this.pyv;
+      ae.i("EditorSelectManager", "onInit start");
+      paramBundle.pCY = bool;
+      paramBundle.pDb = 14;
+      paramBundle.pDc = 32;
+      paramBundle.pDd = (com.tencent.mm.cb.a.fromDPToPix(this, 21) - paramBundle.pDc);
+      paramBundle.pDe = (com.tencent.mm.cb.a.fromDPToPix(this, 40) + paramBundle.pDc * 2);
+      paramBundle.pDf = (com.tencent.mm.cb.a.fromDPToPix(this, 240) + paramBundle.pDc * 2);
+      paramBundle.pCZ = com.tencent.mm.cb.a.fromDPToPix(this, 22);
+      paramBundle.pDa = com.tencent.mm.cb.a.fromDPToPix(this, 1);
       paramBundle.mScreenHeight = getResources().getDisplayMetrics().heightPixels;
       paramBundle.mScreenWidth = getResources().getDisplayMetrics().widthPixels;
-      paramBundle.pwF = new int[] { -1, -1 };
-      paramBundle.pwG = new int[] { -1, -1 };
-      paramBundle.pwH = new int[] { -1, -1 };
-      paramBundle.pwI = new int[] { -1, -1 };
-      localObject1 = new com.tencent.mm.plugin.editor.model.nativenote.c.a(this, 2, paramBundle.pwv, paramBundle.pww, i, paramBundle);
-      paramBundle.pwJ = new PopupWindow((View)localObject1, ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewWidth(), ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewHeight(), false);
-      paramBundle.pwJ.setClippingEnabled(false);
-      paramBundle.pwJ.setAnimationStyle(2131821705);
-      paramBundle.pwD = ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getOffsetForCursorMid();
-      paramBundle.pwE = com.tencent.mm.cc.a.fromDPToPix(this, 6);
-      Object localObject2 = new com.tencent.mm.plugin.editor.model.nativenote.c.a(this, 3, paramBundle.pwv, paramBundle.pww, i, paramBundle);
-      paramBundle.pwK = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewHeight(), false);
-      paramBundle.pwK.setClippingEnabled(false);
-      paramBundle.pwK.setAnimationStyle(2131821704);
-      localObject2 = new com.tencent.mm.plugin.editor.model.nativenote.c.a(this, 4, paramBundle.pwv, paramBundle.pww, i, paramBundle);
-      paramBundle.pwL = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewHeight(), false);
-      paramBundle.pwL.setClippingEnabled(false);
-      paramBundle.pwL.setAnimationStyle(2131821706);
+      paramBundle.pDj = new int[] { -1, -1 };
+      paramBundle.pDk = new int[] { -1, -1 };
+      paramBundle.pDl = new int[] { -1, -1 };
+      paramBundle.pDm = new int[] { -1, -1 };
+      localObject1 = new com.tencent.mm.plugin.editor.model.nativenote.c.a(this, 2, paramBundle.pCZ, paramBundle.pDa, i, paramBundle);
+      paramBundle.pDn = new PopupWindow((View)localObject1, ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewWidth(), ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewHeight(), false);
+      paramBundle.pDn.setClippingEnabled(false);
+      paramBundle.pDn.setAnimationStyle(2131821705);
+      paramBundle.pDh = ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getOffsetForCursorMid();
+      paramBundle.pDi = com.tencent.mm.cb.a.fromDPToPix(this, 6);
+      Object localObject2 = new com.tencent.mm.plugin.editor.model.nativenote.c.a(this, 3, paramBundle.pCZ, paramBundle.pDa, i, paramBundle);
+      paramBundle.pDo = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewHeight(), false);
+      paramBundle.pDo.setClippingEnabled(false);
+      paramBundle.pDo.setAnimationStyle(2131821704);
+      localObject2 = new com.tencent.mm.plugin.editor.model.nativenote.c.a(this, 4, paramBundle.pCZ, paramBundle.pDa, i, paramBundle);
+      paramBundle.pDp = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewHeight(), false);
+      paramBundle.pDp.setClippingEnabled(false);
+      paramBundle.pDp.setAnimationStyle(2131821706);
       localObject2 = LayoutInflater.from(this).inflate(2131493746, null);
       ((View)localObject2).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-      paramBundle.pwM = new PopupWindow((View)localObject2, -2, -2, false);
-      paramBundle.pwM.setBackgroundDrawable(getResources().getDrawable(2131234275));
-      paramBundle.pwM.setClippingEnabled(false);
-      paramBundle.pwM.setAnimationStyle(2131821708);
-      paramBundle.pwS = ((TextView)((View)localObject2).findViewById(2131302913));
-      paramBundle.pwT = ((TextView)((View)localObject2).findViewById(2131302942));
-      paramBundle.pwU = ((TextView)((View)localObject2).findViewById(2131302939));
-      paramBundle.pwV = ((TextView)((View)localObject2).findViewById(2131302938));
-      paramBundle.pwW = ((TextView)((View)localObject2).findViewById(2131302923));
-      paramBundle.pwX = ((TextView)((View)localObject2).findViewById(2131302922));
-      paramBundle.pwY = ((TextView)((View)localObject2).findViewById(2131302921));
-      paramBundle.pwZ = ((TextView)((View)localObject2).findViewById(2131302934));
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwS, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwT, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwU, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwV, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwW, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwX, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwY, paramBundle.pwx);
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pwZ, paramBundle.pwx);
-      paramBundle.pwS.setOnClickListener(new e.10(paramBundle));
-      paramBundle.pwT.setOnClickListener(new e.11(paramBundle));
-      paramBundle.pwU.setOnClickListener(new e.12(paramBundle));
-      paramBundle.pwV.setOnClickListener(new e.13(paramBundle));
-      paramBundle.pwW.setOnClickListener(new e.2(paramBundle));
-      paramBundle.pwX.setOnClickListener(new e.3(paramBundle));
-      paramBundle.pwY.setOnClickListener(new e.4(paramBundle));
-      paramBundle.pwZ.setOnClickListener(new e.5(paramBundle));
-      paramBundle.pwC = ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewPadding();
-      paramBundle.pwN = this;
-      paramBundle.pwO = new com.tencent.mm.plugin.editor.model.nativenote.c.d();
-      paramBundle.pwP = new com.tencent.mm.plugin.editor.model.nativenote.c.b();
-      paramBundle.mHandler = new ap();
+      paramBundle.pDq = new PopupWindow((View)localObject2, -2, -2, false);
+      paramBundle.pDq.setBackgroundDrawable(getResources().getDrawable(2131234275));
+      paramBundle.pDq.setClippingEnabled(false);
+      paramBundle.pDq.setAnimationStyle(2131821708);
+      paramBundle.pDw = ((TextView)((View)localObject2).findViewById(2131302913));
+      paramBundle.pDx = ((TextView)((View)localObject2).findViewById(2131302942));
+      paramBundle.pDy = ((TextView)((View)localObject2).findViewById(2131302939));
+      paramBundle.pDz = ((TextView)((View)localObject2).findViewById(2131302938));
+      paramBundle.pDA = ((TextView)((View)localObject2).findViewById(2131302923));
+      paramBundle.pDB = ((TextView)((View)localObject2).findViewById(2131302922));
+      paramBundle.pDC = ((TextView)((View)localObject2).findViewById(2131302921));
+      paramBundle.pDD = ((TextView)((View)localObject2).findViewById(2131302934));
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDw, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDx, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDy, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDz, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDA, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDB, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDC, paramBundle.pDb);
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.i(paramBundle.pDD, paramBundle.pDb);
+      paramBundle.pDw.setOnClickListener(new e.10(paramBundle));
+      paramBundle.pDx.setOnClickListener(new e.11(paramBundle));
+      paramBundle.pDy.setOnClickListener(new e.12(paramBundle));
+      paramBundle.pDz.setOnClickListener(new e.13(paramBundle));
+      paramBundle.pDA.setOnClickListener(new e.2(paramBundle));
+      paramBundle.pDB.setOnClickListener(new e.3(paramBundle));
+      paramBundle.pDC.setOnClickListener(new e.4(paramBundle));
+      paramBundle.pDD.setOnClickListener(new e.5(paramBundle));
+      paramBundle.pDg = ((com.tencent.mm.plugin.editor.model.nativenote.c.a)localObject1).getViewPadding();
+      paramBundle.pDr = this;
+      paramBundle.pDs = new com.tencent.mm.plugin.editor.model.nativenote.c.d();
+      paramBundle.pDt = new com.tencent.mm.plugin.editor.model.nativenote.c.b();
+      paramBundle.mHandler = new aq();
       com.tencent.mm.plugin.editor.model.nativenote.c.e.mHasInit = true;
-      ad.i("EditorSelectManager", "onInit end");
-      this.prM = new RecyclerView.m()
+      ae.i("EditorSelectManager", "onInit end");
+      this.pys = new RecyclerView.m()
       {
         public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(181534);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
           ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousRecyclerView);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt1);
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt2);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$24", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt1);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt2);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$24", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
           super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
           if (paramAnonymousInt2 > 30)
           {
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceY();
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceW();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgn();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgl();
           }
-          localObject = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceR();
-          if (((EditorUI.i(EditorUI.this)) || ((EditorUI.j(EditorUI.this) != null) && (EditorUI.j(EditorUI.this).getVisibility() == 0))) && (((com.tencent.mm.plugin.editor.model.nativenote.c.d)localObject).ceO() == 2) && (com.tencent.mm.plugin.editor.model.nativenote.c.f.e(paramAnonymousRecyclerView, ((com.tencent.mm.plugin.editor.model.nativenote.c.d)localObject).dfG) == null)) {
-            EditorUI.this.cdy();
+          localObject = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgg();
+          if (((EditorUI.i(EditorUI.this)) || ((EditorUI.j(EditorUI.this) != null) && (EditorUI.j(EditorUI.this).getVisibility() == 0))) && (((com.tencent.mm.plugin.editor.model.nativenote.c.d)localObject).cgd() == 2) && (com.tencent.mm.plugin.editor.model.nativenote.c.f.e(paramAnonymousRecyclerView, ((com.tencent.mm.plugin.editor.model.nativenote.c.d)localObject).dgI) == null)) {
+            EditorUI.this.ceN();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/EditorUI$24", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
           AppMethodBeat.o(181534);
@@ -2727,8 +2689,8 @@ public class EditorUI
           AppMethodBeat.i(181533);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousRecyclerView);
-          localb.mr(paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$24", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/EditorUI$24", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
           super.b(paramAnonymousRecyclerView, paramAnonymousInt);
           switch (paramAnonymousInt)
           {
@@ -2738,20 +2700,20 @@ public class EditorUI
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/EditorUI$24", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
             AppMethodBeat.o(181533);
             return;
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceY();
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceW();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgn();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgl();
             continue;
-            boolean bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceX();
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kl(bool);
-            bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceV();
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kk(bool);
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().f(false, 50L);
+            boolean bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgm();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kk(bool);
+            bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgk();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kj(bool);
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().f(false, 50L);
           }
         }
       };
-      this.prA.a(this.prM);
+      this.pyg.a(this.pys);
     }
-    cdL();
+    cfa();
     AppMethodBeat.o(181555);
   }
   
@@ -2759,63 +2721,63 @@ public class EditorUI
   {
     AppMethodBeat.i(181594);
     super.onDestroy();
-    if (this.prK)
+    if (this.pyq)
     {
-      if (this.prA != null) {
-        this.prA.b(this.prM);
+      if (this.pyg != null) {
+        this.pyg.b(this.pys);
       }
-      localObject = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP();
-      ad.i("EditorSelectManager", "onDestroy");
+      localObject = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge();
+      ae.i("EditorSelectManager", "onDestroy");
       com.tencent.mm.plugin.editor.model.nativenote.c.e.mHasInit = false;
-      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwQ != null) {
-        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwQ.stopTimer();
+      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDu != null) {
+        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDu.stopTimer();
       }
-      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwR != null) {
-        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwR.stopTimer();
+      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDv != null) {
+        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDv.stopTimer();
       }
-      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwJ != null) {
-        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwJ.dismiss();
+      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDn != null) {
+        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDn.dismiss();
       }
-      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwK != null) {
-        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwK.dismiss();
+      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDo != null) {
+        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDo.dismiss();
       }
-      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwL != null) {
-        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwL.dismiss();
+      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDp != null) {
+        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDp.dismiss();
       }
-      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwM != null) {
-        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pwM.dismiss();
+      if (((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDq != null) {
+        ((com.tencent.mm.plugin.editor.model.nativenote.c.e)localObject).pDq.dismiss();
       }
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.pwt = null;
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.pCX = null;
     }
-    if (this.prJ != null)
+    if (this.pyp != null)
     {
-      localObject = this.prJ;
-      if (com.tencent.mm.plugin.editor.model.nativenote.manager.j.pvQ == localObject) {
-        com.tencent.mm.plugin.editor.model.nativenote.manager.j.pvQ = null;
+      localObject = this.pyp;
+      if (com.tencent.mm.plugin.editor.model.nativenote.manager.j.pCu == localObject) {
+        com.tencent.mm.plugin.editor.model.nativenote.manager.j.pCu = null;
       }
     }
-    Object localObject = com.tencent.mm.plugin.editor.widget.voiceview.a.cfz();
+    Object localObject = com.tencent.mm.plugin.editor.widget.voiceview.a.cgP();
     ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject).stopPlay();
-    ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject).pyv = null;
-    ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject).pyu = null;
+    ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject).pEZ = null;
+    ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject).pEY = null;
     ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject).callbacks.clear();
-    com.tencent.mm.plugin.editor.widget.voiceview.a.pyp = null;
-    if (com.tencent.mm.plugin.editor.model.c.cea() != null)
+    com.tencent.mm.plugin.editor.widget.voiceview.a.pET = null;
+    if (com.tencent.mm.plugin.editor.model.c.cfp() != null)
     {
-      com.tencent.mm.plugin.editor.model.c.cea();
+      com.tencent.mm.plugin.editor.model.c.cfp();
       com.tencent.mm.plugin.editor.model.c.destroy();
     }
-    localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cej();
-    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject).puu = null;
+    localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cfy();
+    ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject).pAY = null;
     if (((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject).mDataList != null)
     {
       localObject = ((com.tencent.mm.plugin.editor.model.nativenote.manager.c)localObject).mDataList.iterator();
       while (((Iterator)localObject).hasNext())
       {
         com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)((Iterator)localObject).next();
-        locala.ptK = null;
-        locala.ptI = null;
-        locala.ptJ = null;
+        locala.pAo = null;
+        locala.pAm = null;
+        locala.pAn = null;
       }
     }
     AppMethodBeat.o(181594);
@@ -2825,14 +2787,14 @@ public class EditorUI
   {
     AppMethodBeat.i(181595);
     super.onDrag();
-    if (this.prK)
+    if (this.pyq)
     {
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceY();
-      com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceW();
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgn();
+      com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgl();
     }
-    if (this.prO)
+    if (this.pyu)
     {
-      ad.i("MicroMsg.EditorUI", "onSwipeBack close vkb");
+      ae.i("MicroMsg.EditorUI", "onSwipeBack close vkb");
       hideVKB();
     }
     AppMethodBeat.o(181595);
@@ -2845,20 +2807,20 @@ public class EditorUI
     if (keyboardState() == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.prO = bool;
-      if (this.prO) {
-        O(1, 0L);
+      this.pyu = bool;
+      if (this.pyu) {
+        N(1, 0L);
       }
-      if (this.prK) {
-        this.jwD.postDelayed(new Runnable()
+      if (this.pyq) {
+        this.jzz.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(181532);
-            boolean bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceX();
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kl(bool);
-            bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().ceV();
-            com.tencent.mm.plugin.editor.model.nativenote.c.e.ceP().kk(bool);
+            boolean bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgm();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kk(bool);
+            bool = com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().cgk();
+            com.tencent.mm.plugin.editor.model.nativenote.c.e.cge().kj(bool);
             AppMethodBeat.o(181532);
           }
         }, 200L);
@@ -2872,13 +2834,13 @@ public class EditorUI
   {
     AppMethodBeat.i(181558);
     super.onPause();
-    if (this.prF != null) {
-      this.prF.a(this);
+    if (this.pyl != null) {
+      this.pyl.a(this);
     }
-    if (com.tencent.mm.plugin.editor.widget.voiceview.a.cfz().cfC()) {
-      com.tencent.mm.plugin.editor.widget.voiceview.a.cfz().stopPlay();
+    if (com.tencent.mm.plugin.editor.widget.voiceview.a.cgP().cgS()) {
+      com.tencent.mm.plugin.editor.widget.voiceview.a.cgP().stopPlay();
     }
-    this.prT = this.prO;
+    this.pyz = this.pyu;
     e(false, 0L);
     AppMethodBeat.o(181558);
   }
@@ -2888,11 +2850,11 @@ public class EditorUI
     AppMethodBeat.i(181577);
     if (paramArrayOfInt.length <= 0)
     {
-      ad.i("MicroMsg.EditorUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ae.i("MicroMsg.EditorUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(181577);
       return;
     }
-    ad.i("MicroMsg.EditorUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ae.i("MicroMsg.EditorUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -2902,24 +2864,11 @@ public class EditorUI
       return;
       if (paramArrayOfInt[0] != 0)
       {
-        cdt();
+        ceI();
         AppMethodBeat.o(181577);
         return;
-        if ((com.tencent.mm.ax.b.FU((String)com.tencent.mm.kernel.g.ajC().ajl().get(274436, null))) && (paramArrayOfInt[0] != 0)) {
-          com.tencent.mm.ui.base.h.a(getContext(), getString(2131761869), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(181523);
-              paramAnonymousDialogInterface = EditorUI.this;
-              Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/editor/EditorUI$16", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/editor/EditorUI$16", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              AppMethodBeat.o(181523);
-            }
-          }, null);
+        if ((com.tencent.mm.aw.b.Gw((String)com.tencent.mm.kernel.g.ajR().ajA().get(274436, null))) && (paramArrayOfInt[0] != 0)) {
+          com.tencent.mm.ui.base.h.a(getContext(), getString(2131761869), getString(2131761885), getString(2131760598), getString(2131755691), false, new EditorUI.7(this), null);
         }
       }
     }
@@ -2929,29 +2878,29 @@ public class EditorUI
   {
     AppMethodBeat.i(181557);
     super.onResume();
-    if (this.prP) {
-      switch (this.prS)
+    if (this.pyv) {
+      switch (this.pyy)
       {
       }
     }
     for (;;)
     {
-      this.prS = -1;
-      this.prR = false;
+      this.pyy = -1;
+      this.pyx = false;
       if (isSupportNavigationSwipeBack()) {
         getSwipeBackLayout().setEnableGesture(false);
       }
       AppMethodBeat.o(181557);
       return;
-      if (this.prT)
+      if (this.pyz)
       {
         e(true, 100L);
-        O(1, 0L);
+        N(1, 0L);
         continue;
-        if (!this.prR)
+        if (!this.pyx)
         {
           e(true, 100L);
-          O(1, 0L);
+          N(1, 0L);
         }
       }
     }
@@ -2975,14 +2924,14 @@ public class EditorUI
       AppMethodBeat.o(181550);
     }
     
-    public final void cdQ()
+    public final void cff()
     {
       AppMethodBeat.i(181547);
       EditorUI.m(EditorUI.this);
       AppMethodBeat.o(181547);
     }
     
-    public final void cdR()
+    public final void cfg()
     {
       AppMethodBeat.i(181548);
       EditorUI.this.showActionbarLine();
@@ -2990,7 +2939,7 @@ public class EditorUI
       AppMethodBeat.o(181548);
     }
     
-    public final void cdS()
+    public final void cfh()
     {
       AppMethodBeat.i(181549);
       EditorUI.this.hideActionbarLine();

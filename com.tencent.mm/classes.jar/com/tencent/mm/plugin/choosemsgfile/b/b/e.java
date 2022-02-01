@@ -5,23 +5,23 @@ import android.view.View;
 public final class e
   extends f
 {
-  public String fVf;
+  public String fXl;
   public String fileName;
   public int fileSize;
-  public boolean oSk;
-  public boolean oSl;
-  public boolean oSm;
-  public boolean oSn;
-  public long oSo;
+  public boolean oYM;
+  public boolean oYN;
+  public boolean oYO;
+  public boolean oYP;
+  public long oYQ;
   
   public final void a(View paramView, a parama) {}
   
-  public final String bZn()
+  public final String caC()
   {
-    return this.fVf;
+    return this.fXl;
   }
   
-  public final int bZo()
+  public final int caD()
   {
     return this.fileSize;
   }

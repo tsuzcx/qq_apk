@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import com.tencent.mm.protocal.protobuf.nx;
+import com.tencent.mm.protocal.protobuf.nz;
 
 final class g$a
-  extends nx
+  extends nz
 {
-  public String fkx;
+  public String fmu;
+  public String udb;
 }
 
 

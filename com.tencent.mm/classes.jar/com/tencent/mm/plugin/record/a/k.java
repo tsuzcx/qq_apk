@@ -16,48 +16,48 @@ public final class k
   {
     AppMethodBeat.i(140938);
     c.a locala = new c.a();
-    locala.IhA = new Field[10];
+    locala.IBL = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.IhC.put("localId", "INTEGER PRIMARY KEY ");
+    locala.IBN.put("localId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" localId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "localId";
+    locala.IBM = "localId";
     locala.columns[1] = "msgId";
-    locala.IhC.put("msgId", "LONG default '-1' ");
+    locala.IBN.put("msgId", "LONG default '-1' ");
     localStringBuilder.append(" msgId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "oriMsgId";
-    locala.IhC.put("oriMsgId", "LONG default '-1' ");
+    locala.IBN.put("oriMsgId", "LONG default '-1' ");
     localStringBuilder.append(" oriMsgId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "toUser";
-    locala.IhC.put("toUser", "TEXT default '' ");
+    locala.IBN.put("toUser", "TEXT default '' ");
     localStringBuilder.append(" toUser TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "title";
-    locala.IhC.put("title", "TEXT");
+    locala.IBN.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "desc";
-    locala.IhC.put("desc", "TEXT");
+    locala.IBN.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "dataProto";
-    locala.IhC.put("dataProto", "BLOB");
+    locala.IBN.put("dataProto", "BLOB");
     localStringBuilder.append(" dataProto BLOB");
     localStringBuilder.append(", ");
     locala.columns[7] = "type";
-    locala.IhC.put("type", "INTEGER default '0' ");
+    locala.IBN.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "status";
-    locala.IhC.put("status", "INTEGER default '0' ");
+    locala.IBN.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "favFrom";
-    locala.IhC.put("favFrom", "TEXT");
+    locala.IBN.put("favFrom", "TEXT");
     localStringBuilder.append(" favFrom TEXT");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -65,7 +65,7 @@ public final class k
     AppMethodBeat.o(140938);
   }
   
-  public final int dEf()
+  public final int dHw()
   {
     return this.field_localId;
   }
@@ -77,7 +77,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.k
  * JD-Core Version:    0.7.0.1
  */

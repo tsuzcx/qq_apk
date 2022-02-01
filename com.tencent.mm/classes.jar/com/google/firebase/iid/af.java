@@ -75,10 +75,10 @@ final class af
     }
   }
   
-  static File ap(Context paramContext)
+  static File aq(Context paramContext)
   {
     AppMethodBeat.i(4241);
-    File localFile = b.S(paramContext);
+    File localFile = b.T(paramContext);
     if ((localFile != null) && (localFile.isDirectory()))
     {
       AppMethodBeat.o(4241);
@@ -271,7 +271,7 @@ final class af
     }
     for (;;)
     {
-      paramContext = new File(ap(paramContext), paramString);
+      paramContext = new File(aq(paramContext), paramString);
       AppMethodBeat.o(4242);
       return paramContext;
       try

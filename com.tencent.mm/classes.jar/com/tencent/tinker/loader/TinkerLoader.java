@@ -76,61 +76,75 @@ public class TinkerLoader
       ShareIntentUtil.setIntentReturnCode(paramIntent, -4);
       return;
     }
-    boolean bool3 = this.patchInfo.isProtectedApp;
-    paramIntent.putExtra("intent_is_protected_app", bool3);
-    localObject1 = this.patchInfo.oldVersion;
-    Object localObject3 = this.patchInfo.newVersion;
-    String str = this.patchInfo.oatDir;
-    if ((localObject1 == null) || (localObject3 == null) || (str == null))
+    boolean bool8 = this.patchInfo.isProtectedApp;
+    paramIntent.putExtra("intent_is_protected_app", bool8);
+    Object localObject3 = this.patchInfo.oldVersion;
+    String str1 = this.patchInfo.newVersion;
+    String str2 = this.patchInfo.oatDir;
+    if ((localObject3 == null) || (str1 == null) || (str2 == null))
     {
       ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchInfoCorrupted", new Object[0]);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -4);
       return;
     }
-    boolean bool2 = ShareTinkerInternals.isInMainProcess(paramTinkerApplication);
+    boolean bool3 = ShareTinkerInternals.isInMainProcess(paramTinkerApplication);
     boolean bool1 = this.patchInfo.isRemoveNewVersion;
-    Object localObject2;
-    if ((bool2) && (bool1))
+    Object localObject2 = localObject3;
+    localObject1 = str1;
+    String str3;
+    if (bool3)
     {
-      ShareTinkerLog.w("Tinker.TinkerLoader", "found clean patch mark and we are in main process, delete patch file now.", new Object[0]);
-      localObject2 = SharePatchFileUtil.getPatchVersionDirectory((String)localObject3);
-      if (localObject2 != null)
-      {
-        bool1 = ((String)localObject1).equals(localObject3);
-        if (bool1) {
-          localObject1 = "";
-        }
-        this.patchInfo.oldVersion = ((String)localObject1);
-        this.patchInfo.newVersion = ((String)localObject1);
-        this.patchInfo.isRemoveNewVersion = false;
-        SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2);
-        SharePatchFileUtil.deleteDir((String)localObject4 + "/" + (String)localObject2);
-        if (bool1)
-        {
-          ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
-          ShareIntentUtil.setIntentReturnCode(paramIntent, -2);
-          return;
-        }
-        localObject3 = localObject1;
-        localObject2 = localObject1;
+      str3 = SharePatchFileUtil.getPatchVersionDirectory(str1);
+      if (!bool1) {
+        break label1517;
       }
+      ShareTinkerLog.w("Tinker.TinkerLoader", "found clean patch mark and we are in main process, delete patch file now.", new Object[0]);
+      if (str3 == null) {
+        break label1517;
+      }
+      bool1 = ((String)localObject3).equals(str1);
+      localObject1 = localObject3;
+      if (bool1) {
+        localObject1 = "";
+      }
+      this.patchInfo.oldVersion = ((String)localObject1);
+      this.patchInfo.newVersion = ((String)localObject1);
+      this.patchInfo.isRemoveNewVersion = false;
+      SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2);
+      SharePatchFileUtil.deleteDir((String)localObject4 + "/" + str3);
+      if (bool1)
+      {
+        ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
+        ShareIntentUtil.setIntentReturnCode(paramIntent, -2);
+        return;
+      }
+      localObject3 = localObject1;
+      localObject2 = localObject1;
     }
-    for (localObject1 = localObject3;; localObject1 = localObject3)
+    for (localObject1 = localObject3;; localObject1 = str1)
     {
+      if (this.patchInfo.isRemoveInterpretOATDir)
+      {
+        ShareTinkerLog.i("Tinker.TinkerLoader", "tryLoadPatchFiles: isRemoveInterpretOATDir is true, try to delete interpret optimize files", new Object[0]);
+        this.patchInfo.isRemoveInterpretOATDir = false;
+        SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2);
+        ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
+        localObject3 = (String)localObject4 + "/" + str3;
+        SharePatchFileUtil.deleteDir((String)localObject3 + "/interpet");
+      }
       paramIntent.putExtra("intent_patch_old_version", (String)localObject2);
       paramIntent.putExtra("intent_patch_new_version", (String)localObject1);
       if (!((String)localObject2).equals(localObject1)) {}
-      boolean bool8;
       for (int i = 1;; i = 0)
       {
-        bool8 = str.equals("changing");
-        str = ShareTinkerInternals.getCurrentOatMode(paramTinkerApplication, str);
-        paramIntent.putExtra("intent_patch_oat_dir", str);
+        bool1 = str2.equals("changing");
+        str1 = ShareTinkerInternals.getCurrentOatMode(paramTinkerApplication, str2);
+        paramIntent.putExtra("intent_patch_oat_dir", str1);
         localObject3 = localObject2;
         if (i != 0)
         {
           localObject3 = localObject2;
-          if (bool2) {
+          if (bool3) {
             localObject3 = localObject1;
           }
         }
@@ -176,7 +190,7 @@ public class TinkerLoader
       paramIntent.putExtra("intent_patch_package_config", ((ShareSecurityCheck)localObject4).getPackagePropertiesIfPresent());
       boolean bool4 = ShareTinkerInternals.isTinkerEnabledForDex(j);
       boolean bool5 = ShareTinkerInternals.isArkHotRuning();
-      if ((!bool5) && (bool4) && (!TinkerDexLoader.checkComplete((String)localObject2, (ShareSecurityCheck)localObject4, str, paramIntent)))
+      if ((!bool5) && (bool4) && (!TinkerDexLoader.checkComplete((String)localObject2, (ShareSecurityCheck)localObject4, str1, paramIntent)))
       {
         ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:dex check fail", new Object[0]);
         return;
@@ -200,19 +214,18 @@ public class TinkerLoader
         return;
       }
       if ((ShareTinkerInternals.isVmArt()) && (ShareTinkerInternals.isSystemOTA(this.patchInfo.fingerPrint)) && (Build.VERSION.SDK_INT >= 21) && (!ShareTinkerInternals.isAfterAndroidO())) {}
-      for (bool1 = true;; bool1 = false)
+      for (boolean bool2 = true;; bool2 = false)
       {
-        paramIntent.putExtra("intent_patch_system_ota", bool1);
-        if (bool2)
+        paramIntent.putExtra("intent_patch_system_ota", bool2);
+        if (bool3)
         {
           if (i != 0) {
             this.patchInfo.oldVersion = ((String)localObject3);
           }
-          if (bool8)
+          if (bool1)
           {
-            this.patchInfo.oatDir = str;
-            ShareTinkerLog.i("Tinker.TinkerLoader", "tryLoadPatchFiles:oatModeChanged, try to delete interpret optimize files", new Object[0]);
-            SharePatchFileUtil.deleteDir((String)localObject2 + "/interpet");
+            this.patchInfo.oatDir = str1;
+            this.patchInfo.isRemoveInterpretOATDir = true;
           }
         }
         if (checkSafeModeCount(paramTinkerApplication)) {
@@ -225,63 +238,69 @@ public class TinkerLoader
       }
       if ((!bool5) && (bool4))
       {
-        bool3 = TinkerDexLoader.loadTinkerJars(paramTinkerApplication, (String)localObject2, str, paramIntent, bool1, bool3);
-        if (bool1)
+        bool8 = TinkerDexLoader.loadTinkerJars(paramTinkerApplication, (String)localObject2, str1, paramIntent, bool2, bool8);
+        if (!bool2) {
+          break label1514;
+        }
+        this.patchInfo.fingerPrint = Build.FINGERPRINT;
+        localObject3 = this.patchInfo;
+        if (bool8) {}
+        for (localObject1 = "interpet";; localObject1 = "odex")
         {
-          this.patchInfo.fingerPrint = Build.FINGERPRINT;
-          localObject3 = this.patchInfo;
-          if (bool3) {}
-          for (localObject1 = "interpet";; localObject1 = "odex")
-          {
-            ((SharePatchInfo)localObject3).oatDir = ((String)localObject1);
-            if (SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2)) {
-              break;
-            }
-            ShareIntentUtil.setIntentReturnCode(paramIntent, -19);
-            ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onReWritePatchInfoCorrupted", new Object[0]);
-            return;
+          ((SharePatchInfo)localObject3).oatDir = ((String)localObject1);
+          bool1 = false;
+          if (SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2)) {
+            break;
           }
-          paramIntent.putExtra("intent_patch_oat_dir", this.patchInfo.oatDir);
-        }
-        if (!bool3)
-        {
-          ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchLoadDexesFail", new Object[0]);
-          return;
-        }
-      }
-      if ((bool5) && (bool6) && (!TinkerArkHotLoader.loadTinkerArkHot(paramTinkerApplication, (String)localObject2, paramIntent)))
-      {
-        ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchLoadArkApkFail", new Object[0]);
-        return;
-      }
-      if ((bool7) && (!TinkerResourceLoader.loadTinkerResources(paramTinkerApplication, (String)localObject2, paramIntent)))
-      {
-        ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchLoadResourcesFail", new Object[0]);
-        return;
-      }
-      if (((bool4) || (bool6)) && (bool7)) {
-        ComponentHotplug.install(paramTinkerApplication, (ShareSecurityCheck)localObject4);
-      }
-      if (!AppInfoChangedBlocker.tryStart(paramTinkerApplication))
-      {
-        ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:AppInfoChangedBlocker install fail.", new Object[0]);
-        ShareIntentUtil.setIntentReturnCode(paramIntent, -28);
-        return;
-      }
-      if ((bool2) && (i != 0))
-      {
-        if (!SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2))
-        {
           ShareIntentUtil.setIntentReturnCode(paramIntent, -19);
           ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onReWritePatchInfoCorrupted", new Object[0]);
           return;
         }
-        ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
+        paramIntent.putExtra("intent_patch_oat_dir", this.patchInfo.oatDir);
       }
-      ShareIntentUtil.setIntentReturnCode(paramIntent, 0);
-      ShareTinkerLog.i("Tinker.TinkerLoader", "tryLoadPatchFiles: load end, ok!", new Object[0]);
-      return;
-      localObject2 = localObject1;
+      label1514:
+      for (;;)
+      {
+        if (!bool8)
+        {
+          ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchLoadDexesFail", new Object[0]);
+          return;
+        }
+        if ((bool5) && (bool6) && (!TinkerArkHotLoader.loadTinkerArkHot(paramTinkerApplication, (String)localObject2, paramIntent)))
+        {
+          ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchLoadArkApkFail", new Object[0]);
+          return;
+        }
+        if ((bool7) && (!TinkerResourceLoader.loadTinkerResources(paramTinkerApplication, (String)localObject2, paramIntent)))
+        {
+          ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchLoadResourcesFail", new Object[0]);
+          return;
+        }
+        if (((bool4) || (bool6)) && (bool7)) {
+          ComponentHotplug.install(paramTinkerApplication, (ShareSecurityCheck)localObject4);
+        }
+        if (!AppInfoChangedBlocker.tryStart(paramTinkerApplication))
+        {
+          ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:AppInfoChangedBlocker install fail.", new Object[0]);
+          ShareIntentUtil.setIntentReturnCode(paramIntent, -28);
+          return;
+        }
+        if ((bool3) && ((i != 0) || (bool1)))
+        {
+          if (!SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2))
+          {
+            ShareIntentUtil.setIntentReturnCode(paramIntent, -19);
+            ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onReWritePatchInfoCorrupted", new Object[0]);
+            return;
+          }
+          ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
+        }
+        ShareIntentUtil.setIntentReturnCode(paramIntent, 0);
+        ShareTinkerLog.i("Tinker.TinkerLoader", "tryLoadPatchFiles: load end, ok!", new Object[0]);
+        return;
+      }
+      label1517:
+      localObject2 = localObject3;
     }
   }
   

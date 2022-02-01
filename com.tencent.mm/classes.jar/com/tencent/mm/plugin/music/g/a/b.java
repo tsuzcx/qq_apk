@@ -11,32 +11,32 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class b
   implements IMediaHTTPService
 {
-  private final Map<String, String> wmC;
+  private final Map<String, String> wCl;
   
   public b()
   {
-    AppMethodBeat.i(194994);
-    this.wmC = new ConcurrentHashMap();
-    AppMethodBeat.o(194994);
+    AppMethodBeat.i(195463);
+    this.wCl = new ConcurrentHashMap();
+    AppMethodBeat.o(195463);
   }
   
-  public final void ik(String paramString1, String paramString2)
+  public final void iq(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194995);
+    AppMethodBeat.i(195464);
     Logger.d("MicroMsg.MMMediaHTTPService", "setReferrer, originUrl: " + paramString1 + ", referrer: " + paramString2);
     String str = paramString2;
     if (paramString2 == null) {
       str = "";
     }
-    this.wmC.put(paramString1, str);
-    AppMethodBeat.o(194995);
+    this.wCl.put(paramString1, str);
+    AppMethodBeat.o(195464);
   }
   
   public final IMediaHTTPConnection makeHTTPConnection()
   {
     AppMethodBeat.i(137437);
     Logger.i("MicroMsg.MMMediaHTTPService", "makeHTTPConnection");
-    a locala = new a(Collections.unmodifiableMap(this.wmC));
+    a locala = new a(Collections.unmodifiableMap(this.wCl));
     AppMethodBeat.o(137437);
     return locala;
   }

@@ -15,12 +15,12 @@ import java.util.Set;
 public final class d
   implements d.l.b.a.b.d.a.j
 {
-  private final ClassLoader MZU;
+  private final ClassLoader Nxa;
   
   public d(ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(57362);
-    this.MZU = paramClassLoader;
+    this.Nxa = paramClassLoader;
     AppMethodBeat.o(57362);
   }
   
@@ -28,16 +28,16 @@ public final class d
   {
     AppMethodBeat.i(57359);
     p.h(parama, "request");
-    parama = parama.MSw;
-    b localb = parama.gqZ();
+    parama = parama.NpB;
+    b localb = parama.gvB();
     p.g(localb, "classId.packageFqName");
-    parama = parama.gra().sD();
+    parama = parama.gvC().sD();
     p.g(parama, "classId.relativeClassName.asString()");
     parama = n.a(parama, '.', '$');
-    if (localb.Nqg.Nql.isEmpty()) {}
+    if (localb.NNm.NNr.isEmpty()) {}
     for (;;)
     {
-      parama = e.a(this.MZU, parama);
+      parama = e.a(this.Nxa, parama);
       if (parama == null) {
         break;
       }
@@ -69,7 +69,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.d
  * JD-Core Version:    0.7.0.1
  */

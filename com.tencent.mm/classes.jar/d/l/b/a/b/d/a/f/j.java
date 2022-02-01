@@ -5,14 +5,14 @@ import java.util.List;
 
 public final class j
 {
-  final r NhB;
-  final List<r> NhC;
+  final r NEG;
+  final List<r> NEH;
   
   public j(r paramr, List<r> paramList)
   {
     AppMethodBeat.i(58075);
-    this.NhB = paramr;
-    this.NhC = paramList;
+    this.NEG = paramr;
+    this.NEH = paramList;
     AppMethodBeat.o(58075);
   }
 }

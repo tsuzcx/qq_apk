@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.iv;
+import com.tencent.mm.g.b.a.ix;
 import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,20 +16,20 @@ public class AppStartupPerformanceReportBundle
   implements Parcelable, j
 {
   public static final Parcelable.Creator<AppStartupPerformanceReportBundle> CREATOR;
-  public final String lEv;
-  public long lFQ;
-  public final List<iv> lGe;
-  public final List<kv_14609> lGf;
-  public long lGg;
-  public long lGh;
-  public long lGi;
-  public long lGj;
-  public long lGk;
-  public long lGl;
-  public long lGm;
-  public int lGn;
-  public boolean lGo;
-  public boolean lGp;
+  public final String lIU;
+  public final List<ix> lKE;
+  public final List<kv_14609> lKF;
+  public long lKG;
+  public long lKH;
+  public long lKI;
+  public long lKJ;
+  public long lKK;
+  public long lKL;
+  public long lKM;
+  public int lKN;
+  public boolean lKO;
+  public boolean lKP;
+  public long lKp;
   
   static
   {
@@ -41,29 +41,29 @@ public class AppStartupPerformanceReportBundle
   private AppStartupPerformanceReportBundle(Parcel paramParcel)
   {
     AppMethodBeat.i(47156);
-    this.lEv = paramParcel.readString();
-    this.lGe = new LinkedList();
+    this.lIU = paramParcel.readString();
+    this.lKE = new LinkedList();
     int j = paramParcel.readInt();
     if (j > 0)
     {
       int i = 0;
       while (i < j)
       {
-        this.lGe.add(new iv(paramParcel.readString()));
+        this.lKE.add(new ix(paramParcel.readString()));
         i += 1;
       }
     }
-    this.lGf = paramParcel.createTypedArrayList(kv_14609.CREATOR);
+    this.lKF = paramParcel.createTypedArrayList(kv_14609.CREATOR);
     if (paramParcel.readByte() > 0)
     {
       bool1 = true;
-      this.lGo = bool1;
-      this.lFQ = paramParcel.readLong();
-      this.lGg = paramParcel.readLong();
-      this.lGh = paramParcel.readLong();
-      this.lGi = paramParcel.readLong();
-      this.lGj = paramParcel.readLong();
-      this.lGk = paramParcel.readLong();
+      this.lKO = bool1;
+      this.lKp = paramParcel.readLong();
+      this.lKG = paramParcel.readLong();
+      this.lKH = paramParcel.readLong();
+      this.lKI = paramParcel.readLong();
+      this.lKJ = paramParcel.readLong();
+      this.lKK = paramParcel.readLong();
       if (paramParcel.readByte() <= 0) {
         break label203;
       }
@@ -71,10 +71,10 @@ public class AppStartupPerformanceReportBundle
     label203:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.lGp = bool1;
-      this.lGl = paramParcel.readLong();
-      this.lGm = paramParcel.readLong();
-      this.lGn = paramParcel.readInt();
+      this.lKP = bool1;
+      this.lKL = paramParcel.readLong();
+      this.lKM = paramParcel.readLong();
+      this.lKN = paramParcel.readInt();
       AppMethodBeat.o(47156);
       return;
       bool1 = false;
@@ -85,25 +85,25 @@ public class AppStartupPerformanceReportBundle
   AppStartupPerformanceReportBundle(String paramString)
   {
     AppMethodBeat.i(47155);
-    this.lEv = paramString;
-    this.lGe = new LinkedList();
-    this.lGf = new LinkedList();
+    this.lIU = paramString;
+    this.lKE = new LinkedList();
+    this.lKF = new LinkedList();
     AppMethodBeat.o(47155);
   }
   
-  public final boolean bqX()
+  public final boolean brH()
   {
     AppMethodBeat.i(47153);
-    if (this.lGf == null)
+    if (this.lKF == null)
     {
       AppMethodBeat.o(47153);
       return false;
     }
-    Iterator localIterator = this.lGf.iterator();
+    Iterator localIterator = this.lKF.iterator();
     while (localIterator.hasNext())
     {
       kv_14609 localkv_14609 = (kv_14609)localIterator.next();
-      if ((localkv_14609 != null) && (localkv_14609.bqX()))
+      if ((localkv_14609 != null) && (localkv_14609.brH()))
       {
         AppMethodBeat.o(47153);
         return true;
@@ -122,24 +122,24 @@ public class AppStartupPerformanceReportBundle
   {
     int i = 1;
     AppMethodBeat.i(47154);
-    paramParcel.writeString(this.lEv);
-    if (bt.hj(this.lGe))
+    paramParcel.writeString(this.lIU);
+    if (bu.ht(this.lKE))
     {
       paramParcel.writeInt(-1);
-      paramParcel.writeTypedList(this.lGf);
-      if (!this.lGo) {
+      paramParcel.writeTypedList(this.lKF);
+      if (!this.lKO) {
         break label200;
       }
       paramInt = 1;
       label47:
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.lFQ);
-      paramParcel.writeLong(this.lGg);
-      paramParcel.writeLong(this.lGh);
-      paramParcel.writeLong(this.lGi);
-      paramParcel.writeLong(this.lGj);
-      paramParcel.writeLong(this.lGk);
-      if (!this.lGp) {
+      paramParcel.writeLong(this.lKp);
+      paramParcel.writeLong(this.lKG);
+      paramParcel.writeLong(this.lKH);
+      paramParcel.writeLong(this.lKI);
+      paramParcel.writeLong(this.lKJ);
+      paramParcel.writeLong(this.lKK);
+      if (!this.lKP) {
         break label205;
       }
     }
@@ -148,15 +148,15 @@ public class AppStartupPerformanceReportBundle
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.lGl);
-      paramParcel.writeLong(this.lGm);
-      paramParcel.writeInt(this.lGn);
+      paramParcel.writeLong(this.lKL);
+      paramParcel.writeLong(this.lKM);
+      paramParcel.writeInt(this.lKN);
       AppMethodBeat.o(47154);
       return;
-      paramParcel.writeInt(this.lGe.size());
-      Iterator localIterator = this.lGe.iterator();
+      paramParcel.writeInt(this.lKE.size());
+      Iterator localIterator = this.lKE.iterator();
       while (localIterator.hasNext()) {
-        paramParcel.writeString(((iv)localIterator.next()).RD());
+        paramParcel.writeString(((ix)localIterator.next()).RC());
       }
       break;
       paramInt = 0;

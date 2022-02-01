@@ -4,7 +4,7 @@ import android.view.Surface;
 
 public abstract interface c
 {
-  public abstract boolean cQr();
+  public abstract boolean cSW();
   
   public abstract long getDurationMs();
   
@@ -24,7 +24,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.o.c
  * JD-Core Version:    0.7.0.1
  */

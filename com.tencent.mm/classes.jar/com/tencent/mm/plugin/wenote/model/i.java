@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.wenote.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 
 public final class i
 {
-  private static final f<Integer, com.tencent.mm.protocal.b.a.c> fTI;
+  private static final f<Integer, com.tencent.mm.protocal.b.a.c> fVO;
   
   static
   {
     AppMethodBeat.i(30341);
-    fTI = new com.tencent.mm.memory.a.c(32);
+    fVO = new com.tencent.mm.memory.a.c(32);
     AppMethodBeat.o(30341);
   }
   
-  public static String azM()
+  public static String aAc()
   {
     AppMethodBeat.i(30340);
-    ba.aBQ();
-    String str = com.tencent.mm.model.c.azM();
+    bc.aCg();
+    String str = com.tencent.mm.model.c.aAc();
     AppMethodBeat.o(30340);
     return str;
   }

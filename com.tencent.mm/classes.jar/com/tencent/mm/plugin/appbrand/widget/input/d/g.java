@@ -7,20 +7,20 @@ public enum g
   static
   {
     AppMethodBeat.i(136699);
-    njw = new g("LEFT", 0);
-    njx = new g("RIGHT", 1);
-    njy = new g("CENTER", 2);
-    njz = new g[] { njw, njx, njy };
+    noE = new g("LEFT", 0);
+    noF = new g("RIGHT", 1);
+    noG = new g("CENTER", 2);
+    noH = new g[] { noE, noF, noG };
     AppMethodBeat.o(136699);
   }
   
   private g() {}
   
-  public static g Vu(String paramString)
+  public static g Wg(String paramString)
   {
     AppMethodBeat.i(136698);
     paramString = d.h(paramString, g.class);
-    g localg = njw;
+    g localg = noE;
     if (paramString == null) {
       paramString = localg;
     }

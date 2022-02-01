@@ -10,9 +10,9 @@ import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  public static String JV(String paramString)
+  public static String Ku(String paramString)
   {
     AppMethodBeat.i(151608);
     String str = paramString.trim();
@@ -53,30 +53,30 @@ public final class b
     paramContext = paramContext.getContentResolver();
     try
     {
-      long l = bt.aRf(paramString);
+      long l = bu.aSC(paramString);
       paramContext = ContactsContract.Contacts.openContactPhotoInputStream(paramContext, ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, l), paramBoolean);
       if (paramContext == null)
       {
         AppMethodBeat.o(151615);
         return null;
       }
-      Bitmap localBitmap = g.decodeStream(paramContext);
+      Bitmap localBitmap = h.decodeStream(paramContext);
       paramContext = localBitmap;
       if (localBitmap != null) {
-        paramContext = g.a(localBitmap, true, 4.0F);
+        paramContext = h.a(localBitmap, true, 4.0F);
       }
       AppMethodBeat.o(151615);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getAvatar, contactId:%s", new Object[] { paramString });
+      ae.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getAvatar, contactId:%s", new Object[] { paramString });
       AppMethodBeat.o(151615);
     }
     return null;
   }
   
-  public static boolean aLe(String paramString)
+  public static boolean aMA(String paramString)
   {
     AppMethodBeat.i(151607);
     if (paramString.length() <= 0)
@@ -110,7 +110,7 @@ public final class b
     //   31: ifne +17 -> 48
     //   34: ldc 118
     //   36: ldc 141
-    //   38: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   38: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   41: ldc 131
     //   43: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: iconst_0
@@ -119,7 +119,7 @@ public final class b
     //   49: invokevirtual 84	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   52: astore 7
     //   54: aload_0
-    //   55: invokestatic 90	com/tencent/mm/sdk/platformtools/bt:aRf	(Ljava/lang/String;)J
+    //   55: invokestatic 90	com/tencent/mm/sdk/platformtools/bu:aSC	(Ljava/lang/String;)J
     //   58: lstore 4
     //   60: new 147	android/content/ContentValues
     //   63: dup
@@ -155,7 +155,7 @@ public final class b
     //   111: iconst_0
     //   112: aload_0
     //   113: aastore
-    //   114: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   114: invokestatic 174	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   117: aload 7
     //   119: getstatic 177	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
     //   122: aconst_null
@@ -271,7 +271,7 @@ public final class b
     //   327: ldc 53
     //   329: iconst_0
     //   330: anewarray 4	java/lang/Object
-    //   333: invokestatic 126	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   333: invokestatic 126	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   336: aload_1
     //   337: ifnull +22 -> 359
     //   340: aload_1
@@ -346,14 +346,14 @@ public final class b
     //   291	302	400	java/lang/Exception
   }
   
-  public static List<String[]> dr(Context paramContext)
+  public static List<String[]> dt(Context paramContext)
   {
     AppMethodBeat.i(151611);
     LinkedList localLinkedList = new LinkedList();
     Object localObject2 = paramContext.getContentResolver();
-    if (!com.tencent.mm.pluginsdk.permission.b.j(paramContext, "android.permission.READ_CONTACTS", false))
+    if (!com.tencent.mm.pluginsdk.permission.b.k(paramContext, "android.permission.READ_CONTACTS", false))
     {
-      ad.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ae.e("MicroMsg.AddressBookUtil", "no contact permission");
       AppMethodBeat.o(151611);
       return localLinkedList;
     }
@@ -362,7 +362,7 @@ public final class b
       paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, "sort_key_alt");
       if (paramContext == null)
       {
-        ad.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
+        ae.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
         AppMethodBeat.o(151611);
         return localLinkedList;
       }
@@ -371,8 +371,8 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
-        ad.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo(), [%s]", new Object[] { paramContext.getMessage() });
+        ae.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
+        ae.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo(), [%s]", new Object[] { paramContext.getMessage() });
         paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
       }
       try
@@ -393,8 +393,8 @@ public final class b
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
-          ad.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo()2, [%s]", new Object[] { localException.getMessage() });
+          ae.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
+          ae.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo()2, [%s]", new Object[] { localException.getMessage() });
           paramContext.close();
         }
       }
@@ -408,7 +408,7 @@ public final class b
     }
   }
   
-  public static Uri eYG()
+  public static Uri fcu()
   {
     try
     {
@@ -429,7 +429,7 @@ public final class b
     //   7: ifnonnull +19 -> 26
     //   10: ldc 118
     //   12: ldc_w 300
-    //   15: invokestatic 302	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   15: invokestatic 302	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   18: ldc_w 298
     //   21: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
@@ -437,11 +437,11 @@ public final class b
     //   26: aload_0
     //   27: ldc 133
     //   29: iconst_0
-    //   30: invokestatic 252	com/tencent/mm/pluginsdk/permission/b:j	(Landroid/content/Context;Ljava/lang/String;Z)Z
+    //   30: invokestatic 252	com/tencent/mm/pluginsdk/permission/b:k	(Landroid/content/Context;Ljava/lang/String;Z)Z
     //   33: ifne +18 -> 51
     //   36: ldc 118
     //   38: ldc 141
-    //   40: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: ldc_w 298
     //   46: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: aconst_null
@@ -552,7 +552,7 @@ public final class b
     //   276: aload 11
     //   278: invokestatic 309	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   281: invokevirtual 231	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   284: invokestatic 302	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   284: invokestatic 302	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   287: aload_0
     //   288: astore 7
     //   290: aload 12
@@ -564,7 +564,7 @@ public final class b
     //   303: aload 12
     //   305: invokestatic 309	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   308: invokevirtual 231	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   311: invokestatic 302	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   311: invokestatic 302	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   314: aload 12
     //   316: ifnonnull +105 -> 421
     //   319: aconst_null
@@ -576,7 +576,7 @@ public final class b
     //   330: aload 6
     //   332: invokestatic 309	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   335: invokevirtual 231	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   338: invokestatic 302	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   338: invokestatic 302	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   341: aload_0
     //   342: astore 7
     //   344: aload_0
@@ -593,7 +593,7 @@ public final class b
     //   368: aload 7
     //   370: invokestatic 309	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   373: invokevirtual 231	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   376: invokestatic 302	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   376: invokestatic 302	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   379: aload 7
     //   381: astore 5
     //   383: aload 10
@@ -610,7 +610,7 @@ public final class b
     //   405: ldc_w 325
     //   408: iconst_0
     //   409: anewarray 4	java/lang/Object
-    //   412: invokestatic 126	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   412: invokestatic 126	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   415: aconst_null
     //   416: astore 10
     //   418: goto -268 -> 150
@@ -708,7 +708,7 @@ public final class b
     //   610: ldc_w 342
     //   613: iconst_0
     //   614: anewarray 4	java/lang/Object
-    //   617: invokestatic 126	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   617: invokestatic 126	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   620: aload_0
     //   621: astore 7
     //   623: aload_1
@@ -864,14 +864,14 @@ public final class b
     //   519	526	755	java/lang/Exception
   }
   
-  public static List<String[]> hi(Context paramContext)
+  public static List<String[]> ho(Context paramContext)
   {
     AppMethodBeat.i(151610);
     LinkedList localLinkedList = new LinkedList();
     Object localObject2 = paramContext.getContentResolver();
-    if (!com.tencent.mm.pluginsdk.permission.b.j(paramContext, "android.permission.READ_CONTACTS", false))
+    if (!com.tencent.mm.pluginsdk.permission.b.k(paramContext, "android.permission.READ_CONTACTS", false))
     {
-      ad.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ae.e("MicroMsg.AddressBookUtil", "no contact permission");
       AppMethodBeat.o(151610);
       return localLinkedList;
     }
@@ -880,7 +880,7 @@ public final class b
       paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
       if (paramContext == null)
       {
-        ad.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
+        ae.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
         AppMethodBeat.o(151610);
         return localLinkedList;
       }
@@ -889,8 +889,8 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception occured [%s]", new Object[] { paramContext.getMessage() });
-        ad.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
+        ae.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception occured [%s]", new Object[] { paramContext.getMessage() });
+        ae.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
         paramContext = null;
       }
       try
@@ -911,8 +911,8 @@ public final class b
       {
         for (;;)
         {
-          ad.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception2 occured [%s]", new Object[] { localException.getMessage() });
-          ad.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
+          ae.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception2 occured [%s]", new Object[] { localException.getMessage() });
+          ae.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
           paramContext.close();
         }
       }
@@ -926,14 +926,14 @@ public final class b
     }
   }
   
-  public static List<String[]> hj(Context paramContext)
+  public static List<String[]> hp(Context paramContext)
   {
     AppMethodBeat.i(151612);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = paramContext.getContentResolver();
-    if (!com.tencent.mm.pluginsdk.permission.b.j(paramContext, "android.permission.READ_CONTACTS", false))
+    if (!com.tencent.mm.pluginsdk.permission.b.k(paramContext, "android.permission.READ_CONTACTS", false))
     {
-      ad.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ae.e("MicroMsg.AddressBookUtil", "no contact permission");
       AppMethodBeat.o(151612);
       return localLinkedList;
     }
@@ -958,7 +958,7 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getEmailInfo", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getEmailInfo", new Object[0]);
       }
     }
     AppMethodBeat.o(151612);
@@ -966,7 +966,7 @@ public final class b
   }
   
   /* Error */
-  public static List<String> hk(Context paramContext)
+  public static List<String> hq(Context paramContext)
   {
     // Byte code:
     //   0: ldc_w 365
@@ -981,11 +981,11 @@ public final class b
     //   20: aload_0
     //   21: ldc 133
     //   23: iconst_0
-    //   24: invokestatic 252	com/tencent/mm/pluginsdk/permission/b:j	(Landroid/content/Context;Ljava/lang/String;Z)Z
+    //   24: invokestatic 252	com/tencent/mm/pluginsdk/permission/b:k	(Landroid/content/Context;Ljava/lang/String;Z)Z
     //   27: ifne +19 -> 46
     //   30: ldc 118
     //   32: ldc 141
-    //   34: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   37: ldc_w 365
     //   40: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: aload 4
@@ -1004,7 +1004,7 @@ public final class b
     //   63: astore_0
     //   64: ldc 118
     //   66: ldc_w 367
-    //   69: invokestatic 145	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   72: aload_2
     //   73: ifnull +9 -> 82
     //   76: aload_2
@@ -1057,7 +1057,7 @@ public final class b
     //   175: aload_3
     //   176: invokevirtual 264	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   179: aastore
-    //   180: invokestatic 266	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   180: invokestatic 266	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   183: aload_2
     //   184: astore_0
     //   185: ldc 118
@@ -1065,7 +1065,7 @@ public final class b
     //   188: ldc 53
     //   190: iconst_0
     //   191: anewarray 4	java/lang/Object
-    //   194: invokestatic 126	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   194: invokestatic 126	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   197: aload_2
     //   198: ifnull -48 -> 150
     //   201: aload_2
@@ -1115,9 +1115,9 @@ public final class b
   public static String i(String paramString, Context paramContext)
   {
     AppMethodBeat.i(151614);
-    if (!com.tencent.mm.pluginsdk.permission.b.j(paramContext, "android.permission.READ_CONTACTS", false))
+    if (!com.tencent.mm.pluginsdk.permission.b.k(paramContext, "android.permission.READ_CONTACTS", false))
     {
-      ad.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ae.e("MicroMsg.AddressBookUtil", "no contact permission");
       AppMethodBeat.o(151614);
       return "";
     }
@@ -1134,7 +1134,7 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AddressBookUtil", paramString, "getContactNameById:", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AddressBookUtil", paramString, "getContactNameById:", new Object[0]);
         paramString = null;
       }
     }

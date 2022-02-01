@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cul;
-import com.tencent.mm.protocal.protobuf.cum;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cvf;
+import com.tencent.mm.protocal.protobuf.cvg;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class n
   extends b
 {
   private final String TAG;
   private f callback;
-  private com.tencent.mm.al.b rr;
-  private cum xSb;
+  private com.tencent.mm.ak.b rr;
+  private cvg yhU;
   
   public n(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(67388);
     this.TAG = "MicroMsg.NetSceneBankRemitReportPayRes";
-    ad.i("MicroMsg.NetSceneBankRemitReportPayRes", "NetSceneBankRemitReportPayRes() transfer_bill_id:%s unique_id:%s unpay_type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    ae.i("MicroMsg.NetSceneBankRemitReportPayRes", "NetSceneBankRemitReportPayRes() transfer_bill_id:%s unique_id:%s unpay_type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
     b.a locala = new b.a();
-    cul localcul = new cul();
-    localcul.Hmi = new com.tencent.mm.bx.b(String.valueOf(paramString1).getBytes());
-    localcul.GZy = paramString2;
-    localcul.FLz = paramInt;
-    locala.hNM = localcul;
-    locala.hNN = new cum();
+    cvf localcvf = new cvf();
+    localcvf.HFI = new com.tencent.mm.bw.b(String.valueOf(paramString1).getBytes());
+    localcvf.HsZ = paramString2;
+    localcvf.GdY = paramInt;
+    locala.hQF = localcvf;
+    locala.hQG = new cvg();
     locala.uri = "/cgi-bin/mmpay-bin/reportpayres_tsbc";
     locala.funcId = 2739;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     AppMethodBeat.o(67388);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67390);
-    ad.i("MicroMsg.NetSceneBankRemitReportPayRes", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.xSb = ((cum)((com.tencent.mm.al.b)paramq).hNL.hNQ);
+    ae.i("MicroMsg.NetSceneBankRemitReportPayRes", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.yhU = ((cvg)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -58,9 +58,9 @@ public final class n
   
   public final void e(q paramq)
   {
-    paramq = (cum)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-    this.Lyu = paramq.dlw;
-    this.Lyv = paramq.paA;
+    paramq = (cvg)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    this.LVj = paramq.dmy;
+    this.LVk = paramq.phe;
   }
   
   public final int getType()

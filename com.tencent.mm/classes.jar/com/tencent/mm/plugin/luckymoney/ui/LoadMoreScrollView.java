@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class LoadMoreScrollView
   extends ScrollView
 {
-  private a vup;
+  private a vGt;
   
   public LoadMoreScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,14 +24,14 @@ public class LoadMoreScrollView
   protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(65415);
-    ad.v("MicroMsg.LoadMoreScrollView", paramInt1 + ", " + paramInt2 + ", " + paramBoolean1 + ", " + paramBoolean2 + ", " + getScrollY());
+    ae.v("MicroMsg.LoadMoreScrollView", paramInt1 + ", " + paramInt2 + ", " + paramBoolean1 + ", " + paramBoolean2 + ", " + getScrollY());
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     AppMethodBeat.o(65415);
   }
   
   public void setOnLoadMoreListener(a parama)
   {
-    this.vup = parama;
+    this.vGt = parama;
   }
   
   public static abstract interface a {}

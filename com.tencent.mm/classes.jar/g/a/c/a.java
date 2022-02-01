@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public short[] OcC;
-  public int OcD;
+  public short[] OzH;
+  public int OzI;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(155360);
-    this.OcD = paramInt;
-    this.OcC = new short[1 << paramInt];
+    this.OzI = paramInt;
+    this.OzH = new short[1 << paramInt];
     AppMethodBeat.o(155360);
   }
   
   public final int a(b paramb)
   {
     AppMethodBeat.i(155361);
-    int j = this.OcD;
+    int j = this.OzI;
     int i = 1;
     while (j != 0)
     {
-      i = paramb.f(this.OcC, i) + (i << 1);
+      i = paramb.f(this.OzH, i) + (i << 1);
       j -= 1;
     }
-    j = this.OcD;
+    j = this.OzI;
     AppMethodBeat.o(155361);
     return i - (1 << j);
   }

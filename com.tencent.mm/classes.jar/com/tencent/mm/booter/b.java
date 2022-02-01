@@ -9,19 +9,19 @@ import com.tencent.mm.app.g;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.l;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.k;
 
 public final class b
 {
-  public static void bH(Context paramContext)
+  public static void bJ(Context paramContext)
   {
     AppMethodBeat.i(131861);
-    if (c.WE())
+    if (c.WM())
     {
-      g.LO();
+      g.LW();
       AppMethodBeat.o(131861);
       return;
     }
@@ -34,7 +34,7 @@ public final class b
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.CoreServiceHelper", "stopServiceInstance() Exception:%s", new Object[] { paramContext.getMessage() });
+      ae.e("MicroMsg.CoreServiceHelper", "stopServiceInstance() Exception:%s", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(131861);
     }
   }
@@ -42,37 +42,37 @@ public final class b
   public static boolean c(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131860);
-    if (((!paramString.equals("noop")) || ((j.Icz) && (j.Icy))) && (l.cm(paramContext)))
+    if (((!paramString.equals("noop")) || ((k.IwK) && (k.IwJ))) && (l.co(paramContext)))
     {
-      ad.i("MicroMsg.CoreServiceHelper", "fully exited, no need to start service");
+      ae.i("MicroMsg.CoreServiceHelper", "fully exited, no need to start service");
       AppMethodBeat.o(131860);
       return false;
     }
-    ad.i("MicroMsg.CoreServiceHelper", "ensure service running, type=%s ifRepeat=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    ae.i("MicroMsg.CoreServiceHelper", "ensure service running, type=%s ifRepeat=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
     Intent localIntent = new Intent(paramContext, CoreService.class);
     localIntent.setFlags(268435456);
     localIntent.putExtra("START_TYPE", paramString);
-    if (c.WE())
+    if (c.WM())
     {
-      ad.i("MicroMsg.CoreServiceHelper", "ensureServiceInstance() bindService");
-      aj.getContext().bindService(localIntent, new g(), 1);
-      ad.i("MicroMsg.CoreServiceUtil", "if_26_num=%s  if_ignore_false=%s  ignore_true=%s", new Object[] { Boolean.valueOf(ax.aQz("service_launch_way").getBoolean("if_26_num", true)), Boolean.valueOf(ax.aQz("service_launch_way").getBoolean("if_ignore_false", true)), Boolean.valueOf(ax.aQz("service_launch_way").getBoolean("ignore_true", false)) });
-      if ((d.ly(26)) && (ax.aQz("service_launch_way").getBoolean("if_26_num", true)))
+      ae.i("MicroMsg.CoreServiceHelper", "ensureServiceInstance() bindService");
+      ak.getContext().bindService(localIntent, new g(), 1);
+      ae.i("MicroMsg.CoreServiceUtil", "if_26_num=%s  if_ignore_false=%s  ignore_true=%s", new Object[] { Boolean.valueOf(ay.aRW("service_launch_way").getBoolean("if_26_num", true)), Boolean.valueOf(ay.aRW("service_launch_way").getBoolean("if_ignore_false", true)), Boolean.valueOf(ay.aRW("service_launch_way").getBoolean("ignore_true", false)) });
+      if ((d.lA(26)) && (ay.aRW("service_launch_way").getBoolean("if_26_num", true)))
       {
-        ax.aQz("service_launch_way").edit().putBoolean("if_26_num", false).commit();
-        e.ygI.idkeyStat(954L, 92L, 1L, false);
+        ay.aRW("service_launch_way").edit().putBoolean("if_26_num", false).commit();
+        e.ywz.idkeyStat(954L, 92L, 1L, false);
       }
-      if (d.ly(26))
+      if (d.lA(26))
       {
-        if (c.bI(paramContext)) {
+        if (c.bK(paramContext)) {
           break label963;
         }
-        if (ax.aQz("service_launch_way").getBoolean("if_ignore_false", true))
+        if (ay.aRW("service_launch_way").getBoolean("if_ignore_false", true))
         {
-          ax.aQz("service_launch_way").edit().putBoolean("if_ignore_false", false).commit();
-          e.ygI.idkeyStat(954L, 90L, 1L, false);
-          if (ax.aQz("service_launch_way").getBoolean("ignore_true", false)) {
-            e.ygI.idkeyStat(954L, 91L, 1L, false);
+          ay.aRW("service_launch_way").edit().putBoolean("if_ignore_false", false).commit();
+          e.ywz.idkeyStat(954L, 90L, 1L, false);
+          if (ay.aRW("service_launch_way").getBoolean("ignore_true", false)) {
+            e.ywz.idkeyStat(954L, 91L, 1L, false);
           }
         }
       }
@@ -83,23 +83,23 @@ public final class b
       {
         AppMethodBeat.o(131860);
         return true;
-        ad.i("MicroMsg.CoreServiceHelper", "ensureServiceInstance() startService");
+        ae.i("MicroMsg.CoreServiceHelper", "ensureServiceInstance() startService");
         int i = 0;
         int k = 0;
         int j = 0;
         try
         {
           paramContext.startService(localIntent);
-          if (!d.ly(26)) {
+          if (!d.lA(26)) {
             break;
           }
-          if (d.ly(26))
+          if (d.lA(26))
           {
-            ad.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService crash_not_ignore=%s service_IllegalStateException=%s", new Object[] { Boolean.valueOf(ax.aQz("service_launch_way").getBoolean("crash_not_ignore", false)), Boolean.valueOf(c.bI(paramContext)) });
-            if ((ax.aQz("service_launch_way").getBoolean("crash_not_ignore", false)) && (c.bI(paramContext)) && (i == 0))
+            ae.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService crash_not_ignore=%s service_IllegalStateException=%s", new Object[] { Boolean.valueOf(ay.aRW("service_launch_way").getBoolean("crash_not_ignore", false)), Boolean.valueOf(c.bK(paramContext)) });
+            if ((ay.aRW("service_launch_way").getBoolean("crash_not_ignore", false)) && (c.bK(paramContext)) && (i == 0))
             {
-              ax.aQz("service_launch_way").edit().putBoolean("crash_not_ignore", false);
-              e.ygI.idkeyStat(954L, 85L, 1L, false);
+              ay.aRW("service_launch_way").edit().putBoolean("crash_not_ignore", false);
+              e.ywz.idkeyStat(954L, 85L, 1L, false);
             }
           }
           if (j == 0) {
@@ -113,71 +113,71 @@ public final class b
         {
           for (;;)
           {
-            ad.e("MicroMsg.CoreServiceHelper", "ensureServiceInstance() Exception = %s, Detail = %s SDK_INT = %s", new Object[] { localException.getClass().toString(), localException.getMessage(), Integer.valueOf(Build.VERSION.SDK_INT) });
+            ae.e("MicroMsg.CoreServiceHelper", "ensureServiceInstance() Exception = %s, Detail = %s SDK_INT = %s", new Object[] { localException.getClass().toString(), localException.getMessage(), Integer.valueOf(Build.VERSION.SDK_INT) });
             i = k;
             if ((localException instanceof IllegalStateException)) {
               i = 1;
             }
-            if (d.ly(26))
+            if (d.lA(26))
             {
-              ax localax = ax.aQz("service_launch_way");
-              boolean bool = c.bI(paramContext);
-              if (localax.getBoolean("service_first_crash", true))
+              ay localay = ay.aRW("service_launch_way");
+              boolean bool = c.bK(paramContext);
+              if (localay.getBoolean("service_first_crash", true))
               {
-                ad.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=true result=%s", new Object[] { Boolean.valueOf(bool) });
-                localax.edit().putBoolean("service_first_crash", false).commit();
-                e.ygI.idkeyStat(954L, 80L, 1L, false);
+                ae.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=true result=%s", new Object[] { Boolean.valueOf(bool) });
+                localay.edit().putBoolean("service_first_crash", false).commit();
+                e.ywz.idkeyStat(954L, 80L, 1L, false);
                 if ((localException instanceof IllegalStateException))
                 {
                   c.cy(false);
-                  localax.edit().putBoolean("service_IllegalStateException", true).commit();
-                  e.ygI.idkeyStat(954L, 81L, 1L, false);
+                  localay.edit().putBoolean("service_IllegalStateException", true).commit();
+                  e.ywz.idkeyStat(954L, 81L, 1L, false);
                   if (bool)
                   {
-                    e.ygI.idkeyStat(954L, 82L, 1L, false);
+                    e.ywz.idkeyStat(954L, 82L, 1L, false);
                     k = 1;
                     j = i;
                     i = k;
                     continue;
                   }
-                  localax.edit().putBoolean("crash_not_ignore", true).commit();
-                  e.ygI.idkeyStat(954L, 83L, 1L, false);
+                  localay.edit().putBoolean("crash_not_ignore", true).commit();
+                  e.ywz.idkeyStat(954L, 83L, 1L, false);
                   k = 1;
                   j = i;
                   i = k;
                   continue;
                 }
-                e.ygI.idkeyStat(954L, 86L, 1L, false);
+                e.ywz.idkeyStat(954L, 86L, 1L, false);
                 k = 1;
                 j = i;
                 i = k;
                 continue;
               }
-              ad.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false result=%s", new Object[] { Boolean.valueOf(bool) });
+              ae.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false result=%s", new Object[] { Boolean.valueOf(bool) });
               if ((localException instanceof IllegalStateException))
               {
                 c.cy(false);
-                if (!localax.getBoolean("service_IllegalStateException", false))
+                if (!localay.getBoolean("service_IllegalStateException", false))
                 {
-                  ad.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false service_IllegalStateException=false");
-                  localax.edit().putBoolean("service_IllegalStateException", true).commit();
-                  e.ygI.idkeyStat(954L, 87L, 1L, false);
+                  ae.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false service_IllegalStateException=false");
+                  localay.edit().putBoolean("service_IllegalStateException", true).commit();
+                  e.ywz.idkeyStat(954L, 87L, 1L, false);
                   if (bool)
                   {
-                    e.ygI.idkeyStat(954L, 82L, 1L, false);
+                    e.ywz.idkeyStat(954L, 82L, 1L, false);
                     k = 1;
                     j = i;
                     i = k;
                     continue;
                   }
-                  localax.edit().putBoolean("crash_not_ignore", true).commit();
-                  e.ygI.idkeyStat(954L, 83L, 1L, false);
+                  localay.edit().putBoolean("crash_not_ignore", true).commit();
+                  e.ywz.idkeyStat(954L, 83L, 1L, false);
                   k = 1;
                   j = i;
                   i = k;
                   continue;
                 }
-                ad.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false service_IllegalStateException=true");
+                ae.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false service_IllegalStateException=true");
               }
             }
             k = 1;
@@ -189,7 +189,7 @@ public final class b
         }
       }
       label963:
-      ax.aQz("service_launch_way").edit().putBoolean("ignore_true", true).commit();
+      ay.aRW("service_launch_way").edit().putBoolean("ignore_true", true).commit();
     }
   }
 }

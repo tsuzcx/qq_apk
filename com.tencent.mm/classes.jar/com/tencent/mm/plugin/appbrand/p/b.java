@@ -9,19 +9,19 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(198661);
-    lXx = new b("INSTANCE");
-    lXy = new b[] { lXx };
-    AppMethodBeat.o(198661);
+    AppMethodBeat.i(209720);
+    mce = new b("INSTANCE");
+    mcf = new b[] { mce };
+    AppMethodBeat.o(209720);
   }
   
   private b() {}
   
   public final com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c a(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    AppMethodBeat.i(198660);
+    AppMethodBeat.i(209719);
     paramString = new a(paramString, paramActivity, paramc);
-    AppMethodBeat.o(198660);
+    AppMethodBeat.o(209719);
     return paramString;
   }
 }

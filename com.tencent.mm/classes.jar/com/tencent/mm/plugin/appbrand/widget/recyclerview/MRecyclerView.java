@@ -14,9 +14,9 @@ public class MRecyclerView
   extends RecyclerView
 {
   private View GG;
-  protected a npd;
-  private a npe;
-  private b npf;
+  protected a nun;
+  private a nuo;
+  private b nup;
   
   public MRecyclerView(Context paramContext)
   {
@@ -45,12 +45,12 @@ public class MRecyclerView
   private void init()
   {
     AppMethodBeat.i(131573);
-    this.npd = new a();
-    if (bFI()) {
-      this.npd.av(true);
+    this.nun = new a();
+    if (bGD()) {
+      this.nun.av(true);
     }
-    super.setAdapter(this.npd);
-    this.npd.a(new RecyclerView.c()
+    super.setAdapter(this.nun);
+    this.nun.a(new RecyclerView.c()
     {
       public final void onChanged()
       {
@@ -59,7 +59,7 @@ public class MRecyclerView
         if (MRecyclerView.a(MRecyclerView.this) != null)
         {
           localView = MRecyclerView.a(MRecyclerView.this);
-          if (!MRecyclerView.this.bFH()) {
+          if (!MRecyclerView.this.bGC()) {
             break label46;
           }
         }
@@ -78,12 +78,12 @@ public class MRecyclerView
   public final int S(RecyclerView.w paramw)
   {
     AppMethodBeat.i(131574);
-    if (this.npd == null)
+    if (this.nun == null)
     {
       AppMethodBeat.o(131574);
       return -1;
     }
-    a locala = this.npd;
+    a locala = this.nun;
     if (paramw == null)
     {
       AppMethodBeat.o(131574);
@@ -95,7 +95,7 @@ public class MRecyclerView
       return -1;
     }
     int j = paramw.lN();
-    if (locala.noR.isEmpty()) {}
+    if (locala.nub.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
       AppMethodBeat.o(131574);
@@ -106,23 +106,23 @@ public class MRecyclerView
   public void addFooterView(View paramView)
   {
     AppMethodBeat.i(131578);
-    this.npd.addFooterView(paramView);
+    this.nun.addFooterView(paramView);
     AppMethodBeat.o(131578);
   }
   
   public final void addHeaderView(View paramView)
   {
     AppMethodBeat.i(131577);
-    a locala = this.npd;
-    locala.noR.add(paramView);
+    a locala = this.nun;
+    locala.nub.add(paramView);
     locala.ap(0, 1);
     AppMethodBeat.o(131577);
   }
   
-  protected boolean bFH()
+  protected boolean bGC()
   {
     AppMethodBeat.i(131584);
-    if (this.npd.getItemCount() == 0)
+    if (this.nun.getItemCount() == 0)
     {
       AppMethodBeat.o(131584);
       return true;
@@ -131,7 +131,7 @@ public class MRecyclerView
     return false;
   }
   
-  protected boolean bFI()
+  protected boolean bGD()
   {
     return true;
   }
@@ -139,7 +139,7 @@ public class MRecyclerView
   public final void c(int paramInt, View paramView)
   {
     AppMethodBeat.i(131579);
-    this.npd.c(paramInt, paramView);
+    this.nun.c(paramInt, paramView);
     AppMethodBeat.o(131579);
   }
   
@@ -153,13 +153,13 @@ public class MRecyclerView
   public final void du(View paramView)
   {
     AppMethodBeat.i(131580);
-    this.npd.du(paramView);
+    this.nun.du(paramView);
     AppMethodBeat.o(131580);
   }
   
   public RecyclerView.a getAdapter()
   {
-    return this.npd;
+    return this.nun;
   }
   
   public View getEmptyView()
@@ -170,18 +170,18 @@ public class MRecyclerView
   public void setAdapter(RecyclerView.a parama)
   {
     AppMethodBeat.i(131575);
-    a locala = this.npd;
+    a locala = this.nun;
     if (locala.acW != null)
     {
       if (!locala.acW.equals(parama)) {
-        locala.acW.b(locala.noV);
+        locala.acW.b(locala.nuf);
       }
     }
     else
     {
       locala.acW = parama;
       if (locala.acW != null) {
-        locala.acW.a(locala.noV);
+        locala.acW.a(locala.nuf);
       }
     }
     AppMethodBeat.o(131575);
@@ -199,7 +199,7 @@ public class MRecyclerView
     if (this.GG != null)
     {
       paramView = this.GG;
-      if (!bFH()) {
+      if (!bGC()) {
         break label56;
       }
     }
@@ -215,8 +215,8 @@ public class MRecyclerView
   public void setOnItemClickListener(a parama)
   {
     AppMethodBeat.i(131582);
-    this.npe = parama;
-    this.npd.noT = new b()
+    this.nuo = parama;
+    this.nun.nud = new b()
     {
       public final void R(View paramAnonymousView, int paramAnonymousInt)
       {
@@ -233,8 +233,8 @@ public class MRecyclerView
   public void setOnItemLongClickListener(b paramb)
   {
     AppMethodBeat.i(131583);
-    this.npf = paramb;
-    this.npd.noU = new c()
+    this.nup = paramb;
+    this.nun.nue = new c()
     {
       public final boolean S(View paramAnonymousView, int paramAnonymousInt)
       {

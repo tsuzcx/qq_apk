@@ -21,36 +21,36 @@ import java.util.Set;
 public final class l
   implements h
 {
-  private final h NxR;
-  private final ba Nya;
-  private Map<d.l.b.a.b.b.l, d.l.b.a.b.b.l> Nyb;
-  private final d.f Nyc;
+  private final h NUY;
+  private final ba NVh;
+  private Map<d.l.b.a.b.b.l, d.l.b.a.b.b.l> NVi;
+  private final d.f NVj;
   
   public l(h paramh, ba paramba)
   {
     AppMethodBeat.i(60235);
-    this.NxR = paramh;
-    paramh = paramba.guf();
+    this.NUY = paramh;
+    paramh = paramba.gyH();
     p.g(paramh, "givenSubstitutor.substitution");
-    this.Nya = d.l.b.a.b.j.a.a.d.c(paramh).gue();
-    this.Nyc = g.O((d.g.a.a)new a(this));
+    this.NVh = d.l.b.a.b.j.a.a.d.c(paramh).gyG();
+    this.NVj = g.O((d.g.a.a)new a(this));
     AppMethodBeat.o(60235);
   }
   
   private final <D extends d.l.b.a.b.b.l> D J(D paramD)
   {
     AppMethodBeat.i(60227);
-    if (this.Nya.MYs.isEmpty())
+    if (this.NVh.Nvy.isEmpty())
     {
       AppMethodBeat.o(60227);
       return paramD;
     }
-    if (this.Nyb == null) {
-      this.Nyb = ((Map)new HashMap());
+    if (this.NVi == null) {
+      this.NVi = ((Map)new HashMap());
     }
-    Map localMap = this.Nyb;
+    Map localMap = this.NVi;
     if (localMap == null) {
-      p.gfZ();
+      p.gkB();
     }
     Object localObject2 = localMap.get(paramD);
     Object localObject1 = localObject2;
@@ -58,7 +58,7 @@ public final class l
     {
       if ((paramD instanceof ap))
       {
-        localObject1 = ((ap)paramD).f(this.Nya);
+        localObject1 = ((ap)paramD).f(this.NVh);
         if (localObject1 == null)
         {
           paramD = (Throwable)new AssertionError("We expect that no conflict should happen while substitution is guaranteed to generate invariant projection, but " + paramD + " substitution fails");
@@ -90,7 +90,7 @@ public final class l
   private final <D extends d.l.b.a.b.b.l> Collection<D> y(Collection<? extends D> paramCollection)
   {
     AppMethodBeat.i(60228);
-    if (this.Nya.MYs.isEmpty())
+    if (this.NVh.Nvy.isEmpty())
     {
       AppMethodBeat.o(60228);
       return paramCollection;
@@ -115,7 +115,7 @@ public final class l
     AppMethodBeat.i(60229);
     p.h(paramf, "name");
     p.h(parama, "location");
-    paramf = y(this.NxR.a(paramf, parama));
+    paramf = y(this.NUY.a(paramf, parama));
     AppMethodBeat.o(60229);
     return paramf;
   }
@@ -125,7 +125,7 @@ public final class l
     AppMethodBeat.i(60232);
     p.h(paramd, "kindFilter");
     p.h(paramb, "nameFilter");
-    paramd = (Collection)this.Nyc.getValue();
+    paramd = (Collection)this.NVj.getValue();
     AppMethodBeat.o(60232);
     return paramd;
   }
@@ -135,7 +135,7 @@ public final class l
     AppMethodBeat.i(60231);
     p.h(paramf, "name");
     p.h(parama, "location");
-    paramf = y(this.NxR.b(paramf, parama));
+    paramf = y(this.NUY.b(paramf, parama));
     AppMethodBeat.o(60231);
     return paramf;
   }
@@ -145,7 +145,7 @@ public final class l
     AppMethodBeat.i(60230);
     p.h(paramf, "name");
     p.h(parama, "location");
-    paramf = this.NxR.c(paramf, parama);
+    paramf = this.NUY.c(paramf, parama);
     if (paramf != null)
     {
       paramf = (d.l.b.a.b.b.h)J((d.l.b.a.b.b.l)paramf);
@@ -156,18 +156,18 @@ public final class l
     return null;
   }
   
-  public final Set<d.l.b.a.b.f.f> gjW()
+  public final Set<d.l.b.a.b.f.f> goy()
   {
     AppMethodBeat.i(60233);
-    Set localSet = this.NxR.gjW();
+    Set localSet = this.NUY.goy();
     AppMethodBeat.o(60233);
     return localSet;
   }
   
-  public final Set<d.l.b.a.b.f.f> gjX()
+  public final Set<d.l.b.a.b.f.f> goz()
   {
     AppMethodBeat.i(60234);
-    Set localSet = this.NxR.gjX();
+    Set localSet = this.NUY.goz();
     AppMethodBeat.o(60234);
     return localSet;
   }
@@ -184,7 +184,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.l
  * JD-Core Version:    0.7.0.1
  */

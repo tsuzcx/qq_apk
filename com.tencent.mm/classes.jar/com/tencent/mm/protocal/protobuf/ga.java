@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ga
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public com.tencent.mm.bx.b Fyh;
+  public com.tencent.mm.bw.b FQF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,37 +13,37 @@ public final class ga
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Fyh == null)
+      if (this.FQF == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: Cookies");
         AppMethodBeat.o(32117);
         throw paramVarArgs;
       }
-      if (this.Fyh != null) {
-        paramVarArgs.c(1, this.Fyh);
+      if (this.FQF != null) {
+        paramVarArgs.c(1, this.FQF);
       }
       AppMethodBeat.o(32117);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Fyh == null) {
+      if (this.FQF == null) {
         break label268;
       }
     }
     label268:
-    for (paramInt = f.a.a.b.b.a.b(1, this.Fyh) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.b(1, this.FQF) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(32117);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.Fyh == null)
+        if (this.FQF == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: Cookies");
           AppMethodBeat.o(32117);
@@ -62,7 +62,7 @@ public final class ga
           AppMethodBeat.o(32117);
           return -1;
         }
-        localga.Fyh = locala.NPN.gxI();
+        localga.FQF = locala.OmT.gCk();
         AppMethodBeat.o(32117);
         return 0;
       }

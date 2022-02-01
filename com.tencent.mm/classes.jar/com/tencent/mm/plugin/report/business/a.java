@@ -7,14 +7,14 @@ public final class a
 {
   public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString)
   {
-    AppMethodBeat.i(197139);
+    AppMethodBeat.i(221077);
     u localu = new u();
-    localu.dTf = paramLong1;
-    localu.dTg = paramLong2;
-    localu.dTh = paramLong3;
-    localu.dTi = localu.t("UserName", paramString, true);
-    localu.aLk();
-    AppMethodBeat.o(197139);
+    localu.dUv = paramLong1;
+    localu.dUw = paramLong2;
+    localu.dUx = paramLong3;
+    localu.dUy = localu.t("UserName", paramString, true);
+    localu.aLH();
+    AppMethodBeat.o(221077);
   }
 }
 

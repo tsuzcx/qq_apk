@@ -17,9 +17,9 @@ public class WXWebpageObject
   
   public WXWebpageObject(String paramString)
   {
-    AppMethodBeat.i(196979);
+    AppMethodBeat.i(194091);
     this.webpageUrl = paramString;
-    AppMethodBeat.o(196979);
+    AppMethodBeat.o(194091);
   }
   
   public boolean checkArgs()

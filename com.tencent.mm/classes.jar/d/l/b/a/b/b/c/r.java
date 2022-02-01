@@ -22,26 +22,26 @@ public final class r
   extends j
   implements ad
 {
-  final b MVU;
-  private final f MYJ;
-  private final h MYK;
-  final w MYL;
+  final b Nta;
+  private final f NvP;
+  private final h NvQ;
+  final w NvR;
   
   static
   {
     AppMethodBeat.i(57124);
-    cwV = new k[] { (k)z.a(new x(z.bp(r.class), "fragments", "getFragments()Ljava/util/List;")) };
+    cxA = new k[] { (k)z.a(new x(z.bp(r.class), "fragments", "getFragments()Ljava/util/List;")) };
     AppMethodBeat.o(57124);
   }
   
   public r(w paramw, b paramb, d.l.b.a.b.l.j paramj)
   {
-    super(g.a.gjL(), paramb.gri());
+    super(g.a.gon(), paramb.gvK());
     AppMethodBeat.i(57130);
-    this.MYL = paramw;
-    this.MVU = paramb;
-    this.MYJ = paramj.S((a)new a(this));
-    this.MYK = ((h)new g(paramj.S((a)new b(this))));
+    this.NvR = paramw;
+    this.Nta = paramb;
+    this.NvP = paramj.S((a)new a(this));
+    this.NvQ = ((h)new g(paramj.S((a)new b(this))));
     AppMethodBeat.o(57130);
   }
   
@@ -68,7 +68,7 @@ public final class r
         AppMethodBeat.o(57127);
         return false;
       }
-      if ((p.i(this.MVU, paramObject.gjg())) && (p.i(this.MYL, paramObject.gjh())))
+      if ((p.i(this.Nta, paramObject.gnI())) && (p.i(this.NvR, paramObject.gnJ())))
       {
         AppMethodBeat.o(57127);
         return true;
@@ -81,26 +81,26 @@ public final class r
   public final List<ab> getFragments()
   {
     AppMethodBeat.i(57125);
-    List localList = (List)i.a(this.MYJ, cwV[0]);
+    List localList = (List)i.a(this.NvP, cxA[0]);
     AppMethodBeat.o(57125);
     return localList;
   }
   
-  public final h gil()
+  public final h gmN()
   {
-    return this.MYK;
+    return this.NvQ;
   }
   
-  public final b gjg()
+  public final b gnI()
   {
-    return this.MVU;
+    return this.Nta;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(57128);
-    int i = this.MYL.hashCode();
-    int j = this.MVU.hashCode();
+    int i = this.NvR.hashCode();
+    int j = this.Nta.hashCode();
     AppMethodBeat.o(57128);
     return i * 31 + j;
   }
@@ -135,7 +135,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.r
  * JD-Core Version:    0.7.0.1
  */

@@ -5,45 +5,45 @@ import java.util.concurrent.locks.Lock;
 
 public final class b
 {
-  public int fVt = 0;
-  public int fVu = 0;
-  public byte[] fVv = null;
-  public int fVw = 0;
-  public int fVx = 0;
-  public boolean fVy = false;
-  public Lock fVz = null;
+  public int fXA = 0;
+  public byte[] fXB = null;
+  public int fXC = 0;
+  public int fXD = 0;
+  public boolean fXE = false;
+  public Lock fXF = null;
+  public int fXz = 0;
   
-  public final int ZH()
+  public final int ZQ()
   {
     AppMethodBeat.i(155548);
-    if (this.fVy) {
-      this.fVz.lock();
+    if (this.fXE) {
+      this.fXF.lock();
     }
-    if (this.fVw == this.fVx)
+    if (this.fXC == this.fXD)
     {
       AppMethodBeat.o(155548);
       return 0;
     }
-    if (this.fVw < this.fVx) {
-      this.fVu = (this.fVx - this.fVw);
+    if (this.fXC < this.fXD) {
+      this.fXA = (this.fXD - this.fXC);
     }
     for (;;)
     {
-      if (this.fVy) {
-        this.fVz.unlock();
+      if (this.fXE) {
+        this.fXF.unlock();
       }
-      int i = this.fVu;
+      int i = this.fXA;
       AppMethodBeat.o(155548);
       return i;
-      if (this.fVw > this.fVx) {
-        this.fVu = (this.fVx + this.fVt - this.fVw);
+      if (this.fXC > this.fXD) {
+        this.fXA = (this.fXD + this.fXz - this.fXC);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.b.b
  * JD-Core Version:    0.7.0.1
  */

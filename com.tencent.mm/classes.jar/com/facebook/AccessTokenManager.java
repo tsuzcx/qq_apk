@@ -75,7 +75,7 @@ public final class AccessTokenManager
     try
     {
       if (instance == null) {
-        instance = new AccessTokenManager(d.U(FacebookSdk.getApplicationContext()), new AccessTokenCache());
+        instance = new AccessTokenManager(d.V(FacebookSdk.getApplicationContext()), new AccessTokenCache());
       }
       AccessTokenManager localAccessTokenManager = instance;
       AppMethodBeat.o(16991);

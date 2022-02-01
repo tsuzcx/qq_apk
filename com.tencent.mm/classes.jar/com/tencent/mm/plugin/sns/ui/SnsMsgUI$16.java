@@ -14,22 +14,22 @@ final class SnsMsgUI$16
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198372);
+    AppMethodBeat.i(219910);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
       a.a(false, this, "com/tencent/mm/plugin/sns/ui/SnsMsgUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(198372);
+      AppMethodBeat.o(219910);
       return false;
-      this.AfF.hideVKB();
-      SnsMsgUI.i(this.AfF)[0] = ((int)paramMotionEvent.getRawX());
-      SnsMsgUI.i(this.AfF)[1] = ((int)paramMotionEvent.getRawY());
+      this.AwR.hideVKB();
+      SnsMsgUI.i(this.AwR)[0] = ((int)paramMotionEvent.getRawX());
+      SnsMsgUI.i(this.AwR)[1] = ((int)paramMotionEvent.getRawY());
     }
   }
 }

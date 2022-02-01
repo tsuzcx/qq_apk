@@ -6,7 +6,7 @@ import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.LinkedList;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.SwipeBackLayout.a;
@@ -34,7 +34,7 @@ public class s
     this.chZ = null;
     this.chO = new q()
     {
-      public final String Cp()
+      public final String Cs()
       {
         AppMethodBeat.i(140446);
         String str = s.a(s.this);
@@ -45,9 +45,9 @@ public class s
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(140447);
-        if (s.this.Cr() != null)
+        if (s.this.Cu() != null)
         {
-          paramAnonymousWebResourceRequest = s.this.Cr().a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
+          paramAnonymousWebResourceRequest = s.this.Cu().a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
           AppMethodBeat.o(140447);
           return paramAnonymousWebResourceRequest;
         }
@@ -55,22 +55,22 @@ public class s
         return null;
       }
       
-      public final void cD(String paramAnonymousString)
+      public final void cE(String paramAnonymousString)
       {
         AppMethodBeat.i(140444);
-        if (s.this.Cr() != null) {
-          s.this.Cr().a(s.this, paramAnonymousString);
+        if (s.this.Cu() != null) {
+          s.this.Cu().a(s.this, paramAnonymousString);
         }
         AppMethodBeat.o(140444);
       }
       
-      public final void cE(String paramAnonymousString)
+      public final void cF(String paramAnonymousString)
       {
         AppMethodBeat.i(140445);
-        if (s.this.Cr() != null) {
-          s.this.Cr().b(s.this, paramAnonymousString);
+        if (s.this.Cu() != null) {
+          s.this.Cu().b(s.this, paramAnonymousString);
         }
-        s.this.BR();
+        s.this.BS();
         AppMethodBeat.o(140445);
       }
     };
@@ -82,27 +82,27 @@ public class s
       paramp = this.chX;
       paramj = paramp;
       if (paramp == null) {
-        paramj = this.chm.BZ();
+        paramj = this.chm.Ca();
       }
       paramp = paramj;
       if (paramj == null) {
-        paramp = new p(this.mContext, this.chm.Ca());
+        paramp = new p(this.mContext, this.chm.Cb());
       }
       this.chX = paramp;
       paramj = this.chX;
-      paramj.a(this.chm.Cf(), this);
+      paramj.a(this.chm.Ci(), this);
       paramj.chO = this.chO;
-      paramj = BQ();
+      paramj = BR();
       this.chY = new SwipeBackLayout(this.mContext);
       this.chY.setScrimColor(0);
       this.chY.addView(paramj);
       this.chY.setContentView(paramj);
       this.chY.a(new SwipeBackLayout.a()
       {
-        public final void Cs()
+        public final void Cv()
         {
           AppMethodBeat.i(140442);
-          if (s.this.chm.Cd().size() <= 1) {
+          if (s.this.chm.Cg().size() <= 1) {
             s.this.chY.setEnableGesture(false);
           }
           AppMethodBeat.o(140442);
@@ -117,9 +117,9 @@ public class s
         {
           AppMethodBeat.i(140443);
           Object localObject = s.this;
-          paramAnonymousInt = ((h)localObject).chm.Cd().indexOf(localObject);
-          if (paramAnonymousInt >= ((h)localObject).chm.Cd().size() - 1) {}
-          for (localObject = null; localObject == null; localObject = (h)((h)localObject).chm.Cd().get(paramAnonymousInt + 1))
+          paramAnonymousInt = ((h)localObject).chm.Cg().indexOf(localObject);
+          if (paramAnonymousInt >= ((h)localObject).chm.Cg().size() - 1) {}
+          for (localObject = null; localObject == null; localObject = (h)((h)localObject).chm.Cg().get(paramAnonymousInt + 1))
           {
             AppMethodBeat.o(140443);
             return;
@@ -129,10 +129,10 @@ public class s
             localObject = ((h)localObject).getContentView();
             ((View)localObject).clearAnimation();
             ((View)localObject).setTranslationX(0.0F);
-            s.this.chm.Ce().bp(false);
+            s.this.chm.Ch().bp(false);
             this.cia[0] = true;
           }
-          ad.i("", "scrollPercent %f", new Object[] { Float.valueOf(paramAnonymousFloat) });
+          ae.i("", "scrollPercent %f", new Object[] { Float.valueOf(paramAnonymousFloat) });
           AppMethodBeat.o(140443);
         }
         
@@ -145,12 +145,12 @@ public class s
     }
   }
   
-  public final n BN()
+  public final n BO()
   {
     return this.chX;
   }
   
-  protected View BQ()
+  protected View BR()
   {
     AppMethodBeat.i(140454);
     View localView = this.chX.getView();
@@ -158,12 +158,12 @@ public class s
     return localView;
   }
   
-  protected String Cp()
+  protected String Cs()
   {
     return "";
   }
   
-  public final void Cq()
+  public final void Ct()
   {
     AppMethodBeat.i(140452);
     if (this.chY != null) {
@@ -172,7 +172,7 @@ public class s
     AppMethodBeat.o(140452);
   }
   
-  public final a Cr()
+  public final a Cu()
   {
     return (a)this.chn;
   }
@@ -193,7 +193,7 @@ public class s
   public void destroy()
   {
     AppMethodBeat.i(140457);
-    BV();
+    BW();
     this.chX.destroy();
     AppMethodBeat.o(140457);
   }

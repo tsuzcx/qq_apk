@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aiy;
-import com.tencent.mm.protocal.protobuf.aiz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.protocal.protobuf.aji;
+import com.tencent.mm.protocal.protobuf.ajj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 
 public final class w
   extends n
@@ -31,20 +31,20 @@ public final class w
     AppMethodBeat.i(131079);
     this.opType = paramInt;
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new aiy();
-    ((b.a)localObject).hNN = new aiz();
+    ((b.a)localObject).hQF = new aji();
+    ((b.a)localObject).hQG = new ajj();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/facebookauth";
     ((b.a)localObject).funcId = 183;
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDC();
-    aiy localaiy = (aiy)this.rr.hNK.hNQ;
+    this.rr = ((b.a)localObject).aDS();
+    aji localaji = (aji)this.rr.hQD.hQJ;
     localObject = paramString;
-    if (bt.isNullOrNil(paramString)) {
+    if (bu.isNullOrNil(paramString)) {
       localObject = "";
     }
-    localaiy.Ggb = ((String)localObject);
-    localaiy.gsV = paramInt;
+    localaji.GyK = ((String)localObject);
+    localaji.gvx = paramInt;
     AppMethodBeat.o(131079);
   }
   
@@ -66,25 +66,25 @@ public final class w
   {
     AppMethodBeat.i(131081);
     updateDispatchId(paramInt1);
-    ad.d("MicroMsg.NetSceneFaceBookAuth", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    ae.d("MicroMsg.NetSceneFaceBookAuth", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (aiz)this.rr.hNL.hNQ;
+      paramq = (ajj)this.rr.hQE.hQJ;
       paramInt1 = paramq.getBaseResponse().Ret;
       if (paramInt1 != 0)
       {
-        ad.e("MicroMsg.NetSceneFaceBookAuth", "baseresponse.ret = ".concat(String.valueOf(paramInt1)));
+        ae.e("MicroMsg.NetSceneFaceBookAuth", "baseresponse.ret = ".concat(String.valueOf(paramInt1)));
         this.callback.onSceneEnd(4, paramInt1, paramString, this);
         AppMethodBeat.o(131081);
         return;
       }
-      ad.d("MicroMsg.NetSceneFaceBookAuth", "fbuserid = " + paramq.Ggd + ", fbusername = " + paramq.Gge);
+      ae.d("MicroMsg.NetSceneFaceBookAuth", "fbuserid = " + paramq.GyM + ", fbusername = " + paramq.GyN);
       if ((this.opType == 0) || (this.opType == 1))
       {
-        g.ajC().ajl().set(65825, paramq.Ggd);
-        c.CL(paramq.Ggd);
-        g.ajC().ajl().set(65826, paramq.Gge);
-        g.ajC().ajl().fqc();
+        g.ajR().ajA().set(65825, paramq.GyM);
+        c.Dn(paramq.GyM);
+        g.ajR().ajA().set(65826, paramq.GyN);
+        g.ajR().ajA().fuc();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -16,25 +16,23 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.c.a;
 import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.as.a;
-import com.tencent.mm.model.as.e;
+import com.tencent.mm.model.au.a;
+import com.tencent.mm.model.au.e;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.voip.b.f;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.protocal.protobuf.cbv;
-import com.tencent.mm.protocal.protobuf.dhy;
-import com.tencent.mm.protocal.protobuf.dws;
-import com.tencent.mm.protocal.protobuf.dya;
-import com.tencent.mm.protocal.protobuf.dyd;
-import com.tencent.mm.protocal.protobuf.dyt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.ccp;
+import com.tencent.mm.protocal.protobuf.dit;
+import com.tencent.mm.protocal.protobuf.dyj;
+import com.tencent.mm.protocal.protobuf.dzr;
+import com.tencent.mm.protocal.protobuf.dzu;
+import com.tencent.mm.protocal.protobuf.eak;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -44,128 +42,128 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class v2protocal
 {
-  public static int CfQ;
-  public static boolean Cfa;
-  public static boolean Cfb;
-  public static int Cfc;
-  private static int CgM;
-  public static d Chk;
-  public static Surface Chm;
-  public static com.tencent.mm.media.g.d Chn;
+  public static boolean CwB;
+  public static boolean CwC;
+  public static int CwD;
+  public static int Cxr;
+  public static d CyL;
+  public static Surface CyN;
+  public static com.tencent.mm.media.g.d CyO;
+  private static int Cyn;
   public static final int VOICE_FRAME_BYTES;
   public static final int VOICE_SAMPLERATE;
   protected static int cpuFlag0;
   public static SurfaceTexture mSurfaceTexture;
-  public int CfA;
-  public int CfB;
-  public int CfC;
-  public int CfD;
-  public int CfE;
-  public int CfF;
-  public int CfG;
-  public int CfH;
-  public int CfI;
-  public int CfJ;
-  public int CfK;
-  public int CfL;
-  public int CfM;
-  public int CfN;
-  public int CfO;
-  public int CfP;
-  public String CfR;
-  public int CfS;
-  public int CfT;
-  public int CfU;
-  public int CfV;
-  public int CfW;
-  public int CfX;
-  public int CfY;
-  public int CfZ;
-  public int Cfd;
-  public int Cfe;
-  public int Cff;
-  public long Cfg;
-  public byte[] Cfh;
-  public volatile byte[] Cfi;
-  public byte[] Cfj;
-  public int Cfk;
-  public byte[] Cfl;
-  public int Cfm;
-  public int Cfn;
-  public int Cfo;
-  public int Cfp;
-  public byte[] Cfq;
-  public byte[] Cfr;
-  public byte[] Cfs;
-  public int Cft;
-  public int Cfu;
-  public int Cfv;
-  public int Cfw;
-  public int Cfx;
-  public int Cfy;
-  public int Cfz;
-  public byte[] CgA;
-  public int CgB;
-  public byte[] CgC;
-  public byte[] CgD;
-  public int CgE;
-  public int CgF;
-  public int CgG;
-  public int CgH;
-  public int CgI;
-  public byte[] CgJ;
-  public byte[] CgK;
-  public byte[] CgL;
-  public ArrayBlockingQueue<byte[]> CgN;
-  long CgO;
-  public byte[] CgP;
-  public int CgQ;
-  public int CgR;
-  public int CgS;
-  public int CgT;
-  public int CgU;
-  byte[] CgV;
-  byte[] CgW;
-  byte[] CgX;
-  byte[] CgY;
-  byte[] CgZ;
-  public int Cga;
-  public int Cgb;
-  public int Cgc;
-  public int Cgd;
-  public int Cge;
-  public int Cgf;
-  public int Cgg;
-  public int Cgh;
-  public int Cgi;
-  public int Cgj;
-  public int Cgk;
-  public int Cgl;
-  public int Cgm;
-  public int Cgn;
-  public int Cgo;
-  public int Cgp;
-  public int[] Cgq;
-  public int Cgr;
-  public int Cgs;
-  public int Cgt;
-  public int Cgu;
-  public byte[] Cgv;
-  public int Cgw;
-  public int Cgx;
-  public int Cgy;
-  public int Cgz;
-  byte[] Cha;
-  byte[] Chb;
-  public byte[] Chc;
-  public byte[] Chd;
-  public int[] Che;
-  int Chf;
-  public o Chg;
-  public int Chh;
-  private int Chi;
-  public volatile e Chj;
-  int Chl;
+  public int CwE;
+  public int CwF;
+  public int CwG;
+  public long CwH;
+  public byte[] CwI;
+  public volatile byte[] CwJ;
+  public byte[] CwK;
+  public int CwL;
+  public byte[] CwM;
+  public int CwN;
+  public int CwO;
+  public int CwP;
+  public int CwQ;
+  public byte[] CwR;
+  public byte[] CwS;
+  public byte[] CwT;
+  public int CwU;
+  public int CwV;
+  public int CwW;
+  public int CwX;
+  public int CwY;
+  public int CwZ;
+  public int CxA;
+  public int CxB;
+  public int CxC;
+  public int CxD;
+  public int CxE;
+  public int CxF;
+  public int CxG;
+  public int CxH;
+  public int CxI;
+  public int CxJ;
+  public int CxK;
+  public int CxL;
+  public int CxM;
+  public int CxN;
+  public int CxO;
+  public int CxP;
+  public int CxQ;
+  public int[] CxR;
+  public int CxS;
+  public int CxT;
+  public int CxU;
+  public int CxV;
+  public byte[] CxW;
+  public int CxX;
+  public int CxY;
+  public int CxZ;
+  public int Cxa;
+  public int Cxb;
+  public int Cxc;
+  public int Cxd;
+  public int Cxe;
+  public int Cxf;
+  public int Cxg;
+  public int Cxh;
+  public int Cxi;
+  public int Cxj;
+  public int Cxk;
+  public int Cxl;
+  public int Cxm;
+  public int Cxn;
+  public int Cxo;
+  public int Cxp;
+  public int Cxq;
+  public String Cxs;
+  public int Cxt;
+  public int Cxu;
+  public int Cxv;
+  public int Cxw;
+  public int Cxx;
+  public int Cxy;
+  public int Cxz;
+  byte[] CyA;
+  byte[] CyB;
+  byte[] CyC;
+  public byte[] CyD;
+  public byte[] CyE;
+  public int[] CyF;
+  int CyG;
+  public o CyH;
+  public int CyI;
+  private int CyJ;
+  public volatile e CyK;
+  int CyM;
+  public int Cya;
+  public byte[] Cyb;
+  public int Cyc;
+  public byte[] Cyd;
+  public byte[] Cye;
+  public int Cyf;
+  public int Cyg;
+  public int Cyh;
+  public int Cyi;
+  public int Cyj;
+  public byte[] Cyk;
+  public byte[] Cyl;
+  public byte[] Cym;
+  public ArrayBlockingQueue<byte[]> Cyo;
+  long Cyp;
+  public byte[] Cyq;
+  public int Cyr;
+  public int Cys;
+  public int Cyt;
+  public int Cyu;
+  public int Cyv;
+  byte[] Cyw;
+  byte[] Cyx;
+  byte[] Cyy;
+  byte[] Cyz;
   int bitrate;
   public int channelStrategy;
   public int defaultHeight;
@@ -211,152 +209,152 @@ public class v2protocal
   int field_statInfoLength;
   public int field_statusSyncKey;
   public int field_videoDuration;
-  public String gno;
-  public long hZF;
-  private ap handler;
+  public String gpK;
+  private aq handler;
   public int height;
-  protected boolean ivz;
+  public long icx;
+  protected boolean iys;
   public int netType;
-  public boolean oYd;
-  public int pho;
+  public boolean peH;
+  public int pnU;
   public int roomId;
-  public int uLA;
-  public long uLt;
-  public int uLv;
+  public long uXg;
+  public int uXi;
+  public int uXn;
   public int width;
   
   static
   {
     AppMethodBeat.i(115291);
     v2protocal.class.getClassLoader();
-    j.vr("voipMain");
-    int i = m.aaf();
+    j.vN("voipMain");
+    int i = m.aao();
     cpuFlag0 = i;
     if ((i & 0x400) != 0) {}
     for (i = 16000;; i = 8000)
     {
       VOICE_SAMPLERATE = i;
       VOICE_FRAME_BYTES = i / 1000 * 20 * 2;
-      Cfa = false;
-      Cfb = false;
-      Cfc = 0;
-      CfQ = 0;
-      CgM = 10;
-      Chk = null;
-      Chm = null;
-      Chn = null;
+      CwB = false;
+      CwC = false;
+      CwD = 0;
+      Cxr = 0;
+      Cyn = 10;
+      CyL = null;
+      CyN = null;
+      CyO = null;
       AppMethodBeat.o(115291);
       return;
     }
   }
   
-  public v2protocal(ap paramap)
+  public v2protocal(aq paramaq)
   {
     AppMethodBeat.i(115273);
-    this.hZF = 0L;
+    this.icx = 0L;
     this.defaultWidth = 320;
     this.defaultHeight = 240;
     this.netType = 0;
-    this.Cfd = 0;
-    this.pho = 0;
-    this.gno = "";
-    this.Cfe = 0;
-    this.Cff = 0;
+    this.CwE = 0;
+    this.pnU = 0;
+    this.gpK = "";
+    this.CwF = 0;
+    this.CwG = 0;
     this.roomId = 0;
-    this.Cfg = 0L;
-    this.uLA = 0;
-    this.uLt = 0L;
-    this.uLv = 0;
-    this.Cfh = null;
-    this.Cfi = null;
-    this.Cfj = null;
-    this.Cfk = 0;
-    this.Cfl = null;
+    this.CwH = 0L;
+    this.uXn = 0;
+    this.uXg = 0L;
+    this.uXi = 0;
+    this.CwI = null;
+    this.CwJ = null;
+    this.CwK = null;
+    this.CwL = 0;
+    this.CwM = null;
     this.channelStrategy = 0;
-    this.Cfm = 500;
-    this.Cfn = 30;
-    this.Cfo = 999;
-    this.Cfp = 0;
-    this.Cfq = null;
-    this.Cfr = null;
-    this.Cfs = new byte[10];
-    this.Cft = 20;
-    this.Cfu = 0;
-    this.Cfv = 0;
-    this.Cfw = 0;
-    this.Cfx = 0;
-    this.Cfy = 0;
-    this.Cfz = 65536;
-    this.CfA = 0;
-    this.CfB = 0;
-    this.CfC = 0;
-    this.CfD = 7;
-    this.CfE = 3;
-    this.CfF = 3;
-    this.CfG = 0;
-    this.CfH = 0;
-    this.CfI = -1;
-    this.CfJ = -1;
-    this.CfK = 0;
-    this.CfL = 0;
-    this.CfM = 0;
-    this.CfN = 0;
-    this.CfO = 0;
-    this.CfP = 0;
-    this.CfR = "";
-    this.CfS = 0;
-    this.CfT = 0;
-    this.CfU = 0;
-    this.CfV = 0;
-    this.CfW = 100;
-    this.CfX = 300;
-    this.CfY = 1;
-    this.CfZ = 1;
-    this.Cga = 0;
-    this.Cgb = 1;
-    this.Cgc = 0;
-    this.Cgd = 0;
-    this.Cge = 0;
-    this.Cgf = 0;
-    this.Cgg = 0;
-    this.Cgh = 0;
-    this.Cgi = 0;
-    this.Cgj = 0;
-    this.Cgk = 0;
-    this.Cgl = 0;
-    this.Cgm = 0;
-    this.Cgn = 0;
-    this.Cgo = 0;
-    this.Cgp = 0;
-    this.Cgq = null;
+    this.CwN = 500;
+    this.CwO = 30;
+    this.CwP = 999;
+    this.CwQ = 0;
+    this.CwR = null;
+    this.CwS = null;
+    this.CwT = new byte[10];
+    this.CwU = 20;
+    this.CwV = 0;
+    this.CwW = 0;
+    this.CwX = 0;
+    this.CwY = 0;
+    this.CwZ = 0;
+    this.Cxa = 65536;
+    this.Cxb = 0;
+    this.Cxc = 0;
+    this.Cxd = 0;
+    this.Cxe = 7;
+    this.Cxf = 3;
+    this.Cxg = 3;
+    this.Cxh = 0;
+    this.Cxi = 0;
+    this.Cxj = -1;
+    this.Cxk = -1;
+    this.Cxl = 0;
+    this.Cxm = 0;
+    this.Cxn = 0;
+    this.Cxo = 0;
+    this.Cxp = 0;
+    this.Cxq = 0;
+    this.Cxs = "";
+    this.Cxt = 0;
+    this.Cxu = 0;
+    this.Cxv = 0;
+    this.Cxw = 0;
+    this.Cxx = 100;
+    this.Cxy = 300;
+    this.Cxz = 1;
+    this.CxA = 1;
+    this.CxB = 0;
+    this.CxC = 1;
+    this.CxD = 0;
+    this.CxE = 0;
+    this.CxF = 0;
+    this.CxG = 0;
+    this.CxH = 0;
+    this.CxI = 0;
+    this.CxJ = 0;
+    this.CxK = 0;
+    this.CxL = 0;
+    this.CxM = 0;
+    this.CxN = 0;
+    this.CxO = 0;
+    this.CxP = 0;
+    this.CxQ = 0;
+    this.CxR = null;
     this.field_natSvrArray = null;
     this.field_peerId = null;
     this.field_capInfo = null;
     this.field_ChannelReportDial = null;
     this.field_EngineReportStatFromApp = null;
     this.field_mGetValidSample = 0;
-    this.Cgr = 0;
-    this.Cgs = 0;
-    this.Cgt = 0;
-    this.Cgu = 0;
-    this.Cgv = null;
-    this.Cgw = 0;
-    this.Cgx = 0;
-    this.Cgy = 0;
-    this.Cgz = 0;
-    this.CgA = new byte[1500];
-    this.CgB = 0;
-    this.CgC = null;
-    this.CgD = null;
-    this.CgE = 0;
-    this.CgF = 0;
-    this.CgG = 0;
-    this.CgH = 0;
-    this.CgI = 0;
-    this.CgJ = null;
-    this.CgK = null;
-    this.CgL = null;
-    this.CgN = new ArrayBlockingQueue(CgM);
+    this.CxS = 0;
+    this.CxT = 0;
+    this.CxU = 0;
+    this.CxV = 0;
+    this.CxW = null;
+    this.CxX = 0;
+    this.CxY = 0;
+    this.CxZ = 0;
+    this.Cya = 0;
+    this.Cyb = new byte[1500];
+    this.Cyc = 0;
+    this.Cyd = null;
+    this.Cye = null;
+    this.Cyf = 0;
+    this.Cyg = 0;
+    this.Cyh = 0;
+    this.Cyi = 0;
+    this.Cyj = 0;
+    this.Cyk = null;
+    this.Cyl = null;
+    this.Cym = null;
+    this.Cyo = new ArrayBlockingQueue(Cyn);
     this.field_localImgWidth = 0;
     this.field_localImgHeight = 0;
     this.field_statusSyncKey = 0;
@@ -371,23 +369,23 @@ public class v2protocal
     this.field_remoteImgWidth = 0;
     this.field_remoteImgOrien = 0;
     this.field_recvVideoLen = 120;
-    this.CgO = 0L;
-    this.CgP = new byte[8];
-    this.CgQ = 0;
-    this.CgR = 0;
-    this.CgS = 0;
-    this.CgT = 0;
-    this.CgU = 0;
-    this.CgV = new byte[4096];
-    this.CgW = new byte[2048];
-    this.CgX = new byte[2048];
-    this.CgY = new byte[4096];
-    this.CgZ = new byte[4096];
-    this.Cha = new byte[2048];
-    this.Chb = new byte[4096];
-    this.Chc = new byte[2048];
-    this.Chd = new byte[2048];
-    this.Che = new int[30];
+    this.Cyp = 0L;
+    this.Cyq = new byte[8];
+    this.Cyr = 0;
+    this.Cys = 0;
+    this.Cyt = 0;
+    this.Cyu = 0;
+    this.Cyv = 0;
+    this.Cyw = new byte[4096];
+    this.Cyx = new byte[2048];
+    this.Cyy = new byte[2048];
+    this.Cyz = new byte[4096];
+    this.CyA = new byte[4096];
+    this.CyB = new byte[2048];
+    this.CyC = new byte[4096];
+    this.CyD = new byte[2048];
+    this.CyE = new byte[2048];
+    this.CyF = new int[30];
     this.field_statInfoLength = 0;
     this.field_speedTestInfoLength = 0;
     this.field_engineVersionStatLength = 0;
@@ -409,24 +407,24 @@ public class v2protocal
     this.field_jbmParamArraySize = 0;
     this.field_jbmBitratRsSvrParamDoubleArray = null;
     this.field_jbmParamDoubleArraySize = 0;
-    this.Chf = 0;
-    this.Chg = new o();
-    this.Chh = 0;
-    this.Chi = 0;
+    this.CyG = 0;
+    this.CyH = new o();
+    this.CyI = 0;
+    this.CyJ = 0;
     this.handler = null;
-    this.ivz = false;
-    this.Chj = null;
+    this.iys = false;
+    this.CyK = null;
     this.width = 640;
     this.height = 480;
-    this.Chl = 8;
+    this.CyM = 8;
     this.bitrate = 300;
-    this.oYd = false;
-    this.handler = paramap;
+    this.peH = false;
+    this.handler = paramaq;
     AppMethodBeat.o(115273);
   }
   
   @SuppressLint({"NewApi"})
-  private static boolean arr(String paramString)
+  private static boolean asz(String paramString)
   {
     AppMethodBeat.i(115288);
     boolean bool1;
@@ -509,7 +507,7 @@ public class v2protocal
       i -= 1;
       continue;
       label227:
-      ad.printErrStackTrace("MicroMsg.Voip", paramString, "SupportAvcCodec error: %s", new Object[] { paramString.getMessage() });
+      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.Voip", paramString, "SupportAvcCodec error: %s", new Object[] { paramString.getMessage() });
     }
     for (;;)
     {
@@ -520,7 +518,7 @@ public class v2protocal
     }
   }
   
-  public static long bU(byte[] paramArrayOfByte)
+  public static long bX(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(115262);
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
@@ -530,12 +528,7 @@ public class v2protocal
     return l;
   }
   
-  public static String eyA()
-  {
-    return "";
-  }
-  
-  private static String eyj()
+  private static String eBR()
   {
     AppMethodBeat.i(115261);
     Object localObject2 = Build.MANUFACTURER;
@@ -563,47 +556,47 @@ public class v2protocal
     return localObject1;
   }
   
-  private String eyk()
+  private String eBS()
   {
     long l3 = 0L;
     AppMethodBeat.i(115263);
-    if ((this.Cfv == 0) && (this.Cfw == 0))
+    if ((this.CwW == 0) && (this.CwX == 0))
     {
-      this.Chg.Ccj = 0;
-      this.Chg.Ccr = f.getNetType(aj.getContext());
-      this.Chg.Ccq = this.field_videoDuration;
-      this.Chg.Ccp = this.field_audioDuration;
-      this.CfA = com.tencent.mm.plugin.audio.c.a.bGF();
-      if ((this.Chg.Ccz <= 0L) || (this.Chg.Cct <= this.Chg.Ccz)) {
+      this.CyH.CtK = 0;
+      this.CyH.CtS = f.getNetType(ak.getContext());
+      this.CyH.CtR = this.field_videoDuration;
+      this.CyH.CtQ = this.field_audioDuration;
+      this.Cxb = com.tencent.mm.plugin.audio.c.a.bHB();
+      if ((this.CyH.Cua <= 0L) || (this.CyH.CtU <= this.CyH.Cua)) {
         break label1475;
       }
     }
     label1475:
-    for (long l1 = this.Chg.Cct - this.Chg.Ccz;; l1 = 0L)
+    for (long l1 = this.CyH.CtU - this.CyH.Cua;; l1 = 0L)
     {
       f.Logd("MicroMsg.Voip", "voipreport:acceptcalltime:".concat(String.valueOf(l1)));
-      setJNIAppCmd(1, this.CgP, this.CgP.length);
-      long l4 = bU(this.CgP);
-      Object localObject1 = this.Chg;
-      if ((l4 > this.Chg.Ccx) && (this.Chg.Ccx > 0L)) {}
-      for (long l2 = l4 - this.Chg.Ccx;; l2 = 0L)
+      setJNIAppCmd(1, this.Cyq, this.Cyq.length);
+      long l4 = bX(this.Cyq);
+      Object localObject1 = this.CyH;
+      if ((l4 > this.CyH.CtY) && (this.CyH.CtY > 0L)) {}
+      for (long l2 = l4 - this.CyH.CtY;; l2 = 0L)
       {
-        ((o)localObject1).CcA = l2;
-        localObject1 = this.Chg;
+        ((o)localObject1).Cub = l2;
+        localObject1 = this.CyH;
         l2 = l3;
-        if (l4 > this.Chg.Ccz)
+        if (l4 > this.CyH.Cua)
         {
           l2 = l3;
-          if (this.Chg.Ccz > 0L) {
-            l2 = l4 - this.Chg.Ccz;
+          if (this.CyH.Cua > 0L) {
+            l2 = l4 - this.CyH.Cua;
           }
         }
-        ((o)localObject1).CcB = l2;
-        f.Logd("MicroMsg.Voip", "voipreport:lCallerWaitTime:" + this.Chg.CcA + " lCalledWaitTime:" + this.Chg.CcB);
+        ((o)localObject1).Cuc = l2;
+        f.Logd("MicroMsg.Voip", "voipreport:lCallerWaitTime:" + this.CyH.Cub + " lCalledWaitTime:" + this.CyH.Cuc);
         int i = cpuFlag0;
-        boolean bool = com.tencent.mm.plugin.voip.c.euO();
-        int j = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHE, 0);
-        StringBuilder localStringBuilder = new StringBuilder().append(this.Cfu).append(",").append(this.roomId).append(",").append(this.uLt).append(",").append(this.uLA).append(",").append(this.Chg.CbS).append(",").append(this.Chg.Cce).append(",").append(this.Chg.Ccf).append(",").append(this.Chg.Ccg).append(",").append(this.Chg.Cch).append(",").append(this.Chg.Cci).append(",").append(this.Chg.Ccj).append(",").append(this.Chg.Ccc).append(",").append(this.Chg.Cck).append(",").append(this.Chg.Ccl).append(",").append(this.Chg.Ccm).append(",").append(this.Chg.Ccn).append(",").append(this.Chg.Cco).append(",").append(this.Chg.Ccp).append(",").append(this.Chg.Ccq).append(",").append(this.Chg.Ccr).append(eyq()).append(eyr()).append(eyj()).append(",").append(this.Chg.Ccs).append(",").append(this.Cfz).append(",").append(this.CfA).append(",").append(l1).append(",").append(this.Chg.CcA).append(",").append(this.Chg.CcB).append(",").append(this.CfB).append(",").append(this.Cfe).append(eyl()).append(",").append(i & 0xFF).append(",").append(this.CfI).append(",").append(this.CfJ);
+        boolean bool = com.tencent.mm.plugin.voip.c.eyu();
+        int j = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPk, 0);
+        StringBuilder localStringBuilder = new StringBuilder().append(this.CwV).append(",").append(this.roomId).append(",").append(this.uXg).append(",").append(this.uXn).append(",").append(this.CyH.Ctt).append(",").append(this.CyH.CtF).append(",").append(this.CyH.CtG).append(",").append(this.CyH.CtH).append(",").append(this.CyH.CtI).append(",").append(this.CyH.CtJ).append(",").append(this.CyH.CtK).append(",").append(this.CyH.CtD).append(",").append(this.CyH.CtL).append(",").append(this.CyH.CtM).append(",").append(this.CyH.CtN).append(",").append(this.CyH.CtO).append(",").append(this.CyH.CtP).append(",").append(this.CyH.CtQ).append(",").append(this.CyH.CtR).append(",").append(this.CyH.CtS).append(eBY()).append(eBZ()).append(eBR()).append(",").append(this.CyH.CtT).append(",").append(this.Cxa).append(",").append(this.Cxb).append(",").append(l1).append(",").append(this.CyH.Cub).append(",").append(this.CyH.Cuc).append(",").append(this.Cxc).append(",").append(this.CwF).append(eBT()).append(",").append(i & 0xFF).append(",").append(this.Cxj).append(",").append(this.Cxk);
         Object localObject2 = Build.VERSION.INCREMENTAL;
         localObject1 = localObject2;
         if (((String)localObject2).contains(",")) {
@@ -614,34 +607,34 @@ public class v2protocal
         if (str.contains(",")) {
           localObject2 = str.replace(',', ' ');
         }
-        localObject1 = new StringBuilder(",").append((String)localObject1).append(",").append((String)localObject2).toString() + "," + this.Chg.Ccu + "," + this.Chg.Ccw + "," + this.Chg.Ccv + ",0," + this.Chg.CcC + "," + this.Chg.BZo + "," + this.Chg.BZp + "," + this.Chg.CcD + ",0,0,0," + this.CfK + "," + this.CfL + "," + this.CfC + "," + this.CfM + "," + this.CfN + "," + this.CfO + "," + this.Chh + "," + this.CfR + "," + this.CfP + "," + CfQ + "," + j + "," + bool;
-        f.Logi("MicroMsg.Voip", "voipreport:initNetType:" + this.Cfe);
+        localObject1 = new StringBuilder(",").append((String)localObject1).append(",").append((String)localObject2).toString() + "," + this.CyH.CtV + "," + this.CyH.CtX + "," + this.CyH.CtW + ",0," + this.CyH.Cud + "," + this.CyH.CqP + "," + this.CyH.CqQ + "," + this.CyH.Cue + ",0,0,0," + this.Cxl + "," + this.Cxm + "," + this.Cxd + "," + this.Cxn + "," + this.Cxo + "," + this.Cxp + "," + this.CyI + "," + this.Cxs + "," + this.Cxq + "," + Cxr + "," + j + "," + bool;
+        f.Logi("MicroMsg.Voip", "voipreport:initNetType:" + this.CwF);
         f.Logi("MicroMsg.Voip", ":".concat(String.valueOf(localObject1)));
-        f.Logi("MicroMsg.Voip", "voipreport:getChannelStrategyString:" + eyl());
-        f.Logi("MicroMsg.Voip", "lInterruptStartTime:" + this.Chg.BZo + ",lInterruptEndTime:" + this.Chg.BZp + ",mIinterruptCnt:" + this.Chg.CcD + ",iPlayMinBufSize:" + this.CfK + ",iRecordMinBufSize:" + this.CfL);
-        f.Logi("MicroMsg.Voip", "steve:[simucall]voipreport::iSimulCallStatus:" + this.Chh);
+        f.Logi("MicroMsg.Voip", "voipreport:getChannelStrategyString:" + eBT());
+        f.Logi("MicroMsg.Voip", "lInterruptStartTime:" + this.CyH.CqP + ",lInterruptEndTime:" + this.CyH.CqQ + ",mIinterruptCnt:" + this.CyH.Cue + ",iPlayMinBufSize:" + this.Cxl + ",iRecordMinBufSize:" + this.Cxm);
+        f.Logi("MicroMsg.Voip", "steve:[simucall]voipreport::iSimulCallStatus:" + this.CyI);
         AppMethodBeat.o(115263);
         return localObject1;
-        if ((this.Cfw != 0) && (this.Cfv != 0))
+        if ((this.CwX != 0) && (this.CwW != 0))
         {
-          this.Chg.Ccj = 3;
+          this.CyH.CtK = 3;
           break;
         }
-        if (this.Cfw != 0)
+        if (this.CwX != 0)
         {
-          this.Chg.Ccj = 1;
+          this.CyH.CtK = 1;
           break;
         }
-        if (this.Cfv == 0) {
+        if (this.CwW == 0) {
           break;
         }
-        this.Chg.Ccj = 2;
+        this.CyH.CtK = 2;
         break;
       }
     }
   }
   
-  private String eyl()
+  private String eBT()
   {
     AppMethodBeat.i(115264);
     String str = "," + this.channelStrategy;
@@ -649,109 +642,114 @@ public class v2protocal
     return str;
   }
   
-  private void eyp()
+  private void eBX()
   {
     AppMethodBeat.i(184064);
-    if ((this.CgQ <= 0) || (this.field_videoDuration <= 0))
+    if ((this.Cyr <= 0) || (this.field_videoDuration <= 0))
     {
       AppMethodBeat.o(184064);
       return;
     }
-    this.Chi = (this.CgQ / this.field_videoDuration);
-    ad.i("MicroMsg.Voip", "calcCpatureFps:%s", new Object[] { Integer.valueOf(this.Chi) });
+    this.CyJ = (this.Cyr / this.field_videoDuration);
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip", "calcCpatureFps:%s", new Object[] { Integer.valueOf(this.CyJ) });
     AppMethodBeat.o(184064);
   }
   
-  private String eyq()
+  private String eBY()
   {
     AppMethodBeat.i(115266);
-    f.Logd("MicroMsg.Voip", "usePreConnect:" + this.CfU);
-    String str = "," + this.CfU;
+    f.Logd("MicroMsg.Voip", "usePreConnect:" + this.Cxv);
+    String str = "," + this.Cxv;
     AppMethodBeat.o(115266);
     return str;
   }
   
-  private String eyr()
+  private String eBZ()
   {
     AppMethodBeat.i(115267);
-    f.Logd("MicroMsg.Voip", "preConnectSuccess:" + this.CfV);
-    String str = "," + this.CfV;
+    f.Logd("MicroMsg.Voip", "preConnectSuccess:" + this.Cxw);
+    String str = "," + this.Cxw;
     AppMethodBeat.o(115267);
     return str;
   }
   
-  private String eys()
+  private String eCa()
   {
     AppMethodBeat.i(115268);
-    this.CfE = com.tencent.mm.plugin.audio.c.a.bGC().audioManager.getMode();
-    this.CfF = com.tencent.mm.plugin.audio.c.a.bGC().audioManager.getMode();
-    if (ae.gcF.fWH >= 0) {
-      this.CfE = ae.gcF.fWH;
+    this.Cxf = com.tencent.mm.plugin.audio.c.a.bHy().audioManager.getMode();
+    this.Cxg = com.tencent.mm.plugin.audio.c.a.bHy().audioManager.getMode();
+    if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYN >= 0) {
+      this.Cxf = com.tencent.mm.compatible.deviceinfo.ae.geN.fYN;
     }
-    if ((Build.VERSION.SDK_INT >= 11) && (com.tencent.mm.compatible.util.k.Xm()) && (2 == ae.gcP.fZg)) {
-      this.CfF = 2;
+    if ((Build.VERSION.SDK_INT >= 11) && (com.tencent.mm.compatible.util.k.Xu()) && (2 == com.tencent.mm.compatible.deviceinfo.ae.geX.gbn)) {
+      this.Cxg = 2;
     }
-    if (ae.gcF.fWI >= 0) {
-      this.CfF = ae.gcF.fWI;
+    if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYO >= 0) {
+      this.Cxg = com.tencent.mm.compatible.deviceinfo.ae.geN.fYO;
     }
     if (Build.VERSION.SDK_INT < 11)
     {
-      this.CfD = 1;
-      if (ae.gcF.fWh) {
-        this.CfD = 1;
+      this.Cxe = 1;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYn) {
+        this.Cxe = 1;
       }
-      if (ae.gcF.fWG >= 0) {
-        this.CfD = ae.gcF.fWG;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYM >= 0) {
+        this.Cxe = com.tencent.mm.compatible.deviceinfo.ae.geN.fYM;
       }
-      if (ae.gcF.fWi <= 0) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYo <= 0) {
         break label292;
       }
-      this.CfG = 3;
-      this.CfH = 0;
+      this.Cxh = 3;
+      this.Cxi = 0;
     }
     for (;;)
     {
-      if (ae.gcF.fWK >= 0) {
-        this.CfG = ae.gcF.fWK;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYQ >= 0) {
+        this.Cxh = com.tencent.mm.compatible.deviceinfo.ae.geN.fYQ;
       }
-      if (ae.gcF.fWL >= 0) {
-        this.CfH = ae.gcF.fWL;
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYR >= 0) {
+        this.Cxi = com.tencent.mm.compatible.deviceinfo.ae.geN.fYR;
       }
-      String str = "," + this.CfE + "," + this.CfF + "," + this.CfD + "," + this.CfG + "," + this.CfH;
+      String str = "," + this.Cxf + "," + this.Cxg + "," + this.Cxe + "," + this.Cxh + "," + this.Cxi;
       AppMethodBeat.o(115268);
       return str;
-      this.CfD = 7;
+      this.Cxe = 7;
       break;
       label292:
-      if (ae.gcF.fWJ >= 0)
+      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYP >= 0)
       {
-        this.CfG = ae.gcF.fWJ;
-        this.CfH = ae.gcF.fWJ;
+        this.Cxh = com.tencent.mm.compatible.deviceinfo.ae.geN.fYP;
+        this.Cxi = com.tencent.mm.compatible.deviceinfo.ae.geN.fYP;
       }
     }
   }
   
-  private String eyu()
+  private String eCc()
   {
     AppMethodBeat.i(115270);
-    getNewEngineInfo(this.CgZ, this.CgZ.length);
-    getNewEngineExtInfo(this.Cha, this.Cha.length);
-    f.Logi("MicroMsg.Voip", "voipreport:oldNewEngineString:".concat(String.valueOf(this.uLA + "," + this.uLt + this.Chg.ewA() + "," + this.Cfv + "," + this.Cfw + eym() + new String(this.CgZ, 0, this.field_newEngineStatLength) + "," + this.Cfx + "," + this.Cfy + eys() + new String(this.Cha, 0, this.field_newEngineExtStatLength))));
-    getNewEngineInfoReport(this.CgZ, this.CgZ.length);
-    String str = this.uLA + "," + this.uLt + this.Chg.ewA() + "," + this.Cfv + "," + this.Cfw + eym() + new String(this.CgZ, 0, this.field_newEngineReportLength);
+    getNewEngineInfo(this.CyA, this.CyA.length);
+    getNewEngineExtInfo(this.CyB, this.CyB.length);
+    f.Logi("MicroMsg.Voip", "voipreport:oldNewEngineString:".concat(String.valueOf(this.uXn + "," + this.uXg + this.CyH.eAh() + "," + this.CwW + "," + this.CwX + eBU() + new String(this.CyA, 0, this.field_newEngineStatLength) + "," + this.CwY + "," + this.CwZ + eCa() + new String(this.CyB, 0, this.field_newEngineExtStatLength))));
+    getNewEngineInfoReport(this.CyA, this.CyA.length);
+    String str = this.uXn + "," + this.uXg + this.CyH.eAh() + "," + this.CwW + "," + this.CwX + eBU() + new String(this.CyA, 0, this.field_newEngineReportLength);
     f.Logi("MicroMsg.Voip", "voipreport:yaoyaoguoNewEngineString:".concat(String.valueOf(str)));
     AppMethodBeat.o(115270);
     return str;
   }
   
-  public static int eyy()
+  public static int eCg()
   {
     AppMethodBeat.i(115276);
-    DhcpInfo localDhcpInfo = ((WifiManager)aj.getContext().getApplicationContext().getSystemService("wifi")).getDhcpInfo();
+    DhcpInfo localDhcpInfo = ((WifiManager)ak.getContext().getApplicationContext().getSystemService("wifi")).getDhcpInfo();
     f.Logd("MicroMsg.Voip", "get wifi route ip:".concat(String.valueOf(Formatter.formatIpAddress(localDhcpInfo.gateway))));
     int i = localDhcpInfo.gateway;
     AppMethodBeat.o(115276);
     return i;
+  }
+  
+  public static String eCi()
+  {
+    return "";
   }
   
   private native int forceredirect(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3);
@@ -796,65 +794,65 @@ public class v2protocal
     if (j == 0)
     {
       parama.channels = localAtomicInteger3.get();
-      parama.BXy = localAtomicInteger2.get();
-      parama.xbF = localAtomicInteger1.get();
-      parama.BXx = 0;
-      f.Logi("MicroMsg.Voip", "V2Protocal: GetAudioDeviceFmt ret :" + j + ",samplerate = " + parama.xbF + ", framelenms =" + parama.BXy + ", channels =" + parama.channels);
+      parama.CoZ = localAtomicInteger2.get();
+      parama.xrw = localAtomicInteger1.get();
+      parama.CoY = 0;
+      f.Logi("MicroMsg.Voip", "V2Protocal: GetAudioDeviceFmt ret :" + j + ",samplerate = " + parama.xrw + ", framelenms =" + parama.CoZ + ", channels =" + parama.channels);
       AppMethodBeat.o(115289);
       return j;
     }
-    if ((m.aaf() & 0x400) != 0) {}
+    if ((m.aao() & 0x400) != 0) {}
     for (int i = 16000;; i = 8000)
     {
-      parama.xbF = i;
+      parama.xrw = i;
       parama.channels = 1;
-      parama.BXy = 20;
-      parama.BXx = 0;
+      parama.CoZ = 20;
+      parama.CoY = 0;
       break;
     }
   }
   
-  public final int a(dyt paramdyt)
+  public final int a(eak parameak)
   {
     AppMethodBeat.i(115260);
-    if (this.CgO != 0L)
+    if (this.Cyp != 0L)
     {
       f.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest fail: a speedtest is doing");
       AppMethodBeat.o(115260);
       return -1;
     }
-    this.CgO = paramdyt.HMb;
-    dya localdya = new dya();
-    localdya.HKv = paramdyt.HMb;
+    this.Cyp = parameak.Igi;
+    dzr localdzr = new dzr();
+    localdzr.IeD = parameak.Igi;
     int i = 0;
-    while (i < paramdyt.HMg)
+    while (i < parameak.Ign)
     {
-      dyd localdyd = new dyd();
-      localdyd.HAu = ((dhy)paramdyt.HMh.get(i)).Hwf.HAx;
-      localdyd.port = ((dhy)paramdyt.HMh.get(i)).Hwf.HfV;
-      localdyd.CnV = ((dhy)paramdyt.HMh.get(i)).Hwe;
-      localdyd.gap = ((dhy)paramdyt.HMh.get(i)).HwK;
-      localdyd.timeout = ((dhy)paramdyt.HMh.get(i)).HwL;
-      localdyd.HKP = ((dhy)paramdyt.HMh.get(i)).HwM;
-      localdya.HKw.add(localdyd);
+      dzu localdzu = new dzu();
+      localdzu.HUh = ((dit)parameak.Igo.get(i)).HPO.HUk;
+      localdzu.port = ((dit)parameak.Igo.get(i)).HPO.Hzv;
+      localdzu.CFz = ((dit)parameak.Igo.get(i)).HPN;
+      localdzu.gap = ((dit)parameak.Igo.get(i)).HQt;
+      localdzu.timeout = ((dit)parameak.Igo.get(i)).HQu;
+      localdzu.IeX = ((dit)parameak.Igo.get(i)).HQv;
+      localdzr.IeE.add(localdzu);
       i += 1;
     }
     try
     {
-      f.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest ret :".concat(String.valueOf(StartSpeedTest(localdya.toByteArray(), localdya.toByteArray().length))));
+      f.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest ret :".concat(String.valueOf(StartSpeedTest(localdzr.toByteArray(), localdzr.toByteArray().length))));
       AppMethodBeat.o(115260);
       return 0;
     }
-    catch (IOException paramdyt)
+    catch (IOException parameak)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Voip", paramdyt, "StartVoipSpeedTest exception", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.Voip", parameak, "StartVoipSpeedTest exception", new Object[0]);
       }
     }
   }
   
-  public final int aY(LinkedList<cbv> paramLinkedList)
+  public final int aZ(LinkedList<ccp> paramLinkedList)
   {
     AppMethodBeat.i(115290);
     Object localObject = new AtomicInteger();
@@ -870,18 +868,18 @@ public class v2protocal
     {
       if (((AtomicInteger)localObject).get() > 0)
       {
-        cbv localcbv = new cbv();
-        localcbv.GAC = new String(arrayOfByte2, 0, ((AtomicInteger)localObject).get());
-        localcbv.GVI = localAtomicInteger5.get();
-        localcbv.GVK = localAtomicInteger4.get();
-        paramLinkedList.add(localcbv);
+        ccp localccp = new ccp();
+        localccp.GUc = new String(arrayOfByte2, 0, ((AtomicInteger)localObject).get());
+        localccp.Hpj = localAtomicInteger5.get();
+        localccp.GsP = localAtomicInteger4.get();
+        paramLinkedList.add(localccp);
       }
       if (localAtomicInteger1.get() > 0)
       {
-        localObject = new cbv();
-        ((cbv)localObject).GAC = new String(arrayOfByte1, 0, localAtomicInteger1.get());
-        ((cbv)localObject).GVI = localAtomicInteger3.get();
-        ((cbv)localObject).GVK = localAtomicInteger2.get();
+        localObject = new ccp();
+        ((ccp)localObject).GUc = new String(arrayOfByte1, 0, localAtomicInteger1.get());
+        ((ccp)localObject).Hpj = localAtomicInteger3.get();
+        ((ccp)localObject).GsP = localAtomicInteger2.get();
         paramLinkedList.add(localObject);
       }
     }
@@ -901,11 +899,188 @@ public class v2protocal
   
   public native int doubleLinkSwitch(int paramInt);
   
-  public final int eny()
+  protected final String eBU()
+  {
+    AppMethodBeat.i(115265);
+    if (this.field_videoDuration == 0)
+    {
+      f.Logd("MicroMsg.Voip", "captureFrames:" + this.Cyr + ", videoduration: 0");
+      AppMethodBeat.o(115265);
+      return ",0";
+    }
+    f.Logd("MicroMsg.Voip", "capturefps:" + this.Cyr / this.field_videoDuration + " framecount:" + this.Cyr + " videoDuration:" + this.field_videoDuration);
+    String str = "," + this.Cyr / this.field_videoDuration;
+    AppMethodBeat.o(115265);
+    return str;
+  }
+  
+  public final int eBV()
+  {
+    if (this.CyJ > 0) {
+      return this.CyJ;
+    }
+    if (this.field_videoDuration == 0) {
+      return 0;
+    }
+    return this.Cyr / this.field_videoDuration;
+  }
+  
+  public final void eBW()
+  {
+    AppMethodBeat.i(210122);
+    this.CyJ = 0;
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip", "resetCaptureFps");
+    AppMethodBeat.o(210122);
+  }
+  
+  final String eCb()
+  {
+    AppMethodBeat.i(115269);
+    getChannelInfo(this.Cyz, this.Cyz.length, this.CxS, this.CxT, this.CxU, this.CxV);
+    Object localObject = new StringBuilder().append(this.uXg).append(",").append(this.roomId).append(",").append(this.uXn).append(this.CyH.eAh());
+    o localo = this.CyH;
+    f.Logi("MicroMsg.Voip", "voipreport:oldChannelString: ".concat(String.valueOf(new StringBuilder(",").append(localo.CtJ).toString() + new String(this.Cyz, 0, this.field_channelStatLength))));
+    getChannelReport(this.Cyz, this.Cyz.length);
+    localObject = new String(this.Cyz, 0, this.field_channelReportLength);
+    f.Logi("MicroMsg.Voip", "voipreport:newChannelString: ".concat(String.valueOf(localObject)));
+    AppMethodBeat.o(115269);
+    return localObject;
+  }
+  
+  final String eCd()
+  {
+    AppMethodBeat.i(115271);
+    getEngine2ndInfo(this.CyC, this.CyC.length);
+    f.Logi("MicroMsg.Voip", "voipreport:12805,oldEngine2ndString:".concat(String.valueOf(this.uXg + "," + this.roomId + "," + this.uXn + new String(this.CyC, 0, this.field_engine2ndStatLength))));
+    getEngine2ndInfoReport(this.CyC, this.CyC.length);
+    String str = this.uXg + "," + this.roomId + "," + this.uXn + new String(this.CyC, 0, this.field_engine2ndReportLength);
+    f.Logi("MicroMsg.Voip", "voipreport:12805,newEngine2ndString:".concat(String.valueOf(str)));
+    AppMethodBeat.o(115271);
+    return str;
+  }
+  
+  public final String eCe()
+  {
+    AppMethodBeat.i(115272);
+    int i = cpuFlag0;
+    String str = eBR() + "," + this.Cxt + "," + (i & 0xFF) + eCa() + "," + this.Cxk;
+    AppMethodBeat.o(115272);
+    return str;
+  }
+  
+  public final boolean eCf()
+  {
+    return this.iys;
+  }
+  
+  public final int eCh()
+  {
+    AppMethodBeat.i(115278);
+    this.netType = f.getNetType(ak.getContext());
+    if (this.netType == 5) {
+      this.netType = 4;
+    }
+    this.CxR = new int[this.defaultWidth * this.defaultHeight];
+    g.ajP();
+    this.pnU = com.tencent.mm.kernel.a.getUin();
+    int i = m.aao();
+    int j = Build.VERSION.SDK_INT;
+    int k = OpenGlRender.getGLVersion();
+    Display localDisplay = ((WindowManager)ak.getContext().getSystemService("window")).getDefaultDisplay();
+    int m = localDisplay.getWidth();
+    int n = localDisplay.getHeight();
+    i = init(this.netType, 65538, this.defaultWidth << 16 | this.defaultHeight, m << 16 | n, this.pnU, k << 24 | j << 16 | i, com.tencent.mm.loader.j.b.asa() + "lib/", 4, 0L);
+    f.Logd("MicroMsg.Voip", "protocal init ret :" + i + ",uin= " + this.pnU);
+    this.iys = true;
+    if (i < 0) {
+      reset();
+    }
+    AppMethodBeat.o(115278);
+    return i;
+  }
+  
+  public final String eCj()
+  {
+    AppMethodBeat.i(115281);
+    String str = eBS();
+    AppMethodBeat.o(115281);
+    return str;
+  }
+  
+  public final String[] eCk()
+  {
+    AppMethodBeat.i(115282);
+    String[] arrayOfString = getNatReport();
+    f.Loge("MicroMsg.Voip", "nat_report size:" + arrayOfString.length);
+    int i = 0;
+    while (i < arrayOfString.length)
+    {
+      f.Loge("MicroMsg.Voip", "nat_report:" + arrayOfString[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(115282);
+    return arrayOfString;
+  }
+  
+  public final String[] eCl()
+  {
+    AppMethodBeat.i(115283);
+    String[] arrayOfString = getMPDirectReport();
+    f.Loge("MicroMsg.Voip", "direct_report_string size:" + arrayOfString.length);
+    int i = 0;
+    while (i < arrayOfString.length)
+    {
+      f.Loge("MicroMsg.Voip", "direct_report_string:" + arrayOfString[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(115283);
+    return arrayOfString;
+  }
+  
+  public final String[] eCm()
+  {
+    AppMethodBeat.i(115284);
+    String[] arrayOfString = getMPRelayReport();
+    f.Loge("MicroMsg.Voip", "relay_report_string size:" + arrayOfString.length);
+    int i = 0;
+    while (i < arrayOfString.length)
+    {
+      f.Loge("MicroMsg.Voip", "relay_report_string:" + arrayOfString[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(115284);
+    return arrayOfString;
+  }
+  
+  public final String[] eCn()
+  {
+    AppMethodBeat.i(115285);
+    String[] arrayOfString = getMPEngineReport();
+    f.Loge("MicroMsg.Voip", "engine_report_string size:" + arrayOfString.length);
+    int i = 0;
+    while (i < arrayOfString.length)
+    {
+      arrayOfString[i] = (this.uXg + "," + this.uXn + arrayOfString[i]);
+      f.Loge("MicroMsg.Voip", "engine_report_string:" + arrayOfString[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(115285);
+    return arrayOfString;
+  }
+  
+  public final String eCo()
+  {
+    AppMethodBeat.i(115286);
+    String str = eCc();
+    AppMethodBeat.o(115286);
+    return str;
+  }
+  
+  public final int erf()
   {
     AppMethodBeat.i(115279);
-    this.netType = f.getNetType(aj.getContext());
-    this.Cfe = this.netType;
+    this.netType = f.getNetType(ak.getContext());
+    this.CwF = this.netType;
     if (this.netType == 5) {
       this.netType = 4;
     }
@@ -940,7 +1115,7 @@ public class v2protocal
     boolean bool11;
     label429:
     Object localObject;
-    if ((this.Cfe >= 4) && ((cpuFlag0 & 0x400) != 0) && ((cpuFlag0 & 0xFF) >= 26))
+    if ((this.CwF >= 4) && ((cpuFlag0 & 0x400) != 0) && ((cpuFlag0 & 0xFF) >= 26))
     {
       bool4 = true;
       if ((!bool4) || ((cpuFlag0 & 0xFF) < 30)) {
@@ -955,31 +1130,31 @@ public class v2protocal
         break label1159;
       }
       i = 1;
-      if ((ae.gcE.fYF <= 0) || (ae.gcE.fYh.width < 480) || (ae.gcE.fYh.height < 360) || (ae.gcE.fYj.width < 480) || (ae.gcE.fYj.height < 360)) {
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaM <= 0) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.width < 480) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.height < 360) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.width < 480) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.height < 360)) {
         break label1164;
       }
       bool7 = true;
-      if ((ae.gcE.fYF < 2) || (ae.gcE.fYh.width < 640) || (ae.gcE.fYh.height < 480) || (ae.gcE.fYj.width < 640) || (ae.gcE.fYj.height < 480)) {
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaM < 2) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.width < 640) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gan.height < 480) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.width < 640) || (com.tencent.mm.compatible.deviceinfo.ae.geM.gaq.height < 480)) {
         break label1170;
       }
       bool8 = true;
-      if (ae.gcE.fYF != 2) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaM != 2) {
         break label1176;
       }
       j = 1;
-      if (ae.gcE.fYF < 4) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaM < 4) {
         break label1181;
       }
       bool9 = true;
-      if (ae.gcE.fYF != 0) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaM != 0) {
         break label1187;
       }
       bool10 = true;
-      if (ae.gcE.fYG != 0) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaN != 0) {
         break label1193;
       }
       k = 1;
-      if (ae.gcE.fYG <= 0) {
+      if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaN <= 0) {
         break label1198;
       }
       m = 1;
@@ -987,24 +1162,24 @@ public class v2protocal
         break label1204;
       }
       bool1 = true;
-      Cfb = bool1;
-      Cfc = 0;
-      this.oYd = false;
+      CwC = bool1;
+      CwD = 0;
+      this.peH = false;
       if (k != 0) {
         break label1275;
       }
-      if ((!bool5) || (!arr("video/avc"))) {
+      if ((!bool5) || (!asz("video/avc"))) {
         break label1210;
       }
       bool1 = true;
       if (m == 0) {
         break label1265;
       }
-      if ((ae.gcE.fYG & 0x10) == 0) {
+      if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaN & 0x10) == 0) {
         break label1216;
       }
       bool2 = true;
-      if ((!bool1) || ((ae.gcE.fYG & 0xF) == 0)) {
+      if ((!bool1) || ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaN & 0xF) == 0)) {
         break label1222;
       }
       bool3 = true;
@@ -1012,14 +1187,14 @@ public class v2protocal
         break label1228;
       }
       bool11 = true;
-      this.oYd = bool11;
-      localObject = new StringBuilder("hwH264Local:").append(bool1).append(",hwHEVCLocal:false, bSupportH264HW:").append(bool3).append(", bSupportHEVCSW:").append(bool2).append(", bSupportHEVCHW:false, svrHWCfg:").append(ae.gcE.fYG).append(", 720p jcchen ").append(bool6).append("-");
+      this.peH = bool11;
+      localObject = new StringBuilder("hwH264Local:").append(bool1).append(",hwHEVCLocal:false, bSupportH264HW:").append(bool3).append(", bSupportHEVCSW:").append(bool2).append(", bSupportHEVCHW:false, svrHWCfg:").append(com.tencent.mm.compatible.deviceinfo.ae.geM.gaN).append(", 720p jcchen ").append(bool6).append("-");
       if (j != 0) {
         break label1234;
       }
       bool1 = true;
       label513:
-      f.Logi("MicroMsg.Voip", bool1 + "-" + bool9 + "-" + Cfb + " svr 480p:" + ae.gcE.fYF);
+      f.Logi("MicroMsg.Voip", bool1 + "-" + bool9 + "-" + CwC + " svr 480p:" + com.tencent.mm.compatible.deviceinfo.ae.geM.gaM);
       if (!bool3) {
         break label1260;
       }
@@ -1034,7 +1209,7 @@ public class v2protocal
     {
       if (((bool4) || (bool7)) && (!bool10))
       {
-        if ((!this.oYd) && (!bool8)) {
+        if ((!this.peH) && (!bool8)) {
           break label1240;
         }
         this.defaultWidth = 640;
@@ -1045,22 +1220,22 @@ public class v2protocal
       }
       for (this.defaultHeight = 720;; this.defaultHeight = 360)
       {
-        Cfa = true;
+        CwB = true;
         f.Logi("MicroMsg.Voip", "steve:Set Enable 480! " + this.defaultWidth + "x" + this.defaultHeight);
         f.Logi("MicroMsg.Voip", "steve: Android CPUFlag:" + (cpuFlag0 & 0xFF) + ", 480x360 Enc flags: bEnable480FromLocal:" + bool4 + ", bEnable480FromSvr:" + bool7 + ", bDisable480FromSvr:" + bool10 + ", bEnable640FromLocal:" + bool5 + ", bEnable640FromSvr:" + bool8);
-        this.Cgq = new int[this.defaultWidth * this.defaultHeight];
-        g.ajA();
-        this.pho = com.tencent.mm.kernel.a.getUin();
+        this.CxR = new int[this.defaultWidth * this.defaultHeight];
+        g.ajP();
+        this.pnU = com.tencent.mm.kernel.a.getUin();
         k = Build.VERSION.SDK_INT;
         j = OpenGlRender.getGLVersion();
-        localObject = ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay();
+        localObject = ((WindowManager)ak.getContext().getSystemService("window")).getDefaultDisplay();
         m = ((Display)localObject).getWidth();
         int n = ((Display)localObject).getHeight();
         long l2 = 0L;
-        int i1 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qDk, -1);
-        ad.i("MicroMsg.Voip", "kerrizhang, fullbandmode = %d", new Object[] { Integer.valueOf(i1) });
-        int i2 = ae.gcF.fWU;
-        ad.i("MicroMsg.Voip", "kerrizhang SrvDeviceInfo.mAudioInfo.voipfullbandcfg %d", new Object[] { Integer.valueOf(i2) });
+        int i1 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qKM, -1);
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip", "kerrizhang, fullbandmode = %d", new Object[] { Integer.valueOf(i1) });
+        int i2 = com.tencent.mm.compatible.deviceinfo.ae.geN.fZa;
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip", "kerrizhang SrvDeviceInfo.mAudioInfo.voipfullbandcfg %d", new Object[] { Integer.valueOf(i2) });
         long l1 = l2;
         if (i1 > 0)
         {
@@ -1068,14 +1243,14 @@ public class v2protocal
           if (i2 > 0)
           {
             l1 = (i1 * 100000.0D) + 456L;
-            ad.i("MicroMsg.Voip", "kerrizhang typectrl %d", new Object[] { Long.valueOf(l1) });
+            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.Voip", "kerrizhang typectrl %d", new Object[] { Long.valueOf(l1) });
           }
         }
         i1 = this.netType;
         i2 = this.defaultWidth;
-        k = init(i << 8 | i1, 2, this.defaultHeight | i2 << 16, m << 16 | n, this.pho, j << 24 | k << 16 | cpuFlag0, com.tencent.mm.loader.j.b.arL() + "lib/", 0, l1);
-        f.Logi("MicroMsg.Voip", "protocal init ret :" + k + ",uin= " + this.pho + ", gl_vs:" + j + ", cpuFlag0=" + cpuFlag0 + ", hwCap= " + i);
-        this.ivz = true;
+        k = init(i << 8 | i1, 2, this.defaultHeight | i2 << 16, m << 16 | n, this.pnU, j << 24 | k << 16 | cpuFlag0, com.tencent.mm.loader.j.b.asa() + "lib/", 0, l1);
+        f.Logi("MicroMsg.Voip", "protocal init ret :" + k + ",uin= " + this.pnU + ", gl_vs:" + j + ", cpuFlag0=" + cpuFlag0 + ", hwCap= " + i);
+        this.iys = true;
         if (k < 0) {
           reset();
         }
@@ -1149,183 +1324,6 @@ public class v2protocal
   }
   
   public native int exchangeCabInfo(byte[] paramArrayOfByte, int paramInt);
-  
-  public final String eyB()
-  {
-    AppMethodBeat.i(115281);
-    String str = eyk();
-    AppMethodBeat.o(115281);
-    return str;
-  }
-  
-  public final String[] eyC()
-  {
-    AppMethodBeat.i(115282);
-    String[] arrayOfString = getNatReport();
-    f.Loge("MicroMsg.Voip", "nat_report size:" + arrayOfString.length);
-    int i = 0;
-    while (i < arrayOfString.length)
-    {
-      f.Loge("MicroMsg.Voip", "nat_report:" + arrayOfString[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(115282);
-    return arrayOfString;
-  }
-  
-  public final String[] eyD()
-  {
-    AppMethodBeat.i(115283);
-    String[] arrayOfString = getMPDirectReport();
-    f.Loge("MicroMsg.Voip", "direct_report_string size:" + arrayOfString.length);
-    int i = 0;
-    while (i < arrayOfString.length)
-    {
-      f.Loge("MicroMsg.Voip", "direct_report_string:" + arrayOfString[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(115283);
-    return arrayOfString;
-  }
-  
-  public final String[] eyE()
-  {
-    AppMethodBeat.i(115284);
-    String[] arrayOfString = getMPRelayReport();
-    f.Loge("MicroMsg.Voip", "relay_report_string size:" + arrayOfString.length);
-    int i = 0;
-    while (i < arrayOfString.length)
-    {
-      f.Loge("MicroMsg.Voip", "relay_report_string:" + arrayOfString[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(115284);
-    return arrayOfString;
-  }
-  
-  public final String[] eyF()
-  {
-    AppMethodBeat.i(115285);
-    String[] arrayOfString = getMPEngineReport();
-    f.Loge("MicroMsg.Voip", "engine_report_string size:" + arrayOfString.length);
-    int i = 0;
-    while (i < arrayOfString.length)
-    {
-      arrayOfString[i] = (this.uLt + "," + this.uLA + arrayOfString[i]);
-      f.Loge("MicroMsg.Voip", "engine_report_string:" + arrayOfString[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(115285);
-    return arrayOfString;
-  }
-  
-  public final String eyG()
-  {
-    AppMethodBeat.i(115286);
-    String str = eyu();
-    AppMethodBeat.o(115286);
-    return str;
-  }
-  
-  protected final String eym()
-  {
-    AppMethodBeat.i(115265);
-    if (this.field_videoDuration == 0)
-    {
-      f.Logd("MicroMsg.Voip", "captureFrames:" + this.CgQ + ", videoduration: 0");
-      AppMethodBeat.o(115265);
-      return ",0";
-    }
-    f.Logd("MicroMsg.Voip", "capturefps:" + this.CgQ / this.field_videoDuration + " framecount:" + this.CgQ + " videoDuration:" + this.field_videoDuration);
-    String str = "," + this.CgQ / this.field_videoDuration;
-    AppMethodBeat.o(115265);
-    return str;
-  }
-  
-  public final int eyn()
-  {
-    if (this.Chi > 0) {
-      return this.Chi;
-    }
-    if (this.field_videoDuration == 0) {
-      return 0;
-    }
-    return this.CgQ / this.field_videoDuration;
-  }
-  
-  public final void eyo()
-  {
-    AppMethodBeat.i(216443);
-    this.Chi = 0;
-    ad.i("MicroMsg.Voip", "resetCaptureFps");
-    AppMethodBeat.o(216443);
-  }
-  
-  final String eyt()
-  {
-    AppMethodBeat.i(115269);
-    getChannelInfo(this.CgY, this.CgY.length, this.Cgr, this.Cgs, this.Cgt, this.Cgu);
-    Object localObject = new StringBuilder().append(this.uLt).append(",").append(this.roomId).append(",").append(this.uLA).append(this.Chg.ewA());
-    o localo = this.Chg;
-    f.Logi("MicroMsg.Voip", "voipreport:oldChannelString: ".concat(String.valueOf(new StringBuilder(",").append(localo.Cci).toString() + new String(this.CgY, 0, this.field_channelStatLength))));
-    getChannelReport(this.CgY, this.CgY.length);
-    localObject = new String(this.CgY, 0, this.field_channelReportLength);
-    f.Logi("MicroMsg.Voip", "voipreport:newChannelString: ".concat(String.valueOf(localObject)));
-    AppMethodBeat.o(115269);
-    return localObject;
-  }
-  
-  final String eyv()
-  {
-    AppMethodBeat.i(115271);
-    getEngine2ndInfo(this.Chb, this.Chb.length);
-    f.Logi("MicroMsg.Voip", "voipreport:12805,oldEngine2ndString:".concat(String.valueOf(this.uLt + "," + this.roomId + "," + this.uLA + new String(this.Chb, 0, this.field_engine2ndStatLength))));
-    getEngine2ndInfoReport(this.Chb, this.Chb.length);
-    String str = this.uLt + "," + this.roomId + "," + this.uLA + new String(this.Chb, 0, this.field_engine2ndReportLength);
-    f.Logi("MicroMsg.Voip", "voipreport:12805,newEngine2ndString:".concat(String.valueOf(str)));
-    AppMethodBeat.o(115271);
-    return str;
-  }
-  
-  public final String eyw()
-  {
-    AppMethodBeat.i(115272);
-    int i = cpuFlag0;
-    String str = eyj() + "," + this.CfS + "," + (i & 0xFF) + eys() + "," + this.CfJ;
-    AppMethodBeat.o(115272);
-    return str;
-  }
-  
-  public final boolean eyx()
-  {
-    return this.ivz;
-  }
-  
-  public final int eyz()
-  {
-    AppMethodBeat.i(115278);
-    this.netType = f.getNetType(aj.getContext());
-    if (this.netType == 5) {
-      this.netType = 4;
-    }
-    this.Cgq = new int[this.defaultWidth * this.defaultHeight];
-    g.ajA();
-    this.pho = com.tencent.mm.kernel.a.getUin();
-    int i = m.aaf();
-    int j = Build.VERSION.SDK_INT;
-    int k = OpenGlRender.getGLVersion();
-    Display localDisplay = ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay();
-    int m = localDisplay.getWidth();
-    int n = localDisplay.getHeight();
-    i = init(this.netType, 65538, this.defaultWidth << 16 | this.defaultHeight, m << 16 | n, this.pho, k << 24 | j << 16 | i, com.tencent.mm.loader.j.b.arL() + "lib/", 4, 0L);
-    f.Logd("MicroMsg.Voip", "protocal init ret :" + i + ",uin= " + this.pho);
-    this.ivz = true;
-    if (i < 0) {
-      reset();
-    }
-    AppMethodBeat.o(115278);
-    return i;
-  }
   
   public native int freeJNIReport();
   
@@ -1435,78 +1433,78 @@ public class v2protocal
   public final void reset()
   {
     AppMethodBeat.i(115287);
-    ad.m("MicroMsg.Voip", "v2protocal reset!", new Object[0]);
-    eyp();
+    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.Voip", "v2protocal reset!", new Object[0]);
+    eBX();
     this.field_natSvrArray = null;
     this.field_peerId = null;
     this.field_capInfo = null;
     this.roomId = 0;
-    this.Cfg = 0L;
-    this.Cff = 0;
-    this.uLA = 0;
-    this.uLt = 0L;
+    this.CwH = 0L;
+    this.CwG = 0;
+    this.uXn = 0;
+    this.uXg = 0L;
     this.channelStrategy = 0;
-    this.uLv = 0;
-    this.hZF = 0L;
-    this.Cfh = null;
-    this.Cfi = null;
-    this.Cfj = null;
-    this.Cfk = 0;
-    this.Cfl = null;
-    this.Cgu = 0;
-    this.Cgv = null;
-    this.Cgw = 0;
-    this.Cgx = 0;
-    this.Cfq = null;
-    this.Cfr = null;
-    this.CgC = null;
-    this.CgD = null;
-    this.CgJ = null;
-    this.CgK = null;
-    this.CgL = null;
-    this.CgQ = 0;
-    this.CgR = 0;
-    this.CgS = 0;
-    this.CgT = 0;
-    this.CgU = 0;
+    this.uXi = 0;
+    this.icx = 0L;
+    this.CwI = null;
+    this.CwJ = null;
+    this.CwK = null;
+    this.CwL = 0;
+    this.CwM = null;
+    this.CxV = 0;
+    this.CxW = null;
+    this.CxX = 0;
+    this.CxY = 0;
+    this.CwR = null;
+    this.CwS = null;
+    this.Cyd = null;
+    this.Cye = null;
+    this.Cyk = null;
+    this.Cyl = null;
+    this.Cym = null;
+    this.Cyr = 0;
+    this.Cys = 0;
+    this.Cyt = 0;
+    this.Cyu = 0;
+    this.Cyv = 0;
     this.field_videoDuration = 0;
     this.field_audioDuration = 0;
-    this.Chf = 0;
-    this.CfV = 0;
-    this.CfU = 0;
+    this.CyG = 0;
+    this.Cxw = 0;
+    this.Cxv = 0;
     this.field_engineVersionStatLength = 0;
     this.field_engineQosStatLength = 0;
     this.field_statusSyncKey = 0;
     this.field_relayDataSyncKey = 0;
     this.field_connectingStatusKey = 0;
-    this.Cfx = 0;
-    this.Cfy = 0;
-    this.Cfz = 65536;
-    this.CfA = 0;
-    this.CfB = 0;
-    this.CfC = 0;
-    this.CfJ = -1;
-    this.CfS = 0;
-    this.CgG = 0;
-    this.Cfd = 0;
-    this.gno = "";
-    this.CgE = 0;
-    this.CgF = 0;
-    this.Chg.reset();
-    this.Chg.ewz();
-    Cfa = false;
-    Cfc = 0;
+    this.CwY = 0;
+    this.CwZ = 0;
+    this.Cxa = 65536;
+    this.Cxb = 0;
+    this.Cxc = 0;
+    this.Cxd = 0;
+    this.Cxk = -1;
+    this.Cxt = 0;
+    this.Cyh = 0;
+    this.CwE = 0;
+    this.gpK = "";
+    this.Cyf = 0;
+    this.Cyg = 0;
+    this.CyH.reset();
+    this.CyH.eAg();
+    CwB = false;
+    CwD = 0;
     this.field_jbmBitratRsSvrParamArray = null;
     this.field_jbmParamArraySize = 0;
     this.field_jbmBitratRsSvrParamDoubleArray = null;
     this.field_jbmParamDoubleArraySize = 0;
-    this.CfM = 0;
-    this.CfN = 0;
-    this.CfO = 0;
-    this.CfP = 0;
-    CfQ = 0;
-    this.CfR = "";
-    this.Chh = 0;
+    this.Cxn = 0;
+    this.Cxo = 0;
+    this.Cxp = 0;
+    this.Cxq = 0;
+    Cxr = 0;
+    this.Cxs = "";
+    this.CyI = 0;
     int i = freeJNIReport();
     f.Logi("MicroMsg.Voip", "freeJNIReport : " + i + ". [0: null, no need to free, 1: free success!]");
     AppMethodBeat.o(115287);
@@ -1541,88 +1539,88 @@ public class v2protocal
   
   public native int startEngine();
   
-  public final String tq(boolean paramBoolean)
+  public final String tx(boolean paramBoolean)
   {
     AppMethodBeat.i(115280);
-    if (this.ivz)
+    if (this.iys)
     {
       f.Logi("MicroMsg.Voip", "call protocalUninit now...needStatInfo=".concat(String.valueOf(paramBoolean)));
       this.field_ChannelReportDial = new int[6];
-      this.field_ChannelReportDial[0] = this.Chg.Ccc;
-      this.field_ChannelReportDial[1] = this.Chg.Cci;
-      this.field_ChannelReportDial[2] = this.Cgr;
-      this.field_ChannelReportDial[3] = this.Cgs;
-      this.field_ChannelReportDial[4] = this.Cgt;
-      this.field_ChannelReportDial[5] = this.Cgu;
+      this.field_ChannelReportDial[0] = this.CyH.CtD;
+      this.field_ChannelReportDial[1] = this.CyH.CtJ;
+      this.field_ChannelReportDial[2] = this.CxS;
+      this.field_ChannelReportDial[3] = this.CxT;
+      this.field_ChannelReportDial[4] = this.CxU;
+      this.field_ChannelReportDial[5] = this.CxV;
       this.field_EngineReportStatFromApp = new int[14];
-      eys();
-      this.field_EngineReportStatFromApp[0] = this.Cfx;
-      this.field_EngineReportStatFromApp[1] = this.Cfy;
-      this.field_EngineReportStatFromApp[2] = this.CfE;
-      this.field_EngineReportStatFromApp[3] = this.CfF;
-      this.field_EngineReportStatFromApp[4] = this.CfD;
-      this.field_EngineReportStatFromApp[5] = this.CfG;
-      this.field_EngineReportStatFromApp[6] = this.CfH;
+      eCa();
+      this.field_EngineReportStatFromApp[0] = this.CwY;
+      this.field_EngineReportStatFromApp[1] = this.CwZ;
+      this.field_EngineReportStatFromApp[2] = this.Cxf;
+      this.field_EngineReportStatFromApp[3] = this.Cxg;
+      this.field_EngineReportStatFromApp[4] = this.Cxe;
+      this.field_EngineReportStatFromApp[5] = this.Cxh;
+      this.field_EngineReportStatFromApp[6] = this.Cxi;
       this.field_EngineReportStatFromApp[7] = -1;
-      if (this.Chj != null)
+      if (this.CyK != null)
       {
-        this.field_EngineReportStatFromApp[8] = this.Chj.oWG;
-        this.field_EngineReportStatFromApp[9] = this.Chj.oWI;
-        this.field_EngineReportStatFromApp[10] = this.Chj.oWy;
-        if (Chk == null) {
+        this.field_EngineReportStatFromApp[8] = this.CyK.pdj;
+        this.field_EngineReportStatFromApp[9] = this.CyK.pdl;
+        this.field_EngineReportStatFromApp[10] = this.CyK.pdb;
+        if (CyL == null) {
           break label1116;
         }
-        this.field_EngineReportStatFromApp[11] = Chk.waR;
+        this.field_EngineReportStatFromApp[11] = CyL.wqq;
       }
       for (;;)
       {
-        this.field_EngineReportStatFromApp[12] = this.CgH;
-        this.field_EngineReportStatFromApp[13] = this.CgI;
-        this.ivz = false;
-        uninit(this.roomId, this.uLt, this.uLA);
-        Cfa = false;
-        Cfc = 0;
-        if (this.Chj != null)
+        this.field_EngineReportStatFromApp[12] = this.Cyi;
+        this.field_EngineReportStatFromApp[13] = this.Cyj;
+        this.iys = false;
+        uninit(this.roomId, this.uXg, this.uXn);
+        CwB = false;
+        CwD = 0;
+        if (this.CyK != null)
         {
-          this.Chj.dpf();
-          this.Chj = null;
+          this.CyK.dsq();
+          this.CyK = null;
         }
-        if (Chk != null)
+        if (CyL != null)
         {
-          Chk.interrupt();
-          Chk.dpf();
-          Chk = null;
+          CyL.interrupt();
+          CyL.dsq();
+          CyL = null;
         }
-        if (Chm != null) {
-          Chm.release();
+        if (CyN != null) {
+          CyN.release();
         }
-        Chm = null;
+        CyN = null;
         f.Logi("MicroMsg.Voip", "uninit over.");
         if (!paramBoolean) {
           break label1127;
         }
-        getStatInfo(this.CgV, this.CgV.length, this.Che, 30);
-        getEngineVersionInfo(this.CgW, this.CgW.length);
-        getEngineQosInfo(this.CgX, this.CgX.length);
+        getStatInfo(this.Cyw, this.Cyw.length, this.CyF, 30);
+        getEngineVersionInfo(this.Cyx, this.Cyx.length);
+        getEngineQosInfo(this.Cyy, this.Cyy.length);
         Object localObject1 = new StringBuilder();
-        long l = this.pho;
-        if (this.pho < 0) {
-          l = this.pho + 4294967296L;
+        long l = this.pnU;
+        if (this.pnU < 0) {
+          l = this.pnU + 4294967296L;
         }
-        Object localObject2 = new StringBuilder().append(l).append(",").append(this.uLt).append(",").append(this.roomId).append(",").append(this.uLA).append(",");
-        o localo = this.Chg;
-        localObject2 = new StringBuilder().append(localo.CbS).append(",").append(localo.CbT).append(",").append(localo.CbU).append(",").append(localo.CbV).append(",").append(localo.CbW).append(",").append(localo.CbX).append(",").append(localo.CbY).append(",").append(localo.CbZ).append(",").append(localo.Cca).append(",").append(localo.Ccb).append(",").append(localo.Ccc).toString();
+        Object localObject2 = new StringBuilder().append(l).append(",").append(this.uXg).append(",").append(this.roomId).append(",").append(this.uXn).append(",");
+        o localo = this.CyH;
+        localObject2 = new StringBuilder().append(localo.Ctt).append(",").append(localo.Ctu).append(",").append(localo.Ctv).append(",").append(localo.Ctw).append(",").append(localo.Ctx).append(",").append(localo.Cty).append(",").append(localo.Ctz).append(",").append(localo.CtA).append(",").append(localo.CtB).append(",").append(localo.CtC).append(",").append(localo.CtD).toString();
         f.Logi("MicroMsg.Voip", "voipreport:DailStatString:".concat(String.valueOf(localObject2)));
-        localObject1 = ((StringBuilder)localObject1).append((String)localObject2).append(new String(this.CgV, 0, this.field_statInfoLength)).append(eyj()).append(eyl());
-        localObject2 = this.Chg;
-        localObject1 = ((StringBuilder)localObject1).append("," + ((o)localObject2).Ccd).append(new String(this.CgW, 0, this.field_engineVersionStatLength)).append(eym());
+        localObject1 = ((StringBuilder)localObject1).append((String)localObject2).append(new String(this.Cyw, 0, this.field_statInfoLength)).append(eBR()).append(eBT());
+        localObject2 = this.CyH;
+        localObject1 = ((StringBuilder)localObject1).append("," + ((o)localObject2).CtE).append(new String(this.Cyx, 0, this.field_engineVersionStatLength)).append(eBU());
         f.Logd("MicroMsg.Voip", "cpuCapacity:" + cpuFlag0);
-        localObject1 = new StringBuilder(",").append(cpuFlag0).toString() + eyq() + eyr() + new String(this.CgX, 0, this.field_engineQosStatLength);
-        f.Logi("MicroMsg.Voip", "statInfoBuffer = " + new String(this.CgV, 0, this.field_statInfoLength));
-        f.Logi("MicroMsg.Voip", "engineVersionInfoBuffer = " + new String(this.CgW, 0, this.field_engineVersionStatLength));
-        f.Logi("MicroMsg.Voip", "engineQosInfoBuffer = " + new String(this.CgX, 0, this.field_engineQosStatLength));
+        localObject1 = new StringBuilder(",").append(cpuFlag0).toString() + eBY() + eBZ() + new String(this.Cyy, 0, this.field_engineQosStatLength);
+        f.Logi("MicroMsg.Voip", "statInfoBuffer = " + new String(this.Cyw, 0, this.field_statInfoLength));
+        f.Logi("MicroMsg.Voip", "engineVersionInfoBuffer = " + new String(this.Cyx, 0, this.field_engineVersionStatLength));
+        f.Logi("MicroMsg.Voip", "engineQosInfoBuffer = " + new String(this.Cyy, 0, this.field_engineQosStatLength));
         f.Logi("MicroMsg.Voip", "voipreport:StatString = ".concat(String.valueOf(localObject1)));
-        as.a.hFP.db(this.field_netFlowRecv, this.field_netFlowSent);
+        au.a.hIH.db(this.field_netFlowRecv, this.field_netFlowSent);
         f.Logd("MicroMsg.Voip", "voip net flow = " + (this.field_netFlowSent + this.field_netFlowRecv));
         AppMethodBeat.o(115280);
         return localObject1;
@@ -1663,7 +1661,7 @@ public class v2protocal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.v2protocal
  * JD-Core Version:    0.7.0.1
  */

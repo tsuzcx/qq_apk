@@ -14,36 +14,36 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bk.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bj.d;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.plugin.messenger.foundation.a.a.m;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.model.o;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.bs;
-import com.tencent.mm.storage.bu.d;
-import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.bt;
+import com.tencent.mm.storage.bv.d;
 import com.tencent.mm.storage.ce;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class a
   extends LinearLayout
-  implements com.tencent.mm.al.f
+  implements com.tencent.mm.ak.f
 {
-  private static a FfF;
-  private Button FfG;
+  private static a Fyd;
+  private Button Fye;
   private Context context;
-  private TextView hca;
+  private TextView heO;
   private p tipDialog;
   
   public a(Context paramContext)
@@ -52,16 +52,16 @@ public final class a
     AppMethodBeat.i(31814);
     this.context = paramContext;
     paramContext = View.inflate(this.context, 2131494158, this);
-    this.hca = ((TextView)paramContext.findViewById(2131300168));
-    this.FfG = ((Button)paramContext.findViewById(2131300169));
-    this.FfG.setOnClickListener(new View.OnClickListener()
+    this.heO = ((TextView)paramContext.findViewById(2131300168));
+    this.Fye = ((Button)paramContext.findViewById(2131300169));
+    this.Fye.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(31812);
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/preference/FMessageItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/preference/FMessageItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
         paramAnonymousView = View.inflate(a.a(a.this), 2131495371, null);
         ((TextView)paramAnonymousView.findViewById(2131304591)).setVisibility(8);
         localObject = (TextView)paramAnonymousView.findViewById(2131307005);
@@ -69,15 +69,15 @@ public final class a
         ((TextView)localObject).setText("50");
         final EditText localEditText = (EditText)paramAnonymousView.findViewById(2131304590);
         localEditText.setSingleLine(false);
-        com.tencent.mm.ui.tools.b.c.d(localEditText).aeU(100).a(null);
+        com.tencent.mm.ui.tools.b.c.d(localEditText).afD(100).a(null);
         localEditText.addTextChangedListener(new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymous2Editable)
           {
             AppMethodBeat.i(31809);
             int i = com.tencent.mm.ui.tools.f.cU(100, paramAnonymous2Editable.toString());
-            if (this.FfI != null) {
-              this.FfI.setText(String.valueOf(i));
+            if (this.Fyg != null) {
+              this.Fyg.setText(String.valueOf(i));
             }
             AppMethodBeat.o(31809);
           }
@@ -101,7 +101,7 @@ public final class a
               }
               catch (ArrayIndexOutOfBoundsException paramAnonymous2DialogInterface)
               {
-                ad.printErrStackTrace("MicroMsg.FMessageItemView", paramAnonymous2DialogInterface, "", new Object[0]);
+                ae.printErrStackTrace("MicroMsg.FMessageItemView", paramAnonymous2DialogInterface, "", new Object[0]);
                 if ((a.b(a.this) != null) && (a.b(a.this).isShowing())) {
                   a.b(a.this).dismiss();
                 }
@@ -128,16 +128,16 @@ public final class a
     AppMethodBeat.o(31814);
   }
   
-  private static int aNc(String paramString)
+  private static int aOz(String paramString)
   {
     AppMethodBeat.i(31816);
     if (paramString == null)
     {
-      ad.d("MicroMsg.FMessageItemView", "getOpCodeFromVerify fail, xml is null");
+      ae.d("MicroMsg.FMessageItemView", "getOpCodeFromVerify fail, xml is null");
       AppMethodBeat.o(31816);
       return 6;
     }
-    switch (bu.d.aUe(paramString).dsi)
+    switch (bv.d.aVF(paramString).dto)
     {
     case 3: 
     case 4: 
@@ -155,13 +155,13 @@ public final class a
   
   public static void setFMessageArgs(a parama)
   {
-    FfF = parama;
+    Fyd = parama;
   }
   
   public final void detach()
   {
     AppMethodBeat.i(31815);
-    ba.aiU().b(30, this);
+    bc.ajj().b(30, this);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
@@ -176,24 +176,24 @@ public final class a
       AppMethodBeat.o(31819);
       return;
     }
-    ad.d("MicroMsg.FMessageItemView", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ae.d("MicroMsg.FMessageItemView", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramInt1 = ((o)paramn).dsi;
-      paramString = ((o)paramn).ELV;
-      ad.d("MicroMsg.FMessageItemView", "onSceneEnd, pre insert fmsg, opcode = " + paramInt1 + ", verifyContent = " + paramString);
-      ad.d("MicroMsg.FMessageItemView", "onSceneEnd, type = " + FfF.type);
-      switch (FfF.type)
+      paramInt1 = ((o)paramn).dto;
+      paramString = ((o)paramn).Fet;
+      ae.d("MicroMsg.FMessageItemView", "onSceneEnd, pre insert fmsg, opcode = " + paramInt1 + ", verifyContent = " + paramString);
+      ae.d("MicroMsg.FMessageItemView", "onSceneEnd, type = " + Fyd.type);
+      switch (Fyd.type)
       {
       default: 
-        paramn = new bh();
-        paramn.field_createTime = com.tencent.mm.bk.c.B(FfF.talker, 0L);
+        paramn = new bi();
+        paramn.field_createTime = com.tencent.mm.bj.c.B(Fyd.talker, 0L);
         paramn.field_isSend = 1;
         paramn.field_msgContent = paramString;
-        paramn.field_talker = FfF.talker;
+        paramn.field_talker = Fyd.talker;
         if (paramInt1 != 5) {
           break;
         }
@@ -201,31 +201,31 @@ public final class a
       for (paramInt1 = 2;; paramInt1 = 3)
       {
         paramn.field_type = paramInt1;
-        ad.d("MicroMsg.FMessageItemView", "onSceneEnd, insert fmsg, ret = ".concat(String.valueOf(d.aMn().b(paramn))));
+        ae.d("MicroMsg.FMessageItemView", "onSceneEnd, insert fmsg, ret = ".concat(String.valueOf(d.aML().b(paramn))));
         for (;;)
         {
-          ba.aiU().b(30, this);
+          bc.ajj().b(30, this);
           AppMethodBeat.o(31819);
           return;
-          paramn = new br();
-          paramn.field_createtime = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlH().apR(FfF.talker);
+          paramn = new bs();
+          paramn.field_createtime = ((l)com.tencent.mm.kernel.g.ab(l.class)).doG().aqW(Fyd.talker);
           paramn.field_isSend = 1;
           paramn.field_content = paramString;
           paramn.field_talker = "fmessage";
-          paramn.field_sayhiuser = FfF.talker;
+          paramn.field_sayhiuser = Fyd.talker;
           paramn.field_svrid = System.currentTimeMillis();
           paramn.field_status = 4;
-          d.aMp().a(paramn);
+          d.aMN().a(paramn);
           continue;
-          paramn = new cd();
-          paramn.field_createtime = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlG().apR(FfF.talker);
+          paramn = new ce();
+          paramn.field_createtime = ((l)com.tencent.mm.kernel.g.ab(l.class)).doF().aqW(Fyd.talker);
           paramn.field_isSend = 1;
           paramn.field_content = paramString;
           paramn.field_talker = "fmessage";
-          paramn.field_sayhiuser = FfF.talker;
+          paramn.field_sayhiuser = Fyd.talker;
           paramn.field_svrid = System.currentTimeMillis();
           paramn.field_status = 4;
-          ad.d("MicroMsg.FMessageItemView", "onSceneEnd, insert shake, ret = ".concat(String.valueOf(d.aMq().a(paramn))));
+          ae.d("MicroMsg.FMessageItemView", "onSceneEnd, insert shake, ret = ".concat(String.valueOf(d.aMO().a(paramn))));
         }
       }
     }
@@ -243,7 +243,7 @@ public final class a
       else if ((paramInt1 == 4) && (paramInt2 == -24))
       {
         paramn = paramString;
-        if (!bt.isNullOrNil(paramString)) {}
+        if (!bu.isNullOrNil(paramString)) {}
       }
       else
       {
@@ -255,8 +255,8 @@ public final class a
   public final void setBtnVisibility(int paramInt)
   {
     AppMethodBeat.i(31818);
-    if (this.FfG != null) {
-      this.FfG.setVisibility(paramInt);
+    if (this.Fye != null) {
+      this.Fye.setVisibility(paramInt);
     }
     AppMethodBeat.o(31818);
   }
@@ -264,23 +264,23 @@ public final class a
   public final void setContentText(String paramString)
   {
     AppMethodBeat.i(31817);
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      this.hca.setVisibility(8);
+      this.heO.setVisibility(8);
       AppMethodBeat.o(31817);
       return;
     }
-    this.hca.setVisibility(0);
-    this.hca.setText(k.b(this.context, bt.nullAsNil(paramString), this.hca.getTextSize()));
+    this.heO.setVisibility(0);
+    this.heO.setText(k.b(this.context, bu.nullAsNil(paramString), this.heO.getTextSize()));
     AppMethodBeat.o(31817);
   }
   
   public static final class a
   {
-    public String FfL;
+    public String Fyj;
     public int scene;
+    public String tIA;
     public String talker;
-    public String txJ;
     public int type;
   }
 }

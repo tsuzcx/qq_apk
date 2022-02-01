@@ -3,15 +3,15 @@ package com.tencent.luggage.sdk.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/wxa_ktx/runtime;", "", "()V", "lifecycle", "", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "function", "Lkotlin/Function1;", "Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lkotlin/ExtensionFunctionType;", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/wxa_ktx/runtime;", "", "()V", "lifecycle", "", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "function", "Lkotlin/Function1;", "Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lkotlin/ExtensionFunctionType;", "luggage-wxa-app_release"})
 public final class g
 {
-  public static final g cpR;
+  public static final g cqu;
   
   static
   {
     AppMethodBeat.i(147861);
-    cpR = new g();
+    cqu = new g();
     AppMethodBeat.o(147861);
   }
 }

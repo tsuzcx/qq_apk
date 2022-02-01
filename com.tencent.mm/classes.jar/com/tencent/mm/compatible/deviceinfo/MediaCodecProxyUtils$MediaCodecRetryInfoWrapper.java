@@ -10,7 +10,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfoWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaCodecRetryInfoWrapper> CREATOR;
-  List<MediaCodecProxyUtils.MediaCodecRetryInfo> gcq;
+  List<MediaCodecProxyUtils.MediaCodecRetryInfo> gey;
   
   static
   {
@@ -22,7 +22,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfoWrapper
   protected MediaCodecProxyUtils$MediaCodecRetryInfoWrapper(Parcel paramParcel)
   {
     AppMethodBeat.i(155807);
-    this.gcq = paramParcel.createTypedArrayList(MediaCodecProxyUtils.MediaCodecRetryInfo.CREATOR);
+    this.gey = paramParcel.createTypedArrayList(MediaCodecProxyUtils.MediaCodecRetryInfo.CREATOR);
     AppMethodBeat.o(155807);
   }
   
@@ -34,7 +34,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfoWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(155808);
-    paramParcel.writeTypedList(this.gcq);
+    paramParcel.writeTypedList(this.gey);
     AppMethodBeat.o(155808);
   }
 }

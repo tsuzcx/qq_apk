@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class m
@@ -13,11 +13,11 @@ public final class m
   
   public final void a(h paramh, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(188503);
+    AppMethodBeat.i(222653);
     if (paramJSONObject == null)
     {
       paramh.h(paramInt, e("fail", null));
-      AppMethodBeat.o(188503);
+      AppMethodBeat.o(222653);
       return;
     }
     try
@@ -25,14 +25,14 @@ public final class m
       paramJSONObject.put("appId", paramh.getAppId());
       paramJSONObject.put("pay_for_wallet_type", 3);
       super.a(paramh, paramJSONObject, paramInt);
-      AppMethodBeat.o(188503);
+      AppMethodBeat.o(222653);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiRequestMallPayment", paramJSONObject.getMessage());
+      ae.e("MicroMsg.JsApiRequestMallPayment", paramJSONObject.getMessage());
       paramh.h(paramInt, e("fail", null));
-      AppMethodBeat.o(188503);
+      AppMethodBeat.o(222653);
     }
   }
 }

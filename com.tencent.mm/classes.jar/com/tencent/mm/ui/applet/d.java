@@ -18,88 +18,88 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cj.d.b;
+import com.tencent.mm.ci.d.b;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 
 public final class d
 {
-  private static int Jig = 0;
+  private static int JCR = 0;
   
-  public static void ka(Context paramContext)
+  public static void kh(Context paramContext)
   {
     AppMethodBeat.i(33846);
-    if (Jig > 0)
+    if (JCR > 0)
     {
       AppMethodBeat.o(33846);
       return;
     }
     paramContext = new a(paramContext, LayoutInflater.from(paramContext).inflate(2131495800, null));
-    paramContext.JhO.addView(paramContext.JhN, paramContext.JhP);
-    Jig += 1;
+    paramContext.JCz.addView(paramContext.JCy, paramContext.JCA);
+    JCR += 1;
     AppMethodBeat.o(33846);
   }
   
   public static final class a
   {
-    FrameLayout JhN;
-    WindowManager JhO;
-    WindowManager.LayoutParams JhP;
-    private ViewGroup.LayoutParams JhQ;
-    boolean Jih;
-    d.b Jii;
-    com.tencent.mm.cj.d.a Jij;
-    ap Jik;
+    WindowManager.LayoutParams JCA;
+    private ViewGroup.LayoutParams JCB;
+    boolean JCS;
+    d.b JCT;
+    com.tencent.mm.ci.d.a JCU;
+    aq JCV;
+    FrameLayout JCy;
+    WindowManager JCz;
     Context context;
-    ProgressBar dwA;
-    ImageView dwy;
+    ImageView dxD;
+    ProgressBar dxF;
     View mView;
-    int syl;
-    TextView umZ;
+    TextView okL;
+    int sJc;
     
     public a(final Context paramContext, View paramView)
     {
       AppMethodBeat.i(33843);
-      this.Jih = false;
-      this.Jii = new d.b()
+      this.JCS = false;
+      this.JCT = new d.b()
       {
-        public final void fuz()
+        public final void fyA()
         {
           AppMethodBeat.i(33838);
-          d.a.this.kb(d.a.this.context);
+          d.a.this.ki(d.a.this.context);
           Toast.makeText(d.a.this.context, "trace file has saved ", 0).show();
           AppMethodBeat.o(33838);
         }
       };
-      this.syl = 0;
-      this.Jik = new ap()
+      this.sJc = 0;
+      this.JCV = new aq()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(33842);
-          if (d.a.this.umZ.getVisibility() != 0)
+          if (d.a.this.okL.getVisibility() != 0)
           {
-            d.a.this.syl = 0;
+            d.a.this.sJc = 0;
             AppMethodBeat.o(33842);
             return;
           }
           d.a locala = d.a.this;
-          locala.syl += 1;
-          d.a.this.fyp();
+          locala.sJc += 1;
+          d.a.this.fCr();
           super.handleMessage(paramAnonymousMessage);
           AppMethodBeat.o(33842);
         }
       };
-      if ((this.JhN != null) && (this.JhO != null))
+      if ((this.JCy != null) && (this.JCz != null))
       {
         AppMethodBeat.o(33843);
         return;
       }
-      com.tencent.mm.cj.d.fux().IRH = new WeakReference(this.Jii);
-      this.umZ = ((TextView)paramView.findViewById(2131305811));
-      this.dwy = ((ImageView)paramView.findViewById(2131297631));
+      com.tencent.mm.ci.d.fyy().Jmp = new WeakReference(this.JCT);
+      this.okL = ((TextView)paramView.findViewById(2131305811));
+      this.dxD = ((ImageView)paramView.findViewById(2131297631));
       ((ImageView)paramView.findViewById(2131298992)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -107,24 +107,24 @@ public final class d
           AppMethodBeat.i(33839);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/ui/applet/TraceViewController$TraceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if ((d.a.this.Jih) && (d.a.this.dwA.getVisibility() != 0)) {
-            com.tencent.mm.cj.d.fux().b(d.a.this.Jij);
+          a.b("com/tencent/mm/ui/applet/TraceViewController$TraceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if ((d.a.this.JCS) && (d.a.this.dxF.getVisibility() != 0)) {
+            com.tencent.mm.ci.d.fyy().b(d.a.this.JCU);
           }
           paramAnonymousView = d.a.this;
           try
           {
-            if (paramAnonymousView.JhO != null)
+            if (paramAnonymousView.JCz != null)
             {
-              if (paramAnonymousView.JhN != null) {
-                paramAnonymousView.JhO.removeView(paramAnonymousView.JhN);
+              if (paramAnonymousView.JCy != null) {
+                paramAnonymousView.JCz.removeView(paramAnonymousView.JCy);
               }
-              paramAnonymousView.JhO = null;
+              paramAnonymousView.JCz = null;
             }
-            if (paramAnonymousView.JhN != null)
+            if (paramAnonymousView.JCy != null)
             {
-              paramAnonymousView.JhN.removeAllViews();
-              paramAnonymousView.JhN = null;
+              paramAnonymousView.JCy.removeAllViews();
+              paramAnonymousView.JCy = null;
             }
             paramAnonymousView.mView = null;
           }
@@ -133,38 +133,38 @@ public final class d
             label132:
             break label132;
           }
-          d.fyo();
+          d.fCq();
           a.a(this, "com/tencent/mm/ui/applet/TraceViewController$TraceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(33839);
         }
       });
-      this.dwA = ((ProgressBar)paramView.findViewById(2131302644));
-      this.dwA.setVisibility(8);
+      this.dxF = ((ProgressBar)paramView.findViewById(2131302644));
+      this.dxF.setVisibility(8);
       this.context = paramContext;
-      this.JhP = new WindowManager.LayoutParams();
-      this.JhP.height = -2;
-      this.JhP.width = -2;
-      this.JhO = ((WindowManager)paramContext.getSystemService("window"));
-      this.JhP.x = 0;
-      this.JhP.y = 0;
-      this.JhP.flags = 40;
-      this.JhP.type = 2002;
+      this.JCA = new WindowManager.LayoutParams();
+      this.JCA.height = -2;
+      this.JCA.width = -2;
+      this.JCz = ((WindowManager)paramContext.getSystemService("window"));
+      this.JCA.x = 0;
+      this.JCA.y = 0;
+      this.JCA.flags = 40;
+      this.JCA.type = 2002;
       this.mView = paramView;
-      this.umZ.setVisibility(8);
-      this.JhP.gravity = 51;
-      this.JhP.format = 1;
-      this.JhN = new FrameLayout(paramContext);
-      this.JhN.setPadding(4, 4, 4, 4);
-      this.JhQ = new ViewGroup.LayoutParams(-2, -2);
-      this.JhN.addView(this.mView, this.JhQ);
+      this.okL.setVisibility(8);
+      this.JCA.gravity = 51;
+      this.JCA.format = 1;
+      this.JCy = new FrameLayout(paramContext);
+      this.JCy.setPadding(4, 4, 4, 4);
+      this.JCB = new ViewGroup.LayoutParams(-2, -2);
+      this.JCy.addView(this.mView, this.JCB);
       paramContext = paramContext.getResources().getDisplayMetrics();
-      this.JhN.setOnTouchListener(new View.OnTouchListener()
+      this.JCy.setOnTouchListener(new View.OnTouchListener()
       {
-        int JhS;
-        int JhT;
-        int JhU;
-        int JhV;
-        long JhW;
+        int JCD;
+        int JCE;
+        int JCF;
+        int JCG;
+        long JCH;
         
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -172,7 +172,7 @@ public final class d
           b localb = new b();
           localb.bd(paramAnonymousView);
           localb.bd(paramAnonymousMotionEvent);
-          a.b("com/tencent/mm/ui/applet/TraceViewController$TraceView$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          a.b("com/tencent/mm/ui/applet/TraceViewController$TraceView$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
@@ -181,78 +181,78 @@ public final class d
             a.a(false, this, "com/tencent/mm/ui/applet/TraceViewController$TraceView$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(33841);
             return false;
-            this.JhS = ((int)paramAnonymousMotionEvent.getRawX() - d.a.this.JhP.x);
-            this.JhT = ((int)paramAnonymousMotionEvent.getRawY() - d.a.this.JhP.y);
-            this.JhW = System.currentTimeMillis();
+            this.JCD = ((int)paramAnonymousMotionEvent.getRawX() - d.a.this.JCA.x);
+            this.JCE = ((int)paramAnonymousMotionEvent.getRawY() - d.a.this.JCA.y);
+            this.JCH = System.currentTimeMillis();
             continue;
-            this.JhU = (paramContext.widthPixels - d.a.this.JhP.width - 1);
-            this.JhV = (paramContext.heightPixels - d.a.this.JhP.height - 1);
-            d.a.this.JhP.x = ((int)paramAnonymousMotionEvent.getRawX() - this.JhS);
-            d.a.this.JhP.y = ((int)paramAnonymousMotionEvent.getRawY() - this.JhT);
-            paramAnonymousView = d.a.this.JhP;
-            if (d.a.this.JhP.x < 0)
+            this.JCF = (paramContext.widthPixels - d.a.this.JCA.width - 1);
+            this.JCG = (paramContext.heightPixels - d.a.this.JCA.height - 1);
+            d.a.this.JCA.x = ((int)paramAnonymousMotionEvent.getRawX() - this.JCD);
+            d.a.this.JCA.y = ((int)paramAnonymousMotionEvent.getRawY() - this.JCE);
+            paramAnonymousView = d.a.this.JCA;
+            if (d.a.this.JCA.x < 0)
             {
               i = 0;
               label253:
               paramAnonymousView.x = i;
-              paramAnonymousView = d.a.this.JhP;
-              if (d.a.this.JhP.x <= this.JhU) {
+              paramAnonymousView = d.a.this.JCA;
+              if (d.a.this.JCA.x <= this.JCF) {
                 break label399;
               }
-              i = this.JhU;
+              i = this.JCF;
               label288:
               paramAnonymousView.x = i;
-              paramAnonymousView = d.a.this.JhP;
-              if (d.a.this.JhP.y >= 0) {
+              paramAnonymousView = d.a.this.JCA;
+              if (d.a.this.JCA.y >= 0) {
                 break label413;
               }
               i = 0;
               label316:
               paramAnonymousView.y = i;
-              paramAnonymousView = d.a.this.JhP;
-              if (d.a.this.JhP.y <= this.JhV) {
+              paramAnonymousView = d.a.this.JCA;
+              if (d.a.this.JCA.y <= this.JCG) {
                 break label427;
               }
             }
             label399:
             label413:
             label427:
-            for (int i = this.JhV;; i = d.a.this.JhP.y)
+            for (int i = this.JCG;; i = d.a.this.JCA.y)
             {
               paramAnonymousView.y = i;
-              d.a.this.JhO.updateViewLayout(d.a.this.JhN, d.a.this.JhP);
+              d.a.this.JCz.updateViewLayout(d.a.this.JCy, d.a.this.JCA);
               break;
-              i = d.a.this.JhP.x;
+              i = d.a.this.JCA.x;
               break label253;
-              i = d.a.this.JhP.x;
+              i = d.a.this.JCA.x;
               break label288;
-              i = d.a.this.JhP.y;
+              i = d.a.this.JCA.y;
               break label316;
             }
-            if (System.currentTimeMillis() - this.JhW < 300L)
+            if (System.currentTimeMillis() - this.JCH < 300L)
             {
               paramAnonymousView = d.a.this;
-              paramAnonymousView.Jik.removeMessages(0);
-              paramAnonymousView.syl = 0;
-              if (!paramAnonymousView.Jih) {
+              paramAnonymousView.JCV.removeMessages(0);
+              paramAnonymousView.sJc = 0;
+              if (!paramAnonymousView.JCS) {
                 break;
               }
-              paramAnonymousView.dwA.setVisibility(0);
-              paramAnonymousView.dwy.setVisibility(4);
-              if (!com.tencent.mm.cj.d.fux().b(paramAnonymousView.Jij)) {
-                paramAnonymousView.kb(paramAnonymousView.context);
+              paramAnonymousView.dxF.setVisibility(0);
+              paramAnonymousView.dxD.setVisibility(4);
+              if (!com.tencent.mm.ci.d.fyy().b(paramAnonymousView.JCU)) {
+                paramAnonymousView.ki(paramAnonymousView.context);
               }
             }
           }
-          paramAnonymousView.dwy.setVisibility(0);
-          paramAnonymousView.dwy.setBackgroundDrawable(paramAnonymousView.context.getResources().getDrawable(2131234419));
-          if (!paramAnonymousView.Jih) {}
+          paramAnonymousView.dxD.setVisibility(0);
+          paramAnonymousView.dxD.setBackgroundDrawable(paramAnonymousView.context.getResources().getDrawable(2131234419));
+          if (!paramAnonymousView.JCS) {}
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.Jih = bool;
-            paramAnonymousView.Jij = new com.tencent.mm.cj.d.a(null, 6, 8, 0);
-            com.tencent.mm.cj.d.fux().c(paramAnonymousView.Jij);
-            paramAnonymousView.fyp();
+            paramAnonymousView.JCS = bool;
+            paramAnonymousView.JCU = new com.tencent.mm.ci.d.a(null, 6, 8, 0);
+            com.tencent.mm.ci.d.fyy().c(paramAnonymousView.JCU);
+            paramAnonymousView.fCr();
             break;
           }
         }
@@ -260,26 +260,26 @@ public final class d
       AppMethodBeat.o(33843);
     }
     
-    final void fyp()
+    final void fCr()
     {
       AppMethodBeat.i(33845);
-      this.umZ.setText(this.syl);
-      this.Jik.sendEmptyMessageDelayed(0, 1000L);
+      this.okL.setText(this.sJc);
+      this.JCV.sendEmptyMessageDelayed(0, 1000L);
       AppMethodBeat.o(33845);
     }
     
-    final void kb(Context paramContext)
+    final void ki(Context paramContext)
     {
       boolean bool = false;
       AppMethodBeat.i(33844);
-      this.dwy.setVisibility(0);
-      this.dwA.setVisibility(4);
-      if (!this.Jih) {
+      this.dxD.setVisibility(0);
+      this.dxF.setVisibility(4);
+      if (!this.JCS) {
         bool = true;
       }
-      this.Jih = bool;
-      this.dwy.setBackgroundDrawable(paramContext.getResources().getDrawable(2131234418));
-      this.umZ.setVisibility(8);
+      this.JCS = bool;
+      this.dxD.setBackgroundDrawable(paramContext.getResources().getDrawable(2131234418));
+      this.okL.setVisibility(8);
       AppMethodBeat.o(33844);
     }
   }

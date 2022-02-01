@@ -2,8 +2,8 @@ package com.tencent.mm.view.popview;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.ai;
-import com.tencent.mm.emoji.a.a.h;
+import com.tencent.mm.emoji.a.b.ai;
+import com.tencent.mm.emoji.a.b.h;
 import com.tencent.mm.emoji.a.o;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
@@ -22,7 +22,7 @@ public final class c
       }
       if ((paramObject instanceof h))
       {
-        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).gjb);
+        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).glt);
         AppMethodBeat.o(105304);
       }
     }
@@ -35,7 +35,7 @@ public final class c
         return;
       }
       if ((paramObject instanceof ai)) {
-        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ai)paramObject).glQ);
+        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ai)paramObject).gol);
       }
     }
     AppMethodBeat.o(105304);
@@ -63,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.popview.c
  * JD-Core Version:    0.7.0.1
  */

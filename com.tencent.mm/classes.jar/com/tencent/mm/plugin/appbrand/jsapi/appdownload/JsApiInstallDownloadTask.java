@@ -8,9 +8,9 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import org.json.JSONObject;
 
 public final class JsApiInstallDownloadTask
@@ -31,11 +31,11 @@ public final class JsApiInstallDownloadTask
   {
     public static final Parcelable.Creator<InstallDownloadTask> CREATOR;
     private int cgA;
-    private m ksO;
-    private boolean ksW;
-    private String ksX;
-    private long ksY;
-    private c kuU;
+    private c jQp;
+    private m kwe;
+    private boolean kwm;
+    private String kwn;
+    private long kwo;
     private String mAppId;
     
     static
@@ -55,27 +55,27 @@ public final class JsApiInstallDownloadTask
     public InstallDownloadTask(m paramm, c paramc, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45805);
-      this.ksO = paramm;
-      this.kuU = paramc;
+      this.kwe = paramm;
+      this.jQp = paramc;
       this.cgA = paramInt;
-      this.ksY = paramJSONObject.optLong("downloadId");
+      this.kwo = paramJSONObject.optLong("downloadId");
       this.mAppId = paramJSONObject.optString("appId");
-      this.ksW = true;
+      this.kwm = true;
       AppMethodBeat.o(45805);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(45807);
-      ad.i("MicroMsg.JsApiInstallDownloadTask", "doInstallDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ksY) });
+      ae.i("MicroMsg.JsApiInstallDownloadTask", "doInstallDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.kwo) });
       com.tencent.mm.plugin.downloader.g.a locala;
-      if (!bt.isNullOrNil(this.mAppId))
+      if (!bu.isNullOrNil(this.mAppId))
       {
-        locala = d.aad(this.mAppId);
-        if ((locala != null) && (locala.field_status == 3) && (i.fv(locala.field_filePath))) {
+        locala = d.aaU(this.mAppId);
+        if ((locala != null) && (locala.field_status == 3) && (o.fB(locala.field_filePath))) {
           com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, new com.tencent.mm.pluginsdk.permission.a()
           {
-            public final void gp(boolean paramAnonymousBoolean)
+            public final void gn(boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(45802);
               JsApiInstallDownloadTask.InstallDownloadTask localInstallDownloadTask = JsApiInstallDownloadTask.InstallDownloadTask.this;
@@ -92,14 +92,14 @@ public final class JsApiInstallDownloadTask
       }
       for (;;)
       {
-        bhX();
+        biG();
         AppMethodBeat.o(45807);
         return;
-        locala = d.ua(this.ksY);
-        if ((locala != null) && (locala.field_status == 3) && (i.fv(locala.field_filePath))) {
+        locala = d.ur(this.kwo);
+        if ((locala != null) && (locala.field_status == 3) && (o.fB(locala.field_filePath))) {
           com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, new com.tencent.mm.pluginsdk.permission.a()
           {
-            public final void gp(boolean paramAnonymousBoolean)
+            public final void gn(boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(45803);
               JsApiInstallDownloadTask.InstallDownloadTask localInstallDownloadTask = JsApiInstallDownloadTask.InstallDownloadTask.this;
@@ -116,20 +116,20 @@ public final class JsApiInstallDownloadTask
       }
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       AppMethodBeat.i(45808);
-      if (this.ksW)
+      if (this.kwm)
       {
-        if (bt.isNullOrNil(this.ksX)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
+        if (bu.isNullOrNil(this.kwn)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.kwn }))
         {
-          this.kuU.h(this.cgA, this.ksO.e(str, null));
+          this.jQp.h(this.cgA, this.kwe.e(str, null));
           AppMethodBeat.o(45808);
           return;
         }
       }
-      this.kuU.h(this.cgA, this.ksO.e("ok", null));
+      this.jQp.h(this.cgA, this.kwe.e("ok", null));
       AppMethodBeat.o(45808);
     }
     
@@ -137,13 +137,13 @@ public final class JsApiInstallDownloadTask
     {
       boolean bool = true;
       AppMethodBeat.i(45809);
-      this.ksY = paramParcel.readLong();
+      this.kwo = paramParcel.readLong();
       this.mAppId = paramParcel.readString();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.ksW = bool;
-        this.ksX = paramParcel.readString();
+        this.kwm = bool;
+        this.kwn = paramParcel.readString();
         AppMethodBeat.o(45809);
         return;
         bool = false;
@@ -153,13 +153,13 @@ public final class JsApiInstallDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45810);
-      paramParcel.writeLong(this.ksY);
+      paramParcel.writeLong(this.kwo);
       paramParcel.writeString(this.mAppId);
-      if (this.ksW) {}
+      if (this.kwm) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ksX);
+        paramParcel.writeString(this.kwn);
         AppMethodBeat.o(45810);
         return;
       }

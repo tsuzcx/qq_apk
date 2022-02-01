@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.expt.hellhound.core.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/HellMultiProcessSeqGenerator;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/HellMultiProcessSeqGenerator;", "", "()V", "Companion", "plugin-expt_release"})
 public final class a
 {
-  public static final a qQR;
+  public static final a qYP;
   
   static
   {
     AppMethodBeat.i(122555);
-    qQR = new a((byte)0);
+    qYP = new a((byte)0);
     AppMethodBeat.o(122555);
   }
   
-  public static final void cnK()
+  public static final void cpm()
   {
     AppMethodBeat.i(122556);
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.cnC())
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.cpe())
     {
-      a.CQ(0);
-      a.CQ(1);
+      a.Dd(0);
+      a.Dd(1);
     }
     AppMethodBeat.o(122556);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/HellMultiProcessSeqGenerator$Companion;", "", "()V", "MMKV_KEY_HELL_MULTIPROCESEQ", "", "SESSION_FLOW_TYPE", "", "SESSION_FRONTTIME_TYPE", "TAG", "getSeqAfterIncrement", "", "type", "resetAllSeq", "", "writeback", "seq", "plugin-expt_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/HellMultiProcessSeqGenerator$Companion;", "", "()V", "MMKV_KEY_HELL_MULTIPROCESEQ", "", "SESSION_FLOW_TYPE", "", "SESSION_FRONTTIME_TYPE", "TAG", "getSeqAfterIncrement", "", "type", "resetAllSeq", "", "writeback", "seq", "plugin-expt_release"})
   public static final class a
   {
-    static void CQ(int paramInt)
+    static void Dd(int paramInt)
     {
       AppMethodBeat.i(122554);
       try
       {
-        b.adQ("hell_mlprocseq_".concat(String.valueOf(paramInt)));
+        b.aeK("hell_mlprocseq_".concat(String.valueOf(paramInt)));
         AppMethodBeat.o(122554);
         return;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.HellMultiProcessSeqGenerator", (Throwable)localException, "HellMultiProcessSeqGenerator.writeback", new Object[0]);
+        ae.printErrStackTrace("HABBYGE-MALI.HellMultiProcessSeqGenerator", (Throwable)localException, "HellMultiProcessSeqGenerator.writeback", new Object[0]);
         AppMethodBeat.o(122554);
       }
     }

@@ -8,23 +8,23 @@ public abstract class bt
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEf = "createTime".hashCode();
-  private static final int eIP;
-  private static final int eLf;
-  private static final int eUA;
-  private static final int eUS = "msgContent".hashCode();
-  private static final int eUT;
-  private static final int eUU = "chatroomName".hashCode();
+  private static final int eFO = "createTime".hashCode();
+  private static final int eKy;
+  private static final int eMP;
+  private static final int eWD = "msgContent".hashCode();
+  private static final int eWE;
+  private static final int eWF = "chatroomName".hashCode();
+  private static final int eWl;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eDI = true;
-  private boolean eIA = true;
-  private boolean eKS = true;
-  private boolean eUP = true;
-  private boolean eUQ = true;
-  private boolean eUR = true;
-  private boolean eUl = true;
+  private boolean eFr = true;
+  private boolean eKj = true;
+  private boolean eMB = true;
+  private boolean eVW = true;
+  private boolean eWA = true;
+  private boolean eWB = true;
+  private boolean eWC = true;
   public String field_chatroomName;
   public long field_createTime;
   public String field_encryptTalker;
@@ -36,10 +36,10 @@ public abstract class bt
   
   static
   {
-    eIP = "isSend".hashCode();
-    eLf = "talker".hashCode();
-    eUA = "encryptTalker".hashCode();
-    eUT = "svrId".hashCode();
+    eKy = "isSend".hashCode();
+    eMP = "talker".hashCode();
+    eWl = "encryptTalker".hashCode();
+    eWE = "svrId".hashCode();
     type_HASHCODE = "type".hashCode();
   }
   
@@ -56,7 +56,7 @@ public abstract class bt
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eUS != k) {
+      if (eWD != k) {
         break label60;
       }
       this.field_msgContent = paramCursor.getString(i);
@@ -67,19 +67,19 @@ public abstract class bt
       break label20;
       break;
       label60:
-      if (eIP == k) {
+      if (eKy == k) {
         this.field_isSend = paramCursor.getInt(i);
-      } else if (eLf == k) {
+      } else if (eMP == k) {
         this.field_talker = paramCursor.getString(i);
-      } else if (eUA == k) {
+      } else if (eWl == k) {
         this.field_encryptTalker = paramCursor.getString(i);
-      } else if (eUT == k) {
+      } else if (eWE == k) {
         this.field_svrId = paramCursor.getLong(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eEf == k) {
+      } else if (eFO == k) {
         this.field_createTime = paramCursor.getLong(i);
-      } else if (eUU == k) {
+      } else if (eWF == k) {
         this.field_chatroomName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -93,37 +93,37 @@ public abstract class bt
     if (this.field_msgContent == null) {
       this.field_msgContent = "";
     }
-    if (this.eUP) {
+    if (this.eWA) {
       localContentValues.put("msgContent", this.field_msgContent);
     }
-    if (this.eIA) {
+    if (this.eKj) {
       localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
     if (this.field_talker == null) {
       this.field_talker = "";
     }
-    if (this.eKS) {
+    if (this.eMB) {
       localContentValues.put("talker", this.field_talker);
     }
     if (this.field_encryptTalker == null) {
       this.field_encryptTalker = "";
     }
-    if (this.eUl) {
+    if (this.eVW) {
       localContentValues.put("encryptTalker", this.field_encryptTalker);
     }
-    if (this.eUQ) {
+    if (this.eWB) {
       localContentValues.put("svrId", Long.valueOf(this.field_svrId));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eDI) {
+    if (this.eFr) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.field_chatroomName == null) {
       this.field_chatroomName = "";
     }
-    if (this.eUR) {
+    if (this.eWC) {
       localContentValues.put("chatroomName", this.field_chatroomName);
     }
     if (this.systemRowid > 0L) {

@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.appbrand.luggage.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.j;
 import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class b
-  implements p
+  implements q
 {
-  public static final b lQt;
+  public static final b lUU;
   
   static
   {
     AppMethodBeat.i(47551);
-    lQt = new b();
+    lUU = new b();
     AppMethodBeat.o(47551);
   }
   
-  public final o c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  public final p c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
     AppMethodBeat.i(47550);
     int i;
-    if (!paramAppBrandInitConfigWC.jXr)
+    if (!paramAppBrandInitConfigWC.kaG)
     {
       String str = paramAppBrandInitConfigWC.username;
       if (str != null) {
@@ -33,7 +33,7 @@ public final class b
     }
     while (i != 0)
     {
-      paramAppBrandInitConfigWC = i.a(paramAppBrandInitConfigWC, paramAppBrandRuntimeContainerWC);
+      paramAppBrandInitConfigWC = j.a(paramAppBrandInitConfigWC, paramAppBrandRuntimeContainerWC);
       if ((paramAppBrandInitConfigWC instanceof f))
       {
         AppMethodBeat.o(47550);
@@ -43,7 +43,7 @@ public final class b
       else
       {
         if (paramAppBrandInitConfigWC != null) {
-          paramAppBrandInitConfigWC.aXg();
+          paramAppBrandInitConfigWC.aXB();
         }
         paramAppBrandInitConfigWC = new f(paramAppBrandRuntimeContainerWC);
         AppMethodBeat.o(47550);

@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.b.l;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public final class w
     this.db = parame;
   }
   
-  public final v Ak(long paramLong)
+  public final v AI(long paramLong)
   {
     AppMethodBeat.i(97624);
     Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
@@ -43,7 +43,7 @@ public final class w
     return localv;
   }
   
-  public final int Al(long paramLong)
+  public final int AJ(long paramLong)
   {
     AppMethodBeat.i(97629);
     int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
@@ -51,11 +51,11 @@ public final class w
     return i;
   }
   
-  public final boolean D(long paramLong, String paramString)
+  public final boolean E(long paramLong, String paramString)
   {
     AppMethodBeat.i(97630);
-    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bt.aQN(paramString) + "\" AND  tagId != " + paramLong;
-    ad.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
+    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bu.aSk(paramString) + "\" AND  tagId != " + paramLong;
+    ae.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
     paramString = this.db.a(paramString, null, 2);
     boolean bool = paramString.moveToFirst();
     paramString.close();
@@ -87,24 +87,24 @@ public final class w
     }
   }
   
-  public final boolean auM(String paramString)
+  public final boolean awb(String paramString)
   {
     AppMethodBeat.i(97632);
-    v localv = Ak(5L);
-    if (bt.isNullOrNil(localv.field_memberList))
+    v localv = AI(5L);
+    if (bu.isNullOrNil(localv.field_memberList))
     {
       AppMethodBeat.o(97632);
       return false;
     }
-    boolean bool = bt.U(localv.field_memberList.split(",")).contains(paramString);
+    boolean bool = bu.U(localv.field_memberList.split(",")).contains(paramString);
     AppMethodBeat.o(97632);
     return bool;
   }
   
-  public final boolean dSD()
+  public final boolean dWb()
   {
     AppMethodBeat.i(97633);
-    if (dZo().size() == 0)
+    if (ecT().size() == 0)
     {
       AppMethodBeat.o(97633);
       return false;
@@ -113,7 +113,7 @@ public final class w
     return true;
   }
   
-  public final List<Long> dZo()
+  public final List<Long> ecT()
   {
     AppMethodBeat.i(97627);
     Cursor localCursor = this.db.a("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
@@ -134,13 +134,13 @@ public final class w
     return localCursor;
   }
   
-  public final List<String> zu(long paramLong)
+  public final List<String> zT(long paramLong)
   {
     AppMethodBeat.i(97625);
-    Object localObject = Ak(paramLong);
+    Object localObject = AI(paramLong);
     if ((((v)localObject).field_memberList != null) && (!((v)localObject).field_memberList.equals("")))
     {
-      localObject = bt.U(((v)localObject).field_memberList.split(","));
+      localObject = bu.U(((v)localObject).field_memberList.split(","));
       AppMethodBeat.o(97625);
       return localObject;
     }
@@ -149,10 +149,10 @@ public final class w
     return localObject;
   }
   
-  public final String zv(long paramLong)
+  public final String zU(long paramLong)
   {
     AppMethodBeat.i(97626);
-    String str = Ak(paramLong).field_tagName;
+    String str = AI(paramLong).field_tagName;
     AppMethodBeat.o(97626);
     return str;
   }

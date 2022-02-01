@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.map;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.location.model.n;
 import com.tencent.mm.plugin.map.a.a;
 
@@ -15,8 +15,8 @@ public class PluginMap
   public void configure(g paramg)
   {
     AppMethodBeat.i(56242);
-    if (paramg.akw()) {
-      pin(new t(n.class));
+    if (paramg.akL()) {
+      pin(new u(n.class));
     }
     AppMethodBeat.o(56242);
   }
@@ -24,8 +24,8 @@ public class PluginMap
   public void execute(g paramg)
   {
     AppMethodBeat.i(56243);
-    if (paramg.akw()) {
-      c.aNQ("location");
+    if (paramg.akL()) {
+      c.aPn("location");
     }
     AppMethodBeat.o(56243);
   }

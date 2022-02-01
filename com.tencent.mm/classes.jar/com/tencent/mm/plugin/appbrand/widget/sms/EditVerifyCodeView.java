@@ -17,36 +17,36 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class EditVerifyCodeView
   extends RelativeLayout
 {
   private StringBuilder mBuilder;
   private Context mContext;
-  private ImageView[] nph;
-  private TextView[] npi;
-  private VerifyCodeEditText npj;
-  View.OnKeyListener npk;
-  public a npl;
+  private ImageView[] nur;
+  private TextView[] nus;
+  private VerifyCodeEditText nut;
+  View.OnKeyListener nuu;
+  public a nuv;
   
   public EditVerifyCodeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(131588);
     this.mBuilder = new StringBuilder();
-    this.nph = new ImageView[6];
-    this.npi = new TextView[6];
-    this.npk = new View.OnKeyListener()
+    this.nur = new ImageView[6];
+    this.nus = new TextView[6];
+    this.nuu = new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(131587);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
+        localb.mu(paramAnonymousInt);
         localb.bd(paramAnonymousKeyEvent);
-        a.b("com/tencent/mm/plugin/appbrand/widget/sms/EditVerifyCodeView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/appbrand/widget/sms/EditVerifyCodeView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
         if ((paramAnonymousInt == 67) && (paramAnonymousKeyEvent.getAction() == 1))
         {
           EditVerifyCodeView.c(EditVerifyCodeView.this);
@@ -59,7 +59,7 @@ public class EditVerifyCodeView
         return false;
       }
     };
-    ef(paramContext);
+    ej(paramContext);
     AppMethodBeat.o(131588);
   }
   
@@ -68,18 +68,18 @@ public class EditVerifyCodeView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(131589);
     this.mBuilder = new StringBuilder();
-    this.nph = new ImageView[6];
-    this.npi = new TextView[6];
-    this.npk = new View.OnKeyListener()
+    this.nur = new ImageView[6];
+    this.nus = new TextView[6];
+    this.nuu = new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(131587);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        localb.mr(paramAnonymousInt);
+        localb.mu(paramAnonymousInt);
         localb.bd(paramAnonymousKeyEvent);
-        a.b("com/tencent/mm/plugin/appbrand/widget/sms/EditVerifyCodeView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/appbrand/widget/sms/EditVerifyCodeView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
         if ((paramAnonymousInt == 67) && (paramAnonymousKeyEvent.getAction() == 1))
         {
           EditVerifyCodeView.c(EditVerifyCodeView.this);
@@ -92,12 +92,12 @@ public class EditVerifyCodeView
         return false;
       }
     };
-    ef(paramContext);
+    ej(paramContext);
     AppMethodBeat.o(131589);
   }
   
   @SuppressLint({"InflateParams"})
-  private void ef(Context paramContext)
+  private void ej(Context paramContext)
   {
     AppMethodBeat.i(131592);
     this.mContext = paramContext;
@@ -108,26 +108,26 @@ public class EditVerifyCodeView
     Object localObject4 = (TextView)paramContext.findViewById(2131298412);
     Object localObject5 = (TextView)paramContext.findViewById(2131298413);
     Object localObject6 = (TextView)paramContext.findViewById(2131298414);
-    this.npi[0] = localObject1;
-    this.npi[1] = localObject2;
-    this.npi[2] = localObject3;
-    this.npi[3] = localObject4;
-    this.npi[4] = localObject5;
-    this.npi[5] = localObject6;
+    this.nus[0] = localObject1;
+    this.nus[1] = localObject2;
+    this.nus[2] = localObject3;
+    this.nus[3] = localObject4;
+    this.nus[4] = localObject5;
+    this.nus[5] = localObject6;
     localObject1 = (ImageView)paramContext.findViewById(2131298389);
     localObject2 = (ImageView)paramContext.findViewById(2131298390);
     localObject3 = (ImageView)paramContext.findViewById(2131298391);
     localObject4 = (ImageView)paramContext.findViewById(2131298392);
     localObject5 = (ImageView)paramContext.findViewById(2131298393);
     localObject6 = (ImageView)paramContext.findViewById(2131298394);
-    this.nph[0] = localObject1;
-    this.nph[1] = localObject2;
-    this.nph[2] = localObject3;
-    this.nph[3] = localObject4;
-    this.nph[4] = localObject5;
-    this.nph[5] = localObject6;
-    this.npj = ((VerifyCodeEditText)paramContext.findViewById(2131306284));
-    this.npj.addTextChangedListener(new TextWatcher()
+    this.nur[0] = localObject1;
+    this.nur[1] = localObject2;
+    this.nur[2] = localObject3;
+    this.nur[3] = localObject4;
+    this.nur[4] = localObject5;
+    this.nur[5] = localObject6;
+    this.nut = ((VerifyCodeEditText)paramContext.findViewById(2131306284));
+    this.nut.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -137,7 +137,7 @@ public class EditVerifyCodeView
           AppMethodBeat.o(131586);
           return;
         }
-        ad.i("MicroMsg.EditVerifyCodeView", "afterTextChanged:%s", new Object[] { paramAnonymousEditable.toString() });
+        ae.i("MicroMsg.EditVerifyCodeView", "afterTextChanged:%s", new Object[] { paramAnonymousEditable.toString() });
         if (EditVerifyCodeView.a(EditVerifyCodeView.this).length() < 6)
         {
           EditVerifyCodeView.a(EditVerifyCodeView.this).append(paramAnonymousEditable.toString());
@@ -151,7 +151,7 @@ public class EditVerifyCodeView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.npj.setKeyListener(new NumberKeyListener()
+    this.nut.setKeyListener(new NumberKeyListener()
     {
       protected final char[] getAcceptedChars()
       {
@@ -163,14 +163,14 @@ public class EditVerifyCodeView
         return 3;
       }
     });
-    this.npj.setOnKeyListener(this.npk);
+    this.nut.setOnKeyListener(this.nuu);
     addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
     AppMethodBeat.o(131592);
   }
   
   public VerifyCodeEditText getEditText()
   {
-    return this.npj;
+    return this.nut;
   }
   
   public String getText()
@@ -183,7 +183,7 @@ public class EditVerifyCodeView
   
   public void setCodeEditCompleListener(a parama)
   {
-    this.npl = parama;
+    this.nuv = parama;
   }
   
   public void setText(String paramString)
@@ -193,16 +193,16 @@ public class EditVerifyCodeView
     this.mBuilder.append(paramString);
     paramString = this.mBuilder.toString();
     int j = paramString.length();
-    ad.i("MicroMsg.EditVerifyCodeView", "mBuilder:" + this.mBuilder);
+    ae.i("MicroMsg.EditVerifyCodeView", "mBuilder:" + this.mBuilder);
     if (j > 0)
     {
       i = 0;
       while (i < j)
       {
-        this.npi[i].setVisibility(0);
+        this.nus[i].setVisibility(0);
         char c = paramString.charAt(i);
-        this.npi[i].setText(String.valueOf(c));
-        this.nph[i].setVisibility(4);
+        this.nus[i].setText(String.valueOf(c));
+        this.nur[i].setVisibility(4);
         i += 1;
       }
       AppMethodBeat.o(131591);
@@ -211,9 +211,9 @@ public class EditVerifyCodeView
     int i = 0;
     while (i < 6)
     {
-      this.npi[i].setVisibility(4);
-      this.npi[i].setText("");
-      this.nph[i].setVisibility(0);
+      this.nus[i].setVisibility(4);
+      this.nus[i].setText("");
+      this.nur[i].setVisibility(0);
       i += 1;
     }
     AppMethodBeat.o(131591);

@@ -12,21 +12,21 @@ import java.util.Iterator;
 public final class g
   extends h
 {
-  private ArrayList<Integer> huK;
+  private ArrayList<Integer> hxy;
   
   public g(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     super(paramInt1, paramInt2, paramInt3, null, paramBoolean);
     AppMethodBeat.i(89472);
-    this.huK = new ArrayList();
+    this.hxy = new ArrayList();
     AppMethodBeat.o(89472);
   }
   
   public final int E(int paramInt, String paramString)
   {
     AppMethodBeat.i(89473);
-    this.huK.clear();
-    this.huK.add(Integer.valueOf(paramInt));
+    this.hxy.clear();
+    this.hxy.add(Integer.valueOf(paramInt));
     paramInt = super.E(paramInt, paramString);
     AppMethodBeat.o(89473);
     return paramInt;
@@ -35,9 +35,9 @@ public final class g
   protected final void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89476);
-    if ((this.huK.size() > 0) && (paramByteBuffer != null) && (!this.vPO))
+    if ((this.hxy.size() > 0) && (paramByteBuffer != null) && (!this.wbR))
     {
-      Iterator localIterator = this.huK.iterator();
+      Iterator localIterator = this.hxy.iterator();
       while (localIterator.hasNext()) {
         SightVideoJNI.writeAACDataWithADTSLock(((Integer)localIterator.next()).intValue(), paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs, paramInt1, paramInt2, paramInt3);
       }
@@ -45,7 +45,7 @@ public final class g
     AppMethodBeat.o(89476);
   }
   
-  protected final boolean axM()
+  protected final boolean ayb()
   {
     return true;
   }
@@ -53,9 +53,9 @@ public final class g
   protected final void h(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
     AppMethodBeat.i(89475);
-    if ((this.huK.size() > 0) && (paramByteBuffer != null) && (!this.vPO))
+    if ((this.hxy.size() > 0) && (paramByteBuffer != null) && (!this.wbR))
     {
-      Iterator localIterator = this.huK.iterator();
+      Iterator localIterator = this.hxy.iterator();
       while (localIterator.hasNext()) {
         SightVideoJNI.writeAACDataLock(((Integer)localIterator.next()).intValue(), paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs);
       }
@@ -63,10 +63,10 @@ public final class g
     AppMethodBeat.o(89475);
   }
   
-  public final void ob(int paramInt)
+  public final void oe(int paramInt)
   {
     AppMethodBeat.i(89474);
-    this.huK.add(Integer.valueOf(paramInt));
+    this.hxy.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(89474);
   }
 }

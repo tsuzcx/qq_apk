@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ft;
-import com.tencent.mm.protocal.protobuf.ddj;
+import com.tencent.mm.g.c.fu;
+import com.tencent.mm.protocal.protobuf.ded;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends ft
+  extends fu
 {
   protected static c.a info;
   
@@ -16,28 +16,28 @@ public final class n
   {
     AppMethodBeat.i(113025);
     c.a locala = new c.a();
-    locala.IhA = new Field[5];
+    locala.IBL = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.IhC.put("card_id", "TEXT PRIMARY KEY ");
+    locala.IBN.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "card_id";
+    locala.IBM = "card_id";
     locala.columns[1] = "state_flag";
-    locala.IhC.put("state_flag", "INTEGER");
+    locala.IBN.put("state_flag", "INTEGER");
     localStringBuilder.append(" state_flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "update_time";
-    locala.IhC.put("update_time", "LONG");
+    locala.IBN.put("update_time", "LONG");
     localStringBuilder.append(" update_time LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "seq";
-    locala.IhC.put("seq", "LONG");
+    locala.IBN.put("seq", "LONG");
     localStringBuilder.append(" seq LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "retryCount";
-    locala.IhC.put("retryCount", "INTEGER");
+    locala.IBN.put("retryCount", "INTEGER");
     localStringBuilder.append(" retryCount INTEGER");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -45,14 +45,14 @@ public final class n
     AppMethodBeat.o(113025);
   }
   
-  public static n c(ddj paramddj)
+  public static n c(ded paramded)
   {
     AppMethodBeat.i(113024);
     n localn = new n();
-    localn.field_card_id = paramddj.dHX;
-    localn.field_update_time = paramddj.FKm;
-    localn.field_state_flag = paramddj.oBB;
-    localn.field_seq = paramddj.seq;
+    localn.field_card_id = paramded.dJb;
+    localn.field_update_time = paramded.GcL;
+    localn.field_state_flag = paramded.oId;
+    localn.field_seq = paramded.seq;
     localn.field_retryCount = 10;
     AppMethodBeat.o(113024);
     return localn;

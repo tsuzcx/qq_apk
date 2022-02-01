@@ -2,64 +2,64 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class bq
 {
-  public int AaL;
-  int Acn;
-  Runnable AqA;
-  Runnable AqB;
-  Runnable AqC;
-  int Aqv;
-  int Aqw;
-  public int Aqx;
-  boolean Aqy;
-  protected long Aqz;
-  int cJl;
+  int AHJ;
+  int AHK;
+  public int AHL;
+  boolean AHM;
+  protected long AHN;
+  Runnable AHO;
+  Runnable AHP;
+  Runnable AHQ;
+  SnsCommentFooter Agn;
+  public int ArY;
+  int AtA;
+  int cJU;
   ListView list;
   int position;
-  SnsCommentFooter zPg;
   
   public bq(ListView paramListView, SnsCommentFooter paramSnsCommentFooter)
   {
     AppMethodBeat.i(99754);
     this.position = -1;
-    this.Aqv = -1;
-    this.Aqw = -1;
-    this.AaL = -1;
-    this.Aqx = 0;
-    this.Acn = -1;
-    this.Aqy = false;
-    this.AqA = new Runnable()
+    this.AHJ = -1;
+    this.AHK = -1;
+    this.ArY = -1;
+    this.AHL = 0;
+    this.AtA = -1;
+    this.AHM = false;
+    this.AHO = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(99751);
         if ((bq.this.list != null) && (bq.this.list.getCount() > bq.this.position))
         {
-          int j = bq.this.zPg.getTop();
-          ad.d("MicroMsg.TimeLineScrollAnimation", "limitCount: " + bq.this.cJl + " footerHeight:" + bq.this.zPg.getHeight() + " listOriginalBottom: " + bq.this.AaL);
-          if ((bq.a(bq.this) > 0) && ((bq.this.Acn != j) || (j > bq.this.AaL - 200) || (bq.this.list.getBottom() > bq.this.AaL - bq.this.zPg.getHeight() - 150)))
+          int j = bq.this.Agn.getTop();
+          ae.d("MicroMsg.TimeLineScrollAnimation", "limitCount: " + bq.this.cJU + " footerHeight:" + bq.this.Agn.getHeight() + " listOriginalBottom: " + bq.this.ArY);
+          if ((bq.a(bq.this) > 0) && ((bq.this.AtA != j) || (j > bq.this.ArY - 200) || (bq.this.list.getBottom() > bq.this.ArY - bq.this.Agn.getHeight() - 150)))
           {
             i = 10;
-            if (bq.this.cJl == 0) {
+            if (bq.this.cJU == 0) {
               i = 200;
             }
-            new ap().postDelayed(this, i);
+            new aq().postDelayed(this, i);
           }
-          bq.this.Acn = j;
-          int i = bq.this.Acn - bq.this.Aqx - bq.this.Aqv;
-          ad.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + bq.this.Aqv + " footerTop" + bq.this.Acn + " list.bottom:" + bq.this.list.getBottom() + " position: " + bq.this.position + " topselection: " + i);
-          ad.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + bq.this.list.getTop() + " marginTop: " + bq.this.Aqx + " footerTop " + bq.this.Acn);
+          bq.this.AtA = j;
+          int i = bq.this.AtA - bq.this.AHL - bq.this.AHJ;
+          ae.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + bq.this.AHJ + " footerTop" + bq.this.AtA + " list.bottom:" + bq.this.list.getBottom() + " position: " + bq.this.position + " topselection: " + i);
+          ae.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + bq.this.list.getTop() + " marginTop: " + bq.this.AHL + " footerTop " + bq.this.AtA);
           bq.this.list.setSelectionFromTop(bq.this.position + bq.this.list.getHeaderViewsCount(), i);
         }
         AppMethodBeat.o(99751);
       }
     };
-    this.AqB = new Runnable()
+    this.AHP = new Runnable()
     {
       int offset = 0;
       
@@ -68,76 +68,76 @@ public final class bq
         AppMethodBeat.i(99752);
         if ((bq.this.list != null) && (bq.this.list.getCount() > bq.this.position))
         {
-          bq.this.Acn = bq.this.zPg.getTop();
-          int i = bq.this.Acn - bq.this.Aqx - bq.this.Aqv;
-          ad.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + bq.this.Aqv + " footerTop" + bq.this.Acn + " list.bottom:" + bq.this.list.getBottom() + " position: " + bq.this.position + " topselection: " + i);
-          ad.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + bq.this.list.getTop() + " marginTop: " + bq.this.Aqx + " footerTop " + bq.this.Acn);
+          bq.this.AtA = bq.this.Agn.getTop();
+          int i = bq.this.AtA - bq.this.AHL - bq.this.AHJ;
+          ae.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + bq.this.AHJ + " footerTop" + bq.this.AtA + " list.bottom:" + bq.this.list.getBottom() + " position: " + bq.this.position + " topselection: " + i);
+          ae.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + bq.this.list.getTop() + " marginTop: " + bq.this.AHL + " footerTop " + bq.this.AtA);
           if (i == this.offset)
           {
             bq.this.list.setSelectionFromTop(bq.this.position + bq.this.list.getHeaderViewsCount(), i);
             this.offset = 0;
-            bq.this.cJl = 0;
+            bq.this.cJU = 0;
             AppMethodBeat.o(99752);
             return;
           }
           if (bq.a(bq.this) > 0)
           {
-            new ap().postDelayed(this, 100L);
+            new aq().postDelayed(this, 100L);
             this.offset = i;
             AppMethodBeat.o(99752);
             return;
           }
           this.offset = 0;
-          bq.this.cJl = 0;
+          bq.this.cJU = 0;
         }
         AppMethodBeat.o(99752);
       }
     };
-    this.AqC = new Runnable()
+    this.AHQ = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(99753);
-        ad.d("MicroMsg.TimeLineScrollAnimation", "originalTop:" + bq.this.Aqw + " position:" + bq.this.position + " list.bottom:" + bq.this.list.getBottom());
+        ae.d("MicroMsg.TimeLineScrollAnimation", "originalTop:" + bq.this.AHK + " position:" + bq.this.position + " list.bottom:" + bq.this.list.getBottom());
         AppMethodBeat.o(99753);
       }
     };
     this.list = paramListView;
-    this.zPg = paramSnsCommentFooter;
+    this.Agn = paramSnsCommentFooter;
     AppMethodBeat.o(99754);
   }
   
-  public final void edO()
+  public final void ehv()
   {
     AppMethodBeat.i(99755);
-    this.Aqy = true;
-    new ap().postDelayed(this.AqA, 30L);
-    this.cJl = 10;
-    ad.e("MicroMsg.TimeLineScrollAnimation", "footerTop when up :" + this.zPg.getTop());
-    this.Aqz = bt.HI();
+    this.AHM = true;
+    new aq().postDelayed(this.AHO, 30L);
+    this.cJU = 10;
+    ae.e("MicroMsg.TimeLineScrollAnimation", "footerTop when up :" + this.Agn.getTop());
+    this.AHN = bu.HQ();
     AppMethodBeat.o(99755);
   }
   
-  public final void edP()
+  public final void ehw()
   {
     AppMethodBeat.i(99756);
-    this.Aqy = true;
-    this.cJl = 20;
-    new ap().postDelayed(this.AqB, 100L);
+    this.AHM = true;
+    this.cJU = 20;
+    new aq().postDelayed(this.AHP, 100L);
     AppMethodBeat.o(99756);
   }
   
-  public final void edQ()
+  public final void ehx()
   {
     AppMethodBeat.i(99757);
-    if (!this.Aqy)
+    if (!this.AHM)
     {
       AppMethodBeat.o(99757);
       return;
     }
-    this.Aqy = false;
-    new ap().postDelayed(this.AqC, 30L);
-    this.cJl = 10;
+    this.AHM = false;
+    new aq().postDelayed(this.AHQ, 30L);
+    this.cJU = 10;
     AppMethodBeat.o(99757);
   }
 }

@@ -16,58 +16,58 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class g
 {
-  private int gFA = 0;
-  protected f gFo;
-  public a gFp;
-  protected StaticLayout gFq;
-  protected boolean gFr = false;
-  int gFs;
-  int gFt;
-  private boolean gFu = false;
-  boolean gFv = false;
-  boolean gFw = false;
-  private boolean gFx = false;
-  private View gFy;
-  private int gFz = 0;
+  protected f gHV;
+  public a gHW;
+  protected StaticLayout gHX;
+  protected boolean gHY = false;
+  int gHZ;
+  int gIa;
+  private boolean gIb = false;
+  boolean gIc = false;
+  boolean gId = false;
+  private boolean gIe = false;
+  private View gIf;
+  private int gIg = 0;
+  private int gIh = 0;
   protected CharSequence text = null;
   
   public g(View paramView, a parama)
   {
-    this.gFy = paramView;
-    this.gFp = parama;
+    this.gIf = paramView;
+    this.gHW = parama;
   }
   
-  private boolean mS(int paramInt)
+  private boolean mV(int paramInt)
   {
     AppMethodBeat.i(141094);
-    if ((this.gFr) || (this.gFo == null) || (this.gFq == null))
+    if ((this.gHY) || (this.gHV == null) || (this.gHX == null))
     {
-      if (this.gFp == null)
+      if (this.gHW == null)
       {
         AppMethodBeat.o(141094);
         return false;
       }
       if (paramInt > 0)
       {
-        akI();
+        akX();
         long l1 = 0L;
         if (h.DEBUG) {
           l1 = System.nanoTime();
         }
-        this.gFo = d.a(this.text, paramInt, this.gFp).akF();
-        this.gFq = this.gFo.gFm;
-        this.gFr = false;
+        this.gHV = d.a(this.text, paramInt, this.gHW).akU();
+        this.gHX = this.gHV.gHT;
+        this.gHY = false;
         if (h.DEBUG)
         {
           long l2 = System.nanoTime();
-          ad.d("MicroMsg.StaticTextViewHolder", "recreateLayoutIfNeed, width: %d, hasCode: %d, used: %fms, text: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Double.valueOf((l2 - l1) / 1000000.0D), this.text });
+          ae.d("MicroMsg.StaticTextViewHolder", "recreateLayoutIfNeed, width: %d, hasCode: %d, used: %fms, text: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Double.valueOf((l2 - l1) / 1000000.0D), this.text });
         }
         AppMethodBeat.o(141094);
         return true;
@@ -80,23 +80,23 @@ public final class g
   private void setRawTextSize(float paramFloat)
   {
     AppMethodBeat.i(141079);
-    if ((paramFloat != 0.0F) && (this.gFp != null) && (paramFloat != this.gFp.textSize))
+    if ((paramFloat != 0.0F) && (this.gHW != null) && (paramFloat != this.gHW.textSize))
     {
-      this.gFp.textSize = paramFloat;
-      this.gFr = true;
+      this.gHW.textSize = paramFloat;
+      this.gHY = true;
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setRawTextSize isNeedRecreateLayout");
+        ae.i("MicroMsg.StaticTextViewHolder", "setRawTextSize isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141079);
   }
   
-  final void akI()
+  final void akX()
   {
-    this.gFA = 0;
-    this.gFz = 0;
-    this.gFs = 0;
-    this.gFt = 0;
+    this.gIh = 0;
+    this.gIg = 0;
+    this.gHZ = 0;
+    this.gIa = 0;
   }
   
   public final Point cP(int paramInt1, int paramInt2)
@@ -110,8 +110,8 @@ public final class g
     int m = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt2);
-    mS(i);
-    if (this.gFq != null) {
+    mV(i);
+    if (this.gHX != null) {
       if (n == 1073741824) {
         paramInt1 = i;
       }
@@ -136,28 +136,28 @@ public final class g
           }
           localObject2 = "";
           label126:
-          ad.d("MicroMsg.StaticTextViewHolder", "onMeasure used: %fms, hashCode: %d, text: %s result: %s", new Object[] { Double.valueOf(d), Integer.valueOf(paramInt1), localCharSequence, localObject2 });
+          ae.d("MicroMsg.StaticTextViewHolder", "onMeasure used: %fms, hashCode: %d, text: %s result: %s", new Object[] { Double.valueOf(d), Integer.valueOf(paramInt1), localCharSequence, localObject2 });
         }
         AppMethodBeat.o(141095);
         return localObject1;
         paramInt1 = 0;
-        if (this.gFp.gFc == null)
+        if (this.gHW.gHJ == null)
         {
-          localObject1 = this.gFq;
-          if (this.gFz == 0) {
+          localObject1 = this.gHX;
+          if (this.gIg == 0) {
             break label293;
           }
-          paramInt1 = this.gFz;
+          paramInt1 = this.gIg;
         }
         for (;;)
         {
-          k = (int)Math.ceil(Layout.getDesiredWidth(this.gFq.getText(), this.gFq.getPaint()));
+          k = (int)Math.ceil(Layout.getDesiredWidth(this.gHX.getText(), this.gHX.getPaint()));
           paramInt2 = paramInt1;
           if (k > paramInt1) {
             paramInt2 = k;
           }
           if (h.DEBUG) {
-            ad.d("MicroMsg.StaticTextViewHolder", "onMeasure  hashCode: %d, des: %d newdes: %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(k) });
+            ae.d("MicroMsg.StaticTextViewHolder", "onMeasure  hashCode: %d, des: %d newdes: %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(k) });
           }
           if (n != -2147483648) {
             break label614;
@@ -188,15 +188,15 @@ public final class g
             f = Math.max(f, ((Layout)localObject1).getLineWidth(paramInt1));
             paramInt1 += 1;
           }
-          this.gFz = ((int)Math.ceil(f));
-          this.gFz += this.gFy.getPaddingLeft() + this.gFy.getPaddingRight();
-          paramInt1 = this.gFz;
+          this.gIg = ((int)Math.ceil(f));
+          this.gIg += this.gIf.getPaddingLeft() + this.gIf.getPaddingRight();
+          paramInt1 = this.gIg;
         }
-        localObject1 = this.gFq;
-        if (this.gFA == 0) {
+        localObject1 = this.gHX;
+        if (this.gIh == 0) {
           break label460;
         }
-        i = this.gFA;
+        i = this.gIh;
         label439:
         paramInt2 = i;
         if (m == -2147483648) {
@@ -206,24 +206,24 @@ public final class g
       label460:
       i = ((Layout)localObject1).getLineCount();
       paramInt2 = i;
-      if (this.gFo.maxLines > 0)
+      if (this.gHV.maxLines > 0)
       {
         paramInt2 = i;
-        if (this.gFo.maxLines < i) {
-          paramInt2 = this.gFo.maxLines;
+        if (this.gHV.maxLines < i) {
+          paramInt2 = this.gHV.maxLines;
         }
       }
-      int k = this.gFy.getPaddingTop();
-      n = this.gFy.getPaddingBottom();
+      int k = this.gIf.getPaddingTop();
+      n = this.gIf.getPaddingBottom();
       i = ((Layout)localObject1).getLineTop(paramInt2);
       int i1;
-      if ((this.gFp.minLines > 0) && (paramInt2 < this.gFp.minLines)) {
+      if ((this.gHW.minLines > 0) && (paramInt2 < this.gHW.minLines)) {
         i1 = getLineHeight();
       }
-      for (paramInt2 = (this.gFp.minLines - paramInt2) * i1 + i;; paramInt2 = i)
+      for (paramInt2 = (this.gHW.minLines - paramInt2) * i1 + i;; paramInt2 = i)
       {
-        this.gFA = (paramInt2 + (k + n));
-        i = this.gFA;
+        this.gIh = (paramInt2 + (k + n));
+        i = this.gIh;
         break label439;
         localObject1 = null;
         break;
@@ -238,18 +238,18 @@ public final class g
   
   public final f getLayoutWrapper()
   {
-    return this.gFo;
+    return this.gHV;
   }
   
   public final int getLineCount()
   {
     AppMethodBeat.i(141089);
-    if (this.gFq == null)
+    if (this.gHX == null)
     {
       AppMethodBeat.o(141089);
       return 0;
     }
-    int i = this.gFq.getLineCount();
+    int i = this.gHX.getLineCount();
     AppMethodBeat.o(141089);
     return i;
   }
@@ -257,20 +257,20 @@ public final class g
   public final int getLineHeight()
   {
     AppMethodBeat.i(141085);
-    TextPaint localTextPaint2 = this.gFo.gFm.getPaint();
+    TextPaint localTextPaint2 = this.gHV.gHT.getPaint();
     TextPaint localTextPaint1 = localTextPaint2;
     if (localTextPaint2 == null) {
-      localTextPaint1 = this.gFp.iU;
+      localTextPaint1 = this.gHW.iU;
     }
-    int i = Math.round(localTextPaint1.getFontMetricsInt(null) * this.gFp.gFg + this.gFp.gFf);
+    int i = Math.round(localTextPaint1.getFontMetricsInt(null) * this.gHW.gHN + this.gHW.gHM);
     AppMethodBeat.o(141085);
     return i;
   }
   
   public final int getMaxLines()
   {
-    if (this.gFp != null) {
-      return this.gFp.maxLines;
+    if (this.gHW != null) {
+      return this.gHW.maxLines;
     }
     return -1;
   }
@@ -309,18 +309,18 @@ public final class g
   public final int getTextColor()
   {
     AppMethodBeat.i(141088);
-    if (this.gFo == null)
+    if (this.gHV == null)
     {
-      if (this.gFp != null)
+      if (this.gHW != null)
       {
-        i = this.gFp.textColor;
+        i = this.gHW.textColor;
         AppMethodBeat.o(141088);
         return i;
       }
       AppMethodBeat.o(141088);
       return 0;
     }
-    int i = this.gFo.iU.getColor();
+    int i = this.gHV.iU.getColor();
     AppMethodBeat.o(141088);
     return i;
   }
@@ -328,48 +328,48 @@ public final class g
   public final float getTextSize()
   {
     AppMethodBeat.i(141087);
-    if (this.gFo == null)
+    if (this.gHV == null)
     {
-      if (this.gFp != null)
+      if (this.gHW != null)
       {
-        f = this.gFp.textSize;
+        f = this.gHW.textSize;
         AppMethodBeat.o(141087);
         return f;
       }
       AppMethodBeat.o(141087);
       return 0.0F;
     }
-    float f = this.gFo.iU.getTextSize();
+    float f = this.gHV.iU.getTextSize();
     AppMethodBeat.o(141087);
     return f;
   }
   
   public final Layout getTvLayout()
   {
-    return this.gFq;
+    return this.gHX;
   }
   
   public final void init()
   {
     AppMethodBeat.i(141075);
     this.text = "";
-    this.gFy.setWillNotDraw(false);
+    this.gIf.setWillNotDraw(false);
     AppMethodBeat.o(141075);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(141093);
-    if ((this.gFq == null) || (this.gFo == null))
+    if ((this.gHX == null) || (this.gHV == null))
     {
-      boolean bool = mS(this.gFy.getMeasuredWidth());
+      boolean bool = mV(this.gIf.getMeasuredWidth());
       if (h.DEBUG) {
-        ad.d("MicroMsg.StaticTextViewHolder", "onDraw, textLayout==null:%b, layoutWrapper==null:%b recreate:%b", new Object[] { this.gFq, this.gFo, Boolean.valueOf(bool) });
+        ae.d("MicroMsg.StaticTextViewHolder", "onDraw, textLayout==null:%b, layoutWrapper==null:%b recreate:%b", new Object[] { this.gHX, this.gHV, Boolean.valueOf(bool) });
       }
       if (bool)
       {
-        this.gFy.requestLayout();
-        this.gFy.invalidate();
+        this.gIf.requestLayout();
+        this.gIf.invalidate();
       }
       AppMethodBeat.o(141093);
       return;
@@ -379,47 +379,47 @@ public final class g
       l = System.nanoTime();
     }
     paramCanvas.save();
-    int k = this.gFy.getPaddingLeft();
-    int m = this.gFy.getPaddingTop();
-    int n = this.gFy.getRight() - this.gFy.getLeft() - this.gFy.getPaddingRight();
-    int i1 = this.gFy.getBottom() - this.gFy.getTop() - this.gFy.getPaddingBottom();
+    int k = this.gIf.getPaddingLeft();
+    int m = this.gIf.getPaddingTop();
+    int n = this.gIf.getRight() - this.gIf.getLeft() - this.gIf.getPaddingRight();
+    int i1 = this.gIf.getBottom() - this.gIf.getTop() - this.gIf.getPaddingBottom();
     paramCanvas.clipRect(k, m, n, i1);
     int j;
     int i;
     int i2;
     int i3;
-    if ((this.gFs == 0) || (this.gFt == 0))
+    if ((this.gHZ == 0) || (this.gIa == 0))
     {
-      j = this.gFy.getPaddingLeft();
-      i = this.gFy.getRight() - this.gFy.getLeft() - this.gFy.getPaddingLeft() - this.gFy.getPaddingRight();
-      i2 = this.gFq.getWidth();
+      j = this.gIf.getPaddingLeft();
+      i = this.gIf.getRight() - this.gIf.getLeft() - this.gIf.getPaddingLeft() - this.gIf.getPaddingRight();
+      i2 = this.gHX.getWidth();
       if (i2 > i)
       {
         i = j;
-        this.gFs = i;
-        j = this.gFy.getPaddingTop();
-        i2 = this.gFy.getBottom() - this.gFy.getTop() - this.gFy.getPaddingTop() - this.gFy.getPaddingBottom();
+        this.gHZ = i;
+        j = this.gIf.getPaddingTop();
+        i2 = this.gIf.getBottom() - this.gIf.getTop() - this.gIf.getPaddingTop() - this.gIf.getPaddingBottom();
         i = 0;
-        i3 = this.gFq.getHeight();
+        i3 = this.gHX.getHeight();
         if (i3 <= i2) {
           break label566;
         }
         i = j;
-        this.gFt = i;
+        this.gIa = i;
       }
     }
     else
     {
-      paramCanvas.translate(this.gFs, this.gFt);
-      this.gFq.draw(paramCanvas, null, null, 0);
+      paramCanvas.translate(this.gHZ, this.gIa);
+      this.gHX.draw(paramCanvas, null, null, 0);
       paramCanvas.restore();
       if (h.DEBUG) {
-        ad.d("MicroMsg.StaticTextViewHolder", "onDraw used: %fms, hashCode: %d, text: %s clipLeft:%d clipTop:%d clipRight:%d clipBottom:%d", new Object[] { Double.valueOf((System.nanoTime() - l) / 1000000.0D), Integer.valueOf(hashCode()), this.text, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
+        ae.d("MicroMsg.StaticTextViewHolder", "onDraw used: %fms, hashCode: %d, text: %s clipLeft:%d clipTop:%d clipRight:%d clipBottom:%d", new Object[] { Double.valueOf((System.nanoTime() - l) / 1000000.0D), Integer.valueOf(hashCode()), this.text, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
       }
       AppMethodBeat.o(141093);
       return;
     }
-    switch (this.gFo.gravity & 0x800007)
+    switch (this.gHV.gravity & 0x800007)
     {
     default: 
       i = 0;
@@ -435,7 +435,7 @@ public final class g
       i -= i2;
     }
     label566:
-    switch (this.gFo.gravity & 0x70)
+    switch (this.gHV.gravity & 0x70)
     {
     }
     for (;;)
@@ -452,7 +452,7 @@ public final class g
   
   public final boolean performClick()
   {
-    return (!this.gFx) && (this.gFv);
+    return (!this.gIe) && (this.gIc);
   }
   
   public final boolean s(MotionEvent paramMotionEvent)
@@ -466,20 +466,20 @@ public final class g
     {
       i = 1;
       bool1 = bool2;
-      if (this.gFy.isEnabled())
+      if (this.gIf.isEnabled())
       {
         bool1 = bool2;
-        if (this.gFu)
+        if (this.gIb)
         {
-          com.tencent.mm.kiss.widget.textview.b.b.akN();
-          bool1 = com.tencent.mm.kiss.widget.textview.b.b.a(this.gFy, this.gFq, (Spannable)this.text, paramMotionEvent);
-          this.gFx = bool1;
-          if ((!this.gFw) || (i == 0)) {
+          com.tencent.mm.kiss.widget.textview.b.b.alc();
+          bool1 = com.tencent.mm.kiss.widget.textview.b.b.a(this.gIf, this.gHX, (Spannable)this.text, paramMotionEvent);
+          this.gIe = bool1;
+          if ((!this.gId) || (i == 0)) {
             break label250;
           }
           float f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if ((f1 >= this.gFs) && (f1 <= this.gFq.getWidth() + this.gFs)) {
+          if ((f1 >= this.gHZ) && (f1 <= this.gHX.getWidth() + this.gHZ)) {
             break label210;
           }
           i = 0;
@@ -491,8 +491,8 @@ public final class g
           if (paramMotionEvent.length <= 0) {
             break label250;
           }
-          ad.d("MicroMsg.StaticTextViewHolder", "perform clickable span click");
-          paramMotionEvent[0].onClick(this.gFy);
+          ae.d("MicroMsg.StaticTextViewHolder", "perform clickable span click");
+          paramMotionEvent[0].onClick(this.gIf);
           bool1 = true;
         }
       }
@@ -505,7 +505,7 @@ public final class g
       return bool1;
       i = 0;
       break;
-      if ((f2 < this.gFt) || (f2 > this.gFq.getHeight() + this.gFt))
+      if ((f2 < this.gIa) || (f2 > this.gHX.getHeight() + this.gIa))
       {
         i = 0;
         break label137;
@@ -518,12 +518,12 @@ public final class g
   public final void setGravity(int paramInt)
   {
     AppMethodBeat.i(141082);
-    if ((this.gFp != null) && (paramInt != this.gFp.gravity))
+    if ((this.gHW != null) && (paramInt != this.gHW.gravity))
     {
-      this.gFp.gravity = paramInt;
-      this.gFr = true;
+      this.gHW.gravity = paramInt;
+      this.gHY = true;
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setGravity isNeedRecreateLayout");
+        ae.i("MicroMsg.StaticTextViewHolder", "setGravity isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141082);
@@ -532,16 +532,16 @@ public final class g
   public final void setLines(int paramInt)
   {
     AppMethodBeat.i(141077);
-    if ((this.gFp.maxLines != paramInt) || (this.gFp.minLines != paramInt))
+    if ((this.gHW.maxLines != paramInt) || (this.gHW.minLines != paramInt))
     {
-      this.gFr = true;
-      akI();
-      this.gFp.maxLines = paramInt;
-      this.gFp.minLines = paramInt;
-      this.gFy.requestLayout();
-      this.gFy.invalidate();
+      this.gHY = true;
+      akX();
+      this.gHW.maxLines = paramInt;
+      this.gHW.minLines = paramInt;
+      this.gIf.requestLayout();
+      this.gIf.invalidate();
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setLines isNeedRecreateLayout");
+        ae.i("MicroMsg.StaticTextViewHolder", "setLines isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141077);
@@ -550,16 +550,16 @@ public final class g
   public final void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(141083);
-    if ((this.gFp != null) && (paramInt != this.gFp.maxLines))
+    if ((this.gHW != null) && (paramInt != this.gHW.maxLines))
     {
-      this.gFp.maxLines = paramInt;
-      this.gFr = true;
-      akI();
+      this.gHW.maxLines = paramInt;
+      this.gHY = true;
+      akX();
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setMaxLines isNeedRecreateLayout");
+        ae.i("MicroMsg.StaticTextViewHolder", "setMaxLines isNeedRecreateLayout");
       }
-      this.gFy.requestLayout();
-      this.gFy.invalidate();
+      this.gIf.requestLayout();
+      this.gIf.invalidate();
     }
     AppMethodBeat.o(141083);
   }
@@ -567,12 +567,12 @@ public final class g
   public final void setMinLines(int paramInt)
   {
     AppMethodBeat.i(141084);
-    if (this.gFp.minLines != paramInt)
+    if (this.gHW.minLines != paramInt)
     {
-      this.gFp.minLines = paramInt;
-      akI();
-      this.gFy.requestLayout();
-      this.gFy.invalidate();
+      this.gHW.minLines = paramInt;
+      akX();
+      this.gIf.requestLayout();
+      this.gIf.invalidate();
     }
     AppMethodBeat.o(141084);
   }
@@ -583,13 +583,13 @@ public final class g
     if (paramBoolean) {}
     for (int i = 1;; i = 2147483647)
     {
-      if (this.gFp.maxLines != i)
+      if (this.gHW.maxLines != i)
       {
-        this.gFp.maxLines = i;
-        this.gFr = true;
-        akI();
-        this.gFy.requestLayout();
-        this.gFy.invalidate();
+        this.gHW.maxLines = i;
+        this.gHY = true;
+        akX();
+        this.gIf.requestLayout();
+        this.gIf.invalidate();
       }
       AppMethodBeat.o(141076);
       return;
@@ -607,11 +607,11 @@ public final class g
     if ((this.text == null) || (!this.text.equals(paramCharSequence)) || (paramBoolean))
     {
       this.text = paramCharSequence;
-      this.gFr = true;
-      this.gFy.requestLayout();
-      this.gFy.invalidate();
+      this.gHY = true;
+      this.gIf.requestLayout();
+      this.gIf.invalidate();
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setText isNeedRecreateLayout " + paramCharSequence + " hashcode " + hashCode() + " " + bt.flS().toString());
+        ae.i("MicroMsg.StaticTextViewHolder", "setText isNeedRecreateLayout " + paramCharSequence + " hashcode " + hashCode() + " " + bu.fpN().toString());
       }
     }
     AppMethodBeat.o(141086);
@@ -620,12 +620,12 @@ public final class g
   public final void setTextColor(int paramInt)
   {
     AppMethodBeat.i(141081);
-    if ((this.gFp != null) && (paramInt != this.gFp.textColor))
+    if ((this.gHW != null) && (paramInt != this.gHW.textColor))
     {
-      this.gFp.textColor = paramInt;
-      this.gFr = true;
+      this.gHW.textColor = paramInt;
+      this.gHY = true;
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setTextColor isNeedRecreateLayout");
+        ae.i("MicroMsg.StaticTextViewHolder", "setTextColor isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141081);
@@ -634,48 +634,48 @@ public final class g
   public final void setTextLayout(f paramf)
   {
     AppMethodBeat.i(141080);
-    if ((paramf == null) || (paramf.gFm == null))
+    if ((paramf == null) || (paramf.gHT == null))
     {
-      this.gFo = null;
+      this.gHV = null;
       AppMethodBeat.o(141080);
       return;
     }
-    if (this.gFp == null)
+    if (this.gHW == null)
     {
       com.tencent.mm.kiss.widget.textview.a.b localb = new com.tencent.mm.kiss.widget.textview.a.b();
-      localb.gFp = new a();
-      localb.gFp.maxLines = paramf.maxLines;
-      localb.gFp.maxLength = paramf.maxLength;
-      localb.gFp.iU = paramf.iU;
-      localb.gFp.gFb = paramf.gFb;
-      localb.gFp.gFc = paramf.gFc;
-      localb.gFp.gravity = paramf.gravity;
-      localb.gFp.textSize = paramf.iU.getTextSize();
-      localb.gFp.textColor = paramf.iU.getColor();
-      localb.gFp.breakStrategy = paramf.breakStrategy;
-      this.gFp = localb.gFp;
+      localb.gHW = new a();
+      localb.gHW.maxLines = paramf.maxLines;
+      localb.gHW.maxLength = paramf.maxLength;
+      localb.gHW.iU = paramf.iU;
+      localb.gHW.gHI = paramf.gHI;
+      localb.gHW.gHJ = paramf.gHJ;
+      localb.gHW.gravity = paramf.gravity;
+      localb.gHW.textSize = paramf.iU.getTextSize();
+      localb.gHW.textColor = paramf.iU.getColor();
+      localb.gHW.breakStrategy = paramf.breakStrategy;
+      this.gHW = localb.gHW;
     }
-    akI();
-    this.gFy.setWillNotDraw(false);
-    this.gFo = paramf;
-    this.gFq = paramf.gFm;
+    akX();
+    this.gIf.setWillNotDraw(false);
+    this.gHV = paramf;
+    this.gHX = paramf.gHT;
     this.text = paramf.text;
-    this.gFu = (this.text instanceof Spannable);
-    if (this.gFu)
+    this.gIb = (this.text instanceof Spannable);
+    if (this.gIb)
     {
-      this.text = this.gFo.text;
-      com.tencent.mm.kiss.widget.textview.b.b.akN();
+      this.text = this.gHV.text;
+      com.tencent.mm.kiss.widget.textview.b.b.alc();
       com.tencent.mm.kiss.widget.textview.b.b.a((Spannable)this.text);
     }
-    this.gFy.requestLayout();
-    this.gFy.invalidate();
+    this.gIf.requestLayout();
+    this.gIf.invalidate();
     AppMethodBeat.o(141080);
   }
   
   public final void setTextSize(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(141078);
-    Object localObject = aj.getContext();
+    Object localObject = ak.getContext();
     if (localObject == null) {}
     for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
     {
@@ -687,7 +687,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.g
  * JD-Core Version:    0.7.0.1
  */

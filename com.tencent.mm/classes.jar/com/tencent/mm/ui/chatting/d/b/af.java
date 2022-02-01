@@ -6,19 +6,19 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public abstract interface af
   extends ad
 {
-  public abstract boolean fEA();
+  public abstract boolean fID();
   
-  public abstract boolean fEB();
+  public abstract boolean fIE();
   
-  public abstract boolean fEC();
+  public abstract boolean fIF();
   
-  public abstract CopyOnWriteArraySet<Long> fED();
+  public abstract boolean fIG();
   
-  public abstract int fEE();
+  public abstract CopyOnWriteArraySet<Long> fIH();
   
-  public abstract void fEF();
+  public abstract int fII();
   
-  public abstract boolean fEz();
+  public abstract void fIJ();
 }
 
 

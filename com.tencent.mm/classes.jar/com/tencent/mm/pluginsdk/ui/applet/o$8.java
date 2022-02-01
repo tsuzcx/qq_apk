@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class o$8
   implements DialogInterface.OnDismissListener
@@ -19,7 +19,7 @@ final class o$8
       AppMethodBeat.o(31350);
       return;
     }
-    ad.i("MicroMsg.MMConfirmDialog", "bitmap recycle %s", new Object[] { this.val$bmp.toString() });
+    ae.i("MicroMsg.MMConfirmDialog", "bitmap recycle %s", new Object[] { this.val$bmp.toString() });
     this.val$bmp.recycle();
     AppMethodBeat.o(31350);
   }

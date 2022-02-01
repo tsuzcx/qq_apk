@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.finder.presenter.contract;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLikedFeedContract;", "", "()V", "LikedTimelinePresenter", "LikedTimelineViewCallback", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLikedFeedContract;", "", "()V", "LikedTimelinePresenter", "LikedTimelineViewCallback", "plugin-finder_release"})
 public final class FinderLikedFeedContract
 {
-  public static final FinderLikedFeedContract smm;
+  public static final FinderLikedFeedContract swd;
   
   static
   {
     AppMethodBeat.i(166532);
-    smm = new FinderLikedFeedContract();
+    swd = new FinderLikedFeedContract();
     AppMethodBeat.o(166532);
   }
 }

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.flutter.PluginFlutter;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import io.flutter.embedding.android.FlutterView;
@@ -22,37 +22,37 @@ public class MMFlutterActivity
   extends MMActivity
   implements a
 {
-  private boolean pqo;
-  private FlutterView tiF;
-  private ImageView tiG;
-  private FrameLayout tiH;
-  boolean tiI;
-  private io.flutter.embedding.engine.a tiq;
+  private boolean pwU;
+  boolean ttA;
+  private io.flutter.embedding.engine.a tti;
+  private FlutterView ttx;
+  private ImageView tty;
+  private FrameLayout ttz;
   
-  public final void cQp()
+  public final void cSU()
   {
     AppMethodBeat.i(148882);
-    this.tiG.setVisibility(8);
+    this.tty.setVisibility(8);
     AppMethodBeat.o(148882);
   }
   
-  public final void cQq()
+  public final void cSV()
   {
     AppMethodBeat.i(148886);
-    if (this.tiI)
+    if (this.ttA)
     {
-      if (!this.pqo)
+      if (!this.pwU)
       {
-        Bitmap localBitmap = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tiq.MBc.MCg.getBitmap();
-        this.tiG.setImageBitmap(localBitmap);
-        this.tiG.setVisibility(0);
-        ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cQl();
+        Bitmap localBitmap = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tti.MYh.MZl.getBitmap();
+        this.tty.setImageBitmap(localBitmap);
+        this.tty.setVisibility(0);
+        ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cSQ();
       }
       finish();
       AppMethodBeat.o(148886);
       return;
     }
-    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cQl();
+    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cSQ();
     AppMethodBeat.o(148886);
   }
   
@@ -66,10 +66,10 @@ public class MMFlutterActivity
     return 2131494144;
   }
   
-  public final void mG(boolean paramBoolean)
+  public final void mK(boolean paramBoolean)
   {
     AppMethodBeat.i(148883);
-    this.tiI = paramBoolean;
+    this.ttA = paramBoolean;
     getSwipeBackLayout().setEnableGesture(paramBoolean);
     AppMethodBeat.o(148883);
   }
@@ -85,7 +85,7 @@ public class MMFlutterActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(148885);
-    cQq();
+    cSV();
     AppMethodBeat.o(148885);
   }
   
@@ -96,16 +96,16 @@ public class MMFlutterActivity
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    this.pqo = getIntent().getBooleanExtra("first_create", false);
-    int i = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tiv.incrementAndGet();
-    ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onCreate %s InstanceCount %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i) });
-    this.tiq = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tiq;
-    this.tiH = ((FrameLayout)findViewById(2131300142));
-    this.tiG = ((ImageView)findViewById(2131300143));
-    this.tiG.setVisibility(8);
-    this.tiF = new FlutterView(this);
-    this.tiH.addView(this.tiF);
-    this.tiI = true;
+    this.pwU = getIntent().getBooleanExtra("first_create", false);
+    int i = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().ttn.incrementAndGet();
+    ae.i("MicroMsg.Flutter.FlutterEngineMgr", "onCreate %s InstanceCount %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i) });
+    this.tti = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tti;
+    this.ttz = ((FrameLayout)findViewById(2131300142));
+    this.tty = ((ImageView)findViewById(2131300143));
+    this.tty.setVisibility(8);
+    this.ttx = new FlutterView(this);
+    this.ttz.addView(this.ttx);
+    this.ttA = true;
     AppMethodBeat.o(148876);
   }
   
@@ -113,7 +113,7 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148877);
     super.onDestroy();
-    ad.i("MicroMsg.Flutter.MMFlutterActivity", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
+    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
     ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().onDestroy();
     AppMethodBeat.o(148877);
   }
@@ -122,7 +122,7 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148881);
     super.onPause();
-    ad.i("MicroMsg.Flutter.MMFlutterActivity", "onPause %s", new Object[] { Integer.valueOf(hashCode()) });
+    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onPause %s", new Object[] { Integer.valueOf(hashCode()) });
     ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
     AppMethodBeat.o(148881);
   }
@@ -131,10 +131,10 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148880);
     super.onResume();
-    ad.i("MicroMsg.Flutter.MMFlutterActivity", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
+    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
     com.tencent.mm.plugin.flutter.b.a locala = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
-    if (equals(locala.tir)) {
-      locala.tiq.MCk.geZ();
+    if (equals(locala.ttj)) {
+      locala.tti.MZp.gjB();
     }
     AppMethodBeat.o(148880);
   }
@@ -143,19 +143,19 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148878);
     super.onStart();
-    ad.i("MicroMsg.Flutter.MMFlutterActivity", "onStart %s", new Object[] { Integer.valueOf(hashCode()) });
+    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onStart %s", new Object[] { Integer.valueOf(hashCode()) });
     try
     {
-      this.tiF.c(this.tiq);
+      this.ttx.c(this.tti);
       com.tencent.mm.plugin.flutter.b.a locala = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
-      locala.tir = this;
-      locala.tiq.MCk.geY();
+      locala.ttj = this;
+      locala.tti.MZp.gjA();
       AppMethodBeat.o(148878);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.Flutter.MMFlutterActivity", localException, "onStart", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Flutter.MMFlutterActivity", localException, "onStart", new Object[0]);
       AppMethodBeat.o(148878);
     }
   }
@@ -164,22 +164,22 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148879);
     super.onStop();
-    ad.i("MicroMsg.Flutter.MMFlutterActivity", "onStop %s", new Object[] { Integer.valueOf(hashCode()) });
+    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onStop %s", new Object[] { Integer.valueOf(hashCode()) });
     try
     {
       com.tencent.mm.plugin.flutter.b.a locala = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
-      if (locala.tir.equals(this))
+      if (locala.ttj.equals(this))
       {
-        locala.tiq.MCk.gfa();
-        locala.tir = null;
+        locala.tti.MZp.gjC();
+        locala.ttj = null;
       }
-      this.tiF.gex();
+      this.ttx.giZ();
       AppMethodBeat.o(148879);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.Flutter.MMFlutterActivity", localException, "onStop", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.Flutter.MMFlutterActivity", localException, "onStop", new Object[0]);
       AppMethodBeat.o(148879);
     }
   }
@@ -188,8 +188,8 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148884);
     super.onSwipeBack();
-    if (!this.pqo) {
-      ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cQl();
+    if (!this.pwU) {
+      ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cSQ();
     }
     AppMethodBeat.o(148884);
   }
@@ -202,7 +202,7 @@ public class MMFlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.ui.MMFlutterActivity
  * JD-Core Version:    0.7.0.1
  */

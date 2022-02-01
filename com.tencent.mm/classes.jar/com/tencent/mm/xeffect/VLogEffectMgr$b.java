@@ -6,10 +6,10 @@ public enum VLogEffectMgr$b
 {
   static
   {
-    AppMethodBeat.i(220021);
-    LBB = new b("CheckTemplateMark");
-    LBC = new b[] { LBB };
-    AppMethodBeat.o(220021);
+    AppMethodBeat.i(216772);
+    LYB = new b("CheckTemplateMark");
+    LYC = new b[] { LYB };
+    AppMethodBeat.o(216772);
   }
   
   private VLogEffectMgr$b() {}

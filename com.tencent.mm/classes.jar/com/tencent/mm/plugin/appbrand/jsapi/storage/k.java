@@ -17,7 +17,7 @@ public class k
     AppMethodBeat.i(147267);
     JsApiRemoveStorageTask localJsApiRemoveStorageTask = new JsApiRemoveStorageTask();
     localJsApiRemoveStorageTask.appId = B(paramh);
-    localJsApiRemoveStorageTask.liU = paramInt;
+    localJsApiRemoveStorageTask.lmG = paramInt;
     localJsApiRemoveStorageTask.key = paramString;
     AppBrandMainProcessService.a(localJsApiRemoveStorageTask);
     AppMethodBeat.o(147267);
@@ -31,7 +31,7 @@ public class k
       public final void run()
       {
         AppMethodBeat.i(147266);
-        ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dg(paramh.getAppId()).l(paramInt, k.this.B(paramh), paramString);
+        ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dl(paramh.getAppId()).l(paramInt, k.this.B(paramh), paramString);
         AppMethodBeat.o(147266);
       }
     }, "JsApiRemoveStorage");
@@ -48,7 +48,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.k
  * JD-Core Version:    0.7.0.1
  */

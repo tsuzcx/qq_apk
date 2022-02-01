@@ -2,8 +2,8 @@ package com.tencent.tmassistantsdk.util;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.Field;
 
 public class Res
@@ -31,13 +31,13 @@ public class Res
     try
     {
       paramString1 = Class.forName(this.RclassName + "$" + paramString1);
-      int i = bt.getInt(paramString1.getField(paramString2).get(paramString1.newInstance()).toString(), -1);
+      int i = bu.getInt(paramString1.getField(paramString2).get(paramString1.newInstance()).toString(), -1);
       AppMethodBeat.o(102525);
       return i;
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("Res", paramString1, "", new Object[0]);
+      ae.printErrStackTrace("Res", paramString1, "", new Object[0]);
       AppMethodBeat.o(102525);
     }
     return -1;

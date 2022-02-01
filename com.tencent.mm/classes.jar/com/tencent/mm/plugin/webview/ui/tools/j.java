@@ -16,78 +16,78 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class j
   implements LogoWebViewWrapper.b
 {
-  static final int Ebw = 2131234743;
-  private ViewPropertyAnimator EbA;
-  private float EbB;
-  View EbC;
-  View EbD;
-  TextView EbE;
-  boolean EbF = true;
-  boolean EbG = false;
-  private boolean EbH = false;
-  a Ebs;
-  ImageView Ebt;
-  LogoWebViewWrapper Ebu;
-  int Ebv = 0;
-  private boolean Ebx = false;
-  private float Eby = 0.0F;
-  private ValueAnimator Ebz;
+  static final int Etx = 2131234743;
+  private ValueAnimator EtA;
+  private ViewPropertyAnimator EtB;
+  private float EtC;
+  View EtD;
+  View EtE;
+  TextView EtF;
+  boolean EtG = true;
+  boolean EtH = false;
+  private boolean EtI = false;
+  a Ett;
+  ImageView Etu;
+  LogoWebViewWrapper Etv;
+  int Etw = 0;
+  private boolean Ety = false;
+  private float Etz = 0.0F;
   private boolean aWX = false;
-  boolean jWh = false;
-  private int vte = 0;
+  boolean jZw = false;
+  private int vFj = 0;
   
-  public final void S(int paramInt, boolean paramBoolean)
+  public final void U(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(79933);
     Object localObject;
     String str1;
-    if (this.Ebt == null)
+    if (this.Etu == null)
     {
       localObject = "null";
-      if (this.Ebt != null) {
+      if (this.Etu != null) {
         break label106;
       }
       str1 = "null";
       label27:
-      if (this.Ebt != null) {
+      if (this.Etu != null) {
         break label121;
       }
     }
     label106:
     label121:
-    for (String str2 = "null";; str2 = String.valueOf(this.Ebt.getAlpha()))
+    for (String str2 = "null";; str2 = String.valueOf(this.Etu.getAlpha()))
     {
-      ad.v("MicroMsg.WebViewPullDownLogoDelegate", "onOverScrollOffset, offset = %d, pointerDown = %b, refreshImage.visibility = %s, refreshImage.drawable = %s, refreshImage.alpha = %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localObject, str1, str2 });
-      if (this.jWh) {
+      ae.v("MicroMsg.WebViewPullDownLogoDelegate", "onOverScrollOffset, offset = %d, pointerDown = %b, refreshImage.visibility = %s, refreshImage.drawable = %s, refreshImage.alpha = %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localObject, str1, str2 });
+      if (this.jZw) {
         break label136;
       }
       AppMethodBeat.o(79933);
       return;
-      localObject = String.valueOf(this.Ebt.getVisibility());
+      localObject = String.valueOf(this.Etu.getVisibility());
       break;
-      str1 = this.Ebt.getDrawable().toString();
+      str1 = this.Etu.getDrawable().toString();
       break label27;
     }
     label136:
     if (paramInt == 0) {
-      this.Ebx = false;
+      this.Ety = false;
     }
-    if (this.Ebt == null)
+    if (this.Etu == null)
     {
       AppMethodBeat.o(79933);
       return;
     }
     if (!paramBoolean)
     {
-      if ((Math.abs(paramInt) > this.Ebv) && (!this.aWX))
+      if ((Math.abs(paramInt) > this.Etw) && (!this.aWX))
       {
-        ad.d("MicroMsg.WebViewPullDownLogoDelegate", "startLoading()");
+        ae.d("MicroMsg.WebViewPullDownLogoDelegate", "startLoading()");
         startLoading();
         AppMethodBeat.o(79933);
         return;
@@ -98,18 +98,18 @@ public final class j
     }
     else
     {
-      if (Math.abs(paramInt) < this.Ebv) {
+      if (Math.abs(paramInt) < this.Etw) {
         break label458;
       }
-      if (this.Ebu != null) {
-        this.Ebu.setReleaseTargetHeight(this.Ebv);
+      if (this.Etv != null) {
+        this.Etv.setReleaseTargetHeight(this.Etw);
       }
     }
-    if ((this.Ebt != null) && (this.Ebt.getAlpha() < 1.0F) && (this.EbA == null) && (paramBoolean))
+    if ((this.Etu != null) && (this.Etu.getAlpha() < 1.0F) && (this.EtB == null) && (paramBoolean))
     {
-      ad.d("MicroMsg.WebViewPullDownLogoDelegate", "refreshImage alpha to 1.0f");
-      this.EbA = this.Ebt.animate().alpha(1.0F).setDuration(500L);
-      this.EbA.setListener(new AnimatorListenerAdapter()
+      ae.d("MicroMsg.WebViewPullDownLogoDelegate", "refreshImage alpha to 1.0f");
+      this.EtB = this.Etu.animate().alpha(1.0F).setDuration(500L);
+      this.EtB.setListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
@@ -127,120 +127,120 @@ public final class j
           AppMethodBeat.o(79922);
         }
       });
-      this.EbA.start();
+      this.EtB.start();
     }
     int i;
-    if (!this.Ebx)
+    if (!this.Ety)
     {
-      i = -paramInt - this.vte;
-      if (Math.abs(paramInt) < this.Ebv) {
+      i = -paramInt - this.vFj;
+      if (Math.abs(paramInt) < this.Etw) {
         break label476;
       }
       i *= 5;
     }
     for (;;)
     {
-      this.vte = (-paramInt);
-      float f1 = this.Ebt.getHeight() / 2.0F;
-      float f2 = this.Ebt.getWidth() / 2.0F;
-      this.Eby -= i;
-      this.Ebt.setScaleType(ImageView.ScaleType.MATRIX);
-      localObject = this.Ebt.getImageMatrix();
+      this.vFj = (-paramInt);
+      float f1 = this.Etu.getHeight() / 2.0F;
+      float f2 = this.Etu.getWidth() / 2.0F;
+      this.Etz -= i;
+      this.Etu.setScaleType(ImageView.ScaleType.MATRIX);
+      localObject = this.Etu.getImageMatrix();
       ((Matrix)localObject).postRotate(-i, f2, f1);
-      this.Ebt.setImageMatrix((Matrix)localObject);
-      this.Ebt.setImageResource(Ebw);
-      this.Ebt.invalidate();
+      this.Etu.setImageMatrix((Matrix)localObject);
+      this.Etu.setImageResource(Etx);
+      this.Etu.invalidate();
       AppMethodBeat.o(79933);
       return;
       label458:
-      if (this.Ebu == null) {
+      if (this.Etv == null) {
         break;
       }
-      this.Ebu.setReleaseTargetHeight(0);
+      this.Etv.setReleaseTargetHeight(0);
       break;
       label476:
       i *= 2;
     }
   }
   
-  public final void Xw(int paramInt)
+  public final void Yc(int paramInt)
   {
     AppMethodBeat.i(79929);
-    if (this.EbC != null)
+    if (this.EtD != null)
     {
-      this.EbC.setBackgroundColor(paramInt);
-      ad.d("MicroMsg.WebViewPullDownLogoDelegate", "setLogoBackgroundColor %d", new Object[] { Integer.valueOf(paramInt) });
+      this.EtD.setBackgroundColor(paramInt);
+      ae.d("MicroMsg.WebViewPullDownLogoDelegate", "setLogoBackgroundColor %d", new Object[] { Integer.valueOf(paramInt) });
     }
     AppMethodBeat.o(79929);
   }
   
-  public final void eSn()
+  public final void eVZ()
   {
     AppMethodBeat.i(79923);
-    this.jWh = false;
+    this.jZw = false;
     stopLoading();
-    if ((this.EbF) && (this.EbD != null) && (!this.EbG))
+    if ((this.EtG) && (this.EtE != null) && (!this.EtH))
     {
-      ve(false);
-      this.Ebu.setReleaseTargetHeight(0);
-      eSq();
+      vm(false);
+      this.Etv.setReleaseTargetHeight(0);
+      eWc();
     }
     AppMethodBeat.o(79923);
   }
   
-  public final void eSo()
+  public final void eWa()
   {
-    this.EbH = true;
+    this.EtI = true;
   }
   
-  public final void eSp()
+  public final void eWb()
   {
     AppMethodBeat.i(79931);
-    if (this.EbD != null) {
-      this.EbD.setVisibility(8);
+    if (this.EtE != null) {
+      this.EtE.setVisibility(8);
     }
     AppMethodBeat.o(79931);
   }
   
-  public final void eSq()
+  public final void eWc()
   {
     AppMethodBeat.i(79932);
-    if ((this.EbD != null) && (!this.EbH)) {
-      this.EbD.setVisibility(0);
+    if ((this.EtE != null) && (!this.EtI)) {
+      this.EtE.setVisibility(0);
     }
     AppMethodBeat.o(79932);
   }
   
   public final float getStartLoadingStep()
   {
-    return this.EbB;
+    return this.EtC;
   }
   
   public final void release()
   {
     AppMethodBeat.i(79928);
-    if (this.Ebu != null)
+    if (this.Etv != null)
     {
-      LogoWebViewWrapper localLogoWebViewWrapper = this.Ebu;
-      if (localLogoWebViewWrapper.DYP != null)
+      LogoWebViewWrapper localLogoWebViewWrapper = this.Etv;
+      if (localLogoWebViewWrapper.EqR != null)
       {
-        localLogoWebViewWrapper.DYP.removeView(localLogoWebViewWrapper.fQx);
-        localLogoWebViewWrapper.fQx = null;
+        localLogoWebViewWrapper.EqR.removeView(localLogoWebViewWrapper.fSD);
+        localLogoWebViewWrapper.fSD = null;
       }
-      localLogoWebViewWrapper = this.Ebu;
-      localLogoWebViewWrapper.DYY = null;
-      localLogoWebViewWrapper.DYX = null;
+      localLogoWebViewWrapper = this.Etv;
+      localLogoWebViewWrapper.Era = null;
+      localLogoWebViewWrapper.EqZ = null;
     }
-    if (this.EbC != null) {
-      ((ViewGroup)this.EbC).removeAllViews();
+    if (this.EtD != null) {
+      ((ViewGroup)this.EtD).removeAllViews();
     }
-    this.Ebu = null;
-    this.Ebt = null;
-    this.vte = 0;
-    if (this.Ebz != null)
+    this.Etv = null;
+    this.Etu = null;
+    this.vFj = 0;
+    if (this.EtA != null)
     {
-      this.Ebz.cancel();
-      this.Ebz = null;
+      this.EtA.cancel();
+      this.EtA = null;
     }
     AppMethodBeat.o(79928);
   }
@@ -248,31 +248,31 @@ public final class j
   public final void setCurrentURL(String paramString)
   {
     AppMethodBeat.i(79937);
-    if ((!this.EbF) || (this.EbG))
+    if ((!this.EtG) || (this.EtH))
     {
-      ve(true);
-      if ((this.EbD != null) && (this.EbD.getVisibility() == 0)) {
-        eSp();
+      vm(true);
+      if ((this.EtE != null) && (this.EtE.getVisibility() == 0)) {
+        eWb();
       }
       AppMethodBeat.o(79937);
       return;
     }
-    if (this.EbE != null)
+    if (this.EtF != null)
     {
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
         paramString = Uri.parse(paramString).getHost();
-        if (!bt.isNullOrNil(paramString))
+        if (!bu.isNullOrNil(paramString))
         {
-          paramString = this.EbE.getContext().getString(2131766116, new Object[] { paramString });
-          this.EbE.setVisibility(0);
-          this.EbE.setText(paramString);
-          ve(false);
+          paramString = this.EtF.getContext().getString(2131766116, new Object[] { paramString });
+          this.EtF.setVisibility(0);
+          this.EtF.setText(paramString);
+          vm(false);
           AppMethodBeat.o(79937);
           return;
         }
       }
-      this.EbE.setVisibility(8);
+      this.EtF.setVisibility(8);
     }
     AppMethodBeat.o(79937);
   }
@@ -280,8 +280,8 @@ public final class j
   public final void setMMOverScrollOffsetListener(LogoWebViewWrapper.b paramb)
   {
     AppMethodBeat.i(79924);
-    if (this.Ebu != null) {
-      this.Ebu.setMMOverScrollOffsetListener(paramb);
+    if (this.Etv != null) {
+      this.Etv.setMMOverScrollOffsetListener(paramb);
     }
     AppMethodBeat.o(79924);
   }
@@ -290,28 +290,28 @@ public final class j
   {
     float f2 = 0.0F;
     AppMethodBeat.i(79934);
-    this.EbB = paramFloat;
-    this.Ebt.setScaleType(ImageView.ScaleType.MATRIX);
-    Matrix localMatrix = this.Ebt.getImageMatrix();
+    this.EtC = paramFloat;
+    this.Etu.setScaleType(ImageView.ScaleType.MATRIX);
+    Matrix localMatrix = this.Etu.getImageMatrix();
     float f1;
-    if (this.Ebt == null)
+    if (this.Etu == null)
     {
       f1 = 0.0F;
-      if (this.Ebt != null) {
+      if (this.Etu != null) {
         break label89;
       }
     }
     for (;;)
     {
       localMatrix.setRotate(paramFloat, f1, f2);
-      this.Eby = paramFloat;
-      this.Ebt.invalidate();
+      this.Etz = paramFloat;
+      this.Etu.invalidate();
       AppMethodBeat.o(79934);
       return;
-      f1 = this.Ebt.getWidth() / 2.0F;
+      f1 = this.Etu.getWidth() / 2.0F;
       break;
       label89:
-      f2 = this.Ebt.getHeight() / 2.0F;
+      f2 = this.Etu.getHeight() / 2.0F;
     }
   }
   
@@ -323,25 +323,25 @@ public final class j
       AppMethodBeat.o(79926);
       return;
     }
-    if ((this.Ebt == null) || (this.Ebu == null))
+    if ((this.Etu == null) || (this.Etv == null))
     {
       AppMethodBeat.o(79926);
       return;
     }
     this.aWX = true;
-    this.Ebu.ve(true);
-    this.Ebt.clearAnimation();
-    if (this.Ebz != null) {
-      this.Ebz.cancel();
+    this.Etv.vm(true);
+    this.Etu.clearAnimation();
+    if (this.EtA != null) {
+      this.EtA.cancel();
     }
-    this.Ebz = ObjectAnimator.ofFloat(this, "startLoadingStep", new float[] { this.Eby + 0.0F, this.Eby + 354.0F });
-    this.Ebz.setDuration(960L);
-    this.Ebz.setRepeatMode(1);
-    this.Ebz.setRepeatCount(-1);
-    this.Ebz.setInterpolator(new LinearInterpolator());
-    this.Ebz.start();
-    if (this.Ebs != null) {
-      this.Ebs.eSr();
+    this.EtA = ObjectAnimator.ofFloat(this, "startLoadingStep", new float[] { this.Etz + 0.0F, this.Etz + 354.0F });
+    this.EtA.setDuration(960L);
+    this.EtA.setRepeatMode(1);
+    this.EtA.setRepeatCount(-1);
+    this.EtA.setInterpolator(new LinearInterpolator());
+    this.EtA.start();
+    if (this.Ett != null) {
+      this.Ett.eWd();
     }
     AppMethodBeat.o(79926);
   }
@@ -354,41 +354,41 @@ public final class j
       AppMethodBeat.o(79927);
       return;
     }
-    ad.d("MicroMsg.WebViewPullDownLogoDelegate", "stopLoading()");
-    this.Ebx = true;
+    ae.d("MicroMsg.WebViewPullDownLogoDelegate", "stopLoading()");
+    this.Ety = true;
     this.aWX = false;
-    if ((this.Ebu != null) && (this.jWh)) {
-      this.Ebu.ve(false);
+    if ((this.Etv != null) && (this.jZw)) {
+      this.Etv.vm(false);
     }
-    if (this.Ebz != null) {
-      this.Ebz.cancel();
+    if (this.EtA != null) {
+      this.EtA.cancel();
     }
-    if (this.Ebu != null) {
-      this.Ebu.q(0, 250L);
+    if (this.Etv != null) {
+      this.Etv.q(0, 250L);
     }
-    if (this.Ebt != null)
+    if (this.Etu != null)
     {
-      ad.d("MicroMsg.WebViewPullDownLogoDelegate", "refreshImage, alpha to 0f");
-      this.Ebt.animate().alpha(0.0F).setDuration(500L).start();
+      ae.d("MicroMsg.WebViewPullDownLogoDelegate", "refreshImage, alpha to 0f");
+      this.Etu.animate().alpha(0.0F).setDuration(500L).start();
     }
     AppMethodBeat.o(79927);
   }
   
-  public final void ve(boolean paramBoolean)
+  public final void vm(boolean paramBoolean)
   {
     AppMethodBeat.i(79935);
-    if ((this.Ebu != null) && (this.Ebu.DYU != paramBoolean))
+    if ((this.Etv != null) && (this.Etv.EqW != paramBoolean))
     {
-      this.Ebu.ve(paramBoolean);
-      eSp();
-      this.EbG = paramBoolean;
+      this.Etv.vm(paramBoolean);
+      eWb();
+      this.EtH = paramBoolean;
     }
     AppMethodBeat.o(79935);
   }
   
   public static abstract interface a
   {
-    public abstract void eSr();
+    public abstract void eWd();
   }
 }
 

@@ -2,14 +2,14 @@ package com.tencent.mm.media.widget.camerarecordview.b;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "", "getFilePath", "", "getRecordType", "", "getThumbPath", "Companion", "RecordTypeInfo", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "", "getFilePath", "", "getRecordType", "", "getThumbPath", "Companion", "RecordTypeInfo", "plugin-mediaeditor_release"})
 public abstract interface a
 {
-  public static final a.a htL = a.a.htM;
+  public static final a.a hwz = a.a.hwA;
   
-  public abstract String axA();
+  public abstract int axO();
   
-  public abstract int axz();
+  public abstract String axP();
   
   public abstract String getFilePath();
 }

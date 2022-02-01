@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
@@ -17,9 +17,9 @@ final class LoginUI$11
     AppMethodBeat.i(128212);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    d.Q(this.jlW, "login_exdevice", ".ui.LoginAsExDeviceUI");
-    this.jlW.overridePendingTransition(2130772105, 2130771986);
+    a.b("com/tencent/mm/plugin/account/ui/LoginUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    d.Q(this.joQ, "login_exdevice", ".ui.LoginAsExDeviceUI");
+    this.joQ.overridePendingTransition(2130772105, 2130771986);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128212);
   }

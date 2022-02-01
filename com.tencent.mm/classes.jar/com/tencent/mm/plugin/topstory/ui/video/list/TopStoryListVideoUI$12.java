@@ -14,13 +14,13 @@ final class TopStoryListVideoUI$12
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(199600);
+    AppMethodBeat.i(220246);
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/topstory/ui/video/list/TopStoryListVideoUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/topstory/ui/video/list/TopStoryListVideoUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     a.a(true, this, "com/tencent/mm/plugin/topstory/ui/video/list/TopStoryListVideoUI$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(199600);
+    AppMethodBeat.o(220246);
     return true;
   }
 }

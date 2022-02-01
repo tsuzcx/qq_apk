@@ -6,17 +6,17 @@ import java.util.List;
 
 final class a
 {
-  static final List<DebuggerShell.a> kaC;
+  static final List<DebuggerShell.a> kdS;
   
   static
   {
     AppMethodBeat.i(44936);
     LinkedList localLinkedList = new LinkedList();
-    kaC = localLinkedList;
+    kdS = localLinkedList;
     localLinkedList.add(new d());
-    kaC.add(new e());
-    kaC.add(new g());
-    kaC.add(new h());
+    kdS.add(new e());
+    kdS.add(new g());
+    kdS.add(new h());
     AppMethodBeat.o(44936);
   }
 }

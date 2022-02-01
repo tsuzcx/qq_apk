@@ -10,15 +10,15 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.plugin.sns.j.g;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.bb;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.model.bc;
+import com.tencent.mm.plugin.sns.model.bd;
 import com.tencent.mm.pluginsdk.i.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.dhj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,131 +27,136 @@ import java.util.List;
 public final class bm
   implements ac
 {
+  private int Ahk;
+  private e Ahq = null;
+  private String Ahr = "";
+  private boolean AiJ = false;
+  private boolean AiK = false;
+  private WXMediaMessage AiL = null;
+  private String AkK = "";
   private String appName = "";
-  private String duW = "";
-  private MMActivity fLP;
-  private int zQd;
-  private e zQj = null;
-  private String zQk = "";
-  private boolean zRC = false;
-  private boolean zRD = false;
-  private WXMediaMessage zRE = null;
-  private String zTD = "";
-  private int znT = 1;
+  private String dwb = "";
+  private MMActivity fNT;
+  private int zFi = 1;
   
   public bm(MMActivity paramMMActivity)
   {
-    this.fLP = paramMMActivity;
+    this.fNT = paramMMActivity;
   }
   
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bvq parambvq, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bwk parambwk, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(99716);
-    if (this.zRE != null)
+    if (this.AiL != null)
     {
-      this.zRE.description = paramString1;
-      if ((this.zRE.mediaObject != null) && ((this.zRE.mediaObject instanceof WXTextObject))) {
-        ((WXTextObject)this.zRE.mediaObject).text = paramString1;
+      this.AiL.description = paramString1;
+      if ((this.AiL.mediaObject != null) && ((this.AiL.mediaObject instanceof WXTextObject))) {
+        ((WXTextObject)this.AiL.mediaObject).text = paramString1;
       }
     }
-    ag.dUa();
-    paramString1 = bb.b(this.zRE, paramString1, this.duW, this.appName);
+    ah.dXA();
+    paramString1 = bc.b(this.AiL, paramString1, this.dwb, this.appName);
     if (paramString1 == null)
     {
-      ad.e("MicroMsg.TextWidget", "packHelper == null, %s, %s", new Object[] { this.duW, this.appName });
+      ae.e("MicroMsg.TextWidget", "packHelper == null, %s, %s", new Object[] { this.dwb, this.appName });
       AppMethodBeat.o(99716);
       return false;
     }
     paramPInt.value = paramString1.beN;
-    if (paramInt3 > a.zbZ) {
-      paramString1.Qb(4);
+    if (paramInt3 > a.zsC) {
+      paramString1.QI(4);
     }
-    paramString1.Qg(this.zQd);
-    if (this.zRC) {
-      paramString1.Qg(5);
+    paramString1.QN(this.Ahk);
+    if (this.AiJ) {
+      paramString1.QN(5);
     }
     paramLinkedList = new LinkedList();
     if (paramList1 != null)
     {
       new LinkedList();
-      paramPInt = d.fas();
+      paramPInt = d.feg();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         paramString2 = (String)paramList1.next();
         if (!paramPInt.contains(paramString2))
         {
-          dhj localdhj = new dhj();
-          localdhj.nDo = paramString2;
-          paramLinkedList.add(localdhj);
+          did localdid = new did();
+          localdid.nIJ = paramString2;
+          paramLinkedList.add(localdid);
         }
       }
     }
-    paramString1.aU(paramLinkedList);
+    paramString1.aV(paramLinkedList);
     if (parami != null) {
-      paramString1.jr(parami.token, parami.GTp);
+      paramString1.jy(parami.token, parami.HmQ);
     }
-    paramString1.a(parambvq);
+    paramString1.a(parambwk);
     if (paramBoolean) {
-      paramString1.Qh(1);
+      paramString1.QO(1);
     }
     for (;;)
     {
-      paramString1.fL(paramList2).Qe(paramInt1);
+      paramString1.fU(paramList2).QL(paramInt1);
       paramString1.g(null, null, null, paramInt4, paramInt5);
-      paramString1.cc(this.znT, this.zQk);
-      if ((this.zRD) && (this.zRE != null))
+      paramString1.cc(this.zFi, this.Ahr);
+      if ((this.AiK) && (this.AiL != null))
       {
-        paramString1.azk(this.zRE.mediaTagName);
-        paramString1.aD(this.duW, this.zRE.messageExt, this.zRE.messageAction);
+        paramString1.aAB(this.AiL.mediaTagName);
+        paramString1.aD(this.dwb, this.AiL.messageExt, this.AiL.messageAction);
       }
       paramInt1 = paramString1.commit();
-      if (this.zQj != null)
+      if (this.Ahq != null)
       {
-        this.zQj.pX(paramInt1);
-        g.zus.c(this.zQj);
+        this.Ahq.qa(paramInt1);
+        g.zLJ.c(this.Ahq);
       }
-      ag.dUa().dSE();
-      this.fLP.finish();
+      ah.dXA().dWc();
+      this.fNT.finish();
       AppMethodBeat.o(99716);
       return false;
-      paramString1.Qh(0);
+      paramString1.QO(0);
     }
   }
   
-  public final void ap(Bundle paramBundle)
+  public final void aq(Bundle paramBundle)
   {
     AppMethodBeat.i(99715);
-    this.zQj = e.w(this.fLP.getIntent());
-    this.zTD = this.fLP.getIntent().getStringExtra("Kdescription");
-    this.duW = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.zRC = this.fLP.getIntent().getBooleanExtra("KThrid_app", false);
-    this.zRD = this.fLP.getIntent().getBooleanExtra("KSnsAction", false);
-    this.zQd = this.fLP.getIntent().getIntExtra("Ksnsupload_source", 0);
-    this.zRE = new SendMessageToWX.Req(this.fLP.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
-    if (this.fLP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
-    for (this.znT = 1;; this.znT = 0)
+    this.Ahq = e.w(this.fNT.getIntent());
+    this.AkK = this.fNT.getIntent().getStringExtra("Kdescription");
+    this.dwb = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.AiJ = this.fNT.getIntent().getBooleanExtra("KThrid_app", false);
+    this.AiK = this.fNT.getIntent().getBooleanExtra("KSnsAction", false);
+    this.Ahk = this.fNT.getIntent().getIntExtra("Ksnsupload_source", 0);
+    this.AiL = new SendMessageToWX.Req(this.fNT.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
+    if (this.fNT.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.zFi = 1;; this.zFi = 0)
     {
-      this.zQk = bt.bI(this.fLP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      this.Ahr = bu.bI(this.fNT.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
       AppMethodBeat.o(99715);
       return;
     }
   }
   
-  public final void aq(Bundle paramBundle) {}
+  public final void ar(Bundle paramBundle) {}
   
-  public final boolean dZG()
+  public final boolean edl()
   {
     return true;
   }
   
-  public final View dZH()
+  public final View edm()
   {
     return null;
   }
   
-  public final boolean dZI()
+  public final boolean edn()
+  {
+    return true;
+  }
+  
+  public final boolean edo()
   {
     return false;
   }

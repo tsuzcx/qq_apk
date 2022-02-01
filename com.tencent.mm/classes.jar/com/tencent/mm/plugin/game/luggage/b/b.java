@@ -41,7 +41,7 @@ public class b
   
   public final void b(b.a parama) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

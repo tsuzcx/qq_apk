@@ -10,8 +10,8 @@ public class SendDataToMiniProgramFromH5Event
 {
   public static final Parcelable.Creator<SendDataToMiniProgramFromH5Event> CREATOR;
   public String data;
-  public String kND;
-  public int kNE;
+  public String kRa;
+  public int kRb;
   
   static
   {
@@ -25,9 +25,9 @@ public class SendDataToMiniProgramFromH5Event
   protected SendDataToMiniProgramFromH5Event(Parcel paramParcel)
   {
     AppMethodBeat.i(46357);
-    this.kND = paramParcel.readString();
+    this.kRa = paramParcel.readString();
     this.data = paramParcel.readString();
-    this.kNE = paramParcel.readInt();
+    this.kRb = paramParcel.readInt();
     AppMethodBeat.o(46357);
   }
   
@@ -39,9 +39,9 @@ public class SendDataToMiniProgramFromH5Event
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(46356);
-    paramParcel.writeString(this.kND);
+    paramParcel.writeString(this.kRa);
     paramParcel.writeString(this.data);
-    paramParcel.writeInt(this.kNE);
+    paramParcel.writeInt(this.kRb);
     AppMethodBeat.o(46356);
   }
 }

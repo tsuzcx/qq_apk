@@ -7,7 +7,7 @@ import com.tencent.mm.protocal.c;
 public class b
   extends f.a
 {
-  public final boolean VX(int paramInt)
+  public final boolean WE(int paramInt)
   {
     return false;
   }
@@ -22,44 +22,44 @@ public class b
     return false;
   }
   
-  public final void aFG(String paramString) {}
+  public final void aA(Bundle paramBundle) {}
   
-  public final void ay(Bundle paramBundle) {}
+  public final void aHa(String paramString) {}
   
   public final void az(Bundle paramBundle) {}
   
-  public String dWD()
-  {
-    return null;
-  }
-  
   public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public final void eLu() {}
+  public final void ePd() {}
   
-  public final String eLv()
+  public final String ePe()
   {
     return null;
   }
   
-  public final String eLw()
+  public final String ePf()
   {
     return null;
   }
   
-  public final int eLx()
+  public final int ePg()
   {
     return 0;
   }
   
-  public final void eLy() {}
+  public final void ePh() {}
   
-  public final Bundle eR(String paramString1, String paramString2)
+  public final Bundle eU(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(213998);
-    paramString1 = c.aOa(null);
-    AppMethodBeat.o(213998);
+    AppMethodBeat.i(213829);
+    paramString1 = c.aPx(null);
+    AppMethodBeat.o(213829);
     return paramString1;
+  }
+  
+  public String eaf()
+  {
+    return null;
   }
   
   public boolean g(int paramInt, Bundle paramBundle)
@@ -77,17 +77,17 @@ public class b
     return null;
   }
   
-  public final void kA(String paramString1, String paramString2) {}
+  public final void kG(String paramString1, String paramString2) {}
   
-  public final void kz(String paramString1, String paramString2) {}
+  public final void kH(String paramString1, String paramString2) {}
   
   public final void u(int paramInt, Bundle paramBundle) {}
   
-  public final void uO(boolean paramBoolean) {}
+  public final void uW(boolean paramBoolean) {}
   
-  public final void uP(boolean paramBoolean) {}
+  public final void uX(boolean paramBoolean) {}
   
-  public final void uQ(boolean paramBoolean) {}
+  public final void uY(boolean paramBoolean) {}
 }
 
 

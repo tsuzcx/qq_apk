@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 
 final class WalletLqtDetailUI$18
   implements View.OnClickListener
@@ -16,15 +16,15 @@ final class WalletLqtDetailUI$18
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(199217);
+    AppMethodBeat.i(190074);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    paramView = (String)this.CBA.getTag();
-    e.n(this.CBs, paramView, false);
-    g.yhR.f(17084, new Object[] { Integer.valueOf(11) });
+    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    paramView = (String)this.CTh.getTag();
+    f.o(this.CSZ, paramView, false);
+    g.yxI.f(17084, new Object[] { Integer.valueOf(11) });
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(199217);
+    AppMethodBeat.o(190074);
   }
 }
 

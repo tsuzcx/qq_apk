@@ -3,45 +3,45 @@ package com.tencent.mm.api;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cew;
-import com.tencent.mm.protocal.protobuf.cya;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.protocal.protobuf.cyp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cfq;
+import com.tencent.mm.protocal.protobuf.cyu;
+import com.tencent.mm.protocal.protobuf.cyw;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.e.c;
 
 public final class d
 {
-  public static void a(Intent paramIntent, cya paramcya)
+  public static void a(Intent paramIntent, cyu paramcyu)
   {
     AppMethodBeat.i(123931);
-    ((m)g.ab(m.class)).a(paramIntent, paramcya, 15);
+    ((m)g.ab(m.class)).a(paramIntent, paramcyu, 15);
     AppMethodBeat.o(123931);
   }
   
-  public static void a(Intent paramIntent, cyc paramcyc, int paramInt)
+  public static void a(Intent paramIntent, cyw paramcyw, int paramInt)
   {
     AppMethodBeat.i(123930);
-    ((m)g.ab(m.class)).a(paramIntent, paramcyc, paramInt);
+    ((m)g.ab(m.class)).a(paramIntent, paramcyw, paramInt);
     AppMethodBeat.o(123930);
   }
   
-  public static void a(Intent paramIntent, cyp paramcyp, int paramInt)
+  public static void a(Intent paramIntent, czj paramczj, int paramInt)
   {
     AppMethodBeat.i(123932);
-    paramIntent.putExtra("Contact_User", paramcyp.nDo);
-    paramIntent.putExtra("Contact_Nick", paramcyp.nEt);
-    paramIntent.putExtra("Contact_PyInitial", paramcyp.Gaz);
-    paramIntent.putExtra("Contact_QuanPin", paramcyp.GaA);
-    paramIntent.putExtra("Contact_Sex", paramcyp.jdc);
+    paramIntent.putExtra("Contact_User", paramczj.nIJ);
+    paramIntent.putExtra("Contact_Nick", paramczj.nJO);
+    paramIntent.putExtra("Contact_PyInitial", paramczj.Gtg);
+    paramIntent.putExtra("Contact_QuanPin", paramczj.Gth);
+    paramIntent.putExtra("Contact_Sex", paramczj.jfV);
     paramIntent.putExtra("Contact_Scene", paramInt);
     paramIntent.putExtra("Contact_KHideExpose", true);
-    paramIntent.putExtra(e.c.IUp, paramcyp.Guj);
-    paramIntent.putExtra("key_add_contact_openim_appid", paramcyp.iht);
-    paramIntent.putExtra("key_add_contact_match_type", paramcyp.Hpn);
-    paramIntent.putExtra("key_add_contact_custom_detail_visible", paramcyp.HpC.GYY);
-    paramIntent.putExtra("key_add_contact_custom_detail", paramcyp.HpC.ugo);
-    ad.i("MicroMsg.BuildContactInfoIntent", "[tomys] anti, content: %s", new Object[] { paramcyp.Guj });
+    paramIntent.putExtra(e.c.JoX, paramczj.GNI);
+    paramIntent.putExtra("key_add_contact_openim_appid", paramczj.ikm);
+    paramIntent.putExtra("key_add_contact_match_type", paramczj.HIP);
+    paramIntent.putExtra("key_add_contact_custom_detail_visible", paramczj.HJe.Hsz);
+    paramIntent.putExtra("key_add_contact_custom_detail", paramczj.HJe.urL);
+    ae.i("MicroMsg.BuildContactInfoIntent", "[tomys] anti, content: %s", new Object[] { paramczj.GNI });
     AppMethodBeat.o(123932);
   }
 }

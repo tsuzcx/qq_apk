@@ -4,18 +4,18 @@ import android.content.Context;
 import android.view.View;
 import com.tencent.mm.plugin.appbrand.jsapi.p.c;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.lang.reflect.Constructor;
 
 public abstract class b
 {
-  public a nkl;
+  public a npt;
   
-  private a in(boolean paramBoolean)
+  private a il(boolean paramBoolean)
   {
     a locala2 = null;
-    if (this.nkl != null) {
-      locala1 = this.nkl;
+    if (this.npt != null) {
+      locala1 = this.npt;
     }
     View localView;
     n localn;
@@ -28,7 +28,7 @@ public abstract class b
           do
           {
             return locala1;
-            localView = bmf();
+            localView = bmO();
             locala1 = locala2;
           } while (localView == null);
           localn = n.dd(localView);
@@ -39,16 +39,16 @@ public abstract class b
       } while (locala2 != null);
       locala1 = locala2;
     } while (!paramBoolean);
-    a locala1 = new a(localView.getContext());
+    a locala1 = dw(localView.getContext());
     localn.n(locala1, true);
     return locala1;
   }
   
   public final <T extends c> T aK(Class<T> paramClass)
   {
-    ad.d("MicroMsg.AppBrandBottomPickerInvokeHandler", paramClass.getSimpleName());
-    a locala = in(true);
-    this.nkl = locala;
+    ae.d("MicroMsg.AppBrandBottomPickerInvokeHandler", paramClass.getSimpleName());
+    a locala = il(true);
+    this.npt = locala;
     if (locala == null) {
       return null;
     }
@@ -63,14 +63,19 @@ public abstract class b
   
   public final <T extends c> T aL(Class<T> paramClass)
   {
-    a locala = in(false);
+    a locala = il(false);
     if ((locala != null) && (paramClass.isInstance(locala.getPicker()))) {
       return locala.getPicker();
     }
     return null;
   }
   
-  protected abstract View bmf();
+  protected abstract View bmO();
+  
+  protected a dw(Context paramContext)
+  {
+    return new a(paramContext);
+  }
 }
 
 

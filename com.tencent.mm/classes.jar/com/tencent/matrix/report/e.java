@@ -4,24 +4,36 @@ import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isCareScene", "", "scene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isAddressScene", "", "scene", "isCareScene", "isChattingScene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
 public final class e
 {
-  public static final e cFd = new e();
+  public static final e cFK = new e();
   
-  public static boolean dQ(String paramString)
+  public static boolean dT(String paramString)
   {
     p.h(paramString, "scene");
-    return n.nA(paramString, "SnsTimeLineUI");
+    return n.nG(paramString, "SnsTimeLineUI");
   }
   
-  public static boolean dR(String paramString)
+  public static boolean dU(String paramString)
   {
     p.h(paramString, "scene");
     return n.a((CharSequence)paramString, (CharSequence)"Finder", false);
   }
   
-  static int dS(String paramString)
+  public static boolean dV(String paramString)
+  {
+    p.h(paramString, "scene");
+    return (n.nG(paramString, "ChattingUIFragment")) || (n.nG(paramString, "ChattingUI"));
+  }
+  
+  public static boolean dW(String paramString)
+  {
+    p.h(paramString, "scene");
+    return n.nG(paramString, "AddressUIFragment");
+  }
+  
+  static int dX(String paramString)
   {
     switch (paramString.hashCode())
     {
@@ -45,7 +57,7 @@ public final class e
     }
   }
   
-  static int dT(String paramString)
+  static int dY(String paramString)
   {
     switch (paramString.hashCode())
     {

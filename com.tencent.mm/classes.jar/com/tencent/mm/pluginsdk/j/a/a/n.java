@@ -4,20 +4,20 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
+import com.tencent.mm.ak.f;
 import com.tencent.mm.network.k;
 import com.tencent.mm.pluginsdk.j.a.a.a.a;
 import com.tencent.mm.pluginsdk.j.a.c.q.a;
 import com.tencent.mm.pluginsdk.j.a.c.s;
 import com.tencent.mm.pluginsdk.j.a.c.t;
-import com.tencent.mm.protocal.protobuf.cvi;
-import com.tencent.mm.protocal.protobuf.cvm;
-import com.tencent.mm.protocal.protobuf.cvn;
-import com.tencent.mm.protocal.protobuf.cvo;
-import com.tencent.mm.protocal.protobuf.xt;
+import com.tencent.mm.protocal.protobuf.cwc;
+import com.tencent.mm.protocal.protobuf.cwg;
+import com.tencent.mm.protocal.protobuf.cwh;
+import com.tencent.mm.protocal.protobuf.cwi;
+import com.tencent.mm.protocal.protobuf.xw;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.wcdb.database.SQLiteException;
 import java.util.Collections;
 import java.util.Iterator;
@@ -26,27 +26,27 @@ import java.util.List;
 import java.util.Locale;
 
 public abstract class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
-  protected static final SparseArray<a> EQo = new SparseArray();
-  protected final List<cvo> EQn = new LinkedList();
+  protected static final SparseArray<a> FiJ = new SparseArray();
+  protected final List<cwi> FiI = new LinkedList();
   private volatile f callback;
   
   n()
   {
-    int[] arrayOfInt = i.EPQ;
+    int[] arrayOfInt = i.Fil;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = arrayOfInt[i];
-      Object localObject = (a)EQo.get(k);
-      if ((localObject == null) || (!((a)localObject).yS(k)))
+      Object localObject = (a)FiJ.get(k);
+      if ((localObject == null) || (!((a)localObject).zb(k)))
       {
-        localObject = new cvo();
-        ((cvo)localObject).nEf = k;
-        this.EQn.add(localObject);
+        localObject = new cwi();
+        ((cwi)localObject).nJA = k;
+        this.FiI.add(localObject);
       }
       i += 1;
     }
@@ -54,22 +54,22 @@ public abstract class n
   
   public static void a(a parama)
   {
-    EQo.put(39, parama);
+    FiJ.put(39, parama);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     this.callback = paramf;
-    ad.d(getTag(), "before dispatch");
+    ae.d(getTag(), "before dispatch");
     try
     {
-      Iterator localIterator = this.EQn.iterator();
+      Iterator localIterator = this.FiI.iterator();
       if (localIterator.hasNext())
       {
-        localcvo = (cvo)localIterator.next();
-        i = localcvo.nEf;
-        paramf = q.a.fbc();
-        if (!paramf.kld)
+        localcwi = (cwi)localIterator.next();
+        i = localcwi.nJA;
+        paramf = q.a.feQ();
+        if (!paramf.kot)
         {
           paramf = null;
           if (paramf != null) {
@@ -81,15 +81,15 @@ public abstract class n
           while (paramf.hasNext())
           {
             locals = (s)paramf.next();
-            i = bt.getInt(locals.field_fileVersion, -1);
+            i = bu.getInt(locals.field_fileVersion, -1);
             if (i >= 0)
             {
-              cvm localcvm = new cvm();
-              localcvm.HfH = locals.field_subType;
-              localcvm.HnK = i;
-              localcvm.HnI = locals.field_keyVersion;
-              localcvm.EPM = locals.field_EID;
-              localcvo.HnP.add(localcvm);
+              cwg localcwg = new cwg();
+              localcwg.Hzh = locals.field_subType;
+              localcwg.HHk = i;
+              localcwg.HHi = locals.field_keyVersion;
+              localcwg.Fih = locals.field_EID;
+              localcwi.HHp.add(localcwg);
               ((StringBuilder)localObject).append(locals.field_subType).append(", ");
             }
           }
@@ -100,12 +100,12 @@ public abstract class n
     {
       for (;;)
       {
-        cvo localcvo;
+        cwi localcwi;
         int i;
         s locals;
-        ad.e(getTag(), "doScene get SQLException(%s), return -1", new Object[] { parame });
+        ae.e(getTag(), "doScene get SQLException(%s), return -1", new Object[] { parame });
         return -1;
-        paramf = paramf.EQW.hHS;
+        paramf = paramf.Fjr.hKK;
         continue;
         Object localObject = paramf.a("ResDownloaderRecordTable", null, "urlKey" + String.format(Locale.US, " like '%d.%%.data'", new Object[] { Integer.valueOf(i) }) + " and groupId1=" + String.format(Locale.US, "'%s'", new Object[] { "CheckResUpdate" }), null, null, null, null, 2);
         if ((localObject == null) || (((Cursor)localObject).isClosed()))
@@ -131,10 +131,10 @@ public abstract class n
             paramf = Collections.emptyList();
           }
           ((StringBuilder)localObject).append(" }");
-          ad.i(getTag(), "before doScene, add subtypeList(%s) in type(%d)", new Object[] { ((StringBuilder)localObject).toString(), Integer.valueOf(localcvo.nEf) });
+          ae.i(getTag(), "before doScene, add subtypeList(%s) in type(%d)", new Object[] { ((StringBuilder)localObject).toString(), Integer.valueOf(localcwi.nJA) });
         }
       }
-      return dispatch(parame, faU(), this);
+      return dispatch(parame, feI(), this);
     }
     catch (SQLException parame)
     {
@@ -144,52 +144,52 @@ public abstract class n
     }
   }
   
-  protected abstract com.tencent.mm.network.q faU();
+  protected abstract com.tencent.mm.network.q feI();
   
   protected abstract String getTag();
   
-  protected abstract xt h(com.tencent.mm.network.q paramq);
+  protected abstract xw h(com.tencent.mm.network.q paramq);
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    ad.i(getTag(), "onGYNetEnd errType(%d), errCode(%d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ae.i(getTag(), "onGYNetEnd errType(%d), errCode(%d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     String str;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       paramArrayOfByte = h(paramq);
       str = getTag();
-      if (!bt.hj(paramArrayOfByte.FXr)) {
+      if (!bu.ht(paramArrayOfByte.GpQ)) {
         break label128;
       }
     }
     label128:
-    for (paramq = "null";; paramq = String.valueOf(paramArrayOfByte.FXr.size()))
+    for (paramq = "null";; paramq = String.valueOf(paramArrayOfByte.GpQ.size()))
     {
-      ad.i(str, "response.Res.size() = %s", new Object[] { paramq });
-      if (!bt.hj(paramArrayOfByte.FXr)) {
+      ae.i(str, "response.Res.size() = %s", new Object[] { paramq });
+      if (!bu.ht(paramArrayOfByte.GpQ)) {
         b.c(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(152002);
-            Iterator localIterator = this.EQp.iterator();
+            Iterator localIterator = this.FiK.iterator();
             if (localIterator.hasNext())
             {
-              cvn localcvn = (cvn)localIterator.next();
+              cwh localcwh = (cwh)localIterator.next();
               Object localObject2 = n.this.getTag();
-              int i = localcvn.nEf;
-              if (bt.hj(localcvn.HnO)) {}
-              for (Object localObject1 = "null";; localObject1 = String.valueOf(localcvn.HnO.size()))
+              int i = localcwh.nJA;
+              if (bu.ht(localcwh.HHo)) {}
+              for (Object localObject1 = "null";; localObject1 = String.valueOf(localcwh.HHo.size()))
               {
-                ad.i((String)localObject2, "resType(%d) responses.size() = %s", new Object[] { Integer.valueOf(i), localObject1 });
-                if (bt.hj(localcvn.HnO)) {
+                ae.i((String)localObject2, "resType(%d) responses.size() = %s", new Object[] { Integer.valueOf(i), localObject1 });
+                if (bu.ht(localcwh.HHo)) {
                   break;
                 }
-                localObject1 = localcvn.HnO.iterator();
+                localObject1 = localcwh.HHo.iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
-                  localObject2 = (cvi)((Iterator)localObject1).next();
-                  n.a(n.this, localcvn.nEf, (cvi)localObject2);
+                  localObject2 = (cwc)((Iterator)localObject1).next();
+                  n.a(n.this, localcwh.nJA, (cwc)localObject2);
                 }
                 break;
               }

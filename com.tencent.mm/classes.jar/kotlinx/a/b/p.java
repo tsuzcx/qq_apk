@@ -6,25 +6,25 @@ import d.l;
 import kotlinx.a.a.e;
 import kotlinx.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/DoubleArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/DoubleArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/DoubleArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/DoubleArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
 public final class p
   extends ax<Double, double[], o>
   implements h<double[]>
 {
-  public static final p NMl;
+  public static final p Ojr;
   
   static
   {
-    AppMethodBeat.i(191212);
-    NMl = new p();
-    AppMethodBeat.o(191212);
+    AppMethodBeat.i(199800);
+    Ojr = new p();
+    AppMethodBeat.o(199800);
   }
   
   private p()
   {
-    super(e.a(k.MLL));
-    AppMethodBeat.i(191211);
-    AppMethodBeat.o(191211);
+    super(e.a(k.NiO));
+    AppMethodBeat.i(199799);
+    AppMethodBeat.o(199799);
   }
 }
 

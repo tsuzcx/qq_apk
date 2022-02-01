@@ -22,34 +22,34 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/videocomposition/TrackCache;", "", "()V", "bitmapCache", "Ljava/util/HashMap;", "", "Landroid/graphics/Bitmap;", "Lkotlin/collections/HashMap;", "bitmapSizeLimit", "", "getBitmapSizeLimit", "()I", "setBitmapSizeLimit", "(I)V", "cache", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "imageDuration", "", "getImageDuration", "()J", "setImageDuration", "(J)V", "clear", "", "createRescaleBitmap", "path", "getBitmap", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getResource", "remove", "resizeBitmap", "bitmap", "video_composition_release"})
+@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/TrackCache;", "", "()V", "bitmapCache", "Ljava/util/HashMap;", "", "Landroid/graphics/Bitmap;", "Lkotlin/collections/HashMap;", "bitmapSizeLimit", "", "getBitmapSizeLimit", "()I", "setBitmapSizeLimit", "(I)V", "cache", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "imageDuration", "", "getImageDuration", "()J", "setImageDuration", "(J)V", "clear", "", "createRescaleBitmap", "path", "getBitmap", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getResource", "remove", "resizeBitmap", "bitmap", "video_composition_release"})
 public final class e
 {
-  public static final HashMap<String, Bitmap> DZy;
-  private static int LmG;
-  private static long LmH;
-  public static final e LmI;
+  public static final HashMap<String, Bitmap> ErA;
+  private static int LJq;
+  private static long LJr;
+  public static final e LJs;
   public static final HashMap<String, TAVResource> cache;
   
   static
   {
-    AppMethodBeat.i(220828);
-    LmI = new e();
-    LmG = 1080;
-    LmH = 10000L;
-    DZy = new HashMap();
+    AppMethodBeat.i(194964);
+    LJs = new e();
+    LJq = 1080;
+    LJr = 10000L;
+    ErA = new HashMap();
     cache = new HashMap();
-    AppMethodBeat.o(220828);
+    AppMethodBeat.o(194964);
   }
   
-  public static void fPC()
+  public static void fTY()
   {
-    LmH = 4000L;
+    LJr = 4000L;
   }
   
   public final TAVResource b(b paramb)
   {
-    AppMethodBeat.i(220826);
+    AppMethodBeat.i(194962);
     p.h(paramb, "track");
     try
     {
@@ -75,7 +75,7 @@ public final class e
       int j;
       int k;
       Canvas localCanvas;
-      AppMethodBeat.o(220826);
+      AppMethodBeat.o(194962);
     }
     localObject3 = paramb.path;
     l = SystemClock.elapsedRealtime();
@@ -85,8 +85,8 @@ public final class e
     BitmapFactory.decodeFile((String)localObject3, (BitmapFactory.Options)localObject1);
     j = ((BitmapFactory.Options)localObject1).outWidth;
     k = ((BitmapFactory.Options)localObject1).outHeight;
-    localObject2 = com.tencent.mm.videocomposition.c.a.LnC;
-    int i = LmG;
+    localObject2 = com.tencent.mm.videocomposition.c.a.LKn;
+    int i = LJq;
     ((BitmapFactory.Options)localObject1).inSampleSize = com.tencent.mm.videocomposition.c.a.O(j, k, i, i);
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
     localObject1 = BitmapFactory.decodeFile((String)localObject3, (BitmapFactory.Options)localObject1);
@@ -95,7 +95,7 @@ public final class e
       {
         localObject2 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth() + 1, ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
         if (localObject2 == null) {
-          p.gfZ();
+          p.gkB();
         }
         localCanvas = new Canvas((Bitmap)localObject2);
         localCanvas.drawARGB(0, 0, 0, 0);
@@ -106,7 +106,7 @@ public final class e
     for (;;)
     {
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       switch (new androidx.a.a.a((InputStream)new FileInputStream((String)localObject3)).getAttributeInt("Orientation", 1))
       {
@@ -118,7 +118,7 @@ public final class e
           localObject2 = localObject1;
           if (i > 0)
           {
-            localObject2 = com.tencent.mm.videocomposition.c.a.LnC;
+            localObject2 = com.tencent.mm.videocomposition.c.a.LKn;
             localObject3 = com.tencent.mm.videocomposition.c.a.a((Bitmap)localObject1, i);
             localObject2 = localObject1;
             if (localObject3 != null) {
@@ -126,8 +126,8 @@ public final class e
             }
           }
           com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "final rescale bitmap size:[" + ((Bitmap)localObject2).getWidth() + ", " + ((Bitmap)localObject2).getHeight() + "], origin size:[" + j + ", " + k + "], cost:" + (SystemClock.elapsedRealtime() - l), new Object[0]);
-          ((Map)DZy).put(paramb.path, localObject2);
-          localObject1 = (TAVResource)new TAVImageResource(new CIImage((Bitmap)localObject2), CMTime.fromMs(LmH), true);
+          ((Map)ErA).put(paramb.path, localObject2);
+          localObject1 = (TAVResource)new TAVImageResource(new CIImage((Bitmap)localObject2), CMTime.fromMs(LJr), true);
           break;
           com.tencent.mm.videocomposition.c.b.i("CompositionTrack", "image rotate 90", new Object[0]);
           i = 90;
@@ -159,16 +159,16 @@ public final class e
   
   public final Bitmap c(b paramb)
   {
-    AppMethodBeat.i(220827);
+    AppMethodBeat.i(194963);
     p.h(paramb, "track");
     try
     {
-      paramb = (Bitmap)DZy.get(paramb.path);
+      paramb = (Bitmap)ErA.get(paramb.path);
       return paramb;
     }
     finally
     {
-      AppMethodBeat.o(220827);
+      AppMethodBeat.o(194963);
     }
   }
 }

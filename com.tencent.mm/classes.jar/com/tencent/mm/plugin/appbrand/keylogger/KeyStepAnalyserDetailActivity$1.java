@@ -13,13 +13,13 @@ final class KeyStepAnalyserDetailActivity$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(187650);
+    AppMethodBeat.i(201217);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepAnalyserDetailActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    KeyStepAnalyserDetailActivity.a(this.lCI);
+    a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepAnalyserDetailActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    KeyStepAnalyserDetailActivity.a(this.lHh);
     a.a(this, "com/tencent/mm/plugin/appbrand/keylogger/KeyStepAnalyserDetailActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(187650);
+    AppMethodBeat.o(201217);
   }
 }
 

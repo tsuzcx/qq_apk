@@ -6,9 +6,9 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.ab;
 import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.i;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -26,16 +26,16 @@ public final class i
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiAddMapPolygons", "data is null");
+      ae.e("MicroMsg.JsApiAddMapPolygons", "data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(143662);
       return;
     }
-    ad.i("MicroMsg.JsApiAddMapPolygons", "data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiAddMapPolygons", "data:%s", new Object[] { paramJSONObject });
     com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiAddMapPolygons", "mapView is null, return");
+      ae.e("MicroMsg.JsApiAddMapPolygons", "mapView is null, return");
       paramc.h(paramInt, e("fail:mapview is null", null));
       AppMethodBeat.o(143662);
       return;
@@ -44,52 +44,53 @@ public final class i
     {
       if (paramJSONObject.has("polygons"))
       {
-        localb.bkY();
+        localb.blI();
         paramJSONObject = new JSONArray(paramJSONObject.optString("polygons"));
         int i = 0;
         while (i < paramJSONObject.length())
         {
-          Object localObject = (JSONObject)paramJSONObject.get(i);
+          JSONObject localJSONObject1 = (JSONObject)paramJSONObject.get(i);
           ArrayList localArrayList = new ArrayList();
-          JSONArray localJSONArray = new JSONArray(((JSONObject)localObject).optString("points"));
+          Object localObject = new JSONArray(localJSONObject1.optString("points"));
           int j = 0;
-          while (j < localJSONArray.length())
+          while (j < ((JSONArray)localObject).length())
           {
-            JSONObject localJSONObject = localJSONArray.getJSONObject(j);
-            localArrayList.add(new b.i(bt.getDouble(localJSONObject.optString("latitude"), 0.0D), bt.getDouble(localJSONObject.optString("longitude"), 0.0D)) {});
+            JSONObject localJSONObject2 = ((JSONArray)localObject).getJSONObject(j);
+            localArrayList.add(new b.i(bu.getDouble(localJSONObject2.optString("latitude"), 0.0D), bu.getDouble(localJSONObject2.optString("longitude"), 0.0D)) {});
             j += 1;
           }
-          j = g.cg(((JSONObject)localObject).optString("fillColor", ""), Color.parseColor("#000000"));
-          int k = g.cg(((JSONObject)localObject).optString("strokeColor", ""), Color.parseColor("#000000"));
-          int m = g.a((JSONObject)localObject, "strokeWidth", 0);
-          int n = ((JSONObject)localObject).optInt("zIndex", 0);
+          j = g.ck(localJSONObject1.optString("fillColor", ""), Color.parseColor("#000000"));
+          int k = g.ck(localJSONObject1.optString("strokeColor", ""), Color.parseColor("#000000"));
+          int m = g.a(localJSONObject1, "strokeWidth", 0);
+          int n = localJSONObject1.optInt("zIndex", 0);
           localObject = new b.ab();
-          ((b.ab)localObject).kRO = new ArrayList();
-          ((b.ab)localObject).kRO.addAll(localArrayList);
+          ((b.ab)localObject).kVx = new ArrayList();
+          ((b.ab)localObject).kVx.addAll(localArrayList);
           ((b.ab)localObject).fillColor = j;
           ((b.ab)localObject).strokeWidth = m;
           ((b.ab)localObject).strokeColor = k;
           ((b.ab)localObject).zIndex = n;
+          ((b.ab)localObject).kVm = localJSONObject1.optString("level");
           localb.a((b.ab)localObject);
           i += 1;
         }
       }
-      ad.e("MicroMsg.JsApiAddMapPolygons", "data has not lines info");
-      a(paramc, paramInt, e("ok", null), true, localb.bkR());
+      ae.e("MicroMsg.JsApiAddMapPolygons", "data has not lines info");
+      a(paramc, paramInt, e("ok", null), true, localb.blB());
       AppMethodBeat.o(143662);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiAddMapPolygons", "parse lines error, exception : %s", new Object[] { paramJSONObject });
-      a(paramc, paramInt, e("fail:internal error", null), false, localb.bkR());
+      ae.e("MicroMsg.JsApiAddMapPolygons", "parse lines error, exception : %s", new Object[] { paramJSONObject });
+      a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
       AppMethodBeat.o(143662);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.i
  * JD-Core Version:    0.7.0.1
  */

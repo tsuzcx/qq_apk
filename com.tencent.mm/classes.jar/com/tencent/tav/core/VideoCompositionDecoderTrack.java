@@ -42,7 +42,7 @@ public class VideoCompositionDecoderTrack
   
   public VideoCompositionDecoderTrack(Asset paramAsset, AssetExtension paramAssetExtension, int paramInt)
   {
-    AppMethodBeat.i(217961);
+    AppMethodBeat.i(214600);
     this.decoderTrackList = new ArrayList();
     this.assetTrackList = new ArrayList();
     this.asynced = true;
@@ -52,25 +52,25 @@ public class VideoCompositionDecoderTrack
     this.asset = paramAsset;
     this.assetExtension = paramAssetExtension;
     this.trackId = paramInt;
-    AppMethodBeat.o(217961);
+    AppMethodBeat.o(214600);
   }
   
   private AsynchronousVideoCompositionRequest createVideoCompositionRequest(CMTime paramCMTime)
   {
-    AppMethodBeat.i(217972);
+    AppMethodBeat.i(214611);
     AsynchronousVideoCompositionRequest localAsynchronousVideoCompositionRequest = new AsynchronousVideoCompositionRequest(this, this.assetExtension);
     localAsynchronousVideoCompositionRequest.setRenderContext(this.renderContext);
     localAsynchronousVideoCompositionRequest.setCompositionTime(paramCMTime);
     if (this.videoComposition != null) {
       localAsynchronousVideoCompositionRequest.setVideoCompositionInstruction(VideoComposition.findInstruction(this.videoComposition, paramCMTime));
     }
-    AppMethodBeat.o(217972);
+    AppMethodBeat.o(214611);
     return localAsynchronousVideoCompositionRequest;
   }
   
   private CMSampleBuffer getSampleFromRequest(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(217974);
+    AppMethodBeat.i(214613);
     try
     {
       if (paramAsynchronousVideoCompositionRequest.getStatus() == -2147483648) {
@@ -82,23 +82,23 @@ public class VideoCompositionDecoderTrack
         this.lastSampleState = CMSampleState.fromError(-3L);
         Logger.e("VideoComDecoderTrack", "readSample: failed 1 " + this.lastSampleState);
         paramAsynchronousVideoCompositionRequest = new CMSampleBuffer(CMSampleState.fromError(-3L));
-        AppMethodBeat.o(217974);
+        AppMethodBeat.o(214613);
         return paramAsynchronousVideoCompositionRequest;
       }
     }
     finally
     {
-      AppMethodBeat.o(217974);
+      AppMethodBeat.o(214613);
     }
     this.lastSampleState = paramAsynchronousVideoCompositionRequest.getComposedSampleBuffer().getState();
     paramAsynchronousVideoCompositionRequest = paramAsynchronousVideoCompositionRequest.getComposedSampleBuffer();
-    AppMethodBeat.o(217974);
+    AppMethodBeat.o(214613);
     return paramAsynchronousVideoCompositionRequest;
   }
   
   private CMSampleBuffer readSampleToRequest(CMTime paramCMTime, AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(217973);
+    AppMethodBeat.i(214612);
     Iterator localIterator = this.decoderTrackList.iterator();
     while (localIterator.hasNext())
     {
@@ -109,7 +109,7 @@ public class VideoCompositionDecoderTrack
         this.lastSampleState = new CMSampleState(localCMSampleBuffer.getTime());
         Logger.e("VideoComDecoderTrack", "readSample: failed 0 " + localCMSampleBuffer.getTime());
         paramCMTime = new CMSampleBuffer(localCMSampleBuffer.getState(), null);
-        AppMethodBeat.o(217973);
+        AppMethodBeat.o(214612);
         return paramCMTime;
       }
       if (localCMSampleBuffer.getState().stateMatchingTo(new long[] { -1L }))
@@ -117,7 +117,7 @@ public class VideoCompositionDecoderTrack
         if (this.decoderTrackList.size() <= 1)
         {
           Logger.d("VideoComDecoderTrack", "readSample: finish 1");
-          AppMethodBeat.o(217973);
+          AppMethodBeat.o(214612);
           return localCMSampleBuffer;
         }
       }
@@ -125,7 +125,7 @@ public class VideoCompositionDecoderTrack
         paramAsynchronousVideoCompositionRequest.appendCMSampleBuffer(localCMSampleBuffer, localIDecoderTrack.getTrackId());
       }
     }
-    AppMethodBeat.o(217973);
+    AppMethodBeat.o(214612);
     return null;
   }
   
@@ -176,9 +176,9 @@ public class VideoCompositionDecoderTrack
   {
     try
     {
-      AppMethodBeat.i(217962);
+      AppMethodBeat.i(214601);
       this.assetTrackList.add(paramAssetTrack);
-      AppMethodBeat.o(217962);
+      AppMethodBeat.o(214601);
       return;
     }
     finally
@@ -190,27 +190,27 @@ public class VideoCompositionDecoderTrack
   
   public void asyncReadNextSample(CMTime paramCMTime)
   {
-    AppMethodBeat.i(217976);
+    AppMethodBeat.i(214615);
     if (!this.asynced)
     {
-      AppMethodBeat.o(217976);
+      AppMethodBeat.o(214615);
       return;
     }
     Iterator localIterator = this.decoderTrackList.iterator();
     while (localIterator.hasNext()) {
       ((IDecoderTrack)localIterator.next()).asyncReadNextSample(paramCMTime);
     }
-    AppMethodBeat.o(217976);
+    AppMethodBeat.o(214615);
   }
   
   public void clipRangeAndClearRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217968);
+    AppMethodBeat.i(214607);
     Iterator localIterator = this.decoderTrackList.iterator();
     while (localIterator.hasNext()) {
       ((IDecoderTrack)localIterator.next()).clipRangeAndClearRange(paramCMTimeRange);
     }
-    AppMethodBeat.o(217968);
+    AppMethodBeat.o(214607);
   }
   
   public Asset getAsset()
@@ -220,15 +220,15 @@ public class VideoCompositionDecoderTrack
   
   public CMTime getCurrentSampleTime()
   {
-    AppMethodBeat.i(217978);
+    AppMethodBeat.i(214617);
     CMTime localCMTime = this.lastSampleState.getTime();
-    AppMethodBeat.o(217978);
+    AppMethodBeat.o(214617);
     return localCMTime;
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(217977);
+    AppMethodBeat.i(214616);
     Object localObject = CMTime.CMTimeZero;
     Iterator localIterator = this.decoderTrackList.iterator();
     if (localIterator.hasNext())
@@ -242,7 +242,7 @@ public class VideoCompositionDecoderTrack
         break;
       }
     }
-    AppMethodBeat.o(217977);
+    AppMethodBeat.o(214616);
     return localObject;
   }
   
@@ -278,28 +278,28 @@ public class VideoCompositionDecoderTrack
   
   public CMSampleBuffer readSample()
   {
-    AppMethodBeat.i(217970);
+    AppMethodBeat.i(214609);
     if ((this.lastSampleState.stateMatchingTo(new long[] { -100L })) || (this.lastSampleState.isInvalid()))
     {
       localCMSampleBuffer = readSample(CMTime.CMTimeZero);
-      AppMethodBeat.o(217970);
+      AppMethodBeat.o(214609);
       return localCMSampleBuffer;
     }
     CMSampleBuffer localCMSampleBuffer = readSample(this.lastSampleState.getTime().add(this.frameDuration));
-    AppMethodBeat.o(217970);
+    AppMethodBeat.o(214609);
     return localCMSampleBuffer;
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
   {
-    AppMethodBeat.i(217971);
+    AppMethodBeat.i(214610);
     Logger.v("VideoComDecoderTrack", "readSample:[targetTime " + paramCMTime + "]" + this.videoCompositing);
     if (this.videoCompositing == null)
     {
       this.lastSampleState = CMSampleState.fromError(-3L);
       Logger.v("VideoComDecoderTrack", "readSample: failed 2 " + this.lastSampleState);
       paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-3L));
-      AppMethodBeat.o(217971);
+      AppMethodBeat.o(214610);
       return paramCMTime;
     }
     Object localObject = paramCMTime;
@@ -310,27 +310,27 @@ public class VideoCompositionDecoderTrack
     localObject = readSampleToRequest((CMTime)localObject, paramCMTime);
     if (localObject != null)
     {
-      AppMethodBeat.o(217971);
+      AppMethodBeat.o(214610);
       return localObject;
     }
     if (paramCMTime.getSourceTrackIDs().size() == 0)
     {
       Logger.v("VideoComDecoderTrack", "readSample: finish 2");
       paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
-      AppMethodBeat.o(217971);
+      AppMethodBeat.o(214610);
       return paramCMTime;
     }
     Logger.v("VideoComDecoderTrack", "readSample: startVideoCompositionRequest ");
     this.videoCompositing.startVideoCompositionRequest(paramCMTime);
     Logger.v("VideoComDecoderTrack", "readSample: startVideoCompositionRequest finish ");
     paramCMTime = getSampleFromRequest(paramCMTime);
-    AppMethodBeat.o(217971);
+    AppMethodBeat.o(214610);
     return paramCMTime;
   }
   
   public void release()
   {
-    AppMethodBeat.i(217979);
+    AppMethodBeat.i(214618);
     Logger.d("VideoComDecoderTrack", "release:start ".concat(String.valueOf(this)));
     Iterator localIterator = this.decoderTrackList.iterator();
     while (localIterator.hasNext()) {
@@ -342,16 +342,16 @@ public class VideoCompositionDecoderTrack
     this.videoCompositing = null;
     this.renderContext = null;
     Logger.d("VideoComDecoderTrack", "release:finish ".concat(String.valueOf(this)));
-    AppMethodBeat.o(217979);
+    AppMethodBeat.o(214618);
   }
   
   public void removeTrack(AssetTrack paramAssetTrack)
   {
     try
     {
-      AppMethodBeat.i(217963);
+      AppMethodBeat.i(214602);
       this.assetTrackList.remove(paramAssetTrack);
-      AppMethodBeat.o(217963);
+      AppMethodBeat.o(214602);
       return;
     }
     finally
@@ -363,7 +363,7 @@ public class VideoCompositionDecoderTrack
   
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(217969);
+    AppMethodBeat.i(214608);
     Logger.d("VideoComDecoderTrack", "seekTo:[timeUs " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
     if (!paramCMTime.equals(this.lastSampleState.getTime()))
     {
@@ -376,10 +376,10 @@ public class VideoCompositionDecoderTrack
     for (this.lastSampleState = new CMSampleState(paramCMTime.sub(this.frameDuration)); paramBoolean1; this.lastSampleState = new CMSampleState(paramCMTime))
     {
       paramCMTime = readSample();
-      AppMethodBeat.o(217969);
+      AppMethodBeat.o(214608);
       return paramCMTime;
     }
-    AppMethodBeat.o(217969);
+    AppMethodBeat.o(214608);
     return null;
   }
   
@@ -392,13 +392,13 @@ public class VideoCompositionDecoderTrack
   
   public void setFrameRate(int paramInt)
   {
-    AppMethodBeat.i(217967);
+    AppMethodBeat.i(214606);
     this.frameRate = paramInt;
     Iterator localIterator = this.decoderTrackList.iterator();
     while (localIterator.hasNext()) {
       ((IDecoderTrack)localIterator.next()).setFrameRate(paramInt);
     }
-    AppMethodBeat.o(217967);
+    AppMethodBeat.o(214606);
   }
   
   public void setRenderContext(VideoCompositionRenderContext paramVideoCompositionRenderContext)
@@ -422,21 +422,21 @@ public class VideoCompositionDecoderTrack
   
   public void start()
   {
-    AppMethodBeat.i(217964);
+    AppMethodBeat.i(214603);
     start(null);
-    AppMethodBeat.o(217964);
+    AppMethodBeat.o(214603);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator)
   {
-    AppMethodBeat.i(217965);
+    AppMethodBeat.i(214604);
     start(paramSurfaceCreator, null);
-    AppMethodBeat.o(217965);
+    AppMethodBeat.o(214604);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217966);
+    AppMethodBeat.i(214605);
     Logger.d("VideoComDecoderTrack", "start:[start] " + paramCMTimeRange + " size - " + this.assetTrackList.size());
     this.renderContext = new VideoCompositionRenderContext((RenderContext)paramSurfaceCreator);
     this.renderContext.setVideoComposition(this.videoComposition);
@@ -464,7 +464,7 @@ public class VideoCompositionDecoderTrack
         }
       }
     }
-    AppMethodBeat.o(217966);
+    AppMethodBeat.o(214605);
   }
 }
 

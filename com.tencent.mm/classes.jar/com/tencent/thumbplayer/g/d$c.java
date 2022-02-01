@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.g;
 
 final class d$c
 {
-  boolean LWu;
-  long MbW = 0L;
-  long MbX = -1L;
+  boolean Mtp;
+  long MyR = 0L;
+  long MyS = -1L;
 }
 
 

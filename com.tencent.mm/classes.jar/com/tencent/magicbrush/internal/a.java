@@ -21,7 +21,7 @@ import d.z;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 13}, gfy={""}, gfz={"logIfVerbose", "", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "message", "", "processAndAbortIfNeeded", "", "processAssetManagerOrThrow", "processDprWidthHeightOrThrow", "processImageHandler", "lib-magicbrush-nano_release"})
+@l(gjZ={1, 1, 13}, gka={""}, gkb={"logIfVerbose", "", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "message", "", "processAndAbortIfNeeded", "", "processAssetManagerOrThrow", "processDprWidthHeightOrThrow", "processImageHandler", "lib-magicbrush-nano_release"})
 public final class a
 {
   private static void a(e parame, String paramString)
@@ -29,7 +29,7 @@ public final class a
     AppMethodBeat.i(140200);
     p.h(parame, "receiver$0");
     p.h(paramString, "message");
-    if (parame.cxr) {
+    if (parame.cxW) {
       c.c.i("MagicBrush", paramString, new Object[0]);
     }
     AppMethodBeat.o(140200);
@@ -39,26 +39,26 @@ public final class a
   {
     AppMethodBeat.i(140201);
     p.h(parame, "receiver$0");
-    if (!parame.cxd.cxF)
+    if (!parame.cxI.cym)
     {
-      if (parame.cxd.cxJ == null)
+      if (parame.cxI.cyq == null)
       {
         a(parame, "ImageHandler invalid, BindingImage can not use. BE CAUTIOUS!");
-        parame = z.MKo;
+        parame = z.Nhr;
       }
       AppMethodBeat.o(140201);
       return;
     }
     BaseImageDecodeService localBaseImageDecodeService = new BaseImageDecodeService();
     localBaseImageDecodeService.addImageStreamFetcher((com.github.henryye.nativeiv.b.b)new com.tencent.magicbrush.b.b(), false);
-    Object localObject1 = parame.cxd.cxG;
+    Object localObject1 = parame.cxI.cyn;
     Iterator localIterator = ((Iterable)localObject1).iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       localObject2 = (com.github.henryye.nativeiv.b.b)localObject2;
       if (i == ((List)localObject1).size() - 1) {}
@@ -69,18 +69,18 @@ public final class a
         break;
       }
     }
-    if (parame.cxd.cxH != null) {
-      localBaseImageDecodeService.setKvReportDelegate(parame.cxd.cxH);
+    if (parame.cxI.cyo != null) {
+      localBaseImageDecodeService.setKvReportDelegate(parame.cxI.cyo);
     }
-    if (parame.cxd.cxI != null)
+    if (parame.cxI.cyp != null)
     {
-      localObject1 = parame.cxd.cxI;
+      localObject1 = parame.cxI.cyp;
       if (localObject1 == null) {
-        p.gfZ();
+        p.gkB();
       }
       localBaseImageDecodeService.setBitmapDecodeSlave((IImageDecodeService.a)localObject1);
     }
-    parame.cxd.cxJ = localBaseImageDecodeService;
+    parame.cxI.cyq = localBaseImageDecodeService;
     AppMethodBeat.o(140201);
   }
   
@@ -93,7 +93,7 @@ public final class a
     {
       try
       {
-        double d = parame.Ht();
+        double d = parame.Hz();
         if ((d < 0.0D) || (d > 1.0D)) {
           break label99;
         }
@@ -101,13 +101,13 @@ public final class a
         if (i != 0) {
           break;
         }
-        Throwable localThrowable = (Throwable)new IllegalStateException(("GcFactor must in [0, 1], but " + parame.Ht()).toString());
+        Throwable localThrowable = (Throwable)new IllegalStateException(("GcFactor must in [0, 1], but " + parame.Hz()).toString());
         AppMethodBeat.o(140202);
         throw localThrowable;
       }
       catch (Exception localException)
       {
-        if (!parame.cxq) {
+        if (!parame.cxV) {
           break label673;
         }
       }
@@ -123,20 +123,20 @@ public final class a
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    if (parame.cwW == null)
+    if (parame.cxB == null)
     {
       localObject1 = (Throwable)new IllegalStateException("JsThreadHandler invalid.".toString());
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    if (parame.cwX == null)
+    if (parame.cxC == null)
     {
       localObject1 = (Throwable)new IllegalStateException("v8RawPointer invalid. Please define which JsEngine magicbrush should use.".toString());
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
     p.h(parame, "receiver$0");
-    if (parame.Hr() == null)
+    if (parame.Hx() == null)
     {
       localObject1 = parame.context;
       if (localObject1 == null) {
@@ -147,8 +147,8 @@ public final class a
     label680:
     for (Object localObject1 = ((Context)localObject1).getAssets();; localObject1 = null)
     {
-      parame.cxc.a(f.cwV[4], localObject1);
-      if (parame.Hr() == null)
+      parame.cxH.a(f.cxA[4], localObject1);
+      if (parame.Hx() == null)
       {
         localObject1 = (Throwable)new IllegalStateException("AssetManager invalid. Either assetManager or context should be provided.".toString());
         AppMethodBeat.o(140202);
@@ -159,7 +159,7 @@ public final class a
       {
         localObject1 = parame.context;
         if (localObject1 == null) {
-          p.gfZ();
+          p.gkB();
         }
         parame.ad(com.tencent.magicbrush.utils.b.getDensity((Context)localObject1));
       }
@@ -168,7 +168,7 @@ public final class a
       {
         if (parame.context == null)
         {
-          localObject1 = (Throwable)new IllegalStateException(("w/h invalid. context invalid. " + parame.Hp() + '/' + parame.Hq()).toString());
+          localObject1 = (Throwable)new IllegalStateException(("w/h invalid. context invalid. " + parame.Hv() + '/' + parame.Hw()).toString());
           AppMethodBeat.o(140202);
           throw ((Throwable)localObject1);
         }
@@ -176,31 +176,31 @@ public final class a
         {
           Object localObject2 = parame.context;
           if (localObject2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          localObject2 = com.tencent.magicbrush.utils.b.aL((Context)localObject2);
+          localObject2 = com.tencent.magicbrush.utils.b.aM((Context)localObject2);
           p.g(localObject2, "DisplayUtil.getDisplayLogicSize(context!!)");
           i = ((Point)localObject2).x;
-          parame.cwZ.a(f.cwV[1], Integer.valueOf(i));
+          parame.cxE.a(f.cxA[1], Integer.valueOf(i));
           i = ((Point)localObject2).y;
-          parame.cxa.a(f.cwV[2], Integer.valueOf(i));
-          a(parame, "w/h invalid, use context automatically. " + parame.Hp() + '/' + parame.Hq());
+          parame.cxF.a(f.cxA[2], Integer.valueOf(i));
+          a(parame, "w/h invalid, use context automatically. " + parame.Hv() + '/' + parame.Hw());
         }
       }
       if (!((Boolean)((d.g.a.a)localObject1).invoke()).booleanValue())
       {
-        localObject1 = (Throwable)new IllegalStateException(("dpr/w/h invalid. " + parame.getDevicePixelRatio() + '/' + parame.Hp() + '/' + parame.Hq()).toString());
+        localObject1 = (Throwable)new IllegalStateException(("dpr/w/h invalid. " + parame.getDevicePixelRatio() + '/' + parame.Hv() + '/' + parame.Hw()).toString());
         AppMethodBeat.o(140202);
         throw ((Throwable)localObject1);
       }
-      if ((IMBFileSystem)parame.cxb.a(f.cwV[3]) == null)
+      if ((IMBFileSystem)parame.cxG.a(f.cxA[3]) == null)
       {
         a(parame, "FileSystem invalid, BindingFileSystem can not use. BE CAUTIOUS!");
-        localObject1 = z.MKo;
+        localObject1 = z.Nhr;
       }
       c(parame);
-      if (parame.cxe == null) {
-        parame.cxe = ((IMBFontHandler)new i());
+      if (parame.cxJ == null) {
+        parame.cxJ = ((IMBFontHandler)new i());
       }
       AppMethodBeat.o(140202);
       return true;
@@ -209,7 +209,7 @@ public final class a
     }
   }
   
-  @l(gfx={1, 1, 13}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements d.g.a.a<Boolean>
@@ -222,7 +222,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.internal.a
  * JD-Core Version:    0.7.0.1
  */

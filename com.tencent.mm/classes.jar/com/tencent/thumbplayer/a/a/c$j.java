@@ -2,7 +2,7 @@ package com.tencent.thumbplayer.a.a;
 
 public abstract interface c$j
 {
-  public abstract void aD(long paramLong1, long paramLong2);
+  public abstract void aC(long paramLong1, long paramLong2);
 }
 
 

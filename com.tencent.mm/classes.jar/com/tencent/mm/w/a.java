@@ -1,53 +1,55 @@
 package com.tencent.mm.w;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.plugin.fts.a.h;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/executor/FunctionExecutorFactory;", "", "()V", "FUNCTION_MSG_OP_DELAY", "", "FUNCTION_MSG_OP_DELETE", "FUNCTION_MSG_OP_SHOW", "FUNCTION_MSG_OP_UPDATE", "FUNCTION_MSG_OP_UPDATE_BUT_NO_SHOW", "get", "Lcom/tencent/mm/executor/IOpExecutor;", "op", "plugin-functionmsg_release"})
 public final class a
+  extends com.tencent.mm.plugin.fts.a.a
 {
-  public static final a gqP;
-  
-  static
+  public final void agM()
   {
-    AppMethodBeat.i(114128);
-    gqP = new a();
-    AppMethodBeat.o(114128);
+    AppMethodBeat.i(127630);
+    if (agN()) {
+      this.tDu.R(-107L, 1L);
+    }
+    AppMethodBeat.o(127630);
   }
   
-  public static b mh(int paramInt)
+  public final boolean agN()
   {
-    AppMethodBeat.i(114127);
-    switch (paramInt)
+    AppMethodBeat.i(127631);
+    if (!ge(-107, 1))
     {
-    default: 
-      AppMethodBeat.o(114127);
-      return null;
-    case 0: 
-      localb = (b)new g();
-      AppMethodBeat.o(114127);
-      return localb;
-    case 1: 
-      localb = (b)new d();
-      AppMethodBeat.o(114127);
-      return localb;
-    case 2: 
-      localb = (b)new e();
-      AppMethodBeat.o(114127);
-      return localb;
-    case 3: 
-      localb = (b)new f();
-      AppMethodBeat.o(114127);
-      return localb;
+      AppMethodBeat.o(127631);
+      return true;
     }
-    b localb = (b)new c();
-    AppMethodBeat.o(114127);
-    return localb;
+    AppMethodBeat.o(127631);
+    return false;
+  }
+  
+  public final String getName()
+  {
+    return "FTS5FriendStorage";
+  }
+  
+  public final int getPriority()
+  {
+    return 1280;
+  }
+  
+  public final String getTableName()
+  {
+    return "Friend";
+  }
+  
+  public final int getType()
+  {
+    return 1280;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.w.a
  * JD-Core Version:    0.7.0.1
  */

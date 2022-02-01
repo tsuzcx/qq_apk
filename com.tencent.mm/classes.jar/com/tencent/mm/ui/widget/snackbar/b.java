@@ -7,14 +7,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static boolean Ldk = false;
+  private static boolean LzL = false;
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb)
   {
     AppMethodBeat.i(159712);
     paramActivity = new a.a(paramActivity);
-    paramActivity.uDD = paramString1;
-    paramActivity.LcX = paramString2;
+    paramActivity.uPi = paramString1;
+    paramActivity.Lzy = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, null);
     AppMethodBeat.o(159712);
   }
@@ -23,8 +23,8 @@ public final class b
   {
     AppMethodBeat.i(159715);
     paramActivity = new a.a(paramActivity);
-    paramActivity.uDD = paramString1;
-    paramActivity.LcX = paramString2;
+    paramActivity.uPi = paramString1;
+    paramActivity.Lzy = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, paramc);
     AppMethodBeat.o(159715);
   }
@@ -33,12 +33,12 @@ public final class b
   {
     AppMethodBeat.i(159716);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.uDD = paramString;
+    paramContext.uPi = paramString;
     paramContext = paramContext.a(Short.valueOf((short)1500));
     if (paramc != null) {
       paramContext.a(paramc);
     }
-    paramContext.fNd();
+    paramContext.fRy();
     AppMethodBeat.o(159716);
   }
   
@@ -46,8 +46,8 @@ public final class b
   {
     AppMethodBeat.i(168815);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.uDD = paramString1;
-    paramContext.LcX = paramString2;
+    paramContext.uPi = paramString1;
+    paramContext.Lzy = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, null);
     AppMethodBeat.o(168815);
   }
@@ -56,8 +56,8 @@ public final class b
   {
     AppMethodBeat.i(159714);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.uDD = paramString1;
-    paramContext.LcX = paramString2;
+    paramContext.uPi = paramString1;
+    paramContext.Lzy = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, paramc);
     AppMethodBeat.o(159714);
   }
@@ -71,27 +71,27 @@ public final class b
     if (paramc != null) {
       parama.a(paramc);
     }
-    parama.fNd();
+    parama.fRy();
     AppMethodBeat.o(159718);
   }
   
-  public static boolean bni()
+  public static boolean bnS()
   {
-    return Ldk;
+    return LzL;
   }
   
   public static void n(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(159717);
     paramActivity = new a.a(paramActivity);
-    paramActivity.uDD = paramString;
+    paramActivity.uPi = paramString;
     a(paramActivity.a(Short.valueOf((short)1500)), null, null);
     AppMethodBeat.o(159717);
   }
   
-  public static void yW(boolean paramBoolean)
+  public static void zk(boolean paramBoolean)
   {
-    Ldk = paramBoolean;
+    LzL = paramBoolean;
   }
 }
 

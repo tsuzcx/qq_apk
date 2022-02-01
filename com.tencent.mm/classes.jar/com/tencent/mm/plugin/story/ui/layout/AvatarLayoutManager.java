@@ -6,25 +6,25 @@ import android.support.v7.widget.RecyclerView.o;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "alphaStartOffset", "canScrollVertically", "", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollToPositionWithOffset", "position", "offset", "updateChild", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "alphaStartOffset", "canScrollVertically", "", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollToPositionWithOffset", "position", "offset", "updateChild", "plugin-story_release"})
 public final class AvatarLayoutManager
   extends LinearLayoutManager
 {
-  private final int AXz;
+  private final int BoX;
   
   public AvatarLayoutManager(Context paramContext)
   {
     super(1);
     AppMethodBeat.i(119918);
-    this.AXz = a.fromDPToPix(paramContext, 0);
+    this.BoX = a.fromDPToPix(paramContext, 0);
     AppMethodBeat.o(119918);
   }
   
-  private final void ckJ()
+  private final void clZ()
   {
     AppMethodBeat.i(119917);
     int j = getChildCount();
@@ -33,15 +33,15 @@ public final class AvatarLayoutManager
     {
       View localView = getChildAt(i);
       if (localView == null) {
-        p.gfZ();
+        p.gkB();
       }
       p.g(localView, "getChildAt(i)!!");
       int k = (localView.getTop() + localView.getBottom()) / 2;
       int m = getHeight() / 2;
       int n = localView.getMeasuredHeight();
-      if (n - Math.abs(k - m) > this.AXz)
+      if (n - Math.abs(k - m) > this.BoX)
       {
-        localView.setAlpha(Math.min(1.0F - Math.abs(k - m) / (n - this.AXz), 1.0F));
+        localView.setAlpha(Math.min(1.0F - Math.abs(k - m) / (n - this.BoX), 1.0F));
         label113:
         if (1.0F - localView.getAlpha() >= 0.1F) {
           break label152;
@@ -64,7 +64,7 @@ public final class AvatarLayoutManager
   {
     AppMethodBeat.i(119916);
     super.ag(paramInt1, paramInt2);
-    ckJ();
+    clZ();
     AppMethodBeat.o(119916);
   }
   
@@ -72,7 +72,7 @@ public final class AvatarLayoutManager
   {
     AppMethodBeat.i(119915);
     super.c(paramo, paramt);
-    ckJ();
+    clZ();
     AppMethodBeat.o(119915);
   }
   
@@ -83,7 +83,7 @@ public final class AvatarLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.layout.AvatarLayoutManager
  * JD-Core Version:    0.7.0.1
  */

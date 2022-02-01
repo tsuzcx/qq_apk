@@ -8,10 +8,10 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.chatting.e.a;
 
 public final class ao
@@ -29,43 +29,43 @@ public final class ao
     else
     {
       localObject = new ah(paramLayoutInflater, 2131493468);
-      ((View)localObject).setTag(new a().gL((View)localObject));
+      ((View)localObject).setTag(new a().gQ((View)localObject));
     }
     AppMethodBeat.o(37316);
     return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bu parambu, String paramString)
+  public final void a(c.a parama, int paramInt, a parama1, bv parambv, String paramString)
   {
     AppMethodBeat.i(37317);
     a locala = (a)parama;
-    com.tencent.mm.ai.k localk = com.tencent.mm.pluginsdk.model.app.ao.fag().xH(parambu.field_msgId);
-    String str = parambu.field_content;
+    com.tencent.mm.ah.k localk = com.tencent.mm.pluginsdk.model.app.ao.fdU().yb(parambv.field_msgId);
+    String str = parambv.field_content;
     if ((localk != null) && (str != null))
     {
-      paramString = k.b.aA(str, parambu.field_reserved);
-      parambu = new bk(parambu, parama1.fFv(), paramInt, null, '\000');
-      if ((paramString != null) && ((paramString.dlp == 3) || (paramString.hAM == 3)))
+      paramString = k.b.aB(str, parambv.field_reserved);
+      parambv = new bk(parambv, parama1.fJC(), paramInt, null, '\000');
+      if ((paramString != null) && ((paramString.dmr == 3) || (paramString.hDA == 3)))
       {
-        locala.jdF.setImageResource(2131232622);
-        locala.Kfb.setText(paramString.hAR);
+        locala.jgy.setImageResource(2131232622);
+        locala.KBu.setText(paramString.hDF);
       }
-      parama.ofK.setOnLongClickListener(c(parama1));
-      parama.ofK.setOnTouchListener(((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fCu());
-      parama.ofK.setTag(parambu);
+      parama.olI.setOnLongClickListener(c(parama1));
+      parama.olI.setOnTouchListener(((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fGw());
+      parama.olI.setTag(parambv);
       AppMethodBeat.o(37317);
       return;
     }
     if (localk == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.e("MicroMsg.ChattingItemHardDeviceMsgPush", "amessage:%b, %s, %d, %s", new Object[] { Boolean.valueOf(bool), str, Long.valueOf(parambu.field_msgId), paramString });
+      ae.e("MicroMsg.ChattingItemHardDeviceMsgPush", "amessage:%b, %s, %d, %s", new Object[] { Boolean.valueOf(bool), str, Long.valueOf(parambv.field_msgId), paramString });
       paramString = null;
       break;
     }
   }
   
-  public final boolean a(MenuItem paramMenuItem, a parama, bu parambu)
+  public final boolean a(MenuItem paramMenuItem, a parama, bv parambv)
   {
     AppMethodBeat.i(37319);
     paramMenuItem.getItemId();
@@ -73,25 +73,25 @@ public final class ao
     return false;
   }
   
-  public final boolean a(com.tencent.mm.ui.base.l paraml, View paramView, bu parambu)
+  public final boolean a(com.tencent.mm.ui.base.l paraml, View paramView, bv parambv)
   {
-    AppMethodBeat.i(194484);
+    AppMethodBeat.i(187879);
     paraml.a(((bk)paramView.getTag()).position, 100, paramView.getContext().getString(2131757221), 2131690384);
-    AppMethodBeat.o(194484);
+    AppMethodBeat.o(187879);
     return false;
   }
   
-  public final boolean b(View paramView, a parama, bu parambu)
+  public final boolean b(View paramView, a parama, bv parambv)
   {
     return false;
   }
   
-  public final boolean bi(int paramInt, boolean paramBoolean)
+  public final boolean br(int paramInt, boolean paramBoolean)
   {
     return paramInt == -1879048176;
   }
   
-  public final boolean fHh()
+  public final boolean fLz()
   {
     return false;
   }
@@ -99,18 +99,18 @@ public final class ao
   final class a
     extends c.a
   {
-    protected TextView Kfb;
-    protected ImageView jdF;
+    protected TextView KBu;
+    protected ImageView jgy;
     
     a() {}
     
-    public final a gL(View paramView)
+    public final a gQ(View paramView)
     {
       AppMethodBeat.i(37315);
-      super.gn(paramView);
-      this.iCK = ((CheckBox)paramView.findViewById(2131298068));
-      this.jdF = ((ImageView)paramView.findViewById(2131303547));
-      this.Kfb = ((TextView)paramView.findViewById(2131305875));
+      super.gs(paramView);
+      this.iFD = ((CheckBox)paramView.findViewById(2131298068));
+      this.jgy = ((ImageView)paramView.findViewById(2131303547));
+      this.KBu = ((TextView)paramView.findViewById(2131305875));
       AppMethodBeat.o(37315);
       return this;
     }

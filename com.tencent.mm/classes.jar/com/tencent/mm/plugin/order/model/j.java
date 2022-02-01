@@ -4,19 +4,19 @@ import java.util.List;
 
 public final class j
 {
-  public String dDP;
+  public String dEU;
   public String msgId;
-  public String wDH;
-  public String wDI;
-  public String wDJ;
-  public String wDK;
-  public String wDL;
-  public String wDM;
-  public String wDN;
-  public String wDO;
-  public List<a> wDP;
-  public List<b> wDQ;
-  public String wDx;
+  public List<a> wTA;
+  public List<b> wTB;
+  public String wTi;
+  public String wTs;
+  public String wTt;
+  public String wTu;
+  public String wTv;
+  public String wTw;
+  public String wTx;
+  public String wTy;
+  public String wTz;
   
   public static final class a
   {
@@ -33,7 +33,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.j
  * JD-Core Version:    0.7.0.1
  */

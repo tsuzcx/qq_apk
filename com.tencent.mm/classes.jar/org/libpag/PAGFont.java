@@ -24,13 +24,13 @@ public class PAGFont
   
   static
   {
-    AppMethodBeat.i(220154);
+    AppMethodBeat.i(216908);
     FallbackFontFileNames = new String[] { "/system/fonts/NotoSansCJK-Regular.ttc", "/system/fonts/NotoSansSC-Regular.otf", "/system/fonts/DroidSansFallback.ttf" };
     FILENAME_WHITESPACE_PATTERN = Pattern.compile("^[ \\n\\r\\t]+|[ \\n\\r\\t]+$");
     systemFontLoaded = false;
     b.loadLibrary("libpag");
     loadSystemFonts();
-    AppMethodBeat.o(220154);
+    AppMethodBeat.o(216908);
   }
   
   public PAGFont() {}
@@ -43,9 +43,9 @@ public class PAGFont
   
   public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(220142);
+    AppMethodBeat.i(216896);
     paramAssetManager = RegisterFont(paramAssetManager, paramString, 0);
-    AppMethodBeat.o(220142);
+    AppMethodBeat.o(216896);
     return paramAssetManager;
   }
   
@@ -53,9 +53,9 @@ public class PAGFont
   
   public static PAGFont RegisterFont(String paramString)
   {
-    AppMethodBeat.i(220141);
+    AppMethodBeat.i(216895);
     paramString = RegisterFont(paramString, 0);
-    AppMethodBeat.o(220141);
+    AppMethodBeat.o(216895);
     return paramString;
   }
   
@@ -67,25 +67,25 @@ public class PAGFont
   
   private static void addFont(FontConfig paramFontConfig, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1)
   {
-    AppMethodBeat.i(220152);
+    AppMethodBeat.i(216906);
     if (paramArrayList.contains(paramFontConfig.fileName))
     {
-      AppMethodBeat.o(220152);
+      AppMethodBeat.o(216906);
       return;
     }
     if (!new File(paramFontConfig.fileName).exists())
     {
-      AppMethodBeat.o(220152);
+      AppMethodBeat.o(216906);
       return;
     }
     paramArrayList.add(paramFontConfig.fileName);
     paramArrayList1.add(Integer.valueOf(paramFontConfig.ttcIndex));
-    AppMethodBeat.o(220152);
+    AppMethodBeat.o(216906);
   }
   
   private static FontConfig getFontByLanguage(FontConfig[] paramArrayOfFontConfig, String paramString)
   {
-    AppMethodBeat.i(220151);
+    AppMethodBeat.i(216905);
     paramString = paramString.toLowerCase();
     int j = paramArrayOfFontConfig.length;
     int i = 0;
@@ -94,22 +94,22 @@ public class PAGFont
       FontConfig localFontConfig = paramArrayOfFontConfig[i];
       if (localFontConfig.language.toLowerCase().equals(paramString))
       {
-        AppMethodBeat.o(220151);
+        AppMethodBeat.o(216905);
         return localFontConfig;
       }
       i += 1;
     }
-    AppMethodBeat.o(220151);
+    AppMethodBeat.o(216905);
     return null;
   }
   
   public static void loadSystemFonts()
   {
     int j = 0;
-    AppMethodBeat.i(220153);
+    AppMethodBeat.i(216907);
     if (systemFontLoaded)
     {
-      AppMethodBeat.o(220153);
+      AppMethodBeat.o(216907);
       return;
     }
     systemFontLoaded = true;
@@ -179,7 +179,7 @@ public class PAGFont
       }
       SetFallbackFontPaths((String[])localObject1, (int[])localObject3);
     }
-    AppMethodBeat.o(220153);
+    AppMethodBeat.o(216907);
   }
   
   /* Error */
@@ -292,7 +292,7 @@ public class PAGFont
   
   private static FontConfig[] readFamilies(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(220144);
+    AppMethodBeat.i(216898);
     ArrayList localArrayList = new ArrayList();
     paramXmlPullParser.require(2, null, "familyset");
     while (paramXmlPullParser.next() != 3) {
@@ -306,13 +306,13 @@ public class PAGFont
     }
     paramXmlPullParser = new FontConfig[localArrayList.size()];
     localArrayList.toArray(paramXmlPullParser);
-    AppMethodBeat.o(220144);
+    AppMethodBeat.o(216898);
     return paramXmlPullParser;
   }
   
   private static FontConfig[] readFamiliesJellyBean(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(220149);
+    AppMethodBeat.i(216903);
     ArrayList localArrayList = new ArrayList();
     paramXmlPullParser.require(2, null, "familyset");
     while (paramXmlPullParser.next() != 3) {
@@ -334,13 +334,13 @@ public class PAGFont
     }
     paramXmlPullParser = new FontConfig[localArrayList.size()];
     localArrayList.toArray(paramXmlPullParser);
-    AppMethodBeat.o(220149);
+    AppMethodBeat.o(216903);
     return paramXmlPullParser;
   }
   
   private static void readFamily(XmlPullParser paramXmlPullParser, ArrayList<FontConfig> paramArrayList)
   {
-    AppMethodBeat.i(220145);
+    AppMethodBeat.i(216899);
     paramXmlPullParser.getAttributeValue(null, "name");
     String str = paramXmlPullParser.getAttributeValue(null, "lang");
     ArrayList localArrayList = new ArrayList();
@@ -355,7 +355,7 @@ public class PAGFont
     }
     if (localArrayList.isEmpty())
     {
-      AppMethodBeat.o(220145);
+      AppMethodBeat.o(216899);
       return;
     }
     Object localObject = localArrayList.iterator();
@@ -381,7 +381,7 @@ public class PAGFont
         ((FontConfig)localObject).language = paramXmlPullParser;
         paramArrayList.add(localObject);
       }
-      AppMethodBeat.o(220145);
+      AppMethodBeat.o(216899);
       return;
       paramXmlPullParser = null;
     }
@@ -389,7 +389,7 @@ public class PAGFont
   
   private static void readFileset(XmlPullParser paramXmlPullParser, ArrayList<FontConfig> paramArrayList)
   {
-    AppMethodBeat.i(220150);
+    AppMethodBeat.i(216904);
     ArrayList localArrayList = new ArrayList();
     while (paramXmlPullParser.next() != 3) {
       if (paramXmlPullParser.getEventType() == 2) {
@@ -402,7 +402,7 @@ public class PAGFont
     }
     if (localArrayList.isEmpty())
     {
-      AppMethodBeat.o(220150);
+      AppMethodBeat.o(216904);
       return;
     }
     Object localObject = localArrayList.iterator();
@@ -422,7 +422,7 @@ public class PAGFont
       if (!((FontConfig)localObject).fileName.isEmpty()) {
         paramArrayList.add(localObject);
       }
-      AppMethodBeat.o(220150);
+      AppMethodBeat.o(216904);
       return;
       paramXmlPullParser = null;
     }
@@ -430,7 +430,7 @@ public class PAGFont
   
   private static FontConfig readFont(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(220146);
+    AppMethodBeat.i(216900);
     FontConfig localFontConfig = new FontConfig(null);
     Object localObject = paramXmlPullParser.getAttributeValue(null, "index");
     if (localObject == null)
@@ -460,13 +460,13 @@ public class PAGFont
       break;
     }
     localFontConfig.fileName = ("/system/fonts/" + FILENAME_WHITESPACE_PATTERN.matcher((CharSequence)localObject).replaceAll(""));
-    AppMethodBeat.o(220146);
+    AppMethodBeat.o(216900);
     return localFontConfig;
   }
   
   private static void skip(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(220147);
+    AppMethodBeat.i(216901);
     int i = 1;
     while (i > 0) {
       switch (paramXmlPullParser.next())
@@ -480,7 +480,7 @@ public class PAGFont
         i -= 1;
       }
     }
-    AppMethodBeat.o(220147);
+    AppMethodBeat.o(216901);
   }
   
   static class FontConfig

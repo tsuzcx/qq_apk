@@ -18,56 +18,56 @@ public class TbsFileInterfaceImpl
   
   public TbsFileInterfaceImpl()
   {
-    AppMethodBeat.i(190621);
+    AppMethodBeat.i(192391);
     this.a = null;
     this.b = null;
     this.a = new TbsReaderManager();
-    AppMethodBeat.o(190621);
+    AppMethodBeat.o(192391);
   }
   
   public static boolean canOpenFile(String paramString)
   {
-    AppMethodBeat.i(190624);
+    AppMethodBeat.i(192394);
     boolean bool = false;
     if (ReaderEngine.getInstance().isSupportCurrentPlatform()) {
       bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
     }
-    AppMethodBeat.o(190624);
+    AppMethodBeat.o(192394);
     return bool;
   }
   
   public static TbsFileInterfaceImpl getInstance()
   {
-    AppMethodBeat.i(190620);
+    AppMethodBeat.i(192390);
     if (c == null) {
       c = new TbsFileInterfaceImpl();
     }
     TbsFileInterfaceImpl localTbsFileInterfaceImpl = c;
-    AppMethodBeat.o(190620);
+    AppMethodBeat.o(192390);
     return localTbsFileInterfaceImpl;
   }
   
   public static boolean initEngine(Context paramContext)
   {
-    AppMethodBeat.i(190622);
+    AppMethodBeat.i(192392);
     ReaderEngine.getInstance().initReaderEntry(paramContext);
     boolean bool = ReaderEngine.getInstance().isSupportCurrentPlatform();
-    AppMethodBeat.o(190622);
+    AppMethodBeat.o(192392);
     return bool;
   }
   
   public static void setProviderSetting(String paramString)
   {
-    AppMethodBeat.i(190623);
+    AppMethodBeat.i(192393);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     localLinkedHashMap.put("provider_classname", paramString);
     ReaderEngine.getInstance().setConfigSetting(localLinkedHashMap);
-    AppMethodBeat.o(190623);
+    AppMethodBeat.o(192393);
   }
   
   public void closeFileReader()
   {
-    AppMethodBeat.i(190625);
+    AppMethodBeat.i(192395);
     if (this.b != null) {
       this.b.closeFile();
     }
@@ -75,75 +75,75 @@ public class TbsFileInterfaceImpl
     if (this.a != null) {
       this.a.destroy();
     }
-    AppMethodBeat.o(190625);
+    AppMethodBeat.o(192395);
   }
   
   public ITbsReaderAtom createAtom(int paramInt)
   {
-    AppMethodBeat.i(190627);
+    AppMethodBeat.i(192397);
     if (this.a.getTbsReader() != null)
     {
       ITbsReaderAtom localITbsReaderAtom = (ITbsReaderAtom)this.a.getTbsReader().createAtom(paramInt);
-      AppMethodBeat.o(190627);
+      AppMethodBeat.o(192397);
       return localITbsReaderAtom;
     }
-    AppMethodBeat.o(190627);
+    AppMethodBeat.o(192397);
     return null;
   }
   
   public ReaderMixerMode createReader(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(190626);
+    AppMethodBeat.i(192396);
     paramContext = this.a.createReaderMode(paramContext, paramITbsReaderCallback);
-    AppMethodBeat.o(190626);
+    AppMethodBeat.o(192396);
     return paramContext;
   }
   
   public boolean initReader(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(190628);
+    AppMethodBeat.i(192398);
     this.b = createReader(paramContext, paramITbsReaderCallback);
     if (this.b != null)
     {
-      AppMethodBeat.o(190628);
+      AppMethodBeat.o(192398);
       return true;
     }
-    AppMethodBeat.o(190628);
+    AppMethodBeat.o(192398);
     return false;
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190631);
+    AppMethodBeat.i(192401);
     if (this.b != null) {
       this.b.onSizeChanged(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(190631);
+    AppMethodBeat.o(192401);
   }
   
   public int openFileReader(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(190630);
+    AppMethodBeat.i(192400);
     closeFileReader();
     this.b = createReader(paramContext, paramITbsReaderCallback);
     int i = this.b.openFile(paramBundle, paramFrameLayout);
-    AppMethodBeat.o(190630);
+    AppMethodBeat.o(192400);
     return i;
   }
   
   public int openFileReader(Bundle paramBundle, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(190629);
+    AppMethodBeat.i(192399);
     int i = this.b.openFile(paramBundle, paramFrameLayout);
-    AppMethodBeat.o(190629);
+    AppMethodBeat.o(192399);
     return i;
   }
   
   public void pluginPreLoad(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(190632);
+    AppMethodBeat.i(192402);
     this.a.getPluginPre(paramContext).downloadPlugin(paramContext, paramString);
-    AppMethodBeat.o(190632);
+    AppMethodBeat.o(192402);
   }
 }
 

@@ -7,32 +7,32 @@ import java.util.Map;
 
 public final class h
 {
-  String iFB;
-  Map<String, String> iFC;
+  String iIu;
+  Map<String, String> iIv;
   public volatile boolean isRunning;
-  ArrayList<String> lWb;
-  int lWc;
-  HttpURLConnection lWe;
-  String lWg;
-  String lWp;
-  Map<String, String> lWq;
-  g.a lWr;
   String mFileName;
   String mMimeType;
   String mName;
   int mTimeout;
   String mUrl;
+  ArrayList<String> maH;
+  int maI;
+  HttpURLConnection maK;
+  String maM;
+  String maV;
+  Map<String, String> maW;
+  g.a maX;
   private long startTime;
   
   h(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, g.a parama)
   {
     AppMethodBeat.i(144356);
     this.isRunning = false;
-    this.lWc = 15;
-    this.lWe = null;
-    this.lWp = paramString1;
+    this.maI = 15;
+    this.maK = null;
+    this.maV = paramString1;
     this.mUrl = paramString2;
-    this.lWr = parama;
+    this.maX = parama;
     this.mName = paramString3;
     this.mFileName = paramString4;
     this.mTimeout = paramInt;
@@ -41,7 +41,7 @@ public final class h
     AppMethodBeat.o(144356);
   }
   
-  public final int bth()
+  public final int btS()
   {
     AppMethodBeat.i(144357);
     int i = (int)(System.currentTimeMillis() - this.startTime);

@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.r;
 
 public class c
@@ -16,8 +16,8 @@ public class c
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c oCY;
-  private n.a oEB;
+  private com.tencent.mm.plugin.card.base.c oJA;
+  private n.a oLd;
   
   public c(Context paramContext, n.a parama)
   {
@@ -25,33 +25,33 @@ public class c
     AppMethodBeat.i(113174);
     this.TAG = "MicroMsg.CardAdapter";
     this.count = 0;
-    this.oEB = parama;
-    xk(true);
-    this.oCY = new l(paramContext, this);
+    this.oLd = parama;
+    xs(true);
+    this.oJA = new l(paramContext, this);
     AppMethodBeat.o(113174);
   }
   
-  public void Zu()
+  public void ZD()
   {
     AppMethodBeat.i(113175);
-    ad.v("MicroMsg.CardAdapter", "resetCursor");
-    det();
-    Cursor localCursor = am.bUN().a(this.oEB);
+    ae.v("MicroMsg.CardAdapter", "resetCursor");
+    dhl();
+    Cursor localCursor = am.bWc().a(this.oLd);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
-      ad.v("MicroMsg.CardAdapter", "card count:" + this.count);
+      ae.v("MicroMsg.CardAdapter", "card count:" + this.count);
     }
     setCursor(localCursor);
     notifyDataSetChanged();
     AppMethodBeat.o(113175);
   }
   
-  public void Zv()
+  public void ZE()
   {
     AppMethodBeat.i(113176);
-    det();
-    Zu();
+    dhl();
+    ZD();
     AppMethodBeat.o(113176);
   }
   
@@ -59,7 +59,7 @@ public class c
   {
     AppMethodBeat.i(113177);
     paramViewGroup = (CardInfo)getItem(paramInt);
-    paramView = this.oCY.a(paramInt, paramView, paramViewGroup);
+    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113177);
     return paramView;
   }
@@ -67,9 +67,9 @@ public class c
   public void release()
   {
     AppMethodBeat.i(113178);
-    det();
-    this.oCY.release();
-    this.oCY = null;
+    dhl();
+    this.oJA.release();
+    this.oJA = null;
     AppMethodBeat.o(113178);
   }
 }

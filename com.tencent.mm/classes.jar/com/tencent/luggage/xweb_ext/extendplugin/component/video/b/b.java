@@ -5,17 +5,17 @@ import android.os.Handler;
 
 public abstract interface b
 {
-  public abstract f GD();
+  public abstract f GJ();
   
-  public abstract e GE();
+  public abstract e GK();
   
-  public abstract c GF();
+  public abstract c GL();
   
-  public abstract d GG();
+  public abstract d GM();
   
-  public abstract a GH();
+  public abstract a GN();
   
-  public abstract com.tencent.mm.plugin.appbrand.jsapi.ac.e.b a(a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
+  public abstract com.tencent.mm.plugin.appbrand.jsapi.ad.e.b a(a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
   
   public abstract com.tencent.mm.plugin.appbrand.jsapi.video.e.b a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Handler paramHandler);
   
@@ -55,7 +55,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b.b
  * JD-Core Version:    0.7.0.1
  */

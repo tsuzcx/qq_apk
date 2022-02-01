@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"})
 public enum u
 {
   static
   {
     AppMethodBeat.i(110931);
     u localu1 = new u("NONE", 0);
-    BGh = localu1;
+    BXF = localu1;
     u localu2 = new u("FADE", 1);
-    BGi = localu2;
-    BGj = new u[] { localu1, localu2 };
+    BXG = localu2;
+    BXH = new u[] { localu1, localu2 };
     AppMethodBeat.o(110931);
   }
   

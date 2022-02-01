@@ -11,12 +11,12 @@ import org.json.JSONObject;
 public final class a
   extends b
 {
-  public final com.tencent.matrix.d.a.a cEk;
-  private com.tencent.matrix.d.b.a cEl;
+  public final com.tencent.matrix.d.a.a cER;
+  private com.tencent.matrix.d.b.a cES;
   
   public a(com.tencent.matrix.d.a.a parama)
   {
-    this.cEk = parama;
+    this.cER = parama;
   }
   
   public final void destroy()
@@ -26,7 +26,7 @@ public final class a
   
   public final JSONObject getJsonInfo()
   {
-    return this.cEl.getJsonInfo();
+    return this.cES.getJsonInfo();
   }
   
   public final String getTag()
@@ -37,7 +37,7 @@ public final class a
   public final void init(Application paramApplication, com.tencent.matrix.e.c paramc)
   {
     super.init(paramApplication, paramc);
-    this.cEl = new com.tencent.matrix.d.b.a(this);
+    this.cES = new com.tencent.matrix.d.b.a(this);
   }
   
   public final void onForeground(boolean paramBoolean)
@@ -65,9 +65,9 @@ public final class a
         if (!isPluginStarted())
         {
           super.start();
-          locala = this.cEl;
-          locala.cEo = com.tencent.matrix.g.a.aO(locala.mContext);
-          if ((!com.tencent.matrix.d.b.a.Iu()) || (locala.cEo == a.a.cNH) || (locala.cEo == a.a.cNI) || (locala.cEo == a.a.cNJ)) {
+          locala = this.cES;
+          locala.cEV = com.tencent.matrix.g.a.aP(locala.mContext);
+          if ((!com.tencent.matrix.d.b.a.IC()) || (locala.cEV == a.a.cOr) || (locala.cEV == a.a.cOs) || (locala.cEV == a.a.cOt)) {
             locala.mIsOpen = false;
           }
         }
@@ -77,23 +77,23 @@ public final class a
         }
         locala.mIsOpen = true;
         locala.mStartTime = System.currentTimeMillis();
-        locala.cEu = 1;
-        locala.cEt = (locala.mStartTime + locala.Iv() - 5000L);
-        com.tencent.matrix.g.c.d("Matrix.MemoryCanaryCore", "next report delay:%d, starttime:%d", new Object[] { Long.valueOf(locala.Iv()), Long.valueOf(locala.mStartTime) });
-        locala.mHandler.postDelayed(locala.cEy, locala.Iv());
-        locala.cEx = new HashMap();
-        com.tencent.matrix.d.b.a.cEp = com.tencent.matrix.g.a.getTotalMemory(locala.mContext) / 1024L;
-        com.tencent.matrix.d.b.a.cEq = com.tencent.matrix.g.a.aP(locala.mContext) / 1024L;
-        com.tencent.matrix.d.b.a.cEr = com.tencent.matrix.g.a.aQ(locala.mContext);
-        if ((com.tencent.matrix.d.b.a.cEq >= com.tencent.matrix.d.b.a.cEp) || (com.tencent.matrix.d.b.a.cEq <= 0L) || (com.tencent.matrix.d.b.a.cEr <= 102400) || (com.tencent.matrix.d.b.a.cEp <= 0L))
+        locala.cFb = 1;
+        locala.cFa = (locala.mStartTime + locala.ID() - 5000L);
+        com.tencent.matrix.g.c.d("Matrix.MemoryCanaryCore", "next report delay:%d, starttime:%d", new Object[] { Long.valueOf(locala.ID()), Long.valueOf(locala.mStartTime) });
+        locala.mHandler.postDelayed(locala.cFf, locala.ID());
+        locala.cFe = new HashMap();
+        com.tencent.matrix.d.b.a.cEW = com.tencent.matrix.g.a.getTotalMemory(locala.mContext) / 1024L;
+        com.tencent.matrix.d.b.a.cEX = com.tencent.matrix.g.a.aQ(locala.mContext) / 1024L;
+        com.tencent.matrix.d.b.a.cEY = com.tencent.matrix.g.a.aR(locala.mContext);
+        if ((com.tencent.matrix.d.b.a.cEX >= com.tencent.matrix.d.b.a.cEW) || (com.tencent.matrix.d.b.a.cEX <= 0L) || (com.tencent.matrix.d.b.a.cEY <= 102400) || (com.tencent.matrix.d.b.a.cEW <= 0L))
         {
           locala.mIsOpen = false;
           continue;
         }
-        ((Application)localObject.mContext).registerActivityLifecycleCallbacks(localObject.cEA);
+        ((Application)localObject.mContext).registerActivityLifecycleCallbacks(localObject.cFh);
       }
       finally {}
-      localObject.mContext.registerComponentCallbacks(localObject.cEB);
+      localObject.mContext.registerComponentCallbacks(localObject.cFi);
     }
   }
   
@@ -104,9 +104,9 @@ public final class a
       if (isPluginStarted())
       {
         super.stop();
-        com.tencent.matrix.d.b.a locala = this.cEl;
-        ((Application)locala.mContext).unregisterActivityLifecycleCallbacks(locala.cEA);
-        locala.mContext.unregisterComponentCallbacks(locala.cEB);
+        com.tencent.matrix.d.b.a locala = this.cES;
+        ((Application)locala.mContext).unregisterActivityLifecycleCallbacks(locala.cFh);
+        locala.mContext.unregisterComponentCallbacks(locala.cFi);
         locala.mIsOpen = false;
       }
       return;

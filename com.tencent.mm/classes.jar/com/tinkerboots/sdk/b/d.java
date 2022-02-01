@@ -10,33 +10,33 @@ import java.util.HashSet;
 
 public final class d
 {
-  private static String MAx;
-  private static HashSet<String> MAy;
+  private static String MXE;
+  private static HashSet<String> MXF;
   
   static
   {
     AppMethodBeat.i(3466);
-    MAy = new HashSet();
+    MXF = new HashSet();
     AppMethodBeat.o(3466);
   }
   
-  public static String gdY()
+  public static String giB()
   {
-    if (MAx == null) {
+    if (MXE == null) {
       return "";
     }
-    return MAx;
+    return MXE;
   }
   
-  public static boolean gdZ()
+  public static boolean giC()
   {
     AppMethodBeat.i(3465);
-    if (MAx == null)
+    if (MXE == null)
     {
       AppMethodBeat.o(3465);
       return false;
     }
-    boolean bool = MAy.contains(MAx);
+    boolean bool = MXF.contains(MXE);
     AppMethodBeat.o(3465);
     return bool;
   }

@@ -3,11 +3,11 @@ package com.tencent.mm.protocal.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int dER;
+  public int dFW;
   public String desc;
-  public String rxX;
+  public String rGi;
   public String thumbPath;
   public String title;
   
@@ -26,9 +26,9 @@ public final class d
       if (this.thumbPath != null) {
         paramVarArgs.d(3, this.thumbPath);
       }
-      paramVarArgs.aS(4, this.dER);
-      if (this.rxX != null) {
-        paramVarArgs.d(5, this.rxX);
+      paramVarArgs.aS(4, this.dFW);
+      if (this.rGi != null) {
+        paramVarArgs.d(5, this.rGi);
       }
       AppMethodBeat.o(94810);
       return 0;
@@ -49,19 +49,19 @@ public final class d
       if (this.thumbPath != null) {
         i = paramInt + f.a.a.b.b.a.e(3, this.thumbPath);
       }
-      i += f.a.a.b.b.a.bz(4, this.dER);
+      i += f.a.a.b.b.a.bz(4, this.dFW);
       paramInt = i;
-      if (this.rxX != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.rxX);
+      if (this.rGi != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.rGi);
       }
       AppMethodBeat.o(94810);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         AppMethodBeat.o(94810);
@@ -77,23 +77,23 @@ public final class d
           AppMethodBeat.o(94810);
           return -1;
         case 1: 
-          locald.title = locala.NPN.readString();
+          locald.title = locala.OmT.readString();
           AppMethodBeat.o(94810);
           return 0;
         case 2: 
-          locald.desc = locala.NPN.readString();
+          locald.desc = locala.OmT.readString();
           AppMethodBeat.o(94810);
           return 0;
         case 3: 
-          locald.thumbPath = locala.NPN.readString();
+          locald.thumbPath = locala.OmT.readString();
           AppMethodBeat.o(94810);
           return 0;
         case 4: 
-          locald.dER = locala.NPN.zc();
+          locald.dFW = locala.OmT.zc();
           AppMethodBeat.o(94810);
           return 0;
         }
-        locald.rxX = locala.NPN.readString();
+        locald.rGi = locala.OmT.readString();
         AppMethodBeat.o(94810);
         return 0;
       }

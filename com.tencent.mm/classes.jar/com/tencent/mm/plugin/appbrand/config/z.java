@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.l;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/WxaDevExtJsonInfoUtils;", "", "()V", "parseDevVersionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "", "data-model_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/config/WxaDevExtJsonInfoUtils;", "", "()V", "parseDevVersionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "", "data-model_release"})
 public final class z
 {
-  public static final z kaq;
+  public static final z kdH;
   
   static
   {
     AppMethodBeat.i(179493);
-    kaq = new z();
+    kdH = new z();
     AppMethodBeat.o(179493);
   }
   
-  public static final WxaAttributes.WxaVersionInfo NU(String paramString)
+  public static final WxaAttributes.WxaVersionInfo OB(String paramString)
   {
     AppMethodBeat.i(179492);
     for (;;)
@@ -49,18 +49,18 @@ public final class z
       localObject = new JSONObject(paramString);
       localWxaVersionInfo = new WxaAttributes.WxaVersionInfo();
       localWxaVersionInfo.aDD = 0;
-      localWxaVersionInfo.moduleList = WxaAttributes.WxaVersionModuleInfo.NS(((JSONObject)localObject).optString("module_list"));
-      localWxaVersionInfo.ioH = WxaAttributes.WxaWidgetInfo.NT(((JSONObject)localObject).optString("widget_list"));
-      if (!bt.hj(localWxaVersionInfo.moduleList))
+      localWxaVersionInfo.moduleList = WxaAttributes.WxaVersionModuleInfo.Oz(((JSONObject)localObject).optString("module_list"));
+      localWxaVersionInfo.irC = WxaAttributes.WxaWidgetInfo.OA(((JSONObject)localObject).optString("widget_list"));
+      if (!bu.ht(localWxaVersionInfo.moduleList))
       {
         bool = true;
-        localWxaVersionInfo.kab = bool;
-        if (localWxaVersionInfo.kab)
+        localWxaVersionInfo.kds = bool;
+        if (localWxaVersionInfo.kds)
         {
           paramString = ((JSONObject)localObject).optString("entrance_module");
-          localWxaVersionInfo.kac = paramString;
-          localWxaVersionInfo.jZZ = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionInfo.ioH, ((JSONObject)localObject).optString("separated_plugin_list"), 22);
-          localWxaVersionInfo.kad = ((JSONObject)localObject).optString("client_js_ext_info");
+          localWxaVersionInfo.kdt = paramString;
+          localWxaVersionInfo.kdq = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionInfo.irC, ((JSONObject)localObject).optString("separated_plugin_list"), 22);
+          localWxaVersionInfo.kdu = ((JSONObject)localObject).optString("client_js_ext_info");
           AppMethodBeat.o(179492);
           return localWxaVersionInfo;
         }

@@ -6,7 +6,7 @@ public abstract interface b$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.thumbplayer.b.b.g
  * JD-Core Version:    0.7.0.1
  */

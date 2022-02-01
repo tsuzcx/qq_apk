@@ -4,11 +4,10 @@ import android.content.Context;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,11 +15,11 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public com.tencent.magicbrush.d ciY;
-  public d cji;
-  public volatile b cjj;
-  public final Queue<String> cjk;
-  public e cjl;
+  public com.tencent.magicbrush.d cja;
+  public d cjk;
+  public volatile b cjl;
+  public final Queue<String> cjm;
+  public e cjn;
   public Context mContext;
   public volatile int mState;
   
@@ -28,8 +27,8 @@ public final class e
   {
     AppMethodBeat.i(130524);
     this.mState = 0;
-    this.cjk = new LinkedList();
-    this.cjl = new e((byte)0);
+    this.cjm = new LinkedList();
+    this.cjn = new e((byte)0);
     AppMethodBeat.o(130524);
   }
   
@@ -43,13 +42,13 @@ public final class e
       JSONArray localJSONArray = new JSONArray();
       localJSONArray.put("wxClient: ".concat(String.valueOf(paramString)));
       localJSONObject.put("logs", localJSONArray);
-      cP(localJSONObject.toString());
+      cR(localJSONObject.toString());
       AppMethodBeat.o(130527);
       return;
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.GameInspector", paramString, "hy: vConsole json error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.GameInspector", paramString, "hy: vConsole json error", new Object[0]);
       AppMethodBeat.o(130527);
     }
   }
@@ -58,14 +57,14 @@ public final class e
   {
     int j = 0;
     AppMethodBeat.i(130526);
-    if ((parama == null) || (bt.isNullOrNil(paramString)))
+    if ((parama == null) || (bu.isNullOrNil(paramString)))
     {
-      ad.e("MicroMsg.GameInspector", "hy: not valid console!");
+      ae.e("MicroMsg.GameInspector", "hy: not valid console!");
       AppMethodBeat.o(130526);
       return;
     }
     int i = j;
-    switch (3.cjn[parama.ordinal()])
+    switch (3.cjp[parama.ordinal()])
     {
     default: 
       i = j;
@@ -83,31 +82,31 @@ public final class e
     }
   }
   
-  public final void cP(final String paramString)
+  public final void cR(final String paramString)
   {
     AppMethodBeat.i(130525);
-    ad.i("MicroMsg.GameInspector", "hy: on js logged : %s", new Object[] { paramString });
-    synchronized (this.cjk)
+    ae.i("MicroMsg.GameInspector", "hy: on js logged : %s", new Object[] { paramString });
+    synchronized (this.cjm)
     {
       if (this.mState != 1)
       {
-        this.cjk.add(paramString);
+        this.cjm.add(paramString);
         AppMethodBeat.o(130525);
         return;
       }
-      if (this.cjj == null)
+      if (this.cjl == null)
       {
         AppMethodBeat.o(130525);
         return;
       }
     }
-    this.cjj.post(new Runnable()
+    this.cjl.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130517);
-        if (e.this.cjj != null) {
-          e.this.cjj.log(paramString);
+        if (e.this.cjl != null) {
+          e.this.cjl.log(paramString);
         }
         AppMethodBeat.o(130517);
       }
@@ -120,11 +119,11 @@ public final class e
     static
     {
       AppMethodBeat.i(130521);
-      cjo = new a("DEBUG", 0);
-      cjp = new a("INFO", 1);
-      cjq = new a("WARNING", 2);
-      cjr = new a("ERROR", 3);
-      cjs = new a[] { cjo, cjp, cjq, cjr };
+      cjq = new a("DEBUG", 0);
+      cjr = new a("INFO", 1);
+      cjs = new a("WARNING", 2);
+      cjt = new a("ERROR", 3);
+      cju = new a[] { cjq, cjr, cjs, cjt };
       AppMethodBeat.o(130521);
     }
     
@@ -133,35 +132,30 @@ public final class e
   
   public static final class b
   {
-    public h ciT;
-    public com.tencent.magicbrush.d cjt;
-    public FrameLayout cju;
-    public boolean cjv;
-    public boolean cjw;
-    public e.c cjx = null;
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void B(List<f> paramList);
+    public h ciV;
+    public com.tencent.magicbrush.d cjv;
+    public FrameLayout cjw;
+    public boolean cjx;
+    public boolean cjy;
+    public e.c cjz = null;
   }
   
   static final class d
     implements Runnable
   {
-    private d cji;
-    private e.e cjl;
+    private d cjk;
+    private e.e cjn;
     
     public final void run()
     {
       AppMethodBeat.i(130522);
-      if (this.cji == null)
+      if (this.cjk == null)
       {
         AppMethodBeat.o(130522);
         return;
       }
-      if (this.cjl != null) {
-        this.cjl.release(this);
+      if (this.cjn != null) {
+        this.cjn.release(this);
       }
       AppMethodBeat.o(130522);
     }
@@ -173,7 +167,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.c.e
  * JD-Core Version:    0.7.0.1
  */

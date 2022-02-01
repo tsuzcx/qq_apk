@@ -4,11 +4,11 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.am;
 import com.tencent.mm.plugin.biz.b.a;
-import com.tencent.mm.protocal.protobuf.dlo;
-import com.tencent.mm.protocal.protobuf.dlt;
+import com.tencent.mm.protocal.protobuf.dml;
+import com.tencent.mm.protocal.protobuf.dmq;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -18,204 +18,214 @@ public final class w
   extends am
 {
   protected static c.a info;
-  public boolean Ion = false;
-  public boolean Ioo = false;
-  public boolean Iop = false;
-  public dlt Ioq = null;
-  v Ior = null;
-  private String Ios = "";
-  private String jSR = "";
-  public int ofe = -1;
+  public boolean IID = false;
+  public boolean IIE = false;
+  public boolean IIF = false;
+  public dmq IIG = null;
+  v IIH = null;
+  private String III = "";
+  private String jWi = "";
+  public boolean ojz = false;
+  public int ole = -1;
   private String pathType = "";
-  private String zuP = "";
+  private String zMk = "";
   
   static
   {
     AppMethodBeat.i(124608);
     c.a locala = new c.a();
-    locala.IhA = new Field[19];
-    locala.columns = new String[20];
+    locala.IBL = new Field[20];
+    locala.columns = new String[21];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.IhC.put("msgId", "LONG PRIMARY KEY ");
+    locala.IBN.put("msgId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" msgId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "msgId";
+    locala.IBM = "msgId";
     locala.columns[1] = "msgSvrId";
-    locala.IhC.put("msgSvrId", "LONG");
+    locala.IBN.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.IhC.put("status", "INTEGER");
+    locala.IBN.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "createTime";
-    locala.IhC.put("createTime", "LONG");
+    locala.IBN.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "talker";
-    locala.IhC.put("talker", "TEXT");
+    locala.IBN.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "content";
-    locala.IhC.put("content", "TEXT default '' ");
+    locala.IBN.put("content", "TEXT default '' ");
     localStringBuilder.append(" content TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "imgPath";
-    locala.IhC.put("imgPath", "TEXT");
+    locala.IBN.put("imgPath", "TEXT");
     localStringBuilder.append(" imgPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "lvbuffer";
-    locala.IhC.put("lvbuffer", "BLOB");
+    locala.IBN.put("lvbuffer", "BLOB");
     localStringBuilder.append(" lvbuffer BLOB");
     localStringBuilder.append(", ");
     locala.columns[9] = "talkerId";
-    locala.IhC.put("talkerId", "INTEGER");
+    locala.IBN.put("talkerId", "INTEGER");
     localStringBuilder.append(" talkerId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "isExpand";
-    locala.IhC.put("isExpand", "INTEGER");
+    locala.IBN.put("isExpand", "INTEGER");
     localStringBuilder.append(" isExpand INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "orderFlag";
-    locala.IhC.put("orderFlag", "LONG default '0' ");
+    locala.IBN.put("orderFlag", "LONG default '0' ");
     localStringBuilder.append(" orderFlag LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "hasShow";
-    locala.IhC.put("hasShow", "INTEGER default '1' ");
+    locala.IBN.put("hasShow", "INTEGER default '1' ");
     localStringBuilder.append(" hasShow INTEGER default '1' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "placeTop";
-    locala.IhC.put("placeTop", "INTEGER default '1' ");
+    locala.IBN.put("placeTop", "INTEGER default '1' ");
     localStringBuilder.append(" placeTop INTEGER default '1' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "appMsgStatInfoProto";
-    locala.IhC.put("appMsgStatInfoProto", "BLOB");
+    locala.IBN.put("appMsgStatInfoProto", "BLOB");
     localStringBuilder.append(" appMsgStatInfoProto BLOB");
     localStringBuilder.append(", ");
     locala.columns[15] = "isRead";
-    locala.IhC.put("isRead", "INTEGER default '0' ");
+    locala.IBN.put("isRead", "INTEGER default '0' ");
     localStringBuilder.append(" isRead INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "bitFlag";
-    locala.IhC.put("bitFlag", "INTEGER default '0' ");
+    locala.IBN.put("bitFlag", "INTEGER default '0' ");
     localStringBuilder.append(" bitFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[17] = "bizClientMsgId";
-    locala.IhC.put("bizClientMsgId", "TEXT default '' ");
+    locala.IBN.put("bizClientMsgId", "TEXT default '' ");
     localStringBuilder.append(" bizClientMsgId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "rankSessionId";
-    locala.IhC.put("rankSessionId", "TEXT default '' ");
+    locala.IBN.put("rankSessionId", "TEXT default '' ");
     localStringBuilder.append(" rankSessionId TEXT default '' ");
-    locala.columns[19] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[19] = "recommendCardId";
+    locala.IBN.put("recommendCardId", "TEXT default '' ");
+    localStringBuilder.append(" recommendCardId TEXT default '' ");
+    locala.columns[20] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
     AppMethodBeat.o(124608);
   }
   
-  private static byte[] c(dlt paramdlt)
+  private static byte[] c(dmq paramdmq)
   {
     AppMethodBeat.i(124607);
-    if (paramdlt == null)
+    if (paramdmq == null)
     {
       AppMethodBeat.o(124607);
       return null;
     }
     try
     {
-      paramdlt = paramdlt.toByteArray();
+      paramdmq = paramdmq.toByteArray();
       AppMethodBeat.o(124607);
-      return paramdlt;
+      return paramdmq;
     }
-    catch (IOException paramdlt)
+    catch (IOException paramdmq)
     {
-      ad.w("MicroMsg.BizTimeLineInfo", "getTLRecCardBytes toByteArray ex %s", new Object[] { paramdlt.getMessage() });
+      ae.w("MicroMsg.BizTimeLineInfo", "getTLRecCardBytes toByteArray ex %s", new Object[] { paramdmq.getMessage() });
       AppMethodBeat.o(124607);
     }
     return null;
   }
   
-  private void fpp()
+  private void ftn()
   {
-    AppMethodBeat.i(207272);
-    Object localObject = fpn();
-    if ((localObject == null) || (!bt.isNullOrNil(this.zuP)))
+    AppMethodBeat.i(188973);
+    Object localObject = ftl();
+    if ((localObject == null) || (!bu.isNullOrNil(this.zMk)))
     {
-      AppMethodBeat.o(207272);
+      AppMethodBeat.o(188973);
       return;
     }
     try
     {
       localObject = new JSONObject((String)localObject);
-      this.zuP = ((JSONObject)localObject).optString("aid");
-      this.jSR = ((JSONObject)localObject).optString("traceid");
+      this.zMk = ((JSONObject)localObject).optString("aid");
+      this.jWi = ((JSONObject)localObject).optString("traceid");
       this.pathType = ((JSONObject)localObject).optString("path_type", "ad");
-      AppMethodBeat.o(207272);
+      AppMethodBeat.o(188973);
       return;
     }
     catch (Exception localException)
     {
-      ad.w("MicroMsg.BizTimeLineInfo", "getAId ex %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(207272);
+      ae.w("MicroMsg.BizTimeLineInfo", "getAId ex %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(188973);
     }
   }
   
-  public final void b(dlt paramdlt)
+  public final void b(dmq paramdmq)
   {
     AppMethodBeat.i(124606);
-    this.Ioq = paramdlt;
-    paramdlt = c(paramdlt);
-    if (paramdlt == null)
+    this.IIG = paramdmq;
+    paramdmq = c(paramdmq);
+    if (paramdmq == null)
     {
       AppMethodBeat.o(124606);
       return;
     }
-    this.field_content = Base64.encodeToString(paramdlt, 0);
-    Vz();
+    this.field_content = Base64.encodeToString(paramdmq, 0);
+    VH();
     AppMethodBeat.o(124606);
   }
   
-  public final long fpb()
+  public final long fsY()
   {
     return (this.field_orderFlag & 0x0) >> 32;
   }
   
-  public final long fpc()
+  public final long fsZ()
   {
     return (this.field_orderFlag & 0xFF000000) >> 24;
   }
   
-  public final boolean fpd()
+  public final boolean fta()
   {
     return this.field_type == 285212721;
   }
   
-  public final boolean fpe()
+  public final boolean ftb()
   {
     return this.field_type == 620757041;
   }
   
-  public final boolean fpf()
+  public final boolean ftc()
   {
     return this.field_type == 637534257;
   }
   
-  public final boolean fpg()
+  public final boolean ftd()
   {
     return this.field_type == 10100;
   }
   
-  public final boolean fph()
+  public final boolean fte()
+  {
+    return this.field_type == 318767153;
+  }
+  
+  public final boolean ftf()
   {
     return this.field_type == 34;
   }
   
-  public final boolean fpi()
+  public final boolean ftg()
   {
     switch (this.field_type)
     {
@@ -225,10 +235,10 @@ public final class w
     return true;
   }
   
-  public final boolean fpj()
+  public final boolean fth()
   {
     AppMethodBeat.i(124603);
-    if (fpb() == 1L)
+    if (fsY() == 1L)
     {
       AppMethodBeat.o(124603);
       return true;
@@ -237,128 +247,128 @@ public final class w
     return false;
   }
   
-  public final v fpk()
+  public final v fti()
   {
-    AppMethodBeat.i(207267);
-    if (this.Ior != null)
+    AppMethodBeat.i(188968);
+    if (this.IIH != null)
     {
-      localObject = this.Ior;
-      AppMethodBeat.o(207267);
+      localObject = this.IIH;
+      AppMethodBeat.o(188968);
       return localObject;
     }
-    Object localObject = a.nOO;
-    this.Ior = a.Wz(this.field_content);
-    localObject = this.Ior;
-    AppMethodBeat.o(207267);
+    Object localObject = a.nUu;
+    this.IIH = a.Xl(this.field_content);
+    localObject = this.IIH;
+    AppMethodBeat.o(188968);
     return localObject;
   }
   
-  public final dlo fpl()
+  public final dml ftj()
   {
     AppMethodBeat.i(124604);
-    Object localObject = fpm();
+    Object localObject = ftk();
     if (localObject == null)
     {
       AppMethodBeat.o(124604);
       return null;
     }
-    localObject = ((dlt)localObject).HAd;
+    localObject = ((dmq)localObject).HTQ;
     AppMethodBeat.o(124604);
     return localObject;
   }
   
   /* Error */
-  public final dlt fpm()
+  public final dmq ftk()
   {
     // Byte code:
-    //   0: ldc_w 333
-    //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 342
+    //   3: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 337	com/tencent/mm/g/c/am:eLt	[B
-    //   10: invokestatic 341	com/tencent/mm/sdk/platformtools/bt:cC	([B)Z
+    //   7: getfield 346	com/tencent/mm/g/c/am:eNe	[B
+    //   10: invokestatic 350	com/tencent/mm/sdk/platformtools/bu:cF	([B)Z
     //   13: ifeq +21 -> 34
     //   16: aload_0
-    //   17: getfield 277	com/tencent/mm/storage/w:field_content	Ljava/lang/String;
-    //   20: invokestatic 240	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   17: getfield 284	com/tencent/mm/storage/w:field_content	Ljava/lang/String;
+    //   20: invokestatic 247	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   23: ifeq +11 -> 34
-    //   26: ldc_w 333
-    //   29: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: ldc_w 342
+    //   29: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aconst_null
     //   33: areturn
     //   34: aload_0
-    //   35: getfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   35: getfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   38: ifnull +16 -> 54
     //   41: aload_0
-    //   42: getfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   42: getfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   45: astore_2
-    //   46: ldc_w 333
-    //   49: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: ldc_w 342
+    //   49: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: aload_2
     //   53: areturn
     //   54: aload_0
-    //   55: new 208	com/tencent/mm/protocal/protobuf/dlt
+    //   55: new 215	com/tencent/mm/protocal/protobuf/dmq
     //   58: dup
-    //   59: invokespecial 342	com/tencent/mm/protocal/protobuf/dlt:<init>	()V
-    //   62: putfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   59: invokespecial 351	com/tencent/mm/protocal/protobuf/dmq:<init>	()V
+    //   62: putfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   65: aload_0
-    //   66: getfield 277	com/tencent/mm/storage/w:field_content	Ljava/lang/String;
-    //   69: invokestatic 240	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   66: getfield 284	com/tencent/mm/storage/w:field_content	Ljava/lang/String;
+    //   69: invokestatic 247	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   72: ifne +72 -> 144
     //   75: aload_0
-    //   76: getfield 277	com/tencent/mm/storage/w:field_content	Ljava/lang/String;
+    //   76: getfield 284	com/tencent/mm/storage/w:field_content	Ljava/lang/String;
     //   79: iconst_0
-    //   80: invokestatic 346	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   80: invokestatic 355	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   83: astore_2
     //   84: aload_0
-    //   85: getfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   85: getfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   88: aload_2
-    //   89: invokevirtual 350	com/tencent/mm/protocal/protobuf/dlt:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   89: invokevirtual 359	com/tencent/mm/protocal/protobuf/dmq:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   92: pop
     //   93: iconst_1
     //   94: istore_1
     //   95: iload_1
     //   96: ifne +15 -> 111
     //   99: aload_0
-    //   100: getfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   100: getfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   103: aload_0
-    //   104: getfield 337	com/tencent/mm/g/c/am:eLt	[B
-    //   107: invokevirtual 350	com/tencent/mm/protocal/protobuf/dlt:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   104: getfield 346	com/tencent/mm/g/c/am:eNe	[B
+    //   107: invokevirtual 359	com/tencent/mm/protocal/protobuf/dmq:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   110: pop
     //   111: aload_0
-    //   112: getfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   112: getfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   115: astore_2
-    //   116: ldc_w 333
-    //   119: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: ldc_w 342
+    //   119: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: aload_2
     //   123: areturn
     //   124: astore_2
-    //   125: ldc 214
-    //   127: ldc_w 352
+    //   125: ldc 221
+    //   127: ldc_w 361
     //   130: iconst_1
-    //   131: anewarray 218	java/lang/Object
+    //   131: anewarray 225	java/lang/Object
     //   134: dup
     //   135: iconst_0
     //   136: aload_2
-    //   137: invokevirtual 263	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   137: invokevirtual 270	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   140: aastore
-    //   141: invokestatic 354	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   141: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   144: iconst_0
     //   145: istore_1
     //   146: goto -51 -> 95
     //   149: astore_2
-    //   150: ldc 214
-    //   152: ldc_w 356
+    //   150: ldc 221
+    //   152: ldc_w 365
     //   155: iconst_1
-    //   156: anewarray 218	java/lang/Object
+    //   156: anewarray 225	java/lang/Object
     //   159: dup
     //   160: iconst_0
     //   161: aload_2
-    //   162: invokevirtual 263	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   162: invokevirtual 270	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   165: aastore
-    //   166: invokestatic 354	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   166: invokestatic 363	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   169: aload_0
     //   170: aconst_null
-    //   171: putfield 189	com/tencent/mm/storage/w:Ioq	Lcom/tencent/mm/protocal/protobuf/dlt;
+    //   171: putfield 196	com/tencent/mm/storage/w:IIG	Lcom/tencent/mm/protocal/protobuf/dmq;
     //   174: goto -63 -> 111
     // Local variable table:
     //   start	length	slot	name	signature
@@ -373,39 +383,39 @@ public final class w
     //   99	111	149	java/lang/Exception
   }
   
-  public final String fpn()
+  public final String ftl()
   {
-    AppMethodBeat.i(207268);
-    if (!fpf())
+    AppMethodBeat.i(188969);
+    if (!ftc())
     {
-      AppMethodBeat.o(207268);
+      AppMethodBeat.o(188969);
       return null;
     }
-    if (!bt.isNullOrNil(this.Ios))
+    if (!bu.isNullOrNil(this.III))
     {
-      localObject = this.Ios;
-      AppMethodBeat.o(207268);
+      localObject = this.III;
+      AppMethodBeat.o(188969);
       return localObject;
     }
-    Object localObject = p.InU;
-    this.Ios = p.aSp(this.field_content);
-    localObject = this.Ios;
-    AppMethodBeat.o(207268);
+    Object localObject = p.IIi;
+    this.III = p.aTM(this.field_content);
+    localObject = this.III;
+    AppMethodBeat.o(188969);
     return localObject;
   }
   
-  public final String fpo()
+  public final String ftm()
   {
-    AppMethodBeat.i(207269);
-    if (!bt.isNullOrNil(this.zuP))
+    AppMethodBeat.i(188970);
+    if (!bu.isNullOrNil(this.zMk))
     {
-      str = this.zuP;
-      AppMethodBeat.o(207269);
+      str = this.zMk;
+      AppMethodBeat.o(188970);
       return str;
     }
-    fpp();
-    String str = this.zuP;
-    AppMethodBeat.o(207269);
+    ftn();
+    String str = this.zMk;
+    AppMethodBeat.o(188970);
     return str;
   }
   
@@ -416,40 +426,40 @@ public final class w
   
   public final String getPathType()
   {
-    AppMethodBeat.i(207270);
-    if (!bt.isNullOrNil(this.pathType))
+    AppMethodBeat.i(188971);
+    if (!bu.isNullOrNil(this.pathType))
     {
       str = this.pathType;
-      AppMethodBeat.o(207270);
+      AppMethodBeat.o(188971);
       return str;
     }
-    fpp();
+    ftn();
     String str = this.pathType;
-    AppMethodBeat.o(207270);
+    AppMethodBeat.o(188971);
     return str;
   }
   
   public final String getTraceId()
   {
-    AppMethodBeat.i(207271);
-    if (!bt.isNullOrNil(this.jSR))
+    AppMethodBeat.i(188972);
+    if (!bu.isNullOrNil(this.jWi))
     {
-      str = this.jSR;
-      AppMethodBeat.o(207271);
+      str = this.jWi;
+      AppMethodBeat.o(188972);
       return str;
     }
-    fpp();
-    String str = this.jSR;
-    AppMethodBeat.o(207271);
+    ftn();
+    String str = this.jWi;
+    AppMethodBeat.o(188972);
     return str;
   }
   
-  public final boolean hj(int paramInt)
+  public final boolean hk(int paramInt)
   {
     return (this.field_bitFlag & paramInt) != 0;
   }
   
-  public final void hk(int paramInt)
+  public final void hl(int paramInt)
   {
     this.field_bitFlag |= paramInt;
   }

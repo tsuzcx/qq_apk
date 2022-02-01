@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16})
+@l(gjZ={1, 1, 16})
 public final class t$a
 {
   public static void a(String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200324);
+    AppMethodBeat.i(206585);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
-    AppMethodBeat.o(200324);
+    AppMethodBeat.o(206585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.t.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.u;
@@ -16,13 +15,13 @@ import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.c;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bf.a;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,64 +29,64 @@ import java.util.List;
 public final class e
   extends Thread
 {
-  private static HashMap<String, b> puN;
-  private static Object puO;
-  private static be puP;
+  private static HashMap<String, b> pBr;
+  private static Object pBs;
+  private static bf pBt;
   public boolean isStop;
-  private List<String> puD;
-  private List<Integer> puE;
-  private List<String> puF;
-  private List<String> puG;
-  private List<Integer> puH;
-  private a puI;
-  private l puJ;
-  private String puK;
-  private String puL;
-  private boolean puM;
+  private List<String> pBh;
+  private List<Integer> pBi;
+  private List<String> pBj;
+  private List<String> pBk;
+  private List<Integer> pBl;
+  private a pBm;
+  private l pBn;
+  private String pBo;
+  private String pBp;
+  private boolean pBq;
   
   static
   {
     AppMethodBeat.i(181778);
-    puN = new HashMap();
-    puO = new byte[0];
+    pBr = new HashMap();
+    pBs = new byte[0];
     AppMethodBeat.o(181778);
   }
   
   public e(List<String> paramList, String paramString1, String paramString2, l paraml, a parama)
   {
     AppMethodBeat.i(181771);
-    this.puM = false;
-    this.puD = paramList;
-    this.puE = new ArrayList();
-    this.puF = new ArrayList();
-    this.puH = new ArrayList();
-    this.puG = new ArrayList();
-    this.puI = parama;
-    this.puJ = paraml;
-    this.puL = paramString2;
-    this.puK = paramString1;
+    this.pBq = false;
+    this.pBh = paramList;
+    this.pBi = new ArrayList();
+    this.pBj = new ArrayList();
+    this.pBl = new ArrayList();
+    this.pBk = new ArrayList();
+    this.pBm = parama;
+    this.pBn = paraml;
+    this.pBp = paramString2;
+    this.pBo = paramString1;
     AppMethodBeat.o(181771);
   }
   
   private void a(final int paramInt1, String paramString1, String paramString2, int paramInt2, VideoTransPara paramVideoTransPara, Context arg6, final String paramString3)
   {
     AppMethodBeat.i(181773);
-    ad.i("MicroMsg.EditorVideoCompress", "finish to import %s to %s | ret %d | duration %d", new Object[] { paramString2, paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ae.i("MicroMsg.EditorVideoCompress", "finish to import %s to %s | ret %d | duration %d", new Object[] { paramString2, paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     d(paramInt1, paramString1, paramString2, paramInt2);
     if (paramInt1 == -50002) {
-      al(???, ???.getString(2131764675));
+      an(???, ???.getString(2131764675));
     }
     for (;;)
     {
-      if ((this.puI != null) && (!this.isStop)) {
-        aq.f(new Runnable()
+      if ((this.pBm != null) && (!this.isStop)) {
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(181767);
             e.b(e.this).a(paramString3, e.a(e.this));
             if ((e.c(e.this)) || (paramInt1 != -50006)) {
-              g.ajF().n(new Runnable()
+              g.ajU().n(new Runnable()
               {
                 public final void run()
                 {
@@ -105,42 +104,42 @@ public final class e
       return;
       if (paramInt1 == -50008)
       {
-        al(???, ???.getString(2131764673));
+        an(???, ???.getString(2131764673));
       }
       else
       {
         if (paramInt1 == -50006)
         {
-          fq(paramString1, paramString2);
-          if (puP == null) {
-            puP = new be(5, "remuxing-thread-" + System.currentTimeMillis(), 1, Looper.getMainLooper());
+          fu(paramString1, paramString2);
+          if (pBt == null) {
+            pBt = new bf(5, "remuxing-thread-" + System.currentTimeMillis(), 1, Looper.getMainLooper());
           }
           b localb = new b((byte)0);
-          synchronized (puO)
+          synchronized (pBs)
           {
-            puN.put(paramString1, localb);
+            pBr.put(paramString1, localb);
             localb.fileName = paramString1;
-            localb.irI = paramString2;
-            localb.jNP = this.puL;
-            localb.itU = paramVideoTransPara;
-            localb.puI = this.puI;
-            localb.puJ = this.puJ;
-            puP.c(localb);
+            localb.iuC = paramString2;
+            localb.jRg = this.pBp;
+            localb.iwO = paramVideoTransPara;
+            localb.pBm = this.pBm;
+            localb.pBn = this.pBn;
+            pBt.c(localb);
           }
         }
         if (paramInt1 < 0) {
-          al(???, ???.getString(2131764674));
+          an(???, ???.getString(2131764674));
         } else {
-          this.puM = true;
+          this.pBq = true;
         }
       }
     }
   }
   
-  private void al(final Context paramContext, final String paramString)
+  private void an(final Context paramContext, final String paramString)
   {
     AppMethodBeat.i(181774);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       public final void run()
       {
@@ -157,10 +156,10 @@ public final class e
     try
     {
       AppMethodBeat.i(181777);
-      this.puE.add(Integer.valueOf(paramInt1));
-      this.puF.add(paramString1);
-      this.puG.add(paramString2);
-      this.puH.add(Integer.valueOf(paramInt2));
+      this.pBi.add(Integer.valueOf(paramInt1));
+      this.pBj.add(paramString1);
+      this.pBk.add(paramString2);
+      this.pBl.add(Integer.valueOf(paramInt2));
       AppMethodBeat.o(181777);
       return;
     }
@@ -192,7 +191,7 @@ public final class e
     //   30: bipush 18
     //   32: invokevirtual 239	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   35: iconst_0
-    //   36: invokestatic 245	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   36: invokestatic 245	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   39: istore_2
     //   40: aload 6
     //   42: astore 5
@@ -200,7 +199,7 @@ public final class e
     //   46: bipush 19
     //   48: invokevirtual 239	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   51: iconst_0
-    //   52: invokestatic 245	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   52: invokestatic 245	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
     //   55: istore_3
     //   56: aload 6
     //   58: invokevirtual 248	android/media/MediaMetadataRetriever:release	()V
@@ -240,7 +239,7 @@ public final class e
     //   109: ldc 250
     //   111: iconst_0
     //   112: anewarray 100	java/lang/Object
-    //   115: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   115: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   118: aload 6
     //   120: ifnull +8 -> 128
     //   123: aload 6
@@ -331,29 +330,29 @@ public final class e
     //   44	56	233	java/lang/Exception
   }
   
-  private static void fq(String paramString1, String paramString2)
+  private static void fu(String paramString1, String paramString2)
   {
     AppMethodBeat.i(181775);
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString1))
+    if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(paramString1))
     {
-      ad.w("MicroMsg.EditorVideoCompress", "do insertVideoStorage, but file name is null");
+      ae.w("MicroMsg.EditorVideoCompress", "do insertVideoStorage, but file name is null");
       AppMethodBeat.o(181775);
       return;
     }
     s locals = new s();
     locals.fileName = paramString1;
-    locals.hHQ = 1;
-    locals.dDy = null;
-    locals.itY = ((String)g.ajC().ajl().get(2, ""));
-    locals.createTime = com.tencent.mm.sdk.platformtools.bt.aQJ();
-    locals.iud = com.tencent.mm.sdk.platformtools.bt.aQJ();
-    locals.iuk = null;
-    locals.irI = paramString2;
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString2)) {
-      locals.iui = 1;
+    locals.hKI = 1;
+    locals.dED = null;
+    locals.iwS = ((String)g.ajR().ajA().get(2, ""));
+    locals.createTime = com.tencent.mm.sdk.platformtools.bu.aRi();
+    locals.iwX = com.tencent.mm.sdk.platformtools.bu.aRi();
+    locals.ixe = null;
+    locals.iuC = paramString2;
+    if (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(paramString2)) {
+      locals.ixc = 1;
     }
-    locals.hMP = 0;
-    o.aMJ().b(locals);
+    locals.hPI = 0;
+    com.tencent.mm.modelvideo.o.aNh().b(locals);
     AppMethodBeat.o(181775);
   }
   
@@ -364,17 +363,17 @@ public final class e
     //   0: ldc_w 333
     //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puD	Ljava/util/List;
+    //   7: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBh	Ljava/util/List;
     //   10: ifnull +1255 -> 1265
     //   13: aload_0
-    //   14: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puD	Ljava/util/List;
+    //   14: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBh	Ljava/util/List;
     //   17: invokeinterface 337 1 0
     //   22: ifle +1243 -> 1265
     //   25: iconst_0
     //   26: istore 6
     //   28: iload 6
     //   30: aload_0
-    //   31: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puD	Ljava/util/List;
+    //   31: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBh	Ljava/util/List;
     //   34: invokeinterface 337 1 0
     //   39: if_icmpge +1226 -> 1265
     //   42: aload_0
@@ -387,10 +386,10 @@ public final class e
     //   58: dup
     //   59: iconst_0
     //   60: aload_0
-    //   61: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puD	Ljava/util/List;
+    //   61: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBh	Ljava/util/List;
     //   64: invokevirtual 340	java/lang/Object:toString	()Ljava/lang/String;
     //   67: aastore
-    //   68: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: new 342	android/content/Intent
     //   74: dup
     //   75: invokespecial 343	android/content/Intent:<init>	()V
@@ -401,7 +400,7 @@ public final class e
     //   86: ldc_w 345
     //   89: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   92: aload_0
-    //   93: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puD	Ljava/util/List;
+    //   93: getfield 70	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBh	Ljava/util/List;
     //   96: iload 6
     //   98: invokeinterface 348 2 0
     //   103: checkcast 297	java/lang/String
@@ -410,53 +409,53 @@ public final class e
     //   112: invokestatic 357	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   115: invokevirtual 361	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
     //   118: pop
-    //   119: invokestatic 367	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   119: invokestatic 367	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   122: astore 17
     //   124: new 151	java/lang/StringBuilder
     //   127: dup
     //   128: ldc_w 369
     //   131: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   134: invokestatic 281	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
-    //   137: invokevirtual 287	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   134: invokestatic 281	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
+    //   137: invokevirtual 287	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
     //   140: iconst_2
     //   141: ldc_w 289
-    //   144: invokevirtual 295	com/tencent/mm/storage/ai:get	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   144: invokevirtual 295	com/tencent/mm/storage/aj:get	(ILjava/lang/Object;)Ljava/lang/Object;
     //   147: checkcast 297	java/lang/String
-    //   150: invokestatic 373	com/tencent/mm/modelvideo/t:Hf	(Ljava/lang/String;)Ljava/lang/String;
+    //   150: invokestatic 373	com/tencent/mm/modelvideo/t:HH	(Ljava/lang/String;)Ljava/lang/String;
     //   153: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   159: astore 13
     //   161: aload_0
-    //   162: getfield 89	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puK	Ljava/lang/String;
-    //   165: invokestatic 259	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   162: getfield 89	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBo	Ljava/lang/String;
+    //   165: invokestatic 259	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   168: ifne +13 -> 181
     //   171: aload_0
-    //   172: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puL	Ljava/lang/String;
-    //   175: invokestatic 259	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   172: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBp	Ljava/lang/String;
+    //   175: invokestatic 259	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   178: ifeq +83 -> 261
-    //   181: invokestatic 326	com/tencent/mm/modelvideo/o:aMJ	()Lcom/tencent/mm/modelvideo/t;
+    //   181: invokestatic 326	com/tencent/mm/modelvideo/o:aNh	()Lcom/tencent/mm/modelvideo/t;
     //   184: pop
     //   185: aload 13
-    //   187: invokestatic 376	com/tencent/mm/modelvideo/t:Hi	(Ljava/lang/String;)Ljava/lang/String;
+    //   187: invokestatic 376	com/tencent/mm/modelvideo/t:HK	(Ljava/lang/String;)Ljava/lang/String;
     //   190: astore 15
-    //   192: invokestatic 326	com/tencent/mm/modelvideo/o:aMJ	()Lcom/tencent/mm/modelvideo/t;
+    //   192: invokestatic 326	com/tencent/mm/modelvideo/o:aNh	()Lcom/tencent/mm/modelvideo/t;
     //   195: pop
     //   196: aload 13
-    //   198: invokestatic 379	com/tencent/mm/modelvideo/t:Hh	(Ljava/lang/String;)Ljava/lang/String;
+    //   198: invokestatic 379	com/tencent/mm/modelvideo/t:HJ	(Ljava/lang/String;)Ljava/lang/String;
     //   201: astore 14
-    //   203: invokestatic 367	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   206: invokestatic 385	com/tencent/mm/sdk/platformtools/ay:is2G	(Landroid/content/Context;)Z
+    //   203: invokestatic 367	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   206: invokestatic 385	com/tencent/mm/sdk/platformtools/az:is2G	(Landroid/content/Context;)Z
     //   209: istore 9
     //   211: aload 17
     //   213: aload 16
     //   215: invokestatic 390	com/tencent/mm/compatible/h/a:i	(Landroid/content/Context;Landroid/content/Intent;)Ljava/lang/String;
     //   218: astore 18
     //   220: aload 18
-    //   222: invokestatic 259	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   222: invokestatic 259	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
     //   225: ifeq +79 -> 304
     //   228: ldc 96
     //   230: ldc_w 392
-    //   233: invokestatic 395	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   233: invokestatic 395	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   236: aload_0
     //   237: ldc_w 396
     //   240: aload 13
@@ -472,30 +471,30 @@ public final class e
     //   256: istore 6
     //   258: goto -230 -> 28
     //   261: aload_0
-    //   262: getfield 89	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puK	Ljava/lang/String;
+    //   262: getfield 89	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBo	Ljava/lang/String;
     //   265: astore 15
     //   267: aload_0
-    //   268: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puL	Ljava/lang/String;
+    //   268: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBp	Ljava/lang/String;
     //   271: aload_0
-    //   272: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puL	Ljava/lang/String;
+    //   272: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBp	Ljava/lang/String;
     //   275: ldc_w 400
     //   278: invokevirtual 404	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   281: iconst_1
     //   282: iadd
     //   283: aload_0
-    //   284: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puL	Ljava/lang/String;
+    //   284: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBp	Ljava/lang/String;
     //   287: invokevirtual 407	java/lang/String:length	()I
     //   290: invokevirtual 411	java/lang/String:substring	(II)Ljava/lang/String;
     //   293: astore 13
     //   295: aload_0
-    //   296: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:puL	Ljava/lang/String;
+    //   296: getfield 87	com/tencent/mm/plugin/editor/model/nativenote/manager/e:pBp	Ljava/lang/String;
     //   299: astore 14
     //   301: goto -98 -> 203
     //   304: aload 18
-    //   306: invokestatic 416	com/tencent/mm/plugin/a/c:Ja	(Ljava/lang/String;)Z
+    //   306: invokestatic 416	com/tencent/mm/plugin/a/c:Jz	(Ljava/lang/String;)Z
     //   309: istore 8
     //   311: aload 18
-    //   313: invokestatic 422	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
+    //   313: invokestatic 422	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
     //   316: lstore 10
     //   318: iload 8
     //   320: ifeq +554 -> 874
@@ -503,9 +502,9 @@ public final class e
     //   326: dup
     //   327: invokespecial 425	com/tencent/mm/pointers/PInt:<init>	()V
     //   330: astore 19
-    //   332: invokestatic 431	com/tencent/mm/modelcontrol/d:aGQ	()Lcom/tencent/mm/modelcontrol/d;
+    //   332: invokestatic 431	com/tencent/mm/modelcontrol/d:aHh	()Lcom/tencent/mm/modelcontrol/d;
     //   335: aload 18
-    //   337: invokevirtual 434	com/tencent/mm/modelcontrol/d:EV	(Ljava/lang/String;)Z
+    //   337: invokevirtual 434	com/tencent/mm/modelcontrol/d:Fx	(Ljava/lang/String;)Z
     //   340: ifeq +159 -> 499
     //   343: ldc 96
     //   345: ldc_w 436
@@ -515,7 +514,7 @@ public final class e
     //   353: iconst_0
     //   354: aload 18
     //   356: aastore
-    //   357: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   357: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   360: aload 19
     //   362: iconst_1
     //   363: putfield 439	com/tencent/mm/pointers/PInt:value	I
@@ -543,12 +542,12 @@ public final class e
     //   401: lload 10
     //   403: invokestatic 451	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   406: aastore
-    //   407: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   407: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   410: iload_3
     //   411: tableswitch	default:+61 -> 472, -6:+610->1021, -5:+628->1039, -4:+610->1021, -3:+610->1021, -2:+610->1021, -1:+591->1002, 0:+583->994, 1:+504->915, 2:+504->915, 3:+504->915, 4:+504->915, 5:+504->915
     //   473: iadd
     //   474: ldc_w 453
-    //   477: invokestatic 395	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   477: invokestatic 395	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   480: aload_0
     //   481: ldc_w 454
     //   484: aload 13
@@ -621,8 +620,8 @@ public final class e
     //   633: iconst_0
     //   634: aload 20
     //   636: aastore
-    //   637: invokestatic 481	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   640: invokestatic 431	com/tencent/mm/modelcontrol/d:aGQ	()Lcom/tencent/mm/modelcontrol/d;
+    //   637: invokestatic 481	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   640: invokestatic 431	com/tencent/mm/modelcontrol/d:aHh	()Lcom/tencent/mm/modelcontrol/d;
     //   643: aload 20
     //   645: invokevirtual 484	com/tencent/mm/modelcontrol/d:c	(Lcom/tencent/mm/modelcontrol/VideoTransPara;)Lcom/tencent/mm/modelcontrol/VideoTransPara;
     //   648: astore 12
@@ -636,7 +635,7 @@ public final class e
     //   665: iconst_0
     //   666: aload 20
     //   668: aastore
-    //   669: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   669: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   672: aload 19
     //   674: bipush 251
     //   676: putfield 439	com/tencent/mm/pointers/PInt:value	I
@@ -651,7 +650,7 @@ public final class e
     //   695: iconst_0
     //   696: aload 12
     //   698: aastore
-    //   699: invokestatic 481	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   699: invokestatic 481	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   702: aload 20
     //   704: getfield 477	com/tencent/mm/modelcontrol/VideoTransPara:videoBitrate	I
     //   707: ldc_w 489
@@ -673,7 +672,7 @@ public final class e
     //   741: iconst_1
     //   742: aload 20
     //   744: aastore
-    //   745: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   745: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   748: aload 19
     //   750: iconst_1
     //   751: putfield 439	com/tencent/mm/pointers/PInt:value	I
@@ -696,8 +695,8 @@ public final class e
     //   792: aconst_null
     //   793: astore 12
     //   795: goto -426 -> 369
-    //   798: invokestatic 367	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   801: invokestatic 385	com/tencent/mm/sdk/platformtools/ay:is2G	(Landroid/content/Context;)Z
+    //   798: invokestatic 367	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   801: invokestatic 385	com/tencent/mm/sdk/platformtools/az:is2G	(Landroid/content/Context;)Z
     //   804: istore 9
     //   806: aload 12
     //   808: getfield 468	com/tencent/mm/modelcontrol/VideoTransPara:width	I
@@ -776,7 +775,7 @@ public final class e
     //   956: ifnonnull +123 -> 1079
     //   959: ldc 96
     //   961: ldc_w 392
-    //   964: invokestatic 395	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   964: invokestatic 395	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   967: aload_0
     //   968: ldc_w 396
     //   971: aload 13
@@ -833,7 +832,7 @@ public final class e
     //   1063: ldc_w 289
     //   1066: iconst_0
     //   1067: anewarray 100	java/lang/Object
-    //   1070: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1070: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1073: aconst_null
     //   1074: astore 16
     //   1076: goto -122 -> 954
@@ -841,12 +840,12 @@ public final class e
     //   1081: ifne +137 -> 1218
     //   1084: aload 18
     //   1086: aload 14
-    //   1088: invokestatic 516	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
+    //   1088: invokestatic 516	com/tencent/mm/vfs/o:mF	(Ljava/lang/String;Ljava/lang/String;)J
     //   1091: pop2
     //   1092: aload 16
     //   1094: getfield 519	com/tencent/mm/compatible/h/a$a:duration	I
     //   1097: i2l
-    //   1098: invokestatic 523	com/tencent/mm/sdk/platformtools/bt:Dg	(J)I
+    //   1098: invokestatic 523	com/tencent/mm/sdk/platformtools/bu:DE	(J)I
     //   1101: istore 7
     //   1103: aload 16
     //   1105: getfield 527	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
@@ -857,7 +856,7 @@ public final class e
     //   1118: getstatic 533	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   1121: aload 15
     //   1123: iconst_1
-    //   1124: invokestatic 538	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   1124: invokestatic 538	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   1127: pop
     //   1128: iconst_0
     //   1129: istore 5
@@ -866,12 +865,12 @@ public final class e
     //   1136: ldc_w 539
     //   1139: sipush 320
     //   1142: sipush 480
-    //   1145: invokestatic 543	com/tencent/mm/sdk/platformtools/g:aJ	(III)Landroid/graphics/Bitmap;
+    //   1145: invokestatic 543	com/tencent/mm/sdk/platformtools/h:aK	(III)Landroid/graphics/Bitmap;
     //   1148: bipush 60
     //   1150: getstatic 533	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   1153: aload 15
     //   1155: iconst_1
-    //   1156: invokestatic 538	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   1156: invokestatic 538	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   1159: pop
     //   1160: iload_3
     //   1161: istore 5
@@ -880,12 +879,12 @@ public final class e
     //   1168: iload_3
     //   1169: istore 5
     //   1171: aload 14
-    //   1173: invokestatic 546	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   1173: invokestatic 546	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   1176: ifne +8 -> 1184
     //   1179: ldc_w 547
     //   1182: istore 5
     //   1184: aload 15
-    //   1186: invokestatic 546	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   1186: invokestatic 546	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
     //   1189: ifne +8 -> 1197
     //   1192: ldc_w 548
     //   1195: istore 5
@@ -908,7 +907,7 @@ public final class e
     //   1230: ldc_w 289
     //   1233: iconst_0
     //   1234: anewarray 100	java/lang/Object
-    //   1237: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1237: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1240: iconst_1
     //   1241: istore 5
     //   1243: goto -112 -> 1131
@@ -918,7 +917,7 @@ public final class e
     //   1252: ldc_w 289
     //   1255: iconst_0
     //   1256: anewarray 100	java/lang/Object
-    //   1259: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1259: invokestatic 254	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1262: goto -102 -> 1160
     //   1265: ldc_w 333
     //   1268: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -967,35 +966,35 @@ public final class e
   }
   
   static final class b
-    implements be.a
+    implements bf.a
   {
     String fileName;
-    String irI;
-    VideoTransPara itU;
-    String jNP;
+    String iuC;
+    VideoTransPara iwO;
+    String jRg;
     private int outputHeight;
     private int outputWidth;
-    e.a puI;
-    l puJ;
-    int puT;
-    private boolean puU;
-    private int puV = 0;
+    e.a pBm;
+    l pBn;
+    int pBx;
+    private boolean pBy;
+    private int pBz = 0;
     
-    public final boolean aEm()
+    public final boolean aEC()
     {
       AppMethodBeat.i(181769);
       for (;;)
       {
-        synchronized (e.puO)
+        synchronized (e.pBs)
         {
           int i;
-          if (!e.cew().containsKey(this.fileName))
+          if (!e.cfL().containsKey(this.fileName))
           {
             i = 1;
             j = i;
             if (i == 0)
             {
-              if (u.Hy(this.fileName) == null) {
+              if (u.Ia(this.fileName) == null) {
                 j = 1;
               }
             }
@@ -1004,7 +1003,7 @@ public final class e
               if (j == 0) {
                 break;
               }
-              ad.w("MicroMsg.EditorVideoCompress", "remuxing job has been removed, filename %s", new Object[] { this.fileName });
+              ae.w("MicroMsg.EditorVideoCompress", "remuxing job has been removed, filename %s", new Object[] { this.fileName });
               AppMethodBeat.o(181769);
               return true;
             }
@@ -1016,95 +1015,95 @@ public final class e
         }
         int j = 0;
       }
-      if ((this.itU != null) && (!this.itU.isDefault)) {
-        this.outputWidth = this.itU.width;
+      if ((this.iwO != null) && (!this.iwO.isDefault)) {
+        this.outputWidth = this.iwO.width;
       }
       Object localObject3;
-      for (this.outputHeight = this.itU.height;; this.outputHeight = ???[1])
+      for (this.outputHeight = this.iwO.height;; this.outputHeight = ???[1])
       {
         ??? = new PString();
         localObject3 = new PInt();
-        if ((!((a)g.ab(a.class)).azx().a(this.irI, (PString)???, (PInt)localObject3)) || (i.mz(((PString)???).value, this.jNP) < 0L)) {
+        if ((!((a)g.ab(a.class)).azN().a(this.iuC, (PString)???, (PInt)localObject3)) || (com.tencent.mm.vfs.o.mF(((PString)???).value, this.jRg) < 0L)) {
           break;
         }
-        ad.i("MicroMsg.EditorVideoCompress", "copy remuxing file success, do not remuxing again.");
-        this.puT = ((PInt)localObject3).value;
-        this.puU = true;
+        ae.i("MicroMsg.EditorVideoCompress", "copy remuxing file success, do not remuxing again.");
+        this.pBx = ((PInt)localObject3).value;
+        this.pBy = true;
         AppMethodBeat.o(181769);
         return true;
         ??? = new int[2];
-        e.d(this.irI, (int[])???);
+        e.d(this.iuC, (int[])???);
         this.outputWidth = ???[0];
       }
-      long l = com.tencent.mm.sdk.platformtools.bt.HI();
-      if (this.itU != null)
+      long l = com.tencent.mm.sdk.platformtools.bu.HQ();
+      if (this.iwO != null)
       {
-        ad.i("MicroMsg.EditorVideoCompress", "remuxing new para %s", new Object[] { this.itU });
-        this.puT = SightVideoJNI.remuxingVFS(this.irI, this.jNP, this.outputWidth, this.outputHeight, this.itU.videoBitrate, this.itU.hVf, 8, this.itU.hVe, 25.0F, this.itU.fps, null, 0, false, 0, 51);
-        this.puV = ((int)com.tencent.mm.sdk.platformtools.bt.aO(l));
-        ad.i("MicroMsg.EditorVideoCompress", "remuxing [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { this.irI, this.jNP, Integer.valueOf(this.puT), Integer.valueOf(this.outputWidth), Integer.valueOf(this.outputHeight) });
-        if (this.puT < 0) {
+        ae.i("MicroMsg.EditorVideoCompress", "remuxing new para %s", new Object[] { this.iwO });
+        this.pBx = SightVideoJNI.remuxingVFS(this.iuC, this.jRg, this.outputWidth, this.outputHeight, this.iwO.videoBitrate, this.iwO.hXX, 8, this.iwO.hXW, 25.0F, this.iwO.fps, null, 0, false, 0, 51);
+        this.pBz = ((int)com.tencent.mm.sdk.platformtools.bu.aO(l));
+        ae.i("MicroMsg.EditorVideoCompress", "remuxing [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { this.iuC, this.jRg, Integer.valueOf(this.pBx), Integer.valueOf(this.outputWidth), Integer.valueOf(this.outputHeight) });
+        if (this.pBx < 0) {
           break label580;
         }
       }
       label580:
       for (boolean bool = true;; bool = false)
       {
-        this.puU = bool;
+        this.pBy = bool;
         ??? = new PInt();
         localObject3 = new PInt();
-        if (u.a(this.jNP, (PInt)???, (PInt)localObject3)) {
-          this.puT = ((PInt)???).value;
+        if (u.a(this.jRg, (PInt)???, (PInt)localObject3)) {
+          this.pBx = ((PInt)???).value;
         }
-        if (this.puU) {
+        if (this.pBy) {
           break label586;
         }
-        ad.w("MicroMsg.EditorVideoCompress", "remuxing video error, copy source video to send.");
-        i.deleteFile(this.jNP);
-        i.mz(this.irI, this.jNP);
+        ae.w("MicroMsg.EditorVideoCompress", "remuxing video error, copy source video to send.");
+        com.tencent.mm.vfs.o.deleteFile(this.jRg);
+        com.tencent.mm.vfs.o.mF(this.iuC, this.jRg);
         AppMethodBeat.o(181769);
         return true;
-        ad.w("MicroMsg.EditorVideoCompress", "remuxing but new para is null. %s", new Object[] { this.fileName });
-        this.puT = SightVideoJNI.remuxingVFS(this.irI, this.jNP, this.outputWidth, this.outputHeight, c.yRc, c.yRb, 8, 2, 25.0F, c.yRd, null, 0, false, 0, 51);
+        ae.w("MicroMsg.EditorVideoCompress", "remuxing but new para is null. %s", new Object[] { this.fileName });
+        this.pBx = SightVideoJNI.remuxingVFS(this.iuC, this.jRg, this.outputWidth, this.outputHeight, c.zhm, c.zhl, 8, 2, 25.0F, c.zhn, null, 0, false, 0, 51);
         break;
       }
       label586:
-      ad.i("MicroMsg.EditorVideoCompress", "remuxing video sucess,insert to media duplication storage");
+      ae.i("MicroMsg.EditorVideoCompress", "remuxing video sucess,insert to media duplication storage");
       for (;;)
       {
         PInt localPInt;
         try
         {
-          localObject3 = new com.tencent.mm.vfs.e(this.jNP);
-          ??? = ((com.tencent.mm.vfs.e)localObject3).getName();
-          String str = this.jNP + ".tmp";
+          localObject3 = new k(this.jRg);
+          ??? = ((k)localObject3).getName();
+          String str = this.jRg + ".tmp";
           localPInt = new PInt(0);
-          if (!com.tencent.mm.plugin.a.e.b(this.jNP, str, localPInt)) {
+          if (!com.tencent.mm.plugin.a.e.b(this.jRg, str, localPInt)) {
             break label813;
           }
-          bool = ((com.tencent.mm.vfs.e)localObject3).delete();
-          localObject3 = new com.tencent.mm.vfs.e(str);
-          ad.i("MicroMsg.EditorVideoCompress", "fast start success. delOld[%b] rename[%b] path[%s] target[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(i.bb(((com.tencent.mm.vfs.e)localObject3).getParent() + "/", ((com.tencent.mm.vfs.e)localObject3).getName(), (String)???)), q.B(((com.tencent.mm.vfs.e)localObject3).fOK()), this.jNP });
-          ((a)g.ab(a.class)).azx().al(this.irI, this.jNP, this.puT);
+          bool = ((k)localObject3).delete();
+          localObject3 = new k(str);
+          ae.i("MicroMsg.EditorVideoCompress", "fast start success. delOld[%b] rename[%b] path[%s] target[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(com.tencent.mm.vfs.o.bc(((k)localObject3).getParent() + "/", ((k)localObject3).getName(), (String)???)), w.B(((k)localObject3).fTh()), this.jRg });
+          ((a)g.ab(a.class)).azN().an(this.iuC, this.jRg, this.pBx);
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.EditorVideoCompress", "fast start exception e[%s]", new Object[] { localException.toString() });
+          ae.e("MicroMsg.EditorVideoCompress", "fast start exception e[%s]", new Object[] { localException.toString() });
         }
         break;
         label813:
-        ad.i("MicroMsg.EditorVideoCompress", "fast start fail. msg[%d] importpath[%s] targetPath[%s]", new Object[] { Integer.valueOf(localPInt.value), this.irI, this.jNP });
+        ae.i("MicroMsg.EditorVideoCompress", "fast start fail. msg[%d] importpath[%s] targetPath[%s]", new Object[] { Integer.valueOf(localPInt.value), this.iuC, this.jRg });
       }
     }
     
-    public final boolean aEn()
+    public final boolean aED()
     {
       AppMethodBeat.i(181770);
-      synchronized (e.puO)
+      synchronized (e.pBs)
       {
-        e.cew().remove(this.fileName);
-        if (this.puI != null) {
-          this.puI.b(this.jNP, this.puJ);
+        e.cfL().remove(this.fileName);
+        if (this.pBm != null) {
+          this.pBm.b(this.jRg, this.pBn);
         }
         AppMethodBeat.o(181770);
         return false;
@@ -1114,7 +1113,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.e
  * JD-Core Version:    0.7.0.1
  */

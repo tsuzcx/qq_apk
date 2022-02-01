@@ -44,7 +44,7 @@ public class TextButtonPreference
   {
     AppMethodBeat.i(142679);
     super.onCreateView(paramViewGroup);
-    paramViewGroup = z.jO(this.mContext).inflate(2131494808, paramViewGroup, false);
+    paramViewGroup = z.jV(this.mContext).inflate(2131494808, paramViewGroup, false);
     AppMethodBeat.o(142679);
     return paramViewGroup;
   }

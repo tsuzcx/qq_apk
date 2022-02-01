@@ -1,55 +1,57 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.j;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.vfs.o;
 
 public final class d
   extends b
 {
+  private final String AcD;
+  private final a AcE;
   private final String fileName;
   private final String filePath;
   private final int fileType;
-  private final String zLw;
-  private final a zLx;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, a parama)
   {
-    AppMethodBeat.i(198106);
-    com.tencent.mm.vfs.i.aYg(paramString2);
+    AppMethodBeat.i(219620);
+    o.aZI(paramString2);
     this.url = paramString1;
-    this.zLw = paramString2;
+    this.AcD = paramString2;
     this.fileName = paramString3;
     this.filePath = (paramString2 + paramString3);
     this.fileType = paramInt;
-    this.zLx = parama;
-    AppMethodBeat.o(198106);
+    this.AcE = parama;
+    AppMethodBeat.o(219620);
   }
   
-  private String dYa()
+  private String ebE()
   {
     AppMethodBeat.i(97289);
     try
     {
-      AdLandingPagesProxy.getInstance().downloadLandingPagesCDNFile(this.zLw, this.fileName, this.url, this.fileType, new AdLandingPagesProxy.g()
+      AdLandingPagesProxy.getInstance().downloadLandingPagesCDNFile(this.AcD, this.fileName, this.url, this.fileType, new AdLandingPagesProxy.g()
       {
-        public final void dRX()
+        public final void dVv()
         {
           AppMethodBeat.i(97285);
-          String str = ay.iR(aj.getContext());
-          ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "onDownloadError, netType=" + str + ", url=" + d.this.url);
-          d.this.azN(d.a(d.this));
+          String str = az.iW(ak.getContext());
+          ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "onDownloadError, netType=" + str + ", url=" + d.this.url);
+          d.this.aBe(d.a(d.this));
           if (d.b(d.this) != null) {
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97283);
-                d.b(d.this).dRX();
+                d.b(d.this).dVv();
                 AppMethodBeat.o(97283);
               }
             });
@@ -57,16 +59,16 @@ public final class d
           AppMethodBeat.o(97285);
         }
         
-        public final void dTm()
+        public final void dWM()
         {
           AppMethodBeat.i(97286);
           if (d.b(d.this) != null) {
-            aq.f(new Runnable()
+            ar.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97284);
-                d.b(d.this).axG(d.a(d.this));
+                d.b(d.this).ayY(d.a(d.this));
                 AppMethodBeat.o(97284);
               }
             });
@@ -81,15 +83,15 @@ public final class d
     {
       for (;;)
       {
-        String str = ay.iR(aj.getContext());
-        ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "doInBackground exp, netType=" + str + ", exp=" + localException.toString() + ", url=" + this.url);
-        azN(this.filePath);
-        aq.f(new Runnable()
+        String str = az.iW(ak.getContext());
+        ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "doInBackground exp, netType=" + str + ", exp=" + localException.toString() + ", url=" + this.url);
+        aBe(this.filePath);
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97287);
-            d.b(d.this).dRX();
+            d.b(d.this).dVv();
             AppMethodBeat.o(97287);
           }
         });
@@ -97,38 +99,38 @@ public final class d
     }
   }
   
-  protected final void azN(String paramString)
+  protected final void aBe(String paramString)
   {
-    AppMethodBeat.i(198107);
+    AppMethodBeat.i(219621);
     int i = 0;
     String str = "0";
     for (;;)
     {
       try
       {
-        if (com.tencent.mm.vfs.i.fv(paramString))
+        if (o.fB(paramString))
         {
           str = "1";
-          if (com.tencent.mm.vfs.i.deleteFile(paramString))
+          if (o.deleteFile(paramString))
           {
             i = 1;
-            ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, succ");
+            ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, succ");
             paramString = str;
-            str = ay.iR(aj.getContext());
-            com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.zda, paramString, this.fileType, i, "cdn|".concat(String.valueOf(str)));
-            AppMethodBeat.o(198107);
+            str = az.iW(ak.getContext());
+            j.b(j.ztQ, paramString, this.fileType, i, "cdn|".concat(String.valueOf(str)));
+            AppMethodBeat.o(219621);
             return;
           }
-          ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, failed");
+          ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, failed");
           paramString = str;
           continue;
         }
-        ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, file not exists");
+        ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, file not exists");
       }
       catch (Throwable paramString)
       {
-        ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, exp=" + paramString.toString());
-        AppMethodBeat.o(198107);
+        ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, exp=" + paramString.toString());
+        AppMethodBeat.o(219621);
         return;
       }
       paramString = str;
@@ -137,9 +139,9 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void axG(String paramString);
+    public abstract void ayY(String paramString);
     
-    public abstract void dRX();
+    public abstract void dVv();
   }
 }
 

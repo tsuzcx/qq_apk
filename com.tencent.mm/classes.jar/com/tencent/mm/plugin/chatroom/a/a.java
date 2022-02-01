@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public final int ixn;
-  public final String oRG;
-  public final int oRH;
-  public final int oRI;
-  public final int oRJ;
+  public final int iAg;
+  public final String oYi;
+  public final int oYj;
+  public final int oYk;
+  public final int oYl;
   
   public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.oRG = paramString;
-    this.oRH = paramInt1;
-    this.ixn = paramInt2;
-    this.oRI = paramInt3;
-    this.oRJ = paramInt4;
+    this.oYi = paramString;
+    this.oYj = paramInt1;
+    this.iAg = paramInt2;
+    this.oYk = paramInt3;
+    this.oYl = paramInt4;
   }
   
   public final boolean equals(Object paramObject)
@@ -30,7 +30,7 @@ public final class a
     if ((paramObject instanceof a))
     {
       paramObject = (a)paramObject;
-      if ((this.oRH == paramObject.oRH) && (this.ixn == paramObject.ixn) && (this.oRI == paramObject.oRI) && (this.oRJ == paramObject.oRJ) && (this.oRG.equals(paramObject.oRG)))
+      if ((this.oYj == paramObject.oYj) && (this.iAg == paramObject.iAg) && (this.oYk == paramObject.oYk) && (this.oYl == paramObject.oYl) && (this.oYi.equals(paramObject.oYi)))
       {
         AppMethodBeat.o(116463);
         return true;
@@ -45,7 +45,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(116464);
-    String str = "GetChatRoomMsgInfo chatroomId[" + this.oRG + "], filterSeq[" + this.oRH + "], msgSeq[" + this.ixn + "], needCount[" + this.oRI + "], upDownFlag[" + this.oRJ + "], hash[" + hashCode() + "]";
+    String str = "GetChatRoomMsgInfo chatroomId[" + this.oYi + "], filterSeq[" + this.oYj + "], msgSeq[" + this.iAg + "], needCount[" + this.oYk + "], upDownFlag[" + this.oYl + "], hash[" + hashCode() + "]";
     AppMethodBeat.o(116464);
     return str;
   }

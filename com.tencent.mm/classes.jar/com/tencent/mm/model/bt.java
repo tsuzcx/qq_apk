@@ -1,181 +1,123 @@
 package com.tencent.mm.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.caq;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class bt
 {
-  public String cityCode = "";
-  public String countryCode = "";
-  public int ePk = 0;
-  public int ePt = 0;
-  public String ePy = "";
-  private String hHV = "";
-  private String hHW = "";
-  public String provinceCode = "";
-  public String signature = "";
+  public static bt hKL;
+  private SharedPreferences hKM;
   
-  public static caq a(bt parambt)
+  static
   {
-    AppMethodBeat.i(42985);
-    g.ajC().ajl().set(12289, Integer.valueOf(parambt.ePt));
-    g.ajC().ajl().set(12290, Integer.valueOf(parambt.ePk));
-    if (bt.a.aO((String)g.ajC().ajl().get(12293, null), parambt.getProvince())) {
-      g.ajC().ajl().set(12293, parambt.getProvince());
-    }
-    if (bt.a.aO((String)g.ajC().ajl().get(12292, null), parambt.getCity())) {
-      g.ajC().ajl().set(12292, parambt.getCity());
-    }
-    if (bt.a.aO((String)g.ajC().ajl().get(12291, null), parambt.signature)) {
-      g.ajC().ajl().set(12291, parambt.signature);
-    }
-    if (bt.a.aO((String)g.ajC().ajl().get(12307, null), parambt.ePy)) {
-      g.ajC().ajl().set(12307, parambt.ePy);
-    }
-    if (bt.a.aO((String)g.ajC().ajl().get(12324, null), parambt.countryCode)) {
-      g.ajC().ajl().set(12324, parambt.countryCode);
-    }
-    if (bt.a.aO((String)g.ajC().ajl().get(12325, null), parambt.provinceCode)) {
-      g.ajC().ajl().set(12325, parambt.provinceCode);
-    }
-    if (bt.a.aO((String)g.ajC().ajl().get(12326, null), parambt.cityCode)) {
-      g.ajC().ajl().set(12326, parambt.cityCode);
-    }
-    caq localcaq = new caq();
-    localcaq.GVj = 128;
-    localcaq.GbY = new cwt().aPy("");
-    localcaq.GKC = new cwt().aPy("");
-    localcaq.Fsf = 0;
-    localcaq.GVk = new cwt().aPy("");
-    localcaq.GVl = new cwt().aPy("");
-    localcaq.nDG = 0;
-    byte[] arrayOfByte2 = i.aY("", 0, -1);
-    byte[] arrayOfByte1;
-    if (arrayOfByte2 == null)
-    {
-      arrayOfByte1 = new byte[0];
-      localcaq.GVh = new b(arrayOfByte1);
-      if (arrayOfByte2 != null) {
-        break label598;
-      }
-    }
-    label598:
-    for (int i = 0;; i = arrayOfByte2.length)
-    {
-      localcaq.GVg = i;
-      localcaq.jdc = parambt.ePk;
-      localcaq.jdg = parambt.ePt;
-      localcaq.jdf = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.signature);
-      localcaq.jde = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.cityCode);
-      localcaq.jdd = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.provinceCode);
-      localcaq.Fsi = 0;
-      localcaq.GNW = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.ePy);
-      localcaq.GVq = 0;
-      localcaq.jdh = "";
-      localcaq.GNY = 0;
-      localcaq.GNX = "";
-      localcaq.jdl = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.countryCode);
-      AppMethodBeat.o(42985);
-      return localcaq;
-      arrayOfByte1 = arrayOfByte2;
-      break;
-    }
+    AppMethodBeat.i(132261);
+    hKL = new bt();
+    AppMethodBeat.o(132261);
   }
   
-  public static bt aCv()
+  private bt()
   {
-    AppMethodBeat.i(42983);
-    bt localbt = new bt();
-    localbt.ePt = 1;
-    localbt.ePk = com.tencent.mm.sdk.platformtools.bt.a((Integer)g.ajC().ajl().get(12290, null), 0);
-    localbt.hHV = ((String)g.ajC().ajl().get(12293, null));
-    localbt.hHW = ((String)g.ajC().ajl().get(12292, null));
-    localbt.signature = ((String)g.ajC().ajl().get(12291, null));
-    localbt.ePy = ((String)g.ajC().ajl().get(12307, null));
-    localbt.countryCode = ((String)g.ajC().ajl().get(12324, null));
-    localbt.provinceCode = ((String)g.ajC().ajl().get(12325, null));
-    localbt.cityCode = ((String)g.ajC().ajl().get(12326, null));
-    AppMethodBeat.o(42983);
-    return localbt;
+    AppMethodBeat.i(132258);
+    this.hKM = ak.getContext().getSharedPreferences(ak.fow() + "_register_history", 0);
+    AppMethodBeat.o(132258);
   }
   
-  public static bt aCw()
+  public final String getString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(42984);
-    if (com.tencent.mm.sdk.platformtools.bt.a((Integer)g.ajC().ajl().get(12289, null), 0) == 0)
+    AppMethodBeat.i(132260);
+    try
     {
-      AppMethodBeat.o(42984);
-      return null;
+      ae.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.hKM.contains(paramString1))
+      {
+        Object localObject = new String(Base64.decode(this.hKM.getString(paramString1, ""), 0));
+        if (!bu.isNullOrNil((String)localObject))
+        {
+          ae.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(132260);
+            return localObject;
+          }
+        }
+      }
+      else
+      {
+        ae.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
+      }
     }
-    bt localbt = aCv();
-    AppMethodBeat.o(42984);
-    return localbt;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ae.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(132260);
+    return "";
   }
   
-  public final String getCity()
+  public final void h(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(42986);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.countryCode))
+    AppMethodBeat.i(132259);
+    Object localObject;
+    for (;;)
     {
-      if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.provinceCode)) {
-        break label105;
+      try
+      {
+        if (paramMap.isEmpty())
+        {
+          ae.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(132259);
+          return;
+        }
+        if (!this.hKM.contains(paramString)) {
+          break label173;
+        }
+        localObject = this.hKM.getString(paramString, "");
+        if (!bu.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
       }
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.cityCode)) {
-        break label79;
+      catch (Exception paramMap)
+      {
+        ae.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(132259);
+        return;
       }
-      RegionCodeDecoder.fsz();
-      this.hHW = RegionCodeDecoder.mb(this.countryCode, this.provinceCode);
-    }
-    while (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.hHW))
-    {
-      str = com.tencent.mm.sdk.platformtools.bt.nullAsNil(this.cityCode);
-      AppMethodBeat.o(42986);
-      return str;
-      label79:
-      RegionCodeDecoder.fsz();
-      this.hHW = RegionCodeDecoder.bh(this.countryCode, this.provinceCode, this.cityCode);
       continue;
-      label105:
-      this.hHW = "";
+      label173:
+      localObject = new JSONObject();
     }
-    String str = this.hHW;
-    AppMethodBeat.o(42986);
-    return str;
-  }
-  
-  public final String getProvince()
-  {
-    AppMethodBeat.i(42987);
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.countryCode))
-    {
-      if ((com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.provinceCode)) || (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.cityCode)) || (!RegionCodeDecoder.aUp(this.countryCode))) {
-        break label89;
-      }
-      RegionCodeDecoder.fsz();
-    }
-    for (this.hHV = RegionCodeDecoder.mb(this.countryCode, this.provinceCode); com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.hHV); this.hHV = RegionCodeDecoder.aUq(this.countryCode))
-    {
-      str = com.tencent.mm.sdk.platformtools.bt.nullAsNil(this.provinceCode);
-      AppMethodBeat.o(42987);
-      return str;
-      label89:
-      RegionCodeDecoder.fsz();
-    }
-    String str = this.hHV;
-    AppMethodBeat.o(42987);
-    return str;
+    ae.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.hKM.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(132259);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bt
  * JD-Core Version:    0.7.0.1
  */

@@ -13,40 +13,34 @@ final class e
   
   static
   {
-    int[] arrayOfInt1 = { 1, 1, 1, 1, 1, 1, 1 };
-    int[] arrayOfInt2 = { 1, 0, 0, 0, 0, 0, 1 };
-    int[] arrayOfInt3 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt4 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt5 = { 1, 0, 0, 0, 0, 0, 1 };
-    bVg = new int[][] { arrayOfInt1, arrayOfInt2, { 1, 0, 1, 1, 1, 0, 1 }, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 1, 1, 1, 1, 1, 1, 1 } };
-    arrayOfInt1 = new int[] { 1, 0, 0, 0, 1 };
-    bVh = new int[][] { { 1, 1, 1, 1, 1 }, arrayOfInt1, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
+    int[] arrayOfInt1 = { 1, 0, 0, 0, 0, 0, 1 };
+    int[] arrayOfInt2 = { 1, 0, 1, 1, 1, 0, 1 };
+    int[] arrayOfInt3 = { 1, 0, 0, 0, 0, 0, 1 };
+    bVg = new int[][] { { 1, 1, 1, 1, 1, 1, 1 }, arrayOfInt1, arrayOfInt2, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, arrayOfInt3, { 1, 1, 1, 1, 1, 1, 1 } };
+    bVh = new int[][] { { 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
     arrayOfInt1 = new int[] { -1, -1, -1, -1, -1, -1, -1 };
-    arrayOfInt2 = new int[] { 6, 22, -1, -1, -1, -1, -1 };
-    arrayOfInt3 = new int[] { 6, 30, -1, -1, -1, -1, -1 };
-    arrayOfInt4 = new int[] { 6, 30, 54, -1, -1, -1, -1 };
-    arrayOfInt5 = new int[] { 6, 34, 62, -1, -1, -1, -1 };
-    int[] arrayOfInt6 = { 6, 26, 48, 70, -1, -1, -1 };
-    int[] arrayOfInt7 = { 6, 30, 54, 78, 102, -1, -1 };
-    int[] arrayOfInt8 = { 6, 32, 58, 84, 110, -1, -1 };
-    int[] arrayOfInt9 = { 6, 34, 62, 90, 118, -1, -1 };
-    int[] arrayOfInt10 = { 6, 26, 50, 74, 98, 122, -1 };
-    int[] arrayOfInt11 = { 6, 30, 54, 78, 102, 126, -1 };
-    int[] arrayOfInt12 = { 6, 26, 52, 78, 104, 130, -1 };
-    int[] arrayOfInt13 = { 6, 30, 56, 82, 108, 134, -1 };
-    int[] arrayOfInt14 = { 6, 30, 58, 86, 114, 142, -1 };
-    int[] arrayOfInt15 = { 6, 34, 62, 90, 118, 146, -1 };
-    int[] arrayOfInt16 = { 6, 30, 54, 78, 102, 126, 150 };
-    int[] arrayOfInt17 = { 6, 24, 50, 76, 102, 128, 154 };
-    int[] arrayOfInt18 = { 6, 32, 58, 84, 110, 136, 162 };
-    bVi = new int[][] { arrayOfInt1, { 6, 18, -1, -1, -1, -1, -1 }, arrayOfInt2, { 6, 26, -1, -1, -1, -1, -1 }, arrayOfInt3, { 6, 34, -1, -1, -1, -1, -1 }, { 6, 22, 38, -1, -1, -1, -1 }, { 6, 24, 42, -1, -1, -1, -1 }, { 6, 26, 46, -1, -1, -1, -1 }, { 6, 28, 50, -1, -1, -1, -1 }, arrayOfInt4, { 6, 32, 58, -1, -1, -1, -1 }, arrayOfInt5, { 6, 26, 46, 66, -1, -1, -1 }, arrayOfInt6, { 6, 26, 50, 74, -1, -1, -1 }, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, { 6, 30, 58, 86, -1, -1, -1 }, { 6, 34, 62, 90, -1, -1, -1 }, { 6, 28, 50, 72, 94, -1, -1 }, { 6, 26, 50, 74, 98, -1, -1 }, arrayOfInt7, { 6, 28, 54, 80, 106, -1, -1 }, arrayOfInt8, { 6, 30, 58, 86, 114, -1, -1 }, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12, arrayOfInt13, { 6, 34, 60, 86, 112, 138, -1 }, arrayOfInt14, arrayOfInt15, arrayOfInt16, arrayOfInt17, { 6, 28, 54, 80, 106, 132, 158 }, arrayOfInt18, { 6, 26, 54, 82, 110, 138, 166 }, { 6, 30, 58, 86, 114, 142, 170 } };
-    arrayOfInt1 = new int[] { 8, 5 };
-    arrayOfInt2 = new int[] { 8, 7 };
+    arrayOfInt2 = new int[] { 6, 18, -1, -1, -1, -1, -1 };
+    arrayOfInt3 = new int[] { 6, 26, -1, -1, -1, -1, -1 };
+    int[] arrayOfInt4 = { 6, 34, -1, -1, -1, -1, -1 };
+    int[] arrayOfInt5 = { 6, 24, 42, -1, -1, -1, -1 };
+    int[] arrayOfInt6 = { 6, 26, 46, -1, -1, -1, -1 };
+    int[] arrayOfInt7 = { 6, 30, 54, -1, -1, -1, -1 };
+    int[] arrayOfInt8 = { 6, 32, 58, -1, -1, -1, -1 };
+    int[] arrayOfInt9 = { 6, 26, 50, 74, -1, -1, -1 };
+    int[] arrayOfInt10 = { 6, 30, 58, 86, -1, -1, -1 };
+    int[] arrayOfInt11 = { 6, 30, 54, 78, 102, -1, -1 };
+    int[] arrayOfInt12 = { 6, 32, 58, 84, 110, -1, -1 };
+    int[] arrayOfInt13 = { 6, 30, 58, 86, 114, -1, -1 };
+    int[] arrayOfInt14 = { 6, 26, 50, 74, 98, 122, -1 };
+    int[] arrayOfInt15 = { 6, 30, 56, 82, 108, 134, -1 };
+    int[] arrayOfInt16 = { 6, 24, 50, 76, 102, 128, 154 };
+    int[] arrayOfInt17 = { 6, 32, 58, 84, 110, 136, 162 };
+    int[] arrayOfInt18 = { 6, 26, 54, 82, 110, 138, 166 };
+    bVi = new int[][] { arrayOfInt1, arrayOfInt2, { 6, 22, -1, -1, -1, -1, -1 }, arrayOfInt3, { 6, 30, -1, -1, -1, -1, -1 }, arrayOfInt4, { 6, 22, 38, -1, -1, -1, -1 }, arrayOfInt5, arrayOfInt6, { 6, 28, 50, -1, -1, -1, -1 }, arrayOfInt7, arrayOfInt8, { 6, 34, 62, -1, -1, -1, -1 }, { 6, 26, 46, 66, -1, -1, -1 }, { 6, 26, 48, 70, -1, -1, -1 }, arrayOfInt9, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, arrayOfInt10, { 6, 34, 62, 90, -1, -1, -1 }, { 6, 28, 50, 72, 94, -1, -1 }, { 6, 26, 50, 74, 98, -1, -1 }, arrayOfInt11, { 6, 28, 54, 80, 106, -1, -1 }, arrayOfInt12, arrayOfInt13, { 6, 34, 62, 90, 118, -1, -1 }, arrayOfInt14, { 6, 30, 54, 78, 102, 126, -1 }, { 6, 26, 52, 78, 104, 130, -1 }, arrayOfInt15, { 6, 34, 60, 86, 112, 138, -1 }, { 6, 30, 58, 86, 114, 142, -1 }, { 6, 34, 62, 90, 118, 146, -1 }, { 6, 30, 54, 78, 102, 126, 150 }, arrayOfInt16, { 6, 28, 54, 80, 106, 132, 158 }, arrayOfInt17, arrayOfInt18, { 6, 30, 58, 86, 114, 142, 170 } };
+    arrayOfInt1 = new int[] { 8, 3 };
+    arrayOfInt2 = new int[] { 8, 5 };
     arrayOfInt3 = new int[] { 7, 8 };
-    arrayOfInt4 = new int[] { 4, 8 };
-    arrayOfInt5 = new int[] { 3, 8 };
-    arrayOfInt6 = new int[] { 0, 8 };
-    bVj = new int[][] { { 8, 0 }, { 8, 1 }, { 8, 2 }, { 8, 3 }, { 8, 4 }, arrayOfInt1, arrayOfInt2, { 8, 8 }, arrayOfInt3, { 5, 8 }, arrayOfInt4, arrayOfInt5, { 2, 8 }, { 1, 8 }, arrayOfInt6 };
+    bVj = new int[][] { { 8, 0 }, { 8, 1 }, { 8, 2 }, arrayOfInt1, { 8, 4 }, arrayOfInt2, { 8, 7 }, { 8, 8 }, arrayOfInt3, { 5, 8 }, { 4, 8 }, { 3, 8 }, { 2, 8 }, { 1, 8 }, { 0, 8 } };
   }
   
   private static void a(int paramInt1, int paramInt2, b paramb)

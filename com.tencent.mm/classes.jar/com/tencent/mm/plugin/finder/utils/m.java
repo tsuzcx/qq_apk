@@ -4,29 +4,30 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.ah.f;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.finder.api.g;
 import com.tencent.mm.plugin.finder.event.a.b;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.report.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.arh;
-import com.tencent.mm.protocal.protobuf.ari;
-import com.tencent.mm.protocal.protobuf.arj;
-import com.tencent.mm.protocal.protobuf.ark;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.arw;
+import com.tencent.mm.protocal.protobuf.arx;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.protocal.protobuf.arz;
+import com.tencent.mm.protocal.protobuf.bvz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.t;
@@ -41,135 +42,141 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderShareUtil;", "", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderShareUtil;", "", "Companion", "plugin-finder_release"})
 public abstract interface m
 {
-  public static final a sLy = a.sLD;
+  public static final a sWJ = a.sWO;
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion;", "", "()V", "REQUEST_CODE_SHARE_FEED_TO_CHAT", "", "getREQUEST_CODE_SHARE_FEED_TO_CHAT", "()I", "REQUEST_CODE_SHARE_FEED_TO_SNS", "getREQUEST_CODE_SHARE_FEED_TO_SNS", "REQUEST_CODE_SHARE_NAMECARD_TO_CAHT", "getREQUEST_CODE_SHARE_NAMECARD_TO_CAHT", "REQUEST_CODE_SHARE_VIDEO_FILE_TO_CHAT", "getREQUEST_CODE_SHARE_VIDEO_FILE_TO_CHAT", "TAG", "", "getTAG", "()Ljava/lang/String;", "getFavEventInfo", "Lcom/tencent/mm/autogen/events/DoFavoriteEvent;", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "thumbPath", "getFinderShareObject", "Lcom/tencent/mm/protocal/protobuf/FinderShareObject;", "feedObject", "isShareSns", "", "getFinderTopic", "Lcom/tencent/mm/protocal/protobuf/FinderShareTopic;", "topic", "topicType", "iconUrl", "desc", "poiLocation", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "shareFinderContactToConversation", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "param", "Landroid/os/Bundle;", "shareToConversation", "shareType", "shareToSnsTimeLine", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "shareTopicToConversation", "totalCount", "", "scene", "shareTopicToSnsTimeLine", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion;", "", "()V", "REQUEST_CODE_SHARE_FEED_TO_CHAT", "", "getREQUEST_CODE_SHARE_FEED_TO_CHAT", "()I", "REQUEST_CODE_SHARE_FEED_TO_SNS", "getREQUEST_CODE_SHARE_FEED_TO_SNS", "REQUEST_CODE_SHARE_NAMECARD_TO_CAHT", "getREQUEST_CODE_SHARE_NAMECARD_TO_CAHT", "REQUEST_CODE_SHARE_VIDEO_FILE_TO_CHAT", "getREQUEST_CODE_SHARE_VIDEO_FILE_TO_CHAT", "TAG", "", "getTAG", "()Ljava/lang/String;", "getFavEventInfo", "Lcom/tencent/mm/autogen/events/DoFavoriteEvent;", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "thumbPath", "getFinderShareObject", "Lcom/tencent/mm/protocal/protobuf/FinderShareObject;", "feedObject", "isShareSns", "", "getFinderTopic", "Lcom/tencent/mm/protocal/protobuf/FinderShareTopic;", "topic", "topicType", "iconUrl", "desc", "poiLocation", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "shareFinderContactToConversation", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "param", "Landroid/os/Bundle;", "shareToConversation", "shareType", "shareToSnsTimeLine", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "shareTopicToConversation", "totalCount", "", "scene", "shareTopicToSnsTimeLine", "plugin-finder_release"})
   public static final class a
   {
     public static final String TAG = "Finder.FinderShareUtil";
-    public static final int sLA = 1002;
-    private static final int sLB = 1003;
-    private static final int sLC = 1004;
-    public static final int sLz = 1001;
+    public static final int sWK = 1001;
+    public static final int sWL = 1002;
+    private static final int sWM = 1003;
+    private static final int sWN = 1004;
     
     static
     {
       AppMethodBeat.i(167909);
-      sLD = new a();
-      sLz = 1001;
-      sLA = 1002;
-      sLB = 1003;
-      sLC = 1004;
+      sWO = new a();
+      sWK = 1001;
+      sWL = 1002;
+      sWM = 1003;
+      sWN = 1004;
       TAG = "Finder.FinderShareUtil";
       AppMethodBeat.o(167909);
     }
     
-    public static ark a(String paramString1, int paramInt, String paramString2, String paramString3, aoy paramaoy)
+    public static arz a(String paramString1, int paramInt, String paramString2, String paramString3, apl paramapl)
     {
       float f2 = 0.0F;
       AppMethodBeat.i(167908);
-      ark localark = new ark();
-      localark.dzZ = bt.nullAsNil(paramString1);
-      localark.sMj = paramInt;
-      localark.iconUrl = bt.nullAsNil(paramString2);
-      localark.desc = bt.nullAsNil(paramString3);
-      paramString2 = new arh();
-      if (paramaoy != null)
+      arz localarz = new arz();
+      localarz.dBe = bu.nullAsNil(paramString1);
+      localarz.sXu = paramInt;
+      localarz.iconUrl = bu.nullAsNil(paramString2);
+      localarz.desc = bu.nullAsNil(paramString3);
+      paramString2 = new arw();
+      if (paramapl != null)
       {
-        paramString1 = paramaoy.Gnu;
-        paramString2.Gnu = paramString1;
-        if (paramaoy == null) {
+        paramString1 = paramapl.GGA;
+        paramString2.GGA = paramString1;
+        if (paramapl == null) {
           break label133;
         }
       }
       label133:
-      for (float f1 = paramaoy.dAp;; f1 = 0.0F)
+      for (float f1 = paramapl.dBu;; f1 = 0.0F)
       {
-        paramString2.dAp = f1;
+        paramString2.dBu = f1;
         f1 = f2;
-        if (paramaoy != null) {
-          f1 = paramaoy.dyz;
+        if (paramapl != null) {
+          f1 = paramapl.dzE;
         }
-        paramString2.dyz = f1;
-        localark.Gpj = paramString2;
+        paramString2.dzE = f1;
+        localarz.GIz = paramString2;
         AppMethodBeat.o(167908);
-        return localark;
+        return localarz;
         paramString1 = null;
         break;
       }
     }
     
-    private static arj c(FinderItem paramFinderItem, boolean paramBoolean)
+    private static ary c(FinderItem paramFinderItem, boolean paramBoolean)
     {
-      AppMethodBeat.i(204502);
+      AppMethodBeat.i(205122);
       d.g.b.p.h(paramFinderItem, "feedObject");
-      Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-      int i = ((Number)com.tencent.mm.plugin.finder.storage.b.cGN().value()).intValue();
-      ad.i(TAG, "getFinderShareObject " + i + ' ' + paramFinderItem.getFeedObject().forward_style + ' ' + paramBoolean);
-      arj localarj;
-      Object localObject3;
+      Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+      int i = ((Number)com.tencent.mm.plugin.finder.storage.b.cIM().value()).intValue();
+      ae.i(TAG, "getFinderShareObject " + i + ' ' + paramFinderItem.getFeedObject().forward_style + ' ' + paramBoolean);
+      ary localary;
       Object localObject2;
-      label251:
-      bvf localbvf;
-      ari localari;
+      Object localObject3;
+      label260:
+      bvz localbvz;
+      arx localarx;
       StringBuilder localStringBuilder;
       if ((paramBoolean) && (i != 1)) {
         if (i == 2)
         {
           localObject1 = "";
-          localarj = new arj();
-          localarj.objectId = c.rc(paramFinderItem.getId());
-          localarj.objectNonceId = paramFinderItem.getObjectNonceId();
-          localarj.Gpi = paramFinderItem.getMediaType();
-          localObject3 = paramFinderItem.getFeedObject().contact.headUrl;
-          localObject2 = localObject3;
-          if (localObject3 == null) {
+          localary = new ary();
+          localary.objectId = c.rp(paramFinderItem.getId());
+          localary.objectNonceId = paramFinderItem.getObjectNonceId();
+          localary.GIy = paramFinderItem.getMediaType();
+          localObject2 = paramFinderItem.getFeedObject().contact;
+          if (localObject2 != null)
+          {
+            localObject3 = ((FinderContact)localObject2).headUrl;
+            localObject2 = localObject3;
+            if (localObject3 != null) {}
+          }
+          else
+          {
             localObject2 = "";
           }
-          localarj.sjU = ((String)localObject2);
-          localarj.nickname = ((String)localObject1);
-          localarj.username = paramFinderItem.getUserName();
-          localObject1 = com.tencent.mm.plugin.finder.search.h.stT;
-          localarj.desc = com.tencent.mm.plugin.finder.search.h.ahX(paramFinderItem.getDescription());
-          localarj.dqU = paramFinderItem.getMediaList().size();
-          localObject2 = localarj.mediaList;
+          localary.ssR = ((String)localObject2);
+          localary.nickname = ((String)localObject1);
+          localary.username = paramFinderItem.getUserName();
+          localObject1 = com.tencent.mm.plugin.finder.search.h.sEe;
+          localary.desc = com.tencent.mm.plugin.finder.search.h.aiV(paramFinderItem.getDescription());
+          localary.drZ = paramFinderItem.getMediaList().size();
+          localObject2 = localary.mediaList;
           paramFinderItem = (Iterable)paramFinderItem.getMediaList();
           localObject3 = (Collection)new ArrayList(j.a(paramFinderItem, 10));
           Iterator localIterator = paramFinderItem.iterator();
           if (!localIterator.hasNext()) {
-            break label527;
+            break label536;
           }
-          localbvf = (bvf)localIterator.next();
-          localari = new ari();
-          localari.mediaType = localbvf.mediaType;
-          localStringBuilder = new StringBuilder().append(localbvf.url);
-          localObject1 = localbvf.url_token;
+          localbvz = (bvz)localIterator.next();
+          localarx = new arx();
+          localarx.mediaType = localbvz.mediaType;
+          localStringBuilder = new StringBuilder().append(localbvz.url);
+          localObject1 = localbvz.url_token;
           paramFinderItem = (FinderItem)localObject1;
           if (localObject1 == null) {
             paramFinderItem = "";
           }
-          localari.url = paramFinderItem;
-          if (bt.isNullOrNil(localbvf.coverUrl)) {
-            break label477;
+          localarx.url = paramFinderItem;
+          if (bu.isNullOrNil(localbvz.coverUrl)) {
+            break label486;
           }
-          localStringBuilder = new StringBuilder().append(localbvf.coverUrl);
-          localObject1 = localbvf.cover_url_token;
+          localStringBuilder = new StringBuilder().append(localbvz.coverUrl);
+          localObject1 = localbvz.cover_url_token;
           paramFinderItem = (FinderItem)localObject1;
           if (localObject1 == null) {
             paramFinderItem = "";
           }
         }
       }
-      for (localari.thumbUrl = paramFinderItem;; localari.thumbUrl = paramFinderItem)
+      for (localarx.thumbUrl = paramFinderItem;; localarx.thumbUrl = paramFinderItem)
       {
-        localari.width = localbvf.width;
-        localari.height = localbvf.height;
-        localari.Gph = localbvf.videoDuration;
-        ((Collection)localObject3).add(localari);
-        break label251;
+        localarx.width = localbvz.width;
+        localarx.height = localbvz.height;
+        localarx.GIx = localbvz.videoDuration;
+        ((Collection)localObject3).add(localarx);
+        break label260;
         if (c.cQ(paramFinderItem.getFeedObject().forward_style, 1))
         {
           localObject1 = "";
@@ -179,23 +186,23 @@ public abstract interface m
         break;
         localObject1 = paramFinderItem.getNickName();
         break;
-        label477:
-        localStringBuilder = new StringBuilder().append(localbvf.thumbUrl);
-        localObject1 = localbvf.thumb_url_token;
+        label486:
+        localStringBuilder = new StringBuilder().append(localbvz.thumbUrl);
+        localObject1 = localbvz.thumb_url_token;
         paramFinderItem = (FinderItem)localObject1;
         if (localObject1 == null) {
           paramFinderItem = "";
         }
       }
-      label527:
+      label536:
       ((LinkedList)localObject2).addAll((Collection)localObject3);
-      AppMethodBeat.o(204502);
-      return localarj;
+      AppMethodBeat.o(205122);
+      return localary;
     }
     
-    public static int cLs()
+    public static int cNY()
     {
-      return sLC;
+      return sWN;
     }
     
     public static String getTAG()
@@ -205,55 +212,55 @@ public abstract interface m
     
     public final void a(final MMActivity paramMMActivity, final FinderItem paramFinderItem, final int paramInt)
     {
-      AppMethodBeat.i(204498);
+      AppMethodBeat.i(205118);
       d.g.b.p.h(paramMMActivity, "context");
       d.g.b.p.h(paramFinderItem, "feedObject");
-      Object localObject1 = p.sMo;
+      Object localObject1 = p.sXz;
       if (!p.q(paramFinderItem.getFeedObject()))
       {
-        paramFinderItem = p.sMo;
+        paramFinderItem = p.sXz;
         paramFinderItem = (Context)paramMMActivity;
         paramMMActivity = paramMMActivity.getString(2131767019);
         d.g.b.p.g(paramMMActivity, "context.getString(R.stri…finder_private_ban_share)");
-        p.ar(paramFinderItem, paramMMActivity);
-        AppMethodBeat.o(204498);
+        p.at(paramFinderItem, paramMMActivity);
+        AppMethodBeat.o(205118);
         return;
       }
-      ad.i(TAG, "shareToConversation, id:" + paramFinderItem.getId() + ", pflag:" + paramFinderItem.getFeedObject().permissionFlag);
+      ae.i(TAG, "shareToConversation, id:" + paramFinderItem.getId() + ", pflag:" + paramFinderItem.getFeedObject().permissionFlag);
       if (paramFinderItem.getFeedObject().privateFlag == 1)
       {
-        t.a((Context)paramMMActivity, paramMMActivity.getString(2131767023), (t.b)m.a.b.sLF);
-        AppMethodBeat.o(204498);
+        t.a((Context)paramMMActivity, paramMMActivity.getString(2131767023), (t.b)m.a.b.sWQ);
+        AppMethodBeat.o(205118);
         return;
       }
-      e.ygI.idkeyStat(1278L, 11L, 1L, false);
-      localObject1 = com.tencent.mm.plugin.finder.spam.a.suA;
-      if (com.tencent.mm.plugin.finder.spam.a.aip("share"))
+      e.ywz.idkeyStat(1278L, 11L, 1L, false);
+      localObject1 = com.tencent.mm.plugin.finder.spam.a.sEK;
+      if (com.tencent.mm.plugin.finder.spam.a.ajm("share"))
       {
-        AppMethodBeat.o(204498);
+        AppMethodBeat.o(205118);
         return;
       }
       localObject1 = new y.f();
-      Object localObject2 = com.tencent.mm.ui.component.a.KiD;
-      ((y.f)localObject1).MLV = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class)).cOu();
+      Object localObject2 = com.tencent.mm.ui.component.a.KEX;
+      ((y.f)localObject1).NiY = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class)).cQZ();
       localObject2 = new k.b();
       Object localObject3 = new com.tencent.mm.plugin.i.a.b();
       ((com.tencent.mm.plugin.i.a.b)localObject3).a(o(paramFinderItem));
       ((k.b)localObject2).a((f)localObject3);
       ((k.b)localObject2).type = 51;
-      ((k.b)localObject2).title = aj.getContext().getString(2131760809);
-      ((k.b)localObject2).url = aj.getContext().getString(2131760810);
+      ((k.b)localObject2).title = ak.getContext().getString(2131760809);
+      ((k.b)localObject2).url = ak.getContext().getString(2131760810);
       localObject3 = new Intent();
       ((Intent)localObject3).putExtra("Retr_Msg_Type", 18);
       ((Intent)localObject3).putExtra("Multi_Retr", true);
       ((Intent)localObject3).putExtra("Retr_Msg_content", k.b.a((k.b)localObject2, null, null));
       ((Intent)localObject3).putExtra("Retr_go_to_chattingUI", false);
       ((Intent)localObject3).putExtra("Retr_show_success_tips", true);
-      d.a(paramMMActivity, ".ui.transmit.MsgRetransmitUI", (Intent)localObject3, sLz, (MMActivity.a)new c(this, paramFinderItem, paramMMActivity, paramInt, (y.f)localObject1));
-      AppMethodBeat.o(204498);
+      d.a(paramMMActivity, ".ui.transmit.MsgRetransmitUI", (Intent)localObject3, sWK, (MMActivity.a)new c(this, paramFinderItem, paramMMActivity, paramInt, (y.f)localObject1));
+      AppMethodBeat.o(205118);
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
     static final class a
       implements MMActivity.a
     {
@@ -267,7 +274,7 @@ public abstract interface m
         if (paramInt2 == -1)
         {
           localObject = paramIntent.getStringArrayListExtra("SendMsgUsernames");
-          ad.i(m.a.getTAG(), "share namecard %s(%s) to %s", new Object[] { this.sgY.VC(), this.sgY.getUsername(), localObject });
+          ae.i(m.a.getTAG(), "share namecard %s(%s) to %s", new Object[] { this.spS.VK(), this.spS.getUsername(), localObject });
           d.g.b.p.g(localObject, "toUsers");
           if (((Collection)localObject).isEmpty()) {
             break label152;
@@ -275,11 +282,11 @@ public abstract interface m
           paramInt1 = 1;
           if (paramInt1 != 0)
           {
-            paramIntent = com.tencent.mm.plugin.finder.report.h.soM;
-            paramIntent = this.sgY.getUsername();
-            localObject = bt.m((List)localObject, ",");
+            paramIntent = i.syT;
+            paramIntent = this.spS.getUsername();
+            localObject = bu.m((List)localObject, ",");
             d.g.b.p.g(localObject, "Util.listToString(toUsers, \",\")");
-            localFinderAuthInfo = this.sgY.field_authInfo;
+            localFinderAuthInfo = this.spS.field_authInfo;
             if (localFinderAuthInfo == null) {
               break label157;
             }
@@ -289,7 +296,7 @@ public abstract interface m
         label157:
         for (paramInt1 = localFinderAuthInfo.authIconType;; paramInt1 = 0)
         {
-          com.tencent.mm.plugin.finder.report.h.j(paramIntent, (String)localObject, paramInt1, this.rVj.MLT);
+          i.j(paramIntent, (String)localObject, paramInt1, this.sdP.NiW);
           AppMethodBeat.o(167898);
           return;
           paramInt1 = 0;
@@ -298,7 +305,7 @@ public abstract interface m
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
     static final class c
       implements MMActivity.a
     {
@@ -306,25 +313,25 @@ public abstract interface m
       
       public final void c(int paramInt1, int paramInt2, Intent paramIntent)
       {
-        AppMethodBeat.i(204494);
+        AppMethodBeat.i(205114);
         Object localObject = new ArrayList();
         if (paramInt2 == -1)
         {
           paramIntent = paramIntent.getStringArrayListExtra("SendMsgUsernames");
           d.g.b.p.g(paramIntent, "data.getStringArrayListE…sgRetr.KSendMsgUsernames)");
-          ad.i(m.a.getTAG(), "share finderObject %d to %s", new Object[] { Long.valueOf(paramFinderItem.getId()), paramIntent });
+          ae.i(m.a.getTAG(), "share finderObject %d to %s", new Object[] { Long.valueOf(paramFinderItem.getId()), paramIntent });
           if (!((Collection)paramIntent).isEmpty())
           {
             paramInt1 = 1;
             if (paramInt1 == 0) {
               break label273;
             }
-            localObject = com.tencent.mm.ui.component.a.KiD;
+            localObject = com.tencent.mm.ui.component.a.KEX;
             localObject = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class));
             if (localObject == null) {
               break label207;
             }
-            ((com.tencent.mm.plugin.finder.event.a)localObject).cze().vL(paramFinderItem.getId());
+            ((com.tencent.mm.plugin.finder.event.a)localObject).cAI().wb(paramFinderItem.getId());
           }
         }
         label273:
@@ -334,23 +341,23 @@ public abstract interface m
           if (paramInt2 == -1) {}
           for (long l1 = 1L;; l1 = 2L)
           {
-            localObject = com.tencent.mm.plugin.finder.report.h.soM;
+            localObject = i.syT;
             long l2 = paramFinderItem.getId();
             paramInt1 = paramInt;
-            localObject = bt.m((List)paramIntent, ";");
+            localObject = bu.m((List)paramIntent, ";");
             d.g.b.p.g(localObject, "Util.listToString(toUsers, \";\")");
-            com.tencent.mm.plugin.finder.report.h.a(l2, paramInt1, l1, (String)localObject, (aqy)this.sLH.MLV, paramIntent.size());
-            AppMethodBeat.o(204494);
+            i.a(l2, paramInt1, l1, (String)localObject, (arn)this.sWS.NiY, paramIntent.size());
+            AppMethodBeat.o(205114);
             return;
             paramInt1 = 0;
             break;
             label207:
             break label126;
-            paramIntent = com.tencent.mm.ui.component.a.KiD;
+            paramIntent = com.tencent.mm.ui.component.a.KEX;
             paramIntent = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class));
             if (paramIntent != null)
             {
-              paramIntent.cze().vN(paramFinderItem.getId());
+              paramIntent.cAI().wd(paramFinderItem.getId());
               paramIntent = (Intent)localObject;
               break label126;
             }
@@ -361,7 +368,7 @@ public abstract interface m
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$shareToSnsTimeLine$2", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$shareToSnsTimeLine$2", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"})
     public static final class e
       implements MMActivity.a
     {
@@ -369,14 +376,14 @@ public abstract interface m
       
       public final void c(int paramInt1, int paramInt2, Intent paramIntent)
       {
-        AppMethodBeat.i(204497);
+        AppMethodBeat.i(205117);
         if (paramInt2 == -1)
         {
-          com.tencent.mm.ui.base.h.ci((Context)this.sav, this.sav.getString(2131755894));
-          paramIntent = com.tencent.mm.ui.component.a.KiD;
-          paramIntent = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.sav).get(FinderReporterUIC.class));
+          com.tencent.mm.ui.base.h.cj((Context)this.sjk, this.sjk.getString(2131755894));
+          paramIntent = com.tencent.mm.ui.component.a.KEX;
+          paramIntent = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.sjk).get(FinderReporterUIC.class));
           if (paramIntent != null) {
-            paramIntent.cze().vM(this.rPa.lP());
+            paramIntent.cAI().wc(this.rXB.lP());
           }
           if (paramInt2 != -1) {
             break label168;
@@ -385,22 +392,22 @@ public abstract interface m
         label168:
         for (long l = 1L;; l = 2L)
         {
-          paramIntent = com.tencent.mm.plugin.finder.report.h.soM;
-          com.tencent.mm.plugin.finder.report.h.a(this.rPa.feedObject.getId(), this.sLG, l, "", (aqy)this.sLH.MLV);
-          AppMethodBeat.o(204497);
+          paramIntent = i.syT;
+          i.a(this.rXB.feedObject.getId(), this.sWR, l, "", (arn)this.sWS.NiY);
+          AppMethodBeat.o(205117);
           return;
-          paramIntent = com.tencent.mm.ui.component.a.KiD;
-          paramIntent = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.sav).get(FinderReporterUIC.class));
+          paramIntent = com.tencent.mm.ui.component.a.KEX;
+          paramIntent = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.sjk).get(FinderReporterUIC.class));
           if (paramIntent == null) {
             break;
           }
-          paramIntent.cze().vO(this.rPa.lP());
+          paramIntent.cAI().we(this.rXB.lP());
           break;
         }
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
     public static final class f
       implements MMActivity.a
     {
@@ -415,24 +422,24 @@ public abstract interface m
         {
           localObject = paramIntent.getStringArrayListExtra("SendMsgUsernames");
           d.g.b.p.g(localObject, "data.getStringArrayListE…sgRetr.KSendMsgUsernames)");
-          ad.i(m.a.getTAG(), "share topic %s to %s", new Object[] { this.sLJ, localObject });
+          ae.i(m.a.getTAG(), "share topic %s to %s", new Object[] { this.sWU, localObject });
         }
-        paramIntent = com.tencent.mm.plugin.finder.report.h.soM;
+        paramIntent = i.syT;
         if (paramInt2 == -1) {
           bool = true;
         }
-        paramIntent = bt.nullAsNil(this.sLJ);
+        paramIntent = bu.nullAsNil(this.sWU);
         d.g.b.p.g(paramIntent, "Util.nullAsNil(topic)");
-        paramInt1 = this.sLK;
-        long l = this.sLL;
-        localObject = bt.m((List)localObject, ",");
+        paramInt1 = this.sWV;
+        long l = this.sWW;
+        localObject = bu.m((List)localObject, ",");
         d.g.b.p.g(localObject, "Util.listToString(toUsers, \",\")");
-        com.tencent.mm.plugin.finder.report.h.a(1, bool, paramIntent, paramInt1, l, (String)localObject);
+        i.a(1, bool, paramIntent, paramInt1, l, (String)localObject);
         AppMethodBeat.o(167901);
       }
     }
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$shareTopicToSnsTimeLine$1", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$shareTopicToSnsTimeLine$1", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"})
     public static final class g
       implements MMActivity.a
     {
@@ -442,15 +449,15 @@ public abstract interface m
       {
         AppMethodBeat.i(167902);
         if (paramInt2 == -1) {
-          com.tencent.mm.ui.base.h.ci((Context)this.sav, this.sav.getString(2131755894));
+          com.tencent.mm.ui.base.h.cj((Context)this.sjk, this.sjk.getString(2131755894));
         }
-        paramIntent = com.tencent.mm.plugin.finder.report.h.soM;
+        paramIntent = i.syT;
         if (paramInt2 == -1) {}
         for (boolean bool = true;; bool = false)
         {
-          paramIntent = bt.nullAsNil(this.sLJ);
+          paramIntent = bu.nullAsNil(this.sWU);
           d.g.b.p.g(paramIntent, "Util.nullAsNil(topic)");
-          com.tencent.mm.plugin.finder.report.h.a(2, bool, paramIntent, this.sLK, this.sLL, "");
+          i.a(2, bool, paramIntent, this.sWV, this.sWW, "");
           AppMethodBeat.o(167902);
           return;
         }
@@ -460,7 +467,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.m
  * JD-Core Version:    0.7.0.1
  */

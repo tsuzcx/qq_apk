@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.a;
@@ -22,7 +22,7 @@ public class AppBrandProxyTransparentUI
   {
     AppMethodBeat.i(45408);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
+    ae.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
     al.b(getWindow());
     try
     {
@@ -34,10 +34,10 @@ public class AppBrandProxyTransparentUI
       {
         paramBundle.a(this, new AppBrandProxyTransparentUIProcessTask.a()
         {
-          public final void bhL()
+          public final void biu()
           {
             AppMethodBeat.i(45407);
-            ad.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
+            ae.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
             Intent localIntent = new Intent();
             localIntent.putExtra("task_object", paramBundle);
             localIntent.putExtra("task_id", str);
@@ -54,7 +54,7 @@ public class AppBrandProxyTransparentUI
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
+        ae.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
         setResult(1);
         finish();
       }
@@ -68,7 +68,7 @@ public class AppBrandProxyTransparentUI
   {
     AppMethodBeat.i(45409);
     super.onDestroy();
-    ad.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
+    ae.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
     AppMethodBeat.o(45409);
   }
   
@@ -90,7 +90,7 @@ public class AppBrandProxyTransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUI
  * JD-Core Version:    0.7.0.1
  */

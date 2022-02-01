@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dvk;
+import com.tencent.mm.protocal.protobuf.dwh;
 import com.tencent.mm.protocal.protobuf.ek;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,11 +16,11 @@ public enum r
   public static void a(AppBrandSysConfigLU paramAppBrandSysConfigLU, String paramString)
   {
     AppMethodBeat.i(147007);
-    paramAppBrandSysConfigLU.jYb = true;
-    paramAppBrandSysConfigLU.jYc = true;
-    if (bt.isNullOrNil(paramString))
+    paramAppBrandSysConfigLU.kbq = true;
+    paramAppBrandSysConfigLU.kbr = true;
+    if (bu.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.AppBrandSysConfigUtil", "operationInfo nil");
+      ae.w("MicroMsg.AppBrandSysConfigUtil", "operationInfo nil");
       AppMethodBeat.o(147007);
       return;
     }
@@ -30,7 +30,7 @@ public enum r
       if (localJSONObject.optInt("music", 1) == 1)
       {
         bool = true;
-        paramAppBrandSysConfigLU.jYb = bool;
+        paramAppBrandSysConfigLU.kbq = bool;
         if (localJSONObject.optInt("location", 1) != 1) {
           break label96;
         }
@@ -38,7 +38,7 @@ public enum r
       label96:
       for (boolean bool = true;; bool = false)
       {
-        paramAppBrandSysConfigLU.jYc = bool;
+        paramAppBrandSysConfigLU.kbr = bool;
         AppMethodBeat.o(147007);
         return;
         bool = false;
@@ -48,8 +48,8 @@ public enum r
     }
     catch (JSONException paramAppBrandSysConfigLU)
     {
-      ad.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo operationInfo:%s", new Object[] { paramString });
-      ad.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo exp:%s", new Object[] { paramAppBrandSysConfigLU });
+      ae.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo operationInfo:%s", new Object[] { paramString });
+      ae.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo exp:%s", new Object[] { paramAppBrandSysConfigLU });
       AppMethodBeat.o(147007);
     }
   }
@@ -62,17 +62,17 @@ public enum r
     if (localObject != null)
     {
       localObject = ((JSONObject)localObject).optJSONArray("VersionList");
-      paramJSONObject.Fwi = new LinkedList();
+      paramJSONObject.FOG = new LinkedList();
       if (localObject != null)
       {
         int i = 0;
         while (i < ((JSONArray)localObject).length())
         {
           JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-          dvk localdvk = new dvk();
-          localdvk.type = localJSONObject.optInt("type");
-          localdvk.version = localJSONObject.optInt("version");
-          paramJSONObject.Fwi.add(localdvk);
+          dwh localdwh = new dwh();
+          localdwh.type = localJSONObject.optInt("type");
+          localdwh.version = localJSONObject.optInt("version");
+          paramJSONObject.FOG.add(localdwh);
           i += 1;
         }
       }

@@ -9,9 +9,9 @@ import com.tencent.mm.plugin.brandservice.a.d.b;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.UrlExKt;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.t;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.eei;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.protocal.protobuf.efz;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.am;
 import d.g.b.p;
 import d.l;
 import d.n.n;
@@ -20,50 +20,50 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/WebPrefetchServiceImpl;", "Lcom/tencent/mm/plugin/brandservice/api/IWebPrefetchService;", "()V", "TAG", "", "clearPrefetchContent", "", "url", "debugPreloadWebInfo", "", "(Ljava/lang/String;)[[Ljava/lang/String;", "getPreAuthUrl", "getPrefetchContentResp", "Lcom/tencent/mm/plugin/brandservice/api/IWebPrefetchService$PrefetchResponse;", "getPrefetchResResp", "referer", "getReportScene", "", "getRespUrl", "getUrlCookie", "", "getWebId", "isDnsCached", "", "isEntranceOpen", "bit", "isUrlPreAuthed", "isWebUrlEqual", "rawUrl", "targetUrl", "preAuth", "openScene", "appId", "title", "desc", "from", "entranceBit", "preAuths", "auths", "Lcom/tencent/mm/plugin/brandservice/api/IWebPrefetchService$PreAuthInfo;", "prefetchWebPage", "preAuthInfoList", "setUrlToScene", "scene", "plugin-brandservice_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/WebPrefetchServiceImpl;", "Lcom/tencent/mm/plugin/brandservice/api/IWebPrefetchService;", "()V", "TAG", "", "clearPrefetchContent", "", "url", "debugPreloadWebInfo", "", "(Ljava/lang/String;)[[Ljava/lang/String;", "getPreAuthUrl", "getPrefetchContentResp", "Lcom/tencent/mm/plugin/brandservice/api/IWebPrefetchService$PrefetchResponse;", "getPrefetchResResp", "referer", "getReportScene", "", "getRespUrl", "getUrlCookie", "", "getWebId", "isDnsCached", "", "isEntranceOpen", "bit", "isUrlPreAuthed", "isWebUrlEqual", "rawUrl", "targetUrl", "preAuth", "openScene", "appId", "title", "desc", "from", "entranceBit", "preAuths", "auths", "Lcom/tencent/mm/plugin/brandservice/api/IWebPrefetchService$PreAuthInfo;", "prefetchWebPage", "preAuthInfoList", "setUrlToScene", "scene", "plugin-brandservice_release"})
 public final class e
   implements d
 {
   private final String TAG = "MicroMsg.WebPrefetchServiceImpl";
   
-  private static boolean zf(int paramInt)
+  private static boolean zo(int paramInt)
   {
-    AppMethodBeat.i(209651);
-    if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qEX, 65531) & paramInt) > 0)
+    AppMethodBeat.i(208608);
+    if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qMD, 65531) & paramInt) > 0)
     {
-      AppMethodBeat.o(209651);
+      AppMethodBeat.o(208608);
       return true;
     }
-    AppMethodBeat.o(209651);
+    AppMethodBeat.o(208608);
     return false;
   }
   
-  public final boolean WS(String paramString)
+  public final boolean XE(String paramString)
   {
-    AppMethodBeat.i(209642);
+    AppMethodBeat.i(208599);
     if (paramString != null)
     {
-      t localt = t.okg;
-      boolean bool = t.WS(paramString);
-      AppMethodBeat.o(209642);
+      t localt = t.oqh;
+      boolean bool = t.XE(paramString);
+      AppMethodBeat.o(208599);
       return bool;
     }
-    AppMethodBeat.o(209642);
+    AppMethodBeat.o(208599);
     return false;
   }
   
-  public final String WT(String paramString)
+  public final String XF(String paramString)
   {
-    AppMethodBeat.i(209643);
+    AppMethodBeat.i(208600);
     Object localObject;
     if (paramString != null)
     {
-      localObject = t.okg;
+      localObject = t.oqh;
       p.h(paramString, "url");
-      paramString = t.XD(paramString);
+      paramString = t.Yq(paramString);
       if (paramString != null)
       {
-        localObject = paramString.omw;
+        localObject = paramString.osm;
         paramString = (String)localObject;
         if (localObject != null) {}
       }
@@ -78,16 +78,16 @@ public final class e
     {
       localObject = "";
     }
-    AppMethodBeat.o(209643);
+    AppMethodBeat.o(208600);
     return localObject;
   }
   
-  public final boolean WU(String paramString)
+  public final boolean XG(String paramString)
   {
-    AppMethodBeat.i(209644);
+    AppMethodBeat.i(208601);
     if (paramString != null)
     {
-      if (n.aE((CharSequence)paramString)) {}
+      if (n.aD((CharSequence)paramString)) {}
       for (int i = 1; i == 0; i = 0)
       {
         paramString = Uri.parse(paramString);
@@ -96,81 +96,81 @@ public final class e
         if (paramString == null) {
           break;
         }
-        c.a locala = c.nVH;
-        boolean bool = c.bNp().contains(paramString);
-        AppMethodBeat.o(209644);
+        c.a locala = c.obp;
+        boolean bool = c.bOn().contains(paramString);
+        AppMethodBeat.o(208601);
         return bool;
       }
     }
-    AppMethodBeat.o(209644);
+    AppMethodBeat.o(208601);
     return false;
   }
   
-  public final int WV(String paramString)
+  public final int XH(String paramString)
   {
-    AppMethodBeat.i(209646);
-    t localt = t.okg;
-    int i = t.WV(paramString);
-    AppMethodBeat.o(209646);
+    AppMethodBeat.i(208603);
+    t localt = t.oqh;
+    int i = t.XH(paramString);
+    AppMethodBeat.o(208603);
     return i;
   }
   
-  public final d.b WW(String paramString)
+  public final d.b XI(String paramString)
   {
-    AppMethodBeat.i(209647);
+    AppMethodBeat.i(208604);
     p.h(paramString, "url");
-    t localt = t.okg;
-    paramString = t.WW(paramString);
-    AppMethodBeat.o(209647);
+    t localt = t.oqh;
+    paramString = t.XI(paramString);
+    AppMethodBeat.o(208604);
     return paramString;
   }
   
-  public final void WX(String paramString)
+  public final void XJ(String paramString)
   {
-    AppMethodBeat.i(209649);
+    AppMethodBeat.i(208606);
     p.h(paramString, "url");
-    t localt = t.okg;
-    t.WX(paramString);
-    AppMethodBeat.o(209649);
+    t localt = t.oqh;
+    t.XJ(paramString);
+    AppMethodBeat.o(208606);
   }
   
-  public final String WY(String paramString)
+  public final String XK(String paramString)
   {
-    AppMethodBeat.i(209650);
+    AppMethodBeat.i(208607);
     p.h(paramString, "url");
-    paramString = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Xn(paramString);
-    AppMethodBeat.o(209650);
+    paramString = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.XZ(paramString);
+    AppMethodBeat.o(208607);
     return paramString;
   }
   
   public final void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2)
   {
-    AppMethodBeat.i(209652);
+    AppMethodBeat.i(208609);
     p.h(paramString1, "url");
     com.tencent.mm.plugin.webview.h.b.a(paramInt1, paramString1, true, false, false, false, false, 240);
-    Object localObject = t.okg;
-    t.zJ(paramInt2);
-    if (!zf(paramInt2))
+    Object localObject = t.oqh;
+    t.zS(paramInt2);
+    if (!zo(paramInt2))
     {
-      ad.v(this.TAG, "[TRACE_PREFETCH] preAuth isEntranceOpen false, entranceBit = ".concat(String.valueOf(paramInt2)));
-      AppMethodBeat.o(209652);
+      ae.v(this.TAG, "[TRACE_PREFETCH] preAuth isEntranceOpen false, entranceBit = ".concat(String.valueOf(paramInt2)));
+      AppMethodBeat.o(208609);
       return;
     }
-    if ((UrlExKt.isMpUrl(paramString1)) || ((n.a((CharSequence)paramString1, (CharSequence)":", false)) && (!n.nz(paramString1, "http"))))
+    if ((UrlExKt.isMpUrl(paramString1)) || ((n.a((CharSequence)paramString1, (CharSequence)":", false)) && (!n.nF(paramString1, "http"))))
     {
-      AppMethodBeat.o(209652);
+      AppMethodBeat.o(208609);
       return;
     }
-    localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Xl(paramString1);
-    c.a locala = c.nVH;
-    if (c.bNo().contains((String)localObject))
+    localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.XX(paramString1);
+    c.a locala = c.obp;
+    if (c.bOm().contains((String)localObject))
     {
-      AppMethodBeat.o(209652);
+      AppMethodBeat.o(208609);
       return;
     }
-    locala = c.nVH;
-    c.bNo().Ej((String)localObject);
-    ad.v(this.TAG, "preauth: ".concat(String.valueOf(localObject)));
+    locala = c.obp;
+    c.bOm().EL((String)localObject);
+    ae.v(this.TAG, "preauth: ".concat(String.valueOf(localObject)));
     if (paramString2 == null) {
       paramString2 = "";
     }
@@ -187,16 +187,16 @@ public final class e
         for (;;)
         {
           t.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1);
-          AppMethodBeat.o(209652);
+          AppMethodBeat.o(208609);
           return;
         }
       }
     }
   }
   
-  public final void cd(List<? extends d.a> paramList)
+  public final void cf(List<? extends d.a> paramList)
   {
-    AppMethodBeat.i(209654);
+    AppMethodBeat.i(208611);
     p.h(paramList, "preAuthInfoList");
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList();
@@ -208,9 +208,9 @@ public final class e
       localObject2 = ((Iterator)localObject1).next();
       localObject3 = (d.a)localObject2;
       com.tencent.mm.plugin.expt.b.b localb = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-      ad.i(this.TAG, "prefetchWebPage, scene: " + ((d.a)localObject3).nWh);
+      ae.i(this.TAG, "prefetchWebPage, scene: " + ((d.a)localObject3).obQ);
       boolean bool;
-      switch (((d.a)localObject3).nWh)
+      switch (((d.a)localObject3).obQ)
       {
       default: 
         bool = true;
@@ -219,22 +219,28 @@ public final class e
       {
         paramList.add(localObject2);
         break;
-        if (localb.a(b.a.que, 1) == 1) {}
+        if (localb.a(b.a.qAR, 1) == 1) {}
         for (bool = true;; bool = false)
         {
-          ad.i(this.TAG, "clicfg_webview_prefetch_api_wechat_pay_open:".concat(String.valueOf(bool)));
+          ae.i(this.TAG, "clicfg_webview_prefetch_api_wechat_pay_open:".concat(String.valueOf(bool)));
           break;
         }
-        if (localb.a(b.a.quc, 1) == 1) {}
+        if (localb.a(b.a.qAP, 1) == 1) {}
         for (bool = true;; bool = false)
         {
-          ad.i(this.TAG, "clicfg_webview_prefetch_api_web_open:".concat(String.valueOf(bool)));
+          ae.i(this.TAG, "clicfg_webview_prefetch_api_web_open:".concat(String.valueOf(bool)));
           break;
         }
-        if (localb.a(b.a.qud, 1) == 1) {}
+        if (localb.a(b.a.qAQ, 1) == 1) {}
         for (bool = true;; bool = false)
         {
-          ad.i(this.TAG, "clicfg_webview_prefetch_api_app_brand_open:".concat(String.valueOf(bool)));
+          ae.i(this.TAG, "clicfg_webview_prefetch_api_app_brand_open:".concat(String.valueOf(bool)));
+          break;
+        }
+        if (localb.a(b.a.qAS, 1) == 1) {}
+        for (bool = true;; bool = false)
+        {
+          ae.i(this.TAG, "clicfg_webview_prefetch_api_sns_ad_open:".concat(String.valueOf(bool)));
           break;
         }
         bool = true;
@@ -244,8 +250,8 @@ public final class e
     if (((Collection)paramList).isEmpty()) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.e(this.TAG, "result is null after filter");
-      AppMethodBeat.o(209654);
+      ae.e(this.TAG, "result is null after filter");
+      AppMethodBeat.o(208611);
       return;
     }
     localObject1 = ((Iterable)paramList).iterator();
@@ -254,80 +260,80 @@ public final class e
       localObject2 = (d.a)((Iterator)localObject1).next();
       localObject3 = ((d.a)localObject2).url;
       p.g(localObject3, "it.url");
-      cu((String)localObject3, ((d.a)localObject2).nWh);
-      i = ((d.a)localObject2).nWh;
+      cy((String)localObject3, ((d.a)localObject2).obQ);
+      i = ((d.a)localObject2).obQ;
       localObject2 = ((d.a)localObject2).url;
       p.g(localObject2, "it.url");
       com.tencent.mm.plugin.webview.h.b.a(i, (String)localObject2, true, false, false, false, false, 240);
     }
-    t.cp(paramList);
-    AppMethodBeat.o(209654);
+    t.cr(paramList);
+    AppMethodBeat.o(208611);
   }
   
-  public final void cu(String paramString, int paramInt)
+  public final void cy(String paramString, int paramInt)
   {
-    AppMethodBeat.i(209645);
+    AppMethodBeat.i(208602);
     p.h(paramString, "url");
-    t localt = t.okg;
-    t.cA(paramString, paramInt);
-    AppMethodBeat.o(209645);
+    t localt = t.oqh;
+    t.cE(paramString, paramInt);
+    AppMethodBeat.o(208602);
   }
   
-  public final boolean eI(String paramString1, String paramString2)
+  public final boolean eL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(209641);
+    AppMethodBeat.i(208598);
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(209641);
+      AppMethodBeat.o(208598);
       return false;
     }
-    if (p.i(n.br(paramString1, "#", ""), n.br(paramString2, "#", "")))
+    if (p.i(n.bs(paramString1, "#", ""), n.bs(paramString2, "#", "")))
     {
-      Object localObject = t.okg;
+      Object localObject = t.oqh;
       p.h(paramString1, "rawUrl");
       p.h(paramString2, "targetUrl");
-      if (!p.i(n.bq(paramString1, "#", paramString1), n.bq(paramString2, "#", paramString2)))
+      if (!p.i(n.br(paramString1, "#", paramString1), n.br(paramString2, "#", paramString2)))
       {
-        localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.aF(paramString2, true);
-        ad.v("MicroMsg.WebPrefetcher", "isWebUrlEqual: target:#".concat(String.valueOf(localObject)));
-        String str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.aF(paramString1, true);
-        ad.v("MicroMsg.WebPrefetcher", "isWebUrlEqual: raw:#".concat(String.valueOf(str)));
-        if ((!p.i(localObject, str)) && (!t.eP(paramString1, paramString2))) {
+        localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.aH(paramString2, true);
+        ae.v("MicroMsg.WebPrefetcher", "isWebUrlEqual: target:#".concat(String.valueOf(localObject)));
+        String str = com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.aH(paramString1, true);
+        ae.v("MicroMsg.WebPrefetcher", "isWebUrlEqual: raw:#".concat(String.valueOf(str)));
+        if ((!p.i(localObject, str)) && (!t.eS(paramString1, paramString2))) {
           break label167;
         }
       }
       label167:
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(209641);
+        AppMethodBeat.o(208598);
         return true;
       }
     }
-    AppMethodBeat.o(209641);
+    AppMethodBeat.o(208598);
     return false;
   }
   
-  public final d.b eJ(String paramString1, String paramString2)
+  public final d.b eM(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(209648);
+    AppMethodBeat.i(208605);
     p.h(paramString1, "referer");
     p.h(paramString2, "url");
-    t localt = t.okg;
-    paramString1 = t.eJ(paramString1, paramString2);
-    AppMethodBeat.o(209648);
+    t localt = t.oqh;
+    paramString1 = t.eM(paramString1, paramString2);
+    AppMethodBeat.o(208605);
     return paramString1;
   }
   
   public final void m(List<? extends d.a> paramList, int paramInt)
   {
-    AppMethodBeat.i(209653);
+    AppMethodBeat.i(208610);
     p.h(paramList, "auths");
-    Object localObject1 = t.okg;
-    t.zJ(paramInt);
-    if (!zf(paramInt))
+    Object localObject1 = t.oqh;
+    t.zS(paramInt);
+    if (!zo(paramInt))
     {
-      ad.v(this.TAG, "[TRACE_PREFETCH] preAuths isEntranceOpen false, entranceBit = ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(209653);
+      ae.v(this.TAG, "[TRACE_PREFETCH] preAuths isEntranceOpen false, entranceBit = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(208610);
       return;
     }
     localObject1 = (Iterable)paramList;
@@ -345,12 +351,12 @@ public final class e
       {
         str = ((d.a)localObject3).url;
         p.g(str, "info.url");
-        if (!n.e((CharSequence)str, (CharSequence)":")) {
+        if (!n.f((CharSequence)str, (CharSequence)":")) {
           break label196;
         }
         localObject3 = ((d.a)localObject3).url;
         p.g(localObject3, "info.url");
-        if (n.nz((String)localObject3, "http")) {
+        if (n.nF((String)localObject3, "http")) {
           break label196;
         }
       }
@@ -363,8 +369,8 @@ public final class e
         break;
       }
     }
-    t.cp((List)paramList);
-    AppMethodBeat.o(209653);
+    t.cr((List)paramList);
+    AppMethodBeat.o(208610);
   }
 }
 

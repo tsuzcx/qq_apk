@@ -8,183 +8,183 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.m;
-import com.tencent.mm.protocal.protobuf.dxh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class d
 {
-  public static int Cur = 0;
-  public static int Cus = 1;
-  public static int Cut = 2;
-  public int CfA;
-  public int CfB;
-  public int Cfe;
-  public int Cfu;
-  public int Cfz;
-  public int Chf;
-  public int CuA;
-  public int CuB;
-  public int CuC;
-  public int CuD;
-  public int CuE;
-  public String CuF;
-  public int CuG;
-  public int CuH;
-  public int CuI;
-  public int CuJ;
-  public int CuK;
-  public int CuL;
-  public int CuM;
-  public int CuN;
-  public int CuO;
-  public int CuP;
-  public int CuQ;
-  public long CuR;
-  public int CuS;
-  public long CuT;
-  public long CuU;
-  public long CuV;
-  public int CuW;
-  public int CuX;
-  public int CuY;
-  public int CuZ;
-  public int Cuu;
-  public int Cuv;
-  public int Cuw;
-  public int Cux;
-  public int Cuy;
-  public int Cuz;
-  public String Cva;
-  public String Cvb;
-  public String Cvc;
-  public int Cvd;
-  public int Cve;
-  public int Cvf;
-  public int Cvg;
-  public int Cvh;
-  public int Cvi;
+  public static int CLW = 0;
+  public static int CLX = 1;
+  public static int CLY = 2;
+  public int CLZ;
+  public long CMA;
+  public int CMB;
+  public int CMC;
+  public int CMD;
+  public int CME;
+  public String CMF;
+  public String CMG;
+  public String CMH;
+  public int CMI;
+  public int CMJ;
+  public int CMK;
+  public int CML;
+  public int CMM;
+  public int CMN;
+  public int CMa;
+  public int CMb;
+  public int CMc;
+  public int CMd;
+  public int CMe;
+  public int CMf;
+  public int CMg;
+  public int CMh;
+  public int CMi;
+  public int CMj;
+  public String CMk;
+  public int CMl;
+  public int CMm;
+  public int CMn;
+  public int CMo;
+  public int CMp;
+  public int CMq;
+  public int CMr;
+  public int CMs;
+  public int CMt;
+  public int CMu;
+  public int CMv;
+  public long CMw;
+  public int CMx;
+  public long CMy;
+  public long CMz;
+  public int CwF;
+  public int CwV;
+  public int Cxa;
+  public int Cxb;
+  public int Cxc;
+  public int CyG;
   public int channelStrategy;
   public int cpuFlag0;
   public int dataType;
   public String deviceModel;
-  public int gHR;
+  public int gKA;
   public int networkType;
   public long roomId;
-  public long uLt;
-  public long uMH;
-  public String uMQ;
-  public String uMR;
+  public long uXg;
+  public String uYD;
+  public String uYE;
+  public long uYu;
   public int videoFps;
   
   public d()
   {
     AppMethodBeat.i(125349);
     this.dataType = 0;
-    this.Cuu = 0;
-    this.Cuv = 0;
-    this.Cuw = 0;
+    this.CLZ = 0;
+    this.CMa = 0;
+    this.CMb = 0;
     this.videoFps = 0;
-    this.Cux = 0;
-    this.Cuy = 0;
-    this.Cuz = 0;
-    this.CuA = 0;
-    this.CuB = 0;
-    this.CuC = 0;
+    this.CMc = 0;
+    this.CMd = 0;
+    this.CMe = 0;
+    this.CMf = 0;
+    this.CMg = 0;
+    this.CMh = 0;
     this.networkType = 0;
-    this.CuD = 0;
-    this.gHR = 0;
-    this.Cfu = 0;
+    this.CMi = 0;
+    this.gKA = 0;
+    this.CwV = 0;
     this.roomId = 0L;
-    this.uLt = 0L;
-    this.CuF = "";
-    this.Cfe = 0;
-    this.CuH = 0;
-    this.CuI = 0;
-    this.CuJ = 0;
-    this.CuK = 0;
-    this.CfA = 0;
-    this.Cfz = 0;
-    this.CuL = 0;
-    this.CuM = 1;
-    this.CuN = 0;
-    this.CuO = 0;
-    this.CuP = 0;
-    this.CuQ = 0;
-    this.CuR = 0L;
-    this.CuT = 0L;
-    this.CuU = 0L;
-    this.CuV = 0L;
-    this.uMH = 0L;
+    this.uXg = 0L;
+    this.CMk = "";
+    this.CwF = 0;
+    this.CMm = 0;
+    this.CMn = 0;
+    this.CMo = 0;
+    this.CMp = 0;
+    this.Cxb = 0;
+    this.Cxa = 0;
+    this.CMq = 0;
+    this.CMr = 1;
+    this.CMs = 0;
+    this.CMt = 0;
+    this.CMu = 0;
+    this.CMv = 0;
+    this.CMw = 0L;
+    this.CMy = 0L;
+    this.CMz = 0L;
+    this.CMA = 0L;
+    this.uYu = 0L;
     this.channelStrategy = 1;
-    this.Chf = 0;
-    this.CfB = 0;
-    this.CuY = -1;
-    this.CuZ = 0;
-    this.Cva = "";
+    this.CyG = 0;
+    this.Cxc = 0;
+    this.CMD = -1;
+    this.CME = 0;
+    this.CMF = "";
     this.deviceModel = "";
-    this.Cvb = "";
-    this.Cvc = "";
-    this.Cvd = 0;
-    this.Cve = 0;
-    this.Cvf = 0;
-    this.Cvg = 0;
-    this.Cvh = 0;
-    this.Cvi = 0;
-    this.cpuFlag0 = m.aaf();
-    this.uMR = "";
-    this.uMQ = "";
-    this.Cva = Build.MANUFACTURER;
-    if (this.Cva.contains(",")) {
-      this.Cva = this.Cva.replace(',', ' ');
+    this.CMG = "";
+    this.CMH = "";
+    this.CMI = 0;
+    this.CMJ = 0;
+    this.CMK = 0;
+    this.CML = 0;
+    this.CMM = 0;
+    this.CMN = 0;
+    this.cpuFlag0 = m.aao();
+    this.uYE = "";
+    this.uYD = "";
+    this.CMF = Build.MANUFACTURER;
+    if (this.CMF.contains(",")) {
+      this.CMF = this.CMF.replace(',', ' ');
     }
     this.deviceModel = Build.MODEL;
     if (this.deviceModel.contains(",")) {
       this.deviceModel = this.deviceModel.replace(',', ' ');
     }
-    this.Cvb = Build.VERSION.SDK;
-    if (this.Cvb.contains(",")) {
-      this.Cvb = this.Cvb.replace(',', ' ');
+    this.CMG = Build.VERSION.SDK;
+    if (this.CMG.contains(",")) {
+      this.CMG = this.CMG.replace(',', ' ');
     }
-    this.Cvc = Build.VERSION.RELEASE;
-    if (this.Cvc.contains(",")) {
-      this.Cvc = this.Cvc.replace(',', ' ');
+    this.CMH = Build.VERSION.RELEASE;
+    if (this.CMH.contains(",")) {
+      this.CMH = this.CMH.replace(',', ' ');
     }
     AppMethodBeat.o(125349);
   }
   
-  public static int eBH()
+  public static int eFp()
   {
     AppMethodBeat.i(125354);
     int i;
     try
     {
-      Object localObject = (ConnectivityManager)aj.getContext().getSystemService("connectivity");
+      Object localObject = (ConnectivityManager)ak.getContext().getSystemService("connectivity");
       if (localObject != null)
       {
         localObject = ((ConnectivityManager)localObject).getNetworkInfo(0);
         if (localObject == null)
         {
-          i = Cur;
+          i = CLW;
           AppMethodBeat.o(125354);
           return i;
         }
         if (((NetworkInfo)localObject).getState() == NetworkInfo.State.CONNECTED)
         {
-          i = Cus;
+          i = CLX;
           AppMethodBeat.o(125354);
           return i;
         }
-        i = Cut;
+        i = CLY;
         AppMethodBeat.o(125354);
         return i;
       }
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.VoipCSReportHelper", "isMobileNetworkAvailable fail!");
-      i = Cur;
+      ae.e("MicroMsg.VoipCSReportHelper", "isMobileNetworkAvailable fail!");
+      i = CLW;
       AppMethodBeat.o(125354);
     }
     return i;
@@ -246,71 +246,71 @@ public final class d
     }
     catch (NullPointerException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.VoipCSReportHelper", paramContext, "", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VoipCSReportHelper", paramContext, "", new Object[0]);
       AppMethodBeat.o(125355);
     }
     return 0;
   }
   
-  public final void Vc(int paramInt)
+  public final void VJ(int paramInt)
   {
     AppMethodBeat.i(125350);
-    this.Cfz = Math.abs(paramInt);
+    this.Cxa = Math.abs(paramInt);
     AppMethodBeat.o(125350);
   }
   
-  public final void eBE()
+  public final void eFm()
   {
     AppMethodBeat.i(125351);
-    ad.d("MicroMsg.VoipCSReportHelper", "markEndTalk");
-    if ((this.Cvh == 0) && (this.Cvg != 0))
+    ae.d("MicroMsg.VoipCSReportHelper", "markEndTalk");
+    if ((this.CMM == 0) && (this.CML != 0))
     {
-      this.Cvh = ((int)(System.currentTimeMillis() / 1000L));
-      this.uMH = (this.Cvh - this.Cvg);
+      this.CMM = ((int)(System.currentTimeMillis() / 1000L));
+      this.uYu = (this.CMM - this.CML);
     }
     AppMethodBeat.o(125351);
   }
   
-  public final void eBF()
+  public final void eFn()
   {
     AppMethodBeat.i(125352);
-    ad.d("MicroMsg.VoipCSReportHelper", "markUserAccept");
-    if (this.CuT == 0L)
+    ae.d("MicroMsg.VoipCSReportHelper", "markUserAccept");
+    if (this.CMy == 0L)
     {
-      this.Cvf = ((int)(System.currentTimeMillis() / 1000L));
-      this.CuT = (this.Cvf - this.Cvd);
+      this.CMK = ((int)(System.currentTimeMillis() / 1000L));
+      this.CMy = (this.CMK - this.CMI);
     }
     AppMethodBeat.o(125352);
   }
   
-  public final dxh eBG()
+  public final dyy eFo()
   {
     AppMethodBeat.i(125353);
-    dxh localdxh = new dxh();
-    localdxh.nEf = 2;
-    localdxh.FKb = this.uMQ;
-    ad.i("MicroMsg.VoipCSReportHelper", "getVoipCSEngineReportData, result: %s", new Object[] { localdxh.FKb });
-    String[] arrayOfString = this.uMQ.split(",");
+    dyy localdyy = new dyy();
+    localdyy.nJA = 2;
+    localdyy.GcA = this.uYD;
+    ae.i("MicroMsg.VoipCSReportHelper", "getVoipCSEngineReportData, result: %s", new Object[] { localdyy.GcA });
+    String[] arrayOfString = this.uYD.split(",");
     if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
     try
     {
-      this.videoFps = bt.getInt(arrayOfString[8], 0);
-      this.Cux = bt.getInt(arrayOfString[10], 0);
+      this.videoFps = bu.getInt(arrayOfString[8], 0);
+      this.CMc = bu.getInt(arrayOfString[10], 0);
       AppMethodBeat.o(125353);
-      return localdxh;
+      return localdyy;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.VoipCSReportHelper", "get videoFps and rate fail!!");
+        ae.e("MicroMsg.VoipCSReportHelper", "get videoFps and rate fail!!");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.d
  * JD-Core Version:    0.7.0.1
  */

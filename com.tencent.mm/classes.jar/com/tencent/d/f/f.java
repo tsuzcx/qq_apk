@@ -6,7 +6,7 @@ import java.io.Closeable;
 public final class f
 {
   /* Error */
-  public static java.lang.String Z(java.io.File paramFile)
+  public static java.lang.String Y(java.io.File paramFile)
   {
     // Byte code:
     //   0: ldc 9
@@ -90,7 +90,7 @@ public final class f
   }
   
   /* Error */
-  public static byte[] aa(java.io.File paramFile)
+  public static byte[] Z(java.io.File paramFile)
   {
     // Byte code:
     //   0: ldc 45

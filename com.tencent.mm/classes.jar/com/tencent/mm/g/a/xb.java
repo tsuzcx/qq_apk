@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class xb
   extends b
 {
-  public a dLu;
+  public a dMD;
+  public b dME;
   
   public xb()
   {
@@ -15,30 +16,27 @@ public final class xb
   
   private xb(byte paramByte)
   {
-    AppMethodBeat.i(140991);
-    this.dLu = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116054);
+    this.dMD = new a();
+    this.dME = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(140991);
+    AppMethodBeat.o(116054);
   }
   
   public static final class a
   {
-    public String Title;
-    public String desc;
-    public int dlo = 0;
-    public int dlp = 0;
-    public int dlq = 0;
-    public int dlr = 0;
-    public String dls;
-    public int position = 0;
-    public String url;
-    public boolean visible = false;
+    public String id;
+  }
+  
+  public static final class b
+  {
+    public boolean dMF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.xb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aje;
-import com.tencent.mm.protocal.protobuf.ajf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ajo;
+import com.tencent.mm.protocal.protobuf.ajp;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class r
   extends n
@@ -26,19 +26,19 @@ public final class r
     AppMethodBeat.i(103623);
     this.mFileName = "";
     b.a locala = new b.a();
-    locala.hNM = new aje();
-    locala.hNN = new ajf();
+    locala.hQF = new ajo();
+    locala.hQG = new ajp();
     locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/facevideobindbioid";
     locala.funcId = getType();
-    locala.hNO = 0;
+    locala.hQH = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDC();
+    this.rr = locala.aDS();
     this.mFileName = paramString1;
-    paramString1 = (aje)this.rr.hNK.hNQ;
-    paramString1.duW = paramString2;
-    paramString1.Ggm = paramLong;
-    paramString1.Ggn = paramString4;
-    paramString1.Ggu = paramString3;
+    paramString1 = (ajo)this.rr.hQD.hQJ;
+    paramString1.dwb = paramString2;
+    paramString1.GyV = paramLong;
+    paramString1.GyW = paramString4;
+    paramString1.Gzd = paramString3;
     AppMethodBeat.o(103623);
   }
   
@@ -59,7 +59,7 @@ public final class r
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103625);
-    ad.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ae.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

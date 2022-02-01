@@ -9,13 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
 import java.util.List;
@@ -23,14 +23,14 @@ import java.util.List;
 public final class f
   extends BaseAdapter
 {
-  private static final String uba;
-  l Ekt;
+  private static final String umc;
+  l ECx;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(81003);
-    uba = b.arU() + "Game/HvMenu/";
+    umc = b.asj() + "Game/HvMenu/";
     AppMethodBeat.o(81003);
   }
   
@@ -42,7 +42,7 @@ public final class f
   public final void a(l paraml)
   {
     AppMethodBeat.i(80999);
-    this.Ekt = paraml;
+    this.ECx = paraml;
     notifyDataSetChanged();
     AppMethodBeat.o(80999);
   }
@@ -50,12 +50,12 @@ public final class f
   public final int getCount()
   {
     AppMethodBeat.i(81000);
-    if (this.Ekt == null)
+    if (this.ECx == null)
     {
       AppMethodBeat.o(81000);
       return 0;
     }
-    int i = this.Ekt.size();
+    int i = this.ECx.size();
     AppMethodBeat.o(81000);
     return i;
   }
@@ -70,17 +70,17 @@ public final class f
     AppMethodBeat.i(81001);
     paramView = LayoutInflater.from(this.mContext).inflate(2131494345, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    m localm = (m)this.Ekt.JlY.get(paramInt);
+    m localm = (m)this.ECx.JGM.get(paramInt);
     Object localObject1;
     if ((localm != null) && (localm.getItemId() != -1))
     {
       localObject1 = localm.getTitle().toString();
-      if (!bt.isNullOrNil((String)localObject1))
+      if (!bu.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split("__", 2);
         if (localObject1.length == 1)
         {
-          paramViewGroup.gnM.setText(localObject1[0]);
+          paramViewGroup.gqi.setText(localObject1[0]);
           paramView.setTag(localm);
         }
       }
@@ -89,19 +89,19 @@ public final class f
     {
       AppMethodBeat.o(81001);
       return paramView;
-      paramViewGroup.gnM.setText(localObject1[0]);
+      paramViewGroup.gqi.setText(localObject1[0]);
       localObject1 = localObject1[1];
       if (((String)localObject1).startsWith("http"))
       {
-        Object localObject2 = uba + g.getMessageDigest(((String)localObject1).getBytes());
+        Object localObject2 = umc + g.getMessageDigest(((String)localObject1).getBytes());
         c.a locala = new c.a();
-        locala.idr = true;
-        locala.hdP = ((String)localObject2);
-        localObject2 = locala.aJc();
-        a.aIP().a((String)localObject1, paramViewGroup.ka, (c)localObject2);
+        locala.igk = true;
+        locala.hgD = ((String)localObject2);
+        localObject2 = locala.aJu();
+        a.aJh().a((String)localObject1, paramViewGroup.ka, (c)localObject2);
         break;
       }
-      paramViewGroup.ka.setImageResource(aj.getResources().getIdentifier((String)localObject1, "drawable", aj.getPackageName()));
+      paramViewGroup.ka.setImageResource(ak.getResources().getIdentifier((String)localObject1, "drawable", ak.getPackageName()));
       break;
       paramView.setTag(null);
     }
@@ -109,13 +109,13 @@ public final class f
   
   public final class a
   {
-    TextView gnM;
+    TextView gqi;
     ImageView ka;
     
     public a(View paramView)
     {
       AppMethodBeat.i(80998);
-      this.gnM = ((TextView)paramView.findViewById(2131305902));
+      this.gqi = ((TextView)paramView.findViewById(2131305902));
       this.ka = ((ImageView)paramView.findViewById(2131300874));
       AppMethodBeat.o(80998);
     }

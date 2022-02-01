@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 
 public abstract interface d
 {
-  public abstract int bqD();
+  public abstract int brn();
   
-  public abstract int bqE();
+  public abstract int bro();
   
   public abstract int getType();
 }

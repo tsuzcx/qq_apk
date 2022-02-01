@@ -5,51 +5,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class ap
 {
-  private static ap DCK;
-  private SharedPreferences DCH;
-  private volatile boolean DCI;
-  private boolean DCJ;
-  private long DCL;
+  private static ap DUI;
+  private SharedPreferences DUF;
+  private volatile boolean DUG;
+  private boolean DUH;
+  private long DUJ;
   
   static
   {
     AppMethodBeat.i(117805);
-    DCK = new ap();
+    DUI = new ap();
     AppMethodBeat.o(117805);
   }
   
   public ap()
   {
     AppMethodBeat.i(117804);
-    this.DCH = aw.s(aj.getContext(), "com.tencent.mm.plugin.websearch.WebSearchXWeb", 4);
-    this.DCI = this.DCH.getBoolean("isUseSysWebview", false);
-    this.DCJ = false;
-    if (System.currentTimeMillis() - this.DCL >= 7200000L)
+    this.DUF = ax.r(ak.getContext(), "com.tencent.mm.plugin.websearch.WebSearchXWeb", 4);
+    this.DUG = this.DUF.getBoolean("isUseSysWebview", false);
+    this.DUH = false;
+    if (System.currentTimeMillis() - this.DUJ >= 7200000L)
     {
-      this.DCL = System.currentTimeMillis();
+      this.DUJ = System.currentTimeMillis();
       b.c(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(117803);
-          Object localObject = a.a.gyq;
-          localObject = a.wz("100387");
+          Object localObject = a.a.gAX;
+          localObject = a.xi("100387");
           if (localObject == null)
           {
-            ad.i("WebSearchXWeb", "openSearchPreload item is null");
+            ae.i("WebSearchXWeb", "openSearchPreload item is null");
             AppMethodBeat.o(117803);
             return;
           }
           ap localap = ap.this;
-          if ((((c)localObject).isValid()) && ("1".equals(((c)localObject).foF().get("isOpen")))) {}
+          if ((((c)localObject).isValid()) && ("1".equals(((c)localObject).fsy().get("isOpen")))) {}
           for (boolean bool = true;; bool = false)
           {
             ap.a(localap, bool);
@@ -62,9 +62,9 @@ public final class ap
     AppMethodBeat.o(117804);
   }
   
-  public static ap eMC()
+  public static ap eQn()
   {
-    return DCK;
+    return DUI;
   }
 }
 

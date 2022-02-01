@@ -6,7 +6,7 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class a$a
   implements k<IPCString, IPCVoid>
@@ -16,11 +16,11 @@ public final class a$a
     AppMethodBeat.i(63066);
     try
     {
-      ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc deletePieceMusicInfo Task, musicId:%s", new Object[] { paramIPCString });
+      ae.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc deletePieceMusicInfo Task, musicId:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      d locald = com.tencent.mm.plugin.music.model.f.dth();
-      ad.i("MicroMsg.Music.PieceMusicInfoStorage", "deletePieceMusicInfo raw=%d musicId=%s", new Object[] { Integer.valueOf(locald.db.delete("PieceMusicInfo", "musicId=?", new String[] { paramIPCString })), paramIPCString });
-      locald.wlP.remove(paramIPCString);
+      d locald = com.tencent.mm.plugin.music.model.f.dww();
+      ae.i("MicroMsg.Music.PieceMusicInfoStorage", "deletePieceMusicInfo raw=%d musicId=%s", new Object[] { Integer.valueOf(locald.db.delete("PieceMusicInfo", "musicId=?", new String[] { paramIPCString })), paramIPCString });
+      locald.wBy.remove(paramIPCString);
       paramIPCString = new IPCVoid();
       AppMethodBeat.o(63066);
       return paramIPCString;
@@ -29,7 +29,7 @@ public final class a$a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc deletePieceMusicInfo task", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc deletePieceMusicInfo task", new Object[0]);
       }
     }
   }

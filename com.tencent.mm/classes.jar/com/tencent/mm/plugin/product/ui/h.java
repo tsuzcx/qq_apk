@@ -21,16 +21,16 @@ public final class h
   implements Filterable
 {
   private Context mContext;
-  private List<String> wLZ;
-  private List<String> wNM;
-  Filter wNN;
+  private List<String> xbN;
+  private List<String> xdA;
+  Filter xdB;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(66991);
-    this.wNM = null;
-    this.wLZ = null;
-    this.wNN = new Filter()
+    this.xdA = null;
+    this.xbN = null;
+    this.xdB = new Filter()
     {
       protected final Filter.FilterResults performFiltering(CharSequence paramAnonymousCharSequence)
       {
@@ -69,14 +69,14 @@ public final class h
       }
     };
     this.mContext = paramContext;
-    this.wNM = a.dzs().dzu().wLZ;
+    this.xdA = a.dCJ().dCL().xbN;
     AppMethodBeat.o(66991);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(66993);
-    String str = (String)this.wLZ.get(paramInt);
+    String str = (String)this.xbN.get(paramInt);
     AppMethodBeat.o(66993);
     return str;
   }
@@ -84,9 +84,9 @@ public final class h
   public final int getCount()
   {
     AppMethodBeat.i(66992);
-    if (this.wLZ != null)
+    if (this.xbN != null)
     {
-      int i = this.wLZ.size();
+      int i = this.xbN.size();
       AppMethodBeat.o(66992);
       return i;
     }
@@ -96,7 +96,7 @@ public final class h
   
   public final Filter getFilter()
   {
-    return this.wNN;
+    return this.xdB;
   }
   
   public final long getItemId(int paramInt)
@@ -112,13 +112,13 @@ public final class h
     {
       paramView = new a();
       localView = LayoutInflater.from(this.mContext).inflate(17367043, null);
-      paramView.wNs = ((TextView)localView.findViewById(16908308));
+      paramView.xdg = ((TextView)localView.findViewById(16908308));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.wNs.setText(getItem(paramInt));
+      paramViewGroup.xdg.setText(getItem(paramInt));
       AppMethodBeat.o(66994);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -128,14 +128,14 @@ public final class h
   
   final class a
   {
-    TextView wNs;
+    TextView xdg;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.h
  * JD-Core Version:    0.7.0.1
  */

@@ -16,46 +16,46 @@ import com.tencent.mm.ui.ao;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogCropVideoPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "layout", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cropBtn", "Landroid/widget/ImageView;", "getLayout", "()Landroid/view/View;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setVisibility", "", "visibility", "", "plugin-vlog_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogCropVideoPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "layout", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cropBtn", "Landroid/widget/ImageView;", "getLayout", "()Landroid/view/View;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setVisibility", "", "visibility", "", "plugin-vlog_release"})
 public final class ab
   implements t
 {
   private final View rY;
-  final d sQE;
-  private final ImageView xCr;
+  final d tbP;
+  private final ImageView xSm;
   
   public ab(View paramView, d paramd)
   {
-    AppMethodBeat.i(196393);
+    AppMethodBeat.i(191852);
     this.rY = paramView;
-    this.sQE = paramd;
+    this.tbP = paramd;
     paramView = this.rY.findViewById(2131299289);
     p.g(paramView, "layout.findViewById(R.id.editor_crop_video)");
-    this.xCr = ((ImageView)paramView);
-    this.xCr.setImageDrawable(ao.k(this.rY.getContext(), 2131690382, -1));
-    this.xCr.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.xSm = ((ImageView)paramView);
+    this.xSm.setImageDrawable(ao.k(this.rY.getContext(), 2131690382, -1));
+    this.xSm.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(196391);
+        AppMethodBeat.i(191850);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/vlog/ui/plugin/VLogCropVideoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/vlog/ui/plugin/VLogCropVideoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         paramAnonymousView = new Bundle();
-        this.BOB.sQE.a(d.c.xEO, paramAnonymousView);
+        this.Cga.tbP.a(d.c.xUJ, paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/VLogCropVideoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196391);
+        AppMethodBeat.o(191850);
       }
     });
-    AppMethodBeat.o(196393);
+    AppMethodBeat.o(191852);
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX() {}
+  public final void azm() {}
   
   public final String name()
   {
@@ -70,11 +70,11 @@ public final class ab
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(196394);
+    AppMethodBeat.i(191853);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(196394);
+    AppMethodBeat.o(191853);
   }
   
   public final void onResume() {}
@@ -85,14 +85,14 @@ public final class ab
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(196392);
-    this.xCr.setVisibility(paramInt);
-    AppMethodBeat.o(196392);
+    AppMethodBeat.i(191851);
+    this.xSm.setVisibility(paramInt);
+    AppMethodBeat.o(191851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.ab
  * JD-Core Version:    0.7.0.1
  */

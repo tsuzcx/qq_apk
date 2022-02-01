@@ -58,7 +58,7 @@ final class ab
     AppMethodBeat.o(87930);
   }
   
-  static ab AJ()
+  static ab AK()
   {
     AppMethodBeat.i(87931);
     if (ccX == null) {
@@ -74,9 +74,9 @@ final class ab
     return this.bWU != null;
   }
   
-  final void Ab() {}
+  final void Ac() {}
   
-  final void Ac()
+  final void Ad()
   {
     AppMethodBeat.i(87936);
     if ((!isAvailable()) || (!this.isRunning) || (this.cdb >= 90000L))
@@ -88,7 +88,7 @@ final class ab
     AppMethodBeat.o(87936);
   }
   
-  final void Ad()
+  final void Ae()
   {
     AppMethodBeat.i(87937);
     if ((!isAvailable()) || (!this.isRunning) || (this.cdb >= 90000L))
@@ -164,14 +164,14 @@ final class ab
     //   25	36	39	finally
   }
   
-  final void as(Context paramContext)
+  final void at(Context paramContext)
   {
     AppMethodBeat.i(87933);
     this.bWU = ((WifiManager)paramContext.getSystemService("wifi"));
     AppMethodBeat.o(87933);
   }
   
-  final void at(Context paramContext)
+  final void au(Context paramContext)
   {
     AppMethodBeat.i(87935);
     if (!isAvailable())
@@ -198,7 +198,7 @@ final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.d.a.a.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -2,29 +2,29 @@ package com.tencent.mm.storagebase.a;
 
 import android.database.sqlite.SQLiteClosable;
 import android.util.SparseArray;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class b<T extends a>
   extends SQLiteClosable
 {
-  SparseArray<Object> IPk = new SparseArray();
-  int IPl;
-  HashMap<Object, T> IPm = new HashMap();
-  ArrayList<Object> IPn;
-  T IPo;
+  SparseArray<Object> JjS = new SparseArray();
+  int JjT;
+  HashMap<Object, T> JjU = new HashMap();
+  ArrayList<Object> JjV;
+  T JjW;
   int mStartPos = 0;
   
-  final void E(Object[] paramArrayOfObject)
+  final void D(Object[] paramArrayOfObject)
   {
     SparseArray localSparseArray = new SparseArray();
     int i = 0;
     int j = 0;
-    if (i < this.IPk.size())
+    if (i < this.JjS.size())
     {
-      int i2 = this.IPk.keyAt(i);
-      Object localObject = this.IPk.valueAt(i);
+      int i2 = this.JjS.keyAt(i);
+      Object localObject = this.JjS.valueAt(i);
       int i1 = 1;
       int i3 = paramArrayOfObject.length;
       int n = 0;
@@ -54,61 +54,61 @@ public abstract class b<T extends a>
         n += 1;
         break label54;
         label124:
-        ad.i("MicroMsg.CursorDataWindow", "newcursor delete index : " + i + " obj : " + localObject);
+        ae.i("MicroMsg.CursorDataWindow", "newcursor delete index : " + i + " obj : " + localObject);
       }
     }
-    if (this.IPk.size() != localSparseArray.size()) {
-      ad.i("MicroMsg.CursorDataWindow", "newcursor oldposition size :" + this.IPk.size() + " newposistion Size : " + localSparseArray.size());
+    if (this.JjS.size() != localSparseArray.size()) {
+      ae.i("MicroMsg.CursorDataWindow", "newcursor oldposition size :" + this.JjS.size() + " newposistion Size : " + localSparseArray.size());
     }
-    this.IPk = localSparseArray;
+    this.JjS = localSparseArray;
   }
   
-  public abstract ArrayList<T> aV(ArrayList<Object> paramArrayList);
+  public abstract ArrayList<T> aW(ArrayList<Object> paramArrayList);
   
-  public final boolean abl(int paramInt)
+  public final boolean abT(int paramInt)
   {
-    return this.IPk.indexOfKey(paramInt) >= 0;
+    return this.JjS.indexOfKey(paramInt) >= 0;
   }
   
   final void b(Object paramObject, T paramT)
   {
-    this.IPm.put(paramObject, paramT);
+    this.JjU.put(paramObject, paramT);
   }
   
   public final void clearData()
   {
-    ad.i("MicroMsg.CursorDataWindow", "clearData");
-    this.IPk.clear();
-    this.IPm.clear();
+    ae.i("MicroMsg.CursorDataWindow", "clearData");
+    this.JjS.clear();
+    this.JjU.clear();
   }
   
-  public final boolean dX(Object paramObject)
+  public final boolean dY(Object paramObject)
   {
     if ((paramObject instanceof Object[]))
     {
       Object[] arrayOfObject = (Object[])paramObject;
       if (arrayOfObject.length == 1) {
-        return (this.IPm != null) && (this.IPm.containsKey(arrayOfObject[0]));
+        return (this.JjU != null) && (this.JjU.containsKey(arrayOfObject[0]));
       }
     }
-    return (this.IPm != null) && (this.IPm.containsKey(paramObject));
+    return (this.JjU != null) && (this.JjU.containsKey(paramObject));
   }
   
-  public abstract T ftV();
+  public abstract T fxW();
   
-  public final void jA(int paramInt1, int paramInt2)
+  public final void jE(int paramInt1, int paramInt2)
   {
     if (paramInt2 != 0)
     {
-      ad.e("MicroMsg.CursorDataWindow", "newcursor rowEnd with error %d rowNum : %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      this.IPk.remove(paramInt1);
+      ae.e("MicroMsg.CursorDataWindow", "newcursor rowEnd with error %d rowNum : %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      this.JjS.remove(paramInt1);
     }
-    while (this.IPo == null) {
+    while (this.JjW == null) {
       return;
     }
-    Object localObject = this.IPo.getKey();
-    b(localObject, this.IPo);
-    this.IPk.put(paramInt1, localObject);
+    Object localObject = this.JjW.getKey();
+    b(localObject, this.JjW);
+    this.JjS.put(paramInt1, localObject);
   }
   
   protected void onAllReferencesReleased()

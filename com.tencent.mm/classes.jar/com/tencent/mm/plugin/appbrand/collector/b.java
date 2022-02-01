@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.collector;
 
 public abstract interface b
 {
-  public abstract CollectSession MU(String paramString);
+  public abstract CollectSession NB(String paramString);
   
-  public abstract CollectSession MV(String paramString);
+  public abstract CollectSession NC(String paramString);
   
-  public abstract StringBuilder MW(String paramString);
+  public abstract StringBuilder ND(String paramString);
   
   public abstract void a(CollectSession paramCollectSession);
   
   public abstract void c(String paramString1, String paramString2, String paramString3, boolean paramBoolean);
   
-  public abstract void cA(String paramString1, String paramString2);
+  public abstract CollectSession cB(String paramString1, String paramString2);
   
-  public abstract int cB(String paramString1, String paramString2);
+  public abstract void cC(String paramString1, String paramString2);
+  
+  public abstract int cD(String paramString1, String paramString2);
   
   public abstract void clear();
-  
-  public abstract CollectSession cz(String paramString1, String paramString2);
   
   public abstract void k(String paramString1, String paramString2, boolean paramBoolean);
   

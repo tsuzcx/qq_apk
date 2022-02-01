@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -26,10 +26,10 @@ public class SettingsSpecialSceneNotificationUI
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.screen.cP("settings_specail_scene_sound", false);
-    ((CheckBoxPreference)this.screen.aVD("settings_specail_scene_sound")).oB = com.tencent.mm.n.f.abQ();
-    this.screen.cP("settings_specail_scene_shake", false);
-    ((CheckBoxPreference)this.screen.aVD("settings_specail_scene_shake")).oB = com.tencent.mm.n.f.abR();
+    this.screen.cT("settings_specail_scene_sound", false);
+    ((CheckBoxPreference)this.screen.aXe("settings_specail_scene_sound")).setChecked(com.tencent.mm.n.f.abZ());
+    this.screen.cT("settings_specail_scene_shake", false);
+    ((CheckBoxPreference)this.screen.aXe("settings_specail_scene_shake")).setChecked(com.tencent.mm.n.f.aca());
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -81,7 +81,7 @@ public class SettingsSpecialSceneNotificationUI
     {
       com.tencent.mm.n.f.cW(((CheckBoxPreference)paramPreference).isChecked());
       initView();
-      bt.F(this, ((CheckBoxPreference)paramPreference).isChecked());
+      bu.F(this, ((CheckBoxPreference)paramPreference).isChecked());
       AppMethodBeat.o(74431);
       return true;
     }

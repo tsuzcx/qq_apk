@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.s.a;
 import android.support.v7.widget.RecyclerView.s.b;
 import android.support.v7.widget.RecyclerView.t;
-import android.support.v7.widget.ae;
 import android.support.v7.widget.aj;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -15,25 +14,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.a;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.widget.f;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
   extends f
 {
-  b BtO;
+  b BLm;
   private aj aqL;
   private aj aqM;
   
   public c(b paramb)
   {
-    this.BtO = paramb;
+    this.BLm = paramb;
   }
   
   private int a(View paramView, aj paramaj)
   {
     AppMethodBeat.i(126413);
     int i = paramaj.bn(paramView);
-    int j = this.BtO.epK();
+    int j = this.BLm.etr();
     AppMethodBeat.o(126413);
     return i - j;
   }
@@ -52,7 +50,7 @@ public final class c
     int k;
     if (parami.getClipToPadding())
     {
-      j = paramaj.kB() + (paramaj.kD() - a.BrF) / 2;
+      j = paramaj.kB() + (paramaj.kD() - a.BJe) / 2;
       int i = 2147483647;
       k = 0;
       label55:
@@ -116,7 +114,7 @@ public final class c
       AppMethodBeat.o(126411);
       return -1;
     }
-    int i = this.BtO.epE() + 1;
+    int i = this.BLm.etl() + 1;
     if (i == -1)
     {
       AppMethodBeat.o(126411);
@@ -152,7 +150,7 @@ public final class c
       }
       for (;;)
       {
-        ad.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.BtO.epE() + 1) });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.BLm.etl() + 1) });
         AppMethodBeat.o(126411);
         return paramInt1;
         bool = false;
@@ -221,7 +219,7 @@ public final class c
     }
   }
   
-  public final ae f(RecyclerView.i parami)
+  public final android.support.v7.widget.ae f(RecyclerView.i parami)
   {
     AppMethodBeat.i(126412);
     if (!(parami instanceof RecyclerView.s.b))
@@ -229,7 +227,7 @@ public final class c
       AppMethodBeat.o(126412);
       return null;
     }
-    parami = new ae(this.anl.getContext())
+    parami = new android.support.v7.widget.ae(this.anl.getContext())
     {
       public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
@@ -263,7 +261,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.c
  * JD-Core Version:    0.7.0.1
  */

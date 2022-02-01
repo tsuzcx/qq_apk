@@ -4,66 +4,65 @@ import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.g.c.aw;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.handoff.model.HandOffFile;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dsd;
-import com.tencent.mm.protocal.protobuf.dse;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.dta;
+import com.tencent.mm.protocal.protobuf.dtb;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 
 public final class ak
   extends n
   implements k
 {
-  private static final long ENG;
-  private long ENy;
-  private com.tencent.mm.al.f callback;
+  private static final long Fgc;
+  private long FfV;
+  private com.tencent.mm.ak.f callback;
   private Handler handler;
-  private String ibe;
-  private g.a ibn;
-  private boolean ibv;
   private String id;
-  private int isH;
-  private boolean pDT;
+  private String idX;
+  private g.a ieg;
+  private boolean ieo;
+  private int ivB;
+  private boolean pKx;
   private int retCode;
-  private com.tencent.mm.al.b rr;
+  private com.tencent.mm.ak.b rr;
   private long startTime;
-  private long uDQ;
-  private c xqy;
+  private long uPv;
+  private c xGv;
   
   static
   {
     AppMethodBeat.i(31083);
-    ENG = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qyo, 5) * 1000L;
+    Fgc = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qFu, 5) * 1000L;
     AppMethodBeat.o(31083);
   }
   
   public ak(String paramString, c paramc)
   {
     AppMethodBeat.i(31080);
-    this.isH = 8192;
-    this.ibv = true;
+    this.ivB = 8192;
+    this.ieo = true;
     this.retCode = 0;
     this.handler = new a((byte)0);
     this.startTime = 0L;
-    this.ENy = -1L;
-    this.ibe = "";
-    this.ibn = new g.a()
+    this.FfV = -1L;
+    this.idX = "";
+    this.ieg = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
@@ -80,11 +79,11 @@ public final class ak
         label147:
         for (boolean bool2 = true;; bool2 = false)
         {
-          ad.d("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s], progressing[%b], finish[%b], onlyCheckExist[%b]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramAnonymousBoolean) });
+          ae.d("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s], progressing[%b], finish[%b], onlyCheckExist[%b]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramAnonymousBoolean) });
           if (paramAnonymousInt != -21005) {
             break label153;
           }
-          ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback ERR_CNDCOM_MEDIA_IS_UPLOADING clientid:%s", new Object[] { ak.a(ak.this) });
+          ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback ERR_CNDCOM_MEDIA_IS_UPLOADING clientid:%s", new Object[] { ak.a(ak.this) });
           ak.b(ak.this);
           ak.c(ak.this).removeMessages(1);
           AppMethodBeat.o(31077);
@@ -97,22 +96,22 @@ public final class ak
         {
           ak.b(ak.this);
           ak.c(ak.this).removeMessages(1);
-          ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(ak.d(ak.this), "");
+          ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(ak.d(ak.this), "");
           AppMethodBeat.o(31077);
           return 0;
         }
         if (ak.e(ak.this).field_status == 105L)
         {
-          ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "attach upload has paused, status:%d", new Object[] { Long.valueOf(ak.e(ak.this).field_status) });
+          ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "attach upload has paused, status:%d", new Object[] { Long.valueOf(ak.e(ak.this).field_status) });
           ak.b(ak.this);
           ak.c(ak.this).removeMessages(1);
-          com.tencent.mm.ao.f.aGI().EP(ak.a(ak.this));
+          com.tencent.mm.an.f.aGZ().Fr(ak.a(ak.this));
           AppMethodBeat.o(31077);
           return 0;
         }
         if (paramAnonymousc != null)
         {
-          ak.e(ak.this).field_lastModifyTime = bt.aQJ();
+          ak.e(ak.this).field_lastModifyTime = bu.aRi();
           ak.e(ak.this).field_offset = paramAnonymousc.field_finishedLength;
           ak.a(ak.this, ak.e(ak.this).field_offset);
           AppMethodBeat.o(31077);
@@ -123,17 +122,17 @@ public final class ak
           if (paramAnonymousd.field_retCode == 0) {
             break label497;
           }
-          ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback sceneResult.retCode :%d arg[%s] info[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd.field_arg, paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fIT });
+          ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback sceneResult.retCode :%d arg[%s] info[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd.field_arg, paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fKX });
           ak.b(ak.this);
           ak.c(ak.this).removeMessages(1);
-          ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(ak.d(ak.this), "");
+          ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(ak.d(ak.this), "");
         }
         for (;;)
         {
           AppMethodBeat.o(31077);
           return 0;
           label497:
-          ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback upload attach by cdn, isHitCacheUpload: %d, onlyCheckExist[%b], exist[%b], signature[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_UploadHitCacheType), Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(paramAnonymousd.field_exist_whencheck), bt.aRp(ak.e(ak.this).field_signature) });
+          ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdnCallback upload attach by cdn, isHitCacheUpload: %d, onlyCheckExist[%b], exist[%b], signature[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_UploadHitCacheType), Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(paramAnonymousd.field_exist_whencheck), bu.aSM(ak.e(ak.this).field_signature) });
           ak.b(ak.this);
           ak.c(ak.this).removeMessages(1);
           ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).an(ak.d(ak.this), paramAnonymousd.field_fileId, paramAnonymousd.field_aesKey);
@@ -152,19 +151,19 @@ public final class ak
     paramc.field_status = 101L;
     paramc.field_netTimes = 0L;
     this.id = paramString;
-    this.xqy = paramc;
-    if (ay.iY(aj.getContext())) {
-      this.isH = 32768;
+    this.xGv = paramc;
+    if (az.jd(com.tencent.mm.sdk.platformtools.ak.getContext())) {
+      this.ivB = 32768;
     }
-    paramString = new com.tencent.mm.al.b.a();
-    paramString.hNM = new dsd();
-    paramString.hNN = new dse();
+    paramString = new com.tencent.mm.ak.b.a();
+    paramString.hQF = new dta();
+    paramString.hQG = new dtb();
     paramString.uri = "/cgi-bin/micromsg-bin/uploadappattach";
     paramString.funcId = 220;
-    paramString.hNO = 105;
+    paramString.hQH = 105;
     paramString.respCmdId = 1000000105;
-    this.rr = paramString.aDC();
-    ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig new NetSceneUploadAppAttachForHandOff stack[%s]", new Object[] { bt.flS() });
+    this.rr = paramString.aDS();
+    ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig new NetSceneUploadAppAttachForHandOff stack[%s]", new Object[] { bu.fpN() });
     AppMethodBeat.o(31080);
   }
   
@@ -173,152 +172,152 @@ public final class ak
     AppMethodBeat.i(31079);
     c localc = new c();
     localc.field_totalLen = paramHandOffFile.size;
-    localc.field_fileFullPath = paramHandOffFile.hdP;
+    localc.field_fileFullPath = paramHandOffFile.hgD;
     localc.field_sdkVer = 0L;
     localc.field_appId = "";
-    localc.field_clientAppDataId = bt.flT();
+    localc.field_clientAppDataId = bu.fpO();
     localc.field_type = 0L;
     localc.field_status = 200L;
     localc.field_isUpload = true;
-    localc.field_createTime = bt.flT();
-    localc.field_lastModifyTime = bt.aQJ();
-    localc.field_mediaSvrId = bt.flT();
+    localc.field_createTime = bu.fpO();
+    localc.field_lastModifyTime = bu.aRi();
+    localc.field_mediaSvrId = bu.fpO();
     localc.field_isUseCdn = 0;
     AppMethodBeat.o(31079);
     return localc;
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
   {
     AppMethodBeat.i(31081);
     this.callback = paramf;
-    if (this.xqy.field_status != 101L)
+    if (this.xGv.field_status != 101L)
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", com.tencent.mm.compatible.util.f.abi() + " summerbig get field_status failed status:" + this.xqy.field_status);
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", com.tencent.mm.compatible.util.f.abr() + " summerbig get field_status failed status:" + this.xGv.field_status);
       AppMethodBeat.o(31081);
       return -1;
     }
     if (this.startTime == 0L)
     {
-      this.startTime = bt.flT();
-      this.ENy = this.xqy.field_offset;
+      this.startTime = bu.fpO();
+      this.FfV = this.xGv.field_offset;
     }
-    ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene fileFullPath[%s], totalLen[%d],isUpload[%b], isUseCdn[%b], type[%d]", new Object[] { this.xqy.field_fileFullPath, Long.valueOf(this.xqy.field_totalLen), Boolean.valueOf(this.xqy.field_isUpload), Integer.valueOf(this.xqy.field_isUseCdn), Long.valueOf(this.xqy.field_type) });
-    com.tencent.mm.ao.f.aGI();
-    if ((!com.tencent.mm.ao.b.pa(4)) && (this.xqy.field_isUseCdn != 1))
+    ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene fileFullPath[%s], totalLen[%d],isUpload[%b], isUseCdn[%b], type[%d]", new Object[] { this.xGv.field_fileFullPath, Long.valueOf(this.xGv.field_totalLen), Boolean.valueOf(this.xGv.field_isUpload), Integer.valueOf(this.xGv.field_isUseCdn), Long.valueOf(this.xGv.field_type) });
+    com.tencent.mm.an.f.aGZ();
+    if ((!com.tencent.mm.an.b.pd(4)) && (this.xGv.field_isUseCdn != 1))
     {
-      com.tencent.mm.ao.f.aGI();
-      ad.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra not use cdn flag:%b getCdnInfo:%d", new Object[] { Boolean.valueOf(com.tencent.mm.ao.b.pa(4)), Integer.valueOf(this.xqy.field_isUseCdn) });
+      com.tencent.mm.an.f.aGZ();
+      ae.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra not use cdn flag:%b getCdnInfo:%d", new Object[] { Boolean.valueOf(com.tencent.mm.an.b.pd(4)), Integer.valueOf(this.xGv.field_isUseCdn) });
       i = 0;
     }
     while (i != 0)
     {
-      this.pDT = true;
+      this.pKx = true;
       Message.obtain(this.handler, 1, this.id).sendToTarget();
-      ad.d("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene cdntra use cdn return -1 for onGYNetEnd client");
+      ae.d("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene cdntra use cdn return -1 for onGYNetEnd client");
       AppMethodBeat.o(31081);
       return 0;
-      i = (int)i.aYo(this.xqy.field_fileFullPath);
-      this.ibe = com.tencent.mm.ao.c.a("upattach", this.xqy.field_createTime, u.aAY().field_username, "");
-      ad.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra genClientId field_createTime[%d], useCdnTransClientId[%s]", new Object[] { Long.valueOf(this.xqy.field_createTime), this.ibe });
-      if (bt.isNullOrNil(this.ibe))
+      i = (int)o.aZR(this.xGv.field_fileFullPath);
+      this.idX = com.tencent.mm.an.c.a("upattach", this.xGv.field_createTime, v.aBo().field_username, "");
+      ae.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra genClientId field_createTime[%d], useCdnTransClientId[%s]", new Object[] { Long.valueOf(this.xGv.field_createTime), this.idX });
+      if (bu.isNullOrNil(this.idX))
       {
-        ad.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra genClientId failed not use cdn");
+        ae.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra genClientId failed not use cdn");
         i = 0;
       }
       else
       {
         paramf = new com.tencent.mm.i.g();
-        paramf.fJi = "task_NetSceneUploadAppAttachForHandOff";
+        paramf.fLl = "task_NetSceneUploadAppAttachForHandOff";
         int j = com.tencent.mm.i.a.MediaType_FILE;
         paramf.field_appType = 0;
-        paramf.fJj = this.ibn;
-        paramf.field_mediaId = this.ibe;
-        paramf.field_fullpath = this.xqy.field_fileFullPath;
+        paramf.fLm = this.ieg;
+        paramf.field_mediaId = this.idX;
+        paramf.field_fullpath = this.xGv.field_fileFullPath;
         paramf.field_fileType = j;
-        paramf.field_priority = com.tencent.mm.i.a.fIw;
+        paramf.field_priority = com.tencent.mm.i.a.fKA;
         paramf.field_totalLen = i;
         paramf.field_needStorage = false;
         paramf.field_isStreamMedia = false;
-        paramf.field_enable_hitcheck = this.ibv;
-        if (bt.isNullOrNil(paramf.field_aesKey))
+        paramf.field_enable_hitcheck = this.ieo;
+        if (bu.isNullOrNil(paramf.field_aesKey))
         {
-          com.tencent.mm.ao.f.aGJ();
-          paramf.field_aesKey = com.tencent.mm.ao.a.aGz();
-          ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summersafecdn gen aesKey new[%s]", new Object[] { paramf.field_aesKey });
+          com.tencent.mm.an.f.aHa();
+          paramf.field_aesKey = com.tencent.mm.an.a.aGP();
+          ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summersafecdn gen aesKey new[%s]", new Object[] { paramf.field_aesKey });
         }
-        ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra checkUseCdn msgId:%d file[%s][%d], useCdnTransClientId[%s], fileType[%d], enable_hitcheck[%b], onlycheckexist[%b] force_aeskeycdn[%b] trysafecdn[%b] aeskey[%s], md5[%s], signature[%s], faeskey[%s], fsignature[%s]", new Object[] { Long.valueOf(this.xqy.field_msgInfoId), paramf.field_fullpath, Integer.valueOf(i), this.ibe, Integer.valueOf(paramf.field_fileType), Boolean.valueOf(paramf.field_enable_hitcheck), Boolean.valueOf(paramf.field_onlycheckexist), Boolean.valueOf(paramf.field_force_aeskeycdn), Boolean.valueOf(paramf.field_trysafecdn), bt.aRp(paramf.field_aesKey), paramf.field_filemd5, bt.aRp(paramf.field_svr_signature), bt.aRp(paramf.field_fake_bigfile_signature_aeskey), bt.aRp(paramf.field_fake_bigfile_signature) });
-        if (!com.tencent.mm.ao.f.aGI().f(paramf))
+        ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra checkUseCdn msgId:%d file[%s][%d], useCdnTransClientId[%s], fileType[%d], enable_hitcheck[%b], onlycheckexist[%b] force_aeskeycdn[%b] trysafecdn[%b] aeskey[%s], md5[%s], signature[%s], faeskey[%s], fsignature[%s]", new Object[] { Long.valueOf(this.xGv.field_msgInfoId), paramf.field_fullpath, Integer.valueOf(i), this.idX, Integer.valueOf(paramf.field_fileType), Boolean.valueOf(paramf.field_enable_hitcheck), Boolean.valueOf(paramf.field_onlycheckexist), Boolean.valueOf(paramf.field_force_aeskeycdn), Boolean.valueOf(paramf.field_trysafecdn), bu.aSM(paramf.field_aesKey), paramf.field_filemd5, bu.aSM(paramf.field_svr_signature), bu.aSM(paramf.field_fake_bigfile_signature_aeskey), bu.aSM(paramf.field_fake_bigfile_signature) });
+        if (!com.tencent.mm.an.f.aGZ().f(paramf))
         {
-          ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra addSendTask failed.");
-          this.ibe = "";
+          ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig cdntra addSendTask failed.");
+          this.idX = "";
           i = 0;
         }
         else
         {
-          if (this.xqy.field_isUseCdn != 1) {
-            this.xqy.field_isUseCdn = 1;
+          if (this.xGv.field_isUseCdn != 1) {
+            this.xGv.field_isUseCdn = 1;
           }
-          ad.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig checkUseCdn ret true useCdnTransClientId[%s]", new Object[] { this.ibe });
+          ae.i("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig checkUseCdn ret true useCdnTransClientId[%s]", new Object[] { this.idX });
           i = 1;
         }
       }
     }
-    if (this.xqy.field_netTimes > 3200L)
+    if (this.xGv.field_netTimes > 3200L)
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", com.tencent.mm.compatible.util.f.abi() + " summerbig doScene info.field_netTimes > DOSCENE_LIMIT SET ERROR!");
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", com.tencent.mm.compatible.util.f.abr() + " summerbig doScene info.field_netTimes > DOSCENE_LIMIT SET ERROR!");
       AppMethodBeat.o(31081);
       return -1;
     }
-    paramf = this.xqy;
+    paramf = this.xGv;
     paramf.field_netTimes += 1L;
-    if (bt.isNullOrNil(this.xqy.field_clientAppDataId))
+    if (bu.isNullOrNil(this.xGv.field_clientAppDataId))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene checkArgs : clientAppDataId is null");
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene checkArgs : clientAppDataId is null");
       this.retCode = (-10000 - com.tencent.mm.compatible.util.f.getLine());
       AppMethodBeat.o(31081);
       return -1;
     }
-    if ((this.xqy.field_totalLen <= 0L) || (this.xqy.field_totalLen > 26214400L))
+    if ((this.xGv.field_totalLen <= 0L) || (this.xGv.field_totalLen > 26214400L))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene checkArgs : totalLen is invalid, totalLen = " + this.xqy.field_totalLen);
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene checkArgs : totalLen is invalid, totalLen = " + this.xGv.field_totalLen);
       this.retCode = (-10000 - com.tencent.mm.compatible.util.f.getLine());
       AppMethodBeat.o(31081);
       return -1;
     }
-    if (bt.isNullOrNil(this.xqy.field_fileFullPath))
+    if (bu.isNullOrNil(this.xGv.field_fileFullPath))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene checkArgs : fileFullPath is null");
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene checkArgs : fileFullPath is null");
       this.retCode = (-10000 - com.tencent.mm.compatible.util.f.getLine());
       AppMethodBeat.o(31081);
       return -1;
     }
-    if ((int)i.aYo(this.xqy.field_fileFullPath) > 26214400)
+    if ((int)o.aZR(this.xGv.field_fileFullPath) > 26214400)
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene doScene : file is too large");
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene doScene : file is too large");
       AppMethodBeat.o(31081);
       return -1;
     }
-    paramf = i.aY(this.xqy.field_fileFullPath, (int)this.xqy.field_offset, this.isH);
-    if (bt.cC(paramf))
+    paramf = o.bb(this.xGv.field_fileFullPath, (int)this.xGv.field_offset, this.ivB);
+    if (bu.cF(paramf))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene doScene : data is null");
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "summerbig doScene doScene : data is null");
       this.retCode = (-10000 - com.tencent.mm.compatible.util.f.getLine());
       AppMethodBeat.o(31081);
       return -1;
     }
-    dsd localdsd = (dsd)this.rr.hNK.hNQ;
-    localdsd.iht = this.xqy.field_appId;
-    localdsd.Fws = ((int)this.xqy.field_sdkVer);
-    localdsd.HEY = this.xqy.field_clientAppDataId;
-    localdsd.nEf = ((int)this.xqy.field_type);
-    localdsd.nDo = u.aAm();
-    localdsd.xcK = ((int)this.xqy.field_totalLen);
-    localdsd.xcL = ((int)this.xqy.field_offset);
-    localdsd.xcM = paramf.length;
-    localdsd.xcN = new SKBuiltinBuffer_t().setBuffer(paramf);
-    ad.d("UploadAppAttach", String.format("AppId=%s, SdkVersion=%d, ClientAppDataId=%s, Type=%d, UserName=%s, TotalLen=%d, StartPos=%d", new Object[] { localdsd.iht, Integer.valueOf(localdsd.Fws), localdsd.HEY, Integer.valueOf(localdsd.nEf), localdsd.nDo, Integer.valueOf(localdsd.xcK), Integer.valueOf(localdsd.xcL) }));
-    this.pDT = true;
+    dta localdta = (dta)this.rr.hQD.hQJ;
+    localdta.ikm = this.xGv.field_appId;
+    localdta.FOQ = ((int)this.xGv.field_sdkVer);
+    localdta.HYL = this.xGv.field_clientAppDataId;
+    localdta.nJA = ((int)this.xGv.field_type);
+    localdta.nIJ = v.aAC();
+    localdta.xsB = ((int)this.xGv.field_totalLen);
+    localdta.xsC = ((int)this.xGv.field_offset);
+    localdta.xsD = paramf.length;
+    localdta.xsE = new SKBuiltinBuffer_t().setBuffer(paramf);
+    ae.d("UploadAppAttach", String.format("AppId=%s, SdkVersion=%d, ClientAppDataId=%s, Type=%d, UserName=%s, TotalLen=%d, StartPos=%d", new Object[] { localdta.ikm, Integer.valueOf(localdta.FOQ), localdta.HYL, Integer.valueOf(localdta.nJA), localdta.nIJ, Integer.valueOf(localdta.xsB), Integer.valueOf(localdta.xsC) }));
+    this.pKx = true;
     if (!this.handler.hasMessages(1)) {
       Message.obtain(this.handler, 1, this.id).sendToTarget();
     }
@@ -335,86 +334,86 @@ public final class ak
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(31082);
-    ad.d("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd : errType = " + paramInt2 + ", errCode = " + paramInt3);
-    if ((paramInt2 == 3) && (paramInt3 == -1) && (!bt.isNullOrNil(this.ibe)))
+    ae.d("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd : errType = " + paramInt2 + ", errCode = " + paramInt3);
+    if ((paramInt2 == 3) && (paramInt3 == -1) && (!bu.isNullOrNil(this.idX)))
     {
-      ad.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.ibe });
-      this.pDT = false;
+      ae.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.idX });
+      this.pKx = false;
       this.handler.removeMessages(1);
       AppMethodBeat.o(31082);
       return;
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd : errType = " + paramInt2 + ", errCode = " + paramInt3);
-      this.pDT = false;
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd : errType = " + paramInt2 + ", errCode = " + paramInt3);
+      this.pKx = false;
       this.handler.removeMessages(1);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(this.id, "");
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(this.id, "");
       AppMethodBeat.o(31082);
       return;
     }
-    paramString = (dse)((com.tencent.mm.al.b)paramq).hNL.hNQ;
-    if ((paramString.iht != null) && ((!paramString.iht.equals(this.xqy.field_appId)) || (!paramString.HEY.equals(this.xqy.field_clientAppDataId))))
+    paramString = (dtb)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    if ((paramString.ikm != null) && ((!paramString.ikm.equals(this.xGv.field_appId)) || (!paramString.HYL.equals(this.xGv.field_clientAppDataId))))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "argument is not consistent");
-      this.pDT = false;
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "argument is not consistent");
+      this.pKx = false;
       this.handler.removeMessages(1);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(this.id, "");
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(this.id, "");
       AppMethodBeat.o(31082);
       return;
     }
-    if ((paramString.xcK < 0) || (paramString.xcK != this.xqy.field_totalLen) || (paramString.xcL < 0) || (paramString.xcL > this.xqy.field_totalLen))
+    if ((paramString.xsB < 0) || (paramString.xsB != this.xGv.field_totalLen) || (paramString.xsC < 0) || (paramString.xsC > this.xGv.field_totalLen))
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "dataLen, startPos or totalLen is incorrect");
-      this.pDT = false;
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "dataLen, startPos or totalLen is incorrect");
+      this.pKx = false;
       this.handler.removeMessages(1);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(this.id, "");
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(this.id, "");
       AppMethodBeat.o(31082);
       return;
     }
-    this.xqy.field_offset = paramString.xcL;
-    paramq = this.xqy;
-    if (m.aLL(paramString.ihw)) {}
-    for (paramString = paramString.ihw;; paramString = "")
+    this.xGv.field_offset = paramString.xsC;
+    paramq = this.xGv;
+    if (m.aNh(paramString.ikp)) {}
+    for (paramString = paramString.ikp;; paramString = "")
     {
       paramq.field_mediaSvrId = paramString;
-      if (this.xqy.field_status != 105L) {
+      if (this.xGv.field_status != 105L) {
         break;
       }
-      ad.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd STATUS PAUSE [" + this.xqy.field_mediaSvrId + "," + this.xqy.field_offset + "] ");
-      this.pDT = false;
+      ae.w("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd STATUS PAUSE [" + this.xGv.field_mediaSvrId + "," + this.xGv.field_offset + "] ");
+      this.pKx = false;
       this.handler.removeMessages(1);
       AppMethodBeat.o(31082);
       return;
     }
-    if (this.xqy.field_offset == this.xqy.field_totalLen)
+    if (this.xGv.field_offset == this.xGv.field_totalLen)
     {
-      if (bt.isNullOrNil(this.xqy.field_mediaSvrId))
+      if (bu.isNullOrNil(this.xGv.field_mediaSvrId))
       {
-        ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "finish upload but mediaid == null!");
-        this.pDT = false;
+        ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "finish upload but mediaid == null!");
+        this.pKx = false;
         this.handler.removeMessages(1);
-        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(this.id, "");
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(this.id, "");
         AppMethodBeat.o(31082);
         return;
       }
-      this.xqy.field_status = 199L;
+      this.xGv.field_status = 199L;
     }
-    while (this.xqy.field_status == 199L)
+    while (this.xGv.field_status == 199L)
     {
-      this.pDT = false;
+      this.pKx = false;
       this.handler.removeMessages(1);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).f(this.id, this.xqy.field_appId, (int)this.xqy.field_sdkVer, this.xqy.field_mediaSvrId);
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).f(this.id, this.xGv.field_appId, (int)this.xGv.field_sdkVer, this.xGv.field_mediaSvrId);
       AppMethodBeat.o(31082);
       return;
-      this.uDQ = this.xqy.field_offset;
+      this.uPv = this.xGv.field_offset;
     }
     if (doScene(dispatcher(), this.callback) < 0)
     {
-      ad.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd : doScene fail");
-      this.pDT = false;
+      ae.e("MicroMsg.NetSceneUploadAppAttachForHandOff", "onGYNetEnd : doScene fail");
+      this.pKx = false;
       this.handler.removeMessages(1);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hr(this.id, "");
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).hy(this.id, "");
     }
     AppMethodBeat.o(31082);
   }
@@ -426,7 +425,7 @@ public final class ak
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hOp;
+    return n.b.hRi;
   }
   
   @SuppressLint({"HandlerLeak"})
@@ -439,7 +438,7 @@ public final class ak
     {
       AppMethodBeat.i(31078);
       if ((paramMessage.what == 1) && (ak.f(ak.this)) && (ak.e(ak.this).field_status != 105L) && (((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).az(ak.d(ak.this), ak.g(ak.this)))) {
-        sendMessageDelayed(Message.obtain(this, 1, ak.d(ak.this)), ak.bvT());
+        sendMessageDelayed(Message.obtain(this, 1, ak.d(ak.this)), ak.bwK());
       }
       AppMethodBeat.o(31078);
     }

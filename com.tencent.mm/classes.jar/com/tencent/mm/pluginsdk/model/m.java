@@ -2,16 +2,16 @@ package com.tencent.mm.pluginsdk.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.concurrent.ExecutorService;
 import junit.framework.Assert;
 
 public abstract class m<Params, Progress, Result>
 {
-  protected ap handler = new ap(Looper.getMainLooper());
+  protected aq handler = new aq(Looper.getMainLooper());
   private boolean isStart = false;
   
-  public abstract ExecutorService dCe();
+  public abstract ExecutorService dFv();
   
   public abstract Result doInBackground(Params... paramVarArgs);
   
@@ -26,7 +26,7 @@ public abstract class m<Params, Progress, Result>
     }
     this.isStart = true;
     y(paramVarArgs);
-    ExecutorService localExecutorService = dCe();
+    ExecutorService localExecutorService = dFv();
     if (localExecutorService == null) {
       return false;
     }

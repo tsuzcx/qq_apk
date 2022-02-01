@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ny
   extends b
 {
-  public a dBN;
+  public a dCP;
   
   public ny()
   {
@@ -15,26 +15,27 @@ public final class ny
   
   private ny(byte paramByte)
   {
-    AppMethodBeat.i(116038);
-    this.dBN = new a();
-    this.IbR = false;
+    AppMethodBeat.i(126680);
+    this.dCP = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116038);
+    AppMethodBeat.o(126680);
   }
   
   public static final class a
   {
-    public String cUi;
-    public int dpw;
-    public String dyL;
-    public int op = 0;
-    public int reason;
-    public String url;
+    public long dCQ;
+    public boolean dCR = false;
+    public int dto;
+    public int length;
+    public String mediaId;
+    public int offset;
+    public int retCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ny
  * JD-Core Version:    0.7.0.1
  */

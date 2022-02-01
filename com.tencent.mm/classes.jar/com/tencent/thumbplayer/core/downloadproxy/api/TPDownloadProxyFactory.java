@@ -32,7 +32,7 @@ public class TPDownloadProxyFactory
   
   static
   {
-    AppMethodBeat.i(190059);
+    AppMethodBeat.i(207272);
     mMapObject = new Object();
     mvTPDownloadProxyMap = new HashMap();
     mvTPDownloadProxyClientMap = new HashMap();
@@ -44,7 +44,7 @@ public class TPDownloadProxyFactory
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
-        AppMethodBeat.i(190049);
+        AppMethodBeat.i(207262);
         TPDownloadProxyFactory.access$002(TPDownloadProxyFactoryAidl.Stub.asInterface(paramAnonymousIBinder));
         try
         {
@@ -63,7 +63,7 @@ public class TPDownloadProxyFactory
           if (TPDownloadProxyFactory.downloadProxyFactoryAidl == null)
           {
             TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected, aidl is null!");
-            AppMethodBeat.o(190049);
+            AppMethodBeat.o(207262);
             return;
           }
           TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected, aidl not null!");
@@ -71,21 +71,21 @@ public class TPDownloadProxyFactory
           if (TPDownloadProxyFactory.mCallback != null) {
             TPDownloadProxyFactory.mCallback.onBindSuccess();
           }
-          AppMethodBeat.o(190049);
+          AppMethodBeat.o(207262);
         }
       }
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        AppMethodBeat.i(190050);
+        AppMethodBeat.i(207263);
         TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service disconnected");
         TPDownloadProxyFactory.access$002(null);
         TPDownloadProxyFactory.access$200(false);
         TPDownloadProxyFactory.ensurePlayManagerService(TPDownloadProxyFactory.mCallback);
-        AppMethodBeat.o(190050);
+        AppMethodBeat.o(207263);
       }
     };
-    AppMethodBeat.o(190059);
+    AppMethodBeat.o(207272);
   }
   
   public static boolean canUseService()
@@ -95,15 +95,15 @@ public class TPDownloadProxyFactory
     {
       try
       {
-        AppMethodBeat.i(190056);
+        AppMethodBeat.i(207269);
         if (!mUseService)
         {
-          AppMethodBeat.o(190056);
+          AppMethodBeat.o(207269);
           return bool;
         }
         if (!mCanUseAIDL)
         {
-          AppMethodBeat.o(190056);
+          AppMethodBeat.o(207269);
           bool = false;
           continue;
         }
@@ -115,7 +115,7 @@ public class TPDownloadProxyFactory
         try
         {
           downloadProxyFactoryAidl.isReadyForPlay();
-          AppMethodBeat.o(190056);
+          AppMethodBeat.o(207269);
         }
         catch (Throwable localThrowable)
         {
@@ -123,19 +123,19 @@ public class TPDownloadProxyFactory
         }
         localObject = finally;
       }
-      AppMethodBeat.o(190056);
+      AppMethodBeat.o(207269);
       bool = false;
     }
   }
   
   public static boolean ensurePlayManagerService(TPDLProxyBindServiceCallback paramTPDLProxyBindServiceCallback)
   {
-    AppMethodBeat.i(190053);
+    AppMethodBeat.i(207266);
     Context localContext = TPDownloadProxyHelper.getContext();
     if (localContext == null)
     {
       TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "ensurePlayManagerService get context null!");
-      AppMethodBeat.o(190053);
+      AppMethodBeat.o(207266);
       return false;
     }
     mCallback = paramTPDLProxyBindServiceCallback;
@@ -151,13 +151,13 @@ public class TPDownloadProxyFactory
         if (!localContext.bindService(paramTPDLProxyBindServiceCallback, mConnection, 1)) {
           TPDLProxyLog.e("TPDownloadProxyFactory", 0, "tpdlnative", "ensurePlayManagerService bind service failed!");
         }
-        AppMethodBeat.o(190053);
+        AppMethodBeat.o(207266);
         return true;
       }
       catch (Throwable paramTPDLProxyBindServiceCallback)
       {
         TPDLProxyLog.e("TPDownloadProxyFactory", 0, "tpdlnative", "ensurePlayManagerService failed, error:" + paramTPDLProxyBindServiceCallback.toString());
-        AppMethodBeat.o(190053);
+        AppMethodBeat.o(207266);
       }
     }
     return false;
@@ -179,25 +179,25 @@ public class TPDownloadProxyFactory
   
   public static String getNativeVersion()
   {
-    AppMethodBeat.i(190057);
+    AppMethodBeat.i(207270);
     String str1;
     if (!mUseService)
     {
       str1 = TPDownloadProxyNative.getInstance().getNativeVersion();
-      AppMethodBeat.o(190057);
+      AppMethodBeat.o(207270);
       return str1;
     }
     if (!mCanUseAIDL)
     {
       str1 = TPDownloadProxyNative.getInstance().getNativeVersion();
-      AppMethodBeat.o(190057);
+      AppMethodBeat.o(207270);
       return str1;
     }
     if (downloadProxyFactoryAidl != null) {
       try
       {
         str1 = downloadProxyFactoryAidl.getNativeVersion();
-        AppMethodBeat.o(190057);
+        AppMethodBeat.o(207270);
         return str1;
       }
       catch (Throwable localThrowable)
@@ -206,17 +206,17 @@ public class TPDownloadProxyFactory
       }
     }
     String str2 = TPDownloadProxyNative.getInstance().getNativeVersion();
-    AppMethodBeat.o(190057);
+    AppMethodBeat.o(207270);
     return str2;
   }
   
   public static ITPDownloadProxy getTPDownloadProxy(int paramInt)
   {
-    AppMethodBeat.i(190051);
+    AppMethodBeat.i(207264);
     if (paramInt <= 0)
     {
       TPDLProxyLog.e("TPDownloadProxyFactory", 0, "tpdlnative", "getTPDownloadProxy is invalid, serviceType:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(190051);
+      AppMethodBeat.o(207264);
       return null;
     }
     if (mUseService)
@@ -225,18 +225,18 @@ public class TPDownloadProxyFactory
         try
         {
           ITPDownloadProxy localITPDownloadProxy1 = getTPDownloadProxyService(paramInt);
-          AppMethodBeat.o(190051);
+          AppMethodBeat.o(207264);
           return localITPDownloadProxy1;
         }
         catch (Throwable localThrowable)
         {
           TPDLProxyLog.e("TPDownloadProxyFactory", 0, "tpdlnative", "getTPDownloadProxy failed, error:" + localThrowable.toString());
-          AppMethodBeat.o(190051);
+          AppMethodBeat.o(207264);
           return null;
         }
       }
       TPDLProxyLog.e("TPDownloadProxyFactory", 0, "tpdlnative", "getTPDownloadProxy failed, can't use aidl!");
-      AppMethodBeat.o(190051);
+      AppMethodBeat.o(207264);
       return null;
     }
     synchronized (mMapObject)
@@ -248,7 +248,7 @@ public class TPDownloadProxyFactory
         localObject1 = new TPDownloadProxy(paramInt);
         mvTPDownloadProxyMap.put(Integer.valueOf(paramInt), localObject1);
       }
-      AppMethodBeat.o(190051);
+      AppMethodBeat.o(207264);
       return localObject1;
     }
   }
@@ -259,7 +259,7 @@ public class TPDownloadProxyFactory
     {
       try
       {
-        AppMethodBeat.i(190052);
+        AppMethodBeat.i(207265);
         if (downloadProxyFactoryAidl != null) {
           synchronized (mvTPDownloadProxyClientMap)
           {
@@ -270,7 +270,7 @@ public class TPDownloadProxyFactory
             {
               localTPDownloadProxyClient1 = new TPDownloadProxyClient(downloadProxyFactoryAidl.getTPDownloadProxy(paramInt));
               mvTPDownloadProxyClientMap.put(Integer.valueOf(paramInt), localTPDownloadProxyClient1);
-              AppMethodBeat.o(190052);
+              AppMethodBeat.o(207265);
               return localTPDownloadProxyClient1;
             }
             catch (Throwable localThrowable)
@@ -285,7 +285,7 @@ public class TPDownloadProxyFactory
       }
       finally {}
       Object localObject3 = null;
-      AppMethodBeat.o(190052);
+      AppMethodBeat.o(207265);
     }
   }
   
@@ -302,17 +302,17 @@ public class TPDownloadProxyFactory
     {
       try
       {
-        AppMethodBeat.i(190055);
+        AppMethodBeat.i(207268);
         if (!mUseService)
         {
           TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "isReadyForDownload ret:" + mIsReadyForDownload);
           bool1 = mIsReadyForDownload;
-          AppMethodBeat.o(190055);
+          AppMethodBeat.o(207268);
           return bool1;
         }
         if (!mCanUseAIDL)
         {
-          AppMethodBeat.o(190055);
+          AppMethodBeat.o(207268);
           continue;
         }
         localTPDownloadProxyFactoryAidl = downloadProxyFactoryAidl;
@@ -324,7 +324,7 @@ public class TPDownloadProxyFactory
       try
       {
         bool1 = downloadProxyFactoryAidl.isReadyForDownload();
-        AppMethodBeat.o(190055);
+        AppMethodBeat.o(207268);
       }
       catch (Throwable localThrowable)
       {
@@ -345,17 +345,17 @@ public class TPDownloadProxyFactory
     {
       try
       {
-        AppMethodBeat.i(190054);
+        AppMethodBeat.i(207267);
         if (!mUseService)
         {
           bool1 = TPDownloadProxyNative.getInstance().isReadyForWork();
           TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "isReadyForPlay ret:".concat(String.valueOf(bool1)));
-          AppMethodBeat.o(190054);
+          AppMethodBeat.o(207267);
           return bool1;
         }
         if (!mCanUseAIDL)
         {
-          AppMethodBeat.o(190054);
+          AppMethodBeat.o(207267);
           continue;
         }
         localTPDownloadProxyFactoryAidl = downloadProxyFactoryAidl;
@@ -367,7 +367,7 @@ public class TPDownloadProxyFactory
       try
       {
         bool1 = downloadProxyFactoryAidl.isReadyForPlay();
-        AppMethodBeat.o(190054);
+        AppMethodBeat.o(207267);
       }
       catch (Throwable localThrowable)
       {

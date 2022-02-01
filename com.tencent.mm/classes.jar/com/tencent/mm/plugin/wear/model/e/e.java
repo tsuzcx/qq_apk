@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.wear.model.e;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.no;
-import com.tencent.mm.g.a.rm;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.np;
+import com.tencent.mm.g.a.rn;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.bv;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
   extends a
 {
-  public final List<Integer> eKN()
+  public final List<Integer> eOv()
   {
     AppMethodBeat.i(30077);
     ArrayList localArrayList = new ArrayList();
@@ -40,13 +40,13 @@ public final class e
     {
       AppMethodBeat.o(30078);
       return null;
-      paramArrayOfByte = new no();
-      com.tencent.mm.sdk.b.a.IbL.l(paramArrayOfByte);
+      paramArrayOfByte = new np();
+      com.tencent.mm.sdk.b.a.IvT.l(paramArrayOfByte);
       continue;
-      paramArrayOfByte = ((l)g.ab(l.class)).dlK().dlW();
+      paramArrayOfByte = ((l)g.ab(l.class)).doJ().doV();
       if (paramArrayOfByte.size() == 1)
       {
-        paramArrayOfByte = ((bu)paramArrayOfByte.get(0)).field_talker;
+        paramArrayOfByte = ((bv)paramArrayOfByte.get(0)).field_talker;
         Intent localIntent = new Intent();
         localIntent.putExtra("Main_User", paramArrayOfByte);
         localIntent.putExtra("From_fail_notify", true);
@@ -55,8 +55,8 @@ public final class e
         if (Build.VERSION.SDK_INT < 16) {
           localIntent.putExtra("resend_fail_messages", true);
         }
-        ad.d("MicroMsg.Wear.HttpFailMsgServer", "startChattingUI talker=%s", new Object[] { paramArrayOfByte });
-        d.f(aj.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
+        ae.d("MicroMsg.Wear.HttpFailMsgServer", "startChattingUI talker=%s", new Object[] { paramArrayOfByte });
+        d.f(ak.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
       }
       else
       {
@@ -67,11 +67,11 @@ public final class e
           paramArrayOfByte.putExtra("resend_fail_messages", true);
         }
         paramArrayOfByte.putExtra("From_fail_notify", true);
-        ad.d("MicroMsg.Wear.HttpFailMsgServer", "startMainUI");
-        d.f(aj.getContext(), "com.tencent.mm.ui.LauncherUI", paramArrayOfByte);
+        ae.d("MicroMsg.Wear.HttpFailMsgServer", "startMainUI");
+        d.f(ak.getContext(), "com.tencent.mm.ui.LauncherUI", paramArrayOfByte);
         continue;
-        paramArrayOfByte = new rm();
-        com.tencent.mm.sdk.b.a.IbL.l(paramArrayOfByte);
+        paramArrayOfByte = new rn();
+        com.tencent.mm.sdk.b.a.IvT.l(paramArrayOfByte);
       }
     }
   }

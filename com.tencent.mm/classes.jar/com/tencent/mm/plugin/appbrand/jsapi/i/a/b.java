@@ -8,17 +8,19 @@ import com.tencent.mm.plugin.appbrand.f.a;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public abstract interface b
   extends h
 {
-  public abstract void PI(String paramString);
+  public abstract void Qq(String paramString);
   
-  public abstract void PJ(String paramString);
+  public abstract void Qr(String paramString);
   
-  public abstract boolean PK(String paramString);
+  public abstract boolean Qs(String paramString);
   
-  public abstract boolean PM(String paramString);
+  public abstract boolean Qu(String paramString);
   
   public abstract Point a(i parami);
   
@@ -40,7 +42,7 @@ public abstract interface b
   
   public abstract void a(s params);
   
-  public abstract void a(b.w paramw);
+  public abstract void a(w paramw);
   
   public abstract void a(x paramx);
   
@@ -52,9 +54,9 @@ public abstract interface b
   
   public abstract void a(String paramString, v paramv, a parama);
   
-  public abstract void a(String paramString, ArrayList<i> paramArrayList, long paramLong, boolean paramBoolean, b.r paramr);
+  public abstract void a(String paramString, ArrayList<i> paramArrayList, long paramLong, boolean paramBoolean, r paramr);
   
-  public abstract void a(String paramString, LinkedList<h> paramLinkedList, b.r paramr);
+  public abstract void a(String paramString, LinkedList<h> paramLinkedList, r paramr);
   
   public abstract boolean a(int paramInt, e parame, a parama);
   
@@ -64,39 +66,39 @@ public abstract interface b
   
   public abstract boolean a(d paramd, a parama);
   
-  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, b.q paramq);
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, q paramq);
   
   public abstract boolean b(int paramInt, e parame, a parama);
   
-  public abstract ac bkO();
+  public abstract f blA();
   
-  public abstract void bkP();
+  public abstract boolean blB();
   
-  public abstract f bkQ();
+  public abstract i blC();
   
-  public abstract boolean bkR();
+  public abstract void blD();
   
-  public abstract i bkS();
+  public abstract void blE();
   
-  public abstract void bkT();
+  public abstract void blF();
   
-  public abstract void bkU();
+  public abstract void blG();
   
-  public abstract void bkV();
+  public abstract void blH();
   
-  public abstract void bkW();
+  public abstract void blI();
   
-  public abstract void bkX();
+  public abstract boolean blK();
   
-  public abstract void bkY();
+  public abstract ac bly();
   
-  public abstract boolean bla();
+  public abstract void blz();
   
   public abstract void c(float paramFloat1, float paramFloat2, boolean paramBoolean);
   
   public abstract i d(Point paramPoint);
   
-  public abstract void dh(String paramString1, String paramString2);
+  public abstract void dj(String paramString1, String paramString2);
   
   public abstract void f(double paramDouble1, double paramDouble2);
   
@@ -124,8 +126,6 @@ public abstract interface b
   
   public abstract void gK(boolean paramBoolean);
   
-  public abstract void gL(boolean paramBoolean);
-  
   public abstract float getRotate();
   
   public abstract float getSkew();
@@ -133,6 +133,8 @@ public abstract interface b
   public abstract View getView();
   
   public abstract float getZoom();
+  
+  public abstract void gz(boolean paramBoolean);
   
   public abstract void h(List<i> paramList, int paramInt);
   
@@ -146,6 +148,8 @@ public abstract interface b
   
   public abstract void onTouchEvent(MotionEvent paramMotionEvent);
   
+  public abstract void setBuilding3dEffectEnable(boolean paramBoolean);
+  
   public abstract void setIndoorMaskColor(int paramInt);
   
   public abstract void setMapStyle(int paramInt);
@@ -156,20 +160,27 @@ public abstract interface b
   
   public abstract void setPoisEnabled(boolean paramBoolean);
   
-  public abstract boolean tg(int paramInt);
+  public abstract boolean tj(int paramInt);
   
   public static final class a
   {
-    b.i kRC;
-    public float kRD;
+    b.i kVk;
+    public float kVl;
     public float skew;
     public float zoom;
+  }
+  
+  public static final class aa
+  {
+    public String id;
+    public b.i kVU;
   }
   
   public static final class ab
   {
     public int fillColor;
-    public List<b.i> kRO;
+    public String kVm;
+    public List<b.i> kVx;
     public int strokeColor;
     public int strokeWidth;
     public int zIndex;
@@ -177,17 +188,18 @@ public abstract interface b
   
   public static final class ac
   {
-    public b.ad kSm;
+    public b.ad kVV;
   }
   
   public static final class ad
   {
-    public b.j kSn;
+    public b.j kVW;
   }
   
   public static final class b
   {
     public int fillColor;
+    public String kVm;
     public double latitude;
     public double longitude;
     public int radius;
@@ -199,8 +211,8 @@ public abstract interface b
   {
     public String data;
     public int height;
-    public String kRE;
-    public boolean kRF;
+    public String kVn;
+    public boolean kVo;
     public int left;
     public int top;
     public int width;
@@ -208,8 +220,8 @@ public abstract interface b
   
   public static final class d
   {
-    public float kRD;
-    public String kRE;
+    public float kVl;
+    public String kVn;
     double latitude;
     double longitude;
     
@@ -223,9 +235,9 @@ public abstract interface b
   public static final class e
   {
     public float alpha;
-    public String kRE;
-    public b.i kRG;
-    public b.i kRH;
+    public String kVn;
+    public b.i kVp;
+    public b.i kVq;
     public boolean visible;
     public int zIndex;
   }
@@ -234,8 +246,8 @@ public abstract interface b
   {
     public String buildingId;
     public String buildingName;
-    public List<b.g> kRI;
-    public int kRJ;
+    public List<b.g> kVr;
+    public int kVs;
   }
   
   public static final class g
@@ -246,9 +258,9 @@ public abstract interface b
   public static final class h
   {
     public int duration;
-    public float kRD;
-    public double kRK;
-    public double kRL;
+    public float kVl;
+    public double kVt;
+    public double kVu;
     public double latitude;
     public double longitude;
   }
@@ -267,8 +279,8 @@ public abstract interface b
   
   public static final class j
   {
-    public b.i kRM;
-    public b.i kRN;
+    public b.i kVv;
+    public b.i kVw;
   }
   
   public static final class k
@@ -279,12 +291,13 @@ public abstract interface b
     public int color;
     public String floorName;
     public String id;
-    public List<b.i> kRO;
-    public boolean kRP;
-    public boolean kRQ;
-    public String kRR;
-    public int kRS;
-    public List<Integer> kRT;
+    public String kVA;
+    public int kVB;
+    public List<Integer> kVC;
+    public String kVm;
+    public List<b.i> kVx;
+    public boolean kVy;
+    public boolean kVz;
     public int style;
     public int width;
   }
@@ -309,6 +322,20 @@ public abstract interface b
     public abstract boolean b(b.u paramu);
   }
   
+  public static abstract interface q
+  {
+    public abstract void R(JSONObject paramJSONObject);
+    
+    public abstract void p(JSONArray paramJSONArray);
+  }
+  
+  public static abstract interface r
+  {
+    public abstract void blt();
+    
+    public abstract void gy(boolean paramBoolean);
+  }
+  
   public static abstract interface s
   {
     public abstract void d(double paramDouble1, double paramDouble2);
@@ -326,7 +353,7 @@ public abstract interface b
   public static class u
   {
     public String data;
-    public b.v kRU;
+    public b.v kVD;
   }
   
   public static final class v
@@ -337,15 +364,15 @@ public abstract interface b
     public String buildingId;
     public String data;
     public String floorName;
-    public float kRD;
-    public String kRE;
-    public boolean kRV = false;
-    public float kRW;
-    public float kRX;
-    public String kRY;
-    public b.v.a kRZ;
-    public int kRz = -1;
-    public b.v.b kSa;
+    public boolean kVE = false;
+    public float kVF;
+    public float kVG;
+    public String kVH;
+    public a kVI;
+    public b kVJ;
+    public int kVh = -1;
+    public float kVl;
+    public String kVn;
     public double latitude;
     public double longitude;
     public String title;
@@ -356,12 +383,98 @@ public abstract interface b
       this.anchorX = paramFloat1;
       this.anchorY = paramFloat2;
     }
+    
+    public static final class a
+    {
+      public static int kVS = 0;
+      public static int kVT = 1;
+      int bgColor;
+      int borderColor;
+      int borderWidth;
+      int color;
+      String content;
+      String jWV;
+      int kVK;
+      int kVL;
+      int kVM;
+      int kVN;
+      int kVO;
+      public int kVP;
+      public int kVQ;
+      public int kVR;
+      int padding;
+      int shadowColor;
+      public View view = null;
+      
+      public a() {}
+      
+      public a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, String paramString2, int paramInt13, int paramInt14)
+      {
+        this.content = paramString1;
+        this.color = paramInt1;
+        this.kVK = paramInt2;
+        this.kVL = paramInt3;
+        this.borderWidth = paramInt5;
+        this.borderColor = paramInt6;
+        this.bgColor = paramInt4;
+        this.padding = paramInt7;
+        this.shadowColor = paramInt8;
+        this.kVM = paramInt9;
+        this.kVN = paramInt10;
+        this.kVO = paramInt11;
+        this.kVP = paramInt12;
+        this.jWV = paramString2;
+        this.kVQ = paramInt13;
+        this.kVR = paramInt14;
+      }
+    }
+    
+    public static final class b
+    {
+      int bgColor;
+      int borderColor;
+      int borderWidth;
+      int color;
+      String content;
+      public int height;
+      String jWV;
+      int kVK;
+      int kVL;
+      int padding;
+      public int width;
+      int x;
+      int y;
+      
+      public b(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString2, int paramInt9)
+      {
+        this.content = paramString1;
+        this.color = paramInt1;
+        this.kVK = paramInt2;
+        this.x = paramInt3;
+        this.y = paramInt4;
+        this.bgColor = paramInt5;
+        this.kVL = paramInt6;
+        this.borderWidth = paramInt7;
+        this.borderColor = paramInt8;
+        this.jWV = paramString2;
+        this.padding = paramInt9;
+      }
+    }
+  }
+  
+  public static abstract interface w
+  {
+    public abstract void a(b.a parama, boolean paramBoolean);
+    
+    public abstract void b(b.a parama, boolean paramBoolean);
   }
   
   public static abstract interface x
   {
     public abstract void a(b.f paramf);
   }
+  
+  public static abstract interface y {}
   
   public static abstract interface z
   {
@@ -370,7 +483,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.a.b
  * JD-Core Version:    0.7.0.1
  */

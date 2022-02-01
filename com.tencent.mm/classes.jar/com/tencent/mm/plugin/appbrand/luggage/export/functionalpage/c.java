@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "invokeProcess", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "onCallback", "", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "", "data", "", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "isFromNewSdk", "", "Companion", "plugin-appbrand-integration_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "invokeProcess", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "onCallback", "", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "", "data", "", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "isFromNewSdk", "", "Companion", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final a lOr;
-  public o lOp;
-  final l lOq;
+  public static final a lSS;
+  public o lSQ;
+  final l lSR;
   
   static
   {
-    AppMethodBeat.i(189353);
-    lOr = new a((byte)0);
-    AppMethodBeat.o(189353);
+    AppMethodBeat.i(223613);
+    lSS = new a((byte)0);
+    AppMethodBeat.o(223613);
   }
   
   public c(l paraml)
   {
     AppMethodBeat.i(50863);
-    this.lOq = paraml;
+    this.lSR = paraml;
     AppMethodBeat.o(50863);
   }
   
@@ -28,15 +28,15 @@ public final class c
     AppMethodBeat.i(50861);
     d.g.b.p.h(paramp, "component");
     d.g.b.p.h(paramString, "data");
-    o localo = this.lOp;
+    o localo = this.lSQ;
     if (localo == null) {
-      d.g.b.p.bcb("invokeProcess");
+      d.g.b.p.bdF("invokeProcess");
     }
     localo.a(paramp, paramInt, paramString);
     AppMethodBeat.o(50861);
   }
   
-  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

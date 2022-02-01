@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.json.JSONArray;
@@ -9,7 +9,7 @@ import org.json.JSONException;
 
 public final class a
 {
-  public static int Ps(String paramString)
+  public static int Qa(String paramString)
   {
     AppMethodBeat.i(106572);
     if ("fingerPrint".equals(paramString))
@@ -27,18 +27,18 @@ public final class a
       AppMethodBeat.o(106572);
       return 2;
     }
-    ad.e("MicroMsg.AppBrandSoterTranslateUtil", "hy: invalid item");
+    ae.e("MicroMsg.AppBrandSoterTranslateUtil", "hy: invalid item");
     AppMethodBeat.o(106572);
     return 0;
   }
   
-  public static String n(JSONArray paramJSONArray)
+  public static String o(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(106571);
     if (paramJSONArray == null) {}
     for (String str = null;; str = paramJSONArray.toString())
     {
-      ad.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translating string array: %s", new Object[] { str });
+      ae.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translating string array: %s", new Object[] { str });
       if ((paramJSONArray != null) && (paramJSONArray.length() != 0)) {
         break;
       }
@@ -54,26 +54,26 @@ public final class a
       }
       try
       {
-        int k = Ps(paramJSONArray.getString(i));
+        int k = Qa(paramJSONArray.getString(i));
         j = (byte)(j | k);
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrandSoterTranslateUtil", localJSONException, "hy: json error in translate", new Object[0]);
+          ae.printErrStackTrace("MicroMsg.AppBrandSoterTranslateUtil", localJSONException, "hy: json error in translate", new Object[0]);
         }
       }
       i += 1;
     }
     label107:
     paramJSONArray = "0x" + Integer.toHexString(j);
-    ad.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
+    ae.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
     AppMethodBeat.o(106571);
     return paramJSONArray;
   }
   
-  public static JSONArray sP(int paramInt)
+  public static JSONArray sS(int paramInt)
   {
     AppMethodBeat.i(106570);
     if (paramInt <= 0)
@@ -92,7 +92,7 @@ public final class a
     if ((paramInt & 0x2) == 2) {
       ((ArrayList)localObject).add("speech");
     }
-    ad.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: final string is: %s", new Object[] { ((ArrayList)localObject).toString() });
+    ae.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: final string is: %s", new Object[] { ((ArrayList)localObject).toString() });
     localObject = new JSONArray((Collection)localObject);
     AppMethodBeat.o(106570);
     return localObject;

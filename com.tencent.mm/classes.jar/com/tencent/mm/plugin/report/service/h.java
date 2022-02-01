@@ -7,72 +7,72 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.f.c;
 import com.tencent.matrix.trace.f.c.b;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.app.n;
+import com.tencent.mm.app.o;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public final class h
-  implements n
+  implements o
 {
-  public static h yih;
-  public static final long yii;
-  public c cJy;
-  public ap hUx;
-  private boolean yij;
-  private long yik;
-  private long yil;
-  public int yim;
-  public long yin;
-  private int[] yio;
-  public long[] yip;
-  public com.tencent.matrix.trace.e.b yiq;
-  private long yir;
-  private long yis;
-  private int[] yit;
-  private com.tencent.matrix.trace.e.b yiu;
+  public static h yxY;
+  public static final long yxZ;
+  public c cKh;
+  public aq hXp;
+  private boolean yya;
+  private long yyb;
+  private long yyc;
+  public int yyd;
+  public long yye;
+  private int[] yyf;
+  public long[] yyg;
+  public com.tencent.matrix.trace.e.b yyh;
+  private long yyi;
+  private long yyj;
+  private int[] yyk;
+  private com.tencent.matrix.trace.e.b yyl;
   
   static
   {
     AppMethodBeat.i(143920);
-    yih = new h();
-    yii = TimeUnit.MILLISECONDS.convert(com.tencent.matrix.trace.core.b.Ja().cAz, TimeUnit.NANOSECONDS) + 1L;
+    yxY = new h();
+    yxZ = TimeUnit.MILLISECONDS.convert(com.tencent.matrix.trace.core.b.Ji().cBg, TimeUnit.NANOSECONDS) + 1L;
     AppMethodBeat.o(143920);
   }
   
   private h()
   {
     AppMethodBeat.i(143913);
-    this.yij = false;
-    if (com.tencent.matrix.b.HK())
+    this.yya = false;
+    if (com.tencent.matrix.b.HS())
     {
-      localObject = (a)com.tencent.matrix.b.HL().V(a.class);
+      localObject = (a)com.tencent.matrix.b.HT().V(a.class);
       if ((localObject == null) || (!((a)localObject).isPluginStarted())) {}
     }
-    for (Object localObject = ((a)localObject).cJy;; localObject = null)
+    for (Object localObject = ((a)localObject).cKh;; localObject = null)
     {
-      this.cJy = ((c)localObject);
-      this.hUx = new ap(Looper.getMainLooper());
-      this.yik = 0L;
-      this.yil = 0L;
-      this.yim = 0;
-      this.yin = 0L;
-      this.yio = new int[c.b.values().length];
-      this.yip = new long[21];
-      this.yiq = new com.tencent.matrix.trace.e.b()
+      this.cKh = ((c)localObject);
+      this.hXp = new aq(Looper.getMainLooper());
+      this.yyb = 0L;
+      this.yyc = 0L;
+      this.yyd = 0;
+      this.yye = 0L;
+      this.yyf = new int[c.b.values().length];
+      this.yyg = new long[21];
+      this.yyh = new com.tencent.matrix.trace.e.b()
       {
         public final void a(String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(143909);
           super.a(paramAnonymousString, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt, paramAnonymousBoolean);
-          h.a(h.this, h.a(h.this) + (paramAnonymousInt + 1) * h.yii);
+          h.a(h.this, h.a(h.this) + (paramAnonymousInt + 1) * h.yxZ);
           h.b(h.this, h.b(h.this) + 1L);
           if (paramAnonymousInt >= 42)
           {
             paramAnonymousString = h.c(h.this);
-            paramAnonymousInt = c.b.cLD.index;
+            paramAnonymousInt = c.b.cMm.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143909);
             return;
@@ -80,7 +80,7 @@ public final class h
           if (paramAnonymousInt >= 24)
           {
             paramAnonymousString = h.c(h.this);
-            paramAnonymousInt = c.b.cLE.index;
+            paramAnonymousInt = c.b.cMn.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143909);
             return;
@@ -88,7 +88,7 @@ public final class h
           if (paramAnonymousInt >= 9)
           {
             paramAnonymousString = h.c(h.this);
-            paramAnonymousInt = c.b.cLF.index;
+            paramAnonymousInt = c.b.cMo.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143909);
             return;
@@ -96,32 +96,32 @@ public final class h
           if (paramAnonymousInt >= 3)
           {
             paramAnonymousString = h.c(h.this);
-            paramAnonymousInt = c.b.cLG.index;
+            paramAnonymousInt = c.b.cMp.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143909);
             return;
           }
           paramAnonymousString = h.c(h.this);
-          paramAnonymousInt = c.b.cLH.index;
+          paramAnonymousInt = c.b.cMq.index;
           paramAnonymousString[paramAnonymousInt] += 1;
           AppMethodBeat.o(143909);
         }
       };
-      this.yir = 0L;
-      this.yis = 0L;
-      this.yit = new int[c.b.values().length];
-      this.yiu = new com.tencent.matrix.trace.e.b()
+      this.yyi = 0L;
+      this.yyj = 0L;
+      this.yyk = new int[c.b.values().length];
+      this.yyl = new com.tencent.matrix.trace.e.b()
       {
         public final void a(String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(143911);
           super.a(paramAnonymousString, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt, paramAnonymousBoolean);
-          h.c(h.this, h.h(h.this) + (paramAnonymousInt + 1) * h.yii);
+          h.c(h.this, h.h(h.this) + (paramAnonymousInt + 1) * h.yxZ);
           h.d(h.this, h.i(h.this) + 1L);
           if (paramAnonymousInt >= 42)
           {
             paramAnonymousString = h.j(h.this);
-            paramAnonymousInt = c.b.cLD.index;
+            paramAnonymousInt = c.b.cMm.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143911);
             return;
@@ -129,7 +129,7 @@ public final class h
           if (paramAnonymousInt >= 24)
           {
             paramAnonymousString = h.j(h.this);
-            paramAnonymousInt = c.b.cLE.index;
+            paramAnonymousInt = c.b.cMn.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143911);
             return;
@@ -137,7 +137,7 @@ public final class h
           if (paramAnonymousInt >= 9)
           {
             paramAnonymousString = h.j(h.this);
-            paramAnonymousInt = c.b.cLF.index;
+            paramAnonymousInt = c.b.cMo.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143911);
             return;
@@ -145,33 +145,33 @@ public final class h
           if (paramAnonymousInt >= 3)
           {
             paramAnonymousString = h.j(h.this);
-            paramAnonymousInt = c.b.cLG.index;
+            paramAnonymousInt = c.b.cMp.index;
             paramAnonymousString[paramAnonymousInt] += 1;
             AppMethodBeat.o(143911);
             return;
           }
           paramAnonymousString = h.j(h.this);
-          paramAnonymousInt = c.b.cLH.index;
+          paramAnonymousInt = c.b.cMq.index;
           paramAnonymousString[paramAnonymousInt] += 1;
           AppMethodBeat.o(143911);
         }
       };
-      AppForegroundDelegate.cSQ.a(this);
+      AppForegroundDelegate.cTA.a(this);
       AppMethodBeat.o(143913);
       return;
     }
   }
   
-  private void dKr()
+  private void dNJ()
   {
     AppMethodBeat.i(143917);
-    if (this.yir > 0L) {}
-    for (float f = Math.min(60.0F, 1000.0F * (float)this.yis / (float)this.yir); f <= 0.0F; f = 0.0F)
+    if (this.yyi > 0L) {}
+    for (float f = Math.min(60.0F, 1000.0F * (float)this.yyj / (float)this.yyi); f <= 0.0F; f = 0.0F)
     {
       AppMethodBeat.o(143917);
       return;
     }
-    ad.i("MicroMsg.SceneFpsReportService", "[reportMainUI] near 5s fps=" + f + " mainUIFrameCost=" + this.yir + "ms");
+    ae.i("MicroMsg.SceneFpsReportService", "[reportMainUI] near 5s fps=" + f + " mainUIFrameCost=" + this.yyi + "ms");
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(1232);
@@ -188,7 +188,7 @@ public final class h
     localIDKey = new IDKey();
     localIDKey.SetID(1232);
     localIDKey.SetKey(10);
-    localIDKey.SetValue(this.yit[c.b.cLH.index]);
+    localIDKey.SetValue(this.yyk[c.b.cMq.index]);
     if (localIDKey.GetValue() > 0L)
     {
       localArrayList.add(localIDKey);
@@ -201,7 +201,7 @@ public final class h
     localIDKey = new IDKey();
     localIDKey.SetID(1232);
     localIDKey.SetKey(12);
-    localIDKey.SetValue(this.yit[c.b.cLG.index]);
+    localIDKey.SetValue(this.yyk[c.b.cMp.index]);
     if (localIDKey.GetValue() > 0L)
     {
       localArrayList.add(localIDKey);
@@ -214,7 +214,7 @@ public final class h
     localIDKey = new IDKey();
     localIDKey.SetID(1232);
     localIDKey.SetKey(14);
-    localIDKey.SetValue(this.yit[c.b.cLF.index]);
+    localIDKey.SetValue(this.yyk[c.b.cMo.index]);
     if (localIDKey.GetValue() > 0L)
     {
       localArrayList.add(localIDKey);
@@ -227,7 +227,7 @@ public final class h
     localIDKey = new IDKey();
     localIDKey.SetID(1232);
     localIDKey.SetKey(16);
-    localIDKey.SetValue(this.yit[c.b.cLE.index]);
+    localIDKey.SetValue(this.yyk[c.b.cMn.index]);
     if (localIDKey.GetValue() > 0L)
     {
       localArrayList.add(localIDKey);
@@ -240,7 +240,7 @@ public final class h
     localIDKey = new IDKey();
     localIDKey.SetID(1232);
     localIDKey.SetKey(18);
-    localIDKey.SetValue(this.yit[c.b.cLD.index]);
+    localIDKey.SetValue(this.yyk[c.b.cMm.index]);
     if (localIDKey.GetValue() > 0L)
     {
       localArrayList.add(localIDKey);
@@ -250,37 +250,37 @@ public final class h
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
     }
-    e.ygI.b(localArrayList, false);
-    this.yit = new int[c.b.values().length];
-    this.yir = 0L;
-    this.yis = 0L;
+    e.ywz.b(localArrayList, false);
+    this.yyk = new int[c.b.values().length];
+    this.yyi = 0L;
+    this.yyj = 0L;
     AppMethodBeat.o(143917);
   }
   
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(143916);
-    if (this.cJy == null)
+    if (this.cKh == null)
     {
       AppMethodBeat.o(143916);
       return;
     }
-    this.cJy.b(this.yiu);
+    this.cKh.b(this.yyl);
     AppMethodBeat.o(143916);
   }
   
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(143915);
-    if (this.yij)
+    if (this.yya)
     {
-      if (this.cJy == null)
+      if (this.cKh == null)
       {
         AppMethodBeat.o(143915);
         return;
       }
-      this.cJy.a(this.yiu);
-      this.hUx.postDelayed(new Runnable()
+      this.cKh.a(this.yyl);
+      this.hXp.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -294,20 +294,20 @@ public final class h
     AppMethodBeat.o(143915);
   }
   
-  public final void qp(boolean paramBoolean)
+  public final void qw(boolean paramBoolean)
   {
     AppMethodBeat.i(143914);
-    ad.i("MicroMsg.SceneFpsReportService", "[onMainUI] isForce=".concat(String.valueOf(paramBoolean)));
-    this.yij = paramBoolean;
-    if (!this.yij)
+    ae.i("MicroMsg.SceneFpsReportService", "[onMainUI] isForce=".concat(String.valueOf(paramBoolean)));
+    this.yya = paramBoolean;
+    if (!this.yya)
     {
-      if (this.cJy == null)
+      if (this.cKh == null)
       {
         AppMethodBeat.o(143914);
         return;
       }
-      this.cJy.b(this.yiu);
-      dKr();
+      this.cKh.b(this.yyl);
+      dNJ();
     }
     AppMethodBeat.o(143914);
   }

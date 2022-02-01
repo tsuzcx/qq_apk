@@ -2,27 +2,27 @@ package com.tencent.pb.common.a;
 
 public final class a
 {
-  public static boolean LEQ = false;
-  public static boolean LER = true;
-  public static int LES = 1500;
-  public static int LET = 500;
-  public static boolean LEU = false;
-  public static int LEV = 533;
-  public static String LEW = "http://dldir1.qq.com/foxmail/home.apk";
-  public static boolean LEX = true;
-  public static boolean LEY = true;
-  public static boolean LEZ = true;
-  public static boolean LFa = false;
-  public static boolean LFb = true;
-  public static boolean LFc = false;
-  public static boolean LFd = false;
-  public static boolean LFe = false;
-  public static boolean LFf = true;
-  public static boolean LFg = true;
-  public static boolean LFh = false;
-  public static boolean LFi = true;
-  public static boolean LFj = false;
-  public static boolean LFk = false;
+  public static boolean MbU = false;
+  public static boolean MbV = true;
+  public static int MbW = 1500;
+  public static int MbX = 500;
+  public static boolean MbY = false;
+  public static int MbZ = 533;
+  public static String Mca = "http://dldir1.qq.com/foxmail/home.apk";
+  public static boolean Mcb = true;
+  public static boolean Mcc = true;
+  public static boolean Mcd = true;
+  public static boolean Mce = false;
+  public static boolean Mcf = true;
+  public static boolean Mcg = false;
+  public static boolean Mch = false;
+  public static boolean Mci = false;
+  public static boolean Mcj = true;
+  public static boolean Mck = true;
+  public static boolean Mcl = false;
+  public static boolean Mcm = true;
+  public static boolean Mcn = false;
+  public static boolean Mco = false;
 }
 
 

@@ -7,21 +7,21 @@ import com.tencent.mm.plugin.finder.cgi.m.b;
 import com.tencent.mm.plugin.finder.cgi.m.f;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
-import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.report.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.a;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aqw;
-import com.tencent.mm.protocal.protobuf.aqx;
-import com.tencent.mm.protocal.protobuf.aqy;
-import com.tencent.mm.protocal.protobuf.arr;
-import com.tencent.mm.protocal.protobuf.ars;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.arl;
+import com.tencent.mm.protocal.protobuf.arm;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.asg;
+import com.tencent.mm.protocal.protobuf.ash;
+import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import d.a.j;
 import d.g.b.q;
 import d.l;
@@ -40,42 +40,42 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "", "tabType", "", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(ILcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cache", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Cache;", "getCache", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Cache;", "condition", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "getCore", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "isBackground", "Ljava/util/concurrent/atomic/AtomicBoolean;", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "isInFindMoreFriendTab", "isInFinder", "", "()Z", "setInFinder", "(Z)V", "isLoading", "setLoading", "lastExitFindMoreFriendTab", "", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "outSideTimeoutRunnable", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "getOutSideTimeoutRunnable", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "preloadVideoWorker", "Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "getPreloadVideoWorker", "()Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "preloadVideoWorker$delegate", "Lkotlin/Lazy;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "getRedDotManager", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "redDotManager$delegate", "getTabType", "()I", "timer", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer;", "getTimer", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer;", "clear", "isRecycle", "getOutTimeOutPreloadSource", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getOuterTime", "getPullType", "source", "getReportKey", "isValid", "performBackground", "", "performChangeEnterTargetTab", "lastTab", "targetTab", "performEnterFindMoreFriendTab", "performEnterFinder", "performExitFindMoreFriendTab", "performExitFinder", "performForeground", "performServerConfigChanged", "fromTabType", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "preload", "report", "isHasCache", "pullType", "overCount", "requestCache", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "setCache", "resp", "print", "Cache", "CacheTime", "PreloadSource", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "", "tabType", "", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(ILcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cache", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Cache;", "getCache", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Cache;", "condition", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "getCore", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "isBackground", "Ljava/util/concurrent/atomic/AtomicBoolean;", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "isInFindMoreFriendTab", "isInFinder", "", "()Z", "setInFinder", "(Z)V", "isLoading", "setLoading", "lastExitFindMoreFriendTab", "", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "outSideTimeoutRunnable", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "getOutSideTimeoutRunnable", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "preloadVideoWorker", "Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "getPreloadVideoWorker", "()Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "preloadVideoWorker$delegate", "Lkotlin/Lazy;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "getRedDotManager", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "redDotManager$delegate", "getTabType", "()I", "timer", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer;", "getTimer", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer;", "clear", "isRecycle", "getOutTimeOutPreloadSource", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getOuterTime", "getPullType", "source", "getReportKey", "isAcceptCgiBack", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "isValid", "log", "performBackground", "", "performChangeEnterTargetTab", "lastTab", "targetTab", "performEnterFindMoreFriendTab", "performEnterFinder", "performExitFindMoreFriendTab", "performExitFinder", "performForeground", "performServerConfigChanged", "fromTabType", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "preload", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "Lkotlin/ParameterName;", "name", "ret", "report", "isHasCache", "pullType", "overCount", "requestCache", "setCache", "updateCacheStatus", "print", "Cache", "CacheTime", "PreloadSource", "Ret", "plugin-finder_release"})
 public abstract class f
 {
-  long INq;
-  public boolean INr;
-  public final a INs;
-  final AtomicBoolean INt;
-  final AtomicBoolean INu;
-  private final d.f INv;
-  public final a.a INw;
-  final d.f INx;
-  final a INy;
-  final FinderStreamTabPreloadCore INz;
   public final String TAG;
-  final Condition cPA;
-  final ReentrantLock cPz;
-  final int duh;
-  boolean isLoading;
+  final ReentrantLock cQj;
+  final Condition cQk;
+  final int dvm;
+  volatile boolean isLoading;
+  long suM;
+  public boolean suN;
+  public final a suO;
+  final AtomicBoolean suP;
+  final AtomicBoolean suQ;
+  private final d.f suR;
+  public final a.a suS;
+  final d.f suT;
+  final a suU;
+  final FinderStreamTabPreloadCore suV;
   
   public f(int paramInt, FinderStreamTabPreloadCore paramFinderStreamTabPreloadCore)
   {
-    this.duh = paramInt;
-    this.INz = paramFinderStreamTabPreloadCore;
-    this.TAG = ("Finder.TabPreloadWorker#" + this.duh);
-    this.INs = new a(this.TAG);
-    this.INt = new AtomicBoolean(true);
-    this.INu = new AtomicBoolean(false);
-    this.INv = d.g.O((d.g.a.a)g.LjR);
-    this.INw = ((a.a)new d(this));
-    this.INx = d.g.O((d.g.a.a)new f(this));
-    this.cPz = new ReentrantLock();
-    this.cPA = this.cPz.newCondition();
-    this.INy = new a(this.duh);
+    this.dvm = paramInt;
+    this.suV = paramFinderStreamTabPreloadCore;
+    this.TAG = ("Finder.TabPreloadWorker#" + this.dvm);
+    this.suO = new a(this.TAG);
+    this.suP = new AtomicBoolean(true);
+    this.suQ = new AtomicBoolean(false);
+    this.suR = d.g.O((d.g.a.a)h.svq);
+    this.suS = ((a.a)new e(this));
+    this.suT = d.g.O((d.g.a.a)new g(this));
+    this.cQj = new ReentrantLock();
+    this.cQk = this.cQj.newCondition();
+    this.suU = new a(this.dvm);
   }
   
-  private static long aaZ(int paramInt)
+  private static long Fa(int paramInt)
   {
     switch (paramInt)
     {
@@ -92,25 +92,289 @@ public abstract class f
   
   private final com.tencent.mm.plugin.finder.extension.reddot.e getRedDotManager()
   {
-    return (com.tencent.mm.plugin.finder.extension.reddot.e)this.INv.getValue();
+    return (com.tencent.mm.plugin.finder.extension.reddot.e)this.suR.getValue();
   }
   
-  public final boolean AB(boolean paramBoolean)
+  public final m.f EZ(int paramInt)
   {
-    this.cPz.lock();
+    Object localObject1 = this.TAG;
+    Object localObject3 = new StringBuilder("[request] scene=").append(this.dvm).append(", isPreloading:").append(this.isLoading).append(" cache=").append(this.suU).append(" isLocked=").append(this.cQj.isLocked()).append(" fakeWaitForRefresh=");
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
+    ae.i((String)localObject1, ((Number)com.tencent.mm.plugin.finder.storage.b.cJH().value()).longValue() + "ms ");
+    this.cQj.lock();
+    for (;;)
+    {
+      long l;
+      int i;
+      int j;
+      try
+      {
+        if (this.isLoading)
+        {
+          l = SystemClock.uptimeMillis();
+          this.cQk.await(1L, TimeUnit.MINUTES);
+          localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+          l = ((Number)com.tencent.mm.plugin.finder.storage.b.cJH().value()).longValue() - (SystemClock.uptimeMillis() - l);
+          if (l > 0L) {
+            this.cQk.await(l, TimeUnit.MILLISECONDS);
+          }
+          this.cQj.unlock();
+          localObject1 = this.suU.suW;
+          if (localObject1 != null)
+          {
+            i = 1;
+            j = this.dvm;
+            l = this.suU.suZ;
+            if (paramInt != 0) {
+              break label436;
+            }
+            com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 1L, 1L, false);
+            if (i != 0) {
+              break label414;
+            }
+            com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 2L, 1L, false);
+            com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 7L, 1L, false);
+            if (i != 0) {
+              break label508;
+            }
+            com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 8L, 1L, false);
+            if (localObject1 != null)
+            {
+              new com.tencent.mm.plugin.finder.cgi.c(this.suU.dvm, ((m.f)localObject1).lastBuffer).aET();
+              lX(false);
+            }
+            return localObject1;
+          }
+        }
+        else
+        {
+          if (this.suU.suW == null) {
+            continue;
+          }
+          localObject1 = this.cQk;
+          localObject3 = com.tencent.mm.plugin.finder.storage.b.sHP;
+          ((Condition)localObject1).await(((Number)com.tencent.mm.plugin.finder.storage.b.cJH().value()).longValue(), TimeUnit.MILLISECONDS);
+          continue;
+        }
+        i = 0;
+      }
+      finally
+      {
+        this.cQj.unlock();
+      }
+      continue;
+      label414:
+      com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 3L, 1L, false);
+      continue;
+      label436:
+      if (paramInt == 1)
+      {
+        com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 4L, 1L, false);
+        if (i == 0)
+        {
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 5L, 1L, false);
+        }
+        else
+        {
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 6L, 1L, false);
+          continue;
+          label508:
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 9L, 1L, false);
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(j) + 10L, 1L + l, false);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, asg paramasg)
+  {
+    d.g.b.p.h(paramasg, "serverConfig");
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("[performServerConfigChanged] fromTabType=").append(paramInt).append(" serverConfig=");
+    d.g.b.p.h(paramasg, "$this$print");
+    ae.i(str, new StringBuilder("[").append(paramasg.GIP).append(", ").append(paramasg.GIQ).append(", ").append(paramasg.GIR).append(", ").append(paramasg.GIS).append(", ").append(paramasg.GIT).append(", ").append(paramasg.GIU).append(", ").append(paramasg.GIV).append(", ").append(paramasg.GIW).append(", ").append(paramasg.GIX).append(", ").append(paramasg.GIY).append(", ").append(paramasg.GIZ).append(", ").append(paramasg.GJa).append(", ").append(paramasg.GJb).append(", ").append(paramasg.GJc).append(", ").append(paramasg.GJd).append(", ").append(paramasg.GJe).append(", ").append(paramasg.GJf).append(']').toString());
+  }
+  
+  public void a(final c paramc, final d.g.a.b<? super d, z> paramb)
+  {
+    d.g.b.p.h(paramc, "source");
+    d.g.b.p.h(paramb, "call");
+    if (this.isLoading)
+    {
+      ae.w(this.TAG, "isLoading=true");
+      paramb.invoke(d.svi);
+      return;
+    }
+    if (!FinderStreamTabPreloadCore.isEnable())
+    {
+      ae.w(this.TAG, "isEnable=false source=".concat(String.valueOf(paramc)));
+      paramb.invoke(d.svj);
+      return;
+    }
+    if (!a(this, paramc))
+    {
+      ae.w(this.TAG, "isValid=false source=".concat(String.valueOf(paramc)));
+      paramb.invoke(d.svk);
+      return;
+    }
+    this.cQj.lock();
+    try
+    {
+      this.isLoading = true;
+      if (paramc == c.svc) {
+        break label581;
+      }
+      if (paramc != c.sve) {
+        break label254;
+      }
+    }
+    finally
+    {
+      this.cQj.unlock();
+    }
+    if (this.suU.suW != null) {}
+    for (final boolean bool = true;; bool = false)
+    {
+      Object localObject1 = this.suU.suW;
+      Object localObject2;
+      Object localObject3;
+      if (localObject1 != null)
+      {
+        localObject1 = ((m.f)localObject1).lastBuffer;
+        if (localObject1 != null) {}
+      }
+      else
+      {
+        localObject1 = (f)this;
+        localObject2 = com.tencent.mm.kernel.g.ajR();
+        d.g.b.p.g(localObject2, "MMKernel.storage()");
+        localObject2 = ((com.tencent.mm.kernel.e)localObject2).ajA();
+        localObject3 = com.tencent.mm.plugin.finder.utils.p.sXz;
+        localObject1 = ((aj)localObject2).get(com.tencent.mm.plugin.finder.utils.p.Gr(((f)localObject1).dvm), "");
+        if (localObject1 == null)
+        {
+          throw new v("null cannot be cast to non-null type kotlin.String");
+          label254:
+          if (paramc == c.svd)
+          {
+            i = 7;
+            break;
+          }
+          if (paramc == c.svf)
+          {
+            i = 5;
+            break;
+          }
+          if (paramc != c.svg) {
+            break label587;
+          }
+          i = 8;
+          break;
+        }
+        localObject1 = com.tencent.mm.bw.b.cm(bu.aSx((String)localObject1));
+      }
+      for (;;)
+      {
+        localObject2 = this.suU.suW;
+        Object localObject4;
+        StringBuilder localStringBuilder;
+        if (localObject2 != null)
+        {
+          localObject2 = ((m.f)localObject2).object;
+          if (localObject2 != null)
+          {
+            localObject2 = new LinkedList((Collection)localObject2);
+            lX(true);
+            localObject3 = new arn();
+            localObject4 = i.syT;
+            ((arn)localObject3).sch = i.Fw(this.dvm);
+            localObject4 = this.TAG;
+            localStringBuilder = new StringBuilder("[preload] tabType=").append(this.dvm).append(", hasCache=").append(bool).append(", consumeFlag=");
+            if (!bool) {
+              break label572;
+            }
+          }
+        }
+        label572:
+        for (int j = 0;; j = 1)
+        {
+          ae.i((String)localObject4, j + ", unread list size=" + ((LinkedList)localObject2).size() + ", pullType=" + i + ", source=" + paramc + ", cache=" + this.suU);
+          com.tencent.mm.plugin.report.e.ywz.idkeyStat(1421L, Fa(this.dvm) + 11L, 1L, false);
+          new m(this.dvm, i, (com.tencent.mm.bw.b)localObject1, (arn)localObject3, (List)localObject2).a(null, (m.b)new f(this, bool, paramc, paramb), true);
+          this.cQj.unlock();
+          return;
+          localObject2 = new LinkedList();
+          break;
+        }
+      }
+      label581:
+      int i = 6;
+      break;
+      label587:
+      i = 6;
+      break;
+    }
+  }
+  
+  public boolean a(c paramc, m.f paramf)
+  {
+    d.g.b.p.h(paramc, "source");
+    d.g.b.p.h(paramf, "resp");
+    return true;
+  }
+  
+  public boolean a(c paramc, String paramString)
+  {
+    d.g.b.p.h(paramc, "source");
+    d.g.b.p.h(paramString, "log");
+    ae.i(this.TAG, "[isValid] isInFindMoreFriendTab=" + this.suQ + " isBackground=" + this.suP + " isInFinder=" + this.suN + " source=" + paramc + ' ' + paramString);
+    if ((paramc == c.svc) || (paramc == c.svg) || (paramc == c.sve)) {
+      if ((this.suN) || (!this.suQ.get()) || (this.suP.get())) {}
+    }
+    while ((this.suN) && (this.suQ.get()) && (!this.suP.get()))
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public c cES()
+  {
+    return c.sve;
+  }
+  
+  public long cET()
+  {
+    com.tencent.mm.plugin.finder.extension.reddot.e locale = getRedDotManager();
+    getRedDotManager();
+    if (locale.aii(com.tencent.mm.plugin.finder.extension.reddot.e.EE(this.dvm)) != null) {}
+    for (boolean bool = true;; bool = false) {
+      return FinderStreamTabPreloadCore.ag(this.dvm, bool);
+    }
+  }
+  
+  public void fI(int paramInt1, int paramInt2)
+  {
+    ae.i(this.TAG, "[performChangeEnterTargetTab] lastTab=" + paramInt1 + " targetTab=" + paramInt2);
+  }
+  
+  public final boolean lX(boolean paramBoolean)
+  {
+    this.cQj.lock();
     boolean bool;
     for (;;)
     {
       try
       {
-        if (this.INy.INA != null)
+        if (this.suU.suW != null)
         {
           bool = true;
           if (!paramBoolean) {
             break label350;
           }
           LinkedList localLinkedList = new LinkedList();
-          localObject2 = this.INy.INA;
+          localObject2 = this.suU.suW;
           if (localObject2 == null) {
             break;
           }
@@ -123,11 +387,11 @@ public abstract class f
             break;
           }
           localObject3 = (FinderObject)((Iterator)localObject2).next();
-          Object localObject4 = FinderItem.syk;
+          Object localObject4 = FinderItem.sJb;
           d.g.b.p.g(localObject3, "it");
-          localObject4 = com.tencent.mm.plugin.finder.utils.p.sMo;
-          localObject3 = FinderItem.a.a((FinderObject)localObject3, com.tencent.mm.plugin.finder.utils.p.FT(this.duh));
-          localObject4 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+          localObject4 = com.tencent.mm.plugin.finder.utils.p.sXz;
+          localObject3 = FinderItem.a.a((FinderObject)localObject3, com.tencent.mm.plugin.finder.utils.p.Gs(this.dvm));
+          localObject4 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
           localLinkedList.add(b.a.j((FinderItem)localObject3));
           continue;
         }
@@ -135,324 +399,61 @@ public abstract class f
       }
       finally
       {
-        this.cPz.unlock();
+        this.cQj.unlock();
       }
     }
-    Object localObject2 = this.INy.INA;
+    Object localObject2 = this.suU.suW;
     if (localObject2 != null)
     {
       localObject2 = ((m.f)localObject2).object;
       if (localObject2 != null)
       {
-        this.INy.INC.addAll((Collection)localObject2);
-        localObject2 = this.INy;
-        ((a)localObject2).IND += 1L;
+        this.suU.suY.addAll((Collection)localObject2);
+        localObject2 = this.suU;
+        ((a)localObject2).suZ += 1L;
       }
     }
-    localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
-    int i = this.duh;
+    localObject2 = com.tencent.mm.plugin.finder.utils.p.sXz;
+    int i = this.dvm;
     List localList = (List)localObject1;
-    localObject2 = new aqy();
-    Object localObject3 = h.soM;
-    ((aqy)localObject2).rTD = h.Fa(this.duh);
-    com.tencent.mm.plugin.finder.utils.p.a(i, localList, (aqy)localObject2);
+    localObject2 = new arn();
+    Object localObject3 = i.syT;
+    ((arn)localObject2).sch = i.Fw(this.dvm);
+    com.tencent.mm.plugin.finder.utils.p.a(i, localList, (arn)localObject2);
     for (;;)
     {
       if (bool) {
-        ad.i(this.TAG, "[clear] tabType=" + this.duh + " cache=" + this.INy + " isRecycle=" + paramBoolean);
+        ae.i(this.TAG, "[clear] tabType=" + this.dvm + " cache=" + this.suU + " isRecycle=" + paramBoolean);
       }
-      this.INy.INA = null;
-      this.INy.INB = null;
-      this.cPz.unlock();
+      this.suU.suW = null;
+      this.suU.suX = null;
+      this.cQj.unlock();
       return bool;
       label350:
-      this.INy.IND = 0L;
+      this.suU.suZ = 0L;
     }
   }
   
-  public final m.f Go(int paramInt)
-  {
-    Object localObject1 = this.TAG;
-    Object localObject3 = new StringBuilder("[request] scene=").append(this.duh).append(", isPreloading:").append(this.isLoading).append(" cache=").append(this.INy).append(" isLocked=").append(this.cPz.isLocked()).append(" fakeWaitForRefresh=");
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    ad.i((String)localObject1, ((Number)com.tencent.mm.plugin.finder.storage.b.cHI().value()).longValue() + "ms ");
-    this.cPz.lock();
-    label522:
-    for (;;)
-    {
-      long l;
-      int i;
-      int j;
-      try
-      {
-        if (this.isLoading)
-        {
-          l = SystemClock.uptimeMillis();
-          this.cPA.await(1L, TimeUnit.MINUTES);
-          localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
-          l = ((Number)com.tencent.mm.plugin.finder.storage.b.cHI().value()).longValue() - (SystemClock.uptimeMillis() - l);
-          if (l > 0L) {
-            this.cPA.await(l, TimeUnit.MILLISECONDS);
-          }
-          this.cPz.unlock();
-          localObject1 = this.INy.INA;
-          if (localObject1 != null)
-          {
-            i = 1;
-            j = this.duh;
-            l = this.INy.IND;
-            if (paramInt != 0) {
-              break label450;
-            }
-            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 1L, 1L, false);
-            if (i != 0) {
-              break label428;
-            }
-            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 2L, 1L, false);
-            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 7L, 1L, false);
-            if (i != 0) {
-              break label522;
-            }
-            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 8L, 1L, false);
-            if (localObject1 != null)
-            {
-              paramInt = this.INy.duh;
-              localObject3 = ((m.f)localObject1).lastBuffer;
-              d.g.b.p.g(localObject3, "result.lastBuffer");
-              new com.tencent.mm.plugin.finder.cgi.c(paramInt, (com.tencent.mm.bx.b)localObject3).aED();
-              AB(false);
-            }
-            return localObject1;
-          }
-        }
-        else
-        {
-          if (this.INy.INA == null) {
-            continue;
-          }
-          localObject1 = this.cPA;
-          localObject3 = com.tencent.mm.plugin.finder.storage.b.sxa;
-          ((Condition)localObject1).await(((Number)com.tencent.mm.plugin.finder.storage.b.cHI().value()).longValue(), TimeUnit.MILLISECONDS);
-          continue;
-        }
-        i = 0;
-      }
-      finally
-      {
-        this.cPz.unlock();
-      }
-      continue;
-      label428:
-      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 3L, 1L, false);
-      continue;
-      label450:
-      if (paramInt == 1)
-      {
-        com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 4L, 1L, false);
-        if (i == 0)
-        {
-          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 5L, 1L, false);
-        }
-        else
-        {
-          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 6L, 1L, false);
-          continue;
-          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 9L, 1L, false);
-          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1421L, aaZ(j) + 10L, 1L + l, false);
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt, arr paramarr)
-  {
-    d.g.b.p.h(paramarr, "serverConfig");
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("[performServerConfigChanged] fromTabType=").append(paramInt).append(" serverConfig=");
-    d.g.b.p.h(paramarr, "$this$print");
-    ad.i(str, new StringBuilder("[").append(paramarr.Gpv).append(", ").append(paramarr.Gpw).append(", ").append(paramarr.Gpx).append(", ").append(paramarr.Gpy).append(", ").append(paramarr.Gpz).append(", ").append(paramarr.GpA).append(", ").append(paramarr.GpB).append(", ").append(paramarr.GpC).append(", ").append(paramarr.GpD).append(", ").append(paramarr.GpE).append(", ").append(paramarr.GpF).append(", ").append(paramarr.GpG).append(", ").append(paramarr.GpH).append(", ").append(paramarr.GpI).append(", ").append(paramarr.GpJ).append(", ").append(paramarr.GpK).append(", ").append(paramarr.OeA).append(']').toString());
-  }
-  
-  public boolean a(c paramc)
-  {
-    d.g.b.p.h(paramc, "source");
-    ad.i(this.TAG, "[isValid] isInFindMoreFriendTab=" + this.INu + " isBackground=" + this.INt + " isInFinder=" + this.INr + " source=" + paramc);
-    if ((paramc == c.ING) || (paramc == c.KuW) || (paramc == c.INI)) {
-      if ((this.INr) || (!this.INu.get()) || (this.INt.get())) {}
-    }
-    while ((this.INr) && (this.INu.get()) && (!this.INt.get()))
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public final boolean b(final c paramc)
-  {
-    int k = 6;
-    int j = 0;
-    d.g.b.p.h(paramc, "source");
-    if (this.isLoading)
-    {
-      ad.w(this.TAG, "isLoading=true");
-      return false;
-    }
-    if (!FinderStreamTabPreloadCore.isEnable())
-    {
-      ad.w(this.TAG, "isEnable=false source=".concat(String.valueOf(paramc)));
-      return false;
-    }
-    if (!a(paramc))
-    {
-      ad.w(this.TAG, "isValid=false source=".concat(String.valueOf(paramc)));
-      return false;
-    }
-    this.cPz.lock();
-    for (;;)
-    {
-      int i;
-      final boolean bool;
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      try
-      {
-        this.isLoading = true;
-        i = k;
-        if (paramc != c.ING)
-        {
-          if (paramc == c.INI) {
-            i = k;
-          }
-        }
-        else
-        {
-          if (this.INy.INA == null) {
-            break label534;
-          }
-          bool = true;
-          localObject1 = this.INy.INA;
-          if (localObject1 != null)
-          {
-            localObject2 = ((m.f)localObject1).lastBuffer;
-            localObject1 = localObject2;
-            if (localObject2 != null) {
-              break label288;
-            }
-          }
-          localObject1 = (f)this;
-          localObject2 = com.tencent.mm.kernel.g.ajC();
-          d.g.b.p.g(localObject2, "MMKernel.storage()");
-          localObject2 = ((com.tencent.mm.kernel.e)localObject2).ajl();
-          localObject3 = com.tencent.mm.plugin.finder.utils.p.sMo;
-          localObject1 = ((ai)localObject2).get(com.tencent.mm.plugin.finder.utils.p.FS(((f)localObject1).duh), "");
-          if (localObject1 != null) {
-            break label275;
-          }
-          throw new v("null cannot be cast to non-null type kotlin.String");
-        }
-      }
-      finally
-      {
-        this.cPz.unlock();
-      }
-      if (paramc == c.INH)
-      {
-        i = 7;
-      }
-      else if (paramc == c.INJ)
-      {
-        i = 5;
-      }
-      else
-      {
-        i = k;
-        if (paramc == c.KuW)
-        {
-          i = 8;
-          continue;
-          label275:
-          localObject1 = com.tencent.mm.bx.b.cj(bt.aRa((String)localObject1));
-          label288:
-          localObject2 = this.INy.INA;
-          Object localObject4;
-          StringBuilder localStringBuilder;
-          if (localObject2 != null)
-          {
-            localObject2 = ((m.f)localObject2).object;
-            if (localObject2 != null)
-            {
-              localObject2 = new LinkedList((Collection)localObject2);
-              AB(true);
-              localObject3 = new aqy();
-              localObject4 = h.soM;
-              ((aqy)localObject3).rTD = h.Fa(this.duh);
-              localObject4 = this.TAG;
-              localStringBuilder = new StringBuilder("[preload] tabType=").append(this.duh).append(", hasCache=").append(bool).append(", consumeFlag=");
-              if (!bool) {
-                break label529;
-              }
-            }
-          }
-          for (;;)
-          {
-            ad.i((String)localObject4, j + ", unread list size=" + ((LinkedList)localObject2).size() + ", pullType=" + i + ", source=" + paramc + ", cache=" + this.INy);
-            new m(this.duh, i, (com.tencent.mm.bx.b)localObject1, (aqy)localObject3, (List)localObject2).a(null, (m.b)new e(this, bool, paramc), true);
-            this.cPz.unlock();
-            return true;
-            localObject2 = new LinkedList();
-            break;
-            label529:
-            j = 1;
-          }
-          label534:
-          bool = false;
-        }
-      }
-    }
-  }
-  
-  public c bEg()
-  {
-    return c.INI;
-  }
-  
-  public long bEh()
-  {
-    com.tencent.mm.plugin.finder.extension.reddot.e locale = getRedDotManager();
-    getRedDotManager();
-    if (locale.ahm(com.tencent.mm.plugin.finder.extension.reddot.e.Er(this.duh)) != null) {}
-    for (boolean bool = true;; bool = false) {
-      return FinderStreamTabPreloadCore.bu(this.duh, bool);
-    }
-  }
-  
-  public void ex(int paramInt1, int paramInt2)
-  {
-    ad.i(this.TAG, "[performChangeEnterTargetTab] lastTab=" + paramInt1 + " targetTab=" + paramInt2);
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Cache;", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;I)V", "lastTime", "", "getLastTime", "()J", "setLastTime", "(J)V", "overCount", "getOverCount", "setOverCount", "records", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$CacheTime;", "recycledList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getRecycledList", "()Ljava/util/LinkedList;", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "getResp", "()Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "setResp", "(Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;)V", "source", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getSource", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "setSource", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;)V", "getTabType", "()I", "restoreTime", "Lcom/tencent/mm/protocal/protobuf/FinderRefreshPreloadCacheList;", "storeTime", "", "toString", "", "print", "tag", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Cache;", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;I)V", "lastTime", "", "getLastTime", "()J", "setLastTime", "(J)V", "overCount", "getOverCount", "setOverCount", "records", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$CacheTime;", "recycledList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getRecycledList", "()Ljava/util/LinkedList;", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "getResp", "()Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "setResp", "(Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;)V", "source", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getSource", "()Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "setSource", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;)V", "getTabType", "()I", "restoreTime", "Lcom/tencent/mm/protocal/protobuf/FinderRefreshPreloadCacheList;", "storeTime", "", "toString", "", "print", "tag", "plugin-finder_release"})
   public final class a
   {
-    m.f INA;
-    f.c INB;
-    final LinkedList<FinderObject> INC;
-    long IND;
-    final ConcurrentHashMap<Integer, f.b> INE;
-    final int duh;
-    long hfU;
+    final int dvm;
+    long hiI;
+    m.f suW;
+    f.c suX;
+    final LinkedList<FinderObject> suY;
+    long suZ;
+    final ConcurrentHashMap<Integer, f.b> sva;
     
     public a()
     {
-      AppMethodBeat.i(221509);
+      AppMethodBeat.i(203580);
       int i;
-      this.duh = i;
-      this.INC = new LinkedList();
-      this.INE = new ConcurrentHashMap();
-      this$1 = bEi();
-      Object localObject1 = f.this.GoT;
+      this.dvm = i;
+      this.suY = new LinkedList();
+      this.sva = new ConcurrentHashMap();
+      this$1 = cEU();
+      Object localObject1 = f.this.GIj;
       d.g.b.p.g(localObject1, "refreshPreloadCacheList.caches");
       Object localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList();
@@ -461,7 +462,7 @@ public abstract class f
       while (((Iterator)localObject2).hasNext())
       {
         Object localObject3 = ((Iterator)localObject2).next();
-        if (((aqw)localObject3).duh == this.duh) {}
+        if (((arl)localObject3).dvm == this.dvm) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
@@ -474,63 +475,63 @@ public abstract class f
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (aqw)((Iterator)localObject1).next();
-        ((Map)this.INE).put(Integer.valueOf(((aqw)localObject2).dnh), new f.b(((aqw)localObject2).hXx));
+        localObject2 = (arl)((Iterator)localObject1).next();
+        ((Map)this.sva).put(Integer.valueOf(((arl)localObject2).doj), new f.b(((arl)localObject2).iap));
       }
       a(f.this, "build");
-      AppMethodBeat.o(221509);
+      AppMethodBeat.o(203580);
     }
     
-    public final void a(aqx paramaqx, String paramString)
+    public final void a(arm paramarm, String paramString)
     {
-      AppMethodBeat.i(221508);
-      d.g.b.p.h(paramaqx, "$this$print");
+      AppMethodBeat.i(203579);
+      d.g.b.p.h(paramarm, "$this$print");
       d.g.b.p.h(paramString, "tag");
       String str = f.this.TAG;
       paramString = new StringBuilder("[FinderRefreshPreloadCacheList#print] tag=").append(paramString).append(' ');
-      paramaqx = paramaqx.GoT;
-      d.g.b.p.g(paramaqx, "this.caches");
-      Object localObject1 = (Iterable)paramaqx;
-      paramaqx = (Collection)new ArrayList();
+      paramarm = paramarm.GIj;
+      d.g.b.p.g(paramarm, "this.caches");
+      Object localObject1 = (Iterable)paramarm;
+      paramarm = (Collection)new ArrayList();
       localObject1 = ((Iterable)localObject1).iterator();
       Object localObject2;
       label137:
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = ((Iterator)localObject1).next();
-        if (((aqw)localObject2).duh == this.duh) {}
+        if (((arl)localObject2).dvm == this.dvm) {}
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
             break label137;
           }
-          paramaqx.add(localObject2);
+          paramarm.add(localObject2);
           break;
         }
       }
-      localObject1 = (Iterable)paramaqx;
-      paramaqx = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
+      localObject1 = (Iterable)paramarm;
+      paramarm = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (aqw)((Iterator)localObject1).next();
-        paramaqx.add(((aqw)localObject2).duh + ':' + ((aqw)localObject2).dnh + "=>" + ((aqw)localObject2).hXx);
+        localObject2 = (arl)((Iterator)localObject1).next();
+        paramarm.add(((arl)localObject2).dvm + ':' + ((arl)localObject2).doj + "=>" + ((arl)localObject2).iap);
       }
-      ad.i(str, (List)paramaqx);
-      AppMethodBeat.o(221508);
+      ae.i(str, (List)paramarm);
+      AppMethodBeat.o(203579);
     }
     
-    final aqx bEi()
+    final arm cEU()
     {
-      AppMethodBeat.i(221507);
-      Object localObject1 = new aqx();
-      Object localObject2 = com.tencent.mm.kernel.g.ajC();
+      AppMethodBeat.i(203578);
+      Object localObject1 = new arm();
+      Object localObject2 = com.tencent.mm.kernel.g.ajR();
       d.g.b.p.g(localObject2, "MMKernel.storage()");
-      localObject2 = ((com.tencent.mm.kernel.e)localObject2).ajl().get(al.a.IHA, "");
+      localObject2 = ((com.tencent.mm.kernel.e)localObject2).ajA().get(am.a.Jcd, "");
       if (localObject2 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(221507);
+        AppMethodBeat.o(203578);
         throw ((Throwable)localObject1);
       }
       localObject2 = (String)localObject2;
@@ -543,8 +544,8 @@ public abstract class f
         if (i != 0) {}
         try
         {
-          ((aqx)localObject1).parseFrom(bt.aRa((String)localObject2));
-          AppMethodBeat.o(221507);
+          ((arm)localObject1).parseFrom(bu.aSx((String)localObject2));
+          AppMethodBeat.o(203578);
           return localObject1;
           i = 0;
         }
@@ -552,10 +553,10 @@ public abstract class f
         {
           for (;;)
           {
-            ad.printErrStackTrace(f.this.TAG, (Throwable)localException, "", new Object[0]);
-            com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajC();
+            ae.printErrStackTrace(f.this.TAG, (Throwable)localException, "", new Object[0]);
+            com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajR();
             d.g.b.p.g(locale, "MMKernel.storage()");
-            locale.ajl().set(al.a.IHA, null);
+            locale.ajA().set(am.a.Jcd, null);
           }
         }
       }
@@ -563,87 +564,46 @@ public abstract class f
     
     public final String toString()
     {
-      AppMethodBeat.i(221506);
-      Object localObject2 = new StringBuilder("[").append(this.INB).append(", resp=");
-      Object localObject1 = this.INA;
+      AppMethodBeat.i(203577);
+      Object localObject2 = new StringBuilder("[").append(this.suX).append(", resp=");
+      Object localObject1 = this.suW;
       if (localObject1 != null) {}
       for (localObject1 = Integer.valueOf(((m.f)localObject1).hashCode());; localObject1 = null)
       {
-        localObject1 = ((StringBuilder)localObject2).append(localObject1).append(", lastTime=").append(this.hfU).append(", overCount=").append(this.IND).append(", recycledList=");
-        Object localObject3 = (Iterable)this.INC;
+        localObject1 = ((StringBuilder)localObject2).append(localObject1).append(", lastTime=").append(this.hiI).append(", overCount=").append(this.suZ).append(", recycledList=");
+        Object localObject3 = (Iterable)this.suY;
         localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
         localObject3 = ((Iterable)localObject3).iterator();
         while (((Iterator)localObject3).hasNext()) {
-          ((Collection)localObject2).add(com.tencent.mm.ad.c.rc(((FinderObject)((Iterator)localObject3).next()).id));
+          ((Collection)localObject2).add(com.tencent.mm.ac.c.rp(((FinderObject)((Iterator)localObject3).next()).id));
         }
       }
       localObject1 = (List)localObject2 + ']';
-      AppMethodBeat.o(221506);
+      AppMethodBeat.o(203577);
       return localObject1;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$CacheTime;", "", "lastTime", "", "(J)V", "getLastTime", "()J", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
-  public static final class b
-  {
-    private final long hfU;
-    
-    public b(long paramLong)
-    {
-      this.hfU = paramLong;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if (this.hfU != paramObject.hfU) {}
-        }
-      }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      long l = this.hfU;
-      return (int)(l ^ l >>> 32);
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(221510);
-      String str = "CacheTime(lastTime=" + this.hfU + ")";
-      AppMethodBeat.o(221510);
-      return str;
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "OutSideRedDot", "InsideRedDot", "OutSideTimeout", "InsideConfigNotify", "OutSideJumpHot", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "OutSideRedDot", "InsideRedDot", "OutSideTimeout", "InsideConfigNotify", "OutSideJumpHot", "plugin-finder_release"})
   public static enum c
   {
     final int value;
     
     static
     {
-      AppMethodBeat.i(221511);
+      AppMethodBeat.i(203582);
       c localc1 = new c("OutSideRedDot", 0, 1);
-      ING = localc1;
+      svc = localc1;
       c localc2 = new c("InsideRedDot", 1, 2);
-      INH = localc2;
+      svd = localc2;
       c localc3 = new c("OutSideTimeout", 2, 3);
-      INI = localc3;
+      sve = localc3;
       c localc4 = new c("InsideConfigNotify", 3, 4);
-      INJ = localc4;
+      svf = localc4;
       c localc5 = new c("OutSideJumpHot", 4, 5);
-      KuW = localc5;
-      LjO = new c[] { localc1, localc2, localc3, localc4, localc5 };
-      AppMethodBeat.o(221511);
+      svg = localc5;
+      svh = new c[] { localc1, localc2, localc3, localc4, localc5 };
+      AppMethodBeat.o(203582);
     }
     
     private c(int paramInt)
@@ -652,204 +612,223 @@ public abstract class f
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$outSideTimeoutRunnable$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "run", "", "plugin-finder_release"})
-  public static final class d
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "", "(Ljava/lang/String;I)V", "LOADING", "DISABLE", "INVALID", "OK", "plugin-finder_release"})
+  public static enum d
+  {
+    static
+    {
+      AppMethodBeat.i(203585);
+      d locald1 = new d("LOADING", 0);
+      svi = locald1;
+      d locald2 = new d("DISABLE", 1);
+      svj = locald2;
+      d locald3 = new d("INVALID", 2);
+      svk = locald3;
+      d locald4 = new d("OK", 3);
+      svl = locald4;
+      svm = new d[] { locald1, locald2, locald3, locald4 };
+      AppMethodBeat.o(203585);
+    }
+    
+    private d() {}
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$outSideTimeoutRunnable$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "run", "", "plugin-finder_release"})
+  public static final class e
     extends a.a
   {
     public final void run()
     {
-      AppMethodBeat.i(221514);
-      ad.i(this.INF.TAG, "outSideTimeoutRunnable run... isInFinder=" + this.INF.INr);
-      if (!this.INF.INr)
-      {
-        this.INF.b(this.INF.bEg());
-        this.INF.INs.a((a.a)this, this.INF.bEh(), "outSideTimeoutRunnable");
+      AppMethodBeat.i(203589);
+      ae.i(this.svb.TAG, "outSideTimeoutRunnable run... isInFinder=" + this.svb.suN);
+      if (!this.svb.suN) {
+        this.svb.a(this.svb.cES(), (d.g.a.b)new a(this));
       }
-      AppMethodBeat.o(221514);
+      AppMethodBeat.o(203589);
+    }
+    
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "ret", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "invoke"})
+    static final class a
+      extends q
+      implements d.g.a.b<f.d, z>
+    {
+      a(f.e parame)
+      {
+        super();
+      }
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$preload$1", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$Callback;", "isBeginHistory", "", "isResultConsume", "errType", "", "errCode", "resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "onBuildRequest", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderStreamRequest;", "onCgiBack", "errMsg", "", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "interceptors", "", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "plugin-finder_release"})
-  public static final class e
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$preload$1", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$Callback;", "isBeginHistory", "", "isResultConsume", "errType", "", "errCode", "resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "onBuildRequest", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderStreamRequest;", "onCgiBack", "errMsg", "", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "interceptors", "", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "plugin-finder_release"})
+  public static final class f
     implements m.b
   {
-    e(boolean paramBoolean, f.c paramc) {}
+    f(boolean paramBoolean, f.c paramc, d.g.a.b paramb) {}
     
-    public final void a(int paramInt1, int paramInt2, String paramString, m.f paramf, List<? extends com.tencent.mm.plugin.finder.cgi.interceptor.e> paramList)
+    public final void a(int paramInt1, int paramInt2, String paramString, m.f paramf, List<? extends com.tencent.mm.plugin.finder.cgi.interceptor.f> paramList)
     {
-      AppMethodBeat.i(221517);
+      paramString = null;
+      AppMethodBeat.i(203592);
       d.g.b.p.h(paramf, "resp");
       d.g.b.p.h(paramList, "interceptors");
-      this.INF.cPz.lock();
+      this.svb.cQj.lock();
       if ((paramInt1 == 0) && (paramInt2 == 0)) {}
       for (;;)
       {
         try
         {
-          this.INF.INy.INC.clear();
+          this.svb.suU.suY.clear();
+          Object localObject1;
+          if (!this.svb.a(paramc, paramf))
+          {
+            ae.i(this.svb.TAG, "[onCgiBack] tabType=" + this.svb.dvm + " throw this preload, size=" + paramf.object.size() + " cache=" + this.svb.suU);
+            f.b(this.svb, paramc);
+            paramb.invoke(f.d.svl);
+            if (paramf.GJx != null)
+            {
+              paramString = com.tencent.mm.kernel.g.ajR();
+              d.g.b.p.g(paramString, "MMKernel.storage()");
+              paramList = paramString.ajA();
+              localObject1 = am.a.Jcc;
+              paramString = paramf.GJx;
+              if (paramString == null) {
+                break label842;
+              }
+              paramString = paramString.toByteArray();
+              paramList.set((am.a)localObject1, bu.cH(paramString));
+              this.svb.a(this.svb.dvm, FinderStreamTabPreloadCore.cER());
+            }
+            this.svb.isLoading = false;
+            this.svb.cQk.signalAll();
+            this.svb.cQj.unlock();
+            AppMethodBeat.o(203592);
+            return;
+          }
+          Object localObject2;
           if (!paramf.object.isEmpty())
           {
-            f localf = this.INF;
-            f.c localc = paramc;
-            localf.INy.INA = paramf;
-            localf.INy.INB = localc;
-            Object localObject = localf.INy;
-            d.g.b.p.h(localc, "source");
-            ((f.a)localObject).hfU = System.currentTimeMillis();
-            ((Map)((f.a)localObject).INE).put(Integer.valueOf(localc.value), new f.b(((f.a)localObject).hfU));
-            aqx localaqx = ((f.a)localObject).bEi();
-            paramString = localaqx.GoT;
-            d.g.b.p.g(paramString, "list.caches");
-            paramList = ((Iterable)paramString).iterator();
-            if (paramList.hasNext())
+            localObject1 = this.svb;
+            paramList = paramc;
+            ((f)localObject1).suU.suW = paramf;
+            localObject2 = com.tencent.mm.plugin.finder.storage.b.sHP;
+            if (com.tencent.mm.plugin.finder.storage.b.cIG())
             {
-              paramString = paramList.next();
-              if (((aqw)paramString).dnh == localc.value)
+              localObject2 = paramf.object;
+              d.g.b.p.g(localObject2, "resp.`object`");
+              localObject2 = (FinderObject)j.jm((List)localObject2);
+              if (localObject2 != null)
               {
-                paramInt1 = 1;
-                break label902;
-                paramList = (aqw)paramString;
-                paramString = paramList;
-                if (paramList == null)
-                {
-                  paramString = new aqw();
-                  localaqx.GoT.add(paramString);
-                }
-                paramString.dnh = localc.value;
-                paramString.hXx = ((f.a)localObject).hfU;
-                paramString.duh = ((f.a)localObject).duh;
-                paramString = com.tencent.mm.kernel.g.ajC();
-                d.g.b.p.g(paramString, "MMKernel.storage()");
-                paramString.ajl().set(al.a.IHA, bt.cE(localaqx.toByteArray()));
-                ((f.a)localObject).a(localaqx, "storeTime");
-                paramString = com.tencent.mm.plugin.finder.storage.b.sxa;
-                if (com.tencent.mm.plugin.finder.storage.b.cGJ())
-                {
-                  paramString = paramf.object;
-                  d.g.b.p.g(paramString, "resp.`object`");
-                  paramString = (FinderObject)j.jd((List)paramString);
-                  if (paramString != null)
-                  {
-                    paramList = FinderItem.syk;
-                    paramList = com.tencent.mm.plugin.finder.utils.p.sMo;
-                    paramString = FinderItem.a.a(paramString, com.tencent.mm.plugin.finder.utils.p.FT(localf.duh));
-                    paramList = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
-                    paramString = b.a.j(paramString);
-                    paramList = new LinkedList();
-                    paramList.addAll((Collection)paramString.feedObject.getMediaList());
-                    paramList = new o(paramString, j.s((Collection)paramList));
-                    localObject = new LinkedList();
-                    ((LinkedList)localObject).add(paramList);
-                    ((com.tencent.mm.plugin.finder.preload.worker.b)localf.INx.getValue()).a(paramString, j.s((Collection)localObject), 0);
-                  }
-                }
-                paramString = MediaPreloadCore.skO;
-                if (MediaPreloadCore.cDb())
-                {
-                  paramString = com.tencent.mm.plugin.finder.storage.b.sxa;
-                  if (com.tencent.mm.plugin.finder.storage.b.cGJ()) {
-                    com.tencent.mm.ad.c.g((d.g.a.a)new f.h(localc));
-                  }
-                }
-                ad.i(this.INF.TAG, "[onCgiBack] tabType=" + this.INF.duh + " preload successfully! size=" + paramf.object.size() + " cache=" + this.INF.INy);
-                return;
+                Object localObject3 = FinderItem.sJb;
+                localObject3 = com.tencent.mm.plugin.finder.utils.p.sXz;
+                localObject2 = FinderItem.a.a((FinderObject)localObject2, com.tencent.mm.plugin.finder.utils.p.Gs(((f)localObject1).dvm));
+                localObject3 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
+                localObject2 = b.a.j((FinderItem)localObject2);
+                localObject3 = new LinkedList();
+                ((LinkedList)localObject3).addAll((Collection)((BaseFinderFeed)localObject2).feedObject.getMediaList());
+                localObject3 = new o(localObject2, j.s((Collection)localObject3));
+                LinkedList localLinkedList = new LinkedList();
+                localLinkedList.add(localObject3);
+                ((com.tencent.mm.plugin.finder.preload.worker.b)((f)localObject1).suT.getValue()).a((BaseFinderFeed)localObject2, j.s((Collection)localLinkedList), 0);
               }
-              paramInt1 = 0;
-              break label902;
             }
-            paramString = null;
+            localObject1 = MediaPreloadCore.stL;
+            if (MediaPreloadCore.cEO())
+            {
+              localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
+              if (com.tencent.mm.plugin.finder.storage.b.cIG()) {
+                com.tencent.mm.ac.c.h((d.g.a.a)new f.i(paramList));
+              }
+            }
+            ae.i(this.svb.TAG, "[onCgiBack] tabType=" + this.svb.dvm + " preload successfully! size=" + paramf.object.size() + " cache=" + this.svb.suU);
             continue;
           }
-          ad.e(this.INF.TAG, "[onCgiBack] tabType=" + this.INF.duh + " preload fail! list is empty! cache=" + this.INF.INy);
-          continue;
-          this.INF.AB(true);
+          ae.e(this.svb.TAG, "[onCgiBack] tabType=" + this.svb.dvm + " preload fail! list is empty! cache=" + this.svb.suU);
         }
         finally
         {
-          if (paramf.Gqc != null)
+          f.b(this.svb, paramc);
+          paramb.invoke(f.d.svl);
+          if (paramf.GJx != null)
           {
-            paramList = com.tencent.mm.kernel.g.ajC();
-            d.g.b.p.g(paramList, "MMKernel.storage()");
-            paramList.ajl().set(al.a.IHz, bt.cE(paramf.Gqc.toByteArray()));
-            this.INF.a(this.INF.duh, FinderStreamTabPreloadCore.bEf());
+            localObject1 = com.tencent.mm.kernel.g.ajR();
+            d.g.b.p.g(localObject1, "MMKernel.storage()");
+            localObject1 = ((com.tencent.mm.kernel.e)localObject1).ajA();
+            localObject2 = am.a.Jcc;
+            paramf = paramf.GJx;
+            if (paramf != null) {
+              paramString = paramf.toByteArray();
+            }
+            ((aj)localObject1).set((am.a)localObject2, bu.cH(paramString));
+            this.svb.a(this.svb.dvm, FinderStreamTabPreloadCore.cER());
           }
-          this.INF.isLoading = false;
-          this.INF.cPA.signalAll();
-          this.INF.cPz.unlock();
-          AppMethodBeat.o(221517);
+          this.svb.isLoading = false;
+          this.svb.cQk.signalAll();
+          this.svb.cQj.unlock();
+          AppMethodBeat.o(203592);
         }
-        ad.e(this.INF.TAG, "[onCgiBack] tabType=" + this.INF.duh + " preload fail! errType=" + paramInt1 + " errCode=" + paramInt2 + " cache=" + this.INF.INy);
         continue;
-        label902:
-        if (paramInt1 == 0) {}
+        this.svb.lX(true);
+        ae.e(this.svb.TAG, "[onCgiBack] tabType=" + this.svb.dvm + " preload fail! errType=" + paramInt1 + " errCode=" + paramInt2 + " cache=" + this.svb.suU);
+        continue;
+        label842:
+        paramString = null;
       }
     }
     
-    public final void a(ars paramars)
+    public final void a(ash paramash)
     {
-      AppMethodBeat.i(221516);
-      d.g.b.p.h(paramars, "request");
+      AppMethodBeat.i(203591);
+      d.g.b.p.h(paramash, "request");
       if (bool)
       {
-        paramars.OeB = 0;
-        AppMethodBeat.o(221516);
+        paramash.GJg = 0;
+        AppMethodBeat.o(203591);
         return;
       }
-      paramars.OeB = 1;
-      AppMethodBeat.o(221516);
+      paramash.GJg = 1;
+      AppMethodBeat.o(203591);
     }
     
-    public final boolean a(cvp paramcvp)
+    public final boolean a(cwj paramcwj)
     {
-      AppMethodBeat.i(221515);
-      d.g.b.p.h(paramcvp, "resp");
-      AppMethodBeat.o(221515);
+      AppMethodBeat.i(203590);
+      d.g.b.p.h(paramcwj, "resp");
+      AppMethodBeat.o(203590);
       return false;
     }
     
-    public final boolean cxW()
+    public final boolean czx()
     {
       return false;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "invoke"})
-  static final class f
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "invoke"})
+  static final class g
     extends q
     implements d.g.a.a<com.tencent.mm.plugin.finder.preload.worker.b>
   {
-    f(f paramf)
+    g(f paramf)
     {
       super();
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "invoke"})
-  static final class g
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "invoke"})
+  static final class h
     extends q
     implements d.g.a.a<com.tencent.mm.plugin.finder.extension.reddot.e>
   {
-    public static final g LjR;
+    public static final h svq;
     
     static
     {
-      AppMethodBeat.i(221520);
-      LjR = new g();
-      AppMethodBeat.o(221520);
+      AppMethodBeat.i(203595);
+      svq = new h();
+      AppMethodBeat.o(203595);
     }
     
-    g()
-    {
-      super();
-    }
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class h
-    extends q
-    implements d.g.a.a<z>
-  {
-    h(f.c paramc)
+    h()
     {
       super();
     }
@@ -857,7 +836,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.tabPreload.f
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.plugin.gamelife.b.k;
+import com.tencent.mm.plugin.gamelife.b.l;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -14,26 +14,26 @@ public abstract class cu
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFp = "username".hashCode();
-  private static final int eFq = "updateTime".hashCode();
-  private static final int eKP;
-  private static final int eWo;
-  private static final int fcv = "accountType".hashCode();
-  private static final int fcw;
-  private static final int fcx;
-  private static final int fcy;
+  private static final int eGY = "username".hashCode();
+  private static final int eGZ = "updateTime".hashCode();
+  private static final int eMy;
+  private static final int eXZ;
+  private static final int fek = "accountType".hashCode();
+  private static final int fel;
+  private static final int fem;
+  private static final int fen;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFm = true;
-  private boolean eFn = true;
-  private boolean eKL = true;
-  private boolean eWe = true;
-  private boolean fcr = true;
-  private boolean fcs = true;
-  private boolean fct = true;
-  private boolean fcu = true;
+  private boolean eGV = true;
+  private boolean eGW = true;
+  private boolean eMu = true;
+  private boolean eXP = true;
+  private boolean feg = true;
+  private boolean feh = true;
+  private boolean fei = true;
+  private boolean fej = true;
   public int field_accountType;
   public String field_avatarURL;
-  public k field_jumpInfo;
+  public l field_jumpInfo;
   public String field_nickname;
   public int field_sex;
   public String field_tag;
@@ -42,50 +42,50 @@ public abstract class cu
   
   static
   {
-    eKP = "nickname".hashCode();
-    fcw = "avatarURL".hashCode();
-    fcx = "sex".hashCode();
-    eWo = "tag".hashCode();
-    fcy = "jumpInfo".hashCode();
+    eMy = "nickname".hashCode();
+    fel = "avatarURL".hashCode();
+    fem = "sex".hashCode();
+    eXZ = "tag".hashCode();
+    fen = "jumpInfo".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[8];
+    locala.IBL = new Field[8];
     locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.IhC.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.IBN.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "username";
+    locala.IBM = "username";
     locala.columns[1] = "accountType";
-    locala.IhC.put("accountType", "INTEGER default '0' ");
+    locala.IBN.put("accountType", "INTEGER default '0' ");
     localStringBuilder.append(" accountType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "nickname";
-    locala.IhC.put("nickname", "TEXT default '' ");
+    locala.IBN.put("nickname", "TEXT default '' ");
     localStringBuilder.append(" nickname TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "avatarURL";
-    locala.IhC.put("avatarURL", "TEXT default '' ");
+    locala.IBN.put("avatarURL", "TEXT default '' ");
     localStringBuilder.append(" avatarURL TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "sex";
-    locala.IhC.put("sex", "INTEGER default '0' ");
+    locala.IBN.put("sex", "INTEGER default '0' ");
     localStringBuilder.append(" sex INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "tag";
-    locala.IhC.put("tag", "TEXT default '' ");
+    locala.IBN.put("tag", "TEXT default '' ");
     localStringBuilder.append(" tag TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "jumpInfo";
-    locala.IhC.put("jumpInfo", "BLOB");
+    locala.IBN.put("jumpInfo", "BLOB");
     localStringBuilder.append(" jumpInfo BLOB");
     localStringBuilder.append(", ");
     locala.columns[7] = "updateTime";
-    locala.IhC.put("updateTime", "LONG");
+    locala.IBN.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -105,11 +105,11 @@ public abstract class cu
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFp != k) {
+      if (eGY != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eFm = true;
+      this.eGV = true;
     }
     for (;;)
     {
@@ -117,30 +117,30 @@ public abstract class cu
       break label20;
       break;
       label65:
-      if (fcv == k) {
+      if (fek == k) {
         this.field_accountType = paramCursor.getInt(i);
-      } else if (eKP == k) {
+      } else if (eMy == k) {
         this.field_nickname = paramCursor.getString(i);
-      } else if (fcw == k) {
+      } else if (fel == k) {
         this.field_avatarURL = paramCursor.getString(i);
-      } else if (fcx == k) {
+      } else if (fem == k) {
         this.field_sex = paramCursor.getInt(i);
-      } else if (eWo == k) {
+      } else if (eXZ == k) {
         this.field_tag = paramCursor.getString(i);
-      } else if (fcy == k) {
+      } else if (fen == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_jumpInfo = ((k)new k().parseFrom(arrayOfByte));
+          this.field_jumpInfo = ((l)new l().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseGameLifeContact", localIOException.getMessage());
+          ae.e("MicroMsg.SDK.BaseGameLifeContact", localIOException.getMessage());
         }
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -154,38 +154,38 @@ public abstract class cu
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eFm) {
+    if (this.eGV) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.fcr) {
+    if (this.feg) {
       localContentValues.put("accountType", Integer.valueOf(this.field_accountType));
     }
     if (this.field_nickname == null) {
       this.field_nickname = "";
     }
-    if (this.eKL) {
+    if (this.eMu) {
       localContentValues.put("nickname", this.field_nickname);
     }
     if (this.field_avatarURL == null) {
       this.field_avatarURL = "";
     }
-    if (this.fcs) {
+    if (this.feh) {
       localContentValues.put("avatarURL", this.field_avatarURL);
     }
-    if (this.fct) {
+    if (this.fei) {
       localContentValues.put("sex", Integer.valueOf(this.field_sex));
     }
     if (this.field_tag == null) {
       this.field_tag = "";
     }
-    if (this.eWe) {
+    if (this.eXP) {
       localContentValues.put("tag", this.field_tag);
     }
-    if ((this.fcu) && (this.field_jumpInfo != null)) {}
+    if ((this.fej) && (this.field_jumpInfo != null)) {}
     try
     {
       localContentValues.put("jumpInfo", this.field_jumpInfo.toByteArray());
-      if (this.eFn) {
+      if (this.eGW) {
         localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
       }
       if (this.systemRowid > 0L) {
@@ -197,7 +197,7 @@ public abstract class cu
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseGameLifeContact", localIOException.getMessage());
+        ae.e("MicroMsg.SDK.BaseGameLifeContact", localIOException.getMessage());
       }
     }
   }

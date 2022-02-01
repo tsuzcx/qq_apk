@@ -26,30 +26,30 @@ public final class l
   extends d
   implements g
 {
-  private final c MMU;
-  private final d.l.b.a.b.e.b.h MMV;
-  private final j MQa;
-  private List<? extends as> MYQ;
-  private Collection<? extends ag> NAF;
-  private aj NAG;
-  private aj NAH;
-  private aj NAI;
-  private final a.q NAJ;
-  private final i NyX;
-  private final f NyY;
-  private g.a NzU;
+  private final i NWe;
+  private final f NWf;
+  private Collection<? extends ag> NXM;
+  private aj NXN;
+  private aj NXO;
+  private aj NXP;
+  private final a.q NXQ;
+  private g.a NXb;
+  private final c NjZ;
+  private final d.l.b.a.b.e.b.h Nka;
+  private final j Nnf;
+  private List<? extends as> NvW;
   
   public l(j paramj, d.l.b.a.b.b.l paraml, d.l.b.a.b.b.a.g paramg, d.l.b.a.b.f.f paramf, ba paramba, a.q paramq, c paramc, d.l.b.a.b.e.b.h paramh, i parami, f paramf1)
   {
     super(paraml, paramg, paramf, localan, paramba);
     AppMethodBeat.i(60488);
-    this.MQa = paramj;
-    this.NAJ = paramq;
-    this.MMU = paramc;
-    this.MMV = paramh;
-    this.NyX = parami;
-    this.NyY = paramf1;
-    this.NzU = g.a.NAp;
+    this.Nnf = paramj;
+    this.NXQ = paramq;
+    this.NjZ = paramc;
+    this.Nka = paramh;
+    this.NWe = parami;
+    this.NWf = paramf1;
+    this.NXb = g.a.NXw;
     AppMethodBeat.o(60488);
   }
   
@@ -61,91 +61,64 @@ public final class l
     p.h(paramaj2, "expandedType");
     p.h(parama, "isExperimentalCoroutineInReleaseEnvironment");
     p.h(paramList, "declaredTypeParameters");
-    this.MXm = paramList;
-    this.NAG = paramaj1;
-    this.NAH = paramaj2;
-    this.MYQ = d.l.b.a.b.b.at.a(this);
+    this.Nus = paramList;
+    this.NXN = paramaj1;
+    this.NXO = paramaj2;
+    this.NvW = d.l.b.a.b.b.at.a(this);
     paramaj1 = (d.l.b.a.b.b.h)this;
-    paramList = gjt();
+    paramList = gnV();
     if (paramList != null)
     {
-      paramList = paramList.giI();
+      paramList = paramList.gnk();
       if (paramList != null) {}
     }
     else
     {
-      paramList = (d.l.b.a.b.j.f.h)h.b.NxX;
+      paramList = (d.l.b.a.b.j.f.h)h.b.NVe;
     }
     for (;;)
     {
       paramList = bc.a(paramaj1, paramList, (b)new d.a(this));
       p.g(paramList, "TypeUtils.makeUnsubstitu…s)?.defaultType\n        }");
-      this.NAI = paramList;
-      this.NAF = gjN();
-      this.NzU = parama;
+      this.NXP = paramList;
+      this.NXM = gop();
+      this.NXb = parama;
       AppMethodBeat.o(60483);
       return;
     }
   }
   
-  public final aj giC()
-  {
-    AppMethodBeat.i(60485);
-    aj localaj = this.NAI;
-    if (localaj == null) {
-      p.bcb("defaultTypeImpl");
-    }
-    AppMethodBeat.o(60485);
-    return localaj;
-  }
-  
-  public final j giE()
-  {
-    return this.MQa;
-  }
-  
-  public final List<as> gjQ()
-  {
-    AppMethodBeat.i(60487);
-    List localList = this.MYQ;
-    if (localList == null) {
-      p.bcb("typeConstructorParameters");
-    }
-    AppMethodBeat.o(60487);
-    return localList;
-  }
-  
-  public final aj gjr()
+  public final aj gnT()
   {
     AppMethodBeat.i(60481);
-    aj localaj = this.NAG;
+    aj localaj = this.NXN;
     if (localaj == null) {
-      p.bcb("underlyingType");
+      p.bdF("underlyingType");
     }
     AppMethodBeat.o(60481);
     return localaj;
   }
   
-  public final aj gjs()
+  public final aj gnU()
   {
     AppMethodBeat.i(60482);
-    aj localaj = this.NAH;
+    aj localaj = this.NXO;
     if (localaj == null) {
-      p.bcb("expandedType");
+      p.bdF("expandedType");
     }
     AppMethodBeat.o(60482);
     return localaj;
   }
   
-  public final e gjt()
+  public final e gnV()
   {
     AppMethodBeat.i(60484);
-    if (ad.aq((ab)gjs()))
+    if (ad.aq((ab)gnU()))
     {
       AppMethodBeat.o(60484);
       return null;
     }
-    d.l.b.a.b.b.h localh = gjs().gsZ().ghO();
+    d.l.b.a.b.b.h localh = gnU().gxB().gmq();
     Object localObject = localh;
     if (!(localh instanceof e)) {
       localObject = null;
@@ -155,19 +128,46 @@ public final class l
     return localObject;
   }
   
-  public final c gtE()
+  public final aj gne()
   {
-    return this.MMU;
+    AppMethodBeat.i(60485);
+    aj localaj = this.NXP;
+    if (localaj == null) {
+      p.bdF("defaultTypeImpl");
+    }
+    AppMethodBeat.o(60485);
+    return localaj;
   }
   
-  public final d.l.b.a.b.e.b.h gtF()
+  public final j gng()
   {
-    return this.MMV;
+    return this.Nnf;
+  }
+  
+  public final List<as> gos()
+  {
+    AppMethodBeat.i(60487);
+    List localList = this.NvW;
+    if (localList == null) {
+      p.bdF("typeConstructorParameters");
+    }
+    AppMethodBeat.o(60487);
+    return localList;
+  }
+  
+  public final c gyg()
+  {
+    return this.NjZ;
+  }
+  
+  public final d.l.b.a.b.e.b.h gyh()
+  {
+    return this.Nka;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.l
  * JD-Core Version:    0.7.0.1
  */

@@ -8,21 +8,21 @@ public abstract class aq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eMH = "lower_bound".hashCode();
-  private static final int eMI = "need_insert_show_timestamp".hashCode();
-  private static final int eMJ = "show_timestamp_encrypt_key".hashCode();
-  private static final int eMK = "expire_time_interval".hashCode();
-  private static final int eML = "show_expire_interval".hashCode();
-  private static final int eMM = "fetch_time".hashCode();
-  private static final int eMl = "card_id".hashCode();
+  private static final int eNW = "card_id".hashCode();
+  private static final int eOs = "lower_bound".hashCode();
+  private static final int eOt = "need_insert_show_timestamp".hashCode();
+  private static final int eOu = "show_timestamp_encrypt_key".hashCode();
+  private static final int eOv = "expire_time_interval".hashCode();
+  private static final int eOw = "show_expire_interval".hashCode();
+  private static final int eOx = "fetch_time".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eLS = true;
-  private boolean eMB = true;
-  private boolean eMC = true;
-  private boolean eMD = true;
-  private boolean eME = true;
-  private boolean eMF = true;
-  private boolean eMG = true;
+  private boolean eND = true;
+  private boolean eOm = true;
+  private boolean eOn = true;
+  private boolean eOo = true;
+  private boolean eOp = true;
+  private boolean eOq = true;
+  private boolean eOr = true;
   public String field_card_id;
   public int field_expire_time_interval;
   public long field_fetch_time;
@@ -44,11 +44,11 @@ public abstract class aq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eMl != k) {
+      if (eNW != k) {
         break label65;
       }
       this.field_card_id = paramCursor.getString(i);
-      this.eLS = true;
+      this.eND = true;
     }
     for (;;)
     {
@@ -56,13 +56,13 @@ public abstract class aq
       break label20;
       break;
       label65:
-      if (eMH == k)
+      if (eOs == k)
       {
         this.field_lower_bound = paramCursor.getInt(i);
       }
       else
       {
-        if (eMI == k)
+        if (eOt == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -71,13 +71,13 @@ public abstract class aq
             break;
           }
         }
-        if (eMJ == k) {
+        if (eOu == k) {
           this.field_show_timestamp_encrypt_key = paramCursor.getString(i);
-        } else if (eMK == k) {
+        } else if (eOv == k) {
           this.field_expire_time_interval = paramCursor.getInt(i);
-        } else if (eML == k) {
+        } else if (eOw == k) {
           this.field_show_expire_interval = paramCursor.getInt(i);
-        } else if (eMM == k) {
+        } else if (eOx == k) {
           this.field_fetch_time = paramCursor.getLong(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -89,25 +89,25 @@ public abstract class aq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eLS) {
+    if (this.eND) {
       localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eMB) {
+    if (this.eOm) {
       localContentValues.put("lower_bound", Integer.valueOf(this.field_lower_bound));
     }
-    if (this.eMC) {
+    if (this.eOn) {
       localContentValues.put("need_insert_show_timestamp", Boolean.valueOf(this.field_need_insert_show_timestamp));
     }
-    if (this.eMD) {
+    if (this.eOo) {
       localContentValues.put("show_timestamp_encrypt_key", this.field_show_timestamp_encrypt_key);
     }
-    if (this.eME) {
+    if (this.eOp) {
       localContentValues.put("expire_time_interval", Integer.valueOf(this.field_expire_time_interval));
     }
-    if (this.eMF) {
+    if (this.eOq) {
       localContentValues.put("show_expire_interval", Integer.valueOf(this.field_show_expire_interval));
     }
-    if (this.eMG) {
+    if (this.eOr) {
       localContentValues.put("fetch_time", Long.valueOf(this.field_fetch_time));
     }
     if (this.systemRowid > 0L) {
@@ -118,7 +118,7 @@ public abstract class aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.aq
  * JD-Core Version:    0.7.0.1
  */

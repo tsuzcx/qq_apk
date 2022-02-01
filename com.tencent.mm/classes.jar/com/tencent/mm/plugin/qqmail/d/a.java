@@ -5,13 +5,13 @@ import com.tencent.mm.g.a.ak;
 import com.tencent.mm.g.a.ak.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 public final class a
   extends c<ak>
@@ -28,24 +28,24 @@ public final class a
     AppMethodBeat.i(122652);
     if (!(paramak instanceof ak))
     {
-      ad.f("MicroMsg.QQMail.EventListener", "not bind qq event");
+      ae.f("MicroMsg.QQMail.EventListener", "not bind qq event");
       AppMethodBeat.o(122652);
       return false;
     }
-    if (paramak.dkW.dkY == 0)
+    if (paramak.dlY.dma == 0)
     {
-      paramak = (String)g.ajC().ajl().get(al.a.IJH, null);
-      ad.i("MicroMsg.QQMail.EventListener", "unbind qq, bindXMail is [%s]", new Object[] { paramak });
-      if (!bt.isNullOrNil(paramak)) {}
+      paramak = (String)g.ajR().ajA().get(am.a.Jen, null);
+      ae.i("MicroMsg.QQMail.EventListener", "unbind qq, bindXMail is [%s]", new Object[] { paramak });
+      if (!bu.isNullOrNil(paramak)) {}
     }
     try
     {
-      g.ajC().ajl().set(17, Integer.valueOf(2));
-      int i = u.aAy() | 0x1;
-      g.ajC().ajl().set(34, Integer.valueOf(i));
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
-      ac.dCm();
-      ad.d("MicroMsg.QQMail.EventListener", "doClearQQMailHelper succ ");
+      g.ajR().ajA().set(17, Integer.valueOf(2));
+      int i = v.aAO() | 0x1;
+      g.ajR().ajA().set(34, Integer.valueOf(i));
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
+      ac.dFD();
+      ae.d("MicroMsg.QQMail.EventListener", "doClearQQMailHelper succ ");
       AppMethodBeat.o(122652);
       return false;
     }
@@ -53,7 +53,7 @@ public final class a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.QQMail.EventListener", paramak, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.QQMail.EventListener", paramak, "", new Object[0]);
       }
     }
   }

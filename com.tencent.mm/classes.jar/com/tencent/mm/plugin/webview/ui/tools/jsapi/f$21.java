@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.ab.a.d;
-import com.tencent.mm.ab.a.d.a;
+import com.tencent.mm.aa.a.d;
+import com.tencent.mm.aa.a.d.a;
 import com.tencent.mm.plugin.webview.c.l;
 
 final class f$21
@@ -11,7 +11,7 @@ final class f$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.f.21
  * JD-Core Version:    0.7.0.1
  */

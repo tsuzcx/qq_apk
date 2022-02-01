@@ -16,19 +16,19 @@ import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter;", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "Lcom/tencent/mm/plugin/gallery/picker/view/FolderItemView;", "loader", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "(Lcom/tencent/mm/loader/Loader;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;)V", "onItemLongClickListener", "Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;", "getOnItemLongClickListener", "()Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;", "setOnItemLongClickListener", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;)V", "selectedFolder", "getSelectedFolder", "()Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "setSelectedFolder", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;)V", "onBindViewHolder", "", "viewHolder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "position", "", "onCreateItemView", "parent", "Landroid/view/ViewGroup;", "viewType", "ItemClickListener", "OnItemClickListener", "OnItemLongClickListener", "plugin-gallery_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter;", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "Lcom/tencent/mm/plugin/gallery/picker/view/FolderItemView;", "loader", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "(Lcom/tencent/mm/loader/Loader;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;)V", "onItemLongClickListener", "Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;", "getOnItemLongClickListener", "()Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;", "setOnItemLongClickListener", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;)V", "selectedFolder", "getSelectedFolder", "()Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "setSelectedFolder", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;)V", "onBindViewHolder", "", "viewHolder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "position", "", "onCreateItemView", "parent", "Landroid/view/ViewGroup;", "viewType", "ItemClickListener", "OnItemClickListener", "OnItemLongClickListener", "plugin-gallery_release"})
 public final class b
   extends com.tencent.mm.ui.base.a.a<GalleryItem.AlbumItem, FolderItemView>
 {
-  private d<GalleryItem.MediaItem> git;
-  public b tID;
-  c tIE;
-  GalleryItem.AlbumItem tIF;
+  private d<GalleryItem.MediaItem> gkL;
+  public b tTu;
+  c tTv;
+  GalleryItem.AlbumItem tTw;
   
   public b(d<GalleryItem.MediaItem> paramd)
   {
     AppMethodBeat.i(164868);
-    this.git = paramd;
+    this.gkL = paramd;
     AppMethodBeat.o(164868);
   }
   
@@ -38,47 +38,47 @@ public final class b
     p.h(paramb, "viewHolder");
     Object localObject3 = (FolderItemView)paramb.getView();
     ((FolderItemView)localObject3).setOnClickListener((View.OnClickListener)new a(paramb));
-    Object localObject1 = this.cje.get(paramInt);
+    Object localObject1 = this.cjg.get(paramInt);
     p.g(localObject1, "mItems[position]");
     Object localObject2 = (GalleryItem.AlbumItem)localObject1;
-    localObject1 = this.git;
-    boolean bool = p.i(this.tIF, (GalleryItem.AlbumItem)this.cje.get(paramInt));
+    localObject1 = this.gkL;
+    boolean bool = p.i(this.tTw, (GalleryItem.AlbumItem)this.cjg.get(paramInt));
     p.h(paramb, "holder");
     p.h(localObject2, "media");
     p.h(localObject1, "loader");
-    ((FolderItemView)localObject3).tJz = paramb;
-    localObject3 = paramb.Gd(2131300188);
+    ((FolderItemView)localObject3).tUq = paramb;
+    localObject3 = paramb.GD(2131300188);
     Context localContext = paramb.getContext();
     p.g(localContext, "holder.context");
     ((View)localObject3).setBackgroundColor(localContext.getResources().getColor(2131100695));
-    paramb.d(2131300182, (CharSequence)((GalleryItem.AlbumItem)localObject2).tGK);
-    paramb.d(2131300178, (CharSequence)String.valueOf(((GalleryItem.AlbumItem)localObject2).dqU));
-    paramb.kA(2131300178, 0);
-    localObject3 = (ImageView)paramb.Gd(2131300187);
+    paramb.e(2131300182, (CharSequence)((GalleryItem.AlbumItem)localObject2).tRB);
+    paramb.e(2131300178, (CharSequence)String.valueOf(((GalleryItem.AlbumItem)localObject2).drZ));
+    paramb.kH(2131300178, 0);
+    localObject3 = (ImageView)paramb.GD(2131300187);
     p.g(localObject3, "thumbView");
     ((ImageView)localObject3).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localObject2 = ((GalleryItem.AlbumItem)localObject2).fsN();
+    localObject2 = ((GalleryItem.AlbumItem)localObject2).dnF();
     p.g(localObject2, "media.mediaItem");
     ((d)localObject1).bH(localObject2).c((ImageView)localObject3);
     if (!bool) {}
     for (paramInt = 8;; paramInt = 0)
     {
-      paramb.kA(2131300186, paramInt);
+      paramb.kH(2131300186, paramInt);
       AppMethodBeat.o(164866);
       return;
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener;", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnLongClickListener;", "viewHolder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter;Lcom/tencent/mm/ui/base/adapter/ViewWrapper;)V", "onClick", "", "v", "Landroid/view/View;", "onLongClick", "", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener;", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnLongClickListener;", "viewHolder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "(Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter;Lcom/tencent/mm/ui/base/adapter/ViewWrapper;)V", "onClick", "", "v", "Landroid/view/View;", "onLongClick", "", "plugin-gallery_release"})
   public final class a
     implements View.OnClickListener, View.OnLongClickListener
   {
-    private final com.tencent.mm.ui.base.a.b tIG;
+    private final com.tencent.mm.ui.base.a.b tTx;
     
     public a()
     {
       AppMethodBeat.i(164864);
-      this.tIG = localObject;
+      this.tTx = localObject;
       AppMethodBeat.o(164864);
     }
     
@@ -87,15 +87,15 @@ public final class b
       AppMethodBeat.i(164863);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
       ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
       p.h(paramView, "v");
-      b.this.tIF = ((GalleryItem.AlbumItem)b.a(b.this).get(this.tIG.lN()));
-      paramView = b.this.tID;
+      b.this.tTw = ((GalleryItem.AlbumItem)b.a(b.this).get(this.tTx.lN()));
+      paramView = b.this.tTu;
       if (paramView != null)
       {
-        localObject = b.this.tIF;
+        localObject = b.this.tTw;
         if (localObject == null) {
-          p.gfZ();
+          p.gkB();
         }
         paramView.a((GalleryItem.AlbumItem)localObject);
       }
@@ -108,13 +108,13 @@ public final class b
       AppMethodBeat.i(164862);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
       localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
       p.h(paramView, "v");
-      paramView = b.this.tIE;
+      paramView = b.this.tTv;
       if (paramView != null) {
-        p.g(b.a(b.this).get(this.tIG.lN()), "mItems[viewHolder.adapterPosition]");
+        p.g(b.a(b.this).get(this.tTx.lN()), "mItems[viewHolder.adapterPosition]");
       }
-      for (boolean bool = paramView.cVD();; bool = false)
+      for (boolean bool = paramView.cYi();; bool = false)
       {
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$ItemClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(164862);
@@ -123,21 +123,21 @@ public final class b
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;", "", "onItemClick", "", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemClickListener;", "", "onItemClick", "", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "plugin-gallery_release"})
   public static abstract interface b
   {
     public abstract void a(GalleryItem.AlbumItem paramAlbumItem);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;", "", "onItemLongClick", "", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "plugin-gallery_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/adapter/GalleryPickerFolderAdapter$OnItemLongClickListener;", "", "onItemLongClick", "", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "plugin-gallery_release"})
   public static abstract interface c
   {
-    public abstract boolean cVD();
+    public abstract boolean cYi();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.a.b
  * JD-Core Version:    0.7.0.1
  */

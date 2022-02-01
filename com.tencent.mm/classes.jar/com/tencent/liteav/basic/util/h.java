@@ -20,34 +20,34 @@ public class h
   
   public void a()
   {
-    AppMethodBeat.i(187251);
+    AppMethodBeat.i(221380);
     while (hasMessages(0)) {
       removeMessages(0);
     }
     this.b = false;
-    AppMethodBeat.o(187251);
+    AppMethodBeat.o(221380);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187250);
+    AppMethodBeat.i(221379);
     a();
     this.a = paramInt2;
     this.b = true;
     sendEmptyMessageDelayed(0, paramInt1);
-    AppMethodBeat.o(187250);
+    AppMethodBeat.o(221379);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(187249);
+    AppMethodBeat.i(221378);
     if (this.c != null) {
       this.c.a();
     }
     if (this.b) {
       sendEmptyMessageDelayed(0, this.a);
     }
-    AppMethodBeat.o(187249);
+    AppMethodBeat.o(221378);
   }
   
   public static abstract interface a

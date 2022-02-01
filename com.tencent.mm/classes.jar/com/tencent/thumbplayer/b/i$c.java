@@ -2,10 +2,10 @@ package com.tencent.thumbplayer.b;
 
 public final class i$c
 {
-  public long EKH;
-  public long LZc;
-  public int LZd;
-  public long LZe;
+  public long Fdf;
+  public long MvX;
+  public int MvY;
+  public long MvZ;
 }
 
 

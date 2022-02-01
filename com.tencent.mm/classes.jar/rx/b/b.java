@@ -2,11 +2,11 @@ package rx.b;
 
 public abstract interface b<T>
 {
-  public abstract void cq(T paramT);
+  public abstract void cr(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.b.b
  * JD-Core Version:    0.7.0.1
  */

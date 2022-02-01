@@ -33,7 +33,7 @@ public final class c
     this.cdV = paramLong2;
   }
   
-  public static String Bl()
+  public static String Bm()
   {
     return "java.lang.ref.Reference";
   }
@@ -57,16 +57,16 @@ public final class c
     return -1;
   }
   
-  public final Map<d, Object> Bi()
+  public final Map<d, Object> Bj()
   {
     HashMap localHashMap = new HashMap();
-    Bs().aG(this.cdV);
+    Bt().aG(this.cdV);
     int j = readUnsignedShort();
     int i = 0;
     while (i < j)
     {
       d locald = this.cdZ[i];
-      Bo();
+      Bp();
       readUnsignedByte();
       localHashMap.put(locald, a(locald.cdS));
       i += 1;
@@ -74,12 +74,12 @@ public final class c
     return localHashMap;
   }
   
-  public final c Bj()
+  public final c Bk()
   {
     return this.cex.ceo.aF(this.cdW);
   }
   
-  public final List<i> Bk()
+  public final List<i> Bl()
   {
     Object localObject2 = this.cec;
     Object localObject1 = new Object[((com.e.a.c.g)localObject2).size()];
@@ -109,7 +109,7 @@ public final class c
           i += 1;
         }
         localObject2 = new ArrayList(j);
-        int[] arrayOfInt = this.cec.BC();
+        int[] arrayOfInt = this.cec.BD();
         j = arrayOfInt.length;
         i = 0;
         if (i < j)
@@ -130,7 +130,7 @@ public final class c
     }
   }
   
-  public final List<c> Bm()
+  public final List<c> Bn()
   {
     ArrayList localArrayList = new ArrayList();
     Stack localStack = new Stack();

@@ -7,13 +7,13 @@ import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class c$9
   implements View.OnClickListener
@@ -25,14 +25,14 @@ final class c$9
     AppMethodBeat.i(30820);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().X(-1, false);
-    if (com.tencent.mm.ax.b.FU((String)g.ajC().ajl().get(274436, null)))
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().Z(-1, false);
+    if (com.tencent.mm.aw.b.Gw((String)g.ajR().ajA().get(274436, null)))
     {
       if (!com.tencent.mm.pluginsdk.permission.b.n((Activity)this.val$context, "android.permission.ACCESS_COARSE_LOCATION"))
       {
-        if (!((Boolean)g.ajC().ajl().get(al.a.IEr, Boolean.FALSE)).booleanValue()) {
-          com.tencent.mm.plugin.account.a.b.a.b((Activity)this.val$context, this.val$context.getResources().getString(2131760740, new Object[] { ac.fks() }), 30764, true);
+        if (!((Boolean)g.ajR().ajA().get(am.a.IYR, Boolean.FALSE)).booleanValue()) {
+          com.tencent.mm.plugin.account.a.b.a.b((Activity)this.val$context, this.val$context.getResources().getString(2131760740, new Object[] { ad.fom() }), 30764, true);
         }
         for (;;)
         {
@@ -46,7 +46,7 @@ final class c$9
     else
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)this.val$context, "android.permission.ACCESS_COARSE_LOCATION", 64, null, null);
-      ad.i("MicroMsg.WNNoteFootPannel", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
+      ae.i("MicroMsg.WNNoteFootPannel", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

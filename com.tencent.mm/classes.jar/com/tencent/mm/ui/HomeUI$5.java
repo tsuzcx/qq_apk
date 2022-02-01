@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.j;
 
 final class HomeUI$5
   implements View.OnLongClickListener
@@ -16,9 +16,9 @@ final class HomeUI$5
     AppMethodBeat.i(163247);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/HomeUI$13", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
-    if ((i.DEBUG) || (com.tencent.mm.sdk.a.b.fjN()) || (i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE)) {
-      HomeUI.m(this.IYs);
+    a.b("com/tencent/mm/ui/HomeUI$13", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+    if ((j.DEBUG) || (com.tencent.mm.sdk.a.b.fnF()) || (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE)) {
+      HomeUI.m(this.Jta);
     }
     a.a(false, this, "com/tencent/mm/ui/HomeUI$13", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(163247);

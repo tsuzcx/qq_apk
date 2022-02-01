@@ -9,23 +9,23 @@ public class MediaMuxerFactory
   
   static
   {
-    AppMethodBeat.i(218476);
+    AppMethodBeat.i(215116);
     defaultMuxerCreator = new DefaultMediaMuxerCreator(null);
     muxerCreator = null;
-    AppMethodBeat.o(218476);
+    AppMethodBeat.o(215116);
   }
   
   public static IMediaMuxer createMediaMuxer(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218475);
+    AppMethodBeat.i(215115);
     if (muxerCreator == null)
     {
       paramString = defaultMuxerCreator.createMediaMuxer(paramString, paramInt);
-      AppMethodBeat.o(218475);
+      AppMethodBeat.o(215115);
       return paramString;
     }
     paramString = muxerCreator.createMediaMuxer(paramString, paramInt);
-    AppMethodBeat.o(218475);
+    AppMethodBeat.o(215115);
     return paramString;
   }
   
@@ -39,9 +39,9 @@ public class MediaMuxerFactory
   {
     public IMediaMuxer createMediaMuxer(String paramString, int paramInt)
     {
-      AppMethodBeat.i(218474);
+      AppMethodBeat.i(215114);
       paramString = new DefaultMediaMuxer(paramString, paramInt);
-      AppMethodBeat.o(218474);
+      AppMethodBeat.o(215114);
       return paramString;
     }
   }

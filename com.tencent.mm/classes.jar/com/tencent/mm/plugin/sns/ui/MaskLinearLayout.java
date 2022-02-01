@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,10 +20,10 @@ import junit.framework.Assert;
 public class MaskLinearLayout
   extends LinearLayout
 {
+  private aq AfN;
+  private Runnable AfO;
   private boolean enable;
   private List<MaskImageView> list;
-  private ap zOG;
-  private Runnable zOH;
   
   public MaskLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,8 +31,8 @@ public class MaskLinearLayout
     AppMethodBeat.i(97968);
     this.enable = false;
     this.list = new LinkedList();
-    this.zOG = new ap();
-    this.zOH = new Runnable()
+    this.AfN = new aq();
+    this.AfO = new Runnable()
     {
       public final void run()
       {
@@ -51,8 +51,8 @@ public class MaskLinearLayout
         Object localObject = new b();
         ((b)localObject).bd(paramAnonymousView);
         ((b)localObject).bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/sns/ui/MaskLinearLayout$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
-        ad.e("test", "touch: " + paramAnonymousMotionEvent.getAction());
+        a.b("com/tencent/mm/plugin/sns/ui/MaskLinearLayout$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahF());
+        ae.e("test", "touch: " + paramAnonymousMotionEvent.getAction());
         if (!MaskLinearLayout.b(MaskLinearLayout.this))
         {
           a.a(false, this, "com/tencent/mm/plugin/sns/ui/MaskLinearLayout$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");

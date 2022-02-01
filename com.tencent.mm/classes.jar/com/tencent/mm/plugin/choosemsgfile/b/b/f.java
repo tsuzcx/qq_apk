@@ -5,33 +5,33 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.b.d.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 
 public class f
   extends d
 {
-  private k.b oSf;
-  public String oSp;
-  private String oSq;
+  private k.b oYH;
+  public String oYR;
+  private String oYS;
   
-  public f(g paramg, bu parambu, String paramString)
+  public f(g paramg, bv parambv, String paramString)
   {
-    super(paramg, parambu);
-    this.oSp = paramString;
+    super(paramg, parambv);
+    this.oYR = paramString;
   }
   
-  private k.b bZu()
+  private k.b caJ()
   {
     AppMethodBeat.i(123267);
-    if (this.oSf == null) {
-      this.oSf = k.b.yr(this.oRU.field_content);
+    if (this.oYH == null) {
+      this.oYH = k.b.zb(this.oYw.field_content);
     }
-    k.b localb = this.oSf;
+    k.b localb = this.oYH;
     AppMethodBeat.o(123267);
     return localb;
   }
@@ -39,15 +39,15 @@ public class f
   public void a(View paramView, a parama)
   {
     AppMethodBeat.i(123272);
-    if ((!bZm().tF(this.oRU.field_msgId)) && (!isInvalid()))
+    if ((!caB().tW(this.oYw.field_msgId)) && (!isInvalid()))
     {
       if (isEnable())
       {
-        c.g(getContext(), this.oRU.field_msgId);
+        c.g(getContext(), this.oYw.field_msgId);
         AppMethodBeat.o(123272);
         return;
       }
-      c.Q(getContext(), bZm().mMaxCount);
+      c.Q(getContext(), caB().mMaxCount);
     }
     AppMethodBeat.o(123272);
   }
@@ -56,24 +56,24 @@ public class f
   {
     AppMethodBeat.i(162327);
     super.a(paramm, paramInt, parama);
-    paramm.oSD.setVisibility(0);
-    paramm.oSD.setText(getFileName());
-    paramm.oSE.setVisibility(0);
-    paramm.oSE.setText(bt.sy(bZo()));
-    paramm = paramm.oSB;
-    if (this.oSq == null) {
-      this.oSq = c.ZE(bZn());
+    paramm.oZf.setVisibility(0);
+    paramm.oZf.setText(getFileName());
+    paramm.oZg.setVisibility(0);
+    paramm.oZg.setText(bu.sL(caD()));
+    paramm = paramm.oZd;
+    if (this.oYS == null) {
+      this.oYS = c.aav(caC());
     }
-    paramm.setBackgroundColor(Color.parseColor(this.oSq));
+    paramm.setBackgroundColor(Color.parseColor(this.oYS));
     AppMethodBeat.o(162327);
   }
   
-  public String bZn()
+  public String caC()
   {
     AppMethodBeat.i(123268);
-    if (bZu() != null)
+    if (caJ() != null)
     {
-      String str = bZu().hzP;
+      String str = caJ().hCD;
       AppMethodBeat.o(123268);
       return str;
     }
@@ -81,12 +81,12 @@ public class f
     return "";
   }
   
-  public int bZo()
+  public int caD()
   {
     AppMethodBeat.i(123270);
-    if (bZu() != null)
+    if (caJ() != null)
     {
-      int i = bZu().hzO;
+      int i = caJ().hCC;
       AppMethodBeat.o(123270);
       return i;
     }
@@ -97,9 +97,9 @@ public class f
   public String getFileName()
   {
     AppMethodBeat.i(123269);
-    if (bZu() != null)
+    if (caJ() != null)
     {
-      String str = bZu().title;
+      String str = caJ().title;
       AppMethodBeat.o(123269);
       return str;
     }

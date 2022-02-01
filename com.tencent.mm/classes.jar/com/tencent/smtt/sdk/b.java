@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.b.c;
+import com.tencent.smtt.sdk.c.c;
 
 class b
   implements com.tencent.smtt.export.external.interfaces.DownloadListener
@@ -41,8 +41,8 @@ class b
         paramString2.setData(Uri.parse(paramString1));
         paramString1 = this.b.getContext();
         paramString2 = new com.tencent.mm.hellhoundlib.b.a().bc(paramString2);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.ahp(), "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString1.startActivity((Intent)paramString2.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.ahE(), "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString1.startActivity((Intent)paramString2.mt(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55133);
         return;

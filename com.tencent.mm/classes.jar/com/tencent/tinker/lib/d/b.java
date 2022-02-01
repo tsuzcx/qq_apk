@@ -17,7 +17,7 @@ import java.util.List;
 public class b
   implements d
 {
-  private static boolean MgJ = false;
+  private static boolean MDG = false;
   protected final Context context;
   
   public b(Context paramContext)
@@ -33,7 +33,7 @@ public class b
   public void a(File paramFile1, File paramFile2, String paramString, int paramInt)
   {
     ShareTinkerLog.i("Tinker.DefaultPatchReporter", "patchReporter onPatchTypeExtractFail: file extract fail type: %s, path: %s, extractTo: %s, filename: %s", new Object[] { ShareTinkerInternals.getTypeString(paramInt), paramFile1.getPath(), paramFile2.getPath(), paramString });
-    a.lk(this.context).ad(paramFile1);
+    a.lq(this.context).ac(paramFile1);
   }
   
   public void a(File paramFile, Throwable paramThrowable)
@@ -41,8 +41,8 @@ public class b
     ShareTinkerLog.i("Tinker.DefaultPatchReporter", "patchReporter onPatchException: patch exception path: %s, throwable: %s", new Object[] { paramFile.getAbsolutePath(), paramThrowable.getMessage() });
     ShareTinkerLog.e("Tinker.DefaultPatchReporter", "tinker patch exception, welcome to submit issue to us: https://github.com/Tencent/tinker/issues", new Object[0]);
     ShareTinkerLog.printErrStackTrace("Tinker.DefaultPatchReporter", paramThrowable, "tinker patch exception", new Object[0]);
-    a.lk(this.context).tinkerFlags = 0;
-    a.lk(this.context).ad(paramFile);
+    a.lq(this.context).tinkerFlags = 0;
+    a.lq(this.context).ac(paramFile);
   }
   
   public void a(File paramFile, List<File> paramList, Throwable paramThrowable)
@@ -51,41 +51,41 @@ public class b
     ShareTinkerLog.printErrStackTrace("Tinker.DefaultPatchReporter", paramThrowable, "onPatchDexOptFail:", new Object[0]);
     if ((paramThrowable.getMessage().contains("checkDexOptExist failed")) || (paramThrowable.getMessage().contains("checkDexOptFormat failed")))
     {
-      MgJ = true;
+      MDG = true;
       paramFile = paramList.iterator();
     }
     while (paramFile.hasNext())
     {
       SharePatchFileUtil.safeDeleteFile((File)paramFile.next());
       continue;
-      a.lk(this.context).ad(paramFile);
+      a.lq(this.context).ac(paramFile);
     }
   }
   
   public void a(File paramFile, boolean paramBoolean, long paramLong)
   {
     ShareTinkerLog.i("Tinker.DefaultPatchReporter", "patchReporter onPatchResult: patch all result path: %s, success: %b, cost: %d", new Object[] { paramFile.getAbsolutePath(), Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
-    if (!MgJ)
+    if (!MDG)
     {
-      paramFile = c.lp(this.context);
-      if (paramFile.Mhy) {
+      paramFile = c.lv(this.context);
+      if (paramFile.MEv) {
         break label65;
       }
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchServiceResult retry disabled, just return", new Object[0]);
     }
     label65:
-    while (!paramFile.MhA.exists()) {
+    while (!paramFile.MEx.exists()) {
       return;
     }
-    SharePatchFileUtil.safeDeleteFile(paramFile.MhA);
+    SharePatchFileUtil.safeDeleteFile(paramFile.MEx);
   }
   
-  public void aw(Intent paramIntent)
+  public void ax(Intent paramIntent)
   {
     ShareTinkerLog.i("Tinker.DefaultPatchReporter", "patchReporter onPatchServiceStart: patch service start", new Object[0]);
-    MgJ = false;
-    c localc = c.lp(this.context);
-    if (!localc.Mhy)
+    MDG = false;
+    c localc = c.lv(this.context);
+    if (!localc.MEv)
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchServiceStart retry disabled, just return", new Object[0]);
       return;
@@ -95,7 +95,7 @@ public class b
       ShareTinkerLog.e("Tinker.UpgradePatchRetry", "onPatchServiceStart intent is null, just return", new Object[0]);
       return;
     }
-    paramIntent = TinkerPatchService.bz(paramIntent);
+    paramIntent = TinkerPatchService.bA(paramIntent);
     if (paramIntent == null)
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchServiceStart patch path is null, just return", new Object[0]);
@@ -108,30 +108,30 @@ public class b
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchServiceStart patch md5 is null, just return", new Object[0]);
       return;
     }
-    if (localc.Mhz.exists())
+    if (localc.MEw.exists())
     {
-      paramIntent = c.a.af(localc.Mhz);
-      if ((paramIntent.md5 == null) || (paramIntent.MhB == null) || (!str.equals(paramIntent.md5)))
+      paramIntent = c.a.ae(localc.MEw);
+      if ((paramIntent.md5 == null) || (paramIntent.MEy == null) || (!str.equals(paramIntent.md5)))
       {
-        localc.ae(localFile);
+        localc.ad(localFile);
         paramIntent.md5 = str;
-        paramIntent.MhB = "1";
+        paramIntent.MEy = "1";
       }
     }
     for (;;)
     {
-      c.a.a(localc.Mhz, paramIntent);
+      c.a.a(localc.MEw, paramIntent);
       return;
-      int i = Integer.parseInt(paramIntent.MhB);
-      if (i >= localc.uEz)
+      int i = Integer.parseInt(paramIntent.MEy);
+      if (i >= localc.uQm)
       {
-        SharePatchFileUtil.safeDeleteFile(localc.MhA);
+        SharePatchFileUtil.safeDeleteFile(localc.MEx);
         ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchServiceStart retry more than max count, delete retry info file!", new Object[0]);
         return;
       }
-      paramIntent.MhB = String.valueOf(i + 1);
+      paramIntent.MEy = String.valueOf(i + 1);
       continue;
-      localc.ae(localFile);
+      localc.ad(localFile);
       paramIntent = new c.a(str, "1");
     }
   }
@@ -139,14 +139,14 @@ public class b
   public void b(File paramFile, String paramString1, String paramString2)
   {
     ShareTinkerLog.i("Tinker.DefaultPatchReporter", "patchReporter onPatchInfoCorrupted: patch info is corrupted. old: %s, new: %s", new Object[] { paramString1, paramString2 });
-    a.lk(this.context).dcB();
+    a.lq(this.context).dft();
   }
   
   public void e(File paramFile, int paramInt)
   {
     ShareTinkerLog.i("Tinker.DefaultPatchReporter", "patchReporter onPatchPackageCheckFail: package check failed. path: %s, code: %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt) });
     if ((paramInt == -3) || (paramInt == -4) || (paramInt == -8)) {
-      a.lk(this.context).ad(paramFile);
+      a.lq(this.context).ac(paramFile);
     }
   }
 }

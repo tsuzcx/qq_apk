@@ -16,11 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.remittance.bankcard.a.l;
-import com.tencent.mm.protocal.protobuf.coz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cpt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.c.r;
 import com.tencent.mm.wallet_core.c.r.a;
@@ -29,25 +29,25 @@ import com.tencent.mm.wallet_core.c.r.a;
 public class BankRemitDetailUI
   extends BankRemitBaseUI
 {
-  private int iYN;
-  private LinearLayout lPV;
+  private int jbG;
+  private LinearLayout lUw;
   private int mState;
-  private Button mkr;
-  private ImageView xTB;
-  private ImageView xTC;
-  private ImageView xTD;
-  private TextView xTE;
-  private TextView xTF;
-  private TextView xTG;
-  private TextView xTH;
-  private TextView xTI;
-  private TextView xTJ;
-  private View xTK;
-  private View xTL;
-  private ViewGroup xTM;
-  private String xTN;
+  private Button mpo;
+  private TextView yjA;
+  private TextView yjB;
+  private TextView yjC;
+  private View yjD;
+  private View yjE;
+  private ViewGroup yjF;
+  private String yjG;
+  private ImageView yju;
+  private ImageView yjv;
+  private ImageView yjw;
+  private TextView yjx;
+  private TextView yjy;
+  private TextView yjz;
   
-  protected final void dcd()
+  protected final void deV()
   {
     AppMethodBeat.i(67515);
     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131101179)));
@@ -69,7 +69,7 @@ public class BankRemitDetailUI
       ((Window)localObject).addFlags(-2147483648);
       ((Window)localObject).setStatusBarColor(getResources().getColor(2131101179));
     }
-    BankRemitBaseUI.aA(this);
+    BankRemitBaseUI.aB(this);
     getContentView().setFitsSystemWindows(true);
     AppMethodBeat.o(67515);
   }
@@ -82,27 +82,27 @@ public class BankRemitDetailUI
   public void initView()
   {
     AppMethodBeat.i(67514);
-    this.xTB = ((ImageView)findViewById(2131297529));
-    this.xTC = ((ImageView)findViewById(2131297530));
-    this.xTD = ((ImageView)findViewById(2131297531));
-    this.xTE = ((TextView)findViewById(2131297537));
-    this.xTF = ((TextView)findViewById(2131297538));
-    this.xTG = ((TextView)findViewById(2131297539));
-    this.xTH = ((TextView)findViewById(2131297526));
-    this.xTI = ((TextView)findViewById(2131297527));
-    this.xTJ = ((TextView)findViewById(2131297528));
-    this.xTK = findViewById(2131297535);
-    this.xTL = findViewById(2131297536);
-    this.lPV = ((LinearLayout)findViewById(2131297520));
-    this.xTM = ((ViewGroup)findViewById(2131297525));
-    if (this.iYN == 1)
+    this.yju = ((ImageView)findViewById(2131297529));
+    this.yjv = ((ImageView)findViewById(2131297530));
+    this.yjw = ((ImageView)findViewById(2131297531));
+    this.yjx = ((TextView)findViewById(2131297537));
+    this.yjy = ((TextView)findViewById(2131297538));
+    this.yjz = ((TextView)findViewById(2131297539));
+    this.yjA = ((TextView)findViewById(2131297526));
+    this.yjB = ((TextView)findViewById(2131297527));
+    this.yjC = ((TextView)findViewById(2131297528));
+    this.yjD = findViewById(2131297535);
+    this.yjE = findViewById(2131297536);
+    this.lUw = ((LinearLayout)findViewById(2131297520));
+    this.yjF = ((ViewGroup)findViewById(2131297525));
+    if (this.jbG == 1)
     {
       findViewById(2131297524).setVisibility(8);
       AppMethodBeat.o(67514);
       return;
     }
-    this.mkr = ((Button)findViewById(2131297523));
-    this.mkr.setOnClickListener(new BankRemitDetailUI.2(this));
+    this.mpo = ((Button)findViewById(2131297523));
+    this.mpo.setOnClickListener(new BankRemitDetailUI.2(this));
     AppMethodBeat.o(67514);
   }
   
@@ -111,13 +111,13 @@ public class BankRemitDetailUI
     AppMethodBeat.i(67513);
     super.onCreate(paramBundle);
     addSceneEndListener(1579);
-    this.xTN = getIntent().getStringExtra("key_transfer_bill_id");
-    this.iYN = getIntent().getIntExtra("key_enter_scene", 0);
-    ad.i("MicroMsg.BankRemitDetailUI", "billId: %s, enterScene: %s", new Object[] { this.xTN, Integer.valueOf(this.iYN) });
+    this.yjG = getIntent().getStringExtra("key_transfer_bill_id");
+    this.jbG = getIntent().getIntExtra("key_enter_scene", 0);
+    ae.i("MicroMsg.BankRemitDetailUI", "billId: %s, enterScene: %s", new Object[] { this.yjG, Integer.valueOf(this.jbG) });
     initView();
-    ad.i("MicroMsg.BankRemitDetailUI", "do query detail");
-    doSceneProgress(new l(this.xTN));
-    if (this.iYN == 0)
+    ae.i("MicroMsg.BankRemitDetailUI", "do query detail");
+    doSceneProgress(new l(this.yjG));
+    if (this.jbG == 0)
     {
       showHomeBtn(false);
       enableBackMenu(false);
@@ -153,10 +153,10 @@ public class BankRemitDetailUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67512);
-          ad.i("MicroMsg.BankRemitDetailUI", "state: %s, amount: %s, fee: %s, account: %s", new Object[] { Integer.valueOf(paramString.xRZ.state), Integer.valueOf(paramString.xRZ.vls), Integer.valueOf(paramString.xRZ.Hio), paramString.xRZ.Hip });
-          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.xRZ.state);
-          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.xRZ.state, paramString.xRZ.Hin);
-          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.xRZ);
+          ae.i("MicroMsg.BankRemitDetailUI", "state: %s, amount: %s, fee: %s, account: %s", new Object[] { Integer.valueOf(paramString.yhS.state), Integer.valueOf(paramString.yhS.vxx), Integer.valueOf(paramString.yhS.HBO), paramString.yhS.HBP });
+          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.yhS.state);
+          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.yhS.state, paramString.yhS.HBN);
+          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.yhS);
           BankRemitDetailUI.a(BankRemitDetailUI.this).setVisibility(0);
           AppMethodBeat.o(67512);
         }
@@ -165,10 +165,10 @@ public class BankRemitDetailUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67511);
-          ad.e("MicroMsg.BankRemitDetailUI", "detail reponse error: %s, %s", new Object[] { Integer.valueOf(paramString.xRZ.dlw), paramString.xRZ.paA });
-          if (!bt.isNullOrNil(paramString.xRZ.paA))
+          ae.e("MicroMsg.BankRemitDetailUI", "detail reponse error: %s, %s", new Object[] { Integer.valueOf(paramString.yhS.dmy), paramString.yhS.phe });
+          if (!bu.isNullOrNil(paramString.yhS.phe))
           {
-            Toast.makeText(BankRemitDetailUI.this, paramString.xRZ.paA, 1).show();
+            Toast.makeText(BankRemitDetailUI.this, paramString.yhS.phe, 1).show();
             AppMethodBeat.o(67511);
             return;
           }
@@ -180,7 +180,7 @@ public class BankRemitDetailUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67510);
-          ad.e("MicroMsg.BankRemitDetailUI", "net error: %s", new Object[] { paramAnonymousn });
+          ae.e("MicroMsg.BankRemitDetailUI", "net error: %s", new Object[] { paramAnonymousn });
           Toast.makeText(BankRemitDetailUI.this, 2131756363, 1).show();
           AppMethodBeat.o(67510);
         }

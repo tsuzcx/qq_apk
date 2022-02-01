@@ -9,14 +9,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.y;
 import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.game.d.cc;
+import com.tencent.mm.plugin.game.d.cj;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 
 public final class h
   extends c
@@ -26,18 +26,18 @@ public final class h
     super(paramContext);
   }
   
-  private void cZT()
+  private void dcE()
   {
     AppMethodBeat.i(41970);
-    if (!ay.isNetworkConnected(this.mContext))
+    if (!az.isNetworkConnected(this.mContext))
     {
       Toast.makeText(this.mContext, this.mContext.getString(2131759864), 0).show();
       AppMethodBeat.o(41970);
       return;
     }
-    if (ay.isWifi(this.mContext))
+    if (az.isWifi(this.mContext))
     {
-      cZU();
+      dcF();
       AppMethodBeat.o(41970);
       return;
     }
@@ -56,49 +56,49 @@ public final class h
       {
         AppMethodBeat.i(41968);
         paramAnonymousDialogInterface.dismiss();
-        ad.i("MicroMsg.GameClickListener", "resumeDownloadTask not wifi, user cancel");
+        ae.i("MicroMsg.GameClickListener", "resumeDownloadTask not wifi, user cancel");
         AppMethodBeat.o(41968);
       }
     }, 2131101171);
     AppMethodBeat.o(41970);
   }
   
-  private void cZU()
+  private void dcF()
   {
     AppMethodBeat.i(41971);
-    com.tencent.mm.plugin.downloader.f.a.a(10, new b(this.ubv.field_appId, this.ubv.dFG, this.ukL.field_downloadId, ""));
+    com.tencent.mm.plugin.downloader.f.a.a(10, new b(this.umx.field_appId, this.umx.dGL, this.uwi.field_downloadId, ""));
     com.tencent.mm.modelstat.d.d(10, "GameClickListener_resumeDownloadTask", hashCode());
-    if (com.tencent.mm.plugin.downloader.model.f.ccl().tU(this.ukL.field_downloadId))
+    if (com.tencent.mm.plugin.downloader.model.f.cdA().ul(this.uwi.field_downloadId))
     {
-      e.av(this.mContext, this.ubv.field_appId);
-      com.tencent.mm.game.report.f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 4, this.ubv.field_appId, this.udq, this.ubv.dls, this.ukN);
+      e.ax(this.mContext, this.umx.field_appId);
+      com.tencent.mm.game.report.f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 4, this.umx.field_appId, this.uoy, this.umx.dmu, this.uwk);
       AppMethodBeat.o(41971);
       return;
     }
-    ad.e("MicroMsg.GameClickListener", "resumeDownloadTask false");
-    com.tencent.mm.plugin.downloader.model.f.ccl().tR(this.ukL.field_downloadId);
-    nh(false);
+    ae.e("MicroMsg.GameClickListener", "resumeDownloadTask false");
+    com.tencent.mm.plugin.downloader.model.f.cdA().ui(this.uwi.field_downloadId);
+    nl(false);
     AppMethodBeat.o(41971);
   }
   
-  private static boolean tT(long paramLong)
+  private static boolean uk(long paramLong)
   {
     AppMethodBeat.i(41972);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ua(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(paramLong);
     if ((locala != null) && (locala.field_downloadInWifi))
     {
       locala.field_downloadInWifi = false;
       com.tencent.mm.plugin.downloader.model.d.e(locala);
     }
-    boolean bool = com.tencent.mm.plugin.downloader.model.f.ccl().tT(paramLong);
+    boolean bool = com.tencent.mm.plugin.downloader.model.f.cdA().uk(paramLong);
     AppMethodBeat.o(41972);
     return bool;
   }
   
-  public final void hc(String paramString1, String paramString2)
+  public final void hh(String paramString1, String paramString2)
   {
-    this.ukN = paramString1;
-    this.ukO = paramString2;
+    this.uwk = paramString1;
+    this.uwl = paramString2;
   }
   
   public final void onClick(View paramView)
@@ -108,93 +108,93 @@ public final class h
     int i;
     if ((paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c))
     {
-      this.ubv = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
-      ad.i("MicroMsg.GameClickListener", "Clicked appid = " + this.ubv.field_appId);
-      cZN();
-      if (!com.tencent.mm.pluginsdk.model.app.h.s(this.mContext, this.ubv.field_appId)) {
+      this.umx = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
+      ae.i("MicroMsg.GameClickListener", "Clicked appid = " + this.umx.field_appId);
+      dcy();
+      if (!com.tencent.mm.pluginsdk.model.app.h.s(this.mContext, this.umx.field_appId)) {
         break label494;
       }
-      if (!(this.ubv instanceof com.tencent.mm.plugin.game.model.c)) {
+      if (!(this.umx instanceof com.tencent.mm.plugin.game.model.c)) {
         break label819;
       }
-      j = com.tencent.mm.plugin.game.f.c.ams(this.ubv.field_packageName);
-      i = this.ubv.versionCode;
+      j = com.tencent.mm.plugin.game.f.c.anq(this.umx.field_packageName);
+      i = this.umx.versionCode;
     }
     for (;;)
     {
       if (i > j)
       {
-        ad.i("MicroMsg.GameClickListener", "AppId: %s installed, local: %d, server: %d", new Object[] { this.ubv.field_appId, Integer.valueOf(j), Integer.valueOf(i) });
-        k.a(this.ubv.eHt, this.ubv.eHy, this.ubv.dFG, this.ubv.field_appId, this.ukM, "app_update");
-        if (this.ukK.status == 1)
+        ae.i("MicroMsg.GameClickListener", "AppId: %s installed, local: %d, server: %d", new Object[] { this.umx.field_appId, Integer.valueOf(j), Integer.valueOf(i) });
+        k.a(this.umx.eJc, this.umx.eJh, this.umx.dGL, this.umx.field_appId, this.uwj, "app_update");
+        if (this.uwh.status == 1)
         {
-          ad.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = ".concat(String.valueOf(tT(this.ukK.id))));
+          ae.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = ".concat(String.valueOf(uk(this.uwh.id))));
           AppMethodBeat.o(41969);
           return;
-          ad.e("MicroMsg.GameClickListener", "No AppInfo");
-          AppMethodBeat.o(41969);
-          return;
-        }
-        if (this.ukK.status == 2)
-        {
-          cZT();
+          ae.e("MicroMsg.GameClickListener", "No AppInfo");
           AppMethodBeat.o(41969);
           return;
         }
-        if (this.ukK.status == 3)
+        if (this.uwh.status == 2)
         {
-          if ((i.fv(this.ukK.path)) && (com.tencent.mm.plugin.game.f.c.amt(this.ukK.path) > j))
+          dcE();
+          AppMethodBeat.o(41969);
+          return;
+        }
+        if (this.uwh.status == 3)
+        {
+          if ((o.fB(this.uwh.path)) && (com.tencent.mm.plugin.game.f.c.anr(this.uwh.path) > j))
           {
-            r.b(this.mContext, this.ukK.path, null, false);
-            com.tencent.mm.game.report.f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 8, this.ubv.field_appId, this.udq, this.ubv.dls, this.ukN);
+            r.b(this.mContext, this.uwh.path, null, false);
+            com.tencent.mm.game.report.f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 8, this.umx.field_appId, this.uoy, this.umx.dmu, this.uwk);
             AppMethodBeat.o(41969);
             return;
           }
-          nh(true);
+          nl(true);
           AppMethodBeat.o(41969);
           return;
         }
-        nh(true);
+        nl(true);
         AppMethodBeat.o(41969);
         return;
       }
-      ad.i("MicroMsg.GameClickListener", "launchFromWX, appId = %s, pkg = %s, openId = %s", new Object[] { this.ubv.field_appId, this.ubv.field_packageName, this.ubv.field_openId });
-      com.tencent.mm.game.report.f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 3, this.ubv.field_appId, this.udq, this.ubv.dls, this.ukN);
-      cZM();
+      ae.i("MicroMsg.GameClickListener", "launchFromWX, appId = %s, pkg = %s, openId = %s", new Object[] { this.umx.field_appId, this.umx.field_packageName, this.umx.field_openId });
+      com.tencent.mm.game.report.f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 3, this.umx.field_appId, this.uoy, this.umx.dmu, this.uwk);
+      dcx();
       AppMethodBeat.o(41969);
       return;
       label494:
-      if (this.ubv.cYy())
+      if (this.umx.dbi())
       {
-        com.tencent.mm.plugin.game.f.c.B(this.mContext, this.ubv.uaU.uiQ, "game_center_hv_game");
-        com.tencent.mm.game.report.f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 29, this.ubv.field_appId, this.udq, this.ubv.dls, this.ukN);
+        com.tencent.mm.plugin.game.f.c.B(this.mContext, this.umx.ulW.uun, "game_center_hv_game");
+        com.tencent.mm.game.report.f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 29, this.umx.field_appId, this.uoy, this.umx.dmu, this.uwk);
         AppMethodBeat.o(41969);
         return;
       }
-      k.a(this.ubv.eHt, this.ubv.eHy, this.ubv.dFG, this.ubv.field_appId, this.ukM, this.ukO);
+      k.a(this.umx.eJc, this.umx.eJh, this.umx.dGL, this.umx.field_appId, this.uwj, this.uwl);
       switch (this.mStatus)
       {
       default: 
-        nh(false);
+        nl(false);
         AppMethodBeat.o(41969);
         return;
       case 1: 
-        ad.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = ".concat(String.valueOf(tT(this.ukK.id))));
+        ae.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = ".concat(String.valueOf(uk(this.uwh.id))));
         AppMethodBeat.o(41969);
         return;
       case 2: 
-        cZT();
+        dcE();
         AppMethodBeat.o(41969);
         return;
       }
-      if ((!bt.isNullOrNil(this.ukJ)) && (i.fv(this.ukJ)) && (com.tencent.mm.plugin.game.f.c.hd(this.ukJ, this.ukL.field_md5)))
+      if ((!bu.isNullOrNil(this.uwg)) && (o.fB(this.uwg)) && (com.tencent.mm.plugin.game.f.c.hk(this.uwg, this.uwi.field_md5)))
       {
-        com.tencent.mm.plugin.game.f.c.xG(this.ukL.field_downloadId);
-        com.tencent.mm.game.report.f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 8, this.ubv.field_appId, this.udq, this.ubv.dls, this.ukN);
+        com.tencent.mm.plugin.game.f.c.ya(this.uwi.field_downloadId);
+        com.tencent.mm.game.report.f.a(this.mContext, this.umx.scene, this.umx.dGL, this.umx.position, 8, this.umx.field_appId, this.uoy, this.umx.dmu, this.uwk);
         AppMethodBeat.o(41969);
         return;
       }
-      nh(false);
+      nl(false);
       AppMethodBeat.o(41969);
       return;
       label819:

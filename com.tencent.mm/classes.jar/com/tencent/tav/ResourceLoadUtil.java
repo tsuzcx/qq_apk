@@ -11,10 +11,10 @@ public class ResourceLoadUtil
   
   static
   {
-    AppMethodBeat.i(217657);
+    AppMethodBeat.i(214295);
     TAG = ResourceLoadUtil.class.getSimpleName();
     success = false;
-    AppMethodBeat.o(217657);
+    AppMethodBeat.o(214295);
   }
   
   public static boolean isLoaded()
@@ -24,7 +24,7 @@ public class ResourceLoadUtil
   
   public static boolean loadSoSync(String paramString)
   {
-    AppMethodBeat.i(217656);
+    AppMethodBeat.i(214294);
     if (!success)
     {
       if (TextUtils.isEmpty(paramString))
@@ -32,7 +32,7 @@ public class ResourceLoadUtil
         success = false;
         Logger.e(TAG, "load so path is empty.");
         bool = success;
-        AppMethodBeat.o(217656);
+        AppMethodBeat.o(214294);
         return bool;
       }
       try
@@ -59,12 +59,12 @@ public class ResourceLoadUtil
       {
         Logger.d(TAG, "load " + paramString + ": " + success);
         bool = success;
-        AppMethodBeat.o(217656);
+        AppMethodBeat.o(214294);
         return bool;
       }
     }
     boolean bool = success;
-    AppMethodBeat.o(217656);
+    AppMethodBeat.o(214294);
     return bool;
   }
   

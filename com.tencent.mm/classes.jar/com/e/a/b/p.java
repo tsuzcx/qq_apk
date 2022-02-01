@@ -22,7 +22,7 @@ public enum p
     cfu = new p("INT", 7, 10, 4);
     cfv = new p("LONG", 8, 11, 8);
     cfx = new p[] { cfn, cfo, cfp, cfq, cfr, cfs, cft, cfu, cfv };
-    cfw = j.Bd();
+    cfw = j.Be();
     p[] arrayOfp = values();
     int j = arrayOfp.length;
     while (i < j)

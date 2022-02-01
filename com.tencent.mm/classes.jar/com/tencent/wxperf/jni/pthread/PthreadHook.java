@@ -2,6 +2,7 @@ package com.tencent.wxperf.jni.pthread;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.wxperf.jni.HookManager;
 import com.tencent.wxperf.jni.a;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,25 +10,25 @@ import java.util.Set;
 public class PthreadHook
   extends a
 {
-  public static final PthreadHook MoQ;
-  private Set<String> MoJ;
-  private Set<String> MoK;
-  private Set<String> MoR;
+  public static final PthreadHook MLM;
+  private Set<String> MLF;
+  private Set<String> MLG;
+  private Set<String> MLN;
   
   static
   {
-    AppMethodBeat.i(211558);
-    MoQ = new PthreadHook();
-    AppMethodBeat.o(211558);
+    AppMethodBeat.i(195230);
+    MLM = new PthreadHook();
+    AppMethodBeat.o(195230);
   }
   
   private PthreadHook()
   {
-    AppMethodBeat.i(211549);
-    this.MoJ = new HashSet();
-    this.MoK = new HashSet();
-    this.MoR = new HashSet();
-    AppMethodBeat.o(211549);
+    AppMethodBeat.i(195220);
+    this.MLF = new HashSet();
+    this.MLG = new HashSet();
+    this.MLN = new HashSet();
+    AppMethodBeat.o(195220);
   }
   
   private native void addHookSoNative(String[] paramArrayOfString);
@@ -36,104 +37,113 @@ public class PthreadHook
   
   private native void addIgnoreSoNative(String[] paramArrayOfString);
   
-  private PthreadHook bas(String paramString)
+  private PthreadHook bbV(String paramString)
   {
-    AppMethodBeat.i(211550);
+    AppMethodBeat.i(195221);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException("so regex = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(211550);
+      AppMethodBeat.o(195221);
       throw paramString;
     }
-    this.MoJ.add(paramString);
-    AppMethodBeat.o(211550);
+    this.MLF.add(paramString);
+    AppMethodBeat.o(195221);
     return this;
   }
   
-  private PthreadHook bat(String paramString)
+  private PthreadHook bbW(String paramString)
   {
-    AppMethodBeat.i(211552);
+    AppMethodBeat.i(195223);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(211552);
+      AppMethodBeat.o(195223);
       return this;
     }
-    this.MoK.add(paramString);
-    AppMethodBeat.o(211552);
+    this.MLG.add(paramString);
+    AppMethodBeat.o(195223);
     return this;
   }
   
-  private PthreadHook bau(String paramString)
+  private PthreadHook bbX(String paramString)
   {
-    AppMethodBeat.i(211554);
+    AppMethodBeat.i(195225);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException("thread regex should NOT be empty");
-      AppMethodBeat.o(211554);
+      AppMethodBeat.o(195225);
       throw paramString;
     }
-    this.MoR.add(paramString);
-    AppMethodBeat.o(211554);
+    this.MLN.add(paramString);
+    AppMethodBeat.o(195225);
     return this;
   }
   
+  private native void dumpNative(String paramString);
+  
   public final PthreadHook ai(String... paramVarArgs)
   {
-    AppMethodBeat.i(211551);
+    AppMethodBeat.i(195222);
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
-      bas(paramVarArgs[i]);
+      bbV(paramVarArgs[i]);
       i += 1;
     }
-    AppMethodBeat.o(211551);
+    AppMethodBeat.o(195222);
     return this;
   }
   
   public final PthreadHook aj(String... paramVarArgs)
   {
-    AppMethodBeat.i(211553);
+    AppMethodBeat.i(195224);
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
-      bat(paramVarArgs[i]);
+      bbW(paramVarArgs[i]);
       i += 1;
     }
-    AppMethodBeat.o(211553);
+    AppMethodBeat.o(195224);
     return this;
   }
   
   public final PthreadHook ak(String... paramVarArgs)
   {
-    AppMethodBeat.i(211555);
+    AppMethodBeat.i(195226);
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
-      bau(paramVarArgs[i]);
+      bbX(paramVarArgs[i]);
       i += 1;
     }
-    AppMethodBeat.o(211555);
+    AppMethodBeat.o(195226);
     return this;
   }
   
-  public native void dumpNative(String paramString);
-  
-  public final void gaf()
+  public final void dump(String paramString)
   {
-    AppMethodBeat.i(211556);
-    addHookThreadNameNative((String[])this.MoR.toArray(new String[0]));
-    AppMethodBeat.o(211556);
+    AppMethodBeat.i(195227);
+    if (HookManager.MLy.MLz) {
+      dumpNative(paramString);
+    }
+    AppMethodBeat.o(195227);
   }
   
-  public final void gag()
+  public final void geH()
   {
-    AppMethodBeat.i(211557);
-    addHookSoNative((String[])this.MoJ.toArray(new String[0]));
-    addIgnoreSoNative((String[])this.MoK.toArray(new String[0]));
-    AppMethodBeat.o(211557);
+    AppMethodBeat.i(195228);
+    addHookThreadNameNative((String[])this.MLN.toArray(new String[0]));
+    AppMethodBeat.o(195228);
+  }
+  
+  public final void geI()
+  {
+    AppMethodBeat.i(195229);
+    addHookSoNative((String[])this.MLF.toArray(new String[0]));
+    addIgnoreSoNative((String[])this.MLG.toArray(new String[0]));
+    AppMethodBeat.o(195229);
   }
 }
 

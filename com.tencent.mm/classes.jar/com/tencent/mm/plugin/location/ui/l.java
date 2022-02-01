@@ -11,93 +11,93 @@ import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.d;
 import com.tencent.mm.plugin.location_soso.ViewManager;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.InfoWindowAdapter;
 
 public final class l
   implements c
 {
-  public boolean drv;
+  public boolean dsB;
   public boolean isVisible;
-  public String jDf;
+  public String jGd;
   private Context mContext;
   public ViewManager mViewManager;
-  private String uZn;
-  public double uZr;
-  public double uZs;
-  public boolean vbN;
-  private View vbO;
-  private TextView vbq;
-  private ProgressBar vbr;
-  private String vbu;
-  public final String veL;
-  public ImageView veM;
-  public FrameLayout veN;
-  private TextView veO;
-  public boolean veP;
+  public double vlC;
+  public double vlD;
+  private String vly;
+  private TextView vnB;
+  private ProgressBar vnC;
+  private String vnF;
+  public boolean vnY;
+  private View vnZ;
+  public final String vqV;
+  public ImageView vqW;
+  public FrameLayout vqX;
+  private TextView vqY;
+  public boolean vqZ;
   
   public l(d paramd, Context paramContext)
   {
     AppMethodBeat.i(55993);
-    this.veL = "info_window_tag";
-    this.drv = false;
-    this.vbN = true;
-    this.uZr = 1000000.0D;
-    this.uZs = 1000000.0D;
+    this.vqV = "info_window_tag";
+    this.dsB = false;
+    this.vnY = true;
+    this.vlC = 1000000.0D;
+    this.vlD = 1000000.0D;
     this.isVisible = true;
-    this.vbu = "";
+    this.vnF = "";
     this.mContext = paramContext;
-    this.veP = false;
-    this.veM = new ImageView(paramContext);
-    this.veM.setBackgroundResource(2131233299);
-    this.veM.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.veN = ((FrameLayout)View.inflate(paramContext, 2131494732, null));
-    this.veM.setImageResource(2131232887);
-    this.vbO = this.veN;
+    this.vqZ = false;
+    this.vqW = new ImageView(paramContext);
+    this.vqW.setBackgroundResource(2131233299);
+    this.vqW.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.vqX = ((FrameLayout)View.inflate(paramContext, 2131494732, null));
+    this.vqW.setImageResource(2131232887);
+    this.vnZ = this.vqX;
     this.mViewManager = ((ViewManager)paramd.getViewManager());
     AppMethodBeat.o(55993);
   }
   
   public final String getPreText()
   {
-    return this.vbu;
+    return this.vnF;
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(55994);
-    this.uZn = paramString;
-    paramString = this.uZn;
-    this.vbq = ((TextView)this.veN.findViewById(2131301545));
-    this.vbr = ((ProgressBar)this.veN.findViewById(2131301532));
-    this.veO = ((TextView)this.veN.findViewById(2131301537));
+    this.vly = paramString;
+    paramString = this.vly;
+    this.vnB = ((TextView)this.vqX.findViewById(2131301545));
+    this.vnC = ((ProgressBar)this.vqX.findViewById(2131301532));
+    this.vqY = ((TextView)this.vqX.findViewById(2131301537));
     if ((paramString == null) || (paramString.equals("")))
     {
-      this.vbr.setVisibility(0);
-      if ((this.jDf == null) || (this.jDf.equals(""))) {
+      this.vnC.setVisibility(0);
+      if ((this.jGd == null) || (this.jGd.equals(""))) {
         break label201;
       }
-      this.veO.setVisibility(0);
-      this.veO.setText(this.jDf);
+      this.vqY.setVisibility(0);
+      this.vqY.setText(this.jGd);
     }
     for (;;)
     {
-      if (this.vbN)
+      if (this.vnY)
       {
-        this.mViewManager.updateViewLayout(this.veM, this.uZr, this.uZs, false);
-        if (this.veP) {
-          this.mViewManager.showInfoWindowByView(this.veM);
+        this.mViewManager.updateViewLayout(this.vqW, this.vlC, this.vlD, false);
+        if (this.vqZ) {
+          this.mViewManager.showInfoWindowByView(this.vqW);
         }
       }
       AppMethodBeat.o(55994);
       return;
-      this.vbr.setVisibility(8);
-      this.vbq.setVisibility(0);
-      this.vbq.setText(paramString);
+      this.vnC.setVisibility(8);
+      this.vnB.setVisibility(0);
+      this.vnB.setText(paramString);
       break;
       label201:
-      this.veO.setText("");
-      this.veO.setVisibility(8);
+      this.vqY.setText("");
+      this.vqY.setVisibility(8);
     }
   }
   
@@ -109,10 +109,10 @@ public final class l
     public final View getInfoWindow(Marker paramMarker)
     {
       AppMethodBeat.i(55992);
-      ad.i("ZItemOverlay", "get info window: %s", new Object[] { Integer.valueOf(l.this.veN.getVisibility()) });
+      ae.i("ZItemOverlay", "get info window: %s", new Object[] { Integer.valueOf(l.this.vqX.getVisibility()) });
       if ("info_window_tag".equals(paramMarker.getTag()))
       {
-        paramMarker = l.this.veN;
+        paramMarker = l.this.vqX;
         AppMethodBeat.o(55992);
         return paramMarker;
       }

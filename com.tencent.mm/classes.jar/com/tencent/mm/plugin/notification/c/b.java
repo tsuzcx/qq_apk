@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.notification.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.ArrayList;
 
 public final class b
 {
   int currentIndex;
-  public ArrayList<Long> wvO;
+  public ArrayList<Long> wLz;
   
   public b()
   {
     AppMethodBeat.i(26736);
     this.currentIndex = 0;
-    this.wvO = new ArrayList();
+    this.wLz = new ArrayList();
     this.currentIndex = 0;
     AppMethodBeat.o(26736);
   }
@@ -21,7 +21,7 @@ public final class b
   public final void clear()
   {
     AppMethodBeat.i(26740);
-    this.wvO.clear();
+    this.wLz.clear();
     this.currentIndex = 0;
     AppMethodBeat.o(26740);
   }
@@ -29,24 +29,24 @@ public final class b
   public final boolean contains(long paramLong)
   {
     AppMethodBeat.i(26739);
-    boolean bool = this.wvO.contains(Long.valueOf(paramLong));
+    boolean bool = this.wLz.contains(Long.valueOf(paramLong));
     AppMethodBeat.o(26739);
     return bool;
   }
   
-  public final long dvS()
+  public final long dzh()
   {
     AppMethodBeat.i(26738);
     long l2 = -1L;
     long l1 = l2;
-    if (this.wvO.size() > 0)
+    if (this.wLz.size() > 0)
     {
       l1 = l2;
-      if (this.currentIndex < this.wvO.size()) {
-        l1 = ((Long)this.wvO.get(this.currentIndex)).longValue();
+      if (this.currentIndex < this.wLz.size()) {
+        l1 = ((Long)this.wLz.get(this.currentIndex)).longValue();
       }
     }
-    ad.d("MicroMsg.FailMsglist", "getNextSendMsgId:%d, currentIndex:%d, msgIdList.size:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(this.currentIndex), Integer.valueOf(this.wvO.size()) });
+    ae.d("MicroMsg.FailMsglist", "getNextSendMsgId:%d, currentIndex:%d, msgIdList.size:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(this.currentIndex), Integer.valueOf(this.wLz.size()) });
     this.currentIndex += 1;
     AppMethodBeat.o(26738);
     return l1;
@@ -55,7 +55,7 @@ public final class b
   public final long get(int paramInt)
   {
     AppMethodBeat.i(26741);
-    long l = ((Long)this.wvO.get(paramInt)).longValue();
+    long l = ((Long)this.wLz.get(paramInt)).longValue();
     AppMethodBeat.o(26741);
     return l;
   }
@@ -63,15 +63,15 @@ public final class b
   public final void remove(long paramLong)
   {
     AppMethodBeat.i(26742);
-    this.wvO.remove(Long.valueOf(paramLong));
+    this.wLz.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(26742);
   }
   
-  public final void yq(long paramLong)
+  public final void yK(long paramLong)
   {
     AppMethodBeat.i(26737);
-    ad.d("MicroMsg.FailMsglist", "addMsgId:%d, currentIndex:%d, size:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.currentIndex), Integer.valueOf(this.wvO.size()) });
-    this.wvO.add(Long.valueOf(paramLong));
+    ae.d("MicroMsg.FailMsglist", "addMsgId:%d, currentIndex:%d, size:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.currentIndex), Integer.valueOf(this.wLz.size()) });
+    this.wLz.add(Long.valueOf(paramLong));
     AppMethodBeat.o(26737);
   }
 }

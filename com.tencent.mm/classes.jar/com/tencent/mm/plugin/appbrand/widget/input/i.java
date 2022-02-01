@@ -14,14 +14,15 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ay;
-import com.tencent.mm.plugin.appbrand.ui.s;
+import com.tencent.mm.plugin.appbrand.page.ax;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.widget.input.autofill.d;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.a;
+import com.tencent.mm.plugin.appbrand.widget.input.d.e;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.tools.f.a;
@@ -32,17 +33,53 @@ import junit.framework.Assert;
 public abstract class i
   implements aa<y>
 {
-  final ap lEc = new ap(Looper.getMainLooper());
-  public int ndw;
-  private final c.a sZP = new p.a()
+  final aq lIB = new aq(Looper.getMainLooper());
+  public volatile c niC;
+  private volatile a niD;
+  public volatile b niE;
+  public int niF;
+  final View.OnFocusChangeListener niG = new View.OnFocusChangeListener()
   {
-    public final void cU(String paramAnonymousString)
+    public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+    {
+      AppMethodBeat.i(136369);
+      if (paramAnonymousBoolean) {
+        o.b((z)i.this.niL.get(), i.this);
+      }
+      i.a(i.this, paramAnonymousBoolean);
+      if ((paramAnonymousBoolean) && ((!i.this.niK.noa) || (com.tencent.mm.plugin.appbrand.ui.t.cP(i.this.niM)))) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i != 0) && (i.this.niM != null) && (i.this.niN != null))
+        {
+          i.this.niM.requestFocus();
+          i.this.niN.show();
+        }
+        AppMethodBeat.o(136369);
+        return;
+      }
+    }
+  };
+  private int niH = -1;
+  private int niI = -1;
+  i.d niJ = null;
+  public e niK;
+  protected WeakReference<z> niL;
+  public y niM;
+  w niN;
+  private v niO;
+  private final Runnable niP = new i.13(this);
+  int niQ;
+  int niR;
+  private final c.a niy = new p.a()
+  {
+    public final void cW(String paramAnonymousString)
     {
       AppMethodBeat.i(168763);
-      if (i.this.tac != null) {
+      if (i.this.niM != null) {
         try
         {
-          i.this.taj.a(i.this.tac.getEditableText(), false);
+          i.this.nxv.a(i.this.niM.getEditableText(), false);
           AppMethodBeat.o(168763);
           return;
         }
@@ -51,101 +88,25 @@ public abstract class i
       AppMethodBeat.o(168763);
     }
   };
-  public volatile i.c sZT;
-  private volatile a sZU;
-  public volatile b sZV;
-  final View.OnFocusChangeListener sZW = new View.OnFocusChangeListener()
+  public final com.tencent.mm.plugin.appbrand.widget.input.c.a nxv = new com.tencent.mm.plugin.appbrand.widget.input.c.a();
+  boolean nxw = false;
+  final Runnable omQ = new i.14(this);
+  private final w.d omR = new w.d()
   {
-    public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
-    {
-      AppMethodBeat.i(136369);
-      if (paramAnonymousBoolean) {
-        o.b((com.tencent.mm.plugin.appbrand.page.aa)i.this.tab.get(), i.this);
-      }
-      i.a(i.this, paramAnonymousBoolean);
-      if ((paramAnonymousBoolean) && ((!i.this.taa.niS) || (s.cO(i.this.tac)))) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i != 0) && (i.this.tac != null) && (i.this.tad != null))
-        {
-          i.this.tac.requestFocus();
-          i.this.tad.show();
-        }
-        AppMethodBeat.o(136369);
-        return;
-      }
-    }
-  };
-  private int sZX = -1;
-  private int sZY = -1;
-  i.d sZZ = null;
-  private final w.c tGL = new w.c()
-  {
-    public final void bM(boolean paramAnonymousBoolean)
-    {
-      AppMethodBeat.i(136365);
-      if (paramAnonymousBoolean) {
-        i.this.sZZ = i.d.ndO;
-      }
-      i.f(i.this);
-      i.this.sZZ = null;
-      AppMethodBeat.o(136365);
-    }
-  };
-  private final w.e tGN = new w.e()
-  {
-    public final void gv(int paramAnonymousInt)
-    {
-      AppMethodBeat.i(136366);
-      ad.d("MicroMsg.AppBrandInputInvokeHandler", "[appInput], onSmileyPanelVisibilityChanged = %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-      if (paramAnonymousInt != 2)
-      {
-        if ((paramAnonymousInt == 0) && (i.this.tac != null)) {
-          i.this.tac.requestFocus();
-        }
-        i.g(i.this);
-        if ((i.this.tab != null) && (i.this.tab.get() != null))
-        {
-          o.a((com.tencent.mm.plugin.appbrand.page.aa)i.this.tab.get(), i.this.tac);
-          AppMethodBeat.o(136366);
-        }
-      }
-      else
-      {
-        i.this.sZZ = i.d.ndN;
-        i.f(i.this);
-        i.this.sZZ = null;
-      }
-      AppMethodBeat.o(136366);
-    }
-  };
-  public com.tencent.mm.plugin.appbrand.widget.input.d.e taa;
-  protected WeakReference<com.tencent.mm.plugin.appbrand.page.aa> tab;
-  public y tac;
-  w tad;
-  private v tae;
-  private final Runnable taf = new i.13(this);
-  int tah;
-  int tai;
-  public final com.tencent.mm.plugin.appbrand.widget.input.c.a taj = new com.tencent.mm.plugin.appbrand.widget.input.c.a();
-  boolean tak = false;
-  final Runnable tal = new i.14(this);
-  private final w.d tam = new w.d()
-  {
-    public final boolean Vr(String paramAnonymousString)
+    public final boolean Wd(String paramAnonymousString)
     {
       AppMethodBeat.i(136364);
-      if (i.this.tac != null)
+      if (i.this.niM != null)
       {
         if (!"[DELETE_EMOTION]".equalsIgnoreCase(paramAnonymousString)) {
           break label119;
         }
-        paramAnonymousString = i.this.tac;
-        if (paramAnonymousString.nfi == null) {
+        paramAnonymousString = i.this.niM;
+        if (paramAnonymousString.nkq == null) {
           break label86;
         }
-        if (!bt.ai(paramAnonymousString.getEditableText())) {
-          paramAnonymousString.nfi.deleteSurroundingText(paramAnonymousString.getEditableText().length(), paramAnonymousString.getEditableText().length() - 1);
+        if (!bu.ah(paramAnonymousString.getEditableText())) {
+          paramAnonymousString.nkq.deleteSurroundingText(paramAnonymousString.getEditableText().length(), paramAnonymousString.getEditableText().length() - 1);
         }
       }
       for (;;)
@@ -157,8 +118,8 @@ public abstract class i
         paramAnonymousString.dispatchKeyEvent(new KeyEvent(1, 67));
       }
       label119:
-      y localy = i.this.tac;
-      f.bDW();
+      y localy = i.this.niM;
+      f.bEO();
       if (localy.getEditableText() == null) {
         localy.setText(paramAnonymousString, TextView.BufferType.EDITABLE);
       }
@@ -170,53 +131,167 @@ public abstract class i
       }
     }
   };
+  private final w.c omS = new w.c()
+  {
+    public final void bM(boolean paramAnonymousBoolean)
+    {
+      AppMethodBeat.i(136365);
+      if (paramAnonymousBoolean) {
+        i.this.niJ = i.d.niX;
+      }
+      i.f(i.this);
+      i.this.niJ = null;
+      AppMethodBeat.o(136365);
+    }
+  };
+  private final w.e omT = new w.e()
+  {
+    public final void gv(int paramAnonymousInt)
+    {
+      AppMethodBeat.i(136366);
+      ae.d("MicroMsg.AppBrandInputInvokeHandler", "[appInput], onSmileyPanelVisibilityChanged = %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+      if (paramAnonymousInt != 2)
+      {
+        if ((paramAnonymousInt == 0) && (i.this.niM != null)) {
+          i.this.niM.requestFocus();
+        }
+        i.g(i.this);
+        if ((i.this.niL != null) && (i.this.niL.get() != null))
+        {
+          o.a((z)i.this.niL.get(), i.this.niM);
+          AppMethodBeat.o(136366);
+        }
+      }
+      else
+      {
+        i.this.niJ = i.d.niW;
+        i.f(i.this);
+        i.this.niJ = null;
+      }
+      AppMethodBeat.o(136366);
+    }
+  };
   
-  private void bCf()
+  private v bEN()
+  {
+    if (this.niO != null) {
+      return this.niO;
+    }
+    if (this.niL != null)
+    {
+      localObject = (z)this.niL.get();
+      if (localObject != null) {}
+    }
+    else
+    {
+      return null;
+    }
+    if ((((z)localObject).kfr == null) || (!android.support.v4.view.t.aC(((z)localObject).kfr))) {
+      return null;
+    }
+    Object localObject = v.di(((z)localObject).kfr);
+    this.niO = ((v)localObject);
+    return localObject;
+  }
+  
+  private void bEU()
+  {
+    if (this.niM == null) {
+      break label7;
+    }
+    label7:
+    while ((this.niM.getLineCount() == this.niH) && (this.niM.bFz() == this.niI)) {
+      return;
+    }
+    if (this.niH == -1) {}
+    for (int i = 1;; i = 0)
+    {
+      this.niH = this.niM.getLineCount();
+      this.niI = this.niM.bFz();
+      if (this.niC != null) {
+        this.niC.dR(this.niH, this.niI);
+      }
+      if ((!this.niK.nou.booleanValue()) || (i != 0)) {
+        break;
+      }
+      this.niQ = (aj.k(this.niK.nog) + aj.k(this.niK.nof));
+      bES();
+      this.niR = (aj.k(this.niK.nog) + aj.k(this.niK.nof));
+      hd(true);
+      return;
+    }
+  }
+  
+  private void bEV()
+  {
+    if (this.niK.nou.booleanValue()) {
+      bFa();
+    }
+    if ((this.niN != null) && (this.niM != null))
+    {
+      this.niN.nkH = this.niM;
+      this.niN.setShowDoneButton(aj.i(this.niK.nov));
+      bEY();
+      if ((com.tencent.mm.plugin.appbrand.ui.t.cP(this.niM)) && (this.niM.hasFocus())) {
+        this.niN.show();
+      }
+    }
+  }
+  
+  private void bEW()
+  {
+    this.niN.b(this.niM);
+    a(this.niM);
+    this.niM.destroy();
+    onDestroy();
+  }
+  
+  private void bEX()
   {
     boolean bool3 = true;
-    com.tencent.mm.plugin.appbrand.page.aa localaa;
+    z localz;
     boolean bool1;
     label33:
     boolean bool2;
-    if (this.tab == null)
+    if (this.niL == null)
     {
-      localaa = null;
-      if (this.tad == null) {
-        bDZ();
+      localz = null;
+      if (this.niN == null) {
+        bFa();
       }
-      if (this.tac != null) {
-        break label114;
+      if (this.niM != null) {
+        break label116;
       }
       bool1 = true;
-      if (localaa != null) {
-        break label119;
+      if (localz != null) {
+        break label121;
       }
       bool2 = true;
       label40:
-      if (this.tad != null) {
-        break label124;
+      if (this.niN != null) {
+        break label126;
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, null==mInput[%b], null==page[%b], null==mSmileyPanel[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      if ((localaa != null) && (this.tac != null) && (this.tad != null)) {
-        break label129;
+      ae.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, null==mInput[%b], null==page[%b], null==mSmileyPanel[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+      if ((localz != null) && (this.niM != null) && (this.niN != null)) {
+        break label131;
       }
       return;
-      localaa = (com.tencent.mm.plugin.appbrand.page.aa)this.tab.get();
+      localz = (z)this.niL.get();
       break;
-      label114:
+      label116:
       bool1 = false;
       break label33;
-      label119:
+      label121:
       bool2 = false;
       break label40;
-      label124:
+      label126:
       bool3 = false;
     }
-    label129:
-    o.a(localaa, this.tac);
+    label131:
+    o.a(localz, this.niM);
     final PBool localPBool = new PBool();
     localPBool.value = false;
     final Runnable local3 = new Runnable()
@@ -224,47 +299,47 @@ public abstract class i
       public final void run()
       {
         AppMethodBeat.i(136361);
-        ad.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, before run checkForInput");
+        ae.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, before run checkForInput");
         localPBool.value = true;
-        if (i.this.tab == null) {}
-        for (com.tencent.mm.plugin.appbrand.page.aa localaa = null; (localaa == null) || (i.this.tac == null); localaa = (com.tencent.mm.plugin.appbrand.page.aa)i.this.tab.get())
+        if (i.this.niL == null) {}
+        for (z localz = null; (localz == null) || (i.this.niM == null); localz = (z)i.this.niL.get())
         {
           AppMethodBeat.o(136361);
           return;
         }
-        if (o.z(localaa) != i.this)
+        if (o.A(localz) != i.this)
         {
           AppMethodBeat.o(136361);
           return;
         }
-        ad.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, run checkForInput");
-        h.bDY().d(localaa.lYc);
-        aj.dq(i.this.tac);
-        if ((i.this.tad != null) && (i.this.tad.b(null))) {
-          i.this.tad.hide();
+        ae.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, run checkForInput");
+        h.bEQ().d(localz.mcJ);
+        aj.dq(i.this.niM);
+        if ((i.this.niN != null) && (i.this.niN.b(null))) {
+          i.this.niN.hide();
         }
-        i.this.tac.a(i.this.sZW);
-        i.this.tac.setFocusable(true);
-        i.this.tac.setFocusableInTouchMode(true);
-        i.this.tad.nfz = i.this.tac;
-        i.this.tac.requestFocus();
-        aj.dq(i.this.tac);
-        if (i.this.tad != null) {
-          i.this.tad.show();
+        i.this.niM.a(i.this.niG);
+        i.this.niM.setFocusable(true);
+        i.this.niM.setFocusableInTouchMode(true);
+        i.this.niN.nkH = i.this.niM;
+        i.this.niM.requestFocus();
+        aj.dq(i.this.niM);
+        if (i.this.niN != null) {
+          i.this.niN.show();
         }
         AppMethodBeat.o(136361);
       }
     };
-    Object localObject = com.tencent.mm.sdk.f.a.jq(localaa.getContext());
+    Object localObject = com.tencent.mm.sdk.f.a.jw(localz.getContext());
     if ((localObject != null) && (((Activity)localObject).getCurrentFocus() != null))
     {
       localObject = ((Activity)localObject).getCurrentFocus();
       bool1 = aj.dp((View)localObject).isActive((View)localObject);
-      bool2 = aj.h(localaa.lYc.getWrapperView(), (View)localObject);
+      bool2 = aj.h(localz.mcJ.getWrapperView(), (View)localObject);
       if ((bool1) && (bool2))
       {
-        ad.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, servedConnecting && servedForWebView, delay checkForInput");
-        this.tad.setOnVisibilityChangedListener(new w.e()
+        ae.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, servedConnecting && servedForWebView, delay checkForInput");
+        this.niN.setOnVisibilityChangedListener(new w.e()
         {
           public final void gv(int paramAnonymousInt)
           {
@@ -278,7 +353,7 @@ public abstract class i
             AppMethodBeat.o(136362);
           }
         });
-        com.tencent.e.h.LTJ.q(new Runnable()
+        com.tencent.e.h.MqF.q(new Runnable()
         {
           public final void run()
           {
@@ -298,52 +373,52 @@ public abstract class i
     local3.run();
   }
   
-  private void bDE()
+  private void bEY()
   {
-    if (this.tad == null) {
+    if (this.niN == null) {
       return;
     }
-    this.tad.setOnSmileyChosenListener(this.tam);
-    this.tad.setOnDoneListener(this.tGL);
-    this.tad.setOnVisibilityChangedListener(this.tGN);
+    this.niN.setOnSmileyChosenListener(this.omR);
+    this.niN.setOnDoneListener(this.omS);
+    this.niN.setOnVisibilityChangedListener(this.omT);
   }
   
-  private void bDQ()
+  private void bEZ()
   {
-    Object localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.tab.get();
-    if (!android.support.v4.view.t.aC(((com.tencent.mm.plugin.appbrand.page.aa)localObject).kca)) {}
+    Object localObject = (z)this.niL.get();
+    if (!android.support.v4.view.t.aC(((z)localObject).kfr)) {}
     label169:
-    label301:
-    label352:
-    label376:
+    label302:
+    label353:
+    label377:
     for (;;)
     {
       return;
-      this.tad = w.dl(((com.tencent.mm.plugin.appbrand.page.aa)localObject).kca);
-      if (this.taa.niS)
+      this.niN = w.dl(((z)localObject).kfr);
+      if (this.niK.noa)
       {
-        bDE();
-        bEa();
+        bEY();
+        bGg();
       }
-      this.tac.a(this.sZW);
-      this.tac.setOnKeyListener(new i.9(this));
-      if (this.taa.niS) {
-        o.a((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get(), this.tac);
+      this.niM.a(this.niG);
+      this.niM.setOnKeyListener(new i.9(this));
+      if (this.niK.noa) {
+        o.a((z)this.niL.get(), this.niM);
       }
-      localObject = this.tad;
+      localObject = this.niN;
       boolean bool;
       final int i;
-      if ((!this.taa.cvK) && ("emoji".equals(this.taa.cvH)))
+      if ((!this.niK.cwo) && ("emoji".equals(this.niK.cwl)))
       {
         bool = true;
         ((w)localObject).setCanSmileyInput(bool);
-        if (this.taa.njr != null) {
-          break label301;
+        if (this.niK.noz != null) {
+          break label302;
         }
-        i = com.tencent.mm.plugin.appbrand.widget.input.d.b.il(this.taa.njm.booleanValue()).niM;
-        ad.d("MicroMsg.AppBrandInputInvokeHandler", "initSmileyPanelAndShow, myImeOption: ".concat(String.valueOf(i)));
+        i = com.tencent.mm.plugin.appbrand.widget.input.d.b.ij(this.niK.nou.booleanValue()).nnU;
+        ae.d("MicroMsg.AppBrandInputInvokeHandler", "initSmileyPanelAndShow, myImeOption: ".concat(String.valueOf(i)));
         localObject = null;
-        if ((!this.taa.njm.booleanValue()) || (i != 0)) {
+        if ((!this.niK.nou.booleanValue()) || (i != 0)) {
           localObject = new TextView.OnEditorActionListener()
           {
             public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
@@ -351,9 +426,9 @@ public abstract class i
               AppMethodBeat.i(136368);
               if (paramAnonymousInt == i)
               {
-                i.this.sZZ = i.d.ndO;
+                i.this.niJ = i.d.niX;
                 i.f(i.this);
-                i.this.sZZ = null;
+                i.this.niJ = null;
                 AppMethodBeat.o(136368);
                 return true;
               }
@@ -362,175 +437,101 @@ public abstract class i
             }
           };
         }
-        this.tac.setImeOptions(i);
-        this.tac.setOnEditorActionListener((TextView.OnEditorActionListener)localObject);
-        this.tad.setShowDoneButton(this.taa.njn.booleanValue());
-        this.tad.nfz = this.tac;
-        if (!this.taa.niS) {
-          break label352;
+        this.niM.setImeOptions(i);
+        this.niM.setOnEditorActionListener((TextView.OnEditorActionListener)localObject);
+        this.niN.setShowDoneButton(this.niK.nov.booleanValue());
+        this.niN.nkH = this.niM;
+        if (!this.niK.noa) {
+          break label353;
         }
-        bCf();
+        bEX();
       }
       for (;;)
       {
-        if (!this.taa.niS) {
-          break label376;
+        if (!this.niK.noa) {
+          break label377;
         }
-        k.a(this.tab).wp(this.ndw);
+        k.a(this.niL).wu(this.niF);
         return;
         bool = false;
         break;
-        if ((!this.taa.njm.booleanValue()) && (com.tencent.mm.plugin.appbrand.widget.input.d.b.niL == this.taa.njr)) {
-          this.taa.njr = com.tencent.mm.plugin.appbrand.widget.input.d.b.il(false);
+        if ((!this.niK.nou.booleanValue()) && (com.tencent.mm.plugin.appbrand.widget.input.d.b.nnT == this.niK.noz)) {
+          this.niK.noz = com.tencent.mm.plugin.appbrand.widget.input.d.b.ij(false);
         }
-        i = this.taa.njr.niM;
+        i = this.niK.noz.nnU;
         break label169;
-        this.tac.setFocusable(false);
-        this.tac.setFocusableInTouchMode(false);
-        this.tad.hide();
+        this.niM.setFocusable(false);
+        this.niM.setFocusableInTouchMode(false);
+        this.niN.hide();
       }
     }
   }
   
-  private v bDV()
+  private w bFa()
   {
-    if (this.tae != null) {
-      return this.tae;
+    if (this.niN != null) {
+      return this.niN;
     }
-    if (this.tab != null)
+    if (this.niL != null)
     {
-      localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.tab.get();
+      localObject = (z)this.niL.get();
       if (localObject != null) {}
     }
     else
     {
       return null;
     }
-    if ((((com.tencent.mm.plugin.appbrand.page.aa)localObject).kca == null) || (!android.support.v4.view.t.aC(((com.tencent.mm.plugin.appbrand.page.aa)localObject).kca))) {
-      return null;
-    }
-    Object localObject = v.di(((com.tencent.mm.plugin.appbrand.page.aa)localObject).kca);
-    this.tae = ((v)localObject);
+    Object localObject = w.dk(((z)localObject).kfr);
+    this.niN = ((w)localObject);
     return localObject;
   }
   
-  private w bDZ()
+  private void bGg()
   {
-    if (this.tad != null) {
-      return this.tad;
-    }
-    if (this.tab != null)
-    {
-      localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.tab.get();
-      if (localObject != null) {}
-    }
-    else
-    {
-      return null;
-    }
-    Object localObject = w.dk(((com.tencent.mm.plugin.appbrand.page.aa)localObject).kca);
-    this.tad = ((w)localObject);
-    return localObject;
-  }
-  
-  private void bEa()
-  {
-    if (bDV() != null) {
-      this.tae.setVisibility(8);
+    if (bEN() != null) {
+      this.niO.setVisibility(8);
     }
   }
   
-  private void bbp()
+  private void ev(int paramInt1, int paramInt2)
   {
-    if (this.tac == null) {
-      break label7;
-    }
-    label7:
-    while ((this.tac.getLineCount() == this.sZX) && (this.tac.bEH() == this.sZY)) {
-      return;
-    }
-    if (this.sZX == -1) {}
-    for (int i = 1;; i = 0)
-    {
-      this.sZX = this.tac.getLineCount();
-      this.sZY = this.tac.bEH();
-      if (this.sZT != null) {
-        this.sZT.dR(this.sZX, this.sZY);
-      }
-      if ((!this.taa.njm.booleanValue()) || (i != 0)) {
-        break;
-      }
-      this.tah = (aj.j(this.taa.niY) + aj.j(this.taa.niX));
-      aUQ();
-      this.tai = (aj.j(this.taa.niY) + aj.j(this.taa.niX));
-      ii(true);
-      return;
-    }
+    b.a(this.niM, paramInt1, paramInt2);
+    hd(false);
   }
   
-  private void bbv()
+  private void hd(boolean paramBoolean)
   {
-    if (this.taa.njm.booleanValue()) {
-      bDZ();
-    }
-    if ((this.tad != null) && (this.tac != null))
-    {
-      this.tad.nfz = this.tac;
-      this.tad.setShowDoneButton(aj.i(this.taa.njn));
-      bDE();
-      if ((s.cO(this.tac)) && (this.tac.hasFocus())) {
-        this.tad.show();
-      }
-    }
-  }
-  
-  private void bbw()
-  {
-    this.tad.b(this.tac);
-    a(this.tac);
-    this.tac.destroy();
-    onDestroy();
-  }
-  
-  private void eu(int paramInt1, int paramInt2)
-  {
-    b.a(this.tac, paramInt1, paramInt2);
-    ii(false);
-  }
-  
-  private void ii(boolean paramBoolean)
-  {
-    if ((this.taa.njm.booleanValue()) && (this.tad != null) && (this.tad.isShown()) && (this.tac != null) && (this.tac == this.tad.getAttachedEditText()))
+    if ((this.niK.nou.booleanValue()) && (this.niN != null) && (this.niN.isShown()) && (this.niM != null) && (this.niM == this.niN.getAttachedEditText()))
     {
       if (!paramBoolean) {
         break label204;
       }
-      if ((this.tab == null) || (this.tab.get() == null) || (((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).but() == null)) {
+      if ((this.niL == null) || (this.niL.get() == null) || (((z)this.niL.get()).bve() == null)) {
         break label219;
       }
-      i = ((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).but().getMeasuredHeight();
+      i = ((z)this.niL.get()).bve().getMeasuredHeight();
     }
     label204:
     label219:
-    for (int i = ((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).but().getScrollY() + i;; i = 0)
+    for (int i = ((z)this.niL.get()).bve().getScrollY() + i;; i = 0)
     {
-      if (((this.tai > this.tah) && (this.tai - this.tac.getLineHeight() <= i)) || ((this.tai <= this.tah) && (this.tai + this.tac.getLineHeight() <= i)) || (this.tac.bEH() >= i)) {
-        k.a(this.tab).wp(this.ndw);
+      if (((this.niR > this.niQ) && (this.niR - this.niM.getLineHeight() <= i)) || ((this.niR <= this.niQ) && (this.niR + this.niM.getLineHeight() <= i)) || (this.niM.bFz() >= i)) {
+        k.a(this.niL).wu(this.niF);
       }
       return;
-      k.a(this.tab).wp(this.ndw);
+      k.a(this.niL).wu(this.niF);
       return;
     }
   }
   
-  private void ij(boolean paramBoolean)
+  private void ig(boolean paramBoolean)
   {
-    if (this.tac == null) {
+    if (this.niM == null) {
       return;
     }
-    String str = this.tac.getText().toString();
-    int i = this.tac.getSelectionEnd();
-    if (this.sZZ == i.d.ndO) {}
+    String str = this.niM.getText().toString();
+    int i = this.niM.getSelectionEnd();
+    if (this.niJ == i.d.niX) {}
     for (boolean bool = true;; bool = false)
     {
       a(str, i, bool, paramBoolean);
@@ -540,11 +541,11 @@ public abstract class i
   
   private void onDestroy()
   {
-    this.tac = null;
-    com.tencent.mm.plugin.appbrand.utils.e.bj(this);
+    this.niM = null;
+    com.tencent.mm.plugin.appbrand.utils.f.bj(this);
   }
   
-  public abstract void PE(String paramString);
+  public abstract void Qm(String paramString);
   
   void a(y paramy)
   {
@@ -553,14 +554,14 @@ public abstract class i
     for (;;)
     {
       return;
-      paramy.b(this.sZW);
-      if (this.tab == null) {}
-      for (Object localObject = null;; localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.tab.get())
+      paramy.b(this.niG);
+      if (this.niL == null) {}
+      for (Object localObject = null;; localObject = (z)this.niL.get())
       {
         if (localObject == null) {
           break label58;
         }
-        localObject = (g)((com.tencent.mm.plugin.appbrand.page.aa)localObject).but();
+        localObject = (g)((z)localObject).bve();
         if (localObject == null) {
           break;
         }
@@ -574,148 +575,117 @@ public abstract class i
   
   public final void a(String paramString, Integer paramInteger)
   {
-    if (this.tac == null) {
+    if (this.niM == null) {
       return;
     }
-    this.tac.D(paramString);
+    this.niM.C(paramString);
     if (paramInteger == null) {}
     for (int i = -1;; i = paramInteger.intValue())
     {
       paramString = Integer.valueOf(i);
-      eu(paramString.intValue(), paramString.intValue());
-      bbp();
+      ev(paramString.intValue(), paramString.intValue());
+      bEU();
       return;
     }
   }
   
-  boolean a(y paramy, com.tencent.mm.plugin.appbrand.widget.input.d.e parame)
+  boolean a(y paramy, e parame)
   {
-    if ((paramy == null) || (this.tab == null) || (this.tab.get() == null)) {
+    if ((paramy == null) || (this.niL == null) || (this.niL.get() == null)) {
       return false;
     }
-    g localg = (g)((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).but();
-    return (localg != null) && (localg.a(((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).lYc, paramy, parame.niW.intValue(), parame.niX.intValue(), parame.niZ.intValue(), parame.niY.intValue()));
+    g localg = (g)((z)this.niL.get()).bve();
+    return (localg != null) && (localg.a(((z)this.niL.get()).mcJ, paramy, parame.noe.intValue(), parame.nof.intValue(), parame.noh.intValue(), parame.nog.intValue()));
   }
   
-  final void aUQ()
+  public boolean b(y paramy, e parame)
   {
-    int k;
-    int i;
-    if ((this.tac != null) && (aj.i(this.taa.njo)) && (aj.i(this.taa.njm)))
-    {
-      ((q)this.tac).setAutoHeight(true);
-      j = this.tac.getLineHeight();
-      k = this.tac.bEH();
-      if ((this.taa.nja != null) && (this.taa.nja.intValue() > 0)) {
-        break label161;
-      }
-      i = j;
-      if ((this.taa.njb != null) && (this.taa.njb.intValue() > 0)) {
-        break label175;
-      }
-    }
-    label161:
-    label175:
-    for (int j = 2147483647;; j = Math.max(this.taa.njb.intValue(), j))
-    {
-      this.tac.setMinHeight(i);
-      this.tac.setMaxHeight(j);
-      this.taa.niX = Integer.valueOf(Math.max(i, Math.min(k, j)));
-      b(this.tac, this.taa);
-      return;
-      i = this.taa.nja.intValue();
-      break;
-    }
-  }
-  
-  public boolean b(y paramy, com.tencent.mm.plugin.appbrand.widget.input.d.e parame)
-  {
-    if ((paramy == null) || (this.tab == null) || (this.tab.get() == null)) {
+    if ((paramy == null) || (this.niL == null) || (this.niL.get() == null)) {
       return false;
     }
-    g localg = (g)((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).but();
-    return (localg != null) && (localg.c(((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).lYc, paramy, parame.niW.intValue(), parame.niX.intValue(), parame.niZ.intValue(), parame.niY.intValue()));
+    g localg = (g)((z)this.niL.get()).bve();
+    return (localg != null) && (localg.c(((z)this.niL.get()).mcJ, paramy, parame.noe.intValue(), parame.nof.intValue(), parame.noh.intValue(), parame.nog.intValue()));
   }
   
-  public final boolean bDO()
+  public final boolean bEG()
   {
     int i;
-    if ((this.tac == null) || (this.tab == null) || (this.tab.get() == null)) {
+    if ((this.niM == null) || (this.niL == null) || (this.niL.get() == null)) {
       i = 0;
     }
     while (i != 0)
     {
       onDestroy();
       return true;
-      this.tac.destroy();
-      g localg = (g)((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).but();
+      this.niM.destroy();
+      g localg = (g)((z)this.niL.get()).bve();
       if (localg == null)
       {
         i = 0;
       }
       else
       {
-        if (this.tac.hasFocus())
+        if (this.niM.hasFocus())
         {
-          if (this.tae != null) {
-            this.tae.setVisibility(8);
+          if (this.niO != null) {
+            this.niO.setVisibility(8);
           }
-          bDZ();
-          if (this.tad != null) {
-            this.tad.setVisibility(8);
+          bFa();
+          if (this.niN != null) {
+            this.niN.setVisibility(8);
           }
         }
-        localg.dc(this.tac);
+        localg.dc(this.niM);
         i = 1;
       }
     }
     return false;
   }
   
-  public final boolean bDS()
+  public final boolean bEK()
   {
-    return (this.taa != null) && (aj.i(this.taa.njt));
+    return (this.niK != null) && (aj.i(this.niK.noB));
   }
   
-  public final int bDT()
+  public final int bEL()
   {
-    if ((this.taa != null) && (this.taa.njq != null)) {
-      return this.taa.njq.intValue();
+    if ((this.niK != null) && (this.niK.noy != null)) {
+      return this.niK.noy.intValue();
     }
-    if ((this.tac != null) && (this.tac.bEq())) {
+    if ((this.niM != null) && (this.niM.bFi())) {
       return 5;
     }
     return 0;
   }
   
-  public final boolean bDU()
+  public final boolean bEM()
   {
     int i;
-    if ((this.tac != null) && ((this.tac.isFocused()) || ((bDZ() != null) && (bDZ().getAttachedEditText() == this.tac))))
+    if ((this.niM != null) && ((this.niM.isFocused()) || ((bFa() != null) && (bFa().getAttachedEditText() == this.niM))))
     {
       i = 1;
       if (i != 0) {
-        break label128;
+        break label129;
       }
-      if ((this.tab != null) && (this.tab.get() != null)) {
-        break label82;
+      if ((this.niL != null) && (this.niL.get() != null)) {
+        break label83;
       }
       i = 0;
       label63:
       if (i == 0) {
-        break label128;
+        break label129;
       }
-      ad.d("MicroMsg.AppBrandInputInvokeHandler", "doHideKeyboard, not focused, return");
+      ae.d("MicroMsg.AppBrandInputInvokeHandler", "doHideKeyboard, not focused, return");
     }
-    label82:
+    label83:
     Object localObject;
-    label128:
+    label129:
     do
     {
       return true;
       i = 0;
       break;
-      localObject = ((com.tencent.mm.plugin.appbrand.page.aa)this.tab.get()).getContext();
+      localObject = ((z)this.niL.get()).getContext();
       if ((localObject instanceof Activity))
       {
         if (((Activity)localObject).getCurrentFocus() != null)
@@ -728,131 +698,173 @@ public abstract class i
       }
       i = 0;
       break label63;
-      localObject = bDZ();
+      localObject = bFa();
     } while (localObject == null);
     ((w)localObject).setVisibility(8);
     return true;
   }
   
-  public final void bbo()
+  final void bES()
   {
-    b.a(this.tac, this.taa);
-    if (this.taa.njf == null)
+    int k;
+    int i;
+    if ((this.niM != null) && (aj.i(this.niK.now)) && (aj.i(this.niK.nou)))
     {
-      this.taa.njf = Integer.valueOf(140);
-      c localc = p.a(this.tac).aeU(this.taa.njf.intValue());
-      localc.KMn = false;
-      localc.neC = f.a.KIM;
-      localc.a(this.sZP);
-      this.tac.setPasswordMode(this.taa.cvK);
-      if (!aj.i(this.taa.njk)) {
-        break label236;
+      ((q)this.niM).setAutoHeight(true);
+      j = this.niM.getLineHeight();
+      k = this.niM.bFz();
+      if ((this.niK.noi != null) && (this.niK.noi.intValue() > 0)) {
+        break label161;
       }
-      this.tac.setEnabled(false);
-      this.tac.setFocusable(false);
-      this.tac.setFocusableInTouchMode(false);
-      this.tac.setClickable(false);
+      i = j;
+      if ((this.niK.noj != null) && (this.niK.noj.intValue() > 0)) {
+        break label175;
+      }
     }
-    for (;;)
+    label161:
+    label175:
+    for (int j = 2147483647;; j = Math.max(this.niK.noj.intValue(), j))
     {
-      if ((this.tac instanceof q))
-      {
-        if (this.taa.nju != null) {
-          ((q)this.tac).setLineSpace(this.taa.nju.intValue());
-        }
-        if (this.taa.njv != null) {
-          ((q)this.tac).setLineHeight(this.taa.njv.intValue());
-        }
-      }
+      this.niM.setMinHeight(i);
+      this.niM.setMaxHeight(j);
+      this.niK.nof = Integer.valueOf(Math.max(i, Math.min(k, j)));
+      b(this.niM, this.niK);
       return;
-      if (this.taa.njf.intValue() > 0) {
-        break;
-      }
-      this.taa.njf = Integer.valueOf(2147483647);
+      i = this.niK.noi.intValue();
       break;
-      label236:
-      this.tac.setEnabled(true);
-      this.tac.setClickable(true);
     }
   }
   
-  public abstract void bkw();
-  
-  public abstract void bkx();
-  
-  public final void ev(int paramInt1, int paramInt2)
+  public final void bET()
   {
-    this.tab = this.taa.ncQ;
-    if (this.tab == null) {}
-    for (com.tencent.mm.plugin.appbrand.page.aa localaa = null; (localaa == null) || (localaa.lYc == null); localaa = (com.tencent.mm.plugin.appbrand.page.aa)this.tab.get())
+    b.a(this.niM, this.niK);
+    if (this.niK.non == null)
     {
-      ad.e("MicroMsg.AppBrandInputInvokeHandler", "insertInputImpl, view not ready, return fail");
-      bkx();
+      this.niK.non = Integer.valueOf(140);
+      c localc = p.a(this.niM).afD(this.niK.non.intValue());
+      localc.LiL = false;
+      localc.njK = f.a.Lfg;
+      localc.a(this.niy);
+      this.niM.setPasswordMode(this.niK.cwo);
+      if (!aj.i(this.niK.nos)) {
+        break label236;
+      }
+      this.niM.setEnabled(false);
+      this.niM.setFocusable(false);
+      this.niM.setFocusableInTouchMode(false);
+      this.niM.setClickable(false);
+    }
+    for (;;)
+    {
+      if ((this.niM instanceof q))
+      {
+        if (this.niK.noC != null) {
+          ((q)this.niM).setLineSpace(this.niK.noC.intValue());
+        }
+        if (this.niK.noD != null) {
+          ((q)this.niM).setLineHeight(this.niK.noD.intValue());
+        }
+      }
+      return;
+      if (this.niK.non.intValue() > 0) {
+        break;
+      }
+      this.niK.non = Integer.valueOf(2147483647);
+      break;
+      label236:
+      this.niM.setEnabled(true);
+      this.niM.setClickable(true);
+    }
+  }
+  
+  public abstract void blg();
+  
+  public abstract void blh();
+  
+  public final boolean ew(int paramInt1, int paramInt2)
+  {
+    if ((this.niM == null) || (this.niL == null) || (this.niL.get() == null)) {}
+    for (;;)
+    {
+      ev(paramInt1, paramInt2);
+      return true;
+      this.niM.performClick();
+    }
+  }
+  
+  public final void ex(int paramInt1, int paramInt2)
+  {
+    this.niL = this.niK.nhZ;
+    if (this.niL == null) {}
+    for (z localz = null; (localz == null) || (localz.mcJ == null); localz = (z)this.niL.get())
+    {
+      ae.e("MicroMsg.AppBrandInputInvokeHandler", "insertInputImpl, view not ready, return fail");
+      blh();
       return;
     }
-    if (aj.i(this.taa.njm)) {}
-    for (Object localObject = new q(localaa.getContext());; localObject = new t(localaa.getContext()))
+    if (aj.i(this.niK.nou)) {}
+    for (Object localObject = new q(localz.getContext());; localObject = new t(localz.getContext()))
     {
-      this.tac = ((y)localObject);
-      this.ndw = this.taa.ncO;
-      this.tac.setInputId(this.ndw);
-      o.b(localaa, this);
-      bbo();
-      this.tac.setText(bt.nullAsNil(this.taa.niV));
-      if (aj.i(this.taa.njo)) {
-        bbp();
+      this.niM = ((y)localObject);
+      this.niF = this.niK.nhX;
+      this.niM.setInputId(this.niF);
+      o.b(localz, this);
+      bET();
+      this.niM.setText(bu.nullAsNil(this.niK.nod));
+      if (aj.i(this.niK.now)) {
+        bEU();
       }
-      this.tac.addTextChangedListener(new com.tencent.mm.ui.widget.g()
+      this.niM.addTextChangedListener(new com.tencent.mm.ui.widget.g()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
           AppMethodBeat.i(136373);
-          if ((i.this.tab == null) || (i.this.tab.get() == null) || (i.this.tac == null))
+          if ((i.this.niL == null) || (i.this.niL.get() == null) || (i.this.niM == null))
           {
             AppMethodBeat.o(136373);
             return;
           }
           i.b(i.this);
-          if (aj.F(paramAnonymousEditable))
+          if (aj.E(paramAnonymousEditable))
           {
-            ad.d("MicroMsg.AppBrandInputInvokeHandler", "[bindInput] text composing %s", new Object[] { paramAnonymousEditable });
+            ae.d("MicroMsg.AppBrandInputInvokeHandler", "[bindInput] text composing %s", new Object[] { paramAnonymousEditable });
             AppMethodBeat.o(136373);
             return;
           }
-          ad.d("MicroMsg.AppBrandInputInvokeHandler", "[bindInput] not composing text %s", new Object[] { paramAnonymousEditable });
-          paramAnonymousEditable = i.this.tac.getEditableText();
-          i.this.taj.a(paramAnonymousEditable, i.this.tak);
+          ae.d("MicroMsg.AppBrandInputInvokeHandler", "[bindInput] not composing text %s", new Object[] { paramAnonymousEditable });
+          paramAnonymousEditable = i.this.niM.getEditableText();
+          i.this.nxv.a(paramAnonymousEditable, i.this.nxw);
           AppMethodBeat.o(136373);
         }
       });
-      this.tac.setOnComposingDismissedListener(new com.tencent.mm.plugin.appbrand.widget.input.c.b()
+      this.niM.setOnComposingDismissedListener(new com.tencent.mm.plugin.appbrand.widget.input.c.b()
       {
-        public final void Dm()
+        public final void Dp()
         {
           AppMethodBeat.i(136374);
-          if (i.this.tac == null)
+          if (i.this.niM == null)
           {
             AppMethodBeat.o(136374);
             return;
           }
-          ad.d("MicroMsg.AppBrandInputInvokeHandler", "[bindInput] onComposingDismissed %s", new Object[] { i.this.tac.getEditableText() });
-          i.this.taj.a(i.this.tac.getEditableText(), false);
+          ae.d("MicroMsg.AppBrandInputInvokeHandler", "[bindInput] onComposingDismissed %s", new Object[] { i.this.niM.getEditableText() });
+          i.this.nxv.a(i.this.niM.getEditableText(), false);
           AppMethodBeat.o(136374);
         }
       });
-      this.tac.setOnKeyUpPostImeListener(new ab.b()
+      this.niM.setOnKeyUpPostImeListener(new ab.b()
       {
-        public final boolean wn(int paramAnonymousInt)
+        public final boolean ws(int paramAnonymousInt)
         {
           AppMethodBeat.i(136375);
           if (paramAnonymousInt == 67)
           {
-            if (aj.F(i.this.tac.getText()))
+            if (aj.E(i.this.niM.getText()))
             {
               AppMethodBeat.o(136375);
               return false;
             }
-            i.this.PE(i.this.tac.getText().toString());
+            i.this.Qm(i.this.niM.getText().toString());
             AppMethodBeat.o(136375);
             return true;
           }
@@ -860,21 +872,21 @@ public abstract class i
           return false;
         }
       });
-      if (a(this.tac, this.taa)) {
+      if (a(this.niM, this.niK)) {
         break;
       }
-      ad.e("MicroMsg.AppBrandInputInvokeHandler", "add custom view into webView failed");
-      bkx();
+      ae.e("MicroMsg.AppBrandInputInvokeHandler", "add custom view into webView failed");
+      blh();
       return;
     }
-    if ((this.taa.niU != null) && (!bt.hj(this.taa.niU.niF))) {
-      d.a(localaa, this.tac, this.taa.niU);
+    if ((this.niK.noc != null) && (!bu.ht(this.niK.noc.nnN))) {
+      d.a(localz, this.niM, this.niK.noc);
     }
-    if (!aj.i(this.taa.njm)) {
-      b.a(this.tac, paramInt1, paramInt2);
+    if (!aj.i(this.niK.nou)) {
+      b.a(this.niM, paramInt1, paramInt2);
     }
-    if (aj.i(this.taa.njm)) {
-      this.tac.post(new Runnable()
+    if (aj.i(this.niK.nou)) {
+      this.niM.post(new Runnable()
       {
         public final void run()
         {
@@ -884,75 +896,64 @@ public abstract class i
         }
       });
     }
-    if (("text".equalsIgnoreCase(this.taa.cvH)) || ("emoji".equalsIgnoreCase(this.taa.cvH))) {
-      bDQ();
+    if (("text".equalsIgnoreCase(this.niK.cwl)) || ("emoji".equalsIgnoreCase(this.niK.cwl))) {
+      bEZ();
     }
     for (;;)
     {
-      this.tac.setOnClickListener(new View.OnClickListener()
+      this.niM.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(136360);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          if (i.this.tac == null)
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          if (i.this.niM == null)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(136360);
             return;
           }
-          if (i.this.tac.hasFocus())
+          if (i.this.niM.hasFocus())
           {
             i.d(i.this);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(136360);
             return;
           }
-          if (i.this.tac == paramAnonymousView) {
+          if (i.this.niM == paramAnonymousView) {
             i.e(i.this);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandInputInvokeHandler$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(136360);
         }
       });
-      bkw();
+      blg();
       return;
-      Assert.assertTrue(String.format(Locale.US, "Unrecognized type(%s) implementation removed from here", new Object[] { this.taa.cvH }), true);
-      bDQ();
-    }
-  }
-  
-  public final boolean ew(int paramInt1, int paramInt2)
-  {
-    if ((this.tac == null) || (this.tab == null) || (this.tab.get() == null)) {}
-    for (;;)
-    {
-      eu(paramInt1, paramInt2);
-      return true;
-      this.tac.performClick();
+      Assert.assertTrue(String.format(Locale.US, "Unrecognized type(%s) implementation removed from here", new Object[] { this.niK.cwl }), true);
+      bEZ();
     }
   }
   
   public final int getInputId()
   {
-    return this.ndw;
+    return this.niF;
   }
   
   public final <P extends View,  extends ac> P getInputPanel()
   {
-    return this.tad;
+    return this.niN;
   }
   
-  public final boolean u(com.tencent.mm.plugin.appbrand.page.aa paramaa)
+  public final boolean v(z paramz)
   {
-    return (paramaa != null) && (this.tab != null) && (paramaa == this.tab.get());
+    return (paramz != null) && (this.niL != null) && (paramz == this.niL.get());
   }
   
-  public final void wm(int paramInt)
+  public final void wr(int paramInt)
   {
-    b localb = this.sZV;
+    b localb = this.niE;
     if (localb != null) {
       localb.a(this, paramInt);
     }
@@ -963,6 +964,11 @@ public abstract class i
   public static abstract interface b
   {
     public abstract void a(aa paramaa, int paramInt);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void dR(int paramInt1, int paramInt2);
   }
 }
 

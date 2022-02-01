@@ -6,11 +6,11 @@ public class e
   extends g
 {
   public int appType = -1;
-  public String fIZ;
-  public String[] fJa;
-  public String[] fJb;
-  public int fJc;
-  public int fJd;
+  public String fLd;
+  public String[] fLe;
+  public String[] fLf;
+  public int fLg;
+  public int fLh;
   public int fileType = 0;
   public String host;
   public boolean isColdSnsData;
@@ -22,7 +22,7 @@ public class e
   
   public e()
   {
-    this.fJv = true;
+    this.fLy = true;
   }
   
   private static String h(String[] paramArrayOfString)
@@ -49,7 +49,7 @@ public class e
   public String toString()
   {
     AppMethodBeat.i(120675);
-    String str = String.format("mediaId:%s, url:%s, host:%s, referer:%s, savepath:%s, iplist:%s, slaveIplist:%siplistSource:%d, dcSource:%d, isColdSnsData:%b, signalQuality:%s, snsScene:%s", new Object[] { this.field_mediaId, this.url, this.host, this.referer, this.fIZ, h(this.fJa), h(this.fJb), Integer.valueOf(this.fJc), Integer.valueOf(this.fJd), Boolean.valueOf(this.isColdSnsData), this.signalQuality, this.snsScene });
+    String str = String.format("mediaId:%s, url:%s, host:%s, referer:%s, savepath:%s, iplist:%s, slaveIplist:%siplistSource:%d, dcSource:%d, isColdSnsData:%b, signalQuality:%s, snsScene:%s", new Object[] { this.field_mediaId, this.url, this.host, this.referer, this.fLd, h(this.fLe), h(this.fLf), Integer.valueOf(this.fLg), Integer.valueOf(this.fLh), Boolean.valueOf(this.isColdSnsData), this.signalQuality, this.snsScene });
     AppMethodBeat.o(120675);
     return str;
   }

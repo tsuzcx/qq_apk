@@ -15,13 +15,13 @@ public class MailMMWebView
   extends MMWebViewWithJsApi
   implements h
 {
-  private boolean Esb;
-  private View Esc;
-  private boolean Esd;
-  private boolean Ese;
-  private float cNg;
-  private float cNh;
-  private View yJP;
+  private boolean EKr;
+  private View EKs;
+  private boolean EKt;
+  private boolean EKu;
+  private float cNQ;
+  private float cNR;
+  private View yZZ;
   
   public MailMMWebView(Context paramContext)
   {
@@ -59,18 +59,18 @@ public class MailMMWebView
     AppMethodBeat.i(82283);
     if (paramView != null)
     {
-      if (this.Esc != null) {
-        removeView(this.Esc);
+      if (this.EKs != null) {
+        removeView(this.EKs);
       }
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
       FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, -2);
-      this.Esc = new a(getContext());
+      this.EKs = new a(getContext());
       FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(-1, -2);
-      ((a)this.Esc).addView(paramView, localLayoutParams2);
-      this.Esc.setBackgroundColor(getContext().getResources().getColor(2131101179));
-      addView(this.Esc, localLayoutParams1);
+      ((a)this.EKs).addView(paramView, localLayoutParams2);
+      this.EKs.setBackgroundColor(getContext().getResources().getColor(2131101179));
+      addView(this.EKs, localLayoutParams1);
     }
     AppMethodBeat.o(82283);
   }
@@ -101,39 +101,39 @@ public class MailMMWebView
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
-    while ((this.Esd) && (this.Esc != null))
+    while ((this.EKt) && (this.EKs != null))
     {
       paramMotionEvent.setLocation(f1, f2 + i);
-      bool = this.Esc.dispatchTouchEvent(paramMotionEvent);
+      bool = this.EKs.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(82271);
       return bool;
-      this.cNg = f1;
-      this.cNh = f2;
-      if ((this.Esc != null) && ((int)this.cNh < getVisibleTitleBarHeight()))
+      this.cNQ = f1;
+      this.cNR = f2;
+      if ((this.EKs != null) && ((int)this.cNR < getVisibleTitleBarHeight()))
       {
-        this.Esd = true;
+        this.EKt = true;
       }
-      else if ((this.yJP != null) && (this.yJP.getVisibility() == 0) && (this.cNh + getBottomHeight() > getHeight()))
+      else if ((this.yZZ != null) && (this.yZZ.getVisibility() == 0) && (this.cNR + getBottomHeight() > getHeight()))
       {
-        this.Ese = true;
+        this.EKu = true;
         continue;
-        if ((Math.abs(f2 - this.cNh) > 50.0F) && (this.Esd))
+        if ((Math.abs(f2 - this.cNR) > 50.0F) && (this.EKt))
         {
           paramMotionEvent.setAction(3);
-          paramMotionEvent.setLocation(this.cNg, this.cNh + i);
-          this.Esc.dispatchTouchEvent(paramMotionEvent);
+          paramMotionEvent.setLocation(this.cNQ, this.cNR + i);
+          this.EKs.dispatchTouchEvent(paramMotionEvent);
           paramMotionEvent.setAction(0);
-          paramMotionEvent.setLocation(this.cNg, this.cNh);
+          paramMotionEvent.setLocation(this.cNQ, this.cNR);
           super.dispatchTouchEvent(paramMotionEvent);
           paramMotionEvent.setAction(2);
           paramMotionEvent.setLocation(f1, f2);
         }
       }
     }
-    if ((this.Ese) && (this.yJP != null))
+    if ((this.EKu) && (this.yZZ != null))
     {
       paramMotionEvent.setLocation(f1, f2 + getBottomHeight() - getHeight());
-      bool = this.yJP.dispatchTouchEvent(paramMotionEvent);
+      bool = this.yZZ.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(82271);
       return bool;
     }
@@ -146,7 +146,7 @@ public class MailMMWebView
   {
     AppMethodBeat.i(82277);
     boolean bool;
-    if (paramView == this.Esc)
+    if (paramView == this.EKs)
     {
       int i = getWebScrollY();
       paramCanvas.save();
@@ -162,17 +162,17 @@ public class MailMMWebView
     }
   }
   
-  public final boolean eVr()
+  public final boolean eZe()
   {
-    return this.Esb;
+    return this.EKr;
   }
   
-  public final void eVs()
+  public final void eZf()
   {
-    this.Esb = false;
+    this.EKr = false;
   }
   
-  public final void eVt()
+  public final void eZg()
   {
     AppMethodBeat.i(82280);
     int i = (int)(getTitleHeight() / getScale());
@@ -180,7 +180,7 @@ public class MailMMWebView
     AppMethodBeat.o(82280);
   }
   
-  public final void eVu()
+  public final void eZh()
   {
     AppMethodBeat.i(82281);
     int i = (int)(getBottomHeight() / getScale());
@@ -191,9 +191,9 @@ public class MailMMWebView
   public int getBottomHeight()
   {
     AppMethodBeat.i(82279);
-    if (this.yJP != null)
+    if (this.yZZ != null)
     {
-      int i = this.yJP.getHeight();
+      int i = this.yZZ.getHeight();
       AppMethodBeat.o(82279);
       return i;
     }
@@ -204,9 +204,9 @@ public class MailMMWebView
   public int getTitleHeight()
   {
     AppMethodBeat.i(82278);
-    if (this.Esc != null)
+    if (this.EKs != null)
     {
-      int i = this.Esc.getHeight();
+      int i = this.EKs.getHeight();
       AppMethodBeat.o(82278);
       return i;
     }
@@ -225,7 +225,7 @@ public class MailMMWebView
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(82270);
-    this.Esb = true;
+    this.EKr = true;
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
     AppMethodBeat.o(82270);
   }
@@ -242,18 +242,18 @@ public class MailMMWebView
       if (Math.abs(i - j) <= 20) {
         break label90;
       }
-      eVu();
-      vp(false);
+      eZh();
+      vy(false);
     }
     for (;;)
     {
       if (getVisibleTitleHeight() == 0) {
-        eVt();
+        eZg();
       }
       AppMethodBeat.o(82272);
       return;
       label90:
-      vp(true);
+      vy(true);
     }
   }
   
@@ -262,20 +262,20 @@ public class MailMMWebView
     AppMethodBeat.i(82285);
     if (paramView != null)
     {
-      if (this.yJP != null) {
-        removeView(this.yJP);
+      if (this.yZZ != null) {
+        removeView(this.yZZ);
       }
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
       FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, -2, 80);
-      this.yJP = new a(getContext());
+      this.yZZ = new a(getContext());
       FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)paramView.getLayoutParams();
       FrameLayout.LayoutParams localLayoutParams3 = new FrameLayout.LayoutParams(-1, -2);
       localLayoutParams3.setMargins(localLayoutParams2.leftMargin, localLayoutParams2.topMargin, localLayoutParams2.rightMargin, localLayoutParams2.bottomMargin);
-      ((a)this.yJP).addView(paramView, localLayoutParams3);
-      addView(this.yJP, localLayoutParams1);
-      this.yJP.setVisibility(4);
+      ((a)this.yZZ).addView(paramView, localLayoutParams3);
+      addView(this.yZZ, localLayoutParams1);
+      this.yZZ.setVisibility(4);
     }
     AppMethodBeat.o(82285);
   }
@@ -287,18 +287,18 @@ public class MailMMWebView
     AppMethodBeat.o(82273);
   }
   
-  public final void vp(boolean paramBoolean)
+  public final void vy(boolean paramBoolean)
   {
     AppMethodBeat.i(82284);
-    if (this.yJP != null)
+    if (this.yZZ != null)
     {
       if (paramBoolean)
       {
-        this.yJP.setVisibility(0);
+        this.yZZ.setVisibility(0);
         AppMethodBeat.o(82284);
         return;
       }
-      this.yJP.setVisibility(4);
+      this.yZZ.setVisibility(4);
     }
     AppMethodBeat.o(82284);
   }
@@ -338,12 +338,12 @@ public class MailMMWebView
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       if ((this == MailMMWebView.f(MailMMWebView.this)) && (MailMMWebView.this.getTitleHeight() > 0))
       {
-        MailMMWebView.this.eVt();
+        MailMMWebView.this.eZg();
         AppMethodBeat.o(82268);
         return;
       }
       if ((this == MailMMWebView.g(MailMMWebView.this)) && (MailMMWebView.this.getBottomHeight() > 0)) {
-        MailMMWebView.this.eVu();
+        MailMMWebView.this.eZh();
       }
       AppMethodBeat.o(82268);
     }
@@ -351,7 +351,7 @@ public class MailMMWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.MailMMWebView
  * JD-Core Version:    0.7.0.1
  */

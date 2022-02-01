@@ -18,16 +18,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class GameRoundImageView
   extends AppCompatImageView
 {
-  private static final PorterDuffXfermode ppV;
+  private static final PorterDuffXfermode pwB;
   private Bitmap bitmap;
   private RectF hM;
-  private Bitmap ppU;
+  private Bitmap pwA;
   private Rect rect;
   
   static
   {
     AppMethodBeat.i(42367);
-    ppV = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+    pwB = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
     AppMethodBeat.o(42367);
   }
   
@@ -48,11 +48,11 @@ public class GameRoundImageView
     if (this.hM == null) {
       this.hM = new RectF(this.rect);
     }
-    if ((this.bitmap != null) && (this.ppU != null))
+    if ((this.bitmap != null) && (this.pwA != null))
     {
       int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
-      paramCanvas.drawBitmap(this.ppU, this.rect, this.rect, localPaint);
-      localPaint.setXfermode(ppV);
+      paramCanvas.drawBitmap(this.pwA, this.rect, this.rect, localPaint);
+      localPaint.setXfermode(pwB);
       paramCanvas.drawBitmap(this.bitmap, null, this.rect, localPaint);
       paramCanvas.restoreToCount(i);
       localPaint.setXfermode(null);
@@ -74,7 +74,7 @@ public class GameRoundImageView
     Paint localPaint = new Paint(1);
     localPaint.setColor(-1);
     localCanvas.drawRoundRect(this.hM, 18.0F, 18.0F, localPaint);
-    this.ppU = localBitmap;
+    this.pwA = localBitmap;
     AppMethodBeat.o(42365);
   }
   

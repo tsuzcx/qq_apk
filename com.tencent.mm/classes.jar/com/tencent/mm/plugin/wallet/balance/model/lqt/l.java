@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.protocal.protobuf.clu;
-import com.tencent.mm.protocal.protobuf.clv;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.protocal.protobuf.cmo;
+import com.tencent.mm.protocal.protobuf.cmp;
 import com.tencent.mm.protocal.protobuf.in;
 
 public final class l
-  extends a<clv>
+  extends a<cmp>
 {
   public l(int paramInt1, in paramin, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(68448);
     Object localObject = new b.a();
-    ((b.a)localObject).hNM = new clu();
-    ((b.a)localObject).hNN = new clv();
+    ((b.a)localObject).hQF = new cmo();
+    ((b.a)localObject).hQG = new cmp();
     ((b.a)localObject).funcId = 1324;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/preredeemfund";
-    ((b.a)localObject).hNO = 0;
+    ((b.a)localObject).hQH = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDC();
-    clu localclu = (clu)((b)localObject).hNK.hNQ;
-    localclu.HeX = paramInt1;
+    localObject = ((b.a)localObject).aDS();
+    cmo localcmo = (cmo)((b)localObject).hQD.hQJ;
+    localcmo.Hyx = paramInt1;
     if (paramin != null) {
-      localclu.HeY = 1;
+      localcmo.Hyy = 1;
     }
-    for (localclu.HeZ = paramin;; localclu.HeZ = null)
+    for (localcmo.Hyz = paramin;; localcmo.Hyz = null)
     {
-      localclu.uxm = paramInt2;
-      localclu.Hfa = paramInt3;
-      localclu.Hfb = paramString;
-      localclu.Cyu = ae.eCl();
+      localcmo.uIM = paramInt2;
+      localcmo.HyA = paramInt3;
+      localcmo.HyB = paramString;
+      localcmo.CPZ = ae.eFT();
       c((b)localObject);
       AppMethodBeat.o(68448);
       return;
-      localclu.HeY = 0;
+      localcmo.Hyy = 0;
     }
   }
 }

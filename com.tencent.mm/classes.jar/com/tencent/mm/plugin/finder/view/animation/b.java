@@ -6,69 +6,69 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.l;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/animation/FavAnimationHelper;", "", "()V", "animRunnable", "Ljava/lang/Runnable;", "animatorAlpha", "Landroid/animation/ValueAnimator;", "reset", "", "view", "Landroid/view/View;", "start", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/animation/FavAnimationHelper;", "", "()V", "animRunnable", "Ljava/lang/Runnable;", "animatorAlpha", "Landroid/animation/ValueAnimator;", "reset", "", "view", "Landroid/view/View;", "start", "plugin-finder_release"})
 public final class b
 {
-  private static final Runnable sXs;
-  public static ValueAnimator sXt;
-  public static final b sXu;
+  private static final Runnable tiG;
+  public static ValueAnimator tiH;
+  public static final b tiI;
   
   static
   {
-    AppMethodBeat.i(205318);
-    sXu = new b();
-    sXs = (Runnable)a.sXv;
-    AppMethodBeat.o(205318);
+    AppMethodBeat.i(205960);
+    tiI = new b();
+    tiG = (Runnable)a.tiJ;
+    AppMethodBeat.o(205960);
   }
   
   public static void ei(View paramView)
   {
-    AppMethodBeat.i(205317);
+    AppMethodBeat.i(205959);
     paramView.setVisibility(8);
-    paramView.removeCallbacks(sXs);
-    paramView = sXt;
+    paramView.removeCallbacks(tiG);
+    paramView = tiH;
     if (paramView != null)
     {
       paramView.cancel();
-      AppMethodBeat.o(205317);
+      AppMethodBeat.o(205959);
       return;
     }
-    AppMethodBeat.o(205317);
+    AppMethodBeat.o(205959);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    public static final a sXv;
+    public static final a tiJ;
     
     static
     {
-      AppMethodBeat.i(205313);
-      sXv = new a();
-      AppMethodBeat.o(205313);
+      AppMethodBeat.i(205955);
+      tiJ = new a();
+      AppMethodBeat.o(205955);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(205312);
-      Object localObject = b.sXu;
-      localObject = b.cNH();
+      AppMethodBeat.i(205954);
+      Object localObject = b.tiI;
+      localObject = b.cQr();
       if (localObject != null)
       {
         ((ValueAnimator)localObject).start();
-        AppMethodBeat.o(205312);
+        AppMethodBeat.o(205954);
         return;
       }
-      AppMethodBeat.o(205312);
+      AppMethodBeat.o(205954);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/view/animation/FavAnimationHelper$start$2$1"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/view/animation/FavAnimationHelper$start$2$1"})
   public static final class b
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -76,28 +76,28 @@ public final class b
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(205314);
+      AppMethodBeat.i(205956);
       paramValueAnimator = paramValueAnimator.getAnimatedValue("alpha");
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(205314);
+        AppMethodBeat.o(205956);
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      ad.d("LikeIconAnimationHelper", "alpha=".concat(String.valueOf(f)));
-      this.sXw.setAlpha(f);
+      ae.d("LikeIconAnimationHelper", "alpha=".concat(String.valueOf(f)));
+      this.tiK.setAlpha(f);
       if (f == 0.0F)
       {
-        this.sXw.setVisibility(8);
-        this.sXw.clearAnimation();
-        this.sXw.setAlpha(1.0F);
+        this.tiK.setVisibility(8);
+        this.tiK.clearAnimation();
+        this.tiK.setAlpha(1.0F);
       }
-      AppMethodBeat.o(205314);
+      AppMethodBeat.o(205956);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/view/animation/FavAnimationHelper$start$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/view/animation/FavAnimationHelper$start$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class c
     implements Animator.AnimatorListener
   {
@@ -107,21 +107,21 @@ public final class b
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(205315);
-      paramAnimator = this.kAn;
-      b localb = b.sXu;
-      paramAnimator.postDelayed(b.cNG(), 1000L);
-      AppMethodBeat.o(205315);
+      AppMethodBeat.i(205957);
+      paramAnimator = this.kDC;
+      b localb = b.tiI;
+      paramAnimator.postDelayed(b.cQq(), 1000L);
+      AppMethodBeat.o(205957);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(205316);
-      this.kAn.setVisibility(0);
-      this.kAn.setAlpha(1.0F);
-      AppMethodBeat.o(205316);
+      AppMethodBeat.i(205958);
+      this.kDC.setVisibility(0);
+      this.kDC.setAlpha(1.0F);
+      AppMethodBeat.o(205958);
     }
   }
 }

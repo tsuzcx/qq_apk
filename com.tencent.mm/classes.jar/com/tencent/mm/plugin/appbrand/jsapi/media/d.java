@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.t.a;
+import com.tencent.mm.plugin.appbrand.s.a;
 
 public final class d
 {
-  public static void ma(int paramInt)
+  public static void md(int paramInt)
   {
-    AppMethodBeat.i(188409);
+    AppMethodBeat.i(222558);
     ((a)e.L(a.class)).idkeyStat(1419L, paramInt, 1L, false);
-    AppMethodBeat.o(188409);
+    AppMethodBeat.o(222558);
   }
 }
 

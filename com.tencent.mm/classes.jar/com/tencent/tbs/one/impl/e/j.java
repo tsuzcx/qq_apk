@@ -23,11 +23,11 @@ public final class j
   
   public j(i parami, Bundle paramBundle)
   {
-    AppMethodBeat.i(190677);
+    AppMethodBeat.i(192447);
     this.d = new ConcurrentHashMap();
     this.b = parami;
     this.e = paramBundle;
-    AppMethodBeat.o(190677);
+    AppMethodBeat.o(192447);
   }
   
   private boolean a(d paramd, String paramString, Set<d.a> paramSet)

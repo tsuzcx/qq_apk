@@ -5,28 +5,28 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dvi;
+import com.tencent.mm.protocal.protobuf.ble;
 
 public final class bg$b
   extends l.e
   implements l.c
 {
-  public dvi hGv;
+  public ble hJj;
   
   public bg$b()
   {
-    AppMethodBeat.i(20371);
-    this.hGv = new dvi();
-    AppMethodBeat.o(20371);
+    AppMethodBeat.i(20363);
+    this.hJj = new ble();
+    AppMethodBeat.o(20363);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(20372);
-    this.hGv = ((dvi)new dvi().parseFrom(paramArrayOfByte));
-    l.a(this, this.hGv.getBaseResponse());
-    int i = this.hGv.getBaseResponse().Ret;
-    AppMethodBeat.o(20372);
+    AppMethodBeat.i(20364);
+    this.hJj = ((ble)new ble().parseFrom(paramArrayOfByte));
+    l.a(this, this.hJj.getBaseResponse());
+    int i = this.hJj.getBaseResponse().Ret;
+    AppMethodBeat.o(20364);
     return i;
   }
   

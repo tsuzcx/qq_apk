@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.item.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,14 +17,14 @@ import java.util.Iterator;
 public final class c
   extends a
 {
-  a.a Atj;
-  AnimatorSet yvH;
+  a.a AKx;
+  AnimatorSet yLH;
   
   public c(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(99954);
     this.activity = paramMMActivity;
-    this.Atj = ((a.a)paramBaseViewHolder);
+    this.AKx = ((a.a)paramBaseViewHolder);
     paramMMActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     paramMMActivity.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
@@ -34,9 +34,9 @@ public final class c
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (f != 0.0F)
         {
-          c.this.Atj.Awu.setScaleX(f);
-          c.this.Atj.Awu.setScaleY(f);
-          c.this.Atj.Awu.setAlpha(f);
+          c.this.AKx.ANL.setScaleX(f);
+          c.this.AKx.ANL.setScaleY(f);
+          c.this.AKx.ANL.setAlpha(f);
         }
         AppMethodBeat.o(99949);
       }
@@ -47,17 +47,17 @@ public final class c
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99950);
-        if (c.this.Atj.grY)
+        if (c.this.AKx.guz)
         {
-          ad.i("MicroMsg.CardAdBackAnimation", "holder is busy");
-          paramAnonymousAnimator = c.this.yvH.getChildAnimations().iterator();
+          ae.i("MicroMsg.CardAdBackAnimation", "holder is busy");
+          paramAnonymousAnimator = c.this.yLH.getChildAnimations().iterator();
           while (paramAnonymousAnimator.hasNext()) {
             ((Animator)paramAnonymousAnimator.next()).cancel();
           }
           AppMethodBeat.o(99950);
           return;
         }
-        c.this.Atj.grY = true;
+        c.this.AKx.guz = true;
         AppMethodBeat.o(99950);
       }
     });
@@ -68,49 +68,49 @@ public final class c
       {
         AppMethodBeat.i(99951);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        c.this.Atj.Awv.setAlpha(f);
+        c.this.AKx.ANM.setAlpha(f);
         AppMethodBeat.o(99951);
       }
     });
     paramBaseViewHolder.setDuration(100L);
     paramBaseViewHolder.setStartDelay(300L);
-    this.yvH = new AnimatorSet();
-    this.yvH.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
-    this.yvH.addListener(new AnimatorListenerAdapter()
+    this.yLH = new AnimatorSet();
+    this.yLH.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
+    this.yLH.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99953);
-        ad.i("MicroMsg.CardAdBackAnimation", "onAnimation end");
-        c.this.Atj.Awu.setScaleX(1.0F);
-        c.this.Atj.Awu.setScaleY(1.0F);
-        c.this.Atj.Awu.setAlpha(1.0F);
-        c.this.Atj.Awv.setAlpha(1.0F);
-        if (c.this.AsL != null) {
-          c.this.AsL.onAnimationEnd();
+        ae.i("MicroMsg.CardAdBackAnimation", "onAnimation end");
+        c.this.AKx.ANL.setScaleX(1.0F);
+        c.this.AKx.ANL.setScaleY(1.0F);
+        c.this.AKx.ANL.setAlpha(1.0F);
+        c.this.AKx.ANM.setAlpha(1.0F);
+        if (c.this.AJZ != null) {
+          c.this.AJZ.onAnimationEnd();
         }
-        c.this.Atj.grY = false;
+        c.this.AKx.guz = false;
         AppMethodBeat.o(99953);
       }
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99952);
-        ad.i("MicroMsg.CardAdBackAnimation", "onAnimation start");
-        c.this.Atj.Awv.setAlpha(0.0F);
+        ae.i("MicroMsg.CardAdBackAnimation", "onAnimation start");
+        c.this.AKx.ANM.setAlpha(0.0F);
         AppMethodBeat.o(99952);
       }
     });
     AppMethodBeat.o(99954);
   }
   
-  public final void At(long paramLong)
+  public final void AR(long paramLong)
   {
     AppMethodBeat.i(99955);
-    if (!this.yvH.isStarted())
+    if (!this.yLH.isStarted())
     {
-      this.yvH.setStartDelay(paramLong);
-      this.yvH.start();
+      this.yLH.setStartDelay(paramLong);
+      this.yLH.start();
     }
     AppMethodBeat.o(99955);
   }

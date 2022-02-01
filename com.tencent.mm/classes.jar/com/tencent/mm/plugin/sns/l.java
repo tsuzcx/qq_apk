@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.sns;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.modelstat.p;
 import com.tencent.mm.modelstat.p.a;
 import com.tencent.mm.plugin.sns.b.d;
 import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.dih;
-import com.tencent.mm.protocal.protobuf.dii;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.protocal.protobuf.djc;
+import com.tencent.mm.protocal.protobuf.djd;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 
 public final class l
   implements j
 {
-  public final String X(bu parambu)
+  public final String W(bv parambv)
   {
     AppMethodBeat.i(94910);
-    parambu = p.X(parambu);
+    parambv = p.W(parambv);
     AppMethodBeat.o(94910);
-    return parambu;
+    return parambv;
   }
   
   public final String a(String paramString, PString paramPString)
@@ -35,53 +35,53 @@ public final class l
     return paramString;
   }
   
-  public final void a(String paramString, y.b paramb, bu parambu)
+  public final void a(String paramString, z.b paramb, bv parambv)
   {
     AppMethodBeat.i(94908);
-    if (parambu.cTc())
+    if (parambv.cVH())
     {
-      parambu = k.b.yr(parambu.field_content);
-      if ((parambu != null) && (!bt.isNullOrNil(parambu.dHv))) {
-        paramb.k(paramString, parambu.dHv);
+      parambv = k.b.zb(parambv.field_content);
+      if ((parambv != null) && (!bu.isNullOrNil(parambv.dIA))) {
+        paramb.k(paramString, parambv.dIA);
       }
     }
     AppMethodBeat.o(94908);
   }
   
-  public final void aD(bu parambu)
+  public final void aC(bv parambv)
   {
     AppMethodBeat.i(94909);
-    String str = p.X(parambu);
-    dih localdih;
+    String str = p.W(parambv);
+    djc localdjc;
     if (str != null)
     {
       Object localObject = Base64.decode(str, 0);
-      localdih = new dih();
+      localdjc = new djc();
       try
       {
-        localdih.parseFrom((byte[])localObject);
-        localObject = localdih.Hxa;
+        localdjc.parseFrom((byte[])localObject);
+        localObject = localdjc.HQJ;
         if (localObject == null)
         {
           AppMethodBeat.o(94909);
           return;
         }
       }
-      catch (Exception parambu)
+      catch (Exception parambv)
       {
-        ad.printErrStackTrace("MicroMsg.SnsStatExtUtil", parambu, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.SnsStatExtUtil", parambv, "", new Object[0]);
         AppMethodBeat.o(94909);
         return;
       }
-      if (!parambu.field_talker.endsWith("@chatroom")) {
+      if (!parambv.field_talker.endsWith("@chatroom")) {
         break label193;
       }
     }
     label193:
-    for (parambu = p.a.irg.value;; parambu = p.a.irf.value)
+    for (parambv = p.a.iub.value;; parambv = p.a.iua.value)
     {
-      ad.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { parambu, str, localdih.Hxa.Hxd, localdih.Hxa.Fml });
-      ((d)com.tencent.mm.kernel.g.ab(d.class)).f(13235, new Object[] { parambu, localdih.Hxa.Hxd, localdih.Hxa.Fml });
+      ae.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { parambv, str, localdjc.HQJ.HQM, localdjc.HQJ.FEJ });
+      ((d)com.tencent.mm.kernel.g.ab(d.class)).f(13235, new Object[] { parambv, localdjc.HQJ.HQM, localdjc.HQJ.FEJ });
       AppMethodBeat.o(94909);
       return;
     }

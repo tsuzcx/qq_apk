@@ -2,19 +2,19 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.by.a.a;
-import com.tencent.mm.by.a.a.a;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.aj.b;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.bx.a.a;
+import com.tencent.mm.bx.a.a.a;
+import com.tencent.mm.sdk.platformtools.h;
 
 public final class d
   extends j
   implements e.a
 {
-  private a ERV;
-  private int ERW;
+  private a Fkq;
+  private int Fkr;
   
   public d(String paramString)
   {
@@ -23,81 +23,81 @@ public final class d
   
   private d(String paramString, byte paramByte)
   {
-    super(new a(a.b.fbx()), paramString, (byte)0);
+    super(new a(a.b.ffl()), paramString, (byte)0);
     AppMethodBeat.i(152121);
-    this.ERV = ((a)this.wYb);
+    this.Fkq = ((a)this.xnS);
     AppMethodBeat.o(152121);
   }
   
-  private void av(Bitmap paramBitmap)
+  private void aw(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(195445);
-    if (this.ERV != null) {
-      this.ERV.aw(paramBitmap);
+    AppMethodBeat.i(218898);
+    if (this.Fkq != null) {
+      this.Fkq.ax(paramBitmap);
     }
-    AppMethodBeat.o(195445);
+    AppMethodBeat.o(218898);
   }
   
-  public final void YK(int paramInt)
+  public final void Zq(int paramInt)
   {
     AppMethodBeat.i(152122);
-    if ((this.ERW == paramInt) && (this.ERV != null) && (this.ERV.nZT != null) && (!this.ERV.nZT.isRecycled()))
+    if ((this.Fkr == paramInt) && (this.Fkq != null) && (this.Fkq.ofD != null) && (!this.Fkq.ofD.isRecycled()))
     {
       AppMethodBeat.o(152122);
       return;
     }
-    this.ERW = paramInt;
-    av(g.aat(paramInt));
+    this.Fkr = paramInt;
+    aw(h.aaZ(paramInt));
     AppMethodBeat.o(152122);
   }
   
   public final void a(b paramb)
   {
-    if (this.ERV != null) {
-      this.ERV.ERX = paramb;
+    if (this.Fkq != null) {
+      this.Fkq.Fks = paramb;
     }
   }
   
   static final class a
     implements j.a
   {
-    b ERX = null;
-    Bitmap nZT = null;
-    private j.a wYb;
+    b Fks = null;
+    Bitmap ofD = null;
+    private j.a xnS;
     
     public a(j.a parama)
     {
-      this.wYb = parama;
+      this.xnS = parama;
     }
     
-    private Bitmap aMu(String paramString)
+    private Bitmap aNQ(String paramString)
     {
-      AppMethodBeat.i(195442);
-      if (fbz())
+      AppMethodBeat.i(218895);
+      if (ffn())
       {
-        a locala = a.a.HTy;
+        a locala = a.a.InF;
         if (locala != null)
         {
-          paramString = locala.aoz(aMv(paramString));
-          AppMethodBeat.o(195442);
+          paramString = locala.apE(aNR(paramString));
+          AppMethodBeat.o(218895);
           return paramString;
         }
       }
-      AppMethodBeat.o(195442);
+      AppMethodBeat.o(218895);
       return null;
     }
     
-    private String aMv(String paramString)
+    private String aNR(String paramString)
     {
-      AppMethodBeat.i(195444);
-      paramString = paramString + "-" + this.ERX.hLZ;
-      AppMethodBeat.o(195444);
+      AppMethodBeat.i(218897);
+      paramString = paramString + "-" + this.Fks.hOS;
+      AppMethodBeat.o(218897);
       return paramString;
     }
     
-    private Bitmap ax(Bitmap paramBitmap)
+    private Bitmap ay(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(195441);
+      AppMethodBeat.i(218894);
       Bitmap localBitmap = paramBitmap;
       if (paramBitmap != null)
       {
@@ -105,46 +105,46 @@ public final class d
         if (!paramBitmap.isRecycled())
         {
           localBitmap = paramBitmap;
-          if (fbz()) {
-            localBitmap = g.a(paramBitmap, false, this.ERX.hLZ * paramBitmap.getWidth());
+          if (ffn()) {
+            localBitmap = h.a(paramBitmap, false, this.Fks.hOS * paramBitmap.getWidth());
           }
         }
       }
-      AppMethodBeat.o(195441);
+      AppMethodBeat.o(218894);
       return localBitmap;
     }
     
-    private boolean fbz()
+    private boolean ffn()
     {
-      return (this.ERX != null) && (this.ERX.hLZ > 0.0F);
+      return (this.Fks != null) && (this.Fks.hOS > 0.0F);
     }
     
     private void v(String paramString, Bitmap paramBitmap)
     {
-      AppMethodBeat.i(195443);
-      if ((paramBitmap != null) && (fbz()))
+      AppMethodBeat.i(218896);
+      if ((paramBitmap != null) && (ffn()))
       {
-        a locala = a.a.HTy;
+        a locala = a.a.InF;
         if (locala != null) {
-          locala.p(aMv(paramString), paramBitmap);
+          locala.p(aNR(paramString), paramBitmap);
         }
       }
-      AppMethodBeat.o(195443);
+      AppMethodBeat.o(218896);
     }
     
-    public final Bitmap LL()
+    public final Bitmap LT()
     {
       AppMethodBeat.i(152119);
       Bitmap localBitmap;
-      if ((this.nZT != null) && (!this.nZT.isRecycled()))
+      if ((this.ofD != null) && (!this.ofD.isRecycled()))
       {
-        localBitmap = this.nZT;
+        localBitmap = this.ofD;
         AppMethodBeat.o(152119);
         return localBitmap;
       }
-      if (this.wYb != null)
+      if (this.xnS != null)
       {
-        localBitmap = this.wYb.LL();
+        localBitmap = this.xnS.LT();
         AppMethodBeat.o(152119);
         return localBitmap;
       }
@@ -155,16 +155,16 @@ public final class d
     public final Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(152116);
-      Bitmap localBitmap = aMu(paramString);
+      Bitmap localBitmap = aNQ(paramString);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
         AppMethodBeat.o(152116);
         return localBitmap;
       }
-      if (this.wYb != null) {
-        localBitmap = this.wYb.a(paramString, paramInt1, paramInt2, paramInt3);
+      if (this.xnS != null) {
+        localBitmap = this.xnS.a(paramString, paramInt1, paramInt2, paramInt3);
       }
-      localBitmap = ax(localBitmap);
+      localBitmap = ay(localBitmap);
       v(paramString, localBitmap);
       AppMethodBeat.o(152116);
       return localBitmap;
@@ -173,56 +173,56 @@ public final class d
     public final void a(j paramj)
     {
       AppMethodBeat.i(152120);
-      if (this.wYb != null) {
-        this.wYb.a(paramj);
+      if (this.xnS != null) {
+        this.xnS.a(paramj);
       }
       AppMethodBeat.o(152120);
     }
     
-    public final void aw(Bitmap paramBitmap)
+    public final void ax(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(195440);
-      this.nZT = paramBitmap;
-      this.nZT = ax(this.nZT);
-      AppMethodBeat.o(195440);
+      AppMethodBeat.i(218893);
+      this.ofD = paramBitmap;
+      this.ofD = ay(this.ofD);
+      AppMethodBeat.o(218893);
     }
     
-    public final Bitmap fg(String paramString)
+    public final Bitmap fl(String paramString)
     {
       AppMethodBeat.i(152117);
-      Bitmap localBitmap = aMu(paramString);
+      Bitmap localBitmap = aNQ(paramString);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
         AppMethodBeat.o(152117);
         return localBitmap;
       }
-      if (this.ERX != null) {
-        localBitmap = c.a(paramString, false, -1, this.ERX);
+      if (this.Fks != null) {
+        localBitmap = c.a(paramString, false, -1, this.Fks);
       }
       for (;;)
       {
-        localBitmap = ax(localBitmap);
+        localBitmap = ay(localBitmap);
         v(paramString, localBitmap);
         AppMethodBeat.o(152117);
         return localBitmap;
-        if (this.wYb != null) {
-          localBitmap = this.wYb.fg(paramString);
+        if (this.xnS != null) {
+          localBitmap = this.xnS.fl(paramString);
         }
       }
     }
     
-    public final Bitmap fh(String paramString)
+    public final Bitmap fm(String paramString)
     {
       AppMethodBeat.i(152118);
-      Bitmap localBitmap = aMu(paramString);
+      Bitmap localBitmap = aNQ(paramString);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
         AppMethodBeat.o(152118);
         return localBitmap;
       }
-      if (this.wYb != null)
+      if (this.xnS != null)
       {
-        paramString = this.wYb.fh(paramString);
+        paramString = this.xnS.fm(paramString);
         AppMethodBeat.o(152118);
         return paramString;
       }

@@ -10,14 +10,14 @@ public final class h
   implements b
 {
   private static long bFa;
-  private static int lmS;
-  private static long lmT;
+  private static int lrs;
+  private static long lrt;
   private int bEV;
   private final Handler eventHandler;
-  private final b.a lmO;
-  private final c lmP;
-  private final p lmQ;
-  private long lmR;
+  private final b.a lro;
+  private final c lrp;
+  private final p lrq;
+  private long lrr;
   private long startTimeMs;
   
   public h()
@@ -28,8 +28,8 @@ public final class h
   public h(byte paramByte)
   {
     this(new q());
-    AppMethodBeat.i(206030);
-    AppMethodBeat.o(206030);
+    AppMethodBeat.i(211057);
+    AppMethodBeat.o(211057);
   }
   
   private h(c paramc)
@@ -39,13 +39,13 @@ public final class h
   
   private h(c paramc, byte paramByte)
   {
-    AppMethodBeat.i(206031);
+    AppMethodBeat.i(211058);
     this.eventHandler = null;
-    this.lmO = null;
-    this.lmP = paramc;
-    this.lmQ = new p();
+    this.lro = null;
+    this.lrp = paramc;
+    this.lrq = new p();
     bFa = -1L;
-    AppMethodBeat.o(206031);
+    AppMethodBeat.o(211058);
   }
   
   public final void onTransferEnd()
@@ -56,20 +56,20 @@ public final class h
     {
       try
       {
-        AppMethodBeat.i(206033);
+        AppMethodBeat.i(211060);
         if (this.bEV > 0)
         {
           bool = true;
           a.checkState(bool);
-          l2 = this.lmP.elapsedRealtime();
+          l2 = this.lrp.elapsedRealtime();
           i = (int)(l2 - this.startTimeMs);
-          lmS = i;
+          lrs = i;
           if (i <= 0) {
             break label527;
           }
-          f = (float)(this.lmR * 8000L / lmS);
-          localObject4 = this.lmQ;
-          i = (int)Math.sqrt(this.lmR);
+          f = (float)(this.lrr * 8000L / lrs);
+          localObject4 = this.lrq;
+          i = (int)Math.sqrt(this.lrr);
           if (((p)localObject4).bHi != 1)
           {
             Collections.sort(((p)localObject4).bHg, p.bHd);
@@ -78,7 +78,7 @@ public final class h
           if (((p)localObject4).bHl <= 0) {
             break label323;
           }
-          Object localObject1 = ((p)localObject4).lnk;
+          Object localObject1 = ((p)localObject4).lrJ;
           j = ((p)localObject4).bHl - 1;
           ((p)localObject4).bHl = j;
           localObject1 = localObject1[j];
@@ -102,7 +102,7 @@ public final class h
           if (((p)localObject4).bHl >= 5) {
             continue;
           }
-          p.a[] arrayOfa = ((p)localObject4).lnk;
+          p.a[] arrayOfa = ((p)localObject4).lrJ;
           i = ((p)localObject4).bHl;
           ((p)localObject4).bHl = (i + 1);
           arrayOfa[i] = localObject1;
@@ -119,7 +119,7 @@ public final class h
       ((p.a)localObject3).weight -= i;
       ((p)localObject4).bHk -= i;
     }
-    Object localObject3 = this.lmQ;
+    Object localObject3 = this.lrq;
     if (((p)localObject3).bHi != 0)
     {
       Collections.sort(((p)localObject3).bHg, p.bHe);
@@ -146,11 +146,11 @@ public final class h
     for (final long l1 = -1L;; l1 = f)
     {
       bFa = l1;
-      lmT = l1;
-      i = lmS;
-      l1 = this.lmR;
+      lrt = l1;
+      i = lrs;
+      l1 = this.lrr;
       long l3 = bFa;
-      if ((this.eventHandler != null) && (this.lmO != null)) {
+      if ((this.eventHandler != null) && (this.lro != null)) {
         this.eventHandler.post(new Runnable()
         {
           public final void run() {}
@@ -160,8 +160,8 @@ public final class h
       if (this.bEV > 0) {
         this.startTimeMs = l2;
       }
-      this.lmR = 0L;
-      AppMethodBeat.o(206033);
+      this.lrr = 0L;
+      AppMethodBeat.o(211060);
       return;
       i += 1;
       break;
@@ -179,22 +179,22 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(206032);
+      AppMethodBeat.i(211059);
       if (this.bEV == 0) {
-        this.startTimeMs = this.lmP.elapsedRealtime();
+        this.startTimeMs = this.lrp.elapsedRealtime();
       }
       this.bEV += 1;
-      AppMethodBeat.o(206032);
+      AppMethodBeat.o(211059);
       return;
     }
     finally {}
   }
   
-  public final void tv(int paramInt)
+  public final void tz(int paramInt)
   {
     try
     {
-      this.lmR += paramInt;
+      this.lrr += paramInt;
       return;
     }
     finally

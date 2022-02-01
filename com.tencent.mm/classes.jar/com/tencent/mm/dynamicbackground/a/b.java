@@ -6,21 +6,21 @@ import d.g.b.p;
 import d.l;
 import java.io.File;
 
-@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/util/DynamicBgAssetsManager;", "", "()V", "TAG", "", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getSavedFileDirectory", "init", "dynamicbg_release"})
+@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/util/DynamicBgAssetsManager;", "", "()V", "TAG", "", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getSavedFileDirectory", "init", "dynamicbg_release"})
 public final class b
 {
   private static final String TAG = "DynamicBgAssetsManager";
-  public static final b gfJ;
+  public static final b gib;
   
   static
   {
     AppMethodBeat.i(103093);
-    gfJ = new b();
+    gib = new b();
     TAG = "DynamicBgAssetsManager";
     AppMethodBeat.o(103093);
   }
   
-  public static String cj(Context paramContext)
+  public static String cl(Context paramContext)
   {
     AppMethodBeat.i(103092);
     p.h(paramContext, "context");
@@ -87,7 +87,7 @@ public final class b
     //   94: astore 5
     //   96: aload_2
     //   97: ifnonnull +6 -> 103
-    //   100: invokestatic 134	d/g/b/p:gfZ	()V
+    //   100: invokestatic 134	d/g/b/p:gkB	()V
     //   103: aload_2
     //   104: aload 5
     //   106: invokevirtual 140	java/io/InputStream:read	([B)I

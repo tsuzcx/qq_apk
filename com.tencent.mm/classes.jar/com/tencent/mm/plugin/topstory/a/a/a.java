@@ -15,57 +15,57 @@ public final class a
     AppMethodBeat.i(91000);
     ArrayList localArrayList;
     IDKey localIDKey;
-    if (paramb.Brp > 0L)
+    if (paramb.BIO > 0L)
     {
       localArrayList = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(0);
-      localIDKey.SetValue(paramb.Brp);
+      localIDKey.SetValue(paramb.BIO);
       localArrayList.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(1);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      e.ygI.b(localArrayList, false);
+      e.ywz.b(localArrayList, false);
     }
-    if (paramb.Brg > 0L)
+    if (paramb.BIF > 0L)
     {
       localArrayList = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(2);
-      localIDKey.SetValue(paramb.Brg);
+      localIDKey.SetValue(paramb.BIF);
       localArrayList.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(3);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      e.ygI.b(localArrayList, false);
+      e.ywz.b(localArrayList, false);
     }
-    if (paramb.Brq > 0L)
+    if (paramb.BIP > 0L)
     {
       localArrayList = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(4);
-      localIDKey.SetValue(paramb.Brq);
+      localIDKey.SetValue(paramb.BIP);
       localArrayList.add(localIDKey);
       paramb = new IDKey();
       paramb.SetID(ID);
       paramb.SetKey(5);
       paramb.SetValue(1L);
       localArrayList.add(paramb);
-      e.ygI.b(localArrayList, false);
+      e.ywz.b(localArrayList, false);
     }
     AppMethodBeat.o(91000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.a.a
  * JD-Core Version:    0.7.0.1
  */

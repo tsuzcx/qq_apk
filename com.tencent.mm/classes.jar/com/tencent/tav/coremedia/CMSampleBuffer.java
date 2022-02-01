@@ -11,12 +11,12 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(CMSampleState paramCMSampleState)
   {
-    AppMethodBeat.i(219395);
+    AppMethodBeat.i(200188);
     this.state = paramCMSampleState;
     this.state.setNewFrame(false);
     this.texture = null;
     this.sampleByteBuffer = null;
-    AppMethodBeat.o(219395);
+    AppMethodBeat.o(200188);
   }
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
@@ -28,12 +28,12 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(219396);
+    AppMethodBeat.i(200189);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.texture = paramTextureInfo;
     this.sampleByteBuffer = null;
-    AppMethodBeat.o(219396);
+    AppMethodBeat.o(200189);
   }
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
@@ -45,47 +45,47 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
-    AppMethodBeat.i(219397);
+    AppMethodBeat.i(200190);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.sampleByteBuffer = paramByteBuffer;
     this.texture = null;
-    AppMethodBeat.o(219397);
+    AppMethodBeat.o(200190);
   }
   
   public CMSampleBuffer(CMTime paramCMTime)
   {
     this(new CMSampleState(paramCMTime));
-    AppMethodBeat.i(219398);
-    AppMethodBeat.o(219398);
+    AppMethodBeat.i(200191);
+    AppMethodBeat.o(200191);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo)
   {
     this(new CMSampleState(paramCMTime), paramTextureInfo);
-    AppMethodBeat.i(219399);
-    AppMethodBeat.o(219399);
+    AppMethodBeat.i(200192);
+    AppMethodBeat.o(200192);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
     this(new CMSampleState(paramCMTime), paramTextureInfo, paramBoolean);
-    AppMethodBeat.i(219400);
-    AppMethodBeat.o(219400);
+    AppMethodBeat.i(200193);
+    AppMethodBeat.o(200193);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, ByteBuffer paramByteBuffer)
   {
     this(new CMSampleState(paramCMTime), paramByteBuffer);
-    AppMethodBeat.i(219401);
-    AppMethodBeat.o(219401);
+    AppMethodBeat.i(200194);
+    AppMethodBeat.o(200194);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
     this(new CMSampleState(paramCMTime), paramByteBuffer, paramBoolean);
-    AppMethodBeat.i(219402);
-    AppMethodBeat.o(219402);
+    AppMethodBeat.i(200195);
+    AppMethodBeat.o(200195);
   }
   
   public ByteBuffer getSampleByteBuffer()
@@ -105,25 +105,25 @@ public class CMSampleBuffer
   
   public CMTime getTime()
   {
-    AppMethodBeat.i(219403);
+    AppMethodBeat.i(200196);
     CMTime localCMTime = this.state.getTime();
-    AppMethodBeat.o(219403);
+    AppMethodBeat.o(200196);
     return localCMTime;
   }
   
   public boolean isNewFrame()
   {
-    AppMethodBeat.i(219404);
+    AppMethodBeat.i(200197);
     boolean bool = this.state.isNewFrame();
-    AppMethodBeat.o(219404);
+    AppMethodBeat.o(200197);
     return bool;
   }
   
   public void setNewFrame(boolean paramBoolean)
   {
-    AppMethodBeat.i(219405);
+    AppMethodBeat.i(200198);
     this.state.setNewFrame(paramBoolean);
-    AppMethodBeat.o(219405);
+    AppMethodBeat.o(200198);
   }
   
   public void setSampleByteBuffer(ByteBuffer paramByteBuffer)
@@ -133,9 +133,9 @@ public class CMSampleBuffer
   
   public String toString()
   {
-    AppMethodBeat.i(219406);
+    AppMethodBeat.i(200199);
     String str = "CMSampleBuffer{, state=" + this.state + ", texture=" + this.texture + ", sampleByteBuffer=" + this.sampleByteBuffer + '}';
-    AppMethodBeat.o(219406);
+    AppMethodBeat.o(200199);
     return str;
   }
 }

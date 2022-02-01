@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.exdevice.g.a;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.w;
 
 public final class d
 {
-  private static final String qeI;
-  private static final String qeJ;
+  private static final String qln;
+  private static final String qlo;
   
   static
   {
     AppMethodBeat.i(23505);
-    qeI = b.ask() + "uploaded_photos/";
-    qeJ = b.ask() + "temp/";
+    qln = b.asz() + "uploaded_photos/";
+    qlo = b.asz() + "temp/";
     AppMethodBeat.o(23505);
   }
   
-  public static String acA(String paramString)
+  public static String adr(String paramString)
   {
     AppMethodBeat.i(23503);
-    if (bt.isNullOrNil(paramString)) {}
-    for (String str = "";; str = q.B(new e(clG(), str).fOK()))
+    if (bu.isNullOrNil(paramString)) {}
+    for (String str = "";; str = w.B(new k(cmW(), str).fTh()))
     {
-      g.c(paramString, 640, 640, Bitmap.CompressFormat.JPEG, 100, str);
+      h.c(paramString, 640, 640, Bitmap.CompressFormat.JPEG, 100, str);
       System.currentTimeMillis();
       AppMethodBeat.o(23503);
       return str;
-      str = ai.ee(paramString);
+      str = aj.ej(paramString);
       str = str + "_t";
     }
   }
   
-  public static e clG()
+  public static k cmW()
   {
     AppMethodBeat.i(23504);
-    e locale = new e(qeI);
-    if ((!locale.exists()) || (!locale.isDirectory())) {
-      locale.mkdirs();
+    k localk = new k(qln);
+    if ((!localk.exists()) || (!localk.isDirectory())) {
+      localk.mkdirs();
     }
     AppMethodBeat.o(23504);
-    return locale;
+    return localk;
   }
 }
 

@@ -10,74 +10,63 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.StrikethroughSpan;
 import android.text.style.UnderlineSpan;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
+import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_core.ui.q;
-import com.tencent.mm.plugin.wallet_core.ui.q.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.protocal.protobuf.afl;
-import com.tencent.mm.protocal.protobuf.bpn;
-import com.tencent.mm.protocal.protobuf.bxz;
-import com.tencent.mm.protocal.protobuf.cbx;
-import com.tencent.mm.protocal.protobuf.che;
-import com.tencent.mm.protocal.protobuf.cwq;
-import com.tencent.mm.protocal.protobuf.dml;
-import com.tencent.mm.protocal.protobuf.dmo;
-import com.tencent.mm.protocal.protobuf.dnb;
-import com.tencent.mm.protocal.protobuf.dwf;
-import com.tencent.mm.protocal.protobuf.re;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.protocal.protobuf.afu;
+import com.tencent.mm.protocal.protobuf.bqg;
+import com.tencent.mm.protocal.protobuf.byt;
+import com.tencent.mm.protocal.protobuf.chy;
+import com.tencent.mm.protocal.protobuf.cxk;
+import com.tencent.mm.protocal.protobuf.dni;
+import com.tencent.mm.protocal.protobuf.dnl;
+import com.tencent.mm.protocal.protobuf.dny;
+import com.tencent.mm.protocal.protobuf.dxa;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.widget.MMSwitchBtn.a;
-import com.tencent.mm.wallet_core.ui.e;
-import java.util.ArrayList;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import junit.framework.Assert;
 
 public final class g
 {
-  private static CharSequence a(final Context paramContext, final dml paramdml, a parama)
+  private static CharSequence a(Context paramContext, dni paramdni, g.a parama)
   {
     AppMethodBeat.i(71666);
-    SpannableString localSpannableString = new SpannableString(paramdml.text);
+    SpannableString localSpannableString = new SpannableString(paramdni.text);
     int i = 1;
     int j = 1;
     long l2;
     long l1;
     if (al.isDarkMode()) {
-      if (paramdml.HAH == null)
+      if (paramdni.HUu == null)
       {
         l2 = -1L;
-        paramdml.HAH = new afl();
-        if ((paramdml.HAF == Long.parseLong("ff000000", 16)) || (paramdml.HAF == 0L))
+        paramdni.HUu = new afu();
+        if ((paramdni.HUs == Long.parseLong("ff000000", 16)) || (paramdni.HUs == 0L))
         {
           l2 = Long.parseLong("CCFFFFFF", 16);
           l1 = l2;
           i = j;
           if (l2 == -1L)
           {
-            l2 = ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(paramdml.HAH.Gdv, paramdml.HAH.Gdw);
+            l2 = ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(paramdni.HUu.Gwc, paramdni.HUu.Gwd);
             l1 = l2;
             i = j;
             if (l2 == -1L)
             {
-              l1 = al.gD((int)paramdml.HAF);
+              l1 = al.gE((int)paramdni.HUs);
               i = 0;
             }
           }
@@ -93,13 +82,13 @@ public final class g
     label490:
     for (i = (int)(l1 | 0xFF000000);; i = j)
     {
-      Object localObject = new WcPayTextApppearanceSpan(com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)paramdml.size), ColorStateList.valueOf(i));
+      Object localObject = new WcPayTextApppearanceSpan(com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)paramdni.size), ColorStateList.valueOf(i));
       localSpannableString.setSpan(localObject, 0, localSpannableString.length(), 17);
-      if (!bt.isNullOrNil(paramdml.xNN)) {
-        ((WcPayTextApppearanceSpan)localObject).Dof = e.cq(paramContext, paramdml.xNN);
+      if (!bu.isNullOrNil(paramdni.ydG)) {
+        ((WcPayTextApppearanceSpan)localObject).DFL = f.cr(paramContext, paramdni.ydG);
       }
       localObject = null;
-      if (paramdml.HAG == 1) {
+      if (paramdni.HUt == 1) {
         localObject = new StrikethroughSpan();
       }
       for (;;)
@@ -107,250 +96,235 @@ public final class g
         if (localObject != null) {
           localSpannableString.setSpan(localObject, 0, localSpannableString.length(), 17);
         }
-        if ((paramdml.FsR != null) && (paramdml.FsR.type != 0))
+        if ((paramdni.FLp != null) && (paramdni.FLp.type != 0))
         {
-          paramdml = paramdml.FsR;
-          ad.i("MicroMsg.WcPayViewEngineRender", "route type: %s", new Object[] { Integer.valueOf(paramdml.type) });
-          localSpannableString.setSpan(new q(new q.a()
-          {
-            public final void dN(View paramAnonymousView)
-            {
-              AppMethodBeat.i(71651);
-              if (this.Dog != null)
-              {
-                g.a(paramContext, paramdml, null);
-                this.Dog.a(paramdml);
-                AppMethodBeat.o(71651);
-                return;
-              }
-              g.a(paramContext, paramdml, null);
-              AppMethodBeat.o(71651);
-            }
-          }), 0, localSpannableString.length(), 17);
+          paramdni = paramdni.FLp;
+          ae.i("MicroMsg.WcPayViewEngineRender", "route type: %s", new Object[] { Integer.valueOf(paramdni.type) });
+          localSpannableString.setSpan(new q(new g.1(parama, paramdni, paramContext)), 0, localSpannableString.length(), 17);
         }
         AppMethodBeat.o(71666);
         return localSpannableString;
-        if (paramdml.HAF == Long.parseLong("78000000", 16))
+        if (paramdni.HUs == Long.parseLong("78000000", 16))
         {
           l2 = Long.parseLong("80FFFFFF", 16);
           break;
         }
-        paramdml.HAH.Gdv = paramdml.HAF;
-        paramdml.HAH.Gdw = -1L;
+        paramdni.HUu.Gwc = paramdni.HUs;
+        paramdni.HUu.Gwd = -1L;
         break;
-        l1 = ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(paramdml.HAH.Gdv, paramdml.HAH.Gdw);
+        l1 = ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(paramdni.HUu.Gwc, paramdni.HUu.Gwd);
         i = j;
         break label159;
-        l1 = paramdml.HAF;
+        l1 = paramdni.HUs;
         j = (int)l1;
         break label164;
-        if (paramdml.HAG == 2) {
+        if (paramdni.HUt == 2) {
           localObject = new UnderlineSpan();
         }
       }
     }
   }
   
-  public static CharSequence a(Context paramContext, dmo paramdmo, a parama)
+  public static CharSequence a(Context paramContext, dnl paramdnl, g.a parama)
   {
     AppMethodBeat.i(71665);
-    if ((paramdmo == null) || (paramdmo.HAN == null) || (paramdmo.HAN.isEmpty()))
+    if ((paramdnl == null) || (paramdnl.HUA == null) || (paramdnl.HUA.isEmpty()))
     {
       AppMethodBeat.o(71665);
       return "";
     }
-    int j = paramdmo.HAN.size();
+    int j = paramdnl.HUA.size();
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     int i = 0;
     while (i < j)
     {
-      localSpannableStringBuilder.append(a(paramContext, (dml)paramdmo.HAN.get(i), parama));
+      localSpannableStringBuilder.append(a(paramContext, (dni)paramdnl.HUA.get(i), parama));
       i += 1;
     }
     AppMethodBeat.o(71665);
     return localSpannableStringBuilder;
   }
   
-  public static String a(Context paramContext, dmo paramdmo)
+  public static String a(Context paramContext, dnl paramdnl)
   {
     AppMethodBeat.i(71671);
-    paramContext = a(paramContext, paramdmo, null).toString();
+    paramContext = a(paramContext, paramdnl, null).toString();
     AppMethodBeat.o(71671);
     return paramContext;
   }
   
-  public static void a(Context paramContext, cwq paramcwq, Bundle paramBundle)
+  public static void a(Context paramContext, cxk paramcxk, Bundle paramBundle)
   {
     int i = 1000;
     AppMethodBeat.i(71667);
-    if (paramcwq == null)
+    if (paramcxk == null)
     {
       AppMethodBeat.o(71667);
       return;
     }
-    ad.i("MicroMsg.WcPayViewEngineRender", "route info type: %s, uri: %s", new Object[] { Integer.valueOf(paramcwq.type), paramcwq.url });
-    if (paramcwq.type == 1)
+    ae.i("MicroMsg.WcPayViewEngineRender", "route info type: %s, uri: %s", new Object[] { Integer.valueOf(paramcxk.type), paramcxk.url });
+    if (paramcxk.type == 1)
     {
-      e.n(paramContext, paramcwq.url, true);
+      f.o(paramContext, paramcxk.url, true);
       AppMethodBeat.o(71667);
       return;
     }
-    if (paramcwq.type == 2)
+    if (paramcxk.type == 2)
     {
-      if (paramcwq.Hou == null)
+      if (paramcxk.HHW == null)
       {
-        ad.e("MicroMsg.WcPayViewEngineRender", "tiny app uri is null");
+        ae.e("MicroMsg.WcPayViewEngineRender", "tiny app uri is null");
         AppMethodBeat.o(71667);
         return;
       }
       if (paramBundle != null) {
         i = paramBundle.getInt("key_tiny_app_scene", 1000);
       }
-      e.v(paramcwq.Hou.username, paramcwq.Hou.path, paramcwq.Hou.version, i);
+      f.u(paramcxk.HHW.username, paramcxk.HHW.path, paramcxk.HHW.version, i);
       AppMethodBeat.o(71667);
       return;
     }
-    if (paramcwq.type != 3) {
-      if (paramcwq.type == 4)
+    if (paramcxk.type != 3) {
+      if (paramcxk.type == 4)
       {
-        if (paramcwq.url.equals("balance"))
+        if (paramcxk.url.equals("balance"))
         {
           d.c(paramContext, "wallet", ".balance.ui.WalletBalanceManagerUI", 65281);
           AppMethodBeat.o(71667);
           return;
         }
-        if (paramcwq.url.equals("bankCard"))
+        if (paramcxk.url.equals("bankCard"))
         {
-          paramcwq = new Intent();
-          paramcwq.putExtra("intent_finish_self", true);
-          d.b(paramContext, "wallet", ".bind.ui.WalletBankcardManageUI", paramcwq, 65281);
+          paramcxk = new Intent();
+          paramcxk.putExtra("intent_finish_self", true);
+          d.b(paramContext, "wallet", ".bind.ui.WalletBankcardManageUI", paramcxk, 65281);
           AppMethodBeat.o(71667);
           return;
         }
-        if (paramcwq.url.equals("qmfCard"))
+        if (paramcxk.url.equals("qmfCard"))
         {
           d.b(paramContext, "honey_pay", ".ui.HoneyPayMainUI", new Intent(), 65283);
           AppMethodBeat.o(71667);
           return;
         }
-        if (paramcwq.url.equals("paySecurity"))
+        if (paramcxk.url.equals("paySecurity"))
         {
-          paramcwq = new Intent();
-          paramcwq.putExtra("wallet_lock_jsapi_scene", 1);
-          d.b(paramContext, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramcwq, 65282);
+          paramcxk = new Intent();
+          paramcxk.putExtra("wallet_lock_jsapi_scene", 1);
+          d.b(paramContext, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramcxk, 65282);
           AppMethodBeat.o(71667);
           return;
         }
-        if (paramcwq.url.equals("lqt"))
+        if (paramcxk.url.equals("lqt"))
         {
-          paramcwq = new Intent();
-          paramcwq.putExtra("key_account_type", 1);
-          d.b(paramContext, "wallet", ".balance.ui.lqt.WalletLqtDetailUI", paramcwq, 65286);
+          paramcxk = new Intent();
+          paramcxk.putExtra("key_account_type", 1);
+          d.b(paramContext, "wallet", ".balance.ui.lqt.WalletLqtDetailUI", paramcxk, 65286);
           AppMethodBeat.o(71667);
           return;
         }
-        if (paramcwq.url.equals("realname"))
+        if (paramcxk.url.equals("realname"))
         {
-          paramcwq = new Bundle();
-          paramcwq.putInt("real_name_verify_mode", 0);
-          paramcwq.putInt("entry_scene", 0);
+          paramcxk = new Bundle();
+          paramcxk.putInt("real_name_verify_mode", 0);
+          paramcxk.putInt("entry_scene", 0);
           if (paramBundle != null) {
-            paramcwq.putAll(paramBundle);
+            paramcxk.putAll(paramBundle);
           }
           Assert.assertTrue("context must be activity", paramContext instanceof Activity);
-          com.tencent.mm.wallet_core.a.a((Activity)paramContext, com.tencent.mm.plugin.wallet_core.id_verify.a.class, paramcwq);
+          com.tencent.mm.wallet_core.a.a((Activity)paramContext, com.tencent.mm.plugin.wallet_core.id_verify.a.class, paramcxk);
           AppMethodBeat.o(71667);
         }
       }
-      else if (paramcwq.type == 5)
+      else if (paramcxk.type == 5)
       {
-        if (paramcwq.url.equals("wxpay://lqp/balanceQuotaState"))
+        if (paramcxk.url.equals("wxpay://lqp/balanceQuotaState"))
         {
           d.b(paramContext, "wallet_ecard", ".ui.WalletECardLogoutUI", new Intent());
           AppMethodBeat.o(71667);
         }
       }
-      else if (paramcwq.type == 13)
+      else if (paramcxk.type == 13)
       {
-        if (paramcwq.Hoy != null) {
+        if (paramcxk.HIa != null) {
           AppMethodBeat.o(71667);
         }
       }
       else
       {
-        ad.w("MicroMsg.WcPayViewEngineRender", "can't handle type: %s, uri: %s", new Object[] { Integer.valueOf(paramcwq.type), paramcwq.url });
+        ae.w("MicroMsg.WcPayViewEngineRender", "can't handle type: %s, uri: %s", new Object[] { Integer.valueOf(paramcxk.type), paramcxk.url });
       }
     }
     AppMethodBeat.o(71667);
   }
   
-  public static void a(View paramView, ViewGroup.MarginLayoutParams paramMarginLayoutParams, dwf paramdwf)
+  public static void a(View paramView, ViewGroup.MarginLayoutParams paramMarginLayoutParams, dxa paramdxa)
   {
     AppMethodBeat.i(71668);
-    if (paramdwf == null)
+    if (paramdxa == null)
     {
       AppMethodBeat.o(71668);
       return;
     }
-    a(paramMarginLayoutParams, paramdwf.HII);
-    a(paramView, paramdwf.Hor);
+    a(paramMarginLayoutParams, paramdxa.Icu);
+    a(paramView, paramdxa.HHT);
     AppMethodBeat.o(71668);
   }
   
-  public static void a(View paramView, che paramche)
+  public static void a(View paramView, chy paramchy)
   {
     AppMethodBeat.i(71669);
-    if (paramche == null)
+    if (paramchy == null)
     {
       AppMethodBeat.o(71669);
       return;
     }
-    int i = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)paramche.top);
-    int j = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)paramche.bottom);
-    paramView.setPadding(com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)paramche.left), i, com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)paramche.right), j);
+    int i = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)paramchy.top);
+    int j = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)paramchy.bottom);
+    paramView.setPadding(com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)paramchy.left), i, com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)paramchy.right), j);
     AppMethodBeat.o(71669);
   }
   
-  private static void a(ViewGroup.MarginLayoutParams paramMarginLayoutParams, bxz parambxz)
+  private static void a(ViewGroup.MarginLayoutParams paramMarginLayoutParams, byt parambyt)
   {
     AppMethodBeat.i(71670);
-    if (parambxz == null)
+    if (parambyt == null)
     {
       AppMethodBeat.o(71670);
       return;
     }
-    paramMarginLayoutParams.topMargin = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)parambxz.top);
-    paramMarginLayoutParams.bottomMargin = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)parambxz.bottom);
-    paramMarginLayoutParams.leftMargin = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)parambxz.left);
-    paramMarginLayoutParams.rightMargin = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)parambxz.right);
+    paramMarginLayoutParams.topMargin = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)parambyt.top);
+    paramMarginLayoutParams.bottomMargin = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)parambyt.bottom);
+    paramMarginLayoutParams.leftMargin = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)parambyt.left);
+    paramMarginLayoutParams.rightMargin = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)parambyt.right);
     AppMethodBeat.o(71670);
   }
   
-  public static void a(TextView paramTextView, dmo paramdmo, a parama)
+  public static void a(TextView paramTextView, dnl paramdnl, g.a parama)
   {
     AppMethodBeat.i(71660);
-    if (a(paramdmo))
+    if (a(paramdnl))
     {
       paramTextView.setClickable(true);
       paramTextView.setOnTouchListener(new n(paramTextView.getContext()));
     }
-    paramTextView.setText(a(paramTextView.getContext(), paramdmo, parama));
+    paramTextView.setText(a(paramTextView.getContext(), paramdnl, parama));
     AppMethodBeat.o(71660);
   }
   
-  public static void a(CdnImageView paramCdnImageView, bpn parambpn)
+  public static void a(CdnImageView paramCdnImageView, bqg parambqg)
   {
     AppMethodBeat.i(71662);
-    a(paramCdnImageView, parambpn, -1, 0, 0, true);
+    a(paramCdnImageView, parambqg, -1, 0, 0, true);
     AppMethodBeat.o(71662);
   }
   
-  public static void a(CdnImageView paramCdnImageView, bpn parambpn, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public static void a(CdnImageView paramCdnImageView, bqg parambqg, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(71664);
     paramCdnImageView.setUseSdcardCache(paramBoolean);
-    int j = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)parambpn.width);
-    int i = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), (int)parambpn.height);
+    int j = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)parambqg.width);
+    int i = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), (int)parambqg.height);
     if (paramInt2 > 0) {}
     for (;;)
     {
@@ -363,7 +337,7 @@ public final class g
           localLayoutParams.width = paramInt2;
           localLayoutParams.height = paramInt3;
         }
-        paramCdnImageView.r(parambpn.url, paramInt2, paramInt3, paramInt1);
+        paramCdnImageView.r(parambqg.url, paramInt2, paramInt3, paramInt1);
         AppMethodBeat.o(71664);
         return;
         paramInt3 = i;
@@ -372,24 +346,24 @@ public final class g
     }
   }
   
-  public static void a(CdnImageView paramCdnImageView, bpn parambpn, int paramInt, boolean paramBoolean)
+  public static void a(CdnImageView paramCdnImageView, bqg parambqg, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(71663);
-    a(paramCdnImageView, parambpn, paramInt, 0, 0, paramBoolean);
+    a(paramCdnImageView, parambqg, paramInt, 0, 0, paramBoolean);
     AppMethodBeat.o(71663);
   }
   
-  private static boolean a(dmo paramdmo)
+  private static boolean a(dnl paramdnl)
   {
     AppMethodBeat.i(71661);
-    if ((paramdmo.HAN == null) || (paramdmo.HAN.isEmpty()))
+    if ((paramdnl.HUA == null) || (paramdnl.HUA.isEmpty()))
     {
       AppMethodBeat.o(71661);
       return false;
     }
-    paramdmo = paramdmo.HAN.iterator();
-    while (paramdmo.hasNext()) {
-      if (((dml)paramdmo.next()).FsR != null)
+    paramdnl = paramdnl.HUA.iterator();
+    while (paramdnl.hasNext()) {
+      if (((dni)paramdnl.next()).FLp != null)
       {
         AppMethodBeat.o(71661);
         return true;
@@ -407,10 +381,10 @@ public final class g
     return i;
   }
   
-  public static int cl(String paramString, boolean paramBoolean)
+  public static int cp(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(162279);
-    afl localafl = new afl();
+    afu localafu = new afu();
     if (paramString == null)
     {
       AppMethodBeat.o(162279);
@@ -427,7 +401,7 @@ public final class g
     {
       try
       {
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyd, 1) == 0)
+        if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qFj, 1) == 0)
         {
           i = Color.parseColor(paramString);
           AppMethodBeat.o(162279);
@@ -461,27 +435,27 @@ public final class g
                 l = Long.parseLong("4DFFFFFF", 16);
                 continue;
               }
-              localafl.Gdv = l;
-              localafl.Gdw = -1L;
+              localafu.Gwc = l;
+              localafu.Gwd = -1L;
               l = -1L;
               continue;
             }
           }
           else
           {
-            localafl.Gdv = l;
-            localafl.Gdw = -1L;
+            localafu.Gwc = l;
+            localafu.Gwd = -1L;
             l = -1L;
             continue;
           }
-          l = ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(localafl.Gdv, localafl.Gdw);
+          l = ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(localafu.Gwc, localafu.Gwd);
           if (l != -1L)
           {
             i = argbColor(l);
             AppMethodBeat.o(162279);
             return i;
           }
-          i = al.gD(Color.parseColor(paramString));
+          i = al.gE(Color.parseColor(paramString));
           AppMethodBeat.o(162279);
           return i;
         }
@@ -495,15 +469,10 @@ public final class g
       String str2 = paramString;
     }
   }
-  
-  public static abstract interface a
-  {
-    public abstract void a(cwq paramVarArgs);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.g
  * JD-Core Version:    0.7.0.1
  */

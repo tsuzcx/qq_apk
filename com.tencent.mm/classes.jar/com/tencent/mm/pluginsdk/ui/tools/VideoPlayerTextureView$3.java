@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class VideoPlayerTextureView$3
   implements Runnable
@@ -14,17 +14,17 @@ final class VideoPlayerTextureView$3
     AppMethodBeat.i(134039);
     try
     {
-      if ((this.lsY != null) && (this.lsY.isValid()))
+      if ((this.lxx != null) && (this.lxx.isValid()))
       {
-        ad.i("MicroMsg.VideoPlayerTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.Fla.hashCode()), Integer.valueOf(this.lsY.hashCode()) });
-        this.lsY.release();
+        ae.i("MicroMsg.VideoPlayerTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.FDy.hashCode()), Integer.valueOf(this.lxx.hashCode()) });
+        this.lxx.release();
       }
       AppMethodBeat.o(134039);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.VideoPlayerTextureView", localException, "release Surface error", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.VideoPlayerTextureView", localException, "release Surface error", new Object[0]);
       AppMethodBeat.o(134039);
     }
   }

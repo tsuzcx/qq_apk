@@ -15,14 +15,14 @@ public class GameChooseMediaUI
   public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, s.b paramb)
   {
     AppMethodBeat.i(40903);
-    super.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener, s.b.Jcc);
+    super.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener, s.b.JwK);
     AppMethodBeat.o(40903);
   }
   
-  public final void akW(String paramString)
+  public final void alU(String paramString)
   {
     AppMethodBeat.i(40904);
-    ((com.tencent.mm.plugin.game.api.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.g.class)).i(this, paramString, 4377);
+    ((com.tencent.mm.plugin.game.api.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.g.class)).a(this, paramString, 4377, null);
     AppMethodBeat.o(40904);
   }
   
@@ -30,7 +30,7 @@ public class GameChooseMediaUI
   {
     AppMethodBeat.i(40901);
     super.onCreate(paramBundle);
-    overridePendingTransition(MMFragmentActivity.a.Jcx, MMFragmentActivity.a.Jcy);
+    overridePendingTransition(MMFragmentActivity.a.Jxh, MMFragmentActivity.a.Jxi);
     AppMethodBeat.o(40901);
   }
   
@@ -49,7 +49,7 @@ public class GameChooseMediaUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameChooseMediaUI
  * JD-Core Version:    0.7.0.1
  */

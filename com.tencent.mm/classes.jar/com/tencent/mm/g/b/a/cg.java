@@ -6,44 +6,44 @@ import com.tencent.mm.plugin.report.a;
 public final class cg
   extends a
 {
-  public long dVP = 0L;
-  public long dVd = 0L;
-  public String ecs = "";
-  public long ect = 0L;
-  public long ecu = 0L;
+  public long dWt = 0L;
+  public long dXf = 0L;
+  public String edN = "";
+  public long edO = 0L;
+  public long edP = 0L;
   
-  public final String RD()
+  public final String RC()
   {
     AppMethodBeat.i(184550);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecs);
+    ((StringBuffer)localObject).append(this.edN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ect);
+    ((StringBuffer)localObject).append(this.edO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVP);
+    ((StringBuffer)localObject).append(this.dXf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecu);
+    ((StringBuffer)localObject).append(this.edP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVd);
+    ((StringBuffer)localObject).append(this.dWt);
     localObject = ((StringBuffer)localObject).toString();
-    awz((String)localObject);
+    axO((String)localObject);
     AppMethodBeat.o(184550);
     return localObject;
   }
   
-  public final String RE()
+  public final String RD()
   {
     AppMethodBeat.i(184551);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Query:").append(this.ecs);
+    ((StringBuffer)localObject).append("Query:").append(this.edN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasWebSearchEntryShown:").append(this.ect);
+    ((StringBuffer)localObject).append("HasWebSearchEntryShown:").append(this.edO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickType:").append(this.dVP);
+    ((StringBuffer)localObject).append("ClickType:").append(this.dXf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Style:").append(this.ecu);
+    ((StringBuffer)localObject).append("Style:").append(this.edP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
+    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(184551);
     return localObject;
@@ -56,7 +56,7 @@ public final class cg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.cg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ public final class b
   extends q
   implements d.l.b.a.b.a.b
 {
-  public static final a NzS;
-  private final boolean NzR;
+  public static final a NWZ;
+  private final boolean NWY;
   
   static
   {
     AppMethodBeat.i(60389);
-    NzS = new a((byte)0);
+    NWZ = new a((byte)0);
     AppMethodBeat.o(60389);
   }
   
@@ -24,7 +24,7 @@ public final class b
   {
     super(paramb, paramj, paramy, paraml, (d.l.b.a.b.e.b.a)parama);
     AppMethodBeat.i(60388);
-    this.NzR = false;
+    this.NWY = false;
     AppMethodBeat.o(60388);
   }
   
@@ -54,7 +54,7 @@ public final class b
       //   34: aload_3
       //   35: checkcast 42	java/io/InputStream
       //   38: astore 4
-      //   40: getstatic 48	d/l/b/a/b/e/a/a:NnT	Ld/l/b/a/b/e/a/a$a;
+      //   40: getstatic 48	d/l/b/a/b/e/a/a:NKZ	Ld/l/b/a/b/e/a/a$a;
       //   43: astore 5
       //   45: aload 4
       //   47: ldc 50
@@ -64,12 +64,12 @@ public final class b
       //   56: aload 4
       //   58: invokespecial 55	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
       //   61: astore 5
-      //   63: new 57	d/k/d
+      //   63: new 57	d/k/f
       //   66: dup
       //   67: iconst_1
       //   68: aload 5
       //   70: invokevirtual 61	java/io/DataInputStream:readInt	()I
-      //   73: invokespecial 64	d/k/d:<init>	(II)V
+      //   73: invokespecial 64	d/k/f:<init>	(II)V
       //   76: checkcast 66	java/lang/Iterable
       //   79: astore 7
       //   81: new 68	java/util/ArrayList
@@ -124,7 +124,7 @@ public final class b
       //   193: invokespecial 125	d/l/b/a/b/e/a/a:<init>	([I)V
       //   196: astore 5
       //   198: aload 5
-      //   200: invokevirtual 128	d/l/b/a/b/e/a/a:gqj	()Z
+      //   200: invokevirtual 128	d/l/b/a/b/e/a/a:guL	()Z
       //   203: ifne +54 -> 257
       //   206: new 130	java/lang/UnsupportedOperationException
       //   209: dup
@@ -132,7 +132,7 @@ public final class b
       //   213: dup
       //   214: ldc 134
       //   216: invokespecial 137	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   219: getstatic 141	d/l/b/a/b/e/a/a:NnR	Ld/l/b/a/b/e/a/a;
+      //   219: getstatic 141	d/l/b/a/b/e/a/a:NKX	Ld/l/b/a/b/e/a/a;
       //   222: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
       //   225: ldc 147
       //   227: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -149,8 +149,8 @@ public final class b
       //   255: aload_0
       //   256: athrow
       //   257: aload 4
-      //   259: getstatic 163	d/l/b/a/b/k/a/a/a:NzQ	Ld/l/b/a/b/k/a/a/a;
-      //   262: getfield 169	d/l/b/a/b/k/a:Nrt	Ld/l/b/a/b/h/g;
+      //   259: getstatic 163	d/l/b/a/b/k/a/a/a:NWX	Ld/l/b/a/b/k/a/a/a;
+      //   262: getfield 169	d/l/b/a/b/k/a:NOz	Ld/l/b/a/b/h/g;
       //   265: invokestatic 175	d/l/b/a/b/e/a$l:d	(Ljava/io/InputStream;Ld/l/b/a/b/h/g;)Ld/l/b/a/b/e/a$l;
       //   268: astore 4
       //   270: aload_3
@@ -203,7 +203,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.a.b
  * JD-Core Version:    0.7.0.1
  */

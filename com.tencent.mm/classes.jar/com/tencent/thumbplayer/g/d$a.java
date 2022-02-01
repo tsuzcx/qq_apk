@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.b.b.b;
 
 final class d$a
 {
-  b MbS;
+  b MyN;
   String name;
   String url;
 }

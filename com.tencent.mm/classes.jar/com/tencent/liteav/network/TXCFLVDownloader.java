@@ -215,14 +215,14 @@ public class TXCFLVDownloader
   
   private void onRecvVideoData()
   {
-    AppMethodBeat.i(187397);
+    AppMethodBeat.i(221526);
     if (!this.mbFirstVideo)
     {
       this.mbFirstVideo = true;
       this.mStats.firstVideoTS = TXCTimeUtil.getTimeTick();
       TXCLog.i("network.TXCFLVDownloader", "onRecvData: receive first video with ts " + this.mStats.firstVideoTS);
     }
-    AppMethodBeat.o(187397);
+    AppMethodBeat.o(221526);
   }
   
   private void postConnectMsg()

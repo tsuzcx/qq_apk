@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContactNew$Constants;", "", "()V", "BATCH_GET_CGI_URI", "", "CTRL_INDEX", "", "NAME", "TAG", "toJsonContactList", "Lorg/json/JSONArray;", "", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiBatchGetContactNew$Constants;", "", "()V", "BATCH_GET_CGI_URI", "", "CTRL_INDEX", "", "NAME", "TAG", "toJsonContactList", "Lorg/json/JSONArray;", "", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "luggage-wechat-full-sdk_release"})
 final class al$a {}
 
 

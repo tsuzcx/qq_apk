@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.c;
 
 public abstract interface b
 {
-  public abstract void ahc();
+  public abstract void ahr();
   
-  public abstract void ahd();
+  public abstract void ahs();
 }
 
 

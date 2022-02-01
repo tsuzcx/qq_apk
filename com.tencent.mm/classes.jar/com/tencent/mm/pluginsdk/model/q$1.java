@@ -5,7 +5,7 @@ import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class q$1
   implements PendingIntent.OnFinished
@@ -14,9 +14,9 @@ final class q$1
   
   public final void onSendFinished(PendingIntent paramPendingIntent, Intent paramIntent, int paramInt, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(214475);
-    ad.i("MicroMsg.QQBrowserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    AppMethodBeat.o(214475);
+    AppMethodBeat.i(217549);
+    ae.i("MicroMsg.QQBrowserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    AppMethodBeat.o(217549);
   }
 }
 

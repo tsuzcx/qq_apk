@@ -3,7 +3,7 @@ package com.tencent.luggage.d;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,7 +21,7 @@ public final class l
     AppMethodBeat.o(140410);
   }
   
-  private static boolean Ch()
+  private static boolean Ck()
   {
     AppMethodBeat.i(140411);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
@@ -36,9 +36,9 @@ public final class l
   final boolean O(Class<? extends f> paramClass)
   {
     AppMethodBeat.i(140413);
-    if (!Ch())
+    if (!Ck())
     {
-      ad.e("LuggagePageEventBus", "notifyListener on non-UI thread");
+      ae.e("LuggagePageEventBus", "notifyListener on non-UI thread");
       AppMethodBeat.o(140413);
       return false;
     }

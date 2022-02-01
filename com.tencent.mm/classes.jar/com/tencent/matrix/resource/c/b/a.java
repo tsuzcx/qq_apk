@@ -18,7 +18,7 @@ public final class a
   
   public static Object a(InputStream paramInputStream, c paramc, int paramInt)
   {
-    switch (1.cIu[paramc.ordinal()])
+    switch (a.1.cJd[paramc.ordinal()])
     {
     default: 
       return null;
@@ -71,7 +71,7 @@ public final class a
   
   public static void a(OutputStream paramOutputStream, b paramb)
   {
-    paramOutputStream.write(paramb.cIj);
+    paramOutputStream.write(paramb.cIS);
   }
   
   public static int b(InputStream paramInputStream, c paramc, int paramInt)

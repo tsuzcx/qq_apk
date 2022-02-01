@@ -12,15 +12,15 @@ public final class c$3
   
   public final void run()
   {
-    AppMethodBeat.i(219527);
-    synchronized (c.a(this.gtQ))
+    AppMethodBeat.i(209649);
+    synchronized (c.a(this.gwx))
     {
-      Iterator localIterator = c.a(this.gtQ).values().iterator();
+      Iterator localIterator = c.a(this.gwx).values().iterator();
       if (localIterator.hasNext()) {
-        ((Map)localIterator.next()).remove(Long.valueOf(this.gtR));
+        ((Map)localIterator.next()).remove(Long.valueOf(this.gwy));
       }
     }
-    AppMethodBeat.o(219527);
+    AppMethodBeat.o(209649);
   }
 }
 

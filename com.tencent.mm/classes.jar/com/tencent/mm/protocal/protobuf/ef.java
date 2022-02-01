@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class ef
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Fwc;
-  public String Fwd;
+  public String FOA;
+  public String FOB;
   public String content;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -25,11 +25,11 @@ public final class ef
       if (this.content != null) {
         paramVarArgs.d(1, this.content);
       }
-      if (this.Fwc != null) {
-        paramVarArgs.d(2, this.Fwc);
+      if (this.FOA != null) {
+        paramVarArgs.d(2, this.FOA);
       }
-      if (this.Fwd != null) {
-        paramVarArgs.d(3, this.Fwd);
+      if (this.FOB != null) {
+        paramVarArgs.d(3, this.FOB);
       }
       AppMethodBeat.o(50079);
       return 0;
@@ -43,21 +43,21 @@ public final class ef
     for (int i = f.a.a.b.b.a.e(1, this.content) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Fwc != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Fwc);
+      if (this.FOA != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FOA);
       }
       i = paramInt;
-      if (this.Fwd != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Fwd);
+      if (this.FOB != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FOB);
       }
       AppMethodBeat.o(50079);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
         if (this.content == null)
@@ -79,15 +79,15 @@ public final class ef
           AppMethodBeat.o(50079);
           return -1;
         case 1: 
-          localef.content = locala.NPN.readString();
+          localef.content = locala.OmT.readString();
           AppMethodBeat.o(50079);
           return 0;
         case 2: 
-          localef.Fwc = locala.NPN.readString();
+          localef.FOA = locala.OmT.readString();
           AppMethodBeat.o(50079);
           return 0;
         }
-        localef.Fwd = locala.NPN.readString();
+        localef.FOB = locala.OmT.readString();
         AppMethodBeat.o(50079);
         return 0;
       }

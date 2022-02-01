@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.plugin.messenger.foundation.a.x;
-import com.tencent.mm.protocal.protobuf.caq;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
+import com.tencent.mm.protocal.protobuf.cbk;
 
 public final class t
-  implements x<caq>
+  implements y<cbk>
 {}
 
 

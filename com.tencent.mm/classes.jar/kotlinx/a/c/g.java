@@ -13,38 +13,38 @@ import kotlinx.a.o;
 import kotlinx.a.p;
 import kotlinx.a.s;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/JsonElementSerializer;", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonElement;", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonElementSerializer;", "Lkotlinx/serialization/KSerializer;", "Lkotlinx/serialization/json/JsonElement;", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class g
   implements h<f>
 {
-  static final n NLm;
-  public static final g NND;
+  static final n Ois;
+  public static final g OkJ;
   
   static
   {
-    AppMethodBeat.i(191403);
-    NND = new g();
-    NLm = p.a("kotlinx.serialization.json.JsonElement", (s)j.b.NLl, (b)a.NNE);
-    AppMethodBeat.o(191403);
+    AppMethodBeat.i(199991);
+    OkJ = new g();
+    Ois = p.a("kotlinx.serialization.json.JsonElement", (s)j.b.Oir, (b)a.OkK);
+    AppMethodBeat.o(199991);
   }
   
-  public final n eLj()
+  public final n eOR()
   {
-    return NLm;
+    return Ois;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/serialization/SerialDescriptorBuilder;", "invoke"})
   static final class a
     extends q
     implements b<o, z>
   {
-    public static final a NNE;
+    public static final a OkK;
     
     static
     {
-      AppMethodBeat.i(191408);
-      NNE = new a();
-      AppMethodBeat.o(191408);
+      AppMethodBeat.i(199996);
+      OkK = new a();
+      AppMethodBeat.o(199996);
     }
     
     a()

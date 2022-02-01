@@ -13,73 +13,73 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.cd;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.plugin.account.ui.MobileVerifyUI;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.pluginsdk.i.d;
 import com.tencent.mm.pluginsdk.j.a.a.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.List;
 
 public class l
-  implements ax
+  implements az
 {
-  private static av cjg = null;
-  private static int gun;
-  public static a jhC = a.jhH;
-  private a jhB;
-  private q jhD;
-  private c jhE;
+  private static aw cji = null;
+  private static int gwU;
+  public static a jkv = a.jkA;
+  private a jku;
+  private q jkw;
+  private c jkx;
   
   static
   {
-    gun = 0;
+    gwU = 0;
   }
   
   public l()
   {
     AppMethodBeat.i(127858);
-    this.jhD = new l.3(this);
-    this.jhE = new l.4(this);
+    this.jkw = new l.3(this);
+    this.jkx = new l.4(this);
     AppMethodBeat.o(127858);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(127861);
-    jhC = parama;
-    switch (5.jhG[parama.ordinal()])
+    jkv = parama;
+    switch (5.jkz[parama.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(127861);
       return;
-      gun = 0;
-      if (cjg == null) {
-        cjg = new av(new av.a()
+      gwU = 0;
+      if (cji == null) {
+        cji = new aw(new aw.a()
         {
           public final boolean onTimerExpired()
           {
-            AppMethodBeat.i(207109);
+            AppMethodBeat.i(188400);
             l.access$008();
             Object localObject1;
             Object localObject2;
-            if ((l.gun == 1) || (l.gun == 16) || (l.gun % 96 == 0))
+            if ((l.gwU == 1) || (l.gwU == 16) || (l.gwU % 96 == 0))
             {
-              localObject1 = aj.getContext();
+              localObject1 = ak.getContext();
               localObject2 = ((ActivityManager.RunningTaskInfo)((ActivityManager)((Context)localObject1).getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
-              ad.d("MicroMsg.SubCoreAccountSync", "[oneliang][showMobileRegNoVerifyCodeNotification]:%s", new Object[] { ((ComponentName)localObject2).getClassName() });
+              ae.d("MicroMsg.SubCoreAccountSync", "[oneliang][showMobileRegNoVerifyCodeNotification]:%s", new Object[] { ((ComponentName)localObject2).getClassName() });
               if (MobileVerifyUI.class.getName().equals(((ComponentName)localObject2).getClassName())) {
                 break label259;
               }
@@ -94,9 +94,9 @@ public class l
                 ((Intent)localObject2).addFlags(536870912);
                 ((Intent)localObject2).addFlags(67108864);
                 localObject2 = PendingIntent.getActivity((Context)localObject1, 36, (Intent)localObject2, 1073741824);
-                s.c localc = com.tencent.mm.br.a.bI((Context)localObject1, "reminder_channel_id");
+                s.c localc = com.tencent.mm.bq.a.bJ((Context)localObject1, "reminder_channel_id");
                 localc.f(((Context)localObject1).getString(2131755866));
-                localc.as(com.tencent.mm.br.a.dwe());
+                localc.as(com.tencent.mm.bq.a.dzu());
                 localc.i(System.currentTimeMillis());
                 localc.Hl = ((PendingIntent)localObject2);
                 localObject1 = new s.b(localc).e(((Context)localObject1).getString(2131761227)).build();
@@ -104,24 +104,24 @@ public class l
                 ((Notification)localObject1).flags |= 0x10;
                 ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().a(36, (Notification)localObject1, false);
               }
-              AppMethodBeat.o(207109);
+              AppMethodBeat.o(188400);
               return true;
             }
           }
         }, true);
       }
-      ad.d("MicroMsg.SubCoreAccountSync", "[oneliang][SmsVerifyCodeState]Sent");
-      cjg.az(900000L, 900000L);
+      ae.d("MicroMsg.SubCoreAccountSync", "[oneliang][SmsVerifyCodeState]Sent");
+      cji.ay(900000L, 900000L);
       AppMethodBeat.o(127861);
       return;
-      if (cjg != null) {
-        cjg.stopTimer();
+      if (cji != null) {
+        cji.stopTimer();
       }
-      ad.d("MicroMsg.SubCoreAccountSync", "[oneliang][SmsVerifyCodeState]verified");
-      jhC = a.jhH;
+      ae.d("MicroMsg.SubCoreAccountSync", "[oneliang][SmsVerifyCodeState]verified");
+      jkv = a.jkA;
       ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(36);
-      gun = 0;
-      cjg = null;
+      gwU = 0;
+      cji = null;
     }
   }
   
@@ -135,20 +135,20 @@ public class l
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(127860);
-    this.jhB = new a();
-    ((r)g.ad(r.class)).getSysCmdMsgExtension().a("ChangeLaunchImage", this.jhD);
-    this.jhE.alive();
-    b.faE();
-    b.Yx(43);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().a(d.EOP);
-    h.LTJ.aR(new Runnable()
+    this.jku = new a();
+    ((s)g.ad(s.class)).getSysCmdMsgExtension().a("ChangeLaunchImage", this.jkw);
+    this.jkx.alive();
+    b.fes();
+    b.Zd(43);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().a(d.Fhk);
+    h.MqF.aO(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207108);
-        d.far();
-        d.fas();
-        AppMethodBeat.o(207108);
+        AppMethodBeat.i(188399);
+        d.fef();
+        d.feg();
+        AppMethodBeat.o(188399);
       }
     });
     AppMethodBeat.o(127860);
@@ -157,12 +157,12 @@ public class l
   public void onAccountRelease()
   {
     AppMethodBeat.i(127859);
-    a locala = this.jhB;
-    com.tencent.mm.sdk.b.a.IbL.d(locala.jhm);
-    this.jhB = null;
-    ((r)g.ad(r.class)).getSysCmdMsgExtension().b("ChangeLaunchImage", this.jhD);
-    this.jhE.dead();
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().b(d.EOP);
+    a locala = this.jku;
+    com.tencent.mm.sdk.b.a.IvT.d(locala.jkf);
+    this.jku = null;
+    ((s)g.ad(s.class)).getSysCmdMsgExtension().b("ChangeLaunchImage", this.jkw);
+    this.jkx.dead();
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().b(d.Fhk);
     AppMethodBeat.o(127859);
   }
   
@@ -173,10 +173,10 @@ public class l
     static
     {
       AppMethodBeat.i(127857);
-      jhH = new a("NONE", 0);
-      jhI = new a("SENT", 1);
-      jhJ = new a("VERIFIED", 2);
-      jhK = new a[] { jhH, jhI, jhJ };
+      jkA = new a("NONE", 0);
+      jkB = new a("SENT", 1);
+      jkC = new a("VERIFIED", 2);
+      jkD = new a[] { jkA, jkB, jkC };
       AppMethodBeat.o(127857);
     }
     

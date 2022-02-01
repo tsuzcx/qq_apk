@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class j$4
   implements View.OnClickListener
@@ -17,11 +17,11 @@ final class j$4
     AppMethodBeat.i(56150);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.d("MicroMsg.TrackMapUI", "newpoi old go back onclick");
-    this.vhU.drP = 0;
-    this.vhU.dhp();
-    this.vhU.dhA();
+    a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.d("MicroMsg.TrackMapUI", "newpoi old go back onclick");
+    this.vua.dsV = 0;
+    this.vua.dko();
+    this.vua.dkz();
     a.a(this, "com/tencent/mm/plugin/location/ui/impl/TrackMapUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(56150);
   }

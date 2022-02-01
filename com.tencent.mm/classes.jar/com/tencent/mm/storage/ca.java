@@ -1,145 +1,69 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ca
+  extends j<bz>
 {
-  public a INb;
-  int INc;
-  int dDp;
-  public String name;
-  int status;
+  public static final String[] SQL_CREATE;
+  public e db;
   
-  public ca()
+  static
   {
-    this.dDp = 135;
-    this.name = "";
-    this.INb = null;
-    this.INb = null;
-    this.name = "";
-    this.status = 0;
-    this.INc = 0;
+    AppMethodBeat.i(32885);
+    SQL_CREATE = new String[] { j.getCreateSQLs(bz.info, "OpenMsgListener") };
+    AppMethodBeat.o(32885);
   }
   
-  public ca(String paramString, boolean paramBoolean, int paramInt)
+  public ca(e parame)
   {
-    AppMethodBeat.i(43298);
-    this.dDp = 135;
-    this.name = "";
-    this.INb = null;
-    this.INb = new a(paramString);
-    this.name = paramString;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    super(parame, bz.info, "OpenMsgListener", null);
+    AppMethodBeat.i(32881);
+    this.db = parame;
+    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
+    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
+    AppMethodBeat.o(32881);
+  }
+  
+  public final bz aVN(String paramString)
+  {
+    AppMethodBeat.i(32882);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      this.status = (i | 0x2);
-      this.INc = paramInt;
-      AppMethodBeat.o(43298);
-      return;
+      AppMethodBeat.o(32882);
+      return null;
     }
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(43299);
-    if ((this.dDp & 0x2) != 0)
+    Cursor localCursor = this.db.a("OpenMsgListener", null, "appId=?", new String[] { bu.aSk(paramString) }, null, null, null, 2);
+    if (!localCursor.moveToFirst())
     {
-      this.name = paramCursor.getString(1);
-      if (this.INb == null) {
-        this.INb = new a(this.name);
-      }
+      ae.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(32882);
+      return null;
     }
-    if ((this.dDp & 0x4) != 0) {
-      this.status = paramCursor.getInt(2);
-    }
-    if ((this.dDp & 0x80) != 0) {
-      this.INc = paramCursor.getInt(7);
-    }
-    AppMethodBeat.o(43299);
+    paramString = new bz();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(32882);
+    return paramString;
   }
   
-  public final ContentValues convertTo()
+  public final Cursor fwz()
   {
-    AppMethodBeat.i(43300);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.dDp & 0x2) != 0) {
-      localContentValues.put("name", this.name);
-    }
-    if ((this.dDp & 0x4) != 0) {
-      localContentValues.put("status", Integer.valueOf(this.status));
-    }
-    if ((this.dDp & 0x80) != 0) {
-      localContentValues.put("int_reserved1", Integer.valueOf(this.INc));
-    }
-    AppMethodBeat.o(43300);
-    return localContentValues;
-  }
-  
-  public final boolean fsC()
-  {
-    return (this.status & 0x2) != 0;
-  }
-  
-  public final boolean fsD()
-  {
-    return this.INc == 1;
-  }
-  
-  public final boolean isEnable()
-  {
-    return (this.status & 0x1) != 0;
-  }
-  
-  public final void setEnable(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      int j = this.status;
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
-      {
-        this.status = (i | j);
-        return;
-      }
-    }
-    this.status &= 0xFFFFFFFE;
-  }
-  
-  public static final class a
-  {
-    private String EFF;
-    private String dDy;
-    
-    public a(String paramString)
-    {
-      AppMethodBeat.i(43297);
-      int i = paramString.indexOf("@");
-      if (i >= 0)
-      {
-        this.dDy = paramString.substring(0, i);
-        this.EFF = paramString.substring(i);
-        AppMethodBeat.o(43297);
-        return;
-      }
-      this.dDy = paramString;
-      this.EFF = "";
-      AppMethodBeat.o(43297);
-    }
-    
-    public final String aUs(String paramString)
-    {
-      if (this.EFF != null) {
-        paramString = this.EFF;
-      }
-      return paramString;
-    }
+    AppMethodBeat.i(32883);
+    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
+    AppMethodBeat.o(32883);
+    return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.ca
  * JD-Core Version:    0.7.0.1
  */

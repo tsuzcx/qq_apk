@@ -1,87 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import java.util.LinkedList;
 
 public final class dpu
-  extends com.tencent.mm.bx.a
+  extends cwj
 {
-  public long duration;
-  public String path;
-  public long xPg;
+  public String HWR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215810);
+    AppMethodBeat.i(32472);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.path == null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs = new b("Not all required fields were included: path");
-        AppMethodBeat.o(215810);
-        throw paramVarArgs;
+        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.path != null) {
-        paramVarArgs.d(1, this.path);
+      if (this.HWR != null) {
+        paramVarArgs.d(2, this.HWR);
       }
-      paramVarArgs.aY(2, this.xPg);
-      paramVarArgs.aY(3, this.duration);
-      AppMethodBeat.o(215810);
+      AppMethodBeat.o(32472);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.path == null) {
-        break label354;
+      if (this.BaseResponse == null) {
+        break label378;
       }
     }
-    label354:
-    for (paramInt = f.a.a.b.b.a.e(1, this.path) + 0;; paramInt = 0)
+    label378:
+    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.p(2, this.xPg);
-      int j = f.a.a.b.b.a.p(3, this.duration);
-      AppMethodBeat.o(215810);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.HWR != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HWR);
+      }
+      AppMethodBeat.o(32472);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        if (this.path == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: path");
-          AppMethodBeat.o(215810);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(215810);
+        AppMethodBeat.o(32472);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         dpu localdpu = (dpu)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(215810);
+          AppMethodBeat.o(32472);
           return -1;
         case 1: 
-          localdpu.path = locala.NPN.readString();
-          AppMethodBeat.o(215810);
-          return 0;
-        case 2: 
-          localdpu.xPg = locala.NPN.zd();
-          AppMethodBeat.o(215810);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdpu.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32472);
           return 0;
         }
-        localdpu.duration = locala.NPN.zd();
-        AppMethodBeat.o(215810);
+        localdpu.HWR = ((f.a.a.a.a)localObject1).OmT.readString();
+        AppMethodBeat.o(32472);
         return 0;
       }
-      AppMethodBeat.o(215810);
+      AppMethodBeat.o(32472);
       return -1;
     }
   }

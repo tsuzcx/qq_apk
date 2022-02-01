@@ -1,11 +1,11 @@
 package com.tencent.mm.util;
 
-import com.tencent.mm.protocal.protobuf.cig;
+import com.tencent.mm.protocal.protobuf.cja;
 
 public final class e$a
-  extends cig
+  extends cja
 {
-  public String LgL;
+  public String LDn;
 }
 
 

@@ -15,34 +15,34 @@ public final class i
   extends AtomicReference<Thread>
   implements Runnable, j
 {
-  final rx.internal.util.i NZC;
-  final a NZD;
+  final rx.internal.util.i OwH;
+  final a OwI;
   
   public i(a parama)
   {
     AppMethodBeat.i(90341);
-    this.NZD = parama;
-    this.NZC = new rx.internal.util.i();
+    this.OwI = parama;
+    this.OwH = new rx.internal.util.i();
     AppMethodBeat.o(90341);
   }
   
   public i(a parama, b paramb)
   {
     AppMethodBeat.i(90342);
-    this.NZD = parama;
-    this.NZC = new rx.internal.util.i(new b(this, paramb));
+    this.OwI = parama;
+    this.OwH = new rx.internal.util.i(new b(this, paramb));
     AppMethodBeat.o(90342);
   }
   
   public i(a parama, rx.internal.util.i parami)
   {
     AppMethodBeat.i(90343);
-    this.NZD = parama;
-    this.NZC = new rx.internal.util.i(new c(this, parami));
+    this.OwI = parama;
+    this.OwH = new rx.internal.util.i(new c(this, parami));
     AppMethodBeat.o(90343);
   }
   
-  private static void O(Throwable paramThrowable)
+  private static void P(Throwable paramThrowable)
   {
     AppMethodBeat.i(90345);
     c.onError(paramThrowable);
@@ -54,22 +54,22 @@ public final class i
   public final void b(Future<?> paramFuture)
   {
     AppMethodBeat.i(90347);
-    this.NZC.b(new i.a(this, paramFuture));
+    this.OwH.b(new a(paramFuture));
     AppMethodBeat.o(90347);
   }
   
-  public final void gyQ()
+  public final void gDs()
   {
     AppMethodBeat.i(90346);
-    if (!this.NZC.OaI) {
-      this.NZC.gyQ();
+    if (!this.OwH.OxN) {
+      this.OwH.gDs();
     }
     AppMethodBeat.o(90346);
   }
   
-  public final boolean gyR()
+  public final boolean gDt()
   {
-    return this.NZC.OaI;
+    return this.OwH.OxN;
   }
   
   public final void run()
@@ -78,23 +78,56 @@ public final class i
     try
     {
       lazySet(Thread.currentThread());
-      this.NZD.call();
+      this.OwI.call();
       return;
     }
     catch (f localf)
     {
-      O(new IllegalStateException("Exception thrown on Scheduler.Worker thread. Add `onError` handling.", localf));
+      P(new IllegalStateException("Exception thrown on Scheduler.Worker thread. Add `onError` handling.", localf));
       return;
     }
     catch (Throwable localThrowable)
     {
-      O(new IllegalStateException("Fatal Exception thrown on Scheduler.Worker thread.", localThrowable));
+      P(new IllegalStateException("Fatal Exception thrown on Scheduler.Worker thread.", localThrowable));
       return;
     }
     finally
     {
-      gyQ();
+      gDs();
       AppMethodBeat.o(90344);
+    }
+  }
+  
+  final class a
+    implements j
+  {
+    private final Future<?> OwJ;
+    
+    a()
+    {
+      Object localObject;
+      this.OwJ = localObject;
+    }
+    
+    public final void gDs()
+    {
+      AppMethodBeat.i(90337);
+      if (i.this.get() != Thread.currentThread())
+      {
+        this.OwJ.cancel(true);
+        AppMethodBeat.o(90337);
+        return;
+      }
+      this.OwJ.cancel(false);
+      AppMethodBeat.o(90337);
+    }
+    
+    public final boolean gDt()
+    {
+      AppMethodBeat.i(90338);
+      boolean bool = this.OwJ.isCancelled();
+      AppMethodBeat.o(90338);
+      return bool;
     }
   }
   
@@ -102,27 +135,27 @@ public final class i
     extends AtomicBoolean
     implements j
   {
-    final i NZG;
-    final b NZH;
+    final i OwL;
+    final b OwM;
     
     public b(i parami, b paramb)
     {
-      this.NZG = parami;
-      this.NZH = paramb;
+      this.OwL = parami;
+      this.OwM = paramb;
     }
     
-    public final void gyQ()
+    public final void gDs()
     {
       AppMethodBeat.i(90339);
       if (compareAndSet(false, true)) {
-        this.NZH.e(this.NZG);
+        this.OwM.e(this.OwL);
       }
       AppMethodBeat.o(90339);
     }
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
-      return this.NZG.NZC.OaI;
+      return this.OwL.OwH.OxN;
     }
   }
   
@@ -130,35 +163,35 @@ public final class i
     extends AtomicBoolean
     implements j
   {
-    final i NZG;
-    final rx.internal.util.i NZI;
+    final i OwL;
+    final rx.internal.util.i OwN;
     
     public c(i parami, rx.internal.util.i parami1)
     {
-      this.NZG = parami;
-      this.NZI = parami1;
+      this.OwL = parami;
+      this.OwN = parami1;
     }
     
-    public final void gyQ()
+    public final void gDs()
     {
       AppMethodBeat.i(90340);
       rx.internal.util.i locali;
       i locali1;
       if (compareAndSet(false, true))
       {
-        locali = this.NZI;
-        locali1 = this.NZG;
-        if (locali.OaI) {}
+        locali = this.OwN;
+        locali1 = this.OwL;
+        if (locali.OxN) {}
       }
       try
       {
-        List localList = locali.OaH;
-        if ((locali.OaI) || (localList == null)) {
+        List localList = locali.OxM;
+        if ((locali.OxN) || (localList == null)) {
           return;
         }
         boolean bool = localList.remove(locali1);
         if (bool) {
-          locali1.gyQ();
+          locali1.gDs();
         }
         AppMethodBeat.o(90340);
         return;
@@ -169,15 +202,15 @@ public final class i
       }
     }
     
-    public final boolean gyR()
+    public final boolean gDt()
     {
-      return this.NZG.NZC.OaI;
+      return this.OwL.OwH.OxN;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.c.i
  * JD-Core Version:    0.7.0.1
  */

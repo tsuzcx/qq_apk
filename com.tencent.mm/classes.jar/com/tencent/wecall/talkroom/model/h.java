@@ -12,50 +12,50 @@ import java.util.List;
 
 public class h
 {
-  public static h MnB;
+  public static h MKx;
   static final String TAG;
-  public int CfB;
-  public int CfJ;
-  public int Cfu;
-  public int Cfx;
-  public int Cfy;
-  int CuJ;
-  int CuM;
-  int CuQ;
-  long CuR;
-  int CuW;
-  public int CuX;
-  private String Cvc;
-  public String LFV;
-  public int MnC;
-  int MnD;
-  long MnE;
-  long MnF;
-  int MnG;
-  public int MnH;
-  int MnI;
-  long MnJ;
-  private int MnK;
-  private int MnL;
-  private String MnM;
-  private int MnN;
-  private StringBuffer MnO;
-  private long MnP;
-  long MnQ;
-  long MnR;
+  int CMB;
+  public int CMC;
+  private String CMH;
+  int CMo;
+  int CMr;
+  int CMv;
+  long CMw;
+  public int CwV;
+  public int CwY;
+  public int CwZ;
+  public int Cxc;
+  public int Cxk;
+  long MKA;
+  long MKB;
+  int MKC;
+  public int MKD;
+  int MKE;
+  long MKF;
+  private int MKG;
+  private int MKH;
+  private String MKI;
+  private int MKJ;
+  private StringBuffer MKK;
+  private long MKL;
+  long MKM;
+  long MKN;
+  public int MKy;
+  int MKz;
+  public String McZ;
   private String deviceModel;
   public String groupId;
   public int netType;
-  public int oWb;
+  public int pcE;
   public int roomId;
-  public long uLt;
-  long uMF;
-  int uMG;
+  public long uXg;
+  long uYs;
+  int uYt;
   
   static
   {
     AppMethodBeat.i(62655);
-    MnB = new h();
+    MKx = new h();
     TAG = h.class.getCanonicalName();
     AppMethodBeat.o(62655);
   }
@@ -64,38 +64,38 @@ public class h
   {
     AppMethodBeat.i(62634);
     this.groupId = "";
-    this.LFV = "";
-    this.Cfu = 1;
+    this.McZ = "";
+    this.CwV = 1;
     this.roomId = 0;
-    this.uLt = 0L;
-    this.oWb = -1;
-    this.CuJ = 0;
-    this.CuQ = 0;
-    this.CuM = 0;
-    this.uMG = 0;
-    this.MnC = 0;
-    this.MnD = 0;
-    this.MnE = 0L;
-    this.MnF = 0L;
-    this.MnG = 0;
-    this.MnH = 0;
-    this.MnI = 0;
-    this.MnJ = 0L;
-    this.CuR = 0L;
-    this.uMF = 0L;
-    this.CuW = 0;
-    this.CuX = 0;
+    this.uXg = 0L;
+    this.pcE = -1;
+    this.CMo = 0;
+    this.CMv = 0;
+    this.CMr = 0;
+    this.uYt = 0;
+    this.MKy = 0;
+    this.MKz = 0;
+    this.MKA = 0L;
+    this.MKB = 0L;
+    this.MKC = 0;
+    this.MKD = 0;
+    this.MKE = 0;
+    this.MKF = 0L;
+    this.CMw = 0L;
+    this.uYs = 0L;
+    this.CMB = 0;
+    this.CMC = 0;
     this.netType = -1;
-    this.MnL = -1;
-    this.Cvc = "";
-    this.MnO = new StringBuffer();
-    this.CfJ = -1;
-    this.CfB = 0;
-    this.Cfx = 0;
-    this.Cfy = 0;
-    this.MnP = 0L;
-    this.MnQ = 0L;
-    this.MnR = 0L;
+    this.MKH = -1;
+    this.CMH = "";
+    this.MKK = new StringBuffer();
+    this.Cxk = -1;
+    this.Cxc = 0;
+    this.CwY = 0;
+    this.CwZ = 0;
+    this.MKL = 0L;
+    this.MKM = 0L;
+    this.MKN = 0L;
     AppMethodBeat.o(62634);
   }
   
@@ -105,11 +105,11 @@ public class h
     h localh = new h();
     localh.groupId = "";
     localh.roomId = paramInt;
-    localh.uLt = paramLong;
-    localh.LFV = "";
+    localh.uXg = paramLong;
+    localh.McZ = "";
     localh.af(paramVarArgs);
-    baj(localh.fZS());
-    e.fTj();
+    bbM(localh.geu());
+    e.fXJ();
     AppMethodBeat.o(62639);
   }
   
@@ -130,9 +130,9 @@ public class h
     }
     localh.groupId = str;
     localh.roomId = paramInt;
-    localh.uLt = paramLong;
+    localh.uXg = paramLong;
     localh.af(paramVarArgs);
-    baj(localh.fZS());
+    bbM(localh.geu());
     AppMethodBeat.o(62637);
   }
   
@@ -153,19 +153,19 @@ public class h
     }
     localh.groupId = str;
     localh.roomId = paramInt;
-    localh.uLt = paramLong;
+    localh.uXg = paramLong;
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    localh.LFV = paramString1;
+    localh.McZ = paramString1;
     localh.af(paramVarArgs);
-    baj(localh.fZS());
-    e.fTj();
+    bbM(localh.geu());
+    e.fXJ();
     AppMethodBeat.o(62638);
   }
   
-  public static void ais(int paramInt)
+  public static void ajb(int paramInt)
   {
     AppMethodBeat.i(62645);
     b.d(TAG, new Object[] { "sendNetSceneStat", Integer.valueOf(paramInt) });
@@ -173,7 +173,7 @@ public class h
     AppMethodBeat.o(62645);
   }
   
-  public static void ait(int paramInt)
+  public static void ajc(int paramInt)
   {
     AppMethodBeat.i(62646);
     b.d(TAG, new Object[] { "sendDeviceStat", Integer.valueOf(paramInt) });
@@ -181,7 +181,7 @@ public class h
     AppMethodBeat.o(62646);
   }
   
-  public static void aiu(int paramInt)
+  public static void ajd(int paramInt)
   {
     AppMethodBeat.i(62647);
     b.d(TAG, new Object[] { "sendtalkRoomDialStat", Integer.valueOf(paramInt) });
@@ -189,7 +189,7 @@ public class h
     AppMethodBeat.o(62647);
   }
   
-  public static void aiv(int paramInt)
+  public static void aje(int paramInt)
   {
     AppMethodBeat.i(62649);
     b.d(TAG, new Object[] { "sendEngineStat", Integer.valueOf(paramInt) });
@@ -197,7 +197,7 @@ public class h
     AppMethodBeat.o(62649);
   }
   
-  public static void baj(String paramString)
+  public static void bbM(String paramString)
   {
     AppMethodBeat.i(62650);
     b.d(TAG, new Object[] { "sendSummaryNetScene", paramString });
@@ -205,7 +205,7 @@ public class h
     AppMethodBeat.o(62650);
   }
   
-  public static void bak(String paramString)
+  public static void bbN(String paramString)
   {
     AppMethodBeat.i(62651);
     b.d(TAG, new Object[] { "sendEngineRecv", paramString });
@@ -213,7 +213,7 @@ public class h
     AppMethodBeat.o(62651);
   }
   
-  public static void bal(String paramString)
+  public static void bbO(String paramString)
   {
     AppMethodBeat.i(62652);
     b.d(TAG, new Object[] { "sendEngineSend", paramString });
@@ -221,7 +221,7 @@ public class h
     AppMethodBeat.o(62652);
   }
   
-  public static void bam(String paramString)
+  public static void bbP(String paramString)
   {
     AppMethodBeat.i(62653);
     b.d(TAG, new Object[] { "sendChannelStat", paramString });
@@ -229,7 +229,7 @@ public class h
     AppMethodBeat.o(62653);
   }
   
-  public static void fZX()
+  public static void gez()
   {
     AppMethodBeat.i(62648);
     b.d(TAG, new Object[] { "sendTalkRoomOnDialStat", Integer.valueOf(-5001) });
@@ -246,134 +246,134 @@ public class h
       AppMethodBeat.o(62640);
       return;
     }
-    if (this.MnO.length() > 900)
+    if (this.MKK.length() > 900)
     {
-      this.MnO.setLength(0);
-      this.MnO.append("overmaxsize");
+      this.MKK.setLength(0);
+      this.MKK.append("overmaxsize");
     }
-    if (this.MnO.length() != 0) {
-      this.MnO.append("-");
+    if (this.MKK.length() != 0) {
+      this.MKK.append("-");
     }
     int j = paramVarArgs.length;
     while (i < j)
     {
       String str = paramVarArgs[i];
-      this.MnO.append(str);
-      this.MnO.append("|");
+      this.MKK.append(str);
+      this.MKK.append("|");
       i += 1;
     }
     AppMethodBeat.o(62640);
   }
   
-  public final void aiw(int paramInt)
+  public final void ajf(int paramInt)
   {
     AppMethodBeat.i(62654);
     b.d(TAG, new Object[] { "stopStatus", Integer.valueOf(paramInt) });
-    this.CuJ = paramInt;
+    this.CMo = paramInt;
     AppMethodBeat.o(62654);
   }
   
-  public final String fZS()
+  public final String geu()
   {
     AppMethodBeat.i(62636);
     b.d(TAG, new Object[] { "collectInfo" });
-    this.MnM = Build.MANUFACTURER;
+    this.MKI = Build.MANUFACTURER;
     this.deviceModel = Build.MODEL;
-    this.MnN = Build.VERSION.SDK_INT;
-    this.Cvc = Build.VERSION.RELEASE;
-    this.netType = k.ls(com.tencent.pb.common.c.c.ClL);
-    this.MnK = -1;
-    this.MnL = -1;
+    this.MKJ = Build.VERSION.SDK_INT;
+    this.CMH = Build.VERSION.RELEASE;
+    this.netType = k.ly(com.tencent.pb.common.c.c.CDp);
+    this.MKG = -1;
+    this.MKH = -1;
     Object localObject = new ArrayList();
     ((List)localObject).add(this.groupId);
-    ((List)localObject).add(this.LFV);
-    ((List)localObject).add(Integer.valueOf(this.Cfu));
+    ((List)localObject).add(this.McZ);
+    ((List)localObject).add(Integer.valueOf(this.CwV));
     ((List)localObject).add(Integer.valueOf(this.roomId));
-    ((List)localObject).add(Long.valueOf(this.uLt));
-    ((List)localObject).add(Integer.valueOf(this.oWb));
-    ((List)localObject).add(Integer.valueOf(this.CuJ));
-    ((List)localObject).add(Integer.valueOf(this.CuQ));
-    ((List)localObject).add(Integer.valueOf(this.CuM));
-    ((List)localObject).add(Integer.valueOf(this.uMG));
-    ((List)localObject).add(Integer.valueOf(this.MnC));
-    ((List)localObject).add(Integer.valueOf(this.MnD));
-    ((List)localObject).add(Long.valueOf(this.MnE));
-    ((List)localObject).add(Long.valueOf(this.MnF));
-    ((List)localObject).add(Integer.valueOf(this.MnG));
-    ((List)localObject).add(Integer.valueOf(this.MnH));
-    ((List)localObject).add(Integer.valueOf(this.MnI));
-    ((List)localObject).add(Long.valueOf(this.MnJ));
-    ((List)localObject).add(Long.valueOf(this.CuR));
-    ((List)localObject).add(Long.valueOf(this.uMF));
-    ((List)localObject).add(Integer.valueOf(this.CuW));
-    ((List)localObject).add(Integer.valueOf(this.CuX));
+    ((List)localObject).add(Long.valueOf(this.uXg));
+    ((List)localObject).add(Integer.valueOf(this.pcE));
+    ((List)localObject).add(Integer.valueOf(this.CMo));
+    ((List)localObject).add(Integer.valueOf(this.CMv));
+    ((List)localObject).add(Integer.valueOf(this.CMr));
+    ((List)localObject).add(Integer.valueOf(this.uYt));
+    ((List)localObject).add(Integer.valueOf(this.MKy));
+    ((List)localObject).add(Integer.valueOf(this.MKz));
+    ((List)localObject).add(Long.valueOf(this.MKA));
+    ((List)localObject).add(Long.valueOf(this.MKB));
+    ((List)localObject).add(Integer.valueOf(this.MKC));
+    ((List)localObject).add(Integer.valueOf(this.MKD));
+    ((List)localObject).add(Integer.valueOf(this.MKE));
+    ((List)localObject).add(Long.valueOf(this.MKF));
+    ((List)localObject).add(Long.valueOf(this.CMw));
+    ((List)localObject).add(Long.valueOf(this.uYs));
+    ((List)localObject).add(Integer.valueOf(this.CMB));
+    ((List)localObject).add(Integer.valueOf(this.CMC));
     ((List)localObject).add(Integer.valueOf(this.netType));
-    ((List)localObject).add(Integer.valueOf(this.MnK));
-    ((List)localObject).add(Integer.valueOf(this.MnL));
-    ((List)localObject).add(this.MnM);
+    ((List)localObject).add(Integer.valueOf(this.MKG));
+    ((List)localObject).add(Integer.valueOf(this.MKH));
+    ((List)localObject).add(this.MKI);
     ((List)localObject).add(this.deviceModel);
-    ((List)localObject).add(Integer.valueOf(this.MnN));
-    ((List)localObject).add(this.Cvc);
-    ((List)localObject).add(Integer.valueOf(c.fZv().bad(this.groupId)));
-    ((List)localObject).add(this.MnO.toString());
-    ((List)localObject).add(Integer.valueOf(this.CfJ));
-    ((List)localObject).add(Integer.valueOf(this.CfB));
-    ((List)localObject).add(Integer.valueOf(this.Cfx));
-    ((List)localObject).add(Integer.valueOf(this.Cfy));
+    ((List)localObject).add(Integer.valueOf(this.MKJ));
+    ((List)localObject).add(this.CMH);
+    ((List)localObject).add(Integer.valueOf(c.gdW().bbG(this.groupId)));
+    ((List)localObject).add(this.MKK.toString());
+    ((List)localObject).add(Integer.valueOf(this.Cxk));
+    ((List)localObject).add(Integer.valueOf(this.Cxc));
+    ((List)localObject).add(Integer.valueOf(this.CwY));
+    ((List)localObject).add(Integer.valueOf(this.CwZ));
     localObject = f.a((Iterable)localObject, ",", "_");
-    b.d(TAG, new Object[] { "logBuf: ", this.MnO.toString() });
+    b.d(TAG, new Object[] { "logBuf: ", this.MKK.toString() });
     b.d(TAG, new Object[] { "statresult", localObject });
     AppMethodBeat.o(62636);
     return localObject;
   }
   
-  public final void fZT()
+  public final void gev()
   {
     AppMethodBeat.i(62641);
-    this.MnP = System.currentTimeMillis();
-    b.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.MnP) });
+    this.MKL = System.currentTimeMillis();
+    b.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.MKL) });
     AppMethodBeat.o(62641);
   }
   
-  public final void fZU()
+  public final void gew()
   {
     AppMethodBeat.i(62642);
-    b.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.MnP), Long.valueOf(this.MnE) });
-    if (this.MnE > 0L)
+    b.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.MKL), Long.valueOf(this.MKA) });
+    if (this.MKA > 0L)
     {
       AppMethodBeat.o(62642);
       return;
     }
-    this.CuQ = 1;
-    if (this.MnP == 0L)
+    this.CMv = 1;
+    if (this.MKL == 0L)
     {
-      this.CuR = 0L;
+      this.CMw = 0L;
       AppMethodBeat.o(62642);
       return;
     }
-    this.CuR = (System.currentTimeMillis() - this.MnP);
+    this.CMw = (System.currentTimeMillis() - this.MKL);
     AppMethodBeat.o(62642);
   }
   
-  public final void fZV()
+  public final void gex()
   {
     AppMethodBeat.i(62643);
     b.w(TAG, new Object[] { "beginCreateOrNotify" });
-    this.MnQ = System.currentTimeMillis();
+    this.MKM = System.currentTimeMillis();
     AppMethodBeat.o(62643);
   }
   
-  public final void fZW()
+  public final void gey()
   {
     AppMethodBeat.i(62644);
-    b.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.MnR) });
-    if (this.MnR == 0L)
+    b.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.MKN) });
+    if (this.MKN == 0L)
     {
-      this.uMF = 0L;
+      this.uYs = 0L;
       AppMethodBeat.o(62644);
       return;
     }
-    this.uMF = (System.currentTimeMillis() - this.MnR);
+    this.uYs = (System.currentTimeMillis() - this.MKN);
     AppMethodBeat.o(62644);
   }
   
@@ -381,43 +381,43 @@ public class h
   {
     AppMethodBeat.i(62635);
     b.d(TAG, new Object[] { "reset" });
-    this.MnR = 0L;
-    this.MnQ = 0L;
-    this.MnP = 0L;
+    this.MKN = 0L;
+    this.MKM = 0L;
+    this.MKL = 0L;
     this.groupId = "";
-    this.LFV = "";
-    this.Cfu = 1;
+    this.McZ = "";
+    this.CwV = 1;
     this.roomId = 0;
-    this.uLt = 0L;
-    this.oWb = -1;
-    this.CuJ = 0;
-    this.CuQ = 0;
-    this.CuM = 0;
-    this.uMG = 0;
-    this.MnC = 0;
-    this.MnD = 0;
-    this.MnE = 0L;
-    this.MnF = 0L;
-    this.MnG = 0;
-    this.MnH = 0;
-    this.MnI = 0;
-    this.MnJ = 0L;
-    this.CuR = 0L;
-    this.uMF = 0L;
-    this.CuW = 0;
-    this.CuX = 0;
+    this.uXg = 0L;
+    this.pcE = -1;
+    this.CMo = 0;
+    this.CMv = 0;
+    this.CMr = 0;
+    this.uYt = 0;
+    this.MKy = 0;
+    this.MKz = 0;
+    this.MKA = 0L;
+    this.MKB = 0L;
+    this.MKC = 0;
+    this.MKD = 0;
+    this.MKE = 0;
+    this.MKF = 0L;
+    this.CMw = 0L;
+    this.uYs = 0L;
+    this.CMB = 0;
+    this.CMC = 0;
     this.netType = -1;
-    this.MnK = 0;
-    this.MnL = 0;
-    this.MnM = "";
+    this.MKG = 0;
+    this.MKH = 0;
+    this.MKI = "";
     this.deviceModel = "";
-    this.MnN = -1;
-    this.Cvc = "";
-    this.MnO.setLength(0);
-    this.CfJ = -1;
-    this.CfB = 0;
-    this.Cfx = 0;
-    this.Cfy = 0;
+    this.MKJ = -1;
+    this.CMH = "";
+    this.MKK.setLength(0);
+    this.Cxk = -1;
+    this.Cxc = 0;
+    this.CwY = 0;
+    this.CwZ = 0;
     AppMethodBeat.o(62635);
   }
 }

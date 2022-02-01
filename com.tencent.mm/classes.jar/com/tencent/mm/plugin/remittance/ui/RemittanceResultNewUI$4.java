@@ -18,7 +18,7 @@ final class RemittanceResultNewUI$4
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,8 +27,8 @@ final class RemittanceResultNewUI$4
       a.a(false, this, "com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(68282);
       return false;
-      RemittanceResultNewUI.a(this.ygq, (int)paramMotionEvent.getRawX());
-      RemittanceResultNewUI.b(this.ygq, (int)paramMotionEvent.getRawY());
+      RemittanceResultNewUI.a(this.ywh, (int)paramMotionEvent.getRawX());
+      RemittanceResultNewUI.b(this.ywh, (int)paramMotionEvent.getRawY());
     }
   }
 }

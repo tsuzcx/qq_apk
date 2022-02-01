@@ -274,10 +274,10 @@ public class NetManager
     
     public NetResponse downloadTo(File paramFile)
     {
-      AppMethodBeat.i(195079);
+      AppMethodBeat.i(209852);
       onRequestStart("downloadTo[" + paramFile + "]", this);
       paramFile = file(paramFile).doGet();
-      AppMethodBeat.o(195079);
+      AppMethodBeat.o(209852);
       return paramFile;
     }
     
@@ -390,7 +390,7 @@ public class NetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.net.NetManager
  * JD-Core Version:    0.7.0.1
  */

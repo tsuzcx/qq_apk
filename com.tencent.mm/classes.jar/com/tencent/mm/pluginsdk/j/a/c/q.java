@@ -1,56 +1,54 @@
 package com.tencent.mm.pluginsdk.j.a.c;
 
-import android.os.Looper;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class q
 {
-  public final t EQW;
-  public final n EQX;
-  public final i EQY;
-  private volatile ap cPB;
-  public final ap handler;
-  public final boolean kld;
+  public final t Fjr;
+  public final n Fjs;
+  public final i Fjt;
+  private volatile aq cQl;
+  public final aq handler;
+  public final boolean kot;
   
   private q()
   {
     AppMethodBeat.i(152059);
-    this.cPB = null;
+    this.cQl = null;
     r.init();
-    this.EQW = t.fbe();
-    if (this.EQW == null)
+    this.Fjr = t.feS();
+    if (this.Fjr == null)
     {
-      this.kld = false;
-      this.EQX = null;
+      this.kot = false;
+      this.Fjs = null;
       this.handler = null;
-      this.EQY = null;
+      this.Fjt = null;
       AppMethodBeat.o(152059);
       return;
     }
-    this.kld = true;
-    this.handler = new ap("ResDownloader-EventThread");
-    this.EQY = new i(bZb());
-    this.EQX = new n("ResDownloader-EventThread", this.EQY);
+    this.kot = true;
+    this.handler = new aq("ResDownloader-EventThread");
+    this.Fjt = new i(caq());
+    this.Fjs = new n("ResDownloader-EventThread", this.Fjt);
     AppMethodBeat.o(152059);
   }
   
   static n.a c(l paraml)
   {
     AppMethodBeat.i(152062);
-    ad.d("MicroMsg.ResDownloaderCore", "getNetworkRequestHandler");
-    int i = paraml.afw().hashCode();
-    Iterator localIterator = r.fbd().iterator();
+    ae.d("MicroMsg.ResDownloaderCore", "getNetworkRequestHandler");
+    int i = paraml.afK().hashCode();
+    Iterator localIterator = r.feR().iterator();
     while (localIterator.hasNext())
     {
       g localg = (g)localIterator.next();
-      ad.i("MicroMsg.ResDownloaderCore", "plugin = %s, groupId = %s", new Object[] { localg.getClass().getSimpleName(), localg.afw() });
-      if (localg.afw().hashCode() == i)
+      ae.i("MicroMsg.ResDownloaderCore", "plugin = %s, groupId = %s", new Object[] { localg.getClass().getSimpleName(), localg.afK() });
+      if (localg.afK().hashCode() == i)
       {
         paraml = localg.c(paraml);
         AppMethodBeat.o(152062);
@@ -61,27 +59,27 @@ public final class q
     return null;
   }
   
-  public final void Pd(String paramString)
+  public final void PL(String paramString)
   {
     AppMethodBeat.i(152067);
-    if (this.kld) {
-      this.EQX.aMh(paramString);
+    if (this.kot) {
+      this.Fjs.aND(paramString);
     }
     AppMethodBeat.o(152067);
   }
   
-  public final s aMi(String paramString)
+  public final s aNE(String paramString)
   {
     boolean bool = false;
     AppMethodBeat.i(152064);
-    if (this.kld)
+    if (this.kot)
     {
-      long l = bt.flT();
-      s locals = this.EQW.aMi(paramString);
+      long l = bu.fpO();
+      s locals = this.Fjr.aNE(paramString);
       if (locals != null) {
         bool = true;
       }
-      ad.i("MicroMsg.ResDownloaderCore", "doQuery: urlKey = %s, ret = %b, cost = %d", new Object[] { paramString, Boolean.valueOf(bool), Long.valueOf(bt.Df(l)) });
+      ae.i("MicroMsg.ResDownloaderCore", "doQuery: urlKey = %s, ret = %b, cost = %d", new Object[] { paramString, Boolean.valueOf(bool), Long.valueOf(bu.DD(l)) });
       AppMethodBeat.o(152064);
       return locals;
     }
@@ -89,12 +87,12 @@ public final class q
     return null;
   }
   
-  public final boolean aMj(String paramString)
+  public final boolean aNF(String paramString)
   {
     AppMethodBeat.i(152066);
-    if (this.kld)
+    if (this.kot)
     {
-      if ((this.EQX.aMe(paramString)) || (this.EQX.aMf(paramString)))
+      if ((this.Fjs.aNA(paramString)) || (this.Fjs.aNB(paramString)))
       {
         AppMethodBeat.o(152066);
         return true;
@@ -106,39 +104,39 @@ public final class q
     return false;
   }
   
-  public final void af(Runnable paramRunnable)
+  public final void ad(Runnable paramRunnable)
   {
     AppMethodBeat.i(152060);
-    bZb().postToWorker(new b(paramRunnable, (byte)0));
+    caq().postToWorker(new q.b(paramRunnable, (byte)0));
     AppMethodBeat.o(152060);
   }
   
-  final ap bZb()
+  final aq caq()
   {
     AppMethodBeat.i(184269);
-    if (this.cPB == null)
+    if (this.cQl == null)
     {
-      this.cPB = new ap("ResDownloader-WorkerThread");
-      this.cPB.setLogging(false);
+      this.cQl = new aq("ResDownloader-WorkerThread");
+      this.cQl.setLogging(false);
     }
-    ap localap = this.cPB;
+    aq localaq = this.cQl;
     AppMethodBeat.o(184269);
-    return localap;
+    return localaq;
   }
   
   public final int d(l paraml)
   {
     AppMethodBeat.i(152065);
-    if (this.kld)
+    if (this.kot)
     {
-      if (bt.isNullOrNil(paraml.url))
+      if (bu.isNullOrNil(paraml.url))
       {
-        ad.i("MicroMsg.ResDownloaderCore", "request#%s with null url, ignore", new Object[] { paraml.EPe });
+        ae.i("MicroMsg.ResDownloaderCore", "request#%s with null url, ignore", new Object[] { paraml.Fhz });
         AppMethodBeat.o(152065);
         return 3;
       }
-      ad.i("MicroMsg.ResDownloaderCore", "request#%s post to network worker", new Object[] { paraml.EPe });
-      int i = this.EQX.b(paraml);
+      ae.i("MicroMsg.ResDownloaderCore", "request#%s post to network worker", new Object[] { paraml.Fhz });
+      int i = this.Fjs.b(paraml);
       AppMethodBeat.o(152065);
       return i;
     }
@@ -150,67 +148,39 @@ public final class q
   {
     AppMethodBeat.i(152063);
     long l;
-    if (this.kld)
+    if (this.kot)
     {
-      l = bt.flT();
-      if (this.EQW.aMi(params.field_urlKey) == null) {
+      l = bu.fpO();
+      if (this.Fjr.aNE(params.field_urlKey) == null) {
         break label84;
       }
-      this.EQW.i(params);
+      this.Fjr.i(params);
     }
     for (boolean bool = false;; bool = true)
     {
-      ad.i("MicroMsg.ResDownloaderCore", "doUpdate: urlKey = %s, opIsInsert(%b) cost = %d", new Object[] { params.field_urlKey, Boolean.valueOf(bool), Long.valueOf(bt.Df(l)) });
+      ae.i("MicroMsg.ResDownloaderCore", "doUpdate: urlKey = %s, opIsInsert(%b) cost = %d", new Object[] { params.field_urlKey, Boolean.valueOf(bool), Long.valueOf(bu.DD(l)) });
       AppMethodBeat.o(152063);
       return;
       label84:
-      this.EQW.j(params);
+      this.Fjr.j(params);
     }
   }
   
   public static final class a
   {
-    private static final q EQZ;
+    private static final q Fju;
     
     static
     {
       AppMethodBeat.i(152057);
-      EQZ = new q((byte)0);
+      Fju = new q((byte)0);
       AppMethodBeat.o(152057);
-    }
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private final Runnable cDO;
-    
-    private b(Runnable paramRunnable)
-    {
-      this.cDO = paramRunnable;
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(152058);
-      if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && (Process.getThreadPriority(Process.myTid()) != 10)) {
-          Process.setThreadPriority(10);
-        }
-        if (this.cDO != null) {
-          this.cDO.run();
-        }
-        AppMethodBeat.o(152058);
-        return;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.q
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ final class s
     AppMethodBeat.o(88004);
   }
   
-  private void Ax()
+  private void Ay()
   {
     try
     {
@@ -42,7 +42,7 @@ final class s
     }
   }
   
-  private void Ay()
+  private void Az()
   {
     try
     {
@@ -202,7 +202,7 @@ final class s
             if ((f2 <= 0.0F) || ((f1 - f3) * d2 / f2 > y.ccQ)) {
               break label1438;
             }
-            r.Am().cl(localStringBuilder.toString());
+            r.An().cm(localStringBuilder.toString());
             paramBoolean = true;
             if (y.ccH)
             {
@@ -366,7 +366,7 @@ final class s
   {
     AppMethodBeat.i(88005);
     if (this.cad != null) {
-      this.cad.post(new s.d(this, paramp, (byte)0));
+      this.cad.post(new d(paramp, (byte)0));
     }
     AppMethodBeat.o(88005);
   }
@@ -378,14 +378,14 @@ final class s
     AppMethodBeat.o(88006);
   }
   
-  final void Au()
+  final void Av()
   {
     AppMethodBeat.i(88007);
     z.b(null).execute(new c((byte)0));
     AppMethodBeat.o(88007);
   }
   
-  final void Av()
+  final void Aw()
   {
     try
     {
@@ -407,7 +407,7 @@ final class s
     finally {}
   }
   
-  final void Aw()
+  final void Ax()
   {
     AppMethodBeat.i(88009);
     this.bZX = 0L;
@@ -434,7 +434,7 @@ final class s
             i = this.cab.size();
             d(new e(i));
             if (i == 1) {
-              Ay();
+              Az();
             }
           }
           AppMethodBeat.o(88016);
@@ -525,7 +525,7 @@ final class s
       AppMethodBeat.o(88015);
       return false;
     }
-    z.b(null).execute(new s.b(this, paramDouble1, paramDouble2, paramDouble3, paramFloat, paramDouble4, paramDouble5, paramDouble6, paramLong, (byte)0));
+    z.b(null).execute(new b(paramDouble1, paramDouble2, paramDouble3, paramFloat, paramDouble4, paramDouble5, paramDouble6, paramLong, (byte)0));
     this.bZX = paramLong;
     this.bZY = paramFloat;
     AppMethodBeat.o(88015);
@@ -537,8 +537,8 @@ final class s
     try
     {
       AppMethodBeat.i(88010);
-      Ax();
       Ay();
+      Az();
       AppMethodBeat.o(88010);
       return;
     }
@@ -546,6 +546,66 @@ final class s
     {
       localObject = finally;
       throw localObject;
+    }
+  }
+  
+  final class a
+    implements Runnable
+  {
+    final int bZk;
+    final float cae;
+    final float caf;
+    final String cag;
+    final float x;
+    final float y;
+    
+    private a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, String paramString)
+    {
+      this.x = paramFloat1;
+      this.y = paramFloat2;
+      this.cae = paramFloat3;
+      this.caf = paramFloat4;
+      this.bZk = paramInt;
+      this.cag = paramString;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(87999);
+      s.this.a(this.x, this.y, this.cae, this.caf, this.bZk, this.cag);
+      AppMethodBeat.o(87999);
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    final double cai;
+    final double caj;
+    final double cak;
+    final double cal;
+    final double cam;
+    final double can;
+    final double lat;
+    final double lng;
+    
+    private b(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8)
+    {
+      this.lat = paramDouble1;
+      this.lng = paramDouble2;
+      this.cai = paramDouble3;
+      this.caj = paramDouble4;
+      this.cak = paramDouble5;
+      this.cal = paramDouble6;
+      this.cam = paramDouble7;
+      this.can = paramDouble8;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(88000);
+      s.this.a(this.lat, this.lng, this.cai, this.caj, this.cak, this.cal, this.cam, this.can);
+      AppMethodBeat.o(88000);
     }
   }
   
@@ -557,8 +617,26 @@ final class s
     public final void run()
     {
       AppMethodBeat.i(88001);
-      s.this.Av();
+      s.this.Aw();
       AppMethodBeat.o(88001);
+    }
+  }
+  
+  final class d
+    implements Runnable
+  {
+    private final p bWK;
+    
+    private d(p paramp)
+    {
+      this.bWK = paramp;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(88002);
+      s.this.cac.c(this.bWK);
+      AppMethodBeat.o(88002);
     }
   }
   

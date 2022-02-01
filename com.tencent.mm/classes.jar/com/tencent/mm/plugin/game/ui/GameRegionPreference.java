@@ -14,7 +14,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class GameRegionPreference
   extends Preference
 {
-  a usm;
+  a uDF;
   
   public GameRegionPreference(Context paramContext)
   {
@@ -40,10 +40,10 @@ public class GameRegionPreference
     super.onBindView(paramView);
     TextView localTextView = (TextView)paramView.findViewById(2131303961);
     paramView = (CheckBox)paramView.findViewById(2131305186);
-    if ((localTextView != null) && (paramView != null) && (this.usm != null))
+    if ((localTextView != null) && (paramView != null) && (this.uDF != null))
     {
-      localTextView.setText(e.a(this.usm));
-      paramView.setChecked(this.usm.isSelected);
+      localTextView.setText(e.a(this.uDF));
+      paramView.setChecked(this.uDF.isSelected);
     }
     AppMethodBeat.o(42355);
   }
@@ -62,17 +62,17 @@ public class GameRegionPreference
   
   public static final class a
   {
-    public String ePA;
+    public String eRl;
     public boolean isDefault;
     public boolean isSelected;
-    public String usn;
-    public String uso;
-    public String usp;
+    public String uDG;
+    public String uDH;
+    public String uDI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRegionPreference
  * JD-Core Version:    0.7.0.1
  */

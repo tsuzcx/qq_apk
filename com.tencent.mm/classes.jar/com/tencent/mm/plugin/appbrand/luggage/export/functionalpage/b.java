@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.drg;
-import com.tencent.mm.protocal.protobuf.drh;
+import com.tencent.mm.protocal.protobuf.dsd;
+import com.tencent.mm.protocal.protobuf.dse;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/UpdateRuntimeQrcodeResponse;", "uuid", "", "status", "", "respData", "(Ljava/lang/String;ILjava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/UpdateRuntimeQrcodeResponse;", "uuid", "", "status", "", "respData", "(Ljava/lang/String;ILjava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-appbrand-integration_release"})
 public final class b
-  extends com.tencent.mm.al.a<drh>
+  extends com.tencent.mm.ak.a<dse>
 {
-  public static final a lOo;
+  public static final a lSP;
   
   static
   {
     AppMethodBeat.i(50857);
-    lOo = new a((byte)0);
+    lSP = new a((byte)0);
     AppMethodBeat.o(50857);
   }
   
   private b(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(50856);
-    com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
-    drg localdrg = new drg();
-    localdrg.uuid = paramString1;
-    localdrg.status = paramInt;
-    localdrg.HEN = paramString2;
-    locala.c((com.tencent.mm.bx.a)localdrg);
-    locala.d((com.tencent.mm.bx.a)new drh());
-    locala.oP(2578);
-    locala.Dl("/cgi-bin/mmbiz-bin/wxabusiness/updateruntimeqrcode");
-    c(locala.aDC());
+    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
+    dsd localdsd = new dsd();
+    localdsd.uuid = paramString1;
+    localdsd.status = paramInt;
+    localdsd.HYA = paramString2;
+    locala.c((com.tencent.mm.bw.a)localdsd);
+    locala.d((com.tencent.mm.bw.a)new dse());
+    locala.oS(2578);
+    locala.DN("/cgi-bin/mmbiz-bin/wxabusiness/updateruntimeqrcode");
+    c(locala.aDS());
     AppMethodBeat.o(50856);
   }
   
-  public static final b Sb(String paramString)
+  public static final b SK(String paramString)
   {
     AppMethodBeat.i(50858);
     p.h(paramString, "uuid");
@@ -44,7 +44,7 @@ public final class b
     return paramString;
   }
   
-  public static final b Sc(String paramString)
+  public static final b SL(String paramString)
   {
     AppMethodBeat.i(50859);
     p.h(paramString, "uuid");
@@ -53,7 +53,7 @@ public final class b
     return paramString;
   }
   
-  public static final b dT(String paramString1, String paramString2)
+  public static final b dV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(50860);
     p.h(paramString1, "uuid");
@@ -63,7 +63,7 @@ public final class b
     return paramString1;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode$Companion;", "", "()V", "CANCELLED", "", "CONFIRMED", "SCANNED", "TAG", "", "cancel", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "uuid", "confirm", "respData", "scanned", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode$Companion;", "", "()V", "CANCELLED", "", "CONFIRMED", "SCANNED", "TAG", "", "cancel", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CgiUpdateRuntimeQrcode;", "uuid", "confirm", "respData", "scanned", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

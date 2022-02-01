@@ -35,7 +35,7 @@ public class h
   
   public h(Context paramContext, f paramf, a.a parama)
   {
-    AppMethodBeat.i(187197);
+    AppMethodBeat.i(221326);
     this.c = null;
     this.d = null;
     this.i = "";
@@ -49,7 +49,7 @@ public class h
     this.g = paramf.a;
     this.h = paramf.b;
     TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
-    AppMethodBeat.o(187197);
+    AppMethodBeat.o(221326);
   }
   
   private boolean a(Queue<Runnable> paramQueue)
@@ -79,7 +79,7 @@ public class h
   private d c(int paramInt1, int paramInt2)
   {
     int i2 = 720;
-    AppMethodBeat.i(187198);
+    AppMethodBeat.i(221327);
     int i1;
     d locald;
     if (paramInt1 > paramInt2)
@@ -104,7 +104,7 @@ public class h
     for (paramInt1 = Math.min(paramInt1, paramInt2);; paramInt1 = Math.max(paramInt1, paramInt2))
     {
       locald.b = paramInt1;
-      AppMethodBeat.o(187198);
+      AppMethodBeat.o(221327);
       return locald;
       i1 = 0;
       break;
@@ -133,19 +133,19 @@ public class h
   
   private void f(boolean paramBoolean)
   {
-    AppMethodBeat.i(187201);
+    AppMethodBeat.i(221330);
     if (paramBoolean)
     {
       if (this.g > this.h)
       {
         b(this.h, this.g);
-        AppMethodBeat.o(187201);
+        AppMethodBeat.o(221330);
       }
     }
     else if (this.g < this.h) {
       b(this.h, this.g);
     }
-    AppMethodBeat.o(187201);
+    AppMethodBeat.o(221330);
   }
   
   public void a()
@@ -305,7 +305,7 @@ public class h
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(187199);
+    AppMethodBeat.i(221328);
     d locald = c(this.g, this.h);
     if (!locald.equals(this.f))
     {
@@ -313,7 +313,7 @@ public class h
       this.a.a(locald.a, locald.b);
       TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
     }
-    AppMethodBeat.o(187199);
+    AppMethodBeat.o(221328);
   }
   
   public void c()
@@ -359,10 +359,10 @@ public class h
   
   public void f(int paramInt)
   {
-    AppMethodBeat.i(187200);
+    AppMethodBeat.i(221329);
     this.e = paramInt;
     this.a.a(paramInt);
-    AppMethodBeat.o(187200);
+    AppMethodBeat.o(221329);
   }
   
   public int g()

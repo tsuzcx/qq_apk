@@ -43,10 +43,10 @@ public final class d
   extends ActionBar
   implements ActionBarOverlayLayout.a
 {
-  private static final boolean Jhb;
+  private static final boolean JBM;
   private static final Interpolator aac;
   private static final Interpolator aad;
-  a Jhc;
+  a JBN;
   u ZH;
   private boolean ZL;
   private ArrayList<Object> ZM;
@@ -79,7 +79,7 @@ public final class d
     if (Build.VERSION.SDK_INT >= 14) {}
     for (boolean bool = true;; bool = false)
     {
-      Jhb = bool;
+      JBM = bool;
       AppMethodBeat.o(141577);
       return;
     }
@@ -167,7 +167,7 @@ public final class d
       if (i != 0) {
         this.aak = true;
       }
-      android.support.v7.view.a.Z(this.mContext).hu();
+      android.support.v7.view.a.aa(this.mContext).hu();
       paramActivity = this.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968602, 0);
       paramActivity.getBoolean(14, false);
       i = paramActivity.getDimensionPixelSize(12, 0);
@@ -208,7 +208,7 @@ public final class d
       this.aav.cancel();
     }
     this.aag.setVisibility(0);
-    if ((this.aap == 0) && (Jhb) && ((this.aaw) || (paramBoolean)))
+    if ((this.aap == 0) && (JBM) && ((this.aaw) || (paramBoolean)))
     {
       t.e(this.aag, 0.0F);
       float f2 = -this.aag.getHeight();
@@ -257,7 +257,7 @@ public final class d
     if (this.aav != null) {
       this.aav.cancel();
     }
-    if ((this.aap == 0) && (Jhb) && ((this.aaw) || (paramBoolean)))
+    if ((this.aap == 0) && (JBM) && ((this.aaw) || (paramBoolean)))
     {
       t.f(this.aag, 1.0F);
       this.aag.setTransitioning(true);
@@ -410,8 +410,8 @@ public final class d
   public final b a(b.a parama)
   {
     AppMethodBeat.i(141555);
-    if (this.Jhc != null) {
-      this.Jhc.finish();
+    if (this.JBN != null) {
+      this.JBN.finish();
     }
     this.aah.ip();
     parama = new a(this.aah.getContext(), parama);
@@ -421,7 +421,7 @@ public final class d
       this.aah.c(parama);
       Y(true);
       this.aah.sendAccessibilityEvent(32);
-      this.Jhc = parama;
+      this.JBN = parama;
       AppMethodBeat.o(141555);
       return parama;
     }
@@ -589,7 +589,7 @@ public final class d
     AppMethodBeat.i(141540);
     paramConfiguration = this.ZH.jt().getLayoutParams();
     if (paramConfiguration != null) {
-      paramConfiguration.height = com.tencent.mm.compatible.util.a.cb(this.mActivity);
+      paramConfiguration.height = com.tencent.mm.compatible.util.a.cd(this.mActivity);
     }
     this.ZH.jt().setLayoutParams(paramConfiguration);
     AppMethodBeat.o(141540);
@@ -732,12 +732,12 @@ public final class d
     public final void finish()
     {
       AppMethodBeat.i(141523);
-      if (d.this.Jhc != this)
+      if (d.this.JBN != this)
       {
         AppMethodBeat.o(141523);
         return;
       }
-      if (!d.aU(d.e(d.this), d.f(d.this)))
+      if (!d.aT(d.e(d.this), d.f(d.this)))
       {
         d.this.aam = this;
         d.this.aan = this.aaE;
@@ -748,7 +748,7 @@ public final class d
         d.this.Y(false);
         d.g(d.this).in();
         d.h(d.this).jt().sendAccessibilityEvent(32);
-        d.this.Jhc = null;
+        d.this.JBN = null;
         AppMethodBeat.o(141523);
         return;
         this.aaE.a(this);
@@ -816,7 +816,7 @@ public final class d
     public final void invalidate()
     {
       AppMethodBeat.i(141524);
-      if (d.this.Jhc != this)
+      if (d.this.JBN != this)
       {
         AppMethodBeat.o(141524);
         return;

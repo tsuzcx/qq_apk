@@ -17,11 +17,11 @@ final class RegByMobileRegAIOUI$3
     AppMethodBeat.i(169146);
     b localb = new b();
     localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
     paramView = new Intent();
-    paramView.putExtra("country_name", RegByMobileRegAIOUI.n(this.jpj));
-    paramView.putExtra("couttry_code", RegByMobileRegAIOUI.c(this.jpj));
-    com.tencent.mm.plugin.account.a.a.iRG.b(paramView, this.jpj);
+    paramView.putExtra("country_name", RegByMobileRegAIOUI.n(this.jsc));
+    paramView.putExtra("couttry_code", RegByMobileRegAIOUI.c(this.jsc));
+    com.tencent.mm.plugin.account.a.a.iUz.b(paramView, this.jsc);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(169146);
   }

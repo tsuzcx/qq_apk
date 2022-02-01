@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public final class bt
   extends a<h>

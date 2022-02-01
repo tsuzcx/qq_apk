@@ -34,13 +34,13 @@ import com.tencent.kinda.gen.TextAlign;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.aq;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.ISecureEncrypt;
 import com.tenpay.android.wechat.TenpaySecureEditText;
@@ -95,7 +95,7 @@ public class MMKEditText
     this.editText = new TenpaySecureEditText(paramContext);
     this.editText.setSingleLine();
     this.editText.setBackground(null);
-    this.editText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), 17.0F));
+    this.editText.setTextSize(0, MMKViewUtil.dpToPx(ak.getContext(), 17.0F));
     this.editText.setTag(this);
     this.editText.setCursorStyle(2131232606);
     this.editText.setPadding(0, 0, 0, 0);
@@ -113,7 +113,7 @@ public class MMKEditText
         AppMethodBeat.i(19015);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         MMKEditText.this.editText.setText("");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(19015);
@@ -196,7 +196,7 @@ public class MMKEditText
         b localb = new b();
         localb.bd(paramAnonymousView);
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (MMKEditText.this.editText.isFocused())
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
@@ -232,7 +232,7 @@ public class MMKEditText
   public String encryptWith3Des()
   {
     AppMethodBeat.i(19039);
-    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(cf.aCK() / 1000L));
+    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(ch.aDa() / 1000L));
     AppMethodBeat.o(19039);
     return str;
   }
@@ -303,7 +303,7 @@ public class MMKEditText
   public String getText()
   {
     AppMethodBeat.i(19024);
-    ad.d("base_MMKView", "MMKLabelView getText ");
+    ae.d("base_MMKView", "MMKLabelView getText ");
     Object localObject = this.editText.getText();
     if (localObject != null)
     {
@@ -382,12 +382,12 @@ public class MMKEditText
       {
         public void run()
         {
-          AppMethodBeat.i(199504);
+          AppMethodBeat.i(193220);
           MMKEditText.this.editText.requestFocus();
           if ((MMKEditText.this.keyboardType != KeyboardType.ID) && (MMKEditText.this.keyboardType != KeyboardType.CRETAIL)) {
             ((InputMethodManager)MMKEditText.this.mContext.getSystemService("input_method")).showSoftInput(MMKEditText.this.editText, 0);
           }
-          AppMethodBeat.o(199504);
+          AppMethodBeat.o(193220);
         }
       }, 50L);
       AppMethodBeat.o(19036);
@@ -460,17 +460,17 @@ public class MMKEditText
         return;
         this.editText.setImeOptions(6);
         this.editText.setInputType(524289);
-        KindaWcKeyboardHelpr.bind((UIPageFragmentActivity)this.mBaseFrActivity, this.editText, aj.getContext().getString(2131755835), this.mBaseFrActivity.mTenpayKBStateCallBackListener);
+        KindaWcKeyboardHelpr.bind((UIPageFragmentActivity)this.mBaseFrActivity, this.editText, ak.getContext().getString(2131755835), this.mBaseFrActivity.mTenpayKBStateCallBackListener);
         this.editText.setOnEditorActionListener(new TextView.OnEditorActionListener()
         {
           public boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
           {
-            AppMethodBeat.i(199503);
-            ad.d("MMKEditText", "on eidtor action: %s", new Object[] { paramAnonymousKeyEvent });
+            AppMethodBeat.i(193219);
+            ae.d("MMKEditText", "on eidtor action: %s", new Object[] { paramAnonymousKeyEvent });
             if ((paramAnonymousKeyEvent.getAction() == 1) && (paramAnonymousKeyEvent.getKeyCode() == 66)) {
               MMKEditText.this.editText.clearFocus();
             }
-            AppMethodBeat.o(199503);
+            AppMethodBeat.o(193219);
             return true;
           }
         });
@@ -506,14 +506,14 @@ public class MMKEditText
   
   public void setRestrictType(EditTextRestrictType paramEditTextRestrictType)
   {
-    AppMethodBeat.i(199508);
+    AppMethodBeat.i(193224);
     this.mRestriceType = paramEditTextRestrictType;
     if (this.mRestriceType == EditTextRestrictType.MONEY) {
       this.editText.addTextChangedListener(new TextWatcher()
       {
         public void afterTextChanged(Editable paramAnonymousEditable)
         {
-          AppMethodBeat.i(199505);
+          AppMethodBeat.i(193221);
           if (paramAnonymousEditable.toString().startsWith(".")) {
             paramAnonymousEditable.insert(0, "0");
           }
@@ -523,19 +523,19 @@ public class MMKEditText
           if ((i >= 0) && (j - i > 3))
           {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, i + 3, j);
-            AppMethodBeat.o(199505);
+            AppMethodBeat.o(193221);
             return;
           }
           if (i > 12)
           {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 12, i);
-            AppMethodBeat.o(199505);
+            AppMethodBeat.o(193221);
             return;
           }
           if ((i == -1) && (j > 12)) {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 12, j);
           }
-          AppMethodBeat.o(199505);
+          AppMethodBeat.o(193221);
         }
         
         public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -543,7 +543,7 @@ public class MMKEditText
         public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
     }
-    AppMethodBeat.o(199508);
+    AppMethodBeat.o(193224);
   }
   
   public void setSelection(int paramInt)
@@ -556,7 +556,7 @@ public class MMKEditText
   public void setText(String paramString)
   {
     AppMethodBeat.i(19023);
-    ad.d("base_MMKView", "MMKLabelView setText ".concat(String.valueOf(paramString)));
+    ae.d("base_MMKView", "MMKLabelView setText ".concat(String.valueOf(paramString)));
     if ((paramString != null) && (!getText().equals(paramString))) {
       this.editText.setText(paramString);
     }
@@ -598,7 +598,7 @@ public class MMKEditText
   {
     AppMethodBeat.i(19027);
     int i;
-    if (!bt.isNullOrNil(paramString)) {
+    if (!bu.isNullOrNil(paramString)) {
       if (paramString.equalsIgnoreCase("WeChat-Sans-SS-Light")) {
         i = 2;
       }
@@ -607,17 +607,17 @@ public class MMKEditText
     {
       if (i != -1)
       {
-        paramString = e.agp(i);
+        paramString = f.agY(i);
         try
         {
-          this.editText.setTypeface(Typeface.createFromAsset(aj.getContext().getAssets(), paramString));
+          this.editText.setTypeface(Typeface.createFromAsset(ak.getContext().getAssets(), paramString));
           notifyChanged();
           AppMethodBeat.o(19027);
           return;
         }
         catch (Exception paramString)
         {
-          ad.e("base_MMKView", "setTypeface() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+          ae.e("base_MMKView", "setTypeface() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
         }
         if (paramString.equalsIgnoreCase("WeChat-Sans-SS-Medium"))
         {
@@ -648,7 +648,7 @@ public class MMKEditText
     if (paramFloat > 0.0F)
     {
       this.textSize = paramFloat;
-      this.editText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), paramFloat));
+      this.editText.setTextSize(0, MMKViewUtil.dpToPx(ak.getContext(), paramFloat));
       notifyChanged();
     }
     AppMethodBeat.o(19025);
@@ -658,12 +658,12 @@ public class MMKEditText
   
   public void setViewId(String paramString)
   {
-    AppMethodBeat.i(199507);
+    AppMethodBeat.i(193223);
     super.setViewId(paramString);
     if (this.iconImageView != null) {
       MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
     }
-    AppMethodBeat.o(199507);
+    AppMethodBeat.o(193223);
   }
   
   public void setVisibleClearIcon(boolean paramBoolean)
@@ -681,7 +681,7 @@ public class MMKEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ final class BizTimeLineNewMsgUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(5916);
-    this.obi.finish();
+    this.ogZ.finish();
     AppMethodBeat.o(5916);
     return true;
   }

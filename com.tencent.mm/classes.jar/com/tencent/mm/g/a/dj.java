@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class dj
   extends b
 {
-  public a doe;
+  public a dpi;
   
   public dj()
   {
@@ -15,16 +15,18 @@ public final class dj
   
   private dj(byte paramByte)
   {
-    AppMethodBeat.i(140985);
-    this.doe = new a();
-    this.IbR = false;
+    AppMethodBeat.i(104414);
+    this.dpi = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(140985);
+    AppMethodBeat.o(104414);
   }
   
   public static final class a
   {
-    public int dof = 0;
+    public int dlO;
+    public String md5;
+    public boolean success;
   }
 }
 

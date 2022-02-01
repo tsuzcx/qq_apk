@@ -16,6 +16,7 @@ import com.tencent.map.lib.models.Polygon2D;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions.Text;
+import com.tencent.tencentmap.mapsdk.maps.model.TrafficStyle;
 import com.tencent.tencentmap.mapsdk.maps.model.VectorHeatAggregationUnit;
 import java.util.ArrayList;
 
@@ -118,9 +119,11 @@ public class JNIInterface
   
   public native boolean nativeDrawFrame(long paramLong);
   
-  public native void nativeEnablePOI(long paramLong, boolean paramBoolean);
+  public native void nativeEnableBaseMap(long paramLong, boolean paramBoolean);
   
-  public native void nativeEnableVectorMap(long paramLong, boolean paramBoolean);
+  public native void nativeEnableBuilding(long paramLong, boolean paramBoolean);
+  
+  public native void nativeEnablePOI(long paramLong, boolean paramBoolean);
   
   public native int[] nativeFetchLackedTrafficBlocks(long paramLong);
   
@@ -345,6 +348,8 @@ public class JNIInterface
   
   public native void nativeSetTrafficColor(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
+  public native void nativeSetTrafficStyle(long paramLong, TrafficStyle paramTrafficStyle);
+  
   public native void nativeSetTurnArrow(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
   
   public native void nativeSetTurnArrowStyle(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
@@ -391,14 +396,14 @@ public class JNIInterface
   
   public boolean onJniCallbackRenderMapFrame(int paramInt)
   {
-    AppMethodBeat.i(195054);
+    AppMethodBeat.i(209758);
     if (this.mCallback != null)
     {
       boolean bool = this.mCallback.onJniCallbackRenderMapFrame(paramInt);
-      AppMethodBeat.o(195054);
+      AppMethodBeat.o(209758);
       return bool;
     }
-    AppMethodBeat.o(195054);
+    AppMethodBeat.o(209758);
     return false;
   }
   

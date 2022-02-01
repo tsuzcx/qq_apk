@@ -10,13 +10,13 @@ public final class b
 {
   private int mID;
   private long mInterval;
-  private long ygD;
-  private HashMap<Integer, Long> ygE;
+  private long ywu;
+  private HashMap<Integer, Long> ywv;
   
   public b()
   {
     AppMethodBeat.i(125118);
-    this.ygE = new HashMap();
+    this.ywv = new HashMap();
     this.mID = 463;
     this.mInterval = 300000L;
     AppMethodBeat.o(125118);
@@ -25,12 +25,12 @@ public final class b
   private void as(int paramInt, long paramLong)
   {
     AppMethodBeat.i(125120);
-    Long localLong = (Long)this.ygE.get(Integer.valueOf(paramInt));
+    Long localLong = (Long)this.ywv.get(Integer.valueOf(paramInt));
     long l = paramLong;
     if (localLong != null) {
       l = paramLong + localLong.longValue();
     }
-    this.ygE.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    this.ywv.put(Integer.valueOf(paramInt), Long.valueOf(l));
     AppMethodBeat.o(125120);
   }
   
@@ -42,15 +42,15 @@ public final class b
       as(paramInt1, paramLong);
       as(paramInt2, 1L);
       paramLong = System.currentTimeMillis();
-      if (paramLong - this.ygD > this.mInterval)
+      if (paramLong - this.ywu > this.mInterval)
       {
-        Iterator localIterator = this.ygE.entrySet().iterator();
+        Iterator localIterator = this.ywv.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          e.ygI.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
+          e.ywz.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
         }
-        this.ygD = paramLong;
+        this.ywu = paramLong;
       }
     }
     finally

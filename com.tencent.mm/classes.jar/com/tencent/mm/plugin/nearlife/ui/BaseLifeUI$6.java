@@ -8,10 +8,10 @@ final class BaseLifeUI$6
 {
   BaseLifeUI$6(BaseLifeUI paramBaseLifeUI) {}
   
-  public final void Zt()
+  public final void ZC()
   {
     AppMethodBeat.i(26570);
-    BaseLifeUI.a(this.wqQ);
+    BaseLifeUI.a(this.wGz);
     AppMethodBeat.o(26570);
   }
 }

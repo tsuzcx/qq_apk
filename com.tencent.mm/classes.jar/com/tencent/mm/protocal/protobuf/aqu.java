@@ -1,130 +1,159 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class aqu
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public b GoO;
-  public LinkedList<ase> GoP;
-  public String GoQ;
-  public long GoR;
-  public long dtq;
-  public int priority;
-  public int type;
-  
-  public aqu()
-  {
-    AppMethodBeat.i(184209);
-    this.GoP = new LinkedList();
-    AppMethodBeat.o(184209);
-  }
+  public alw GDR;
+  public b lastBuffer;
+  public long refObjectId;
+  public String refObjectNonceId;
+  public String sbR;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(184210);
+    AppMethodBeat.i(169032);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.priority);
-      paramVarArgs.aS(2, this.type);
-      if (this.GoO != null) {
-        paramVarArgs.c(3, this.GoO);
-      }
-      paramVarArgs.e(4, 8, this.GoP);
-      if (this.GoQ != null) {
-        paramVarArgs.d(5, this.GoQ);
-      }
-      paramVarArgs.aY(100, this.dtq);
-      paramVarArgs.aY(101, this.GoR);
-      AppMethodBeat.o(184210);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      i = f.a.a.b.b.a.bz(1, this.priority) + 0 + f.a.a.b.b.a.bz(2, this.type);
-      paramInt = i;
-      if (this.GoO != null) {
-        paramInt = i + f.a.a.b.b.a.b(3, this.GoO);
-      }
-      i = paramInt + f.a.a.a.c(4, 8, this.GoP);
-      paramInt = i;
-      if (this.GoQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.GoQ);
-      }
-      i = f.a.a.b.b.a.p(100, this.dtq);
-      int j = f.a.a.b.b.a.p(101, this.GoR);
-      AppMethodBeat.o(184210);
-      return paramInt + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.GoP.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
-        }
-      }
-      AppMethodBeat.o(184210);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      aqu localaqu = (aqu)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(184210);
-        return -1;
-      case 1: 
-        localaqu.priority = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(184210);
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.username != null) {
+        paramVarArgs.d(2, this.username);
+      }
+      paramVarArgs.aZ(3, this.refObjectId);
+      if (this.sbR != null) {
+        paramVarArgs.d(4, this.sbR);
+      }
+      if (this.lastBuffer != null) {
+        paramVarArgs.c(5, this.lastBuffer);
+      }
+      if (this.refObjectNonceId != null) {
+        paramVarArgs.d(6, this.refObjectNonceId);
+      }
+      if (this.GDR != null)
+      {
+        paramVarArgs.lJ(7, this.GDR.computeSize());
+        this.GDR.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(169032);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label754;
+      }
+    }
+    label754:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.username);
+      }
+      i += f.a.a.b.b.a.p(3, this.refObjectId);
+      paramInt = i;
+      if (this.sbR != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.sbR);
+      }
+      i = paramInt;
+      if (this.lastBuffer != null) {
+        i = paramInt + f.a.a.b.b.a.b(5, this.lastBuffer);
+      }
+      paramInt = i;
+      if (this.refObjectNonceId != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.refObjectNonceId);
+      }
+      i = paramInt;
+      if (this.GDR != null) {
+        i = paramInt + f.a.a.a.lI(7, this.GDR.computeSize());
+      }
+      AppMethodBeat.o(169032);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
+        }
+        AppMethodBeat.o(169032);
         return 0;
-      case 2: 
-        localaqu.type = ((f.a.a.a.a)localObject1).NPN.zc();
-        AppMethodBeat.o(184210);
-        return 0;
-      case 3: 
-        localaqu.GoO = ((f.a.a.a.a)localObject1).NPN.gxI();
-        AppMethodBeat.o(184210);
-        return 0;
-      case 4: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        aqu localaqu = (aqu)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(169032);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localaqu.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169032);
+          return 0;
+        case 2: 
+          localaqu.username = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(169032);
+          return 0;
+        case 3: 
+          localaqu.refObjectId = ((f.a.a.a.a)localObject1).OmT.zd();
+          AppMethodBeat.o(169032);
+          return 0;
+        case 4: 
+          localaqu.sbR = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(169032);
+          return 0;
+        case 5: 
+          localaqu.lastBuffer = ((f.a.a.a.a)localObject1).OmT.gCk();
+          AppMethodBeat.o(169032);
+          return 0;
+        case 6: 
+          localaqu.refObjectNonceId = ((f.a.a.a.a)localObject1).OmT.readString();
+          AppMethodBeat.o(169032);
+          return 0;
+        }
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new ase();
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new alw();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((ase)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localaqu.GoP.add(localObject1);
+          for (bool = true; bool; bool = ((alw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localaqu.GDR = ((alw)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(184210);
-        return 0;
-      case 5: 
-        localaqu.GoQ = ((f.a.a.a.a)localObject1).NPN.readString();
-        AppMethodBeat.o(184210);
-        return 0;
-      case 100: 
-        localaqu.dtq = ((f.a.a.a.a)localObject1).NPN.zd();
-        AppMethodBeat.o(184210);
+        AppMethodBeat.o(169032);
         return 0;
       }
-      localaqu.GoR = ((f.a.a.a.a)localObject1).NPN.zd();
-      AppMethodBeat.o(184210);
-      return 0;
+      AppMethodBeat.o(169032);
+      return -1;
     }
-    AppMethodBeat.o(184210);
-    return -1;
   }
 }
 

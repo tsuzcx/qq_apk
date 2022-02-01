@@ -8,12 +8,12 @@ public final class y
   public static final class a
     implements Serializable
   {
-    public boolean MLQ;
+    public boolean NiT;
     
     public final String toString()
     {
       AppMethodBeat.i(128956);
-      boolean bool = this.MLQ;
+      boolean bool = this.NiT;
       AppMethodBeat.o(128956);
       return String.valueOf(bool);
     }
@@ -22,12 +22,12 @@ public final class y
   public static final class d
     implements Serializable
   {
-    public int MLT;
+    public int NiW;
     
     public final String toString()
     {
       AppMethodBeat.i(128942);
-      int i = this.MLT;
+      int i = this.NiW;
       AppMethodBeat.o(128942);
       return String.valueOf(i);
     }
@@ -36,12 +36,12 @@ public final class y
   public static final class e
     implements Serializable
   {
-    public long MLU;
+    public long NiX;
     
     public final String toString()
     {
       AppMethodBeat.i(128957);
-      long l = this.MLU;
+      long l = this.NiX;
       AppMethodBeat.o(128957);
       return String.valueOf(l);
     }
@@ -50,12 +50,12 @@ public final class y
   public static final class f<T>
     implements Serializable
   {
-    public T MLV;
+    public T NiY;
     
     public final String toString()
     {
       AppMethodBeat.i(128972);
-      String str = String.valueOf(this.MLV);
+      String str = String.valueOf(this.NiY);
       AppMethodBeat.o(128972);
       return str;
     }

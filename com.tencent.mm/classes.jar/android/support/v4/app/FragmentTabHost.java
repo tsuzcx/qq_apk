@@ -3,8 +3,11 @@ package android.support.v4.app;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.util.AttributeSet;
+import android.view.View.BaseSavedState;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import java.util.ArrayList;
@@ -130,19 +133,19 @@ public class FragmentTabHost
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof FragmentTabHost.SavedState))
+    if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
       return;
     }
-    paramParcelable = (FragmentTabHost.SavedState)paramParcelable;
+    paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     setCurrentTabByTag(paramParcelable.El);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    FragmentTabHost.SavedState localSavedState = new FragmentTabHost.SavedState(super.onSaveInstanceState());
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.El = getCurrentTabTag();
     return localSavedState;
   }
@@ -170,6 +173,35 @@ public class FragmentTabHost
   public void setup()
   {
     throw new IllegalStateException("Must call setup() that takes a Context and FragmentManager");
+  }
+  
+  static class SavedState
+    extends View.BaseSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
+    String El;
+    
+    SavedState(Parcel paramParcel)
+    {
+      super();
+      this.El = paramParcel.readString();
+    }
+    
+    SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public String toString()
+    {
+      return "FragmentTabHost.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " curTab=" + this.El + "}";
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeString(this.El);
+    }
   }
   
   static final class a

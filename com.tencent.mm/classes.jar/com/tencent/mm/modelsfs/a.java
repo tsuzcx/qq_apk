@@ -2,25 +2,25 @@ package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.imgenc.MMIMAGEENCJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class a
 {
-  private static boolean ikP = false;
-  long ikQ;
-  private String ikR;
-  long ikS;
+  private static boolean inI = false;
+  long inJ;
+  private String inK;
+  long inL;
   long mNativePtr;
   
   public a(long paramLong)
   {
     AppMethodBeat.i(155977);
-    this.ikQ = 0L;
+    this.inJ = 0L;
     this.mNativePtr = 0L;
-    this.ikS = 0L;
-    this.ikR = String.valueOf(paramLong);
+    this.inL = 0L;
+    this.inK = String.valueOf(paramLong);
     init();
     AppMethodBeat.o(155977);
   }
@@ -28,10 +28,10 @@ public final class a
   public a(String paramString)
   {
     AppMethodBeat.i(155978);
-    this.ikQ = 0L;
+    this.inJ = 0L;
     this.mNativePtr = 0L;
-    this.ikS = 0L;
-    this.ikR = paramString;
+    this.inL = 0L;
+    this.inK = paramString;
     init();
     AppMethodBeat.o(155978);
   }
@@ -39,7 +39,7 @@ public final class a
   public final void free()
   {
     AppMethodBeat.i(155981);
-    ad.i("MicroMsg.EncEngine", "free mNativePtr: " + this.mNativePtr + " hashcode " + hashCode());
+    ae.i("MicroMsg.EncEngine", "free mNativePtr: " + this.mNativePtr + " hashcode " + hashCode());
     MMIMAGEENCJNI.free(this.mNativePtr);
     this.mNativePtr = 0L;
     AppMethodBeat.o(155981);
@@ -48,17 +48,17 @@ public final class a
   final void init()
   {
     AppMethodBeat.i(155979);
-    ad.i("MicroMsg.EncEngine", "init  key  enckey " + this.ikR + "  hashcode " + hashCode());
-    this.mNativePtr = MMIMAGEENCJNI.open(this.ikR);
+    ae.i("MicroMsg.EncEngine", "init  key  enckey " + this.inK + "  hashcode " + hashCode());
+    this.mNativePtr = MMIMAGEENCJNI.open(this.inK);
     try
     {
-      ad.i("MicroMsg.EncEngine", "mNativePtr " + this.mNativePtr + " " + hashCode());
+      ae.i("MicroMsg.EncEngine", "mNativePtr " + this.mNativePtr + " " + hashCode());
       AppMethodBeat.o(155979);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.EncEngine", "exception " + localException.getMessage());
+      ae.e("MicroMsg.EncEngine", "exception " + localException.getMessage());
       AppMethodBeat.o(155979);
     }
   }
@@ -67,19 +67,19 @@ public final class a
   {
     AppMethodBeat.i(155980);
     if (this.mNativePtr == 0L) {
-      ad.i("MicroMsg.EncEngine", "transFor " + bt.flS().toString());
+      ae.i("MicroMsg.EncEngine", "transFor " + bu.fpN().toString());
     }
-    if (ikP) {
-      ad.i("MicroMsg.EncEngine", "trans for  " + hashCode() + " " + paramArrayOfByte.length);
+    if (inI) {
+      ae.i("MicroMsg.EncEngine", "trans for  " + hashCode() + " " + paramArrayOfByte.length);
     }
-    if ((ikP) && (this.ikQ < 64L)) {
-      ad.d("MicroMsg.EncEngine", "dump before _offset " + this.ikQ + "  length:" + paramInt + " " + bt.cB(paramArrayOfByte) + " hashcode " + hashCode());
+    if ((inI) && (this.inJ < 64L)) {
+      ae.d("MicroMsg.EncEngine", "dump before _offset " + this.inJ + "  length:" + paramInt + " " + bu.cE(paramArrayOfByte) + " hashcode " + hashCode());
     }
-    MMIMAGEENCJNI.transFor(this.mNativePtr, paramArrayOfByte, this.ikQ, paramInt);
-    if ((ikP) && (this.ikQ < 64L)) {
-      ad.d("MicroMsg.EncEngine", "dump after _offset " + this.ikQ + "  length:" + paramInt + " " + bt.cB(paramArrayOfByte) + " hashcode " + hashCode());
+    MMIMAGEENCJNI.transFor(this.mNativePtr, paramArrayOfByte, this.inJ, paramInt);
+    if ((inI) && (this.inJ < 64L)) {
+      ae.d("MicroMsg.EncEngine", "dump after _offset " + this.inJ + "  length:" + paramInt + " " + bu.cE(paramArrayOfByte) + " hashcode " + hashCode());
     }
-    this.ikQ += paramInt;
+    this.inJ += paramInt;
     AppMethodBeat.o(155980);
     return paramInt;
   }

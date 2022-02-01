@@ -13,8 +13,8 @@ import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,12 +24,12 @@ public final class o
   extends com.tencent.mm.sdk.e.k
   implements ai
 {
-  private final Set<k.a> jOM;
+  private final Set<k.a> jSe;
   
   public o()
   {
     AppMethodBeat.i(44521);
-    this.jOM = new HashSet();
+    this.jSe = new HashSet();
     AppMethodBeat.o(44521);
   }
   
@@ -50,13 +50,13 @@ public final class o
       return;
     }
     super.add(parama, ???);
-    synchronized (this.jOM)
+    synchronized (this.jSe)
     {
-      this.jOM.add(parama);
-      if (this.jOM.size() == 1)
+      this.jSe.add(parama);
+      if (this.jSe.size() == 1)
       {
         if (i != 0) {
-          XIPCInvoker.a("com.tencent.mm", IPCVoid.gyi, b.class, new d() {});
+          XIPCInvoker.a("com.tencent.mm", IPCVoid.gAP, b.class, new d() {});
         }
         AppMethodBeat.o(44526);
         return;
@@ -65,7 +65,7 @@ public final class o
     }
   }
   
-  public final boolean ba(String paramString, int paramInt)
+  public final boolean bd(String paramString, int paramInt)
   {
     AppMethodBeat.i(44522);
     paramString = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), c.class);
@@ -97,14 +97,6 @@ public final class o
     return localArrayList;
   }
   
-  public final List<LocalUsageInfo> rY(int paramInt)
-  {
-    AppMethodBeat.i(44523);
-    List localList = dE(paramInt, 2147483647);
-    AppMethodBeat.o(44523);
-    return localList;
-  }
-  
   public final void remove(k.a parama)
   {
     AppMethodBeat.i(44527);
@@ -114,18 +106,26 @@ public final class o
       return;
     }
     super.remove(parama);
-    synchronized (this.jOM)
+    synchronized (this.jSe)
     {
-      this.jOM.remove(parama);
+      this.jSe.remove(parama);
       AppMethodBeat.o(44527);
       return;
     }
   }
   
+  public final List<LocalUsageInfo> sb(int paramInt)
+  {
+    AppMethodBeat.i(44523);
+    List localList = dE(paramInt, 2147483647);
+    AppMethodBeat.o(44523);
+    return localList;
+  }
+  
   static final class a
     implements com.tencent.mm.ipcinvoker.k<Bundle, Parcel>
   {
-    private static Parcel z(Bundle paramBundle)
+    private static Parcel A(Bundle paramBundle)
     {
       AppMethodBeat.i(44513);
       int i = paramBundle.getInt("count");
@@ -159,13 +159,13 @@ public final class o
       AppMethodBeat.i(44519);
       try
       {
-        paramAppIdentity = new IPCBoolean(((ai)g.ab(ai.class)).ba(paramAppIdentity.username, paramAppIdentity.hQh));
+        paramAppIdentity = new IPCBoolean(((ai)g.ab(ai.class)).bd(paramAppIdentity.username, paramAppIdentity.hSZ));
         AppMethodBeat.o(44519);
         return paramAppIdentity;
       }
       catch (Exception paramAppIdentity)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
         paramAppIdentity = new IPCBoolean(false);
         AppMethodBeat.o(44519);
       }

@@ -11,6 +11,7 @@ import com.google.android.exoplayer2.h.t.c;
 import com.google.android.exoplayer2.h.t.d;
 import com.google.android.exoplayer2.i.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.IOException;
 import java.util.Arrays;
 
 final class f
@@ -464,7 +465,7 @@ final class f
   
   public final m eb(int paramInt)
   {
-    AppMethodBeat.i(217121);
+    AppMethodBeat.i(211648);
     int j = this.bvV.length;
     int i = 0;
     while (i < j)
@@ -472,7 +473,7 @@ final class f
       if (this.bvW[i] == paramInt)
       {
         localk = this.bvV[i];
-        AppMethodBeat.o(217121);
+        AppMethodBeat.o(211648);
         return localk;
       }
       i += 1;
@@ -483,7 +484,7 @@ final class f
     this.bvW[j] = paramInt;
     this.bvV = ((k[])Arrays.copyOf(this.bvV, j + 1));
     this.bvV[j] = localk;
-    AppMethodBeat.o(217121);
+    AppMethodBeat.o(211648);
     return localk;
   }
   
@@ -1030,7 +1031,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.source.f
  * JD-Core Version:    0.7.0.1
  */

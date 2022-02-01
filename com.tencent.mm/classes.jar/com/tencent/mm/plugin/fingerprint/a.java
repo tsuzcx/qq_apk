@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fingerprint;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.fingerprint.b.b;
 import com.tencent.mm.plugin.fingerprint.b.f;
 import com.tencent.mm.plugin.fingerprint.b.h;
@@ -13,14 +13,14 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements ax
+  implements az
 {
-  private n tfN;
-  private com.tencent.mm.plugin.fingerprint.b.i tfO;
-  private j tfP;
-  private b tfQ;
-  private com.tencent.mm.plugin.fingerprint.b.e tfR;
-  private f tfS;
+  private n tqG;
+  private com.tencent.mm.plugin.fingerprint.b.i tqH;
+  private j tqI;
+  private b tqJ;
+  private com.tencent.mm.plugin.fingerprint.b.e tqK;
+  private f tqL;
   
   static
   {
@@ -32,12 +32,12 @@ public class a
   public a()
   {
     AppMethodBeat.i(64213);
-    this.tfN = new n();
-    this.tfO = new com.tencent.mm.plugin.fingerprint.b.i();
-    this.tfP = new j();
-    this.tfQ = new b();
-    this.tfR = new com.tencent.mm.plugin.fingerprint.b.e();
-    this.tfS = new f();
+    this.tqG = new n();
+    this.tqH = new com.tencent.mm.plugin.fingerprint.b.i();
+    this.tqI = new j();
+    this.tqJ = new b();
+    this.tqK = new com.tencent.mm.plugin.fingerprint.b.e();
+    this.tqL = new f();
     AppMethodBeat.o(64213);
   }
   
@@ -51,12 +51,12 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(64214);
-    com.tencent.mm.sdk.b.a.IbL.c(this.tfN);
-    com.tencent.mm.sdk.b.a.IbL.c(this.tfO);
-    com.tencent.mm.sdk.b.a.IbL.c(this.tfP);
-    com.tencent.mm.sdk.b.a.IbL.c(this.tfQ);
-    com.tencent.mm.sdk.b.a.IbL.c(this.tfR);
-    com.tencent.mm.sdk.b.a.IbL.c(this.tfS);
+    com.tencent.mm.sdk.b.a.IvT.c(this.tqG);
+    com.tencent.mm.sdk.b.a.IvT.c(this.tqH);
+    com.tencent.mm.sdk.b.a.IvT.c(this.tqI);
+    com.tencent.mm.sdk.b.a.IvT.c(this.tqJ);
+    com.tencent.mm.sdk.b.a.IvT.c(this.tqK);
+    com.tencent.mm.sdk.b.a.IvT.c(this.tqL);
     g.a(h.class, new com.tencent.mm.kernel.c.e(new q()));
     AppMethodBeat.o(64214);
   }
@@ -64,14 +64,14 @@ public class a
   public void onAccountRelease()
   {
     AppMethodBeat.i(64215);
-    com.tencent.mm.sdk.b.a.IbL.d(this.tfN);
-    this.tfO.release();
-    com.tencent.mm.sdk.b.a.IbL.d(this.tfO);
-    com.tencent.mm.sdk.b.a.IbL.d(this.tfP);
-    com.tencent.mm.sdk.b.a.IbL.d(this.tfQ);
-    com.tencent.mm.sdk.b.a.IbL.d(this.tfR);
+    com.tencent.mm.sdk.b.a.IvT.d(this.tqG);
+    this.tqH.release();
+    com.tencent.mm.sdk.b.a.IvT.d(this.tqH);
+    com.tencent.mm.sdk.b.a.IvT.d(this.tqI);
+    com.tencent.mm.sdk.b.a.IvT.d(this.tqJ);
+    com.tencent.mm.sdk.b.a.IvT.d(this.tqK);
     ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cancel();
-    com.tencent.mm.sdk.b.a.IbL.d(this.tfS);
+    com.tencent.mm.sdk.b.a.IvT.d(this.tqL);
     g.ac(h.class);
     AppMethodBeat.o(64215);
   }
@@ -80,7 +80,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResu
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.api.c;
 
 public final class JsApiJumpDownloaderWidgetForNative
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 671;
   public static final String NAME = "jumpDownloaderWidgetForNative";
@@ -43,12 +43,12 @@ public final class JsApiJumpDownloaderWidgetForNative
       AppMethodBeat.o(45828);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bgN()
+    public final Class<? extends AppBrandProxyUIProcessTask> bhv()
     {
       return JsApiJumpDownloaderWidgetForNative.a.class;
     }
     
-    public final boolean bhR()
+    public final boolean biA()
     {
       return true;
     }
@@ -85,9 +85,9 @@ public final class JsApiJumpDownloaderWidgetForNative
         Intent localIntent = new Intent();
         localIntent.putExtra("appId", paramProcessRequest);
         localIntent.putExtra("view_task", true);
-        ((c)g.ab(c.class)).a(bhJ(), localIntent, new a.c()
+        ((c)g.ab(c.class)).a(bis(), localIntent, new a.c()
         {
-          public final void biA()
+          public final void bjj()
           {
             AppMethodBeat.i(45830);
             JsApiJumpDownloaderWidgetForNative.a.a(JsApiJumpDownloaderWidgetForNative.a.this);

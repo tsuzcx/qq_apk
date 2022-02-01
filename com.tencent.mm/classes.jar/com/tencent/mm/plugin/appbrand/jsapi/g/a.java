@@ -7,13 +7,13 @@ import com.tencent.luggage.h.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 abstract class a<CONTEXT extends c>
   extends com.tencent.mm.plugin.appbrand.jsapi.a<CONTEXT>
 {
-  boolean kOo;
+  boolean kRQ;
   
   static boolean q(CONTEXT paramCONTEXT)
   {
@@ -30,7 +30,7 @@ abstract class a<CONTEXT extends c>
       if (localActivity != null) {
         break label82;
       }
-      ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
+      ae.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
       paramCONTEXT.h(paramInt, e("fail:internal error invalid android context", null));
       bool = false;
     }
@@ -39,7 +39,7 @@ abstract class a<CONTEXT extends c>
       if (bool) {
         break label148;
       }
-      ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
+      ae.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
       return;
       localActivity = null;
       break;
@@ -48,27 +48,27 @@ abstract class a<CONTEXT extends c>
       {
         bool = true;
       }
-      else if (this.kOo)
+      else if (this.kRQ)
       {
         paramCONTEXT.h(paramInt, e("fail:system permission denied", null));
         bool = false;
       }
       else
       {
-        bool = e.aA(localActivity).a("android.permission.ACCESS_FINE_LOCATION", new e.f()
+        bool = e.aB(localActivity).a("android.permission.ACCESS_FINE_LOCATION", new e.f()
         {
           public final void p(int[] paramAnonymousArrayOfInt)
           {
             AppMethodBeat.i(143625);
             if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
             {
-              ad.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
+              ae.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
               a.this.a(paramCONTEXT, paramJSONObject, paramInt);
               AppMethodBeat.o(143625);
               return;
             }
-            ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
-            a.this.kOo = true;
+            ae.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
+            a.this.kRQ = true;
             paramCONTEXT.h(paramInt, a.this.e("fail:system permission denied", null));
             AppMethodBeat.o(143625);
           }
@@ -78,7 +78,7 @@ abstract class a<CONTEXT extends c>
     label148:
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
+      ae.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
       paramCONTEXT.h(paramInt, e("fail:invalid data", null));
       return;
     }

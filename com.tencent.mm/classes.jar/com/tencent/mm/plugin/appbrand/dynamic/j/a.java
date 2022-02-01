@@ -4,16 +4,16 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.y;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.y;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.bc;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
-import com.tencent.mm.plugin.appbrand.appcache.bi.a;
+import com.tencent.mm.plugin.appbrand.appcache.bd;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.appcache.bj.a;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo;
@@ -23,14 +23,14 @@ import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.c.a;
 import com.tencent.mm.plugin.appbrand.widget.n;
 import com.tencent.mm.plugin.appbrand.widget.o;
-import com.tencent.mm.protocal.protobuf.bln;
-import com.tencent.mm.protocal.protobuf.blo;
-import com.tencent.mm.protocal.protobuf.efg;
-import com.tencent.mm.protocal.protobuf.efh;
-import com.tencent.mm.protocal.protobuf.efj;
-import com.tencent.mm.protocal.protobuf.eir;
-import com.tencent.mm.protocal.protobuf.xf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bmf;
+import com.tencent.mm.protocal.protobuf.bmg;
+import com.tencent.mm.protocal.protobuf.egx;
+import com.tencent.mm.protocal.protobuf.egy;
+import com.tencent.mm.protocal.protobuf.eha;
+import com.tencent.mm.protocal.protobuf.eki;
+import com.tencent.mm.protocal.protobuf.xi;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -58,7 +58,7 @@ public final class a
     localBundle.putString("preload_download_data", paramString4);
     if (paramInt1 == 10102)
     {
-      paramString1 = com.tencent.mm.plugin.appbrand.dynamic.b.e.OB(N(paramString2, paramInt1, paramInt2));
+      paramString1 = com.tencent.mm.plugin.appbrand.dynamic.b.e.Pj(N(paramString2, paramInt1, paramInt2));
       if (paramString1 != null)
       {
         u.i("MicroMsg.DynamicPkgUpdater", "get wxaPkgInfo from cache", new Object[0]);
@@ -68,7 +68,7 @@ public final class a
     }
     paramString1 = (WxaPkgWrappingInfo)h.a("com.tencent.mm", localBundle, a.class);
     if (paramString1 != null) {
-      com.tencent.mm.plugin.appbrand.dynamic.b.e.a(N(paramString2, paramInt1, paramInt2), paramString1);
+      com.tencent.mm.plugin.appbrand.dynamic.b.e.b(N(paramString2, paramInt1, paramInt2), paramString1);
     }
     AppMethodBeat.o(121471);
     return paramString1;
@@ -92,26 +92,26 @@ public final class a
     }
     localObject = new d();
     ((d)localObject).appId = paramString1;
-    ((d)localObject).kir = ((DebuggerInfo)paramString2.getParcelable("debuggerInfo"));
+    ((d)localObject).klH = ((DebuggerInfo)paramString2.getParcelable("debuggerInfo"));
     paramString1 = paramString2.getByteArray("jsApiInfo");
     if (paramString1 != null) {
-      ((d)localObject).kiv = new xf();
+      ((d)localObject).klL = new xi();
     }
     try
     {
-      ((d)localObject).kiv.parseFrom(paramString1);
+      ((d)localObject).klL.parseFrom(paramString1);
       paramString1 = paramString2.getByteArray("launchAction");
       if (paramString1 != null) {
-        ((d)localObject).kiu = new efh();
+        ((d)localObject).klK = new egy();
       }
     }
     catch (IOException paramString1)
     {
       try
       {
-        ((d)localObject).kiu.parseFrom(paramString1);
+        ((d)localObject).klK.parseFrom(paramString1);
         paramString1 = paramString2.getByteArray("versionInfo");
-        ((d)localObject).kiw = new efj();
+        ((d)localObject).klM = new eha();
         if (paramString1 == null) {}
       }
       catch (IOException paramString1)
@@ -120,25 +120,25 @@ public final class a
         {
           for (;;)
           {
-            ((d)localObject).kiw.parseFrom(paramString1);
-            ((d)localObject).kis = ((WidgetSysConfig)paramString2.getParcelable("sysConfig"));
-            ((d)localObject).kit = ((WidgetRuntimeConfig)paramString2.getParcelable("runtimeConfig"));
-            if (((d)localObject).kit == null) {
-              ((d)localObject).kit = new WidgetRuntimeConfig();
+            ((d)localObject).klM.parseFrom(paramString1);
+            ((d)localObject).klI = ((WidgetSysConfig)paramString2.getParcelable("sysConfig"));
+            ((d)localObject).klJ = ((WidgetRuntimeConfig)paramString2.getParcelable("runtimeConfig"));
+            if (((d)localObject).klJ == null) {
+              ((d)localObject).klJ = new WidgetRuntimeConfig();
             }
             AppMethodBeat.o(121472);
             return localObject;
             paramString1 = paramString1;
-            ad.v("MicroMsg.DynamicPkgUpdater", "parseFrom bytes failed : %s", new Object[] { paramString1 });
+            ae.v("MicroMsg.DynamicPkgUpdater", "parseFrom bytes failed : %s", new Object[] { paramString1 });
           }
           paramString1 = paramString1;
-          ad.v("MicroMsg.DynamicPkgUpdater", "parseFrom bytes failed : %s", new Object[] { paramString1 });
+          ae.v("MicroMsg.DynamicPkgUpdater", "parseFrom bytes failed : %s", new Object[] { paramString1 });
         }
         catch (IOException paramString1)
         {
           for (;;)
           {
-            ad.v("MicroMsg.DynamicPkgUpdater", "parseFrom bytes failed : %s", new Object[] { paramString1 });
+            ae.v("MicroMsg.DynamicPkgUpdater", "parseFrom bytes failed : %s", new Object[] { paramString1 });
           }
         }
       }
@@ -156,7 +156,7 @@ public final class a
   static class a
     implements com.tencent.mm.ipcinvoker.k<Bundle, WxaPkgWrappingInfo>
   {
-    private static WxaPkgWrappingInfo B(Bundle paramBundle)
+    private static WxaPkgWrappingInfo C(Bundle paramBundle)
     {
       AppMethodBeat.i(121463);
       Object localObject1 = paramBundle.getString("id");
@@ -173,13 +173,13 @@ public final class a
       }
       try
       {
-        localObject3 = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(str, j, new String[] { "downloadURL", "version" });
+        localObject3 = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP().a(str, j, new String[] { "downloadURL", "version" });
         if (localObject3 != null)
         {
-          paramBundle = ((bc)localObject3).field_downloadURL;
-          i = ((bc)localObject3).field_version;
+          paramBundle = ((bd)localObject3).field_downloadURL;
+          i = ((bd)localObject3).field_version;
         }
-        paramBundle = new com.tencent.mm.plugin.appbrand.dynamic.launching.b((String)localObject1, str, (String)localObject2, j, i, com.tencent.mm.plugin.appbrand.dynamic.launching.b.khH, paramBundle).bgh();
+        paramBundle = new com.tencent.mm.plugin.appbrand.dynamic.launching.b((String)localObject1, str, (String)localObject2, j, i, com.tencent.mm.plugin.appbrand.dynamic.launching.b.kkX, paramBundle).bgP();
         AppMethodBeat.o(121463);
         return paramBundle;
       }
@@ -188,84 +188,84 @@ public final class a
         for (;;)
         {
           int k;
-          ad.e("MicroMsg.DynamicPkgUpdater", "CheckWidgetPkg error : %s", new Object[] { paramBundle });
+          ae.e("MicroMsg.DynamicPkgUpdater", "CheckWidgetPkg error : %s", new Object[] { paramBundle });
         }
       }
       paramBundle = "";
       try
       {
-        bc localbc = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(str, j, new String[] { "downloadURL", "version" });
-        if (localbc != null)
+        bd localbd = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP().a(str, j, new String[] { "downloadURL", "version" });
+        if (localbd != null)
         {
-          paramBundle = localbc.field_downloadURL;
-          i = localbc.field_version;
+          paramBundle = localbd.field_downloadURL;
+          i = localbd.field_version;
         }
-        paramBundle = new com.tencent.mm.plugin.appbrand.dynamic.launching.b((String)localObject1, str, (String)localObject2, j, i, com.tencent.mm.plugin.appbrand.dynamic.launching.b.khI, paramBundle, (String)localObject3).bgh();
+        paramBundle = new com.tencent.mm.plugin.appbrand.dynamic.launching.b((String)localObject1, str, (String)localObject2, j, i, com.tencent.mm.plugin.appbrand.dynamic.launching.b.kkY, paramBundle, (String)localObject3).bgP();
         AppMethodBeat.o(121463);
         return paramBundle;
       }
       catch (Exception paramBundle)
       {
-        ad.e("MicroMsg.DynamicPkgUpdater", "CheckWidgetPkg error : %s", new Object[] { paramBundle });
+        ae.e("MicroMsg.DynamicPkgUpdater", "CheckWidgetPkg error : %s", new Object[] { paramBundle });
       }
       do
       {
         AppMethodBeat.o(121463);
         return null;
-      } while (new com.tencent.mm.plugin.appbrand.dynamic.launching.c(str, "", "", (byte)0).bgi() != c.a.khP.ordinal());
-      paramBundle = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(str, j, new String[] { "downloadURL" });
+      } while (new com.tencent.mm.plugin.appbrand.dynamic.launching.c(str, "", "", (byte)0).bgQ() != c.a.klf.ordinal());
+      paramBundle = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP().a(str, j, new String[] { "downloadURL" });
       if (paramBundle == null)
       {
-        ad.e("MicroMsg.DynamicPkgUpdater", "WxaPkgManifestRecord(%s, %d) is null.", new Object[] { str, Integer.valueOf(j) });
+        ae.e("MicroMsg.DynamicPkgUpdater", "WxaPkgManifestRecord(%s, %d) is null.", new Object[] { str, Integer.valueOf(j) });
         AppMethodBeat.o(121463);
         return null;
       }
       try
       {
-        paramBundle = new com.tencent.mm.plugin.appbrand.dynamic.launching.b((String)localObject1, str, (String)localObject2, j, i, com.tencent.mm.plugin.appbrand.dynamic.launching.b.khH, paramBundle.field_downloadURL).bgh();
+        paramBundle = new com.tencent.mm.plugin.appbrand.dynamic.launching.b((String)localObject1, str, (String)localObject2, j, i, com.tencent.mm.plugin.appbrand.dynamic.launching.b.kkX, paramBundle.field_downloadURL).bgP();
         AppMethodBeat.o(121463);
         return paramBundle;
       }
       catch (Exception paramBundle)
       {
-        ad.e("MicroMsg.DynamicPkgUpdater", "getWxaPkgInfo(%s, %d) error : %s", new Object[] { str, Integer.valueOf(j), paramBundle });
+        ae.e("MicroMsg.DynamicPkgUpdater", "getWxaPkgInfo(%s, %d) error : %s", new Object[] { str, Integer.valueOf(j), paramBundle });
         AppMethodBeat.o(121463);
         return null;
       }
       paramBundle = (WxaPkgWrappingInfo)WxaPkgIntegrityChecker.D(str, j, i).second;
       AppMethodBeat.o(121463);
       return paramBundle;
-      paramBundle = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(str, j, new String[] { "downloadURL" });
-      g.ajA();
+      paramBundle = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP().a(str, j, new String[] { "downloadURL" });
+      g.ajP();
       k = com.tencent.mm.kernel.a.getUin();
       localObject1 = new b.a();
-      localObject2 = new bln();
-      ((bln)localObject2).duW = str;
-      ((bln)localObject2).GFC = k;
-      localObject3 = new efg();
+      localObject2 = new bmf();
+      ((bmf)localObject2).dwb = str;
+      ((bmf)localObject2).GZe = k;
+      localObject3 = new egx();
       switch (j)
       {
       default: 
-        ((efg)localObject3).FKM = 0;
-        ((efg)localObject3).HQC = 0;
+        ((egx)localObject3).Gdl = 0;
+        ((egx)localObject3).IkJ = 0;
         if (paramBundle != null)
         {
-          ((efg)localObject3).md5 = paramBundle.field_versionMd5;
+          ((egx)localObject3).md5 = paramBundle.field_versionMd5;
           label605:
-          ((bln)localObject2).GFD = new LinkedList();
-          ((bln)localObject2).GFD.add(localObject3);
-          ((b.a)localObject1).hNM = ((com.tencent.mm.bx.a)localObject2);
-          ((b.a)localObject1).hNN = new blo();
+          ((bmf)localObject2).GZf = new LinkedList();
+          ((bmf)localObject2).GZf.add(localObject3);
+          ((b.a)localObject1).hQF = ((com.tencent.mm.bw.a)localObject2);
+          ((b.a)localObject1).hQG = new bmg();
           ((b.a)localObject1).uri = "/cgi-bin/mmbiz-bin/wxaapp/getwidgetinfo";
           ((b.a)localObject1).funcId = 1186;
-          paramBundle = y.e(((b.a)localObject1).aDC());
+          paramBundle = y.e(((b.a)localObject1).aDS());
           if ((paramBundle.errType != 0) || (paramBundle.errCode != 0)) {
             break label910;
           }
-          paramBundle = (blo)paramBundle.hNC;
-          if ((paramBundle != null) && (paramBundle.GFD != null) && (paramBundle.GFD.size() > 0))
+          paramBundle = (bmg)paramBundle.hQv;
+          if ((paramBundle != null) && (paramBundle.GZf != null) && (paramBundle.GZf.size() > 0))
           {
-            paramBundle = (efg)paramBundle.GFD.getFirst();
+            paramBundle = (egx)paramBundle.GZf.getFirst();
             u.i("MicroMsg.DynamicPkgUpdater", "getWidgetInfo debugType %d, md5 %s, url %s", new Object[] { Integer.valueOf(j), paramBundle.md5, paramBundle.url });
             if ((paramBundle.url != null) && (paramBundle.url.length() > 0)) {
               switch (j)
@@ -281,18 +281,18 @@ public final class a
         paramBundle = (WxaPkgWrappingInfo)WxaPkgIntegrityChecker.D(str, j, i).second;
         AppMethodBeat.o(121463);
         return paramBundle;
-        ((efg)localObject3).FKM = 1;
-        ((efg)localObject3).HQC = 1;
+        ((egx)localObject3).Gdl = 1;
+        ((egx)localObject3).IkJ = 1;
         break;
-        ((efg)localObject3).FKM = 2;
-        ((efg)localObject3).HQC = 1;
+        ((egx)localObject3).Gdl = 2;
+        ((egx)localObject3).IkJ = 1;
         break;
-        ((efg)localObject3).md5 = "";
+        ((egx)localObject3).md5 = "";
         break label605;
-        ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(str, j, paramBundle.url, paramBundle.md5, 0L, 0L);
+        ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP().a(str, j, paramBundle.url, paramBundle.md5, 0L, 0L);
         continue;
         label910:
-        ad.i("MicroMsg.DynamicPkgUpdater", "cgi fail errType %d, errCode %d,errMsg %s, appid %s , pkgType %d", new Object[] { Integer.valueOf(paramBundle.errType), Integer.valueOf(paramBundle.errCode), paramBundle.errMsg, str, Integer.valueOf(j) });
+        ae.i("MicroMsg.DynamicPkgUpdater", "cgi fail errType %d, errCode %d,errMsg %s, appid %s , pkgType %d", new Object[] { Integer.valueOf(paramBundle.errType), Integer.valueOf(paramBundle.errCode), paramBundle.errMsg, str, Integer.valueOf(j) });
         u.i("MicroMsg.DynamicPkgUpdater", "cgi fail errType %d, errCode %d,errMsg %s, appid %s , pkgType %d", new Object[] { Integer.valueOf(paramBundle.errType), Integer.valueOf(paramBundle.errCode), paramBundle.errMsg, str, Integer.valueOf(j) });
       }
     }
@@ -305,7 +305,7 @@ public final class a
   static class c
     implements com.tencent.mm.ipcinvoker.k<Bundle, Bundle>
   {
-    private static Bundle C(Bundle paramBundle)
+    private static Bundle D(Bundle paramBundle)
     {
       boolean bool2 = true;
       AppMethodBeat.i(121466);
@@ -319,7 +319,7 @@ public final class a
       Object localObject4;
       try
       {
-        localObject4 = new com.tencent.mm.plugin.appbrand.dynamic.launching.a((String)localObject1, i, j, k, m, (String)localObject2).bgg();
+        localObject4 = new com.tencent.mm.plugin.appbrand.dynamic.launching.a((String)localObject1, i, j, k, m, (String)localObject2).bgO();
         if (localObject4 == null)
         {
           AppMethodBeat.o(121466);
@@ -336,13 +336,13 @@ public final class a
         }
         localObject2 = new WidgetRuntimeConfig();
         ((WidgetRuntimeConfig)localObject2).appId = ((String)localObject1);
-        ((WidgetRuntimeConfig)localObject2).khF = m;
+        ((WidgetRuntimeConfig)localObject2).kkV = m;
         localObject4 = ((com.tencent.mm.plugin.appbrand.widget.k)localObject4).field_widgetSetting;
         if (localObject4 != null)
         {
-          ((WidgetRuntimeConfig)localObject2).khW = ((eir)localObject4).HTh;
-          ((WidgetRuntimeConfig)localObject2).khY = ((eir)localObject4).HTj;
-          ((WidgetRuntimeConfig)localObject2).khX = ((eir)localObject4).HTi;
+          ((WidgetRuntimeConfig)localObject2).klm = ((eki)localObject4).Ino;
+          ((WidgetRuntimeConfig)localObject2).klo = ((eki)localObject4).Inq;
+          ((WidgetRuntimeConfig)localObject2).kln = ((eki)localObject4).Inp;
         }
         paramBundle.putParcelable("runtimeConfig", (Parcelable)localObject2);
       }
@@ -350,10 +350,10 @@ public final class a
       {
         for (;;)
         {
-          ad.w("MicroMsg.DynamicPkgUpdater", "check widget launch info error : %s", new Object[] { localException });
+          ae.w("MicroMsg.DynamicPkgUpdater", "check widget launch info error : %s", new Object[] { localException });
         }
-        localObject3 = localException.aYT().Vo((String)localObject1);
-        localObject1 = com.tencent.mm.plugin.appbrand.dynamic.debugger.b.OC((String)localObject1);
+        localObject3 = localException.aZq().VZ((String)localObject1);
+        localObject1 = com.tencent.mm.plugin.appbrand.dynamic.debugger.b.Pk((String)localObject1);
         localObject4 = new DebuggerInfo();
         if (localObject3 == null) {
           break label452;
@@ -369,14 +369,14 @@ public final class a
       if (((n)localObject3).field_openDebug)
       {
         bool1 = true;
-        ((DebuggerInfo)localObject4).kge = bool1;
-        if ((!j.a.oN(i)) && ((localObject1 == null) || (!((DebuggerInfo)localObject1).kgd))) {
+        ((DebuggerInfo)localObject4).kju = bool1;
+        if ((!j.a.oQ(i)) && ((localObject1 == null) || (!((DebuggerInfo)localObject1).kjt))) {
           break label458;
         }
         bool1 = true;
         label354:
-        ((DebuggerInfo)localObject4).kgd = bool1;
-        if ((localObject1 == null) || (!((DebuggerInfo)localObject1).kgf)) {
+        ((DebuggerInfo)localObject4).kjt = bool1;
+        if ((localObject1 == null) || (!((DebuggerInfo)localObject1).kjv)) {
           break label464;
         }
       }
@@ -385,13 +385,13 @@ public final class a
       label464:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        ((DebuggerInfo)localObject4).kgf = bool1;
+        ((DebuggerInfo)localObject4).kjv = bool1;
         paramBundle.putParcelable("debuggerInfo", (Parcelable)localObject4);
-        localObject1 = AppBrandGlobalSystemConfig.bdT();
+        localObject1 = AppBrandGlobalSystemConfig.bez();
         localObject3 = new WidgetSysConfig();
-        ((WidgetSysConfig)localObject3).jWG = ((AppBrandGlobalSystemConfig)localObject1).jWG;
-        ((WidgetSysConfig)localObject3).jWH = ((AppBrandGlobalSystemConfig)localObject1).jWH;
-        ((WidgetSysConfig)localObject3).jWI = ((AppBrandGlobalSystemConfig)localObject1).jWI;
+        ((WidgetSysConfig)localObject3).jZV = ((AppBrandGlobalSystemConfig)localObject1).jZV;
+        ((WidgetSysConfig)localObject3).jZW = ((AppBrandGlobalSystemConfig)localObject1).jZW;
+        ((WidgetSysConfig)localObject3).jZX = ((AppBrandGlobalSystemConfig)localObject1).jZX;
         paramBundle.putParcelable("sysConfig", (Parcelable)localObject3);
         AppMethodBeat.o(121466);
         return paramBundle;

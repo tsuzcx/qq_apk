@@ -9,7 +9,7 @@ public abstract interface a
   
   public static final class a
   {
-    public static a Eqk;
+    public static a EIA;
   }
 }
 

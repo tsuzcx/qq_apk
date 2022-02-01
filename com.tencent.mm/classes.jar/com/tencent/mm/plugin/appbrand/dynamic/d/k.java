@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.b.a;
-import com.tencent.mm.model.y.b;
+import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.model.z.b;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.k.b;
 import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,10 +19,10 @@ public final class k
     super("reportKeyValue", paramInt);
   }
   
-  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121332);
-    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Oz(parama.ail().getString("__page_view_id", null));
+    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Ph(parama.aiA().getString("__page_view_id", null));
     if (parama == null)
     {
       parama1.bk(a(false, "JsApi Framework Context is null", null));
@@ -47,15 +47,15 @@ public final class k
         Object localObject = paramJSONObject.getJSONObject(i);
         int j = ((JSONObject)localObject).optInt("key");
         localObject = ((JSONObject)localObject).optString("value");
-        if ((j > 0) && (!bt.isNullOrNil((String)localObject))) {
-          g.yhR.f(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bfP()), Integer.valueOf(b.sr(parama.aZt()) + 1), localObject });
+        if ((j > 0) && (!bu.isNullOrNil((String)localObject))) {
+          g.yxI.f(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bgx()), Integer.valueOf(b.su(parama.aZQ()) + 1), localObject });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.JsApiFunc_ReportKeyValue", "parse report value failed : %s", new Object[] { localException });
+          ae.e("MicroMsg.JsApiFunc_ReportKeyValue", "parse report value failed : %s", new Object[] { localException });
         }
       }
       i += 1;

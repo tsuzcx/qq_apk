@@ -2,20 +2,20 @@ package com.tencent.mm.l;
 
 public abstract interface a
 {
-  public abstract boolean LT();
+  public abstract boolean Mb();
   
   public static final class a
   {
-    private static a fVr = null;
+    private static a fXx = null;
     
-    public static a ZF()
+    public static a ZO()
     {
-      return fVr;
+      return fXx;
     }
     
     public static void a(a parama)
     {
-      fVr = parama;
+      fXx = parama;
     }
   }
 }

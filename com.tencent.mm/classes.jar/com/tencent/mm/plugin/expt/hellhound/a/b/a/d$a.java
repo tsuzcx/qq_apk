@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
 public final class d$a {}
 
 

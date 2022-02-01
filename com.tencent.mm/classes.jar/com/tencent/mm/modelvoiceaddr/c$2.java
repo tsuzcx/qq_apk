@@ -3,12 +3,12 @@ package com.tencent.mm.modelvoiceaddr;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class c$2
-  extends ap
+  extends aq
 {
   c$2(c paramc, Looper paramLooper)
   {
@@ -23,8 +23,8 @@ final class c$2
       AppMethodBeat.o(148514);
       return;
     }
-    if (this.ixP.aNM()) {
-      g.aiU().a(this.ixP, 0);
+    if (this.iAI.aOk()) {
+      g.ajj().a(this.iAI, 0);
     }
     AppMethodBeat.o(148514);
   }

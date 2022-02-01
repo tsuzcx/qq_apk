@@ -18,7 +18,7 @@ final class BizTimeLineNewMsgUI$4
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineNewMsgUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineNewMsgUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -27,8 +27,8 @@ final class BizTimeLineNewMsgUI$4
       a.a(false, this, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineNewMsgUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(5919);
       return false;
-      BizTimeLineNewMsgUI.a(this.obi, (int)paramMotionEvent.getRawX());
-      BizTimeLineNewMsgUI.b(this.obi, (int)paramMotionEvent.getRawY());
+      BizTimeLineNewMsgUI.c(this.ogZ, (int)paramMotionEvent.getRawX());
+      BizTimeLineNewMsgUI.a(this.ogZ, (int)paramMotionEvent.getRawY());
     }
   }
 }

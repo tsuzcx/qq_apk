@@ -12,8 +12,9 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.h;
 import d.a.j;
 import d.g.b.p;
 import d.l;
@@ -22,43 +23,43 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;", "", "()V", "encoderX264Encoder", "", "getEncoderX264Encoder", "()Z", "setEncoderX264Encoder", "(Z)V", "mFadeImageShader", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/FadeImageShader;", "playItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayItem;", "renderScriptBlur", "Lcom/tencent/mm/ui/blur/RenderScriptBlur;", "getRenderScriptBlur", "()Lcom/tencent/mm/ui/blur/RenderScriptBlur;", "setRenderScriptBlur", "(Lcom/tencent/mm/ui/blur/RenderScriptBlur;)V", "addBitmap", "", "bm", "Landroid/graphics/Bitmap;", "bmBg", "addImage", "path", "", "mWidth", "", "mHeight", "clearImages", "createPlayAction", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayAction;", "ts", "", "destroyRS", "initInGLThread", "loadImage", "playItem", "readPictureDegree", "resetTexId", "resizeBitmap", "bitmap", "start", "curTs", "viewPortWidth", "viewPortHeight", "Companion", "PlayAction", "PlayItem", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;", "", "()V", "encoderX264Encoder", "", "getEncoderX264Encoder", "()Z", "setEncoderX264Encoder", "(Z)V", "mFadeImageShader", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/FadeImageShader;", "playItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayItem;", "renderScriptBlur", "Lcom/tencent/mm/ui/blur/RenderScriptBlur;", "getRenderScriptBlur", "()Lcom/tencent/mm/ui/blur/RenderScriptBlur;", "setRenderScriptBlur", "(Lcom/tencent/mm/ui/blur/RenderScriptBlur;)V", "addBitmap", "", "bm", "Landroid/graphics/Bitmap;", "bmBg", "addImage", "path", "", "mWidth", "", "mHeight", "clearImages", "createPlayAction", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayAction;", "ts", "", "destroyRS", "initInGLThread", "loadImage", "playItem", "readPictureDegree", "resetTexId", "resizeBitmap", "bitmap", "start", "curTs", "viewPortWidth", "viewPortHeight", "Companion", "PlayAction", "PlayItem", "plugin-recordvideo_release"})
 public final class g
 {
   private static final String TAG = "MicroMsg.Story.StoryImagePlayer";
-  private static final float[] xvM;
-  private static final float[] xvN;
-  private static final long xvO = 1380L;
-  private static final long xvP = 300L;
-  private static final long xvQ = 1530L;
-  private static final long xvR = 1680L;
-  private static final long xvS = 15000L;
-  public static final g.a xvT;
-  com.tencent.mm.ui.blur.e rOE;
-  private final ArrayList<c> xvJ;
-  final b xvK;
-  boolean xvL;
+  private static final float[] xLJ;
+  private static final float[] xLK;
+  private static final long xLL = 1380L;
+  private static final long xLM = 300L;
+  private static final long xLN = 1530L;
+  private static final long xLO = 1680L;
+  private static final long xLP = 15000L;
+  public static final g.a xLQ;
+  com.tencent.mm.ui.blur.e rXe;
+  private final ArrayList<c> xLG;
+  final b xLH;
+  boolean xLI;
   
   static
   {
     AppMethodBeat.i(75315);
-    xvT = new g.a((byte)0);
+    xLQ = new g.a((byte)0);
     TAG = "MicroMsg.Story.StoryImagePlayer";
-    xvM = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    xvN = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    xvO = 1380L;
-    xvP = 300L;
-    xvQ = xvP / 2L + 1380L;
-    xvR = xvP + xvO;
-    xvS = 15000L;
+    xLJ = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    xLK = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    xLL = 1380L;
+    xLM = 300L;
+    xLN = xLM / 2L + 1380L;
+    xLO = xLM + xLL;
+    xLP = 15000L;
     AppMethodBeat.o(75315);
   }
   
   public g()
   {
     AppMethodBeat.i(75314);
-    this.xvJ = new ArrayList();
-    this.xvK = new b();
+    this.xLG = new ArrayList();
+    this.xLH = new b();
     AppMethodBeat.o(75314);
   }
   
@@ -66,29 +67,29 @@ public final class g
   {
     AppMethodBeat.i(75312);
     Bitmap localBitmap2;
-    if ((paramc.hMs == null) || (paramc.xvZ == null))
+    if ((paramc.hPl == null) || (paramc.xLW == null))
     {
-      Object localObject2 = new com.tencent.mm.ad.b("addImage");
+      Object localObject2 = new com.tencent.mm.ac.b("addImage");
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(paramc.path, localOptions);
       int i = localOptions.outWidth;
       int j = localOptions.outHeight;
-      localOptions.inSampleSize = com.tencent.mm.sdk.platformtools.g.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize(), com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize());
+      localOptions.inSampleSize = h.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize(), com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize());
       localOptions.inJustDecodeBounds = false;
-      localBitmap2 = aa(MMBitmapFactory.decodeFile(paramc.path, localOptions));
-      ad.i(TAG, "resizeBitmap first ".concat(String.valueOf(localObject2)));
+      localBitmap2 = ab(MMBitmapFactory.decodeFile(paramc.path, localOptions));
+      ae.i(TAG, "resizeBitmap first ".concat(String.valueOf(localObject2)));
       long l = System.currentTimeMillis();
-      localOptions.inSampleSize = com.tencent.mm.sdk.platformtools.g.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize() / 2, com.tencent.mm.plugin.recordvideo.b.e.xxi.getMaxSize() / 2);
-      Bitmap localBitmap1 = aa(MMBitmapFactory.decodeFile(paramc.path, localOptions));
+      localOptions.inSampleSize = h.O(i, j, com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize() / 2, com.tencent.mm.plugin.recordvideo.b.e.xNf.getMaxSize() / 2);
+      Bitmap localBitmap1 = ab(MMBitmapFactory.decodeFile(paramc.path, localOptions));
       try
       {
-        if (this.rOE == null) {
-          this.rOE = new com.tencent.mm.ui.blur.e(aj.getContext());
+        if (this.rXe == null) {
+          this.rXe = new com.tencent.mm.ui.blur.e(ak.getContext());
         }
-        com.tencent.mm.ui.blur.e locale = this.rOE;
+        com.tencent.mm.ui.blur.e locale = this.rXe;
         if (locale == null) {
-          p.gfZ();
+          p.gkB();
         }
         localBitmap1 = locale.d(localBitmap1, 4.0F);
         p.g(localBitmap1, "renderScriptBlur!!.blur(tmpBg, 4f)");
@@ -97,52 +98,52 @@ public final class g
       {
         for (;;)
         {
-          ad.printErrStackTrace(TAG, (Throwable)localException, "rsblur exception", new Object[0]);
-          ad.i(TAG, "rsblur exception, path:%s", new Object[] { paramc.path });
-          if (ad.getLogLevel() > 0) {
-            Toast.makeText(aj.getContext(), (CharSequence)"RenderScript Exception", 0).show();
+          ae.printErrStackTrace(TAG, (Throwable)localException, "rsblur exception", new Object[0]);
+          ae.i(TAG, "rsblur exception, path:%s", new Object[] { paramc.path });
+          if (ae.getLogLevel() > 0) {
+            Toast.makeText(ak.getContext(), (CharSequence)"RenderScript Exception", 0).show();
           }
-          localObject1 = com.tencent.mm.plugin.recordvideo.b.e.xxi.dFr();
-          localObject1 = com.tencent.mm.sdk.platformtools.g.aJ(Color.parseColor("#ff000000"), ((Point)localObject1).x, ((Point)localObject1).y);
+          localObject1 = com.tencent.mm.plugin.recordvideo.b.e.xNf.dII();
+          localObject1 = h.aK(Color.parseColor("#ff000000"), ((Point)localObject1).x, ((Point)localObject1).y);
           p.g(localObject1, "BitmapUtil.createColorBi…0000\"), point.x, point.y)");
         }
-        paramc.hMs = localBitmap2;
-        paramc.xvZ = ((Bitmap)localObject1);
-        Object localObject1 = paramc.hMs;
+        paramc.hPl = localBitmap2;
+        paramc.xLW = ((Bitmap)localObject1);
+        Object localObject1 = paramc.hPl;
         if (localObject1 != null) {
           break label560;
         }
-        p.gfZ();
-        paramc.xwa = ((Bitmap)localObject1).getWidth();
-        localObject1 = paramc.hMs;
+        p.gkB();
+        paramc.xLX = ((Bitmap)localObject1).getWidth();
+        localObject1 = paramc.hPl;
         if (localObject1 != null) {
           break label583;
         }
-        p.gfZ();
-        paramc.xwb = ((Bitmap)localObject1).getHeight();
+        p.gkB();
+        paramc.xLY = ((Bitmap)localObject1).getHeight();
       }
-      ad.i(TAG, "fastblur cost:%s, sampleSize:%s, width:%s, height:%s resizeBitmap second ".concat(String.valueOf(localObject2)), new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localOptions.inSampleSize), Integer.valueOf(localBitmap1.getWidth()), Integer.valueOf(localBitmap1.getHeight()) });
+      ae.i(TAG, "fastblur cost:%s, sampleSize:%s, width:%s, height:%s resizeBitmap second ".concat(String.valueOf(localObject2)), new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localOptions.inSampleSize), Integer.valueOf(localBitmap1.getWidth()), Integer.valueOf(localBitmap1.getHeight()) });
       if (localBitmap2 != null)
       {
-        i = avF(paramc.path);
+        i = awU(paramc.path);
         if (i != 0)
         {
           localObject2 = new android.graphics.Matrix();
           ((android.graphics.Matrix)localObject2).postRotate(i);
           localBitmap2 = Bitmap.createBitmap(localBitmap2, 0, 0, localBitmap2.getWidth(), localBitmap2.getHeight(), (android.graphics.Matrix)localObject2, true);
           localBitmap1 = Bitmap.createBitmap(localBitmap1, 0, 0, localBitmap1.getWidth(), localBitmap1.getHeight(), (android.graphics.Matrix)localObject2, true);
-          paramc.hMs = localBitmap2;
-          localBitmap2 = paramc.hMs;
+          paramc.hPl = localBitmap2;
+          localBitmap2 = paramc.hPl;
           if (localBitmap2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          paramc.xwa = localBitmap2.getWidth();
-          localBitmap2 = paramc.hMs;
+          paramc.xLX = localBitmap2.getWidth();
+          localBitmap2 = paramc.hPl;
           if (localBitmap2 == null) {
-            p.gfZ();
+            p.gkB();
           }
-          paramc.xwb = localBitmap2.getHeight();
-          paramc.xvZ = localBitmap1;
+          paramc.xLY = localBitmap2.getHeight();
+          paramc.xLW = localBitmap1;
           AppMethodBeat.o(75312);
           return;
         }
@@ -153,7 +154,7 @@ public final class g
     AppMethodBeat.o(75312);
   }
   
-  private static Bitmap aa(Bitmap paramBitmap)
+  private static Bitmap ab(Bitmap paramBitmap)
   {
     AppMethodBeat.i(75313);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
@@ -163,7 +164,7 @@ public final class g
       {
         localBitmap = Bitmap.createBitmap(paramBitmap.getWidth() + 1, paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
         if (localBitmap == null) {
-          p.gfZ();
+          p.gkB();
         }
         Canvas localCanvas = new Canvas(localBitmap);
         localCanvas.drawARGB(0, 0, 0, 0);
@@ -176,13 +177,13 @@ public final class g
     return null;
   }
   
-  private static int avF(String paramString)
+  private static int awU(String paramString)
   {
     AppMethodBeat.i(75310);
     p.h(paramString, "path");
     try
     {
-      i = BackwardSupportUtil.ExifHelper.cY(paramString);
+      i = BackwardSupportUtil.ExifHelper.df(paramString);
       AppMethodBeat.o(75310);
       return i;
     }
@@ -190,7 +191,7 @@ public final class g
     {
       for (;;)
       {
-        ad.printErrStackTrace(TAG, (Throwable)paramString, "readPictureDegree", new Object[0]);
+        ae.printErrStackTrace(TAG, (Throwable)paramString, "readPictureDegree", new Object[0]);
         int i = 0;
       }
     }
@@ -201,45 +202,28 @@ public final class g
     AppMethodBeat.i(75306);
     p.h(paramString, "path");
     p.h(parame, "renderScriptBlur");
-    ad.i(TAG, "addImage");
+    ae.i(TAG, "addImage");
     parame = new c();
     p.h(paramString, "<set-?>");
     parame.path = paramString;
-    this.xvJ.add(parame);
+    this.xLG.add(parame);
     AppMethodBeat.o(75306);
   }
   
-  public final void dFi()
-  {
-    try
-    {
-      AppMethodBeat.i(75307);
-      ad.i(TAG, "clearImages");
-      this.xvJ.clear();
-      AppMethodBeat.o(75307);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void dFj()
+  public final void dIA()
   {
     try
     {
       AppMethodBeat.i(75308);
-      Object localObject1 = this.xvJ;
+      Object localObject1 = this.xLG;
       if (localObject1 != null)
       {
         localObject1 = ((ArrayList)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           c localc = (c)((Iterator)localObject1).next();
-          localc.xwc = 0;
-          localc.xwd = 0;
+          localc.xLZ = 0;
+          localc.xMa = 0;
         }
         AppMethodBeat.o(75308);
       }
@@ -252,23 +236,40 @@ public final class g
     }
   }
   
-  public final void dFk()
+  public final void dIB()
   {
     AppMethodBeat.i(75309);
     try
     {
-      com.tencent.mm.ui.blur.e locale = this.rOE;
+      com.tencent.mm.ui.blur.e locale = this.rXe;
       if (locale != null) {
         locale.destroy();
       }
-      this.rOE = null;
+      this.rXe = null;
       AppMethodBeat.o(75309);
       return;
     }
     catch (Exception localException)
     {
-      this.rOE = null;
+      this.rXe = null;
       AppMethodBeat.o(75309);
+    }
+  }
+  
+  public final void dIz()
+  {
+    try
+    {
+      AppMethodBeat.i(75307);
+      ae.i(TAG, "clearImages");
+      this.xLG.clear();
+      AppMethodBeat.o(75307);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
@@ -281,7 +282,7 @@ public final class g
       {
         AppMethodBeat.i(75311);
         b localb = new b();
-        if (this.xvJ.size() == 0)
+        if (this.xLG.size() == 0)
         {
           localb = null;
           if ((localb == null) || (localb.index < 0)) {
@@ -290,11 +291,11 @@ public final class g
         }
         else
         {
-          if (this.xvJ.size() == 1)
+          if (this.xLG.size() == 1)
           {
             localb.index = 0;
-            localb.xvU = 0.0F;
-            localb.xvV = 1.0F;
+            localb.xLR = 0.0F;
+            localb.xLS = 1.0F;
             localObject2 = new float[16];
             Object tmp90_88 = localObject2;
             tmp90_88[0] = 1.0F;
@@ -329,102 +330,102 @@ public final class g
             Object tmp159_154 = tmp154_149;
             tmp159_154[15] = 1.0F;
             tmp159_154;
-            localObject2[0] = ((float)paramLong / (float)xvS / 2.0F + 1.0F);
+            localObject2[0] = ((float)paramLong / (float)xLP / 2.0F + 1.0F);
             localObject2[5] = localObject2[0];
-            android.opengl.Matrix.multiplyMM(localb.xvW, 0, xvM, 0, xvN, 0);
-            android.opengl.Matrix.multiplyMM(localb.xvX, 0, (float[])localObject2, 0, xvN, 0);
-            if (!this.xvL) {
+            android.opengl.Matrix.multiplyMM(localb.xLT, 0, xLJ, 0, xLK, 0);
+            android.opengl.Matrix.multiplyMM(localb.xLU, 0, (float[])localObject2, 0, xLK, 0);
+            if (!this.xLI) {
               break label914;
             }
-            android.opengl.Matrix.scaleM(localb.xvW, 0, 1.0F, -1.0F, 1.0F);
-            android.opengl.Matrix.scaleM(localb.xvX, 0, 1.0F, -1.0F, 1.0F);
+            android.opengl.Matrix.scaleM(localb.xLT, 0, 1.0F, -1.0F, 1.0F);
+            android.opengl.Matrix.scaleM(localb.xLU, 0, 1.0F, -1.0F, 1.0F);
             break label914;
           }
-          android.opengl.Matrix.multiplyMM(localb.xvW, 0, xvM, 0, xvN, 0);
-          android.opengl.Matrix.multiplyMM(localb.xvX, 0, xvM, 0, xvN, 0);
-          if (paramLong >= xvQ + xvR * (this.xvJ.size() - 1)) {
+          android.opengl.Matrix.multiplyMM(localb.xLT, 0, xLJ, 0, xLK, 0);
+          android.opengl.Matrix.multiplyMM(localb.xLU, 0, xLJ, 0, xLK, 0);
+          if (paramLong >= xLN + xLO * (this.xLG.size() - 1)) {
             break label920;
           }
           i = 1;
-          if (paramLong <= xvQ) {
+          if (paramLong <= xLN) {
             break label926;
           }
-          l = ((paramLong - xvQ) / xvR + 1L) % this.xvJ.size();
+          l = ((paramLong - xLN) / xLO + 1L) % this.xLG.size();
           localb.index = ((int)l);
           if ((l != 0L) || (i == 0))
           {
             l = paramLong;
-            if (paramLong > xvQ) {
-              l = (paramLong - xvQ) % xvR;
+            if (paramLong > xLN) {
+              l = (paramLong - xLN) % xLO;
             }
-            if (l >= xvP) {
+            if (l >= xLM) {
               break label932;
             }
             i = 1;
             if (i != 0)
             {
-              localb.xvV = ((float)l / (float)xvP);
-              localb.xvU = (1.0F - localb.xvV);
-              if (!this.xvL) {
+              localb.xLS = ((float)l / (float)xLM);
+              localb.xLR = (1.0F - localb.xLS);
+              if (!this.xLI) {
                 break label917;
               }
-              android.opengl.Matrix.scaleM(localb.xvW, 0, 1.0F, -1.0F, 1.0F);
-              android.opengl.Matrix.scaleM(localb.xvX, 0, 1.0F, -1.0F, 1.0F);
+              android.opengl.Matrix.scaleM(localb.xLT, 0, 1.0F, -1.0F, 1.0F);
+              android.opengl.Matrix.scaleM(localb.xLU, 0, 1.0F, -1.0F, 1.0F);
               break label917;
             }
           }
-          localb.xvU = 0.0F;
-          localb.xvV = 1.0F;
+          localb.xLR = 0.0F;
+          localb.xLS = 1.0F;
           continue;
         }
-        this.xvK.dFd();
+        this.xLH.dIu();
       }
       finally {}
-      if (localObject1.xvU > 0.0F) {
+      if (localObject1.xLR > 0.0F) {
         if (localObject1.index - 1 >= 0)
         {
-          localObject2 = this.xvJ.get(localObject1.index - 1);
+          localObject2 = this.xLG.get(localObject1.index - 1);
           p.g(localObject2, "playItems[playAction.index - 1]");
           localObject2 = (c)localObject2;
           label551:
           a((c)localObject2);
-          this.xvK.a(paramInt1, paramInt2, ((c)localObject2).xwa, ((c)localObject2).xwb, localObject1.xvW[0]);
-          this.xvK.br(localObject1.xvU);
+          this.xLH.a(paramInt1, paramInt2, ((c)localObject2).xLX, ((c)localObject2).xLY, localObject1.xLT[0]);
+          this.xLH.br(localObject1.xLR);
           GLES20.glActiveTexture(33984);
-          ((c)localObject2).xwc = b.f(((c)localObject2).hMs, ((c)localObject2).xwc);
-          this.xvK.hh(((c)localObject2).xwc, 0);
+          ((c)localObject2).xLZ = b.f(((c)localObject2).hPl, ((c)localObject2).xLZ);
+          this.xLH.hj(((c)localObject2).xLZ, 0);
           GLES20.glActiveTexture(33985);
-          ((c)localObject2).xwd = b.f(((c)localObject2).xvZ, ((c)localObject2).xwd);
-          this.xvK.hi(((c)localObject2).xwd, 1);
-          this.xvK.m(localObject1.xvW);
-          b.dFf();
+          ((c)localObject2).xMa = b.f(((c)localObject2).xLW, ((c)localObject2).xMa);
+          this.xLH.hk(((c)localObject2).xMa, 1);
+          this.xLH.m(localObject1.xLT);
+          b.dIw();
         }
       }
       for (int i = 2;; i = 0)
       {
-        if (localObject1.xvV > 0.0F)
+        if (localObject1.xLS > 0.0F)
         {
-          localObject2 = this.xvJ.get(localObject1.index);
+          localObject2 = this.xLG.get(localObject1.index);
           p.g(localObject2, "playItems[playAction.index]");
           localObject2 = (c)localObject2;
           a((c)localObject2);
-          this.xvK.a(paramInt1, paramInt2, ((c)localObject2).xwa, ((c)localObject2).xwb, localObject1.xvX[0]);
-          this.xvK.br(localObject1.xvV);
+          this.xLH.a(paramInt1, paramInt2, ((c)localObject2).xLX, ((c)localObject2).xLY, localObject1.xLU[0]);
+          this.xLH.br(localObject1.xLS);
           GLES20.glActiveTexture(33984 + i);
-          ((c)localObject2).xwc = b.f(((c)localObject2).hMs, ((c)localObject2).xwc);
-          b localb1 = this.xvK;
-          paramInt1 = ((c)localObject2).xwc;
+          ((c)localObject2).xLZ = b.f(((c)localObject2).hPl, ((c)localObject2).xLZ);
+          b localb1 = this.xLH;
+          paramInt1 = ((c)localObject2).xLZ;
           paramInt2 = i + 1;
-          localb1.hh(paramInt1, i);
+          localb1.hj(paramInt1, i);
           GLES20.glActiveTexture(33984 + paramInt2);
-          ((c)localObject2).xwd = b.f(((c)localObject2).xvZ, ((c)localObject2).xwd);
-          this.xvK.hi(((c)localObject2).xwd, paramInt2);
-          this.xvK.m(localObject1.xvX);
-          b.dFf();
+          ((c)localObject2).xMa = b.f(((c)localObject2).xLW, ((c)localObject2).xMa);
+          this.xLH.hk(((c)localObject2).xMa, paramInt2);
+          this.xLH.m(localObject1.xLU);
+          b.dIw();
         }
         AppMethodBeat.o(75311);
         break;
-        localObject2 = (c)j.je((List)this.xvJ);
+        localObject2 = (c)j.jn((List)this.xLG);
         break label551;
       }
       label914:
@@ -442,41 +443,41 @@ public final class g
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayAction;", "", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;)V", "bgAlpha", "", "getBgAlpha", "()F", "setBgAlpha", "(F)V", "bgMvpMatrix", "", "getBgMvpMatrix", "()[F", "setBgMvpMatrix", "([F)V", "fgAlpha", "getFgAlpha", "setFgAlpha", "fgMvpMatrix", "getFgMvpMatrix", "setFgMvpMatrix", "index", "", "getIndex", "()I", "setIndex", "(I)V", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayAction;", "", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;)V", "bgAlpha", "", "getBgAlpha", "()F", "setBgAlpha", "(F)V", "bgMvpMatrix", "", "getBgMvpMatrix", "()[F", "setBgMvpMatrix", "([F)V", "fgAlpha", "getFgAlpha", "setFgAlpha", "fgMvpMatrix", "getFgMvpMatrix", "setFgMvpMatrix", "index", "", "getIndex", "()I", "setIndex", "(I)V", "plugin-recordvideo_release"})
   public final class b
   {
     int index;
-    float xvU;
-    float xvV;
-    float[] xvW;
-    float[] xvX;
+    float xLR;
+    float xLS;
+    float[] xLT;
+    float[] xLU;
     
     public b()
     {
       AppMethodBeat.i(75305);
       this.index = -1;
-      this.xvU = 1.0F;
-      this.xvW = new float[16];
-      this.xvX = new float[16];
+      this.xLR = 1.0F;
+      this.xLT = new float[16];
+      this.xLU = new float[16];
       AppMethodBeat.o(75305);
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayItem;", "", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;)V", "bm", "Landroid/graphics/Bitmap;", "getBm", "()Landroid/graphics/Bitmap;", "setBm", "(Landroid/graphics/Bitmap;)V", "bmBg", "getBmBg", "setBmBg", "bmHeight", "", "getBmHeight", "()I", "setBmHeight", "(I)V", "bmWidth", "getBmWidth", "setBmWidth", "path", "", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "texBgId", "getTexBgId", "setTexBgId", "texId", "getTexId", "setTexId", "plugin-recordvideo_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$PlayItem;", "", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;)V", "bm", "Landroid/graphics/Bitmap;", "getBm", "()Landroid/graphics/Bitmap;", "setBm", "(Landroid/graphics/Bitmap;)V", "bmBg", "getBmBg", "setBmBg", "bmHeight", "", "getBmHeight", "()I", "setBmHeight", "(I)V", "bmWidth", "getBmWidth", "setBmWidth", "path", "", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "texBgId", "getTexBgId", "setTexBgId", "texId", "getTexId", "setTexId", "plugin-recordvideo_release"})
   public final class c
   {
-    Bitmap hMs;
+    Bitmap hPl;
     String path = "";
-    Bitmap xvZ;
-    int xwa;
-    int xwb;
-    int xwc;
-    int xwd;
+    Bitmap xLW;
+    int xLX;
+    int xLY;
+    int xLZ;
+    int xMa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AppBrandAuthPreference
   extends Preference
 {
-  private boolean dKs;
-  private String jSw;
-  private TextView jSx;
-  private CheckBox jSy;
+  private boolean dLH;
+  private String jVN;
+  private TextView jVO;
+  private CheckBox jVP;
   
   public AppBrandAuthPreference(Context paramContext)
   {
@@ -33,7 +33,7 @@ public class AppBrandAuthPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(44802);
-    this.dKs = false;
+    this.dLH = false;
     setLayoutResource(2131494804);
     AppMethodBeat.o(44802);
   }
@@ -42,15 +42,15 @@ public class AppBrandAuthPreference
   {
     AppMethodBeat.i(44804);
     super.onBindView(paramView);
-    this.jSy = ((CheckBox)paramView.findViewById(2131298255));
-    if (this.jSy != null) {
-      this.jSy.setChecked(this.dKs);
+    this.jVP = ((CheckBox)paramView.findViewById(2131298255));
+    if (this.jVP != null) {
+      this.jVP.setChecked(this.dLH);
     }
-    this.jSx = ((TextView)paramView.findViewById(2131296969));
-    if ((this.jSx != null) && (!bt.isNullOrNil(this.jSw))) {
-      this.jSx.setText(this.jSw);
+    this.jVO = ((TextView)paramView.findViewById(2131296969));
+    if ((this.jVO != null) && (!bu.isNullOrNil(this.jVN))) {
+      this.jVO.setText(this.jVN);
     }
-    acw(8);
+    ade(8);
     AppMethodBeat.o(44804);
   }
   
@@ -65,21 +65,21 @@ public class AppBrandAuthPreference
     return paramViewGroup;
   }
   
-  public final void se(int paramInt)
-  {
-    AppMethodBeat.i(44805);
-    this.jSw = this.mContext.getString(paramInt);
-    AppMethodBeat.o(44805);
-  }
-  
   public final void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(44806);
-    this.dKs = paramBoolean;
-    if (this.jSy != null) {
-      this.jSy.setChecked(paramBoolean);
+    this.dLH = paramBoolean;
+    if (this.jVP != null) {
+      this.jVP.setChecked(paramBoolean);
     }
     AppMethodBeat.o(44806);
+  }
+  
+  public final void sh(int paramInt)
+  {
+    AppMethodBeat.i(44805);
+    this.jVN = this.mContext.getString(paramInt);
+    AppMethodBeat.o(44805);
   }
 }
 

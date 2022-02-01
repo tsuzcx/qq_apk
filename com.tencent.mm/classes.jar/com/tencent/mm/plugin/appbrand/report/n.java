@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.xweb.WebView;
 import java.util.Locale;
 
@@ -10,17 +10,17 @@ public enum n
   static
   {
     AppMethodBeat.i(48071);
-    mrH = new n("X5", 0);
-    mrI = new n("Sys", 1);
-    mrJ = new n("XWalk", 2);
-    mrK = new n("Invalid", 3);
-    mrL = new n[] { mrH, mrI, mrJ, mrK };
+    mwF = new n("X5", 0);
+    mwG = new n("Sys", 1);
+    mwH = new n("XWalk", 2);
+    mwI = new n("Invalid", 3);
+    mwJ = new n[] { mwF, mwG, mwH, mwI };
     AppMethodBeat.o(48071);
   }
   
   private n() {}
   
-  public static n bxn()
+  public static n byg()
   {
     AppMethodBeat.i(48070);
     boolean bool1 = WebView.isSys();
@@ -40,7 +40,7 @@ public enum n
       i = 1;
     }
     while (i == 0) {
-      if (i.DEBUG)
+      if (j.DEBUG)
       {
         localObject = new IllegalStateException(String.format(Locale.US, "WebViewType invalid sys[%B] xw[%B] x5[%B]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
         AppMethodBeat.o(48070);
@@ -49,31 +49,31 @@ public enum n
       }
       else
       {
-        localObject = mrK;
+        localObject = mwI;
         AppMethodBeat.o(48070);
         return localObject;
       }
     }
     if (bool3)
     {
-      localObject = mrH;
+      localObject = mwF;
       AppMethodBeat.o(48070);
       return localObject;
     }
     if (bool2)
     {
-      localObject = mrJ;
+      localObject = mwH;
       AppMethodBeat.o(48070);
       return localObject;
     }
-    Object localObject = mrI;
+    Object localObject = mwG;
     AppMethodBeat.o(48070);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.n
  * JD-Core Version:    0.7.0.1
  */

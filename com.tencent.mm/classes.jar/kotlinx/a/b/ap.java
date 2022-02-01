@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import kotlinx.a.n;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "serialName", "", "elementDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "(Ljava/lang/String;Lkotlinx/serialization/SerialDescriptor;)V", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "serialName", "", "elementDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "(Ljava/lang/String;Lkotlinx/serialization/SerialDescriptor;)V", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
 public final class ap
   extends ah
 {
-  private final String NLG;
+  private final String OiM;
   
   public ap(String paramString, n paramn)
   {
     super(paramn, (byte)0);
-    AppMethodBeat.i(191238);
-    this.NLG = paramString;
-    AppMethodBeat.o(191238);
+    AppMethodBeat.i(199826);
+    this.OiM = paramString;
+    AppMethodBeat.o(199826);
   }
   
-  public final String gwQ()
+  public final String gBs()
   {
-    return this.NLG;
+    return this.OiM;
   }
 }
 

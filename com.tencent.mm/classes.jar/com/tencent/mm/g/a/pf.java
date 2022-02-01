@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class pf
   extends b
 {
-  public a dDk;
+  public a dEl;
+  public b dEm;
   
   public pf()
   {
@@ -15,22 +17,31 @@ public final class pf
   
   private pf(byte paramByte)
   {
-    AppMethodBeat.i(128847);
-    this.dDk = new a();
-    this.IbR = false;
+    AppMethodBeat.i(117551);
+    this.dEl = new a();
+    this.dEm = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(128847);
+    AppMethodBeat.o(117551);
   }
   
   public static final class a
   {
-    public String dDl;
-    public int dDm;
+    public Context context;
+    public String dEn;
+    public int opType = 0;
+  }
+  
+  public static final class b
+  {
+    public String dEo;
+    public boolean doq = false;
+    public String thumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.pf
  * JD-Core Version:    0.7.0.1
  */

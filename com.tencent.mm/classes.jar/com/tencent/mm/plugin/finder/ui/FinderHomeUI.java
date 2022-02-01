@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
-import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.report.i;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderCommentDrawerUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderFavAnimUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderFeedFriendLikeDrawerUIC;
@@ -28,23 +28,23 @@ import d.l;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getCommentScene", "", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initJumpFollow", "", "intent", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onNewIntent", "Companion", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "checkJumpFollow", "", "intent", "Landroid/content/Intent;", "checkJumpHot", "getCommentScene", "", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onNewIntent", "Companion", "plugin-finder_release"})
 public final class FinderHomeUI
   extends MMFinderUI
 {
-  public static final a sCN;
+  public static final FinderHomeUI.a sNM;
   private HashMap _$_findViewCache;
   
   static
   {
-    AppMethodBeat.i(204017);
-    sCN = new a((byte)0);
-    AppMethodBeat.o(204017);
+    AppMethodBeat.i(204613);
+    sNM = new FinderHomeUI.a((byte)0);
+    AppMethodBeat.o(204613);
   }
   
-  private final void al(Intent paramIntent)
+  private final void am(Intent paramIntent)
   {
-    AppMethodBeat.i(204016);
+    AppMethodBeat.i(204612);
     if (paramIntent != null) {}
     for (boolean bool = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_FOLLOW_TAB", false);; bool = false)
     {
@@ -54,7 +54,7 @@ public final class FinderHomeUI
       }
       if (bool)
       {
-        paramIntent = com.tencent.mm.ui.component.a.KiD;
+        paramIntent = com.tencent.mm.ui.component.a.KEX;
         paramIntent = com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderHomeUIC.class);
         p.g(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
         paramIntent = (FinderHomeUIC)paramIntent;
@@ -62,14 +62,14 @@ public final class FinderHomeUI
         localBundle.putInt("Source", 0);
         paramIntent.r(3, localBundle);
       }
-      AppMethodBeat.o(204016);
+      AppMethodBeat.o(204612);
       return;
     }
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204018);
+    AppMethodBeat.i(204614);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -80,58 +80,81 @@ public final class FinderHomeUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204018);
+    AppMethodBeat.o(204614);
     return localView1;
   }
   
-  public final int cAZ()
+  public final int cCL()
   {
-    AppMethodBeat.i(204013);
-    Object localObject = h.soM;
-    localObject = com.tencent.mm.ui.component.a.KiD;
-    int i = h.Fa(((FinderHomeUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderHomeUIC.class)).cOp());
-    AppMethodBeat.o(204013);
+    AppMethodBeat.i(204609);
+    Object localObject = i.syT;
+    localObject = com.tencent.mm.ui.component.a.KEX;
+    int i = i.Fw(((FinderHomeUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderHomeUIC.class)).cQU());
+    AppMethodBeat.o(204609);
     return i;
   }
   
-  public final int cBZ()
+  public final int cDL()
   {
     return 1;
   }
   
-  public final Set<Class<? extends UIComponent>> cCu()
+  public final Set<Class<? extends UIComponent>> cEg()
   {
-    AppMethodBeat.i(204012);
+    AppMethodBeat.i(204608);
     Set localSet = ak.setOf(new Class[] { FinderHomeUIC.class, FinderHomeActionBarUIC.class, FinderTouchMediaPreviewUIC.class, FinderCommentDrawerUIC.class, FinderFeedFriendLikeDrawerUIC.class, FinderLocationUIC.class, MediaPreloadCore.class, FinderReporterUIC.class, FinderPostQualificationUIC.class, FinderFavAnimUIC.class });
-    AppMethodBeat.o(204012);
+    AppMethodBeat.o(204608);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(204015);
+    AppMethodBeat.i(204611);
     super.onCreate(paramBundle);
-    e.ygI.idkeyStat(1279L, 41L, 1L, false);
+    e.ywz.idkeyStat(1279L, 41L, 1L, false);
     if (getIntent().getBooleanExtra("key_form_sns", false))
     {
-      paramBundle = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramBundle = com.tencent.mm.plugin.finder.utils.a.sVQ;
       paramBundle = (Context)this;
       Intent localIntent = new Intent();
-      FinderSelfUI.a locala = FinderSelfUI.sGL;
-      localIntent.putExtra(FinderSelfUI.cKr(), true);
+      FinderSelfUI.a locala = FinderSelfUI.sRG;
+      localIntent.putExtra(FinderSelfUI.cMU(), true);
       com.tencent.mm.plugin.finder.utils.a.y(paramBundle, localIntent);
     }
-    al(getIntent());
-    AppMethodBeat.o(204015);
+    am(getIntent());
+    AppMethodBeat.o(204611);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(204014);
+    AppMethodBeat.i(204610);
     super.onNewIntent(paramIntent);
-    al(paramIntent);
-    getIntent().removeExtra("key_finder_post_local_id");
-    AppMethodBeat.o(204014);
+    am(paramIntent);
+    if (paramIntent != null) {}
+    for (boolean bool = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_HOT_TAB", false);; bool = false)
+    {
+      Object localObject = getIntent();
+      if (localObject != null) {
+        ((Intent)localObject).putExtra("KEY_FINDER_POST_FINISH_JUMP_HOT_TAB", bool);
+      }
+      if (bool)
+      {
+        localObject = com.tencent.mm.ui.component.a.KEX;
+        localObject = com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderHomeUIC.class);
+        p.g(localObject, "UICProvider.of(this).get…inderHomeUIC::class.java)");
+        localObject = (FinderHomeUIC)localObject;
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("Source", 0);
+        ((FinderHomeUIC)localObject).r(4, localBundle);
+      }
+      if (paramIntent == null) {
+        break;
+      }
+      getIntent().putExtra("key_finder_post_local_id", paramIntent.getLongExtra("key_finder_post_local_id", -1L));
+      AppMethodBeat.o(204610);
+      return;
+    }
+    AppMethodBeat.o(204610);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -139,13 +162,10 @@ public final class FinderHomeUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderHomeUI
  * JD-Core Version:    0.7.0.1
  */

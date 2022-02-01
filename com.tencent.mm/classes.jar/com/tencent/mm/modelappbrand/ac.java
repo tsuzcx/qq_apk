@@ -10,19 +10,19 @@ import java.util.Map;
 public final class ac
   implements ab
 {
-  private h hKF;
-  protected Map<String, o> hKG;
+  private h hNy;
+  protected Map<String, o> hNz;
   
   public ac(ab paramab)
   {
     AppMethodBeat.i(76393);
-    this.hKG = new HashMap();
+    this.hNz = new HashMap();
     if (paramab == null)
     {
       AppMethodBeat.o(76393);
       return;
     }
-    this.hKF = paramab.aDR();
+    this.hNy = paramab.aEh();
     a(paramab);
     AppMethodBeat.o(76393);
   }
@@ -30,25 +30,25 @@ public final class ac
   public ac(h paramh)
   {
     AppMethodBeat.i(76392);
-    this.hKG = new HashMap();
-    this.hKF = paramh;
+    this.hNz = new HashMap();
+    this.hNy = paramh;
     AppMethodBeat.o(76392);
   }
   
   private void a(ab paramab)
   {
     AppMethodBeat.i(76394);
-    paramab = paramab.aDS().iterator();
+    paramab = paramab.aEi().iterator();
     while (paramab.hasNext()) {
       a((o)paramab.next());
     }
     AppMethodBeat.o(76394);
   }
   
-  public final <T> T Cn(String paramString)
+  public final <T> T CP(String paramString)
   {
     AppMethodBeat.i(76395);
-    paramString = this.hKG.get(paramString);
+    paramString = this.hNz.get(paramString);
     AppMethodBeat.o(76395);
     return paramString;
   }
@@ -56,19 +56,19 @@ public final class ac
   public final void a(o paramo)
   {
     AppMethodBeat.i(76396);
-    this.hKG.put(paramo.getName(), paramo);
+    this.hNz.put(paramo.getName(), paramo);
     AppMethodBeat.o(76396);
   }
   
-  public final h aDR()
+  public final h aEh()
   {
-    return this.hKF;
+    return this.hNy;
   }
   
-  public final List<o> aDS()
+  public final List<o> aEi()
   {
     AppMethodBeat.i(76397);
-    ArrayList localArrayList = new ArrayList(this.hKG.values());
+    ArrayList localArrayList = new ArrayList(this.hNz.values());
     AppMethodBeat.o(76397);
     return localArrayList;
   }

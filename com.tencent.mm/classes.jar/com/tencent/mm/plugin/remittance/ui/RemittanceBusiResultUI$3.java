@@ -17,11 +17,11 @@ final class RemittanceBusiResultUI$3
     AppMethodBeat.i(67992);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    if (RemittanceBusiResultUI.g(this.ych) == 56) {
-      g.yhR.f(19821, new Object[] { Integer.valueOf(10), RemittanceBusiResultUI.h(this.ych), Integer.valueOf(0) });
+    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    if (RemittanceBusiResultUI.g(this.yrY) == 56) {
+      g.yxI.f(19821, new Object[] { Integer.valueOf(10), RemittanceBusiResultUI.h(this.yrY), Integer.valueOf(0) });
     }
-    this.ych.finish();
+    this.yrY.finish();
     a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(67992);
   }

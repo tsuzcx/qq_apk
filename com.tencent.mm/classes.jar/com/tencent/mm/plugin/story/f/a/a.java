@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.story.f.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "", "storyId", "", "type", "", "(JI)V", "getStoryId", "()J", "getType", "()I", "plugin-story_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "", "storyId", "", "type", "", "(JI)V", "getStoryId", "()J", "getType", "()I", "plugin-story_release"})
 public class a
 {
-  public final long dKt;
+  public final long dLI;
   final int type;
   
   public a(long paramLong, int paramInt)
   {
-    this.dKt = paramLong;
+    this.dLI = paramLong;
     this.type = paramInt;
   }
 }

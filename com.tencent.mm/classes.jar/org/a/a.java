@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public final class a
 {
-  private final Class<?> NVY;
+  private final Class<?> Otd;
   public final Object object;
   
   private a(Class<?> paramClass)
@@ -23,14 +23,14 @@ public final class a
   
   private a(Class<?> paramClass, Object paramObject)
   {
-    this.NVY = paramClass;
+    this.Otd = paramClass;
     this.object = paramObject;
   }
   
   private Method a(String paramString, Class<?>[] paramArrayOfClass)
   {
     AppMethodBeat.i(4281);
-    Object localObject = this.NVY;
+    Object localObject = this.Otd;
     try
     {
       Method localMethod1 = ((Class)localObject).getMethod(paramString, paramArrayOfClass);
@@ -69,11 +69,11 @@ public final class a
       if (paramMethod.getReturnType() == Void.TYPE)
       {
         paramMethod.invoke(paramObject, paramVarArgs);
-        paramMethod = gy(paramObject);
+        paramMethod = gB(paramObject);
         AppMethodBeat.o(4290);
         return paramMethod;
       }
-      paramMethod = gy(paramMethod.invoke(paramObject, paramVarArgs));
+      paramMethod = gB(paramMethod.invoke(paramObject, paramVarArgs));
       AppMethodBeat.o(4290);
       return paramMethod;
     }
@@ -119,7 +119,7 @@ public final class a
     return false;
   }
   
-  private static Class<?>[] ak(Object... paramVarArgs)
+  private static Class<?>[] aj(Object... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(4291);
@@ -229,10 +229,10 @@ public final class a
     return paramClass;
   }
   
-  private Field bdY(String paramString)
+  private Field bfC(String paramString)
   {
     AppMethodBeat.i(4278);
-    Class localClass = this.NVY;
+    Class localClass = this.Otd;
     try
     {
       Field localField1 = (Field)c(localClass.getField(paramString));
@@ -310,7 +310,7 @@ public final class a
     }
   }
   
-  public static a gy(Object paramObject)
+  public static a gB(Object paramObject)
   {
     AppMethodBeat.i(4272);
     if (paramObject == null) {}
@@ -322,10 +322,10 @@ public final class a
     }
   }
   
-  public final a C(String paramString, Object... paramVarArgs)
+  public final a A(String paramString, Object... paramVarArgs)
   {
     AppMethodBeat.i(4280);
-    Class[] arrayOfClass = ak(paramVarArgs);
+    Class[] arrayOfClass = aj(paramVarArgs);
     try
     {
       a locala = a(a(paramString, arrayOfClass), this.object, paramVarArgs);
@@ -337,7 +337,7 @@ public final class a
     {
       try
       {
-        Class localClass = this.NVY;
+        Class localClass = this.Otd;
         Method[] arrayOfMethod1 = localClass.getMethods();
         int j = arrayOfMethod1.length;
         int i = 0;
@@ -368,7 +368,7 @@ public final class a
             localClass = localClass.getSuperclass();
             if (localClass == null)
             {
-              paramString = new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(arrayOfClass) + " could be found on type " + this.NVY + ".");
+              paramString = new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(arrayOfClass) + " could be found on type " + this.Otd + ".");
               AppMethodBeat.o(4280);
               throw paramString;
             }
@@ -384,19 +384,19 @@ public final class a
     }
   }
   
-  public final a aj(Object... paramVarArgs)
+  public final a ai(Object... paramVarArgs)
   {
     AppMethodBeat.i(4284);
-    Class[] arrayOfClass = ak(paramVarArgs);
+    Class[] arrayOfClass = aj(paramVarArgs);
     try
     {
-      a locala = b(this.NVY.getDeclaredConstructor(arrayOfClass), paramVarArgs);
+      a locala = b(this.Otd.getDeclaredConstructor(arrayOfClass), paramVarArgs);
       AppMethodBeat.o(4284);
       return locala;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      Constructor[] arrayOfConstructor = this.NVY.getDeclaredConstructors();
+      Constructor[] arrayOfConstructor = this.Otd.getDeclaredConstructors();
       int j = arrayOfConstructor.length;
       int i = 0;
       while (i < j)
@@ -416,12 +416,12 @@ public final class a
     }
   }
   
-  public final a bdX(String paramString)
+  public final a bfB(String paramString)
   {
     AppMethodBeat.i(4277);
     try
     {
-      paramString = bdY(paramString);
+      paramString = bfC(paramString);
       paramString = e(paramString.getType(), paramString.get(this.object));
       AppMethodBeat.o(4277);
       return paramString;
@@ -434,10 +434,10 @@ public final class a
     }
   }
   
-  public final a bdZ(String paramString)
+  public final a bfD(String paramString)
   {
     AppMethodBeat.i(4279);
-    paramString = C(paramString, new Object[0]);
+    paramString = A(paramString, new Object[0]);
     AppMethodBeat.o(4279);
     return paramString;
   }
@@ -455,20 +455,20 @@ public final class a
     return false;
   }
   
+  public final a gCT()
+  {
+    AppMethodBeat.i(4283);
+    a locala = ai(new Object[0]);
+    AppMethodBeat.o(4283);
+    return locala;
+  }
+  
   public final <T> T get(String paramString)
   {
     AppMethodBeat.i(4276);
-    paramString = bdX(paramString).object;
+    paramString = bfB(paramString).object;
     AppMethodBeat.o(4276);
     return paramString;
-  }
-  
-  public final a gyr()
-  {
-    AppMethodBeat.i(4283);
-    a locala = aj(new Object[0]);
-    AppMethodBeat.o(4283);
-    return locala;
   }
   
   public final int hashCode()
@@ -489,7 +489,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.a.a
  * JD-Core Version:    0.7.0.1
  */

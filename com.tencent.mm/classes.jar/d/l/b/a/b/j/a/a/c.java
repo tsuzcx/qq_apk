@@ -18,17 +18,17 @@ import java.util.List;
 public final class c
   implements b
 {
-  public l Nwl;
-  public final av Nwm;
+  public l NTr;
+  public final av NTs;
   
   public c(av paramav)
   {
     AppMethodBeat.i(60031);
-    this.Nwm = paramav;
-    if (this.Nwm.gud() != bh.NCP) {}
-    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
+    this.NTs = paramav;
+    if (this.NTs.gyF() != bh.NZW) {}
+    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
     {
-      paramav = (Throwable)new AssertionError("Only nontrivial projections can be captured, not: " + this.Nwm);
+      paramav = (Throwable)new AssertionError("Only nontrivial projections can be captured, not: " + this.NTs);
       AppMethodBeat.o(60031);
       throw paramav;
     }
@@ -37,19 +37,28 @@ public final class c
   
   public final List<as> getParameters()
   {
-    return (List)v.MKE;
+    return (List)v.NhH;
   }
   
-  public final boolean ghQ()
+  public final boolean gms()
   {
     return false;
   }
   
-  public final Collection<ab> gjR()
+  public final g gnF()
+  {
+    AppMethodBeat.i(60030);
+    g localg = this.NTs.gnW().gxB().gnF();
+    p.g(localg, "projection.type.constructor.builtIns");
+    AppMethodBeat.o(60030);
+    return localg;
+  }
+  
+  public final Collection<ab> got()
   {
     AppMethodBeat.i(60028);
-    if (this.Nwm.gud() == bh.NCR) {}
-    for (Object localObject = this.Nwm.gju();; localObject = (ab)gjd().ghe())
+    if (this.NTs.gyF() == bh.NZY) {}
+    for (Object localObject = this.NTs.gnW();; localObject = (ab)gnF().glG())
     {
       p.g(localObject, "if (projection.projectio… builtIns.nullableAnyType");
       localObject = (Collection)j.listOf(localObject);
@@ -58,31 +67,22 @@ public final class c
     }
   }
   
-  public final g gjd()
+  public final av gxC()
   {
-    AppMethodBeat.i(60030);
-    g localg = this.Nwm.gju().gsZ().gjd();
-    p.g(localg, "projection.type.constructor.builtIns");
-    AppMethodBeat.o(60030);
-    return localg;
-  }
-  
-  public final av gta()
-  {
-    return this.Nwm;
+    return this.NTs;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60029);
-    String str = "CapturedTypeConstructor(" + this.Nwm + ')';
+    String str = "CapturedTypeConstructor(" + this.NTs + ')';
     AppMethodBeat.o(60029);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.a.a.c
  * JD-Core Version:    0.7.0.1
  */

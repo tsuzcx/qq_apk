@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.camerarecordview.a;
 
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/daemon/DaemonChecker$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/daemon/DaemonChecker$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

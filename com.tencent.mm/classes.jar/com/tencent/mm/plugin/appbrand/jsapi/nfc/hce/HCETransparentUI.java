@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 @Deprecated
 public class HCETransparentUI
@@ -27,8 +27,8 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136179);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.HCETransparentUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    a.kYt.tl(paramInt1);
+    ae.i("MicroMsg.HCETransparentUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    a.lcc.to(paramInt1);
     AppMethodBeat.o(136179);
   }
   
@@ -39,8 +39,8 @@ public class HCETransparentUI
     overridePendingTransition(0, 0);
     setContentView(2131494432);
     this.MK = ((ResultReceiver)getIntent().getParcelableExtra("HCE_Result_Receiver"));
-    a.kYt.a(this, this.MK);
-    a.kYt.resetStatus();
+    a.lcc.a(this, this.MK);
+    a.lcc.resetStatus();
     AppMethodBeat.o(136177);
   }
   
@@ -55,7 +55,7 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136180);
     super.onPause();
-    a.kYt.dismissDialog();
+    a.lcc.dismissDialog();
     AppMethodBeat.o(136180);
   }
   
@@ -63,11 +63,11 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136178);
     super.onResume();
-    ad.i("MicroMsg.HCETransparentUI", "alvinluo onResume");
+    ae.i("MicroMsg.HCETransparentUI", "alvinluo onResume");
     overridePendingTransition(0, 0);
     ComponentName localComponentName = new ComponentName(this, HCEService.class.getCanonicalName());
-    a.kYt.b(localComponentName);
-    a.kYt.blE();
+    a.lcc.b(localComponentName);
+    a.lcc.bmn();
     AppMethodBeat.o(136178);
   }
   
@@ -79,7 +79,7 @@ public class HCETransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCETransparentUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,17 +20,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.i;
 import com.tencent.mm.plugin.account.friend.a.i.a;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ar.a;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.List;
@@ -37,41 +40,41 @@ public class FindMContactAddUI
   extends MMWizardActivity
 {
   private TextView emptyTipTv;
-  private ProgressDialog fMu;
-  private String fPq;
-  private String jaS;
-  private int jaT;
-  private String jaZ;
-  private ListView jci;
-  private boolean jfA;
-  private i.a jfB;
-  private i jfr;
-  private View jfs;
-  private TextView jft;
-  private TextView jfu;
-  private TextView jfv;
-  private TextView jfw;
-  private Button jfx;
-  private int jfy;
-  private List<String[]> jfz;
+  private ProgressDialog fOC;
+  private String fRw;
+  private String jdL;
+  private int jdM;
+  private String jdS;
+  private ListView jfb;
+  private i jik;
+  private View jil;
+  private TextView jim;
+  private TextView jin;
+  private TextView jio;
+  private TextView jip;
+  private Button jiq;
+  private int jir;
+  private List<String[]> jis;
+  private boolean jit;
+  private i.a jiu;
   private f onSceneEndCallback;
   
   public FindMContactAddUI()
   {
     AppMethodBeat.i(131187);
-    this.fMu = null;
+    this.fOC = null;
     this.emptyTipTv = null;
-    this.jft = null;
-    this.jfu = null;
-    this.jfv = null;
-    this.jfw = null;
-    this.jfx = null;
-    this.fPq = null;
+    this.jim = null;
+    this.jin = null;
+    this.jio = null;
+    this.jip = null;
+    this.jiq = null;
+    this.fRw = null;
     this.onSceneEndCallback = null;
-    this.jaS = "";
-    this.jaT = 2;
-    this.jfA = true;
-    this.jfB = new i.a()
+    this.jdL = "";
+    this.jdM = 2;
+    this.jit = true;
+    this.jiu = new i.a()
     {
       public final void notifyDataSetChanged()
       {
@@ -79,7 +82,7 @@ public class FindMContactAddUI
         if ((FindMContactAddUI.e(FindMContactAddUI.this) != 2) && (FindMContactAddUI.e(FindMContactAddUI.this) == 1))
         {
           FindMContactAddUI.f(FindMContactAddUI.this).setText(FindMContactAddUI.this.getString(2131759111));
-          if (!FindMContactAddUI.c(FindMContactAddUI.this).aSK()) {
+          if (!FindMContactAddUI.c(FindMContactAddUI.this).aTj()) {
             break label240;
           }
           if ((FindMContactAddUI.e(FindMContactAddUI.this) != 1) && (FindMContactAddUI.f(FindMContactAddUI.this).getVisibility() == 0) && (FindMContactAddUI.g(FindMContactAddUI.this) != null))
@@ -113,33 +116,33 @@ public class FindMContactAddUI
     AppMethodBeat.o(131187);
   }
   
-  private void aSa()
+  private void aSz()
   {
     AppMethodBeat.i(131191);
-    com.tencent.mm.plugin.b.a.Ma(this.jaZ);
+    com.tencent.mm.plugin.b.a.KB(this.jdS);
     hideVKB();
-    abK(1);
+    acs(1);
     AppMethodBeat.o(131191);
   }
   
-  private void aTw()
+  private void aTV()
   {
     AppMethodBeat.i(131189);
     AppCompatActivity localAppCompatActivity = getContext();
     getString(2131755906);
-    this.fMu = h.b(localAppCompatActivity, getString(2131761251), true, new DialogInterface.OnCancelListener()
+    this.fOC = h.b(localAppCompatActivity, getString(2131761251), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    g.ajF().a(new aq.a()
+    g.ajU().a(new ar.a()
     {
-      public final boolean aEm()
+      public final boolean aEC()
       {
         AppMethodBeat.i(131179);
         try
         {
-          FindMContactAddUI.a(FindMContactAddUI.this, com.tencent.mm.pluginsdk.b.dr(FindMContactAddUI.this));
-          FindMContactAddUI.c(FindMContactAddUI.this).jaX = FindMContactAddUI.d(FindMContactAddUI.this);
+          FindMContactAddUI.a(FindMContactAddUI.this, com.tencent.mm.pluginsdk.b.dt(FindMContactAddUI.this));
+          FindMContactAddUI.c(FindMContactAddUI.this).jdQ = FindMContactAddUI.d(FindMContactAddUI.this);
           FindMContactAddUI.c(FindMContactAddUI.this).s(((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getFriendData());
           AppMethodBeat.o(131179);
           return true;
@@ -148,12 +151,12 @@ public class FindMContactAddUI
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.FindMContactAddUI", localException, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.FindMContactAddUI", localException, "", new Object[0]);
           }
         }
       }
       
-      public final boolean aEn()
+      public final boolean aED()
       {
         AppMethodBeat.i(131178);
         if (FindMContactAddUI.a(FindMContactAddUI.this) != null)
@@ -187,37 +190,37 @@ public class FindMContactAddUI
     AppMethodBeat.i(131195);
     this.emptyTipTv = ((TextView)findViewById(2131302350));
     this.emptyTipTv.setText(2131761249);
-    this.jci = ((ListView)findViewById(2131302352));
-    if ((this.jaT != 2) && (this.jaT == 1))
+    this.jfb = ((ListView)findViewById(2131302352));
+    if ((this.jdM != 2) && (this.jdM == 1))
     {
-      this.jfs = LayoutInflater.from(this).inflate(2131494010, null);
-      this.jft = ((TextView)this.jfs.findViewById(2131300082));
-      this.jfu = ((TextView)this.jfs.findViewById(2131300085));
-      this.jfv = ((TextView)this.jfs.findViewById(2131299970));
-      this.jfx = ((Button)this.jfs.findViewById(2131299969));
-      this.jfu.setText(getString(2131759143));
-      this.jfv.setText(getString(2131759144));
-      this.jfx.setText(getString(2131759111));
+      this.jil = LayoutInflater.from(this).inflate(2131494010, null);
+      this.jim = ((TextView)this.jil.findViewById(2131300082));
+      this.jin = ((TextView)this.jil.findViewById(2131300085));
+      this.jio = ((TextView)this.jil.findViewById(2131299970));
+      this.jiq = ((Button)this.jil.findViewById(2131299969));
+      this.jin.setText(getString(2131759143));
+      this.jio.setText(getString(2131759144));
+      this.jiq.setText(getString(2131759111));
     }
     for (;;)
     {
-      this.jfr = new i(this, this.jfB, 1);
-      this.jfx.setOnClickListener(new View.OnClickListener()
+      this.jik = new i(this, this.jiu, 1);
+      this.jiq.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(131182);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           paramAnonymousView = new StringBuilder();
-          g.ajA();
-          paramAnonymousView = paramAnonymousView.append(com.tencent.mm.kernel.a.aiO()).append(",").append(FindMContactAddUI.this.getClass().getName()).append(",R300_300_AddAllButton,");
-          g.ajA();
-          com.tencent.mm.plugin.b.a.vk(com.tencent.mm.kernel.a.wS("R300_300_AddAllButton") + ",3");
+          g.ajP();
+          paramAnonymousView = paramAnonymousView.append(com.tencent.mm.kernel.a.ajd()).append(",").append(FindMContactAddUI.this.getClass().getName()).append(",R300_300_AddAllButton,");
+          g.ajP();
+          com.tencent.mm.plugin.b.a.vG(com.tencent.mm.kernel.a.xB("R300_300_AddAllButton") + ",3");
           if (FindMContactAddUI.e(FindMContactAddUI.this) == 2)
           {
-            FindMContactAddUI.c(FindMContactAddUI.this).fq(true);
+            FindMContactAddUI.c(FindMContactAddUI.this).fr(true);
             FindMContactAddUI.c(FindMContactAddUI.this).notifyDataSetChanged();
             FindMContactAddUI.f(FindMContactAddUI.this).setVisibility(8);
             if (FindMContactAddUI.g(FindMContactAddUI.this) != null) {
@@ -231,13 +234,13 @@ public class FindMContactAddUI
             return;
             if (FindMContactAddUI.e(FindMContactAddUI.this) == 1)
             {
-              FindMContactAddUI.c(FindMContactAddUI.this).fq(true);
+              FindMContactAddUI.c(FindMContactAddUI.this).fr(true);
               FindMContactAddUI.c(FindMContactAddUI.this).notifyDataSetChanged();
               FindMContactAddUI.i(FindMContactAddUI.this);
             }
             else
             {
-              FindMContactAddUI.c(FindMContactAddUI.this).fq(true);
+              FindMContactAddUI.c(FindMContactAddUI.this).fr(true);
               FindMContactAddUI.c(FindMContactAddUI.this).notifyDataSetChanged();
               FindMContactAddUI.f(FindMContactAddUI.this).setVisibility(8);
               if (FindMContactAddUI.g(FindMContactAddUI.this) != null) {
@@ -247,41 +250,67 @@ public class FindMContactAddUI
           }
         }
       });
-      if (this.jfw != null)
+      if (this.jip != null)
       {
-        this.jfw.setOnClickListener(new View.OnClickListener()
+        this.jip.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131183);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
             FindMContactAddUI.f(FindMContactAddUI.this).setVisibility(0);
             FindMContactAddUI.g(FindMContactAddUI.this).setVisibility(8);
-            FindMContactAddUI.c(FindMContactAddUI.this).fq(false);
+            FindMContactAddUI.c(FindMContactAddUI.this).fr(false);
             FindMContactAddUI.c(FindMContactAddUI.this).notifyDataSetChanged();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(131183);
           }
         });
-        this.jfw.setVisibility(8);
+        this.jip.setVisibility(8);
       }
-      this.jci.addHeaderView(this.jfs);
-      this.jci.setAdapter(this.jfr);
-      addTextOptionMenu(0, getString(2131755830), new FindMContactAddUI.10(this));
-      setToTop(new FindMContactAddUI.11(this));
+      this.jfb.addHeaderView(this.jil);
+      this.jfb.setAdapter(this.jik);
+      addTextOptionMenu(0, getString(2131755830), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(131184);
+          FindMContactAddUI.i(FindMContactAddUI.this);
+          AppMethodBeat.o(131184);
+          return true;
+        }
+      });
+      setToTop(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(131185);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+          paramAnonymousView = FindMContactAddUI.j(FindMContactAddUI.this);
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+          localObject = new Object();
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(131185);
+        }
+      });
       AppMethodBeat.o(131195);
       return;
-      this.jfs = LayoutInflater.from(this).inflate(2131494009, null);
-      this.jft = ((TextView)this.jfs.findViewById(2131300082));
-      this.jfu = ((TextView)this.jfs.findViewById(2131300085));
-      this.jfv = ((TextView)this.jfs.findViewById(2131299970));
-      this.jfx = ((Button)this.jfs.findViewById(2131299969));
-      this.jfu.setText(getString(2131759143));
-      this.jfv.setText(getString(2131759144));
-      this.jfx.setText(getString(2131759110, new Object[] { Integer.valueOf(0) }));
-      this.jfw = ((TextView)this.jfs.findViewById(2131302345));
+      this.jil = LayoutInflater.from(this).inflate(2131494009, null);
+      this.jim = ((TextView)this.jil.findViewById(2131300082));
+      this.jin = ((TextView)this.jil.findViewById(2131300085));
+      this.jio = ((TextView)this.jil.findViewById(2131299970));
+      this.jiq = ((Button)this.jil.findViewById(2131299969));
+      this.jin.setText(getString(2131759143));
+      this.jio.setText(getString(2131759144));
+      this.jiq.setText(getString(2131759110, new Object[] { Integer.valueOf(0) }));
+      this.jip = ((TextView)this.jil.findViewById(2131302345));
     }
   }
   
@@ -290,12 +319,12 @@ public class FindMContactAddUI
     AppMethodBeat.i(131188);
     super.onCreate(paramBundle);
     setMMTitle(2131759115);
-    com.tencent.mm.plugin.account.a.a.iRH.MU();
-    this.fPq = getIntent().getStringExtra("regsetinfo_ticket");
-    this.jaS = getIntent().getStringExtra("regsetinfo_NextStep");
-    this.jaT = getIntent().getIntExtra("regsetinfo_NextStyle", 2);
-    this.jfy = getIntent().getIntExtra("login_type", 0);
-    this.jaZ = com.tencent.mm.plugin.b.a.Mp();
+    com.tencent.mm.plugin.account.a.a.iUA.MP();
+    this.fRw = getIntent().getStringExtra("regsetinfo_ticket");
+    this.jdL = getIntent().getStringExtra("regsetinfo_NextStep");
+    this.jdM = getIntent().getIntExtra("regsetinfo_NextStyle", 2);
+    this.jir = getIntent().getIntExtra("login_type", 0);
+    this.jdS = com.tencent.mm.plugin.b.a.aVo();
     initView();
     AppMethodBeat.o(131188);
   }
@@ -305,7 +334,7 @@ public class FindMContactAddUI
     AppMethodBeat.i(131194);
     if (this.onSceneEndCallback != null)
     {
-      g.aiU().b(30, this.onSceneEndCallback);
+      g.ajj().b(30, this.onSceneEndCallback);
       this.onSceneEndCallback = null;
     }
     super.onDestroy();
@@ -317,7 +346,7 @@ public class FindMContactAddUI
     AppMethodBeat.i(131190);
     if (paramInt == 4)
     {
-      aSa();
+      aSz();
       AppMethodBeat.o(131190);
       return true;
     }
@@ -330,21 +359,21 @@ public class FindMContactAddUI
   {
     AppMethodBeat.i(131193);
     super.onPause();
-    if (this.jfy == 1)
+    if (this.jir == 1)
     {
       localStringBuilder = new StringBuilder();
-      g.ajA();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R300_300_QQ,");
-      g.ajA();
-      com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.wS("R300_300_QQ") + ",2");
+      g.ajP();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R300_300_QQ,");
+      g.ajP();
+      com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.xB("R300_300_QQ") + ",2");
       AppMethodBeat.o(131193);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    g.ajA();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R300_300_phone,");
-    g.ajA();
-    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.wS("R300_300_phone") + ",2");
+    g.ajP();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R300_300_phone,");
+    g.ajP();
+    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.xB("R300_300_phone") + ",2");
     AppMethodBeat.o(131193);
   }
   
@@ -353,11 +382,11 @@ public class FindMContactAddUI
     AppMethodBeat.i(131196);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ad.i("MicroMsg.FindMContactAddUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ae.i("MicroMsg.FindMContactAddUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(131196);
       return;
     }
-    ad.i("MicroMsg.FindMContactAddUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ae.i("MicroMsg.FindMContactAddUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -367,12 +396,36 @@ public class FindMContactAddUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        aTw();
+        aTV();
         AppMethodBeat.o(131196);
         return;
       }
-      this.jfA = false;
-      h.a(this, getString(2131761862), getString(2131761885), getString(2131760598), getString(2131755691), false, new FindMContactAddUI.4(this), new FindMContactAddUI.5(this));
+      this.jit = false;
+      h.a(this, getString(2131761862), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(131176);
+          paramAnonymousDialogInterface = FindMContactAddUI.this;
+          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$12", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$12", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          FindMContactAddUI.q(FindMContactAddUI.this);
+          FindMContactAddUI.this.finish();
+          AppMethodBeat.o(131176);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(131177);
+          FindMContactAddUI.q(FindMContactAddUI.this);
+          FindMContactAddUI.this.finish();
+          AppMethodBeat.o(131177);
+        }
+      });
     }
   }
   
@@ -380,35 +433,35 @@ public class FindMContactAddUI
   {
     AppMethodBeat.i(131192);
     super.onResume();
-    this.jfr.notifyDataSetChanged();
+    this.jik.notifyDataSetChanged();
     StringBuilder localStringBuilder;
-    if (this.jfy == 1)
+    if (this.jir == 1)
     {
       localStringBuilder = new StringBuilder();
-      g.ajA();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R300_300_QQ,");
-      g.ajA();
-      com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.wS("R300_300_QQ") + ",1");
-      com.tencent.mm.plugin.b.a.Kc("R300_300_QQ");
+      g.ajP();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R300_300_QQ,");
+      g.ajP();
+      com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.xB("R300_300_QQ") + ",1");
+      com.tencent.mm.plugin.b.a.KA("R300_300_QQ");
     }
-    while (this.jfA)
+    while (this.jit)
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
-      ad.i("MicroMsg.FindMContactAddUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bt.flS() });
+      ae.i("MicroMsg.FindMContactAddUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bu.fpN() });
       if (!bool)
       {
         AppMethodBeat.o(131192);
         return;
         localStringBuilder = new StringBuilder();
-        g.ajA();
-        localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",R300_300_phone,");
-        g.ajA();
-        com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.wS("R300_300_phone") + ",1");
-        com.tencent.mm.plugin.b.a.Kc("R300_300_phone");
+        g.ajP();
+        localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",R300_300_phone,");
+        g.ajP();
+        com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.xB("R300_300_phone") + ",1");
+        com.tencent.mm.plugin.b.a.KA("R300_300_phone");
       }
       else
       {
-        aTw();
+        aTV();
       }
     }
     AppMethodBeat.o(131192);
@@ -422,7 +475,7 @@ public class FindMContactAddUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.FindMContactAddUI
  * JD-Core Version:    0.7.0.1
  */

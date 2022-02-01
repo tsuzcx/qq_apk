@@ -34,55 +34,55 @@ public class LookupFilter
   
   public MultiTextureFilter clone()
   {
-    AppMethodBeat.i(217941);
+    AppMethodBeat.i(214580);
     LookupFilter localLookupFilter = new LookupFilter(this.lookupBitmap, this.intensity);
     if (this.subFilter != null) {
       localLookupFilter.setSubFilter(this.subFilter.clone());
     }
-    AppMethodBeat.o(217941);
+    AppMethodBeat.o(214580);
     return localLookupFilter;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(217942);
+    AppMethodBeat.i(214581);
     if (paramObject == this)
     {
-      AppMethodBeat.o(217942);
+      AppMethodBeat.o(214581);
       return true;
     }
     if (paramObject.getClass() != getClass())
     {
-      AppMethodBeat.o(217942);
+      AppMethodBeat.o(214581);
       return false;
     }
     if (this.intensity != ((LookupFilter)paramObject).intensity)
     {
-      AppMethodBeat.o(217942);
+      AppMethodBeat.o(214581);
       return false;
     }
     if (this.lookupBitmap != ((LookupFilter)paramObject).lookupBitmap)
     {
-      AppMethodBeat.o(217942);
+      AppMethodBeat.o(214581);
       return false;
     }
     boolean bool = super.equals(paramObject);
-    AppMethodBeat.o(217942);
+    AppMethodBeat.o(214581);
     return bool;
   }
   
   protected void finishDraw(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(217939);
+    AppMethodBeat.i(214578);
     super.finishDraw(paramTextureInfo);
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(217939);
+    AppMethodBeat.o(214578);
   }
   
   protected void initShaderForTextureInfo(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(217937);
+    AppMethodBeat.i(214576);
     if (paramTextureInfo.textureType == 36197) {
       initShaders("uniform vec2 uScreenSize;\nuniform vec2 uTextureSize;\nuniform mat3 uMatrix;\nuniform mat3 stMatrix;\nattribute vec2 aPosition;\nvarying vec2 vTextureCoord;\nvoid main() {\n  vec3 position = uMatrix * vec3(aPosition, 1);\n  vec2 clipSpace = (position.xy / uScreenSize) * 2.0 - 1.0;\n  gl_Position = vec4(clipSpace, 0, 1);\n  vec3 coord = vec3(aPosition / uTextureSize, 1);\n  vTextureCoord = (stMatrix * coord).xy;\n}\n", " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES sTexture;\nprecision mediump float;\nuniform sampler2D sLookupTexture; // lookup texture\nvarying highp vec2 vTextureCoord;\n\nuniform lowp float intensity;\nuniform lowp float uAlpha;\n\nvoid main()\n{\n    highp vec4 textureColor = texture2D(sTexture, vTextureCoord);\n    textureColor = clamp(textureColor, 0.0, 1.0);\n    highp float blueColor = textureColor.b * 63.0;\n    \n    highp vec2 quad1;\n    quad1.y = floor(floor(blueColor) / 8.0);\n    quad1.x = floor(blueColor) - (quad1.y * 8.0);\n    \n    highp vec2 quad2;\n    quad2.y = floor(ceil(blueColor) / 8.0);\n    quad2.x = ceil(blueColor) - (quad2.y * 8.0);\n    \n    highp float redPos = 0.125 * textureColor.r;\n    highp float greenPos = 0.125 * textureColor.g;\n    redPos = clamp(redPos, 2.0/512.0, 0.125- 2.0/512.0);\n    greenPos = clamp(greenPos, 2.0/512.0, 0.125- 2.0/512.0);\n    highp vec2 texPos1;\n    texPos1.x = (quad1.x * 0.125) + redPos;\n    texPos1.y = (quad1.y * 0.125)  + greenPos;\n    \n    highp vec2 texPos2;\n    texPos2.x = (quad2.x * 0.125)  + redPos;\n    texPos2.y = (quad2.y * 0.125) + greenPos;\n    \n    lowp vec4 newColor1 = texture2D(sLookupTexture, texPos1);\n    lowp vec4 newColor2 = texture2D(sLookupTexture, texPos2);\n    \n    lowp vec4 newColor = mix(newColor1, newColor2, fract(blueColor));\n    newColor = mix(textureColor, vec4(newColor.rgb, textureColor.w), intensity);\n    gl_FragColor = mix(vec4(0,0,0,1), newColor, uAlpha);\n}");
     }
@@ -94,7 +94,7 @@ public class LookupFilter
         break;
       }
       paramTextureInfo = new RuntimeException("Could not get uniform location for sLookupTexture");
-      AppMethodBeat.o(217937);
+      AppMethodBeat.o(214576);
       throw paramTextureInfo;
       initShaders("uniform vec2 uScreenSize;\nuniform vec2 uTextureSize;\nuniform mat3 uMatrix;\nuniform mat3 stMatrix;\nattribute vec2 aPosition;\nvarying vec2 vTextureCoord;\nvoid main() {\n  vec3 position = uMatrix * vec3(aPosition, 1);\n  vec2 clipSpace = (position.xy / uScreenSize) * 2.0 - 1.0;\n  gl_Position = vec4(clipSpace, 0, 1);\n  vec3 coord = vec3(aPosition / uTextureSize, 1);\n  vTextureCoord = (stMatrix * coord).xy;\n}\n", "uniform sampler2D  sTexture;\nprecision mediump float;\nuniform sampler2D sLookupTexture; // lookup texture\nvarying highp vec2 vTextureCoord;\n\nuniform lowp float intensity;\nuniform lowp float uAlpha;\n\nvoid main()\n{\n    highp vec4 textureColor = texture2D(sTexture, vTextureCoord);\n    textureColor = clamp(textureColor, 0.0, 1.0);\n    highp float blueColor = textureColor.b * 63.0;\n    \n    highp vec2 quad1;\n    quad1.y = floor(floor(blueColor) / 8.0);\n    quad1.x = floor(blueColor) - (quad1.y * 8.0);\n    \n    highp vec2 quad2;\n    quad2.y = floor(ceil(blueColor) / 8.0);\n    quad2.x = ceil(blueColor) - (quad2.y * 8.0);\n    \n    highp float redPos = 0.125 * textureColor.r;\n    highp float greenPos = 0.125 * textureColor.g;\n    redPos = clamp(redPos, 2.0/512.0, 0.125- 2.0/512.0);\n    greenPos = clamp(greenPos, 2.0/512.0, 0.125- 2.0/512.0);\n    highp vec2 texPos1;\n    texPos1.x = (quad1.x * 0.125) + redPos;\n    texPos1.y = (quad1.y * 0.125)  + greenPos;\n    \n    highp vec2 texPos2;\n    texPos2.x = (quad2.x * 0.125)  + redPos;\n    texPos2.y = (quad2.y * 0.125) + greenPos;\n    \n    lowp vec4 newColor1 = texture2D(sLookupTexture, texPos1);\n    lowp vec4 newColor2 = texture2D(sLookupTexture, texPos2);\n    \n    lowp vec4 newColor = mix(newColor1, newColor2, fract(blueColor));\n    newColor = mix(textureColor, vec4(newColor.rgb, textureColor.w), intensity);\n    gl_FragColor = mix(vec4(0,0,0,1), newColor, uAlpha);\n}");
     }
@@ -103,7 +103,7 @@ public class LookupFilter
     if (this.intensityHandle == -1)
     {
       paramTextureInfo = new RuntimeException("Could not get uniform location for intensity");
-      AppMethodBeat.o(217937);
+      AppMethodBeat.o(214576);
       throw paramTextureInfo;
     }
     if (this.lookupTextureID == -1)
@@ -122,30 +122,30 @@ public class LookupFilter
       GLUtils.texImage2D(3553, 0, this.lookupBitmap, 0);
       this.lookupTextureID = i;
     }
-    AppMethodBeat.o(217937);
+    AppMethodBeat.o(214576);
   }
   
   protected void prepareDraw(TextureInfo paramTextureInfo, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(217938);
+    AppMethodBeat.i(214577);
     super.prepareDraw(paramTextureInfo, paramArrayOfFloat);
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, this.lookupTextureID);
     GLES20.glUniform1i(this.sLookupTextureHandle, 1);
     GLES20.glUniform1f(this.intensityHandle, this.intensity);
-    AppMethodBeat.o(217938);
+    AppMethodBeat.o(214577);
   }
   
   public void release()
   {
-    AppMethodBeat.i(217940);
+    AppMethodBeat.i(214579);
     super.release();
     if (this.lookupTextureID != -1)
     {
       GLES20.glDeleteTextures(1, new int[] { this.lookupTextureID }, 0);
       this.lookupTextureID = -1;
     }
-    AppMethodBeat.o(217940);
+    AppMethodBeat.o(214579);
   }
 }
 

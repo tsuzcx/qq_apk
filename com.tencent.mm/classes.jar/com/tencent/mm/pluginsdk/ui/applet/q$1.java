@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 final class q$1
   implements View.OnClickListener
@@ -17,8 +17,8 @@ final class q$1
     AppMethodBeat.i(152179);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListAnchor$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.d("MicroMsg.ContactListArchor", "OnClickListener = onClick ");
+    a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListAnchor$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.d("MicroMsg.ContactListArchor", "OnClickListener = onClick ");
     a.a(this, "com/tencent/mm/pluginsdk/ui/applet/ContactListAnchor$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(152179);
   }

@@ -1,32 +1,30 @@
 package com.tencent.mm.plugin.account.model;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.p;
 
 public final class c
-  implements f, com.tencent.mm.al.g
+  implements f, com.tencent.mm.ak.g
 {
   public Context context;
-  public n dor;
-  private ap handler;
-  public a jht;
+  public n dpw;
+  private aq handler;
+  public a jkm;
   public p tipDialog;
   
   public c(Context paramContext, a parama)
   {
     AppMethodBeat.i(127826);
-    this.handler = new ap(Looper.getMainLooper());
+    this.handler = new aq(Looper.getMainLooper());
     this.context = paramContext;
-    this.jht = parama;
+    this.jkm = parama;
     AppMethodBeat.o(127826);
   }
   
@@ -57,11 +55,11 @@ public final class c
     AppMethodBeat.i(127828);
     if (paramn.getType() == 139)
     {
-      com.tencent.mm.kernel.g.aiU().b(139, this);
+      com.tencent.mm.kernel.g.ajj().b(139, this);
       if ((paramInt2 != 0) || (paramInt1 != 0)) {
         break label87;
       }
-      this.jht.aTC();
+      this.jkm.aUb();
     }
     for (;;)
     {
@@ -73,17 +71,17 @@ public final class c
       if (paramn.getType() != 138) {
         break;
       }
-      com.tencent.mm.kernel.g.aiU().b(138, this);
+      com.tencent.mm.kernel.g.ajj().b(138, this);
       break;
       label87:
-      ad.e("MicroMsg.DoInit", "do init failed, err=" + paramInt1 + "," + paramInt2);
-      this.jht.aTC();
+      ae.e("MicroMsg.DoInit", "do init failed, err=" + paramInt1 + "," + paramInt2);
+      this.jkm.aUb();
     }
   }
   
   public static abstract interface a
   {
-    public abstract void aTC();
+    public abstract void aUb();
   }
 }
 

@@ -16,8 +16,8 @@ final class k$3
     AppMethodBeat.i(41047);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/game/media/GamePublishGalleryView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    k.e(this.tYb).setVisibility(8);
+    a.b("com/tencent/mm/plugin/game/media/GamePublishGalleryView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    k.f(this.ujd).setVisibility(8);
     a.a(this, "com/tencent/mm/plugin/game/media/GamePublishGalleryView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(41047);
   }

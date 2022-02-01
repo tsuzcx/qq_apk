@@ -14,7 +14,7 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public static a Z(Context paramContext)
+  public static a aa(Context paramContext)
   {
     return new a(paramContext);
   }

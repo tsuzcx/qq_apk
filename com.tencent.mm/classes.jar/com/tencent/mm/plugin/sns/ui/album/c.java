@@ -18,21 +18,21 @@ import java.util.List;
 public final class c
   extends RecyclerView.a<b>
 {
-  List<a.d> Asp;
-  a Asq;
+  List<a.d> AJD;
+  a AJE;
   
   public c()
   {
     AppMethodBeat.i(99872);
-    this.Asp = new ArrayList();
-    this.Asq = null;
+    this.AJD = new ArrayList();
+    this.AJE = null;
     AppMethodBeat.o(99872);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(99873);
-    int i = this.Asp.size();
+    int i = this.AJD.size();
     AppMethodBeat.o(99873);
     return i;
   }
@@ -45,29 +45,29 @@ public final class c
   final class b
     extends RecyclerView.w
   {
-    public QDisFadeImageView Asr;
+    public QDisFadeImageView AJF;
     public ImageView ka;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(99871);
-      this.Asr = null;
+      this.AJF = null;
       this.ka = null;
-      this.Asr = ((QDisFadeImageView)paramView.findViewById(2131304931));
+      this.AJF = ((QDisFadeImageView)paramView.findViewById(2131304931));
       this.ka = ((ImageView)paramView.findViewById(2131304932));
       this.ka.setImageDrawable(this.ka.getContext().getResources().getDrawable(2131691166));
-      this.Asr.setScaleType(QImageView.a.KTb);
-      this.Asr.setOnClickListener(new View.OnClickListener()
+      this.AJF.setScaleType(QImageView.a.Lpz);
+      this.AJF.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(99870);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof c.c)) && (c.a(c.this) != null)) {
-            c.a(c.this).cf(((c.c)paramAnonymousView.getTag()).dJd, ((c.c)paramAnonymousView.getTag()).mediaId);
+            c.a(c.this).cf(((c.c)paramAnonymousView.getTag()).dKr, ((c.c)paramAnonymousView.getTag()).mediaId);
           }
           a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(99870);
@@ -79,7 +79,7 @@ public final class c
   
   final class c
   {
-    public int dJd;
+    public int dKr;
     public String mediaId;
     
     c() {}

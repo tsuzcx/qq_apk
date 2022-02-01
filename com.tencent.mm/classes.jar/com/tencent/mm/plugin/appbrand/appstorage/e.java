@@ -3,34 +3,32 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.am;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.model.ao;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "appid", "", "(Ljava/lang/String;)V", "appBrandMMKVStorage", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "kotlin.jvm.PlatformType", "mAppId", "mUin", "", "clearOldSchemeData", "", "sharedPreferences", "Landroid/content/SharedPreferences;", "getTag", "markHadTransferToMMKV", "needTransfer", "", "sVer", "", "reportTransferResult", "bytesMatch", "sizeMatch", "transfer", "transferToMMKV", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Result;", "storageId", "Companion", "Result", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "appid", "", "(Ljava/lang/String;)V", "appBrandMMKVStorage", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "kotlin.jvm.PlatformType", "mAppId", "mUin", "", "clearOldSchemeData", "", "sharedPreferences", "Landroid/content/SharedPreferences;", "getTag", "markHadTransferToMMKV", "needTransfer", "", "sVer", "", "reportTransferResult", "bytesMatch", "sizeMatch", "transfer", "transferToMMKV", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Result;", "storageId", "Companion", "Result", "plugin-appbrand-integration_release"})
 public final class e
-  extends am
+  extends ao
 {
-  private static final String jMb = "hadTransferToMMKV";
-  private static final String jMi = "keyHadCleanOldScheme";
-  private static final String jMj = "keyHadFinishTransfer";
-  public static final a jMk;
-  private final h jMa;
+  private static final String jPu = "hadTransferToMMKV";
+  private static final String jPv = "keyHadCleanOldScheme";
+  private static final String jPw = "keyHadFinishTransfer";
+  public static final a kRd;
+  private final h jPn;
   private final String mAppId;
   private final long mUin;
   
   static
   {
     AppMethodBeat.i(50217);
-    jMk = new a((byte)0);
-    jMb = "hadTransferToMMKV";
-    jMi = "keyHadCleanOldScheme";
-    jMj = "keyHadFinishTransfer";
+    kRd = new a((byte)0);
+    jPu = "hadTransferToMMKV";
+    jPv = "keyHadCleanOldScheme";
+    jPw = "keyHadFinishTransfer";
     AppMethodBeat.o(50217);
   }
   
@@ -38,23 +36,23 @@ public final class e
   {
     AppMethodBeat.i(50216);
     this.mAppId = paramString;
-    this.jMa = ((com.tencent.luggage.sdk.customize.a)com.tencent.luggage.a.e.K(com.tencent.luggage.sdk.customize.a.class)).dg(this.mAppId);
-    this.mUin = new com.tencent.mm.b.p(((com.tencent.mm.plugin.appbrand.appstorage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Mz(this.mAppId)).longValue();
+    this.jPn = ((com.tencent.luggage.sdk.customize.a)com.tencent.luggage.a.e.K(com.tencent.luggage.sdk.customize.a.class)).dl(this.mAppId);
+    this.mUin = new com.tencent.mm.b.p(((com.tencent.mm.plugin.appbrand.appstorage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Ng(this.mAppId)).longValue();
     AppMethodBeat.o(50216);
   }
   
   private final void a(SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(50214);
-    if (paramSharedPreferences.getBoolean(a.e(jMi, this.mUin, this.mAppId), false))
+    if (paramSharedPreferences.getBoolean(a.e(jPv, this.mUin, this.mAppId), false))
     {
-      ad.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] had clear old scheme data, return");
+      ae.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] had clear old scheme data, return");
       AppMethodBeat.o(50214);
       return;
     }
-    ad.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] clear old scheme data");
-    j.Ei().LW(this.mAppId);
-    paramSharedPreferences.edit().putBoolean(a.e(jMi, this.mUin, this.mAppId), true).apply();
+    ae.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] clear old scheme data");
+    com.tencent.mm.plugin.appbrand.app.j.El().MA(this.mAppId);
+    paramSharedPreferences.edit().putBoolean(a.e(jPv, this.mUin, this.mAppId), true).apply();
     AppMethodBeat.o(50214);
   }
   
@@ -63,14 +61,14 @@ public final class e
     return "MicroMsg.AppBrandKVStorageTransfer";
   }
   
-  public final boolean op(int paramInt)
+  public final boolean os(int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(50215);
-    if (!aj.fkD().getBoolean(a.e(jMj, this.mUin, this.mAppId), false)) {
+    if (!ak.fox().getBoolean(a.e(jPw, this.mUin, this.mAppId), false)) {
       bool = true;
     }
-    ad.i("MicroMsg.AppBrandKVStorageTransfer", "needTransfer ".concat(String.valueOf(bool)));
+    ae.i("MicroMsg.AppBrandKVStorageTransfer", "needTransfer ".concat(String.valueOf(bool)));
     AppMethodBeat.o(50215);
     return bool;
   }
@@ -78,44 +76,44 @@ public final class e
   public final void transfer(int paramInt)
   {
     AppMethodBeat.i(50213);
-    if (!f.jMf.bbt())
+    if (!f.jPr.bbV())
     {
-      ad.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] isNeedTransfer = false");
+      ae.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] isNeedTransfer = false");
       AppMethodBeat.o(50213);
       return;
     }
-    SharedPreferences localSharedPreferences = aj.fkD();
-    if (f.jMf.bbr())
+    SharedPreferences localSharedPreferences = ak.fox();
+    if (f.jPr.bbT())
     {
-      ad.i("MicroMsg.AppBrandKVStorageTransfer", "rollback phases, clear [had transfer to mmkv] flag");
-      localSharedPreferences.edit().putBoolean(a.e(jMb, this.mUin, this.mAppId), false).apply();
-      this.jMa.LW(this.mAppId);
+      ae.i("MicroMsg.AppBrandKVStorageTransfer", "rollback phases, clear [had transfer to mmkv] flag");
+      localSharedPreferences.edit().putBoolean(a.e(jPu, this.mUin, this.mAppId), false).apply();
+      this.jPn.MA(this.mAppId);
       AppMethodBeat.o(50213);
       return;
     }
-    boolean bool = localSharedPreferences.getBoolean(a.e(jMb, this.mUin, this.mAppId), false);
-    if ((bool) && (f.jMf.bbq()))
+    boolean bool = localSharedPreferences.getBoolean(a.e(jPu, this.mUin, this.mAppId), false);
+    if ((bool) && (f.jPr.bbS()))
     {
       d.g.b.p.g(localSharedPreferences, "sharedPreferences");
       a(localSharedPreferences);
-      localSharedPreferences.edit().putBoolean(a.e(jMj, this.mUin, this.mAppId), true).apply();
+      localSharedPreferences.edit().putBoolean(a.e(jPw, this.mUin, this.mAppId), true).apply();
       AppMethodBeat.o(50213);
       return;
     }
     if (bool)
     {
-      ad.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] had transfer to mmkv, return");
+      ae.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] had transfer to mmkv, return");
       AppMethodBeat.o(50213);
       return;
     }
-    ad.i("MicroMsg.AppBrandKVStorageTransfer", "start transfer");
-    com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 0L);
+    ae.i("MicroMsg.AppBrandKVStorageTransfer", "start transfer");
+    com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 0L);
     long l5 = System.currentTimeMillis();
-    ad.i("MicroMsg.AppBrandKVStorageTransfer", "clear MMKV");
-    this.jMa.LW(this.mAppId);
-    int[] arrayOfInt = j.Ei().LX(this.mAppId);
+    ae.i("MicroMsg.AppBrandKVStorageTransfer", "clear MMKV");
+    this.jPn.MA(this.mAppId);
+    int[] arrayOfInt = com.tencent.mm.plugin.appbrand.app.j.El().MB(this.mAppId);
     d.g.b.p.g(arrayOfInt, "SubCoreAppBrand.getAppKV…).getAllStorageId(mAppId)");
-    int j = j.Ei().LY(this.mAppId);
+    int j = com.tencent.mm.plugin.appbrand.app.j.El().MC(this.mAppId);
     int k = arrayOfInt.length;
     int i = 0;
     long l3 = 0L;
@@ -130,7 +128,7 @@ public final class e
     if (i < k)
     {
       m = arrayOfInt[i];
-      localObject2 = j.Ei().V(m, this.mAppId)[0];
+      localObject2 = com.tencent.mm.plugin.appbrand.app.j.El().V(m, this.mAppId)[0];
       localObject1 = localObject2;
       if (!(localObject2 instanceof ArrayList)) {
         localObject1 = null;
@@ -139,8 +137,8 @@ public final class e
       if (localArrayList == null) {}
       for (localObject1 = new b(0L, 0L, 0);; localObject1 = new b(0L, 0L, 0))
       {
-        l1 = ((b)localObject1).kLD;
-        l4 = ((b)localObject1).kLE;
+        l1 = ((b)localObject1).kRe;
+        l4 = ((b)localObject1).kRg;
         m = ((b)localObject1).size;
         i += 1;
         l3 += l4;
@@ -152,7 +150,7 @@ public final class e
         }
       }
       label428:
-      ad.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] key size = " + localArrayList.size());
+      ae.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] key size = " + localArrayList.size());
       l4 = 0L;
       Iterator localIterator = ((Iterable)localArrayList).iterator();
       l1 = 0L;
@@ -175,15 +173,15 @@ public final class e
     for (;;)
     {
       long l6 = System.currentTimeMillis();
-      localObject2 = j.Ei().k(m, this.mAppId, (String)localObject1);
+      localObject2 = com.tencent.mm.plugin.appbrand.app.j.El().k(m, this.mAppId, (String)localObject1);
       d.g.b.p.g(localObject2, "SubCoreAppBrand.getAppKV…t(storageId, mAppId, key)");
       long l7 = System.currentTimeMillis();
       Object localObject3 = localObject2[1];
       Object localObject4 = localObject2[2];
-      if (((d.g.b.p.i(localObject1, "") ^ true)) && (localObject2[0] == o.a.jMT) && ((localObject3 instanceof String)) && ((localObject4 instanceof String)))
+      if (((d.g.b.p.i(localObject1, "") ^ true)) && (localObject2[0] == p.a.jQg) && ((localObject3 instanceof String)) && ((localObject4 instanceof String)))
       {
         long l8 = System.currentTimeMillis();
-        this.jMa.c(m, this.mAppId, (String)localObject1, (String)localObject3, (String)localObject4);
+        this.jPn.c(m, this.mAppId, (String)localObject1, (String)localObject3, (String)localObject4);
         l1 += System.currentTimeMillis() - l8;
       }
       for (;;)
@@ -195,11 +193,11 @@ public final class e
         l1 = System.currentTimeMillis() - l5;
         if (5000L < l1)
         {
-          com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 12L);
-          ad.i("MicroMsg.AppBrandKVStorageTransfer", "finish transfer, cost total time= " + l1 + " ms read time = " + l2 + " ms, write time = " + l3 + " ms");
-          k = this.jMa.LY(this.mAppId);
-          m = this.jMa.Mh(this.mAppId);
-          ad.i("MicroMsg.AppBrandKVStorageTransfer", "newbytes =" + k + " oldbytes =" + j + "  newsize =" + m + "  oldsize =" + paramInt + ' ');
+          com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 12L);
+          ae.i("MicroMsg.AppBrandKVStorageTransfer", "finish transfer, cost total time= " + l1 + " ms read time = " + l2 + " ms, write time = " + l3 + " ms");
+          k = this.jPn.MC(this.mAppId);
+          m = this.jPn.ML(this.mAppId);
+          ae.i("MicroMsg.AppBrandKVStorageTransfer", "newbytes =" + k + " oldbytes =" + j + "  newsize =" + m + "  oldsize =" + paramInt + ' ');
           if (k != j) {
             break label943;
           }
@@ -213,19 +211,19 @@ public final class e
           if ((i == 0) || (j == 0)) {
             break label953;
           }
-          com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 1L);
+          com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 1L);
         }
         for (;;)
         {
           if (m != paramInt)
           {
             localObject1 = new IllegalStateException("tansfer failed ");
-            if ((i.IS_FLAVOR_RED) || (i.DEBUG))
+            if ((com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.j.DEBUG))
             {
               localObject1 = (Throwable)localObject1;
               AppMethodBeat.o(50213);
               throw ((Throwable)localObject1);
-              com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 11L);
+              com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 11L);
               break;
               label943:
               i = 0;
@@ -236,31 +234,31 @@ public final class e
               label953:
               if ((i == 0) && (j == 0))
               {
-                com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 4L);
+                com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 4L);
                 continue;
               }
               if (i == 0)
               {
-                com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 3L);
+                com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 3L);
                 continue;
               }
               if (j != 0) {
                 continue;
               }
-              com.tencent.mm.plugin.report.service.g.yhR.A(1016L, 2L);
+              com.tencent.mm.plugin.report.service.g.yxI.A(1016L, 2L);
               continue;
             }
-            ad.printErrStackTrace("MicroMsg.AppBrandKVStorageTransfer", (Throwable)localObject1, "transfer failed", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.AppBrandKVStorageTransfer", (Throwable)localObject1, "transfer failed", new Object[0]);
           }
         }
-        ad.i("MicroMsg.AppBrandKVStorageTransfer", "finish transfer, prev ");
-        com.tencent.mm.plugin.report.service.g.yhR.f(16335, new Object[] { this.mAppId, Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(this.jMa.Mh(this.mAppId)) });
+        ae.i("MicroMsg.AppBrandKVStorageTransfer", "finish transfer, prev ");
+        com.tencent.mm.plugin.report.service.g.yxI.f(16335, new Object[] { this.mAppId, Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(this.jPn.ML(this.mAppId)) });
         d.g.b.p.g(localSharedPreferences, "sharedPreferences");
-        localSharedPreferences.edit().putBoolean(a.e(jMb, this.mUin, this.mAppId), true).apply();
-        if (f.jMf.bbq())
+        localSharedPreferences.edit().putBoolean(a.e(jPu, this.mUin, this.mAppId), true).apply();
+        if (f.jPr.bbS())
         {
           a(localSharedPreferences);
-          localSharedPreferences.edit().putBoolean(a.e(jMj, this.mUin, this.mAppId), true).apply();
+          localSharedPreferences.edit().putBoolean(a.e(jPw, this.mUin, this.mAppId), true).apply();
         }
         AppMethodBeat.o(50213);
         return;
@@ -268,25 +266,25 @@ public final class e
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Companion;", "", "()V", "KEY_HAD_CLEAN_OLD_SCHEME", "", "KEY_HAD_FINISH_TRANSFER", "KEY_HAD_TRANSFER_TO_MMKV", "TAG", "getKey", "key", "uin", "", "appId", "getStorageScheme", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Companion;", "", "()V", "KEY_HAD_CLEAN_OLD_SCHEME", "", "KEY_HAD_FINISH_TRANSFER", "KEY_HAD_TRANSFER_TO_MMKV", "TAG", "getKey", "key", "uin", "", "appId", "getStorageScheme", "", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static int Mb(String paramString)
+    public static int ME(String paramString)
     {
       AppMethodBeat.i(50211);
       d.g.b.p.h(paramString, "appId");
-      SharedPreferences localSharedPreferences = aj.fkD();
-      long l = new com.tencent.mm.b.p(((com.tencent.mm.plugin.appbrand.appstorage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Mz(paramString)).longValue();
+      SharedPreferences localSharedPreferences = ak.fox();
+      long l = new com.tencent.mm.b.p(((com.tencent.mm.plugin.appbrand.appstorage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Ng(paramString)).longValue();
       int i;
-      if (localSharedPreferences.getBoolean(e(e.Mr(), l, paramString), false)) {
+      if (localSharedPreferences.getBoolean(e(e.bbQ(), l, paramString), false)) {
         i = 2;
       }
       for (;;)
       {
-        ad.i("MicroMsg.AppBrandKVStorageTransfer", "getStorageScheme:".concat(String.valueOf(i)));
+        ae.i("MicroMsg.AppBrandKVStorageTransfer", "getStorageScheme:".concat(String.valueOf(i)));
         AppMethodBeat.o(50211);
         return i;
-        if ((localSharedPreferences.getBoolean(e(e.Ms(), l, paramString), false)) && (!f.jMf.bbr())) {
+        if ((localSharedPreferences.getBoolean(e(e.bbR(), l, paramString), false)) && (!f.jPr.bbT())) {
           i = 3;
         } else {
           i = 1;
@@ -305,17 +303,17 @@ public final class e
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Result;", "", "readTime", "", "writeTime", "size", "", "(JJI)V", "getReadTime", "()J", "setReadTime", "(J)V", "getSize", "()I", "getWriteTime", "setWriteTime", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Result;", "", "readTime", "", "writeTime", "size", "", "(JJI)V", "getReadTime", "()J", "setReadTime", "(J)V", "getSize", "()I", "getWriteTime", "setWriteTime", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
   static final class b
   {
-    long kLD;
-    long kLE;
+    long kRe;
+    long kRg;
     final int size;
     
     public b(long paramLong1, long paramLong2, int paramInt)
     {
-      this.kLD = paramLong1;
-      this.kLE = paramLong2;
+      this.kRe = paramLong1;
+      this.kRg = paramLong2;
       this.size = paramInt;
     }
     
@@ -326,7 +324,7 @@ public final class e
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.kLD != paramObject.kLD) || (this.kLE != paramObject.kLE) || (this.size != paramObject.size)) {}
+          if ((this.kRe != paramObject.kRe) || (this.kRg != paramObject.kRg) || (this.size != paramObject.size)) {}
         }
       }
       else {
@@ -337,16 +335,16 @@ public final class e
     
     public final int hashCode()
     {
-      long l = this.kLD;
+      long l = this.kRe;
       int i = (int)(l ^ l >>> 32);
-      l = this.kLE;
+      l = this.kRg;
       return (i * 31 + (int)(l ^ l >>> 32)) * 31 + this.size;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(50212);
-      String str = "Result(readTime=" + this.kLD + ", writeTime=" + this.kLE + ", size=" + this.size + ")";
+      String str = "Result(readTime=" + this.kRe + ", writeTime=" + this.kRg + ", size=" + this.size + ")";
       AppMethodBeat.o(50212);
       return str;
     }

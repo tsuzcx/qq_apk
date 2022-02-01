@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.g.b.a.em;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.g.b.a.eo;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.api.ab;
@@ -22,8 +22,8 @@ import com.tencent.mm.plugin.websearch.api.d;
 import com.tencent.mm.plugin.websearch.api.e;
 import com.tencent.mm.plugin.websearch.api.m;
 import com.tencent.mm.plugin.websearch.widget.view.footer.MoreFooter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.util.List;
@@ -31,10 +31,10 @@ import java.util.List;
 public final class ServiceWidgetView
   implements com.tencent.mm.plugin.websearch.api.g
 {
-  e DEJ;
-  private a DEK;
-  List<ab> DEL;
-  b.b DEM;
+  e DWH;
+  private a DWI;
+  List<ab> DWJ;
+  b.b DWK;
   MMActivity activity;
   List<WidgetData> dataList;
   ViewPager uH;
@@ -42,26 +42,26 @@ public final class ServiceWidgetView
   public final void a(final int paramInt, m paramm)
   {
     AppMethodBeat.i(116688);
-    Object localObject = this.DEK;
+    Object localObject = this.DWI;
     int i = this.uH.getCurrentItem();
     if ((i < 0) || (i >= ((a)localObject).fragments.size())) {}
-    for (localObject = null;; localObject = ((MyFragment)((a)localObject).fragments.get(i)).DEO)
+    for (localObject = null;; localObject = ((MyFragment)((a)localObject).fragments.get(i)).DWM)
     {
       if ((paramm == localObject) && (paramInt != this.uH.getHeight())) {
-        aq.f(new Runnable()
+        ar.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(116675);
             ServiceWidgetView localServiceWidgetView = ServiceWidgetView.this;
             int j = paramInt;
-            ad.i("ServiceWidgetView", "update viewpager height %d", new Object[] { Integer.valueOf(j) });
+            ae.i("ServiceWidgetView", "update viewpager height %d", new Object[] { Integer.valueOf(j) });
             Object localObject = (WidgetData)localServiceWidgetView.dataList.get(localServiceWidgetView.uH.getCurrentItem());
             int i = j;
             if (localObject != null)
             {
               i = j;
-              if (!((WidgetData)localObject).DCO.sSB) {
+              if (!((WidgetData)localObject).DUM.tdN) {
                 i = j - a.fromDPToPix(localServiceWidgetView.activity.getContext(), 46);
               }
             }
@@ -77,7 +77,7 @@ public final class ServiceWidgetView
     }
   }
   
-  public final void eLS()
+  public final void ePB()
   {
     AppMethodBeat.i(116686);
     int j = this.uH.getCurrentItem() + 1;
@@ -92,22 +92,22 @@ public final class ServiceWidgetView
     com.tencent.mm.plugin.websearch.widget.f.a(2, (WidgetData)localObject1, (WidgetData)this.dataList.get(j));
     if (j == this.dataList.indexOf(localObject1))
     {
-      localObject2 = new em().nO(((WidgetData)localObject1).DCO.hKC).nP(((WidgetData)localObject1).DCO.hKC);
-      ((em)localObject2).eig = 0L;
-      ((em)localObject2).nM(((WidgetData)localObject1).query).nN(((WidgetData)localObject1).dDE).aLk();
+      localObject2 = new eo().oj(((WidgetData)localObject1).DUM.hNv).ok(((WidgetData)localObject1).DUM.hNv);
+      ((eo)localObject2).ejQ = 0L;
+      ((eo)localObject2).oh(((WidgetData)localObject1).query).oi(((WidgetData)localObject1).dEJ).aLH();
       AppMethodBeat.o(116686);
       return;
     }
-    ad.i("ServiceWidgetView", "switch widget to %d", new Object[] { Integer.valueOf(j) });
+    ae.i("ServiceWidgetView", "switch widget to %d", new Object[] { Integer.valueOf(j) });
     Object localObject2 = (WidgetData)this.dataList.get(j);
-    localObject1 = new em().nO(((WidgetData)localObject1).DCO.hKC).nP(((WidgetData)localObject2).DCO.hKC);
-    ((em)localObject1).eig = 1L;
-    ((em)localObject1).nM(((WidgetData)localObject2).query).nN(((WidgetData)localObject2).dDE).aLk();
+    localObject1 = new eo().oj(((WidgetData)localObject1).DUM.hNv).ok(((WidgetData)localObject2).DUM.hNv);
+    ((eo)localObject1).ejQ = 1L;
+    ((eo)localObject1).oh(((WidgetData)localObject2).query).oi(((WidgetData)localObject2).dEJ).aLH();
     this.uH.setCurrentItem(j, true);
     i = 0;
-    if (i < this.DEL.size())
+    if (i < this.DWJ.size())
     {
-      localObject1 = (ab)this.DEL.get(i);
+      localObject1 = (ab)this.DWJ.get(i);
       if (i == j) {}
       for (((ab)localObject1).isSelected = true;; ((ab)localObject1).isSelected = false)
       {
@@ -118,7 +118,7 @@ public final class ServiceWidgetView
     AppMethodBeat.o(116686);
   }
   
-  public final void eLT()
+  public final void ePC()
   {
     AppMethodBeat.i(116687);
     this.uH.setCurrentItem(this.uH.getCurrentItem() - 1);
@@ -128,60 +128,60 @@ public final class ServiceWidgetView
   public static class MyFragment
     extends Fragment
   {
-    b DEO;
+    b DWM;
     
     public MyFragment()
     {
       AppMethodBeat.i(116676);
-      this.DEO = new b();
+      this.DWM = new b();
       AppMethodBeat.o(116676);
     }
     
     public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
     {
       AppMethodBeat.i(116677);
-      ad.i("ServiceWidgetView", "onCreateView %s", new Object[] { toString() });
-      paramLayoutInflater = this.DEO;
-      paramLayoutInflater.gqv = paramViewGroup;
-      if (paramLayoutInflater.DES == null)
+      ae.i("ServiceWidgetView", "onCreateView %s", new Object[] { toString() });
+      paramLayoutInflater = this.DWM;
+      paramLayoutInflater.gsV = paramViewGroup;
+      if (paramLayoutInflater.DWQ == null)
       {
         if (paramLayoutInflater.view == null)
         {
-          paramLayoutInflater.view = LayoutInflater.from(paramLayoutInflater.activity.getContext()).inflate(2131495374, paramLayoutInflater.gqv, false);
-          paramLayoutInflater.DER = ((LinearLayout)paramLayoutInflater.view.findViewById(2131298736));
-          paramLayoutInflater.sFi = paramLayoutInflater.view.findViewById(2131300199);
-          paramLayoutInflater.DEQ = paramLayoutInflater.view.findViewById(2131303975);
-          paramLayoutInflater.DEY = ((LinearLayout)paramLayoutInflater.view.findViewById(2131305580));
-          paramLayoutInflater.DEZ = ((MoreFooter)paramLayoutInflater.view.findViewById(2131302468));
-          paramLayoutInflater.xTV = ((TextView)paramLayoutInflater.view.findViewById(2131300734));
-          paramLayoutInflater.DEW = paramLayoutInflater.view.findViewById(2131306992);
-          paramLayoutInflater.DFh = paramLayoutInflater.view.findViewById(2131301493);
-          paramLayoutInflater.DFg = ((ThreeDotsLoadingView)paramLayoutInflater.view.findViewById(2131301514));
-          paramLayoutInflater.DFi = paramLayoutInflater.view.findViewById(2131299752);
-          paramLayoutInflater.DEQ.setVisibility(8);
-          paramLayoutInflater.DER.setVisibility(8);
-          paramLayoutInflater.DEQ.setVisibility(8);
-          paramLayoutInflater.DER.setVisibility(8);
-          paramLayoutInflater.DFh.setVisibility(0);
-          paramLayoutInflater.DFg.fLJ();
-          if (paramLayoutInflater.DES != null) {
-            paramLayoutInflater.DES.aFK(paramLayoutInflater.DET);
+          paramLayoutInflater.view = LayoutInflater.from(paramLayoutInflater.activity.getContext()).inflate(2131495374, paramLayoutInflater.gsV, false);
+          paramLayoutInflater.DWP = ((LinearLayout)paramLayoutInflater.view.findViewById(2131298736));
+          paramLayoutInflater.sQh = paramLayoutInflater.view.findViewById(2131300199);
+          paramLayoutInflater.DWO = paramLayoutInflater.view.findViewById(2131303975);
+          paramLayoutInflater.DWV = ((LinearLayout)paramLayoutInflater.view.findViewById(2131305580));
+          paramLayoutInflater.DWW = ((MoreFooter)paramLayoutInflater.view.findViewById(2131302468));
+          paramLayoutInflater.yjO = ((TextView)paramLayoutInflater.view.findViewById(2131300734));
+          paramLayoutInflater.DWT = paramLayoutInflater.view.findViewById(2131306992);
+          paramLayoutInflater.DXe = paramLayoutInflater.view.findViewById(2131301493);
+          paramLayoutInflater.DXd = ((ThreeDotsLoadingView)paramLayoutInflater.view.findViewById(2131301514));
+          paramLayoutInflater.DXf = paramLayoutInflater.view.findViewById(2131299752);
+          paramLayoutInflater.DWO.setVisibility(8);
+          paramLayoutInflater.DWP.setVisibility(8);
+          paramLayoutInflater.DWO.setVisibility(8);
+          paramLayoutInflater.DWP.setVisibility(8);
+          paramLayoutInflater.DXe.setVisibility(0);
+          paramLayoutInflater.DXd.fQd();
+          if (paramLayoutInflater.DWQ != null) {
+            paramLayoutInflater.DWQ.aHe(paramLayoutInflater.DWR);
           }
           paramLayoutInflater.view.findViewById(2131303974).setOnClickListener(new b.4(paramLayoutInflater));
           paramLayoutInflater.view.findViewById(2131303973).setOnClickListener(new b.5(paramLayoutInflater));
-          paramLayoutInflater.DER.setOnTouchListener(new b.6(paramLayoutInflater));
-          paramLayoutInflater.DER.setOnClickListener(new b.7(paramLayoutInflater));
-          paramLayoutInflater.DEZ.setOnClickLsn(paramLayoutInflater.DFk);
-          paramLayoutInflater.xTV.setOnLongClickListener(new b.8(paramLayoutInflater));
+          paramLayoutInflater.DWP.setOnTouchListener(new b.6(paramLayoutInflater));
+          paramLayoutInflater.DWP.setOnClickListener(new b.7(paramLayoutInflater));
+          paramLayoutInflater.DWW.setOnClickLsn(paramLayoutInflater.DXh);
+          paramLayoutInflater.yjO.setOnLongClickListener(new b.8(paramLayoutInflater));
         }
-        paramLayoutInflater.DES = ((com.tencent.mm.plugin.websearch.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.f.class)).a(paramLayoutInflater.gqv.getContext(), new b.3(paramLayoutInflater));
-        paramLayoutInflater.DES.eLQ();
+        paramLayoutInflater.DWQ = ((com.tencent.mm.plugin.websearch.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.f.class)).a(paramLayoutInflater.gsV.getContext(), new b.3(paramLayoutInflater));
+        paramLayoutInflater.DWQ.ePz();
       }
       paramLayoutInflater.updateView();
       if (paramLayoutInflater.isSelected) {
-        paramLayoutInflater.eMU();
+        paramLayoutInflater.eQF();
       }
-      paramLayoutInflater = this.DEO.view;
+      paramLayoutInflater = this.DWM.view;
       AppMethodBeat.o(116677);
       return paramLayoutInflater;
     }
@@ -190,15 +190,15 @@ public final class ServiceWidgetView
     {
       AppMethodBeat.i(116680);
       super.onDestroy();
-      if ((this.DEO != null) && (this.DEO.DFe != null))
+      if ((this.DWM != null) && (this.DWM.DXb != null))
       {
-        b localb = this.DEO;
-        if (localb.DES != null)
+        b localb = this.DWM;
+        if (localb.DWQ != null)
         {
-          localb.DES.aFK(localb.DET);
-          localb.DES.onDestroy();
-          localb.DFe = null;
-          localb.DET = null;
+          localb.DWQ.aHe(localb.DWR);
+          localb.DWQ.onDestroy();
+          localb.DXb = null;
+          localb.DWR = null;
           localb.activity = null;
         }
       }
@@ -209,16 +209,16 @@ public final class ServiceWidgetView
     {
       AppMethodBeat.i(116679);
       super.onPause();
-      if ((this.DEO != null) && (this.DEO.DFe != null))
+      if ((this.DWM != null) && (this.DWM.DXb != null))
       {
-        b localb = this.DEO;
+        b localb = this.DWM;
         if (localb.isSelected)
         {
-          if (localb.DES != null) {
-            localb.DES.onPause();
+          if (localb.DWQ != null) {
+            localb.DWQ.onPause();
           }
-          localb.uaS = false;
-          ad.v("WidgetView", "%s paused", new Object[] { localb.toString() });
+          localb.ulU = false;
+          ae.v("WidgetView", "%s paused", new Object[] { localb.toString() });
         }
       }
       AppMethodBeat.o(116679);
@@ -228,14 +228,14 @@ public final class ServiceWidgetView
     {
       AppMethodBeat.i(116678);
       super.onResume();
-      if ((this.DEO != null) && (this.DEO.DFe != null))
+      if ((this.DWM != null) && (this.DWM.DXb != null))
       {
-        b localb = this.DEO;
+        b localb = this.DWM;
         if (localb.isSelected)
         {
-          localb.DES.onResume();
-          localb.eMT();
-          ad.v("WidgetView", "%s resume", new Object[] { localb.toString() });
+          localb.DWQ.onResume();
+          localb.eQE();
+          ae.v("WidgetView", "%s resume", new Object[] { localb.toString() });
         }
       }
       AppMethodBeat.o(116678);
@@ -246,17 +246,17 @@ public final class ServiceWidgetView
     extends i
   {
     List<ServiceWidgetView.MyFragment> fragments;
-    List<WidgetData> pdB;
+    List<WidgetData> pkh;
     
     public final int getCount()
     {
       AppMethodBeat.i(116685);
-      if (this.pdB == null)
+      if (this.pkh == null)
       {
         AppMethodBeat.o(116685);
         return 0;
       }
-      int i = this.pdB.size();
+      int i = this.pkh.size();
       AppMethodBeat.o(116685);
       return i;
     }
@@ -269,34 +269,34 @@ public final class ServiceWidgetView
       {
         localMyFragment = new ServiceWidgetView.MyFragment();
         Object localObject = new Bundle();
-        ((Bundle)localObject).putParcelable("data", (Parcelable)this.pdB.get(paramInt));
+        ((Bundle)localObject).putParcelable("data", (Parcelable)this.pkh.get(paramInt));
         localMyFragment.setArguments((Bundle)localObject);
         this.fragments.add(localMyFragment);
-        localObject = localMyFragment.DEO;
-        MMActivity localMMActivity = this.DEN.activity;
-        ServiceWidgetView localServiceWidgetView = this.DEN;
-        b.b localb = this.DEN.DEM;
+        localObject = localMyFragment.DWM;
+        MMActivity localMMActivity = this.DWL.activity;
+        ServiceWidgetView localServiceWidgetView = this.DWL;
+        b.b localb = this.DWL.DWK;
         b.a local1 = new b.a()
         {
-          public final int eMQ()
+          public final int eQB()
           {
             AppMethodBeat.i(116681);
-            if (ServiceWidgetView.a.this.pdB == null)
+            if (ServiceWidgetView.a.this.pkh == null)
             {
               AppMethodBeat.o(116681);
               return 0;
             }
-            int i = ServiceWidgetView.a.this.pdB.size();
+            int i = ServiceWidgetView.a.this.pkh.size();
             AppMethodBeat.o(116681);
             return i;
           }
           
-          public final List<ab> eMR()
+          public final List<ab> eQC()
           {
-            return ServiceWidgetView.a.this.DEN.DEL;
+            return ServiceWidgetView.a.this.DWL.DWJ;
           }
           
-          public final boolean eMS()
+          public final boolean eQD()
           {
             return paramInt > 0;
           }
@@ -304,7 +304,7 @@ public final class ServiceWidgetView
           public final boolean hasNext()
           {
             AppMethodBeat.i(116682);
-            if (paramInt < ServiceWidgetView.a.this.pdB.size() - 1)
+            if (paramInt < ServiceWidgetView.a.this.pkh.size() - 1)
             {
               AppMethodBeat.o(116682);
               return true;
@@ -313,22 +313,22 @@ public final class ServiceWidgetView
             return false;
           }
         };
-        e locale = this.DEN.DEJ;
-        WidgetData localWidgetData = (WidgetData)this.pdB.get(paramInt);
+        e locale = this.DWL.DWH;
+        WidgetData localWidgetData = (WidgetData)this.pkh.get(paramInt);
         ((b)localObject).activity = localMMActivity;
-        ((b)localObject).DFc = localServiceWidgetView;
-        ((b)localObject).DEM = localb;
-        ((b)localObject).DFd = local1;
-        ((b)localObject).DEJ = locale;
-        ((b)localObject).DFe = localWidgetData;
-        if (paramInt != this.DEN.uH.getCurrentItem()) {
+        ((b)localObject).DWZ = localServiceWidgetView;
+        ((b)localObject).DWK = localb;
+        ((b)localObject).DXa = local1;
+        ((b)localObject).DWH = locale;
+        ((b)localObject).DXb = localWidgetData;
+        if (paramInt != this.DWL.uH.getCurrentItem()) {
           break label240;
         }
         ServiceWidgetView.MyFragment.a(localMyFragment).setSelected(true);
       }
       for (;;)
       {
-        ad.i("ServiceWidgetView", "getItem %s, fragment %s", new Object[] { Integer.valueOf(paramInt), localMyFragment.toString() });
+        ae.i("ServiceWidgetView", "getItem %s, fragment %s", new Object[] { Integer.valueOf(paramInt), localMyFragment.toString() });
         AppMethodBeat.o(116684);
         return localMyFragment;
         localMyFragment = (ServiceWidgetView.MyFragment)this.fragments.get(paramInt);
@@ -341,10 +341,10 @@ public final class ServiceWidgetView
     public final int getItemPosition(Object paramObject)
     {
       AppMethodBeat.i(116683);
-      paramObject = ((ServiceWidgetView.MyFragment)paramObject).DEO;
+      paramObject = ((ServiceWidgetView.MyFragment)paramObject).DWM;
       if (paramObject != null)
       {
-        int i = this.pdB.indexOf(paramObject.DFe);
+        int i = this.pkh.indexOf(paramObject.DXb);
         if (i >= 0)
         {
           AppMethodBeat.o(116683);

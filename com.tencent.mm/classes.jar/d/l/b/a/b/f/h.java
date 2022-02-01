@@ -4,35 +4,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static final f Nqs;
-  public static final f Nqt;
-  public static final f Nqu;
-  public static final f Nqv;
-  public static final f Nqw;
+  public static final f NNA;
+  public static final f NNB;
+  public static final f NNC;
+  public static final f NNy;
+  public static final f NNz;
   
   static
   {
     AppMethodBeat.i(59336);
-    Nqs = f.bcG("<no name provided>");
-    Nqt = f.bcG("<root package>");
-    Nqu = f.bcE("Companion");
-    Nqv = f.bcE("no_name_in_PSI_3d19d79d_1ba9_4cd0_b7f5_b46aa3cd5d40");
-    Nqw = f.bcG("<anonymous>");
+    NNy = f.bek("<no name provided>");
+    NNz = f.bek("<root package>");
+    NNA = f.bei("Companion");
+    NNB = f.bei("no_name_in_PSI_3d19d79d_1ba9_4cd0_b7f5_b46aa3cd5d40");
+    NNC = f.bek("<anonymous>");
     AppMethodBeat.o(59336);
   }
   
   public static f v(f paramf)
   {
     AppMethodBeat.i(59334);
-    if ((paramf != null) && (!paramf.Nqp)) {}
+    if ((paramf != null) && (!paramf.NNv)) {}
     for (;;)
     {
       if (paramf == null) {
-        ajm(0);
+        ajW(0);
       }
       AppMethodBeat.o(59334);
       return paramf;
-      paramf = Nqv;
+      paramf = NNB;
     }
   }
   
@@ -40,9 +40,9 @@ public final class h
   {
     AppMethodBeat.i(59335);
     if (paramf == null) {
-      ajm(1);
+      ajW(1);
     }
-    if ((!paramf.sD().isEmpty()) && (!paramf.Nqp))
+    if ((!paramf.sD().isEmpty()) && (!paramf.NNv))
     {
       AppMethodBeat.o(59335);
       return true;
@@ -53,7 +53,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.f.h
  * JD-Core Version:    0.7.0.1
  */

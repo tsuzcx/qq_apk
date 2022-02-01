@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.bmb;
-import com.tencent.mm.protocal.protobuf.bmc;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.bmt;
+import com.tencent.mm.protocal.protobuf.bmu;
 
 class aa
-  extends a<bmc>
+  extends a<bmu>
 {
   aa(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -18,17 +18,17 @@ class aa
   {
     AppMethodBeat.i(44639);
     b.a locala = new b.a();
-    bmb localbmb = new bmb();
-    localbmb.reason = paramInt1;
-    localbmb.GGB = paramInt2;
-    localbmb.condition = paramInt3;
-    localbmb.GGz = paramInt4;
-    localbmb.GGA = paramInt5;
-    locala.hNM = localbmb;
-    locala.hNN = new bmc();
+    bmt localbmt = new bmt();
+    localbmt.reason = paramInt1;
+    localbmt.Had = paramInt2;
+    localbmt.condition = paramInt3;
+    localbmt.Hab = paramInt4;
+    localbmt.Hac = paramInt5;
+    locala.hQF = localbmt;
+    locala.hQG = new bmu();
     locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxausagerecord";
     locala.funcId = 1148;
-    c(locala.aDC());
+    c(locala.aDS());
     AppMethodBeat.o(44639);
   }
 }

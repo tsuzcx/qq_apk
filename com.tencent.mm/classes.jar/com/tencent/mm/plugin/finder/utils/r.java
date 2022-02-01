@@ -5,88 +5,85 @@ import com.tencent.mm.plugin.finder.loader.a;
 import com.tencent.mm.plugin.finder.loader.k;
 import com.tencent.mm.plugin.finder.loader.m;
 import com.tencent.mm.plugin.finder.loader.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.finder.storage.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import d.g.b.p;
 import d.n.d;
-import d.o;
 import d.v;
-import d.z;
 import java.nio.charset.Charset;
 
-@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/PathRouter;", "", "()V", "finderAccDataPath", "", "finderAccPath", "finderAvatarPath", "getFinderAvatarPath", "()Ljava/lang/String;", "finderCapturePath", "getFinderCapturePath", "finderConstantsDataPath", "getFinderConstantsDataPath", "finderConstantsPath", "getFinderConstantsPath", "finderCoverImagePath", "getFinderCoverImagePath", "finderImgPath", "getFinderImgPath", "finderPostPath", "getFinderPostPath", "finderTmpPath", "getFinderTmpPath", "finderVideoPath", "getFinderVideoPath", "folderArray", "", "Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "getFolderArray", "()[Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "[Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "checkToCreateDir", "", "path", "noMedia", "", "cleanFile", "dumpCacheDir", "genPostVideoTmpPath", "username", "getAvatarFilePath", "avatar", "Lcom/tencent/mm/plugin/finder/loader/FinderAvatar;", "getAvatarFileTmpPath", "getCaptureFilePath", "getConstantsDataPath", "getConstantsPath", "getCoverImageFilePath", "cover", "Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "getExifRotatedFilePath", "origFilePath", "getImageFilePath", "image", "Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "getImageFileTmpPath", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getMyFinderAvatarTempPath", "getNormalFileTmpPath", "getNormalJpegTmpPath", "getPostImagePath", "suffix", "getPostImageThumbPath", "imagePath", "getPostMediaDir", "getPostMediaTmpDir", "getPostMediaTmpPath", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "getPostPath", "fileName", "getPostVideoCoverPath", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover;", "getPostVideoPath", "getPostVideoThumbPath", "videoPath", "getTmpTextImagePath", "getUrlImageFilePath", "Lcom/tencent/mm/plugin/finder/loader/FinderUrlImage;", "getUrlImageTmpPath", "getVideoCoverFilePath", "getVideoFilePath", "getVideoFileTmpPath", "inPostDir", "makeImageFilePath", "plugin-finder_release"})
+@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/PathRouter;", "", "()V", "finderAccDataPath", "", "finderAccPath", "getFinderAccPath", "()Ljava/lang/String;", "finderAvatarPath", "getFinderAvatarPath", "finderCapturePath", "getFinderCapturePath", "finderConstantsDataPath", "getFinderConstantsDataPath", "finderConstantsPath", "getFinderConstantsPath", "finderCoverImagePath", "getFinderCoverImagePath", "finderImgPath", "getFinderImgPath", "finderPostPath", "getFinderPostPath", "finderTmpPath", "getFinderTmpPath", "finderVideoPath", "getFinderVideoPath", "folderArray", "", "Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "getFolderArray", "()[Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "[Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "checkToCreateDir", "", "path", "noMedia", "", "cleanFile", "dumpCacheDir", "genPostVideoTmpPath", "username", "getAvatarFilePath", "avatar", "Lcom/tencent/mm/plugin/finder/loader/FinderAvatar;", "getAvatarFileTmpPath", "getCaptureFilePath", "getConstantsDataPath", "getConstantsPath", "getCoverImageFilePath", "cover", "Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "getExifRotatedFilePath", "origFilePath", "getImageFilePath", "image", "Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "getImageFileTmpPath", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getMyFinderAvatarTempPath", "getNormalFileTmpPath", "getNormalJpegTmpPath", "getPostImagePath", "suffix", "getPostImageThumbPath", "imagePath", "getPostMediaDir", "getPostMediaTmpDir", "getPostMediaTmpPath", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "getPostPath", "fileName", "getPostVideoCoverPath", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover;", "getPostVideoPath", "getPostVideoThumbPath", "videoPath", "getTmpTextImagePath", "getUniqueValue", "finderMediaType", "mediaId", "mediaUrl", "getUrlImageFilePath", "Lcom/tencent/mm/plugin/finder/loader/FinderUrlImage;", "getUrlImageTmpPath", "getVideoCoverFilePath", "getVideoFilePath", "getVideoFileTmpPath", "inPostDir", "makeImageFilePath", "plugin-finder_release"})
 public final class r
 {
-  private static final String sMQ;
-  private static final String sMR;
-  private static final String sMS;
-  private static final String sMT;
-  private static final String sMU;
-  private static final String sMV;
-  private static final String sMW;
-  private static final String sMX;
-  private static final String sMY;
-  private static final String sMZ;
-  private static final String sNa;
-  private static final f[] sNb;
-  public static final r sNc;
+  private static String sYb;
+  private static final String sYc;
+  public static final String sYd;
+  private static final String sYe;
+  private static final String sYf;
+  public static final String sYg;
+  private static final String sYh;
+  public static final String sYi;
+  private static final String sYj;
+  private static final String sYk;
+  private static final String sYl;
+  public static final f[] sYm;
+  public static final r sYn;
   
   static
   {
     AppMethodBeat.i(167988);
-    sNc = new r();
+    sYn = new r();
+    sYb = "";
     Object localObject1 = new StringBuilder();
-    Object localObject2 = com.tencent.mm.kernel.g.ajC();
+    Object localObject2 = com.tencent.mm.kernel.g.ajR();
     p.g(localObject2, "MMKernel.storage()");
-    sMQ = ((com.tencent.mm.kernel.e)localObject2).getAccPath() + "finder/";
-    localObject1 = new StringBuilder();
-    localObject2 = com.tencent.mm.kernel.g.ajC();
-    p.g(localObject2, "MMKernel.storage()");
-    sMR = ((com.tencent.mm.kernel.e)localObject2).ajh() + "finder/";
-    sMS = sMQ + "image/";
-    sMT = sMQ + "avatar/";
-    sMU = sMQ + "cover/";
-    sMV = sMQ + "video/";
-    sMW = sMQ + "tmp/";
-    sMX = sMQ + "capture/";
-    sMY = sMQ + "post/";
-    sMZ = sMQ + "constants/";
-    sNa = sMR + "constants/";
+    sYc = ((com.tencent.mm.kernel.e)localObject2).ajw() + "finder/";
+    sYd = cXR() + "image/";
+    sYe = cXR() + "avatar/";
+    sYf = cXR() + "cover/";
+    sYg = cXR() + "video/";
+    sYh = cXR() + "tmp/";
+    sYi = cXR() + "capture/";
+    sYj = cXR() + "post/";
+    sYk = cXR() + "constants/";
+    sYl = sYc + "constants/";
     localObject1 = new f[11];
-    localObject1[0] = new f(sMQ, "finderAccPath", 0L, true, false);
-    localObject1[1] = new f(sMY, "finderPostPath", 0L, true, false);
-    localObject1[2] = new f(sMZ, "finderConstantsPath", 0L, true, false);
-    localObject2 = sMS;
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[3] = new f((String)localObject2, "finderImgPath", com.tencent.mm.plugin.finder.storage.b.cFB(), false, 24);
-    localObject2 = sMT;
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[4] = new f((String)localObject2, "finderAvatarPath", com.tencent.mm.plugin.finder.storage.b.cFC(), false, 24);
-    localObject2 = sMU;
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[5] = new f((String)localObject2, "finderCoverImagePath", com.tencent.mm.plugin.finder.storage.b.cFD(), false, 24);
-    localObject2 = sMV;
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[6] = new f((String)localObject2, "finderVideoPath", com.tencent.mm.plugin.finder.storage.b.cFE(), false, 24);
-    localObject2 = sMW;
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[7] = new f((String)localObject2, "finderTmpPath", com.tencent.mm.plugin.finder.storage.b.cFF(), false, 24);
-    localObject2 = sMX;
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[8] = new f((String)localObject2, "finderCapturePath", com.tencent.mm.plugin.finder.storage.b.cFG(), false, 24);
-    localObject1[9] = new f(cLQ(), "finderPostMediaDir", 0L, false, 8);
-    localObject2 = cLP();
-    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
-    localObject1[10] = new f((String)localObject2, "finderPostMediaTmpDir", com.tencent.mm.plugin.finder.storage.b.cFH(), false, 24);
-    sNb = (f[])localObject1;
+    localObject1[0] = new f(cXR(), "finderAccPath", 0L, true, false);
+    localObject1[1] = new f(sYj, "finderPostPath", 0L, true, false);
+    localObject1[2] = new f(sYk, "finderConstantsPath", 0L, true, false);
+    localObject2 = sYd;
+    b localb = b.sHP;
+    localObject1[3] = new f((String)localObject2, "finderImgPath", b.cHy(), false, 24);
+    localObject2 = sYe;
+    localb = b.sHP;
+    localObject1[4] = new f((String)localObject2, "finderAvatarPath", b.cHz(), false, 24);
+    localObject2 = sYf;
+    localb = b.sHP;
+    localObject1[5] = new f((String)localObject2, "finderCoverImagePath", b.cHA(), false, 24);
+    localObject2 = sYg;
+    localb = b.sHP;
+    localObject1[6] = new f((String)localObject2, "finderVideoPath", b.cHB(), false, 24);
+    localObject2 = sYh;
+    localb = b.sHP;
+    localObject1[7] = new f((String)localObject2, "finderTmpPath", b.cHC(), false, 24);
+    localObject2 = sYi;
+    localb = b.sHP;
+    localObject1[8] = new f((String)localObject2, "finderCapturePath", b.cHD(), false, 24);
+    localObject1[9] = new f(cOy(), "finderPostMediaDir", 0L, false, 8);
+    localObject2 = cOx();
+    localb = b.sHP;
+    localObject1[10] = new f((String)localObject2, "finderPostMediaTmpDir", b.cHE(), false, 24);
+    sYm = (f[])localObject1;
     int i = 0;
     while (i < 11)
     {
-      localObject1[i].cLe();
+      localObject1[i].cNI();
       i += 1;
     }
-    ad.i("Finder.Loader", "finderAccPath:" + sMQ + " finderImgPath:" + sMS + " finderVideoPath:" + sMV + " finderCapturePath:" + sMX);
+    ae.i("Finder.Loader", "finderAccPath:" + cXR() + " finderImgPath:" + sYd + " finderVideoPath:" + sYg + " finderCapturePath:" + sYi);
     AppMethodBeat.o(167988);
   }
   
@@ -94,7 +91,7 @@ public final class r
   {
     AppMethodBeat.i(167979);
     p.h(parama, "avatar");
-    parama = sMT + parama.sis;
+    parama = sYe + parama.srn;
     AppMethodBeat.o(167979);
     return parama;
   }
@@ -103,7 +100,7 @@ public final class r
   {
     AppMethodBeat.i(167980);
     p.h(parame, "cover");
-    parame = sMU + parame.sis;
+    parame = sYf + parame.srn;
     AppMethodBeat.o(167980);
     return parame;
   }
@@ -112,18 +109,18 @@ public final class r
   {
     AppMethodBeat.i(167976);
     p.h(paramg, "image");
-    paramg = sMS + paramg.aeA();
+    paramg = sYd + paramg.aeM();
     AppMethodBeat.o(167976);
     return paramg;
   }
   
   public static String a(com.tencent.mm.plugin.finder.loader.g paramg, String paramString)
   {
-    AppMethodBeat.i(204580);
+    AppMethodBeat.i(205204);
     p.h(paramg, "image");
     p.h(paramString, "suffix");
-    paramg = cLQ() + paramg.aeA() + "_" + paramString;
-    AppMethodBeat.o(204580);
+    paramg = cOy() + paramg.aeM() + "_" + paramString;
+    AppMethodBeat.o(205204);
     return paramg;
   }
   
@@ -131,7 +128,7 @@ public final class r
   {
     AppMethodBeat.i(167977);
     p.h(paramk, "image");
-    paramk = sMW + paramk.aeA();
+    paramk = sYh + paramk.aeM();
     AppMethodBeat.o(167977);
     return paramk;
   }
@@ -140,7 +137,7 @@ public final class r
   {
     AppMethodBeat.i(167975);
     p.h(paraml, "image");
-    paraml = sMS + paraml.aeA();
+    paraml = sYd + paraml.aeM();
     AppMethodBeat.o(167975);
     return paraml;
   }
@@ -149,7 +146,7 @@ public final class r
   {
     AppMethodBeat.i(167974);
     p.h(paramm, "video");
-    paramm = sMV + paramm.aeA();
+    paramm = sYg + paramm.aeM();
     AppMethodBeat.o(167974);
     return paramm;
   }
@@ -159,105 +156,99 @@ public final class r
     AppMethodBeat.i(167983);
     p.h(paramm, "video");
     p.h(paramString, "suffix");
-    paramm = cLQ() + paramm.aeA() + "_" + paramString;
+    paramm = cOy() + paramm.aeM() + "_" + paramString;
     AppMethodBeat.o(167983);
     return paramm;
   }
   
   public static String a(n paramn)
   {
-    AppMethodBeat.i(204577);
+    AppMethodBeat.i(205201);
     p.h(paramn, "image");
-    paramn = sMS + paramn.aeA();
-    AppMethodBeat.o(204577);
+    paramn = sYd + paramn.aeM();
+    AppMethodBeat.o(205201);
     return paramn;
   }
   
   public static String a(n paramn, String paramString)
   {
-    AppMethodBeat.i(204581);
+    AppMethodBeat.i(205205);
     p.h(paramn, "image");
     p.h(paramString, "suffix");
-    paramn = cLQ() + paramn.aeA() + "_" + paramString;
-    AppMethodBeat.o(204581);
+    paramn = cOy() + paramn.aeM() + "_" + paramString;
+    AppMethodBeat.o(205205);
     return paramn;
   }
   
-  public static String ajd(String paramString)
+  public static String aka(String paramString)
   {
     AppMethodBeat.i(167982);
     p.h(paramString, "origFilePath");
-    paramString = sMW + ai.ee(paramString).toString() + "_" + i.aYp(paramString) + "_rotated";
+    paramString = sYh + aj.ej(paramString).toString() + "_" + o.aZS(paramString) + "_rotated";
     AppMethodBeat.o(167982);
     return paramString;
   }
   
-  public static String aje(String paramString)
+  public static String akb(String paramString)
   {
-    AppMethodBeat.i(204579);
+    AppMethodBeat.i(205203);
     p.h(paramString, "fileName");
-    paramString = cLQ() + paramString;
-    AppMethodBeat.o(204579);
+    paramString = cOy() + paramString;
+    AppMethodBeat.o(205203);
     return paramString;
   }
   
-  public static String ajf(String paramString)
+  public static String akc(String paramString)
   {
     AppMethodBeat.i(167984);
     p.h(paramString, "videoPath");
-    paramString = cLQ() + "video_" + ai.ee(paramString) + "_" + i.aYp(paramString) + "_thumb";
+    paramString = cOy() + "video_" + aj.ej(paramString) + "_" + o.aZS(paramString) + "_thumb";
     AppMethodBeat.o(167984);
     return paramString;
   }
   
-  public static String cLG()
+  public static String bw(String paramString1, String paramString2, String paramString3)
   {
-    return sMS;
-  }
-  
-  public static String cLH()
-  {
-    return sMV;
-  }
-  
-  public static String cLI()
-  {
-    return sMW;
-  }
-  
-  public static f[] cLJ()
-  {
-    return sNb;
-  }
-  
-  public static void cLK()
-  {
-    int j = 0;
-    AppMethodBeat.i(204576);
-    f[] arrayOff = sNb;
-    int k = arrayOff.length;
-    int i = 0;
-    while (i < k)
+    AppMethodBeat.i(224309);
+    StringBuilder localStringBuilder = new StringBuilder("finder_video_").append(paramString1).append('_');
+    paramString1 = paramString2;
+    if (bu.isNullOrNil(paramString2))
     {
-      i.deleteDir(arrayOff[i].path);
-      i += 1;
+      paramString1 = paramString3;
+      if (paramString3 == null) {
+        paramString1 = "";
+      }
+      paramString1 = aj.ej(paramString1);
     }
-    arrayOff = sNb;
-    k = arrayOff.length;
-    i = j;
-    while (i < k)
-    {
-      arrayOff[i].cLe();
-      i += 1;
-    }
-    ad.i("Finder.Loader", "cleanFile finderAccPath:" + sMQ + " finderImgPath:" + sMS + " finderVideoPath:" + sMV + " finderCapturePath:" + sMX);
-    AppMethodBeat.o(204576);
+    paramString1 = paramString1;
+    AppMethodBeat.o(224309);
+    return paramString1;
   }
   
-  public static String cLL()
+  public static String cOo()
+  {
+    return sYd;
+  }
+  
+  public static String cOp()
+  {
+    return sYg;
+  }
+  
+  public static String cOq()
+  {
+    return sYh;
+  }
+  
+  public static f[] cOr()
+  {
+    return sYm;
+  }
+  
+  public static String cOt()
   {
     AppMethodBeat.i(167978);
-    Object localObject1 = new StringBuilder().append(sMX);
+    Object localObject1 = new StringBuilder().append(sYi);
     Object localObject2 = String.valueOf(System.currentTimeMillis());
     Charset localCharset = d.UTF_8;
     if (localObject2 == null)
@@ -273,64 +264,54 @@ public final class r
     return localObject1;
   }
   
-  public static String cLM()
+  public static String cOu()
   {
-    AppMethodBeat.i(204578);
-    String str = sMW + System.nanoTime() + ".jpg";
-    AppMethodBeat.o(204578);
+    AppMethodBeat.i(205202);
+    String str = sYh + System.nanoTime() + ".jpg";
+    AppMethodBeat.o(205202);
     return str;
   }
   
-  public static String cLN()
+  public static String cOv()
   {
-    return sMZ;
+    return sYk;
   }
   
-  public static String cLO()
+  public static String cOw()
   {
-    return sNa;
+    return sYl;
   }
   
-  public static String cLP()
+  public static String cOx()
   {
     AppMethodBeat.i(167985);
-    String str = sMY + "media_tmp/";
+    String str = sYj + "media_tmp/";
     AppMethodBeat.o(167985);
     return str;
   }
   
-  public static String cLQ()
+  public static String cOy()
   {
     AppMethodBeat.i(167986);
-    String str = sMY + "posting/";
+    String str = sYj + "posting/";
     AppMethodBeat.o(167986);
     return str;
   }
   
-  public static String cLR()
+  public static String cXR()
   {
-    AppMethodBeat.i(167987);
-    com.tencent.mm.ad.b localb = new com.tencent.mm.ad.b("dumpCacheDir");
-    Object localObject = "";
-    f[] arrayOff = sNb;
-    int j = arrayOff.length;
-    int i = 0;
-    while (i < j)
-    {
-      o localo = arrayOff[i].cLf();
-      localObject = (String)localObject + (String)localo.first + "\n";
-      i += 1;
-    }
-    localObject = new StringBuilder().append(sMQ).append(": \n ").append((String)localObject).append("  ");
-    localb.akO();
-    localObject = z.MKo;
-    AppMethodBeat.o(167987);
+    AppMethodBeat.i(224308);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.ajR();
+    p.g(locale, "MMKernel.storage()");
+    localObject = locale.getAccPath() + "finder/";
+    AppMethodBeat.o(224308);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.r
  * JD-Core Version:    0.7.0.1
  */

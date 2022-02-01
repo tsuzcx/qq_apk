@@ -5,20 +5,20 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.protocal.protobuf.cyp;
 
 final class SDKOAuthUI$10
   implements View.OnClickListener
 {
-  SDKOAuthUI$10(SDKOAuthUI paramSDKOAuthUI, cxv paramcxv) {}
+  SDKOAuthUI$10(SDKOAuthUI paramSDKOAuthUI, cyp paramcyp) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(79742);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    SDKOAuthUI.a(this.Eab, this.Eac);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    SDKOAuthUI.a(this.Esd, this.Ese);
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(79742);
   }

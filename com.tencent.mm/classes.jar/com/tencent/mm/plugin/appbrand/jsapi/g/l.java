@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.utils.b.a.a;
 import com.tencent.mm.plugin.appbrand.utils.b.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -17,24 +17,24 @@ public class l<CONTEXT extends c>
   public static final int CTRL_INDEX = 37;
   public static final String NAME = "getLocation";
   
-  protected void bkz() {}
+  protected void blj() {}
   
   public final void d(final CONTEXT paramCONTEXT, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(143632);
-    Object localObject2 = bt.nullAsNil(paramJSONObject.optString("type", "wgs84")).trim();
+    Object localObject2 = bu.nullAsNil(paramJSONObject.optString("type", "wgs84")).trim();
     Object localObject1 = localObject2;
-    if (bt.isNullOrNil((String)localObject2)) {
+    if (bu.isNullOrNil((String)localObject2)) {
       localObject1 = "wgs84";
     }
     final boolean bool = paramJSONObject.optBoolean("altitude", false);
-    ad.i("MicroMsg.JsApiGetLocation", "getLocation data:%s", new Object[] { paramJSONObject });
+    ae.i("MicroMsg.JsApiGetLocation", "getLocation data:%s", new Object[] { paramJSONObject });
     if ((!"wgs84".equals(localObject1)) && (!"gcj02".equals(localObject1)))
     {
-      ad.e("MicroMsg.JsApiGetLocation", "doGeoLocation fail, unsupported type = %s", new Object[] { localObject1 });
+      ae.e("MicroMsg.JsApiGetLocation", "doGeoLocation fail, unsupported type = %s", new Object[] { localObject1 });
       paramJSONObject = new HashMap(1);
       paramJSONObject.put("errCode", Integer.valueOf(-1));
-      paramCONTEXT.h(paramInt, m("fail:invalid data", paramJSONObject));
+      paramCONTEXT.h(paramInt, n("fail:invalid data", paramJSONObject));
       AppMethodBeat.o(143632);
       return;
     }
@@ -42,7 +42,7 @@ public class l<CONTEXT extends c>
     {
       paramJSONObject = new HashMap(1);
       paramJSONObject.put("errCode", Integer.valueOf(-2));
-      paramCONTEXT.h(paramInt, m("fail:system permission denied", paramJSONObject));
+      paramCONTEXT.h(paramInt, n("fail:system permission denied", paramJSONObject));
       AppMethodBeat.o(143632);
       return;
     }
@@ -55,37 +55,37 @@ public class l<CONTEXT extends c>
         public final void a(int paramAnonymousInt, String paramAnonymousString, a.a paramAnonymousa)
         {
           AppMethodBeat.i(143631);
-          ad.i("MicroMsg.JsApiGetLocation", "errCode:%d, errStr:%s, location:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString, paramAnonymousa });
-          l.this.bkz();
+          ae.i("MicroMsg.JsApiGetLocation", "errCode:%d, errStr:%s, location:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString, paramAnonymousa });
+          l.this.blj();
           if (paramAnonymousInt == 0)
           {
             paramAnonymousString = new HashMap(4);
-            paramAnonymousString.put("type", this.kOx);
+            paramAnonymousString.put("type", this.kRZ);
             paramAnonymousString.put("latitude", Double.valueOf(paramAnonymousa.latitude));
             paramAnonymousString.put("longitude", Double.valueOf(paramAnonymousa.longitude));
-            paramAnonymousString.put("speed", Double.valueOf(paramAnonymousa.dfE));
-            paramAnonymousString.put("accuracy", Double.valueOf(paramAnonymousa.mPP));
+            paramAnonymousString.put("speed", Double.valueOf(paramAnonymousa.dgG));
+            paramAnonymousString.put("accuracy", Double.valueOf(paramAnonymousa.mUZ));
             if (bool) {
               paramAnonymousString.put("altitude", Double.valueOf(paramAnonymousa.altitude));
             }
             paramAnonymousString.put("provider", paramAnonymousa.provider);
             paramAnonymousString.put("verticalAccuracy", Integer.valueOf(0));
-            paramAnonymousString.put("horizontalAccuracy", Double.valueOf(paramAnonymousa.mPP));
-            if (!bt.isNullOrNil(paramAnonymousa.buildingId))
+            paramAnonymousString.put("horizontalAccuracy", Double.valueOf(paramAnonymousa.mUZ));
+            if (!bu.isNullOrNil(paramAnonymousa.buildingId))
             {
               paramAnonymousString.put("buildingId", paramAnonymousa.buildingId);
               paramAnonymousString.put("floorName", paramAnonymousa.floorName);
             }
-            paramAnonymousString.put("indoorLocationType", Integer.valueOf(paramAnonymousa.mPQ));
-            paramAnonymousString.put("direction", Float.valueOf(paramAnonymousa.mPR));
-            paramAnonymousString.put("steps", Double.valueOf(paramAnonymousa.mPS));
-            paramCONTEXT.h(paramInt, l.this.m("ok", paramAnonymousString));
+            paramAnonymousString.put("indoorLocationType", Integer.valueOf(paramAnonymousa.mVa));
+            paramAnonymousString.put("direction", Float.valueOf(paramAnonymousa.mVb));
+            paramAnonymousString.put("steps", Double.valueOf(paramAnonymousa.mVc));
+            paramCONTEXT.h(paramInt, l.this.n("ok", paramAnonymousString));
             AppMethodBeat.o(143631);
             return;
           }
           paramAnonymousa = new HashMap(1);
           paramAnonymousa.put("errCode", Integer.valueOf(paramAnonymousInt));
-          paramCONTEXT.h(paramInt, l.this.m("fail:".concat(String.valueOf(paramAnonymousString)), paramAnonymousa));
+          paramCONTEXT.h(paramInt, l.this.n("fail:".concat(String.valueOf(paramAnonymousString)), paramAnonymousa));
           AppMethodBeat.o(143631);
         }
       }, paramJSONObject);
@@ -109,7 +109,7 @@ public class l<CONTEXT extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.l
  * JD-Core Version:    0.7.0.1
  */

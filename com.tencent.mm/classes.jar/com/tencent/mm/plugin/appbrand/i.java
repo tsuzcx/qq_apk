@@ -1,188 +1,130 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.zz;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.xweb.WebView;
 import d.g.b.p;
 import d.g.b.q;
 import d.l;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import d.z;
+import org.xwalk.core.XWalkCoreWrapper;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/AppBrandProcessSharedPersistentRuntimeStore;", "", "()V", "TAG", "", "runtimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "contains", "", "runtime", "isAllEquals", "array", "", "objectToMatch", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "isEmpty", "poll", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "pollOrCreate", "remotePop", "", "remove", "stash", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig;", "", "()V", "KEY_XWEB_INSTALLED", "", "PERSISTENT_UI_CLASS", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPluginUI;", "[Ljava/lang/Class;", "TAG", "canKeepPersistent", "", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "isPersistentConfigOpen", "isPersistentXWebConfigOpen", "watchApp", "", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
 public final class i
 {
-  private static final ConcurrentHashMap<String, o> jwx;
-  public static final i jwy;
+  private static final Class<AppBrandPluginUI>[] jzq;
+  public static final i jzr;
   
   static
   {
-    AppMethodBeat.i(50146);
-    jwy = new i();
-    jwx = new ConcurrentHashMap();
-    AppMethodBeat.o(50146);
+    AppMethodBeat.i(50136);
+    jzr = new i();
+    jzq = new Class[] { AppBrandPluginUI.class };
+    AppMethodBeat.o(50136);
   }
   
-  public static final o a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  public static final boolean a(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(175099);
-    p.h(paramAppBrandInitConfigWC, "cfg");
+    AppMethodBeat.i(50133);
     p.h(paramAppBrandRuntimeContainerWC, "container");
-    o localo = (o)jwx.remove(paramAppBrandInitConfigWC.appId);
-    if (localo != null)
+    paramAppBrandRuntimeContainerWC = paramAppBrandRuntimeContainerWC.getActivity();
+    Boolean[] arrayOfBoolean = new Boolean[2];
+    arrayOfBoolean[0] = Boolean.valueOf(WebView.isX5());
+    if ((WebView.isXWalk()) && (XWalkCoreWrapper.getInstance().hasFeature(2003))) {}
+    for (boolean bool = true;; bool = false)
     {
-      e(localo);
-      Boolean[] arrayOfBoolean = new Boolean[4];
-      if (localo.aWU() == paramAppBrandInitConfigWC.jXr)
-      {
-        bool1 = true;
-        arrayOfBoolean[0] = Boolean.valueOf(bool1);
-        arrayOfBoolean[1] = Boolean.valueOf(localo.aVX());
-        if (localo.isFinishing()) {
-          break label196;
-        }
-        bool1 = true;
-        label94:
-        arrayOfBoolean[2] = Boolean.valueOf(bool1);
-        if (localo.isDestroyed()) {
-          break label201;
-        }
-      }
-      label196:
-      label201:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        arrayOfBoolean[3] = Boolean.valueOf(bool1);
-        ad.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "pollOrCreate, existed runtime[" + localo.getAppId() + "], conditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
-        if (!a(arrayOfBoolean, Boolean.TRUE)) {
-          break label206;
-        }
-        localo.a((ai)paramAppBrandRuntimeContainerWC);
-        AppMethodBeat.o(175099);
-        return localo;
-        bool1 = false;
+      arrayOfBoolean[1] = Boolean.valueOf(bool);
+      ae.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, containerUI[" + paramAppBrandRuntimeContainerWC.getClass().getSimpleName() + "], kernelConditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
+      if ((!org.apache.commons.b.a.contains(jzq, paramAppBrandRuntimeContainerWC.getClass())) || (!org.apache.commons.b.a.contains(arrayOfBoolean, Boolean.TRUE))) {
         break;
-        bool1 = false;
-        break label94;
       }
+      AppMethodBeat.o(50133);
+      return true;
     }
-    label206:
-    AppMethodBeat.o(175099);
-    return null;
+    AppMethodBeat.o(50133);
+    return false;
   }
   
-  private static boolean a(Object[] paramArrayOfObject, Object paramObject)
+  public static final boolean aWg()
   {
-    AppMethodBeat.i(50138);
-    int i = 0;
-    while (i < 4)
-    {
-      if ((p.i(paramArrayOfObject[i], paramObject) ^ true))
-      {
-        AppMethodBeat.o(50138);
-        return false;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(50138);
-    return true;
-  }
-  
-  public static final o b(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
-  {
-    AppMethodBeat.i(175100);
-    p.h(paramAppBrandInitConfigWC, "cfg");
-    p.h(paramAppBrandRuntimeContainerWC, "container");
-    o localo = a(paramAppBrandInitConfigWC, paramAppBrandRuntimeContainerWC);
-    paramAppBrandInitConfigWC = localo;
-    if (localo == null) {
-      paramAppBrandInitConfigWC = new o(paramAppBrandRuntimeContainerWC);
-    }
-    AppMethodBeat.o(175100);
-    return paramAppBrandInitConfigWC;
-  }
-  
-  public static final void c(o paramo)
-  {
-    AppMethodBeat.i(50142);
-    p.h(paramo, "runtime");
-    ad.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "stash ".concat(String.valueOf(paramo)));
-    paramo.a(null);
-    Object localObject1 = (Map)jwx;
-    Object localObject2 = paramo.getAppId();
-    p.g(localObject2, "runtime.appId");
-    ((Map)localObject1).put(localObject2, paramo);
-    localObject1 = paramo.getAppId();
-    localObject2 = g.ajz().ajb();
-    p.g(localObject2, "MMKernel.process().current()");
-    XIPCInvoker.a("com.tencent.mm", new IPC_PARAM_stashPersistentApp((String)localObject1, ((h)localObject2).getProcessName(), paramo.jzk), ag.class);
-    AppMethodBeat.o(50142);
-  }
-  
-  public static final boolean d(o paramo)
-  {
-    AppMethodBeat.i(50143);
-    p.h(paramo, "runtime");
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = jwx.remove(paramo.getAppId(), paramo);
-    }
-    for (;;)
-    {
-      if (bool) {
-        e(paramo);
-      }
-      AppMethodBeat.o(50143);
-      return bool;
-      p.h(paramo, "runtime");
-      if (jwx.containsValue(paramo))
-      {
-        jwx.remove(paramo.getAppId());
-        bool = true;
-      }
-      else
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  private static void e(o paramo)
-  {
-    AppMethodBeat.i(50145);
-    ((d.g.a.a)new a(paramo)).invoke();
-    AppMethodBeat.o(50145);
-  }
-  
-  public static final boolean isEmpty()
-  {
-    AppMethodBeat.i(50139);
-    boolean bool = jwx.isEmpty();
-    AppMethodBeat.o(50139);
+    AppMethodBeat.i(50135);
+    boolean bool = ay.aRW("MicroMsg.AppBrandPersistentRuntimeConfig").getBoolean("KEY_XWEB_INSTALLED", false);
+    AppMethodBeat.o(50135);
     return bool;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "invoke"})
+  public static final void j(Application paramApplication)
+  {
+    AppMethodBeat.i(50134);
+    p.h(paramApplication, "app");
+    a locala = a.jzs;
+    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new b());
+    new c().alive();
+    AppMethodBeat.o(50134);
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"checkSaveXWebInstallState", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<IPCVoid>
+    implements d.g.a.a<z>
   {
-    a(o paramo)
+    public static final a jzs;
+    
+    static
+    {
+      AppMethodBeat.i(50130);
+      jzs = new a();
+      AppMethodBeat.o(50130);
+    }
+    
+    a()
     {
       super();
     }
+    
+    public static void invoke()
+    {
+      AppMethodBeat.i(50129);
+      if (WebView.isXWalk()) {
+        ay.aRW("MicroMsg.AppBrandPersistentRuntimeConfig").putBoolean("KEY_XWEB_INSTALLED", XWalkCoreWrapper.getInstance().hasFeature(2003)).commit();
+      }
+      AppMethodBeat.o(50129);
+    }
   }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$2", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "onActivityStarted", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+  public static final class b
+    extends com.tencent.mm.plugin.appbrand.y.a
+  {
+    public final void onActivityStarted(Activity paramActivity)
+    {
+      AppMethodBeat.i(50131);
+      if ((paramActivity instanceof AppBrandUI))
+      {
+        paramActivity = i.a.jzs;
+        i.a.invoke();
+      }
+      AppMethodBeat.o(50131);
+    }
+  }
+  
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$3", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/XWebViewInitCompleteEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
+  public static final class c
+    extends c<zz>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i
  * JD-Core Version:    0.7.0.1
  */

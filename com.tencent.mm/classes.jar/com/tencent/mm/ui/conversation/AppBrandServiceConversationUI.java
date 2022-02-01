@@ -29,24 +29,27 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nw;
+import com.tencent.mm.g.a.nx;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.bj.a;
-import com.tencent.mm.model.w;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bl.a;
+import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.acy;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.adh;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.br;
 import com.tencent.mm.ui.ServiceNotifySettingsUI;
 import com.tencent.mm.ui.appbrand.d;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -90,7 +93,7 @@ public final class AppBrandServiceConversationUI
   {
     AppMethodBeat.i(38143);
     super.onCreate(paramBundle);
-    this.contentView = z.jO(this).inflate(2131493232, null);
+    this.contentView = z.jV(this).inflate(2131493232, null);
     setContentView(this.contentView);
     this.conversationFm = new AppBrandServiceConversationFmUI();
     getSupportFragmentManager().beginTransaction().a(2131302341, this.conversationFm).commit();
@@ -117,7 +120,7 @@ public final class AppBrandServiceConversationUI
     private d appBrandServiceActionSheet;
     private ListView appbrandMessageLV;
     private l contextMenuHelper;
-    private at conversation;
+    private au conversation;
     private TextView emptyTipTv;
     private int fromScene;
     private boolean isDeleteCancel = false;
@@ -130,14 +133,14 @@ public final class AppBrandServiceConversationUI
     private void asyncDelMsg(String paramString)
     {
       AppMethodBeat.i(38138);
-      ad.i("MicroMsg.AppBrandServiceConversationFmUI", "async del msg talker:%s", new Object[] { paramString });
-      com.tencent.mm.model.ba.aBQ();
-      Object localObject = com.tencent.mm.model.c.azs().apW(paramString);
-      acy localacy = new acy();
-      localacy.GbY = new cwt().aPy(bt.nullAsNil(paramString));
-      localacy.xbt = ((ei)localObject).field_msgSvrId;
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.azo().c(new k.a(8, localacy));
+      ae.i("MicroMsg.AppBrandServiceConversationFmUI", "async del msg talker:%s", new Object[] { paramString });
+      bc.aCg();
+      Object localObject = com.tencent.mm.model.c.azI().arb(paramString);
+      adh localadh = new adh();
+      localadh.GuF = new cxn().aQV(bu.nullAsNil(paramString));
+      localadh.xrk = ((ei)localObject).field_msgSvrId;
+      bc.aCg();
+      com.tencent.mm.model.c.azE().d(new k.a(8, localadh));
       this.isDeleteCancel = false;
       localObject = thisActivity();
       getString(2131755906);
@@ -145,29 +148,29 @@ public final class AppBrandServiceConversationUI
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(194628);
+          AppMethodBeat.i(188030);
           AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$902(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, true);
-          AppMethodBeat.o(194628);
+          AppMethodBeat.o(188030);
         }
       });
       customerMsgOperateReport(5);
-      bj.a(paramString, new bj.a()
+      bl.a(paramString, new bl.a()
       {
-        public final boolean YK()
+        public final boolean YT()
         {
-          AppMethodBeat.i(194629);
+          AppMethodBeat.i(188031);
           boolean bool = AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.isDeleteCancel;
-          AppMethodBeat.o(194629);
+          AppMethodBeat.o(188031);
           return bool;
         }
         
-        public final void YL()
+        public final void YU()
         {
-          AppMethodBeat.i(194630);
-          if (this.fNl != null) {
-            this.fNl.dismiss();
+          AppMethodBeat.i(188032);
+          if (this.fPt != null) {
+            this.fPt.dismiss();
           }
-          AppMethodBeat.o(194630);
+          AppMethodBeat.o(188032);
         }
       });
       AppMethodBeat.o(38138);
@@ -181,12 +184,12 @@ public final class AppBrandServiceConversationUI
         AppMethodBeat.o(38129);
         return;
       }
-      ad.i("MicroMsg.AppBrandServiceConversationFmUI", "batchSyncForWxaContact, size:%d", new Object[] { Integer.valueOf(this.adapter.getCount()) });
+      ae.i("MicroMsg.AppBrandServiceConversationFmUI", "batchSyncForWxaContact, size:%d", new Object[] { Integer.valueOf(this.adapter.getCount()) });
       if ((this.adapter instanceof a))
       {
-        List localList = ((a)this.adapter).gfd;
+        List localList = ((a)this.adapter).ghn;
         if ((localList != null) && (localList.size() > 0)) {
-          ((n)com.tencent.mm.kernel.g.ab(n.class)).bd(localList);
+          ((o)com.tencent.mm.kernel.g.ab(o.class)).bf(localList);
         }
       }
       AppMethodBeat.o(38129);
@@ -196,29 +199,29 @@ public final class AppBrandServiceConversationUI
     {
       AppMethodBeat.i(38125);
       com.tencent.mm.g.a.p localp = new com.tencent.mm.g.a.p();
-      com.tencent.mm.sdk.b.a.IbL.l(localp);
+      com.tencent.mm.sdk.b.a.IvT.l(localp);
       AppMethodBeat.o(38125);
     }
     
     private void delConversationAndMsg(String paramString)
     {
       AppMethodBeat.i(38137);
-      if (bt.isNullOrNil(paramString))
+      if (bu.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.AppBrandServiceConversationFmUI", "Delete Conversation and messages fail because username is null or nil.");
+        ae.e("MicroMsg.AppBrandServiceConversationFmUI", "Delete Conversation and messages fail because username is null or nil.");
         AppMethodBeat.o(38137);
         return;
       }
       asyncDelMsg(paramString);
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.azv().aTx(paramString);
-      com.tencent.e.h.LTJ.aR(new Runnable()
+      bc.aCg();
+      com.tencent.mm.model.c.azL().aUY(paramString);
+      com.tencent.e.h.MqF.aO(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(194627);
+          AppMethodBeat.i(188029);
           ((com.tencent.mm.plugin.appbrand.service.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.e.class)).c(null);
-          AppMethodBeat.o(194627);
+          AppMethodBeat.o(188029);
         }
       });
       AppMethodBeat.o(38137);
@@ -229,21 +232,21 @@ public final class AppBrandServiceConversationUI
       AppMethodBeat.i(38131);
       if (this.adapter == null)
       {
-        ad.d("MicroMsg.AppBrandServiceConversationFmUI", "adapter is null!");
+        ae.d("MicroMsg.AppBrandServiceConversationFmUI", "adapter is null!");
         AppMethodBeat.o(38131);
         return;
       }
-      com.tencent.mm.model.ba.aBQ();
-      Object localObject1 = com.tencent.mm.model.c.azv().aTz("appbrandcustomerservicemsg");
-      if ((localObject1 != null) && (!bt.isNullOrNil(((com.tencent.mm.g.c.ba)localObject1).field_username))) {}
-      for (int j = ((com.tencent.mm.g.c.ba)localObject1).field_unReadCount;; j = 0)
+      bc.aCg();
+      Object localObject1 = com.tencent.mm.model.c.azL().aVa("appbrandcustomerservicemsg");
+      if ((localObject1 != null) && (!bu.isNullOrNil(((ba)localObject1).field_username))) {}
+      for (int j = ((ba)localObject1).field_unReadCount;; j = 0)
       {
-        localObject1 = (at)this.adapter.getItem(0);
+        localObject1 = (au)this.adapter.getItem(0);
         Object localObject2;
-        if ((localObject1 != null) && (!bt.isNullOrNil(((com.tencent.mm.g.c.ba)localObject1).field_username)))
+        if ((localObject1 != null) && (!bu.isNullOrNil(((ba)localObject1).field_username)))
         {
-          localObject2 = bt.nullAsNil(((com.tencent.mm.g.c.ba)localObject1).field_content);
-          localObject1 = ((n)com.tencent.mm.kernel.g.ab(n.class)).Nt(((com.tencent.mm.g.c.ba)localObject1).field_username);
+          localObject2 = bu.nullAsNil(((ba)localObject1).field_content);
+          localObject1 = ((o)com.tencent.mm.kernel.g.ab(o.class)).Ob(((ba)localObject1).field_username);
           if (localObject1 == null)
           {
             localObject1 = null;
@@ -264,9 +267,9 @@ public final class AppBrandServiceConversationUI
             if (k >= n) {
               break label226;
             }
-            localObject2 = (at)this.adapter.getItem(k);
-            m = ((com.tencent.mm.g.c.ba)localObject2).field_unReadCount;
-            if (((com.tencent.mm.g.c.ba)localObject2).field_unReadMuteCount + m <= 0) {
+            localObject2 = (au)this.adapter.getItem(k);
+            m = ((ba)localObject2).field_unReadCount;
+            if (((ba)localObject2).field_unReadMuteCount + m <= 0) {
               break label354;
             }
             i += 1;
@@ -280,8 +283,8 @@ public final class AppBrandServiceConversationUI
             break;
             m = 0;
             label226:
-            ad.d("MicroMsg.AppBrandServiceConversationFmUI", "stev report(%s), sceneId : %s, unReadCount %d, unReadAppCount %d, lastPushAppId %s, lastPushMsg %s", new Object[] { Integer.valueOf(13797), this.mSceneId, Integer.valueOf(j), Integer.valueOf(m), this.mAppId, localObject1 });
-            com.tencent.mm.plugin.report.service.g.yhR.f(13797, new Object[] { this.mSceneId, Integer.valueOf(j), Integer.valueOf(m), this.mAppId, Long.valueOf(bt.aQJ()), Integer.valueOf(0), localObject1 });
+            ae.d("MicroMsg.AppBrandServiceConversationFmUI", "stev report(%s), sceneId : %s, unReadCount %d, unReadAppCount %d, lastPushAppId %s, lastPushMsg %s", new Object[] { Integer.valueOf(13797), this.mSceneId, Integer.valueOf(j), Integer.valueOf(m), this.mAppId, localObject1 });
+            com.tencent.mm.plugin.report.service.g.yxI.f(13797, new Object[] { this.mSceneId, Integer.valueOf(j), Integer.valueOf(m), this.mAppId, Long.valueOf(bu.aRi()), Integer.valueOf(0), localObject1 });
             AppMethodBeat.o(38131);
             return;
           }
@@ -315,26 +318,26 @@ public final class AppBrandServiceConversationUI
     public void customerMsgOperateReport(int paramInt)
     {
       AppMethodBeat.i(38132);
-      ad.d("MicroMsg.AppBrandServiceConversationFmUI", "stev report(%s), eventId : %s, appId %s, sceneId %s", new Object[] { Integer.valueOf(13798), Integer.valueOf(paramInt), this.mAppId, this.mSceneId });
-      com.tencent.mm.plugin.report.service.g.yhR.f(13798, new Object[] { Integer.valueOf(paramInt), this.mAppId, Integer.valueOf(0), this.mSceneId, Long.valueOf(bt.aQJ()) });
+      ae.d("MicroMsg.AppBrandServiceConversationFmUI", "stev report(%s), eventId : %s, appId %s, sceneId %s", new Object[] { Integer.valueOf(13798), Integer.valueOf(paramInt), this.mAppId, this.mSceneId });
+      com.tencent.mm.plugin.report.service.g.yxI.f(13798, new Object[] { Integer.valueOf(paramInt), this.mAppId, Integer.valueOf(0), this.mSceneId, Long.valueOf(bu.aRi()) });
       AppMethodBeat.o(38132);
     }
     
     public void entryCustomerMsgDialogReport(String paramString, int paramInt)
     {
       AppMethodBeat.i(38133);
-      com.tencent.mm.model.ba.aBQ();
-      at localat = com.tencent.mm.model.c.azv().aTz(paramString);
-      if (localat == null)
+      bc.aCg();
+      au localau = com.tencent.mm.model.c.azL().aVa(paramString);
+      if (localau == null)
       {
-        ad.e("MicroMsg.AppBrandServiceConversationFmUI", "cvs:%s is null, error", new Object[] { paramString });
+        ae.e("MicroMsg.AppBrandServiceConversationFmUI", "cvs:%s is null, error", new Object[] { paramString });
         AppMethodBeat.o(38133);
         return;
       }
-      int i = localat.field_unReadCount;
-      paramString = bt.nullAsNil(this.mSceneId);
-      ad.d("MicroMsg.AppBrandServiceConversationFmUI", "stev report(%s), appId : %s, scene %s, unReadCount %d, sceneId %s", new Object[] { Integer.valueOf(13799), this.mAppId, Integer.valueOf(paramInt), Integer.valueOf(i), paramString });
-      com.tencent.mm.plugin.report.service.g.yhR.f(13799, new Object[] { this.mAppId, Integer.valueOf(paramInt), Integer.valueOf(i), paramString, Long.valueOf(bt.aQJ()) });
+      int i = localau.field_unReadCount;
+      paramString = bu.nullAsNil(this.mSceneId);
+      ae.d("MicroMsg.AppBrandServiceConversationFmUI", "stev report(%s), appId : %s, scene %s, unReadCount %d, sceneId %s", new Object[] { Integer.valueOf(13799), this.mAppId, Integer.valueOf(paramInt), Integer.valueOf(i), paramString });
+      com.tencent.mm.plugin.report.service.g.yxI.f(13799, new Object[] { this.mAppId, Integer.valueOf(paramInt), Integer.valueOf(i), paramString, Long.valueOf(bu.aRi()) });
       AppMethodBeat.o(38133);
     }
     
@@ -368,7 +371,7 @@ public final class AppBrandServiceConversationUI
       this.appBrandServiceActionSheet = new d(thisActivity());
       this.adapter = new a(thisActivity(), this.superUsername, new r.a()
       {
-        public final void aSs()
+        public final void aSR()
         {
           AppMethodBeat.i(38112);
           AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$200(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getCount());
@@ -387,7 +390,7 @@ public final class AppBrandServiceConversationUI
       });
       this.adapter.setPerformItemClickListener(new MMSlideDelView.g()
       {
-        public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(38114);
           AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.appbrandMessageLV.performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
@@ -401,17 +404,17 @@ public final class AppBrandServiceConversationUI
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(38115);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          b localb = new b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
-          AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$402(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, (at)AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getItem(paramAnonymousInt));
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$402(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, (au)AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getItem(paramAnonymousInt));
           paramAnonymousAdapterView = AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.conversation;
           if (paramAnonymousAdapterView == null)
           {
-            ad.e("MicroMsg.AppBrandServiceConversationFmUI", "user should not be null. position:%d, size:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getCount()) });
+            ae.e("MicroMsg.AppBrandServiceConversationFmUI", "user should not be null. position:%d, size:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getCount()) });
             AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.notifyDataSetChanged();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(38115);
@@ -434,7 +437,7 @@ public final class AppBrandServiceConversationUI
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(38116);
-          AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$402(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, (at)AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getItem(paramAnonymousInt));
+          AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$402(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, (au)AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.adapter.getItem(paramAnonymousInt));
           AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$502(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.conversation.field_username);
           AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.contextMenuHelper.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this, AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this);
           AppMethodBeat.o(38116);
@@ -453,7 +456,7 @@ public final class AppBrandServiceConversationUI
       });
       this.adapter.setPerformItemClickListener(new MMSlideDelView.g()
       {
-        public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(38118);
           AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.appbrandMessageLV.performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
@@ -462,12 +465,12 @@ public final class AppBrandServiceConversationUI
       });
       this.adapter.a(new MMSlideDelView.f()
       {
-        public final void cP(Object paramAnonymousObject)
+        public final void cQ(Object paramAnonymousObject)
         {
           AppMethodBeat.i(38107);
           if (paramAnonymousObject == null)
           {
-            ad.e("MicroMsg.AppBrandServiceConversationFmUI", "onItemDel object null");
+            ae.e("MicroMsg.AppBrandServiceConversationFmUI", "onItemDel object null");
             AppMethodBeat.o(38107);
             return;
           }
@@ -482,15 +485,15 @@ public final class AppBrandServiceConversationUI
     public void onActivityCreated(Bundle paramBundle)
     {
       AppMethodBeat.i(38124);
-      ad.i("MicroMsg.AppBrandServiceConversationFmUI", "onActivityCreated");
+      ae.i("MicroMsg.AppBrandServiceConversationFmUI", "onActivityCreated");
       super.onActivityCreated(paramBundle);
       this.superUsername = getStringExtra("Contact_User");
       if (TextUtils.isEmpty(this.superUsername)) {
         this.superUsername = "appbrandcustomerservicemsg";
       }
       this.fromScene = getIntExtra("app_brand_conversation_from_scene", 1);
-      ad.i("MicroMsg.AppBrandServiceConversationFmUI", "fromScene:%d", new Object[] { Integer.valueOf(this.fromScene) });
-      com.tencent.mm.model.ba.aBQ();
+      ae.i("MicroMsg.AppBrandServiceConversationFmUI", "fromScene:%d", new Object[] { Integer.valueOf(this.fromScene) });
+      bc.aCg();
       paramBundle = intToString(com.tencent.mm.model.c.getUin());
       this.mSceneId = (System.currentTimeMillis() + paramBundle);
       initView();
@@ -504,15 +507,15 @@ public final class AppBrandServiceConversationUI
           ((Intent)localObject).putExtra("scene_id", AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this.mSceneId);
           paramAnonymousMenuItem = AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.this;
           localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/conversation/AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/conversation/AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/ui/conversation/AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(38106);
           return true;
         }
       });
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.azv().a(this.adapter);
+      bc.aCg();
+      com.tencent.mm.model.c.azL().a(this.adapter);
       cleadAllServiceAppBrandUnreadCount();
       enterConversationReport();
       batchSyncForWxaContact();
@@ -539,7 +542,7 @@ public final class AppBrandServiceConversationUI
       AppMethodBeat.i(38140);
       super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
       paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-      paramContextMenuInfo = ((n)com.tencent.mm.kernel.g.ab(n.class)).Nt(this.talker);
+      paramContextMenuInfo = ((o)com.tencent.mm.kernel.g.ab(o.class)).Ob(this.talker);
       int i;
       if ((paramContextMenuInfo != null) && ((paramContextMenuInfo.field_appOpt & 0x2) > 0))
       {
@@ -564,10 +567,10 @@ public final class AppBrandServiceConversationUI
     public void onDestroy()
     {
       AppMethodBeat.i(38126);
-      if (com.tencent.mm.model.ba.ajx())
+      if (bc.ajM())
       {
-        com.tencent.mm.model.ba.aBQ();
-        com.tencent.mm.model.c.azv().b(this.adapter);
+        bc.aCg();
+        com.tencent.mm.model.c.azL().b(this.adapter);
       }
       batchSyncForWxaContact();
       if (this.adapter != null) {
@@ -580,11 +583,11 @@ public final class AppBrandServiceConversationUI
     public void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(38139);
-      com.tencent.mm.model.ba.aBQ();
-      am localam = com.tencent.mm.model.c.azp().Bf(this.talker);
-      if ((localam == null) || ((int)localam.gfj == 0))
+      bc.aCg();
+      an localan = com.tencent.mm.model.c.azF().BH(this.talker);
+      if ((localan == null) || ((int)localan.ght == 0))
       {
-        ad.e("MicroMsg.AppBrandServiceConversationFmUI", "changed biz stick status failed, contact is null, talker = " + this.talker);
+        ae.e("MicroMsg.AppBrandServiceConversationFmUI", "changed biz stick status failed, contact is null, talker = " + this.talker);
         AppMethodBeat.o(38139);
         return;
       }
@@ -597,15 +600,15 @@ public final class AppBrandServiceConversationUI
         return;
         this.appBrandServiceActionSheet.username = this.talker;
         this.appBrandServiceActionSheet.scene = this.fromScene;
-        this.appBrandServiceActionSheet.Jht = this.mSceneId;
-        this.appBrandServiceActionSheet.nob = true;
+        this.appBrandServiceActionSheet.JCe = this.mSceneId;
+        this.appBrandServiceActionSheet.ntl = true;
         this.appBrandServiceActionSheet.show(3);
         AppMethodBeat.o(38139);
         return;
         this.appBrandServiceActionSheet.username = this.talker;
         this.appBrandServiceActionSheet.scene = this.fromScene;
-        this.appBrandServiceActionSheet.Jht = this.mSceneId;
-        this.appBrandServiceActionSheet.nob = true;
+        this.appBrandServiceActionSheet.JCe = this.mSceneId;
+        this.appBrandServiceActionSheet.ntl = true;
         this.appBrandServiceActionSheet.show(4);
         AppMethodBeat.o(38139);
         return;
@@ -616,9 +619,9 @@ public final class AppBrandServiceConversationUI
     public void onPause()
     {
       AppMethodBeat.i(38128);
-      ad.i("MicroMsg.AppBrandServiceConversationFmUI", "on pause");
-      com.tencent.mm.model.ba.aBQ();
-      com.tencent.mm.model.c.azv().aTB(this.superUsername);
+      ae.i("MicroMsg.AppBrandServiceConversationFmUI", "on pause");
+      bc.aCg();
+      com.tencent.mm.model.c.azL().aVc(this.superUsername);
       if (this.adapter != null) {
         this.adapter.onPause();
       }
@@ -629,7 +632,7 @@ public final class AppBrandServiceConversationUI
     public void onResume()
     {
       AppMethodBeat.i(38127);
-      ad.i("MicroMsg.AppBrandServiceConversationFmUI", "on resume");
+      ae.i("MicroMsg.AppBrandServiceConversationFmUI", "on resume");
       if (this.adapter != null) {
         this.adapter.onResume();
       }
@@ -640,10 +643,10 @@ public final class AppBrandServiceConversationUI
     static final class a
       extends e
     {
-      private com.tencent.mm.sdk.b.c<nw> JOF;
-      private HashMap<String, Boolean> Kry;
-      private HashMap<String, String> Krz;
-      List<String> gfd;
+      private HashMap<String, Boolean> KNS;
+      private HashMap<String, String> KNT;
+      private com.tencent.mm.sdk.b.c<nx> KjR;
+      List<String> ghn;
       private Paint paint;
       private String username;
       
@@ -653,21 +656,21 @@ public final class AppBrandServiceConversationUI
         AppMethodBeat.i(38120);
         this.paint = new Paint();
         this.username = paramString;
-        this.Kry = new HashMap();
-        this.Krz = new HashMap();
-        this.gfd = new ArrayList();
-        this.JOF = new AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.a.1(this);
-        com.tencent.mm.sdk.b.a.IbL.c(this.JOF);
+        this.KNS = new HashMap();
+        this.KNT = new HashMap();
+        this.ghn = new ArrayList();
+        this.KjR = new AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.a.1(this);
+        com.tencent.mm.sdk.b.a.IvT.c(this.KjR);
         AppMethodBeat.o(38120);
       }
       
-      public final void Zu()
+      public final void ZD()
       {
         AppMethodBeat.i(38121);
-        com.tencent.mm.model.ba.aBQ();
-        setCursor(com.tencent.mm.model.c.azv().c(w.hFj, this.fSL, this.username));
-        if (this.JaF != null) {
-          this.JaF.aSs();
+        bc.aCg();
+        setCursor(com.tencent.mm.model.c.azL().c(x.hIb, this.fUR, this.username));
+        if (this.Jvn != null) {
+          this.Jvn.aSR();
         }
         super.notifyDataSetChanged();
         AppMethodBeat.o(38121);
@@ -676,40 +679,40 @@ public final class AppBrandServiceConversationUI
       protected final void a(String paramString, e.g paramg)
       {
         AppMethodBeat.i(38122);
-        Object localObject1 = (Boolean)this.Kry.get(paramString);
+        Object localObject1 = (Boolean)this.KNS.get(paramString);
         boolean bool;
         if (localObject1 == null)
         {
-          Object localObject2 = ((n)com.tencent.mm.kernel.g.ab(n.class)).Nt(paramString);
+          Object localObject2 = ((o)com.tencent.mm.kernel.g.ab(o.class)).Ob(paramString);
           if ((localObject2 != null) && ((((WxaAttributes)localObject2).field_appOpt & 0x2) > 0))
           {
             bool = true;
-            this.Kry.put(paramString, localObject1);
+            this.KNS.put(paramString, localObject1);
             label68:
             if (!bool) {
               break label598;
             }
-            paramg.JuN.setVisibility(0);
-            paramg.JuN.setImageResource(2131689881);
+            paramg.JPC.setVisibility(0);
+            paramg.JPC.setImageResource(2131689881);
             label90:
-            localObject2 = (String)this.Krz.get(paramString);
+            localObject2 = (String)this.KNT.get(paramString);
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2))
             {
-              localObject2 = com.tencent.mm.ui.appbrand.e.aVx(com.tencent.mm.ui.appbrand.e.aVw(paramString));
+              localObject2 = com.tencent.mm.ui.appbrand.e.aWY(com.tencent.mm.ui.appbrand.e.aWX(paramString));
               localObject1 = localObject2;
               if (!TextUtils.isEmpty((CharSequence)localObject2))
               {
-                this.Krz.put(paramString, localObject2);
+                this.KNT.put(paramString, localObject2);
                 localObject1 = localObject2;
               }
             }
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
               break label686;
             }
-            paramg.KsW.setVisibility(0);
+            paramg.KPq.setVisibility(0);
             localObject1 = this.context.getString(2131755664, new Object[] { localObject1 });
-            paramg.KsW.setText((CharSequence)localObject1);
+            paramg.KPq.setText((CharSequence)localObject1);
             if (this.context.getResources().getDisplayMetrics() == null) {
               break label722;
             }
@@ -725,13 +728,13 @@ public final class AppBrandServiceConversationUI
           int j;
           float f1;
           float f2;
-          if (com.tencent.mm.cc.a.im(this.context))
+          if (com.tencent.mm.cb.a.ir(this.context))
           {
             k = this.context.getResources().getDimensionPixelOffset(2131165509);
             j = this.context.getResources().getDimensionPixelOffset(2131165247);
             int m = this.context.getResources().getDimensionPixelOffset(2131165480);
             int n = this.context.getResources().getDimensionPixelOffset(2131165516);
-            localObject1 = (e.d)this.JuD.get(paramString);
+            localObject1 = (e.d)this.JPs.get(paramString);
             if ((localObject1 == null) || (((e.d)localObject1).nickName == null)) {
               break label642;
             }
@@ -743,7 +746,7 @@ public final class AppBrandServiceConversationUI
             f2 = 48.0F + f1;
             int i1 = this.context.getResources().getDimensionPixelOffset(2131165248);
             int i2 = this.context.getResources().getDimensionPixelOffset(2131165490);
-            ad.i("MicroMsg.ConversationAdapter", "screenWidth:%d, avatarLayoutWidth:%d, timeTVWidth:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
+            ae.i("MicroMsg.ConversationAdapter", "screenWidth:%d, avatarLayoutWidth:%d, timeTVWidth:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
             f1 = 0.0F;
             if (i > 0) {
               f1 = i - k - m - n - j;
@@ -754,20 +757,20 @@ public final class AppBrandServiceConversationUI
             f1 = Math.min(f2 / f1, (f1 - i1 - i2 - 48.0F) / f1);
             f2 = 1.0F - f1;
             label477:
-            localObject1 = (LinearLayout.LayoutParams)paramg.JuK.getLayoutParams();
+            localObject1 = (LinearLayout.LayoutParams)paramg.JPz.getLayoutParams();
             ((LinearLayout.LayoutParams)localObject1).width = 0;
             ((LinearLayout.LayoutParams)localObject1).weight = f1;
-            paramg.JuK.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            localObject1 = (LinearLayout.LayoutParams)paramg.KsW.getLayoutParams();
+            paramg.JPz.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            localObject1 = (LinearLayout.LayoutParams)paramg.KPq.getLayoutParams();
             ((LinearLayout.LayoutParams)localObject1).width = 0;
             ((LinearLayout.LayoutParams)localObject1).weight = f2;
-            paramg.KsW.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            paramg.KPq.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           }
           for (;;)
           {
-            a.b.d(paramg.fOf, paramString);
-            if (!this.gfd.contains(paramString)) {
-              this.gfd.add(paramString);
+            a.b.d(paramg.fQl, paramString);
+            if (!this.ghn.contains(paramString)) {
+              this.ghn.add(paramString);
             }
             AppMethodBeat.o(38122);
             return;
@@ -776,23 +779,23 @@ public final class AppBrandServiceConversationUI
             bool = ((Boolean)localObject1).booleanValue();
             break label68;
             label598:
-            paramg.JuN.setVisibility(8);
+            paramg.JPC.setVisibility(8);
             break label90;
             k = this.context.getResources().getDimensionPixelOffset(2131165510);
             j = this.context.getResources().getDimensionPixelOffset(2131165248);
             break label262;
             localObject1 = "";
             break label328;
-            this.paint.setTextSize(this.Juz);
+            this.paint.setTextSize(this.JPo);
             f1 = this.paint.measureText((String)localObject1);
             break label335;
             f2 = 0.4F;
             f1 = 0.6F;
             break label477;
-            localObject1 = (LinearLayout.LayoutParams)paramg.JuK.getLayoutParams();
+            localObject1 = (LinearLayout.LayoutParams)paramg.JPz.getLayoutParams();
             ((LinearLayout.LayoutParams)localObject1).width = -1;
             ((LinearLayout.LayoutParams)localObject1).weight = 0.0F;
-            paramg.JuK.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            paramg.JPz.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           }
         }
       }
@@ -800,8 +803,8 @@ public final class AppBrandServiceConversationUI
       public final void detach()
       {
         AppMethodBeat.i(38123);
-        this.Kry = null;
-        com.tencent.mm.sdk.b.a.IbL.d(this.JOF);
+        this.KNS = null;
+        com.tencent.mm.sdk.b.a.IvT.d(this.KjR);
         AppMethodBeat.o(38123);
       }
     }

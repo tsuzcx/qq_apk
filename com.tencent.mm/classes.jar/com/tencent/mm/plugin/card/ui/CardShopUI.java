@@ -24,16 +24,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.card.b.m;
 import com.tencent.mm.plugin.card.b.m.a;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
@@ -42,53 +42,53 @@ public class CardShopUI
   extends MMActivity
   implements m.a
 {
-  private ProgressDialog hNi;
-  private View.OnClickListener jtG;
+  private ProgressDialog hQb;
+  private View.OnClickListener jwB;
   private ListView mListView;
   BroadcastReceiver mReceiver;
-  private boolean oDz;
-  private String oJB;
-  private a oJC;
-  private LinearLayout oJD;
-  private View oJE;
-  private TextView oJF;
-  private com.tencent.mm.plugin.card.base.b owK;
-  private ArrayList<tl> owR;
-  private String oww;
+  private String oCY;
+  private com.tencent.mm.plugin.card.base.b oDm;
+  private ArrayList<tn> oDt;
+  private boolean oKb;
+  private String oQd;
+  private a oQe;
+  private LinearLayout oQf;
+  private View oQg;
+  private TextView oQh;
   
   public CardShopUI()
   {
     AppMethodBeat.i(113566);
-    this.owR = new ArrayList();
-    this.oJB = "";
-    this.oDz = false;
+    this.oDt = new ArrayList();
+    this.oQd = "";
+    this.oKb = false;
     this.mReceiver = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(113559);
         paramAnonymousContext = paramAnonymousIntent.getAction();
-        if ((paramAnonymousContext != null) && (paramAnonymousContext.equals("android.intent.action.LOCALE_CHANGED")) && (CardShopUI.bXi())) {
+        if ((paramAnonymousContext != null) && (paramAnonymousContext.equals("android.intent.action.LOCALE_CHANGED")) && (CardShopUI.bYx())) {
           CardShopUI.e(CardShopUI.this);
         }
         AppMethodBeat.o(113559);
       }
     };
-    this.jtG = new View.OnClickListener()
+    this.jwB = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(113560);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
         localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/card/ui/CardShopUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        a.b("com/tencent/mm/plugin/card/ui/CardShopUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if (paramAnonymousView.getId() == 2131304770)
         {
-          paramAnonymousView = (tl)paramAnonymousView.getTag();
+          paramAnonymousView = (tn)paramAnonymousView.getTag();
           if (paramAnonymousView != null)
           {
-            com.tencent.mm.plugin.card.d.b.a(CardShopUI.this, paramAnonymousView.dyz, paramAnonymousView.dAp, paramAnonymousView.hWY);
-            com.tencent.mm.plugin.report.service.g.yhR.f(11941, new Object[] { Integer.valueOf(5), CardShopUI.c(CardShopUI.this).bTR(), CardShopUI.c(CardShopUI.this).bTS(), "", paramAnonymousView.name });
+            com.tencent.mm.plugin.card.d.b.a(CardShopUI.this, paramAnonymousView.dzE, paramAnonymousView.dBu, paramAnonymousView.hZQ);
+            com.tencent.mm.plugin.report.service.g.yxI.f(11941, new Object[] { Integer.valueOf(5), CardShopUI.c(CardShopUI.this).bVg(), CardShopUI.c(CardShopUI.this).bVh(), "", paramAnonymousView.name });
           }
         }
         a.a(this, "com/tencent/mm/plugin/card/ui/CardShopUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -98,14 +98,14 @@ public class CardShopUI
     AppMethodBeat.o(113566);
   }
   
-  private void bXg()
+  private void bYv()
   {
     AppMethodBeat.i(113571);
-    ad.i("MicroMsg.CardShopUI", "openLocation");
+    ae.i("MicroMsg.CardShopUI", "openLocation");
     registerReceiver();
-    if (bXh())
+    if (bYw())
     {
-      bcJ();
+      bdo();
       AppMethodBeat.o(113571);
       return;
     }
@@ -113,10 +113,10 @@ public class CardShopUI
     AppMethodBeat.o(113571);
   }
   
-  private static boolean bXh()
+  private static boolean bYw()
   {
     AppMethodBeat.i(113572);
-    if ((!l.aHR()) && (!l.aHS())) {}
+    if ((!l.aIi()) && (!l.aIj())) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(113572);
@@ -126,22 +126,22 @@ public class CardShopUI
     return false;
   }
   
-  private void bcJ()
+  private void bdo()
   {
     AppMethodBeat.i(113573);
-    if (am.bUQ().a(this.oJB, this.oww, this))
+    if (am.bWf().a(this.oQd, this.oCY, this))
     {
       AppCompatActivity localAppCompatActivity = getContext();
       getString(2131755906);
-      this.hNi = h.b(localAppCompatActivity, getString(2131756844), true, new DialogInterface.OnCancelListener()
+      this.hQb = h.b(localAppCompatActivity, getString(2131756844), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(113558);
-          paramAnonymousDialogInterface = am.bUQ();
+          paramAnonymousDialogInterface = am.bWf();
           paramAnonymousDialogInterface.a(CardShopUI.d(CardShopUI.this), CardShopUI.this);
-          if (paramAnonymousDialogInterface.oxJ != null) {
-            com.tencent.mm.kernel.g.ajB().gAO.a(paramAnonymousDialogInterface.oxJ);
+          if (paramAnonymousDialogInterface.oEl != null) {
+            com.tencent.mm.kernel.g.ajQ().gDv.a(paramAnonymousDialogInterface.oEl);
           }
           AppMethodBeat.o(113558);
         }
@@ -149,7 +149,7 @@ public class CardShopUI
       AppMethodBeat.o(113573);
       return;
     }
-    h.cl(this, getString(2131756843));
+    h.cm(this, getString(2131756843));
     AppMethodBeat.o(113573);
   }
   
@@ -162,43 +162,43 @@ public class CardShopUI
     AppMethodBeat.o(113574);
   }
   
-  public final void a(boolean paramBoolean, ArrayList<tl> paramArrayList)
+  public final void a(boolean paramBoolean, ArrayList<tn> paramArrayList)
   {
     AppMethodBeat.i(113570);
-    if (this.hNi != null)
+    if (this.hQb != null)
     {
-      this.hNi.dismiss();
-      this.hNi = null;
+      this.hQb.dismiss();
+      this.hQb = null;
     }
     if (paramArrayList == null) {}
     for (int i = 0;; i = paramArrayList.size())
     {
-      ad.d("MicroMsg.CardShopUI", "onGotCardShop, isOk = %b, shop list size = %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
+      ae.d("MicroMsg.CardShopUI", "onGotCardShop, isOk = %b, shop list size = %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
       if (paramBoolean) {
         break;
       }
-      ad.e("MicroMsg.CardShopUI", "onGotCardShop fail");
+      ae.e("MicroMsg.CardShopUI", "onGotCardShop fail");
       AppMethodBeat.o(113570);
       return;
     }
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      ad.e("MicroMsg.CardShopUI", "list == null || list.size() == 0");
+      ae.e("MicroMsg.CardShopUI", "list == null || list.size() == 0");
       AppMethodBeat.o(113570);
       return;
     }
-    if (this.owR != null)
+    if (this.oDt != null)
     {
-      this.owR.clear();
-      this.owR.addAll(paramArrayList);
-      this.oJE.setVisibility(0);
+      this.oDt.clear();
+      this.oDt.addAll(paramArrayList);
+      this.oQg.setVisibility(0);
     }
     for (;;)
     {
-      this.oJC.notifyDataSetChanged();
+      this.oQe.notifyDataSetChanged();
       AppMethodBeat.o(113570);
       return;
-      this.oJE.setVisibility(8);
+      this.oQg.setVisibility(8);
     }
   }
   
@@ -210,16 +210,16 @@ public class CardShopUI
   public void initView()
   {
     AppMethodBeat.i(113568);
-    if (!TextUtils.isEmpty(this.owK.bTN().FSb)) {
-      setMMTitle(this.owK.bTN().FSb);
+    if (!TextUtils.isEmpty(this.oDm.bVc().GkA)) {
+      setMMTitle(this.oDm.bVc().GkA);
     }
     for (;;)
     {
       this.mListView = ((ListView)findViewById(2131297896));
-      this.oJD = ((LinearLayout)View.inflate(getBaseContext(), 2131493317, null));
-      this.mListView.addHeaderView(this.oJD);
-      this.oJC = new a((byte)0);
-      this.mListView.setAdapter(this.oJC);
+      this.oQf = ((LinearLayout)View.inflate(getBaseContext(), 2131493317, null));
+      this.mListView.addHeaderView(this.oQf);
+      this.oQe = new a((byte)0);
+      this.mListView.setAdapter(this.oQe);
       final Intent localIntent = getIntent();
       this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
@@ -229,12 +229,12 @@ public class CardShopUI
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
           localb.bd(paramAnonymousAdapterView);
           localb.bd(paramAnonymousView);
-          localb.mr(paramAnonymousInt);
-          localb.qY(paramAnonymousLong);
-          a.b("com/tencent/mm/plugin/card/ui/CardShopUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+          localb.mu(paramAnonymousInt);
+          localb.rl(paramAnonymousLong);
+          a.b("com/tencent/mm/plugin/card/ui/CardShopUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
           if (paramAnonymousInt == 0)
           {
-            ad.v("MicroMsg.CardShopUI", "onItemClick pos is 0, click headerview");
+            ae.v("MicroMsg.CardShopUI", "onItemClick pos is 0, click headerview");
             a.a(this, "com/tencent/mm/plugin/card/ui/CardShopUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(113556);
             return;
@@ -243,21 +243,21 @@ public class CardShopUI
           if (paramAnonymousInt > 0) {
             i = paramAnonymousInt - 1;
           }
-          paramAnonymousAdapterView = (tl)CardShopUI.a(CardShopUI.this).get(i);
-          if ((!TextUtils.isEmpty(paramAnonymousAdapterView.FRk)) && (!TextUtils.isEmpty(paramAnonymousAdapterView.FRl)))
+          paramAnonymousAdapterView = (tn)CardShopUI.a(CardShopUI.this).get(i);
+          if ((!TextUtils.isEmpty(paramAnonymousAdapterView.GjJ)) && (!TextUtils.isEmpty(paramAnonymousAdapterView.GjK)))
           {
             paramAnonymousInt = localIntent.getIntExtra("key_from_appbrand_type", 0);
-            com.tencent.mm.plugin.card.d.b.d(CardShopUI.b(CardShopUI.this), paramAnonymousAdapterView.FRk, paramAnonymousAdapterView.FRl, 1052, paramAnonymousInt);
+            com.tencent.mm.plugin.card.d.b.d(CardShopUI.b(CardShopUI.this), paramAnonymousAdapterView.GjJ, paramAnonymousAdapterView.GjK, 1052, paramAnonymousInt);
           }
           for (;;)
           {
             a.a(this, "com/tencent/mm/plugin/card/ui/CardShopUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(113556);
             return;
-            if (!TextUtils.isEmpty(paramAnonymousAdapterView.ozD))
+            if (!TextUtils.isEmpty(paramAnonymousAdapterView.oGf))
             {
-              com.tencent.mm.plugin.card.d.b.a(CardShopUI.this, paramAnonymousAdapterView.ozD, 1);
-              com.tencent.mm.plugin.report.service.g.yhR.f(11941, new Object[] { Integer.valueOf(4), CardShopUI.c(CardShopUI.this).bTR(), CardShopUI.c(CardShopUI.this).bTS(), "", paramAnonymousAdapterView.name });
+              com.tencent.mm.plugin.card.d.b.a(CardShopUI.this, paramAnonymousAdapterView.oGf, 1);
+              com.tencent.mm.plugin.report.service.g.yxI.f(11941, new Object[] { Integer.valueOf(4), CardShopUI.c(CardShopUI.this).bVg(), CardShopUI.c(CardShopUI.this).bVh(), "", paramAnonymousAdapterView.name });
             }
           }
         }
@@ -272,13 +272,13 @@ public class CardShopUI
           return true;
         }
       });
-      this.oJE = View.inflate(this, 2131493316, null);
-      if (this.oJD != null) {
-        this.oJD.addView(this.oJE);
+      this.oQg = View.inflate(this, 2131493316, null);
+      if (this.oQf != null) {
+        this.oQf.addView(this.oQg);
       }
-      this.oJF = ((TextView)this.oJE.findViewById(2131297844));
-      this.oJF.setText(2131756997);
-      this.oJE.setVisibility(8);
+      this.oQh = ((TextView)this.oQg.findViewById(2131297844));
+      this.oQh.setText(2131756997);
+      this.oQg.setVisibility(8);
       AppMethodBeat.o(113568);
       return;
       setMMTitle(2131756800);
@@ -289,36 +289,36 @@ public class CardShopUI
   {
     AppMethodBeat.i(113567);
     super.onCreate(paramBundle);
-    this.owK = ((com.tencent.mm.plugin.card.base.b)getIntent().getParcelableExtra("key_card_info_data"));
+    this.oDm = ((com.tencent.mm.plugin.card.base.b)getIntent().getParcelableExtra("key_card_info_data"));
     String str = getIntent().getStringExtra("KEY_CARD_TP_ID");
     paramBundle = getIntent().getStringExtra("KEY_CARD_ID");
-    if (this.owK != null)
+    if (this.oDm != null)
     {
-      ad.i("MicroMsg.CardShopUI", "onCreate  mCardInfo != null");
-      this.oJB = this.owK.bTS();
-      paramBundle = this.owK.bTR();
+      ae.i("MicroMsg.CardShopUI", "onCreate  mCardInfo != null");
+      this.oQd = this.oDm.bVh();
+      paramBundle = this.oDm.bVg();
     }
     for (;;)
     {
-      this.oww = paramBundle;
+      this.oCY = paramBundle;
       do
       {
-        if (TextUtils.isEmpty(this.oJB))
+        if (TextUtils.isEmpty(this.oQd))
         {
-          ad.e("MicroMsg.CardShopUI", "onCreate  mCardTpid == null");
+          ae.e("MicroMsg.CardShopUI", "onCreate  mCardTpid == null");
           finish();
         }
         boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 69, null, null);
-        ad.i("MicroMsg.CardShopUI", "checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
-        this.oDz = bool;
-        if (this.oDz) {
-          bXg();
+        ae.i("MicroMsg.CardShopUI", "checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
+        this.oKb = bool;
+        if (this.oKb) {
+          bYv();
         }
         initView();
         AppMethodBeat.o(113567);
         return;
       } while (TextUtils.isEmpty(str));
-      this.oJB = str;
+      this.oQd = str;
       if (TextUtils.isEmpty(paramBundle)) {
         paramBundle = "";
       }
@@ -328,10 +328,10 @@ public class CardShopUI
   public void onDestroy()
   {
     AppMethodBeat.i(113569);
-    if (this.oDz) {
+    if (this.oKb) {
       unregisterReceiver(this.mReceiver);
     }
-    am.bUQ().a(this.oJB, this);
+    am.bWf().a(this.oQd, this);
     super.onDestroy();
     AppMethodBeat.o(113569);
   }
@@ -341,11 +341,11 @@ public class CardShopUI
     AppMethodBeat.i(113575);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ad.i("MicroMsg.CardShopUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ae.i("MicroMsg.CardShopUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(113575);
       return;
     }
-    ad.i("MicroMsg.CardShopUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ae.i("MicroMsg.CardShopUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -355,11 +355,11 @@ public class CardShopUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        ad.i("MicroMsg.CardShopUI", "onMPermissionGranted LocationPermissionGranted " + this.oDz);
-        if (!this.oDz)
+        ae.i("MicroMsg.CardShopUI", "onMPermissionGranted LocationPermissionGranted " + this.oKb);
+        if (!this.oKb)
         {
-          this.oDz = true;
-          bXg();
+          this.oKb = true;
+          bYv();
         }
         AppMethodBeat.o(113575);
         return;
@@ -379,12 +379,12 @@ public class CardShopUI
   {
     private a() {}
     
-    private tl AE(int paramInt)
+    private tn AQ(int paramInt)
     {
       AppMethodBeat.i(113563);
-      tl localtl = (tl)CardShopUI.a(CardShopUI.this).get(paramInt);
+      tn localtn = (tn)CardShopUI.a(CardShopUI.this).get(paramInt);
       AppMethodBeat.o(113563);
-      return localtl;
+      return localtn;
     }
     
     public final int getCount()
@@ -407,50 +407,50 @@ public class CardShopUI
       {
         paramView = View.inflate(CardShopUI.this.getContext(), 2131493345, null);
         paramViewGroup = new a();
-        paramViewGroup.oJH = ((TextView)paramView.findViewById(2131304767));
-        paramViewGroup.oJI = ((TextView)paramView.findViewById(2131304764));
-        paramViewGroup.oJJ = ((TextView)paramView.findViewById(2131304763));
-        paramViewGroup.oJK = ((ImageView)paramView.findViewById(2131304769));
-        paramViewGroup.oJL = paramView.findViewById(2131304770);
+        paramViewGroup.oQj = ((TextView)paramView.findViewById(2131304767));
+        paramViewGroup.oQk = ((TextView)paramView.findViewById(2131304764));
+        paramViewGroup.oQl = ((TextView)paramView.findViewById(2131304763));
+        paramViewGroup.oQm = ((ImageView)paramView.findViewById(2131304769));
+        paramViewGroup.oQn = paramView.findViewById(2131304770);
         paramView.setTag(paramViewGroup);
       }
-      tl localtl;
+      tn localtn;
       for (;;)
       {
-        localtl = AE(paramInt);
-        if (localtl != null) {
+        localtn = AQ(paramInt);
+        if (localtn != null) {
           break;
         }
-        paramViewGroup.oJH.setText("");
-        paramViewGroup.oJI.setText("");
-        paramViewGroup.oJJ.setText("");
+        paramViewGroup.oQj.setText("");
+        paramViewGroup.oQk.setText("");
+        paramViewGroup.oQl.setText("");
         AppMethodBeat.o(113564);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
       }
-      paramViewGroup.oJH.setText(localtl.name);
-      if (localtl.zxp <= 0.0F) {
-        paramViewGroup.oJI.setVisibility(8);
+      paramViewGroup.oQj.setText(localtn.name);
+      if (localtn.zOO <= 0.0F) {
+        paramViewGroup.oQk.setVisibility(8);
       }
       for (;;)
       {
-        paramViewGroup.oJJ.setText(localtl.ePu + localtl.ePv + localtl.hWY);
-        paramViewGroup.oJL.setOnClickListener(CardShopUI.f(CardShopUI.this));
-        paramViewGroup.oJL.setTag(localtl);
+        paramViewGroup.oQl.setText(localtn.eRf + localtn.eRg + localtn.hZQ);
+        paramViewGroup.oQn.setOnClickListener(CardShopUI.f(CardShopUI.this));
+        paramViewGroup.oQn.setTag(localtn);
         AppMethodBeat.o(113564);
         return paramView;
-        paramViewGroup.oJI.setText(l.f(CardShopUI.this.getBaseContext(), localtl.zxp));
-        paramViewGroup.oJI.setVisibility(0);
+        paramViewGroup.oQk.setText(l.f(CardShopUI.this.getBaseContext(), localtn.zOO));
+        paramViewGroup.oQk.setVisibility(0);
       }
     }
     
     final class a
     {
-      public TextView oJH;
-      public TextView oJI;
-      public TextView oJJ;
-      public ImageView oJK;
-      public View oJL;
+      public TextView oQj;
+      public TextView oQk;
+      public TextView oQl;
+      public ImageView oQm;
+      public View oQn;
       
       a() {}
     }

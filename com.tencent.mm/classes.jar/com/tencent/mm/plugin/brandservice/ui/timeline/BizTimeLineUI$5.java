@@ -13,13 +13,13 @@ final class BizTimeLineUI$5
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(209508);
+    AppMethodBeat.i(208463);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    BizTimeLineUI.m(this.ocb);
+    a.b("com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    BizTimeLineUI.m(this.ohP);
     a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(209508);
+    AppMethodBeat.o(208463);
   }
 }
 

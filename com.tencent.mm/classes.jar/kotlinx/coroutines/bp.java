@@ -6,18 +6,18 @@ import d.l;
 import d.z;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/Job;", "job", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "handler", "<init>", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "(Ljava/lang/Throwable;)V", "", "toString", "()Ljava/lang/String;", "Lkotlin/jvm/functions/Function1;", "kotlinx-coroutines-core", "Lkotlinx/coroutines/JobCancellingNode;"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/Job;", "job", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "handler", "<init>", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "(Ljava/lang/Throwable;)V", "", "toString", "()Ljava/lang/String;", "Lkotlin/jvm/functions/Function1;", "kotlinx-coroutines-core", "Lkotlinx/coroutines/JobCancellingNode;"})
 final class bp
   extends bt<br>
 {
-  private static final AtomicIntegerFieldUpdater NIL;
+  private static final AtomicIntegerFieldUpdater OfR;
   private volatile int _invoked;
-  private final b<Throwable, z> kBU;
+  private final b<Throwable, z> kFj;
   
   static
   {
     AppMethodBeat.i(118220);
-    NIL = AtomicIntegerFieldUpdater.newUpdater(bp.class, "_invoked");
+    OfR = AtomicIntegerFieldUpdater.newUpdater(bp.class, "_invoked");
     AppMethodBeat.o(118220);
   }
   
@@ -25,7 +25,7 @@ final class bp
   {
     super(parambr);
     AppMethodBeat.i(118219);
-    this.kBU = paramb;
+    this.kFj = paramb;
     this._invoked = 0;
     AppMethodBeat.o(118219);
   }
@@ -38,11 +38,11 @@ final class bp
     return str;
   }
   
-  public final void v(Throwable paramThrowable)
+  public final void x(Throwable paramThrowable)
   {
     AppMethodBeat.i(118216);
-    if (NIL.compareAndSet(this, 0, 1)) {
-      this.kBU.invoke(paramThrowable);
+    if (OfR.compareAndSet(this, 0, 1)) {
+      this.kFj.invoke(paramThrowable);
     }
     AppMethodBeat.o(118216);
   }

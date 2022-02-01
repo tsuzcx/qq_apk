@@ -2,10 +2,7 @@ package com.tencent.mm.plugin.facedetect.d;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
-import com.tencent.mm.plugin.facedetect.model.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract interface b
 {
@@ -15,32 +12,32 @@ public abstract interface b
   
   public abstract boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult);
   
-  public abstract boolean ctt();
+  public abstract boolean cuU();
   
-  public abstract boolean ctu();
+  public abstract boolean cuV();
   
-  public abstract void ctv();
+  public abstract void cuW();
   
-  public abstract b ctw();
+  public abstract b cuX();
   
-  public abstract a ctx();
+  public abstract a cuY();
   
   public abstract void setBusinessTip(String paramString);
   
   public static final class a
   {
     public String errMsg;
-    public int riw;
-    public int rix;
+    public int rqA;
+    public int rqB;
     
     a()
     {
-      this.riw = 1;
+      this.rqA = 1;
     }
     
     a(String paramString)
     {
-      this.rix = 7;
+      this.rqB = 7;
       this.errMsg = paramString;
     }
   }
@@ -54,32 +51,6 @@ public abstract interface b
     {
       this.errCode = paramInt;
       this.errMsg = paramString;
-    }
-  }
-  
-  public static final class c
-  {
-    private static String TAG = "MicroMsg.IFaceMotion.Factory";
-    
-    public static b a(h.a parama)
-    {
-      AppMethodBeat.i(103815);
-      if (parama == null)
-      {
-        AppMethodBeat.o(103815);
-        return null;
-      }
-      if (parama.type == 4)
-      {
-        ad.i(TAG, "hy: is read number");
-        parama = new d(parama.rhw);
-        AppMethodBeat.o(103815);
-        return parama;
-      }
-      ad.i(TAG, "hy: is normal");
-      parama = new c(parama.jsG, parama.rht);
-      AppMethodBeat.o(103815);
-      return parama;
     }
   }
 }

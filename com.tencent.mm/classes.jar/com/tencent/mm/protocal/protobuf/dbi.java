@@ -1,62 +1,68 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dbi
-  extends com.tencent.mm.bx.a
+  extends cvw
 {
-  public LinkedList<chj> Hra;
-  public LinkedList<dwd> Hrb;
-  public String dtL;
-  
-  public dbi()
-  {
-    AppMethodBeat.i(122536);
-    this.dtL = "";
-    this.Hra = new LinkedList();
-    this.Hrb = new LinkedList();
-    AppMethodBeat.o(122536);
-  }
+  public cxn GuF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122537);
+    AppMethodBeat.i(155464);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dtL != null) {
-        paramVarArgs.d(1, this.dtL);
+      if (this.GuF == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: UserName");
+        AppMethodBeat.o(155464);
+        throw paramVarArgs;
       }
-      paramVarArgs.e(2, 8, this.Hra);
-      paramVarArgs.e(3, 8, this.Hrb);
-      AppMethodBeat.o(122537);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.GuF != null)
+      {
+        paramVarArgs.lJ(2, this.GuF.computeSize());
+        this.GuF.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(155464);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dtL == null) {
-        break label498;
+      if (this.BaseRequest == null) {
+        break label514;
       }
     }
-    label498:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dtL) + 0;; paramInt = 0)
+    label514:
+    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.a.c(2, 8, this.Hra);
-      int j = f.a.a.a.c(3, 8, this.Hrb);
-      AppMethodBeat.o(122537);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.GuF != null) {
+        i = paramInt + f.a.a.a.lI(2, this.GuF.computeSize());
+      }
+      AppMethodBeat.o(155464);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Hra.clear();
-        this.Hrb.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gxE();
+            paramVarArgs.gCg();
           }
         }
-        AppMethodBeat.o(122537);
+        if (this.GuF == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: UserName");
+          AppMethodBeat.o(155464);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(155464);
         return 0;
       }
       if (paramInt == 3)
@@ -69,51 +75,47 @@ public final class dbi
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(122537);
+          AppMethodBeat.o(155464);
           return -1;
         case 1: 
-          localdbi.dtL = ((f.a.a.a.a)localObject1).NPN.readString();
-          AppMethodBeat.o(122537);
-          return 0;
-        case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new chj();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((chj)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdbi.Hra.add(localObject1);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdbi.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(122537);
+          AppMethodBeat.o(155464);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dwd();
+          localObject1 = new cxn();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dwd)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localdbi.Hrb.add(localObject1);
+          for (bool = true; bool; bool = ((cxn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdbi.GuF = ((cxn)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(122537);
+        AppMethodBeat.o(155464);
         return 0;
       }
-      AppMethodBeat.o(122537);
+      AppMethodBeat.o(155464);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dbi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.sv;
-import com.tencent.mm.g.a.sv.a;
+import com.tencent.mm.g.a.sw;
+import com.tencent.mm.g.a.sw.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 
 final class c$2
-  extends com.tencent.mm.sdk.b.c<sv>
+  extends com.tencent.mm.sdk.b.c<sw>
 {
   c$2(c paramc)
   {
     AppMethodBeat.i(161764);
-    this.__eventId = sv.class.getName().hashCode();
+    this.__eventId = sw.class.getName().hashCode();
     AppMethodBeat.o(161764);
   }
   
-  private boolean a(sv paramsv)
+  private boolean a(sw paramsw)
   {
     AppMethodBeat.i(110788);
-    boolean bool = paramsv.dHw.dvG;
-    ad.i("MicroMsg.Wepkg.WepkgListener", "sendEntranceStateListener isInFindEntrance:%b", new Object[] { Boolean.valueOf(bool) });
-    if ((bool) && (bt.rM(bt.g((Long)g.ajC().ajl().get(al.a.IAg, Long.valueOf(0L)))) > 60L))
+    boolean bool = paramsw.dIB.dwL;
+    ae.i("MicroMsg.Wepkg.WepkgListener", "sendEntranceStateListener isInFindEntrance:%b", new Object[] { Boolean.valueOf(bool) });
+    if ((bool) && (bu.rZ(bu.i((Long)g.ajR().ajA().get(am.a.IUF, Long.valueOf(0L)))) > 60L))
     {
-      g.ajC().ajl().set(al.a.IAg, Long.valueOf(bt.aQJ()));
-      c.a(this.EFV, 2);
+      g.ajR().ajA().set(am.a.IUF, Long.valueOf(bu.aRi()));
+      c.a(this.EYr, 2);
     }
     AppMethodBeat.o(110788);
     return false;
@@ -36,7 +36,7 @@ final class c$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.c.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ph;
-import com.tencent.mm.g.a.ph.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.pi;
+import com.tencent.mm.g.a.pi.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.ae;
 import com.tencent.mm.plugin.scanner.util.c;
 import com.tencent.mm.plugin.scanner.view.b;
 import com.tencent.mm.pluginsdk.e.d;
 import com.tencent.mm.pluginsdk.ui.tools.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.base.h;
 import com.tencent.scanlib.ui.ScanView;
 
@@ -25,23 +23,23 @@ public final class d
   extends e
   implements f, e.a
 {
-  private int ypa;
-  private boolean ypb;
-  private c ypc;
-  private a ypd;
-  private b ype;
+  private int yEZ;
+  private boolean yFa;
+  private c yFb;
+  private a yFc;
+  private b yFd;
   
   public d(int paramInt1, int paramInt2, ScanView paramScanView, a parama, b paramb)
   {
     AppMethodBeat.i(51660);
     this.mode = paramInt1;
-    this.ypa = paramInt2;
-    this.ypf = paramScanView;
-    this.ypd = parama;
+    this.yEZ = paramInt2;
+    this.yFe = paramScanView;
+    this.yFc = parama;
     this.context = paramScanView.getContext();
-    this.ype = paramb;
-    this.ypb = true;
-    g.aiU().a(971, this);
+    this.yFd = paramb;
+    this.yFa = true;
+    g.ajj().a(971, this);
     AppMethodBeat.o(51660);
   }
   
@@ -55,42 +53,42 @@ public final class d
     }
     String str1 = paramBundle.getString("result_content", "");
     String str2 = paramBundle.getString("result_code_name", "");
-    int i = e.d.aLg(str2);
+    int i = e.d.aMC(str2);
     int j = paramBundle.getInt("result_code_version", 0);
     int k = paramBundle.getInt("qbar_string_scan_source", 0);
-    ad.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(i), str2, Integer.valueOf(j) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(i), str2, Integer.valueOf(j) });
     Activity localActivity;
     b localb;
-    if (!bt.isNullOrNil(str1))
+    if (!bu.isNullOrNil(str1))
     {
-      paramBundle = new ph();
-      paramBundle.dDr.dDt = str2;
-      paramBundle.dDr.scanResult = str1;
-      paramBundle.dDr.dDp = 1;
-      com.tencent.mm.sdk.b.a.IbL.l(paramBundle);
-      if (paramBundle.dDs.ret == 1)
+      paramBundle = new pi();
+      paramBundle.dEw.dEy = str2;
+      paramBundle.dEw.scanResult = str1;
+      paramBundle.dEw.dEu = 1;
+      com.tencent.mm.sdk.b.a.IvT.l(paramBundle);
+      if (paramBundle.dEx.ret == 1)
       {
-        if (this.ypd != null)
+        if (this.yFc != null)
         {
-          this.ypd.bWi();
+          this.yFc.bXx();
           AppMethodBeat.o(51661);
         }
       }
       else
       {
-        if (this.ypc != null) {
-          this.ypc.dML();
+        if (this.yFb != null) {
+          this.yFb.dQe();
         }
-        if (e.d.Ye(i))
+        if (e.d.YK(i))
         {
-          this.ypc = new c();
-          this.ypc.a((Activity)this.ypf.getContext(), str1, k, str2, i, j, this, this.ype, null, this.ypa, false, -1, this.ypb);
+          this.yFb = new c();
+          this.yFb.a((Activity)this.yFe.getContext(), str1, k, str2, i, j, this, this.yFd, null, this.yEZ, false, -1, this.yFa);
           AppMethodBeat.o(51661);
           return;
         }
         paramBundle = new com.tencent.mm.plugin.scanner.util.a();
-        localActivity = (Activity)this.ypf.getContext();
-        localb = this.ype;
+        localActivity = (Activity)this.yFe.getContext();
+        localb = this.yFd;
         if (k != 1) {
           break label331;
         }
@@ -99,7 +97,7 @@ public final class d
     label331:
     for (boolean bool = true;; bool = false)
     {
-      paramBundle.a(localActivity, this, localb, str1, bool, j, str2, null, this.ypa, false, -1, this.ypb);
+      paramBundle.a(localActivity, this, localb, str1, bool, j, str2, null, this.yEZ, false, -1, this.yFa);
       AppMethodBeat.o(51661);
       return;
     }
@@ -108,9 +106,9 @@ public final class d
   public final void destroy()
   {
     AppMethodBeat.i(51664);
-    g.aiU().b(971, this);
-    if (this.ypc != null) {
-      this.ypc.dML();
+    g.ajj().b(971, this);
+    if (this.yFb != null) {
+      this.yFb.dQe();
     }
     AppMethodBeat.o(51664);
   }
@@ -118,7 +116,7 @@ public final class d
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(51662);
-    ad.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     int i;
     switch (paramInt1)
     {
@@ -130,17 +128,17 @@ public final class d
       t(0, null);
       AppMethodBeat.o(51662);
       return;
-      if (g.aiU().aEO())
+      if (g.ajj().aFe())
       {
-        g.aiU().getNetworkServerIp();
+        g.ajj().getNetworkServerIp();
         new StringBuilder().append(paramInt2);
       }
       for (;;)
       {
         i = 1;
         break;
-        if (ae.cP(this.context)) {
-          k.hC(this.context);
+        if (com.tencent.mm.network.ae.cR(this.context)) {
+          k.hI(this.context);
         } else {
           Toast.makeText(this.context, this.context.getString(2131759510, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
         }
@@ -169,7 +167,7 @@ public final class d
   public final void t(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(51663);
-    ad.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -179,27 +177,27 @@ public final class d
       return;
       AppMethodBeat.o(51663);
       return;
-      this.ypf.onResume();
+      this.yFe.onResume();
       AppMethodBeat.o(51663);
       return;
-      this.ypf.onResume();
+      this.yFe.onResume();
       AppMethodBeat.o(51663);
       return;
-      if (this.ypd != null)
+      if (this.yFc != null)
       {
-        this.ypd.bWi();
+        this.yFc.bXx();
         AppMethodBeat.o(51663);
         return;
-        this.ypf.onPause();
+        this.yFe.onPause();
         AppMethodBeat.o(51663);
         return;
-        if (this.ypd != null)
+        if (this.yFc != null)
         {
-          this.ypd.al(paramBundle);
+          this.yFc.am(paramBundle);
           AppMethodBeat.o(51663);
           return;
-          if (this.ypd != null) {
-            this.ypd.am(paramBundle);
+          if (this.yFc != null) {
+            this.yFc.an(paramBundle);
           }
         }
       }
@@ -209,14 +207,14 @@ public final class d
   public static abstract interface a
     extends e.b
   {
-    public abstract void al(Bundle paramBundle);
-    
     public abstract void am(Bundle paramBundle);
+    
+    public abstract void an(Bundle paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.d.d
  * JD-Core Version:    0.7.0.1
  */

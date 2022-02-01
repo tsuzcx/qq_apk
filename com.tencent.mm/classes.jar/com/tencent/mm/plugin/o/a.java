@@ -10,10 +10,10 @@ import com.tencent.mm.plugin.a.m;
 import com.tencent.mm.plugin.a.p;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.List;
@@ -23,19 +23,19 @@ public final class a
 {
   private AudioTrack bfq;
   private int channels;
-  private boolean fMP = false;
+  private boolean fOX = false;
   private int sampleRate;
   
-  public a(h paramh, ap paramap)
+  public a(h paramh, aq paramaq)
   {
-    super(paramh, paramap);
+    super(paramh, paramaq);
   }
   
   private int getChannels()
   {
     AppMethodBeat.i(133900);
     if (this.channels == 0) {
-      this.channels = this.vLB.getInteger("channel-count");
+      this.channels = this.vXF.getInteger("channel-count");
     }
     int i = this.channels;
     AppMethodBeat.o(133900);
@@ -46,7 +46,7 @@ public final class a
   {
     AppMethodBeat.i(133901);
     if (this.sampleRate == 0) {
-      this.sampleRate = this.vLB.getInteger("sample-rate");
+      this.sampleRate = this.vXF.getInteger("sample-rate");
     }
     int i = this.sampleRate;
     AppMethodBeat.o(133901);
@@ -54,7 +54,7 @@ public final class a
   }
   
   @TargetApi(21)
-  private void op(boolean paramBoolean)
+  private void ou(boolean paramBoolean)
   {
     AppMethodBeat.i(133898);
     if (paramBoolean)
@@ -71,7 +71,7 @@ public final class a
   {
     AppMethodBeat.i(133902);
     super.a(paramz, paramMediaFormat);
-    ad.i("MicroMsg.AudioTrackDataSource", "%s on output format changed: %s", new Object[] { info(), paramMediaFormat });
+    ae.i("MicroMsg.AudioTrackDataSource", "%s on output format changed: %s", new Object[] { info(), paramMediaFormat });
     if (paramMediaFormat.containsKey("sample-rate")) {
       this.sampleRate = paramMediaFormat.getInteger("sample-rate");
     }
@@ -81,16 +81,16 @@ public final class a
   final boolean a(long paramLong1, long paramLong2, z paramz, ByteBuffer paramByteBuffer, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
   {
     AppMethodBeat.i(133893);
-    ad.d("MicroMsg.AudioTrackDataSource", "%s start to process output buffer state %d time[%d, %d] index %d", new Object[] { info(), Integer.valueOf(this.state), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) });
-    if (!e.JZ(this.state))
+    ae.d("MicroMsg.AudioTrackDataSource", "%s start to process output buffer state %d time[%d, %d] index %d", new Object[] { info(), Integer.valueOf(this.state), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) });
+    if (!e.Kz(this.state))
     {
-      ad.i("MicroMsg.AudioTrackDataSource", "%s it no need process buffer now state %d", new Object[] { info(), Integer.valueOf(this.state) });
+      ae.i("MicroMsg.AudioTrackDataSource", "%s it no need process buffer now state %d", new Object[] { info(), Integer.valueOf(this.state) });
       AppMethodBeat.o(133893);
       return false;
     }
     if (this.bfq == null)
     {
-      ad.i("MicroMsg.AudioTrackDataSource", "%s init audio track, sampleRate:%s, channels:%s", new Object[] { info(), Integer.valueOf(getSampleRate()), Integer.valueOf(getChannels()) });
+      ae.i("MicroMsg.AudioTrackDataSource", "%s init audio track, sampleRate:%s, channels:%s", new Object[] { info(), Integer.valueOf(getSampleRate()), Integer.valueOf(getChannels()) });
       if (getChannels() == 1)
       {
         i = 4;
@@ -99,7 +99,7 @@ public final class a
         if ((this.bfq == null) || (this.bfq.getState() == 1)) {
           break label271;
         }
-        ad.w("MicroMsg.AudioTrackDataSource", "%s can not create audio track [%d]", new Object[] { info(), Integer.valueOf(this.bfq.getState()) });
+        ae.w("MicroMsg.AudioTrackDataSource", "%s can not create audio track [%d]", new Object[] { info(), Integer.valueOf(this.bfq.getState()) });
         this.bfq.release();
         this.bfq = null;
       }
@@ -113,34 +113,34 @@ public final class a
         i = 12;
         break;
         label271:
-        setMute(this.fMP);
+        setMute(this.fOX);
       }
     }
     label285:
-    if ((e.JT(this.state)) && ((this.bfq.getPlayState() == 2) || (this.bfq.getPlayState() == 1))) {
+    if ((e.Kt(this.state)) && ((this.bfq.getPlayState() == 2) || (this.bfq.getPlayState() == 1))) {
       onStart();
     }
-    if ((e.JU(this.state)) && (this.bfq.getPlayState() == 3)) {
+    if ((e.Ku(this.state)) && (this.bfq.getPlayState() == 3)) {
       onPause();
     }
     try
     {
-      this.vLw.vLo = paramBufferInfo.presentationTimeUs;
+      this.vXA.vXs = paramBufferInfo.presentationTimeUs;
       byte[] arrayOfByte = new byte[paramBufferInfo.size];
       paramByteBuffer.get(arrayOfByte);
       paramByteBuffer.clear();
-      paramLong1 = bt.HI();
+      paramLong1 = bu.HQ();
       if (arrayOfByte.length > 0) {
         this.bfq.write(arrayOfByte, 0, arrayOfByte.length);
       }
-      ad.d("MicroMsg.AudioTrackDataSource", "%s finish to process index[%d] time[%d] to audio track, size:%s, cost:%s", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.vLw.vLo), Integer.valueOf(paramBufferInfo.size), Long.valueOf(bt.aO(paramLong1)) });
+      ae.d("MicroMsg.AudioTrackDataSource", "%s finish to process index[%d] time[%d] to audio track, size:%s, cost:%s", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.vXA.vXs), Integer.valueOf(paramBufferInfo.size), Long.valueOf(bu.aO(paramLong1)) });
       paramz.releaseOutputBuffer(paramInt, false);
     }
     catch (Exception paramz)
     {
       for (;;)
       {
-        ad.e("MicroMsg.AudioTrackDataSource", "%s audio release output buffer error %s", new Object[] { info(), paramz.toString() });
+        ae.e("MicroMsg.AudioTrackDataSource", "%s audio release output buffer error %s", new Object[] { info(), paramz.toString() });
       }
     }
     AppMethodBeat.o(133893);
@@ -150,10 +150,10 @@ public final class a
   final boolean a(z paramz)
   {
     AppMethodBeat.i(133899);
-    ad.i("MicroMsg.AudioTrackDataSource", "%s handle decoder before start", new Object[] { info() });
-    MediaFormat localMediaFormat = dmy();
-    int i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qym, false) | bu.flY();
-    if (com.tencent.mm.compatible.util.d.lz(28)) {
+    ae.i("MicroMsg.AudioTrackDataSource", "%s handle decoder before start", new Object[] { info() });
+    MediaFormat localMediaFormat = dpw();
+    int i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qFs, false) | bv.fpT();
+    if (com.tencent.mm.compatible.util.d.lB(28)) {
       i = 0;
     }
     Object localObject1;
@@ -163,12 +163,12 @@ public final class a
       localMediaFormat.setInteger("encoder-padding", 0);
       localObject1 = new com.tencent.mm.plugin.a.h();
       long l1 = System.currentTimeMillis();
-      boolean bool = ((com.tencent.mm.plugin.a.h)localObject1).Jb(this.path);
+      boolean bool = ((com.tencent.mm.plugin.a.h)localObject1).JA(this.path);
       long l2 = System.currentTimeMillis();
       if (bool)
       {
-        Object localObject2 = ((com.tencent.mm.plugin.a.h)localObject1).iQM;
-        Iterator localIterator = ((com.tencent.mm.plugin.a.h)localObject1).iQN.iterator();
+        Object localObject2 = ((com.tencent.mm.plugin.a.h)localObject1).iTF;
+        Iterator localIterator = ((com.tencent.mm.plugin.a.h)localObject1).iTG.iterator();
         for (;;)
         {
           label185:
@@ -184,22 +184,22 @@ public final class a
           if (localIterator.hasNext())
           {
             localObject1 = (p)localIterator.next();
-            if (((p)localObject1).iRD != null) {
-              if (((p)localObject1).iRD.iQG == com.tencent.mm.plugin.a.g.iQD)
+            if (((p)localObject1).iUw != null) {
+              if (((p)localObject1).iUw.iTz == com.tencent.mm.plugin.a.g.iTw)
               {
                 i = 1;
                 if (i == 0) {
                   break label600;
                 }
-                l7 = ((m)localObject2).iQF;
-                if ((((p)localObject1).iRE != null) && (((p)localObject1).iRE.iQo.size() == 1))
+                l7 = ((m)localObject2).iTy;
+                if ((((p)localObject1).iUx != null) && (((p)localObject1).iUx.iTh.size() == 1))
                 {
-                  localObject2 = ((p)localObject1).iRE;
-                  localObject1 = ((p)localObject1).iRD;
+                  localObject2 = ((p)localObject1).iUx;
+                  localObject1 = ((p)localObject1).iUw;
                   l3 = ((com.tencent.mm.plugin.a.g)localObject1).duration;
-                  l6 = ((com.tencent.mm.plugin.a.g)localObject1).iQF;
-                  l4 = ((Long)((com.tencent.mm.plugin.a.d)localObject2).iQo.get(0)).longValue();
-                  l5 = ((Long)((com.tencent.mm.plugin.a.d)localObject2).iQn.get(0)).longValue();
+                  l6 = ((com.tencent.mm.plugin.a.g)localObject1).iTy;
+                  l4 = ((Long)((com.tencent.mm.plugin.a.d)localObject2).iTh.get(0)).longValue();
+                  l5 = ((Long)((com.tencent.mm.plugin.a.d)localObject2).iTg.get(0)).longValue();
                   l7 = l4 + l5 * l6 / l7;
                   m = getSampleRate();
                   l8 = l3 - l7;
@@ -220,18 +220,18 @@ public final class a
             label348:
             break label348;
           }
-          ad.i("MicroMsg.AudioTrackDataSource", "mediaDuration:%s, editStartTime:%s, editDuration:%s, editEndTime:%s, paddingTimeUnits:%s, encoderDelay:%s, encoderPadding:%s, sampleRate:%s, oriEncoderDelay:%s, trackFormat:%s", new Object[] { Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l6), Integer.valueOf(m), Integer.valueOf(i), localMediaFormat });
+          ae.i("MicroMsg.AudioTrackDataSource", "mediaDuration:%s, editStartTime:%s, editDuration:%s, editEndTime:%s, paddingTimeUnits:%s, encoderDelay:%s, encoderPadding:%s, sampleRate:%s, oriEncoderDelay:%s, trackFormat:%s", new Object[] { Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l6), Integer.valueOf(m), Integer.valueOf(i), localMediaFormat });
           if ((l9 > 2147483647L) || (l6 > 2147483647L)) {
             break label608;
           }
           localMediaFormat.setInteger("encoder-delay", (int)l9);
           localMediaFormat.setInteger("encoder-padding", (int)l6);
-          ad.i("MicroMsg.AudioTrackDataSource", "set encoder-delay:%s, encoder-padding:%s", new Object[] { Long.valueOf(l9), Long.valueOf(l6) });
-          com.tencent.mm.plugin.report.service.g.yhR.dD(1117, 0);
-          com.tencent.mm.plugin.report.service.g.yhR.n(1117L, 1L, l2 - l1);
-          com.tencent.mm.plugin.report.service.g.yhR.n(1117L, 3L, i);
-          com.tencent.mm.plugin.report.service.g.yhR.n(1117L, 4L, (int)l9);
-          com.tencent.mm.plugin.report.service.g.yhR.n(1117L, 5L, (int)l9 - i);
+          ae.i("MicroMsg.AudioTrackDataSource", "set encoder-delay:%s, encoder-padding:%s", new Object[] { Long.valueOf(l9), Long.valueOf(l6) });
+          com.tencent.mm.plugin.report.service.g.yxI.dD(1117, 0);
+          com.tencent.mm.plugin.report.service.g.yxI.n(1117L, 1L, l2 - l1);
+          com.tencent.mm.plugin.report.service.g.yxI.n(1117L, 3L, i);
+          com.tencent.mm.plugin.report.service.g.yxI.n(1117L, 4L, (int)l9);
+          com.tencent.mm.plugin.report.service.g.yxI.n(1117L, 5L, (int)l9 - i);
         }
       }
     }
@@ -247,14 +247,14 @@ public final class a
       localObject1 = null;
       break label189;
       label608:
-      ad.i("MicroMsg.AudioTrackDataSource", "ignore set encoder-delay and encoder-padding and reset to 0");
+      ae.i("MicroMsg.AudioTrackDataSource", "ignore set encoder-delay and encoder-padding and reset to 0");
     }
   }
   
   protected final void onPause()
   {
     AppMethodBeat.i(133895);
-    ad.i("MicroMsg.AudioTrackDataSource", "%s on pause", new Object[] { info() });
+    ae.i("MicroMsg.AudioTrackDataSource", "%s on pause", new Object[] { info() });
     if ((this.bfq != null) && (this.bfq.getState() == 1)) {
       this.bfq.pause();
     }
@@ -264,7 +264,7 @@ public final class a
   protected final void onStart()
   {
     AppMethodBeat.i(133894);
-    ad.i("MicroMsg.AudioTrackDataSource", "%s on start", new Object[] { info() });
+    ae.i("MicroMsg.AudioTrackDataSource", "%s on start", new Object[] { info() });
     if ((this.bfq != null) && (this.bfq.getState() == 1)) {
       this.bfq.play();
     }
@@ -294,14 +294,14 @@ public final class a
     AppMethodBeat.i(133897);
     if (this.bfq == null)
     {
-      ad.w("MicroMsg.AudioTrackDataSource", "%s set mute[%b] but audio track is null", new Object[] { info(), Boolean.valueOf(paramBoolean) });
-      this.fMP = paramBoolean;
+      ae.w("MicroMsg.AudioTrackDataSource", "%s set mute[%b] but audio track is null", new Object[] { info(), Boolean.valueOf(paramBoolean) });
+      this.fOX = paramBoolean;
       AppMethodBeat.o(133897);
       return;
     }
-    if (com.tencent.mm.compatible.util.d.lz(21))
+    if (com.tencent.mm.compatible.util.d.lB(21))
     {
-      ad.d("MicroMsg.AudioTrackDataSource", "%s api below 21 set mute[%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
+      ae.d("MicroMsg.AudioTrackDataSource", "%s api below 21 set mute[%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
       if (paramBoolean)
       {
         this.bfq.setStereoVolume(0.0F, 0.0F);
@@ -312,8 +312,8 @@ public final class a
       AppMethodBeat.o(133897);
       return;
     }
-    ad.d("MicroMsg.AudioTrackDataSource", "%s api higher 21 set mute[%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
-    op(paramBoolean);
+    ae.d("MicroMsg.AudioTrackDataSource", "%s api higher 21 set mute[%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
+    ou(paramBoolean);
     AppMethodBeat.o(133897);
   }
   
@@ -324,7 +324,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.o.a
  * JD-Core Version:    0.7.0.1
  */

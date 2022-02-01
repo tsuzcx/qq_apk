@@ -7,11 +7,11 @@ import com.google.b.a.e;
 public final class a$bc
   extends e
 {
-  private static volatile bc[] LJj;
-  public int LJk = 0;
-  public int LJl = 0;
-  public int LJm = 0;
-  public int paX = 0;
+  private static volatile bc[] Mgn;
+  public int Mgo = 0;
+  public int Mgp = 0;
+  public int Mgq = 0;
+  public int phB = 0;
   public int rtt = 0;
   
   public a$bc()
@@ -19,34 +19,34 @@ public final class a$bc
     this.bQO = -1;
   }
   
-  public static bc[] fTh()
+  public static bc[] fXH()
   {
-    if (LJj == null) {}
+    if (Mgn == null) {}
     synchronized (c.bQN)
     {
-      if (LJj == null) {
-        LJj = new bc[0];
+      if (Mgn == null) {
+        Mgn = new bc[0];
       }
-      return LJj;
+      return Mgn;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.paX != 0) {
-      paramb.bx(1, this.paX);
+    if (this.phB != 0) {
+      paramb.bx(1, this.phB);
     }
     if (this.rtt != 0) {
       paramb.bx(2, this.rtt);
     }
-    if (this.LJk != 0) {
-      paramb.bx(3, this.LJk);
+    if (this.Mgo != 0) {
+      paramb.bx(3, this.Mgo);
     }
-    if (this.LJl != 0) {
-      paramb.bx(4, this.LJl);
+    if (this.Mgp != 0) {
+      paramb.bx(4, this.Mgp);
     }
-    if (this.LJm != 0) {
-      paramb.bx(5, this.LJm);
+    if (this.Mgq != 0) {
+      paramb.bx(5, this.Mgq);
     }
     super.a(paramb);
   }
@@ -55,24 +55,24 @@ public final class a$bc
   {
     int j = super.zq();
     int i = j;
-    if (this.paX != 0) {
-      i = j + b.bz(1, this.paX);
+    if (this.phB != 0) {
+      i = j + b.bz(1, this.phB);
     }
     j = i;
     if (this.rtt != 0) {
       j = i + b.bz(2, this.rtt);
     }
     i = j;
-    if (this.LJk != 0) {
-      i = j + b.bz(3, this.LJk);
+    if (this.Mgo != 0) {
+      i = j + b.bz(3, this.Mgo);
     }
     j = i;
-    if (this.LJl != 0) {
-      j = i + b.bz(4, this.LJl);
+    if (this.Mgp != 0) {
+      j = i + b.bz(4, this.Mgp);
     }
     i = j;
-    if (this.LJm != 0) {
-      i = j + b.bz(5, this.LJm);
+    if (this.Mgq != 0) {
+      i = j + b.bz(5, this.Mgq);
     }
     return i;
   }

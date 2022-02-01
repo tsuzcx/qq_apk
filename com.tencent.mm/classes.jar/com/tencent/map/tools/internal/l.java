@@ -21,16 +21,16 @@ public class l
   public static boolean a(Context paramContext, String paramString)
   {
     AppMethodBeat.i(180817);
-    Object localObject1 = y.a(paramContext, u.d);
-    File localFile = y.a(paramContext, u.h);
-    y.c((File)localObject1);
-    y.c(localFile);
-    y.a(paramContext, y.a);
-    y.a(paramContext, y.b);
-    y.a(paramContext, y.c);
-    Object localObject2 = y.c(paramContext, u.o);
-    int j = t.a(paramContext).a;
-    Object localObject3 = y.a((String)localObject2);
+    Object localObject1 = x.a(paramContext, t.d);
+    File localFile = x.a(paramContext, t.h);
+    x.c((File)localObject1);
+    x.c(localFile);
+    x.a(paramContext, x.a);
+    x.a(paramContext, x.b);
+    x.a(paramContext, x.c);
+    Object localObject2 = x.c(paramContext, t.o);
+    int j = s.a(paramContext).a();
+    Object localObject3 = x.a((String)localObject2);
     int i;
     if (((List)localObject3).isEmpty())
     {
@@ -51,9 +51,9 @@ public class l
       while (((Iterator)localObject3).hasNext())
       {
         p localp = (p)((Iterator)localObject3).next();
-        if ((y.a(localp.a)) && (localp.a == j))
+        if ((x.a(localp.a)) && (localp.a == j))
         {
-          if (y.a(paramContext, u.p + File.separator + u.F[j] + File.separator + localp.f, y.b(paramContext, y.c + File.separator + u.F[j] + File.separator + localp.c), true, true)) {
+          if (x.a(paramContext, t.p + File.separator + t.F[j] + File.separator + localp.f, x.b(paramContext, x.c + File.separator + t.F[j] + File.separator + localp.c), true, true)) {
             ((ArrayList)localObject2).add(localp);
           } else {
             i = 0;
@@ -61,10 +61,10 @@ public class l
         }
         else
         {
-          if (y.a(localp.a)) {
+          if (x.a(localp.a)) {
             break label491;
           }
-          if (y.a(paramContext, u.b + File.separator + localp.f, y.b(paramContext, y.a + File.separator + localp.c), true, true)) {
+          if (x.a(paramContext, t.b + File.separator + localp.f, x.b(paramContext, x.a + File.separator + localp.c), true, true)) {
             ((ArrayList)localObject2).add(localp);
           } else {
             i = 0;
@@ -78,19 +78,19 @@ public class l
       break label137;
       if ((i == 0) || (((ArrayList)localObject2).isEmpty()))
       {
-        y.c((File)localObject1);
-        y.c(localFile);
+        x.c((File)localObject1);
+        x.c(localFile);
         i = 0;
         break;
       }
-      localObject1 = y.a((List)localObject2);
-      y.a(paramContext, u.q, (String)localObject1);
-      z.e = y.b((List)localObject2);
+      localObject1 = x.a((List)localObject2);
+      x.a(paramContext, t.q, (String)localObject1);
+      y.e = x.b((List)localObject2);
       i = 1;
       break;
-      y.a(paramContext, u.C, paramString);
-      y.a(paramContext, u.A, "default");
-      y.a(paramContext, u.B, "default");
+      x.a(paramContext, t.C, paramString);
+      x.a(paramContext, t.A, "default");
+      x.a(paramContext, t.B, "default");
       AppMethodBeat.o(180817);
       return true;
     }

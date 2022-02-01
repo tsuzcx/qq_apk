@@ -1,15 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.os.Bundle;
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.model.r;
 import com.tencent.mm.sdk.b.b;
 
 public final class rk
   extends b
 {
-  public a dGe;
-  public b dGf;
+  public a dHf;
   
   public rk()
   {
@@ -18,30 +17,26 @@ public final class rk
   
   private rk(byte paramByte)
   {
-    AppMethodBeat.i(149885);
-    this.dGe = new a();
-    this.dGf = new b();
-    this.IbR = false;
+    AppMethodBeat.i(103547);
+    this.dHf = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149885);
+    AppMethodBeat.o(103547);
   }
   
   public static final class a
   {
-    public Context context;
-    public int dFY;
-    public Bundle extras;
-  }
-  
-  public static final class b
-  {
-    public boolean dFV;
-    public Bundle extras;
+    public byte[] dHg;
+    public Rect dHh;
+    public int dHi = 90;
+    public r dHj;
+    public int height = -1;
+    public int width = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rk
  * JD-Core Version:    0.7.0.1
  */

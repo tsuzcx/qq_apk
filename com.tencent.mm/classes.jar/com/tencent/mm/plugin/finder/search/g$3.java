@@ -9,7 +9,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
 final class g$3
   implements View.OnTouchListener
 {
@@ -21,8 +21,8 @@ final class g$3
     b localb = new b();
     localb.bd(paramView);
     localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
-    this.lPs.hideVKB();
+    a.b("com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    this.lTT.hideVKB();
     a.a(false, this, "com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(166846);
     return false;

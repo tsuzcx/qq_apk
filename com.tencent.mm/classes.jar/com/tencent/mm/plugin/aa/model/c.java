@@ -8,8 +8,8 @@ import com.tencent.mm.vending.j.f;
 public final class c
   implements com.tencent.mm.vending.c.b<b>
 {
-  protected b iSw;
-  public final a iSx;
+  protected b iVp;
+  public final a iVq;
   
   public c()
   {
@@ -21,14 +21,14 @@ public final class c
   private c(b paramb)
   {
     AppMethodBeat.i(63322);
-    this.iSx = new a();
-    this.iSw = paramb;
+    this.iVq = new a();
+    this.iVp = paramb;
     AppMethodBeat.o(63322);
   }
   
-  public final b aQY()
+  public final b aRx()
   {
-    return this.iSw;
+    return this.iVp;
   }
   
   public final class a
@@ -36,7 +36,7 @@ public final class c
   {
     public a() {}
     
-    public final String Wr()
+    public final String Wz()
     {
       return "Vending.LOGIC";
     }

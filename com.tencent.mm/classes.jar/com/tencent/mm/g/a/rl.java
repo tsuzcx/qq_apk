@@ -1,14 +1,15 @@
 package com.tencent.mm.g.a;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rl
   extends b
 {
-  public a dGg;
-  public b dGh;
+  public a dHk;
+  public b dHl;
   
   public rl()
   {
@@ -17,22 +18,25 @@ public final class rl
   
   private rl(byte paramByte)
   {
-    AppMethodBeat.i(149886);
-    this.dGg = new a();
-    this.dGh = new b();
-    this.IbR = false;
+    AppMethodBeat.i(149885);
+    this.dHk = new a();
+    this.dHl = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(149886);
+    AppMethodBeat.o(149885);
   }
   
   public static final class a
   {
     public Context context;
+    public int dHe;
+    public Bundle extras;
   }
   
   public static final class b
   {
-    public boolean dFV;
+    public boolean dHb;
+    public Bundle extras;
   }
 }
 

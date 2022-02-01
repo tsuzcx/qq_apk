@@ -19,15 +19,15 @@ import io.flutter.embedding.engine.dart.DartExecutor;
 public class WxaFlutterSplashView
   extends FrameLayout
 {
-  private h Mlh;
-  private View Mli;
-  private String Mlj;
-  private final FlutterView.a Mlk;
-  private final Runnable Mll;
+  private h MIe;
+  private View MIf;
+  private String MIg;
+  private final FlutterView.a MIh;
+  private final Runnable MIi;
   private String previousCompletedSplashIsolate;
   private Bundle splashScreenState;
-  private FlutterView tiF;
-  private final b tiy;
+  private final b ttq;
+  private FlutterView ttx;
   
   public WxaFlutterSplashView(Context paramContext)
   {
@@ -42,143 +42,143 @@ public class WxaFlutterSplashView
   public WxaFlutterSplashView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(217565);
-    this.Mlk = new FlutterView.a()
+    AppMethodBeat.i(195579);
+    this.MIh = new FlutterView.a()
     {
-      public final void fZe()
+      public final void gdF()
       {
-        AppMethodBeat.i(217558);
+        AppMethodBeat.i(195572);
         WxaFlutterSplashView.a(WxaFlutterSplashView.this).b(this);
         WxaFlutterSplashView.this.a(WxaFlutterSplashView.a(WxaFlutterSplashView.this), WxaFlutterSplashView.b(WxaFlutterSplashView.this));
-        AppMethodBeat.o(217558);
+        AppMethodBeat.o(195572);
       }
     };
-    this.tiy = new b()
+    this.ttq = new b()
     {
-      public final void cQm()
+      public final void cSR()
       {
-        AppMethodBeat.i(217559);
+        AppMethodBeat.i(195573);
         if (WxaFlutterSplashView.b(WxaFlutterSplashView.this) != null) {
           WxaFlutterSplashView.c(WxaFlutterSplashView.this);
         }
-        AppMethodBeat.o(217559);
+        AppMethodBeat.o(195573);
       }
       
-      public final void cQn() {}
+      public final void cSS() {}
     };
-    this.Mll = new Runnable()
+    this.MIi = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(217560);
+        AppMethodBeat.i(195574);
         WxaFlutterSplashView.this.removeView(WxaFlutterSplashView.d(WxaFlutterSplashView.this));
         WxaFlutterSplashView.a(WxaFlutterSplashView.this, WxaFlutterSplashView.e(WxaFlutterSplashView.this));
-        AppMethodBeat.o(217560);
+        AppMethodBeat.o(195574);
       }
     };
     setSaveEnabled(true);
-    AppMethodBeat.o(217565);
+    AppMethodBeat.o(195579);
   }
   
-  private boolean fZb()
+  private boolean gdC()
   {
-    AppMethodBeat.i(217569);
-    if ((this.tiF != null) && (this.tiF.gey()) && (!this.tiF.MBM) && (!fZd()))
+    AppMethodBeat.i(195583);
+    if ((this.ttx != null) && (this.ttx.gja()) && (!this.ttx.MYR) && (!gdE()))
     {
-      AppMethodBeat.o(217569);
+      AppMethodBeat.o(195583);
       return true;
     }
-    AppMethodBeat.o(217569);
+    AppMethodBeat.o(195583);
     return false;
   }
   
-  private boolean fZc()
+  private boolean gdD()
   {
-    AppMethodBeat.i(217570);
-    if (this.tiF != null) {
-      this.tiF.gey();
+    AppMethodBeat.i(195584);
+    if (this.ttx != null) {
+      this.ttx.gja();
     }
-    AppMethodBeat.o(217570);
+    AppMethodBeat.o(195584);
     return false;
   }
   
-  private boolean fZd()
+  private boolean gdE()
   {
-    AppMethodBeat.i(217571);
+    AppMethodBeat.i(195585);
     IllegalStateException localIllegalStateException;
-    if (this.tiF == null)
+    if (this.ttx == null)
     {
       localIllegalStateException = new IllegalStateException("Cannot determine if splash has completed when no FlutterView is set.");
-      AppMethodBeat.o(217571);
+      AppMethodBeat.o(195585);
       throw localIllegalStateException;
     }
-    if (!this.tiF.gey())
+    if (!this.ttx.gja())
     {
       localIllegalStateException = new IllegalStateException("Cannot determine if splash has completed when no FlutterEngine is attached to our FlutterView. This question depends on an isolate ID to differentiate Flutter experiences.");
-      AppMethodBeat.o(217571);
+      AppMethodBeat.o(195585);
       throw localIllegalStateException;
     }
-    if ((this.tiF.getAttachedFlutterEngine().MCh.MCT != null) && (this.tiF.getAttachedFlutterEngine().MCh.MCT.equals(this.previousCompletedSplashIsolate)))
+    if ((this.ttx.getAttachedFlutterEngine().MZm.MZY != null) && (this.ttx.getAttachedFlutterEngine().MZm.MZY.equals(this.previousCompletedSplashIsolate)))
     {
-      AppMethodBeat.o(217571);
+      AppMethodBeat.o(195585);
       return true;
     }
-    AppMethodBeat.o(217571);
+    AppMethodBeat.o(195585);
     return false;
   }
   
   public final void a(FlutterView paramFlutterView, h paramh)
   {
-    AppMethodBeat.i(217568);
-    if (this.tiF != null)
+    AppMethodBeat.i(195582);
+    if (this.ttx != null)
     {
-      this.tiF.b(this.tiy);
-      removeView(this.tiF);
+      this.ttx.b(this.ttq);
+      removeView(this.ttx);
     }
-    if (this.Mli != null) {
-      removeView(this.Mli);
+    if (this.MIf != null) {
+      removeView(this.MIf);
     }
-    this.tiF = paramFlutterView;
+    this.ttx = paramFlutterView;
     addView(paramFlutterView);
-    this.Mlh = paramh;
+    this.MIe = paramh;
     if (paramh != null)
     {
-      if (fZb())
+      if (gdC())
       {
         com.tencent.wax.c.a.v("WxaRouter.WxaFlutterSplashView", "Showing splash screen UI.", new Object[0]);
-        this.Mli = paramh.lH(getContext());
-        addView(this.Mli);
-        paramFlutterView.a(this.tiy);
-        AppMethodBeat.o(217568);
+        this.MIf = paramh.lN(getContext());
+        addView(this.MIf);
+        paramFlutterView.a(this.ttq);
+        AppMethodBeat.o(195582);
         return;
       }
-      fZc();
-      if (!paramFlutterView.gey())
+      gdD();
+      if (!paramFlutterView.gja())
       {
         com.tencent.wax.c.a.v("WxaRouter.WxaFlutterSplashView", "FlutterView is not yet attached to a FlutterEngine. Showing nothing until a FlutterEngine is attached.", new Object[0]);
-        paramFlutterView.a(this.Mlk);
+        paramFlutterView.a(this.MIh);
       }
     }
-    AppMethodBeat.o(217568);
+    AppMethodBeat.o(195582);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(217567);
+    AppMethodBeat.i(195581);
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     this.previousCompletedSplashIsolate = SavedState.b(paramParcelable);
     this.splashScreenState = SavedState.c(paramParcelable);
-    AppMethodBeat.o(217567);
+    AppMethodBeat.o(195581);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(217566);
+    AppMethodBeat.i(195580);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     SavedState.a(localSavedState, this.previousCompletedSplashIsolate);
     SavedState.a(localSavedState);
-    AppMethodBeat.o(217566);
+    AppMethodBeat.o(195580);
     return localSavedState;
   }
   
@@ -191,18 +191,18 @@ public class WxaFlutterSplashView
     
     static
     {
-      AppMethodBeat.i(217564);
+      AppMethodBeat.i(195578);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(217564);
+      AppMethodBeat.o(195578);
     }
     
     SavedState(Parcel paramParcel)
     {
       super();
-      AppMethodBeat.i(217562);
+      AppMethodBeat.i(195576);
       this.previousCompletedSplashIsolate = paramParcel.readString();
       this.splashScreenState = paramParcel.readBundle(getClass().getClassLoader());
-      AppMethodBeat.o(217562);
+      AppMethodBeat.o(195576);
     }
     
     SavedState(Parcelable paramParcelable)
@@ -212,17 +212,17 @@ public class WxaFlutterSplashView
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(217563);
+      AppMethodBeat.i(195577);
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeString(this.previousCompletedSplashIsolate);
       paramParcel.writeBundle(this.splashScreenState);
-      AppMethodBeat.o(217563);
+      AppMethodBeat.o(195577);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wax.ui.WxaFlutterSplashView
  * JD-Core Version:    0.7.0.1
  */

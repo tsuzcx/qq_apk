@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vl
   extends b
 {
-  public a dJE;
+  public a dKI;
   
   public vl()
   {
@@ -15,21 +15,22 @@ public final class vl
   
   private vl(byte paramByte)
   {
-    AppMethodBeat.i(116809);
-    this.dJE = new a();
-    this.IbR = false;
+    AppMethodBeat.i(125649);
+    this.dKI = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116809);
+    AppMethodBeat.o(125649);
   }
   
   public static final class a
   {
-    public int action = 0;
+    public String id;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.vl
  * JD-Core Version:    0.7.0.1
  */

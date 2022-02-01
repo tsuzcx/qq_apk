@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.b.f;
+import com.tencent.mm.plugin.appbrand.page.a.f;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class b
-  extends j<aa, f>
+  extends j<z, f>
 {
   public static final int CTRL_INDEX = 139;
   public static final String NAME = "disableScrollBounce";

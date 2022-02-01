@@ -9,8 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class b
   extends a
 {
-  private static long dfJ = 0L;
-  private static long dfK = 0L;
+  private static long dgL = 0L;
+  private static long dgM = 0L;
   private Thread aGA;
   
   public b(int paramInt1, int paramInt2, d paramd, f paramf)
@@ -26,8 +26,8 @@ public final class b
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "create AudioTrack before");
       if (!createAudioTrack())
       {
-        if (this.dfF != null) {
-          this.dfF.onError(707);
+        if (this.dgH != null) {
+          this.dgH.onError(707);
         }
         com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "create AudioTrack fail");
         AppMethodBeat.o(136946);
@@ -54,9 +54,9 @@ public final class b
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "create AudioTrack after and success!");
     if (this.byteBuffer == null)
     {
-      if (this.dcN != null)
+      if (this.ddP != null)
       {
-        j = this.dcN.size() * 3536;
+        j = this.ddP.size() * 3536;
         i = j;
         if (j == 0) {
           i = 3536;
@@ -70,42 +70,42 @@ public final class b
     }
     else
     {
-      if (this.dfD + paramArrayOfByte.length <= this.byteBuffer.length)
+      if (this.dgF + paramArrayOfByte.length <= this.byteBuffer.length)
       {
-        System.arraycopy(paramArrayOfByte, 0, this.byteBuffer, this.dfD, paramArrayOfByte.length);
-        this.dfD += paramArrayOfByte.length;
+        System.arraycopy(paramArrayOfByte, 0, this.byteBuffer, this.dgF, paramArrayOfByte.length);
+        this.dgF += paramArrayOfByte.length;
       }
       AppMethodBeat.o(136946);
       return;
     }
   }
   
-  public final void PB()
+  public final void Pz()
   {
     AppMethodBeat.i(136947);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "playFlush play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(dfI.get()), Integer.valueOf(dfH.get()) });
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "playFlush play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(dgK.get()), Integer.valueOf(dgJ.get()) });
     if (this.bfq != null)
     {
-      if (this.dfF != null) {
-        this.dfF.OQ();
+      if (this.dgH != null) {
+        this.dgH.OO();
       }
       AudioTrack localAudioTrack = this.bfq;
       if ((localAudioTrack.getState() == 2) && (localAudioTrack.write(this.byteBuffer, 0, this.byteBuffer.length) <= 0))
       {
         com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "AudioTrack write fail, should write length:%d", new Object[] { Integer.valueOf(this.byteBuffer.length) });
-        this.dfF.onError(708);
+        this.dgH.onError(708);
         AppMethodBeat.o(136947);
         return;
       }
       if (localAudioTrack.getState() == 1)
       {
         localAudioTrack.reloadStaticData();
-        i(this.dfE);
+        i(this.dgG);
         localAudioTrack.play();
         this.aGA = Thread.currentThread();
         try
         {
-          long l2 = this.dcN.duration;
+          long l2 = this.ddP.duration;
           long l1 = l2;
           if (l2 <= 0L) {
             l1 = 2000L;
@@ -126,7 +126,7 @@ public final class b
   protected final boolean createAudioTrack()
   {
     AppMethodBeat.i(136945);
-    if (this.dfC > 1)
+    if (this.dgE > 1)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "createAudioTrack fail count reach MAX COUNT");
       AppMethodBeat.o(136945);
@@ -139,17 +139,17 @@ public final class b
       j = 4;
       int k = AudioTrack.getMinBufferSize(this.sampleRate, j, 2);
       i = k;
-      if (this.dcN != null)
+      if (this.ddP != null)
       {
         i = k;
-        if (this.dcN.size() > 0) {
-          i = this.dcN.size() * 3536;
+        if (this.ddP.size() > 0) {
+          i = this.ddP.size() * 3536;
         }
       }
-      if (this.dfE <= 1.0D) {
+      if (this.dgG <= 1.0D) {
         break label275;
       }
-      double d = this.dfE;
+      double d = this.dgG;
       i = (int)(i * d);
     }
     label275:
@@ -162,13 +162,13 @@ public final class b
           com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "new AudioTrack");
           System.currentTimeMillis();
           this.bfq = new AudioTrack(3, this.sampleRate, j, 2, i, 0);
-          this.dfC += 1;
-          dfI.incrementAndGet();
+          this.dgE += 1;
+          dgK.incrementAndGet();
         }
         if ((this.bfq == null) || (this.bfq.getState() != 2))
         {
           com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "audio track not initialized");
-          dfH.incrementAndGet();
+          dgJ.incrementAndGet();
           if (this.bfq != null) {
             com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.bfq.getState()) });
           }
@@ -206,8 +206,8 @@ public final class b
         try
         {
           localAudioTrack.pause();
-          this.dfG = localAudioTrack.getPlaybackHeadPosition();
-          com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "pause startPos :%d", new Object[] { Integer.valueOf(this.dfG) });
+          this.dgI = localAudioTrack.getPlaybackHeadPosition();
+          com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "pause startPos :%d", new Object[] { Integer.valueOf(this.dgI) });
           if (this.aGA != null) {
             this.aGA.interrupt();
           }
@@ -239,14 +239,14 @@ public final class b
     if ((localAudioTrack != null) && (localAudioTrack.getState() == 1))
     {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "resume");
-      if (this.dfF != null) {
-        this.dfF.OQ();
+      if (this.dgH != null) {
+        this.dgH.OO();
       }
       try
       {
         localAudioTrack.setStereoVolume(this.volume, this.volume);
-        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "play startPos:%d", new Object[] { Integer.valueOf(this.dfG) });
-        localAudioTrack.setPlaybackHeadPosition(this.dfG);
+        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "play startPos:%d", new Object[] { Integer.valueOf(this.dgI) });
+        localAudioTrack.setPlaybackHeadPosition(this.dgI);
         localAudioTrack.play();
       }
       catch (IllegalStateException localIllegalStateException)
@@ -255,7 +255,7 @@ public final class b
         {
           try
           {
-            long l2 = this.dcN.duration;
+            long l2 = this.ddP.duration;
             long l1 = l2;
             if (l2 <= 0L) {
               l1 = 2000L;
@@ -278,7 +278,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.a.b
  * JD-Core Version:    0.7.0.1
  */

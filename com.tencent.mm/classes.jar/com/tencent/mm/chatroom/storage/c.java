@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.df;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,71 +15,79 @@ public final class c
   extends df
 {
   protected static c.a info;
-  public List<Long> fMd;
+  public List<Long> fOh;
   
   static
   {
     AppMethodBeat.i(182138);
     c.a locala = new c.a();
-    locala.IhA = new Field[14];
-    locala.columns = new String[15];
+    locala.IBL = new Field[16];
+    locala.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "todoid";
-    locala.IhC.put("todoid", "TEXT");
+    locala.IBN.put("todoid", "TEXT");
     localStringBuilder.append(" todoid TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "roomname";
-    locala.IhC.put("roomname", "TEXT");
+    locala.IBN.put("roomname", "TEXT");
     localStringBuilder.append(" roomname TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "username";
-    locala.IhC.put("username", "TEXT");
+    locala.IBN.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "path";
-    locala.IhC.put("path", "TEXT default '小程序字段' ");
-    localStringBuilder.append(" path TEXT default '小程序字段' ");
+    locala.IBN.put("path", "TEXT");
+    localStringBuilder.append(" path TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "createtime";
-    locala.IhC.put("createtime", "LONG");
+    locala.IBN.put("createtime", "LONG");
     localStringBuilder.append(" createtime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "updatetime";
-    locala.IhC.put("updatetime", "LONG");
+    locala.IBN.put("updatetime", "LONG");
     localStringBuilder.append(" updatetime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "custominfo";
-    locala.IhC.put("custominfo", "TEXT default '' ");
+    locala.IBN.put("custominfo", "TEXT default '' ");
     localStringBuilder.append(" custominfo TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "title";
-    locala.IhC.put("title", "TEXT default '' ");
+    locala.IBN.put("title", "TEXT default '' ");
     localStringBuilder.append(" title TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "creator";
-    locala.IhC.put("creator", "TEXT default '创建者username' ");
-    localStringBuilder.append(" creator TEXT default '创建者username' ");
+    locala.IBN.put("creator", "TEXT");
+    localStringBuilder.append(" creator TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "related_msgids";
-    locala.IhC.put("related_msgids", "TEXT");
+    locala.IBN.put("related_msgids", "TEXT");
     localStringBuilder.append(" related_msgids TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "manager";
-    locala.IhC.put("manager", "TEXT default '管理员username' ");
-    localStringBuilder.append(" manager TEXT default '管理员username' ");
+    locala.IBN.put("manager", "TEXT");
+    localStringBuilder.append(" manager TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "nreply";
-    locala.IhC.put("nreply", "INTEGER default '完成人数' ");
-    localStringBuilder.append(" nreply INTEGER default '完成人数' ");
+    locala.IBN.put("nreply", "INTEGER");
+    localStringBuilder.append(" nreply INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "state";
-    locala.IhC.put("state", "INTEGER");
+    locala.IBN.put("state", "INTEGER");
     localStringBuilder.append(" state INTEGER");
     localStringBuilder.append(", ");
     locala.columns[13] = "netSceneState";
-    locala.IhC.put("netSceneState", "INTEGER");
+    locala.IBN.put("netSceneState", "INTEGER");
     localStringBuilder.append(" netSceneState INTEGER");
-    locala.columns[14] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[14] = "shareKey";
+    locala.IBN.put("shareKey", "TEXT");
+    localStringBuilder.append(" shareKey TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "shareName";
+    locala.IBN.put("shareName", "TEXT");
+    localStringBuilder.append(" shareName TEXT");
+    locala.columns[16] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
     AppMethodBeat.o(182138);
@@ -88,16 +96,16 @@ public final class c
   public c()
   {
     AppMethodBeat.i(182132);
-    this.fMd = new ArrayList();
+    this.fOh = new ArrayList();
     AppMethodBeat.o(182132);
   }
   
-  public final long Yn()
+  public final long Yx()
   {
     AppMethodBeat.i(182135);
-    if (this.fMd.size() > 0)
+    if (this.fOh.size() > 0)
     {
-      long l = ((Long)this.fMd.get(0)).longValue();
+      long l = ((Long)this.fOh.get(0)).longValue();
       AppMethodBeat.o(182135);
       return l;
     }
@@ -105,10 +113,10 @@ public final class c
     return 0L;
   }
   
-  public final boolean Yo()
+  public final boolean Yy()
   {
     AppMethodBeat.i(182136);
-    boolean bool = bt.lQ("roomannouncement@app.origin", this.field_username);
+    boolean bool = bu.lX("roomannouncement@app.origin", this.field_username);
     AppMethodBeat.o(182136);
     return bool;
   }
@@ -117,8 +125,8 @@ public final class c
   {
     AppMethodBeat.i(182133);
     super.convertFrom(paramCursor);
-    this.fMd.clear();
-    if (!bt.isNullOrNil(this.field_related_msgids))
+    this.fOh.clear();
+    if (!bu.isNullOrNil(this.field_related_msgids))
     {
       paramCursor = this.field_related_msgids.split(",");
       int j = paramCursor.length;
@@ -126,7 +134,7 @@ public final class c
       while (i < j)
       {
         String str = paramCursor[i];
-        this.fMd.add(Long.valueOf(Long.parseLong(str)));
+        this.fOh.add(Long.valueOf(Long.parseLong(str)));
         i += 1;
       }
     }
@@ -137,7 +145,7 @@ public final class c
   {
     AppMethodBeat.i(182134);
     paramObject = (c)paramObject;
-    if ((bt.lQ(paramObject.field_todoid, this.field_todoid)) && (bt.lQ(paramObject.field_roomname, this.field_roomname)))
+    if ((bu.lX(paramObject.field_todoid, this.field_todoid)) && (bu.lX(paramObject.field_roomname, this.field_roomname)))
     {
       AppMethodBeat.o(182134);
       return true;
@@ -151,14 +159,14 @@ public final class c
     return info;
   }
   
-  public final void qM(long paramLong)
+  public final void qZ(long paramLong)
   {
-    AppMethodBeat.i(213427);
-    if (!this.fMd.contains(Long.valueOf(paramLong)))
+    AppMethodBeat.i(217140);
+    if (!this.fOh.contains(Long.valueOf(paramLong)))
     {
-      this.fMd.add(Long.valueOf(paramLong));
+      this.fOh.add(Long.valueOf(paramLong));
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.fMd.iterator();
+      Iterator localIterator = this.fOh.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
       }
@@ -167,17 +175,17 @@ public final class c
       }
       this.field_related_msgids = localStringBuilder.toString();
     }
-    AppMethodBeat.o(213427);
+    AppMethodBeat.o(217140);
   }
   
-  public final boolean qN(long paramLong)
+  public final boolean ra(long paramLong)
   {
     AppMethodBeat.i(182137);
-    if (this.fMd.contains(Long.valueOf(paramLong)))
+    if (this.fOh.contains(Long.valueOf(paramLong)))
     {
-      this.fMd.remove(Long.valueOf(paramLong));
+      this.fOh.remove(Long.valueOf(paramLong));
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.fMd.iterator();
+      Iterator localIterator = this.fOh.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
       }
@@ -186,7 +194,7 @@ public final class c
       }
       this.field_related_msgids = localStringBuilder.toString();
     }
-    if (this.fMd.size() == 0)
+    if (this.fOh.size() == 0)
     {
       AppMethodBeat.o(182137);
       return true;

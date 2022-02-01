@@ -4,25 +4,25 @@ import android.os.Bundle;
 
 public abstract interface c
 {
-  public abstract void Q(Bundle paramBundle);
-  
   public abstract void R(Bundle paramBundle);
   
-  public abstract boolean S(Bundle paramBundle);
+  public abstract void S(Bundle paramBundle);
   
-  public abstract void T(Bundle paramBundle);
+  public abstract boolean T(Bundle paramBundle);
   
   public abstract void U(Bundle paramBundle);
   
   public abstract void V(Bundle paramBundle);
   
-  public abstract void X(Bundle paramBundle);
+  public abstract void W(Bundle paramBundle);
   
   public abstract void Y(Bundle paramBundle);
   
-  public abstract void bQU();
+  public abstract void Z(Bundle paramBundle);
   
-  public abstract Bundle bQW();
+  public abstract void bRV();
+  
+  public abstract Bundle bRX();
 }
 
 

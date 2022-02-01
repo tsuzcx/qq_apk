@@ -12,7 +12,7 @@ final class RegByMobileSendSmsUI$10
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128571);
-    RegByMobileSendSmsUI.d(this.jpq);
+    RegByMobileSendSmsUI.d(this.jsj);
     AppMethodBeat.o(128571);
     return true;
   }

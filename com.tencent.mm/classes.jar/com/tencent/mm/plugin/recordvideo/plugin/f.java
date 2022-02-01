@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fp;
+import com.tencent.mm.g.b.a.fr;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
@@ -13,23 +13,23 @@ import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onAttach", "", "onClick", "v", "onDetach", "resetStyle", "bgResId", "", "textColor", "text", "height", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)V", "plugin-recordvideo_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onAttach", "", "onClick", "v", "onDetach", "resetStyle", "bgResId", "", "textColor", "text", "height", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)V", "plugin-recordvideo_release"})
 public final class f
   implements View.OnClickListener, t
 {
   private final String TAG;
-  d sQE;
+  d tbP;
   private View view;
   
   public f(View paramView, d paramd)
   {
     AppMethodBeat.i(75489);
     this.view = paramView;
-    this.sQE = paramd;
+    this.tbP = paramd;
     this.TAG = "MicroMsg.EditFinishPlugin";
     this.view.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(75489);
@@ -38,7 +38,7 @@ public final class f
   public final void a(Integer paramInteger1, Integer paramInteger2, String paramString, Integer paramInteger3)
   {
     AppMethodBeat.i(75488);
-    ad.i(this.TAG, paramString + ' ' + paramInteger3);
+    ae.i(this.TAG, paramString + ' ' + paramInteger3);
     View localView = this.view;
     if ((paramInteger1 != null) && (paramInteger1.intValue() != 0)) {
       localView.setBackgroundResource(paramInteger1.intValue());
@@ -65,16 +65,16 @@ public final class f
     }
   }
   
-  public final boolean aoB()
+  public final boolean aoQ()
   {
     return false;
   }
   
-  public final void ayX()
+  public final void azm()
   {
-    AppMethodBeat.i(200306);
+    AppMethodBeat.i(206567);
     this.view.setVisibility(0);
-    AppMethodBeat.o(200306);
+    AppMethodBeat.o(206567);
   }
   
   public final String name()
@@ -89,14 +89,14 @@ public final class f
     AppMethodBeat.i(75487);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    ad.i(this.TAG, "on click edit finish");
-    paramView = c.xHa;
-    c.NM(12);
-    paramView = c.xHa;
-    c.dGL().kl(System.currentTimeMillis());
-    if (!CaptureDataManager.xxY.a(this.view.getContext(), (CaptureDataManager.a)new a(this))) {
-      d.b.a(this.sQE, d.c.xEW);
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    ae.i(this.TAG, "on click edit finish");
+    paramView = c.xWV;
+    c.Os(12);
+    paramView = c.xWV;
+    c.dKc().kw(System.currentTimeMillis());
+    if (!CaptureDataManager.xNV.a(this.view.getContext(), (CaptureDataManager.a)new a(this))) {
+      d.b.a(this.tbP, d.c.xUR);
     }
     a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(75487);
@@ -104,20 +104,20 @@ public final class f
   
   public final void onDetach()
   {
-    AppMethodBeat.i(200307);
+    AppMethodBeat.i(206568);
     this.view.setVisibility(4);
-    AppMethodBeat.o(200307);
+    AppMethodBeat.o(206568);
   }
   
   public final void onPause() {}
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(200308);
+    AppMethodBeat.i(206569);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(200308);
+    AppMethodBeat.o(206569);
   }
   
   public final void onResume() {}
@@ -128,23 +128,23 @@ public final class f
   
   public final void setVisibility(int paramInt) {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onRequestFinish"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onRequestFinish"})
   static final class a
     implements CaptureDataManager.a
   {
     a(f paramf) {}
     
-    public final void dFH()
+    public final void dIY()
     {
       AppMethodBeat.i(75486);
-      d.b.a(this.xAf.sQE, d.c.xEW);
+      d.b.a(this.xQb.tbP, d.c.xUR);
       AppMethodBeat.o(75486);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.f
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import java.util.Queue;
 final class c
 {
   int UR;
-  int cYf;
-  Queue<View> gEC;
-  Queue<View> gED;
-  String gEE;
-  int[] gEF;
-  ViewGroup gEG;
-  boolean gEH;
+  int cZd;
+  Queue<View> gHj;
+  Queue<View> gHk;
+  String gHl;
+  int[] gHm;
+  ViewGroup gHn;
+  boolean gHo;
   
   c()
   {
     AppMethodBeat.i(141008);
-    this.gEC = new LinkedList();
-    this.gED = new LinkedList();
+    this.gHj = new LinkedList();
+    this.gHk = new LinkedList();
     AppMethodBeat.o(141008);
   }
 }

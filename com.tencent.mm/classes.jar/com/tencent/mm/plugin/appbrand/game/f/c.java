@@ -5,18 +5,18 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.page.t;
 import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 @SuppressLint({"ViewConstructor"})
 public final class c
-  extends v
+  extends u
 {
-  public c(Context paramContext, o paramo)
+  public c(Context paramContext, p paramp)
   {
-    super(paramContext, paramo, new a((byte)0));
+    super(paramContext, paramp, new a((byte)0));
     AppMethodBeat.i(45176);
     AppMethodBeat.o(45176);
   }
@@ -24,11 +24,11 @@ public final class c
   static final class a
     extends com.tencent.luggage.game.page.f
   {
-    public final aa a(u paramu)
+    public final z a(t paramt)
     {
       AppMethodBeat.i(174729);
-      paramu = new d();
-      paramu.a(new f.d()
+      paramt = new d();
+      paramt.a(new f.d()
       {
         public final void onForeground()
         {
@@ -37,7 +37,7 @@ public final class c
           AppMethodBeat.o(45173);
         }
       });
-      paramu.a(new f.b()
+      paramt.a(new f.b()
       {
         public final void onBackground()
         {
@@ -47,13 +47,13 @@ public final class c
         }
       });
       AppMethodBeat.o(174729);
-      return paramu;
+      return paramt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,82 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dek
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public com.tencent.mm.bx.b HsN;
-  public int Version;
+  public int HLF;
+  public String MD5;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152695);
+    AppMethodBeat.i(32454);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HsN == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: Signature");
-        AppMethodBeat.o(152695);
-        throw paramVarArgs;
+      if (this.MD5 != null) {
+        paramVarArgs.d(1, this.MD5);
       }
-      paramVarArgs.aS(1, this.Version);
-      if (this.HsN != null) {
-        paramVarArgs.c(2, this.HsN);
-      }
-      AppMethodBeat.o(152695);
+      paramVarArgs.aS(2, this.HLF);
+      AppMethodBeat.o(32454);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.Version) + 0;
-      paramInt = i;
-      if (this.HsN != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.HsN);
+    if (paramInt == 1) {
+      if (this.MD5 == null) {
+        break label266;
       }
-      AppMethodBeat.o(152695);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label266:
+    for (paramInt = f.a.a.b.b.a.e(1, this.MD5) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+      int i = f.a.a.b.b.a.bz(2, this.HLF);
+      AppMethodBeat.o(32454);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gCg();
+          }
         }
-      }
-      if (this.HsN == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: Signature");
-        AppMethodBeat.o(152695);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(152695);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dek localdek = (dek)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(152695);
-        return -1;
-      case 1: 
-        localdek.Version = locala.NPN.zc();
-        AppMethodBeat.o(152695);
+        AppMethodBeat.o(32454);
         return 0;
       }
-      localdek.HsN = locala.NPN.gxI();
-      AppMethodBeat.o(152695);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dek localdek = (dek)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32454);
+          return -1;
+        case 1: 
+          localdek.MD5 = locala.OmT.readString();
+          AppMethodBeat.o(32454);
+          return 0;
+        }
+        localdek.HLF = locala.OmT.zc();
+        AppMethodBeat.o(32454);
+        return 0;
+      }
+      AppMethodBeat.o(32454);
+      return -1;
     }
-    AppMethodBeat.o(152695);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dek
  * JD-Core Version:    0.7.0.1
  */

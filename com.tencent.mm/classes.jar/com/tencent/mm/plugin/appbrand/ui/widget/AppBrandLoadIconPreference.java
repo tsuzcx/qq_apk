@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.a.b.h;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.plugin.appbrand.z.c.a;
-import com.tencent.mm.plugin.appbrand.z.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.appbrand.y.c.a;
+import com.tencent.mm.plugin.appbrand.y.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ar;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.util.LinkedList;
@@ -22,31 +22,31 @@ import java.util.LinkedList;
 public class AppBrandLoadIconPreference
   extends Preference
 {
-  private String fTa;
-  private b.h fUX;
-  private int fUY;
-  private int fUZ;
-  private int fVa;
-  private int fVb;
-  private int fVc;
+  private String fVg;
+  private b.h fXd;
+  private int fXe;
+  private int fXf;
+  private int fXg;
+  private int fXh;
+  private int fXi;
+  private ThreeDotsLoadingView mBF;
   private Context mContext;
-  private AppBrandNearbyShowcaseView mNY;
-  private View mNZ;
-  private boolean mOa;
-  private LinkedList<e> mOb;
+  private AppBrandNearbyShowcaseView mTc;
+  private View mTd;
+  private boolean mTe;
+  private LinkedList<e> mTf;
   private View mView;
-  private ThreeDotsLoadingView mwI;
   
   public AppBrandLoadIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(121074);
     this.mView = null;
-    this.mOa = false;
-    this.fVb = -1;
-    this.fVc = -1;
-    this.mOb = new LinkedList();
-    bV(paramContext);
+    this.mTe = false;
+    this.fXh = -1;
+    this.fXi = -1;
+    this.mTf = new LinkedList();
+    bX(paramContext);
     AppMethodBeat.o(121074);
   }
   
@@ -55,15 +55,15 @@ public class AppBrandLoadIconPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(121075);
     this.mView = null;
-    this.mOa = false;
-    this.fVb = -1;
-    this.fVc = -1;
-    this.mOb = new LinkedList();
-    bV(paramContext);
+    this.mTe = false;
+    this.fXh = -1;
+    this.fXi = -1;
+    this.mTf = new LinkedList();
+    bX(paramContext);
     AppMethodBeat.o(121075);
   }
   
-  private void bV(Context paramContext)
+  private void bX(Context paramContext)
   {
     AppMethodBeat.i(121076);
     setLayoutResource(2131494804);
@@ -71,7 +71,7 @@ public class AppBrandLoadIconPreference
     AppMethodBeat.o(121076);
   }
   
-  private void cN(final View paramView)
+  private void cO(final View paramView)
   {
     AppMethodBeat.i(121080);
     if (paramView.getVisibility() == 0) {
@@ -104,32 +104,32 @@ public class AppBrandLoadIconPreference
   {
     AppMethodBeat.i(121078);
     super.onBindView(paramView);
-    this.fUY = a.fromDPToPix(this.mContext, 21);
-    this.fUZ = a.fromDPToPix(this.mContext, 11);
-    this.fVa = a.fromDPToPix(this.mContext, 2);
-    this.fVb = this.mContext.getResources().getColor(2131100498);
-    this.mNZ = paramView.findViewById(2131296768);
-    this.mwI = ((ThreeDotsLoadingView)paramView.findViewById(2131296773));
-    this.mNY = ((AppBrandNearbyShowcaseView)paramView.findViewById(2131296769));
-    this.mNY.setIconSize(this.fUY + this.fVa * 2);
-    this.mNY.setIconGap(this.fUZ);
-    if ((this.fTa == null) || (this.mwI == null))
+    this.fXe = a.fromDPToPix(this.mContext, 21);
+    this.fXf = a.fromDPToPix(this.mContext, 11);
+    this.fXg = a.fromDPToPix(this.mContext, 2);
+    this.fXh = this.mContext.getResources().getColor(2131100498);
+    this.mTd = paramView.findViewById(2131296768);
+    this.mBF = ((ThreeDotsLoadingView)paramView.findViewById(2131296773));
+    this.mTc = ((AppBrandNearbyShowcaseView)paramView.findViewById(2131296769));
+    this.mTc.setIconSize(this.fXe + this.fXg * 2);
+    this.mTc.setIconGap(this.fXf);
+    if ((this.fVg == null) || (this.mBF == null))
     {
-      ad.i("MicroMsg.AppBrandLoadIconPreference", "startLoad mTalker or mLoadingView is null");
+      ae.i("MicroMsg.AppBrandLoadIconPreference", "startLoad mTalker or mLoadingView is null");
       AppMethodBeat.o(121078);
       return;
     }
-    if (this.mOa)
+    if (this.mTe)
     {
-      ad.i("MicroMsg.AppBrandLoadIconPreference", "startLoad has load.");
+      ae.i("MicroMsg.AppBrandLoadIconPreference", "startLoad has load.");
       AppMethodBeat.o(121078);
       return;
     }
-    this.mOa = true;
-    cN(this.mNZ);
-    f(this.mwI, null);
-    this.mwI.fLJ();
-    g.ajF().ay(new Runnable()
+    this.mTe = true;
+    cO(this.mTd);
+    f(this.mBF, null);
+    this.mBF.fQd();
+    g.ajU().aw(new Runnable()
     {
       public final void run()
       {

@@ -25,10 +25,10 @@ public class TPDownloadParam
   
   private String getExtraFormatNodesJsonInfo()
   {
-    AppMethodBeat.i(190023);
+    AppMethodBeat.i(207236);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190023);
+      AppMethodBeat.o(207236);
       return "[]";
     }
     for (;;)
@@ -53,12 +53,12 @@ public class TPDownloadParam
       catch (Throwable localThrowable)
       {
         TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
-        AppMethodBeat.o(190023);
+        AppMethodBeat.o(207236);
         return "[]";
       }
       localStringBuffer.append("]");
       String str = localStringBuffer.toString();
-      AppMethodBeat.o(190023);
+      AppMethodBeat.o(207236);
       return str;
       i += 1;
     }
@@ -67,10 +67,10 @@ public class TPDownloadParam
   public String getCdnUrls()
   {
     int i = 0;
-    AppMethodBeat.i(190009);
+    AppMethodBeat.i(207222);
     if (this.urlList == null)
     {
-      AppMethodBeat.o(190009);
+      AppMethodBeat.o(207222);
       return "";
     }
     Object localObject = new StringBuffer();
@@ -103,7 +103,7 @@ public class TPDownloadParam
         ((StringBuffer)localObject).deleteCharAt(((StringBuffer)localObject).length() - 1);
       }
       localObject = ((StringBuffer)localObject).toString();
-      AppMethodBeat.o(190009);
+      AppMethodBeat.o(207222);
       return localObject;
       bool = false;
     }
@@ -112,32 +112,32 @@ public class TPDownloadParam
   public int getClipCount()
   {
     int i = 1;
-    AppMethodBeat.i(190017);
+    AppMethodBeat.i(207230);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190017);
+      AppMethodBeat.o(207230);
       return 1;
     }
     if (this.extInfoMap.containsKey("dl_param_play_clip_count")) {
       i = ((Integer)this.extInfoMap.get("dl_param_play_clip_count")).intValue();
     }
-    AppMethodBeat.o(190017);
+    AppMethodBeat.o(207230);
     return i;
   }
   
   public int getClipNo()
   {
     int i = 1;
-    AppMethodBeat.i(190018);
+    AppMethodBeat.i(207231);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190018);
+      AppMethodBeat.o(207231);
       return 1;
     }
     if (this.extInfoMap.containsKey("dl_param_play_clip_no")) {
       i = ((Integer)this.extInfoMap.get("dl_param_play_clip_no")).intValue();
     }
-    AppMethodBeat.o(190018);
+    AppMethodBeat.o(207231);
     return i;
   }
   
@@ -148,14 +148,14 @@ public class TPDownloadParam
   
   public Object getExtInfo(String paramString)
   {
-    AppMethodBeat.i(190021);
+    AppMethodBeat.i(207234);
     if (this.extInfoMap == null)
     {
-      AppMethodBeat.o(190021);
+      AppMethodBeat.o(207234);
       return null;
     }
     paramString = this.extInfoMap.get(paramString);
-    AppMethodBeat.o(190021);
+    AppMethodBeat.o(207234);
     return paramString;
   }
   
@@ -166,10 +166,10 @@ public class TPDownloadParam
   
   public String getExtraJsonInfo()
   {
-    AppMethodBeat.i(190022);
+    AppMethodBeat.i(207235);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190022);
+      AppMethodBeat.o(207235);
       return "";
     }
     try
@@ -190,114 +190,114 @@ public class TPDownloadParam
     catch (Throwable localThrowable)
     {
       TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
-      AppMethodBeat.o(190022);
+      AppMethodBeat.o(207235);
       return "";
     }
     String str = localThrowable.toString();
     str = String.format("%s,\"%s\":%s}", new Object[] { str.substring(0, str.length() - 1), "dl_param_format_nodes", getExtraFormatNodesJsonInfo() });
-    AppMethodBeat.o(190022);
+    AppMethodBeat.o(207235);
     return str;
     label280:
     str = str.toString();
-    AppMethodBeat.o(190022);
+    AppMethodBeat.o(207235);
     return str;
   }
   
   public String getFormat()
   {
-    AppMethodBeat.i(190015);
+    AppMethodBeat.i(207228);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190015);
+      AppMethodBeat.o(207228);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_current_format")) {
       str = (String)this.extInfoMap.get("dl_param_current_format");
     }
-    AppMethodBeat.o(190015);
+    AppMethodBeat.o(207228);
     return str;
   }
   
   public String getKeyid()
   {
-    AppMethodBeat.i(190016);
+    AppMethodBeat.i(207229);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190016);
+      AppMethodBeat.o(207229);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_play_keyid")) {
       str = (String)this.extInfoMap.get("dl_param_play_keyid");
     }
-    AppMethodBeat.o(190016);
+    AppMethodBeat.o(207229);
     return str;
   }
   
   public Map<String, String> getOfflinePlayExtraInfo()
   {
-    AppMethodBeat.i(190013);
+    AppMethodBeat.i(207226);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190013);
+      AppMethodBeat.o(207226);
       return null;
     }
     if (this.extInfoMap.containsKey("dl_param_play_extra_info"))
     {
       Map localMap = (Map)this.extInfoMap.get("dl_param_play_extra_info");
-      AppMethodBeat.o(190013);
+      AppMethodBeat.o(207226);
       return localMap;
     }
-    AppMethodBeat.o(190013);
+    AppMethodBeat.o(207226);
     return null;
   }
   
   public String getPlayDefinition()
   {
-    AppMethodBeat.i(190014);
+    AppMethodBeat.i(207227);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190014);
+      AppMethodBeat.o(207227);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_play_definition")) {
       str = (String)this.extInfoMap.get("dl_param_play_definition");
     }
-    AppMethodBeat.o(190014);
+    AppMethodBeat.o(207227);
     return str;
   }
   
   public String getSavaPath()
   {
-    AppMethodBeat.i(190020);
+    AppMethodBeat.i(207233);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190020);
+      AppMethodBeat.o(207233);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_save_path")) {
       str = (String)this.extInfoMap.get("dl_param_save_path");
     }
-    AppMethodBeat.o(190020);
+    AppMethodBeat.o(207233);
     return str;
   }
   
   public long getTotalDurationMS()
   {
     long l = 0L;
-    AppMethodBeat.i(190019);
+    AppMethodBeat.i(207232);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190019);
+      AppMethodBeat.o(207232);
       return 0L;
     }
     if (this.extInfoMap.containsKey("dl_param_file_duration")) {
       l = ((Long)this.extInfoMap.get("dl_param_file_duration")).longValue();
     }
-    AppMethodBeat.o(190019);
+    AppMethodBeat.o(207232);
     return l;
   }
   
@@ -308,32 +308,32 @@ public class TPDownloadParam
   
   public String getVid()
   {
-    AppMethodBeat.i(190010);
+    AppMethodBeat.i(207223);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190010);
+      AppMethodBeat.o(207223);
       return "";
     }
     String str = "";
     if (this.extInfoMap.containsKey("dl_param_vid")) {
       str = (String)this.extInfoMap.get("dl_param_vid");
     }
-    AppMethodBeat.o(190010);
+    AppMethodBeat.o(207223);
     return str;
   }
   
   public boolean isAdaptive()
   {
-    AppMethodBeat.i(190012);
+    AppMethodBeat.i(207225);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190012);
+      AppMethodBeat.o(207225);
       return false;
     }
     if ((this.extInfoMap.containsKey("dl_param_adaptive_type")) && (((Integer)this.extInfoMap.get("dl_param_adaptive_type")).intValue() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(190012);
+      AppMethodBeat.o(207225);
       return bool;
     }
   }
@@ -341,16 +341,16 @@ public class TPDownloadParam
   public boolean isOffline()
   {
     boolean bool = false;
-    AppMethodBeat.i(190011);
+    AppMethodBeat.i(207224);
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty()))
     {
-      AppMethodBeat.o(190011);
+      AppMethodBeat.o(207224);
       return false;
     }
     if (this.extInfoMap.containsKey("dl_param_is_offline")) {
       bool = ((Boolean)this.extInfoMap.get("dl_param_is_offline")).booleanValue();
     }
-    AppMethodBeat.o(190011);
+    AppMethodBeat.o(207224);
     return bool;
   }
   

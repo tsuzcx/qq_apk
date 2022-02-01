@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -21,19 +21,19 @@ public class HCEService
   {
     AppMethodBeat.i(136155);
     super.onCreate();
-    ad.i("MicroMsg.HCEService", "alvinluo HCEService onCreate");
+    ae.i("MicroMsg.HCEService", "alvinluo HCEService onCreate");
     AppMethodBeat.o(136155);
   }
   
   public void onDeactivated(int paramInt)
   {
     AppMethodBeat.i(136159);
-    ad.i("MicroMsg.HCEService", "alvinluo HCEService onDeactivated reason: %d", new Object[] { Integer.valueOf(paramInt) });
-    b.kYH.kYB = false;
-    b.kYH.kYC = false;
+    ae.i("MicroMsg.HCEService", "alvinluo HCEService onDeactivated reason: %d", new Object[] { Integer.valueOf(paramInt) });
+    b.lcq.lck = false;
+    b.lcq.lcl = false;
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_on_deactivated_reason", paramInt);
-    b.kYH.b(this.mAppId, 41, localBundle);
+    b.lcq.b(this.mAppId, 41, localBundle);
     AppMethodBeat.o(136159);
   }
   
@@ -41,17 +41,17 @@ public class HCEService
   {
     AppMethodBeat.i(136156);
     super.onDestroy();
-    ad.i("MicroMsg.HCEService", "alvinluo HCEService onDestroy");
-    b.kYH.blL();
+    ae.i("MicroMsg.HCEService", "alvinluo HCEService onDestroy");
+    b.lcq.bmu();
     AppMethodBeat.o(136156);
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136157);
-    ad.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand");
+    ae.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand");
     long l1 = System.currentTimeMillis();
-    ad.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand start: %d", new Object[] { Long.valueOf(l1) });
+    ae.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand start: %d", new Object[] { Long.valueOf(l1) });
     if (paramIntent == null)
     {
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
@@ -60,40 +60,40 @@ public class HCEService
     }
     try
     {
-      b localb = b.kYH;
+      b localb = b.lcq;
       Object localObject = (ResultReceiver)paramIntent.getParcelableExtra("HCE_Result_Receiver");
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo setHceService");
-      localb.kYG = this;
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo setHceService");
+      localb.lcp = this;
       localb.MK = ((ResultReceiver)localObject);
       this.mAppId = paramIntent.getStringExtra("key_appid");
-      localb = b.kYH;
-      localb.kYf = paramIntent.getIntExtra("key_time_limit", 1500);
-      if (localb.kYf < 1500)
+      localb = b.lcq;
+      localb.lbO = paramIntent.getIntExtra("key_time_limit", 1500);
+      if (localb.lbO < 1500)
       {
-        ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d smaller than: %d and set a valid value", new Object[] { Integer.valueOf(localb.kYf), Integer.valueOf(1500) });
-        localb.kYf = 1500;
+        ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d smaller than: %d and set a valid value", new Object[] { Integer.valueOf(localb.lbO), Integer.valueOf(1500) });
+        localb.lbO = 1500;
       }
-      if (localb.kYf > 60000)
+      if (localb.lbO > 60000)
       {
-        ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d, bigger than: %d and set a valid value", new Object[] { Integer.valueOf(localb.kYf), Integer.valueOf(60000) });
-        localb.kYf = 60000;
+        ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d, bigger than: %d and set a valid value", new Object[] { Integer.valueOf(localb.lbO), Integer.valueOf(60000) });
+        localb.lbO = 60000;
       }
-      ad.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService valid timeLimit: %d", new Object[] { Integer.valueOf(localb.kYf) });
-      localb = b.kYH;
+      ae.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService valid timeLimit: %d", new Object[] { Integer.valueOf(localb.lbO) });
+      localb = b.lcq;
       localObject = this.mAppId;
       ArrayList localArrayList = paramIntent.getStringArrayListExtra("key_aid_list");
       localb.mAppId = ((String)localObject);
-      localb.kYy = localArrayList;
-      b.kYH.blK();
-      b.kYH.kYz = false;
+      localb.lch = localArrayList;
+      b.lcq.bmt();
+      b.lcq.lci = false;
       long l2 = System.currentTimeMillis();
-      ad.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand end: %d, total: %d", new Object[] { Long.valueOf(l2), Long.valueOf(l2 - l1) });
+      ae.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand end: %d, total: %d", new Object[] { Long.valueOf(l2), Long.valueOf(l2 - l1) });
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.HCEService", localException, "under dos attack(?): invalid key_result_receiver", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.HCEService", localException, "under dos attack(?): invalid key_result_receiver", new Object[0]);
       }
     }
     paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
@@ -104,11 +104,11 @@ public class HCEService
   public byte[] processCommandApdu(byte[] paramArrayOfByte, Bundle paramBundle)
   {
     AppMethodBeat.i(136158);
-    ad.i("MicroMsg.HCEService", "alvinluo HCECOMMAND processCommandApdu, received command from system: %s", new Object[] { c.au(paramArrayOfByte) });
+    ae.i("MicroMsg.HCEService", "alvinluo HCECOMMAND processCommandApdu, received command from system: %s", new Object[] { c.au(paramArrayOfByte) });
     paramArrayOfByte = Base64.encode(paramArrayOfByte, 2);
     paramBundle = new Bundle();
     paramBundle.putString("key_apdu_command", new String(paramArrayOfByte, StandardCharsets.UTF_8));
-    b.kYH.a(31, this.mAppId, paramBundle);
+    b.lcq.a(31, this.mAppId, paramBundle);
     AppMethodBeat.o(136158);
     return null;
   }

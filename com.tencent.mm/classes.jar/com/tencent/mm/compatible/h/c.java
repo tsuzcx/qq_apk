@@ -10,124 +10,124 @@ import java.nio.ByteBuffer;
 @TargetApi(16)
 public final class c
 {
-  public final MediaExtractor gdS;
+  public final MediaExtractor gga;
   
   public c()
   {
     AppMethodBeat.i(155923);
-    this.gdS = new MediaExtractor();
+    this.gga = new MediaExtractor();
     AppMethodBeat.o(155923);
   }
   
   public final boolean advance()
   {
-    AppMethodBeat.i(221730);
-    boolean bool = this.gdS.advance();
-    AppMethodBeat.o(221730);
+    AppMethodBeat.i(224559);
+    boolean bool = this.gga.advance();
+    AppMethodBeat.o(224559);
     return bool;
   }
   
   public final long getSampleTime()
   {
-    AppMethodBeat.i(221731);
-    long l = this.gdS.getSampleTime();
-    AppMethodBeat.o(221731);
+    AppMethodBeat.i(224560);
+    long l = this.gga.getSampleTime();
+    AppMethodBeat.o(224560);
     return l;
   }
   
   public final int getSampleTrackIndex()
   {
     AppMethodBeat.i(155936);
-    int i = this.gdS.getSampleTrackIndex();
+    int i = this.gga.getSampleTrackIndex();
     AppMethodBeat.o(155936);
     return i;
   }
   
   public final int getTrackCount()
   {
-    AppMethodBeat.i(221729);
-    int i = this.gdS.getTrackCount();
-    AppMethodBeat.o(221729);
+    AppMethodBeat.i(224558);
+    int i = this.gga.getTrackCount();
+    AppMethodBeat.o(224558);
     return i;
   }
   
   public final MediaFormat getTrackFormat(int paramInt)
   {
     AppMethodBeat.i(155930);
-    MediaFormat localMediaFormat = this.gdS.getTrackFormat(paramInt);
+    MediaFormat localMediaFormat = this.gga.getTrackFormat(paramInt);
     AppMethodBeat.o(155930);
     return localMediaFormat;
   }
   
   public final int readSampleData(ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(196921);
-    paramInt = this.gdS.readSampleData(paramByteBuffer, paramInt);
-    AppMethodBeat.o(196921);
+    AppMethodBeat.i(209754);
+    paramInt = this.gga.readSampleData(paramByteBuffer, paramInt);
+    AppMethodBeat.o(209754);
     return paramInt;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(221728);
-    this.gdS.release();
-    AppMethodBeat.o(221728);
+    AppMethodBeat.i(224557);
+    this.gga.release();
+    AppMethodBeat.o(224557);
   }
   
   public final void seekTo(long paramLong, int paramInt)
   {
     AppMethodBeat.i(155933);
-    this.gdS.seekTo(paramLong, paramInt);
+    this.gga.seekTo(paramLong, paramInt);
     AppMethodBeat.o(155933);
   }
   
   public final void selectTrack(int paramInt)
   {
     AppMethodBeat.i(155931);
-    this.gdS.selectTrack(paramInt);
+    this.gga.selectTrack(paramInt);
     AppMethodBeat.o(155931);
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor)
   {
     AppMethodBeat.i(155926);
-    this.gdS.setDataSource(paramFileDescriptor);
+    this.gga.setDataSource(paramFileDescriptor);
     AppMethodBeat.o(155926);
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(155927);
-    this.gdS.setDataSource(paramFileDescriptor, paramLong1, paramLong2);
+    this.gga.setDataSource(paramFileDescriptor, paramLong1, paramLong2);
     AppMethodBeat.o(155927);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(221727);
-    vx(paramString);
-    AppMethodBeat.o(221727);
+    AppMethodBeat.i(224556);
+    vT(paramString);
+    AppMethodBeat.o(224556);
   }
   
   public final void unselectTrack(int paramInt)
   {
     AppMethodBeat.i(155932);
-    this.gdS.unselectTrack(paramInt);
+    this.gga.unselectTrack(paramInt);
     AppMethodBeat.o(155932);
   }
   
   /* Error */
-  public final void vx(String paramString)
+  public final void vT(String paramString)
   {
     // Byte code:
     //   0: ldc 94
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: iconst_0
-    //   7: invokestatic 100	com/tencent/mm/vfs/i:k	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   7: invokestatic 100	com/tencent/mm/vfs/o:k	(Ljava/lang/String;Z)Ljava/lang/String;
     //   10: ifnull +52 -> 62
     //   13: aload_0
-    //   14: getfield 25	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+    //   14: getfield 25	com/tencent/mm/compatible/h/c:gga	Landroid/media/MediaExtractor;
     //   17: aload_1
     //   18: aconst_null
     //   19: invokevirtual 103	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
@@ -151,10 +151,10 @@ public final class c
     //   59: invokestatic 130	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: aload_1
     //   63: ldc 132
-    //   65: invokestatic 136	com/tencent/mm/vfs/i:my	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   65: invokestatic 136	com/tencent/mm/vfs/o:mE	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   68: astore 4
     //   70: aload_0
-    //   71: getfield 25	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+    //   71: getfield 25	com/tencent/mm/compatible/h/c:gga	Landroid/media/MediaExtractor;
     //   74: aload 4
     //   76: invokevirtual 142	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   79: invokevirtual 76	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
@@ -197,7 +197,7 @@ public final class c
     //   156: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   159: invokestatic 130	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   162: aload_0
-    //   163: getfield 25	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+    //   163: getfield 25	com/tencent/mm/compatible/h/c:gga	Landroid/media/MediaExtractor;
     //   166: aload_1
     //   167: aconst_null
     //   168: invokevirtual 103	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
@@ -245,7 +245,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.h.c
  * JD-Core Version:    0.7.0.1
  */

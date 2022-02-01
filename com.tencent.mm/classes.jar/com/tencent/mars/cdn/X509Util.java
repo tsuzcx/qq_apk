@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.net.http.X509TrustManagerExtensions;
 import android.os.Build.VERSION;
 import android.util.Pair;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.k;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.KeyStore;
@@ -44,7 +44,7 @@ public class X509Util
   private static X509TrustManagerImplementation sDefaultTrustManager;
   private static boolean sLoadedSystemKeyStore;
   private static final Object sLock;
-  private static e sSystemCertificateDirectory;
+  private static k sSystemCertificateDirectory;
   private static KeyStore sSystemKeyStore;
   private static Set<Pair<X500Principal, PublicKey>> sSystemTrustAnchorCache;
   private static KeyStore sTestKeyStore;
@@ -122,12 +122,12 @@ public class X509Util
         catch (IllegalArgumentException localIllegalArgumentException)
         {
           localObject = localObject.getClass().getName();
-          ad.e("X509Util", "Error creating trust manager (" + (String)localObject + "): " + localIllegalArgumentException);
+          ae.e("X509Util", "Error creating trust manager (" + (String)localObject + "): " + localIllegalArgumentException);
         }
       }
       i += 1;
     }
-    ad.e("X509Util", "Could not find suitable trust manager");
+    ae.e("X509Util", "Could not find suitable trust manager");
     return null;
   }
   
@@ -171,7 +171,7 @@ public class X509Util
     //   64: getstatic 252	com/tencent/mars/cdn/X509Util:sSystemKeyStore	Ljava/security/KeyStore;
     //   67: aconst_null
     //   68: invokevirtual 152	java/security/KeyStore:load	(Ljava/security/KeyStore$LoadStoreParameter;)V
-    //   71: new 254	com/tencent/mm/vfs/e
+    //   71: new 254	com/tencent/mm/vfs/k
     //   74: dup
     //   75: new 114	java/lang/StringBuilder
     //   78: dup
@@ -182,8 +182,8 @@ public class X509Util
     //   91: ldc_w 265
     //   94: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokespecial 266	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   103: putstatic 268	com/tencent/mars/cdn/X509Util:sSystemCertificateDirectory	Lcom/tencent/mm/vfs/e;
+    //   100: invokespecial 266	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   103: putstatic 268	com/tencent/mars/cdn/X509Util:sSystemCertificateDirectory	Lcom/tencent/mm/vfs/k;
     //   106: iconst_1
     //   107: putstatic 245	com/tencent/mars/cdn/X509Util:sLoadedSystemKeyStore	Z
     //   110: getstatic 270	com/tencent/mars/cdn/X509Util:sSystemTrustAnchorCache	Ljava/util/Set;
@@ -228,7 +228,7 @@ public class X509Util
     //   210: aload_0
     //   211: ldc_w 295
     //   214: invokevirtual 291	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   217: invokestatic 301	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   217: invokestatic 301	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
     //   220: getstatic 280	com/tencent/mars/cdn/X509Util:sTrustStorageListener	Lcom/tencent/mars/cdn/X509Util$TrustStorageListener;
     //   223: aload_0
     //   224: invokevirtual 307	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
@@ -286,7 +286,7 @@ public class X509Util
         paramX509Certificate = ((String)localObject1).substring(0, i);
       }
     }
-    ad.i("X509Util", "certificate dn %s cn %s", new Object[] { localObject2, paramX509Certificate });
+    ae.i("X509Util", "certificate dn %s cn %s", new Object[] { localObject2, paramX509Certificate });
     if (paramX509Certificate.length() > 0) {
       localArrayList.add(paramX509Certificate);
     }
@@ -320,7 +320,7 @@ public class X509Util
         break label101;
       }
       String str = "*" + paramString.substring(i);
-      ad.i("X509Util", "try match nhost ".concat(String.valueOf(str)));
+      ae.i("X509Util", "try match nhost ".concat(String.valueOf(str)));
       if (paramList.contains(str)) {
         break;
       }
@@ -347,7 +347,7 @@ public class X509Util
       String str = hashPrincipal(paramX509Certificate.getSubjectX500Principal());
       i = 0;
       localObject1 = str + '.' + i;
-    } while (!new e(sSystemCertificateDirectory, (String)localObject1).exists());
+    } while (!new k(sSystemCertificateDirectory, (String)localObject1).exists());
     Object localObject2 = sSystemKeyStore.getCertificate("system:".concat(String.valueOf(localObject1)));
     if (localObject2 != null)
     {
@@ -355,7 +355,7 @@ public class X509Util
         break label197;
       }
       localObject2 = localObject2.getClass().getName();
-      ad.e("X509Util", "Anchor " + (String)localObject1 + " not an X509Certificate: " + (String)localObject2);
+      ae.e("X509Util", "Anchor " + (String)localObject1 + " not an X509Certificate: " + (String)localObject2);
     }
     label197:
     do
@@ -434,7 +434,7 @@ public class X509Util
     //   20: iconst_1
     //   21: aload_1
     //   22: aastore
-    //   23: invokestatic 378	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   23: invokestatic 378	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   26: aload_0
     //   27: ifnull +14 -> 41
     //   30: aload_0
@@ -487,14 +487,14 @@ public class X509Util
     //   126: aload 9
     //   128: invokevirtual 517	java/lang/Object:toString	()Ljava/lang/String;
     //   131: aastore
-    //   132: invokestatic 378	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   132: invokestatic 378	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   135: aload 9
     //   137: aload_2
     //   138: invokestatic 519	com/tencent/mars/cdn/X509Util:isHostMatched	(Ljava/util/List;Ljava/lang/String;)Z
     //   141: ifne +492 -> 633
     //   144: ldc 45
     //   146: ldc_w 521
-    //   149: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   149: invokestatic 218	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   152: iload_3
     //   153: iconst_1
     //   154: if_icmpeq +37 -> 191
@@ -547,7 +547,7 @@ public class X509Util
     //   240: invokevirtual 531	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
     //   243: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   249: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: invokestatic 218	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   252: iload_3
     //   253: iconst_1
     //   254: if_icmpeq +370 -> 624
@@ -567,7 +567,7 @@ public class X509Util
     //   284: ldc_w 535
     //   287: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   290: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokestatic 538	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   293: invokestatic 538	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   296: goto -79 -> 217
     //   299: aload 8
     //   301: aload 8
@@ -662,7 +662,7 @@ public class X509Util
     //   474: invokevirtual 562	java/security/cert/CertificateException:getMessage	()Ljava/lang/String;
     //   477: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   480: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: invokestatic 428	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   483: invokestatic 428	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   486: new 523	com/tencent/mars/cdn/AndroidCertVerifyResult
     //   489: dup
     //   490: bipush 254
@@ -720,7 +720,7 @@ public class X509Util
     //   597: invokevirtual 562	java/security/cert/CertificateException:getMessage	()Ljava/lang/String;
     //   600: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   603: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   606: invokestatic 428	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   606: invokestatic 428	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   609: new 523	com/tencent/mars/cdn/AndroidCertVerifyResult
     //   612: dup
     //   613: bipush 254
@@ -804,17 +804,17 @@ public class X509Util
         }
         catch (CertificateException paramContext)
         {
-          ad.e("X509Util", "Unable to reload the default TrustManager", new Object[] { paramContext });
+          ae.e("X509Util", "Unable to reload the default TrustManager", new Object[] { paramContext });
           return;
         }
         catch (KeyStoreException paramContext)
         {
-          ad.e("X509Util", "Unable to reload the default TrustManager", new Object[] { paramContext });
+          ae.e("X509Util", "Unable to reload the default TrustManager", new Object[] { paramContext });
           return;
         }
         catch (NoSuchAlgorithmException paramContext)
         {
-          ad.e("X509Util", "Unable to reload the default TrustManager", new Object[] { paramContext });
+          ae.e("X509Util", "Unable to reload the default TrustManager", new Object[] { paramContext });
           return;
         }
         if (("android.security.action.KEY_ACCESS_CHANGED".equals(paramIntent.getAction())) && (!paramIntent.getBooleanExtra("android.security.extra.KEY_ACCESSIBLE", false)))

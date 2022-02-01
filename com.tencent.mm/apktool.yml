@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: 微信-7.0.18-1740-3454.apk
+apkFileName: 微信-7.0.19-1760-3454.apk
 compressionType: false
 doNotCompress:
 - png
@@ -19,7 +19,7 @@ doNotCompress:
 - jpg
 - assets/fts/feature/version.info
 - mp3
-- assets/tencentmap/tms_ps/tms_module/d93cbed572d6c1f607def2a3aa4f13db
+- assets/tencentmap/tms_ps/tms_module/45d24df158f33eafc1323b21e63cd45d
 - assets/wxa_library/develop/DEVELOP
 - assets/wxa_library/local/LOCAL
 isFrameworkApk: false
@@ -38,5 +38,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1740'
-  versionName: 7.0.18
+  versionCode: '1760'
+  versionName: 7.0.19

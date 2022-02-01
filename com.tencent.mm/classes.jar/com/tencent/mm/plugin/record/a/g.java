@@ -7,7 +7,7 @@ public abstract interface g
 {
   public abstract boolean g(String paramString1, long paramLong, String paramString2);
   
-  public abstract void yC(long paramLong);
+  public abstract void zb(long paramLong);
 }
 
 

@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.qqmail.d;
 import android.util.Base64;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.xweb.util.a;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -23,68 +23,68 @@ public final class p
   implements k
 {
   private f callback;
-  public String dpf;
-  private b gPp;
-  public String xbV;
-  public String xbW;
+  public String dqk;
+  private b gRX;
+  public String xrM;
+  public String xrN;
   
   public p(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(215202);
+    AppMethodBeat.i(217948);
     b.a locala = new b.a();
     locala.funcId = getType();
-    this.xbV = paramString1;
-    this.dpf = paramString2;
-    this.xbW = paramString3;
+    this.xrM = paramString1;
+    this.dqk = paramString2;
+    this.xrN = paramString3;
     d locald = new d();
-    locald.xbl = paramInt;
-    if (!bt.isNullOrNil(paramString4)) {
-      locald.xbp = encrypt(paramString4, paramString3);
+    locald.xrc = paramInt;
+    if (!bu.isNullOrNil(paramString4)) {
+      locald.xrg = encrypt(paramString4, paramString3);
     }
-    locald.xbn = paramString1;
-    locald.xbo = paramString2;
-    locala.hNM = locald;
-    locala.hNN = new e();
+    locald.xre = paramString1;
+    locald.xrf = paramString2;
+    locala.hQF = locald;
+    locala.hQG = new e();
     locala.uri = "/cgi-bin/micromsg-bin/commitbindxmail";
-    this.gPp = locala.aDC();
-    AppMethodBeat.o(215202);
+    this.gRX = locala.aDS();
+    AppMethodBeat.o(217948);
   }
   
   private static String encrypt(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215203);
+    AppMethodBeat.i(217949);
     try
     {
-      paramString2 = a.bbm(paramString2);
+      paramString2 = a.bcP(paramString2);
       SecretKeySpec localSecretKeySpec = new SecretKeySpec(paramString2, "AES");
       Object localObject = Cipher.getInstance("AES/CBC/PKCS5Padding");
       ((Cipher)localObject).init(1, localSecretKeySpec, new IvParameterSpec(paramString2));
-      paramString1 = ai.ee(paramString1).getBytes("UTF-8");
+      paramString1 = aj.ej(paramString1).getBytes("UTF-8");
       localObject = ((Cipher)localObject).doFinal(paramString1);
-      ad.d("MicroMsg.NetSceneBindXmail", "key %s, pwd %s, encrypt %s", new Object[] { HexUtil.bytes2HexStr(paramString2), HexUtil.bytes2HexStr(paramString1), HexUtil.bytes2HexStr((byte[])localObject) });
+      ae.d("MicroMsg.NetSceneBindXmail", "key %s, pwd %s, encrypt %s", new Object[] { HexUtil.bytes2HexStr(paramString2), HexUtil.bytes2HexStr(paramString1), HexUtil.bytes2HexStr((byte[])localObject) });
       paramString1 = Base64.encodeToString((byte[])localObject, 2);
-      AppMethodBeat.o(215203);
+      AppMethodBeat.o(217949);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.NetSceneBindXmail", paramString1, "bind xmail encrypt second pwd error", new Object[0]);
-      AppMethodBeat.o(215203);
+      ae.printErrStackTrace("MicroMsg.NetSceneBindXmail", paramString1, "bind xmail encrypt second pwd error", new Object[0]);
+      AppMethodBeat.o(217949);
     }
     return "";
   }
   
-  public final int dCi()
+  public final int dFz()
   {
-    return ((e)this.gPp.hNL.hNQ).xbq;
+    return ((e)this.gRX.hQE.hQJ).xrh;
   }
   
   public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    AppMethodBeat.i(215204);
+    AppMethodBeat.i(217950);
     this.callback = paramf;
-    int i = dispatch(parame, this.gPp, this);
-    AppMethodBeat.o(215204);
+    int i = dispatch(parame, this.gRX, this);
+    AppMethodBeat.o(217950);
     return i;
   }
   
@@ -95,9 +95,9 @@ public final class p
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215205);
+    AppMethodBeat.i(217951);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(215205);
+    AppMethodBeat.o(217951);
   }
 }
 

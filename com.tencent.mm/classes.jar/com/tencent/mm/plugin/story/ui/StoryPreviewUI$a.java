@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class StoryPreviewUI$a
   implements View.OnClickListener
 {
@@ -18,8 +18,8 @@ final class StoryPreviewUI$a
     AppMethodBeat.i(119639);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/story/ui/StoryPreviewUI$onCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    this.AUT.finish();
+    a.b("com/tencent/mm/plugin/story/ui/StoryPreviewUI$onCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    this.Bmr.finish();
     a.a(this, "com/tencent/mm/plugin/story/ui/StoryPreviewUI$onCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(119639);
   }

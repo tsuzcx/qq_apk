@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.bd.c;
+import com.tencent.mm.plugin.appbrand.appcache.be.c;
 import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Map;
 
 public final class d
-  implements bd.c, DebuggerShell.a
+  implements be.c, DebuggerShell.a
 {
   public final void A(Intent paramIntent)
   {
     AppMethodBeat.i(44946);
-    f.bY(paramIntent.getStringExtra("appId"), paramIntent.getIntExtra("versionType", 0));
+    f.cc(paramIntent.getStringExtra("appId"), paramIntent.getIntExtra("versionType", 0));
     AppMethodBeat.o(44946);
   }
   
-  public final void k(String paramString, Map<String, String> paramMap)
+  public final void l(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(188122);
-    if (DebuggerShell.bew())
+    AppMethodBeat.i(222247);
+    if (DebuggerShell.bfe())
     {
       paramString = (String)paramMap.get(".sysmsg.AppBrandForceKill.AppId");
-      int i = bt.getInt((String)paramMap.get(".sysmsg.AppBrandForceKill.VersionType"), 0);
-      if (bt.isNullOrNil(paramString))
+      int i = bu.getInt((String)paramMap.get(".sysmsg.AppBrandForceKill.VersionType"), 0);
+      if (bu.isNullOrNil(paramString))
       {
-        AppMethodBeat.o(188122);
+        AppMethodBeat.o(222247);
         return;
       }
-      f.bY(paramString, i);
+      f.cc(paramString, i);
     }
-    AppMethodBeat.o(188122);
+    AppMethodBeat.o(222247);
   }
   
   public final String name()

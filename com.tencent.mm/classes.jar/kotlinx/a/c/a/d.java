@@ -11,183 +11,183 @@ import kotlinx.a.c.o;
 import kotlinx.a.c.q;
 import kotlinx.a.c.s;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/internal/JsonParser;", "", "configuration", "Lkotlinx/serialization/json/JsonConfiguration;", "reader", "Lkotlinx/serialization/json/internal/JsonReader;", "(Lkotlinx/serialization/json/JsonConfiguration;Lkotlinx/serialization/json/internal/JsonReader;)V", "isLenient", "", "read", "Lkotlinx/serialization/json/JsonElement;", "readArray", "readObject", "readValue", "isString", "kotlinx-serialization-runtime"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/internal/JsonParser;", "", "configuration", "Lkotlinx/serialization/json/JsonConfiguration;", "reader", "Lkotlinx/serialization/json/internal/JsonReader;", "(Lkotlinx/serialization/json/JsonConfiguration;Lkotlinx/serialization/json/internal/JsonReader;)V", "isLenient", "", "read", "Lkotlinx/serialization/json/JsonElement;", "readArray", "readObject", "readValue", "isString", "kotlinx-serialization-runtime"})
 public final class d
 {
-  private final boolean NNr;
-  private final f NOg;
+  private final boolean Okx;
+  private final f Olm;
   
   public d(kotlinx.a.c.d paramd, f paramf)
   {
-    AppMethodBeat.i(191367);
-    this.NOg = paramf;
-    this.NNr = paramd.NNr;
-    AppMethodBeat.o(191367);
+    AppMethodBeat.i(199955);
+    this.Olm = paramf;
+    this.Okx = paramd.Okx;
+    AppMethodBeat.o(199955);
   }
   
-  private final kotlinx.a.c.f Az(boolean paramBoolean)
+  private final kotlinx.a.c.f AM(boolean paramBoolean)
   {
-    AppMethodBeat.i(191365);
-    if ((!this.NNr) && (paramBoolean)) {}
-    for (Object localObject = this.NOg.gxr();; localObject = this.NOg.gxq())
+    AppMethodBeat.i(199953);
+    if ((!this.Okx) && (paramBoolean)) {}
+    for (Object localObject = this.Olm.gBT();; localObject = this.Olm.gBS())
     {
       localObject = (kotlinx.a.c.f)new o(localObject, paramBoolean);
-      AppMethodBeat.o(191365);
+      AppMethodBeat.o(199953);
       return localObject;
     }
   }
   
-  private final kotlinx.a.c.f gxm()
+  private final kotlinx.a.c.f gBO()
   {
     int j = 1;
-    AppMethodBeat.i(191363);
-    Object localObject1 = this.NOg;
-    if (((f)localObject1).NOi != 6)
+    AppMethodBeat.i(199951);
+    Object localObject1 = this.Olm;
+    if (((f)localObject1).Olo != 6)
     {
-      ((f)localObject1).hw("Expected start of the object", ((f)localObject1).NOj);
-      AppMethodBeat.o(191363);
+      ((f)localObject1).hF("Expected start of the object", ((f)localObject1).Olp);
+      AppMethodBeat.o(199951);
       throw null;
     }
-    this.NOg.gxt();
-    localObject1 = this.NOg;
-    if (this.NOg.NOi != 4) {}
+    this.Olm.gBV();
+    localObject1 = this.Olm;
+    if (this.Olm.Olo != 4) {}
     for (int i = 1;; i = 0)
     {
-      int k = this.NOg.vty;
+      int k = this.Olm.vFD;
       if (i != 0) {
         break;
       }
-      ((f)localObject1).hw("Unexpected leading comma", k);
-      AppMethodBeat.o(191363);
+      ((f)localObject1).hF("Unexpected leading comma", k);
+      AppMethodBeat.o(199951);
       throw null;
     }
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     i = 0;
-    while (this.NOg.gxp())
+    while (this.Olm.gBR())
     {
-      if (this.NNr) {}
-      for (localObject1 = this.NOg.gxq();; localObject1 = this.NOg.gxr())
+      if (this.Okx) {}
+      for (localObject1 = this.Olm.gBS();; localObject1 = this.Olm.gBT())
       {
-        localObject2 = this.NOg;
-        if (((f)localObject2).NOi == 5) {
+        localObject2 = this.Olm;
+        if (((f)localObject2).Olo == 5) {
           break;
         }
-        ((f)localObject2).hw("Expected ':'", ((f)localObject2).NOj);
-        AppMethodBeat.o(191363);
+        ((f)localObject2).hF("Expected ':'", ((f)localObject2).Olp);
+        AppMethodBeat.o(199951);
         throw null;
       }
-      this.NOg.gxt();
-      Object localObject2 = gxo();
+      this.Olm.gBV();
+      Object localObject2 = gBQ();
       ((Map)localLinkedHashMap).put(localObject1, localObject2);
-      if (this.NOg.NOi != 4)
+      if (this.Olm.Olo != 4)
       {
-        localObject1 = this.NOg;
-        if (((f)localObject1).NOi != 7)
+        localObject1 = this.Olm;
+        if (((f)localObject1).Olo != 7)
         {
-          ((f)localObject1).hw("Expected end of the object or comma", ((f)localObject1).NOj);
-          AppMethodBeat.o(191363);
+          ((f)localObject1).hF("Expected end of the object or comma", ((f)localObject1).Olp);
+          AppMethodBeat.o(199951);
           throw null;
         }
         i = 0;
       }
       else
       {
-        this.NOg.gxt();
+        this.Olm.gBV();
         i = 1;
       }
     }
-    localObject1 = this.NOg;
-    if ((i == 0) && (this.NOg.NOi == 7)) {}
+    localObject1 = this.Olm;
+    if ((i == 0) && (this.Olm.Olo == 7)) {}
     for (i = j;; i = 0)
     {
-      j = this.NOg.vty;
+      j = this.Olm.vFD;
       if (i != 0) {
         break;
       }
-      ((f)localObject1).hw("Expected end of the object", j);
-      AppMethodBeat.o(191363);
+      ((f)localObject1).hF("Expected end of the object", j);
+      AppMethodBeat.o(199951);
       throw null;
     }
-    this.NOg.gxt();
+    this.Olm.gBV();
     localObject1 = (kotlinx.a.c.f)new s((Map)localLinkedHashMap);
-    AppMethodBeat.o(191363);
+    AppMethodBeat.o(199951);
     return localObject1;
   }
   
-  private final kotlinx.a.c.f gxn()
+  private final kotlinx.a.c.f gBP()
   {
     int j = 1;
-    AppMethodBeat.i(191364);
-    Object localObject = this.NOg;
-    if (((f)localObject).NOi != 8)
+    AppMethodBeat.i(199952);
+    Object localObject = this.Olm;
+    if (((f)localObject).Olo != 8)
     {
-      ((f)localObject).hw("Expected start of the array", ((f)localObject).NOj);
-      AppMethodBeat.o(191364);
+      ((f)localObject).hF("Expected start of the array", ((f)localObject).Olp);
+      AppMethodBeat.o(199952);
       throw null;
     }
-    this.NOg.gxt();
-    localObject = this.NOg;
-    if (this.NOg.NOi != 4) {}
+    this.Olm.gBV();
+    localObject = this.Olm;
+    if (this.Olm.Olo != 4) {}
     for (int i = 1;; i = 0)
     {
-      int k = this.NOg.vty;
+      int k = this.Olm.vFD;
       if (i != 0) {
         break;
       }
-      ((f)localObject).hw("Unexpected leading comma", k);
-      AppMethodBeat.o(191364);
+      ((f)localObject).hF("Unexpected leading comma", k);
+      AppMethodBeat.o(199952);
       throw null;
     }
     localObject = new ArrayList();
     i = 0;
-    while (this.NOg.gxp())
+    while (this.Olm.gBR())
     {
-      ((ArrayList)localObject).add(gxo());
-      if (this.NOg.NOi != 4)
+      ((ArrayList)localObject).add(gBQ());
+      if (this.Olm.Olo != 4)
       {
-        localf = this.NOg;
-        if (localf.NOi != 9)
+        localf = this.Olm;
+        if (localf.Olo != 9)
         {
-          localf.hw("Expected end of the array or comma", localf.NOj);
-          AppMethodBeat.o(191364);
+          localf.hF("Expected end of the array or comma", localf.Olp);
+          AppMethodBeat.o(199952);
           throw null;
         }
         i = 0;
       }
       else
       {
-        this.NOg.gxt();
+        this.Olm.gBV();
         i = 1;
       }
     }
-    f localf = this.NOg;
+    f localf = this.Olm;
     if (i == 0) {}
     for (i = j;; i = 0)
     {
-      j = this.NOg.vty;
+      j = this.Olm.vFD;
       if (i != 0) {
         break;
       }
-      localf.hw("Unexpected trailing comma", j);
-      AppMethodBeat.o(191364);
+      localf.hF("Unexpected trailing comma", j);
+      AppMethodBeat.o(199952);
       throw null;
     }
-    this.NOg.gxt();
+    this.Olm.gBV();
     localObject = (kotlinx.a.c.f)new b((List)localObject);
-    AppMethodBeat.o(191364);
+    AppMethodBeat.o(199952);
     return localObject;
   }
   
-  public final kotlinx.a.c.f gxo()
+  public final kotlinx.a.c.f gBQ()
   {
-    AppMethodBeat.i(191366);
-    if (!this.NOg.gxp())
+    AppMethodBeat.i(199954);
+    if (!this.Olm.gBR())
     {
-      f.a(this.NOg, "Can't begin reading value from here");
-      AppMethodBeat.o(191366);
+      f.a(this.Olm, "Can't begin reading value from here");
+      AppMethodBeat.o(199954);
       throw null;
     }
-    switch (this.NOg.NOi)
+    switch (this.Olm.Olo)
     {
     case 2: 
     case 3: 
@@ -196,30 +196,30 @@ public final class d
     case 7: 
     case 9: 
     default: 
-      f.a(this.NOg, "Can't begin reading element, unexpected token");
-      AppMethodBeat.o(191366);
+      f.a(this.Olm, "Can't begin reading element, unexpected token");
+      AppMethodBeat.o(199954);
       throw null;
     case 10: 
-      localObject = q.NNR;
-      this.NOg.gxt();
+      localObject = q.OkX;
+      this.Olm.gBV();
       localObject = (kotlinx.a.c.f)localObject;
-      AppMethodBeat.o(191366);
+      AppMethodBeat.o(199954);
       return localObject;
     case 1: 
-      localObject = Az(true);
-      AppMethodBeat.o(191366);
+      localObject = AM(true);
+      AppMethodBeat.o(199954);
       return localObject;
     case 0: 
-      localObject = Az(false);
-      AppMethodBeat.o(191366);
+      localObject = AM(false);
+      AppMethodBeat.o(199954);
       return localObject;
     case 6: 
-      localObject = gxm();
-      AppMethodBeat.o(191366);
+      localObject = gBO();
+      AppMethodBeat.o(199954);
       return localObject;
     }
-    Object localObject = gxn();
-    AppMethodBeat.o(191366);
+    Object localObject = gBP();
+    AppMethodBeat.o(199954);
     return localObject;
   }
 }

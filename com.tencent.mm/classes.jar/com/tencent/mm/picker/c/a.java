@@ -16,40 +16,40 @@ public final class a
   public ViewGroup Zi;
   public Context context;
   public int endYear;
-  public boolean iKG;
-  public int iKN;
-  public int iLA;
-  public String iLB;
-  public String iLC;
-  public String iLD;
-  public int iLE;
-  public int iLF;
-  public int iLG;
-  public int iLH;
-  public int iLI;
-  public int iLJ;
-  public int iLK;
-  public int iLL;
-  public float iLM;
-  public boolean iLN;
-  public WheelView.b iLO;
-  public c iLj;
-  public e iLk;
-  public d iLl;
-  public b iLm;
-  public boolean iLn;
-  public boolean iLo;
-  public boolean[] iLp;
-  public Calendar iLq;
-  public Calendar iLr;
-  public Calendar iLs;
-  public String iLt;
-  public String iLu;
-  public String iLv;
-  public String iLw;
-  public String iLx;
-  public String iLy;
-  public int iLz;
+  public int iNG;
+  public boolean iNz;
+  public int iOA;
+  public int iOB;
+  public int iOC;
+  public int iOD;
+  public int iOE;
+  public float iOF;
+  public boolean iOG;
+  public WheelView.b iOH;
+  public c iOc;
+  public e iOd;
+  public d iOe;
+  public b iOf;
+  public boolean iOg;
+  public boolean iOh;
+  public boolean[] iOi;
+  public Calendar iOj;
+  public Calendar iOk;
+  public Calendar iOl;
+  public String iOm;
+  public String iOn;
+  public String iOo;
+  public String iOp;
+  public String iOq;
+  public String iOr;
+  public int iOs;
+  public int iOt;
+  public String iOu;
+  public String iOv;
+  public String iOw;
+  public int iOx;
+  public int iOy;
+  public int iOz;
   public int kl;
   public Typeface lA;
   public String label;
@@ -60,38 +60,38 @@ public final class a
   public a(int paramInt)
   {
     AppMethodBeat.i(175332);
-    this.iLn = false;
-    this.iLo = false;
-    this.iLp = new boolean[] { 1, 1, 1, 0, 0, 0 };
-    this.iLA = 17;
-    this.iLE = -15028967;
-    this.iLF = -1979711488;
-    this.iLG = -16777216;
-    this.iLH = -1;
-    this.iLI = -657931;
-    this.iLJ = 24;
-    this.iLK = 24;
-    this.iKN = 0;
-    this.iLL = -1;
-    this.iLM = 1.6F;
+    this.iOg = false;
+    this.iOh = false;
+    this.iOi = new boolean[] { 1, 1, 1, 0, 0, 0 };
+    this.iOt = 17;
+    this.iOx = -15028967;
+    this.iOy = -1979711488;
+    this.iOz = -16777216;
+    this.iOA = -1;
+    this.iOB = -657931;
+    this.iOC = 24;
+    this.iOD = 24;
+    this.iNG = 0;
+    this.iOE = -1;
+    this.iOF = 1.6F;
     this.ov = true;
-    this.iKG = false;
+    this.iNz = false;
     this.lA = Typeface.DEFAULT;
-    this.iLO = WheelView.b.iLf;
+    this.iOH = WheelView.b.iNY;
     this.kl = 0;
     if (paramInt == 1)
     {
-      this.iLz = 2131495092;
+      this.iOs = 2131495092;
       AppMethodBeat.o(175332);
       return;
     }
-    this.iLz = 2131495093;
+    this.iOs = 2131495093;
     AppMethodBeat.o(175332);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.c.a
  * JD-Core Version:    0.7.0.1
  */

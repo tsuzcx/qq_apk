@@ -13,13 +13,13 @@ final class TextPreviewUI$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(193880);
+    AppMethodBeat.i(187187);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/ui/chatting/TextPreviewUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    TextPreviewUI.b(this.JEM, TextPreviewUI.b(this.JEM));
+    a.b("com/tencent/mm/ui/chatting/TextPreviewUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    TextPreviewUI.b(this.JZD, TextPreviewUI.b(this.JZD));
     a.a(this, "com/tencent/mm/ui/chatting/TextPreviewUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(193880);
+    AppMethodBeat.o(187187);
   }
 }
 

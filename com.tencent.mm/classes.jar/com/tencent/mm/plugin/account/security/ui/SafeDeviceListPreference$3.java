@@ -16,8 +16,8 @@ final class SafeDeviceListPreference$3
     AppMethodBeat.i(125576);
     b localb = new b();
     localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/security/ui/SafeDeviceListPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-    SafeDeviceListPreference.d(this.jiv);
+    a.b("com/tencent/mm/plugin/account/security/ui/SafeDeviceListPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    SafeDeviceListPreference.d(this.jlo);
     a.a(this, "com/tencent/mm/plugin/account/security/ui/SafeDeviceListPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(125576);
   }

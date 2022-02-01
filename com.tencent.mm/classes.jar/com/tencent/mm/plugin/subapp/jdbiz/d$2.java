@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jg;
+import com.tencent.mm.g.a.jh;
 import com.tencent.mm.sdk.b.c;
 
 final class d$2
-  extends c<jg>
+  extends c<jh>
 {
   d$2(d paramd)
   {
     AppMethodBeat.i(161440);
-    this.__eventId = jg.class.getName().hashCode();
+    this.__eventId = jh.class.getName().hashCode();
     AppMethodBeat.o(161440);
   }
 }

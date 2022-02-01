@@ -6,8 +6,8 @@ import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
 import com.tencent.mm.plugin.fingerprint.b.d;
 import com.tencent.mm.plugin.fingerprint.b.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.wallet_core.c.y;
 import com.tencent.soter.a.b.a;
 import com.tencent.soter.a.b.e;
@@ -17,13 +17,13 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public int dvd = 0;
-  public String dvf;
-  public String dvg;
+  public int dwi = 0;
+  public String dwk;
+  public String dwl;
   public int errCode = -1;
   public String errMsg;
-  public String thg;
-  public String thh;
+  public String trZ;
+  public String tsa;
   
   public static c a(a parama)
   {
@@ -31,7 +31,7 @@ public final class c
     c localc = new c();
     if (parama.isSuccess())
     {
-      parama = (j)parama.LQZ;
+      parama = (j)parama.MnW;
       if (parama == null) {}
     }
     for (;;)
@@ -39,44 +39,44 @@ public final class c
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("json", parama.LQE);
+        localJSONObject.put("json", parama.MnB);
         localJSONObject.put("signature", parama.signature);
-        localc.thg = parama.LQE;
-        localc.thh = parama.signature;
-        p.thl.thp = parama;
+        localc.trZ = parama.MnB;
+        localc.tsa = parama.signature;
+        p.tse.tsi = parama;
         localc.errCode = 0;
-        ad.i("MicroMsg.BiometricPayAuthenticationResult", "soter authen result: %s, sign: %s", new Object[] { localc.thg, localc.thh });
+        ae.i("MicroMsg.BiometricPayAuthenticationResult", "soter authen result: %s, sign: %s", new Object[] { localc.trZ, localc.tsa });
         AppMethodBeat.o(64400);
         return localc;
       }
       catch (JSONException parama)
       {
-        ad.printErrStackTrace("MicroMsg.BiometricPayAuthenticationResult", parama, "", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.BiometricPayAuthenticationResult", parama, "", new Object[0]);
         localc.errCode = 3000;
         continue;
       }
-      ad.e("MicroMsg.BiometricPayAuthenticationResult", "signature result is null");
+      ae.e("MicroMsg.BiometricPayAuthenticationResult", "signature result is null");
       localc.errCode = 3000;
       continue;
       if ((parama.errCode == 1007) || (parama.errCode == 1027) || (parama.errCode == 1018))
       {
-        ad.i("MicroMsg.BiometricPayAuthenticationResult", "init error, maybe key invalid. remove former key and give suggestion");
+        ae.i("MicroMsg.BiometricPayAuthenticationResult", "init error, maybe key invalid. remove former key and give suggestion");
         localc.errCode = 2007;
-        p.thl.thn = true;
+        p.tse.tsg = true;
       }
       else if ((parama.errCode == 1021) || (parama.errCode == 1022))
       {
-        ad.i("MicroMsg.BiometricPayAuthenticationResult", "too many trial");
+        ae.i("MicroMsg.BiometricPayAuthenticationResult", "too many trial");
         localc.errCode = 10308;
       }
       else if (parama.errCode == 1020)
       {
-        ad.i("MicroMsg.BiometricPayAuthenticationResult", "user cancelled");
+        ae.i("MicroMsg.BiometricPayAuthenticationResult", "user cancelled");
         localc.errCode = 2000;
       }
       else if (parama.errCode == 1023)
       {
-        ad.e("MicroMsg.BiometricPayAuthenticationResult", "add authenticate task failed");
+        ae.e("MicroMsg.BiometricPayAuthenticationResult", "add authenticate task failed");
         localc.errCode = 2009;
       }
       else
@@ -91,19 +91,19 @@ public final class c
     AppMethodBeat.i(64401);
     c localc = new c();
     localc.errCode = paramInt1;
-    localc.dvd = paramInt2;
+    localc.dwi = paramInt2;
     String str1 = d.getUserId();
-    String str2 = q.aay();
-    String str3 = y.fRw();
-    localc.dvf = FingerPrintAuth.genPayFPEncrypt(d.fc(aj.getContext()), str1, str2, String.valueOf(paramInt2), str3, paramString, Build.MODEL);
-    localc.dvg = FingerPrintAuth.genOpenFPSign(d.fc(aj.getContext()), d.getUserId(), q.aay(), localc.dvf);
+    String str2 = q.aaH();
+    String str3 = y.fVS();
+    localc.dwk = FingerPrintAuth.genPayFPEncrypt(d.fg(ak.getContext()), str1, str2, String.valueOf(paramInt2), str3, paramString, Build.MODEL);
+    localc.dwl = FingerPrintAuth.genOpenFPSign(d.fg(ak.getContext()), d.getUserId(), q.aaH(), localc.dwk);
     AppMethodBeat.o(64401);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.a.c
  * JD-Core Version:    0.7.0.1
  */

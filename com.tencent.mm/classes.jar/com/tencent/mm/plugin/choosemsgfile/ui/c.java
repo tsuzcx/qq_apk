@@ -6,11 +6,11 @@ import com.tencent.mm.plugin.choosemsgfile.b.d.a;
 
 public abstract interface c
 {
-  public abstract void B(boolean paramBoolean, int paramInt);
+  public abstract void C(boolean paramBoolean, int paramInt);
   
-  public abstract void bZF();
+  public abstract a caB();
   
-  public abstract a bZm();
+  public abstract void caU();
   
   public abstract View getChildAt(int paramInt);
   
@@ -18,7 +18,7 @@ public abstract interface c
   
   public abstract String getUserName();
   
-  public abstract void jD(boolean paramBoolean);
+  public abstract void jC(boolean paramBoolean);
 }
 
 

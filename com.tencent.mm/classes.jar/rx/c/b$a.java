@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$a
 {
-  Object[] MLw;
+  Object[] Niz;
   int size;
   
   public final void add(Object paramObject)
   {
     AppMethodBeat.i(90427);
     int i = this.size;
-    Object localObject = this.MLw;
+    Object localObject = this.Niz;
     if (localObject == null)
     {
       localObject = new Object[16];
-      this.MLw = ((Object[])localObject);
+      this.Niz = ((Object[])localObject);
     }
     for (;;)
     {
@@ -27,7 +27,7 @@ final class b$a
       {
         Object[] arrayOfObject = new Object[(i >> 2) + i];
         System.arraycopy(localObject, 0, arrayOfObject, 0, i);
-        this.MLw = arrayOfObject;
+        this.Niz = arrayOfObject;
         localObject = arrayOfObject;
       }
     }

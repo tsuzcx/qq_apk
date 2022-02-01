@@ -13,7 +13,7 @@ public final class b
 {
   public static void a(Context paramContext, Dialog paramDialog)
   {
-    AppMethodBeat.i(211107);
+    AppMethodBeat.i(211891);
     if ((paramContext instanceof MMActivity))
     {
       ((MMActivity)paramContext).addDialog(paramDialog);
@@ -21,55 +21,55 @@ public final class b
         ((c)paramDialog).iOnDialogDismissListener = ((com.tencent.mm.ui.widget.a.c)paramContext);
       }
     }
-    AppMethodBeat.o(211107);
+    AppMethodBeat.o(211891);
   }
   
   public static c c(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(211108);
+    AppMethodBeat.i(211892);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
     {
-      AppMethodBeat.o(211108);
+      AppMethodBeat.o(211892);
       return null;
     }
     c.a locala = new c.a(paramContext);
-    locala.aPS(paramString2);
-    locala.aPT(paramString1);
-    locala.fjF().a(paramOnClickListener);
-    locala.fjG();
-    paramString1 = locala.fjH();
+    locala.aRp(paramString2);
+    locala.aRq(paramString1);
+    locala.fnx().a(paramOnClickListener);
+    locala.fny();
+    paramString1 = locala.fnz();
     paramString1.show();
     a(paramContext, paramString1);
-    AppMethodBeat.o(211108);
+    AppMethodBeat.o(211892);
     return paramString1;
   }
   
   public static c c(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    AppMethodBeat.i(211109);
+    AppMethodBeat.i(211893);
     paramContext = d(paramContext, paramString1, paramString2, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2);
-    AppMethodBeat.o(211109);
+    AppMethodBeat.o(211893);
     return paramContext;
   }
   
   private static c d(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    AppMethodBeat.i(211110);
+    AppMethodBeat.i(211894);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
     {
-      AppMethodBeat.o(211110);
+      AppMethodBeat.o(211894);
       return null;
     }
     c.a locala = new c.a(paramContext);
-    locala.aPS(paramString2);
-    locala.aPT(paramString1);
-    locala.aPU(paramString3).a(paramOnClickListener1);
-    locala.aPV(paramString4).b(paramOnClickListener2);
-    locala.fjG();
-    paramString1 = locala.fjH();
+    locala.aRp(paramString2);
+    locala.aRq(paramString1);
+    locala.aRr(paramString3).a(paramOnClickListener1);
+    locala.aRs(paramString4).b(paramOnClickListener2);
+    locala.fny();
+    paramString1 = locala.fnz();
     paramString1.show();
     a(paramContext, paramString1);
-    AppMethodBeat.o(211110);
+    AppMethodBeat.o(211894);
     return paramString1;
   }
 }

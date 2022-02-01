@@ -9,9 +9,9 @@ import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.r;
 import com.tencent.mm.pluginsdk.r.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.xweb.WebView;
 import d.g.a.a;
 import d.g.b.p;
@@ -32,31 +32,31 @@ import org.apache.commons.a.e;
 import org.apache.commons.b.f;
 import org.json.JSONObject;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "()V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "<set-?>", "Ljava/util/HashMap;", "", "headers", "getHeaders", "()Ljava/util/HashMap;", "initUrl", "getInitUrl", "()Ljava/lang/String;", "setInitUrl", "(Ljava/lang/String;)V", "invokerReused", "", "getInvokerReused", "()Z", "setInvokerReused", "(Z)V", "isTemplate", "setTemplate", "openArticleScene", "", "getOpenArticleScene", "()I", "setOpenArticleScene", "(I)V", "preAuthInfo", "", "getPreAuthInfo", "()[[Ljava/lang/String;", "setPreAuthInfo", "([[Ljava/lang/String;)V", "[[Ljava/lang/String;", "preauth", "getPreauth", "setPreauth", "predns", "getPredns", "setPredns", "prefetch", "getPrefetch", "setPrefetch", "Ljava/util/LinkedList;", "prefetchCSS", "getPrefetchCSS", "()Ljava/util/LinkedList;", "prefetchJS", "getPrefetchJS", "startActivity", "getStartActivity", "setStartActivity", "templateUpdateDataTime", "getTemplateUpdateDataTime", "setTemplateUpdateDataTime", "fetchDocumentTime", "", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "callback", "Lkotlin/Function0;", "formatPerformanceInfo", "performanceInfo", "", "Lkotlin/Pair;", "onCreate", "print", "titles", "data", "webview", "Lcom/tencent/xweb/WebView;", "printPerformance", "openScene", "fromScene", "Companion", "webview-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "()V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "<set-?>", "Ljava/util/HashMap;", "", "headers", "getHeaders", "()Ljava/util/HashMap;", "initUrl", "getInitUrl", "()Ljava/lang/String;", "setInitUrl", "(Ljava/lang/String;)V", "invokerReused", "", "getInvokerReused", "()Z", "setInvokerReused", "(Z)V", "isTemplate", "setTemplate", "openArticleScene", "", "getOpenArticleScene", "()I", "setOpenArticleScene", "(I)V", "preAuthInfo", "", "getPreAuthInfo", "()[[Ljava/lang/String;", "setPreAuthInfo", "([[Ljava/lang/String;)V", "[[Ljava/lang/String;", "preauth", "getPreauth", "setPreauth", "predns", "getPredns", "setPredns", "prefetch", "getPrefetch", "setPrefetch", "Ljava/util/LinkedList;", "prefetchCSS", "getPrefetchCSS", "()Ljava/util/LinkedList;", "prefetchJS", "getPrefetchJS", "startActivity", "getStartActivity", "setStartActivity", "templateUpdateDataTime", "getTemplateUpdateDataTime", "setTemplateUpdateDataTime", "fetchDocumentTime", "", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "callback", "Lkotlin/Function0;", "formatPerformanceInfo", "performanceInfo", "", "Lkotlin/Pair;", "onCreate", "print", "titles", "data", "webview", "Lcom/tencent/xweb/WebView;", "printPerformance", "openScene", "fromScene", "Companion", "webview-sdk_release"})
 public final class i
   extends r
 {
-  public static final a EtD;
+  public static final a ELX;
   private static final String TAG = "MicroMsg.WebViewPerformanceHelper";
-  public String DNG;
-  public boolean DXl;
-  public boolean DXm;
-  public boolean DXn;
-  public int EcX;
-  public LinkedList<String> EtA;
-  public HashMap<String, String> EtB;
-  public long EtC;
-  public String[][] Etv;
-  public boolean Etw;
-  public long Etx;
-  public boolean Ety;
-  public LinkedList<String> Etz;
+  public String[][] ELP;
+  public boolean ELQ;
+  public long ELR;
+  public boolean ELS;
+  public LinkedList<String> ELT;
+  public LinkedList<String> ELU;
+  public HashMap<String, String> ELV;
+  public long ELW;
+  public String EfF;
+  public boolean Epn;
+  public boolean Epo;
+  public boolean Epp;
+  public int EuZ;
   public long createTime;
   
   static
   {
     AppMethodBeat.i(82764);
-    EtD = new a((byte)0);
+    ELX = new a((byte)0);
     TAG = "MicroMsg.WebViewPerformanceHelper";
     AppMethodBeat.o(82764);
   }
@@ -64,10 +64,10 @@ public final class i
   public i()
   {
     AppMethodBeat.i(82763);
-    this.Etz = new LinkedList();
-    this.EtA = new LinkedList();
-    this.EtB = new HashMap();
-    this.DNG = "";
+    this.ELT = new LinkedList();
+    this.ELU = new LinkedList();
+    this.ELV = new HashMap();
+    this.EfF = "";
     AppMethodBeat.o(82763);
   }
   
@@ -77,18 +77,18 @@ public final class i
     p.h(paramString1, "titles");
     p.h(paramString2, "data");
     p.h(paramWebView, "webview");
-    if (com.tencent.mm.plugin.webview.c.j.eOR())
+    if (com.tencent.mm.plugin.webview.c.j.eSC())
     {
-      Object localObject = aj.getContext();
+      Object localObject = ak.getContext();
       p.g(localObject, "MMApplicationContext.getContext()");
       localObject = e.toByteArray(((Context)localObject).getAssets().open("jsapi/vconsole_performance.js"));
       p.g(localObject, "IOUtils.toByteArray(MMAp…console_performance.js\"))");
-      paramWebView.evaluateJavascript(n.bp(n.bp(n.bp(new String((byte[])localObject, d.UTF_8), "$WF_DATAS$", paramString2), "$WF_TITLES$", paramString1), "$WF_LOG$", gW(paramList)), null);
+      paramWebView.evaluateJavascript(n.bq(n.bq(n.bq(new String((byte[])localObject, d.UTF_8), "$WF_DATAS$", paramString2), "$WF_TITLES$", paramString1), "$WF_LOG$", hg(paramList)), null);
     }
     AppMethodBeat.o(82761);
   }
   
-  private static String gW(List<o<String, String>> paramList)
+  private static String hg(List<o<String, String>> paramList)
   {
     AppMethodBeat.i(82762);
     if (paramList != null)
@@ -115,16 +115,16 @@ public final class i
     return paramList;
   }
   
-  public final void eVR()
+  public final void eZD()
   {
     AppMethodBeat.i(82760);
-    if ((this.EJE == null) || (this.EJE.isEmpty()))
+    if ((this.Fcc == null) || (this.Fcc.isEmpty()))
     {
       AppMethodBeat.o(82760);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.EJE.iterator();
+    Iterator localIterator = this.Fcc.iterator();
     while (localIterator.hasNext())
     {
       r.a locala = (r.a)localIterator.next();
@@ -135,26 +135,26 @@ public final class i
       if (locala.time > this.createTime) {
         localStringBuilder.append(", ").append(locala.time - this.createTime);
       }
-      if (!bt.isNullOrNil(locala.detail)) {
+      if (!bu.isNullOrNil(locala.detail)) {
         localStringBuilder.append(", ").append(locala.detail);
       }
       localStringBuilder.append("] ");
     }
-    ad.i(TAG, "webview Performance: %s", new Object[] { localStringBuilder.toString() });
-    this.EJE.clear();
+    ae.i(TAG, "webview Performance: %s", new Object[] { localStringBuilder.toString() });
+    this.Fcc.clear();
     AppMethodBeat.o(82760);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper$Companion;", "", "()V", "TAG", "", "webview-sdk_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper$Companion;", "", "()V", "TAG", "", "webview-sdk_release"})
   public static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "s", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "s", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
   public static final class b<T>
     implements ValueCallback<String>
   {
     public b(i parami, a parama) {}
     
-    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/kt/CommonKt$idle$1", "Landroid/os/MessageQueue$IdleHandler;", "queueIdle", "", "libktcomm_release"})
+    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/kt/CommonKt$idle$1", "Landroid/os/MessageQueue$IdleHandler;", "queueIdle", "", "libktcomm_release"})
     public static final class a
       implements MessageQueue.IdleHandler
     {
@@ -162,35 +162,35 @@ public final class i
       
       public final boolean queueIdle()
       {
-        AppMethodBeat.i(214378);
+        AppMethodBeat.i(214219);
         Looper.myQueue().removeIdleHandler((MessageQueue.IdleHandler)this);
         long l = System.currentTimeMillis();
         int i;
         try
         {
-          Object localObject1 = this.EtG;
+          Object localObject1 = this.EMa;
           p.g(localObject1, "s");
-          i = this.EtG.length();
+          i = this.EMa.length();
           if (localObject1 == null)
           {
             localObject1 = new v("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(214378);
+            AppMethodBeat.o(214219);
             throw ((Throwable)localObject1);
           }
         }
         catch (Exception localException)
         {
-          ad.w(i.access$getTAG$cp(), "fetchDocumentTime ex: %s", new Object[] { localException.getMessage() });
+          ae.w(i.access$getTAG$cp(), "fetchDocumentTime ex: %s", new Object[] { localException.getMessage() });
         }
         for (;;)
         {
-          this.EtF.EtE.eVR();
-          ad.v(i.access$getTAG$cp(), "onReceiveValue cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-          AppMethodBeat.o(214378);
+          this.ELZ.ELY.eZD();
+          ae.v(i.access$getTAG$cp(), "onReceiveValue cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          AppMethodBeat.o(214219);
           return false;
           Object localObject2 = localException.substring(1, i - 1);
           p.g(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-          localObject2 = new JSONObject(f.bdN((String)localObject2));
+          localObject2 = new JSONObject(f.bfr((String)localObject2));
           Iterator localIterator1 = ((JSONObject)localObject2).keys();
           p.g(localIterator1, "keys()");
           while (localIterator1.hasNext())
@@ -201,10 +201,10 @@ public final class i
             while (localIterator2.hasNext())
             {
               String str = (String)localIterator2.next();
-              this.EtF.EtE.bL(str, localJSONObject.optLong(str));
+              this.ELZ.ELY.bM(str, localJSONObject.optLong(str));
             }
           }
-          this.EtF.hlv.invoke();
+          this.ELZ.hok.invoke();
         }
       }
     }

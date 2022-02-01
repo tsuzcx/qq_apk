@@ -8,19 +8,19 @@ import org.json.JSONObject;
 
 final class m
 {
-  private int cOM;
-  private JSONObject cON;
+  private int cPw;
+  private JSONObject cPx;
   protected Context context;
   
   m(Context paramContext, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(87661);
     this.context = null;
-    this.cOM = 0;
-    this.cON = null;
+    this.cPw = 0;
+    this.cPx = null;
     this.context = paramContext;
-    this.cOM = ((int)(System.currentTimeMillis() / 1000L));
-    this.cON = paramJSONObject;
+    this.cPw = ((int)(System.currentTimeMillis() / 1000L));
+    this.cPx = paramJSONObject;
     AppMethodBeat.o(87661);
   }
   
@@ -34,12 +34,12 @@ final class m
       {
         localJSONObject1.put("ky", "AVF4T76RVR81");
         localJSONObject1.put("et", 2);
-        localJSONObject1.put("ts", this.cOM);
-        localJSONObject1.put("si", this.cOM);
-        s.a(localJSONObject1, "ui", s.aZ(this.context));
-        s.a(localJSONObject1, "mc", s.ba(this.context));
-        localObject1 = i.aV(this.context).JF();
-        if (s.el((String)localObject1))
+        localJSONObject1.put("ts", this.cPw);
+        localJSONObject1.put("si", this.cPw);
+        s.a(localJSONObject1, "ui", s.ba(this.context));
+        s.a(localJSONObject1, "mc", s.bb(this.context));
+        localObject1 = i.aW(this.context).JN();
+        if (s.eq((String)localObject1))
         {
           localJSONObject1.put("mid", localObject1);
           localObject1 = new b(this.context);
@@ -50,60 +50,60 @@ final class m
       {
         Object localObject1;
         JSONObject localJSONObject2;
-        s.JL();
+        s.JT();
         continue;
       }
       try
       {
-        if (b.cOm != null)
+        if (b.cOW != null)
         {
-          b.a locala = b.cOm;
-          localJSONObject2.put("sr", locala.cOq.widthPixels + "*" + locala.cOq.heightPixels);
+          b.a locala = b.cOW;
+          localJSONObject2.put("sr", locala.cPa.widthPixels + "*" + locala.cPa.heightPixels);
           s.a(localJSONObject2, "av", locala.appVersion);
-          s.a(localJSONObject2, "ch", locala.cOt);
-          s.a(localJSONObject2, "mf", locala.cOs);
-          s.a(localJSONObject2, "sv", locala.cOp);
-          s.a(localJSONObject2, "ov", Integer.toString(locala.cOr));
+          s.a(localJSONObject2, "ch", locala.cPd);
+          s.a(localJSONObject2, "mf", locala.cPc);
+          s.a(localJSONObject2, "sv", locala.cOZ);
+          s.a(localJSONObject2, "ov", Integer.toString(locala.cPb));
           localJSONObject2.put("os", 1);
-          s.a(localJSONObject2, "op", locala.cOu);
+          s.a(localJSONObject2, "op", locala.cPe);
           s.a(localJSONObject2, "lg", locala.language);
           s.a(localJSONObject2, "md", locala.model);
           s.a(localJSONObject2, "tz", locala.timezone);
-          if (locala.cOw != 0) {
-            localJSONObject2.put("jb", locala.cOw);
+          if (locala.cPg != 0) {
+            localJSONObject2.put("jb", locala.cPg);
           }
-          s.a(localJSONObject2, "sd", locala.cOv);
+          s.a(localJSONObject2, "sd", locala.cPf);
           s.a(localJSONObject2, "apn", locala.packageName);
-          if (s.aY(locala.ctx))
+          if (s.aZ(locala.ctx))
           {
             localObject2 = new JSONObject();
-            s.a((JSONObject)localObject2, "bs", s.bb(locala.ctx));
-            s.a((JSONObject)localObject2, "ss", s.bc(locala.ctx));
+            s.a((JSONObject)localObject2, "bs", s.bc(locala.ctx));
+            s.a((JSONObject)localObject2, "ss", s.bd(locala.ctx));
             if (((JSONObject)localObject2).length() > 0) {
               s.a(localJSONObject2, "wf", ((JSONObject)localObject2).toString());
             }
           }
-          Object localObject2 = s.bd(locala.ctx);
+          Object localObject2 = s.be(locala.ctx);
           if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
             s.a(localJSONObject2, "wflist", ((JSONArray)localObject2).toString());
           }
-          s.a(localJSONObject2, "ram", locala.cOx);
-          s.a(localJSONObject2, "rom", locala.cOy);
+          s.a(localJSONObject2, "ram", locala.cPh);
+          s.a(localJSONObject2, "rom", locala.cPi);
           s.a(localJSONObject2, "im", locala.imsi);
         }
-        s.a(localJSONObject2, "cn", ((b)localObject1).cOo);
-        if (((b)localObject1).cOn != null) {
-          localJSONObject2.put("tn", ((b)localObject1).cOn);
+        s.a(localJSONObject2, "cn", ((b)localObject1).cOY);
+        if (((b)localObject1).cOX != null) {
+          localJSONObject2.put("tn", ((b)localObject1).cOX);
         }
         localJSONObject1.put("ev", localJSONObject2);
       }
       catch (Throwable localThrowable2)
       {
-        s.JL();
+        s.JT();
         continue;
       }
-      if (this.cON != null) {
-        localJSONObject1.put("ext", this.cON);
+      if (this.cPx != null) {
+        localJSONObject1.put("ext", this.cPx);
       }
       AppMethodBeat.o(87662);
       return localJSONObject1;

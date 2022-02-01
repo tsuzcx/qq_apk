@@ -8,30 +8,30 @@ public abstract class fd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEB = "scene".hashCode();
-  private static final int eEU = "appId".hashCode();
-  private static final int eGk = "version".hashCode();
-  private static final int eGu;
-  private static final int eGv;
-  private static final int eGy;
-  private static final int foA;
-  private static final int foB;
-  private static final int foC;
-  private static final int foD;
-  private static final int foE = "cmdSequence".hashCode();
-  private static final int fow;
-  private static final int fox;
-  private static final int foy;
-  private static final int foz;
+  private static final int eGD = "appId".hashCode();
+  private static final int eGk = "scene".hashCode();
+  private static final int eHT = "version".hashCode();
+  private static final int eId;
+  private static final int eIe;
+  private static final int eIh;
+  private static final int fqA;
+  private static final int fqB;
+  private static final int fqC;
+  private static final int fqD;
+  private static final int fqE;
+  private static final int fqF = "cmdSequence".hashCode();
+  private static final int fqx;
+  private static final int fqy;
+  private static final int fqz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean eED = true;
-  private boolean eEz = true;
-  private boolean eGf = true;
-  private boolean eGp = true;
-  private boolean eGq = true;
-  private boolean eGt = true;
+  private boolean eGi = true;
+  private boolean eGm = true;
+  private boolean eHO = true;
+  private boolean eHY = true;
+  private boolean eHZ = true;
+  private boolean eIc = true;
   public String field_appId;
   public long field_cmdSequence;
   public boolean field_firstTimeTried;
@@ -48,29 +48,29 @@ public abstract class fd
   public boolean field_splitDownloadURLCgi;
   public int field_type;
   public int field_version;
-  private boolean fon = true;
-  private boolean foo = true;
-  private boolean fop = true;
-  private boolean foq = true;
-  private boolean jdField_for = true;
-  private boolean fos = true;
-  private boolean fot = true;
-  private boolean fou = true;
-  private boolean fov = true;
+  private boolean fqo = true;
+  private boolean fqp = true;
+  private boolean fqq = true;
+  private boolean fqr = true;
+  private boolean fqs = true;
+  private boolean fqt = true;
+  private boolean fqu = true;
+  private boolean fqv = true;
+  private boolean fqw = true;
   
   static
   {
-    fow = "retryTimes".hashCode();
-    fox = "retriedCount".hashCode();
-    foy = "retryInterval".hashCode();
-    foz = "networkType".hashCode();
-    foA = "pkgMd5".hashCode();
-    eGv = "packageKey".hashCode();
-    eGu = "packageType".hashCode();
-    foB = "lastRetryTime".hashCode();
-    foC = "firstTimeTried".hashCode();
-    eGy = "reportId".hashCode();
-    foD = "splitDownloadURLCgi".hashCode();
+    fqx = "retryTimes".hashCode();
+    fqy = "retriedCount".hashCode();
+    fqz = "retryInterval".hashCode();
+    fqA = "networkType".hashCode();
+    fqB = "pkgMd5".hashCode();
+    eIe = "packageKey".hashCode();
+    eId = "packageType".hashCode();
+    fqC = "lastRetryTime".hashCode();
+    fqD = "firstTimeTried".hashCode();
+    eIh = "reportId".hashCode();
+    fqE = "splitDownloadURLCgi".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -86,7 +86,7 @@ public abstract class fd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEU != k) {
+      if (eGD != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -97,7 +97,7 @@ public abstract class fd
       break label20;
       break;
       label60:
-      if (eGk == k)
+      if (eHT == k)
       {
         this.field_version = paramCursor.getInt(i);
       }
@@ -105,42 +105,42 @@ public abstract class fd
       {
         this.field_type = paramCursor.getInt(i);
       }
-      else if (fow == k)
+      else if (fqx == k)
       {
         this.field_retryTimes = paramCursor.getInt(i);
       }
-      else if (fox == k)
+      else if (fqy == k)
       {
         this.field_retriedCount = paramCursor.getInt(i);
       }
-      else if (foy == k)
+      else if (fqz == k)
       {
         this.field_retryInterval = paramCursor.getLong(i);
       }
-      else if (foz == k)
+      else if (fqA == k)
       {
         this.field_networkType = paramCursor.getInt(i);
       }
-      else if (foA == k)
+      else if (fqB == k)
       {
         this.field_pkgMd5 = paramCursor.getString(i);
       }
-      else if (eGv == k)
+      else if (eIe == k)
       {
         this.field_packageKey = paramCursor.getString(i);
       }
-      else if (eGu == k)
+      else if (eId == k)
       {
         this.field_packageType = paramCursor.getInt(i);
       }
-      else if (foB == k)
+      else if (fqC == k)
       {
         this.field_lastRetryTime = paramCursor.getLong(i);
       }
       else
       {
         boolean bool;
-        if (foC == k)
+        if (fqD == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -149,13 +149,13 @@ public abstract class fd
             break;
           }
         }
-        if (eGy == k)
+        if (eIh == k)
         {
           this.field_reportId = paramCursor.getInt(i);
         }
         else
         {
-          if (foD == k)
+          if (fqE == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -164,9 +164,9 @@ public abstract class fd
               break;
             }
           }
-          if (eEB == k) {
+          if (eGk == k) {
             this.field_scene = paramCursor.getInt(i);
-          } else if (foE == k) {
+          } else if (fqF == k) {
             this.field_cmdSequence = paramCursor.getLong(i);
           } else if (rowid_HASHCODE == k) {
             this.systemRowid = paramCursor.getLong(i);
@@ -179,52 +179,52 @@ public abstract class fd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
+    if (this.eGm) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eGf) {
+    if (this.eHO) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.fon) {
+    if (this.fqo) {
       localContentValues.put("retryTimes", Integer.valueOf(this.field_retryTimes));
     }
-    if (this.foo) {
+    if (this.fqp) {
       localContentValues.put("retriedCount", Integer.valueOf(this.field_retriedCount));
     }
-    if (this.fop) {
+    if (this.fqq) {
       localContentValues.put("retryInterval", Long.valueOf(this.field_retryInterval));
     }
-    if (this.foq) {
+    if (this.fqr) {
       localContentValues.put("networkType", Integer.valueOf(this.field_networkType));
     }
-    if (this.jdField_for) {
+    if (this.fqs) {
       localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.eGq) {
+    if (this.eHZ) {
       localContentValues.put("packageKey", this.field_packageKey);
     }
-    if (this.eGp) {
+    if (this.eHY) {
       localContentValues.put("packageType", Integer.valueOf(this.field_packageType));
     }
-    if (this.fos) {
+    if (this.fqt) {
       localContentValues.put("lastRetryTime", Long.valueOf(this.field_lastRetryTime));
     }
-    if (this.fot) {
+    if (this.fqu) {
       localContentValues.put("firstTimeTried", Boolean.valueOf(this.field_firstTimeTried));
     }
-    if (this.eGt) {
+    if (this.eIc) {
       localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
-    if (this.fou) {
+    if (this.fqv) {
       localContentValues.put("splitDownloadURLCgi", Boolean.valueOf(this.field_splitDownloadURLCgi));
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.fov) {
+    if (this.fqw) {
       localContentValues.put("cmdSequence", Long.valueOf(this.field_cmdSequence));
     }
     if (this.systemRowid > 0L) {

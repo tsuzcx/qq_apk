@@ -16,45 +16,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.span.g;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.neattextview.textview.view.NeatTextView.b;
 
 public class ChattingItemTranslate
   extends RelativeLayout
 {
-  private SpannableStringBuilder EUm;
-  private CharacterStyle EUp;
-  private int EUs;
-  private MMNeat7extView KfU;
-  private LinearLayout KfV;
-  private ProgressBar KfW;
-  private TextView KfX;
-  private NeatTextView.b KfY;
-  private boolean KfZ;
-  private GestureDetector Kga;
+  private SpannableStringBuilder FmH;
+  private CharacterStyle FmK;
+  private int FmN;
+  private MMNeat7extView KCn;
+  private LinearLayout KCo;
+  private ProgressBar KCp;
+  private TextView KCq;
+  private NeatTextView.b KCr;
+  private boolean KCs;
+  private GestureDetector KCt;
   
   public ChattingItemTranslate(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(37428);
-    this.EUm = new SpannableStringBuilder();
-    this.EUs = 3;
-    this.EUp = new ForegroundColorSpan(-5066062);
-    this.Kga = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    this.FmH = new SpannableStringBuilder();
+    this.FmN = 3;
+    this.FmK = new ForegroundColorSpan(-5066062);
+    this.KCt = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(194501);
+        AppMethodBeat.i(187896);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(194501);
+        AppMethodBeat.o(187896);
         return bool;
       }
       
@@ -63,14 +63,14 @@ public class ChattingItemTranslate
         AppMethodBeat.i(37424);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (ChattingItemTranslate.a(ChattingItemTranslate.this) == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(37424);
           return false;
         }
-        boolean bool = ChattingItemTranslate.a(ChattingItemTranslate.this).gx(ChattingItemTranslate.b(ChattingItemTranslate.this));
+        boolean bool = ChattingItemTranslate.a(ChattingItemTranslate.this).gC(ChattingItemTranslate.b(ChattingItemTranslate.this));
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(37424);
         return bool;
@@ -78,24 +78,24 @@ public class ChattingItemTranslate
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(194500);
+        AppMethodBeat.i(187895);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(194500);
+        AppMethodBeat.o(187895);
       }
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(194499);
+        AppMethodBeat.i(187894);
         b localb = new b();
         localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(194499);
+        AppMethodBeat.o(187894);
         return bool;
       }
     });
@@ -111,22 +111,22 @@ public class ChattingItemTranslate
       return paramSpannableStringBuilder;
     }
     int j;
-    if (paramCharSequence.length() < this.EUs) {
+    if (paramCharSequence.length() < this.FmN) {
       j = paramCharSequence.length();
     }
-    for (int i = 0;; i = j - this.EUs)
+    for (int i = 0;; i = j - this.FmN)
     {
-      paramSpannableStringBuilder.append(paramCharSequence).setSpan(this.EUp, i, j, 33);
+      paramSpannableStringBuilder.append(paramCharSequence).setSpan(this.FmK, i, j, 33);
       AppMethodBeat.o(37433);
       return paramSpannableStringBuilder;
       j = paramCharSequence.length();
     }
   }
   
-  private void yi(boolean paramBoolean)
+  private void yv(boolean paramBoolean)
   {
     AppMethodBeat.i(37432);
-    Context localContext = aj.getContext();
+    Context localContext = ak.getContext();
     if (localContext == null)
     {
       AppMethodBeat.o(37432);
@@ -134,33 +134,33 @@ public class ChattingItemTranslate
     }
     if (paramBoolean)
     {
-      this.KfU.setPadding(com.tencent.mm.cc.a.fromDPToPix(localContext, 10), com.tencent.mm.cc.a.fromDPToPix(localContext, 8), com.tencent.mm.cc.a.fromDPToPix(localContext, 10), com.tencent.mm.cc.a.fromDPToPix(localContext, 4));
-      this.KfV.setVisibility(0);
+      this.KCn.setPadding(com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 8), com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 4));
+      this.KCo.setVisibility(0);
       AppMethodBeat.o(37432);
       return;
     }
-    this.KfU.setPadding(com.tencent.mm.cc.a.fromDPToPix(localContext, 10), com.tencent.mm.cc.a.fromDPToPix(localContext, 8), com.tencent.mm.cc.a.fromDPToPix(localContext, 10), com.tencent.mm.cc.a.fromDPToPix(localContext, 8));
-    this.KfV.setVisibility(8);
+    this.KCn.setPadding(com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 8), com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 8));
+    this.KCo.setVisibility(8);
     AppMethodBeat.o(37432);
   }
   
   public final void a(CharSequence paramCharSequence, b paramb)
   {
     AppMethodBeat.i(37430);
-    if (!bt.ai(paramCharSequence))
+    if (!bu.ah(paramCharSequence))
     {
-      this.KfU.setMinWidth(com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 80));
-      this.KfU.setMaxWidth((int)(c.km(aj.getContext()) / com.tencent.mm.cd.a.fhE()) - com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 5));
-      this.KfU.setVisibility(0);
-      if (paramb == b.Kgf)
+      this.KCn.setMinWidth(com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 80));
+      this.KCn.setMaxWidth((int)(c.kt(ak.getContext()) / com.tencent.mm.cc.a.flw()) - com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 5));
+      this.KCn.setVisibility(0);
+      if (paramb == b.KCy)
       {
-        this.EUm.clear();
-        this.KfU.ar(a(this.EUm, paramCharSequence));
-        this.KfW.setVisibility(8);
-        if (paramb != b.Kgg) {
+        this.FmH.clear();
+        this.KCn.aq(a(this.FmH, paramCharSequence));
+        this.KCp.setVisibility(8);
+        if (paramb != b.KCz) {
           break label135;
         }
-        yi(true);
+        yv(true);
       }
     }
     for (;;)
@@ -168,33 +168,33 @@ public class ChattingItemTranslate
       setVisibility(0);
       AppMethodBeat.o(37430);
       return;
-      this.KfU.ar(paramCharSequence);
+      this.KCn.aq(paramCharSequence);
       break;
       label135:
-      yi(false);
+      yv(false);
       continue;
-      if (paramb != b.Kgd)
+      if (paramb != b.KCw)
       {
-        this.KfW.setVisibility(0);
-        this.KfU.setVisibility(8);
-        yi(false);
+        this.KCp.setVisibility(0);
+        this.KCn.setVisibility(8);
+        yv(false);
       }
     }
   }
   
   public MMNeat7extView getContentView()
   {
-    return this.KfU;
+    return this.KCn;
   }
   
   public final void init()
   {
     AppMethodBeat.i(37429);
-    this.KfU = ((MMNeat7extView)findViewById(2131298203));
-    this.KfW = ((ProgressBar)findViewById(2131298204));
-    this.KfV = ((LinearLayout)findViewById(2131298201));
-    this.KfX = ((TextView)findViewById(2131298200));
-    this.KfU.setOnTouchListener(new g(this.KfU, new n(this.KfU.getContext())));
+    this.KCn = ((MMNeat7extView)findViewById(2131298203));
+    this.KCp = ((ProgressBar)findViewById(2131298204));
+    this.KCo = ((LinearLayout)findViewById(2131298201));
+    this.KCq = ((TextView)findViewById(2131298200));
+    this.KCn.setOnTouchListener(new g(this.KCn, new n(this.KCn.getContext())));
     AppMethodBeat.o(37429);
   }
   
@@ -202,25 +202,25 @@ public class ChattingItemTranslate
   {
     AppMethodBeat.i(37434);
     int j = paramMotionEvent.getAction();
-    if ((j == 1) && (this.KfZ)) {}
+    if ((j == 1) && (this.KCs)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.d("MicroMsg.ChattingItemTranslate", "ignore Action Up Event this time");
+      ae.d("MicroMsg.ChattingItemTranslate", "ignore Action Up Event this time");
       AppMethodBeat.o(37434);
       return true;
     }
     if (j == 0) {
-      this.KfZ = false;
+      this.KCs = false;
     }
     GestureDetector localGestureDetector;
     com.tencent.mm.hellhoundlib.b.a locala;
-    if ((this.KfY != null) && (this.Kga != null))
+    if ((this.KCr != null) && (this.KCt != null))
     {
-      localGestureDetector = this.Kga;
+      localGestureDetector = this.KCt;
       locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahE(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
-    for (boolean bool1 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");; bool1 = false)
+    for (boolean bool1 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mt(0)), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");; bool1 = false)
     {
       boolean bool2 = bool1;
       if (!bool1) {
@@ -234,22 +234,22 @@ public class ChattingItemTranslate
   public void setBrandWording(String paramString)
   {
     AppMethodBeat.i(37431);
-    this.KfX.setText(paramString);
+    this.KCq.setText(paramString);
     AppMethodBeat.o(37431);
   }
   
   public void setOnDoubleClickListener(NeatTextView.b paramb)
   {
-    this.KfY = paramb;
+    this.KCr = paramb;
   }
   
   public static final class a
     extends bk
   {
-    public CharSequence Kgc;
-    public int oIb = 1;
+    public CharSequence KCv;
+    public int oOD = 1;
     
-    public a(bu parambu, boolean paramBoolean, int paramInt)
+    public a(bv parambv, boolean paramBoolean, int paramInt)
     {
       super(paramBoolean, paramInt, null, '\000');
     }
@@ -260,11 +260,11 @@ public class ChattingItemTranslate
     static
     {
       AppMethodBeat.i(37427);
-      Kgd = new b("NoTransform", 0);
-      Kge = new b("PreTransform", 1);
-      Kgf = new b("Transforming", 2);
-      Kgg = new b("Transformed", 3);
-      Kgh = new b[] { Kgd, Kge, Kgf, Kgg };
+      KCw = new b("NoTransform", 0);
+      KCx = new b("PreTransform", 1);
+      KCy = new b("Transforming", 2);
+      KCz = new b("Transformed", 3);
+      KCA = new b[] { KCw, KCx, KCy, KCz };
       AppMethodBeat.o(37427);
     }
     

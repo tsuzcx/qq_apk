@@ -8,16 +8,16 @@ import com.tencent.mm.ui.widget.MMTextView;
 
 public final class c
 {
-  MMTextView uXI;
-  TextView uXJ;
-  LinearLayout uXK;
+  MMTextView vjw;
+  TextView vjx;
+  LinearLayout vjy;
   
   public c(View paramView)
   {
     AppMethodBeat.i(26323);
-    this.uXI = ((MMTextView)paramView.findViewById(2131301287));
-    this.uXJ = ((TextView)paramView.findViewById(2131301286));
-    this.uXK = ((LinearLayout)paramView.findViewById(2131301285));
+    this.vjw = ((MMTextView)paramView.findViewById(2131301287));
+    this.vjx = ((TextView)paramView.findViewById(2131301286));
+    this.vjy = ((LinearLayout)paramView.findViewById(2131301285));
     AppMethodBeat.o(26323);
   }
 }

@@ -6,15 +6,15 @@ import d.l;
 import d.n.n;
 import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"IMPLEMENTATIONS", "Lkotlin/internal/PlatformImplementations;", "apiVersionIsAtLeast", "", "major", "", "minor", "patch", "castToBaseType", "T", "", "instance", "(Ljava/lang/Object;)Ljava/lang/Object;", "getJavaVersion", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"IMPLEMENTATIONS", "Lkotlin/internal/PlatformImplementations;", "apiVersionIsAtLeast", "", "major", "", "minor", "patch", "castToBaseType", "T", "", "instance", "(Ljava/lang/Object;)Ljava/lang/Object;", "getJavaVersion", "kotlin-stdlib"})
 public final class b
 {
-  public static final a MLv;
+  public static final a Niy;
   
   static
   {
     AppMethodBeat.i(128992);
-    int i = gfN();
+    int i = gkp();
     Object localObject;
     if (i >= 65544) {
       try
@@ -62,7 +62,7 @@ public final class b
                 AppMethodBeat.o(128992);
                 throw localThrowable3;
               }
-              MLv = locala;
+              Niy = locala;
             }
           }
           catch (ClassNotFoundException localClassNotFoundException3)
@@ -142,7 +142,7 @@ public final class b
     }
   }
   
-  private static final int gfN()
+  private static final int gkp()
   {
     j = 65542;
     AppMethodBeat.i(128991);

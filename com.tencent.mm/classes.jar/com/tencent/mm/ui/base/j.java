@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract class j
 {
-  protected a Jlh;
+  protected a JFV;
   
   public abstract View e(int paramInt, View paramView);
   
@@ -16,7 +16,7 @@ public abstract class j
   
   public static abstract interface a
   {
-    public abstract void bOo();
+    public abstract void bPl();
   }
 }
 

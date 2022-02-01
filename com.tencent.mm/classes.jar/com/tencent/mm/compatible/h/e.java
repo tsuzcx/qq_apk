@@ -3,6 +3,7 @@ package com.tencent.mm.compatible.h;
 import android.annotation.TargetApi;
 import android.media.MediaRecorder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vfs.k;
 import java.io.File;
 import java.io.FileDescriptor;
 
@@ -10,8 +11,8 @@ import java.io.FileDescriptor;
 public final class e
   extends MediaRecorder
 {
-  private com.tencent.mm.vfs.e gdT;
-  private FileDescriptor gdU;
+  private k ggb;
+  private FileDescriptor ggc;
   
   /* Error */
   public final void prepare()
@@ -20,11 +21,11 @@ public final class e
     //   0: ldc 20
     //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 28	com/tencent/mm/compatible/h/e:gdU	Ljava/io/FileDescriptor;
+    //   6: getfield 28	com/tencent/mm/compatible/h/e:ggc	Ljava/io/FileDescriptor;
     //   9: ifnull +21 -> 30
     //   12: aload_0
     //   13: aload_0
-    //   14: getfield 28	com/tencent/mm/compatible/h/e:gdU	Ljava/io/FileDescriptor;
+    //   14: getfield 28	com/tencent/mm/compatible/h/e:ggc	Ljava/io/FileDescriptor;
     //   17: invokespecial 32	android/media/MediaRecorder:setOutputFile	(Ljava/io/FileDescriptor;)V
     //   20: aload_0
     //   21: invokespecial 34	android/media/MediaRecorder:prepare	()V
@@ -32,17 +33,17 @@ public final class e
     //   26: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: return
     //   30: aload_0
-    //   31: getfield 39	com/tencent/mm/compatible/h/e:gdT	Lcom/tencent/mm/vfs/e;
+    //   31: getfield 39	com/tencent/mm/compatible/h/e:ggb	Lcom/tencent/mm/vfs/k;
     //   34: ifnull +100 -> 134
     //   37: aload_0
-    //   38: getfield 39	com/tencent/mm/compatible/h/e:gdT	Lcom/tencent/mm/vfs/e;
+    //   38: getfield 39	com/tencent/mm/compatible/h/e:ggb	Lcom/tencent/mm/vfs/k;
     //   41: astore_1
     //   42: aload_1
-    //   43: getfield 45	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
+    //   43: getfield 45	com/tencent/mm/vfs/k:mUri	Landroid/net/Uri;
     //   46: aload_1
-    //   47: invokevirtual 49	com/tencent/mm/vfs/e:fOH	()Lcom/tencent/mm/vfs/a$e;
+    //   47: invokevirtual 49	com/tencent/mm/vfs/k:fTe	()Lcom/tencent/mm/vfs/e$e;
     //   50: ldc 51
-    //   52: invokestatic 57	com/tencent/mm/vfs/i:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   52: invokestatic 57	com/tencent/mm/vfs/o:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/e$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   55: astore_3
     //   56: aconst_null
     //   57: astore_2
@@ -100,7 +101,7 @@ public final class e
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	155	0	this	e
-    //   41	6	1	locale	com.tencent.mm.vfs.e
+    //   41	6	1	localk	k
     //   92	19	1	localObject1	java.lang.Object
     //   143	7	1	localIOException	java.io.IOException
     //   151	1	1	localObject2	java.lang.Object
@@ -126,18 +127,18 @@ public final class e
   
   public final void setOutputFile(FileDescriptor paramFileDescriptor)
   {
-    this.gdT = null;
-    this.gdU = paramFileDescriptor;
+    this.ggb = null;
+    this.ggc = paramFileDescriptor;
   }
   
   public final void setOutputFile(String paramString)
   {
     AppMethodBeat.i(155941);
     if (paramString == null) {}
-    for (paramString = null;; paramString = new com.tencent.mm.vfs.e(paramString))
+    for (paramString = null;; paramString = new k(paramString))
     {
-      this.gdT = paramString;
-      this.gdU = null;
+      this.ggb = paramString;
+      this.ggc = null;
       AppMethodBeat.o(155941);
       return;
     }

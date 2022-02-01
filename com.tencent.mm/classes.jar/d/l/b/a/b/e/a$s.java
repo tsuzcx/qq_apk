@@ -16,28 +16,28 @@ public final class a$s
   extends i
   implements v
 {
-  public static s<s> NjZ;
-  private static final s Nnn;
-  private final d NjY;
-  private int Nka;
-  private byte Nkd = -1;
-  private int Nke = -1;
-  public List<a.p> Nno;
-  public int Nnp;
+  public static s<s> NHf;
+  private static final s NKt;
+  private final d NHe;
+  private int NHg;
+  private byte NHj = -1;
+  private int NHk = -1;
+  public List<a.p> NKu;
+  public int NKv;
   
   static
   {
     AppMethodBeat.i(58957);
-    NjZ = new b() {};
+    NHf = new b() {};
     s locals = new s();
-    Nnn = locals;
-    locals.gmq();
+    NKt = locals;
+    locals.gqS();
     AppMethodBeat.o(58957);
   }
   
   private a$s()
   {
-    this.NjY = d.NqI;
+    this.NHe = d.NNO;
   }
   
   /* Error */
@@ -50,13 +50,13 @@ public final class a$s
     //   6: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 57	d/l/b/a/b/e/a$s:Nkd	B
+    //   11: putfield 57	d/l/b/a/b/e/a$s:NHj	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 59	d/l/b/a/b/e/a$s:Nke	I
+    //   16: putfield 59	d/l/b/a/b/e/a$s:NHk	I
     //   19: aload_0
-    //   20: invokespecial 50	d/l/b/a/b/e/a$s:gmq	()V
-    //   23: invokestatic 76	d/l/b/a/b/h/d:grr	()Ld/l/b/a/b/h/d$b;
+    //   20: invokespecial 50	d/l/b/a/b/e/a$s:gqS	()V
+    //   23: invokestatic 76	d/l/b/a/b/h/d:gvT	()Ld/l/b/a/b/h/d$b;
     //   26: astore 9
     //   28: aload 9
     //   30: iconst_1
@@ -111,7 +111,7 @@ public final class a$s
     //   144: new 93	java/util/ArrayList
     //   147: dup
     //   148: invokespecial 94	java/util/ArrayList:<init>	()V
-    //   151: putfield 96	d/l/b/a/b/e/a$s:Nno	Ljava/util/List;
+    //   151: putfield 96	d/l/b/a/b/e/a$s:NKu	Ljava/util/List;
     //   154: iload_3
     //   155: iconst_1
     //   156: ior
@@ -123,9 +123,9 @@ public final class a$s
     //   167: iload 4
     //   169: istore 8
     //   171: aload_0
-    //   172: getfield 96	d/l/b/a/b/e/a$s:Nno	Ljava/util/List;
+    //   172: getfield 96	d/l/b/a/b/e/a$s:NKu	Ljava/util/List;
     //   175: aload_1
-    //   176: getstatic 99	d/l/b/a/b/e/a$p:NjZ	Ld/l/b/a/b/h/s;
+    //   176: getstatic 99	d/l/b/a/b/e/a$p:NHf	Ld/l/b/a/b/h/s;
     //   179: aload_2
     //   180: invokevirtual 102	d/l/b/a/b/h/e:a	(Ld/l/b/a/b/h/s;Ld/l/b/a/b/h/g;)Ld/l/b/a/b/h/q;
     //   183: invokeinterface 108 2 0
@@ -138,7 +138,7 @@ public final class a$s
     //   198: istore 5
     //   200: aload_1
     //   201: aload_0
-    //   202: putfield 112	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   202: putfield 112	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   205: iload 7
     //   207: istore 5
     //   209: ldc 72
@@ -155,17 +155,17 @@ public final class a$s
     //   226: if_icmpne +14 -> 240
     //   229: aload_0
     //   230: aload_0
-    //   231: getfield 96	d/l/b/a/b/e/a$s:Nno	Ljava/util/List;
+    //   231: getfield 96	d/l/b/a/b/e/a$s:NKu	Ljava/util/List;
     //   234: invokestatic 118	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   237: putfield 96	d/l/b/a/b/e/a$s:Nno	Ljava/util/List;
+    //   237: putfield 96	d/l/b/a/b/e/a$s:NKu	Ljava/util/List;
     //   240: aload 10
     //   242: invokevirtual 121	d/l/b/a/b/h/f:flush	()V
     //   245: aload_0
     //   246: aload 9
-    //   248: invokevirtual 127	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   251: putfield 66	d/l/b/a/b/e/a$s:NjY	Ld/l/b/a/b/h/d;
+    //   248: invokevirtual 127	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   251: putfield 66	d/l/b/a/b/e/a$s:NHe	Ld/l/b/a/b/h/d;
     //   254: aload_0
-    //   255: invokevirtual 130	d/l/b/a/b/e/a$s:grN	()V
+    //   255: invokevirtual 130	d/l/b/a/b/e/a$s:gwp	()V
     //   258: ldc 72
     //   260: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   263: aload_1
@@ -178,10 +178,10 @@ public final class a$s
     //   272: istore 8
     //   274: aload_0
     //   275: aload_0
-    //   276: getfield 132	d/l/b/a/b/e/a$s:Nka	I
+    //   276: getfield 132	d/l/b/a/b/e/a$s:NHg	I
     //   279: iconst_1
     //   280: ior
-    //   281: putfield 132	d/l/b/a/b/e/a$s:Nka	I
+    //   281: putfield 132	d/l/b/a/b/e/a$s:NHg	I
     //   284: iload_3
     //   285: istore 7
     //   287: iload_3
@@ -191,7 +191,7 @@ public final class a$s
     //   293: aload_0
     //   294: aload_1
     //   295: invokevirtual 135	d/l/b/a/b/h/e:zc	()I
-    //   298: putfield 137	d/l/b/a/b/e/a$s:Nnp	I
+    //   298: putfield 137	d/l/b/a/b/e/a$s:NKv	I
     //   301: goto -260 -> 41
     //   304: astore_1
     //   305: iload 8
@@ -206,7 +206,7 @@ public final class a$s
     //   323: istore 5
     //   325: aload_1
     //   326: aload_0
-    //   327: putfield 112	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+    //   327: putfield 112	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
     //   330: iload 8
     //   332: istore 5
     //   334: ldc 72
@@ -222,31 +222,31 @@ public final class a$s
     //   349: if_icmpne +14 -> 363
     //   352: aload_0
     //   353: aload_0
-    //   354: getfield 96	d/l/b/a/b/e/a$s:Nno	Ljava/util/List;
+    //   354: getfield 96	d/l/b/a/b/e/a$s:NKu	Ljava/util/List;
     //   357: invokestatic 118	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   360: putfield 96	d/l/b/a/b/e/a$s:Nno	Ljava/util/List;
+    //   360: putfield 96	d/l/b/a/b/e/a$s:NKu	Ljava/util/List;
     //   363: aload 10
     //   365: invokevirtual 121	d/l/b/a/b/h/f:flush	()V
     //   368: aload_0
     //   369: aload 9
-    //   371: invokevirtual 127	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   374: putfield 66	d/l/b/a/b/e/a$s:NjY	Ld/l/b/a/b/h/d;
+    //   371: invokevirtual 127	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   374: putfield 66	d/l/b/a/b/e/a$s:NHe	Ld/l/b/a/b/h/d;
     //   377: aload_0
-    //   378: invokevirtual 130	d/l/b/a/b/e/a$s:grN	()V
+    //   378: invokevirtual 130	d/l/b/a/b/e/a$s:gwp	()V
     //   381: ldc 72
     //   383: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   386: return
     //   387: astore_1
     //   388: aload_0
     //   389: aload 9
-    //   391: invokevirtual 127	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   394: putfield 66	d/l/b/a/b/e/a$s:NjY	Ld/l/b/a/b/h/d;
+    //   391: invokevirtual 127	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   394: putfield 66	d/l/b/a/b/e/a$s:NHe	Ld/l/b/a/b/h/d;
     //   397: goto -20 -> 377
     //   400: astore_1
     //   401: aload_0
     //   402: aload 9
-    //   404: invokevirtual 127	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   407: putfield 66	d/l/b/a/b/e/a$s:NjY	Ld/l/b/a/b/h/d;
+    //   404: invokevirtual 127	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   407: putfield 66	d/l/b/a/b/e/a$s:NHe	Ld/l/b/a/b/h/d;
     //   410: ldc 72
     //   412: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   415: aload_1
@@ -254,14 +254,14 @@ public final class a$s
     //   417: astore_2
     //   418: aload_0
     //   419: aload 9
-    //   421: invokevirtual 127	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   424: putfield 66	d/l/b/a/b/e/a$s:NjY	Ld/l/b/a/b/h/d;
+    //   421: invokevirtual 127	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   424: putfield 66	d/l/b/a/b/e/a$s:NHe	Ld/l/b/a/b/h/d;
     //   427: goto -173 -> 254
     //   430: astore_1
     //   431: aload_0
     //   432: aload 9
-    //   434: invokevirtual 127	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
-    //   437: putfield 66	d/l/b/a/b/e/a$s:NjY	Ld/l/b/a/b/h/d;
+    //   434: invokevirtual 127	d/l/b/a/b/h/d$b:gvX	()Ld/l/b/a/b/h/d;
+    //   437: putfield 66	d/l/b/a/b/e/a$s:NHe	Ld/l/b/a/b/h/d;
     //   440: ldc 72
     //   442: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   445: aload_1
@@ -319,28 +319,28 @@ public final class a$s
   private a$s(i.a parama)
   {
     super((byte)0);
-    this.NjY = parama.NjY;
+    this.NHe = parama.NHe;
   }
   
   public static a d(s params)
   {
     AppMethodBeat.i(58954);
-    params = a.gpN().g(params);
+    params = a.gup().g(params);
     AppMethodBeat.o(58954);
     return params;
   }
   
-  private void gmq()
+  private void gqS()
   {
     AppMethodBeat.i(58950);
-    this.Nno = Collections.emptyList();
-    this.Nnp = -1;
+    this.NKu = Collections.emptyList();
+    this.NKv = -1;
     AppMethodBeat.o(58950);
   }
   
-  public static s gpI()
+  public static s guk()
   {
-    return Nnn;
+    return NKt;
   }
   
   public final void a(f paramf)
@@ -348,32 +348,32 @@ public final class a$s
     AppMethodBeat.i(58952);
     zp();
     int i = 0;
-    while (i < this.Nno.size())
+    while (i < this.NKu.size())
     {
-      paramf.a(1, (q)this.Nno.get(i));
+      paramf.a(1, (q)this.NKu.get(i));
       i += 1;
     }
-    if ((this.Nka & 0x1) == 1) {
-      paramf.bx(2, this.Nnp);
+    if ((this.NHg & 0x1) == 1) {
+      paramf.bx(2, this.NKv);
     }
-    paramf.e(this.NjY);
+    paramf.e(this.NHe);
     AppMethodBeat.o(58952);
   }
   
-  public final s<s> gmo()
+  public final s<s> gqQ()
   {
-    return NjZ;
+    return NHf;
   }
   
-  public final boolean gpJ()
+  public final boolean gul()
   {
-    return (this.Nka & 0x1) == 1;
+    return (this.NHg & 0x1) == 1;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58951);
-    int i = this.Nkd;
+    int i = this.NHj;
     if (i == 1)
     {
       AppMethodBeat.o(58951);
@@ -385,17 +385,17 @@ public final class a$s
       return false;
     }
     i = 0;
-    while (i < this.Nno.size())
+    while (i < this.NKu.size())
     {
-      if (!((a.p)this.Nno.get(i)).isInitialized())
+      if (!((a.p)this.NKu.get(i)).isInitialized())
       {
-        this.Nkd = 0;
+        this.NHj = 0;
         AppMethodBeat.o(58951);
         return false;
       }
       i += 1;
     }
-    this.Nkd = 1;
+    this.NHj = 1;
     AppMethodBeat.o(58951);
     return true;
   }
@@ -403,7 +403,7 @@ public final class a$s
   public final int zp()
   {
     AppMethodBeat.i(58953);
-    int i = this.Nke;
+    int i = this.NHk;
     if (i != -1)
     {
       AppMethodBeat.o(58953);
@@ -411,17 +411,17 @@ public final class a$s
     }
     int j = 0;
     i = 0;
-    while (j < this.Nno.size())
+    while (j < this.NKu.size())
     {
-      i += f.c(1, (q)this.Nno.get(j));
+      i += f.c(1, (q)this.NKu.get(j));
       j += 1;
     }
     j = i;
-    if ((this.Nka & 0x1) == 1) {
-      j = i + f.bz(2, this.Nnp);
+    if ((this.NHg & 0x1) == 1) {
+      j = i + f.bz(2, this.NKv);
     }
-    i = this.NjY.size() + j;
-    this.Nke = i;
+    i = this.NHe.size() + j;
+    this.NHk = i;
     AppMethodBeat.o(58953);
     return i;
   }
@@ -430,40 +430,40 @@ public final class a$s
     extends i.a<a.s, a>
     implements v
   {
-    private int Nka;
-    private List<a.p> Nno;
-    private int Nnp;
+    private int NHg;
+    private List<a.p> NKu;
+    private int NKv;
     
     private a()
     {
       AppMethodBeat.i(58932);
-      this.Nno = Collections.emptyList();
-      this.Nnp = -1;
+      this.NKu = Collections.emptyList();
+      this.NKv = -1;
       AppMethodBeat.o(58932);
     }
     
-    private a aky(int paramInt)
+    private a ali(int paramInt)
     {
-      this.Nka |= 0x2;
-      this.Nnp = paramInt;
+      this.NHg |= 0x2;
+      this.NKv = paramInt;
       return this;
     }
     
-    private a gpK()
+    private a gum()
     {
       AppMethodBeat.i(58933);
-      a locala = new a().g(gpL());
+      a locala = new a().g(gun());
       AppMethodBeat.o(58933);
       return locala;
     }
     
-    private void gpM()
+    private void guo()
     {
       AppMethodBeat.i(58938);
-      if ((this.Nka & 0x1) != 1)
+      if ((this.NHg & 0x1) != 1)
       {
-        this.Nno = new ArrayList(this.Nno);
-        this.Nka |= 0x1;
+        this.NKu = new ArrayList(this.NKu);
+        this.NHg |= 0x1;
       }
       AppMethodBeat.o(58938);
     }
@@ -476,7 +476,7 @@ public final class a$s
       //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 78	d/l/b/a/b/e/a$s:NjZ	Ld/l/b/a/b/h/s;
+      //   7: getstatic 78	d/l/b/a/b/e/a$s:NHf	Ld/l/b/a/b/h/s;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 83 3 0
@@ -492,7 +492,7 @@ public final class a$s
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 87	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
+      //   36: getfield 87	d/l/b/a/b/h/k:NOw	Ld/l/b/a/b/h/q;
       //   39: checkcast 9	d/l/b/a/b/e/a$s
       //   42: astore_2
       //   43: ldc 74
@@ -531,49 +531,49 @@ public final class a$s
     public final a g(a.s params)
     {
       AppMethodBeat.i(58935);
-      if (params == a.s.gpI())
+      if (params == a.s.guk())
       {
         AppMethodBeat.o(58935);
         return this;
       }
       if (!a.s.e(params).isEmpty())
       {
-        if (!this.Nno.isEmpty()) {
+        if (!this.NKu.isEmpty()) {
           break label100;
         }
-        this.Nno = a.s.e(params);
-        this.Nka &= 0xFFFFFFFE;
+        this.NKu = a.s.e(params);
+        this.NHg &= 0xFFFFFFFE;
       }
       for (;;)
       {
-        if (params.gpJ()) {
-          aky(params.Nnp);
+        if (params.gul()) {
+          ali(params.NKv);
         }
-        this.NjY = this.NjY.a(a.s.f(params));
+        this.NHe = this.NHe.a(a.s.f(params));
         AppMethodBeat.o(58935);
         return this;
         label100:
-        gpM();
-        this.Nno.addAll(a.s.e(params));
+        guo();
+        this.NKu.addAll(a.s.e(params));
       }
     }
     
-    public final a.s gpL()
+    public final a.s gun()
     {
       int i = 1;
       AppMethodBeat.i(58934);
       a.s locals = new a.s(this, (byte)0);
-      int j = this.Nka;
-      if ((this.Nka & 0x1) == 1)
+      int j = this.NHg;
+      if ((this.NHg & 0x1) == 1)
       {
-        this.Nno = Collections.unmodifiableList(this.Nno);
-        this.Nka &= 0xFFFFFFFE;
+        this.NKu = Collections.unmodifiableList(this.NKu);
+        this.NHg &= 0xFFFFFFFE;
       }
-      a.s.a(locals, this.Nno);
+      a.s.a(locals, this.NKu);
       if ((j & 0x2) == 2) {}
       for (;;)
       {
-        a.s.a(locals, this.Nnp);
+        a.s.a(locals, this.NKv);
         a.s.b(locals, i);
         AppMethodBeat.o(58934);
         return locals;
@@ -585,9 +585,9 @@ public final class a$s
     {
       AppMethodBeat.i(58936);
       int i = 0;
-      while (i < this.Nno.size())
+      while (i < this.NKu.size())
       {
-        if (!((a.p)this.Nno.get(i)).isInitialized())
+        if (!((a.p)this.NKu.get(i)).isInitialized())
         {
           AppMethodBeat.o(58936);
           return false;
@@ -601,7 +601,7 @@ public final class a$s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     d.l.b.a.b.e.a.s
  * JD-Core Version:    0.7.0.1
  */

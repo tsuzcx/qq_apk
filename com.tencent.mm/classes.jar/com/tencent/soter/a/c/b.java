@@ -6,34 +6,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
 {
-  private static volatile b LRb = null;
-  public int LRc;
-  public SparseArray<String> LRd;
-  public SharedPreferences LRe;
-  public boolean cAX;
-  public boolean dmr;
+  private static volatile b MnY = null;
+  public int MnZ;
+  public SparseArray<String> Moa;
+  public SharedPreferences Mob;
+  public boolean cBE;
+  public boolean dnt;
   
   public b()
   {
     AppMethodBeat.i(16);
-    this.cAX = false;
-    this.dmr = false;
-    this.LRc = 0;
-    this.LRd = new SparseArray(10);
-    this.LRe = null;
+    this.cBE = false;
+    this.dnt = false;
+    this.MnZ = 0;
+    this.Moa = new SparseArray(10);
+    this.Mob = null;
     AppMethodBeat.o(16);
   }
   
-  public static b fUW()
+  public static b fZv()
   {
     AppMethodBeat.i(17);
-    if (LRb == null) {
+    if (MnY == null) {
       try
       {
-        if (LRb == null) {
-          LRb = new b();
+        if (MnY == null) {
+          MnY = new b();
         }
-        b localb1 = LRb;
+        b localb1 = MnY;
         return localb1;
       }
       finally
@@ -41,46 +41,46 @@ public class b
         AppMethodBeat.o(17);
       }
     }
-    b localb2 = LRb;
+    b localb2 = MnY;
     AppMethodBeat.o(17);
     return localb2;
   }
   
-  public final boolean fUS()
+  public final boolean fZr()
   {
     try
     {
-      boolean bool = this.dmr;
+      boolean bool = this.dnt;
       return bool;
     }
     finally {}
   }
   
-  public final void fUX()
+  public final void fZw()
   {
     try
     {
-      this.cAX = true;
+      this.cBE = true;
       return;
     }
     finally {}
   }
   
-  public final SparseArray<String> fUY()
+  public final SparseArray<String> fZx()
   {
     try
     {
-      SparseArray localSparseArray = this.LRd;
+      SparseArray localSparseArray = this.Moa;
       return localSparseArray;
     }
     finally {}
   }
   
-  public final SharedPreferences fUZ()
+  public final SharedPreferences fZy()
   {
     try
     {
-      SharedPreferences localSharedPreferences = this.LRe;
+      SharedPreferences localSharedPreferences = this.Mob;
       return localSharedPreferences;
     }
     finally {}
@@ -90,17 +90,17 @@ public class b
   {
     try
     {
-      boolean bool = this.cAX;
+      boolean bool = this.cBE;
       return bool;
     }
     finally {}
   }
   
-  public final void zs(boolean paramBoolean)
+  public final void zG(boolean paramBoolean)
   {
     try
     {
-      this.dmr = paramBoolean;
+      this.dnt = paramBoolean;
       return;
     }
     finally {}
@@ -108,7 +108,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.soter.a.c.b
  * JD-Core Version:    0.7.0.1
  */

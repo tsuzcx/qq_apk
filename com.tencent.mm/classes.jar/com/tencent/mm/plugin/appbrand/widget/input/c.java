@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.widget.input.d.e;
 import com.tencent.mm.plugin.appbrand.widget.input.d.h;
 import com.tencent.mm.ui.tools.f.a;
@@ -17,51 +18,51 @@ public abstract class c<Input extends EditText,  extends ab>
   extends com.tencent.mm.ui.widget.g
   implements aa
 {
-  public final int ncO;
-  public final WeakReference<com.tencent.mm.plugin.appbrand.page.aa> ncQ;
-  final String sZN;
-  public final View.OnFocusChangeListener sZO = new View.OnFocusChangeListener()
+  public final int nhX;
+  public final WeakReference<z> nhZ;
+  public af nid;
+  public ae nie;
+  final String niw;
+  public final View.OnFocusChangeListener nix = new View.OnFocusChangeListener()
   {
     public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
     {
       AppMethodBeat.i(136308);
-      c.this.ih(paramAnonymousBoolean);
+      c.this.jdMethod_if(paramAnonymousBoolean);
       if (paramAnonymousBoolean)
       {
-        o.a((com.tencent.mm.plugin.appbrand.page.aa)c.this.ncQ.get(), (ab)c.this.bDM());
-        ((ab)c.this.bDM()).setInputId(c.this.ncO);
-        o.b((com.tencent.mm.plugin.appbrand.page.aa)c.this.ncQ.get(), c.this);
+        o.a((z)c.this.nhZ.get(), (ab)c.this.bEE());
+        ((ab)c.this.bEE()).setInputId(c.this.nhX);
+        o.b((z)c.this.nhZ.get(), c.this);
       }
       AppMethodBeat.o(136308);
     }
   };
-  private final com.tencent.mm.ui.tools.b.c.a sZP = new p.a()
+  private final com.tencent.mm.ui.tools.b.c.a niy = new p.a()
   {
-    public final void cU(String paramAnonymousString)
+    public final void cW(String paramAnonymousString)
     {
       AppMethodBeat.i(168762);
-      if (c.this.bDM() != null) {
-        c.a(c.this, c.this.bDM().getEditableText());
+      if (c.this.bEE() != null) {
+        c.a(c.this, c.this.bEE().getEditableText());
       }
       AppMethodBeat.o(168762);
     }
   };
-  public ae sxE;
-  public af sxt;
   
-  c(String paramString, com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt)
+  c(String paramString, z paramz, int paramInt)
   {
-    this.sZN = paramString;
-    this.ncQ = new WeakReference(paramaa);
-    this.ncO = paramInt;
+    this.niw = paramString;
+    this.nhZ = new WeakReference(paramz);
+    this.nhX = paramInt;
   }
   
   private void b(Editable paramEditable)
   {
     af localaf;
-    if (this.sxt != null)
+    if (this.nid != null)
     {
-      localaf = this.sxt;
+      localaf = this.nid;
       if (paramEditable != null) {
         break label34;
       }
@@ -69,19 +70,19 @@ public abstract class c<Input extends EditText,  extends ab>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.ngj);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.nlr);
       return;
     }
   }
   
-  public abstract boolean Vq(String paramString);
+  public abstract boolean Wc(String paramString);
   
   final void a(Editable paramEditable)
   {
     af localaf;
-    if (this.sxt != null)
+    if (this.nid != null)
     {
-      localaf = this.sxt;
+      localaf = this.nid;
       if (paramEditable != null) {
         break label34;
       }
@@ -89,19 +90,19 @@ public abstract class c<Input extends EditText,  extends ab>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.ngh);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.nlp);
       return;
     }
   }
   
   public final void a(String paramString, Integer paramInteger)
   {
-    Vq(paramString);
+    Wc(paramString);
     if (paramInteger == null) {}
     for (int i = -1;; i = paramInteger.intValue())
     {
       paramString = Integer.valueOf(i);
-      eu(paramString.intValue(), paramString.intValue());
+      ev(paramString.intValue(), paramString.intValue());
       return;
     }
   }
@@ -113,29 +114,21 @@ public abstract class c<Input extends EditText,  extends ab>
     for (;;)
     {
       return false;
-      if (paramh.njf == null) {
-        paramh.njf = Integer.valueOf(140);
+      if (paramh.non == null) {
+        paramh.non = Integer.valueOf(140);
       }
-      while (bDM() != null)
+      while (bEE() != null)
       {
-        paramh = p.a(bDM()).aeU(paramh.njf.intValue());
-        paramh.KMn = false;
-        paramh.neC = f.a.KIM;
-        paramh.a(this.sZP);
+        paramh = p.a(bEE()).afD(paramh.non.intValue());
+        paramh.LiL = false;
+        paramh.njK = f.a.Lfg;
+        paramh.a(this.niy);
         return true;
-        if (paramh.njf.intValue() <= 0) {
-          paramh.njf = Integer.valueOf(2147483647);
+        if (paramh.non.intValue() <= 0) {
+          paramh.non = Integer.valueOf(2147483647);
         }
       }
     }
-  }
-  
-  public final Editable aUP()
-  {
-    if (bDM() == null) {
-      return null;
-    }
-    return bDM().getEditableText();
   }
   
   public final void afterTextChanged(Editable paramEditable)
@@ -145,46 +138,54 @@ public abstract class c<Input extends EditText,  extends ab>
   
   protected abstract h b(h paramh);
   
-  public abstract Input bDM();
+  public abstract Input bEE();
   
-  public abstract Rect bDN();
+  public abstract Rect bEF();
   
-  public final boolean bDO()
+  public final boolean bEG()
   {
     return remove();
   }
   
-  public final Input bDP()
+  public final Input bEH()
   {
-    return bDM();
+    return bEE();
   }
   
-  protected final void eu(int paramInt1, int paramInt2)
+  public final Editable bER()
   {
-    b.a(bDM(), paramInt1, paramInt2);
+    if (bEE() == null) {
+      return null;
+    }
+    return bEE().getEditableText();
+  }
+  
+  protected final void ev(int paramInt1, int paramInt2)
+  {
+    b.a(bEE(), paramInt1, paramInt2);
   }
   
   public final int getInputId()
   {
-    return this.ncO;
+    return this.nhX;
   }
   
-  protected abstract boolean ih(boolean paramBoolean);
+  protected abstract boolean jdMethod_if(boolean paramBoolean);
   
   public final boolean remove()
   {
-    EditText localEditText = bDM();
+    EditText localEditText = bEE();
     if (localEditText == null) {
       return false;
     }
-    ((ab)localEditText).b(this.sZO);
+    ((ab)localEditText).b(this.nix);
     localEditText.removeTextChangedListener(this);
     ((ab)localEditText).destroy();
-    Object localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.ncQ.get();
+    Object localObject = (z)this.nhZ.get();
     if (localObject == null) {
       return false;
     }
-    localObject = (g)((com.tencent.mm.plugin.appbrand.page.aa)localObject).but();
+    localObject = (g)((z)localObject).bve();
     if (localObject == null) {
       return false;
     }
@@ -192,37 +193,37 @@ public abstract class c<Input extends EditText,  extends ab>
     return true;
   }
   
-  public final boolean u(com.tencent.mm.plugin.appbrand.page.aa paramaa)
+  public final boolean v(z paramz)
   {
-    return (paramaa != null) && (paramaa == this.ncQ.get());
+    return (paramz != null) && (paramz == this.nhZ.get());
   }
   
-  public final void wm(int paramInt)
+  public final void wr(int paramInt)
   {
-    if (this.sxE != null) {
-      this.sxE.wo(paramInt);
+    if (this.nie != null) {
+      this.nie.wt(paramInt);
     }
   }
   
   public static enum a
   {
-    private static final android.support.v4.e.b<a> sZR;
+    private static final android.support.v4.e.b<a> niA;
     
     static
     {
       AppMethodBeat.i(177116);
-      sZS = new a[0];
-      sZR = new android.support.v4.e.b();
+      niB = new a[0];
+      niA = new android.support.v4.e.b();
       AppMethodBeat.o(177116);
     }
     
-    public static c a(String paramString, com.tencent.mm.plugin.appbrand.page.aa paramaa, e parame)
+    public static c a(String paramString, z paramz, e parame)
     {
       AppMethodBeat.i(136312);
-      Iterator localIterator = sZR.iterator();
+      Iterator localIterator = niA.iterator();
       while (localIterator.hasNext())
       {
-        c localc = ((a)localIterator.next()).bDR();
+        c localc = ((a)localIterator.next()).bEJ();
         if (localc != null)
         {
           AppMethodBeat.o(136312);
@@ -231,7 +232,7 @@ public abstract class c<Input extends EditText,  extends ab>
       }
       if (("digit".equalsIgnoreCase(paramString)) || ("idcard".equalsIgnoreCase(paramString)) || ("number".equalsIgnoreCase(paramString)))
       {
-        paramString = new d(paramString, paramaa, parame);
+        paramString = new d(paramString, paramz, parame);
         AppMethodBeat.o(136312);
         return paramString;
       }
@@ -241,7 +242,7 @@ public abstract class c<Input extends EditText,  extends ab>
     
     public static abstract interface a
     {
-      public abstract c bDR();
+      public abstract c bEJ();
     }
   }
 }

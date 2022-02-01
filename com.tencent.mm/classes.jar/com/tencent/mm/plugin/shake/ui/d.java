@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.r;
 import java.util.GregorianCalendar;
@@ -21,39 +21,39 @@ final class d
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  int yOK;
+  int zeU;
   
   public d(Context paramContext)
   {
     super(paramContext, new f());
     AppMethodBeat.i(28416);
-    this.yOK = 20;
+    this.zeU = 20;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(28416);
   }
   
-  public final void Pr(int paramInt)
+  public final void PY(int paramInt)
   {
     AppMethodBeat.i(28417);
-    det();
-    this.yOK = paramInt;
-    Zu();
+    dhl();
+    this.zeU = paramInt;
+    ZD();
     AppMethodBeat.o(28417);
   }
   
-  public final void Zu()
+  public final void ZD()
   {
     AppMethodBeat.i(28419);
-    setCursor(m.dOP().Pm(this.yOK));
+    setCursor(m.dSm().PT(this.zeU));
     super.notifyDataSetChanged();
     AppMethodBeat.o(28419);
   }
   
-  public final void Zv()
+  public final void ZE()
   {
     AppMethodBeat.i(28418);
-    Zu();
+    ZD();
     AppMethodBeat.o(28418);
   }
   
@@ -69,22 +69,22 @@ final class d
     {
       paramViewGroup = this.mInflater.inflate(2131495417, paramViewGroup, false);
       localObject1 = new a();
-      ((a)localObject1).yOL = ((MMImageView)paramViewGroup.findViewById(2131304694));
-      ((a)localObject1).lCL = ((TextView)paramViewGroup.findViewById(2131304696));
-      ((a)localObject1).lDu = ((TextView)paramViewGroup.findViewById(2131304693));
-      ((a)localObject1).vjQ = ((TextView)paramViewGroup.findViewById(2131304695));
+      ((a)localObject1).zeV = ((MMImageView)paramViewGroup.findViewById(2131304694));
+      ((a)localObject1).lHk = ((TextView)paramViewGroup.findViewById(2131304696));
+      ((a)localObject1).lHT = ((TextView)paramViewGroup.findViewById(2131304693));
+      ((a)localObject1).vvV = ((TextView)paramViewGroup.findViewById(2131304695));
       paramViewGroup.setTag(localObject1);
       localObject2 = (f)getItem(paramInt);
-      e.a(((a)localObject1).yOL, ((f)localObject2).field_thumburl, 2131689584, false);
-      if (!bt.isNullOrNil(((f)localObject2).field_title)) {
+      e.a(((a)localObject1).zeV, ((f)localObject2).field_thumburl, 2131689584, false);
+      if (!bu.isNullOrNil(((f)localObject2).field_title)) {
         break label234;
       }
-      ((a)localObject1).lCL.setVisibility(8);
-      if (!bt.isNullOrNil(((f)localObject2).field_desc)) {
+      ((a)localObject1).lHk.setVisibility(8);
+      if (!bu.isNullOrNil(((f)localObject2).field_desc)) {
         break label274;
       }
-      ((a)localObject1).lDu.setVisibility(8);
-      localObject1 = ((a)localObject1).vjQ;
+      ((a)localObject1).lHT.setVisibility(8);
+      localObject1 = ((a)localObject1).vvV;
       paramView = this.mContext;
       l1 = ((f)localObject2).field_createtime * 1000L;
       localObject2 = new GregorianCalendar();
@@ -102,12 +102,12 @@ final class d
       paramViewGroup = paramView;
       break;
       label234:
-      ((a)localObject1).lCL.setText(k.b(this.mContext, ((f)localObject2).field_title, ((a)localObject1).lCL.getTextSize()));
-      ((a)localObject1).lCL.setVisibility(0);
+      ((a)localObject1).lHk.setText(k.b(this.mContext, ((f)localObject2).field_title, ((a)localObject1).lHk.getTextSize()));
+      ((a)localObject1).lHk.setVisibility(0);
       break label141;
       label274:
-      ((a)localObject1).lDu.setText(k.b(this.mContext, ((f)localObject2).field_desc, ((a)localObject1).lDu.getTextSize()));
-      ((a)localObject1).lDu.setVisibility(0);
+      ((a)localObject1).lHT.setText(k.b(this.mContext, ((f)localObject2).field_desc, ((a)localObject1).lHT.getTextSize()));
+      ((a)localObject1).lHT.setVisibility(0);
       break label162;
       label314:
       long l2 = ((GregorianCalendar)localObject2).getTimeInMillis();
@@ -157,10 +157,10 @@ final class d
   
   final class a
   {
-    TextView lCL;
-    TextView lDu;
-    TextView vjQ;
-    MMImageView yOL;
+    TextView lHT;
+    TextView lHk;
+    TextView vvV;
+    MMImageView zeV;
     
     a() {}
   }

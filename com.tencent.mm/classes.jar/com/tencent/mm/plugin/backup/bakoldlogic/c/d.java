@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.jniinterface.AesEcb;
-import com.tencent.mm.plugin.backup.i.ae;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.backup.i.ad;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 
 public final class d
   extends com.tencent.mm.plugin.backup.g.b
 {
   private static int progress;
-  private int hMP;
+  private int hPI;
   public String id;
   private byte[] key;
-  private g nBY;
-  private com.tencent.mm.plugin.backup.i.ad nCa;
-  private ae nCb;
-  private String nCc;
+  private g nHt;
+  private ad nHv;
+  private com.tencent.mm.plugin.backup.i.ae nHw;
+  private String nHx;
   private int offset;
   private int start;
   
   public d(String paramString1, String paramString2, int paramInt1, int paramInt2, g paramg, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21944);
-    this.nCa = new com.tencent.mm.plugin.backup.i.ad();
-    this.nCb = new ae();
-    this.nBY = null;
+    this.nHv = new ad();
+    this.nHw = new com.tencent.mm.plugin.backup.i.ae();
+    this.nHt = null;
     this.start = 0;
     this.offset = 0;
     if (paramInt1 == 1) {}
-    for (this.nCc = (paramString1 + "backupItem/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.We(paramString2));; this.nCc = (paramString1 + "backupMeida/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.We(paramString2)))
+    for (this.nHx = (paramString1 + "backupItem/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.WQ(paramString2));; this.nHx = (paramString1 + "backupMeida/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.WQ(paramString2)))
     {
       this.id = paramString2;
-      this.nCa.nEj = paramString2;
-      this.nCa.nEk = paramInt1;
-      this.hMP = paramInt2;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BakSceneRestoreData", "BakSceneRestoreData init, %s, type:%d, totalLen:%d", new Object[] { this.nCa.nEj, Integer.valueOf(this.nCa.nEk), Integer.valueOf(this.hMP) });
-      this.nBY = paramg;
+      this.nHv.nJE = paramString2;
+      this.nHv.nJF = paramInt1;
+      this.hPI = paramInt2;
+      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakSceneRestoreData", "BakSceneRestoreData init, %s, type:%d, totalLen:%d", new Object[] { this.nHv.nJE, Integer.valueOf(this.nHv.nJF), Integer.valueOf(this.hPI) });
+      this.nHt = paramg;
       this.key = paramArrayOfByte;
       AppMethodBeat.o(21944);
       return;
@@ -47,24 +47,19 @@ public final class d
   public static void setProgress(int paramInt)
   {
     AppMethodBeat.i(21946);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BakSceneRestoreData", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakSceneRestoreData", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
     progress = paramInt;
     AppMethodBeat.o(21946);
   }
   
-  public final com.tencent.mm.bx.a bIA()
-  {
-    return this.nCa;
-  }
-  
-  public final boolean bIJ()
+  public final boolean bJH()
   {
     long l = 524288L;
     AppMethodBeat.i(21945);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BakSceneRestoreData", "doSecne");
-    int i = this.hMP;
-    if (this.nCa.nEk == 2) {
-      if (this.hMP - this.offset > 524288L) {
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakSceneRestoreData", "doSecne");
+    int i = this.hPI;
+    if (this.nHv.nJF == 2) {
+      if (this.hPI - this.offset > 524288L) {
         i = (int)l;
       }
     }
@@ -72,20 +67,25 @@ public final class d
     {
       this.start = this.offset;
       this.offset = (i + this.start);
-      this.nCa.nEm = this.start;
-      this.nCa.nEn = this.offset;
-      this.nCa.nEp = progress;
-      boolean bool = super.bIJ();
+      this.nHv.nJH = this.start;
+      this.nHv.nJI = this.offset;
+      this.nHv.nJK = progress;
+      boolean bool = super.bJH();
       AppMethodBeat.o(21945);
       return bool;
-      l = this.hMP - this.offset;
+      l = this.hPI - this.offset;
       break;
     }
   }
   
-  public final com.tencent.mm.bx.a bIz()
+  public final com.tencent.mm.bw.a bJx()
   {
-    return this.nCb;
+    return this.nHw;
+  }
+  
+  public final com.tencent.mm.bw.a bJy()
+  {
+    return this.nHv;
   }
   
   public final int getType()
@@ -93,31 +93,31 @@ public final class d
     return 7;
   }
   
-  public final void xC(int paramInt)
+  public final void xG(int paramInt)
   {
     AppMethodBeat.i(21947);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BakSceneRestoreData", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.nCb.nEj, Integer.valueOf(this.nCb.nEk), Integer.valueOf(this.nCb.nEm), Integer.valueOf(this.nCb.nEn), Integer.valueOf(this.nCb.nDG) });
-    if ((this.nCb.nDG != 0) && (this.nCb.nDG != 10))
+    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakSceneRestoreData", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.nHw.nJE, Integer.valueOf(this.nHw.nJF), Integer.valueOf(this.nHw.nJH), Integer.valueOf(this.nHw.nJI), Integer.valueOf(this.nHw.nJb) });
+    if ((this.nHw.nJb != 0) && (this.nHw.nJb != 10))
     {
-      q(4, this.nCb.nDG, "error");
+      q(4, this.nHw.nJb, "error");
       AppMethodBeat.o(21947);
       return;
     }
-    if ((this.nCb.nEm != this.start) || (this.nCb.nEn != this.offset))
+    if ((this.nHw.nJH != this.start) || (this.nHw.nJI != this.offset))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BakSceneRestoreData", "err local:%d, %d;   server:%d,%d", new Object[] { Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.nCb.nEm), Integer.valueOf(this.nCb.nEn) });
+      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.BakSceneRestoreData", "err local:%d, %d;   server:%d,%d", new Object[] { Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.nHw.nJH), Integer.valueOf(this.nHw.nJI) });
       q(3, -1, "error");
       AppMethodBeat.o(21947);
       return;
     }
-    this.nBY.a(this.nCa.nEn - this.nCa.nEm, this.hMP, this);
-    byte[] arrayOfByte = this.nCb.nCV.zr;
+    this.nHt.a(this.nHv.nJI - this.nHv.nJH, this.hPI, this);
+    byte[] arrayOfByte = this.nHw.nIq.zr;
     Object localObject;
     boolean bool;
     if (this.key != null)
     {
       localObject = this.key;
-      if (this.offset == this.hMP)
+      if (this.offset == this.hPI)
       {
         bool = true;
         arrayOfByte = AesEcb.aesCryptEcb(arrayOfByte, (byte[])localObject, false, bool);
@@ -125,26 +125,26 @@ public final class d
     }
     for (;;)
     {
-      localObject = this.nCc;
+      localObject = this.nHx;
       String str = this.id;
-      e locale = new e((String)localObject + str);
+      k localk = new k((String)localObject + str);
       long l1;
       label355:
       long l2;
-      if (locale.exists())
+      if (localk.exists())
       {
-        l1 = locale.length();
-        i.e((String)localObject + str, arrayOfByte, arrayOfByte.length);
-        locale = new e((String)localObject + str);
-        if (!locale.exists()) {
+        l1 = localk.length();
+        o.e((String)localObject + str, arrayOfByte, arrayOfByte.length);
+        localk = new k((String)localObject + str);
+        if (!localk.exists()) {
           break label587;
         }
-        l2 = locale.length();
+        l2 = localk.length();
         label428:
         if (l1 == l2)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BakSceneRestoreData", "append failed and try again:%s", new Object[] { (String)localObject + str });
-          i.e((String)localObject + str, arrayOfByte, arrayOfByte.length);
+          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.BakSceneRestoreData", "append failed and try again:%s", new Object[] { (String)localObject + str });
+          o.e((String)localObject + str, arrayOfByte, arrayOfByte.length);
         }
         if (arrayOfByte != null) {
           break label593;
@@ -154,11 +154,11 @@ public final class d
       label593:
       for (paramInt = 0;; paramInt = arrayOfByte.length)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BakSceneRestoreData", "onSceneEnd appendbuf len:%d", new Object[] { Integer.valueOf(paramInt) });
-        if (this.offset != this.hMP) {
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakSceneRestoreData", "onSceneEnd appendbuf len:%d", new Object[] { Integer.valueOf(paramInt) });
+        if (this.offset != this.hPI) {
           break label600;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BakSceneRestoreData", "recover cmoplete:%s  %d", new Object[] { this.id, Integer.valueOf(this.hMP) });
+        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BakSceneRestoreData", "recover cmoplete:%s  %d", new Object[] { this.id, Integer.valueOf(this.hPI) });
         q(0, 0, "success");
         AppMethodBeat.o(21947);
         return;
@@ -170,7 +170,7 @@ public final class d
         break label428;
       }
       label600:
-      bIJ();
+      bJH();
       AppMethodBeat.o(21947);
       return;
     }

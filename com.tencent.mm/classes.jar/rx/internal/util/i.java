@@ -13,23 +13,23 @@ import rx.j;
 public final class i
   implements j
 {
-  public List<j> OaH;
-  public volatile boolean OaI;
+  public List<j> OxM;
+  public volatile boolean OxN;
   
   public i() {}
   
   public i(j paramj)
   {
     AppMethodBeat.i(90120);
-    this.OaH = new LinkedList();
-    this.OaH.add(paramj);
+    this.OxM = new LinkedList();
+    this.OxM.add(paramj);
     AppMethodBeat.o(90120);
   }
   
   public i(j... paramVarArgs)
   {
     AppMethodBeat.i(90119);
-    this.OaH = new LinkedList(Arrays.asList(paramVarArgs));
+    this.OxM = new LinkedList(Arrays.asList(paramVarArgs));
     AppMethodBeat.o(90119);
   }
   
@@ -52,7 +52,7 @@ public final class i
       localj = (j)localIterator.next();
       try
       {
-        localj.gyQ();
+        localj.gDs();
       }
       catch (Throwable localThrowable)
       {
@@ -68,7 +68,7 @@ public final class i
     {
       paramCollection.add(localThrowable);
       break;
-      b.jz(paramCollection);
+      b.jI(paramCollection);
       AppMethodBeat.o(90123);
       return;
     }
@@ -77,27 +77,27 @@ public final class i
   public final void b(j paramj)
   {
     AppMethodBeat.i(90121);
-    if (paramj.gyR())
+    if (paramj.gDt())
     {
       AppMethodBeat.o(90121);
       return;
     }
-    if (!this.OaI) {}
+    if (!this.OxN) {}
     try
     {
-      if (!this.OaI)
+      if (!this.OxN)
       {
-        List localList = this.OaH;
+        List localList = this.OxM;
         Object localObject = localList;
         if (localList == null)
         {
           localObject = new LinkedList();
-          this.OaH = ((List)localObject);
+          this.OxM = ((List)localObject);
         }
         ((List)localObject).add(paramj);
         return;
       }
-      paramj.gyQ();
+      paramj.gDs();
       AppMethodBeat.o(90121);
       return;
     }
@@ -107,18 +107,18 @@ public final class i
     }
   }
   
-  public final void gyQ()
+  public final void gDs()
   {
     AppMethodBeat.i(90122);
-    if (!this.OaI) {}
+    if (!this.OxN) {}
     try
     {
-      if (this.OaI) {
+      if (this.OxN) {
         return;
       }
-      this.OaI = true;
-      List localList = this.OaH;
-      this.OaH = null;
+      this.OxN = true;
+      List localList = this.OxM;
+      this.OxM = null;
       z(localList);
       AppMethodBeat.o(90122);
       return;
@@ -129,14 +129,14 @@ public final class i
     }
   }
   
-  public final boolean gyR()
+  public final boolean gDt()
   {
-    return this.OaI;
+    return this.OxN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.util.i
  * JD-Core Version:    0.7.0.1
  */

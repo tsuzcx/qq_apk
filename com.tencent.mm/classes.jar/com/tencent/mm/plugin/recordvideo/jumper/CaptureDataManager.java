@@ -11,49 +11,49 @@ import java.util.List;
 
 public final class CaptureDataManager
 {
-  public static CaptureDataManager xxY;
-  private Bundle kiL;
-  public b xxX;
+  public static CaptureDataManager xNV;
+  private Bundle kmb;
+  public b xNU;
   
   static
   {
     AppMethodBeat.i(101494);
-    xxY = new CaptureDataManager();
+    xNV = new CaptureDataManager();
     AppMethodBeat.o(101494);
   }
   
   private CaptureDataManager()
   {
     AppMethodBeat.i(101490);
-    this.xxX = null;
-    this.kiL = new Bundle();
+    this.xNU = null;
+    this.kmb = new Bundle();
     AppMethodBeat.o(101490);
   }
   
   public final void a(Context paramContext, CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(101491);
-    if ((this.xxX == null) || (paramContext == null))
+    if ((this.xNU == null) || (paramContext == null))
     {
       AppMethodBeat.o(101491);
       return;
     }
-    this.xxX.a(paramContext, paramCaptureVideoNormalModel, this.kiL);
-    this.kiL.clear();
+    this.xNU.a(paramContext, paramCaptureVideoNormalModel, this.kmb);
+    this.kmb.clear();
     AppMethodBeat.o(101491);
   }
   
   public final void a(b paramb)
   {
-    this.xxX = paramb;
+    this.xNU = paramb;
   }
   
   public final boolean a(Context paramContext, a parama)
   {
     AppMethodBeat.i(101492);
-    if (this.xxX != null)
+    if (this.xNU != null)
     {
-      boolean bool = this.xxX.a(paramContext, this.kiL, parama);
+      boolean bool = this.xNU.a(paramContext, this.kmb, parama);
       AppMethodBeat.o(101492);
       return bool;
     }
@@ -63,26 +63,26 @@ public final class CaptureDataManager
   
   public final void d(RecordMediaReportInfo paramRecordMediaReportInfo)
   {
-    AppMethodBeat.i(209008);
-    if (this.xxX == null)
+    AppMethodBeat.i(218355);
+    if (this.xNU == null)
     {
-      AppMethodBeat.o(209008);
+      AppMethodBeat.o(218355);
       return;
     }
-    this.xxX.a(paramRecordMediaReportInfo, this.kiL);
-    AppMethodBeat.o(209008);
+    this.xNU.a(paramRecordMediaReportInfo, this.kmb);
+    AppMethodBeat.o(218355);
   }
   
-  public final void dFB()
+  public final void dIS()
   {
     AppMethodBeat.i(101493);
-    this.kiL.clear();
+    this.kmb.clear();
     AppMethodBeat.o(101493);
   }
   
   public final Bundle getExtData()
   {
-    return this.kiL;
+    return this.kmb;
   }
   
   public static class CaptureVideoNormalModel
@@ -91,11 +91,11 @@ public final class CaptureDataManager
     public static final Parcelable.Creator<CaptureVideoNormalModel> CREATOR;
     public String thumbPath;
     public String videoPath;
-    public Boolean xxZ;
-    public Long xya;
-    public Boolean xyb;
-    private RecordMediaReportInfo xyc;
-    private List<String> xyd;
+    public Boolean xNW;
+    public Long xNX;
+    public Boolean xNY;
+    private RecordMediaReportInfo xNZ;
+    private List<String> xOa;
     
     static
     {
@@ -107,67 +107,67 @@ public final class CaptureDataManager
     protected CaptureVideoNormalModel(Parcel paramParcel)
     {
       AppMethodBeat.i(101488);
-      this.xyd = new ArrayList();
-      this.xxZ = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.xOa = new ArrayList();
+      this.xNW = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
       this.videoPath = paramParcel.readString();
       this.thumbPath = paramParcel.readString();
-      this.xya = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
-      this.xyb = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.xyc = ((RecordMediaReportInfo)paramParcel.readParcelable(RecordMediaReportInfo.class.getClassLoader()));
-      this.xyd = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+      this.xNX = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
+      this.xNY = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.xNZ = ((RecordMediaReportInfo)paramParcel.readParcelable(RecordMediaReportInfo.class.getClassLoader()));
+      this.xOa = paramParcel.readArrayList(ArrayList.class.getClassLoader());
       AppMethodBeat.o(101488);
     }
     
     public CaptureVideoNormalModel(Boolean paramBoolean1, String paramString1, String paramString2, Long paramLong, Boolean paramBoolean2, RecordMediaReportInfo paramRecordMediaReportInfo)
     {
-      AppMethodBeat.i(209006);
-      this.xyd = new ArrayList();
-      this.xxZ = paramBoolean1;
+      AppMethodBeat.i(218353);
+      this.xOa = new ArrayList();
+      this.xNW = paramBoolean1;
       this.videoPath = paramString1;
       this.thumbPath = paramString2;
-      this.xya = paramLong;
-      this.xyb = paramBoolean2;
-      this.xyc = paramRecordMediaReportInfo;
-      AppMethodBeat.o(209006);
+      this.xNX = paramLong;
+      this.xNY = paramBoolean2;
+      this.xNZ = paramRecordMediaReportInfo;
+      AppMethodBeat.o(218353);
     }
     
-    public final String axA()
+    public final String axP()
     {
       return this.thumbPath;
     }
     
-    public final Boolean dFC()
+    public final Boolean dIT()
     {
-      return this.xxZ;
+      return this.xNW;
     }
     
-    public final Long dFD()
+    public final Long dIU()
     {
-      return this.xya;
+      return this.xNX;
     }
     
-    public final Boolean dFE()
+    public final Boolean dIV()
     {
-      return this.xyb;
+      return this.xNY;
     }
     
-    public final RecordMediaReportInfo dFF()
+    public final RecordMediaReportInfo dIW()
     {
       AppMethodBeat.i(101486);
-      if (this.xyc == null)
+      if (this.xNZ == null)
       {
         localRecordMediaReportInfo = new RecordMediaReportInfo();
         AppMethodBeat.o(101486);
         return localRecordMediaReportInfo;
       }
-      RecordMediaReportInfo localRecordMediaReportInfo = this.xyc;
+      RecordMediaReportInfo localRecordMediaReportInfo = this.xNZ;
       AppMethodBeat.o(101486);
       return localRecordMediaReportInfo;
     }
     
-    public final List<String> dFG()
+    public final List<String> dIX()
     {
-      return this.xyd;
+      return this.xOa;
     }
     
     public int describeContents()
@@ -175,13 +175,13 @@ public final class CaptureDataManager
       return 0;
     }
     
-    public final void fb(List<String> paramList)
+    public final void fj(List<String> paramList)
     {
-      AppMethodBeat.i(209007);
+      AppMethodBeat.i(218354);
       if (paramList != null) {
-        this.xyd.addAll(paramList);
+        this.xOa.addAll(paramList);
       }
-      AppMethodBeat.o(209007);
+      AppMethodBeat.o(218354);
     }
     
     public final String getVideoPath()
@@ -192,20 +192,20 @@ public final class CaptureDataManager
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(101487);
-      paramParcel.writeValue(this.xxZ);
+      paramParcel.writeValue(this.xNW);
       paramParcel.writeString(this.videoPath);
       paramParcel.writeString(this.thumbPath);
-      paramParcel.writeValue(this.xya);
-      paramParcel.writeValue(this.xyb);
-      paramParcel.writeParcelable(this.xyc, paramInt);
-      paramParcel.writeList(this.xyd);
+      paramParcel.writeValue(this.xNX);
+      paramParcel.writeValue(this.xNY);
+      paramParcel.writeParcelable(this.xNZ, paramInt);
+      paramParcel.writeList(this.xOa);
       AppMethodBeat.o(101487);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void dFH();
+    public abstract void dIY();
   }
   
   public static abstract interface b
@@ -219,7 +219,7 @@ public final class CaptureDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager
  * JD-Core Version:    0.7.0.1
  */

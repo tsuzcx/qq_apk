@@ -7,11 +7,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.z.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.y.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class JsApiGetInstallState
-  extends a<q>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 439;
   public static final String NAME = "getInstallState";
@@ -29,12 +29,12 @@ public final class JsApiGetInstallState
   {
     public static final Parcelable.Creator<GetInstallStateTask> CREATOR;
     private int cgA;
-    private q jwH;
-    private m ksO;
-    private boolean ksW;
-    private boolean kvA;
-    private String kvy;
-    private JSONArray kvz;
+    private r jzD;
+    private m kwe;
+    private boolean kwm;
+    private String kyN;
+    private JSONArray kyO;
+    private boolean kyP;
     private String mPackageName;
     private String mVersionName;
     
@@ -52,26 +52,26 @@ public final class JsApiGetInstallState
       AppMethodBeat.o(139857);
     }
     
-    public GetInstallStateTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
+    public GetInstallStateTask(m paramm, r paramr, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(139856);
-      bhN();
-      this.ksO = paramm;
-      this.jwH = paramq;
+      biw();
+      this.kwe = paramm;
+      this.jzD = paramr;
       this.cgA = paramInt;
       this.mPackageName = paramJSONObject.optString("packageName");
       paramm = paramJSONObject.optJSONArray("packageNameArray");
       if (paramm != null) {
-        this.kvy = paramm.toString();
+        this.kyN = paramm.toString();
       }
-      this.ksW = true;
+      this.kwm = true;
       AppMethodBeat.o(139856);
     }
     
-    public final void aOA()
+    public final void aOX()
     {
       AppMethodBeat.i(139858);
-      if (!bt.isNullOrNil(this.kvy)) {}
+      if (!bu.isNullOrNil(this.kyN)) {}
       for (;;)
       {
         int i;
@@ -79,20 +79,20 @@ public final class JsApiGetInstallState
         boolean bool;
         try
         {
-          localObject1 = new JSONArray(this.kvy);
-          this.kvz = new JSONArray();
+          localObject1 = new JSONArray(this.kyN);
+          this.kyO = new JSONArray();
           i = 0;
           if (i >= ((JSONArray)localObject1).length()) {
             break label266;
           }
           String str3 = ((JSONArray)localObject1).optString(i);
-          localObject2 = b.getPackageInfo(aj.getContext(), str3);
+          localObject2 = b.getPackageInfo(ak.getContext(), str3);
           int j;
           if (localObject2 == null)
           {
             j = 0;
             break label406;
-            ad.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str3 + ", packageInfo = " + localObject2 + ", version = " + j + ", versionName = " + str1);
+            ae.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str3 + ", packageInfo = " + localObject2 + ", version = " + j + ", versionName = " + str1);
             if (localObject2 == null) {
               break label418;
             }
@@ -110,11 +110,11 @@ public final class JsApiGetInstallState
                 ((JSONObject)localObject2).put("versionCode", j);
                 ((JSONObject)localObject2).put("versionName", str1);
               }
-              this.kvz.put(localObject2);
+              this.kyO.put(localObject2);
             }
             catch (JSONException localJSONException1)
             {
-              ad.i("MicroMsg.JsApiGetInstallState", localJSONException1.getMessage());
+              ae.i("MicroMsg.JsApiGetInstallState", localJSONException1.getMessage());
               continue;
             }
             i += 1;
@@ -125,20 +125,20 @@ public final class JsApiGetInstallState
         catch (JSONException localJSONException2)
         {
           String str1;
-          ad.e("MicroMsg.JsApiGetInstallState", localJSONException2.getMessage());
-          this.ksW = true;
+          ae.e("MicroMsg.JsApiGetInstallState", localJSONException2.getMessage());
+          this.kwm = true;
         }
         str1 = ((PackageInfo)localObject2).versionName;
         continue;
         for (;;)
         {
-          bhX();
+          biG();
           AppMethodBeat.o(139858);
           return;
           label266:
-          this.ksW = false;
+          this.kwm = false;
         }
-        Object localObject1 = b.getPackageInfo(aj.getContext(), this.mPackageName);
+        Object localObject1 = b.getPackageInfo(ak.getContext(), this.mPackageName);
         label293:
         String str2;
         if (localObject1 == null)
@@ -149,14 +149,14 @@ public final class JsApiGetInstallState
           }
           str2 = "null";
           label302:
-          ad.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + this.mPackageName + ", packageInfo = " + localObject1 + ", version = " + i + ", versionName = " + str2);
+          ae.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + this.mPackageName + ", packageInfo = " + localObject1 + ", version = " + i + ", versionName = " + str2);
           if (localObject1 != null) {
             break label392;
           }
         }
-        for (this.kvA = false;; this.kvA = true)
+        for (this.kyP = false;; this.kyP = true)
         {
-          this.ksW = false;
+          this.kwm = false;
           break;
           i = ((PackageInfo)localObject1).versionCode;
           break label293;
@@ -177,34 +177,34 @@ public final class JsApiGetInstallState
       }
     }
     
-    public final void aOB()
+    public final void aOY()
     {
       boolean bool = true;
       AppMethodBeat.i(139859);
-      if (this.jwH == null) {}
+      if (this.jzD == null) {}
       for (;;)
       {
-        ad.d("MicroMsg.JsApiGetInstallState", "callback, service is null: %b", new Object[] { Boolean.valueOf(bool) });
-        bhO();
-        if (!this.ksW) {
+        ae.d("MicroMsg.JsApiGetInstallState", "callback, service is null: %b", new Object[] { Boolean.valueOf(bool) });
+        bix();
+        if (!this.kwm) {
           break;
         }
-        this.jwH.h(this.cgA, this.ksO.e("fail", null));
+        this.jzD.h(this.cgA, this.kwe.e("fail", null));
         AppMethodBeat.o(139859);
         return;
         bool = false;
       }
       HashMap localHashMap = new HashMap();
-      if (this.kvz != null) {
-        localHashMap.put("result", this.kvz);
+      if (this.kyO != null) {
+        localHashMap.put("result", this.kyO);
       }
       for (;;)
       {
-        this.jwH.h(this.cgA, this.ksO.m("ok", localHashMap));
+        this.jzD.h(this.cgA, this.kwe.n("ok", localHashMap));
         AppMethodBeat.o(139859);
         return;
         localHashMap.put("versionName", this.mVersionName);
-        localHashMap.put("isInstalled", Boolean.valueOf(this.kvA));
+        localHashMap.put("isInstalled", Boolean.valueOf(this.kyP));
       }
     }
     
@@ -213,11 +213,11 @@ public final class JsApiGetInstallState
       boolean bool2 = true;
       AppMethodBeat.i(139860);
       this.mPackageName = paramParcel.readString();
-      this.kvy = paramParcel.readString();
+      this.kyN = paramParcel.readString();
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.ksW = bool1;
+        this.kwm = bool1;
         if (paramParcel.readInt() != 1) {
           break label93;
         }
@@ -225,7 +225,7 @@ public final class JsApiGetInstallState
       label93:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.kvA = bool1;
+        this.kyP = bool1;
         this.mVersionName = paramParcel.readString();
         paramParcel = paramParcel.readString();
         if (paramParcel == null) {
@@ -233,13 +233,13 @@ public final class JsApiGetInstallState
         }
         try
         {
-          this.kvz = new JSONArray(paramParcel);
+          this.kyO = new JSONArray(paramParcel);
           AppMethodBeat.o(139860);
           return;
         }
         catch (JSONException paramParcel)
         {
-          ad.e("MicroMsg.JsApiGetInstallState", "parseFromParcel: " + paramParcel.getMessage());
+          ae.e("MicroMsg.JsApiGetInstallState", "parseFromParcel: " + paramParcel.getMessage());
         }
         bool1 = false;
         break;
@@ -253,25 +253,25 @@ public final class JsApiGetInstallState
       int i = 1;
       AppMethodBeat.i(139861);
       paramParcel.writeString(this.mPackageName);
-      paramParcel.writeString(this.kvy);
-      if (this.ksW)
+      paramParcel.writeString(this.kyN);
+      if (this.kwm)
       {
         paramInt = 1;
         paramParcel.writeInt(paramInt);
-        if (!this.kvA) {
+        if (!this.kyP) {
           break label94;
         }
         paramInt = i;
         label47:
         paramParcel.writeInt(paramInt);
         paramParcel.writeString(this.mVersionName);
-        if (this.kvz == null) {
+        if (this.kyO == null) {
           break label99;
         }
       }
       label94:
       label99:
-      for (String str = this.kvz.toString();; str = null)
+      for (String str = this.kyO.toString();; str = null)
       {
         paramParcel.writeString(str);
         AppMethodBeat.o(139861);

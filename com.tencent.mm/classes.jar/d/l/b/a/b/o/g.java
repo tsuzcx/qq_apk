@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum g
 {
-  public static final a NFY;
+  public static final a Ode;
   final String description;
   
   static
   {
     AppMethodBeat.i(61373);
     g localg1 = new g("IGNORE", 0, "ignore");
-    NFU = localg1;
+    Oda = localg1;
     g localg2 = new g("WARN", 1, "warn");
-    NFV = localg2;
+    Odb = localg2;
     g localg3 = new g("STRICT", 2, "strict");
-    NFW = localg3;
-    NFX = new g[] { localg1, localg2, localg3 };
-    NFY = new a((byte)0);
+    Odc = localg3;
+    Odd = new g[] { localg1, localg2, localg3 };
+    Ode = new a((byte)0);
     AppMethodBeat.o(61373);
   }
   
@@ -26,14 +26,14 @@ public enum g
     this.description = paramString;
   }
   
-  public final boolean gup()
+  public final boolean gyR()
   {
-    return (g)this == NFV;
+    return (g)this == Odb;
   }
   
-  public final boolean guq()
+  public final boolean gyS()
   {
-    return (g)this == NFU;
+    return (g)this == Oda;
   }
   
   public static final class a {}

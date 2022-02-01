@@ -5,9 +5,9 @@ public final class i
 {
   public i()
   {
-    this.dsU = "";
-    this.ptS = "";
-    this.dBx = "";
+    this.dua = "";
+    this.pAw = "";
+    this.dCC = "";
     this.type = -1;
   }
   

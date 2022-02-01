@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.menu.q;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.menu.r;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.e.a;
+import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.n.e;
@@ -15,23 +16,23 @@ import java.util.List;
 
 public final class a
 {
-  private aa ckN;
-  private e jCA;
-  private List<q> jCB;
+  private z ckP;
+  private e jFy;
+  private List<r> jFz;
   private Context mContext;
   
-  public a(Context paramContext, aa paramaa, List<q> paramList)
+  public a(Context paramContext, z paramz, List<r> paramList)
   {
     AppMethodBeat.i(160561);
     this.mContext = paramContext;
-    this.ckN = paramaa;
-    this.jCB = paramList;
-    this.jCA = new e(paramContext, true, 0);
-    paramContext = this.ckN.Ep();
+    this.ckP = paramz;
+    this.jFz = paramList;
+    this.jFy = new e(paramContext, true, 0);
+    paramContext = this.ckP.bvw();
     if (paramContext != null) {
-      this.jCA.K(paramContext, true);
+      this.jFy.P(paramContext, true);
     }
-    this.jCA.KJy = new n.d()
+    this.jFy.LfS = new n.d()
     {
       public final void onCreateMMMenu(l paramAnonymousl)
       {
@@ -40,7 +41,7 @@ public final class a
         AppMethodBeat.o(160557);
       }
     };
-    this.jCA.KJz = new n.e()
+    this.jFy.LfT = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -49,7 +50,7 @@ public final class a
         AppMethodBeat.o(160558);
       }
     };
-    this.jCA.KWs = new n.d()
+    this.jFy.LsQ = new n.d()
     {
       public final void onCreateMMMenu(l paramAnonymousl)
       {
@@ -58,7 +59,7 @@ public final class a
         AppMethodBeat.o(160559);
       }
     };
-    this.jCA.KWv = new n.e()
+    this.jFy.LsT = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -67,41 +68,41 @@ public final class a
         AppMethodBeat.o(160560);
       }
     };
-    if (this.ckN.mbY) {
-      this.jCA.setBackgroundColor(Color.parseColor("#000000"));
+    if (e.a.mZn == this.ckP.mgs) {
+      this.jFy.setBackgroundColor(Color.parseColor("#000000"));
     }
     AppMethodBeat.o(160561);
   }
   
-  public final boolean aYr()
+  public final boolean aYM()
   {
     AppMethodBeat.i(160562);
     try
     {
-      this.jCA.cMW();
+      this.jFy.cPF();
       AppMethodBeat.o(160562);
       return true;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AppBrandAdActionSheet", "show exception = %s", new Object[] { localException });
+      ae.e("MicroMsg.AppBrandAdActionSheet", "show exception = %s", new Object[] { localException });
       AppMethodBeat.o(160562);
     }
     return false;
   }
   
-  public final boolean aYs()
+  public final boolean aYN()
   {
     AppMethodBeat.i(160563);
     try
     {
-      this.jCA.bpT();
+      this.jFy.bqD();
       AppMethodBeat.o(160563);
       return true;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AppBrandAdActionSheet", "hide exception = %s", new Object[] { localException });
+      ae.e("MicroMsg.AppBrandAdActionSheet", "hide exception = %s", new Object[] { localException });
       AppMethodBeat.o(160563);
     }
     return false;
@@ -109,7 +110,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.ui.a
  * JD-Core Version:    0.7.0.1
  */

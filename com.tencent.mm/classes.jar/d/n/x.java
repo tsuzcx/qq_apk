@@ -2,13 +2,15 @@ package d.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.e;
-import d.a.j;
+import d.g.a.b;
 import d.g.a.m;
 import d.g.b.p;
 import d.g.b.q;
-import d.k.b.a;
 import d.k.d;
+import d.k.d.a;
+import d.k.f;
 import d.l;
+import d.m.h;
 import d.m.i;
 import d.o;
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"indices", "Lkotlin/ranges/IntRange;", "", "getIndices", "(Ljava/lang/CharSequence;)Lkotlin/ranges/IntRange;", "lastIndex", "", "getLastIndex", "(Ljava/lang/CharSequence;)I", "commonPrefixWith", "", "other", "ignoreCase", "", "commonSuffixWith", "contains", "char", "", "regex", "Lkotlin/text/Regex;", "endsWith", "suffix", "findAnyOf", "Lkotlin/Pair;", "strings", "", "startIndex", "last", "findAnyOf$StringsKt__StringsKt", "findLastAnyOf", "hasSurrogatePairAt", "index", "ifBlank", "R", "C", "defaultValue", "Lkotlin/Function0;", "(Ljava/lang/CharSequence;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "ifEmpty", "indexOf", "endIndex", "indexOf$StringsKt__StringsKt", "string", "indexOfAny", "chars", "", "isEmpty", "isNotBlank", "isNotEmpty", "isNullOrBlank", "isNullOrEmpty", "iterator", "Lkotlin/collections/CharIterator;", "lastIndexOf", "lastIndexOfAny", "lineSequence", "Lkotlin/sequences/Sequence;", "lines", "", "matches", "orEmpty", "padEnd", "length", "padChar", "padStart", "rangesDelimitedBy", "delimiters", "", "limit", "rangesDelimitedBy$StringsKt__StringsKt", "(Ljava/lang/CharSequence;[Ljava/lang/String;IZI)Lkotlin/sequences/Sequence;", "regionMatchesImpl", "thisOffset", "otherOffset", "removePrefix", "prefix", "removeRange", "range", "removeSuffix", "removeSurrounding", "delimiter", "replace", "transform", "Lkotlin/Function1;", "Lkotlin/text/MatchResult;", "replacement", "replaceAfter", "missingDelimiterValue", "replaceAfterLast", "replaceBefore", "replaceBeforeLast", "replaceFirst", "replaceRange", "split", "(Ljava/lang/CharSequence;[Ljava/lang/String;ZI)Ljava/util/List;", "split$StringsKt__StringsKt", "splitToSequence", "(Ljava/lang/CharSequence;[Ljava/lang/String;ZI)Lkotlin/sequences/Sequence;", "startsWith", "subSequence", "start", "end", "substring", "substringAfter", "substringAfterLast", "substringBefore", "substringBeforeLast", "trim", "predicate", "trimEnd", "trimStart", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"indices", "Lkotlin/ranges/IntRange;", "", "getIndices", "(Ljava/lang/CharSequence;)Lkotlin/ranges/IntRange;", "lastIndex", "", "getLastIndex", "(Ljava/lang/CharSequence;)I", "commonPrefixWith", "", "other", "ignoreCase", "", "commonSuffixWith", "contains", "char", "", "regex", "Lkotlin/text/Regex;", "endsWith", "suffix", "findAnyOf", "Lkotlin/Pair;", "strings", "", "startIndex", "last", "findAnyOf$StringsKt__StringsKt", "findLastAnyOf", "hasSurrogatePairAt", "index", "ifBlank", "R", "C", "defaultValue", "Lkotlin/Function0;", "(Ljava/lang/CharSequence;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "ifEmpty", "indexOf", "endIndex", "indexOf$StringsKt__StringsKt", "string", "indexOfAny", "chars", "", "isEmpty", "isNotBlank", "isNotEmpty", "isNullOrBlank", "isNullOrEmpty", "iterator", "Lkotlin/collections/CharIterator;", "lastIndexOf", "lastIndexOfAny", "lineSequence", "Lkotlin/sequences/Sequence;", "lines", "", "matches", "orEmpty", "padEnd", "length", "padChar", "padStart", "rangesDelimitedBy", "delimiters", "", "limit", "rangesDelimitedBy$StringsKt__StringsKt", "(Ljava/lang/CharSequence;[Ljava/lang/String;IZI)Lkotlin/sequences/Sequence;", "regionMatchesImpl", "thisOffset", "otherOffset", "removePrefix", "prefix", "removeRange", "range", "removeSuffix", "removeSurrounding", "delimiter", "replace", "transform", "Lkotlin/Function1;", "Lkotlin/text/MatchResult;", "replacement", "replaceAfter", "missingDelimiterValue", "replaceAfterLast", "replaceBefore", "replaceBeforeLast", "replaceFirst", "replaceRange", "split", "(Ljava/lang/CharSequence;[Ljava/lang/String;ZI)Ljava/util/List;", "split$StringsKt__StringsKt", "splitToSequence", "(Ljava/lang/CharSequence;[Ljava/lang/String;ZI)Lkotlin/sequences/Sequence;", "startsWith", "subSequence", "start", "end", "substring", "substringAfter", "substringAfterLast", "substringBefore", "substringBeforeLast", "trim", "predicate", "trimEnd", "trimStart", "kotlin-stdlib"}, gkc=1)
 public class x
   extends w
 {
@@ -41,13 +43,13 @@ public class x
     Object localObject;
     if (!paramBoolean2)
     {
-      localObject = (d.k.b)new d(d.k.h.lp(paramInt1, 0), d.k.h.lq(paramInt2, paramCharSequence1.length()));
+      localObject = (d)new f(d.k.j.lw(paramInt1, 0), d.k.j.lx(paramInt2, paramCharSequence1.length()));
       if ((!(paramCharSequence1 instanceof String)) || (!(paramCharSequence2 instanceof String))) {
         break label162;
       }
-      paramInt1 = ((d.k.b)localObject).MMh;
-      paramInt2 = ((d.k.b)localObject).MMi;
-      i = ((d.k.b)localObject).kuN;
+      paramInt1 = ((d)localObject).Njm;
+      paramInt2 = ((d)localObject).Njn;
+      i = ((d)localObject).kyd;
       if (i < 0) {
         break label141;
       }
@@ -61,10 +63,10 @@ public class x
       {
         AppMethodBeat.o(129398);
         return paramInt1;
-        paramInt1 = d.k.h.lq(paramInt1, n.aH(paramCharSequence1));
-        paramInt2 = d.k.h.lp(paramInt2, 0);
-        localObject = d.k.b.MMj;
-        localObject = b.a.aZ(paramInt1, paramInt2, -1);
+        paramInt1 = d.k.j.lx(paramInt1, n.aG(paramCharSequence1));
+        paramInt2 = d.k.j.lw(paramInt2, 0);
+        localObject = d.Njo;
+        localObject = d.a.ba(paramInt1, paramInt2, -1);
         break;
         label141:
         if (paramInt1 < paramInt2) {
@@ -78,9 +80,9 @@ public class x
       paramInt1 += i;
     }
     label162:
-    paramInt2 = ((d.k.b)localObject).MMh;
-    int i = ((d.k.b)localObject).MMi;
-    int j = ((d.k.b)localObject).kuN;
+    paramInt2 = ((d)localObject).Njm;
+    int i = ((d)localObject).Njn;
+    int j = ((d)localObject).kyd;
     if (j >= 0)
     {
       if (paramInt2 > i) {
@@ -133,7 +135,7 @@ public class x
     p.h(paramString, "string");
     if ((paramBoolean) || (!(paramCharSequence instanceof String)))
     {
-      paramInt = b(paramCharSequence, (CharSequence)paramString, paramInt, paramCharSequence.length(), paramBoolean);
+      paramInt = a(paramCharSequence, (CharSequence)paramString, paramInt, paramCharSequence.length(), paramBoolean);
       AppMethodBeat.o(129402);
       return paramInt;
     }
@@ -155,8 +157,8 @@ public class x
       AppMethodBeat.o(168698);
       return paramInt;
     }
-    paramInt = d.k.h.lp(paramInt, 0);
-    int j = n.aH(paramCharSequence);
+    paramInt = d.k.j.lw(paramInt, 0);
+    int j = n.aG(paramCharSequence);
     if (paramInt <= j) {
       for (;;)
       {
@@ -207,30 +209,30 @@ public class x
     return paramCharSequence1;
   }
   
-  public static final String a(CharSequence paramCharSequence, d paramd)
+  public static final String a(CharSequence paramCharSequence, f paramf)
   {
     AppMethodBeat.i(129380);
     p.h(paramCharSequence, "$this$substring");
-    p.h(paramd, "range");
-    paramCharSequence = paramCharSequence.subSequence(paramd.MMh, paramd.MMi + 1).toString();
+    p.h(paramf, "range");
+    paramCharSequence = paramCharSequence.subSequence(paramf.Njm, paramf.Njn + 1).toString();
     AppMethodBeat.o(129380);
     return paramCharSequence;
   }
   
   public static final String a(String paramString1, char paramChar, String paramString2)
   {
-    AppMethodBeat.i(199632);
+    AppMethodBeat.i(188724);
     p.h(paramString1, "$this$substringBefore");
     p.h(paramString2, "missingDelimiterValue");
     int i = n.a((CharSequence)paramString1, paramChar, 0, 6);
     if (i == -1)
     {
-      AppMethodBeat.o(199632);
+      AppMethodBeat.o(188724);
       return paramString2;
     }
     paramString1 = paramString1.substring(0, i);
     p.g(paramString1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    AppMethodBeat.o(199632);
+    AppMethodBeat.o(188724);
     return paramString1;
   }
   
@@ -271,10 +273,10 @@ public class x
       }
     }
     Object localObject = i.f(a(paramCharSequence, paramArrayOfString, false));
-    paramArrayOfString = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramArrayOfString = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      paramArrayOfString.add(n.a(paramCharSequence, (d)((Iterator)localObject).next()));
+      paramArrayOfString.add(n.a(paramCharSequence, (f)((Iterator)localObject).next()));
     }
     paramCharSequence = (List)paramArrayOfString;
     AppMethodBeat.o(129415);
@@ -285,7 +287,7 @@ public class x
   {
     AppMethodBeat.i(129395);
     p.h(paramCharSequence, "$this$endsWith");
-    if ((paramCharSequence.length() > 0) && (a.a(paramCharSequence.charAt(n.aH(paramCharSequence)), paramChar, false)))
+    if ((paramCharSequence.length() > 0) && (a.a(paramCharSequence.charAt(n.aG(paramCharSequence)), paramChar, false)))
     {
       AppMethodBeat.o(129395);
       return true;
@@ -296,12 +298,12 @@ public class x
   
   public static final boolean a(CharSequence paramCharSequence1, int paramInt1, CharSequence paramCharSequence2, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(221192);
+    AppMethodBeat.i(188728);
     p.h(paramCharSequence1, "$this$regionMatchesImpl");
     p.h(paramCharSequence2, "other");
     if ((paramInt2 < 0) || (paramInt1 < 0) || (paramInt1 > paramCharSequence1.length() - paramInt3) || (paramInt2 > paramCharSequence2.length() - paramInt3))
     {
-      AppMethodBeat.o(221192);
+      AppMethodBeat.o(188728);
       return false;
     }
     int i = 0;
@@ -309,12 +311,12 @@ public class x
     {
       if (!a.a(paramCharSequence1.charAt(paramInt1 + i), paramCharSequence2.charAt(paramInt2 + i), paramBoolean))
       {
-        AppMethodBeat.o(221192);
+        AppMethodBeat.o(188728);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(221192);
+    AppMethodBeat.o(188728);
     return true;
   }
   
@@ -333,7 +335,7 @@ public class x
       AppMethodBeat.o(129408);
       return false;
     }
-    if (b(paramCharSequence1, paramCharSequence2, 0, paramCharSequence1.length(), paramBoolean) >= 0)
+    if (a(paramCharSequence1, paramCharSequence2, 0, paramCharSequence1.length(), paramBoolean) >= 0)
     {
       AppMethodBeat.o(129408);
       return true;
@@ -342,7 +344,7 @@ public class x
     return false;
   }
   
-  public static final CharSequence aF(CharSequence paramCharSequence)
+  public static final CharSequence aE(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(168697);
     p.h(paramCharSequence, "$this$trimStart");
@@ -363,16 +365,16 @@ public class x
     return paramCharSequence;
   }
   
-  public static final d aG(CharSequence paramCharSequence)
+  public static final f aF(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(129378);
     p.h(paramCharSequence, "$this$indices");
-    paramCharSequence = new d(0, paramCharSequence.length() - 1);
+    paramCharSequence = new f(0, paramCharSequence.length() - 1);
     AppMethodBeat.o(129378);
     return paramCharSequence;
   }
   
-  public static final int aH(CharSequence paramCharSequence)
+  public static final int aG(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(129379);
     p.h(paramCharSequence, "$this$lastIndex");
@@ -381,7 +383,7 @@ public class x
     return i - 1;
   }
   
-  public static final boolean aI(CharSequence paramCharSequence)
+  public static final boolean aH(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(129394);
     p.h(paramCharSequence, "$this$startsWith");
@@ -394,7 +396,7 @@ public class x
     return false;
   }
   
-  public static final d.m.h<String> aJ(CharSequence paramCharSequence)
+  public static final h<String> aI(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(129417);
     p.h(paramCharSequence, "$this$lineSequence");
@@ -403,11 +405,11 @@ public class x
     return paramCharSequence;
   }
   
-  public static final List<String> aK(CharSequence paramCharSequence)
+  public static final List<String> aJ(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(129418);
     p.h(paramCharSequence, "$this$lines");
-    paramCharSequence = i.c(n.aJ(paramCharSequence));
+    paramCharSequence = i.c(n.aI(paramCharSequence));
     AppMethodBeat.o(129418);
     return paramCharSequence;
   }
@@ -430,7 +432,7 @@ public class x
         AppMethodBeat.o(129404);
         return paramInt;
       }
-      paramInt = d.k.h.lq(paramInt, n.aH(paramCharSequence));
+      paramInt = d.k.j.lx(paramInt, n.aG(paramCharSequence));
       while (paramInt >= 0)
       {
         paramChar = paramCharSequence.charAt(paramInt);
@@ -459,12 +461,12 @@ public class x
     return paramInt;
   }
   
-  public static final d.m.h<String> b(CharSequence paramCharSequence, String[] paramArrayOfString, boolean paramBoolean)
+  public static final h<String> b(CharSequence paramCharSequence, String[] paramArrayOfString, boolean paramBoolean)
   {
     AppMethodBeat.i(129413);
     p.h(paramCharSequence, "$this$splitToSequence");
     p.h(paramArrayOfString, "delimiters");
-    paramCharSequence = i.d(a(paramCharSequence, paramArrayOfString, paramBoolean), (d.g.a.b)new c(paramCharSequence));
+    paramCharSequence = i.d(a(paramCharSequence, paramArrayOfString, paramBoolean), (b)new c(paramCharSequence));
     AppMethodBeat.o(129413);
     return paramCharSequence;
   }
@@ -514,17 +516,17 @@ public class x
       return paramCharSequence;
     }
     Object localObject = i.f(a(paramCharSequence, paramArrayOfChar));
-    paramArrayOfChar = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramArrayOfChar = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      paramArrayOfChar.add(n.a(paramCharSequence, (d)((Iterator)localObject).next()));
+      paramArrayOfChar.add(n.a(paramCharSequence, (f)((Iterator)localObject).next()));
     }
     paramCharSequence = (List)paramArrayOfChar;
     AppMethodBeat.o(168701);
     return paramCharSequence;
   }
   
-  public static final String bq(String paramString1, String paramString2, String paramString3)
+  public static final String br(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(129382);
     p.h(paramString1, "$this$substringBefore");
@@ -542,7 +544,7 @@ public class x
     return paramString1;
   }
   
-  public static final String br(String paramString1, String paramString2, String paramString3)
+  public static final String bs(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(129384);
     p.h(paramString1, "$this$substringAfter");
@@ -560,7 +562,7 @@ public class x
     return paramString1;
   }
   
-  public static final String bs(String paramString1, String paramString2, String paramString3)
+  public static final String bt(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(129389);
     p.h(paramString1, "$this$substringAfterLast");
@@ -576,6 +578,22 @@ public class x
     p.g(paramString1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     AppMethodBeat.o(129389);
     return paramString1;
+  }
+  
+  public static final String c(String paramString, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(188727);
+    p.h(paramString, "$this$removeSuffix");
+    p.h(paramCharSequence, "suffix");
+    if (n.e((CharSequence)paramString, paramCharSequence))
+    {
+      paramString = paramString.substring(0, paramString.length() - paramCharSequence.length());
+      p.g(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      AppMethodBeat.o(188727);
+      return paramString;
+    }
+    AppMethodBeat.o(188727);
+    return paramString;
   }
   
   public static final boolean c(CharSequence paramCharSequence, char paramChar)
@@ -598,12 +616,28 @@ public class x
     p.h(paramCharSequence2, "prefix");
     if (((paramCharSequence1 instanceof String)) && ((paramCharSequence2 instanceof String)))
     {
-      bool = n.nz((String)paramCharSequence1, (String)paramCharSequence2);
+      bool = n.nF((String)paramCharSequence1, (String)paramCharSequence2);
       AppMethodBeat.o(129396);
       return bool;
     }
     boolean bool = n.a(paramCharSequence1, 0, paramCharSequence2, 0, paramCharSequence2.length(), false);
     AppMethodBeat.o(129396);
+    return bool;
+  }
+  
+  public static final boolean e(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
+  {
+    AppMethodBeat.i(188729);
+    p.h(paramCharSequence1, "$this$endsWith");
+    p.h(paramCharSequence2, "suffix");
+    if (((paramCharSequence1 instanceof String)) && ((paramCharSequence2 instanceof String)))
+    {
+      bool = n.nG((String)paramCharSequence1, (String)paramCharSequence2);
+      AppMethodBeat.o(188729);
+      return bool;
+    }
+    boolean bool = n.a(paramCharSequence1, paramCharSequence1.length() - paramCharSequence2.length(), paramCharSequence2, 0, paramCharSequence2.length(), false);
+    AppMethodBeat.o(188729);
     return bool;
   }
   
@@ -613,7 +647,7 @@ public class x
     int j = n.a(paramCharSequence, paramString, 0, false);
     if (j == -1)
     {
-      paramCharSequence = j.listOf(paramCharSequence.toString());
+      paramCharSequence = d.a.j.listOf(paramCharSequence.toString());
       AppMethodBeat.o(160969);
       return paramCharSequence;
     }
@@ -635,24 +669,24 @@ public class x
     return paramCharSequence;
   }
   
-  public static final String nC(String paramString1, String paramString2)
+  public static final String nI(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(199634);
+    AppMethodBeat.i(188726);
     p.h(paramString1, "$this$substringAfter");
     p.h(paramString2, "missingDelimiterValue");
     int i = n.a((CharSequence)paramString1, '$', 0, 6);
     if (i == -1)
     {
-      AppMethodBeat.o(199634);
+      AppMethodBeat.o(188726);
       return paramString2;
     }
     paramString1 = paramString1.substring(i + 1, paramString1.length());
     p.g(paramString1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    AppMethodBeat.o(199634);
+    AppMethodBeat.o(188726);
     return paramString1;
   }
   
-  public static final String nE(String paramString1, String paramString2)
+  public static final String nK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(129386);
     p.h(paramString1, "$this$substringBeforeLast");
@@ -706,7 +740,7 @@ public class x
     return paramCharSequence;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lkotlin/Pair;", "", "", "currentIndex", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lkotlin/Pair;", "", "", "currentIndex", "invoke"})
   static final class a
     extends q
     implements m<CharSequence, Integer, o<? extends Integer, ? extends Integer>>
@@ -717,7 +751,7 @@ public class x
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lkotlin/Pair;", "", "", "currentIndex", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lkotlin/Pair;", "", "", "currentIndex", "invoke"})
   static final class b
     extends q
     implements m<CharSequence, Integer, o<? extends Integer, ? extends Integer>>
@@ -728,10 +762,10 @@ public class x
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lkotlin/ranges/IntRange;", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lkotlin/ranges/IntRange;", "invoke"})
   static final class c
     extends q
-    implements d.g.a.b<d, String>
+    implements b<f, String>
   {
     c(CharSequence paramCharSequence)
     {

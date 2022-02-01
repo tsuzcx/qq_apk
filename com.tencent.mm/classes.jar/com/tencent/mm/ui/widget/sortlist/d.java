@@ -12,9 +12,9 @@ import com.tencent.mm.ui.ap;
 public class d
   implements DragSortListView.i
 {
-  private Bitmap Lfu;
-  int Lfv = -16777216;
-  private ImageView cum;
+  private Bitmap LBW;
+  int LBX = -16777216;
+  private ImageView cuP;
   private ListView mListView;
   
   public d(ListView paramListView)
@@ -22,7 +22,7 @@ public class d
     this.mListView = paramListView;
   }
   
-  public final View afN(int paramInt)
+  public final View agw(int paramInt)
   {
     AppMethodBeat.i(159840);
     Object localObject = this.mListView;
@@ -34,33 +34,33 @@ public class d
     }
     ((View)localObject).setPressed(false);
     ((View)localObject).setDrawingCacheEnabled(true);
-    this.Lfu = Bitmap.createBitmap(((View)localObject).getDrawingCache());
+    this.LBW = Bitmap.createBitmap(((View)localObject).getDrawingCache());
     ((View)localObject).setDrawingCacheEnabled(false);
-    if (this.cum == null) {
-      this.cum = new ImageView(this.mListView.getContext());
+    if (this.cuP == null) {
+      this.cuP = new ImageView(this.mListView.getContext());
     }
-    this.cum.setBackgroundColor(this.Lfv);
-    this.cum.setPadding(0, 0, 0, 0);
-    this.cum.setImageBitmap(this.Lfu);
-    this.cum.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
-    localObject = this.cum;
+    this.cuP.setBackgroundColor(this.LBX);
+    this.cuP.setPadding(0, 0, 0, 0);
+    this.cuP.setImageBitmap(this.LBW);
+    this.cuP.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
+    localObject = this.cuP;
     AppMethodBeat.o(159840);
     return localObject;
   }
   
-  public final void hg(View paramView)
+  public final void hl(View paramView)
   {
     AppMethodBeat.i(159841);
     if ((paramView instanceof ImageView)) {
       ((ImageView)paramView).setImageDrawable(null);
     }
-    ap.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.Lfu.toString() });
-    this.Lfu.recycle();
-    this.Lfu = null;
+    ap.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.LBW.toString() });
+    this.LBW.recycle();
+    this.LBW = null;
     AppMethodBeat.o(159841);
   }
   
-  public void j(Point paramPoint) {}
+  public void k(Point paramPoint) {}
 }
 
 

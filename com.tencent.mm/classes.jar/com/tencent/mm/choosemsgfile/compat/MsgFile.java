@@ -9,7 +9,7 @@ public class MsgFile
   implements Parcelable
 {
   public static final Parcelable.Creator<MsgFile> CREATOR;
-  public String fVf;
+  public String fXl;
   public String fileName;
   public String filePath;
   public int fileSize;
@@ -33,7 +33,7 @@ public class MsgFile
     this.fileName = paramParcel.readString();
     this.timeStamp = paramParcel.readLong();
     this.type = paramParcel.readString();
-    this.fVf = paramParcel.readString();
+    this.fXl = paramParcel.readString();
     AppMethodBeat.o(127510);
   }
   
@@ -45,7 +45,7 @@ public class MsgFile
   public String toString()
   {
     AppMethodBeat.i(127508);
-    String str = "MsgFile{fileSize=" + this.fileSize + ", filePath='" + this.filePath + '\'' + ", fileName='" + this.fileName + '\'' + ", timeStamp=" + this.timeStamp + ", type='" + this.type + '\'' + ", fileExt='" + this.fVf + '\'' + '}';
+    String str = "MsgFile{fileSize=" + this.fileSize + ", filePath='" + this.filePath + '\'' + ", fileName='" + this.fileName + '\'' + ", timeStamp=" + this.timeStamp + ", type='" + this.type + '\'' + ", fileExt='" + this.fXl + '\'' + '}';
     AppMethodBeat.o(127508);
     return str;
   }
@@ -58,7 +58,7 @@ public class MsgFile
     paramParcel.writeString(this.fileName);
     paramParcel.writeLong(this.timeStamp);
     paramParcel.writeString(this.type);
-    paramParcel.writeString(this.fVf);
+    paramParcel.writeString(this.fXl);
     AppMethodBeat.o(127509);
   }
 }

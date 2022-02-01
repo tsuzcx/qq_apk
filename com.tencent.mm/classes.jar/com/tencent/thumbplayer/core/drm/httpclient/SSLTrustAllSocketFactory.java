@@ -17,25 +17,25 @@ public class SSLTrustAllSocketFactory
   
   public SSLTrustAllSocketFactory()
   {
-    AppMethodBeat.i(220656);
+    AppMethodBeat.i(197595);
     try
     {
       this.mCtx = SSLContext.getInstance("TLS");
       this.mCtx.init(null, new TrustManager[] { new SSLTrustAllManager() }, null);
-      AppMethodBeat.o(220656);
+      AppMethodBeat.o(197595);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(220656);
+      AppMethodBeat.o(197595);
     }
   }
   
   public Socket createSocket()
   {
-    AppMethodBeat.i(220657);
+    AppMethodBeat.i(197596);
     Socket localSocket = this.mCtx.getSocketFactory().createSocket();
-    AppMethodBeat.o(220657);
+    AppMethodBeat.o(197596);
     return localSocket;
   }
   
@@ -61,9 +61,9 @@ public class SSLTrustAllSocketFactory
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(220658);
+    AppMethodBeat.i(197597);
     paramSocket = this.mCtx.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
-    AppMethodBeat.o(220658);
+    AppMethodBeat.o(197597);
     return paramSocket;
   }
   

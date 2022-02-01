@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String fJm;
-  public int plc;
-  public String pld;
-  public String ple;
-  public String plf;
-  public String plg;
-  public int plh;
-  public String pli;
-  public String plj;
+  public String fLp;
+  public int prH;
+  public String prI;
+  public String prJ;
+  public String prK;
+  public String prL;
+  public int prM;
+  public String prN;
+  public String prO;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,63 +21,63 @@ public final class o
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.plc);
-      if (this.fJm != null) {
-        paramVarArgs.d(2, this.fJm);
+      paramVarArgs.aS(1, this.prH);
+      if (this.fLp != null) {
+        paramVarArgs.d(2, this.fLp);
       }
-      if (this.pld != null) {
-        paramVarArgs.d(3, this.pld);
+      if (this.prI != null) {
+        paramVarArgs.d(3, this.prI);
       }
-      if (this.ple != null) {
-        paramVarArgs.d(4, this.ple);
+      if (this.prJ != null) {
+        paramVarArgs.d(4, this.prJ);
       }
-      if (this.plf != null) {
-        paramVarArgs.d(5, this.plf);
+      if (this.prK != null) {
+        paramVarArgs.d(5, this.prK);
       }
-      if (this.plg != null) {
-        paramVarArgs.d(6, this.plg);
+      if (this.prL != null) {
+        paramVarArgs.d(6, this.prL);
       }
-      paramVarArgs.aS(7, this.plh);
-      if (this.pli != null) {
-        paramVarArgs.d(8, this.pli);
+      paramVarArgs.aS(7, this.prM);
+      if (this.prN != null) {
+        paramVarArgs.d(8, this.prN);
       }
-      if (this.plj != null) {
-        paramVarArgs.d(9, this.plj);
+      if (this.prO != null) {
+        paramVarArgs.d(9, this.prO);
       }
       AppMethodBeat.o(153075);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.plc) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.prH) + 0;
       paramInt = i;
-      if (this.fJm != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.fJm);
+      if (this.fLp != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.fLp);
       }
       i = paramInt;
-      if (this.pld != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.pld);
+      if (this.prI != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.prI);
       }
       paramInt = i;
-      if (this.ple != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.ple);
+      if (this.prJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.prJ);
       }
       i = paramInt;
-      if (this.plf != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.plf);
+      if (this.prK != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.prK);
       }
       paramInt = i;
-      if (this.plg != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.plg);
+      if (this.prL != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.prL);
       }
-      i = paramInt + f.a.a.b.b.a.bz(7, this.plh);
+      i = paramInt + f.a.a.b.b.a.bz(7, this.prM);
       paramInt = i;
-      if (this.pli != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.pli);
+      if (this.prN != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.prN);
       }
       i = paramInt;
-      if (this.plj != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.plj);
+      if (this.prO != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.prO);
       }
       AppMethodBeat.o(153075);
       return i;
@@ -85,9 +85,9 @@ public final class o
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(153075);
@@ -103,39 +103,39 @@ public final class o
         AppMethodBeat.o(153075);
         return -1;
       case 1: 
-        localo.plc = locala.NPN.zc();
+        localo.prH = locala.OmT.zc();
         AppMethodBeat.o(153075);
         return 0;
       case 2: 
-        localo.fJm = locala.NPN.readString();
+        localo.fLp = locala.OmT.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 3: 
-        localo.pld = locala.NPN.readString();
+        localo.prI = locala.OmT.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 4: 
-        localo.ple = locala.NPN.readString();
+        localo.prJ = locala.OmT.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 5: 
-        localo.plf = locala.NPN.readString();
+        localo.prK = locala.OmT.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 6: 
-        localo.plg = locala.NPN.readString();
+        localo.prL = locala.OmT.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 7: 
-        localo.plh = locala.NPN.zc();
+        localo.prM = locala.OmT.zc();
         AppMethodBeat.o(153075);
         return 0;
       case 8: 
-        localo.pli = locala.NPN.readString();
+        localo.prN = locala.OmT.readString();
         AppMethodBeat.o(153075);
         return 0;
       }
-      localo.plj = locala.NPN.readString();
+      localo.prO = locala.OmT.readString();
       AppMethodBeat.o(153075);
       return 0;
     }

@@ -1,58 +1,50 @@
 package com.tencent.smtt.sdk;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.DexLoader;
-import dalvik.system.DexClassLoader;
 
 class u
 {
-  protected DexLoader a = null;
+  private DexLoader a = null;
   
   public u(DexLoader paramDexLoader)
   {
     this.a = paramDexLoader;
   }
   
-  public Object a(Context paramContext)
+  public String a(Context paramContext)
   {
-    AppMethodBeat.i(55135);
-    DexLoader localDexLoader = this.a;
-    DexClassLoader localDexClassLoader = this.a.getClassLoader();
-    paramContext = localDexLoader.newInstance("com.tencent.tbs.player.TbsPlayerProxy", new Class[] { Context.class, DexClassLoader.class }, new Object[] { paramContext, localDexClassLoader });
-    AppMethodBeat.o(55135);
-    return paramContext;
-  }
-  
-  public void a(Object paramObject)
-  {
-    AppMethodBeat.i(55138);
-    this.a.invokeMethod(paramObject, "com.tencent.tbs.player.TbsPlayerProxy", "onUserStateChanged", new Class[0], new Object[0]);
-    AppMethodBeat.o(55138);
-  }
-  
-  public void a(Object paramObject, Activity paramActivity, int paramInt)
-  {
-    AppMethodBeat.i(55137);
-    this.a.invokeMethod(paramObject, "com.tencent.tbs.player.TbsPlayerProxy", "onActivity", new Class[] { Activity.class, Integer.TYPE }, new Object[] { paramActivity, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(55137);
-  }
-  
-  public boolean a(Object paramObject1, Bundle paramBundle, FrameLayout paramFrameLayout, Object paramObject2)
-  {
-    AppMethodBeat.i(55136);
-    if (paramObject2 != null) {}
-    for (paramObject1 = this.a.invokeMethod(paramObject1, "com.tencent.tbs.player.TbsPlayerProxy", "play", new Class[] { Bundle.class, FrameLayout.class, Object.class }, new Object[] { paramBundle, paramFrameLayout, paramObject2 }); (paramObject1 instanceof Boolean); paramObject1 = this.a.invokeMethod(paramObject1, "com.tencent.tbs.player.TbsPlayerProxy", "play", new Class[] { Bundle.class, FrameLayout.class }, new Object[] { paramBundle, paramFrameLayout }))
+    AppMethodBeat.i(192940);
+    if (this.a != null)
     {
-      boolean bool = ((Boolean)paramObject1).booleanValue();
-      AppMethodBeat.o(55136);
-      return bool;
+      Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
+      if (localObject != null)
+      {
+        paramContext = this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "getCurWDPDecodeType", new Class[] { Context.class }, new Object[] { paramContext });
+        if (paramContext != null)
+        {
+          paramContext = String.valueOf(paramContext);
+          AppMethodBeat.o(192940);
+          return paramContext;
+        }
+      }
     }
-    AppMethodBeat.o(55136);
-    return false;
+    AppMethodBeat.o(192940);
+    return "";
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(192939);
+    if (this.a != null)
+    {
+      Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
+      if (localObject != null) {
+        this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "deleteVideoCache", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
+      }
+    }
+    AppMethodBeat.o(192939);
   }
 }
 

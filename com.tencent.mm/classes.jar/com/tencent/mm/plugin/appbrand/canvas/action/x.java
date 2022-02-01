@@ -17,8 +17,8 @@ public final class x
     AppMethodBeat.i(144943);
     if ("butt".equalsIgnoreCase(paramString))
     {
-      paramd.jSZ.setStrokeCap(Paint.Cap.BUTT);
-      paramd.jSY.setStrokeCap(Paint.Cap.BUTT);
+      paramd.jWq.setStrokeCap(Paint.Cap.BUTT);
+      paramd.jWp.setStrokeCap(Paint.Cap.BUTT);
     }
     for (;;)
     {
@@ -26,13 +26,13 @@ public final class x
       return true;
       if ("round".equalsIgnoreCase(paramString))
       {
-        paramd.jSZ.setStrokeCap(Paint.Cap.ROUND);
-        paramd.jSY.setStrokeCap(Paint.Cap.ROUND);
+        paramd.jWq.setStrokeCap(Paint.Cap.ROUND);
+        paramd.jWp.setStrokeCap(Paint.Cap.ROUND);
       }
       else if ("square".equalsIgnoreCase(paramString))
       {
-        paramd.jSZ.setStrokeCap(Paint.Cap.SQUARE);
-        paramd.jSY.setStrokeCap(Paint.Cap.SQUARE);
+        paramd.jWq.setStrokeCap(Paint.Cap.SQUARE);
+        paramd.jWp.setStrokeCap(Paint.Cap.SQUARE);
       }
     }
   }
@@ -46,7 +46,7 @@ public final class x
       AppMethodBeat.o(144944);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.jTx);
+    boolean bool = b(paramd, paramCanvas.jWO);
     AppMethodBeat.o(144944);
     return bool;
   }
@@ -64,7 +64,7 @@ public final class x
     return bool;
   }
   
-  public final BaseDrawActionArg bdn()
+  public final BaseDrawActionArg bdS()
   {
     AppMethodBeat.i(144941);
     SetLineCapActionArg localSetLineCapActionArg = new SetLineCapActionArg();

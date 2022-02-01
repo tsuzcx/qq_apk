@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.downloader.i.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
 import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,13 +18,13 @@ public class c
   public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(8826);
-    ad.i("MicroMsg.JsApiLaunchApplication", "invokeInMM");
+    ae.i("MicroMsg.JsApiLaunchApplication", "invokeInMM");
     try
     {
       paramString = new JSONObject(paramString);
       if (paramString == null)
       {
-        ad.e("MicroMsg.JsApiLaunchApplication", "data is null");
+        ae.e("MicroMsg.JsApiLaunchApplication", "data is null");
         parama.f("fail", null);
         AppMethodBeat.o(8826);
         return;
@@ -34,13 +34,13 @@ public class c
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiLaunchApplication", "paras data error: " + paramString.getMessage());
+        ae.e("MicroMsg.JsApiLaunchApplication", "paras data error: " + paramString.getMessage());
         paramString = null;
       }
       paramString = paramString.optString("appID");
-      if (bt.isNullOrNil(paramString))
+      if (bu.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.JsApiLaunchApplication", "appid is null or nil");
+        ae.e("MicroMsg.JsApiLaunchApplication", "appid is null or nil");
         parama.f("fail", null);
         AppMethodBeat.o(8826);
         return;
@@ -49,9 +49,9 @@ public class c
       {
         public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
-          AppMethodBeat.i(206777);
+          AppMethodBeat.i(195256);
           parama.f(null, null);
-          AppMethodBeat.o(206777);
+          AppMethodBeat.o(195256);
         }
       });
       AppMethodBeat.o(8826);
@@ -60,7 +60,7 @@ public class c
   
   public final void b(b.a parama) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 2;
   }

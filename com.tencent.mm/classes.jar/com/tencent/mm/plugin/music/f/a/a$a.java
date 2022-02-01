@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.music.f.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashMap;
 
 final class a$a
   implements c
 {
-  private HashMap<String, Boolean> wmq;
+  private HashMap<String, Boolean> wBZ;
   
   private a$a()
   {
     AppMethodBeat.i(137394);
-    this.wmq = new HashMap();
+    this.wBZ = new HashMap();
     AppMethodBeat.o(137394);
   }
   
-  public final boolean asH(String paramString)
+  public final boolean atU(String paramString)
   {
     AppMethodBeat.i(137397);
-    if (this.wmq.containsKey(paramString))
+    if (this.wBZ.containsKey(paramString))
     {
       AppMethodBeat.o(137397);
       return true;
@@ -32,7 +32,7 @@ final class a$a
   public final String findLibPath(String paramString)
   {
     AppMethodBeat.i(137396);
-    ad.i("MicroMsg.Audio.AudioPlayerUtils", "findLibPath %s", new Object[] { paramString });
+    ae.i("MicroMsg.Audio.AudioPlayerUtils", "findLibPath %s", new Object[] { paramString });
     String str = paramString;
     if (!paramString.startsWith("lib")) {
       str = "lib".concat(String.valueOf(paramString));
@@ -50,17 +50,17 @@ final class a$a
     AppMethodBeat.i(137395);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name is null");
+      ae.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name is null");
       AppMethodBeat.o(137395);
       return false;
     }
-    if ((this.wmq.containsKey(paramString)) && (((Boolean)this.wmq.get(paramString)).booleanValue()))
+    if ((this.wBZ.containsKey(paramString)) && (((Boolean)this.wBZ.get(paramString)).booleanValue()))
     {
-      ad.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name %s is loaded", new Object[] { paramString });
+      ae.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name %s is loaded", new Object[] { paramString });
       AppMethodBeat.o(137395);
       return true;
     }
-    this.wmq.put(paramString, Boolean.TRUE);
+    this.wBZ.put(paramString, Boolean.TRUE);
     System.loadLibrary(paramString);
     AppMethodBeat.o(137395);
     return true;

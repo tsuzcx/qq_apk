@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class ab
   extends j<aa>
@@ -31,7 +31,7 @@ public final class ab
   public final void a(aa paramaa)
   {
     AppMethodBeat.i(97652);
-    if ((paramaa == null) || (bt.isNullOrNil(paramaa.field_canvasXml)))
+    if ((paramaa == null) || (bu.isNullOrNil(paramaa.field_canvasXml)))
     {
       AppMethodBeat.o(97652);
       return;
@@ -45,7 +45,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.ab
  * JD-Core Version:    0.7.0.1
  */

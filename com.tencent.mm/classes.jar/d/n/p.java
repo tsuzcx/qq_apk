@@ -10,20 +10,20 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"getIndentFunction", "Lkotlin/Function1;", "", "indent", "getIndentFunction$StringsKt__IndentKt", "indentWidth", "", "indentWidth$StringsKt__IndentKt", "prependIndent", "reindent", "", "resultSizeEstimate", "indentAddFunction", "indentCutFunction", "reindent$StringsKt__IndentKt", "replaceIndent", "newIndent", "replaceIndentByMargin", "marginPrefix", "trimIndent", "trimMargin", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"getIndentFunction", "Lkotlin/Function1;", "", "indent", "getIndentFunction$StringsKt__IndentKt", "indentWidth", "", "indentWidth$StringsKt__IndentKt", "prependIndent", "reindent", "", "resultSizeEstimate", "indentAddFunction", "indentCutFunction", "reindent$StringsKt__IndentKt", "replaceIndent", "newIndent", "replaceIndentByMargin", "marginPrefix", "trimIndent", "trimMargin", "kotlin-stdlib"}, gkc=1)
 public class p
   extends o
 {
-  public static final String bdc(String paramString)
+  public static final String beG(String paramString)
   {
     AppMethodBeat.i(129467);
     d.g.b.p.h(paramString, "$this$trimIndent");
-    paramString = n.ny(paramString, "");
+    paramString = n.nE(paramString, "");
     AppMethodBeat.o(129467);
     return paramString;
   }
   
-  private static final int bdd(String paramString)
+  private static final int beH(String paramString)
   {
     AppMethodBeat.i(129469);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -60,13 +60,13 @@ public class p
     return i;
   }
   
-  private static final b<String, String> bde(String paramString)
+  private static final b<String, String> beI(String paramString)
   {
     AppMethodBeat.i(129470);
     if (((CharSequence)paramString).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramString = (b)a.NHl;
+      paramString = (b)a.Oer;
       AppMethodBeat.o(129470);
       return paramString;
     }
@@ -75,12 +75,12 @@ public class p
     return paramString;
   }
   
-  public static final String ny(String paramString1, String paramString2)
+  public static final String nE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(129468);
     d.g.b.p.h(paramString1, "$this$replaceIndent");
     d.g.b.p.h(paramString2, "newIndent");
-    Object localObject1 = n.aK((CharSequence)paramString1);
+    Object localObject1 = n.aJ((CharSequence)paramString1);
     Object localObject3 = (Iterable)localObject1;
     Object localObject2 = (Collection)new ArrayList();
     localObject3 = ((Iterable)localObject3).iterator();
@@ -90,7 +90,7 @@ public class p
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = ((Iterator)localObject3).next();
-      if (!n.aE((CharSequence)localObject4)) {}
+      if (!n.aD((CharSequence)localObject4)) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -104,7 +104,7 @@ public class p
     localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
     localObject3 = ((Iterable)localObject3).iterator();
     while (((Iterator)localObject3).hasNext()) {
-      ((Collection)localObject2).add(Integer.valueOf(bdd((String)((Iterator)localObject3).next())));
+      ((Collection)localObject2).add(Integer.valueOf(beH((String)((Iterator)localObject3).next())));
     }
     localObject2 = (Integer)j.u((Iterable)localObject2);
     int j;
@@ -118,8 +118,8 @@ public class p
       m = paramString1.length();
       n = paramString2.length();
       i1 = ((List)localObject1).size();
-      localObject2 = bde(paramString2);
-      i2 = j.ja((List)localObject1);
+      localObject2 = beI(paramString2);
+      i2 = j.jj((List)localObject1);
       paramString1 = (Iterable)localObject1;
       localObject3 = (Collection)new ArrayList();
       localObject4 = paramString1.iterator();
@@ -134,10 +134,10 @@ public class p
       paramString1 = ((Iterator)localObject4).next();
       int k = i + 1;
       if (i < 0) {
-        j.gfB();
+        j.gkd();
       }
       paramString2 = (String)paramString1;
-      if (((i == 0) || (i == i2)) && (n.aE((CharSequence)paramString2))) {
+      if (((i == 0) || (i == i2)) && (n.aD((CharSequence)paramString2))) {
         paramString1 = null;
       }
       for (;;)
@@ -150,7 +150,7 @@ public class p
         break label275;
         j = 0;
         break;
-        paramString1 = n.hq(paramString2, j);
+        paramString1 = n.hz(paramString2, j);
         if (paramString1 != null)
         {
           localObject1 = (String)((b)localObject2).invoke(paramString1);
@@ -172,17 +172,17 @@ public class p
     return paramString1;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "line", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "line", "invoke"})
   static final class a
     extends q
     implements b<String, String>
   {
-    public static final a NHl;
+    public static final a Oer;
     
     static
     {
       AppMethodBeat.i(129443);
-      NHl = new a();
+      Oer = new a();
       AppMethodBeat.o(129443);
     }
     
@@ -192,7 +192,7 @@ public class p
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "line", "invoke"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "line", "invoke"})
   static final class b
     extends q
     implements b<String, String>

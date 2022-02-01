@@ -9,38 +9,38 @@ import java.util.Arrays;
 public final class a$au
   extends e
 {
-  private static volatile au[] LHX;
-  public int LHY = 0;
-  public int LHZ = 0;
-  public byte[] LIa = g.bQV;
+  private static volatile au[] Mfb;
+  public int Mfc = 0;
+  public int Mfd = 0;
+  public byte[] Mfe = g.bQV;
   
   public a$au()
   {
     this.bQO = -1;
   }
   
-  public static au[] fTd()
+  public static au[] fXD()
   {
-    if (LHX == null) {}
+    if (Mfb == null) {}
     synchronized (c.bQN)
     {
-      if (LHX == null) {
-        LHX = new au[0];
+      if (Mfb == null) {
+        Mfb = new au[0];
       }
-      return LHX;
+      return Mfb;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.LHY != 0) {
-      paramb.bx(1, this.LHY);
+    if (this.Mfc != 0) {
+      paramb.bx(1, this.Mfc);
     }
-    if (this.LHZ != 0) {
-      paramb.bx(2, this.LHZ);
+    if (this.Mfd != 0) {
+      paramb.bx(2, this.Mfd);
     }
-    if (!Arrays.equals(this.LIa, g.bQV)) {
-      paramb.b(3, this.LIa);
+    if (!Arrays.equals(this.Mfe, g.bQV)) {
+      paramb.b(3, this.Mfe);
     }
     super.a(paramb);
   }
@@ -49,16 +49,16 @@ public final class a$au
   {
     int j = super.zq();
     int i = j;
-    if (this.LHY != 0) {
-      i = j + b.bz(1, this.LHY);
+    if (this.Mfc != 0) {
+      i = j + b.bz(1, this.Mfc);
     }
     j = i;
-    if (this.LHZ != 0) {
-      j = i + b.bz(2, this.LHZ);
+    if (this.Mfd != 0) {
+      j = i + b.bz(2, this.Mfd);
     }
     i = j;
-    if (!Arrays.equals(this.LIa, g.bQV)) {
-      i = j + b.c(3, this.LIa);
+    if (!Arrays.equals(this.Mfe, g.bQV)) {
+      i = j + b.c(3, this.Mfe);
     }
     return i;
   }

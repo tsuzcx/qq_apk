@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.backup.g;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.jniinterface.AesEcb;
 import com.tencent.mm.plugin.backup.f.j;
 import com.tencent.mm.plugin.backup.i.x;
@@ -12,9 +12,9 @@ import com.tencent.mm.plugin.backup.i.y;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.if;
 import com.tencent.mm.protocal.protobuf.ig;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vfs.o;
 import java.io.InputStream;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -23,43 +23,43 @@ public final class c
   extends b
 {
   private static String TAG = "MicroMsg.BackupDataPushScene";
-  private f hPn;
-  private PByteArray nyU;
-  public x nzh;
-  private y nzi;
-  private int nzj;
-  private a nzk;
+  private f ghB;
+  public x nEC;
+  private y nED;
+  private int nEE;
+  private a nEF;
+  private PByteArray nEp;
   
   private c(final b paramb, String paramString, a parama, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21708);
-    this.nzh = new x();
-    this.nzi = new y();
-    this.nzj = 0;
-    this.nyU = new PByteArray();
-    this.nzk = null;
-    this.nzh.nEj = paramString;
-    this.nzh.nEk = 2;
-    this.hPn = new f()
+    this.nEC = new x();
+    this.nED = new y();
+    this.nEE = 0;
+    this.nEp = new PByteArray();
+    this.nEF = null;
+    this.nEC.nJE = paramString;
+    this.nEC.nJF = 2;
+    this.ghB = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(21700);
         paramAnonymousString = (c)paramAnonymousn;
-        paramb.g(c.a.a(c.b(paramAnonymousString), paramAnonymousString), paramAnonymousString.nzh.nEj, paramAnonymousString.bIQ());
+        paramb.g(c.a.a(c.b(paramAnonymousString), paramAnonymousString), paramAnonymousString.nEC.nJE, paramAnonymousString.bJO());
         AppMethodBeat.o(21700);
       }
     };
-    this.nzk = parama;
+    this.nEF = parama;
     a.b(parama, this);
-    paramb = this.nzk;
-    if (paramb.hMP <= 0)
+    paramb = this.nEF;
+    if (paramb.hPI <= 0)
     {
       paramb = new Pair(Integer.valueOf(0), new byte[0]);
       if ((paramb.second == null) || (paramb.first == null))
       {
-        ad.w(TAG, "BackupDataPushScene media backFileOp getNext error, file path:%s", new Object[] { this.nzk.filePath });
-        this.nzh.nCV = null;
+        ae.w(TAG, "BackupDataPushScene media backFileOp getNext error, file path:%s", new Object[] { this.nEF.filePath });
+        this.nEC.nIq = null;
         AppMethodBeat.o(21708);
       }
     }
@@ -68,7 +68,7 @@ public final class c
       long l;
       label192:
       int i;
-      if (paramb.hMP - paramb.offset > 524288L)
+      if (paramb.hPI - paramb.offset > 524288L)
       {
         l = 524288L;
         i = (int)l;
@@ -85,21 +85,21 @@ public final class c
         paramb.offset += i;
         paramb = new Pair(Integer.valueOf(j), parama);
         break;
-        l = paramb.hMP - paramb.offset;
+        l = paramb.hPI - paramb.offset;
         break label192;
       }
     }
     parama = (byte[])paramb.second;
-    this.nzh.nEl = this.nzk.hMP;
-    this.nzh.nEm = ((Integer)paramb.first).intValue();
-    this.nzh.nEn = (this.nzh.nEm + parama.length);
-    paramb = this.nzh;
-    if (this.nzh.nEn == this.nzh.nEl) {}
+    this.nEC.nJG = this.nEF.hPI;
+    this.nEC.nJH = ((Integer)paramb.first).intValue();
+    this.nEC.nJI = (this.nEC.nJH + parama.length);
+    paramb = this.nEC;
+    if (this.nEC.nJI == this.nEC.nJG) {}
     for (boolean bool = true;; bool = false)
     {
-      paramb.nCV = a(parama, bool, paramArrayOfByte);
-      ad.d(TAG, "BackupDataPushScene msgid:%s, size:%d", new Object[] { paramString, Integer.valueOf(this.nzh.nEl) });
-      bIP();
+      paramb.nIq = a(parama, bool, paramArrayOfByte);
+      ae.d(TAG, "BackupDataPushScene msgid:%s, size:%d", new Object[] { paramString, Integer.valueOf(this.nEC.nJG) });
+      bJN();
       AppMethodBeat.o(21708);
       return;
     }
@@ -108,38 +108,38 @@ public final class c
   private c(final b paramb, String paramString, LinkedList<if> paramLinkedList, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21709);
-    this.nzh = new x();
-    this.nzi = new y();
-    this.nzj = 0;
-    this.nyU = new PByteArray();
-    this.nzk = null;
-    this.nzh.nEj = paramString;
-    this.nzh.nEk = 1;
-    this.hPn = new f()
+    this.nEC = new x();
+    this.nED = new y();
+    this.nEE = 0;
+    this.nEp = new PByteArray();
+    this.nEF = null;
+    this.nEC.nJE = paramString;
+    this.nEC.nJF = 1;
+    this.ghB = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(21701);
         paramAnonymousString = (c)paramAnonymousn;
-        paramb.g(true, paramAnonymousString.nzh.nEj, paramAnonymousString.bIQ());
+        paramb.g(true, paramAnonymousString.nEC.nJE, paramAnonymousString.bJO());
         AppMethodBeat.o(21701);
       }
     };
     try
     {
       paramb = new ig();
-      paramb.nDj = paramLinkedList;
-      paramb.nDi = paramLinkedList.size();
+      paramb.nIE = paramLinkedList;
+      paramb.nID = paramLinkedList.size();
       paramb = paramb.toByteArray();
       paramString = paramb;
       if (paramb == null) {
         paramString = new byte[0];
       }
-      this.nzh.nEm = 0;
-      this.nzh.nEn = paramString.length;
-      this.nzh.nEl = paramString.length;
-      this.nzh.nCV = a(paramString, true, paramArrayOfByte);
-      bIP();
+      this.nEC.nJH = 0;
+      this.nEC.nJI = paramString.length;
+      this.nEC.nJG = paramString.length;
+      this.nEC.nIq = a(paramString, true, paramArrayOfByte);
+      bJN();
       AppMethodBeat.o(21709);
       return;
     }
@@ -150,22 +150,22 @@ public final class c
     }
     for (int i = -1;; i = paramLinkedList.size())
     {
-      ad.e(paramString, "BackupDataPushScene text, BakChatMsgList to buf error, list size[%d], errMsg:%s", new Object[] { Integer.valueOf(i), paramb.getMessage() });
+      ae.e(paramString, "BackupDataPushScene text, BakChatMsgList to buf error, list size[%d], errMsg:%s", new Object[] { Integer.valueOf(i), paramb.getMessage() });
       paramb = null;
       break;
     }
   }
   
-  private static com.tencent.mm.bx.b a(byte[] paramArrayOfByte1, boolean paramBoolean, byte[] paramArrayOfByte2)
+  private static com.tencent.mm.bw.b a(byte[] paramArrayOfByte1, boolean paramBoolean, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(21713);
-    if ((bt.cD(paramArrayOfByte2) > 0) && (bt.cD(paramArrayOfByte1) > 0))
+    if ((bu.cG(paramArrayOfByte2) > 0) && (bu.cG(paramArrayOfByte1) > 0))
     {
-      paramArrayOfByte1 = new com.tencent.mm.bx.b(AesEcb.aesCryptEcb(paramArrayOfByte1, paramArrayOfByte2, true, paramBoolean));
+      paramArrayOfByte1 = new com.tencent.mm.bw.b(AesEcb.aesCryptEcb(paramArrayOfByte1, paramArrayOfByte2, true, paramBoolean));
       AppMethodBeat.o(21713);
       return paramArrayOfByte1;
     }
-    paramArrayOfByte1 = new com.tencent.mm.bx.b(paramArrayOfByte1);
+    paramArrayOfByte1 = new com.tencent.mm.bw.b(paramArrayOfByte1);
     AppMethodBeat.o(21713);
     return paramArrayOfByte1;
   }
@@ -175,7 +175,7 @@ public final class c
     AppMethodBeat.i(21706);
     paramString2 = new a(paramString2);
     int i;
-    if (paramString2.hMP <= 0) {
+    if (paramString2.hPI <= 0) {
       i = 1;
     }
     for (;;)
@@ -186,9 +186,9 @@ public final class c
         paramc.a(new c(paramb, paramString1, paramString2, paramArrayOfByte));
         j += 1;
       }
-      j = (int)(paramString2.hMP / 524288L);
+      j = (int)(paramString2.hPI / 524288L);
       i = j;
-      if (paramString2.hMP % 524288L != 0L) {
+      if (paramString2.hPI % 524288L != 0L) {
         i = j + 1;
       }
     }
@@ -202,52 +202,52 @@ public final class c
     AppMethodBeat.o(21707);
   }
   
-  private void bIP()
+  private void bJN()
   {
     AppMethodBeat.i(21711);
-    this.nzj = bIL();
+    this.nEE = bJJ();
     try
     {
-      j.a(this.nzh.toByteArray(), this.nzj, (short)getType(), this.nyU, b.nsF);
-      a(this.nzj, this.nyU);
+      j.a(this.nEC.toByteArray(), this.nEE, (short)getType(), this.nEp, b.nya);
+      a(this.nEE, this.nEp);
       AppMethodBeat.o(21711);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(TAG, localException, "PacketBackupDataPush to buf fail:%s", new Object[] { localException.toString() });
+      ae.printErrStackTrace(TAG, localException, "PacketBackupDataPush to buf fail:%s", new Object[] { localException.toString() });
       AppMethodBeat.o(21711);
     }
   }
   
-  public final a bIA()
-  {
-    return this.nzh;
-  }
-  
-  public final boolean bIJ()
+  public final boolean bJH()
   {
     AppMethodBeat.i(21712);
-    byte[] arrayOfByte = this.nyU.value;
-    int i = this.nzj;
-    if (b.nyY != null) {
-      ad.i("MicroMsg.BackupBaseScene", "doSceneSameThread ret[%d], sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(b.nyY.m(i, arrayOfByte)), Integer.valueOf(i), Integer.valueOf(getType()), Integer.valueOf(arrayOfByte.length) });
+    byte[] arrayOfByte = this.nEp.value;
+    int i = this.nEE;
+    if (b.nEt != null) {
+      ae.i("MicroMsg.BackupBaseScene", "doSceneSameThread ret[%d], sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(b.nEt.m(i, arrayOfByte)), Integer.valueOf(i), Integer.valueOf(getType()), Integer.valueOf(arrayOfByte.length) });
     }
     AppMethodBeat.o(21712);
     return true;
   }
   
-  public final int bIQ()
+  public final int bJO()
   {
-    if (this.nyU.value == null) {
+    if (this.nEp.value == null) {
       return 0;
     }
-    return this.nyU.value.length;
+    return this.nEp.value.length;
   }
   
-  public final a bIz()
+  public final a bJx()
   {
-    return this.nzi;
+    return this.nED;
+  }
+  
+  public final a bJy()
+  {
+    return this.nEC;
   }
   
   public final int getType()
@@ -255,10 +255,10 @@ public final class c
     return 6;
   }
   
-  public final void xC(int paramInt)
+  public final void xG(int paramInt)
   {
     AppMethodBeat.i(21710);
-    this.hPn.onSceneEnd(0, this.nzi.nDG, "", this);
+    this.ghB.onSceneEnd(0, this.nED.nJb, "", this);
     AppMethodBeat.o(21710);
   }
   
@@ -266,23 +266,23 @@ public final class c
   {
     private static String TAG = "MicroMsg.BackupDataPushScene.BackFileOp";
     String filePath;
-    int hMP;
-    private HashSet<c> nzn;
-    private InputStream nzo;
+    int hPI;
+    private HashSet<c> nEI;
+    private InputStream nEJ;
     int offset;
     
     public a(String paramString)
     {
       AppMethodBeat.i(21702);
-      this.nzn = new HashSet();
+      this.nEI = new HashSet();
       this.filePath = null;
-      this.hMP = 0;
+      this.hPI = 0;
       this.offset = 0;
-      this.nzo = null;
+      this.nEJ = null;
       this.filePath = paramString;
-      this.hMP = ((int)i.aYo(this.filePath));
-      if (this.hMP < 0) {
-        this.hMP = 0;
+      this.hPI = ((int)o.aZR(this.filePath));
+      if (this.hPI < 0) {
+        this.hPI = 0;
       }
       AppMethodBeat.o(21702);
     }
@@ -292,10 +292,10 @@ public final class c
       AppMethodBeat.i(21703);
       try
       {
-        if (this.nzo == null) {
-          this.nzo = i.openRead(this.filePath);
+        if (this.nEJ == null) {
+          this.nEJ = o.openRead(this.filePath);
         }
-        int i = this.nzo.read(paramArrayOfByte);
+        int i = this.nEJ.read(paramArrayOfByte);
         int j = paramArrayOfByte.length;
         if (i != j)
         {
@@ -303,7 +303,7 @@ public final class c
           return false;
         }
         if (paramBoolean) {
-          this.nzo.close();
+          this.nEJ.close();
         }
         AppMethodBeat.o(21703);
         return true;

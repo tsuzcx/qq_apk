@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.radar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.radar.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/PluginRadar;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/radar/api/IPluginRadar;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "Companion", "plugin-radar_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/PluginRadar;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/radar/api/IPluginRadar;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "Companion", "plugin-radar_release"})
 public final class PluginRadar
   extends f
   implements a
 {
   private static final String TAG = "MicroMsg.PluginRadar";
-  public static final a xhZ;
+  public static final a xxV;
   
   static
   {
     AppMethodBeat.i(138492);
-    xhZ = new a((byte)0);
+    xxV = new a((byte)0);
     TAG = "MicroMsg.PluginRadar";
     AppMethodBeat.o(138492);
   }
@@ -29,10 +29,10 @@ public final class PluginRadar
   {
     AppMethodBeat.i(138490);
     p.h(paramg, "profile");
-    if (paramg.akw())
+    if (paramg.akL())
     {
-      ad.i(TAG, "PluginRadar configure");
-      pin((com.tencent.mm.kernel.b.c)new t(b.class));
+      ae.i(TAG, "PluginRadar configure");
+      pin((com.tencent.mm.kernel.b.c)new u(b.class));
     }
     AppMethodBeat.o(138490);
   }
@@ -41,11 +41,11 @@ public final class PluginRadar
   {
     AppMethodBeat.i(138491);
     p.h(paramg, "profile");
-    com.tencent.mm.bs.c.aNQ("radar");
+    com.tencent.mm.br.c.aPn("radar");
     AppMethodBeat.o(138491);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/PluginRadar$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/PluginRadar$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
   public static final class a {}
 }
 

@@ -9,11 +9,11 @@ public class SwitchAccountModel
   implements Parcelable
 {
   public static final Parcelable.Creator<SwitchAccountModel> CREATOR;
-  public final String rBN;
+  public final String rJY;
   public final String username;
-  public final String yCV;
-  public final String yCW;
-  public final int yCX;
+  public final String yTa;
+  public final String yTb;
+  public final int yTc;
   
   static
   {
@@ -24,11 +24,11 @@ public class SwitchAccountModel
   
   public SwitchAccountModel(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    this.yCV = paramString1;
+    this.yTa = paramString1;
     this.username = paramString2;
-    this.rBN = paramString3;
-    this.yCW = paramString4;
-    this.yCX = paramInt;
+    this.rJY = paramString3;
+    this.yTb = paramString4;
+    this.yTc = paramInt;
   }
   
   public int describeContents()
@@ -39,11 +39,11 @@ public class SwitchAccountModel
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(73785);
-    paramParcel.writeString(this.yCV);
+    paramParcel.writeString(this.yTa);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.rBN);
-    paramParcel.writeString(this.yCW);
-    paramParcel.writeInt(this.yCX);
+    paramParcel.writeString(this.rJY);
+    paramParcel.writeString(this.yTb);
+    paramParcel.writeInt(this.yTc);
     AppMethodBeat.o(73785);
   }
 }

@@ -3,12 +3,12 @@ package com.tencent.mm.k.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long fVm;
-  public long fVn;
-  public long fVo;
-  public long fVp;
+  public long fXs;
+  public long fXt;
+  public long fXu;
+  public long fXv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,28 +16,28 @@ public final class c
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.fVm);
-      paramVarArgs.aY(2, this.fVn);
-      paramVarArgs.aY(3, this.fVo);
-      paramVarArgs.aY(4, this.fVp);
+      paramVarArgs.aZ(1, this.fXs);
+      paramVarArgs.aZ(2, this.fXt);
+      paramVarArgs.aZ(3, this.fXu);
+      paramVarArgs.aZ(4, this.fXv);
       AppMethodBeat.o(42663);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.fVm);
-      int i = f.a.a.b.b.a.p(2, this.fVn);
-      int j = f.a.a.b.b.a.p(3, this.fVo);
-      int k = f.a.a.b.b.a.p(4, this.fVp);
+      paramInt = f.a.a.b.b.a.p(1, this.fXs);
+      int i = f.a.a.b.b.a.p(2, this.fXt);
+      int j = f.a.a.b.b.a.p(3, this.fXu);
+      int k = f.a.a.b.b.a.p(4, this.fXv);
       AppMethodBeat.o(42663);
       return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(42663);
@@ -53,19 +53,19 @@ public final class c
         AppMethodBeat.o(42663);
         return -1;
       case 1: 
-        localc.fVm = locala.NPN.zd();
+        localc.fXs = locala.OmT.zd();
         AppMethodBeat.o(42663);
         return 0;
       case 2: 
-        localc.fVn = locala.NPN.zd();
+        localc.fXt = locala.OmT.zd();
         AppMethodBeat.o(42663);
         return 0;
       case 3: 
-        localc.fVo = locala.NPN.zd();
+        localc.fXu = locala.OmT.zd();
         AppMethodBeat.o(42663);
         return 0;
       }
-      localc.fVp = locala.NPN.zd();
+      localc.fXv = locala.OmT.zd();
       AppMethodBeat.o(42663);
       return 0;
     }

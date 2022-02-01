@@ -5,18 +5,18 @@ import d.g.a.b;
 import d.g.b.q;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"valid", "", "size", "invoke"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"valid", "", "size", "invoke"})
 final class a$b
   extends q
   implements b<Float, Float>
 {
-  public static final b hnN;
+  public static final b hqB;
   
   static
   {
-    AppMethodBeat.i(219302);
-    hnN = new b();
-    AppMethodBeat.o(219302);
+    AppMethodBeat.i(217528);
+    hqB = new b();
+    AppMethodBeat.o(217528);
   }
   
   a$b()
@@ -40,7 +40,7 @@ final class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.media.j.b.a.b
  * JD-Core Version:    0.7.0.1
  */

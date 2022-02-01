@@ -1,65 +1,65 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.k;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.k;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.b;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.Objects;
 
 public final class o
 {
-  private static c ifT = null;
+  private static c iiM = null;
   
-  public static e FX(String paramString)
+  public static e Gz(String paramString)
   {
-    AppMethodBeat.i(192549);
-    d locald = d.ifW;
+    AppMethodBeat.i(213424);
+    d locald = d.iiP;
     e locale = new e();
     locale.toUser = paramString;
-    locale.ign = locald;
-    AppMethodBeat.o(192549);
+    locale.ijg = locald;
+    AppMethodBeat.o(213424);
     return locale;
   }
   
   public static e a(d paramd)
   {
-    AppMethodBeat.i(192550);
+    AppMethodBeat.i(213425);
     e locale = new e();
-    locale.ign = paramd;
-    AppMethodBeat.o(192550);
+    locale.ijg = paramd;
+    AppMethodBeat.o(213425);
     return locale;
   }
   
   static void a(c paramc)
   {
-    ifT = paramc;
+    iiM = paramc;
   }
   
   public static final class a
   {
-    public n dor;
-    public long ifU;
+    public n dpw;
+    public long iiN;
   }
   
   public static final class b<T extends n>
   {
-    public long ifU;
-    public T ifV;
+    public long iiN;
+    public T iiO;
     
     public final boolean execute()
     {
-      AppMethodBeat.i(192544);
-      if (this.ifV == null) {
-        ad.e("SendMsgCgiFactory", "[execute] cgi is null. %s", new Object[] { bt.flS() });
+      AppMethodBeat.i(213419);
+      if (this.iiO == null) {
+        ae.e("SendMsgCgiFactory", "[execute] cgi is null. %s", new Object[] { bu.fpN() });
       }
-      Objects.requireNonNull(this.ifV);
-      boolean bool = x.hPm.aiV().a(this.ifV, 0);
-      AppMethodBeat.o(192544);
+      Objects.requireNonNull(this.iiO);
+      boolean bool = x.hSf.ajk().a(this.iiO, 0);
+      AppMethodBeat.o(213419);
       return bool;
     }
   }
@@ -73,13 +73,13 @@ public final class o
   {
     static
     {
-      AppMethodBeat.i(192547);
-      ifW = new d("TEXT", 0);
-      ifX = new d("IMAGE", 1);
-      ifY = new d("VIDEO", 2);
-      ifZ = new d("CDN_IMAGE", 3);
-      iga = new d[] { ifW, ifX, ifY, ifZ };
-      AppMethodBeat.o(192547);
+      AppMethodBeat.i(213422);
+      iiP = new d("TEXT", 0);
+      iiQ = new d("IMAGE", 1);
+      iiR = new d("VIDEO", 2);
+      iiS = new d("CDN_IMAGE", 3);
+      iiT = new d[] { iiP, iiQ, iiR, iiS };
+      AppMethodBeat.o(213422);
     }
     
     private d() {}
@@ -88,52 +88,52 @@ public final class o
   public static class e
   {
     public String content;
-    public float dAp;
-    public int dDp;
-    public int dxr;
-    public String dyU;
-    public float dyz;
-    public int gwQ;
-    public boolean gwX;
-    public String hZI = "";
-    public int hZz;
-    public String ibD;
-    public String ibF = "";
-    public Object igb;
-    public int igc;
-    public g igd;
-    public k ige;
-    public int igf;
-    public boolean igg;
-    public long igh;
-    public long igi;
-    public String igj;
-    public int igk;
-    public boolean igl;
-    public int igm;
-    public o.d ign;
+    public float dBu;
+    public int dEu;
+    public int dyw;
+    public float dzE;
+    public String dzZ;
+    public boolean gzE;
+    public int gzx;
+    public String icA = "";
+    public int icr;
+    public String iew;
+    public String iey = "";
+    public Object iiU;
+    public int iiV;
+    public g iiW;
+    public k iiX;
+    public int iiY;
+    public boolean iiZ;
+    public long ija;
+    public long ijb;
+    public String ijc;
+    public int ijd;
+    public boolean ije;
+    public int ijf;
+    public o.d ijg;
     public long msgId;
     public String thumbPath = "";
     public String toUser;
     public int type;
     
-    public final <T extends n> o.b<T> aJv()
+    public final <T extends n> o.b<T> aJO()
     {
-      AppMethodBeat.i(192548);
+      AppMethodBeat.i(213423);
       o.b localb = new o.b();
-      if (o.aJu() != null)
+      if (o.aJN() != null)
       {
-        o.a locala = o.aJu().a(this);
-        localb.ifV = locala.dor;
-        localb.ifU = locala.ifU;
+        o.a locala = o.aJN().a(this);
+        localb.iiO = locala.dpw;
+        localb.iiN = locala.iiN;
       }
-      AppMethodBeat.o(192548);
+      AppMethodBeat.o(213423);
       return localb;
     }
     
-    public e pk(int paramInt)
+    public e pn(int paramInt)
     {
-      this.gwQ = paramInt;
+      this.gzx = paramInt;
       return this;
     }
   }

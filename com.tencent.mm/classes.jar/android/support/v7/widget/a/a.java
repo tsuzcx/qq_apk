@@ -1213,15 +1213,15 @@ public final class a
             if (RecyclerView.i.bG(paramw2.auu) <= paramRecyclerView.getPaddingLeft())
             {
               paramw1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahp(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
-              paramRecyclerView.ca(((Integer)paramw1.mq(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahE(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+              paramRecyclerView.ca(((Integer)paramw1.mt(0)).intValue());
               com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
             }
             if (RecyclerView.i.bI(paramw2.auu) >= paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight())
             {
               paramw1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahp(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
-              paramRecyclerView.ca(((Integer)paramw1.mq(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahE(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+              paramRecyclerView.ca(((Integer)paramw1.mt(0)).intValue());
               com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
             }
           }
@@ -1229,14 +1229,14 @@ public final class a
         if (RecyclerView.i.bH(paramw2.auu) <= paramRecyclerView.getPaddingTop())
         {
           paramw1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahp(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
-          paramRecyclerView.ca(((Integer)paramw1.mq(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahE(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+          paramRecyclerView.ca(((Integer)paramw1.mt(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
         }
       } while (RecyclerView.i.bJ(paramw2.auu) < paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
       paramw1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahp(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
-      paramRecyclerView.ca(((Integer)paramw1.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramw1.ahE(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+      paramRecyclerView.ca(((Integer)paramw1.mt(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
     }
     
@@ -1476,7 +1476,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

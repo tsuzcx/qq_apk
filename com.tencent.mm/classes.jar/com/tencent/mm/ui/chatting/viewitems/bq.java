@@ -10,27 +10,27 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 final class bq
   extends c.a
 {
-  WeImageView KiA;
-  TextView Kix;
-  RelativeLayout Kiy;
-  TextView Kiz;
-  ImageView fRd;
-  TextView opA;
+  TextView KER;
+  RelativeLayout KES;
+  TextView KET;
+  WeImageView KEU;
+  ImageView fTj;
+  TextView ovs;
   TextView titleTv;
   
-  public final c.a gN(View paramView)
+  public final c.a gS(View paramView)
   {
-    AppMethodBeat.i(194515);
-    super.gn(paramView);
-    this.Kix = ((TextView)paramView.findViewById(2131298003));
-    this.Kiy = ((RelativeLayout)paramView.findViewById(2131297991));
-    this.fRd = ((ImageView)paramView.findViewById(2131297985));
-    this.opA = ((TextView)paramView.findViewById(2131298000));
-    this.Kiz = ((TextView)paramView.findViewById(2131298001));
-    this.KiA = ((WeImageView)paramView.findViewById(2131297986));
+    AppMethodBeat.i(187916);
+    super.gs(paramView);
+    this.KER = ((TextView)paramView.findViewById(2131298003));
+    this.KES = ((RelativeLayout)paramView.findViewById(2131297991));
+    this.fTj = ((ImageView)paramView.findViewById(2131297985));
+    this.ovs = ((TextView)paramView.findViewById(2131298000));
+    this.KET = ((TextView)paramView.findViewById(2131298001));
+    this.KEU = ((WeImageView)paramView.findViewById(2131297986));
     this.titleTv = ((TextView)paramView.findViewById(2131298002));
-    this.gZU = paramView.findViewById(2131298147);
-    AppMethodBeat.o(194515);
+    this.hcH = paramView.findViewById(2131298147);
+    AppMethodBeat.o(187916);
     return this;
   }
 }

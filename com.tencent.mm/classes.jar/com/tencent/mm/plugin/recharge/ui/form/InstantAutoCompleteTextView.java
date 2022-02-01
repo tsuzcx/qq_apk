@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.AutoCompleteTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 
 public class InstantAutoCompleteTextView
   extends AutoCompleteTextView
 {
-  private boolean xpt;
+  private boolean xFq;
   
   public InstantAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,14 +25,14 @@ public class InstantAutoCompleteTextView
   {
     AppMethodBeat.i(67272);
     super.dismissDropDown();
-    ad.d("TestAutoCompleteTextView", "dismiss");
+    ae.d("TestAutoCompleteTextView", "dismiss");
     AppMethodBeat.o(67272);
   }
   
   public boolean enoughToFilter()
   {
     AppMethodBeat.i(67273);
-    if ((this.xpt) || (super.enoughToFilter()))
+    if ((this.xFq) || (super.enoughToFilter()))
     {
       AppMethodBeat.o(67273);
       return true;
@@ -43,7 +43,7 @@ public class InstantAutoCompleteTextView
   
   public void setShowAlways(boolean paramBoolean)
   {
-    this.xpt = paramBoolean;
+    this.xFq = paramBoolean;
   }
 }
 

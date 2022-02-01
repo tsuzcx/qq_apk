@@ -19,8 +19,8 @@ import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
 import com.tencent.mm.plugin.wallet_core.model.mall.d;
 import com.tencent.mm.plugin.wallet_core.model.z;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,59 +30,59 @@ public final class b
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  private final int vDT;
-  private final int vDU;
-  private final int vDV;
-  List<ArrayList<c>> vDW;
-  d vDX;
-  private boolean vDY;
-  private int vDZ;
-  private SparseArray<String> vDj;
-  private int vDk;
-  private int vEa;
-  private boolean vEb;
-  private boolean vEc;
+  private final int vPX;
+  private final int vPY;
+  private final int vPZ;
+  private SparseArray<String> vPn;
+  private int vPo;
+  List<ArrayList<c>> vQa;
+  d vQb;
+  private boolean vQc;
+  private int vQd;
+  private int vQe;
+  private boolean vQf;
+  private boolean vQg;
   
   public b(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(66035);
-    this.vDT = 3;
-    this.vDU = 9;
-    this.vDV = 3;
-    this.vDW = new ArrayList();
-    this.vDj = null;
-    this.vDY = true;
-    this.vDZ = 0;
-    this.vEa = 0;
-    this.vEb = false;
-    this.vEc = false;
+    this.vPX = 3;
+    this.vPY = 9;
+    this.vPZ = 3;
+    this.vQa = new ArrayList();
+    this.vPn = null;
+    this.vQc = true;
+    this.vQd = 0;
+    this.vQe = 0;
+    this.vQf = false;
+    this.vQg = false;
     this.mContext = paramContext;
-    this.vDk = paramInt;
+    this.vPo = paramInt;
     this.mInflater = LayoutInflater.from(this.mContext);
     AppMethodBeat.o(66035);
   }
   
-  private boolean JE(int paramInt)
+  private boolean Kd(int paramInt)
   {
     AppMethodBeat.i(66038);
     int j;
     boolean bool;
-    if (this.vDZ > 9)
+    if (this.vQd > 9)
     {
       j = 0;
       int i = 0;
       while (j <= paramInt)
       {
-        i += ((ArrayList)this.vDW.get(j)).size();
+        i += ((ArrayList)this.vQa.get(j)).size();
         j += 1;
       }
-      if (this.vEa > 3)
+      if (this.vQe > 3)
       {
         j = 3;
         if (i < 9) {
           break label117;
         }
-        if ((!this.vDY) || (paramInt != j)) {
+        if ((!this.vQc) || (paramInt != j)) {
           break label96;
         }
         bool = true;
@@ -92,10 +92,10 @@ public final class b
     {
       AppMethodBeat.o(66038);
       return bool;
-      j = this.vEa;
+      j = this.vQe;
       break;
       label96:
-      if ((paramInt == this.vEa) && (!this.vDY)) {
+      if ((paramInt == this.vQe) && (!this.vQc)) {
         bool = true;
       } else {
         label117:
@@ -104,15 +104,15 @@ public final class b
     }
   }
   
-  private String JF(int paramInt)
+  private String Ke(int paramInt)
   {
     AppMethodBeat.i(66048);
-    if (this.vDj == null)
+    if (this.vPn == null)
     {
       AppMethodBeat.o(66048);
       return null;
     }
-    String str = (String)this.vDj.get(paramInt);
+    String str = (String)this.vPn.get(paramInt);
     AppMethodBeat.o(66048);
     return str;
   }
@@ -120,7 +120,7 @@ public final class b
   private void a(int paramInt1, b paramb, int paramInt2)
   {
     AppMethodBeat.i(66040);
-    List localList = (List)this.vDW.get(paramInt1);
+    List localList = (List)this.vQa.get(paramInt1);
     localList.get(0);
     int m;
     Object localObject;
@@ -129,17 +129,17 @@ public final class b
     int i;
     if (localList.size() > 0)
     {
-      m = ((c)localList.get(0)).vEA.type;
-      localObject = JF(m);
+      m = ((c)localList.get(0)).vQE.type;
+      localObject = Ke(m);
       j = 0;
       k = 0;
-      if (bt.isNullOrNil((String)localObject)) {
+      if (bu.isNullOrNil((String)localObject)) {
         break label680;
       }
       if (paramInt1 == 0)
       {
         i = 1;
-        if (paramInt1 != this.vDW.size() - 1) {
+        if (paramInt1 != this.vQa.size() - 1) {
           break label355;
         }
         paramInt1 = 1;
@@ -150,13 +150,13 @@ public final class b
       label104:
       if (i != 0)
       {
-        paramb.vEs.setText((CharSequence)localObject);
-        paramb.vEs.setVisibility(0);
-        paramb.vEt.setVisibility(8);
-        paramb.vEu.setVisibility(0);
-        paramb.vEs.setMinHeight(a.dkd());
-        paramb.vEu.setBackgroundColor(e.dkH());
-        localObject = paramb.vEr;
+        paramb.vQw.setText((CharSequence)localObject);
+        paramb.vQw.setVisibility(0);
+        paramb.vQx.setVisibility(8);
+        paramb.vQy.setVisibility(0);
+        paramb.vQw.setMinHeight(a.dnc());
+        paramb.vQy.setBackgroundColor(e.dnH());
+        localObject = paramb.vQv;
         ((LinearLayout)localObject).setFocusable(true);
         i = 0;
         if (i >= 3) {
@@ -189,36 +189,36 @@ public final class b
         i += 1;
         break label178;
         i = k;
-        if (((ArrayList)this.vDW.get(paramInt1 - 1)).size() <= 0) {
+        if (((ArrayList)this.vQa.get(paramInt1 - 1)).size() <= 0) {
           break;
         }
         i = k;
-        if (m == ((c)((ArrayList)this.vDW.get(paramInt1 - 1)).get(0)).vEA.type) {
+        if (m == ((c)((ArrayList)this.vQa.get(paramInt1 - 1)).get(0)).vQE.type) {
           break;
         }
         i = 1;
         break;
         label355:
         j = i;
-        if (m == ((c)((ArrayList)this.vDW.get(paramInt1 + 1)).get(0)).vEA.type) {
+        if (m == ((c)((ArrayList)this.vQa.get(paramInt1 + 1)).get(0)).vQE.type) {
           break label680;
         }
         paramInt1 = 1;
         break label104;
-        paramb.vEs.setVisibility(8);
-        paramb.vEt.setVisibility(8);
-        paramb.vEu.setVisibility(8);
+        paramb.vQw.setVisibility(8);
+        paramb.vQx.setVisibility(8);
+        paramb.vQy.setVisibility(8);
         break label163;
-        paramb.vEs.setVisibility(8);
-        paramb.vEt.setVisibility(8);
-        paramb.vEu.setVisibility(8);
+        paramb.vQw.setVisibility(8);
+        paramb.vQx.setVisibility(8);
+        paramb.vQy.setVisibility(8);
         paramInt1 = 0;
         break label163;
         label459:
         ((LinearLayout)localObject).getChildAt(i).setFocusable(true);
         ((LinearLayout)localObject).getChildAt(i).setOnClickListener(null);
         a locala = (a)((LinearLayout)localObject).getChildAt(i).getTag();
-        locala.vEg.setVisibility(4);
+        locala.vQk.setVisibility(4);
         paramb.setEnabled(false);
         paramb.setClickable(false);
         a(locala);
@@ -229,11 +229,11 @@ public final class b
         }
         for (;;)
         {
-          ((LinearLayout)localObject).addView(paramb, new LinearLayout.LayoutParams(-2, a.dkb(), 1.0F));
+          ((LinearLayout)localObject).addView(paramb, new LinearLayout.LayoutParams(-2, a.dna(), 1.0F));
           break;
           paramb.setFocusable(true);
           locala = (a)paramb.getTag();
-          locala.vEg.setVisibility(4);
+          locala.vQk.setVisibility(4);
           paramb.setOnClickListener(null);
           paramb.setEnabled(false);
           paramb.setClickable(false);
@@ -264,25 +264,25 @@ public final class b
       return;
     }
     a locala = (a)paramView.getTag();
-    final MallFunction localMallFunction = paramc.vEA;
-    final int i = paramc.vEB;
-    locala.vEm = localMallFunction.vEm;
-    locala.vEl = localMallFunction.vEl;
-    com.tencent.mm.plugin.mall.b.a.d(locala.vEh, locala.vEl, 2131690773);
-    locala.vEj.setText(localMallFunction.dKm);
-    locala.vEi.setVisibility(8);
-    if ((localMallFunction.Dbp != null) && (!bt.isNullOrNil(localMallFunction.Dbp.Dbx)) && (b(localMallFunction)))
+    final MallFunction localMallFunction = paramc.vQE;
+    final int i = paramc.vQF;
+    locala.vQq = localMallFunction.vQq;
+    locala.vQp = localMallFunction.vQp;
+    com.tencent.mm.plugin.mall.b.a.d(locala.vQl, locala.vQp, 2131690773);
+    locala.vQn.setText(localMallFunction.dLB);
+    locala.vQm.setVisibility(8);
+    if ((localMallFunction.DsT != null) && (!bu.isNullOrNil(localMallFunction.DsT.Dtb)) && (b(localMallFunction)))
     {
-      if (d.eGX().aEE(localMallFunction.jDb) != null)
+      if (d.eKF().aFY(localMallFunction.jFZ) != null)
       {
-        ad.w("MicroMsg.FunctionListAdapter", "show the news : " + d.eGX().aEE(localMallFunction.jDb).Dbx);
-        locala.vEk.setText(localMallFunction.Dbp.Dbx);
-        locala.vEk.setVisibility(0);
+        ae.w("MicroMsg.FunctionListAdapter", "show the news : " + d.eKF().aFY(localMallFunction.jFZ).Dtb);
+        locala.vQo.setText(localMallFunction.DsT.Dtb);
+        locala.vQo.setVisibility(0);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.mall.b.a.q(locala.vEi, locala.vEm);
-        locala.vEi.setVisibility(0);
+        com.tencent.mm.plugin.mall.b.a.q(locala.vQm, locala.vQq);
+        locala.vQm.setVisibility(0);
         paramView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
@@ -290,8 +290,8 @@ public final class b
             AppMethodBeat.i(66034);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
             localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mall/ui/FunctionListAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-            ad.v("MicroMsg.FunctionListAdapter", "on Click");
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mall/ui/FunctionListAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            ae.v("MicroMsg.FunctionListAdapter", "on Click");
             if (b.c(b.this) != null) {
               b.c(b.this).a(i, localMallFunction);
             }
@@ -299,75 +299,75 @@ public final class b
             AppMethodBeat.o(66034);
           }
         });
-        locala.vEg.setVisibility(0);
+        locala.vQk.setVisibility(0);
         paramView.setEnabled(true);
         paramView.setClickable(true);
         a(locala, paramInt1, paramInt2);
         AppMethodBeat.o(66046);
         return;
-        locala.vEk.setVisibility(4);
+        locala.vQo.setVisibility(4);
       }
     }
-    if ((localMallFunction.Dbp != null) && (localMallFunction.Dbp.DbC == 1))
+    if ((localMallFunction.DsT != null) && (localMallFunction.DsT.Dtg == 1))
     {
-      locala.vEk.setText(localMallFunction.Dbp.Dbx);
-      locala.vEk.setVisibility(0);
+      locala.vQo.setText(localMallFunction.DsT.Dtb);
+      locala.vQo.setVisibility(0);
     }
     for (;;)
     {
-      locala.vEi.setImageBitmap(null);
-      locala.vEi.setVisibility(8);
+      locala.vQm.setImageBitmap(null);
+      locala.vQm.setVisibility(8);
       break;
-      locala.vEk.setText("");
-      locala.vEk.setVisibility(4);
+      locala.vQo.setText("");
+      locala.vQo.setVisibility(4);
     }
   }
   
   private static void a(a parama)
   {
     AppMethodBeat.i(66042);
-    parama.vEn.setVisibility(0);
-    parama.vEo.setVisibility(4);
-    parama.vEp.setVisibility(4);
-    parama.vEq.setVisibility(4);
+    parama.vQr.setVisibility(0);
+    parama.vQs.setVisibility(4);
+    parama.vQt.setVisibility(4);
+    parama.vQu.setVisibility(4);
     AppMethodBeat.o(66042);
   }
   
   private static void a(a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(66043);
-    parama.vEq.setVisibility(4);
+    parama.vQu.setVisibility(4);
     if (paramInt1 == 0) {
-      parama.vEo.setVisibility(0);
+      parama.vQs.setVisibility(0);
     }
     while (paramInt2 == 0)
     {
-      parama.vEn.setVisibility(0);
-      parama.vEp.setVisibility(4);
+      parama.vQr.setVisibility(0);
+      parama.vQt.setVisibility(4);
       AppMethodBeat.o(66043);
       return;
       if (paramInt1 == 1) {
-        parama.vEo.setVisibility(0);
+        parama.vQs.setVisibility(0);
       } else if (paramInt1 == 2) {
-        parama.vEo.setVisibility(4);
+        parama.vQs.setVisibility(4);
       }
     }
     if (paramInt2 == 1)
     {
-      parama.vEn.setVisibility(4);
-      parama.vEp.setVisibility(0);
+      parama.vQr.setVisibility(4);
+      parama.vQt.setVisibility(0);
       AppMethodBeat.o(66043);
       return;
     }
-    parama.vEn.setVisibility(0);
-    parama.vEp.setVisibility(0);
+    parama.vQr.setVisibility(0);
+    parama.vQt.setVisibility(0);
     AppMethodBeat.o(66043);
   }
   
   public static boolean a(MallFunction paramMallFunction)
   {
     AppMethodBeat.i(66045);
-    if ((paramMallFunction.Dbp != null) && (!bt.isNullOrNil(paramMallFunction.Dbp.Dbx)) && (b(paramMallFunction)) && (d.eGX().aEE(paramMallFunction.jDb) != null))
+    if ((paramMallFunction.DsT != null) && (!bu.isNullOrNil(paramMallFunction.DsT.Dtb)) && (b(paramMallFunction)) && (d.eKF().aFY(paramMallFunction.jFZ) != null))
     {
       AppMethodBeat.o(66045);
       return true;
@@ -379,23 +379,23 @@ public final class b
   private static boolean b(MallFunction paramMallFunction)
   {
     AppMethodBeat.i(66047);
-    MallNews localMallNews = d.eGX().aEE(paramMallFunction.jDb);
-    if ((localMallNews == null) || (bt.isNullOrNil(localMallNews.Bhd)) || (!localMallNews.Bhd.equals(paramMallFunction.Dbp.Bhd)))
+    MallNews localMallNews = d.eKF().aFY(paramMallFunction.jFZ);
+    if ((localMallNews == null) || (bu.isNullOrNil(localMallNews.ByB)) || (!localMallNews.ByB.equals(paramMallFunction.DsT.ByB)))
     {
-      ad.d("MicroMsg.FunctionListAdapter", "old news null or should be replaced %s %s", new Object[] { paramMallFunction.Dbp.Bhd, paramMallFunction.dKm });
-      d.eGX().b(paramMallFunction.Dbp);
+      ae.d("MicroMsg.FunctionListAdapter", "old news null or should be replaced %s %s", new Object[] { paramMallFunction.DsT.ByB, paramMallFunction.dLB });
+      d.eKF().b(paramMallFunction.DsT);
       AppMethodBeat.o(66047);
       return true;
     }
     if (localMallNews != null)
     {
-      if (!"0".equals(localMallNews.Dbv))
+      if (!"0".equals(localMallNews.DsZ))
       {
-        ad.d("MicroMsg.FunctionListAdapter", "still old news or clicked, then should not show");
+        ae.d("MicroMsg.FunctionListAdapter", "still old news or clicked, then should not show");
         AppMethodBeat.o(66047);
         return false;
       }
-      ad.d("MicroMsg.FunctionListAdapter", "still old news and should show");
+      ae.d("MicroMsg.FunctionListAdapter", "still old news and should show");
       AppMethodBeat.o(66047);
       return true;
     }
@@ -403,21 +403,21 @@ public final class b
     return false;
   }
   
-  private boolean dkg()
+  private boolean dnf()
   {
     AppMethodBeat.i(66044);
-    if (this.vDW.size() > 3)
+    if (this.vQa.size() > 3)
     {
-      Object localObject = (ArrayList)this.vDW.get(3);
+      Object localObject = (ArrayList)this.vQa.get(3);
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        int i = ((c)((ArrayList)localObject).get(0)).vEA.type;
+        int i = ((c)((ArrayList)localObject).get(0)).vQE.type;
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           c localc = (c)((Iterator)localObject).next();
-          if (localc.vEA.type == i) {
-            if (a(localc.vEA))
+          if (localc.vQE.type == i) {
+            if (a(localc.vQE))
             {
               AppMethodBeat.o(66044);
               return true;
@@ -435,15 +435,15 @@ public final class b
     AppMethodBeat.i(66041);
     a locala = new a();
     paramViewGroup = this.mInflater.inflate(2131494693, paramViewGroup, false);
-    locala.vEg = paramViewGroup.findViewById(2131302017);
-    locala.vEh = ((ImageView)paramViewGroup.findViewById(2131302014));
-    locala.vEj = ((TextView)paramViewGroup.findViewById(2131302019));
-    locala.vEk = ((TextView)paramViewGroup.findViewById(2131302013));
-    locala.vEi = ((ImageView)paramViewGroup.findViewById(2131302795));
-    locala.vEn = ((ImageView)paramViewGroup.findViewById(2131299169));
-    locala.vEo = ((ImageView)paramViewGroup.findViewById(2131299167));
-    locala.vEp = ((ImageView)paramViewGroup.findViewById(2131299159));
-    locala.vEq = ((ImageView)paramViewGroup.findViewById(2131299163));
+    locala.vQk = paramViewGroup.findViewById(2131302017);
+    locala.vQl = ((ImageView)paramViewGroup.findViewById(2131302014));
+    locala.vQn = ((TextView)paramViewGroup.findViewById(2131302019));
+    locala.vQo = ((TextView)paramViewGroup.findViewById(2131302013));
+    locala.vQm = ((ImageView)paramViewGroup.findViewById(2131302795));
+    locala.vQr = ((ImageView)paramViewGroup.findViewById(2131299169));
+    locala.vQs = ((ImageView)paramViewGroup.findViewById(2131299167));
+    locala.vQt = ((ImageView)paramViewGroup.findViewById(2131299159));
+    locala.vQu = ((ImageView)paramViewGroup.findViewById(2131299163));
     paramViewGroup.setTag(locala);
     AppMethodBeat.o(66041);
     return paramViewGroup;
@@ -452,7 +452,7 @@ public final class b
   public final void aj(ArrayList<MallFunction> paramArrayList)
   {
     AppMethodBeat.i(66036);
-    this.vDW.clear();
+    this.vQa.clear();
     if (paramArrayList != null)
     {
       int i = 0;
@@ -471,19 +471,19 @@ public final class b
             }
           }
           c localc = new c();
-          localc.vEB = (i + j);
-          localc.vEA = ((MallFunction)paramArrayList.get(i + j));
+          localc.vQF = (i + j);
+          localc.vQE = ((MallFunction)paramArrayList.get(i + j));
           localArrayList.add(localc);
           j += 1;
         }
         if (localArrayList.size() > 0) {
-          this.vDW.add(localArrayList);
+          this.vQa.add(localArrayList);
         }
         i += j;
       }
-      this.vDZ = 0;
-      this.vEa = 0;
-      paramArrayList = this.vDW.iterator();
+      this.vQd = 0;
+      this.vQe = 0;
+      paramArrayList = this.vQa.iterator();
       i = -1;
       if (paramArrayList.hasNext())
       {
@@ -491,11 +491,11 @@ public final class b
         if (localArrayList.size() <= 0) {
           break label360;
         }
-        if ((i == -1) || (i == ((c)localArrayList.get(0)).vEA.type))
+        if ((i == -1) || (i == ((c)localArrayList.get(0)).vQE.type))
         {
-          this.vDZ += localArrayList.size();
-          this.vEa += 1;
-          i = ((c)localArrayList.get(0)).vEA.type;
+          this.vQd += localArrayList.size();
+          this.vQe += 1;
+          i = ((c)localArrayList.get(0)).vQE.type;
         }
       }
     }
@@ -503,10 +503,10 @@ public final class b
     for (;;)
     {
       break;
-      this.vEa -= 1;
-      this.vDj = k.dka().JC(this.vDk).vDj;
-      this.vEb = dkg();
-      ad.i("MicroMsg.FunctionListAdapter", "hasMoreNewAtFirstSectionBottom: %s", new Object[] { Boolean.valueOf(this.vEb) });
+      this.vQe -= 1;
+      this.vPn = k.dmZ().Kb(this.vPo).vPn;
+      this.vQf = dnf();
+      ae.i("MicroMsg.FunctionListAdapter", "hasMoreNewAtFirstSectionBottom: %s", new Object[] { Boolean.valueOf(this.vQf) });
       notifyDataSetChanged();
       AppMethodBeat.o(66036);
       return;
@@ -516,7 +516,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(66037);
-    int i = this.vDW.size();
+    int i = this.vQa.size();
     AppMethodBeat.o(66037);
     return i;
   }
@@ -535,14 +535,14 @@ public final class b
   {
     int i = 3;
     AppMethodBeat.i(66039);
-    boolean bool2 = JE(paramInt);
-    if (this.vDZ > 9) {
-      if (this.vEa <= 3) {}
+    boolean bool2 = Kd(paramInt);
+    if (this.vQd > 9) {
+      if (this.vQe <= 3) {}
     }
     for (int j = i;; j = -1)
     {
-      if ((!bool2) && (paramInt + 1 < this.vDW.size())) {}
-      for (boolean bool1 = JE(paramInt + 1);; bool1 = false)
+      if ((!bool2) && (paramInt + 1 < this.vQa.size())) {}
+      for (boolean bool1 = Kd(paramInt + 1);; bool1 = false)
       {
         if (bool2) {
           i = 1;
@@ -555,23 +555,23 @@ public final class b
           {
             paramView = new b();
             localView = this.mInflater.inflate(2131494687, paramViewGroup, false);
-            paramView.vEr = ((LinearLayout)localView.findViewById(2131302010));
-            paramView.vEs = ((TextView)localView.findViewById(2131302009));
-            paramView.vEt = localView.findViewById(2131299154);
-            paramView.vEu = localView.findViewById(2131301426);
-            paramView.vEv = localView.findViewById(2131302138);
-            paramView.vEx = ((TextView)localView.findViewById(2131302139));
-            paramView.vEw = ((ImageView)localView.findViewById(2131302137));
-            paramView.vEy = localView.findViewById(2131302469);
-            paramView.vEz = localView.findViewById(2131297448);
-            paramView.vEv.setOnClickListener(new View.OnClickListener()
+            paramView.vQv = ((LinearLayout)localView.findViewById(2131302010));
+            paramView.vQw = ((TextView)localView.findViewById(2131302009));
+            paramView.vQx = localView.findViewById(2131299154);
+            paramView.vQy = localView.findViewById(2131301426);
+            paramView.vQz = localView.findViewById(2131302138);
+            paramView.vQB = ((TextView)localView.findViewById(2131302139));
+            paramView.vQA = ((ImageView)localView.findViewById(2131302137));
+            paramView.vQC = localView.findViewById(2131302469);
+            paramView.vQD = localView.findViewById(2131297448);
+            paramView.vQz.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(66033);
                 com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
                 localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mall/ui/FunctionListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mall/ui/FunctionListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
                 paramAnonymousView = b.this;
                 if (!b.a(b.this)) {}
                 for (boolean bool = true;; bool = false)
@@ -591,38 +591,38 @@ public final class b
             if (!bool2) {
               break label629;
             }
-            paramViewGroup.vEs.setVisibility(8);
-            paramViewGroup.vEt.setVisibility(8);
-            paramViewGroup.vEu.setVisibility(8);
-            paramViewGroup.vEv.setVisibility(0);
-            paramViewGroup.vEw.setImageResource(2131690517);
-            paramViewGroup.vEw.setColorFilter(this.mContext.getResources().getColor(2131100547), PorterDuff.Mode.SRC_ATOP);
-            paramViewGroup.vEw.setPivotX(paramViewGroup.vEw.getWidth() / 2);
-            paramViewGroup.vEw.setPivotY(paramViewGroup.vEw.getHeight() / 2);
-            paramViewGroup.vEw.setRotation(90.0F);
-            paramViewGroup.vEx.setText(this.mContext.getString(2131761090));
-            if ((!this.vEb) || (this.vEc)) {
+            paramViewGroup.vQw.setVisibility(8);
+            paramViewGroup.vQx.setVisibility(8);
+            paramViewGroup.vQy.setVisibility(8);
+            paramViewGroup.vQz.setVisibility(0);
+            paramViewGroup.vQA.setImageResource(2131690517);
+            paramViewGroup.vQA.setColorFilter(this.mContext.getResources().getColor(2131100547), PorterDuff.Mode.SRC_ATOP);
+            paramViewGroup.vQA.setPivotX(paramViewGroup.vQA.getWidth() / 2);
+            paramViewGroup.vQA.setPivotY(paramViewGroup.vQA.getHeight() / 2);
+            paramViewGroup.vQA.setRotation(90.0F);
+            paramViewGroup.vQB.setText(this.mContext.getString(2131761090));
+            if ((!this.vQf) || (this.vQg)) {
               break label504;
             }
-            paramViewGroup.vEy.setVisibility(0);
+            paramViewGroup.vQC.setVisibility(0);
             label400:
-            if (!this.vDY) {
+            if (!this.vQc) {
               break label516;
             }
-            paramViewGroup.vEr.setVisibility(8);
-            paramViewGroup.vEx.setText(this.mContext.getString(2131761090));
+            paramViewGroup.vQv.setVisibility(8);
+            paramViewGroup.vQB.setText(this.mContext.getString(2131761090));
             label433:
             if (paramInt != getCount() - 1) {
               break label749;
             }
-            paramViewGroup.vEz.setBackgroundColor(e.dkH());
-            paramViewGroup.vEz.setVisibility(0);
+            paramViewGroup.vQD.setBackgroundColor(e.dnH());
+            paramViewGroup.vQD.setVisibility(0);
           }
           for (;;)
           {
             AppMethodBeat.o(66039);
             return localView;
-            i = this.vEa;
+            i = this.vQe;
             break;
             if (!bool1) {
               break label761;
@@ -633,36 +633,36 @@ public final class b
             localView = paramView;
             break label244;
             label504:
-            paramViewGroup.vEy.setVisibility(8);
+            paramViewGroup.vQC.setVisibility(8);
             break label400;
             label516:
-            paramViewGroup.vEr.setVisibility(0);
+            paramViewGroup.vQv.setVisibility(0);
             a(paramInt, paramViewGroup, i);
-            paramViewGroup.vEw.setImageResource(2131690517);
-            paramViewGroup.vEw.setColorFilter(this.mContext.getResources().getColor(2131100547), PorterDuff.Mode.SRC_ATOP);
-            paramViewGroup.vEw.setPivotX(paramViewGroup.vEw.getWidth() / 2);
-            paramViewGroup.vEw.setPivotY(paramViewGroup.vEw.getHeight() / 2);
-            paramViewGroup.vEw.setRotation(270.0F);
-            paramViewGroup.vEx.setText(this.mContext.getString(2131761088));
+            paramViewGroup.vQA.setImageResource(2131690517);
+            paramViewGroup.vQA.setColorFilter(this.mContext.getResources().getColor(2131100547), PorterDuff.Mode.SRC_ATOP);
+            paramViewGroup.vQA.setPivotX(paramViewGroup.vQA.getWidth() / 2);
+            paramViewGroup.vQA.setPivotY(paramViewGroup.vQA.getHeight() / 2);
+            paramViewGroup.vQA.setRotation(270.0F);
+            paramViewGroup.vQB.setText(this.mContext.getString(2131761088));
             break label433;
             label629:
-            if ((j > 0) && (this.vDY) && (paramInt >= j) && (paramInt <= this.vEa))
+            if ((j > 0) && (this.vQc) && (paramInt >= j) && (paramInt <= this.vQe))
             {
-              paramViewGroup.vEr.setVisibility(8);
-              paramViewGroup.vEv.setVisibility(8);
-              paramViewGroup.vEy.setVisibility(8);
-              paramViewGroup.vEs.setVisibility(8);
-              paramViewGroup.vEt.setVisibility(8);
-              paramViewGroup.vEu.setVisibility(8);
+              paramViewGroup.vQv.setVisibility(8);
+              paramViewGroup.vQz.setVisibility(8);
+              paramViewGroup.vQC.setVisibility(8);
+              paramViewGroup.vQw.setVisibility(8);
+              paramViewGroup.vQx.setVisibility(8);
+              paramViewGroup.vQy.setVisibility(8);
               break label433;
             }
-            paramViewGroup.vEr.setVisibility(0);
+            paramViewGroup.vQv.setVisibility(0);
             a(paramInt, paramViewGroup, i);
-            paramViewGroup.vEv.setVisibility(8);
-            paramViewGroup.vEy.setVisibility(8);
+            paramViewGroup.vQz.setVisibility(8);
+            paramViewGroup.vQC.setVisibility(8);
             break label433;
             label749:
-            paramViewGroup.vEz.setVisibility(8);
+            paramViewGroup.vQD.setVisibility(8);
           }
           label761:
           i = 0;
@@ -673,40 +673,40 @@ public final class b
   
   final class a
   {
-    public View vEg = null;
-    public ImageView vEh = null;
-    public ImageView vEi = null;
-    public TextView vEj = null;
-    public TextView vEk = null;
-    public String vEl = null;
-    public String vEm = null;
-    public ImageView vEn = null;
-    public ImageView vEo = null;
-    public ImageView vEp = null;
-    public ImageView vEq = null;
+    public View vQk = null;
+    public ImageView vQl = null;
+    public ImageView vQm = null;
+    public TextView vQn = null;
+    public TextView vQo = null;
+    public String vQp = null;
+    public String vQq = null;
+    public ImageView vQr = null;
+    public ImageView vQs = null;
+    public ImageView vQt = null;
+    public ImageView vQu = null;
     
     a() {}
   }
   
   final class b
   {
-    LinearLayout vEr;
-    TextView vEs;
-    View vEt;
-    View vEu;
-    View vEv;
-    ImageView vEw;
-    TextView vEx;
-    View vEy = null;
-    View vEz;
+    ImageView vQA;
+    TextView vQB;
+    View vQC = null;
+    View vQD;
+    LinearLayout vQv;
+    TextView vQw;
+    View vQx;
+    View vQy;
+    View vQz;
     
     b() {}
   }
   
   final class c
   {
-    MallFunction vEA;
-    int vEB;
+    MallFunction vQE;
+    int vQF;
     
     c() {}
   }
@@ -718,7 +718,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.b
  * JD-Core Version:    0.7.0.1
  */

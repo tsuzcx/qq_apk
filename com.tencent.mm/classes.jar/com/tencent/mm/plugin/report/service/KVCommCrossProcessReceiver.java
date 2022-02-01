@@ -10,9 +10,9 @@ import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.kernel.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.ArrayList;
 
 public class KVCommCrossProcessReceiver
@@ -20,16 +20,16 @@ public class KVCommCrossProcessReceiver
 {
   private static String className;
   private static Object lock;
-  private static ap yhq;
-  private static int yhr;
-  private static volatile long yhs;
-  private static volatile int yht;
-  private static BroadCastData yhu;
+  private static aq yxh;
+  private static int yxi;
+  private static volatile long yxj;
+  private static volatile int yxk;
+  private static BroadCastData yxl;
   
   static
   {
     AppMethodBeat.i(143830);
-    ap local1 = new ap("kv_report")
+    aq local1 = new aq("kv_report")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -41,13 +41,13 @@ public class KVCommCrossProcessReceiver
         AppMethodBeat.o(143819);
       }
     };
-    yhq = local1;
+    yxh = local1;
     local1.setLogging(false);
     className = "";
-    yhr = 10000;
-    yhs = 10000L;
-    yht = -1;
-    yhu = new BroadCastData();
+    yxi = 10000;
+    yxj = 10000L;
+    yxk = -1;
+    yxl = new BroadCastData();
     lock = new Object();
     AppMethodBeat.o(143830);
   }
@@ -55,106 +55,106 @@ public class KVCommCrossProcessReceiver
   public static void a(KVReportDataInfo paramKVReportDataInfo)
   {
     AppMethodBeat.i(143823);
-    ad.d("MicroMsg.ReportManagerKvCheck", "receive kv logid:%d, type:%d, isImportant: %b,isReportNow: %b, ignoreFreqLimit", new Object[] { Long.valueOf(paramKVReportDataInfo.dxZ), Long.valueOf(paramKVReportDataInfo.dle), Boolean.valueOf(paramKVReportDataInfo.yhl), Boolean.valueOf(paramKVReportDataInfo.yhD) });
+    ae.d("MicroMsg.ReportManagerKvCheck", "receive kv logid:%d, type:%d, isImportant: %b,isReportNow: %b, ignoreFreqLimit", new Object[] { Long.valueOf(paramKVReportDataInfo.dze), Long.valueOf(paramKVReportDataInfo.dmg), Boolean.valueOf(paramKVReportDataInfo.yxc), Boolean.valueOf(paramKVReportDataInfo.yxu) });
     synchronized (lock)
     {
-      yhu.yhh.add(paramKVReportDataInfo);
-      if ((yhs == 0L) || (dKk()))
+      yxl.ywY.add(paramKVReportDataInfo);
+      if ((yxj == 0L) || (dNC()))
       {
-        yhq.obtainMessage(1).sendToTarget();
+        yxh.obtainMessage(1).sendToTarget();
         AppMethodBeat.o(143823);
         return;
       }
     }
-    if (yhq.hasMessages(1))
+    if (yxh.hasMessages(1))
     {
       AppMethodBeat.o(143823);
       return;
     }
-    yhq.sendEmptyMessageDelayed(1, yhs);
+    yxh.sendEmptyMessageDelayed(1, yxj);
     AppMethodBeat.o(143823);
   }
   
   public static void a(StIDKeyDataInfo paramStIDKeyDataInfo)
   {
     AppMethodBeat.i(143824);
-    ad.d("MicroMsg.ReportManagerKvCheck", "receive id ID:%d, key:%d,value:%d, isImportant:%b", new Object[] { Long.valueOf(paramStIDKeyDataInfo.pQX), Long.valueOf(paramStIDKeyDataInfo.key), Long.valueOf(paramStIDKeyDataInfo.value), Boolean.valueOf(paramStIDKeyDataInfo.yhl) });
+    ae.d("MicroMsg.ReportManagerKvCheck", "receive id ID:%d, key:%d,value:%d, isImportant:%b", new Object[] { Long.valueOf(paramStIDKeyDataInfo.pXC), Long.valueOf(paramStIDKeyDataInfo.key), Long.valueOf(paramStIDKeyDataInfo.value), Boolean.valueOf(paramStIDKeyDataInfo.yxc) });
     synchronized (lock)
     {
-      yhu.yhi.add(paramStIDKeyDataInfo);
-      if ((yhs == 0L) || (dKk()))
+      yxl.ywZ.add(paramStIDKeyDataInfo);
+      if ((yxj == 0L) || (dNC()))
       {
-        yhq.obtainMessage(1).sendToTarget();
+        yxh.obtainMessage(1).sendToTarget();
         AppMethodBeat.o(143824);
         return;
       }
     }
-    if (yhq.hasMessages(1))
+    if (yxh.hasMessages(1))
     {
       AppMethodBeat.o(143824);
       return;
     }
-    yhq.sendEmptyMessageDelayed(1, yhs);
+    yxh.sendEmptyMessageDelayed(1, yxj);
     AppMethodBeat.o(143824);
   }
   
-  public static void au(ArrayList<IDKey> paramArrayList)
+  public static void av(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(143825);
-    ad.d("MicroMsg.ReportManagerKvCheck", "receive group id size:%d, isImportant:%b", new Object[] { Integer.valueOf(paramArrayList.size()), Boolean.FALSE });
+    ae.d("MicroMsg.ReportManagerKvCheck", "receive group id size:%d, isImportant:%b", new Object[] { Integer.valueOf(paramArrayList.size()), Boolean.FALSE });
     synchronized (lock)
     {
-      BroadCastData localBroadCastData = yhu;
+      BroadCastData localBroadCastData = yxl;
       paramArrayList = new GroupIDKeyDataInfo(paramArrayList);
-      localBroadCastData.yhj.add(paramArrayList);
-      if ((yhs == 0L) || (dKk()))
+      localBroadCastData.yxa.add(paramArrayList);
+      if ((yxj == 0L) || (dNC()))
       {
-        yhq.obtainMessage(1).sendToTarget();
+        yxh.obtainMessage(1).sendToTarget();
         AppMethodBeat.o(143825);
         return;
       }
     }
-    if (yhq.hasMessages(1))
+    if (yxh.hasMessages(1))
     {
       AppMethodBeat.o(143825);
       return;
     }
-    yhq.sendEmptyMessageDelayed(1, yhs);
+    yxh.sendEmptyMessageDelayed(1, yxj);
     AppMethodBeat.o(143825);
   }
   
-  public static void dKi()
+  public static void dNA()
   {
     if (100L < 0L) {
       return;
     }
-    yhs = 100L;
+    yxj = 100L;
   }
   
-  public static void dKj()
+  public static void dNB()
   {
-    yht = 1000;
+    yxk = 1000;
   }
   
-  private static boolean dKk()
+  private static boolean dNC()
   {
     AppMethodBeat.i(143826);
-    if (yht <= 0)
+    if (yxk <= 0)
     {
       AppMethodBeat.o(143826);
       return false;
     }
-    if (yhu == null)
+    if (yxl == null)
     {
       AppMethodBeat.o(143826);
       return false;
     }
     try
     {
-      int i = yhu.yhi.size();
-      int j = yhu.yhj.size();
-      int k = yhu.yhh.size();
-      int m = yht;
+      int i = yxl.ywZ.size();
+      int j = yxl.yxa.size();
+      int k = yxl.ywY.size();
+      int m = yxk;
       if (i + j + k >= m)
       {
         AppMethodBeat.o(143826);
@@ -163,23 +163,23 @@ public class KVCommCrossProcessReceiver
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.ReportManagerKvCheck", "checkExceedCacheItemCountLimit e = %s", new Object[] { localException });
+      ae.e("MicroMsg.ReportManagerKvCheck", "checkExceedCacheItemCountLimit e = %s", new Object[] { localException });
       AppMethodBeat.o(143826);
     }
     return false;
   }
   
-  public static void dKl()
+  public static void dND()
   {
     AppMethodBeat.i(143827);
-    if (yhq == null)
+    if (yxh == null)
     {
       AppMethodBeat.o(143827);
       return;
     }
-    yhq.removeMessages(1);
-    ap localap = yhq;
-    localap.handleMessage(localap.obtainMessage(1));
+    yxh.removeMessages(1);
+    aq localaq = yxh;
+    localaq.handleMessage(localaq.obtainMessage(1));
     AppMethodBeat.o(143827);
   }
   
@@ -188,16 +188,16 @@ public class KVCommCrossProcessReceiver
     AppMethodBeat.i(143822);
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.ReportManagerKvCheck", "onReceive intent == null");
+      ae.e("MicroMsg.ReportManagerKvCheck", "onReceive intent == null");
       AppMethodBeat.o(143822);
       return;
     }
-    yhq.post(new Runnable()
+    yxh.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(143820);
-        ad.i("MicroMsg.ReportManagerKvCheck", "summeranrt true report runnable run tid:%d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+        ae.i("MicroMsg.ReportManagerKvCheck", "summeranrt true report runnable run tid:%d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
         KVCommCrossProcessReceiver.a(KVCommCrossProcessReceiver.this, paramIntent);
         AppMethodBeat.o(143820);
       }

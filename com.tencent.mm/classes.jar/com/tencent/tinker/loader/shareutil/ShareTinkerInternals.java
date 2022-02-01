@@ -662,7 +662,7 @@ public class ShareTinkerInternals
     if (isNullOrNil(str)) {
       paramContext = "@@";
     }
-    return "tinker_enable_1.9.14.7-fix7-INTERNALv4_".concat(String.valueOf(paramContext));
+    return "tinker_enable_1.9.14.8_".concat(String.valueOf(paramContext));
   }
   
   public static String getTypeString(int paramInt)

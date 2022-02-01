@@ -8,14 +8,14 @@ import java.util.Map;
 
 public final class a
 {
-  private static final Map<Integer, Integer> DXI;
-  private static final Map<Integer, Integer> DXJ;
-  private static final Map<Integer, Integer> DXK;
-  private static final Map<String, Integer> DXL;
+  private static final Map<Integer, Integer> EpK;
+  private static final Map<Integer, Integer> EpL;
+  private static final Map<Integer, Integer> EpM;
+  private static final Map<String, Integer> EpN;
   
   static
   {
-    AppMethodBeat.i(213997);
+    AppMethodBeat.i(213828);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(-1), Integer.valueOf(5));
     localHashMap.put(Integer.valueOf(-2), Integer.valueOf(6));
@@ -32,7 +32,7 @@ public final class a
     localHashMap.put(Integer.valueOf(-13), Integer.valueOf(17));
     localHashMap.put(Integer.valueOf(-14), Integer.valueOf(18));
     localHashMap.put(Integer.valueOf(-15), Integer.valueOf(19));
-    DXI = Collections.unmodifiableMap(localHashMap);
+    EpK = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(-1), Integer.valueOf(4));
     localHashMap.put(Integer.valueOf(-2), Integer.valueOf(5));
@@ -40,12 +40,12 @@ public final class a
     localHashMap.put(Integer.valueOf(-4), Integer.valueOf(7));
     localHashMap.put(Integer.valueOf(-5), Integer.valueOf(8));
     localHashMap.put(Integer.valueOf(-6), Integer.valueOf(9));
-    DXJ = Collections.unmodifiableMap(localHashMap);
+    EpL = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(0), Integer.valueOf(0));
     localHashMap.put(Integer.valueOf(1), Integer.valueOf(1));
     localHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
-    DXK = Collections.unmodifiableMap(localHashMap);
+    EpM = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put("imagePreview", Integer.valueOf(2));
     localHashMap.put("profile", Integer.valueOf(3));
@@ -67,11 +67,11 @@ public final class a
     localHashMap.put("chooseImage", Integer.valueOf(22));
     localHashMap.put("scanCover", Integer.valueOf(23));
     localHashMap.put("openGameWebView", Integer.valueOf(28));
-    DXL = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(213997);
+    EpN = Collections.unmodifiableMap(localHashMap);
+    AppMethodBeat.o(213828);
   }
   
-  public static int Cr(long paramLong)
+  public static int CP(long paramLong)
   {
     if (paramLong < 0L) {
       return -1;
@@ -91,62 +91,62 @@ public final class a
     return 5;
   }
   
-  public static int WW(int paramInt)
+  public static int XC(int paramInt)
   {
-    AppMethodBeat.i(213992);
-    Integer localInteger2 = (Integer)DXI.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(213823);
+    Integer localInteger2 = (Integer)EpK.get(Integer.valueOf(paramInt));
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
-      localInteger1 = (Integer)DXI.get(Integer.valueOf(-1));
+      localInteger1 = (Integer)EpK.get(Integer.valueOf(-1));
     }
     paramInt = localInteger1.intValue();
-    AppMethodBeat.o(213992);
+    AppMethodBeat.o(213823);
     return paramInt;
   }
   
-  public static int WX(int paramInt)
+  public static int XD(int paramInt)
   {
-    AppMethodBeat.i(213993);
-    Integer localInteger2 = (Integer)DXJ.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(213824);
+    Integer localInteger2 = (Integer)EpL.get(Integer.valueOf(paramInt));
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
-      localInteger1 = (Integer)DXJ.get(Integer.valueOf(-1));
+      localInteger1 = (Integer)EpL.get(Integer.valueOf(-1));
     }
     paramInt = localInteger1.intValue();
-    AppMethodBeat.o(213993);
+    AppMethodBeat.o(213824);
     return paramInt;
   }
   
-  public static int WY(int paramInt)
+  public static int XE(int paramInt)
   {
-    AppMethodBeat.i(213994);
-    Integer localInteger2 = (Integer)DXK.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(213825);
+    Integer localInteger2 = (Integer)EpM.get(Integer.valueOf(paramInt));
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(-1);
     }
     paramInt = localInteger1.intValue();
-    AppMethodBeat.o(213994);
+    AppMethodBeat.o(213825);
     return paramInt;
   }
   
-  public static void WZ(int paramInt)
+  public static void XF(int paramInt)
   {
-    AppMethodBeat.i(213996);
-    g.yhR.idkeyStat(1061L, paramInt, 1L, false);
-    AppMethodBeat.o(213996);
+    AppMethodBeat.i(213827);
+    g.yxI.idkeyStat(1061L, paramInt, 1L, false);
+    AppMethodBeat.o(213827);
   }
   
-  public static int aIm(String paramString)
+  public static int aJF(String paramString)
   {
-    AppMethodBeat.i(213995);
-    Integer localInteger = (Integer)DXL.get(paramString);
+    AppMethodBeat.i(213826);
+    Integer localInteger = (Integer)EpN.get(paramString);
     paramString = localInteger;
     if (localInteger == null) {
       paramString = Integer.valueOf(-1);
     }
     int i = paramString.intValue();
-    AppMethodBeat.o(213995);
+    AppMethodBeat.o(213826);
     return i;
   }
 }

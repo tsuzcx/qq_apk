@@ -6,8 +6,8 @@ import com.f.a.a.a.a.d;
 import com.f.a.a.a.a.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.vfs.o;
 import com.tencent.tencentmap.mapsdk.map.IMapView;
 import com.tencent.tencentmap.mapsdk.map.TencentMapOptions;
 
@@ -17,19 +17,19 @@ public class MapProvider
   
   public static String getMapSdkPath()
   {
-    AppMethodBeat.i(199842);
-    String str = b.arV() + "mapsdk";
-    if (!i.fv(str)) {
-      i.aYg(str);
+    AppMethodBeat.i(212531);
+    String str = b.ask() + "mapsdk";
+    if (!o.fB(str)) {
+      o.aZI(str);
     }
-    ad.d("MapProvider", "path:%s", new Object[] { str });
-    AppMethodBeat.o(199842);
+    ae.d("MapProvider", "path:%s", new Object[] { str });
+    AppMethodBeat.o(212531);
     return str;
   }
   
   public IMapView getMapView(Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
-    AppMethodBeat.i(199841);
+    AppMethodBeat.i(212530);
     int i = 0;
     this.mTencentMapOptions = paramTencentMapOptions;
     if (this.mTencentMapOptions != null) {
@@ -42,7 +42,7 @@ public class MapProvider
     }
     for (;;)
     {
-      AppMethodBeat.o(199841);
+      AppMethodBeat.o(212530);
       return paramContext;
       LogHelper.e("maptype", "glmapview");
       paramContext = new d(paramContext, this.mTencentMapOptions);

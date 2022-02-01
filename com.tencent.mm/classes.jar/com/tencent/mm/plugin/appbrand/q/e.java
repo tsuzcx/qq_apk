@@ -6,26 +6,26 @@ import java.util.Map;
 
 public final class e
 {
-  private final Map<Integer, com.tencent.mm.plugin.appbrand.q.a.e> lXI;
+  private final Map<Integer, com.tencent.mm.plugin.appbrand.q.a.e> mcp;
   
   public e()
   {
     AppMethodBeat.i(147379);
-    this.lXI = new HashMap();
+    this.mcp = new HashMap();
     AppMethodBeat.o(147379);
   }
   
   final void a(com.tencent.mm.plugin.appbrand.q.a.e parame)
   {
     AppMethodBeat.i(147381);
-    this.lXI.put(Integer.valueOf(parame.getType()), parame);
+    this.mcp.put(Integer.valueOf(parame.getType()), parame);
     AppMethodBeat.o(147381);
   }
   
-  final com.tencent.mm.plugin.appbrand.q.a.e uJ(int paramInt)
+  final com.tencent.mm.plugin.appbrand.q.a.e uP(int paramInt)
   {
     AppMethodBeat.i(147380);
-    com.tencent.mm.plugin.appbrand.q.a.e locale = (com.tencent.mm.plugin.appbrand.q.a.e)this.lXI.get(Integer.valueOf(paramInt));
+    com.tencent.mm.plugin.appbrand.q.a.e locale = (com.tencent.mm.plugin.appbrand.q.a.e)this.mcp.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(147380);
     return locale;
   }

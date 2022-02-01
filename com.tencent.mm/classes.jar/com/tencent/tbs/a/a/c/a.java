@@ -13,7 +13,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(174291);
-    this.a = new ThreadLocal() {};
+    this.a = new a.1(this);
     AppMethodBeat.o(174291);
   }
   

@@ -1,8 +1,25 @@
 package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 abstract interface h
 {
-  public abstract void a(String paramString, h.a parama);
+  public abstract void a(String paramString, a parama);
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(136675);
+      nmV = new a("CANCEL", 0);
+      nmW = new a("DELETE", 1);
+      nmX = new a("SELECT", 2);
+      nmY = new a[] { nmV, nmW, nmX };
+      AppMethodBeat.o(136675);
+    }
+    
+    private a() {}
+  }
 }
 
 

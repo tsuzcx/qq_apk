@@ -8,28 +8,30 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ah.x;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.p;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.i.a.t;
 import com.tencent.mm.plugin.topstory.a.c.f;
 import com.tencent.mm.plugin.topstory.a.c.j;
 import com.tencent.mm.plugin.topstory.a.h;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.plugin.websearch.api.u;
-import com.tencent.mm.protocal.protobuf.aag;
-import com.tencent.mm.protocal.protobuf.asy;
-import com.tencent.mm.protocal.protobuf.asz;
-import com.tencent.mm.protocal.protobuf.cup;
-import com.tencent.mm.protocal.protobuf.dnp;
-import com.tencent.mm.protocal.protobuf.dnx;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
+import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.ato;
+import com.tencent.mm.protocal.protobuf.atp;
+import com.tencent.mm.protocal.protobuf.cvj;
+import com.tencent.mm.protocal.protobuf.dom;
+import com.tencent.mm.protocal.protobuf.dou;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
 import com.tencent.mm.ui.e.m;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -41,20 +43,20 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public com.tencent.mm.plugin.topstory.ui.home.a Byi;
-  private c Byt;
-  TopStoryWebView Byu;
-  private boolean Byv = true;
-  dnp dLe;
+  public com.tencent.mm.plugin.topstory.ui.home.a BPG;
+  private c BPR;
+  TopStoryWebView BPS;
+  private boolean BPT = true;
+  dom dMt;
   
-  public e(TopStoryWebView paramTopStoryWebView, dnp paramdnp, c paramc)
+  public e(TopStoryWebView paramTopStoryWebView, dom paramdom, c paramc)
   {
-    this.Byu = paramTopStoryWebView;
-    this.dLe = paramdnp;
-    this.Byt = paramc;
+    this.BPS = paramTopStoryWebView;
+    this.dMt = paramdom;
+    this.BPR = paramc;
   }
   
-  private static JSONObject eqV()
+  private static JSONObject euC()
   {
     AppMethodBeat.i(126618);
     JSONObject localJSONObject = new JSONObject();
@@ -71,7 +73,7 @@ public final class e
     }
   }
   
-  private static JSONObject eqW()
+  private static JSONObject euD()
   {
     AppMethodBeat.i(126619);
     JSONObject localJSONObject = new JSONObject();
@@ -88,16 +90,16 @@ public final class e
     }
   }
   
-  public final void aCR(String paramString)
+  public final void aEk(String paramString)
   {
     AppMethodBeat.i(126603);
     try
     {
       final JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("json", paramString);
-      localJSONObject.put("newQuery", this.Byv);
+      localJSONObject.put("newQuery", this.BPT);
       localJSONObject.put("isCache", false);
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         @TargetApi(7)
         public final void run()
@@ -105,7 +107,7 @@ public final class e
           AppMethodBeat.i(126577);
           String str = localJSONObject.toString();
           a.a(e.this, "onSearchDataReady", str);
-          com.tencent.mm.plugin.topstory.ui.d.c(e.this.dLe, "dataReady", System.currentTimeMillis());
+          com.tencent.mm.plugin.topstory.ui.d.c(e.this.dMt, "dataReady", System.currentTimeMillis());
           AppMethodBeat.o(126577);
         }
       });
@@ -118,10 +120,10 @@ public final class e
     }
   }
   
-  public final void aCZ(final String paramString)
+  public final void aEs(final String paramString)
   {
     AppMethodBeat.i(126606);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       @TargetApi(7)
       public final void run()
@@ -134,24 +136,24 @@ public final class e
     AppMethodBeat.o(126606);
   }
   
-  public final void aDa(String paramString)
+  public final void aEt(String paramString)
   {
     AppMethodBeat.i(126617);
     try
     {
       final JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", paramString);
-      localJSONObject.put("sessionId", this.dLe.sessionId);
-      localJSONObject.put("subSessionId", this.dLe.dCW);
-      localJSONObject.put("scene", this.dLe.scene);
-      aq.f(new Runnable()
+      localJSONObject.put("sessionId", this.dMt.sessionId);
+      localJSONObject.put("subSessionId", this.dMt.dEb);
+      localJSONObject.put("scene", this.dMt.scene);
+      ar.f(new Runnable()
       {
         @TargetApi(7)
         public final void run()
         {
           AppMethodBeat.i(126580);
           String str = String.format("javascript:window.activity_state_change && activity_state_change(%s)", new Object[] { localJSONObject.toString() });
-          e.this.Byu.evaluateJavascript(str, null);
+          e.this.BPS.evaluateJavascript(str, null);
           AppMethodBeat.o(126580);
         }
       });
@@ -164,7 +166,7 @@ public final class e
     }
   }
   
-  public final void bu(String paramString, long paramLong)
+  public final void bv(String paramString, long paramLong)
   {
     AppMethodBeat.i(126605);
     try
@@ -172,7 +174,7 @@ public final class e
       final JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("msgId", paramString);
       localJSONObject.put("latestTimeStamp", paramLong);
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         @TargetApi(7)
         public final void run()
@@ -188,7 +190,7 @@ public final class e
     }
     catch (JSONException paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "notifyReddot " + paramString.getMessage());
+      ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "notifyReddot " + paramString.getMessage());
       AppMethodBeat.o(126605);
     }
   }
@@ -205,7 +207,7 @@ public final class e
       localJSONObject.put("endSeq", paramInt2);
       localJSONObject.put("reddotNum", paramInt3);
       localJSONObject.put("extInfo", paramString3);
-      aq.f(new Runnable()
+      ar.f(new Runnable()
       {
         @TargetApi(7)
         public final void run()
@@ -221,7 +223,7 @@ public final class e
     }
     catch (JSONException paramString1)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "notifyNumReddotChange " + paramString1.getMessage());
+      ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "notifyNumReddotChange " + paramString1.getMessage());
       AppMethodBeat.o(126604);
     }
   }
@@ -230,21 +232,21 @@ public final class e
   public final String doGoToRecVideoList(String paramString)
   {
     AppMethodBeat.i(126600);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "doGoToRecVideoList %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "doGoToRecVideoList %s", new Object[] { paramString });
     try
     {
       paramString = h.aS(new JSONObject(paramString));
-      if (this.Byi != null) {
-        com.tencent.mm.plugin.websearch.api.ad.a(this.Byi.dhO(), paramString, 1);
+      if (this.BPG != null) {
+        ad.a(this.BPG.dkN(), paramString, 1);
       }
-      paramString = eqV().toString();
+      paramString = euC().toString();
       AppMethodBeat.o(126600);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "doGoToRecVideoList", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "doGoToRecVideoList", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126600);
     }
     return paramString;
@@ -254,7 +256,7 @@ public final class e
   public final void doNegFeedback(String paramString)
   {
     AppMethodBeat.i(126621);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "doNegFeedback %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "doNegFeedback %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
@@ -276,15 +278,15 @@ public final class e
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "doNegFeedback", new Object[0]);
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "doNegFeedback", new Object[0]);
       AppMethodBeat.o(126621);
     }
   }
   
-  public final void eqU()
+  public final void euB()
   {
     AppMethodBeat.i(126608);
-    aq.f(new Runnable()
+    ar.f(new Runnable()
     {
       @TargetApi(7)
       public final void run()
@@ -301,20 +303,20 @@ public final class e
   public final String fetchNumReddot(String paramString)
   {
     AppMethodBeat.i(126609);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl fetchNumReddot %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl fetchNumReddot %s", new Object[] { paramString });
     try
     {
-      int i = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().eor();
-      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().eot();
-      dnx localdnx = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().eou();
-      c(localdnx.msgId, paramString.msgId, localdnx.inh, paramString.inh, i, paramString.extInfo);
-      paramString = eqV().toString();
+      int i = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().erY();
+      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().esa();
+      dou localdou = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().esb();
+      c(localdou.msgId, paramString.msgId, localdou.iqb, paramString.iqb, i, paramString.extInfo);
+      paramString = euC().toString();
       AppMethodBeat.o(126609);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126609);
     }
     return paramString;
@@ -324,20 +326,20 @@ public final class e
   public final String fetchReddot(String paramString)
   {
     AppMethodBeat.i(126610);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl fetchReddot %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl fetchReddot %s", new Object[] { paramString });
     try
     {
-      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().eok();
+      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().erR();
       if (paramString != null) {
-        bu(paramString.msgId, paramString.HBS);
+        bv(paramString.msgId, paramString.HVF);
       }
-      paramString = eqV().toString();
+      paramString = euC().toString();
       AppMethodBeat.o(126610);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126610);
     }
     return paramString;
@@ -347,13 +349,13 @@ public final class e
   public final String getNetworkType(String paramString)
   {
     AppMethodBeat.i(126597);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "getNetworkType %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "getNetworkType %s", new Object[] { paramString });
     for (;;)
     {
       try
       {
-        paramString = eqV();
-        String str = h.eoO();
+        paramString = euC();
+        String str = h.esv();
         paramString.put("subtype", str);
         if (str.equals("wifi"))
         {
@@ -370,7 +372,7 @@ public final class e
       }
       catch (Exception paramString)
       {
-        paramString = eqW().toString();
+        paramString = euD().toString();
         AppMethodBeat.o(126597);
         return paramString;
       }
@@ -381,122 +383,122 @@ public final class e
   public final String getSearchData(String paramString)
   {
     AppMethodBeat.i(126590);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "getSearchData %s", new Object[] { paramString });
-    if (this.Byi != null) {
-      this.Byi.epe();
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "getSearchData %s", new Object[] { paramString });
+    if (this.BPG != null) {
+      this.BPG.esL();
     }
-    com.tencent.mm.plugin.topstory.ui.d.c(this.dLe, "getSearchData", System.currentTimeMillis());
+    com.tencent.mm.plugin.topstory.ui.d.c(this.dMt, "getSearchData", System.currentTimeMillis());
     Object localObject1;
-    dnp localdnp;
+    dom localdom;
     boolean bool;
     int i;
     try
     {
       localObject1 = new JSONObject(paramString);
-      localdnp = new dnp();
-      localdnp.qXu = this.dLe.qXu;
-      localdnp.dld = ((JSONObject)localObject1).optString("query", "");
-      localdnp.offset = ((JSONObject)localObject1).optInt("offset", 0);
-      localdnp.scene = ((JSONObject)localObject1).optInt("scene", 21);
-      localdnp.sessionId = ((JSONObject)localObject1).optString("sessionId", "");
-      localdnp.dCW = ((JSONObject)localObject1).optString("subSessionId", "");
-      localdnp.keN = ((JSONObject)localObject1).optString("searchId", "");
-      localdnp.dwW = ((JSONObject)localObject1).optString("requestId", "");
-      localdnp.cSc = ((JSONObject)localObject1).optInt("tagId", 0);
-      localdnp.DBr = ((JSONObject)localObject1).optString("navigationId", "");
-      localdnp.srd = com.tencent.mm.plugin.websearch.api.ad.Ux();
+      localdom = new dom();
+      localdom.rfA = this.dMt.rfA;
+      localdom.dmf = ((JSONObject)localObject1).optString("query", "");
+      localdom.offset = ((JSONObject)localObject1).optInt("offset", 0);
+      localdom.scene = ((JSONObject)localObject1).optInt("scene", 21);
+      localdom.sessionId = ((JSONObject)localObject1).optString("sessionId", "");
+      localdom.dEb = ((JSONObject)localObject1).optString("subSessionId", "");
+      localdom.kid = ((JSONObject)localObject1).optString("searchId", "");
+      localdom.dyb = ((JSONObject)localObject1).optString("requestId", "");
+      localdom.cSM = ((JSONObject)localObject1).optInt("tagId", 0);
+      localdom.DTo = ((JSONObject)localObject1).optString("navigationId", "");
+      localdom.sBn = ad.UD();
       bool = ((JSONObject)localObject1).optBoolean("directRequest", false);
       paramString = ((JSONObject)localObject1).optString("extReqParams", "");
       localObject1 = ((JSONObject)localObject1).optString("homeMsgId", "");
       Object localObject3;
-      if (!bt.isNullOrNil(paramString))
+      if (!bu.isNullOrNil(paramString))
       {
         paramString = new JSONArray(paramString);
         i = 0;
         while (i < paramString.length())
         {
           localObject2 = paramString.getJSONObject(i);
-          localObject3 = new aag();
-          ((aag)localObject3).key = ((JSONObject)localObject2).optString("key", "");
-          ((aag)localObject3).FZe = ((JSONObject)localObject2).optInt("uintValue", 0);
-          ((aag)localObject3).FZf = ((JSONObject)localObject2).optString("textValue", "");
-          localdnp.DBj.add(localObject3);
+          localObject3 = new aaj();
+          ((aaj)localObject3).key = ((JSONObject)localObject2).optString("key", "");
+          ((aaj)localObject3).GrE = ((JSONObject)localObject2).optInt("uintValue", 0);
+          ((aaj)localObject3).GrF = ((JSONObject)localObject2).optString("textValue", "");
+          localdom.DTg.add(localObject3);
           i += 1;
         }
       }
-      if (((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).bKb().size() > 0)
+      if (((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).bKZ().size() > 0)
       {
-        localdnp.HBF = new asy();
-        paramString = ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).bKb().iterator();
+        localdom.HVs = new ato();
+        paramString = ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).bKZ().iterator();
         while (paramString.hasNext())
         {
           localObject2 = (BallInfo)paramString.next();
           if (((BallInfo)localObject2).type == 2)
           {
-            localObject2 = ((BallInfo)localObject2).ez("rawUrl", "");
-            if ((!bt.isNullOrNil((String)localObject2)) && ((((String)localObject2).startsWith("https://mp.weixin.qq.com/s")) || (((String)localObject2).startsWith("http://mp.weixin.qq.com/s"))))
+            localObject2 = ((BallInfo)localObject2).eC("rawUrl", "");
+            if ((!bu.isNullOrNil((String)localObject2)) && ((((String)localObject2).startsWith("https://mp.weixin.qq.com/s")) || (((String)localObject2).startsWith("http://mp.weixin.qq.com/s"))))
             {
-              localObject3 = new asz();
-              ((asz)localObject3).GqZ = ((String)localObject2);
-              localdnp.HBF.GqY.add(localObject3);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "add float ball url %s", new Object[] { localObject2 });
+              localObject3 = new atp();
+              ((atp)localObject3).GKx = ((String)localObject2);
+              localdom.HVs.GKw.add(localObject3);
+              ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "add float ball url %s", new Object[] { localObject2 });
             }
           }
         }
       }
-      if (localdnp.cSc != 100) {
+      if (localdom.cSM != 100) {
         break label772;
       }
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "getSearchData", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "getSearchData", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126590);
       return paramString;
     }
-    Object localObject2 = this.Byt;
-    if (((c)localObject2).Byk == null)
+    Object localObject2 = this.BPR;
+    if (((c)localObject2).BPI == null)
     {
       paramString = null;
-      if ((!bt.isNullOrNil(paramString)) && (!bool))
+      if ((!bu.isNullOrNil(paramString)) && (!bool))
       {
-        aCR(paramString);
-        paramString = eqV().toString();
+        aEk(paramString);
+        paramString = euC().toString();
         AppMethodBeat.o(126590);
         return paramString;
       }
     }
     else
     {
-      if ((!((c)localObject2).Byk.Bys.sessionId.equals(localdnp.sessionId)) || (System.currentTimeMillis() - ((c)localObject2).Byk.nWY > 60000L)) {
+      if ((!((c)localObject2).BPI.BPQ.sessionId.equals(localdom.sessionId)) || (System.currentTimeMillis() - ((c)localObject2).BPI.ocH > 60000L)) {
         break label811;
       }
     }
     label772:
     label811:
-    for (paramString = ((c)localObject2).Byk.Byr;; paramString = null)
+    for (paramString = ((c)localObject2).BPI.BPP;; paramString = null)
     {
-      ((c)localObject2).Byk = null;
-      if (bt.isNullOrNil(paramString))
+      ((c)localObject2).BPI = null;
+      if (bu.isNullOrNil(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "load data from cache fail");
+        ae.i("MicroMsg.TopStory.TopStoryWebData", "load data from cache fail");
         break;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "load data from cache success %d", new Object[] { Integer.valueOf(paramString.length()) });
+      ae.i("MicroMsg.TopStory.TopStoryWebData", "load data from cache success %d", new Object[] { Integer.valueOf(paramString.length()) });
       break;
-      paramString = this.Byt;
-      if (this.Byi == null) {}
-      for (i = 0;; i = this.Byi.epi())
+      paramString = this.BPR;
+      if (this.BPG == null) {}
+      for (i = 0;; i = this.BPG.esP())
       {
-        paramString.a(localdnp, true, bool, i, (String)localObject1);
+        paramString.a(localdom, true, bool, i, (String)localObject1);
         break;
       }
-      paramString = this.Byt;
-      if (this.Byi == null) {}
-      for (i = 0;; i = this.Byi.epi())
+      paramString = this.BPR;
+      if (this.BPG == null) {}
+      for (i = 0;; i = this.BPG.esP())
       {
-        paramString.a(localdnp, true, bool, i);
+        paramString.a(localdom, true, bool, i);
         break;
       }
     }
@@ -523,7 +525,7 @@ public final class e
               break label242;
             }
             localObject = ((JSONObject)localObject).getString("userName");
-            String str = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zf((String)localObject);
+            String str = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zP((String)localObject);
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("id", paramString);
             localJSONObject.put("userName", localObject);
@@ -544,8 +546,8 @@ public final class e
       }
       catch (Exception paramString)
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "getSearchDisplayNameList", new Object[0]);
-        paramString = eqW().toString();
+        ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "getSearchDisplayNameList", new Object[0]);
+        paramString = euD().toString();
         AppMethodBeat.o(170150);
         return paramString;
       }
@@ -560,17 +562,17 @@ public final class e
   public final String hideNavBarShadow(String paramString)
   {
     AppMethodBeat.i(126616);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl hideNavBarShadow %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl hideNavBarShadow %s", new Object[] { paramString });
     try
     {
-      this.Byi.epg();
-      paramString = eqV().toString();
+      this.BPG.esN();
+      paramString = euC().toString();
       AppMethodBeat.o(126616);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126616);
     }
     return paramString;
@@ -580,8 +582,8 @@ public final class e
   public final String log(String paramString)
   {
     AppMethodBeat.i(126596);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "log: %s", new Object[] { paramString });
-    paramString = eqV().toString();
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "log: %s", new Object[] { paramString });
+    paramString = euC().toString();
     AppMethodBeat.o(126596);
     return paramString;
   }
@@ -589,7 +591,7 @@ public final class e
   public final void m(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(126607);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "onTabSelected: %s, %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "onTabSelected: %s, %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -605,7 +607,7 @@ public final class e
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "onTabSelected json exception: " + paramString1.getMessage());
+        ae.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "onTabSelected json exception: " + paramString1.getMessage());
       }
     }
   }
@@ -613,26 +615,26 @@ public final class e
   @JavascriptInterface
   public final String openFinderFeed(String paramString)
   {
-    AppMethodBeat.i(199602);
+    AppMethodBeat.i(220251);
     try
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openFinderProfile %s", new Object[] { paramString });
+      ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openFinderProfile %s", new Object[] { paramString });
       Object localObject = new JSONObject(paramString);
       paramString = new JSONObject();
       paramString.put("feedId", ((JSONObject)localObject).optString("feedId", ""));
       paramString.put("extInfo", new JSONObject(((JSONObject)localObject).optString("extInfo", "")));
       localObject = new Intent();
       ((t)g.ad(t.class)).fillContextIdToIntent(7, 2, 25, (Intent)localObject);
-      ((t)g.ad(t.class)).enterFinderShareFeedUI(aj.getContext(), paramString.toString(), (Intent)localObject);
-      paramString = eqV().toString();
-      AppMethodBeat.o(199602);
+      ((t)g.ad(t.class)).enterFinderShareFeedUI(ak.getContext(), paramString.toString(), (Intent)localObject);
+      paramString = euC().toString();
+      AppMethodBeat.o(220251);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openFinderProfile", new Object[0]);
-      paramString = eqW().toString();
-      AppMethodBeat.o(199602);
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openFinderProfile", new Object[0]);
+      paramString = euD().toString();
+      AppMethodBeat.o(220251);
     }
     return paramString;
   }
@@ -640,26 +642,26 @@ public final class e
   @JavascriptInterface
   public final String openFinderProfile(String paramString)
   {
-    AppMethodBeat.i(199601);
+    AppMethodBeat.i(220250);
     try
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openFinderProfile %s", new Object[] { paramString });
+      ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openFinderProfile %s", new Object[] { paramString });
       paramString = new JSONObject(paramString).optString("userName", "");
       Intent localIntent = new Intent();
       localIntent.putExtra("finder_username", paramString);
       localIntent.putExtra("key_from_profile_share_scene", 15);
       localIntent.putExtra("key_enter_profile_type", 1);
       ((t)g.ad(t.class)).fillContextIdToIntent(7, 2, 32, localIntent);
-      ((t)g.ad(t.class)).enterFinderProfileUI(aj.getContext(), localIntent);
-      paramString = eqV().toString();
-      AppMethodBeat.o(199601);
+      ((t)g.ad(t.class)).enterFinderProfileUI(ak.getContext(), localIntent);
+      paramString = euC().toString();
+      AppMethodBeat.o(220250);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openFinderProfile", new Object[0]);
-      paramString = eqW().toString();
-      AppMethodBeat.o(199601);
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openFinderProfile", new Object[0]);
+      paramString = euD().toString();
+      AppMethodBeat.o(220250);
     }
     return paramString;
   }
@@ -668,20 +670,20 @@ public final class e
   public final String openProfileWithOpenId(String paramString)
   {
     AppMethodBeat.i(126598);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openProfileWithOpenId %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openProfileWithOpenId %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString).getString("openId");
-      if (!bt.isNullOrNil(paramString)) {
-        com.tencent.mm.plugin.topstory.ui.d.aCQ(paramString);
+      if (!bu.isNullOrNil(paramString)) {
+        com.tencent.mm.plugin.topstory.ui.d.aEj(paramString);
       }
-      paramString = eqV().toString();
+      paramString = euC().toString();
       AppMethodBeat.o(126598);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126598);
     }
     return paramString;
@@ -691,7 +693,7 @@ public final class e
   public final String openSearchWebView(String paramString)
   {
     AppMethodBeat.i(126620);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openSearchWebView %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openSearchWebView %s", new Object[] { paramString });
     for (;;)
     {
       int i;
@@ -705,14 +707,14 @@ public final class e
         {
         case 4: 
         case 5: 
-          paramString = eqV().toString();
+          paramString = euC().toString();
           AppMethodBeat.o(126620);
           return paramString;
         }
       }
       catch (Exception paramString)
       {
-        paramString = eqW().toString();
+        paramString = euD().toString();
         AppMethodBeat.o(126620);
         return paramString;
       }
@@ -723,13 +725,13 @@ public final class e
       ((Intent)localObject3).putExtra("KPublisherId", paramString);
       ((Intent)localObject3).putExtra("srcUsername", (String)localObject2);
       ((Intent)localObject3).putExtra("geta8key_scene", 64);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "jump url = %s, publishId = %s srcUserName = %s", new Object[] { localObject1, paramString, localObject2 });
-      com.tencent.mm.bs.d.b(this.Byi.dhO(), "webview", ".ui.tools.WebviewMpUI", (Intent)localObject3);
+      ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "jump url = %s, publishId = %s srcUserName = %s", new Object[] { localObject1, paramString, localObject2 });
+      com.tencent.mm.br.d.b(this.BPG.dkN(), "webview", ".ui.tools.WebviewMpUI", (Intent)localObject3);
       continue;
       localObject3 = ((JSONObject)localObject1).optString("query", "");
       int j = ((JSONObject)localObject1).optInt("scene", 0);
       String str1 = ((JSONObject)localObject1).optString("sessionId", "");
-      String str2 = com.tencent.mm.plugin.websearch.api.ad.Wb(j);
+      String str2 = ad.WI(j);
       int k = ((JSONObject)localObject1).optInt("tagId", 0);
       try
       {
@@ -762,42 +764,42 @@ public final class e
               ((HashMap)localObject4).put("pRequestId", localObject1);
               ((HashMap)localObject4).put("seq", localObject1);
             }
-            localObject2 = new dnp();
-            ((dnp)localObject2).qXu = com.tencent.mm.plugin.topstory.ui.d.epd();
-            ((dnp)localObject2).scene = j;
-            ((dnp)localObject2).keN = "";
-            ((dnp)localObject2).dld = ((String)localObject3);
-            ((dnp)localObject2).sessionId = str1;
-            ((dnp)localObject2).dCW = str1;
-            ((dnp)localObject2).HBC = 2;
-            ((dnp)localObject2).url = h.l((HashMap)localObject4);
-            ((dnp)localObject2).Glg = paramString;
-            ((dnp)localObject2).cSc = k;
+            localObject2 = new dom();
+            ((dom)localObject2).rfA = com.tencent.mm.plugin.topstory.ui.d.esK();
+            ((dom)localObject2).scene = j;
+            ((dom)localObject2).kid = "";
+            ((dom)localObject2).dmf = ((String)localObject3);
+            ((dom)localObject2).sessionId = str1;
+            ((dom)localObject2).dEb = str1;
+            ((dom)localObject2).HVp = 2;
+            ((dom)localObject2).url = h.m((HashMap)localObject4);
+            ((dom)localObject2).GEi = paramString;
+            ((dom)localObject2).cSM = k;
             if (bool) {
-              ((dnp)localObject2).dwW = ((String)localObject1);
+              ((dom)localObject2).dyb = ((String)localObject1);
             }
-            ((dnp)localObject2).srd = com.tencent.mm.plugin.websearch.api.ad.Ux();
-            paramString = new aag();
+            ((dom)localObject2).sBn = ad.UD();
+            paramString = new aaj();
             paramString.key = "rec_category";
-            paramString.FZe = k;
-            paramString.FZf = String.valueOf(k);
-            ((dnp)localObject2).DBj.add(paramString);
-            ((dnp)localObject2).uFB = i;
-            localObject3 = aj.getContext();
+            paramString.GrE = k;
+            paramString.GrF = String.valueOf(k);
+            ((dom)localObject2).DTg.add(paramString);
+            ((dom)localObject2).uRo = i;
+            localObject3 = ak.getContext();
             if (!bool) {
               break label749;
             }
             paramString = (String)localObject1;
-            com.tencent.mm.plugin.topstory.ui.d.a((Context)localObject3, (dnp)localObject2, paramString, bool);
+            com.tencent.mm.plugin.topstory.ui.d.a((Context)localObject3, (dom)localObject2, paramString, bool);
           }
           catch (JSONException paramString)
           {
-            com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "", new Object[0]);
+            ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "", new Object[0]);
             break label738;
           }
           i = ((JSONObject)localObject1).optInt("scene", 53);
           j = ((JSONObject)localObject1).optInt("subScene", 5);
-          this.Byi.il(i, j);
+          this.BPG.io(i, j);
           continue;
         }
       }
@@ -824,21 +826,21 @@ public final class e
   public final String openWeAppPage(String paramString)
   {
     AppMethodBeat.i(126622);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openWeAppPage %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openWeAppPage %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
       localAppBrandStatObject.scene = 1115;
-      ((o)g.ab(o.class)).a(aj.getContext(), paramString.getString("userName"), paramString.getString("appid"), paramString.optInt("debugMode", 0), 0, paramString.getString("path"), localAppBrandStatObject);
-      paramString = eqV().toString();
+      ((p)g.ab(p.class)).a(ak.getContext(), paramString.getString("userName"), paramString.getString("appid"), paramString.optInt("debugMode", 0), 0, paramString.getString("path"), localAppBrandStatObject);
+      paramString = euC().toString();
       AppMethodBeat.o(126622);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openWeAppPage", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openWeAppPage", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126622);
     }
     return paramString;
@@ -848,18 +850,18 @@ public final class e
   public final String openWowColikeSetting(String paramString)
   {
     AppMethodBeat.i(126623);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openWowColikeSetting %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openWowColikeSetting %s", new Object[] { paramString });
     try
     {
-      com.tencent.mm.plugin.topstory.ui.d.gy(aj.getContext());
-      paramString = eqV().toString();
+      com.tencent.mm.plugin.topstory.ui.d.gD(ak.getContext());
+      paramString = euC().toString();
       AppMethodBeat.o(126623);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openWowColikeSetting", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "openWowColikeSetting", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126623);
     }
     return paramString;
@@ -869,18 +871,18 @@ public final class e
   public final String postComments(String paramString)
   {
     AppMethodBeat.i(126614);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl postComments %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl postComments %s", new Object[] { paramString });
     try
     {
       paramString = new f(new JSONObject(paramString));
-      g.aiU().a(paramString, 0);
-      paramString = eqV().toString();
+      g.ajj().a(paramString, 0);
+      paramString = euC().toString();
       AppMethodBeat.o(126614);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126614);
     }
     return paramString;
@@ -890,19 +892,19 @@ public final class e
   public final String queryWebCommCgi(String paramString)
   {
     AppMethodBeat.i(126611);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl queryWebCommCgi %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl queryWebCommCgi %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       paramString = new com.tencent.mm.plugin.topstory.a.c.a(paramString.optString("requestId", ""), paramString.optString("commReq", ""));
-      g.aiU().a(paramString, 0);
-      paramString = eqV().toString();
+      g.ajj().a(paramString, 0);
+      paramString = euC().toString();
       AppMethodBeat.o(126611);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126611);
     }
     return paramString;
@@ -912,11 +914,11 @@ public final class e
   public final String renderFinish(String paramString)
   {
     AppMethodBeat.i(126602);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "renderFinish %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "renderFinish %s", new Object[] { paramString });
     try
     {
-      this.Byi.eph();
-      paramString = eqV().toString();
+      this.BPG.esO();
+      paramString = euC().toString();
       AppMethodBeat.o(126602);
       return paramString;
     }
@@ -924,7 +926,7 @@ public final class e
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "renderFinish error", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "renderFinish error", new Object[0]);
       }
     }
   }
@@ -933,22 +935,22 @@ public final class e
   public final String reportSearchRealTimeStatistics(String paramString)
   {
     AppMethodBeat.i(126593);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "reportSearchRealTimeStatistics %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "reportSearchRealTimeStatistics %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
-      cup localcup = new cup();
-      localcup.Hmu = paramString.optString("logString", "");
-      paramString = new u(localcup);
-      g.aiU().a(paramString, 0);
-      paramString = eqV().toString();
+      cvj localcvj = new cvj();
+      localcvj.HFU = paramString.optString("logString", "");
+      paramString = new u(localcvj);
+      g.ajj().a(paramString, 0);
+      paramString = euC().toString();
       AppMethodBeat.o(126593);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "reportSearchRealTimeStatistics", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "reportSearchRealTimeStatistics", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126593);
     }
     return paramString;
@@ -958,7 +960,7 @@ public final class e
   public final String reportSearchStatistics(String paramString)
   {
     AppMethodBeat.i(126592);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "reportSearchStatistics %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "reportSearchStatistics %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
@@ -966,16 +968,16 @@ public final class e
       if (i != 14904)
       {
         paramString = paramString.optString("logString", "");
-        com.tencent.mm.plugin.report.e.ygI.kvStat(i, paramString);
+        com.tencent.mm.plugin.report.e.ywz.kvStat(i, paramString);
       }
-      paramString = eqV().toString();
+      paramString = euC().toString();
       AppMethodBeat.o(126592);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "reportSearchStatistics", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "reportSearchStatistics", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126592);
     }
     return paramString;
@@ -985,7 +987,7 @@ public final class e
   public final String searchDataHasResult(String paramString)
   {
     AppMethodBeat.i(126591);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "searchDataHasResult %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "searchDataHasResult %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
@@ -996,22 +998,22 @@ public final class e
         if (j <= 0) {
           break label90;
         }
-        g.ajC().ajl().set(al.a.IEy, Integer.valueOf(1));
+        g.ajR().ajA().set(am.a.IYY, Integer.valueOf(1));
       }
       for (;;)
       {
-        paramString = eqV().toString();
+        paramString = euC().toString();
         AppMethodBeat.o(126591);
         return paramString;
         label90:
-        g.ajC().ajl().set(al.a.IEy, Integer.valueOf(0));
+        g.ajR().ajA().set(am.a.IYY, Integer.valueOf(0));
       }
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "searchDataHasResult", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "searchDataHasResult", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126591);
     }
   }
@@ -1020,18 +1022,18 @@ public final class e
   public final String setComments(String paramString)
   {
     AppMethodBeat.i(126613);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl setComments %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl setComments %s", new Object[] { paramString });
     try
     {
       paramString = new j(new JSONObject(paramString));
-      g.aiU().a(paramString, 0);
-      paramString = eqV().toString();
+      g.ajj().a(paramString, 0);
+      paramString = euC().toString();
       AppMethodBeat.o(126613);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126613);
     }
     return paramString;
@@ -1041,7 +1043,7 @@ public final class e
   public final String showNavBarShadow(String paramString)
   {
     AppMethodBeat.i(126615);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl showNavBarShadow %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl showNavBarShadow %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
@@ -1049,14 +1051,14 @@ public final class e
       str = str.substring(1, str.length());
       int i = (int)(paramString.getDouble("alpha") * 255.0D);
       int j = Integer.parseInt(str, 16);
-      this.Byi.ik(j, i);
-      paramString = eqV().toString();
+      this.BPG.in(j, i);
+      paramString = euC().toString();
       AppMethodBeat.o(126615);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126615);
     }
     return paramString;
@@ -1068,7 +1070,7 @@ public final class e
     AppMethodBeat.i(126594);
     try
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "stage %s", new Object[] { paramString });
+      ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "stage %s", new Object[] { paramString });
       paramString = new JSONObject(paramString);
       if (paramString.keys() != null)
       {
@@ -1077,15 +1079,15 @@ public final class e
         {
           String str = (String)localIterator.next();
           long l = paramString.optLong(str);
-          com.tencent.mm.plugin.topstory.ui.d.c(this.dLe, str, l);
+          com.tencent.mm.plugin.topstory.ui.d.c(this.dMt, str, l);
         }
       }
-      paramString = eqV().toString();
+      paramString = euC().toString();
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "stage", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "stage", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126594);
       return paramString;
     }
@@ -1097,7 +1099,7 @@ public final class e
   public final String startSearchItemDetailPage(String paramString)
   {
     AppMethodBeat.i(126595);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "startSearchItemDetailPage %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "startSearchItemDetailPage %s", new Object[] { paramString });
     for (;;)
     {
       try
@@ -1108,71 +1110,71 @@ public final class e
         Intent localIntent = new Intent();
         localIntent.putExtra("rawUrl", str);
         localIntent.putExtra("KPublisherId", (String)localObject);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "jump url = %s, publishId = %s", new Object[] { str, localObject });
+        ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "jump url = %s, publishId = %s", new Object[] { str, localObject });
         localIntent.putExtra("srcUsername", paramString.optString("srcUserName"));
         localIntent.putExtra("geta8key_scene", 64);
         int j = paramString.optInt("openScene", 10000);
         int k = paramString.optInt("subScene", -1);
         int m = paramString.optInt("itemType", -1);
-        localIntent.putExtra(e.m.IUR, m);
-        if ((m == 5) && (((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zb(m)))
+        localIntent.putExtra(e.m.Jpz, m);
+        if ((m == 5) && (((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zk(m)))
         {
           if (paramString.has("srcUserName")) {
             continue;
           }
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "invalid srcUserName");
+          ae.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "invalid srcUserName");
           i = 0;
           if (i != 0)
           {
             localObject = new Bundle();
             x localx = new x();
-            localx.doK = paramString.optString("srcUserName");
-            localx.hDe = paramString.optString("srcDisplayName");
-            localx.hDg.url = str;
-            localx.hDg.title = paramString.optString("title");
-            localx.hDg.hDo = paramString.optString("digest");
-            localx.hDg.hDm = paramString.optString("cover");
-            localx.hDg.type = m;
-            localx.hDg.time = paramString.optInt("pubTime");
-            localx.hDg.hDq = paramString.optInt("duration");
-            localx.hDg.videoWidth = paramString.optInt("videoWidth");
-            localx.hDg.videoHeight = paramString.optInt("videoHeight");
-            localx.hDg.hzm = paramString.optString("vid");
-            localx.s((Bundle)localObject);
+            localx.dpP = paramString.optString("srcUserName");
+            localx.hFW = paramString.optString("srcDisplayName");
+            localx.hFY.url = str;
+            localx.hFY.title = paramString.optString("title");
+            localx.hFY.hGg = paramString.optString("digest");
+            localx.hFY.hGe = paramString.optString("cover");
+            localx.hFY.type = m;
+            localx.hFY.time = paramString.optInt("pubTime");
+            localx.hFY.hGi = paramString.optInt("duration");
+            localx.hFY.videoWidth = paramString.optInt("videoWidth");
+            localx.hFY.videoHeight = paramString.optInt("videoHeight");
+            localx.hFY.hCa = paramString.optString("vid");
+            localx.t((Bundle)localObject);
             localIntent.putExtras((Bundle)localObject);
           }
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openScene:%s, subScene:%s, itemType:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-        if ((((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zc(7)) && (((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a(this.Byi.dhO(), str, m, j, k, localIntent)))
+        ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "openScene:%s, subScene:%s, itemType:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+        if ((((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zl(7)) && (((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a(this.BPG.dkN(), str, m, j, k, localIntent)))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "startSearchItemDetailPage jump to TmplWebview");
-          paramString = eqV().toString();
+          ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "startSearchItemDetailPage jump to TmplWebview");
+          paramString = euC().toString();
           AppMethodBeat.o(126595);
           return paramString;
           if (!paramString.has("cover"))
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "invalid cover");
+            ae.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "invalid cover");
             i = 0;
             continue;
           }
           if (!paramString.has("vid"))
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "invalid vid");
+            ae.w("MicroMsg.TopStory.TopStoryWebViewJSApi", "invalid vid");
             i = 0;
           }
         }
         else
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "startSearchItemDetailPage jump to WebViewMpUI");
-          com.tencent.mm.bs.d.b(this.Byi.dhO(), "webview", ".ui.tools.WebviewMpUI", localIntent);
+          ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "startSearchItemDetailPage jump to WebViewMpUI");
+          com.tencent.mm.br.d.b(this.BPG.dkN(), "webview", ".ui.tools.WebviewMpUI", localIntent);
           continue;
         }
         int i = 1;
       }
       catch (Exception paramString)
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "reportSearchRealTimeReport", new Object[0]);
-        paramString = eqW().toString();
+        ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "reportSearchRealTimeReport", new Object[0]);
+        paramString = euD().toString();
         AppMethodBeat.o(126595);
         return paramString;
       }
@@ -1183,21 +1185,21 @@ public final class e
   public final String updateNumReddot(String paramString)
   {
     AppMethodBeat.i(126612);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl updateNumReddot %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "lxl updateNumReddot %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       long l = paramString.getLong("latestTimeStamp");
       int i = paramString.getInt("seq");
       ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().h(l, i, false);
-      paramString = eqV().toString();
+      paramString = euC().toString();
       AppMethodBeat.o(126612);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "lxl updateNumReddot", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "lxl updateNumReddot", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126612);
     }
     return paramString;
@@ -1207,19 +1209,19 @@ public final class e
   public final String updateReddotTimeStamps(String paramString)
   {
     AppMethodBeat.i(126599);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "updateReddotTimeStamps %s", new Object[] { paramString });
+    ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "updateReddotTimeStamps %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
-      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().Bc(paramString.optLong("reddotTimeStamps", 0L));
-      paramString = eqV().toString();
+      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().BA(paramString.optLong("reddotTimeStamps", 0L));
+      paramString = euC().toString();
       AppMethodBeat.o(126599);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "updateReddotTimeStamps", new Object[0]);
-      paramString = eqW().toString();
+      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewJSApi", paramString, "updateReddotTimeStamps", new Object[0]);
+      paramString = euD().toString();
       AppMethodBeat.o(126599);
     }
     return paramString;
@@ -1231,22 +1233,22 @@ public final class e
     AppMethodBeat.i(126601);
     try
     {
-      if (this.Byv)
+      if (this.BPT)
       {
-        this.Byv = false;
-        if (this.Byi != null) {
-          this.Byi.epf();
+        this.BPT = false;
+        if (this.BPG != null) {
+          this.BPG.esM();
         }
-        com.tencent.mm.plugin.topstory.ui.d.c(this.dLe, "webViewUIReady", System.currentTimeMillis());
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "traceResult:\n%s", new Object[] { com.tencent.mm.plugin.topstory.ui.d.a(this.dLe) });
+        com.tencent.mm.plugin.topstory.ui.d.c(this.dMt, "webViewUIReady", System.currentTimeMillis());
+        ae.i("MicroMsg.TopStory.TopStoryWebViewJSApi", "traceResult:\n%s", new Object[] { com.tencent.mm.plugin.topstory.ui.d.a(this.dMt) });
       }
-      paramString = eqV().toString();
+      paramString = euC().toString();
       AppMethodBeat.o(126601);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = eqW().toString();
+      paramString = euD().toString();
       AppMethodBeat.o(126601);
     }
     return paramString;
@@ -1254,7 +1256,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.webview.e
  * JD-Core Version:    0.7.0.1
  */

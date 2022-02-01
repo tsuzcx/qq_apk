@@ -6,39 +6,39 @@ import java.lang.reflect.Method;
 
 public final class c
 {
-  private static Object LMT;
-  private static Method LMU;
-  private static boolean LMV;
+  private static Object MjS;
+  private static Method MjT;
+  private static boolean MjU;
   
   static
   {
     AppMethodBeat.i(138362);
-    LMT = null;
-    LMU = null;
+    MjS = null;
+    MjT = null;
     if (Build.VERSION.SDK_INT >= 14) {
       try
       {
-        LMT = e.mK("libcore.io.Libcore", "os");
-        LMU = e.a("libcore.io.Os", "stat", new Class[] { String.class });
-        LMV = true;
+        MjS = e.mQ("libcore.io.Libcore", "os");
+        MjT = e.a("libcore.io.Os", "stat", new Class[] { String.class });
+        MjU = true;
         AppMethodBeat.o(138362);
         return;
       }
       catch (Throwable localThrowable) {}
     }
-    LMV = false;
+    MjU = false;
     AppMethodBeat.o(138362);
   }
   
-  public static int aZk(String paramString)
+  public static int baN(String paramString)
   {
     AppMethodBeat.i(138361);
-    if (!LMV)
+    if (!MjU)
     {
       AppMethodBeat.o(138361);
       return 0;
     }
-    paramString = LMU.invoke(LMT, new Object[] { paramString });
+    paramString = MjT.invoke(MjS, new Object[] { paramString });
     if (paramString == null)
     {
       AppMethodBeat.o(138361);
@@ -51,7 +51,7 @@ public final class c
   
   public static boolean isAvailable()
   {
-    return LMV;
+    return MjU;
   }
 }
 

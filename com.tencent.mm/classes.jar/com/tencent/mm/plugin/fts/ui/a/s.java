@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.vm;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.vq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
@@ -19,32 +19,32 @@ import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.plugin.fts.ui.c.d;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.protocal.protobuf.cur;
-import com.tencent.mm.protocal.protobuf.ehy;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.cvl;
+import com.tencent.mm.protocal.protobuf.ejp;
+import com.tencent.mm.sdk.platformtools.ak;
 import org.json.JSONObject;
 
 public final class s
   extends com.tencent.mm.plugin.fts.a.d.a.a
 {
-  private static int tCd;
+  private static int tMU;
   public String contentType;
-  private CharSequence iVn;
-  public boolean jPo;
-  public ehy tBY;
-  public String tBZ;
-  public boolean tCa;
-  private CharSequence tCb;
-  private CharSequence tCc;
-  private b tCe;
-  a tCf;
+  private CharSequence iYg;
+  public boolean jSG;
+  public long tEZ;
+  public ejp tMP;
+  public String tMQ;
+  public boolean tMR;
+  private CharSequence tMS;
+  private CharSequence tMT;
+  private b tMV;
+  a tMW;
   private String thumbUrl;
-  public long tui;
   
   static
   {
     AppMethodBeat.i(112129);
-    tCd = com.tencent.mm.cc.a.ip(aj.getContext()) - com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 116);
+    tMU = com.tencent.mm.cb.a.iu(ak.getContext()) - com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 116);
     AppMethodBeat.o(112129);
   }
   
@@ -52,8 +52,8 @@ public final class s
   {
     super(14, paramInt);
     AppMethodBeat.i(112127);
-    this.tCe = new b();
-    this.tCf = new a();
+    this.tMV = new b();
+    this.tMW = new a();
     AppMethodBeat.o(112127);
   }
   
@@ -65,23 +65,23 @@ public final class s
     label272:
     try
     {
-      paramContext = new JSONObject(this.tBY.HSt);
+      paramContext = new JSONObject(this.tMP.ImA);
       parama = paramContext.optString("title", "");
       this.thumbUrl = paramContext.optString("image", "");
-      this.tBZ = paramContext.optString("search_buffer", "");
-      this.tCb = f.akt(parama);
+      this.tMQ = paramContext.optString("search_buffer", "");
+      this.tMS = f.alr(parama);
       this.contentType = paramContext.optString("content_type", "");
       if (paramContext.optInt("security_icon", 0) != 1) {
         break label266;
       }
       bool = true;
-      this.jPo = bool;
+      this.jSG = bool;
       if (paramContext.optInt("brand_official_label", 0) == 0) {
         break label272;
       }
       bool = true;
       label113:
-      this.tCa = bool;
+      this.tMR = bool;
     }
     catch (Exception paramContext)
     {
@@ -94,21 +94,21 @@ public final class s
     }
     for (;;)
     {
-      this.tCc = f.akt(this.tBY.Fvh);
-      this.iVn = this.tBY.nEt;
-      this.tui = System.currentTimeMillis();
-      paramContext = new cur();
-      paramContext.iht = this.tBY.iht;
+      this.tMT = f.alr(this.tMP.FNF);
+      this.iYg = this.tMP.nJO;
+      this.tEZ = System.currentTimeMillis();
+      paramContext = new cvl();
+      paramContext.ikm = this.tMP.ikm;
       paramContext.Scene = 25;
-      paramContext.HmK = e.ttx;
-      paramContext.HmP = e.ttw;
-      paramContext.HfW = this.tui;
-      paramContext.HmO = this.position;
-      paramContext.GOl = 0;
-      paramContext.HmL = this.tBZ;
-      paramContext.HmM = 1;
+      paramContext.HGk = e.tEo;
+      paramContext.HGp = e.tEn;
+      paramContext.Hzw = this.tEZ;
+      paramContext.HGo = this.position;
+      paramContext.HhL = 0;
+      paramContext.HGl = this.tMQ;
+      paramContext.HGm = 1;
       paramContext = new d(paramContext);
-      g.aiU().a(paramContext, 0);
+      g.ajj().a(paramContext, 0);
       AppMethodBeat.o(112128);
       return;
       bool = false;
@@ -119,31 +119,31 @@ public final class s
     }
   }
   
-  public final a.b agC()
+  public final a.b agQ()
   {
-    return this.tCe;
+    return this.tMV;
   }
   
   public final String getAppId()
   {
-    return this.tBY.nDo;
+    return this.tMP.nIJ;
   }
   
   public final class a
     extends a.a
   {
-    public ImageView fOf;
-    public TextView fOg;
-    public TextView iCV;
-    public TextView iVq;
-    public ImageView kkf;
-    public TextView tAA;
-    public View tCg;
-    public ImageView tCh;
-    public ImageView tCi;
-    public ImageView tCj;
-    public View tCk;
-    public TextView tCl;
+    public ImageView fQl;
+    public TextView fQm;
+    public TextView iFO;
+    public TextView iYj;
+    public ImageView knv;
+    public TextView tLr;
+    public View tMX;
+    public ImageView tMY;
+    public ImageView tMZ;
+    public ImageView tNa;
+    public View tNb;
+    public TextView tNc;
     
     public a()
     {
@@ -163,19 +163,19 @@ public final class s
     {
       AppMethodBeat.i(112124);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494222, paramViewGroup, false);
-      paramViewGroup = (s.a)s.this.tCf;
-      paramViewGroup.tCg = paramContext.findViewById(2131296946);
-      paramViewGroup.tCh = ((ImageView)paramContext.findViewById(2131305798));
-      paramViewGroup.iVq = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.iCV = ((TextView)paramContext.findViewById(2131299008));
-      paramViewGroup.tAA = ((TextView)paramContext.findViewById(2131305880));
-      paramViewGroup.tCi = ((ImageView)paramContext.findViewById(2131306350));
-      paramViewGroup.tCk = paramContext.findViewById(2131298673);
-      paramViewGroup.fOg = ((TextView)paramContext.findViewById(2131302867));
-      paramViewGroup.fOf = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.tCl = ((TextView)paramContext.findViewById(2131298593));
-      paramViewGroup.kkf = ((ImageView)paramContext.findViewById(2131306057));
-      paramViewGroup.tCj = ((ImageView)paramContext.findViewById(2131308167));
+      paramViewGroup = (s.a)s.this.tMW;
+      paramViewGroup.tMX = paramContext.findViewById(2131296946);
+      paramViewGroup.tMY = ((ImageView)paramContext.findViewById(2131305798));
+      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup.tLr = ((TextView)paramContext.findViewById(2131305880));
+      paramViewGroup.tMZ = ((ImageView)paramContext.findViewById(2131306350));
+      paramViewGroup.tNb = paramContext.findViewById(2131298673);
+      paramViewGroup.fQm = ((TextView)paramContext.findViewById(2131302867));
+      paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
+      paramViewGroup.tNc = ((TextView)paramContext.findViewById(2131298593));
+      paramViewGroup.knv = ((ImageView)paramContext.findViewById(2131306057));
+      paramViewGroup.tNa = ((ImageView)paramContext.findViewById(2131308167));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112124);
       return paramContext;
@@ -187,18 +187,18 @@ public final class s
       parama = (s.a)parama;
       if ("HOME".equals(s.this.contentType))
       {
-        parama.tCg.setVisibility(8);
-        parama.tCk.setVisibility(0);
-        n.a(paramContext, parama.fOf, s.a(s.this), null, 2131690266, parama.tCh.getMeasuredWidth(), parama.tCh.getMeasuredHeight());
-        parama.fOg.setText(s.b(s.this));
-        parama.tCl.setText(s.c(s.this));
-        paramContext = parama.kkf;
-        if ((s.this.jPo) && (((b)g.ab(b.class)).a(b.a.qFI, 0) == 1))
+        parama.tMX.setVisibility(8);
+        parama.tNb.setVisibility(0);
+        n.a(paramContext, parama.fQl, s.a(s.this), null, 2131690266, parama.tMY.getMeasuredWidth(), parama.tMY.getMeasuredHeight());
+        parama.fQm.setText(s.b(s.this));
+        parama.tNc.setText(s.c(s.this));
+        paramContext = parama.knv;
+        if ((s.this.jSG) && (((b)g.ab(b.class)).a(b.a.qNo, 0) == 1))
         {
           i = 0;
           paramContext.setVisibility(i);
-          paramContext = parama.tCj;
-          if ((!s.this.tCa) || (((b)g.ab(b.class)).a(b.a.qHW, 0) != 1)) {
+          paramContext = parama.tNa;
+          if ((!s.this.tMR) || (((b)g.ab(b.class)).a(b.a.qPC, 0) != 1)) {
             break label228;
           }
         }
@@ -209,40 +209,40 @@ public final class s
           if (!"VIDEO".equals(s.this.contentType)) {
             break label443;
           }
-          parama.tCi.setVisibility(0);
+          parama.tMZ.setVisibility(0);
           AppMethodBeat.o(112125);
           return;
           i = 8;
           break;
         }
       }
-      parama.tCg.setVisibility(0);
-      parama.tCk.setVisibility(8);
-      n.a(paramContext, parama.tCh, s.a(s.this), null, 2131690266, parama.tCh.getMeasuredWidth(), parama.tCh.getMeasuredHeight());
-      if (parama.iVq.getPaint().measureText(s.b(s.this).toString()) >= s.tCd)
+      parama.tMX.setVisibility(0);
+      parama.tNb.setVisibility(8);
+      n.a(paramContext, parama.tMY, s.a(s.this), null, 2131690266, parama.tMY.getMeasuredWidth(), parama.tMY.getMeasuredHeight());
+      if (parama.iYj.getPaint().measureText(s.b(s.this).toString()) >= s.tMU)
       {
-        parama.iVq.setMaxLines(2);
-        parama.iCV.setMaxLines(1);
+        parama.iYj.setMaxLines(2);
+        parama.iFO.setMaxLines(1);
       }
       for (;;)
       {
-        parama.iVq.setText(s.b(s.this));
-        parama.iCV.setText(s.c(s.this));
-        parama.tAA.setText(s.d(s.this));
+        parama.iYj.setText(s.b(s.this));
+        parama.iFO.setText(s.c(s.this));
+        parama.tLr.setText(s.d(s.this));
         break;
-        if (parama.iCV.getPaint().measureText(s.c(s.this).toString()) >= s.tCd)
+        if (parama.iFO.getPaint().measureText(s.c(s.this).toString()) >= s.tMU)
         {
-          parama.iVq.setMaxLines(1);
-          parama.iCV.setMaxLines(2);
+          parama.iYj.setMaxLines(1);
+          parama.iFO.setMaxLines(2);
         }
         else
         {
-          parama.iVq.setMaxLines(1);
-          parama.iCV.setMaxLines(1);
+          parama.iYj.setMaxLines(1);
+          parama.iFO.setMaxLines(1);
         }
       }
       label443:
-      parama.tCi.setVisibility(8);
+      parama.tMZ.setVisibility(8);
       AppMethodBeat.o(112125);
     }
     
@@ -250,24 +250,24 @@ public final class s
     {
       AppMethodBeat.i(112126);
       paramContext = (s)paramVarArgs;
-      paramVarArgs = new cur();
-      paramVarArgs.iht = paramContext.tBY.iht;
+      paramVarArgs = new cvl();
+      paramVarArgs.ikm = paramContext.tMP.ikm;
       paramVarArgs.Scene = 25;
-      paramVarArgs.HmK = e.ttx;
-      paramVarArgs.HmP = e.ttw;
-      paramVarArgs.HfW = System.currentTimeMillis();
-      paramVarArgs.HmO = paramContext.position;
-      paramVarArgs.GOl = ((int)(paramVarArgs.HfW - paramContext.tui));
-      paramVarArgs.HmL = paramContext.tBZ;
-      paramVarArgs.HmN = 1;
+      paramVarArgs.HGk = e.tEo;
+      paramVarArgs.HGp = e.tEn;
+      paramVarArgs.Hzw = System.currentTimeMillis();
+      paramVarArgs.HGo = paramContext.position;
+      paramVarArgs.HhL = ((int)(paramVarArgs.Hzw - paramContext.tEZ));
+      paramVarArgs.HGl = paramContext.tMQ;
+      paramVarArgs.HGn = 1;
       paramContext = new d(paramVarArgs);
-      g.aiU().a(paramContext, 0);
-      paramContext = new vm();
-      paramContext.dJF.userName = s.this.tBY.nDo;
-      paramContext.dJF.dJH = s.this.tBY.ujc;
-      paramContext.dJF.scene = 1027;
-      paramContext.dJF.dkh = ("$CASSP$B" + e.ttx + ":" + s.this.tBY.HSp + ":3");
-      com.tencent.mm.sdk.b.a.IbL.l(paramContext);
+      g.ajj().a(paramContext, 0);
+      paramContext = new vq();
+      paramContext.dKT.userName = s.this.tMP.nIJ;
+      paramContext.dKT.dKV = s.this.tMP.uuA;
+      paramContext.dKT.scene = 1027;
+      paramContext.dKT.dlj = ("$CASSP$B" + e.tEo + ":" + s.this.tMP.Imw + ":3");
+      com.tencent.mm.sdk.b.a.IvT.l(paramContext);
       AppMethodBeat.o(112126);
       return false;
     }
@@ -275,7 +275,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.s
  * JD-Core Version:    0.7.0.1
  */

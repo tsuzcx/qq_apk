@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.profile.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vm;
+import com.tencent.mm.g.a.vq;
 import com.tencent.mm.g.c.aw;
-import com.tencent.mm.openim.a.c.a;
-import com.tencent.mm.openim.a.c.b;
+import com.tencent.mm.openim.a.b.a;
+import com.tencent.mm.openim.a.b.b;
 import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.ui.base.preference.Preference.b;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,21 +17,21 @@ import org.json.JSONObject;
 public final class a$6
   implements Preference.b
 {
-  public a$6(c.b paramb, am paramam, c.a parama) {}
+  public a$6(b.b paramb, an paraman, b.a parama) {}
   
-  public final boolean dAh()
+  public final boolean dDy()
   {
     AppMethodBeat.i(26871);
     try
     {
-      Object localObject = new JSONObject(this.wPq.iHz);
+      Object localObject = new JSONObject(this.xfe.iKs);
       String str = ((JSONObject)localObject).optString("name");
       localObject = ((JSONObject)localObject).optString("pagepath");
-      vm localvm = new vm();
-      localvm.dJF.userName = str;
-      localvm.dJF.dJH = bt.bI((String)localObject, "");
-      a.IbL.l(localvm);
-      g.yhR.f(15319, new Object[] { this.fSV.field_openImAppid, Integer.valueOf(this.wPq.action), this.wPr.title });
+      vq localvq = new vq();
+      localvq.dKT.userName = str;
+      localvq.dKT.dKV = bu.bI((String)localObject, "");
+      a.IvT.l(localvq);
+      g.yxI.f(15319, new Object[] { this.fVb.field_openImAppid, Integer.valueOf(this.xfe.action), this.xff.title });
       AppMethodBeat.o(26871);
       return true;
     }
@@ -39,7 +39,7 @@ public final class a$6
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
+        ae.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
       }
     }
   }

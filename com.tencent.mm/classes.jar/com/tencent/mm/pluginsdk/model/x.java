@@ -9,7 +9,7 @@ import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.n.e;
 import com.tencent.mm.n.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,7 +44,7 @@ public final class x
     return null;
   }
   
-  public final boolean aLv(String paramString)
+  public final boolean aMR(String paramString)
   {
     AppMethodBeat.i(109481);
     if ((paramString != null) && ("com.tencent.map".equals(paramString)))
@@ -56,32 +56,32 @@ public final class x
     return false;
   }
   
-  public final String aQx()
+  public final String aQW()
   {
     return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
   }
   
-  public final String eZs()
+  public final String fdg()
   {
     return "TencentMap.apk";
   }
   
-  public final t.a eZt()
+  public final t.a fdh()
   {
     AppMethodBeat.i(109482);
     t.a locala = new t.a();
-    locala.EMm = 2131764397;
-    String str = g.acA().getValue("QQMapDownloadTips");
-    if (!bt.isNullOrNil(str)) {
-      locala.EMn = str;
+    locala.FeK = 2131764397;
+    String str = g.acL().getValue("QQMapDownloadTips");
+    if (!bu.isNullOrNil(str)) {
+      locala.FeL = str;
     }
-    locala.EMo = 2131764402;
-    locala.EMl = 2131232699;
+    locala.FeM = 2131764402;
+    locala.FeJ = 2131232699;
     AppMethodBeat.o(109482);
     return locala;
   }
   
-  public final boolean hn(Context paramContext)
+  public final boolean ht(Context paramContext)
   {
     AppMethodBeat.i(109480);
     Object localObject = new Intent("android.intent.action.VIEW", Uri.parse("sosomap://type=nav"));

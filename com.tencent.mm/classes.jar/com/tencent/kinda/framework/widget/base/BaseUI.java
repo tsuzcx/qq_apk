@@ -11,12 +11,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.model.v;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.a.c;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.MyKeyboardWindow;
@@ -36,7 +36,7 @@ public class BaseUI
   static
   {
     AppMethodBeat.i(18778);
-    HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 270);
+    HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 270);
     AppMethodBeat.o(18778);
   }
   
@@ -75,13 +75,13 @@ public class BaseUI
       int[] arrayOfInt = new int[2];
       paramView2.getLocationInWindow(arrayOfInt);
       int i = arrayOfInt[1] + paramView2.getHeight();
-      int j = com.tencent.mm.cc.a.iq(this.wrap.getContext());
-      paramInt = j - i - com.tencent.mm.cc.a.fromDPToPix(this.wrap.getContext(), paramInt);
-      ad.d("MicroMsg.BaseUI", "scrollToFormEditPosAfterShowTenPay, editText locationY: %s, height: %s, diff: %s, hardcodeKeyboardHeight: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(HARDCODE_TENPAY_KEYBOARD_HEIGHT) });
+      int j = com.tencent.mm.cb.a.iv(this.wrap.getContext());
+      paramInt = j - i - com.tencent.mm.cb.a.fromDPToPix(this.wrap.getContext(), paramInt);
+      ae.d("MicroMsg.BaseUI", "scrollToFormEditPosAfterShowTenPay, editText locationY: %s, height: %s, diff: %s, hardcodeKeyboardHeight: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(HARDCODE_TENPAY_KEYBOARD_HEIGHT) });
       if ((paramInt > 0) && (paramInt < HARDCODE_TENPAY_KEYBOARD_HEIGHT))
       {
         paramInt = HARDCODE_TENPAY_KEYBOARD_HEIGHT - paramInt;
-        ad.d("MicroMsg.BaseUI", "scrollToFormEditPosAfterShowTenPay, scrollDistance: %s", new Object[] { Integer.valueOf(paramInt) });
+        ae.d("MicroMsg.BaseUI", "scrollToFormEditPosAfterShowTenPay, scrollDistance: %s", new Object[] { Integer.valueOf(paramInt) });
         paramView1.post(new Runnable()
         {
           public void run()
@@ -116,7 +116,7 @@ public class BaseUI
       AppMethodBeat.o(18771);
       return;
     }
-    e.setNoSystemInputOnEditText(localEditText);
+    f.setNoSystemInputOnEditText(localEditText);
     localEditText.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public void onFocusChange(final View paramAnonymousView, boolean paramAnonymousBoolean)
@@ -125,7 +125,7 @@ public class BaseUI
         if ((paramAnonymousView.isFocused()) && (!paramBoolean1))
         {
           ((InputMethodManager)BaseUI.this.wrap.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
-          new ap().postDelayed(new Runnable()
+          new aq().postDelayed(new Runnable()
           {
             public void run()
             {
@@ -139,7 +139,7 @@ public class BaseUI
               if (((BaseUI.1.this.val$parent instanceof WalletFormView)) && (Build.VERSION.SDK_INT >= 14))
               {
                 localObject = (WalletFormView)BaseUI.1.this.val$parent;
-                if (((u.aAB()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!u.aAB()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
+                if (((v.aAR()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!v.aAR()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
                   break label302;
                 }
                 localObject = new c();
@@ -168,7 +168,7 @@ public class BaseUI
           AppMethodBeat.o(18766);
           return;
         }
-        new ap().postDelayed(new Runnable()
+        new aq().postDelayed(new Runnable()
         {
           public void run()
           {
@@ -190,7 +190,7 @@ public class BaseUI
         AppMethodBeat.i(18767);
         b localb = new b();
         localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/BaseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/BaseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
         if ((!BaseUI.this.mKBLayout.isShown()) && (!paramBoolean1))
         {
           BaseUI.this.showTenpayKB();
@@ -209,7 +209,21 @@ public class BaseUI
         }
       }
     });
-    localView.setOnClickListener(new BaseUI.3(this));
+    localView.setOnClickListener(new View.OnClickListener()
+    {
+      private byte _hellAccFlag_;
+      
+      public void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(18768);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/BaseUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        BaseUI.this.hideTenpayKB();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/kinda/framework/widget/base/BaseUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(18768);
+      }
+    });
     AppMethodBeat.o(18771);
   }
   
@@ -273,7 +287,7 @@ public class BaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseUI
  * JD-Core Version:    0.7.0.1
  */

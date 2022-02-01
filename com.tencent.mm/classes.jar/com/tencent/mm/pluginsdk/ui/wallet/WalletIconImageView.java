@@ -12,13 +12,13 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class WalletIconImageView
   extends WeImageView
 {
-  private int BVB = -1;
-  private int FlG = -1;
-  private int FlH = 0;
-  private int FlI = 4;
-  private int FlJ = -1;
-  private Drawable FlK;
-  private View.OnClickListener FlL = null;
+  private int Cnc = -1;
+  private int FEe = -1;
+  private int FEf = 0;
+  private int FEg = 4;
+  private int FEh = -1;
+  private Drawable FEi;
+  private View.OnClickListener FEj = null;
   
   public WalletIconImageView(Context paramContext)
   {
@@ -35,33 +35,33 @@ public class WalletIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void ffz()
+  public final void fjp()
   {
     AppMethodBeat.i(72413);
-    super.setVisibility(this.FlI);
-    setImageResource(this.FlG);
-    if (this.FlH != -1)
+    super.setVisibility(this.FEg);
+    setImageResource(this.FEe);
+    if (this.FEf != -1)
     {
-      super.setColorFilter(this.FlH, PorterDuff.Mode.SRC_ATOP);
-      setIconColor(this.FlH);
+      super.setColorFilter(this.FEf, PorterDuff.Mode.SRC_ATOP);
+      setIconColor(this.FEf);
     }
-    if (this.FlL != null) {
-      super.setOnClickListener(this.FlL);
+    if (this.FEj != null) {
+      super.setOnClickListener(this.FEj);
     }
     AppMethodBeat.o(72413);
   }
   
   public final void setClearBtnDrawableId$255f295(int paramInt)
   {
-    this.BVB = 2131690372;
-    this.FlJ = paramInt;
+    this.Cnc = 2131690372;
+    this.FEh = paramInt;
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(72410);
-    this.FlG = paramInt;
-    if (this.FlG != -1) {
+    this.FEe = paramInt;
+    if (this.FEe != -1) {
       super.setImageResource(paramInt);
     }
     AppMethodBeat.o(72410);
@@ -69,21 +69,21 @@ public class WalletIconImageView
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.FlL = paramOnClickListener;
+    this.FEj = paramOnClickListener;
   }
   
   public void setToClearState(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(72412);
     super.setVisibility(0);
-    if (this.FlK != null)
+    if (this.FEi != null)
     {
-      if (this.FlJ != -1)
+      if (this.FEh != -1)
       {
-        super.setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
-        setIconColor(this.FlJ);
+        super.setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
+        setIconColor(this.FEh);
       }
-      setImageDrawable(this.FlK);
+      setImageDrawable(this.FEi);
     }
     for (;;)
     {
@@ -91,22 +91,22 @@ public class WalletIconImageView
       super.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(72412);
       return;
-      if (this.BVB != -1)
+      if (this.Cnc != -1)
       {
-        super.setImageResource(this.BVB);
-        if (this.FlJ != -1)
+        super.setImageResource(this.Cnc);
+        if (this.FEh != -1)
         {
-          super.setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.FlJ);
+          super.setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.FEh);
         }
       }
       else
       {
         super.setImageResource(2131232862);
-        if (this.FlJ != -1)
+        if (this.FEh != -1)
         {
-          super.setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.FlJ);
+          super.setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.FEh);
         }
         else
         {
@@ -120,7 +120,7 @@ public class WalletIconImageView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(72411);
-    this.FlI = paramInt;
+    this.FEg = paramInt;
     super.setVisibility(paramInt);
     AppMethodBeat.o(72411);
   }
@@ -128,7 +128,7 @@ public class WalletIconImageView
   public void setmUserSetImageIconColor(int paramInt)
   {
     AppMethodBeat.i(174532);
-    this.FlH = paramInt;
+    this.FEf = paramInt;
     if (paramInt != -1) {
       setIconColor(paramInt);
     }
@@ -137,7 +137,7 @@ public class WalletIconImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView
  * JD-Core Version:    0.7.0.1
  */

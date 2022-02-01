@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.sns.f;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uu;
+import com.tencent.mm.g.a.uy;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ah;
 import com.tencent.mm.plugin.sns.storage.v;
 import com.tencent.mm.plugin.sns.storage.w;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -17,20 +17,20 @@ import java.util.List;
 
 public final class a
 {
-  private static boolean cAX;
-  private static c<uu> fFn;
-  private static final List<String> zej;
+  private static boolean cBE;
+  private static c<uy> fHr;
+  private static final List<String> zuY;
   
   static
   {
     AppMethodBeat.i(95170);
-    zej = Collections.synchronizedList(new LinkedList());
-    cAX = false;
-    fFn = new c() {};
+    zuY = Collections.synchronizedList(new LinkedList());
+    cBE = false;
+    fHr = new c() {};
     AppMethodBeat.o(95170);
   }
   
-  public static boolean ayp(String paramString)
+  public static boolean azG(String paramString)
   {
     AppMethodBeat.i(95166);
     if (TextUtils.isEmpty(paramString))
@@ -38,12 +38,12 @@ public final class a
       AppMethodBeat.o(95166);
       return false;
     }
-    if (paramString.equals(g.ajC().ajl().get(2, null)))
+    if (paramString.equals(g.ajR().ajA().get(2, null)))
     {
       AppMethodBeat.o(95166);
       return false;
     }
-    if (ayr(paramString))
+    if (azI(paramString))
     {
       AppMethodBeat.o(95166);
       return false;
@@ -53,7 +53,7 @@ public final class a
     return bool;
   }
   
-  public static boolean ayq(String paramString)
+  public static boolean azH(String paramString)
   {
     AppMethodBeat.i(95167);
     if (TextUtils.isEmpty(paramString))
@@ -61,7 +61,7 @@ public final class a
       AppMethodBeat.o(95167);
       return false;
     }
-    if (ayr(paramString))
+    if (azI(paramString))
     {
       AppMethodBeat.o(95167);
       return false;
@@ -75,40 +75,40 @@ public final class a
     return false;
   }
   
-  public static boolean ayr(String paramString)
+  public static boolean azI(String paramString)
   {
     AppMethodBeat.i(95168);
-    boolean bool = dTa().contains(paramString);
+    boolean bool = dWA().contains(paramString);
     AppMethodBeat.o(95168);
     return bool;
   }
   
-  public static List<String> dTa()
+  public static List<String> dWA()
   {
     AppMethodBeat.i(95169);
-    if (cAX)
+    if (cBE)
     {
-      localObject = zej;
+      localObject = zuY;
       AppMethodBeat.o(95169);
       return localObject;
     }
-    Object localObject = ag.dUk().Ak(5L);
-    if (bt.isNullOrNil(((v)localObject).field_memberList))
+    Object localObject = ah.dXK().AI(5L);
+    if (bu.isNullOrNil(((v)localObject).field_memberList))
     {
       localObject = new LinkedList();
       AppMethodBeat.o(95169);
       return localObject;
     }
-    localObject = bt.U(((v)localObject).field_memberList.split(","));
+    localObject = bu.U(((v)localObject).field_memberList.split(","));
     if (localObject == null)
     {
       localObject = new LinkedList();
       AppMethodBeat.o(95169);
       return localObject;
     }
-    zej.addAll((Collection)localObject);
-    cAX = true;
-    localObject = zej;
+    zuY.addAll((Collection)localObject);
+    cBE = true;
+    localObject = zuY;
     AppMethodBeat.o(95169);
     return localObject;
   }
@@ -116,14 +116,14 @@ public final class a
   public static void destroy()
   {
     AppMethodBeat.i(95165);
-    fFn.dead();
+    fHr.dead();
     AppMethodBeat.o(95165);
   }
   
   public static void init()
   {
     AppMethodBeat.i(95164);
-    fFn.alive();
+    fHr.alive();
     AppMethodBeat.o(95164);
   }
 }

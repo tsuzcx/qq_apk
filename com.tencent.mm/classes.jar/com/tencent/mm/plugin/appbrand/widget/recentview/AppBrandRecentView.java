@@ -6,13 +6,14 @@ import android.support.v7.widget.RecyclerView.a;
 import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 public abstract class AppBrandRecentView
   extends RecyclerView
 {
-  private e mZq;
-  d.a nmS;
+  private e ney;
+  d.a nsc;
   
   public AppBrandRecentView(Context paramContext)
   {
@@ -32,12 +33,12 @@ public abstract class AppBrandRecentView
   
   public e getRefreshListener()
   {
-    return this.mZq;
+    return this.ney;
   }
   
   public d.a getSceneFactory()
   {
-    return this.nmS;
+    return this.nsc;
   }
   
   public abstract void refresh();
@@ -50,12 +51,12 @@ public abstract class AppBrandRecentView
   
   public void setRefreshListener(e parame)
   {
-    this.mZq = parame;
+    this.ney = parame;
   }
   
   public void setSceneFactory(d.a parama)
   {
-    this.nmS = parama;
+    this.nsc = parama;
   }
   
   public static abstract interface a<T>
@@ -72,17 +73,31 @@ public abstract class AppBrandRecentView
   
   public static abstract interface c<T>
   {
-    public abstract List<T> wh(int paramInt);
+    public abstract List<T> wm(int paramInt);
   }
   
   public static abstract interface d
   {
-    public abstract void bDx();
+    public abstract void bEp();
   }
   
   public static abstract interface e
   {
-    public abstract void uP(int paramInt);
+    public abstract void uT(int paramInt);
+  }
+  
+  public static enum f
+  {
+    static
+    {
+      AppMethodBeat.i(153240);
+      nsd = new f("RECENT_APP_BRAND", 0);
+      nse = new f("MY_APP_BRAND", 1);
+      nsf = new f[] { nsd, nse };
+      AppMethodBeat.o(153240);
+    }
+    
+    private f() {}
   }
 }
 

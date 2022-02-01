@@ -5,38 +5,38 @@ import d.l;
 import kotlinx.coroutines.b.c;
 import kotlinx.coroutines.internal.m;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/Dispatchers;", "", "()V", "Default", "Lkotlinx/coroutines/CoroutineDispatcher;", "Default$annotations", "getDefault", "()Lkotlinx/coroutines/CoroutineDispatcher;", "IO", "IO$annotations", "getIO", "Main", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Main$annotations", "getMain", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "Unconfined", "Unconfined$annotations", "getUnconfined", "kotlinx-coroutines-core"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Dispatchers;", "", "()V", "Default", "Lkotlinx/coroutines/CoroutineDispatcher;", "Default$annotations", "getDefault", "()Lkotlinx/coroutines/CoroutineDispatcher;", "IO", "IO$annotations", "getIO", "Main", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Main$annotations", "getMain", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "Unconfined", "Unconfined$annotations", "getUnconfined", "kotlinx-coroutines-core"})
 public final class az
 {
-  private static final ac NIq;
-  private static final ac NIr;
-  private static final ac NIs;
-  public static final az NIt;
+  private static final ac Ofw;
+  private static final ac Ofx;
+  private static final ac Ofy;
+  public static final az Ofz;
   
   static
   {
     AppMethodBeat.i(118048);
-    NIt = new az();
-    NIq = ab.gva();
-    NIr = (ac)cm.NJk;
-    c localc = c.NKP;
-    NIs = c.gvp();
+    Ofz = new az();
+    Ofw = ab.gzC();
+    Ofx = (ac)cm.Ogq;
+    c localc = c.OhV;
+    Ofy = c.gzR();
     AppMethodBeat.o(118048);
   }
   
-  public static final ac gvn()
+  public static final ac gzP()
   {
-    return NIq;
+    return Ofw;
   }
   
-  public static final bz gvo()
+  public static final bz gzQ()
   {
-    return m.NJW;
+    return m.Ohc;
   }
   
-  public static final ac gvp()
+  public static final ac gzR()
   {
-    return NIs;
+    return Ofy;
   }
 }
 

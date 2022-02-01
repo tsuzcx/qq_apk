@@ -6,8 +6,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.protocal.protobuf.akp;
 
 public final class o
   extends b
@@ -26,7 +26,7 @@ public final class o
     {
       paramView = new a();
       localView = a(View.inflate(paramViewGroup, 2131493965, null), paramView, paramg);
-      paramView.fTO = ((TextView)localView.findViewById(2131299846));
+      paramView.fVU = ((TextView)localView.findViewById(2131299846));
       paramViewGroup = paramView;
     }
     for (;;)
@@ -35,30 +35,30 @@ public final class o
       if ((paramg.field_favProto.desc != null) && (paramg.field_favProto.desc.length() > 0)) {
         break;
       }
-      paramViewGroup.fTO.setText("");
+      paramViewGroup.fVU.setText("");
       AppMethodBeat.o(107489);
       return localView;
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
     }
-    paramViewGroup.fTO.setText(k.b(paramViewGroup.fTO.getContext(), paramg.field_favProto.desc, paramViewGroup.fTO.getTextSize()));
+    paramViewGroup.fVU.setText(k.b(paramViewGroup.fVU.getContext(), paramg.field_favProto.desc, paramViewGroup.fVU.getTextSize()));
     AppMethodBeat.o(107489);
     return localView;
   }
   
-  public final void a(View paramView, akf paramakf)
+  public final void a(View paramView, akp paramakp)
   {
     AppMethodBeat.i(107490);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rBM, paramakp);
     AppMethodBeat.o(107490);
   }
   
   public static final class a
     extends b.b
   {
-    TextView fTO;
+    TextView fVU;
   }
 }
 

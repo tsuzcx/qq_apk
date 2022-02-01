@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gf
   extends b
 {
-  public a drQ;
+  public a dsU;
   
   public gf()
   {
@@ -15,21 +15,18 @@ public final class gf
   
   private gf(byte paramByte)
   {
-    AppMethodBeat.i(116027);
-    this.drQ = new a();
-    this.IbR = false;
+    AppMethodBeat.i(116026);
+    this.dsU = new a();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(116027);
+    AppMethodBeat.o(116026);
   }
   
   public static final class a
   {
-    public int drR;
-    public int drS;
-    public int drT;
-    public int drU;
+    public int dsV;
     public String fileName;
-    public int result;
+    public int scene;
   }
 }
 

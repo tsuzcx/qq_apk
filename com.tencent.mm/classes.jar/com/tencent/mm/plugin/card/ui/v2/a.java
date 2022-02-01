@@ -2,55 +2,55 @@ package com.tencent.mm.plugin.card.ui.v2;
 
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cho;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bu;
 import d.g.b.p;
 import d.l;
 import d.n.n;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketVH;", "isInvalid", "", "(Z)V", "()Z", "setInvalid", "jumpList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "Lkotlin/collections/ArrayList;", "getJumpList", "()Ljava/util/ArrayList;", "setJumpList", "(Ljava/util/ArrayList;)V", "licenseList", "getLicenseList", "setLicenseList", "licenseTitle", "getLicenseTitle", "()Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "setLicenseTitle", "(Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;)V", "medicareCard", "getMedicareCard", "setMedicareCard", "ticketList", "getTicketList", "setTicketList", "ticketTitle", "getTicketTitle", "setTicketTitle", "getItemCount", "", "getItemViewType", "position", "getModelByPos", "getPosByCardId", "cardId", "", "getPosInLicenseListByCardId", "getPosInTicketListByCardId", "getRelativePosByType", "cardType", "onBindViewHolder", "", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "removeModelByCardId", "title", "setModelList", "Companion", "plugin-card_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketVH;", "isInvalid", "", "(Z)V", "()Z", "setInvalid", "jumpList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "Lkotlin/collections/ArrayList;", "getJumpList", "()Ljava/util/ArrayList;", "setJumpList", "(Ljava/util/ArrayList;)V", "licenseList", "getLicenseList", "setLicenseList", "licenseTitle", "getLicenseTitle", "()Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "setLicenseTitle", "(Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;)V", "medicareCard", "getMedicareCard", "setMedicareCard", "ticketList", "getTicketList", "setTicketList", "ticketTitle", "getTicketTitle", "setTicketTitle", "getItemCount", "", "getItemViewType", "position", "getModelByPos", "getPosByCardId", "cardId", "", "getPosInLicenseListByCardId", "getPosInTicketListByCardId", "getRelativePosByType", "cardType", "onBindViewHolder", "", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "removeModelByCardId", "title", "setModelList", "Companion", "plugin-card_release"})
 public final class a
   extends RecyclerView.a<d>
 {
-  public static final a.a oMn;
-  private ArrayList<b> oMg;
-  private ArrayList<b> oMh;
-  private ArrayList<b> oMi;
-  private b oMj;
-  private b oMk;
-  private b oMl;
-  private boolean oMm;
+  public static final a.a oSP;
+  private ArrayList<b> oSI;
+  private ArrayList<b> oSJ;
+  private ArrayList<b> oSK;
+  private b oSL;
+  private b oSM;
+  private b oSN;
+  private boolean oSO;
   
   static
   {
     AppMethodBeat.i(112523);
-    oMn = new a.a((byte)0);
+    oSP = new a.a((byte)0);
     AppMethodBeat.o(112523);
   }
   
   public a(boolean paramBoolean)
   {
-    this.oMm = paramBoolean;
+    this.oSO = paramBoolean;
   }
   
-  public final b AK(int paramInt)
+  public final b AW(int paramInt)
   {
     AppMethodBeat.i(112517);
-    Object localObject1 = this.oMi;
+    Object localObject1 = this.oSK;
     Object localObject2;
     if (localObject1 != null)
     {
       localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
-      localObject2 = this.oMg;
+      localObject2 = this.oSI;
       if (localObject2 == null) {
         break label134;
       }
       localObject2 = Integer.valueOf(((ArrayList)localObject2).size());
       label47:
-      localObject3 = this.oMh;
+      localObject3 = this.oSJ;
       if (localObject3 == null) {
         break label140;
       }
@@ -59,15 +59,15 @@ public final class a
     label140:
     for (Object localObject3 = Integer.valueOf(((ArrayList)localObject3).size());; localObject3 = null)
     {
-      ad.d("MicroMsg.CardTicketAdapter", "pos: %s, jSize: %s, tSize: %s, lSize: %s", new Object[] { Integer.valueOf(paramInt), localObject1, localObject2, localObject3 });
+      ae.d("MicroMsg.CardTicketAdapter", "pos: %s, jSize: %s, tSize: %s, lSize: %s", new Object[] { Integer.valueOf(paramInt), localObject1, localObject2, localObject3 });
       j = -1;
-      if (this.oMj == null) {
+      if (this.oSL == null) {
         break label148;
       }
       if (paramInt != 0) {
         break label146;
       }
-      localObject1 = this.oMj;
+      localObject1 = this.oSL;
       AppMethodBeat.o(112517);
       return localObject1;
       localObject1 = null;
@@ -78,7 +78,7 @@ public final class a
     label146:
     int j = 0;
     label148:
-    localObject1 = this.oMi;
+    localObject1 = this.oSK;
     int i = j;
     if (localObject1 != null)
     {
@@ -90,7 +90,7 @@ public final class a
       }
       i = j + ((ArrayList)localObject1).size();
     }
-    localObject1 = this.oMg;
+    localObject1 = this.oSI;
     j = i;
     if (localObject1 != null)
     {
@@ -103,18 +103,18 @@ public final class a
       j = i + ((ArrayList)localObject1).size();
     }
     i = j;
-    if (this.oMk != null)
+    if (this.oSM != null)
     {
       j += 1;
       i = j;
       if (paramInt == j)
       {
-        localObject1 = this.oMk;
+        localObject1 = this.oSM;
         AppMethodBeat.o(112517);
         return localObject1;
       }
     }
-    localObject1 = this.oMh;
+    localObject1 = this.oSJ;
     j = i;
     if (localObject1 != null)
     {
@@ -126,9 +126,9 @@ public final class a
       }
       j = i + ((ArrayList)localObject1).size();
     }
-    if ((this.oMl != null) && (paramInt == j + 1))
+    if ((this.oSN != null) && (paramInt == j + 1))
     {
-      localObject1 = this.oMl;
+      localObject1 = this.oSN;
       AppMethodBeat.o(112517);
       return localObject1;
     }
@@ -136,21 +136,21 @@ public final class a
     return null;
   }
   
-  public final void YS(String paramString)
+  public final void ZJ(String paramString)
   {
     AppMethodBeat.i(112519);
     p.h(paramString, "cardId");
-    if (this.oMj != null) {}
+    if (this.oSL != null) {}
     for (int i = 1;; i = 0)
     {
-      Object localObject = this.oMi;
+      Object localObject = this.oSK;
       int j;
       Iterator localIterator;
       b localb;
       if (localObject != null)
       {
         i += ((ArrayList)localObject).size();
-        localArrayList = this.oMg;
+        localArrayList = this.oSI;
         j = i;
         if (localArrayList != null)
         {
@@ -166,27 +166,27 @@ public final class a
             break label215;
           }
           localb = (b)localIterator.next();
-          localObject = localb.oMp;
+          localObject = localb.oSR;
           if (localObject != null) {}
-          for (localObject = ((cho)localObject).FrW;; localObject = null)
+          for (localObject = ((cii)localObject).FKu;; localObject = null)
           {
             if (!n.H((String)localObject, paramString, false)) {
               break label208;
             }
             localArrayList.remove(localb);
-            ad.d("MicroMsg.CardTicketAdapter", "remove ticket: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+            ae.d("MicroMsg.CardTicketAdapter", "remove ticket: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
             if (localArrayList.isEmpty()) {
-              if (this.oMi != null)
+              if (this.oSK != null)
               {
-                paramString = this.oMi;
+                paramString = this.oSK;
                 if (paramString == null) {
-                  p.gfZ();
+                  p.gkB();
                 }
                 if (!paramString.isEmpty()) {}
               }
               else
               {
-                this.oMj = null;
+                this.oSL = null;
               }
             }
             notifyDataSetChanged();
@@ -201,10 +201,10 @@ public final class a
         j = i + localArrayList.size();
       }
       i = j;
-      if (this.oMk != null) {
+      if (this.oSM != null) {
         i = j + 1;
       }
-      ArrayList localArrayList = this.oMh;
+      ArrayList localArrayList = this.oSJ;
       if (localArrayList != null)
       {
         localIterator = ((Iterable)localArrayList).iterator();
@@ -212,14 +212,14 @@ public final class a
         while (localIterator.hasNext())
         {
           localb = (b)localIterator.next();
-          localObject = localb.oMp;
+          localObject = localb.oSR;
           if (localObject != null) {}
-          for (localObject = ((cho)localObject).FrW; n.H((String)localObject, paramString, false); localObject = null)
+          for (localObject = ((cii)localObject).FKu; n.H((String)localObject, paramString, false); localObject = null)
           {
             localArrayList.remove(localb);
-            ad.d("MicroMsg.CardTicketAdapter", "remove license: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-            if ((localArrayList.isEmpty()) && (this.oMl == null)) {
-              this.oMk = null;
+            ae.d("MicroMsg.CardTicketAdapter", "remove license: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+            if ((localArrayList.isEmpty()) && (this.oSN == null)) {
+              this.oSM = null;
             }
             notifyDataSetChanged();
             AppMethodBeat.o(112519);
@@ -235,55 +235,55 @@ public final class a
     }
   }
   
-  public final void YT(String paramString)
+  public final void ZK(String paramString)
   {
     AppMethodBeat.i(112521);
     p.h(paramString, "title");
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      this.oMj = null;
+      this.oSL = null;
       AppMethodBeat.o(112521);
       return;
     }
-    if (this.oMj == null)
+    if (this.oSL == null)
     {
-      this.oMj = new b();
-      localb = this.oMj;
+      this.oSL = new b();
+      localb = this.oSL;
       if (localb == null) {
-        p.gfZ();
+        p.gkB();
       }
       localb.type = 0;
     }
-    b localb = this.oMj;
+    b localb = this.oSL;
     if (localb == null) {
-      p.gfZ();
+      p.gkB();
     }
     localb.title = paramString;
     AppMethodBeat.o(112521);
   }
   
-  public final void YU(String paramString)
+  public final void ZL(String paramString)
   {
     AppMethodBeat.i(112522);
     p.h(paramString, "title");
-    if (bt.isNullOrNil(paramString))
+    if (bu.isNullOrNil(paramString))
     {
-      this.oMk = null;
+      this.oSM = null;
       AppMethodBeat.o(112522);
       return;
     }
-    if (this.oMk == null)
+    if (this.oSM == null)
     {
-      this.oMk = new b();
-      localb = this.oMk;
+      this.oSM = new b();
+      localb = this.oSM;
       if (localb == null) {
-        p.gfZ();
+        p.gkB();
       }
       localb.type = 0;
     }
-    b localb = this.oMk;
+    b localb = this.oSM;
     if (localb == null) {
-      p.gfZ();
+      p.gkB();
     }
     localb.title = paramString;
     AppMethodBeat.o(112522);
@@ -291,16 +291,16 @@ public final class a
   
   public final void a(ArrayList<b> paramArrayList1, ArrayList<b> paramArrayList2, ArrayList<b> paramArrayList3, b paramb)
   {
-    AppMethodBeat.i(215447);
-    this.oMi = paramArrayList1;
-    this.oMg = paramArrayList2;
-    this.oMh = paramArrayList3;
-    this.oMl = paramb;
+    AppMethodBeat.i(218408);
+    this.oSK = paramArrayList1;
+    this.oSI = paramArrayList2;
+    this.oSJ = paramArrayList3;
+    this.oSN = paramb;
     notifyDataSetChanged();
-    AppMethodBeat.o(215447);
+    AppMethodBeat.o(218408);
   }
   
-  public final int cG(String paramString, int paramInt)
+  public final int cK(String paramString, int paramInt)
   {
     AppMethodBeat.i(112518);
     p.h(paramString, "cardId");
@@ -310,7 +310,7 @@ public final class a
     {
     default: 
       p.h(paramString, "cardId");
-      localObject = this.oMh;
+      localObject = this.oSJ;
       if (localObject != null)
       {
         localIterator = ((Iterable)localObject).iterator();
@@ -320,19 +320,19 @@ public final class a
     case 1: 
       while (localIterator.hasNext())
       {
-        localObject = ((b)localIterator.next()).oMp;
+        localObject = ((b)localIterator.next()).oSR;
         if (localObject != null) {}
-        for (localObject = ((cho)localObject).FrW; p.i(localObject, paramString); localObject = null)
+        for (localObject = ((cii)localObject).FKu; p.i(localObject, paramString); localObject = null)
         {
           AppMethodBeat.o(112518);
           return paramInt;
           p.h(paramString, "cardId");
-          localObject = this.oMi;
+          localObject = this.oSK;
           int i;
           if (localObject != null)
           {
             paramInt = ((ArrayList)localObject).size() + 0;
-            localObject = this.oMg;
+            localObject = this.oSI;
             if (localObject != null)
             {
               localIterator = ((Iterable)localObject).iterator();
@@ -346,9 +346,9 @@ public final class a
               if (!localIterator.hasNext()) {
                 break label241;
               }
-              localObject = ((b)localIterator.next()).oMp;
+              localObject = ((b)localIterator.next()).oSR;
               if (localObject != null) {}
-              for (localObject = ((cho)localObject).FrW;; localObject = null)
+              for (localObject = ((cii)localObject).FKu;; localObject = null)
               {
                 if (!p.i(localObject, paramString)) {
                   break label234;
@@ -377,30 +377,30 @@ public final class a
   {
     AppMethodBeat.i(112516);
     int j = 0;
-    if (this.oMj != null) {
+    if (this.oSL != null) {
       j = 1;
     }
-    ArrayList localArrayList = this.oMi;
+    ArrayList localArrayList = this.oSK;
     int i = j;
     if (localArrayList != null) {
       i = j + localArrayList.size();
     }
-    localArrayList = this.oMg;
+    localArrayList = this.oSI;
     j = i;
     if (localArrayList != null) {
       j = i + localArrayList.size();
     }
     i = j;
-    if (this.oMk != null) {
+    if (this.oSM != null) {
       i = j + 1;
     }
-    localArrayList = this.oMh;
+    localArrayList = this.oSJ;
     j = i;
     if (localArrayList != null) {
       j = i + localArrayList.size();
     }
     i = j;
-    if (this.oMl != null) {
+    if (this.oSN != null) {
       i = j + 1;
     }
     AppMethodBeat.o(112516);
@@ -410,7 +410,7 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(112515);
-    b localb = AK(paramInt);
+    b localb = AW(paramInt);
     if (localb != null)
     {
       paramInt = localb.type;

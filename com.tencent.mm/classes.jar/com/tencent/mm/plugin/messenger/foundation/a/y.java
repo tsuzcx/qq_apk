@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-public abstract interface y
+import com.tencent.mm.bw.a;
+
+public abstract interface y<T extends a>
 {
-  public abstract void aI(Object paramObject);
+  public abstract void a(T paramT);
   
-  public abstract void aJ(Object paramObject);
-  
-  public abstract void aK(Object paramObject);
+  public abstract void b(T paramT);
 }
 
 

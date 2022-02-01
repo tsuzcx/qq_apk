@@ -15,13 +15,13 @@ public class MusicPreference
   extends Preference
 {
   private View.OnClickListener km;
-  private boolean lQV;
+  private boolean lVw;
   private View mView;
-  public String ymb;
-  public String ymc;
-  public String ymd;
-  private ImageButton yqT;
-  a yqU;
+  public String yCa;
+  public String yCb;
+  public String yCc;
+  private ImageButton yGT;
+  a yGU;
   
   public MusicPreference(Context paramContext)
   {
@@ -38,10 +38,10 @@ public class MusicPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51808);
     this.mView = null;
-    this.yqT = null;
-    this.ymb = "";
-    this.ymc = "";
-    this.ymd = "";
+    this.yGT = null;
+    this.yCa = "";
+    this.yCb = "";
+    this.yCc = "";
     setLayoutResource(2131494875);
     AppMethodBeat.o(51808);
   }
@@ -70,7 +70,7 @@ public class MusicPreference
           AppMethodBeat.i(51807);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          a.b("com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
           if (MusicPreference.a(MusicPreference.this) == null)
           {
             a.a(this, "com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -98,31 +98,31 @@ public class MusicPreference
         }
       };
     }
-    this.yqT = ((ImageButton)paramView.findViewById(2131303376));
-    this.yqT.setOnClickListener(this.km);
-    if (this.lQV)
+    this.yGT = ((ImageButton)paramView.findViewById(2131303376));
+    this.yGT.setOnClickListener(this.km);
+    if (this.lVw)
     {
-      this.yqT.setImageResource(2131233642);
+      this.yGT.setImageResource(2131233642);
       AppMethodBeat.o(51811);
       return;
     }
-    this.yqT.setImageResource(2131233641);
+    this.yGT.setImageResource(2131233641);
     AppMethodBeat.o(51811);
   }
   
-  public final void qw(boolean paramBoolean)
+  public final void qD(boolean paramBoolean)
   {
     AppMethodBeat.i(51810);
-    this.lQV = paramBoolean;
-    if (this.yqT != null)
+    this.lVw = paramBoolean;
+    if (this.yGT != null)
     {
       if (paramBoolean)
       {
-        this.yqT.setImageResource(2131233642);
+        this.yGT.setImageResource(2131233642);
         AppMethodBeat.o(51810);
         return;
       }
-      this.yqT.setImageResource(2131233641);
+      this.yGT.setImageResource(2131233641);
     }
     AppMethodBeat.o(51810);
   }

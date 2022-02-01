@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.emoji.a.a.f;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.pluginsdk.i.i;
@@ -21,44 +21,44 @@ public final class d
     super(paramContext);
   }
   
-  public final void BP(int paramInt) {}
+  public final void Cb(int paramInt) {}
   
-  public final void BQ(int paramInt) {}
+  public final void Cc(int paramInt) {}
   
-  public final void BR(int paramInt) {}
+  public final void Cd(int paramInt) {}
   
   public final View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(108314);
     paramViewGroup = (a)paramView.getTag();
-    Object localObject = BS(paramInt);
+    Object localObject = Ce(paramInt);
     if ((paramViewGroup != null) && (localObject != null))
     {
-      ((f)localObject).pBZ = false;
-      ((f)localObject).pCa = false;
-      localObject = ((f)localObject).pBV;
+      ((f)localObject).pID = false;
+      ((f)localObject).pIE = false;
+      localObject = ((f)localObject).pIz;
       if (localObject != null)
       {
         paramViewGroup.setTitle(((EmotionSummary)localObject).PackName);
-        q.aIJ().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.cfV(), e.fu(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
-        paramViewGroup.abf(i.bO("yyyy-MM-dd", ((EmotionSummary)localObject).Timestamp * 1000L));
+        q.aJb().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.chl(), e.fy(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
+        paramViewGroup.abW(i.bP("yyyy-MM-dd", ((EmotionSummary)localObject).Timestamp * 1000L));
       }
     }
     AppMethodBeat.o(108314);
     return paramView;
   }
   
-  public final int cgi()
+  public final int chA()
   {
     return 0;
   }
   
-  public final int cgj()
+  public final int chy()
   {
     return 0;
   }
   
-  public final int cgk()
+  public final int chz()
   {
     return 0;
   }
@@ -67,7 +67,7 @@ public final class d
   {
     AppMethodBeat.i(108313);
     paramContext = new a(paramContext, paramView);
-    paramContext.a(this.pBK);
+    paramContext.a(this.pIo);
     AppMethodBeat.o(108313);
     return paramContext;
   }
@@ -80,41 +80,41 @@ public final class d
       super(paramView);
     }
     
-    protected final void cfR()
+    protected final void chh()
     {
       AppMethodBeat.i(108310);
-      this.pAx.setVisibility(8);
-      this.pAA.setVisibility(8);
-      this.pAz.setVisibility(0);
-      this.pAB.setVisibility(8);
-      this.pAF.setVisibility(8);
-      this.pAG.setVisibility(8);
-      this.pAw.setVisibility(0);
-      this.lCL.setVisibility(0);
-      this.pAD.setVisibility(0);
-      this.pAC.setVisibility(0);
-      this.pAC.setBackgroundDrawable(null);
-      this.pAE.setVisibility(0);
+      this.pHb.setVisibility(8);
+      this.pHe.setVisibility(8);
+      this.pHd.setVisibility(0);
+      this.pHf.setVisibility(8);
+      this.pHj.setVisibility(8);
+      this.pHk.setVisibility(8);
+      this.pHa.setVisibility(0);
+      this.lHk.setVisibility(0);
+      this.pHh.setVisibility(0);
+      this.pHg.setVisibility(0);
+      this.pHg.setBackgroundDrawable(null);
+      this.pHi.setVisibility(0);
       AppMethodBeat.o(108310);
     }
     
-    protected final int[] cfS()
+    protected final int[] chi()
     {
       AppMethodBeat.i(108311);
-      int i = com.tencent.mm.cc.a.ax(this.mContext, 2131166238);
+      int i = com.tencent.mm.cb.a.ax(this.mContext, 2131166238);
       AppMethodBeat.o(108311);
       return new int[] { i, i };
     }
     
-    protected final int cfT()
+    protected final int chj()
     {
       AppMethodBeat.i(108312);
-      int i = com.tencent.mm.cc.a.ax(this.mContext, 2131166239);
+      int i = com.tencent.mm.cb.a.ax(this.mContext, 2131166239);
       AppMethodBeat.o(108312);
       return i;
     }
     
-    protected final boolean cgc()
+    protected final boolean chs()
     {
       return true;
     }
@@ -122,7 +122,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -13,82 +13,82 @@ import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "requestRefresh", "plugin-finder_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "requestRefresh", "plugin-finder_release"})
 public final class aa$a
   extends b.a
 {
   public aa$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader)
   {
     super(paramMMActivity, paramBaseFinderFeedLoader);
-    AppMethodBeat.i(202032);
-    AppMethodBeat.o(202032);
+    AppMethodBeat.i(202496);
+    AppMethodBeat.o(202496);
   }
   
-  public final void aTt()
+  public final void aTS()
   {
-    AppMethodBeat.i(202029);
-    this.rTS.requestLoadMore();
-    AppMethodBeat.o(202029);
+    AppMethodBeat.i(202493);
+    this.scw.requestLoadMore();
+    AppMethodBeat.o(202493);
   }
   
-  public final void cAA()
+  public final void cCA()
   {
-    AppMethodBeat.i(202027);
-    Object localObject = this.rTQ;
+    AppMethodBeat.i(202494);
+    BaseFeedLoader.requestInit$default(this.scw, false, 1, null);
+    AppMethodBeat.o(202494);
+  }
+  
+  public final void cCm()
+  {
+    AppMethodBeat.i(202491);
+    Object localObject = this.scu;
     if (localObject != null) {
-      ((b.b)localObject).U((ArrayList)this.rTS.getDataListJustForAdapter());
+      ((b.b)localObject).U((ArrayList)this.scw.getDataListJustForAdapter());
     }
-    localObject = this.rTQ;
+    localObject = this.scu;
     if (localObject != null)
     {
-      localObject = ((b.b)localObject).rTF;
+      localObject = ((b.b)localObject).scj;
       if (localObject != null)
       {
         localObject = (TextView)((RefreshLoadMoreLayout)localObject).findViewById(2131301486);
         if (localObject != null)
         {
-          ((TextView)localObject).setTextColor(this.fLP.getResources().getColor(2131099670));
-          AppMethodBeat.o(202027);
+          ((TextView)localObject).setTextColor(this.fNT.getResources().getColor(2131099670));
+          AppMethodBeat.o(202491);
           return;
         }
       }
     }
-    AppMethodBeat.o(202027);
+    AppMethodBeat.o(202491);
   }
   
-  public final c cAE()
+  public final c cCq()
   {
-    AppMethodBeat.i(202031);
-    Object localObject = this.rTQ;
+    AppMethodBeat.i(202495);
+    Object localObject = this.scu;
     if (localObject != null) {}
-    for (localObject = ((b.b)localObject).cAR();; localObject = null)
+    for (localObject = ((b.b)localObject).cCD();; localObject = null)
     {
       if (localObject == null) {
-        p.gfZ();
+        p.gkB();
       }
-      localObject = ((z)localObject).cBj();
-      AppMethodBeat.o(202031);
+      localObject = ((z)localObject).cCV();
+      AppMethodBeat.o(202495);
       return localObject;
     }
   }
   
-  public final void cAO()
-  {
-    AppMethodBeat.i(202030);
-    BaseFeedLoader.requestInit$default(this.rTS, false, 1, null);
-    AppMethodBeat.o(202030);
-  }
-  
   public final void requestRefresh()
   {
-    AppMethodBeat.i(202028);
-    this.rTS.requestRefresh();
-    AppMethodBeat.o(202028);
+    AppMethodBeat.i(202492);
+    this.scw.requestRefresh();
+    AppMethodBeat.o(202492);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.aa.a
  * JD-Core Version:    0.7.0.1
  */

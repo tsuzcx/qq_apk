@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.downloader.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.w;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 
 public final class f
 {
-  public static ByteBuffer I(e parame)
+  public static ByteBuffer I(k paramk)
   {
     AppMethodBeat.i(177463);
-    if ((parame == null) || (!parame.exists()) || (!parame.isFile()))
+    if ((paramk == null) || (!paramk.exists()) || (!paramk.isFile()))
     {
       AppMethodBeat.o(177463);
       return null;
     }
     try
     {
-      parame = i.dd(q.B(parame.mUri), false);
+      paramk = o.dg(w.B(paramk.mUri), false);
       try
       {
-        Object localObject1 = a.g(parame);
+        Object localObject1 = a.g(paramk);
         localByteBuffer2 = (ByteBuffer)((Pair)localObject1).first;
         l = ((Long)((Pair)localObject1).second).longValue();
-        if (!h.c(parame, l)) {
+        if (!h.c(paramk, l)) {
           break label108;
         }
         localObject1 = new a.b("ZIP64 APK not supported");
@@ -42,18 +42,18 @@ public final class f
         ByteBuffer localByteBuffer2;
         long l;
         ByteBuffer localByteBuffer1;
-        parame = null;
+        paramk = null;
       }
     }
-    if (parame != null) {
-      parame.close();
+    if (paramk != null) {
+      paramk.close();
     }
     AppMethodBeat.o(177463);
     throw localObject2;
     label108:
-    localByteBuffer1 = (ByteBuffer)a.b(parame, a.b(localByteBuffer2, l)).first;
-    if (parame != null) {
-      parame.close();
+    localByteBuffer1 = (ByteBuffer)a.b(paramk, a.b(localByteBuffer2, l)).first;
+    if (paramk != null) {
+      paramk.close();
     }
     AppMethodBeat.o(177463);
     return localByteBuffer1;

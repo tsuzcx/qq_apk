@@ -6,17 +6,17 @@ import android.widget.Button;
 public final class as$c
   extends AsyncTask<Void, Void, Integer>
 {
+  String Aof;
   String Lw;
-  String duW;
-  Button zEd;
-  String zWU;
+  String dwb;
+  Button zVi;
   
   public as$c(Button paramButton, String paramString1, String paramString2, String paramString3)
   {
     this.Lw = paramString1;
-    this.duW = paramString2;
-    this.zEd = paramButton;
-    this.zWU = paramString3;
+    this.dwb = paramString2;
+    this.zVi = paramButton;
+    this.Aof = paramString3;
   }
 }
 

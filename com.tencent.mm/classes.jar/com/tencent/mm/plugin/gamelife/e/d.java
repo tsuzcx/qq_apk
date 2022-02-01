@@ -8,34 +8,34 @@ import com.tencent.mm.plugin.gamelife.b.a;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "clearUnreadCount", "", "sessionId", "", "get", "getHistoryConversation", "getLatestUnreadConversation", "getTotalUnreadCount", "", "getUnreadCount", "markUnread", "query", "", "offset", "nextCount", "queryLimit", "limitCount", "replace", "item", "Companion", "plugin-gamelife_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "clearUnreadCount", "", "sessionId", "", "get", "getHistoryConversation", "getLatestUnreadConversation", "getTotalUnreadCount", "", "getUnreadCount", "markUnread", "query", "", "offset", "nextCount", "queryLimit", "limitCount", "replace", "item", "Companion", "plugin-gamelife_release"})
 public final class d
   extends j<a>
 {
   private static final String[] SQL_CREATE;
-  public static final a uyh;
+  public static final a uJK;
   private final e db;
   
   static
   {
-    AppMethodBeat.i(211359);
-    uyh = new a((byte)0);
-    a.a locala = a.uyc;
+    AppMethodBeat.i(212130);
+    uJK = new a((byte)0);
+    a.a locala = a.uJF;
     SQL_CREATE = new String[] { j.getCreateSQLs(a.access$getInfo$cp(), "GameLifeConversation") };
-    AppMethodBeat.o(211359);
+    AppMethodBeat.o(212130);
   }
   
   public d(e parame)
   {
     super(parame, a.access$getInfo$cp(), "GameLifeConversation", cv.INDEX_CREATE);
-    AppMethodBeat.i(211358);
+    AppMethodBeat.i(212129);
     this.db = parame;
-    AppMethodBeat.o(211358);
+    AppMethodBeat.o(212129);
   }
   
   /* Error */
@@ -109,7 +109,7 @@ public final class d
     //   148: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: aload_3
     //   152: athrow
-    //   153: getstatic 180	d/z:MKo	Ld/z;
+    //   153: getstatic 180	d/z:Nhr	Ld/z;
     //   156: astore 6
     //   158: aload 5
     //   160: aconst_null
@@ -149,7 +149,7 @@ public final class d
   }
   
   /* Error */
-  public final int aif(String paramString)
+  public final int ajc(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -159,10 +159,10 @@ public final class d
     //   7: aload_1
     //   8: ldc 188
     //   10: invokestatic 93	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 194	com/tencent/mm/plugin/gamelife/b:uwo	Lcom/tencent/mm/plugin/gamelife/b$a;
+    //   13: getstatic 194	com/tencent/mm/plugin/gamelife/b:uHN	Lcom/tencent/mm/plugin/gamelife/b$a;
     //   16: astore 4
     //   18: aload_1
-    //   19: invokestatic 200	com/tencent/mm/plugin/gamelife/b$a:amz	(Ljava/lang/String;)Z
+    //   19: invokestatic 200	com/tencent/mm/plugin/gamelife/b$a:anx	(Ljava/lang/String;)Z
     //   22: ifne +10 -> 32
     //   25: ldc 187
     //   27: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -201,7 +201,7 @@ public final class d
     //   108: iconst_0
     //   109: invokeinterface 209 2 0
     //   114: istore_2
-    //   115: getstatic 180	d/z:MKo	Ld/z;
+    //   115: getstatic 180	d/z:Nhr	Ld/z;
     //   118: astore 5
     //   120: aload 4
     //   122: aconst_null
@@ -218,7 +218,7 @@ public final class d
     //   146: iload_2
     //   147: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   150: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: invokestatic 218	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   156: ldc 187
     //   158: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   161: iload_2
@@ -259,30 +259,31 @@ public final class d
     //   115	120	185	finally
   }
   
-  public final boolean ais(String paramString)
+  public final boolean ajp(String paramString)
   {
-    AppMethodBeat.i(211351);
+    AppMethodBeat.i(212122);
     p.h(paramString, "sessionId");
-    Object localObject = b.uwo;
-    if (!b.a.amz(paramString))
+    Object localObject = b.uHN;
+    if (!b.a.anx(paramString))
     {
-      AppMethodBeat.o(211351);
+      AppMethodBeat.o(212122);
       return false;
     }
-    localObject = amG(paramString);
+    localObject = anH(paramString);
     int i = ((a)localObject).field_unReadCount;
     ((a)localObject).field_unReadCount = 0;
     ((a)localObject).field_digestFlag = 0L;
+    ((a)localObject).field_digestPrefix = null;
     boolean bool = update(((a)localObject).systemRowid, (c)localObject, false);
     doNotify("single", 4, localObject);
-    ad.i("GameLife.ConversationStorage", "[clearUnreadCount] ret=" + bool + ' ' + i + " => " + ((a)localObject).field_unReadCount + " sessionId=" + paramString);
-    AppMethodBeat.o(211351);
+    ae.i("GameLife.ConversationStorage", "[clearUnreadCount] ret=" + bool + ' ' + i + " => " + ((a)localObject).field_unReadCount + " sessionId=" + paramString);
+    AppMethodBeat.o(212122);
     return bool;
   }
   
-  public final a amG(String paramString)
+  public final a anH(String paramString)
   {
-    AppMethodBeat.i(211349);
+    AppMethodBeat.i(212120);
     p.h(paramString, "sessionId");
     Object localObject = "select *, rowid from GameLifeConversation where sessionId = '" + paramString + "' ";
     localObject = this.db.rawQuery((String)localObject, null);
@@ -295,30 +296,108 @@ public final class d
       }
       ((Cursor)localObject).close();
     }
-    AppMethodBeat.o(211349);
+    AppMethodBeat.o(212120);
     return locala;
   }
   
   public final List<a> dE(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211350);
+    AppMethodBeat.i(212121);
     List localList = gn(paramInt1, paramInt2);
-    ad.i("GameLife.ConversationStorage", "[query] offset=" + paramInt1 + " pageCount=" + paramInt2 + " list size=" + localList.size());
-    AppMethodBeat.o(211350);
+    ae.i("GameLife.ConversationStorage", "[query] offset=" + paramInt1 + " pageCount=" + paramInt2 + " list size=" + localList.size());
+    AppMethodBeat.o(212121);
     return localList;
   }
   
   /* Error */
-  public final int daD()
+  public final a ddA()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: ldc_w 288
+    //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: new 63	com/tencent/mm/plugin/gamelife/e/a
+    //   11: dup
+    //   12: invokespecial 158	com/tencent/mm/plugin/gamelife/e/a:<init>	()V
+    //   15: astore_1
+    //   16: aload_0
+    //   17: getfield 104	com/tencent/mm/plugin/gamelife/e/d:db	Lcom/tencent/mm/sdk/e/e;
+    //   20: ldc_w 290
+    //   23: aconst_null
+    //   24: invokeinterface 141 3 0
+    //   29: checkcast 143	java/io/Closeable
+    //   32: astore_3
+    //   33: aload_3
+    //   34: checkcast 145	android/database/Cursor
+    //   37: astore 4
+    //   39: aload 4
+    //   41: invokeinterface 149 1 0
+    //   46: ifeq +22 -> 68
+    //   49: aload_1
+    //   50: aload 4
+    //   52: invokevirtual 162	com/tencent/mm/plugin/gamelife/e/a:convertFrom	(Landroid/database/Cursor;)V
+    //   55: aload_3
+    //   56: aconst_null
+    //   57: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   60: ldc_w 288
+    //   63: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: aload_1
+    //   67: areturn
+    //   68: getstatic 180	d/z:Nhr	Ld/z;
+    //   71: astore 4
+    //   73: aload_3
+    //   74: aconst_null
+    //   75: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   78: ldc_w 288
+    //   81: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: aload_1
+    //   85: areturn
+    //   86: astore_2
+    //   87: ldc_w 288
+    //   90: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: aload_2
+    //   94: athrow
+    //   95: astore_1
+    //   96: aload_3
+    //   97: aload_2
+    //   98: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   101: ldc_w 288
+    //   104: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: aload_1
+    //   108: athrow
+    //   109: astore_1
+    //   110: goto -14 -> 96
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	113	0	this	d
+    //   15	70	1	locala	a
+    //   95	13	1	localObject1	Object
+    //   109	1	1	localObject2	Object
+    //   1	1	2	localObject3	Object
+    //   86	12	2	localThrowable	java.lang.Throwable
+    //   32	65	3	localCloseable	java.io.Closeable
+    //   37	35	4	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   33	55	86	java/lang/Throwable
+    //   68	73	86	java/lang/Throwable
+    //   87	95	95	finally
+    //   33	55	109	finally
+    //   68	73	109	finally
+  }
+  
+  /* Error */
+  public final int ddp()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: ldc_w 284
+    //   2: ldc_w 292
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 104	com/tencent/mm/plugin/gamelife/e/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   12: ldc_w 286
+    //   12: ldc_w 294
     //   15: aconst_null
     //   16: invokeinterface 141 3 0
     //   21: checkcast 143	java/io/Closeable
@@ -330,7 +409,7 @@ public final class d
     //   33: invokeinterface 149 1 0
     //   38: ifeq +88 -> 126
     //   41: aload_2
-    //   42: ldc_w 288
+    //   42: ldc_w 296
     //   45: invokestatic 154	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   48: aload_2
     //   49: invokeinterface 157 1 0
@@ -339,23 +418,23 @@ public final class d
     //   58: iconst_0
     //   59: invokeinterface 209 2 0
     //   64: istore_1
-    //   65: getstatic 180	d/z:MKo	Ld/z;
+    //   65: getstatic 180	d/z:Nhr	Ld/z;
     //   68: astore_2
     //   69: aload 4
     //   71: aconst_null
     //   72: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   75: ldc 211
-    //   77: ldc_w 290
+    //   77: ldc_w 298
     //   80: iload_1
-    //   81: invokestatic 294	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   84: invokevirtual 298	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   87: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   90: ldc_w 284
+    //   81: invokestatic 302	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   84: invokevirtual 306	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   87: invokestatic 218	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: ldc_w 292
     //   93: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: iload_1
     //   97: ireturn
     //   98: astore_3
-    //   99: ldc_w 284
+    //   99: ldc_w 292
     //   102: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   105: aload_3
     //   106: athrow
@@ -363,7 +442,7 @@ public final class d
     //   108: aload 4
     //   110: aload_3
     //   111: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   114: ldc_w 284
+    //   114: ldc_w 292
     //   117: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: aload_2
     //   121: athrow
@@ -392,16 +471,16 @@ public final class d
   }
   
   /* Error */
-  public final a daJ()
+  public final a ddz()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc_w 301
+    //   2: ldc_w 308
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 104	com/tencent/mm/plugin/gamelife/e/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   12: ldc_w 303
+    //   12: ldc_w 310
     //   15: aconst_null
     //   16: invokeinterface 141 3 0
     //   21: checkcast 143	java/io/Closeable
@@ -413,7 +492,7 @@ public final class d
     //   31: invokeinterface 149 1 0
     //   36: ifeq +48 -> 84
     //   39: aload_1
-    //   40: ldc_w 288
+    //   40: ldc_w 296
     //   43: invokestatic 154	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   46: aload_1
     //   47: invokeinterface 157 1 0
@@ -428,21 +507,21 @@ public final class d
     //   70: aload_3
     //   71: aconst_null
     //   72: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   75: ldc_w 301
+    //   75: ldc_w 308
     //   78: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: aload 4
     //   83: areturn
-    //   84: getstatic 180	d/z:MKo	Ld/z;
+    //   84: getstatic 180	d/z:Nhr	Ld/z;
     //   87: astore_1
     //   88: aload_3
     //   89: aconst_null
     //   90: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   93: ldc_w 301
+    //   93: ldc_w 308
     //   96: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aconst_null
     //   100: areturn
     //   101: astore_2
-    //   102: ldc_w 301
+    //   102: ldc_w 308
     //   105: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   108: aload_2
     //   109: athrow
@@ -450,7 +529,7 @@ public final class d
     //   111: aload_3
     //   112: aload_2
     //   113: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   116: ldc_w 301
+    //   116: ldc_w 308
     //   119: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: aload_1
     //   123: athrow
@@ -475,85 +554,7 @@ public final class d
     //   84	88	124	finally
   }
   
-  /* Error */
-  public final a daK()
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc_w 305
-    //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 63	com/tencent/mm/plugin/gamelife/e/a
-    //   11: dup
-    //   12: invokespecial 158	com/tencent/mm/plugin/gamelife/e/a:<init>	()V
-    //   15: astore_1
-    //   16: aload_0
-    //   17: getfield 104	com/tencent/mm/plugin/gamelife/e/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   20: ldc_w 307
-    //   23: aconst_null
-    //   24: invokeinterface 141 3 0
-    //   29: checkcast 143	java/io/Closeable
-    //   32: astore_3
-    //   33: aload_3
-    //   34: checkcast 145	android/database/Cursor
-    //   37: astore 4
-    //   39: aload 4
-    //   41: invokeinterface 149 1 0
-    //   46: ifeq +22 -> 68
-    //   49: aload_1
-    //   50: aload 4
-    //   52: invokevirtual 162	com/tencent/mm/plugin/gamelife/e/a:convertFrom	(Landroid/database/Cursor;)V
-    //   55: aload_3
-    //   56: aconst_null
-    //   57: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   60: ldc_w 305
-    //   63: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   66: aload_1
-    //   67: areturn
-    //   68: getstatic 180	d/z:MKo	Ld/z;
-    //   71: astore 4
-    //   73: aload_3
-    //   74: aconst_null
-    //   75: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   78: ldc_w 305
-    //   81: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   84: aload_1
-    //   85: areturn
-    //   86: astore_2
-    //   87: ldc_w 305
-    //   90: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   93: aload_2
-    //   94: athrow
-    //   95: astore_1
-    //   96: aload_3
-    //   97: aload_2
-    //   98: invokestatic 174	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   101: ldc_w 305
-    //   104: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   107: aload_1
-    //   108: athrow
-    //   109: astore_1
-    //   110: goto -14 -> 96
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	113	0	this	d
-    //   15	70	1	locala	a
-    //   95	13	1	localObject1	Object
-    //   109	1	1	localObject2	Object
-    //   1	1	2	localObject3	Object
-    //   86	12	2	localThrowable	java.lang.Throwable
-    //   32	65	3	localCloseable	java.io.Closeable
-    //   37	35	4	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   33	55	86	java/lang/Throwable
-    //   68	73	86	java/lang/Throwable
-    //   87	95	95	finally
-    //   33	55	109	finally
-    //   68	73	109	finally
-  }
-  
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-gamelife_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-gamelife_release"})
   public static final class a {}
 }
 

@@ -9,112 +9,108 @@ import com.tencent.thumbplayer.utils.d;
 
 public final class a
 {
-  private static boolean MaA;
-  private static String MaB;
-  private static int MaC;
-  private static boolean MaD;
-  private static int MaE;
-  private static String MaF;
-  private static long MaG = -1L;
-  private static String Mau = "";
-  private static String Mav;
-  private static String Maw;
-  private static String Max;
-  private static int May = -1;
-  private static String Maz;
+  private static String MxA;
+  private static long MxB = -1L;
+  private static String Mxp = "";
+  private static String Mxq;
+  private static String Mxr;
+  private static String Mxs;
+  private static int Mxt = -1;
+  private static String Mxu;
+  private static boolean Mxv;
+  private static String Mxw = "";
+  private static int Mxx = 0;
+  private static boolean Mxy = true;
+  private static int Mxz = -1;
   private static String appVersion;
   private static String appVersionName;
   
   static
   {
-    MaB = "";
-    MaC = 0;
-    MaD = true;
-    MaE = -1;
-    MaF = "\\.";
+    MxA = "\\.";
     appVersion = "";
   }
   
-  public static void aZL(String paramString)
+  public static void bbo(String paramString)
   {
-    Mau = paramString;
+    Mxp = paramString;
   }
   
-  public static void fWM()
+  public static void gaV()
   {
-    MaD = true;
+    Mxt = 100;
   }
   
-  public static boolean fWN()
+  public static void gbl()
   {
-    return MaD;
+    Mxy = true;
   }
   
-  public static String fWO()
+  public static boolean gbm()
   {
-    return Mav;
+    return Mxy;
   }
   
-  public static String fWP()
+  public static String gbn()
   {
-    return Maw;
+    return Mxq;
   }
   
-  public static String fWQ()
+  public static String gbo()
   {
-    return Max;
+    return Mxr;
   }
   
-  public static String fWR()
+  public static String gbp()
   {
-    return Maz;
+    return Mxs;
   }
   
-  public static String fWS()
+  public static String gbq()
   {
-    return MaB;
+    return Mxu;
   }
   
-  public static int fWT()
+  public static String gbr()
   {
-    return MaC;
+    return Mxw;
   }
   
-  public static boolean fWU()
+  public static int gbs()
   {
-    return MaA;
+    return Mxx;
   }
   
-  public static int fWV()
+  public static boolean gbt()
   {
-    if ((May == -1) && (MaE != -1)) {
-      return MaE;
+    return Mxv;
+  }
+  
+  public static int gbu()
+  {
+    if ((Mxt == -1) && (Mxz != -1)) {
+      return Mxz;
     }
-    return May;
+    return Mxt;
   }
   
-  public static void fWW()
+  public static void gbv()
   {
-    MaE = 1;
-  }
-  
-  public static void fWw()
-  {
-    May = 100;
+    Mxz = 1;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(191890);
+    AppMethodBeat.i(194568);
     if (!TextUtils.isEmpty(appVersionName))
     {
       paramContext = appVersionName;
-      AppMethodBeat.o(191890);
+      AppMethodBeat.o(194568);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(191890);
+      AppMethodBeat.o(194568);
       return "";
     }
     try
@@ -125,48 +121,48 @@ public final class a
       if (str == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(191890);
+      AppMethodBeat.o(194568);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(191890);
+      AppMethodBeat.o(194568);
     }
     return "";
   }
   
   public static String getGuid()
   {
-    return Mau;
+    return Mxp;
   }
   
   public static int getPlatform()
   {
-    return MaE;
+    return Mxz;
   }
   
-  public static long li(Context paramContext)
+  public static long lo(Context paramContext)
   {
-    AppMethodBeat.i(191891);
+    AppMethodBeat.i(194569);
     long l;
-    if (-1L != MaG)
+    if (-1L != MxB)
     {
-      l = MaG;
-      AppMethodBeat.o(191891);
+      l = MxB;
+      AppMethodBeat.o(194569);
       return l;
     }
     try
     {
       l = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      MaG = l;
-      AppMethodBeat.o(191891);
+      MxB = l;
+      AppMethodBeat.o(194569);
       return l;
     }
     catch (Throwable paramContext)
     {
       d.e("TPPlayerConfig", "getLongVersionCode less api 28");
-      l = MaG;
-      AppMethodBeat.o(191891);
+      l = MxB;
+      AppMethodBeat.o(194569);
     }
     return l;
   }

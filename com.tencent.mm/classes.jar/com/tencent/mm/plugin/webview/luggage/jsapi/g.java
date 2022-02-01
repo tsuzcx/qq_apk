@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public class g
@@ -13,8 +13,8 @@ public class g
   public final void a(Context paramContext, String paramString, bq.a parama)
   {
     AppMethodBeat.i(78524);
-    ad.i("MicroMsg.JsApiCancelDownloadTask", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    ae.i("MicroMsg.JsApiCancelDownloadTask", "invokeInMM");
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
     if (paramContext == null)
     {
       parama.f("fail", null);
@@ -24,12 +24,12 @@ public class g
     long l = paramContext.optLong("download_id");
     if (l <= 0L)
     {
-      ad.e("MicroMsg.JsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+      ae.e("MicroMsg.JsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
       parama.f("invalid_downloadid", null);
       AppMethodBeat.o(78524);
       return;
     }
-    if (f.ccl().tR(l) > 0)
+    if (f.cdA().ui(l) > 0)
     {
       parama.f(null, null);
       AppMethodBeat.o(78524);
@@ -41,7 +41,7 @@ public class g
   
   public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
   
-  public final int ccO()
+  public final int ced()
   {
     return 1;
   }

@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -23,10 +23,10 @@ public final class e
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137660);
-    paramJSONObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    paramJSONObject = (ClipboardManager)ak.getContext().getSystemService("clipboard");
     if (paramJSONObject == null)
     {
-      ad.i("MicroMsg.JsApiGetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
+      ae.i("MicroMsg.JsApiGetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
       paramc.h(paramInt, e("fail", null));
       AppMethodBeat.o(137660);
       return;
@@ -50,13 +50,13 @@ public final class e
       }
       localObject1 = new HashMap();
       ((Map)localObject1).put("data", paramJSONObject);
-      paramc.h(paramInt, m("ok", (Map)localObject1));
+      paramc.h(paramInt, n("ok", (Map)localObject1));
       AppMethodBeat.o(137660);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.JsApiGetClipboardData", "invoke with appId:%s, but get Exception:%s", new Object[] { paramc.getAppId(), paramJSONObject });
+      ae.e("MicroMsg.JsApiGetClipboardData", "invoke with appId:%s, but get Exception:%s", new Object[] { paramc.getAppId(), paramJSONObject });
       AppMethodBeat.o(137660);
     }
   }

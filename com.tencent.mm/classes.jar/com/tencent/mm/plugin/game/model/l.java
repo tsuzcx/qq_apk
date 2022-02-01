@@ -6,34 +6,28 @@ import com.tencent.mm.g.c.y;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.vfs.o;
 
 public final class l
 {
   public int mode = 1;
   public int progress = 0;
   public int status = 0;
-  public c ubv;
-  public boolean ubw = false;
+  public c umx;
+  public boolean umy = false;
   
   public l(c paramc)
   {
-    this.ubv = paramc;
+    this.umx = paramc;
   }
   
-  public final void cYS()
-  {
-    this.mode = 1;
-    this.ubw = true;
-  }
-  
-  public final void cdl()
+  public final void ceA()
   {
     AppMethodBeat.i(41434);
-    if (this.ubv == null)
+    if (this.umx == null)
     {
       AppMethodBeat.o(41434);
       return;
@@ -46,13 +40,13 @@ public final class l
     for (;;)
     {
       label45:
-      ad.i("MicroMsg.GameDownloadInfo", "Updating Download Status, AppId: %s, downloadMode: %d, downloadStatus: %d", new Object[] { this.ubv.field_appId, Integer.valueOf(this.mode), Integer.valueOf(this.status) });
+      ae.i("MicroMsg.GameDownloadInfo", "Updating Download Status, AppId: %s, downloadMode: %d, downloadStatus: %d", new Object[] { this.umx.field_appId, Integer.valueOf(this.mode), Integer.valueOf(this.status) });
       AppMethodBeat.o(41434);
       return;
-      FileDownloadTaskInfo localFileDownloadTaskInfo = f.ccl().aai(this.ubv.field_appId);
-      if (localFileDownloadTaskInfo.nsQ != 0L)
+      FileDownloadTaskInfo localFileDownloadTaskInfo = f.cdA().aaZ(this.umx.field_appId);
+      if (localFileDownloadTaskInfo.nyl != 0L)
       {
-        this.progress = ((int)(localFileDownloadTaskInfo.pmT / localFileDownloadTaskInfo.nsQ * 100.0D));
+        this.progress = ((int)(localFileDownloadTaskInfo.ptA / localFileDownloadTaskInfo.nyl * 100.0D));
         label135:
         if (this.progress != 0) {
           break label228;
@@ -62,7 +56,7 @@ public final class l
       for (int i = 1;; i = this.progress)
       {
         this.progress = i;
-        ad.d("MicroMsg.GameDownloadInfo", "status = " + localFileDownloadTaskInfo.status);
+        ae.d("MicroMsg.GameDownloadInfo", "status = " + localFileDownloadTaskInfo.status);
         switch (localFileDownloadTaskInfo.status)
         {
         default: 
@@ -78,7 +72,7 @@ public final class l
       continue;
       this.status = 0;
       continue;
-      if (i.fv(localFileDownloadTaskInfo.path))
+      if (o.fB(localFileDownloadTaskInfo.path))
       {
         this.status = 3;
       }
@@ -86,7 +80,7 @@ public final class l
       {
         this.status = 0;
         continue;
-        if ((this.progress != 0) && (!ay.isConnected(aj.getContext()))) {
+        if ((this.progress != 0) && (!az.isConnected(ak.getContext()))) {
           this.status = 2;
         } else {
           this.status = 0;
@@ -95,17 +89,23 @@ public final class l
     }
   }
   
-  public final void fy(Context paramContext)
+  public final void dbC()
+  {
+    this.mode = 1;
+    this.umy = true;
+  }
+  
+  public final void fC(Context paramContext)
   {
     AppMethodBeat.i(41433);
-    if (this.ubv == null)
+    if (this.umx == null)
     {
       AppMethodBeat.o(41433);
       return;
     }
-    int j = this.ubv.eHC;
-    int i = this.ubv.eHC;
-    ad.i("MicroMsg.GameDownloadInfo", "AppId: %s, Initial downloadMode: %d", new Object[] { this.ubv.field_appId, Integer.valueOf(j) });
+    int j = this.umx.eJl;
+    int i = this.umx.eJl;
+    ae.i("MicroMsg.GameDownloadInfo", "AppId: %s, Initial downloadMode: %d", new Object[] { this.umx.field_appId, Integer.valueOf(j) });
     if (j == 2) {
       i = 3;
     }
@@ -120,7 +120,7 @@ public final class l
     i = j;
     if (j != 1)
     {
-      paramContext = f.ccl().aai(this.ubv.field_appId);
+      paramContext = f.cdA().aaZ(this.umx.field_appId);
       if ((paramContext.status != 1) && (paramContext.status != 2))
       {
         i = j;
@@ -132,13 +132,13 @@ public final class l
       }
     }
     this.mode = i;
-    ad.i("MicroMsg.GameDownloadInfo", "AppId: %s, Final downloadMode: %d", new Object[] { this.ubv.field_appId, Integer.valueOf(i) });
+    ae.i("MicroMsg.GameDownloadInfo", "AppId: %s, Final downloadMode: %d", new Object[] { this.umx.field_appId, Integer.valueOf(i) });
     AppMethodBeat.o(41433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.l
  * JD-Core Version:    0.7.0.1
  */

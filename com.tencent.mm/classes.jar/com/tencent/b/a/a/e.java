@@ -2,7 +2,7 @@ package com.tencent.b.a.a;
 
 final class e
 {
-  static long cOz = 86400000L;
+  static long cPj = 86400000L;
 }
 
 

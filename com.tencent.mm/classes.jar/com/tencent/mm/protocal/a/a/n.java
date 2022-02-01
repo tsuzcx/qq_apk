@@ -3,15 +3,15 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int FoM;
-  public int FpA;
-  public int Fpv;
-  public int Fpw;
-  public int Fpx;
-  public int Fpy;
-  public int Fpz;
+  public int FHT;
+  public int FHU;
+  public int FHV;
+  public int FHW;
+  public int FHX;
+  public int FHY;
+  public int FHk;
   public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -20,26 +20,26 @@ public final class n
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FoM);
-      paramVarArgs.aS(2, this.Fpv);
-      paramVarArgs.aS(3, this.Fpw);
-      paramVarArgs.aS(4, this.Fpx);
-      paramVarArgs.aS(5, this.Fpy);
-      paramVarArgs.aS(6, this.Fpz);
-      paramVarArgs.aS(7, this.FpA);
+      paramVarArgs.aS(1, this.FHk);
+      paramVarArgs.aS(2, this.FHT);
+      paramVarArgs.aS(3, this.FHU);
+      paramVarArgs.aS(4, this.FHV);
+      paramVarArgs.aS(5, this.FHW);
+      paramVarArgs.aS(6, this.FHX);
+      paramVarArgs.aS(7, this.FHY);
       paramVarArgs.aS(8, this.type);
       AppMethodBeat.o(143958);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.FoM);
-      int i = f.a.a.b.b.a.bz(2, this.Fpv);
-      int j = f.a.a.b.b.a.bz(3, this.Fpw);
-      int k = f.a.a.b.b.a.bz(4, this.Fpx);
-      int m = f.a.a.b.b.a.bz(5, this.Fpy);
-      int n = f.a.a.b.b.a.bz(6, this.Fpz);
-      int i1 = f.a.a.b.b.a.bz(7, this.FpA);
+      paramInt = f.a.a.b.b.a.bz(1, this.FHk);
+      int i = f.a.a.b.b.a.bz(2, this.FHT);
+      int j = f.a.a.b.b.a.bz(3, this.FHU);
+      int k = f.a.a.b.b.a.bz(4, this.FHV);
+      int m = f.a.a.b.b.a.bz(5, this.FHW);
+      int n = f.a.a.b.b.a.bz(6, this.FHX);
+      int i1 = f.a.a.b.b.a.bz(7, this.FHY);
       int i2 = f.a.a.b.b.a.bz(8, this.type);
       AppMethodBeat.o(143958);
       return paramInt + 0 + i + j + k + m + n + i1 + i2;
@@ -47,9 +47,9 @@ public final class n
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(143958);
@@ -65,35 +65,35 @@ public final class n
         AppMethodBeat.o(143958);
         return -1;
       case 1: 
-        localn.FoM = locala.NPN.zc();
+        localn.FHk = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 2: 
-        localn.Fpv = locala.NPN.zc();
+        localn.FHT = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 3: 
-        localn.Fpw = locala.NPN.zc();
+        localn.FHU = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 4: 
-        localn.Fpx = locala.NPN.zc();
+        localn.FHV = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 5: 
-        localn.Fpy = locala.NPN.zc();
+        localn.FHW = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 6: 
-        localn.Fpz = locala.NPN.zc();
+        localn.FHX = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 7: 
-        localn.FpA = locala.NPN.zc();
+        localn.FHY = locala.OmT.zc();
         AppMethodBeat.o(143958);
         return 0;
       }
-      localn.type = locala.NPN.zc();
+      localn.type = locala.OmT.zc();
       AppMethodBeat.o(143958);
       return 0;
     }

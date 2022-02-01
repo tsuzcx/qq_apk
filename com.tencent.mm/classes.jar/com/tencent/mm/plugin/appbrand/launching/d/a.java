@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "T", "Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask;", "()V", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "T", "Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask;", "()V", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "plugin-appbrand-integration_release"})
 public abstract class a<T>
   extends com.tencent.luggage.sdk.e.a<T>
 {

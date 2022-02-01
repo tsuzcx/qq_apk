@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.protocal.protobuf.clr;
-import com.tencent.mm.protocal.protobuf.cls;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.cml;
+import com.tencent.mm.protocal.protobuf.cmm;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiPreGetPkgDownloadInfo;", "Lcom/tencent/mm/plugin/appbrand/networking/AppBrandCgiWithSpeedReport;", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlRequest;", "(Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getRr", "()Lcom/tencent/mm/modelbase/CommReqResp;", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiPreGetPkgDownloadInfo;", "Lcom/tencent/mm/plugin/appbrand/networking/AppBrandCgiWithSpeedReport;", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlRequest;", "(Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getRr", "()Lcom/tencent/mm/modelbase/CommReqResp;", "Companion", "plugin-appbrand-integration_release"})
 public final class e
-  extends com.tencent.mm.plugin.appbrand.networking.a<cls>
+  extends com.tencent.mm.plugin.appbrand.networking.b<cmm>
 {
-  public static final a lMV;
-  private final clr lMU;
-  private final b rr;
+  public static final a lRw;
+  private final cml lRv;
+  private final com.tencent.mm.ak.b rr;
   
   static
   {
     AppMethodBeat.i(50809);
-    lMV = new a((byte)0);
+    lRw = new a((byte)0);
     AppMethodBeat.o(50809);
   }
   
-  public e(clr paramclr)
+  public e(cml paramcml)
   {
-    super(paramclr.duW, paramclr.username);
+    super(paramcml.dwb, paramcml.username);
     AppMethodBeat.i(50808);
-    this.lMU = paramclr;
-    paramclr = new b.a();
-    paramclr.Dl("/cgi-bin/mmbiz-bin/wxaapp/pregetwxadownloadurl");
-    paramclr.oP(1189);
-    paramclr.c((com.tencent.mm.bx.a)this.lMU);
-    paramclr.d((com.tencent.mm.bx.a)new cls());
-    paramclr = paramclr.aDC();
-    p.g(paramclr, "rrb.buildInstance()");
-    this.rr = paramclr;
+    this.lRv = paramcml;
+    paramcml = new b.a();
+    paramcml.DN("/cgi-bin/mmbiz-bin/wxaapp/pregetwxadownloadurl");
+    paramcml.oS(1189);
+    paramcml.c((a)this.lRv);
+    paramcml.d((a)new cmm());
+    paramcml = paramcml.aDS();
+    p.g(paramcml, "rrb.buildInstance()");
+    this.rr = paramcml;
     c(this.rr);
     AppMethodBeat.o(50808);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiPreGetPkgDownloadInfo$Companion;", "", "()V", "TAG", "", "createRequest", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiPreGetPkgDownloadInfo;", "appId", "oldAppVersion", "", "path", "isSupportWithoutLib", "", "userName", "supportedEncryptVersion", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiPreGetPkgDownloadInfo$Companion;", "", "()V", "TAG", "", "createRequest", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiPreGetPkgDownloadInfo;", "appId", "oldAppVersion", "", "path", "isSupportWithoutLib", "", "userName", "supportedEncryptVersion", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

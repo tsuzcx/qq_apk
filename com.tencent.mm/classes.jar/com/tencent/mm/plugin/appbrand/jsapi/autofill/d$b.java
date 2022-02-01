@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cxm;
+import com.tencent.mm.protocal.protobuf.cyg;
 import com.tencent.mm.protocal.protobuf.do;
 import d.g.b.p;
 import d.l;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "", "scopeInfo", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "alertPrivacyInfo", "Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;", "(Lcom/tencent/mm/protocal/protobuf/ScopeInfo;Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;)V", "getAlertPrivacyInfo", "()Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;", "getScopeInfo", "()Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "luggage-wechat-full-sdk_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "", "scopeInfo", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "alertPrivacyInfo", "Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;", "(Lcom/tencent/mm/protocal/protobuf/ScopeInfo;Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;)V", "getAlertPrivacyInfo", "()Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;", "getScopeInfo", "()Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "luggage-wechat-full-sdk_release"})
 public final class d$b
 {
-  final cxm kAt;
-  final do kAu;
+  final cyg kDI;
+  final do kDJ;
   
-  public d$b(cxm paramcxm, do paramdo)
+  public d$b(cyg paramcyg, do paramdo)
   {
-    this.kAt = paramcxm;
-    this.kAu = paramdo;
+    this.kDI = paramcyg;
+    this.kDJ = paramdo;
   }
   
   public final boolean equals(Object paramObject)
@@ -26,7 +26,7 @@ public final class d$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.i(this.kAt, paramObject.kAt)) || (!p.i(this.kAu, paramObject.kAu))) {}
+        if ((!p.i(this.kDI, paramObject.kDI)) || (!p.i(this.kDJ, paramObject.kDJ))) {}
       }
     }
     else
@@ -42,11 +42,11 @@ public final class d$b
   {
     int j = 0;
     AppMethodBeat.i(147903);
-    Object localObject = this.kAt;
+    Object localObject = this.kDI;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.kAu;
+      localObject = this.kDJ;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -58,7 +58,7 @@ public final class d$b
   public final String toString()
   {
     AppMethodBeat.i(147902);
-    String str = "Info(scopeInfo=" + this.kAt + ", alertPrivacyInfo=" + this.kAu + ")";
+    String str = "Info(scopeInfo=" + this.kDI + ", alertPrivacyInfo=" + this.kDJ + ")";
     AppMethodBeat.o(147902);
     return str;
   }

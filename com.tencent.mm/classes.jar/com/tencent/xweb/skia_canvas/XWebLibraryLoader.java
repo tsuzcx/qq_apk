@@ -60,7 +60,10 @@ public class XWebLibraryLoader
     AppMethodBeat.o(4310);
   }
   
-  public static void initXWebLibraryLoader(IXWebLibraryLoader paramIXWebLibraryLoader) {}
+  public static void initXWebLibraryLoader(IXWebLibraryLoader paramIXWebLibraryLoader)
+  {
+    sXWebLibraryLoader = paramIXWebLibraryLoader;
+  }
   
   public static boolean load(String paramString)
   {
@@ -72,7 +75,7 @@ public class XWebLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.XWebLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

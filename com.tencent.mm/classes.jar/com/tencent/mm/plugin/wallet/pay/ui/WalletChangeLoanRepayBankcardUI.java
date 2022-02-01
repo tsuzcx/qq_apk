@@ -19,22 +19,22 @@ import java.util.Collections;
 public class WalletChangeLoanRepayBankcardUI
   extends WalletChangeBankcardUI
 {
-  protected final void Vo(int paramInt)
+  protected final void VV(int paramInt)
   {
     AppMethodBeat.i(69339);
     int i;
     Object localObject;
-    if (this.CyC != null)
+    if (this.CQh != null)
     {
-      i = this.CyC.size();
-      if ((this.CyC == null) || (paramInt >= i)) {
+      i = this.CQh.size();
+      if ((this.CQh == null) || (paramInt >= i)) {
         break label127;
       }
-      localObject = (Bankcard)this.CyC.get(paramInt);
-      this.CyD = ((Bankcard)localObject);
-      this.CIJ.Dfh = ((Bankcard)localObject).field_bindSerial;
-      this.yft.setEnabled(true);
-      this.CIJ.notifyDataSetChanged();
+      localObject = (Bankcard)this.CQh.get(paramInt);
+      this.CQi = ((Bankcard)localObject);
+      this.Dap.DwL = ((Bankcard)localObject).field_bindSerial;
+      this.yvk.setEnabled(true);
+      this.Dap.notifyDataSetChanged();
       Intent localIntent = new Intent();
       localIntent.putExtra("bindSerial", ((Bankcard)localObject).field_bindSerial);
       localIntent.putExtra("ret", 0);
@@ -57,14 +57,14 @@ public class WalletChangeLoanRepayBankcardUI
     }
   }
   
-  protected final k eDA()
+  protected final k eHh()
   {
     AppMethodBeat.i(69338);
-    this.CyC = t.eFz().DaN;
-    if (this.CyC != null) {
-      Collections.sort(this.CyC, new WalletChangeBankcardUI.2(this));
+    this.CQh = t.eJg().Dsr;
+    if (this.CQh != null) {
+      Collections.sort(this.CQh, new WalletChangeBankcardUI.2(this));
     }
-    k localk = new k(this, this.CyC, this.CII, this.ygb);
+    k localk = new k(this, this.CQh, this.Dao, this.yvS);
     AppMethodBeat.o(69338);
     return localk;
   }
@@ -99,7 +99,7 @@ public class WalletChangeLoanRepayBankcardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletChangeLoanRepayBankcardUI
  * JD-Core Version:    0.7.0.1
  */

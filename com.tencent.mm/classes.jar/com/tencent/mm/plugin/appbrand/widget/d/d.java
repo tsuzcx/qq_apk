@@ -14,25 +14,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends FrameLayout
 {
-  public static final int njG;
-  public static final int njH;
-  public static final int njR;
+  public static final int noO;
+  public static final int noP;
+  public static final int noZ;
   private float anchorX;
   private float anchorY;
-  private TextView njQ;
-  private int njS;
-  private int njT;
-  private int njU;
-  private int njV;
+  private TextView noY;
+  private int npa;
+  private int npb;
+  private int npc;
+  private int npd;
   public int x;
   public int y;
   
   static
   {
     AppMethodBeat.i(146596);
-    njG = Color.parseColor("#000000");
-    njR = Color.parseColor("#000000");
-    njH = Color.parseColor("#000000");
+    noO = Color.parseColor("#000000");
+    noZ = Color.parseColor("#000000");
+    noP = Color.parseColor("#000000");
     AppMethodBeat.o(146596);
   }
   
@@ -45,10 +45,10 @@ public final class d
     this.anchorX = 0.0F;
     this.anchorY = 0.0F;
     setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    this.njQ = new TextView(paramContext);
+    this.noY = new TextView(paramContext);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
-    this.njQ.setLayoutParams(paramContext);
-    addView(this.njQ);
+    this.noY.setLayoutParams(paramContext);
+    addView(this.noY);
     AppMethodBeat.o(146587);
   }
   
@@ -59,24 +59,24 @@ public final class d
     localGradientDrawable.setCornerRadius(paramInt1);
     localGradientDrawable.setStroke(paramInt2, paramInt3);
     localGradientDrawable.setColor(paramInt4);
-    this.njQ.setBackgroundDrawable(localGradientDrawable);
+    this.noY.setBackgroundDrawable(localGradientDrawable);
     AppMethodBeat.o(146588);
   }
   
   public final void eA(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199910);
+    AppMethodBeat.i(212602);
     if ((paramInt1 < 0) || (paramInt2 < 0))
     {
-      AppMethodBeat.o(199910);
+      AppMethodBeat.o(212602);
       return;
     }
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.njQ.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.noY.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;
-    this.njQ.setLayoutParams(localLayoutParams);
+    this.noY.setLayoutParams(localLayoutParams);
     invalidate();
-    AppMethodBeat.o(199910);
+    AppMethodBeat.o(212602);
   }
   
   public final float getAnchorX()
@@ -115,41 +115,41 @@ public final class d
   {
     AppMethodBeat.i(146594);
     super.onMeasure(paramInt1, paramInt2);
-    this.njS = getMeasuredWidth();
-    this.njT = getMeasuredHeight();
-    if ((-this.njS < this.x) && (this.x < 0))
+    this.npa = getMeasuredWidth();
+    this.npb = getMeasuredHeight();
+    if ((-this.npa < this.x) && (this.x < 0))
     {
-      this.njU = this.njS;
-      this.anchorX = (Math.abs(this.x) / (this.njS * 1.0F));
-      if ((-this.njT >= this.y) || (this.y >= 0)) {
+      this.npc = this.npa;
+      this.anchorX = (Math.abs(this.x) / (this.npa * 1.0F));
+      if ((-this.npb >= this.y) || (this.y >= 0)) {
         break label189;
       }
-      this.njV = this.njT;
-      this.anchorY = (Math.abs(this.y) / (this.njT * 1.0F));
+      this.npd = this.npb;
+      this.anchorY = (Math.abs(this.y) / (this.npb * 1.0F));
     }
     for (;;)
     {
-      setMeasuredDimension(this.njU, this.njV);
+      setMeasuredDimension(this.npc, this.npd);
       AppMethodBeat.o(146594);
       return;
       if (this.x >= 0)
       {
-        this.njU = (this.njS + Math.abs(this.x));
+        this.npc = (this.npa + Math.abs(this.x));
         this.anchorX = 0.0F;
         break;
       }
-      this.njU = Math.abs(this.x);
+      this.npc = Math.abs(this.x);
       this.anchorX = 1.0F;
       break;
       label189:
       if (this.y >= 0)
       {
-        this.njV = (this.njT + Math.abs(this.y));
+        this.npd = (this.npb + Math.abs(this.y));
         this.anchorY = 0.0F;
       }
       else
       {
-        this.njV = Math.abs(this.y);
+        this.npd = Math.abs(this.y);
         this.anchorY = 1.0F;
       }
     }
@@ -160,10 +160,10 @@ public final class d
     AppMethodBeat.i(182824);
     setText("");
     setTextSize(12);
-    setTextColor(njG);
+    setTextColor(noO);
     setTextPadding(0);
     setGravity("center");
-    int i = njH;
+    int i = noP;
     A(0, 0, i, i);
     AppMethodBeat.o(182824);
   }
@@ -171,48 +171,35 @@ public final class d
   public final void setGravity(String paramString)
   {
     AppMethodBeat.i(146593);
-    if (paramString.equals("left"))
-    {
-      this.njQ.setGravity(3);
-      AppMethodBeat.o(146593);
-      return;
-    }
-    if (paramString.equals("right"))
-    {
-      this.njQ.setGravity(5);
-      AppMethodBeat.o(146593);
-      return;
-    }
-    paramString.equals("center");
-    this.njQ.setGravity(17);
+    this.noY.setGravity(17);
     AppMethodBeat.o(146593);
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(146589);
-    this.njQ.setText(paramString);
+    this.noY.setText(paramString);
     AppMethodBeat.o(146589);
   }
   
   public final void setTextColor(int paramInt)
   {
     AppMethodBeat.i(146591);
-    this.njQ.setTextColor(paramInt);
+    this.noY.setTextColor(paramInt);
     AppMethodBeat.o(146591);
   }
   
   public final void setTextPadding(int paramInt)
   {
     AppMethodBeat.i(146592);
-    this.njQ.setPadding(paramInt, paramInt, paramInt, paramInt);
+    this.noY.setPadding(paramInt, paramInt, paramInt, paramInt);
     AppMethodBeat.o(146592);
   }
   
   public final void setTextSize(int paramInt)
   {
     AppMethodBeat.i(146590);
-    this.njQ.setTextSize(paramInt);
+    this.noY.setTextSize(paramInt);
     AppMethodBeat.o(146590);
   }
   

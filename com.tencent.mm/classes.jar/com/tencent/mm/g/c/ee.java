@@ -8,13 +8,13 @@ public abstract class ee
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fjS = "send_id".hashCode();
-  private static final int fjT = "open_count".hashCode();
+  private static final int flP = "send_id".hashCode();
+  private static final int flQ = "open_count".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   public int field_open_count;
   public String field_send_id;
-  private boolean fjQ = true;
-  private boolean fjR = true;
+  private boolean flN = true;
+  private boolean flO = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class ee
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fjS != k) {
+      if (flP != k) {
         break label65;
       }
       this.field_send_id = paramCursor.getString(i);
-      this.fjQ = true;
+      this.flN = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ee
       break label20;
       break;
       label65:
-      if (fjT == k) {
+      if (flQ == k) {
         this.field_open_count = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class ee
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fjQ) {
+    if (this.flN) {
       localContentValues.put("send_id", this.field_send_id);
     }
-    if (this.fjR) {
+    if (this.flO) {
       localContentValues.put("open_count", Integer.valueOf(this.field_open_count));
     }
     if (this.systemRowid > 0L) {

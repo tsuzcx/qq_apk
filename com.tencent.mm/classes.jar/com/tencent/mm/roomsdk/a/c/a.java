@@ -6,18 +6,18 @@ import com.tencent.mm.ui.base.p;
 
 public abstract class a
 {
-  protected boolean HWg = true;
-  protected com.tencent.mm.roomsdk.a.b.a HWh;
-  protected com.tencent.mm.roomsdk.a.b.a HWi;
-  protected com.tencent.mm.roomsdk.a.b.a HWj;
+  protected boolean Iqo = true;
+  protected com.tencent.mm.roomsdk.a.b.a Iqp;
+  protected com.tencent.mm.roomsdk.a.b.a Iqq;
+  protected com.tencent.mm.roomsdk.a.b.a Iqr;
   protected p tipDialog;
   
-  public static b wo(boolean paramBoolean)
+  public static b ww(boolean paramBoolean)
   {
     return new b(paramBoolean);
   }
   
-  public static c wp(boolean paramBoolean)
+  public static c wx(boolean paramBoolean)
   {
     return new c(paramBoolean);
   }
@@ -26,29 +26,29 @@ public abstract class a
   
   public final a b(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.HWh = parama;
+    this.Iqp = parama;
     return this;
   }
   
   public final a c(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.HWi = parama;
+    this.Iqq = parama;
     return this;
   }
+  
+  public abstract void cAs();
   
   public abstract void cancel();
   
-  public abstract void cyR();
-  
   public final a d(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.HWj = parama;
+    this.Iqr = parama;
     return this;
   }
   
-  public final boolean fil()
+  public final boolean fmd()
   {
-    return this.HWg;
+    return this.Iqo;
   }
 }
 

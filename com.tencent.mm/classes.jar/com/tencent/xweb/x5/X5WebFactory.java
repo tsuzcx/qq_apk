@@ -35,7 +35,7 @@ public class X5WebFactory
     AppMethodBeat.i(153884);
     if (sInstance == null)
     {
-      ah.gbl();
+      ah.gfN();
       sInstance = new X5WebFactory();
     }
     X5WebFactory localX5WebFactory = sInstance;
@@ -110,7 +110,7 @@ public class X5WebFactory
   {
     AppMethodBeat.i(153889);
     Object localObject = null;
-    switch (1.Mvi[paramJsRuntimeType.ordinal()])
+    switch (1.MSm[paramJsRuntimeType.ordinal()])
     {
     default: 
       paramJsRuntimeType = localObject;
@@ -134,9 +134,9 @@ public class X5WebFactory
   
   public IWebViewDatabase getWebViewDatabase()
   {
-    AppMethodBeat.i(195522);
+    AppMethodBeat.i(207538);
     n localn = new n();
-    AppMethodBeat.o(195522);
+    AppMethodBeat.o(207538);
     return localn;
   }
   
@@ -174,7 +174,7 @@ public class X5WebFactory
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(153890);
-    ah.gbl();
+    ah.gfN();
     com.tencent.xweb.x5.sdk.d.disableAutoCreateX5Webview();
     b.a(paramContext, paramPreInitCallback);
     AppMethodBeat.o(153890);
@@ -268,32 +268,32 @@ public class X5WebFactory
   
   static final class b
   {
-    private static boolean Mvk = false;
-    private static boolean qls = false;
+    private static boolean MSo = false;
+    private static boolean qrX = false;
     
     public static void a(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
     {
       AppMethodBeat.i(153883);
-      if (qls)
+      if (qrX)
       {
         AppMethodBeat.o(153883);
         return;
       }
       Log.i("X5WebFactory.preIniter", "preInit");
-      qls = true;
+      qrX = true;
       QbSdk.preInit(paramContext, new QbSdk.PreInitCallback()
       {
-        private boolean Mvl = false;
-        private boolean Mvm = false;
+        private boolean MSp = false;
+        private boolean MSq = false;
         
         public final void onCoreInitFinished()
         {
           AppMethodBeat.i(153881);
-          this.Mvl = true;
-          if ((this.Mvl) && (this.Mvm) && (this.DFD != null))
+          this.MSp = true;
+          if ((this.MSp) && (this.MSq) && (this.DXA != null))
           {
-            this.DFD.onCoreInitFinished();
-            X5WebFactory.b.Jy();
+            this.DXA.onCoreInitFinished();
+            X5WebFactory.b.JG();
           }
           AppMethodBeat.o(153881);
         }
@@ -301,11 +301,11 @@ public class X5WebFactory
         public final void onViewInitFinished(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(153882);
-          this.Mvm = true;
-          if ((this.Mvl) && (this.Mvm) && (this.DFD != null))
+          this.MSq = true;
+          if ((this.MSp) && (this.MSq) && (this.DXA != null))
           {
-            this.DFD.onCoreInitFinished();
-            X5WebFactory.b.Jy();
+            this.DXA.onCoreInitFinished();
+            X5WebFactory.b.JG();
           }
           AppMethodBeat.o(153882);
         }
@@ -315,12 +315,12 @@ public class X5WebFactory
     
     public static boolean hasInited()
     {
-      return qls;
+      return qrX;
     }
     
     public static boolean isCoreReady()
     {
-      return Mvk;
+      return MSo;
     }
   }
 }

@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class pr
   extends b
 {
+  public a dEY;
+  public b dEZ;
+  
   public pr()
   {
     this((byte)0);
@@ -12,8 +16,32 @@ public final class pr
   
   private pr(byte paramByte)
   {
-    this.IbR = false;
+    AppMethodBeat.i(91211);
+    this.dEY = new a();
+    this.dEZ = new b();
+    this.IvZ = false;
     this.callback = null;
+    AppMethodBeat.o(91211);
+  }
+  
+  public static final class a
+  {
+    public String appId;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public boolean dFa = false;
+    public String dFb;
+    public String dFc;
+    public String dFd;
+    public String dFe;
+    public String dFf;
+    public String dFg;
+    public String dFh;
+    public int errCode = 0;
+    public String userName;
   }
 }
 

@@ -11,41 +11,41 @@ public abstract class ce
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderConversation_sessionId_index ON FinderConversation(sessionId)", "CREATE INDEX IF NOT EXISTS FinderConversation_talker_index ON FinderConversation(talker)", "CREATE INDEX IF NOT EXISTS FinderConversation_username_status ON FinderConversation(status)", "CREATE INDEX IF NOT EXISTS FinderConversation_updateTime_index ON FinderConversation(updateTime)", "CREATE INDEX IF NOT EXISTS FinderConversation_type_index ON FinderConversation(type)", "CREATE INDEX IF NOT EXISTS FinderConversation_scene_index ON FinderConversation(scene)", "CREATE INDEX IF NOT EXISTS FinderConversation_readStatus_index ON FinderConversation(readStatus)" };
-  private static final int eDc;
-  private static final int eEB = "scene".hashCode();
-  private static final int eEm;
-  private static final int eFq;
-  private static final int eIG;
-  private static final int eII;
-  private static final int eIK;
-  private static final int eIL;
-  private static final int eIN;
-  private static final int eIP;
-  private static final int eLf;
-  private static final int eVL = "sessionId".hashCode();
-  private static final int eYt;
-  private static final int eYu;
-  private static final int eYv;
-  private static final int eYw = "readStatus".hashCode();
+  private static final int eEL;
+  private static final int eFV;
+  private static final int eGZ;
+  private static final int eGk = "scene".hashCode();
+  private static final int eKp;
+  private static final int eKr;
+  private static final int eKt;
+  private static final int eKu;
+  private static final int eKw;
+  private static final int eKy;
+  private static final int eMP;
+  private static final int eXw = "sessionId".hashCode();
+  private static final int fag;
+  private static final int fah;
+  private static final int fai;
+  private static final int faj = "readStatus".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean eCZ = true;
-  private boolean eDP = true;
-  private boolean eEz = true;
-  private boolean eFn = true;
-  private boolean eIA = true;
-  private boolean eIr = true;
-  private boolean eIt = true;
-  private boolean eIv = true;
-  private boolean eIw = true;
-  private boolean eIy = true;
-  private boolean eKS = true;
-  private boolean eVx = true;
-  private boolean eYp = true;
-  private boolean eYq = true;
-  private boolean eYr = true;
-  private boolean eYs = true;
+  private boolean eEI = true;
+  private boolean eFy = true;
+  private boolean eGW = true;
+  private boolean eGi = true;
+  private boolean eKa = true;
+  private boolean eKc = true;
+  private boolean eKe = true;
+  private boolean eKf = true;
+  private boolean eKh = true;
+  private boolean eKj = true;
+  private boolean eMB = true;
+  private boolean eXi = true;
+  private boolean fac = true;
+  private boolean fad = true;
+  private boolean fae = true;
+  private boolean faf = true;
   public int field_actionPermission;
   public String field_content;
   public String field_digest;
@@ -66,95 +66,95 @@ public abstract class ce
   
   static
   {
-    eLf = "talker".hashCode();
-    eIG = "unReadCount".hashCode();
-    eDc = "status".hashCode();
-    eFq = "updateTime".hashCode();
-    eIK = "digest".hashCode();
-    eIL = "digestUser".hashCode();
-    eYt = "digestType".hashCode();
-    eII = "lastMsgID".hashCode();
-    eEm = "content".hashCode();
-    eIP = "isSend".hashCode();
-    eYu = "placedFlag".hashCode();
-    eIN = "editingMsg".hashCode();
+    eMP = "talker".hashCode();
+    eKp = "unReadCount".hashCode();
+    eEL = "status".hashCode();
+    eGZ = "updateTime".hashCode();
+    eKt = "digest".hashCode();
+    eKu = "digestUser".hashCode();
+    fag = "digestType".hashCode();
+    eKr = "lastMsgID".hashCode();
+    eFV = "content".hashCode();
+    eKy = "isSend".hashCode();
+    fah = "placedFlag".hashCode();
+    eKw = "editingMsg".hashCode();
     type_HASHCODE = "type".hashCode();
-    eYv = "actionPermission".hashCode();
+    fai = "actionPermission".hashCode();
   }
   
-  public static c.a Vv()
+  public static c.a VD()
   {
     c.a locala = new c.a();
-    locala.IhA = new Field[17];
+    locala.IBL = new Field[17];
     locala.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "sessionId";
-    locala.IhC.put("sessionId", "TEXT default ''  PRIMARY KEY ");
+    locala.IBN.put("sessionId", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" sessionId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IhB = "sessionId";
+    locala.IBM = "sessionId";
     locala.columns[1] = "talker";
-    locala.IhC.put("talker", "TEXT default '' ");
+    locala.IBN.put("talker", "TEXT default '' ");
     localStringBuilder.append(" talker TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "unReadCount";
-    locala.IhC.put("unReadCount", "INTEGER default '0' ");
+    locala.IBN.put("unReadCount", "INTEGER default '0' ");
     localStringBuilder.append(" unReadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.IhC.put("status", "INTEGER default '0' ");
+    locala.IBN.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "updateTime";
-    locala.IhC.put("updateTime", "LONG default '0' ");
+    locala.IBN.put("updateTime", "LONG default '0' ");
     localStringBuilder.append(" updateTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "digest";
-    locala.IhC.put("digest", "TEXT default '' ");
+    locala.IBN.put("digest", "TEXT default '' ");
     localStringBuilder.append(" digest TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "digestUser";
-    locala.IhC.put("digestUser", "TEXT default '' ");
+    locala.IBN.put("digestUser", "TEXT default '' ");
     localStringBuilder.append(" digestUser TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "digestType";
-    locala.IhC.put("digestType", "TEXT default '' ");
+    locala.IBN.put("digestType", "TEXT default '' ");
     localStringBuilder.append(" digestType TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "lastMsgID";
-    locala.IhC.put("lastMsgID", "LONG");
+    locala.IBN.put("lastMsgID", "LONG");
     localStringBuilder.append(" lastMsgID LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "content";
-    locala.IhC.put("content", "TEXT");
+    locala.IBN.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "isSend";
-    locala.IhC.put("isSend", "INTEGER");
+    locala.IBN.put("isSend", "INTEGER");
     localStringBuilder.append(" isSend INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "placedFlag";
-    locala.IhC.put("placedFlag", "LONG default '0' ");
+    locala.IBN.put("placedFlag", "LONG default '0' ");
     localStringBuilder.append(" placedFlag LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "editingMsg";
-    locala.IhC.put("editingMsg", "TEXT");
+    locala.IBN.put("editingMsg", "TEXT");
     localStringBuilder.append(" editingMsg TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "type";
-    locala.IhC.put("type", "INTEGER");
+    locala.IBN.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[14] = "actionPermission";
-    locala.IhC.put("actionPermission", "INTEGER");
+    locala.IBN.put("actionPermission", "INTEGER");
     localStringBuilder.append(" actionPermission INTEGER");
     localStringBuilder.append(", ");
     locala.columns[15] = "scene";
-    locala.IhC.put("scene", "INTEGER");
+    locala.IBN.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
     locala.columns[16] = "readStatus";
-    locala.IhC.put("readStatus", "INTEGER");
+    locala.IBN.put("readStatus", "INTEGER");
     localStringBuilder.append(" readStatus INTEGER");
     locala.columns[17] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -174,11 +174,11 @@ public abstract class ce
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVL != k) {
+      if (eXw != k) {
         break label65;
       }
       this.field_sessionId = paramCursor.getString(i);
-      this.eVx = true;
+      this.eXi = true;
     }
     for (;;)
     {
@@ -186,37 +186,37 @@ public abstract class ce
       break label20;
       break;
       label65:
-      if (eLf == k) {
+      if (eMP == k) {
         this.field_talker = paramCursor.getString(i);
-      } else if (eIG == k) {
+      } else if (eKp == k) {
         this.field_unReadCount = paramCursor.getInt(i);
-      } else if (eDc == k) {
+      } else if (eEL == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (eFq == k) {
+      } else if (eGZ == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (eIK == k) {
+      } else if (eKt == k) {
         this.field_digest = paramCursor.getString(i);
-      } else if (eIL == k) {
+      } else if (eKu == k) {
         this.field_digestUser = paramCursor.getString(i);
-      } else if (eYt == k) {
+      } else if (fag == k) {
         this.field_digestType = paramCursor.getString(i);
-      } else if (eII == k) {
+      } else if (eKr == k) {
         this.field_lastMsgID = paramCursor.getLong(i);
-      } else if (eEm == k) {
+      } else if (eFV == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (eIP == k) {
+      } else if (eKy == k) {
         this.field_isSend = paramCursor.getInt(i);
-      } else if (eYu == k) {
+      } else if (fah == k) {
         this.field_placedFlag = paramCursor.getLong(i);
-      } else if (eIN == k) {
+      } else if (eKw == k) {
         this.field_editingMsg = paramCursor.getString(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eYv == k) {
+      } else if (fai == k) {
         this.field_actionPermission = paramCursor.getInt(i);
-      } else if (eEB == k) {
+      } else if (eGk == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (eYw == k) {
+      } else if (faj == k) {
         this.field_readStatus = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -230,67 +230,67 @@ public abstract class ce
     if (this.field_sessionId == null) {
       this.field_sessionId = "";
     }
-    if (this.eVx) {
+    if (this.eXi) {
       localContentValues.put("sessionId", this.field_sessionId);
     }
     if (this.field_talker == null) {
       this.field_talker = "";
     }
-    if (this.eKS) {
+    if (this.eMB) {
       localContentValues.put("talker", this.field_talker);
     }
-    if (this.eIr) {
+    if (this.eKa) {
       localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
     }
-    if (this.eCZ) {
+    if (this.eEI) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eFn) {
+    if (this.eGW) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.field_digest == null) {
       this.field_digest = "";
     }
-    if (this.eIv) {
+    if (this.eKe) {
       localContentValues.put("digest", this.field_digest);
     }
     if (this.field_digestUser == null) {
       this.field_digestUser = "";
     }
-    if (this.eIw) {
+    if (this.eKf) {
       localContentValues.put("digestUser", this.field_digestUser);
     }
     if (this.field_digestType == null) {
       this.field_digestType = "";
     }
-    if (this.eYp) {
+    if (this.fac) {
       localContentValues.put("digestType", this.field_digestType);
     }
-    if (this.eIt) {
+    if (this.eKc) {
       localContentValues.put("lastMsgID", Long.valueOf(this.field_lastMsgID));
     }
-    if (this.eDP) {
+    if (this.eFy) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.eIA) {
+    if (this.eKj) {
       localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
-    if (this.eYq) {
+    if (this.fad) {
       localContentValues.put("placedFlag", Long.valueOf(this.field_placedFlag));
     }
-    if (this.eIy) {
+    if (this.eKh) {
       localContentValues.put("editingMsg", this.field_editingMsg);
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eYr) {
+    if (this.fae) {
       localContentValues.put("actionPermission", Integer.valueOf(this.field_actionPermission));
     }
-    if (this.eEz) {
+    if (this.eGi) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eYs) {
+    if (this.faf) {
       localContentValues.put("readStatus", Integer.valueOf(this.field_readStatus));
     }
     if (this.systemRowid > 0L) {

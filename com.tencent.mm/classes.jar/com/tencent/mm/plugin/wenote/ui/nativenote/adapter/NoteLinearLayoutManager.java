@@ -8,21 +8,21 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class NoteLinearLayoutManager
   extends LinearLayoutManager
 {
-  private final int ECu;
-  public int psl;
-  public boolean psm;
+  private final int EUQ;
+  public int pyR;
+  public boolean pyS;
   
   public NoteLinearLayoutManager()
   {
     AppMethodBeat.i(30837);
-    this.ECu = i.iG(aj.getContext());
-    this.psl = -1;
-    this.psm = false;
+    this.EUQ = i.iL(ak.getContext());
+    this.pyR = -1;
+    this.pyS = false;
     AppMethodBeat.o(30837);
   }
   
@@ -30,9 +30,9 @@ public class NoteLinearLayoutManager
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
     AppMethodBeat.i(30838);
-    this.ECu = i.iG(aj.getContext());
-    this.psl = -1;
-    this.psm = false;
+    this.EUQ = i.iL(ak.getContext());
+    this.pyR = -1;
+    this.pyS = false;
     AppMethodBeat.o(30838);
   }
   
@@ -40,7 +40,7 @@ public class NoteLinearLayoutManager
   {
     int j = 1;
     AppMethodBeat.i(30839);
-    if (!this.psm)
+    if (!this.pyS)
     {
       paramInt = super.b(paramInt, paramo, paramt);
       AppMethodBeat.o(30839);
@@ -55,13 +55,13 @@ public class NoteLinearLayoutManager
     for (;;)
     {
       if (paramInt > 0) {
-        if (this.ECu + k.aX(49.0F) < paramInt) {
+        if (this.EUQ + k.aX(49.0F) < paramInt) {
           i = j;
         }
       }
       for (;;)
       {
-        if ((i != 0) && (this.psm))
+        if ((i != 0) && (this.pyS))
         {
           AppMethodBeat.o(30839);
           return 0;
@@ -88,8 +88,8 @@ public class NoteLinearLayoutManager
   
   public final int c(RecyclerView.t paramt)
   {
-    if (this.psl > 0) {
-      return this.psl;
+    if (this.pyR > 0) {
+      return this.pyR;
     }
     return 900;
   }

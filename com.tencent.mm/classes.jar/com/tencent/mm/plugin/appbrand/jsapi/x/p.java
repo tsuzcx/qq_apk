@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ae;
 import org.json.JSONObject;
 
 public final class p
@@ -18,7 +18,7 @@ public final class p
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137689);
-    ad.d("MicroMsg.JsApiVibrateLong", "JsApiVibrateLong!");
+    ae.d("MicroMsg.JsApiVibrateLong", "JsApiVibrateLong!");
     paramJSONObject = (Vibrator)paramc.getContext().getSystemService("vibrator");
     if (paramJSONObject != null) {
       paramJSONObject.vibrate(400L);
@@ -29,7 +29,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.x.p
  * JD-Core Version:    0.7.0.1
  */

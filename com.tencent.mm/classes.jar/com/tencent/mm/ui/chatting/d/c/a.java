@@ -5,20 +5,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.g.a.nw;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.g.a.nx;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
-import com.tencent.mm.plugin.appbrand.service.n;
-import com.tencent.mm.protocal.protobuf.bcq;
-import com.tencent.mm.protocal.protobuf.bcr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.protocal.protobuf.bdg;
+import com.tencent.mm.protocal.protobuf.bdh;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.appbrand.d;
 import com.tencent.mm.ui.appbrand.e;
@@ -29,43 +29,43 @@ import com.tencent.mm.ui.chatting.d.b.y;
 public final class a
   extends c
 {
-  private WxaExposedParams JOD;
-  private boolean JOE;
-  private com.tencent.mm.sdk.b.c<nw> JOF;
-  private String JOG;
+  private WxaExposedParams KjP;
+  private boolean KjQ;
+  private com.tencent.mm.sdk.b.c<nx> KjR;
+  private String KjS;
   private d appBrandServiceActionSheet;
   private String appId;
-  private int fPp;
-  private String kKo;
-  private String kKp;
-  private String kKq;
-  private String kKr;
-  private String kKs;
+  private int fRv;
+  private String kND;
+  private String kNE;
+  private String kNF;
+  private String kNG;
+  private String kNH;
   private String mSceneId;
   
   public a()
   {
     AppMethodBeat.i(35797);
-    this.JOF = new a.1(this);
-    this.JOG = "";
+    this.KjR = new com.tencent.mm.sdk.b.c() {};
+    this.KjS = "";
     AppMethodBeat.o(35797);
   }
   
-  private void aH(final Runnable paramRunnable)
+  private void aF(final Runnable paramRunnable)
   {
-    AppMethodBeat.i(194123);
-    aq.f(new Runnable()
+    AppMethodBeat.i(187460);
+    ar.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194122);
-        String str2 = e.aVw(a.this.cWM.getTalkerUserName());
+        AppMethodBeat.i(187459);
+        String str2 = e.aWX(a.this.cXJ.getTalkerUserName());
         String str1;
-        if (bt.isNullOrNil(str2))
+        if (bu.isNullOrNil(str2))
         {
-          str2 = a.this.cWM.getTalkerUserName();
-          if (bt.isNullOrNil(a.this.cWM.fCR())) {
-            str1 = e.aVx(a.this.cWM.getTalkerUserName());
+          str2 = a.this.cXJ.getTalkerUserName();
+          if (bu.isNullOrNil(a.this.cXJ.fGT())) {
+            str1 = e.aWY(a.this.cXJ.getTalkerUserName());
           }
         }
         for (;;)
@@ -76,227 +76,227 @@ public final class a
           if ((a.d(a.this) != 2) && (a.d(a.this) != 3))
           {
             WxaExposedParams.a locala = new WxaExposedParams.a();
-            locala.appId = e.NE(str2);
+            locala.appId = e.Om(str2);
             locala.from = 4;
             locala.username = str2;
             locala.nickname = str1;
-            a.a(a.this, locala.bet());
+            a.a(a.this, locala.bfb());
           }
           if (paramRunnable != null) {
             paramRunnable.run();
           }
-          AppMethodBeat.o(194122);
+          AppMethodBeat.o(187459);
           return;
-          str1 = a.this.cWM.fCR();
+          str1 = a.this.cXJ.fGT();
           continue;
-          str1 = e.aVx(str2);
+          str1 = e.aWY(str2);
         }
       }
     });
-    AppMethodBeat.o(194123);
+    AppMethodBeat.o(187460);
   }
   
-  public final void fDo()
+  public final void fAs()
+  {
+    AppMethodBeat.i(35798);
+    this.fRv = this.cXJ.Kkd.getIntExtra("app_brand_chatting_from_scene", 1);
+    this.KjP = ((WxaExposedParams)this.cXJ.Kkd.getParcelableExtra("app_brand_chatting_expose_params"));
+    this.mSceneId = bu.nullAsNil(this.cXJ.Kkd.getStringExtra("key_scene_id"));
+    ae.i("MicroMsg.AppBrandServiceComponent", "onChattingInit() fromScene:%d wxaExposedParams:%s mSceneId:%s", new Object[] { Integer.valueOf(this.fRv), this.KjP, this.mSceneId });
+    this.kND = this.cXJ.Kkd.getStringExtra("keyPrivateAppId");
+    if (!bu.isNullOrNil(this.kND))
+    {
+      this.kNE = this.cXJ.Kkd.getStringExtra("keyPrivateUserName");
+      this.kNF = this.cXJ.Kkd.getStringExtra("keyPrivateTitle");
+      this.kNG = this.cXJ.Kkd.getStringExtra("keyPrivateSubTitle");
+      this.kNH = this.cXJ.Kkd.getStringExtra("keyPrivateHeadImage");
+      ae.i("MicroMsg.AppBrandServiceComponent", "onChattingInit customized appId:%s, username:%s, title:%s, subtitle:%s, headImage:%s", new Object[] { this.kND, this.kNE, this.kNF, this.kNG, this.kNH });
+    }
+    this.appBrandServiceActionSheet = new d(this.cXJ.Kkd.getContext());
+    Object localObject = ((o)g.ab(o.class)).Ob(this.cXJ.getTalkerUserName());
+    boolean bool;
+    String str;
+    b.a locala;
+    bdg localbdg;
+    if ((localObject != null) && ((((WxaAttributes)localObject).field_appOpt & 0x2) > 0))
+    {
+      bool = true;
+      this.KjQ = bool;
+      str = this.cXJ.getTalkerUserName();
+      localObject = getAppId();
+      locala = new b.a();
+      locala.funcId = 2912;
+      locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getkefusessioninfo";
+      locala.hQH = 0;
+      locala.respCmdId = 0;
+      localbdg = new bdg();
+      str = e.aWX(str);
+      if (!bu.isNullOrNil(str)) {
+        break label419;
+      }
+      localbdg.dwb = ((String)localObject);
+    }
+    for (localbdg.GSI = "";; localbdg.GSI = ((String)localObject))
+    {
+      locala.hQF = localbdg;
+      locala.hQG = new bdh();
+      com.tencent.mm.ak.x.a(locala.aDS(), new e.2());
+      AppMethodBeat.o(35798);
+      return;
+      bool = false;
+      break;
+      label419:
+      localbdg.dwb = e.Om(str);
+    }
+  }
+  
+  public final void fAv()
+  {
+    AppMethodBeat.i(35799);
+    this.KjR.alive();
+    AppMethodBeat.o(35799);
+  }
+  
+  public final void fAw()
+  {
+    AppMethodBeat.i(35800);
+    this.KjR.dead();
+    AppMethodBeat.o(35800);
+  }
+  
+  public final void fHr()
   {
     AppMethodBeat.i(35801);
-    ad.i("MicroMsg.AppBrandServiceComponent", "updateStaticTitle()");
-    this.JOG = e.aVx(e.aVw(this.cWM.getTalkerUserName()));
+    ae.i("MicroMsg.AppBrandServiceComponent", "updateStaticTitle()");
+    this.KjS = e.aWY(e.aWX(this.cXJ.getTalkerUserName()));
     boolean bool;
-    if (!bt.isNullOrNil(this.kKq))
+    if (!bu.isNullOrNil(this.kNF))
     {
-      this.cWM.JOR.setMMTitle(this.kKq);
-      if (bt.isNullOrNil(this.kKr)) {
-        break label175;
+      this.cXJ.Kkd.setMMTitle(this.kNF);
+      if (bu.isNullOrNil(this.kNG)) {
+        break label180;
       }
-      this.cWM.JOR.setMMSubTitle(this.kKr);
-      if (!this.kKr.equals(this.JOG)) {
-        break label275;
+      this.cXJ.Kkd.setMMSubTitle(this.kNG);
+      if (!this.kNG.equals(this.KjS)) {
+        break label285;
       }
       bool = true;
     }
     for (;;)
     {
-      aH(null);
-      ((y)this.cWM.bh(y.class)).a(bool, new View.OnClickListener()
+      aF(null);
+      ((y)this.cXJ.bh(y.class)).a(bool, new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(194119);
+          AppMethodBeat.i(187456);
           b localb = new b();
           localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/component/appbrand/AppBrandServiceComponent$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
-          ad.i("MicroMsg.AppBrandServiceComponent", "MMTitleGotoBtn onClick");
-          a.a(a.this.cWM.JOR.getContext(), a.b(a.this));
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/component/appbrand/AppBrandServiceComponent$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          ae.i("MicroMsg.AppBrandServiceComponent", "MMTitleGotoBtn onClick");
+          a.a(a.this.cXJ.Kkd.getContext(), a.b(a.this));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/component/appbrand/AppBrandServiceComponent$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(194119);
+          AppMethodBeat.o(187456);
         }
       });
-      if (this.JOE)
+      if (this.KjQ)
       {
-        ((y)this.cWM.bh(y.class)).adj(0);
+        ((y)this.cXJ.bh(y.class)).adQ(0);
         AppMethodBeat.o(35801);
         return;
-        this.cWM.JOR.setMMTitle(this.cWM.fCR());
+        this.cXJ.Kkd.setMMTitle(this.cXJ.fGT());
         break;
-        label175:
-        if (bt.isNullOrNil(this.JOG))
+        label180:
+        if (bu.isNullOrNil(this.KjS))
         {
-          this.cWM.JOR.setMMSubTitle(2131755654);
+          this.cXJ.Kkd.setMMSubTitle(2131755654);
           bool = false;
           continue;
         }
-        this.cWM.JOR.setMMSubTitle(aj.getContext().getString(2131755654) + "-" + this.JOG);
+        this.cXJ.Kkd.setMMSubTitle(ak.getContext().getString(2131755654) + "-" + this.KjS);
         bool = true;
         continue;
       }
-      ((y)this.cWM.bh(y.class)).adj(8);
+      ((y)this.cXJ.bh(y.class)).adQ(8);
       AppMethodBeat.o(35801);
       return;
-      label275:
+      label285:
       bool = false;
     }
   }
   
-  public final void fFp()
+  public final void fJw()
   {
     AppMethodBeat.i(35802);
-    this.cWM.JOR.addIconOptionMenu(0, 2131755533, 2131690603, new com.tencent.mm.ui.x()
+    this.cXJ.Kkd.addIconOptionMenu(0, 2131755533, 2131690603, new com.tencent.mm.ui.x()
     {
-      public final void Zi()
+      public final void Zr()
       {
-        AppMethodBeat.i(194121);
-        a.this.cWM.hideVKB();
+        AppMethodBeat.i(187458);
+        a.this.cXJ.hideVKB();
         a.a(a.this, new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(194120);
-            a.c(a.this).username = a.this.cWM.getTalkerUserName();
-            a.c(a.this).nob = false;
+            AppMethodBeat.i(187457);
+            a.c(a.this).username = a.this.cXJ.getTalkerUserName();
+            a.c(a.this).ntl = false;
             a.c(a.this).scene = a.d(a.this);
-            a.c(a.this).Jht = a.e(a.this);
-            a.c(a.this).mDM = a.b(a.this);
+            a.c(a.this).JCe = a.e(a.this);
+            a.c(a.this).mIR = a.b(a.this);
             if ((a.d(a.this) == 2) || (a.d(a.this) == 3))
             {
               if (a.a(a.this))
               {
                 a.c(a.this).show(1);
-                AppMethodBeat.o(194120);
+                AppMethodBeat.o(187457);
                 return;
               }
               a.c(a.this).show(2);
-              AppMethodBeat.o(194120);
+              AppMethodBeat.o(187457);
               return;
             }
             a.c(a.this).appId = a.this.getAppId();
             if (a.a(a.this))
             {
               a.c(a.this).show(5);
-              AppMethodBeat.o(194120);
+              AppMethodBeat.o(187457);
               return;
             }
             a.c(a.this).show(6);
-            AppMethodBeat.o(194120);
+            AppMethodBeat.o(187457);
           }
         });
-        AppMethodBeat.o(194121);
+        AppMethodBeat.o(187458);
       }
     });
     AppMethodBeat.o(35802);
   }
   
-  public final String fFq()
+  public final String fJx()
   {
-    return this.kKs;
-  }
-  
-  public final void fws()
-  {
-    AppMethodBeat.i(35798);
-    this.fPp = this.cWM.JOR.getIntExtra("app_brand_chatting_from_scene", 1);
-    this.JOD = ((WxaExposedParams)this.cWM.JOR.getParcelableExtra("app_brand_chatting_expose_params"));
-    this.mSceneId = bt.nullAsNil(this.cWM.JOR.getStringExtra("key_scene_id"));
-    ad.i("MicroMsg.AppBrandServiceComponent", "onChattingInit() fromScene:%d wxaExposedParams:%s mSceneId:%s", new Object[] { Integer.valueOf(this.fPp), this.JOD, this.mSceneId });
-    this.kKo = this.cWM.JOR.getStringExtra("keyPrivateAppId");
-    if (!bt.isNullOrNil(this.kKo))
-    {
-      this.kKp = this.cWM.JOR.getStringExtra("keyPrivateUserName");
-      this.kKq = this.cWM.JOR.getStringExtra("keyPrivateTitle");
-      this.kKr = this.cWM.JOR.getStringExtra("keyPrivateSubTitle");
-      this.kKs = this.cWM.JOR.getStringExtra("keyPrivateHeadImage");
-      ad.i("MicroMsg.AppBrandServiceComponent", "onChattingInit customized appId:%s, username:%s, title:%s, subtitle:%s, headImage:%s", new Object[] { this.kKo, this.kKp, this.kKq, this.kKr, this.kKs });
-    }
-    this.appBrandServiceActionSheet = new d(this.cWM.JOR.getContext());
-    Object localObject = ((n)g.ab(n.class)).Nt(this.cWM.getTalkerUserName());
-    boolean bool;
-    String str;
-    b.a locala;
-    bcq localbcq;
-    if ((localObject != null) && ((((WxaAttributes)localObject).field_appOpt & 0x2) > 0))
-    {
-      bool = true;
-      this.JOE = bool;
-      str = this.cWM.getTalkerUserName();
-      localObject = getAppId();
-      locala = new b.a();
-      locala.funcId = 2912;
-      locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getkefusessioninfo";
-      locala.hNO = 0;
-      locala.respCmdId = 0;
-      localbcq = new bcq();
-      str = e.aVw(str);
-      if (!bt.isNullOrNil(str)) {
-        break label432;
-      }
-      localbcq.duW = ((String)localObject);
-    }
-    for (localbcq.Gzi = "";; localbcq.Gzi = ((String)localObject))
-    {
-      locala.hNM = localbcq;
-      locala.hNN = new bcr();
-      com.tencent.mm.al.x.a(locala.aDC(), new e.2());
-      AppMethodBeat.o(35798);
-      return;
-      bool = false;
-      break;
-      label432:
-      localbcq.duW = e.NE(str);
-    }
-  }
-  
-  public final void fwv()
-  {
-    AppMethodBeat.i(35799);
-    this.JOF.alive();
-    AppMethodBeat.o(35799);
-  }
-  
-  public final void fww()
-  {
-    AppMethodBeat.i(35800);
-    this.JOF.dead();
-    AppMethodBeat.o(35800);
+    return this.kNH;
   }
   
   protected final String getAppId()
   {
     AppMethodBeat.i(35803);
-    if (!bt.isNullOrNil(this.kKo)) {
-      this.appId = this.kKo;
+    if (!bu.isNullOrNil(this.kND)) {
+      this.appId = this.kND;
     }
-    if (bt.isNullOrNil(this.appId))
+    if (bu.isNullOrNil(this.appId))
     {
-      localObject = ((n)g.ab(n.class)).Nt(this.cWM.getTalkerUserName());
+      localObject = ((o)g.ab(o.class)).Ob(this.cXJ.getTalkerUserName());
       if (localObject != null) {
-        break label98;
+        break label97;
       }
     }
-    label98:
+    label97:
     for (Object localObject = null;; localObject = ((WxaAttributes)localObject).field_appId)
     {
       this.appId = ((String)localObject);
-      if (bt.isNullOrNil(this.appId)) {
-        ad.e("MicroMsg.AppBrandServiceComponent", "error, appId is null");
+      if (bu.isNullOrNil(this.appId)) {
+        ae.e("MicroMsg.AppBrandServiceComponent", "error, appId is null");
       }
       localObject = this.appId;
       AppMethodBeat.o(35803);

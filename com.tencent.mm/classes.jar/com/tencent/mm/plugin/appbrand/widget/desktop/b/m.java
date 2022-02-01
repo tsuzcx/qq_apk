@@ -4,13 +4,13 @@ import android.view.View;
 
 public abstract interface m
 {
-  public abstract float bAn();
+  public abstract float bBi();
   
-  public abstract float bAo();
+  public abstract float bBj();
   
-  public abstract Object cC(Object paramObject);
+  public abstract Object cD(Object paramObject);
   
-  public abstract View cQ(View paramView);
+  public abstract View cR(View paramView);
   
   public abstract void h(Object paramObject, int paramInt);
 }

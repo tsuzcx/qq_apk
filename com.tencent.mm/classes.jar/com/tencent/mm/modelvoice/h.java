@@ -9,7 +9,7 @@ public final class h
   public h(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
     AppMethodBeat.i(130037);
-    this.decodeHandle = MediaRecorder.SilkDecInit(paramInt1, paramArrayOfByte, paramInt2, MediaRecorder.ivZ);
+    this.decodeHandle = MediaRecorder.SilkDecInit(paramInt1, paramArrayOfByte, paramInt2, MediaRecorder.iyS);
     AppMethodBeat.o(130037);
   }
   

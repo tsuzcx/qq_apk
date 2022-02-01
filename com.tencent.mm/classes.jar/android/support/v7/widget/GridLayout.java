@@ -8,6 +8,7 @@ import android.support.v4.view.v;
 import android.support.v7.e.a.a;
 import android.util.AttributeSet;
 import android.util.LogPrinter;
+import android.util.Pair;
 import android.util.Printer;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -17,9 +18,11 @@ import android.view.ViewGroup.MarginLayoutParams;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.List<Landroid.support.v7.widget.GridLayout.b;>;
+import java.util.Map;
 
 public class GridLayout
   extends ViewGroup
@@ -1333,6 +1336,44 @@ public class GridLayout
     }
   }
   
+  static final class c<K, V>
+    extends ArrayList<Pair<K, V>>
+  {
+    private final Class<K> aox;
+    private final Class<V> aoy;
+    
+    private c(Class<K> paramClass, Class<V> paramClass1)
+    {
+      this.aox = paramClass;
+      this.aoy = paramClass1;
+    }
+    
+    public static <K, V> c<K, V> a(Class<K> paramClass, Class<V> paramClass1)
+    {
+      return new c(paramClass, paramClass1);
+    }
+    
+    public final void e(K paramK, V paramV)
+    {
+      add(Pair.create(paramK, paramV));
+    }
+    
+    public final GridLayout.h<K, V> jL()
+    {
+      int j = size();
+      Object[] arrayOfObject1 = (Object[])Array.newInstance(this.aox, j);
+      Object[] arrayOfObject2 = (Object[])Array.newInstance(this.aoy, j);
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfObject1[i] = ((Pair)get(i)).first;
+        arrayOfObject2[i] = ((Pair)get(i)).second;
+        i += 1;
+      }
+      return new GridLayout.h(arrayOfObject1, arrayOfObject2);
+    }
+  }
+  
   final class d
   {
     public int aoA = -2147483648;
@@ -2353,6 +2394,60 @@ public class GridLayout
     }
   }
   
+  static final class h<K, V>
+  {
+    public final int[] apt;
+    public final K[] apu;
+    public final V[] apv;
+    
+    h(K[] paramArrayOfK, V[] paramArrayOfV)
+    {
+      this.apt = c(paramArrayOfK);
+      this.apu = a(paramArrayOfK, this.apt);
+      this.apv = a(paramArrayOfV, this.apt);
+    }
+    
+    private static <K> K[] a(K[] paramArrayOfK, int[] paramArrayOfInt)
+    {
+      int j = paramArrayOfK.length;
+      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfK.getClass().getComponentType(), GridLayout.j(paramArrayOfInt) + 1);
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfObject[paramArrayOfInt[i]] = paramArrayOfK[i];
+        i += 1;
+      }
+      return arrayOfObject;
+    }
+    
+    private static <K> int[] c(K[] paramArrayOfK)
+    {
+      int j = paramArrayOfK.length;
+      int[] arrayOfInt = new int[j];
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      while (i < j)
+      {
+        K ? = paramArrayOfK[i];
+        Integer localInteger2 = (Integer)localHashMap.get(?);
+        Integer localInteger1 = localInteger2;
+        if (localInteger2 == null)
+        {
+          localInteger1 = Integer.valueOf(localHashMap.size());
+          localHashMap.put(?, localInteger1);
+        }
+        arrayOfInt[i] = localInteger1.intValue();
+        i += 1;
+      }
+      return arrayOfInt;
+    }
+    
+    public final V bT(int paramInt)
+    {
+      return this.apv[this.apt[paramInt]];
+    }
+  }
+  
   public static class i
   {
     static final i apw = ;
@@ -2419,7 +2514,7 @@ public class GridLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.GridLayout
  * JD-Core Version:    0.7.0.1
  */

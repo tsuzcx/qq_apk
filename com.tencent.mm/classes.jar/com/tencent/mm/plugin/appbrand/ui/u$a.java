@@ -1,30 +1,36 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.content.Context;
+import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.d;
-import com.tencent.mm.sdk.platformtools.ax;
+import d.g.a.b;
 import d.l;
+import d.v;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/FakeNativeSnapshotDisplayLoadingSplash$Companion;", "", "()V", "KEY", "", "setCanShowAlphaCover", "", "can", "", "plugin-appbrand-integration_release"})
-public final class u$a
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+final class u$a
+  implements Runnable
 {
-  public static void setCanShowAlphaCover(boolean paramBoolean)
+  u$a(Context paramContext, b paramb) {}
+  
+  public final void run()
   {
-    AppMethodBeat.i(189618);
-    Object localObject = d.jDy;
-    localObject = d.Lv();
-    if (localObject != null)
+    AppMethodBeat.i(51153);
+    Object localObject = this.crf.getSystemService("power");
+    if (localObject == null)
     {
-      ((ax)localObject).putBoolean("FakeNativeSnapshotDisplayLoadingSplash_SHOW_ALPHA_COVER", paramBoolean);
-      AppMethodBeat.o(189618);
-      return;
+      localObject = new v("null cannot be cast to non-null type android.os.PowerManager");
+      AppMethodBeat.o(51153);
+      throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(189618);
+    boolean bool = ((PowerManager)localObject).isInteractive();
+    this.mKM.invoke(Boolean.valueOf(bool));
+    AppMethodBeat.o(51153);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.u.a
  * JD-Core Version:    0.7.0.1
  */

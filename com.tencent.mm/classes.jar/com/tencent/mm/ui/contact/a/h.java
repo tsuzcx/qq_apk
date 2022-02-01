@@ -11,30 +11,30 @@ import com.tencent.mm.plugin.fts.ui.n;
 public final class h
   extends a
 {
-  private b Krl;
-  a Krm;
+  private b KNF;
+  a KNG;
   public String header;
   
   public h(int paramInt)
   {
     super(0, paramInt);
     AppMethodBeat.i(102960);
-    this.Krl = new b();
-    this.Krm = new a();
+    this.KNF = new b();
+    this.KNG = new a();
     AppMethodBeat.o(102960);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aRs()
+  public final a.b aRR()
   {
-    return this.Krl;
+    return this.KNF;
   }
   
   public final class a
     extends a.a
   {
-    public TextView oUO;
+    public TextView pbr;
     
     public a()
     {
@@ -54,8 +54,8 @@ public final class h
     {
       AppMethodBeat.i(102958);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495362, paramViewGroup, false);
-      paramViewGroup = (h.a)h.this.Krm;
-      paramViewGroup.oUO = ((TextView)paramContext.findViewById(2131300734));
+      paramViewGroup = (h.a)h.this.KNG;
+      paramViewGroup.pbr = ((TextView)paramContext.findViewById(2131300734));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102958);
       return paramContext;
@@ -65,11 +65,11 @@ public final class h
     {
       AppMethodBeat.i(102959);
       paramContext = (h.a)parama;
-      n.a(((h)parama1).header, paramContext.oUO);
+      n.a(((h)parama1).header, paramContext.pbr);
       AppMethodBeat.o(102959);
     }
     
-    public final boolean aRt()
+    public final boolean aRS()
     {
       return false;
     }

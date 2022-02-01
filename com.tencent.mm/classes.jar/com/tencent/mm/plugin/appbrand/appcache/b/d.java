@@ -5,12 +5,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.n.a;
 import com.tencent.mm.plugin.appbrand.config.x;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.service.s;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.vending.g.d.b;
-import com.tencent.mm.vending.g.e;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.storage.an;
 import d.a.j;
 import d.g.a.a;
 import d.g.b.p;
@@ -21,53 +19,48 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl;", "Lcom/tencent/mm/plugin/appbrand/service/IWxaPreDownloadServiceExport;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "()V", "wxaQRScanSheetPreloadListener", "com/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$wxaQRScanSheetPreloadListener$1", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$wxaQRScanSheetPreloadListener$1;", "batchPreloadAttrs", "", "usernameList", "", "", "scene", "Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync$BatchSyncScene;", "onSuccess", "Lkotlin/Function0;", "canSyncWxaUsername", "", "username", "onRegister", "onUnregister", "triggerPreDownload", "triggerPrefetchChattingItemAppBrandPiece", "triggerPrefetchChattingItemWeishiVideoFakeNative", "triggerPrefetchMallIndexWeAppLinks", "appLinks", "", "triggerPrefetchWeAppQRCode", "Companion", "plugin-appbrand-integration_release"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl;", "Lcom/tencent/mm/plugin/appbrand/service/IWxaPreDownloadServiceExport;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "()V", "scanBeforeA8KeyListener", "com/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$scanBeforeA8KeyListener$1", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$scanBeforeA8KeyListener$1;", "wxaQRScanSheetPreloadListener", "com/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$wxaQRScanSheetPreloadListener$1", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$wxaQRScanSheetPreloadListener$1;", "canSyncWxaUsername", "", "username", "", "checkIfWaitWxaAttrsPreloadDone", "block", "Lkotlin/Function0;", "", "onRegister", "onUnregister", "triggerPreDownload", "triggerPrefetchChattingItemAppBrandPiece", "triggerPrefetchChattingItemWeishiVideoFakeNative", "triggerPrefetchMallIndexWeAppLinks", "appLinks", "", "triggerPrefetchWeAppQRCode", "Companion", "plugin-appbrand-integration_release"})
 public final class d
-  implements com.tencent.mm.kernel.c.b, r
+  implements com.tencent.mm.kernel.c.b, s
 {
   @Deprecated
-  public static final a jJS;
-  private final e jJR;
+  public static final a jMV;
+  private final d jMT;
+  private final b jMU;
   
   static
   {
     AppMethodBeat.i(180434);
-    jJS = new a((byte)0);
+    jMV = new a((byte)0);
     AppMethodBeat.o(180434);
   }
   
   public d()
   {
-    AppMethodBeat.i(188981);
-    this.jJR = new e(this);
-    AppMethodBeat.o(188981);
+    AppMethodBeat.i(223224);
+    this.jMT = new d(this);
+    this.jMU = new b();
+    AppMethodBeat.o(223224);
   }
   
-  static boolean LP(String paramString)
+  static boolean Ms(String paramString)
   {
-    AppMethodBeat.i(188974);
+    AppMethodBeat.i(223219);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; (i == 0) && (am.yt(paramString)) && (x.NJ(paramString)); i = 0)
+    for (int i = 1; (i == 0) && (an.zd(paramString)) && (x.Or(paramString)); i = 0)
     {
-      AppMethodBeat.o(188974);
+      AppMethodBeat.o(223219);
       return true;
     }
-    AppMethodBeat.o(188974);
+    AppMethodBeat.o(223219);
     return false;
   }
   
-  static void a(List<String> paramList, n.a parama)
-  {
-    AppMethodBeat.i(188977);
-    x.c(paramList, parama).a((d.b)c.jJU);
-    AppMethodBeat.o(188977);
-  }
-  
-  public final void LO(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(50194);
-    String[] arrayOfString = AppBrandGlobalSystemConfig.bdT().jWU;
+    String[] arrayOfString = AppBrandGlobalSystemConfig.bez().kaj;
     if (arrayOfString == null) {
       arrayOfString = new String[0];
     }
@@ -82,7 +75,7 @@ public final class d
         if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
         for (int j = 1; (j == 0) && (str.equals(paramString)); j = 0)
         {
-          ad.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "username[" + paramString + "] blacklist, just return");
+          ae.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "username[" + paramString + "] blacklist, just return");
           AppMethodBeat.o(50194);
           return;
         }
@@ -94,29 +87,30 @@ public final class d
     }
   }
   
-  public final void LQ(String paramString)
+  public final void Mt(String paramString)
   {
-    AppMethodBeat.i(188976);
-    if (!LP(paramString))
+    AppMethodBeat.i(223221);
+    if (!Ms(paramString))
     {
-      AppMethodBeat.o(188976);
+      AppMethodBeat.o(223221);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.dD(1342, 2);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.quQ, false))
+    com.tencent.mm.plugin.report.service.g.yxI.dD(1342, 2);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBL, false))
     {
-      ad.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "triggerPrefetchChattingItemAppBrandPiece username:".concat(String.valueOf(paramString)));
+      ae.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "triggerPrefetchChattingItemAppBrandPiece username:".concat(String.valueOf(paramString)));
+      h localh = h.jNg;
       if (paramString == null) {
-        p.gfZ();
+        p.gkB();
       }
-      b(j.listOf(paramString), n.a.jYI);
+      h.a(j.listOf(paramString), n.a.kbX);
     }
-    AppMethodBeat.o(188976);
+    AppMethodBeat.o(223221);
   }
   
   public final void aW(List<String> paramList)
   {
-    AppMethodBeat.i(188975);
+    AppMethodBeat.i(223220);
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     label115:
@@ -135,11 +129,11 @@ public final class d
           try
           {
             str = Uri.parse(str).getQueryParameter("username");
-            if (!LP(str)) {
+            if (!Ms(str)) {
               break;
             }
             if (str == null) {
-              p.gfZ();
+              p.gkB();
             }
             localLinkedList.add(str);
           }
@@ -150,85 +144,80 @@ public final class d
     }
     if (localLinkedList.size() > 0)
     {
-      com.tencent.mm.plugin.report.service.g.yhR.dD(1342, 1);
-      if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.quO, false)) {
-        break label201;
+      com.tencent.mm.plugin.report.service.g.yxI.dD(1342, 1);
+      if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBJ, false)) {
+        break label205;
       }
     }
-    label201:
+    label205:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        ad.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "triggerPrefetchMallIndexWeAppLinks list.size:" + localLinkedList.size());
-        b((List)localLinkedList, n.a.jYH);
+        ae.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "triggerPrefetchMallIndexWeAppLinks list.size:" + localLinkedList.size());
+        paramList = h.jNg;
+        h.a((List)localLinkedList, n.a.kbW);
       }
-      AppMethodBeat.o(188975);
+      AppMethodBeat.o(223220);
       return;
     }
   }
   
-  public final void akx()
+  public final void akM()
   {
-    AppMethodBeat.i(188979);
-    this.jJR.alive();
-    AppMethodBeat.o(188979);
+    AppMethodBeat.i(223222);
+    this.jMT.alive();
+    this.jMU.alive();
+    AppMethodBeat.o(223222);
   }
   
-  public final void aky()
+  public final void akN()
   {
-    AppMethodBeat.i(188980);
-    this.jJR.dead();
-    AppMethodBeat.o(188980);
+    AppMethodBeat.i(223223);
+    this.jMT.dead();
+    this.jMU.dead();
+    AppMethodBeat.o(223223);
   }
   
-  public final void baZ()
+  public final void bby()
   {
     AppMethodBeat.i(180433);
-    if (!LP("gh_8c10d2f0f25e@app"))
+    if (!Ms("gh_8c10d2f0f25e@app"))
     {
       AppMethodBeat.o(180433);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yhR.dD(1342, 4);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.quP, false))
+    com.tencent.mm.plugin.report.service.g.yxI.dD(1342, 4);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBK, false))
     {
-      ad.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "triggerPrefetchChattingItemWeishiVideoFakeNative");
-      b(j.listOf("gh_8c10d2f0f25e@app"), n.a.jYI);
+      ae.i("MicroMsg.AppBrand.PreDownloadServiceExportImpl", "triggerPrefetchChattingItemWeishiVideoFakeNative");
+      h localh = h.jNg;
+      h.a(j.listOf("gh_8c10d2f0f25e@app"), n.a.kbX);
     }
     AppMethodBeat.o(180433);
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$Companion;", "", "()V", "PRE_FETCH_DATA_MONITOR_ID", "", "PRE_FETCH_DATA_MONITOR_KEY_CHATTING_ITEM", "PRE_FETCH_DATA_MONITOR_KEY_MALL_INDEX", "PRE_FETCH_DATA_MONITOR_KEY_QRCODE_LONG_PRESS_DETECT", "PRE_FETCH_DATA_MONITOR_KEY_WEISHI", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$Companion;", "", "()V", "PRE_FETCH_DATA_MONITOR_ID", "", "PRE_FETCH_DATA_MONITOR_KEY_CHATTING_ITEM", "PRE_FETCH_DATA_MONITOR_KEY_MALL_INDEX", "PRE_FETCH_DATA_MONITOR_KEY_QRCODE_LONG_PRESS_DETECT", "PRE_FETCH_DATA_MONITOR_KEY_WEISHI", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "updatedList", "", "", "kotlin.jvm.PlatformType", "", "onTerminate"})
-  static final class c<T>
-    implements d.b<List<String>>
-  {
-    public static final c jJU;
-    
-    static
-    {
-      AppMethodBeat.i(188970);
-      jJU = new c();
-      AppMethodBeat.o(188970);
-    }
-  }
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$scanBeforeA8KeyListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/plugin/scanner/EventScanCodeTryPreloadWxaAttrsBeforeA8Key;", "callback", "", "event", "plugin-appbrand-integration_release"})
+  public static final class b
+    extends com.tencent.mm.sdk.b.c<com.tencent.mm.plugin.scanner.c>
+  {}
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
-  static final class d
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  static final class c
     extends q
     implements a<z>
   {
-    d(String paramString, long paramLong)
+    c(String paramString, long paramLong)
     {
       super();
     }
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$wxaQRScanSheetPreloadListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/plugin/scanner/EventScanCodeSheetPreloadWxaAttrs;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class e
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/appcache/predownload/PreDownloadServiceExportImpl$wxaQRScanSheetPreloadListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/plugin/scanner/EventScanCodeSheetPreloadWxaAttrs;", "callback", "", "event", "plugin-appbrand-integration_release"})
+  public static final class d
     extends com.tencent.mm.sdk.b.c<com.tencent.mm.plugin.scanner.b>
   {}
 }

@@ -2,53 +2,51 @@ package com.tencent.mm.plugin.webwx.a;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.aw.e.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.e.a;
 import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bc;
 import com.tencent.mm.model.c;
-import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.al.a;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bx;
 import java.io.IOException;
 import java.util.HashMap;
 
 public final class a
-  implements com.tencent.mm.al.f, t.a
+  implements com.tencent.mm.ak.f, t.a
 {
-  private static int EwO = 1048576;
-  private static int EwP = 26214400;
-  private bw EwQ;
-  private HashMap<String, bu> EwR;
+  private static int EPk = 1048576;
+  private static int EPl = 26214400;
+  private bx EPm;
+  private HashMap<String, bv> EPn;
   
   public a()
   {
     AppMethodBeat.i(30159);
-    this.EwR = new HashMap();
-    this.EwQ = new bw();
+    this.EPn = new HashMap();
+    this.EPm = new bx();
     Object localObject = new StringBuilder();
-    g.ajD();
-    localObject = i.aY(g.ajC().cachePath + "syncmsgid.ini", 0, -1);
-    if (!bt.cC((byte[])localObject)) {}
+    g.ajS();
+    localObject = com.tencent.mm.vfs.o.bb(g.ajR().cachePath + "syncmsgid.ini", 0, -1);
+    if (!bu.cF((byte[])localObject)) {}
     try
     {
-      this.EwQ.parseFrom((byte[])localObject);
-      o.aMJ().a(this, Looper.getMainLooper());
-      g.aiU().a(221, this);
+      this.EPm.parseFrom((byte[])localObject);
+      com.tencent.mm.modelvideo.o.aNh().a(this, Looper.getMainLooper());
+      g.ajj().a(221, this);
       AppMethodBeat.o(30159);
       return;
     }
@@ -56,41 +54,41 @@ public final class a
     {
       for (;;)
       {
-        ad.w("MicroMsg.MultiTerminalSyncMgr", "task parse Error");
+        ae.w("MicroMsg.MultiTerminalSyncMgr", "task parse Error");
       }
     }
   }
   
-  private void cEM()
+  private void cGI()
   {
     AppMethodBeat.i(30163);
     try
     {
-      byte[] arrayOfByte = this.EwQ.toByteArray();
+      byte[] arrayOfByte = this.EPm.toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
-      g.ajD();
-      i.f(g.ajC().cachePath + "syncmsgid.ini", arrayOfByte, arrayOfByte.length);
+      g.ajS();
+      com.tencent.mm.vfs.o.f(g.ajR().cachePath + "syncmsgid.ini", arrayOfByte, arrayOfByte.length);
       AppMethodBeat.o(30163);
       return;
     }
     catch (IOException localIOException)
     {
-      ad.w("MicroMsg.MultiTerminalSyncMgr", "task to file Error");
+      ae.w("MicroMsg.MultiTerminalSyncMgr", "task to file Error");
       AppMethodBeat.o(30163);
     }
   }
   
-  public final void Cu(final long paramLong)
+  public final void CS(final long paramLong)
   {
     AppMethodBeat.i(30160);
-    ba.aBQ();
-    if (!((Boolean)c.ajl().get(al.a.Ixt, Boolean.TRUE)).booleanValue())
+    bc.aCg();
+    if (!((Boolean)c.ajA().get(am.a.IRR, Boolean.TRUE)).booleanValue())
     {
-      ad.i("MicroMsg.MultiTerminalSyncMgr", "autoSyncState close");
+      ae.i("MicroMsg.MultiTerminalSyncMgr", "autoSyncState close");
       AppMethodBeat.o(30160);
       return;
     }
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -102,10 +100,10 @@ public final class a
     AppMethodBeat.o(30160);
   }
   
-  public final void Cv(final long paramLong)
+  public final void CT(final long paramLong)
   {
     AppMethodBeat.i(30161);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -120,36 +118,36 @@ public final class a
   public final void a(t.a.a parama)
   {
     AppMethodBeat.i(30164);
-    parama = (bu)this.EwR.get(parama.fileName);
+    parama = (bv)this.EPn.get(parama.fileName);
     if (parama == null)
     {
       AppMethodBeat.o(30164);
       return;
     }
-    s locals = u.Hy(parama.field_imgPath);
+    s locals = u.Ia(parama.field_imgPath);
     if (locals == null)
     {
       AppMethodBeat.o(30164);
       return;
     }
-    if ((parama.frT()) || (locals.status == 199))
+    if ((parama.fvU()) || (locals.status == 199))
     {
-      ad.i("MicroMsg.MultiTerminalSyncMgr", "download video end: %d, status:%d", new Object[] { Long.valueOf(parama.field_msgId), Integer.valueOf(locals.status) });
-      Cv(parama.field_msgId);
-      this.EwR.remove(parama.field_imgPath);
+      ae.i("MicroMsg.MultiTerminalSyncMgr", "download video end: %d, status:%d", new Object[] { Long.valueOf(parama.field_msgId), Integer.valueOf(locals.status) });
+      CT(parama.field_msgId);
+      this.EPn.remove(parama.field_imgPath);
       AppMethodBeat.o(30164);
       return;
     }
     if (parama.field_status == 198) {
-      this.EwR.remove(parama.field_imgPath);
+      this.EPn.remove(parama.field_imgPath);
     }
     AppMethodBeat.o(30164);
   }
   
-  public final void eWi()
+  public final void eZU()
   {
     AppMethodBeat.i(30162);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new aq(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -167,8 +165,8 @@ public final class a
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof com.tencent.mm.plugin.record.b.f)))
     {
       long l = ((com.tencent.mm.plugin.record.b.f)paramn).msgId;
-      Cv(l);
-      ad.i("MicroMsg.MultiTerminalSyncMgr", "download attach end: %d", new Object[] { Long.valueOf(l) });
+      CT(l);
+      ae.i("MicroMsg.MultiTerminalSyncMgr", "download attach end: %d", new Object[] { Long.valueOf(l) });
     }
     AppMethodBeat.o(30165);
   }

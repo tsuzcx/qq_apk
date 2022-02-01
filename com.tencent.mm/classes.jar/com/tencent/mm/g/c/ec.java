@@ -8,21 +8,21 @@ public abstract class ec
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eHT = "title".hashCode();
-  private static final int eHU;
-  private static final int eMj = "logo_url".hashCode();
-  private static final int fjA = "action_type".hashCode();
-  private static final int fjB = "action_url".hashCode();
-  private static final int fjC = "action_app_username".hashCode();
-  private static final int fjD = "action_app_nickname".hashCode();
-  private static final int fjE = "packet_id".hashCode();
-  private static final int fjF = "update_time".hashCode();
-  private static final int fjy = "logo_md5".hashCode();
-  private static final int fjz;
+  private static final int eJC = "title".hashCode();
+  private static final int eJD;
+  private static final int eNU = "logo_url".hashCode();
+  private static final int flA = "action_app_nickname".hashCode();
+  private static final int flB = "packet_id".hashCode();
+  private static final int flC = "update_time".hashCode();
+  private static final int flv = "logo_md5".hashCode();
+  private static final int flw;
+  private static final int flx;
+  private static final int fly;
+  private static final int flz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eHQ = true;
-  private boolean eHR = true;
-  private boolean eLQ = true;
+  private boolean eJA = true;
+  private boolean eJz = true;
+  private boolean eNB = true;
   public String field_action_app_nickname;
   public String field_action_app_username;
   public int field_action_type;
@@ -34,19 +34,22 @@ public abstract class ec
   public String field_packet_id;
   public String field_title;
   public long field_update_time;
-  private boolean fjq = true;
-  private boolean fjr = true;
-  private boolean fjs = true;
-  private boolean fjt = true;
-  private boolean fju = true;
-  private boolean fjv = true;
-  private boolean fjw = true;
-  private boolean fjx = true;
+  private boolean fln = true;
+  private boolean flo = true;
+  private boolean flp = true;
+  private boolean flq = true;
+  private boolean flr = true;
+  private boolean fls = true;
+  private boolean flt = true;
+  private boolean flu = true;
   
   static
   {
-    eHU = "description".hashCode();
-    fjz = "corp_name".hashCode();
+    eJD = "description".hashCode();
+    flw = "corp_name".hashCode();
+    flx = "action_type".hashCode();
+    fly = "action_url".hashCode();
+    flz = "action_app_username".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -62,7 +65,7 @@ public abstract class ec
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eHT != k) {
+      if (eJC != k) {
         break label60;
       }
       this.field_title = paramCursor.getString(i);
@@ -73,44 +76,44 @@ public abstract class ec
       break label20;
       break;
       label60:
-      if (eMj == k)
+      if (eNU == k)
       {
         this.field_logo_url = paramCursor.getString(i);
       }
-      else if (fjy == k)
+      else if (flv == k)
       {
         this.field_logo_md5 = paramCursor.getString(i);
       }
-      else if (eHU == k)
+      else if (eJD == k)
       {
         this.field_description = paramCursor.getString(i);
       }
-      else if (fjz == k)
+      else if (flw == k)
       {
         this.field_corp_name = paramCursor.getString(i);
       }
-      else if (fjA == k)
+      else if (flx == k)
       {
         this.field_action_type = paramCursor.getInt(i);
       }
-      else if (fjB == k)
+      else if (fly == k)
       {
         this.field_action_url = paramCursor.getString(i);
       }
-      else if (fjC == k)
+      else if (flz == k)
       {
         this.field_action_app_username = paramCursor.getString(i);
       }
-      else if (fjD == k)
+      else if (flA == k)
       {
         this.field_action_app_nickname = paramCursor.getString(i);
       }
-      else if (fjE == k)
+      else if (flB == k)
       {
         this.field_packet_id = paramCursor.getString(i);
-        this.fjw = true;
+        this.flt = true;
       }
-      else if (fjF == k)
+      else if (flC == k)
       {
         this.field_update_time = paramCursor.getLong(i);
       }
@@ -124,37 +127,37 @@ public abstract class ec
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eHQ) {
+    if (this.eJz) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.eLQ) {
+    if (this.eNB) {
       localContentValues.put("logo_url", this.field_logo_url);
     }
-    if (this.fjq) {
+    if (this.fln) {
       localContentValues.put("logo_md5", this.field_logo_md5);
     }
-    if (this.eHR) {
+    if (this.eJA) {
       localContentValues.put("description", this.field_description);
     }
-    if (this.fjr) {
+    if (this.flo) {
       localContentValues.put("corp_name", this.field_corp_name);
     }
-    if (this.fjs) {
+    if (this.flp) {
       localContentValues.put("action_type", Integer.valueOf(this.field_action_type));
     }
-    if (this.fjt) {
+    if (this.flq) {
       localContentValues.put("action_url", this.field_action_url);
     }
-    if (this.fju) {
+    if (this.flr) {
       localContentValues.put("action_app_username", this.field_action_app_username);
     }
-    if (this.fjv) {
+    if (this.fls) {
       localContentValues.put("action_app_nickname", this.field_action_app_nickname);
     }
-    if (this.fjw) {
+    if (this.flt) {
       localContentValues.put("packet_id", this.field_packet_id);
     }
-    if (this.fjx) {
+    if (this.flu) {
       localContentValues.put("update_time", Long.valueOf(this.field_update_time));
     }
     if (this.systemRowid > 0L) {
@@ -165,7 +168,7 @@ public abstract class ec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.ec
  * JD-Core Version:    0.7.0.1
  */

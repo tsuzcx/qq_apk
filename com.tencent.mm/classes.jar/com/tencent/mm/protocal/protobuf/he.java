@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class he
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int dvY;
-  public String dvZ;
+  public int dxd;
+  public String dxe;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,19 +14,19 @@ public final class he
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.dvY);
-      if (this.dvZ != null) {
-        paramVarArgs.d(2, this.dvZ);
+      paramVarArgs.aS(1, this.dxd);
+      if (this.dxe != null) {
+        paramVarArgs.d(2, this.dxe);
       }
       AppMethodBeat.o(123546);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.dvY) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.dxd) + 0;
       paramInt = i;
-      if (this.dvZ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dvZ);
+      if (this.dxe != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dxe);
       }
       AppMethodBeat.o(123546);
       return paramInt;
@@ -34,9 +34,9 @@ public final class he
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gxE();
+          paramVarArgs.gCg();
         }
       }
       AppMethodBeat.o(123546);
@@ -52,11 +52,11 @@ public final class he
         AppMethodBeat.o(123546);
         return -1;
       case 1: 
-        localhe.dvY = locala.NPN.zc();
+        localhe.dxd = locala.OmT.zc();
         AppMethodBeat.o(123546);
         return 0;
       }
-      localhe.dvZ = locala.NPN.readString();
+      localhe.dxe = locala.OmT.readString();
       AppMethodBeat.o(123546);
       return 0;
     }
@@ -66,7 +66,7 @@ public final class he
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.he
  * JD-Core Version:    0.7.0.1
  */

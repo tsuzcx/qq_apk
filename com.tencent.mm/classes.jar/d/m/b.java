@@ -5,17 +5,17 @@ import d.g.b.a.a;
 import d.l;
 import java.util.Iterator;
 
-@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/DropSequence;", "T", "Lkotlin/sequences/Sequence;", "Lkotlin/sequences/DropTakeSequence;", "sequence", "count", "", "(Lkotlin/sequences/Sequence;I)V", "drop", "n", "iterator", "", "take", "kotlin-stdlib"})
+@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlin/sequences/DropSequence;", "T", "Lkotlin/sequences/Sequence;", "Lkotlin/sequences/DropTakeSequence;", "sequence", "count", "", "(Lkotlin/sequences/Sequence;I)V", "drop", "n", "iterator", "", "take", "kotlin-stdlib"})
 public final class b<T>
   implements c<T>, h<T>
 {
-  final h<T> NGt;
+  final h<T> Odz;
   final int count;
   
   public b(h<? extends T> paramh, int paramInt)
   {
     AppMethodBeat.i(129529);
-    this.NGt = paramh;
+    this.Odz = paramh;
     this.count = paramInt;
     if (this.count >= 0) {}
     for (paramInt = 1; paramInt == 0; paramInt = 0)
@@ -27,7 +27,7 @@ public final class b<T>
     AppMethodBeat.o(129529);
   }
   
-  public final h<T> guy()
+  public final h<T> gza()
   {
     AppMethodBeat.i(129527);
     int i = this.count + 1;
@@ -37,7 +37,7 @@ public final class b<T>
       AppMethodBeat.o(129527);
       return localh;
     }
-    h localh = (h)new b(this.NGt, i);
+    h localh = (h)new b(this.Odz, i);
     AppMethodBeat.o(129527);
     return localh;
   }
@@ -50,17 +50,17 @@ public final class b<T>
     return localIterator;
   }
   
-  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/DropSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "left", "", "getLeft", "()I", "setLeft", "(I)V", "drop", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(gjZ={1, 1, 16}, gka={""}, gkb={"kotlin/sequences/DropSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "left", "", "getLeft", "()I", "setLeft", "(I)V", "drop", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<T>
   {
-    private final Iterator<T> MKI;
+    private final Iterator<T> NhL;
     private int left;
     
     a()
     {
       AppMethodBeat.i(129480);
-      this.MKI = localObject.NGt.iterator();
+      this.NhL = localObject.Odz.iterator();
       this.left = localObject.count;
       AppMethodBeat.o(129480);
     }
@@ -68,9 +68,9 @@ public final class b<T>
     private final void drop()
     {
       AppMethodBeat.i(129477);
-      while ((this.left > 0) && (this.MKI.hasNext()))
+      while ((this.left > 0) && (this.NhL.hasNext()))
       {
-        this.MKI.next();
+        this.NhL.next();
         this.left -= 1;
       }
       AppMethodBeat.o(129477);
@@ -80,7 +80,7 @@ public final class b<T>
     {
       AppMethodBeat.i(129479);
       drop();
-      boolean bool = this.MKI.hasNext();
+      boolean bool = this.NhL.hasNext();
       AppMethodBeat.o(129479);
       return bool;
     }
@@ -89,7 +89,7 @@ public final class b<T>
     {
       AppMethodBeat.i(129478);
       drop();
-      Object localObject = this.MKI.next();
+      Object localObject = this.NhL.next();
       AppMethodBeat.o(129478);
       return localObject;
     }

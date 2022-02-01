@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.fts.a.d.d;
 import com.tencent.mm.plugin.fts.a.i;
 import com.tencent.mm.plugin.fts.a.k;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.x.b;
+import com.tencent.mm.w.b;
 
 final class a$5
   extends com.tencent.mm.plugin.fts.a.a.a
@@ -16,13 +16,13 @@ final class a$5
   public final boolean execute()
   {
     AppMethodBeat.i(184136);
-    Object localObject = new com.tencent.mm.x.a();
+    Object localObject = new com.tencent.mm.w.a();
     ((n)g.ad(n.class)).registerIndexStorage((i)localObject);
     ((i)localObject).create();
     localObject = new b();
     ((n)g.ad(n.class)).registerNativeLogic(9, (k)localObject);
     ((k)localObject).create();
-    localObject = new com.tencent.mm.x.a.a();
+    localObject = new com.tencent.mm.w.a.a();
     ((n)g.ad(n.class)).registerFTSUILogic((d)localObject);
     AppMethodBeat.o(184136);
     return true;

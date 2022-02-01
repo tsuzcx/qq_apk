@@ -2,11 +2,11 @@ package com.tencent.mm.vending.g;
 
 public abstract interface b
 {
-  public abstract void G(Object... paramVarArgs);
+  public abstract void F(Object... paramVarArgs);
   
-  public abstract void ee(Object paramObject);
+  public abstract void ef(Object paramObject);
   
-  public abstract void fNZ();
+  public abstract void fSu();
   
   public abstract void resume();
 }

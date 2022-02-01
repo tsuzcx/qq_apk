@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cp
   extends b
 {
-  public a dny;
+  public a doA;
+  public b doB;
   
   public cp()
   {
@@ -15,16 +16,23 @@ public final class cp
   
   private cp(byte paramByte)
   {
-    AppMethodBeat.i(127400);
-    this.dny = new a();
-    this.IbR = false;
+    AppMethodBeat.i(188677);
+    this.doA = new a();
+    this.doB = new b();
+    this.IvZ = false;
     this.callback = null;
-    AppMethodBeat.o(127400);
+    AppMethodBeat.o(188677);
   }
   
   public static final class a
   {
-    public long dnz = -1L;
+    public String path;
+  }
+  
+  public static final class b
+  {
+    public boolean cYg = false;
+    public String[] doC;
   }
 }
 
